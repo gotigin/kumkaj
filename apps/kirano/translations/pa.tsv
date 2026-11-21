@@ -353,15 +353,15 @@ print_open	ਛਾਪੋ / ਖੋਲ੍ਹੋ
 reason_amend_ph	ਸੋਧ / ਰੱਦ / ਵਾਪਸੀ ਦਾ ਕਾਰਨ
 reason_note_ph	ਕਾਰਨ / ਨੋਟ (ਖਰਾਬੀ, ਗਿਣਤੀ, …)
 record_day_close	ਦਿਨ ਬੰਦ ਦਰਜ ਕਰੋ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ਅੱਜ» ਕਦੋਂ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ?
+business_day_help	«ਦਿਨ ਬੰਦ ਤੱਕ» ਚੁਣਨ 'ਤੇ «ਰੋਜ਼ ਬਹੀ» ਅੱਧੀ ਰਾਤ ਤੋਂ ਬਾਅਦ ਵੀ ਚੱਲਦੀ ਰਹਿੰਦੀ ਹੈ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਦਿਨ ਬੰਦ ਦਰਜ ਨਹੀਂ ਕਰਦੇ। «ਕੈਲੰਡਰ ਦੀ ਅੱਧੀ ਰਾਤ» ਚੁਣਨ 'ਤੇ ਦਿਨ ਸਥਾਨਕ ਸਮੇਂ ਅਨੁਸਾਰ ਰਾਤ 12:00 ਵਜੇ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
+biz_day_until_close	ਦਿਨ ਬੰਦ ਤੱਕ
+biz_day_midnight	ਕੈਲੰਡਰ ਦੀ ਅੱਧੀ ਰਾਤ
+business_day_saved	ਕਾਰੋਬਾਰੀ ਦਿਨ ਸੇਵ ਹੋਇਆ
+report_day_lens	«ਅੱਜ» ਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਵੇਖੋ
+report_day_lens_help	ਸਿਰਫ਼ ਵੇਖਣ ਲਈ — ਇਸ ਨਾਲ ਇਹ ਨਹੀਂ ਬਦਲਦਾ ਕਿ «ਦਿਨ ਬੰਦ» ਕਦੋਂ «ਅੱਜ» ਨੂੰ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਕਰਦਾ ਹੈ। «ਦਿਨ ਬੰਦ ਅਨੁਸਾਰ» ਪਿਛਲੇ ਦਿਨ ਬੰਦ ਤੋਂ ਗਿਣਦਾ ਹੈ; «ਅੱਧੀ ਰਾਤ ਅਨੁਸਾਰ» ਸਥਾਨਕ ਸਮੇਂ ਅਨੁਸਾਰ ਰਾਤ 12:00 ਵਜੇ ਕੱਟਦਾ ਹੈ।
+report_lens_day_close	ਦਿਨ ਬੰਦ ਅਨੁਸਾਰ
+report_lens_midnight	ਅੱਧੀ ਰਾਤ ਅਨੁਸਾਰ
 refresh_from_shop	ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਕਰੋ
 refund	ਵਾਪਸੀ
 remove_selected	ਚੁਣਿਆ ਹਟਾਓ
@@ -837,19 +837,19 @@ client_template_confirm	{title} ਤੋਂ {d} ਆਈਟਮਾਂ ਜੋੜੀਏ
 client_template_importing	{title} ਆਯਾਤ…
 client_template_done	{title} ਦੀ ਹਰ ਆਈਟਮ ਤੁਹਾਡੀਆਂ ਆਈਟਮਾਂ ਵਿੱਚ ਹੈ।
 client_template_imported	{title} ਤੋਂ {d} ਆਈਟਮਾਂ ਤੇ {c} ਸ਼੍ਰੇਣੀਆਂ ਜੋੜੀਆਂ
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	ਦੁਕਾਨ ਟੈਂਪਲੇਟ
+app_template_blurb	ਸ਼ੁਰੂਆਤੀ ਕੈਟਾਲਾਗ ਅਤੇ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ ਚੁਣੋ। «ਹੁਣ ਛੱਡੋ» ਦਬਾਉਣ 'ਤੇ ਸ਼ੈਲਫ਼ ਖਾਲੀ ਰਹੇਗੀ।
+app_template_skip	ਹੁਣ ਛੱਡੋ
+app_template_status	ਸਰਵਰ ਤਿਆਰ — ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਛੱਡੋ
+app_template_importing	{title} ਲਾ ਰਹੇ ਹਾਂ…
+app_template_import_selected	ਚੁਣਿਆ ਆਯਾਤ ਕਰੋ
+app_template_wipe_warn	ਇਸ ਨਾਲ ਬਹੀ ਦਾ ਕਾਰੋਬਾਰੀ ਡਾਟਾ (ਵਿਕਰੀ, ਖਾਤੇ) ਸਾਫ਼ ਹੋ ਜਾਵੇਗਾ ਅਤੇ ਟੈਂਪਲੇਟ ਦੀਆਂ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ ਲਾਗੂ ਹੋਣਗੀਆਂ। ਅੱਗੇ ਵਧੀਏ?
+app_template_wipe_continue	ਅੱਗੇ ਵਧੋ
+app_template_wipe_cancel	ਰੱਦ
+app_template_from_device	ਇਸ ਡਿਵਾਈਸ ਤੋਂ ਆਯਾਤ ਕਰੋ
+app_template_from_device_help	ਉਹ ਫੋਲਡਰ ਚੁਣੋ ਜਿਸ ਵਿੱਚ template.json ਹੋਵੇ (shop_defaults.json ਹੋਵੇ ਤਾਂ ਉਹ ਵੀ)।
+settings_app_tmpl_note	ਪੂਰੇ ਦੁਕਾਨ ਪੈਕ: ਕੈਟਾਲਾਗ ਅਤੇ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ। ਕਿਸੇ ਪੈਕ ਨੂੰ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰਨ ਨਾਲ ਵਿਕਰੀ ਅਤੇ ਖਾਤੇ ਸਾਫ਼ ਹੋ ਜਾਂਦੇ ਹਨ, ਫਿਰ ਪੈਕ ਦੀਆਂ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ ਲਾਗੂ ਹੁੰਦੀਆਂ ਹਨ।
+app_tmpl_named	{name} ਦੁਕਾਨ ਟੈਂਪਲੇਟ
 cancel	ਰੱਦ ਕਰੋ
 removing	ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ…
 removed	ਹਟਾਇਆ ਗਿਆ

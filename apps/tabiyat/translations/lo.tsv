@@ -163,7 +163,7 @@ sidebar_disable_all	ປິດໃຊ້ງານທັງໝົດ
 sidebar_order_saved	ບັນທຶກຄຳສັ່ງແຖບດ້ານຂ້າງແລ້ວ
 sidebar_visibility_saved	ບັນທຶກການເບິ່ງເຫັນແຖບດ້ານຂ້າງແລ້ວ
 sales	ການຂາຍ
-day_close	ມື້ປິດ
+day_close	ປິດມື້
 reports_expenses	ປຶ້ມທະນາຄານ & P&L
 nav_reports	ບົດລາຍງານ
 nav_settings	ການຕັ້ງຄ່າ
@@ -365,15 +365,15 @@ print_open	ພິມ / ເປີດ
 reason_amend_ph	ເຫດຜົນສໍາລັບການດັດແກ້ / void / refund
 reason_note_ph	ເຫດຜົນ / ຫມາຍເຫດ (ເສຍ, ນັບ, ... )
 record_day_close	ບັນທຶກມື້ປິດ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ມື້ນີ້» ຣີເຊັດເມື່ອໃດ?
+business_day_help	«ຈົນຮອດ ປິດມື້» ສືບຕໍ່ແລ່ນ «ປຶ້ມມື້» ເວລາທ່ຽງຄືນ, ຈົນກວ່າທ່ານຈະບັນທຶກມື້ປິດ. «ໃນເວລາທ່ຽງຄືນ» ຕັດເວລາ 00:00 ໂມງຕາມເວລາທ້ອງຖິ່ນ.
+biz_day_until_close	ຈົນຮອດ ປິດມື້
+biz_day_midnight	ໃນເວລາທ່ຽງຄືນ
+business_day_saved	ບັນທຶກການຕັ້ງຄ່າມື້ເຮັດວຽກແລ້ວ
+report_day_lens	ສະແດງ «ມື້ນີ້» ເປັນ
+report_day_lens_help	ອັນນີ້ພຽງແຕ່ປ່ຽນມຸມມອງເທົ່ານັ້ນ — ມັນບໍ່ປ່ຽນແປງເມື່ອ «ປິດມື້» ຣີເຊັດ «ມື້ນີ້». «ອີງຕາມ ປິດມື້» ຕິດຕາມມື້ສຸດທ້າຍປິດ; «ອີງຕາມເວລາທ່ຽງຄືນ» ຕັດເວລາ 00:00 ໂມງຕາມເວລາທ້ອງຖິ່ນ.
+report_lens_day_close	ອີງຕາມ ປິດມື້
+report_lens_midnight	ອີງຕາມເວລາທ່ຽງຄືນ
 refresh_from_shop	ໂຫຼດຂໍ້ມູນໃໝ່ຈາກຮ້ານຄ້າ
 refund	ເງິນຄືນ
 remove_selected	ລຶບທີ່ເລືອກອອກ
@@ -849,19 +849,19 @@ client_template_confirm	ເພີ່ມລາຍການ {d} ຈາກ {title} 
 client_template_importing	ກຳລັງນຳເຂົ້າ {title}…
 client_template_done	ທຸກໆລາຍການຈາກ {title} ແມ່ນຢູ່ໃນລາຍການຂອງທ່ານ.
 client_template_imported	ເພີ່ມລາຍການ {d} ແລະໝວດໝູ່ {c} ຈາກ {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	ແມ່ແບບຮ້ານ
+app_template_blurb	ເລືອກລາຍການເລີ່ມຕົ້ນ ແລະການຕັ້ງຄ່າຮ້ານຄ້າ. «ຂ້າມໄປດຽວນີ້» ປ່ອຍລາຍການຜະລິດຕະພັນຫວ່າງເປົ່າ.
+app_template_skip	ຂ້າມໄປດຽວນີ້
+app_template_status	ເຊີບເວີພ້ອມແລ້ວ — ນຳເຂົ້າແມ່ແບບ ຫຼື ຂ້າມ
+app_template_importing	ກຳລັງນຳໃຊ້ {title}…
+app_template_import_selected	ນຳເຂົ້າອັນທີ່ເລືອກ
+app_template_wipe_warn	ນີ້ຈະເປັນການລຶບລ້າງຂໍ້ມູນການຊື້ຂາຍໃນບັນຊີ (ການຂາຍ, ບັນຊີລາຍການ) ແລະນຳໃຊ້ການຕັ້ງຄ່າຮ້ານຄ້າຂອງແມ່ແບບ. ທ່ານຕ້ອງການສືບຕໍ່ບໍ?
+app_template_wipe_continue	ສືບຕໍ່
+app_template_wipe_cancel	ຍົກເລີກ
+app_template_from_device	ນຳເຂົ້າຈາກອຸປະກອນນີ້
+app_template_from_device_help	ເລືອກໂຟນເດີທີ່ມີ template.json (ແລະ, ທາງເລືອກ, shop_defaults.json).
+settings_app_tmpl_note	ສຳເລັດຮູບແບບຮ້ານຄ້າ: ລາຍການ ແລະການຕັ້ງຄ່າຮ້ານຄ້າ. ການນໍາເຂົ້າອີກເທື່ອຫນຶ່ງຈະລຶບລ້າງການຂາຍແລະບັນຊີລາຍການ, ຫຼັງຈາກນັ້ນນໍາໃຊ້ການຕັ້ງຄ່າຮ້ານຄ້າຂອງແມ່ແບບ.
+app_tmpl_named	{name} ແມ່ແບບຮ້ານຄ້າ
 cancel	ຍົກເລີກ
 removing	ກຳລັງລຶບອອກ…
 removed	ລຶບອອກແລ້ວ

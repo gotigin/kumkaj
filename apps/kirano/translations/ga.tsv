@@ -353,15 +353,15 @@ print_open	Priontáil / oscail
 reason_amend_ph	Cúis le leasú / neamhbhailí / aisíocaíocht
 reason_note_ph	Cúis / nóta (caiteachas, comhaireamh, …)
 record_day_close	Dúnadh lae taifead
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Cathain a thosaíonn «Inniu» as an nua?
+business_day_help	Le «Go dtí dúnadh an lae», leanann «Leabhar lae» ar aghaidh tar éis meán oíche go dtí go dtaifeadann tú dúnadh an lae. Le «Meán oíche an fhéilire», gearrtar an lá ag 00:00, am áitiúil.
+biz_day_until_close	Go dtí dúnadh an lae
+biz_day_midnight	Meán oíche an fhéilire
+business_day_saved	Socrú an lae gnó sábháilte
+report_day_lens	Taispeáin «Inniu» mar
+report_day_lens_help	Amharc amháin — ní athraíonn sé cathain a thosaíonn «Dún an lae» «Inniu» as an nua. Leanann «De réir dhúnadh an lae» an dúnadh lae is déanaí; gearrann «De réir meán oíche» ag 00:00, am áitiúil.
+report_lens_day_close	De réir dhúnadh an lae
+report_lens_midnight	De réir meán oíche
 refresh_from_shop	Athnuaigh ón siopa
 refund	Aisíocaíocht
 remove_selected	Bain an roghnaithe
@@ -837,19 +837,19 @@ client_template_confirm	Cuir míreanna {d} ó {title} leis? Fanann na míreanna 
 client_template_importing	Ag iompórtáil {title}…
 client_template_done	Tá gach earra ó {title} ar do chuid míreanna.
 client_template_imported	Cuireadh míreanna {d} agus catagóirí {c} ó {title} leis
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Teimpléid siopa
+app_template_blurb	Roghnaigh catalóg tosaithe agus socruithe siopa. Fágann «Sicíl anois» an tseilf folamh.
+app_template_skip	Sicíl anois
+app_template_status	Freastalaí réidh — iompórtáil teimpléad, nó scipeáil
+app_template_importing	Ag cur i bhfeidhm {title}…
+app_template_import_selected	Iompórtáil an rogha
+app_template_wipe_warn	Glanann sé seo na sonraí trádála sna cuntais (díolacháin, mórleabhair) agus cuireann sé socruithe siopa an teimpléid i bhfeidhm. Ar mhaith leat leanúint ar aghaidh?
+app_template_wipe_continue	Lean ar aghaidh
+app_template_wipe_cancel	Cealaigh
+app_template_from_device	Iompórtáil ón ngléas seo
+app_template_from_device_help	Roghnaigh fillteán ina bhfuil template.json (agus, de rogha, shop_defaults.json).
+settings_app_tmpl_note	Pacáistí iomlána siopa: catalóg agus socruithe siopa. Má iompórtálann tú ceann arís, glantar díolacháin agus mórleabhair, ansin cuirtear socruithe siopa an phacáiste i bhfeidhm.
+app_tmpl_named	Teimpléad siopa {name}
 cancel	Cealaigh
 removing	Á bhaint…
 removed	Bainte

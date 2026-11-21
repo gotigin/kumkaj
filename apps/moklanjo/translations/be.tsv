@@ -3,27 +3,27 @@ app_tagline	Кур'ерскае агенцтва кнігі + бранірава
 unlock	Разблакіраваць
 pin_hint	PIN уладальніка спачатку 0000
 sell	Бранюванне
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Дошка
+board	Дошка
+park_draft	Адкласці чарнавік
+board_help	Адкрытыя чарнавікі (захоўваюцца, пакуль вы не націснеце «Выкінуць» або «Прыняць аплату») і сённяшнія праведзеныя продажы. У раздзеле «Бранюванне» пасярод працы націсніце «Адкласці чарнавік» (захоўваецца тут, не ў кнігах); націсніце чарнавік, каб працягнуць.
+board_empty	Картак пакуль няма.
+board_park_nothing	Няма чаго адкладаць — дадайце зборы або звесткі пра бранюванне
+board_parked	Адкладзена на «Дошка» — стол вольны
+board_draft	Чарнавік
+board_booked	Забранавана
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Чарнавік
+board_filter_booked	Забранавана
+board_cols_fmt	{n} слупк.
+board_summary_fmt	Картак: {total} · чарнавікоў: {drafts} · праведзена: {booked}
+board_card_no_charges	Збораў пакуль няма
+board_card_charges	зборы
+board_card_booked	Бранюванне
+board_draft_gone	Гэтага чарнавіка ўжо няма на «Дошка»
+board_draft_closed	Гэты чарнавік ужо завершаны або выкінуты
+board_discard	Выкінуць
+board_discarded	Чарнавік выкінуты
 buy	Выплата
 books	Дзённая кніга
 books_help	Стан на сёння. Бранюванне = прынятыя пасылкі. Выплата = рахункі перавозчыкаў і выдаткі. Контрагенты = адпраўнікі і перавозчыкі.
@@ -88,12 +88,12 @@ applied	Ужыта
 note_ph	Нататка (неабавязкова)
 rounded	АКРУГЛЕНА
 split	Падзел
-counter	Лічыльнік
+counter	Стойка
 parcel	Пасылка
 order	Заказ
 sales	Бранюванні
 sales_refunds	Бранюванні і вяртанні
-day_close	Блізкі дзень
+day_close	Закрыццё дня
 reports_expenses	Банкаўская кніга і П і С
 nav_reports	Даклады
 nav_settings	Налады
@@ -220,7 +220,7 @@ snack_secs_save	Захаваць час апавяшчэння
 snack_secs_saved	Час апавяшчэння захаваны — {n} секунд
 snack_secs_bad	Увядзіце секунды як лік (3–60)
 cancelled	Адменена
-cancelling	Cancellingâ¦
+cancelling	Скасаванне…
 cancel	Адмяніць
 opening_client	Адкрыццё кліента…
 preparing_desk	Падрыхтоўка стала…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Капіяваць кнігу кліентаў CSV
 copy_receipt	Копія квітанцыі
 copy_report	Капіяваць справаздачу
 counted_cash_ph	Пералічыў грошы ў шуфлядзе
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Закрыць змену і раздрукаваць лісток
+shift_handover	Здача змены
+shift_counted_ph	Грашовыя сродкі пералічваюцца пры здачы
+shift_since	Гэты зрух з тых часоў
+expected_in_drawer	Чакаецца ў шуфлядзе
+lock_books_through_month	Заблакіраваць кнігі да канца месяца
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Заблакіраваць да канца гэтага месяца
+books_locked_none	Пакуль няма заблакіраваных месяцаў
+books_locked_through	Заблакіравана да
 counter_agency_ph	Назва кантэру / агенцтва (неабавязкова)
 create_backup	Стварыць рэзервовую копію
 day_close_summary	Падвядзенне вынікаў дня
@@ -442,9 +442,9 @@ pay_ap_cash	Плаціце AP наяўнымі
 pay_ap_upi	Аплата AP UPI
 period_bill	Рахунак за перыяд
 period_bill_party	Рахунак за перыяд (контрагент)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Сфарміраваць рахунак
+period_bill_generate_print	Сфарміраваць і надрукаваць
+booking_bulk_preview	Гатова: {ok} · з памылкамі: {bad}
 pick_pod_photo	Выбраць фота POD
 print_awb_label	Друкаваць этыкетку AWB
 print_open	Раздрукаваць / адкрыць
@@ -653,19 +653,19 @@ attachments_last_expense	Укладанні (апошнія выдаткі)
 credit_limit_heading	Крэдытны ліміт (выбраны кліент або пастаўшчык)
 pay_selected_heading	Аплата выбрана (разлічыцца з запазычанасцю / атрымаць аванс)
 write_off_heading	Спісаць (ачысціць без аплаты)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Карэкціровачныя ноты
+adj_note_amount_ph	Сума
+adj_note_reason_ph	Прычына (абавязкова)
+adj_note_awb_ph	Звязаны AWB (неабавязкова)
+credit_note_btn	Крэдыт-нота
+debit_note_btn	Дэбет-нота
+bill_later_heading	Выставіць пазней (даплата пасля бранювання)
+bill_later_amount_ph	Дадатковая сума
+bill_later_party_ph	Контрагент (толькі калі ў бранюванні яго няма)
+bill_later_btn	Выставіць пазней
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Упакоўка
+bill_later_extra_other	Іншае
 pay_ap_heading	Плацім тое, што мы павінны ім (AP)
 country_tax	Краіна і падатак
 extra_tills_heading	Дадатковыя касы
@@ -777,26 +777,26 @@ onboard_book_tmpl	Забраніраваць · {} — дадайце прадм
 onboard_template_tmpl	Назавіце месца, калі хочаце, а затым выберыце, з чаго пачаць.
 tmpl_blurb	Кнігі кур'ераў і браніраванне: адпраўнікі, перавозчыкі, дзённік, AWB.
 tmpl_how	Бранюваць пасылкі на стале; Дзённік для сёння; укладкі для тарыфаў, партый, справаздач.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Шаблоны крамы
+app_template_blurb	Выберыце пачатковае працоўнае месца. «Прапусціць пакуль» пакідае спіс контрагентаў пустым.
+app_template_skip	Прапусціць пакуль
+app_template_status	Сервер гатовы — імпартуйце шаблон або прапусціце
+app_template_importing	Прымяняецца {title}…
+app_template_public_hdr	Шаблоны
+app_template_import_selected	Імпартаваць выбранае
+app_template_wipe_warn	Гэта ачысціць гандлёвыя даныя ў кнігах (бранюванні, рахункі) і ўжые налады крамы з шаблона. Працягнуць?
+app_template_wipe_continue	Працягнуць
+app_template_wipe_cancel	Адмяніць
+public_tmpl_help	Убудаваныя пакеты для агенцтваў для гэтай крамы. Спампоўваць нічога не трэба.
+business_day	Калі «Сёння» пачынаецца нанова?
+business_day_help	Пры выбары «Да закрыцця дня» «Дзённая кніга» працягваецца пасля поўначы, пакуль вы не запішаце закрыццё дня. Пры выбары «Каляндарная поўнач» дзень абразаецца ў 00:00 па мясцовым часе.
+biz_day_until_close	Да закрыцця дня
+biz_day_midnight	Каляндарная поўнач
+business_day_saved	Працоўны дзень захаваны
+report_day_lens	Паказваць «Сёння» як
+report_day_lens_help	Толькі выгляд — не мяняе, калі «Закрыццё дня» пачынае «Сёння» нанова. «Па закрыцці дня» лічыць ад апошняга закрыцця дня; «Па поўначы» абразае ў 00:00 па мясцовым часе.
+report_lens_day_close	Па закрыцці дня
+report_lens_midnight	Па поўначы
 trk_booked	Забранавана
 trk_picked_up	Забрана
 trk_in_transit	У транзіце

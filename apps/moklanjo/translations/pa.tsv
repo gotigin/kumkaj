@@ -3,27 +3,27 @@ app_tagline	ਕੂਰੀਅਰ ਬਹੀ + ਬੁਕਿੰਗ ਡੈਸਕ। �
 unlock	ਅਨਲਾਕ
 pin_hint	ਮਾਲਕ PIN 0000 ਤੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ
 sell	ਬੁਕਿੰਗ
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	ਬੋਰਡ
+board	ਬੋਰਡ
+park_draft	ਡਰਾਫਟ ਵਿੱਚ ਰੱਖੋ
+board_help	ਖੁੱਲ੍ਹੇ ਡਰਾਫਟ («ਹਟਾਓ» ਜਾਂ «ਭੁਗਤਾਨ ਲਓ» ਕਰਨ ਤੱਕ ਰਹਿੰਦੇ ਹਨ) ਅਤੇ ਅੱਜ ਦੀ ਬੁੱਕ ਹੋਈ ਵਿਕਰੀ। «ਬੁਕਿੰਗ» 'ਤੇ ਕੰਮ ਦੇ ਵਿਚਕਾਰ «ਡਰਾਫਟ ਵਿੱਚ ਰੱਖੋ» ਦਬਾਓ (ਇੱਥੇ ਸੇਵ ਹੁੰਦਾ ਹੈ, ਬਹੀ ਵਿੱਚ ਨਹੀਂ); ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਡਰਾਫਟ ਦਬਾਓ।
+board_empty	ਅਜੇ ਕੋਈ ਕਾਰਡ ਨਹੀਂ।
+board_park_nothing	ਰੱਖਣ ਲਈ ਕੁਝ ਨਹੀਂ — ਖਰਚੇ ਜਾਂ ਬੁਕਿੰਗ ਦਾ ਵੇਰਵਾ ਜੋੜੋ
+board_parked	«ਬੋਰਡ» 'ਤੇ ਰੱਖ ਦਿੱਤਾ — ਡੈਸਕ ਖਾਲੀ ਹੈ
+board_draft	ਡਰਾਫਟ
+board_booked	ਬੁੱਕ ਹੋਇਆ
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ਡਰਾਫਟ
+board_filter_booked	ਬੁੱਕ ਹੋਇਆ
+board_cols_fmt	{n} ਕਾਲਮ
+board_summary_fmt	{total} ਕਾਰਡ · {drafts} ਡਰਾਫਟ · {booked} ਬੁੱਕ ਹੋਏ
+board_card_no_charges	ਅਜੇ ਕੋਈ ਖਰਚਾ ਨਹੀਂ
+board_card_charges	ਖਰਚੇ
+board_card_booked	ਬੁਕਿੰਗ
+board_draft_gone	ਉਹ ਡਰਾਫਟ ਹੁਣ «ਬੋਰਡ» 'ਤੇ ਨਹੀਂ ਹੈ
+board_draft_closed	ਉਹ ਡਰਾਫਟ ਪਹਿਲਾਂ ਹੀ ਪੂਰਾ ਹੋ ਚੁੱਕਾ ਹੈ ਜਾਂ ਹਟਾਇਆ ਜਾ ਚੁੱਕਾ ਹੈ
+board_discard	ਹਟਾਓ
+board_discarded	ਡਰਾਫਟ ਹਟਾ ਦਿੱਤਾ
 buy	ਭੁਗਤਾਨ ਕਰੋ
 books	ਰੋਜ਼ ਬਹੀ
 books_help	ਅੱਜ ਦੀ ਸਥਿਤੀ। ਬੁਕਿੰਗ = ਪਾਰਸਲ ਆਏ। ਪੇ ਆਊਟ = ਕੈਰੀਅਰ ਬਿੱਲ ਤੇ ਖਰਚੇ। ਪਾਰਟੀ = ਭੇਜਣ ਵਾਲੇ ਤੇ ਕੈਰੀਅਰ।
@@ -220,7 +220,7 @@ snack_secs_save	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲੋ
 snack_secs_saved	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲਿਆ — {n} ਸਕਿੰਟ
 snack_secs_bad	ਸਕਿੰਟ ਅੰਕਾਂ ਵਿੱਚ ਲਿਖੋ (3–60)
 cancelled	ਰੱਦ ਕੀਤਾ
-cancelling	Cancellingâ¦
+cancelling	ਰੱਦ ਹੋ ਰਿਹਾ ਹੈ…
 cancel	ਰੱਦ
 opening_client	ਕਲਾਇੰਟ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
 preparing_desk	ਡੈਸਕ ਤਿਆਰ ਹੋ ਰਿਹਾ ਹੈ…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	ਪਾਰਟੀ ਖਾਤਾ CSV ਕਾਪੀ
 copy_receipt	ਰਸੀਦ ਕਾਪੀ ਕਰੋ
 copy_report	ਰਿਪੋਰਟ ਕਾਪੀ ਕਰੋ
 counted_cash_ph	ਦਰਾਜ਼ ਵਿੱਚ ਗਿਣੀ ਨਕਦੀ
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	ਸ਼ਿਫ਼ਟ ਬੰਦ ਕਰੋ ਅਤੇ ਪਰਚੀ ਛਾਪੋ
+shift_handover	ਸ਼ਿਫ਼ਟ ਸੌਂਪਣਾ
+shift_counted_ph	ਸੌਂਪਣ ਵੇਲੇ ਗਿਣੀ ਨਕਦੀ
+shift_since	ਇਹ ਸ਼ਿਫ਼ਟ ਸ਼ੁਰੂ
+expected_in_drawer	ਦਰਾਜ਼ ਵਿੱਚ ਹੋਣੀ ਚਾਹੀਦੀ
+lock_books_through_month	ਮਹੀਨੇ ਤੱਕ ਬਹੀ ਲਾਕ ਕਰੋ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ਇਸ ਮਹੀਨੇ ਤੱਕ ਲਾਕ ਕਰੋ
+books_locked_none	ਅਜੇ ਕੋਈ ਮਹੀਨਾ ਲਾਕ ਨਹੀਂ
+books_locked_through	ਕਿਸ ਮਹੀਨੇ ਤੱਕ ਲਾਕ
 counter_agency_ph	ਕਾਊਂਟਰ / ਏਜੰਸੀ ਦਾ ਨਾਂ (ਵਿਕਲਪਿਕ)
 create_backup	ਬੈਕਅਪ ਬਣਾਓ
 day_close_summary	ਦਿਨ ਬੰਦ ਸਾਰ
@@ -442,9 +442,9 @@ pay_ap_cash	AP ਨਕਦ ਦਿਓ
 pay_ap_upi	AP UPI ਦਿਓ
 period_bill	ਮਿਆਦ ਬਿੱਲ
 period_bill_party	ਮਿਆਦ ਬਿੱਲ (ਪਾਰਟੀ)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	ਬਿੱਲ ਬਣਾਓ
+period_bill_generate_print	ਬਣਾਓ ਅਤੇ ਛਾਪੋ
+booking_bulk_preview	{ok} ਤਿਆਰ · {bad} ਗਲਤ
 pick_pod_photo	POD ਫੋਟੋ ਚੁਣੋ
 print_awb_label	AWB ਲੇਬਲ ਛਾਪੋ
 print_open	ਛਾਪੋ / ਖੋਲ੍ਹੋ
@@ -653,19 +653,19 @@ attachments_last_expense	ਅਟੈਚਮੈਂਟ (ਆਖਰੀ ਖਰਚ)
 credit_limit_heading	ਉਧਾਰ ਸੀਮਾ (ਚੁਣੀ / ਨਾਮ ਵਾਲੀ ਪਾਰਟੀ)
 pay_selected_heading	ਚੁਣਿਆ ਚੁਕਾਓ (ਕਰਜ਼ਾ ਨਿਪਟਾਓ / ਐਡਵਾਂਸ)
 write_off_heading	ਮਾਫ਼ ਕਰੋ (ਭੁਗਤਾਨ ਤੋਂ ਬਿਨਾਂ ਨਿਪਟਾਓ)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ਐਡਜਸਟਮੈਂਟ ਨੋਟ
+adj_note_amount_ph	ਰਕਮ
+adj_note_reason_ph	ਕਾਰਨ (ਲਾਜ਼ਮੀ)
+adj_note_awb_ph	ਸੰਬੰਧਿਤ AWB (ਵਿਕਲਪਿਕ)
+credit_note_btn	ਕ੍ਰੈਡਿਟ ਨੋਟ
+debit_note_btn	ਡੈਬਿਟ ਨੋਟ
+bill_later_heading	ਬਾਅਦ ਵਿੱਚ ਬਿੱਲ ਕਰੋ (ਬੁਕਿੰਗ ਤੋਂ ਬਾਅਦ ਦਾ ਵਾਧੂ ਖਰਚਾ)
+bill_later_amount_ph	ਵਾਧੂ ਰਕਮ
+bill_later_party_ph	ਪਾਰਟੀ (ਸਿਰਫ਼ ਜੇ ਬੁਕਿੰਗ ਵਿੱਚ ਕੋਈ ਨਹੀਂ)
+bill_later_btn	ਬਾਅਦ ਵਿੱਚ ਬਿੱਲ ਕਰੋ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ਪੈਕਿੰਗ
+bill_later_extra_other	ਹੋਰ
 pay_ap_heading	ਸਾਨੂੰ ਉਨ੍ਹਾਂ ਨੂੰ ਦੇਣਾ (AP)
 country_tax	ਦੇਸ਼ ਤੇ ਟੈਕਸ
 extra_tills_heading	ਵਾਧੂ ਟਿੱਲ
@@ -777,26 +777,26 @@ onboard_book_tmpl	ਬਹੀ · {} — ਚੀਜ਼ਾਂ ਅਤੇ ਸ਼ੁਰ�
 onboard_template_tmpl	ਚਾਹੋ ਤਾਂ ਥਾਂ ਦਾ ਨਾਂ ਦਿਓ, ਫਿਰ ਸ਼ੁਰੂ ਕਰਨ ਦਾ ਤਰੀਕਾ ਚੁਣੋ।
 tmpl_blurb	ਕੋਰੀਅਰ ਵਹੀ ਅਤੇ ਬੁਕਿੰਗ ਡੈਸਕ: ਭੇਜਣ ਵਾਲੇ, ਕੈਰੀਅਰ, ਰੋਜ਼ਨਾਮਚਾ, AWB।
 tmpl_how	ਡੈਸਕ 'ਤੇ ਪਾਰਸਲ ਬੁੱਕ ਕਰੋ; ਅੱਜ ਲਈ ਰੋਜ਼ਨਾਮਚਾ; ਰੇਟਾਂ, ਪਾਰਟੀਆਂ, ਰਿਪੋਰਟਾਂ ਲਈ ਟੈਬ।
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	ਦੁਕਾਨ ਟੈਂਪਲੇਟ
+app_template_blurb	ਸ਼ੁਰੂਆਤੀ ਡੈਸਕ ਚੁਣੋ। «ਹੁਣ ਛੱਡੋ» ਦਬਾਉਣ 'ਤੇ ਪਾਰਟੀਆਂ ਦੀ ਸੂਚੀ ਖਾਲੀ ਰਹੇਗੀ।
+app_template_skip	ਹੁਣ ਛੱਡੋ
+app_template_status	ਸਰਵਰ ਤਿਆਰ — ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਛੱਡੋ
+app_template_importing	{title} ਲਾ ਰਹੇ ਹਾਂ…
+app_template_public_hdr	ਟੈਮਪਲੇਟ
+app_template_import_selected	ਚੁਣਿਆ ਆਯਾਤ ਕਰੋ
+app_template_wipe_warn	ਇਸ ਨਾਲ ਬਹੀ ਦਾ ਕਾਰੋਬਾਰੀ ਡਾਟਾ (ਬੁਕਿੰਗ, ਖਾਤੇ) ਸਾਫ਼ ਹੋ ਜਾਵੇਗਾ ਅਤੇ ਟੈਂਪਲੇਟ ਦੀਆਂ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ ਲਾਗੂ ਹੋਣਗੀਆਂ। ਅੱਗੇ ਵਧੀਏ?
+app_template_wipe_continue	ਅੱਗੇ ਵਧੋ
+app_template_wipe_cancel	ਰੱਦ
+public_tmpl_help	ਇਸ ਦੁਕਾਨ ਲਈ ਐਪ ਦੇ ਨਾਲ ਆਏ ਏਜੰਸੀ ਪੈਕ। ਡਾਊਨਲੋਡ ਦੀ ਲੋੜ ਨਹੀਂ।
+business_day	«ਅੱਜ» ਕਦੋਂ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ?
+business_day_help	«ਦਿਨ ਬੰਦ ਤੱਕ» ਚੁਣਨ 'ਤੇ «ਰੋਜ਼ ਬਹੀ» ਅੱਧੀ ਰਾਤ ਤੋਂ ਬਾਅਦ ਵੀ ਚੱਲਦੀ ਰਹਿੰਦੀ ਹੈ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਦਿਨ ਬੰਦ ਦਰਜ ਨਹੀਂ ਕਰਦੇ। «ਕੈਲੰਡਰ ਦੀ ਅੱਧੀ ਰਾਤ» ਚੁਣਨ 'ਤੇ ਦਿਨ ਸਥਾਨਕ ਸਮੇਂ ਅਨੁਸਾਰ ਰਾਤ 12:00 ਵਜੇ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
+biz_day_until_close	ਦਿਨ ਬੰਦ ਤੱਕ
+biz_day_midnight	ਕੈਲੰਡਰ ਦੀ ਅੱਧੀ ਰਾਤ
+business_day_saved	ਕਾਰੋਬਾਰੀ ਦਿਨ ਸੇਵ ਹੋਇਆ
+report_day_lens	«ਅੱਜ» ਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਵੇਖੋ
+report_day_lens_help	ਸਿਰਫ਼ ਵੇਖਣ ਲਈ — ਇਸ ਨਾਲ ਇਹ ਨਹੀਂ ਬਦਲਦਾ ਕਿ «ਦਿਨ ਬੰਦ» ਕਦੋਂ «ਅੱਜ» ਨੂੰ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਕਰਦਾ ਹੈ। «ਦਿਨ ਬੰਦ ਅਨੁਸਾਰ» ਪਿਛਲੇ ਦਿਨ ਬੰਦ ਤੋਂ ਗਿਣਦਾ ਹੈ; «ਅੱਧੀ ਰਾਤ ਅਨੁਸਾਰ» ਸਥਾਨਕ ਸਮੇਂ ਅਨੁਸਾਰ ਰਾਤ 12:00 ਵਜੇ ਕੱਟਦਾ ਹੈ।
+report_lens_day_close	ਦਿਨ ਬੰਦ ਅਨੁਸਾਰ
+report_lens_midnight	ਅੱਧੀ ਰਾਤ ਅਨੁਸਾਰ
 trk_booked	ਬੁੱਕ ਹੋਇਆ
 trk_picked_up	ਪਿਕਅੱਪ ਹੋਇਆ
 trk_in_transit	ਰਸਤੇ ਵਿੱਚ

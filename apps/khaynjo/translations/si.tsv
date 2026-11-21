@@ -260,7 +260,7 @@ tables	කෑම මේස
 kitchen	කුස්සිය
 sales	විකුණුම්
 sales_refunds	විකුණුම් සහ ආපසු ගෙවීම්
-day_close	දවස කිට්ටුයි
+day_close	දවස වැසීම
 reports_expenses	බැංකු ලෙජරය සහ P&L
 nav_reports	වාර්තා
 nav_settings	සැකසීම්
@@ -384,12 +384,12 @@ app_template_need_internet	සැකිලි බාගත කිරීමට �
 app_template_import_selected	තෝරාගත් දේ ආයාත කරන්න
 app_template_check_code	කේතය පරීක්ෂා කරන්න
 app_template_import	ආයාත කරන්න
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	මෙම උපාංගයෙන් ආයාත කරන්න
+app_template_from_device_help	template.json ඇති ෆෝල්ඩරයක් තෝරන්න (shop_defaults.json තිබේ නම් එයත්).
+settings_app_tmpl_note	නැවත ආයාත කිරීමෙන් විකුණුම්, KOT සහ ලෙජර් හිස් වේ, පසුව පැකේජයේ සාප්පු සැකසීම් යෙදේ. මෙනුව පමණක් ඇති සැකිලි: «මෙනුව» → «අයිතම අච්චු».
+app_template_wipe_warn	මෙය පොත්වල වෙළඳ දත්ත (විකුණුම්, KOT, ලෙජර්) හිස් කර සැකිල්ලේ සාප්පු සැකසීම් යොදයි. මෙනුව සහ සැකසුම වෙනස් විය හැක. ඉදිරියට යන්නද?
+app_template_wipe_continue	දිගටම කරගෙන යන්න
+app_template_wipe_cancel	අවලංගු කරන්න
 currency	මුදල්
 backup	උපස්ථ
 use	භාවිතා කරන්න
@@ -550,22 +550,22 @@ new_party_clear	නව පාරිභෝගිකයා හෝ සැපයු�
 new_party_kind_supplier_ph	නව පාරිභෝගික හෝ සැපයුම්කරු වර්ගය (සැපයුම්කරු)
 next_country	ඊළඟ රට
 next_order	ඊළඟ ඇණවුම (පැහැදිලි මේසය)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	කෙටුම්පත්
+park_draft	කෙටුම්පතක් ලෙස තබන්න
+drafts_help	කවුන්ටරයේ ඔබ අතරමග නවතා තැබූ ඇණවුම් — «ගෙවීමක් ගන්න» වන තුරු මේවා පොත්වලට ඇතුළත් නොවේ. කාඩ්පතක් තට්ටු කළ විට එය «ආපනශාලා ඇණවුම» හි නැවත විවෘත වේ; «කෙටුම්පත ඉවත දමන්න» කෙටුම්පත ඉවත් කරයි. «දවස වැසීම» මේවා හිස් නොකරයි.
+drafts_park_nothing	තැබීමට කිසිවක් නැත — කරත්තයට අයිතම එක් කරන්න
+drafts_park_counter_only	«කෙටුම්පතක් ලෙස තබන්න» කවුන්ටර ඇණවුම් සඳහා පමණි — මේස ඇණවුමෙන් ඉවත් වන්න හෝ «කෑම ශාලාව» භාවිත කරන්න
+drafts_parked	«කෙටුම්පත්» හි තබන ලදී — කවුන්ටරය හිස්ය
+drafts_discard	කෙටුම්පත ඉවත දමන්න
+drafts_discarded	කෙටුම්පත ඉවත දමන ලදී
+drafts_gone	එම කෙටුම්පත දැන් ලැයිස්තුවේ නැත
+drafts_closed	එම කෙටුම්පතට දැනටමත් ගෙවා ඇත හෝ එය ඉවත දමා ඇත
+drafts_empty	තවම කෙටුම්පත් නැත. «කවුන්ටරය» හි කෑම එක් කර «කෙටුම්පතක් ලෙස තබන්න» තට්ටු කරන්න.
+drafts_card_kind	කෙටුම්පත
+drafts_card_no_lines	අයිතම නැත
+drafts_card_lines	අයිතම
+drafts_summary_fmt	විවෘත කෙටුම්පත් {n}
+drafts_cols_fmt	තීරු {n}
 note_gstin_ph	සටහන / GSTIN / ගිවිසුම් මතක් කිරීම
 notes_attach_party	සටහන් සහ ඇමුණුම් (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
 notes_attach_sale	සටහන් සහ ඇමුණුම් (තෝරාගත් විකිණීම)
@@ -588,15 +588,15 @@ print_open	මුද්‍රණය / විවෘත කරන්න
 reason_amend_ph	සංශෝධන / අවලංගු / ආපසු ගෙවීමට හේතුව
 reason_note_ph	හේතුව / සටහන (නාස්තිය, ගණන් කිරීම, ...)
 record_day_close	දවස කිට්ටුවෙන් ඉතිරි කරන්න
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«අද» නැවත ආරම්භ වන්නේ කවදාද?
+business_day_help	«දවස වසන තුරු» තේරූ විට, ඔබ දවස වසා දැමීම සටහන් කරන තුරු «දින ලෙජරය» මධ්‍යම රාත්‍රියෙන් පසුවත් දිගටම පවතී. «දින දර්ශන මධ්‍යම රාත්‍රිය» තේරූ විට, දවස දේශීය වේලාවෙන් පෙ.ව. 12:00 ට අවසන් වේ.
+biz_day_until_close	දවස වසන තුරු
+biz_day_midnight	දින දර්ශන මධ්‍යම රාත්‍රිය
+business_day_saved	ව්‍යාපාරික දිනය සුරකින ලදී
+report_day_lens	«අද» පෙන්වන ආකාරය
+report_day_lens_help	බැලීමට පමණි — «දවස වැසීම» විසින් «අද» නැවත ආරම්භ කරන වේලාව මෙයින් වෙනස් නොවේ. «දවස වසා දැමීම අනුව» අවසන් දවස වසා දැමීමේ සිට ගණන් කරයි; «මධ්‍යම රාත්‍රිය අනුව» දේශීය වේලාවෙන් පෙ.ව. 12:00 ට කපයි.
+report_lens_day_close	දවස වසා දැමීම අනුව
+report_lens_midnight	මධ්‍යම රාත්‍රිය අනුව
 refresh_from_shop	සාප්පුවෙන් නැවුම් කරන්න
 refund	ආපසු ගෙවීම
 remove_selected	තෝරාගත් ඉවත් කරන්න
@@ -864,7 +864,7 @@ find_printers	මුද්‍රණ යන්ත්‍ර සොයන්න
 printers_looking	බලමින්…
 saving_printer	මුද්‍රණ යන්ත්‍රය එක් කරමින්...
 cancelled	අවලංගු කළා
-cancelling	Cancellingâ¦
+cancelling	අවලංගු කරමින්…
 removing	ඉවත් කරමින්…
 removed	ඉවත් කළා
 updating_order	යාවත්කාලීන වෙමින්…

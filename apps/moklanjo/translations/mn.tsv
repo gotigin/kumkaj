@@ -3,27 +3,27 @@ app_tagline	Шуудангийн агентлагийн ном + захиалг�
 unlock	Түгжээ тайлах
 pin_hint	Эзэмшигчийн PIN 0000-оос эхэлнэ
 sell	Захиалга
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Самбар
+board	Самбар
+park_draft	Ноорог болгон хадгалах
+board_help	Нээлттэй ноорог («Устгах» эсвэл «Төлбөр авах»-г сонгох хүртэл хадгалагдана) болон өнөөдрийн бүртгэгдсэн борлуулалт. «Захиалга» дээр ажлын дундуур «Ноорог болгон хадгалах»-г товшино уу (дэвтэрт биш, энд хадгалагдана); үргэлжлүүлэхийн тулд ноорог дээр товшино уу.
+board_empty	Одоогоор карт алга.
+board_park_nothing	Хойшлуулах зүйл алга — хураамж эсвэл захиалгын мэдээлэл нэмнэ үү
+board_parked	«Самбар»-д хадгаллаа — ширээ чөлөөтэй
+board_draft	Ноорог
+board_booked	Захиалагдсан
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Ноорог
+board_filter_booked	Захиалагдсан
+board_cols_fmt	{n} багана
+board_summary_fmt	{total} карт · {drafts} ноорог · {booked} бүртгэгдсэн
+board_card_no_charges	Одоогоор хураамж алга
+board_card_charges	хураамж
+board_card_booked	Захиалга
+board_draft_gone	Энэ ноорог «Самбар» дээр байхаа больсон
+board_draft_closed	Энэ ноорог аль хэдийн дууссан эсвэл устгагдсан
+board_discard	Устгах
+board_discarded	Ноорог устгасан
 buy	Төлнө
 books	Өдрийн дэвтэр
 books_help	Өнөөдрийн байр суурь. Захиалга = илгээмж. Төлбөр = тээвэрлэгчийн төлбөр, зардал. Талууд = ачаа илгээгч ба тээвэрлэгчид.
@@ -220,7 +220,7 @@ snack_secs_save	Мэдэгдлийн хугацааг хадгалах
 snack_secs_saved	Мэдэгдлийн хугацаа хадгалагдлаа — {n} секунд
 snack_secs_bad	Секундыг тоогоор оруулна уу (3–60)
 cancelled	Цуцлагдсан
-cancelling	Cancellingâ¦
+cancelling	Цуцалж байна…
 cancel	Цуцлах
 opening_client	Клиент нээгдэж байна…
 preparing_desk	Ширээ бэлтгэж байна…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Харилцагчийн дэвтрийг CSV хуулах
 copy_receipt	Баримтыг хуулах
 copy_report	Тайланг хуулах
 counted_cash_ph	Шүүгээнд тоолсон бэлэн
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Ээлж хааж хуудас хэвлэх
+shift_handover	Ээлж хүлээлгэн өгөх
+shift_counted_ph	Хүлээлгэн өгөхөд тоолсон мөнгө
+shift_since	Энэ ээлж эхэлснээс
+expected_in_drawer	Шургуулганд хүлээгдэж буй
+lock_books_through_month	Дэвтрийг сарын эцэс хүртэл түгжих
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Энэ сарын эцэс хүртэл түгжих
+books_locked_none	Одоогоор ямар ч сар түгжигдээгүй байна
+books_locked_through	Түгжсэн хугацаа
 counter_agency_ph	Тоолуур / агентлагийн нэр (заавал биш)
 create_backup	Нөөц хуулбар үүсгэх
 day_close_summary	Өдөр хаалтын хураангуй
@@ -442,9 +442,9 @@ pay_ap_cash	AP бэлнээр төлех
 pay_ap_upi	AP UPI-аар төлех
 period_bill	Хугацаа
 period_bill_party	Хугацааны тооцоо (тал)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Нэхэмжлэх үүсгэх
+period_bill_generate_print	Үүсгэх, хэвлэх
+booking_bulk_preview	{ok} бэлэн байна · {bad} алдаатай
 pick_pod_photo	POD зургийг сонгоно уу
 print_awb_label	AWB шошгыг хэвлэх
 print_open	Хэвлэх / нээх
@@ -653,19 +653,19 @@ attachments_last_expense	Хавсралт (сүүлийн зарлага)
 credit_limit_heading	Зээлийн хязгаар (сонгосон / нэрлэсэн харилцагч)
 pay_selected_heading	Сонгосныг төлех (өр барагдуулах / урьдчилгаа авах)
 write_off_heading	Хасалт (төлбөргүй цэвэрлэх)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Залруулгын баримт
+adj_note_amount_ph	Дүн
+adj_note_reason_ph	Шалтгаан (заавал)
+adj_note_awb_ph	Холбоотой AWB (заавал биш)
+credit_note_btn	Кредит нот
+debit_note_btn	Дебит нот
+bill_later_heading	Дараа нэхэмжлэх (захиалгын дараах нэмэлт төлбөр)
+bill_later_amount_ph	Нэмэлт дүн
+bill_later_party_ph	Харилцагч (зөвхөн захиалгад байхгүй бол)
+bill_later_btn	Дараа нэхэмжлэх
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Сав баглаа боодол
+bill_later_extra_other	Бусад
 pay_ap_heading	Тэдэнд өртэйгээ төлех (AP)
 country_tax	Улс ба татвар
 extra_tills_heading	Нэмэлт касс
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — бараа ба эхлэх зээл нэмээ�
 onboard_template_tmpl	Хүсвэл газрыг нэрлээд яаж эхлэхээ сонгоно.
 tmpl_blurb	Шуудангийн ном, захиалгын ширээ: ачаа илгээгч, тээвэрлэгч, өдрийн ном, AWB.
 tmpl_how	Ширээн дээр илгээмж захиалах; Өнөөдрийн өдрийн ном; ханш, үдэшлэг, тайлангийн таб.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Дэлгүүрийн загварууд
+app_template_blurb	Эхлэх ажлын байраа сонгоно уу. «Одоогоор алгасах» нь харилцагчийн жагсаалтыг хоосон үлдээнэ.
+app_template_skip	Одоогоор алгасах
+app_template_status	Сервер бэлэн — загвар импортлох эсвэл алгасна уу
+app_template_importing	{title} хэрэглэж байна…
+app_template_public_hdr	Загварууд
+app_template_import_selected	Сонгосныг импортлох
+app_template_wipe_warn	Энэ нь дансны арилжааны өгөгдлийг (захиалга, дэвтэр) цэвэрлэж, загварын дэлгүүрийн тохиргоог хэрэгжүүлнэ. Та үргэлжлүүлэхийг хүсч байна уу?
+app_template_wipe_continue	Үргэлжлүүлэх
+app_template_wipe_cancel	Цуцлах
+public_tmpl_help	Апп-тай хамт ирдэг бэлэн агентлагийн загварууд. Татаж авах шаардлагагүй.
+business_day	«Өнөөдөр» хэзээ шинээр эхлэх вэ?
+business_day_help	«Өдөр хаах хүртэл»-г сонговол таныг өдрийн хаалтыг бүртгэх хүртэл «Өдрийн дэвтэр» шөнө дундаас хойш ч үргэлжилнэ. «Календарийн шөнө дунд»-г сонговол өдөр орон нутгийн цагаар 00:00 цагт дуусна.
+biz_day_until_close	Өдөр хаах хүртэл
+biz_day_midnight	Календарийн шөнө дунд
+business_day_saved	Ажлын өдрийн тохиргоог хадгалсан
+report_day_lens	«Өнөөдөр»-г ингэж харуулах
+report_day_lens_help	Зөвхөн харагдац — «Өдөр хаах» хэзээ «Өнөөдөр»-г шинээр эхлүүлэхийг өөрчлөхгүй. «Өдрийн хаалтаар» нь сүүлийн өдрийн хаалтаас тооцно; «Шөнө дундаар» нь орон нутгийн цагаар 00:00 цагт тасална.
+report_lens_day_close	Өдрийн хаалтаар
+report_lens_midnight	Шөнө дундаар
 trk_booked	Захиалагдсан
 trk_picked_up	Татаж авсан
 trk_in_transit	Дамжин явж байна

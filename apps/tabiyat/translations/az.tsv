@@ -365,15 +365,15 @@ print_open	Çap et / aç
 reason_amend_ph	Düzəliş / ləğv / qaytarma səbəbi
 reason_note_ph	Səbəb / qeyd (itki, sayım, …)
 record_day_close	Günün bağlanışını yaz
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Bu gün» nə vaxt sıfırlanır?
+business_day_help	«Günün bağlanışına qədər» seçildikdə, siz günün bağlanışını qeyd edənə qədər «Günün kitabı» gecə yarısından sonra da davam edir. «Təqvim gecə yarısı» seçildikdə gün yerli vaxtla saat 00:00-da kəsilir.
+biz_day_until_close	Günün bağlanışına qədər
+biz_day_midnight	Təqvim gecə yarısı
+business_day_saved	İş günü ayarı yadda saxlanıldı
+report_day_lens	«Bu gün» kimi göstərin
+report_day_lens_help	Yalnız görünüş — «Günün bağlanışı» əməliyyatının «Bu gün» bölməsini nə vaxt sıfırladığını dəyişmir. «Günün bağlanışına görə» son günün bağlanışından hesablayır; «Gecə yarısına görə» yerli vaxtla saat 00:00-da kəsir.
+report_lens_day_close	Günün bağlanışına görə
+report_lens_midnight	Gecə yarısına görə
 refresh_from_shop	Mağazadan yenilə
 refund	Qaytarma
 remove_selected	Seçilmişi sil
@@ -849,19 +849,19 @@ client_template_confirm	{title}-dan {d} maddələrini əlavə edirsiniz? Artıq 
 client_template_importing	{title} idxal olunur…
 client_template_done	{title}-dən olan hər bir maddə sənin mallarındadır.
 client_template_imported	{d} maddələr və {c} kateqoriyaları {title}-dan əlavə edildi
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Mağaza şablonları
+app_template_blurb	Başlanğıc kataloqu və mağaza parametrlərini seçin. «Hələlik keç» məhsul siyahısını boş qoyur.
+app_template_skip	Hələlik keç
+app_template_status	Server hazırdır — şablon idxal edin və ya keçin
+app_template_importing	{title} tətbiq olunur…
+app_template_import_selected	Seçiləni idxal et
+app_template_wipe_warn	Bu, hesablardakı ticarət məlumatlarını (satış, kitablar) təmizləyir və şablonun mağaza parametrlərini tətbiq edir. Davam etmək istəyirsiniz?
+app_template_wipe_continue	Davam et
+app_template_wipe_cancel	Ləğv
+app_template_from_device	Bu cihazdan idxal edin
+app_template_from_device_help	template.json (və istəyə görə, shop_defaults.json) olan qovluğu seçin.
+settings_app_tmpl_note	Tam mağaza paketləri: kataloq və mağaza parametrləri. Birini yenidən idxal etmək satışları və kitabları təmizləyir, sonra paketin mağaza parametrlərini tətbiq edir.
+app_tmpl_named	{name} mağaza şablonu
 cancel	Ləğv
 removing	Silinir…
 removed	Silindi

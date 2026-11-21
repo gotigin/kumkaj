@@ -384,12 +384,12 @@ app_template_need_internet	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ�
 app_template_import_selected	ಆಯ್ಕೆ ಮಲ್ತಿನವುನು ಆಮದು ಮಲ್ಪುಲೆ
 app_template_check_code	ಕೋಡ್ ತೂಲೆ
 app_template_import	ಆಮದು ಮಲ್ಪುಲೆ
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ಈ ಡಿವೈಸ್‍ಡ್ದ್ ಇಂಪೋರ್ಟ್ ಮಲ್ಪುಲೆ
+app_template_from_device_help	template.json ಉಪ್ಪುನ ಫೋಲ್ಡರ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ (shop_defaults.json ಉಂಡುಂಡು ಅವುಲಾ)।
+settings_app_tmpl_note	ಪಿರ ಇಂಪೋರ್ಟ್ ಮಲ್ತ್ಂಡ ಮಾರಾಟ, KOT ಬೊಕ್ಕ ಲೆಡ್ಜರ್ ಶುದ್ಧ ಆಪುಂಡು, ಬೊಕ್ಕ ಪ್ಯಾಕ್‍ದ ಅಂಗಡಿ ಸೆಟ್ಟಿಂಗ್ ಅನ್ವಯ ಆಪುಂಡು। ಮೆನು ಮಾತ್ರದ ಟೆಂಪ್ಲೇಟ್: «ಮೆನು» → «ಐಟಂ ಟೆಂಪ್ಲೇಟ್ಲು»।
+app_template_wipe_warn	ಉಂದು ಪುಸ್ತಕದ ವ್ಯಾಪಾರ ಡೇಟಾ (ಮಾರಾಟ, KOT, ಲೆಡ್ಜರ್) ಶುದ್ಧ ಮಲ್ಪುಂಡು ಬೊಕ್ಕ ಟೆಂಪ್ಲೇಟ್‍ದ ಅಂಗಡಿ ಸೆಟ್ಟಿಂಗ್ ಅನ್ವಯ ಮಲ್ಪುಂಡು। ಮೆನು ಬೊಕ್ಕ ಸೆಟಪ್ ಬದಲಾವೊಲಿ। ಮುಂದುವರೆಸವೆ?
+app_template_wipe_continue	ಮುಂದುವರಿಸಲೆ
+app_template_wipe_cancel	ರದ್ದು ಮಲ್ಪುಲೆ
 currency	ಕರೆನ್ಸಿ
 backup	ಬ್ಯಾಕಪ್
 use	ಬಳಕೆ ಮಲ್ಪುಲೆ
@@ -550,22 +550,22 @@ new_party_clear	ಪೊಸ ಗ್ರಾಹಕೆರ್ ಅತ್ತಂದೆ ಪ�
 new_party_kind_supplier_ph	ಪೊಸ ಗಿರಾಕಿ ಅತ್ತಂದೆ ಸರಬರಾಜುದಾರನ ಬಗೆ (ಸರಬರಾಜುದಾರ)
 next_country	ದುಂಬುದ ದೇಶ
 next_order	ದುಂಬುದ ಆದೇಶ (ತೆಚ್ಚಿನ ಮೇಜಿ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ಡ್ರಾಫ್ಟ್
+park_draft	ಡ್ರಾಫ್ಟ್ ಆದ್ ದೀಲೆ
+drafts_help	ಕೌಂಟರ್‍ದ ಅಪೂರ್ಣ ಆದೇಶೊಲು ಈರ್ ನಡುಟು ದೀತಿನವು — «ಪಾವತಿ ದೆತೊನ್ಲೆ» ಆಪಿನ ಮುಟ್ಟ ಪುಸ್ತಕೊಗು ಪೋಪುಜಿ। ಕಾರ್ಡ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ «ರೆಸ್ಟೋರೆಂಟ್ ಆದೇಶ»‍ಡ್ ಮುಂದುವರೆಸೆರೆ; «ಡ್ರಾಫ್ಟ್ ದೆತ್ತ್ ಪಾಡ್ಲೆ»‍ಡ್ದ್ ಡ್ರಾಫ್ಟ್ ದೆತ್ತ್ ಪಾಡುಂಡು। «ದಿನ ಮುಚ್ಚುಂಡು»‍ಡ್ದ್ ಉಂದು ಶುದ್ಧ ಆಪುಜಿ।
+drafts_park_nothing	ದೀಯೆರೆ ದಾಲಾ ಇಜ್ಜಿ — ಕಾರ್ಟ್‍ಗ್ ವಸ್ತುಲೆನ್ ಸೇರಾಲೆ
+drafts_park_counter_only	«ಡ್ರಾಫ್ಟ್ ಆದ್ ದೀಲೆ» ಕೌಂಟರ್ ಆದೇಶೊಗು ಮಾತ್ರ — ಮೇಜಿದ ಆದೇಶ ಬುಡ್ಲೆ ಅತ್ತಂಡ «ಊಟದ ಮಂದಿರ» ಉಪಯೋಗ ಮಲ್ಪುಲೆ
+drafts_parked	«ಡ್ರಾಫ್ಟ್»‍ಡ್ ದೀತೆರ್ — ಕೌಂಟರ್ ಖಾಲಿ
+drafts_discard	ಡ್ರಾಫ್ಟ್ ದೆತ್ತ್ ಪಾಡ್ಲೆ
+drafts_discarded	ಡ್ರಾಫ್ಟ್ ದೆತ್ತ್ ಪಾಡ್‍ಯೆರ್
+drafts_gone	ಆ ಡ್ರಾಫ್ಟ್ ಇತ್ತೆ ಪಟ್ಟಿಡ್ ಇಜ್ಜಿ
+drafts_closed	ಆ ಡ್ರಾಫ್ಟ್‍ದ ಪಾವತಿ ಆತ್ಂಡ್ ಅತ್ತಂಡ ದೆತ್ತ್ ಪಾಡ್‍ದೆರ್
+drafts_empty	ಇತ್ತೆ ಡ್ರಾಫ್ಟ್ ಇಜ್ಜಿ। «ಕೌಂಟರ್»‍ಡ್ ತೆನಸ್ ಸೇರಾಲೆ ಬೊಕ್ಕ «ಡ್ರಾಫ್ಟ್ ಆದ್ ದೀಲೆ» ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ।
+drafts_card_kind	ಡ್ರಾಫ್ಟ್
+drafts_card_no_lines	ವಸ್ತು ಇಜ್ಜಿ
+drafts_card_lines	ವಸ್ತುಲು
+drafts_summary_fmt	{n} ತೆರೆದಿನ ಡ್ರಾಫ್ಟ್
+drafts_cols_fmt	{n} ಕಾಲಂ
 note_gstin_ph	ಗಮನಿಸಿ / GSTIN / ಒಪ್ಪಂದದ ನೆನಪು
 notes_attach_party	ಟಿಪ್ಪಣಿಲು ಬೊಕ್ಕ ಲಗತ್ತುಲು (ಆಯ್ಕೆ ಮಲ್ತಿನ ಗ್ರಾಹಕೆರ್ ಅತ್ತಂದೆ ಪೂರೈಕೆದಾರೆರ್)
 notes_attach_sale	ಟಿಪ್ಪಣಿಲು ಬೊಕ್ಕ ಲಗತ್ತುಲು (ಆಯ್ಕೆ ಮಲ್ತಿನ ಮಾರಾಟ)
@@ -588,15 +588,15 @@ print_open	ಮುದ್ರಣ / ತೆರೆ
 reason_amend_ph	ತಿದ್ದುಪಡಿ / ರದ್ದು / ಮರುಪಾವತಿ ಮಲ್ಪುನ ಕಾರಣ
 reason_note_ph	ಕಾರಣ / ಟಿಪ್ಪಣಿ (ವ್ಯರ್ಥ, ಲೆಕ್ಕ, …)
 record_day_close	ದಾಖಲೆ ದಿನ ಮುಚ್ಚುನ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ಇನಿ» ಎಂಚಿನೆಪ್ಪೊ ಪೊಸತ್ ಸುರು ಆಪುಂಡು?
+business_day_help	«ದಿನ ಮುಚ್ಚುಂಡು ಮುಟ್ಟ» ಆಯ್ಕೆ ಮಲ್ತ್ಂಡ «ದಿನ ಪುಸ್ತಕ» ಮಧ್ಯರಾತ್ರಿದ ಬೊಕ್ಕಲಾ ನಡಪುಂಡು, ಈರ್ ದಿನ ಮುಚ್ಚುಂಡು ದಾಖಲೆ ಮಲ್ಪುನ ಮುಟ್ಟ। «ಕ್ಯಾಲೆಂಡರ್ ಮಧ್ಯರಾತ್ರಿ» ಆಯ್ಕೆ ಮಲ್ತ್ಂಡ ದಿನ ಸ್ಥಳೀಯ 12:00 ಟ್ಟ್ ಕತ್ತ್‍ಂಡು।
+biz_day_until_close	ದಿನ ಮುಚ್ಚುಂಡು ಮುಟ್ಟ
+biz_day_midnight	ಕ್ಯಾಲೆಂಡರ್ ಮಧ್ಯರಾತ್ರಿ
+business_day_saved	ವ್ಯಾಪಾರ ದಿನ ಸೇವ್ ಆಂಡ್
+report_day_lens	«ಇನಿ»‍ನ್ ಇಂಚ ತೂಲೆ
+report_day_lens_help	ತೂವೊಡು ಮಾತ್ರ — «ದಿನ ಮುಚ್ಚುಂಡು» ಎಂಚಿನೆಪ್ಪೊ «ಇನಿ» ಪೊಸತ್ ಸುರು ಮಲ್ಪುಂಡು ಪನ್ಪಿನೆನ್ ಬದಲಾವುಜಿ। «ದಿನ ಮುಚ್ಚುಂಡು ಲೆಕ್ಕೊಡು» ಕಡೆತ ದಿನ ಮುಚ್ಚುಂಡುಡ್ದ್ ಲೆಕ್ಕ ಮಲ್ಪುಂಡು; «ಮಧ್ಯರಾತ್ರಿ ಲೆಕ್ಕೊಡು» ಸ್ಥಳೀಯ 12:00 ಟ್ಟ್ ಕತ್ತ್‍ಂಡು।
+report_lens_day_close	ದಿನ ಮುಚ್ಚುಂಡು ಲೆಕ್ಕೊಡು
+report_lens_midnight	ಮಧ್ಯರಾತ್ರಿ ಲೆಕ್ಕೊಡು
 refresh_from_shop	ಅಂಗಡಿಡ್ದ್ ರಿಫ್ರೆಶ್ ಮಲ್ಪುಲೆ
 refund	ರಿಫಂಡ್
 remove_selected	ಆಯ್ಕೆ ಮಲ್ತಿನವುಲೆನ್ ತೆಗೆತ್ ಪಾಡ್ಲೆ
@@ -864,7 +864,7 @@ find_printers	ಮುದ್ರಕೊಲೆನ್ ತೂಲೆ
 printers_looking	ತೂವೊಂದುಲ್ಲೆ...
 saving_printer	ಮುದ್ರಕೊನು ಸೇರಾವೊಂದುಲ್ಲೆ...
 cancelled	ರದ್ದು ಮಲ್ತೆರ್
-cancelling	Cancellingâ¦
+cancelling	ರದ್ದು ಆವೊಂದುಂಡು…
 removing	ದೆಪ್ಪೊಂದುಂಡು…
 removed	ದೆಪ್ಪಾಯಿನ
 updating_order	ಅಪ್‌ಡೇಟ್ ಆವೊಂದುಂಡು…

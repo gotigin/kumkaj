@@ -365,15 +365,15 @@ print_open	Phrinta / vula
 reason_amend_ph	Isizathu sokuchibiyela / ukungasebenzi / ukubuyiselwa imali
 reason_note_ph	Isizathu / inothi (ukumosha, ukubala, ...)
 record_day_close	Londoloza usuku eduze
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Namuhla» iqala kabusha nini?
+business_day_help	Uma kukhethwe «Kuze kube ukuvalwa kosuku», «Incwadi yosuku» iyaqhubeka nangemva kwamabili kuze kube uqopha ukuvalwa kosuku. Uma kukhethwe «Phakathi kwamabili ngekhalenda», usuku lunqunywa ngo-00:00 ngesikhathi sendawo.
+biz_day_until_close	Kuze kube ukuvalwa kosuku
+biz_day_midnight	Phakathi kwamabili ngekhalenda
+business_day_saved	Usuku lomsebenzi lulondoloziwe
+report_day_lens	Bonisa «Namuhla» ngoku
+report_day_lens_help	Ukubuka kuphela — akushintshi ukuthi «Ukuvalwa kosuku» iyiqala nini kabusha «Namuhla». «Ngokuvalwa kosuku» ilandela ukuvalwa kosuku kokugcina; «Ngaphakathi kwamabili» inquma ngo-00:00 ngesikhathi sendawo.
+report_lens_day_close	Ngokuvalwa kosuku
+report_lens_midnight	Ngaphakathi kwamabili
 refresh_from_shop	Vuselela esitolo
 refund	Imbuyiselo
 remove_selected	Susa okukhethiwe
@@ -849,19 +849,19 @@ client_template_confirm	Engeza izinto ze-{d} ukusuka ku-{title}? Izinto osuvele 
 client_template_importing	Ingenisa {title}…
 client_template_done	Yonke into esuka ku-{title} isezintweni zakho.
 client_template_imported	Kwengezwe izinto ze-{d} kanye nezigaba ze-{c} ukusuka ku-{title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Izifanekiso zesitolo
+app_template_blurb	Khetha ikhathalogi yokuqala nezilungiselelo zesitolo. «Yeqa okwamanje» ishiya ishalofu lingenalutho.
+app_template_skip	Yeqa okwamanje
+app_template_status	Iseva ilungile — ngenisa isifanekiso, noma weqe
+app_template_importing	Ifaka {title}…
+app_template_import_selected	Ngenisa okukhethiwe
+app_template_wipe_warn	Lokhu kusula idatha yokuhweba ezincwadini (ukuthengisa, amaleja) bese kusebenzisa izilungiselelo zesitolo zesifanekiso. Qhubeka?
+app_template_wipe_continue	Qhubeka
+app_template_wipe_cancel	Khansela
+app_template_from_device	Ngenisa kusuka kule divayisi
+app_template_from_device_help	Khetha ifolda ene-template.json (kanye ne-shop_defaults.json uma ikhona).
+settings_app_tmpl_note	Amaphakethe esitolo aphelele: ikhathalogi nezilungiselelo zesitolo. Ukungenisa iphakethe futhi kusula ukuthengisa namaleja, bese kusebenzisa izilungiselelo zesitolo zephakethe.
+app_tmpl_named	Isifanekiso sesitolo {name}
 cancel	Khansela
 removing	Kuyasuswa…
 removed	Kususiwe

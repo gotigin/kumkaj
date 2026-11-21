@@ -3,27 +3,27 @@ app_tagline	Kurýrní knihy + rezervační pult. Zdarma offline.
 unlock	Odemknout
 pin_hint	Vlastník PIN začíná na 0000
 sell	Rezervace
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Nástěnka
+board	Nástěnka
+park_draft	Odložit koncept
+board_help	Otevřené koncepty (zůstávají, dokud nepoužijete «Zahodit» nebo «Přijměte platbu») a dnešní zaúčtované prodeje. V části «Rezervace» klepněte během práce na «Odložit koncept» (uloží se sem, ne do knih); klepnutím na koncept pokračujete.
+board_empty	Zatím žádné karty.
+board_park_nothing	Není co odložit — přidejte poplatky nebo údaje rezervace
+board_parked	Odloženo na «Nástěnka» — pracoviště je volné
+board_draft	Koncept
+board_booked	Zarezervováno
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Koncept
+board_filter_booked	Zarezervováno
+board_cols_fmt	{n} sl.
+board_summary_fmt	Karty: {total} · koncepty: {drafts} · zaúčtováno: {booked}
+board_card_no_charges	Zatím žádné poplatky
+board_card_charges	poplatky
+board_card_booked	Rezervace
+board_draft_gone	Tento koncept už na «Nástěnka» není
+board_draft_closed	Tento koncept už byl dokončen nebo zahozen
+board_discard	Zahodit
+board_discarded	Koncept zahozen
 buy	Vyplatit
 books	Denní kniha
 books_help	Dnešní pozice. Rezervace = zásilky. Vyplatit = účty a výdaje přepravce. Strany = odesílatelé & dopravci.
@@ -88,12 +88,12 @@ applied	Aplikováno
 note_ph	Poznámka (volitelné)
 rounded	ZAOKROUHLÉ
 split	Rozdělit
-counter	Počítadlo
+counter	Pult
 parcel	Balíček
 order	Objednávka
 sales	Rezervace
 sales_refunds	Rezervace a vrácení peněz
-day_close	Den blízko
+day_close	Uzávěrka dne
 reports_expenses	Bankovní knížka a výsledovky
 nav_reports	Zprávy
 nav_settings	Nastavení
@@ -220,7 +220,7 @@ snack_secs_save	Ušetřete čas upozornění
 snack_secs_saved	Uložený čas upozornění — {n} sekund
 snack_secs_bad	Zadejte sekundy jako číslo (3–60)
 cancelled	Zrušeno
-cancelling	Cancellingâ¦
+cancelling	Rušení…
 cancel	Zrušit
 opening_client	Otevírání klienta…
 preparing_desk	Příprava stolu…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopírovat knihu zákazníků CSV
 copy_receipt	Zkopírujte účtenku
 copy_report	Zkopírujte zprávu
 counted_cash_ph	Spočítaná hotovost v zásuvce
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Zavřete směnu a vytiskněte lístek
+shift_handover	Předání směny
+shift_counted_ph	Hotovost započítána při předání
+shift_since	Tento posun od r
+expected_in_drawer	Očekává se v zásuvce
+lock_books_through_month	Uzamknout knihy do konce měsíce
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Uzamknout do konce tohoto měsíce
+books_locked_none	Zatím není uzamčen žádný měsíc
+books_locked_through	Uzamčeno do
 counter_agency_ph	Název přepážky / agentury (volitelné)
 create_backup	Vytvořte zálohu
 day_close_summary	Závěr dne
@@ -442,9 +442,9 @@ pay_ap_cash	Zaplaťte AP v hotovosti
 pay_ap_upi	Zaplaťte AP UPI
 period_bill	Vyúčtování období
 period_bill_party	Periodický účet (večírek)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Vystavit účet
+period_bill_generate_print	Vystavit a vytisknout
+booking_bulk_preview	Připraveno: {ok} · chybné: {bad}
 pick_pod_photo	Vyberte fotku POD
 print_awb_label	Tisk štítku AWB
 print_open	Vytisknout / otevřít
@@ -653,19 +653,19 @@ attachments_last_expense	Přílohy (poslední výdaj)
 credit_limit_heading	Kreditní limit (vybraný zákazník nebo dodavatel)
 pay_selected_heading	Vybraná platba (vyrovnat dluh / vzít zálohu)
 write_off_heading	Odepsat (vymazat bez platby)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Opravné doklady
+adj_note_amount_ph	Částka
+adj_note_reason_ph	Důvod (vyžadováno)
+adj_note_awb_ph	Související AWB (volitelné)
+credit_note_btn	Dobropis
+debit_note_btn	Vrubopis
+bill_later_heading	Účtovat později (příplatek po rezervaci)
+bill_later_amount_ph	Částka navíc
+bill_later_party_ph	Zákazník nebo dodavatel (jen když ho rezervace nemá)
+bill_later_btn	Účtovat později
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Balení
+bill_later_extra_other	Ostatní
 pay_ap_heading	Zaplaťte, co jim dlužíme (AP)
 country_tax	Země a daně
 extra_tills_heading	Extra pokladny
@@ -777,26 +777,26 @@ onboard_book_tmpl	Rezervovat · {} — přidejte položky a úvodní kredit a po
 onboard_template_tmpl	Pokud chcete, pojmenujte místo a poté vyberte, jak začít.
 tmpl_blurb	Kurýrní knihy a rezervační pult: odesílatelé, dopravci, denní kniha, AWB.
 tmpl_how	Zarezervujte si balíky u stolu; Denní kniha pro dnešek; karty pro sazby, večírky, zprávy.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Šablony obchodu
+app_template_blurb	Vyberte výchozí pracoviště. «Zatím přeskočte» ponechá seznam zákazníků a dodavatelů prázdný.
+app_template_skip	Zatím přeskočte
+app_template_status	Server připraven — importujte šablonu, nebo přeskočte
+app_template_importing	Použití {title}…
+app_template_public_hdr	Šablony
+app_template_import_selected	Importovat vybrané
+app_template_wipe_warn	Tím se vymažou obchodní data v knihách (rezervace, účty) a použije se nastavení obchodu ze šablony. Pokračovat?
+app_template_wipe_continue	Pokračovat
+app_template_wipe_cancel	Zrušit
+public_tmpl_help	Přibalené balíčky pro agentury pro tento obchod. Není třeba nic stahovat.
+business_day	Kdy začíná «dnes» znovu?
+business_day_help	Při volbě «Do uzávěrky dne» pokračuje «Denní kniha» i po půlnoci, dokud nezaznamenáte uzávěrku dne. Při volbě «Kalendářní půlnoc» den končí v 00:00 místního času.
+biz_day_until_close	Do uzávěrky dne
+biz_day_midnight	Kalendářní půlnoc
+business_day_saved	Obchodní den uložen
+report_day_lens	Zobrazit «dnes» jako
+report_day_lens_help	Jen zobrazení — nemění, kdy «Uzávěrka dne» začne «dnes» znovu. «Podle uzávěrky dne» se řídí poslední uzávěrkou dne; «Podle půlnoci» končí den v 00:00 místního času.
+report_lens_day_close	Podle uzávěrky dne
+report_lens_midnight	Podle půlnoci
 trk_booked	Zarezervováno
 trk_picked_up	Sebráno
 trk_in_transit	V tranzitu

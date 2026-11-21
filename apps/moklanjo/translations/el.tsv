@@ -3,27 +3,27 @@ app_tagline	Βιβλία courier-πρακτορείο + γραφείο κρατ�
 unlock	Ξεκλείδωμα
 pin_hint	Το PIN ιδιοκτήτη ξεκινά ως 0000
 sell	Εγγραφή
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Πίνακας
+board	Πίνακας
+park_draft	Αποθήκευση ως πρόχειρο
+board_help	Ανοιχτά πρόχειρα (μένουν μέχρι να πατήσετε «Απόρριψη» ή «Είσπραξη») και οι σημερινές καταχωρισμένες πωλήσεις. Στην οθόνη «Εγγραφή», πατήστε «Αποθήκευση ως πρόχειρο» στη μέση της δουλειάς (αποθηκεύεται εδώ, όχι στα βιβλία)· πατήστε ένα πρόχειρο για να συνεχίσετε.
+board_empty	Δεν υπάρχουν ακόμα κάρτες.
+board_park_nothing	Τίποτα για αποθήκευση — προσθέστε χρεώσεις ή στοιχεία κράτησης
+board_parked	Αποθηκεύτηκε στον «Πίνακας» — το γραφείο είναι ελεύθερο
+board_draft	Πρόχειρο
+board_booked	Κράτηση
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Πρόχειρο
+board_filter_booked	Κράτηση
+board_cols_fmt	{n} στ.
+board_summary_fmt	{total} κάρτες · {drafts} πρόχειρα · {booked} καταχωρισμένα
+board_card_no_charges	Καμία χρέωση ακόμα
+board_card_charges	χρεώσεις
+board_card_booked	Εγγραφή
+board_draft_gone	Αυτό το πρόχειρο δεν είναι πια στον «Πίνακας»
+board_draft_closed	Αυτό το πρόχειρο έχει ήδη ολοκληρωθεί ή απορριφθεί
+board_discard	Απόρριψη
+board_discarded	Το πρόχειρο απορρίφθηκε
 buy	Ξοδεύω
 books	Ημερολόγιο ημέρας
 books_help	Η σημερινή θέση. Κράτηση = είσοδος δεμάτων. Πληρωμή = λογαριασμοί και έξοδα μεταφορέα. Μέρη = αποστολείς & μεταφορείς.
@@ -220,7 +220,7 @@ snack_secs_save	Αποθήκευση διάρκειας ειδοποίησης
 snack_secs_saved	Η διάρκεια ειδοποίησης αποθηκεύτηκε — {n} δευτερόλεπτα
 snack_secs_bad	Εισαγάγετε τα δευτερόλεπτα ως αριθμό (3–60)
 cancelled	Ακυρώθηκε
-cancelling	Cancellingâ¦
+cancelling	Ακύρωση…
 cancel	Ακύρωση
 opening_client	Άνοιγμα client…
 preparing_desk	Ετοιμασία γραφείου…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Αντιγραφή CSV καθολικού
 copy_receipt	Αντιγραφή απόδειξης
 copy_report	Αντιγραφή αναφοράς
 counted_cash_ph	Μετρημένα μετρητά στο συρτάρι
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Κλείσιμο βάρδιας και εκτύπωση δελτίου
+shift_handover	Παράδοση βάρδιας
+shift_counted_ph	Μετρητά που μετρήθηκαν στην παράδοση
+shift_since	Αυτή η βάρδια από
+expected_in_drawer	Αναμενόμενα στο συρτάρι
+lock_books_through_month	Κλείδωμα βιβλίων έως τον μήνα
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Κλείδωμα έως αυτόν τον μήνα
+books_locked_none	Κανένας κλειδωμένος μήνας ακόμα
+books_locked_through	Κλειδωμένα έως
 counter_agency_ph	Όνομα μετρητή/πρακτορείου (προαιρετικό)
 create_backup	Δημιουργία αντιγράφου ασφαλείας
 day_close_summary	Σύνοψη κλεισίματος ημέρας
@@ -442,9 +442,9 @@ pay_ap_cash	Πληρωμή AP μετρητοίς
 pay_ap_upi	Πληρωμή AP μέσω UPI
 period_bill	Λογαριασμός περιόδου
 period_bill_party	Λογαριασμός περιόδου (πάρτι)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Έκδοση λογαριασμού
+period_bill_generate_print	Έκδοση και εκτύπωση
+booking_bulk_preview	{ok} έτοιμα · {bad} με σφάλμα
 pick_pod_photo	Επιλέξτε φωτογραφία POD
 print_awb_label	Εκτύπωση ετικέτας AWB
 print_open	Εκτύπωση / άνοιγμα
@@ -653,19 +653,19 @@ attachments_last_expense	Συνημμένα (τελευταίο έξοδο)
 credit_limit_heading	Όριο πίστωσης (επιλεγμένος / ονομασμένος συναλλασσόμενος)
 pay_selected_heading	Πληρωμή επιλεγμένου (εξόφληση χρέους / λήψη προκαταβολής)
 write_off_heading	Διαγραφή (καθαρισμός χωρίς πληρωμή)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Διορθωτικά σημειώματα
+adj_note_amount_ph	Ποσό
+adj_note_reason_ph	Αιτία (υποχρεωτική)
+adj_note_awb_ph	Σχετικό AWB (προαιρετικό)
+credit_note_btn	Πιστωτικό σημείωμα
+debit_note_btn	Χρεωστικό σημείωμα
+bill_later_heading	Χρέωση αργότερα (επιπλέον μετά την κράτηση)
+bill_later_amount_ph	Επιπλέον ποσό
+bill_later_party_ph	Συναλλασσόμενος (μόνο αν η κράτηση δεν έχει)
+bill_later_btn	Χρέωση αργότερα
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Συσκευασία
+bill_later_extra_other	Αλλος
 pay_ap_heading	Πληρωμή όσων τους χρωστάμε (AP)
 country_tax	Χώρα και φόρος
 extra_tills_heading	Επιπλέον ταμεία
@@ -777,26 +777,26 @@ onboard_book_tmpl	Βιβλίο · {} — προσθέστε είδη και αρ
 onboard_template_tmpl	Ονομάστε τον χώρο αν θέλετε και διαλέξτε πώς να ξεκινήσετε.
 tmpl_blurb	Βιβλία ταχυμεταφορών και γραφείο κρατήσεων: αποστολείς, μεταφορείς, βιβλίο ημέρας, AWB.
 tmpl_how	Κάντε κράτηση για δέματα στο γραφείο. Βιβλίο ημέρας για σήμερα. καρτέλες για τιμές, πάρτι, αναφορές.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Πρότυπα καταστήματος
+app_template_blurb	Επιλέξτε ένα αρχικό γραφείο. Η επιλογή «Παράλειψη προς το παρόν» αφήνει κενούς τους συναλλασσόμενους.
+app_template_skip	Παράλειψη προς το παρόν
+app_template_status	Ο διακομιστής είναι έτοιμος — εισαγάγετε πρότυπο ή παραλείψτε
+app_template_importing	Εφαρμογή {title}…
+app_template_public_hdr	Πρότυπα
+app_template_import_selected	Εισαγωγή επιλεγμένου
+app_template_wipe_warn	Αυτό καθαρίζει τα δεδομένα συναλλαγών στα βιβλία (κρατήσεις, καρτέλες) και εφαρμόζει τις ρυθμίσεις μαγαζιού του προτύπου. Συνέχεια;
+app_template_wipe_continue	Συνέχεια
+app_template_wipe_cancel	Ακύρωση
+public_tmpl_help	Ενσωματωμένα πακέτα πρακτορείου για αυτό το μαγαζί. Δεν χρειάζεται λήψη.
+business_day	Πότε ξεκινά από την αρχή το «Σήμερα»;
+business_day_help	Με την επιλογή «Μέχρι το κλείσιμο ημέρας», το «Ημερολόγιο ημέρας» συνεχίζει μετά τα μεσάνυχτα μέχρι να καταχωρίσετε το κλείσιμο ημέρας. Με την επιλογή «Μεσάνυχτα ημερολογίου», η ημέρα κόβεται στις 00:00 τοπική ώρα.
+biz_day_until_close	Μέχρι το κλείσιμο ημέρας
+biz_day_midnight	Μεσάνυχτα ημερολογίου
+business_day_saved	Η εργάσιμη ημέρα αποθηκεύτηκε
+report_day_lens	Προβολή του «Σήμερα» ως
+report_day_lens_help	Μόνο προβολή — δεν αλλάζει το πότε η επιλογή «Κλείσιμο ημέρας» ξεκινά από την αρχή το «Σήμερα». Η επιλογή «Κατά το κλείσιμο ημέρας» ακολουθεί το τελευταίο κλείσιμο ημέρας· η επιλογή «Κατά τα μεσάνυχτα» κόβει στις 00:00 τοπική ώρα.
+report_lens_day_close	Κατά το κλείσιμο ημέρας
+report_lens_midnight	Κατά τα μεσάνυχτα
 trk_booked	Κράτηση
 trk_picked_up	Σήκωσε
 trk_in_transit	Κατά τη μεταφορά

@@ -365,15 +365,15 @@ print_open	Tulosta / avaa
 reason_amend_ph	Syy oikaisulle / mitätöinnille / hyvitykselle
 reason_note_ph	Syy / huomautus (hävikki, laskenta, …)
 record_day_close	Kirjaa päivän sulku
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Milloin «Tänään» alkaa alusta?
+business_day_help	Valinnalla «Päivän sulkuun asti» «Päiväkirja» jatkuu keskiyön yli, kunnes kirjaat päivän sulun. Valinnalla «Kalenterin keskiyö» päivä katkeaa klo 00.00 paikallista aikaa.
+biz_day_until_close	Päivän sulkuun asti
+biz_day_midnight	Kalenterin keskiyö
+business_day_saved	Liiketoimintapäivä tallennettu
+report_day_lens	Näytä «Tänään» muodossa
+report_day_lens_help	Vain näkymä — ei muuta sitä, milloin «Päivän sulku» aloittaa kohdan «Tänään» alusta. «Päivän sulun mukaan» laskee viimeisestä päivän sulusta; «Keskiyön mukaan» katkaisee klo 00.00 paikallista aikaa.
+report_lens_day_close	Päivän sulun mukaan
+report_lens_midnight	Keskiyön mukaan
 refresh_from_shop	Päivitä liikkeestä
 refund	Hyvitä
 remove_selected	Poista valittu
@@ -849,19 +849,19 @@ client_template_confirm	Lisätäänkö {d} tuotteita {title}:stä? Tuotteet, jot
 client_template_importing	Tuodaan {title}…
 client_template_done	Jokainen {title}:n tuote on tuotteissasi.
 client_template_imported	Lisätty {d}-tuotteet ja {c}-luokat {title}:stä
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Myymäläpohjat
+app_template_blurb	Valitse aloitusluettelo ja liikeasetukset. «Ohita toistaiseksi» jättää hyllyn tyhjäksi.
+app_template_skip	Ohita toistaiseksi
+app_template_status	Palvelin valmis — tuo pohja tai ohita
+app_template_importing	Käytetään {title}…
+app_template_import_selected	Tuo valittu
+app_template_wipe_warn	Tämä tyhjentää kirjanpidon kauppatiedot (myynnit, tilit) ja ottaa käyttöön mallin liikeasetukset. Jatketaanko?
+app_template_wipe_continue	Jatka
+app_template_wipe_cancel	Peru
+app_template_from_device	Tuo tästä laitteesta
+app_template_from_device_help	Valitse kansio, jossa on template.json (ja halutessasi shop_defaults.json).
+settings_app_tmpl_note	Täydet liikepaketit: tuoteluettelo ja liikeasetukset. Paketin tuominen uudelleen tyhjentää myynnit ja tilit ja ottaa sitten käyttöön paketin liikeasetukset.
+app_tmpl_named	Liikemalli {name}
 cancel	Peru
 removing	Poistetaan…
 removed	Poistettu

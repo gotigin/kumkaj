@@ -163,7 +163,7 @@ sidebar_disable_all	Wyłącz wszystko
 sidebar_order_saved	Zapisano zamówienie na pasku bocznym
 sidebar_visibility_saved	Zapisano widoczność paska bocznego
 sales	Sprzedaż
-day_close	Dzień blisko
+day_close	Zamknięcie dnia
 reports_expenses	Księga bankowa i RZiS
 nav_reports	Raporty
 nav_settings	Ustawienia
@@ -365,15 +365,15 @@ print_open	Wydrukuj / otwórz
 reason_amend_ph	Powód zmiany / unieważnienia / zwrotu pieniędzy
 reason_note_ph	Powód/uwaga (marnotrawstwo, liczba,…)
 record_day_close	Zapisz zamknięcie dnia
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kiedy «Dzisiaj» zaczyna się od nowa?
+business_day_help	Z opcją «Do zamknięcia dnia» «Dziennik dnia» trwa po północy, dopóki nie zapiszesz zamknięcia dnia. Z opcją «Północ kalendarzowa» dzień kończy się o 00:00 czasu lokalnego.
+biz_day_until_close	Do zamknięcia dnia
+biz_day_midnight	Północ kalendarzowa
+business_day_saved	Zapisano dzień roboczy
+report_day_lens	Pokaż «Dzisiaj» jako
+report_day_lens_help	Tylko widok — nie zmienia tego, kiedy «Zamknięcie dnia» zaczyna «Dzisiaj» od nowa. «Wg zamknięcia dnia» liczy od ostatniego zamknięcia dnia; «Wg północy» tnie o 00:00 czasu lokalnego.
+report_lens_day_close	Wg zamknięcia dnia
+report_lens_midnight	Wg północy
 refresh_from_shop	Odśwież ze sklepu
 refund	Zwrot pieniędzy
 remove_selected	Usuń wybrane
@@ -849,19 +849,19 @@ client_template_confirm	Dodać elementy {d} z {title}? Przedmioty, które już p
 client_template_importing	Importowanie {title}…
 client_template_done	Każdy przedmiot z {title} znajduje się na Twoich przedmiotach.
 client_template_imported	Dodano elementy {d} i kategorie {c} z {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Szablony sklepu
+app_template_blurb	Wybierz startowy katalog i ustawienia sklepu. «Pomiń na razie» zostawia półkę pustą.
+app_template_skip	Pomiń na razie
+app_template_status	Serwer gotowy — zaimportuj szablon lub pomiń
+app_template_importing	Stosowanie {title}…
+app_template_import_selected	Importuj wybrane
+app_template_wipe_warn	To wyczyści dane handlowe w księgach (sprzedaż, rozrachunki) i zastosuje ustawienia sklepu z szablonu. Kontynuować?
+app_template_wipe_continue	Kontynuuj
+app_template_wipe_cancel	Anuluj
+app_template_from_device	Importuj z tego urządzenia
+app_template_from_device_help	Wybierz folder zawierający template.json (i opcjonalnie shop_defaults.json).
+settings_app_tmpl_note	Pełne pakiety sklepu: katalog i ustawienia sklepu. Ponowny import pakietu czyści sprzedaż i rozrachunki, a potem stosuje ustawienia sklepu z pakietu.
+app_tmpl_named	Szablon sklepu {name}
 cancel	Anuluj
 removing	Usuwanie…
 removed	Usunięto

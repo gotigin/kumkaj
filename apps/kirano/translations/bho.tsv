@@ -353,15 +353,15 @@ print_open	छापीं / खोलीं
 reason_amend_ph	सुधार / रद्द / वापसी के कारन
 reason_note_ph	कारन / टिप्पणी (बरबादी, गिनती, …)
 record_day_close	दिन बंद दर्ज करीं
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«आज» कब नया शुरू होला?
+business_day_help	«दिन बंद तक» चुनला पर «रोज के बही» आधा रात के बादो चलत रहेला, जब तक रउआ दिन बंद दर्ज ना करीं। «कैलेंडर के आधा रात» चुनला पर दिन स्थानीय समय से रात 12:00 बजे कट जाला।
+biz_day_until_close	दिन बंद तक
+biz_day_midnight	कैलेंडर के आधा रात
+business_day_saved	कारोबारी दिन सहेजल गइल
+report_day_lens	«आज» के अइसे देखीं
+report_day_lens_help	खाली देखे खातिर — एह से ई ना बदलेला कि «दिन बंद» कब «आज» के नया शुरू करेला। «दिन बंद के हिसाब से» पिछला दिन बंद से गिनेला; «आधा रात के हिसाब से» स्थानीय समय से रात 12:00 बजे काटेला।
+report_lens_day_close	दिन बंद के हिसाब से
+report_lens_midnight	आधा रात के हिसाब से
 refresh_from_shop	दोकान से ताजा करीं
 refund	वापसी
 remove_selected	चुनल हटाईं
@@ -837,19 +837,19 @@ client_template_confirm	{title} से {d} सामान जोड़ीं? �
 client_template_importing	{title} आयात करत बानी…
 client_template_done	{title} के हर सामान रउरा सामान में बा।
 client_template_imported	{title} से {d} सामान आ {c} श्रेणी जोड़ल
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	दोकान टेम्पलेट
+app_template_blurb	शुरुआती कैटलॉग आ दोकान सेटिंग चुनीं। «अबहीं छोड़ीं» दबावे पर शेल्फ खाली रही।
+app_template_skip	अबहीं छोड़ीं
+app_template_status	सर्वर तइयार बा — टेम्पलेट आयात करीं, भा छोड़ दीं
+app_template_importing	{title} लगावत बानी…
+app_template_import_selected	चुनल आयात करीं
+app_template_wipe_warn	एह से बही के कारोबारी डेटा (बिक्री, खाता) साफ हो जाई आ टेम्पलेट के दोकान सेटिंग लागू होई। आगे बढ़ीं?
+app_template_wipe_continue	आगे बढ़ीं
+app_template_wipe_cancel	रद्द
+app_template_from_device	ई डिवाइस से आयात करीं
+app_template_from_device_help	उ फोल्डर चुनीं जेमें template.json होखे (shop_defaults.json होखे त उहो)।
+settings_app_tmpl_note	पूरा दोकान पैक: कैटलॉग आ दोकान सेटिंग। कवनो पैक के दोबारा आयात कइला पर बिक्री आ खाता साफ हो जाला, फेर पैक के दोकान सेटिंग लागू होला।
+app_tmpl_named	{name} दोकान टेम्पलेट
 cancel	रद्द
 removing	हटावल जा रहल बा…
 removed	हटा दिहल गइल

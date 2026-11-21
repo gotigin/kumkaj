@@ -3,27 +3,27 @@ app_tagline	Littattafan ma'ajin-aiki + tebur ɗin ajiya. Yana layi kyauta.
 unlock	Buɗe
 pin_hint	PIN na mamallaki yana farawa da 0000
 sell	Yin ajiya
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Allo
+board	Allo
+park_draft	Ajiye azaman daftarin aiki
+board_help	Ƙirar da ba a gama ba (ajiya har sai kun taɓa «Yi watsi da» ko «Karɓi biya») da tallace-tallacen da aka yi a yau. A kan «Yin ajiya», matsa «Ajiye azaman daftarin aiki» a tsakiyar aikinku (an ajiye shi a nan, ba a cikin asusun ba); matsa daftarin aiki don ci gaba da shi.
+board_empty	Babu katunan tukuna.
+board_park_nothing	Babu wani abu da za a adana azaman daftarin aiki - ƙara caji ko cikakkun bayanan yin rajista
+board_parked	Ajiye akan «Allo» - teburin babu kowa a yanzu
+board_draft	Daftari
+board_booked	An yi rajista
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Daftari
+board_filter_booked	An yi rajista
+board_cols_fmt	{n} ginshiƙai
+board_summary_fmt	{total} katunan · {drafts} daftarin aiki · {booked} an yi rajista
+board_card_no_charges	Ba a ƙara ƙarin kuɗi tukuna
+board_card_charges	kudade
+board_card_booked	Yin ajiya
+board_draft_gone	Wannan daftarin baya kan «Allo»
+board_draft_closed	An riga an gama ko share wannan daftarin
+board_discard	Yi watsi da
+board_discarded	An goge daftarin aiki
 buy	Biya
 books	Littafin yini
 books_help	Matsayin yau. Yin ajiya = fakiti a ciki. Biya = lissafin dillalai & kashe kuɗi. Ƙungiyoyi = masu aikawa & masu ɗaukar kaya.
@@ -220,7 +220,7 @@ snack_secs_save	Ajiye lokacin sanarwa
 snack_secs_saved	An ajiye lokacin sanarwa — daƙiƙoƙi {n}
 snack_secs_bad	Shigar da daƙiƙa a matsayin lamba (3-60)
 cancelled	An soke
-cancelling	Cancellingâ¦
+cancelling	Ana sokewa…
 cancel	Soke
 opening_client	Ana buɗe abokin haɗi…
 preparing_desk	Ana shirya tebur…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kwafi littafin jam'i CSV
 copy_receipt	Kwafi rasit
 copy_report	Kwafi rahoto
 counted_cash_ph	Tsabar kuɗin da aka ƙidaya a cikin akwati
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Rufe lokaci ka buga takarda
+shift_handover	Mika lokaci
+shift_counted_ph	Tsabar kuɗin da aka ƙidaya a lokacin mika lokaci
+shift_since	Wannan lokaci tun
+expected_in_drawer	Ana tsammani a akwati
+lock_books_through_month	Kulle asusun har zuwa karshen wata
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Kulle har zuwa karshen wannan watan
+books_locked_none	Babu wata da aka kulle tukuna
+books_locked_through	An kulle asusun har sai
 counter_agency_ph	Sunan mai ƙima / hukumar (na zaɓi)
 create_backup	Ƙirƙiri ajiyar madadin
 day_close_summary	Taƙaitaccen rufe yini
@@ -442,9 +442,9 @@ pay_ap_cash	Biya AP da tsabar kuɗi
 pay_ap_upi	Biya AP da UPI
 period_bill	lissafin lokaci
 period_bill_party	lissafin lokaci (jam'iyya)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Ƙirƙiri daftari
+period_bill_generate_print	Ƙirƙiri kuma buga
+booking_bulk_preview	{ok} shirye · {bad} tare da kurakurai
 pick_pod_photo	Zaɓi hoto POD
 print_awb_label	Buga alamar AWB
 print_open	Buga / buɗe
@@ -653,19 +653,19 @@ attachments_last_expense	Haɗe-haɗe (kuɗin fita na ƙarshe)
 credit_limit_heading	Iyakar bashi (jam'in da aka zaɓa / mai suna)
 pay_selected_heading	Biya wanda aka zaɓa (biya bashi / ɗauki ci gaba)
 write_off_heading	Soke (share ba tare da biya ba)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Bayanan daidaitawa
+adj_note_amount_ph	Adadin kuɗi
+adj_note_reason_ph	Dalili (dole)
+adj_note_awb_ph	AWB masu alaƙa (na zaɓi)
+credit_note_btn	Bayanan kula
+debit_note_btn	Bayanin zare kudi
+bill_later_heading	Caji daga baya (ƙarin cajin bayan yin ajiya)
+bill_later_amount_ph	Karin adadin
+bill_later_party_ph	Abokin ciniki (kawai idan ajiyar ba shi da kowa)
+bill_later_btn	Caji daga baya
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Marufi
+bill_later_extra_other	Sauran
 pay_ap_heading	Biya abin da muke binsu (AP)
 country_tax	Ƙasa da haraji
 extra_tills_heading	Ƙarin akwatunan kuɗi
@@ -777,26 +777,26 @@ onboard_book_tmpl	Littafi · {} — ƙara kayayyaki da bashi na farawa, sai ka A
 onboard_template_tmpl	Sanya sunan wurin idan kana so, sai ka zaɓi yadda za a fara.
 tmpl_blurb	Littattafai na Courier da tebur na ajiya: dillalai, masu ɗaukar kaya, littafin rana, AWB.
 tmpl_how	Rubutun littattafai a tebur; Littafin rana na yau; shafuka don rates, jam'iyyun, rahotanni.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Samfuran shago
+app_template_blurb	Zaɓi saitin farawa. «Tsallake yanzu» yana barin lissafin abokin ciniki fanko.
+app_template_skip	Tsallake yanzu
+app_template_status	Sabar a shirye — shigo da samfuri, ko tsallake
+app_template_importing	Ana amfani da {title}…
+app_template_public_hdr	Samfura
+app_template_import_selected	Shigo da zaɓaɓɓe
+app_template_wipe_warn	Wannan yana share bayanan ciniki a cikin asusu (littattafai, ledoji) kuma yana amfani da saitunan shagon samfuri. Kuna so ku ci gaba?
+app_template_wipe_continue	Ci gaba
+app_template_wipe_cancel	Soke
+public_tmpl_help	Samfuran hukumar da aka shirya waɗanda suka zo tare da ƙa'idar. Babu saukewa da ake bukata.
+business_day	Yaushe «Yau» zai sake saitawa?
+business_day_help	«Har zuwa Rufe yini» yana kiyaye «Littafin yini» yana wucewa tsakar dare, har sai kun yi rikodin ranar kusa. «Da tsakar dare» yana yanke da karfe 00:00 (tsakar dare).
+biz_day_until_close	Har zuwa Rufe yini
+biz_day_midnight	Da tsakar dare
+business_day_saved	An ajiye saitin ranar kasuwanci
+report_day_lens	Nuna «Yau» azaman
+report_day_lens_help	Wannan kawai yana canza ra'ayi - baya canzawa lokacin da «Rufe yini» ya sake saita «Yau». «A cewar Rufe yini» yana biye da ranar ƙarshe ta kusa; «Cewar tsakar dare» yana yanke da karfe 00:00 (tsakar dare) agogon gida.
+report_lens_day_close	A cewar Rufe yini
+report_lens_midnight	Cewar tsakar dare
 trk_booked	An yi rajista
 trk_picked_up	An dauka
 trk_in_transit	Na hanya

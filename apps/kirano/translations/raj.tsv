@@ -353,15 +353,15 @@ print_open	छापो/खोलो
 reason_amend_ph	संशोधन / शून्य / वापसी रो कारण
 reason_note_ph	कारण / नोट (बर्बादी, गिणती, ...)
 record_day_close	रिकॉर्ड दिन बंद
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«आज» कद नयो सरू व्है?
+business_day_help	«दिन बंद तांई» चुणण सूं «दिन री किताब» आधी रात पछै भी चालती रैवै, जद तांई थे दिन बंद दर्ज कोनी करो। «कैलेंडर री आधी रात» चुणण सूं दिन अठै रै टेम सूं रात 12:00 बज्यां कटै।
+biz_day_until_close	दिन बंद तांई
+biz_day_midnight	कैलेंडर री आधी रात
+business_day_saved	कारोबारी दिन सेव व्हैग्यो
+report_day_lens	«आज» नै इण तरै देखो
+report_day_lens_help	सिरफ देखण रै वास्तै — इण सूं ओ कोनी बदळै कै «दिन बंद» कद «आज» नै नयो सरू करै। «दिन बंद रै हिसाब सूं» लारलै दिन बंद सूं गिणै; «आधी रात रै हिसाब सूं» अठै रै टेम सूं रात 12:00 बज्यां कटै।
+report_lens_day_close	दिन बंद रै हिसाब सूं
+report_lens_midnight	आधी रात रै हिसाब सूं
 refresh_from_shop	दुकान सूं ताजा करो
 refund	रिफंड
 remove_selected	चुणीज्योड़ा नै हटाओ
@@ -837,19 +837,19 @@ client_template_confirm	{title} सूं {d} आइटम जोड़ो? थ�
 client_template_importing	{title} आयात कर रिया हां...
 client_template_done	{title} री हरेक चीज थारी चीजां माथै है।
 client_template_imported	{title} सूं {d} आइटम अर {c} श्रेणियां जोड़ी गई
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	दुकान टेम्पलेट
+app_template_blurb	सरूआती कैटलॉग अर दुकान सेटिंग्स चुणो। «अबार तांई छोड़ो» दबाण सूं शेल्फ खाली रैवैला।
+app_template_skip	अबार तांई छोड़ो
+app_template_status	सर्वर त्यार है — टेम्पलेट आयात करो, या छोड़ द्यो
+app_template_importing	{title} लगाणो...
+app_template_import_selected	चुण्योड़ो आयात करो
+app_template_wipe_warn	इण सूं बही रो कारोबारी डेटा (बिक्री, खाता) साफ व्है जावैला अर टेम्पलेट री दुकान सेटिंग्स लागू व्हैला। जारी राखां?
+app_template_wipe_continue	जारी राखो
+app_template_wipe_cancel	रद्द करो
+app_template_from_device	इण डिवाइस सूं आयात करो
+app_template_from_device_help	एड़ो फ़ोल्डर चुणो जिण मांय template.json है (shop_defaults.json व्है तो वो भी)।
+settings_app_tmpl_note	पूरा दुकान पैक: कैटलॉग अर दुकान सेटिंग्स। किणी पैक नै दुबारा आयात करण सूं बिक्री अर खाता साफ व्है जावै, फेर पैक री दुकान सेटिंग्स लागू व्है।
+app_tmpl_named	{name} दुकान टेम्पलेट
 cancel	रद्द करो
 removing	हटाय रिया हां…
 removed	हटा दियो

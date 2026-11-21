@@ -353,15 +353,15 @@ print_open	Stampa / tiftaħ
 reason_amend_ph	Raġuni għall-emenda / null / rifużjoni
 reason_note_ph	Raġuni / nota (ħela, għadd, ...)
 record_day_close	Irreġistra l-għeluq tal-ġurnata
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Meta jerġa' jibda «Illum»?
+business_day_help	B'«Sal-għeluq tal-ġurnata», «Ktieb tal-ġurnata» jibqa' għaddej wara nofsillejl sakemm tirreġistra l-għeluq tal-ġurnata. B'«Nofsillejl tal-kalendarju», il-ġurnata tinqata' f'00:00, ħin lokali.
+biz_day_until_close	Sal-għeluq tal-ġurnata
+biz_day_midnight	Nofsillejl tal-kalendarju
+business_day_saved	Issettjar tal-ġurnata tan-negozju salvat
+report_day_lens	Uri «Illum» bħala
+report_day_lens_help	Veduta biss — ma jbiddilx meta «Għeluq tal-ġurnata» jerġa' jibda «Illum». «Skont l-għeluq tal-ġurnata» isegwi l-aħħar għeluq tal-ġurnata; «Skont nofsillejl» jaqta' f'00:00, ħin lokali.
+report_lens_day_close	Skont l-għeluq tal-ġurnata
+report_lens_midnight	Skont nofsillejl
 refresh_from_shop	Aġġorna mill-ħanut
 refund	Rifużjoni
 remove_selected	Neħħi magħżula
@@ -837,19 +837,19 @@ client_template_confirm	Żid oġġetti {d} minn {title}? Oġġetti li diġà għ
 client_template_importing	Qed jitħalla {title}…
 client_template_done	Kull oġġett minn {title} jinsab fuq l-oġġetti tiegħek.
 client_template_imported	Oġġetti {d} miżjuda u kategoriji {c} minn {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Mudelli tal-ħanut
+app_template_blurb	Agħżel katalogu tal-bidu u settings tal-ħanut. «Aqbeż għalissa» iħalli l-ixkaffa vojta.
+app_template_skip	Aqbeż għalissa
+app_template_status	Is-server lest — importa mudell, jew aqbeż
+app_template_importing	Qed tapplika {title}...
+app_template_import_selected	Importa l-magħżul
+app_template_wipe_warn	Dan jikklerja d-dejta tal-kummerċ fil-kontijiet (bejgħ, kotba) u japplika s-settings tal-ħanut tal-mudell. Trid tkompli?
+app_template_wipe_continue	Kompli
+app_template_wipe_cancel	Ikkanċella
+app_template_from_device	Importa minn dan l-apparat
+app_template_from_device_help	Agħżel folder li fih template.json (u, b'għażla, shop_defaults.json).
+settings_app_tmpl_note	Pakketti sħaħ tal-ħanut: katalogu u settings tal-ħanut. L-importazzjoni ta' pakkett mill-ġdid tneħħi l-bejgħ u l-kotba, imbagħad tapplika s-settings tal-ħanut tal-pakkett.
+app_tmpl_named	Mudell tal-ħanut {name}
 cancel	Ikkanċella
 removing	Qed jitneħħa…
 removed	Imneħħi

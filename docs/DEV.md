@@ -830,6 +830,42 @@ and only a reader of the language can find them. Before writing a text for
 them (a button a sentence names must be quoted exactly as that pack shows
 it).
 
+**Fill of 2026-11-21 (Drafts, Board, business day, month lock, bill later,
+templates — 32 Khaynjo, 65 Moklanjo, 22 Kirano and 22 Tabiyat texts).** These
+rows were English in all 110 packs. Three of them held an *older* English, so
+the 2026-11-17 test (which compared with today's English) passed them; it now
+takes the text most packs hold and fails when more than three quarters hold
+the same wordy string, whatever `en()` says. What was learned:
+
+- **Free machine translation is not usable as it comes.** Sent as context
+  sentences, both engines still returned Counter as a meter or a counting
+  device and "charge later" as charging a battery (about thirty languages
+  each), "cuts at 12:00 am" as cutbacks at noon, "saved on Board" as saved on
+  a date, invented dates, and user accounts for books. So the rows were written by hand
+  wherever that was possible:
+  **84 languages by hand** (af ar as awa be bg bho bn brx bs ca cs da de doi
+  el es et fa fi fil fr gl gu he hi hne hr hu id it ja kn ko kok ks lt lv mag
+  mai mk ml mr ms ne nl no or pa pl pt qu raj ro ru rw sa sat sd si sk sl so
+  sq sr sv sw ta tcy te tg th tk tr trp uk ur uz vi xh yo zh zh-Hant zu);
+  **12 machine drafts with the wrong rows rewritten** (az cy eu ga ht hy is ka
+  kk ky mn mt); **14 machine drafts with checked corrections only** (am bo dv
+  gn ha ig kha km lo lus mg mni my ps). None of it has been read by a native
+  speaker. Least sure: the last 14, then brx ks trp rw yo zu xh so si doi kok
+  sa, and qu sat tcy (written by a second agent, not reviewed).
+- **A sentence names a button exactly as the pack shows it**, in «…» (「…」 in
+  ja, zh, zh-Hant), taken from the pack at fill time — so a label that changes
+  later needs these sentences refilled.
+- **Midnight is written 00:00** (or the language's own unambiguous form),
+  never a bare 12:00.
+- **Wrong-sense labels that were already in the packs** and that the new
+  sentences quote were corrected in the same pass (125 rows): Counter (be bg
+  bo cs et fil ga gn hu is kha mk mt pl qu sa sk sv am), Day close (be cs et
+  fil is ky lo mg mk ms pl si sk sr tk yo — "the day is near", "closed day"),
+  Order (be dv ig lo ps sr sv — "sequence", "law", "command"), Floor (af as
+  kn kok mr mt ps sv — "storey", "ground", "carpet"). The same packs hold
+  more of this in texts nobody has listed; the fix is a reader, not a script.
+- Khaynjo's Irish `hold_send_on` was double-encoded (`CoimeÃ¡dta`); fixed.
+
 **Adding a label / button / hint string**
 
 1. Add `"my_key" => "My label"` to `en()` in that app’s `locale.rs`.

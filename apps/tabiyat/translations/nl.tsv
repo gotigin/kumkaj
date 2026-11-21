@@ -365,15 +365,15 @@ print_open	Printen / openen
 reason_amend_ph	Reden voor wijzigen / annuleren / terugbetaling
 reason_note_ph	Reden / notitie (derving, telling, …)
 record_day_close	Dagsluiting boeken
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Wanneer begint «Vandaag» opnieuw?
+business_day_help	Met «Tot dagsafsluiting» loopt «Dagboek» door na middernacht, tot je de dagsafsluiting boekt. Met «Middernacht (kalender)» wordt de dag om 00:00 uur lokale tijd afgesloten.
+biz_day_until_close	Tot dagsafsluiting
+biz_day_midnight	Middernacht (kalender)
+business_day_saved	Werkdag opgeslagen
+report_day_lens	«Vandaag» bekijken als
+report_day_lens_help	Alleen weergave — verandert niet wanneer «Dagsafsluiting» «Vandaag» opnieuw laat beginnen. «Per dagsafsluiting» volgt de laatste dagsafsluiting; «Per middernacht» knipt om 00:00 uur lokale tijd.
+report_lens_day_close	Per dagsafsluiting
+report_lens_midnight	Per middernacht
 refresh_from_shop	Vernieuwen uit winkel
 refund	Terugbetaling
 remove_selected	Geselecteerde verwijderen
@@ -849,19 +849,19 @@ client_template_confirm	{d} artikelen uit {title} toevoegen? Artikelen die u al 
 client_template_importing	{title} wordt geïmporteerd…
 client_template_done	Elk artikel uit {title} staat bij uw artikelen.
 client_template_imported	{d} artikelen en {c} categorieën uit {title} toegevoegd
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Winkelsjablonen
+app_template_blurb	Kies een startcatalogus en winkelinstellingen. «Voorlopig overslaan» laat het schap leeg.
+app_template_skip	Voorlopig overslaan
+app_template_status	Server klaar — importeer een sjabloon, of sla over
+app_template_importing	Toepassen van {title}…
+app_template_import_selected	Selectie importeren
+app_template_wipe_warn	Dit wist de handelsgegevens in de boeken (verkopen, grootboeken) en past de winkelinstellingen van het sjabloon toe. Doorgaan?
+app_template_wipe_continue	Doorgaan
+app_template_wipe_cancel	Annuleren
+app_template_from_device	Importeren vanaf dit apparaat
+app_template_from_device_help	Kies een map met template.json (en eventueel shop_defaults.json).
+settings_app_tmpl_note	Volledige winkelpakketten: catalogus en winkelinstellingen. Een pakket opnieuw importeren wist verkopen en grootboeken en past daarna de winkelinstellingen van het pakket toe.
+app_tmpl_named	Winkelsjabloon {name}
 cancel	Annuleren
 removing	Verwijderen…
 removed	Verwijderd

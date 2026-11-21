@@ -3,27 +3,27 @@ app_tagline	Buku kurir + meja pengiriman. Gratis offline.
 unlock	Buka kunci
 pin_hint	PIN pemilik dimulai 0000
 sell	Booking
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Papan
+board	Papan
+park_draft	Tunda sebagai draf
+board_help	Draf terbuka (disimpan sampai Anda mengetuk «Buang» atau «Terima pembayaran») dan penjualan yang terdaftar hari ini. Di «Booking», ketuk «Tunda sebagai draf» di tengah pekerjaan (disimpan di sini, bukan di pembukuan); ketuk draf untuk melanjutkan.
+board_empty	Belum ada kartu.
+board_park_nothing	Tidak ada yang bisa ditunda — tambahkan biaya atau detail booking
+board_parked	Ditunda di «Papan» — meja kerja kosong
+board_draft	Draf
+board_booked	Terdaftar
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
+board_filter_draft	Draf
+board_filter_booked	Terdaftar
+board_cols_fmt	{n} kol
+board_summary_fmt	{total} kartu · {drafts} draf · {booked} terdaftar
+board_card_no_charges	Belum ada biaya
+board_card_charges	biaya
 board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_draft_gone	Draf itu sudah tidak ada di «Papan»
+board_draft_closed	Draf itu sudah selesai atau dibuang
+board_discard	Buang
+board_discarded	Draf dibuang
 buy	Bayar keluar
 books	Buku harian
 books_help	Posisi hari ini. Booking = paket masuk. Bayar keluar = tagihan kurir & biaya. Pihak = pengirim & kurir pengangkut.
@@ -220,7 +220,7 @@ snack_secs_save	Simpan waktu peringatan
 snack_secs_saved	Waktu peringatan disimpan — {n} detik
 snack_secs_bad	Masukkan detik sebagai angka (3–60)
 cancelled	Dibatalkan
-cancelling	Cancellingâ¦
+cancelling	Membatalkan…
 cancel	Batal
 opening_client	Membuka klien…
 preparing_desk	Mempersiapkan meja…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Salin CSV buku pihak
 copy_receipt	Salin struk
 copy_report	Salin laporan
 counted_cash_ph	Tunai terhitung di laci
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Tutup shift dan cetak slip
+shift_handover	Serah terima shift
+shift_counted_ph	Kas yang dihitung saat serah terima
+shift_since	Shift ini sejak
+expected_in_drawer	Seharusnya di laci
+lock_books_through_month	Kunci pembukuan sampai bulan
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Kunci sampai bulan ini
+books_locked_none	Belum ada bulan yang dikunci
+books_locked_through	Dikunci sampai
 counter_agency_ph	Nama konter / agen (opsional)
 create_backup	Buat cadangan
 day_close_summary	Ringkasan tutup hari
@@ -442,9 +442,9 @@ pay_ap_cash	Bayar AP tunai
 pay_ap_upi	Bayar AP UPI
 period_bill	Tagihan periode
 period_bill_party	Tagihan periode (pihak)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Buat tagihan
+period_bill_generate_print	Buat & cetak
+booking_bulk_preview	{ok} siap · {bad} bermasalah
 pick_pod_photo	Pilih foto POD
 print_awb_label	Cetak label AWB
 print_open	Cetak / buka
@@ -653,19 +653,19 @@ attachments_last_expense	Lampiran (biaya terakhir)
 credit_limit_heading	Batas kredit (pihak terpilih / bernama)
 pay_selected_heading	Bayar terpilih (lunasi utang / ambil muka)
 write_off_heading	Hapuskan (selesaikan tanpa bayar)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Nota penyesuaian
+adj_note_amount_ph	Jumlah
+adj_note_reason_ph	Alasan (wajib)
+adj_note_awb_ph	AWB terkait (opsional)
+credit_note_btn	Nota kredit
+debit_note_btn	Nota debit
+bill_later_heading	Tagih nanti (biaya tambahan setelah booking)
+bill_later_amount_ph	Jumlah tambahan
+bill_later_party_ph	Pihak (hanya jika booking belum punya)
+bill_later_btn	Tagih nanti
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Pengemasan
+bill_later_extra_other	Lainnya
 pay_ap_heading	Bayar yang kita utang ke mereka (AP)
 country_tax	Negara & pajak
 extra_tills_heading	Kasir tambahan
@@ -777,26 +777,26 @@ onboard_book_tmpl	Buku · {} — tambahkan item dan kredit awal, lalu ketuk Sele
 onboard_template_tmpl	Beri nama tempat jika mau, lalu pilih cara memulai.
 tmpl_blurb	Pembukuan kurir dan meja pengiriman: pengirim, pengangkut, buku harian, AWB.
 tmpl_how	Catat paket di meja; buku harian untuk hari ini; tab untuk tarif, pihak, laporan.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Templat toko
+app_template_blurb	Pilih meja kerja awal. «Lewati untuk saat ini» membiarkan daftar pihak kosong.
+app_template_skip	Lewati untuk saat ini
+app_template_status	Server siap — impor templat, atau lewati
+app_template_importing	Menerapkan {title}…
+app_template_public_hdr	Templat
+app_template_import_selected	Impor yang dipilih
+app_template_wipe_warn	Ini menghapus data transaksi di pembukuan (booking, buku besar) dan menerapkan pengaturan toko dari templat. Lanjut?
+app_template_wipe_continue	Lanjut
+app_template_wipe_cancel	Batal
+public_tmpl_help	Paket agen bawaan aplikasi untuk toko ini. Tidak perlu mengunduh.
+business_day	Kapan «Hari ini» dimulai ulang?
+business_day_help	Dengan «Sampai tutup hari», «Buku harian» terus berjalan melewati tengah malam sampai Anda mencatat tutup hari. Dengan «Tengah malam kalender», hari dipotong pukul 00.00 waktu setempat.
+biz_day_until_close	Sampai tutup hari
+biz_day_midnight	Tengah malam kalender
+business_day_saved	Hari kerja disimpan
+report_day_lens	Lihat «Hari ini» menurut
+report_day_lens_help	Hanya tampilan — tidak mengubah kapan «Tutup hari» memulai ulang «Hari ini». «Menurut tutup hari» mengikuti tutup hari terakhir; «Menurut tengah malam» memotong pukul 00.00 waktu setempat.
+report_lens_day_close	Menurut tutup hari
+report_lens_midnight	Menurut tengah malam
 trk_booked	Terdaftar
 trk_picked_up	Sudah dijemput
 trk_in_transit	Dalam perjalanan

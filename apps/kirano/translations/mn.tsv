@@ -353,15 +353,15 @@ print_open	Хэвлэх / нээх
 reason_amend_ph	Засах / хүчингүй болгох / буцаах шалтгаан
 reason_note_ph	Шалтгаан / тэмдэглэл (хорогдол, тооллого, …)
 record_day_close	Өдөр хаалтыг бүртгэх
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Өнөөдөр» хэзээ шинээр эхлэх вэ?
+business_day_help	«Өдөр хаах хүртэл»-г сонговол таныг өдрийн хаалтыг бүртгэх хүртэл «Өдрийн дэвтэр» шөнө дундаас хойш ч үргэлжилнэ. «Календарийн шөнө дунд»-г сонговол өдөр орон нутгийн цагаар 00:00 цагт дуусна.
+biz_day_until_close	Өдөр хаах хүртэл
+biz_day_midnight	Календарийн шөнө дунд
+business_day_saved	Ажлын өдрийн тохиргоог хадгалсан
+report_day_lens	«Өнөөдөр»-г ингэж харуулах
+report_day_lens_help	Зөвхөн харагдац — «Өдөр хаах» хэзээ «Өнөөдөр»-г шинээр эхлүүлэхийг өөрчлөхгүй. «Өдрийн хаалтаар» нь сүүлийн өдрийн хаалтаас тооцно; «Шөнө дундаар» нь орон нутгийн цагаар 00:00 цагт тасална.
+report_lens_day_close	Өдрийн хаалтаар
+report_lens_midnight	Шөнө дундаар
 refresh_from_shop	Дэлгүүрээс шинэчлэх
 refund	Буцаалт
 remove_selected	Сонгосныг хасах
@@ -837,19 +837,19 @@ client_template_confirm	{title}-с {d} зүйлсийг нэмэх үү? Тан�
 client_template_importing	{title} импортлож байна…
 client_template_done	{title}-н бүх зүйл таны зүйлс дээр байна.
 client_template_imported	{title}-ээс {d} зүйлс болон {c} ангиллыг нэмсэн
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Дэлгүүрийн загварууд
+app_template_blurb	Эхлэх каталог болон дэлгүүрийн тохиргоог сонгоно уу. «Одоогоор алгасах» нь тавиурыг хоосон үлдээнэ.
+app_template_skip	Одоогоор алгасах
+app_template_status	Сервер бэлэн — загвар импортлох эсвэл алгасна уу
+app_template_importing	{title} хэрэглэж байна…
+app_template_import_selected	Сонгосныг импортлох
+app_template_wipe_warn	Энэ нь дансны арилжааны өгөгдлийг (борлуулалт, дэвтэр) цэвэрлэж, загварын дэлгүүрийн тохиргоог ашиглана. Та үргэлжлүүлэхийг хүсч байна уу?
+app_template_wipe_continue	Үргэлжлүүлэх
+app_template_wipe_cancel	Цуцлах
+app_template_from_device	Энэ төхөөрөмжөөс импортлох
+app_template_from_device_help	template.json (мөн сонголтоор shop_defaults.json) агуулсан фолдерыг сонгоно уу.
+settings_app_tmpl_note	Дэлгүүрийн бүрэн багцууд: каталог, дэлгүүрийн тохиргоо. Багцыг дахин импортловол борлуулалт болон дэвтэр арилж, дараа нь багцын дэлгүүрийн тохиргоог хэрэгжүүлнэ.
+app_tmpl_named	{name} дэлгүүрийн загвар
 cancel	Цуцлах
 removing	Хасаж байна…
 removed	Хасагдлаа

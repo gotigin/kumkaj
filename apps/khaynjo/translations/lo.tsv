@@ -255,12 +255,12 @@ amounts_show	ສະແດງ
 counter	ເຄົາເຕີ
 dine_in	ຮັບປະທານອາຫານ
 takeaway	ກັບບ້ານ
-order	ຮ້ານອາຫານຕາມສັ່ງ
+order	ອໍເດີ
 tables	ໂຕະກິນເຂົ້າ
 kitchen	ເຮືອນຄົວ
 sales	ການຂາຍ
 sales_refunds	ການຂາຍ & ການຄືນເງິນ
-day_close	ມື້ປິດ
+day_close	ປິດມື້
 reports_expenses	ປຶ້ມທະນາຄານ & P&L
 nav_reports	ບົດລາຍງານ
 nav_settings	ການຕັ້ງຄ່າ
@@ -384,12 +384,12 @@ app_template_need_internet	ຕ້ອງການອິນເຕີເນັດ�
 app_template_import_selected	ນຳເຂົ້າອັນທີ່ເລືອກ
 app_template_check_code	ກວດລະຫັດ
 app_template_import	ນຳເຂົ້າ
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ນຳເຂົ້າຈາກອຸປະກອນນີ້
+app_template_from_device_help	ເລືອກໂຟນເດີທີ່ມີ template.json (ແລະ, ທາງເລືອກ, shop_defaults.json).
+settings_app_tmpl_note	ການນໍາເຂົ້າອີກເທື່ອຫນຶ່ງຈະລຶບລ້າງການຂາຍ, KOT ແລະບັນຊີລາຍການ, ຈາກນັ້ນໃຊ້ການຕັ້ງຄ່າຮ້ານຄ້າຂອງແມ່ແບບ. ແມ່ແບບທີ່ມີພຽງແຕ່ເມນູ: «ເມນູ» → «ແມ່ແບບລາຍການ».
+app_template_wipe_warn	ນີ້ຈະເປັນການລຶບລ້າງຂໍ້ມູນການຊື້ຂາຍໃນບັນຊີ (ການຂາຍ, KOT, ບັນຊີລາຍການ) ແລະນຳໃຊ້ການຕັ້ງຄ່າຮ້ານຄ້າຂອງແມ່ແບບ. ເມນູແລະການຕັ້ງຄ່າອາດຈະມີການປ່ຽນແປງ. ທ່ານຕ້ອງການສືບຕໍ່ບໍ?
+app_template_wipe_continue	ສືບຕໍ່
+app_template_wipe_cancel	ຍົກເລີກ
 currency	ສະກຸນເງິນ
 backup	ສຳຮອງ
 use	ໃຊ້
@@ -550,22 +550,22 @@ new_party_clear	ລູກຄ້າໃໝ່ ຫຼືຜູ້ສະໜອງ (�
 new_party_kind_supplier_ph	ລູກຄ້າໃໝ່ ຫຼືຜູ້ສະໜອງປະເພດ (ຜູ້ສະໜອງ)
 next_country	ປະເທດຕໍ່ໄປ
 next_order	ຄໍາສັ່ງຕໍ່ໄປ (ໂຕະສະອາດ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ສະບັບຮ່າງ
+park_draft	ບັນທຶກເປັນສະບັບຮ່າງ
+drafts_help	ເຫຼົ່ານີ້ແມ່ນຄໍາສັ່ງທີ່ຍັງບໍ່ທັນສໍາເລັດຈາກເຄົາເຕີທີ່ທ່ານຕັ້ງໄວ້. ພວກມັນບໍ່ໄດ້ຖືກປ້ອນເຂົ້າໃນບັນຊີຈົນກວ່າທ່ານຈະແຕະ «ເອົາການຈ່າຍເງິນ». ແຕະໃສ່ບັດເພື່ອສືບຕໍ່ມັນໃນ «ອໍເດີ»; «ລຶບສະບັບຮ່າງ» ລຶບສະບັບຮ່າງ. «ປິດມື້» ບໍ່ລຶບລ້າງພວກມັນ.
+drafts_park_nothing	ບໍ່ມີຫຍັງທີ່ຈະບັນທຶກເປັນສະບັບຮ່າງ — ເພີ່ມລາຍການໃສ່ກະຕ່າ
+drafts_park_counter_only	«ບັນທຶກເປັນສະບັບຮ່າງ» ແມ່ນ​ພຽງ​ແຕ່​ສໍາ​ລັບ​ຄໍາ​ສັ່ງ​ທີ່​ໄດ້​ຮັບ​ທີ່​ເຄົາ​ເຕີ — ອອກ​ຈາກ​ຄໍາ​ສັ່ງ​ຂອງ​ຕາ​ຕະ​ລາງ​, ຫຼື​ນໍາ​ໃຊ້ «ຫ້ອງຮັບປະທານອາຫານ»
+drafts_parked	ບັນທຶກໃນ «ສະບັບຮ່າງ» — ເຄົາເຕີຫວ່າງເປົ່າຕອນນີ້
+drafts_discard	ລຶບສະບັບຮ່າງ
+drafts_discarded	ລຶບຮ່າງແລ້ວ
+drafts_gone	ສະບັບຮ່າງນັ້ນບໍ່ໄດ້ຢູ່ໃນບັນຊີລາຍຊື່ອີກຕໍ່ໄປ
+drafts_closed	ສະບັບຮ່າງນັ້ນຖືກຈ່າຍ ຫຼືລຶບໄປແລ້ວ
+drafts_empty	ບໍ່ມີສະບັບຮ່າງເທື່ອ. ໃນ «ເຄົາເຕີ», ເພີ່ມຖ້ວຍ ແລະແຕະ «ບັນທຶກເປັນສະບັບຮ່າງ».
+drafts_card_kind	ສະບັບຮ່າງ
+drafts_card_no_lines	ບໍ່ມີລາຍການ
+drafts_card_lines	ລາຍການ
+drafts_summary_fmt	{n} ສະບັບຮ່າງເປີດ
+drafts_cols_fmt	{n} ຖັນ
 note_gstin_ph	ໝາຍເຫດ / GSTIN / ການແຈ້ງເຕືອນຂໍ້ຕົກລົງ
 notes_attach_party	ບັນທຶກ ແລະໄຟລ໌ແນບ (ລູກຄ້າເລືອກ ຫຼືຜູ້ສະໜອງ)
 notes_attach_sale	ບັນທຶກ ແລະໄຟລ໌ແນບ (ຂາຍທີ່ເລືອກ)
@@ -588,15 +588,15 @@ print_open	ພິມ / ເປີດ
 reason_amend_ph	ເຫດຜົນສໍາລັບການດັດແກ້ / void / refund
 reason_note_ph	ເຫດຜົນ / ຫມາຍເຫດ (ເສຍ, ນັບ, ... )
 record_day_close	ບັນທຶກມື້ປິດ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ມື້ນີ້» ຣີເຊັດເມື່ອໃດ?
+business_day_help	«ຈົນຮອດ ປິດມື້» ສືບຕໍ່ແລ່ນ «ປຶ້ມມື້» ເວລາທ່ຽງຄືນ, ຈົນກວ່າທ່ານຈະບັນທຶກມື້ປິດ. «ໃນເວລາທ່ຽງຄືນ» ຕັດເວລາ 00:00 ໂມງຕາມເວລາທ້ອງຖິ່ນ.
+biz_day_until_close	ຈົນຮອດ ປິດມື້
+biz_day_midnight	ໃນເວລາທ່ຽງຄືນ
+business_day_saved	ບັນທຶກການຕັ້ງຄ່າມື້ເຮັດວຽກແລ້ວ
+report_day_lens	ສະແດງ «ມື້ນີ້» ເປັນ
+report_day_lens_help	ອັນນີ້ພຽງແຕ່ປ່ຽນມຸມມອງເທົ່ານັ້ນ — ມັນບໍ່ປ່ຽນແປງເມື່ອ «ປິດມື້» ຣີເຊັດ «ມື້ນີ້». «ອີງຕາມ ປິດມື້» ຕິດຕາມມື້ສຸດທ້າຍປິດ; «ອີງຕາມເວລາທ່ຽງຄືນ» ຕັດເວລາ 00:00 ໂມງຕາມເວລາທ້ອງຖິ່ນ.
+report_lens_day_close	ອີງຕາມ ປິດມື້
+report_lens_midnight	ອີງຕາມເວລາທ່ຽງຄືນ
 refresh_from_shop	ໂຫຼດຂໍ້ມູນໃໝ່ຈາກຮ້ານຄ້າ
 refund	ເງິນຄືນ
 remove_selected	ລຶບທີ່ເລືອກອອກ
@@ -864,7 +864,7 @@ find_printers	ຊອກຫາເຄື່ອງພິມ
 printers_looking	ກຳລັງຊອກຫາ...
 saving_printer	ກຳລັງເພີ່ມເຄື່ອງພິມ...
 cancelled	ຍົກເລີກ
-cancelling	Cancellingâ¦
+cancelling	ກຳລັງຍົກເລີກ…
 removing	ກຳລັງລຶບອອກ…
 removed	ລຶບອອກແລ້ວ
 updating_order	ກຳລັງອັບເດດ…

@@ -172,7 +172,7 @@ kot_station_none	Níl aon stáisiúin chistine ann go fóill — cuir ceann leis
 pos_tab_items	Míreanna curtha leis
 pos_tab_payment	Íocaíocht
 hold_send	Coinnigh
-hold_send_on	CoimeÃ¡dta
+hold_send_on	Coimeádta
 hold_send_meta	Ar siúl — ní seo KOT
 station_remove	Bain stáisiún
 station_remove_ph	Tapáil stáisiún sa liosta chun é a bhaint
@@ -252,7 +252,7 @@ sidebar_order_saved	Ordú barra taobh sábháilte
 sidebar_visibility_saved	Infheictheacht na taobhbhair shábháilte
 amounts_hide	Folaigh
 amounts_show	Taispeáin
-counter	Gcuntar
+counter	Cuntar
 dine_in	Ithe istigh
 takeaway	Beir leat
 order	Ordú
@@ -384,12 +384,12 @@ app_template_need_internet	Teastaíonn an t-idirlíon chun teimpléid a íoslód
 app_template_import_selected	Iompórtáil an rogha
 app_template_check_code	Seiceáil an cód
 app_template_import	Iompórtáil
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Iompórtáil ón ngléas seo
+app_template_from_device_help	Roghnaigh fillteán ina bhfuil template.json (agus, de rogha, shop_defaults.json).
+settings_app_tmpl_note	Má dhéantar iompórtáil arís, glantar díolacháin, KOT agus mórleabhair, ansin cuirtear socruithe siopa an teimpléid i bhfeidhm. Teimpléid gan ach roghchlár: «Biachlár» → «Teimpléid earraí».
+app_template_wipe_warn	Glanann sé seo na sonraí trádála sna cuntais (díolacháin, KOT, mórleabhair) agus cuireann sé socruithe siopa an teimpléid i bhfeidhm. Seans go n-athróidh an roghchlár agus an socrú. Ar mhaith leat leanúint ar aghaidh?
+app_template_wipe_continue	Lean ar aghaidh
+app_template_wipe_cancel	Cealaigh
 currency	Airgeadra
 backup	Cúltaca
 use	Bain úsáid as
@@ -550,22 +550,22 @@ new_party_clear	Páirtí nua (foirm shoiléir)
 new_party_kind_supplier_ph	Cineál páirtí nua (Soláthraí)
 next_country	An chéad tír eile
 next_order	An chéad ordú eile (deasc glan)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Dréachtaí
+park_draft	Sábháil mar dhréacht
+drafts_help	Orduithe neamhchríochnaithe ón gcuntar a chuir tú ar leataobh — ní théann siad sna leabhair go dtí «Glac íocaíocht». Tapáil cárta chun leanúint ar aghaidh in «Ordú»; scriosann «Scrios dréacht» an dréacht. Ní ghlanann «Dún an lae» iad.
+drafts_park_nothing	Níl aon rud le cur ar leataobh — cuir míreanna sa chiseán
+drafts_park_counter_only	Is d'orduithe ag an gcuntar amháin «Sábháil mar dhréacht» — fág ordú an bhoird, nó úsáid «Urlár»
+drafts_parked	Sábháilte in «Dréachtaí» — tá an cuntar folamh anois
+drafts_discard	Scrios dréacht
+drafts_discarded	Scriosadh an dréacht
+drafts_gone	Níl an dréacht sin ar an liosta a thuilleadh
+drafts_closed	Íocadh nó scriosadh an dréacht sin cheana féin
+drafts_empty	Níl aon dréachtaí fós. In «Cuntar», cuir miasa leis agus tapáil «Sábháil mar dhréacht».
+drafts_card_kind	Dréacht
+drafts_card_no_lines	Gan línte
+drafts_card_lines	línte
+drafts_summary_fmt	{n} dréacht oscailte
+drafts_cols_fmt	{n} colún
 note_gstin_ph	Nóta / "GST IN" / meabhrúchán comhaontaithe
 notes_attach_party	Nótaí & ceangaltáin (páirtí roghnaithe)
 notes_attach_sale	Nótaí & ceangaltáin (díol roghnaithe)
@@ -588,15 +588,15 @@ print_open	Priontáil / oscail
 reason_amend_ph	Cúis le leasú / neamhbhailí / aisíocaíocht
 reason_note_ph	Cúis / nóta (caiteachas, comhaireamh, …)
 record_day_close	Dúnadh lae taifead
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Cathain a thosaíonn «Inniu» as an nua?
+business_day_help	Le «Go dtí dúnadh an lae», leanann «Leabhar lae» ar aghaidh tar éis meán oíche go dtí go dtaifeadann tú dúnadh an lae. Le «Meán oíche an fhéilire», gearrtar an lá ag 00:00, am áitiúil.
+biz_day_until_close	Go dtí dúnadh an lae
+biz_day_midnight	Meán oíche an fhéilire
+business_day_saved	Socrú an lae gnó sábháilte
+report_day_lens	Taispeáin «Inniu» mar
+report_day_lens_help	Amharc amháin — ní athraíonn sé cathain a thosaíonn «Dún an lae» «Inniu» as an nua. Leanann «De réir dhúnadh an lae» an dúnadh lae is déanaí; gearrann «De réir meán oíche» ag 00:00, am áitiúil.
+report_lens_day_close	De réir dhúnadh an lae
+report_lens_midnight	De réir meán oíche
 refresh_from_shop	Athnuaigh ón siopa
 refund	Aisíocaíocht
 remove_selected	Bain an roghnaithe
@@ -864,7 +864,7 @@ find_printers	Faigh priontálaithe
 printers_looking	Ag féachaint…
 saving_printer	Ag cur priontálaí leis…
 cancelled	Cealaithe
-cancelling	Cancellingâ¦
+cancelling	Á chealú…
 removing	Á bhaint…
 removed	Bainte
 updating_order	Á nuashonrú…

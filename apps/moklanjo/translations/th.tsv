@@ -3,27 +3,27 @@ app_tagline	บัญชีขนส่ง + โต๊ะรับส่ง ฟ�
 unlock	ปลดล็อก
 pin_hint	PIN เจ้าของเริ่มต้นที่ 0000
 sell	การจอง
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	บอร์ด
+board	บอร์ด
+park_draft	พักเป็นฉบับร่าง
+board_help	ฉบับร่างที่เปิดอยู่ (เก็บไว้จนกว่าคุณจะแตะ «ทิ้ง» หรือ «รับชำระเงิน») และยอดขายที่รับฝากวันนี้ ที่ «การจอง» แตะ «พักเป็นฉบับร่าง» ระหว่างทำงาน (บันทึกไว้ที่นี่ ไม่ลงสมุดบัญชี) แตะฉบับร่างเพื่อทำต่อ
+board_empty	ยังไม่มีการ์ด
+board_park_nothing	ไม่มีอะไรให้พัก — เพิ่มค่าบริการหรือรายละเอียดการจองก่อน
+board_parked	พักไว้บน «บอร์ด» แล้ว — โต๊ะทำงานว่าง
+board_draft	ร่าง
+board_booked	รับฝากแล้ว
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ร่าง
+board_filter_booked	รับฝากแล้ว
+board_cols_fmt	{n} คอลัมน์
+board_summary_fmt	{total} การ์ด · {drafts} ร่าง · {booked} รับฝากแล้ว
+board_card_no_charges	ยังไม่มีค่าบริการ
+board_card_charges	ค่าบริการ
+board_card_booked	การจอง
+board_draft_gone	ฉบับร่างนั้นไม่อยู่บน «บอร์ด» แล้ว
+board_draft_closed	ฉบับร่างนั้นเสร็จแล้วหรือถูกทิ้งไปแล้ว
+board_discard	ทิ้ง
+board_discarded	ทิ้งฉบับร่างแล้ว
 buy	จ่ายออก
 books	สมุดรายวัน
 books_help	สถานะวันนี้ การจอง = พัสดุเข้า การจ่ายออก = บิลผู้ขนส่งและค่าใช้จ่าย คู่ค้า = ผู้ส่งและผู้ขนส่ง
@@ -220,7 +220,7 @@ snack_secs_save	บันทึกเวลาแจ้งเตือน
 snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
 snack_secs_bad	ใส่วินาทีเป็นตัวเลข (3–60)
 cancelled	ยกเลิกแล้ว
-cancelling	Cancellingâ¦
+cancelling	กำลังยกเลิก…
 cancel	ยกเลิก
 opening_client	เปิดลูกค้า…
 preparing_desk	เตรียมโต๊ะ…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	คัดลอก CSV บัญชีคู่ค้า
 copy_receipt	คัดลอกใบเสร็จ
 copy_report	คัดลอกรายงาน
 counted_cash_ph	เงินสดที่นับในลิ้นชัก
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	ปิดกะและพิมพ์ใบ
+shift_handover	ส่งกะ
+shift_counted_ph	เงินสดที่นับตอนส่งกะ
+shift_since	กะนี้เริ่ม
+expected_in_drawer	ควรมีในลิ้นชัก
+lock_books_through_month	ล็อกสมุดบัญชีถึงสิ้นเดือน
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ล็อกถึงสิ้นเดือนนี้
+books_locked_none	ยังไม่ได้ล็อกเดือนใด
+books_locked_through	ล็อกถึงสิ้นเดือน
 counter_agency_ph	ชื่อเคาน์เตอร์ / ตัวแทน (ไม่บังคับ)
 create_backup	สร้างข้อมูลสำรอง
 day_close_summary	สรุปปิดวัน
@@ -442,9 +442,9 @@ pay_ap_cash	จ่าย AP เงินสด
 pay_ap_upi	จ่าย AP ด้วย UPI
 period_bill	บิลตามรอบ
 period_bill_party	บิลตามรอบ (คู่ค้า)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	สร้างใบแจ้งหนี้
+period_bill_generate_print	สร้างและพิมพ์
+booking_bulk_preview	พร้อม {ok} · ผิดพลาด {bad}
 pick_pod_photo	เลือกรูป POD
 print_awb_label	พิมพ์ฉลาก AWB
 print_open	พิมพ์ / เปิด
@@ -653,19 +653,19 @@ attachments_last_expense	ไฟล์แนบ (ค่าใช้จ่าย�
 credit_limit_heading	วงเงินเครดิต (คู่ค้าที่เลือก / ระบุชื่อ)
 pay_selected_heading	จ่ายที่เลือก (ชำระหนี้ / รับล่วงหน้า)
 write_off_heading	ตัดหนี้ (เคลียร์โดยไม่จ่าย)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ใบปรับปรุงรายการ
+adj_note_amount_ph	จำนวนเงิน
+adj_note_reason_ph	เหตุผล (จำเป็น)
+adj_note_awb_ph	AWB ที่เกี่ยวข้อง (ไม่บังคับ)
+credit_note_btn	ใบลดหนี้
+debit_note_btn	ใบเพิ่มหนี้
+bill_later_heading	เรียกเก็บภายหลัง (ค่าใช้จ่ายเพิ่มหลังการจอง)
+bill_later_amount_ph	จำนวนเงินเพิ่ม
+bill_later_party_ph	คู่ค้า (เฉพาะเมื่อการจองยังไม่มี)
+bill_later_btn	เรียกเก็บภายหลัง
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ค่าบรรจุหีบห่อ
+bill_later_extra_other	อื่น ๆ
 pay_ap_heading	จ่ายที่เราติดหนี้เขา (AP)
 country_tax	ประเทศและภาษี
 extra_tills_heading	เคาน์เตอร์เสริม
@@ -777,26 +777,26 @@ onboard_book_tmpl	สมุด · {} — เพิ่มสินค้าแล
 onboard_template_tmpl	ตั้งชื่อร้านได้ถ้าต้องการ แล้วเลือกวิธีเริ่มต้น
 tmpl_blurb	บัญชีขนส่งพัสดุและเคาน์เตอร์รับฝาก: ผู้ส่ง ผู้ขนส่ง สมุดรายวัน AWB
 tmpl_how	รับฝากพัสดุที่เคาน์เตอร์ สมุดรายวันสำหรับวันนี้ แท็บสำหรับอัตรา คู่ค้า รายงาน
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	เทมเพลตร้าน
+app_template_blurb	เลือกโต๊ะทำงานเริ่มต้น หากแตะ «ข้ามไปก่อน» รายชื่อคู่ค้าจะว่างไว้
+app_template_skip	ข้ามไปก่อน
+app_template_status	เซิร์ฟเวอร์พร้อมแล้ว — นำเข้าเทมเพลต หรือข้าม
+app_template_importing	กำลังใช้ {title}…
+app_template_public_hdr	เทมเพลต
+app_template_import_selected	นำเข้ารายการที่เลือก
+app_template_wipe_warn	การดำเนินการนี้จะล้างข้อมูลการค้าในสมุดบัญชี (การจอง, บัญชีแยกประเภท) และใช้การตั้งค่าร้านของเทมเพลต ดำเนินการต่อหรือไม่
+app_template_wipe_continue	ดำเนินการต่อ
+app_template_wipe_cancel	ยกเลิก
+public_tmpl_help	แพ็กตัวแทนที่มาพร้อมแอปสำหรับร้านนี้ ไม่ต้องดาวน์โหลด
+business_day	«วันนี้» เริ่มใหม่เมื่อใด
+business_day_help	เมื่อเลือก «จนกว่าจะปิดวัน» ส่วน «สมุดรายวัน» จะนับต่อเนื่องเลยเที่ยงคืนไปจนกว่าคุณจะบันทึกปิดวัน เมื่อเลือก «เที่ยงคืนตามปฏิทิน» วันจะตัดที่ 00:00 น. ตามเวลาท้องถิ่น
+biz_day_until_close	จนกว่าจะปิดวัน
+biz_day_midnight	เที่ยงคืนตามปฏิทิน
+business_day_saved	บันทึกวันทำการแล้ว
+report_day_lens	ดู «วันนี้» ตาม
+report_day_lens_help	ใช้ดูเท่านั้น — ไม่เปลี่ยนเวลาที่ «ปิดวัน» เริ่ม «วันนี้» ใหม่ โดย «ตามการปิดวัน» นับจากการปิดวันครั้งล่าสุด ส่วน «ตามเที่ยงคืน» ตัดที่ 00:00 น. ตามเวลาท้องถิ่น
+report_lens_day_close	ตามการปิดวัน
+report_lens_midnight	ตามเที่ยงคืน
 trk_booked	รับฝากแล้ว
 trk_picked_up	รับพัสดุแล้ว
 trk_in_transit	ระหว่างขนส่ง

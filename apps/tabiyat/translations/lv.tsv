@@ -365,15 +365,15 @@ print_open	Drukāt / atvērt
 reason_amend_ph	Iemesls labojumam / anulēšanai / atmaksai
 reason_note_ph	Iemesls / piezīme (zudumi, skaits, …)
 record_day_close	Ierakstīt dienas slēgšanu
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kad «Šodien» sākas no jauna?
+business_day_help	Ar «Līdz dienas slēgšanai» «Dienas grāmata» turpinās arī pēc pusnakts, līdz reģistrējat dienas slēgšanu. Ar «Kalendāra pusnakts» diena beidzas plkst. 00:00 pēc vietējā laika.
+biz_day_until_close	Līdz dienas slēgšanai
+biz_day_midnight	Kalendāra pusnakts
+business_day_saved	Darba diena saglabāta
+report_day_lens	Rādīt «Šodien» kā
+report_day_lens_help	Tikai skats — nemaina to, kad «Dienas slēgšana» sāk «Šodien» no jauna. «Pēc dienas slēgšanas» skaita no pēdējās dienas slēgšanas; «Pēc pusnakts» nogriež plkst. 00:00 pēc vietējā laika.
+report_lens_day_close	Pēc dienas slēgšanas
+report_lens_midnight	Pēc pusnakts
 refresh_from_shop	Atsvaidzināt no veikala
 refund	Atmaksa
 remove_selected	Noņemt atlasīto
@@ -849,19 +849,19 @@ client_template_confirm	Vai pievienot {d} vienumus no {title}? Vienumi, kas jums
 client_template_importing	Importē {title}…
 client_template_done	Katra {title} prece ir uz jūsu precēm.
 client_template_imported	Pievienoti {d} vienumi un {c} kategorijas no {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Veikala veidnes
+app_template_blurb	Izvēlieties sākuma katalogu un veikala iestatījumus. «Pagaidām izlaist» atstāj plauktu tukšu.
+app_template_skip	Pagaidām izlaist
+app_template_status	Serveris gatavs — importējiet veidni vai izlaidiet
+app_template_importing	Lieto {title}…
+app_template_import_selected	Importēt atlasīto
+app_template_wipe_warn	Tas notīrīs tirdzniecības datus grāmatvedībā (pārdošanu, kontus) un lietos veidnes veikala iestatījumus. Vai turpināt?
+app_template_wipe_continue	Turpināt
+app_template_wipe_cancel	Atcelt
+app_template_from_device	Importēt no šīs ierīces
+app_template_from_device_help	Izvēlieties mapi, kurā ir template.json (un, ja vēlaties, shop_defaults.json).
+settings_app_tmpl_note	Pilnas veikala pakotnes: katalogs un veikala iestatījumi. Atkārtoti importējot pakotni, tiek notīrīta pārdošana un konti un pēc tam lietoti pakotnes veikala iestatījumi.
+app_tmpl_named	Veikala veidne {name}
 cancel	Atcelt
 removing	Noņem…
 removed	Noņemts

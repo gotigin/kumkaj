@@ -384,12 +384,12 @@ app_template_need_internet	टेम्पलेट डाउनलोड कर
 app_template_import_selected	चुनल आयात करू
 app_template_check_code	कोड जाँचू
 app_template_import	आयात करू
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	एहि डिवाइस सँ आयात करू
+app_template_from_device_help	ओ फोल्डर चुनू जाहिमे template.json हो (shop_defaults.json हो तँ ओहो)।
+settings_app_tmpl_note	फेर सँ आयात कएला पर बिक्री, KOT आ खाता साफ भऽ जाइत अछि, तखन पैकक दोकान सेटिंग लागू होइत अछि। केवल मेनू बला टेम्पलेट: «मेनू» → «आइटम टेम्पलेट»।
+app_template_wipe_warn	एहि सँ बहीक कारोबारी डेटा (बिक्री, KOT, खाता) साफ भऽ जाएत आ टेम्पलेटक दोकान सेटिंग लागू होएत। मेनू आ सेटअप बदलि सकैत अछि। आगाँ बढ़ू?
+app_template_wipe_continue	आगाँ बढ़ू
+app_template_wipe_cancel	रद्द
 currency	मुद्रा
 backup	बैकअप
 use	उपयोग करू
@@ -550,22 +550,22 @@ new_party_clear	नव पार्टी (फॉर्म खाली)
 new_party_kind_supplier_ph	नव पार्टीक प्रकार (सप्लायर)
 next_country	अगिला देश
 next_order	अगिला ऑर्डर (डेस्क खाली)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ड्राफ्ट
+park_draft	ड्राफ्टमे राखू
+drafts_help	काउंटरक ओ अधूरा ऑर्डर जे अहाँ बीचमे रोकि कऽ रखने छी — «भुगतान लिअ» होएबा धरि ई बहीमे नहि जाइत अछि। कार्ड दबाउ तँ ओ «ऑर्डर» पर फेर खुजि जाएत; «ड्राफ्ट हटाउ» सँ ड्राफ्ट हटि जाइत अछि। «दिन बंद» सँ ई साफ नहि होइत अछि।
+drafts_park_nothing	रखबाक लेल किछु नहि — कार्टमे सामान जोड़ू
+drafts_park_counter_only	«ड्राफ्टमे राखू» केवल काउंटरक ऑर्डरक लेल अछि — टेबलक ऑर्डर छोड़ू वा «फ्लोर» प्रयोग करू
+drafts_parked	«ड्राफ्ट» मे राखल गेल — काउंटर खाली अछि
+drafts_discard	ड्राफ्ट हटाउ
+drafts_discarded	ड्राफ्ट हटाओल गेल
+drafts_gone	ओ ड्राफ्ट आब सूचीमे नहि अछि
+drafts_closed	ओहि ड्राफ्टक भुगतान भऽ चुकल अछि वा ओ हटाओल जा चुकल अछि
+drafts_empty	एखन कोनो ड्राफ्ट नहि। «काउंटर» पर व्यंजन जोड़ू आ «ड्राफ्टमे राखू» दबाउ।
+drafts_card_kind	ड्राफ्ट
+drafts_card_no_lines	कोनो सामान नहि
+drafts_card_lines	सामान
+drafts_summary_fmt	{n} खुजल ड्राफ्ट
+drafts_cols_fmt	{n} स्तंभ
 note_gstin_ph	टिप्पणी / GSTIN / समझौताक याद
 notes_attach_party	टिप्पणी आ संलग्न (चुनल पार्टी)
 notes_attach_sale	टिप्पणी आ संलग्न (चुनल बिक्री)
@@ -588,15 +588,15 @@ print_open	छापू / खोलू
 reason_amend_ph	संशोधन / रद्द / वापसीक कारण
 reason_note_ph	कारण / टिप्पणी (बर्बादी, गिनती, …)
 record_day_close	दिन बंद दर्ज करू
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«आइ» कखन नव शुरू होइत अछि?
+business_day_help	«दिन बंद धरि» चुनला पर «दैनिक बही» आधा रातिक बादो चलैत रहैत अछि, जाबत अहाँ दिन बंद दर्ज नहि करैत छी। «कैलेंडरक आधा राति» चुनला पर दिन स्थानीय समय सँ राति 12:00 बजे कटि जाइत अछि।
+biz_day_until_close	दिन बंद धरि
+biz_day_midnight	कैलेंडरक आधा राति
+business_day_saved	कारोबारी दिन सहेजल गेल
+report_day_lens	«आइ» केँ एना देखू
+report_day_lens_help	केवल देखबाक लेल — एहि सँ ई नहि बदलैत अछि जे «दिन बंद» कखन «आइ» केँ नव शुरू करैत अछि। «दिन बंद अनुसार» पछिला दिन बंद सँ गनैत अछि; «आधा रातिक अनुसार» स्थानीय समय सँ राति 12:00 बजे कटैत अछि।
+report_lens_day_close	दिन बंद अनुसार
+report_lens_midnight	आधा रातिक अनुसार
 refresh_from_shop	दोकानसँ ताजा करू
 refund	वापसी
 remove_selected	चुनल हटाउ
@@ -864,7 +864,7 @@ find_printers	प्रिंटर खोजू
 printers_looking	खोजि रहल छी…
 saving_printer	प्रिंटर जोड़ि रहल छी…
 cancelled	रद्द भेल
-cancelling	Cancellingâ¦
+cancelling	रद्द भऽ रहल अछि…
 removing	हटाओल जा रहल अछि…
 removed	हटाओल गेल
 updating_order	अपडेट भ' रहल अछि…

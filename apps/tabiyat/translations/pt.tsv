@@ -365,15 +365,15 @@ print_open	Imprimir / abrir
 reason_amend_ph	Motivo de alteração / anulação / reembolso
 reason_note_ph	Motivo / nota (perda, contagem, …)
 record_day_close	Registar fecho do dia
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Quando é que «Hoje» recomeça?
+business_day_help	Com «Até ao fecho do dia», «Livro do dia» continua depois da meia-noite até registar o fecho do dia. Com «Meia-noite do calendário», o dia é cortado às 00:00, hora local.
+biz_day_until_close	Até ao fecho do dia
+biz_day_midnight	Meia-noite do calendário
+business_day_saved	Dia de trabalho guardado
+report_day_lens	Ver «Hoje» por
+report_day_lens_help	Só muda a vista: não altera quando «Fecho do dia» recomeça «Hoje». «Por fecho do dia» segue o último fecho do dia; «Por meia-noite» corta às 00:00, hora local.
+report_lens_day_close	Por fecho do dia
+report_lens_midnight	Por meia-noite
 refresh_from_shop	Atualizar da loja
 refund	Reembolso
 remove_selected	Remover selecionado
@@ -849,19 +849,19 @@ client_template_confirm	Adicionar itens {d} do {title}? Os itens que você já p
 client_template_importing	A importar {title}…
 client_template_done	Cada item do {title} está em seus itens.
 client_template_imported	Adicionados itens {d} e categorias {c} do {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Modelos de loja
+app_template_blurb	Escolha um catálogo inicial e as definições de loja. «Ignorar por enquanto» deixa a prateleira vazia.
+app_template_skip	Ignorar por enquanto
+app_template_status	Servidor pronto — importe um modelo ou ignore
+app_template_importing	Aplicando {title}…
+app_template_import_selected	Importar selecionado
+app_template_wipe_warn	Isto apaga os dados de movimento dos livros (vendas, contas correntes) e aplica as definições de loja do modelo. Continuar?
+app_template_wipe_continue	Continuar
+app_template_wipe_cancel	Cancelar
+app_template_from_device	Importar deste dispositivo
+app_template_from_device_help	Escolha uma pasta que contenha template.json (e, se existir, shop_defaults.json).
+settings_app_tmpl_note	Pacotes completos de loja: catálogo e definições de loja. Voltar a importar um pacote apaga as vendas e as contas correntes e depois aplica as definições de loja do pacote.
+app_tmpl_named	Modelo de loja {name}
 cancel	Cancelar
 removing	A remover…
 removed	Removido

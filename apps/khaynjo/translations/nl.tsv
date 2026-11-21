@@ -384,12 +384,12 @@ app_template_need_internet	Internet nodig om sjablonen te downloaden
 app_template_import_selected	Selectie importeren
 app_template_check_code	Code controleren
 app_template_import	Importeren
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importeren vanaf dit apparaat
+app_template_from_device_help	Kies een map met template.json (en eventueel shop_defaults.json).
+settings_app_tmpl_note	Opnieuw importeren wist verkopen, KOT's en grootboeken en past daarna de winkelinstellingen van het pakket toe. Sjablonen met alleen een menu: «Menu» → «Artikelsjablonen».
+app_template_wipe_warn	Dit wist de handelsgegevens in de boeken (verkopen, KOT's, grootboeken) en past de winkelinstellingen van het sjabloon toe. Menu en inrichting kunnen veranderen. Doorgaan?
+app_template_wipe_continue	Doorgaan
+app_template_wipe_cancel	Annuleren
 currency	Valuta
 backup	Back-up
 use	Gebruiken
@@ -550,22 +550,22 @@ new_party_clear	Nieuwe partij (formulier wissen)
 new_party_kind_supplier_ph	Soort nieuwe partij (leverancier)
 next_country	Volgend land
 next_order	Volgende bestelling (balie legen)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Concepten
+park_draft	Concept parkeren
+drafts_help	Baliebestellingen die je halverwege hebt geparkeerd — ze komen pas in de boeken na «Betaling aannemen». Tik op een kaart om verder te gaan in «Bestelling»; «Concept weggooien» verwijdert het concept. «Dagsafsluiting» wist ze niet.
+drafts_park_nothing	Niets om te parkeren — voeg eerst artikelen toe
+drafts_park_counter_only	«Concept parkeren» is alleen voor baliebestellingen — verlaat de tafelbestelling of gebruik «Zaal»
+drafts_parked	Geparkeerd in «Concepten» — de balie is vrij
+drafts_discard	Concept weggooien
+drafts_discarded	Concept weggegooid
+drafts_gone	Dat concept staat niet meer in de lijst
+drafts_closed	Dat concept is al betaald of weggegooid
+drafts_empty	Nog geen concepten. Voeg bij «Balie» gerechten toe en tik op «Concept parkeren».
+drafts_card_kind	Concept
+drafts_card_no_lines	Geen regels
+drafts_card_lines	regels
+drafts_summary_fmt	{n} open concepten
+drafts_cols_fmt	{n} kol.
 note_gstin_ph	Notitie / GSTIN / overeenkomstherinnering
 notes_attach_party	Notities & bijlagen (gekozen partij)
 notes_attach_sale	Notities & bijlagen (gekozen verkoop)
@@ -588,15 +588,15 @@ print_open	Printen / openen
 reason_amend_ph	Reden voor wijzigen / annuleren / terugbetaling
 reason_note_ph	Reden / notitie (derving, telling, …)
 record_day_close	Dagsluiting boeken
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Wanneer begint «Vandaag» opnieuw?
+business_day_help	Met «Tot dagsafsluiting» loopt «Dagboek» door na middernacht, tot je de dagsafsluiting boekt. Met «Middernacht (kalender)» wordt de dag om 00:00 uur lokale tijd afgesloten.
+biz_day_until_close	Tot dagsafsluiting
+biz_day_midnight	Middernacht (kalender)
+business_day_saved	Werkdag opgeslagen
+report_day_lens	«Vandaag» bekijken als
+report_day_lens_help	Alleen weergave — verandert niet wanneer «Dagsafsluiting» «Vandaag» opnieuw laat beginnen. «Per dagsafsluiting» volgt de laatste dagsafsluiting; «Per middernacht» knipt om 00:00 uur lokale tijd.
+report_lens_day_close	Per dagsafsluiting
+report_lens_midnight	Per middernacht
 refresh_from_shop	Vernieuwen uit winkel
 refund	Terugbetaling
 remove_selected	Geselecteerde verwijderen
@@ -864,7 +864,7 @@ find_printers	Printers zoeken
 printers_looking	Printers zoeken op dit apparaat en Wi‑Fi…
 saving_printer	Voeg printer toe…
 cancelled	Geannuleerd
-cancelling	Cancellingâ¦
+cancelling	Bezig met annuleren…
 removing	Verwijderen…
 removed	Verwijderd
 updating_order	Bijwerken…

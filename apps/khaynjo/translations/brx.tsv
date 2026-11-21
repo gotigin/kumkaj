@@ -384,12 +384,12 @@ app_template_need_internet	टेम्प्लेट डाउनल'ड ख�
 app_template_import_selected	सायखनायखौ लाबो
 app_template_check_code	कोड नायबिजिर
 app_template_import	लाबो
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	बे डिभाइसनिफ्राय लाबो
+app_template_from_device_help	template.json दंनाय फल्डारखौ सायख (shop_defaults.json दंब्ला बेखौबो)।
+settings_app_tmpl_note	फिन लाबोब्ला बायनाय, KOT आरो खाताफोर खोमा जायो, बेनि उनाव पेकनि दोकान सेटिं लागु जायो। मेनु ल' दंनाय टेम्प्लेटफोर: «मेनु» → «मुवा टेम्प्लेट»।
+app_template_wipe_warn	बेयो बहीनि फालांगि डाटाखौ (बायनाय, KOT, खाता) खोमायो आरो टेम्प्लेटनि दोकान सेटिंखौ लागु खालामो। मेनु आरो सेटआप सोलायनो हागौ। सालाय लांनो?
+app_template_wipe_continue	सालाय लां
+app_template_wipe_cancel	केन्सेल
 currency	रांनि रोखोम
 backup	ब्याकआप
 use	बाहाय
@@ -550,22 +550,22 @@ new_party_clear	गोदान पार्टी (फर्म खोमा)
 new_party_kind_supplier_ph	गोदान पार्टीनि रोखोम (सप्लायर)
 next_country	उननि हादोर
 next_order	उननि अर्डर (डेस्क खोमा)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ड्राफ्ट
+park_draft	ड्राफ्टआव दोन
+drafts_help	काउन्टारनि बै आद्रा अर्डरफोर जायखौ नोंथाङा गेजेराव दोनदों — «पैसा ला» जायनायसिम बेफोर बहीयाव थाङा। कार्डखौ सुदुंब्ला बेयो «अर्डर»आव फिन बेखेवजायो; «ड्राफ्ट बोखार»आ ड्राफ्टखौ बोखारो। «सान बन्द'»आ बेफोरखौ खोमाया।
+drafts_park_nothing	दोननो जेबो गैया — कार्टआव आइटम दाजाब
+drafts_park_counter_only	«ड्राफ्टआव दोन»आ काउन्टारनि अर्डरनि थाखायल' — टेबुलनि अर्डरखौ गार नाथाय «फ्लोर» बाहाय
+drafts_parked	«ड्राफ्ट»आव दोनबाय — काउन्टारा लांदां
+drafts_discard	ड्राफ्ट बोखार
+drafts_discarded	ड्राफ्ट बोखारबाय
+drafts_gone	बै ड्राफ्टआ दा लिस्टआव गैया
+drafts_closed	बै ड्राफ्टनि पैसा सिगांनो होबाय नाथाय बेखौ बोखारबाय
+drafts_empty	दासिमबो ड्राफ्ट गैया। «काउन्टार»आव जानाय मुवा दाजाब आरो «ड्राफ्टआव दोन» सुदुं।
+drafts_card_kind	ड्राफ्ट
+drafts_card_no_lines	आइटम गैया
+drafts_card_lines	आइटम
+drafts_summary_fmt	{n} बेखेवनाय ड्राफ्ट
+drafts_cols_fmt	{n} खाम्फा
 note_gstin_ph	नोट / GSTIN / गोरोबथाइनि गोसोखां
 notes_attach_party	नोट आरो नांजाबनाय (सायखजानाय पार्टी)
 notes_attach_sale	नोट आरो नांजाबनाय (सायखजानाय बायनाय)
@@ -588,15 +588,15 @@ print_open	प्रिन्ट / खेव
 reason_amend_ph	सुधाय / भोइड / फिन होनायनि जाहोन
 reason_note_ph	जाहोन / नोट (खहा, साननाय, …)
 record_day_close	सान बन्द' लिर
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«दिनै»आ माब्ला गोदानै जागायो?
+business_day_help	«सान बन्द'सिम» सायखोब्ला, नोंथाङा सान बन्द' लिरनायसिम «साननि बही»आ हरगेजेरनि उनावबो सोलिबाय थायो। «केलेन्डारनि हरगेजेर» सायखोब्ला, सानआ थावनिनि सम बादियै हर 12:00 बाजियाव जोबो।
+biz_day_until_close	सान बन्द'सिम
+biz_day_midnight	केलेन्डारनि हरगेजेर
+business_day_saved	फालांगिनि सान थिना दोनबाय
+report_day_lens	«दिनै»खौ बेबादियै नाय
+report_day_lens_help	नायनो थाखायल' — «सान बन्द'»आ माब्ला «दिनै»खौ गोदानै जागायो बेखौ बेयो सोलाया। «सान बन्द' बादियै»आ जोबथा सान बन्द'निफ्राय सानो; «हरगेजेर बादियै»आ थावनिनि सम बादियै हर 12:00 बाजियाव जोबो।
+report_lens_day_close	सान बन्द' बादियै
+report_lens_midnight	हरगेजेर बादियै
 refresh_from_shop	दोकाननिफ्राय फिन नुजा
 refund	फिन हो
 remove_selected	सायखजानाय बोखार
@@ -864,7 +864,7 @@ find_printers	प्रिन्टार नागिर
 printers_looking	नागिर गासिनो…
 saving_printer	प्रिन्टार दाजाब गासिनो…
 cancelled	केन्सेल जाबाय
-cancelling	Cancellingâ¦
+cancelling	केन्सेल जागासिनो दं…
 removing	बोखारगासिनो…
 removed	बोखारनाय जाबाय
 updating_order	आपडेट जागासिनो…

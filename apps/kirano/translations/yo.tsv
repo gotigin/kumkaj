@@ -151,7 +151,7 @@ sidebar_disable_all	Mu Gbogbo
 sidebar_order_saved	Ibere legbe ti o ti fipamọ
 sidebar_visibility_saved	Ti fipamọ hihan legbe
 sales	Titaja
-day_close	Ojo sunmo
+day_close	Ìparí ọjọ́
 reports_expenses	Iwe akọọlẹ banki & P&L
 nav_reports	Iroyin
 nav_settings	Eto
@@ -353,15 +353,15 @@ print_open	Tẹjade / ṣii
 reason_amend_ph	Idi fun atunṣe / ofo / agbapada
 reason_note_ph	Idi / akọsilẹ (egbin, kika,…)
 record_day_close	Fi ọjọ sunmọ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Ìgbà wo ni «Loni» máa ń bẹ̀rẹ̀ lọ́tun?
+business_day_help	Pẹ̀lú «Títí di ìparí ọjọ́», «Iwe akọọlẹ ọjọ» máa ń tẹ̀síwájú kọjá ọ̀gànjọ́ òru títí o fi kọ ìparí ọjọ́ sílẹ̀. Pẹ̀lú «Ọ̀gànjọ́ òru kàlẹ́ńdà», ọjọ́ máa ń parí ní 00:00 ní àkókò ìbílẹ̀.
+biz_day_until_close	Títí di ìparí ọjọ́
+biz_day_midnight	Ọ̀gànjọ́ òru kàlẹ́ńdà
+business_day_saved	A ti fi ọjọ́ iṣẹ́ pamọ́
+report_day_lens	Fi «Loni» hàn gẹ́gẹ́ bí
+report_day_lens_help	Fún wíwò nìkan — kò yí ìgbà tí «Ìparí ọjọ́» ń bẹ̀rẹ̀ «Loni» lọ́tun padà. «Gẹ́gẹ́ bí ìparí ọjọ́» ń tẹ̀lé ìparí ọjọ́ tó kẹ́yìn; «Gẹ́gẹ́ bí ọ̀gànjọ́ òru» ń gé ní 00:00 ní àkókò ìbílẹ̀.
+report_lens_day_close	Gẹ́gẹ́ bí ìparí ọjọ́
+report_lens_midnight	Gẹ́gẹ́ bí ọ̀gànjọ́ òru
 refresh_from_shop	Sọ lati itaja
 refund	agbapada
 remove_selected	Yọ ti o yan kuro
@@ -837,19 +837,19 @@ client_template_confirm	Ṣafikun awọn nkan {d} lati {title} bi? Awọn nkan t
 client_template_importing	Nkowọle {title}…
 client_template_done	Gbogbo nkan lati {title} wa lori awọn nkan rẹ.
 client_template_imported	Awọn ohun {d} ti a ṣafikun ati awọn ẹka {c} lati {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Àwọn àdàkọ ilé ìtajà
+app_template_blurb	Yan kátálọ́ọ̀gì ìbẹ̀rẹ̀ àti ètò ilé ìtajà. «Rekọja fun bayi» máa fi pẹpẹ sílẹ̀ ní òfo.
+app_template_skip	Rekọja fun bayi
+app_template_status	Olùpèsè ti ṣetán — gbé àdàkọ kan wọlé, tàbí fò ó
+app_template_importing	Nbere {title}…
+app_template_import_selected	Gbé èyí tí a yàn wọlé
+app_template_wipe_warn	Èyí máa pa dátà ìṣòwò inú àwọn ìwé rẹ́ (títà, àwọn ìwé àkọọ́lẹ̀) yóò sì lo ètò ilé ìtajà ti àdàkọ náà. Ṣé kí a tẹ̀síwájú?
+app_template_wipe_continue	Tesiwaju
+app_template_wipe_cancel	Fagilee
+app_template_from_device	Gbé wọlé láti inú ẹ̀rọ yìí
+app_template_from_device_help	Yan fódà tí ó ní template.json (àti shop_defaults.json bí ó bá wà).
+settings_app_tmpl_note	Àwọn àpò ilé ìtajà pípé: kátálọ́ọ̀gì àti ètò ilé ìtajà. Gbígbé àpò kan wọlé lẹ́ẹ̀kan sí i máa ń pa títà àti àwọn ìwé àkọọ́lẹ̀ rẹ́, lẹ́yìn náà ó máa lo ètò ilé ìtajà ti àpò náà.
+app_tmpl_named	Àdàkọ ilé ìtajà {name}
 cancel	Fagilee
 removing	Ń yọ ọ́…
 removed	A ti yọ ọ́

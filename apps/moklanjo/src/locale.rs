@@ -543,7 +543,7 @@ fn en(key: &str) -> String {
         "board" => "Board",
         "park_draft" => "Park draft",
         "board_help" => "Open drafts (kept until you Discard or Take payment) and today's booked sales. On Booking, tap Park draft mid-work (saved here, not books); tap a draft to resume.",
-        "board_empty" => "No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume. Drafts stay until you discard or finish them.",
+        "board_empty" => "No cards yet.",
         "board_park_nothing" => "Nothing to park — add charges or booking details",
         "board_parked" => "Parked on Board — desk is clear",
         "board_draft" => "Draft",
@@ -1635,7 +1635,12 @@ mod tests {
     /// the test below — the key is there — and ships as English in 110
     /// languages: the whole WhatsApp settings panel did (found 2026-11-17).
     /// A text with real words that more than three quarters of the packs
-    /// still hold in English is not translated. Names are the exception.
+    /// hold as the very same string is not translated: 110 languages do not
+    /// agree on a sentence. That string need not be today's English — when
+    /// the English is rewritten the packs keep the old one, and a compare
+    /// against `en()` alone let those through ("Park" under "Park draft",
+    /// and "Cancellingâ¦", a mis-encoded "Cancelling…", in every pack;
+    /// found 2026-11-21). Names are the exception.
     #[test]
     fn no_text_is_left_in_english_in_most_packs() {
         const NAMES: &[&str] = &["Khaynjo", "Kirano", "Tabiyat", "Moklanjo", "WhatsApp"];
@@ -1643,13 +1648,22 @@ mod tests {
         assert!(tables.len() > 100, "only {} packs loaded", tables.len());
         let mut left = Vec::new();
         for key in english_keys() {
-            let english = en(key);
-            if NAMES.contains(&english.as_str()) {
+            // The string most packs hold for this key.
+            let mut counts: std::collections::HashMap<&str, usize> = std::collections::HashMap::new();
+            for (_, table) in &tables {
+                if let Some(value) = table.get(key).copied() {
+                    *counts.entry(value).or_default() += 1;
+                }
+            }
+            let Some((value, same)) = counts.into_iter().max_by_key(|(_, n)| *n) else {
+                continue;
+            };
+            if NAMES.contains(&value) {
                 continue;
             }
             // Real words: three lower-case letters in a row, outside {placeholders}.
-            let mut bare = english.clone();
-            for p in placeholders(&english) {
+            let mut bare = value.to_string();
+            for p in placeholders(value) {
                 bare = bare.replace(p, " ");
             }
             let has_words = bare
@@ -1659,12 +1673,9 @@ mod tests {
             if !has_words {
                 continue;
             }
-            let same = tables
-                .iter()
-                .filter(|(_, table)| table.get(key).copied() == Some(english.as_str()))
-                .count();
             if same * 4 > tables.len() * 3 {
-                left.push(format!("{key}: “{english}” is English in {same} of {} packs", tables.len()));
+                let what = if value == en(key) { "the English" } else { "an older or broken text" };
+                left.push(format!("{key}: “{value}” ({what}) in {same} of {} packs", tables.len()));
             }
         }
         assert!(left.is_empty(), "translate these in every pack: {left:#?}");

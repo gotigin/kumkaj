@@ -151,7 +151,7 @@ sidebar_disable_all	Zakázat vše
 sidebar_order_saved	Pořadí postranního panelu bylo uloženo
 sidebar_visibility_saved	Viditelnost postranního panelu uložena
 sales	Prodej
-day_close	Den blízko
+day_close	Uzávěrka dne
 reports_expenses	Bankovní knížka a výsledovky
 nav_reports	Zprávy
 nav_settings	Nastavení
@@ -353,15 +353,15 @@ print_open	Vytisknout / otevřít
 reason_amend_ph	Důvod změny / neplatné / vrácení peněz
 reason_note_ph	Důvod / poznámka (plýtvání, počet, …)
 record_day_close	Uzavření rekordního dne
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kdy začíná «dnes» znovu?
+business_day_help	Při volbě «Do uzávěrky dne» pokračuje «Denní kniha» i po půlnoci, dokud nezaznamenáte uzávěrku dne. Při volbě «Kalendářní půlnoc» den končí v 00:00 místního času.
+biz_day_until_close	Do uzávěrky dne
+biz_day_midnight	Kalendářní půlnoc
+business_day_saved	Obchodní den uložen
+report_day_lens	Zobrazit «dnes» jako
+report_day_lens_help	Jen zobrazení — nemění, kdy «Uzávěrka dne» začne «dnes» znovu. «Podle uzávěrky dne» se řídí poslední uzávěrkou dne; «Podle půlnoci» končí den v 00:00 místního času.
+report_lens_day_close	Podle uzávěrky dne
+report_lens_midnight	Podle půlnoci
 refresh_from_shop	Obnovit z obchodu
 refund	Vrácení peněz
 remove_selected	Odebrat vybrané
@@ -837,19 +837,19 @@ client_template_confirm	Přidat položky {d} z {title}? Položky, které již m�
 client_template_importing	Import {title}…
 client_template_done	Každá položka z {title} je na vašich položkách.
 client_template_imported	Přidány položky {d} a kategorie {c} z {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Šablony obchodu
+app_template_blurb	Vyberte výchozí katalog a nastavení obchodu. «Zatím přeskočte» ponechá regál prázdný.
+app_template_skip	Zatím přeskočte
+app_template_status	Server připraven — importujte šablonu, nebo přeskočte
+app_template_importing	Použití {title}…
+app_template_import_selected	Importovat vybrané
+app_template_wipe_warn	Tím se vymažou obchodní data v knihách (prodeje, účty) a použije se nastavení obchodu ze šablony. Pokračovat?
+app_template_wipe_continue	Pokračovat
+app_template_wipe_cancel	Zrušit
+app_template_from_device	Importovat z tohoto zařízení
+app_template_from_device_help	Vyberte složku, která obsahuje template.json (a případně shop_defaults.json).
+settings_app_tmpl_note	Úplné balíčky obchodu: katalog a nastavení obchodu. Opakovaný import balíčku vymaže prodeje a účty a pak použije nastavení obchodu z balíčku.
+app_tmpl_named	Šablona obchodu {name}
 cancel	Zrušit
 removing	Odebírání…
 removed	Odebráno

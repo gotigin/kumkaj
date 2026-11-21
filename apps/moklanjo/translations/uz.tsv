@@ -3,27 +3,27 @@ app_tagline	Kuryer-agentlik kitoblari + bron qilish stoli. Bepul oflayn.
 unlock	Qulfni ochish
 pin_hint	Eganing PIN kodi 0000 dan boshlanadi
 sell	Rezervasyon
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Doska
+board	Doska
+park_draft	Qoralamaga qoʻyish
+board_help	Ochiq qoralamalar («Oʻchirish» yoki «Toʻlov qabul qilish» ni bosmaguningizcha saqlanadi) va bugungi band qilingan savdo. «Rezervasyon» boʻlimida ish oʻrtasida «Qoralamaga qoʻyish» ni bosing (shu yerda saqlanadi, daftarlarda emas); davom etish uchun qoralamani bosing.
+board_empty	Hali kartalar yoʻq.
+board_park_nothing	Chetga qoʻyadigan narsa yoʻq — toʻlovlar yoki rezervasyon maʼlumotlarini qoʻshing
+board_parked	«Doska» ga qoʻyildi — ish joyi boʻsh
+board_draft	Qoralama
+board_booked	Band qilingan
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Qoralama
+board_filter_booked	Band qilingan
+board_cols_fmt	{n} ustun
+board_summary_fmt	{total} ta karta · {drafts} ta qoralama · {booked} ta band qilingan
+board_card_no_charges	Hali toʻlovlar yoʻq
+board_card_charges	toʻlov
+board_card_booked	Rezervasyon
+board_draft_gone	U qoralama endi «Doska» da yoʻq
+board_draft_closed	U qoralama allaqachon tugallangan yoki oʻchirilgan
+board_discard	Oʻchirish
+board_discarded	Qoralama oʻchirildi
 buy	To'lash
 books	Kunlik daftar
 books_help	Bugungi pozitsiya. Rezervasyon = posilkalar. To'lov = tashuvchining to'lovlari va xarajatlari. Tomonlar = yuk jo'natuvchilar va tashuvchilar.
@@ -220,7 +220,7 @@ snack_secs_save	Ogohlantirish vaqtini saqlash
 snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
 snack_secs_bad	Soniyalarni raqam sifatida kiriting (3–60)
 cancelled	Bekor qilindi
-cancelling	Cancellingâ¦
+cancelling	Bekor qilinmoqda…
 cancel	Bekor qilish
 opening_client	Mijoz ochilmoqda…
 preparing_desk	Kassa tayyorlanmoqda…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kontragent daftarini CSV nusxalash
 copy_receipt	Kvitansiyani nusxalash
 copy_report	Hisobotni nusxalash
 counted_cash_ph	Tortmadagi sanalgan naqd
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Smenani yopib varaq chop etish
+shift_handover	Smena topshirish
+shift_counted_ph	Topshirishda sanalgan pul
+shift_since	Bu smena beri
+expected_in_drawer	Tortmada kutilayotgani
+lock_books_through_month	Daftarlarni oygacha qulflash
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Shu oygacha qulflash
+books_locked_none	Hali hech bir oy qulflanmagan
+books_locked_through	Qaysi oygacha qulflangan
 counter_agency_ph	Hisoblagich / agentlik nomi (ixtiyoriy)
 create_backup	Zaxira nusxa yaratish
 day_close_summary	Kun yopish xulosasi
@@ -442,9 +442,9 @@ pay_ap_cash	AP ni naqd toʻlash
 pay_ap_upi	AP ni UPI bilan toʻlash
 period_bill	Davr hisobi
 period_bill_party	Davr hisobi (partiya)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Hisob-faktura yaratish
+period_bill_generate_print	Yaratish va chop etish
+booking_bulk_preview	{ok} ta tayyor · {bad} ta xato
 pick_pod_photo	POD rasmini tanlang
 print_awb_label	AWB yorlig'ini chop eting
 print_open	Chop etish / ochish
@@ -653,19 +653,19 @@ attachments_last_expense	Ilovalar (oxirgi xarajat)
 credit_limit_heading	Nasiya limiti (tanlangan / nomlangan kontragent)
 pay_selected_heading	Tanlanganni toʻlash (qarzni yopish / avans olish)
 write_off_heading	Hisobdan chiqarish (toʻlovsiz tozalash)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Tuzatish hujjatlari
+adj_note_amount_ph	Summa
+adj_note_reason_ph	Sabab (majburiy)
+adj_note_awb_ph	Tegishli AWB (ixtiyoriy)
+credit_note_btn	Kredit-nota
+debit_note_btn	Debet-nota
+bill_later_heading	Keyinroq hisoblash (rezervasyondan keyingi qoʻshimcha toʻlov)
+bill_later_amount_ph	Qoʻshimcha summa
+bill_later_party_ph	Kontragent (faqat rezervasyonda boʻlmasa)
+bill_later_btn	Keyinroq hisoblash
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Qadoqlash
+bill_later_extra_other	Boshqa
 pay_ap_heading	Ularga qarzdorligimizni toʻlash (AP)
 country_tax	Mamlakat va soliq
 extra_tills_heading	Qoʻshimcha kassalar
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — mahsulot va boshlangʻich kredit qoʻshing, so�
 onboard_template_tmpl	Xohlasangiz joyga nom bering, soʻng qanday boshlashni tanlang.
 tmpl_blurb	Kuryer kitoblari va bron qilish stoli: yuk jo'natuvchilar, tashuvchilar, kunlik kitob, AWB.
 tmpl_how	Stolda posilkalarni bron qilish; Bugungi kun uchun kitob; tariflar, partiyalar, hisobotlar uchun yorliqlar.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Do'kon shablonlari
+app_template_blurb	Boshlangʻich ish joyini tanlang. «Hozircha oʻtkazib yuborish» bosilsa, kontragentlar roʻyxati boʻsh qoladi.
+app_template_skip	Hozircha oʻtkazib yuborish
+app_template_status	Server tayyor — shablon import qiling yoki o'tkazib yuboring
+app_template_importing	{title} qoʻllanilmoqda…
+app_template_public_hdr	Andozalar
+app_template_import_selected	Tanlanganni import qilish
+app_template_wipe_warn	Bu daftarlardagi savdo maʼlumotlarini (rezervasyonlar, hisob-kitob daftarlari) tozalaydi va shablonning doʻkon sozlamalarini qoʻllaydi. Davom etilsinmi?
+app_template_wipe_continue	Davom etish
+app_template_wipe_cancel	Bekor qilish
+public_tmpl_help	Shu doʻkon uchun ilova bilan birga kelgan agentlik paketlari. Yuklab olish shart emas.
+business_day	«Bugun» qachon yangidan boshlanadi?
+business_day_help	«Kun yopilguncha» tanlansa, kun yopilishini yozmaguningizcha «Kunlik daftar» yarim tundan keyin ham davom etadi. «Taqvim boʻyicha yarim tun» tanlansa, kun mahalliy vaqt bilan 00:00 da kesiladi.
+biz_day_until_close	Kun yopilguncha
+biz_day_midnight	Taqvim boʻyicha yarim tun
+business_day_saved	Ish kuni saqlandi
+report_day_lens	«Bugun» ni koʻrsatish tartibi
+report_day_lens_help	Faqat koʻrinish — «Kunni yopish» qachon «Bugun» ni yangidan boshlashini oʻzgartirmaydi. «Kun yopilishi boʻyicha» oxirgi kun yopilishidan hisoblaydi; «Yarim tun boʻyicha» mahalliy vaqt bilan 00:00 da kesadi.
+report_lens_day_close	Kun yopilishi boʻyicha
+report_lens_midnight	Yarim tun boʻyicha
 trk_booked	Band qilingan
 trk_picked_up	Ko'tarib oldi; moshinada olib ketdi
 trk_in_transit	Yo'lda

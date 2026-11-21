@@ -3,27 +3,27 @@ app_tagline	Oluranse-ibẹwẹ awọn iwe ohun + fowo si tabili. Ọfẹ offline
 unlock	Ṣii silẹ
 pin_hint	Olohun PIN bẹrẹ bi 0000
 sell	Fowo si
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Pátákó
+board	Pátákó
+park_draft	Fi pamọ́ gẹ́gẹ́ bí àkọsílẹ̀
+board_help	Àwọn àkọsílẹ̀ tí ó ṣí (wọ́n máa wà títí o fi tẹ «Sọ nù» tàbí «Gba owo sisan») àti títà tí a forúkọ sílẹ̀ lónìí. Nínú «Fowo si», tẹ «Fi pamọ́ gẹ́gẹ́ bí àkọsílẹ̀» ní àárín iṣẹ́ (a máa fi pamọ́ síbí, kì í ṣe sínú ìwé); tẹ àkọsílẹ̀ kan láti tẹ̀síwájú.
+board_empty	Kò tíì sí káàdì.
+board_park_nothing	Kò sí ohun láti fi sí ẹ̀gbẹ́ — fi owó iṣẹ́ tàbí àlàyé ìforúkọsílẹ̀ kún un
+board_parked	A ti fi sí «Pátákó» — tábìlì iṣẹ́ ṣófo
+board_draft	Àkọsílẹ̀
+board_booked	fowo si
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Àkọsílẹ̀
+board_filter_booked	fowo si
+board_cols_fmt	Ọwọ̀n {n}
+board_summary_fmt	Káàdì {total} · àkọsílẹ̀ {drafts} · tí a forúkọ sílẹ̀ {booked}
+board_card_no_charges	Kò tíì sí owó iṣẹ́
+board_card_charges	owó iṣẹ́
+board_card_booked	Fowo si
+board_draft_gone	Àkọsílẹ̀ yẹn kò sí nínú «Pátákó» mọ́
+board_draft_closed	A ti parí àkọsílẹ̀ yẹn tẹ́lẹ̀ tàbí a ti sọ ọ́ nù
+board_discard	Sọ nù
+board_discarded	A ti sọ àkọsílẹ̀ nù
 buy	Sanwo jade
 books	Iwe akọọlẹ ọjọ
 books_help	Ipo oni. Ifiweranṣẹ = awọn idii ni. San jade = awọn owo ti ngbe & awọn inawo. Parties = consignors & ngbe.
@@ -93,7 +93,7 @@ parcel	Ile
 order	Ile ounjẹ ibere
 sales	Awọn ifiṣura
 sales_refunds	Awọn ifiṣura & awọn agbapada
-day_close	Ojo sunmo
+day_close	Ìparí ọjọ́
 reports_expenses	Iwe akọọlẹ banki & P&L
 nav_reports	Iroyin
 nav_settings	Eto
@@ -220,7 +220,7 @@ snack_secs_save	Fi akoko gbigbọn pamọ
 snack_secs_saved	Akoko itaniji ti fipamọ - {n} iṣẹju-aaya
 snack_secs_bad	Tẹ awọn iṣẹju-aaya sii bi nọmba (3–60)
 cancelled	fagilee
-cancelling	Cancellingâ¦
+cancelling	Ó ń fagilé…
 cancel	Fagilee
 opening_client	Nsii alabara…
 preparing_desk	Ngbaradi tabili…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Daakọ iwe akọọlẹ onibara CSV
 copy_receipt	Daakọ iwe-ẹri
 copy_report	Daakọ iroyin
 counted_cash_ph	Ti a kà owo ni duroa
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Pade naficula ati sita isokuso
+shift_handover	Yi lọ yi bọ handover
+shift_counted_ph	Owo ka ni handover
+shift_since	Yi naficula niwon
+expected_in_drawer	O ti ṣe yẹ ni duroa
+lock_books_through_month	Ti àwọn ìwé pa títí di oṣù
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Tì pa títí di oṣù yìí
+books_locked_none	Kò tíì sí oṣù tí a tì pa
+books_locked_through	A tì pa títí di
 counter_agency_ph	Orukọ counter / aṣoju (aṣayan)
 create_backup	Ṣẹda afẹyinti
 day_close_summary	Day sunmọ Lakotan
@@ -442,9 +442,9 @@ pay_ap_cash	San owo AP
 pay_ap_upi	San AP UPI
 period_bill	Iwe-owo akoko
 period_bill_party	Iwe-owo akoko (ẹgbẹ)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Ṣẹ̀dá ìwé-owó
+period_bill_generate_print	Ṣẹ̀dá kí o sì tẹ̀ ẹ́ jáde
+booking_bulk_preview	{ok} ti ṣetán · {bad} ní àṣìṣe
 pick_pod_photo	Yan fọto POD
 print_awb_label	Sita AWB aami
 print_open	Tẹjade / ṣii
@@ -653,19 +653,19 @@ attachments_last_expense	Awọn asomọ (owo ti o kẹhin)
 credit_limit_heading	Iwọn kirẹditi (alabara ti a yan tabi olupese)
 pay_selected_heading	Sanwo ti a yan (yanju gbese / gba ilosiwaju)
 write_off_heading	Kọ silẹ (ko kuro laisi sisanwo)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Àwọn ìwé àtúnṣe
+adj_note_amount_ph	Iye
+adj_note_reason_ph	Idi (beere)
+adj_note_awb_ph	AWB tó jọmọ́ (kò pọn dandan)
+credit_note_btn	Ìwé kirẹ́dítì
+debit_note_btn	Ìwé dẹ́bítì
+bill_later_heading	Gba owó lẹ́yìn náà (àfikún owó lẹ́yìn ìforúkọsílẹ̀)
+bill_later_amount_ph	Àfikún iye
+bill_later_party_ph	Oníbàárà tàbí olùpèsè (bí ìforúkọsílẹ̀ kò bá ní nìkan)
+bill_later_btn	Gba owó lẹ́yìn náà
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Ìdìpọ̀ ẹrù
+bill_later_extra_other	Omiiran
 pay_ap_heading	San ohun ti a jẹ wọn (AP)
 country_tax	Orilẹ-ede & owo-ori
 extra_tills_heading	Àwọn káńtà àfikún
@@ -777,26 +777,26 @@ onboard_book_tmpl	Ledger · {} — ṣafikun awọn ohun akojọ aṣayan ati �
 onboard_template_tmpl	Lorukọ aaye naa ti o ba fẹ, lẹhinna yan bi o ṣe le bẹrẹ.
 tmpl_blurb	Oluranse awọn iwe ohun ati fowo si Iduro: consignors, ẹjẹ, ọjọ iwe, AWB.
 tmpl_how	Awọn apo iwe ni tabili; Iwe ọjọ fun oni; awọn taabu fun awọn ošuwọn, ẹni, awọn iroyin.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Àwọn àdàkọ ilé ìtajà
+app_template_blurb	Yan tábìlì iṣẹ́ ìbẹ̀rẹ̀. «Rekọja fun bayi» máa fi àtòjọ àwọn oníbàárà àti olùpèsè sílẹ̀ ní òfo.
+app_template_skip	Rekọja fun bayi
+app_template_status	Olùpèsè ti ṣetán — gbé àdàkọ kan wọlé, tàbí fò ó
+app_template_importing	Nbere {title}…
+app_template_public_hdr	Àwòrán àfọwọ́kọ
+app_template_import_selected	Gbé èyí tí a yàn wọlé
+app_template_wipe_warn	Èyí máa pa dátà ìṣòwò inú àwọn ìwé rẹ́ (àwọn ìforúkọsílẹ̀, àwọn ìwé àkọọ́lẹ̀) yóò sì lo ètò ilé ìtajà ti àdàkọ náà. Ṣé kí a tẹ̀síwájú?
+app_template_wipe_continue	Tesiwaju
+app_template_wipe_cancel	Fagilee
+public_tmpl_help	Àwọn àpò aṣojú tí ó wá pẹ̀lú ohun èlò yìí fún ilé ìtajà yìí. Kò nílò ìgbàsílẹ̀.
+business_day	Ìgbà wo ni «Loni» máa ń bẹ̀rẹ̀ lọ́tun?
+business_day_help	Pẹ̀lú «Títí di ìparí ọjọ́», «Iwe akọọlẹ ọjọ» máa ń tẹ̀síwájú kọjá ọ̀gànjọ́ òru títí o fi kọ ìparí ọjọ́ sílẹ̀. Pẹ̀lú «Ọ̀gànjọ́ òru kàlẹ́ńdà», ọjọ́ máa ń parí ní 00:00 ní àkókò ìbílẹ̀.
+biz_day_until_close	Títí di ìparí ọjọ́
+biz_day_midnight	Ọ̀gànjọ́ òru kàlẹ́ńdà
+business_day_saved	A ti fi ọjọ́ iṣẹ́ pamọ́
+report_day_lens	Fi «Loni» hàn gẹ́gẹ́ bí
+report_day_lens_help	Fún wíwò nìkan — kò yí ìgbà tí «Ìparí ọjọ́» ń bẹ̀rẹ̀ «Loni» lọ́tun padà. «Gẹ́gẹ́ bí ìparí ọjọ́» ń tẹ̀lé ìparí ọjọ́ tó kẹ́yìn; «Gẹ́gẹ́ bí ọ̀gànjọ́ òru» ń gé ní 00:00 ní àkókò ìbílẹ̀.
+report_lens_day_close	Gẹ́gẹ́ bí ìparí ọjọ́
+report_lens_midnight	Gẹ́gẹ́ bí ọ̀gànjọ́ òru
 trk_booked	fowo si
 trk_picked_up	Ti gbe
 trk_in_transit	Wa loju ona

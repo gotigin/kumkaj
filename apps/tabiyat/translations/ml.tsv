@@ -365,15 +365,15 @@ print_open	അച്ചടിക്കുക / തുറക്കുക
 reason_amend_ph	ഭേദഗതി / റദ്ദാക്കൽ / റീഫണ്ട് കാരണം
 reason_note_ph	കാരണം / കുറിപ്പ് (പാഴ്, എണ്ണം, …)
 record_day_close	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുക
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ഇന്ന്» എപ്പോൾ പുതുതായി തുടങ്ങും?
+business_day_help	«ദിവസം അടയ്ക്കൽ വരെ» തിരഞ്ഞെടുത്താൽ, നിങ്ങൾ ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുന്നതുവരെ «ദിന ബുക്ക്» അർദ്ധരാത്രിക്കു ശേഷവും തുടരും. «കലണ്ടർ അർദ്ധരാത്രി» തിരഞ്ഞെടുത്താൽ, ദിവസം പ്രാദേശിക സമയം രാത്രി 12:00-ന് അവസാനിക്കും.
+biz_day_until_close	ദിവസം അടയ്ക്കൽ വരെ
+biz_day_midnight	കലണ്ടർ അർദ്ധരാത്രി
+business_day_saved	വ്യാപാര ദിവസം സേവ് ചെയ്തു
+report_day_lens	«ഇന്ന്» ഇങ്ങനെ കാണിക്കുക
+report_day_lens_help	കാണാൻ മാത്രം — «ദിവസം അടയ്ക്കൽ» എപ്പോൾ «ഇന്ന്» പുതുതായി തുടങ്ങുന്നു എന്നത് ഇത് മാറ്റില്ല. «ദിവസം അടയ്ക്കൽ പ്രകാരം» അവസാനത്തെ ദിവസം അടയ്ക്കൽ മുതൽ കണക്കാക്കും; «അർദ്ധരാത്രി പ്രകാരം» പ്രാദേശിക സമയം രാത്രി 12:00-ന് വേർതിരിക്കും.
+report_lens_day_close	ദിവസം അടയ്ക്കൽ പ്രകാരം
+report_lens_midnight	അർദ്ധരാത്രി പ്രകാരം
 refresh_from_shop	കടയിൽ നിന്ന് പുതുക്കുക
 refund	റീഫണ്ട്
 remove_selected	തിരഞ്ഞെടുത്തത് മാറ്റുക
@@ -849,19 +849,19 @@ client_template_confirm	{title}-ൽ നിന്ന് {d} ഇനങ്ങൾ �
 client_template_importing	{title} ഇമ്പോർട്ട്…
 client_template_done	{title}-ലെ ഓരോ ഇനവും നിങ്ങളുടെ ഇനങ്ങളിലുണ്ട്.
 client_template_imported	{title}-ൽ നിന്ന് {d} ഇനങ്ങളും {c} വിഭാഗങ്ങളും ചേർത്തു
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	കട ടെംപ്ലേറ്റുകൾ
+app_template_blurb	തുടക്കത്തിനുള്ള കാറ്റലോഗും കട ക്രമീകരണങ്ങളും തിരഞ്ഞെടുക്കുക. «ഇപ്പോൾ ഒഴിവാക്കുക» അമർത്തിയാൽ ഷെൽഫ് ഒഴിഞ്ഞിരിക്കും.
+app_template_skip	ഇപ്പോൾ ഒഴിവാക്കുക
+app_template_status	സെർവർ തയ്യാർ — ഒരു ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
+app_template_importing	{title} പ്രയോഗിക്കുന്നു…
+app_template_import_selected	തിരഞ്ഞെടുത്തത് ഇമ്പോർട്ട് ചെയ്യുക
+app_template_wipe_warn	ഇത് കണക്കുപുസ്തകത്തിലെ വ്യാപാര ഡാറ്റ (വിൽപ്പന, ലെഡ്ജറുകൾ) മായ്ച്ച് ടെംപ്ലേറ്റിന്റെ കട ക്രമീകരണങ്ങൾ ബാധകമാക്കും. തുടരണോ?
+app_template_wipe_continue	തുടരുക
+app_template_wipe_cancel	റദ്ദാക്കുക
+app_template_from_device	ഈ ഉപകരണത്തിൽ നിന്ന് ഇമ്പോർട്ട് ചെയ്യുക
+app_template_from_device_help	template.json ഉള്ള ഫോൾഡർ തിരഞ്ഞെടുക്കുക (shop_defaults.json ഉണ്ടെങ്കിൽ അതും).
+settings_app_tmpl_note	പൂർണ്ണ കട പാക്കുകൾ: കാറ്റലോഗും കട ക്രമീകരണങ്ങളും. ഒരു പാക്ക് വീണ്ടും ഇമ്പോർട്ട് ചെയ്താൽ വിൽപ്പനയും ലെഡ്ജറുകളും മായ്ക്കപ്പെടും; പിന്നെ പാക്കിന്റെ കട ക്രമീകരണങ്ങൾ ബാധകമാകും.
+app_tmpl_named	{name} കട ടെംപ്ലേറ്റ്
 cancel	റദ്ദാക്കുക
 removing	നീക്കം ചെയ്യുന്നു…
 removed	നീക്കം ചെയ്തു

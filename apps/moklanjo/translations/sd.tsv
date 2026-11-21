@@ -3,27 +3,27 @@ app_tagline	ڪوريئر ايجنسي ڪتاب + بکنگ ڊيسڪ. مفت آف 
 unlock	ان لاڪ ڪريو
 pin_hint	مالڪ PIN 0000 طور شروع ٿئي ٿو
 sell	بکنگ
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	بورڊ
+board	بورڊ
+park_draft	ڊرافٽ ۾ رکو
+board_help	کليل ڊرافٽ («هٽايو» يا «ادائگي وٺو» ڪرڻ تائين رهن ٿا) ۽ اڄ جو بک ٿيل وڪرو. «بکنگ» تي ڪم جي وچ ۾ «ڊرافٽ ۾ رکو» تي ٽيپ ڪريو (هتي محفوظ ٿئي ٿو، کاتن ۾ نه)؛ ٻيهر شروع ڪرڻ لاءِ ڊرافٽ تي ٽيپ ڪريو.
+board_empty	اڃا ڪو ڪارڊ ناهي.
+board_park_nothing	رکڻ لاءِ ڪجهه ناهي — چارج يا بکنگ جا تفصيل شامل ڪريو
+board_parked	«بورڊ» تي رکيو ويو — ڊيسڪ خالي آهي
+board_draft	ڊرافٽ
+board_booked	بک ٿيل
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ڊرافٽ
+board_filter_booked	بک ٿيل
+board_cols_fmt	{n} ڪالم
+board_summary_fmt	{total} ڪارڊ · {drafts} ڊرافٽ · {booked} بک ٿيل
+board_card_no_charges	اڃا ڪو چارج ناهي
+board_card_charges	چارج
+board_card_booked	بکنگ
+board_draft_gone	اهو ڊرافٽ هاڻي «بورڊ» تي ناهي
+board_draft_closed	اهو ڊرافٽ اڳ ۾ ئي مڪمل ٿي چڪو آهي يا هٽايو ويو آهي
+board_discard	هٽايو
+board_discarded	ڊرافٽ هٽايو ويو
 buy	ادا ڪريو
 books	روزنامچو
 books_help	اڄ جي پوزيشن. بکنگ = پارسل اندر. ادا ڪريو = ڪيريئر بل ۽ خرچ. پارٽيون = موڪليندڙ ۽ ڪيريئر.
@@ -220,7 +220,7 @@ snack_secs_save	خبردار وقت محفوظ ڪريو
 snack_secs_saved	خبردار وقت محفوظ ٿيو — {n} سيڪنڊ
 snack_secs_bad	سيڪنڊن کي نمبر طور داخل ڪريو (3-60)
 cancelled	منسوخ ٿي ويو
-cancelling	Cancellingâ¦
+cancelling	منسوخ ٿي رهيو آهي…
 cancel	منسوخ
 opening_client	ڪسٽمر کوليو پيو وڃي...
 preparing_desk	ميز تيار پيو ڪيو وڃي...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	پارٽي ليجر جي نقل CSV
 copy_receipt	رسيد جي نقل ڪريو
 copy_report	رپورٽ ڪاپي ڪريو
 counted_cash_ph	درانور ۾ ڳڻيل نقد
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	شفٽ بند ڪريو ۽ پرنٽ سلپ نڪرو
+shift_handover	شفٽ هينڊ اوور
+shift_counted_ph	منتقلي تي هٿ ۾ رقم ڳڻپڻ
+shift_since	هي شفٽ کان وٺي
+expected_in_drawer	دراز ۾ متوقع
+lock_books_through_month	مهيني تائين کاتا لاڪ ڪريو
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	هن مهيني تائين لاڪ ڪريو
+books_locked_none	اڃا ڪو مهينو لاڪ ناهي
+books_locked_through	ڪهڙي مهيني تائين لاڪ
 counter_agency_ph	ڪائونٽر / ايجنسي جو نالو (اختياري)
 create_backup	بيڪ اپ ٺاهيو
 day_close_summary	ڏينهن جو اختتامي خلاصو
@@ -442,9 +442,9 @@ pay_ap_cash	اي پي نقد سان ادا ڪريو
 pay_ap_upi	AP ادا ڪريو UPI
 period_bill	مدت بل
 period_bill_party	مدت بل (پارٽي)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	بل ٺاهيو
+period_bill_generate_print	ٺاهيو ۽ ڇاپيو
+booking_bulk_preview	{ok} تيار · {bad} خراب
 pick_pod_photo	POD فوٽو چونڊيو
 print_awb_label	AWB ليبل پرنٽ ڪريو
 print_open	پرنٽ / کوليو
@@ -653,19 +653,19 @@ attachments_last_expense	منسلڪات (آخري خرچ)
 credit_limit_heading	ڪريڊٽ حد (چونڊيل / نالي سان پارٽي)
 pay_selected_heading	منتخب ادا ڪريو (قرض صاف ڪريو / اڳواٽ وٺو)
 write_off_heading	ادائيگي کان بغير ختم ڪريو
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ايڊجسٽمينٽ نوٽ
+adj_note_amount_ph	رقم
+adj_note_reason_ph	سبب (ضروري)
+adj_note_awb_ph	لاڳاپيل AWB (اختياري)
+credit_note_btn	ڪريڊٽ نوٽ
+debit_note_btn	ڊيبٽ نوٽ
+bill_later_heading	بعد ۾ بل ڪريو (بکنگ کان پوءِ جو اضافي چارج)
+bill_later_amount_ph	اضافي رقم
+bill_later_party_ph	ڌر (رڳو تڏهن جڏهن بکنگ ۾ ڪا نه هجي)
+bill_later_btn	بعد ۾ بل ڪريو
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	پيڪنگ
+bill_later_extra_other	ٻيو
 pay_ap_heading	جن جو اسان تي قرض آهي اهو ادا ڪريو (AP)
 country_tax	ملڪ ۽ ٽيڪس
 extra_tills_heading	اضافي ڪيش ڪائونٽر
@@ -777,26 +777,26 @@ onboard_book_tmpl	ڪتاب · {} — شيون ۽ شروعاتي ڪريڊٽ شا�
 onboard_template_tmpl	جيڪڏهن توهان چاهيو ته جاءِ جو نالو ڏيو، پوءِ شروع ڪرڻ جو طريقو چونڊيو.
 tmpl_blurb	ڪوريئر ڪتاب ۽ بکنگ ڊيسڪ: موڪليندڙ، ڪيريئر، ڏينهن جو ڪتاب، AWB.
 tmpl_how	ڊيسڪ تي ڪتاب پارسل؛ اڄ ڏينهن لاء ڪتاب؛ قيمتون، پارٽيون، رپورٽون لاء ٽيب.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	دڪان جا ٽيمپليٽ
+app_template_blurb	شروعاتي ڊيسڪ چونڊيو. «هاڻي لاءِ ڇڏي ڏيو» تي ٽيپ ڪرڻ سان ڌرين جي لسٽ خالي رهندي.
+app_template_skip	هاڻي لاءِ ڇڏي ڏيو
+app_template_status	سرور تيار — ٽيمپليٽ درآمد ڪريو، يا ڇڏي ڏيو
+app_template_importing	{title} لاڳو ٿي رهيو آهي...
+app_template_public_hdr	ٽيمپليٽ
+app_template_import_selected	چونڊيل درآمد ڪريو
+app_template_wipe_warn	هن سان کاتن جو ڪاروباري ڊيٽا (بکنگ، کاتا) صاف ٿي ويندو ۽ ٽيمپليٽ جون دڪان سيٽنگون لاڳو ٿينديون. جاري رکون؟
+app_template_wipe_continue	جاري رکو
+app_template_wipe_cancel	منسوخ
+public_tmpl_help	هن دڪان لاءِ ايپ سان گڏ آيل ايجنسي پيڪ. ڊائونلوڊ جي ضرورت ناهي.
+business_day	«اڄ» ڪڏهن نئين سر شروع ٿئي ٿو؟
+business_day_help	«ڏينهن جو اختتام تائين» چونڊڻ سان «روزنامچو» اڌ رات کان پوءِ به هلندو رهي ٿو، جيستائين توهان ڏينهن جو اختتام درج نه ڪريو. «ڪئلينڊر جي اڌ رات» چونڊڻ سان ڏينهن مقامي وقت موجب رات 12:00 وڳي ڪٽجي ٿو.
+biz_day_until_close	ڏينهن جو اختتام تائين
+biz_day_midnight	ڪئلينڊر جي اڌ رات
+business_day_saved	ڪاروباري ڏينهن محفوظ ٿيو
+report_day_lens	«اڄ» کي هيئن ڏسو
+report_day_lens_help	رڳو ڏسڻ لاءِ — هن سان اهو نٿو بدلجي ته «ڏينهن جو اختتام» ڪڏهن «اڄ» کي نئين سر شروع ڪري ٿو. «ڏينهن جو اختتام موجب» آخري ڏينهن جي اختتام کان ڳڻي ٿو؛ «اڌ رات موجب» مقامي وقت موجب رات 12:00 وڳي ڪٽي ٿو.
+report_lens_day_close	ڏينهن جو اختتام موجب
+report_lens_midnight	اڌ رات موجب
 trk_booked	بک ٿيل
 trk_picked_up	کنيو
 trk_in_transit	لنگهه ۾

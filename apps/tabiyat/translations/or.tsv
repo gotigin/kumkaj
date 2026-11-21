@@ -365,15 +365,15 @@ print_open	ଛାପନ୍ତୁ / ଖୋଲନ୍ତୁ
 reason_amend_ph	ସଂଶୋଧନ / ବାତିଲ / ଫେରସ୍ତର କାରଣ
 reason_note_ph	କାରଣ / ନୋଟ୍ (ନଷ୍ଟ, ଗଣନା, …)
 record_day_close	ଦିନ ବନ୍ଦ ରେକର୍ଡ କରନ୍ତୁ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ଆଜି» କେବେ ନୂଆ କରି ଆରମ୍ଭ ହୁଏ?
+business_day_help	«ଦିନ ବନ୍ଦ ପର୍ଯ୍ୟନ୍ତ» ବାଛିଲେ, ଆପଣ ଦିନ ବନ୍ଦ ରେକର୍ଡ ନ କରିବା ପର୍ଯ୍ୟନ୍ତ «ଦିନ ବୁକ୍» ମଧ୍ୟରାତ୍ରି ପରେ ବି ଚାଲିଥାଏ। «କ୍ୟାଲେଣ୍ଡରର ମଧ୍ୟରାତ୍ରି» ବାଛିଲେ, ଦିନ ସ୍ଥାନୀୟ ସମୟ ରାତି 12:00ରେ କଟିଯାଏ।
+biz_day_until_close	ଦିନ ବନ୍ଦ ପର୍ଯ୍ୟନ୍ତ
+biz_day_midnight	କ୍ୟାଲେଣ୍ଡରର ମଧ୍ୟରାତ୍ରି
+business_day_saved	ବ୍ୟବସାୟ ଦିନ ସେଭ ହେଲା
+report_day_lens	«ଆଜି»କୁ ଏହିପରି ଦେଖନ୍ତୁ
+report_day_lens_help	କେବଳ ଦେଖିବା ପାଇଁ — «ଦିନ ବନ୍ଦ» କେବେ «ଆଜି»କୁ ନୂଆ କରି ଆରମ୍ଭ କରେ ତାହା ଏଥିରେ ବଦଳେ ନାହିଁ। «ଦିନ ବନ୍ଦ ଅନୁସାରେ» ଶେଷ ଦିନ ବନ୍ଦଠାରୁ ଗଣେ; «ମଧ୍ୟରାତ୍ରି ଅନୁସାରେ» ସ୍ଥାନୀୟ ସମୟ ରାତି 12:00ରେ କାଟେ।
+report_lens_day_close	ଦିନ ବନ୍ଦ ଅନୁସାରେ
+report_lens_midnight	ମଧ୍ୟରାତ୍ରି ଅନୁସାରେ
 refresh_from_shop	ଦୋକାନରୁ ରିଫ୍ରେଶ କରନ୍ତୁ
 refund	ଫେରସ୍ତ
 remove_selected	ବଛା ହଟାନ୍ତୁ
@@ -849,19 +849,19 @@ client_template_confirm	{title} ରୁ {d}ଟି ଆଇଟମ୍ ଯୋଡ଼ି
 client_template_importing	{title} ଆମଦାନି…
 client_template_done	{title} ର ପ୍ରତି ଆଇଟମ୍ ଆପଣଙ୍କ ଆଇଟମ୍‌ରେ ଅଛି।
 client_template_imported	{title} ରୁ {d}ଟି ଆଇଟମ୍ ଓ {c}ଟି ବର୍ଗ ଯୋଡ଼ାଗଲା
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	ଦୋକାନ ଟେମ୍ପଲେଟ
+app_template_blurb	ଆରମ୍ଭ ପାଇଁ ଏକ କ୍ୟାଟାଲଗ ଓ ଦୋକାନ ସେଟିଂ ବାଛନ୍ତୁ। «ଏବେ ଛାଡ଼ନ୍ତୁ» ଦବାଇଲେ ଥାକ ଖାଲି ରହିବ।
+app_template_skip	ଏବେ ଛାଡ଼ନ୍ତୁ
+app_template_status	ସର୍ଭର ପ୍ରସ୍ତୁତ — ଏକ ଟେମ୍ପଲେଟ ଆମଦାନି କରନ୍ତୁ, କିମ୍ବା ଛାଡ଼ନ୍ତୁ
+app_template_importing	{title} ଲଗାଯାଉଛି…
+app_template_import_selected	ବଛାଯାଇଥିବା ଆମଦାନି କରନ୍ତୁ
+app_template_wipe_warn	ଏହା ବହିର ବ୍ୟବସାୟ ତଥ୍ୟ (ବିକ୍ରୟ, ଖାତା) ସଫା କରିବ ଓ ଟେମ୍ପଲେଟର ଦୋକାନ ସେଟିଂ ଲାଗୁ କରିବ। ଆଗକୁ ବଢ଼ିବେ?
+app_template_wipe_continue	ଆଗକୁ ବଢ଼ନ୍ତୁ
+app_template_wipe_cancel	ବାତିଲ
+app_template_from_device	ଏହି ଡିଭାଇସରୁ ଆମଦାନି କରନ୍ତୁ
+app_template_from_device_help	ଯେଉଁ ଫୋଲ୍ଡରରେ template.json ଅଛି ତାହା ବାଛନ୍ତୁ (shop_defaults.json ଥିଲେ ତାହା ମଧ୍ୟ)।
+settings_app_tmpl_note	ପୂର୍ଣ୍ଣ ଦୋକାନ ପ୍ୟାକ: କ୍ୟାଟାଲଗ ଓ ଦୋକାନ ସେଟିଂ। କୌଣସି ପ୍ୟାକକୁ ପୁଣି ଆମଦାନି କଲେ ବିକ୍ରୟ ଓ ଖାତା ସଫା ହୋଇଯାଏ, ତା'ପରେ ପ୍ୟାକର ଦୋକାନ ସେଟିଂ ଲାଗୁ ହୁଏ।
+app_tmpl_named	{name} ଦୋକାନ ଟେମ୍ପଲେଟ
 cancel	ବାତିଲ୍
 removing	ହଟାଯାଉଛି…
 removed	ହଟାଗଲା

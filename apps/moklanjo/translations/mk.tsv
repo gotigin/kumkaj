@@ -3,27 +3,27 @@ app_tagline	Курирско-агенциски книги + резерваци�
 unlock	Отклучи
 pin_hint	Сопственикот PIN започнува како 0000
 sell	Резервација
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Табла
+board	Табла
+park_draft	Остави како нацрт
+board_help	Отворени нацрти (остануваат додека не изберете «Отфрли» или «Земете плаќање») и денешните прокнижени продажби. Во «Резервација», допрете «Остави како нацрт» среде работа (се зачувува овде, не во книгите); допрете нацрт за да продолжите.
+board_empty	Сè уште нема картички.
+board_park_nothing	Нема што да се остави настрана — додајте трошоци или податоци за резервацијата
+board_parked	Оставено на «Табла» — бирото е слободно
+board_draft	Нацрт
+board_booked	Резервирано
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Нацрт
+board_filter_booked	Резервирано
+board_cols_fmt	{n} кол.
+board_summary_fmt	{total} картички · {drafts} нацрти · {booked} прокнижени
+board_card_no_charges	Сè уште нема трошоци
+board_card_charges	трошоци
+board_card_booked	Резервација
+board_draft_gone	Тој нацрт повеќе не е на «Табла»
+board_draft_closed	Тој нацрт е веќе завршен или отфрлен
+board_discard	Отфрли
+board_discarded	Нацртот е отфрлен
 buy	Исплати
 books	Дневна книга
 books_help	Денешниот став. Резервација = пакети. Исплати = сметки и трошоци на превозникот. Страни = испраќачи и превозници.
@@ -88,12 +88,12 @@ applied	Применета
 note_ph	Забелешка (изборно)
 rounded	ЗАКЛУЖЕНИ
 split	Сплит
-counter	Бројач
+counter	Шанк
 parcel	Парцела
 order	Ресторан нарачка
 sales	Резервации
 sales_refunds	Резервации и рефундирање
-day_close	Затворен ден
+day_close	Затворање на денот
 reports_expenses	Банкарска книга и P&L
 nav_reports	Извештаи
 nav_settings	Поставки
@@ -220,7 +220,7 @@ snack_secs_save	Заштедете време за предупредување
 snack_secs_saved	Зачувано време на предупредување — {n} секунди
 snack_secs_bad	Внесете секунди како број (3–60)
 cancelled	Откажано
-cancelling	Cancellingâ¦
+cancelling	Се откажува…
 cancel	Откажи
 opening_client	Се отвора клиентот…
 preparing_desk	Се подготвува биро…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Копирај ја книгата за клиенти CSV
 copy_receipt	Копирај ја потврдата
 copy_report	Копирај извештај
 counted_cash_ph	Избројана готовина во фиока
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Затворете го менувачот и отпечатете го листот
+shift_handover	Предавање смена
+shift_counted_ph	Готовина се брои при предавање
+shift_since	Оваа промена оттогаш
+expected_in_drawer	Се очекува во фиока
+lock_books_through_month	Заклучи ги книгите до крајот на месецот
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Заклучи до крајот на овој месец
+books_locked_none	Сè уште нема заклучен месец
+books_locked_through	Заклучено до
 counter_agency_ph	Бројач / име на агенција (изборно)
 create_backup	Направете резервна копија
 day_close_summary	Краток преглед на денот
@@ -442,9 +442,9 @@ pay_ap_cash	Платете АП готовина
 pay_ap_upi	Плати АП UPI
 period_bill	Сметката за период
 period_bill_party	Сметката за период (партија)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Издај сметка
+period_bill_generate_print	Издај и печати
+booking_bulk_preview	{ok} готови · {bad} со грешка
 pick_pod_photo	Изберете POD фотографија
 print_awb_label	Печатете ја етикетата AWB
 print_open	Печати / отвори
@@ -653,19 +653,19 @@ attachments_last_expense	Прилози (последен трошок)
 credit_limit_heading	Кредитен лимит (избран клиент или добавувач)
 pay_selected_heading	Исплати избраното (подмири долг / земи однапред)
 write_off_heading	Отпиши (исчисти без плаќање)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Книжни известувања
+adj_note_amount_ph	Износ
+adj_note_reason_ph	Причина (задолжителна)
+adj_note_awb_ph	Поврзан AWB (по избор)
+credit_note_btn	Книжно одобрување
+debit_note_btn	Книжно задолжување
+bill_later_heading	Наплати подоцна (доплата по резервација)
+bill_later_amount_ph	Дополнителен износ
+bill_later_party_ph	Клиент или добавувач (само ако резервацијата нема)
+bill_later_btn	Наплати подоцна
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Пакување
+bill_later_extra_other	Друго
 pay_ap_heading	Платете го она што им го должиме (АП)
 country_tax	Земја и данок
 extra_tills_heading	Дополнителни каси
@@ -777,26 +777,26 @@ onboard_book_tmpl	Леџер · {} — додајте ставки од мени
 onboard_template_tmpl	Именувајте го местото ако сакате, а потоа изберете како да започнете.
 tmpl_blurb	Курирски книги и биро за резервации: испраќачи, превозници, дневник, AWB.
 tmpl_how	Резервирајте пакети на бирото; Дневна книга за денес; јазичиња за стапки, забави, извештаи.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Шаблони за продавница
+app_template_blurb	Изберете почетно работно место. «Засега прескокнете» ги остава клиентите и добавувачите празни.
+app_template_skip	Засега прескокнете
+app_template_status	Серверот е подготвен — увезете шаблон или прескокнете
+app_template_importing	Се применува {title}…
+app_template_public_hdr	Шаблони
+app_template_import_selected	Увези го избраното
+app_template_wipe_warn	Ова ги брише трговските податоци во книгите (резервации, сметки) и ги применува поставките на продавницата од шаблонот. Да продолжиме?
+app_template_wipe_continue	Продолжи
+app_template_wipe_cancel	Откажи
+public_tmpl_help	Вградени агенциски пакети за оваа продавница. Не е потребно преземање.
+business_day	Кога «Денес» почнува одново?
+business_day_help	Со «До затворање на денот», «Дневна книга» продолжува и по полноќ додека не го запишете затворањето на денот. Со «Календарска полноќ», денот завршува во 00:00 по локално време.
+biz_day_until_close	До затворање на денот
+biz_day_midnight	Календарска полноќ
+business_day_saved	Работниот ден е зачуван
+report_day_lens	Прикажи «Денес» како
+report_day_lens_help	Само приказ — не менува кога «Затворање на денот» го почнува «Денес» одново. «Според затворање на денот» смета од последното затворање на денот; «Според полноќ» сече во 00:00 по локално време.
+report_lens_day_close	Според затворање на денот
+report_lens_midnight	Според полноќ
 trk_booked	Резервирано
 trk_picked_up	Собрано
 trk_in_transit	Во транзит

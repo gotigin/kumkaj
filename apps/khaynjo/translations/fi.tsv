@@ -384,12 +384,12 @@ app_template_need_internet	Pohjien lataamiseen tarvitaan internet
 app_template_import_selected	Tuo valittu
 app_template_check_code	Tarkista koodi
 app_template_import	Tuo
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Tuo tästä laitteesta
+app_template_from_device_help	Valitse kansio, jossa on template.json (ja halutessasi shop_defaults.json).
+settings_app_tmpl_note	Uudelleentuonti tyhjentää myynnit, KOT:t ja tilit ja ottaa sitten käyttöön paketin liikeasetukset. Pelkän ruokalistan mallit: «Ruokalista» → «Tuotemallit».
+app_template_wipe_warn	Tämä tyhjentää kirjanpidon kauppatiedot (myynnit, KOT:t, tilit) ja ottaa käyttöön mallin liikeasetukset. Ruokalista ja asetukset voivat muuttua. Jatketaanko?
+app_template_wipe_continue	Jatka
+app_template_wipe_cancel	Peru
 currency	Valuutta
 backup	Varmuuskopio
 use	Käytä
@@ -550,22 +550,22 @@ new_party_clear	Uusi osapuoli (tyhjennä lomake)
 new_party_kind_supplier_ph	Uuden osapuolen laji (toimittaja)
 next_country	Seuraava maa
 next_order	Seuraava tilaus (tyhjennä pöytä)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Luonnokset
+park_draft	Siirrä luonnoksiin
+drafts_help	Tiskin tilaukset, jotka olet jättänyt kesken sivuun — ne kirjataan vasta, kun valitset «Ota maksu». Napauta korttia jatkaaksesi näkymässä «Tilaus»; «Hylkää luonnos» poistaa luonnoksen. «Päivän sulku» ei tyhjennä näitä.
+drafts_park_nothing	Ei mitään siirrettävää sivuun — lisää tuotteita koriin
+drafts_park_counter_only	«Siirrä luonnoksiin» on vain tiskin tilauksille — poistu pöytätilauksesta tai käytä näkymää «Sali»
+drafts_parked	Siirretty kohtaan «Luonnokset» — tiski on vapaa
+drafts_discard	Hylkää luonnos
+drafts_discarded	Luonnos hylätty
+drafts_gone	Luonnosta ei enää ole luettelossa
+drafts_closed	Luonnos on jo maksettu tai hylätty
+drafts_empty	Ei vielä luonnoksia. Lisää annoksia näkymässä «Tiski» ja napauta «Siirrä luonnoksiin».
+drafts_card_kind	Luonnos
+drafts_card_no_lines	Ei rivejä
+drafts_card_lines	riviä
+drafts_summary_fmt	{n} avointa luonnosta
+drafts_cols_fmt	{n} sar.
 note_gstin_ph	Huomautus / GSTIN / sopimusmuistutus
 notes_attach_party	Huomautukset ja liitteet (valittu osapuoli)
 notes_attach_sale	Huomautukset ja liitteet (valittu myynti)
@@ -588,15 +588,15 @@ print_open	Tulosta / avaa
 reason_amend_ph	Syy oikaisulle / mitätöinnille / hyvitykselle
 reason_note_ph	Syy / huomautus (hävikki, laskenta, …)
 record_day_close	Kirjaa päivän sulku
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Milloin «Tänään» alkaa alusta?
+business_day_help	Valinnalla «Päivän sulkuun asti» «Päiväkirja» jatkuu keskiyön yli, kunnes kirjaat päivän sulun. Valinnalla «Kalenterin keskiyö» päivä katkeaa klo 00.00 paikallista aikaa.
+biz_day_until_close	Päivän sulkuun asti
+biz_day_midnight	Kalenterin keskiyö
+business_day_saved	Liiketoimintapäivä tallennettu
+report_day_lens	Näytä «Tänään» muodossa
+report_day_lens_help	Vain näkymä — ei muuta sitä, milloin «Päivän sulku» aloittaa kohdan «Tänään» alusta. «Päivän sulun mukaan» laskee viimeisestä päivän sulusta; «Keskiyön mukaan» katkaisee klo 00.00 paikallista aikaa.
+report_lens_day_close	Päivän sulun mukaan
+report_lens_midnight	Keskiyön mukaan
 refresh_from_shop	Päivitä liikkeestä
 refund	Hyvitä
 remove_selected	Poista valittu
@@ -864,7 +864,7 @@ find_printers	Etsi tulostimet
 printers_looking	Etsitään…
 saving_printer	Lisätään tulostinta…
 cancelled	Peruttu
-cancelling	Cancellingâ¦
+cancelling	Peruutetaan…
 removing	Poistetaan…
 removed	Poistettu
 updating_order	Päivitetään…

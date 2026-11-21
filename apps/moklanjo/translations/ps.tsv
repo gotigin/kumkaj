@@ -3,27 +3,27 @@ app_tagline	د کورئیر ادارې کتابونه + د بکینګ میز. و
 unlock	خلاصول
 pin_hint	د مالک PIN د 0000 په توګه پیل کیږي
 sell	بکنگ
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	بورډ
+board	بورډ
+park_draft	د مسودې په توګه خوندي کول
+board_help	ناکام شوي مسودې (تر هغې ساتل کیږي ترڅو چې تاسو «لغوه کول» یا «تادیه واخلئ» ټاپ کړئ) او د نن ورځې ثبت شوي پلورونه. په «بکنگ»، د خپل کار په منځ کې «د مسودې په توګه خوندي کول» ټاپ کړئ (دا دلته خوندي شوی، په حسابونو کې نه); د مسودې د دوام لپاره ټاپ کړئ.
+board_empty	تر اوسه کوم کارتونه نه دي.
+board_park_nothing	د مسوده په توګه د خوندي کولو لپاره څه نشته — فیسونه یا د بکینګ تفصيلات اضافه کړئ
+board_parked	په «بورډ» کې خوندي شو — ډیسک اوس خالي دی
+board_draft	مسوده
+board_booked	بک شوی
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	مسوده
+board_filter_booked	بک شوی
+board_cols_fmt	{n} کالمونه
+board_summary_fmt	{total} کارتونه · {drafts} مسودې · {booked} ثبت شوی
+board_card_no_charges	تر دې دمه کومه فیس نده اضافه شوې
+board_card_charges	فیسونه
+board_card_booked	بکنگ
+board_draft_gone	هغه مسوده نور په «بورډ» کې نه ده
+board_draft_closed	هغه مسوده مخکې له مخکې بشپړه شوې وه یا حذف شوې وه
+board_discard	لغوه کول
+board_discarded	مسوده حذف شوه
 buy	تادیه کول
 books	د ورځې کتاب
 books_help	د نن ورځې دریځ. بکینګ = پارسلونه. تادیه کول = د کیریر بیلونه او لګښتونه. ګوندونه = لیږدونکي او لیږدونکي.
@@ -90,7 +90,7 @@ rounded	ګرد شوی
 split	ویشل
 counter	کاونټر
 parcel	پارسل
-order	امر
+order	فرمایش
 sales	کتابونه
 sales_refunds	بکنگ او بیرته ستنیدنه
 day_close	د ورځې بند
@@ -220,7 +220,7 @@ snack_secs_save	د خبرتیا وخت خوندي کړئ
 snack_secs_saved	د خبرتیا وخت خوندي شوی — {n} ثانیې
 snack_secs_bad	ثانیې د شمیرې په توګه دننه کړئ (3-60)
 cancelled	لغوه شو
-cancelling	Cancellingâ¦
+cancelling	لغوه کول…
 cancel	لغوه کړئ
 opening_client	کلاینټ پرانیستل کېږي…
 preparing_desk	د میز چمتو کول...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	د ګوند لیجر CSV کاپي کړئ
 copy_receipt	د رسید کاپي
 copy_report	راپور کاپي
 counted_cash_ph	په دراز کې نغدې شمیرل شوي
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	شفټ بند کړئ او پرچی چاپ کړئ
+shift_handover	د لیږد لیږد
+shift_counted_ph	په سپارلو کې نغدي شمیرل کیږي
+shift_since	دا بدلون له هغه راهیسې
+expected_in_drawer	په دراز کې تمه کیږي
+lock_books_through_month	حسابونه د میاشتې تر پایه بند کړئ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	تر دې میاشتې تر پایه پورې تړل
+books_locked_none	هنوز کومه میاشت نه ده تړل شوې
+books_locked_through	اکاونټونه تر دې پورې بند شوي دي
 counter_agency_ph	د کاونټر / ادارې نوم (اختیاري)
 create_backup	بیک اپ جوړ کړئ
 day_close_summary	د ورځې پای لنډیز
@@ -442,9 +442,9 @@ pay_ap_cash	د AP نغدي پیسې ورکړئ
 pay_ap_upi	تادیه کړئ UPI AP
 period_bill	د دورې بل
 period_bill_party	د دورې قانون (ګوند)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	انویس جوړ کړئ
+period_bill_generate_print	جوړ کړئ او چاپ یې کړئ
+booking_bulk_preview	{ok} چمتو دی · {bad} د تېروتنو سره
 pick_pod_photo	د POD عکس غوره کړئ
 print_awb_label	د AWB لیبل چاپ کړئ
 print_open	چاپ / خلاص کړئ
@@ -653,19 +653,19 @@ attachments_last_expense	ضمیمې (وروستی لګښت)
 credit_limit_heading	د کریډیټ حد (ټاکل شوی / نومول شوی ګوند)
 pay_selected_heading	ټاکل شوی تادیه (پور تصفیه کول / مخکې اخیستل)
 write_off_heading	ولیکئ (پرته له تادیې پاک کړئ)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	د تعدیلاتو یادښتونه
+adj_note_amount_ph	مقدار
+adj_note_reason_ph	دلیل (اړین)
+adj_note_awb_ph	اړوند AWB (اختیاري)
+credit_note_btn	د پور یادونه
+debit_note_btn	د پور یادونه
+bill_later_heading	وروسته چارج کړئ (د بکینګ وروسته اضافي چارج)
+bill_later_amount_ph	اضافي اندازه
+bill_later_party_ph	پېرېدونکی (یوازې که بکینګ هیڅ نه لري)
+bill_later_btn	وروسته چارج کړئ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	بسته بندي
+bill_later_extra_other	نور
 pay_ap_heading	هغه څه ورکړئ چې موږ یې پور ورکوو (AP)
 country_tax	هیواد او مالیه
 extra_tills_heading	اضافي ټیلونه
@@ -777,26 +777,26 @@ onboard_book_tmpl	کتاب · {} — توکي اضافه کړئ او کریډی�
 onboard_template_tmpl	د هغه ځای نوم ولیکئ که تاسو غواړئ، بیا غوره کړئ چې څنګه پیل کړئ.
 tmpl_blurb	د کوریر کتابونه او د بکینګ میز: لیږدونکي، بار وړونکي، د ورځې کتاب، AWB.
 tmpl_how	په میز کې د کتاب پارسل؛ د نن ورځې کتاب؛ د نرخونو، ګوندونو، راپورونو لپاره ټبونه.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	د هټۍ کينډۍ
+app_template_blurb	یو ابتدايي ترتیب غوره کړئ. «د اوس لپاره پریږدئ» د پیرودونکي لیست خالي پریږدي.
+app_template_skip	د اوس لپاره پریږدئ
+app_template_status	سرور چمتو دی — يوه کينډۍ راوړئ، يا يې پرېږدئ
+app_template_importing	درخواست کول {title}...
+app_template_public_hdr	کينډۍ
+app_template_import_selected	ټاکل شوې راوړئ
+app_template_wipe_warn	دا په حسابونو (ریکارډونه، لیجرونه) کې د سوداګرۍ معلومات پاکوي او د ټیمپلیټ د پلورنځي تنظیمات پلي کوي. ایا تاسو غواړئ چې جاري وساتئ؟
+app_template_wipe_continue	ادامه ورکړئ
+app_template_wipe_cancel	لغوه کړئ
+public_tmpl_help	د چمتو جوړې ادارې ټیمپلیټونه چې د اپلیکیشن سره راځي. د ډاونلوډ اړتیا نشته.
+business_day	«نن» کله بیا تنظیمیږي؟
+business_day_help	«تر د ورځې بند پورې» د ماښام تر نیمې شپې پورې «د ورځې کتاب» روان ساتي، تر هغه چې تاسو د ورځې بند ثبت کړئ. «د شپې په نیمه» په سیمه ایز وخت ۰۰:۰۰ بجې شپې پرې کوي.
+biz_day_until_close	تر د ورځې بند پورې
+biz_day_midnight	د شپې په نیمه
+business_day_saved	د سوداګرۍ ورځې تنظیم خوندي شو
+report_day_lens	«نن» داسې وښایاست
+report_day_lens_help	دا یوازې لید بدلوي — دا نه بدلوي کله چې «د ورځې بند» «نن» ریست کوي. «د د ورځې بند په وینا» د تیرې ورځې بند پای ته تعقیبوي؛ «د نیمې شپې په وینا» د ځایي وخت په ۰۰:۰۰ بجو پرې کوي.
+report_lens_day_close	د د ورځې بند په وینا
+report_lens_midnight	د نیمې شپې په وینا
 trk_booked	بک شوی
 trk_picked_up	پورته کړل
 trk_in_transit	په لیږد کې

@@ -384,12 +384,12 @@ app_template_need_internet	Ana buƙatar intanet don saukar da samfura
 app_template_import_selected	Shigo da zaɓaɓɓe
 app_template_check_code	Duba lamba
 app_template_import	Shigo da
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Shigo daga wannan na'urar
+app_template_from_device_help	Zaɓi babban fayil wanda ya ƙunshi template.json (kuma, ba zaɓi, shop_defaults.json).
+settings_app_tmpl_note	Shigo da sake yana share tallace-tallace, KOT da ledoji, sannan yana aiwatar da saitunan shagon samfuri. Samfura tare da menu kawai: «Menu» → «Samfuran kayayyaki».
+app_template_wipe_warn	Wannan yana share bayanan ciniki a cikin asusun (tallace-tallace, KOT, ledoji) kuma yana aiwatar da saitunan shagon samfuri. Menu da saitin na iya canzawa. Kuna so ku ci gaba?
+app_template_wipe_continue	Ci gaba
+app_template_wipe_cancel	Soke
 currency	Kuɗi
 backup	Ajiyar madadin
 use	Yi amfani
@@ -550,22 +550,22 @@ new_party_clear	Sabon jam'i (share fom)
 new_party_kind_supplier_ph	Nau'in sabon jam'i (Mai kaya)
 next_country	Ƙasa ta gaba
 next_order	Oda ta gaba (share tebur)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Daftarori
+park_draft	Ajiye azaman daftarin aiki
+drafts_help	Waɗannan umarni ne waɗanda ba a kammala ba daga ma'aunin da ka keɓe. Ba a shigar da su a cikin asusun har sai kun danna «Karɓi biya». Matsa kati don ci gaba da shi akan «Oda»; «Share daftarin aiki» yana share daftarin. «Rufe yini» baya share su.
+drafts_park_nothing	Babu wani abu da za a adana azaman daftarin aiki - ƙara abubuwa a cikin keken
+drafts_park_counter_only	«Ajiye azaman daftarin aiki» kawai don oda da aka karɓa a wurin ma'auni - barin odar tebur, ko amfani da «Falo»
+drafts_parked	Ajiye a cikin «Daftarori» - counter ɗin babu kowa a yanzu
+drafts_discard	Share daftarin aiki
+drafts_discarded	An goge daftarin aiki
+drafts_gone	Wannan daftarin baya cikin jerin
+drafts_closed	An riga an biya ko share wannan daftarin
+drafts_empty	Babu daftarin aiki tukuna. A kan «Tebur ciniki», ƙara jita-jita kuma danna «Ajiye azaman daftarin aiki».
+drafts_card_kind	Daftari
+drafts_card_no_lines	Babu abubuwa
+drafts_card_lines	abubuwa
+drafts_summary_fmt	{n} buɗaɗɗen zane
+drafts_cols_fmt	{n} ginshiƙai
 note_gstin_ph	Bayani / GSTIN / tunatar da yarjejeniya
 notes_attach_party	Bayani da haɗe-haɗe (jam'in da aka zaɓa)
 notes_attach_sale	Bayani da haɗe-haɗe (sayarwar da aka zaɓa)
@@ -588,15 +588,15 @@ print_open	Buga / buɗe
 reason_amend_ph	Dalilin gyara / soke / mayar da kuɗi
 reason_note_ph	Dalili / bayani (ɓarna, ƙidaya, …)
 record_day_close	Rubuta rufe yini
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Yaushe «Yau» zai sake saitawa?
+business_day_help	«Har zuwa Rufe yini» yana kiyaye «Littafin yini» yana wucewa tsakar dare, har sai kun yi rikodin ranar kusa. «Da tsakar dare» yana yanke da karfe 00:00 (tsakar dare).
+biz_day_until_close	Har zuwa Rufe yini
+biz_day_midnight	Da tsakar dare
+business_day_saved	An ajiye saitin ranar kasuwanci
+report_day_lens	Nuna «Yau» azaman
+report_day_lens_help	Wannan kawai yana canza ra'ayi - baya canzawa lokacin da «Rufe yini» ya sake saita «Yau». «A cewar Rufe yini» yana biye da ranar ƙarshe ta kusa; «Cewar tsakar dare» yana yanke da karfe 00:00 (tsakar dare) agogon gida.
+report_lens_day_close	A cewar Rufe yini
+report_lens_midnight	Cewar tsakar dare
 refresh_from_shop	Sabunta daga shago
 refund	Mayar da kuɗi
 remove_selected	Cire wanda aka zaɓa
@@ -864,7 +864,7 @@ find_printers	Nemo firintoci
 printers_looking	Ana nema…
 saving_printer	Ana ƙara firinta…
 cancelled	An soke
-cancelling	Cancellingâ¦
+cancelling	Ana sokewa…
 removing	Ana cirewa…
 removed	An cire
 updating_order	Ana sabuntawa…

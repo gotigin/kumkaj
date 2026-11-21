@@ -384,12 +384,12 @@ app_template_need_internet	ടെംപ്ലേറ്റുകൾ ഡൗൺല�
 app_template_import_selected	തിരഞ്ഞെടുത്തത് ഇമ്പോർട്ട് ചെയ്യുക
 app_template_check_code	കോഡ് പരിശോധിക്കുക
 app_template_import	ഇമ്പോർട്ട് ചെയ്യുക
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ഈ ഉപകരണത്തിൽ നിന്ന് ഇമ്പോർട്ട് ചെയ്യുക
+app_template_from_device_help	template.json ഉള്ള ഫോൾഡർ തിരഞ്ഞെടുക്കുക (shop_defaults.json ഉണ്ടെങ്കിൽ അതും).
+settings_app_tmpl_note	വീണ്ടും ഇമ്പോർട്ട് ചെയ്താൽ വിൽപ്പന, KOT, ലെഡ്ജറുകൾ എന്നിവ മായ്ക്കപ്പെടും; പിന്നെ പാക്കിന്റെ കട ക്രമീകരണങ്ങൾ ബാധകമാകും. മെനു മാത്രമുള്ള ടെംപ്ലേറ്റുകൾ: «മെനു» → «ഇനം ടെംപ്ലേറ്റുകൾ».
+app_template_wipe_warn	ഇത് കണക്കുപുസ്തകത്തിലെ വ്യാപാര ഡാറ്റ (വിൽപ്പന, KOT, ലെഡ്ജറുകൾ) മായ്ച്ച് ടെംപ്ലേറ്റിന്റെ കട ക്രമീകരണങ്ങൾ ബാധകമാക്കും. മെനുവും സജ്ജീകരണവും മാറിയേക്കാം. തുടരണോ?
+app_template_wipe_continue	തുടരുക
+app_template_wipe_cancel	റദ്ദാക്കുക
 currency	കറൻസി
 backup	ബാക്കപ്പ്
 use	ഉപയോഗിക്കുക
@@ -550,22 +550,22 @@ new_party_clear	പുതിയ പാർട്ടി (ഫോം മായ്ക
 new_party_kind_supplier_ph	പുതിയ പാർട്ടി തരം (വിതരണക്കാരൻ)
 next_country	അടുത്ത രാജ്യം
 next_order	അടുത്ത ഓർഡർ (ഡെസ്ക് മായ്ക്കുക)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ഡ്രാഫ്റ്റുകൾ
+park_draft	ഡ്രാഫ്റ്റായി വയ്ക്കുക
+drafts_help	കൗണ്ടറിൽ നിങ്ങൾ പാതിവഴിയിൽ മാറ്റിവെച്ച പൂർത്തിയാകാത്ത ഓർഡറുകൾ — «പേയ്‌മെന്റ് വാങ്ങുക» വരെ ഇവ കണക്കിൽ ചേരില്ല. കാർഡ് അമർത്തിയാൽ അത് «ഓർഡർ»-ൽ വീണ്ടും തുറക്കും; «ഡ്രാഫ്റ്റ് ഉപേക്ഷിക്കുക» ഡ്രാഫ്റ്റ് നീക്കം ചെയ്യും. «ദിവസം അടയ്ക്കൽ» ഇവ മായ്ക്കില്ല.
+drafts_park_nothing	വയ്ക്കാൻ ഒന്നുമില്ല — കാർട്ടിൽ ഇനങ്ങൾ ചേർക്കുക
+drafts_park_counter_only	«ഡ്രാഫ്റ്റായി വയ്ക്കുക» കൗണ്ടർ ഓർഡറുകൾക്ക് മാത്രം — മേശ ഓർഡറിൽ നിന്ന് പുറത്തുകടക്കുക അല്ലെങ്കിൽ «ഫ്ലോർ» ഉപയോഗിക്കുക
+drafts_parked	«ഡ്രാഫ്റ്റുകൾ»-ൽ വെച്ചു — കൗണ്ടർ ഒഴിഞ്ഞു
+drafts_discard	ഡ്രാഫ്റ്റ് ഉപേക്ഷിക്കുക
+drafts_discarded	ഡ്രാഫ്റ്റ് ഉപേക്ഷിച്ചു
+drafts_gone	ആ ഡ്രാഫ്റ്റ് ഇപ്പോൾ പട്ടികയിലില്ല
+drafts_closed	ആ ഡ്രാഫ്റ്റിന് പണം നേരത്തെ വാങ്ങി അല്ലെങ്കിൽ അത് ഉപേക്ഷിച്ചു
+drafts_empty	ഇതുവരെ ഡ്രാഫ്റ്റുകളില്ല. «കൗണ്ടർ»-ൽ വിഭവങ്ങൾ ചേർത്ത് «ഡ്രാഫ്റ്റായി വയ്ക്കുക» അമർത്തുക.
+drafts_card_kind	ഡ്രാഫ്റ്റ്
+drafts_card_no_lines	ഇനങ്ങളില്ല
+drafts_card_lines	ഇനങ്ങൾ
+drafts_summary_fmt	{n} തുറന്ന ഡ്രാഫ്റ്റുകൾ
+drafts_cols_fmt	{n} നിര
 note_gstin_ph	കുറിപ്പ് / GSTIN / കരാർ ഓർമ്മപ്പെടുത്തൽ
 notes_attach_party	കുറിപ്പുകളും അറ്റാച്ച്‌മെന്റുകളും (തിരഞ്ഞെടുത്ത പാർട്ടി)
 notes_attach_sale	കുറിപ്പുകളും അറ്റാച്ച്‌മെന്റുകളും (തിരഞ്ഞെടുത്ത വിൽപ്പന)
@@ -588,15 +588,15 @@ print_open	അച്ചടിക്കുക / തുറക്കുക
 reason_amend_ph	ഭേദഗതി / റദ്ദാക്കൽ / റീഫണ്ട് കാരണം
 reason_note_ph	കാരണം / കുറിപ്പ് (പാഴ്, എണ്ണം, …)
 record_day_close	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുക
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ഇന്ന്» എപ്പോൾ പുതുതായി തുടങ്ങും?
+business_day_help	«ദിവസം അടയ്ക്കൽ വരെ» തിരഞ്ഞെടുത്താൽ, നിങ്ങൾ ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുന്നതുവരെ «ദിന ബുക്ക്» അർദ്ധരാത്രിക്കു ശേഷവും തുടരും. «കലണ്ടർ അർദ്ധരാത്രി» തിരഞ്ഞെടുത്താൽ, ദിവസം പ്രാദേശിക സമയം രാത്രി 12:00-ന് അവസാനിക്കും.
+biz_day_until_close	ദിവസം അടയ്ക്കൽ വരെ
+biz_day_midnight	കലണ്ടർ അർദ്ധരാത്രി
+business_day_saved	വ്യാപാര ദിവസം സേവ് ചെയ്തു
+report_day_lens	«ഇന്ന്» ഇങ്ങനെ കാണിക്കുക
+report_day_lens_help	കാണാൻ മാത്രം — «ദിവസം അടയ്ക്കൽ» എപ്പോൾ «ഇന്ന്» പുതുതായി തുടങ്ങുന്നു എന്നത് ഇത് മാറ്റില്ല. «ദിവസം അടയ്ക്കൽ പ്രകാരം» അവസാനത്തെ ദിവസം അടയ്ക്കൽ മുതൽ കണക്കാക്കും; «അർദ്ധരാത്രി പ്രകാരം» പ്രാദേശിക സമയം രാത്രി 12:00-ന് വേർതിരിക്കും.
+report_lens_day_close	ദിവസം അടയ്ക്കൽ പ്രകാരം
+report_lens_midnight	അർദ്ധരാത്രി പ്രകാരം
 refresh_from_shop	കടയിൽ നിന്ന് പുതുക്കുക
 refund	റീഫണ്ട്
 remove_selected	തിരഞ്ഞെടുത്തത് മാറ്റുക
@@ -864,7 +864,7 @@ find_printers	പ്രിന്ററുകൾ കണ്ടെത്തുക
 printers_looking	ഈ ഉപകരണത്തിലും Wi‑Fiയിലും പ്രിന്ററുകൾ തിരയുന്നു…
 saving_printer	പ്രിന്റർ ചേർക്കുന്നു…
 cancelled	റദ്ദാക്കിയത്
-cancelling	Cancellingâ¦
+cancelling	റദ്ദാക്കുന്നു…
 removing	നീക്കം ചെയ്യുന്നു…
 removed	നീക്കം ചെയ്തു
 updating_order	പുതുക്കുന്നു…

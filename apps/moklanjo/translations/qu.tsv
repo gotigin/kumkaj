@@ -3,27 +3,27 @@ app_tagline	Mensajero-agencia librokuna + reservakuna ruwana wasi. Mana internet
 unlock	Desbloquear
 pin_hint	Dueño PIN 0000 hina qallarikun
 sell	Reservacion
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Tabla
+board	Tabla
+park_draft	Borrador hina waqaychay
+board_help	Kichasqa borradorkuna («Qulluchiy» utaq «Pagota hapiy» ñit'inki kama) chaymanta kunan reservasqa rantiykuna. «Reservacion» kaqpi llamk'ay chawpipi «Borrador hina waqaychay» ñit'iy (kaypi waqaychasqa, qillqapi manam); borradorta ñit'iy qatiykachanaykipaq.
+board_empty	Kunanqa manam tarjeta kanchu.
+board_park_nothing	Imapas saqinapaq manam kanchu — qullqi utaq reservacion willakuyta yapay
+board_parked	«Tabla» kaqpi saqisqa — mesa ch'usaqmi
+board_draft	Borrador
+board_booked	Reservado
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Borrador
+board_filter_booked	Reservado
+board_cols_fmt	{n} columna
+board_summary_fmt	{total} tarjeta · {drafts} borrador · {booked} reservado
+board_card_no_charges	Kunanqa manam cargo kanchu
+board_card_charges	cargokuna
+board_card_booked	Reservacion
+board_draft_gone	Chay borrador manañam «Tabla» kaqpi kanchu
+board_draft_closed	Chay borradorñam tukusqa utaq qullusqa
+board_discard	Qulluchiy
+board_discarded	Borrador qullusqa
 buy	Pagay
 books	P’unchaw hatun qillqa
 books_help	Kunan p’unchaw posición. Reserva = paquetes in. Pagay = carrier facturas & gastos. Partidokuna = apachiqkuna & apaykachaqkuna.
@@ -88,7 +88,7 @@ applied	Aplicasqa
 note_ph	Qhaway (munasqa) .
 rounded	MUYUQA
 split	Rakisqa
-counter	Contador
+counter	Mostrador
 parcel	Parcela
 order	Restaurante kamachiy
 sales	Reservacionkuna
@@ -220,7 +220,7 @@ snack_secs_save	Alerta tiempota waqaychay
 snack_secs_saved	Alerta pacha waqaychasqa — {n} segundos
 snack_secs_bad	Segundakunata yupay hina qillqay (3–60) .
 cancelled	Cancelado
-cancelling	Cancellingâ¦
+cancelling	Cancelasqa kachkan…
 cancel	Cancelar
 opening_client	Kichariy cliente...
 preparing_desk	Wakichiy mesa...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Copia libro mayor de clientes CSV .
 copy_receipt	Recibota copiay
 copy_report	Willakuyta copiay
 counted_cash_ph	Yupasqa qolqe cajonpi
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Turno wichqay hinaspa imprimiy slip
+shift_handover	Turno entregakuy
+shift_counted_ph	Qullqi yupasqa entregaypi
+shift_since	Kay tikrayqa chaymanta pacha
+expected_in_drawer	Cajón nisqapi suyasqa
+lock_books_through_month	Killakama qillqakunata wichq'ay
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Kay killakama wichq'ay
+books_locked_none	Kunanqa manam killa wichq'asqa kanchu
+books_locked_through	Maykama wichq'asqa
 counter_agency_ph	Yupa / agencia suti (munasqa) .
 create_backup	Copia de seguridad nisqa ruway
 day_close_summary	P’unchaw wichq’ana resumen
@@ -442,9 +442,9 @@ pay_ap_cash	AP qullqita pagay
 pay_ap_upi	Pagay AP UPI .
 period_bill	Periodo nisqamanta qullqi
 period_bill_party	Periodomanta qullqi (partido) .
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Facturata ruray
+period_bill_generate_print	Ruray chaymanta ñit'iy
+booking_bulk_preview	{ok} listo · {bad} pantasqa
 pick_pod_photo	POD fotota akllay
 print_awb_label	AWB nisqa etiquetata imprimiy
 print_open	Imprimiy / kichay
@@ -653,19 +653,19 @@ attachments_last_expense	Adjuntos (qhipa gasto) .
 credit_limit_heading	Límite de crédito (akllasqa rantiq utaq suministrador) .
 pay_selected_heading	Akllasqa qullqita quy (manukuyta allichay / ñawpaqmanta hapiy) .
 write_off_heading	Qillqay (mana qullqita quspa chuya) .
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Allichay willakuykuna
+adj_note_amount_ph	Cantidad nisqa
+adj_note_reason_ph	Razón (necesario) .
+adj_note_awb_ph	Tupan AWB (munanki chayqa)
+credit_note_btn	Crédito willakuy
+debit_note_btn	Débito willakuy
+bill_later_heading	Qhipaman factura (reservacion qhipa yapay)
+bill_later_amount_ph	Yapa qullqi
+bill_later_party_ph	Runa (reservacionpi mana kaptinlla)
+bill_later_btn	Qhipaman factura
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Empaque
+bill_later_extra_other	Huk
 pay_ap_heading	Paykunaman manusqanchikta pagay (AP) .
 country_tax	Llaqta & impuesto
 extra_tills_heading	Yapa qullqi waqaychanakuna
@@ -777,26 +777,26 @@ onboard_book_tmpl	Libro mayor · {} — menú elementokunata yapay chaymanta kic
 onboard_template_tmpl	Munaspaqa chay sitiota sutichay, chaymanta akllay imaynata qallarinaykipaq.
 tmpl_blurb	Mensajero librokuna hinaspa reservakuna ruwana wasi: apachiqkuna, apaykachaqkuna, punchaw qillqa, AWB.
 tmpl_how	Escritoriopi paquetekunata reservay; Kunan punchawpaq punchaw qillqa; tarifakuna, fiestakuna, willakuykunapaq tablakuna.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Tiendap plantillankuna
+app_template_blurb	Qallariy mesata akllay. «Kunankamaqa saltay» ñit'iptinqa runakuna lista ch'usaqmi kanqa.
+app_template_skip	Kunankamaqa saltay
+app_template_status	Servidor listoña — plantillata apamuy, utaq saltay
+app_template_importing	Aplicaspa {title}...
+app_template_public_hdr	Plantillakuna
+app_template_import_selected	Akllasqata apamuy
+app_template_wipe_warn	Kayqa qillqa rantiy willakunata (reservacionkuna, qillqakuna) ch'usaqyachin, plantilla tienda allichaykunatataq churan. ¿Qatiykachanki?
+app_template_wipe_continue	Hinallayá ruway
+app_template_wipe_cancel	Cancelar
+public_tmpl_help	Kay tiendapaq appwan hamuq agencia plantillakuna. Descarga manam necesitanchu.
+business_day	¿Hayk'aqmi «Kunan punchaw» musuqmantam qallarin?
+business_day_help	«P’unchaw wichq’ay kama» akllaspaqa «P’unchaw hatun qillqa» chawpi tutamanta qatiykachan, punchaw wichq'ayta qillqanki kama. «Calendario chawpi tuta» akllaspaqa punchaw local 12:00 tutapi kutin.
+biz_day_until_close	P’unchaw wichq’ay kama
+biz_day_midnight	Calendario chawpi tuta
+business_day_saved	Negocio punchaw waqaychasqa
+report_day_lens	«Kunan punchaw» kay hina qhaway
+report_day_lens_help	Qhawayllam — manam tikranchu «P’unchaw wichq’ay» hayk'aq «Kunan punchaw» musuqyachin. «P’unchaw wichq’ay hina» qhipa punchaw wichq'aymanta yupay; «Chawpi tuta hina» local 12:00 tutapi kutin.
+report_lens_day_close	P’unchaw wichq’ay hina
+report_lens_midnight	Chawpi tuta hina
 trk_booked	Reservado
 trk_picked_up	Hoqarisqa
 trk_in_transit	Tránsito nisqapi

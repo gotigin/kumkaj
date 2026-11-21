@@ -252,7 +252,7 @@ sidebar_order_saved	የጎን አሞሌ ቅደም ተከተል ተቀምጧል
 sidebar_visibility_saved	የጎን አሞሌ ታይነት ተቀምጧል
 amounts_hide	ደብቅ
 amounts_show	አሳይ
-counter	ቆጣሪ
+counter	ባንኮኒ
 dine_in	በቦታው መብላት
 takeaway	ይዞ መሄድ
 order	ትዕዛዝ
@@ -384,12 +384,12 @@ app_template_need_internet	አብነቶችን ለማውረድ ኢንተርኔት
 app_template_import_selected	የተመረጠውን አስገባ
 app_template_check_code	ኮድ አረጋግጥ
 app_template_import	አስገባ
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ከዚህ መሳሪያ አስመጣ
+app_template_from_device_help	template.json (እና እንደ አማራጭ፣ shop_defaults.json) የያዘ አቃፊ ይምረጡ።
+settings_app_tmpl_note	እንደገና ማስመጣት ሽያጮችን፣ KOTን እና ደብተሮችን ያጸዳል፣ ከዚያ የአብነት የሱቅ ቅንብሮችን ይተገበራል። ምናሌ ብቻ ያላቸው አብነቶች፡- «ሜኑ» → «የዕቃ አብነቶች»።
+app_template_wipe_warn	ይህ በመለያዎች ውስጥ ያለውን የንግድ ውሂብ ያጸዳል (ሽያጮች፣ KOT፣ ደብተሮች) እና የአብነት የሱቅ ቅንብሮችን ይተገበራል። ምናሌው እና ማዋቀሩ ሊለወጡ ይችላሉ። መቀጠል ትፈልጋለህ?
+app_template_wipe_continue	ቀጥል
+app_template_wipe_cancel	ሰርዝ
 currency	ገንዘብ
 backup	ምትኬ
 use	ተጠቀም
@@ -550,22 +550,22 @@ new_party_clear	አዲስ ተዋዋይ (ቅጹን አጽዳ)
 new_party_kind_supplier_ph	አዲስ የተዋዋይ አይነት (አቅራቢ)
 next_country	ቀጣይ ሀገር
 next_order	ቀጣይ ትዕዛዝ (ጠረጴዛውን አጽዳ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ረቂቆች
+park_draft	እንደ ረቂቅ አስቀምጥ
+drafts_help	እነዚህ እርስዎ በጎን ያስቀመጡት ቆጣሪ ያልተጠናቀቁ ትዕዛዞች ናቸው። «ክፍያ ውሰድ»ን እስኪነኩ ድረስ በመለያዎቹ ውስጥ አይገቡም። በ«ትዕዛዝ» ላይ ለመቀጠል አንድ ካርድ መታ ያድርጉ; «ረቂቅ ሰርዝ» ረቂቁን ይሰርዛል። «የቀን መዝጊያ» አያጸዳቸውም።
+drafts_park_nothing	እንደ ረቂቅ የሚቀመጥ ምንም ነገር የለም - እቃዎችን ወደ ጋሪው ያክሉ
+drafts_park_counter_only	«እንደ ረቂቅ አስቀምጥ» ቆጣሪ ላይ ለሚወሰዱ ትዕዛዞች ብቻ ነው - የጠረጴዛውን ቅደም ተከተል ይተው ወይም «አዳራሽ» ይጠቀሙ
+drafts_parked	በ«ረቂቆች» ተቀምጧል — ባንኮኒው አሁን ባዶ ነው
+drafts_discard	ረቂቅ ሰርዝ
+drafts_discarded	ረቂቅ ተሰርዟል
+drafts_gone	ያ ረቂቅ ከአሁን በኋላ በዝርዝሩ ውስጥ የለም
+drafts_closed	ያ ረቂቅ አስቀድሞ ተከፍሏል ወይም ተሰርዟል
+drafts_empty	እስካሁን ምንም ረቂቆች የሉም። በ«ባንኮኒ»፣ ምግቦች ያክሉ እና «እንደ ረቂቅ አስቀምጥ»ን ነካ ያድርጉ።
+drafts_card_kind	ረቂቅ
+drafts_card_no_lines	ምንም እቃዎች የሉም
+drafts_card_lines	እቃዎች
+drafts_summary_fmt	{n} ክፍት ረቂቆች
+drafts_cols_fmt	{n} አምዶች
 note_gstin_ph	ማስታወሻ / GSTIN / የስምምነት ማስታወሻ
 notes_attach_party	ማስታወሻዎች እና አባሪዎች (የተመረጠ ተዋዋይ)
 notes_attach_sale	ማስታወሻዎች እና አባሪዎች (የተመረጠ ሽያጭ)
@@ -588,15 +588,15 @@ print_open	አትም / ክፈት
 reason_amend_ph	የማስተካከል / የመሰረዝ / የተመላሽ ምክንያት
 reason_note_ph	ምክንያት / ማስታወሻ (ብክነት፣ ቆጠራ፣ …)
 record_day_close	የቀን መዝጊያ መዝግብ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	መቼ ነው «ዛሬ» ዳግም የሚጀመረው?
+business_day_help	ቀኑን በቅርብ እስክትመዘግቡ ድረስ «እስከ የቀን መዝጊያ» «የቀን መዝገብ» እኩለ ሌሊት አልፏል። «እኩለ ሌሊት ላይ» እኩለ ሌሊት (00:00) ላይ ይቆርጣል።
+biz_day_until_close	እስከ የቀን መዝጊያ
+biz_day_midnight	እኩለ ሌሊት ላይ
+business_day_saved	የስራ ቀን ቅንብር ተቀምጧል
+report_day_lens	እንደ «ዛሬ» አሳይ
+report_day_lens_help	ይሄ እይታውን ብቻ ነው የሚቀይረው — «የቀን መዝጊያ» ዳግም ሲያቀናብር «ዛሬ» አይቀየርም። «በየቀን መዝጊያ መሰረት» የመጨረሻውን ቀን መዝጊያ ይከተላል; «እንደ እኩለ ሌሊት» እኩለ ሌሊት (00:00) ላይ ይቆርጣል።
+report_lens_day_close	በየቀን መዝጊያ መሰረት
+report_lens_midnight	እንደ እኩለ ሌሊት
 refresh_from_shop	ከሱቅ አድስ
 refund	ተመላሽ
 remove_selected	የተመረጠውን አስወግድ
@@ -864,7 +864,7 @@ find_printers	ማተሚያዎችን ፈልግ
 printers_looking	በመፈለግ ላይ…
 saving_printer	ማተሚያ በመጨመር ላይ…
 cancelled	ተሰርዟል
-cancelling	Cancellingâ¦
+cancelling	በመሰረዝ ላይ…
 removing	በማስወገድ ላይ…
 removed	ተወግዷል
 updating_order	በማዘመን ላይ…

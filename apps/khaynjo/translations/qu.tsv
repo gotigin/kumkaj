@@ -252,7 +252,7 @@ sidebar_order_saved	Lado barra orden waqaychasqa
 sidebar_visibility_saved	Lado barra rikuy waqaychasqa
 amounts_hide	Pakakuy
 amounts_show	Qhawachiy
-counter	Contador
+counter	Mostrador
 dine_in	Ukupi mikhuy
 takeaway	Apakuy
 order	Restaurante kamachiy
@@ -384,12 +384,12 @@ app_template_need_internet	Plantillakunata uraykachinapaq internet necesitakun
 app_template_import_selected	Akllasqata apamuy
 app_template_check_code	Kodigota qhaway
 app_template_import	Apamuy
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Kay dispositivomanta apaykachay
+app_template_from_device_help	template.json kaq carpeta akllay (shop_defaults.json kan chayqa chaytapas).
+settings_app_tmpl_note	Musuqmanta apaykachayqa rantiykunata, KOT nisqata, qillqakunatapas ch'usaqyachin, chaymanta plantilla tienda allichaykunata churan. Menulla plantillakuna: «Menú nisqa» → «Imakuna plantillakuna».
+app_template_wipe_warn	Kayqa qillqa rantiy willakunata (rantiykuna, KOT, qillqakuna) ch'usaqyachin, plantilla tienda allichaykunatataq churan. Menú chaymanta allichaykuna tikrayta atinman. ¿Qatiykachanki?
+app_template_wipe_continue	Hinallayá ruway
+app_template_wipe_cancel	Cancelar
 currency	Qullqi
 backup	Copia de seguridad
 use	Utilizar
@@ -550,22 +550,22 @@ new_party_clear	Musuq rantiq utaq suministrador (ch'uya formulario) .
 new_party_kind_supplier_ph	Musuq rantiq utaq suministrador laya (Proveedor) .
 next_country	Qatiqnin suyu
 next_order	Qatiqnin kamachiy (ch'uya escritorio) .
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Borrador
+park_draft	Borrador hina waqaychay
+drafts_help	Contadormanta mana tukuq kamachikuykuna, chawpipi saqisqayki — «Pagota hapiy» kama qillqaman manam yaykunchu. Tarjetata ñit'iy «Restaurante kamachiy» kaqpi qatiykachanaykipaq; «Borradorta qulluchiy» borradorta qulluchin. «P’unchaw wichq’ay» kaykunata manam ch'usaqyachinchu.
+drafts_park_nothing	Imapas saqinapaq manam kanchu — carroman imakunata yapay
+drafts_park_counter_only	«Borrador hina waqaychay» contador kamachikuylam — mesata saqiy utaq «Mikhuna wasi» llamk'achiy
+drafts_parked	«Borrador» kaqpi saqisqa — contador ch'usaqmi
+drafts_discard	Borradorta qulluchiy
+drafts_discarded	Borrador qullusqa
+drafts_gone	Chay borrador manañam listapi kanchu
+drafts_closed	Chay borradorñam pagasqa utaq qullusqa
+drafts_empty	Kunanqa manam borrador kanchu. «Mostrador» kaqpi mikhunakunata yapay, «Borrador hina waqaychay» ñit'iytapas.
+drafts_card_kind	Borrador
+drafts_card_no_lines	Ima kanchu
+drafts_card_lines	imakuna
+drafts_summary_fmt	{n} kichasqa borrador
+drafts_cols_fmt	{n} columna
 note_gstin_ph	Nota / GSTIN / rimanakuy yuyarichiy
 notes_attach_party	Notas chaymanta adjuntos (akllasqa rantiq utaq suministrador) .
 notes_attach_sale	Notas & adjuntos (akllasqa rantiy) .
@@ -588,15 +588,15 @@ print_open	Imprimiy / kichay
 reason_amend_ph	Razón enmienda / anulado / devolución
 reason_note_ph	Razón / nota (desperdicio, yupay, ...) .
 record_day_close	P’unchay qayllapi waqaychay
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	¿Hayk'aqmi «Kunan punchaw» musuqmantam qallarin?
+business_day_help	«P’unchaw wichq’ay kama» akllaspaqa «P’unchaw hatun qillqa» chawpi tutamanta qatiykachan, punchaw wichq'ayta qillqanki kama. «Calendario chawpi tuta» akllaspaqa punchaw local 12:00 tutapi kutin.
+biz_day_until_close	P’unchaw wichq’ay kama
+biz_day_midnight	Calendario chawpi tuta
+business_day_saved	Negocio punchaw waqaychasqa
+report_day_lens	«Kunan punchaw» kay hina qhaway
+report_day_lens_help	Qhawayllam — manam tikranchu «P’unchaw wichq’ay» hayk'aq «Kunan punchaw» musuqyachin. «P’unchaw wichq’ay hina» qhipa punchaw wichq'aymanta yupay; «Chawpi tuta hina» local 12:00 tutapi kutin.
+report_lens_day_close	P’unchaw wichq’ay hina
+report_lens_midnight	Chawpi tuta hina
 refresh_from_shop	Tiendamanta musuqyachiy
 refund	Kutichiy
 remove_selected	Akllasqata hurquy
@@ -864,7 +864,7 @@ find_printers	Impresorakunata maskay
 printers_looking	Qhawaspa...
 saving_printer	Impresora yapaspa...
 cancelled	Cancelado
-cancelling	Cancellingâ¦
+cancelling	Cancelasqa kachkan…
 removing	Qichuchkan…
 removed	Qichusqa
 updating_order	Musuqchachkan…

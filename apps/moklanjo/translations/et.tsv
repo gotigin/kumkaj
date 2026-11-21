@@ -3,27 +3,27 @@ app_tagline	Kuller-agentuuri raamatud + broneerimislaud. Tasuta võrguühenduset
 unlock	Avage lukustus
 pin_hint	Omanik PIN algab 0000-st
 sell	Broneerimine
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Tahvel
+board	Tahvel
+park_draft	Pane mustand kõrvale
+board_help	Avatud mustandid (säilivad, kuni valite «Hülga» või «Võtke makse») ja tänane kirjendatud müük. Puudutage vaates «Broneerimine» töö keskel «Pane mustand kõrvale» (salvestatakse siia, mitte raamatupidamisse); jätkamiseks puudutage mustandit.
+board_empty	Kaarte veel pole.
+board_park_nothing	Pole midagi kõrvale panna — lisage tasud või broneeringu andmed
+board_parked	Pandud kõrvale jaotisse «Tahvel» — töölaud on vaba
+board_draft	Mustand
+board_booked	Broneeritud
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Mustand
+board_filter_booked	Broneeritud
+board_cols_fmt	{n} veergu
+board_summary_fmt	Kaarte: {total} · mustandeid: {drafts} · kirjendatud: {booked}
+board_card_no_charges	Tasusid veel pole
+board_card_charges	tasud
+board_card_booked	Broneerimine
+board_draft_gone	Seda mustandit pole enam jaotises «Tahvel»
+board_draft_closed	See mustand on juba lõpetatud või hüljatud
+board_discard	Hülga
+board_discarded	Mustand hüljatud
 buy	Makske välja
 books	Päevaraamat
 books_help	Tänane positsioon. Broneerimine = pakid sisse. Makske välja = vedaja arved ja kulud. Osapooled = kaubasaatjad ja vedajad.
@@ -88,12 +88,12 @@ applied	Rakendatud
 note_ph	Märkus (valikuline)
 rounded	Ümardatud
 split	Lõhestatud
-counter	Loendur
+counter	Lett
 parcel	Pakk
 order	Tellimus
 sales	Broneeringud
 sales_refunds	Broneeringud ja tagasimaksed
-day_close	Päev lähedal
+day_close	Päeva sulgemine
 reports_expenses	Pangaraamat ja P&L
 nav_reports	Aruanded
 nav_settings	Seaded
@@ -220,7 +220,7 @@ snack_secs_save	Säästke hoiatusaega
 snack_secs_saved	Hoiatuse aeg salvestatud — {n} sekundit
 snack_secs_bad	Sisestage sekundid numbrina (3–60)
 cancelled	Tühistatud
-cancelling	Cancellingâ¦
+cancelling	Tühistamine…
 cancel	Tühista
 opening_client	Kliendi avamine…
 preparing_desk	Töölaua ettevalmistamine…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kliendi pearaamatu kopeerimine CSV
 copy_receipt	Kopeeri kviitung
 copy_report	Kopeeri aruanne
 counted_cash_ph	Loetud sularaha sahtlis
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Sulgege vahetus ja prindisedel
+shift_handover	Vahetuste üleandmine
+shift_counted_ph	Sularaha loetakse üleandmisel
+shift_since	See nihe alates
+expected_in_drawer	Oodatud sahtlisse
+lock_books_through_month	Lukusta raamatupidamine kuu lõpuni
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Lukusta selle kuu lõpuni
+books_locked_none	Ühtegi kuud pole veel lukustatud
+books_locked_through	Lukustatud kuni
 counter_agency_ph	Leti/agentuuri nimi (valikuline)
 create_backup	Loo varukoopia
 day_close_summary	Päeva kokkuvõte
@@ -442,9 +442,9 @@ pay_ap_cash	Makske AP-le sularahas
 pay_ap_upi	Maksa AP UPI
 period_bill	Perioodi arve
 period_bill_party	Perioodiarve (pidu)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Koosta arve
+period_bill_generate_print	Koosta ja prindi
+booking_bulk_preview	Valmis: {ok} · vigadega: {bad}
 pick_pod_photo	Valige POD-foto
 print_awb_label	Printige AWB silt
 print_open	Prindi / ava
@@ -653,19 +653,19 @@ attachments_last_expense	Manused (viimane kulu)
 credit_limit_heading	Krediidilimiit (valitud klient või tarnija)
 pay_selected_heading	Maksmine valitud (võla tasumine / ettemakse võtmine)
 write_off_heading	Kanna maha (tühjenda ilma makseta)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Korrigeerimisdokumendid
+adj_note_amount_ph	Summa
+adj_note_reason_ph	Põhjus (nõutav)
+adj_note_awb_ph	Seotud AWB (valikuline)
+credit_note_btn	Kreeditarve
+debit_note_btn	Deebetarve
+bill_later_heading	Arvelda hiljem (lisatasu pärast broneerimist)
+bill_later_amount_ph	Lisasumma
+bill_later_party_ph	Klient või tarnija (ainult siis, kui broneeringul seda pole)
+bill_later_btn	Arvelda hiljem
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Pakendamine
+bill_later_extra_other	muud
 pay_ap_heading	Makske, mida me neile võlgneme (AP)
 country_tax	Riik ja maks
 extra_tills_heading	Lisakassad
@@ -777,26 +777,26 @@ onboard_book_tmpl	Broneeri · {} — lisage üksused ja alguskrediit, seejärel 
 onboard_template_tmpl	Soovi korral nimetage koht ja seejärel valige, kuidas alustada.
 tmpl_blurb	Kulleriraamatud ja broneerimislaud: kaubasaatjad, vedajad, päevaraamat, AWB.
 tmpl_how	Broneerige pakid laua taga; Päevaraamat tänaseks; tariifide, pidude, aruannete vahekaardid.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Poe mallid
+app_template_blurb	Valige algne töölaud. «Jäta praegu vahele» jätab klientide ja tarnijate loendi tühjaks.
+app_template_skip	Jäta praegu vahele
+app_template_status	Server valmis — impordi mall või jäta vahele
+app_template_importing	{title} rakendamine…
+app_template_public_hdr	Mallid
+app_template_import_selected	Impordi valitud
+app_template_wipe_warn	See tühjendab raamatupidamise kauplemisandmed (broneeringud, kontod) ja rakendab malli poeseaded. Kas jätkata?
+app_template_wipe_continue	Jätka
+app_template_wipe_cancel	Tühista
+public_tmpl_help	Selle poe jaoks kaasas olevad agentuuripakid. Allalaadimist pole vaja.
+business_day	Millal «Täna» algab uuesti?
+business_day_help	Valikuga «Kuni päeva sulgemiseni» jätkub «Päevaraamat» ka pärast keskööd, kuni registreerite päeva sulgemise. Valikuga «Kalendri kesköö» lõpeb päev kell 00:00 kohaliku aja järgi.
+biz_day_until_close	Kuni päeva sulgemiseni
+biz_day_midnight	Kalendri kesköö
+business_day_saved	Äripäev salvestatud
+report_day_lens	Kuva «Täna» kujul
+report_day_lens_help	Ainult vaade — ei muuda seda, millal «Päeva sulgemine» alustab «Täna» uuesti. «Päeva sulgemise järgi» arvestab viimasest päeva sulgemisest; «Kesköö järgi» lõikab kell 00:00 kohaliku aja järgi.
+report_lens_day_close	Päeva sulgemise järgi
+report_lens_midnight	Kesköö järgi
 trk_booked	Broneeritud
 trk_picked_up	Korjatud
 trk_in_transit	Transiidil

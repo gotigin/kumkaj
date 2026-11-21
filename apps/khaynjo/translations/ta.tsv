@@ -384,12 +384,12 @@ app_template_need_internet	வார்ப்புருக்களைப் �
 app_template_import_selected	தேர்ந்தெடுத்ததை இறக்குமதி செய்
 app_template_check_code	குறியீட்டைச் சரிபார்
 app_template_import	இறக்குமதி செய்
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	இந்தச் சாதனத்திலிருந்து இறக்குமதி செய்
+app_template_from_device_help	template.json உள்ள கோப்புறையைத் தேர்ந்தெடுக்கவும் (shop_defaults.json இருந்தால் அதுவும்).
+settings_app_tmpl_note	மீண்டும் இறக்குமதி செய்தால் விற்பனை, KOT, கணக்கேடுகள் அழிக்கப்படும்; பிறகு பேக்கின் கடை அமைப்புகள் பொருந்தும். மெனு மட்டும் உள்ள வார்ப்புருக்கள்: «மெனு» → «உருப்படி வார்ப்புருக்கள்».
+app_template_wipe_warn	இது கணக்குப் புத்தகங்களின் வர்த்தகத் தரவை (விற்பனை, KOT, கணக்கேடுகள்) அழித்து, வார்ப்புருவின் கடை அமைப்புகளைப் பொருத்தும். மெனுவும் அமைப்பும் மாறலாம். தொடரவா?
+app_template_wipe_continue	தொடரவும்
+app_template_wipe_cancel	ரத்து
 currency	நாணயம்
 backup	காப்புப்பிரதி
 use	பயன்படுத்து
@@ -550,22 +550,22 @@ new_party_clear	புதிய தரப்பு (படிவத்தை அ
 new_party_kind_supplier_ph	புதிய தரப்பின் வகை (சப்ளையர்)
 next_country	அடுத்த நாடு
 next_order	அடுத்த ஆர்டர் (மேசையை அழி)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	வரைவுகள்
+park_draft	வரைவில் வை
+drafts_help	கவுண்டரில் பாதியில் நிறுத்தி வைத்த முடிக்காத ஆர்டர்கள் — «கட்டணம் வாங்கு» வரை இவை கணக்கில் சேராது. அட்டையைத் தட்டினால் அது «ஆர்டர்»-இல் மீண்டும் திறக்கும்; «வரைவை நீக்கு» வரைவை நீக்கும். «நாள் முடிவு» இவற்றை அழிக்காது.
+drafts_park_nothing	வைக்க ஒன்றுமில்லை — கார்ட்டில் பொருட்களைச் சேர்க்கவும்
+drafts_park_counter_only	«வரைவில் வை» கவுண்டர் ஆர்டருக்கு மட்டும் — மேசை ஆர்டரை விட்டு வெளியேறவும் அல்லது «தளம்» பயன்படுத்தவும்
+drafts_parked	«வரைவுகள்»-இல் வைக்கப்பட்டது — கவுண்டர் காலி
+drafts_discard	வரைவை நீக்கு
+drafts_discarded	வரைவு நீக்கப்பட்டது
+drafts_gone	அந்த வரைவு இப்போது பட்டியலில் இல்லை
+drafts_closed	அந்த வரைவுக்கு ஏற்கனவே கட்டணம் பெறப்பட்டது அல்லது அது நீக்கப்பட்டது
+drafts_empty	இன்னும் வரைவுகள் இல்லை. «கவுண்டர்»-இல் உணவுகளைச் சேர்த்து «வரைவில் வை» தட்டவும்.
+drafts_card_kind	வரைவு
+drafts_card_no_lines	பொருட்கள் இல்லை
+drafts_card_lines	பொருட்கள்
+drafts_summary_fmt	{n} திறந்த வரைவுகள்
+drafts_cols_fmt	{n} நெடுவரிசை
 note_gstin_ph	குறிப்பு / GSTIN / ஒப்பந்த நினைவூட்டல்
 notes_attach_party	குறிப்புகள் & இணைப்புகள் (தேர்ந்த தரப்பு)
 notes_attach_sale	குறிப்புகள் & இணைப்புகள் (தேர்ந்த விற்பனை)
@@ -588,15 +588,15 @@ print_open	அச்சிடு / திற
 reason_amend_ph	திருத்தம் / ரத்து / திரும்ப காரணம்
 reason_note_ph	காரணம் / குறிப்பு (சேதம், எண்ணிக்கை, …)
 record_day_close	நாள் முடிவைப் பதிவு செய்
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«இன்று» எப்போது புதிதாகத் தொடங்கும்?
+business_day_help	«நாள் முடிவு வரை» தேர்ந்தெடுத்தால், நீங்கள் நாள் முடிவைப் பதிவு செய்யும் வரை «நாள் புத்தகம்» நள்ளிரவுக்குப் பிறகும் தொடரும். «நாட்காட்டி நள்ளிரவு» தேர்ந்தெடுத்தால், நாள் உள்ளூர் நேரம் இரவு 12:00 மணிக்கு முடியும்.
+biz_day_until_close	நாள் முடிவு வரை
+biz_day_midnight	நாட்காட்டி நள்ளிரவு
+business_day_saved	வணிக நாள் சேமிக்கப்பட்டது
+report_day_lens	«இன்று» எப்படிக் காட்ட
+report_day_lens_help	பார்வைக்கு மட்டும் — «நாள் முடிவு» எப்போது «இன்று»-ஐப் புதிதாகத் தொடங்கும் என்பதை இது மாற்றாது. «நாள் முடிவு படி» கடைசி நாள் முடிவிலிருந்து கணக்கிடும்; «நள்ளிரவுப் படி» உள்ளூர் நேரம் இரவு 12:00 மணிக்குப் பிரிக்கும்.
+report_lens_day_close	நாள் முடிவு படி
+report_lens_midnight	நள்ளிரவுப் படி
 refresh_from_shop	கடையிலிருந்து புதுப்பி
 refund	திரும்ப
 remove_selected	தேர்ந்ததை அகற்று
@@ -864,7 +864,7 @@ find_printers	அச்சுப்பொறிகளைக் கண்டு�
 printers_looking	இந்தச் சாதனம் மற்றும் Wi‑Fi-இல் அச்சுப்பொறிகளைத் தேடுகிறது…
 saving_printer	அச்சுப்பொறி சேர்க்கப்படுகிறது…
 cancelled	ரத்து
-cancelling	Cancellingâ¦
+cancelling	ரத்து செய்யப்படுகிறது…
 removing	நீக்கப்படுகிறது…
 removed	நீக்கப்பட்டது
 updating_order	புதுப்பிக்கப்படுகிறது…

@@ -3,27 +3,27 @@ app_tagline	कूरियर एजन्सीची बही + बुकि
 unlock	उगडात
 pin_hint	धनीचो PIN 0000 सावन सुरू जाता
 sell	बुकिंग
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	बोर्ड
+board	बोर्ड
+park_draft	ड्राफ्टांत दवरात
+board_help	उकते ड्राफ्ट («काडात» वा «फारीकणी घेवची» करी मेरेन उरतात) आनी आयची बूक जाल्ली विक्री. «बुकिंग» चेर काम चालू आसतना «ड्राफ्टांत दवरात» दामात (हांगा सांबाळटा, बहींत न्हय); परत सुरू करपाक ड्राफ्ट दामात.
+board_empty	अजून कार्डां नात.
+board_park_nothing	दवरपाक कांयच ना — शुल्क वा बुकिंगाचो तपशील जोडात
+board_parked	«बोर्ड» चेर दवरलें — डेस्क रितो आसा
+board_draft	ड्राफ्ट
+board_booked	बुक जालें
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ड्राफ्ट
+board_filter_booked	बुक जालें
+board_cols_fmt	{n} स्तंभ
+board_summary_fmt	{total} कार्डां · {drafts} ड्राफ्ट · {booked} बूक जाले
+board_card_no_charges	अजून शुल्क ना
+board_card_charges	शुल्क
+board_card_booked	बुकिंग
+board_draft_gone	तो ड्राफ्ट आतां «बोर्ड» चेर ना
+board_draft_closed	तो ड्राफ्ट पयलींच पुराय जाला वा काडला
+board_discard	काडात
+board_discarded	ड्राफ्ट काडलो
 buy	फारीकणी
 books	दिसाळी बही
 books_help	आयजची स्थिती. बुकिंग = पार्सल भितर. फारीकणी = कॅरियर बिल आनी खर्च. पार्टी = पाठवपी आनी कॅरियर.
@@ -220,7 +220,7 @@ snack_secs_save	सावधानाचो वेळ सांबाळात
 snack_secs_saved	सावधानाचो वेळ सांबाळलो — {n} सेकंद
 snack_secs_bad	सेकंद आंकडो म्हणून घालात (3–60)
 cancelled	रद्द केलां
-cancelling	Cancellingâ¦
+cancelling	रद्द जाता…
 cancel	रद्द
 opening_client	उगडपी गिरायक...
 preparing_desk	डेस्क तयार करप...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	पक्ष लेजर सीएसव्ही प्�
 copy_receipt	पावती प्रत करप
 copy_report	अहवालाची प्रत करात
 counted_cash_ph	ड्रॉअरांत रोख रक्कम मेजली
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	शिफ्ट बंद करात आनी स्लिप प्रिंट करात
+shift_handover	शिफ्ट हस्तांतरित करप
+shift_counted_ph	हस्तांतरित करतना रोख रक्कम मेजली
+shift_since	तेन्नासावन हें स्थलांतर
+expected_in_drawer	ड्रॉअरांत अपेक्षीत आसा
+lock_books_through_month	म्हयन्या मेरेन बही लॉक करात
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ह्या म्हयन्या मेरेन लॉक करात
+books_locked_none	अजून खंयचोच म्हयनो लॉक ना
+books_locked_through	खंयच्या म्हयन्या मेरेन लॉक
 counter_agency_ph	काउंटर / एजन्सीचें नांव (पर्यायी)
 create_backup	बॅकअप तयार करचो
 day_close_summary	दीस बंद सारांश
@@ -442,9 +442,9 @@ pay_ap_cash	एपी रोख फारीक करप
 pay_ap_upi	एपी यूपीआय फारीक करचें
 period_bill	काळ बिल
 period_bill_party	काळ बिल (पार्टी)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	बिल तयार करात
+period_bill_generate_print	तयार करून छापात
+booking_bulk_preview	{ok} तयार · {bad} चुकीचे
 pick_pod_photo	POD फोटो वेंचात
 print_awb_label	AWB लेबल छापात
 print_open	छापप / उगडप
@@ -653,19 +653,19 @@ attachments_last_expense	संलग्नक (निमाणो खर्च)
 credit_limit_heading	पतपुरवठ्याची मर्यादा (निवड केल्लो / नांव दिल्लो पक्ष)
 pay_selected_heading	वेंचून काडिल्लें फारीक करचें (रीण निवळावप / आगाऊ घेवप)
 write_off_heading	बंद करप (फारीकणी करिनासतना निवळ करप)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	समायोजन नोट
+adj_note_amount_ph	रक्कम
+adj_note_reason_ph	कारण (आवश्यक) २.
+adj_note_awb_ph	संबंदीत AWB (पर्यायी)
+credit_note_btn	क्रेडिट नोट
+debit_note_btn	डेबिट नोट
+bill_later_heading	उपरांत बिल करात (बुकिंगा उपरांतचें चड शुल्क)
+bill_later_amount_ph	चड रक्कम
+bill_later_party_ph	पार्टी (बुकिंगांत कोणूच ना जाल्यारूच)
+bill_later_btn	उपरांत बिल करात
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	पॅकिंग
+bill_later_extra_other	हेर
 pay_ap_heading	आमी तांकां जें रिणाचे आसात तें फारीक करचें (एपी)
 country_tax	देश आनी कर
 extra_tills_heading	अतिरिक्त टिल
@@ -777,26 +777,26 @@ onboard_book_tmpl	पुस्तक · {} — आयटम जोडचें �
 onboard_template_tmpl	तुमकां जाय जाल्यार जाग्याचें नांव सांगात, मागीर कशी सुरू करची तें वेंचून काडात.
 tmpl_blurb	कूरियर बही आनी बुकिंग डेस्क: पाठवपी, कॅरियर, दिसाळी बही, AWB.
 tmpl_how	डेस्कचेर पार्सल बुक करात; आयज खातीर दिसाळी बही; दर, पार्टी, अहवाल खातीर टॅब.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	दुकान टेम्पलेट
+app_template_blurb	सुरवातीचो डेस्क वेंचात. «आतां खातीर वगडावचें» दामल्यार पार्टींची वळेरी रिती उरतली.
+app_template_skip	आतां खातीर वगडावचें
+app_template_status	सर्व्हर तयार — टेम्पलेट आयात करात, वा सोडात
+app_template_importing	{title} लागू करप...
+app_template_public_hdr	टेम्पलेट
+app_template_import_selected	वेंचिल्लें आयात करात
+app_template_wipe_warn	हाका लागून बहींतलो वेव्हाराचो डेटा (बुकिंग, खातीं) निवळ जातलो आनी टेम्पलेटाचीं दुकान सेटिंगां लागू जातलीं. फुडें वचचें?
+app_template_wipe_continue	फुडें व्हरप
+app_template_wipe_cancel	रद्द
+public_tmpl_help	ह्या दुकाना खातीर ॲपा वांगडा आयिल्ले एजन्सी पॅक. डावनलोडाची गरज ना.
+business_day	«आयज» केन्ना नव्यान सुरू जाता?
+business_day_help	«दीस बंद मेरेन» वेंचल्यार, तुमी दीस बंद नोंद करी मेरेन «दिसाळी बही» मध्यान राती उपरांतूय चालू उरता. «कॅलेंडराची मध्यान रात» वेंचल्यार, दीस थळाव्या वेळा प्रमाण रातचे 12:00 वरांचेर सोंपता.
+biz_day_until_close	दीस बंद मेरेन
+biz_day_midnight	कॅलेंडराची मध्यान रात
+business_day_saved	वेवसायाचो दीस सांबाळ्ळो
+report_day_lens	«आयज» अशें पळयात
+report_day_lens_help	फकत पळोवपा खातीर — «दीस बंद» केन्ना «आयज» नव्यान सुरू करता तें हाका लागून बदलना. «दीस बंद प्रमाण» निमाण्या दीस बंदा सावन मेजता; «मध्यान राती प्रमाण» थळाव्या वेळा प्रमाण रातचे 12:00 वरांचेर कापता.
+report_lens_day_close	दीस बंद प्रमाण
+report_lens_midnight	मध्यान राती प्रमाण
 trk_booked	बुक जालें
 trk_picked_up	उचललें
 trk_in_transit	वाटेर

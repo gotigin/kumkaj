@@ -384,12 +384,12 @@ app_template_need_internet	ต้องใช้อินเทอร์เน�
 app_template_import_selected	นำเข้ารายการที่เลือก
 app_template_check_code	ตรวจรหัส
 app_template_import	นำเข้า
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	นำเข้าจากอุปกรณ์นี้
+app_template_from_device_help	เลือกโฟลเดอร์ที่มี template.json (และ shop_defaults.json ถ้ามี)
+settings_app_tmpl_note	การนำเข้าซ้ำจะล้างยอดขาย KOT และบัญชีแยกประเภท แล้วใช้การตั้งค่าร้านของแพ็ก เทมเพลตเฉพาะเมนู: «เมนู» → «เทมเพลตรายการ»
+app_template_wipe_warn	การดำเนินการนี้จะล้างข้อมูลการค้าในสมุดบัญชี (ยอดขาย, KOT, บัญชีแยกประเภท) และใช้การตั้งค่าร้านของเทมเพลต เมนูและการตั้งค่าอาจเปลี่ยน ดำเนินการต่อหรือไม่
+app_template_wipe_continue	ดำเนินการต่อ
+app_template_wipe_cancel	ยกเลิก
 currency	สกุลเงิน
 backup	สำรองข้อมูล
 use	ใช้
@@ -550,22 +550,22 @@ new_party_clear	คู่ค้าใหม่ (ล้างฟอร์ม)
 new_party_kind_supplier_ph	ประเภทคู่ค้าใหม่ (ผู้จัดหา)
 next_country	ประเทศถัดไป
 next_order	ออเดอร์ถัดไป (ล้างโต๊ะ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ฉบับร่าง
+park_draft	พักเป็นฉบับร่าง
+drafts_help	ออเดอร์หน้าเคาน์เตอร์ที่คุณพักไว้กลางคัน — ยังไม่ลงสมุดบัญชีจนกว่าจะ «รับชำระเงิน» แตะการ์ดเพื่อทำต่อที่ «ออเดอร์» ส่วน «ทิ้งฉบับร่าง» จะลบฉบับร่าง และ «ปิดวัน» ไม่ล้างรายการเหล่านี้
+drafts_park_nothing	ไม่มีอะไรให้พัก — เพิ่มรายการลงตะกร้าก่อน
+drafts_park_counter_only	«พักเป็นฉบับร่าง» ใช้ได้กับออเดอร์หน้าเคาน์เตอร์เท่านั้น — ออกจากออเดอร์ของโต๊ะ หรือใช้ «พื้นที่»
+drafts_parked	พักไว้ใน «ฉบับร่าง» แล้ว — เคาน์เตอร์ว่าง
+drafts_discard	ทิ้งฉบับร่าง
+drafts_discarded	ทิ้งฉบับร่างแล้ว
+drafts_gone	ฉบับร่างนั้นไม่อยู่ในรายการแล้ว
+drafts_closed	ฉบับร่างนั้นชำระเงินแล้วหรือถูกทิ้งไปแล้ว
+drafts_empty	ยังไม่มีฉบับร่าง ที่ «เคาน์เตอร์» เพิ่มอาหารแล้วแตะ «พักเป็นฉบับร่าง»
+drafts_card_kind	ร่าง
+drafts_card_no_lines	ไม่มีรายการ
+drafts_card_lines	รายการ
+drafts_summary_fmt	ฉบับร่างที่เปิดอยู่ {n} รายการ
+drafts_cols_fmt	{n} คอลัมน์
 note_gstin_ph	หมายเหตุ / GSTIN / เตือนข้อตกลง
 notes_attach_party	หมายเหตุและไฟล์แนบ (คู่ค้าที่เลือก)
 notes_attach_sale	หมายเหตุและไฟล์แนบ (การขายที่เลือก)
@@ -588,15 +588,15 @@ print_open	พิมพ์ / เปิด
 reason_amend_ph	เหตุผลแก้ / ยกเลิก / คืนเงิน
 reason_note_ph	เหตุผล / หมายเหตุ (เสียหาย นับ ฯลฯ)
 record_day_close	บันทึกปิดวัน
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«วันนี้» เริ่มใหม่เมื่อใด
+business_day_help	เมื่อเลือก «จนกว่าจะปิดวัน» ส่วน «สมุดรายวัน» จะนับต่อเนื่องเลยเที่ยงคืนไปจนกว่าคุณจะบันทึกปิดวัน เมื่อเลือก «เที่ยงคืนตามปฏิทิน» วันจะตัดที่ 00:00 น. ตามเวลาท้องถิ่น
+biz_day_until_close	จนกว่าจะปิดวัน
+biz_day_midnight	เที่ยงคืนตามปฏิทิน
+business_day_saved	บันทึกวันทำการแล้ว
+report_day_lens	ดู «วันนี้» ตาม
+report_day_lens_help	ใช้ดูเท่านั้น — ไม่เปลี่ยนเวลาที่ «ปิดวัน» เริ่ม «วันนี้» ใหม่ โดย «ตามการปิดวัน» นับจากการปิดวันครั้งล่าสุด ส่วน «ตามเที่ยงคืน» ตัดที่ 00:00 น. ตามเวลาท้องถิ่น
+report_lens_day_close	ตามการปิดวัน
+report_lens_midnight	ตามเที่ยงคืน
 refresh_from_shop	รีเฟรชจากร้าน
 refund	คืนเงิน
 remove_selected	ลบที่เลือก
@@ -864,7 +864,7 @@ find_printers	ค้นหาเครื่องพิมพ์
 printers_looking	กำลังค้นหาเครื่องพิมพ์บนอุปกรณ์นี้และ Wi‑Fi…
 saving_printer	กำลังเพิ่มเครื่องพิมพ์…
 cancelled	ยกเลิก
-cancelling	Cancellingâ¦
+cancelling	กำลังยกเลิก…
 removing	กำลังนำออก…
 removed	นำออกแล้ว
 updating_order	กำลังอัปเดต…

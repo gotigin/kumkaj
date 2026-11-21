@@ -3,27 +3,27 @@ app_tagline	Книги кур'єра + стійка бронювання. Без
 unlock	Розблокувати
 pin_hint	PIN власника спочатку 0000
 sell	Бронювання
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Дошка
+board	Дошка
+park_draft	Відкласти чернетку
+board_help	Відкриті чернетки (зберігаються, доки ви не торкнетеся «Видалити» або «Прийняти оплату») і заброньовані сьогодні продажі. У розділі «Бронювання» торкніться «Відкласти чернетку» посеред роботи (зберігається тут, не в книгах); торкніться чернетки, щоб продовжити.
+board_empty	Карток поки немає.
+board_park_nothing	Нічого відкладати — додайте збори або дані бронювання
+board_parked	Відкладено в розділ «Дошка» — робоче місце вільне
+board_draft	Чернетка
+board_booked	Заброньовано
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Чернетка
+board_filter_booked	Заброньовано
+board_cols_fmt	{n} стовп.
+board_summary_fmt	Карток: {total} · чернеток: {drafts} · заброньовано: {booked}
+board_card_no_charges	Зборів поки немає
+board_card_charges	зборів
+board_card_booked	Бронювання
+board_draft_gone	Цієї чернетки вже немає в розділі «Дошка»
+board_draft_closed	Цю чернетку вже завершено або видалено
+board_discard	Видалити
+board_discarded	Чернетку видалено
 buy	Виплатити
 books	Книга дня
 books_help	Сьогоднішня позиція. Бронювання = надсилання посилок. Оплата = рахунки та витрати перевізника. Сторони = відправники та перевізники.
@@ -220,7 +220,7 @@ snack_secs_save	Зберегти час сповіщення
 snack_secs_saved	Час сповіщення збережено — {n} секунд
 snack_secs_bad	Введіть секунди як число (3–60)
 cancelled	Скасовано
-cancelling	Cancellingâ¦
+cancelling	Скасування…
 cancel	Скасувати
 opening_client	Відкриття клієнта…
 preparing_desk	Підготовка стійки…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Копіювати книгу сторони CSV
 copy_receipt	Копіювати квитанцію
 copy_report	Копіювати звіт
 counted_cash_ph	Порахована готівка в шухляді
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Закрити зміну й надрукувати талон
+shift_handover	Передача зміни
+shift_counted_ph	Готівка, порахована під час передачі
+shift_since	Ця зміна з
+expected_in_drawer	Очікується в шухляді
+lock_books_through_month	Блокування книг по місяць
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Заблокувати по цей місяць
+books_locked_none	Жоден місяць ще не заблоковано
+books_locked_through	Заблоковано по
 counter_agency_ph	Назва лічильника/агенції (необов’язково)
 create_backup	Створити резервну копію
 day_close_summary	Підсумок закриття дня
@@ -442,9 +442,9 @@ pay_ap_cash	Сплатити AP готівкою
 pay_ap_upi	Сплатити AP через UPI
 period_bill	Рахунок за період
 period_bill_party	Рахунок за період (сторона)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Сформувати рахунок
+period_bill_generate_print	Сформувати й роздрукувати
+booking_bulk_preview	Готово: {ok} · з помилками: {bad}
 pick_pod_photo	Виберіть фотографію POD
 print_awb_label	Друк етикетки AWB
 print_open	Друкувати / відкрити
@@ -653,19 +653,19 @@ attachments_last_expense	Вкладення (остання витрата)
 credit_limit_heading	Кредитний ліміт (вибрана / названа сторона)
 pay_selected_heading	Сплатити вибране (закрити борг / взяти аванс)
 write_off_heading	Списати (закрити без оплати)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Коригувальні документи
+adj_note_amount_ph	Сума
+adj_note_reason_ph	Причина (обов'язково)
+adj_note_awb_ph	Пов'язана AWB (необов'язково)
+credit_note_btn	Кредит-нота
+debit_note_btn	Дебет-нота
+bill_later_heading	Виставити пізніше (доплата після бронювання)
+bill_later_amount_ph	Сума доплати
+bill_later_party_ph	Сторона (лише якщо в бронюванні її немає)
+bill_later_btn	Виставити пізніше
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Пакування
+bill_later_extra_other	інше
 pay_ap_heading	Сплатити те, що ми їм винні (AP)
 country_tax	Країна й податок
 extra_tills_heading	Додаткові каси
@@ -777,26 +777,26 @@ onboard_book_tmpl	Книга · {} — додайте позиції й поча
 onboard_template_tmpl	Назвіть місце, якщо хочете, потім оберіть, як почати.
 tmpl_blurb	Книги кур'єра та бронювання: вантажовідправники, перевізники, денна книга, AWB.
 tmpl_how	Забронювати посилки на стійці; День книга на сьогодні; вкладки для ставок, партій, звітів.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Шаблони крамниці
+app_template_blurb	Виберіть початкове робоче місце. «Поки пропустити» залишить список сторін порожнім.
+app_template_skip	Поки пропустити
+app_template_status	Сервер готовий — імпортуйте шаблон або пропустіть
+app_template_importing	Застосовується {title}…
+app_template_public_hdr	Шаблони
+app_template_import_selected	Імпортувати вибране
+app_template_wipe_warn	Це очистить торгові дані з книг (бронювання, особові рахунки) і застосує налаштування крамниці з шаблону. Продовжити?
+app_template_wipe_continue	Далі
+app_template_wipe_cancel	Скасувати
+public_tmpl_help	Готові пакети агенції для цієї крамниці, вбудовані в застосунок. Завантаження не потрібне.
+business_day	Коли «Сьогодні» починається заново?
+business_day_help	З варіантом «До закриття дня» «Книга дня» триває після півночі, доки ви не запишете закриття дня. З варіантом «Календарна північ» день обрізається о 00:00 за місцевим часом.
+biz_day_until_close	До закриття дня
+biz_day_midnight	Календарна північ
+business_day_saved	Робочий день збережено
+report_day_lens	Показувати «Сьогодні»
+report_day_lens_help	Лише вигляд — не змінює, коли «Закриття дня» починає «Сьогодні» заново. «За закриттям дня» рахує від останнього закриття дня; «За північчю» обрізає о 00:00 за місцевим часом.
+report_lens_day_close	За закриттям дня
+report_lens_midnight	За північчю
 trk_booked	Заброньовано
 trk_picked_up	Підняв
 trk_in_transit	У дорозі

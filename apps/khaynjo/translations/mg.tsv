@@ -260,7 +260,7 @@ tables	Latabatra
 kitchen	Lakozia
 sales	Varotra
 sales_refunds	Varotra sy famerenam-bola
-day_close	Andro akaiky
+day_close	Fanakatonana ny andro
 reports_expenses	Bokin'ny banky & Teti-bola sy Fatiantoka
 nav_reports	Tatitra
 nav_settings	Fikirana
@@ -384,12 +384,12 @@ app_template_need_internet	Ilaina ny aterineto hakana modely
 app_template_import_selected	Hampiditra ny voafidy
 app_template_check_code	Hamarino ny kaody
 app_template_import	Hampiditra
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Manafatra avy amin'ity fitaovana ity
+app_template_from_device_help	Misafidiana lahatahiry misy template.json (ary, raha tiana, shop_defaults.json).
+settings_app_tmpl_note	Ny fanafarana indray dia mamafa ny varotra, ny KOT ary ny bokin-kaonty, avy eo mampihatra ny fandrindrana fivarotana avy amin'ny fonosana. Modely misy sakafo fotsiny: «Karazan-tsakafo» → «Modely entana».
+app_template_wipe_warn	Izany dia manafoana ny angona ara-barotra ao amin'ny kaonty (varotana, KOT, bokikely) ary mampihatra ny firafitry ny fivarotana ny môdely. Mety hiova ny sakafo sy ny fanamboarana. Te hanohy ve ianao?
+app_template_wipe_continue	Tohizo
+app_template_wipe_cancel	Ajanony
 currency	Vola
 backup	Kopia
 use	Ampiasao
@@ -550,22 +550,22 @@ new_party_clear	Antoko vaovao (diovy ny endrika)
 new_party_kind_supplier_ph	Karazana antoko vaovao (Mpamatsy)
 next_country	Firenena manaraka
 next_order	Filaharana manaraka (latabatra madio)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Drafitra
+park_draft	Tehirizo ho drafitra
+drafts_help	Kaomandy tsy vita avy amin'ny kaontera natokanao ireo. Tsy tafiditra ao amin'ny kaonty izy ireo raha tsy manindry «Manaova fandoavam-bola». Tsindrio karatra iray hanohizana izany amin'ny «Baiko»; «Fafao ny drafitra» dia mamafa ny drafitra. «Fanakatonana ny andro» dia tsy manadio azy ireo.
+drafts_park_nothing	Tsy misy tehirizina ho drafitra — ampio entana ao anaty sarety
+drafts_park_counter_only	«Tehirizo ho drafitra» dia ho an'ny baiko eo amin'ny kaontera ihany — ilaozy ny baikon'ny latabatra, na ampiasao «Salon»
+drafts_parked	Voatahiry ao amin'ny «Drafitra» — foana ny kaontera ankehitriny
+drafts_discard	Fafao ny drafitra
+drafts_discarded	Voafafa ny drafitra
+drafts_gone	Tsy ao anaty lisitra intsony io volavolan-dalàna io
+drafts_closed	Efa voaloa na voafafa io volavolan-dalàna io
+drafts_empty	Tsy mbola misy drafitra. Amin'ny «Kauntera», ampio sakafo ary kitiho ny «Tehirizo ho drafitra».
+drafts_card_kind	Drafitra
+drafts_card_no_lines	Tsy misy entana
+drafts_card_lines	entana
+drafts_summary_fmt	{n} drafitra misokatra
+drafts_cols_fmt	{n} tsanganana
 note_gstin_ph	Fanamarihana / GSTIN / fampahatsiahivana fifanarahana
 notes_attach_party	Fanamarihana & rakitra mifamatotra (antoko voafantina)
 notes_attach_sale	Fanamarihana & rakitra mifamatotra (varotra voafantina)
@@ -588,15 +588,15 @@ print_open	Printy / sokafy
 reason_amend_ph	Antony hanitsiana / hanafoanana / hamerenana vola
 reason_note_ph	Antony / fanamarihana (fandaniam-potoana, fanisana, ...)
 record_day_close	Raketo ny fanakatonana andro
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Rahoviana ny «Androany» no mamerina?
+business_day_help	«Hatramin'ny Fanakatonana ny andro» dia manohy ny «Bokin'ny andro» mandalo amin'ny misasakalina, mandra-pandraiketanao ny fifaranan'ny andro. «Amin'ny misasakalina» tapaka amin'ny 00:00 (misasakalina) ora eo an-toerana.
+biz_day_until_close	Hatramin'ny Fanakatonana ny andro
+biz_day_midnight	Amin'ny misasakalina
+business_day_saved	Voatahiry ny firafitry ny andro fiasana
+report_day_lens	Asehoy ny «Androany» ho
+report_day_lens_help	Fijery fotsiny — tsy manova ny fotoana anombohan'ny «Fanakatonana ny andro» indray ny «Androany». «Araka ny Fanakatonana ny andro» dia manaraka ny fanakatonana andro farany; «Araka ny mamatonalina» dia manapaka amin'ny 00:00 (misasakalina), ora eo an-toerana.
+report_lens_day_close	Araka ny Fanakatonana ny andro
+report_lens_midnight	Araka ny mamatonalina
 refresh_from_shop	Manao fanavaozana avy amin'ny fivarotana
 refund	Famerenam-bola
 remove_selected	Esory voafantina
@@ -864,7 +864,7 @@ find_printers	Mitadiava milina fanontam-pirinty
 printers_looking	Mitady…
 saving_printer	Manampy pirinty…
 cancelled	Natoana
-cancelling	Cancellingâ¦
+cancelling	Manafoana…
 removing	Manala…
 removed	Nesorina
 updating_order	Manavao…

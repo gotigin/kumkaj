@@ -353,15 +353,15 @@ print_open	Chapisha / fungua
 reason_amend_ph	Sababu ya kurekebisha / kufuta / kurejesha
 reason_note_ph	Sababu / kumbuka (uharibifu, kuhesabu, …)
 record_day_close	Rekodi kufunga siku
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Leo» huanza upya lini?
+business_day_help	Ukichagua «Hadi kufunga siku», «Kitabu cha siku» huendelea baada ya saa sita usiku hadi urekodi kufunga siku. Ukichagua «Saa sita usiku ya kalenda», siku hukatwa saa 00:00 kwa saa za mahali.
+biz_day_until_close	Hadi kufunga siku
+biz_day_midnight	Saa sita usiku ya kalenda
+business_day_saved	Siku ya kazi imehifadhiwa
+report_day_lens	Onyesha «Leo» kwa
+report_day_lens_help	Ni mwonekano tu — haibadilishi ni lini «Funga siku» huanzisha upya «Leo». «Kwa kufunga siku» hufuata kufunga siku kwa mwisho; «Kwa saa sita usiku» hukata saa 00:00 kwa saa za mahali.
+report_lens_day_close	Kwa kufunga siku
+report_lens_midnight	Kwa saa sita usiku
 refresh_from_shop	Onyesha upya kutoka dukani
 refund	Kurejesha
 remove_selected	Ondoa aliyechaguliwa
@@ -837,19 +837,19 @@ client_template_confirm	Ungependa kuongeza vipengee vya {d} kutoka {title}? Vipe
 client_template_importing	Inaingiza {title}…
 client_template_done	Kila bidhaa kutoka {title} iko kwenye vipengee vyako.
 client_template_imported	Vipengee vya {d} vilivyoongezwa na kategoria za {c} kutoka {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Violezo vya duka
+app_template_blurb	Chagua katalogi ya kuanzia na mipangilio ya duka. «Piga hapo sasa» huacha rafu tupu.
+app_template_skip	Piga hapo sasa
+app_template_status	Seva iko tayari — leta kiolezo, au ruka
+app_template_importing	Inapokea {title}…
+app_template_import_selected	Leta kilichochaguliwa
+app_template_wipe_warn	Hii hufuta data ya biashara kwenye vitabu (mauzo, leja) na kutumia mipangilio ya duka ya kiolezo. Endelea?
+app_template_wipe_continue	Endelea
+app_template_wipe_cancel	Ghairi
+app_template_from_device	Leta kutoka kifaa hiki
+app_template_from_device_help	Chagua folda yenye template.json (na shop_defaults.json ikiwa ipo).
+settings_app_tmpl_note	Vifurushi kamili vya duka: katalogi na mipangilio ya duka. Kuleta tena kifurushi hufuta mauzo na leja, kisha hutumia mipangilio ya duka ya kifurushi.
+app_tmpl_named	Kiolezo cha duka {name}
 cancel	Ghairi
 removing	Inaondoa…
 removed	Imeondolewa

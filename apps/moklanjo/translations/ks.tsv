@@ -3,27 +3,27 @@ app_tagline	کوریئر ایجنسی ہِنٛز بُک + بُکنگ ڈیسک۔ 
 unlock	ان لاک کٔرِو
 pin_hint	مٲلِک PIN چُھ 0000 پؠٹھ شروع گژھان
 sell	بُکنگ
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	بورڈ
+board	بورڈ
+park_draft	ڈرافٹس منٛز تھٲوِو
+board_help	کھُلؠ ڈرافٹ («ہٹٲوِو» یا «ادٲیگی کٔرِو» کرنس تام چھِ روزان) تہٕ اَزٕچ بُک گٔمٕژ سیلز۔ «بُکنگ» پؠٹھ کامہِ منٛزٕ «ڈرافٹس منٛز تھٲوِو» دبٲیِو (یَتِہ چھُ محفوظ گژھان، کھاتَن منٛز نہٕ)؛ دوبارٕ شروع کرنہٕ خٲطرٕ دبٲیِو ڈرافٹ۔
+board_empty	وُنہِ چھُ نہٕ کانٛہہ کارڈ۔
+board_park_nothing	تھاونہٕ خٲطرٕ چھُ نہٕ کینٛہہ — چارج یا بُکنگٕچ تفصیل کٔرِو شٲمل
+board_parked	«بورڈ» پؠٹھ آو تھاونہٕ — ڈیسک چھُ خٲلی
+board_draft	ڈرافٹ
+board_booked	بُک گۆو
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ڈرافٹ
+board_filter_booked	بُک گۆو
+board_cols_fmt	{n} کالم
+board_summary_fmt	{total} کارڈ · {drafts} ڈرافٹ · {booked} بُک گٔیہِ
+board_card_no_charges	وُنہِ چھُ نہٕ کانٛہہ چارج
+board_card_charges	چارج
+board_card_booked	بُکنگ
+board_draft_gone	سُہ ڈرافٹ چھُ نہٕ وۄنؠ «بورڈ» پؠٹھ
+board_draft_closed	سُہ ڈرافٹ چھُ برٛونٹھی مکمل گومُت یا ہٹاونہٕ آمُت
+board_discard	ہٹٲوِو
+board_discarded	ڈرافٹ آو ہٹاونہٕ
 buy	ادٲیگی
 books	دۄہُک کھاتہ
 books_help	اَزٕچ پوزِشن۔ بُکنگ = پارسل اَنٛدَر۔ ادٲیگی = کیرِیَر بِل تہٕ خرچہ۔ پارٹی = سوزَن وٲلۍ تہٕ کیرِیَر۔
@@ -220,7 +220,7 @@ snack_secs_save	الرٹ ٹایِم بچٲوِو
 snack_secs_saved	الرٹ ٹایِم محفوظ — {n} سیکنڈ
 snack_secs_bad	سکنڈ نمبرَس منٛز ترٲیِو (3–60)
 cancelled	منسوخ کرنہٕ آمُت
-cancelling	Cancellingâ¦
+cancelling	منسوخ گژھان چھُ…
 cancel	منسوخ
 opening_client	اوپننگ کلائنٹ...
 preparing_desk	ڈیسک تیار کران...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	کاپی پارٹی لیجر CSV
 copy_receipt	کاپی رسید
 copy_report	رپورٹ کاپی کٔرِو
 counted_cash_ph	دراز منٛز گٔنزۍ نقد رقم
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	شفٹ تہٕ پرنٹ سلپ کٔرِو بند
+shift_handover	شفٹ ہینڈ اوور
+shift_counted_ph	حَوالہٕ وِزِ نقد رقم گٔنزراوٕنۍ
+shift_since	امہ تبدیلی پتہٕ
+expected_in_drawer	دراز منٛز متوقع
+lock_books_through_month	رؠتَس تام کھاتہٕ کٔرِو لاک
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	یَتھ رؠتَس تام کٔرِو لاک
+books_locked_none	وُنہِ چھُ نہٕ کانٛہہ رؠتھ لاک
+books_locked_through	کَتھ رؠتَس تام لاک
 counter_agency_ph	کاؤنٹر / ایجنسی ہُنٛد ناو (اختیٲری)
 create_backup	بیک اپ بناو
 day_close_summary	دۄہ بند خُلاصہٕ
@@ -442,9 +442,9 @@ pay_ap_cash	اے پی کیش کٔرِو پے
 pay_ap_upi	پے اے پی UPI
 period_bill	مُدت بِل
 period_bill_party	مُدت بِل (پارٹی)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	بِل بنٲوِو
+period_bill_generate_print	بنٲوِو تہٕ چھاپِو
+booking_bulk_preview	{ok} تیار · {bad} خراب
 pick_pod_photo	POD فوٹو ژٲرِو
 print_awb_label	AWB لیبل چھاپِو
 print_open	پرنٹ / اوپن
@@ -653,19 +653,19 @@ attachments_last_expense	اٹیچمینٹ (ٲخری اخراجات)
 credit_limit_heading	کریڈِٹُک حد (ژارنہٕ آمُت / ناو دِنہٕ آمٕژ پارٹی)
 pay_selected_heading	اَدٲیگی کٔرِو ژارنہٕ آمُت (قرضہٕ طے کٔرِو / ایڈوانس نِو)
 write_off_heading	لیٚکھِو (اَدٲیگی بغٲر صاف کَرُن)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ایڈجسٹمنٹ نوٹ
+adj_note_amount_ph	رقم
+adj_note_reason_ph	وجہ (ضروری)
+adj_note_awb_ph	متعلقہٕ AWB (اختیٲری)
+credit_note_btn	کریڈٹ نوٹ
+debit_note_btn	ڈیبٹ نوٹ
+bill_later_heading	پتہٕ کٔرِو بِل (بُکنگ پتہٕ اضٲفی چارج)
+bill_later_amount_ph	اضٲفی رقم
+bill_later_party_ph	گاہَک (صرف تیٚلہِ یێلہِ بُکنگس منٛز کانٛہہ نہٕ آسہِ)
+bill_later_btn	پتہٕ کٔرِو بِل
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	پیکنگ
+bill_later_extra_other	بیٛاکھ
 pay_ap_heading	اسہِ دِیُو تِمَن ہُنٛد دِیُن (اے پی)
 country_tax	ملک تہٕ ٹیکس
 extra_tills_heading	اضٲفی کَش کاؤنٹر
@@ -777,26 +777,26 @@ onboard_book_tmpl	کتاب · {} — آیٹم ایڈ کٔرِو تہٕ اوپن�
 onboard_template_tmpl	اگر تُہۍ یژھان چھِو جایہِ ہُنٛد ناو تھاوُن، پتہٕ ژٲرِو کِتھٕ کٔنۍ کرو شُروٗع۔
 tmpl_blurb	کوریئر بُک تہٕ بُکنگ ڈیسک: سوزَن وٲلۍ، کیرِیَر، دۄہُک کھاتہ، AWB۔
 tmpl_how	ڈیسکَس پؠٹھ پارسل بُک کٔرِو؛ اَز خٲطرٕ دۄہُک کھاتہ؛ ریٹ، پارٹی، رپورٹَن خٲطرٕ ٹیب۔
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	دُکانُک ٹیمپلیٹ
+app_template_blurb	شروعٲتی ڈیسک ژٲرِو۔ «وُنکینَس کٔرِو سِکِپ» دباونہٕ پؠٹھ روزِ گاہکَن ہٕنز فہرست خٲلی۔
+app_template_skip	وُنکینَس کٔرِو سِکِپ
+app_template_status	سرور تیار — ٹیمپلیٹ درآمد کٔرِو، یا ترٲوِو
+app_template_importing	لاگو کَرُن {title}...
+app_template_public_hdr	ٹیمپلیٹ
+app_template_import_selected	ژارمُت درآمد کٔرِو
+app_template_wipe_warn	اَمہِ سٟتؠ گژھہِ کھاتَن ہُند کاروبٲری ڈیٹا (بُکنگ، کھاتہٕ) صاف تہٕ ٹیمپلیٹٕچ دُکان سیٹنگ گژھہِ لاگو۔ جاری تھٲوِو؟
+app_template_wipe_continue	جاری
+app_template_wipe_cancel	منسوخ
+public_tmpl_help	اَتھ دُکانہِ خٲطرٕ ایپس سٟتؠ آمٕتؠ ایجنسی پیک۔ ڈاؤن لوڈٕچ چھِ نہٕ ضرورت۔
+business_day	«اَز» کَر چھُ نٔوِ سَرٕ شروع گژھان؟
+business_day_help	«دۄہ بند تام» ژارنہٕ پؠٹھ چھُ «دۄہُک کھاتہ» اَڈ رٲژ پتہٕ تہِ جٲری روزان، یوٚت تام نہٕ تۄہؠ دۄہ بند ریکارڈ کٔرِو۔ «کیلنڈرٕچ اَڈ رات» ژارنہٕ پؠٹھ چھُ دۄہ مقٲمی وقتہٕ مطٲبق رٲژ 12:00 بجہِ ژٹنہٕ یِوان۔
+biz_day_until_close	دۄہ بند تام
+biz_day_midnight	کیلنڈرٕچ اَڈ رات
+business_day_saved	کاروبٲری دۄہ آو محفوظ کرنہٕ
+report_day_lens	«اَز» یِتھہٕ پٲٹھؠ وُچھِو
+report_day_lens_help	صرف وُچھنہٕ خٲطرٕ — اَمہِ سٟتؠ چھُ نہٕ یہِ بدلان زِ «دۄہ بند» کَر چھُ «اَز» نٔوِ سَرٕ شروع کران۔ «دۄہ بند مطٲبق» چھُ پٔتِمہِ دۄہ بند پؠٹھہٕ گنزران؛ «اَڈ رٲژ مطٲبق» چھُ مقٲمی وقتہٕ مطٲبق رٲژ 12:00 بجہِ ژٹان۔
+report_lens_day_close	دۄہ بند مطٲبق
+report_lens_midnight	اَڈ رٲژ مطٲبق
 trk_booked	بُک گۆو
 trk_picked_up	پِک اَپ گۆو
 trk_in_transit	رستَس پؠٹھ

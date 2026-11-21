@@ -353,15 +353,15 @@ print_open	Daabac / fur
 reason_amend_ph	Sababta saxitaanka / burinta / celinta
 reason_note_ph	Sabab / qoraal (khasaare, tirin, …)
 record_day_close	Diiwaan geli xiritaanka maalinta
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Goorma ayuu «Maanta» dib u bilaabmaa?
+business_day_help	Haddii la doorto «Ilaa xiritaanka maalinta», «Buugga maalinta» wuu sii socdaa saqda dhexe kadib ilaa aad diiwaangeliso xiritaanka maalinta. Haddii la doorto «Saqda dhexe ee jadwalka», maalintu waxay go'daa 00:00 waqtiga deegaanka.
+biz_day_until_close	Ilaa xiritaanka maalinta
+biz_day_midnight	Saqda dhexe ee jadwalka
+business_day_saved	Maalinta shaqada waa la kaydiyay
+report_day_lens	U muuji «Maanta» sida
+report_day_lens_help	Muuqaal keliya — ma beddelo goorta «Xiritaanka maalinta» uu dib u bilaabo «Maanta». «Sida xiritaanka maalinta» wuxuu ka xisaabiyaa xiritaankii maalinta ee ugu dambeeyay; «Sida saqda dhexe» wuxuu gooyaa 00:00 waqtiga deegaanka.
+report_lens_day_close	Sida xiritaanka maalinta
+report_lens_midnight	Sida saqda dhexe
 refresh_from_shop	Ka cusbooneysii dukaanka
 refund	Celi lacag
 remove_selected	Ka saar kan la doortay
@@ -837,19 +837,19 @@ client_template_confirm	Ku dar shay {d} {title}? Alaabta aad horey u haysatey ku
 client_template_importing	{title} ayaa la soo dejinayaa…
 client_template_done	Shay kasta oo ka yimid {title} wuxuu saaran yahay alaabtaada.
 client_template_imported	Waxyaabaha lagu daray {d} iyo qaybaha {c} ee {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Qaababka dukaanka
+app_template_blurb	Dooro buug-alaabeed bilow ah iyo dejinta dukaanka. «Hadda ka bood» wuxuu khaanadda ka tagayaa iyadoo madhan.
+app_template_skip	Hadda ka bood
+app_template_status	Server-ku waa diyaar — soo deji qaab, ama ka bood
+app_template_importing	Waxaa la dabaqayaa {title}…
+app_template_import_selected	Soo deji kan la doortay
+app_template_wipe_warn	Tani waxay tirtirtaa xogta ganacsiga ee buugaagta (iibka, xisaabaha dhinacyada) waxayna dhaqangelisaa dejinta dukaanka ee qaabka. Ma sii wadaa?
+app_template_wipe_continue	Sii wad
+app_template_wipe_cancel	Jooji
+app_template_from_device	Ka soo deji qalabkan
+app_template_from_device_help	Dooro gal ay ku jirto template.json (iyo shop_defaults.json haddii ay jirto).
+settings_app_tmpl_note	Xirmooyin dukaan oo dhammaystiran: buug-alaabeed iyo dejinta dukaanka. Dib-u-soo-dejinta xirmadu waxay tirtirtaa iibka iyo xisaabaha dhinacyada, kadibna waxay dhaqangelisaa dejinta dukaanka ee xirmada.
+app_tmpl_named	Qaabka dukaanka {name}
 cancel	Jooji
 removing	Waa laga saarayaa…
 removed	Waa laga saaray

@@ -3,27 +3,27 @@ app_tagline	Курьер-агенттік кітаптар + брондау үс
 unlock	Құлыпты ашу
 pin_hint	Иенің PIN-і 0000-ден басталады
 sell	Брондау
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Тақта
+board	Тақта
+park_draft	Нобай ретінде сақтау
+board_help	Ашық нобайлар («Жою» немесе «Төлем қабылдау» таңдалғанша сақталады) және бүгінгі тіркелген сатылымдар. «Брондау» бөлімінде жұмыс ортасында «Нобай ретінде сақтау» түймесін түртіңіз (кітаптарда емес, осында сақталады); жалғастыру үшін нобайды түртіңіз.
+board_empty	Әзірге карталар жоқ.
+board_park_nothing	Кейінге қоятын ештеңе жоқ — алымдарды немесе брондау мәліметтерін қосыңыз
+board_parked	Сақталды: «Тақта» — үстел қазір бос
+board_draft	Нобай
+board_booked	Брондалды
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Нобай
+board_filter_booked	Брондалды
+board_cols_fmt	{n} баған
+board_summary_fmt	{total} карта · {drafts} нобай · {booked} тіркелді
+board_card_no_charges	Әзірге алымдар жоқ
+board_card_charges	алымдар
+board_card_booked	Брондау
+board_draft_gone	Бұл нобай енді мұнда жоқ: «Тақта»
+board_draft_closed	Бұл нобай әлдеқашан аяқталған немесе жойылған
+board_discard	Жою
+board_discarded	Нобай жойылды
 buy	Төлеу
 books	Күнделік кітап
 books_help	Бүгінгі ұстаным. Брондау = сәлемдеме. Төлеу = тасымалдаушы шоттары мен шығындары. Тараптар = жүк жөнелтушілер мен тасымалдаушылар.
@@ -220,7 +220,7 @@ snack_secs_save	Ескерту уақытын сақтау
 snack_secs_saved	Ескерту уақыты сақталды — {n} секунд
 snack_secs_bad	Секундтарды сан ретінде енгізіңіз (3–60)
 cancelled	Бас тартылды
-cancelling	Cancellingâ¦
+cancelling	Бас тартуда…
 cancel	Бас тарту
 opening_client	Клиент ашылуда…
 preparing_desk	Касса дайындалуда…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Контрагент кітабын CSV көшіру
 copy_receipt	Түбіртекті көшіру
 copy_report	Есепті көшіру
 counted_cash_ph	Жәшіктегі санаған қолма-қол
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Ауысымды жауып, фиш басу
+shift_handover	Ауысым тапсыру
+shift_counted_ph	Тапсыру кезінде саналған ақша
+shift_since	Бұл ауысым бері
+expected_in_drawer	Жәшікте күтілетіні
+lock_books_through_month	Кітаптарды айдың соңына дейін құлыптау
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Осы айдың соңына дейін құлыптау
+books_locked_none	Әлі ешбір ай құлыпталмаған
+books_locked_through	Құлыпталған мерзімі
 counter_agency_ph	Есептегіш/агенттік атауы (міндетті емес)
 create_backup	Сақтық көшірме жасау
 day_close_summary	Күнді жабу қорытындысы
@@ -442,9 +442,9 @@ pay_ap_cash	AP қолма-қол төлеу
 pay_ap_upi	AP UPI-мен төлеу
 period_bill	Мерзімді есеп
 period_bill_party	Мерзімді шот (тарап)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Шот-фактура жасау
+period_bill_generate_print	Жасау және басып шығару
+booking_bulk_preview	{ok} дайын · {bad} қателері бар
 pick_pod_photo	POD фотосуретін таңдаңыз
 print_awb_label	AWB белгісін басып шығарыңыз
 print_open	Басу / ашу
@@ -653,19 +653,19 @@ attachments_last_expense	Тіркемелер (соңғы шығын)
 credit_limit_heading	Несие шегі (таңдалған / аталған контрагент)
 pay_selected_heading	Таңдалғанды төлеу (қарызды жабу / аванс алу)
 write_off_heading	Есептен шығару (төлемсіз тазалау)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Түзету жазбалары
+adj_note_amount_ph	Сома
+adj_note_reason_ph	Себеп (міндетті)
+adj_note_awb_ph	Қатысты AWB (міндетті емес)
+credit_note_btn	Кредит-нота
+debit_note_btn	Дебет-нота
+bill_later_heading	Кейінірек шот қою (брондаудан кейінгі қосымша ақы)
+bill_later_amount_ph	Қосымша сома
+bill_later_party_ph	Клиент (брондауда болмаса ғана)
+bill_later_btn	Кейінірек шот қою
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Қаптама
+bill_later_extra_other	Басқа
 pay_ap_heading	Оларға қарызымызды төлеу (AP)
 country_tax	Ел және салық
 extra_tills_heading	Қосымша кассалар
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — тауар мен бастапқы несие �
 onboard_template_tmpl	Қаласаңыз орынды атап, содан қалай бастау керектігін таңдаңыз.
 tmpl_blurb	Курьерлік кітаптар мен брондау үстелі: жүк жөнелтушілер, тасымалдаушылар, күндік кітап, AWB.
 tmpl_how	Жұмыс үстелінде сәлемдемелерді брондау; Бүгінгі күндік кітап; тарифтер, партиялар, есептер үшін қойындылар.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Дүкен үлгілері
+app_template_blurb	Бастапқы жұмыс орнын таңдаңыз. «Әзірге өткізу» клиенттер тізімін бос қалдырады.
+app_template_skip	Әзірге өткізу
+app_template_status	Сервер дайын — үлгі импорттаңыз немесе өткізіп жіберіңіз
+app_template_importing	{title} қолданылуда…
+app_template_public_hdr	Үлгілер
+app_template_import_selected	Таңдалғанды импорттау
+app_template_wipe_warn	Бұл шоттардағы (брондаулар, бухгалтерлік кітаптар) сауда деректерін тазартады және үлгінің дүкен параметрлерін қолданады. Жалғастырғыңыз келе ме?
+app_template_wipe_continue	Жалғастыру
+app_template_wipe_cancel	Бас тарту
+public_tmpl_help	Қолданбамен бірге келетін дайын агенттік үлгілері. Жүктеп алудың қажеті жоқ.
+business_day	«Бүгін» қашан жаңадан басталады?
+business_day_help	«Күнді жабуға дейін» таңдалса, күнді жабуды жазғаныңызша «Күнделік кітап» түн ортасынан кейін де жалғаса береді. «Күнтізбелік түн ортасы» таңдалса, күн жергілікті уақыт бойынша сағат 00:00-де аяқталады.
+biz_day_until_close	Күнді жабуға дейін
+biz_day_midnight	Күнтізбелік түн ортасы
+business_day_saved	Жұмыс күні параметрі сақталды
+report_day_lens	«Бүгін» ретінде көрсету
+report_day_lens_help	Тек көрініс — «Күнді жабу» әрекетінің «Бүгін» бөлімін қашан жаңадан бастайтынын өзгертпейді. «Күнді жабу бойынша» соңғы күнді жабудан бастап есептейді; «Түн ортасы бойынша» жергілікті уақыт бойынша сағат 00:00-де кеседі.
+report_lens_day_close	Күнді жабу бойынша
+report_lens_midnight	Түн ортасы бойынша
 trk_booked	Брондалды
 trk_picked_up	Алды
 trk_in_transit	Транзитта

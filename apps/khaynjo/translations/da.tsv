@@ -384,12 +384,12 @@ app_template_need_internet	Kræver internet for at hente skabeloner
 app_template_import_selected	Importér valgte
 app_template_check_code	Tjek kode
 app_template_import	Importér
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importér fra denne enhed
+app_template_from_device_help	Vælg en mappe, der indeholder template.json (og eventuelt shop_defaults.json).
+settings_app_tmpl_note	Ny import rydder salg, KOT'er og konti og anvender derefter pakkens butiksindstillinger. Skabeloner kun med menu: «Menu» → «Vareskabeloner».
+app_template_wipe_warn	Dette rydder handelsdata i bøgerne (salg, KOT'er, konti) og anvender skabelonens butiksindstillinger. Menu og opsætning kan ændre sig. Fortsæt?
+app_template_wipe_continue	Fortsæt
+app_template_wipe_cancel	Annuller
 currency	Valuta
 backup	Sikkerhedskopi
 use	Brug
@@ -550,22 +550,22 @@ new_party_clear	Ny part (ryd formular)
 new_party_kind_supplier_ph	Ny parttype (Leverandør)
 next_country	Næste land
 next_order	Næste ordre (ryd bordet)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Kladder
+park_draft	Parkér kladde
+drafts_help	Ordrer ved disken, som du har parkeret undervejs — de kommer først i bøgerne ved «Tag betaling». Tryk på et kort for at fortsætte i «Ordre»; «Kassér kladde» sletter kladden. «Dagsafslutning» rydder dem ikke.
+drafts_park_nothing	Intet at parkere — læg varer i kurven
+drafts_park_counter_only	«Parkér kladde» gælder kun ordrer ved disken — forlad bordordren, eller brug «Sal»
+drafts_parked	Parkeret i «Kladder» — disken er fri
+drafts_discard	Kassér kladde
+drafts_discarded	Kladde kasseret
+drafts_gone	Den kladde er ikke længere på listen
+drafts_closed	Den kladde er allerede betalt eller kasseret
+drafts_empty	Ingen kladder endnu. Tilføj retter i «Disk», og tryk på «Parkér kladde».
+drafts_card_kind	Kladde
+drafts_card_no_lines	Ingen linjer
+drafts_card_lines	linjer
+drafts_summary_fmt	{n} åbne kladder
+drafts_cols_fmt	{n} kol.
 note_gstin_ph	Note / GSTIN / aftalepåmindelse
 notes_attach_party	Noter og vedhæftninger (valgt part)
 notes_attach_sale	Noter og vedhæftninger (valgt salg)
@@ -588,15 +588,15 @@ print_open	Udskriv / åbn
 reason_amend_ph	Årsag til rettelse / annullering / refundering
 reason_note_ph	Årsag / note (spild, optælling, …)
 record_day_close	Bogfør dagsafslutning
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Hvornår starter «I dag» forfra?
+business_day_help	Med «Indtil dagsafslutning» fortsætter «Dagbog» efter midnat, indtil du registrerer dagsafslutningen. Med «Kalendermidnat» afsluttes dagen kl. 00:00 lokal tid.
+biz_day_until_close	Indtil dagsafslutning
+biz_day_midnight	Kalendermidnat
+business_day_saved	Forretningsdag gemt
+report_day_lens	Vis «I dag» som
+report_day_lens_help	Kun visning — ændrer ikke, hvornår «Dagsafslutning» starter «I dag» forfra. «Pr. dagsafslutning» følger den seneste dagsafslutning; «Pr. midnat» skærer kl. 00:00 lokal tid.
+report_lens_day_close	Pr. dagsafslutning
+report_lens_midnight	Pr. midnat
 refresh_from_shop	Opdater fra butikken
 refund	Refundér
 remove_selected	Fjern valgte
@@ -864,7 +864,7 @@ find_printers	Find printere
 printers_looking	Leder…
 saving_printer	Tilføjer printer…
 cancelled	Annulleret
-cancelling	Cancellingâ¦
+cancelling	Annullerer…
 removing	Fjerner…
 removed	Fjernet
 updating_order	Opdaterer…

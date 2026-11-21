@@ -384,12 +384,12 @@ app_template_need_internet	Veidņu lejupielādei nepieciešams internets
 app_template_import_selected	Importēt atlasīto
 app_template_check_code	Pārbaudīt kodu
 app_template_import	Importēt
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importēt no šīs ierīces
+app_template_from_device_help	Izvēlieties mapi, kurā ir template.json (un, ja vēlaties, shop_defaults.json).
+settings_app_tmpl_note	Atkārtota importēšana notīra pārdošanu, KOT un kontus un pēc tam lieto pakotnes veikala iestatījumus. Veidnes tikai ar ēdienkarti: «Ēdienkarte» → «Preču veidnes».
+app_template_wipe_warn	Tas notīrīs tirdzniecības datus grāmatvedībā (pārdošanu, KOT, kontus) un lietos veidnes veikala iestatījumus. Ēdienkarte un iestatījumi var mainīties. Vai turpināt?
+app_template_wipe_continue	Turpināt
+app_template_wipe_cancel	Atcelt
 currency	Valūta
 backup	Dublējums
 use	Lietot
@@ -550,22 +550,22 @@ new_party_clear	Jauna puse (notīrīt veidlapu)
 new_party_kind_supplier_ph	Jaunas puses veids (piegādātājs)
 next_country	Nākamā valsts
 next_order	Nākamais pasūtījums (notīrīt galdu)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Melnraksti
+park_draft	Atlikt melnrakstu
+drafts_help	Letes pasūtījumi, kurus esat atlikuši pusceļā — grāmatvedībā tie nonāk tikai pēc «Ņemt maksājumu». Pieskarieties kartītei, lai turpinātu sadaļā «Pasūtījums»; «Atmest melnrakstu» dzēš melnrakstu. «Dienas slēgšana» tos nenotīra.
+drafts_park_nothing	Nav ko atlikt — pievienojiet pozīcijas grozam
+drafts_park_counter_only	«Atlikt melnrakstu» ir tikai letes pasūtījumiem — izejiet no galda pasūtījuma vai izmantojiet «Zāle»
+drafts_parked	Atlikts sadaļā «Melnraksti» — lete ir brīva
+drafts_discard	Atmest melnrakstu
+drafts_discarded	Melnraksts atmests
+drafts_gone	Šī melnraksta sarakstā vairs nav
+drafts_closed	Šis melnraksts jau ir apmaksāts vai atmests
+drafts_empty	Melnrakstu vēl nav. Sadaļā «Lete» pievienojiet ēdienus un pieskarieties «Atlikt melnrakstu».
+drafts_card_kind	Melnraksts
+drafts_card_no_lines	Nav rindu
+drafts_card_lines	rindas
+drafts_summary_fmt	Atvērti melnraksti: {n}
+drafts_cols_fmt	{n} kol.
 note_gstin_ph	Piezīme / GSTIN / līguma atgādinājums
 notes_attach_party	Piezīmes un pielikumi (atlasītā puse)
 notes_attach_sale	Piezīmes un pielikumi (atlasītā pārdošana)
@@ -588,15 +588,15 @@ print_open	Drukāt / atvērt
 reason_amend_ph	Iemesls labojumam / anulēšanai / atmaksai
 reason_note_ph	Iemesls / piezīme (zudumi, skaits, …)
 record_day_close	Ierakstīt dienas slēgšanu
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kad «Šodien» sākas no jauna?
+business_day_help	Ar «Līdz dienas slēgšanai» «Dienas grāmata» turpinās arī pēc pusnakts, līdz reģistrējat dienas slēgšanu. Ar «Kalendāra pusnakts» diena beidzas plkst. 00:00 pēc vietējā laika.
+biz_day_until_close	Līdz dienas slēgšanai
+biz_day_midnight	Kalendāra pusnakts
+business_day_saved	Darba diena saglabāta
+report_day_lens	Rādīt «Šodien» kā
+report_day_lens_help	Tikai skats — nemaina to, kad «Dienas slēgšana» sāk «Šodien» no jauna. «Pēc dienas slēgšanas» skaita no pēdējās dienas slēgšanas; «Pēc pusnakts» nogriež plkst. 00:00 pēc vietējā laika.
+report_lens_day_close	Pēc dienas slēgšanas
+report_lens_midnight	Pēc pusnakts
 refresh_from_shop	Atsvaidzināt no veikala
 refund	Atmaksa
 remove_selected	Noņemt atlasīto
@@ -864,7 +864,7 @@ find_printers	Atrast printerus
 printers_looking	Meklē…
 saving_printer	Pievieno printeri…
 cancelled	Atcelts
-cancelling	Cancellingâ¦
+cancelling	Atceļ…
 removing	Noņem…
 removed	Noņemts
 updating_order	Atjaunina…

@@ -252,7 +252,7 @@ sidebar_order_saved	Ordni tal-Istrixxa tal-ġenb salvata
 sidebar_visibility_saved	Viżibilità tal-istrixxa tal-ġenb salvata
 amounts_hide	Aħbi
 amounts_show	Uri
-counter	Kontatur
+counter	Counter
 dine_in	Ikla ġewwa
 takeaway	Ħu ma' Ħdejk
 order	Ordni
@@ -384,12 +384,12 @@ app_template_need_internet	Hemm bżonn l-internet biex jitniżżlu l-mudelli
 app_template_import_selected	Importa l-magħżul
 app_template_check_code	Iċċekkja l-kodiċi
 app_template_import	Importa
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importa minn dan l-apparat
+app_template_from_device_help	Agħżel folder li fih template.json (u, b'għażla, shop_defaults.json).
+settings_app_tmpl_note	L-importazzjoni għal darb'oħra tikklerja l-bejgħ, KOT u r-reġistru, imbagħad tapplika s-settings tal-ħanut tal-mudell. Mudelli b'menu biss: «Menu» → «Mudelli tal-oġġetti».
+app_template_wipe_warn	Dan jikklerja d-dejta tal-kummerċ fil-kontijiet (bejgħ, KOT, reġistri) u japplika s-settings tal-ħanut tal-mudell. Il-menu u s-setup jistgħu jinbidlu. Trid tkompli?
+app_template_wipe_continue	Kompli
+app_template_wipe_cancel	Ikkanċella
 currency	Munita
 backup	Backup
 use	Użu
@@ -550,22 +550,22 @@ new_party_clear	Partit ġdid (forma ċara)
 new_party_kind_supplier_ph	Tip ġdid ta' parti (Fornitur)
 next_country	Pajjiż li jmiss
 next_order	Ordni li jmiss (desk ċara)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Abbozzi
+park_draft	Issejvja bħala abbozz
+drafts_help	Ordnijiet mhux mitmuma mill-counter li warrabt — ma jidħlux fil-kotba qabel «Ħu ħlas». Tektek karta biex tkompli f'«Ordni»; «Ħassar l-abbozz» iħassar l-abbozz. «Għeluq tal-ġurnata» ma jneħħihomx.
+drafts_park_nothing	M'hemm xejn x'twarrab — żid oġġetti fil-basket
+drafts_park_counter_only	«Issejvja bħala abbozz» huwa biss għal ordnijiet tal-counter — oħroġ mill-ordni tal-mejda, jew uża «Sala»
+drafts_parked	Issejvjat f'«Abbozzi» — il-counter huwa ħieles
+drafts_discard	Ħassar l-abbozz
+drafts_discarded	Abbozz imħassar
+drafts_gone	Dak l-abbozz m'għadux fil-lista
+drafts_closed	Dak l-abbozz diġà tħallas jew tħassar
+drafts_empty	Għad m'hemmx abbozzi. F'«Counter», żid platti u tektek «Issejvja bħala abbozz».
+drafts_card_kind	Abbozz
+drafts_card_no_lines	Ebda linji
+drafts_card_lines	linji
+drafts_summary_fmt	{n} abbozzi miftuħa
+drafts_cols_fmt	{n} kolonni
 note_gstin_ph	Nota / GSTIN / tfakkira tal-ftehim
 notes_attach_party	Noti u annessi (parti magħżula)
 notes_attach_sale	Noti u aċċessorji (bejgħ magħżul)
@@ -588,15 +588,15 @@ print_open	Stampa / tiftaħ
 reason_amend_ph	Raġuni għall-emenda / null / rifużjoni
 reason_note_ph	Raġuni / nota (ħela, għadd, ...)
 record_day_close	Irreġistra l-għeluq tal-ġurnata
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Meta jerġa' jibda «Illum»?
+business_day_help	B'«Sal-għeluq tal-ġurnata», «Ktieb tal-ġurnata» jibqa' għaddej wara nofsillejl sakemm tirreġistra l-għeluq tal-ġurnata. B'«Nofsillejl tal-kalendarju», il-ġurnata tinqata' f'00:00, ħin lokali.
+biz_day_until_close	Sal-għeluq tal-ġurnata
+biz_day_midnight	Nofsillejl tal-kalendarju
+business_day_saved	Issettjar tal-ġurnata tan-negozju salvat
+report_day_lens	Uri «Illum» bħala
+report_day_lens_help	Veduta biss — ma jbiddilx meta «Għeluq tal-ġurnata» jerġa' jibda «Illum». «Skont l-għeluq tal-ġurnata» isegwi l-aħħar għeluq tal-ġurnata; «Skont nofsillejl» jaqta' f'00:00, ħin lokali.
+report_lens_day_close	Skont l-għeluq tal-ġurnata
+report_lens_midnight	Skont nofsillejl
 refresh_from_shop	Aġġorna mill-ħanut
 refund	Rifużjoni
 remove_selected	Neħħi magħżula
@@ -864,7 +864,7 @@ find_printers	Sib stampaturi
 printers_looking	Tfittex...
 saving_printer	Inżid l-istampatur...
 cancelled	Ikkanċellat
-cancelling	Cancellingâ¦
+cancelling	Qed tikkanċella…
 removing	Qed jitneħħa…
 removed	Imneħħi
 updating_order	Qed jiġi aġġornat…
@@ -1116,7 +1116,7 @@ tile_undo_bill	Ħoll il-kont
 summary_busy	imwejjed okkupati
 summary_to_collect	biex tiġbor
 summary_on_floor	fuq l-art
-floor	Art
+floor	Sala
 sizes_as_items_ph	Daqsijiet bħala oġġetti separati (mhux obbligatorju) — Nofs=120, Sħiħ=200
 dish_group_ph	Grupp tal-platti (mhux obbligatorju) — eż. Paneer Tikka
 discount	Roħs

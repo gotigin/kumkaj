@@ -384,12 +384,12 @@ app_template_need_internet	টেম্পলেট ডাউনলোড খা
 app_template_import_selected	বাসাগনাই তুবুই
 app_template_check_code	কোড নাইদি
 app_template_import	তুবুই
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	অ ডিভাইসনি তুবুদি
+app_template_from_device_help	template.json তংনাই ফোল্ডার বাসাগদি (shop_defaults.json তংখে আবনো)।
+settings_app_tmpl_note	তেই তুবুইখে ফালমানি, KOT তেই খাতারগ কুথার উঙো, আবনি উল পেকনি দোকানি সেটিং লাগু উঙো। মেনু সে তংনাই টেম্পলেটরগ: «মেনু» → «Item template rog»।
+app_template_wipe_warn	অব বিজাপনি বেপার ডাটা (ফালমানি, KOT, খাতারগ) কুথার খলাইনাই তেই টেম্পলেটনি দোকানি সেটিং লাগু খলাইনাই। মেনু তেই সেটআপ সলাইনা মানো। তুলাংনাই দে?
+app_template_wipe_continue	তুলাংদি
+app_template_wipe_cancel	চানচেল খাইদি
 currency	রাং
 backup	বাচকুপ
 use	বেবহার
@@ -550,22 +550,22 @@ new_party_clear	কুতাল পারতয় (কুথার ফরম)
 new_party_kind_supplier_ph	কুতাল পারতয় নি (ফাইনাই)
 next_country	নেক্ষত হাসতে
 next_order	তেই কাইসা ওরদের (কুথার দেসক)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ড্রাফ্টরগ
+park_draft	ড্রাফ্টও তনদি
+drafts_help	কাউন্টারনি পাইয়া অর্ডাররগ, নুং কেচারও তনজাক — «রাং রুদি» উংয়া জরা অবরগ বিজাপও থাংয়া। কার্ড তাপ খাইখে আব «অর্ডার» ও তেই খলকনাই; «ড্রাফ্ট কুথার খাইদি» ড্রাফ্টন কুথার খলাইও। «সাল উংখা» অবরগন কুথার খলাইয়া।
+drafts_park_nothing	তননা বাগুই মুংসা ফান কুরুই — কার্টও মানুই আদ খাইদি
+drafts_park_counter_only	«ড্রাফ্টও তনদি» কাউন্টারনি অর্ডারনি বাগুই সে — মেজানি অর্ডার খিবিদি এবা «মেজানি হা» বাহাই খাইদি
+drafts_parked	«ড্রাফ্টরগ» ও তনজাক — কাউন্টার খালি
+drafts_discard	ড্রাফ্ট কুথার খাইদি
+drafts_discarded	ড্রাফ্ট কুথার খাইজাক
+drafts_gone	আব ড্রাফ্ট তাবুক লিস্টও কুরুই
+drafts_closed	আব ড্রাফ্টনি রাং সুকাংনো রুজাক এবা কুথার খাইজাক
+drafts_empty	তাবুক জরা ড্রাফ্ট কুরুই। «লেখাজাক» ও চামুং আদ খাইদি তেই «ড্রাফ্টও তনদি» তাপ খাইদি।
+drafts_card_kind	ড্রাফ্ট
+drafts_card_no_lines	মানুই কুরুই
+drafts_card_lines	মানুই
+drafts_summary_fmt	{n} খলকজাক ড্রাফ্ট
+drafts_cols_fmt	{n} খলম
 note_gstin_ph	নতে / GSTIN / সুমাই তাংমানি মুইতু
 notes_attach_party	নতেস তেই চাপজাকমারক (চংজাক বরক)
 notes_attach_sale	নতেস তেই চাপজাকমারক (চংজাক ফালমানি)
@@ -588,15 +588,15 @@ print_open	পরিনত / ফিয়কদি
 reason_amend_ph	সুলাইমানি কারন / ভইদ / রাং কিফিলুই রুমানি
 reason_note_ph	কাহাম / ককতুমা (কুমাজাক, লেখাজাক, ...)
 record_day_close	রেচরদ সাল উংখা
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«তিনি» বুফুরু কুতাল ছুগো?
+business_day_help	«সাল উংখা জরা» বাসাগখে, নুং সাল উংখা রেকর্ড খলাইয়া জরা «সালনি বিজাপ» হর কেচার উলবো তংগো। «ক্যালেন্ডারনি হর কেচার» বাসাগখে, সাল লোকাল টাইম হর 12:00 ও পাইগো।
+biz_day_until_close	সাল উংখা জরা
+biz_day_midnight	ক্যালেন্ডারনি হর কেচার
+business_day_saved	বেপারনি সাল মুথাংজাক
+report_day_lens	«তিনি» ন অহাই নাইদি
+report_day_lens_help	নাইনা বাগুই সে — «সাল উংখা» বুফুরু «তিনি» ন কুতাল ছুগো আবন অব সলাইয়া। «সাল উংখা বাই» উলনি সাল উংখানি লেখাও; «হর কেচার বাই» লোকাল টাইম হর 12:00 ও পাইগো।
+report_lens_day_close	সাল উংখা বাই
+report_lens_midnight	হর কেচার বাই
 refresh_from_shop	দুকান নি কুতাল তুবুদি
 refund	রাং কিফিলুই রুদি
 remove_selected	চংজাকরকন সুকাকদি
@@ -864,7 +864,7 @@ find_printers	পরিনতের নাইদি
 printers_looking	নাইউই তংমানি...
 saving_printer	পরিনতের তুবুই তঙ...
 cancelled	চানচেল উংখা
-cancelling	Cancellingâ¦
+cancelling	চানচেল উঙুই তংগো…
 removing	সিং তঙ…
 removed	সিংখা
 updating_order	আপডেট তঙ…

@@ -3,27 +3,27 @@ app_tagline	Registre de agenție de curierat + tejghea de expediere. Gratuit off
 unlock	Deblochează
 pin_hint	PIN-ul proprietarului începe cu 0000
 sell	Expediere
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Panou
+board	Panou
+park_draft	Salvează ca ciornă
+board_help	Ciorne deschise (păstrate până la «Șterge» sau «Încasează plata») și vânzările înregistrate azi. În «Expediere», apasă «Salvează ca ciornă» în timpul lucrului (se salvează aici, nu în evidență); apasă o ciornă ca s-o reiei.
+board_empty	Niciun card încă.
+board_park_nothing	Nimic de salvat ca ciornă — adaugă taxe sau detalii de expediere
+board_parked	Salvată pe «Panou» — biroul e liber
+board_draft	Ciornă
+board_booked	Înregistrat
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Ciornă
+board_filter_booked	Înregistrat
+board_cols_fmt	{n} coloane
+board_summary_fmt	{total} carduri · {drafts} ciorne · {booked} înregistrate
+board_card_no_charges	Nicio taxă încă
+board_card_charges	taxe
+board_card_booked	Expediere
+board_draft_gone	Ciorna aceea nu mai este pe «Panou»
+board_draft_closed	Ciorna aceea a fost deja finalizată sau ștearsă
+board_discard	Șterge
+board_discarded	Ciornă ștearsă
 buy	Plată
 books	Jurnalul zilei
 books_help	Poziția de azi. Expediere = colete intrate. Plată = facturi de transportator și cheltuieli. Parteneri = expeditori și transportatori.
@@ -220,7 +220,7 @@ snack_secs_save	Salvează timpul alertei
 snack_secs_saved	Timpul alertei salvat — {n} secunde
 snack_secs_bad	Introdu secundele ca număr (3–60)
 cancelled	Anulat
-cancelling	Cancellingâ¦
+cancelling	Se anulează…
 cancel	Anulează
 opening_client	Se deschide clientul…
 preparing_desk	Se pregătește tejgheaua…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Copiază registrul partenerului CSV
 copy_receipt	Copiază chitanța
 copy_report	Copiază raportul
 counted_cash_ph	Numerar numărat în sertar
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Închide tura și tipărește bonul
+shift_handover	Predare de tură
+shift_counted_ph	Bani numărați la predare
+shift_since	Tura aceasta de la
+expected_in_drawer	Așteptat în sertar
+lock_books_through_month	Blochează registrele până la sfârșitul lunii
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Blochează până la sfârșitul acestei luni
+books_locked_none	Nicio lună blocată încă
+books_locked_through	Blocat până la
 counter_agency_ph	Nume tejghea / agenție (opțional)
 create_backup	Creează copie de rezervă
 day_close_summary	Rezumatul închiderii de zi
@@ -442,9 +442,9 @@ pay_ap_cash	Plătește AP numerar
 pay_ap_upi	Plătește AP cu UPI
 period_bill	Factură de perioadă
 period_bill_party	Factură de perioadă (partener)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Generează factura
+period_bill_generate_print	Generează și tipărește
+booking_bulk_preview	{ok} gata · {bad} cu erori
 pick_pod_photo	Alege foto POD
 print_awb_label	Tipărește eticheta AWB
 print_open	Tipărește / deschide
@@ -653,19 +653,19 @@ attachments_last_expense	Atașamente (ultima cheltuială)
 credit_limit_heading	Limită de credit (partener selectat / numit)
 pay_selected_heading	Plătește selecția (stinge datoria / ia avans)
 write_off_heading	Trecere la pierdere (stingere fără plată)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Note de ajustare
+adj_note_amount_ph	Sumă
+adj_note_reason_ph	Motiv (obligatoriu)
+adj_note_awb_ph	AWB asociat (opțional)
+credit_note_btn	Notă de credit
+debit_note_btn	Notă de debit
+bill_later_heading	Facturează ulterior (supliment după expediere)
+bill_later_amount_ph	Sumă suplimentară
+bill_later_party_ph	Partener (doar dacă expedierea nu are)
+bill_later_btn	Facturează ulterior
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Ambalare
+bill_later_extra_other	Altele
 pay_ap_heading	Plătește ce le datorăm (AP)
 country_tax	Țară și taxă
 extra_tills_heading	Case suplimentare
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — adaugă articole și credit de început, apoi G
 onboard_template_tmpl	Pune numele locului dacă vrei, apoi alege cum să începi.
 tmpl_blurb	Registre de curierat și tejghea de expediere: expeditori, transportatori, jurnalul zilei, AWB.
 tmpl_how	Înregistrează colete la tejghea; jurnalul zilei pentru azi; file pentru tarife, parteneri, rapoarte.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Șabloane de magazin
+app_template_blurb	Alege un birou de pornire. «Sari deocamdată» lasă lista de parteneri goală.
+app_template_skip	Sari deocamdată
+app_template_status	Server pregătit — importați un șablon sau săriți peste
+app_template_importing	Se aplică {title}…
+app_template_public_hdr	Șabloane
+app_template_import_selected	Importă selecția
+app_template_wipe_warn	Aceasta șterge datele comerciale din evidență (expedieri, registre) și aplică setările localului din șablon. Continui?
+app_template_wipe_continue	Continuă
+app_template_wipe_cancel	Anulează
+public_tmpl_help	Pachete de agenție incluse pentru acest local. Nu e nevoie de descărcare.
+business_day	Când se resetează «Azi»?
+business_day_help	«Până la Închidere de zi» ține «Jurnalul zilei» deschis și după miezul nopții, până când înregistrezi închiderea de zi. «Miezul nopții calendaristic» taie la ora 00:00, ora locală.
+biz_day_until_close	Până la Închidere de zi
+biz_day_midnight	Miezul nopții calendaristic
+business_day_saved	Ziua de lucru a fost salvată
+report_day_lens	Afișează «Azi» ca
+report_day_lens_help	Doar afișare — nu schimbă momentul în care «Închidere de zi» resetează «Azi». «În funcție de Închidere de zi» pornește de la ultima închidere de zi; «În funcție de miezul nopții» taie la ora 00:00, ora locală.
+report_lens_day_close	În funcție de Închidere de zi
+report_lens_midnight	În funcție de miezul nopții
 trk_booked	Înregistrat
 trk_picked_up	Preluat
 trk_in_transit	În tranzit

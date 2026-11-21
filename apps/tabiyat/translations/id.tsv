@@ -365,15 +365,15 @@ print_open	Cetak / buka
 reason_amend_ph	Alasan ubah / batal / refund
 reason_note_ph	Alasan / catatan (susut, hitung, …)
 record_day_close	Catat tutup hari
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kapan «Hari ini» dimulai ulang?
+business_day_help	Dengan «Sampai tutup hari», «Buku harian» terus berjalan melewati tengah malam sampai Anda mencatat tutup hari. Dengan «Tengah malam kalender», hari dipotong pukul 00.00 waktu setempat.
+biz_day_until_close	Sampai tutup hari
+biz_day_midnight	Tengah malam kalender
+business_day_saved	Hari kerja disimpan
+report_day_lens	Lihat «Hari ini» menurut
+report_day_lens_help	Hanya tampilan — tidak mengubah kapan «Tutup hari» memulai ulang «Hari ini». «Menurut tutup hari» mengikuti tutup hari terakhir; «Menurut tengah malam» memotong pukul 00.00 waktu setempat.
+report_lens_day_close	Menurut tutup hari
+report_lens_midnight	Menurut tengah malam
 refresh_from_shop	Segarkan dari toko
 refund	Refund
 remove_selected	Hapus terpilih
@@ -849,19 +849,19 @@ client_template_confirm	Tambahkan item {d} dari {title}? Item yang sudah Anda mi
 client_template_importing	Mengimpor {title}…
 client_template_done	Setiap item dari {title} ada di item Anda.
 client_template_imported	Menambahkan item {d} dan kategori {c} dari {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Templat toko
+app_template_blurb	Pilih katalog awal dan pengaturan toko. «Lewati untuk saat ini» membiarkan rak kosong.
+app_template_skip	Lewati untuk saat ini
+app_template_status	Server siap — impor templat, atau lewati
+app_template_importing	Menerapkan {title}…
+app_template_import_selected	Impor yang dipilih
+app_template_wipe_warn	Ini menghapus data transaksi di pembukuan (penjualan, buku besar) dan menerapkan pengaturan toko dari templat. Lanjut?
+app_template_wipe_continue	Lanjut
+app_template_wipe_cancel	Batal
+app_template_from_device	Impor dari perangkat ini
+app_template_from_device_help	Pilih folder yang berisi template.json (dan shop_defaults.json bila ada).
+settings_app_tmpl_note	Paket toko lengkap: katalog dan pengaturan toko. Mengimpor ulang sebuah paket menghapus penjualan dan buku besar, lalu menerapkan pengaturan toko dari paket.
+app_tmpl_named	Templat toko {name}
 cancel	Batal
 removing	Menghapus…
 removed	Dihapus

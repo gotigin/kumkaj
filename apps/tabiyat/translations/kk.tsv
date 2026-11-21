@@ -365,15 +365,15 @@ print_open	Басу / ашу
 reason_amend_ph	Түзету / жою / қайтару себебі
 reason_note_ph	Себеп / ескертпе (ысырап, санау, …)
 record_day_close	Күнді жабуды жазу
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Бүгін» қашан жаңадан басталады?
+business_day_help	«Күнді жабуға дейін» таңдалса, күнді жабуды жазғаныңызша «Күнделік кітап» түн ортасынан кейін де жалғаса береді. «Күнтізбелік түн ортасы» таңдалса, күн жергілікті уақыт бойынша сағат 00:00-де аяқталады.
+biz_day_until_close	Күнді жабуға дейін
+biz_day_midnight	Күнтізбелік түн ортасы
+business_day_saved	Жұмыс күні параметрі сақталды
+report_day_lens	«Бүгін» ретінде көрсету
+report_day_lens_help	Тек көрініс — «Күнді жабу» әрекетінің «Бүгін» бөлімін қашан жаңадан бастайтынын өзгертпейді. «Күнді жабу бойынша» соңғы күнді жабудан бастап есептейді; «Түн ортасы бойынша» жергілікті уақыт бойынша сағат 00:00-де кеседі.
+report_lens_day_close	Күнді жабу бойынша
+report_lens_midnight	Түн ортасы бойынша
 refresh_from_shop	Дүкеннен жаңарту
 refund	Қайтару
 remove_selected	Таңдалғанды алып тастау
@@ -849,19 +849,19 @@ client_template_confirm	{title} ішінен {d} элементтерін қос
 client_template_importing	{title} импортталуда…
 client_template_done	{title} әрбір элементі сіздің элементтеріңізде.
 client_template_imported	{title} ішінен {d} элементтері мен {c} санаттары қосылды
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Дүкен үлгілері
+app_template_blurb	Бастапқы каталогты және дүкен параметрлерін таңдаңыз. «Әзірге өткізу» өнім тізімін бос қалдырады.
+app_template_skip	Әзірге өткізу
+app_template_status	Сервер дайын — үлгі импорттаңыз немесе өткізіп жіберіңіз
+app_template_importing	{title} қолданылуда…
+app_template_import_selected	Таңдалғанды импорттау
+app_template_wipe_warn	Бұл шоттардағы (сатылымдар, бухгалтерлік кітаптар) сауда деректерін тазартады және үлгінің дүкен параметрлерін қолданады. Жалғастырғыңыз келе ме?
+app_template_wipe_continue	Жалғастыру
+app_template_wipe_cancel	Бас тарту
+app_template_from_device	Осы құрылғыдан импорттау
+app_template_from_device_help	template.json бар қалтаны таңдаңыз (қаласаңыз, shop_defaults.json да).
+settings_app_tmpl_note	Толық дүкен үлгілері: каталог және дүкен параметрлері. Біреуін қайтадан импорттау сатылымдар мен бухгалтерлік кітаптарды тазартады, содан кейін үлгінің дүкен параметрлерін қолданады.
+app_tmpl_named	{name} дүкен үлгісі
 cancel	Бас тарту
 removing	Жойылуда…
 removed	Жойылды

@@ -260,7 +260,7 @@ tables	Тамактануучу столдор
 kitchen	Ашкана
 sales	Сатуу
 sales_refunds	Сатуу жана кайтаруу
-day_close	Күн жакын
+day_close	Күндү жабуу
 reports_expenses	Банк китеби жана P&L
 nav_reports	Отчеттор
 nav_settings	Орнотуулар
@@ -384,12 +384,12 @@ app_template_need_internet	Шаблондорду жүктөө үчүн инте
 app_template_import_selected	Тандалганды импорттоо
 app_template_check_code	Кодду текшерүү
 app_template_import	Импорттоо
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Бул түзмөктөн импорттоо
+app_template_from_device_help	template.json камтыган папканы тандаңыз (жана, кааласаңыз, shop_defaults.json).
+settings_app_tmpl_note	Кайра импорттоо сатууларды, KOT жана бухгалтердик китептерди тазалап, андан кийин шаблондун дүкөн жөндөөлөрүн колдонот. Менюсу гана бар калыптар: «Меню» → «Товар үлгүлөрү».
+app_template_wipe_warn	Бул эсептердеги соода дайындарын тазалайт (сатуулар, KOT, китепчелер) жана шаблондун дүкөн жөндөөлөрүн колдонот. Меню жана орнотуу өзгөрүшү мүмкүн. Улангыңыз келеби?
+app_template_wipe_continue	Улантуу
+app_template_wipe_cancel	Жокко чыгаруу
 currency	Валюта
 backup	Камдык көчүрмө
 use	Колдонуу
@@ -550,22 +550,22 @@ new_party_clear	Жаңы кардар же жеткирүүчү (форманы 
 new_party_kind_supplier_ph	Жаңы түрү (Жеткирүүчү)
 next_country	Кийинки өлкө
 next_order	Кийинки буйрутма (үстөлдү бошотуу)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Караламалар
+park_draft	Каралама катары сактоо
+drafts_help	Прилавкадагы жарым жолдо калтырып, кийинкиге коюлган заказдар — «Төлөм алуу» жасалмайынча алар китептерге түшпөйт. «Ресторан заказы» бөлүмүндө улантуу үчүн картаны таптаңыз; «Караламаны өчүрүү» караламаны өчүрөт. «Күндү жабуу» аларды тазалабайт.
+drafts_park_nothing	Кийинкиге коё турган эч нерсе жок — себетке товар кошуңуз
+drafts_park_counter_only	«Каралама катары сактоо» прилавкадагы заказдар үчүн гана — стол заказынан чыгыңыз же «Ашкана» колдонуңуз
+drafts_parked	Сакталды: «Караламалар» — прилавок азыр бош
+drafts_discard	Караламаны өчүрүү
+drafts_discarded	Каралама өчүрүлдү
+drafts_gone	Ал каралама тизмеде жок
+drafts_closed	Ал каралама мурунтан эле төлөнгөн же өчүрүлгөн
+drafts_empty	Азырынча караламалар жок. «Прилавок» бөлүмүндө тамактарды кошуп, «Каралама катары сактоо» таптаңыз.
+drafts_card_kind	Каралама
+drafts_card_no_lines	Саптар жок
+drafts_card_lines	сап
+drafts_summary_fmt	{n} ачык каралама
+drafts_cols_fmt	{n} мамыча
 note_gstin_ph	Эскертүү / GSTIN / келишим эскертмеси
 notes_attach_party	Эскертүүлөр жана тиркемелер (тандалган кардар же жеткирүүчү)
 notes_attach_sale	Эскертүүлөр жана тиркемелер (тандалган сатуу)
@@ -588,15 +588,15 @@ print_open	Басып чыгаруу / ачуу
 reason_amend_ph	Түзөтүүнүн / жокко чыгаруунун / кайтарып берүүнүн себеби
 reason_note_ph	Себеп / эскертүү (ысырап, эсептөө, ...)
 record_day_close	Жакын күндү сактаңыз
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Бүгүн» качан жаңыдан башталат?
+business_day_help	«Күндү жабууга чейин» тандалса, күндү жабууну жазганыңызга чейин «Күн китеби» түн жарымынан кийин да улана берет. «Календардык түн жарымы» тандалса, күн жергиликтүү убакыт боюнча саат 00:00дө аяктайт.
+biz_day_until_close	Күндү жабууга чейин
+biz_day_midnight	Календардык түн жарымы
+business_day_saved	Иш күнүнүн жөндөөлөрү сакталды
+report_day_lens	«Бүгүн» катары көрсөтүү
+report_day_lens_help	Көрүнүш гана — «Күндү жабуу» аракети «Бүгүн» бөлүмүн качан жаңыдан баштаарын өзгөртпөйт. «Күндү жабуу боюнча» акыркы күндү жабуудан баштап эсептейт; «Түн жарымы боюнча» жергиликтүү убакыт боюнча саат 00:00дө кесет.
+report_lens_day_close	Күндү жабуу боюнча
+report_lens_midnight	Түн жарымы боюнча
 refresh_from_shop	Дүкөндөн жаңыртуу
 refund	Төлөмдү кайтаруу
 remove_selected	Тандалган алып салуу
@@ -864,7 +864,7 @@ find_printers	Принтерлерди табыңыз
 printers_looking	Каралууда…
 saving_printer	Принтер кошулууда…
 cancelled	Жокко чыгарылды
-cancelling	Cancellingâ¦
+cancelling	Жокко чыгарылууда…
 removing	Өчүрүлүүдө…
 removed	Өчүрүлдү
 updating_order	Жаңыртылууда…

@@ -384,12 +384,12 @@ app_template_need_internet	Үлгілерді жүктеу үшін интерн
 app_template_import_selected	Таңдалғанды импорттау
 app_template_check_code	Кодты тексеру
 app_template_import	Импорттау
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Осы құрылғыдан импорттау
+app_template_from_device_help	template.json бар қалтаны таңдаңыз (қаласаңыз, shop_defaults.json да).
+settings_app_tmpl_note	Қайтадан импорттау сатылымдарды, KOT және бухгалтерлік кітаптарды тазартады, содан кейін үлгінің дүкен параметрлерін қолданады. Тек мәзірі бар үлгілер: «Мәзір» → «Тауар үлгілері».
+app_template_wipe_warn	Бұл шоттардағы сауда деректерін тазартады (сатылымдар, KOT, бухгалтерлік кітаптар) және үлгінің дүкен параметрлерін қолданады. Мәзір мен орнату өзгеруі мүмкін. Жалғастырғыңыз келе ме?
+app_template_wipe_continue	Жалғастыру
+app_template_wipe_cancel	Бас тарту
 currency	Валюта
 backup	Сақтық көшірме
 use	Қолдану
@@ -550,22 +550,22 @@ new_party_clear	Жаңа контрагент (пішінді тазалау)
 new_party_kind_supplier_ph	Жаңа контрагент түрі (Жеткізуші)
 next_country	Келесі ел
 next_order	Келесі тапсырыс (үстелді тазалау)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Нобайлар
+park_draft	Нобай ретінде сақтау
+drafts_help	Кассада жартылай қалдырып, кейінге қойған тапсырыстар — «Төлем қабылдау» жасалғанша олар кітаптарға түспейді. «Тапсырыс» бөлімінде жалғастыру үшін картаны түртіңіз; «Нобайды жою» нобайды жояды. «Күнді жабу» оларды тазаламайды.
+drafts_park_nothing	Кейінге қоятын ештеңе жоқ — себетке тауар қосыңыз
+drafts_park_counter_only	«Нобай ретінде сақтау» тек кассадағы тапсырыстарға арналған — үстел тапсырысынан шығыңыз немесе «Зал» пайдаланыңыз
+drafts_parked	Сақталды: «Нобайлар» — касса қазір бос
+drafts_discard	Нобайды жою
+drafts_discarded	Нобай жойылды
+drafts_gone	Бұл нобай енді тізімде жоқ
+drafts_closed	Бұл нобай әлдеқашан төленген немесе жойылған
+drafts_empty	Әзірге нобайлар жоқ. «Касса» бөлімінде тағамдар қосып, «Нобай ретінде сақтау» түймесін түртіңіз.
+drafts_card_kind	Нобай
+drafts_card_no_lines	Жолдар жоқ
+drafts_card_lines	жол
+drafts_summary_fmt	{n} ашық нобай
+drafts_cols_fmt	{n} баған
 note_gstin_ph	Ескертпе / GSTIN / келісім еске салуы
 notes_attach_party	Ескертпелер мен тіркемелер (таңдалған контрагент)
 notes_attach_sale	Ескертпелер мен тіркемелер (таңдалған сатылым)
@@ -588,15 +588,15 @@ print_open	Басу / ашу
 reason_amend_ph	Түзету / жою / қайтару себебі
 reason_note_ph	Себеп / ескертпе (ысырап, санау, …)
 record_day_close	Күнді жабуды жазу
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Бүгін» қашан жаңадан басталады?
+business_day_help	«Күнді жабуға дейін» таңдалса, күнді жабуды жазғаныңызша «Күнделік кітап» түн ортасынан кейін де жалғаса береді. «Күнтізбелік түн ортасы» таңдалса, күн жергілікті уақыт бойынша сағат 00:00-де аяқталады.
+biz_day_until_close	Күнді жабуға дейін
+biz_day_midnight	Күнтізбелік түн ортасы
+business_day_saved	Жұмыс күні параметрі сақталды
+report_day_lens	«Бүгін» ретінде көрсету
+report_day_lens_help	Тек көрініс — «Күнді жабу» әрекетінің «Бүгін» бөлімін қашан жаңадан бастайтынын өзгертпейді. «Күнді жабу бойынша» соңғы күнді жабудан бастап есептейді; «Түн ортасы бойынша» жергілікті уақыт бойынша сағат 00:00-де кеседі.
+report_lens_day_close	Күнді жабу бойынша
+report_lens_midnight	Түн ортасы бойынша
 refresh_from_shop	Дүкеннен жаңарту
 refund	Қайтару
 remove_selected	Таңдалғанды алып тастау
@@ -864,7 +864,7 @@ find_printers	Принтерлерді табу
 printers_looking	Іздеуде…
 saving_printer	Принтер қосылуда…
 cancelled	Бас тартылды
-cancelling	Cancellingâ¦
+cancelling	Бас тартуда…
 removing	Жойылуда…
 removed	Жойылды
 updating_order	Жаңартылуда…

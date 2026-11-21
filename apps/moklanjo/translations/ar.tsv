@@ -3,27 +3,27 @@ app_tagline	دفاتر الشحن + مكتب الحجز. مجاني دون ات�
 unlock	فتح القفل
 pin_hint	رمز المالك يبدأ بـ 0000
 sell	الحجز
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	اللوحة
+board	اللوحة
+park_draft	تعليق كمسودة
+board_help	المسودات المفتوحة (تبقى إلى أن تضغط «تجاهل» أو «خذ الدفع») ومبيعات اليوم المسجّلة. في «الحجز» اضغط «تعليق كمسودة» أثناء العمل (تُحفظ هنا لا في الدفاتر)؛ اضغط مسودة لمتابعتها.
+board_empty	لا توجد بطاقات بعد.
+board_park_nothing	لا شيء لتعليقه — أضف رسوماً أو تفاصيل الحجز
+board_parked	تم التعليق في «اللوحة» — المكتب فارغ
+board_draft	مسودة
+board_booked	مسجّل
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	مسودة
+board_filter_booked	مسجّل
+board_cols_fmt	{n} أعمدة
+board_summary_fmt	{total} بطاقات · {drafts} مسودات · {booked} مسجّلة
+board_card_no_charges	لا رسوم بعد
+board_card_charges	رسوم
+board_card_booked	الحجز
+board_draft_gone	هذه المسودة لم تعد في «اللوحة»
+board_draft_closed	هذه المسودة أُنجزت أو تم تجاهلها من قبل
+board_discard	تجاهل
+board_discarded	تم تجاهل المسودة
 buy	الصرف
 books	دفتر اليوم
 books_help	حالة اليوم. الحجز = طرود واردة. الصرف = فواتير الناقلين والمصروفات. الأطراف = المرسلون والناقلون.
@@ -220,7 +220,7 @@ snack_secs_save	حفظ مدة التنبيه
 snack_secs_saved	حُفظت مدة التنبيه — {n} ثانية
 snack_secs_bad	أدخل الثواني رقمًا (3–60)
 cancelled	أُلغي
-cancelling	Cancellingâ¦
+cancelling	جارٍ الإلغاء…
 cancel	إلغاء
 opening_client	فتح العميل…
 preparing_desk	تجهيز الطاولة…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	انسخ CSV دفتر الطرف
 copy_receipt	انسخ الإيصال
 copy_report	انسخ التقرير
 counted_cash_ph	النقد المعدود في الدرج
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	أغلق الوردية واطبع الإيصال
+shift_handover	تسليم الوردية
+shift_counted_ph	النقد المعدود عند التسليم
+shift_since	هذه الوردية منذ
+expected_in_drawer	المتوقع في الدرج
+lock_books_through_month	قفل الدفاتر حتى شهر
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	قفل حتى هذا الشهر
+books_locked_none	لا يوجد شهر مقفل بعد
+books_locked_through	مقفل حتى
 counter_agency_ph	اسم الكاونتر / الوكالة (اختياري)
 create_backup	أنشئ نسخة احتياطية
 day_close_summary	ملخص إقفال اليوم
@@ -442,9 +442,9 @@ pay_ap_cash	ادفع AP نقداً
 pay_ap_upi	ادفع AP عبر UPI
 period_bill	فاتورة الفترة
 period_bill_party	فاتورة الفترة (الطرف)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	إنشاء فاتورة
+period_bill_generate_print	إنشاء وطباعة
+booking_bulk_preview	{ok} جاهزة · {bad} بها أخطاء
 pick_pod_photo	اختر صورة إثبات التسليم
 print_awb_label	اطبع ملصق AWB
 print_open	اطبع / افتح
@@ -653,19 +653,19 @@ attachments_last_expense	المرفقات (آخر مصروف)
 credit_limit_heading	حد الائتمان (الطرف المحدد / المسمى)
 pay_selected_heading	ادفع المحدد (سوِّ الدين / خذ دفعة)
 write_off_heading	اشطب (سوِّ بدون دفع)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	إشعارات التسوية
+adj_note_amount_ph	المبلغ
+adj_note_reason_ph	السبب (مطلوب)
+adj_note_awb_ph	رقم AWB المرتبط (اختياري)
+credit_note_btn	إشعار دائن
+debit_note_btn	إشعار مدين
+bill_later_heading	فوترة لاحقاً (رسم إضافي بعد الحجز)
+bill_later_amount_ph	مبلغ إضافي
+bill_later_party_ph	الطرف (فقط إذا لم يكن في الحجز طرف)
+bill_later_btn	فوترة لاحقاً
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	التعبئة
+bill_later_extra_other	أخرى
 pay_ap_heading	ادفع ما علينا لهم (AP)
 country_tax	البلد والضريبة
 extra_tills_heading	الكاونترات الإضافية
@@ -777,26 +777,26 @@ onboard_book_tmpl	دفتر · {} — أضف الأصناف والرصيد الا
 onboard_template_tmpl	سمِّ المكان إن شئت، ثم اختر طريقة البدء.
 tmpl_blurb	دفاتر البريد السريع ومكتب الحجز: المرسلون والناقلون ودفتر اليوم وAWB.
 tmpl_how	احجز الطرود عند المكتب؛ دفتر اليوم لليوم؛ تبويبات للأسعار والأطراف والتقارير.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	قوالب المتجر
+app_template_blurb	اختر مكتباً للبدء. «انتظر قليلاً» يترك قائمة الأطراف فارغة.
+app_template_skip	انتظر قليلاً
+app_template_status	الخادم جاهز — استورد قالبًا أو تخطَّ
+app_template_importing	يتم تطبيق {title}…
+app_template_public_hdr	قوالب
+app_template_import_selected	استيراد المحدد
+app_template_wipe_warn	سيمسح هذا بيانات التداول في الدفاتر (الحجوزات، كشوف الحسابات) ويطبّق إعدادات المتجر من القالب. متابعة؟
+app_template_wipe_continue	متابعة
+app_template_wipe_cancel	إلغاء
+public_tmpl_help	حزم وكالات جاهزة مرفقة مع التطبيق لهذا المتجر. لا حاجة للتنزيل.
+business_day	متى يبدأ «اليوم» من جديد؟
+business_day_help	مع «حتى إقفال اليوم» يستمر «دفتر اليوم» بعد منتصف الليل إلى أن تسجّل إقفال اليوم. مع «منتصف الليل حسب التقويم» يُقطع اليوم عند 12:00 ص بالتوقيت المحلي.
+biz_day_until_close	حتى إقفال اليوم
+biz_day_midnight	منتصف الليل حسب التقويم
+business_day_saved	تم حفظ يوم العمل
+report_day_lens	عرض «اليوم» حسب
+report_day_lens_help	للعرض فقط — لا يغيّر متى يعيد «إقفال اليوم» بدء «اليوم». «حسب إقفال اليوم» يتبع آخر إقفال لليوم؛ «حسب منتصف الليل» يقطع عند 12:00 ص بالتوقيت المحلي.
+report_lens_day_close	حسب إقفال اليوم
+report_lens_midnight	حسب منتصف الليل
 trk_booked	مسجّل
 trk_picked_up	تم الاستلام
 trk_in_transit	في الطريق

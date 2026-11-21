@@ -365,15 +365,15 @@ print_open	ပုံနှိပ် / ဖွင့်ပါ
 reason_amend_ph	ပြင်ဆင်ရန် / ငျွှန်းရန် / ပြန်အမ်းရန် အကြောင်းရင်း
 reason_note_ph	အကြောင်းရင်း / မှတ်စု (ပျက်စီးမှု, အရေအတွက်, …)
 record_day_close	နေ့စွဲပိတ်သိမ်းမှုကိုမှတ်တမ်းတင်မည်
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ယနေ့» ကို မည်သည့်အချိန်တွင် ပြန်လည်သတ်မှတ်သနည်း။
+business_day_help	«နေ့အဆုံးပိတ်သိမ်းခြင်း အထိ» သည် နေ့ကို မှတ်တမ်းတင်သည်အထိ «နေ့စဉ်စာရင်း» သန်းခေါင်ကျော် ပြေးနေပါသည်။ «ညသန်းခေါင်မှာ» ဒေသစံတော်ချိန် ည 00:00 နာရီတွင် ဖြတ်တောက်သည်။
+biz_day_until_close	နေ့အဆုံးပိတ်သိမ်းခြင်း အထိ
+biz_day_midnight	ညသန်းခေါင်မှာ
+business_day_saved	လုပ်ငန်းနေ့ဆက်တင်ကို သိမ်းလိုက်ပါပြီ
+report_day_lens	«ယနေ့» အဖြစ် ပြပါ
+report_day_lens_help	၎င်းသည် မြင်ကွင်းကိုသာ ပြောင်းလဲသည် — «နေ့အဆုံးပိတ်သိမ်းခြင်း» «ယနေ့» ကို ပြန်လည်သတ်မှတ်သည့်အခါ ၎င်းသည် ပြောင်းလဲမည်မဟုတ်ပါ။ «နေ့အဆုံးပိတ်သိမ်းခြင်း အရ» နောက်ဆုံးရက်ကို ပိတ်လိုက်သည် ။ «သန်းခေါင်စာရင်းအရ၊» ဒေသစံတော်ချိန် ည 00:00 နာရီတွင် ဖြတ်တောက်သည်။
+report_lens_day_close	နေ့အဆုံးပိတ်သိမ်းခြင်း အရ
+report_lens_midnight	သန်းခေါင်စာရင်းအရ၊
 refresh_from_shop	ဆိုင်မှပြန်လည်သင့်စွမ်းမော်
 refund	ပြန်အမ်း
 remove_selected	ရွေးထားကိုဖယ်ရှားမည်
@@ -849,19 +849,19 @@ client_template_confirm	{title} မှ {d} အရာများကို ထည
 client_template_importing	{title} ကို တင်သွင်းနေသည်…
 client_template_done	{title} မှ ပစ္စည်းတိုင်းသည် သင့်ပစ္စည်းများပေါ်တွင် ရှိသည်။
 client_template_imported	{d} ပစ္စည်းများနှင့် {c} အမျိုးအစားများကို {title} မှ ထည့်ထားသည်။
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	ဆိုင်ပုံစံများ
+app_template_blurb	စတင်သူကတ်တလောက်နှင့် ဆိုင်ဆက်တင်များကို ရွေးပါ။ «ယခုအချိန်တွင် ကျော်ပါ» သည် ထုတ်ကုန်စာရင်းကို အလွတ်ထားလိုက်ပါ။
+app_template_skip	ယခုအချိန်တွင် ကျော်ပါ
+app_template_status	ဆာဗာ အဆင်သင့် — ပုံစံတစ်ခု တင်သွင်းပါ၊ သို့မဟုတ် ကျော်ပါ
+app_template_importing	{title} ဖြင့် သက်ရောက်မှု လုပ်ဆောင်နေသည်…
+app_template_import_selected	ရွေးထားသည်ကို တင်သွင်းပါ
+app_template_wipe_warn	၎င်းသည် အကောင့်များ (အရောင်း၊ စာရင်းဇယားများ) ရှိ အရောင်းအ၀ယ်ဒေတာကို ရှင်းလင်းပြီး နမူနာပုံစံ၏ ဆိုင်ဆက်တင်များကို အသုံးပြုနိုင်မည်ဖြစ်သည်။ ဆက်လုပ်လိုပါသလား။
+app_template_wipe_continue	ဆက်လုပ်
+app_template_wipe_cancel	ပယ်ဖျက်
+app_template_from_device	ဤစက်ပစ္စည်းမှ တင်သွင်းပါ
+app_template_from_device_help	template.json (နှင့်၊ ရွေးချယ်နိုင်သည်၊ shop_defaults.json) ပါရှိသော ဖိုင်တွဲကို ရွေးပါ။
+settings_app_tmpl_note	အရောင်းဆိုင် နမူနာများ အပြည့်အစုံ- ကတ်တလောက်နှင့် ဆိုင်ဆက်တင်များ။ တစ်ခုကို ထပ်မံတင်သွင်းခြင်းသည် အရောင်းနှင့် စာရင်းဇယားများကို ရှင်းလင်းစေပြီး၊ နမူနာပုံစံ၏ ဆိုင်ဆက်တင်များကို အသုံးပြုပါ။
+app_tmpl_named	{name} ဆိုင် နမူနာပုံစံ
 cancel	ပယ်ဖျက်
 removing	ဖယ်ရှားနေသည်…
 removed	ဖယ်ရှားပြီး

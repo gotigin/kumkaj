@@ -384,12 +384,12 @@ app_template_need_internet	يلزم الإنترنت لتنزيل القوالب
 app_template_import_selected	استيراد المحدد
 app_template_check_code	تحقق من الرمز
 app_template_import	استيراد
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	استيراد من هذا الجهاز
+app_template_from_device_help	اختر مجلداً يحتوي على template.json (وكذلك shop_defaults.json إن وُجد).
+settings_app_tmpl_note	إعادة الاستيراد تمسح المبيعات وتذاكر KOT وكشوف الحسابات، ثم تطبّق إعدادات المتجر من الحزمة. قوالب القائمة فقط: «القائمة» → «قوالب الأصناف».
+app_template_wipe_warn	سيمسح هذا بيانات التداول في الدفاتر (المبيعات، KOT، كشوف الحسابات) ويطبّق إعدادات المتجر من القالب. قد تتغيّر القائمة والإعداد. متابعة؟
+app_template_wipe_continue	متابعة
+app_template_wipe_cancel	إلغاء
 currency	العملة
 backup	نسخة احتياطية
 use	استخدم
@@ -550,22 +550,22 @@ new_party_clear	طرف جديد (امسح النموذج)
 new_party_kind_supplier_ph	نوع الطرف الجديد (مورّد)
 next_country	البلد التالي
 next_order	الطلب التالي (امسح المكتب)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	المسودات
+park_draft	تعليق كمسودة
+drafts_help	طلبات الكاونتر التي أوقفتها في منتصفها — لا تدخل الدفاتر إلا بعد «خذ الدفع». اضغط بطاقة لمتابعتها في «طلب»؛ «تجاهل المسودة» يحذف المسودة. «إقفال اليوم» لا يمسحها.
+drafts_park_nothing	لا شيء لتعليقه — أضف عناصر إلى السلة
+drafts_park_counter_only	«تعليق كمسودة» لطلبات الكاونتر فقط — اخرج من طلب الطاولة أو استخدم «الصالة»
+drafts_parked	تم التعليق في «المسودات» — الكاونتر فارغ
+drafts_discard	تجاهل المسودة
+drafts_discarded	تم تجاهل المسودة
+drafts_gone	هذه المسودة لم تعد في القائمة
+drafts_closed	هذه المسودة دُفعت أو تم تجاهلها من قبل
+drafts_empty	لا توجد مسودات بعد. في «كاونتر» أضف الأطباق واضغط «تعليق كمسودة».
+drafts_card_kind	مسودة
+drafts_card_no_lines	لا عناصر
+drafts_card_lines	عناصر
+drafts_summary_fmt	{n} مسودات مفتوحة
+drafts_cols_fmt	{n} أعمدة
 note_gstin_ph	ملاحظة / GSTIN / تذكير بالاتفاق
 notes_attach_party	الملاحظات والمرفقات (الطرف المحدد)
 notes_attach_sale	الملاحظات والمرفقات (البيع المحدد)
@@ -588,15 +588,15 @@ print_open	اطبع / افتح
 reason_amend_ph	سبب التعديل / الإلغاء / الاسترداد
 reason_note_ph	السبب / ملاحظة (هدر، عد، …)
 record_day_close	سجّل إقفال اليوم
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	متى يبدأ «اليوم» من جديد؟
+business_day_help	مع «حتى إقفال اليوم» يستمر «دفتر اليوم» بعد منتصف الليل إلى أن تسجّل إقفال اليوم. مع «منتصف الليل حسب التقويم» يُقطع اليوم عند 12:00 ص بالتوقيت المحلي.
+biz_day_until_close	حتى إقفال اليوم
+biz_day_midnight	منتصف الليل حسب التقويم
+business_day_saved	تم حفظ يوم العمل
+report_day_lens	عرض «اليوم» حسب
+report_day_lens_help	للعرض فقط — لا يغيّر متى يعيد «إقفال اليوم» بدء «اليوم». «حسب إقفال اليوم» يتبع آخر إقفال لليوم؛ «حسب منتصف الليل» يقطع عند 12:00 ص بالتوقيت المحلي.
+report_lens_day_close	حسب إقفال اليوم
+report_lens_midnight	حسب منتصف الليل
 refresh_from_shop	حدّث من المتجر
 refund	استرداد
 remove_selected	أزل المحدد
@@ -864,7 +864,7 @@ find_printers	ابحث عن الطابعات
 printers_looking	جارٍ البحث عن الطابعات على هذا الجهاز وWi‑Fi…
 saving_printer	إضافة الطابعة…
 cancelled	ملغى
-cancelling	Cancellingâ¦
+cancelling	جارٍ الإلغاء…
 removing	جارٍ الإزالة…
 removed	تمت الإزالة
 updating_order	جارٍ التحديث…

@@ -365,15 +365,15 @@ print_open	ᱪᱷᱟᱯᱟ/ ᱡᱷᱤᱡᱽ ᱢᱮ
 reason_amend_ph	ᱥᱚᱫᱚᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱨᱚᱱ/ᱵᱟᱝ/ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
 reason_note_ph	ᱠᱟᱨᱚᱱ/ᱱᱚᱴ (ᱵᱟᱹᱲᱤᱡ, ᱞᱮᱠᱷᱟ,...)
 record_day_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱚᱞ ᱢᱮ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ᱛᱮᱦᱮᱧ» ᱛᱤᱥ ᱱᱟᱶᱟ ᱮᱦᱚᱵᱚᱜᱼᱟ?
+business_day_help	«ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱫᱷᱟᱹᱵᱤᱡ» ᱵᱟᱪᱷᱟᱣ ᱞᱮᱠᱷᱟᱱ «ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ» ᱛᱤᱸᱜᱩ ᱧᱤᱫᱟᱹ ᱛᱟᱭᱚᱢ ᱦᱚᱸ ᱪᱟᱞᱟᱜᱼᱟ, ᱡᱟᱦᱟᱸ ᱫᱷᱟᱹᱵᱤᱡ ᱟᱢ ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱚᱞ ᱵᱟᱝ ᱠᱟᱹᱢᱤᱭᱟᱢ। «ᱠᱮᱞᱮᱱᱰᱚᱨ ᱛᱤᱸᱜᱩ ᱧᱤᱫᱟᱹ» ᱵᱟᱪᱷᱟᱣ ᱞᱮᱠᱷᱟᱱ ᱢᱟᱦᱟ ᱞᱚᱠᱟᱞ ᱚᱠᱛᱚ ᱛᱮ ᱑᱒:᱐᱐ ᱨᱮ ᱠᱟᱴᱚᱜᱼᱟ।
+biz_day_until_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱫᱷᱟᱹᱵᱤᱡ
+biz_day_midnight	ᱠᱮᱞᱮᱱᱰᱚᱨ ᱛᱤᱸᱜᱩ ᱧᱤᱫᱟᱹ
+business_day_saved	ᱵᱮᱯᱟᱨ ᱢᱟᱦᱟ ᱥᱮᱵᱷ ᱦᱩᱭᱮᱱᱟ
+report_day_lens	«ᱛᱮᱦᱮᱧ» ᱱᱚᱝᱠᱟ ᱧᱮᱞ ᱢᱮ
+report_day_lens_help	ᱧᱮᱞ ᱞᱟᱹᱜᱤᱫ ᱜᱮ — ᱱᱚᱣᱟ ᱛᱮ ᱵᱟᱝ ᱵᱚᱫᱚᱞᱚᱜᱼᱟ ᱡᱮ «ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ» ᱛᱤᱥ «ᱛᱮᱦᱮᱧ» ᱱᱟᱶᱟ ᱮᱦᱚᱵ ᱟᱭ। «ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱞᱮᱠᱟ» ᱢᱩᱪᱟᱹᱫ ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱠᱷᱚᱱ ᱞᱮᱠᱷᱟᱭ; «ᱛᱤᱸᱜᱩ ᱧᱤᱫᱟᱹ ᱞᱮᱠᱟ» ᱞᱚᱠᱟᱞ ᱑᱒:᱐᱐ ᱨᱮ ᱠᱟᱴᱚᱜᱼᱟ।
+report_lens_day_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱞᱮᱠᱟ
+report_lens_midnight	ᱛᱤᱸᱜᱩ ᱧᱤᱫᱟᱹ ᱞᱮᱠᱟ
 refresh_from_shop	ᱫᱩᱠᱟᱹᱱ ᱠᱷᱚᱱ ᱛᱟᱹᱯᱤᱥ ᱢᱮ
 refund	ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
 remove_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱚᱪᱚᱜᱽ ᱢᱮ
@@ -849,19 +849,19 @@ client_template_confirm	{title} ᱠᱷᱚᱱ {d} ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ
 client_template_importing	ᱟᱹᱜᱩ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ {title}...
 client_template_done	{title} ᱠᱷᱚᱱ ᱡᱚᱛᱚ ᱡᱤᱱᱤᱥ ᱜᱮ ᱟᱢᱟᱜ ᱡᱤᱱᱤᱥ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾
 client_template_imported	{title} ᱠᱷᱚᱱ {d} ᱡᱤᱱᱤᱥ ᱠᱚ ᱟᱨ {c} ᱛᱷᱚᱠ ᱠᱚ ᱥᱮᱞᱮᱫ ᱮᱱᱟ
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ
+app_template_blurb	ᱮᱛᱚᱦᱚᱵ ᱠᱮᱴᱟᱞᱚᱜ ᱟᱨ ᱫᱩᱠᱟᱱ ᱥᱮᱴᱤᱝ ᱵᱟᱪᱷᱟᱣ ᱢᱮ। «ᱱᱤᱛᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ» ᱴᱮᱯ ᱞᱮᱠᱷᱟᱱ ᱥᱮᱞᱯ ᱠᱷᱟᱹᱞᱤ ᱛᱟᱦᱮᱸᱱᱟ।
+app_template_skip	ᱱᱤᱛᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
+app_template_status	ᱥᱟᱨᱵᱷᱟᱨ ᱛᱭᱟᱨ — ᱢᱤᱫᱴᱟᱹᱝ ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱲᱟᱜ ᱢᱮ
+app_template_importing	ᱟᱯᱞᱟᱭᱚᱜ ᱠᱟᱱᱟ {title}...
+app_template_import_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱟᱹᱜᱩ ᱢᱮ
+app_template_wipe_warn	ᱱᱚᱣᱟ ᱛᱮ ᱠᱷᱟᱛᱟ ᱨᱮᱭᱟᱜ ᱵᱮᱯᱟᱨ ᱰᱟᱴᱟ (ᱟᱹᱠᱷᱨᱤᱧ, ᱠᱷᱟᱛᱟ) ᱥᱟᱯᱷᱟᱜᱼᱟ ᱟᱨ ᱴᱮᱢᱯᱞᱮᱴ ᱫᱩᱠᱟᱱ ᱥᱮᱴᱤᱝ ᱞᱟᱹᱜᱤᱫ ᱦᱩᱭᱩᱜᱼᱟ। ᱞᱟᱦᱟᱜ ᱢᱮ?
+app_template_wipe_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
+app_template_wipe_cancel	ᱵᱚᱱᱫᱚ
+app_template_from_device	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱠᱷᱚᱱ ᱟᱹᱜᱩᱭ ᱢᱮ
+app_template_from_device_help	ᱚᱱᱟ ᱯᱷᱚᱞᱰᱚᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱡᱟᱦᱟᱸ ᱨᱮ template.json ᱢᱮᱱᱟᱜᱼᱟ (shop_defaults.json ᱦᱚᱸ ᱛᱟᱦᱮᱸᱱ ᱠᱷᱟᱱ ᱚᱱᱟ ᱦᱚᱸ)।
+settings_app_tmpl_note	ᱯᱩᱨᱟᱹ ᱫᱩᱠᱟᱱ ᱯᱮᱠ: ᱠᱮᱴᱟᱞᱚᱜ ᱟᱨ ᱫᱩᱠᱟᱱ ᱥᱮᱴᱤᱝ। ᱫᱚᱦᱲᱟ ᱟᱹᱜᱩᱭ ᱞᱮᱠᱷᱟᱱ ᱟᱹᱠᱷᱨᱤᱧ ᱟᱨ ᱠᱷᱟᱛᱟ ᱥᱟᱯᱷᱟᱜᱼᱟ, ᱩᱱᱟᱹᱜ ᱛᱟᱭᱚᱢ ᱯᱮᱠ ᱫᱩᱠᱟᱱ ᱥᱮᱴᱤᱝ ᱞᱟᱹᱜᱤᱫ ᱦᱩᱭᱩᱜᱼᱟ।
+app_tmpl_named	{name} ᱫᱩᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ
 cancel	ᱵᱚᱱᱫᱚ
 removing	ᱚᱪᱚᱜ ᱠᱟᱱᱟ…
 removed	ᱚᱪᱚᱜ ᱮᱱᱟ

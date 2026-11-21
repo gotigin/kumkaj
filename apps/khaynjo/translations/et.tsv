@@ -252,7 +252,7 @@ sidebar_order_saved	Külgriba järjekord salvestatud
 sidebar_visibility_saved	Külgriba nähtavus on salvestatud
 amounts_hide	Peida
 amounts_show	Näita
-counter	Loendur
+counter	Lett
 dine_in	Einestamine
 takeaway	Kaasa
 order	Restorani tellimus
@@ -260,7 +260,7 @@ tables	Söögilauad
 kitchen	Köök
 sales	Müük
 sales_refunds	Müük ja tagasimaksed
-day_close	Päev lähedal
+day_close	Päeva sulgemine
 reports_expenses	Pangaraamat ja P&L
 nav_reports	Aruanded
 nav_settings	Seaded
@@ -384,12 +384,12 @@ app_template_need_internet	Mallide allalaadimiseks on vaja internetti
 app_template_import_selected	Impordi valitud
 app_template_check_code	Kontrolli koodi
 app_template_import	Impordi
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Impordi sellest seadmest
+app_template_from_device_help	Valige kaust, milles on template.json (ja soovi korral shop_defaults.json).
+settings_app_tmpl_note	Uuesti importimine tühjendab müügi, KOT-id ja kontod ning rakendab seejärel paki poeseaded. Ainult menüüga mallid: «Menüü» → «Kaubamallid».
+app_template_wipe_warn	See tühjendab raamatupidamise kauplemisandmed (müük, KOT-id, kontod) ja rakendab malli poeseaded. Menüü ja seadistus võivad muutuda. Kas jätkata?
+app_template_wipe_continue	Jätka
+app_template_wipe_cancel	Tühista
 currency	Valuuta
 backup	Varundamine
 use	Kasutage
@@ -550,22 +550,22 @@ new_party_clear	Uus klient või tarnija (selge vorm)
 new_party_kind_supplier_ph	Uus klient või tarnija (tarnija)
 next_country	Järgmine riik
 next_order	Järgmine tellimus (puhas laud)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Mustandid
+park_draft	Pane mustand kõrvale
+drafts_help	Leti tellimused, mille jätsite poole pealt kõrvale — raamatupidamisse jõuavad need alles pärast toimingut «Võtke makse». Puudutage kaarti, et jätkata vaates «Restorani tellimus»; «Hülga mustand» kustutab mustandi. «Päeva sulgemine» neid ei tühjenda.
+drafts_park_nothing	Pole midagi kõrvale panna — lisage tooteid ostukorvi
+drafts_park_counter_only	«Pane mustand kõrvale» on ainult leti tellimuste jaoks — lahkuge laua tellimusest või kasutage vaadet «Söögisaal»
+drafts_parked	Pandud kõrvale jaotisse «Mustandid» — lett on vaba
+drafts_discard	Hülga mustand
+drafts_discarded	Mustand hüljatud
+drafts_gone	Seda mustandit pole enam loendis
+drafts_closed	See mustand on juba makstud või hüljatud
+drafts_empty	Mustandeid veel pole. Lisage vaates «Lett» roogasid ja puudutage «Pane mustand kõrvale».
+drafts_card_kind	Mustand
+drafts_card_no_lines	Ridu pole
+drafts_card_lines	rida
+drafts_summary_fmt	Avatud mustandeid: {n}
+drafts_cols_fmt	{n} veergu
 note_gstin_ph	Märkus / GSTIN / kokkuleppe meeldetuletus
 notes_attach_party	Märkused ja manused (valitud klient või tarnija)
 notes_attach_sale	Märkmed ja manused (valitud müük)
@@ -588,15 +588,15 @@ print_open	Prindi / ava
 reason_amend_ph	Muudatuse / tühine / raha tagastamise põhjus
 reason_note_ph	Põhjus/märkus (raiskamine, arv jne)
 record_day_close	Rekordipäev on lähedal
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Millal «Täna» algab uuesti?
+business_day_help	Valikuga «Kuni päeva sulgemiseni» jätkub «Päevaraamat» ka pärast keskööd, kuni registreerite päeva sulgemise. Valikuga «Kalendri kesköö» lõpeb päev kell 00:00 kohaliku aja järgi.
+biz_day_until_close	Kuni päeva sulgemiseni
+biz_day_midnight	Kalendri kesköö
+business_day_saved	Äripäev salvestatud
+report_day_lens	Kuva «Täna» kujul
+report_day_lens_help	Ainult vaade — ei muuda seda, millal «Päeva sulgemine» alustab «Täna» uuesti. «Päeva sulgemise järgi» arvestab viimasest päeva sulgemisest; «Kesköö järgi» lõikab kell 00:00 kohaliku aja järgi.
+report_lens_day_close	Päeva sulgemise järgi
+report_lens_midnight	Kesköö järgi
 refresh_from_shop	Värskenda poest
 refund	Tagasimakse
 remove_selected	Eemalda valitud
@@ -864,7 +864,7 @@ find_printers	Otsige printereid
 printers_looking	Vaadates…
 saving_printer	Printeri lisamine…
 cancelled	Tühistatud
-cancelling	Cancellingâ¦
+cancelling	Tühistamine…
 removing	Eemaldamine…
 removed	Eemaldatud
 updating_order	Uuendamine…

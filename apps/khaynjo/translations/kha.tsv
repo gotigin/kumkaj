@@ -252,7 +252,7 @@ sidebar_order_saved	La buh ia ka jingpynbeit jong ka sidebar
 sidebar_visibility_saved	La buh ia ka jingshai jong ka sidebar
 amounts_hide	Burieh
 amounts_show	Pyni
-counter	Ka jingkhein
+counter	Counter
 dine_in	Ka jingbam hapoh
 takeaway	Jingbam
 order	Ka jingbthah ha ka jaka bam
@@ -384,12 +384,12 @@ app_template_need_internet	Donkam internet ban download ia ki template
 app_template_import_selected	Import ia kaba la jied
 app_template_check_code	Peit ia ka code
 app_template_import	Import
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Pynrung na kane ka tiar
+app_template_from_device_help	Jied ia ka folder kaba don template.json (bad, lada kwah, shop_defaults.json).
+settings_app_tmpl_note	Ka jingpynrung biang ka pynkhuid ia ki jingdie, KOT bad ki kot jingkhein, nangta ka pyntreikam ia ki jingpynbeit dukan jong ka template. Ki template kiba don tang ka menu: «Menu» → «Ki template jingkhaii».
+app_template_wipe_warn	Kane ka pynkhuid ia ki jingtip jong ka jingkhaii ha ki jingkhein (jingdie, KOT, ki kot jingkhein) bad pyntreikam ia ki jingpynbeit jong ka dukan jong ka template. Ka menu bad ka jingpynbeit ka lah ban kylla. Hato phi kwah ban bteng?
+app_template_wipe_continue	Bteng
+app_template_wipe_cancel	Pynsangeh
 currency	Ka pisa
 backup	Ka jingpynneh
 use	Pyndonkam
@@ -550,22 +550,22 @@ new_party_clear	U nongthied ne nongsam ba thymmai (ka phorm kaba shai)
 new_party_kind_supplier_ph	U nongthied ba thymmai ne u nongsam (Nongsam)
 next_country	Ka ri kaba bud
 next_order	Ka jingbthah kaba bud (ka miej kaba khuid)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
+nav_drafts	Ki draft
+park_draft	Pynsah kum ka draft
+drafts_help	Kine ki dei ki jingbthah bym pat dep na ka counter kiba phi buh kyrpang. Ba la pynrung ia ki ha ki account tad haduh ba phin tap ia ka «Shim ia ka jingsiew». Tap ia ka kard ban bteng ia ka ha ka «Ka jingbthah ha ka jaka bam»; «Pyndam ia ka draft» ka pyndam ia ka jingthoh. «Ka sngi kaba khang» kam pynkhuid ia ki.
+drafts_park_nothing	Ym don ei ei ban buh kum ka draft — pynrung ia ki tiar ha ka kali
+drafts_park_counter_only	«Pynsah kum ka draft» ka dei tang na ka bynta ki jingbthah ba la shim ha ka counter — iehnoh ia ka jingbthah jong ka miej, lane pyndonkam «Ka kamra bam»
+drafts_parked	La buh ha ka «Ki draft» — ka counter ka la thylli mynta
+drafts_discard	Pyndam ia ka draft
+drafts_discarded	La weng noh ia ka draft
+drafts_gone	Kata ka draft kam don shuh ha ka thup
+drafts_closed	Ia kata ka draft la dep siew ne pyndam noh
+drafts_empty	Ym pat don ki draft. Ha ka «Counter», pyndap ia ki jingbam bad tap ia ka «Pynsah kum ka draft».
 drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+drafts_card_no_lines	Ym don tiar
+drafts_card_lines	ki tiar
+drafts_summary_fmt	{n} plie ia ki jingthoh
+drafts_cols_fmt	{n} ki tnum
 note_gstin_ph	Jingpynkynmaw / GSTIN / jingpynkynmaw ia ka jingiateh
 notes_attach_party	Ki jingthoh bad ki jingpyndait (nongthied ne nongsam ba la jied)
 notes_attach_sale	Ki jingthoh bad ki jingpynrung (jied ban die)
@@ -588,15 +588,15 @@ print_open	Pynmih / plie
 reason_amend_ph	Ka daw jong ka jingpynkylla / jingpyndam / jingpynphai pisa
 reason_note_ph	Ka daw / jingthoh (jingpynlut kai, jingkhein, ...)
 record_day_close	Ka sngi rekod
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Lano ka «Mynta ka sngi» kan sdang biang?
+business_day_help	«Haduh Ka sngi kaba khang» ka pynlong ia ka «Ka kot sngi» ban iaid palat ia ka shiteng miet, haduh ba phin da buh jingthoh ia ka sngi kaba kut. «Ha ka por shiteng miet» ki sdang ha ka por 00:00 baje ha ka por jong ka ri.
+biz_day_until_close	Haduh Ka sngi kaba khang
+biz_day_midnight	Ha ka por shiteng miet
+business_day_saved	La buh ia ka jingpynbeit jong ka sngi trei
+report_day_lens	Pyni «Mynta ka sngi» kum
+report_day_lens_help	Kane ka pynkylla tang ia ka jingpeit — kam pynkylla haba ka «Ka sngi kaba khang» ka pynkylla ia ka «Mynta ka sngi». «Katkum ka Ka sngi kaba khang» bud ia ka sngi kaba khatduh; «Katkum ka shiteng miet» ka jingkut ha ka por 00:00 baje ha ka por jong ka ri.
+report_lens_day_close	Katkum ka Ka sngi kaba khang
+report_lens_midnight	Katkum ka shiteng miet
 refresh_from_shop	Pynthymmai na ka dukan
 refund	Jingpynphai pisa
 remove_selected	Pynduh ia kaba la jied
@@ -864,7 +864,7 @@ find_printers	Wad ia ki nongpynmih kot
 printers_looking	Ka jingpeit...
 saving_printer	Ka jingpynrung ia ka kor shon...
 cancelled	La weng noh
-cancelling	Cancellingâ¦
+cancelling	Ka jingpynsangeh…
 removing	Dang weng…
 removed	La weng
 updating_order	Dang pynthymmai…

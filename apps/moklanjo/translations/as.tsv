@@ -3,27 +3,27 @@ app_tagline	কুৰিয়াৰ বহী + বুকিং ডেস্ক
 unlock	আনলক
 pin_hint	মালিকৰ PIN 0000 ৰে আৰম্ভ
 sell	বুকিং
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	ব'ৰ্ড
+board	ব'ৰ্ড
+park_draft	খচৰাত ৰাখক
+board_help	খোলা খচৰা («আঁতৰাওক» বা «পৰিশোধ লওক» নকৰালৈকে থাকে) আৰু আজিৰ বুক হোৱা বিক্ৰী। «বুকিং»-ত কামৰ মাজতে «খচৰাত ৰাখক» টিপক (ইয়াত সংৰক্ষণ হয়, বহীত নহয়); পুনৰ আৰম্ভ কৰিবলৈ খচৰা টিপক।
+board_empty	এতিয়াও কোনো কাৰ্ড নাই।
+board_park_nothing	ৰাখিবলৈ একো নাই — মাচুল বা বুকিঙৰ বিৱৰণ যোগ কৰক
+board_parked	«ব'ৰ্ড»-ত ৰখা হ'ল — ডেস্ক খালী
+board_draft	খচৰা
+board_booked	বুক হৈছে
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	খচৰা
+board_filter_booked	বুক হৈছে
+board_cols_fmt	{n} স্তম্ভ
+board_summary_fmt	{total}টা কাৰ্ড · {drafts}টা খচৰা · {booked}টা বুক হৈছে
+board_card_no_charges	এতিয়াও কোনো মাচুল নাই
+board_card_charges	মাচুল
+board_card_booked	বুকিং
+board_draft_gone	সেই খচৰা এতিয়া «ব'ৰ্ড»-ত নাই
+board_draft_closed	সেই খচৰা ইতিমধ্যে সম্পূৰ্ণ হৈছে বা আঁতৰোৱা হৈছে
+board_discard	আঁতৰাওক
+board_discarded	খচৰা আঁতৰোৱা হ'ল
 buy	পে আউট
 books	দিন বহী
 books_help	আজিৰ অৱস্থা। বুকিং = পাৰ্চেল আহিল। পে আউট = কেৰিয়াৰ বিল আৰু খৰচ। পাৰ্টি = পঠাওঁতা আৰু কেৰিয়াৰ।
@@ -220,7 +220,7 @@ snack_secs_save	সতৰ্কবাণীৰ সময় সাঁচক
 snack_secs_saved	সতৰ্কবাণীৰ সময় সাঁচা হ'ল — {n} ছেকেণ্ড
 snack_secs_bad	ছেকেণ্ড সংখ্যাত লিখক (3–60)
 cancelled	বাতিল কৰা হ'ল
-cancelling	Cancellingâ¦
+cancelling	বাতিল হৈ আছে…
 cancel	বাতিল
 opening_client	ক্লায়েণ্ট খোল খাইছে…
 preparing_desk	ডেস্ক সাজু হৈছে…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	পাৰ্টি বহী CSV কপি
 copy_receipt	ৰচিদ কপি কৰক
 copy_report	প্ৰতিবেদন কপি কৰক
 counted_cash_ph	ড্ৰয়াৰত গণা নগদ
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	শিফ্ট বন্ধ কৰি চিলিপ ছপা কৰক
+shift_handover	শিফ্ট হস্তান্তৰ
+shift_counted_ph	হস্তান্তৰত গণা নগদ
+shift_since	এই শিফ্ট আৰম্ভ
+expected_in_drawer	ড্ৰয়াৰত থাকিব লগা
+lock_books_through_month	মাহলৈকে বহী লক কৰক
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	এই মাহলৈকে লক কৰক
+books_locked_none	এতিয়াও কোনো মাহ লক কৰা হোৱা নাই
+books_locked_through	কোন মাহলৈকে লক
 counter_agency_ph	কাউণ্টাৰ / এজেন্সিৰ নাম (ঐচ্ছিক)
 create_backup	বেকআপ বনাওক
 day_close_summary	দিন বন্ধ সাৰাংশ
@@ -442,9 +442,9 @@ pay_ap_cash	AP নগদ পৰিশোধ
 pay_ap_upi	AP UPI পৰিশোধ
 period_bill	ম্যাদী বিল
 period_bill_party	ম্যাদী বিল (পাৰ্টি)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	বিল সৃষ্টি কৰক
+period_bill_generate_print	সৃষ্টি কৰি ছাপাওক
+booking_bulk_preview	{ok}টা সাজু · {bad}টা ভুল
 pick_pod_photo	POD ফটো বাছক
 print_awb_label	AWB লেবেল ছাপাওক
 print_open	ছাপাওক / খোলক
@@ -653,19 +653,19 @@ attachments_last_expense	সংলগ্ন (শেষ খৰচ)
 credit_limit_heading	ঋণ সীমা (বাছনি কৰা / নাম থকা পাৰ্টি)
 pay_selected_heading	বাছনি কৰা পৰিশোধ (ঋণ মেটাওক / আগধন)
 write_off_heading	মাফ কৰক (পৰিশোধ নোহোৱাকৈ মেটাওক)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	সমন্বয় নোট
+adj_note_amount_ph	পৰিমাণ
+adj_note_reason_ph	কাৰণ (আৱশ্যক)
+adj_note_awb_ph	সম্পৰ্কিত AWB (ঐচ্ছিক)
+credit_note_btn	ক্ৰেডিট নোট
+debit_note_btn	ডেবিট নোট
+bill_later_heading	পিছত বিল কৰক (বুকিঙৰ পিছৰ অতিৰিক্ত মাচুল)
+bill_later_amount_ph	অতিৰিক্ত পৰিমাণ
+bill_later_party_ph	পাৰ্টি (বুকিঙত নাথাকিলেহে)
+bill_later_btn	পিছত বিল কৰক
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	পেকিং
+bill_later_extra_other	অন্যান্য
 pay_ap_heading	আমি তেওঁলোকক দিবলগীয়া (AP)
 country_tax	দেশ আৰু কৰ
 extra_tills_heading	অতিৰিক্ত টিল
@@ -777,26 +777,26 @@ onboard_book_tmpl	বহী · {} — বস্তু আৰু আৰম্ভ�
 onboard_template_tmpl	বিচাৰিলে ঠাইৰ নাম দিয়ক, তাৰ পিছত কেনেকৈ আৰম্ভ কৰিব বাছক।
 tmpl_blurb	কুৰিয়াৰ বহী আৰু বুকিং ডেস্ক: পঠাওঁতা, কেৰিয়াৰ, দৈনিক বহী, AWB।
 tmpl_how	ডেস্কত পাৰ্চেল বুক কৰক; আজিৰ বাবে দৈনিক বহী; দৰ, পাৰ্টি, প্ৰতিবেদনৰ বাবে টেব।
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	দোকানৰ টেমপ্লেট
+app_template_blurb	আৰম্ভণিৰ বাবে এটা ডেস্ক বাছক। «এতিয়া এৰক» টিপিলে পাৰ্টিৰ তালিকা খালী থাকিব।
+app_template_skip	এতিয়া এৰক
+app_template_status	ছাৰ্ভাৰ সাজু — এটা টেমপ্লেট আমদানি কৰক, বা এৰি দিয়ক
+app_template_importing	{title} প্ৰয়োগ কৰা হৈছে…
+app_template_public_hdr	সাঁচ
+app_template_import_selected	বাছনি কৰাটো আমদানি কৰক
+app_template_wipe_warn	ইয়াৰ ফলত বহীৰ ব্যৱসায়িক ডাটা (বুকিং, খতিয়ন) মচা যাব আৰু টেমপ্লেটৰ দোকান ছেটিংছ প্ৰযোজ্য হ'ব। আগবাঢ়িবনে?
+app_template_wipe_continue	আগবাঢ়ক
+app_template_wipe_cancel	বাতিল
+public_tmpl_help	এই দোকানৰ বাবে এপৰ লগত অহা এজেন্সি পেক। ডাউনলোডৰ প্ৰয়োজন নাই।
+business_day	«আজি» কেতিয়া নতুনকৈ আৰম্ভ হয়?
+business_day_help	«দিন বন্ধ লৈকে» বাছিলে, আপুনি দিন বন্ধ লিপিবদ্ধ নকৰালৈকে «দিন বহী» মাজনিশাৰ পিছতো চলি থাকে। «কেলেণ্ডাৰৰ মাজনিশা» বাছিলে, দিন স্থানীয় সময় ৰাতি 12:00 বজাত কটা যায়।
+biz_day_until_close	দিন বন্ধ লৈকে
+biz_day_midnight	কেলেণ্ডাৰৰ মাজনিশা
+business_day_saved	ব্যৱসায়িক দিন সংৰক্ষণ কৰা হ'ল
+report_day_lens	«আজি» এনেদৰে চাওক
+report_day_lens_help	কেৱল চাবৰ বাবে — «দিন বন্ধ»-এ কেতিয়া «আজি» নতুনকৈ আৰম্ভ কৰে, সেয়া ইয়াৰ দ্বাৰা সলনি নহয়। «দিন বন্ধ অনুসৰি»-এ শেষ দিন বন্ধৰ পৰা গণে; «মাজনিশা অনুসৰি»-এ স্থানীয় সময় ৰাতি 12:00 বজাত কাটে।
+report_lens_day_close	দিন বন্ধ অনুসৰি
+report_lens_midnight	মাজনিশা অনুসৰি
 trk_booked	বুক হৈছে
 trk_picked_up	পিকআপ হৈছে
 trk_in_transit	বাটত আছে

@@ -3,27 +3,27 @@ app_tagline	कुरियार एजेन्सिनि बिजाब + 
 unlock	खुलि हो
 pin_hint	गिबिनि PIN आ 0000 जों जागायो
 sell	बुकिं
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	बर्ड
+board	बर्ड
+park_draft	ड्राफ्टआव दोन
+board_help	बेखेवनाय ड्राफ्टफोर («बोखार» नाथाय «पैसा ला» खालामनायसिम थायो) आरो दिनैनि बुक जानाय बायनाय। «बुकिं»आव खामानिनि गेजेराव «ड्राफ्टआव दोन» सुदुं (बेयाव थिना दोनजायो, बहीयाव नङा); फिन जागायनो ड्राफ्टखौ सुदुं।
+board_empty	दासिमबो कार्ड गैया।
+board_park_nothing	दोननो जेबो गैया — मासुल नाथाय बुकिंनि खौरां दाजाब
+board_parked	«बर्ड»आव दोनबाय — डेस्कआ लांदां
+board_draft	ड्राफ्ट
+board_booked	बुक जाबाय
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ड्राफ्ट
+board_filter_booked	बुक जाबाय
+board_cols_fmt	{n} खाम्फा
+board_summary_fmt	{total} कार्ड · {drafts} ड्राफ्ट · {booked} बुक जाबाय
+board_card_no_charges	दासिमबो मासुल गैया
+board_card_charges	मासुल
+board_card_booked	बुकिं
+board_draft_gone	बै ड्राफ्टआ दा «बर्ड»आव गैया
+board_draft_closed	बै ड्राफ्टआ सिगांनो जोबबाय नाथाय बोखारबाय
+board_discard	बोखार
+board_discarded	ड्राफ्ट बोखारबाय
 buy	पेआउट
 books	साननि बही
 books_help	दिनैनि थाथाय। बुकिं = पार्सेल इन। पेआउट = वाहक बिल आरो खरसा। हान्जाफोर = दैथाय हरग्राफोर आरो वाहकफोर।
@@ -220,7 +220,7 @@ snack_secs_save	सांग्रांथिनि सम थिना दो�
 snack_secs_saved	सांग्रांथिनि सम थिना दोनबाय — {n} सेकेन्ड
 snack_secs_bad	सेकेन्डखौ अनजिमा महरै सोदो (3–60)
 cancelled	केन्सेल जाबाय
-cancelling	Cancellingâ¦
+cancelling	केन्सेल जागासिनो दं…
 cancel	केन्सेल
 opening_client	क्लाइन्ट खेव गासिनो…
 preparing_desk	डेस्क साजा गासिनो…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	पार्टीनि बही CSV कपि खाल
 copy_receipt	रसिद कपि खालाम
 copy_report	रिपर्ट कपि खालाम
 counted_cash_ph	दराजआव सानजानाय नगद
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	सिफ्ट जोब आरो स्लिप प्रिन्ट खालाम
+shift_handover	सिफ्ट सलाय
+shift_counted_ph	सलायनो सानजानाय नगद
+shift_since	बे सिफ्ट निफ्राय
+expected_in_drawer	दराजाव मोननांगौ
+lock_books_through_month	दानसिम बही लक खालाम
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	बे दानसिम लक खालाम
+books_locked_none	दासिमबो दान लक जायाखै
+books_locked_through	बबे दानसिम लक
 counter_agency_ph	काउन्टर / एजेनसिनि मुं (वैकल्पिक)
 create_backup	ब्याकआप बानाय
 day_close_summary	सान बन्द'नि सारांश
@@ -442,9 +442,9 @@ pay_ap_cash	AP नगद हो
 pay_ap_upi	AP UPI हो
 period_bill	पीरियड बिल
 period_bill_party	पीरियड बिल (पार्टी)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	बिल बानाय
+period_bill_generate_print	बानाय आरो प्रिन्ट
+booking_bulk_preview	{ok} थियारि · {bad} गोरोन्थि
 pick_pod_photo	पिक POD फट'
 print_awb_label	प्रिन्ट AWB लेबेल
 print_open	प्रिन्ट / खेव
@@ -653,19 +653,19 @@ attachments_last_expense	नांजाबनाय (जोबथा खर्�
 credit_limit_heading	उधारिनि सिमा (सायखजानाय / मुं गोनां पार्टी)
 pay_selected_heading	सायखजानायखौ हो (जोंखा फोजोब / एडभान्स ला)
 write_off_heading	माफ खालाम (पैसा होनाय गैया)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	एडजास्टमेन्ट नट
+adj_note_amount_ph	रां
+adj_note_reason_ph	जाहोन (नांगौ)
+adj_note_awb_ph	सोमोन्दो गोनां AWB (नांगौब्ला)
+credit_note_btn	क्रेडिट नट
+debit_note_btn	डेबिट नट
+bill_later_heading	उनाव बिल खालाम (बुकिंनि उनावनि बांद्राय मासुल)
+bill_later_amount_ph	बांद्राय रां
+bill_later_party_ph	पार्टी (बुकिंआव गैयाब्लाल')
+bill_later_btn	उनाव बिल खालाम
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	पेकिं
+bill_later_extra_other	गुबुन
 pay_ap_heading	जांखौ जों जोंखा बेखौ हो (AP)
 country_tax	हादोर आरो कर
 extra_tills_heading	बांसिन टिल
@@ -777,26 +777,26 @@ onboard_book_tmpl	बही · {} — आइटम आरो जागायन�
 onboard_template_tmpl	लुबैब्ला बे जायगानि मुं हो, अब्ला माबोरै जागायनो सायख।
 tmpl_blurb	कुरियार बिजाब आरो बुकिं देस्क: कन्साइनर, केरियार, डे बुक, AWB।
 tmpl_how	देस्कआव पार्सेल बुक खालाम; दिनैनि थाखाय साननि बिजाब; रेट, पार्टिफोर, रिपर्टफोरनि थाखाय टेबफोर।
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	दोकानि टेम्प्लेटफोर
+app_template_blurb	जागायनायनि डेस्क सायख। «दा बार» सुदुंब्ला पार्टीनि लिस्टआ लांदां थागोन।
+app_template_skip	दा बार
+app_template_status	सार्भार थियारि — मोनसे टेम्प्लेट लाबो, नाथाय नागार
+app_template_importing	{title} बाहाय गासिनो…
+app_template_public_hdr	टेम्पलेट
+app_template_import_selected	सायखनायखौ लाबो
+app_template_wipe_warn	बेयो बहीनि फालांगि डाटाखौ (बुकिं, खाता) खोमायो आरो टेम्प्लेटनि दोकान सेटिंखौ लागु खालामो। सालाय लांनो?
+app_template_wipe_continue	सालाय लां
+app_template_wipe_cancel	केन्सेल
+public_tmpl_help	बे दोकाननि थाखाय एपजों फैनाय एजेन्सि पेकफोर। डाउनलड नांगौ नङा।
+business_day	«दिनै»आ माब्ला गोदानै जागायो?
+business_day_help	«सान बन्द'सिम» सायखोब्ला, नोंथाङा सान बन्द' लिरनायसिम «साननि बही»आ हरगेजेरनि उनावबो सोलिबाय थायो। «केलेन्डारनि हरगेजेर» सायखोब्ला, सानआ थावनिनि सम बादियै हर 12:00 बाजियाव जोबो।
+biz_day_until_close	सान बन्द'सिम
+biz_day_midnight	केलेन्डारनि हरगेजेर
+business_day_saved	फालांगिनि सान थिना दोनबाय
+report_day_lens	«दिनै»खौ बेबादियै नाय
+report_day_lens_help	नायनो थाखायल' — «सान बन्द'»आ माब्ला «दिनै»खौ गोदानै जागायो बेखौ बेयो सोलाया। «सान बन्द' बादियै»आ जोबथा सान बन्द'निफ्राय सानो; «हरगेजेर बादियै»आ थावनिनि सम बादियै हर 12:00 बाजियाव जोबो।
+report_lens_day_close	सान बन्द' बादियै
+report_lens_midnight	हरगेजेर बादियै
 trk_booked	बुक जाबाय
 trk_picked_up	दैखांनाय
 trk_in_transit	ट्रान्जिटआव

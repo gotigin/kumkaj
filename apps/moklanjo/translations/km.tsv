@@ -3,27 +3,27 @@ app_tagline	សៀវភៅភ្នាក់ងារនាំសំបុត�
 unlock	ដោះសោ
 pin_hint	PIN របស់ម្ចាស់ចាប់ផ្ដើមពី 0000
 sell	ការកក់ទុក
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	ក្តារ
+board	ក្តារ
+park_draft	រក្សាទុកជាសេចក្តីព្រាង
+board_help	សេចក្តីព្រាងដែលមិនទាន់បានបញ្ចប់ (រក្សាទុករហូតដល់អ្នកចុច «បោះបង់» ឬ «ទទួលការបង់») និងការលក់ដែលបានកក់ថ្ងៃនេះ។ នៅលើ «ការកក់ទុក» ចុច «រក្សាទុកជាសេចក្តីព្រាង» នៅកណ្តាលការងាររបស់អ្នក (វាត្រូវបានរក្សាទុកនៅទីនេះ មិនមែននៅក្នុងគណនីទេ); ប៉ះសេចក្តីព្រាងដើម្បីបន្តវា។
+board_empty	មិនទាន់មានកាតនៅឡើយទេ។
+board_park_nothing	គ្មានអ្វីដែលត្រូវរក្សាទុកជាសេចក្តីព្រាងទេ បន្ថែមការគិតថ្លៃ ឬព័ត៌មានលម្អិតអំពីការកក់
+board_parked	បានរក្សាទុកនៅលើ «ក្តារ» — តុទទេឥឡូវនេះ
+board_draft	សេចក្តីព្រាង
+board_booked	បានកក់ទុក
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	សេចក្តីព្រាង
+board_filter_booked	បានកក់ទុក
+board_cols_fmt	{n} ជួរ
+board_summary_fmt	កាត {total} · សេចក្តីព្រាង {drafts} · បានកក់ទុក {booked}
+board_card_no_charges	មិនទាន់មានថ្លៃបន្ថែមទេ
+board_card_charges	ថ្លៃឈ្នួល
+board_card_booked	ការកក់ទុក
+board_draft_gone	សេចក្តីព្រាងនោះលែងមាននៅលើ «ក្តារ» ទៀតហើយ
+board_draft_closed	សេចក្តីព្រាងនោះត្រូវបានបញ្ចប់ ឬលុបរួចហើយ
+board_discard	បោះបង់
+board_discarded	បានលុបសេចក្តីព្រាង
 buy	បង់ចេញ
 books	សៀវភៅប្រចាំថ្ងៃ
 books_help	ទីតាំងថ្ងៃនេះ។ ការកក់ = ក្បាលដីចូល។ បង់ចេញ = វិក័យប័ត្រដឹកជញ្ជូន និងការចំណាយ។ ភាគី = អ្នកដឹកជញ្ជូន & អ្នកដឹកជញ្ជូន។
@@ -220,7 +220,7 @@ snack_secs_save	រក្សាទុករយៈពេលជូនដំណឹ�
 snack_secs_saved	រយៈពេលជូនដំណឹងបានរក្សាទុក — {n} វិនាទី
 snack_secs_bad	បញ្ចូលវិនាទីជាលេខ (3–60)
 cancelled	បានលុបចោល
-cancelling	Cancellingâ¦
+cancelling	កំពុងបោះបង់…
 cancel	លុបចោល
 opening_client	កំពុងបើកម៉ាស៊ីនភ្ញៀវ…
 preparing_desk	កំពុងរៀបចំតុ…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	ចម្លងសៀវភៅភាគី CSV
 copy_receipt	ចម្លងបង្កាន់ដៃ
 copy_report	ចម្លងរបាយការណ៍
 counted_cash_ph	សាច់ប្រាក់ដែលបានរាប់ក្នុងថត
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	បិទវេន ហើយបោះពុម្ពសន្លឹក
+shift_handover	ប្រគល់វេន
+shift_counted_ph	សាច់ប្រាក់បានរាប់ពេលប្រគល់
+shift_since	វេននេះតាំងពី
+expected_in_drawer	រំពឹងក្នុងថត
+lock_books_through_month	ចាក់សោគណនីរហូតដល់ចុងខែ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ចាក់សោរហូតដល់ចុងខែនេះ
+books_locked_none	មិន​ទាន់​មាន​ខែ​ជាប់​គាំង​នៅ​ឡើយ​ទេ
+books_locked_through	គណនីត្រូវបានចាក់សោរហូតដល់
 counter_agency_ph	ឈ្មោះបញ្ជរ / ភ្នាក់ងារ (ជាជម្រើស)
 create_backup	បង្កើតច្បាប់ចម្លង
 day_close_summary	សង្ខេបបិទថ្ងៃ
@@ -442,9 +442,9 @@ pay_ap_cash	បង់ AP ដោយសាច់ប្រាក់
 pay_ap_upi	បង់ AP ដោយ UPI
 period_bill	វិក្កយបត្ររយៈពេល
 period_bill_party	វិក្កយបត្ររយៈពេល (ភាគី)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	បង្កើតវិក្កយបត្រ
+period_bill_generate_print	បង្កើតនិងបោះពុម្ព
+booking_bulk_preview	{ok} រួចរាល់ · {bad} ជាមួយនឹងកំហុស
 pick_pod_photo	ជ្រើសរើសរូបថត POD
 print_awb_label	បោះពុម្ពស្លាក AWB
 print_open	បោះពុម្ព / បើក
@@ -653,19 +653,19 @@ attachments_last_expense	ឯកសារភ្ជាប់ (ចំណាយច�
 credit_limit_heading	ដែនកំណត់ជំពាក់ (ភាគីដែលបានជ្រើស / ដាក់ឈ្មោះ)
 pay_selected_heading	បង់អ្វីដែលបានជ្រើស (ទូទាត់ជំពាក់ / យកប្រាក់មុន)
 write_off_heading	កាត់ (សម្អាតដោយមិនបង់)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	កំណត់ចំណាំការកែតម្រូវ
+adj_note_amount_ph	ទឹកប្រាក់
+adj_note_reason_ph	មូលហេតុ (ត្រូវការ)
+adj_note_awb_ph	ពាក់ព័ន្ធ AWB (ជាជម្រើស)
+credit_note_btn	កំណត់ចំណាំឥណទាន
+debit_note_btn	កំណត់ចំណាំឥណពន្ធ
+bill_later_heading	គិតថ្លៃពេលក្រោយ (គិតថ្លៃបន្ថែមបន្ទាប់ពីការកក់)
+bill_later_amount_ph	ចំនួនទឹកប្រាក់បន្ថែម
+bill_later_party_ph	អតិថិជន (លុះត្រាតែការកក់ទុកមិនមាន)
+bill_later_btn	គិតថ្លៃពេលក្រោយ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ការវេចខ្ចប់
+bill_later_extra_other	ផ្សេងៗ
 pay_ap_heading	បង់អ្វីដែលយើងជំពាក់គេ (AP)
 country_tax	ប្រទេស និងពន្ធ
 extra_tills_heading	បញ្ជរបន្ថែម
@@ -777,26 +777,26 @@ onboard_book_tmpl	សៀវភៅ · {} — បន្ថែមទំនិញ �
 onboard_template_tmpl	ដាក់ឈ្មោះកន្លែងបើចង់ រួចជ្រើសរបៀបចាប់ផ្ដើម។
 tmpl_blurb	សៀវភៅនាំសំបុត្រ និងតុកក់៖ អ្នកនាំសំបុត្រ អ្នកដឹកជញ្ជូន សៀវភៅថ្ងៃ AWB ។
 tmpl_how	កក់ក្បាលដីនៅតុ; សៀវភៅថ្ងៃសម្រាប់ថ្ងៃនេះ; ផ្ទាំងសម្រាប់អត្រា, ភាគី, របាយការណ៍។
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	គំរូហាង
+app_template_blurb	ជ្រើសរើសការដំឡើងចាប់ផ្ដើម។ «រំលងឥឡូវ» ទុកឱ្យបញ្ជីអតិថិជនទទេ។
+app_template_skip	រំលងឥឡូវ
+app_template_status	ម៉ាស៊ីនមេរួចរាល់ — នាំចូលគំរូ ឬរំលង
+app_template_importing	កំពុងអនុវត្ត {title}…
+app_template_public_hdr	គំរូ
+app_template_import_selected	នាំចូលអ្វីដែលបានជ្រើស
+app_template_wipe_warn	វាសម្អាតទិន្នន័យជួញដូរនៅក្នុងគណនី (ការកក់ សៀវភៅកត់ត្រា) និងអនុវត្តការកំណត់ហាងរបស់គំរូ។ តើអ្នកចង់បន្តទេ?
+app_template_wipe_continue	បន្ត
+app_template_wipe_cancel	លុបចោល
+public_tmpl_help	គំរូភ្នាក់ងារដែលផលិតរួចរាល់ ដែលភ្ជាប់មកជាមួយកម្មវិធី។ មិនចាំបាច់ទាញយកទេ។
+business_day	តើ «ថ្ងៃនេះ» កំណត់ឡើងវិញនៅពេលណា?
+business_day_help	«រហូតដល់ បិទថ្ងៃ» បន្ត «សៀវភៅប្រចាំថ្ងៃ» រត់រំលងពាក់កណ្តាលអធ្រាត្រ រហូតដល់អ្នកកត់ត្រាថ្ងៃបិទ។ «នៅពាក់កណ្តាលអធ្រាត្រ» កាត់នៅម៉ោង 00:00 ម៉ោងក្នុងស្រុក។
+biz_day_until_close	រហូតដល់ បិទថ្ងៃ
+biz_day_midnight	នៅពាក់កណ្តាលអធ្រាត្រ
+business_day_saved	បានរក្សាទុកការកំណត់ថ្ងៃធ្វើការ
+report_day_lens	បង្ហាញ «ថ្ងៃនេះ» ជា
+report_day_lens_help	វាផ្លាស់ប្តូរតែទិដ្ឋភាព — វាមិនផ្លាស់ប្តូរនៅពេលដែល «បិទថ្ងៃ» កំណត់ «ថ្ងៃនេះ» ឡើងវិញ។ «យោងតាម បិទថ្ងៃ» ធ្វើតាមថ្ងៃចុងក្រោយបិទ; «នេះ​បើ​តាម​ការ​ឲ្យ​ដឹង​នៅ​ពាក់​កណ្ដាល​អធ្រាត្រ» កាត់នៅម៉ោង 00:00 ម៉ោងក្នុងស្រុក។
+report_lens_day_close	យោងតាម បិទថ្ងៃ
+report_lens_midnight	នេះ​បើ​តាម​ការ​ឲ្យ​ដឹង​នៅ​ពាក់​កណ្ដាល​អធ្រាត្រ
 trk_booked	បានកក់ទុក
 trk_picked_up	រើសបាន។
 trk_in_transit	ក្នុងពេលឆ្លងកាត់

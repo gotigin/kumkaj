@@ -3,27 +3,27 @@ app_tagline	کتاب های پیک آژانس + میز رزرو. آفلاین ر
 unlock	باز کردن قفل
 pin_hint	PIN مالک از 0000 شروع می‌شود
 sell	رزرو
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	تابلو
+board	تابلو
+park_draft	کنار گذاشتن پیش‌نویس
+board_help	پیش‌نویس‌های باز (تا وقتی «حذف» یا «گرفتن پرداخت» را بزنید می‌مانند) و فروش‌های ثبت‌شده امروز. در «رزرو»، وسط کار «کنار گذاشتن پیش‌نویس» را بزنید (اینجا ذخیره می‌شود، نه در دفاتر)؛ برای ادامه روی یک پیش‌نویس بزنید.
+board_empty	هنوز کارتی نیست.
+board_park_nothing	چیزی برای کنار گذاشتن نیست — هزینه‌ها یا جزئیات رزرو را اضافه کنید
+board_parked	روی «تابلو» کنار گذاشته شد — میز آزاد است
+board_draft	پیش‌نویس
+board_booked	رزرو شده است
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	پیش‌نویس
+board_filter_booked	رزرو شده است
+board_cols_fmt	{n} ستون
+board_summary_fmt	{total} کارت · {drafts} پیش‌نویس · {booked} ثبت‌شده
+board_card_no_charges	هنوز هزینه‌ای نیست
+board_card_charges	هزینه
+board_card_booked	رزرو
+board_draft_gone	آن پیش‌نویس دیگر روی «تابلو» نیست
+board_draft_closed	آن پیش‌نویس قبلاً تمام یا حذف شده است
+board_discard	حذف
+board_discarded	پیش‌نویس حذف شد
 buy	پرداخت کنید
 books	دفتر روز
 books_help	موقعیت امروز رزرو = بسته ها. پرداخت = قبوض و هزینه های حامل. احزاب = فرستنده و حامل.
@@ -220,7 +220,7 @@ snack_secs_save	ذخیره زمان هشدار
 snack_secs_saved	زمان هشدار ذخیره شد — {n} ثانیه
 snack_secs_bad	ثانیه ها را به عنوان یک عدد وارد کنید (3-60)
 cancelled	لغو شد
-cancelling	Cancellingâ¦
+cancelling	در حال لغو…
 cancel	لغو
 opening_client	در حال باز کردن کلاینت…
 preparing_desk	در حال آماده کردن میز…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	رونوشت دفتر طرف CSV
 copy_receipt	رونوشت رسید
 copy_report	رونوشت گزارش
 counted_cash_ph	نقد شمرده‌شده در کشو
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	بستن شیفت و چاپ برگه
+shift_handover	تحویل شیفت
+shift_counted_ph	نقد شمرده‌شده هنگام تحویل شیفت
+shift_since	این شیفت از
+expected_in_drawer	انتظار در کشو
+lock_books_through_month	قفل دفاتر تا پایان ماه
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	قفل تا پایان این ماه
+books_locked_none	هنوز ماهی قفل نشده است
+books_locked_through	قفل‌شده تا
 counter_agency_ph	پیشخوان / نام آژانس (اختیاری)
 create_backup	ساخت پشتیبان
 day_close_summary	خلاصه بستن روز
@@ -442,9 +442,9 @@ pay_ap_cash	پرداخت AP نقد
 pay_ap_upi	پرداخت AP با UPI
 period_bill	صورت حساب دوره
 period_bill_party	قبض دوره (پارتی)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	صدور صورتحساب
+period_bill_generate_print	صدور و چاپ
+booking_bulk_preview	{ok} آماده · {bad} خطادار
 pick_pod_photo	عکس POD را انتخاب کنید
 print_awb_label	چاپ برچسب AWB
 print_open	چاپ / باز کردن
@@ -653,19 +653,19 @@ attachments_last_expense	پیوست‌ها (آخرین هزینه)
 credit_limit_heading	سقف نسیه (طرف انتخاب‌شده / نام‌دار)
 pay_selected_heading	پرداخت انتخاب‌شده (تسویه بدهی / گرفتن پیش‌پرداخت)
 write_off_heading	سوخت کردن (تسویه بدون پرداخت)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	اعلامیه‌های تعدیل
+adj_note_amount_ph	مبلغ
+adj_note_reason_ph	دلیل (لازم)
+adj_note_awb_ph	AWB مرتبط (اختیاری)
+credit_note_btn	اعلامیه بستانکار
+debit_note_btn	اعلامیه بدهکار
+bill_later_heading	بعداً صورتحساب شود (اضافه‌بهای پس از رزرو)
+bill_later_amount_ph	مبلغ اضافی
+bill_later_party_ph	طرف حساب (فقط اگر رزرو نداشته باشد)
+bill_later_btn	بعداً صورتحساب شود
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	بسته‌بندی
+bill_later_extra_other	دیگر
 pay_ap_heading	پرداخت آنچه به آن‌ها بدهکاریم (AP)
 country_tax	کشور و مالیات
 extra_tills_heading	صندوق‌های اضافه
@@ -777,26 +777,26 @@ onboard_book_tmpl	دفتر · {} — کالا و نسیه آغازین را بی
 onboard_template_tmpl	اگر خواستید به محل نام بدهید، سپس نحوه شروع را انتخاب کنید.
 tmpl_blurb	کتاب پیک و میز رزرو: فرستنده، حامل، کتاب روز، AWB.
 tmpl_how	بسته ها را روی میز رزرو کنید. کتاب روز برای امروز؛ زبانه ها برای نرخ ها، مهمانی ها، گزارش ها.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	قالب‌های فروشگاه
+app_template_blurb	یک میز کار آغازین انتخاب کنید. «فعلاً رد شو» فهرست طرف‌ها را خالی می‌گذارد.
+app_template_skip	فعلاً رد شو
+app_template_status	سرور آماده است — قالبی وارد کنید یا رد شوید
+app_template_importing	در حال اعمال {title}…
+app_template_public_hdr	قالب‌ها
+app_template_import_selected	وارد کردن مورد انتخاب‌شده
+app_template_wipe_warn	این کار داده‌های معاملاتی دفاتر (رزروها، حساب‌ها) را پاک می‌کند و تنظیمات فروشگاهِ قالب را اعمال می‌کند. ادامه می‌دهید؟
+app_template_wipe_continue	ادامه
+app_template_wipe_cancel	لغو
+public_tmpl_help	بسته‌های آماده نمایندگی برای این فروشگاه. نیازی به دانلود نیست.
+business_day	«امروز» چه زمانی از نو شروع می‌شود؟
+business_day_help	با «تا بستن روز»، «دفتر روز» پس از نیمه‌شب هم ادامه دارد تا وقتی بستن روز را ثبت کنید. با «نیمه‌شب تقویمی»، روز در ساعت ۰۰:۰۰ به وقت محلی بسته می‌شود.
+biz_day_until_close	تا بستن روز
+biz_day_midnight	نیمه‌شب تقویمی
+business_day_saved	روز کاری ذخیره شد
+report_day_lens	نمایش «امروز» بر اساس
+report_day_lens_help	فقط نمایش — زمانِ از نو شروع شدن «امروز» با «بستن روز» را تغییر نمی‌دهد. «بر اساس بستن روز» از آخرین بستن روز حساب می‌کند؛ «بر اساس نیمه‌شب» در ساعت ۰۰:۰۰ به وقت محلی می‌بُرد.
+report_lens_day_close	بر اساس بستن روز
+report_lens_midnight	بر اساس نیمه‌شب
 trk_booked	رزرو شده است
 trk_picked_up	برداشت
 trk_in_transit	در حال حمل و نقل

@@ -384,12 +384,12 @@ app_template_need_internet	टेम्पलेट डाउनलोड कर
 app_template_import_selected	निवडलेले आयात करा
 app_template_check_code	कोड तपासा
 app_template_import	आयात करा
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	या डिव्हाइसवरून आयात करा
+app_template_from_device_help	ज्यात template.json आहे असा फोल्डर निवडा (shop_defaults.json असल्यास तोही).
+settings_app_tmpl_note	पुन्हा आयात केल्यास विक्री, KOT आणि खाती साफ होतात, मग पॅकची दुकान सेटिंग्ज लागू होतात. फक्त मेनू असलेले टेम्पलेट: «मेनू» → «आयटम टेम्पलेट».
+app_template_wipe_warn	यामुळे वहीतील व्यवहारांचा डेटा (विक्री, KOT, खाती) साफ होईल आणि टेम्पलेटची दुकान सेटिंग्ज लागू होतील. मेनू व सेटअप बदलू शकतात. पुढे जायचे?
+app_template_wipe_continue	पुढे जा
+app_template_wipe_cancel	रद्द
 currency	चलन
 backup	बॅकअप
 use	वापरा
@@ -550,22 +550,22 @@ new_party_clear	नवीन पार्टी (फॉर्म साफ क�
 new_party_kind_supplier_ph	नवीन पार्टीचा प्रकार (पुरवठादार)
 next_country	पुढील देश
 next_order	पुढील ऑर्डर (डेस्क साफ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ड्राफ्ट
+park_draft	ड्राफ्टमध्ये ठेवा
+drafts_help	काउंटरवरचे तुम्ही मध्येच बाजूला ठेवलेले अपूर्ण ऑर्डर — «पेमेंट घ्या» होईपर्यंत ते वहीत जात नाहीत. कार्ड दाबा म्हणजे ते «ऑर्डर» वर पुन्हा उघडेल; «ड्राफ्ट काढून टाका» ने ड्राफ्ट काढला जातो. «दिवस बंद» ने हे साफ होत नाहीत.
+drafts_park_nothing	ठेवण्यासारखे काही नाही — कार्टमध्ये वस्तू जोडा
+drafts_park_counter_only	«ड्राफ्टमध्ये ठेवा» फक्त काउंटरच्या ऑर्डरसाठी आहे — टेबलचा ऑर्डर सोडा किंवा «फ्लोअर» वापरा
+drafts_parked	«ड्राफ्ट» मध्ये ठेवले — काउंटर मोकळा आहे
+drafts_discard	ड्राफ्ट काढून टाका
+drafts_discarded	ड्राफ्ट काढून टाकला
+drafts_gone	तो ड्राफ्ट आता यादीत नाही
+drafts_closed	त्या ड्राफ्टचे पैसे आधीच घेतले आहेत किंवा तो काढून टाकला आहे
+drafts_empty	अजून ड्राफ्ट नाहीत. «काउंटर» वर पदार्थ जोडा आणि «ड्राफ्टमध्ये ठेवा» दाबा.
+drafts_card_kind	ड्राफ्ट
+drafts_card_no_lines	वस्तू नाहीत
+drafts_card_lines	वस्तू
+drafts_summary_fmt	{n} खुले ड्राफ्ट
+drafts_cols_fmt	{n} स्तंभ
 note_gstin_ph	नोंद / GSTIN / करार आठवण
 notes_attach_party	नोंदी व जोडपत्रे (निवडलेली पार्टी)
 notes_attach_sale	नोंदी व जोडपत्रे (निवडलेली विक्री)
@@ -588,15 +588,15 @@ print_open	छापा / उघडा
 reason_amend_ph	दुरुस्ती / रद्द / परताव्याचे कारण
 reason_note_ph	कारण / नोंद (नुकसान, मोजणी, …)
 record_day_close	दिवस बंद नोंदवा
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«आज» कधी नव्याने सुरू होते?
+business_day_help	«दिवस बंद होईपर्यंत» निवडल्यास तुम्ही दिवस बंद नोंदवेपर्यंत «रोज बही» मध्यरात्रीनंतरही सुरू राहते. «कॅलेंडरची मध्यरात्र» निवडल्यास दिवस स्थानिक वेळेनुसार रात्री 12:00 वाजता संपतो.
+biz_day_until_close	दिवस बंद होईपर्यंत
+biz_day_midnight	कॅलेंडरची मध्यरात्र
+business_day_saved	व्यवसाय दिवस जतन झाला
+report_day_lens	«आज» असे पाहा
+report_day_lens_help	फक्त पाहण्यासाठी — «दिवस बंद» कधी «आज» नव्याने सुरू करते हे यामुळे बदलत नाही. «दिवस बंद नुसार» शेवटच्या दिवस बंदपासून मोजते; «मध्यरात्रीनुसार» स्थानिक वेळेनुसार रात्री 12:00 वाजता कापते.
+report_lens_day_close	दिवस बंद नुसार
+report_lens_midnight	मध्यरात्रीनुसार
 refresh_from_shop	दुकानातून ताजे करा
 refund	परतावा
 remove_selected	निवडलेले काढा
@@ -864,7 +864,7 @@ find_printers	प्रिंटर शोधा
 printers_looking	या डिव्हाइस आणि Wi‑Fi वर प्रिंटर शोधत आहे…
 saving_printer	प्रिंटर जोडत आहे…
 cancelled	रद्द
-cancelling	Cancellingâ¦
+cancelling	रद्द होत आहे…
 removing	काढत आहे…
 removed	काढले
 updating_order	अपडेट होत आहे…
@@ -1116,7 +1116,7 @@ tile_undo_bill	बिल मागे
 summary_busy	टेबल व्यस्त
 summary_to_collect	वसूल करायचे
 summary_on_floor	फ्लोअरवर
-floor	मजला
+floor	फ्लोअर
 sizes_as_items_ph	आकार स्वतंत्र आयटम म्हणून (ऐच्छिक) — Half=120, Full=200
 dish_group_ph	पदार्थ गट (ऐच्छिक) — उदा. Paneer Tikka
 discount	सूट

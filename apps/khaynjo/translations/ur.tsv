@@ -384,12 +384,12 @@ app_template_need_internet	ٹیمپلیٹ ڈاؤن لوڈ کرنے کے لیے �
 app_template_import_selected	منتخب درآمد کریں
 app_template_check_code	کوڈ جانچیں
 app_template_import	درآمد کریں
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	اس ڈیوائس سے درآمد کریں
+app_template_from_device_help	وہ فولڈر منتخب کریں جس میں template.json ہو (shop_defaults.json ہو تو وہ بھی)۔
+settings_app_tmpl_note	دوبارہ درآمد کرنے سے فروخت، KOT اور لیجر صاف ہو جاتے ہیں، پھر پیک کی دکان سیٹنگز لاگو ہوتی ہیں۔ صرف مینو والے ٹیمپلیٹ: «مینو» → «آئٹم ٹیمپلیٹس»۔
+app_template_wipe_warn	اس سے کھاتوں کا کاروباری ڈیٹا (فروخت، KOT، لیجر) صاف ہو جائے گا اور ٹیمپلیٹ کی دکان سیٹنگز لاگو ہوں گی۔ مینو اور سیٹ اپ بدل سکتے ہیں۔ جاری رکھیں؟
+app_template_wipe_continue	جاری رکھیں
+app_template_wipe_cancel	منسوخ
 currency	کرنسی
 backup	بیک اپ
 use	استعمال کریں
@@ -550,22 +550,22 @@ new_party_clear	نئی پارٹی (فارم صاف کریں)
 new_party_kind_supplier_ph	نئی پارٹی کی قسم (سپلائر)
 next_country	اگلا ملک
 next_order	اگلا آرڈر (ڈیسک صاف)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ڈرافٹ
+park_draft	ڈرافٹ میں رکھیں
+drafts_help	کاؤنٹر کے وہ ادھورے آرڈر جو آپ نے بیچ میں روک کر رکھے ہیں — «ادائیگی لیں» ہونے تک یہ کھاتوں میں نہیں جاتے۔ کارڈ دبائیں تو وہ «آرڈر» پر دوبارہ کھل جائے گا؛ «ڈرافٹ ہٹائیں» سے ڈرافٹ ہٹ جاتا ہے۔ «دن بند» سے یہ صاف نہیں ہوتے۔
+drafts_park_nothing	رکھنے کو کچھ نہیں — کارٹ میں آئٹمز شامل کریں
+drafts_park_counter_only	«ڈرافٹ میں رکھیں» صرف کاؤنٹر کے آرڈر کے لیے ہے — میز کا آرڈر چھوڑیں یا «فلور» استعمال کریں
+drafts_parked	«ڈرافٹ» میں رکھ دیا — کاؤنٹر خالی ہے
+drafts_discard	ڈرافٹ ہٹائیں
+drafts_discarded	ڈرافٹ ہٹا دیا گیا
+drafts_gone	وہ ڈرافٹ اب فہرست میں نہیں ہے
+drafts_closed	اس ڈرافٹ کی ادائیگی ہو چکی ہے یا اسے ہٹایا جا چکا ہے
+drafts_empty	ابھی کوئی ڈرافٹ نہیں۔ «کاؤنٹر» پر ڈشز شامل کریں اور «ڈرافٹ میں رکھیں» دبائیں۔
+drafts_card_kind	ڈرافٹ
+drafts_card_no_lines	کوئی آئٹم نہیں
+drafts_card_lines	آئٹمز
+drafts_summary_fmt	{n} کھلے ڈرافٹ
+drafts_cols_fmt	{n} کالم
 note_gstin_ph	نوٹ / GSTIN / معاہدہ یاددہانی
 notes_attach_party	نوٹس اور منسلکات (منتخب پارٹی)
 notes_attach_sale	نوٹس اور منسلکات (منتخب فروخت)
@@ -588,15 +588,15 @@ print_open	چھاپیں / کھولیں
 reason_amend_ph	ترمیم / منسوخی / واپسی کی وجہ
 reason_note_ph	وجہ / نوٹ (ضیاع، گنتی، …)
 record_day_close	دن بند درج کریں
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«آج» کب نئے سرے سے شروع ہوتا ہے؟
+business_day_help	«دن بند تک» منتخب کرنے پر «روز بک» آدھی رات کے بعد بھی چلتی رہتی ہے، جب تک آپ دن بند درج نہ کریں۔ «کیلنڈر کی آدھی رات» منتخب کرنے پر دن مقامی وقت کے مطابق رات 12:00 بجے کٹتا ہے۔
+biz_day_until_close	دن بند تک
+biz_day_midnight	کیلنڈر کی آدھی رات
+business_day_saved	کاروباری دن محفوظ ہو گیا
+report_day_lens	«آج» کو ایسے دیکھیں
+report_day_lens_help	صرف دیکھنے کے لیے — اس سے یہ نہیں بدلتا کہ «دن بند» کب «آج» کو نئے سرے سے شروع کرتا ہے۔ «دن بند کے حساب سے» پچھلے دن بند سے گنتا ہے؛ «آدھی رات کے حساب سے» مقامی وقت کے مطابق رات 12:00 بجے کٹتا ہے۔
+report_lens_day_close	دن بند کے حساب سے
+report_lens_midnight	آدھی رات کے حساب سے
 refresh_from_shop	دکان سے تازہ کریں
 refund	واپسی
 remove_selected	منتخب ہٹائیں
@@ -864,7 +864,7 @@ find_printers	پرنٹر تلاش کریں
 printers_looking	اس ڈیوائس اور Wi‑Fi پر پرنٹر تلاش ہو رہے ہیں…
 saving_printer	پرنٹر شامل ہو رہا ہے…
 cancelled	منسوخ
-cancelling	Cancellingâ¦
+cancelling	منسوخ ہو رہا ہے…
 removing	ہٹایا جا رہا ہے…
 removed	ہٹا دیا گیا
 updating_order	اپ ڈیٹ ہو رہا ہے…

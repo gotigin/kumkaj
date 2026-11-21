@@ -3,27 +3,27 @@ app_tagline	Aranduka mensajero-agencia + mesa de reserva. Gratis offline-pe.
 unlock	Eipe'a
 pin_hint	Ijára PIN oñepyrũ 0000 ramo
 sell	Reserva rehegua
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Tablero
+board	Tablero
+park_draft	Oñongatu borrador ramo
+board_help	Umi borrador noñemohu’ãiva (oñongatúva epoko peve «Emboyke» térã «Ogueraha pago») ha umi venta ojerreserváva ko’áĝagua. «Reserva rehegua»-pe, epoko «Oñongatu borrador ramo» rehe ne rembiapo mbytépe (oñongatu ko’ápe, ndaha’éi umi cuenta-pe); epoko peteĩ borrador rehe eñepyrũ hag̃ua.
+board_empty	Ndaipóri gueteri tarjeta.
+board_park_nothing	Mba’eve oñeñongatu haĝua borrador ramo — omoĩve cargo térã detalle reserva rehegua
+board_parked	Oñongatu «Tablero»-pe — pe mesa oĩ nandi ko’áĝa
+board_draft	Borrador
+board_booked	Ojerreserva
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Borrador
+board_filter_booked	Ojerreserva
+board_cols_fmt	{n} columna-kuéra rehegua
+board_summary_fmt	{total} tarjeta rehegua · {drafts} borrador-kuéra rehegua · {booked} ojerreserva
+board_card_no_charges	Ndaipóri gueteri honorario oñembojoapýva
+board_card_charges	umi honorario rehegua
+board_card_booked	Reserva rehegua
+board_draft_gone	Upe borrador noĩvéima «Tablero»-pe
+board_draft_closed	Upe borrador oñemohu’ãma térã oñembogue
+board_discard	Emboyke
+board_discarded	Borrador oñembogue
 buy	Opagapaite
 books	Aranduka ára rehegua
 books_help	Ko árapegua posición. Reserva = paquetes en. Ojepaga = facturas & gastos transportista rehegua. Partido-kuéra = consignador & transportista-kuéra.
@@ -88,7 +88,7 @@ applied	Ojeaplikava’ekue
 note_ph	Ñe’ẽñemi (ojeporavóva) .
 rounded	REDODO ÑE’ẼTEKUAA
 split	Oñemboja’o
-counter	Contador rehegua
+counter	Mostrador
 parcel	Mba'yrupehẽ
 order	Pedido
 sales	Reservas rehegua
@@ -220,7 +220,7 @@ snack_secs_save	Eñongatu tiempo de alerta
 snack_secs_saved	Tiempo de alerta oñeñongatúva — {n} segundos
 snack_secs_bad	Emoinge segundo papapy ramo (3–60) .
 cancelled	Oñembogue
-cancelling	Cancellingâ¦
+cancelling	Omboykévo…
 cancel	Ombogue
 opening_client	Oipe'ávo cliente...
 preparing_desk	Oñembosako'ívo escritorio...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Ojekopia cliente libro mayor CSV .
 copy_receipt	Ojekopia recibo rehegua
 copy_report	Ekopia marandu
 counted_cash_ph	Ojeipapa efectivo oĩva cajón-pe
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Omboty turno ha oimprimi slip
+shift_handover	Turno ñembohasa
+shift_counted_ph	Efectivo ojeipapa entrega jave
+shift_since	Kóva cambio upe guive
+expected_in_drawer	Oñeha'ãrõ cajón-pe
+lock_books_through_month	Emboty umi cuenta jasy paha peve
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Oñemboty ko jasy paha peve
+books_locked_none	Ndaipóri gueteri jasy oñembotýva
+books_locked_through	Umi cuenta oñembotyva'ekue peve
 counter_agency_ph	Contador / agencia réra (opcional) .
 create_backup	Ojapo peteĩ jekopytyjoja
 day_close_summary	Ára ñemboty resumen
@@ -442,9 +442,9 @@ pay_ap_cash	Ojepaga AP-pe efectivo-pe
 pay_ap_upi	Ojepaga AP UPI .
 period_bill	Factura periodo rehegua
 period_bill_party	Factura periodo rehegua (partido) .
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Ojapo factura
+period_bill_generate_print	Ojapo ha oimprimi
+booking_bulk_preview	{ok} oĩmava · {bad} jejavy reheve
 pick_pod_photo	Eiporavo ta'anga POD rehegua
 print_awb_label	Imprimi etiqueta AWB rehegua
 print_open	Oñeimprimi / ojepe’a
@@ -653,19 +653,19 @@ attachments_last_expense	Umi adjunto (gasto paha) .
 credit_limit_heading	Límite de crédito (cliente térã proveedor ojeporavóva) .
 pay_selected_heading	Ojepaga ojeporavóva (omohenda deuda / ogueraha anticipado) .
 write_off_heading	Ojehai (oñemopotî ojepaga'ÿre) .
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Nota de ajuste
+adj_note_amount_ph	Monto rehegua
+adj_note_reason_ph	Motivo (oñeikotevẽva) .
+adj_note_awb_ph	Ojoajúva AWB (ojeporavóva) .
+credit_note_btn	Nota de crédito rehegua
+debit_note_btn	Nota de débito rehegua
+bill_later_heading	Ojepaga upe rire (cargo extra ojerreserva rire)
+bill_later_amount_ph	Monto extra rehegua
+bill_later_party_ph	Cliente (pe reserva ndorekóiramo añoite)
+bill_later_btn	Carga upe rire
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Envasado rehegua
+bill_later_extra_other	Ambue
 pay_ap_heading	Japaga pe jadevéva chupekuéra (AP) .
 country_tax	Tetã & impuesto rehegua
 extra_tills_heading	Tills extra rehegua
@@ -777,26 +777,26 @@ onboard_book_tmpl	Aranduka · {} — emoĩ umi mba’e ha crédito de apertura, 
 onboard_template_tmpl	Emombe’u pe tenda reipotáramo, upéi eiporavo mba’éichapa reñepyrũta.
 tmpl_blurb	Aranduka de mensajería ha mesa de reserva: consignador, transportista, aranduka ára rehegua, AWB.
 tmpl_how	Reserva paquete escritorio-pe; Aranduka ára rehegua ko árape guarã; umi ficha tasa, fiesta, marandu rehegua.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Ñemuha ñemboguatarã
+app_template_blurb	Eiporavo peteĩ ñepyrũrã ñembosako’i. «Ojesalta ko’áĝa ĝuarã» oheja nandi pe cliente lista.
+app_template_skip	Ojesalta ko’áĝa ĝuarã
+app_template_status	Servidor oĩma — egueru peteĩ ñemboguatarã, térã ehasa
+app_template_importing	Ojeporu {title}...
+app_template_public_hdr	Plantilla
+app_template_import_selected	Egueru pe eiporavóva
+app_template_wipe_warn	Kóva omopotĩ umi dato comercial rehegua umi cuenta-pe (reserva, libro mayor) ha omoĩ umi plantilla tenda ñemboheko. ¿Resegisépa?
+app_template_wipe_continue	Esegíkena
+app_template_wipe_cancel	Ombogue
+public_tmpl_help	Umi plantilla agencia rehegua ojejapóva listo oúva app ndive. Natekotevẽi ojegueru.
+business_day	Araka’épa «Ko árape» oñemohenda jey?
+business_day_help	«Ára oñemboty peve» omantene «Aranduka ára rehegua» oñani pyharepyte rire, rehai peve ára ñemboty. «Pyharepyte jave» oikytï 00:00 aravo jave hora local.
+biz_day_until_close	Ára oñemboty peve
+biz_day_midnight	Pyharepyte jave
+business_day_saved	Ára rembiaporã ñemboheko oñeñongatu
+report_day_lens	Ohechauka «Ko árape» ha'eháicha
+report_day_lens_help	Kóva omoambue jehechauka añoite — noñemoambuéi «Ára oñemboty» omohendajeývo «Ko árape». «He'iháicha Ára oñemboty» osegi ára paha oñembotývo; «Péicha he'i pyharepyte» oikytï 00:00 aravo jave hora local.
+report_lens_day_close	He'iháicha Ára oñemboty
+report_lens_midnight	Péicha he'i pyharepyte
 trk_booked	Ojerreserva
 trk_picked_up	Ojegueraha
 trk_in_transit	Tránsito-pe

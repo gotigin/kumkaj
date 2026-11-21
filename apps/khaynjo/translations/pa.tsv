@@ -384,12 +384,12 @@ app_template_need_internet	ਟੈਂਪਲੇਟ ਡਾਊਨਲੋਡ ਕਰਨ
 app_template_import_selected	ਚੁਣਿਆ ਆਯਾਤ ਕਰੋ
 app_template_check_code	ਕੋਡ ਜਾਂਚੋ
 app_template_import	ਆਯਾਤ ਕਰੋ
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ਇਸ ਡਿਵਾਈਸ ਤੋਂ ਆਯਾਤ ਕਰੋ
+app_template_from_device_help	ਉਹ ਫੋਲਡਰ ਚੁਣੋ ਜਿਸ ਵਿੱਚ template.json ਹੋਵੇ (shop_defaults.json ਹੋਵੇ ਤਾਂ ਉਹ ਵੀ)।
+settings_app_tmpl_note	ਦੁਬਾਰਾ ਆਯਾਤ ਕਰਨ ਨਾਲ ਵਿਕਰੀ, KOT ਅਤੇ ਖਾਤੇ ਸਾਫ਼ ਹੋ ਜਾਂਦੇ ਹਨ, ਫਿਰ ਪੈਕ ਦੀਆਂ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ ਲਾਗੂ ਹੁੰਦੀਆਂ ਹਨ। ਸਿਰਫ਼ ਮੀਨੂ ਵਾਲੇ ਟੈਂਪਲੇਟ: «ਮੀਨੂ» → «ਆਈਟਮ ਟੈਂਪਲੇਟ»।
+app_template_wipe_warn	ਇਸ ਨਾਲ ਬਹੀ ਦਾ ਕਾਰੋਬਾਰੀ ਡਾਟਾ (ਵਿਕਰੀ, KOT, ਖਾਤੇ) ਸਾਫ਼ ਹੋ ਜਾਵੇਗਾ ਅਤੇ ਟੈਂਪਲੇਟ ਦੀਆਂ ਦੁਕਾਨ ਸੈਟਿੰਗਾਂ ਲਾਗੂ ਹੋਣਗੀਆਂ। ਮੀਨੂ ਅਤੇ ਸੈੱਟਅੱਪ ਬਦਲ ਸਕਦੇ ਹਨ। ਅੱਗੇ ਵਧੀਏ?
+app_template_wipe_continue	ਅੱਗੇ ਵਧੋ
+app_template_wipe_cancel	ਰੱਦ
 currency	ਮੁਦਰਾ
 backup	ਬੈਕਅਪ
 use	ਵਰਤੋ
@@ -550,22 +550,22 @@ new_party_clear	ਨਵੀਂ ਪਾਰਟੀ (ਫਾਰਮ ਸਾਫ਼ ਕਰ�
 new_party_kind_supplier_ph	ਨਵੀਂ ਪਾਰਟੀ ਦੀ ਕਿਸਮ (ਸਪਲਾਇਰ)
 next_country	ਅਗਲਾ ਦੇਸ਼
 next_order	ਅਗਲਾ ਆਰਡਰ (ਡੈਸਕ ਸਾਫ਼)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ਡਰਾਫਟ
+park_draft	ਡਰਾਫਟ ਵਿੱਚ ਰੱਖੋ
+drafts_help	ਕਾਊਂਟਰ ਦੇ ਉਹ ਅਧੂਰੇ ਆਰਡਰ ਜੋ ਤੁਸੀਂ ਵਿਚਕਾਰ ਰੋਕ ਕੇ ਰੱਖੇ ਹਨ — «ਭੁਗਤਾਨ ਲਓ» ਹੋਣ ਤੱਕ ਇਹ ਬਹੀ ਵਿੱਚ ਨਹੀਂ ਜਾਂਦੇ। ਕਾਰਡ ਦਬਾਓ ਤਾਂ ਉਹ «ਆਰਡਰ» 'ਤੇ ਮੁੜ ਖੁੱਲ੍ਹੇਗਾ; «ਡਰਾਫਟ ਹਟਾਓ» ਨਾਲ ਡਰਾਫਟ ਹਟ ਜਾਂਦਾ ਹੈ। «ਦਿਨ ਬੰਦ» ਨਾਲ ਇਹ ਸਾਫ਼ ਨਹੀਂ ਹੁੰਦੇ।
+drafts_park_nothing	ਰੱਖਣ ਲਈ ਕੁਝ ਨਹੀਂ — ਕਾਰਟ ਵਿੱਚ ਆਈਟਮ ਜੋੜੋ
+drafts_park_counter_only	«ਡਰਾਫਟ ਵਿੱਚ ਰੱਖੋ» ਸਿਰਫ਼ ਕਾਊਂਟਰ ਦੇ ਆਰਡਰ ਲਈ ਹੈ — ਮੇਜ਼ ਦਾ ਆਰਡਰ ਛੱਡੋ ਜਾਂ «ਫ਼ਲੋਰ» ਵਰਤੋ
+drafts_parked	«ਡਰਾਫਟ» ਵਿੱਚ ਰੱਖ ਦਿੱਤਾ — ਕਾਊਂਟਰ ਖਾਲੀ ਹੈ
+drafts_discard	ਡਰਾਫਟ ਹਟਾਓ
+drafts_discarded	ਡਰਾਫਟ ਹਟਾ ਦਿੱਤਾ
+drafts_gone	ਉਹ ਡਰਾਫਟ ਹੁਣ ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਹੈ
+drafts_closed	ਉਸ ਡਰਾਫਟ ਦਾ ਭੁਗਤਾਨ ਹੋ ਚੁੱਕਾ ਹੈ ਜਾਂ ਉਹ ਹਟਾਇਆ ਜਾ ਚੁੱਕਾ ਹੈ
+drafts_empty	ਅਜੇ ਕੋਈ ਡਰਾਫਟ ਨਹੀਂ। «ਕਾਊਂਟਰ» 'ਤੇ ਪਕਵਾਨ ਜੋੜੋ ਅਤੇ «ਡਰਾਫਟ ਵਿੱਚ ਰੱਖੋ» ਦਬਾਓ।
+drafts_card_kind	ਡਰਾਫਟ
+drafts_card_no_lines	ਕੋਈ ਆਈਟਮ ਨਹੀਂ
+drafts_card_lines	ਆਈਟਮ
+drafts_summary_fmt	{n} ਖੁੱਲ੍ਹੇ ਡਰਾਫਟ
+drafts_cols_fmt	{n} ਕਾਲਮ
 note_gstin_ph	ਨੋਟ / GSTIN / ਸਮਝੌਤਾ ਰਿਮਾਈਂਡਰ
 notes_attach_party	ਨੋਟ ਤੇ ਅਟੈਚਮੈਂਟ (ਚੁਣੀ ਪਾਰਟੀ)
 notes_attach_sale	ਨੋਟ ਤੇ ਅਟੈਚਮੈਂਟ (ਚੁਣੀ ਵਿਕਰੀ)
@@ -588,15 +588,15 @@ print_open	ਛਾਪੋ / ਖੋਲ੍ਹੋ
 reason_amend_ph	ਸੋਧ / ਰੱਦ / ਵਾਪਸੀ ਦਾ ਕਾਰਨ
 reason_note_ph	ਕਾਰਨ / ਨੋਟ (ਖਰਾਬੀ, ਗਿਣਤੀ, …)
 record_day_close	ਦਿਨ ਬੰਦ ਦਰਜ ਕਰੋ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ਅੱਜ» ਕਦੋਂ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ?
+business_day_help	«ਦਿਨ ਬੰਦ ਤੱਕ» ਚੁਣਨ 'ਤੇ «ਰੋਜ਼ ਬਹੀ» ਅੱਧੀ ਰਾਤ ਤੋਂ ਬਾਅਦ ਵੀ ਚੱਲਦੀ ਰਹਿੰਦੀ ਹੈ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਦਿਨ ਬੰਦ ਦਰਜ ਨਹੀਂ ਕਰਦੇ। «ਕੈਲੰਡਰ ਦੀ ਅੱਧੀ ਰਾਤ» ਚੁਣਨ 'ਤੇ ਦਿਨ ਸਥਾਨਕ ਸਮੇਂ ਅਨੁਸਾਰ ਰਾਤ 12:00 ਵਜੇ ਕੱਟਿਆ ਜਾਂਦਾ ਹੈ।
+biz_day_until_close	ਦਿਨ ਬੰਦ ਤੱਕ
+biz_day_midnight	ਕੈਲੰਡਰ ਦੀ ਅੱਧੀ ਰਾਤ
+business_day_saved	ਕਾਰੋਬਾਰੀ ਦਿਨ ਸੇਵ ਹੋਇਆ
+report_day_lens	«ਅੱਜ» ਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਵੇਖੋ
+report_day_lens_help	ਸਿਰਫ਼ ਵੇਖਣ ਲਈ — ਇਸ ਨਾਲ ਇਹ ਨਹੀਂ ਬਦਲਦਾ ਕਿ «ਦਿਨ ਬੰਦ» ਕਦੋਂ «ਅੱਜ» ਨੂੰ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਕਰਦਾ ਹੈ। «ਦਿਨ ਬੰਦ ਅਨੁਸਾਰ» ਪਿਛਲੇ ਦਿਨ ਬੰਦ ਤੋਂ ਗਿਣਦਾ ਹੈ; «ਅੱਧੀ ਰਾਤ ਅਨੁਸਾਰ» ਸਥਾਨਕ ਸਮੇਂ ਅਨੁਸਾਰ ਰਾਤ 12:00 ਵਜੇ ਕੱਟਦਾ ਹੈ।
+report_lens_day_close	ਦਿਨ ਬੰਦ ਅਨੁਸਾਰ
+report_lens_midnight	ਅੱਧੀ ਰਾਤ ਅਨੁਸਾਰ
 refresh_from_shop	ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਕਰੋ
 refund	ਵਾਪਸੀ
 remove_selected	ਚੁਣਿਆ ਹਟਾਓ
@@ -864,7 +864,7 @@ find_printers	ਪ੍ਰਿੰਟਰ ਲੱਭੋ
 printers_looking	ਇਸ ਡਿਵਾਈਸ ਅਤੇ Wi‑Fi ’ਤੇ ਪ੍ਰਿੰਟਰ ਲੱਭ ਰਿਹਾ ਹੈ…
 saving_printer	ਪ੍ਰਿੰਟਰ ਜੋੜ ਰਹੇ ਹਾਂ…
 cancelled	ਰੱਦ
-cancelling	Cancellingâ¦
+cancelling	ਰੱਦ ਹੋ ਰਿਹਾ ਹੈ…
 removing	ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ…
 removed	ਹਟਾਇਆ ਗਿਆ
 updating_order	ਅੱਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ…

@@ -384,12 +384,12 @@ app_template_need_internet	ត្រូវការអ៊ីនធឺណិត�
 app_template_import_selected	នាំចូលអ្វីដែលបានជ្រើស
 app_template_check_code	ពិនិត្យលេខកូដ
 app_template_import	នាំចូល
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	នាំចូលពីឧបករណ៍នេះ
+app_template_from_device_help	ជ្រើសរើសថតឯកសារដែលមាន template.json (និងជាជម្រើស shop_defaults.json)។
+settings_app_tmpl_note	ការនាំចូលម្តងទៀតសម្អាតការលក់ KOT និងសៀវភៅកត់ត្រា បន្ទាប់មកអនុវត្តការកំណត់ហាងរបស់គំរូ។ គំរូដែលមានតែម៉ឺនុយ៖ «ម៉ឺនុយ» → «គំរូមុខទំនិញ» ។
+app_template_wipe_warn	វាសម្អាតទិន្នន័យជួញដូរនៅក្នុងគណនី (ការលក់ KOT សៀវភៅកត់ត្រា) និងអនុវត្តការកំណត់ហាងរបស់គំរូ។ ម៉ឺនុយ និងការដំឡើងអាចផ្លាស់ប្តូរ។ តើអ្នកចង់បន្តទេ?
+app_template_wipe_continue	បន្ត
+app_template_wipe_cancel	លុបចោល
 currency	រូបិយប័ណ្ណ
 backup	ច្បាប់ចម្លង
 use	ប្រើ
@@ -550,22 +550,22 @@ new_party_clear	ភាគីថ្មី (សម្អាតទម្រង់)
 new_party_kind_supplier_ph	ប្រភេទភាគីថ្មី (អ្នកផ្គត់ផ្គង់)
 next_country	ប្រទេសបន្ទាប់
 next_order	ការកុម្ម៉ង់បន្ទាប់ (សម្អាតតុ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	សេចក្តីព្រាង
+park_draft	រក្សាទុកជាសេចក្តីព្រាង
+drafts_help	ទាំងនេះគឺជាការបញ្ជាទិញមិនទាន់បានបញ្ចប់ពីបញ្ជរដែលអ្នកដាក់ឡែក។ ពួកវាមិនត្រូវបានបញ្ចូលក្នុងគណនីរហូតដល់អ្នកចុច «ទទួលការបង់» ។ ប៉ះកាតដើម្បីបន្តវានៅលើ «ការកុម្ម៉ង់»; «លុបសេចក្តីព្រាង» លុបសេចក្តីព្រាង។ «បិទថ្ងៃ» មិនជម្រះពួកវាទេ។
+drafts_park_nothing	គ្មានអ្វីដែលត្រូវរក្សាទុកជាសេចក្តីព្រាងទេ — បន្ថែមធាតុទៅក្នុងរទេះ
+drafts_park_counter_only	«រក្សាទុកជាសេចក្តីព្រាង» គឺ​សម្រាប់​តែ​ការ​បញ្ជា​ទិញ​នៅ​បញ្ជរ — ទុក​ការ​បញ្ជា​លើ​តុ ឬ​ប្រើ «សាល»
+drafts_parked	បានរក្សាទុកក្នុង «សេចក្តីព្រាង» — បញ្ជរគឺទទេឥឡូវនេះ
+drafts_discard	លុបសេចក្តីព្រាង
+drafts_discarded	បានលុបសេចក្តីព្រាង
+drafts_gone	សេចក្តីព្រាងនោះលែងមានក្នុងបញ្ជីទៀតហើយ
+drafts_closed	សេចក្តីព្រាងនោះត្រូវបានបង់ ឬលុបរួចហើយ
+drafts_empty	មិនទាន់មានសេចក្តីព្រាងនៅឡើយ។ នៅលើ «តុលក់» បន្ថែមចាន ហើយចុច «រក្សាទុកជាសេចក្តីព្រាង»។
+drafts_card_kind	សេចក្តីព្រាង
+drafts_card_no_lines	គ្មានធាតុ
+drafts_card_lines	ធាតុ
+drafts_summary_fmt	{n} សេចក្តីព្រាងបើកចំហ
+drafts_cols_fmt	{n} ជួរ
 note_gstin_ph	កំណត់ចំណាំ / GSTIN / រំលឹកកិច្ចព្រមព្រៀង
 notes_attach_party	កំណត់ចំណាំ និងឯកសារភ្ជាប់ (ភាគីដែលបានជ្រើស)
 notes_attach_sale	កំណត់ចំណាំ និងឯកសារភ្ជាប់ (ការលក់ដែលបានជ្រើស)
@@ -588,15 +588,15 @@ print_open	បោះពុម្ព / បើក
 reason_amend_ph	មូលហេតុកែ / លុបចោល / សង
 reason_note_ph	មូលហេតុ / កំណត់ចំណាំ (ខាត រាប់ …)
 record_day_close	កត់ត្រាបិទថ្ងៃ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	តើ «ថ្ងៃនេះ» កំណត់ឡើងវិញនៅពេលណា?
+business_day_help	«រហូតដល់ បិទថ្ងៃ» បន្ត «សៀវភៅប្រចាំថ្ងៃ» រត់រំលងពាក់កណ្តាលអធ្រាត្រ រហូតដល់អ្នកកត់ត្រាថ្ងៃបិទ។ «នៅពាក់កណ្តាលអធ្រាត្រ» កាត់នៅម៉ោង 00:00 ម៉ោងក្នុងស្រុក។
+biz_day_until_close	រហូតដល់ បិទថ្ងៃ
+biz_day_midnight	នៅពាក់កណ្តាលអធ្រាត្រ
+business_day_saved	បានរក្សាទុកការកំណត់ថ្ងៃធ្វើការ
+report_day_lens	បង្ហាញ «ថ្ងៃនេះ» ជា
+report_day_lens_help	វាផ្លាស់ប្តូរតែទិដ្ឋភាព — វាមិនផ្លាស់ប្តូរនៅពេលដែល «បិទថ្ងៃ» កំណត់ «ថ្ងៃនេះ» ឡើងវិញ។ «យោងតាម បិទថ្ងៃ» ធ្វើតាមថ្ងៃចុងក្រោយបិទ; «នេះ​បើ​តាម​ការ​ឲ្យ​ដឹង​នៅ​ពាក់​កណ្ដាល​អធ្រាត្រ» កាត់នៅម៉ោង 00:00 ម៉ោងក្នុងស្រុក។
+report_lens_day_close	យោងតាម បិទថ្ងៃ
+report_lens_midnight	នេះ​បើ​តាម​ការ​ឲ្យ​ដឹង​នៅ​ពាក់​កណ្ដាល​អធ្រាត្រ
 refresh_from_shop	ធ្វើឱ្យស្រស់ពីហាង
 refund	សងប្រាក់
 remove_selected	ដកអ្វីដែលបានជ្រើស
@@ -864,7 +864,7 @@ find_printers	ស្វែងរកម៉ាស៊ីនបោះពុម្ព
 printers_looking	កំពុងស្វែងរក…
 saving_printer	កំពុងបន្ថែមម៉ាស៊ីន…
 cancelled	បានលុបចោល
-cancelling	Cancellingâ¦
+cancelling	កំពុងបោះបង់…
 removing	កំពុងដកចេញ…
 removed	បានដកចេញ
 updating_order	កំពុងធ្វើបច្ចុប្បន្នភាព…

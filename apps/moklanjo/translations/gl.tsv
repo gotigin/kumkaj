@@ -3,27 +3,27 @@ app_tagline	Libros de axencia de mensaxería + mostrador de reservas. Gratis fó
 unlock	Desbloquear
 pin_hint	O PIN do dono comeza en 0000
 sell	Reserva
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Taboleiro
+board	Taboleiro
+park_draft	Aparcar o borrador
+board_help	Borradores abertos (consérvanse ata que faga «Descartar» ou «Cobrar») e as vendas rexistradas de hoxe. En «Reserva», prema «Aparcar o borrador» a media tarefa (gárdase aquí, non nos libros); prema un borrador para retomalo.
+board_empty	Aínda non hai tarxetas.
+board_park_nothing	Non hai nada que aparcar: engada cargos ou datos da reserva
+board_parked	Aparcado en «Taboleiro»: o escritorio queda libre
+board_draft	Borrador
+board_booked	Reservado
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Borrador
+board_filter_booked	Reservado
+board_cols_fmt	{n} col.
+board_summary_fmt	{total} tarxetas · {drafts} borradores · {booked} rexistradas
+board_card_no_charges	Aínda non hai cargos
+board_card_charges	cargos
+board_card_booked	Reserva
+board_draft_gone	Ese borrador xa non está en «Taboleiro»
+board_draft_closed	Ese borrador xa se rematou ou se descartou
+board_discard	Descartar
+board_discarded	Borrador descartado
 buy	Pagar
 books	Libro do día
 books_help	Posición de hoxe. Reserva = paquetes dentro. Pago = facturas e gastos do transportista. Partes = expedidores e transportistas.
@@ -220,7 +220,7 @@ snack_secs_save	Gardar o tempo de aviso
 snack_secs_saved	Tempo de aviso gardado — {n} segundos
 snack_secs_bad	Introduza segundos como número (3–60)
 cancelled	Anulado
-cancelling	Cancellingâ¦
+cancelling	Cancelando…
 cancel	Anular
 opening_client	Abrindo o cliente…
 preparing_desk	Preparando o mostrador…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Copiar o libro da parte CSV
 copy_receipt	Copiar o recibo
 copy_report	Copiar o informe
 counted_cash_ph	Efectivo contado no caixón
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Pechar o turno e imprimir o tícket
+shift_handover	Relevo de turno
+shift_counted_ph	Efectivo contado no relevo
+shift_since	Este turno desde
+expected_in_drawer	Agardado no caixón
+lock_books_through_month	Bloquear os libros ata o mes
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Bloquear ata este mes
+books_locked_none	Aínda non hai ningún mes bloqueado
+books_locked_through	Bloqueado ata
 counter_agency_ph	Nome do mostrador/axencia (opcional)
 create_backup	Crear unha copia
 day_close_summary	Resumo do peche do día
@@ -442,9 +442,9 @@ pay_ap_cash	Pagar AP en efectivo
 pay_ap_upi	Pagar AP con UPI
 period_bill	Factura de período
 period_bill_party	Factura do período (partido)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Xerar a factura
+period_bill_generate_print	Xerar e imprimir
+booking_bulk_preview	{ok} listas · {bad} con erros
 pick_pod_photo	Escolle a foto do POD
 print_awb_label	Imprimir etiquetas AWB
 print_open	Imprimir / abrir
@@ -653,19 +653,19 @@ attachments_last_expense	Anexos (último gasto)
 credit_limit_heading	Límite de crédito (parte seleccionada / con nome)
 pay_selected_heading	Pagar a selección (saldar a débeda / tomar adianto)
 write_off_heading	Cancelación (limpar sen pagamento)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Notas de axuste
+adj_note_amount_ph	Importe
+adj_note_reason_ph	Motivo (obrigatorio)
+adj_note_awb_ph	AWB relacionado (opcional)
+credit_note_btn	Nota de aboamento
+debit_note_btn	Nota de cargo
+bill_later_heading	Facturar despois (extra posterior á reserva)
+bill_later_amount_ph	Importe adicional
+bill_later_party_ph	Parte (só se a reserva non ten)
+bill_later_btn	Facturar despois
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Embalaxe
+bill_later_extra_other	Outros
 pay_ap_heading	Pagar o que lles debemos (AP)
 country_tax	País e imposto
 extra_tills_heading	Caixas extra
@@ -777,26 +777,26 @@ onboard_book_tmpl	Libro · {} — engada artigos e crédito de apertura, logo Fe
 onboard_template_tmpl	Poña nome ao local se quere e escolla como comezar.
 tmpl_blurb	Libros de correo e mostrador de reservas: expedidores, transportistas, diario, AWB.
 tmpl_how	Reserva paquetes na mesa; Libro de día para hoxe; fichas para tarifas, festas, informes.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Modelos da tenda
+app_template_blurb	Escolla un escritorio inicial. «Omitir de momento» deixa as partes baleiras.
+app_template_skip	Omitir de momento
+app_template_status	Servidor listo — importa un modelo ou omite
+app_template_importing	Aplicando {title}…
+app_template_public_hdr	Modelos
+app_template_import_selected	Importar o seleccionado
+app_template_wipe_warn	Isto borra os datos comerciais dos libros (reservas, contas) e aplica os axustes da tenda do modelo. Continuar?
+app_template_wipe_continue	Continuar
+app_template_wipe_cancel	Anular
+public_tmpl_help	Paquetes de axencia incluídos para esta tenda. Non hai que descargar nada.
+business_day	Cando se reinicia «Hoxe»?
+business_day_help	Con «Ata o peche do día», «Libro do día» segue aberto pasada a medianoite ata que rexistre o peche do día. Con «Medianoite do calendario», o día córtase ás 00:00, hora local.
+biz_day_until_close	Ata o peche do día
+biz_day_midnight	Medianoite do calendario
+business_day_saved	Día de negocio gardado
+report_day_lens	Ver «Hoxe» como
+report_day_lens_help	Só cambia a vista: non cambia cando «Peche do día» reinicia «Hoxe». «Por peche do día» segue o último peche do día; «Por medianoite» corta ás 00:00, hora local.
+report_lens_day_close	Por peche do día
+report_lens_midnight	Por medianoite
 trk_booked	Reservado
 trk_picked_up	Recollido
 trk_in_transit	En tránsito

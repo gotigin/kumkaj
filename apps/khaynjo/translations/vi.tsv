@@ -384,12 +384,12 @@ app_template_need_internet	Cần internet để tải mẫu xuống
 app_template_import_selected	Nhập mục đã chọn
 app_template_check_code	Kiểm tra mã
 app_template_import	Nhập
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Nhập từ thiết bị này
+app_template_from_device_help	Chọn thư mục có template.json (và shop_defaults.json nếu có).
+settings_app_tmpl_note	Nhập lại sẽ xóa doanh số, KOT và sổ công nợ, rồi áp dụng cài đặt cửa hàng của gói. Mẫu chỉ có thực đơn: «Thực đơn» → «Mẫu món».
+app_template_wipe_warn	Thao tác này xóa dữ liệu giao dịch trong sổ sách (doanh số, KOT, sổ công nợ) và áp dụng cài đặt cửa hàng của mẫu. Thực đơn và thiết lập có thể thay đổi. Tiếp tục?
+app_template_wipe_continue	Tiếp tục
+app_template_wipe_cancel	Hủy
 currency	Tiền tệ
 backup	Sao lưu
 use	Dùng
@@ -550,22 +550,22 @@ new_party_clear	Đối tác mới (xóa biểu mẫu)
 new_party_kind_supplier_ph	Loại đối tác mới (nhà cung cấp)
 next_country	Quốc gia tiếp
 next_order	Đơn tiếp theo (xóa quầy)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Bản nháp
+park_draft	Tạm gác bản nháp
+drafts_help	Các đơn tại quầy bạn tạm gác giữa chừng — chưa vào sổ sách cho đến khi «Nhận thanh toán». Chạm một thẻ để làm tiếp ở «Đơn»; «Bỏ bản nháp» sẽ xóa bản nháp. «Chốt ngày» không xóa các đơn này.
+drafts_park_nothing	Không có gì để tạm gác — hãy thêm món vào giỏ
+drafts_park_counter_only	«Tạm gác bản nháp» chỉ dùng cho đơn tại quầy — hãy rời đơn của bàn hoặc dùng «Sàn»
+drafts_parked	Đã gác vào «Bản nháp» — quầy đã trống
+drafts_discard	Bỏ bản nháp
+drafts_discarded	Đã bỏ bản nháp
+drafts_gone	Bản nháp đó không còn trong danh sách
+drafts_closed	Bản nháp đó đã được thanh toán hoặc đã bị bỏ
+drafts_empty	Chưa có bản nháp. Ở «Quầy», thêm món rồi chạm «Tạm gác bản nháp».
+drafts_card_kind	Nháp
+drafts_card_no_lines	Chưa có dòng nào
+drafts_card_lines	dòng
+drafts_summary_fmt	{n} bản nháp đang mở
+drafts_cols_fmt	{n} cột
 note_gstin_ph	Ghi chú / GSTIN / nhắc thỏa thuận
 notes_attach_party	Ghi chú & đính kèm (đối tác đã chọn)
 notes_attach_sale	Ghi chú & đính kèm (đơn đã chọn)
@@ -588,15 +588,15 @@ print_open	In / mở
 reason_amend_ph	Lý do sửa / hủy / hoàn tiền
 reason_note_ph	Lý do / ghi chú (hao hụt, đếm, …)
 record_day_close	Ghi chốt ngày
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Khi nào «Hôm nay» bắt đầu lại?
+business_day_help	Với «Đến khi chốt ngày», «Sổ ngày» tiếp tục chạy qua nửa đêm cho đến khi bạn ghi chốt ngày. Với «Nửa đêm theo lịch», ngày được cắt lúc 0:00 giờ địa phương.
+biz_day_until_close	Đến khi chốt ngày
+biz_day_midnight	Nửa đêm theo lịch
+business_day_saved	Đã lưu ngày làm việc
+report_day_lens	Xem «Hôm nay» theo
+report_day_lens_help	Chỉ để xem — không thay đổi thời điểm «Chốt ngày» bắt đầu lại «Hôm nay». «Theo chốt ngày» tính từ lần chốt ngày gần nhất; «Theo nửa đêm» cắt lúc 0:00 giờ địa phương.
+report_lens_day_close	Theo chốt ngày
+report_lens_midnight	Theo nửa đêm
 refresh_from_shop	Làm mới từ cửa hàng
 refund	Hoàn tiền
 remove_selected	Xóa đã chọn
@@ -864,7 +864,7 @@ find_printers	Tìm máy in
 printers_looking	Đang tìm máy in trên thiết bị này và Wi‑Fi…
 saving_printer	Đang thêm máy in…
 cancelled	Đã hủy
-cancelling	Cancellingâ¦
+cancelling	Đang hủy…
 removing	Đang xóa…
 removed	Đã xóa
 updating_order	Đang cập nhật…

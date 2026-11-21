@@ -384,12 +384,12 @@ app_template_need_internet	템플릿을 다운로드하려면 인터넷이 필�
 app_template_import_selected	선택 항목 가져오기
 app_template_check_code	코드 확인
 app_template_import	가져오기
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	이 기기에서 가져오기
+app_template_from_device_help	template.json이 들어 있는 폴더를 선택하세요(shop_defaults.json이 있으면 함께).
+settings_app_tmpl_note	다시 가져오면 판매, KOT, 거래처 원장이 지워지고 팩의 매장 설정이 적용됩니다. 메뉴만 있는 템플릿: «메뉴» → «품목 템플릿».
+app_template_wipe_warn	장부의 거래 데이터(판매, KOT, 거래처 원장)를 지우고 템플릿의 매장 설정을 적용합니다. 메뉴와 설정이 바뀔 수 있습니다. 계속할까요?
+app_template_wipe_continue	계속
+app_template_wipe_cancel	취소
 currency	통화
 backup	백업
 use	사용
@@ -550,22 +550,22 @@ new_party_clear	새 거래처(양식 지우기)
 new_party_kind_supplier_ph	새 거래처 유형(공급업체)
 next_country	다음 국가
 next_order	다음 주문(창구 비우기)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	임시 보관함
+park_draft	임시 보관
+drafts_help	카운터에서 주문 도중에 잠시 보관해 둔 주문입니다. «결제 받기» 전까지는 장부에 들어가지 않습니다. 카드를 누르면 «주문»에서 이어서 진행합니다. «임시 보관 삭제»: 임시 보관을 삭제합니다. «마감»: 이 주문들은 지워지지 않습니다.
+drafts_park_nothing	보관할 내용이 없습니다 — 장바구니에 항목을 추가하세요
+drafts_park_counter_only	«임시 보관»: 카운터 주문 전용입니다 — 테이블 주문에서 나가거나 «홀» 화면을 사용하세요
+drafts_parked	«임시 보관함»에 보관했습니다 — 카운터가 비었습니다
+drafts_discard	임시 보관 삭제
+drafts_discarded	임시 보관을 삭제했습니다
+drafts_gone	그 임시 보관은 더 이상 목록에 없습니다
+drafts_closed	그 임시 보관은 이미 결제되었거나 삭제되었습니다
+drafts_empty	아직 임시 보관이 없습니다. «카운터»에서 음식을 추가하고 «임시 보관» 버튼을 누르세요.
+drafts_card_kind	임시
+drafts_card_no_lines	항목 없음
+drafts_card_lines	개 항목
+drafts_summary_fmt	열린 임시 보관 {n}건
+drafts_cols_fmt	{n}열
 note_gstin_ph	메모 / GSTIN / 계약 리마인더
 notes_attach_party	메모 및 첨부(선택한 거래처)
 notes_attach_sale	메모 및 첨부(선택한 판매)
@@ -588,15 +588,15 @@ print_open	인쇄 / 열기
 reason_amend_ph	수정/취소/환불 사유
 reason_note_ph	사유 / 메모(폐기, 실사…)
 record_day_close	마감 기록
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«오늘» 화면은 언제 새로 시작하나요?
+business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 오전 12:00에 날짜가 바뀝니다.
+biz_day_until_close	마감할 때까지
+biz_day_midnight	달력 자정
+business_day_saved	영업일 설정을 저장했습니다
+report_day_lens	«오늘» 보기 기준
+report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 오전 12:00에 나눕니다.
+report_lens_day_close	마감 기준
+report_lens_midnight	자정 기준
 refresh_from_shop	매장에서 새로고침
 refund	환불
 remove_selected	선택 제거
@@ -864,7 +864,7 @@ find_printers	프린터 찾기
 printers_looking	이 기기와 Wi‑Fi에서 프린터를 찾는 중…
 saving_printer	프린터 추가 중…
 cancelled	취소됨
-cancelling	Cancellingâ¦
+cancelling	취소하는 중…
 removing	제거 중…
 removed	제거됨
 updating_order	업데이트 중…

@@ -3,27 +3,27 @@ app_tagline	कूरियर-संस्थायाः लेखाः + प
 unlock	अनलॉक
 pin_hint	स्वामिः PIN 0000 इति आरभ्यते
 sell	प्रेषणम्
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	फलकम्
+board	फलकम्
+park_draft	प्रारूपे स्थापयन्तु
+board_help	अपूर्णानि प्रारूपाणि («निष्कासयन्तु» अथवा «भुगतानं गृहाण» यावत् न क्रियते तावत् तिष्ठन्ति) अद्यतनः पञ्जीकृतः विक्रयः च। «प्रेषणम्» इत्यत्र कार्यमध्ये «प्रारूपे स्थापयन्तु» ट्याप् कुर्वन्तु (अत्र रक्ष्यते, लेखापुस्तके न); पुनः आरब्धुं प्रारूपं ट्याप् कुर्वन्तु।
+board_empty	इदानीं यावत् कार्ड् नास्ति।
+board_park_nothing	स्थापयितुं किमपि नास्ति — शुल्कानि अथवा प्रेषणस्य विवरणं योजयन्तु
+board_parked	«फलकम्» इत्यत्र स्थापितम् — कार्यपटः रिक्तः अस्ति
+board_draft	प्रारूपम्
+board_booked	पञ्जीकृतम्
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	प्रारूपम्
+board_filter_booked	पञ्जीकृतम्
+board_cols_fmt	{n} स्तम्भाः
+board_summary_fmt	{total} कार्ड् · {drafts} प्रारूपाणि · {booked} पञ्जीकृतानि
+board_card_no_charges	इदानीं यावत् शुल्कं नास्ति
+board_card_charges	शुल्कानि
+board_card_booked	प्रेषणम्
+board_draft_gone	तत् प्रारूपम् इदानीं «फलकम्» इत्यत्र नास्ति
+board_draft_closed	तत् प्रारूपं पूर्वमेव समाप्तम् अथवा निष्कासितम्
+board_discard	निष्कासयन्तु
+board_discarded	प्रारूपं निष्कासितम्
 buy	व्ययः
 books	दिवस लेजर
 books_help	अद्य स्थितिः। प्रेषणम् = पोटलिकाः आगताः। व्ययः = वाहकबिलानि च व्ययाः। पक्षाः = प्रेषकाः च वाहकाः।
@@ -88,7 +88,7 @@ applied	प्रयुक्तम्
 note_ph	टिप्पणी (वैकल्पिकम्) ९.
 rounded	गोलम्
 split	विभक्तः
-counter	गणकम्
+counter	काउण्टर्
 parcel	पोटलिका
 order	भोजनालयस्य आदेशः
 sales	प्रेषणानि
@@ -220,7 +220,7 @@ snack_secs_save	अलर्टसमयं रक्षतु
 snack_secs_saved	अलर्ट समय रक्षितः — {n} सेकण्ड्
 snack_secs_bad	क्षणान् अङ्कैः लिखतु (3–60)
 cancelled	रद्दं कृतम्
-cancelling	Cancellingâ¦
+cancelling	रद्दं क्रियते…
 cancel	रद्दं कुर्वन्तु
 opening_client	क्लायन्ट् उद्घाटयन्...
 preparing_desk	मेजस्य सज्जीकरणम्...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	ग्राहक लेजर प्रतिलिप�
 copy_receipt	रसीद की प्रतिलिपि करें
 copy_report	प्रतिवेदनं प्रतिलिख्यताम्
 counted_cash_ph	दराजमध्ये नगदं गणितम्
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	शिफ्टं बन्दं कृत्वा स्लिप् मुद्रयन्तु
+shift_handover	हस्तान्तरणं शिफ्टं कुर्वन्तु
+shift_counted_ph	हस्तान्तरणसमये नगदं गण्यते स्म
+shift_since	ततः परं एतत् परिवर्तनम्
+expected_in_drawer	दराजमध्ये अपेक्षितम्
+lock_books_through_month	मासपर्यन्तं लेखापुस्तकं तालाबद्धं कुर्वन्तु
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	एतन्मासपर्यन्तं तालाबद्धं कुर्वन्तु
+books_locked_none	इदानीं यावत् कोऽपि मासः तालाबद्धः नास्ति
+books_locked_through	कं मासं यावत् तालाबद्धम्
 counter_agency_ph	काउण्टरस्य / संस्थायाः नाम (ऐच्छिकम्)
 create_backup	बैकअप रचयन्तु
 day_close_summary	दिवस निकट सारांश
@@ -442,9 +442,9 @@ pay_ap_cash	ए पी नगद भुगतान करें
 pay_ap_upi	पे ए पी UPI .
 period_bill	अवधिपत्रकम्
 period_bill_party	अवधिपत्रकम् (पक्षः)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	देयकं रचयन्तु
+period_bill_generate_print	रचयित्वा मुद्रयन्तु
+booking_bulk_preview	{ok} सज्जानि · {bad} दोषयुक्तानि
 pick_pod_photo	POD चित्रं चिनुत
 print_awb_label	AWB नामपत्रं मुद्रयतु
 print_open	मुद्रयतु / उद्घाटयतु
@@ -653,19 +653,19 @@ attachments_last_expense	संलग्नकाः (अन्तिमव्�
 credit_limit_heading	ऋणसीमा (चयनितः ग्राहकः अथवा आपूर्तिकर्ता) २.
 pay_selected_heading	चयनितं भुक्तिं कुर्वन्तु (ऋणं निस्तारयन्तु / अग्रिमं गृह्णन्तु)
 write_off_heading	Write off (देयता विना स्पष्टम्) २.
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	समायोजनपत्राणि
+adj_note_amount_ph	राशि
+adj_note_reason_ph	कारणम् (आवश्यकम्) २.
+adj_note_awb_ph	सम्बद्धं AWB (ऐच्छिकम्)
+credit_note_btn	क्रेडिट् नोट्
+debit_note_btn	डेबिट् नोट्
+bill_later_heading	पश्चात् देयकं कुर्वन्तु (प्रेषणानन्तरम् अतिरिक्तं शुल्कम्)
+bill_later_amount_ph	अतिरिक्ता राशिः
+bill_later_party_ph	ग्राहकः अथवा आपूर्तिकर्ता (प्रेषणे कोऽपि नास्ति चेदेव)
+bill_later_btn	पश्चात् देयकं कुर्वन्तु
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	वेष्टनम्
+bill_later_extra_other	अन्यत्
 pay_ap_heading	वयं तेभ्यः यत् ऋणीः स्मः तत् दातव्यम् (AP)
 country_tax	देश & कर
 extra_tills_heading	अतिरिक्त टिल्स
@@ -777,26 +777,26 @@ onboard_book_tmpl	Ledger · {} — मेनू-वस्तूनि योज�
 onboard_template_tmpl	यदि इच्छति तर्हि स्थानस्य नामकरणं कुरुत, ततः कथं आरभ्यत इति चिनुत ।
 tmpl_blurb	कूरियरलेखाः प्रेषणकार्यपटः च: प्रेषकाः, वाहकाः, दिनलेखा, AWB।
 tmpl_how	कार्यपटे पोटलिकां पञ्जीकुरुत; अद्यार्थं दिनलेखा; शुल्कानां पक्षानां प्रतिवेदनानां च ट्याब्।
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	आपणप्रारूपाणि
+app_template_blurb	आरम्भाय एकं कार्यपटं चिन्वन्तु। «इदानीं कृते त्यजन्तु» ट्याप् कृते ग्राहकसूची रिक्ता तिष्ठति।
+app_template_skip	इदानीं कृते त्यजन्तु
+app_template_status	सेवकः सज्जः — प्रारूपम् आयातयतु, अथवा त्यजतु
+app_template_importing	आवेदन करते हुए {title}...
+app_template_public_hdr	टेम्पलेट
+app_template_import_selected	चितम् आयातयतु
+app_template_wipe_warn	अनेन लेखापुस्तकस्य व्यापारदत्तांशः (प्रेषणानि, लेखाः) रिक्तः भविष्यति, टेम्पलेट्-इत्यस्य दुकानस्य सेटिंग्स् च प्रवर्तिष्यन्ते। किं निरन्तरं करणीयम्?
+app_template_wipe_continue	निरन्तरं कुर्वन्तु
+app_template_wipe_cancel	रद्दं कुर्वन्तु
+public_tmpl_help	अस्य दुकानस्य कृते एप्-सहितम् आगताः एजेन्सी-पैक्। डाउनलोड् न आवश्यकम्।
+business_day	«अद्य» कदा नूतनतया आरभ्यते?
+business_day_help	«दिवसः समाप्तः पर्यन्तम्» इति चिते, यावत् भवन्तः दिवससमाप्तिं न लिखन्ति तावत् «दिवस लेजर» मध्यरात्रात् परमपि प्रचलति। «दिनदर्शिकायाः मध्यरात्रः» इति चिते, दिवसः स्थानीयसमयेन रात्रौ 12:00 वादने समाप्यते।
+biz_day_until_close	दिवसः समाप्तः पर्यन्तम्
+biz_day_midnight	दिनदर्शिकायाः मध्यरात्रः
+business_day_saved	व्यापारदिवसः रक्षितः
+report_day_lens	«अद्य» एवं पश्यन्तु
+report_day_lens_help	केवलं दर्शनार्थम् — «दिवसः समाप्तः» कदा «अद्य» नूतनतया आरभते इति अनेन न परिवर्तते। «दिवसः समाप्तः अनुसारम्» अन्तिमात् दिवससमापनात् गणयति; «मध्यरात्रानुसारम्» स्थानीयसमयेन रात्रौ 12:00 वादने छिनत्ति।
+report_lens_day_close	दिवसः समाप्तः अनुसारम्
+report_lens_midnight	मध्यरात्रानुसारम्
 trk_booked	पञ्जीकृतम्
 trk_picked_up	उद्धृतम्
 trk_in_transit	मार्गे

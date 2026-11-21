@@ -3,27 +3,27 @@ app_tagline	Mezularitza-agentzia liburuak + erreserba mahaia. Lineaz kanpo doan.
 unlock	Desblokeatu
 pin_hint	Jabearen PINa hasieran 0000 da
 sell	Erreserba
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Arbela
+board	Arbela
+park_draft	Gorde zirriborro gisa
+board_help	Zirriborro irekiak (hauetako bat sakatu arte gordetzen dira: «Baztertu», «Kobratu») eta gaur erregistratutako salmentak. Hemen: «Erreserba», sakatu «Gorde zirriborro gisa» lanaren erdian (hemen gordetzen da, ez liburuetan); sakatu zirriborro bat jarraitzeko.
+board_empty	Oraindik ez dago txartelik.
+board_park_nothing	Ez dago ezer albo batera uzteko: gehitu karguak edo erreserbaren xehetasunak
+board_parked	Gordeta: «Arbela» — mahaia libre dago
+board_draft	Zirriborroa
+board_booked	Erreserbatua
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Zirriborroa
+board_filter_booked	Erreserbatua
+board_cols_fmt	{n} zutabe
+board_summary_fmt	{total} txartel · {drafts} zirriborro · {booked} erregistratuta
+board_card_no_charges	Oraindik ez dago kargurik
+board_card_charges	karguak
+board_card_booked	Erreserba
+board_draft_gone	Zirriborro hori jada ez dago hemen: «Arbela»
+board_draft_closed	Zirriborro hori jada amaituta edo ezabatuta dago
+board_discard	Baztertu
+board_discarded	Zirriborroa ezabatu da
 buy	Ordaindu
 books	Eguneko liburua
 books_help	Gaurko jarrera. Erreserba = paketeak sartu. Ordaindu = garraiolariaren fakturak eta gastuak. Alderdiak = bidaltzaileak eta garraiolariak.
@@ -220,7 +220,7 @@ snack_secs_save	Gorde abisu-denbora
 snack_secs_saved	Abisu-denbora gordeta — {n} segundo
 snack_secs_bad	Idatzi segundoak zenbaki gisa (3-60)
 cancelled	Ezeztatuta
-cancelling	Cancellingâ¦
+cancelling	Bertan behera uzten…
 cancel	Ezeztatu
 opening_client	Bezeroa irekitzen…
 preparing_desk	Mahaia prestatzen…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopiatu alderdiaren liburua CSV
 copy_receipt	Kopiatu ordainagiria
 copy_report	Kopiatu txostena
 counted_cash_ph	Kutxan zenbatutako eskudirua
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Itxi txanda eta inprimatu txartela
+shift_handover	Txanda-ematea
+shift_counted_ph	Txanda ematean zenbatutako dirua
+shift_since	Txanda hau ordutik
+expected_in_drawer	Tiraderan espero dena
+lock_books_through_month	Blokeatu liburuak hilabete amaierara arte
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Hilabete honen amaierara arte blokeatu
+books_locked_none	Oraindik ez dago hilabeterik blokeatuta
+books_locked_through	Noiz arte blokeatuta
 counter_agency_ph	Kontratagailua / agentziaren izena (aukerakoa)
 create_backup	Sortu babeskopia
 day_close_summary	Egun-itxieraren laburpena
@@ -442,9 +442,9 @@ pay_ap_cash	Ordaindu AP eskudiruz
 pay_ap_upi	Ordaindu AP UPI
 period_bill	Aldiko faktura
 period_bill_party	Aldiko faktura (festa)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Sortu faktura
+period_bill_generate_print	Sortu eta inprimatu
+booking_bulk_preview	{ok} prest · {bad} akatsekin
 pick_pod_photo	Aukeratu POD argazkia
 print_awb_label	Inprimatu AWB etiketa
 print_open	Inprimatu / ireki
@@ -653,19 +653,19 @@ attachments_last_expense	Eranskinak (azken gastua)
 credit_limit_heading	Kreditu-muga (hautatutako / izendatutako alderdia)
 pay_selected_heading	Ordaindu hautatua (zorrea kitatu / aurrerakina hartu)
 write_off_heading	Ezabatzea (ordaindu gabe garbitzea)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Doikuntza-oharrak
+adj_note_amount_ph	Zenbatekoa
+adj_note_reason_ph	Arrazoia (beharrezkoa)
+adj_note_awb_ph	Erlazionatutako AWB (aukerakoa)
+credit_note_btn	Abonu-oharra
+debit_note_btn	Zordunketa-oharra
+bill_later_heading	Fakturatu geroago (erreserbaren ondorengo gehigarria)
+bill_later_amount_ph	Aparteko zenbatekoa
+bill_later_party_ph	Bezeroa (erreserbak ez badu soilik)
+bill_later_btn	Fakturatu geroago
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Enbalajea
+bill_later_extra_other	Bestela
 pay_ap_heading	Ordaindu haiei zor dieguna (AP)
 country_tax	Herrialdea eta zerga
 extra_tills_heading	Kutxa gehigarriak
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — gehitu artikuluak eta hasierako kreditua, gero 
 onboard_template_tmpl	Izena eman lekuari nahi baduzu, gero aukeratu nola hasi.
 tmpl_blurb	Mezularitza liburuak eta erreserba mahaia: bidaltzaileak, garraiolariak, eguneko liburua, AWB.
 tmpl_how	Erreserbatu paketeak mahaian; Gaurko eguneko liburua; tasak, festak, txostenak egiteko fitxak.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Dendako txantiloiak
+app_template_blurb	Aukeratu hasierako mahaia. Hau sakatuz gero, bezeroen zerrenda hutsik geratzen da: «Saltatu oraingoz».
+app_template_skip	Saltatu oraingoz
+app_template_status	Zerbitzaria prest — inportatu txantiloi bat edo saltatu
+app_template_importing	{title} aplikatzen…
+app_template_public_hdr	Txantiloiak
+app_template_import_selected	Inportatu hautatutakoa
+app_template_wipe_warn	Honek kontuetako merkataritza-datuak garbitzen ditu (erreserbak, liburuak) eta txantiloiaren dendaren ezarpenak aplikatzen ditu. Jarraitu nahi duzu?
+app_template_wipe_continue	Jarraitu
+app_template_wipe_cancel	Ezeztatu
+public_tmpl_help	Aplikazioarekin batera prest dauden agentzia txantiloiak. Ez da deskargatu behar.
+business_day	Noiz berrezartzen da «Gaur»?
+business_day_help	Aukera honekin: «Egunaren itxiera arte», egunaren itxiera erregistratu arte jarraitzen du gauerdia igarota ere: «Eguneko liburua». Aukera honekin: «Egutegiko gauerdia», eguna tokiko orduko 00:00etan mozten da.
+biz_day_until_close	Egunaren itxiera arte
+biz_day_midnight	Egutegiko gauerdia
+business_day_saved	Lanegunaren ezarpena gorde da
+report_day_lens	Erakutsi «Gaur» gisa
+report_day_lens_help	Ikuspegia soilik — ez du aldatzen noiz hasten den berriro «Gaur» («Egunaren itxiera» egitean). «Egunaren itxieraren arabera»: azken egunaren itxieratik zenbatzen du; «Gauerdiaren arabera»: tokiko orduko 00:00etan mozten du.
+report_lens_day_close	Egunaren itxieraren arabera
+report_lens_midnight	Gauerdiaren arabera
 trk_booked	Erreserbatua
 trk_picked_up	Jasotakoa
 trk_in_transit	Garraioan

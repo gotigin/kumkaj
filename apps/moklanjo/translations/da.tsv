@@ -3,27 +3,27 @@ app_tagline	Kurerbureaus bøger + bookingdisk. Gratis offline.
 unlock	Lås op
 pin_hint	Ejer-PIN starter som 0000
 sell	Booking
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Tavle
+board	Tavle
+park_draft	Parkér kladde
+board_help	Åbne kladder (bliver stående, indtil du bruger «Kassér» eller «Tag betaling») og dagens bogførte salg. Tryk på «Parkér kladde» i «Booking» midt i arbejdet (gemmes her, ikke i bøgerne); tryk på en kladde for at fortsætte.
+board_empty	Ingen kort endnu.
+board_park_nothing	Intet at parkere — tilføj gebyrer eller bookingoplysninger
+board_parked	Parkeret på «Tavle» — disken er fri
+board_draft	Kladde
+board_booked	Booket
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
+board_filter_draft	Kladde
+board_filter_booked	Booket
+board_cols_fmt	{n} kol.
+board_summary_fmt	{total} kort · {drafts} kladder · {booked} booket
+board_card_no_charges	Ingen gebyrer endnu
+board_card_charges	gebyrer
 board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_draft_gone	Den kladde er ikke længere på «Tavle»
+board_draft_closed	Den kladde er allerede afsluttet eller kasseret
+board_discard	Kassér
+board_discarded	Kladde kasseret
 buy	Udbetaling
 books	Dagbog
 books_help	Dagens stilling. Booking = pakker ind. Udbetaling = transportørregninger og udgifter. Parter = afsendere og transportører.
@@ -220,7 +220,7 @@ snack_secs_save	Gem beskedtid
 snack_secs_saved	Beskedtid gemt — {n} sekunder
 snack_secs_bad	Angiv sekunder som et tal (3–60)
 cancelled	Annulleret
-cancelling	Cancellingâ¦
+cancelling	Annullerer…
 cancel	Annuller
 opening_client	Åbner klient…
 preparing_desk	Gør bordet klar…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopiér partbog som CSV
 copy_receipt	Kopiér kvittering
 copy_report	Kopiér rapport
 counted_cash_ph	Optalt kontant i skuffen
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Luk vagt og udskriv seddel
+shift_handover	Vagtskifte
+shift_counted_ph	Kontanter talt ved vagtskifte
+shift_since	Denne vagt siden
+expected_in_drawer	Forventet i skuffen
+lock_books_through_month	Lås bøgerne til og med måneden
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Lås til og med denne måned
+books_locked_none	Ingen måned er låst endnu
+books_locked_through	Låst til og med
 counter_agency_ph	Disk- / agenturnavn (valgfrit)
 create_backup	Opret sikkerhedskopi
 day_close_summary	Opsummering af dagsafslutning
@@ -442,9 +442,9 @@ pay_ap_cash	Betal AP kontant
 pay_ap_upi	Betal AP med UPI
 period_bill	Periodefaktura
 period_bill_party	Periodefaktura (part)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Opret regning
+period_bill_generate_print	Opret og udskriv
+booking_bulk_preview	{ok} klar · {bad} med fejl
 pick_pod_photo	Vælg POD-foto
 print_awb_label	Udskriv AWB-etiket
 print_open	Udskriv / åbn
@@ -653,19 +653,19 @@ attachments_last_expense	Vedhæftninger (seneste udgift)
 credit_limit_heading	Kreditgrænse (valgt / navngiven part)
 pay_selected_heading	Betal valgt (afregn gæld / tag forskud)
 write_off_heading	Afskriv (udlign uden betaling)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Reguleringsnotaer
+adj_note_amount_ph	Beløb
+adj_note_reason_ph	Årsag (påkrævet)
+adj_note_awb_ph	Tilhørende AWB (valgfrit)
+credit_note_btn	Kreditnota
+debit_note_btn	Debetnota
+bill_later_heading	Fakturér senere (tillæg efter booking)
+bill_later_amount_ph	Ekstra beløb
+bill_later_party_ph	Part (kun hvis bookingen ikke har en)
+bill_later_btn	Fakturér senere
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Emballage
+bill_later_extra_other	Andet
 pay_ap_heading	Betal det vi skylder dem (AP)
 country_tax	Land og skat
 extra_tills_heading	Ekstra kasser
@@ -777,26 +777,26 @@ onboard_book_tmpl	Bog · {} — tilføj varer og primo-kredit, og tryk Færdig.
 onboard_template_tmpl	Navngiv stedet hvis du vil, og vælg så hvordan I starter.
 tmpl_blurb	Kurerbøger og bookingdisk: afsendere, transportører, dagbog, AWB.
 tmpl_how	Book pakker ved disken; dagbog for i dag; faner til takster, parter, rapporter.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Butiksskabeloner
+app_template_blurb	Vælg en startopsætning. «Spring over for nu» lader parterne stå tomme.
+app_template_skip	Spring over for nu
+app_template_status	Server klar — importér en skabelon, eller spring over
+app_template_importing	Anvender {title}…
+app_template_public_hdr	Skabeloner
+app_template_import_selected	Importér valgte
+app_template_wipe_warn	Dette rydder handelsdata i bøgerne (bookinger, konti) og anvender skabelonens butiksindstillinger. Fortsæt?
+app_template_wipe_continue	Fortsæt
+app_template_wipe_cancel	Annuller
+public_tmpl_help	Medfølgende bureaupakker til denne butik. Ingen download nødvendig.
+business_day	Hvornår starter «I dag» forfra?
+business_day_help	Med «Indtil dagsafslutning» fortsætter «Dagbog» efter midnat, indtil du registrerer dagsafslutningen. Med «Kalendermidnat» afsluttes dagen kl. 00:00 lokal tid.
+biz_day_until_close	Indtil dagsafslutning
+biz_day_midnight	Kalendermidnat
+business_day_saved	Forretningsdag gemt
+report_day_lens	Vis «I dag» som
+report_day_lens_help	Kun visning — ændrer ikke, hvornår «Dagsafslutning» starter «I dag» forfra. «Pr. dagsafslutning» følger den seneste dagsafslutning; «Pr. midnat» skærer kl. 00:00 lokal tid.
+report_lens_day_close	Pr. dagsafslutning
+report_lens_midnight	Pr. midnat
 trk_booked	Booket
 trk_picked_up	Afhentet
 trk_in_transit	Undervejs

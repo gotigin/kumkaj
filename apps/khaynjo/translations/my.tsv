@@ -384,12 +384,12 @@ app_template_need_internet	ပုံစံများ ဒေါင်းလု�
 app_template_import_selected	ရွေးထားသည်ကို တင်သွင်းပါ
 app_template_check_code	ကုဒ်စစ်ပါ
 app_template_import	တင်သွင်းပါ
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ဤစက်ပစ္စည်းမှ တင်သွင်းပါ
+app_template_from_device_help	template.json (နှင့်၊ ရွေးချယ်နိုင်သည်၊ shop_defaults.json) ပါရှိသော ဖိုင်တွဲကို ရွေးပါ။
+settings_app_tmpl_note	ထပ်မံတင်သွင်းခြင်းသည် အရောင်း၊ KOT နှင့် စာရင်းဇယားများကို ရှင်းလင်းစေပြီး၊ နမူနာပုံစံ၏ ဆိုင်ဆက်တင်များကို အသုံးပြုပါ။ မီနူးတစ်ခုသာပါရှိသော နမူနာပုံစံများ- «မီနူး» → «ပစ္စည်းပုံစံများ»။
+app_template_wipe_warn	၎င်းသည် အကောင့်များ (အရောင်း၊ KOT၊ လယ်ဂျာများ) ရှိ အရောင်းအ၀ယ်ဒေတာများကို ရှင်းလင်းပြီး နမူနာပုံစံ၏ ဆိုင်ဆက်တင်များကို အသုံးပြုနိုင်မည်ဖြစ်သည်။ မီနူးနှင့် စနစ်ထည့်သွင်းမှု ပြောင်းလဲနိုင်သည်။ ဆက်လုပ်လိုပါသလား။
+app_template_wipe_continue	ဆက်လုပ်
+app_template_wipe_cancel	ပယ်ဖျက်
 currency	ငွေကြေး
 backup	အရန်သိမ်း
 use	အသုံးပြုပါ
@@ -550,22 +550,22 @@ new_party_clear	ပါတီအသစ် (ပုံစံရှင်းလင�
 new_party_kind_supplier_ph	ပါတီအသစ်အမျိုးအစား (ပေးသွင်းသူ)
 next_country	နောက်နိုင်ငံ
 next_order	နောက်အမှာစနစ် (စားပွဲရှင်းလင်းရန်)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	မူကြမ်းများ
+park_draft	မူကြမ်းအဖြစ် သိမ်းဆည်းပါ
+drafts_help	ဤသည်မှာ သင်ဖယ်ထားသော ကောင်တာမှ မပြီးဆုံးသေးသော အမှာစာများဖြစ်သည်။ သင် «ငွေလက်ခံပါ» ကို မနှိပ်မချင်း ၎င်းတို့ကို အကောင့်များတွင် ထည့်သွင်းမထားပါ။ «အော်ဒါ» တွင် ဆက်ရန် ကတ်တစ်ခုကို တို့ပါ။ «မူကြမ်းကို ဖျက်ပါ» သည် မူကြမ်းကို ဖျက်သည်။ «နေ့အဆုံးပိတ်သိမ်းခြင်း» သည် ၎င်းတို့ကို မရှင်းလင်းပါ။
+drafts_park_nothing	မူကြမ်းအဖြစ် သိမ်းဆည်းရန် ဘာမှမပါ — လှည်းသို့ ပစ္စည်းများထည့်ပါ
+drafts_park_counter_only	«မူကြမ်းအဖြစ် သိမ်းဆည်းပါ» သည် ကောင်တာမှမှာယူသောအမှာစာများအတွက်သာဖြစ်သည် — စားပွဲတင်မှာယူမှုကိုထားခဲ့ပါ သို့မဟုတ် «စားပွဲခန်း» ကိုအသုံးပြုပါ
+drafts_parked	«မူကြမ်းများ» တွင် သိမ်းဆည်းထားသည် — ကောင်တာသည် ယခု ဗလာဖြစ်နေသည်
+drafts_discard	မူကြမ်းကို ဖျက်ပါ
+drafts_discarded	မူကြမ်းကို ဖျက်လိုက်ပါပြီ
+drafts_gone	အဲဒီမူကြမ်းက စာရင်းထဲမှာ မရှိတော့ဘူး
+drafts_closed	ထိုမူကြမ်းကို ငွေပေးချေပြီးဖြစ်သည် သို့မဟုတ် ဖျက်ထားသည်
+drafts_empty	မူကြမ်းများ မရှိသေးပါ။ «ကောင်တာ» တွင် ဟင်းလျာများထည့်ကာ «မူကြမ်းအဖြစ် သိမ်းဆည်းပါ» ကို တို့ပါ။
+drafts_card_kind	မူကြမ်း
+drafts_card_no_lines	ပစ္စည်းမရှိပါ
+drafts_card_lines	ပစ္စည်းများ
+drafts_summary_fmt	{n} မူကြမ်းများကို ဖွင့်ပါ
+drafts_cols_fmt	ကော်လံ {n} ခု
 note_gstin_ph	မှတ်ချက် / GSTIN / သဘောတူညီချက်အကြောင်းကြားသတိပေးချက်
 notes_attach_party	မှတ်ချက်များနှင့် attachmentများ (ရွေးချယ်ထားသောပါတီ)
 notes_attach_sale	မှတ်တမ်းများနှင့်ဆက်စပ်ချက်များ (ရွေးချယ်ထားသောရောင်းချမှု)
@@ -588,15 +588,15 @@ print_open	ပုံနှိပ် / ဖွင့်ပါ
 reason_amend_ph	ပြင်ဆင်ရန် / ငျွှန်းရန် / ပြန်အမ်းရန် အကြောင်းရင်း
 reason_note_ph	အကြောင်းရင်း / မှတ်စု (ပျက်စီးမှု, အရေအတွက်, …)
 record_day_close	နေ့စွဲပိတ်သိမ်းမှုကိုမှတ်တမ်းတင်မည်
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ယနေ့» ကို မည်သည့်အချိန်တွင် ပြန်လည်သတ်မှတ်သနည်း။
+business_day_help	«နေ့အဆုံးပိတ်သိမ်းခြင်း အထိ» သည် နေ့ကို မှတ်တမ်းတင်သည်အထိ «နေ့စဉ်စာရင်း» သန်းခေါင်ကျော် ပြေးနေပါသည်။ «ညသန်းခေါင်မှာ» ဒေသစံတော်ချိန် ည 00:00 နာရီတွင် ဖြတ်တောက်သည်။
+biz_day_until_close	နေ့အဆုံးပိတ်သိမ်းခြင်း အထိ
+biz_day_midnight	ညသန်းခေါင်မှာ
+business_day_saved	လုပ်ငန်းနေ့ဆက်တင်ကို သိမ်းလိုက်ပါပြီ
+report_day_lens	«ယနေ့» အဖြစ် ပြပါ
+report_day_lens_help	၎င်းသည် မြင်ကွင်းကိုသာ ပြောင်းလဲသည် — «နေ့အဆုံးပိတ်သိမ်းခြင်း» «ယနေ့» ကို ပြန်လည်သတ်မှတ်သည့်အခါ ၎င်းသည် ပြောင်းလဲမည်မဟုတ်ပါ။ «နေ့အဆုံးပိတ်သိမ်းခြင်း အရ» နောက်ဆုံးရက်ကို ပိတ်လိုက်သည် ။ «သန်းခေါင်စာရင်းအရ၊» ဒေသစံတော်ချိန် ည 00:00 နာရီတွင် ဖြတ်တောက်သည်။
+report_lens_day_close	နေ့အဆုံးပိတ်သိမ်းခြင်း အရ
+report_lens_midnight	သန်းခေါင်စာရင်းအရ၊
 refresh_from_shop	ဆိုင်မှပြန်လည်သင့်စွမ်းမော်
 refund	ပြန်အမ်း
 remove_selected	ရွေးထားကိုဖယ်ရှားမည်
@@ -864,7 +864,7 @@ find_printers	ပရင်တာတွေကို ရှာဖွေပါ
 printers_looking	ရှာနေသည်…
 saving_printer	ပရင်တာ ထည့်နေသည်…
 cancelled	အားပယ်လိုက်သည်
-cancelling	Cancellingâ¦
+cancelling	ပယ်ဖျက်နေသည်…
 removing	ဖယ်ရှားနေသည်…
 removed	ဖယ်ရှားပြီး
 updating_order	အပ်ဒိတ်လုပ်နေသည်…

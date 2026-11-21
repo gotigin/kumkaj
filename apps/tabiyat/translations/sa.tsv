@@ -365,15 +365,15 @@ print_open	मुद्रयतु / उद्घाटयतु
 reason_amend_ph	संशोधनस्य कारणम् / शून्यीकरणस्य / धनवापसी
 reason_note_ph	कारण / टिप्पणी (अपव्यय, गणना, ...) .
 record_day_close	दिनं निकटं रक्षतु
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«अद्य» कदा नूतनतया आरभ्यते?
+business_day_help	«दिवसः समाप्तः पर्यन्तम्» इति चिते, यावत् भवन्तः दिवससमाप्तिं न लिखन्ति तावत् «दिवस लेजर» मध्यरात्रात् परमपि प्रचलति। «दिनदर्शिकायाः मध्यरात्रः» इति चिते, दिवसः स्थानीयसमयेन रात्रौ 12:00 वादने समाप्यते।
+biz_day_until_close	दिवसः समाप्तः पर्यन्तम्
+biz_day_midnight	दिनदर्शिकायाः मध्यरात्रः
+business_day_saved	व्यापारदिवसः रक्षितः
+report_day_lens	«अद्य» एवं पश्यन्तु
+report_day_lens_help	केवलं दर्शनार्थम् — «दिवसः समाप्तः» कदा «अद्य» नूतनतया आरभते इति अनेन न परिवर्तते। «दिवसः समाप्तः अनुसारम्» अन्तिमात् दिवससमापनात् गणयति; «मध्यरात्रानुसारम्» स्थानीयसमयेन रात्रौ 12:00 वादने छिनत्ति।
+report_lens_day_close	दिवसः समाप्तः अनुसारम्
+report_lens_midnight	मध्यरात्रानुसारम्
 refresh_from_shop	दुकानतः ताजगीं कुर्वन्तु
 refund	धनवापसी
 remove_selected	चयनितं निष्कासयन्तु
@@ -849,19 +849,19 @@ client_template_confirm	{title} तः {d} वस्तूनि योजयन
 client_template_importing	आयात {title}...
 client_template_done	{title} इत्यस्य प्रत्येकं द्रव्यं भवतः वस्तूनाम् उपरि अस्ति।
 client_template_imported	{title} तः {d} वस्तूनि {c} श्रेणयः च योजिताः
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	आपणप्रारूपाणि
+app_template_blurb	आरम्भाय एकां वस्तुसूचीं दुकानस्य सेटिंग्स् च चिन्वन्तु। «इदानीं कृते त्यजन्तु» ट्याप् कृते शेल्फ् रिक्तं तिष्ठति।
+app_template_skip	इदानीं कृते त्यजन्तु
+app_template_status	सेवकः सज्जः — प्रारूपम् आयातयतु, अथवा त्यजतु
+app_template_importing	आवेदन करते हुए {title}...
+app_template_import_selected	चितम् आयातयतु
+app_template_wipe_warn	अनेन लेखापुस्तकस्य व्यापारदत्तांशः (विक्रयः, लेखाः) रिक्तः भविष्यति, टेम्पलेट्-इत्यस्य दुकानस्य सेटिंग्स् च प्रवर्तिष्यन्ते। किं निरन्तरं करणीयम्?
+app_template_wipe_continue	निरन्तरं कुर्वन्तु
+app_template_wipe_cancel	रद्दं कुर्वन्तु
+app_template_from_device	अस्मात् उपकरणात् आयातयन्तु
+app_template_from_device_help	यस्मिन् फोल्डर्-मध्ये template.json अस्ति तं चिन्वन्तु (shop_defaults.json अस्ति चेत् तदपि)।
+settings_app_tmpl_note	पूर्णाः दुकान-पैक्: वस्तुसूची दुकानस्य सेटिंग्स् च। कस्यचित् पैक्-इत्यस्य पुनः आयाते कृते विक्रयः लेखाः च रिक्ताः भवन्ति, ततः पैक्-इत्यस्य दुकानस्य सेटिंग्स् प्रवर्तन्ते।
+app_tmpl_named	{name} दुकान-टेम्पलेट्
 cancel	रद्दं कुर्वन्तु
 removing	अपाक्रियते…
 removed	अपाकृतम्

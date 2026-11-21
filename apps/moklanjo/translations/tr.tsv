@@ -3,27 +3,27 @@ app_tagline	Kurye defterleri + gönderi masası. Ücretsiz çevrimdışı.
 unlock	Kilidi aç
 pin_hint	Sahip PIN'i 0000 ile başlar
 sell	Gönderi
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Pano
+board	Pano
+park_draft	Taslağa al
+board_help	Açık taslaklar («Sil» veya «Ödeme al» seçilene kadar saklanır) ve bugün kabul edilen satışlar. «Gönderi» ekranında işin ortasında «Taslağa al» düğmesine dokunun (defterlere değil, buraya kaydedilir); devam etmek için bir taslağa dokunun.
+board_empty	Henüz kart yok.
+board_park_nothing	Bekletilecek bir şey yok — ücret veya gönderi bilgisi ekleyin
+board_parked	«Pano» bölümüne alındı — banko boş
+board_draft	Taslak
+board_booked	Kabul edildi
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Taslak
+board_filter_booked	Kabul edildi
+board_cols_fmt	{n} sütun
+board_summary_fmt	{total} kart · {drafts} taslak · {booked} kabul edildi
+board_card_no_charges	Henüz ücret yok
+board_card_charges	ücret
+board_card_booked	Gönderi
+board_draft_gone	O taslak artık «Pano» bölümünde yok
+board_draft_closed	O taslak zaten tamamlandı veya silindi
+board_discard	Sil
+board_discarded	Taslak silindi
 buy	Ödeme
 books	Gün defteri
 books_help	Bugünkü durum. Gönderi = gelen paketler. Ödeme = taşıyıcı faturaları ve giderler. Taraflar = gönderenler ve taşıyıcılar.
@@ -220,7 +220,7 @@ snack_secs_save	Uyarı süresini kaydet
 snack_secs_saved	Uyarı süresi kaydedildi — {n} saniye
 snack_secs_bad	Saniyeyi sayı olarak girin (3–60)
 cancelled	İptal edildi
-cancelling	Cancellingâ¦
+cancelling	İptal ediliyor…
 cancel	İptal
 opening_client	Müşteri açılıyor…
 preparing_desk	Masa hazırlanıyor…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Taraf defteri CSV kopyala
 copy_receipt	Fişi kopyala
 copy_report	Raporu kopyala
 counted_cash_ph	Çekmecede sayılan nakit
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Vardiyayı kapat ve fiş yazdır
+shift_handover	Vardiya devri
+shift_counted_ph	Devirde sayılan nakit
+shift_since	Bu vardiya başlangıcı
+expected_in_drawer	Kasada olması gereken
+lock_books_through_month	Defterleri aya kadar kilitle
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Bu aya kadar kilitle
+books_locked_none	Henüz kilitli ay yok
+books_locked_through	Şu aya kadar kilitli
 counter_agency_ph	Tezgah / acente adı (isteğe bağlı)
 create_backup	Yedek oluştur
 day_close_summary	Gün kapanışı özeti
@@ -442,9 +442,9 @@ pay_ap_cash	AP nakit öde
 pay_ap_upi	AP UPI öde
 period_bill	Dönem faturası
 period_bill_party	Dönem faturası (taraf)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Fatura oluştur
+period_bill_generate_print	Oluştur ve yazdır
+booking_bulk_preview	{ok} hazır · {bad} hatalı
 pick_pod_photo	POD fotoğrafı seç
 print_awb_label	AWB etiketi yazdır
 print_open	Yazdır / aç
@@ -653,19 +653,19 @@ attachments_last_expense	Ekler (son gider)
 credit_limit_heading	Kredi limiti (seçili / adı geçen taraf)
 pay_selected_heading	Seçili olanı öde (borcu kapat / avans al)
 write_off_heading	Sil (ödemeden kapat)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Düzeltme dekontları
+adj_note_amount_ph	Tutar
+adj_note_reason_ph	Neden (gerekli)
+adj_note_awb_ph	İlgili AWB (isteğe bağlı)
+credit_note_btn	Alacak dekontu
+debit_note_btn	Borç dekontu
+bill_later_heading	Sonra faturala (gönderi sonrası ek ücret)
+bill_later_amount_ph	Ek tutar
+bill_later_party_ph	Taraf (yalnızca gönderide yoksa)
+bill_later_btn	Sonra faturala
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Paketleme
+bill_later_extra_other	Diğer
 pay_ap_heading	Onlara borçlu olduğumuzu öde (AP)
 country_tax	Ülke ve vergi
 extra_tills_heading	Ek kasalar
@@ -777,26 +777,26 @@ onboard_book_tmpl	Defter · {} — ürünleri ve açılış kredisini ekleyin, s
 onboard_template_tmpl	İsterseniz mekâna ad verin, sonra nasıl başlayacağınızı seçin.
 tmpl_blurb	Kurye defterleri ve gönderi masası: gönderenler, taşıyıcılar, günlük defter, AWB.
 tmpl_how	Paketleri masada kaydedin; bugün için günlük defter; tarifeler, taraflar, raporlar için sekmeler.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Mağaza şablonları
+app_template_blurb	Bir başlangıç bankosu seçin. «Şimdilik atla» seçilirse taraflar listesi boş kalır.
+app_template_skip	Şimdilik atla
+app_template_status	Sunucu hazır — bir şablon içe aktarın veya atlayın
+app_template_importing	{title} uygulanıyor…
+app_template_public_hdr	Şablonlar
+app_template_import_selected	Seçileni içe aktar
+app_template_wipe_warn	Bu işlem defterlerdeki ticari verileri (gönderiler, cari hesaplar) siler ve şablonun mağaza ayarlarını uygular. Devam edilsin mi?
+app_template_wipe_continue	Devam
+app_template_wipe_cancel	İptal
+public_tmpl_help	Bu mağaza için uygulamayla birlikte gelen acente paketleri. İndirme gerekmez.
+business_day	«Bugün» ne zaman sıfırlanır?
+business_day_help	«Gün kapanışına kadar» seçilirse, siz gün kapanışını kaydedene kadar «Gün defteri» gece yarısından sonra da devam eder. «Takvim gece yarısı» seçilirse gün, yerel saatle 00.00'da kesilir.
+biz_day_until_close	Gün kapanışına kadar
+biz_day_midnight	Takvim gece yarısı
+business_day_saved	İş günü kaydedildi
+report_day_lens	«Bugün» görünümü
+report_day_lens_help	Yalnızca görünüm — «Gün kapanışı» işleminin «Bugün» bilgisini ne zaman sıfırladığını değiştirmez. «Gün kapanışına göre» son gün kapanışını izler; «Gece yarısına göre» yerel saatle 00.00'da keser.
+report_lens_day_close	Gün kapanışına göre
+report_lens_midnight	Gece yarısına göre
 trk_booked	Kabul edildi
 trk_picked_up	Teslim alındı
 trk_in_transit	Yolda

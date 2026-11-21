@@ -384,12 +384,12 @@ app_template_need_internet	Kufuneka i-intanethi ukukhuphela iitemplate
 app_template_import_selected	Ngenisa okukhethiweyo
 app_template_check_code	Khangela ikhowudi
 app_template_import	Ngenisa
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Ngenisa kwesi sixhobo
+app_template_from_device_help	Khetha ifolda ene-template.json (kunye ne-shop_defaults.json ukuba ikhona).
+settings_app_tmpl_note	Ukungenisa kwakhona kucima iintengiso, ii-KOT neeleja, emva koko kusebenzise useto lwevenkile lwepakethe. Iitemplate zemenyu kuphela: «Uluhlu» → «Iitemplate zezinto».
+app_template_wipe_warn	Oku kucima idatha yorhwebo ezincwadini (iintengiso, ii-KOT, iileja) kuze kusebenzise useto lwevenkile lwetemplate. Imenyu noseto zinokutshintsha. Qhubeka?
+app_template_wipe_continue	Qhubeka
+app_template_wipe_cancel	Rhoxisa
 currency	Imali
 backup	Ugcino lwasemva
 use	Sebenzisa
@@ -550,22 +550,22 @@ new_party_clear	Iqela elitsha (cima ifom)
 new_party_kind_supplier_ph	Uhlobo olutsha lweqela (Umboneleli)
 next_country	Ilizwe elilandelayo
 next_order	Iodolo elandelayo (cima ideski)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Iidrafti
+park_draft	Beka njengedrafti
+drafts_help	Iiodolo zasekhawuntareni ozibeke ecaleni phakathi — azingeni ezincwadini de kube «Qokelela intlawulo». Cofa ikhadi ukuze uqhubeke nalo ku-«Iodolo»; «Lahla idrafti» isusa idrafti. «Ukuvala usuku» ayizicimi ezi.
+drafts_park_nothing	Akukho nto yokubeka ecaleni — yongeza izinto kwinqwelo
+drafts_park_counter_only	«Beka njengedrafti» yeyeeodolo zasekhawuntareni kuphela — shiya iodolo yetafile okanye usebenzise «ISaluni»
+drafts_parked	Ibekwe ku-«Iidrafti» — ikhawuntara ayinanto
+drafts_discard	Lahla idrafti
+drafts_discarded	Idrafti ilahliwe
+drafts_gone	Loo drafti ayisekho kuluhlu
+drafts_closed	Loo drafti sele ihlawulelwe okanye ilahliwe
+drafts_empty	Akukabikho zidrafti. Ku-«Ikhawuntara», yongeza izitya uze ucofe «Beka njengedrafti».
+drafts_card_kind	Idrafti
+drafts_card_no_lines	Akukho migca
+drafts_card_lines	imigca
+drafts_summary_fmt	Iidrafti ezivulekileyo ezi-{n}
+drafts_cols_fmt	Iikholamu ezi-{n}
 note_gstin_ph	Inqaku / i-GSTIN / isikhumbuzi sesivumelwano
 notes_attach_party	Amanqaku nokuqhotyoshelweyo (iqela elikhethiweyo)
 notes_attach_sale	Amanqaku nokuqhotyoshelweyo (intengiso ekhethiweyo)
@@ -588,15 +588,15 @@ print_open	Shicilela / vula
 reason_amend_ph	Isizathu sokulungisa / ukurhoxisa ngokupheleleyo / ukubuyisa
 reason_note_ph	Isizathu / inqaku (ukonakala, ubali, …)
 record_day_close	Bhala ukuvala usuku
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Namhlanje» iqala nini kwakhona?
+business_day_help	Xa kukhethwe «De kube kukuvalwa kosuku», «Incwadi yosuku» iyaqhubeka nasemva kobusuku obuphakathi de urekhode ukuvalwa kosuku. Xa kukhethwe «Ezinzulwini zobusuku ngekhalenda», usuku lunqunyulwa ngo-00:00 ngexesha lasekuhlaleni.
+biz_day_until_close	De kube kukuvalwa kosuku
+biz_day_midnight	Ezinzulwini zobusuku ngekhalenda
+business_day_saved	Usuku lomsebenzi lugciniwe
+report_day_lens	Bonisa «Namhlanje» ngoku
+report_day_lens_help	Kukujonga kuphela — akutshintshi ukuba «Ukuvala usuku» iyiqala nini kwakhona «Namhlanje». «Ngokuvalwa kosuku» ilandela ukuvalwa kosuku kokugqibela; «Ngezinzulu zobusuku» inqumla ngo-00:00 ngexesha lasekuhlaleni.
+report_lens_day_close	Ngokuvalwa kosuku
+report_lens_midnight	Ngezinzulu zobusuku
 refresh_from_shop	Hlaziya usuka evenkileni
 refund	Buyisa
 remove_selected	Susa okukhethiweyo
@@ -864,7 +864,7 @@ find_printers	Fumana abashicileli
 printers_looking	Iyakhangela…
 saving_printer	Iyongeza umshicileli…
 cancelled	Kurhoxisiwe
-cancelling	Cancellingâ¦
+cancelling	Iyarhoxisa…
 removing	Iyasuswa…
 removed	Isusiwe
 updating_order	Iyahlaziywa…

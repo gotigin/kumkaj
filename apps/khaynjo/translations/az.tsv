@@ -384,12 +384,12 @@ app_template_need_internet	Şablonları endirmək üçün internet lazımdır
 app_template_import_selected	Seçiləni idxal et
 app_template_check_code	Kodu yoxla
 app_template_import	İdxal et
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Bu cihazdan idxal edin
+app_template_from_device_help	template.json (və istəyə görə, shop_defaults.json) olan qovluğu seçin.
+settings_app_tmpl_note	Yenidən idxal satışları, KOT və kitabları təmizləyir, sonra şablonun mağaza parametrlərini tətbiq edir. Yalnız menyulu şablonlar: «Menyu» → «Məhsul şablonları».
+app_template_wipe_warn	Bu, hesablardakı ticarət məlumatlarını (satış, KOT, kitablar) təmizləyir və şablonun mağaza parametrlərini tətbiq edir. Menyu və quraşdırma dəyişə bilər. Davam etmək istəyirsiniz?
+app_template_wipe_continue	Davam et
+app_template_wipe_cancel	Ləğv
 currency	Valyuta
 backup	Ehtiyat nüsxə
 use	İstifadə et
@@ -550,22 +550,22 @@ new_party_clear	Yeni tərəf (formanı təmizlə)
 new_party_kind_supplier_ph	Yeni tərəfin növü (Təchizatçı)
 next_country	Növbəti ölkə
 next_order	Növbəti sifariş (masanı təmizlə)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Qaralamalar
+park_draft	Qaralama olaraq yadda saxlayın
+drafts_help	Bunlar piştaxtadan kənara qoyduğunuz yarımçıq sifarişlərdir. Siz «Ödəniş al» üzərinə toxunana qədər onlar hesablara daxil edilməyəcək. «Sifariş» üzərində davam etmək üçün karta toxunun; «Qaralamanı silin» qaralamanı silir. «Günün bağlanışı» onları silmir.
+drafts_park_nothing	Qaralama kimi yadda saxlamaq üçün heç nə yoxdur — əşyaları səbətə əlavə edin
+drafts_park_counter_only	«Qaralama olaraq yadda saxlayın» yalnız piştaxtada alınan sifarişlər üçündür — masa sifarişini tərk edin və ya «Zal» istifadə edin
+drafts_parked	Yadda saxlanıldı: «Qaralamalar» — piştaxta indi boşdur
+drafts_discard	Qaralamanı silin
+drafts_discarded	Qaralama silindi
+drafts_gone	Həmin qaralama artıq siyahıda yoxdur
+drafts_closed	Həmin qaralama artıq ödənilib və ya silinib
+drafts_empty	Hələ qaralama yoxdur. «Kassa» üzərində yeməklər əlavə edin və «Qaralama olaraq yadda saxlayın» üzərinə klikləyin.
+drafts_card_kind	Qaralama
+drafts_card_no_lines	Sətir yoxdur
+drafts_card_lines	sətir
+drafts_summary_fmt	{n} açıq qaralama
+drafts_cols_fmt	{n} sütun
 note_gstin_ph	Qeyd / GSTIN / müqavilə xatırlatması
 notes_attach_party	Qeydlər və əlavələr (seçilmiş tərəf)
 notes_attach_sale	Qeydlər və əlavələr (seçilmiş satış)
@@ -588,15 +588,15 @@ print_open	Çap et / aç
 reason_amend_ph	Düzəliş / ləğv / qaytarma səbəbi
 reason_note_ph	Səbəb / qeyd (itki, sayım, …)
 record_day_close	Günün bağlanışını yaz
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Bu gün» nə vaxt sıfırlanır?
+business_day_help	«Günün bağlanışına qədər» seçildikdə, siz günün bağlanışını qeyd edənə qədər «Günün kitabı» gecə yarısından sonra da davam edir. «Təqvim gecə yarısı» seçildikdə gün yerli vaxtla saat 00:00-da kəsilir.
+biz_day_until_close	Günün bağlanışına qədər
+biz_day_midnight	Təqvim gecə yarısı
+business_day_saved	İş günü ayarı yadda saxlanıldı
+report_day_lens	«Bu gün» kimi göstərin
+report_day_lens_help	Yalnız görünüş — «Günün bağlanışı» əməliyyatının «Bu gün» bölməsini nə vaxt sıfırladığını dəyişmir. «Günün bağlanışına görə» son günün bağlanışından hesablayır; «Gecə yarısına görə» yerli vaxtla saat 00:00-da kəsir.
+report_lens_day_close	Günün bağlanışına görə
+report_lens_midnight	Gecə yarısına görə
 refresh_from_shop	Mağazadan yenilə
 refund	Qaytarma
 remove_selected	Seçilmişi sil
@@ -864,7 +864,7 @@ find_printers	Printerləri tap
 printers_looking	Axtarılır…
 saving_printer	Printer əlavə olunur…
 cancelled	Ləğv olundu
-cancelling	Cancellingâ¦
+cancelling	Ləğv edilir…
 removing	Silinir…
 removed	Silindi
 updating_order	Yenilənir…

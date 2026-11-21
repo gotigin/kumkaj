@@ -3,27 +3,27 @@ app_tagline	Liv courrier-ajans + biwo anrjistreman. Gratis offline.
 unlock	Debloke
 pin_hint	PIN pwopriyetè a kòmanse ak 0000
 sell	Anrjistreman
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Tablo
+board	Tablo
+park_draft	Sove kòm bouyon
+board_help	Bouyon ouvè (yo rete jiskaske ou chwazi «Jete» oswa «Pran peman») ak lavant ki anrejistre jodi a. Nan «Anrjistreman», tape «Sove kòm bouyon» nan mitan travay ou (li sove isit la, pa nan liv yo); tape yon bouyon pou kontinye.
+board_empty	Poko gen kat.
+board_park_nothing	Pa gen anyen pou mete sou kote — ajoute frè oswa detay rezèvasyon
+board_parked	Sove sou «Tablo» — biwo a lib
+board_draft	Bouyon
+board_booked	Anrezève
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Bouyon
+board_filter_booked	Anrezève
+board_cols_fmt	{n} kolòn
+board_summary_fmt	{total} kat · {drafts} bouyon · {booked} anrejistre
+board_card_no_charges	Poko gen frè
+board_card_charges	frè
+board_card_booked	Anrjistreman
+board_draft_gone	Bouyon sa a pa sou «Tablo» ankò
+board_draft_closed	Bouyon sa a te deja fini oswa efase
+board_discard	Jete
+board_discarded	Bouyon efase
 buy	Peye
 books	Liv jounen
 books_help	Pozisyon jodi a. Anrjistreman = pasèl pous. Peye = bòdwo konpayi asirans ak depans. Pati yo = expéditeurs & transporteurs.
@@ -220,7 +220,7 @@ snack_secs_save	Anrejistre tan alèt
 snack_secs_saved	Tan alèt anrejistre — {n} segond
 snack_secs_bad	Antre segonn kòm yon nimewo (3–60)
 cancelled	Anile
-cancelling	Cancellingâ¦
+cancelling	N ap anile…
 cancel	Anile
 opening_client	Ap louvri kliyan…
 preparing_desk	Ap pare kontwa…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopye liv pati CSV
 copy_receipt	Kopye resi
 copy_report	Kopye rapò
 counted_cash_ph	Kach konte nan tiro a
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Fèmen pòs la epi enprime fich la
+shift_handover	Pasasyon pòs
+shift_counted_ph	Kach konte nan pasasyon
+shift_since	Pòs sa a depi
+expected_in_drawer	Espere nan tiro a
+lock_books_through_month	Bloke liv yo jiska fen mwa a
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Bloke jiska fen mwa sa a
+books_locked_none	Poko gen mwa ki bloke
+books_locked_through	Bloke jiska
 counter_agency_ph	Non kontwa / ajans (si ou vle)
 create_backup	Kreye sovgad
 day_close_summary	Rezime fèmti jounen
@@ -442,9 +442,9 @@ pay_ap_cash	Peye AP ak kach
 pay_ap_upi	Peye AP ak UPI
 period_bill	Peryòd bòdwo
 period_bill_party	Peryòd bòdwo (pati)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Kreye fakti
+period_bill_generate_print	Kreye epi enprime
+booking_bulk_preview	{ok} pare · {bad} ak erè
 pick_pod_photo	Chwazi foto POD
 print_awb_label	Enprime etikèt AWB
 print_open	Enprime / louvri
@@ -653,19 +653,19 @@ attachments_last_expense	Atachman (dènye depans)
 credit_limit_heading	Limit kredi (pati chwazi / nonmen)
 pay_selected_heading	Peye sa ki chwazi (regle dèt / pran avans)
 write_off_heading	Pase pèt (efase san peman)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Nòt ajisteman
+adj_note_amount_ph	Montan
+adj_note_reason_ph	Rezon (obligatwa)
+adj_note_awb_ph	AWB ki gen rapò (opsyonèl)
+credit_note_btn	Nòt kredi
+debit_note_btn	Nòt debi
+bill_later_heading	Faktire pita (frè siplemantè apre rezèvasyon)
+bill_later_amount_ph	Montan siplemantè
+bill_later_party_ph	Kliyan (sèlman si rezèvasyon an pa genyen)
+bill_later_btn	Faktire pita
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Anbalaj
+bill_later_extra_other	Lòt
 pay_ap_heading	Peye sa nou dwe yo (AP)
 country_tax	Peyi ak taks
 extra_tills_heading	Lòt kes
@@ -777,26 +777,26 @@ onboard_book_tmpl	Liv · {} — ajoute atik ak kredi ouvèti, epi Fini.
 onboard_template_tmpl	Bay kote a yon non si ou vle, epi chwazi kijan pou kòmanse.
 tmpl_blurb	Liv courrier ak biwo anrjistreman: expéditeur, transpòtè, liv jou, AWB.
 tmpl_how	Liv pasèl nan biwo a; Jounen liv pou jodi a; onglè pou pousantaj, pati yo, rapò.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Modèl boutik
+app_template_blurb	Chwazi yon biwo pou kòmanse. «Sote pou kounye a» kite lis kliyan an vid.
+app_template_skip	Sote pou kounye a
+app_template_status	Sèvè a pare — enpòte yon modèl, oswa sote
+app_template_importing	Y ap aplike {title}…
+app_template_public_hdr	Modèl
+app_template_import_selected	Enpòte sa ki chwazi a
+app_template_wipe_warn	Sa a efase done komès nan liv yo (rezèvasyon, rejis) epi li aplike paramèt boutik modèl la. Ou vle kontinye?
+app_template_wipe_continue	Kontinye
+app_template_wipe_cancel	Anile
+public_tmpl_help	Pake ajans ki vini ak aplikasyon an pou boutik sa a. Pa bezwen telechaje anyen.
+business_day	Ki lè «Jodi a» rekòmanse?
+business_day_help	Avèk «Jiska fèmti jounen», «Liv jounen» kontinye apre minwi jiskaske ou anrejistre fèmti jounen an. Avèk «Minwi kalandriye», jounen an koupe a 00:00 (minwi), lè lokal.
+biz_day_until_close	Jiska fèmti jounen
+biz_day_midnight	Minwi kalandriye
+business_day_saved	Jou biznis anrejistre
+report_day_lens	Montre «Jodi a» kòm
+report_day_lens_help	Afichaj sèlman — li pa chanje ki lè «Fèmti jounen» rekòmanse «Jodi a». «Dapre fèmti jounen» swiv dènye fèmti jounen an; «Dapre minwi» koupe a 00:00 (minwi), lè lokal.
+report_lens_day_close	Dapre fèmti jounen
+report_lens_midnight	Dapre minwi
 trk_booked	Anrezève
 trk_picked_up	Ranmase
 trk_in_transit	Nan transpò piblik

@@ -3,27 +3,27 @@ app_tagline	Ibitabo bya Courier-ajanse + kumeza. Ubuntu kumurongo.
 unlock	Fungura
 pin_hint	PIN ya nyir'iduka itangira nka 0000
 sell	Kwiyandikisha
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Ikibaho
+board	Ikibaho
+park_draft	Shyira nk'imbanzirizamushinga
+board_help	Imbanzirizamushinga zifunguye (ziguma kugeza ukanze «Siba» cyangwa «Kusanya amafaranga») n'ibyagurishijwe byanditswe uyu munsi. Muri «Kwiyandikisha», kanda «Shyira nk'imbanzirizamushinga» hagati mu kazi (bibikwa hano, si mu bitabo); kanda imbanzirizamushinga kugira ngo ukomeze.
+board_empty	Nta makarita aracyahari.
+board_park_nothing	Nta cyo gushyira ku ruhande — ongeramo amafaranga ya serivisi cyangwa amakuru yo kwiyandikisha
+board_parked	Byashyizwe kuri «Ikibaho» — ameza y'akazi arimo ubusa
+board_draft	Imbanzirizamushinga
+board_booked	Yanditse
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Imbanzirizamushinga
+board_filter_booked	Yanditse
+board_cols_fmt	Inkingi {n}
+board_summary_fmt	Amakarita {total} · imbanzirizamushinga {drafts} · ibyanditswe {booked}
+board_card_no_charges	Nta mafaranga ya serivisi aracyahari
+board_card_charges	amafaranga ya serivisi
+board_card_booked	Kwiyandikisha
+board_draft_gone	Iyo mbanzirizamushinga ntikiri kuri «Ikibaho»
+board_draft_closed	Iyo mbanzirizamushinga yamaze kurangizwa cyangwa gusibwa
+board_discard	Siba
+board_discarded	Imbanzirizamushinga yasibwe
 buy	Iyishyure
 books	Igitabo cy'umunsi
 books_help	Umwanya w'uyu munsi. Kwiyandikisha = parcelle muri. Kwishura = fagitire yabatwara & amafaranga. Amashyaka = abatwara & abatwara.
@@ -220,7 +220,7 @@ snack_secs_save	Bika igihe cy'imenyesha
 snack_secs_saved	Igihe cy'imenyesha cyabitswe — amasegonda {n}
 snack_secs_bad	Injira amasegonda nkumubare (3–60)
 cancelled	Byahagaritswe
-cancelling	Cancellingâ¦
+cancelling	Birahagarikwa…
 cancel	Hagarika
 opening_client	Irimo gufungura kiliya…
 preparing_desk	Irimo gutegura ameza y'akazi…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopi CSV y'igitabo cy'uwafatanyabikorwa
 copy_receipt	Kopi y'inyemezabwishyu
 copy_report	Kopi ya raporo
 counted_cash_ph	Amafaranga mu ntoki yabarwa mu kabatira
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Funga igihe ucape urupapuro
+shift_handover	Guha undi igihe
+shift_counted_ph	Amafaranga mu ntoki yabarwa mu guha undi
+shift_since	Iki gihe kuva
+expected_in_drawer	Biteganyijwe mu kabatira
+lock_books_through_month	Funga ibitabo kugeza ku kwezi
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Funga kugeza kuri uku kwezi
+books_locked_none	Nta kwezi kurafungwa
+books_locked_through	Bifunze kugeza
 counter_agency_ph	Izina rya Counter / ikigo (bidashoboka)
 create_backup	Kora kopi y'inyuma
 day_close_summary	Incamake yo gufunga umunsi
@@ -442,9 +442,9 @@ pay_ap_cash	Ishyura AP amafaranga mu ntoki
 pay_ap_upi	Ishyura AP UPI
 period_bill	Umushinga w'igihe
 period_bill_party	Umushinga w'igihe (ibirori)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Kora inyemezabuguzi
+period_bill_generate_print	Kora kandi ucape
+booking_bulk_preview	{ok} byiteguye · {bad} bifite amakosa
 pick_pod_photo	Tora ifoto ya POD
 print_awb_label	Andika ikirango cya AWB
 print_open	Capa / fungura
@@ -653,19 +653,19 @@ attachments_last_expense	Ibyashyizweho (inyemezabwishyu iheruka)
 credit_limit_heading	Umupaka w'inguzanyo (uwafatanyabikorwa wahiswemo / wizina)
 pay_selected_heading	Ishyura byahiswemo (soza umwenda / fata amafaranga y'imbere)
 write_off_heading	Siba (siba utishyuye)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Inyandiko zo gukosora
+adj_note_amount_ph	Amafaranga
+adj_note_reason_ph	Impamvu (birakenewe)
+adj_note_awb_ph	AWB bifitanye isano (si ngombwa)
+credit_note_btn	Inyandiko y'inguzanyo
+debit_note_btn	Inyandiko y'umwenda
+bill_later_heading	Ishyuza nyuma (amafaranga y'inyongera nyuma yo kwiyandikisha)
+bill_later_amount_ph	Amafaranga y'inyongera
+bill_later_party_ph	Umufatanyabikorwa (gusa niba kwiyandikisha nta we gufite)
+bill_later_btn	Ishyuza nyuma
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Gupakira
+bill_later_extra_other	Ibindi
 pay_ap_heading	Ishyura ibyo tubatwara (AP)
 country_tax	Igihugu n'umusoro
 extra_tills_heading	Kontwari zindi
@@ -777,26 +777,26 @@ onboard_book_tmpl	Igitabo · {} — ongeraho ibintu n'inguzanyo yo gutangira, ha
 onboard_template_tmpl	Ha izina ahantu niba ushaka, hanyuma uhitemo uko utangira.
 tmpl_blurb	Ibitabo byandikirwa hamwe nu biro byabigenewe: abatwara ibicuruzwa, abatwara, igitabo cyumunsi, AWB.
 tmpl_how	Ibitabo by'ibitabo kumeza; Igitabo cy'umunsi kuri uyu munsi; tabs kubiciro, amashyaka, raporo.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Inyandikorugero z'iduka
+app_template_blurb	Hitamo ameza y'akazi y'intangiriro. «Simbuka ubu» isiga urutonde rw'abafatanyabikorwa rurimo ubusa.
+app_template_skip	Simbuka ubu
+app_template_status	Seriveri yiteguye — injiza inyandikorugero, cyangwa usimbuke
+app_template_importing	Irimo gushyira {title}…
+app_template_public_hdr	Inyandikorugero
+app_template_import_selected	Injiza icyatoranyijwe
+app_template_wipe_warn	Ibi bisiba amakuru y'ubucuruzi ari mu bitabo (kwiyandikisha, ibitabo by'amakonti) bigashyiraho igenamiterere ry'iduka ry'inyandikorugero. Komeza?
+app_template_wipe_continue	Komeza
+app_template_wipe_cancel	Hagarika
+public_tmpl_help	Amapaki y'ikigo azana na porogaramu kuri iri duka. Nta gukuramo bikenewe.
+business_day	«Uyu munsi» itangira bundi bushya ryari?
+business_day_help	Iyo uhisemo «Kugeza umunsi ufunzwe», «Igitabo cy'umunsi» ikomeza na nyuma ya saa sita z'ijoro kugeza wanditse gufunga umunsi. Iyo uhisemo «Saa sita z'ijoro kuri kalendari», umunsi ucibwa saa 00:00 ku isaha y'aho uri.
+biz_day_until_close	Kugeza umunsi ufunzwe
+biz_day_midnight	Saa sita z'ijoro kuri kalendari
+business_day_saved	Umunsi w'akazi wabitswe
+report_day_lens	Erekana «Uyu munsi» ukurikije
+report_day_lens_help	Ni ukureba gusa — ntibihindura igihe «Gufunga umunsi» itangiza bundi bushya «Uyu munsi». «Ukurikije gufunga umunsi» ikurikiza gufunga umunsi guheruka; «Ukurikije saa sita z'ijoro» ica saa 00:00 ku isaha y'aho uri.
+report_lens_day_close	Ukurikije gufunga umunsi
+report_lens_midnight	Ukurikije saa sita z'ijoro
 trk_booked	Yanditse
 trk_picked_up	Yatoraguwe
 trk_in_transit	Muri transit

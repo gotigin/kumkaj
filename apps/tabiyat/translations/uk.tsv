@@ -365,15 +365,15 @@ print_open	Друкувати / відкрити
 reason_amend_ph	Причина виправлення / анулювання / повернення
 reason_note_ph	Причина / нотатка (псування, підрахунок, …)
 record_day_close	Записати закриття дня
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Коли «Сьогодні» починається заново?
+business_day_help	З варіантом «До закриття дня» «Книга дня» триває після півночі, доки ви не запишете закриття дня. З варіантом «Календарна північ» день обрізається о 00:00 за місцевим часом.
+biz_day_until_close	До закриття дня
+biz_day_midnight	Календарна північ
+business_day_saved	Робочий день збережено
+report_day_lens	Показувати «Сьогодні»
+report_day_lens_help	Лише вигляд — не змінює, коли «Закриття дня» починає «Сьогодні» заново. «За закриттям дня» рахує від останнього закриття дня; «За північчю» обрізає о 00:00 за місцевим часом.
+report_lens_day_close	За закриттям дня
+report_lens_midnight	За північчю
 refresh_from_shop	Оновити з крамниці
 refund	Повернення
 remove_selected	Прибрати вибране
@@ -849,19 +849,19 @@ client_template_confirm	Додати елементи {d} із {title}? Пред
 client_template_importing	Імпорт {title}…
 client_template_done	Кожен предмет від {title} є на ваших предметах.
 client_template_imported	Додано предмети {d} і категорії {c} із {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Шаблони крамниці
+app_template_blurb	Виберіть початковий каталог і налаштування крамниці. «Поки пропустити» залишить полицю порожньою.
+app_template_skip	Поки пропустити
+app_template_status	Сервер готовий — імпортуйте шаблон або пропустіть
+app_template_importing	Застосовується {title}…
+app_template_import_selected	Імпортувати вибране
+app_template_wipe_warn	Це очистить торгові дані з книг (продажі, особові рахунки) і застосує налаштування крамниці з шаблону. Продовжити?
+app_template_wipe_continue	Далі
+app_template_wipe_cancel	Скасувати
+app_template_from_device	Імпортувати з цього пристрою
+app_template_from_device_help	Виберіть папку, у якій є template.json (і shop_defaults.json, якщо є).
+settings_app_tmpl_note	Повні пакети крамниці: каталог і налаштування крамниці. Повторний імпорт пакета очищає продажі й особові рахунки, а потім застосовує налаштування крамниці з пакета.
+app_tmpl_named	Шаблон крамниці {name}
 cancel	Скасувати
 removing	Видалення…
 removed	Видалено

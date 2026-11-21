@@ -384,12 +384,12 @@ app_template_need_internet	टेम्पलेट डाउनलोड कर
 app_template_import_selected	वेंचिल्लें आयात करात
 app_template_check_code	कोड तपासात
 app_template_import	आयात करात
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ह्या डिव्हायसा वयल्यान आयात करात
+app_template_from_device_help	template.json आशिल्लो फोल्डर वेंचात (shop_defaults.json आसल्यार तोय).
+settings_app_tmpl_note	परत आयात केल्यार विक्री, KOT आनी खातीं निवळ जातात, उपरांत पॅकाचीं दुकान सेटिंगां लागू जातात. फकत मेनू आशिल्ले टेम्पलेट: «मेनू» → «वस्तू टेम्पलेट».
+app_template_wipe_warn	हाका लागून बहींतलो वेव्हाराचो डेटा (विक्री, KOT, खातीं) निवळ जातलो आनी टेम्पलेटाचीं दुकान सेटिंगां लागू जातलीं. मेनू आनी सेटअप बदलूं येता. फुडें वचचें?
+app_template_wipe_continue	फुडें व्हरप
+app_template_wipe_cancel	रद्द
 currency	चलन
 backup	बॅकअप घेवप
 use	वापर
@@ -550,22 +550,22 @@ new_party_clear	नवो पक्ष (स्पष्ट रूप) २.
 new_party_kind_supplier_ph	नवी पार्टी प्रकार (पुरवणदार)
 next_country	फुडलो देश
 next_order	फुडलो ऑर्डर (क्लियर डेस्क)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ड्राफ्ट
+park_draft	ड्राफ्टांत दवरात
+drafts_help	गल्ल्यावयले तुमी मदींच कुशीक दवरिल्ले अर्दकुटे ऑर्डर — «फारीकणी घेवची» जायसर ते बहींत वचनात. कार्ड दामात, तें «क्रम» चेर परत उकतें जातलें; «ड्राफ्ट काडात» ड्राफ्ट काडटा. «दीस बंद» हे निवळ करिना.
+drafts_park_nothing	दवरपाक कांयच ना — कार्टांत वस्तू जोडात
+drafts_park_counter_only	«ड्राफ्टांत दवरात» फकत गल्ल्यावयल्या ऑर्डरा खातीर आसा — मेजाचो ऑर्डर सोडात वा «हॉल» वापरात
+drafts_parked	«ड्राफ्ट» हातूंत दवरलें — गल्लो रितो आसा
+drafts_discard	ड्राफ्ट काडात
+drafts_discarded	ड्राफ्ट काडलो
+drafts_gone	तो ड्राफ्ट आतां वळेरेंत ना
+drafts_closed	त्या ड्राफ्टाचे पयशे पयलींच फारीक जाल्यात वा तो काडला
+drafts_empty	अजून ड्राफ्ट नात. «गल्लो» चेर पदार्थ जोडात आनी «ड्राफ्टांत दवरात» दामात.
+drafts_card_kind	ड्राफ्ट
+drafts_card_no_lines	वस्तू नात
+drafts_card_lines	वस्तू
+drafts_summary_fmt	{n} उकते ड्राफ्ट
+drafts_cols_fmt	{n} स्तंभ
 note_gstin_ph	टिप / जीएसटीआयएन / कराराची याद करून दिवप
 notes_attach_party	टिपा आनी संलग्नक (निवडिल्लो पक्ष)
 notes_attach_sale	नोंदी आनी संलग्नक (निवडित विक्री)
@@ -588,15 +588,15 @@ print_open	छापप / उगडप
 reason_amend_ph	दुरुस्ती / रद्द / परतावो करपाचें कारण
 reason_note_ph	कारण / टिप (वाया घालप, गणना, ...)
 record_day_close	विक्रमी दीस बंद
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«आयज» केन्ना नव्यान सुरू जाता?
+business_day_help	«दीस बंद मेरेन» वेंचल्यार, तुमी दीस बंद नोंद करी मेरेन «दिसाळी बही» मध्यान राती उपरांतूय चालू उरता. «कॅलेंडराची मध्यान रात» वेंचल्यार, दीस थळाव्या वेळा प्रमाण रातचे 12:00 वरांचेर सोंपता.
+biz_day_until_close	दीस बंद मेरेन
+biz_day_midnight	कॅलेंडराची मध्यान रात
+business_day_saved	वेवसायाचो दीस सांबाळ्ळो
+report_day_lens	«आयज» अशें पळयात
+report_day_lens_help	फकत पळोवपा खातीर — «दीस बंद» केन्ना «आयज» नव्यान सुरू करता तें हाका लागून बदलना. «दीस बंद प्रमाण» निमाण्या दीस बंदा सावन मेजता; «मध्यान राती प्रमाण» थळाव्या वेळा प्रमाण रातचे 12:00 वरांचेर कापता.
+report_lens_day_close	दीस बंद प्रमाण
+report_lens_midnight	मध्यान राती प्रमाण
 refresh_from_shop	दुकानांतल्यान ताजें करचें
 refund	रिफंड
 remove_selected	निवडिल्लें काडून उडोवचें
@@ -864,7 +864,7 @@ find_printers	प्रिंटर सोदून काडात
 printers_looking	पळयता...
 saving_printer	प्रिंटर जोडप...
 cancelled	रद्द केलां
-cancelling	Cancellingâ¦
+cancelling	रद्द जाता…
 removing	काडटा…
 removed	काडलें
 updating_order	अपडेट जाता…
@@ -1116,7 +1116,7 @@ tile_undo_bill	बिल पूर्ववत करचें
 summary_busy	मेज व्यस्त
 summary_to_collect	एकठांय करप
 summary_on_floor	जमनीर आसता
-floor	जमीन
+floor	हॉल
 sizes_as_items_ph	वेगवेगळीं वस्तू म्हणून आकार (पर्यायी) — अर्द=120, पुराय=200
 dish_group_ph	डिश गट (पर्यायी) — उदा. पनीर टिक्का
 discount	सवलत

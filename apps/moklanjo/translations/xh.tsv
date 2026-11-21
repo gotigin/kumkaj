@@ -3,27 +3,27 @@ app_tagline	Iincwadi ze-Courier-agency + idesika yokubhukisha. Isimahla ngaphand
 unlock	Vula
 pin_hint	I-PIN yomnini iqala ngo-0000
 sell	Ukubhukisha
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Ibhodi
+board	Ibhodi
+park_draft	Beka njengedrafti
+board_help	Iidrafti ezivulekileyo (zihlala de ucofe «Lahla» okanye «Qokelela intlawulo») neentengiso ezibhukishwe namhlanje. Ku-«Ukubhukisha», cofa «Beka njengedrafti» phakathi emsebenzini (igcinwa apha, hayi ezincwadini); cofa idrafti ukuze uqhubeke.
+board_empty	Akukabikho makhadi.
+board_park_nothing	Akukho nto yokubeka ecaleni — yongeza iintlawulo okanye iinkcukacha zokubhukisha
+board_parked	Ibekwe ku-«Ibhodi» — idesika ayinanto
+board_draft	Idrafti
+board_booked	Ibhukishiwe
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Idrafti
+board_filter_booked	Ibhukishiwe
+board_cols_fmt	Iikholamu ezi-{n}
+board_summary_fmt	Amakhadi ali-{total} · iidrafti ezi-{drafts} · ezibhukishiweyo ezi-{booked}
+board_card_no_charges	Akukabikho ntlawulo
+board_card_charges	iintlawulo
+board_card_booked	Ukubhukisha
+board_draft_gone	Loo drafti ayisekho ku-«Ibhodi»
+board_draft_closed	Loo drafti sele igqityiwe okanye ilahliwe
+board_discard	Lahla
+board_discarded	Idrafti ilahliwe
 buy	Hlawula
 books	Incwadi yosuku
 books_help	Isikhundla sanamhlanje. Ukubhukisha = iipasile ngaphakathi. Hlawula = amatyala ophethe & neendleko. Amaqela = abathumeli nabathwali.
@@ -220,7 +220,7 @@ snack_secs_save	Gcina ixesha lesilumkiso
 snack_secs_saved	Ixesha lesilumkiso ligciniwe — imizuzwana {n}
 snack_secs_bad	Faka imizuzwana njengenani (3–60)
 cancelled	Kurhoxisiwe
-cancelling	Cancellingâ¦
+cancelling	Iyarhoxisa…
 cancel	Rhoxisa
 opening_client	Ivula iklayenti…
 preparing_desk	Ilungisa ideski…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopisha i-CSV yencwadi yeqela
 copy_receipt	Kopisha irisithi
 copy_report	Kopisha ingxelo
 counted_cash_ph	Imali ephathekayo ebalwe kwidrowa
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Vala ishifti ushicilele isliphu
+shift_handover	Ukunikela ishifti
+shift_counted_ph	Imali ephathekayo ebalwe ekunikezelweni
+shift_since	Le shifti ukususela
+expected_in_drawer	Okulindelweyo kwidrowa
+lock_books_through_month	Tshixa iincwadi de kube yinyanga
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Tshixa de kube yile nyanga
+books_locked_none	Akukabikho nyanga itshixiweyo
+books_locked_through	Itshixiwe de kube
 counter_agency_ph	Ikhawuntala / igama lomenzeli (uyazikhethela)
 create_backup	Yenza ugcino lwasemva
 day_close_summary	Isishwankathelo sokuvala usuku
@@ -442,9 +442,9 @@ pay_ap_cash	Hlawula i-AP ngemali ephathekayo
 pay_ap_upi	Hlawula i-AP nge-UPI
 period_bill	Ityala lexesha
 period_bill_party	Ityala lexesha (ipati)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Yenza i-invoyisi
+period_bill_generate_print	Yenza uze ushicilele
+booking_bulk_preview	Ezilungileyo: {ok} · ezineempazamo: {bad}
 pick_pod_photo	Khetha ifoto yePOD
 print_awb_label	Shicilela ileyibhile ye-AWB
 print_open	Shicilela / vula
@@ -653,19 +653,19 @@ attachments_last_expense	Okuqhotyoshelweyo (inkcitho yokugqibela)
 credit_limit_heading	Umda wekhredithi (iqela elikhethiweyo / elinegama)
 pay_selected_heading	Hlawula okukhethiweyo (gcina ityala / thatha imali yangaphambili)
 write_off_heading	Cima (cima ngaphandle kwentlawulo)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Amanqaku ohlengahlengiso
+adj_note_amount_ph	Imali
+adj_note_reason_ph	Isizathu (siyafuneka)
+adj_note_awb_ph	I-AWB enxulumeneyo (ukhetho)
+credit_note_btn	Inqaku letyala
+debit_note_btn	Inqaku lokutsalwa
+bill_later_heading	Hlawulisa kamva (intlawulo eyongezelelweyo emva kokubhukisha)
+bill_later_amount_ph	Imali eyongezelelweyo
+bill_later_party_ph	Iqela (kuphela ukuba ukubhukisha akunalo)
+bill_later_btn	Hlawulisa kamva
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Ukupakisha
+bill_later_extra_other	Okunye
 pay_ap_heading	Hlawula esibatyala kona (i-AP)
 country_tax	Ilizwe nerhafu
 extra_tills_heading	Ezinye iikhawuntara
@@ -777,26 +777,26 @@ onboard_book_tmpl	Incwadi · {} — yongeza izinto nekhredithi yokuqala, emva ko
 onboard_template_tmpl	Yithiye igama indawo ukuba ufuna, emva koko ukhethe indlela yokuqala.
 tmpl_blurb	Iincwadi zeCourier kunye nedesika yokubhukisha: abathumeli, abathwali, incwadi yosuku, i-AWB.
 tmpl_how	Iipasile zencwadi edesikeni; Incwadi yosuku yanamhlanje; iithebhu kumaxabiso, amaqela, iingxelo.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Iitemplate zevenkile
+app_template_blurb	Khetha idesika yokuqala. «Tsiba okwangoku» ishiya uluhlu lwamaqela lungenanto.
+app_template_skip	Tsiba okwangoku
+app_template_status	Iseva ilungile — ngenisa itemplate, okanye utsibe
+app_template_importing	Ifaka {title}…
+app_template_public_hdr	Iitemplate
+app_template_import_selected	Ngenisa okukhethiweyo
+app_template_wipe_warn	Oku kucima idatha yorhwebo ezincwadini (ukubhukisha, iileja) kuze kusebenzise useto lwevenkile lwetemplate. Qhubeka?
+app_template_wipe_continue	Qhubeka
+app_template_wipe_cancel	Rhoxisa
+public_tmpl_help	Iipakethe ze-arhente eziza nesi sicelo zale venkile. Akukho mfuneko yokukhuphela.
+business_day	«Namhlanje» iqala nini kwakhona?
+business_day_help	Xa kukhethwe «De kube kukuvalwa kosuku», «Incwadi yosuku» iyaqhubeka nasemva kobusuku obuphakathi de urekhode ukuvalwa kosuku. Xa kukhethwe «Ezinzulwini zobusuku ngekhalenda», usuku lunqunyulwa ngo-00:00 ngexesha lasekuhlaleni.
+biz_day_until_close	De kube kukuvalwa kosuku
+biz_day_midnight	Ezinzulwini zobusuku ngekhalenda
+business_day_saved	Usuku lomsebenzi lugciniwe
+report_day_lens	Bonisa «Namhlanje» ngoku
+report_day_lens_help	Kukujonga kuphela — akutshintshi ukuba «Ukuvala usuku» iyiqala nini kwakhona «Namhlanje». «Ngokuvalwa kosuku» ilandela ukuvalwa kosuku kokugqibela; «Ngezinzulu zobusuku» inqumla ngo-00:00 ngexesha lasekuhlaleni.
+report_lens_day_close	Ngokuvalwa kosuku
+report_lens_midnight	Ngezinzulu zobusuku
 trk_booked	Ibhukishiwe
 trk_picked_up	Ndiyichole
 trk_in_transit	Iyaqhubeka

@@ -3,27 +3,27 @@ app_tagline	Kotba tal-kurrier-aġenzija + booking desk. B'xejn offline.
 unlock	Iftaħ
 pin_hint	Il-PIN tas-sid jibda b'0000
 sell	Prenotazzjoni
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Bord
+board	Bord
+park_draft	Issejvja bħala abbozz
+board_help	Abbozzi miftuħa (jinżammu sakemm tagħżel «Armi» jew «Ħu ħlas») u l-bejgħ irreġistrat tal-lum. F'«Prenotazzjoni», tektek «Issejvja bħala abbozz» f'nofs ix-xogħol (jiġi ssejvjat hawn, mhux fil-kotba); tektek abbozz biex tkompli.
+board_empty	Għad m'hemmx karti.
+board_park_nothing	M'hemm xejn x'twarrab — żid miżati jew dettalji tal-prenotazzjoni
+board_parked	Issejvjat f'«Bord» — id-desk huwa ħieles
+board_draft	Abbozz
+board_booked	Ibbukkjat
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Abbozz
+board_filter_booked	Ibbukkjat
+board_cols_fmt	{n} kolonni
+board_summary_fmt	{total} karti · {drafts} abbozzi · {booked} irreġistrati
+board_card_no_charges	Ebda miżati s'issa
+board_card_charges	miżati
+board_card_booked	Prenotazzjoni
+board_draft_gone	Dak l-abbozz m'għadux fi «Bord»
+board_draft_closed	Dak l-abbozz kien diġà lest jew tħassar
+board_discard	Armi
+board_discarded	Abbozz imħassar
 buy	Ħlas
 books	Ktieb tal-ġurnata
 books_help	Il-pożizzjoni tal-lum. Booking = pakketti pulzieri Ħlas = kontijiet tat-trasportatur u spejjeż. Partijiet = konsenjaturi u trasportaturi.
@@ -88,7 +88,7 @@ applied	Applikat
 note_ph	Nota (mhux obbligatorja)
 rounded	ARROTONDAT
 split	Aqsam
-counter	Kontatur
+counter	Counter
 parcel	Pakkett
 order	Ordni
 sales	Prenotazzjonijiet
@@ -220,7 +220,7 @@ snack_secs_save	Salva l-ħin tat-twissija
 snack_secs_saved	Ħin tat-twissija salvat — {n} sekondi
 snack_secs_bad	Daħħal is-sekondi bħala numru (3–60)
 cancelled	Ikkanċellat
-cancelling	Cancellingâ¦
+cancelling	Qed tikkanċella…
 cancel	Ikkanċella
 opening_client	Qed niftħu l-klijent…
 preparing_desk	Qed nipprepara d-desk…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Ikkopja r-reġistru tal-parti CSV
 copy_receipt	Kopja tal-irċevuta
 copy_report	Ikkopja rapport
 counted_cash_ph	Flus magħduda fil-kexxun
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Agħlaq ix-shift u tipprintja slip
+shift_handover	Trasferiment tax-shift
+shift_counted_ph	Flus kontanti magħduda fil-konsenja
+shift_since	Din il-bidla peress
+expected_in_drawer	Mistennija fil-kexxun
+lock_books_through_month	Sakkar il-kotba sal-aħħar tax-xahar
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Sakkar sal-aħħar ta' dan ix-xahar
+books_locked_none	Għad m'hemm l-ebda xahar imsakkar
+books_locked_through	Imsakkar sa
 counter_agency_ph	Isem tal-bank/aġenzija (mhux obbligatorju)
 create_backup	Oħloq backup
 day_close_summary	Sommarju tal-għeluq tal-ġurnata
@@ -442,9 +442,9 @@ pay_ap_cash	Ħlas AP flus kontanti
 pay_ap_upi	Ħlas AP UPI
 period_bill	Kont tal-perjodu
 period_bill_party	Kont tal-perjodu (parti)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Oħloq fattura
+period_bill_generate_print	Oħloq u pprintja
+booking_bulk_preview	{ok} lest · {bad} bi żbalji
 pick_pod_photo	Agħżel ritratt tal-POD
 print_awb_label	Stampa tikketta AWB
 print_open	Stampa / tiftaħ
@@ -653,19 +653,19 @@ attachments_last_expense	Attachments (l-aħħar spiża)
 credit_limit_heading	Limitu ta' kreditu (parti magħżula/imsemmija)
 pay_selected_heading	Ħlas magħżula (issolvi d-dejn / tieħu bil-quddiem)
 write_off_heading	Tħassir (ċar mingħajr ħlas)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Noti ta' aġġustament
+adj_note_amount_ph	Ammont
+adj_note_reason_ph	Raġuni (meħtieġa)
+adj_note_awb_ph	AWB relatat (mhux obbligatorju)
+credit_note_btn	Nota ta' kreditu
+debit_note_btn	Nota ta' debitu
+bill_later_heading	Iċċarġja aktar tard (ħlas żejjed wara l-prenotazzjoni)
+bill_later_amount_ph	Ammont żejjed
+bill_later_party_ph	Klijent (biss jekk il-prenotazzjoni m'għandhiex)
+bill_later_btn	Iċċarġja aktar tard
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Ippakkjar
+bill_later_extra_other	Oħrajn
 pay_ap_heading	Ħlas dak li nirrispettawhom (AP)
 country_tax	Pajjiż u taxxa
 extra_tills_heading	Kaxxi żejda
@@ -777,26 +777,26 @@ onboard_book_tmpl	Ktieb · {} — żid oġġetti u kreditu tal-ftuħ, imbagħad 
 onboard_template_tmpl	Semmi l-post jekk trid, imbagħad agħżel kif tibda.
 tmpl_blurb	Kotba tal-kurrier u skrivanija tal-prenotazzjoni: konsenjaturi, trasportaturi, ktieb tal-ġurnata, AWB.
 tmpl_how	Ibbukkja pakketti fuq l-iskrivanija; Ktieb ta’ jum għal-lum; tabs għal rati, partijiet, rapporti.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Mudelli tal-ħanut
+app_template_blurb	Agħżel desk tal-bidu. «Aqbeż għalissa» iħalli l-lista tal-klijenti vojta.
+app_template_skip	Aqbeż għalissa
+app_template_status	Is-server lest — importa mudell, jew aqbeż
+app_template_importing	Qed tapplika {title}...
+app_template_public_hdr	Mudelli
+app_template_import_selected	Importa l-magħżul
+app_template_wipe_warn	Dan jikklerja d-dejta tal-kummerċ fil-kontijiet (prenotazzjonijiet, kotba) u japplika s-settings tal-ħanut tal-mudell. Trid tkompli?
+app_template_wipe_continue	Kompli
+app_template_wipe_cancel	Ikkanċella
+public_tmpl_help	Mudelli ta’ aġenzija lesti li jiġu mal-app. Ebda download meħtieġ.
+business_day	Meta jerġa' jibda «Illum»?
+business_day_help	B'«Sal-għeluq tal-ġurnata», «Ktieb tal-ġurnata» jibqa' għaddej wara nofsillejl sakemm tirreġistra l-għeluq tal-ġurnata. B'«Nofsillejl tal-kalendarju», il-ġurnata tinqata' f'00:00, ħin lokali.
+biz_day_until_close	Sal-għeluq tal-ġurnata
+biz_day_midnight	Nofsillejl tal-kalendarju
+business_day_saved	Issettjar tal-ġurnata tan-negozju salvat
+report_day_lens	Uri «Illum» bħala
+report_day_lens_help	Veduta biss — ma jbiddilx meta «Għeluq tal-ġurnata» jerġa' jibda «Illum». «Skont l-għeluq tal-ġurnata» isegwi l-aħħar għeluq tal-ġurnata; «Skont nofsillejl» jaqta' f'00:00, ħin lokali.
+report_lens_day_close	Skont l-għeluq tal-ġurnata
+report_lens_midnight	Skont nofsillejl
 trk_booked	Ibbukkjat
 trk_picked_up	Ġabar
 trk_in_transit	Fi transitu

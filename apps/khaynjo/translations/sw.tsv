@@ -384,12 +384,12 @@ app_template_need_internet	Intaneti inahitajika kupakua violezo
 app_template_import_selected	Leta kilichochaguliwa
 app_template_check_code	Kagua msimbo
 app_template_import	Leta
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Leta kutoka kifaa hiki
+app_template_from_device_help	Chagua folda yenye template.json (na shop_defaults.json ikiwa ipo).
+settings_app_tmpl_note	Kuleta tena hufuta mauzo, KOT na leja, kisha hutumia mipangilio ya duka ya kifurushi. Violezo vya menyu pekee: «Menyu» → «Violezo vya bidhaa».
+app_template_wipe_warn	Hii hufuta data ya biashara kwenye vitabu (mauzo, KOT, leja) na kutumia mipangilio ya duka ya kiolezo. Menyu na usanidi vinaweza kubadilika. Endelea?
+app_template_wipe_continue	Endelea
+app_template_wipe_cancel	Ghairi
 currency	Sarafu
 backup	Hifadhi nakala
 use	Tumia
@@ -550,22 +550,22 @@ new_party_clear	Mhusika mpya (safisha fomu)
 new_party_kind_supplier_ph	Aina ya mhusika mpya (msambazaji)
 next_country	Nchi inayofuata
 next_order	Agizo linalofuata (safisha dawati)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Rasimu
+park_draft	Weka kama rasimu
+drafts_help	Oda za kaunta ulizoziweka kando katikati — haziingii vitabuni hadi «Chukua malipo». Gusa kadi ili kuendelea nayo kwenye «Oda»; «Tupa rasimu» hufuta rasimu. «Funga siku» haifuti hizi.
+drafts_park_nothing	Hakuna cha kuweka kando — ongeza bidhaa kwenye kikapu
+drafts_park_counter_only	«Weka kama rasimu» ni kwa oda za kaunta pekee — ondoka kwenye oda ya meza au tumia «Sakafu»
+drafts_parked	Imewekwa kwenye «Rasimu» — kaunta iko wazi
+drafts_discard	Tupa rasimu
+drafts_discarded	Rasimu imetupwa
+drafts_gone	Rasimu hiyo haipo tena kwenye orodha
+drafts_closed	Rasimu hiyo tayari imelipwa au imetupwa
+drafts_empty	Bado hakuna rasimu. Kwenye «Kaunta», ongeza vyakula kisha gusa «Weka kama rasimu».
+drafts_card_kind	Rasimu
+drafts_card_no_lines	Hakuna mistari
+drafts_card_lines	mistari
+drafts_summary_fmt	Rasimu {n} zilizo wazi
+drafts_cols_fmt	Safu {n}
 note_gstin_ph	Kumbuka / GSTIN / ukumbusho wa makubaliano
 notes_attach_party	Kumbuka na viambatisho (mhusika aliyechaguliwa)
 notes_attach_sale	Kumbuka na viambatisho (mauzo yaliyochaguliwa)
@@ -588,15 +588,15 @@ print_open	Chapisha / fungua
 reason_amend_ph	Sababu ya kurekebisha / kufuta / kurejesha
 reason_note_ph	Sababu / kumbuka (uharibifu, kuhesabu, …)
 record_day_close	Rekodi kufunga siku
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Leo» huanza upya lini?
+business_day_help	Ukichagua «Hadi kufunga siku», «Kitabu cha siku» huendelea baada ya saa sita usiku hadi urekodi kufunga siku. Ukichagua «Saa sita usiku ya kalenda», siku hukatwa saa 00:00 kwa saa za mahali.
+biz_day_until_close	Hadi kufunga siku
+biz_day_midnight	Saa sita usiku ya kalenda
+business_day_saved	Siku ya kazi imehifadhiwa
+report_day_lens	Onyesha «Leo» kwa
+report_day_lens_help	Ni mwonekano tu — haibadilishi ni lini «Funga siku» huanzisha upya «Leo». «Kwa kufunga siku» hufuata kufunga siku kwa mwisho; «Kwa saa sita usiku» hukata saa 00:00 kwa saa za mahali.
+report_lens_day_close	Kwa kufunga siku
+report_lens_midnight	Kwa saa sita usiku
 refresh_from_shop	Onyesha upya kutoka dukani
 refund	Kurejesha
 remove_selected	Ondoa aliyechaguliwa
@@ -864,7 +864,7 @@ find_printers	Tafuta printa
 printers_looking	Inatafuta printa kwenye kifaa hiki na Wi‑Fi…
 saving_printer	Inaongeza kifaa cha kuvunja…
 cancelled	Imefutwa
-cancelling	Cancellingâ¦
+cancelling	Inaghairi…
 removing	Inaondoa…
 removed	Imeondolewa
 updating_order	Inasasisha…

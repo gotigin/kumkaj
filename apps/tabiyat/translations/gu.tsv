@@ -365,15 +365,15 @@ print_open	છાપો / ખોલો
 reason_amend_ph	સુધારો / રદ / પરતનું કારણ
 reason_note_ph	કારણ / નોંધ (બગાડ, ગણતરી, …)
 record_day_close	દિવસ બંધ નોંધો
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«આજે» ક્યારે નવેસરથી શરૂ થાય?
+business_day_help	«દિવસ બંધ સુધી» પસંદ કરો તો તમે દિવસ બંધ નોંધો ત્યાં સુધી «રોજમેળ» મધરાત પછી પણ ચાલુ રહે છે. «કૅલેન્ડરની મધરાત» પસંદ કરો તો દિવસ સ્થાનિક સમય મુજબ રાતે 12:00 વાગ્યે કપાય છે.
+biz_day_until_close	દિવસ બંધ સુધી
+biz_day_midnight	કૅલેન્ડરની મધરાત
+business_day_saved	વેપારી દિવસ સચવાયો
+report_day_lens	«આજે» આ રીતે જુઓ
+report_day_lens_help	ફક્ત જોવા માટે — «દિવસ બંધ» ક્યારે «આજે»ને નવેસરથી શરૂ કરે છે તે આનાથી બદલાતું નથી. «દિવસ બંધ પ્રમાણે» છેલ્લા દિવસ બંધથી ગણે છે; «મધરાત પ્રમાણે» સ્થાનિક સમય મુજબ રાતે 12:00 વાગ્યે કપાય છે.
+report_lens_day_close	દિવસ બંધ પ્રમાણે
+report_lens_midnight	મધરાત પ્રમાણે
 refresh_from_shop	દુકાનમાંથી તાજું કરો
 refund	પરત
 remove_selected	પસંદ કરેલ દૂર કરો
@@ -849,19 +849,19 @@ client_template_confirm	{title} માંથી {d} આઇટમ ઉમેરવ
 client_template_importing	{title} આયાત…
 client_template_done	{title} ની દરેક આઇટમ તમારી આઇટમમાં છે.
 client_template_imported	{title} માંથી {d} આઇટમ અને {c} શ્રેણીઓ ઉમેરી
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	દુકાન ટેમ્પ્લેટ
+app_template_blurb	શરૂઆતનો કૅટલૉગ અને દુકાન સેટિંગ્સ પસંદ કરો. «હમણાં છોડો» દબાવશો તો શેલ્ફ ખાલી રહેશે.
+app_template_skip	હમણાં છોડો
+app_template_status	સર્વર તૈયાર — ટેમ્પ્લેટ આયાત કરો, અથવા છોડો
+app_template_importing	{title} લાગુ કરી રહ્યાં છીએ…
+app_template_import_selected	પસંદ કરેલું આયાત કરો
+app_template_wipe_warn	આનાથી ચોપડાનો વેપારી ડેટા (વેચાણ, ખાતાં) સાફ થશે અને ટેમ્પ્લેટની દુકાન સેટિંગ્સ લાગુ થશે. આગળ વધવું?
+app_template_wipe_continue	આગળ વધો
+app_template_wipe_cancel	રદ
+app_template_from_device	આ ડિવાઇસમાંથી આયાત કરો
+app_template_from_device_help	એવું ફોલ્ડર પસંદ કરો જેમાં template.json હોય (shop_defaults.json હોય તો તે પણ).
+settings_app_tmpl_note	પૂરા દુકાન પેક: કૅટલૉગ અને દુકાન સેટિંગ્સ. કોઈ પેક ફરી આયાત કરવાથી વેચાણ અને ખાતાં સાફ થાય છે, પછી પેકની દુકાન સેટિંગ્સ લાગુ થાય છે.
+app_tmpl_named	{name} દુકાન ટેમ્પ્લેટ
 cancel	રદ કરો
 removing	દૂર કરી રહ્યાં છીએ…
 removed	દૂર કર્યું

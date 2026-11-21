@@ -252,7 +252,7 @@ sidebar_order_saved	Редът на лентата е запазен
 sidebar_visibility_saved	Видимостта на лентата е запазена
 amounts_hide	Скрий
 amounts_show	Покажи
-counter	Тезегях
+counter	Тезгях
 dine_in	На място
 takeaway	За вкъщи
 order	Поръчка
@@ -384,12 +384,12 @@ app_template_need_internet	Нужен е интернет за изтеглян�
 app_template_import_selected	Импортиране на избраното
 app_template_check_code	Проверка на кода
 app_template_import	Импортиране
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Импортиране от това устройство
+app_template_from_device_help	Изберете папка, която съдържа template.json (и по желание shop_defaults.json).
+settings_app_tmpl_note	Повторният импорт изчиства продажбите, KOT и партидите, след което прилага настройките на обекта от пакета. Шаблони само с меню: «Меню» → «Шаблони за артикули».
+app_template_wipe_warn	Това изчиства търговските данни в книгите (продажби, KOT, партиди) и прилага настройките на обекта от шаблона. Менюто и настройката може да се променят. Продължавате ли?
+app_template_wipe_continue	Продължи
+app_template_wipe_cancel	Откажи
 currency	Валута
 backup	Резервно копие
 use	Ползвай
@@ -550,22 +550,22 @@ new_party_clear	Нов контрагент (изчисти формуляра)
 new_party_kind_supplier_ph	Вид на новия контрагент (Доставчик)
 next_country	Следваща държава
 next_order	Следваща поръчка (изчисти тезегяха)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Чернови
+park_draft	Отложи като чернова
+drafts_help	Поръчки от тезгяха, които сте оставили настрана по средата — влизат в книгите едва след «Приеми плащане». Докоснете карта, за да продължите в «Поръчка»; «Изхвърли черновата» изтрива черновата. «Приключване на деня» не ги изчиства.
+drafts_park_nothing	Няма какво да се отложи — добавете артикули в количката
+drafts_park_counter_only	«Отложи като чернова» е само за поръчки от тезгяха — излезте от поръчката на масата или използвайте «Зала»
+drafts_parked	Отложено в «Чернови» — тезгяхът е свободен
+drafts_discard	Изхвърли черновата
+drafts_discarded	Черновата е изхвърлена
+drafts_gone	Тази чернова вече не е в списъка
+drafts_closed	Тази чернова вече е платена или изхвърлена
+drafts_empty	Още няма чернови. В «Тезгях» добавете ястия и докоснете «Отложи като чернова».
+drafts_card_kind	Чернова
+drafts_card_no_lines	Няма редове
+drafts_card_lines	реда
+drafts_summary_fmt	{n} отворени чернови
+drafts_cols_fmt	{n} кол.
 note_gstin_ph	Бележка / GSTIN / напомняне за договор
 notes_attach_party	Бележки и прикачени файлове (избран контрагент)
 notes_attach_sale	Бележки и прикачени файлове (избрана продажба)
@@ -588,15 +588,15 @@ print_open	Печат / отвори
 reason_amend_ph	Причина за поправка / анулиране / възстановяване
 reason_note_ph	Причина / бележка (фира, броене, …)
 record_day_close	Запиши приключването на деня
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Кога «Днес» започва отначало?
+business_day_help	С «До приключване на деня» «Дневник» продължава и след полунощ, докато не запишете приключването на деня. С «Календарна полунощ» денят приключва в 00:00 местно време.
+biz_day_until_close	До приключване на деня
+biz_day_midnight	Календарна полунощ
+business_day_saved	Работният ден е запазен
+report_day_lens	Показвай «Днес» като
+report_day_lens_help	Само изглед — не променя кога «Приключване на деня» започва «Днес» отначало. «По приключване на деня» следва последното приключване на деня; «По полунощ» реже в 00:00 местно време.
+report_lens_day_close	По приключване на деня
+report_lens_midnight	По полунощ
 refresh_from_shop	Обнови от заведението
 refund	Възстанови
 remove_selected	Премахни избраното
@@ -864,7 +864,7 @@ find_printers	Намери принтери
 printers_looking	Търсене…
 saving_printer	Добавяне на принтер…
 cancelled	Отказано
-cancelling	Cancellingâ¦
+cancelling	Отменяне…
 removing	Премахване…
 removed	Премахнато
 updating_order	Обновяване…

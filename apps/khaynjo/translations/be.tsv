@@ -252,15 +252,15 @@ sidebar_order_saved	Парадак бакавой панэлі захаваны
 sidebar_visibility_saved	Бачнасць бакавой панэлі захавана
 amounts_hide	Схаваць
 amounts_show	Паказаць
-counter	Лічыльнік
+counter	Стойка
 dine_in	Прыём ежы
 takeaway	На вынас
-order	Парадак
+order	Заказ
 tables	Табліцы
 kitchen	кухня
 sales	Продажы
 sales_refunds	Продажы і вяртанне сродкаў
-day_close	Блізкі дзень
+day_close	Закрыццё дня
 reports_expenses	Банкаўская кніга і прыбыткі і страты
 nav_reports	Даклады
 nav_settings	Налады
@@ -384,12 +384,12 @@ app_template_need_internet	Для спампоўкі шаблонаў патрэ
 app_template_import_selected	Імпартаваць выбранае
 app_template_check_code	Праверыць код
 app_template_import	Імпартаваць
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Імпартаваць з гэтай прылады
+app_template_from_device_help	Выберыце папку, у якой ёсць template.json (і, пры жаданні, shop_defaults.json).
+settings_app_tmpl_note	Паўторны імпарт ачышчае продажы, KOT і рахункі, а потым ужывае налады крамы з пакета. Шаблоны толькі з меню: «Меню» → «Шаблоны пазіцый».
+app_template_wipe_warn	Гэта ачысціць гандлёвыя даныя ў кнігах (продажы, KOT, рахункі) і ўжые налады крамы з шаблона. Меню і налады могуць змяніцца. Працягнуць?
+app_template_wipe_continue	Працягнуць
+app_template_wipe_cancel	Адмяніць
 currency	Валюта
 backup	Рэзервовае капіраванне
 use	Выкарыстоўвайце
@@ -550,22 +550,22 @@ new_party_clear	Новы кліент або пастаўшчык (чыстая 
 new_party_kind_supplier_ph	Тып новага кліента або пастаўшчыка (Пастаўшчык)
 next_country	Наступная краіна
 next_order	Наступны заказ (чысты стол)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Чарнавікі
+park_draft	Адкласці чарнавік
+drafts_help	Заказы каля стойкі, адкладзеныя на паўдарозе: у кнігі яны трапляюць толькі пасля «Прыняць аплату». Націсніце картку, каб працягнуць яе ў раздзеле «Заказ»; «Выкінуць чарнавік» выдаляе чарнавік. «Закрыццё дня» іх не ачышчае.
+drafts_park_nothing	Няма чаго адкладаць — дадайце пазіцыі ў кошык
+drafts_park_counter_only	«Адкласці чарнавік» працуе толькі для заказаў каля стойкі — выйдзіце з заказу стала або скарыстайце «Сталовая зала»
+drafts_parked	Адкладзена ў раздзел «Чарнавікі» — стойка вольная
+drafts_discard	Выкінуць чарнавік
+drafts_discarded	Чарнавік выкінуты
+drafts_gone	Гэтага чарнавіка ўжо няма ў спісе
+drafts_closed	Гэты чарнавік ужо аплачаны або выкінуты
+drafts_empty	Чарнавікоў пакуль няма. У раздзеле «Стойка» дадайце стравы і націсніце «Адкласці чарнавік».
+drafts_card_kind	Чарнавік
+drafts_card_no_lines	Няма радкоў
+drafts_card_lines	радкоў
+drafts_summary_fmt	Адкрытыя чарнавікі: {n}
+drafts_cols_fmt	{n} слупк.
 note_gstin_ph	Заўвага / GSTIN / напамін аб пагадненні
 notes_attach_party	Заўвагі і дадаткі (абраны кліент або пастаўшчык)
 notes_attach_sale	Нататкі і дадаткі (выбраная продаж)
@@ -588,15 +588,15 @@ print_open	Раздрукаваць / адкрыць
 reason_amend_ph	Прычына змены / анулявання / вяртання грошай
 reason_note_ph	Прычына / заўвага (трата, колькасць, ...)
 record_day_close	Закрыццё дня запісу
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Калі «Сёння» пачынаецца нанова?
+business_day_help	Пры выбары «Да закрыцця дня» «Дзённая кніга» працягваецца пасля поўначы, пакуль вы не запішаце закрыццё дня. Пры выбары «Каляндарная поўнач» дзень абразаецца ў 00:00 па мясцовым часе.
+biz_day_until_close	Да закрыцця дня
+biz_day_midnight	Каляндарная поўнач
+business_day_saved	Працоўны дзень захаваны
+report_day_lens	Паказваць «Сёння» як
+report_day_lens_help	Толькі выгляд — не мяняе, калі «Закрыццё дня» пачынае «Сёння» нанова. «Па закрыцці дня» лічыць ад апошняга закрыцця дня; «Па поўначы» абразае ў 00:00 па мясцовым часе.
+report_lens_day_close	Па закрыцці дня
+report_lens_midnight	Па поўначы
 refresh_from_shop	Абнавіць з крамы
 refund	Вяртанне грошай
 remove_selected	Выдаліць выбранае
@@ -864,7 +864,7 @@ find_printers	Знайдзіце прынтэры
 printers_looking	Шукаю...
 saving_printer	Даданне прынтара…
 cancelled	Адменена
-cancelling	Cancellingâ¦
+cancelling	Скасаванне…
 removing	Выдаленне…
 removed	Выдалена
 updating_order	Абнаўленне…

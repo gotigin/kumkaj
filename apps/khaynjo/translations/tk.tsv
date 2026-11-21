@@ -260,7 +260,7 @@ tables	Nahar saçaklary
 kitchen	Aşhana
 sales	Satyş
 sales_refunds	Satyş we yzyna gaýtaryş
-day_close	Gün ýakyn
+day_close	Güni ýapmak
 reports_expenses	Bank ýazgysy & P&L
 nav_reports	Hasabat
 nav_settings	Sazlamalar
@@ -384,12 +384,12 @@ app_template_need_internet	Şablonlary ýüklemek üçin internet gerek
 app_template_import_selected	Saýlananyny import et
 app_template_check_code	Kody barla
 app_template_import	Import et
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Şu enjamdan import et
+app_template_from_device_help	template.json bar bolan bukjany saýlaň (shop_defaults.json bar bolsa, ony hem).
+settings_app_tmpl_note	Gaýtadan import satyşlary, KOT-lary we hasap depderlerini arassalaýar, soňra paketiň dükan sazlamalaryny ulanýar. Diňe menýuly şablonlar: «Menýu» → «Haryt şablonlary».
+app_template_wipe_warn	Bu depderlerdäki söwda maglumatlaryny (satyşlar, KOT, hasap depderleri) arassalaýar we şablonyň dükan sazlamalaryny ulanýar. Menýu we sazlama üýtgäp biler. Dowam etmelimi?
+app_template_wipe_continue	Dowam et
+app_template_wipe_cancel	Elatyr
 currency	Walýuta
 backup	Uptiýaçlyk
 use	Ulany
@@ -550,22 +550,22 @@ new_party_clear	Täze müşderi ýa-da üpjün ediji (anyk görnüş)
 new_party_kind_supplier_ph	Täze müşderi ýa-da üpjün ediji görnüşi (üpjün ediji)
 next_country	Indiki ýurt
 next_order	Indiki sargyt (arassa stol)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Garalamalar
+park_draft	Garalama goý
+drafts_help	Kassada ýarym ýolda gyra goýan zakazlaryňyz — «Töleg alyň» edilýänçä depderlere girmeýär. Kartoçka basyň — ol «Restoran zakazy» bölüminde dowam eder; «Garalamany poz» garalamany pozýar. «Güni ýapmak» bulary arassalamaýar.
+drafts_park_nothing	Gyra goýmaga zat ýok — sebede haryt goşuň
+drafts_park_counter_only	«Garalama goý» diňe kassa zakazlary üçin — saçak zakazyndan çykyň ýa-da «Naharhana» ulanyň
+drafts_parked	«Garalamalar» bölümine goýuldy — kassa boş
+drafts_discard	Garalamany poz
+drafts_discarded	Garalama pozuldy
+drafts_gone	Ol garalama indi sanawda ýok
+drafts_closed	Ol garalama eýýäm tölenen ýa-da pozulan
+drafts_empty	Entek garalama ýok. «Kassir» bölüminde nahar goşuň we «Garalama goý» basyň.
+drafts_card_kind	Garalama
+drafts_card_no_lines	Setir ýok
+drafts_card_lines	setir
+drafts_summary_fmt	{n} açyk garalama
+drafts_cols_fmt	{n} sütün
 note_gstin_ph	Bellik / GSTIN / şertnamany ýatlatma
 notes_attach_party	Bellikler we goşundylar (saýlanan müşderi ýa-da üpjün ediji)
 notes_attach_sale	Bellikler we goşundylar (saýlanan satuw)
@@ -588,15 +588,15 @@ print_open	Çap et / aç
 reason_amend_ph	Düzediş / ýatyrmak / yzyna gaýtarmagyň sebäbi
 reason_note_ph	Sebäp / bellik (isrip, sanamak,…)
 record_day_close	Güni ýakyn saklaň
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Bu gün» haçan täzeden başlaýar?
+business_day_help	«Gün ýapylýança» saýlansa, siz gün ýapylyşyny ýazýançaňyz «Gün ýazgysy» ýary gijeden soň hem dowam edýär. «Senenama boýunça ýary gije» saýlansa, gün ýerli wagt bilen 00:00-da kesilýär.
+biz_day_until_close	Gün ýapylýança
+biz_day_midnight	Senenama boýunça ýary gije
+business_day_saved	Iş güni saklandy
+report_day_lens	«Bu gün» görkeziş tertibi
+report_day_lens_help	Diňe görnüş — «Güni ýapmak» haçan «Bu gün» täzeden başladýandygyny üýtgetmeýär. «Gün ýapylyşy boýunça» soňky gün ýapylyşyndan hasaplaýar; «Ýary gije boýunça» ýerli wagt bilen 00:00-da kesýär.
+report_lens_day_close	Gün ýapylyşy boýunça
+report_lens_midnight	Ýary gije boýunça
 refresh_from_shop	Dükandan täzelen
 refund	Yzyna gaýtaryp bermek
 remove_selected	Saýlananlary aýyryň
@@ -864,7 +864,7 @@ find_printers	Printerleri tapyň
 printers_looking	Seredýän…
 saving_printer	Printer goşmak…
 cancelled	Atyryldy
-cancelling	Cancellingâ¦
+cancelling	Ýatyrylýar…
 removing	Aýrylýar…
 removed	Aýryldy
 updating_order	Täzelenýär…

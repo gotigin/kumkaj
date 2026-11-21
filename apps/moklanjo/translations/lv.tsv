@@ -3,27 +3,27 @@ app_tagline	Kurjeru aģentūras grāmatas + rezervācijas galds. Bezmaksas bezsa
 unlock	Atbloķēt
 pin_hint	Īpašnieka PIN sākumā ir 0000
 sell	Rezervēšana
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Tāfele
+board	Tāfele
+park_draft	Atlikt melnrakstu
+board_help	Atvērtie melnraksti (paliek, līdz izvēlaties «Atmest» vai «Ņemt maksājumu») un šodien reģistrētā pārdošana. Sadaļā «Rezervēšana» darba vidū pieskarieties «Atlikt melnrakstu» (saglabājas šeit, nevis grāmatvedībā); pieskarieties melnrakstam, lai turpinātu.
+board_empty	Kartīšu vēl nav.
+board_park_nothing	Nav ko atlikt — pievienojiet maksas vai rezervācijas datus
+board_parked	Atlikts sadaļā «Tāfele» — darba vieta ir brīva
+board_draft	Melnraksts
+board_booked	Rezervēts
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Melnraksts
+board_filter_booked	Rezervēts
+board_cols_fmt	{n} kol.
+board_summary_fmt	Kartītes: {total} · melnraksti: {drafts} · reģistrēts: {booked}
+board_card_no_charges	Maksu vēl nav
+board_card_charges	maksas
+board_card_booked	Rezervēšana
+board_draft_gone	Šī melnraksta sadaļā «Tāfele» vairs nav
+board_draft_closed	Šis melnraksts jau ir pabeigts vai atmests
+board_discard	Atmest
+board_discarded	Melnraksts atmests
 buy	Izmaksāt
 books	Dienas grāmata
 books_help	Šodienas pozīcija. Rezervēšana = pakas. Izmaksa = pārvadātāja rēķini un izdevumi. Puses = nosūtītāji un pārvadātāji.
@@ -220,7 +220,7 @@ snack_secs_save	Saglabāt paziņojuma laiku
 snack_secs_saved	Paziņojuma laiks saglabāts — {n} sekundes
 snack_secs_bad	Ievadiet sekundes kā skaitli (3–60)
 cancelled	Atcelts
-cancelling	Cancellingâ¦
+cancelling	Atceļ…
 cancel	Atcelt
 opening_client	Atver termināli…
 preparing_desk	Sagatavo galdu…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopēt puses virsgrāmatas CSV
 copy_receipt	Kopēt kvīti
 copy_report	Kopēt pārskatu
 counted_cash_ph	Saskaitītā skaidrā nauda atvilktnē
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Slēgt maiņu un drukāt lapu
+shift_handover	Maiņas nodošana
+shift_counted_ph	Skaidrā nauda, saskaitīta nodošanā
+shift_since	Šī maiņa kopš
+expected_in_drawer	Gaidāmais atvilktnē
+lock_books_through_month	Slēgt grāmatvedību līdz mēneša beigām
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Slēgt līdz šī mēneša beigām
+books_locked_none	Vēl nav slēgta neviena mēneša
+books_locked_through	Slēgts līdz
 counter_agency_ph	Klienta/aģentūras nosaukums (neobligāti)
 create_backup	Izveidot dublējumu
 day_close_summary	Dienas slēgšanas kopsavilkums
@@ -442,9 +442,9 @@ pay_ap_cash	Maksāt AP skaidrā
 pay_ap_upi	Maksāt AP ar UPI
 period_bill	Perioda rēķins
 period_bill_party	Perioda rēķins (partija)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Izveidot rēķinu
+period_bill_generate_print	Izveidot un drukāt
+booking_bulk_preview	Gatavi: {ok} · ar kļūdām: {bad}
 pick_pod_photo	Izvēlieties POD fotoattēlu
 print_awb_label	Drukājiet AWB etiķeti
 print_open	Drukāt / atvērt
@@ -653,19 +653,19 @@ attachments_last_expense	Pielikumi (pēdējais izdevums)
 credit_limit_heading	Kredīta limits (atlasītā / nosauktā puse)
 pay_selected_heading	Maksāt atlasīto (noslēgt parādu / ņemt avansu)
 write_off_heading	Norakstīt (notīrīt bez maksājuma)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Korekcijas dokumenti
+adj_note_amount_ph	Summa
+adj_note_reason_ph	Iemesls (obligāts)
+adj_note_awb_ph	Saistītais AWB (neobligāti)
+credit_note_btn	Kredītrēķins
+debit_note_btn	Debeta rēķins
+bill_later_heading	Izrakstīt rēķinu vēlāk (piemaksa pēc rezervēšanas)
+bill_later_amount_ph	Papildu summa
+bill_later_party_ph	Puse (tikai ja rezervācijai tās nav)
+bill_later_btn	Izrakstīt rēķinu vēlāk
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Iepakošana
+bill_later_extra_other	Cits
 pay_ap_heading	Maksāt to, ko esam viņiem parādā (AP)
 country_tax	Valsts un nodoklis
 extra_tills_heading	Papildu kases
@@ -777,26 +777,26 @@ onboard_book_tmpl	Grāmata · {} — pievienojiet pozīcijas un sākuma kredītu
 onboard_template_tmpl	Nosauciet vietu, ja vēlaties, tad izvēlieties, kā sākt.
 tmpl_blurb	Kurjeru grāmatas un rezervēšanas galds: nosūtītāji, pārvadātāji, dienasgrāmata, AWB.
 tmpl_how	Paciņu rezervēšana pie rakstāmgalda; Dienas grāmata šodienai; cilnes likmēm, ballītēm, atskaitēm.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Veikala veidnes
+app_template_blurb	Izvēlieties sākuma darba vietu. «Pagaidām izlaist» atstāj pušu sarakstu tukšu.
+app_template_skip	Pagaidām izlaist
+app_template_status	Serveris gatavs — importējiet veidni vai izlaidiet
+app_template_importing	Lieto {title}…
+app_template_public_hdr	Veidnes
+app_template_import_selected	Importēt atlasīto
+app_template_wipe_warn	Tas notīrīs tirdzniecības datus grāmatvedībā (rezervācijas, kontus) un lietos veidnes veikala iestatījumus. Vai turpināt?
+app_template_wipe_continue	Turpināt
+app_template_wipe_cancel	Atcelt
+public_tmpl_help	Šim veikalam iekļautās aģentūras pakotnes. Nekas nav jālejupielādē.
+business_day	Kad «Šodien» sākas no jauna?
+business_day_help	Ar «Līdz dienas slēgšanai» «Dienas grāmata» turpinās arī pēc pusnakts, līdz reģistrējat dienas slēgšanu. Ar «Kalendāra pusnakts» diena beidzas plkst. 00:00 pēc vietējā laika.
+biz_day_until_close	Līdz dienas slēgšanai
+biz_day_midnight	Kalendāra pusnakts
+business_day_saved	Darba diena saglabāta
+report_day_lens	Rādīt «Šodien» kā
+report_day_lens_help	Tikai skats — nemaina to, kad «Dienas slēgšana» sāk «Šodien» no jauna. «Pēc dienas slēgšanas» skaita no pēdējās dienas slēgšanas; «Pēc pusnakts» nogriež plkst. 00:00 pēc vietējā laika.
+report_lens_day_close	Pēc dienas slēgšanas
+report_lens_midnight	Pēc pusnakts
 trk_booked	Rezervēts
 trk_picked_up	Pacēla
 trk_in_transit	Tranzītā

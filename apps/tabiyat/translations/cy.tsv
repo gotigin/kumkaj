@@ -365,15 +365,15 @@ print_open	Argraffu / agor
 reason_amend_ph	Rheswm dros ddiwygio / gwagio / ad-daliad
 reason_note_ph	Rheswm / nodyn (gwastraff, cyfrif, …)
 record_day_close	Cofnodi cau diwrnod
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Pryd mae «Heddiw» yn ailosod?
+business_day_help	Gyda «Tan gau'r diwrnod», mae «Llyfr y dydd» yn parhau heibio hanner nos nes i chi gofnodi cau'r diwrnod. Gyda «Hanner nos y calendr», mae'r diwrnod yn torri am 00:00 amser lleol.
+biz_day_until_close	Tan gau'r diwrnod
+biz_day_midnight	Hanner nos y calendr
+business_day_saved	Gosodiad diwrnod busnes wedi'i gadw
+report_day_lens	Dangos «Heddiw» fel
+report_day_lens_help	Gwedd yn unig — nid yw'n newid pryd mae «Cau diwrnod» yn ailosod «Heddiw». Mae «Yn ôl cau'r diwrnod» yn dilyn y cau diwrnod diwethaf; mae «Yn ôl hanner nos» yn torri am 00:00 amser lleol.
+report_lens_day_close	Yn ôl cau'r diwrnod
+report_lens_midnight	Yn ôl hanner nos
 refresh_from_shop	Adnewyddu o'r siop
 refund	Ad-dalu
 remove_selected	Tynnu'r dewisedig
@@ -849,19 +849,19 @@ client_template_confirm	Ychwanegu eitemau {d} o {title}? Mae eitemau sydd gennyc
 client_template_importing	Yn mewnforio {title}…
 client_template_done	Mae pob eitem o {title} ar eich eitemau.
 client_template_imported	Ychwanegwyd eitemau {d} a chategorïau {c} o {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Templedi siop
+app_template_blurb	Dewiswch gatalog cychwynnol a gosodiadau siop. Mae «Hepgor am y tro» yn gadael y silff yn wag.
+app_template_skip	Hepgor am y tro
+app_template_status	Gweinydd yn barod — mewnforiwch dempled, neu hepgor
+app_template_importing	Yn cymhwyso {title}…
+app_template_import_selected	Mewnforio'r dewis
+app_template_wipe_warn	Mae hyn yn clirio'r data masnachu yn y cyfrifon (gwerthiannau, cyfriflyfrau) ac yn cymhwyso gosodiadau siop y templed. Ydych chi am barhau?
+app_template_wipe_continue	Parhau
+app_template_wipe_cancel	Canslo
+app_template_from_device	Mewnforio o'r ddyfais hon
+app_template_from_device_help	Dewiswch ffolder sy'n cynnwys template.json (ac, yn ddewisol, shop_defaults.json).
+settings_app_tmpl_note	Pecynnau siop cyflawn: catalog a gosodiadau siop. Mae mewnforio un eto yn clirio gwerthiannau a chyfriflyfrau, yna'n cymhwyso gosodiadau siop y pecyn.
+app_tmpl_named	Templed siop {name}
 cancel	Canslo
 removing	Wrthi'n tynnu…
 removed	Wedi'i dynnu

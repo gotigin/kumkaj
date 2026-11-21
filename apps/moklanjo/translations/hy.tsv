@@ -3,27 +3,27 @@ app_tagline	Սուրհանդակային-գործակալական գրքեր + �
 unlock	Ապակողպել
 pin_hint	Սեփականատիրոջ PIN-ը սկսվում է 0000-ով
 sell	Ամրագրում
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Տախտակ
+board	Տախտակ
+park_draft	Պահել որպես սևագիր
+board_help	Բաց սևագրեր (պահվում են, մինչև սեղմեք «Հեռացնել» կամ «Ընդունել վճարում») և այսօրվա գրանցված վաճառքները։ «Ամրագրում» բաժնում աշխատանքի կեսին հպեք «Պահել որպես սևագիր» (պահվում է այստեղ, ոչ թե մատյաններում). հպեք սևագրին՝ շարունակելու համար։
+board_empty	Քարտեր դեռ չկան։
+board_park_nothing	Մի կողմ դնելու ոչինչ չկա — ավելացրեք վճարներ կամ ամրագրման տվյալներ
+board_parked	Պահված է «Տախտակ» բաժնում — սեղանն ազատ է
+board_draft	Սևագիր
+board_booked	Ամրագրված
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Սևագիր
+board_filter_booked	Ամրագրված
+board_cols_fmt	{n} սյունակ
+board_summary_fmt	{total} քարտ · {drafts} սևագիր · {booked} գրանցված
+board_card_no_charges	Դեռ վճարներ չկան
+board_card_charges	վճարներ
+board_card_booked	Ամրագրում
+board_draft_gone	Այդ սևագիրն այլևս «Տախտակ» բաժնում չէ
+board_draft_closed	Այդ սևագիրն արդեն ավարտված է կամ ջնջված
+board_discard	Հեռացնել
+board_discarded	Սևագիրը ջնջված է
 buy	Վճարեք
 books	Օրվա մատյան
 books_help	Այսօրվա դիրքորոշումը. Ամրագրում = ծանրոցներ: Վճարում = փոխադրողի հաշիվներ և ծախսեր: Կողմեր ​​= առաքիչներ և փոխադրողներ:
@@ -220,7 +220,7 @@ snack_secs_save	Պահել ծանուցման ժամանակը
 snack_secs_saved	Ծանուցման ժամանակը պահվել է — {n} վայրկյան
 snack_secs_bad	Մուտքագրեք վայրկյանները որպես թիվ (3–60)
 cancelled	Չեղարկված
-cancelling	Cancellingâ¦
+cancelling	Չեղարկում…
 cancel	Չեղարկել
 opening_client	Կլիենտի բացում…
 preparing_desk	Սեղանի պատրաստում…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Պատճենել գործընկերոջ մատյանը CSV
 copy_receipt	Պատճենել կտրոնը
 copy_report	Պատճենել հաշվետվությունը
 counted_cash_ph	Հաշված կանխիկը դարակում
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Փակել հերթափոխը և տպել թերթիկ
+shift_handover	Հերթափոխի հանձնում
+shift_counted_ph	Հերթափոխ հանձնելիս հաշված գումար
+shift_since	Այս հերթափոխը սկսած
+expected_in_drawer	Սպասվողը դարակում
+lock_books_through_month	Կողպել մատյանները մինչև ամսվա վերջ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Կողպել մինչև այս ամսվա վերջ
+books_locked_none	Ոչ մի ամիս դեռ կողպված չէ
+books_locked_through	Կողպված է մինչև
 counter_agency_ph	Հաշվիչ / գործակալության անվանումը (ըստ ցանկության)
 create_backup	Ստեղծել պահուստ
 day_close_summary	Օրվա փակման ամփոփում
@@ -442,9 +442,9 @@ pay_ap_cash	Վճարիր AP կանխիկ
 pay_ap_upi	Վճարիր AP UPI-ով
 period_bill	Ժամանակահատվածի հաշիվ
 period_bill_party	Ժամկետային հաշիվ (կուսակցություն)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Ստեղծել հաշիվ
+period_bill_generate_print	Ստեղծել և տպել
+booking_bulk_preview	{ok} պատրաստ է · {bad} սխալներով
 pick_pod_photo	Ընտրեք POD լուսանկարը
 print_awb_label	Տպել AWB պիտակը
 print_open	Տպել / բացել
@@ -653,19 +653,19 @@ attachments_last_expense	Կցորդներ (վերջին ծախս)
 credit_limit_heading	Վարկի սահման (ընտրված / անվանված գործընկեր)
 pay_selected_heading	Վճարիր ընտրվածը (մարիր պարտքը / վերցրու կանխավճար)
 write_off_heading	Դուրս գրում (մաքրել առանց վճարման)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Ճշգրտման ծանուցագրեր
+adj_note_amount_ph	Գումար
+adj_note_reason_ph	Պատճառ (պարտադիր)
+adj_note_awb_ph	Առնչվող AWB (ըստ ցանկության)
+credit_note_btn	Կրեդիտային ծանուցագիր
+debit_note_btn	Դեբետային ծանուցագիր
+bill_later_heading	Գանձել ավելի ուշ (հավելավճար ամրագրումից հետո)
+bill_later_amount_ph	Լրացուցիչ գումար
+bill_later_party_ph	Հաճախորդ (միայն եթե ամրագրման մեջ չկա)
+bill_later_btn	Գանձել ավելի ուշ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Փաթեթավորում
+bill_later_extra_other	Այլ
 pay_ap_heading	Վճարիր ինչ պարտք ենք նրանց (AP)
 country_tax	Երկիր և հարկ
 extra_tills_heading	Լրացուցիչ դրամարկղներ
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — ավելացրեք ապրանքներ և սկզ
 onboard_template_tmpl	Ցանկության դեպքում անվանեք տեղը, ապա ընտրեք ինչպես սկսել։
 tmpl_blurb	Սուրհանդակային գրքեր և ամրագրման գրասեղան՝ առաքիչներ, փոխադրողներ, օրվա գիրք, AWB:
 tmpl_how	Գրանցեք ծանրոցներ գրասեղանի վրա; Օրվա գիրք այսօրվա համար; ներդիրներ դրույքաչափերի, կուսակցությունների, հաշվետվությունների համար:
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Խանութի ձևանմուշներ
+app_template_blurb	Ընտրեք մեկնարկային աշխատատեղ։ «Առայժմ բաց թողնել» կոճակը դատարկ է թողնում հաճախորդների ցանկը։
+app_template_skip	Առայժմ բաց թողնել
+app_template_status	Սերվերը պատրաստ է — ներմուծեք ձևանմուշ կամ բաց թողեք
+app_template_importing	Կիրառվում է {title}…
+app_template_public_hdr	Կաղապարներ
+app_template_import_selected	Ներմուծել ընտրվածը
+app_template_wipe_warn	Սա մաքրում է առևտրային տվյալները հաշիվներում (ամրագրումներ, մատյաններ) և կիրառում կաղապարի խանութի կարգավորումները։ Ցանկանու՞մ եք շարունակել։
+app_template_wipe_continue	Շարունակել
+app_template_wipe_cancel	Չեղարկել
+public_tmpl_help	Գործակալության պատրաստի ձևանմուշներ, որոնք գալիս են հավելվածի հետ։ Ներբեռնման կարիք չկա։
+business_day	Ե՞րբ է «Այսօր» բաժինը սկսվում նորից
+business_day_help	«Մինչև օրվա փակումը» տարբերակով «Օրվա մատյան» բաժինը շարունակվում է կեսգիշերից հետո, մինչև գրանցեք օրվա փակումը։ «Օրացուցային կեսգիշեր» տարբերակով օրն ավարտվում է տեղական ժամանակով ժամը 00:00-ին։
+biz_day_until_close	Մինչև օրվա փակումը
+biz_day_midnight	Օրացուցային կեսգիշեր
+business_day_saved	Աշխատանքային օրվա կարգավորումը պահված է
+report_day_lens	«Այսօր» բաժինը ցուցադրել որպես
+report_day_lens_help	Միայն ցուցադրում — չի փոխում, թե երբ է «Օրվա փակում» գործողությունը նորից սկսում «Այսօր» բաժինը։ «Ըստ օրվա փակման» տարբերակը հաշվում է վերջին օրվա փակումից. «Ըստ կեսգիշերի» տարբերակը կտրում է տեղական ժամանակով ժամը 00:00-ին։
+report_lens_day_close	Ըստ օրվա փակման
+report_lens_midnight	Ըստ կեսգիշերի
 trk_booked	Ամրագրված
 trk_picked_up	Վերցրեց
 trk_in_transit	Տրանզիտում

@@ -353,15 +353,15 @@ print_open	ছাপাওক / খোলক
 reason_amend_ph	সংশোধন / বাতিল / ঘূৰাইৰ কাৰণ
 reason_note_ph	কাৰণ / টোকা (নষ্ট, গণনা, …)
 record_day_close	দিন বন্ধ লিপিবদ্ধ কৰক
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«আজি» কেতিয়া নতুনকৈ আৰম্ভ হয়?
+business_day_help	«দিন বন্ধ লৈকে» বাছিলে, আপুনি দিন বন্ধ লিপিবদ্ধ নকৰালৈকে «দিন বহী» মাজনিশাৰ পিছতো চলি থাকে। «কেলেণ্ডাৰৰ মাজনিশা» বাছিলে, দিন স্থানীয় সময় ৰাতি 12:00 বজাত কটা যায়।
+biz_day_until_close	দিন বন্ধ লৈকে
+biz_day_midnight	কেলেণ্ডাৰৰ মাজনিশা
+business_day_saved	ব্যৱসায়িক দিন সংৰক্ষণ কৰা হ'ল
+report_day_lens	«আজি» এনেদৰে চাওক
+report_day_lens_help	কেৱল চাবৰ বাবে — «দিন বন্ধ»-এ কেতিয়া «আজি» নতুনকৈ আৰম্ভ কৰে, সেয়া ইয়াৰ দ্বাৰা সলনি নহয়। «দিন বন্ধ অনুসৰি»-এ শেষ দিন বন্ধৰ পৰা গণে; «মাজনিশা অনুসৰি»-এ স্থানীয় সময় ৰাতি 12:00 বজাত কাটে।
+report_lens_day_close	দিন বন্ধ অনুসৰি
+report_lens_midnight	মাজনিশা অনুসৰি
 refresh_from_shop	দোকানৰ পৰা সতেজ কৰক
 refund	ঘূৰাই
 remove_selected	বাছনি কৰা আঁতৰাওক
@@ -837,19 +837,19 @@ client_template_confirm	{title} ৰ পৰা {d}টা বস্তু যো�
 client_template_importing	{title} আমদানি…
 client_template_done	{title} ৰ প্ৰতিটো বস্তু আপোনাৰ বস্তুত আছে।
 client_template_imported	{title} ৰ পৰা {d}টা বস্তু আৰু {c}টা শ্ৰেণী যোগ কৰা হ’ল
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	দোকানৰ টেমপ্লেট
+app_template_blurb	আৰম্ভণিৰ বাবে এটা কেটালগ আৰু দোকান ছেটিংছ বাছক। «এতিয়া এৰক» টিপিলে শ্বেল্ফ খালী থাকিব।
+app_template_skip	এতিয়া এৰক
+app_template_status	ছাৰ্ভাৰ সাজু — এটা টেমপ্লেট আমদানি কৰক, বা এৰি দিয়ক
+app_template_importing	{title} প্ৰয়োগ কৰা হৈছে…
+app_template_import_selected	বাছনি কৰাটো আমদানি কৰক
+app_template_wipe_warn	ইয়াৰ ফলত বহীৰ ব্যৱসায়িক ডাটা (বিক্ৰী, খতিয়ন) মচা যাব আৰু টেমপ্লেটৰ দোকান ছেটিংছ প্ৰযোজ্য হ'ব। আগবাঢ়িবনে?
+app_template_wipe_continue	আগবাঢ়ক
+app_template_wipe_cancel	বাতিল
+app_template_from_device	এই ডিভাইচৰ পৰা আমদানি কৰক
+app_template_from_device_help	template.json থকা ফ'ল্ডাৰ এটা বাছক (shop_defaults.json থাকিলে সেইটোও)।
+settings_app_tmpl_note	সম্পূৰ্ণ দোকান পেক: কেটালগ আৰু দোকান ছেটিংছ। কোনো পেক পুনৰ আমদানি কৰিলে বিক্ৰী আৰু খতিয়ন মচা যায়, তাৰ পিছত পেকৰ দোকান ছেটিংছ প্ৰযোজ্য হয়।
+app_tmpl_named	{name} দোকানৰ টেমপ্লেট
 cancel	বাতিল
 removing	আঁতৰোৱা হৈছে…
 removed	আঁতৰোৱা হ'ল

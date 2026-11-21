@@ -365,15 +365,15 @@ print_open	পরিনত / ফিয়কদি
 reason_amend_ph	সুলাইমানি কারন / ভইদ / রাং কিফিলুই রুমানি
 reason_note_ph	কাহাম / ককতুমা (কুমাজাক, লেখাজাক, ...)
 record_day_close	রেচরদ সাল উংখা
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«তিনি» বুফুরু কুতাল ছুগো?
+business_day_help	«সাল উংখা জরা» বাসাগখে, নুং সাল উংখা রেকর্ড খলাইয়া জরা «সালনি বিজাপ» হর কেচার উলবো তংগো। «ক্যালেন্ডারনি হর কেচার» বাসাগখে, সাল লোকাল টাইম হর 12:00 ও পাইগো।
+biz_day_until_close	সাল উংখা জরা
+biz_day_midnight	ক্যালেন্ডারনি হর কেচার
+business_day_saved	বেপারনি সাল মুথাংজাক
+report_day_lens	«তিনি» ন অহাই নাইদি
+report_day_lens_help	নাইনা বাগুই সে — «সাল উংখা» বুফুরু «তিনি» ন কুতাল ছুগো আবন অব সলাইয়া। «সাল উংখা বাই» উলনি সাল উংখানি লেখাও; «হর কেচার বাই» লোকাল টাইম হর 12:00 ও পাইগো।
+report_lens_day_close	সাল উংখা বাই
+report_lens_midnight	হর কেচার বাই
 refresh_from_shop	দুকান নি কুতাল তুবুদি
 refund	রাং কিফিলুই রুদি
 remove_selected	চংজাকরকন সুকাকদি
@@ -849,19 +849,19 @@ client_template_confirm	{title} নি {d} নি মানৱিরোক ন�
 client_template_importing	ফাইমানি {title}...
 client_template_done	{title} নি জোতো মানৱি নো নিনি মানৱি রোক নি সাকাও তোংও.
 client_template_imported	{title} নি {d} মানৱিরোক তেই {c} জাতরোক চাপজাক খা
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	দোকানি টেম্পলেটরগ
+app_template_blurb	ছুগমানি ক্যাটালগ তেই দোকানি সেটিং বাসাগদি। «তাবুকনি বাগুই সকিপ খাইদি» তাপ খাইখে শেল্ফ খালি তংনাই।
+app_template_skip	তাবুকনি বাগুই সকিপ খাইদি
+app_template_status	সার্ভার তৈয়ার — কাইসা টেম্পলেট তুবুই, তংমা নাইদি
+app_template_importing	সামুং খলাইও {title}...
+app_template_import_selected	বাসাগনাই তুবুই
+app_template_wipe_warn	অব বিজাপনি বেপার ডাটা (ফালমানি, খাতারগ) কুথার খলাইনাই তেই টেম্পলেটনি দোকানি সেটিং লাগু খলাইনাই। তুলাংনাই দে?
+app_template_wipe_continue	তুলাংদি
+app_template_wipe_cancel	চানচেল খাইদি
+app_template_from_device	অ ডিভাইসনি তুবুদি
+app_template_from_device_help	template.json তংনাই ফোল্ডার বাসাগদি (shop_defaults.json তংখে আবনো)।
+settings_app_tmpl_note	জত দোকানি পেকরগ: ক্যাটালগ তেই দোকানি সেটিং। পেক তেই তুবুইখে ফালমানি তেই খাতারগ কুথার উঙো, আবনি উল পেকনি দোকানি সেটিং লাগু উঙো।
+app_tmpl_named	{name} দোকানি টেম্পলেট
 cancel	চানচেল খাইদি
 removing	সিং তঙ…
 removed	সিংখা

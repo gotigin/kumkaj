@@ -3,27 +3,27 @@ app_tagline	Китобҳои хаткашонӣ + мизи фармоиш. Оф�
 unlock	Кушодан
 pin_hint	PIN-и соҳиб аз 0000 оғоз мешавад
 sell	Бронкунӣ
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Тахта
+board	Тахта
+park_draft	Ба сиёҳнавис гузоштан
+board_help	Сиёҳнависҳои кушода (то даме ки «Нест кардан» ё «Гирифтани пардохт»-ро зер кунед, мемонанд) ва фурӯши имрӯз бронкардашуда. Дар «Бронкунӣ» дар миёнаи кор «Ба сиёҳнавис гузоштан»-ро зер кунед (дар ин ҷо захира мешавад, на дар дафтарҳо); барои давом додан сиёҳнависро зер кунед.
+board_empty	Ҳоло корт нест.
+board_park_nothing	Чизе барои гузоштан нест — ҳаққи хизмат ё маълумоти бронкуниро илова кунед
+board_parked	Ба «Тахта» гузошта шуд — миз холӣ аст
+board_draft	Сиёҳнавис
+board_booked	Зан карда шуд
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Сиёҳнавис
+board_filter_booked	Зан карда шуд
+board_cols_fmt	{n} сутун
+board_summary_fmt	{total} корт · {drafts} сиёҳнавис · {booked} бронкардашуда
+board_card_no_charges	Ҳоло ҳаққи хизмат нест
+board_card_charges	ҳаққи хизмат
+board_card_booked	Бронкунӣ
+board_draft_gone	Он сиёҳнавис дигар дар «Тахта» нест
+board_draft_closed	Он сиёҳнавис аллакай анҷом ёфтааст ё нест карда шудааст
+board_discard	Нест кардан
+board_discarded	Сиёҳнавис нест карда шуд
 buy	Пардохт кунед
 books	Дафтари рӯз
 books_help	Мавқеи имрӯза. Бронкунӣ = посылкаҳо. Пардохт = векселҳои интиқолдиҳанда ва хароҷот. Тарафҳо = ирсолкунандагон ва интиқолдиҳандагон.
@@ -220,7 +220,7 @@ snack_secs_save	Захираи вақти огоҳӣ
 snack_secs_saved	Вақти огоҳӣ захира шуд — {n} сония
 snack_secs_bad	Сонияҳоро ҳамчун рақам ворид кунед (3–60)
 cancelled	Бекор шуд
-cancelling	Cancellingâ¦
+cancelling	Бекор карда мешавад…
 cancel	Бекор
 opening_client	Мизоҷ кушода мешавад…
 preparing_desk	Миз омода мешавад…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Нусхаи дафтари тараф CSV
 copy_receipt	Нусхаи расид
 copy_report	Нусхаи ҳисобот
 counted_cash_ph	Нақди шумурдашуда дар қуттӣ
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Пӯшидани навбат ва чопи варақа
+shift_handover	Супоридани навбат
+shift_counted_ph	Нақди шумурдашуда ҳангоми супоридан
+shift_since	Ин навбат аз
+expected_in_drawer	Интизор дар қуттӣ
+lock_books_through_month	Қулф кардани дафтарҳо то моҳ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Қулф кардан то ҳамин моҳ
+books_locked_none	Ҳоло ягон моҳ қулф нест
+books_locked_through	Қулф то
 counter_agency_ph	Номи ҳисобкунак / агентӣ (ихтиёрӣ)
 create_backup	Сохтани нусха
 day_close_summary	Хулосаи пӯшидани рӯз
@@ -442,9 +442,9 @@ pay_ap_cash	Пардохти AP бо нақд
 pay_ap_upi	Пардохти AP бо UPI
 period_bill	Ҳисоби давра
 period_bill_party	Ҳисоби даврӣ (тараф)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Сохтани ҳисоб
+period_bill_generate_print	Сохтан ва чоп кардан
+booking_bulk_preview	{ok} омода · {bad} бо хато
 pick_pod_photo	Сурати POD-ро интихоб кунед
 print_awb_label	Нишони AWB-ро чоп кунед
 print_open	Чоп / кушодан
@@ -653,19 +653,19 @@ attachments_last_expense	Замимаҳо (хароҷоти охирин)
 credit_limit_heading	Ҳадди қарз (тарафи интихобшуда / номбаршуда)
 pay_selected_heading	Пардохти интихобшуда (қарзро пӯшед / пешпардохт гиред)
 write_off_heading	Аз ҳисоб баровардан (пок бе пардохт)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Ёддоштҳои ислоҳӣ
+adj_note_amount_ph	Маблағ
+adj_note_reason_ph	Сабаб (лозим)
+adj_note_awb_ph	AWB-и марбут (ихтиёрӣ)
+credit_note_btn	Кредит-нота
+debit_note_btn	Дебет-нота
+bill_later_heading	Баъдтар ҳисоб кардан (ҳаққи иловагӣ пас аз бронкунӣ)
+bill_later_amount_ph	Маблағи иловагӣ
+bill_later_party_ph	Тараф (танҳо агар дар бронкунӣ набошад)
+bill_later_btn	Баъдтар ҳисоб кардан
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Бастабандӣ
+bill_later_extra_other	Дигар
 pay_ap_heading	Пардохти он чи ба онҳо қарздорем (AP)
 country_tax	Кишвар ва андоз
 extra_tills_heading	Кассаҳои иловагӣ
@@ -777,26 +777,26 @@ onboard_book_tmpl	Дафтар · {} — молҳо ва қарзи оғозро
 onboard_template_tmpl	Агар хоҳед, ҷойро ном гузоред, сипас чӣ гуна оғозро интихоб кунед.
 tmpl_blurb	Китобҳои хаткашон ва мизи фармоиш: борфиристонандагон, интиқолдиҳандагон, китоби рӯзона, AWB.
 tmpl_how	Бастаҳои китобро дар сари миз; Китоби рӯзона барои имрӯз; ҷадвалбандиҳоро барои Қурбҳои, ҳизбҳои, ҳисоботҳо.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Қолибҳои мағоза
+app_template_blurb	Мизи кории ибтидоиро интихоб кунед. «Ҳоло гузарон» рӯйхати тарафҳоро холӣ мегузорад.
+app_template_skip	Ҳоло гузарон
+app_template_status	Сервер омода аст — қолиб ворид кунед ё гузаред
+app_template_importing	{title} татбиқ мешавад…
+app_template_public_hdr	Шаблонҳо
+app_template_import_selected	Ворид кардани интихобшуда
+app_template_wipe_warn	Ин маълумоти савдои дафтарҳоро (бронкуниҳо, ҳисобҳои тарафҳо) пок мекунад ва танзимоти мағозаи қолибро татбиқ мекунад. Давом медиҳед?
+app_template_wipe_continue	Давом
+app_template_wipe_cancel	Бекор
+public_tmpl_help	Бастаҳои тайёри агентӣ барои ин мағоза, ки бо барнома меоянд. Боргирӣ лозим нест.
+business_day	«Имрӯз» кай аз нав оғоз мешавад?
+business_day_help	Бо «То пӯшидани рӯз», «Дафтари рӯз» пас аз нисфи шаб низ идома меёбад, то даме ки шумо пӯшидани рӯзро сабт кунед. Бо «Нисфи шаби тақвимӣ», рӯз соати 00:00 бо вақти маҳаллӣ бурида мешавад.
+biz_day_until_close	То пӯшидани рӯз
+biz_day_midnight	Нисфи шаби тақвимӣ
+business_day_saved	Рӯзи корӣ захира шуд
+report_day_lens	«Имрӯз»-ро чунин нишон диҳед
+report_day_lens_help	Танҳо барои намоиш — тағйир намедиҳад, ки «Пӯшидани рӯз» кай «Имрӯз»-ро аз нав оғоз мекунад. «Аз рӯи пӯшидани рӯз» аз пӯшидани охирини рӯз ҳисоб мекунад; «Аз рӯи нисфи шаб» соати 00:00 бо вақти маҳаллӣ мебурад.
+report_lens_day_close	Аз рӯи пӯшидани рӯз
+report_lens_midnight	Аз рӯи нисфи шаб
 trk_booked	Зан карда шуд
 trk_picked_up	Бардоштан
 trk_in_transit	Дар фарогузар

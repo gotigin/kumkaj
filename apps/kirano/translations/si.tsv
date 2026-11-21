@@ -151,7 +151,7 @@ sidebar_disable_all	සියල්ල අක්‍රිය කරන්න
 sidebar_order_saved	පැති තීරු ඇණවුම සුරකින ලදී
 sidebar_visibility_saved	පැති තීරු දෘශ්‍යතාව සුරකින ලදී
 sales	විකුණුම්
-day_close	දවස කිට්ටුයි
+day_close	දවස වැසීම
 reports_expenses	බැංකු ලෙජරය සහ P&L
 nav_reports	වාර්තා
 nav_settings	සැකසීම්
@@ -353,15 +353,15 @@ print_open	මුද්‍රණය / විවෘත කරන්න
 reason_amend_ph	සංශෝධන / අවලංගු / ආපසු ගෙවීමට හේතුව
 reason_note_ph	හේතුව / සටහන (නාස්තිය, ගණන් කිරීම, ...)
 record_day_close	දවස කිට්ටුවෙන් ඉතිරි කරන්න
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«අද» නැවත ආරම්භ වන්නේ කවදාද?
+business_day_help	«දවස වසන තුරු» තේරූ විට, ඔබ දවස වසා දැමීම සටහන් කරන තුරු «දින ලෙජරය» මධ්‍යම රාත්‍රියෙන් පසුවත් දිගටම පවතී. «දින දර්ශන මධ්‍යම රාත්‍රිය» තේරූ විට, දවස දේශීය වේලාවෙන් පෙ.ව. 12:00 ට අවසන් වේ.
+biz_day_until_close	දවස වසන තුරු
+biz_day_midnight	දින දර්ශන මධ්‍යම රාත්‍රිය
+business_day_saved	ව්‍යාපාරික දිනය සුරකින ලදී
+report_day_lens	«අද» පෙන්වන ආකාරය
+report_day_lens_help	බැලීමට පමණි — «දවස වැසීම» විසින් «අද» නැවත ආරම්භ කරන වේලාව මෙයින් වෙනස් නොවේ. «දවස වසා දැමීම අනුව» අවසන් දවස වසා දැමීමේ සිට ගණන් කරයි; «මධ්‍යම රාත්‍රිය අනුව» දේශීය වේලාවෙන් පෙ.ව. 12:00 ට කපයි.
+report_lens_day_close	දවස වසා දැමීම අනුව
+report_lens_midnight	මධ්‍යම රාත්‍රිය අනුව
 refresh_from_shop	සාප්පුවෙන් නැවුම් කරන්න
 refund	ආපසු ගෙවීම
 remove_selected	තෝරාගත් ඉවත් කරන්න
@@ -837,19 +837,19 @@ client_template_confirm	{title} වෙතින් {d} අයිතම එක්
 client_template_importing	{title} ආයාත කරමින්...
 client_template_done	{title} වෙතින් සෑම අයිතමයක්ම ඔබේ අයිතමවල ඇත.
 client_template_imported	{title} වෙතින් {d} අයිතම සහ {c} කාණ්ඩ එකතු කරන ලදී
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	සාප්පු සැකිලි
+app_template_blurb	ආරම්භක නාමාවලියක් සහ සාප්පු සැකසීම් තෝරන්න. «දැනට මග හරින්න» තට්ටු කළහොත් රාක්කය හිස්ව පවතී.
+app_template_skip	දැනට මග හරින්න
+app_template_status	සේවාදායකය සූදානම් — සැකිල්ලක් ආයාත කරන්න, නැතහොත් මඟ හරින්න
+app_template_importing	{title} අයදුම් කරමින්...
+app_template_import_selected	තෝරාගත් දේ ආයාත කරන්න
+app_template_wipe_warn	මෙය පොත්වල වෙළඳ දත්ත (විකුණුම්, ලෙජර්) හිස් කර සැකිල්ලේ සාප්පු සැකසීම් යොදයි. ඉදිරියට යන්නද?
+app_template_wipe_continue	දිගටම කරගෙන යන්න
+app_template_wipe_cancel	අවලංගු කරන්න
+app_template_from_device	මෙම උපාංගයෙන් ආයාත කරන්න
+app_template_from_device_help	template.json ඇති ෆෝල්ඩරයක් තෝරන්න (shop_defaults.json තිබේ නම් එයත්).
+settings_app_tmpl_note	සම්පූර්ණ සාප්පු පැකේජ: නාමාවලිය සහ සාප්පු සැකසීම්. පැකේජයක් නැවත ආයාත කිරීමෙන් විකුණුම් සහ ලෙජර් හිස් වේ, පසුව පැකේජයේ සාප්පු සැකසීම් යෙදේ.
+app_tmpl_named	{name} සාප්පු සැකිල්ල
 cancel	අවලංගු කරන්න
 removing	ඉවත් කරමින්…
 removed	ඉවත් කළා

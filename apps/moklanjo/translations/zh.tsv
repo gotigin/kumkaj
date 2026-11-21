@@ -3,27 +3,27 @@ app_tagline	快递账本 + 寄件柜台。免费离线。
 unlock	解锁
 pin_hint	店主PIN初始为0000
 sell	寄件
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	看板
+board	看板
+park_draft	存为草稿
+board_help	未完成的草稿（保留到你点「丢弃」或「收款」为止）和今天已登记的销售。在「寄件」做到一半时点「存为草稿」（保存在这里，不入账）；点草稿可继续。
+board_empty	还没有卡片。
+board_park_nothing	没有可搁置的内容 — 请添加费用或寄件信息
+board_parked	已存入「看板」 — 台面已清空
+board_draft	草稿
+board_booked	已登记
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	草稿
+board_filter_booked	已登记
+board_cols_fmt	{n} 列
+board_summary_fmt	{total} 张卡片 · {drafts} 份草稿 · {booked} 件已登记
+board_card_no_charges	暂无费用
+board_card_charges	项费用
+board_card_booked	寄件
+board_draft_gone	该草稿已不在「看板」上
+board_draft_closed	该草稿已完成或已丢弃
+board_discard	丢弃
+board_discarded	草稿已丢弃
 buy	支出
 books	日记账
 books_help	今日状况。寄件 = 包裹入。支出 = 承运商账单和费用。往来方 = 寄件人和承运商。
@@ -220,7 +220,7 @@ snack_secs_save	保存提示时长
 snack_secs_saved	提示时长已保存——{n} 秒
 snack_secs_bad	请输入秒数（3–60）
 cancelled	已取消
-cancelling	Cancellingâ¦
+cancelling	正在取消…
 cancel	取消
 opening_client	正在打开客户端…
 preparing_desk	正在准备桌面…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	复制往来方账本CSV
 copy_receipt	复制小票
 copy_report	复制报表
 counted_cash_ph	抽屉里点清的现金
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	交班并打印交班单
+shift_handover	交班
+shift_counted_ph	交班时点算的现金
+shift_since	本班次开始于
+expected_in_drawer	钱箱应有
+lock_books_through_month	按月锁定账簿
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	锁定至本月
+books_locked_none	尚未锁定任何月份
+books_locked_through	已锁定至
 counter_agency_ph	柜台/代理名称（可选）
 create_backup	创建备份
 day_close_summary	日结汇总
@@ -442,9 +442,9 @@ pay_ap_cash	用现金付AP
 pay_ap_upi	用UPI付AP
 period_bill	期间账单
 period_bill_party	期间账单（往来方）
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	生成账单
+period_bill_generate_print	生成并打印
+booking_bulk_preview	{ok} 条可用 · {bad} 条有误
 pick_pod_photo	选择POD照片
 print_awb_label	打印运单标签
 print_open	打印/打开
@@ -653,19 +653,19 @@ attachments_last_expense	附件（上一笔费用）
 credit_limit_heading	信用额度（所选/指定往来方）
 pay_selected_heading	支付所选（结清欠款/预付）
 write_off_heading	核销（无付款结清）
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	调整单
+adj_note_amount_ph	金额
+adj_note_reason_ph	原因（必填）
+adj_note_awb_ph	关联 AWB（选填）
+credit_note_btn	贷项通知单
+debit_note_btn	借项通知单
+bill_later_heading	稍后收费（寄件后的附加费）
+bill_later_amount_ph	附加金额
+bill_later_party_ph	往来方（仅当寄件未指定时）
+bill_later_btn	稍后收费
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	包装
+bill_later_extra_other	其他
 pay_ap_heading	支付我们欠他们的(AP)
 country_tax	国家与税务
 extra_tills_heading	额外柜台
@@ -777,26 +777,26 @@ onboard_book_tmpl	账本 · {} — 添加物品和期初赊账，然后点完成
 onboard_template_tmpl	可先为店铺命名，然后选择开始方式。
 tmpl_blurb	快递账簿与寄件台：寄件人、承运商、日记账、运单号。
 tmpl_how	在寄件台登记包裹；日记账看今天；标签页查看运价、往来方和报表。
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	店铺模板
+app_template_blurb	选择一个起始工作台。「暂时跳过」则往来方列表为空。
+app_template_skip	暂时跳过
+app_template_status	服务器已就绪 — 导入模板，或跳过
+app_template_importing	正在应用 {title}…
+app_template_public_hdr	模板
+app_template_import_selected	导入所选
+app_template_wipe_warn	这会清除账簿中的交易数据（寄件、往来账），并应用模板的店铺设置。继续吗？
+app_template_wipe_continue	继续
+app_template_wipe_cancel	取消
+public_tmpl_help	应用自带的代理点模板包，供本店使用。无需下载。
+business_day	「今天」何时重新开始？
+business_day_help	选「直到日结」时，「日记账」会延续到午夜之后，直到你记录日结。选「自然日午夜」时，按当地时间 0:00 截断。
+biz_day_until_close	直到日结
+biz_day_midnight	自然日午夜
+business_day_saved	营业日设置已保存
+report_day_lens	「今天」的查看方式
+report_day_lens_help	仅影响查看 — 不改变「日结」何时重置「今天」。「按日结」从上次日结算起；「按午夜」按当地时间 0:00 截断。
+report_lens_day_close	按日结
+report_lens_midnight	按午夜
 trk_booked	已登记
 trk_picked_up	已揽收
 trk_in_transit	运输中

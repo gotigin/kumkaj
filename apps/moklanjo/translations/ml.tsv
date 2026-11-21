@@ -3,27 +3,27 @@ app_tagline	കൊറിയർ ബുക്ക് + ബുക്കിംഗ് 
 unlock	അൺലോക്ക്
 pin_hint	ഉടമ PIN 0000 ആയി തുടങ്ങും
 sell	ബുക്കിംഗ്
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	ബോർഡ്
+board	ബോർഡ്
+park_draft	ഡ്രാഫ്റ്റായി വയ്ക്കുക
+board_help	തുറന്ന ഡ്രാഫ്റ്റുകളും («ഉപേക്ഷിക്കുക» അല്ലെങ്കിൽ «പേയ്‌മെന്റ് വാങ്ങുക» ചെയ്യുന്നതുവരെ നിലനിൽക്കും) ഇന്നത്തെ ബുക്ക് ചെയ്ത വിൽപ്പനയും. «ബുക്കിംഗ്»-ൽ ജോലിക്കിടയിൽ «ഡ്രാഫ്റ്റായി വയ്ക്കുക» അമർത്തുക (ഇവിടെ സേവ് ആകും, കണക്കിൽ അല്ല); വീണ്ടും തുടരാൻ ഡ്രാഫ്റ്റ് അമർത്തുക.
+board_empty	ഇതുവരെ കാർഡുകളില്ല.
+board_park_nothing	വയ്ക്കാൻ ഒന്നുമില്ല — ചാർജുകളോ ബുക്കിംഗ് വിവരങ്ങളോ ചേർക്കുക
+board_parked	«ബോർഡ്»-ൽ വെച്ചു — ഡെസ്ക് ഒഴിഞ്ഞു
+board_draft	ഡ്രാഫ്റ്റ്
+board_booked	ബുക്ക് ചെയ്തു
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ഡ്രാഫ്റ്റ്
+board_filter_booked	ബുക്ക് ചെയ്തു
+board_cols_fmt	{n} നിര
+board_summary_fmt	{total} കാർഡുകൾ · {drafts} ഡ്രാഫ്റ്റ് · {booked} ബുക്ക് ചെയ്തവ
+board_card_no_charges	ഇതുവരെ ചാർജുകളില്ല
+board_card_charges	ചാർജുകൾ
+board_card_booked	ബുക്കിംഗ്
+board_draft_gone	ആ ഡ്രാഫ്റ്റ് ഇപ്പോൾ «ബോർഡ്»-ൽ ഇല്ല
+board_draft_closed	ആ ഡ്രാഫ്റ്റ് നേരത്തെ പൂർത്തിയാക്കി അല്ലെങ്കിൽ ഉപേക്ഷിച്ചു
+board_discard	ഉപേക്ഷിക്കുക
+board_discarded	ഡ്രാഫ്റ്റ് ഉപേക്ഷിച്ചു
 buy	പേ ഔട്ട്
 books	ദിന ബുക്ക്
 books_help	ഇന്നത്തെ നില. ബുക്കിംഗ് = പാഴ്സലുകൾ വന്നു. പേ ഔട്ട് = കാരിയർ ബില്ലും ചെലവും. പാർട്ടി = അയയ്ക്കുന്നവരും കാരിയറും.
@@ -220,7 +220,7 @@ snack_secs_save	അറിയിപ്പ് സമയം സേവ് ചെയ�
 snack_secs_saved	അറിയിപ്പ് സമയം സേവ് ചെയ്തു — {n} സെക്കൻഡ്
 snack_secs_bad	സെക്കൻഡ് സംഖ്യയായി നൽകുക (3–60)
 cancelled	റദ്ദാക്കി
-cancelling	Cancellingâ¦
+cancelling	റദ്ദാക്കുന്നു…
 cancel	റദ്ദാക്കുക
 opening_client	ക്ലയന്റ് തുറക്കുന്നു…
 preparing_desk	ഡെസ്ക് തയ്യാറാക്കുന്നു…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	പാർട്ടി ലെഡ്ജർ CSV പകർത�
 copy_receipt	രസീത് പകർത്തുക
 copy_report	റിപ്പോർട്ട് പകർത്തുക
 counted_cash_ph	ഡ്രോയറിൽ എണ്ണിയ പണം
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	ഷിഫ്റ്റ് അവസാനിപ്പിച്ച് സ്ലിപ്പ് പ്രിന്റ് ചെയ്യുക
+shift_handover	ഷിഫ്റ്റ് കൈമാറ്റം
+shift_counted_ph	കൈമാറുമ്പോൾ എണ്ണിയ പണം
+shift_since	ഈ ഷിഫ്റ്റ് തുടങ്ങിയത്
+expected_in_drawer	ഡ്രോയറിൽ ഉണ്ടാകേണ്ടത്
+lock_books_through_month	മാസം വരെ കണക്കുകൾ ലോക്ക് ചെയ്യുക
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ഈ മാസം വരെ ലോക്ക് ചെയ്യുക
+books_locked_none	ഇതുവരെ ഒരു മാസവും ലോക്ക് ചെയ്തിട്ടില്ല
+books_locked_through	ഏത് മാസം വരെ ലോക്ക്
 counter_agency_ph	കൗണ്ടർ / ഏജൻസിയുടെ പേര് (ഓപ്ഷണൽ)
 create_backup	ബാക്കപ്പ് ഉണ്ടാക്കുക
 day_close_summary	ദിവസം അടയ്ക്കൽ സംഗ്രഹം
@@ -442,9 +442,9 @@ pay_ap_cash	AP പണം അടയ്ക്കുക
 pay_ap_upi	AP UPI അടയ്ക്കുക
 period_bill	കാലയളവ് ബിൽ
 period_bill_party	കാലയളവ് ബിൽ (പാർട്ടി)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	ബിൽ തയ്യാറാക്കുക
+period_bill_generate_print	തയ്യാറാക്കി അച്ചടിക്കുക
+booking_bulk_preview	{ok} തയ്യാർ · {bad} പിഴവ്
 pick_pod_photo	POD ഫോട്ടോ തിരഞ്ഞെടുക്കുക
 print_awb_label	AWB ലേബൽ അച്ചടിക്കുക
 print_open	അച്ചടിക്കുക / തുറക്കുക
@@ -653,19 +653,19 @@ attachments_last_expense	അറ്റാച്ച്‌മെന്റുകൾ 
 credit_limit_heading	ക്രെഡിറ്റ് പരിധി (തിരഞ്ഞെടുത്ത / പേരുള്ള പാർട്ടി)
 pay_selected_heading	തിരഞ്ഞെടുത്തത് അടയ്ക്കുക (കടം തീർക്കുക / അഡ്വാൻസ്)
 write_off_heading	എഴുതിത്തള്ളുക (പേയ്‌മെന്റ് ഇല്ലാതെ തീർക്കുക)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	അഡ്ജസ്റ്റ്മെന്റ് നോട്ടുകൾ
+adj_note_amount_ph	തുക
+adj_note_reason_ph	കാരണം (ആവശ്യം)
+adj_note_awb_ph	ബന്ധപ്പെട്ട AWB (ഐച്ഛികം)
+credit_note_btn	ക്രെഡിറ്റ് നോട്ട്
+debit_note_btn	ഡെബിറ്റ് നോട്ട്
+bill_later_heading	പിന്നീട് ബിൽ ചെയ്യുക (ബുക്കിംഗിനു ശേഷമുള്ള അധിക ചാർജ്)
+bill_later_amount_ph	അധിക തുക
+bill_later_party_ph	പാർട്ടി (ബുക്കിംഗിൽ ഇല്ലെങ്കിൽ മാത്രം)
+bill_later_btn	പിന്നീട് ബിൽ ചെയ്യുക
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	പാക്കിംഗ്
+bill_later_extra_other	മറ്റുള്ളവ
 pay_ap_heading	നമ്മൾ അവർക്ക് കൊടുക്കേണ്ടത് (AP)
 country_tax	രാജ്യവും നികുതിയും
 extra_tills_heading	അധിക ടില്ലുകൾ
@@ -777,26 +777,26 @@ onboard_book_tmpl	ബുക്ക് · {} — ഇനങ്ങളും തു�
 onboard_template_tmpl	വേണമെങ്കിൽ സ്ഥലത്തിന് പേര് നൽകുക, പിന്നെ എങ്ങനെ തുടങ്ങണമെന്ന് തിരഞ്ഞെടുക്കുക.
 tmpl_blurb	കൊറിയർ കണക്കുകളും ബുക്കിംഗ് ഡെസ്കും: അയയ്ക്കുന്നവർ, കാരിയർമാർ, ദിവസക്കണക്ക്, AWB.
 tmpl_how	ഡെസ്കിൽ പാർസൽ ബുക്ക് ചെയ്യുക; ഇന്നത്തേക്ക് ദിവസക്കണക്ക്; നിരക്കുകൾ, പാർട്ടികൾ, റിപ്പോർട്ടുകൾക്ക് ടാബുകൾ.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	കട ടെംപ്ലേറ്റുകൾ
+app_template_blurb	തുടക്കത്തിനുള്ള ഡെസ്ക് തിരഞ്ഞെടുക്കുക. «ഇപ്പോൾ ഒഴിവാക്കുക» അമർത്തിയാൽ പാർട്ടികളുടെ പട്ടിക ഒഴിഞ്ഞിരിക്കും.
+app_template_skip	ഇപ്പോൾ ഒഴിവാക്കുക
+app_template_status	സെർവർ തയ്യാർ — ഒരു ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
+app_template_importing	{title} പ്രയോഗിക്കുന്നു…
+app_template_public_hdr	ടെംപ്ലേറ്റുകൾ
+app_template_import_selected	തിരഞ്ഞെടുത്തത് ഇമ്പോർട്ട് ചെയ്യുക
+app_template_wipe_warn	ഇത് കണക്കുപുസ്തകത്തിലെ വ്യാപാര ഡാറ്റ (ബുക്കിംഗുകൾ, ലെഡ്ജറുകൾ) മായ്ച്ച് ടെംപ്ലേറ്റിന്റെ കട ക്രമീകരണങ്ങൾ ബാധകമാക്കും. തുടരണോ?
+app_template_wipe_continue	തുടരുക
+app_template_wipe_cancel	റദ്ദാക്കുക
+public_tmpl_help	ഈ കടയ്ക്കായി ആപ്പിനൊപ്പം വരുന്ന ഏജൻസി പാക്കുകൾ. ഡൗൺലോഡ് വേണ്ട.
+business_day	«ഇന്ന്» എപ്പോൾ പുതുതായി തുടങ്ങും?
+business_day_help	«ദിവസം അടയ്ക്കൽ വരെ» തിരഞ്ഞെടുത്താൽ, നിങ്ങൾ ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുന്നതുവരെ «ദിന ബുക്ക്» അർദ്ധരാത്രിക്കു ശേഷവും തുടരും. «കലണ്ടർ അർദ്ധരാത്രി» തിരഞ്ഞെടുത്താൽ, ദിവസം പ്രാദേശിക സമയം രാത്രി 12:00-ന് അവസാനിക്കും.
+biz_day_until_close	ദിവസം അടയ്ക്കൽ വരെ
+biz_day_midnight	കലണ്ടർ അർദ്ധരാത്രി
+business_day_saved	വ്യാപാര ദിവസം സേവ് ചെയ്തു
+report_day_lens	«ഇന്ന്» ഇങ്ങനെ കാണിക്കുക
+report_day_lens_help	കാണാൻ മാത്രം — «ദിവസം അടയ്ക്കൽ» എപ്പോൾ «ഇന്ന്» പുതുതായി തുടങ്ങുന്നു എന്നത് ഇത് മാറ്റില്ല. «ദിവസം അടയ്ക്കൽ പ്രകാരം» അവസാനത്തെ ദിവസം അടയ്ക്കൽ മുതൽ കണക്കാക്കും; «അർദ്ധരാത്രി പ്രകാരം» പ്രാദേശിക സമയം രാത്രി 12:00-ന് വേർതിരിക്കും.
+report_lens_day_close	ദിവസം അടയ്ക്കൽ പ്രകാരം
+report_lens_midnight	അർദ്ധരാത്രി പ്രകാരം
 trk_booked	ബുക്ക് ചെയ്തു
 trk_picked_up	പിക്കപ്പ് ചെയ്തു
 trk_in_transit	യാത്രയിൽ

@@ -365,15 +365,15 @@ print_open	Shtyp / hap
 reason_amend_ph	Arsyeja e ndryshimit / anulimit / rimbursimit
 reason_note_ph	Arsye / shënim (humbje, numërim, …)
 record_day_close	Regjistro mbylljen e ditës
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kur fillon nga e para «Sot»?
+business_day_help	Me «Deri në mbylljen e ditës», «Libri i ditës» vazhdon edhe pas mesnatës derisa të regjistroni mbylljen e ditës. Me «Mesnata e kalendarit», dita pritet në orën 00:00 me orën lokale.
+biz_day_until_close	Deri në mbylljen e ditës
+biz_day_midnight	Mesnata e kalendarit
+business_day_saved	Dita e punës u ruajt
+report_day_lens	Shfaq «Sot» sipas
+report_day_lens_help	Vetëm pamje — nuk ndryshon se kur «Mbyllja e ditës» e fillon nga e para «Sot». «Sipas mbylljes së ditës» ndjek mbylljen e fundit të ditës; «Sipas mesnatës» pret në orën 00:00 me orën lokale.
+report_lens_day_close	Sipas mbylljes së ditës
+report_lens_midnight	Sipas mesnatës
 refresh_from_shop	Rifresko nga dyqani
 refund	Rimbursim
 remove_selected	Hiq të zgjedhurën
@@ -849,19 +849,19 @@ client_template_confirm	Të shtohen artikujt {d} nga {title}? Artikujt që tashm
 client_template_importing	Po importohet {title}…
 client_template_done	Çdo artikull nga {title} është në artikujt tuaj.
 client_template_imported	Shtuar artikuj {d} dhe kategori {c} nga {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Shabllone dyqani
+app_template_blurb	Zgjidhni një katalog fillestar dhe cilësimet e dyqanit. «Anashkalo për tani» e lë raftin bosh.
+app_template_skip	Anashkalo për tani
+app_template_status	Serveri është gati — importoni një shabllon ose kaloni
+app_template_importing	Po zbatohet {title}…
+app_template_import_selected	Importo të zgjedhurin
+app_template_wipe_warn	Kjo fshin të dhënat tregtare në libra (shitjet, kartelat e palëve) dhe zbaton cilësimet e dyqanit të shabllonit. Të vazhdohet?
+app_template_wipe_continue	Vazhdo
+app_template_wipe_cancel	Anulo
+app_template_from_device	Importo nga kjo pajisje
+app_template_from_device_help	Zgjidhni një dosje që përmban template.json (dhe shop_defaults.json, nëse ka).
+settings_app_tmpl_note	Paketa të plota dyqani: katalogu dhe cilësimet e dyqanit. Riimportimi i një pakete fshin shitjet dhe kartelat e palëve, pastaj zbaton cilësimet e dyqanit të paketës.
+app_tmpl_named	Shabllon dyqani {name}
 cancel	Anulo
 removing	Po hiqet…
 removed	U hoq

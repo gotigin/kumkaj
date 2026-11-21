@@ -3,27 +3,27 @@ app_tagline	Koerier‐agentskap boeke + boekingstoonbank. Gratis aflyn.
 unlock	Ontgrendel
 pin_hint	Eienaar PIN begin as 0000
 sell	Bespreking
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Bord
+board	Bord
+park_draft	Sit konsep opsy
+board_help	Oop konsepte (bly totdat jy «Gooi weg» of «Neem betaling aan» gebruik) en vandag se geboekte verkope. Tik by «Bespreking» in die middel van jou werk op «Sit konsep opsy» (hier gestoor, nie in die boeke nie); tik op 'n konsep om voort te gaan.
+board_empty	Nog geen kaarte nie.
+board_park_nothing	Niks om opsy te sit nie — voeg koste of besprekingsbesonderhede by
+board_parked	Opsy gesit op «Bord» — die toonbank is vry
+board_draft	Konsep
+board_booked	Bespreek
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Konsep
+board_filter_booked	Bespreek
+board_cols_fmt	{n} kol.
+board_summary_fmt	{total} kaarte · {drafts} konsepte · {booked} geboek
+board_card_no_charges	Nog geen koste nie
+board_card_charges	koste
+board_card_booked	Bespreking
+board_draft_gone	Daardie konsep is nie meer op «Bord» nie
+board_draft_closed	Daardie konsep is reeds voltooi of weggegooi
+board_discard	Gooi weg
+board_discarded	Konsep weggegooi
 buy	Betaal uit
 books	Dagboek
 books_help	Vandag se stand. Bespreking = pakkies in. Betaal uit = vervoerderrekeninge & uitgawes. Partye = versenders & vervoerders.
@@ -220,7 +220,7 @@ snack_secs_save	Slaan waarskuwingstyd op
 snack_secs_saved	Waarskuwingstyd opgeslaan — {n} sekondes
 snack_secs_bad	Voer sekondes as 'n getal in (3–60)
 cancelled	Gekanselleer
-cancelling	Cancellingâ¦
+cancelling	Kanselleer tans…
 cancel	Kanselleer
 opening_client	Opening kliënt…
 preparing_desk	Berei skrifbord voor…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopieer partyboekhouding CSV
 copy_receipt	Kopieer bon
 copy_report	Kopieer verslag
 counted_cash_ph	Getelde geld in laai
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Sluit skift en druk kwitansie
+shift_handover	Skiftoorgawe
+shift_counted_ph	Oopkas getel by oorgawe
+shift_since	Hierdie skift sedert
+expected_in_drawer	Verwag in lade
+lock_books_through_month	Sluit boeke tot einde van maand
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Sluit tot einde van hierdie maand
+books_locked_none	Nog geen maand gesluit nie
+books_locked_through	Gesluit tot en met
 counter_agency_ph	Toonbank / agentskapnaam (opsioneel)
 create_backup	Skep agterkopie
 day_close_summary	Dag se sluitopsomming
@@ -442,9 +442,9 @@ pay_ap_cash	Betaal AP-kas
 pay_ap_upi	Betaal AP UPI
 period_bill	Periode-rekening
 period_bill_party	Periode-rekening (party)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Skep faktuur
+period_bill_generate_print	Skep en druk
+booking_bulk_preview	{ok} gereed · {bad} met foute
 pick_pod_photo	Kies POD-foto
 print_awb_label	Druk AWB-etiket
 print_open	Druk / oop
@@ -653,19 +653,19 @@ attachments_last_expense	Aanhangsels (laaste uitgawe)
 credit_limit_heading	Kredietlimiet (geselekteerde / vernoemde party)
 pay_selected_heading	Betaal geselekteerde (skuldeis vereenbaar / voorschot neem)
 write_off_heading	Skryf af (veeg sonder betaling)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Aanpassingsnotas
+adj_note_amount_ph	Bedrag
+adj_note_reason_ph	Rede (vereis)
+adj_note_awb_ph	Verwante AWB (opsioneel)
+credit_note_btn	Kredietnota
+debit_note_btn	Debietnota
+bill_later_heading	Faktureer later (bykoste ná bespreking)
+bill_later_amount_ph	Ekstra bedrag
+bill_later_party_ph	Party (net as die bespreking nie een het nie)
+bill_later_btn	Faktureer later
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Verpakking
+bill_later_extra_other	Ander
 pay_ap_heading	Betaal wat ons aan hulle skuldig is (AP)
 country_tax	Land en belasting
 extra_tills_heading	Bykomende kasregisters
@@ -777,26 +777,26 @@ onboard_book_tmpl	Boek · {} – voeg items en oopkrediet by, dan Gereed.
 onboard_template_tmpl	Noem die plek as jy wil, dan kies hoe om te begin.
 tmpl_blurb	Koerierboeke en boekingstoonbank: versenders, vervoerders, dagboek, LWA.
 tmpl_how	Bespreek pakkies by die toonbank; Dagboek vir vandag; oortjies vir tariewe, partye, verslae.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Winkelsjablone
+app_template_blurb	Kies 'n beginopstelling. «Oorslaan vir nou» laat die partye leeg.
+app_template_skip	Oorslaan vir nou
+app_template_status	Bediener gereed — voer 'n sjabloon in, of slaan oor
+app_template_importing	Pas {title}… aan
+app_template_public_hdr	Sjablone
+app_template_import_selected	Voer gekose in
+app_template_wipe_warn	Dit vee die handelsdata in die boeke uit (besprekings, grootboeke) en pas die sjabloon se winkelinstellings toe. Gaan voort?
+app_template_wipe_continue	Gaan voort
+app_template_wipe_cancel	Kanselleer
+public_tmpl_help	Ingeslote agentskappakkette vir hierdie winkel. Geen aflaai nodig nie.
+business_day	Wanneer begin «Vandag» van voor af?
+business_day_help	Met «Tot dagafsluiting» loop «Dagboek» ná middernag voort totdat jy die dagafsluiting aanteken. Met «Kalendermiddernag» word die dag om 00:00 plaaslike tyd afgesny.
+biz_day_until_close	Tot dagafsluiting
+biz_day_midnight	Kalendermiddernag
+business_day_saved	Sakedag gestoor
+report_day_lens	Bekyk «Vandag» as
+report_day_lens_help	Net die aansig — verander nie wanneer «Dag sluit» «Vandag» van voor af begin nie. «Volgens dagafsluiting» volg die laaste dagafsluiting; «Volgens middernag» sny om 00:00 plaaslike tyd.
+report_lens_day_close	Volgens dagafsluiting
+report_lens_midnight	Volgens middernag
 trk_booked	Bespreek
 trk_picked_up	Afgehaal
 trk_in_transit	Onderweg

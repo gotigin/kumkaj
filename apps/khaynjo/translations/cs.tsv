@@ -252,7 +252,7 @@ sidebar_order_saved	Pořadí postranního panelu bylo uloženo
 sidebar_visibility_saved	Viditelnost postranního panelu uložena
 amounts_hide	Skrýt
 amounts_show	Zobrazit
-counter	Počítadlo
+counter	Pult
 dine_in	Večeřet
 takeaway	Jídlo s sebou
 order	Objednávka restaurace
@@ -260,7 +260,7 @@ tables	Jídelní stoly
 kitchen	Kuchyně
 sales	Prodej
 sales_refunds	Prodej a vrácení peněz
-day_close	Den blízko
+day_close	Uzávěrka dne
 reports_expenses	Bankovní knížka a výsledovky
 nav_reports	Zprávy
 nav_settings	Nastavení
@@ -384,12 +384,12 @@ app_template_need_internet	Ke stažení šablon je potřeba internet
 app_template_import_selected	Importovat vybrané
 app_template_check_code	Ověřit kód
 app_template_import	Importovat
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importovat z tohoto zařízení
+app_template_from_device_help	Vyberte složku, která obsahuje template.json (a případně shop_defaults.json).
+settings_app_tmpl_note	Opakovaný import vymaže prodeje, KOT a účty a pak použije nastavení obchodu z balíčku. Šablony jen s menu: «Menu» → «Šablony položek».
+app_template_wipe_warn	Tím se vymažou obchodní data v knihách (prodeje, KOT, účty) a použije se nastavení obchodu ze šablony. Menu a nastavení se mohou změnit. Pokračovat?
+app_template_wipe_continue	Pokračovat
+app_template_wipe_cancel	Zrušit
 currency	Měna
 backup	Zálohování
 use	Použijte
@@ -550,22 +550,22 @@ new_party_clear	Nový zákazník nebo dodavatel (jasný formulář)
 new_party_kind_supplier_ph	Nový druh zákazníka nebo dodavatele (dodavatel)
 next_country	Další země
 next_order	Další objednávka (čistý stůl)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Koncepty
+park_draft	Odložit koncept
+drafts_help	Objednávky u pultu, které jste odložili v půli — do knih se dostanou až po «Přijměte platbu». Klepnutím na kartu v ní pokračujete v části «Objednávka restaurace»; «Zahodit koncept» koncept odstraní. «Uzávěrka dne» je nevymaže.
+drafts_park_nothing	Není co odložit — přidejte položky do košíku
+drafts_park_counter_only	«Odložit koncept» je jen pro objednávky u pultu — opusťte objednávku stolu nebo použijte «Jídelna»
+drafts_parked	Odloženo do «Koncepty» — pult je volný
+drafts_discard	Zahodit koncept
+drafts_discarded	Koncept zahozen
+drafts_gone	Tento koncept už v seznamu není
+drafts_closed	Tento koncept už byl zaplacen nebo zahozen
+drafts_empty	Zatím žádné koncepty. V části «Pult» přidejte jídla a klepněte na «Odložit koncept».
+drafts_card_kind	Koncept
+drafts_card_no_lines	Žádné položky
+drafts_card_lines	položek
+drafts_summary_fmt	Otevřené koncepty: {n}
+drafts_cols_fmt	{n} sl.
 note_gstin_ph	Poznámka / GSTIN / připomenutí dohody
 notes_attach_party	Poznámky a přílohy (vybraný zákazník nebo dodavatel)
 notes_attach_sale	Poznámky a přílohy (vybraný prodej)
@@ -588,15 +588,15 @@ print_open	Vytisknout / otevřít
 reason_amend_ph	Důvod změny / neplatné / vrácení peněz
 reason_note_ph	Důvod / poznámka (plýtvání, počet, …)
 record_day_close	Uzavření rekordního dne
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kdy začíná «dnes» znovu?
+business_day_help	Při volbě «Do uzávěrky dne» pokračuje «Denní kniha» i po půlnoci, dokud nezaznamenáte uzávěrku dne. Při volbě «Kalendářní půlnoc» den končí v 00:00 místního času.
+biz_day_until_close	Do uzávěrky dne
+biz_day_midnight	Kalendářní půlnoc
+business_day_saved	Obchodní den uložen
+report_day_lens	Zobrazit «dnes» jako
+report_day_lens_help	Jen zobrazení — nemění, kdy «Uzávěrka dne» začne «dnes» znovu. «Podle uzávěrky dne» se řídí poslední uzávěrkou dne; «Podle půlnoci» končí den v 00:00 místního času.
+report_lens_day_close	Podle uzávěrky dne
+report_lens_midnight	Podle půlnoci
 refresh_from_shop	Obnovit z obchodu
 refund	Vrácení peněz
 remove_selected	Odebrat vybrané
@@ -864,7 +864,7 @@ find_printers	Najděte tiskárny
 printers_looking	Při pohledu…
 saving_printer	Přidávání tiskárny…
 cancelled	Zrušeno
-cancelling	Cancellingâ¦
+cancelling	Rušení…
 removing	Odebírání…
 removed	Odebráno
 updating_order	Aktualizace…

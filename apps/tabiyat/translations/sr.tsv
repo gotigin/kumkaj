@@ -163,7 +163,7 @@ sidebar_disable_all	Онемогући све
 sidebar_order_saved	Редослед бочне траке је сачуван
 sidebar_visibility_saved	Видљивост бочне траке је сачувана
 sales	Продаја
-day_close	Дан близу
+day_close	Затварање дана
 reports_expenses	Банковна књига & П&Л
 nav_reports	Извештаји
 nav_settings	Подешавања
@@ -365,15 +365,15 @@ print_open	Штампај / отвори
 reason_amend_ph	Разлог за измену / поништење / повраћај
 reason_note_ph	Разлог / напомена (расипање, бројање, …)
 record_day_close	Сачувајте дан близу
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Када «данас» почиње изнова?
+business_day_help	Уз избор «До затварања дана», «Дневник» тече и после поноћи док не забележите затварање дана. Уз избор «Календарска поноћ», дан се сече у 00:00 по локалном времену.
+biz_day_until_close	До затварања дана
+biz_day_midnight	Календарска поноћ
+business_day_saved	Радни дан сачуван
+report_day_lens	Прикажи «данас» по
+report_day_lens_help	Само приказ — не мења када «Затварање дана» почиње «данас» изнова. «По затварању дана» рачуна од последњег затварања дана; «По поноћи» сече у 00:00 по локалном времену.
+report_lens_day_close	По затварању дана
+report_lens_midnight	По поноћи
 refresh_from_shop	Освежите из продавнице
 refund	Рефунд
 remove_selected	Уклони изабрано
@@ -849,19 +849,19 @@ client_template_confirm	Додати {d} ставки од {title}? Предме
 client_template_importing	Увоз {title}…
 client_template_done	Свака ставка од {title} је на вашим ставкама.
 client_template_imported	Додато {d} ставки и {c} категорије од {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Шаблони продавнице
+app_template_blurb	Изаберите почетни каталог и подешавања продавнице. «Прескочи за сада» оставља полицу празну.
+app_template_skip	Прескочи за сада
+app_template_status	Сервер спреман — увезите шаблон или прескочите
+app_template_importing	Примењује се {title}…
+app_template_import_selected	Увези изабрано
+app_template_wipe_warn	Ово брише пословне податке у књигама (продаја, картице купаца и добављача) и примењује подешавања продавнице из шаблона. Наставити?
+app_template_wipe_continue	Настави
+app_template_wipe_cancel	Откажи
+app_template_from_device	Увези са овог уређаја
+app_template_from_device_help	Изаберите фасциклу која садржи template.json (и shop_defaults.json ако постоји).
+settings_app_tmpl_note	Потпуни пакети продавнице: каталог и подешавања продавнице. Поновни увоз пакета брише продају и картице купаца и добављача, а затим примењује подешавања продавнице из пакета.
+app_tmpl_named	Шаблон продавнице {name}
 cancel	Откажи
 removing	Уклањање…
 removed	Уклоњено

@@ -3,27 +3,27 @@ app_tagline	Kurjerių agentūros knygos + rezervavimo stalas. Nemokamai neprisij
 unlock	Atrakinti
 pin_hint	Savininko PIN prasideda 0000
 sell	Užsakymas
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Lenta
+board	Lenta
+park_draft	Atidėti juodraštį
+board_help	Atviri juodraščiai (lieka, kol pasirinksite «Atmesti» arba «Priimti mokėjimą») ir šiandienos užregistruoti pardavimai. Skiltyje «Užsakymas» darbo metu bakstelėkite «Atidėti juodraštį» (išsaugoma čia, ne apskaitoje); bakstelėkite juodraštį, kad tęstumėte.
+board_empty	Kortelių dar nėra.
+board_park_nothing	Nėra ko atidėti — pridėkite mokesčių arba užsakymo duomenis
+board_parked	Atidėta į «Lenta» — darbo vieta laisva
+board_draft	Juodraštis
+board_booked	Užsakyta
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Juodraštis
+board_filter_booked	Užsakyta
+board_cols_fmt	{n} stulp.
+board_summary_fmt	Kortelės: {total} · juodraščiai: {drafts} · užregistruota: {booked}
+board_card_no_charges	Mokesčių dar nėra
+board_card_charges	mokesčiai
+board_card_booked	Užsakymas
+board_draft_gone	Šio juodraščio skiltyje «Lenta» nebėra
+board_draft_closed	Šis juodraštis jau užbaigtas arba atmestas
+board_discard	Atmesti
+board_discarded	Juodraštis atmestas
 buy	Išmokėkite
 books	Dienos knyga
 books_help	Šios dienos pozicija. Užsakymas = siuntiniai. Išmokėkite = vežėjo sąskaitos ir išlaidos. Šalys = siuntėjai ir vežėjai.
@@ -220,7 +220,7 @@ snack_secs_save	Išsaugoti įspėjimo laiką
 snack_secs_saved	Įspėjimo laikas išsaugotas — {n} sekundės
 snack_secs_bad	Įveskite sekundes kaip skaičių (3–60)
 cancelled	Atšaukta
-cancelling	Cancellingâ¦
+cancelling	Atšaukiama…
 cancel	Atšaukti
 opening_client	Atidaromas klientas…
 preparing_desk	Ruošiamas stalas…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopijuoti šalies knygą CSV
 copy_receipt	Kopijuoti kvitą
 copy_report	Kopijuoti ataskaitą
 counted_cash_ph	Suskaičiuoti grynieji stalčiuje
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Uždaryti pamainą ir spausdinti lapelį
+shift_handover	Pamainos perdavimas
+shift_counted_ph	Perdavimo metu suskaičiuoti pinigai
+shift_since	Ši pamaina nuo
+expected_in_drawer	Tikimasi stalčiuje
+lock_books_through_month	Užrakinti apskaitą iki mėnesio pabaigos
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Užrakinti iki šio mėnesio pabaigos
+books_locked_none	Dar nėra užrakinto mėnesio
+books_locked_through	Užrakinta iki
 counter_agency_ph	Prekystalio / agentūros pavadinimas (neprivaloma)
 create_backup	Sukurti atsarginę kopiją
 day_close_summary	Dienos uždarymo suvestinė
@@ -442,9 +442,9 @@ pay_ap_cash	Mokėti AP grynais
 pay_ap_upi	Mokėti AP per UPI
 period_bill	Laikotarpio sąskaita
 period_bill_party	Laikotarpio sąskaita (vakarėlis)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Sukurti sąskaitą
+period_bill_generate_print	Sukurti ir spausdinti
+booking_bulk_preview	Paruošta: {ok} · su klaidomis: {bad}
 pick_pod_photo	Pasirinkite POD nuotrauką
 print_awb_label	Spausdinkite AWB etiketę
 print_open	Spausdinti / atidaryti
@@ -653,19 +653,19 @@ attachments_last_expense	Priedai (paskutinė išlaida)
 credit_limit_heading	Kredito riba (pasirinkta / įvardyta šalis)
 pay_selected_heading	Mokėti pasirinktą (padengti skolą / imti avansą)
 write_off_heading	Nurašymas (išvalyti be mokėjimo)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Koregavimo dokumentai
+adj_note_amount_ph	Suma
+adj_note_reason_ph	Priežastis (privaloma)
+adj_note_awb_ph	Susijęs AWB (neprivaloma)
+credit_note_btn	Kreditinė sąskaita
+debit_note_btn	Debetinė sąskaita
+bill_later_heading	Apmokestinti vėliau (priemoka po užsakymo)
+bill_later_amount_ph	Papildoma suma
+bill_later_party_ph	Šalis (tik jei užsakyme jos nėra)
+bill_later_btn	Apmokestinti vėliau
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Pakavimas
+bill_later_extra_other	Kita
 pay_ap_heading	Mokėti, ką jiems skolingi (AP)
 country_tax	Šalis ir mokestis
 extra_tills_heading	Papildomos kasos
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — pridėkite prekes ir pradinį kreditą, tada At
 onboard_template_tmpl	Jei norite, pavadinkite vietą, tada pasirinkite, kaip pradėti.
 tmpl_blurb	Kurjerių knygos ir rezervavimo stalas: siuntėjai, vežėjai, dienos knyga, AWB.
 tmpl_how	Užsakyti siuntinius prie rašomojo stalo; Dienos knyga šiandienai; tarifų, vakarėlių, ataskaitų skirtukai.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Parduotuvės šablonai
+app_template_blurb	Pasirinkite pradinę darbo vietą. «Kol kas praleisti» palieka šalių sąrašą tuščią.
+app_template_skip	Kol kas praleisti
+app_template_status	Serveris paruoštas — importuokite šabloną arba praleiskite
+app_template_importing	Taikoma {title}…
+app_template_public_hdr	Šablonai
+app_template_import_selected	Importuoti pasirinktą
+app_template_wipe_warn	Tai išvalys prekybos duomenis apskaitoje (užsakymus, apskaitos knygas) ir pritaikys šablono parduotuvės nustatymus. Tęsti?
+app_template_wipe_continue	Tęsti
+app_template_wipe_cancel	Atšaukti
+public_tmpl_help	Šiai parduotuvei pridėti agentūros paketai. Nieko atsisiųsti nereikia.
+business_day	Kada «Šiandien» prasideda iš naujo?
+business_day_help	Pasirinkus «Iki dienos uždarymo», «Dienos knyga» tęsiasi ir po vidurnakčio, kol užregistruosite dienos uždarymą. Pasirinkus «Kalendorinis vidurnaktis», diena baigiasi 00:00 vietos laiku.
+biz_day_until_close	Iki dienos uždarymo
+biz_day_midnight	Kalendorinis vidurnaktis
+business_day_saved	Darbo diena išsaugota
+report_day_lens	Rodyti «Šiandien» kaip
+report_day_lens_help	Tik rodinys — nekeičia, kada «Dienos uždarymas» pradeda «Šiandien» iš naujo. «Pagal dienos uždarymą» skaičiuoja nuo paskutinio dienos uždarymo; «Pagal vidurnaktį» nukerpa 00:00 vietos laiku.
+report_lens_day_close	Pagal dienos uždarymą
+report_lens_midnight	Pagal vidurnaktį
 trk_booked	Užsakyta
 trk_picked_up	Paėmė
 trk_in_transit	Tranzitu

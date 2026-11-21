@@ -151,7 +151,7 @@ sidebar_disable_all	Keela kõik
 sidebar_order_saved	Külgriba järjekord salvestatud
 sidebar_visibility_saved	Külgriba nähtavus on salvestatud
 sales	Müük
-day_close	Päev lähedal
+day_close	Päeva sulgemine
 reports_expenses	Pangaraamat ja P&L
 nav_reports	Aruanded
 nav_settings	Seaded
@@ -353,15 +353,15 @@ print_open	Prindi / ava
 reason_amend_ph	Muudatuse / tühine / raha tagastamise põhjus
 reason_note_ph	Põhjus/märkus (raiskamine, arv jne)
 record_day_close	Rekordipäev on lähedal
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Millal «Täna» algab uuesti?
+business_day_help	Valikuga «Kuni päeva sulgemiseni» jätkub «Päevaraamat» ka pärast keskööd, kuni registreerite päeva sulgemise. Valikuga «Kalendri kesköö» lõpeb päev kell 00:00 kohaliku aja järgi.
+biz_day_until_close	Kuni päeva sulgemiseni
+biz_day_midnight	Kalendri kesköö
+business_day_saved	Äripäev salvestatud
+report_day_lens	Kuva «Täna» kujul
+report_day_lens_help	Ainult vaade — ei muuda seda, millal «Päeva sulgemine» alustab «Täna» uuesti. «Päeva sulgemise järgi» arvestab viimasest päeva sulgemisest; «Kesköö järgi» lõikab kell 00:00 kohaliku aja järgi.
+report_lens_day_close	Päeva sulgemise järgi
+report_lens_midnight	Kesköö järgi
 refresh_from_shop	Värskenda poest
 refund	Tagasimakse
 remove_selected	Eemalda valitud
@@ -837,19 +837,19 @@ client_template_confirm	Kas lisada {d} üksused saidilt {title}? Asjad, mis teil
 client_template_importing	{title} importimine…
 client_template_done	Kõik {title} üksused on teie kaupade peal.
 client_template_imported	Lisatud {d} üksused ja {c} kategooriad {title}-st
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Poe mallid
+app_template_blurb	Valige algne kataloog ja poeseaded. «Jäta praegu vahele» jätab riiuli tühjaks.
+app_template_skip	Jäta praegu vahele
+app_template_status	Server valmis — impordi mall või jäta vahele
+app_template_importing	{title} rakendamine…
+app_template_import_selected	Impordi valitud
+app_template_wipe_warn	See tühjendab raamatupidamise kauplemisandmed (müük, kontod) ja rakendab malli poeseaded. Kas jätkata?
+app_template_wipe_continue	Jätka
+app_template_wipe_cancel	Tühista
+app_template_from_device	Impordi sellest seadmest
+app_template_from_device_help	Valige kaust, milles on template.json (ja soovi korral shop_defaults.json).
+settings_app_tmpl_note	Täielikud poepakid: kataloog ja poeseaded. Paki uuesti importimine tühjendab müügi ja kontod ning rakendab seejärel paki poeseaded.
+app_tmpl_named	Poemall {name}
 cancel	Tühista
 removing	Eemaldamine…
 removed	Eemaldatud

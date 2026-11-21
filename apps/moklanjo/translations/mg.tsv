@@ -5,25 +5,25 @@ pin_hint	Ny PIN an'ny tompony dia manomboka amin'ny 0000
 sell	Famandrihana
 nav_board	Board
 board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+park_draft	Tehirizo ho drafitra
+board_help	Drafitra tsy vita (tehirizina mandra-panindry «Ario» na «Manaova fandoavam-bola») sy ny varotra voafandrika androany. Amin'ny «Famandrihana», kitiho ny «Tehirizo ho drafitra» eo afovoan'ny asanao (voatahiry eto fa tsy ao amin'ny kaonty); tsindrio ny drafitra hanohizana izany.
+board_empty	Tsy mbola misy karatra.
+board_park_nothing	Tsy misy hotehirizina ho drafitra — ampio sarany na antsipirian'ny famandrihana
+board_parked	Voatahiry amin'ny «Board» — foana ny birao
+board_draft	Drafitra
+board_booked	namandrika
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Drafitra
+board_filter_booked	namandrika
+board_cols_fmt	{n} tsanganana
+board_summary_fmt	{total} karatra · {drafts} drafitra · {booked} namandrika
+board_card_no_charges	Mbola tsy misy sarany fanampiny
+board_card_charges	sarany
+board_card_booked	Famandrihana
+board_draft_gone	Tsy ao amin'ny «Board» intsony io drafitra io
+board_draft_closed	Efa vita na voafafa io drafitra io
+board_discard	Ario
+board_discarded	Voafafa ny drafitra
 buy	Mandoa vola
 books	Bokin'ny andro
 books_help	Ny toerana anio. Famandrihana = entana miditra. Mandoa = faktioran'ny mpitatitra sy fandaniana. Antoko = mpitatitra & mpitatitra.
@@ -93,7 +93,7 @@ parcel	fonosana
 order	Baiko
 sales	Famandrihana
 sales_refunds	Famandrihana & famerenana
-day_close	Andro akaiky
+day_close	Fanakatonana ny andro
 reports_expenses	Bokin'ny banky & Teti-bola sy Fatiantoka
 nav_reports	Tatitra
 nav_settings	Fikirana
@@ -220,7 +220,7 @@ snack_secs_save	Tehirizo ny fotoana fanairana
 snack_secs_saved	Fotoana fampandrenesana voavonjy — {n} segondra
 snack_secs_bad	Ampidiro segondra ho isa (3–60)
 cancelled	Natoana
-cancelling	Cancellingâ¦
+cancelling	Manafoana…
 cancel	Ajanony
 opening_client	Manokatra mpanjifa…
 preparing_desk	Manomana birao…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Adika ny boky fitantanam-bola CSV
 copy_receipt	Adika ny fandraisana
 copy_report	Dika mitovy amin'ny tatitra
 counted_cash_ph	Vola voisan'ny trosa ao anaty vatasary
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Akatona ny fiovaovana ary printo ny tapakila
+shift_handover	Famindrana miasa
+shift_counted_ph	Vola notanterahina tamin'ny famindrana
+shift_since	Ity fandriana ity nanomboka tamin'ny
+expected_in_drawer	Andrasana ao anaty vata
+lock_books_through_month	Hidio ny kaonty hatramin'ny faran'ny volana
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Hidio hatramin'ny faran'ity volana ity
+books_locked_none	Tsy mbola misy volana mihidy
+books_locked_through	Kaonty voahidy hatramin'ny
 counter_agency_ph	Anaran'ny kaontera / masoivoho (tsy voatery)
 create_backup	Mametraha backup
 day_close_summary	Famintinana ny andro rehefa mifarana
@@ -442,9 +442,9 @@ pay_ap_cash	Aloavy vola AP
 pay_ap_upi	Aloavy AP UPI
 period_bill	Faktiora fe-potoana
 period_bill_party	Volavolan-potoana (antoko)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Mamorona faktiora
+period_bill_generate_print	Mamorona sy manonta
+booking_bulk_preview	{ok} vonona · {bad} misy hadisoana
 pick_pod_photo	Mifidiana sary POD
 print_awb_label	Manonta etikety AWB
 print_open	Printy / sokafy
@@ -653,19 +653,19 @@ attachments_last_expense	Fampidirana (fandaniana farany)
 credit_limit_heading	Fetra amin'ny kredita (partie voafidy / voatonona)
 pay_selected_heading	Vola hofidina (hanefana trosa / haka vola mialoha)
 write_off_heading	Esory (fafao tsy misy fandoavana)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Taratasy fanitsiana
+adj_note_amount_ph	Vola
+adj_note_reason_ph	Antony (ilaiana)
+adj_note_awb_ph	AWB mifandraika (tsy voatery)
+credit_note_btn	taratasim-bola
+debit_note_btn	taratasim-bola
+bill_later_heading	Ampandoavy any aoriana (sarany fanampiny aorian'ny famandrihana)
+bill_later_amount_ph	Vola fanampiny
+bill_later_party_ph	Mpanjifa (raha tsy misy ny famandrihana)
+bill_later_btn	Ampandoavy any aoriana
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Fonosana
+bill_later_extra_other	hafa
 pay_ap_heading	Aloavy izay misy trosa amin'izy ireo (AP)
 country_tax	Firenena sy hetra
 extra_tills_heading	Kesy fanampiny
@@ -777,26 +777,26 @@ onboard_book_tmpl	Boky · {} — ampio zavatra sy fitomboan'ny loka, avy eo Vita
 onboard_template_tmpl	Anarano ny toerana raha tianao, avy eo safidio ny fomba hanombohana.
 tmpl_blurb	Boky iraka sy birao famandrihana: consignor, mpitatitra, boky andro, AWB.
 tmpl_how	Fonosana boky amin'ny birao; Boky andro anio; tabilao ho an'ny sarany, fety, tatitra.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Modely fivarotana
+app_template_blurb	Misafidiana setup starter. «Atsaharo aloha» mamela ny lisitry ny mpanjifa ho foana.
+app_template_skip	Atsaharo aloha
+app_template_status	Vonona ny mpizara — ampidiro modely, na dingano
+app_template_importing	Manaova {title}…
+app_template_public_hdr	Modely
+app_template_import_selected	Hampiditra ny voafidy
+app_template_wipe_warn	Manadio ny angon-drakitra momba ny varotra ao amin'ny kaonty (famandrihana, bokim-bola) ary mampihatra ny firafitry ny fivarotana modely. Te hanohy ve ianao?
+app_template_wipe_continue	Tohizo
+app_template_wipe_cancel	Ajanony
+public_tmpl_help	Modely momba ny masoivoho efa vita izay miaraka amin'ny fampiharana. Tsy mila fampidinana.
+business_day	Rahoviana ny «Androany» no mamerina?
+business_day_help	«Hatramin'ny Fanakatonana ny andro» dia manohy ny «Bokin'ny andro» mandalo amin'ny misasakalina, mandra-pandraiketanao ny fifaranan'ny andro. «Amin'ny misasakalina» tapaka amin'ny 00:00 (misasakalina) ora eo an-toerana.
+biz_day_until_close	Hatramin'ny Fanakatonana ny andro
+biz_day_midnight	Amin'ny misasakalina
+business_day_saved	Voatahiry ny firafitry ny andro fiasana
+report_day_lens	Asehoy ny «Androany» ho
+report_day_lens_help	Fijery fotsiny — tsy manova ny fotoana anombohan'ny «Fanakatonana ny andro» indray ny «Androany». «Araka ny Fanakatonana ny andro» dia manaraka ny fanakatonana andro farany; «Araka ny mamatonalina» dia manapaka amin'ny 00:00 (misasakalina), ora eo an-toerana.
+report_lens_day_close	Araka ny Fanakatonana ny andro
+report_lens_midnight	Araka ny mamatonalina
 trk_booked	namandrika
 trk_picked_up	Noraisina
 trk_in_transit	Eny an-dàlana

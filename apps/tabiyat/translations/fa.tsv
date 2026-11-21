@@ -365,15 +365,15 @@ print_open	چاپ / باز کردن
 reason_amend_ph	دلیل اصلاح / ابطال / بازپرداخت
 reason_note_ph	دلیل / یادداشت (ضایعات، شمارش، …)
 record_day_close	ثبت بستن روز
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«امروز» چه زمانی از نو شروع می‌شود؟
+business_day_help	با «تا بستن روز»، «دفتر روز» پس از نیمه‌شب هم ادامه دارد تا وقتی بستن روز را ثبت کنید. با «نیمه‌شب تقویمی»، روز در ساعت ۰۰:۰۰ به وقت محلی بسته می‌شود.
+biz_day_until_close	تا بستن روز
+biz_day_midnight	نیمه‌شب تقویمی
+business_day_saved	روز کاری ذخیره شد
+report_day_lens	نمایش «امروز» بر اساس
+report_day_lens_help	فقط نمایش — زمانِ از نو شروع شدن «امروز» با «بستن روز» را تغییر نمی‌دهد. «بر اساس بستن روز» از آخرین بستن روز حساب می‌کند؛ «بر اساس نیمه‌شب» در ساعت ۰۰:۰۰ به وقت محلی می‌بُرد.
+report_lens_day_close	بر اساس بستن روز
+report_lens_midnight	بر اساس نیمه‌شب
 refresh_from_shop	تازه‌سازی از فروشگاه
 refund	بازپرداخت
 remove_selected	برداشتن انتخاب‌شده
@@ -849,19 +849,19 @@ client_template_confirm	موارد {d} از {title} اضافه شود؟ اقلا
 client_template_importing	در حال درون‌برد {title}…
 client_template_done	هر مورد از {title} روی موارد شما قرار دارد.
 client_template_imported	موارد {d} و دسته‌های {c} از {title} اضافه شد
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	قالب‌های فروشگاه
+app_template_blurb	یک کاتالوگ آغازین و تنظیمات فروشگاه انتخاب کنید. «فعلاً رد شو» قفسه را خالی می‌گذارد.
+app_template_skip	فعلاً رد شو
+app_template_status	سرور آماده است — قالبی وارد کنید یا رد شوید
+app_template_importing	در حال اعمال {title}…
+app_template_import_selected	وارد کردن مورد انتخاب‌شده
+app_template_wipe_warn	این کار داده‌های معاملاتی دفاتر (فروش‌ها، حساب‌ها) را پاک می‌کند و تنظیمات فروشگاهِ قالب را اعمال می‌کند. ادامه می‌دهید؟
+app_template_wipe_continue	ادامه
+app_template_wipe_cancel	لغو
+app_template_from_device	وارد کردن از این دستگاه
+app_template_from_device_help	پوشه‌ای را انتخاب کنید که template.json در آن باشد (و در صورت تمایل shop_defaults.json).
+settings_app_tmpl_note	بسته‌های کامل فروشگاه: کاتالوگ و تنظیمات فروشگاه. وارد کردن دوباره یک بسته، فروش‌ها و حساب‌ها را پاک می‌کند و سپس تنظیمات فروشگاهِ بسته را اعمال می‌کند.
+app_tmpl_named	قالب فروشگاه {name}
 cancel	لغو
 removing	در حال حذف…
 removed	حذف شد

@@ -384,12 +384,12 @@ app_template_need_internet	Загвар татахад интернэт хэрэ
 app_template_import_selected	Сонгосныг импортлох
 app_template_check_code	Код шалгах
 app_template_import	Импортлох
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Энэ төхөөрөмжөөс импортлох
+app_template_from_device_help	template.json (мөн сонголтоор shop_defaults.json) агуулсан фолдерыг сонгоно уу.
+settings_app_tmpl_note	Дахин импорт хийснээр борлуулалт, KOT болон дэвтэр арилж, дараа нь загварын дэлгүүрийн тохиргоог хэрэгжүүлнэ. Зөвхөн цэстэй загварууд: «Цэс» → «Барааны загварууд».
+app_template_wipe_warn	Энэ нь дансны арилжааны өгөгдлийг (борлуулалт, KOT, дэвтэр) цэвэрлэж, загварын дэлгүүрийн тохиргоог хэрэгжүүлнэ. Цэс болон тохиргоо өөрчлөгдөж болно. Та үргэлжлүүлэхийг хүсч байна уу?
+app_template_wipe_continue	Үргэлжлүүлэх
+app_template_wipe_cancel	Цуцлах
 currency	Валют
 backup	Нөөц хуулбар
 use	Ашиглах
@@ -550,22 +550,22 @@ new_party_clear	Шинэ харилцагч (маягтыг цэвэрлэх)
 new_party_kind_supplier_ph	Шинэ харилцагчийн төрөл (Нийлүүлэгч)
 next_country	Дараагийн улс
 next_order	Дараагийн захиалга (ширээг цэвэрлэх)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Ноорог
+park_draft	Ноорог болгон хадгалах
+drafts_help	Кассан дээр дундаас нь түр хойшлуулсан захиалгууд — «Төлбөр авах» хийх хүртэл дэвтэрт орохгүй. «Захиалга» дээр үргэлжлүүлэхийн тулд картыг товшино уу; «Ноорог устгах» нь ноорогийг устгана. «Өдөр хаах» эдгээрийг арилгахгүй.
+drafts_park_nothing	Хойшлуулах зүйл алга — сагсанд бараа нэмнэ үү
+drafts_park_counter_only	«Ноорог болгон хадгалах» нь зөвхөн кассын захиалгад зориулагдсан — ширээний захиалгаас гарах эсвэл «Танхим»-г ашиглана уу
+drafts_parked	«Ноорог»-д хадгаллаа — касс чөлөөтэй
+drafts_discard	Ноорог устгах
+drafts_discarded	Ноорог устгасан
+drafts_gone	Тэр ноорог жагсаалтад байхгүй болсон
+drafts_closed	Тэр ноорог аль хэдийн төлөгдсөн эсвэл устгагдсан
+drafts_empty	Одоогоор ноорог алга. «Касс» дээр хоол нэмээд «Ноорог болгон хадгалах»-г товшино уу.
+drafts_card_kind	Ноорог
+drafts_card_no_lines	Мөр алга
+drafts_card_lines	мөр
+drafts_summary_fmt	{n} нээлттэй ноорог
+drafts_cols_fmt	{n} багана
 note_gstin_ph	Тэмдэглэл / GSTIN / гэрээний сануулга
 notes_attach_party	Тэмдэглэл ба хавсралт (сонгосон харилцагч)
 notes_attach_sale	Тэмдэглэл ба хавсралт (сонгосон борлуулалт)
@@ -588,15 +588,15 @@ print_open	Хэвлэх / нээх
 reason_amend_ph	Засах / хүчингүй болгох / буцаах шалтгаан
 reason_note_ph	Шалтгаан / тэмдэглэл (хорогдол, тооллого, …)
 record_day_close	Өдөр хаалтыг бүртгэх
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Өнөөдөр» хэзээ шинээр эхлэх вэ?
+business_day_help	«Өдөр хаах хүртэл»-г сонговол таныг өдрийн хаалтыг бүртгэх хүртэл «Өдрийн дэвтэр» шөнө дундаас хойш ч үргэлжилнэ. «Календарийн шөнө дунд»-г сонговол өдөр орон нутгийн цагаар 00:00 цагт дуусна.
+biz_day_until_close	Өдөр хаах хүртэл
+biz_day_midnight	Календарийн шөнө дунд
+business_day_saved	Ажлын өдрийн тохиргоог хадгалсан
+report_day_lens	«Өнөөдөр»-г ингэж харуулах
+report_day_lens_help	Зөвхөн харагдац — «Өдөр хаах» хэзээ «Өнөөдөр»-г шинээр эхлүүлэхийг өөрчлөхгүй. «Өдрийн хаалтаар» нь сүүлийн өдрийн хаалтаас тооцно; «Шөнө дундаар» нь орон нутгийн цагаар 00:00 цагт тасална.
+report_lens_day_close	Өдрийн хаалтаар
+report_lens_midnight	Шөнө дундаар
 refresh_from_shop	Дэлгүүрээс шинэчлэх
 refund	Буцаалт
 remove_selected	Сонгосныг хасах
@@ -864,7 +864,7 @@ find_printers	Принтер олох
 printers_looking	Хайж байна…
 saving_printer	Принтер нэмж байна…
 cancelled	Цуцлагдсан
-cancelling	Cancellingâ¦
+cancelling	Цуцалж байна…
 removing	Хасаж байна…
 removed	Хасагдлаа
 updating_order	Шинэчилж байна…

@@ -384,12 +384,12 @@ app_template_need_internet	টেমপ্লেট ডাউনলোড কর
 app_template_import_selected	নির্বাচিতটি ইমপোর্ট করুন
 app_template_check_code	কোড যাচাই করুন
 app_template_import	ইমপোর্ট করুন
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	এই ডিভাইস থেকে ইমপোর্ট করুন
+app_template_from_device_help	এমন ফোল্ডার বেছে নিন যাতে template.json আছে (shop_defaults.json থাকলে সেটিও)।
+settings_app_tmpl_note	আবার ইমপোর্ট করলে বিক্রি, KOT ও খতিয়ান মুছে যায়, তারপর প্যাকের দোকান সেটিংস প্রযোজ্য হয়। শুধু মেনুর টেমপ্লেট: «মেনু» → «আইটেম টেমপ্লেট»।
+app_template_wipe_warn	এতে খাতার লেনদেনের ডেটা (বিক্রি, KOT, খতিয়ান) মুছে যাবে এবং টেমপ্লেটের দোকান সেটিংস প্রযোজ্য হবে। মেনু ও সেটআপ বদলাতে পারে। এগিয়ে যাবেন?
+app_template_wipe_continue	এগিয়ে যান
+app_template_wipe_cancel	বাতিল
 currency	মুদ্রা
 backup	ব্যাকআপ
 use	ব্যবহার করুন
@@ -550,22 +550,22 @@ new_party_clear	নতুন পার্টি (ফর্ম মুছুন)
 new_party_kind_supplier_ph	নতুন পার্টির ধরন (সরবরাহকারী)
 next_country	পরের দেশ
 next_order	পরের অর্ডার (ডেস্ক মুছুন)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	খসড়া
+park_draft	খসড়ায় রাখুন
+drafts_help	কাউন্টারের যে অসম্পূর্ণ অর্ডারগুলো আপনি মাঝপথে সরিয়ে রেখেছেন — «পেমেন্ট নিন» না হওয়া পর্যন্ত এগুলো খাতায় ওঠে না। কার্ড চাপলে সেটি «অর্ডার»-এ আবার খুলবে; «খসড়া ফেলে দিন» দিলে খসড়া মুছে যায়। «দিন শেষ» এগুলো মোছে না।
+drafts_park_nothing	রাখার মতো কিছু নেই — কার্টে আইটেম যোগ করুন
+drafts_park_counter_only	«খসড়ায় রাখুন» শুধু কাউন্টারের অর্ডারের জন্য — টেবিলের অর্ডার ছেড়ে দিন অথবা «ফ্লোর» ব্যবহার করুন
+drafts_parked	«খসড়া»-এ রাখা হয়েছে — কাউন্টার খালি
+drafts_discard	খসড়া ফেলে দিন
+drafts_discarded	খসড়া ফেলে দেওয়া হয়েছে
+drafts_gone	ওই খসড়া আর তালিকায় নেই
+drafts_closed	ওই খসড়ার পেমেন্ট হয়ে গেছে অথবা সেটি ফেলে দেওয়া হয়েছে
+drafts_empty	এখনও কোনো খসড়া নেই। «কাউন্টার»-এ পদ যোগ করে «খসড়ায় রাখুন» চাপুন।
+drafts_card_kind	খসড়া
+drafts_card_no_lines	কোনো আইটেম নেই
+drafts_card_lines	আইটেম
+drafts_summary_fmt	{n}টি খোলা খসড়া
+drafts_cols_fmt	{n} কলাম
 note_gstin_ph	নোট / GSTIN / চুক্তির রিমাইন্ডার
 notes_attach_party	নোট ও সংযুক্তি (বাছাই করা পার্টি)
 notes_attach_sale	নোট ও সংযুক্তি (বাছাই করা বিক্রি)
@@ -588,15 +588,15 @@ print_open	ছাপুন / খুলুন
 reason_amend_ph	সংশোধন / বাতিল / ফেরতের কারণ
 reason_note_ph	কারণ / নোট (নষ্ট, গণনা, …)
 record_day_close	দিন শেষ রেকর্ড করুন
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«আজ» কখন নতুন করে শুরু হয়?
+business_day_help	«দিন শেষ পর্যন্ত» বেছে নিলে আপনি দিন শেষ রেকর্ড না করা পর্যন্ত «দিনের খাতা» মাঝরাতের পরেও চলতে থাকে। «ক্যালেন্ডারের মাঝরাত» বেছে নিলে দিন স্থানীয় সময় রাত 12:00টায় কাটা হয়।
+biz_day_until_close	দিন শেষ পর্যন্ত
+biz_day_midnight	ক্যালেন্ডারের মাঝরাত
+business_day_saved	ব্যবসার দিন সেভ হয়েছে
+report_day_lens	«আজ» এভাবে দেখুন
+report_day_lens_help	শুধু দেখার জন্য — «দিন শেষ» কখন «আজ» নতুন করে শুরু করে, এতে তা বদলায় না। «দিন শেষ অনুযায়ী» শেষ দিন শেষ থেকে গোনে; «মাঝরাত অনুযায়ী» স্থানীয় সময় রাত 12:00টায় কাটে।
+report_lens_day_close	দিন শেষ অনুযায়ী
+report_lens_midnight	মাঝরাত অনুযায়ী
 refresh_from_shop	দোকান থেকে রিফ্রেশ
 refund	ফেরত
 remove_selected	বাছাই করা সরান
@@ -864,7 +864,7 @@ find_printers	প্রিন্টার খুঁজুন
 printers_looking	এই ডিভাইস ও Wi‑Fi-এ প্রিন্টার খুঁজছে…
 saving_printer	প্রিন্টার যোগ হচ্ছে…
 cancelled	বাতিল
-cancelling	Cancellingâ¦
+cancelling	বাতিল হচ্ছে…
 removing	সরানো হচ্ছে…
 removed	সরানো হয়েছে
 updating_order	আপডেট হচ্ছে…

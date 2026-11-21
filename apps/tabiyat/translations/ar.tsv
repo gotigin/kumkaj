@@ -365,15 +365,15 @@ print_open	اطبع / افتح
 reason_amend_ph	سبب التعديل / الإلغاء / الاسترداد
 reason_note_ph	السبب / ملاحظة (هدر، عد، …)
 record_day_close	سجّل إقفال اليوم
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	متى يبدأ «اليوم» من جديد؟
+business_day_help	مع «حتى إقفال اليوم» يستمر «دفتر اليوم» بعد منتصف الليل إلى أن تسجّل إقفال اليوم. مع «منتصف الليل حسب التقويم» يُقطع اليوم عند 12:00 ص بالتوقيت المحلي.
+biz_day_until_close	حتى إقفال اليوم
+biz_day_midnight	منتصف الليل حسب التقويم
+business_day_saved	تم حفظ يوم العمل
+report_day_lens	عرض «اليوم» حسب
+report_day_lens_help	للعرض فقط — لا يغيّر متى يعيد «إقفال اليوم» بدء «اليوم». «حسب إقفال اليوم» يتبع آخر إقفال لليوم؛ «حسب منتصف الليل» يقطع عند 12:00 ص بالتوقيت المحلي.
+report_lens_day_close	حسب إقفال اليوم
+report_lens_midnight	حسب منتصف الليل
 refresh_from_shop	حدّث من المتجر
 refund	استرداد
 remove_selected	أزل المحدد
@@ -849,19 +849,19 @@ client_template_confirm	هل تريد إضافة عناصر {d} من {title}؟ �
 client_template_importing	جارٍ استيراد {title}…
 client_template_done	كل عنصر من {title} موجود على العناصر الخاصة بك.
 client_template_imported	تمت إضافة عناصر {d} وفئات {c} من {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	قوالب المتجر
+app_template_blurb	اختر كتالوجاً للبدء وإعدادات المتجر. «انتظر قليلاً» يترك الرف فارغاً.
+app_template_skip	انتظر قليلاً
+app_template_status	الخادم جاهز — استورد قالبًا أو تخطَّ
+app_template_importing	يتم تطبيق {title}…
+app_template_import_selected	استيراد المحدد
+app_template_wipe_warn	سيمسح هذا بيانات التداول في الدفاتر (المبيعات، كشوف الحسابات) ويطبّق إعدادات المتجر من القالب. متابعة؟
+app_template_wipe_continue	متابعة
+app_template_wipe_cancel	إلغاء
+app_template_from_device	استيراد من هذا الجهاز
+app_template_from_device_help	اختر مجلداً يحتوي على template.json (وكذلك shop_defaults.json إن وُجد).
+settings_app_tmpl_note	حزم متجر كاملة: الكتالوج وإعدادات المتجر. إعادة استيراد حزمة تمسح المبيعات وكشوف الحسابات، ثم تطبّق إعدادات المتجر من الحزمة.
+app_tmpl_named	قالب متجر {name}
 cancel	إلغاء
 removing	جارٍ الإزالة…
 removed	تمت الإزالة

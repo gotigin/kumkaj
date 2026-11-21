@@ -353,15 +353,15 @@ print_open	បោះពុម្ព / បើក
 reason_amend_ph	មូលហេតុកែ / លុបចោល / សង
 reason_note_ph	មូលហេតុ / កំណត់ចំណាំ (ខាត រាប់ …)
 record_day_close	កត់ត្រាបិទថ្ងៃ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	តើ «ថ្ងៃនេះ» កំណត់ឡើងវិញនៅពេលណា?
+business_day_help	«រហូតដល់ បិទថ្ងៃ» បន្ត «សៀវភៅប្រចាំថ្ងៃ» រត់រំលងពាក់កណ្តាលអធ្រាត្រ រហូតដល់អ្នកកត់ត្រាថ្ងៃបិទ។ «នៅពាក់កណ្តាលអធ្រាត្រ» កាត់នៅម៉ោង 00:00 ម៉ោងក្នុងស្រុក។
+biz_day_until_close	រហូតដល់ បិទថ្ងៃ
+biz_day_midnight	នៅពាក់កណ្តាលអធ្រាត្រ
+business_day_saved	បានរក្សាទុកការកំណត់ថ្ងៃធ្វើការ
+report_day_lens	បង្ហាញ «ថ្ងៃនេះ» ជា
+report_day_lens_help	វាផ្លាស់ប្តូរតែទិដ្ឋភាព — វាមិនផ្លាស់ប្តូរនៅពេលដែល «បិទថ្ងៃ» កំណត់ «ថ្ងៃនេះ» ឡើងវិញ។ «យោងតាម បិទថ្ងៃ» ធ្វើតាមថ្ងៃចុងក្រោយបិទ; «នេះ​បើ​តាម​ការ​ឲ្យ​ដឹង​នៅ​ពាក់​កណ្ដាល​អធ្រាត្រ» កាត់នៅម៉ោង 00:00 ម៉ោងក្នុងស្រុក។
+report_lens_day_close	យោងតាម បិទថ្ងៃ
+report_lens_midnight	នេះ​បើ​តាម​ការ​ឲ្យ​ដឹង​នៅ​ពាក់​កណ្ដាល​អធ្រាត្រ
 refresh_from_shop	ធ្វើឱ្យស្រស់ពីហាង
 refund	សងប្រាក់
 remove_selected	ដកអ្វីដែលបានជ្រើស
@@ -837,19 +837,19 @@ client_template_confirm	បន្ថែមធាតុ {d} ពី {title}? រ�
 client_template_importing	កំពុងនាំចូល {title}…
 client_template_done	រាល់ទំនិញពី {title} គឺស្ថិតនៅលើទំនិញរបស់អ្នក។
 client_template_imported	បានបន្ថែមធាតុ {d} និងប្រភេទ {c} ពី {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	គំរូហាង
+app_template_blurb	ជ្រើសរើសកាតាឡុកចាប់ផ្តើម និងការកំណត់ហាង។ «រំលងឥឡូវ» ទុកបញ្ជីផលិតផលឱ្យនៅទទេ។
+app_template_skip	រំលងឥឡូវ
+app_template_status	ម៉ាស៊ីនមេរួចរាល់ — នាំចូលគំរូ ឬរំលង
+app_template_importing	កំពុងអនុវត្ត {title}…
+app_template_import_selected	នាំចូលអ្វីដែលបានជ្រើស
+app_template_wipe_warn	វាសម្អាតទិន្នន័យជួញដូរនៅក្នុងគណនី (ការលក់ សៀវភៅកត់ត្រា) និងអនុវត្តការកំណត់ហាងរបស់គំរូ។ តើអ្នកចង់បន្តទេ?
+app_template_wipe_continue	បន្ត
+app_template_wipe_cancel	លុបចោល
+app_template_from_device	នាំចូលពីឧបករណ៍នេះ
+app_template_from_device_help	ជ្រើសរើសថតឯកសារដែលមាន template.json (និងជាជម្រើស shop_defaults.json)។
+settings_app_tmpl_note	បំពេញគំរូហាង៖ កាតាឡុក និងការកំណត់ហាង។ ការនាំចូលម្តងទៀតសម្អាតការលក់ និងសៀវភៅកត់ត្រា បន្ទាប់មកអនុវត្តការកំណត់ហាងរបស់គំរូ។
+app_tmpl_named	គំរូហាង {name}
 cancel	លុបចោល
 removing	កំពុងដកចេញ…
 removed	បានដកចេញ

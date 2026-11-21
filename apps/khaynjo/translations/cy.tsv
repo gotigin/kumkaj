@@ -384,12 +384,12 @@ app_template_need_internet	Angen y rhyngrwyd i lwytho templedi i lawr
 app_template_import_selected	Mewnforio'r dewis
 app_template_check_code	Gwirio'r cod
 app_template_import	Mewnforio
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Mewnforio o'r ddyfais hon
+app_template_from_device_help	Dewiswch ffolder sy'n cynnwys template.json (ac, yn ddewisol, shop_defaults.json).
+settings_app_tmpl_note	Mae mewnforio eto yn clirio gwerthiannau, KOT a chyfriflyfrau, yna'n cymhwyso gosodiadau siop y templed. Templedi gyda dewislen yn unig: «Dewislen» → «Templedi eitemau».
+app_template_wipe_warn	Mae hyn yn clirio'r data masnachu yn y cyfrifon (gwerthiannau, KOT, cyfriflyfr) ac yn cymhwyso gosodiadau siop y templed. Gall y ddewislen a'r gosodiad newid. Ydych chi am barhau?
+app_template_wipe_continue	Parhau
+app_template_wipe_cancel	Canslo
 currency	Arian cyfred
 backup	Copi wrth gefn
 use	Defnyddio
@@ -550,22 +550,22 @@ new_party_clear	Parti newydd (clirio ffurflen)
 new_party_kind_supplier_ph	Math parti newydd (Cyflenwr)
 next_country	Gwlad nesaf
 next_order	Archeb nesaf (clirio desg)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Drafftiau
+park_draft	Cadw fel drafft
+drafts_help	Archebion anorffenedig o'r cownter a roesoch o'r neilltu — nid ydynt yn mynd i'r llyfrau nes «Cymryd taliad». Tapiwch gerdyn i barhau ag ef yn «Archeb»; mae «Dileu drafft» yn dileu'r drafft. Nid yw «Cau diwrnod» yn eu clirio.
+drafts_park_nothing	Dim byd i'w roi o'r neilltu — ychwanegwch eitemau at y fasged
+drafts_park_counter_only	Mae «Cadw fel drafft» ar gyfer archebion wrth y cownter yn unig — gadewch archeb y bwrdd, neu defnyddiwch «Llawr»
+drafts_parked	Wedi'i gadw yn «Drafftiau» — mae'r cownter yn wag nawr
+drafts_discard	Dileu drafft
+drafts_discarded	Drafft wedi'i ddileu
+drafts_gone	Nid yw'r drafft hwnnw bellach ar y rhestr
+drafts_closed	Roedd y drafft hwnnw eisoes wedi'i dalu neu ei ddileu
+drafts_empty	Dim drafftiau eto. Ar «Cownter», ychwanegwch seigiau a thapiwch «Cadw fel drafft».
+drafts_card_kind	Drafft
+drafts_card_no_lines	Dim llinellau
+drafts_card_lines	llinell
+drafts_summary_fmt	{n} drafft agored
+drafts_cols_fmt	{n} colofn
 note_gstin_ph	Nodyn / GSTIN / atgoffa cytundeb
 notes_attach_party	Nodiadau ac atodiadau (parti a ddewiswyd)
 notes_attach_sale	Nodiadau ac atodiadau (gwerthiant a ddewiswyd)
@@ -588,15 +588,15 @@ print_open	Argraffu / agor
 reason_amend_ph	Rheswm dros ddiwygio / gwagio / ad-daliad
 reason_note_ph	Rheswm / nodyn (gwastraff, cyfrif, …)
 record_day_close	Cofnodi cau diwrnod
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Pryd mae «Heddiw» yn ailosod?
+business_day_help	Gyda «Tan gau'r diwrnod», mae «Llyfr y dydd» yn parhau heibio hanner nos nes i chi gofnodi cau'r diwrnod. Gyda «Hanner nos y calendr», mae'r diwrnod yn torri am 00:00 amser lleol.
+biz_day_until_close	Tan gau'r diwrnod
+biz_day_midnight	Hanner nos y calendr
+business_day_saved	Gosodiad diwrnod busnes wedi'i gadw
+report_day_lens	Dangos «Heddiw» fel
+report_day_lens_help	Gwedd yn unig — nid yw'n newid pryd mae «Cau diwrnod» yn ailosod «Heddiw». Mae «Yn ôl cau'r diwrnod» yn dilyn y cau diwrnod diwethaf; mae «Yn ôl hanner nos» yn torri am 00:00 amser lleol.
+report_lens_day_close	Yn ôl cau'r diwrnod
+report_lens_midnight	Yn ôl hanner nos
 refresh_from_shop	Adnewyddu o'r siop
 refund	Ad-dalu
 remove_selected	Tynnu'r dewisedig
@@ -864,7 +864,7 @@ find_printers	Dewch o hyd i argraffwyr
 printers_looking	Yn chwilio…
 saving_printer	Yn ychwanegu argraffydd…
 cancelled	Wedi'i ganslo
-cancelling	Cancellingâ¦
+cancelling	Wrthi'n canslo…
 removing	Wrthi'n tynnu…
 removed	Wedi'i dynnu
 updating_order	Wrthi'n diweddaru…

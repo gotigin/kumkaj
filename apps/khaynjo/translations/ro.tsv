@@ -384,12 +384,12 @@ app_template_need_internet	E nevoie de internet pentru a descărca șabloane
 app_template_import_selected	Importă selecția
 app_template_check_code	Verifică codul
 app_template_import	Importă
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importă de pe acest dispozitiv
+app_template_from_device_help	Alege un dosar care conține template.json (și, opțional, shop_defaults.json).
+settings_app_tmpl_note	Reimportul șterge vânzările, KOT-urile și registrele, apoi aplică setările localului din pachet. Șabloane doar cu meniu: «Meniu» → «Șabloane de articole».
+app_template_wipe_warn	Aceasta șterge datele comerciale din evidență (vânzări, KOT-uri, registre) și aplică setările localului din șablon. Meniul și configurarea se pot schimba. Continui?
+app_template_wipe_continue	Continuă
+app_template_wipe_cancel	Anulează
 currency	Monedă
 backup	Copie de rezervă
 use	Folosește
@@ -550,22 +550,22 @@ new_party_clear	Partener nou (golește formularul)
 new_party_kind_supplier_ph	Tip partener nou (Furnizor)
 next_country	Țara următoare
 next_order	Comanda următoare (golește tejgheaua)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Ciorne
+park_draft	Salvează ca ciornă
+drafts_help	Comenzi de la tejghea lăsate deoparte la jumătate — nu intră în evidență până la «Încasează plata». Apasă un card ca să-l reiei în «Comandă»; «Șterge ciorna» șterge ciorna. «Închidere de zi» nu le șterge.
+drafts_park_nothing	Nimic de salvat ca ciornă — adaugă articole în coș
+drafts_park_counter_only	«Salvează ca ciornă» este doar pentru comenzile de la tejghea — lasă comanda de la masă sau folosește «Sală»
+drafts_parked	Salvată în «Ciorne» — tejgheaua e liberă
+drafts_discard	Șterge ciorna
+drafts_discarded	Ciornă ștearsă
+drafts_gone	Ciorna aceea nu mai este în listă
+drafts_closed	Ciorna aceea a fost deja plătită sau ștearsă
+drafts_empty	Nicio ciornă încă. În «Tejghea», adaugă preparate și apasă «Salvează ca ciornă».
+drafts_card_kind	Ciornă
+drafts_card_no_lines	Niciun articol
+drafts_card_lines	articole
+drafts_summary_fmt	{n} ciorne deschise
+drafts_cols_fmt	{n} coloane
 note_gstin_ph	Notă / GSTIN / memento de acord
 notes_attach_party	Note și atașamente (partener selectat)
 notes_attach_sale	Note și atașamente (vânzare selectată)
@@ -588,15 +588,15 @@ print_open	Tipărește / deschide
 reason_amend_ph	Motiv pentru modificare / anulare / rambursare
 reason_note_ph	Motiv / notă (pierdere, numărare, …)
 record_day_close	Înregistrează închiderea de zi
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Când se resetează «Azi»?
+business_day_help	«Până la Închidere de zi» ține «Jurnalul zilei» deschis și după miezul nopții, până când înregistrezi închiderea de zi. «Miezul nopții calendaristic» taie la ora 00:00, ora locală.
+biz_day_until_close	Până la Închidere de zi
+biz_day_midnight	Miezul nopții calendaristic
+business_day_saved	Ziua de lucru a fost salvată
+report_day_lens	Afișează «Azi» ca
+report_day_lens_help	Doar afișare — nu schimbă momentul în care «Închidere de zi» resetează «Azi». «În funcție de Închidere de zi» pornește de la ultima închidere de zi; «În funcție de miezul nopții» taie la ora 00:00, ora locală.
+report_lens_day_close	În funcție de Închidere de zi
+report_lens_midnight	În funcție de miezul nopții
 refresh_from_shop	Reîmprospătează din local
 refund	Rambursare
 remove_selected	Elimină selecția
@@ -864,7 +864,7 @@ find_printers	Găsește imprimante
 printers_looking	Se caută…
 saving_printer	Se adaugă imprimanta…
 cancelled	Anulat
-cancelling	Cancellingâ¦
+cancelling	Se anulează…
 removing	Se elimină…
 removed	Eliminat
 updating_order	Se actualizează…

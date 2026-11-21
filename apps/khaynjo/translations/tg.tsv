@@ -384,12 +384,12 @@ app_template_need_internet	Барои боргирии қолибҳо интер
 app_template_import_selected	Ворид кардани интихобшуда
 app_template_check_code	Санҷиши рамз
 app_template_import	Ворид кардан
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Аз ин дастгоҳ ворид кардан
+app_template_from_device_help	Ҷузвдонеро интихоб кунед, ки template.json дорад (ва агар бошад, shop_defaults.json).
+settings_app_tmpl_note	Воридкунии дубора фурӯш, KOT ва ҳисобҳои тарафҳоро пок мекунад, сипас танзимоти мағозаи бастаро татбиқ мекунад. Қолибҳои танҳо меню: «Меню» → «Қолибҳои мол».
+app_template_wipe_warn	Ин маълумоти савдои дафтарҳоро (фурӯш, KOT, ҳисобҳои тарафҳо) пок мекунад ва танзимоти мағозаи қолибро татбиқ мекунад. Меню ва танзимот метавонанд тағйир ёбанд. Давом медиҳед?
+app_template_wipe_continue	Давом
+app_template_wipe_cancel	Бекор
 currency	Асъор
 backup	Нусха
 use	Истифода
@@ -550,22 +550,22 @@ new_party_clear	Тарафи нав (варақаро пок)
 new_party_kind_supplier_ph	Навъи тарафи нав (Таъминкунанда)
 next_country	Кишвари навбатӣ
 next_order	Фармоиши навбатӣ (мизро пок)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Сиёҳнависҳо
+park_draft	Ба сиёҳнавис гузоштан
+drafts_help	Фармоишҳои нотамоми мизи фурӯш, ки шумо дар миёна гузошта мондед — то «Гирифтани пардохт» ба дафтарҳо намедароянд. Кортро зер кунед, то онро дар «Фармоиш» давом диҳед; «Нест кардани сиёҳнавис» сиёҳнависро нест мекунад. «Пӯшидани рӯз» инҳоро пок намекунад.
+drafts_park_nothing	Чизе барои гузоштан нест — ба сабад мол илова кунед
+drafts_park_counter_only	«Ба сиёҳнавис гузоштан» танҳо барои фармоишҳои мизи фурӯш аст — аз фармоиши миз бароед ё «Зал»-ро истифода баред
+drafts_parked	Ба «Сиёҳнависҳо» гузошта шуд — мизи фурӯш холӣ аст
+drafts_discard	Нест кардани сиёҳнавис
+drafts_discarded	Сиёҳнавис нест карда шуд
+drafts_gone	Он сиёҳнавис дигар дар рӯйхат нест
+drafts_closed	Он сиёҳнавис аллакай пардохт ё нест карда шудааст
+drafts_empty	Ҳоло сиёҳнавис нест. Дар «Мизи фурӯш» таомҳо илова кунед ва «Ба сиёҳнавис гузоштан»-ро зер кунед.
+drafts_card_kind	Сиёҳнавис
+drafts_card_no_lines	Мол нест
+drafts_card_lines	мол
+drafts_summary_fmt	{n} сиёҳнависи кушода
+drafts_cols_fmt	{n} сутун
 note_gstin_ph	Ёддошт / GSTIN / ёдраскунии шартнома
 notes_attach_party	Ёддоштҳо ва замимаҳо (тарафи интихобшуда)
 notes_attach_sale	Ёддоштҳо ва замимаҳо (фурӯши интихобшуда)
@@ -588,15 +588,15 @@ print_open	Чоп / кушодан
 reason_amend_ph	Сабаби ислоҳ / бекор / баргашт
 reason_note_ph	Сабаб / ёддошт (талаф, шумор, …)
 record_day_close	Сабти пӯшидани рӯз
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Имрӯз» кай аз нав оғоз мешавад?
+business_day_help	Бо «То пӯшидани рӯз», «Дафтари рӯз» пас аз нисфи шаб низ идома меёбад, то даме ки шумо пӯшидани рӯзро сабт кунед. Бо «Нисфи шаби тақвимӣ», рӯз соати 00:00 бо вақти маҳаллӣ бурида мешавад.
+biz_day_until_close	То пӯшидани рӯз
+biz_day_midnight	Нисфи шаби тақвимӣ
+business_day_saved	Рӯзи корӣ захира шуд
+report_day_lens	«Имрӯз»-ро чунин нишон диҳед
+report_day_lens_help	Танҳо барои намоиш — тағйир намедиҳад, ки «Пӯшидани рӯз» кай «Имрӯз»-ро аз нав оғоз мекунад. «Аз рӯи пӯшидани рӯз» аз пӯшидани охирини рӯз ҳисоб мекунад; «Аз рӯи нисфи шаб» соати 00:00 бо вақти маҳаллӣ мебурад.
+report_lens_day_close	Аз рӯи пӯшидани рӯз
+report_lens_midnight	Аз рӯи нисфи шаб
 refresh_from_shop	Навсозӣ аз дӯкон
 refund	Баргашт
 remove_selected	Хориҷи интихобшуда
@@ -864,7 +864,7 @@ find_printers	Ҷустуҷӯи чопгарҳо
 printers_looking	Ҷустуҷӯ…
 saving_printer	Чопгар илова мешавад…
 cancelled	Бекор шуд
-cancelling	Cancellingâ¦
+cancelling	Бекор карда мешавад…
 removing	Хориҷ мешавад…
 removed	Хориҷ шуд
 updating_order	Навсозӣ мешавад…

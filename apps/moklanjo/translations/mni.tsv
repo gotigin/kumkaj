@@ -3,27 +3,27 @@ app_tagline	ꯀꯨꯔꯤꯌꯔ-ꯑꯦꯖꯦꯟꯁꯤꯒꯤ ꯂꯥꯏꯔꯤꯛ + 
 unlock	ꯍꯥꯡꯗꯣꯛꯎ
 pin_hint	ꯃꯄꯨꯒꯤ PIN ꯑꯁꯤ 0000 ꯗꯒꯤ ꯍꯧꯏ
 sell	ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ꯫
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	ꯕꯣꯔꯗ
+board	ꯕꯣꯔꯗ
+park_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ
+board_help	ꯂꯣꯏꯁꯤꯟꯗꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯇꯁꯤꯡ (ꯅꯍꯥꯛꯅꯥ «ꯊꯥꯗꯣꯀꯄꯥ» ꯅꯠꯠꯔꯒꯥ «ꯄꯤꯕ ꯂꯧꯕꯤꯌꯨ» ꯇꯦꯞ ꯇꯧꯗ꯭ꯔꯤꯐꯥꯎꯕꯥ ꯊꯝꯂꯤ) ꯑꯃꯁꯨꯡ ꯉꯁꯤꯒꯤ ꯕꯨꯀꯤꯡ ꯇꯧꯔꯕꯥ ꯁꯦꯂꯁꯤꯡ꯫ «ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ꯫»ꯗꯥ, ꯅꯍꯥꯛꯀꯤ ꯊꯕꯛꯀꯤ ꯃꯔꯛꯇꯥ «ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ» ꯇꯦꯞ ꯇꯧ (ꯃꯁꯤ ꯃꯐꯃꯁꯤꯗꯥ ꯁꯦꯚ ꯇꯧꯏ, ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡꯗꯥ ꯅꯠꯇꯦ); ꯃꯈꯥ ꯆꯠꯊꯅꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯃꯥ ꯇꯦꯞ ꯇꯧ꯫
+board_empty	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯀꯥꯔꯗ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫
+board_park_nothing	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯀꯔꯤꯁꯨ ꯂꯩꯇꯦ — ꯆꯥꯔꯖꯁꯤꯡ ꯅꯠꯠꯔꯒꯥ ꯕꯨꯀꯤꯡꯒꯤ ꯑꯀꯨꯞꯄꯥ ꯃꯔꯣꯂꯁꯤꯡ ꯍꯥꯄꯆꯤꯅꯕꯥ
+board_parked	«ꯕꯣꯔꯗ»ꯗꯥ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ — ꯗꯦꯁ꯭ꯛ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯏꯪꯔꯦ
+board_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ
+board_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ
+board_filter_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
+board_cols_fmt	{n} ꯀꯂꯃꯁꯤꯡ
+board_summary_fmt	{total} ꯀꯥꯔꯗꯁꯤꯡ · {drafts} ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯇꯧꯕꯥ · {booked} ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ
+board_card_no_charges	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯐꯤ ꯑꯃꯠꯇꯥ ꯍꯥꯄꯆꯤꯜꯂꯦ
+board_card_charges	ꯐꯤꯁꯤꯡ ꯄꯤꯔꯤ
+board_card_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ꯫
+board_draft_gone	ꯑꯗꯨꯒꯨꯝꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯍꯧꯖꯤꯛ «ꯕꯣꯔꯗ» ꯗꯥ ꯂꯩꯔꯔꯣꯏ
+board_draft_closed	ꯑꯗꯨꯒꯨꯝꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯍꯥꯟꯅꯅꯥ ꯂꯣꯏꯁꯤꯅꯈ꯭ꯔꯦ ꯅꯠꯔꯒꯥ ꯃꯨꯠꯊꯠꯈ꯭ꯔꯦ
+board_discard	ꯊꯥꯗꯣꯀꯄꯥ
+board_discarded	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯃꯨꯠꯊꯠꯈ꯭ꯔꯦ
 buy	ꯄꯦ ꯑꯥꯎꯠ ꯇꯧꯕꯥ꯫
 books	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
 books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯚꯝ꯫ ꯕꯨꯀꯤꯡ = ꯄꯥꯔꯁꯦꯜ ꯏꯟ.ꯄꯦ ꯑꯥꯎꯠ = ꯀꯦꯔꯤꯌꯔ ꯕꯤꯜ & ꯆꯥꯗꯤꯡ꯫ ꯄꯥꯔꯇꯤꯁꯤꯡ = ꯀꯟꯁꯥꯏꯅꯔꯁꯤꯡ & ꯀꯦꯔꯤꯌꯔꯁꯤꯡ꯫
@@ -220,7 +220,7 @@ snack_secs_save	ꯄꯥꯎꯖꯦꯜꯒꯤ ꯃꯇꯝ ꯊꯝꯕꯤꯌꯨ
 snack_secs_saved	ꯄꯥꯎꯖꯦꯜꯒꯤ ꯃꯇꯝ ꯊꯝꯂꯦ — ꯁꯦꯀꯦꯟ {n}
 snack_secs_bad	ꯁꯦꯀꯦꯟꯗꯁꯤꯡ ꯑꯁꯤ ꯅꯝꯕꯔ ꯑꯃꯥ ꯑꯣꯏꯅꯥ ꯑꯦꯟꯇꯔ ꯇꯧꯔꯣ (꯳–꯶꯰)
 cancelled	ꯇꯣꯛꯈꯤ
-cancelling	Cancellingâ¦
+cancelling	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯔꯤ…
 cancel	ꯇꯣꯛꯎ
 opening_client	ꯈꯣꯡꯖꯦꯜ ꯍꯥꯡꯗꯣꯛꯂꯤ…
 preparing_desk	ꯇꯦꯕꯜ ꯁꯦꯝꯂꯤ…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	ꯃꯤꯒꯤ ꯂꯥꯏꯔꯤꯛ CSV ꯀꯣꯄꯤ
 copy_receipt	ꯔꯤꯁꯤꯠ ꯀꯣꯄꯤ
 copy_report	ꯔꯤꯄꯣꯔꯇ ꯀꯣꯄꯤ
 counted_cash_ph	ꯕꯣꯛꯁꯇ ꯂꯤꯁꯤꯡ ꯇꯧꯔꯕ ꯁꯦꯟ
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	ꯁꯤꯐꯠ ꯊꯤꯡꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯤꯌꯨ
+shift_handover	ꯁꯤꯐꯠ ꯄꯤꯕ
+shift_counted_ph	ꯄꯤꯕ ꯃꯇꯝꯗ ꯂꯤꯁꯤꯡ ꯇꯧꯔꯕ ꯁꯦꯟ
+shift_since	ꯁꯤꯐꯠ ꯑꯁꯤ
+expected_in_drawer	ꯕꯣꯛꯁꯇ ꯉꯥꯏꯕ
+lock_books_through_month	ꯊꯥꯒꯤ ꯑꯔꯣꯏꯕꯐꯥꯑꯣꯕꯥ ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡ ꯂꯣꯛ ꯇꯧꯔꯣ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ꯊꯥ ꯑꯁꯤꯒꯤ ꯑꯔꯣꯏꯕꯥ ꯐꯥꯑꯣꯕꯥ ꯂꯣꯛ ꯑꯞ ꯇꯧꯕꯥ
+books_locked_none	ꯊꯥ ꯑꯃꯠꯇꯥ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯂꯣꯛ ꯇꯧꯗ꯭ꯔꯤ
+books_locked_through	ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡ ꯂꯣꯛ ꯇꯧꯕꯥ ꯐꯥꯑꯣꯕꯥ
 counter_agency_ph	ꯀꯥꯎꯟꯇꯔ / ꯑꯦꯖꯦꯟꯁꯤꯒꯤ ꯃꯃꯤꯡ (ꯑꯣꯄꯁꯅꯦꯜ) .
 create_backup	ꯀꯣꯄꯤ ꯁꯥꯕꯤꯌꯨ
 day_close_summary	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯋꯥꯔꯣꯜ
@@ -442,9 +442,9 @@ pay_ap_cash	AP ꯁꯦꯟꯅ ꯄꯤꯕꯤꯌꯨ
 pay_ap_upi	AP UPIꯅ ꯄꯤꯕꯤꯌꯨ
 period_bill	ꯄꯤꯔꯤꯌꯗ ꯕꯤꯜ꯫
 period_bill_party	ꯄꯤꯔꯤꯌꯗ ꯕꯤꯜ (ꯄꯥꯔꯇꯤ) ꯴.
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	ꯏꯅꯚꯣꯏꯁ ꯁꯦꯝꯕꯥ
+period_bill_generate_print	ꯁꯦꯝꯕꯥ ꯑꯃꯁꯨꯡ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯥ
+booking_bulk_preview	{ok} ꯁꯦꯝ ꯁꯥꯔꯦ · {bad}ꯗꯥ ꯑꯁꯣꯌꯕꯥ ꯂꯩ
 pick_pod_photo	ꯄꯤ.ꯑꯣ.ꯗꯤ.ꯒꯤ ꯐꯣꯇꯣ ꯂꯧꯕꯥ꯫
 print_awb_label	ꯑꯦ.ꯗꯕ꯭ꯜꯌꯨ.ꯕꯤ.ꯒꯤ ꯂꯦꯕꯦꯜ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯥ꯫
 print_open	ꯄ꯭ꯔꯤꯟꯇ / ꯍꯥꯡꯗꯣꯛꯎ
@@ -653,19 +653,19 @@ attachments_last_expense	ꯌꯣꯟꯕ (ꯆꯥꯟꯕ ꯑꯔꯣꯏꯕ)
 credit_limit_heading	ꯂꯦꯟꯕꯒꯤ ꯆꯥꯡ (ꯈꯟꯈꯤꯕ / ꯃꯤꯡ ꯄꯤꯔꯕ ꯃꯤ)
 pay_selected_heading	ꯈꯟꯈꯤꯕ ꯄꯤꯕꯤꯌꯨ (ꯂꯦꯟꯕ ꯂꯣꯏꯁꯤꯟꯕ / ꯃꯃꯥꯡ ꯁꯦꯟ ꯂꯧꯕꯤꯌꯨ)
 write_off_heading	ꯀꯛꯊꯠꯎ (ꯄꯤꯗꯅ ꯁꯦꯡꯗꯣꯛꯎ)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ꯑꯦꯗꯖꯁ꯭ꯇꯃꯦꯟꯇ ꯅꯣꯇꯁꯤꯡ
+adj_note_amount_ph	ꯁꯦꯟ
+adj_note_reason_ph	ꯔꯤꯖꯟ (ꯃꯊꯧ ꯇꯥꯏ)
+adj_note_awb_ph	ꯃꯔꯤ ꯂꯩꯅꯕꯥ AWB (ꯑꯣꯄꯁꯅꯦꯜ)
+credit_note_btn	ꯀ꯭ꯔꯦꯗꯤꯠ ꯅꯣꯠ
+debit_note_btn	ꯗꯦꯕꯤꯠ ꯅꯣꯠ
+bill_later_heading	ꯇꯨꯡꯗꯥ ꯆꯥꯔꯖ ꯇꯧꯕꯥ (ꯕꯨꯀꯤꯡ ꯇꯧꯔꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯑꯍꯦꯅꯕꯥ ꯆꯥꯔꯖ)
+bill_later_amount_ph	ꯑꯍꯦꯅꯕꯥ ꯁꯦꯅꯐꯝ
+bill_later_party_ph	ꯀꯁ꯭ꯇꯃꯔ (ꯀꯔꯤꯒꯨꯝꯕꯥ ꯕꯨꯀꯤꯡ ꯑꯗꯨꯗꯥ ꯂꯩꯠꯔꯕꯗꯤ)
+bill_later_btn	ꯃꯇꯨꯡꯗꯥ ꯆꯥꯔꯖ ꯇꯧꯕꯥ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ꯄꯦꯀꯦꯖꯤꯡ ꯇꯧꯕꯥ
+bill_later_extra_other	ꯑꯇꯣꯞꯄ
 pay_ap_heading	ꯑꯩꯈꯣꯌꯅ ꯂꯦꯟꯕ ꯄꯤꯕꯤꯌꯨ (AP)
 country_tax	ꯂꯩꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯀꯔ
 extra_tills_heading	ꯐꯝ ꯍꯦꯟꯕ
@@ -777,26 +777,26 @@ onboard_book_tmpl	ꯂꯥꯏꯔꯤꯛ · {} — ꯄꯣꯠ ꯑꯃꯁꯨꯡ ꯍꯧ�
 onboard_template_tmpl	ꯄꯥꯝꯕꯗꯤ ꯐꯝꯒꯤ ꯃꯤꯡ ꯊꯝꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯍꯧꯕꯒꯤ ꯂꯝ ꯈꯟꯕꯤꯌꯨ.
 tmpl_blurb	ꯀꯨꯔꯤꯌꯔ ꯕꯨꯛ ꯑꯃꯁꯨꯡ ꯕꯨꯀꯤꯡ ꯗꯦꯁ꯭ꯛ: ꯀꯟꯁꯥꯏꯅꯔꯁꯤꯡ, ꯀꯦꯔꯤꯌꯔꯁꯤꯡ, ꯗꯦ ꯕꯨꯛ, ꯑꯦ.ꯗꯕ꯭ꯜꯌꯨ.ꯕꯤ.
 tmpl_how	ꯗꯦꯁ꯭ꯀꯇꯥ ꯄꯥꯔꯁꯦꯂꯁꯤꯡ ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ; ꯉꯁꯤꯒꯤꯗꯃꯛ ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ; ꯔꯦꯠꯁꯤꯡ, ꯄꯥꯔꯇꯤꯁꯤꯡ, ꯔꯤꯄꯣꯔꯇꯁꯤꯡꯒꯤꯗꯃꯛꯇꯥ ꯇꯦꯕꯁꯤꯡ꯫
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
+app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯁꯦꯇꯑꯞ ꯑꯃꯥ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅꯥ ꯀꯁ꯭ꯇꯃꯔ ꯂꯤꯁ꯭ꯠ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯏ꯫
+app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
+app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
+app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
+app_template_public_hdr	টেমপ্লেট
+app_template_import_selected	ꯈꯅꯕꯥ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
+app_template_wipe_warn	ꯃꯁꯤꯅꯥ ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡꯗꯥ ꯂꯩꯕꯥ ꯇ꯭ꯔꯦꯗꯤꯡ ꯗꯦꯇꯥ (ꯕꯨꯀꯤꯡ, ꯂꯦꯖꯔ) ꯀ꯭ꯂꯤꯌꯔ ꯇꯧꯏ ꯑꯃꯁꯨꯡ ꯇꯦꯃꯞꯂꯦꯠꯀꯤ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯦꯞꯂꯥꯏ ꯇꯧꯏ꯫ ꯃꯈꯥ ꯆꯠꯊꯕꯥ ꯄꯥꯝꯕꯤꯕ꯭ꯔꯥ?
+app_template_wipe_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
+app_template_wipe_cancel	ꯇꯣꯛꯎ
+public_tmpl_help	ꯑꯦꯞ ꯑꯁꯤꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯂꯥꯀꯄꯥ ꯁꯦꯝ ꯁꯥꯕꯥ ꯂꯣꯏꯔꯕꯥ ꯑꯦꯖꯦꯟꯁꯤ ꯇꯦꯃꯞꯂꯦꯠꯁꯤꯡ꯫ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯒꯤ ꯃꯊꯧ ꯇꯥꯗꯦ꯫
+business_day	«ꯉꯁꯤ» ꯑꯁꯤ ꯀꯗꯥꯏꯗꯥ ꯔꯤꯁꯦꯠ ꯇꯧꯕꯒꯦ?
+business_day_help	«ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯐꯥꯑꯣꯕꯥ»ꯅꯥ «ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ» ꯑꯁꯤ ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯆꯠꯂꯤ, ꯅꯍꯥꯛꯅꯥ ꯅꯨꯃꯤꯠ ꯑꯗꯨ ꯂꯣꯏꯔꯕꯥ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯗ꯭ꯔꯤꯐꯥꯑꯣꯕꯥ. «ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯗꯥ» ꯂꯣꯀꯦꯜ ꯇꯥꯏꯃꯒꯤ ꯄꯨꯡ ꯰꯰:꯰꯰ꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
+biz_day_until_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯐꯥꯑꯣꯕꯥ
+biz_day_midnight	ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯗꯥ
+business_day_saved	ꯕꯤꯖꯤꯅꯦꯁ ꯗꯦ ꯁꯦꯇꯤꯡ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ
+report_day_lens	«ꯉꯁꯤ» ꯑꯁꯤꯒꯨꯝꯅꯥ ꯎꯠꯀꯅꯤ
+report_day_lens_help	ꯃꯁꯤꯅꯥ ꯚꯤꯎ ꯑꯗꯨ ꯈꯛꯇꯃꯛ ꯍꯣꯡꯗꯣꯀꯏ — «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ»ꯅꯥ «ꯉꯁꯤ» ꯔꯤꯁꯦꯠ ꯇꯧꯕꯥ ꯃꯇꯃꯗꯥ ꯍꯣꯡꯗꯦ꯫ «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ»ꯅꯥ ꯑꯔꯣꯏꯕꯥ ꯅꯨꯃꯤꯠ ꯂꯣꯏꯔꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯆꯠꯂꯤ; «ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯑꯦꯟ.ꯗꯤ.ꯑꯦ» ꯂꯣꯀꯦꯜ ꯇꯥꯏꯃꯒꯤ ꯄꯨꯡ ꯰꯰:꯰꯰ꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
+report_lens_day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ
+report_lens_midnight	ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯑꯦꯟ.ꯗꯤ.ꯑꯦ
 trk_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
 trk_picked_up	ꯂꯧꯈꯠꯈꯤ꯫
 trk_in_transit	ꯇ꯭ꯔꯥꯟꯁꯤꯠꯇꯥ ꯂꯩꯕꯥ꯫

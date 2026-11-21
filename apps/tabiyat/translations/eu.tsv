@@ -365,15 +365,15 @@ print_open	Inprimatu / ireki
 reason_amend_ph	Zuzendu / baliogabetu / itzultzeko arrazoia
 reason_note_ph	Arrazoia / oharra (galera, zenbaketa, …)
 record_day_close	Erregistratu egunaren itxiera
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Noiz berrezartzen da «Gaur»?
+business_day_help	Aukera honekin: «Egunaren itxiera arte», egunaren itxiera erregistratu arte jarraitzen du gauerdia igarota ere: «Eguneko liburua». Aukera honekin: «Egutegiko gauerdia», eguna tokiko orduko 00:00etan mozten da.
+biz_day_until_close	Egunaren itxiera arte
+biz_day_midnight	Egutegiko gauerdia
+business_day_saved	Lanegunaren ezarpena gorde da
+report_day_lens	Erakutsi «Gaur» gisa
+report_day_lens_help	Ikuspegia soilik — ez du aldatzen noiz hasten den berriro «Gaur» («Egunaren itxiera» egitean). «Egunaren itxieraren arabera»: azken egunaren itxieratik zenbatzen du; «Gauerdiaren arabera»: tokiko orduko 00:00etan mozten du.
+report_lens_day_close	Egunaren itxieraren arabera
+report_lens_midnight	Gauerdiaren arabera
 refresh_from_shop	Freskatu dendatik
 refund	Itzuli
 remove_selected	Kendu hautatua
@@ -849,19 +849,19 @@ client_template_confirm	{title}-ko {d} elementuak gehitu nahi dituzu? Dagoeneko 
 client_template_importing	{title} inportatzen…
 client_template_done	{title}-ko elementu guztiak zure elementuetan daude.
 client_template_imported	{d} elementuak eta {c} kategoria gehitu dira {title}-tik
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Dendako txantiloiak
+app_template_blurb	Aukeratu hasierako katalogoa eta dendaren ezarpenak. Hau sakatuz gero, apala hutsik geratzen da: «Saltatu oraingoz».
+app_template_skip	Saltatu oraingoz
+app_template_status	Zerbitzaria prest — inportatu txantiloi bat edo saltatu
+app_template_importing	{title} aplikatzen…
+app_template_import_selected	Inportatu hautatutakoa
+app_template_wipe_warn	Honek kontuetako merkataritza-datuak garbitzen ditu (salmentak, liburuak) eta txantiloiaren dendaren ezarpenak aplikatzen ditu. Jarraitu nahi duzu?
+app_template_wipe_continue	Jarraitu
+app_template_wipe_cancel	Ezeztatu
+app_template_from_device	Inportatu gailu honetatik
+app_template_from_device_help	Aukeratu template.json (eta, aukeran, shop_defaults.json) duen karpeta bat.
+settings_app_tmpl_note	Denda-pakete osoak: katalogoa eta dendaren ezarpenak. Pakete bat berriro inportatzeak salmentak eta kontu-liburuak garbitzen ditu, eta ondoren paketearen dendaren ezarpenak aplikatzen ditu.
+app_tmpl_named	{name} denda txantiloia
 cancel	Ezeztatu
 removing	Kentzen…
 removed	Kenduta

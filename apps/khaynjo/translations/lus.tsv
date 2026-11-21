@@ -384,12 +384,12 @@ app_template_need_internet	Template download nan internet a ngai
 app_template_import_selected	Thlan chu import rawh
 app_template_check_code	Code en rawh
 app_template_import	Import rawh
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	He device atang hian import rawh
+app_template_from_device_help	template.json (leh, duhthusamin, shop_defaults.json) awmna folder thlang rawh.
+settings_app_tmpl_note	Import leh hian sales, KOT leh ledgers te a clear a, chutah chuan template’s shop settings chu a apply leh thin. Menu chauh nei template: «Menu» → «Item template-te».
+app_template_wipe_warn	Hei hian account-a trading data (sales, KOT, ledgers) a clear a, template’s shop settings a apply bawk. Menu leh setup pawh a danglam thei. Chhunzawm i duh em?
+app_template_wipe_continue	Chhunzawm
+app_template_wipe_cancel	Tihbo
 currency	Sum hming
 backup	Backup
 use	Hmang
@@ -551,21 +551,21 @@ new_party_kind_supplier_ph	Mi thar khop (Pek tu)
 next_country	Ram dawt
 next_order	Order dawt (dawhkan thianghlim)
 nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
+park_draft	Draft angin save rawh
+drafts_help	Hengte hi i dah chhuah counter atanga order tihfel loh a ni. «Pek la» i tap hma chuan account-ah an lut lo. Card pakhat chu tap la, «Order»-ah chhunzawm rawh; «Draft chu delete rawh» chuan draft chu a delete ta a ni. «Ni khar» chuan a tifai lo.
+drafts_park_nothing	Draft anga save tur engmah a awm lo — cart-ah thil dah belh rawh
+drafts_park_counter_only	«Draft angin save rawh» hi counter-a order lakte tan chauh a ni — table order chu chhuahsan la, a nih loh leh «Dawr chhung» hmang rawh
+drafts_parked	«Drafts» ah saved — tunah chuan counter chu a khar tawh
+drafts_discard	Draft chu delete rawh
+drafts_discarded	Draft chu tihbo a ni
+drafts_gone	Chu draft chu list-ah a awm tawh lo
+drafts_closed	Chu draft chu pek tawh emaw, delete emaw a ni tawh
+drafts_empty	Draft a la awm lo. «Zuar dawhkan» ah chuan dish te add la, «Draft angin save rawh» kha tap rawh.
 drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+drafts_card_no_lines	Items a awm lo
+drafts_card_lines	thil chi hrang hrang
+drafts_summary_fmt	{n} open drafts te pawh a awm
+drafts_cols_fmt	{n} column-ah a awm
 note_gstin_ph	Lehkha / GSTIN / thuthlung hriat reng
 notes_attach_party	Lehkha leh thlun (mi thlan)
 notes_attach_sale	Lehkha leh thlun (zuar thlan)
@@ -588,15 +588,15 @@ print_open	Print / hawng
 reason_amend_ph	Siam / tihbo / sum kir chhan
 reason_note_ph	Chhan / lehkha (hloh, chhiar, …)
 record_day_close	Ni khar ziak
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Vawiin» hi engtikah nge a reset?
+business_day_help	«Ni khar thleng» hian «Ni lehkha» chu zanlai pelh hnuah a tlan chhunzawm zel a, ni khar i record hma loh chuan. «Zanlai pelh hnuah» chu tualchhung hun anga zanlai dar 00:00-ah cut a ni.
+biz_day_until_close	Ni khar thleng
+biz_day_midnight	Zanlai pelh hnuah
+business_day_saved	Business day setting save a ni
+report_day_lens	«Vawiin» chu a lantir ang
+report_day_lens_help	Hei hian view chauh a thlak danglam — «Ni khar» chuan «Vawiin» a reset chuan a danglam lo. «Ni khar sawi dan chuan» chuan ni hnuhnung ber kha a zui a; «Zanlai pelh hnua a sawi dan chuan» chu tualchhung hun anga zanlai dar 00:00-ah cut a ni.
+report_lens_day_close	Ni khar sawi dan chuan
+report_lens_midnight	Zanlai pelh hnua a sawi dan chuan
 refresh_from_shop	Dawr atanga thar leh
 refund	Sum kir
 remove_selected	Thlan sa paih
@@ -864,7 +864,7 @@ find_printers	Print na zawng
 printers_looking	Zawng mek…
 saving_printer	Print na telh mek…
 cancelled	Tihbo
-cancelling	Cancellingâ¦
+cancelling	Cancel a nih chuan…
 removing	Paih mek…
 removed	Paih a ni
 updating_order	Siam that mek…

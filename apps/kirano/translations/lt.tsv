@@ -353,15 +353,15 @@ print_open	Spausdinti / atidaryti
 reason_amend_ph	Priežastis taisyti / anuliuoti / grąžinti
 reason_note_ph	Priežastis / pastaba (nuostolis, skaičiavimas, …)
 record_day_close	Įrašyti dienos uždarymą
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kada «Šiandien» prasideda iš naujo?
+business_day_help	Pasirinkus «Iki dienos uždarymo», «Dienos knyga» tęsiasi ir po vidurnakčio, kol užregistruosite dienos uždarymą. Pasirinkus «Kalendorinis vidurnaktis», diena baigiasi 00:00 vietos laiku.
+biz_day_until_close	Iki dienos uždarymo
+biz_day_midnight	Kalendorinis vidurnaktis
+business_day_saved	Darbo diena išsaugota
+report_day_lens	Rodyti «Šiandien» kaip
+report_day_lens_help	Tik rodinys — nekeičia, kada «Dienos uždarymas» pradeda «Šiandien» iš naujo. «Pagal dienos uždarymą» skaičiuoja nuo paskutinio dienos uždarymo; «Pagal vidurnaktį» nukerpa 00:00 vietos laiku.
+report_lens_day_close	Pagal dienos uždarymą
+report_lens_midnight	Pagal vidurnaktį
 refresh_from_shop	Atnaujinti iš parduotuvės
 refund	Grąžinimas
 remove_selected	Pašalinti pasirinktą
@@ -837,19 +837,19 @@ client_template_confirm	Pridėti {d} elementus iš {title}? Daiktai, kuriuos jau
 client_template_importing	Importuojama {title}…
 client_template_done	Kiekviena {title} prekė yra ant jūsų prekių.
 client_template_imported	Pridėta {d} elementų ir {c} kategorijų iš {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Parduotuvės šablonai
+app_template_blurb	Pasirinkite pradinį katalogą ir parduotuvės nustatymus. «Kol kas praleisti» palieka lentyną tuščią.
+app_template_skip	Kol kas praleisti
+app_template_status	Serveris paruoštas — importuokite šabloną arba praleiskite
+app_template_importing	Taikoma {title}…
+app_template_import_selected	Importuoti pasirinktą
+app_template_wipe_warn	Tai išvalys prekybos duomenis apskaitoje (pardavimus, apskaitos knygas) ir pritaikys šablono parduotuvės nustatymus. Tęsti?
+app_template_wipe_continue	Tęsti
+app_template_wipe_cancel	Atšaukti
+app_template_from_device	Importuoti iš šio įrenginio
+app_template_from_device_help	Pasirinkite aplanką, kuriame yra template.json (ir, jei norite, shop_defaults.json).
+settings_app_tmpl_note	Pilni parduotuvės paketai: katalogas ir parduotuvės nustatymai. Pakartotinai importavus paketą, išvalomi pardavimai ir apskaitos knygos, tada pritaikomi paketo parduotuvės nustatymai.
+app_tmpl_named	Parduotuvės šablonas {name}
 cancel	Atšaukti
 removing	Šalinama…
 removed	Pašalinta

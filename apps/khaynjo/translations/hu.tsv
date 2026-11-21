@@ -252,7 +252,7 @@ sidebar_order_saved	Az oldalsáv sorrendje mentve
 sidebar_visibility_saved	Az oldalsáv láthatósága mentve
 amounts_hide	Elrejtés
 amounts_show	Megjelenítés
-counter	Számláló
+counter	Pult
 dine_in	Étkezzen be
 takeaway	Elvihető
 order	Éttermi rendelés
@@ -384,12 +384,12 @@ app_template_need_internet	A sablonok letöltéséhez internet kell
 app_template_import_selected	Kijelölt importálása
 app_template_check_code	Kód ellenőrzése
 app_template_import	Importálás
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Importálás erről az eszközről
+app_template_from_device_help	Válasszon egy mappát, amelyben van template.json (és esetleg shop_defaults.json).
+settings_app_tmpl_note	Az újraimportálás törli az eladásokat, a KOT-okat és a folyószámlákat, majd alkalmazza a csomag boltbeállításait. Csak menüt tartalmazó sablonok: «Menü» → «Tételsablonok».
+app_template_wipe_warn	Ez törli a könyvelés kereskedelmi adatait (eladások, KOT-ok, folyószámlák), és alkalmazza a sablon boltbeállításait. A menü és a beállítás megváltozhat. Folytatja?
+app_template_wipe_continue	Folytatás
+app_template_wipe_cancel	Mégsem
 currency	Pénznem
 backup	Biztonsági mentés
 use	Használja
@@ -550,22 +550,22 @@ new_party_clear	Új ügyfél vagy szállító (átlátható űrlap)
 new_party_kind_supplier_ph	Új vevő vagy beszállító (beszállító)
 next_country	Következő ország
 next_order	Következő rendelés (tiszta asztal)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Piszkozatok
+park_draft	Félretétel piszkozatként
+drafts_help	A pultnál félbehagyott, félretett rendelések — a könyvelésbe csak ezután kerülnek: «Fogadja el a fizetést». Koppintson egy kártyára a folytatáshoz itt: «Éttermi rendelés»; a piszkozatot ez törli: «Piszkozat elvetése». Ezeket nem törli: «Nap vége».
+drafts_park_nothing	Nincs mit félretenni — tegyen tételeket a kosárba
+drafts_park_counter_only	Csak pultos rendelésekhez való: «Félretétel piszkozatként» — lépjen ki az asztali rendelésből, vagy használja ezt: «Ebédlő»
+drafts_parked	Félretéve ide: «Piszkozatok» — a pult szabad
+drafts_discard	Piszkozat elvetése
+drafts_discarded	Piszkozat elvetve
+drafts_gone	Ez a piszkozat már nincs a listán
+drafts_closed	Ezt a piszkozatot már kifizették vagy elvetették
+drafts_empty	Még nincs piszkozat. Itt: «Pult» adjon hozzá ételeket, majd koppintson erre: «Félretétel piszkozatként».
+drafts_card_kind	Piszkozat
+drafts_card_no_lines	Nincs tétel
+drafts_card_lines	tétel
+drafts_summary_fmt	{n} nyitott piszkozat
+drafts_cols_fmt	{n} oszl.
 note_gstin_ph	Megjegyzés / GSTIN / megállapodás emlékeztető
 notes_attach_party	Megjegyzések és mellékletek (kiválasztott ügyfél vagy szállító)
 notes_attach_sale	Jegyzetek és mellékletek (kiválasztott akciók)
@@ -588,15 +588,15 @@ print_open	Nyomtatás / megnyitás
 reason_amend_ph	A módosítás / érvénytelenség / visszatérítés oka
 reason_note_ph	Ok / megjegyzés (pazarlás, szám, …)
 record_day_close	Lezárult a rekordnap
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Mikor indul újra: «Ma»?
+business_day_help	Ezzel a beállítással: «Napi zárásig» a nap éjfél után is fut itt: «Napi könyv», amíg nem rögzíti a napi zárást. Ezzel a beállítással: «Naptári éjfél» a nap helyi idő szerint 00:00-kor ér véget.
+biz_day_until_close	Napi zárásig
+biz_day_midnight	Naptári éjfél
+business_day_saved	Üzleti nap mentve
+report_day_lens	Megjelenítés módja: «Ma»
+report_day_lens_help	Csak nézet — nem változtat azon, hogy mikor indul újra: «Ma» (ezt intézi: «Nap vége»). Az utolsó napi zárástól számol: «Napi zárás szerint»; helyi idő szerint 00:00-kor vág: «Éjfél szerint».
+report_lens_day_close	Napi zárás szerint
+report_lens_midnight	Éjfél szerint
 refresh_from_shop	Frissítés a boltból
 refund	Visszatérítés
 remove_selected	A kiválasztott eltávolítása
@@ -864,7 +864,7 @@ find_printers	Keressen nyomtatókat
 printers_looking	Keresi…
 saving_printer	Nyomtató hozzáadása…
 cancelled	Törölve
-cancelling	Cancellingâ¦
+cancelling	Megszakítás…
 removing	Eltávolítás…
 removed	Eltávolítva
 updating_order	Frissítés…

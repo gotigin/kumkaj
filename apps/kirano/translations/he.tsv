@@ -353,15 +353,15 @@ print_open	הדפס / פתח
 reason_amend_ph	סיבה לתיקון / ביטול / החזר
 reason_note_ph	סיבה / הערה (פחת, ספירה, …)
 record_day_close	רשום סגירת יום
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	מתי «היום» מתחיל מחדש?
+business_day_help	עם «עד סגירת היום», «ספר היום» ממשיך גם אחרי חצות, עד שתרשמו סגירת יום. עם «חצות לפי לוח השנה», היום נחתך בשעה 00:00 לפי השעון המקומי.
+biz_day_until_close	עד סגירת היום
+biz_day_midnight	חצות לפי לוח השנה
+business_day_saved	יום העסקים נשמר
+report_day_lens	הצגת «היום» לפי
+report_day_lens_help	תצוגה בלבד — אינה משנה מתי «סגירת יום» מתחיל את «היום» מחדש. «לפי סגירת יום» סופר מסגירת היום האחרונה; «לפי חצות» חותך בשעה 00:00 לפי השעון המקומי.
+report_lens_day_close	לפי סגירת יום
+report_lens_midnight	לפי חצות
 refresh_from_shop	רענן מהחנות
 refund	החזר
 remove_selected	הסר את הנבחר
@@ -837,19 +837,19 @@ client_template_confirm	האם להוסיף פריטי {d} מ-{title}? פריט�
 client_template_importing	מייבא את {title}…
 client_template_done	כל פריט מ-{title} נמצא על הפריטים שלך.
 client_template_imported	נוספו פריטי {d} וקטגוריות {c} מ-{title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	תבניות חנות
+app_template_blurb	בחרו קטלוג התחלתי והגדרות חנות. «דלג לעכשיו» משאיר את המדף ריק.
+app_template_skip	דלג לעכשיו
+app_template_status	השרת מוכן — ייבאו תבנית או דלגו
+app_template_importing	מחילים את {title}…
+app_template_import_selected	ייבוא הנבחר
+app_template_wipe_warn	פעולה זו מנקה את נתוני המסחר בספרים (מכירות, כרטסות) ומחילה את הגדרות החנות של התבנית. להמשיך?
+app_template_wipe_continue	המשך
+app_template_wipe_cancel	בטל
+app_template_from_device	ייבוא ממכשיר זה
+app_template_from_device_help	בחרו תיקייה שמכילה את template.json (ואפשר גם את shop_defaults.json).
+settings_app_tmpl_note	חבילות חנות מלאות: קטלוג והגדרות חנות. ייבוא חוזר של חבילה מנקה מכירות וכרטסות, ואז מחיל את הגדרות החנות של החבילה.
+app_tmpl_named	תבנית חנות {name}
 cancel	בטל
 removing	מסיר…
 removed	הוסר

@@ -3,27 +3,27 @@ app_tagline	Llyfrau asiantaeth negesydd + desg archebu. Am ddim all-lein.
 unlock	Datgloi
 pin_hint	PIN y perchennog yn dechrau fel 0000
 sell	Archebu
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Bwrdd
+board	Bwrdd
+park_draft	Cadw fel drafft
+board_help	Drafftiau agored (yn cael eu cadw nes i chi ddewis «Gwaredu» neu «Cymryd taliad») a gwerthiannau heddiw sydd wedi'u cofnodi. Yn «Archebu», tapiwch «Cadw fel drafft» yng nghanol eich gwaith (mae'n cael ei gadw yma, nid yn y llyfrau); tapiwch ddrafft i barhau ag ef.
+board_empty	Dim cardiau eto.
+board_park_nothing	Dim byd i'w roi o'r neilltu — ychwanegwch ffioedd neu fanylion yr archeb
+board_parked	Wedi'i gadw ar «Bwrdd» — mae'r ddesg yn wag nawr
+board_draft	Drafft
+board_booked	Wedi'i archebu
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Drafft
+board_filter_booked	Wedi'i archebu
+board_cols_fmt	{n} colofn
+board_summary_fmt	{total} cerdyn · {drafts} drafft · {booked} wedi'u cofnodi
+board_card_no_charges	Dim ffioedd eto
+board_card_charges	ffioedd
+board_card_booked	Archebu
+board_draft_gone	Nid yw'r drafft hwnnw bellach ar «Bwrdd»
+board_draft_closed	Roedd y drafft hwnnw eisoes wedi'i orffen neu ei ddileu
+board_discard	Gwaredu
+board_discarded	Drafft wedi'i ddileu
 buy	Talu allan
 books	Llyfr y dydd
 books_help	Sefyllfa heddiw. Archebu = parseli i mewn. Talu allan = biliau cludwyr a threuliau. Partïon = anfonwyr a chludwyr.
@@ -220,7 +220,7 @@ snack_secs_save	Cadw amser rhybudd
 snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
 snack_secs_bad	Rhowch eiliadau fel rhif (3–60)
 cancelled	Wedi'i ganslo
-cancelling	Cancellingâ¦
+cancelling	Wrthi'n canslo…
 cancel	Canslo
 opening_client	Yn agor cleient…
 preparing_desk	Yn paratoi'r desg…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Copïo llyfr y parti CSV
 copy_receipt	Copïo derbynneb
 copy_report	Copïo adroddiad
 counted_cash_ph	Arian parod a gyfrifwyd yn y drôr
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Cau shifft ac argraffu slip
+shift_handover	Trosglwyddo shifft
+shift_counted_ph	Arian wedi'i gyfrif wrth drosglwyddo
+shift_since	Y shifft hon ers
+expected_in_drawer	Disgwyliedig yn y drôr
+lock_books_through_month	Cloi'r llyfrau hyd at ddiwedd y mis
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Cloi hyd ddiwedd y mis hwn
+books_locked_none	Nid oes unrhyw fis wedi'i gloi eto
+books_locked_through	Wedi'u cloi hyd at
 counter_agency_ph	Enw cownter / asiantaeth (dewisol)
 create_backup	Creu copi wrth gefn
 day_close_summary	Crynodeb cau diwrnod
@@ -442,9 +442,9 @@ pay_ap_cash	Talu AP arian parod
 pay_ap_upi	Talu AP UPI
 period_bill	Bil cyfnod
 period_bill_party	Bil cyfnod (parti)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Creu anfoneb
+period_bill_generate_print	Creu ac argraffu
+booking_bulk_preview	{ok} yn barod · {bad} gyda gwallau
 pick_pod_photo	Dewis llun POD
 print_awb_label	Argraffu label AWB
 print_open	Argraffu / agor
@@ -653,19 +653,19 @@ attachments_last_expense	Atodiadau (gwariant olaf)
 credit_limit_heading	Terfyn credyd (parti a ddewiswyd / a enwyd)
 pay_selected_heading	Talu'r dewisedig (setlo dyled / cymryd rhagdaliad)
 write_off_heading	Diddymu (clirio heb dalu)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Nodiadau addasu
+adj_note_amount_ph	Swm
+adj_note_reason_ph	Rheswm (gofynnol)
+adj_note_awb_ph	AWB cysylltiedig (dewisol)
+credit_note_btn	Nodyn credyd
+debit_note_btn	Nodyn debyd
+bill_later_heading	Bilio'n ddiweddarach (tâl ychwanegol ar ôl archebu)
+bill_later_amount_ph	Swm ychwanegol
+bill_later_party_ph	Cwsmer (dim ond os nad oes un gan yr archeb)
+bill_later_btn	Bilio'n ddiweddarach
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Pecynnu
+bill_later_extra_other	Arall
 pay_ap_heading	Talu'r hyn rydyn ni'n eu dyled (AP)
 country_tax	Gwlad a threth
 extra_tills_heading	Tiliau ychwanegol
@@ -777,26 +777,26 @@ onboard_book_tmpl	Book · {} — ychwanegwch eitemau a chredyd agoriadol, yna We
 onboard_template_tmpl	Enwch y lle os dymunwch, yna dewiswch sut i ddechrau.
 tmpl_blurb	Llyfrau negesydd a desg archebu: anfonwyr, cludwyr, llyfr y dydd, AWB.
 tmpl_how	Archebwch barseli wrth y ddesg; Llyfr y dydd ar gyfer heddiw; tabiau ar gyfer cyfraddau, partïon, adroddiadau.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Templedi siop
+app_template_blurb	Dewiswch ddesg gychwynnol. Mae «Hepgor am y tro» yn gadael y rhestr cwsmeriaid yn wag.
+app_template_skip	Hepgor am y tro
+app_template_status	Gweinydd yn barod — mewnforiwch dempled, neu hepgor
+app_template_importing	Yn cymhwyso {title}…
+app_template_public_hdr	Templedi
+app_template_import_selected	Mewnforio'r dewis
+app_template_wipe_warn	Mae hyn yn clirio'r data masnachu yn y cyfrifon (archebion, cyfriflyfrau) ac yn cymhwyso gosodiadau siop y templed. Ydych chi am barhau?
+app_template_wipe_continue	Parhau
+app_template_wipe_cancel	Canslo
+public_tmpl_help	Templedi asiantaeth parod sy'n dod gyda'r app. Nid oes angen llwytho i lawr.
+business_day	Pryd mae «Heddiw» yn ailosod?
+business_day_help	Gyda «Tan gau'r diwrnod», mae «Llyfr y dydd» yn parhau heibio hanner nos nes i chi gofnodi cau'r diwrnod. Gyda «Hanner nos y calendr», mae'r diwrnod yn torri am 00:00 amser lleol.
+biz_day_until_close	Tan gau'r diwrnod
+biz_day_midnight	Hanner nos y calendr
+business_day_saved	Gosodiad diwrnod busnes wedi'i gadw
+report_day_lens	Dangos «Heddiw» fel
+report_day_lens_help	Gwedd yn unig — nid yw'n newid pryd mae «Cau diwrnod» yn ailosod «Heddiw». Mae «Yn ôl cau'r diwrnod» yn dilyn y cau diwrnod diwethaf; mae «Yn ôl hanner nos» yn torri am 00:00 amser lleol.
+report_lens_day_close	Yn ôl cau'r diwrnod
+report_lens_midnight	Yn ôl hanner nos
 trk_booked	Wedi'i archebu
 trk_picked_up	Wedi'i gasglu
 trk_in_transit	Ar y ffordd

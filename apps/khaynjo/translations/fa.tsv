@@ -384,12 +384,12 @@ app_template_need_internet	برای دانلود قالب‌ها به اینتر
 app_template_import_selected	وارد کردن مورد انتخاب‌شده
 app_template_check_code	بررسی کد
 app_template_import	وارد کردن
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	وارد کردن از این دستگاه
+app_template_from_device_help	پوشه‌ای را انتخاب کنید که template.json در آن باشد (و در صورت تمایل shop_defaults.json).
+settings_app_tmpl_note	وارد کردن دوباره، فروش‌ها، KOTها و حساب‌ها را پاک می‌کند و سپس تنظیمات فروشگاهِ بسته را اعمال می‌کند. قالب‌های فقط‌منو: «منو» → «قالب‌های اقلام».
+app_template_wipe_warn	این کار داده‌های معاملاتی دفاتر (فروش‌ها، KOTها، حساب‌ها) را پاک می‌کند و تنظیمات فروشگاهِ قالب را اعمال می‌کند. منو و پیکربندی ممکن است تغییر کند. ادامه می‌دهید؟
+app_template_wipe_continue	ادامه
+app_template_wipe_cancel	لغو
 currency	واحد پول
 backup	پشتیبان
 use	استفاده
@@ -550,22 +550,22 @@ new_party_clear	طرف تازه (پاک کردن فرم)
 new_party_kind_supplier_ph	نوع طرف تازه (تأمین‌کننده)
 next_country	کشور بعد
 next_order	سفارش بعد (پاک کردن میز)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	پیش‌نویس‌ها
+park_draft	کنار گذاشتن پیش‌نویس
+drafts_help	سفارش‌های پیشخوان که نیمه‌کاره کنار گذاشته‌اید — تا «گرفتن پرداخت» وارد دفاتر نمی‌شوند. روی یک کارت بزنید تا در «سفارش» ادامه یابد؛ «حذف پیش‌نویس» پیش‌نویس را حذف می‌کند. «بستن روز» این‌ها را پاک نمی‌کند.
+drafts_park_nothing	چیزی برای کنار گذاشتن نیست — کالا به سبد اضافه کنید
+drafts_park_counter_only	«کنار گذاشتن پیش‌نویس» فقط برای سفارش‌های پیشخوان است — از سفارش میز خارج شوید یا از «سالن» استفاده کنید
+drafts_parked	در «پیش‌نویس‌ها» کنار گذاشته شد — پیشخوان آزاد است
+drafts_discard	حذف پیش‌نویس
+drafts_discarded	پیش‌نویس حذف شد
+drafts_gone	آن پیش‌نویس دیگر در فهرست نیست
+drafts_closed	آن پیش‌نویس قبلاً پرداخت یا حذف شده است
+drafts_empty	هنوز پیش‌نویسی نیست. در «پیشخوان» غذا اضافه کنید و «کنار گذاشتن پیش‌نویس» را بزنید.
+drafts_card_kind	پیش‌نویس
+drafts_card_no_lines	بدون قلم
+drafts_card_lines	قلم
+drafts_summary_fmt	{n} پیش‌نویس باز
+drafts_cols_fmt	{n} ستون
 note_gstin_ph	یادداشت / GSTIN / یادآور توافق
 notes_attach_party	یادداشت و پیوست (طرف انتخاب‌شده)
 notes_attach_sale	یادداشت و پیوست (فروش انتخاب‌شده)
@@ -588,15 +588,15 @@ print_open	چاپ / باز کردن
 reason_amend_ph	دلیل اصلاح / ابطال / بازپرداخت
 reason_note_ph	دلیل / یادداشت (ضایعات، شمارش، …)
 record_day_close	ثبت بستن روز
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«امروز» چه زمانی از نو شروع می‌شود؟
+business_day_help	با «تا بستن روز»، «دفتر روز» پس از نیمه‌شب هم ادامه دارد تا وقتی بستن روز را ثبت کنید. با «نیمه‌شب تقویمی»، روز در ساعت ۰۰:۰۰ به وقت محلی بسته می‌شود.
+biz_day_until_close	تا بستن روز
+biz_day_midnight	نیمه‌شب تقویمی
+business_day_saved	روز کاری ذخیره شد
+report_day_lens	نمایش «امروز» بر اساس
+report_day_lens_help	فقط نمایش — زمانِ از نو شروع شدن «امروز» با «بستن روز» را تغییر نمی‌دهد. «بر اساس بستن روز» از آخرین بستن روز حساب می‌کند؛ «بر اساس نیمه‌شب» در ساعت ۰۰:۰۰ به وقت محلی می‌بُرد.
+report_lens_day_close	بر اساس بستن روز
+report_lens_midnight	بر اساس نیمه‌شب
 refresh_from_shop	تازه‌سازی از فروشگاه
 refund	بازپرداخت
 remove_selected	برداشتن انتخاب‌شده
@@ -864,7 +864,7 @@ find_printers	پیدا کردن چاپگرها
 printers_looking	در حال جستجو…
 saving_printer	در حال افزودن چاپگر…
 cancelled	لغو شد
-cancelling	Cancellingâ¦
+cancelling	در حال لغو…
 removing	در حال حذف…
 removed	حذف شد
 updating_order	در حال به‌روزرسانی…

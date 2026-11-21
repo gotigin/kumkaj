@@ -3,27 +3,27 @@ app_tagline	კურიერ-სააგენტო წიგნები + 
 unlock	განბლოკვა
 pin_hint	მფლობელის PIN თავიდან 0000-ია
 sell	დაჯავშნა
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	დაფა
+board	დაფა
+park_draft	მონახაზად შენახვა
+board_help	ღია მონახაზები (ინახება, სანამ არ აირჩევთ «წაშლა»-ს ან «მიიღეთ გადახდა»-ს) და დღევანდელი გატარებული გაყიდვები. «დაჯავშნა»-ში მუშაობისას შეეხეთ «მონახაზად შენახვა»-ს (ინახება აქ და არა წიგნებში); გასაგრძელებლად შეეხეთ მონახაზს.
+board_empty	ბარათები ჯერ არ არის.
+board_park_nothing	გადასადები არაფერია — დაამატეთ საფასური ან დაჯავშნის დეტალები
+board_parked	შენახულია «დაფა»-ზე — სამუშაო მაგიდა თავისუფალია
+board_draft	მონახაზი
+board_booked	დაჯავშნილი
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	მონახაზი
+board_filter_booked	დაჯავშნილი
+board_cols_fmt	{n} სვეტი
+board_summary_fmt	{total} ბარათი · {drafts} მონახაზი · {booked} გატარებული
+board_card_no_charges	საფასური ჯერ არ არის
+board_card_charges	საფასური
+board_card_booked	დაჯავშნა
+board_draft_gone	ეს მონახაზი აღარ არის «დაფა»-ზე
+board_draft_closed	ეს მონახაზი უკვე დასრულებულია ან წაშლილია
+board_discard	წაშლა
+board_discarded	მონახაზი წაშლილია
 buy	გადაიხადე
 books	დღის წიგნი
 books_help	დღევანდელი პოზიცია. დაჯავშნა = ამანათები. გადახდა = ოპერატორის გადასახადები და ხარჯები. მხარეები = ტვირთგამგზავნი და გადამზიდავი.
@@ -220,7 +220,7 @@ snack_secs_save	შეტყობინების დროის შენ�
 snack_secs_saved	შეტყობინების დრო შენახულია — {n} წამი
 snack_secs_bad	შეიყვანეთ წამები რიცხვად (3–60)
 cancelled	გაუქმდა
-cancelling	Cancellingâ¦
+cancelling	მიმდინარეობს გაუქმება…
 cancel	გაუქმება
 opening_client	კლიენტის გახსნა…
 preparing_desk	მაგიდის მომზადება…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	დააკოპირეთ კლიენტის �
 copy_receipt	დააკოპირეთ ქვითარი
 copy_report	ანგარიშის კოპირება
 counted_cash_ph	დათვლილი ნაღდი ფული უჯრაში
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	დახურეთ ცვლა და ამობეჭდეთ სლაპი
+shift_handover	ცვლის გადაცემა
+shift_counted_ph	ნაღდი ფული დათვლილია ჩაბარებისას
+shift_since	ეს ცვლილება მას შემდეგ
+expected_in_drawer	მოსალოდნელია უჯრაში
+lock_books_through_month	წიგნების დაბლოკვა თვის ბოლომდე
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	დაბლოკვა ამ თვის ბოლომდე
+books_locked_none	ჯერ არც ერთი თვე არ არის დაბლოკილი
+books_locked_through	დაბლოკილია ამ დრომდე
 counter_agency_ph	მრიცხველის / სააგენტოს სახელი (სურვილისამებრ)
 create_backup	შექმენით სარეზერვო საშუალება
 day_close_summary	დღის დახურვის შეჯამება
@@ -442,9 +442,9 @@ pay_ap_cash	გადაიხადეთ AP ნაღდი ფული
 pay_ap_upi	გადაიხადეთ AP UPI
 period_bill	პერიოდის ანგარიში
 period_bill_party	პერიოდის ანგარიში (წვეულება)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	ინვოისის შექმნა
+period_bill_generate_print	შექმნა და დაბეჭდვა
+booking_bulk_preview	{ok} მზადაა · {bad} შეცდომით
 pick_pod_photo	აირჩიეთ POD ფოტო
 print_awb_label	დაბეჭდეთ AWB ლეიბლი
 print_open	დაბეჭდვა / გახსნა
@@ -653,19 +653,19 @@ attachments_last_expense	დანართები (ბოლო ხარჯ�
 credit_limit_heading	საკრედიტო ლიმიტი (არჩეული მომხმარებელი ან მომწოდებელი)
 pay_selected_heading	არჩეული გადახდა (ვალის დაფარვა/ავანსის აღება)
 write_off_heading	ჩამოწერა (გასუფთავება გადახდის გარეშე)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	კორექტირების დოკუმენტები
+adj_note_amount_ph	თანხა
+adj_note_reason_ph	მიზეზი (აუცილებელია)
+adj_note_awb_ph	დაკავშირებული AWB (არასავალდებულო)
+credit_note_btn	კრედიტ-ნოტა
+debit_note_btn	დებეტ-ნოტა
+bill_later_heading	მოგვიანებით დარიცხვა (დამატებითი საფასური დაჯავშნის შემდეგ)
+bill_later_amount_ph	დამატებითი თანხა
+bill_later_party_ph	კლიენტი (მხოლოდ თუ ჯავშანს არ აქვს)
+bill_later_btn	მოგვიანებით დარიცხვა
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	შეფუთვა
+bill_later_extra_other	სხვა
 pay_ap_heading	გადაიხადეთ ის, რაც მათ ვალში გვაქვს (AP)
 country_tax	ქვეყანა და გადასახადი
 extra_tills_heading	დამატებითი სალარო აპარატები
@@ -777,26 +777,26 @@ onboard_book_tmpl	წიგნი · {} — მენიუს ელემე�
 onboard_template_tmpl	თუ გსურთ, დაასახელეთ ადგილი, შემდეგ აირჩიეთ როგორ დაიწყოთ.
 tmpl_blurb	კურიერის წიგნები და ჯავშნის მაგიდა: ტვირთგამგზავნი, გადამზიდავი, დღის წიგნი, AWB.
 tmpl_how	ამანათების დაჯავშნა სამუშაო მაგიდაზე; დღის წიგნი დღევანდელი დღისთვის; ჩანართები ტარიფებისთვის, წვეულებები, ანგარიშები.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	მაღაზიის შაბლონები
+app_template_blurb	აირჩიეთ საწყისი სამუშაო მაგიდა. «ახლა გამოტოვეთ» კლიენტების სიას ცარიელს ტოვებს.
+app_template_skip	ახლა გამოტოვეთ
+app_template_status	სერვერი მზადაა — შემოიტანეთ შაბლონი ან გამოტოვეთ
+app_template_importing	მიმართვა {title}…
+app_template_public_hdr	შაბლონები
+app_template_import_selected	არჩეულის შემოტანა
+app_template_wipe_warn	ეს ასუფთავებს სავაჭრო მონაცემებს წიგნებში (ჯავშნები, ჟურნალები) და იყენებს შაბლონის მაღაზიის პარამეტრებს. გსურთ გაგრძელება?
+app_template_wipe_continue	განაგრძეთ
+app_template_wipe_cancel	გაუქმება
+public_tmpl_help	მზა სააგენტოს შაბლონები, რომლებიც მოყვება აპს. ჩამოტვირთვა არ არის საჭირო.
+business_day	როდის იწყება «დღეს» თავიდან?
+business_day_help	«დღის დახურვამდე»-ის არჩევისას «დღის წიგნი» შუაღამის შემდეგაც გრძელდება, სანამ დღის დახურვას არ ჩაწერთ. «კალენდარული შუაღამე»-ის არჩევისას დღე ადგილობრივი დროით 00:00 საათზე მთავრდება.
+biz_day_until_close	დღის დახურვამდე
+biz_day_midnight	კალენდარული შუაღამე
+business_day_saved	სამუშაო დღის პარამეტრი შენახულია
+report_day_lens	აჩვენე «დღეს» როგორც
+report_day_lens_help	მხოლოდ ხედი — არ ცვლის იმას, თუ როდის იწყებს «დღის დახურვა» «დღეს»-ს თავიდან. «დღის დახურვის მიხედვით» ითვლის ბოლო დღის დახურვიდან; «შუაღამის მიხედვით» წყვეტს ადგილობრივი დროით 00:00 საათზე.
+report_lens_day_close	დღის დახურვის მიხედვით
+report_lens_midnight	შუაღამის მიხედვით
 trk_booked	დაჯავშნილი
 trk_picked_up	აიყვანეს
 trk_in_transit	ტრანზიტში

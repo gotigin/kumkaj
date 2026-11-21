@@ -353,15 +353,15 @@ print_open	پرنٽ / کوليو
 reason_amend_ph	ترميم / رد / رقم واپس ڪرڻ جو سبب
 reason_note_ph	سبب / نوٽ (فضول، ڳڻپ، ...)
 record_day_close	ڏينهن جو رڪارڊ بند ڪريو
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«اڄ» ڪڏهن نئين سر شروع ٿئي ٿو؟
+business_day_help	«ڏينهن جو اختتام تائين» چونڊڻ سان «روزنامچو» اڌ رات کان پوءِ به هلندو رهي ٿو، جيستائين توهان ڏينهن جو اختتام درج نه ڪريو. «ڪئلينڊر جي اڌ رات» چونڊڻ سان ڏينهن مقامي وقت موجب رات 12:00 وڳي ڪٽجي ٿو.
+biz_day_until_close	ڏينهن جو اختتام تائين
+biz_day_midnight	ڪئلينڊر جي اڌ رات
+business_day_saved	ڪاروباري ڏينهن محفوظ ٿيو
+report_day_lens	«اڄ» کي هيئن ڏسو
+report_day_lens_help	رڳو ڏسڻ لاءِ — هن سان اهو نٿو بدلجي ته «ڏينهن جو اختتام» ڪڏهن «اڄ» کي نئين سر شروع ڪري ٿو. «ڏينهن جو اختتام موجب» آخري ڏينهن جي اختتام کان ڳڻي ٿو؛ «اڌ رات موجب» مقامي وقت موجب رات 12:00 وڳي ڪٽي ٿو.
+report_lens_day_close	ڏينهن جو اختتام موجب
+report_lens_midnight	اڌ رات موجب
 refresh_from_shop	دوڪان مان تازو ڪريو
 refund	واپسي
 remove_selected	منتخب ڪيل هٽايو
@@ -837,19 +837,19 @@ client_template_confirm	{title} مان {d} شيون شامل ڪريو؟ شيون
 client_template_importing	{title} درآمد ٿي رهيو آهي...
 client_template_done	{title} مان هر شئي توهان جي شين تي آهي.
 client_template_imported	{title} مان {d} شيون ۽ {c} زمرا شامل ڪيا ويا
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	دڪان جا ٽيمپليٽ
+app_template_blurb	شروعاتي ڪيٽلاگ ۽ دڪان سيٽنگون چونڊيو. «هاڻي لاءِ ڇڏي ڏيو» تي ٽيپ ڪرڻ سان شيلف خالي رهندو.
+app_template_skip	هاڻي لاءِ ڇڏي ڏيو
+app_template_status	سرور تيار — ٽيمپليٽ درآمد ڪريو، يا ڇڏي ڏيو
+app_template_importing	{title} لاڳو ٿي رهيو آهي...
+app_template_import_selected	چونڊيل درآمد ڪريو
+app_template_wipe_warn	هن سان کاتن جو ڪاروباري ڊيٽا (وڪرو، کاتا) صاف ٿي ويندو ۽ ٽيمپليٽ جون دڪان سيٽنگون لاڳو ٿينديون. جاري رکون؟
+app_template_wipe_continue	جاري رکو
+app_template_wipe_cancel	منسوخ
+app_template_from_device	هن ڊوائيس مان درآمد ڪريو
+app_template_from_device_help	اهو فولڊر چونڊيو جنهن ۾ template.json هجي (shop_defaults.json هجي ته اهو به).
+settings_app_tmpl_note	مڪمل دڪان پيڪ: ڪيٽلاگ ۽ دڪان سيٽنگون. ڪنهن پيڪ کي ٻيهر درآمد ڪرڻ سان وڪرو ۽ کاتا صاف ٿي وڃن ٿا، پوءِ پيڪ جون دڪان سيٽنگون لاڳو ٿين ٿيون.
+app_tmpl_named	{name} دڪان ٽيمپليٽ
 cancel	منسوخ
 removing	هٽائي رهيا آهيون…
 removed	هٽايو ويو

@@ -384,12 +384,12 @@ app_template_need_internet	టెంప్లేట్‌లను డౌన్�
 app_template_import_selected	ఎంచుకున్నదాన్ని దిగుమతి చేయండి
 app_template_check_code	కోడ్ తనిఖీ చేయండి
 app_template_import	దిగుమతి చేయండి
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ఈ పరికరం నుండి దిగుమతి చేయండి
+app_template_from_device_help	template.json ఉన్న ఫోల్డర్‌ను ఎంచుకోండి (shop_defaults.json ఉంటే అది కూడా).
+settings_app_tmpl_note	మళ్లీ దిగుమతి చేస్తే అమ్మకాలు, KOT, ఖాతాలు తుడిచివేయబడతాయి; తర్వాత ప్యాక్ దుకాణ సెట్టింగ్‌లు వర్తిస్తాయి. మెనూ మాత్రమే ఉన్న టెంప్లేట్‌లు: «మెనూ» → «అంశం టెంప్లేట్‌లు».
+app_template_wipe_warn	ఇది పుస్తకాల్లోని వ్యాపార డేటాను (అమ్మకాలు, KOT, ఖాతాలు) తుడిచివేసి, టెంప్లేట్ దుకాణ సెట్టింగ్‌లను వర్తింపజేస్తుంది. మెనూ, సెటప్ మారవచ్చు. కొనసాగించాలా?
+app_template_wipe_continue	కొనసాగించు
+app_template_wipe_cancel	రద్దు
 currency	కరెన్సీ
 backup	బ్యాకప్
 use	ఉపయోగించు
@@ -550,22 +550,22 @@ new_party_clear	కొత్త పార్టీ (ఫారం ఖాళీ �
 new_party_kind_supplier_ph	కొత్త పార్టీ రకం (సరఫరాదారు)
 next_country	తదుపరి దేశం
 next_order	తదుపరి ఆర్డర్ (డెస్క్ ఖాళీ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	డ్రాఫ్ట్‌లు
+park_draft	డ్రాఫ్ట్‌గా ఉంచు
+drafts_help	కౌంటర్‌లో మీరు మధ్యలో పక్కన పెట్టిన పూర్తికాని ఆర్డర్‌లు — «చెల్లింపు తీసుకో» అయ్యే వరకు ఇవి పుస్తకాల్లోకి వెళ్లవు. కార్డ్‌ను నొక్కితే అది «ఆర్డర్»లో మళ్లీ తెరుచుకుంటుంది; «డ్రాఫ్ట్‌ను తొలగించు» డ్రాఫ్ట్‌ను తొలగిస్తుంది. «రోజు ముగింపు» వీటిని తుడిచివేయదు.
+drafts_park_nothing	ఉంచడానికి ఏమీ లేదు — కార్ట్‌లో వస్తువులు చేర్చండి
+drafts_park_counter_only	«డ్రాఫ్ట్‌గా ఉంచు» కౌంటర్ ఆర్డర్‌లకు మాత్రమే — టేబుల్ ఆర్డర్ నుండి బయటకు రండి లేదా «ఫ్లోర్» వాడండి
+drafts_parked	«డ్రాఫ్ట్‌లు»లో ఉంచబడింది — కౌంటర్ ఖాళీగా ఉంది
+drafts_discard	డ్రాఫ్ట్‌ను తొలగించు
+drafts_discarded	డ్రాఫ్ట్ తొలగించబడింది
+drafts_gone	ఆ డ్రాఫ్ట్ ఇప్పుడు జాబితాలో లేదు
+drafts_closed	ఆ డ్రాఫ్ట్‌కు ఇప్పటికే చెల్లింపు అయింది లేదా అది తొలగించబడింది
+drafts_empty	ఇంకా డ్రాఫ్ట్‌లు లేవు. «కౌంటర్»లో వంటకాలు చేర్చి «డ్రాఫ్ట్‌గా ఉంచు» నొక్కండి.
+drafts_card_kind	డ్రాఫ్ట్
+drafts_card_no_lines	వస్తువులు లేవు
+drafts_card_lines	వస్తువులు
+drafts_summary_fmt	{n} తెరిచి ఉన్న డ్రాఫ్ట్‌లు
+drafts_cols_fmt	{n} నిలువు వరుసలు
 note_gstin_ph	గమనిక / GSTIN / ఒప్పంద రిమైండర్
 notes_attach_party	గమనికలు & జోడింపులు (ఎంచుకున్న పార్టీ)
 notes_attach_sale	గమనికలు & జోడింపులు (ఎంచుకున్న అమ్మకం)
@@ -588,15 +588,15 @@ print_open	ముద్రించు / తెరువు
 reason_amend_ph	సవరణ / రద్దు / వాపసు కారణం
 reason_note_ph	కారణం / గమనిక (నష్టం, లెక్క, …)
 record_day_close	రోజు ముగింపు నమోదు చేయి
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ఈరోజు» ఎప్పుడు కొత్తగా మొదలవుతుంది?
+business_day_help	«రోజు ముగింపు వరకు» ఎంచుకుంటే, మీరు రోజు ముగింపు నమోదు చేసే వరకు «రోజు పుస్తకం» అర్ధరాత్రి తర్వాత కూడా కొనసాగుతుంది. «క్యాలెండర్ అర్ధరాత్రి» ఎంచుకుంటే, రోజు స్థానిక సమయం రాత్రి 12:00 గంటలకు ముగుస్తుంది.
+biz_day_until_close	రోజు ముగింపు వరకు
+biz_day_midnight	క్యాలెండర్ అర్ధరాత్రి
+business_day_saved	వ్యాపార రోజు సేవ్ అయింది
+report_day_lens	«ఈరోజు»ను ఇలా చూపు
+report_day_lens_help	చూడటానికి మాత్రమే — «రోజు ముగింపు» ఎప్పుడు «ఈరోజు»ను కొత్తగా మొదలుపెడుతుందో ఇది మార్చదు. «రోజు ముగింపు ప్రకారం» చివరి రోజు ముగింపు నుండి లెక్కిస్తుంది; «అర్ధరాత్రి ప్రకారం» స్థానిక సమయం రాత్రి 12:00 గంటలకు విభజిస్తుంది.
+report_lens_day_close	రోజు ముగింపు ప్రకారం
+report_lens_midnight	అర్ధరాత్రి ప్రకారం
 refresh_from_shop	షాప్ నుండి రిఫ్రెష్
 refund	వాపసు
 remove_selected	ఎంచుకున్నది తొలగించు
@@ -864,7 +864,7 @@ find_printers	ప్రింటర్లను కనుగొను
 printers_looking	ఈ పరికరం మరియు Wi‑Fiలో ప్రింటర్లను వెతుకుతోంది…
 saving_printer	ప్రింటర్ జోడిస్తోంది…
 cancelled	రద్దు
-cancelling	Cancellingâ¦
+cancelling	రద్దు అవుతోంది…
 removing	తీసివేస్తోంది…
 removed	తీసివేయబడింది
 updating_order	నవీకరిస్తోంది…

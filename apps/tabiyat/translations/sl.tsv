@@ -365,15 +365,15 @@ print_open	Natisni / odpri
 reason_amend_ph	Razlog za popravek / razveljavitev / vračilo
 reason_note_ph	Razlog / opomba (kalo, štetje, …)
 record_day_close	Zabeleži zaključek dneva
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Kdaj se «Danes» začne znova?
+business_day_help	Z izbiro «Do zaključka dneva» «Dnevnik» teče tudi po polnoči, dokler ne zabeležite zaključka dneva. Z izbiro «Koledarska polnoč» se dan konča ob 00:00 po lokalnem času.
+biz_day_until_close	Do zaključka dneva
+biz_day_midnight	Koledarska polnoč
+business_day_saved	Poslovni dan shranjen
+report_day_lens	Prikaži «Danes» po
+report_day_lens_help	Samo prikaz — ne spremeni, kdaj «Zaključek dneva» znova začne «Danes». «Po zaključku dneva» sledi zadnjemu zaključku dneva; «Po polnoči» reže ob 00:00 po lokalnem času.
+report_lens_day_close	Po zaključku dneva
+report_lens_midnight	Po polnoči
 refresh_from_shop	Osveži iz lokala
 refund	Vračilo
 remove_selected	Odstrani izbrano
@@ -849,19 +849,19 @@ client_template_confirm	Dodati elemente {d} iz {title}? Predmeti, ki jih že ima
 client_template_importing	Uvažanje {title}…
 client_template_done	Vsak predmet iz {title} je na vaših predmetih.
 client_template_imported	Dodani elementi {d} in kategorije {c} iz {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Predloge trgovine
+app_template_blurb	Izberite začetni katalog in nastavitve trgovine. «Preskoči za zdaj» pusti polico prazno.
+app_template_skip	Preskoči za zdaj
+app_template_status	Strežnik je pripravljen — uvozite predlogo ali preskočite
+app_template_importing	Uporablja se {title}…
+app_template_import_selected	Uvozi izbrano
+app_template_wipe_warn	To počisti poslovne podatke v knjigah (prodaja, saldakonti) in uporabi nastavitve trgovine iz predloge. Nadaljujem?
+app_template_wipe_continue	Nadaljuj
+app_template_wipe_cancel	Prekliči
+app_template_from_device	Uvozi iz te naprave
+app_template_from_device_help	Izberite mapo, ki vsebuje template.json (in shop_defaults.json, če obstaja).
+settings_app_tmpl_note	Celotni paketi trgovine: katalog in nastavitve trgovine. Ponovni uvoz paketa počisti prodajo in saldakonte, nato uporabi nastavitve trgovine iz paketa.
+app_tmpl_named	Predloga trgovine {name}
 cancel	Prekliči
 removing	Odstranjevanje…
 removed	Odstranjeno

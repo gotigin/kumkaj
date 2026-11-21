@@ -384,12 +384,12 @@ app_template_need_internet	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧ
 app_template_import_selected	ꯈꯅꯕꯥ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_check_code	ꯀꯣꯗ ꯌꯦꯡꯕꯤꯌꯨ
 app_template_import	ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗꯒꯤ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯥ
+app_template_from_device_help	template.json (ꯑꯃꯁꯨꯡ, ꯑꯣꯄꯁꯅꯦꯜ ꯑꯣꯏꯅꯥ, shop_defaults.json) ꯌꯥꯎꯕꯥ ꯐꯣꯜꯗꯔ ꯑꯃꯥ ꯈꯜꯂꯨ꯫
+settings_app_tmpl_note	ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯅꯥ ꯁꯦꯂꯁꯤꯡ, KOT ꯑꯃꯁꯨꯡ ꯂꯦꯖꯔꯁꯤꯡ ꯀ꯭ꯂꯤꯌꯔ ꯇꯧꯏ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯇꯦꯃꯞꯂꯦꯠꯀꯤ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯦꯞꯂꯥꯏ ꯇꯧꯏ꯫ ꯃꯦꯅꯨ ꯈꯛꯇꯃꯛ ꯂꯩꯕꯥ ꯇꯦꯃꯞꯂꯦꯠꯁꯤꯡ: «ꯃꯦꯅꯨ» → «ꯑꯥꯏꯇꯦꯝ ꯇꯦꯝꯞꯂꯦꯠ».
+app_template_wipe_warn	ꯃꯁꯤꯅꯥ ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡꯗꯥ ꯂꯩꯕꯥ ꯇ꯭ꯔꯦꯗꯤꯡ ꯗꯦꯇꯥ (ꯁꯦꯂꯁ, KOT, ꯂꯦꯖꯔꯁꯤꯡ) ꯀ꯭ꯂꯤꯌꯔ ꯇꯧꯏ ꯑꯃꯁꯨꯡ ꯇꯦꯃꯞꯂꯦꯠꯀꯤ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯦꯞꯂꯥꯏ ꯇꯧꯏ꯫ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯁꯦꯇꯑꯞ ꯑꯗꯨ ꯍꯣꯡꯗꯣꯀꯄꯥ ꯌꯥꯏ꯫ ꯃꯈꯥ ꯆꯠꯊꯕꯥ ꯄꯥꯝꯕꯤꯕ꯭ꯔꯥ?
+app_template_wipe_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
+app_template_wipe_cancel	ꯇꯣꯛꯎ
 currency	ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 backup	ꯀꯣꯄꯤ
 use	ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ
@@ -550,22 +550,22 @@ new_party_clear	ꯃꯤ ꯑꯅꯧꯕ (ꯐꯣꯔꯝ ꯁꯦꯡꯗꯣꯛꯎ)
 new_party_kind_supplier_ph	ꯃꯤ ꯑꯅꯧꯕꯒꯤ ꯃꯈꯜ (ꯄꯤꯔꯤꯕ)
 next_country	ꯂꯩꯄꯥꯛ ꯃꯊꯪ
 next_order	ꯌꯥꯕ ꯃꯊꯪ (ꯐꯝ ꯁꯦꯡꯗꯣꯛꯎ)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	ꯗ꯭ꯔꯥꯐ꯭ꯇꯁꯤꯡ
+park_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ
+drafts_help	ꯍꯥꯌꯔꯤꯕꯥ ꯑꯁꯤ ꯅꯍꯥꯛꯅꯥ ꯊꯃꯈꯤꯕꯥ ꯀꯥꯎꯟꯇꯔꯗꯒꯤ ꯂꯣꯏꯁꯤꯟꯗꯕꯥ ꯑꯣꯔꯗꯔꯁꯤꯡꯅꯤ꯫ ꯅꯍꯥꯛꯅꯥ «ꯄꯤꯕ ꯂꯧꯕꯤꯌꯨ» ꯇꯦꯞ ꯇꯧꯗ꯭ꯔꯤꯉꯩꯗꯥ ꯃꯈꯣꯌ ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡꯗꯥ ꯑꯦꯟꯇꯔ ꯇꯧꯗꯦ꯫ «ꯌꯥꯕ»ꯗꯥ ꯃꯈꯥ ꯆꯠꯊꯅꯕꯥ ꯀꯥꯔꯗ ꯑꯃꯥ ꯇꯦꯞ ꯇꯧꯔꯣ; «ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯃꯨꯠꯊꯠꯄꯥ»ꯅꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯃꯨꯠꯊꯠꯂꯤ꯫ «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ»ꯅꯥ ꯃꯈꯣꯌꯕꯨ ꯀ꯭ꯂꯤꯌꯥꯔ ꯇꯧꯗꯦ꯫
+drafts_park_nothing	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯀꯔꯤꯁꯨ ꯂꯩꯇꯦ — ꯀꯥꯔꯗꯇꯥ ꯑꯥꯏꯇꯦꯃꯁꯤꯡ ꯍꯥꯄꯆꯤꯅꯕꯥ
+drafts_park_counter_only	«ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ» ꯑꯁꯤ ꯀꯥꯎꯟꯇꯔꯗꯥ ꯂꯧꯕꯥ ꯑꯣꯔꯗꯔ ꯈꯛꯇꯒꯤꯅꯤ — ꯇꯦꯕꯜ ꯑꯣꯔꯗꯔ ꯊꯥꯗꯣꯀꯎ, ꯅꯠꯔꯒꯥ «ꯂꯝ» ꯁꯤꯖꯤꯟꯅꯧ
+drafts_parked	«ꯗ꯭ꯔꯥꯐ꯭ꯇꯁꯤꯡ»ꯗꯥ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ — ꯀꯥꯎꯟꯇꯔ ꯑꯁꯤ ꯍꯧꯖꯤꯛ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯔꯦ
+drafts_discard	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯃꯨꯠꯊꯠꯄꯥ
+drafts_discarded	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯃꯨꯠꯊꯠꯈ꯭ꯔꯦ
+drafts_gone	ꯑꯗꯨꯒꯨꯝꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯂꯤꯁ꯭ꯠ ꯑꯗꯨꯗꯥ ꯌꯥꯑꯣꯗ꯭ꯔꯦ
+drafts_closed	ꯑꯗꯨꯒꯨꯝꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯗꯨ ꯍꯥꯟꯅꯅꯥ ꯄꯤꯈ꯭ꯔꯦ ꯅꯠꯔꯒꯥ ꯃꯨꯠꯊꯠꯈ꯭ꯔꯦ
+drafts_empty	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫ «ꯌꯣꯟꯕꯒꯤ ꯐꯝ»ꯗꯥ, ꯗꯤꯁꯁꯤꯡ ꯍꯥꯄꯆꯤꯜꯂꯨ ꯑꯃꯁꯨꯡ «ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ»ꯗꯥ ꯇꯦꯞ ꯇꯧ꯫
+drafts_card_kind	ꯗ꯭ꯔꯥꯐ꯭ꯠ
+drafts_card_no_lines	ꯑꯥꯏꯇꯦꯝ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ
+drafts_card_lines	ꯑꯥꯏꯇꯦꯃꯁꯤꯡ
+drafts_summary_fmt	{n} ꯑꯣꯄꯟ ꯗ꯭ꯔꯥꯐ꯭ꯇꯁꯤꯡ
+drafts_cols_fmt	{n} ꯀꯂꯃꯁꯤꯡ
 note_gstin_ph	ꯋꯥꯍꯩ / GSTIN / ꯋꯥꯔꯦꯞ ꯅꯤꯡꯁꯤꯡꯕ
 notes_attach_party	ꯋꯥꯍꯩ ꯑꯃꯁꯨꯡ ꯌꯣꯟꯕ (ꯈꯟꯈꯤꯕ ꯃꯤ)
 notes_attach_sale	ꯋꯥꯍꯩ ꯑꯃꯁꯨꯡ ꯌꯣꯟꯕ (ꯈꯟꯈꯤꯕ ꯌꯣꯟꯕ)
@@ -588,15 +588,15 @@ print_open	ꯄ꯭ꯔꯤꯟꯇ / ꯍꯥꯡꯗꯣꯛꯎ
 reason_amend_ph	ꯁꯦꯝꯕ / ꯇꯣꯛꯄ / ꯍꯟꯕꯤꯔꯛꯄꯒꯤ ꯔꯤꯖꯟ
 reason_note_ph	ꯔꯤꯖꯟ / ꯋꯥꯍꯩ (ꯃꯥꯡꯈꯤ, ꯂꯤꯁꯤꯡ, …)
 record_day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯏꯕꯤꯌꯨ
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«ꯉꯁꯤ» ꯑꯁꯤ ꯀꯗꯥꯏꯗꯥ ꯔꯤꯁꯦꯠ ꯇꯧꯕꯒꯦ?
+business_day_help	«ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯐꯥꯑꯣꯕꯥ»ꯅꯥ «ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ» ꯑꯁꯤ ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯆꯠꯂꯤ, ꯅꯍꯥꯛꯅꯥ ꯅꯨꯃꯤꯠ ꯑꯗꯨ ꯂꯣꯏꯔꯕꯥ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯗ꯭ꯔꯤꯐꯥꯑꯣꯕꯥ. «ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯗꯥ» ꯂꯣꯀꯦꯜ ꯇꯥꯏꯃꯒꯤ ꯄꯨꯡ ꯰꯰:꯰꯰ꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
+biz_day_until_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯐꯥꯑꯣꯕꯥ
+biz_day_midnight	ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯗꯥ
+business_day_saved	ꯕꯤꯖꯤꯅꯦꯁ ꯗꯦ ꯁꯦꯇꯤꯡ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ
+report_day_lens	«ꯉꯁꯤ» ꯑꯁꯤꯒꯨꯝꯅꯥ ꯎꯠꯀꯅꯤ
+report_day_lens_help	ꯃꯁꯤꯅꯥ ꯚꯤꯎ ꯑꯗꯨ ꯈꯛꯇꯃꯛ ꯍꯣꯡꯗꯣꯀꯏ — «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ»ꯅꯥ «ꯉꯁꯤ» ꯔꯤꯁꯦꯠ ꯇꯧꯕꯥ ꯃꯇꯃꯗꯥ ꯍꯣꯡꯗꯦ꯫ «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ»ꯅꯥ ꯑꯔꯣꯏꯕꯥ ꯅꯨꯃꯤꯠ ꯂꯣꯏꯔꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯆꯠꯂꯤ; «ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯑꯦꯟ.ꯗꯤ.ꯑꯦ» ꯂꯣꯀꯦꯜ ꯇꯥꯏꯃꯒꯤ ꯄꯨꯡ ꯰꯰:꯰꯰ꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
+report_lens_day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ
+report_lens_midnight	ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯑꯦꯟ.ꯗꯤ.ꯑꯦ
 refresh_from_shop	ꯀꯦꯟꯐꯝꯗꯒꯤ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ
 refund	ꯁꯦꯟ ꯍꯟꯕꯤꯔꯛꯎ
 remove_selected	ꯈꯟꯈꯤꯕ ꯂꯣꯠꯎ
@@ -864,7 +864,7 @@ find_printers	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ
 printers_looking	ꯊꯤꯔꯤ…
 saving_printer	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯥꯞꯆꯤꯟꯂꯤ…
 cancelled	ꯇꯣꯛꯈꯤ
-cancelling	Cancellingâ¦
+cancelling	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯔꯤ…
 removing	ꯂꯧꯊꯣꯛꯂꯤ…
 removed	ꯂꯧꯊꯣꯛꯂꯦ
 updating_order	ꯑꯄꯗꯦꯠ ꯇꯧꯔꯤ…

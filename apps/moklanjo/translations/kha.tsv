@@ -5,25 +5,25 @@ pin_hint	U trai PIN u sdang kum u 0000 .
 sell	Ka jingbuh jaka
 nav_board	Board
 board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
+park_draft	Pynsah kum ka draft
+board_help	Ki jingthoh bym pat dep (la buh haduh ba phin da tap «Pynduh noh» lane «Shim ia ka jingsiew») bad ki jingdie ba la buh mynta ka sngi. Ha ka «Ka jingbuh jaka», tap «Pynsah kum ka draft» hapdeng ka kam jong phi (la buh ia ka hangne, ym ha ki jingkhein); tap ia ka draft ban bteng ia ka.
+board_empty	Ym pat don kard.
+board_park_nothing	Ym don ei ei ban buh kum ka draft — pyndap ia ki jingsiew lane ki jingtip ba bniah shaphang ka jingpynrung kyrteng
+board_parked	La buh ha ka «Board» — ka miej ka thylli mynta
 board_draft	Draft
-board_booked	Booked
+board_booked	La buh
 board_filter_all	All
 board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_booked	La buh
+board_cols_fmt	{n} ki tnum
+board_summary_fmt	{total} ki karta · {drafts} ki jingthoh · {booked} la buh
+board_card_no_charges	Ym pat pyndap bai lutksan
+board_card_charges	ki jingsiew
+board_card_booked	Ka jingbuh jaka
+board_draft_gone	Kata ka jingthoh kam don shuh ha ka «Board»
+board_draft_closed	Kata ka draft ka la dep dep ne la pyndam noh
+board_discard	Pynduh noh
+board_discarded	La weng noh ia ka draft
 buy	Siew noh
 books	Ka kot sngi
 books_help	Ka jinglong jong kane ka sngi. Ka jingpynrung = ki parcel kiba rung. Ka jingsiew = ki bill & ki jinglut jong ki nongkit. Ki Party = ki nongphah & ki nongkit.
@@ -88,7 +88,7 @@ applied	La pyndonkam
 note_ph	Jingpynkynmaw (jied)
 rounded	BA PYLLI
 split	Jingphiah
-counter	Ka jingkhein
+counter	Counter
 parcel	Kaba phah ia kino kino ki tiar sha kawei pat ka jaka kum ka jaka ba jngai
 order	Jingbthah
 sales	Ki jingbuh jaka
@@ -220,7 +220,7 @@ snack_secs_save	Pynsah ia ka por jingpynbna
 snack_secs_saved	Ka por pyntip ba la pynduna — {n} sekhon .
 snack_secs_bad	Pynrung ia ki sekhon kum u nombar (3–60) .
 cancelled	La weng noh
-cancelling	Cancellingâ¦
+cancelling	Ka jingpynsangeh…
 cancel	Pynsangeh
 opening_client	Ka jingplie ia u kliant...
 preparing_desk	Ka jingpynkhreh ia ka miej...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopi ia ka kot jingkhein jong ki nongthied CSV .
 copy_receipt	Kopi ia ka resit
 copy_report	Kopi ia ka kaiphod
 counted_cash_ph	La khein ia ka pisa ha ka drawer
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Khang ia ka shift bad shon ia ka slip
+shift_handover	Ka jingaiti shift
+shift_counted_ph	Ka pisa ba la khein ha ka por aiti
+shift_since	Kane ka jingkylla naduh ka snem 1990.
+expected_in_drawer	La khmih lynti ha ka drawer
+lock_books_through_month	Khang ia ki account haduh kaba kut jong u bnai
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Lock up haduh kaba kut jong une u bnai
+books_locked_none	Ym pat don bnai ba la khang
+books_locked_through	La khang haduh
 counter_agency_ph	Kyrteng jong u nongkhein / tnat treikam (da jied)
 create_backup	Pynlong ia ka backup
 day_close_summary	Ka jingpynkut ia ka sngi
@@ -442,9 +442,9 @@ pay_ap_cash	Siew pisa AP
 pay_ap_upi	Siew AP UPI
 period_bill	Ka bill jong ka por
 period_bill_party	Ka por siew (party)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Shna ia ka invois
+period_bill_generate_print	Pynlong bad pynmih
+booking_bulk_preview	{ok} la pynkhreh · {bad} ryngkat bad ki jingbakla
 pick_pod_photo	Jied ia ka dur POD
 print_awb_label	Pynmih ia ka dak AWB
 print_open	Pynmih / plie
@@ -653,19 +653,19 @@ attachments_last_expense	Ki jingpynrung (jinglut ba khatduh)
 credit_limit_heading	Ka jingthew jong ka ram (u nongthied ne nongsam ba la jied)
 pay_selected_heading	Siew ba la jied (pynbeit ia ka ram / shim lypa)
 write_off_heading	Thoh noh (pynkhuid khlem da siew)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Ki jingthoh pynbeit
+adj_note_amount_ph	Ka jingbun
+adj_note_reason_ph	Ka daw (ba donkam)
+adj_note_awb_ph	Ka jingiadei AWB (jied)
+credit_note_btn	Ka jingthoh ai ram
+debit_note_btn	Ka jingthoh debit
+bill_later_heading	Ka jingsiew hadien (jingsiew shuh shuh hadien ba la dep book)
+bill_later_amount_ph	Ka jingbun pisa
+bill_later_party_ph	U nongthied (tang lada ka jingpynrung kyrteng kam don)
+bill_later_btn	Ka jingsiew hadien
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Ka jingsong
+bill_later_extra_other	Kawei
 pay_ap_heading	Siew ia kaei kaba ngi dei ban siew ia ki (AP)
 country_tax	Ka ri bad ka khajna
 extra_tills_heading	Ki till ba la pyndap
@@ -777,26 +777,26 @@ onboard_book_tmpl	Ka kot · {} — pyndap ia ki tiar bad ka jingai jingbit ba pl
 onboard_template_tmpl	Kyrteng ia ka jaka lada phi kwah, nangta jied kumno ban sdang.
 tmpl_blurb	Ki kot phah bad ka jaka buh kot: ki nongphah, ki nongkit, ka kot sngi, ka AWB.
 tmpl_how	Book parcels at the desk; Ka kot sngi na ka bynta mynta ka sngi; tabs for rates, parties, reports.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Ki template dukan
+app_template_blurb	Jied ia ka jingpynbeit kaba sdang. «Skip na ka bynta mynta» ka iehnoh ia ka list jong ki nongthied kaba thylli.
+app_template_skip	Skip na ka bynta mynta
+app_template_status	Ka server ka la khreh — import ia ka template, ne iehnoh
+app_template_importing	Ka jingpyndonkam {title}...
+app_template_public_hdr	Ki template
+app_template_import_selected	Import ia kaba la jied
+app_template_wipe_warn	Kane ka pynkhuid ia ki jingtip jong ka jingkhaii ha ki jingkhein (ki jingbuh jingthoh, ki kot jingkhein) bad ka pyntreikam ia ki jingpynbeit jong ka dukan jong ka template. Hato phi kwah ban bteng?
+app_template_wipe_continue	Bteng
+app_template_wipe_cancel	Pynsangeh
+public_tmpl_help	Ki jingpynkhreh jong ki agency kiba wan ryngkat bad ka app. Ym donkam ban download.
+business_day	Lano ka «Mynta ka sngi» kan sdang biang?
+business_day_help	«Haduh Ka sngi kaba khang» ka pynlong ia ka «Ka kot sngi» ban iaid palat ia ka shiteng miet, haduh ba phin da buh jingthoh ia ka sngi kaba kut. «Ha ka por shiteng miet» ki sdang ha ka por 00:00 baje ha ka por jong ka ri.
+biz_day_until_close	Haduh Ka sngi kaba khang
+biz_day_midnight	Ha ka por shiteng miet
+business_day_saved	La buh ia ka jingpynbeit jong ka sngi trei
+report_day_lens	Pyni «Mynta ka sngi» kum
+report_day_lens_help	Kane ka pynkylla tang ia ka jingpeit — kam pynkylla haba ka «Ka sngi kaba khang» ka pynkylla ia ka «Mynta ka sngi». «Katkum ka Ka sngi kaba khang» bud ia ka sngi kaba khatduh; «Katkum ka shiteng miet» ka jingkut ha ka por 00:00 baje ha ka por jong ka ri.
+report_lens_day_close	Katkum ka Ka sngi kaba khang
+report_lens_midnight	Katkum ka shiteng miet
 trk_booked	La buh
 trk_picked_up	La shim
 trk_in_transit	Ha ka jingleit jingwan

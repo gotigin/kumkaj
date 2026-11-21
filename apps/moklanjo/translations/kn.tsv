@@ -3,27 +3,27 @@ app_tagline	ಕೊರಿಯರ್ ಬುಕ್ಸ್ + ಬುಕಿಂಗ್ ಡ
 unlock	ಅನ್‌ಲಾಕ್
 pin_hint	ಮಾಲೀಕ PIN 0000 ನಿಂದ ಆರಂಭ
 sell	ಬುಕಿಂಗ್
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	ಬೋರ್ಡ್
+board	ಬೋರ್ಡ್
+park_draft	ಡ್ರಾಫ್ಟ್ ಆಗಿ ಇಡಿ
+board_help	ತೆರೆದ ಡ್ರಾಫ್ಟ್‌ಗಳು («ತೆಗೆದುಹಾಕಿ» ಅಥವಾ «ಪಾವತಿ ತೆಗೆದುಕೊಳ್ಳಿ» ಮಾಡುವವರೆಗೆ ಇರುತ್ತವೆ) ಮತ್ತು ಇಂದಿನ ಬುಕ್ ಆದ ಮಾರಾಟ. «ಬುಕಿಂಗ್» ನಲ್ಲಿ ಕೆಲಸದ ಮಧ್ಯೆ «ಡ್ರಾಫ್ಟ್ ಆಗಿ ಇಡಿ» ಒತ್ತಿ (ಇಲ್ಲಿ ಉಳಿಯುತ್ತದೆ, ಪುಸ್ತಕದಲ್ಲಿ ಅಲ್ಲ); ಮತ್ತೆ ಮುಂದುವರಿಸಲು ಡ್ರಾಫ್ಟ್ ಒತ್ತಿ.
+board_empty	ಇನ್ನೂ ಕಾರ್ಡ್‌ಗಳಿಲ್ಲ.
+board_park_nothing	ಇಡಲು ಏನೂ ಇಲ್ಲ — ಶುಲ್ಕಗಳು ಅಥವಾ ಬುಕಿಂಗ್ ವಿವರಗಳನ್ನು ಸೇರಿಸಿ
+board_parked	«ಬೋರ್ಡ್» ನಲ್ಲಿ ಇಡಲಾಗಿದೆ — ಡೆಸ್ಕ್ ಖಾಲಿ ಇದೆ
+board_draft	ಡ್ರಾಫ್ಟ್
+board_booked	ಬುಕ್ ಆಗಿದೆ
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ಡ್ರಾಫ್ಟ್
+board_filter_booked	ಬುಕ್ ಆಗಿದೆ
+board_cols_fmt	{n} ಕಾಲಮ್
+board_summary_fmt	{total} ಕಾರ್ಡ್‌ಗಳು · {drafts} ಡ್ರಾಫ್ಟ್ · {booked} ಬುಕ್ ಆದವು
+board_card_no_charges	ಇನ್ನೂ ಶುಲ್ಕಗಳಿಲ್ಲ
+board_card_charges	ಶುಲ್ಕಗಳು
+board_card_booked	ಬುಕಿಂಗ್
+board_draft_gone	ಆ ಡ್ರಾಫ್ಟ್ ಈಗ «ಬೋರ್ಡ್» ನಲ್ಲಿ ಇಲ್ಲ
+board_draft_closed	ಆ ಡ್ರಾಫ್ಟ್ ಈಗಾಗಲೇ ಮುಗಿದಿದೆ ಅಥವಾ ತೆಗೆದುಹಾಕಲಾಗಿದೆ
+board_discard	ತೆಗೆದುಹಾಕಿ
+board_discarded	ಡ್ರಾಫ್ಟ್ ತೆಗೆದುಹಾಕಲಾಗಿದೆ
 buy	ಪಾವತಿಸಿ
 books	ದಿನ ಪುಸ್ತಕ
 books_help	ಇಂದಿನ ಸ್ಥಿತಿ. ಬುಕಿಂಗ್ = ಪಾರ್ಸೆಲ್‌ಗಳು ಬಂದವು. ಪೇ ಔಟ್ = ಕ್ಯಾರಿಯರ್ ಬಿಲ್ ಮತ್ತು ಖರ್ಚು. ಪಾರ್ಟಿ = ಕಳುಹಿಸುವವರು ಮತ್ತು ಕ್ಯಾರಿಯರ್.
@@ -220,7 +220,7 @@ snack_secs_save	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಿ
 snack_secs_saved	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಲಾಗಿದೆ — {n} ಸೆಕೆಂಡುಗಳು
 snack_secs_bad	ಸೆಕೆಂಡುಗಳನ್ನು ಸಂಖ್ಯೆಯಾಗಿ ನಮೂದಿಸಿ (3–60)
 cancelled	ರದ್ದುಗೊಂಡಿದೆ
-cancelling	Cancellingâ¦
+cancelling	ರದ್ದಾಗುತ್ತಿದೆ…
 cancel	ರದ್ದು
 opening_client	ಕ್ಲೈಂಟ್ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
 preparing_desk	ಡೆಸ್ಕ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	ಪಾರ್ಟಿ ಲೆಡ್ಜರ್ CSV ನಕಲಿ�
 copy_receipt	ರಸೀದಿ ನಕಲಿಸಿ
 copy_report	ವರದಿ ನಕಲಿಸಿ
 counted_cash_ph	ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಎಣಿಸಿದ ನಗದು
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	ಶಿಫ್ಟ್ ಮುಗಿಸಿ ಸ್ಲಿಪ್ ಮುದ್ರಿಸಿ
+shift_handover	ಶಿಫ್ಟ್ ಹಸ್ತಾಂತರ
+shift_counted_ph	ಹಸ್ತಾಂತರದಲ್ಲಿ ಎಣಿಸಿದ ನಗದು
+shift_since	ಈ ಶಿಫ್ಟ್ ಆರಂಭ
+expected_in_drawer	ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಇರಬೇಕಾದ್ದು
+lock_books_through_month	ತಿಂಗಳವರೆಗೆ ಪುಸ್ತಕಗಳನ್ನು ಲಾಕ್ ಮಾಡಿ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ಈ ತಿಂಗಳವರೆಗೆ ಲಾಕ್ ಮಾಡಿ
+books_locked_none	ಇನ್ನೂ ಯಾವ ತಿಂಗಳೂ ಲಾಕ್ ಆಗಿಲ್ಲ
+books_locked_through	ಯಾವ ತಿಂಗಳವರೆಗೆ ಲಾಕ್
 counter_agency_ph	ಕೌಂಟರ್ / ಏಜೆನ್ಸಿ ಹೆಸರು (ಐಚ್ಛಿಕ)
 create_backup	ಬ್ಯಾಕಪ್ ರಚಿಸಿ
 day_close_summary	ದಿನ ಮುಗಿಸುವ ಸಾರಾಂಶ
@@ -442,9 +442,9 @@ pay_ap_cash	AP ನಗದು ಪಾವತಿಸಿ
 pay_ap_upi	AP UPI ಪಾವತಿಸಿ
 period_bill	ಅವಧಿ ಬಿಲ್
 period_bill_party	ಅವಧಿ ಬಿಲ್ (ಪಾರ್ಟಿ)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	ಬಿಲ್ ತಯಾರಿಸಿ
+period_bill_generate_print	ತಯಾರಿಸಿ ಮುದ್ರಿಸಿ
+booking_bulk_preview	{ok} ಸಿದ್ಧ · {bad} ದೋಷ
 pick_pod_photo	POD ಫೋಟೋ ಆಯ್ಕೆಮಾಡಿ
 print_awb_label	AWB ಲೇಬಲ್ ಮುದ್ರಿಸಿ
 print_open	ಮುದ್ರಿಸಿ / ತೆರೆಯಿರಿ
@@ -653,19 +653,19 @@ attachments_last_expense	ಲಗತ್ತುಗಳು (ಕೊನೆಯ ಖರ್�
 credit_limit_heading	ಸಾಲ ಮಿತಿ (ಆಯ್ಕೆಮಾಡಿದ / ಹೆಸರಿನ ಪಾರ್ಟಿ)
 pay_selected_heading	ಆಯ್ಕೆಮಾಡಿದ ಪಾವತಿಸಿ (ಸಾಲ ತೀರಿಸಿ / ಮುಂಗಡ)
 write_off_heading	ಮನ್ನಿಸಿ (ಪಾವತಿ ಇಲ್ಲದೆ ತೀರಿಸಿ)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ಹೊಂದಾಣಿಕೆ ನೋಟ್‌ಗಳು
+adj_note_amount_ph	ಮೊತ್ತ
+adj_note_reason_ph	ಕಾರಣ (ಅಗತ್ಯ)
+adj_note_awb_ph	ಸಂಬಂಧಿತ AWB (ಐಚ್ಛಿಕ)
+credit_note_btn	ಕ್ರೆಡಿಟ್ ನೋಟ್
+debit_note_btn	ಡೆಬಿಟ್ ನೋಟ್
+bill_later_heading	ನಂತರ ಬಿಲ್ ಮಾಡಿ (ಬುಕಿಂಗ್ ನಂತರದ ಹೆಚ್ಚುವರಿ ಶುಲ್ಕ)
+bill_later_amount_ph	ಹೆಚ್ಚುವರಿ ಮೊತ್ತ
+bill_later_party_ph	ಪಾರ್ಟಿ (ಬುಕಿಂಗ್‌ನಲ್ಲಿ ಇಲ್ಲದಿದ್ದರೆ ಮಾತ್ರ)
+bill_later_btn	ನಂತರ ಬಿಲ್ ಮಾಡಿ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ಪ್ಯಾಕಿಂಗ್
+bill_later_extra_other	ಇತರೆ
 pay_ap_heading	ನಾವು ಅವರಿಗೆ ಕೊಡಬೇಕಾದ್ದು (AP)
 country_tax	ದೇಶ ಮತ್ತು ತೆರಿಗೆ
 extra_tills_heading	ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು
@@ -777,26 +777,26 @@ onboard_book_tmpl	ಪುಸ್ತಕ · {} — ವಸ್ತುಗಳು ಮತ�
 onboard_template_tmpl	ಬೇಕಾದರೆ ಸ್ಥಳಕ್ಕೆ ಹೆಸರು ಕೊಡಿ, ನಂತರ ಹೇಗೆ ಆರಂಭಿಸಬೇಕೆಂದು ಆರಿಸಿ.
 tmpl_blurb	ಕೊರಿಯರ್ ಲೆಕ್ಕಪುಸ್ತಕ ಮತ್ತು ಬುಕಿಂಗ್ ಡೆಸ್ಕ್: ಕಳುಹಿಸುವವರು, ಕ್ಯಾರಿಯರ್‌ಗಳು, ದಿನದ ಲೆಕ್ಕ, AWB.
 tmpl_how	ಡೆಸ್ಕ್‌ನಲ್ಲಿ ಪಾರ್ಸೆಲ್ ಬುಕ್ ಮಾಡಿ; ಇಂದಿನ ದಿನದ ಲೆಕ್ಕ; ದರಗಳು, ಪಾರ್ಟಿಗಳು, ವರದಿಗಳಿಗೆ ಟ್ಯಾಬ್‌ಗಳು.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	ಅಂಗಡಿ ಟೆಂಪ್ಲೇಟ್‌ಗಳು
+app_template_blurb	ಆರಂಭಿಕ ಡೆಸ್ಕ್ ಆಯ್ಕೆ ಮಾಡಿ. «ಈಗ ಬಿಟ್ಟುಬಿಡಿ» ಒತ್ತಿದರೆ ಪಾರ್ಟಿಗಳ ಪಟ್ಟಿ ಖಾಲಿ ಇರುತ್ತದೆ.
+app_template_skip	ಈಗ ಬಿಟ್ಟುಬಿಡಿ
+app_template_status	ಸರ್ವರ್ ಸಿದ್ಧ — ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಾಡಿ, ಅಥವಾ ಬಿಟ್ಟುಬಿಡಿ
+app_template_importing	{title} ಅನ್ವಯಿಸಲಾಗುತ್ತಿದೆ…
+app_template_public_hdr	ಟೆಂಪ್ಲೇಟ್‌ಗಳು
+app_template_import_selected	ಆಯ್ಕೆ ಮಾಡಿದ್ದನ್ನು ಆಮದು ಮಾಡಿ
+app_template_wipe_warn	ಇದು ಪುಸ್ತಕಗಳ ವ್ಯಾಪಾರ ಡೇಟಾವನ್ನು (ಬುಕಿಂಗ್‌ಗಳು, ಖಾತೆಗಳು) ಅಳಿಸಿ, ಟೆಂಪ್ಲೇಟ್‌ನ ಅಂಗಡಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಅನ್ವಯಿಸುತ್ತದೆ. ಮುಂದುವರಿಸಬೇಕೆ?
+app_template_wipe_continue	ಮುಂದುವರಿಸಿ
+app_template_wipe_cancel	ರದ್ದು
+public_tmpl_help	ಈ ಅಂಗಡಿಗಾಗಿ ಆ್ಯಪ್ ಜೊತೆ ಬರುವ ಏಜೆನ್ಸಿ ಪ್ಯಾಕ್‌ಗಳು. ಡೌನ್‌ಲೋಡ್ ಬೇಕಿಲ್ಲ.
+business_day	«ಇಂದು» ಯಾವಾಗ ಹೊಸದಾಗಿ ಶುರುವಾಗುತ್ತದೆ?
+business_day_help	«ದಿನ ಮುಗಿಸುವವರೆಗೆ» ಆಯ್ಕೆ ಮಾಡಿದರೆ, ನೀವು ದಿನ ಮುಗಿಸುವಿಕೆ ದಾಖಲಿಸುವವರೆಗೆ «ದಿನ ಪುಸ್ತಕ» ಮಧ್ಯರಾತ್ರಿಯ ನಂತರವೂ ಮುಂದುವರಿಯುತ್ತದೆ. «ಕ್ಯಾಲೆಂಡರ್ ಮಧ್ಯರಾತ್ರಿ» ಆಯ್ಕೆ ಮಾಡಿದರೆ, ದಿನ ಸ್ಥಳೀಯ ಸಮಯ ರಾತ್ರಿ 12:00 ಕ್ಕೆ ಮುಗಿಯುತ್ತದೆ.
+biz_day_until_close	ದಿನ ಮುಗಿಸುವವರೆಗೆ
+biz_day_midnight	ಕ್ಯಾಲೆಂಡರ್ ಮಧ್ಯರಾತ್ರಿ
+business_day_saved	ವ್ಯಾಪಾರ ದಿನ ಉಳಿಸಲಾಗಿದೆ
+report_day_lens	«ಇಂದು» ಅನ್ನು ಹೀಗೆ ತೋರಿಸಿ
+report_day_lens_help	ನೋಡಲು ಮಾತ್ರ — «ದಿನ ಮುಗಿಸು» ಯಾವಾಗ «ಇಂದು» ಅನ್ನು ಹೊಸದಾಗಿ ಶುರುಮಾಡುತ್ತದೆ ಎಂಬುದನ್ನು ಇದು ಬದಲಿಸುವುದಿಲ್ಲ. «ದಿನ ಮುಗಿಸುವಿಕೆಯ ಪ್ರಕಾರ» ಕೊನೆಯ ದಿನ ಮುಗಿಸುವಿಕೆಯಿಂದ ಎಣಿಸುತ್ತದೆ; «ಮಧ್ಯರಾತ್ರಿಯ ಪ್ರಕಾರ» ಸ್ಥಳೀಯ ಸಮಯ ರಾತ್ರಿ 12:00 ಕ್ಕೆ ವಿಭಾಗಿಸುತ್ತದೆ.
+report_lens_day_close	ದಿನ ಮುಗಿಸುವಿಕೆಯ ಪ್ರಕಾರ
+report_lens_midnight	ಮಧ್ಯರಾತ್ರಿಯ ಪ್ರಕಾರ
 trk_booked	ಬುಕ್ ಆಗಿದೆ
 trk_picked_up	ಪಿಕಪ್ ಆಗಿದೆ
 trk_in_transit	ಮಾರ್ಗದಲ್ಲಿದೆ

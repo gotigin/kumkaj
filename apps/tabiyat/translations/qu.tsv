@@ -365,15 +365,15 @@ print_open	Imprimiy / kichay
 reason_amend_ph	Razón enmienda / anulado / devolución
 reason_note_ph	Razón / nota (desperdicio, yupay, ...) .
 record_day_close	P’unchay qayllapi waqaychay
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	¿Hayk'aqmi «Kunan punchaw» musuqmantam qallarin?
+business_day_help	«P’unchaw wichq’ay kama» akllaspaqa «P’unchaw hatun qillqa» chawpi tutamanta qatiykachan, punchaw wichq'ayta qillqanki kama. «Calendario chawpi tuta» akllaspaqa punchaw local 12:00 tutapi kutin.
+biz_day_until_close	P’unchaw wichq’ay kama
+biz_day_midnight	Calendario chawpi tuta
+business_day_saved	Negocio punchaw waqaychasqa
+report_day_lens	«Kunan punchaw» kay hina qhaway
+report_day_lens_help	Qhawayllam — manam tikranchu «P’unchaw wichq’ay» hayk'aq «Kunan punchaw» musuqyachin. «P’unchaw wichq’ay hina» qhipa punchaw wichq'aymanta yupay; «Chawpi tuta hina» local 12:00 tutapi kutin.
+report_lens_day_close	P’unchaw wichq’ay hina
+report_lens_midnight	Chawpi tuta hina
 refresh_from_shop	Tiendamanta musuqyachiy
 refund	Kutichiy
 remove_selected	Akllasqata hurquy
@@ -849,19 +849,19 @@ client_template_confirm	{title}manta {d} nisqakunata yapay? Imakunaña kapuqniyk
 client_template_importing	Hawamanta apamuspa {title}...
 client_template_done	{title} nisqamanta sapa imapas imapas ruwasqaykikunapim kachkan.
 client_template_imported	{d} elementokuna chaymanta {c} categoríakuna {title} kaqmanta yapasqa
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Tiendap plantillankuna
+app_template_blurb	Qallariy catálogo chaymanta tienda allichaykunata akllay. «Kunankamaqa saltay» ñit'iptinqa estante ch'usaqmi kanqa.
+app_template_skip	Kunankamaqa saltay
+app_template_status	Servidor listoña — plantillata apamuy, utaq saltay
+app_template_importing	Aplicaspa {title}...
+app_template_import_selected	Akllasqata apamuy
+app_template_wipe_warn	Kayqa qillqa rantiy willakunata (rantiykuna, qillqakuna) ch'usaqyachin, plantilla tienda allichaykunatataq churan. ¿Qatiykachanki?
+app_template_wipe_continue	Hinallayá ruway
+app_template_wipe_cancel	Cancelar
+app_template_from_device	Kay dispositivomanta apaykachay
+app_template_from_device_help	template.json kaq carpeta akllay (shop_defaults.json kan chayqa chaytapas).
+settings_app_tmpl_note	Hunt'a tienda plantillakuna: catálogo chaymanta tienda allichaykuna. Musuqmanta apaykachayqa rantiykunata qillqakunatapas ch'usaqyachin, chaymanta plantilla tienda allichaykunata churan.
+app_tmpl_named	{name} tienda plantilla
 cancel	Cancelar
 removing	Qichuchkan…
 removed	Qichusqa

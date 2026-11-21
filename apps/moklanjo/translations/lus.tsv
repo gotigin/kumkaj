@@ -5,25 +5,25 @@ pin_hint	Neitu PIN chu 0000 atangin a tan
 sell	Booking tih a ni
 nav_board	Board
 board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
+park_draft	Draft angin save rawh
+board_help	Draft siam zawh loh («Discard» emaw «Pek la» emaw i tap thlenga dah) leh vawiin a booked sales te. «Booking tih a ni»-ah chuan i hnathawh lai takah «Draft angin save rawh» kha tap la (hetah hian save a ni a, account-ah save a ni lo); draft pakhat tap la, chhunzawm zel rawh.
+board_empty	Card a la awm lo.
+board_park_nothing	Draft anga save tur engmah a awm lo — charges emaw booking details emaw add
+board_parked	«Board» ah saved — tunah chuan desk chu a khar tawh
 board_draft	Draft
-board_booked	Booked
+board_booked	Book a ni tawh
 board_filter_all	All
 board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
+board_filter_booked	Book a ni tawh
+board_cols_fmt	{n} column-ah a awm
+board_summary_fmt	{total} card a ni · {drafts} draft a ni · {booked} booked a ni
+board_card_no_charges	Fees a la awm lo
+board_card_charges	fees pek a ni
+board_card_booked	Booking tih a ni
+board_draft_gone	Chu draft chu «Board» ah a awm tawh lo
+board_draft_closed	Chu draft chu tihfel emaw delete emaw a ni tawh
 board_discard	Discard
-board_discarded	Draft discarded
+board_discarded	Draft chu tihbo a ni
 buy	Pay out rawh
 books	Ni lehkha
 books_help	Vawiin dinhmun hi. Booking = parcels in. Pawisa pek chhuah = carrier bill & senso. Party hrang hrang = consignor & carrier te.
@@ -220,7 +220,7 @@ snack_secs_save	Hriattir hun dah tha
 snack_secs_saved	Hriattir hun dah tha a ni — second {n}
 snack_secs_bad	Seconds chu number angin ziak rawh (3–60) .
 cancelled	Tihbo
-cancelling	Cancellingâ¦
+cancelling	Cancel a nih chuan…
 cancel	Tihbo
 opening_client	Dawr dang hawng mek…
 preparing_desk	Dawhkan buatsai mek…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Mi lekhapui CSV copy
 copy_receipt	Receipt copy
 copy_report	Report copy
 counted_cash_ph	Bawm chhung sum chhiar tawh
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Duty khar la lehkha print
+shift_handover	Duty sem
+shift_counted_ph	Sem hun sum chhiar
+shift_since	He duty atanga
+expected_in_drawer	Bawm-ah beisei
+lock_books_through_month	Thla tawp thleng account te chu lock rawh
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Tun thla tawp thleng lock up rawh
+books_locked_none	Thla engmah lock a la ni lo
+books_locked_through	Accounts lock a nih thlengin
 counter_agency_ph	Counter / agency hming (a duh duh) .
 create_backup	Backup siam
 day_close_summary	Ni khar tlangpui
@@ -442,9 +442,9 @@ pay_ap_cash	AP sum in pe
 pay_ap_upi	AP UPI in pe
 period_bill	Period bill a ni
 period_bill_party	Period bill (party) te chu 1.1.
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Invoice siam rawh
+period_bill_generate_print	Siam leh print rawh
+booking_bulk_preview	{ok} inpeih tawh · {bad} ah tihsual a awm
 pick_pod_photo	POD thlalak kha thlang rawh
 print_awb_label	AWB label chu print rawh
 print_open	Print / hawng
@@ -653,19 +653,19 @@ attachments_last_expense	Thlun (sum sen tawp ber)
 credit_limit_heading	Ba tiam (mi thlan / hming dah)
 pay_selected_heading	Thlan sa pe (ba khar / hma sum la)
 write_off_heading	Paih (pe lo vin thianghlim)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Adjustment note
+adj_note_amount_ph	Sum zat
+adj_note_reason_ph	Chhan (a ngai)
+adj_note_awb_ph	A inzawm AWB (a duh chuan) .
+credit_note_btn	Credit note a ni
+debit_note_btn	Debit note a ni
+bill_later_heading	Charge hnuah (booking hnuah extra charge)
+bill_later_amount_ph	Extra amount a awm bawk
+bill_later_party_ph	Customer (booking-in a neih loh chuan chauh)
+bill_later_btn	Charge hnuah
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Packaging a awm bawk
+bill_later_extra_other	Thildang
 pay_ap_heading	Kan ba an hnena pe (AP)
 country_tax	Ram leh chhiah
 extra_tills_heading	Dawhkan dang
@@ -777,26 +777,26 @@ onboard_book_tmpl	Lehkha · {} — thil leh tan lai ba telh, chuan Zo.
 onboard_template_tmpl	I duh chuan hmun hming dah, chuan tan dan thlang.
 tmpl_blurb	Courier lehkhabu leh booking desk: consignor, carrier, day book, AWB.
 tmpl_how	Desk-ah parcel book rawh; Vawiin atan ni bu; rates, party, report te chu tabs ah dah a ni.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Dawr template-te
+app_template_blurb	Starter setup pakhat thlang rawh. «Tunah kaltlang» chuan customer list chu a khar vek.
+app_template_skip	Tunah kaltlang
+app_template_status	Server a inpeih — template import rawh, a nih loh pawhin kal pel rawh
+app_template_importing	{title} hman mek…
+app_template_public_hdr	Template
+app_template_import_selected	Thlan chu import rawh
+app_template_wipe_warn	Hei hian account-a trading data (bookings, ledgers) a clear a, template’s shop settings a apply bawk. Chhunzawm i duh em?
+app_template_wipe_continue	Chhunzawm
+app_template_wipe_cancel	Tihbo
+public_tmpl_help	App nena rawn kal agency template siam sa. Download a ngai lo.
+business_day	«Vawiin» hi engtikah nge a reset?
+business_day_help	«Ni khar thleng» hian «Ni lehkha» chu zanlai pelh hnuah a tlan chhunzawm zel a, ni khar i record hma loh chuan. «Zanlai pelh hnuah» chu tualchhung hun anga zanlai dar 00:00-ah cut a ni.
+biz_day_until_close	Ni khar thleng
+biz_day_midnight	Zanlai pelh hnuah
+business_day_saved	Business day setting save a ni
+report_day_lens	«Vawiin» chu a lantir ang
+report_day_lens_help	Hei hian view chauh a thlak danglam — «Ni khar» chuan «Vawiin» a reset chuan a danglam lo. «Ni khar sawi dan chuan» chuan ni hnuhnung ber kha a zui a; «Zanlai pelh hnua a sawi dan chuan» chu tualchhung hun anga zanlai dar 00:00-ah cut a ni.
+report_lens_day_close	Ni khar sawi dan chuan
+report_lens_midnight	Zanlai pelh hnua a sawi dan chuan
 trk_booked	Book a ni tawh
 trk_picked_up	Pick up a ni
 trk_in_transit	In transit lai a ni

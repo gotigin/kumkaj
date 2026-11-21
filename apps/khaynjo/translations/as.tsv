@@ -384,12 +384,12 @@ app_template_need_internet	টেমপ্লেট ডাউনল'ড কৰ�
 app_template_import_selected	বাছনি কৰাটো আমদানি কৰক
 app_template_check_code	ক'ড পৰীক্ষা কৰক
 app_template_import	আমদানি কৰক
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	এই ডিভাইচৰ পৰা আমদানি কৰক
+app_template_from_device_help	template.json থকা ফ'ল্ডাৰ এটা বাছক (shop_defaults.json থাকিলে সেইটোও)।
+settings_app_tmpl_note	পুনৰ আমদানি কৰিলে বিক্ৰী, KOT আৰু খতিয়ন মচা যায়, তাৰ পিছত পেকৰ দোকান ছেটিংছ প্ৰযোজ্য হয়। কেৱল মেনু থকা টেমপ্লেট: «মেনু» → «সামগ্ৰী টেমপ্লেট»।
+app_template_wipe_warn	ইয়াৰ ফলত বহীৰ ব্যৱসায়িক ডাটা (বিক্ৰী, KOT, খতিয়ন) মচা যাব আৰু টেমপ্লেটৰ দোকান ছেটিংছ প্ৰযোজ্য হ'ব। মেনু আৰু ছেটআপ সলনি হ'ব পাৰে। আগবাঢ়িবনে?
+app_template_wipe_continue	আগবাঢ়ক
+app_template_wipe_cancel	বাতিল
 currency	মুদ্ৰা
 backup	বেকআপ
 use	ব্যৱহাৰ কৰক
@@ -550,22 +550,22 @@ new_party_clear	নতুন পাৰ্টি (ফৰ্ম মচক)
 new_party_kind_supplier_ph	নতুন পাৰ্টিৰ ধৰণ (যোগানকাৰী)
 next_country	পৰৱৰ্তী দেশ
 next_order	পৰৱৰ্তী অৰ্ডাৰ (ডেস্ক মচক)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	খচৰা
+park_draft	খচৰাত ৰাখক
+drafts_help	কাউণ্টাৰৰ সেই আধৰুৱা অৰ্ডাৰবোৰ, যিবোৰ আপুনি মাজতে ৰাখি থৈছে — «পৰিশোধ লওক» নোহোৱালৈকে এইবোৰ বহীত নুঠে। কাৰ্ড টিপিলে সেইটো «অৰ্ডাৰ»-ত পুনৰ খোল খাব; «খচৰা আঁতৰাওক»-এ খচৰা আঁতৰায়। «দিন বন্ধ»-এ এইবোৰ নমচে।
+drafts_park_nothing	ৰাখিবলৈ একো নাই — কাৰ্টত বস্তু যোগ কৰক
+drafts_park_counter_only	«খচৰাত ৰাখক» কেৱল কাউণ্টাৰৰ অৰ্ডাৰৰ বাবে — মেজৰ অৰ্ডাৰ এৰক বা «ফ্ল'ৰ» ব্যৱহাৰ কৰক
+drafts_parked	«খচৰা»-ত ৰখা হ'ল — কাউণ্টাৰ খালী
+drafts_discard	খচৰা আঁতৰাওক
+drafts_discarded	খচৰা আঁতৰোৱা হ'ল
+drafts_gone	সেই খচৰা এতিয়া তালিকাত নাই
+drafts_closed	সেই খচৰাৰ পৰিশোধ ইতিমধ্যে হৈছে বা সেইটো আঁতৰোৱা হৈছে
+drafts_empty	এতিয়াও কোনো খচৰা নাই। «কাউণ্টাৰ»-ত খাদ্য যোগ কৰি «খচৰাত ৰাখক» টিপক।
+drafts_card_kind	খচৰা
+drafts_card_no_lines	কোনো বস্তু নাই
+drafts_card_lines	বস্তু
+drafts_summary_fmt	{n}টা খোলা খচৰা
+drafts_cols_fmt	{n} স্তম্ভ
 note_gstin_ph	টোকা / GSTIN / চুক্তি স্মাৰক
 notes_attach_party	টোকা আৰু সংলগ্ন (বাছনি কৰা পাৰ্টি)
 notes_attach_sale	টোকা আৰু সংলগ্ন (বাছনি কৰা বিক্ৰী)
@@ -588,15 +588,15 @@ print_open	ছাপাওক / খোলক
 reason_amend_ph	সংশোধন / বাতিল / ঘূৰাইৰ কাৰণ
 reason_note_ph	কাৰণ / টোকা (নষ্ট, গণনা, …)
 record_day_close	দিন বন্ধ লিপিবদ্ধ কৰক
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«আজি» কেতিয়া নতুনকৈ আৰম্ভ হয়?
+business_day_help	«দিন বন্ধ লৈকে» বাছিলে, আপুনি দিন বন্ধ লিপিবদ্ধ নকৰালৈকে «দিন বহী» মাজনিশাৰ পিছতো চলি থাকে। «কেলেণ্ডাৰৰ মাজনিশা» বাছিলে, দিন স্থানীয় সময় ৰাতি 12:00 বজাত কটা যায়।
+biz_day_until_close	দিন বন্ধ লৈকে
+biz_day_midnight	কেলেণ্ডাৰৰ মাজনিশা
+business_day_saved	ব্যৱসায়িক দিন সংৰক্ষণ কৰা হ'ল
+report_day_lens	«আজি» এনেদৰে চাওক
+report_day_lens_help	কেৱল চাবৰ বাবে — «দিন বন্ধ»-এ কেতিয়া «আজি» নতুনকৈ আৰম্ভ কৰে, সেয়া ইয়াৰ দ্বাৰা সলনি নহয়। «দিন বন্ধ অনুসৰি»-এ শেষ দিন বন্ধৰ পৰা গণে; «মাজনিশা অনুসৰি»-এ স্থানীয় সময় ৰাতি 12:00 বজাত কাটে।
+report_lens_day_close	দিন বন্ধ অনুসৰি
+report_lens_midnight	মাজনিশা অনুসৰি
 refresh_from_shop	দোকানৰ পৰা সতেজ কৰক
 refund	ঘূৰাই
 remove_selected	বাছনি কৰা আঁতৰাওক
@@ -864,7 +864,7 @@ find_printers	প্ৰিণ্টাৰ বিচাৰক
 printers_looking	এই ডিভাইচ আৰু Wi‑Fiত প্ৰিণ্টাৰ বিচাৰি আছে…
 saving_printer	প্ৰিণ্টাৰ যোগ কৰা হৈছে…
 cancelled	বাতিল
-cancelling	Cancellingâ¦
+cancelling	বাতিল হৈ আছে…
 removing	আঁতৰোৱা হৈছে…
 removed	আঁতৰোৱা হ'ল
 updating_order	আপডেট হৈ আছে…
@@ -1116,7 +1116,7 @@ tile_undo_bill	বিল ঘূৰাই
 summary_busy	টেবুল ব্যস্ত
 summary_to_collect	আদায় বাকী
 summary_on_floor	ফ্লোৰত
-floor	মহলা
+floor	ফ্ল'ৰ
 sizes_as_items_ph	আকাৰ পৃথক আইটেম হিচাপে (বৈকল্পিক) — Half=120, Full=200
 dish_group_ph	ব্যঞ্জনৰ গোট (বৈকল্পিক) — যেনে Paneer Tikka
 discount	ৰেহাই

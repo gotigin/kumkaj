@@ -3,27 +3,27 @@ app_tagline	کوریئر بکس + بکنگ ڈیسک۔ مفت آف لائن۔
 unlock	ان لاک
 pin_hint	مالک PIN 0000 سے شروع ہوتا ہے
 sell	بکنگ
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	بورڈ
+board	بورڈ
+park_draft	ڈرافٹ میں رکھیں
+board_help	کھلے ڈرافٹ («ہٹائیں» یا «ادائیگی لیں» کرنے تک رہتے ہیں) اور آج کی بک ہوئی فروخت۔ «بکنگ» پر کام کے بیچ میں «ڈرافٹ میں رکھیں» دبائیں (یہاں محفوظ ہوتا ہے، کھاتوں میں نہیں)؛ دوبارہ شروع کرنے کے لیے ڈرافٹ دبائیں۔
+board_empty	ابھی کوئی کارڈ نہیں۔
+board_park_nothing	رکھنے کو کچھ نہیں — چارجز یا بکنگ کی تفصیل شامل کریں
+board_parked	«بورڈ» پر رکھ دیا — ڈیسک خالی ہے
+board_draft	ڈرافٹ
+board_booked	بک ہوا
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ڈرافٹ
+board_filter_booked	بک ہوا
+board_cols_fmt	{n} کالم
+board_summary_fmt	{total} کارڈ · {drafts} ڈرافٹ · {booked} بک ہوئے
+board_card_no_charges	ابھی کوئی چارج نہیں
+board_card_charges	چارجز
+board_card_booked	بکنگ
+board_draft_gone	وہ ڈرافٹ اب «بورڈ» پر نہیں ہے
+board_draft_closed	وہ ڈرافٹ پہلے ہی مکمل ہو چکا ہے یا ہٹایا جا چکا ہے
+board_discard	ہٹائیں
+board_discarded	ڈرافٹ ہٹا دیا گیا
 buy	ادائیگی
 books	روز بک
 books_help	آج کی صورتحال۔ بکنگ = پارسل آئے۔ پے آؤٹ = کیریئر بل اور خرچے۔ پارٹی = بھیجنے والے اور کیریئر۔
@@ -220,7 +220,7 @@ snack_secs_save	اطلاع کا وقت محفوظ کریں
 snack_secs_saved	اطلاع کا وقت محفوظ ہو گیا — {n} سیکنڈ
 snack_secs_bad	سیکنڈ عدد میں لکھیں (3–60)
 cancelled	منسوخ کر دیا
-cancelling	Cancellingâ¦
+cancelling	منسوخ ہو رہا ہے…
 cancel	منسوخ
 opening_client	کلائنٹ کھل رہا ہے…
 preparing_desk	ڈیسک تیار ہو رہا ہے…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	پارٹی لیجر CSV کاپی
 copy_receipt	رسید کاپی کریں
 copy_report	رپورٹ کاپی کریں
 counted_cash_ph	دراز میں گنی نقدی
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	شفٹ بند کریں اور پرچی چھاپیں
+shift_handover	شفٹ حوالگی
+shift_counted_ph	حوالگی پر گنی گئی نقدی
+shift_since	یہ شفٹ شروع
+expected_in_drawer	دراز میں متوقع
+lock_books_through_month	مہینے تک کھاتے لاک کریں
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	اس مہینے تک لاک کریں
+books_locked_none	ابھی کوئی مہینہ لاک نہیں
+books_locked_through	کس مہینے تک لاک
 counter_agency_ph	کاؤنٹر / ایجنسی کا نام (اختیاری)
 create_backup	بیک اپ بنائیں
 day_close_summary	دن بند خلاصہ
@@ -442,9 +442,9 @@ pay_ap_cash	AP نقد ادا کریں
 pay_ap_upi	AP UPI ادا کریں
 period_bill	مدتی بل
 period_bill_party	مدتی بل (پارٹی)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	بل بنائیں
+period_bill_generate_print	بنائیں اور چھاپیں
+booking_bulk_preview	{ok} تیار · {bad} خراب
 pick_pod_photo	POD تصویر چنیں
 print_awb_label	AWB لیبل چھاپیں
 print_open	چھاپیں / کھولیں
@@ -653,19 +653,19 @@ attachments_last_expense	منسلکات (آخری خرچ)
 credit_limit_heading	کریڈٹ حد (منتخب / نامی پارٹی)
 pay_selected_heading	منتخب ادا کریں (قرض نمٹائیں / ایڈوانس)
 write_off_heading	معاف کریں (ادائیگی کے بغیر نمٹائیں)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ایڈجسٹمنٹ نوٹ
+adj_note_amount_ph	رقم
+adj_note_reason_ph	وجہ (لازمی)
+adj_note_awb_ph	متعلقہ AWB (اختیاری)
+credit_note_btn	کریڈٹ نوٹ
+debit_note_btn	ڈیبٹ نوٹ
+bill_later_heading	بعد میں بل کریں (بکنگ کے بعد کا اضافی چارج)
+bill_later_amount_ph	اضافی رقم
+bill_later_party_ph	پارٹی (صرف تب جب بکنگ میں کوئی نہ ہو)
+bill_later_btn	بعد میں بل کریں
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	پیکنگ
+bill_later_extra_other	دیگر
 pay_ap_heading	جو ہمیں انہیں دینا ہے (AP)
 country_tax	ملک اور ٹیکس
 extra_tills_heading	اضافی ٹل
@@ -777,26 +777,26 @@ onboard_book_tmpl	کتاب · {} — اشیاء اور ابتدائی ادھار
 onboard_template_tmpl	چاہیں تو جگہ کا نام دیں، پھر شروع کرنے کا طریقہ چنیں۔
 tmpl_blurb	کوریئر کھاتے اور بکنگ ڈیسک: بھیجنے والے، کیریئر، روزنامچہ، AWB۔
 tmpl_how	ڈیسک پر پارسل بک کریں؛ آج کے لیے روزنامچہ؛ ریٹس، پارٹیوں، رپورٹوں کے لیے ٹیب۔
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	دکان کے ٹیمپلیٹ
+app_template_blurb	ابتدائی ڈیسک منتخب کریں۔ «ابھی چھوڑیں» دبانے پر پارٹیوں کی فہرست خالی رہے گی۔
+app_template_skip	ابھی چھوڑیں
+app_template_status	سرور تیار ہے — ٹیمپلیٹ درآمد کریں، یا چھوڑ دیں
+app_template_importing	{title} لگا رہے ہیں…
+app_template_public_hdr	سانچے
+app_template_import_selected	منتخب درآمد کریں
+app_template_wipe_warn	اس سے کھاتوں کا کاروباری ڈیٹا (بکنگ، لیجر) صاف ہو جائے گا اور ٹیمپلیٹ کی دکان سیٹنگز لاگو ہوں گی۔ جاری رکھیں؟
+app_template_wipe_continue	جاری رکھیں
+app_template_wipe_cancel	منسوخ
+public_tmpl_help	اس دکان کے لیے ایپ کے ساتھ آئے ایجنسی پیک۔ ڈاؤن لوڈ کی ضرورت نہیں۔
+business_day	«آج» کب نئے سرے سے شروع ہوتا ہے؟
+business_day_help	«دن بند تک» منتخب کرنے پر «روز بک» آدھی رات کے بعد بھی چلتی رہتی ہے، جب تک آپ دن بند درج نہ کریں۔ «کیلنڈر کی آدھی رات» منتخب کرنے پر دن مقامی وقت کے مطابق رات 12:00 بجے کٹتا ہے۔
+biz_day_until_close	دن بند تک
+biz_day_midnight	کیلنڈر کی آدھی رات
+business_day_saved	کاروباری دن محفوظ ہو گیا
+report_day_lens	«آج» کو ایسے دیکھیں
+report_day_lens_help	صرف دیکھنے کے لیے — اس سے یہ نہیں بدلتا کہ «دن بند» کب «آج» کو نئے سرے سے شروع کرتا ہے۔ «دن بند کے حساب سے» پچھلے دن بند سے گنتا ہے؛ «آدھی رات کے حساب سے» مقامی وقت کے مطابق رات 12:00 بجے کٹتا ہے۔
+report_lens_day_close	دن بند کے حساب سے
+report_lens_midnight	آدھی رات کے حساب سے
 trk_booked	بک ہوا
 trk_picked_up	پک اپ ہوا
 trk_in_transit	راستے میں

@@ -3,27 +3,27 @@ app_tagline	కొరియర్ బుక్స్ + బుకింగ్ డ
 unlock	అన్‌లాక్
 pin_hint	యజమాని PIN 0000 తో మొదలవుతుంది
 sell	బుకింగ్
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	బోర్డ్
+board	బోర్డ్
+park_draft	డ్రాఫ్ట్‌గా ఉంచు
+board_help	తెరిచి ఉన్న డ్రాఫ్ట్‌లు («తొలగించు» లేదా «చెల్లింపు తీసుకో» చేసే వరకు ఉంటాయి), ఈరోజు బుక్ అయిన అమ్మకాలు. «బుకింగ్»లో పని మధ్యలో «డ్రాఫ్ట్‌గా ఉంచు» నొక్కండి (ఇక్కడ సేవ్ అవుతుంది, పుస్తకాల్లో కాదు); మళ్లీ కొనసాగించడానికి డ్రాఫ్ట్‌ను నొక్కండి.
+board_empty	ఇంకా కార్డ్‌లు లేవు.
+board_park_nothing	ఉంచడానికి ఏమీ లేదు — ఛార్జీలు లేదా బుకింగ్ వివరాలు చేర్చండి
+board_parked	«బోర్డ్»లో ఉంచబడింది — డెస్క్ ఖాళీగా ఉంది
+board_draft	డ్రాఫ్ట్
+board_booked	బుక్ అయింది
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	డ్రాఫ్ట్
+board_filter_booked	బుక్ అయింది
+board_cols_fmt	{n} నిలువు వరుసలు
+board_summary_fmt	{total} కార్డ్‌లు · {drafts} డ్రాఫ్ట్ · {booked} బుక్ అయినవి
+board_card_no_charges	ఇంకా ఛార్జీలు లేవు
+board_card_charges	ఛార్జీలు
+board_card_booked	బుకింగ్
+board_draft_gone	ఆ డ్రాఫ్ట్ ఇప్పుడు «బోర్డ్»లో లేదు
+board_draft_closed	ఆ డ్రాఫ్ట్ ఇప్పటికే పూర్తయింది లేదా తొలగించబడింది
+board_discard	తొలగించు
+board_discarded	డ్రాఫ్ట్ తొలగించబడింది
 buy	చెల్లించు
 books	రోజు పుస్తకం
 books_help	నేటి స్థితి. బుకింగ్ = పార్సిళ్లు వచ్చాయి. చెల్లింపు = క్యారియర్ బిల్లులు & ఖర్చులు. పార్టీలు = పంపినవారు & క్యారియర్లు.
@@ -220,7 +220,7 @@ snack_secs_save	హెచ్చరిక సమయం సేవ్ చేయి
 snack_secs_saved	హెచ్చరిక సమయం సేవ్ అయింది — {n} సెకన్లు
 snack_secs_bad	సెకన్లను సంఖ్యగా ఇవ్వండి (3–60)
 cancelled	రద్దు చేయబడింది
-cancelling	Cancellingâ¦
+cancelling	రద్దు అవుతోంది…
 cancel	రద్దు
 opening_client	క్లయింట్ తెరుస్తోంది…
 preparing_desk	డెస్క్ సిద్ధం చేస్తోంది…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	పార్టీ లెడ్జర్ CSV కాపీ
 copy_receipt	రసీదు కాపీ
 copy_report	నివేదిక కాపీ
 counted_cash_ph	డ్రాయర్‌లో లెక్కించిన నగదు
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	షిఫ్ట్ ముగించి స్లిప్ ప్రింట్ చేయి
+shift_handover	షిఫ్ట్ అప్పగింత
+shift_counted_ph	అప్పగింతలో లెక్కించిన నగదు
+shift_since	ఈ షిఫ్ట్ మొదలు
+expected_in_drawer	డ్రాయర్‌లో ఉండాల్సింది
+lock_books_through_month	నెల వరకు పుస్తకాలను లాక్ చేయి
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ఈ నెల వరకు లాక్ చేయి
+books_locked_none	ఇంకా ఏ నెలా లాక్ కాలేదు
+books_locked_through	ఏ నెల వరకు లాక్
 counter_agency_ph	కౌంటర్ / ఏజెన్సీ పేరు (ఐచ్ఛికం)
 create_backup	బ్యాకప్ సృష్టించు
 day_close_summary	రోజు ముగింపు సారాంశం
@@ -442,9 +442,9 @@ pay_ap_cash	AP నగదు చెల్లించు
 pay_ap_upi	AP UPI చెల్లించు
 period_bill	కాల బిల్
 period_bill_party	కాల బిల్ (పార్టీ)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	బిల్ తయారు చేయి
+period_bill_generate_print	తయారు చేసి ముద్రించు
+booking_bulk_preview	{ok} సిద్ధం · {bad} లోపాలు
 pick_pod_photo	POD ఫోటో ఎంచుకో
 print_awb_label	AWB లేబుల్ ముద్రించు
 print_open	ముద్రించు / తెరువు
@@ -653,19 +653,19 @@ attachments_last_expense	జోడింపులు (చివరి ఖర్�
 credit_limit_heading	క్రెడిట్ పరిమితి (ఎంచుకున్న / పేరున్న పార్టీ)
 pay_selected_heading	ఎంచుకున్నది చెల్లించు (రుణం తీర్చు / అడ్వాన్స్)
 write_off_heading	రద్దు (చెల్లింపు లేకుండా తీర్చు)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	సర్దుబాటు నోట్‌లు
+adj_note_amount_ph	మొత్తం
+adj_note_reason_ph	కారణం (తప్పనిసరి)
+adj_note_awb_ph	సంబంధిత AWB (ఐచ్ఛికం)
+credit_note_btn	క్రెడిట్ నోట్
+debit_note_btn	డెబిట్ నోట్
+bill_later_heading	తర్వాత బిల్ చేయి (బుకింగ్ తర్వాతి అదనపు ఛార్జీ)
+bill_later_amount_ph	అదనపు మొత్తం
+bill_later_party_ph	పార్టీ (బుకింగ్‌లో లేకపోతే మాత్రమే)
+bill_later_btn	తర్వాత బిల్ చేయి
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ప్యాకింగ్
+bill_later_extra_other	ఇతర
 pay_ap_heading	మేము వారికి ఇవ్వవలసినది (AP)
 country_tax	దేశం & పన్ను
 extra_tills_heading	అదనపు టిల్‌లు
@@ -777,26 +777,26 @@ onboard_book_tmpl	పుస్తకం · {} — వస్తువులు �
 onboard_template_tmpl	కావాలంటే స్థలానికి పేరు పెట్టండి, తర్వాత ఎలా ప్రారంభించాలో ఎంచుకోండి.
 tmpl_blurb	కొరియర్ ఖాతాలు, బుకింగ్ డెస్క్: పంపినవారు, క్యారియర్లు, రోజు ఖాతా, AWB.
 tmpl_how	డెస్క్‌లో పార్సెల్ బుక్ చేయండి; ఈరోజు కోసం రోజు ఖాతా; రేట్లు, పార్టీలు, నివేదికలకు ట్యాబ్‌లు.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	దుకాణ టెంప్లేట్‌లు
+app_template_blurb	ప్రారంభ డెస్క్‌ను ఎంచుకోండి. «ప్రస్తుతానికి దాటవేయి» నొక్కితే పార్టీల జాబితా ఖాళీగా ఉంటుంది.
+app_template_skip	ప్రస్తుతానికి దాటవేయి
+app_template_status	సర్వర్ సిద్ధం — టెంప్లేట్ దిగుమతి చేయండి, లేదా దాటవేయండి
+app_template_importing	{title} వర్తింపజేస్తోంది…
+app_template_public_hdr	టెంప్లేట్లు
+app_template_import_selected	ఎంచుకున్నదాన్ని దిగుమతి చేయండి
+app_template_wipe_warn	ఇది పుస్తకాల్లోని వ్యాపార డేటాను (బుకింగ్‌లు, ఖాతాలు) తుడిచివేసి, టెంప్లేట్ దుకాణ సెట్టింగ్‌లను వర్తింపజేస్తుంది. కొనసాగించాలా?
+app_template_wipe_continue	కొనసాగించు
+app_template_wipe_cancel	రద్దు
+public_tmpl_help	ఈ దుకాణం కోసం యాప్‌తో పాటు వచ్చే ఏజెన్సీ ప్యాక్‌లు. డౌన్‌లోడ్ అవసరం లేదు.
+business_day	«ఈరోజు» ఎప్పుడు కొత్తగా మొదలవుతుంది?
+business_day_help	«రోజు ముగింపు వరకు» ఎంచుకుంటే, మీరు రోజు ముగింపు నమోదు చేసే వరకు «రోజు పుస్తకం» అర్ధరాత్రి తర్వాత కూడా కొనసాగుతుంది. «క్యాలెండర్ అర్ధరాత్రి» ఎంచుకుంటే, రోజు స్థానిక సమయం రాత్రి 12:00 గంటలకు ముగుస్తుంది.
+biz_day_until_close	రోజు ముగింపు వరకు
+biz_day_midnight	క్యాలెండర్ అర్ధరాత్రి
+business_day_saved	వ్యాపార రోజు సేవ్ అయింది
+report_day_lens	«ఈరోజు»ను ఇలా చూపు
+report_day_lens_help	చూడటానికి మాత్రమే — «రోజు ముగింపు» ఎప్పుడు «ఈరోజు»ను కొత్తగా మొదలుపెడుతుందో ఇది మార్చదు. «రోజు ముగింపు ప్రకారం» చివరి రోజు ముగింపు నుండి లెక్కిస్తుంది; «అర్ధరాత్రి ప్రకారం» స్థానిక సమయం రాత్రి 12:00 గంటలకు విభజిస్తుంది.
+report_lens_day_close	రోజు ముగింపు ప్రకారం
+report_lens_midnight	అర్ధరాత్రి ప్రకారం
 trk_booked	బుక్ అయింది
 trk_picked_up	పికప్ అయింది
 trk_in_transit	మార్గంలో ఉంది

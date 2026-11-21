@@ -3,27 +3,27 @@ app_tagline	快遞代理商書籍+訂票台。離線免費。
 unlock	解鎖
 pin_hint	店主PIN初始為0000
 sell	預訂
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	看板
+board	看板
+park_draft	存為草稿
+board_help	未完成的草稿（保留到你點「捨棄」或「收款」為止）和今天已預訂的銷售。在「預訂」做到一半時點「存為草稿」（保存在這裡，不入帳）；點草稿可繼續。
+board_empty	還沒有卡片。
+board_park_nothing	沒有可擱置的內容 — 請加入費用或預訂資訊
+board_parked	已存入「看板」 — 檯面已清空
+board_draft	草稿
+board_booked	已預訂
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	草稿
+board_filter_booked	已預訂
+board_cols_fmt	{n} 列
+board_summary_fmt	{total} 張卡片 · {drafts} 份草稿 · {booked} 件已預訂
+board_card_no_charges	暫無費用
+board_card_charges	項費用
+board_card_booked	預訂
+board_draft_gone	該草稿已不在「看板」上
+board_draft_closed	該草稿已完成或已捨棄
+board_discard	捨棄
+board_discarded	草稿已捨棄
 buy	付出
 books	日記帳
 books_help	今天的位置。預訂 = 包裹進來。付款 = 承運人帳單和費用。當事人 = 發貨人和承運人。
@@ -220,7 +220,7 @@ snack_secs_save	保存提示時長
 snack_secs_saved	提示時長已保存——{n} 秒
 snack_secs_bad	輸入數字形式的秒 (3–60)
 cancelled	已取消
-cancelling	Cancellingâ¦
+cancelling	正在取消…
 cancel	取消
 opening_client	正在打開客戶端…
 preparing_desk	正在準備桌面…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	複製往來方帳本CSV
 copy_receipt	複製小票
 copy_report	複製報表
 counted_cash_ph	抽屜裡點清的現金
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	交班並打印交班單
+shift_handover	交班
+shift_counted_ph	交班時點算的現金
+shift_since	本班次開始於
+expected_in_drawer	錢箱應有
+lock_books_through_month	按月鎖定帳簿
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	鎖定至本月
+books_locked_none	尚未鎖定任何月份
+books_locked_through	已鎖定至
 counter_agency_ph	櫃檯/仲介名稱（可選）
 create_backup	創建備份
 day_close_summary	日結匯總
@@ -442,9 +442,9 @@ pay_ap_cash	用現金付AP
 pay_ap_upi	用UPI付AP
 period_bill	期間帳單
 period_bill_party	期間帳單（一方）
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	產生帳單
+period_bill_generate_print	產生並列印
+booking_bulk_preview	{ok} 筆可用 · {bad} 筆有誤
 pick_pod_photo	選擇 POD 照片
 print_awb_label	列印運單標籤
 print_open	打印/打開
@@ -653,19 +653,19 @@ attachments_last_expense	附件（上一筆費用）
 credit_limit_heading	信用額度（所選/指定往來方）
 pay_selected_heading	支付所選（結清欠款/預付）
 write_off_heading	核銷（無付款結清）
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	調整單
+adj_note_amount_ph	金額
+adj_note_reason_ph	原因（必填）
+adj_note_awb_ph	關聯 AWB（選填）
+credit_note_btn	貸項通知單
+debit_note_btn	借項通知單
+bill_later_heading	稍後收費（預訂後的附加費）
+bill_later_amount_ph	附加金額
+bill_later_party_ph	往來方（僅當預訂未指定時）
+bill_later_btn	稍後收費
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	包裝
+bill_later_extra_other	其他
 pay_ap_heading	支付我們欠他們的(AP)
 country_tax	國家與稅務
 extra_tills_heading	額外櫃檯
@@ -777,26 +777,26 @@ onboard_book_tmpl	帳本 · {} — 添加物品和期初賒帳，然後點完成
 onboard_template_tmpl	可先為店鋪命名，然後選擇開始方式。
 tmpl_blurb	快遞簿和訂艙台：發貨人、承運人、日簿、航空運單。
 tmpl_how	在櫃檯預訂包裹；今天的日簿；費率、派對、報告選項卡。
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	店舖範本
+app_template_blurb	選擇一個起始工作檯。「暫時跳過」則往來方清單為空。
+app_template_skip	暫時跳過
+app_template_status	伺服器已就緒 — 匯入範本，或略過
+app_template_importing	正在應用 {title}…
+app_template_public_hdr	範本
+app_template_import_selected	匯入所選
+app_template_wipe_warn	這會清除帳簿中的交易資料（預訂、往來帳），並套用範本的店舖設置。要繼續嗎？
+app_template_wipe_continue	繼續
+app_template_wipe_cancel	取消
+public_tmpl_help	應用程式內建的代理點範本包，供本店使用。無需下載。
+business_day	「今天」何時重新開始？
+business_day_help	選「直到日結」時，「日記帳」會延續到午夜之後，直到你記錄日結。選「自然日午夜」時，按當地時間 0:00 截斷。
+biz_day_until_close	直到日結
+biz_day_midnight	自然日午夜
+business_day_saved	營業日設置已保存
+report_day_lens	「今天」的檢視方式
+report_day_lens_help	僅影響檢視 — 不改變「日結」何時重置「今天」。「按日結」從上次日結算起；「按午夜」按當地時間 0:00 截斷。
+report_lens_day_close	按日結
+report_lens_midnight	按午夜
 trk_booked	已預訂
 trk_picked_up	已接
 trk_in_transit	在途中

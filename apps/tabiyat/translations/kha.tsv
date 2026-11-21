@@ -365,15 +365,15 @@ print_open	Pynmih / plie
 reason_amend_ph	Ka daw jong ka jingpynkylla / jingpyndam / jingpynphai pisa
 reason_note_ph	Ka daw / jingthoh (jingpynlut kai, jingkhein, ...)
 record_day_close	Ka sngi rekod
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Lano ka «Mynta ka sngi» kan sdang biang?
+business_day_help	«Haduh Ka sngi kaba khang» ka pynlong ia ka «Ka kot sngi» ban iaid palat ia ka shiteng miet, haduh ba phin da buh jingthoh ia ka sngi kaba kut. «Ha ka por shiteng miet» ki sdang ha ka por 00:00 baje ha ka por jong ka ri.
+biz_day_until_close	Haduh Ka sngi kaba khang
+biz_day_midnight	Ha ka por shiteng miet
+business_day_saved	La buh ia ka jingpynbeit jong ka sngi trei
+report_day_lens	Pyni «Mynta ka sngi» kum
+report_day_lens_help	Kane ka pynkylla tang ia ka jingpeit — kam pynkylla haba ka «Ka sngi kaba khang» ka pynkylla ia ka «Mynta ka sngi». «Katkum ka Ka sngi kaba khang» bud ia ka sngi kaba khatduh; «Katkum ka shiteng miet» ka jingkut ha ka por 00:00 baje ha ka por jong ka ri.
+report_lens_day_close	Katkum ka Ka sngi kaba khang
+report_lens_midnight	Katkum ka shiteng miet
 refresh_from_shop	Pynthymmai na ka dukan
 refund	Jingpynphai pisa
 remove_selected	Pynduh ia kaba la jied
@@ -849,19 +849,19 @@ client_template_confirm	Ka jingpynrung ia ki tiar {d} na ka {title}? Ki tiar kib
 client_template_importing	Ka jingwanrah {title}...
 client_template_done	Kawei pa kawei ka tiar na ka {title} ka don ha ki tiar jong phi.
 client_template_imported	La pynrung ia ki tiar {d} bad ki jait {c} na ka {title} .
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Ki template dukan
+app_template_blurb	Jied ia ka katalog ba sdang bad ki jingpynbeit jong ka dukan. «Skip na ka bynta mynta» ka iehnoh ia ka list jong ki mar ba la shna.
+app_template_skip	Skip na ka bynta mynta
+app_template_status	Ka server ka la khreh — import ia ka template, ne iehnoh
+app_template_importing	Ka jingpyndonkam {title}...
+app_template_import_selected	Import ia kaba la jied
+app_template_wipe_warn	Kane ka pynkhuid ia ki jingtip jong ka jingkhaii ha ki jingkhein (ki jingdie, ki kot jingkhein) bad ka pyntreikam ia ki jingpynbeit jong ka dukan jong ka template. Hato phi kwah ban bteng?
+app_template_wipe_continue	Bteng
+app_template_wipe_cancel	Pynsangeh
+app_template_from_device	Pynrung na kane ka tiar
+app_template_from_device_help	Jied ia ka folder kaba don template.json (bad, lada kwah, shop_defaults.json).
+settings_app_tmpl_note	Ki jingpynwandur dukan ba pura: katalog bad ki jingpynbeit dukan. Ka jingpynrung biang ia kawei ka pynkhuid ia ki jingdie bad ki kot jingkhein, nangta ka pyntreikam ia ki jingpynbeit dukan jong ka template.
+app_tmpl_named	{name} ka dur dukan
 cancel	Pynsangeh
 removing	Dang weng…
 removed	La weng

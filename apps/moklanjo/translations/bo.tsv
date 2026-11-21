@@ -3,27 +3,27 @@ app_tagline	མྱུར་སྐྱེལ་ལས་ཚབ་ཀྱི་ད�
 unlock	ལྡེ་མིག་ཕྱེ་བ།
 pin_hint	བདག་པོ་PIN 0000 ནས་འགོ་འཛུགས།
 sell	སྔོན་མངག་བྱས་པ།
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	བང་ཁྲི
+board	བང་ཁྲི
+park_draft	ཟིན་བྲིས་སུ་ཉར་ཚགས་བྱས
+board_help	མ་ཚར་བའི་ལས་འཆར་(ཁྱེད་ཀྱིས་«བཀོལ་བ་» ཡང་ན་«དངུལ་སྤྲོད་ལེན།» ལ་མ་མནན་བར་ཉར་ཚགས་བྱས་པ)དང་དེ་རིང་གི་ཚོང་ཟོག་བཀོད་སྒྲིག་བྱས་ཡོད། «སྔོན་མངག་བྱས་པ།» ཐོག་ཁྱེད་རང་གི་ལས་ཀའི་དཀྱིལ་དུ་ «ཟིན་བྲིས་སུ་ཉར་ཚགས་བྱས» ལ་ཨེབ་གཏང་བྱེད་ (དེ་འདིར་གསོག་འཇོག་བྱས་ཡོད། རྩིས་ཁྲའི་ནང་མ་རེད།) མུ་མཐུད་དུ་ཟིན་བྲིས་ལ་རྡེབ་རོགས།
+board_empty	ད་དུང་ཤོག་བྱང་མེད།
+board_park_nothing	ལས་འཆར་ལྟར་ཉར་ཚགས་བྱེད་དགོས་དོན་གང་ཡང་མེད། རིན་པ་ཁ་སྣོན་བྱེད་པའམ་ཡང་ན་བཀོད་སྒྲིག་ཞིབ་ཕྲ
+board_parked	«བང་ཁྲི» ཐོག་ཉར་ཚགས་བྱས། ད་ལྟ་ཡིག་ཅོག་སྟོང་པ་རེད
+board_draft	ཟིན་བྲིས་
+board_booked	སྔོན་མངག་བྱས་པ།
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	ཟིན་བྲིས་
+board_filter_booked	སྔོན་མངག་བྱས་པ།
+board_cols_fmt	{n} ཀ་རིལ
+board_summary_fmt	{total} ཤོག་བྱང་ · {drafts} ཟིན་བྲིས · {booked} མངགས་ཉོ་བྱས
+board_card_no_charges	ད་དུང་རིན་པ་ཁ་སྣོན་བྱས་མེད
+board_card_charges	རིན་པ
+board_card_booked	སྔོན་མངག་བྱས་པ།
+board_draft_gone	ཟིན་བྲིས་དེ་ད་ལྟ་«བང་ཁྲི»སྟེང་དུ་མེད
+board_draft_closed	ཟིན་བྲིས་དེ་སྔོན་ནས་ཚར་འདུག ཡང་ན་སུབ་ཟིན
+board_discard	བཀོལ་བ་
+board_discarded	ཟིན་བྲིས་སུབ་པ
 buy	དངུལ་སྤྲོད།
 books	ཉིན་མོའི་རྩིས་ཁྲ།
 books_help	དེ་རིང་གི་གནས་སྟངས། སྔོན་མངག་ = ནང་དུ་འབྱོར་བའི་ཐུམ་སྒྲིལ། དངུལ་སྤྲོད་ = སྐྱེལ་འདྲེན་བྱེད་མཁན་གྱི་འཛིན་བྱང་དང་འགྲོ་གྲོན། ཚོང་འབྲེལ་པ་ = དངོས་ཟོག་སྐྱེལ་མཁན་དང་སྐྱེལ་འདྲེན་བྱེད་མཁན།
@@ -88,7 +88,7 @@ applied	བཀོལ་སྤྱོད་བྱས།
 note_ph	མཆན (འདམ་ཀ)
 rounded	ཟླུམ་པོ།
 split	ཁ་ཕྲལ།
-counter	བགྲང་ཆས།
+counter	ཚོང་ཅོག
 parcel	ཐུམ་སྒྲིལ།
 order	ཟ་ཁང་གི་མངགས་ཉོ།
 sales	སྔོན་མངག་བྱས་པ།
@@ -220,7 +220,7 @@ snack_secs_save	ཉེན་བརྡའི་དུས་ཚོད་སྲུ�
 snack_secs_saved	ཉེན་བརྡའི་དུས་ཚོད་ཉར་ཚགས་བྱས། {n}སྐར་ཆ།
 snack_secs_bad	སྐར་ཆ་གྲངས་སུ་བཙུགས (3–60)
 cancelled	ཕྱིར་འཐེན་བྱས།
-cancelling	Cancellingâ¦
+cancelling	ཆ་མེད་གཏོང་བ།
 cancel	ཆ་མེད་གཏོང་བ།
 opening_client	ཚོང་ཤག་ཁ་ཕྱེ་བ།
 preparing_desk	ཡིག་ཅོག་གྲ་སྒྲིག་བྱེད་བཞིན་ཡོད།
@@ -343,16 +343,16 @@ copy_party_ledger_csv	ཚོང་ཤག་གི་རྩིས་ཁྲ་CSV 
 copy_receipt	བྱུང་འཛིན་ངོ་བཤུས།
 copy_report	སྙན་ཞུའི་འདྲ་བཤུས།
 counted_cash_ph	ཤུད་སྒམ་ནང་དུ་དངུལ་རྩིས་བརྒྱབ་ཡོད།
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	བརྗེ་སྒྱུར་དང་དཔར་ཤོག་ཁ་རྒྱག་པ།
+shift_handover	ལས་རེས་རྩིས་སྤྲོད།
+shift_counted_ph	རྩིས་སྤྲོད་སྐབས་དངུལ་རྩིས་རྒྱག་པ།
+shift_since	2016ལོ་ནས་བཟུང་འཕོ་འགྱུར་འདི།
+expected_in_drawer	ཤུད་སྒམ་ནང་རེ་བ་ཡོད།
+lock_books_through_month	ཟླ་མཇུག་བར་དུ་རྩིས་ཁྲ་བཀག་དགོས
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	ཟླ་འདིའི་ཟླ་མཇུག་བར་དུ་སྒོ་རྒྱག་དགོས
+books_locked_none	ཟླ་བ་གཅིག་ཀྱང་བཀག་མེད
+books_locked_through	བཀག་སྡོམ་བྱས་པའི་དུས་མཚམས
 counter_agency_ph	Counter / ལས་ཚབ་ཀྱི་མིང་། (གདམ་གསེས་)
 create_backup	རྒྱབ་ལྗོངས་གསར་བཟོ།
 day_close_summary	ཉིན་མཇུག་བསྡུས་པ།
@@ -442,9 +442,9 @@ pay_ap_cash	APདངུལ་སྤྲོད་དགོས།
 pay_ap_upi	AP UPI སྤྲོད་དགོས།
 period_bill	དུས་ཡུན་འཛིན་བྱང་།
 period_bill_party	དུས་ཡུན་འཛིན་བྱང་། (ཚོང་འབྲེལ་པ)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	བྱུང་འཛིན་བཟོས
+period_bill_generate_print	གསར་བཟོ་དང་དཔར་སྐྲུན
+booking_bulk_preview	{ok} གྲ་སྒྲིག · {bad} ནོར་འཁྲུལ་དང་བཅས་པ
 pick_pod_photo	POD པར་འདེམས།
 print_awb_label	AWB ཤོག་བྱང་དཔར།
 print_open	པར་སྐྲུན།/ཁ་ཕྱེ།
@@ -653,19 +653,19 @@ attachments_last_expense	ཟུར་སྣོན་ (མཐའ་མའི་�
 credit_limit_heading	བུ་ལོན་ཚད་གཞི། (འདེམས་སྒྲུག་བྱས་པའི་ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན།)
 pay_selected_heading	འདེམས་སྒྲུག་བྱས་པའི་གླ་ཆ་སྤྲོད་དགོས།
 write_off_heading	རྩིས་མེད་གཏོང་དགོས། (དངུལ་སྤྲོད་མི་དགོས་པར་གཙང་བཟོ།)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	སྙོམ་སྒྲིག་དྲན་ཐོ
+adj_note_amount_ph	དངུལ་འབོར།
+adj_note_reason_ph	རྒྱུ་མཚན།
+adj_note_awb_ph	འབྲེལ་ཡོད་ AWB (འདམ་ཀ)
+credit_note_btn	བུ་ལོན་དྲན་ཐོ
+debit_note_btn	བུ་ལོན་དྲན་ཐོ
+bill_later_heading	རྗེས་སུ་རིན་པ་སྤྲོད་དགོས། (མགྲོན་ཁང་བཀོད་སྒྲིག་བྱས་རྗེས་རིན་པ་འཕར་མ།)
+bill_later_amount_ph	དངུལ་འབོར་འཕར་མ
+bill_later_party_ph	ཚོང་ཤག (གལ་ཏེ་མངགས་ཉོ་མེད་ན་རྐྱངམ་གཅིག)
+bill_later_btn	རྗེས་སུ་གླ་ཆ་སྤྲོད་དགོས
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ཐུམ་སྒྲིལ་བྱེད་པ
+bill_later_extra_other	གཞན།
 pay_ap_heading	ང་ཚོས་ཁོ་ཚོར་བུ་ལོན་སྤྲོད་དགོས།
 country_tax	རྒྱལ་ཁབ་དང་དཔྱ་ཁྲལ།
 extra_tills_heading	དངུལ་སྒམ་ཁ་སྣོན།
@@ -777,26 +777,26 @@ onboard_book_tmpl	རྩིས་ཁྲ། · {} — རེའུ་མིག་
 onboard_template_tmpl	གལ་ཏེ་ཁྱེད་ལ་དགོས་ན་ས་ཆ་དེ་ལ་མིང་བཏགས་ནས་འགོ་འཛུགས་སྟངས་འདེམས།
 tmpl_blurb	མྱུར་སྐྱེལ་རྩིས་ཐོ་དང་སྔོན་མངག་སྟེགས་བུ། དངོས་ཟོག་སྐྱེལ་མཁན། སྐྱེལ་འདྲེན་བྱེད་མཁན། ཉིན་དེབ། AWB.
 tmpl_how	ཅོག་ཙེའི་སྟེང་གི་དཔེ་དེབ་འབོག་སྒྲིལ།དེ་རིང་གི་ཉིན་མོའི་དེབ་དེབ།གོང་ཚད་དང་། འདུ་ཚོགས། སྙན་ཞུ་བཅས་ཀྱི་ཤོག་བྱང་།
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	ཚོང་ཁང་གི་དཔེ་གཞི།
+app_template_blurb	འགོ་འཛུགས་སྒྲིག་བཀོད་འདེམས། «ད་ལྟ་མཆོང་།» གིས་ཚོང་ཤག་གི་ཐོ་གཞུང་སྟོང་པར་བཞག
+app_template_skip	ད་ལྟ་མཆོང་།
+app_template_status	ཞབས་ཞུ་འཕྲུལ་ཆས་གྲ་སྒྲིག་ཡིན། — དཔེ་གཞི་ཞིག་ནང་འདྲེན་གནང་། ཡང་ན་མཆོང་།
+app_template_importing	{title}...
+app_template_public_hdr	དཔེ་གཞི
+app_template_import_selected	འདེམས་པ་ནང་འདྲེན།
+app_template_wipe_warn	འདིས་རྩིས་ཁྲའི་ནང་ཚོང་དོན་གྱི་གནས་ཚུལ་(བཀོད་སྒྲིག་དང་། རྩིས་ཁྲ)བསལ་ནས་དཔེ་སྒྲོམ་གྱི་ཚོང་ཁང་གི་སྒྲིག་སྟངས་བཀོལ་སྤྱོད་བྱེད། མུ་མཐུད་ནས་གནང་དགོས་སམ།
+app_template_wipe_continue	མུ་མཐུད།
+app_template_wipe_cancel	ཆ་མེད་གཏོང་བ།
+public_tmpl_help	མཉེན་ཆས་དང་མཉམ་དུ་ཡོང་བའི་ལས་ཁུངས་ཀྱི་ཚད་གཞི་གྲ་སྒྲིག་བྱས་ཟིན། ཕབ་ལེན་བྱེད་མི་དགོས།
+business_day	«དེ་རིང་།» ནམ་བསྐྱར་སྒྲིག་བྱེད་ཀྱི་ཡོད་དམ།
+business_day_help	«ཉིན་མོ་སྒོ་བརྒྱབ་པ། བར་དུ» གིས་ «ཉིན་མོའི་རྩིས་ཁྲ།» མཚན་གུང་ལས་བརྒལ་ནས་རྒྱུན་འཁྱོངས་བྱེད། ཁྱེད་ཀྱིས་ཉིན་མོ་མཇུག་མ་བསྒྲིལ་བར་ཐོ་འགོད་བྱེད། «མཚན་གུང་དུ» ས་གནས་དེ་གའི་དུས་ཚོད་ཆུ་ཚོད་ 00:00 སྟེང་གཅོད་རྒྱུ།
+biz_day_until_close	ཉིན་མོ་སྒོ་བརྒྱབ་པ། བར་དུ
+biz_day_midnight	མཚན་གུང་དུ
+business_day_saved	ཚོང་ལས་ཉིན་མོའི་སྒྲིག་སྟངས་ཉར་ཚགས་བྱས
+report_day_lens	«དེ་རིང་།» འདི་ལྟར་སྟོན
+report_day_lens_help	འདིས་མཐོང་སྣང་ཁོ་ན་བསྒྱུར་བ་ཡིན། «ཉིན་མོ་སྒོ་བརྒྱབ་པ།» «དེ་རིང་།» སླར་སྒྲིག་བྱེད་སྐབས་བསྒྱུར་མི་ཐུབ། «ཉིན་མོ་སྒོ་བརྒྱབ་པ། ལྟར་ན» མཐའ་མའི་ཉིན་མོའི་སྒོ་བརྒྱབ་པའི་རྗེས་སུ། «མཚན་གུང་དང་བསྟུན་ནས» ས་གནས་དེ་གའི་དུས་ཚོད་ཆུ་ཚོད་ 00:00 སྟེང་གཅོད་རྒྱུ།
+report_lens_day_close	ཉིན་མོ་སྒོ་བརྒྱབ་པ། ལྟར་ན
+report_lens_midnight	མཚན་གུང་དང་བསྟུན་ནས
 trk_booked	སྔོན་མངག་བྱས་པ།
 trk_picked_up	བླངས་ཟིན།
 trk_in_transit	སྐྱེལ་འདྲེན་བྱེད་རིང་།

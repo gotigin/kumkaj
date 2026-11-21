@@ -3,27 +3,27 @@ app_tagline	Kuriiritoimisto kirjat + varauspöytä. Ilmainen offline-tilassa.
 unlock	Avaa lukitus
 pin_hint	Omistajan PIN on aluksi 0000
 sell	Varaus
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Taulu
+board	Taulu
+park_draft	Siirrä luonnoksiin
+board_help	Avoimet luonnokset (säilyvät, kunnes valitset «Hylkää» tai «Ota maksu») ja tämän päivän kirjatut myynnit. Napauta näkymässä «Varaus» kesken työn «Siirrä luonnoksiin» (tallentuu tänne, ei kirjanpitoon); jatka napauttamalla luonnosta.
+board_empty	Ei vielä kortteja.
+board_park_nothing	Ei mitään siirrettävää sivuun — lisää maksuja tai varauksen tiedot
+board_parked	Siirretty kohtaan «Taulu» — vastaanotto on vapaa
+board_draft	Luonnos
+board_booked	Varattu
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Luonnos
+board_filter_booked	Varattu
+board_cols_fmt	{n} sar.
+board_summary_fmt	{total} korttia · {drafts} luonnosta · {booked} kirjattu
+board_card_no_charges	Ei vielä maksuja
+board_card_charges	maksua
+board_card_booked	Varaus
+board_draft_gone	Luonnosta ei enää ole kohdassa «Taulu»
+board_draft_closed	Luonnos on jo viimeistelty tai hylätty
+board_discard	Hylkää
+board_discarded	Luonnos hylätty
 buy	Maksaa
 books	Päiväkirja
 books_help	Tämän päivän asema. Varaus = paketit sisään. Maksa ulos = kuljetuslaskut ja -kulut. Osapuolet = lähettäjät ja kuljettajat.
@@ -220,7 +220,7 @@ snack_secs_save	Tallenna ilmoitusaika
 snack_secs_saved	Ilmoitusaika tallennettu — {n} sekuntia
 snack_secs_bad	Syötä sekunnit numerona (3–60)
 cancelled	Peruttu
-cancelling	Cancellingâ¦
+cancelling	Peruutetaan…
 cancel	Peru
 opening_client	Avataan päätettä…
 preparing_desk	Valmistellaan pöytää…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Kopioi osapuolen reskontran CSV
 copy_receipt	Kopioi kuitti
 copy_report	Kopioi raportti
 counted_cash_ph	Laskettu käteinen laatikossa
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Sulje vuoro ja tulosta lipuke
+shift_handover	Vuoron vaihto
+shift_counted_ph	Vaihdossa laskettu käteinen
+shift_since	Tämä vuoro alkaen
+expected_in_drawer	Odotettu laatikossa
+lock_books_through_month	Lukitse kirjanpito kuun loppuun
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Lukitse tämän kuun loppuun
+books_locked_none	Yhtään kuukautta ei ole vielä lukittu
+books_locked_through	Lukittu tähän asti
 counter_agency_ph	Myyjän/toimiston nimi (valinnainen)
 create_backup	Luo varmuuskopio
 day_close_summary	Päivän sulun yhteenveto
@@ -442,9 +442,9 @@ pay_ap_cash	Maksa AP käteisellä
 pay_ap_upi	Maksa AP UPI:lla
 period_bill	Kauden lasku
 period_bill_party	Kausilasku (juhla)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Luo lasku
+period_bill_generate_print	Luo ja tulosta
+booking_bulk_preview	{ok} valmista · {bad} virheellistä
 pick_pod_photo	Valitse POD-kuva
 print_awb_label	Tulosta AWB-tarra
 print_open	Tulosta / avaa
@@ -653,19 +653,19 @@ attachments_last_expense	Liitteet (viimeisin kulu)
 credit_limit_heading	Luottoraja (valittu / nimetty osapuoli)
 pay_selected_heading	Maksa valittu (kuittaa velka / ota ennakko)
 write_off_heading	Kirjaa pois (tyhjennä ilman maksua)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Oikaisutositteet
+adj_note_amount_ph	Summa
+adj_note_reason_ph	Syy (pakollinen)
+adj_note_awb_ph	Liittyvä AWB (valinnainen)
+credit_note_btn	Hyvityslasku
+debit_note_btn	Veloituslasku
+bill_later_heading	Laskuta myöhemmin (lisämaksu varauksen jälkeen)
+bill_later_amount_ph	Lisäsumma
+bill_later_party_ph	Osapuoli (vain jos varauksella ei ole)
+bill_later_btn	Laskuta myöhemmin
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Pakkaus
+bill_later_extra_other	muu
 pay_ap_heading	Maksa mitä olemme heille velkaa (AP)
 country_tax	Maa ja vero
 extra_tills_heading	Lisäkassat
@@ -777,26 +777,26 @@ onboard_book_tmpl	Kirja · {} — lisää tuotteet ja alkuluotto, sitten Valmis.
 onboard_template_tmpl	Nimeä paikka jos haluat, ja valitse sitten miten aloitat.
 tmpl_blurb	Kuriirikirjat ja varauspöytä: lähettäjät, kuljettajat, päiväkirja, AWB.
 tmpl_how	Varaa paketit pöydän ääressä; Päiväkirja tälle päivälle; välilehdet hintoja, juhlia ja raportteja varten.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Myymäläpohjat
+app_template_blurb	Valitse aloituspohja. «Ohita toistaiseksi» jättää osapuolet tyhjiksi.
+app_template_skip	Ohita toistaiseksi
+app_template_status	Palvelin valmis — tuo pohja tai ohita
+app_template_importing	Käytetään {title}…
+app_template_public_hdr	Mallit
+app_template_import_selected	Tuo valittu
+app_template_wipe_warn	Tämä tyhjentää kirjanpidon kauppatiedot (varaukset, tilit) ja ottaa käyttöön mallin liikeasetukset. Jatketaanko?
+app_template_wipe_continue	Jatka
+app_template_wipe_cancel	Peru
+public_tmpl_help	Tämän liikkeen mukana tulevat toimistopaketit. Latausta ei tarvita.
+business_day	Milloin «Tänään» alkaa alusta?
+business_day_help	Valinnalla «Päivän sulkuun asti» «Päiväkirja» jatkuu keskiyön yli, kunnes kirjaat päivän sulun. Valinnalla «Kalenterin keskiyö» päivä katkeaa klo 00.00 paikallista aikaa.
+biz_day_until_close	Päivän sulkuun asti
+biz_day_midnight	Kalenterin keskiyö
+business_day_saved	Liiketoimintapäivä tallennettu
+report_day_lens	Näytä «Tänään» muodossa
+report_day_lens_help	Vain näkymä — ei muuta sitä, milloin «Päivän sulku» aloittaa kohdan «Tänään» alusta. «Päivän sulun mukaan» laskee viimeisestä päivän sulusta; «Keskiyön mukaan» katkaisee klo 00.00 paikallista aikaa.
+report_lens_day_close	Päivän sulun mukaan
+report_lens_midnight	Keskiyön mukaan
 trk_booked	Varattu
 trk_picked_up	Poimittu
 trk_in_transit	Kuljetuksessa

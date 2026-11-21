@@ -365,15 +365,15 @@ print_open	Capa / fungura
 reason_amend_ph	Impamvu yo gukosora / guhagarika / gusubiza
 reason_note_ph	Impamvu / icyitonderwa (ibyangiritse, kubara, …)
 record_day_close	Andika gufunga umunsi
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	«Uyu munsi» itangira bundi bushya ryari?
+business_day_help	Iyo uhisemo «Kugeza umunsi ufunzwe», «Igitabo cy'umunsi» ikomeza na nyuma ya saa sita z'ijoro kugeza wanditse gufunga umunsi. Iyo uhisemo «Saa sita z'ijoro kuri kalendari», umunsi ucibwa saa 00:00 ku isaha y'aho uri.
+biz_day_until_close	Kugeza umunsi ufunzwe
+biz_day_midnight	Saa sita z'ijoro kuri kalendari
+business_day_saved	Umunsi w'akazi wabitswe
+report_day_lens	Erekana «Uyu munsi» ukurikije
+report_day_lens_help	Ni ukureba gusa — ntibihindura igihe «Gufunga umunsi» itangiza bundi bushya «Uyu munsi». «Ukurikije gufunga umunsi» ikurikiza gufunga umunsi guheruka; «Ukurikije saa sita z'ijoro» ica saa 00:00 ku isaha y'aho uri.
+report_lens_day_close	Ukurikije gufunga umunsi
+report_lens_midnight	Ukurikije saa sita z'ijoro
 refresh_from_shop	Vugurura uhereye ku iduka
 refund	Subiza
 remove_selected	Kuraho byahiswemo
@@ -849,19 +849,19 @@ client_template_confirm	Ongeramo ibintu {d} kuva {title}? Ibintu usanzwe ufite g
 client_template_importing	Irimo kwinjiza {title}…
 client_template_done	Ikintu cyose kuva {title} kiri kubintu byawe.
 client_template_imported	Wongeyeho ibintu bya {d} nibyiciro bya {c} kuva {title}
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter catalogue and shop settings. Skip leaves the shelf empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (sales, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Full shop packs (menu + settings). Item-only templates stay under Menu → Item templates. Cloud download = later.
-app_tmpl_named	{name} shop template
+app_template_heading	Inyandikorugero z'iduka
+app_template_blurb	Hitamo kataloge y'intangiriro n'igenamiterere ry'iduka. «Simbuka ubu» isiga ikibaho cy'ibicuruzwa kirimo ubusa.
+app_template_skip	Simbuka ubu
+app_template_status	Seriveri yiteguye — injiza inyandikorugero, cyangwa usimbuke
+app_template_importing	Irimo gushyira {title}…
+app_template_import_selected	Injiza icyatoranyijwe
+app_template_wipe_warn	Ibi bisiba amakuru y'ubucuruzi ari mu bitabo (ibyagurishijwe, ibitabo by'amakonti) bigashyiraho igenamiterere ry'iduka ry'inyandikorugero. Komeza?
+app_template_wipe_continue	Komeza
+app_template_wipe_cancel	Hagarika
+app_template_from_device	Injiza bivuye kuri iki gikoresho
+app_template_from_device_help	Hitamo ububiko burimo template.json (na shop_defaults.json niba ihari).
+settings_app_tmpl_note	Amapaki yuzuye y'iduka: kataloge n'igenamiterere ry'iduka. Kongera kwinjiza ipaki bisiba ibyagurishijwe n'ibitabo by'amakonti, hanyuma bigashyiraho igenamiterere ry'iduka ry'ipaki.
+app_tmpl_named	Inyandikorugero y'iduka {name}
 cancel	Hagarika
 removing	Birimo gukurwaho…
 removed	Byakuweho

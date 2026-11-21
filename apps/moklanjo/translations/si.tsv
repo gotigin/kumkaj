@@ -3,27 +3,27 @@ app_tagline	කුරියර් නියෝජිත පොත් + වෙන
 unlock	අගුළු හරින්න
 pin_hint	හිමිකරු PIN 0000 ලෙස ආරම්භ වේ
 sell	වෙන්කරවා ගැනීම
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	පුවරුව
+board	පුවරුව
+park_draft	කෙටුම්පතක් ලෙස තබන්න
+board_help	විවෘත කෙටුම්පත් («ඉවත දමන්න» හෝ «ගෙවීමක් ගන්න» තට්ටු කරන තුරු පවතී) සහ අද වෙන්කළ විකුණුම්. «වෙන්කරවා ගැනීම» හි වැඩ අතරතුර «කෙටුම්පතක් ලෙස තබන්න» තට්ටු කරන්න (මෙහි සුරැකේ, පොත්වල නොවේ); නැවත ආරම්භ කිරීමට කෙටුම්පතක් තට්ටු කරන්න.
+board_empty	තවම කාඩ්පත් නැත.
+board_park_nothing	තැබීමට කිසිවක් නැත — ගාස්තු හෝ වෙන්කිරීමේ විස්තර එක් කරන්න
+board_parked	«පුවරුව» හි තබන ලදී — මේසය හිස්ය
+board_draft	කෙටුම්පත
+board_booked	වෙන්කර ඇත
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	කෙටුම්පත
+board_filter_booked	වෙන්කර ඇත
+board_cols_fmt	තීරු {n}
+board_summary_fmt	කාඩ්පත් {total} · කෙටුම්පත් {drafts} · වෙන්කළ {booked}
+board_card_no_charges	තවම ගාස්තු නැත
+board_card_charges	ගාස්තු
+board_card_booked	වෙන්කරවා ගැනීම
+board_draft_gone	එම කෙටුම්පත දැන් «පුවරුව» හි නැත
+board_draft_closed	එම කෙටුම්පත දැනටමත් අවසන් කර ඇත හෝ ඉවත දමා ඇත
+board_discard	ඉවත දමන්න
+board_discarded	කෙටුම්පත ඉවත දමන ලදී
 buy	ගෙවන්න
 books	දින ලෙජරය
 books_help	අද තත්ත්වය. වෙන්කරවා ගැනීම = පාර්සල්. ගෙවීම = වාහක බිල්පත් සහ වියදම්. පාර්ශ්වයන් = ප්‍රවාහනය කරන්නන් සහ වාහකයන්.
@@ -93,7 +93,7 @@ parcel	පාර්සලය
 order	ආපනශාලා ඇණවුම
 sales	වෙන් කිරීම්
 sales_refunds	වෙන් කිරීම් සහ ආපසු ගෙවීම්
-day_close	දවස කිට්ටුයි
+day_close	දවස වැසීම
 reports_expenses	බැංකු ලෙජරය සහ P&L
 nav_reports	වාර්තා
 nav_settings	සැකසීම්
@@ -220,7 +220,7 @@ snack_secs_save	අනතුරු ඇඟවීමේ කාලය ඉතිර�
 snack_secs_saved	අනතුරු ඇඟවීමේ කාලය ඉතිරි කර ඇත - තත්පර {n}
 snack_secs_bad	තත්පර සංඛ්‍යාවක් ලෙස ඇතුලත් කරන්න (3–60)
 cancelled	අවලංගු කළා
-cancelling	Cancellingâ¦
+cancelling	අවලංගු කරමින්…
 cancel	අවලංගු කරන්න
 opening_client	සේවාලාභියා විවෘත කරමින්...
 preparing_desk	මේසය සූදානම් කරමින්...
@@ -343,16 +343,16 @@ copy_party_ledger_csv	පාරිභෝගික ලෙජරය CSV පිට�
 copy_receipt	පිටපත කුවිතාන්සිය
 copy_report	වාර්තාව පිටපත් කරන්න
 counted_cash_ph	ලාච්චුවේ මුදල් ගණන් කළා
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	මාරුව සහ මුද්‍රණ ස්ලිප් වසා දමන්න
+shift_handover	මාරුව භාරදීම
+shift_counted_ph	භාරදීමේදී මුදල් ගණන් කරන ලදී
+shift_since	එතැන් සිට මෙම මාරුව
+expected_in_drawer	ලාච්චුවෙන් බලාපොරොත්තු වේ
+lock_books_through_month	මාසය දක්වා පොත් අගුළු දමන්න
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	මෙම මාසය දක්වා අගුළු දමන්න
+books_locked_none	තවම කිසිදු මාසයක් අගුළු දමා නැත
+books_locked_through	අගුළු දමා ඇති මාසය
 counter_agency_ph	කවුන්ටරය / නියෝජිතායතනයේ නම (විකල්ප)
 create_backup	උපස්ථ සාදන්න
 day_close_summary	දින සමීප සාරාංශය
@@ -442,9 +442,9 @@ pay_ap_cash	AP මුදල් ගෙවන්න
 pay_ap_upi	AP UPI ගෙවන්න
 period_bill	කාල බිල්පත
 period_bill_party	කාල බිල්පත් (පාර්ශවය)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	බිල්පත සාදන්න
+period_bill_generate_print	සාදා මුද්‍රණය කරන්න
+booking_bulk_preview	සූදානම් {ok} · දෝෂ {bad}
 pick_pod_photo	POD ඡායාරූපය තෝරන්න
 print_awb_label	AWB ලේබලය මුද්‍රණය කරන්න
 print_open	මුද්‍රණය / විවෘත කරන්න
@@ -653,19 +653,19 @@ attachments_last_expense	ඇමුණුම් (අවසන් වියදම�
 credit_limit_heading	ණය සීමාව (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
 pay_selected_heading	තෝරාගත් ගෙවීම (ණය පියවීම / අත්තිකාරම් ගන්න)
 write_off_heading	කපා හැරීම (ගෙවීමකින් තොරව පැහැදිලි)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	ගැලපුම් සටහන්
+adj_note_amount_ph	මුදල
+adj_note_reason_ph	හේතුව (අවශ්‍යයි)
+adj_note_awb_ph	අදාළ AWB (විකල්ප)
+credit_note_btn	බැර සටහන
+debit_note_btn	හර සටහන
+bill_later_heading	පසුව බිල් කරන්න (වෙන්කිරීමෙන් පසු අමතර ගාස්තුව)
+bill_later_amount_ph	අමතර මුදල
+bill_later_party_ph	පාර්ශවය (වෙන්කිරීමේ නැත්නම් පමණි)
+bill_later_btn	පසුව බිල් කරන්න
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	ඇසුරුම්
+bill_later_extra_other	වෙනත්
 pay_ap_heading	අපි ඔවුන්ට ගෙවිය යුතු දේ ගෙවන්න (AP)
 country_tax	රට සහ බදු
 extra_tills_heading	අමතර මුදල් රෙජිස්ටර්
@@ -777,26 +777,26 @@ onboard_book_tmpl	ලෙජරය · {} — මෙනු අයිතම සහ 
 onboard_template_tmpl	ඔබට අවශ්‍ය නම් ස්ථානය නම් කරන්න, ඉන්පසු ආරම්භ කරන ආකාරය තෝරන්න.
 tmpl_blurb	කුරියර් පොත් සහ වෙන්කිරීමේ මේසය: ප්‍රවාහනය කරන්නන්, වාහකයන්, දින පොත, AWB.
 tmpl_how	මේසයේ පොත් පාර්සල්; අද දින පොත; ගාස්තු, පක්ෂ, වාර්තා සඳහා ටැබ්.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	සාප්පු සැකිලි
+app_template_blurb	ආරම්භක මේසයක් තෝරන්න. «දැනට මග හරින්න» තට්ටු කළහොත් පාර්ශව ලැයිස්තුව හිස්ව පවතී.
+app_template_skip	දැනට මග හරින්න
+app_template_status	සේවාදායකය සූදානම් — සැකිල්ලක් ආයාත කරන්න, නැතහොත් මඟ හරින්න
+app_template_importing	{title} අයදුම් කරමින්...
+app_template_public_hdr	ආකෘති
+app_template_import_selected	තෝරාගත් දේ ආයාත කරන්න
+app_template_wipe_warn	මෙය පොත්වල වෙළඳ දත්ත (වෙන්කිරීම්, ලෙජර්) හිස් කර සැකිල්ලේ සාප්පු සැකසීම් යොදයි. ඉදිරියට යන්නද?
+app_template_wipe_continue	දිගටම කරගෙන යන්න
+app_template_wipe_cancel	අවලංගු කරන්න
+public_tmpl_help	මෙම සාප්පුව සඳහා යෙදුම සමඟ එන නියෝජිත පැකේජ. බාගැනීමක් අවශ්‍ය නැත.
+business_day	«අද» නැවත ආරම්භ වන්නේ කවදාද?
+business_day_help	«දවස වසන තුරු» තේරූ විට, ඔබ දවස වසා දැමීම සටහන් කරන තුරු «දින ලෙජරය» මධ්‍යම රාත්‍රියෙන් පසුවත් දිගටම පවතී. «දින දර්ශන මධ්‍යම රාත්‍රිය» තේරූ විට, දවස දේශීය වේලාවෙන් පෙ.ව. 12:00 ට අවසන් වේ.
+biz_day_until_close	දවස වසන තුරු
+biz_day_midnight	දින දර්ශන මධ්‍යම රාත්‍රිය
+business_day_saved	ව්‍යාපාරික දිනය සුරකින ලදී
+report_day_lens	«අද» පෙන්වන ආකාරය
+report_day_lens_help	බැලීමට පමණි — «දවස වැසීම» විසින් «අද» නැවත ආරම්භ කරන වේලාව මෙයින් වෙනස් නොවේ. «දවස වසා දැමීම අනුව» අවසන් දවස වසා දැමීමේ සිට ගණන් කරයි; «මධ්‍යම රාත්‍රිය අනුව» දේශීය වේලාවෙන් පෙ.ව. 12:00 ට කපයි.
+report_lens_day_close	දවස වසා දැමීම අනුව
+report_lens_midnight	මධ්‍යම රාත්‍රිය අනුව
 trk_booked	වෙන්කර ඇත
 trk_picked_up	අවුලා ගත්
 trk_in_transit	ප්රවාහනයේ

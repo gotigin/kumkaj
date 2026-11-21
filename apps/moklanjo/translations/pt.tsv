@@ -3,27 +3,27 @@ app_tagline	Livros de entregas + balcão de envios. Grátis offline.
 unlock	Desbloquear
 pin_hint	O PIN do dono começa em 0000
 sell	Envios
-nav_board	Board
-board	Board
-park_draft	Park
-board_help	Open drafts and today's bookings. On Booking, tap Park draft mid-work (saved here, not books); tap a draft card to resume. Day close drops open drafts.
-board_empty	No cards yet. On Booking, fill a customer mid-way and tap Park draft — it appears here so you can serve someone else, then resume.
-board_park_nothing	Nothing to park — add charges or booking details
-board_parked	Parked on Board — desk is clear
-board_draft	Draft
-board_booked	Booked
+nav_board	Quadro
+board	Quadro
+park_draft	Pôr em espera
+board_help	Rascunhos abertos (ficam até tocar em «Descartar» ou «Receber pagamento») e as vendas registadas hoje. Em «Envios», toque em «Pôr em espera» a meio do trabalho (fica guardado aqui, não nos livros); toque num rascunho para o retomar.
+board_empty	Ainda sem cartões.
+board_park_nothing	Nada para pôr em espera: adicione encargos ou dados do envio
+board_parked	Em espera em «Quadro»: o posto está livre
+board_draft	Rascunho
+board_booked	Registrado
 board_filter_all	All
-board_filter_draft	Draft
-board_filter_booked	Booked
-board_cols_fmt	{n} col
-board_summary_fmt	{total} cards · {drafts} draft · {booked} booked
-board_card_no_charges	No charges yet
-board_card_charges	charges
-board_card_booked	Booking
-board_draft_gone	That draft is no longer on the Board
-board_draft_closed	That draft was already finished or discarded
-board_discard	Discard
-board_discarded	Draft discarded
+board_filter_draft	Rascunho
+board_filter_booked	Registrado
+board_cols_fmt	{n} col.
+board_summary_fmt	{total} cartões · {drafts} rascunhos · {booked} registados
+board_card_no_charges	Ainda sem encargos
+board_card_charges	encargos
+board_card_booked	Envios
+board_draft_gone	Esse rascunho já não está em «Quadro»
+board_draft_closed	Esse rascunho já foi concluído ou descartado
+board_discard	Descartar
+board_discarded	Rascunho descartado
 buy	Pagamentos
 books	Livro do dia
 books_help	Posição de hoje. Envios = encomendas que entram. Pagamentos = faturas de transportadoras e despesas. Partes = remetentes e transportadoras.
@@ -220,7 +220,7 @@ snack_secs_save	Guardar tempo dos avisos
 snack_secs_saved	Tempo dos avisos guardado — {n} segundos
 snack_secs_bad	Escreva os segundos como número (3–60)
 cancelled	Cancelado
-cancelling	Cancellingâ¦
+cancelling	A cancelar…
 cancel	Cancelar
 opening_client	Abrindo cliente…
 preparing_desk	Preparando mesa…
@@ -343,16 +343,16 @@ copy_party_ledger_csv	Copiar CSV do livro da parte
 copy_receipt	Copiar recibo
 copy_report	Copiar relatório
 counted_cash_ph	Dinheiro contado na gaveta
-close_shift_print	Close shift and print slip
-shift_handover	Shift handover
-shift_counted_ph	Cash counted at handover
-shift_since	This shift since
-expected_in_drawer	Expected in drawer
-lock_books_through_month	Lock books through month
+close_shift_print	Fechar turno e imprimir
+shift_handover	Troca de turno
+shift_counted_ph	Dinheiro contado na troca
+shift_since	Turno desde
+expected_in_drawer	Esperado no caixa
+lock_books_through_month	Bloquear livros até ao mês
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	Lock through this month
-books_locked_none	No month lock yet
-books_locked_through	Locked through
+lock_books_month_btn	Bloquear até este mês
+books_locked_none	Ainda nenhum mês bloqueado
+books_locked_through	Bloqueado até
 counter_agency_ph	Nome do balcão / agência (opcional)
 create_backup	Criar cópia de segurança
 day_close_summary	Resumo do fecho do dia
@@ -442,9 +442,9 @@ pay_ap_cash	Pagar AP em dinheiro
 pay_ap_upi	Pagar AP por UPI
 period_bill	Fatura do período
 period_bill_party	Fatura do período (parte)
-period_bill_generate	Generate bill
-period_bill_generate_print	Generate & print
-booking_bulk_preview	{ok} ready · {bad} bad
+period_bill_generate	Gerar fatura
+period_bill_generate_print	Gerar e imprimir
+booking_bulk_preview	{ok} prontos · {bad} com erros
 pick_pod_photo	Escolher foto POD
 print_awb_label	Imprimir etiqueta AWB
 print_open	Imprimir / abrir
@@ -653,19 +653,19 @@ attachments_last_expense	Anexos (última despesa)
 credit_limit_heading	Limite de crédito (parte selecionada / nomeada)
 pay_selected_heading	Pagar selecionado (quitar dívida / adiantamento)
 write_off_heading	Baixar (quitar sem pagamento)
-adjustment_notes_heading	Adjustment notes
-adj_note_amount_ph	Amount
-adj_note_reason_ph	Reason (required)
-adj_note_awb_ph	Related AWB (optional)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
-bill_later_heading	Bill later (post-booking extra)
-bill_later_amount_ph	Extra amount
-bill_later_party_ph	Party (only if booking has none)
-bill_later_btn	Bill later
+adjustment_notes_heading	Notas de ajuste
+adj_note_amount_ph	Valor
+adj_note_reason_ph	Motivo (obrigatório)
+adj_note_awb_ph	AWB relacionado (opcional)
+credit_note_btn	Nota de crédito
+debit_note_btn	Nota de débito
+bill_later_heading	Faturar depois (encargo extra após o envio)
+bill_later_amount_ph	Valor extra
+bill_later_party_ph	Parte (só se o envio não tiver)
+bill_later_btn	Faturar depois
 bill_later_extra_oda	ODA
-bill_later_extra_packing	Packing
-bill_later_extra_other	Other
+bill_later_extra_packing	Embalagem
+bill_later_extra_other	Outro
 pay_ap_heading	Pagar o que lhes devemos (AP)
 country_tax	País e impostos
 extra_tills_heading	Caixas extra
@@ -777,26 +777,26 @@ onboard_book_tmpl	Livro · {} — adicione itens e crédito inicial, depois toqu
 onboard_template_tmpl	Dê um nome ao lugar se quiser e escolha como começar.
 tmpl_blurb	Livros e balcão de courier: remetentes, transportadoras, diário, AWB.
 tmpl_how	Registre envios no balcão; diário para hoje; abas para tarifas, partes e relatórios.
-app_template_heading	Shop templates
-app_template_blurb	Pick a starter desk. Skip leaves parties empty.
-app_template_skip	Skip for now
-app_template_status	Server ready — import a template, or skip
-app_template_importing	Applying {title}…
-app_template_public_hdr	Templates
-app_template_import_selected	Import selected
-app_template_wipe_warn	This clears books trading data (bookings, ledgers) and applies the template’s shop settings. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
-public_tmpl_help	Bundled agency packs for this shop. No download needed.
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+app_template_heading	Modelos de loja
+app_template_blurb	Escolha um posto inicial. «Ignorar por enquanto» deixa a lista de partes vazia.
+app_template_skip	Ignorar por enquanto
+app_template_status	Servidor pronto — importe um modelo ou ignore
+app_template_importing	Aplicando {title}…
+app_template_public_hdr	Modelos
+app_template_import_selected	Importar selecionado
+app_template_wipe_warn	Isto apaga os dados de movimento dos livros (envios, contas correntes) e aplica as definições de loja do modelo. Continuar?
+app_template_wipe_continue	Continuar
+app_template_wipe_cancel	Cancelar
+public_tmpl_help	Pacotes de agência incluídos para esta loja. Não é preciso transferir nada.
+business_day	Quando é que «Hoje» recomeça?
+business_day_help	Com «Até ao fecho do dia», «Livro do dia» continua depois da meia-noite até registar o fecho do dia. Com «Meia-noite do calendário», o dia é cortado às 00:00, hora local.
+biz_day_until_close	Até ao fecho do dia
+biz_day_midnight	Meia-noite do calendário
+business_day_saved	Dia de trabalho guardado
+report_day_lens	Ver «Hoje» por
+report_day_lens_help	Só muda a vista: não altera quando «Fecho do dia» recomeça «Hoje». «Por fecho do dia» segue o último fecho do dia; «Por meia-noite» corta às 00:00, hora local.
+report_lens_day_close	Por fecho do dia
+report_lens_midnight	Por meia-noite
 trk_booked	Registrado
 trk_picked_up	Coletado
 trk_in_transit	Em trânsito

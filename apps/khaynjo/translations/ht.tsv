@@ -384,12 +384,12 @@ app_template_need_internet	Bezwen entènèt pou telechaje modèl
 app_template_import_selected	Enpòte sa ki chwazi a
 app_template_check_code	Tcheke kòd
 app_template_import	Enpòte
-app_template_from_device	Import from this device
-app_template_from_device_help	Pick a folder that contains template.json (and optional shop_defaults.json).
-settings_app_tmpl_note	Re-import clears sales, KOTs, and ledgers, then applies the pack’s shop settings. Menu-only templates: Menu → Item templates.
-app_template_wipe_warn	This clears books trading data (sales, KOTs, ledgers) and applies the template’s shop settings. Menu/setup may change. Continue?
-app_template_wipe_continue	Continue
-app_template_wipe_cancel	Cancel
+app_template_from_device	Enpòte soti nan aparèy sa a
+app_template_from_device_help	Chwazi yon katab ki gen template.json (e, si ou vle, shop_defaults.json).
+settings_app_tmpl_note	Enpòte ankò efase lavant, KOT ak rejis yo, epi li aplike paramèt boutik pake a. Modèl ki gen meni sèlman: «Meni» → «Modèl atik».
+app_template_wipe_warn	Sa a efase done komès nan liv yo (lavant, KOT, rejis) epi li aplike paramèt boutik modèl la. Meni an ak konfigirasyon an ka chanje. Ou vle kontinye?
+app_template_wipe_continue	Kontinye
+app_template_wipe_cancel	Anile
 currency	Lajan
 backup	Sovgad
 use	Sèvi
@@ -550,22 +550,22 @@ new_party_clear	Nouvo pati (efase fòm)
 new_party_kind_supplier_ph	Kalite nouvo pati (Founisè)
 next_country	Pwochen peyi
 next_order	Pwochen kòmand (efase biwo)
-nav_drafts	Drafts
-park_draft	Park draft
-drafts_help	Open counter carts you parked mid-order — not books until Take payment. Tap a card to resume on Order; Discard drops the draft. Day close does not clear these.
-drafts_park_nothing	Nothing to park — add items to the cart
-drafts_park_counter_only	Park draft is for the counter desk only — leave the table order or use Floor
-drafts_parked	Parked in Drafts — desk is clear
-drafts_discard	Discard draft
-drafts_discarded	Draft discarded
-drafts_gone	That draft is no longer on the list
-drafts_closed	That draft was already paid or discarded
-drafts_empty	No drafts yet. On Counter, add dishes and tap Park draft.
-drafts_card_kind	Draft
-drafts_card_no_lines	No lines
-drafts_card_lines	lines
-drafts_summary_fmt	{n} open drafts
-drafts_cols_fmt	{n} col
+nav_drafts	Bouyon
+park_draft	Sove kòm bouyon
+drafts_help	Kòmand kontwa ou te mete sou kote nan mitan — yo pa antre nan liv yo anvan «Pran peman». Tape yon kat pou kontinye nan «Kòmand»; «Efase bouyon» efase bouyon an. «Fèmti jounen» pa efase yo.
+drafts_park_nothing	Pa gen anyen pou mete sou kote — ajoute atik nan panye a
+drafts_park_counter_only	«Sove kòm bouyon» se sèlman pou kòmand kontwa — kite kòmand tab la, oswa itilize «Sal»
+drafts_parked	Sove nan «Bouyon» — kontwa a lib
+drafts_discard	Efase bouyon
+drafts_discarded	Bouyon efase
+drafts_gone	Bouyon sa a pa sou lis la ankò
+drafts_closed	Bouyon sa a te deja peye oswa efase
+drafts_empty	Poko gen bouyon. Nan «Kontwa», ajoute pla epi tape «Sove kòm bouyon».
+drafts_card_kind	Bouyon
+drafts_card_no_lines	Pa gen liy
+drafts_card_lines	liy
+drafts_summary_fmt	{n} bouyon ouvè
+drafts_cols_fmt	{n} kolòn
 note_gstin_ph	Nòt / GSTIN / rapèl akò
 notes_attach_party	Nòt ak atachman (pati chwazi)
 notes_attach_sale	Nòt ak atachman (vant chwazi)
@@ -588,15 +588,15 @@ print_open	Enprime / louvri
 reason_amend_ph	Rezon pou korije / anile / ranbouse
 reason_note_ph	Rezon / nòt (pèt, konte, …)
 record_day_close	Anrejistre fèmti jounen
-business_day	When does Today reset?
-business_day_help	Until Day close keeps Day book going past midnight until you record day close. Calendar midnight cuts at 12:00 am local.
-biz_day_until_close	Until Day close
-biz_day_midnight	Calendar midnight
-business_day_saved	Business day saved
-report_day_lens	View Today as
-report_day_lens_help	View only — does not change when Day close resets Today. By Day close follows the last day close; By midnight cuts at local 12:00 am.
-report_lens_day_close	By Day close
-report_lens_midnight	By midnight
+business_day	Ki lè «Jodi a» rekòmanse?
+business_day_help	Avèk «Jiska fèmti jounen», «Liv jounen» kontinye apre minwi jiskaske ou anrejistre fèmti jounen an. Avèk «Minwi kalandriye», jounen an koupe a 00:00 (minwi), lè lokal.
+biz_day_until_close	Jiska fèmti jounen
+biz_day_midnight	Minwi kalandriye
+business_day_saved	Jou biznis anrejistre
+report_day_lens	Montre «Jodi a» kòm
+report_day_lens_help	Afichaj sèlman — li pa chanje ki lè «Fèmti jounen» rekòmanse «Jodi a». «Dapre fèmti jounen» swiv dènye fèmti jounen an; «Dapre minwi» koupe a 00:00 (minwi), lè lokal.
+report_lens_day_close	Dapre fèmti jounen
+report_lens_midnight	Dapre minwi
 refresh_from_shop	Rafrechi depi boutik
 refund	Ranbousman
 remove_selected	Retire sa ki chwazi
@@ -864,7 +864,7 @@ find_printers	Chèche enprimant
 printers_looking	Ap chèche…
 saving_printer	Ap ajoute enprimant…
 cancelled	Anile
-cancelling	Cancellingâ¦
+cancelling	N ap anile…
 removing	Ap retire…
 removed	Retire
 updating_order	Ap mete ajou…
