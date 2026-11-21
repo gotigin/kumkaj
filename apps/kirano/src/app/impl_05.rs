@@ -365,6 +365,23 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         if cfg!(target_os = "android") {
             return;
         }
+        if let Some(size) = smoke_window_override() {
+            let prefs = store::WindowGeomPrefs {
+                width: size.x,
+                height: size.y,
+                x: 0.0,
+                y: 0.0,
+            };
+            *pending_window_geom().lock().unwrap() = Some(prefs);
+            self.ui.window(cx, ids!(main_window)).configure_window(
+                cx,
+                size,
+                dvec2(0.0, 0.0),
+                false,
+                store::APP_LABEL.to_string(),
+            );
+            return;
+        }
         let Some(prefs) = store::load_window_geom() else {
             *pending_window_geom().lock().unwrap() = None;
             return;
@@ -410,9 +427,9 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         size_mismatch || pos_mismatch
     }
 
-    /// Desktop (Windows / Linux / macOS): never allow inner size below 375 css px.
+    /// Desktop (Windows / Linux / macOS): never allow inner size below the layout floor.
     fn enforce_min_desktop_window_size(&self, cx: &mut Cx) {
-        if cfg!(target_os = "android") {
+        if cfg!(target_os = "android") || smoke_window_override().is_some() {
             return;
         }
         let win = self.ui.window(cx, ids!(main_window));

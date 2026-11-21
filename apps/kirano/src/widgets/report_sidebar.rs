@@ -448,6 +448,10 @@ impl Widget for SidebarNavList {
             let st = app_state().lock().unwrap();
             (st.nav_order.clone(), st.nav_hidden.clone())
         };
+        // "Always on" beside ↑ ↓ and the switch needs a wide row: on a phone
+        // it left the row's own label no room (the switch, on and not
+        // tappable, already says it).
+        let roomy = cx.turtle().next_walk_width(walk.width, walk.margin) >= 420.0;
         let row = *sidebar_nav_row_height().lock().unwrap();
         let n = order.len();
         let walk = Walk {
@@ -495,7 +499,7 @@ impl Widget for SidebarNavList {
                         let hit = item.button(cx, ids!(toggle_hit));
                         hit.set_enabled(cx, !always);
                     }
-                    item.label(cx, ids!(always_label)).set_visible(cx, always);
+                    item.label(cx, ids!(always_label)).set_visible(cx, always && roomy);
                     item.label(cx, ids!(always_label)).set_text(cx, &always_lbl);
                     item.button(cx, ids!(move_up)).set_visible(cx, item_id > 0);
                     item.button(cx, ids!(move_down))

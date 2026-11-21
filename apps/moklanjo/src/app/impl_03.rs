@@ -1129,9 +1129,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_start_template), rtl);
         self.align_label(cx, ids!(h_your_brand), rtl);
         self.align_label(cx, ids!(h_units_heading), rtl);
-        self.align_label(cx, ids!(h_booking_consignor), rtl);
         self.align_label(cx, ids!(booking_consignor_hint), rtl);
-        self.align_label(cx, ids!(h_booking_consignee), rtl);
         self.align_label(cx, ids!(h_booking_measures), rtl);
         self.align_label(cx, ids!(h_backup), rtl);
         self.align_label(cx, ids!(h_settings_language), rtl);

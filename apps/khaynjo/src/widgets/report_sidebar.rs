@@ -280,6 +280,21 @@ fn kv_stacks(row_w: f64, value_w: f64) -> bool {
     row_w > 1.0 && value_w > 0.0 && value_w + KV_GAP + KV_MIN_LABEL_W > row_w
 }
 
+/// The print-column row's three number slots and their gaps (`Cols` in the
+/// layout: 44 + 96 + 96 and three gaps of 14), and the least the name
+/// beside them may get.
+const COLS_FIXED_W: f64 = 44.0 + 96.0 + 96.0 + 3.0 * 14.0;
+const COLS_MIN_NAME_W: f64 = 110.0;
+
+/// Whether a print-column row is drawn stacked — the name on its own line,
+/// the numbers under it (`ColsNarrow`): when the card is too narrow to give
+/// the name [`COLS_MIN_NAME_W`] beside the Fixed number slots. On a 360 px
+/// phone the name got a few px, wrapped one letter per line and the bill on
+/// screen had no dish names (2026-11-21).
+fn cols_stack(row_w: f64) -> bool {
+    row_w > 1.0 && row_w < COLS_FIXED_W + COLS_MIN_NAME_W
+}
+
 /// A report on screen, laid out by [`parse_report`]. Set with `set_text`.
 #[derive(Script, ScriptHook, Widget)]
 struct ReportText {
@@ -416,8 +431,15 @@ impl Widget for ReportText {
                             item
                         }
                         ReportRow::Cols(cells) => {
-                            let item =
-                                list.item(cx, item_id, if rtl { id!(ColsRtl) } else { id!(Cols) });
+                            let template = match (cols_stack(row_w), rtl) {
+                                (false, false) => id!(Cols),
+                                (false, true) => id!(ColsRtl),
+                                // Two cells are a meta pair, not Item | Qty | …
+                                (true, _) if cells.len() == 2 => id!(ColsNarrowPair),
+                                (true, false) => id!(ColsNarrow),
+                                (true, true) => id!(ColsNarrowRtl),
+                            };
+                            let item = list.item(cx, item_id, template);
                             paint_report_cols(
                                 cx,
                                 &item,
@@ -430,6 +452,18 @@ impl Widget for ReportText {
                         ReportRow::Gap => list.item(cx, item_id, id!(Gap)),
                     };
                     item.draw_all_unscoped(cx);
+                    if matches!(row, ReportRow::Cols(..)) {
+                        // The card's width is known once a row is drawn; a
+                        // row drawn in the wrong shape is drawn again.
+                        let was = cols_stack(row_w);
+                        let w = item.area().rect(cx).size.x;
+                        if w > 1.0 {
+                            row_w = w;
+                        }
+                        if cols_stack(row_w) != was {
+                            restack = true;
+                        }
+                    }
                     if is_kv {
                         // The rows' width, and (side by side only: stacked,
                         // the value fills the row) the value's own width.
@@ -550,6 +584,10 @@ impl Widget for SidebarNavList {
             let st = app_state().lock().unwrap();
             (st.nav_order.clone(), st.nav_hidden.clone())
         };
+        // "Always on" beside ↑ ↓ and the switch needs a wide row: on a phone
+        // it left the row's own label no room (the switch, on and not
+        // tappable, already says it).
+        let roomy = cx.turtle().next_walk_width(walk.width, walk.margin) >= 420.0;
         let row = *sidebar_nav_row_height().lock().unwrap();
         let n = order.len();
         let walk = Walk {
@@ -597,7 +635,7 @@ impl Widget for SidebarNavList {
                         let hit = item.button(cx, ids!(toggle_hit));
                         hit.set_enabled(cx, !always);
                     }
-                    item.label(cx, ids!(always_label)).set_visible(cx, always);
+                    item.label(cx, ids!(always_label)).set_visible(cx, always && roomy);
                     item.label(cx, ids!(always_label)).set_text(cx, &always_lbl);
                     item.button(cx, ids!(move_up)).set_visible(cx, item_id > 0);
                     item.button(cx, ids!(move_down))

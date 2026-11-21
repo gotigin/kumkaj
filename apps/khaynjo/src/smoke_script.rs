@@ -109,7 +109,26 @@ fn smoke_peer_tour() -> Vec<Screen> {
         Screen::Credit,
         Screen::Settings,
         // Team lives under Settings → Team (not a chrome peer).
+        // New screens go last: the baselines in cert/baselines are named by
+        // step number (005_peer_Floor, 012_peer_Settings).
+        Screen::Drafts,
     ]
+}
+
+/// Isolated UI smoke only: `KUMKAJ_SMOKE_WINDOW=360x740` opens the window at
+/// exactly that size at the screen origin — phone widths too, below the
+/// desktop floor — so the tour's screenshots show the whole app at that size.
+/// Without it the window is 1024×768 whatever the Xvfb screen is, and a
+/// "360×640" capture is only that window's corner (the multi-size cert ran
+/// that way until 2026-11-21). Ignored outside a smoke run.
+fn smoke_window_override() -> Option<DVec2> {
+    if std::env::var("KUMKAJ_SMOKE_SCRIPT").is_err() {
+        return None;
+    }
+    let raw = std::env::var("KUMKAJ_SMOKE_WINDOW").ok()?;
+    let (w, h) = raw.split_once('x')?;
+    let (w, h) = (w.trim().parse::<f64>().ok()?, h.trim().parse::<f64>().ok()?);
+    (w >= 200.0 && h >= 200.0).then(|| dvec2(w, h))
 }
 
 impl App {

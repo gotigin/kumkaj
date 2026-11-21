@@ -11,12 +11,13 @@ fn counter_drafts_row_height() -> &'static Mutex<f64> {
 
 impl Widget for CounterDraftsList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let grid_w = cx.turtle().next_walk_width(walk.width, walk.margin);
         let (rows, cols, currency, fiscal, lang, visible) = {
             let st = app_state().lock().unwrap();
             let rows = st.counter_drafts_rows.clone();
             (
                 rows,
-                counter_drafts_column_count(st.counter_drafts_columns),
+                counter_drafts_column_count(st.counter_drafts_columns, grid_w),
                 st.locale.currency.clone(),
                 st.fiscal.clone(),
                 st.locale.language.clone(),
@@ -26,6 +27,7 @@ impl Widget for CounterDraftsList {
         if !visible {
             return DrawStep::done();
         }
+        *counter_drafts_drawn_cols().lock().unwrap() = cols;
         let line_rows = rows.len().div_ceil(cols.max(1));
         let row_h = *counter_drafts_row_height().lock().unwrap();
         let walk = Walk {

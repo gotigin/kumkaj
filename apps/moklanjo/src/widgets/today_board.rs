@@ -11,6 +11,7 @@ fn today_board_row_height() -> &'static Mutex<f64> {
 
 impl Widget for TodayBoardList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let board_w = cx.turtle().next_walk_width(walk.width, walk.margin);
         let (rows, cols, currency, fiscal, lang, visible) = {
             let st = app_state().lock().unwrap();
             let filter = st.today_board_filter;
@@ -26,7 +27,7 @@ impl Widget for TodayBoardList {
                 .collect();
             (
                 rows,
-                today_board_column_count(st.today_board_columns),
+                today_board_column_count(st.today_board_columns, board_w),
                 st.locale.currency.clone(),
                 st.fiscal.clone(),
                 st.locale.language.clone(),
@@ -36,6 +37,7 @@ impl Widget for TodayBoardList {
         if !visible {
             return DrawStep::done();
         }
+        *today_board_drawn_cols().lock().unwrap() = cols;
         let line_rows = rows.len().div_ceil(cols.max(1));
         let row_h = *today_board_row_height().lock().unwrap();
         let walk = Walk {

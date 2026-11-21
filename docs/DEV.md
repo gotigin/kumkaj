@@ -110,7 +110,7 @@ Loads [`apps/moklanjo/env/development.env`](../apps/moklanjo/env/development.env
   conventions). See § OS-native interaction below.
 - **Desktop window size & maximize** — see § below (detail under OS-native).
 - **Windows console** — production builds (`KUMKAJ_ENV=production` / `package-windows.sh`) use the GUI subsystem (no terminal). Dev builds keep a console for logs.
-- **Min layout width 375 css px** — `app_shell` uses `Fill{min: 375.}` inside a horizontal scroll. The UI never lays out narrower than 375; if the device/window is below 375, content scrolls horizontally (no crop). Desktop resize is also floored at 375.
+- **Min layout width 360 css px** — `app_shell` uses `Fill{min: 360.}` inside a horizontal scroll. The UI never lays out narrower than 360; if the device/window is below 360, content scrolls horizontally (no crop). Desktop resize is also floored at 360. (375 until 2026-11-21: most Android phones are 360 wide, so every screen sat 15 px off their right edge.)
 - **Dev size** — `W×H` in the window caption bar, left of the Kumkaj title (terracotta on navy). Controlled by `KUMKAJ_SHOW_SIZE_BADGE` in the env file (not Cargo `--release`).
 - **Button label inset** — every face within an app sets layout `padding` **and** `label_walk.margin` (Makepad 2 Fill + Ellipsis otherwise pins ink to the face edge)
 - **Reusable layout widgets** — see § Makepad 2 UI faces (agent guide) below (selection + truncation). Product summary: [`DESIGN.md`](DESIGN.md) § Makepad 2 faces.
@@ -470,7 +470,7 @@ Expected floating-window behaviour on **desktop** Linux, Windows, and macOS
 | Max button (single click) | Toggle maximize ↔ restore |
 | Caption bar double-click | **Same** toggle as the max button (not a second code path) |
 | Restore with no saved float size | **1024×768** (never a monitor-fill size) |
-| Resize floor | **375 css px** width and height |
+| Resize floor | **360 css px** width and height |
 | OS / WM shortcuts | Same as § OS-native interaction — snap, move across displays, etc. must work like other apps on that OS |
 
 `window_geom.json` must **never** store maximized/fullscreen geometry. Persisting ~monitor size (e.g. `2560×1048` on an ultrawide) made the next launch look maximized while floating; the next `set_maximized` then fought the compositor on multi-monitor layouts.
@@ -2001,6 +2001,33 @@ run_x "$app"`: a plain call, each tier in its own subshell, errexit live
 inside. Every earlier fast log from 2026-11-15/16 was checked: only that one
 run had hidden a failure. When reading a cert, grep its `log.txt` for
 `FAILED` too, not only the summary line.
+
+**A phone-size shot must be a phone-size window (fixed 2026-11-21).** The
+multi-size step only shrank the Xvfb screen. The app window stayed 1024×768
+(its default, and the desktop floor refused anything narrower), so a
+"360×640" capture was the top-left corner of a desk-size window: phone
+layouts had never been on a cert screenshot. `run-ui-smoke-isolated.sh` now
+takes `SMOKE_WINDOW=fit` (the window is the screen) or `SMOKE_WINDOW=WxH`;
+the app honours it through `KUMKAJ_SMOKE_WINDOW`, in smoke runs only, below
+the desktop floor too. `product-cert.sh` multi-size passes `fit`. To look at
+one app at one size:
+
+```bash
+SMOKE_SCRIPT=full SMOKE_XVFB_SIZE=360x740x24 SMOKE_WINDOW=fit \
+  SMOKE_OUT=local/shots/khaynjo-360 ./scripts/run-ui-smoke-isolated.sh khaynjo
+```
+
+The first real phone tours found, in one morning: the "When does Today
+reset?" and "View Today as" choices invisible in all four apps (a
+`width: Fill` SegBtn in a `Fit` wrapper collapses to nothing and its label
+wraps one letter per line), a card that named two widgets before the script
+had defined them (three runtime `[E]` lines — compile checks cannot see
+those), dish names missing from the bill on screen at 360 px, labels running
+under the Settings arrows, titles running off the screen with their ℹ, and
+the 375 px layout floor itself — 15 px wider than most Android phones.
+Look at the PNGs; a green tour only says nothing crashed. New screens join
+the tour **at the end** of `smoke_peer_tour` / `smoke_peer_tabs`, because the
+baselines are named by step number.
 
 Honesty: does not replace Console / Partner Center human review, full OCR of
 every language, or a real-device GPU farm. Apple stays scaffold-only until

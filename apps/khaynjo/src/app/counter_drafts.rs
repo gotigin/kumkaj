@@ -46,7 +46,7 @@ impl App {
             return;
         }
 
-        let cols = counter_drafts_column_count(app_state().lock().unwrap().counter_drafts_columns);
+        let cols = *counter_drafts_drawn_cols().lock().unwrap();
         let list = self
             .ui
             .widget(cx, ids!(counter_drafts_list))
@@ -118,7 +118,8 @@ impl App {
             )
         };
         let t = |k: &str| locale::t(&lang, k);
-        let col_value = if cols == 0 { 3 } else { cols };
+        // No pick yet: light the count Drafts draws with at this width.
+        let col_value = counter_drafts_column_count(cols, *content_width().lock().unwrap()) as u8;
         for (off, on, c) in DRAFTS_COL_BTNS {
             let active = c == col_value;
             let label = t("drafts_cols_fmt").replace("{n}", &c.to_string());

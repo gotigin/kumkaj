@@ -84,13 +84,32 @@ struct TodayBoardCard {
     at: String,
 }
 
-/// Column count for the Board grid (`0` → three columns).
-fn today_board_column_count(cols: u8) -> usize {
+/// Column count for the Board grid, `board_w` px wide. The owner's pick
+/// (2 / 3 / 4) wins. With none yet (`0`): two columns on a phone — three made
+/// cards about 100 px wide there and the AWB broke over four lines
+/// (2026-11-21) — and three on anything wider.
+fn today_board_column_count(cols: u8, board_w: f64) -> usize {
     match cols {
         2 => 2,
+        3 => 3,
         4 => 4,
+        _ if board_w > 1.0 && board_w < 520.0 => 2,
         _ => 3,
     }
+}
+
+/// Width of the screen's content (window less rail and the 16 px side
+/// padding), kept by `apply_shell_layout`.
+fn content_width() -> &'static Mutex<f64> {
+    static W: OnceLock<Mutex<f64>> = OnceLock::new();
+    W.get_or_init(|| Mutex::new(760.0))
+}
+
+/// Columns the Board last drew with: taps go by the same count the cards
+/// were laid out in.
+fn today_board_drawn_cols() -> &'static Mutex<usize> {
+    static COLS: OnceLock<Mutex<usize>> = OnceLock::new();
+    COLS.get_or_init(|| Mutex::new(3))
 }
 
 /// Which Reports-screen facet is open (ops/COD/riders share `Screen::Reports`).

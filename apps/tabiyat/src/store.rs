@@ -11084,8 +11084,8 @@ pub fn data_dir() -> Result<PathBuf, String> {
 }
 
 /// Hard floor for desktop window width/height (css px) on every desktop OS.
-/// Matches the app_shell layout floor (`Fill{min: 375.}`); Android ignores window sizing.
-pub const MIN_DESKTOP_WINDOW_CSS: f64 = 375.0;
+/// Matches the app_shell layout floor (`Fill{min: 360.}`); Android ignores window sizing.
+pub const MIN_DESKTOP_WINDOW_CSS: f64 = 360.0;
 
 /// Below this width the shell uses phone chrome (bottom tabs). Saved geoms narrower
 /// than this are ignored on restore so a squeezed session cannot lock desktop

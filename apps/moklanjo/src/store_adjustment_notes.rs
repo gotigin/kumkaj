@@ -389,7 +389,7 @@ mod tests {
     use crate::domain::{Money, Product};
 
     fn temp_db() -> std::path::PathBuf {
-        let p = std::env::temp_dir().join(format!("moklanjo_adj_{}.db", new_id()));
+        let p = crate::test_dirs::run_root().join(format!("moklanjo_adj_{}.db", new_id()));
         let _ = std::fs::remove_file(&p);
         p
     }

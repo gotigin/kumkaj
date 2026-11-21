@@ -54,7 +54,7 @@ mod floor_tests {
     /// with no upper limit; "Fit screen" counts whole tiles across.
     #[test]
     fn columns_have_no_upper_limit_and_fit_counts_whole_tiles() {
-        assert_eq!(floor_columns_for(375.0), 1, "app floor (375) shows one 280px tile");
+        assert_eq!(floor_columns_for(360.0), 1, "app floor (360) shows one 280px tile");
         assert_eq!(floor_columns_for(569.0), 1);
         assert_eq!(floor_columns_for(570.0), 2, "2 × 280 + one 10px gap");
         assert_eq!(floor_columns_for(2900.0), 10, "no cap of 8 any more");
@@ -185,7 +185,7 @@ mod floor_tests {
     }
 
     /// One quiet row (2026-11-13): − + Auto at fixed widths, then the Columns
-    /// pick as the **last**, Fill child — it fits the 375 px floor with room to
+    /// pick as the **last**, Fill child — it fits the 360 px floor with room to
     /// spare. (An older Right row put a Fixed(176) Columns box first and pushed
     /// Auto past a phone's edge; a Fill child before Fixed ones does the same.)
     #[test]
@@ -203,8 +203,8 @@ mod floor_tests {
             .filter_map(|w| w.split_whitespace().next())
             .filter_map(|w| w.parse::<f64>().ok())
             .sum();
-        // 375 floor − 32 screen padding − 3 gaps of 8 − a usable Columns pick.
-        assert!(fixed + 24.0 + 100.0 <= 343.0, "fixed widths {fixed} crowd the phone floor");
+        // 360 floor − 32 screen padding − 3 gaps of 8 − a usable Columns pick.
+        assert!(fixed + 24.0 + 100.0 <= 328.0, "fixed widths {fixed} crowd the phone floor");
         let auto = row.find("floor_zoom_auto := SegBtn").expect("Auto zoom control must remain");
         let pick = row.find("floor_cols_box := View{").expect("Columns pick");
         assert!(pick > auto, "the Fill Columns pick must come after the fixed controls");

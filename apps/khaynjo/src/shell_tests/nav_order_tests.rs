@@ -156,11 +156,17 @@ mod nav_order_tests {
             branches: true, is_owner: true, shop_settings: true, team_screen: true, signed_in: true,
             floor: true, kitchen: true, floor_on: true, branch_count: 2 };
         let bars = nav_chrome_order(&order, &hidden, caps);
-        let screens: Vec<NavTab> = arranged
+        let mut screens: Vec<NavTab> = arranged
             .split(',')
             .filter_map(|k| NAV_TABS.iter().copied().find(|t| nav_tab_key(*t) == k))
             .filter(|t| *t != NavTab::Buy)
             .collect();
+        // Drafts (2026-11-20) is a work screen, not a Settings section: a
+        // layout saved before it existed gets it shown, at its place in the
+        // default order — hidden, a parked cart could not be found again.
+        let after_day_close = screens.iter().position(|t| *t == NavTab::DayClose).unwrap() + 1;
+        screens.insert(after_day_close, NavTab::Drafts);
+        assert!(!hidden.contains(&NavTab::Drafts), "Drafts joins shown");
         assert_eq!(bars, screens, "the bars keep the owner's screens, in the owner's order");
         // Once the owner shows Printers and saves, it stays shown.
         let mut shown = hidden.clone();

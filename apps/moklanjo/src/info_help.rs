@@ -80,6 +80,16 @@ struct InfoHelp {
     /// text alone during the same frame as set_title.
     #[rust]
     title_text: String,
+    /// The title is drawn by `title_wrap` (Fill, wraps) instead of `title`
+    /// (Fit): set when the Fit title and its ℹ were measured wider than the
+    /// row, cleared when the row is wide enough for them again.
+    #[rust]
+    title_wraps: bool,
+    /// The Fit title's width as last drawn (0 = not drawn yet).
+    #[rust]
+    title_fit_w: f64,
+    #[rust]
+    title_settle: NextFrame,
 }
 
 impl Widget for InfoHelp {
@@ -90,6 +100,9 @@ impl Widget for InfoHelp {
             Area::Empty
         };
         self.view.handle_event(cx, event, scope);
+        if self.title_settle.is_event(event).is_some() {
+            self.view.redraw(cx);
+        }
 
         if self.tip.is_empty() {
             return;
@@ -143,11 +156,14 @@ impl Widget for InfoHelp {
 
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         let has_title = !self.title_text.trim().is_empty();
+        let wraps = has_title && self.title_wraps;
         self.view
             .widget(cx, ids!(title))
-            .set_visible(cx, has_title);
-        // Trail is Fill — only with a title, or tip-only Fit collapses wrong.
-        self.view.view(cx, ids!(trail)).set_visible(cx, has_title);
+            .set_visible(cx, has_title && !wraps);
+        self.view.widget(cx, ids!(title_wrap)).set_visible(cx, wraps);
+        // Trail is Fill — only beside the Fit title: tip-only Fit collapses
+        // wrong with it, and beside the Fill title it would take half the row.
+        self.view.view(cx, ids!(trail)).set_visible(cx, has_title && !wraps);
         let walk = Walk {
             width: if has_title {
                 Size::fill()
@@ -157,7 +173,32 @@ impl Widget for InfoHelp {
             height: Size::fit(),
             ..walk
         };
-        self.view.draw_walk(cx, scope, walk)
+        let step = self.view.draw_walk(cx, scope, walk);
+        if has_title {
+            // Which title next frame: measured, because only a drawn title
+            // has a width. The row is as wide as the screen gives it.
+            let row = self.view.area().rect(cx);
+            let tip = self.view.button(cx, ids!(tip_btn)).area().rect(cx);
+            if !wraps {
+                let title = self.view.widget(cx, ids!(title)).area().rect(cx);
+                if title.size.x > 1.0 {
+                    self.title_fit_w = title.size.x;
+                }
+                if row.size.x > 1.0 && tip.pos.x + tip.size.x > row.pos.x + row.size.x + 0.5 {
+                    self.title_wraps = true;
+                    self.title_settle = cx.new_next_frame();
+                }
+            } else if self.title_fit_w > 1.0 {
+                let wrap = self.view.widget(cx, ids!(title_wrap)).area().rect(cx);
+                // Everything on the row that is not the title: icon, gaps, ℹ.
+                let beside = row.size.x - wrap.size.x;
+                if row.size.x > 1.0 && wrap.size.x > 1.0 && self.title_fit_w + beside <= row.size.x - 0.5 {
+                    self.title_wraps = false;
+                    self.title_settle = cx.new_next_frame();
+                }
+            }
+        }
+        step
     }
 
     fn text(&self) -> String {
@@ -172,12 +213,23 @@ impl Widget for InfoHelp {
 impl InfoHelpRef {
     fn set_title(&self, cx: &mut Cx, title: &str) {
         let has = !title.trim().is_empty();
-        if let Some(mut inner) = self.borrow_mut() {
+        let wraps = if let Some(mut inner) = self.borrow_mut() {
+            if inner.title_text != title {
+                // A new title is measured afresh, as a Fit title first.
+                inner.title_wraps = false;
+                inner.title_fit_w = 0.0;
+            }
             inner.title_text = title.to_string();
-        }
+            inner.title_wraps
+        } else {
+            false
+        };
         let w = self.widget(cx, ids!(title));
         w.set_text(cx, title);
-        w.set_visible(cx, has);
+        w.set_visible(cx, has && !wraps);
+        let w = self.widget(cx, ids!(title_wrap));
+        w.set_text(cx, title);
+        w.set_visible(cx, has && wraps);
     }
 
     fn set_nav_icon(&self, cx: &mut Cx, tab: NavTab) {

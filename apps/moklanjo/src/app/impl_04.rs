@@ -1373,8 +1373,9 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .text_input(cx, ids!(onboard_cust_bal))
             .set_empty_text(cx, s("amount_owed_ph"));
         self.ui
-            .widget(cx, ids!(h_booking_consignor))
-            .set_text(cx, &s("booking_consignor_heading"));
+            .widget(cx, ids!(booking_consignor_help))
+            .as_info_help()
+            .set_title(cx, &s("booking_consignor_heading"));
         self.ui
             .widget(cx, ids!(booking_consignor_hint))
             .set_text(cx, &s("booking_consignor_hint"));
@@ -1383,8 +1384,9 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
             .as_info_help()
             .set_tip(&plain_display_text(&s("booking_consignor_hint")));
         self.ui
-            .widget(cx, ids!(h_booking_consignee))
-            .set_text(cx, &s("booking_consignee_heading"));
+            .widget(cx, ids!(booking_consignee_help))
+            .as_info_help()
+            .set_title(cx, &s("booking_consignee_heading"));
         self.ui
             .widget(cx, ids!(booking_consignee_help))
             .as_info_help()

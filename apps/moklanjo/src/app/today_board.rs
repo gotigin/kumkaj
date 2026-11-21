@@ -68,7 +68,7 @@ impl App {
             return;
         }
 
-        let cols = today_board_column_count(app_state().lock().unwrap().today_board_columns);
+        let cols = *today_board_drawn_cols().lock().unwrap();
         let list = self
             .ui
             .widget(cx, ids!(today_board_list))
@@ -189,7 +189,8 @@ impl App {
             self.ui.button(cx, off).set_visible(cx, !active);
             self.ui.button(cx, on).set_visible(cx, active);
         }
-        let col_value = if cols == 0 { 3 } else { cols };
+        // No pick yet: light the count the Board draws with at this width.
+        let col_value = today_board_column_count(cols, *content_width().lock().unwrap()) as u8;
         for (off, on, c) in BOARD_COL_BTNS {
             let active = c == col_value;
             let label = t("board_cols_fmt").replace("{n}", &c.to_string());

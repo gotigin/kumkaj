@@ -1071,57 +1071,6 @@ script_mod! {
         draw_bg.border_size: 1.
         draw_bg.border_color: #xE3D3C8
     }
-    let DraftDeskCard = RoundedView{
-        cursor: MouseCursor.Hand
-        width: Fill height: Fit
-        padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
-        flow: Down spacing: 6
-        draw_bg.color: #xffffff
-        draw_bg.border_radius: 14.
-        draw_bg.border_size: 2.
-        draw_bg.border_color: #x4A5568
-        kind := Label{
-            text: "Draft"
-            align: Align{x: 0.0}
-            draw_text.color: #x072058
-            draw_text.text_style.font_size: 11.
-        }
-        title := Label{
-            width: Fill
-            text: "Title"
-            align: Align{x: 0.0}
-            flow: Right{wrap: true}
-            draw_text.color: #x0B1220
-            draw_text.text_style.font_size: 14.
-        }
-        line2 := WrapLabel{
-            width: Fill
-            body: ""
-            font_color: #x3A4554
-            font_size: 12.
-        }
-        line3 := WrapLabel{
-            width: Fill
-            body: ""
-            font_color: #x3A4554
-            font_size: 11.
-        }
-        amount := Label{
-            width: Fill
-            text: "0"
-            align: Align{x: 0.0}
-            draw_text.color: #xC44E10
-            draw_text.text_style.font_size: 15.
-        }
-        time := Label{
-            width: Fill
-            text: ""
-            align: Align{x: 0.0}
-            draw_text.color: #x3A4554
-            draw_text.text_style.font_size: 11.
-        }
-        discard_draft := StackLightBtn{text: "Discard"}
-    }
     // Equal Fill fields only. Max two FieldInputs — a third long placeholder
     // wraps and makes the row look stair-stepped on Settings widths.
     let FormFieldRow = View{
@@ -1933,6 +1882,63 @@ script_mod! {
     }
     let WrapLabel = mod.widgets.WrapLabel{}
 
+    // One parked counter cart on Drafts. Lives here, not with the other
+    // cards above: it uses WrapLabel and StackLightBtn, and a face can only
+    // name what the script has already defined (a too-early use is a
+    // runtime `[E] variable … not found in scope`, the card then draws
+    // without those children — found 2026-11-21 by the UI smoke).
+    let DraftDeskCard = RoundedView{
+        cursor: MouseCursor.Hand
+        width: Fill height: Fit
+        padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+        flow: Down spacing: 6
+        draw_bg.color: #xffffff
+        draw_bg.border_radius: 14.
+        draw_bg.border_size: 2.
+        draw_bg.border_color: #x4A5568
+        kind := Label{
+            text: "Draft"
+            align: Align{x: 0.0}
+            draw_text.color: #x072058
+            draw_text.text_style.font_size: 11.
+        }
+        title := Label{
+            width: Fill
+            text: "Title"
+            align: Align{x: 0.0}
+            flow: Right{wrap: true}
+            draw_text.color: #x0B1220
+            draw_text.text_style.font_size: 14.
+        }
+        line2 := WrapLabel{
+            width: Fill
+            body: ""
+            font_color: #x3A4554
+            font_size: 12.
+        }
+        line3 := WrapLabel{
+            width: Fill
+            body: ""
+            font_color: #x3A4554
+            font_size: 11.
+        }
+        amount := Label{
+            width: Fill
+            text: "0"
+            align: Align{x: 0.0}
+            draw_text.color: #xC44E10
+            draw_text.text_style.font_size: 15.
+        }
+        time := Label{
+            width: Fill
+            text: ""
+            align: Align{x: 0.0}
+            draw_text.color: #x3A4554
+            draw_text.text_style.font_size: 11.
+        }
+        discard_draft := StackLightBtn{text: "Discard"}
+    }
+
     // Screen title + ℹ tip (CalloutTooltip via app_callout). Docs stay off the
     // work surface — tap/hover the icon when the tip is useful.
     // Titled: Fit title + tip + Fill trail — ℹ hugs the label on every screen
@@ -1959,6 +1965,21 @@ script_mod! {
             visible: false
             // Display title — selectable WrapLabel steals Android page swipe.
             // 16 (not 20): phone floor keeps long headings on one line.
+            selectable: false
+            font_size: 16.
+            font_color: #x260B08
+            margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        }
+        // The same title when it is too long for the row: Fill, so it wraps
+        // and ℹ stays on the row. A Fit title cannot wrap — a long one
+        // ("Consignments & dispatch", "When does Today reset?") ran off a
+        // 360 px phone and took its ℹ with it (2026-11-21). InfoHelp shows
+        // one of the two (`title_wraps` in info_help.rs).
+        title_wrap := WrapLabel{
+            width: Fill
+            height: Fit
+            body: ""
+            visible: false
             selectable: false
             font_size: 16.
             font_color: #x260B08
@@ -2030,8 +2051,10 @@ script_mod! {
         grab_key_focus: false
         reset_hover_on_click: true
         margin: Inset{top: 0. right: 0. bottom: 0. left: 0.}
-        // Right pad clears the in-row pill toggle (and "Always on").
-        padding: Inset{left: 40. right: 110. top: 12. bottom: 12.}
+        // Right pad clears what sits on the row's right: ↑, ↓ and the pill
+        // toggle (about 170 px with gaps). At 110 the label ran under the
+        // arrows on a phone ("Backup & rest[↑]", 2026-11-21); now it wraps.
+        padding: Inset{left: 40. right: 176. top: 12. bottom: 12.}
         // Fit label inside wrap:true — Fill freezes the UI.
         label_walk: Walk{
             width: Fit
@@ -4903,6 +4926,109 @@ script_mod! {
                         font_size: 14.
                     }
                 }
+                // The same row on a phone: the name on its own line, the numbers
+                // under it. Side by side, the three Fixed slots (44 + 96 + 96
+                // and their gaps) leave the name a few px at 360 — it wrapped
+                // one letter per line and the bill showed no dish names
+                // (2026-11-21). `cols_stack` in report_sidebar.rs picks this.
+                ColsNarrow := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Down spacing: 2
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    View{
+                        width: Fill height: Fit
+                        flow: Right spacing: 14
+                        align: Align{x: 1.0 y: 0.0}
+                        c1 := WrapLabel{
+                            width: Fixed(44.)
+                            body: ""
+                            flow: Right{wrap: true}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
+                        c2 := WrapLabel{
+                            width: Fixed(96.)
+                            body: ""
+                            flow: Right{wrap: true}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
+                        c3 := WrapLabel{
+                            width: Fixed(96.)
+                            body: ""
+                            flow: Right{wrap: true}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
+                    }
+                }
+                ColsNarrowRtl := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Down spacing: 2
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    View{
+                        width: Fill height: Fit
+                        flow: Right spacing: 14
+                        align: Align{x: 0.0 y: 0.0}
+                        c3 := WrapLabel{
+                            width: Fixed(96.)
+                            body: ""
+                            flow: Right{wrap: true}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
+                        c2 := WrapLabel{
+                            width: Fixed(96.)
+                            body: ""
+                            flow: Right{wrap: true}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
+                        c1 := WrapLabel{
+                            width: Fixed(44.)
+                            body: ""
+                            flow: Right{wrap: true}
+                            font_color: #x260B08
+                            font_size: 14.
+                        }
+                    }
+                }
+                // A two-cell meta row ("Bill No.:" | "Cashier: Owner") on a phone:
+                // one under the other, each the full width — in the 96 px
+                // Amount slot the second cell broke after every word.
+                ColsNarrowPair := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Down spacing: 2
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c3 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                }
                 Gap := View{
                     width: Fill height: 10
                 }
@@ -5224,7 +5350,7 @@ script_mod! {
                 window.title: "Kumkaj"
                 // First-run desktop default (not a phone frame). Later launches
                 // restore last size/position from window_geom.json in App code.
-                // Layout content still never goes below 375 css px (app_shell).
+                // Layout content still never goes below 360 css px (app_shell).
                 window.inner_size: vec2(1024, 768)
                 pass.clear_color: #xF9F4F0
                 caption_bar +: {
@@ -5260,12 +5386,16 @@ script_mod! {
                     // Overlay — app_callout must NOT be a Down sibling of
                     // app_hscroll or it steals half the window height.
                     flow: Overlay
-                    // Min layout width 375 css px. Narrower viewports scroll
-                    // horizontally instead of crushing faces below that floor.
+                    // Min layout width 360 css px — the width of most Android
+                    // phones. Narrower viewports scroll horizontally instead of
+                    // crushing faces below that floor. It was 375 until
+                    // 2026-11-21: on a 360 px phone every screen then sat
+                    // 15 px off the right edge (toasts, the Order type pills
+                    // and the bottom bar's › were cut).
                     app_hscroll := ScrollXView{
                         width: Fill height: Fill
                         app_shell := View{
-                            width: Fill{min: 375.} height: Fill
+                            width: Fill{min: 360.} height: Fill
                             // Wide (≥720): side rail. Narrow: bottom tabs. See apply_shell_layout.
                             flow: Right spacing: 0
 
@@ -7704,7 +7834,9 @@ script_mod! {
                                     drafts_col_3_on := ChipBtnActive{text: "3 col" visible: false}
                                     drafts_col_4 := ChipBtn{text: "4 col"}
                                     drafts_col_4_on := ChipBtnActive{text: "4 col" visible: false}
-                                    View{width: Fill height: 1}
+                                    // No Fill spacer before it: in a wrapping row the
+                                    // spacer takes the rest of the line and this button
+                                    // always dropped to a line of its own (2026-11-21).
                                     drafts_refresh := QuietFitBtn{text: "Refresh"}
                                 }
                                 drafts_summary := WrapLabel{
@@ -7715,7 +7847,7 @@ script_mod! {
                                 }
                                 drafts_empty := WrapLabel{
                                     width: Fill
-                                    body: "No drafts yet. On Counter, add dishes and tap Park draft — then serve the next guest."
+                                    body: "No drafts yet. On Counter, add dishes and tap Park draft."
                                     font_color: #x3A4554
                                     font_size: 14.
                                     visible: false
@@ -9083,18 +9215,18 @@ script_mod! {
                                     }
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
-                                            credit_kind_customer := SegBtn{text: "Customer"}
-                                            credit_kind_customer_on := SegBtnOn{text: "Customer" visible: false}
+                                        flow: Right{wrap: true} spacing: 6
+                                        View{width: Fit height: Fit flow: Overlay
+                                            credit_kind_customer := SegBtn{width: Fit text: "Customer"}
+                                            credit_kind_customer_on := SegBtnOn{width: Fit text: "Customer" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            credit_kind_both := SegBtn{text: "Both"}
-                                            credit_kind_both_on := SegBtnOn{text: "Both" visible: false}
+                                        View{width: Fit height: Fit flow: Overlay
+                                            credit_kind_both := SegBtn{width: Fit text: "Both"}
+                                            credit_kind_both_on := SegBtnOn{width: Fit text: "Both" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            credit_kind_supplier := SegBtn{text: "Supplier"}
-                                            credit_kind_supplier_on := SegBtnOn{text: "Supplier" visible: false}
+                                        View{width: Fit height: Fit flow: Overlay
+                                            credit_kind_supplier := SegBtn{width: Fit text: "Supplier"}
+                                            credit_kind_supplier_on := SegBtnOn{width: Fit text: "Supplier" visible: false}
                                         }
                                     }
                                     // Kept for the code that reads it; the chips (or the default,
@@ -12428,12 +12560,12 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                     width: Fill height: Fit
                                     flow: Right{wrap: true} spacing: 8
                                     View{width: Fit height: Fit flow: Overlay
-                                        biz_day_until_close := SegBtn{text: "Until Day close"}
-                                        biz_day_until_close_on := SegBtnOn{text: "Until Day close" visible: false}
+                                        biz_day_until_close := SegBtn{width: Fit text: "Until Day close"}
+                                        biz_day_until_close_on := SegBtnOn{width: Fit text: "Until Day close" visible: false}
                                     }
                                     View{width: Fit height: Fit flow: Overlay
-                                        biz_day_midnight := SegBtn{text: "Calendar midnight"}
-                                        biz_day_midnight_on := SegBtnOn{text: "Calendar midnight" visible: false}
+                                        biz_day_midnight := SegBtn{width: Fit text: "Calendar midnight"}
+                                        biz_day_midnight_on := SegBtnOn{width: Fit text: "Calendar midnight" visible: false}
                                     }
                                 }
                                 day_close_label := mod.widgets.ReportText{}
@@ -12472,33 +12604,35 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                     width: Fill height: Fit
                                     flow: Right{wrap: true} spacing: 8
                                     View{width: Fit height: Fit flow: Overlay
-                                        report_lens_day_close := SegBtn{text: "By Day close"}
-                                        report_lens_day_close_on := SegBtnOn{text: "By Day close" visible: false}
+                                        report_lens_day_close := SegBtn{width: Fit text: "By Day close"}
+                                        report_lens_day_close_on := SegBtnOn{width: Fit text: "By Day close" visible: false}
                                     }
                                     View{width: Fit height: Fit flow: Overlay
-                                        report_lens_midnight := SegBtn{text: "By midnight"}
-                                        report_lens_midnight_on := SegBtnOn{text: "By midnight" visible: false}
+                                        report_lens_midnight := SegBtn{width: Fit text: "By midnight"}
+                                        report_lens_midnight_on := SegBtnOn{width: Fit text: "By midnight" visible: false}
                                     }
                                 }
                                 // Which report: one segmented row, not four big buttons.
+                                // Fit segments that wrap: four equal Fill segments broke the
+                                // longest word in two at phone width ("Outstan-ding", 2026-11-21).
                                 reports_books_btns := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    View{width: Fill height: Fit flow: Overlay
-                                        reports_today := SegBtn{text: "Today books"}
-                                        reports_today_on := SegBtnOn{text: "Today books" visible: false}
+                                    flow: Right{wrap: true} spacing: 6
+                                    View{width: Fit height: Fit flow: Overlay
+                                        reports_today := SegBtn{width: Fit text: "Today books"}
+                                        reports_today_on := SegBtnOn{width: Fit text: "Today books" visible: false}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        reports_month := SegBtn{text: "This month"}
-                                        reports_month_on := SegBtnOn{text: "This month" visible: false}
+                                    View{width: Fit height: Fit flow: Overlay
+                                        reports_month := SegBtn{width: Fit text: "This month"}
+                                        reports_month_on := SegBtnOn{width: Fit text: "This month" visible: false}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        reports_aging := SegBtn{text: "Outstanding / Dr-Cr"}
-                                        reports_aging_on := SegBtnOn{text: "Outstanding / Dr-Cr" visible: false}
+                                    View{width: Fit height: Fit flow: Overlay
+                                        reports_aging := SegBtn{width: Fit text: "Outstanding / Dr-Cr"}
+                                        reports_aging_on := SegBtnOn{width: Fit text: "Outstanding / Dr-Cr" visible: false}
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        reports_balance_sheet := SegBtn{text: "Balance sheet"}
-                                        reports_balance_sheet_on := SegBtnOn{text: "Balance sheet" visible: false}
+                                    View{width: Fit height: Fit flow: Overlay
+                                        reports_balance_sheet := SegBtn{width: Fit text: "Balance sheet"}
+                                        reports_balance_sheet_on := SegBtnOn{width: Fit text: "Balance sheet" visible: false}
                                     }
                                 }
                                 reports_label := mod.widgets.ReportText{}
@@ -12568,7 +12702,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                         width: Fill height: Fit
                                         flow: Right spacing: 8
                                         View{
-                                            width: 180 height: Fit
+                                            width: 132 height: Fit
                                             inv_qty_input := FieldInput{empty_text: "Quantity"}
                                         }
                                         inv_note_input := FieldInput{empty_text: "Reason / note (wastage, count, …)"}
@@ -12585,7 +12719,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                         flow: Right spacing: 8
                                         align: Align{y: 0.5}
                                         View{
-                                            width: 180 height: Fit
+                                            width: 132 height: Fit
                                             inv_reorder_input := FieldInput{empty_text: "Buy more at"}
                                         }
                                         inv_reorder_save := StackLightBtn{text: "Set reorder level"}

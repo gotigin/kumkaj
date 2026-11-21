@@ -417,4 +417,28 @@ mod ux_rules_tests {
             assert!(v.contains("width: Fill"), "{face} the value wraps at the row's width");
         }
     }
+
+    /// Drafts grid: the owner's pick wins; before any pick a phone gets two
+    /// columns (three made ~100 px cards there), anything wider three.
+    #[test]
+    fn drafts_columns_default_to_two_on_a_phone() {
+        assert_eq!(counter_drafts_column_count(0, 328.0), 2, "360 px phone, no pick yet");
+        assert_eq!(counter_drafts_column_count(0, 760.0), 3, "tablet, no pick yet");
+        assert_eq!(counter_drafts_column_count(0, 0.0), 3, "width not known yet");
+        for pick in [2u8, 3, 4] {
+            assert_eq!(counter_drafts_column_count(pick, 328.0), pick as usize, "the pick wins on a phone");
+            assert_eq!(counter_drafts_column_count(pick, 1400.0), pick as usize, "and on a desk");
+        }
+    }
+
+    /// Bill columns on screen: on a phone-width card the name goes on its own
+    /// line and the numbers under it; from a tablet up they sit side by side.
+    #[test]
+    fn bill_columns_stack_on_a_phone_card() {
+        assert!(cols_stack(296.0), "a 360 px phone's bill card");
+        assert!(cols_stack(347.0), "a 411 px phone's bill card");
+        assert!(!cols_stack(520.0), "a tablet card");
+        assert!(!cols_stack(1100.0), "a desk");
+        assert!(!cols_stack(0.0), "a card not measured yet");
+    }
 }

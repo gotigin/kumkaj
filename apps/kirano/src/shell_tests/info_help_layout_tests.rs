@@ -66,11 +66,22 @@ mod info_help_layout_tests {
             !body.contains("title := Label{"),
             "InfoHelp title must not be Label — Fill+wrap Label NaNs the turtle"
         );
+        // `title_wrap` (Fill) is the same title for a row too narrow for
+        // the Fit one; InfoHelp shows it only then (`title_wraps`).
         let title_block = body
             .split("title := WrapLabel{")
             .nth(1)
+            .and_then(|s| s.split("title_wrap := WrapLabel{").next())
+            .unwrap_or("");
+        let wrap_block = body
+            .split("title_wrap := WrapLabel{")
+            .nth(1)
             .and_then(|s| s.split("tip_btn").next())
             .unwrap_or("");
+        assert!(
+            wrap_block.contains("width: Fill") && wrap_block.contains("visible: false"),
+            "title_wrap is the Fill twin, hidden until the Fit title overflows, got {wrap_block:?}"
+        );
         assert!(
             title_block.contains("width: Fit"),
             "title WrapLabel must be Fit so ℹ hugs the label, got {title_block:?}"
@@ -473,5 +484,34 @@ mod info_help_layout_tests {
             !ui.contains("brand_title := WrapLabel{\n                                                    width: Fit"),
             "brand_title must not sit Fit in a Right peer row"
         );
+    }
+
+    /// SegBtn is `width: Fill`. Inside a `Fit` wrapper a Fill child has no
+    /// width to fill: the button collapses to nothing and its label wraps one
+    /// letter per line — an invisible control above a tall blank gap. The
+    /// "When does Today reset?" and "View Today as" choices shipped like that
+    /// in all four apps (found 2026-11-21 on the first phone-size tour).
+    /// A segment in a Fit wrapper must say `width: Fit` itself.
+    #[test]
+    fn fill_seg_buttons_never_sit_in_a_fit_wrapper() {
+        let ui = include_str!("../ui_script.rs");
+        let lines: Vec<&str> = ui.lines().collect();
+        let mut bad = Vec::new();
+        for (i, line) in lines.iter().enumerate() {
+            if !line.trim_start().starts_with("View{width: Fit height: Fit flow: Overlay") {
+                continue;
+            }
+            for (j, inner) in lines.iter().enumerate().skip(i + 1).take(8) {
+                let inner = inner.trim();
+                if inner == "}" {
+                    break;
+                }
+                let seg = inner.contains(":= SegBtn{") || inner.contains(":= SegBtnOn{");
+                if seg && !inner.contains("width: Fit") {
+                    bad.push(format!("ui_script.rs:{}: {inner}", j + 1));
+                }
+            }
+        }
+        assert!(bad.is_empty(), "give these `width: Fit`: {bad:#?}");
     }
 }

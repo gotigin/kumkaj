@@ -308,8 +308,10 @@ run_visual() {
       local w="${size%x*}" h="${size#*x}"
       local sdir="$out/size-$size"
       mkdir -p "$sdir"
+      # SMOKE_WINDOW=fit: the app window is the screen. Without it the
+      # window stays 1024x768 and a 360x640 shot is only its corner.
       if ! SMOKE_SCRIPT=peers SMOKE_OUT="$sdir" \
-          SMOKE_XVFB_SIZE="${w}x${h}x24" \
+          SMOKE_XVFB_SIZE="${w}x${h}x24" SMOKE_WINDOW=fit \
           bash "$ROOT/scripts/run-ui-smoke-isolated.sh" "$app" \
           >"$sdir/log.txt" 2>&1; then
         echo "size $size FAILED" >>"$out/log.txt"

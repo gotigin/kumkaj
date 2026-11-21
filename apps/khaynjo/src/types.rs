@@ -1152,12 +1152,24 @@ struct CounterDraftCard {
     at: String,
 }
 
-fn counter_drafts_column_count(cols: u8) -> usize {
+/// Column count for the Drafts grid, `grid_w` px wide. The owner's pick
+/// (2 / 3 / 4) wins. With none yet (`0`): two columns on a phone — three
+/// make cards about 100 px wide there — and three on anything wider.
+fn counter_drafts_column_count(cols: u8, grid_w: f64) -> usize {
     match cols {
         2 => 2,
+        3 => 3,
         4 => 4,
+        _ if grid_w > 1.0 && grid_w < 520.0 => 2,
         _ => 3,
     }
+}
+
+/// Columns Drafts last drew with: taps go by the same count the cards were
+/// laid out in.
+fn counter_drafts_drawn_cols() -> &'static Mutex<usize> {
+    static COLS: OnceLock<Mutex<usize>> = OnceLock::new();
+    COLS.get_or_init(|| Mutex::new(3))
 }
 
 const NAV_TABS: [NavTab; 30] = [

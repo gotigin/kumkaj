@@ -768,6 +768,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             - if show_rail { rail_w + DIVIDER_W } else { 0.0 }
             - 32.0)
             .max(280.0);
+        *content_width().lock().unwrap() = content_w;
         // Parcel | Counter always side by side, phones included — never one
         // above the other (owner, 2026-11-02). Both fit: they share the
         // width. Else each keeps its min and the desk pans sideways, but a

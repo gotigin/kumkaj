@@ -18,6 +18,11 @@
 #   SMOKE_OUT         output dir (default: /tmp/kumkaj-ui-smoke-<pid>)
 #   SMOKE_STEP_MS     pause between in-app steps (default 900)
 #   SMOKE_XVFB_SIZE   Xvfb geometry WxHxD (default 1280x900x24)
+#   SMOKE_WINDOW      app window size: "fit" = the Xvfb screen, or WxH.
+#                     Unset = the app's own 1024x768 (what the baselines in
+#                     apps/<app>/cert/baselines were taken with). A screen
+#                     smaller than the window without this shows only the
+#                     window's corner — set it for every phone/tablet size.
 #   KUMKAJ_SMOKE_SOAK_SECS  soak duration when SMOKE_SCRIPT=soak (default 1800)
 #   SKIP_SEED=1       reuse KUMKAJ_DATA_DIR without reseeding
 #   KUMKAJ_DATA_DIR   override data dir
@@ -107,6 +112,16 @@ cleanup() {
 trap cleanup EXIT
 
 XVFB_SIZE="${SMOKE_XVFB_SIZE:-1280x900x24}"
+SMOKE_WINDOW_CSS=""
+case "${SMOKE_WINDOW:-}" in
+  "") ;;
+  fit) SMOKE_WINDOW_CSS="$(printf '%s' "$XVFB_SIZE" | cut -dx -f1,2)" ;;
+  [0-9]*x[0-9]*) SMOKE_WINDOW_CSS="$SMOKE_WINDOW" ;;
+  *)
+    echo "SMOKE_WINDOW must be fit or WxH" >&2
+    exit 2
+    ;;
+esac
 echo "starting Xvfb $DISP ($XVFB_SIZE) …"
 Xvfb "$DISP" -screen 0 "$XVFB_SIZE" -nolisten tcp >/dev/null 2>&1 &
 XVFB_PID=$!
@@ -218,6 +233,9 @@ smoke_one() {
     )
     if [[ "$SMOKE_SCRIPT" == "soak" ]]; then
       script_env+=(KUMKAJ_SMOKE_SOAK_SECS="${KUMKAJ_SMOKE_SOAK_SECS:-1800}")
+    fi
+    if [[ -n "$SMOKE_WINDOW_CSS" ]]; then
+      script_env+=(KUMKAJ_SMOKE_WINDOW="$SMOKE_WINDOW_CSS")
     fi
   fi
 
