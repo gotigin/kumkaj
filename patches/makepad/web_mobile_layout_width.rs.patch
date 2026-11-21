@@ -1,0 +1,93 @@
+--- a/platform/src/os/web/web.js
++++ b/platform/src/os/web/web.js
+@@ -1301,11 +1301,30 @@
+         this.detect.is_add_to_homescreen_safari = this.is_mobile_safari && navigator.standalone
+     }
+ 
++    // CSS layout size for the Makepad canvas. On phones, Android Chrome
++    // "Desktop site" sets innerWidth ~980 while outer/screen stay ~393 —
++    // laying out at 980 makes the site unusable. Prefer the smallest
++    // positive among inner/outer/screen on touch. Never use visualViewport
++    // width when scale≠1 (that is the zoomed slice). Keep in sync with
++    // scripts/web/mobile_layout_size.js (check-web-mobile-layout.sh).
++    css_layout_size_for_canvas(inner_w, inner_h, outer_w, outer_h, screen_w, screen_h, is_touch) {
++        var w = inner_w;
++        var h = inner_h;
++        if (is_touch) {
++            var ws = [inner_w, outer_w, screen_w].filter(function (x) { return x > 0; });
++            var hs = [inner_h, outer_h, screen_h].filter(function (x) { return x > 0; });
++            if (ws.length) w = Math.min.apply(null, ws);
++            if (hs.length) h = Math.min.apply(null, hs);
++        }
++        return { w: w, h: h };
++    }
++
+     update_window_info() {
+         var dpi_factor = window.devicePixelRatio;
+         var w;
+         var h;
+         var canvas = this.canvas;
++        var is_touch = !!(this.detect && (this.detect.is_touch_device || this.detect.is_android));
+ 
+         if (canvas.getAttribute("fullpage")) {
+             if (this.detect.is_add_to_homescreen_safari) { // extremely ugly. but whatever.
+@@ -1319,22 +1338,43 @@
+                 }
+             }
+             else {
+-                w = window.innerWidth;
+-                h = window.innerHeight;
++                var size = this.css_layout_size_for_canvas(
++                    window.innerWidth,
++                    window.innerHeight,
++                    window.outerWidth,
++                    window.outerHeight,
++                    screen.width,
++                    screen.height,
++                    is_touch
++                );
++                w = size.w;
++                h = size.h;
+             }
+         }
+         else {
+             w = canvas.offsetWidth;
+             h = canvas.offsetHeight;
+         }
++        // Force the CSS box to the clamped size so offsetWidth matches.
++        // Desktop site otherwise leaves html/body at ~980px and width:100% stays wrong.
++        if (is_touch && canvas.getAttribute("fullpage")) {
++            canvas.style.width = w + "px";
++            canvas.style.height = h + "px";
++            try {
++                document.documentElement.style.width = w + "px";
++                document.body.style.width = w + "px";
++                document.documentElement.style.height = h + "px";
++                document.body.style.height = h + "px";
++            } catch (_e) { }
++        }
+         var sw = canvas.width = w * dpi_factor;
+         var sh = canvas.height = h * dpi_factor;
+ 
+         this.gl.viewport(0, 0, sw, sh);
+ 
+         this.window_info.dpi_factor = dpi_factor;
+-        this.window_info.inner_width = canvas.offsetWidth;
+-        this.window_info.inner_height = canvas.offsetHeight;
++        this.window_info.inner_width = w;
++        this.window_info.inner_height = h;
+         this.window_info.is_fullscreen = is_fullscreen();
+         this.window_info.can_fullscreen = can_fullscreen();
+     }
+@@ -1365,6 +1405,11 @@
+ 
+         window.addEventListener('resize', _ => this.handlers.on_screen_resize())
+         window.addEventListener('orientationchange', _ => this.handlers.on_screen_resize())
++        // Keyboard / URL-bar / zoom change visualViewport without always firing window.resize.
++        if (window.visualViewport) {
++            window.visualViewport.addEventListener('resize', _ => this.handlers.on_screen_resize())
++            window.visualViewport.addEventListener('scroll', _ => this.handlers.on_screen_resize())
++        }
+     }
+ 
+     bind_mouse_and_touch() {

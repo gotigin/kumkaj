@@ -133,6 +133,7 @@ have vanished on the next setup):
 | `slides_view_story_axis` | `SlidesView` `axis: Vertical`; tap / swipe / wheel flip one chapter (OS momentum ignored); presenter keys ↓ → PgDn Space, ↑ ← PgUp, Home / End; `goal_slide()` / `slide_count()` |
 | `web_init_window_order` | wasm `ToWasmInit` runs `Event::Startup` (which creates window 0) **before** applying the window geometry — without it the canvas sticks on "Loading.." with an IdPool panic |
 | `web_aux_buttons_stay` | mouse side buttons stay in-app; canvas context menu is Copy / Select all; PageUp–arrows/Space not stolen by the shell |
+| `web_mobile_layout_width` | wasm: on touch, clamp canvas layout to `min(inner, outer, screen)` — Android Chrome **Desktop site** fakes `innerWidth` ~980 on a ~393 phone and made every Makepad site unusable (2026-11-21). Also listen to `visualViewport` resize/scroll. Keep in sync with `scripts/web/mobile_layout_size.js`. Gate: `./scripts/check-web-mobile-layout.sh` |
 | `text_selection` | one selection model for apps and sites: drag selects across blocks like a browser page (from a margin too on sites, `select_from_gaps`; wheel and edge auto-scroll while dragging), double-click word, long-press / 0.5 s hold on touch; `View { selection_root: true }` (the site's `page`) answers Ctrl/Cmd+A and Copy of what is highlighted; on wasm the end of a touch selection opens the same Copy / Select all menu (`FromWasmShowClipboardActions`) |
 
 **Site text selection is on (2026-11-13)** with that one model — see
@@ -333,7 +334,12 @@ deep chrome (navy / deep red), never grey-on-grey.
    **one row** when they fit — stacking that wastes horizontal space is
    not “responsive” (DESIGN § Always responsive — graceful growth). Do
    **not** blindly flatten intentional stacks (user-owned density and
-   other mostly-obvious exceptions — DESIGN; if unsure leave alone). 360 is
+   other mostly-obvious exceptions — DESIGN; if unsure leave alone).
+   **Android Chrome:** also verify with **Desktop site** on and after a
+   soft-keyboard open — layout width must stay ≈ `screen.width`, never the
+   fake ~980 `innerWidth` (`web_mobile_layout_width` +
+   `mobile-viewport-guard.js`; `./scripts/check-web-mobile-layout.sh`).
+   360 is
    the common Android phone; the layout floor is 320 (`MIN_WIDTH` and
    `static/css/site-shell.css` — it was 375 until 2026-11-21, so every
    360 px phone scrolled sideways with the top bar cut off).

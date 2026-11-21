@@ -30,3 +30,9 @@ canvas {
 .canvas_loader {
   min-width: 320px;
 }
+
+/* Android Chrome: reduce double-tap zoom; Desktop-site clamp is in
+   mobile-viewport-guard.js + Makepad web_mobile_layout_width. */
+html, body, canvas.full_canvas, canvas {
+  touch-action: manipulation;
+}
