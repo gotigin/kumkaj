@@ -328,8 +328,11 @@ deep chrome (navy / deep red), never grey-on-grey.
    Xvfb with `WAYLAND_DISPLAY` unset (else the window opens on the
    desktop) and grab the window by pid. Check **320, 360, 390, 600, 820,
    1280 and 1920** wide, scrolled top to bottom: nothing may touch or run
-   off a side edge, and no word may break into letters. 360 is the common
-   Android phone; the layout floor is 320 (`MIN_WIDTH` and
+   off a side edge, and no word may break into letters. **Also on 1280 /
+   1920:** Fit chip toolbars (play / speed / pager / − value +) must be
+   **one row** when they fit — stacking that wastes horizontal space is
+   not “responsive” (DESIGN § Always responsive — graceful growth). 360 is
+   the common Android phone; the layout floor is 320 (`MIN_WIDTH` and
    `static/css/site-shell.css` — it was 375 until 2026-11-21, so every
    360 px phone scrolled sideways with the top bar cut off).
    Three faults that passed `cargo check` and tests and only a screenshot

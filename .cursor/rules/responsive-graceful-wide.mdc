@@ -1,0 +1,35 @@
+---
+description: Responsive must grow on wide screens — never leave Fit toolbars stuck in phone stacks
+globs: "{apps,sites}/**/*.{rs,md}"
+alwaysApply: false
+---
+
+# Responsive = narrow fit **and** graceful growth
+
+Canonical: `docs/DESIGN.md` § **Always responsive** · `docs/WEBSITES.md` “See every tier”.
+
+## Law
+
+Looking good on mobile is **not** enough. If Fit chips / short paired controls
+fit on one line at the current content width, they **must** be one line.
+Empty horizontal space beside a forever-`Down` toolbar on desk is a bug.
+
+## Do / don't
+
+```text
+❌ Hard-code flow: Down for ← → Pause / − Speed + because phone once stacked badly
+❌ “Never put this in ROWS” → leave Down at every width
+❌ ActionStack for short Fit chip pairs that fit one desk row
+❌ Ship after phone-only screenshots
+
+✅ Stack / wrap only when measured content width cannot hold the Fit children
+✅ apply_responsive: Right (or two Fit groups side-by-side) once wide enough
+✅ ActionRow / Right strip for short chips; ActionStack for multi-word full-width CTAs
+✅ Check 320, 360, 390 **and** 1280, 1920
+```
+
+## Known failure (2026-11-21)
+
+Khaynjo.com world-shelf `shelf_bar`: two permanent rows on a large desktop
+while the right half of the band was empty. Fix: one-row when
+`content_w >= SHELF_BAR_ONE_ROW_FROM`, two stacked Fit groups only when narrow.

@@ -1143,9 +1143,12 @@ script_mod! {
                                     H2{body: "Every country at your counter"}
                                     Lede{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look."}
                                 }
-                                // Living parade controls — two Fit rows, always Right.
-                                // Never put this in ROWS: stacking to Down makes each
-                                // chip its own column on phone.
+                                // Living parade: two Fit groups. apply_responsive puts
+                                // shelf_bar Right (one desk line) when content is wide
+                                // enough; Down (two rows) only when narrow. Do not flatten
+                                // into ROWS — stacking six chips individually makes each
+                                // its own phone row (2026-11-20). Graceful growth:
+                                // DESIGN § Always responsive.
                                 shelf_bar := View{
                                     width: Fill height: Fit
                                     flow: Down

@@ -117,10 +117,26 @@ attempt, PR #1):** measure height with `MakepadImeProbe`, use stock
 `KeyboardView`, snap hide to 0 — do not re-add estimates or app re-lift.
 Full cause/solution table: [`DEV.md`](DEV.md) bug **6f** (also **6d**, **6e**).
 
-## Always responsive (every app)
+## Always responsive (every app **and** every Makepad website)
 
 Layouts must fit the window they are in — no cropped columns, no
 controls past the right edge, no “designed for one width” grids.
+
+**Responsive ≠ “looks OK on phone, stays phone on desk.”** Fitting a
+narrow viewport is half the job. The other half is **graceful growth**:
+when the content column has horizontal room, controls that can sit on
+one line **must** sit on one line. Empty white space beside a stacked
+toolbar of Fit chips (Pause / − / Speed / + and the like) on a 1280+
+window is a bug — not “safe responsiveness.” Agents that only verify a
+phone screenshot and leave the desk layout as two forever-stacked rows
+are wrong.
+
+| Do | Don't |
+|---|---|
+| Stack / wrap **only** when the measured content width cannot hold the Fit children on one row | Hard-code `flow: Down` for a Fit chip toolbar because phone once broke |
+| Raise a `ROWS` / `apply_responsive` threshold so desk goes `Right` (or put two Fit groups side by side) | “Never list this in `ROWS`” as an excuse to stay Down at every width |
+| `ActionRow` / one `Right` strip for short paired chips; `ActionStack` for multi-word full-width CTAs | `ActionStack` for ← → Pause − Speed + style chips that fit one desk line |
+| Check **320–390 and 1280 / 1920** (WEBSITES “See every tier”) | Ship after phone-only screenshots |
 
 - Size grids and tile columns from the **widget’s turtle / walk width**,
   not a shell-wide estimate that ignores screen padding (Floor tiles
