@@ -140,6 +140,27 @@ are wrong.
 | `ActionRow` / one `Right` strip for short paired chips; `ActionStack` for multi-word full-width CTAs | `ActionStack` for ← → Pause − Speed + style chips that fit one desk line |
 | Check **320–390 and 1280 / 1920** (WEBSITES “See every tier”) | Ship after phone-only screenshots |
 
+### Exception — user-owned density (do **not** “fix”)
+
+Graceful growth applies to **chrome and Fit toolbars** (play/speed, pager
+chips, short paired actions). It does **not** override layouts whose
+**columns-per-row / density is under the user’s control** (or an explicit
+product pick that wins over width).
+
+Examples (do not auto-force more columns because the window is wide):
+
+- Khaynjo Floor **Columns** (`floor_columns`: Fit screen, or a typed/picked
+  count — the pick wins on phone and desk)
+- Counter drafts / Today board column picks (`*_column_count(pick, width)` —
+  non-zero pick wins)
+- Bill / slip **Columns** vs other layout segments the owner chose
+- Any other “N per row” control the person set on this device
+
+Auto “Fit screen” / measure-from-turtle paths may still grow with width
+when the user left density on **Fit** / `0`. Agents must not rewrite those
+controls, collapse a user’s 2-column Floor into one forever-row of chips
+logic, or treat a sparse user-chosen grid as the Pause/−/Speed bug.
+
 - Size grids and tile columns from the **widget’s turtle / walk width**,
   not a shell-wide estimate that ignores screen padding (Floor tiles
   cropped when `content_width` was used before padding — fix: measure

@@ -331,7 +331,9 @@ deep chrome (navy / deep red), never grey-on-grey.
    off a side edge, and no word may break into letters. **Also on 1280 /
    1920:** Fit chip toolbars (play / speed / pager / − value +) must be
    **one row** when they fit — stacking that wastes horizontal space is
-   not “responsive” (DESIGN § Always responsive — graceful growth). 360 is
+   not “responsive” (DESIGN § Always responsive — graceful growth). Do
+   **not** apply that to user-owned columns-per-row / density grids
+   (Floor Columns, board picks, etc. — DESIGN exception). 360 is
    the common Android phone; the layout floor is 320 (`MIN_WIDTH` and
    `static/css/site-shell.css` — it was 375 until 2026-11-21, so every
    360 px phone scrolled sideways with the top bar cut off).
