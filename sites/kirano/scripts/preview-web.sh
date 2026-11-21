@@ -74,6 +74,8 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
   rsync -a "$SITE/static/" "$OUT/"
   "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
+  # Fonts: only the characters this site draws (the repo keeps them whole).
+  "$SITE/scripts/subset-fonts.sh" "$OUT"
   present_privacy
 
   BUILD_ID="preview-$(date -u +%Y%m%d%H%M%S)"

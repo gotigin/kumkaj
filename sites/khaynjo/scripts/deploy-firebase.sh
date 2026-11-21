@@ -87,6 +87,8 @@ rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
 # Site static shell overlays (catalogue, terms, js, media, css)
 rsync -a "$SITE/static/" "$OUT/"
 "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
+# Fonts: only the characters this site draws (the repo keeps them whole).
+"$SITE/scripts/subset-fonts.sh" "$OUT"
 
 # Same PRIVACY.md the app embeds — formatted presentation (not source view).
 PRIVACY_MD="$ROOT/apps/khaynjo/docs/PRIVACY.md"

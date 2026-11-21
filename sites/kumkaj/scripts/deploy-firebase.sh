@@ -76,6 +76,8 @@ mkdir -p "$OUT"
 rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
 rsync -a "$SITE/static/" "$OUT/"
 "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
+# Fonts: only the characters this site draws (the repo keeps them whole).
+"$SITE/scripts/subset-fonts.sh" "$OUT"
 
 PRIVACY_MD="$ROOT/sites/kumkaj/PRIVACY.md"
 PRIVACY_TMPL="$SITE/privacy-template.html"

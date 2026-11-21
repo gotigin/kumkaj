@@ -160,8 +160,7 @@ untouched, apps unaffected):
 - **Fonts are the real budget:** kumkaj's own faces are 657 KB brotli
   (Fraunces alone 199 KB; Noto Devanagari / Arabic / Gujarati / Bengali /
   Tamil 33–82 KB each); moklanjo and khaynjo carry 1.2 / 1.8 MB raw TTF.
-  Nothing is subset yet (Phase 2: subset Latin display faces; load Indic
-  faces only for the languages chapter).
+  (Subset at staging since 2026-11-21 — see § The shell around the wasm.)
 - Verified natively at 390×844, 820×1180, 1024×768, 1280×720, 1280×800
   and 1920×1080 (every chapter of every site fits one screen); wasm
   served by each `run-web.sh` and rendered in headless Chromium at
@@ -223,14 +222,33 @@ change):
   22,605 functions move to a second file, but "secondary remains on the
   startup path", so both halves load before the first frame and the total
   is 1.45 MB, not 1.33 MB.
-- **`--wasm-opt`** needs Binaryen's `wasm-opt`, which is not installed here;
-  untried. Install it, build one site with the flag, load it, and only then
-  add the flag to the deploy scripts.
+- **`wasm-opt` does not help either** (Binaryen 128, `--all-features -Os`
+  and `-Oz`, measured on the same wasm): the file is 10–15% smaller raw
+  (6.40 → 5.76 / 5.46 MB) but 2–3% **larger** once brotli has had it (1.33
+  → 1.36 / 1.37 MB), and time to first paint is the same (2.08 s both, four
+  runs each). Leave the `--wasm-opt` flag off.
 - **Every font a site declares is fetched before the first frame**, whether
   or not a chapter that needs it is on screen — khaynjo.com fetches all 22
-  (the chapter-8 `WorldFont` members too). Nothing is subset yet except the
-  12 KB CJK face; subsetting the rest to the characters the site draws is
-  the largest saving left (about 1.2 MB on khaynjo.com).
+  (the chapter-8 `WorldFont` members too).
+- **Fonts are cut to the site's own characters when the tree is staged** —
+  `sites/<site>/scripts/subset-fonts.sh`, called by `preview-web.sh` and
+  `deploy-firebase.sh` (needs `pyftsubset` from fonttools; without it the
+  fonts stay whole and the site works the same). It rewrites the staged
+  copies only — `resources/fonts/` stays whole for the native build — to
+  every character found in `src/*.rs` plus plain Latin, keeps the shaping
+  tables for what stays, and replaces the font names with placeholders
+  (IBM Plex and Liberation reserve their names for the unmodified font).
+  Raw sizes: kumkaj.com 2.0 MB → 0.52 MB, khaynjo.com 4.4 → 0.57,
+  moklanjo.com 1.6 → 0.43, kirano.shop and tabiyat.shop 2.2 → 0.34.
+  Checked by capturing every chapter of every site before and after at
+  390×844 and 1280×800: the frames are identical pixel for pixel (only
+  khaynjo.com's moving shelf differs, as it does between any two runs).
+  Two limits: text a visitor *types* in a script the site's copy does not
+  use shows empty boxes (khaynjo.com's shelf search is the one text box),
+  and the three variable display faces keep their variation tables —
+  Fraunces is still 184 KB compressed, Anek Latin 145 KB; pinning each to
+  the weights `ui.rs` asks for would save about 150 KB on kumkaj.com and
+  90 KB on moklanjo.com.
 - **Versioned and cached:** deploy gives the wasm and its loader
   `?v=<build id>`, and `firebase.json` now serves `*.wasm` `immutable`, so a
   returning visitor downloads it once per release.
@@ -422,7 +440,7 @@ rustup component add rust-src --toolchain nightly
 |---|---|---|
 | **0 — Brand spike** | `sites/kumkaj` SlidesView brand story; workspace member; run scripts | **Done** 2026-11-07 |
 | **1 — Product site crates** | Brand house deepened; `sites/moklanjo`, `sites/khaynjo` copied then diverged; trade palettes, type and nav; story chapters from the product docs; one toy per site; Download / WhatsApp CTAs behind owner switches | **Done as a local demo** 2026-11-07 (native + wasm) |
-| **2 — 3D chapters + budgets** | PBR / glTF / 3D text chapters inside each site; real app captures on device screens; font subsetting; size budgets (`--split` measured 2026-11-21: no gain, see § Measured) | Next |
+| **2 — 3D chapters + budgets** | PBR / glTF / 3D text chapters inside each site; real app captures on device screens; size budgets (font subsetting done 2026-11-21; `--split` and `wasm-opt` measured the same day: no gain, see § The shell around the wasm) | Next |
 | **3 — Thin crawl shell + legal** | Static `/privacy` `/terms`, OG meta, `<noscript>` around the wasm; Play privacy URL; retire legacy zola stubs | **Done 2026-11-21** — all five hosted on their own domains; link-preview picture, Twitter tags, icons and a start-up screen in every shell |
 | **4 — Presenter + Indic** | Offline presenter after one visit (service worker / packaged native); Hindi / Gujarati copy with native review | — |
 | **5 — Growth** | Tools pages (volumetric weight, GST bill), case studies, Cloud pages when Cloud exists | — |
