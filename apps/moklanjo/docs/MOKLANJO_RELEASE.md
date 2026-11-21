@@ -28,7 +28,7 @@ Rules for this work:
 | A3 | Settings → Printers "Where things print": Khaynjo's pattern — each job's printers a checklist dropdown (✓ rows, Find printers row when none), no Add / Up / Down / Remove last / Clear / **Save printers** buttons (formats save themselves) | **Done 2026-11-19** | Receipt + AWB Label `StationCheckList` dropdowns; toggles save immediately; legacy Add/Up/Down/Remove/Clear/Save row hidden (`route_add_printer_legacy`) |
 | A4 | Hard-coded English left in printer screens: "(none yet — tap Find printers)", "this computer's usual printer (blank address)" in `courier_printers_pool_rows` | **Done 2026-11-16** | The paper rows replaced that list; the function and its call are gone (a blank address reads `printer_target_default`, translated) |
 | A5 | `docs/DEV.md` § Manual UI smoke listed a Khaynjo step ("4b. Waiter … Floor/Order") in Moklanjo's checklist | **Done 2026-11-16** | Now a cashier check (seed Asha 2222) against MOKLANJO.md § Rights match chrome |
-| A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Pass 2026-11-21** (android device still pending) | Latest green store run at `9367e5f2`: `SUMMARY-20261121-141209` (android SKIP — no phone then). Visual re-check PASS on `879ddd4f` (`SUMMARY-20261121-152216`). Emulator launch checks PASS; **real phone (vivo V2311) still needed** before Play upload. Android packages rebuilt into `dist/moklanjo-android/` 2026-11-21 15:05. |
+| A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Pass 2026-11-21** (android device PASS) | Store run at `9367e5f2`: `SUMMARY-20261121-141209` (android SKIP then). Visual PASS on `879ddd4f` (`SUMMARY-20261121-152216`). **Phone launch PASS** on vivo V2311 (`SUMMARY-20261121-155026`, `launch.png` fills 1080×2408, no letterbox). Android packages in `dist/moklanjo-android/` rebuilt 15:05. |
 | A7 | Version for the first public release (0.1.0, Play code 1 today; Khaynjo is 1.0.10 / 8) | *Owner decides* | `apps/moklanjo/Cargo.toml` `version`, `[package.metadata.makepad.android]` |
 | A8 | Export template (Khaynjo 2026-11-14) | Later — owner: Khaynjo first, then the other three | `APP_MATURITY.md` owner queue |
 | A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | **Android rebuilt 2026-11-21**; Linux/Windows rebuild in progress on `879ddd4f` | Play: `$HOME/moklanjo-release.jks` → release-signed `dist/moklanjo-android/kumkaj-moklanjo.apk` + `.aab` (+ symbols/mapping), rebuilt 15:05 on 2026-11-21 (`879ddd4f`, new tile + tall-screen fill). Linux/Windows in `dist/` were last from the 14:12 store run on `9367e5f2` (old icons) — store-tier rebuild with `CERT_BUILD_LINUX=1` started 2026-11-21 15:48 to refresh them. |
@@ -78,5 +78,7 @@ Rules for this work:
   `CERT_ALLOW_ANDROID_SKIP=1`): **APP PASS ×4** including moklanjo; android
   SKIP. Later the same day: `879ddd4f` (tall phones + current tile); visual
   PASS (`SUMMARY-20261121-152216`); release Android packages in
-  `dist/moklanjo-android/`; emulator launch PASS; **phone pending** (device
-  not attached at handover).
+  `dist/moklanjo-android/`; emulator launch PASS.
+- 2026-11-21 `--tier=android` on vivo V2311 serial `10BD9M1FRJ000B2`
+  (`SUMMARY-20261121-155026`): **PASS** moklanjo + kirano + tabiyat + khaynjo.
+  `launch.png` 1080×2408, UI fills the tall screen; stay-awake restored to 0.
