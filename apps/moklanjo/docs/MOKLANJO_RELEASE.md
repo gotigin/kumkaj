@@ -31,7 +31,7 @@ Rules for this work:
 | A6 | Store cert (`./scripts/product-cert.sh moklanjo --tier=store`) | **Pass 2026-11-21** (android device PASS) | Store run at `9367e5f2`: `SUMMARY-20261121-141209` (android SKIP then). Visual PASS on `879ddd4f` (`SUMMARY-20261121-152216`). **Phone launch PASS** on vivo V2311 (`SUMMARY-20261121-155026`, `launch.png` fills 1080×2408, no letterbox). Android packages in `dist/moklanjo-android/` rebuilt 15:05. |
 | A7 | Version for the first public release (0.1.0, Play code 1 today; Khaynjo is 1.0.10 / 8) | *Owner decides* | `apps/moklanjo/Cargo.toml` `version`, `[package.metadata.makepad.android]` |
 | A8 | Export template (Khaynjo 2026-11-14) | Later — owner: Khaynjo first, then the other three | `APP_MATURITY.md` owner queue |
-| A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | **Android rebuilt 2026-11-21**; Linux/Windows rebuild in progress on `879ddd4f` | Play: `$HOME/moklanjo-release.jks` → release-signed `dist/moklanjo-android/kumkaj-moklanjo.apk` + `.aab` (+ symbols/mapping), rebuilt 15:05 on 2026-11-21 (`879ddd4f`, new tile + tall-screen fill). Linux/Windows in `dist/` were last from the 14:12 store run on `9367e5f2` (old icons) — store-tier rebuild with `CERT_BUILD_LINUX=1` started 2026-11-21 15:48 to refresh them. |
+| A9 | Release packages in `dist/`: Linux, Android (AAB + APK), Windows (MSIX + MSI) | **Android rebuilt 2026-11-21**; Linux/Windows smoke-checked | Play: `$HOME/moklanjo-release.jks` → `dist/moklanjo-android/` rebuilt 15:05 (`879ddd4f`). Store tier 16:12 smoke-checked existing `dist/moklanjo-linux` (cert only rebuilds Linux when the folder is missing). Windows MSI/MSIX still from 2026-11-19 — rebuild before Store upload if icons must match. |
 | A10 | Play Store and Microsoft Store requirements, checked item by item against Khaynjo's `PUBLISH_PLAY_STORE.md` / `PUBLISH_WINDOWS_STORE.md` | **Docs added 2026-11-19** | [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md), [`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md). Upload when Console/Partner Center listings exist |
 | A11 | Settings → Printers "Where things print" at phone width (420 px): the job's name wraps one letter per line and the printer text is cut off at the card's edge | Done 2026-11-17 | The value never shrank, so a long one left the label a few px. `ReportText` now draws such a row with the label above and the value under it, both wrapping (`kv_stacks`, DEV.md bug 7j; all four apps). Seen on the isolated screen at 420 and 1440 px; money rows unchanged. A3's checklist dropdowns would still replace this list |
 
@@ -82,3 +82,7 @@ Rules for this work:
 - 2026-11-21 `--tier=android` on vivo V2311 serial `10BD9M1FRJ000B2`
   (`SUMMARY-20261121-155026`): **PASS** moklanjo + kirano + tabiyat + khaynjo.
   `launch.png` 1080×2408, UI fills the tall screen; stay-awake restored to 0.
+- 2026-11-21 `--tier=store` (`SUMMARY-20261121-154901`): moklanjo/kirano/tabiyat
+  **APP PASS** (android SKIP — locked/no device); khaynjo **APP FAIL** only on
+  android (concurrent with the phone run). Re-run khaynjo alone with
+  `CERT_ALLOW_ANDROID_SKIP=1` (`SUMMARY-20261121-161240`): **APP PASS**.
