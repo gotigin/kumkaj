@@ -53,7 +53,7 @@ for send.
 
 | Approach | Idea | Notes |
 |----------|------|-------|
-| **Third-party SMS gateway provider** | Optional **Kumkaj Cloud SMS Service**: send through Kumkaj Cloud and a contracted SMS provider (or a shop-chosen supported gateway where that product shape exists). | **No Android phone / modem** needs to stay connected. Desktop and other clients that can reach Cloud can send. Commercial shape: **per SMS**, **prepaid credits**, or **plan bundle** — same usage-based spirit as other Cloud metering (vision §21). Requires internet and compliance with messaging regulations (opt-in, TRAI/DND where relevant, content rules). |
+| **Third-party SMS gateway provider** | Optional **Kumkaj Cloud SMS Service**: send through Kumkaj Cloud and a contracted SMS provider (or a shop-chosen supported gateway where that product shape exists). | **No Android phone / modem** needs to stay connected. Desktop and other clients that can reach Cloud can send. Commercial shape: **per SMS**, **prepaid credits**, or **plan bundle** — requires Steady+ cloud membership ([`CLOUD_PLANS.md`](CLOUD_PLANS.md), vision §21). Requires internet and compliance with messaging regulations (opt-in, TRAI/DND where relevant, content rules). |
 
 Cloud SMS enhances delivery; it must never hold local books or the
 outbox hostage if Cloud billing stops (vision §22). Unsent intents can

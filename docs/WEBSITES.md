@@ -495,7 +495,7 @@ Contract: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE
 | 2 | Built for your trade | Moklanjo, Khaynjo, Kirano and Tabiyat choice cards — each with its spine and three shipped facts — linking to the product sites | MOKLANJO.md; KHAYNJO.md; KIRANO.md; TABIYAT.md |
 | 3 | Your books live in your shop | On your device · no account with us · backup copies you keep; the extra-counters line waits for `lan-pilot` | vision §6, §21 |
 | 4 | Try it offline | Toy: cut the internet, the counter's work stays "Working" | vision §6, §20 |
-| 5 | Free forever on your devices | ₹0 on your own devices; Kumkaj Cloud *planned*, usage-based | vision §21 |
+| 5 | Free forever on your devices | ₹0 on your own devices; Kumkaj Cloud *planned* as yearly Steady / Swift / Priority / Custom ([`CLOUD_PLANS.md`](CLOUD_PLANS.md)) | vision §21 |
 | 6 | Speaks your staff's language | Catalogue languages (India + world), RTL; Khaynjo's real "Food ready" in Hindi, Gujarati, Tamil, Bengali, Urdu | `locale.rs` + `translations/*.tsv` |
 | 7 | Who makes it | Trademark → Company → Brand → Product map; the choice again | — |
 

@@ -15,7 +15,8 @@
 > later finalized decisions in this document, **the later decision
 > wins**. In particular, Community / Professional trial / annual
 > entitlement pricing is superseded by free-forever local use and
-> usage-based cloud billing. When earlier “one generic app for everyone”
+> yearly cloud plans (Steady / Swift / Priority / Custom —
+> [`CLOUD_PLANS.md`](CLOUD_PLANS.md)). When earlier “one generic app for everyone”
 > wording conflicts with **concrete products in a common workspace**, the
 > concrete-products model wins. When earlier “shared internals / extract
 > into shared code” wording conflicts with **no Kumkaj core — each app
@@ -266,7 +267,8 @@ so nothing about one branch is shared with or inherited by another.
     read-only roll-up (totals per branch side by side). Snapshots are
     reports, never a second writer into a branch's books.
 -   **Optional Kumkaj Cloud, later:** WAN snapshot exchange, remote
-    dashboard, offsite backup — billed by usage (§21). Never required;
+    dashboard, offsite backup — yearly cloud plans (§21,
+    [`CLOUD_PLANS.md`](CLOUD_PLANS.md)). Never required;
     a cloud outage never stops a branch from billing (§6).
 
 What a "multi-branch owner" gets is therefore *the same concrete
@@ -638,7 +640,8 @@ internet**: optional paid **Cloud SMS** through a third-party SMS
 gateway provider (per-SMS / prepaid / plan; internet and regulatory
 compliance required). Local gateways are intended for all Kumkaj
 products and, where useful, third parties. Cloud SMS must obey §21–22
-(usage-based Cloud; never hostage local books).
+(Steady+ membership + never hostage local books;
+[`CLOUD_PLANS.md`](CLOUD_PLANS.md)).
 
 Kumkaj should collect only information actually required by the
 business and should not make customer registration mandatory for an
@@ -902,7 +905,8 @@ Potential cloud responsibilities include:
 -   backup;
 -   remote health monitoring;
 -   authenticated APIs;
--   usage metering and billing for the resources above.
+-   plan entitlements and metering (quota + bandwidth;
+    [`CLOUD_PLANS.md`](CLOUD_PLANS.md)).
 
 Local multi-device coordination over a restaurant's own LAN does **not**
 require Kumkaj Cloud and must remain available as part of free local
@@ -924,7 +928,7 @@ Synchronization must be designed for unreliable networks:
 
 ------------------------------------------------------------------------
 
-## 21. Commercial Model --- Free Local, Usage-Based Cloud
+## 21. Commercial Model --- Free Local, Yearly Cloud Plans
 
 ### Final commercial decision (overrides earlier edition plans)
 
@@ -935,22 +939,41 @@ Earlier planning used **Community / Professional Evaluation
 The finalized commercial identity for Kumkaj is:
 
 > **Kumkaj is free to run locally, forever. Use the local product fully.
-> If you want Kumkaj Cloud, pay only for the cloud resources you
-> actually consume. Same rates for everyone.**
+> If you want Kumkaj Cloud, join a yearly cloud plan (same sheet for
+> everyone). Plans package how much cloud data and bandwidth you get.
+> Software capability on the device is not what is sold.**
 
 Core principle:
 
-> **Software capability is not the thing being sold. Infrastructure
-> consumption is.**
+> **Local software capability is not the thing being sold. Cloud
+> infrastructure (storage + live sync bandwidth) is.**
 
-Kumkaj does not decide who is “small” or “enterprise” for pricing.
-A single-outlet entity and a multi-branch group see the **same price sheet**.
-The large group simply consumes more cloud resources and therefore pays
-a larger total bill.
+There are **five** customer-facing plans. Every paid plan **includes**
+free forever local / LAN:
+
+| # | Plan | Cloud |
+| --- | --- | --- |
+| 1 | **Free forever** | None required |
+| 2 | **Steady** | Live cloud, 10 GB, lower bandwidth |
+| 3 | **Swift** | Live cloud, 25 GB, mid bandwidth |
+| 4 | **Priority** | Live cloud, 50 GB, highest standard bandwidth |
+| 5 | **Custom** | As contracted |
+
+All of Steady / Swift / Priority are **live** sync — do not restrict
+connection interval by plan. Do **not** cap device / till count by plan.
+Exact yearly prices, grace, and deletion rules:
+[`CLOUD_PLANS.md`](CLOUD_PLANS.md).
+
+Other paid services (defined later) require membership in Steady, Swift,
+Priority, or Custom.
+
+A single-outlet shop and a larger group see the **same plan sheet**.
+Heavier cloud use means a higher plan or Custom — not a different local
+edition.
 
 There is **no 14-day Professional trial**, no annual Pro/Enterprise
-entitlement as the primary commercial product, and no artificially
-crippled free tier.
+feature-tier entitlement as the primary product, and no artificially
+crippled free local tier.
 
 ### Kumkaj Local --- Free Forever
 
@@ -983,42 +1006,41 @@ local devices on a LAN, inventory features, KOT, or local reports.
 A restaurant may run locally for years, never pay Kumkaj, and still
 have a functioning system. Local data remains owned by the restaurant.
 
-### Kumkaj Cloud --- Paid by Usage, Same Rates for All
+### Kumkaj Cloud --- Yearly plans (same sheet for all)
 
-Cloud is optional. Customers pay when they use Kumkaj-hosted
-infrastructure, for example:
+Cloud is optional. Customers who want hosted sync/backup join a yearly
+plan — see [`CLOUD_PLANS.md`](CLOUD_PLANS.md). Customer-facing knobs:
 
+-   **Storage quota** (10 / 25 / 50 GB, or Custom);
+-   **Live sync bandwidth** (lower / mid / highest standard, or Custom).
+
+Cloud means **live** replication of the shop’s logical database (local
+SQLite remains source of day-to-day truth; cloud is the hosted replica).
+Do not sell batch-only intervals as the difference between Steady /
+Swift / Priority.
+
+Related cloud-only capabilities (as implemented over time) sit behind
+plan membership, for example:
+
+-   cloud synchronization over WAN;
+-   automatic encrypted cloud backup / restore from cloud;
 -   remote access / owner dashboard;
--   cloud synchronization across locations over WAN;
--   automatic encrypted cloud backup;
--   cross-branch cloud reporting and remote device/sync monitoring;
--   authenticated cloud APIs and similar hosted services;
--   optional **Cloud SMS** (and similar messaging) billed per message,
-    prepaid credits, or a bundled plan — see
-    [`SMS_MESSAGING.md`](SMS_MESSAGING.md); local SIM / USB modem /
-    multi-SIM device paths remain free of Kumkaj Cloud charges (operator
-    airtime only);
--   later: genuinely expensive compute such as AI or heavy analytics.
+-   cross-branch cloud reporting and remote sync monitoring;
+-   authenticated cloud APIs;
+-   optional **Cloud SMS** and similar — see
+    [`SMS_MESSAGING.md`](SMS_MESSAGING.md); local SIM / modem paths stay
+    free of Kumkaj Cloud charges (operator airtime only).
 
-Initial metering should stay simple and customer-facing, for example:
-
--   **Storage** (database, backups, images/documents);
--   **Network / data transfer** (especially outbound);
--   **Requests / operations** (sync/API), preferably with a large
-    included allowance so owners are not nickel-and-dimed per request;
--   **Compute-heavy services** only when those services exist and truly
-    cost money.
-
-Internally Kumkaj may meter many resources. Externally the message
-stays simple: **free local product; pay for cloud resources used; same
-rates for everyone.** Exact unit prices are commercial configuration,
-not a product claim in this document.
+Internally Kumkaj may meter many resources. Externally: **free local
+product; paid yearly cloud plan for quota + bandwidth; same plans for
+everyone.** List prices and lifecycle (grace, retrieve, delete) live in
+[`CLOUD_PLANS.md`](CLOUD_PLANS.md), not as scattered claims here.
 
 Optional later services (SSO, on-premise managed deployments, custom
-integrations) may exist as contracted cloud/ops offerings. They must
-**not** be advertised as already implemented until evidence exists, and
-they must not reintroduce feature-tier gating of the free local
-product.
+integrations) may exist as contracted offerings under **Custom** or as
+add-ons that still require Steady+. They must **not** be advertised as
+already implemented until evidence exists, and they must not reintroduce
+feature-tier gating of the free local product.
 
 ### What this replaces
 
@@ -1026,9 +1048,10 @@ product.
 | --- | --- |
 | Community Edition as a limited free tier | Full local Kumkaj free forever |
 | 14-day Professional evaluation | Removed --- no trial of local software |
-| Annual Professional / Enterprise entitlement | Replaced by usage-based Kumkaj Cloud |
-| Feature unlock by edition | Local features free; cloud infrastructure billed |
-| Branch ceilings as the main paid limit | Scale via cloud consumption, not artificial software ceilings |
+| Annual Professional / Enterprise entitlement | Replaced by Steady / Swift / Priority / Custom cloud plans |
+| Feature unlock by edition | Local features free; cloud quota + bandwidth billed |
+| Branch / device ceilings as the main paid limit | No device caps; scale via cloud quota + bandwidth |
+| “Activation” one-time gate as the primary SKU | Superseded by yearly cloud membership (Free + four cloud plans) |
 
 ------------------------------------------------------------------------
 
@@ -1046,14 +1069,18 @@ Non-negotiable rule:
 When cloud service is unavailable, unpaid, or deliberately stopped:
 
 -   full local / offline operation continues;
--   cloud sync, remote dashboard, and other cloud-only controls pause;
+-   cloud sync, remote dashboard, and other cloud-only controls pause
+    (new cloud uploads may stop; retrieve rules in
+    [`CLOUD_PLANS.md`](CLOUD_PLANS.md));
 -   unsynchronized local events remain preserved for later reconnect;
 -   local backups and exports remain available;
 -   restoring cloud service resumes cloud features without destructive
     migration or data loss.
 
 There is no “trial expiry that locks the POS.” Local Kumkaj does not
-expire. Cloud billing affects cloud infrastructure only.
+expire. Cloud billing affects cloud infrastructure only. Cloud data
+deletion timing after subscription end is defined in
+[`CLOUD_PLANS.md`](CLOUD_PLANS.md) — never immediate wipe at expiry.
 
 ------------------------------------------------------------------------
 
@@ -1425,9 +1452,10 @@ product enables them):
 5.  **Extra tills and multi-branch** — LAN clients on the shop's own
     Wi‑Fi; one local server per branch (§5) + snapshot roll-up.
 6.  **Optional Kumkaj Cloud** — WAN sync, remote visibility, hosted
-    backup, usage metering. Same rates for all; higher bill only from
-    higher consumption. Each branch still runs free local Kumkaj. Cloud
-    is additive, never required for counter service.
+    backup via yearly Steady / Swift / Priority / Custom
+    ([`CLOUD_PLANS.md`](CLOUD_PLANS.md)). Same plan sheet for all;
+    heavier use means a higher plan. Each branch still runs free local
+    Kumkaj. Cloud is additive, never required for counter service.
 
 ------------------------------------------------------------------------
 

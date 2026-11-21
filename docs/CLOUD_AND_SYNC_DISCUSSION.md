@@ -5,7 +5,9 @@ implementation plan. Captured so we do not re-argue the same points.
 
 Canonical product doctrine still wins on conflict:
 [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
-§20–21 (optional cloud, free local forever, usage-based cloud).
+§20–22 (optional cloud, free local forever) and
+[`CLOUD_PLANS.md`](CLOUD_PLANS.md) (yearly Free / Steady / Swift /
+Priority / Custom).
 Website Auth how-to: [`FIREBASE_AUTH_SETUP.md`](FIREBASE_AUTH_SETUP.md).
 
 ---
@@ -109,11 +111,11 @@ bandwidth / data / ops than others. Metering and isolation must reflect
 that (quotas, usage lines, fair scheduling) so one heavy user does not
 trample others — without inventing multi-shop product chrome.
 
-Commercial frame (vision §21): free local; pay for cloud resources /
-services used — sync is one such service among others. Plans/services
-stay flexible (bundles and à la carte). Billing gateway under watch
-includes Stripe; alternatives OK if better globally. Do not lock
-geography.
+Commercial frame (vision §21 + [`CLOUD_PLANS.md`](CLOUD_PLANS.md)): free
+local forever; yearly cloud membership **Steady / Swift / Priority /
+Custom** (quota + live bandwidth). Other paid services require one of
+those paid plans. Billing gateway under watch includes Stripe;
+alternatives OK if better globally. Do not lock geography.
 
 AWS credits = **delay the bill** while we learn cost → price. After
 credits, revisit AWS vs GCP (or split) for API/DB on **numbers**, not
@@ -154,15 +156,26 @@ loyalty. Auth can stay on Firebase either way.
   and other app deploys. Don’t paint into a corner that forces a second
   unrelated “cloud shop” database.
 
-## 6. Open for the next discussion
+## 6. Cloud plans (decided 2026-11-21)
 
-- First paid cloud SKUs / catalog (sync and what else) — Khaynjo first.
-- Concrete AWS layout for v1 (e.g. App Runner/EC2 + RDS) and what to
-  meter (bandwidth, storage, sync ops, …).
-- Khaynjo app Auth (Firebase `khaynjo-2b2a2`) + “connect / restore / seed”
-  UX.
-- Billing gateway final pick and entitlement model.
+Canonical commercial grid: [`CLOUD_PLANS.md`](CLOUD_PLANS.md).
+
+Summary: **Free forever** + **Steady (10 GB)** + **Swift (25 GB)** +
+**Priority (50 GB)** + **Custom**. Paid plans include free forever. All
+paid tiers are **live** sync; they differ by **quota** and **bandwidth**
+only (no device caps, no connection-interval tiers). Yearly INR list
+(GST inclusive): ₹6,000 / ₹12,000 / ₹24,000 / quote. After subscription
+ends: 1 month grace (13 months cloud run), retrieve until +2 months, then
+delete eligible; weekly cancellable notices in that window.
+
+## 7. Open for the next discussion
+
+- Concrete bandwidth cap numbers (Steady / Swift / Priority).
+- Concrete AWS layout for v1 (e.g. App Runner/EC2 + RDS) and meters.
+- Khaynjo app Auth (Firebase `khaynjo-2b2a2`) + connect / restore / seed UX.
+- Billing gateway final pick.
 - How GCP (Firebase) and AWS API/DB talk cleanly (token verify on the API).
+- Other paid services that require Steady+ membership.
 
-When continuing, start from this file and the vision §20–21; update this
-doc as decisions firm up.
+When continuing, start from [`CLOUD_PLANS.md`](CLOUD_PLANS.md), this file,
+and vision §20–22.
