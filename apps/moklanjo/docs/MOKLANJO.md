@@ -204,7 +204,13 @@ to someone whose rail hid those peers (`docs/DEV.md` § Staff rights vs chrome).
 
 **Collapsible side rail (≥720 css px).** **‹** at the top of the rail hides the whole nav (zero width); **›** in the header restores it. Phone bottom tabs are unchanged. Same pattern as Khaynjo (`rail_collapsed` in `apply_shell_layout`).
 
-**Responsive + selectable text.** Layouts reflow to the window; on-screen display text is selectable/copyable by default (`WrapLabel` / `ReportText`). Exceptions only inside tap targets — see [`docs/DESIGN.md`](../../../docs/DESIGN.md) § Always responsive and § Text selection & copy.
+**Responsive + selectable text.** Layouts reflow to the window **and** grow
+gracefully on wide screens (Fit chip toolbars unlock to one row when they
+fit — forever-phone stacks with empty desk space are a bug). On-screen
+display text is selectable/copyable by default (`WrapLabel` / `ReportText`).
+Exceptions only inside tap targets — see [`docs/DESIGN.md`](../../../docs/DESIGN.md)
+§ Always responsive and § Text selection & copy ·
+[`.cursor/rules/responsive-graceful-wide.mdc`](../../../.cursor/rules/responsive-graceful-wide.mdc).
 
 ------------------------------------------------------------------------
 

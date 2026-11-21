@@ -117,10 +117,12 @@ attempt, PR #1):** measure height with `MakepadImeProbe`, use stock
 `KeyboardView`, snap hide to 0 — do not re-add estimates or app re-lift.
 Full cause/solution table: [`DEV.md`](DEV.md) bug **6f** (also **6d**, **6e**).
 
-## Always responsive (every app **and** every Makepad website)
+## Always responsive (every Kumkaj app **and** every Makepad website)
 
-Layouts must fit the window they are in — no cropped columns, no
-controls past the right edge, no “designed for one width” grids.
+Applies to **Khaynjo, Moklanjo, Tabiyat, Kirano**, the kumkaj.com hub,
+and every product site — not “sites only.” Layouts must fit the window
+they are in — no cropped columns, no controls past the right edge, no
+“designed for one width” grids.
 
 **Responsive ≠ “looks OK on phone, stays phone on desk.”** Fitting a
 narrow viewport is half the job. The other half is **graceful growth**:

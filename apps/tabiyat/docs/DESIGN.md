@@ -19,3 +19,11 @@ any restaurant sibling palette.
 
 Pharmacy counter: **Books · Sell · Buy · Medicines · …**. Do not show
 Floor / Kitchen / KOT as product peers.
+
+## Always responsive
+
+Workspace law — not optional for Tabiyat: narrow fit **and** graceful
+growth on wide screens. Fit chip toolbars unlock to one row when they
+fit; forever-phone stacks with empty desk space are a bug. See
+[`docs/DESIGN.md`](../../../docs/DESIGN.md) § Always responsive ·
+[`.cursor/rules/responsive-graceful-wide.mdc`](../../../.cursor/rules/responsive-graceful-wide.mdc).

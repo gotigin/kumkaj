@@ -456,10 +456,13 @@ sign and test — same product when they land.
 ## 5b. Layout & interaction law for Khaynjo screens (learned 2026-10-22)
 
 Generic layout/interaction law for all Kumkaj apps is canonical in
-[`docs/DESIGN.md`](../../../docs/DESIGN.md) § **Always responsive**,
-§ **Text selection & copy**, § Work-surface layout & interaction, and
-[`docs/DEV.md`](../../../docs/DEV.md) (state-guard and agent-verification
-rules) — not restated here. Below is only the restaurant instantiation
+[`docs/DESIGN.md`](../../../docs/DESIGN.md) § **Always responsive**
+(narrow fit **and** graceful growth on desk — never leave Fit toolbars
+stuck in phone stacks), § **Text selection & copy**, § Work-surface layout
+& interaction, [`docs/DEV.md`](../../../docs/DEV.md) (state-guard and
+agent-verification rules), and
+[`.cursor/rules/responsive-graceful-wide.mdc`](../../../.cursor/rules/responsive-graceful-wide.mdc)
+— not restated here. Below is only the restaurant instantiation
 the first build broke and must not break again:
 
 - **Order desk:** order-type chips stay pinned above; **Order** (title,
