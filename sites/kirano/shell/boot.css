@@ -1,0 +1,104 @@
+/* kirano.shop start-up screen: shown from the first byte of HTML until the
+   Makepad canvas has painted. Inlined into index.html by
+   scripts/patch-web-shell.sh, so it needs no request of its own.
+   Colours are the site's own (src/ui.rs: Cream, Ink, Hint, Orange, WellLine, Leaf). */
+html, body { background-color: #FDF7EA; }
+#boot {
+  --boot-bg: #FDF7EA;
+  --boot-ink: #031303;
+  --boot-muted: #56575D;
+  --boot-accent: #CD380E;
+  --boot-track: #E8CFA0;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 24px;
+  background: var(--boot-bg);
+  color: var(--boot-ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+#boot.boot--done { opacity: 0; pointer-events: none; }
+/* The mark keeps its 132-unit drawing and grows a little on large screens. */
+.boot-mark { position: relative; width: 132px; height: 132px; margin: 0 0 22px; }
+@media (min-width: 900px) and (min-height: 700px) {
+  .boot-mark { transform: scale(1.18); margin-bottom: 34px; }
+}
+.boot-mark svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.boot-track { fill: none; stroke: var(--boot-track); stroke-width: 4; }
+.boot-arc {
+  fill: none;
+  stroke: var(--boot-accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 377;
+  stroke-dashoffset: 377;
+  transition: stroke-dashoffset 0.3s linear;
+}
+/* A short bright stroke that travels round the ring while anything is pending. */
+.boot-orbit {
+  fill: none;
+  stroke: #1C460E;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 26 351;
+  opacity: 0.55;
+  transform-origin: 66px 66px;
+  animation: boot-orbit 1.5s linear infinite;
+}
+.boot-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border-radius: 20px;
+  animation: boot-breathe 2.6s ease-in-out infinite;
+}
+.boot-name { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 700; letter-spacing: 0.01em; }
+/* Two lines are reserved so a longer line never moves the block. */
+.boot-tag {
+  margin: 8px 0 0;
+  min-height: 3em;
+  max-width: 30em;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--boot-muted);
+  transition: opacity 0.3s ease;
+}
+.boot-tag.boot-tag--out { opacity: 0; }
+.boot-status {
+  margin: 8px 0 0;
+  min-height: 1.5em;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--boot-muted);
+  font-variant-numeric: tabular-nums;
+}
+.boot-help { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--boot-muted); }
+.boot-help a, .boot-help button {
+  color: #A82E0A;
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 6px 4px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#boot.boot--failed .boot-orbit, #boot.boot--failed .boot-logo { animation: none; }
+#boot.boot--failed .boot-orbit { opacity: 0; }
+@keyframes boot-orbit { to { transform: rotate(360deg); } }
+@keyframes boot-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) {
+  #boot, .boot-arc, .boot-tag { transition: none; }
+  .boot-orbit, .boot-logo { animation: none; }
+  .boot-orbit { opacity: 0; }
+}

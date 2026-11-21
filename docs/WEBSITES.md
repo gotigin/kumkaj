@@ -171,6 +171,81 @@ untouched, apps unaffected):
 - **Known limit:** landscape phones (height < 480) clip the tallest
   chapters — a slide does not scroll. Portrait is the phone layout.
 
+### The shell around the wasm (2026-11-21, all five sites)
+
+Nothing can run before the wasm has arrived, and link crawlers never run it
+at all, so three things live in the HTML. Each site owns its copy under
+`sites/<site>/shell/`.
+
+- **Start-up screen** — `shell/boot.{css,html,js}` + `shell/logo.webp`,
+  inlined into `index.html` by `scripts/patch-boot-screen.sh` (called by
+  `patch-web-shell.sh`, so preview and deploy show the same thing). It
+  replaces cargo-makepad's grey "Loading.." bar: the product's own tile in a
+  ring that fills with the **real** wasm download (the page counts the bytes
+  as they stream; the size is written in at build time), the name, a line
+  that changes, then "Starting" until Makepad has painted, then a fade. It
+  says so after 15 s on a slow line, and when the page cannot start it
+  offers Reload and the plain pages. Colours are the site's own; change
+  the lines in `boot.html`.
+- **Link preview** — `static/media/link-preview.jpg`: a 1200×630 JPEG of the
+  real first screen, named by the Open Graph and Twitter tags in
+  `shell/head.html` (home) and in the privacy, terms and account pages. One
+  set of tags serves WhatsApp, X, LinkedIn, Facebook, Telegram, Discord,
+  Slack and iMessage; JPEG because some of them cannot read WebP, under
+  300 KB because WhatsApp drops bigger ones. After the first screen
+  changes: `./sites/<site>/scripts/preview-web.sh` in one terminal,
+  `./sites/<site>/scripts/make-link-preview.sh http://127.0.0.1:<port>/` in
+  another, commit the picture, deploy. On the home page its address carries
+  a hash of the file, because those apps keep a preview for days.
+- **Head tags in one place** — `shell/head.html` (title, description,
+  canonical, icons, preview tags, `WebSite` JSON-LD) is read by both
+  `deploy-firebase.sh` and `preview-web.sh`; it used to be pasted in each.
+  Every site now has `/favicon.png` and a touch icon (the browser's request
+  for a missing `/favicon.ico` fetched a 21 KB error page on every visit).
+
+**What a first visit downloads** (empty cache, 390×844, measured with
+`Internal/tools/site-shots/netlog.mjs` — outside this repo — before this
+change):
+
+| Site | Requests | On the wire | of which wasm | of which fonts |
+|---|---|---|---|---|
+| kumkaj.com | 21 | 2.05 MB | 1.30 MB | 0.64 MB (8 files) |
+| khaynjo.com | 64 | 3.58 MB | 1.32 MB | 1.39 MB (22 files) |
+| moklanjo.com | 20 | 1.94 MB | 1.31 MB | 0.46 MB (5 files) |
+| kirano.shop | 22 | 2.13 MB | 1.30 MB | 0.66 MB (8 files) |
+| tabiyat.shop | 21 | 2.07 MB | 1.30 MB | 0.60 MB (7 files) |
+
+- **The wasm is the Makepad runtime.** cargo-makepad already builds it with
+  `opt-level=z`, one codegen unit, `build-std` with `panic_abort`, and strips
+  the name section (9.7 MB → 6.4 MB → 1.3 MB brotli). A site's own code
+  adds almost nothing, so the five are the same size.
+- **`--split` does not help** (tried on gotigin.com, same Makepad): 5,130 of
+  22,605 functions move to a second file, but "secondary remains on the
+  startup path", so both halves load before the first frame and the total
+  is 1.45 MB, not 1.33 MB.
+- **`--wasm-opt`** needs Binaryen's `wasm-opt`, which is not installed here;
+  untried. Install it, build one site with the flag, load it, and only then
+  add the flag to the deploy scripts.
+- **Every font a site declares is fetched before the first frame**, whether
+  or not a chapter that needs it is on screen — khaynjo.com fetches all 22
+  (the chapter-8 `WorldFont` members too). Nothing is subset yet except the
+  12 KB CJK face; subsetting the rest to the characters the site draws is
+  the largest saving left (about 1.2 MB on khaynjo.com).
+- **Versioned and cached:** deploy gives the wasm and its loader
+  `?v=<build id>`, and `firebase.json` now serves `*.wasm` `immutable`, so a
+  returning visitor downloads it once per release.
+- **Not shipped any more:** the `.br` twin cargo-makepad writes beside
+  every file (Firebase compresses on its own and never serves them), and
+  on khaynjo.com four banners and three screenshots (4.2 MB) that sat in
+  `resources/media/` with nothing drawing them — the originals are in
+  `apps/khaynjo/assets/`.
+- **Product tiles** are 192 px WebP with transparent corners, made from the
+  masters in `apps/<app>/assets/` and `assets/images/`. The masters are a
+  rounded tile on an opaque white or black square (Kirano's also has a
+  black bar down its right edge), which showed as a box on every coloured
+  header and card. Moklanjo's sites were still showing the pre-2026-11-05
+  tile that reads "courier".
+
 ------------------------------------------------------------------------
 
 ## 3. Repo layout
@@ -187,6 +262,7 @@ sites/<site>/
   src/main.rs               chrome, toys, links, responsive tiers, owner switches, tests
   src/weight.rs | floor.rs | counter.rs  toy rules copied from the app (copy, not import) + tests
   resources/fonts/          the faces this site draws, with their OFL licences
+  shell/                    start-up screen + head tags inlined into index.html
   static/                   crawl shell overlays (terms, css; catalogue on khaynjo)
   scripts/run-web.sh        debug wasm + local server
   scripts/run-desktop.sh    native window
@@ -346,8 +422,8 @@ rustup component add rust-src --toolchain nightly
 |---|---|---|
 | **0 — Brand spike** | `sites/kumkaj` SlidesView brand story; workspace member; run scripts | **Done** 2026-11-07 |
 | **1 — Product site crates** | Brand house deepened; `sites/moklanjo`, `sites/khaynjo` copied then diverged; trade palettes, type and nav; story chapters from the product docs; one toy per site; Download / WhatsApp CTAs behind owner switches | **Done as a local demo** 2026-11-07 (native + wasm) |
-| **2 — 3D chapters + budgets** | PBR / glTF / 3D text chapters inside each site; real app captures on device screens; font subsetting; `--release --brotli --split --strip` size budgets | Next |
-| **3 — Thin crawl shell + legal** | Static `/privacy` `/terms`, OG meta, `<noscript>` around the wasm; Play privacy URL; retire legacy zola stubs | **Partial 2026-11-18** — shell + preview/deploy scripts on all five sites; khaynjo.com already hosted; other Firebase projects + custom domains still owner |
+| **2 — 3D chapters + budgets** | PBR / glTF / 3D text chapters inside each site; real app captures on device screens; font subsetting; size budgets (`--split` measured 2026-11-21: no gain, see § Measured) | Next |
+| **3 — Thin crawl shell + legal** | Static `/privacy` `/terms`, OG meta, `<noscript>` around the wasm; Play privacy URL; retire legacy zola stubs | **Done 2026-11-21** — all five hosted on their own domains; link-preview picture, Twitter tags, icons and a start-up screen in every shell |
 | **4 — Presenter + Indic** | Offline presenter after one visit (service worker / packaged native); Hindi / Gujarati copy with native review | — |
 | **5 — Growth** | Tools pages (volumetric weight, GST bill), case studies, Cloud pages when Cloud exists | — |
 

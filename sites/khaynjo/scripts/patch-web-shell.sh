@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Inject site-shell.css (320px min-width + horizontal scroll) into a staged
-# Makepad wasm index.html. Used by deploy-firebase.sh and preview-web.sh.
+# Inject site-shell.css (320px min-width + horizontal scroll) and the
+# start-up screen (patch-boot-screen.sh) into a staged Makepad wasm
+# index.html. Used by deploy-firebase.sh and preview-web.sh.
 set -euo pipefail
 INDEX="${1:?usage: patch-web-shell.sh <path/to/index.html>}"
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
@@ -38,3 +39,7 @@ awk -v css="$CSS_REL" '
 ' "$INDEX" > "$TMP"
 mv "$TMP" "$INDEX"
 echo "Patched $INDEX (+ site-shell.css, - auto_reload.js)"
+
+# The start-up screen (logo, progress ring) replaces cargo-makepad's grey
+# "Loading.." bar: shell/boot.{css,html,js}, inlined.
+"$(dirname "$0")/patch-boot-screen.sh" "$INDEX"

@@ -255,9 +255,12 @@ enforces it.
   hand-typed ("199 countries … 81 with photos").
 - **Scripts:** chapter 8 uses its own `WorldFont` (TextFont + Armenian,
   Ethiopic, Georgian, Khmer, Lao, Myanmar, Sinhala, Thaana, Tibetan and a
-  12 KB CJK subset) so those fonts load only when chapter 8 draws. The
-  build script fails if a Han / kana / Hangul character is missing from
-  the subset.
+  12 KB CJK subset). On wasm that does **not** defer them: every font a
+  site declares is fetched before the first frame (measured 2026-11-21 —
+  all 22 files, 1.39 MB, on every first visit; see `docs/WEBSITES.md`
+  § The shell around the wasm). Subsetting them is the saving, not the
+  separate family. The build script fails if a Han / kana / Hangul
+  character is missing from the subset.
 - **Photos load per page** (only the cards on screen). On wasm they are
   fetched and decoded synchronously — Makepad's async image decode needs a
   thread pool the `--no-threads` build lacks.

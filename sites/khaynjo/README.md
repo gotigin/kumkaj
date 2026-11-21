@@ -42,7 +42,8 @@ Deploys cache-bust `khaynjo-site.wasm` / `web_gl.js` with a build id in
 Static overlays live in `static/` (catalogue under `static/v1/catalogue/`,
 marketing stills under `static/media/`). Banners and the app icon come from
 `apps/khaynjo/assets/` (`KhaynjoBanner-*.png`, `khaynjo-app-icon-512x512.png`)
-into `resources/media/` (webp) and `static/media/`. Publish the public dish
+into `resources/media/` (webp, the app tile only — it is the one picture
+the pages draw from there) and `static/media/`. Publish the public dish
 shelf + starters with `./apps/khaynjo/scripts/publish-catalogue.sh`. Chapter
 dish photos and screenshots also ship inside the wasm package via
 `resources/dishes/` and `resources/media/`. Optional AI atmosphere video:

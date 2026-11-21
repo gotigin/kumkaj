@@ -80,7 +80,9 @@ fi
 echo "3/4 Stage Firebase public/ = wasm package + static shell"
 rm -rf "$OUT"
 mkdir -p "$OUT"
-rsync -a --delete "$WASM_PKG/" "$OUT/"
+# cargo-makepad writes a .br twin beside every file; Firebase Hosting
+# compresses on its own and never serves those.
+rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
 rsync -a "$SITE/static/" "$OUT/"
 "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
 
@@ -129,14 +131,18 @@ fi
 BUILD_ID="$(date -u +%Y%m%d%H%M%S)-$(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo local)"
 INDEX="$OUT/index.html"
 TMP="$OUT/index.html.tmp"
-HEAD_INJECT='        <title>Kirano</title>
-        <meta name="description" content="Busy counter. No internet. Still billing. — grocery OS on your own devices.">
-        <meta name="kirano-build" content="'"$BUILD_ID"'">
-        <link rel="canonical" href="https://kirano.shop/">
-        <meta property="og:title" content="Kirano">
-        <meta property="og:description" content="Busy counter. No internet. Still billing. — grocery OS on your own devices.">
-        <meta property="og:url" content="https://kirano.shop/">
-        <meta property="og:type" content="website">'
+# Title, description and link-preview tags live in shell/head.html (one copy
+# for deploy and preview). Crawlers and chat apps read this HTML only — they
+# never run the wasm.
+PREVIEW="$SITE/static/media/link-preview.jpg"
+if [[ ! -f "$PREVIEW" ]]; then
+  echo "error: missing sites/kirano/static/media/link-preview.jpg — run sites/kirano/scripts/make-link-preview.sh" >&2
+  exit 1
+fi
+# The picture's address changes when the picture does: WhatsApp, Telegram and
+# Facebook keep a preview for days and only fetch again for a new address.
+PREVIEW_URL="https://kirano.shop/media/link-preview.jpg?v=$(sha256sum "$PREVIEW" | cut -c1-10)"
+HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
 BODY_INJECT='        <noscript><p>Kirano — grocery counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
     </body>'
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>

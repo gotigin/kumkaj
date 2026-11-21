@@ -1,0 +1,19 @@
+        <div class='canvas_loader' hidden></div>
+        <div id="boot" data-wasm-bytes="__WASM_BYTES__" aria-busy="true">
+            <div class="boot-mark" id="boot-mark" role="progressbar" aria-label="Loading Tabiyat" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <svg viewBox="0 0 132 132" aria-hidden="true">
+                    <circle class="boot-track" cx="66" cy="66" r="60"></circle>
+                    <circle class="boot-arc" id="boot-arc" cx="66" cy="66" r="60"></circle>
+                    <circle class="boot-orbit" cx="66" cy="66" r="60"></circle>
+                </svg>
+                <img class="boot-logo" src="__LOGO_DATA_URI__" width="84" height="84" alt="">
+            </div>
+            <p class="boot-name">Tabiyat</p>
+            <p class="boot-tag" id="boot-tag" data-lines="Pharmacy counter. Offline. Your books.|Medicines, batch and expiry on your own books|On your own devices">Pharmacy counter. Offline. Your books.</p>
+            <p class="boot-status" id="boot-status" role="status" aria-live="polite">Loading…</p>
+            <p class="boot-help" id="boot-help" hidden>
+                <button type="button" id="boot-reload">Reload</button> ·
+                <a href="/privacy">Privacy</a> ·
+                <a href="/terms/">Terms</a>
+            </p>
+        </div>

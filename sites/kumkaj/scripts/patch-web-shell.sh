@@ -37,3 +37,7 @@ awk -v css="$CSS_REL" '
 ' "$INDEX" > "$TMP"
 mv "$TMP" "$INDEX"
 echo "Patched $INDEX (+ site-shell.css, - auto_reload.js)"
+
+# The start-up screen (logo, progress ring) replaces cargo-makepad's grey
+# "Loading.." bar: shell/boot.{css,html,js}, inlined.
+"$(dirname "$0")/patch-boot-screen.sh" "$INDEX"

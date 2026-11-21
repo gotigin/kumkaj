@@ -46,14 +46,33 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   echo "2/3 Stage $OUT (= wasm + static shell, same as deploy minus catalogue publish)"
   rm -rf "$OUT"
   mkdir -p "$OUT"
-  rsync -a --delete "$WASM_PKG/" "$OUT/"
+  # cargo-makepad writes a .br twin beside every file; Firebase Hosting
+  # compresses on its own and never serves those.
+  rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
   rsync -a "$SITE/static/" "$OUT/"
   "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
 
   BUILD_ID="preview-$(date -u +%Y%m%d%H%M%S)"
   INDEX="$OUT/index.html"
   TMP="$OUT/index.html.tmp"
-  awk -v bid="$BUILD_ID" '
+  # Title, description and link-preview tags live in shell/head.html (one copy
+  # for deploy and preview). Crawlers and chat apps read this HTML only — they
+  # never run the wasm.
+  PREVIEW="$SITE/static/media/link-preview.jpg"
+  if [[ ! -f "$PREVIEW" ]]; then
+    echo "error: missing sites/khaynjo/static/media/link-preview.jpg — run sites/khaynjo/scripts/make-link-preview.sh" >&2
+    exit 1
+  fi
+  # The picture's address changes when the picture does: WhatsApp, Telegram and
+  # Facebook keep a preview for days and only fetch again for a new address.
+  PREVIEW_URL="https://khaynjo.com/media/link-preview.jpg?v=$(sha256sum "$PREVIEW" | cut -c1-10)"
+  HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
+  awk -v head="$HEAD_INJECT" -v bid="$BUILD_ID" '
+    /<title>khaynjo-site<\/title>/ && !done_title {
+      print head
+      done_title=1
+      next
+    }
     {
       gsub(/\.\/makepad_platform\/web_gl\.js/, "./makepad_platform/web_gl.js?v=" bid)
       gsub(/\.\/khaynjo-site\.wasm/, "./khaynjo-site.wasm?v=" bid)
