@@ -22,6 +22,45 @@ fi
 
 mkdir -p "$RES"
 
+# The masters are a rounded tile drawn on an opaque white or black square
+# (Kirano's has a black bar down one edge as well). Scaled as they are, every
+# icon and the in-app mark carried that square: black corners on a white card
+# on the app's first screen, a box inside the launcher's own shape. So first
+# clear the flat background that touches the edges, trim to the tile and
+# centre it; every size below is made from that. The master file is not
+# changed, and one whose corners are already transparent comes through as is.
+WORK="$(mktemp -d)"
+trap 'rm -rf "$WORK"' EXIT
+magick "$SRC" -alpha set PNG32:"$WORK/a.png"
+cp "$WORK/a.png" "$WORK/original.png"
+opaque_share() { magick "$1" -alpha extract -format '%[fx:mean]' info:; }
+BEFORE="$(opaque_share "$WORK/a.png")"
+# Near-white, then near-black, reaching an edge. A one-pixel frame of the
+# colour joins all four edges, so one fill from its corner finds every such
+# region. Two rounds: a bar can lie beyond a margin of the other colour. The
+# fuzz is small on purpose — a cream tile on white must not leak.
+for _ in 1 2; do
+  magick "$WORK/a.png" -compose Copy -bordercolor white -border 1 \
+    -fuzz 2.5% -fill none -draw 'alpha 0,0 floodfill' -shave 1x1 PNG32:"$WORK/a.png"
+  magick "$WORK/a.png" -compose Copy -bordercolor black -border 1 \
+    -fuzz 3% -fill none -draw 'alpha 0,0 floodfill' -shave 1x1 PNG32:"$WORK/a.png"
+done
+AFTER="$(opaque_share "$WORK/a.png")"
+if awk -v b="$BEFORE" -v a="$AFTER" 'BEGIN { exit !(b - a > 0.01) }'; then
+  # The fills cleared a background. Take the light or dark fringe off the
+  # new edge, then trim and centre.
+  magick "$WORK/a.png" \
+    \( +clone -alpha extract -morphology Erode Disk:1.6 -blur 0x0.8 -level 35%,100% \) \
+    -alpha off -compose CopyOpacity -composite -trim +repage PNG32:"$WORK/b.png"
+  SIDE="$(magick identify -format '%[fx:max(w,h)]' "$WORK/b.png")"
+  magick "$WORK/b.png" -background none -gravity center -extent "${SIDE}x${SIDE}" PNG32:"$WORK/master.png"
+  echo "master: cleared the square behind the tile ($(basename "$SRC"), tile ${SIDE}px)"
+else
+  cp "$WORK/original.png" "$WORK/master.png"
+  echo "master: no flat background at the edges ($(basename "$SRC")), used as is"
+fi
+SRC="$WORK/master.png"
+
 # Square PNG sizes for OS / Makepad window icon embedding (PNG required).
 resize_png() {
   local size="$1" dest="$2"

@@ -117,6 +117,8 @@ trap - EXIT
 echo "APK → $OUT/kumkaj-khaynjo.apk"
 if [[ -f "$OUT/khaynjo.aab" ]]; then
   echo "AAB → $OUT/khaynjo.aab"
-  [[ -f "$OUT/native-debug-symbols.zip" ]] && echo "Native debug symbols → $OUT/native-debug-symbols.zip"
-  [[ -f "$OUT/mapping.txt" ]] && echo "Deobfuscation mapping → $OUT/mapping.txt"
+  # `if`, not `test && echo`: as the last command a failed test would become
+  # the exit status of a package run that worked.
+  if [[ -f "$OUT/native-debug-symbols.zip" ]]; then echo "Native debug symbols → $OUT/native-debug-symbols.zip"; fi
+  if [[ -f "$OUT/mapping.txt" ]]; then echo "Deobfuscation mapping → $OUT/mapping.txt"; fi
 fi

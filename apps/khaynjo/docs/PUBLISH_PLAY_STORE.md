@@ -33,7 +33,10 @@ Other Kumkaj apps: `$HOME/<app>-release.jks` + `.password` (e.g. `moklanjo-relea
 
 ```bash
 ./scripts/product-cert.sh --tier=store khaynjo
-# Needs adb + a device + dist/khaynjo-android/*.apk from package-android.sh
+# Needs adb, an unlocked phone (or emulator) and dist/khaynjo-android/ built from this
+# commit by package-android.sh. On the phone it installs over the app that is
+# there (books kept), opens it for 10 s and leaves android/launch.png — docs/DEV.md
+# § Product Certification Kit.
 ```
 
 ## Build the Play bundle

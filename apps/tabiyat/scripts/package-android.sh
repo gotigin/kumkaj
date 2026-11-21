@@ -4,9 +4,10 @@
 # production app id. No device needed. For live install on a connected
 # device use android-dev.sh (development app id).
 #   apps/tabiyat/scripts/package-android.sh
-# Signed with the release key when KUMKAJ_ANDROID_KEYSTORE (+ _PASS) is set
-# (see scripts/android-env.sh), which also builds the Play bundle
-# dist/tabiyat-android/tabiyat.aab.
+# Signed with the release key when $HOME/tabiyat-release.jks exists and the
+# password is in $HOME/tabiyat-release.jks.password (or KUMKAJ_ANDROID_*
+# overrides) — see scripts/android-env.sh / docs/STORE.md.
+# Also builds the Play bundle dist/tabiyat-android/tabiyat.aab.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"
@@ -74,7 +75,7 @@ if android_release_keystore_set; then
   android_aab_sign_opts
   cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \
     android "${ANDROID_PKG_OPTS[@]}" "${ANDROID_AAB_SIGN_OPTS[@]}" build-aab -p kumkaj-tabiyat --release 2>&1 | tee -a "$LOG"
-  AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_tabiyat" -maxdepth 1 -name '*.aab' 2>/dev/null | head -1 || true)"
+  AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_tabiyat" -maxdepth 1 -name '*.aab' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2- || true)"
   if [[ -z "$AAB" ]]; then
     echo "Play bundle build did not complete. See $LOG" >&2
     exit 1
@@ -82,6 +83,9 @@ if android_release_keystore_set; then
   cp -f "$AAB" "$STAGE/tabiyat.aab"
   echo "Play bundle → $OUT/tabiyat.aab"
   android_assert_aab_launch_bg "$STAGE/tabiyat.aab"
+  # Crash symbolication for Play Console (native .so + identity Java mapping).
+  AAB_LIBS="$TARGET_DIR/android/makepad-android-aab/kumkaj_tabiyat/lib"
+  android_write_play_crash_files "$AAB_LIBS" "$STAGE/tabiyat.aab" "$STAGE"
 fi
 cat > "$STAGE/README.txt" <<EOF
 Tabiyat for Android phones and tablets
@@ -101,6 +105,9 @@ At launch pick what this device is:
   Server (Settings → Extra tills → Allow extra tills) → sign in with your PIN.
 The Server can be any device running Tabiyat: Windows, Linux or Android.
 First start in Server Mode asks for the Owner PIN — there is no default PIN.
+
+Play Console (with the .aab): also upload native-debug-symbols.zip and
+mapping.txt from this folder — see apps/tabiyat/docs/STORE.md.
 EOF
 cp -f "$ROOT/docs/LAN_QUICK_START.md" "$STAGE/Quick start.txt"
 # Atomic replace of the published folder (like MSI overwriting the .msi).
@@ -108,3 +115,10 @@ rm -rf "$OUT"
 mv "$STAGE" "$OUT"
 trap - EXIT
 echo "APK → $OUT/kumkaj-tabiyat.apk"
+if [[ -f "$OUT/tabiyat.aab" ]]; then
+  echo "AAB → $OUT/tabiyat.aab"
+  # `if`, not `test && echo`: as the last command a failed test would become
+  # the exit status of a package run that worked.
+  if [[ -f "$OUT/native-debug-symbols.zip" ]]; then echo "Native debug symbols → $OUT/native-debug-symbols.zip"; fi
+  if [[ -f "$OUT/mapping.txt" ]]; then echo "Deobfuscation mapping → $OUT/mapping.txt"; fi
+fi

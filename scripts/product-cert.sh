@@ -412,7 +412,10 @@ run_resilience() {
     fail_tier "$app" resilience "soak failed — $out/soak.log"
     return 1
   fi
-  if grep -E 'panicked at|SIGSEGV|^\[E\] ' "$out/soak.log" "$out/faults.log" 2>/dev/null | grep -q .; then
+  # One grep on the files, no pipe: under pipefail `grep … | grep -q .` reads as
+  # "nothing found" when the first grep is still writing as the second leaves
+  # (SIGPIPE, 141) — that is, exactly when there are many such lines.
+  if grep -qE 'panicked at|SIGSEGV|^\[E\] ' "$out/soak.log" "$out/faults.log" 2>/dev/null; then
     fail_tier "$app" resilience "panic or [E] in soak/fault log"
     return 1
   fi
@@ -573,7 +576,7 @@ run_linux_pkg() {
   local win_ok=0 win_dump=""
   if have_cmd xlsclients; then
     win_dump="$(DISPLAY="$disp" xlsclients 2>/dev/null || true)"
-    if printf '%s\n' "$win_dump" | grep -qiE "$bin_name|${app}|makepad"; then
+    if grep -qiE "$bin_name|${app}|makepad" <<<"$win_dump"; then
       win_ok=1
     elif [[ -n "$(printf '%s\n' "$win_dump" | tr -d '[:space:]')" ]]; then
       # Some builds register an opaque client name — any client on this
@@ -586,7 +589,7 @@ run_linux_pkg() {
   # Ask the window tree too.
   if [[ "$win_ok" -ne 1 ]] && have_cmd xwininfo; then
     win_dump="$(DISPLAY="$disp" xwininfo -root -tree 2>/dev/null || true)"
-    if printf '%s\n' "$win_dump" | grep -qiE "$bin_name|${app}|Makepad|0x[0-9a-f]+.*: \(.*\)  [1-9]"; then
+    if grep -qiE "$bin_name|${app}|Makepad|0x[0-9a-f]+.*: \(.*\)  [1-9]" <<<"$win_dump"; then
       win_ok=1
     fi
   elif ! have_cmd xlsclients && ! have_cmd xwininfo; then
@@ -631,13 +634,22 @@ android_skip() {
   return 0
 }
 
+# True when the device shows its lock screen. Behind it an activity starts but
+# is never resumed: the launch check then reports a hang that is not one, or
+# passes on the focused-app line without a frame drawn.
+android_device_locked() {
+  local adb_bin="$1" serial="$2" dump
+  dump="$("$adb_bin" -s "$serial" shell dumpsys window 2>/dev/null | tr -d '\r' || true)"
+  [[ "$dump" =~ (mDreamingLockscreen|mShowingLockscreen|isKeyguardShowing)=true ]]
+}
+
 # ---------- Android device/emulator launch smoke ----------
 # Alive pid alone used to pass — a startup deadlock keeps the process and
 # Play still sees "keeps stopping" after the hang. Fail on crash, ANR, or
 # process-without-resumed-UI.
 run_android_device() {
   local app="$1" out apk pkg adb_bin serial pid i logcat_dump focused resumed
-  local aab="" apks_zip="" bt_jar="" sdk abi
+  local aab="" apks_zip="" bt_jar="" sdk abi stay
   out="$OUT/android"
   mkdir -p "$out"
   pkg="$(pkg_id_for "$app")"
@@ -649,14 +661,36 @@ run_android_device() {
     android_skip "$app" "adb not on PATH" "$out" || return 1
     return 0
   fi
-  # Prefer a real USB device over an emulator — Play ships the AAB's arm64
-  # split; the local makepad APK is often x86_64-only and hides AAB R-id bugs.
-  serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{if ($1 !~ /^emulator-/) {print $1; exit}}')"
+  # Several devices attached: ANDROID_SERIAL (adb's own variable) names the
+  # one to use, and a name that is not attached is a skip, not a guess.
+  serial=""
+  if [[ -n "${ANDROID_SERIAL:-}" ]]; then
+    serial="$("$adb_bin" devices 2>/dev/null | awk -v want="$ANDROID_SERIAL" '$1 == want && $2 == "device" {print $1; exit}')"
+    if [[ -z "$serial" ]]; then
+      android_skip "$app" "ANDROID_SERIAL=$ANDROID_SERIAL is not an attached, authorised device" "$out" || return 1
+      return 0
+    fi
+  fi
+  # Otherwise prefer a real USB device over an emulator — Play ships the AAB's
+  # arm64 split; the local makepad APK is often x86_64-only and hides AAB R-id
+  # bugs.
+  if [[ -z "$serial" ]]; then
+    serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{if ($1 !~ /^emulator-/) {print $1; exit}}')"
+  fi
   if [[ -z "$serial" ]]; then
     serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{print $1; exit}')"
   fi
   if [[ -z "$serial" ]]; then
     android_skip "$app" "no device/emulator (adb devices empty)" "$out" || return 1
+    return 0
+  fi
+  # Light the screen and clear a swipe-only lock. A PIN or pattern lock needs
+  # its owner; with the lock screen up there is nothing to prove.
+  "$adb_bin" -s "$serial" shell input keyevent KEYCODE_WAKEUP >/dev/null 2>&1 || true
+  "$adb_bin" -s "$serial" shell wm dismiss-keyguard >/dev/null 2>&1 || true
+  sleep 2
+  if android_device_locked "$adb_bin" "$serial"; then
+    android_skip "$app" "device $serial is locked — unlock it and run again" "$out" || return 1
     return 0
   fi
   shopt -s nullglob
@@ -688,6 +722,22 @@ run_android_device() {
       unzip -qo "$apks_zip" -d "$out/from-aab"
       if [[ -f "$out/from-aab/universal.apk" ]]; then
         apk="$out/from-aab/universal.apk"
+        # bundletool signs this copy with the debug key. A device that holds
+        # the release-signed app refuses it as an update
+        # (INSTALL_FAILED_UPDATE_INCOMPATIBLE), and the only way round is an
+        # uninstall — which deletes the books on that device. Sign it with the
+        # app's release key, as package-android.sh signs the APK. (Own
+        # subshell with errexit on, and its status read on the next line: a
+        # failed signer must not be talked over by the echo after it.)
+        (
+          set -euo pipefail
+          export KUMKAJ_APP_LABEL="" KUMKAJ_APP_DIR="$ROOT/apps/$app"
+          android_release_sign "$apk" "$sdk"
+        ) >"$out/sign.txt" 2>&1
+        if [[ $? -ne 0 ]]; then
+          fail_tier "$app" android "release key did not sign the bundle's APK — $out/sign.txt"
+          return 1
+        fi
       fi
     fi
   fi
@@ -709,7 +759,18 @@ run_android_device() {
     set -euo pipefail
     echo "serial=$serial apk=$apk pkg=$pkg abi=$abi aab=${aab:-none}"
     "$adb_bin" -s "$serial" logcat -c || true
+    # A 90 MB install outlasts a short screen timeout, and a phone that locks
+    # again under the launch reads as a hang. Keep the screen lit ("Stay
+    # awake" in Developer options) and put the setting back on the way out.
+    stay="$("$adb_bin" -s "$serial" shell settings get global stay_on_while_plugged_in 2>/dev/null | tr -d '\r' || true)"
+    [[ "$stay" =~ ^[0-9]+$ ]] || stay=0
+    trap '"$adb_bin" -s "$serial" shell settings put global stay_on_while_plugged_in "$stay" >/dev/null 2>&1 || true' EXIT
+    "$adb_bin" -s "$serial" shell svc power stayon true >/dev/null 2>&1 || true
     "$adb_bin" -s "$serial" install -r "$apk"
+    if android_device_locked "$adb_bin" "$serial"; then
+      echo "FAIL: device $serial locked itself during the install — unlock it and run again" >&2
+      exit 1
+    fi
     "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
     "$adb_bin" -s "$serial" shell monkey -p "$pkg" -c android.intent.category.LAUNCHER 1 >/dev/null
     # Warm launch: poll — crash drops the pid; hang keeps it without UI.
@@ -726,8 +787,12 @@ run_android_device() {
     echo "pid=$pid after 10s"
     logcat_dump="$("$adb_bin" -s "$serial" logcat -d -t 400 2>/dev/null || true)"
     printf '%s\n' "$logcat_dump" >"$out/logcat.txt"
-    if printf '%s\n' "$logcat_dump" | grep -qiE \
-      "FATAL EXCEPTION.*${pkg}|AndroidRuntime.*${pkg}|Process ${pkg} has died|Force finishing activity.*${pkg}|ANR in ${pkg}|Application Not Responding.*${pkg}|${pkg}.*(keeps stopping|has stopped)"; then
+    # Here-strings, not `printf … | grep -q`: under pipefail a match found
+    # early in a long dump kills printf (SIGPIPE, 141) and the pipeline reads
+    # as "no match" — a crash missed here, a running app called hung below
+    # (first real phone, 2026-11-21: dumpsys is far longer than an emulator's).
+    if grep -qiE \
+      "FATAL EXCEPTION.*${pkg}|AndroidRuntime.*${pkg}|Process ${pkg} has died|Force finishing activity.*${pkg}|ANR in ${pkg}|Application Not Responding.*${pkg}|${pkg}.*(keeps stopping|has stopped)" <<<"$logcat_dump"; then
       echo "FAIL: crash/ANR for $pkg in logcat" >&2
       printf '%s\n' "$logcat_dump" | grep -iE "FATAL|ANR|AndroidRuntime|${pkg}" | tail -40 >&2 || true
       exit 1
@@ -735,8 +800,8 @@ run_android_device() {
     # Process without a resumed / focused activity = open-then-hang.
     resumed="$("$adb_bin" -s "$serial" shell dumpsys activity activities 2>/dev/null | tr -d '\r' || true)"
     focused="$("$adb_bin" -s "$serial" shell dumpsys window 2>/dev/null | tr -d '\r' || true)"
-    if ! printf '%s\n' "$resumed" | grep -qE "mResumedActivity.*${pkg}|topResumedActivity.*${pkg}"; then
-      if ! printf '%s\n' "$focused" | grep -qE "mCurrentFocus.*${pkg}|mFocusedApp.*${pkg}"; then
+    if ! grep -qE "mResumedActivity.*${pkg}|topResumedActivity.*${pkg}" <<<"$resumed"; then
+      if ! grep -qE "mCurrentFocus.*${pkg}|mFocusedApp.*${pkg}" <<<"$focused"; then
         echo "FAIL: $pkg pid alive but no resumed/focused UI (hang / black launch)" >&2
         printf '%s\n' "$resumed" | grep -E 'mResumedActivity|topResumedActivity' | head -5 >&2 || true
         printf '%s\n' "$focused" | grep -E 'mCurrentFocus|mFocusedApp' | head -5 >&2 || true
@@ -744,6 +809,9 @@ run_android_device() {
       fi
     fi
     echo "resumed_or_focused=ok"
+    # The first screen, for whoever reads the report: an activity can be
+    # resumed and still have painted nothing, or sit under the status bar.
+    "$adb_bin" -s "$serial" exec-out screencap -p >"$out/launch.png" 2>/dev/null || true
     "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
   ) >"$out/log.txt" 2>&1
   rc=$?

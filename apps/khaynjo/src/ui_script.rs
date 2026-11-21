@@ -6058,10 +6058,20 @@ script_mod! {
                                 flow: Down spacing: 16
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
 
-                                setup_hero_banner := Image{
-                                    width: Fill height: 96
-                                    fit: ImageFit.CropToFill
-                                    src: crate_resource("self:resources/brand/hero-banner.webp")
+                                // The whole picture, at its own shape. It was a 96-high
+                                // strip cropped to fill: 2:1 art in a slot four times as
+                                // wide as high on a phone and thirteen times on a desk,
+                                // so the logo and half the words were cut off (seen on the
+                                // first Android capture, 2026-11-21). The cap keeps it a
+                                // banner on a wide window instead of half the screen.
+                                View{
+                                    width: Fill height: Fit
+                                    align: Align{x: 0.5}
+                                    setup_hero_banner := Image{
+                                        width: Fill{max: 520.} height: Fit
+                                        fit: ImageFit.Horizontal
+                                        src: crate_resource("self:resources/brand/hero-banner.webp")
+                                    }
                                 }
 
                                 RoundedView{

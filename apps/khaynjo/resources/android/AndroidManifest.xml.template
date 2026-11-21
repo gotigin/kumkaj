@@ -12,8 +12,15 @@
         android:supportsRtl="true"
         android:debuggable="{debuggable}"
         android:largeHeap="true"
+        android:resizeableActivity="true"
         tools:targetApi="{target_sdk_version}">
-        <meta-data android:name="android.max_aspect" android:value="2.1" />
+        <!-- Any shape of screen. This said 2.1 with nothing declaring the app
+             resizeable, and Android obeyed: on a 20:9 phone (most of them) the
+             app sat in a rounded box with black bands above and below
+             (first capture on Android, 2026-11-21). resizeableActivity lifts
+             the limit; the number stays for phone makers' own full-screen
+             lists, which read it. docs/DEV.md, Android manifest. -->
+        <meta-data android:name="android.max_aspect" android:value="3.0" />
         <activity
             android:name=".{class_name}"
             android:configChanges="orientation|screenSize|keyboardHidden"

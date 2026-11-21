@@ -28,7 +28,10 @@ Back up the `.jks` and password outside the repo. A lost key means no more Play 
 
 ```bash
 ./scripts/product-cert.sh --tier=store moklanjo
-# Needs adb + a device + dist/moklanjo-android/*.apk from package-android.sh
+# Needs adb, an unlocked phone (or emulator) and dist/moklanjo-android/ built from this
+# commit by package-android.sh. On the phone it installs over the app that is
+# there (books kept), opens it for 10 s and leaves android/launch.png — docs/DEV.md
+# § Product Certification Kit.
 ```
 
 ## Build the Play bundle
@@ -43,7 +46,7 @@ Outputs under `dist/moklanjo-android/`:
 
 | File | Use |
 |------|-----|
-| `moklanjo.aab` (or `*.aab`) | **Upload this** to Play Console |
+| `kumkaj-moklanjo.aab` | **Upload this** to Play Console |
 | `native-debug-symbols.zip` | Upload with the AAB when present |
 | `mapping.txt` | Upload with the AAB when present |
 | `*.apk` | Sideload / internal testing only |

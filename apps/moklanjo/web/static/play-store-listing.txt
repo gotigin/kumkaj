@@ -34,7 +34,7 @@ Category: Business / Productivity
 Content rating: Everyone
 Privacy: no accounts required for local use; data stored on device SQLite.
 
-Build: ./apps/moklanjo/scripts/package-android.sh → dist/android/kumkaj-moklanjo.apk
+Build: ./apps/moklanjo/scripts/package-android.sh → dist/moklanjo-android/kumkaj-moklanjo.apk
 (and kumkaj-moklanjo.aab for Play when the upload key $HOME/moklanjo-release.jks exists).
 Steps: apps/moklanjo/docs/PUBLISH_PLAY_STORE.md
 iOS / macOS: deferred until Mac signing host.

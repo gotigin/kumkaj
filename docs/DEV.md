@@ -951,6 +951,10 @@ Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and M
 
 **Launcher / logo:** Master art is `apps/moklanjo/assets/moklanjo-app-icon.png`. Run `./apps/moklanjo/scripts/generate-icons.sh` (Khaynjo: `./apps/khaynjo/scripts/generate-icons.sh`) to rebuild Android mipmaps, desktop `icon_*.png` / `icon.ico`, and in-app **`kumkaj-mark.webp`** (WebP only — no PNG/AVIF brand marks). Nav icons are WebP under `resources/nav/`. Android launcher mipmaps stay PNG (platform requirement). Desktop `icon_*.png` / `.ico` stay on disk for MSI/window chrome but are **not** packed into APK assets (`prune_android_runtime_assets` in cargo-makepad via `apply-android-activity-bridge.sh`). Reinstall Android after regenerating.
 
+**Run it whenever a master changes — the app ships the generated files, not the master.** Moklanjo's master was replaced on 2026-11-05 and the icons were not regenerated: until 2026-11-21 the app's header, first-run and lock screens, its launcher icon and its `.ico` still showed the old tile that reads "courier". The masters are a rounded tile on an opaque white or black square (Kirano's with a black bar down one edge); `scripts/generate-app-icons.sh` now clears that square, trims to the tile and centres it before it makes any size, so the mark has transparent corners on the app's cards and inside a launcher's own shape. The master files are not changed. After regenerating, run `--tier=visual` and refresh the baselines: the header mark is in every shot.
+
+**Screen shape (Android manifest, `apps/<app>/resources/android/AndroidManifest.xml.template`).** Until 2026-11-21 the template carried Makepad's `android.max_aspect` 2.1 and did not declare the app resizeable. Android obeyed the 2.1: on a 20:9 phone — most phones — the app was drawn 1080 × 2268 in a rounded box with a black band above and below (`dumpsys activity activities`: `letterboxReason=ASPECT_RATIO`). The template now says `android:resizeableActivity="true"` (an explicitly resizeable activity has no aspect limit) and keeps the number at 3.0 for phone makers' own full-screen lists. The app already pads itself inside the status bar, cut-out and gesture bar (`fit_inside_system_bars`), so the larger window needs nothing else. **Why the limit applied at all:** `<uses-sdk>` comes *after* `<application>` in the template, and Android reads application defaults in document order — with the target SDK still unknown it treats the app as an old one. Seen on Android 16 (`dumpsys package` / `dumpsys activity`): resize mode `FORCE_RESIZEABLE` and the legacy-external-storage flag, on an app that targets 36 and asks for neither. Every other default that depends on the target SDK is decided at that same point, so assume those are affected too — cleartext traffic is allowed by default only for old targets. Do **not** just move `<uses-sdk>` up: the defaults would flip together, and cleartext turning off is the one that could break LAN pairing. If the order is ever fixed, set each of them explicitly first and test a Server and a Client on a real network. Also left as it was: `android:configChanges` is `orientation|screenSize|keyboardHidden`, so a split-screen or free-form resize still restarts the activity (Wadhu's SMS Gateway template adds `screenLayout|smallestScreenSize|density` and stays up). Worth doing with a tablet in hand, not blind.
+
 **First run after an install: a ~33 s freeze on the AGS2 (measured 2026-11-14).**
 Android draws all text with Makepad's Slug path (`draw/src/text/fonts.rs`
 `default_slug_min_dpxs_per_em` is 0 off desktop), and each text-style variant
@@ -966,7 +970,7 @@ gap before the first frame).
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo moklanjo-dev`; use `cargo moklanjo-android-dev` to verify on device.
 
-Release APK/AAB packaging: `./apps/moklanjo/scripts/package-android.sh` → `dist/android/kumkaj-moklanjo.apk`.
+Release APK/AAB packaging: `./apps/moklanjo/scripts/package-android.sh` → `dist/moklanjo-android/kumkaj-moklanjo.apk` (+ `kumkaj-moklanjo.aab`, symbols, mapping). It wrote `dist/android/` until 2026-11-21, while the Play guide and the cert read `dist/moklanjo-android/` — the cert went on testing a hand-made copy from 2026-11-19.
 Khaynjo APK (production id `com.khaynjo`, no device needed): `apps/khaynjo/scripts/package-android.sh` → `dist/khaynjo-android/kumkaj-khaynjo.apk`.
 
 **Release signing (both apps, `scripts/android-env.sh`).** cargo-makepad's
@@ -2026,6 +2030,46 @@ alive **and** an X client/window on the Xvfb display. **Store tier** fails
 when Android smoke was skipped (no adb/device/APK) unless
 `CERT_ALLOW_ANDROID_SKIP=1` — do not claim Play-ready without a device proof.
 `CERT_REQUIRE_ADB=1` still forces a hard fail on skip for any tier.
+
+**The device step on a real phone (2026-11-21).** `--tier=android` alone runs
+just this step (`./scripts/product-cert.sh --tier=android khaynjo`). Its first
+run against a phone that already held the app found what emulator runs hide:
+
+- bundletool signs the bundle's universal APK with the **debug** key. A phone
+  holding the release-signed app refuses that as an update
+  (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`), and the only way past is an
+  uninstall — which deletes the books on the phone. The cert now signs that
+  APK with the app's release key (`$HOME/<app>-release.jks`, the key
+  `package-android.sh` uses; `android/sign.txt`), so the install is an update
+  in place. **The step never uninstalls — do not uninstall by hand to get it
+  green on a phone whose books matter.**
+- Behind a lock screen the activity starts and is never resumed, which read
+  as "hang / black launch". The cert wakes the screen, clears a swipe-only
+  lock, and reports a PIN / pattern lock as `SKIP … is locked` (a FAIL in the
+  store tier, like no device).
+- A 90 MB install outlasts a short screen timeout, so "Stay awake" is on for
+  the step and the phone's own setting is put back afterwards.
+- `android/launch.png` is the first screen as the phone drew it. Look at it:
+  resumed is not the same as painted, and a phone has a status bar, a camera
+  cut-out and a gesture bar that no desktop capture shows.
+- The cert tests whatever is in `dist/<app>-android/`. Build it from the
+  commit you mean to ship first; a green device step on last week's package
+  proves last week's code.
+- **`printf '%s\n' "$dump" | grep -q …` lies under `pipefail`.** `grep -q`
+  leaves at the first match; if `printf` is still writing it dies of SIGPIPE
+  (141) and the pipeline's status says "no match". An emulator's `dumpsys` is
+  short enough to fit the pipe, a phone's is not: on the phone the app was the
+  resumed, focused activity and the step said "hang / black launch". The
+  crash check above it had the same flaw the other way round — a `FATAL
+  EXCEPTION` found early in a long logcat read as clean. Both now read the
+  text from a here-string (`grep -q … <<<"$dump"`), as do the Linux tier's
+  window check and the resilience tier's panic check (`grep … | grep -q .`,
+  which went quiet exactly when there were many `[E]` lines).
+- Several devices attached: `ANDROID_SERIAL=<serial>` (adb's own variable)
+  names the one to use; otherwise a USB device wins over an emulator. An
+  emulator is the place to try a change to this step first —
+  `emulator -avd <name> -read-only -no-snapshot -no-window` leaves the AVD as
+  it was, and the Play images run the arm64 package.
 
 **A failed check must fail the tier (fixed 2026-11-16).** Every tier was
 called as `run_x "$app" || ok=0`. Inside a function called from `||`,

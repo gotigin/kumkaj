@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
-# Android packaging via cargo-makepad (requires Android SDK/NDK toolchain):
-# dist/android/kumkaj-moklanjo.apk with the production app id. Signed with
-# the release key when KUMKAJ_ANDROID_KEYSTORE (+ _PASS) is set (see
-# scripts/android-env.sh), which also builds the Play bundle
-# dist/android/kumkaj-moklanjo.aab.
+# Moklanjo production APK for Android phones and tablets — the office's
+# Server or a device paired to one: dist/moklanjo-android/kumkaj-moklanjo.apk
+# with the production app id. No device needed. For live install on a
+# connected device use android-dev.sh (development app id).
+#   apps/moklanjo/scripts/package-android.sh
+# Signed with the release key when $HOME/moklanjo-release.jks exists and the
+# password is in $HOME/moklanjo-release.jks.password (or KUMKAJ_ANDROID_*
+# overrides) — see scripts/android-env.sh / docs/PUBLISH_PLAY_STORE.md.
+# Also builds the Play bundle dist/moklanjo-android/kumkaj-moklanjo.aab.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 export KUMKAJ_APP_DIR="$ROOT/apps/moklanjo"
@@ -16,10 +20,13 @@ source "$ROOT/scripts/android-env.sh"
 export KUMKAJ_ROOT="$ROOT"
 load_kumkaj_env production
 
-OUT="$ROOT/dist/android"
+# The app's own folder, like the other three apps — it is where the Play guide
+# and scripts/product-cert.sh look (this script wrote dist/android until
+# 2026-11-21, and the cert went on testing an older hand-made copy).
+OUT="$ROOT/dist/moklanjo-android"
 # Stage then swap on success — like MSI overwriting dist/Moklanjo-*.msi
 # (failed builds keep the previous good package).
-STAGE="$ROOT/dist/.android-staging.$$"
+STAGE="$ROOT/dist/.moklanjo-android-staging.$$"
 rm -rf "$STAGE"
 mkdir -p "$STAGE"
 cleanup_stage() { rm -rf "$STAGE"; }
@@ -31,29 +38,37 @@ export ANDROID_SDK_ROOT="$ANDROID_HOME"
 
 android_pkg_opts "$ANDROID_HOME"
 android_release_opts
+SIGNED="Makepad's debug key — for trying out only; an office's devices need the release key"
+if android_release_keystore_set; then
+  SIGNED="the Moklanjo release key"
+fi
 
 cat > "$STAGE/README.txt" <<EOF
-Kumkaj Android packaging
-========================
-Application id: ${KUMKAJ_APP_ID}
+Moklanjo for Android phones and tablets
+=======================================
+App id: ${KUMKAJ_APP_ID}
 Label: ${KUMKAJ_APP_LABEL}
-Website: https://kumkaj.com
+Signed with: ${SIGNED}
+Website: https://moklanjo.com
 Env file: apps/moklanjo/env/production.env
 
 Build APK:
-  MAKEPAD_ROOT=$MAKEPAD_ROOT ./apps/moklanjo/scripts/package-android.sh
+  ./apps/moklanjo/scripts/package-android.sh
 
 Live install/run on device (development id com.moklanjo.debug):
   cargo moklanjo-android-dev
 
-Release key (once; keep the file and password backed up, outside the repo —
-a lost key means installed devices can never be updated):
-  cargo run --manifest-path "\$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \\
-    android --sdk-path="\$ANDROID_HOME" keystore-create ~/keys/kumkaj-moklanjo.keystore
-Then every release build, signed APK + Play bundle (AAB):
-  KUMKAJ_ANDROID_KEYSTORE=~/keys/kumkaj-moklanjo.keystore KUMKAJ_ANDROID_KEYSTORE_PASS=… \\
-    ./apps/moklanjo/scripts/package-android.sh
+Release key: \$HOME/moklanjo-release.jks, its password in
+\$HOME/moklanjo-release.jks.password (one line, mode 600). The package script
+finds both by itself, signs the APK with them and also builds the Play bundle
+(kumkaj-moklanjo.aab). Keep both backed up outside the repo — a lost key means
+installed devices can never be updated.
 
+Play Console (with the .aab): also upload native-debug-symbols.zip and
+mapping.txt from this folder — see apps/moklanjo/docs/PUBLISH_PLAY_STORE.md.
+
+Install: copy kumkaj-moklanjo.apk to the device and open it (allow installs
+from this source), or: adb install -r kumkaj-moklanjo.apk
 An update installs over the last one and keeps the books — never uninstall
 to update (that deletes the books on the device).
 Any device can be the office's Server or a device paired to it: Windows,
@@ -67,11 +82,14 @@ echo "ANDROID_HOME: $ANDROID_HOME"
 
 if [[ ! -d "$ANDROID_HOME" ]]; then
   echo "Android SDK not found at ANDROID_HOME — scaffold only."
-  # Still publish the notes so the folder exists.
-  rm -rf "$OUT"
-  mv "$STAGE" "$OUT"
-  trap - EXIT
-  echo "Android notes: $OUT/README.txt"
+  # Publish the notes so the folder exists — never over a built package.
+  if [[ ! -d "$OUT" ]]; then
+    mv "$STAGE" "$OUT"
+    trap - EXIT
+    echo "Android notes: $OUT/README.txt"
+  else
+    echo "Kept the package already in $OUT."
+  fi
   exit 0
 fi
 
@@ -108,7 +126,7 @@ if [[ $STATUS -eq 0 && -n "${APK:-}" && -f "$APK" ]]; then
     "${CARGO_MP[@]}" android "${ANDROID_PKG_OPTS[@]}" "${ANDROID_AAB_SIGN_OPTS[@]}" build-aab -p kumkaj-moklanjo --release 2>&1 | tee -a "$LOG"
     STATUS=${PIPESTATUS[0]}
     set -e
-    AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_moklanjo" -maxdepth 1 -name '*.aab' 2>/dev/null | head -1 || true)"
+    AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_moklanjo" -maxdepth 1 -name '*.aab' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2- || true)"
     if [[ $STATUS -eq 0 && -n "$AAB" ]]; then
       cp -f "$AAB" "$STAGE/kumkaj-moklanjo.aab"
       echo "Play bundle → $OUT/kumkaj-moklanjo.aab"
@@ -122,7 +140,7 @@ elif [[ $STATUS -eq 0 ]]; then
   STATUS=1
 fi
 cp -f "$ROOT/docs/LAN_QUICK_START.md" "$STAGE/Quick start.txt"
-cp -f "$ROOT/web/play-store-listing.txt" "$STAGE/PLAY_STORE_LISTING.txt" 2>/dev/null || true
+cp -f "$KUMKAJ_APP_DIR/web/static/play-store-listing.txt" "$STAGE/PLAY_STORE_LISTING.txt" 2>/dev/null || true
 
 if [[ $STATUS -eq 0 ]]; then
   rm -rf "$OUT"
