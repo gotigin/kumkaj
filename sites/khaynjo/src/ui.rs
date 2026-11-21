@@ -1143,32 +1143,33 @@ script_mod! {
                                     H2{body: "Every country at your counter"}
                                     Lede{body: "One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look."}
                                 }
-                                // Living parade: two Fit groups. apply_responsive puts
-                                // shelf_bar Right (one desk line) when content is wide
-                                // enough; Down (two rows) only when narrow. Do not flatten
-                                // into ROWS — stacking six chips individually makes each
-                                // its own phone row (2026-11-20). Graceful growth:
-                                // DESIGN § Always responsive.
-                                shelf_bar := View{
+                                // Living parade controls — one horizontal strip.
+                                // Icon play/pause (no "Pause"/"Speed" labels). Always one
+                                // row; ScrollX pans when the chips do not fit (phone).
+                                // Do not put chips in ROWS (each would become its own
+                                // phone row — 2026-11-20). DESIGN § Always responsive.
+                                shelf_bar := ScrollXView{
                                     width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 8
-                                    shelf_dir := View{
-                                        width: Fill height: Fit
+                                    scroll_bars: {
+                                        show_scroll_x: true
+                                        show_scroll_y: false
+                                        scroll_bar_x: {
+                                            bar_size: 0.
+                                            drag_scrolling: true
+                                            mouse_capture_overload: true
+                                            axis_lock: true
+                                        }
+                                    }
+                                    shelf_tools := View{
+                                        width: Fit height: Fit
                                         flow: Right
                                         spacing: 8
                                         align: Align{y: 0.5}
                                         shelf_flow_left := PagerBtn{text: "←"}
                                         shelf_flow_right := PagerBtn{text: "→"}
-                                        shelf_play := PagerBtn{text: "Pause"}
-                                    }
-                                    shelf_spd := View{
-                                        width: Fill height: Fit
-                                        flow: Right
-                                        spacing: 8
-                                        align: Align{y: 0.5}
+                                        shelf_play := PagerBtn{text: "⏸"}
                                         shelf_speed_down := PagerBtn{text: "−"}
-                                        shelf_speed := PagerBtn{text: "Speed 2"}
+                                        shelf_speed := PagerBtn{text: "2"}
                                         shelf_speed_up := PagerBtn{text: "+"}
                                     }
                                 }

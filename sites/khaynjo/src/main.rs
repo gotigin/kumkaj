@@ -142,10 +142,9 @@ const MIN_WIDTH: f64 = 320.0;
 
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise.
-/// Rows that may stack Down on a narrow content column. Do **not** list the
-/// six shelf PagerBtns here — under ~520 px that turns each chip into its
-/// own row (phone 2026-11-20). `shelf_bar` is two Fit groups; see
-/// `SHELF_BAR_ONE_ROW_FROM` so desk gets one line (graceful growth).
+/// Do **not** list shelf PagerBtns here — under ~520 px that turns each
+/// chip into its own row (phone 2026-11-20). `shelf_bar` is one ScrollX
+/// strip of Fit chips (play/pause icons + speed number).
 const ROWS: [(&[LiveId], f64); 23] = [
     (ids!(hero_row), 900.0),
     // Both labels ("Get it on Google Play" + "WhatsApp for a demo") need
@@ -186,11 +185,6 @@ const PROPS: [(&[LiveId], f64, f64); 6] = [
 ];
 /// Top-bar section links (six labels + brand + Get it free) need this width
 /// or the last links slide under the CTA.
-/// World-shelf play/speed: one desk line once both Fit groups fit side by
-/// side (~← → Pause + − Speed N +). Narrower → two stacked rows. Not in
-/// `ROWS` (see comment above ROWS).
-const SHELF_BAR_ONE_ROW_FROM: f64 = 520.0;
-
 const NAV_LINKS_FROM: f64 = 1100.0;
 
 const MAX_CONTENT: f64 = 1160.0;
@@ -684,18 +678,6 @@ impl App {
                 view.walk.width = if content_w >= row_min_w { Size::Fixed(desk_w) } else { Size::fill() };
             }
         }
-        // Shelf play/speed: one Right line of two Fit groups when wide;
-        // Down (two rows) only when narrow. Groups stay Fit on the one-line
-        // so they do not stretch with a gap between Pause and −.
-        let shelf_one = content_w >= SHELF_BAR_ONE_ROW_FROM;
-        if let Some(mut bar) = self.ui.view(cx, ids!(menus.shelf_bar)).borrow_mut() {
-            bar.layout.flow = if shelf_one { Flow::right() } else { Flow::Down };
-        }
-        for path in [ids!(menus.shelf_dir), ids!(menus.shelf_spd)] {
-            if let Some(mut group) = self.ui.view(cx, path).borrow_mut() {
-                group.walk.width = if shelf_one { Size::fit() } else { Size::fill() };
-            }
-        }
         self.layout_floor(cx, content_w);
         // Top bar: section links on wide windows; tighter padding on phones.
         self.ui
@@ -805,18 +787,20 @@ impl App {
     fn paint_shelf_chrome(&mut self, cx: &mut Cx) {
         // While searching, the parade is forced paused; the button still
         // shows the remembered choice that comes back when search clears.
+        // Icons only — no "Pause"/"Play"/"Speed" labels (desk one-row + phone scroll).
         let playing = if self.shelf_query.trim().is_empty() {
             self.shelf_playing
         } else {
             self.shelf_want_playing
         };
-        let play = if playing { "Pause" } else { "Play" };
+        // Media pause / play (U+23F8 / U+25B6).
+        let play = if playing { "⏸" } else { "▶" };
         self.ui
             .button(cx, ids!(menus.shelf_play))
             .set_text(cx, play);
         self.ui.button(cx, ids!(menus.shelf_speed)).set_text(
             cx,
-            &format!("Speed {}", self.shelf_speed_level),
+            &format!("{}", self.shelf_speed_level),
         );
     }
 

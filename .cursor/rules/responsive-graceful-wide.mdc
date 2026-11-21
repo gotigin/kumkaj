@@ -48,5 +48,6 @@ if unsure, leave it and check docs / owner intent.
 ## Known failure (2026-11-21)
 
 Khaynjo.com world-shelf `shelf_bar`: two permanent rows on a large desktop
-while the right half of the band was empty. Fix: one-row when
-`content_w >= SHELF_BAR_ONE_ROW_FROM`, two stacked Fit groups only when narrow.
+while the right half of the band was empty. Fix: one `ScrollX` Fit strip
+with icon play/pause + numeric speed (no "Pause"/"Speed" labels); pans
+when chips do not fit on a phone.
