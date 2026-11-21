@@ -1,6 +1,6 @@
 --- a/platform/src/os/web/web.js
 +++ b/platform/src/os/web/web.js
-@@ -1301,11 +1301,30 @@
+@@ -1296,11 +1296,30 @@
          this.detect.is_add_to_homescreen_safari = this.is_mobile_safari && navigator.standalone
      }
  
@@ -31,7 +31,7 @@
  
          if (canvas.getAttribute("fullpage")) {
              if (this.detect.is_add_to_homescreen_safari) { // extremely ugly. but whatever.
-@@ -1319,22 +1338,43 @@
+@@ -1314,22 +1333,53 @@
                  }
              }
              else {
@@ -54,8 +54,17 @@
              w = canvas.offsetWidth;
              h = canvas.offsetHeight;
          }
+-        var sw = canvas.width = w * dpi_factor;
+-        var sh = canvas.height = h * dpi_factor;
+-
+-        this.gl.viewport(0, 0, sw, sh);
 +        // Force the CSS box to the clamped size so offsetWidth matches.
 +        // Desktop site otherwise leaves html/body at ~980px and width:100% stays wrong.
++        // Round to whole CSS pixels — subpixel thrash from URL-bar animation
++        // on Android Chrome reallocates the WebGL buffer every frame (freeze +
++        // smeared text while scrolling).
++        w = Math.max(1, Math.round(w));
++        h = Math.max(1, Math.round(h));
 +        if (is_touch && canvas.getAttribute("fullpage")) {
 +            canvas.style.width = w + "px";
 +            canvas.style.height = h + "px";
@@ -66,10 +75,15 @@
 +                document.body.style.height = h + "px";
 +            } catch (_e) { }
 +        }
-         var sw = canvas.width = w * dpi_factor;
-         var sh = canvas.height = h * dpi_factor;
- 
-         this.gl.viewport(0, 0, sw, sh);
++        // Same-size assignment still resets some WebGL contexts — only
++        // resize the backing store when the buffer size actually changes.
++        var sw = Math.max(1, Math.round(w * dpi_factor));
++        var sh = Math.max(1, Math.round(h * dpi_factor));
++        if (canvas.width !== sw || canvas.height !== sh) {
++            canvas.width = sw;
++            canvas.height = sh;
++            this.gl.viewport(0, 0, sw, sh);
++        }
  
          this.window_info.dpi_factor = dpi_factor;
 -        this.window_info.inner_width = canvas.offsetWidth;
@@ -79,14 +93,54 @@
          this.window_info.is_fullscreen = is_fullscreen();
          this.window_info.can_fullscreen = can_fullscreen();
      }
-@@ -1365,6 +1405,11 @@
+@@ -1340,7 +1390,19 @@
  
-         window.addEventListener('resize', _ => this.handlers.on_screen_resize())
-         window.addEventListener('orientationchange', _ => this.handlers.on_screen_resize())
-+        // Keyboard / URL-bar / zoom change visualViewport without always firing window.resize.
+     bind_screen_resize() {
+         this.handlers.on_screen_resize = () => {
++            var prev_w = this.window_info && this.window_info.inner_width;
++            var prev_h = this.window_info && this.window_info.inner_height;
++            var prev_dpi = this.window_info && this.window_info.dpi_factor;
+             this.update_window_info();
++            // Skip wasm geom churn when clamp/debounce landed on the same box
++            // (URL-bar animation on Android Chrome).
++            if (
++                this.window_info.inner_width === prev_w &&
++                this.window_info.inner_height === prev_h &&
++                this.window_info.dpi_factor === prev_dpi
++            ) {
++                return;
++            }
+             if (this.to_wasm !== undefined) {
+                 this.to_wasm.ToWasmResizeWindow({ window_info: this.window_info });
+                 this.FromWasmRequestAnimationFrame();
+@@ -1358,8 +1420,29 @@
+             this.do_wasm_pump();
+         }
+ 
+-        window.addEventListener('resize', _ => this.handlers.on_screen_resize())
+-        window.addEventListener('orientationchange', _ => this.handlers.on_screen_resize())
++        // Android Chrome hides/shows the URL bar while the user scrolls a
++        // full-page canvas. visualViewport fires resize (and sometimes scroll)
++        // many times during that animation; each call used to reallocate the
++        // WebGL canvas and freeze/smear text. Debounce VV resize; ignore VV
++        // scroll (offset-only — layout size did not change). window.resize /
++        // orientationchange stay immediate (Desktop-site clamp, rotate).
++        var self = this;
++        var vv_resize_timer = null;
++        var fire_resize = function () {
++            self.handlers.on_screen_resize();
++        };
++        var fire_resize_debounced = function () {
++            if (vv_resize_timer !== null) clearTimeout(vv_resize_timer);
++            vv_resize_timer = setTimeout(function () {
++                vv_resize_timer = null;
++                fire_resize();
++            }, 150);
++        };
++        window.addEventListener('resize', fire_resize)
++        window.addEventListener('orientationchange', fire_resize)
 +        if (window.visualViewport) {
-+            window.visualViewport.addEventListener('resize', _ => this.handlers.on_screen_resize())
-+            window.visualViewport.addEventListener('scroll', _ => this.handlers.on_screen_resize())
++            window.visualViewport.addEventListener('resize', fire_resize_debounced)
 +        }
      }
  

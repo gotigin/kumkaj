@@ -1,5 +1,6 @@
 /* Android Chrome Desktop-site / pinch-zoom guard for Makepad sites.
- * Hardens the viewport meta and clamps html/body before wasm lays out.
+ * Hardens the viewport meta and clamps html/body width before wasm lays out.
+ * Height is left to Makepad (URL-bar show/hide must not thrash body height).
  * Must stay aligned with scripts/web/mobile_layout_size.js. */
 (function () {
   try {
@@ -15,26 +16,35 @@
     }
     var touch = "ontouchstart" in window || (navigator.maxTouchPoints || 0) > 0;
     if (!touch) return;
-    function clamp() {
+    var timer = null;
+    function clampNow() {
       var ws = [window.innerWidth, window.outerWidth, screen.width].filter(function (x) {
         return x > 0;
       });
-      var hs = [window.innerHeight, window.outerHeight, screen.height].filter(function (x) {
-        return x > 0;
-      });
-      if (!ws.length || !hs.length) return;
+      if (!ws.length) return;
       var w = Math.min.apply(null, ws);
-      var h = Math.min.apply(null, hs);
+      w = Math.max(1, Math.round(w));
       document.documentElement.style.width = w + "px";
-      document.body && (document.body.style.width = w + "px");
-      document.documentElement.style.height = h + "px";
-      document.body && (document.body.style.height = h + "px");
+      document.documentElement.style.maxWidth = w + "px";
+      if (document.body) {
+        document.body.style.width = w + "px";
+        document.body.style.maxWidth = w + "px";
+      }
     }
-    clamp();
-    window.addEventListener("resize", clamp);
-    window.addEventListener("orientationchange", clamp);
+    function clampDebounced() {
+      if (timer !== null) clearTimeout(timer);
+      timer = setTimeout(function () {
+        timer = null;
+        clampNow();
+      }, 150);
+    }
+    clampNow();
+    window.addEventListener("resize", clampNow);
+    window.addEventListener("orientationchange", clampNow);
+    // Debounce visualViewport resize — URL bar animation fires often while
+    // scrolling and must not fight Makepad's canvas size every frame.
     if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", clamp);
+      window.visualViewport.addEventListener("resize", clampDebounced);
     }
   } catch (_e) {}
 })();

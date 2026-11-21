@@ -16,12 +16,19 @@ if [[ ! -f "$WEBJS" ]]; then
   echo "error: missing $WEBJS — run ./scripts/setup-makepad.sh" >&2
   exit 1
 fi
-for needle in css_layout_size_for_canvas "visualViewport.addEventListener" "Desktop site"; do
+for needle in css_layout_size_for_canvas "visualViewport.addEventListener" "Desktop site" \
+  "fire_resize_debounced" "canvas.width !== sw"; do
   if ! grep -q "$needle" "$WEBJS"; then
     echo "error: $WEBJS missing '$needle' (web_mobile_layout_width patch)" >&2
     fail=1
   fi
 done
+# Must NOT resize the WebGL canvas on every visualViewport scroll (Android
+# Chrome URL-bar / pan) — that froze scroll and smeared text.
+if grep -q "visualViewport.addEventListener('scroll'" "$WEBJS"; then
+  echo "error: $WEBJS must not listen to visualViewport scroll for resize" >&2
+  fail=1
+fi
 
 echo "== patch listed in setup-makepad.sh =="
 if ! grep -q 'web_mobile_layout_width' "$ROOT/scripts/setup-makepad.sh"; then
@@ -60,6 +67,14 @@ for site in "${SITES[@]}"; do
   else
     grep -q 'touch-action: manipulation' "$css" || {
       echo "error: $css must set touch-action: manipulation (reduce double-tap zoom)" >&2
+      fail=1
+    }
+    grep -q 'touch-action: none' "$css" || {
+      echo "error: $css must set canvas touch-action: none (Makepad owns gestures)" >&2
+      fail=1
+    }
+    grep -q 'overscroll-behavior: none' "$css" || {
+      echo "error: $css must set overscroll-behavior: none" >&2
       fail=1
     }
   fi

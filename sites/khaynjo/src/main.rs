@@ -763,10 +763,13 @@ impl App {
     /// Highlight the top-bar link for the section on screen.
     fn paint_nav_active(&mut self, cx: &mut Cx) {
         let active = self.active_nav_section(cx);
-        let changed = active != self.nav_active;
+        // Only when the active section flips. Re-colouring every Draw/NextFrame
+        // while the finger scrolls smears glyphs on wasm (Android Chrome).
+        if active == self.nav_active {
+            return;
+        }
         self.nav_active = active;
         // Quiet peach idle; white when that section is under the bar.
-        // Re-apply every call — hover animator can leave resting ink stale.
         let idle = vec4(0.965, 0.863, 0.796, 1.0); // #F6DCCB
         let on = vec4(1.0, 1.0, 1.0, 1.0);
         for (path, section) in NAV_LINKS {
@@ -775,9 +778,7 @@ impl App {
                 btn.draw_text.color = color;
             }
         }
-        if changed {
-            self.ui.view(cx, ids!(nav_links)).redraw(cx);
-        }
+        self.ui.view(cx, ids!(nav_links)).redraw(cx);
     }
 
     fn shelf_speed_px(&self) -> f64 {
