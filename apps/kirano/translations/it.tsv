@@ -198,11 +198,11 @@ owner	Titolare
 staff	Personale
 photo	Foto
 ok	OK
-this_shop	Modalità server
-extra_till	Modalità client
+this_shop	Server
+extra_till	Client
 off	No
-server	Modalità server
-client	Modalità client
+server	Server
+client	Client
 language_currency	Lingua e valuta
 language	Lingua
 language_setup_hint	Segui la lingua di questo dispositivo o scegline una tu.

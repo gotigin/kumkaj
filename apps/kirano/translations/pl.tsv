@@ -198,11 +198,11 @@ owner	Właściciel
 staff	Personel
 photo	Zdjęcie
 ok	OK
-this_shop	Tryb serwera
-extra_till	Tryb klienta
+this_shop	Server
+extra_till	Klient
 off	Wyłączone
-server	Tryb serwera
-client	Tryb klienta
+server	Server
+client	Klient
 language_currency	Język i waluta
 language	Język
 language_setup_hint	Postępuj zgodnie z językiem tego urządzenia lub wybierz sam.
