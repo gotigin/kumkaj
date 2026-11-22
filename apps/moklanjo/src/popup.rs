@@ -1,7 +1,9 @@
 // Type-or-pick lists: one rule set for every one of them, for a mouse
 // (with or without a wheel), a trackpad, and a finger — DEV.md § Dropdowns.
-// (Khaynjo keeps its own copy, with a floating `AnchoredPopup`; Moklanjo's
-// lists all sit in the page under their field, so it needs only the rules.)
+// Moklanjo's lists sit in the page under their field (height tween). The
+// `place_popup` oracle below is the same placement Khaynjo / Kirano /
+// Tabiyat use for a floating `AnchoredPopup` — kept here with tests so a
+// future floating list (and the selection menu's edge rules) stay honest.
 //
 // 1. **The app state is the only switch.** A list is open while
 //    `suggest_open` names it; every list reads that at draw time.
@@ -18,6 +20,9 @@
 //    finger never sends the hover-out a mouse does).
 // 5. **Screen rects only.** Pointer positions are tested against
 //    `clipped_rect` — the rect Makepad's own hit test uses — never `rect()`.
+// 6. **Floating placement (oracle).** Under the field when the list fits
+//    there (or there is more room below), otherwise above; never past the
+//    window edges; width at least `min_w`, capped to the window.
 
 /// The on-screen part of an area, as Makepad's hit test sees it: clipped by
 /// every scroll view around it. `None` when it is not on screen.
@@ -43,6 +48,64 @@ fn popup_is_tap(press: DVec2, press_time: f64, release: DVec2, release_time: f64
     (release - press).length() < POPUP_TAP_TRAVEL
         && (release_time - press_time) >= 0.0
         && (release_time - press_time) < POPUP_TAP_SECS
+}
+
+/// The field is on screen: at least half of it inside the page's visible
+/// band (`page_viewport`: top, height). Scrolled under the header or off
+/// the bottom, a floating list would hide until it is back.
+fn popup_anchor_on_page(anchor: Rect, page: (f64, f64)) -> bool {
+    let (top, h) = page;
+    if anchor.size.x < 0.5 || anchor.size.y < 0.5 {
+        return false;
+    }
+    if h < 1.0 {
+        return true;
+    }
+    let shown = (anchor.pos.y + anchor.size.y).min(top + h) - anchor.pos.y.max(top);
+    shown >= anchor.size.y * 0.5
+}
+
+/// Where a floating list goes against its field.
+#[derive(Clone, Copy, Debug, PartialEq)]
+struct PopupPlace {
+    pos: DVec2,
+    width: f64,
+    /// The panel may be at most this tall (it scrolls inside beyond that).
+    max_h: f64,
+    above: bool,
+}
+
+/// Under the field when the list fits there (or there is more room below
+/// than above), otherwise above it; never past the window edges.
+/// `want_h` is the panel's height last frame (0 before its first draw).
+fn place_popup(anchor: Rect, want_h: f64, window: DVec2, gap: f64, edge: f64, min_w: f64) -> PopupPlace {
+    let width = anchor.size.x.max(min_w).min((window.x - 2.0 * edge).max(1.0));
+    let x = anchor
+        .pos
+        .x
+        .min(window.x - edge - width)
+        .max(edge);
+    let below = (window.y - edge) - (anchor.pos.y + anchor.size.y + gap);
+    let above_room = (anchor.pos.y - gap) - edge;
+    let want = want_h.max(1.0);
+    let above = want > below && above_room > below;
+    if above {
+        let max_h = above_room.max(1.0);
+        let h = want.min(max_h);
+        PopupPlace {
+            pos: dvec2(x, anchor.pos.y - gap - h),
+            width,
+            max_h,
+            above: true,
+        }
+    } else {
+        PopupPlace {
+            pos: dvec2(x, anchor.pos.y + anchor.size.y + gap),
+            width,
+            max_h: below.max(1.0),
+            above: false,
+        }
+    }
 }
 
 /// One pointer phase of a mouse (primary button) or the first finger.
@@ -226,6 +289,68 @@ impl App {
 mod popup_tests {
     use super::*;
 
+    fn rect(x: f64, y: f64, w: f64, h: f64) -> Rect {
+        Rect {
+            pos: dvec2(x, y),
+            size: dvec2(w, h),
+        }
+    }
+
+    /// Room below: the list hangs 4 px under the field, as wide as the
+    /// field (or its minimum), never past the window.
+    #[test]
+    fn list_hangs_under_its_field() {
+        let field = rect(242.0, 270.0, 176.0, 60.0);
+        let p = place_popup(field, 340.0, dvec2(1024.0, 768.0), 4.0, 8.0, 176.0);
+        assert!(!p.above);
+        assert_eq!(p.pos, dvec2(242.0, 334.0));
+        assert_eq!(p.width, 176.0);
+        assert_eq!(p.max_h, 768.0 - 8.0 - 334.0);
+    }
+
+    /// The page scrolled: the list is placed from where the field is now,
+    /// so the gap stays 4 px (placing it once left a gap the size of the
+    /// scroll).
+    #[test]
+    fn list_follows_a_scrolled_field() {
+        let before = place_popup(rect(242.0, 270.0, 176.0, 60.0), 340.0, dvec2(1024.0, 768.0), 4.0, 8.0, 0.0);
+        let after = place_popup(rect(242.0, 90.0, 176.0, 60.0), 340.0, dvec2(1024.0, 768.0), 4.0, 8.0, 0.0);
+        assert_eq!(before.pos.y - 270.0 - 60.0, 4.0);
+        assert_eq!(after.pos.y - 90.0 - 60.0, 4.0);
+    }
+
+    /// Field near the bottom: the list opens above it and fits above.
+    #[test]
+    fn list_flips_above_near_the_bottom() {
+        let field = rect(100.0, 650.0, 176.0, 56.0);
+        let p = place_popup(field, 300.0, dvec2(1024.0, 768.0), 4.0, 8.0, 0.0);
+        assert!(p.above);
+        assert_eq!(p.pos.y + 300.0, 650.0 - 4.0);
+        assert!(p.max_h >= 300.0);
+    }
+
+    /// Little room either way (phone in landscape): it goes where there is
+    /// more and scrolls inside its cap.
+    #[test]
+    fn list_takes_the_bigger_side_and_scrolls() {
+        let field = rect(10.0, 150.0, 176.0, 56.0);
+        let p = place_popup(field, 900.0, dvec2(400.0, 360.0), 4.0, 8.0, 0.0);
+        assert!(!p.above, "{p:?}");
+        assert_eq!(p.max_h, 360.0 - 8.0 - 210.0);
+    }
+
+    /// A field at the right edge of a phone: the list slides left to stay
+    /// inside the window; a too-wide minimum shrinks to the window.
+    #[test]
+    fn list_stays_inside_the_window_sideways() {
+        let p = place_popup(rect(300.0, 100.0, 80.0, 40.0), 100.0, dvec2(390.0, 800.0), 4.0, 8.0, 176.0);
+        assert_eq!(p.width, 176.0);
+        assert_eq!(p.pos.x, 390.0 - 8.0 - 176.0);
+        let narrow = place_popup(rect(0.0, 100.0, 500.0, 40.0), 100.0, dvec2(300.0, 800.0), 4.0, 8.0, 0.0);
+        assert_eq!(narrow.width, 284.0);
+        assert_eq!(narrow.pos.x, 8.0);
+    }
+
     /// Press → release is a tap only within 24 px and under 0.8 s: a page
     /// swipe that starts on a field, or a long-press text selection, must
     /// not open its list.
@@ -234,6 +359,34 @@ mod popup_tests {
         assert!(popup_is_tap(dvec2(10.0, 10.0), 1.0, dvec2(20.0, 15.0), 1.2));
         assert!(!popup_is_tap(dvec2(10.0, 10.0), 1.0, dvec2(10.0, 60.0), 1.1));
         assert!(!popup_is_tap(dvec2(10.0, 10.0), 1.0, dvec2(10.0, 10.0), 2.0));
+    }
+
+    /// The list shows while at least half of its field is on the page; a
+    /// field scrolled under the header hides it (the list stays open).
+    #[test]
+    fn list_hides_while_its_field_is_scrolled_away() {
+        let page = (135.0, 690.0);
+        assert!(popup_anchor_on_page(rect(0.0, 300.0, 176.0, 60.0), page));
+        assert!(popup_anchor_on_page(rect(0.0, 110.0, 176.0, 60.0), page));
+        assert!(!popup_anchor_on_page(rect(0.0, 90.0, 176.0, 60.0), page));
+        assert!(!popup_anchor_on_page(rect(0.0, 800.0, 176.0, 60.0), page));
+        assert!(!popup_anchor_on_page(rect(0.0, 300.0, 0.0, 0.0), page));
+    }
+
+    /// Lists a dropdown button opens have an `opener()` path; every other
+    /// type-or-pick field opens from a field tap.
+    #[test]
+    fn chrome_opened_lists_are_marked() {
+        for f in SuggestField::ALL {
+            assert_eq!(f.opener().is_some(), matches!(
+                f,
+                SuggestField::JobPreviewPaper
+                    | SuggestField::ReceiptPrinters
+                    | SuggestField::LabelPrinters
+            ), "{f:?}");
+        }
+        assert!(SuggestField::JobPreviewPaper.opener().is_some());
+        assert!(SuggestField::BookingCarrier.opener().is_none());
     }
 
     /// Mouse and the first finger map to the same three phases; other mouse
