@@ -12,7 +12,7 @@ buy_money_out	Gasto / factura de proveedor
 record_purchase	Registrar compra
 add_expense	Vale de gasto
 bank_book	Libro bancario
-credit_help	El id de parte es único (los nombres pueden repetirse). Un cliente lleva una cuenta (nos debe); un proveedor nos vende stock (le debemos); ambos está bien. Los libros quedan separados; los informes muestran el neto.
+credit_help	El id de contacto es único (los nombres pueden repetirse). Un cliente lleva una cuenta (nos debe); un proveedor nos vende existencias (le debemos); ambos están bien. Los libros se mantienen separados; el informe muestra el neto.
 party_kind_ph	Roles: cliente, proveedor, ambos…
 reports_help	Libro del día, deudores y acreedores, libro bancario, vales de gasto, ganancias y pérdidas.
 reports_today	Libro del día (hoy)

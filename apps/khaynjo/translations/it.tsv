@@ -12,7 +12,7 @@ buy_money_out	Spesa / fattura fornitore
 record_purchase	Registra acquisto
 add_expense	Buono spesa
 bank_book	Libro banca
-credit_help	L'id parte è unico (i nomi possono ripetersi). Un cliente ha un conto (ci deve); un fornitore ci vende stock (gli dobbiamo); entrambi vanno bene. I libri restano separati; i report mostrano il netto.
+credit_help	L’id contatto è unico (i nomi possono ripetersi). Un cliente ha un conto (ci deve); un fornitore ci vende scorte (gli dobbiamo); entrambi vanno bene. I libri restano separati; il report mostra il netto.
 party_kind_ph	Ruoli: cliente, fornitore, entrambi…
 reports_help	Libro del giorno, debitori e creditori, libro banca, buoni spesa, profitti e perdite.
 reports_today	Libro del giorno (oggi)

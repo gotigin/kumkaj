@@ -12,7 +12,7 @@ buy_money_out	Despesa / fatura de fornecedor
 record_purchase	Registar compra
 add_expense	Vale de despesa
 bank_book	Livro bancário
-credit_help	O id da parte é único (nomes podem repetir). Um cliente tem uma conta (deve-nos); um fornecedor vende-nos stock (devemos-lhe); ambos está bem. Os livros ficam separados; os relatórios mostram o líquido.
+credit_help	O id do contacto é único (os nomes podem repetir-se). Um cliente tem uma conta (deve-nos); um fornecedor vende-nos existências (devemos-lhe); ambos estão bem. Os livros ficam separados; o relatório mostra o líquido.
 party_kind_ph	Funções: cliente, fornecedor, ambos…
 reports_help	Livro do dia, devedores e credores, livro bancário, vales de despesa, lucros e perdas.
 reports_today	Livro do dia (hoje)
