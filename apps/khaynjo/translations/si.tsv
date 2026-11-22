@@ -1,6 +1,6 @@
 # Sinhala — සිංහල (si). One key<TAB>text per line, in en() order; keep {placeholders}.
 app_tagline	ආපනශාලා ඇණවුම්, මුළුතැන්ගෙය සහ ලෙජර්. නොබැඳිව නොමිලේ.
-unlock	අගුළු හරින්න
+unlock	අනලොක්
 pin_hint	හිමිකරු PIN 0000 ලෙස ආරම්භ වේ
 sell	ඇණවුම
 buy	මිලදී ගන්න
@@ -19,7 +19,7 @@ reports_today	දින ලෙජරය (අද)
 reports_month	ලාභය සහ අලාභය (මාසය)
 reports_aging	කැපී පෙනෙන / හර-ණය
 reports_balance_sheet	ශේෂ පත්රය
-reports	බැංකු ලෙජරය සහ P&L
+reports	බැංකු ලෙජරය සහ ලාභ-අලාභ
 refresh	නැවුම් කරන්න
 undo	අහෝසි කරන්න
 start_tracking	ලුහුබැඳීම ආරම්භ කරන්න
@@ -929,7 +929,7 @@ duress_off	හදිසි අගුලු හැරීම PIN ක්‍රි�
 duress_saved	හදිසි අගුලු හැරීම PIN සුරකින ලදී
 duress_cleared	හදිසි අගුලු හැරීම PIN ක්‍රියාවිරහිතයි
 upi_amount_ph	UPI මුදල
-void	අවලංගු කරන්න
+void	අවලංගු
 write_off_ap	AP ඉවත් කරන්න
 write_off_heading	කපා හැරීම (ගෙවීමකින් තොරව පැහැදිලි)
 write_off_nil	ශේෂය කපා හැරීම / ශුන්‍ය කරන්න
@@ -1023,7 +1023,7 @@ team_rights_changed	හිමිකම් වෙනස් විය - මෙම 
 they_owe_us	ඔවුන් අපට ණයයි
 unit_at_cap	ඒකකය @
 units_help	මෙනු අයිතම ලේබල් සඳහා කේත (kg, කෑල්ලක්, බෑගය). සෑම ඒකකයක්ම - සෘජුව හෝ වෙනත් ඒකක හරහා - ප්‍රමිතියකට (kg · cm · ml · pc) සම්බන්ධ කළ යුතුය, උදා. 1 කූඩය = 2 පෙට්ටිය සහ 1 පෙට්ටිය = 20 සෙ.මී. පරිවර්තන: 1 සිට = සාධකය දක්වා. මුදල් කිසිවිටෙක ඒකක නොවේ.
-units_picker_help	Buy සහ Menu pickers තුළ ඒකකයක් පෙන්වීමට සක්‍රිය/අක්‍රිය තට්ටු කරන්න. අක්‍රිය ඒකක තවමත් පරිවර්තනය කරයි.
+units_picker_help	«මිලදී ගන්න» සහ «මෙනුව» තෝරන තුළ ඒකකයක් පෙන්වීමට සක්‍රිය/අක්‍රිය තට්ටු කරන්න. අක්‍රිය ඒකක තවමත් පරිවර්තනය කරයි.
 unit_picker_on	ක්‍රියාත්මකයි
 unit_picker_off	අක්රියයි
 we_owe_them	අපි ඔවුන්ට ණයයි
