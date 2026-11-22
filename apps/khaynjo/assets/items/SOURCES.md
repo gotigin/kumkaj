@@ -316,3 +316,35 @@ need the author and licence named.
 - author: Unsplash / via Commons
 - url: https://commons.wikimedia.org/wiki/File:Fried_Chicken_(Unsplash).jpg
 - reason: prior was KFC-branded bucket with Colonel logo
+
+## Replaced 2026-11-22 (L15 sides-dips pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `sides-dips/barbecue-sauce.webp` | campfire tray of meat, not a sauce bowl | Apricot BBQ sauce | Joey Doll | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=102853906 | resized, WebP |
+| `sides-dips/coconut-chutney-red.webp` | mixed plastic chutney tubs on newspaper | South Indian garlic chutney | Nithyasrm | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=63626086 | resized, WebP |
+| `sides-dips/green-chutney.webp` | mango pickle slices in yellow oil | Green Chutney | Sanyabolia | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40868406 | resized, WebP |
+| `sides-dips/honey-mustard.webp` | fried chicken chunks with mustard drizzle | Frecon Farms Honey Mustard Dipping Sauce sample | Famartin | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=87465191 | resized, WebP |
+| `sides-dips/sour-cream.webp` | chili bowl topped with sour cream and cheese | Sour Cream | jules | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=144373789 | resized, WebP |
+| `sides-dips/tartar-sauce.webp` | fish-and-chips platter as primary subject | Chat qui pêche - sauce tartare | Benoît Prieur | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=34643746 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 soups-salads)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `soups-salads/seaweed-salad.webp` | raw dried wakame specimen on white board | Wakame Salad, Glendale (California) August 2024 | Alexis Doine | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | https://commons.wikimedia.org/w/index.php?curid=151510942 | resized, WebP |
+| `soups-salads/tomato-soup.webp` | empty scraped bowl next to wine glass | Tomato soup, Turkish style | Takabeg | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=43108039 | resized, WebP |
+| `soups-salads/spinach-soup.webp` | immersion blender in pot on stove | Spinach soup with garnishes | jules | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=57246404 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 south-indian pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `south-indian/mangalore-buns.webp` | single bhatura/poori in display case beside sandwich | Mangalore buns in Udupi | Remy | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | https://commons.wikimedia.org/w/index.php?curid=148797025 | resized, WebP |
+| `south-indian/vegetable-stew.webp` | rice with braised meat and avocado (not stew) | Ishtu Potato Stew | Mike Prince | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=99907786 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 street-food-chaat)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `street-food-chaat/chole-kulche.webp` | kulcha tray with restaurant menu text strip | Chole Kulche 01(Indian Food) | Ranjithsiji | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=123283955 | resized, WebP |
