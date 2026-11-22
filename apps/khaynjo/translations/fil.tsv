@@ -699,9 +699,9 @@ printers_heading	Mga Printer
 printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng test page sa device na iyon lang. Mga bill printer: Bill at KOT format → Bill. Mga printer sa kusina: Kusina → Mga istasyon ng kusina (magdagdag muna ng istasyon — Hindi gumagawa ng mga istasyon ang Find).
 printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ito hanggang nagpapadala ng mga singil at KOT doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
 printers_find_heading	Maghanap ng mga printer
-printers_find_tip	Ini-scan ng Find ang device na ito at pinapanatiling napapanahon ang listahan.
+printers_find_tip	Ini-scan ng Maghanap ang device na ito at pinapanatiling napapanahon ang listahan.
 printers_pool_heading	Mga Printer
-printers_pool_tip	Ini-scan ng Find ang device na ito at pinapanatiling napapanahon ang listahang ito.
+printers_pool_tip	Ini-scan ng Maghanap ang device na ito at pinapanatiling napapanahon ang listahang ito.
 printers_pool_empty	(wala pa — i-tap ang Hanapin)
 printers_routes_help	Maghanap ng mga printer na alam na ng operating system. Italaga sila sa bill at sa bawat kusina sa ilalim ng Bill & KOT na format.
 printer_assign_dd	Tunay na printer: {place}

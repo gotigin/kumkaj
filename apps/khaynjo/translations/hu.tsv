@@ -818,7 +818,7 @@ printer_paper_help	A jelentett az a papír, amelyre ennek a nyomtatónak az ille
 preview_help	Ez a blokk úgy, ahogy az alább kiválasztott nyomtatón nyomtatódik, valós méretben a virtuális papírján. A fehér az, ahová nyomtat, a szürke papír a nyomtató hatókörén kívül esik, a halvány festék pedig levágódik. A kilenc négyzet a papír: koppintson oda, ahol a blokknak lennie kell. A hosszú blokk további oldalakon folytatódik. A nyomtató kiválasztása csak az előnézetet változtatja meg.
 job_layout	Elrendezés
 job_delivery	Hogyan küldik el a munkát
-job_delivery_help	OS dokumentum, nyers bájtok vagy ESC/POS. The bill and the kitchen ticket each keep their own. Bármelyik feladat elküldhető bármely olyan nyomtatóra, amelyet a Find elmentett.
+job_delivery_help	OS dokumentum, nyers bájtok vagy ESC/POS. A számla és a konyhai jegy mindegyike a sajátját tartja. Bármelyik feladat elküldhető bármely olyan nyomtatóra, amelyet a Keresés elmentett.
 station_vp_attached	Nyomtató mellékelve
 station_vp_detached	A nyomtatót eltávolították az állomásról
 station_print_summary	{mode} · {n} nyomtatók

@@ -818,7 +818,7 @@ printer_paper_help	Gemeldet ist das Papier, auf das der Treiber dieses Druckers 
 preview_help	Dieser Beleg so, wie er auf dem unten gewählten Drucker gedruckt wird, in Originalgröße auf dessen virtuellem Papier. Weiß ist, wo gedruckt wird, graues Papier liegt außerhalb der Reichweite des Druckers, und blasse Tinte wird abgeschnitten. Die neun Felder sind das Papier: Tippen Sie dorthin, wo der Beleg sitzen soll. Ein langer Beleg läuft auf weitere Seiten. Die Wahl eines Druckers ändert nur die Vorschau.
 job_layout	Grundriss
 job_delivery	Wie der Auftrag gesendet wird
-job_delivery_help	OS-Dokument, rohe Bytes oder ESC/POS. Die Rechnung und das Küchenticket behalten jeweils ihre eigenen Einstellungen. Jeder Auftrag kann an jedes von Find gespeicherte Druckgerät gesendet werden.
+job_delivery_help	OS-Dokument, rohe Bytes oder ESC/POS. Die Rechnung und das Küchenticket behalten jeweils ihre eigenen Einstellungen. Jeder Auftrag kann an jedes von Suchen gespeicherte Druckgerät gesendet werden.
 station_vp_attached	Drucker angehängt
 station_vp_detached	Drucker von Station entfernt
 station_print_summary	{mode} · {n} Drucker

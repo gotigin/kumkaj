@@ -699,9 +699,9 @@ printers_heading	Printerid
 printers_help	Otsige üles printerid, puudutage seda selle valimiseks ja seejärel printige testleht ainult selles seadmes. Arveprinterid: arve ja KOT vorming → Arve. Köögiprinterid: Köök → Köögijaamad (lisage kõigepealt jaam — Find ei loo jaamu).
 printers_host_only	Printerid seadistatakse kaupluse seadmes (serveris). See kassa saadab sinna arveid ja KOT-d — serveris viibimise leidmine / lisamine / määramine. Testleht ja arve trükisuurus lähevad serverisse.
 printers_find_heading	Otsige printereid
-printers_find_tip	Find skannib seda seadet ja hoiab loendi ajakohasena.
+printers_find_tip	Otsi skannib seda seadet ja hoiab loendi ajakohasena.
 printers_pool_heading	Printerid
-printers_pool_tip	Find skannib selle seadme ja hoiab seda loendit ajakohasena.
+printers_pool_tip	Otsi skannib selle seadme ja hoiab seda loendit ajakohasena.
 printers_pool_empty	(veel mitte ühtegi – puudutage Otsi)
 printers_routes_help	Otsige üles printerid, mida operatsioonisüsteem juba teab. Määrake need arvele ja igale köögile vormingus Bill & KOT.
 printer_assign_dd	Päris printer: {place}

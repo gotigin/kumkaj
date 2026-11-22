@@ -699,9 +699,9 @@ printers_heading	Amaphrinta
 printers_help	Thola amaphrinta, thepha eyodwa ukuze uyikhethe, bese Uphrinta ikhasi lokuhlola kuleyo divayisi kuphela. Amaphrinta webhili yesivakashi: Ibhili yesivakashi & KOT ifomethi → Inkokhelo yesivakashi sesivakashi. Amaphrinta asekhishini: Ikhishi → Iziteshi zasekhishini (engeza isiteshi kuqala — Ukuthola akudali iziteshi).
 printers_host_only	Amaphrinta asethwe kudivayisi yesitolo (Iseva). Le rejista yemali ithumela izikweletu zezivakashi futhi KOT zilapho — Thola / engeza / yabela ukuhlala Kuseva. Ikhasi lokuhlola kanye nosayizi wokuphrinta webhili yesivakashi iya kokuthi Iseva.
 printers_find_heading	Thola amaphrinta
-printers_find_tip	I-Find iskena le divayisi futhi igcine uhlu lusesikhathini samanje.
+printers_find_tip	Thola iskena le divayisi futhi igcine uhlu lusesikhathini samanje.
 printers_pool_heading	Amaphrinta
-printers_pool_tip	I-Find iskena le divayisi futhi igcine lolu hlu lusesikhathini samanje.
+printers_pool_tip	Thola iskena le divayisi futhi igcine lolu hlu lusesikhathini samanje.
 printers_pool_empty	(akukho okwamanje — thepha okuthi Thola)
 printers_routes_help	Thola amaphrinta isistimu yokusebenza evele iwazi. Yabele inkokhiso yesivakashi kanye nekhishi ngalinye ngaphansi kwebhili yesivakashi kanye nefomethi KOT.
 printer_assign_dd	Iphrinta yangempela: {place}

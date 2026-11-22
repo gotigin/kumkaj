@@ -699,9 +699,9 @@ printers_heading	Printéirí
 printers_help	Faigh printéirí, sconna ar cheann chun é a roghnú, ansin Priontáil leathanach tástála ar an bhfeiste sin amháin. Printéirí Billí: Bill & formáid KOT → Bill. Printéirí Cistine: Cistine → Stáisiúin Chistine (cuir stáisiún leis ar dtús — Ní chruthaíonn Faigh stáisiúin).
 printers_host_only	Tá printéirí socraithe ar fheiste na siopaí ("Server"). Seolann an t-airgeadóir an bhileoga agus na KOT ann — Fan / cuir leis / ceangail ar an "Freastalaí". Téann leathanach tástála agus méid printála bileog chuig an "Freastalaí".
 printers_find_heading	Faigh priontálaithe
-printers_find_tip	Déanann Find scagadh ar an bhfeiste seo agus coinníonn sé an liosta suas chun dáta.
+printers_find_tip	Déanann Faigh scagadh ar an bhfeiste seo agus coinníonn sé an liosta suas chun dáta.
 printers_pool_heading	Printéirí
-printers_pool_tip	Lorgaíonn Find an gléas seo agus coinníonn sé an liosta seo suas chun dáta.
+printers_pool_tip	Lorgaíonn Faigh an gléas seo agus coinníonn sé an liosta seo suas chun dáta.
 printers_pool_empty	(níl aon cheann fós — sconna Faigh)
 printers_routes_help	Aimsigh printéirí atá ar eolas cheana ag an gcóras oibriúcháin. Cuir orthu iad don bhille agus do gach cistin faoin bhformáid Bill & KOT.
 printer_assign_dd	Clódóir fíor: {place}
