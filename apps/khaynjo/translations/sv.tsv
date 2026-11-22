@@ -1127,7 +1127,7 @@ tile_paid	Betalt
 tile_bill_btn	Nota
 tile_occupy_btn	Sitt gäster
 tile_free_btn	Ledigt bord
-tile_ready_btn	Gratis bord
+tile_ready_btn	Ledigt bord
 tile_undo_bill	Ångra faktura
 summary_busy	bord upptagna
 summary_to_collect	att samla in

@@ -1126,8 +1126,8 @@ tile_bill_printed	بل چاپ شوی
 tile_paid	ورکړې
 tile_bill_btn	بل
 tile_occupy_btn	میلمانه ناست
-tile_free_btn	وړیا میز
-tile_ready_btn	وړیا میز
+tile_free_btn	خالي میز
+tile_ready_btn	خالي میز
 tile_undo_bill	بل بیرته راګرځول
 summary_busy	میزونه بوخت دي
 summary_to_collect	راټولول
