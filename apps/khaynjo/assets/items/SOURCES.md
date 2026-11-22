@@ -573,3 +573,8 @@ need the author and licence named.
 | `japanese/oyakodon.webp` | oyakodon in disposable plastic takeout tub | Oyakodon 003.jpg | Ocdp | CC0 | https://commons.wikimedia.org/wiki/File:Oyakodon_003.jpg | resized, WebP |
 | `middle-eastern/mezze-platter.webp` | crowded gold tray with diners' hands | Mezze platter.jpg | Shreya13jain | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Mezze_platter.jpg | resized, WebP |
 | `middle-eastern/tabbouleh.webp` | four-compartment mezze with hummus/lentils | Flickr - cyclonebill - Tabbouleh.jpg | cyclonebill | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Tabbouleh.jpg | resized, WebP |
+
+## L14 mains pass4 2026-11-22T14:53:13Z
+- indian-mains/fish-tikka.webp ← Commons File:Ajwaini_Fish_Tikka.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Ajwaini_Fish_Tikka.jpg — was deep-fried batter/pakora
+- indian-mains/paneer-tikka.webp ← Commons File:Bawarchi_Paneer_Tikka.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Bawarchi_Paneer_Tikka.jpg — was fish tikka plated as paneer
+- indian-mains/paneer-lababdar.webp ← Commons File:Aloo_Gobi_And_Paneer_Lababdar_-_The_Indismart_Hotel_-_Salt_Lake_City_-_Kolkata_2023-09-10_5205.jpg crop paneer compartment (CC BY 3.0) https://commons.wikimedia.org/wiki/File:Aloo_Gobi_And_Paneer_Lababdar_-_The_Indismart_Hotel_-_Salt_Lake_City_-_Kolkata_2023-09-10_5205.jpg — was paneer tikka appetizer
