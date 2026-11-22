@@ -101,7 +101,7 @@ bill_total_caption_under	Label sa ilalim ng
 bill_total_own_line	Sariling linya
 bill_total_caption_with	Kasama ng numero
 bill_total_caption_none	Walang label
-bill_total_place_help	Ang Sariling linya ay nagpi-print ng kabuuang ito nang mag-isa. Sa ilalim ng column, ang numero nito ay naka-print sa column na iyon ng mga item, sa laki at kapal ng linyang ito; magkakasama sa isang hilera ang mga kabuuan kahon may column na okupado na, saka magsisimula ng bagong hilera. Ang label ay kasama ng numero, nasa ilalim ng ibang column, o hindi isinasama. Ang mga linya ng buwis, serbisyo, rounding at bayad ay sumusunod sa Bahaging kabuuan.
+bill_total_place_help	Ang Sariling linya ay nagpi-print ng kabuuang ito nang mag-isa. Sa ilalim ng column, ang numero nito ay naka-print sa column na iyon ng mga item, sa laki at kapal ng linyang ito; magkakasama sa isang hilera ang mga kabuuan hanggang may column na okupado na, saka magsisimula ng bagong hilera. Ang label ay kasama ng numero, nasa ilalim ng ibang column, o hindi isinasama. Ang mga linya ng buwis, serbisyo, rounding at bayad ay sumusunod sa Bahaging kabuuan.
 kot_unassigned	Hindi nakatalaga
 settings_hub_help	Buksan ang isang lugar sa isang pagkakataon — mas kaunting pag-scroll, mas malinaw na mga pagpipilian.
 settings_sec_language	Wika at pera
@@ -354,8 +354,8 @@ reason_amend_ph	Dahilan para baguhin / walang bisa / refund
 reason_note_ph	Dahilan / tala (pag-aaksaya, bilang,…)
 record_day_close	I-save ang araw malapit
 business_day	Kailan nagsisimulang muli ang «Ngayong araw»?
-business_day_help	Sa «kahon pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi kahon i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 00:00 lokal na oras.
-biz_day_until_close	kahon pagsasara ng araw
+business_day_help	Sa «Hanggang pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi hanggang i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 00:00 lokal na oras.
+biz_day_until_close	Hanggang pagsasara ng araw
 biz_day_midnight	Hatinggabi sa kalendaryo
 business_day_saved	Na-save ang araw ng negosyo
 report_day_lens	Tingnan ang «Ngayong araw» bilang
@@ -788,7 +788,7 @@ kot_align_center	Gitna
 kot_align_end	Tapusin
 content_width_bill	Lapad ng nilalaman ng bill (mm)
 content_width_ph	O mag-type ng lapad ng nilalaman, 40–210 mm
-content_width_bill_help	Gaano kalawak ang pag-print ng bill ng customer. Default na 210 mm (pahina). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Mag-type ng anumang halaga mula 40 kahon 210. Ang mga tiket ay may sariling lapad sa tab na slip.
+content_width_bill_help	Gaano kalawak ang pag-print ng bill ng customer. Default na 210 mm (pahina). 58 mm narrow slip, 80 mm wide slip, 112 mm 4-inch, 210 mm A4-wide. Mag-type ng anumang halaga mula 40 hanggang 210. Ang mga tiket ay may sariling lapad sa tab na slip.
 vp_paper_width	Lapad ng nilalaman (mm)
 vp_paper_width_ph	O mag-type ng lapad ng nilalaman, 40–210 mm
 vp_paper_width_help	Ang lapad ng nilalaman ay nakatakda sa ilalim ng Bill at Slip na format — hiwalay para sa bill (default 210 mm) at ang ticket (default na 80 mm).
@@ -885,7 +885,7 @@ dishes_n	{n} item
 reorder_ph	Bumili ng higit pa sa
 set_reorder	Itakda ang antas ng muling pagkakaayos
 low_stock_alert	Paubos na — bumili agad: {items}
-unpriced_note	Ang {n} na mga item sa iyong mga item ay wala pang presyo — naniningil sila sa 0 kahon sa magtakda ka ng isa.
+unpriced_note	Ang {n} na mga item sa iyong mga item ay wala pang presyo — naniningil sila sa 0 hanggang sa magtakda ka ng isa.
 show_unpriced	Ipakita lamang ang mga item na walang presyo
 show_all_dishes	Ipakita ang lahat ng mga item
 role_title_rest_ph	Pamagat ng tungkulin (hal. Captain)
