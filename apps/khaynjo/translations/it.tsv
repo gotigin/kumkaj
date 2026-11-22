@@ -536,7 +536,7 @@ extra_note_bill_ph	Nota extra su questa fattura / vendita
 extra_note_expense_ph	Nota extra sull'ultima spesa
 extra_tills_heading	Casse extra
 other_devices_help_heading	Configura altri dispositivi
-other_devices_help	Su questo dispositivo (Server): Casse extra → Consenti casse extra. Annota il codice di abbinamento e l'indirizzo Wi‑Fi. Se compare, tocca Consenti ad altri dispositivi di collegarsi. Su un computer tocca Avvia con questo computer. Su ogni altro dispositivo: installa l'app, scegli Modalità client, Trova il server del locale (o digita l'indirizzo), inserisci il codice, Abbina ora. Se cade il Wi‑Fi, gli ordini restano sul dispositivo e partono quando il Server risponde.
+other_devices_help	Su questo dispositivo (Server): Casse extra → Consenti casse extra. Annota il codice di abbinamento e l'indirizzo Wi‑Fi. Se compare, tocca Consenti ad altri dispositivi di collegarsi. Su un computer tocca Avvia con questo computer. Su ogni altro dispositivo: installa l'app, scegli Modalità client, Trova il server del locale (o digita l'indirizzo), inserisci il codice, Abbina ora. Se cade il Wi‑Fi, gli ordini restano sul dispositivo e partono quando il Server risponde. Le stampanti cucina si impostano sul Server («Impostazioni» → «Stampanti») — le casse extra inviano i KOT lì.
 forget_shop	Dimentica questo negozio
 goods_received	Merci ricevute
 import_day	Importa giorno

@@ -536,7 +536,7 @@ extra_note_bill_ph	Nota extra nesta fatura / venda
 extra_note_expense_ph	Nota extra na última despesa
 extra_tills_heading	Caixas extra
 other_devices_help_heading	Configurar outros dispositivos
-other_devices_help	Neste dispositivo (servidor): Caixas extra → Permitir caixas extra. Anote o código de emparelhamento e o endereço Wi‑Fi. Se aparecer, toque em Permitir que outros dispositivos se liguem. Num computador, toque em Iniciar com este computador. Em cada outro dispositivo: instale a app, escolha Modo cliente, Encontrar o servidor da loja (ou escreva o endereço), introduza o código, Emparelhar agora. Se o Wi‑Fi cair, as encomendas ficam no dispositivo e seguem quando o servidor responde.
+other_devices_help	Neste dispositivo (servidor): Caixas extra → Permitir caixas extra. Anote o código de emparelhamento e o endereço Wi‑Fi. Se aparecer, toque em Permitir que outros dispositivos se liguem. Num computador, toque em Iniciar com este computador. Em cada outro dispositivo: instale a app, escolha Modo cliente, Encontrar o servidor da loja (ou escreva o endereço), introduza o código, Emparelhar agora. Se o Wi‑Fi cair, as encomendas ficam no dispositivo e seguem quando o servidor responde. As impressoras de cozinha são definidas no servidor («Definições» → «Impressoras») — as caixas extra enviam os KOT para lá.
 forget_shop	Esquecer esta loja
 goods_received	Mercadoria recebida
 import_day	Importar o dia

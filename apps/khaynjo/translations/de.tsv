@@ -536,7 +536,7 @@ extra_note_bill_ph	Zusatznote zu dieser Rechnung / diesem Verkauf
 extra_note_expense_ph	Zusatznote zur letzten Ausgabe
 extra_tills_heading	Extra-Kassen
 other_devices_help_heading	Weitere Geräte einrichten
-other_devices_help	Auf diesem Gerät (Server): Extra-Kassen → Extra-Kassen erlauben. Kopplungscode und Wi‑Fi-Adresse notieren. Wenn sichtbar, tippen Sie Andere Geräte verbinden erlauben. Am Computer: Mit diesem Computer starten. Auf jedem anderen Gerät: App installieren, Client-Modus wählen, Server des Lokals finden (oder Adresse eingeben), Code eingeben, Jetzt koppeln. Bei Wi‑Fi-Ausfall warten Bestellungen auf dem Gerät und gehen, sobald der Server antwortet.
+other_devices_help	Auf diesem Gerät (Server): Extra-Kassen → Extra-Kassen erlauben. Kopplungscode und Wi‑Fi-Adresse notieren. Wenn sichtbar, tippen Sie Andere Geräte verbinden erlauben. Am Computer: Mit diesem Computer starten. Auf jedem anderen Gerät: App installieren, Client-Modus wählen, Server des Lokals finden (oder Adresse eingeben), Code eingeben, Jetzt koppeln. Bei Wi‑Fi-Ausfall warten Bestellungen auf dem Gerät und gehen, sobald der Server antwortet. Küchendrucker werden am Server eingestellt («Einstellungen» → «Drucker») — Extra-Kassen senden KOTs dorthin.
 forget_shop	Diesen Shop vergessen
 goods_received	Wareneingang
 import_day	Tag importieren

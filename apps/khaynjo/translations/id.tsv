@@ -536,7 +536,7 @@ extra_note_bill_ph	Catatan tambahan pada tagihan / penjualan ini
 extra_note_expense_ph	Catatan tambahan pada biaya terakhir
 extra_tills_heading	Kasir tambahan
 other_devices_help_heading	Siapkan perangkat lain
-other_devices_help	Di perangkat ini (Server): Kasir tambahan → Izinkan kasir tambahan. Catat kode pasangan dan alamat Wi‑Fi. Jika muncul, ketuk Izinkan perangkat lain terhubung. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: pasang aplikasi, pilih Mode klien, Cari server toko (atau ketik alamat), masukkan kode, Pasangkan sekarang. Jika Wi‑Fi putus, pesanan menunggu di perangkat dan dikirim saat Server menjawab.
+other_devices_help	Di perangkat ini (Server): Kasir tambahan → Izinkan kasir tambahan. Catat kode pasangan dan alamat Wi‑Fi. Jika muncul, ketuk Izinkan perangkat lain terhubung. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: pasang aplikasi, pilih Mode klien, Cari server toko (atau ketik alamat), masukkan kode, Pasangkan sekarang. Jika Wi‑Fi putus, pesanan menunggu di perangkat dan dikirim saat Server menjawab. Printer dapur diatur di Server («Pengaturan» → «Printer») — kasir tambahan mengirim KOT ke sana.
 forget_shop	Lupakan toko ini
 goods_received	Barang diterima
 import_day	Impor hari

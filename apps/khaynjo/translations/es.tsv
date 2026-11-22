@@ -536,7 +536,7 @@ extra_note_bill_ph	Nota extra en esta factura / venta
 extra_note_expense_ph	Nota extra en el último gasto
 extra_tills_heading	Cajas extra
 other_devices_help_heading	Configurar otros dispositivos
-other_devices_help	En este dispositivo (servidor): Cajas extra → Permitir cajas extra. Anota el código de vinculación y la dirección Wi‑Fi. Si aparece, toca Permitir que otros dispositivos se conecten. En un ordenador, toca Empezar con este equipo. En cada otro dispositivo: instala la app, elige Modo cliente, Buscar el servidor del local (o escribe la dirección), introduce el código y Vincular ahora. Si cae el Wi‑Fi, los pedidos esperan en el dispositivo y se envían cuando el servidor responde.
+other_devices_help	En este dispositivo (servidor): Cajas extra → Permitir cajas extra. Anota el código de vinculación y la dirección Wi‑Fi. Si aparece, toca Permitir que otros dispositivos se conecten. En un ordenador, toca Empezar con este equipo. En cada otro dispositivo: instala la app, elige Modo cliente, Buscar el servidor del local (o escribe la dirección), introduce el código y Vincular ahora. Si cae el Wi‑Fi, los pedidos esperan en el dispositivo y se envían cuando el servidor responde. Las impresoras de cocina se configuran en el servidor («Ajustes» → «Impresoras») — las cajas extra envían los KOT allí.
 forget_shop	Olvidar esta tienda
 goods_received	Mercancía recibida
 import_day	Importar el día

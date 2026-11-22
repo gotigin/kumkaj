@@ -536,7 +536,7 @@ extra_note_bill_ph	Bu fatura / satışa ek not
 extra_note_expense_ph	Son gidere ek not
 extra_tills_heading	Ek kasalar
 other_devices_help_heading	Diğer cihazları kur
-other_devices_help	Bu cihazda (Sunucu): Ek kasalar → Ek kasalara izin ver. Eşleştirme kodunu ve Wi‑Fi adresini not edin. Görünürse Diğer cihazların bağlanmasına izin ver'e dokunun. Bilgisayarda Bu bilgisayarla başlat'a dokunun. Her diğer cihazda: uygulamayı kurun, İstemci modunu seçin, Dükkânın sunucusunu bul (veya adresi yazın), kodu girin, Şimdi eşleştir. Wi‑Fi düşerse siparişler cihazda bekler ve Sunucu yanıt verince gider.
+other_devices_help	Bu cihazda (Sunucu): Ek kasalar → Ek kasalara izin ver. Eşleştirme kodunu ve Wi‑Fi adresini not edin. Görünürse Diğer cihazların bağlanmasına izin ver'e dokunun. Bilgisayarda Bu bilgisayarla başlat'a dokunun. Her diğer cihazda: uygulamayı kurun, İstemci modunu seçin, Dükkânın sunucusunu bul (veya adresi yazın), kodu girin, Şimdi eşleştir. Wi‑Fi düşerse siparişler cihazda bekler ve Sunucu yanıt verince gider. Mutfak yazıcıları Sunucuda ayarlanır («Ayarlar» → «Yazıcılar») — ek kasalar KOT’ları oraya gönderir.
 forget_shop	Bu dükkanı unut
 goods_received	Mal girişi
 import_day	Günü içe aktar

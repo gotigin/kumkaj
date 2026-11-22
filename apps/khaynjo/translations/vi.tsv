@@ -536,7 +536,7 @@ extra_note_bill_ph	Ghi chú thêm cho hóa đơn / đơn này
 extra_note_expense_ph	Ghi chú thêm cho chi phí cuối
 extra_tills_heading	Quầy phụ
 other_devices_help_heading	Thiết lập thiết bị khác
-other_devices_help	Trên thiết bị này (Máy chủ): Quầy phụ → Cho phép quầy phụ. Ghi lại mã ghép nối và địa chỉ Wi‑Fi. Nếu hiện nút, chạm Cho phép thiết bị khác kết nối. Trên máy tính, chạm Khởi động với máy này. Trên mỗi thiết bị khác: cài ứng dụng, chọn Chế độ máy khách, Tìm máy chủ của quán (hoặc nhập địa chỉ), nhập mã, Ghép nối ngay. Wi‑Fi mất thì đơn chờ trên thiết bị và gửi khi Máy chủ trả lời.
+other_devices_help	Trên thiết bị này (Máy chủ): Quầy phụ → Cho phép quầy phụ. Ghi lại mã ghép nối và địa chỉ Wi‑Fi. Nếu hiện nút, chạm Cho phép thiết bị khác kết nối. Trên máy tính, chạm Khởi động với máy này. Trên mỗi thiết bị khác: cài ứng dụng, chọn Chế độ máy khách, Tìm máy chủ của quán (hoặc nhập địa chỉ), nhập mã, Ghép nối ngay. Wi‑Fi mất thì đơn chờ trên thiết bị và gửi khi Máy chủ trả lời. Máy in bếp đặt trên Máy chủ («Cài đặt» → «Máy in») — quầy phụ gửi KOT tới đó.
 forget_shop	Quên cửa hàng này
 goods_received	Hàng đã nhận
 import_day	Nhập ngày

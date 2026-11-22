@@ -536,7 +536,7 @@ extra_note_bill_ph	Extra notitie bij deze factuur / verkoop
 extra_note_expense_ph	Extra notitie bij laatste kosten
 extra_tills_heading	Extra kassa's
 other_devices_help_heading	Andere apparaten instellen
-other_devices_help	Op dit apparaat (Server): Extra kassa's → Extra kassa's toestaan. Noteer de koppelcode en het Wi‑Fi-adres. Tik op Andere apparaten laten verbinden als die knop verschijnt. Op een computer: Starten met deze computer. Op elk ander apparaat: installeer de app, kies Clientmodus, Server van de zaak zoeken (of typ het adres), voer de code in, Nu koppelen. Valt Wi‑Fi weg, dan wachten bestellingen op het apparaat en gaan ze door als de Server antwoordt.
+other_devices_help	Op dit apparaat (Server): Extra kassa's → Extra kassa's toestaan. Noteer de koppelcode en het Wi‑Fi-adres. Tik op Andere apparaten laten verbinden als die knop verschijnt. Op een computer: Starten met deze computer. Op elk ander apparaat: installeer de app, kies Clientmodus, Server van de zaak zoeken (of typ het adres), voer de code in, Nu koppelen. Valt Wi‑Fi weg, dan wachten bestellingen op het apparaat en gaan ze door als de Server antwoordt. Keukenprinters stel je in op de Server («Instellingen» → «Printers van dit apparaat») — extra kassa’s sturen KOT’s daarheen.
 forget_shop	Deze winkel vergeten
 goods_received	Goederen ontvangen
 import_day	Dag importeren

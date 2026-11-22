@@ -536,7 +536,7 @@ extra_note_bill_ph	Note extra sur cette facture / vente
 extra_note_expense_ph	Note extra sur la dernière dépense
 extra_tills_heading	Caisses supplémentaires
 other_devices_help_heading	Configurer d'autres appareils
-other_devices_help	Sur cet appareil (serveur) : Caisses supplémentaires → Autoriser les caisses supplémentaires. Notez le code d'appairage et l'adresse Wi‑Fi. Si le bouton apparaît, touchez Autoriser d'autres appareils à se connecter. Sur un ordinateur, touchez Démarrer avec cet ordinateur. Sur chaque autre appareil : installez l'app, choisissez Mode client, Trouver le serveur de l'établissement (ou tapez l'adresse), saisissez le code, Associer maintenant. Si le Wi‑Fi tombe, les commandes restent sur l'appareil et partent quand le serveur répond.
+other_devices_help	Sur cet appareil (serveur) : Caisses supplémentaires → Autoriser les caisses supplémentaires. Notez le code d'appairage et l'adresse Wi‑Fi. Si le bouton apparaît, touchez Autoriser d'autres appareils à se connecter. Sur un ordinateur, touchez Démarrer avec cet ordinateur. Sur chaque autre appareil : installez l'app, choisissez Mode client, Trouver le serveur de l'établissement (ou tapez l'adresse), saisissez le code, Associer maintenant. Si le Wi‑Fi tombe, les commandes restent sur l'appareil et partent quand le serveur répond. Les imprimantes cuisine se règlent sur le serveur («Réglages» → «Imprimantes») — les caisses supplémentaires y envoient les KOT.
 forget_shop	Oublier cette boutique
 goods_received	Marchandises reçues
 import_day	Importer le jour
