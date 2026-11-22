@@ -457,7 +457,7 @@ backup_copy_failed	La còpia de seguretat no s'hi ha pogut desar — trieu un al
 clock_off	El rellotge d'aquest dispositiu va {min} min desviat del servidor de la botiga — poseu l'hora correcta en aquest dispositiu
 printers_heading	Impressores
 printers_help	Troba impressores, toca-ne una per seleccionar-la, després Imprimeix una pàgina de prova només en aquest dispositiu. Impressores de rebut: Format de Rebut i Slip → Rebut.
-printers_host_only	Les impressores es configuren al dispositiu de la botiga (servidor). Això fins que s'envia les factures i els bitllets antics allà — Troba / afegeix / assigna l'estada al servidor. La pàgina de prova i la mida d'impressió de la factura van al servidor.
+printers_host_only	Les impressores es configuren al dispositiu de la botiga (servidor). Aquesta caixa hi envia les factures i els tiquets antics — Troba / afegeix / assigna es queden al servidor. La pàgina de prova i la mida d'impressió de la factura van al servidor.
 printers_find_heading	Troba impressores
 printers_find_tip	Troba escaneja aquest dispositiu i manté la llista al dia.
 printers_pool_empty	(encara cap — toqueu Troba)

@@ -283,8 +283,8 @@ attach_photo	Maglakip ng larawan
 bank	Bangko
 bank_in	Pasok sa bangko
 bank_out	Cash out sa bangko
-bank_to_till	Bangko → hanggang
-till_to_bank	Hanggang → bangko
+bank_to_till	Bangko → kaha
+till_to_bank	Kaha → bangko
 mark_cleared	Nag-clear si Mark
 unmark	Alisin ang marka
 role_both	pareho
@@ -563,7 +563,7 @@ job_preview	Silipin
 test_receipt_sent	Ipinadala ang sample na resibo
 test_label_sent	Ipinadala ang sample na label
 test_print_no_printer	Walang printer para sa trabahong iyon — magdagdag ng isa sa ilalim ng lugar na ito
-printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ito hanggang magpapadala ng mga trabaho doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok ay mapupunta sa Server.
+printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ang kahang ito ay nagpapadala ng mga print job doon — nananatili sa Server ang Maghanap / magdagdag / magtalaga. Ang pahina ng pagsubok ay mapupunta sa Server.
 printers_pool_heading	Mga Printer
 printers_routes_heading	Kung saan naka-print ang mga bagay
 printer_label_ph	Pangalan (hal. Mesa)
@@ -694,7 +694,7 @@ app_icon	Icon ng app
 logo_help	Opsyonal na marka ng tindahan sa mga screen sa app.
 onboard_layout	Kung ano ang makukuha mo
 item_photo_help	Opsyonal. Kung walang larawan, ipinapakita namin ang mga inisyal mula sa pangalan ng item.
-cash_in_hand	Cash sa kamay (hanggang)
+cash_in_hand	Cash sa kamay (kaha)
 change_my_pin_heading	Baguhin ang aking PIN (sa iyo lamang)
 connect_to_server	Kumonekta sa Server
 counter_locked	Counter 01 · Naka-lock
@@ -778,7 +778,7 @@ pin_hint_choose	Pumili ng 4–12 digit · Ipasok o I-unlock para i-save
 pin_hint_new	Bagong 4–12 digit na May-ari PIN · Enter o I-unlock
 pin_hint_shop_code	Mamili ng device · code ng pagpapares {}
 pin_hint_books	Hawak ng device na ito ang mga ledger
-pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
+pin_hint_paired	Dagdag na kaha, naka-pair — i-unlock para magbenta
 pin_hint_pair_first	Extra till — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team

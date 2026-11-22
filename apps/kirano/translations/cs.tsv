@@ -445,7 +445,7 @@ backup_copy_failed	Záložní kopii tam nelze uložit – vyberte jiné místo
 clock_off	Hodiny tohoto zařízení jsou {min} min mimo server obchodu — nastavte na tomto zařízení správný čas
 printers_heading	Tiskárny
 printers_help	Najděte tiskárny, klepnutím na jednu ji vyberte a poté vytiskněte zkušební stránku pouze na tomto zařízení. Tiskárny účtenek: Formát účtenky → Účet.
-printers_host_only	Tiskárny jsou nastaveny na zařízení prodejny (Server). Tato pokladna tam posílá účty a staré vstupenky — Najít / přidat / přiřadit pobyt na serveru. Zkušební stránka a velikost tisku faktury přejdou na server.
+printers_host_only	Tiskárny jsou nastaveny na zařízení prodejny (Server). Tato pokladna tam posílá účty a staré vstupenky — Najít / přidat / přiřadit zůstává na serveru. Zkušební stránka a velikost tisku faktury přejdou na server.
 printers_find_heading	Najděte tiskárny
 printers_find_tip	Najít prohledá toto zařízení a udržuje seznam aktuální.
 printers_pool_empty	(zatím žádné – klepněte na Najít)

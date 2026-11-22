@@ -697,7 +697,7 @@ backup_copy_failed	Záložnú kópiu tam nebolo možné uložiť – vyberte in�
 clock_off	Hodiny tohto zariadenia sú mimo servera obchodu o {min} min — nastavte na tomto zariadení správny čas
 printers_heading	Tlačiarne
 printers_help	Vyhľadajte tlačiarne, ťuknutím na jednu ju vyberte a potom vytlačte skúšobnú stranu iba na tomto zariadení. Tlačiarne účtov: Bill & Formát KOT → Bill. Kuchynské tlačiarne: Kuchyňa → Kuchynské stanice (najskôr pridajte stanicu — Nájsť nevytvorí stanice).
-printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do odošle účty a KOTs tam — Nájsť / pridať / priradiť pobyt na serveri. Skúšobná strana a veľkosť tlače účtu prejdú na server.
+printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do odošle účty a KOTs tam — Nájsť / pridať / priradiť zostáva na serveri. Skúšobná strana a veľkosť tlače účtu prejdú na server.
 printers_find_heading	Nájdite tlačiarne
 printers_find_tip	Nájsť prehľadá toto zariadenie a aktualizuje zoznam.
 printers_pool_heading	Tlačiarne
@@ -948,7 +948,7 @@ logo_help	Voliteľná značka obchodu na obrazovkách v aplikácii.
 onboard_layout	Čo získate
 item_photo_help	Voliteľné. Bez fotografie zobrazujeme iniciály z názvu položky.
 stamp_heading	Pečiatka
-stamp_image_help	Voliteľný obrázok pečiatky na vytlačených bankovkách a na displeji pre hostí.
+stamp_image_help	Voliteľný obrázok pečiatky na vytlačených účtoch a na displeji pre hostí.
 payment_qr_heading	Platba QR
 payment_qr_image_help	Statické QR na účtoch a displeji pre hostí; inak sa pri platení používa dynamický QR UPI z VPA vyššie.
 cash_in_hand	Hotovosť na ruku (do)
@@ -1261,7 +1261,7 @@ content_width_bill_help	Ako široko sa tlačí účet hosťa, v mm (40–210). T
 content_width_kot_help	Ako široko sa tlačí kuchynský lístok, v mm (40–210). Tlačí sa v tejto skutočnej veľkosti na akýkoľvek papier; na užšom papieri sa časť za okrajom tlače oreže (pozri Papier). Účty hostí majú vlastnú šírku na karte Účet.
 vp_paper_width	Šírka obsahu (mm)
 vp_paper_width_ph	Alebo zadajte šírku obsahu 40–210 mm
-vp_paper_width_help	Šírka obsahu sa nastavuje vo formáte Bill & KOT — oddelene pre bankovku (predvolená hodnota 210 mm) a lístok do kuchyne (predvolená hodnota 80 mm).
+vp_paper_width_help	Šírka obsahu sa nastavuje vo formáte Bill & KOT — oddelene pre účet (predvolená hodnota 210 mm) a lístok do kuchyne (predvolená hodnota 80 mm).
 kot_size	Veľkosť písma
 kot_size_s	Malý
 kot_size_m	Normálne

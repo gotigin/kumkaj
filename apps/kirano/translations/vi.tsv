@@ -445,7 +445,7 @@ backup_copy_failed	Không lưu được bản sao lưu ở đó — hãy chọn 
 clock_off	Đồng hồ thiết bị này lệch {min} phút so với máy chủ của quán — hãy chỉnh giờ đúng trên thiết bị này
 printers_heading	Máy in của thiết bị này
 printers_help	Tìm máy in, nhấn vào một máy để chọn, sau đó chỉ in trang thử nghiệm trên thiết bị đó. Máy in hóa đơn: Định dạng Bill & Slip → Bill.
-printers_host_only	Máy in được đặt trên thiết bị của cửa hàng (Máy chủ). Tính năng này sẽ gửi hóa đơn và vé cũ tới đó — Tìm / thêm / chỉ định thời gian lưu trú trên Máy chủ. Trang kiểm tra và kích thước in hóa đơn được chuyển đến Máy chủ.
+printers_host_only	Máy in được đặt trên thiết bị của cửa hàng (Máy chủ). Tính năng này sẽ gửi hóa đơn và vé cũ tới đó — Tìm / thêm / chỉ định vẫn ở trên Máy chủ. Trang kiểm tra và kích thước in hóa đơn được chuyển đến Máy chủ.
 printers_find_heading	Máy in
 printers_find_tip	Tìm quét thiết bị này và giữ danh sách cập nhật. Máy in hệ thống trước; quét mạng có thể tiếp tục nền.
 printers_pool_empty	(chưa có — thêm bên dưới)

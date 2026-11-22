@@ -445,7 +445,7 @@ backup_copy_failed	Não foi possível guardar a cópia aí — escolha outro lug
 clock_off	O relógio deste dispositivo difere {min} min do servidor da loja — acerte a hora neste dispositivo
 printers_heading	Impressoras deste dispositivo
 printers_help	Encontre impressoras, toque em uma para selecioná-la e imprima uma página de teste apenas nesse dispositivo. Impressoras de faturas: Formato fatura e recibo → fatura.
-printers_host_only	As impressoras são configuradas no dispositivo da loja (servidor). Este caixa envia faturas e tickets antigos para lá - Localizar / adicionar / atribuir estadia no servidor. A página de teste e o tamanho de impressão da fatura vão para o servidor.
+printers_host_only	As impressoras são configuradas no dispositivo da loja (servidor). Este caixa envia faturas e tickets antigos para lá - Localizar / adicionar / atribuir ficam no servidor. A página de teste e o tamanho de impressão da fatura vão para o servidor.
 printers_find_heading	Impressoras
 printers_find_tip	Procurar analisa este dispositivo e mantém a lista atualizada. Impressoras do sistema primeiro; a análise de rede pode continuar em segundo plano.
 printers_pool_empty	(nenhuma ainda — adicione abaixo)

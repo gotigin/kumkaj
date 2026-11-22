@@ -697,7 +697,7 @@ backup_copy_failed	Salinan sandaran tidak dapat disimpan di sana — pilih tempa
 clock_off	Jam peranti ini berada {min} min dari pelayan kedai — tetapkan masa yang sesuai pada peranti ini
 printers_heading	Pencetak
 printers_help	Cari pencetak, ketik satu untuk memilihnya, kemudian Cetak halaman ujian pada peranti itu sahaja. Pencetak bil: Format Bil & KOT → Bil. Pencetak dapur: Dapur → Stesen dapur (tambah stesen dahulu — Cari tidak mencipta stesen).
-printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Kaunter ini menghantar bil dan KOTs sana — Cari / tambah / tetapkan penginapan pada Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
+printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Kaunter ini menghantar bil dan KOTs sana — Cari / tambah / tetapkan kekal di Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
 printers_find_heading	Cari pencetak
 printers_find_tip	Cari imbasan peranti ini dan pastikan senarai terkini.
 printers_pool_heading	Pencetak

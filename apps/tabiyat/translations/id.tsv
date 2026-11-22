@@ -457,7 +457,7 @@ backup_copy_failed	Salinan cadangan tidak bisa disimpan di sana — pilih tempat
 clock_off	Jam perangkat ini selisih {min} menit dari server toko — atur waktu yang benar di perangkat ini
 printers_heading	Printer perangkat ini
 printers_help	Temukan printer, ketuk salah satu untuk memilihnya, lalu Cetak halaman uji hanya pada perangkat itu. Printer tagihan: Format Tagihan & Slip → Tagihan.
-printers_host_only	Printer diatur pada perangkat toko (Server). Ini hingga mengirimkan tagihan dan tiket lama ke sana — Temukan / tambahkan / tetapkan tetap di Server. Halaman uji dan ukuran cetak tagihan masuk ke Server.
+printers_host_only	Printer diatur pada perangkat toko (Server). Kasir ini mengirimkan tagihan dan tiket lama ke sana — Temukan / tambahkan / tetapkan tetap di Server. Halaman uji dan ukuran cetak tagihan masuk ke Server.
 printers_find_heading	Printer
 printers_find_tip	Temukan memindai perangkat ini dan menjaga daftar tetap mutakhir. Printer sistem dulu; pemindaian jaringan bisa berlanjut di latar belakang.
 printers_pool_empty	(belum ada — tambah di bawah)
@@ -820,7 +820,7 @@ print_brand_kit	Kit merek cetak
 print_brand_kit_help	Stempel opsional dan gambar QR pembayaran pada bagian muka tagihan dan tampilan pelanggan LAN. QR UPI dinamis dari VPA di atas tetap berfungsi ketika tidak ada gambar QR pembayaran yang disetel.
 choose_stamp	Pilih stempel
 clear_stamp	Hapus stempel
-stamp_set	Stempel: tercatat — ditampilkan pada tampilan pelanggan dan diberi nama pada uang kertas yang dicetak
+stamp_set	Stempel: tercatat — ditampilkan pada tampilan pelanggan dan diberi nama pada tagihan yang dicetak
 stamp_none	Stempel: tidak ada
 choose_payment_qr	Pilih QR bayar
 clear_payment_qr	Hapus QR bayar

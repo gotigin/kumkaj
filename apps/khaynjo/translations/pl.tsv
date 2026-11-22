@@ -697,7 +697,7 @@ backup_copy_failed	Nie można tam zapisać kopii zapasowej — wybierz inne miej
 clock_off	Zegar tego urządzenia jest {min} min poza serwerem sklepu — ustaw właściwy czas na tym urządzeniu
 printers_heading	Drukarki
 printers_help	Znajdź drukarki, dotknij jednej, aby ją wybrać, a następnie Wydrukuj stronę testową tylko na tym urządzeniu. Drukarki rachunków: format rachunków i KOT → Bill. Drukarki kuchenne: Kuchnia → Stacje kuchenne (najpierw dodaj stację — Znajdź nie tworzy stacji).
-printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła rachunki i tam KOT — Znajdź/dodaj/przypisz pobyt na serwerze. Strona testowa i rozmiar wydruku rachunku trafiają na Serwer.
+printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła rachunki i tam KOT — Znajdź/dodaj/przypisz pozostają na serwerze. Strona testowa i rozmiar wydruku rachunku trafiają na Serwer.
 printers_find_heading	Znajdź drukarki
 printers_find_tip	Znajdź skanuje to urządzenie i aktualizuje listę.
 printers_pool_heading	Drukarki
@@ -1253,7 +1253,7 @@ kot_align_start	Zacznij
 kot_align_center	Centrum
 kot_align_end	Koniec
 content_width	Szerokość zawartości (mm)
-content_width_bill	Szerokość zawartości banknotów (mm)
+content_width_bill	Szerokość treści rachunku (mm)
 content_width_kot	KOT szerokość zawartości (mm)
 content_width_ph	Możesz też wpisać szerokość treści 40–210 mm
 content_width_help	Jak szeroki jest wydruk tego poślizgu. Bill i KOT zachowują swoją szerokość.

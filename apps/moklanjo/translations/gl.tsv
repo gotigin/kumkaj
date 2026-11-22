@@ -563,7 +563,7 @@ job_preview	Vista previa
 test_receipt_sent	Recibo de mostra enviado
 test_label_sent	Etiqueta de mostra enviada
 test_print_no_printer	Non hai impresora para ese traballo. Engade unha debaixo deste lugar
-printers_host_only	As impresoras están configuradas no dispositivo da tenda (Servidor). Isto ata que envía traballos alí — Buscar/engadir/asignar estancia no servidor. A páxina de proba vai ao servidor.
+printers_host_only	As impresoras están configuradas no dispositivo da tenda (Servidor). Esta caixa envía alí os traballos de impresión — Buscar / engadir / asignar quedan no servidor. A páxina de proba vai ao servidor.
 printers_pool_heading	Impresoras
 printers_routes_heading	Onde se imprime
 printer_label_ph	Nome (por exemplo, escritorio)

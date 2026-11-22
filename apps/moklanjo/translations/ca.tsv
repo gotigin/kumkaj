@@ -563,7 +563,7 @@ job_preview	Vista prèvia
 test_receipt_sent	Rebut de mostra enviat
 test_label_sent	Mostra d'etiqueta enviada
 test_print_no_printer	Cap impressora per a aquesta feina — afegeix-ne una sota aquest lloc
-printers_host_only	Les impressores es configuren al dispositiu de la botiga (servidor). Això fins que s'envia treballs allà: Trobeu/afegiu/assigneu l'estada al servidor. La pàgina de prova va al servidor.
+printers_host_only	Les impressores es configuren al dispositiu de la botiga (servidor). Aquesta caixa hi envia les feines d'impressió — Troba / afegeix / assigna es queden al servidor. La pàgina de prova va al servidor.
 printers_pool_heading	Impressores
 printers_routes_heading	On s'imprimeix
 printer_label_ph	Nom (per exemple, Escriptori)

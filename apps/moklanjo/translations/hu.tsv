@@ -694,7 +694,7 @@ app_icon	App ikonra
 logo_help	Opcionális boltjelzés az alkalmazás képernyőin.
 onboard_layout	Amit kapsz
 item_photo_help	Választható. Fénykép nélkül a cikk nevének kezdőbetűit mutatjuk.
-cash_in_hand	Készpénzben (ig)
+cash_in_hand	Készpénz kézben (kassza)
 change_my_pin_heading	PIN-kód megváltoztatása (csak a tiéd)
 connect_to_server	Csatlakozzon a szerverhez
 counter_locked	Számláló 01 · Lezárva
@@ -778,7 +778,7 @@ pin_hint_choose	Válasszon 4–12 számjegyet. · Enter vagy Unlock a mentéshez
 pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
 pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
 pin_hint_books	Ez a készülék a könyveket tárolja
-pin_hint_paired	Extra ig párosítva – oldja fel az eladáshoz
+pin_hint_paired	Extra kassza párosítva – oldja fel az eladáshoz
 pin_hint_pair_first	Extra till — először párosítsa a bolti eszközt
 unlock_to_continue	A folytatáshoz oldja fel a zárolást
 no_staff_yet	Még nincs személyzet – oldja fel tulajdonosként, majd csapatként

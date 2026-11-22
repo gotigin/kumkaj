@@ -445,7 +445,7 @@ backup_copy_failed	Nakala ya akiba haikuweza kuhifadhiwa hapo — chagua mahali 
 clock_off	Saa ya kifaa hiki inatofautiana kwa dakika {min} na seva ya duka — weka saa sahihi kwenye kifaa hiki
 printers_heading	Printa za kifaa hiki
 printers_help	Tafuta vichapishi, gusa kimoja ili ukichague, kisha Chapisha ukurasa wa majaribio kwenye kifaa hicho pekee. Vichapishaji vya bili: Umbizo la Bili & Slip → Bili.
-printers_host_only	Printers zimewekwa kwenye kifaa cha duka (Seva). Hii mpaka itume bili na tikiti za zamani huko - Tafuta / ongeza / gawa kukaa kwenye Seva. Ukurasa wa jaribio na saizi ya uchapishaji wa bili nenda kwa Seva.
+printers_host_only	Printers zimewekwa kwenye kifaa cha duka (Seva). Kaunta hii hutuma bili na tiketi za zamani huko — Tafuta / ongeza / gawa hubaki kwenye Seva. Ukurasa wa jaribio na saizi ya uchapishaji wa bili nenda kwa Seva.
 printers_find_heading	Printa
 printers_find_tip	Tafuta huchanganua kifaa hiki na kuweka orodha ikisasishwa. Printa za mfumo kwanza; uchanganuzi wa mtandao unaweza kuendelea chinichini.
 printers_pool_empty	(bado hakuna — ongeza hapa chini)

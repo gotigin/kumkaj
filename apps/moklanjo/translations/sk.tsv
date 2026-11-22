@@ -563,7 +563,7 @@ job_preview	Ukážka
 test_receipt_sent	Vzor potvrdenia bol odoslaný
 test_label_sent	Vzorový štítok bol odoslaný
 test_print_no_printer	Žiadna tlačiareň pre túto úlohu – pridajte jednu pod toto miesto
-printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do tam pošle úlohy — Nájsť/pridať/priradiť pobyt na serveri. Testovacia stránka prejde na server.
+printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do tam pošle úlohy — Nájsť/pridať/priradiť zostáva na serveri. Testovacia stránka prejde na server.
 printers_pool_heading	Tlačiarne
 printers_routes_heading	Kde sa veci tlačia
 printer_label_ph	Názov (napr. Stôl)

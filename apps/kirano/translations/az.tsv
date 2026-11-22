@@ -445,7 +445,7 @@ backup_copy_failed	Ehtiyat nüsxə ora saxlanılmadı — başqa yer seçin
 clock_off	Bu cihazın saatı mağaza serverindən {min} dəq kənardadır — bu cihazda düzgün vaxtı qoyun
 printers_heading	Printerlər
 printers_help	Printerləri tapın, seçmək üçün birinə toxunun, sonra yalnız həmin cihazda sınaq səhifəsini çap edin. Bill printerləri: Bill & Slip formatı → Bill.
-printers_host_only	Printerlər mağaza cihazında (Server) quraşdırılır. Bu, fakturaları və köhnə biletləri oraya göndərənə qədər — Serverdə qalmağı tapın / əlavə edin / təyin edin. Test səhifəsi və faktura çap ölçüsü Serverə keçir.
+printers_host_only	Printerlər mağaza cihazında (Server) quraşdırılır. Bu kassa fakturaları və köhnə çekləri oraya göndərir — tapmaq / əlavə etmək / təyin etmək Serverdə qalır. Test səhifəsi və faktura çap ölçüsü Serverə keçir.
 printers_find_heading	Printerləri tap
 printers_find_tip	Tap bu cihazı skan edir və siyahını yeniləyir.
 printers_pool_empty	(hələ yoxdur — Tap düyməsinə toxunun)

@@ -445,7 +445,7 @@ backup_copy_failed	Kopiju nije bilo moguće spremiti tamo — odaberite drugo mj
 clock_off	Sat ovog uređaja kasni ili žuri {min} min u odnosu na server lokala — postavite točno vrijeme
 printers_heading	Pisači
 printers_help	Pronađite pisače, dodirnite jedan da biste ga odabrali, zatim ispišite probnu stranicu samo na tom uređaju. Pisači računa: Format računa i isječka → Račun.
-printers_host_only	Pisači su postavljeni na uređaju trgovine (Server). Ova blagajna tamo šalje račune i stare karte — Pronađi / dodaj / dodijeli boravak na poslužitelju. Testna stranica i veličina ispisa računa idu na poslužitelj.
+printers_host_only	Pisači su postavljeni na uređaju trgovine (Server). Ova blagajna tamo šalje račune i stare karte — Pronađi / dodaj / dodijeli ostaju na poslužitelju. Testna stranica i veličina ispisa računa idu na poslužitelj.
 printers_find_heading	Pronađi pisače
 printers_find_tip	Pronađi pretražuje ovaj uređaj i drži popis svježim.
 printers_pool_empty	(još nema — dodirnite Pronađi)

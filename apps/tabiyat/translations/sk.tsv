@@ -457,7 +457,7 @@ backup_copy_failed	Záložnú kópiu tam nebolo možné uložiť – vyberte in�
 clock_off	Hodiny tohto zariadenia sú mimo servera obchodu o {min} min — nastavte na tomto zariadení správny čas
 printers_heading	Tlačiarne
 printers_help	Vyhľadajte tlačiarne, ťuknutím na jednu ju vyberte a potom vytlačte skúšobnú stranu iba na tomto zariadení. Tlačiarne účtov: Formát faktúry → Faktúra.
-printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do tam posiela účty a staré lístky — Nájsť/pridať/priradiť pobyt na serveri. Skúšobná strana a veľkosť tlače účtu prejdú na server.
+printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do tam posiela účty a staré lístky — Nájsť/pridať/priradiť zostáva na serveri. Skúšobná strana a veľkosť tlače účtu prejdú na server.
 printers_find_heading	Nájdite tlačiarne
 printers_find_tip	Nájsť prehľadá toto zariadenie a aktualizuje zoznam.
 printers_pool_empty	(zatiaľ žiadne – klepnite na Nájsť)
@@ -803,7 +803,7 @@ content_width_ph	Alebo zadajte šírku obsahu 40–210 mm
 content_width_bill_help	Ako široko sa tlačí zákaznícky účet. Štandardne 210 mm (strana). Šírka 58 mm, šírka 80 mm, 112 mm 4 palce, 210 mm šírka A4. Zadajte ľubovoľnú hodnotu od 40 do 210. Lístky majú svoju vlastnú šírku na karte lístka.
 vp_paper_width	Šírka obsahu (mm)
 vp_paper_width_ph	Alebo zadajte šírku obsahu 40–210 mm
-vp_paper_width_help	Šírka obsahu sa nastavuje vo formáte Bill & Slip — samostatne pre bankovku (predvolená 210 mm) a lístok (predvolená 80 mm).
+vp_paper_width_help	Šírka obsahu sa nastavuje vo formáte Bill & Slip — samostatne pre účet (predvolená 210 mm) a lístok (predvolená 80 mm).
 std_size	Veľkosť písma
 kot_copies	Kópie
 kot_copies_1	1

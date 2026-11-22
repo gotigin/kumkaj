@@ -445,7 +445,7 @@ backup_copy_failed	Nie można tam zapisać kopii zapasowej — wybierz inne miej
 clock_off	Zegar tego urządzenia jest {min} min poza serwerem sklepu — ustaw właściwy czas na tym urządzeniu
 printers_heading	Drukarki
 printers_help	Znajdź drukarki, dotknij jednej, aby ją wybrać, a następnie Wydrukuj stronę testową tylko na tym urządzeniu. Drukarki rachunków: format rachunków i paragonów → Rachunek.
-printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła tam rachunki i stare bilety — Znajdź/dodaj/przypisz pobyt na serwerze. Strona testowa i rozmiar wydruku rachunku trafiają na Serwer.
+printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła tam rachunki i stare bilety — Znajdź/dodaj/przypisz pozostają na serwerze. Strona testowa i rozmiar wydruku rachunku trafiają na Serwer.
 printers_find_heading	Znajdź drukarki
 printers_find_tip	Znajdź skanuje to urządzenie i aktualizuje listę.
 printers_pool_empty	(jeszcze żaden — kliknij Znajdź)
@@ -786,7 +786,7 @@ kot_weight_bold	Odważne
 kot_align_start	Zacznij
 kot_align_center	Centrum
 kot_align_end	Koniec
-content_width_bill	Szerokość zawartości banknotów (mm)
+content_width_bill	Szerokość treści rachunku (mm)
 content_width_ph	Możesz też wpisać szerokość treści 40–210 mm
 content_width_bill_help	Szerokość wydruku rachunku klienta. Domyślnie 210 mm (strona). Wąska kartka 58 mm, szerokość 80 mm, 112 mm 4 cale, szerokość A4 210 mm. Wpisz dowolną wartość od 40 do 210. Bilety mają własną szerokość na zakładce kuponu.
 vp_paper_width	Szerokość zawartości (mm)

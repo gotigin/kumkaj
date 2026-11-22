@@ -951,7 +951,7 @@ stamp_heading	Bélyegző
 stamp_image_help	Opcionális bélyegkép a nyomtatott számlákon és a vendégkijelzőn.
 payment_qr_heading	Fizetési QR
 payment_qr_image_help	Statikus QR a számlákon és a vendégkijelzőn; egyébként a fizetés dinamikus UPI QR-t használ a fenti VPA-ből.
-cash_in_hand	Készpénzben (ig)
+cash_in_hand	Készpénz kézben (kassza)
 change_my_pin_heading	A bejelentkezésem
 connect_to_server	Csatlakozzon a szerverhez
 counter_locked	Számláló 01 · Lezárva
@@ -1042,7 +1042,7 @@ pin_hint_choose	Válasszon 4–12 számjegyet. · Enter vagy Unlock a mentéshez
 pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
 pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
 pin_hint_books	Ez a készülék a könyveket tárolja
-pin_hint_paired	Extra ig párosítva – oldja fel az eladáshoz
+pin_hint_paired	Extra kassza párosítva – oldja fel az eladáshoz
 pin_hint_pair_first	Extra kassza — először párosítsa a bolti eszközt
 unlock_to_continue	A folytatáshoz oldja fel a zárolást
 no_staff_yet	Még nincs személyzet – oldja fel tulajdonosként, majd csapatként

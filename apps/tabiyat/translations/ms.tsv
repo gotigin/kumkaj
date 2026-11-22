@@ -267,7 +267,7 @@ bank	Bank
 bank_in	Bank masuk
 bank_out	Tunai keluar dari bank
 bank_reconciliation	Penyesuaian bank
-bank_to_till	Bank → sehingga
+bank_to_till	Bank → kaunter
 book_add_dish	Buku — tambah item
 book_opening_credit	Lejar — kredit pembukaan
 branch_name_sell_ph	Nama cawangan untuk dijual
@@ -426,7 +426,7 @@ last_seen	dilihat
 copy_pair_code	Salin kod berpasangan
 new_pair_code	Kod gandingan baharu
 pair_finishing	Pasangan penamat… menggunakan lejar kedai
-pair_opening	Membuka sehingga…
+pair_opening	Membuka kaunter…
 lan_offline_waiting	Pelayan kedai tidak dapat dihubungi · {n} menunggu
 lan_connecting	Menyambung ke kedai…
 lan_live	Langsung
@@ -457,7 +457,7 @@ backup_copy_failed	Salinan sandaran tidak dapat disimpan di sana — pilih tempa
 clock_off	Jam peranti ini berada {min} min dari pelayan kedai — tetapkan masa yang sesuai pada peranti ini
 printers_heading	Pencetak
 printers_help	Cari pencetak, ketik satu untuk memilihnya, kemudian Cetak halaman ujian pada peranti itu sahaja. Pencetak bil: Format Bil & Slip → Bil.
-printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Ini sehingga menghantar bil dan tiket lama ke sana — Cari / tambah / tetapkan penginapan di Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
+printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Kaunter ini menghantar bil dan tiket lama ke sana — Cari / tambah / tetapkan kekal di Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
 printers_find_heading	Cari pencetak
 printers_find_tip	Cari imbasan peranti ini dan pastikan senarai terkini.
 printers_pool_empty	(belum ada — ketik Cari)
@@ -539,7 +539,7 @@ take_payment	Ambil bayaran
 tax_added_till	{tax} eksklusif
 tax_inside_price	{tax} termasuk
 tax_invoice	Invois cukai
-till_to_bank	Sehingga → bank
+till_to_bank	Kaunter → bank
 units_heading	Unit
 unlock_after_pairing	Masukkan PIN
 unlock_with_login	Buka kunci dengan log masuk
@@ -547,7 +547,7 @@ unmark	Nyahtanda
 update_my_password	Kemas kini kata laluan saya
 update_my_pin	Kemas kini log masuk saya
 duress_heading	Buka kunci kecemasan PIN (Pemilik sahaja)
-duress_help	Pilihan. Jika PIN ini ditaip pada buka kunci dan bukannya milik anda, semua entri buku dipadam (jualan, lejar, sejarah) dan sehingga dibuka sebagai Pemilik kelihatan biasa — ubat, harga, kaunter, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadamkan. Gunakan hanya jika anda terpaksa membuka kunci. Biarkan kosong dan simpan untuk mematikan. Tidak pernah sama dengan PIN sesiapa sahaja.
+duress_help	Pilihan. Jika PIN ini ditaip pada buka kunci dan bukannya milik anda, semua entri buku dipadam (jualan, lejar, sejarah) dan kaunter dibuka sebagai Pemilik kelihatan biasa — ubat, harga, kaunter, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadamkan. Gunakan hanya jika anda terpaksa membuka kunci. Biarkan kosong dan simpan untuk mematikan. Tidak pernah sama dengan PIN sesiapa sahaja.
 duress_pin_ph	Kecemasan PIN (4–12 digit)
 duress_confirm_ph	Taip sekali lagi untuk mengesahkan
 save_duress_pin	Simpan kecemasan PIN
@@ -579,7 +579,7 @@ stamp_heading	setem
 stamp_image_help	Imej setem pilihan pada bil bercetak dan paparan pelanggan.
 payment_qr_heading	QR pembayaran
 payment_qr_image_help	QR statik pada bil dan paparan pelanggan; sebaliknya membayar menggunakan UPI QR dinamik daripada VPA di atas.
-cash_in_hand	Wang tunai di tangan (sehingga)
+cash_in_hand	Wang tunai di tangan (kaunter)
 change_my_pin_heading	Log masuk saya
 connect_to_server	Sambung ke Pelayan
 counter_locked	Kaunter 01 · Dikunci
@@ -672,8 +672,8 @@ pin_hint_choose	Pilih 4–12 digit · Masukkan atau Buka Kunci untuk menyimpan
 pin_hint_new	Pemilik 4–12 digit baharu PIN · Masukkan atau Buka Kunci
 pin_hint_shop_code	Beli peranti · kod berpasangan {}
 pin_hint_books	Peranti ini memegang lejar
-pin_hint_paired	Tambahan sehingga berpasangan — buka kunci untuk menjual
-pin_hint_pair_first	Tambahan sehingga — pasangkan ke peranti kedai dahulu
+pin_hint_paired	Kaunter tambahan berpasangan — buka kunci untuk menjual
+pin_hint_pair_first	Kaunter tambahan — pasangkan ke peranti kedai dahulu
 unlock_to_continue	Buka kunci untuk meneruskan
 no_staff_yet	Belum ada kakitangan — buka kunci sebagai Pemilik, kemudian Pasukan
 icon_new_selected	Ikon: fail baharu dipilih — ketik Simpan jenama

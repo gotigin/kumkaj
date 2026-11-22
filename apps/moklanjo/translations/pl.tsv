@@ -563,7 +563,7 @@ job_preview	Podgląd
 test_receipt_sent	Wysłano próbny paragon
 test_label_sent	Wysłano próbną etykietę
 test_print_no_printer	Brak drukarki dla tego zadania — dodaj ją w tym miejscu
-printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła tam zadania — Znajdź/dodaj/przypisz pobyt na serwerze. Strona testowa trafia na serwer.
+printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła tam zadania — Znajdź/dodaj/przypisz pozostają na serwerze. Strona testowa trafia na serwer.
 printers_pool_heading	Drukarki
 printers_routes_heading	Gdzie wszystko się drukuje
 printer_label_ph	Imię (np. Biurko)

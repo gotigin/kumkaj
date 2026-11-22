@@ -697,7 +697,7 @@ backup_copy_failed	Säkerhetskopieringen kunde inte sparas där – välj en ann
 clock_off	Den här enhetens klocka är {min} min utanför butikens server – ställ in rätt tid på den här enheten
 printers_heading	Skrivare
 printers_help	Hitta skrivare, tryck på en för att välja den och skriv sedan ut en testsida endast på den enheten. Notaskrivare: Nota- och KOT-format → Nota. Köksskrivare: Kök → Köksstationer (lägg till en station först — Hitta skapar inte stationer).
-printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och KOT dit — Hitta / lägg till / tilldela vistelse på servern. Testsida och fakturautskriftsstorlek går till servern.
+printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och KOT dit — Hitta / lägg till / tilldela stannar på servern. Testsida och fakturautskriftsstorlek går till servern.
 printers_find_heading	Hitta skrivare
 printers_find_tip	Hitta skannar den här enheten och håller listan uppdaterad.
 printers_pool_heading	Skrivare

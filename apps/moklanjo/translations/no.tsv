@@ -563,7 +563,7 @@ job_preview	Forhåndsvisning
 test_receipt_sent	Eksempel på kvittering sendt
 test_label_sent	Eksempeletikett sendt
 test_print_no_printer	Ingen skriver for den jobben – legg til en under dette stedet
-printers_host_only	Skrivere stilles inn på butikkenheten (server). Denne kassa sender jobber dit — Finn / legg til / tilordne opphold på serveren. Testsiden går til serveren.
+printers_host_only	Skrivere stilles inn på butikkenheten (server). Denne kassa sender jobber dit — Finn / legg til / tilordne blir på serveren. Testsiden går til serveren.
 printers_pool_heading	Skrivere
 printers_routes_heading	Hvor ting skrives ut
 printer_label_ph	Navn (f.eks. skrivebord)

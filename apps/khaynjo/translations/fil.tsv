@@ -509,17 +509,17 @@ card_terminal_optional	Terminal ng card / link ng pagbabayad (opsyonal kapag ava
 copy_report	Kopyahin ang ulat
 counted_cash_ph	Nagbilang ng cash sa drawer
 country_tax	Bansa at buwis
-tax_chrome	Mga label ng buwis sa hanggang
+tax_chrome	Mga label ng buwis sa kaha
 tax_chrome_help	Kapag naka-off, itinatago ng order desk ang mga linya ng tantya ng GST/buwis at ang mga placeholder ng GST-sa-presyo. Nananatili ang mga rate ng buwis at ang mga setting ng Bansa at buwis — i-on muli ang mga label anumang oras. Ang ilang template ng tindahan ay nagsisimula na naka-off ito.
 tax_chrome_on	Ipakita
 tax_chrome_off	Magtago
-tax_chrome_saved_on	Mga label ng buwis sa hanggang
-tax_chrome_saved_off	Nakatago ang mga label ng buwis sa hanggang
-tax_invoice_till	Tax invoice sa hanggang
+tax_chrome_saved_on	Mga label ng buwis sa kaha
+tax_chrome_saved_off	Nakatago ang mga label ng buwis sa kaha
+tax_invoice_till	Tax invoice sa kaha
 tax_invoice_help	Kapag naka-off, cash memo lang ang mga bill at nakatago ang mga button na Tax invoice / Cash memo sa order desk. Ang ilang template ng tindahan ay nagsisimula na naka-off ito — i-on ang Ipakita anumang oras para piliin muli ang Tax invoice.
 tax_invoice_on	Ipakita
 tax_invoice_off	Magtago
-tax_invoice_saved_on	Tax invoice sa hanggang
+tax_invoice_saved_on	Tax invoice sa kaha
 tax_invoice_saved_off	Nakatago ang invoice ng buwis — Cash memo lang
 pay_methods	Mga paraan ng pagbabayad
 pay_methods_help	Aling mga button ang lalabas sa Tumanggap ng bayad. Laging nananatili ang Cash. Ang ilang template ng tindahan ay nagsisimula sa Cash lang — i-on muli rito ang UPI / Card / Utang / Hatiin.
@@ -662,7 +662,7 @@ last_seen	nakita
 copy_pair_code	Kopyahin ang code ng pagpapares
 new_pair_code	Bagong code ng pagpapares
 pair_finishing	Tinatapos ang pares... inilalapat ang mga ledger ng shop
-pair_opening	Binubuksan ang hanggang…
+pair_opening	Binubuksan ang kaha…
 pair_copied	Nakopya ang code ng pagpapares
 kot_waiting	Naghihintay na ipadala
 lan_offline_waiting	Hindi maabot ang server ng tindahan · {n} naghihintay
@@ -697,7 +697,7 @@ backup_copy_failed	Hindi ma-save doon ang backup na kopya — pumili ng ibang lu
 clock_off	Ang orasan ng device na ito ay {min} min sa server ng shop — itakda ang tamang oras sa device na ito
 printers_heading	Mga Printer
 printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng pahina ng pagsubok sa device na iyon lang. Mga bill printer: Bill at KOT format → Bill. Mga printer sa kusina: Kusina → Mga istasyon ng kusina (magdagdag muna ng istasyon — Hindi gumagawa ng mga istasyon ang “Maghanap ng mga printer”).
-printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ito hanggang nagpapadala ng mga singil at KOT doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
+printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ang kahang ito ay nagpapadala ng mga bill at KOT doon — nananatili sa Server ang Maghanap / magdagdag / magtalaga. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
 printers_find_heading	Maghanap ng mga printer
 printers_find_tip	Ini-scan ng Maghanap ang device na ito at pinapanatiling napapanahon ang listahan.
 printers_pool_heading	Mga Printer
@@ -951,7 +951,7 @@ stamp_heading	selyo
 stamp_image_help	Opsyonal na larawan ng selyo sa mga naka-print na bill at ang display ng bisita.
 payment_qr_heading	QR ng pagbabayad
 payment_qr_image_help	Static QR sa mga bill at display ng bisita; kung hindi, ang pagbabayad ay gumagamit ng dynamic na UPI QR mula sa VPA sa itaas.
-cash_in_hand	Cash sa kamay (hanggang)
+cash_in_hand	Cash sa kamay (kaha)
 change_my_pin_heading	Ang aking pag-sign-in
 connect_to_server	Kumonekta sa Server
 counter_locked	Counter 01 · Naka-lock
@@ -1042,7 +1042,7 @@ pin_hint_choose	Pumili ng 4–12 digit · Ipasok o I-unlock para i-save
 pin_hint_new	Bagong 4–12 digit na May-ari PIN · Enter o I-unlock
 pin_hint_shop_code	Mamili ng device · code ng pagpapares {}
 pin_hint_books	Hawak ng device na ito ang mga ledger
-pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
+pin_hint_paired	Dagdag na kaha, naka-pair — i-unlock para magbenta
 pin_hint_pair_first	Dagdag na kahera — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team

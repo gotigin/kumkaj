@@ -445,7 +445,7 @@ backup_copy_failed	A copia de seguridade non se puido gardar aí — escolla out
 clock_off	O reloxo deste dispositivo vai {min} min desviado do servidor da tenda — poña a hora correcta neste dispositivo
 printers_heading	Impresoras
 printers_help	Busca impresoras, toca unha para seleccionala e, a continuación, imprime unha páxina de proba só nese dispositivo. Impresoras de facturas: formato Bill & Slip → Bill.
-printers_host_only	As impresoras están configuradas no dispositivo da tenda (Servidor). Este ata que envía facturas e billetes antigos alí — Buscar/engadir/asignar estancia no servidor. A páxina de proba e o tamaño de impresión da factura van ao servidor.
+printers_host_only	As impresoras están configuradas no dispositivo da tenda (Servidor). Esta caixa envía alí as facturas e os tiques antigos — Buscar / engadir / asignar quedan no servidor. A páxina de proba e o tamaño de impresión da factura van ao servidor.
 printers_find_heading	Atopar impresoras
 printers_find_tip	Atopar analiza este dispositivo e mantén a lista ao día.
 printers_pool_empty	(aínda ningunha — prema Atopar)

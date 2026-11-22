@@ -445,7 +445,7 @@ backup_copy_failed	Säkerhetskopieringen kunde inte sparas där – välj en ann
 clock_off	Den här enhetens klocka är {min} min utanför butikens server – ställ in rätt tid på den här enheten
 printers_heading	Skrivare
 printers_help	Hitta skrivare, tryck på en för att välja den och skriv sedan ut en testsida endast på den enheten. Billskrivare: Bill & Slip-format → Bill.
-printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och gamla biljetter dit — Hitta/lägg till/tilldela vistelse på servern. Testsida och fakturautskriftsstorlek går till servern.
+printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och gamla biljetter dit — Hitta/lägg till/tilldela stannar på servern. Testsida och fakturautskriftsstorlek går till servern.
 printers_find_heading	Hitta skrivare
 printers_find_tip	Find skannar den här enheten och håller listan uppdaterad.
 printers_pool_empty	(ingen ännu - tryck på Hitta)
@@ -791,7 +791,7 @@ content_width_ph	Eller skriv en innehållsbredd, 40–210 mm
 content_width_bill_help	Hur bred kundräkningen skrivs ut. Standard 210 mm (sida). 58 mm smal slip, 80 mm bred slip, 112 mm 4 tum, 210 mm A4 bred. Ange valfritt värde från 40 till 210. Biljetterna har sin egen bredd på lappfliken.
 vp_paper_width	Innehållsbredd (mm)
 vp_paper_width_ph	Eller skriv en innehållsbredd, 40–210 mm
-vp_paper_width_help	Innehållsbredd ställs in under Bill & Slip-format — separat för sedeln (standard 210 mm) och biljetten (standard 80 mm).
+vp_paper_width_help	Innehållsbredd ställs in under Bill & Slip-format — separat för notan (standard 210 mm) och biljetten (standard 80 mm).
 std_size	Teckenstorlek
 kot_copies	Kopior
 kot_copies_1	1

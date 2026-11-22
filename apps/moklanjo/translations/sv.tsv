@@ -363,7 +363,7 @@ dispatch_to_rider	Utskick bokad → ryttare
 docket_charge_ph	Docket avgift
 declared_value_ph	Deklarerat värde
 contents_ph	Innehåll
-eway_ph	E-vägsedel nr.
+eway_ph	E-way bill nr.
 insurance_label	Försäkring
 yes_label	Ja
 no_label	Inga
@@ -563,7 +563,7 @@ job_preview	Förhandsgranska
 test_receipt_sent	Provkvitto skickat
 test_label_sent	Exempeletikett har skickats
 test_print_no_printer	Ingen skrivare för det jobbet – lägg till en under den här platsen
-printers_host_only	Skrivare ställs in på butiksenheten (server). Denna till skickar jobb dit — Hitta/lägg till/tilldela vistelse på servern. Testsidan går till servern.
+printers_host_only	Skrivare ställs in på butiksenheten (server). Denna till skickar jobb dit — Hitta/lägg till/tilldela stannar på servern. Testsidan går till servern.
 printers_pool_heading	Skrivare
 printers_routes_heading	Där saker trycks
 printer_label_ph	Namn (t.ex. skrivbord)

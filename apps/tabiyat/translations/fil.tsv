@@ -267,7 +267,7 @@ bank	Bangko
 bank_in	Pasok sa bangko
 bank_out	Cash out sa bangko
 bank_reconciliation	Pagtutugma sa bangko
-bank_to_till	Bangko → hanggang
+bank_to_till	Bangko → kaha
 book_add_dish	Aklat — magdagdag ng aytem
 book_opening_credit	Ledger — pagbubukas ng kredito
 branch_name_sell_ph	Pangalan ng branch kung saan ibebenta
@@ -426,7 +426,7 @@ last_seen	nakita
 copy_pair_code	Kopyahin ang code ng pagpapares
 new_pair_code	Bagong code ng pagpapares
 pair_finishing	Tinatapos ang pares... inilalapat ang mga ledger ng shop
-pair_opening	Binubuksan ang hanggang…
+pair_opening	Binubuksan ang kaha…
 lan_offline_waiting	Hindi maabot ang server ng tindahan · {n} naghihintay
 lan_connecting	Kumokonekta sa shop…
 lan_live	Mabuhay
@@ -539,7 +539,7 @@ take_payment	Kunin ang bayad
 tax_added_till	{tax} eksklusibo
 tax_inside_price	{tax} kasama
 tax_invoice	Invoice ng buwis
-till_to_bank	Hanggang → bangko
+till_to_bank	Kaha → bangko
 units_heading	Mga yunit
 unlock_after_pairing	Ilagay ang PIN
 unlock_with_login	I-unlock gamit ang pag-login
@@ -579,7 +579,7 @@ stamp_heading	selyo
 stamp_image_help	Opsyonal na stamp na imahe sa mga naka-print na bill at ang display ng customer.
 payment_qr_heading	QR ng pagbabayad
 payment_qr_image_help	Static QR sa mga bill at display ng customer; kung hindi, ang pagbabayad ay gumagamit ng isang dynamic na UPI QR mula sa VPA sa itaas.
-cash_in_hand	Cash sa kamay (hanggang)
+cash_in_hand	Cash sa kamay (kaha)
 change_my_pin_heading	Ang aking pag-sign-in
 connect_to_server	Kumonekta sa Server
 counter_locked	Counter 01 · Naka-lock
@@ -672,7 +672,7 @@ pin_hint_choose	Pumili ng 4–12 digit · Ipasok o I-unlock para i-save
 pin_hint_new	Bagong 4–12 digit na May-ari PIN · Enter o I-unlock
 pin_hint_shop_code	Mamili ng device · code ng pagpapares {}
 pin_hint_books	Hawak ng device na ito ang mga ledger
-pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
+pin_hint_paired	Dagdag na kaha, naka-pair — i-unlock para magbenta
 pin_hint_pair_first	Extra till — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team

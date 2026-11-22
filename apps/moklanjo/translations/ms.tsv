@@ -283,8 +283,8 @@ attach_photo	Lampirkan foto
 bank	Bank
 bank_in	Bank masuk
 bank_out	Tunai keluar dari bank
-bank_to_till	Bank → sehingga
-till_to_bank	Sehingga → bank
+bank_to_till	Bank → kaunter
+till_to_bank	Kaunter → bank
 mark_cleared	Mark dibersihkan
 unmark	Nyahtanda
 role_both	Kedua-duanya
@@ -563,7 +563,7 @@ job_preview	Pratonton
 test_receipt_sent	Contoh resit dihantar
 test_label_sent	Label sampel dihantar
 test_print_no_printer	Tiada pencetak untuk kerja itu — tambahkan pencetak di bawah tempat ini
-printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Ini sehingga menghantar pekerjaan di sana — Cari / tambah / tetapkan penginapan pada Pelayan. Halaman ujian pergi ke Pelayan.
+printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Kaunter ini menghantar kerja cetak ke sana — Cari / tambah / tetapkan kekal di Pelayan. Halaman ujian pergi ke Pelayan.
 printers_pool_heading	Pencetak
 printers_routes_heading	Di mana perkara dicetak
 printer_label_ph	Nama (cth. Meja)
@@ -694,7 +694,7 @@ app_icon	Ikon apl
 logo_help	Tanda kedai pilihan pada skrin dalam apl.
 onboard_layout	Apa yang anda dapat
 item_photo_help	Pilihan. Tanpa foto kami menunjukkan huruf awal dari nama item.
-cash_in_hand	Wang tunai di tangan (sehingga)
+cash_in_hand	Wang tunai di tangan (kaunter)
 change_my_pin_heading	Tukar PIN saya (hanya milik anda)
 connect_to_server	Sambung ke Pelayan
 counter_locked	Kaunter 01 · Dikunci
@@ -778,8 +778,8 @@ pin_hint_choose	Pilih 4–12 digit · Masukkan atau Buka Kunci untuk menyimpan
 pin_hint_new	Pemilik 4–12 digit baharu PIN · Masukkan atau Buka Kunci
 pin_hint_shop_code	Beli peranti · kod berpasangan {}
 pin_hint_books	Peranti ini memegang lejar
-pin_hint_paired	Tambahan sehingga berpasangan — buka kunci untuk menjual
-pin_hint_pair_first	Tambahan sehingga — pasangkan ke peranti kedai dahulu
+pin_hint_paired	Kaunter tambahan berpasangan — buka kunci untuk menjual
+pin_hint_pair_first	Kaunter tambahan — pasangkan ke peranti kedai dahulu
 unlock_to_continue	Buka kunci untuk meneruskan
 no_staff_yet	Belum ada kakitangan — buka kunci sebagai Pemilik, kemudian Pasukan
 icon_new_selected	Ikon: fail baharu dipilih — ketik Simpan jenama
