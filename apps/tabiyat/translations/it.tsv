@@ -660,8 +660,8 @@ they_owe_us	Ci devono
 unit_at_cap	Prezzo unit.
 units_help	Codici per etichette articoli (kg, piece, bag). Ogni unità deve collegarsi — direttamente o tramite altre unità — a uno standard (kg · cm · ml · pc), es. 1 crate = 2 box e 1 box = 20 cm. Conversioni: 1 from = factor to. Le valute non sono mai unità.
 units_picker_help	Tocca Sì/No per mostrare un'unità nei selettori Acquisti e Articoli. Le unità spente convertono ancora.
-unit_picker_on	Sì
-unit_picker_off	No
+unit_picker_on	Acceso
+unit_picker_off	Spento
 we_owe_them	Dobbiamo loro
 who_unlocking	Chi sta sbloccando?
 locked_word	Bloccato

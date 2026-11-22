@@ -558,9 +558,9 @@ duress_saved	Đã lưu PIN mở khóa khẩn
 duress_cleared	Đã tắt PIN mở khóa khẩn
 upi_amount_ph	Số tiền UPI
 void	Hủy bỏ
-write_off_ap	Xóa AP
+write_off_ap	Xóa nợ AP
 write_off_heading	Xóa nợ (tất toán không trả tiền)
-write_off_nil	Xóa / số dư 0
+write_off_nil	Xóa nợ / số dư 0
 your_brand	Thương hiệu của bạn (trong app)
 your_categories	Danh mục của bạn
 account_kind	Loại tài khoản (chạm một)

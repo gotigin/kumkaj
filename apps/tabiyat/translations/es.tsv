@@ -660,8 +660,8 @@ they_owe_us	Nos deben
 unit_at_cap	Precio unit.
 units_help	Códigos para etiquetas de artículos (kg, piece, bag). Cada unidad debe enlazar — directamente o a través de otras unidades — con un estándar (kg · cm · ml · pc), ej. 1 crate = 2 box y 1 box = 20 cm. Conversiones: 1 from = factor to. Las monedas nunca son unidades.
 units_picker_help	Pulsa Sí/No para mostrar una unidad en los selectores de Compras y Artículos. Las unidades apagadas siguen convirtiendo.
-unit_picker_on	Sí
-unit_picker_off	No
+unit_picker_on	Encendido
+unit_picker_off	Apagado
 we_owe_them	Les debemos
 who_unlocking	¿Quién está desbloqueando?
 locked_word	Bloqueado
