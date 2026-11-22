@@ -232,7 +232,7 @@ new_server_name_ph	Ainm freastalaí nua (roghnach)
 server_remove_pin_ph	PIN úinéara chun freastalaí a bhaint
 only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhaint
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
-device_setup_help	Is féidir leis an ngléas seo a bheith ina siopa (Freastalaí) nó till breise (Cliant). Ní scriosann oscailt ceann amháin an ceann eile. Cuimhníonn Cliant péireáilte ar an siopa — gan cód péireála ar gach atosú. Gan Freastalaí fós, osclaíonn «Athbhunú cúltaca» na leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú sna Socruithe).
+device_setup_help	Is féidir leis an ngléas seo a bheith ina siopa (Freastalaí) nó caiséad breise (Cliant). Ní scriosann oscailt ceann amháin an ceann eile. Cuimhníonn Cliant péireáilte ar an siopa — gan cód péireála ar gach atosú. Gan Freastalaí fós, osclaíonn «Athbhunú cúltaca» na leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú sna Socruithe).
 currency	Airgeadra
 backup	Cúltaca
 use	Bain úsáid as
@@ -331,9 +331,9 @@ drawer_count	Comhaireamh tarraiceán (roghnach)
 expense_heading	Costas
 export_day	Lá easpórtála
 extra_note_bill_ph	Nóta breise faoin mbille / díolachán seo
-extra_tills_heading	Scipéid bhreise
+extra_tills_heading	Tilleacha breise
 other_devices_help_heading	Socraigh gléasanna eile
-other_devices_help	Ar an ngléas seo (Freastalaí): Gléasanna eile → Ceadaigh slad breise. Tabhair faoi deara an cód péireála agus an seoladh Wi-Fi. Tap Ceadaigh gléasanna eile chun nascadh má dhealraíonn sé. Ar ríomhaire, tapáil Tosaigh leis an ríomhaire seo. Ar gach feiste eile: shuiteáil an app, roghnaigh Mód Cliant, Faigh freastalaí an tsiopa (nó clóscríobh an seoladh), cuir isteach an cód péireála, Péireáil anois. Fanann orduithe ar an ngléas má thiteann Wi-Fi agus má théann sé nuair a fhreagraíonn an Freastalaí arís. Socraítear clódóirí breise ar an bhFreastalaí (Socruithe → Printéirí) - seolann tilleanna breise billí ansin.
+other_devices_help	Ar an ngléas seo (Freastalaí): Gléasanna eile → Ceadaigh tilleacha breise. Tabhair faoi deara an cód péireála agus an seoladh Wi-Fi. Tapáil Ceadaigh gléasanna eile chun nascadh má dhealraíonn sé. Ar ríomhaire, tapáil Tosaigh leis an ríomhaire seo. Ar gach feiste eile: shuiteáil an app, roghnaigh Mód Cliant, Faigh freastalaí an tsiopa (nó clóscríobh an seoladh), cuir isteach an cód péireála, Péireáil anois. Fanann orduithe ar an ngléas má thiteann Wi-Fi agus má théann sé nuair a fhreagraíonn an Freastalaí arís. Socraítear clódóirí breise ar an bhFreastalaí (Socruithe → Printéirí) - seolann tilleanna breise billí ansin.
 forget_shop	Déan dearmad ar an siopa seo
 goods_received	Earraí faighte
 import_day	Lá allmhairithe
@@ -579,7 +579,7 @@ stamp_heading	Stampa
 stamp_image_help	Íomhá stampa roghnach ar bhillí clóite agus taispeáint an chustaiméara.
 payment_qr_heading	Íocaíocht QR
 payment_qr_image_help	QR statach ar bhillí agus taispeáint custaiméirí; ar shlí eile úsáideann íoc UPI QR dinimiciúil ón VPA thuas.
-cash_in_hand	Airgead ar láimh (till)
+cash_in_hand	Airgead ar láimh (caiséad)
 change_my_pin_heading	Mo logáil isteach
 connect_to_server	Ceangail leis an "Server"
 counter_locked	Cuntar 01 · Dúnta

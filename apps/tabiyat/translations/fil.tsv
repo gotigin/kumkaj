@@ -457,7 +457,7 @@ backup_copy_failed	Hindi ma-save doon ang backup na kopya — pumili ng ibang lu
 clock_off	Ang orasan ng device na ito ay {min} min sa server ng shop — itakda ang tamang oras sa device na ito
 printers_heading	Mga Printer
 printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng test page sa device na iyon lang. Mga bill printer: Bill at Slip format → Bill.
-printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). This till nagpapadala ng mga bill at lumang ticket doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
+printers_host_only	Ang mga printer ay nakatakda sa aparatong tindahan (Server). Ang kaha na ito ay nagpapadala ng mga bill at lumang ticket doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
 printers_find_heading	Maghanap ng mga printer
 printers_find_tip	Ini-scan ng Find ang device na ito at pinapanatiling napapanahon ang listahan.
 printers_pool_empty	(wala pa — i-tap ang Hanapin)
