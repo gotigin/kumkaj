@@ -445,7 +445,7 @@ choose_logo	Vyberte logo
 clear_icon	Vymazat ikonu
 clear_photo	Jasná fotka
 copy_day_book_csv	Kopírovat denní knihu CSV
-copy_day_close	Kopírovat den zavřít
+copy_day_close	Kopírovat uzávěrku dne
 copy_items_csv	Kopírovat položky CSV
 copy_outstanding_csv	Zbývající kopie CSV
 copy_parties_csv	Kopírovat zákazníky a dodavatele CSV
@@ -587,7 +587,7 @@ prev_country	Předchozí země
 print_open	Vytisknout / otevřít
 reason_amend_ph	Důvod změny / neplatné / vrácení peněz
 reason_note_ph	Důvod / poznámka (plýtvání, počet, …)
-record_day_close	Uzavření rekordního dne
+record_day_close	Zaznamenat uzávěrku dne
 business_day	Kdy začíná «dnes» znovu?
 business_day_help	Při volbě «Do uzávěrky dne» pokračuje «Denní kniha» i po půlnoci, dokud nezaznamenáte uzávěrku dne. Při volbě «Kalendářní půlnoc» den končí v 00:00 místního času.
 biz_day_until_close	Do uzávěrky dne
@@ -611,7 +611,7 @@ role_manager	manažer
 history_retention	Historie obchodování
 history_retention_help	Automaticky vymazat staré prodeje a KOTs. Menu, personál a nastavení zůstávají. Clear nyní vymaže všechny obchodní řádky a zachová nastavení.
 history_off	Nechat
-history_day_close	V den zavřít
+history_day_close	Při uzávěrce dne
 history_after_hours	Po hodinách
 history_hours_ph	Hodiny (1–168, výchozí 4)
 history_hours_save	Ušetřete hodiny

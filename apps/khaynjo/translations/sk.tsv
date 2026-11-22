@@ -587,7 +587,7 @@ prev_country	Predchádzajúca krajina
 print_open	Vytlačiť / otvoriť
 reason_amend_ph	Dôvod zmeny/neplatnosti/vrátenia peňazí
 reason_note_ph	Dôvod / poznámka (plytvanie, počet, ...)
-record_day_close	Koniec rekordného dňa
+record_day_close	Zaznamenať uzávierku dňa
 business_day	Kedy sa «Dnes» začína odznova?
 business_day_help	Pri voľbe «Do uzávierky dňa» pokračuje «Denná kniha» aj po polnoci, kým nezaznamenáte uzávierku dňa. Pri voľbe «Kalendárna polnoc» sa deň ukončí o 00:00 miestneho času.
 biz_day_until_close	Do uzávierky dňa

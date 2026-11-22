@@ -587,7 +587,7 @@ prev_country	Előző ország
 print_open	Nyomtatás / megnyitás
 reason_amend_ph	A módosítás / érvénytelenség / visszatérítés oka
 reason_note_ph	Ok / megjegyzés (pazarlás, szám, …)
-record_day_close	Lezárult a rekordnap
+record_day_close	Napi zárás rögzítése
 business_day	Mikor indul újra: «Ma»?
 business_day_help	Ezzel a beállítással: «Napi zárásig» a nap éjfél után is fut itt: «Napi könyv», amíg nem rögzíti a napi zárást. Ezzel a beállítással: «Naptári éjfél» a nap helyi idő szerint 00:00-kor ér véget.
 biz_day_until_close	Napi zárásig

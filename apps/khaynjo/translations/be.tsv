@@ -611,7 +611,7 @@ role_manager	Менеджэр
 history_retention	Гандлёвая гісторыя
 history_retention_help	Аўтаматычна ачысціць старыя распродажы і KOTs. Меню, персанал і налады застаюцца. Цяпер Clear выдаляе ўсе гандлёвыя радкі і захоўвае налады.
 history_off	Трымайце
-history_day_close	На дзень блізка
+history_day_close	Пры закрыцці дня
 history_after_hours	У непрацоўны час
 history_hours_ph	Гадзіны (1–168, па змаўчанні 4)
 history_hours_save	Эканомце гадзіны

@@ -525,7 +525,7 @@ pay_methods	Mga paraan ng pagbabayad
 pay_methods_help	Aling mga button ang lalabas sa Tumanggap ng bayad. Laging nananatili ang Cash. Ang ilang template ng tindahan ay nagsisimula sa Cash lang — i-on muli rito ang UPI / Card / Utang / Hatiin.
 create_backup	Gumawa ng backup
 credit_limit_heading	Limitasyon sa kredito (piling customer o supplier)
-day_close_summary	Buod ng malapit na araw
+day_close_summary	Buod ng pagsasara ng araw
 delete_party	Tanggalin ang napiling customer o supplier
 delivery	Paghahatid
 done_open_books	Tapos na — buksan ang mga ledger
@@ -587,7 +587,7 @@ prev_country	Nakaraang bansa
 print_open	I-print / buksan
 reason_amend_ph	Dahilan para baguhin / walang bisa / refund
 reason_note_ph	Dahilan / tala (pag-aaksaya, bilang,…)
-record_day_close	I-save ang araw malapit
+record_day_close	I-record ang pagsasara ng araw
 business_day	Kailan nagsisimulang muli ang «Ngayong araw»?
 business_day_help	Sa «Hanggang pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi hanggang i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 00:00 lokal na oras.
 biz_day_until_close	Hanggang pagsasara ng araw
@@ -611,7 +611,7 @@ role_manager	Tagapamahala
 history_retention	Kasaysayan ng kalakalan
 history_retention_help	Auto-clear ang mga lumang benta at KOTs. Nananatili ang menu, staff, at mga setting. I-clear na ngayon ang lahat ng mga trading row at pinapanatili ang pag-setup.
 history_off	Panatilihin
-history_day_close	Sa malapit na araw
+history_day_close	Sa pagsasara ng araw
 history_after_hours	Pagkatapos ng mga oras
 history_hours_ph	Oras (1–168, default 4)
 history_hours_save	Makatipid ng mga oras

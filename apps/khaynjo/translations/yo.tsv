@@ -445,7 +445,7 @@ choose_logo	Yan logo
 clear_icon	Ko aami
 clear_photo	Ko aworan kuro
 copy_day_book_csv	Daakọ iwe akọọlẹ ọjọ CSV
-copy_day_close	Daakọ ọjọ sunmọ
+copy_day_close	Daakọ ìparí ọjọ́
 copy_items_csv	Daakọ awọn ohun akojọ aṣayan CSV
 copy_outstanding_csv	Daakọ ti o tayọ CSV
 copy_parties_csv	Daakọ awọn onibara ati awọn olupese CSV
@@ -525,7 +525,7 @@ pay_methods	Awọn ọna isanwo
 pay_methods_help	Àwọn bọ́tìnnì wo ló ń hàn lórí Gba ìsanwó. Owó-ọwọ́ máa ń wà nígbà gbogbo. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú Owó-ọwọ́ nìkan — tan UPI / Káàdì / Gbèsè / Pín padà níbí.
 create_backup	Ṣẹda afẹyinti
 credit_limit_heading	Iwọn kirẹditi (alabara ti a yan tabi olupese)
-day_close_summary	Day sunmọ Lakotan
+day_close_summary	Àkópọ̀ ìparí ọjọ́
 delete_party	Pa onibara tabi olupese ti o yan
 delivery	Ifijiṣẹ
 done_open_books	Ti ṣe - ṣiṣi awọn iwe-ipamọ
@@ -587,7 +587,7 @@ prev_country	Ti tẹlẹ orilẹ-ede
 print_open	Tẹjade / ṣii
 reason_amend_ph	Idi fun atunṣe / ofo / agbapada
 reason_note_ph	Idi / akọsilẹ (egbin, kika,…)
-record_day_close	Fi ọjọ sunmọ
+record_day_close	Ṣe àkọsílẹ̀ ìparí ọjọ́
 business_day	Ìgbà wo ni «Loni» máa ń bẹ̀rẹ̀ lọ́tun?
 business_day_help	Pẹ̀lú «Títí di ìparí ọjọ́», «Iwe akọọlẹ ọjọ» máa ń tẹ̀síwájú kọjá ọ̀gànjọ́ òru títí o fi kọ ìparí ọjọ́ sílẹ̀. Pẹ̀lú «Ọ̀gànjọ́ òru kàlẹ́ńdà», ọjọ́ máa ń parí ní 00:00 ní àkókò ìbílẹ̀.
 biz_day_until_close	Títí di ìparí ọjọ́
@@ -611,7 +611,7 @@ role_manager	Alakoso
 history_retention	Itan iṣowo
 history_retention_help	Pa awọn tita atijọ kuro laifọwọyi ati KOTs. Akojọ aṣyn, oṣiṣẹ, ati eto duro. Pa bayi nu gbogbo awọn ori ila iṣowo ati ki o tọju iṣeto.
 history_off	Jeki
-history_day_close	Lori ọjọ sunmọ
+history_day_close	Lórí ìparí ọjọ́
 history_after_hours	Lẹhin awọn wakati
 history_hours_ph	Awọn wakati (1-168, aiyipada 4)
 history_hours_save	Fi awọn wakati pamọ
@@ -957,7 +957,7 @@ connect_to_server	Sopọ si olupin naa
 counter_locked	Counter 01 · Titiipa
 country_pack_help	Ididi orilẹ-ede kan ṣeto orukọ owo-ori ati iṣiro, oju-irin isanwo lẹsẹkẹsẹ, ati id iṣowo ti a tẹjade lori awọn owo-owo. Kumkaj kii ṣe owo-ori tabi fun awọn iwe-ipamọ e-invoice ti ijọba nibikibi.
 currency_use_help	Yi lọ ki o si tẹ Lo fun eyikeyi atilẹyin owo.
-day_close_help	Gbigbasilẹ isunmọ ọjọ kan ṣafipamọ akopọ yii (ati iyatọ duroa ti o ba ka) si akọọlẹ iṣayẹwo. Ko da tita duro.
+day_close_help	Ṣíṣe àkọsílẹ̀ ìparí ọjọ́ kan ń fi àkópọ̀ yìí pamọ́ (àti ìyàtọ̀ dúró tí o bá kà) sí àkọọ́lẹ̀ ìṣàyẹ̀wò. Kò dá tita dúró.
 expenses_word	Awọn inawo
 feature_access_help	Ohun ti wọn le ṣii - aṣayan; iṣẹ ti o wa loke tẹlẹ ṣeto aiyipada
 footer_local	SQLite Agbegbe · Ọfẹ Titilae · Awọsanma odo

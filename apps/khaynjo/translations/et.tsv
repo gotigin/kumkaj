@@ -587,7 +587,7 @@ prev_country	Eelmine riik
 print_open	Prindi / ava
 reason_amend_ph	Muudatuse / tühine / raha tagastamise põhjus
 reason_note_ph	Põhjus/märkus (raiskamine, arv jne)
-record_day_close	Rekordipäev on lähedal
+record_day_close	Salvesta päeva lõpetamine
 business_day	Millal «Täna» algab uuesti?
 business_day_help	Valikuga «Kuni päeva sulgemiseni» jätkub «Päevaraamat» ka pärast keskööd, kuni registreerite päeva sulgemise. Valikuga «Kalendri kesköö» lõpeb päev kell 00:00 kohaliku aja järgi.
 biz_day_until_close	Kuni päeva sulgemiseni
