@@ -271,6 +271,7 @@ Moklanjo pilot sheet: [`LAN_PILOT.md`](LAN_PILOT.md). Store: [`PUBLISH_PLAY_STOR
 - **Shift handover + month lock (2026-11-19):** Day close records mid-day drawer handovers (`shift_closes`, slip print) and lets the Owner set `books_locked_through` (`YYYY-MM`) so finalize / amend / void / expense / purchase / bank posts in locked months are refused. Tax-invoice numbers stay one gap-free per-branch series (`INV-{branch}-{seq}`) in meta — FY-prefixed series is a later option when rollover is designed; month lock does not change numbering.
 - Named carriers & consignors as **parties** (default Moklanjo template stays empty; **Global Pkg App Template** seeds the discovery desk list when applied)
 - **Settings → Product template chips (2026-11-20):** re-apply asks **Continue/Cancel** — wipes bookings/ledgers then `apply_entity_template`. DeviceSetup bundled chips stay no-wipe. No folder pack format (bundled ids only). Cloud login = future (`docs/CLIENT_TEMPLATES_AND_SETUP.md` §4a).
+- **First-run Restore backup (2026-11-22):** on DeviceSetup when no Server exists yet, **Restore backup** reuses Settings restore checks (`meta.app` = moklanjo, refuse a newer schema) and opens the books as that backup — Owner PIN from the backup; template offer skipped. Once a Server exists, Settings → Backup → Restore is the path.
 
 ------------------------------------------------------------------------
 
