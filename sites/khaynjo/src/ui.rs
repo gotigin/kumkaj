@@ -943,9 +943,9 @@ script_mod! {
                 }
             }
         }
-        // One-line country title band.
+        // Two-line country title band (e.g. "Antigua and Barbuda" at 200px).
         country_wrap := View{
-            width: Fill height: 22
+            width: Fill height: 40
             country := Strong{
                 body: "Country"
                 font_size: 15.
@@ -980,8 +980,9 @@ script_mod! {
                 body: "Local name"
             }
         }
+        // Two-line dish band with room for descenders ("Fungee and pepperpot").
         dish_wrap := View{
-            width: Fill height: 36
+            width: Fill height: 44
             dish := Body{
                 body: "Famous dish"
                 font_size: 14.
@@ -995,7 +996,7 @@ script_mod! {
     }
     // Fixed shell = max parade card height (photo + text bands + pad).
     let ShelfSlot = View{
-        width: 200 height: 248
+        width: 200 height: 274
         card := ShelfCard{}
     }
 
@@ -1216,7 +1217,7 @@ script_mod! {
                                 // Clipped stage: each slot is abs-positioned and wraps on its
                                 // own so only one card rebinds when it leaves — no full-strip hitch.
                                 shelf_parade := ScrollXView{
-                                    width: Fill height: 248
+                                    width: Fill height: 274
                                     scroll_bars: {
                                         show_scroll_x: true
                                         show_scroll_y: false
@@ -1224,7 +1225,7 @@ script_mod! {
                                         scroll_bar_x: {bar_size: 0. drag_scrolling: false axis_lock: true}
                                     }
                                     shelf_strip := View{
-                                        width: Fill height: 248
+                                        width: Fill height: 274
                                         flow: Overlay
                                         s0 := ShelfSlot{}
                                         s1 := ShelfSlot{}
