@@ -200,7 +200,7 @@ new_server_name_ph	সেরভের নি মুং কুতাল (চা�
 server_remove_pin_ph	মালিক PIN কাইসা সেরভের ন সুকাকনা বাগুই
 only_owner_remove_server	নকফাং সিমি সে সেরভের ন সুকাকুই মান
 owner_pin_remove_server	ও সেরভের ন সুকাকনা বাগুই মালিক PIN নাংনাই
-device_setup_help	Server বওক রক ন আর তনুই তঙ. Client জরা উঙুই Server উংনাই.
+device_setup_help	Server বওক রক ন আর তনুই তঙ. Client জরা উঙুই Server উংনাই. এবো Server গৈয়াব্লা «বাচকুপ কিফিলুই তুবুদি» নোং থাঙা বাছনায় ফাইল নিফ্রায় বিজাবফোর খেবো (settings আও রিস্টোর বাদি নাইনায়)।
 currency	রাং
 backup	বাচকুপ
 settings_sec_diag	বেমার সাইমানমানি

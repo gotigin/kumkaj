@@ -200,7 +200,7 @@ new_server_name_ph	د نوي سرور نوم (اختیاري)
 server_remove_pin_ph	د سرور لرې کولو لپاره د مالک PIN
 only_owner_remove_server	یوازې مالک کولی شي سرور لرې کړي
 owner_pin_remove_server	د دې سرور لرې کولو لپاره د مالک PIN اړین دی
-device_setup_help	سرور کتابونه دلته ساتي. کلاینټ له سرور سره جوړه کېږي.
+device_setup_help	سرور کتابونه دلته ساتي. کلاینټ له سرور سره جوړه کېږي. که لا Server نه وي، «بیک اپ بحال کړئ» ستاسو د غوره شوې فایل څخه کتابونه پرانیزي (په settings کې د بیارغونې په څیر چکونه).
 currency	اسعارو
 backup	بیک اپ
 settings_sec_diag	تشخیص

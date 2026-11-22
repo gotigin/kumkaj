@@ -200,7 +200,7 @@ new_server_name_ph	Sunan sabon server (ba dole ba)
 server_remove_pin_ph	PIN na mamallaki don cire server
 only_owner_remove_server	Mamallaki kaɗai ne zai iya cire server
 owner_pin_remove_server	Ana buƙatar PIN na mamallaki don cire wannan server
-device_setup_help	Server yana riƙe da littattafai a nan. Abokin haɗi yana haɗuwa da Server.
+device_setup_help	Server yana riƙe da littattafai a nan. Abokin haɗi yana haɗuwa da Server. Idan har yanzu babu Server, «Mayar da ajiyar madadin» yana buɗe littattafai daga fayil ɗin da kuka zaɓa (gwaje-gwaje iri ɗaya da maidowa a settings).
 currency	Kuɗi
 backup	Ajiyar madadin
 settings_sec_diag	Binciken matsala

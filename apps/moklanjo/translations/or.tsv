@@ -200,7 +200,7 @@ new_server_name_ph	ନୂଆ ସର୍ଭର ନାମ (ଇଚ୍ଛାଧୀନ
 server_remove_pin_ph	ସର୍ଭର ହଟାଇବାକୁ Owner PIN
 only_owner_remove_server	କେବଳ Owner ସର୍ଭର ହଟାଇପାରିବେ
 owner_pin_remove_server	ସର୍ଭର ହଟାଇବାକୁ Owner PIN ଦରକାର
-device_setup_help	ସର୍ଭର ଖାତା ଏଠାରେ ରଖେ। କ୍ଲାଏଣ୍ଟ ଏକ ସର୍ଭର ସହ ଯୋଡ଼ି ହୁଏ।
+device_setup_help	ସର୍ଭର ବହି ଏଠାରେ ରଖେ। କ୍ଲାଏଣ୍ଟ ଏକ ସର୍ଭର ସହ ଯୋଡ଼େ। ଏପର୍ଯ୍ୟନ୍ତ ସର୍ଭର ନଥିଲେ «ବ୍ୟାକଅପ୍ ପୁନଃସ୍ଥାପନ» ଆପଣ ବାଛିଥିବା ଫାଇଲରୁ ବହି ଖୋଲେ (ସେଟିଂସ୍ ପୁନଃସ୍ଥାପନ ପରି ଯାଞ୍ଚ)।
 currency	ମୁଦ୍ରା
 backup	ବ୍ୟାକଅପ
 settings_sec_diag	ଡାଇଗ୍ନୋଷ୍ଟିକ୍ସ

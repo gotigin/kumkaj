@@ -200,7 +200,7 @@ new_server_name_ph	Ainm freastalaí nua (roghnach)
 server_remove_pin_ph	PIN úinéara chun freastalaí a bhaint
 only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhaint
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
-device_setup_help	Coinníonn an "Server" na leabhair anseo. Déanann an "Client" comhpháirt le "Freastalaí".
+device_setup_help	Coinníonn an "Server" na leabhair anseo. Déanann an "Client" comhpháirt le "Freastalaí". Gan Server fós, osclaíonn «Athbhunú cúltaca» leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú i settings).
 currency	Airgeadra
 backup	Cúltaca
 settings_sec_diag	Diagnóisic

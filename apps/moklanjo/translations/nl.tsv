@@ -200,7 +200,7 @@ new_server_name_ph	Naam nieuwe server (optioneel)
 server_remove_pin_ph	Owner-PIN om te verwijderen
 only_owner_remove_server	Alleen de Owner mag een server verwijderen
 owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
-device_setup_help	De server bewaart hier de boeken. Een client koppelt met een server.
+device_setup_help	De server bewaart de boeken hier. Een client koppelt aan een server. Zonder server opent «Back-up terugzetten» de boeken uit een bestand dat u kiest (zelfde controles als terugzetten in Instellingen).
 currency	Valuta
 backup	Back-up
 settings_sec_diag	Diagnose

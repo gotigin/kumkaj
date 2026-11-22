@@ -200,7 +200,7 @@ new_server_name_ph	Nome nuovo server (facoltativo)
 server_remove_pin_ph	PIN Owner per rimuovere
 only_owner_remove_server	Solo l'Owner può rimuovere un server
 owner_pin_remove_server	Serve il PIN Owner per rimuovere questo server
-device_setup_help	Il server tiene qui i libri. Il client si abbina a un server.
+device_setup_help	Il server tiene i libri qui. Il client si abbina a un server. Senza server ancora, «Ripristina backup» apre i libri da un file che scegli (stessi controlli del ripristino in Impostazioni).
 currency	Valuta
 backup	Backup
 settings_sec_diag	Diagnostica

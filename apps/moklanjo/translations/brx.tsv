@@ -200,7 +200,7 @@ new_server_name_ph	गोदान सर्वरनि मुं (नाङा
 server_remove_pin_ph	सर्वर बोखारनो गिबिनि PIN
 only_owner_remove_server	खोथिया गिबिआ सर्वर बोखारनो हायो
 owner_pin_remove_server	बे सर्वर बोखारनो गिबिनि PIN नांगौ
-device_setup_help	सर्वरआ बहीखौ बेयाव दोनो। क्लाइन्ट आ सर्वरजों जोरा।
+device_setup_help	सर्वरआ बहीखौ बेयाव दोनो। क्लाइन्ट आ सर्वरजों जोरा। दासिम Server गैयाब्ला «ब्याकआप लाबोफिन» नोंथाङा सायखʼनाय फाइल निफ्राय बिजाबफोर खेवो (settings आव रिस्टोर बादि नायनाय)।
 currency	रांनि रोखोम
 backup	ब्याकआप
 settings_sec_diag	डायग्नोस्टिक

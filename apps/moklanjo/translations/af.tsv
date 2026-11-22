@@ -200,7 +200,7 @@ new_server_name_ph	Nuwe bediener naam (opsioneel)
 server_remove_pin_ph	Eienaar se PIN om 'n bediener te verwyder
 only_owner_remove_server	Slegs die Eienaar kan 'n bediener verwyder
 owner_pin_remove_server	Eienaar se PIN vereis om hierdie bediener te verwyder
-device_setup_help	Die bediener hou die boeke hier. Kliënt paar aan 'n Bediener.
+device_setup_help	Die bediener hou die boeke hier. Kliënt paar aan 'n Bediener. Sonder Server nog nie, maak «Herstel rugsteun» boeke oop uit 'n lêer wat u kies (dieselfde kontroles as herstel in settings).
 currency	Valuta
 backup	Back-up
 settings_sec_diag	Diagnostiek

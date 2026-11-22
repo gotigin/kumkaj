@@ -200,7 +200,7 @@ new_server_name_ph	Nytt servernamn (valfritt)
 server_remove_pin_ph	Ägarens PIN-kod för att ta bort en server
 only_owner_remove_server	Endast ägaren kan ta bort en server
 owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
-device_setup_help	Servern håller böckerna här. Klientpar till en server.
+device_setup_help	Servern håller böckerna här. Klientpar till en server. Utan Server ännu öppnar «Återställ säkerhetskopia» böckerna från en fil du väljer (samma kontroller som återställ i settings).
 currency	Valuta
 backup	Säkerhetskopiering
 settings_sec_diag	Diagnostik

@@ -200,7 +200,7 @@ new_server_name_ph	שם שרת חדש (לא חובה)
 server_remove_pin_ph	PIN הבעלים להסרת שרת
 only_owner_remove_server	רק הבעלים יכול להסיר שרת
 owner_pin_remove_server	נדרש PIN הבעלים כדי להסיר את השרת הזה
-device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת.
+device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת. בלי Server עדיין, «שחזר גיבוי» פותח ספרים מקובץ שתבחר (אותן בדיקות כמו שחזור ב-settings).
 currency	מטבע
 backup	גיבוי
 settings_sec_diag	אבחון

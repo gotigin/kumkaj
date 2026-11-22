@@ -200,7 +200,7 @@ new_server_name_ph	Musuq sirwiq suti (munasqa) .
 server_remove_pin_ph	Dueño PIN huk servidorta hurqunapaq
 only_owner_remove_server	Dueñollam huk sirwiqta hurquyta atin
 owner_pin_remove_server	Dueño PIN kay sirwiqta hurqunapaq mañasqa
-device_setup_help	Servidor kaypi hatun qillqakunata waqaychan. Cliente pariskuna huk Servidorman.
+device_setup_help	Servidor kaypi hatun qillqakunata waqaychan. Cliente pariskuna huk Servidorman. Manaraq Server kaptinqa, «Waqaychasqa waqaychasqata kutichiy» akllasqayki willañiqimanta librokunata kichan (settingspi restore kaqlla cheqkaykuna).
 currency	Qullqi
 backup	Copia de seguridad
 settings_sec_diag	Diagnósticos nisqakuna

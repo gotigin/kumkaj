@@ -200,7 +200,7 @@ new_server_name_ph	নতুন চাৰ্ভাৰৰ নাম (ঐচ্ছ
 server_remove_pin_ph	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN
 only_owner_remove_server	কেৱল Owner চাৰ্ভাৰ আঁতৰাব পাৰে
 owner_pin_remove_server	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN লাগে
-device_setup_help	চাৰ্ভাৰে বহী ইয়াতে ৰাখে। ক্লায়েণ্ট এটা চাৰ্ভাৰৰ সৈতে যোৰ হয়।
+device_setup_help	চাৰ্ভাৰ বহী ইয়াতে ৰাখে। ক্লায়েণ্ট চাৰ্ভাৰৰ সৈতে সংযোগ কৰে। এতিয়াও চাৰ্ভাৰ নাথাকিলে «বেকআপ পুনৰুদ্ধাৰ» আপুনি বাছনি কৰা ফাইলৰ পৰা বহী খোলে (ছেটিংছ পুনৰুদ্ধাৰৰ দৰে পৰীক্ষা)।
 currency	মুদ্ৰা
 backup	বেকআপ
 settings_sec_diag	ডায়গনষ্টিক্স

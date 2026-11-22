@@ -200,7 +200,7 @@ new_server_name_ph	server ꯑꯅꯧꯕꯒꯤ ꯃꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔ�
 server_remove_pin_ph	ꯃꯄꯨꯒꯤ PIN, server ꯂꯣꯠꯅꯕ
 only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
-device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ.
+device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ. হায়না Server লৈতবা মতমদা «ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ» না খল্লবা ফাইলদগি লাইরিক হাংলকই (settings দা রিস্টোর গুম্না চেক)।
 currency	ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 backup	ꯀꯣꯄꯤ
 settings_sec_diag	ꯑꯔꯥꯟꯕ ꯌꯦꯡꯕ

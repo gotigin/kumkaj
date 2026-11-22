@@ -200,7 +200,7 @@ new_server_name_ph	Jaunā servera nosaukums (nav obligāts)
 server_remove_pin_ph	Īpašnieka PIN, lai noņemtu serveri
 only_owner_remove_server	Tikai īpašnieks var noņemt serveri
 owner_pin_remove_server	Lai noņemtu šo serveri, vajag īpašnieka PIN
-device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri.
+device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri. Vēl bez Server «Atjaunot dublējumu» atver grāmatas no jūsu izvēlētā faila (tās pašas pārbaudes kā atjaunošana settings).
 currency	Valūta
 backup	Dublējums
 settings_sec_diag	Diagnostika

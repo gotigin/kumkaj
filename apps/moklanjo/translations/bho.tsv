@@ -200,7 +200,7 @@ new_server_name_ph	नया सर्वर के नाम (मरजी क�
 server_remove_pin_ph	सर्वर हटावे खातिर मालिक के PIN
 only_owner_remove_server	खाली मालिक सर्वर हटा सकेलन
 owner_pin_remove_server	ई सर्वर हटावे खातिर मालिक के PIN चाहीं
-device_setup_help	सर्वर बही इहें राखेला। क्लाइंट सर्वर से जुड़ेला।
+device_setup_help	सर्वर बही इहें राखेला। क्लाइंट सर्वर से जुड़ेला। अभी सर्वर नइखी त «बैकअप बहाल करीं» राउर चुनाल फाइल से बही खोलेला (सेटिंग्स रिस्टोर जइसन जाँच)।
 currency	मुद्रा
 backup	बैकअप
 settings_sec_diag	जाँच

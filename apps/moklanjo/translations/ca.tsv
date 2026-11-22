@@ -200,7 +200,7 @@ new_server_name_ph	Nom del servidor nou (opcional)
 server_remove_pin_ph	PIN del propietari per treure un servidor
 only_owner_remove_server	Només el Propietari pot treure un servidor
 owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
-device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
+device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor. Sense servidor encara, «Restaura la còpia» obre els llibres des d’un fitxer que trieu (mateixes comprovacions que restaurar a settings).
 currency	Moneda
 backup	Còpia
 settings_sec_diag	Diagnòstic

@@ -200,7 +200,7 @@ new_server_name_ph	Naujo serverio pavadinimas (nebūtina)
 server_remove_pin_ph	Savininko PIN serveriui pašalinti
 only_owner_remove_server	Tik Savininkas gali pašalinti serverį
 owner_pin_remove_server	Šiam serveriui pašalinti reikia savininko PIN
-device_setup_help	Serveris knygas laiko čia. Klientas susiporuoja su Serveriu.
+device_setup_help	Serveris knygas laiko čia. Klientas susiporuoja su Serveriu. Dar be Server «Atkurti iš atsarginės kopijos» atidaro knygas iš jūsų pasirinkto failo (tie patys tikrinimai kaip atkūrimas settings).
 currency	Valiuta
 backup	Atsarginė kopija
 settings_sec_diag	Diagnostika

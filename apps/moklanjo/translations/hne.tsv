@@ -200,7 +200,7 @@ new_server_name_ph	नवा सर्वर का नाम (वैकल्�
 server_remove_pin_ph	सर्वर हटाने बर Owner PIN
 only_owner_remove_server	केवल Owner सर्वर हटा सकता हे
 owner_pin_remove_server	सर्वर हटाने बर Owner PIN चाही
-device_setup_help	सर्वर बही इहीं रखता हे। क्लाइंट किसी सर्वर से जुड़ता हे।
+device_setup_help	सर्वर बही इहीं रखता हे। क्लाइंट किसी सर्वर से जुड़ता हे। अभी सर्वर नइं त «बैकअप वापस लाएँ» आप मन के चुने फाइल ले बही खोलथे (सेटिंग्स रिस्टोर जइसन जाँच)।
 currency	मुद्रा
 backup	बैकअप
 settings_sec_diag	निदान

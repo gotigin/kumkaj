@@ -200,7 +200,7 @@ new_server_name_ph	Uuden palvelimen nimi (valinnainen)
 server_remove_pin_ph	Omistajan PIN palvelimen poistoon
 only_owner_remove_server	Vain omistaja voi poistaa palvelimen
 owner_pin_remove_server	Tämän palvelimen poistoon tarvitaan omistajan PIN
-device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelimeen.
+device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelimeen. Ilman Serveriä vielä «Palauta varmuuskopio» avaa kirjat valitsemastasi tiedostosta (samat tarkistukset kuin palautus settings-kohdassa).
 currency	Valuutta
 backup	Varmuuskopio
 settings_sec_diag	Diagnostiikka

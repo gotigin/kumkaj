@@ -200,7 +200,7 @@ new_server_name_ph	Enw gweinydd newydd (dewisol)
 server_remove_pin_ph	PIN y perchennog i dynnu gweinydd
 only_owner_remove_server	Dim ond y Perchennog all dynnu gweinydd
 owner_pin_remove_server	Mae angen PIN y Perchennog i dynnu'r gweinydd hwn
-device_setup_help	Mae'r Gweinydd yn cadw'r llyfrau yma. Mae Cleient yn paru â Gweinydd.
+device_setup_help	Mae'r Gweinydd yn cadw'r llyfrau yma. Mae Cleient yn paru â Gweinydd. Heb Server eto, mae «Adfer copi wrth gefn» yn agor llyfrau o ffeil a ddewiswch (yr un gwiriadau â’r adfer yn settings).
 currency	Arian cyfred
 backup	Copi wrth gefn
 settings_sec_diag	Diagnosteg

@@ -200,7 +200,7 @@ new_server_name_ph	નવા સર્વરનું નામ (વૈકલ્
 server_remove_pin_ph	સર્વર દૂર કરવા Owner PIN
 only_owner_remove_server	ફક્ત Owner સર્વર દૂર કરી શકે
 owner_pin_remove_server	સર્વર દૂર કરવા Owner PIN જોઈએ
-device_setup_help	સર્વર ચોપડા અહીં જ રાખે છે. ક્લાયન્ટ કોઈ સર્વર સાથે જોડાય છે.
+device_setup_help	સર્વર ચોપડા અહીં રાખે છે. ક્લાયન્ટ સર્વર સાથે જોડાય છે. હજુ સર્વર ન હોય તો «બેકઅપ પાછું લાવો» તમે પસંદ કરો તે ફાઇલથી ચોપડા ખોલે છે (સેટિંગ્સ પુનઃસ્થાપન જેવી તપાસ).
 currency	ચલણ
 backup	બૅકઅપ
 settings_sec_diag	નિદાન

@@ -200,7 +200,7 @@ new_server_name_ph	Izina rishya rya seriveri (bitari ngombwa)
 server_remove_pin_ph	PIN ya nyir'iduka yo gukuraho seriveri
 only_owner_remove_server	Nyir'iduka wenyine ashobora gukuraho seriveri
 owner_pin_remove_server	PIN ya nyir'iduka irakenewe gukuraho iyi seriveri
-device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri.
+device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri. Niba Server itarakiriho, «Garura kopi y'inyuma» ifungura ibitabo ku dosiye uhisemo (igenzura rimwe no kugarura muri settings).
 currency	Ifaranga
 backup	Kopi y'inyuma
 settings_sec_diag	Isuzuma

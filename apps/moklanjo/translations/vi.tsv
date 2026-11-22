@@ -200,7 +200,7 @@ new_server_name_ph	Tên máy chủ mới (tùy chọn)
 server_remove_pin_ph	Owner PIN để xóa máy chủ
 only_owner_remove_server	Chỉ Owner mới được xóa máy chủ
 owner_pin_remove_server	Cần Owner PIN để xóa máy chủ này
-device_setup_help	Máy chủ giữ sổ sách ở đây. Máy khách ghép đôi với máy chủ.
+device_setup_help	Máy chủ giữ sổ tại đây. Máy khách ghép với máy chủ. Chưa có máy chủ thì «Khôi phục bản sao lưu» mở sổ từ tệp bạn chọn (cùng kiểm tra như khôi phục trong Cài đặt).
 currency	Tiền tệ
 backup	Sao lưu
 settings_sec_diag	Chẩn đoán

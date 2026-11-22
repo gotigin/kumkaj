@@ -200,7 +200,7 @@ new_server_name_ph	Yangi server nomi (ixtiyoriy)
 server_remove_pin_ph	Serverni olib tashlash uchun eganing PIN kodi
 only_owner_remove_server	Serverni faqat Egasi olib tashlay oladi
 owner_pin_remove_server	Bu serverni olib tashlash uchun eganing PIN kodi kerak
-device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi.
+device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi. Hali Server bo‘lmasa, «Zaxira nusxadan tiklash» tanlagan faylingizdan kitoblarni ochadi (settingsdagi tiklash bilan bir xil tekshiruvlar).
 currency	Valyuta
 backup	Zaxira nusxa
 settings_sec_diag	Diagnostika

@@ -200,7 +200,7 @@ new_server_name_ph	Nytt servernavn (valgfritt)
 server_remove_pin_ph	Eier-PIN for å fjerne en server
 only_owner_remove_server	Bare Eieren kan fjerne en server
 owner_pin_remove_server	Eier-PIN kreves for å fjerne denne serveren
-device_setup_help	Serveren holder bøkene her. Klient pares med en Server.
+device_setup_help	Serveren holder bøkene her. Klient pares med en Server. Uten Server ennå åpner «Gjenopprett sikkerhetskopi» bøkene fra en fil du velger (samme sjekker som gjenopprett i Innstillinger).
 currency	Valuta
 backup	Sikkerhetskopi
 settings_sec_diag	Diagnostikk

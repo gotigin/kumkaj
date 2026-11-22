@@ -200,7 +200,7 @@ new_server_name_ph	አዲስ የሰርቨር ስም (አማራጭ)
 server_remove_pin_ph	ሰርቨር ለማስወገድ የባለቤት ፒን
 only_owner_remove_server	ሰርቨርን ማስወገድ የሚችለው ባለቤት ብቻ ነው
 owner_pin_remove_server	ይህን ሰርቨር ለማስወገድ የባለቤት ፒን ያስፈልጋል
-device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል።
+device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል። ገና ሰርቨር ከሌለ፣ «ምትኬ መልስ» የመረጡት ፋይል ላይ ያሉትን መጻሕፍት ይከፍታል (settings ውስጥ ካለው መልሶ ማስቀመጥ ጋር ተመሳሳይ ፍተሻዎች)።
 currency	ገንዘብ
 backup	ምትኬ
 settings_sec_diag	ምርመራ

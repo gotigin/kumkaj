@@ -200,7 +200,7 @@ new_server_name_ph	नवीन सर्व्हरचे नाव (ऐच्
 server_remove_pin_ph	सर्व्हर काढण्यासाठी Owner PIN
 only_owner_remove_server	फक्त Owner सर्व्हर काढू शकतो
 owner_pin_remove_server	सर्व्हर काढण्यासाठी Owner PIN हवा
-device_setup_help	सर्व्हर वह्या इथेच ठेवतो. क्लायंट एखाद्या सर्व्हरशी जोडला जातो.
+device_setup_help	सर्व्हर वही इथे ठेवतो. क्लायंट सर्व्हरशी जोडतो. अजून सर्व्हर नसेल तर «बॅकअप परत आणा» तुम्ही निवडलेल्या फाइलमधून वही उघडतो (सेटिंग्ज पुनर्स्थापनेसारख्या तपासण्या).
 currency	चलन
 backup	बॅकअप
 settings_sec_diag	निदान

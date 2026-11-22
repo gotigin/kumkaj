@@ -200,7 +200,7 @@ new_server_name_ph	نئے سرور کا نام (اختیاری)
 server_remove_pin_ph	سرور ہٹانے کے لیے Owner PIN
 only_owner_remove_server	صرف Owner سرور ہٹا سکتا ہے
 owner_pin_remove_server	سرور ہٹانے کے لیے Owner PIN درکار ہے
-device_setup_help	سرور کھاتے یہیں رکھتا ہے۔ کلائنٹ کسی سرور سے جڑتا ہے۔
+device_setup_help	سرور بکس یہیں رکھتا ہے۔ کلائنٹ سرور سے جڑتا ہے۔ ابھی سرور نہ ہو تو «بیک اپ واپس لائیں» آپ کی چنی فائل سے بکس کھولتا ہے (سیٹنگز بحالی جیسے چیک)۔
 currency	کرنسی
 backup	بیک اپ
 settings_sec_diag	تشخیص

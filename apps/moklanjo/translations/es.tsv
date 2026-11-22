@@ -200,7 +200,7 @@ new_server_name_ph	Nombre del servidor nuevo (opcional)
 server_remove_pin_ph	PIN del propietario para quitar
 only_owner_remove_server	Solo el propietario puede quitar un servidor
 owner_pin_remove_server	Se requiere el PIN del propietario para quitar este servidor
-device_setup_help	El servidor guarda los libros aquí. El cliente se empareja con un servidor.
+device_setup_help	El servidor guarda los libros aquí. El cliente se empareja con un servidor. Sin servidor aún, «Restaurar copia» abre los libros desde un archivo que elija (mismas comprobaciones que Restaurar en Ajustes).
 currency	Moneda
 backup	Copia de seguridad
 settings_sec_diag	Diagnóstico

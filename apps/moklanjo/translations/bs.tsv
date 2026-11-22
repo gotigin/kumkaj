@@ -200,7 +200,7 @@ new_server_name_ph	Ime novog Servera (nije obavezno)
 server_remove_pin_ph	PIN vlasnika za uklanjanje Servera
 only_owner_remove_server	Samo Vlasnik može ukloniti Server
 owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
-device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
+device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom. Bez Servera još «Vrati rezervnu kopiju» otvara knjige iz datoteke koju odaberete (iste provjere kao vraćanje u settings).
 currency	Valuta
 backup	Rezervna kopija
 settings_sec_diag	Dijagnostika

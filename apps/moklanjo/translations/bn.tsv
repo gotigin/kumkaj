@@ -200,7 +200,7 @@ new_server_name_ph	নতুন সার্ভারের নাম (ঐচ্
 server_remove_pin_ph	সার্ভার সরাতে Owner PIN
 only_owner_remove_server	শুধু Owner সার্ভার সরাতে পারেন
 owner_pin_remove_server	সার্ভার সরাতে Owner PIN লাগবে
-device_setup_help	সার্ভার খাতা এখানেই রাখে। ক্লায়েন্ট একটি সার্ভারের সঙ্গে যুক্ত হয়।
+device_setup_help	সার্ভার খাতা এখানে রাখে। ক্লায়েন্ট সার্ভারের সাথে যুক্ত হয়। এখনো সার্ভার না থাকলে «ব্যাকআপ ফিরিয়ে আনুন» আপনার বেছে নেওয়া ফাইল থেকে খাতা খোলে (সেটিংস পুনরুদ্ধারের মতো পরীক্ষা)।
 currency	মুদ্রা
 backup	ব্যাকআপ
 settings_sec_diag	ডায়াগনস্টিক্স

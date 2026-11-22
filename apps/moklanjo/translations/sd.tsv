@@ -200,7 +200,7 @@ new_server_name_ph	نئين سرور جو نالو (اختياري)
 server_remove_pin_ph	مالڪ PIN سرور هٽائڻ لاءِ
 only_owner_remove_server	رڳو مالڪ سرور هٽائي سگھي ٿو
 owner_pin_remove_server	مالڪ PIN کي هن سرور کي هٽائڻ جي ضرورت آهي
-device_setup_help	Server هتي ڪتاب رکي ٿو. Client جو جوڙو Server سان آهي.
+device_setup_help	Server هتي ڪتاب رکي ٿو. Client جو جوڙو Server سان آهي. اڃا سرور نه هجي ته «بيڪ اپ بحال ڪريو» توهان جي چونڊيل فائل مان ڪتاب کولي ٿو (settings ۾ بحالي جيان چڪاس).
 currency	ڪرنسي
 backup	بيڪ اپ
 settings_sec_diag	تشخيص

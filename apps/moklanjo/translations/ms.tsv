@@ -200,7 +200,7 @@ new_server_name_ph	Nama pelayan baharu (pilihan)
 server_remove_pin_ph	Pemilik PIN untuk mengalih keluar pelayan
 only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
 owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
-device_setup_help	Pelayan menyimpan lejar di sini. Pasangan pelanggan ke Pelayan.
+device_setup_help	Server menyimpan lejar di sini. Klien dipasangkan ke Server. Belum ada Server, «Pulihkan sandaran» membuka buku daripada fail yang anda pilih (semakan sama seperti pulih dalam Tetapan).
 currency	mata wang
 backup	Sandaran
 settings_sec_diag	Diagnostik

@@ -200,7 +200,7 @@ new_server_name_ph	ਨਵੇਂ ਸਰਵਰ ਦਾ ਨਾਂ (ਵਿਕਲਪ�
 server_remove_pin_ph	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN
 only_owner_remove_server	ਸਿਰਫ਼ Owner ਸਰਵਰ ਹਟਾ ਸਕਦਾ ਹੈ
 owner_pin_remove_server	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN ਚਾਹੀਦਾ ਹੈ
-device_setup_help	ਸਰਵਰ ਵਹੀ ਇੱਥੇ ਰੱਖਦਾ ਹੈ। ਕਲਾਇੰਟ ਕਿਸੇ ਸਰਵਰ ਨਾਲ ਜੁੜਦਾ ਹੈ।
+device_setup_help	ਸਰਵਰ ਬਹੀਆਂ ਇੱਥੇ ਰੱਖਦਾ ਹੈ। ਕਲਾਈਂਟ ਸਰਵਰ ਨਾਲ ਜੁੜਦਾ ਹੈ। ਅਜੇ ਸਰਵਰ ਨਾ ਹੋਵੇ ਤਾਂ «ਬੈਕਅੱਪ ਵਾਪਸ ਲਿਆਓ» ਤੁਹਾਡੀ ਚੁਣੀ ਫਾਈਲ ਤੋਂ ਬਹੀਆਂ ਖੋਲ੍ਹਦਾ ਹੈ (ਸੈਟਿੰਗਾਂ ਰੀਸਟੋਰ ਵਰਗੀਆਂ ਜਾਂਚਾਂ)।
 currency	ਮੁਦਰਾ
 backup	ਬੈਕਅਪ
 settings_sec_diag	ਡਾਇਗਨੌਸਟਿਕਸ

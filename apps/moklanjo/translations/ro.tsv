@@ -200,7 +200,7 @@ new_server_name_ph	Nume server nou (opțional)
 server_remove_pin_ph	PIN proprietar pentru a elimina un server
 only_owner_remove_server	Doar Proprietarul poate elimina un server
 owner_pin_remove_server	PIN-ul proprietarului e necesar ca să elimini acest server
-device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server.
+device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server. Fără Server încă, «Restaurează copia de rezervă» deschide cărțile dintr-un fișier pe care îl alegeți (aceleași verificări ca restaurarea din settings).
 currency	Monedă
 backup	Copie de rezervă
 settings_sec_diag	Diagnostic

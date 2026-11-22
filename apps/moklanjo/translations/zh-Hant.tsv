@@ -200,7 +200,7 @@ new_server_name_ph	新服務器名稱（可選）
 server_remove_pin_ph	刪除服務器需 Owner PIN
 only_owner_remove_server	僅 Owner 可刪除服務器
 owner_pin_remove_server	刪除此服務器需要 Owner PIN
-device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
+device_setup_help	伺服器在此保存帳本。客戶端與伺服器配對。若還沒有伺服器，「還原備份」從您選擇的檔案開啟帳本（與設定中的還原相同檢查）。
 currency	貨幣
 backup	備份
 settings_sec_diag	診斷

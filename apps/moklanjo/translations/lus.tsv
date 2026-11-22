@@ -200,7 +200,7 @@ new_server_name_ph	Server thar hming (duh chuan)
 server_remove_pin_ph	Neitu PIN, server paih nan
 only_owner_remove_server	Neitu chauhvin server a paih thei
 owner_pin_remove_server	He server paih nan Neitu PIN a ngai
-device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a inmil.
+device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a inmil. Server a awm loh chuan «Backup kir leh» chuan i thlan file atangin lehkhabu a hawng (settings-a restore ang check).
 currency	Sum hming
 backup	Backup
 settings_sec_diag	Harsatna en

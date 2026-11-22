@@ -200,7 +200,7 @@ new_server_name_ph	新服务器名称（可选）
 server_remove_pin_ph	删除服务器需 Owner PIN
 only_owner_remove_server	仅 Owner 可删除服务器
 owner_pin_remove_server	删除此服务器需要 Owner PIN
-device_setup_help	服务器在此保存账簿。客户端与服务器配对。
+device_setup_help	服务器在此保存账簿。客户端与服务器配对。若还没有服务器，「恢复备份」从您选择的文件打开账簿（与设置中的恢复相同检查）。
 currency	货币
 backup	备份
 settings_sec_diag	诊断

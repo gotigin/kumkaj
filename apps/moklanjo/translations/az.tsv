@@ -200,7 +200,7 @@ new_server_name_ph	Yeni server adı (istəyə bağlı)
 server_remove_pin_ph	Serveri silmək üçün Sahib PIN-i
 only_owner_remove_server	Serveri yalnız Sahib silə bilər
 owner_pin_remove_server	Bu serveri silmək üçün Sahib PIN-i lazımdır
-device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur.
+device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur. Hələ Server yoxdursa, «Ehtiyat nüsxəni bərpa et» seçdiyiniz fayldan kitabları açır (settings-dəki bərpa ilə eyni yoxlamalar).
 currency	Valyuta
 backup	Ehtiyat nüsxə
 settings_sec_diag	Diaqnostika

@@ -200,7 +200,7 @@ new_server_name_ph	Non nouvo sèvè (opsyonèl)
 server_remove_pin_ph	PIN pwopriyetè pou retire yon sèvè
 only_owner_remove_server	Se sèl Pwopriyetè a ki ka retire yon sèvè
 owner_pin_remove_server	PIN pwopriyetè obligatwa pou retire sèvè sa a
-device_setup_help	Sèvè a kenbe liv yo isit. Kliyan an makonnen ak yon Sèvè.
+device_setup_help	Sèvè a kenbe liv yo isit. Kliyan an makonnen ak yon Sèvè. Si poko gen Server, «Retabli sovgad» louvri liv yo nan yon fichye ou chwazi (menm tcheke ak restore nan settings).
 currency	Lajan
 backup	Sovgad
 settings_sec_diag	Dyagnostik

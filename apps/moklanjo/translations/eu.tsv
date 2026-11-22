@@ -200,7 +200,7 @@ new_server_name_ph	Zerbitzari berriaren izena (aukerakoa)
 server_remove_pin_ph	Jabearen PINa zerbitzari bat kentzeko
 only_owner_remove_server	Jabeak soilik ken dezake zerbitzari bat
 owner_pin_remove_server	Jabearen PINa behar da zerbitzari hau kentzeko
-device_setup_help	Zerbitzariak liburuak hemen gordetzen ditu. Bezeroa Zerbitzari batekin parekatzen da.
+device_setup_help	Zerbitzariak liburuak hemen gordetzen ditu. Bezeroa Zerbitzari batekin parekatzen da. Oraindik Serverik gabe, «Leheneratu babeskopiatik»-k zuk aukeratutako fitxategitik irekitzen ditu liburuak (settings-eko leheneratze berdina).
 currency	Moneta
 backup	Babeskopia
 settings_sec_diag	Diagnostikoak

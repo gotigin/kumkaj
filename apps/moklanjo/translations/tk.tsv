@@ -200,7 +200,7 @@ new_server_name_ph	Täze serweriň ady (islege görä)
 server_remove_pin_ph	Serweri aýyrmak üçin eýesi PIN
 only_owner_remove_server	Serwerden diňe eýesi aýryp biler
 owner_pin_remove_server	Bu serweri aýyrmak üçin eýesi PIN talap edilýär
-device_setup_help	Serwer bu ýerde ýazgy ýazgylaryny saklaýar. Müşderi Serwere jübüt.
+device_setup_help	Serwer bu ýerde ýazgy ýazgylaryny saklaýar. Müşderi Serwere jübüt. Entäk Server ýok bolsa, «Uptiýaçlyk nusgasyny dikelt» saýlan faýlyňyzdan kitaplary açýar (settings-däki dikeltmek bilen birmeňzeş barlaglar).
 currency	Walýuta
 backup	Uptiýaçlyk
 settings_sec_diag	Diagnostika

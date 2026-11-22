@@ -200,7 +200,7 @@ new_server_name_ph	Uus serveri nimi (valikuline)
 server_remove_pin_ph	Omanik PIN serveri eemaldamiseks
 only_owner_remove_server	Ainult omanik saab serveri eemaldada
 owner_pin_remove_server	Selle serveri eemaldamiseks on vaja omanikku PIN
-device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga.
+device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga. Ilma Serverita veel avab «Taasta varukoopia» raamatud teie valitud failist (samad kontrollid kui taastamine settings-s).
 currency	Valuuta
 backup	Varundamine
 settings_sec_diag	Diagnostika

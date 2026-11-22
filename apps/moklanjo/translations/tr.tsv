@@ -200,7 +200,7 @@ new_server_name_ph	Yeni sunucu adı (isteğe bağlı)
 server_remove_pin_ph	Kaldırmak için Owner PIN
 only_owner_remove_server	Sunucuyu yalnızca Owner silebilir
 owner_pin_remove_server	Bu sunucuyu kaldırmak için Owner PIN gerekli
-device_setup_help	Sunucu defterleri burada tutar. İstemci bir sunucuyla eşleşir.
+device_setup_help	Sunucu defterleri burada tutar. İstemci bir Sunucuya eşlenir. Henüz Sunucu yoksa «Yedeği geri yükle» seçtiğiniz dosyadan defterleri açar (Ayarlar geri yükleme ile aynı kontroller).
 currency	Para birimi
 backup	Yedek
 settings_sec_diag	Tanılama

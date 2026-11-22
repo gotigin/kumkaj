@@ -200,7 +200,7 @@ new_server_name_ph	نْو سْروور ناو (اختیاری)
 server_remove_pin_ph	مٲلِک PIN سْروَر ہٹاونہٕ خٲطرٕ
 only_owner_remove_server	صرف مٲلک ہیکہِ سرور ہٹٲوِتھ
 owner_pin_remove_server	مٲلِک PIN چھُ یہِ سٕروَر ہٹاونُک ضوروٗرَتھ
-device_setup_help	Server کتابہٕ چھِ یَتہِ تھاوان۔ Client چُھ Server سٕتۍ جوڑان۔
+device_setup_help	Server کتابہٕ چھِ یَتہِ تھاوان۔ Client چُھ Server سٕتۍ جوڑان۔ وَنَے سرور نہِ آسہِ تِہ «بیک اپ کْریو ریسٹور» تُہنٛدِس ژھانڈِتھ فایِلَہ پٮ۪ٹھ کِتابہٕ کھولان (settings منٛز رِسٹور ہِوی چیک).
 currency	کرنسی
 backup	بیک اپ
 settings_sec_diag	تشخیصی

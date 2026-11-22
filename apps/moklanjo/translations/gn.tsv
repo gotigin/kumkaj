@@ -200,7 +200,7 @@ new_server_name_ph	Servidor réra pyahu (ojeporavóva) .
 server_remove_pin_ph	Ijára PIN oipeꞌa hag̃ua peteĩ servidor
 only_owner_remove_server	Pe Ijára añoite ikatu oipe’a peteĩ servidor
 owner_pin_remove_server	Ijára PIN oñeikotevẽ ojeipe’a hag̃ua ko servidor
-device_setup_help	Servidor oñongatu umi aranduka ko’ápe. Cliente ombojoaju peteĩ Servidor-pe.
+device_setup_help	Servidor oñongatu umi aranduka ko’ápe. Cliente ombojoaju peteĩ Servidor-pe. Neĩrõ gueteri Server, «Emoĩjey jekopytyjoja» oipe'a kuatiañe'ẽ pe archivo eiporavóvagui (ojokupyty jehechajey settings-pe).
 currency	Viru rehegua
 backup	Copia de seguridad rehegua
 settings_sec_diag	Diagnóstico rehegua

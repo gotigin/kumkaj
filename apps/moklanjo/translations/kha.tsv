@@ -200,7 +200,7 @@ new_server_name_ph	Ka kyrteng jong ka server ba thymmai (da jied)
 server_remove_pin_ph	U trai PIN ban pynduh ia ka server .
 only_owner_remove_server	Tang u Trai uba lah ban pynduh ia ka server .
 owner_pin_remove_server	U trai PIN donkam ban weng ia kane ka server
-device_setup_help	U Server u buh ia ki kot hangne. Ka klient ka pyniasoh ia u Server.
+device_setup_help	U Server u buh ia ki kot hangne. Ka klient ka pyniasoh ia u Server. Lada ym pat don Server, «Pynphai biang ia ka backup» ka plie ia ki kot na ka fail ba phi jied (kijuh ki jingpeit kum ka Restore ha settings).
 currency	Ka pisa
 backup	Ka jingpynneh
 settings_sec_diag	Ka jingpeit bniah

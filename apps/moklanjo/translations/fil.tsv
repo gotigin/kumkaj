@@ -200,7 +200,7 @@ new_server_name_ph	Bagong pangalan ng server (opsyonal)
 server_remove_pin_ph	May-ari PIN para mag-alis ng server
 only_owner_remove_server	Ang May-ari lang ang makakapag-alis ng server
 owner_pin_remove_server	Kinakailangan ng may-ari PIN na alisin ang server na ito
-device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliyente sa isang Server.
+device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliyente sa isang Server. Kung wala pang Server, binubuksan ng «Ibalik ang backup» ang mga libro mula sa file na pipiliin mo (parehong tseke gaya ng I-restore sa settings).
 currency	Pera
 backup	Reserbang kopya
 settings_sec_diag	Mga diagnostic

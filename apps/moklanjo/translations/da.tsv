@@ -200,7 +200,7 @@ new_server_name_ph	Nyt servernavn (valgfrit)
 server_remove_pin_ph	Ejer-PIN for at fjerne en server
 only_owner_remove_server	Kun ejeren kan fjerne en server
 owner_pin_remove_server	Ejer-PIN kræves for at fjerne denne server
-device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server.
+device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server. Uden Server endnu åbner «Gendan sikkerhedskopi» bøgerne fra en fil, du vælger (samme tjek som gendan i settings).
 currency	Valuta
 backup	Sikkerhedskopi
 settings_sec_diag	Diagnostik

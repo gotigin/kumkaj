@@ -200,7 +200,7 @@ new_server_name_ph	Nowa nazwa serwera (opcjonalnie)
 server_remove_pin_ph	Właściciel PIN, aby usunąć serwer
 only_owner_remove_server	Tylko właściciel może usunąć serwer
 owner_pin_remove_server	Właściciel PIN wymagany do usunięcia tego serwera
-device_setup_help	Serwer prowadzi tutaj księgi. Klient łączy się z serwerem.
+device_setup_help	Serwer trzyma księgi tutaj. Klient paruje się z serwerem. Bez serwera «Przywróć kopię» otwiera księgi z wybranego pliku (te same sprawdzenia co przywracanie w Ustawieniach).
 currency	Waluta
 backup	Kopia zapasowa
 settings_sec_diag	Diagnostyka

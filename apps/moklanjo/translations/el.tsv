@@ -200,7 +200,7 @@ new_server_name_ph	Όνομα νέου Server (προαιρετικό)
 server_remove_pin_ph	PIN ιδιοκτήτη για αφαίρεση Server
 only_owner_remove_server	Μόνο ο Ιδιοκτήτης μπορεί να αφαιρέσει Server
 owner_pin_remove_server	Για την αφαίρεση αυτού του Server απαιτείται PIN ιδιοκτήτη
-device_setup_help	Ο Server κρατά τα βιβλία εδώ. Ο Client ζευγαρώνει με έναν Server.
+device_setup_help	Ο Server κρατά τα βιβλία εδώ. Ο Client ζευγαρώνει με έναν Server. Χωρίς Server ακόμα, το «Επαναφορά αντιγράφου» ανοίγει τα βιβλία από αρχείο που επιλέγετε (ίδιοι έλεγχοι με την επαναφορά στα settings).
 currency	Νόμισμα
 backup	Αντίγραφο ασφαλείας
 settings_sec_diag	Διαγνωστικά

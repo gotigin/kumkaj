@@ -200,7 +200,7 @@ new_server_name_ph	Nový názov servera (voliteľné)
 server_remove_pin_ph	Vlastník PIN na odstránenie servera
 only_owner_remove_server	Server môže odstrániť iba vlastník
 owner_pin_remove_server	Na odstránenie tohto servera je potrebný vlastník PIN
-device_setup_help	Server tu uchováva knihy. Klient sa spáruje so serverom.
+device_setup_help	Server tu uchováva knihy. Klient sa spáruje so serverom. Bez Servera zatiaľ «Obnoviť zálohu» otvorí knihy zo súboru, ktorý vyberiete (rovnaké kontroly ako obnovenie v settings).
 currency	mena
 backup	Zálohovanie
 settings_sec_diag	Diagnostika
