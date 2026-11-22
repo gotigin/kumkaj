@@ -889,7 +889,7 @@ unpriced_note	ລາຍການ {n} ໃນລາຍການຂອງທ່າ�
 show_unpriced	ສະແດງສະເພາະລາຍການທີ່ບໍ່ມີລາຄາ
 show_all_dishes	ສະແດງລາຍການທັງໝົດ
 role_title_rest_ph	ຕຳແໜ່ງ (ເຊັ່ນ: ນາຍເຮືອ, ຫົວໜ້າຄົວ)
-preset_help_rest	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
+preset_help_rest	ພະນັກງານເກັບເງິນ: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + ການຂາຍໂມ້/ແກ້ໄຂ.
 kind_resale	ຊື້ເພື່ອຂາຍ
 kind_dish	ບໍ່ນັບຫຼັກຊັບ
 buy_unit_ph	ຫນ່ວຍ (ກິໂລ, ລິດ, pcs)

@@ -889,7 +889,7 @@ unpriced_note	Ang {n} na mga item sa iyong mga item ay wala pang presyo — nani
 show_unpriced	Ipakita lamang ang mga item na walang presyo
 show_all_dishes	Ipakita ang lahat ng mga item
 role_title_rest_ph	Pamagat ng tungkulin (hal. Captain)
-preset_help_rest	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
+preset_help_rest	Kahera: ibenta. Tagapamahala: ibenta + item + kansela/baguhin.
 kind_resale	Binili para ibenta
 kind_dish	Huwag magbilang ng stock
 buy_unit_ph	Yunit (kg, litro, mga pcs)
