@@ -44,7 +44,7 @@ restore_item	परत हाडात
 empty_catalog	अजून पदार्थ नात.
 total	एकूण
 cash	रोख
-upi	यूपीआई
+upi	UPI
 card	कार्ड
 credit	पार्टी
 clear	निवळ
@@ -113,7 +113,7 @@ bill_line_table	मेज
 bill_line_items	वस्तू
 bill_line_total	एकूण
 bill_line_footer	तळटीप
-bill_line_upi	यूपीआई
+bill_line_upi	UPI
 bill_logo_picture	चित्र
 bill_logo_help	रुंदाय आनी उंचाय px त. रितें दवरल्यार चित्रा प्रमाण: एक रितें जाल्यार आकार उरता, दोनूय रितीं जाल्यार ताचो स्वताचो आकार; दोनूय भरल्यार भितर बसता, केन्नाच ओडून व्हड जायना. चित्र ना जाल्यार: दाखयल्लो लोगो आपली उंचाय रिती सुवात म्हूण दवरता; लिपय तो काडटा.
 bill_logo_choose	चित्र वेंचात

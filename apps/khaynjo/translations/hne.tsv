@@ -44,7 +44,7 @@ restore_item	वापस लाव
 empty_catalog	अभी कोनो व्यंजन नइ हे।
 total	जम्मा
 cash	नकद
-upi	यूपीआई
+upi	UPI
 card	कार्ड
 credit	पार्टी
 clear	साफ
@@ -113,7 +113,7 @@ bill_line_table	मेज़
 bill_line_items	आइटम
 bill_line_total	जम्मा
 bill_line_footer	फ़ुटर
-bill_line_upi	यूपीआई
+bill_line_upi	UPI
 bill_logo_picture	फोटू
 bill_logo_help	चौड़ाई अउ ऊंचाई px म। खाली रहय त फोटू के हिसाब ले: एक खाली त आकार बने रहिथे, दूनो खाली त अपन असली नाप; दूनो भरे त भीतर समा जाथे, कभू नइ खिंचय। फोटू नइ: दिखत लोगो अपन ऊंचाई ल खाली जगा बना के रखथे; लुकावव ओला हटा देथे।
 bill_logo_choose	फोटू छांटव

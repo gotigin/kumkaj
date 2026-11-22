@@ -44,7 +44,7 @@ restore_item	पुन्हा आणा
 empty_catalog	अद्याप आयटम नाहीत.
 total	एकूण
 cash	रोख
-upi	यूपीआई
+upi	UPI
 card	कार्ड
 credit	पार्टी
 clear	साफ
@@ -113,7 +113,7 @@ bill_line_table	टेबल
 bill_line_items	वस्तू
 bill_line_total	एकूण
 bill_line_footer	फूटर
-bill_line_upi	यूपीआई
+bill_line_upi	UPI
 bill_logo_picture	चित्र
 bill_logo_help	रुंदी आणि उंची px मध्ये. रिकामे ठेवल्यास चित्रानुसार: एक रिकामे असल्यास आकार टिकतो, दोन्ही रिकामे असल्यास त्याचा स्वतःचा आकार; दोन्ही दिल्यास आत बसवले जाते, कधीही ताणले जात नाही. चित्र नसल्यास: दाखवलेला लोगो आपली उंची रिकामी जागा म्हणून ठेवतो; लपवा तो काढतो.
 bill_logo_choose	चित्र निवडा

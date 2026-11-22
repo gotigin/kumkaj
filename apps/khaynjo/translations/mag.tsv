@@ -44,7 +44,7 @@ restore_item	वापस लाऽ
 empty_catalog	अबहीं कोई आइटम नहीं।
 total	कुल
 cash	नकद
-upi	यूपीआई
+upi	UPI
 card	कार्ड
 credit	पार्टी
 clear	साफ़
@@ -113,7 +113,7 @@ bill_line_table	मेज़
 bill_line_items	आइटम
 bill_line_total	कुल
 bill_line_footer	फ़ुटर
-bill_line_upi	यूपीआई
+bill_line_upi	UPI
 bill_logo_picture	फोटो
 bill_logo_help	चौड़ाई आउ ऊँचाई px में। खाली रहे तो फोटो के हिसाब से: एगो खाली तो आकार बनल रहऽ हे, दुन्नो खाली तो अपन असली नाप; दुन्नो भरल तो भीतर समा जा हे, कभियो खिंचा हे नञ। फोटो नञ: देखाइत लोगो अपन ऊँचाई खाली जगह के रूप में रखऽ हे; छिपावऽ से हट जा हे।
 bill_logo_choose	फोटो चुनऽ
