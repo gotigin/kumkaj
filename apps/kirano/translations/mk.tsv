@@ -756,7 +756,7 @@ server_host_selected	Користејќи {host} — внесете го код�
 approval_pin_ph	Менаџер PIN (само ако е побарано)
 menu_search_ph	Пребарајте ставка од менито или краток код
 customer_paid_ph	Клиентот платил
-tip_ph	Совет
+tip_ph	Напојница
 find_server	Најдете го серверот на продавницата
 bill_format	Формат на сметка за гости за гости
 bill_header_ph	Адреса | телефон
@@ -895,8 +895,8 @@ kind_dish	Не брои акции
 buy_unit_ph	Единица (кг, литар, парчиња)
 add_another_way	+ Додадете друг начин
 parts_status	Внесено {a} од {b} · {c} лево
-save_expense	Заштедете трошок
-rest_ph	Одмор
+save_expense	Зачувај трошок
+rest_ph	Остаток
 low_badge	Ниско
 stock_empty	Сè уште нема ништо на залиха - она што го снимате на Купи се појавува овде.
 recent_changes	Неодамнешни промени

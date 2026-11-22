@@ -756,7 +756,7 @@ server_host_selected	Notaðu {host} — sláðu inn pörunarkóðann og síðan 
 approval_pin_ph	Stjórnandi PIN (aðeins ef spurt er)
 menu_search_ph	Leita í valmyndaratriði eða stuttkóða
 customer_paid_ph	Viðskiptavinur greiddi
-tip_ph	Ábending
+tip_ph	Þjórfé
 find_server	Finndu netþjón búðarinnar
 bill_format	Reikningssnið
 bill_header_ph	Heimilisfang | síma
@@ -895,8 +895,8 @@ kind_dish	Ekki telja lager
 buy_unit_ph	Eining (kg, lítri, stk)
 add_another_way	+ Bættu við öðrum hætti
 parts_status	Sláði inn {a} af {b} · {c} eftir
-save_expense	Sparaðu kostnað
-rest_ph	Hvíldu
+save_expense	Vista kostnað
+rest_ph	Afostöð
 low_badge	Lágt
 stock_empty	Ekkert á lager ennþá - það sem þú tekur upp á Buy birtist hér.
 recent_changes	Nýlegar breytingar

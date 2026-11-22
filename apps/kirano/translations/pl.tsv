@@ -756,7 +756,7 @@ server_host_selected	Używając {host} — wprowadź kod parowania, a następnie
 approval_pin_ph	Menedżer PIN (tylko jeśli zostaniesz o to poproszony)
 menu_search_ph	Wyszukaj przedmiot lub krótki kod
 customer_paid_ph	Klient zapłacił
-tip_ph	Wskazówka
+tip_ph	Napiwek
 find_server	Znajdź serwer sklepu
 bill_format	Format rachunku
 bill_header_ph	Adres | telefon
@@ -895,8 +895,8 @@ kind_dish	Nie licz zapasów
 buy_unit_ph	Jednostka (kg, litr, szt.)
 add_another_way	+ Dodaj inny sposób
 parts_status	Wprowadzono {a} z {b} · {c} pozostało
-save_expense	Oszczędzaj wydatki
-rest_ph	Odpocznij
+save_expense	Zapisz wydatek
+rest_ph	Reszta
 low_badge	Niski
 stock_empty	Nie ma jeszcze żadnych zapasów — tutaj pojawia się to, co nagrasz w opcji Kup.
 recent_changes	Ostatnie zmiany
