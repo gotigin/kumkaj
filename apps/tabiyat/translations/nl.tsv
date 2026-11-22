@@ -569,7 +569,7 @@ amend_help	Selecteer een verkoop om te wijzigen, te annuleren of terug te betale
 applied_total_cap	TOEGEPAST TOTAAL
 bank_balance	Banksaldo
 bank_net_today	Bank netto vandaag
-branch_export_help	Export schrijftschrijft branch_snapshot_CODE_DATE.json in de back-upmap en kopieert het naar het klembord. Om de dag van een andere vestiging te importeren, bewaar haar bestand als import_branch_snapshot.json in dezelfde map en tik op Import.
+branch_export_help	Export schrijft branch_snapshot_CODE_DATE.json in de back-upmap en kopieert het naar het klembord. Om de dag van een andere vestiging te importeren, bewaar haar bestand als import_branch_snapshot.json in dezelfde map en tik op Import.
 brand_shown_help	Wordt getoond op schermen in de app. De naam en het pictogram van de geïnstalleerde app op dit apparaat blijven zoals in de store.
 app_icon	App-icoon
 logo_help	Optioneel winkellogo op schermen in de app.

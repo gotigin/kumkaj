@@ -569,7 +569,7 @@ amend_help	संशोधन, रद्द भा वापसी खाति�
 applied_total_cap	लागू कुल
 bank_balance	बैंक शेष
 bank_net_today	आज के बैंक नेट
-branch_export_help	Export backups फ़ोल्डर में branch_snapshot_CODE_DATE.json लिखतऽ हई आउर क्लिपबोर्ड पर कॉपी करतऽ हई। दूसरे आउटलेट के दिन इम्पोर्ट करने खातिर ओकर फ़ाइल उसी फ़ोल्डर में import_branch_snapshot.json नाम से रखेऽ, फिर Import दबाऽ।
+branch_export_help	निर्यात backups फ़ोल्डर में branch_snapshot_CODE_DATE.json लिखतऽ हई आउर क्लिपबोर्ड पर कॉपी करतऽ हई। दूसरे आउटलेट के दिन इम्पोर्ट करने खातिर ओकर फ़ाइल उसी फ़ोल्डर में import_branch_snapshot.json नाम से रखेऽ, फिर Import दबाऽ।
 brand_shown_help	ऐप के अंदर के स्क्रीन पर दिखतऽ हई। ई डिवाइस पर इंस्टॉल ऐप के नाम आउर आइकन प्लेटफ़ॉर्म लिस्टिंग जैसे ही रहतऽ हथ।
 app_icon	ऐप आइकन
 logo_help	ऐप के स्क्रीन पर दुकान के वैकल्पिक निशान।

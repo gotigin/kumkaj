@@ -569,7 +569,7 @@ amend_help	दुरुस्ती, रद्द किंवा परता�
 applied_total_cap	लागू एकूण
 bank_balance	बँक शिल्लक
 bank_net_today	आजचे बँक नेट
-branch_export_help	Export backups फोल्डरमध्ये branch_snapshot_CODE_DATE.json लिहितो व क्लिपबोर्डवर कॉपी करतो. दुसऱ्या आउटलेटचा दिवस इम्पोर्ट करण्यासाठी, त्याची फाइल त्याच फोल्डरमध्ये import_branch_snapshot.json नावाने ठेवा, मग Import दाबा.
+branch_export_help	निर्यात बॅकअप फोल्डरमध्ये branch_snapshot_CODE_DATE.json लिहितो व क्लिपबोर्डवर कॉपी करतो. दुसऱ्या आउटलेटचा दिवस आयात करण्यासाठी, त्याची फाइल त्याच फोल्डरमध्ये import_branch_snapshot.json नावाने ठेवा, मग आयात दाबा.
 brand_shown_help	अ‍ॅपमधील स्क्रीनवर दाखवले जाते. या डिव्हाइसवर इंस्टॉल केलेल्या अ‍ॅपचे नाव व आयकॉन प्लॅटफॉर्म लिस्टिंगप्रमाणेच राहते.
 app_icon	ॲप आयकॉन
 logo_help	ॲपच्या स्क्रीनवर दुकानाचे ऐच्छिक चिन्ह.

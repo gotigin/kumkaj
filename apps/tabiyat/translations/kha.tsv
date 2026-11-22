@@ -569,7 +569,7 @@ amend_help	Jied ia ka jingdie ban pynkylla, pynduh, lane pynphai biang. Ki jingp
 applied_total_cap	KA JINGPYNDONKAM BAROH
 bank_balance	Ka jingsah ha ka bank
 bank_net_today	Bank net mynta ka sngi
-branch_export_help	Export u thoh ia ka branch_snapshot_CODE_DATE.json ha ka folder backups bad u copy ia ka sha ka clipboard. Ban wanrah ia kawei pat ka sngi jong ka outlet, save ia ka file jong ka kum import_branch_snapshot.json ha kajuh ka folder, nangta nion Import.
+branch_export_help	Export u thoh u thoh ia ka branch_snapshot_CODE_DATE.json ha ka folder backups bad u copy ia ka sha ka clipboard. Ban wanrah ia kawei pat ka sngi jong ka outlet, save ia ka file jong ka kum import_branch_snapshot.json ha kajuh ka folder, nangta nion Import.
 brand_shown_help	La pyni ha ki screen hapoh ka app. Ka kyrteng bad ka icon jong ka app ba la buh ha kane ka tiar ki sah kum ka jingpynbna jong ka platform.
 app_icon	ikon app
 logo_help	Ka dak dukan kaba lah ban jied ha ki skrin ha ka app.

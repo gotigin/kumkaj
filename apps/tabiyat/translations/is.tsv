@@ -569,7 +569,7 @@ amend_help	Veldu sölu til að breyta, ógilda eða endurgreiða. Breytingar hal
 applied_total_cap	SEITT SAMTALS
 bank_balance	Inneign banka
 bank_net_today	Nettó bankans í dag
-branch_export_help	Export skrifar branch_snapshot_CODE_DATE.json í öryggisafritsmöppuna og afritar það á klemmuspjaldið. Til að flytja inn dag annars verslunar, vistaðu skrána sem import_branch_snapshot.json í sömu möppu og pikkaðu svo á Flytja inn.
+branch_export_help	Útflutningur skrifar skrifar branch_snapshot_CODE_DATE.json í öryggisafritsmöppuna og afritar það á klemmuspjaldið. Til að flytja inn dag annars verslunar, vistaðu skrána sem import_branch_snapshot.json í sömu möppu og pikkaðu svo á Flytja inn.
 brand_shown_help	Sýnt á skjám í appinu. Nafn og tákn uppsetts forrits á þessu tæki haldast sem vettvangsskráning.
 app_icon	App táknmynd
 logo_help	Valfrjálst verslunarmerki á skjáum í appinu.

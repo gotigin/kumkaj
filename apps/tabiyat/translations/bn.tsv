@@ -569,7 +569,7 @@ amend_help	সংশোধন, বাতিল বা ফেরতের জন�
 applied_total_cap	প্রয়োগকৃত মোট
 bank_balance	ব্যাংক ব্যালেন্স
 bank_net_today	আজকের ব্যাংক নেট
-branch_export_help	Export backups ফোল্ডারে branch_snapshot_CODE_DATE.json লেখে ও ক্লিপবোর্ডে কপি করে। অন্য আউটলেটের দিন ইম্পোর্ট করতে, তার ফাইল একই ফোল্ডারে import_branch_snapshot.json নামে রাখুন, তারপর Import চাপুন।
+branch_export_help	রপ্তানি ব্যাকআপ ফোল্ডারে branch_snapshot_CODE_DATE.json লেখে ও ক্লিপবোর্ডে কপি করে। অন্য আউটলেটের দিন আমদানি করতে, তার ফাইল একই ফোল্ডারে import_branch_snapshot.json নামে রাখুন, তারপর আমদানি চাপুন।
 brand_shown_help	অ্যাপের ভিতরের স্ক্রিনে দেখানো হয়। এই ডিভাইসে ইনস্টল করা অ্যাপের নাম ও আইকন প্ল্যাটফর্ম লিস্টিং অনুযায়ীই থাকে।
 app_icon	অ্যাপ আইকন
 logo_help	অ্যাপের স্ক্রিনে দোকানের ঐচ্ছিক চিহ্ন।

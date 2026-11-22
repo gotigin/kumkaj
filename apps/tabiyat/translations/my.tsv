@@ -569,7 +569,7 @@ amend_help	ပြင်ဆင်, ရုပ်သိမ်း, သို့မ�
 applied_total_cap	အသုံးပြုပြီးစုစုပေါင်း
 bank_balance	ဘဏ်ထဲတွင်ရှိသည့်အခြေအနေ
 bank_net_today	ဘဏ်နက်ဒီနေ့
-branch_export_help	Export သည် branch_snapshot_CODE_DATE.json ကို backups ဖိုလ်ဒါထဲရေးပြီး clipboard သို့ကူးယူသည်။ တခြား outlet ၏နေ့ကို import လုပ်လိုလျှင် ၎င်း၏ဖိုင်ကို အဲဒီပဲဖိုလ်ဒါထဲတွင် import_branch_snapshot.json အဖြစ်သိမ်းပြီး Import ကိုနှိပ်ပါ။
+branch_export_help	တင်ပို့မှုသည် သည် branch_snapshot_CODE_DATE.json ကို backups ဖိုလ်ဒါထဲရေးပြီး clipboard သို့ကူးယူသည်။ တခြား outlet ၏နေ့ကို import လုပ်လိုလျှင် ၎င်း၏ဖိုင်ကို အဲဒီပဲဖိုလ်ဒါထဲတွင် import_branch_snapshot.json အဖြစ်သိမ်းပြီး Import ကိုနှိပ်ပါ။
 brand_shown_help	အက်ပ်ထဲက ဖန်သားပြင်များတွင် ပြသည်။ ဒီစက်တွင် ထည့်သွင်းထားသော အက်ပ်အမည်နှင့် အိုင်ကွန်သည် ပလက်ဖောင်းစာရင်းအတိုင်း ရှိနေသည်။
 app_icon	အက်ပ် icon
 logo_help	အက်ပ်အတွင်း screen များပေါ်တွင် optional shop mark ရှိနိုင်သည်။
