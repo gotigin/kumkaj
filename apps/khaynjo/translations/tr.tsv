@@ -1222,7 +1222,7 @@ kot_field_on	göster
 kot_field_off	gizle
 kot_field_size	Yazı tipi boyutu
 kot_weight_light	İnce
-bill_kot_panel_help	Fiş içeriği ve mutfak fişi tipografisi. Yukarıdaki içerik genişliği hem fişin hem de mutfak fişinin genişliğidir.
+bill_kot_panel_help	Fiş ve mutfak slipi düzeni, her birinin kendi içerik genişliği var. «Fiş kasiyeri» fişi kesen veya kapatan kişidir; «KOT garson» o mutfak fişini gönderen kişidir — siparişin tam hikâyesi defterde kalır.
 std_size_ph	örn. 18, 20, 26…
 kot_show_shop	Dükkân adı
 kot_hide_shop	Dükkânı gizle

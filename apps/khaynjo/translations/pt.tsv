@@ -1222,7 +1222,7 @@ kot_field_on	mostrar
 kot_field_off	ocultar
 kot_field_size	Tamanho da fonte
 kot_weight_light	Fina
-bill_kot_panel_help	Conteúdo da fatura e tipografia dos tickets de cozinha. A largura de conteúdo acima é a da fatura e a do ticket de cozinha.
+bill_kot_panel_help	Layout da conta e do ticket de cozinha, cada um com a sua largura de conteúdo. «Caixa da conta» é quem emitiu ou liquidou a conta; «Garçom KOT» é quem enviou esse ticket de cozinha — a história completa do pedido fica nos livros.
 std_size_ph	ex. 18, 20, 26…
 kot_show_shop	Nome da loja
 kot_hide_shop	Ocultar loja

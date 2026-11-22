@@ -1222,7 +1222,7 @@ kot_field_on	afficher
 kot_field_off	masquer
 kot_field_size	Taille de police
 kot_weight_light	Fine
-bill_kot_panel_help	Contenu de facture et typographie des tickets cuisine. La largeur de contenu ci-dessus est celle de la facture et du ticket cuisine.
+bill_kot_panel_help	Mise en page de la note et du ticket cuisine, chacune avec sa largeur de contenu. «Caissier note» est qui a émis ou réglé la note ; «Serveur KOT» est qui a envoyé ce ticket cuisine — l’histoire complète de la commande reste dans les livres.
 std_size_ph	ex. 18, 20, 26…
 kot_show_shop	Nom du magasin
 kot_hide_shop	Masquer le magasin

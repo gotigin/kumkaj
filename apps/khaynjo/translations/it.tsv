@@ -1222,7 +1222,7 @@ kot_field_on	mostra
 kot_field_off	nascondi
 kot_field_size	Dimensione carattere
 kot_weight_light	Leggero
-bill_kot_panel_help	Contenuto conto e tipografia scontrini cucina. La larghezza del contenuto sopra vale per il conto e per lo scontrino cucina.
+bill_kot_panel_help	Layout di conto e scontrino cucina, ciascuno con la propria larghezza contenuto. «Cassiere conto» è chi ha emesso o saldato il conto; «Cameriere KOT» è chi ha inviato quel ticket cucina — la storia completa dell’ordine resta nei libri.
 std_size_ph	es. 18, 20, 26…
 kot_show_shop	Nome negozio
 kot_hide_shop	Nascondi negozio

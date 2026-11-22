@@ -1222,7 +1222,7 @@ kot_field_on	mostrar
 kot_field_off	ocultar
 kot_field_size	Tamaño de fuente
 kot_weight_light	Fina
-bill_kot_panel_help	Contenido de cuenta y tipografía de tickets de cocina. El ancho de contenido de arriba es el ancho de la cuenta y del ticket de cocina.
+bill_kot_panel_help	Diseño de cuenta y vale de cocina, cada uno con su propio ancho de contenido. «Cajero de cuenta» es quien emitió o liquidó la cuenta; «Camarero KOT» es quien envió ese ticket de cocina — la historia completa del pedido queda en los libros.
 std_size_ph	p. ej. 18, 20, 26…
 kot_show_shop	Nombre del local
 kot_hide_shop	Ocultar local
