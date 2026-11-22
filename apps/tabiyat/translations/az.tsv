@@ -459,8 +459,8 @@ printers_heading	Printerlər
 printers_help	Printerləri tapın, birini seçmək üçün vurun, sonra yalnız həmin cihazda test səhifəsi çap edin. Qəbz printerləri: Bill & Slip formatı → Bill.
 printers_host_only	Printerlər mağaza cihazında (Server) qurulur. Bu kassa hesabları və köhnə biletləri ora göndərir — Tap / əlavə et / təyin et Serverdə qalır. Sınaq səhifəsi və hesab çap ölçüsü Serverə gedir.
 printers_find_heading	Printerləri tap
-printers_find_tip	Tap bu cihazı skan edir və siyahını yeniləyir.
-printers_pool_empty	(hələ yoxdur — Tap düyməsinə toxunun)
+printers_find_tip	Basma bu cihazı skan edir və siyahını yeniləyir.
+printers_pool_empty	(hələ yoxdur — Bas düyməsinə toxunun)
 printer_assign_dd	Həqiqi printer: {place}
 printer_assign_pick	Həqiqi printer seçin
 printer_profile_heading	Düzüm
@@ -519,7 +519,7 @@ find_printers	Printerləri tap
 printers_looking	Axtarılır…
 saving_printer	Printer əlavə olunur…
 cancelled	Ləğv olundu
-printers_tap_find	Bu cihazın istifadə edə biləcəyi printerləri göstərmək üçün Tap düyməsinə toxunun.
+printers_tap_find	Bu cihazın istifadə edə biləcəyi printerləri göstərmək üçün Bas düyməsinə toxunun.
 printers_none_found	Heç nə tapılmadı — sistem printerinin adını və ya IP yazın (məs. 192.168.1.50).
 printer_from_find	{name} əlavə olundu
 queue_refused	Mağaza qəbul etmədi ({n}) — hər birini kassada yoxlayın:

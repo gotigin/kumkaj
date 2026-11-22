@@ -333,7 +333,7 @@ export_day	Allforio diwrnod
 extra_note_bill_ph	Nodyn ychwanegol ar y bil / gwerthiant hwn
 extra_tills_heading	Tiliau ychwanegol
 other_devices_help_heading	Gosod dyfeisiau eraill
-other_devices_help	Ar y ddyfais hon (Gweinydd): Dyfeisiau eraill → Caniatáu tiliau ychwanegol. Sylwch ar y cod paru a'r cyfeiriad Wi-Fi. Tap Caniatáu i ddyfeisiau eraill gysylltu os yw'n ymddangos. Ar gyfrifiadur, tapiwch Cychwyn gyda'r cyfrifiadur hwn. Ar bob dyfais arall: gosodwch yr app, dewiswch Modd Cleient, Dod o hyd i weinydd y siop (neu deipiwch y cyfeiriad), nodwch y cod paru, Pâr nawr. Mae archebion yn aros ar y ddyfais os bydd Wi-Fi yn disgyn ac yn mynd pan fydd y Gweinydd yn ateb eto. Mae argraffwyr ychwanegol wedi'u gosod ar y Gweinydd (Gosodiadau → Argraffwyr) - mae tiliau ychwanegol yn anfon biliau yno.
+other_devices_help	Ar y ddyfais hon (Gweinydd): Dyfeisiau eraill → Caniatáu tiliau ychwanegol. Sylwch ar y cod paru a'r cyfeiriad Wi-Fi. Tapiwch Caniatáu i ddyfeisiau eraill gysylltu os yw'n ymddangos. Ar gyfrifiadur, tapiwch Cychwyn gyda'r cyfrifiadur hwn. Ar bob dyfais arall: gosodwch yr app, dewiswch Modd Cleient, Dod o hyd i weinydd y siop (neu deipiwch y cyfeiriad), nodwch y cod paru, Pâr nawr. Mae archebion yn aros ar y ddyfais os bydd Wi-Fi yn disgyn ac yn mynd pan fydd y Gweinydd yn ateb eto. Mae argraffwyr ychwanegol wedi'u gosod ar y Gweinydd (Gosodiadau → Argraffwyr) - mae tiliau ychwanegol yn anfon biliau yno.
 forget_shop	Anghofio'r siop hon
 goods_received	Nwyddau a dderbyniwyd
 import_day	Mewnforio diwrnod
@@ -659,7 +659,7 @@ team_rights_changed	Hawliau wedi newid — Cadw gosodiad ar gyfer y person hwn
 they_owe_us	Maen nhw'n ein dyled ni
 unit_at_cap	Uned @
 units_help	Codau ar gyfer labeli eitemau (kg, darn, bag). Rhaid i bob uned gysylltu — yn uniongyrchol neu drwy unedau eraill — â safon (kg · cm · ml · pc), e.e. 1 crât = 2 bocs ac 1 bocs = 20 cm. Trosi: 1 o = ffactor i. Nid yw arian cyfred byth yn unedau.
-units_picker_help	Tap On / Off i ddangos uned mewn codwyr Prynu ac Eitemau. Mae unedau i ffwrdd yn dal i drawsnewid.
+units_picker_help	Tapiwch On / Off i ddangos uned mewn codwyr Prynu ac Eitemau. Mae unedau i ffwrdd yn dal i drawsnewid.
 unit_picker_on	Ymlaen
 unit_picker_off	I ffwrdd
 we_owe_them	Rydym yn eu dyled nhw
@@ -841,7 +841,7 @@ upi_vpa_ph	ID UPI (VPA)
 upi_payee_ph	Enw talai UPI (dewisol)
 show_upi_qr	Dangos UPI QR
 close_upi_qr	Cau
-upi_qr_help	Cwsmer yn sganio ac yn talu. Tap Cymryd taliad ar ôl iddynt dalu. Ail sgrin: agor URL Gweinydd / arddangos ar LAN.
+upi_qr_help	Cwsmer yn sganio ac yn talu. Tapiwch Cymryd taliad ar ôl iddynt dalu. Ail sgrin: agor URL Gweinydd / arddangos ar LAN.
 role_help_customer	Rôl: Cwsmer — cyfrif (maen nhw'n ein dyled ni). Gall yr un parti hefyd gyflenwi stoc.
 role_help_both	Rolau: Cwsmer + Cyflenwr — un parti, cyfrif a llyfrau taladwy, net yn Adroddiadau.
 role_help_supplier	Rôl: Cyflenwr — rydym yn eu dyled nhw am bryniannau.
