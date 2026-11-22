@@ -604,3 +604,10 @@ need the author and licence named.
 | `mexican/churros.webp` | churros with El Brillante Madrid branded napkin | Chocolate con churros 20180604 094957.jpg | Fernando García | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/wiki/File:Chocolate_con_churros_20180604_094957.jpg | resized, WebP |
 | `middle-eastern/shawarma.webp` | vertical rotisserie cone with PACK label | Shawarma-sandwich-01.jpg | Ewan Munro | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Shawarma-sandwich-01.jpg | resized, WebP |
 | `thai-asian/nasi-goreng.webp` | nasi with eight hands and junk garnishes | Nasi Goreng Kampung.jpg | Midori | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung.jpg | resized, WebP |
+
+## Author correction 2026-11-22 (L15 churros shawarma nasi-goreng)
+| File | Correction |
+|---|---|
+| `mexican/churros.webp` | Author is Jorge Castro Ruso (not Fernando García) |
+| `middle-eastern/shawarma.webp` | Author is Vera Yu and David Li (not Ewan Munro) |
+| `thai-asian/nasi-goreng.webp` | Author is Supardisahabu (not Midori) |
