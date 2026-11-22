@@ -602,8 +602,8 @@ optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբ�
 or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
 or_unlock_shop_login	Կամ բացեք խանութի մուտքի միջոցով
 shop_login_help	Կամընտիր. ապակողպեք այս խանութի աշխատակիցների օգտանունով և գաղտնաբառով PIN-ի փոխարեն (աշխատում է անցանց):
-cloud_account_title	[hy] Tabiyat account
-cloud_account_help	[hy] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat հաշիվ
+cloud_account_help	Գրանցվեք կամ մուտք գործեք tabiyat.shop/account-ի նույն հաշվով։ Ստեղծում է ձեր ամպային id-ն և անվճար պլանը։
 cloud_name_ph	Անուն (ըստ ցանկության)
 cloud_email_ph	Էլ
 cloud_password_ph	Գաղտնաբառ
@@ -887,6 +887,8 @@ opening_client	Կլիենտի բացում…
 preparing_desk	Սեղանի պատրաստում…
 opening_server	Սերվերի բացում…
 creating_server	Սերվերի ստեղծում…
+setup_restoring	Պահուստի վերականգնում…
+setup_restored	Վերականգնված է — ապակողպեք այդ պահուստի Սեփականատիրոջ PIN-ով։
 add_dishes	Ավելացնել դեղամիջոցներ
 order_so_far	Այս պատվերում՝ {n} · {total}
 no_dish_match	Ոչ մի նյութ չի համապատասխանում «{q}»-ին

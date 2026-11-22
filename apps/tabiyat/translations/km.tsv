@@ -602,8 +602,8 @@ optional_login_help	ការចូលស្រេចចិត្ត (អត្�
 or_unlock_login	ឬដោះសោដោយអត្តសញ្ញាណចូល + ពាក្យសម្ងាត់
 or_unlock_shop_login	ឬដោះសោជាមួយនឹងការចូលហាង
 shop_login_help	ស្រេចចិត្ត៖ ដោះសោដោយប្រើឈ្មោះអ្នកប្រើប្រាស់ និងពាក្យសម្ងាត់របស់បុគ្គលិករបស់ហាងនេះ ជំនួសឱ្យលេខសម្ងាត់ (ដំណើរការក្រៅបណ្តាញ)។
-cloud_account_title	[km] Tabiyat account
-cloud_account_help	[km] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	គណនី Tabiyat
+cloud_account_help	ចុះឈ្មោះ ឬចូលដោយប្រើគណនីដូចគ្នានឹង tabiyat.shop/account។ បង្កើត cloud id និងផែនការឥតគិតថ្លៃរបស់អ្នក។
 cloud_name_ph	ឈ្មោះ (ជាជម្រើស)
 cloud_email_ph	អ៊ីមែល
 cloud_password_ph	ពាក្យសម្ងាត់
@@ -887,6 +887,8 @@ opening_client	កំពុងបើកម៉ាស៊ីនភ្ញៀវ…
 preparing_desk	កំពុងរៀបចំតុ…
 opening_server	កំពុងបើក server…
 creating_server	កំពុងបង្កើត server…
+setup_restoring	កំពុងស្តារការបម្រុងទុក…
+setup_restored	បានស្តារ — ដោះសោដោយ PIN ម្ចាស់ពីការបម្រុងទុកនោះ។
 add_dishes	បន្ថែមថ្នាំ
 order_so_far	លើការកុម្ម៉ង់នេះ៖ {n} · {total}
 no_dish_match	គ្មានធាតុដែលត្រូវនឹង “{q}” ទេ

@@ -602,8 +602,8 @@ optional_login_help	Valfrjáls innskráning (auðkenni + lykilorð). Eigandi set
 or_unlock_login	Eða opnaðu með innskráningarauðkenni + lykilorði
 or_unlock_shop_login	Eða opnaðu með innskráningu í verslun
 shop_login_help	Valfrjálst: opnaðu með notandanafni og lykilorði starfsmanna þessarar verslunar í stað PIN-númers (virkar án nettengingar).
-cloud_account_title	[is] Tabiyat account
-cloud_account_help	[is] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat-reikningur
+cloud_account_help	Skráðu þig eða skráðu þig inn með sama reikningi og tabiyat.shop/account. Býr til skýja-auðkennið þitt og ókeypis áætlun.
 cloud_name_ph	Nafn (valfrjálst)
 cloud_email_ph	Tölvupóstur
 cloud_password_ph	Lykilorð
@@ -887,6 +887,8 @@ opening_client	Opnar viðskiptavin...
 preparing_desk	Undirbýr skrifborð...
 opening_server	Opnar þjón...
 creating_server	Býr til netþjón...
+setup_restoring	Endurheimti öryggisafrit…
+setup_restored	Endurheimt — opnaðu með eiganda-PIN úr því afriti.
 add_dishes	Bæta við lyfjum
 order_so_far	Í þessari pöntun: {n} · {total}
 no_dish_match	Enginn hlutur passar við „{q}“

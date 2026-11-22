@@ -602,8 +602,8 @@ optional_login_help	Изборно најавување (ид + лозинка).
 or_unlock_login	Или отклучете со ID за најава + лозинка
 or_unlock_shop_login	Или отклучете со најавување во продавницата
 shop_login_help	Изборно: отклучете со корисничко име и лозинка за персоналот на оваа продавница наместо со PIN (работи офлајн).
-cloud_account_title	[mk] Tabiyat account
-cloud_account_help	[mk] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Сметка Tabiyat
+cloud_account_help	Регистрирајте се или најавете се со истата сметка како tabiyat.shop/account. Создава ваш cloud id и бесплатен план.
 cloud_name_ph	Име (изборно)
 cloud_email_ph	Е-пошта
 cloud_password_ph	Лозинка
@@ -887,6 +887,8 @@ opening_client	Се отвора клиентот…
 preparing_desk	Се подготвува биро…
 opening_server	Се отвора серверот…
 creating_server	Се создава сервер…
+setup_restoring	Се враќа резервната копија…
+setup_restored	Вратено — отклучете со PIN на сопственикот од таа копија.
 add_dishes	Додадете лекови
 order_so_far	По оваа нарачка: {n} · {total}
 no_dish_match	Ниту една ставка не се совпаѓа со „{q}“

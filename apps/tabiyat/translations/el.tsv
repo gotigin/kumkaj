@@ -602,8 +602,8 @@ optional_login_help	Προαιρετική σύνδεση (id + κωδικός).
 or_unlock_login	Ή ξεκλείδωμα με id σύνδεσης + κωδικό
 or_unlock_shop_login	Ή ξεκλειδώστε με σύνδεση στο κατάστημα
 shop_login_help	Προαιρετικό: ξεκλειδώστε με το όνομα χρήστη και τον κωδικό πρόσβασης του προσωπικού αυτού του καταστήματος αντί για PIN (λειτουργεί εκτός σύνδεσης).
-cloud_account_title	[el] Tabiyat account
-cloud_account_help	[el] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Λογαριασμός Tabiyat
+cloud_account_help	Εγγραφείτε ή συνδεθείτε με τον ίδιο λογαριασμό με το tabiyat.shop/account. Δημιουργεί το αναγνωριστικό cloud και το δωρεάν σχέδιό σας.
 cloud_name_ph	Όνομα (προαιρετικό)
 cloud_email_ph	E-mail
 cloud_password_ph	Σύνθημα
@@ -887,6 +887,8 @@ opening_client	Άνοιγμα client…
 preparing_desk	Ετοιμασία γραφείου…
 opening_server	Άνοιγμα server…
 creating_server	Δημιουργία server…
+setup_restoring	Επαναφορά αντιγράφου ασφαλείας…
+setup_restored	Επαναφέρθηκε — ξεκλειδώστε με το PIN κατόχου από αυτό το αντίγραφο.
 add_dishes	Προσθέστε φάρμακα
 order_so_far	Σε αυτή την παραγγελία: {n} · {total}
 no_dish_match	Κανένα αντικείμενο δεν ταιριάζει με το "{q}"

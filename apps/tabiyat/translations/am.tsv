@@ -602,8 +602,8 @@ optional_login_help	አማራጭ መግቢያ (መታወቂያ + የይለፍ �
 or_unlock_login	ወይም በመግቢያ መታወቂያ + የይለፍ ቃል ይክፈቱ
 or_unlock_shop_login	ወይም በሱቅ መግቢያ ይክፈቱ
 shop_login_help	አማራጭ፡ ከፒን ይልቅ በዚህ የሱቅ ሰራተኛ የተጠቃሚ ስም እና ይለፍ ቃል ይክፈቱ (ከመስመር ውጭ ይሰራል)።
-cloud_account_title	[am] Tabiyat account
-cloud_account_help	[am] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	ሞክላንጆ መለያ
+cloud_account_help	እንደ tabiyat.shop/account በተመሳሳይ መለያ ይመዝገቡ ወይም ይግቡ። የእርስዎን የደመና መታወቂያ እና ነጻ ዕቅድ ይፈጥራል።
 cloud_name_ph	ስም (አማራጭ)
 cloud_email_ph	ኢሜይል
 cloud_password_ph	የይለፍ ቃል
@@ -887,6 +887,8 @@ opening_client	ክላየንት በመክፈት ላይ…
 preparing_desk	ጠረጴዛ በማዘጋጀት ላይ…
 opening_server	ሰርቨር በመክፈት ላይ…
 creating_server	ሰርቨር በመፍጠር ላይ…
+setup_restoring	ተተኪ እየተመለሰ ነው…
+setup_restored	ተመልሷል — ከዚያ ተተኪ የባለቤት PIN በመክፈት ይክፈቱ።
 add_dishes	መድሃኒቶችን ይጨምሩ
 order_so_far	በዚህ ትዕዛዝ፦ {n} · {total}
 no_dish_match	ከ"{q}" ጋር የሚዛመድ ምንም ንጥል የለም

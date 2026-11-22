@@ -600,22 +600,22 @@ net_word	Нетто
 offline_badge	ОФЛАЙН
 optional_login_help	Необязательный вход (ID + пароль). Владелец задаёт один раз; позже только сам пользователь может менять пароль.
 or_unlock_login	Или разблокировать по ID входа + паролю
-or_unlock_shop_login	[ru] Or unlock with shop login
-shop_login_help	[ru] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ru] Tabiyat account
-cloud_account_help	[ru] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ru] Name (optional)
-cloud_email_ph	[ru] Email
-cloud_password_ph	[ru] Password
-cloud_continue	[ru] Continue
-cloud_forgot	[ru] Forgot password?
-cloud_web_methods	[ru] Google and other methods on the website
-cloud_signing_in	[ru] Signing in…
-cloud_sending_reset	[ru] Sending reset link…
-cloud_forgot_sent	[ru] If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[ru] Account created. Check your email to verify when you can.
-cloud_cancel	[ru] Cancel
+or_unlock_shop_login	Или разблокировать входом в магазин
+shop_login_help	Необязательно: разблокируйте именем пользователя и паролем персонала этого магазина вместо PIN (работает офлайн).
+cloud_account_title	Аккаунт Tabiyat
+cloud_account_help	Зарегистрируйтесь или войдите с тем же аккаунтом, что и на tabiyat.shop/account. Создаёт ваш облачный id и бесплатный план.
+cloud_name_ph	Имя (необязательно)
+cloud_email_ph	Эл. почта
+cloud_password_ph	Пароль
+cloud_continue	Продолжить
+cloud_forgot	Забыли пароль?
+cloud_web_methods	Google и другие способы на сайте
+cloud_signing_in	Вход…
+cloud_sending_reset	Отправка ссылки для сброса…
+cloud_forgot_sent	Если у этого адреса есть аккаунт, ссылка для сброса уже отправляется.
+cloud_welcome	Вы вошли как {user} · {plan}
+cloud_created	Аккаунт создан. Когда сможете, проверьте почту для подтверждения.
+cloud_cancel	Отмена
 permission_preset	Набор прав
 product_only_tabiyat	Это приложение — только Tabiyat, система для ресторанов. Для других отраслей есть отдельные продукты Kumkaj.
 purchases_cogs	Закупки (COGS)
@@ -887,6 +887,8 @@ opening_client	Открытие клиента…
 preparing_desk	Подготовка стола…
 opening_server	Открытие сервера…
 creating_server	Создание сервера…
+setup_restoring	Восстановление резервной копии…
+setup_restored	Восстановлено — разблокируйте Owner PIN из этой копии.
 add_dishes	Добавить лекарства
 order_so_far	В этом заказе: {n} · {total}
 no_dish_match	Нет товара по запросу «{q}»

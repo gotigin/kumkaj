@@ -602,8 +602,8 @@ optional_login_help	Міндетті емес кіру (id + құпиясөз). 
 or_unlock_login	Немесе кіру id + құпиясөзбен құлыпты ашыңыз
 or_unlock_shop_login	Немесе дүкенге кіру арқылы құлыпты ашыңыз
 shop_login_help	Қосымша: PIN кодының орнына осы дүкен қызметкерінің пайдаланушы аты мен құпия сөзі арқылы құлыпты ашыңыз (офлайн режимде жұмыс істейді).
-cloud_account_title	[kk] Tabiyat account
-cloud_account_help	[kk] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat тіркелгісі
+cloud_account_help	tabiyat.shop/account-тегідей тіркелгімен тіркеліңіз немесе кіріңіз. Бұлттық id мен тегін жоспарыңызды жасайды.
 cloud_name_ph	Аты (міндетті емес)
 cloud_email_ph	Электрондық пошта
 cloud_password_ph	Құпия сөз
@@ -887,6 +887,8 @@ opening_client	Клиент ашылуда…
 preparing_desk	Касса дайындалуда…
 opening_server	Сервер ашылуда…
 creating_server	Сервер жасалуда…
+setup_restoring	Сақтық көшірме қалпына келтірілуде…
+setup_restored	Қалпына келтірілді — сол сақтық көшірмедегі Ие PIN-імен ашыңыз.
 add_dishes	Дәрілерді қосыңыз
 order_so_far	Осы тапсырыста: {n} · {total}
 no_dish_match	Ешбір элемент "{q}" сәйкес келмейді

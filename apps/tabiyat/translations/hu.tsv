@@ -602,8 +602,8 @@ optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajd
 or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
 or_unlock_shop_login	Vagy oldja fel bolti bejelentkezéssel
 shop_login_help	Opcionális: PIN-kód helyett az üzlet személyzetének felhasználónevével és jelszavával oldja fel a zárolást (offline módban működik).
-cloud_account_title	[hu] Tabiyat account
-cloud_account_help	[hu] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat-fiók
+cloud_account_help	Regisztráljon vagy jelentkezzen be ugyanazzal a fiókkal, mint a tabiyat.shop/account. Létrehozza a felhőazonosítóját és az ingyenes csomagot.
 cloud_name_ph	Név (nem kötelező)
 cloud_email_ph	Email
 cloud_password_ph	Jelszó
@@ -887,6 +887,8 @@ opening_client	Ügyfél megnyitása…
 preparing_desk	Asztal előkészítése…
 opening_server	Szerver megnyitása…
 creating_server	Szerver létrehozása…
+setup_restoring	Biztonsági mentés visszaállítása…
+setup_restored	Visszaállítva — oldja fel a mentés tulajdonosi PIN-jével.
 add_dishes	Adjon hozzá gyógyszereket
 order_so_far	Ennél a rendelésnél: {n} · {total}
 no_dish_match	Egyetlen elem sem felel meg a következőnek: „{q}”

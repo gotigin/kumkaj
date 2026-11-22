@@ -602,8 +602,8 @@ optional_login_help	По избор вход (ид + парола). Собств
 or_unlock_login	Или отключете с ид за вход + парола
 or_unlock_shop_login	Или отключете с влизане в магазина
 shop_login_help	По избор: отключете с потребителското име и паролата на този магазин вместо ПИН (работи офлайн).
-cloud_account_title	[bg] Tabiyat account
-cloud_account_help	[bg] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	акаунт на Tabiyat
+cloud_account_help	Регистрирайте се или влезте със същия акаунт като tabiyat.shop/account. Създава вашия облачен идентификатор и безплатен план.
 cloud_name_ph	Име (по избор)
 cloud_email_ph	Имейл
 cloud_password_ph	Парола
@@ -887,6 +887,8 @@ opening_client	Отваряне на клиент…
 preparing_desk	Подготовка на касата…
 opening_server	Отваряне на сървър…
 creating_server	Създаване на сървър…
+setup_restoring	Възстановяване на резервно копие…
+setup_restored	Възстановено — отключете с PIN на собственика от това копие.
 add_dishes	Добавете лекарства
 order_so_far	В тази поръчка: {n} · {total}
 no_dish_match	Няма артикули, съвпадащи с „{q}“

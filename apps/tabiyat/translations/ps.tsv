@@ -600,22 +600,22 @@ net_word	جال
 offline_badge	آفالین
 optional_login_help	ل (id + پاسورډ). مالک یو ځل ټاکي؛ یوازې کارونکي کولی شي وروسته پاسورډ بدل کړي.
 or_unlock_login	یا د ننوتلو ID + پاسورډ سره خلاص کړئ
-or_unlock_shop_login	[ps] Or unlock with shop login
-shop_login_help	[ps] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ps] Tabiyat account
-cloud_account_help	[ps] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ps] Name (optional)
-cloud_email_ph	[ps] Email
-cloud_password_ph	[ps] Password
-cloud_continue	[ps] Continue
-cloud_forgot	[ps] Forgot password?
-cloud_web_methods	[ps] Google and other methods on the website
-cloud_signing_in	[ps] Signing in…
-cloud_sending_reset	[ps] Sending reset link…
-cloud_forgot_sent	[ps] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	یا د پلورنځي ننوتلو سره خلاص کړئ
+shop_login_help	اختیاري: د PIN پر ځای د دې پلورنځي د کارکوونکي نوم او پټنوم سره خلاص کړئ (آفلاین کار کوي).
+cloud_account_title	د Tabiyat حساب
+cloud_account_help	د tabiyat.shop/account په څیر ورته حساب سره نوم لیکنه یا ننوځئ. ستاسو کلاوډ id او وړیا پلان جوړوي.
+cloud_name_ph	نوم (اختیاري)
+cloud_email_ph	ایمیل
+cloud_password_ph	پټنوم
+cloud_continue	دوام
+cloud_forgot	پټنوم مو هیر شوی؟
+cloud_web_methods	په ویب پاڼه کې Google او نورې طریقې
+cloud_signing_in	ننوتل…
+cloud_sending_reset	د بیا تنظیم لینک لیږل کیږي…
+cloud_forgot_sent	که هغه ایمیل حساب ولري، د بیا تنظیم لینک په لاره دی.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[ps] Account created. Check your email to verify when you can.
-cloud_cancel	[ps] Cancel
+cloud_created	حساب جوړ شو. کله چې کولی شئ خپل ایمیل وګورئ ترڅو تایید کړئ.
+cloud_cancel	لغوه
 permission_preset	دنده
 product_only_tabiyat	تبیت د درملتون عملیاتي سیسټم دی: د درملو پلور ، بیچ / پای ته رسیدو حساب کتاب ، کریډیټ او کتابونه - ستاسو په وسیلو کې آفلاین. د مهالویش H / Rx بیرغونه د مالک یادښتونه دي، نه اطاعت.
 purchases_cogs	پیرودونه (COGS)
@@ -887,6 +887,8 @@ opening_client	کلاینټ پرانیستل کېږي…
 preparing_desk	د میز چمتو کول...
 opening_server	د سرور پرانیستل...
 creating_server	سرور جوړول...
+setup_restoring	بیک اپ بیرته راګرځول کیږي…
+setup_restored	بیرته راوګرځېد — د هغه بیک اپ د خاوند PIN سره خلاص یې کړئ.
 add_dishes	درمل اضافه کړئ
 order_so_far	په دې ترتیب: {n} · {total}
 no_dish_match	هیڅ شی د "{q}" سره سمون نلري

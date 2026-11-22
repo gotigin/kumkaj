@@ -602,8 +602,8 @@ optional_login_help	Aukerako saio-hasiera (id + pasahitza). Jabeak behin ezartze
 or_unlock_login	Edo desblokeatu saio-id + pasahitzarekin
 or_unlock_shop_login	Edo desblokeatu dendan saioa hasteko
 shop_login_help	Aukerakoa: desblokeatu denda honetako langileen erabiltzaile-izenarekin eta pasahitzarekin PINarekin ordez (konexiorik gabe funtzionatzen du).
-cloud_account_title	[eu] Tabiyat account
-cloud_account_help	[eu] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat kontua
+cloud_account_help	Erregistratu edo hasi saioa tabiyat.shop/account-ren kontu berarekin. Zure hodeiko IDa eta doako plana sortzen ditu.
 cloud_name_ph	Izena (aukerakoa)
 cloud_email_ph	Posta elektronikoa
 cloud_password_ph	Pasahitza
@@ -887,6 +887,8 @@ opening_client	Bezeroa irekitzen…
 preparing_desk	Mahaia prestatzen…
 opening_server	Zerbitzaria irekitzen…
 creating_server	Zerbitzaria sortzen…
+setup_restoring	Babeskopia leheneratzen…
+setup_restored	Leheneratuta — desblokeatu babeskopia horretako Jabe PIN-arekin.
 add_dishes	Gehitu sendagaiak
 order_so_far	Eskaera honetan: {n} · {total}
 no_dish_match	Ez dago "{q}" bat datorren elementurik

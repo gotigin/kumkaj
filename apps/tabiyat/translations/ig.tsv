@@ -602,8 +602,8 @@ optional_login_help	Nbanye nhọrọ (njirimara + okwuntughe). Onye nwe na-etiny
 or_unlock_login	Ma ọ bụ mepee site na njirimara nbanye + okwuntughe
 or_unlock_shop_login	Ma ọ bụ jiri nbanye ụlọ ahịa mepee ya
 shop_login_help	Nhọrọ: jiri aha njirimara na paswọọdụ kpọghee ndị ọrụ ụlọ ahịa a kama PIN (na-arụ ọrụ na-anọghị n'ịntanetị).
-cloud_account_title	[ig] Tabiyat account
-cloud_account_help	[ig] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Akaụntụ Tabiyat
+cloud_account_help	Debanye aha ma ọ bụ banye na otu akaụntụ ahụ dị ka tabiyat.shop/account. Ọ na-emepụta cloud id gị na atụmatụ efu.
 cloud_name_ph	Aha (nhọrọ)
 cloud_email_ph	Email
 cloud_password_ph	Okwuntughe
@@ -887,6 +887,8 @@ opening_client	Na-emepe ngwa njedebe…
 preparing_desk	Na-akwadebe tebụl ọrụ…
 opening_server	Na-emepe sava…
 creating_server	Na-emepụta sava…
+setup_restoring	Na-eweghachi ndabere…
+setup_restored	Eweghachila — mepee ya site na PIN Onye nwe sitere na ndabere ahụ.
 add_dishes	Tinye ọgwụ
 order_so_far	Na iwu a: {n} · {total}
 no_dish_match	Ọ nweghị ihe dabara na "{q}"

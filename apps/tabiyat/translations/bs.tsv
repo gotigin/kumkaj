@@ -602,8 +602,8 @@ optional_login_help	Neobavezna prijava (id + lozinka). Vlasnik postavlja jednom;
 or_unlock_login	Ili otključajte id-em prijave + lozinkom
 or_unlock_shop_login	Ili otključajte prijavom u trgovinu
 shop_login_help	Opciono: otključajte korisničkim imenom i lozinkom osoblja ove trgovine umjesto PIN-om (radi van mreže).
-cloud_account_title	[bs] Tabiyat account
-cloud_account_help	[bs] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat račun
+cloud_account_help	Registrirajte se ili prijavite sa istim računom kao tabiyat.shop/account. Kreira vaš cloud ID i besplatni plan.
 cloud_name_ph	Ime (opcionalno)
 cloud_email_ph	Email
 cloud_password_ph	Lozinka
@@ -887,6 +887,8 @@ opening_client	Otvaram klijenta…
 preparing_desk	Pripremam pult…
 opening_server	Otvaram server…
 creating_server	Pravim server…
+setup_restoring	Vraćanje rezervne kopije…
+setup_restored	Vraćeno — otključajte vlasničkim PIN-om iz te kopije.
 add_dishes	Dodaj lijekove
 order_so_far	Na ovoj narudžbi: {n} · {total}
 no_dish_match	Nijedna stavka ne odgovara „{q}”

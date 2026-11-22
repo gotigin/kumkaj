@@ -600,22 +600,22 @@ net_word	Saafiga
 offline_badge	LA'AAN NET
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
-or_unlock_shop_login	[so] Or unlock with shop login
-shop_login_help	[so] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[so] Tabiyat account
-cloud_account_help	[so] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[so] Name (optional)
-cloud_email_ph	[so] Email
-cloud_password_ph	[so] Password
-cloud_continue	[so] Continue
-cloud_forgot	[so] Forgot password?
-cloud_web_methods	[so] Google and other methods on the website
-cloud_signing_in	[so] Signing in…
-cloud_sending_reset	[so] Sending reset link…
-cloud_forgot_sent	[so] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	Ama fur gelitaanka dukaanka
+shop_login_help	Ikhtiyaari: ku fur magaca isticmaale iyo erayga sirta ee shaqaalaha dukaankan halkii PIN (wuu shaqeeyaa offline).
+cloud_account_title	Akoonka Tabiyat
+cloud_account_help	Isdiiwaangeli ama gal akoonka la mid ah tabiyat.shop/account. Waxay abuurttaa cloud id-gaaga iyo qorshaha bilaashka ah.
+cloud_name_ph	Magaca (ikhtiyaari)
+cloud_email_ph	Email
+cloud_password_ph	Erayga sirta
+cloud_continue	Sii wad
+cloud_forgot	Ma illowday erayga sirta?
+cloud_web_methods	Google iyo habab kale ee websaydhka
+cloud_signing_in	Gelaya…
+cloud_sending_reset	Diraya xiriirika dib-u-dejinta…
+cloud_forgot_sent	Haddii emailkaasi leeyahay akoon, xiriirika dib-u-dejinta waa socdaa.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[so] Account created. Check your email to verify when you can.
-cloud_cancel	[so] Cancel
+cloud_created	Akoonka waa la sameeyay. Hubi emailkaaga si aad u xaqiijiso markaad awooddo.
+cloud_cancel	Jooji
 permission_preset	Shaqo
 product_only_tabiyat	Tabiyat waa nidaamka hawlgalka farmashiyaha: iibinta dawada, kaydinta dufcada/xilliga dhacay, credit iyo buugaag - offline on qalabkaaga. Jadwalka H / Rx calamada waa qoraalada mulkiilaha, ma aha u hogaansanaan.
 purchases_cogs	Iibsiga (COGS)
@@ -887,6 +887,8 @@ opening_client	Macaamiilka ayaa la furayaa…
 preparing_desk	Miiska ayaa la diyaarinayaa…
 opening_server	Server-ka ayaa la furayaa…
 creating_server	Server ayaa la samaynayaa…
+setup_restoring	Dib u soo celinta kaydka…
+setup_restored	Dib ayaa loo soo celiyay — fur PIN-ka Mulkiilaha ee kaydkaas.
 add_dishes	Daawooyinka ku dar
 order_so_far	Dalabkan: {n} · {total}
 no_dish_match	Ma jiro shay u dhigma "{q}"

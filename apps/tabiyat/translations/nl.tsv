@@ -600,22 +600,22 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Optionele login (id + wachtwoord). De eigenaar stelt het een keer in; daarna kan alleen de gebruiker het wachtwoord wijzigen.
 or_unlock_login	Of ontgrendelen met login-id + wachtwoord
-or_unlock_shop_login	[nl] Or unlock with shop login
-shop_login_help	[nl] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[nl] Tabiyat account
-cloud_account_help	[nl] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[nl] Name (optional)
-cloud_email_ph	[nl] Email
-cloud_password_ph	[nl] Password
-cloud_continue	[nl] Continue
-cloud_forgot	[nl] Forgot password?
-cloud_web_methods	[nl] Google and other methods on the website
-cloud_signing_in	[nl] Signing in…
-cloud_sending_reset	[nl] Sending reset link…
-cloud_forgot_sent	[nl] If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[nl] Account created. Check your email to verify when you can.
-cloud_cancel	[nl] Cancel
+or_unlock_shop_login	Of ontgrendel met winkellogin
+shop_login_help	Optioneel: ontgrendel met de gebruikersnaam en het wachtwoord van het personeel van deze winkel in plaats van de pincode (werkt offline).
+cloud_account_title	Tabiyat-account
+cloud_account_help	Registreer of meld je aan met hetzelfde account als tabiyat.shop/account. Maakt je cloud-id en gratis abonnement aan.
+cloud_name_ph	Naam (optioneel)
+cloud_email_ph	E-mail
+cloud_password_ph	Wachtwoord
+cloud_continue	Doorgaan
+cloud_forgot	Wachtwoord vergeten?
+cloud_web_methods	Google en andere methoden op de website
+cloud_signing_in	Bezig met aanmelden…
+cloud_sending_reset	Resetlink verzenden…
+cloud_forgot_sent	Als dat e-mailadres een account heeft, is er een resetlink onderweg.
+cloud_welcome	Aangemeld als {user} · {plan}
+cloud_created	Account aangemaakt. Controleer je e-mail om te verifiëren wanneer je kunt.
+cloud_cancel	Annuleren
 permission_preset	Machtigingsprofiel
 product_only_tabiyat	Deze app is alleen Tabiyat — het systeem voor restaurants. Andere vakken hebben eigen Kumkaj-producten.
 purchases_cogs	Inkopen (COGS)
@@ -887,6 +887,8 @@ opening_client	Client openen…
 preparing_desk	Bureau voorbereiden…
 opening_server	Bediende openen…
 creating_server	Bediende aanmaken…
+setup_restoring	Back-up herstellen…
+setup_restored	Hersteld — ontgrendel met de Owner-PIN uit die back-up.
 add_dishes	Geneesmiddelen toevoegen
 order_so_far	Op deze bestelling: {n} · {total}
 no_dish_match	Geen artikel komt overeen met „{q}“

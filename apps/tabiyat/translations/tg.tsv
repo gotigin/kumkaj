@@ -600,22 +600,22 @@ net_word	Соф
 offline_badge	БЕ ШАБАКА
 optional_login_help	Воридшавии ихтиёрӣ (шиноснома + парол). Соҳиб як бор мегузорад; танҳо корбар баъдтар паролро иваз мекунад.
 or_unlock_login	Ё бо шиносномаи воридшавӣ + парол кушоед
-or_unlock_shop_login	[tg] Or unlock with shop login
-shop_login_help	[tg] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[tg] Tabiyat account
-cloud_account_help	[tg] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[tg] Name (optional)
-cloud_email_ph	[tg] Email
-cloud_password_ph	[tg] Password
-cloud_continue	[tg] Continue
-cloud_forgot	[tg] Forgot password?
-cloud_web_methods	[tg] Google and other methods on the website
-cloud_signing_in	[tg] Signing in…
-cloud_sending_reset	[tg] Sending reset link…
-cloud_forgot_sent	[tg] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	Ё бо вуруди мағоза кушоед
+shop_login_help	Ихтиёрӣ: ба ҷои PIN бо номи корбар ва пароли кормандони ин мағоза кушоед (офлайн кор мекунад).
+cloud_account_title	Ҳисоби Tabiyat
+cloud_account_help	Бо ҳамон ҳисоби tabiyat.shop/account сабти ном кунед ё ворид шавед. Cloud id ва нақшаи ройгони шуморо месозад.
+cloud_name_ph	Ном (ихтиёрӣ)
+cloud_email_ph	Почта
+cloud_password_ph	Парол
+cloud_continue	Давом додан
+cloud_forgot	Паролро фаромӯш кардед?
+cloud_web_methods	Google ва усулҳои дигар дар сомона
+cloud_signing_in	Воридшавӣ…
+cloud_sending_reset	Ирсоли пайванди барқарорсозӣ…
+cloud_forgot_sent	Агар он почта ҳисоб дошта бошад, пайванди барқарорсозӣ дар роҳ аст.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[tg] Account created. Check your email to verify when you can.
-cloud_cancel	[tg] Cancel
+cloud_created	Ҳисоб сохта шуд. Почтаро барои тасдиқ санҷед, вақте метавонед.
+cloud_cancel	Бекор
 permission_preset	Кор
 product_only_tabiyat	Табият системаи оператсионии дорухона аст: фурӯши доруҳо, баҳисобгирии партия/мӯҳлат, кредит ва китобҳо - офлайн дар дастгоҳҳои шумо. Ҷадвали H / Rx парчамҳо қайдҳои соҳиб мебошанд, на мувофиқат.
 purchases_cogs	Харидҳо (COGS)
@@ -887,6 +887,8 @@ opening_client	Мизоҷ кушода мешавад…
 preparing_desk	Миз омода мешавад…
 opening_server	Server кушода мешавад…
 creating_server	Server сохта мешавад…
+setup_restoring	Нусхаи эҳтиётӣ барқарор мешавад…
+setup_restored	Барқарор шуд — бо PIN-и Соҳиб аз он нусха кушоед.
 add_dishes	Илова кардани доруҳо
 order_so_far	Дар ин фармоиш: {n} · {total}
 no_dish_match	Ягон ашё ба "{q}" мувофиқат намекунад

@@ -366,12 +366,12 @@ reason_amend_ph	संशोधन / रद्द / वापसी का क�
 reason_note_ph	कारण / नोट (नुकसान, गिनती, …)
 record_day_close	दिन बंद दर्ज करें
 business_day	«आज» कब नया शुरू होता है?
-business_day_help	«दिन बंद तक» चुनने पर «रोज़ बही» आधी रात के बाद भी चलती रहती है, जब तक आप दिन बंद दर्ज नहीं करते। «कैलेंडर की आधी रात» चुनने पर दिन स्थानीय समय से रात 12:00 बजे कटता है।
+business_day_help	«दिन बंद तक» चुनने पर «रोज़ बही» आधी रात के बाद भी चलती रहती है, जब तक आप दिन बंद दर्ज नहीं करते। «कैलेंडर की आधी रात» चुनने पर दिन स्थानीय समय से रात 00:00 बजे कटता है।
 biz_day_until_close	दिन बंद तक
 biz_day_midnight	कैलेंडर की आधी रात
 business_day_saved	कारोबारी दिन सहेजा गया
 report_day_lens	«आज» को ऐसे देखें
-report_day_lens_help	सिर्फ़ देखने के लिए — इससे यह नहीं बदलता कि «दिन बंद» कब «आज» को नया शुरू करता है। «दिन बंद के हिसाब से» पिछले दिन बंद से गिनता है; «आधी रात के हिसाब से» स्थानीय समय से रात 12:00 बजे कटता है।
+report_day_lens_help	सिर्फ़ देखने के लिए — इससे यह नहीं बदलता कि «दिन बंद» कब «आज» को नया शुरू करता है। «दिन बंद के हिसाब से» पिछले दिन बंद से गिनता है; «आधी रात के हिसाब से» स्थानीय समय से रात 00:00 बजे कटता है।
 report_lens_day_close	दिन बंद के हिसाब से
 report_lens_midnight	आधी रात के हिसाब से
 refresh_from_shop	दुकान से ताज़ा करें
@@ -607,7 +607,7 @@ cloud_account_help	tabiyat.shop/account वाले ही खाते से 
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
-cloud_continue	जारी रखना
+cloud_continue	जारी रखें
 cloud_forgot	पासवर्ड भूल गए?
 cloud_web_methods	वेबसाइट पर Google और अन्य तरीके
 cloud_signing_in	साइन इन हो रहा है…
@@ -615,7 +615,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	रद्द करना
+cloud_cancel	रद्द करें
 permission_preset	अनुमति प्रीसेट
 product_only_tabiyat	यह ऐप केवल Tabiyat है — रेस्टोरेंट ऑपरेटिंग सिस्टम। दूसरे व्यापारों के लिए अलग Kumkaj उत्पाद आते हैं।
 purchases_cogs	खरीद (COGS)
@@ -887,6 +887,8 @@ opening_client	क्लाइंट खुल रहा है…
 preparing_desk	डेस्क तैयार हो रहा है…
 opening_server	सर्वर खुल रहा है…
 creating_server	सर्वर बन रहा है…
+setup_restoring	बैकअप पुनर्स्थापित हो रहा है…
+setup_restored	पुनर्स्थापित — उस बैकअप के मालिक PIN से अनलॉक करें।
 add_dishes	दवाइयाँ जोड़ें
 order_so_far	इस ऑर्डर में: {n} · {total}
 no_dish_match	“{q}” से कोई आइटम मेल नहीं खाता

@@ -600,22 +600,22 @@ net_word	Halisi
 offline_badge	NJE YA MTANDAO
 optional_login_help	Kuingia kwa hiari (kitambulisho + nenosiri). Mmiliki huweka mara moja; baadaye mtumiaji pekee ndiye anayeweza kubadilisha nenosiri.
 or_unlock_login	Au fungua kwa kitambulisho cha kuingia + nenosiri
-or_unlock_shop_login	[sw] Or unlock with shop login
-shop_login_help	[sw] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sw] Tabiyat account
-cloud_account_help	[sw] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[sw] Name (optional)
-cloud_email_ph	[sw] Email
-cloud_password_ph	[sw] Password
-cloud_continue	[sw] Continue
-cloud_forgot	[sw] Forgot password?
-cloud_web_methods	[sw] Google and other methods on the website
-cloud_signing_in	[sw] Signing in…
-cloud_sending_reset	[sw] Sending reset link…
-cloud_forgot_sent	[sw] If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[sw] Account created. Check your email to verify when you can.
-cloud_cancel	[sw] Cancel
+or_unlock_shop_login	Au fungua kwa kuingia dukani
+shop_login_help	Si lazima: fungua kwa jina la mtumiaji na nenosiri la wafanyakazi wa duka hili badala ya PIN (inafanya kazi nje ya mtandao).
+cloud_account_title	Akaunti ya Tabiyat
+cloud_account_help	Jisajili au ingia ukitumia akaunti ile ile ya tabiyat.shop/account. Inaunda kitambulisho chako cha wingu na mpango wa bure.
+cloud_name_ph	Jina (si lazima)
+cloud_email_ph	Barua pepe
+cloud_password_ph	Nenosiri
+cloud_continue	Endelea
+cloud_forgot	Umesahau nenosiri?
+cloud_web_methods	Google na njia nyingine kwenye tovuti
+cloud_signing_in	Inaingia…
+cloud_sending_reset	Inatuma kiungo cha kuweka upya…
+cloud_forgot_sent	Ikiwa barua pepe hiyo ina akaunti, kiungo cha kuweka upya kinakuja.
+cloud_welcome	Umeingia kama {user} · {plan}
+cloud_created	Akaunti imeundwa. Angalia barua pepe yako kuthibitisha unapoweza.
+cloud_cancel	Ghairi
 permission_preset	Kipimo cha ruhusa
 product_only_tabiyat	Programu hii ni Tabiyat pekee — mfumo wa migahawa. Biashara nyingine zina bidhaa zao za Kumkaj.
 purchases_cogs	Ununuzi (COGS)
@@ -887,6 +887,8 @@ opening_client	Kupanua mteja…
 preparing_desk	Kuanzisha meza…
 opening_server	Kupanua mtendaji…
 creating_server	Kuunda mtendaji…
+setup_restoring	Inarejesha nakala rudufu…
+setup_restored	Imerejeshwa — fungua kwa PIN ya Mmiliki kutoka nakala hiyo.
 add_dishes	Ongeza dawa
 order_so_far	Kwenye oda hii: {n} · {total}
 no_dish_match	Hakuna kipengee kinacholingana na "{q}"

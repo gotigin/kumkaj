@@ -602,8 +602,8 @@ optional_login_help	Valgfrit login (id + adgangskode). Ejeren sætter det én ga
 or_unlock_login	Eller lås op med login-id + adgangskode
 or_unlock_shop_login	Eller lås op med butikslogin
 shop_login_help	Valgfrit: Lås op med denne butiks brugernavn og adgangskode i stedet for PIN-kode (fungerer offline).
-cloud_account_title	[da] Tabiyat account
-cloud_account_help	[da] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat konto
+cloud_account_help	Registrer eller log ind med samme konto som tabiyat.shop/account. Opretter dit sky-id og gratis abonnement.
 cloud_name_ph	Navn (valgfrit)
 cloud_email_ph	E-mail
 cloud_password_ph	Adgangskode
@@ -887,6 +887,8 @@ opening_client	Åbner klient…
 preparing_desk	Gør bordet klar…
 opening_server	Åbner server…
 creating_server	Opretter server…
+setup_restoring	Gendanner sikkerhedskopi…
+setup_restored	Gendannet — lås op med ejer-PIN fra den sikkerhedskopi.
 add_dishes	Tilføj medicin
 order_so_far	På denne ordre: {n} · {total}
 no_dish_match	Ingen vare matcher “{q}”

@@ -602,8 +602,8 @@ optional_login_help	Accesso facoltativo (id + password). Il titolare lo imposta 
 or_unlock_login	Oppure sblocca con id di accesso + password
 or_unlock_shop_login	Oppure sblocca con l'accesso al negozio
 shop_login_help	Facoltativo: sblocca con il nome utente e la password dello staff di questo negozio invece del PIN (funziona offline).
-cloud_account_title	[it] Tabiyat account
-cloud_account_help	[it] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Account Tabiyat
+cloud_account_help	Registrati o accedi con lo stesso account di tabiyat.shop/account. Crea il tuo id cloud e il piano gratuito.
 cloud_name_ph	Nome (facoltativo)
 cloud_email_ph	E-mail
 cloud_password_ph	Password
@@ -887,6 +887,8 @@ opening_client	Apertura cliente…
 preparing_desk	Preparazione bancone…
 opening_server	Apertura cameriere…
 creating_server	Creazione cameriere…
+setup_restoring	Ripristino del backup…
+setup_restored	Ripristinato — sblocca con il PIN proprietario di quel backup.
 add_dishes	Aggiungi medicinali
 order_so_far	In questo ordine: {n} · {total}
 no_dish_match	Nessun articolo corrisponde a «{q}»

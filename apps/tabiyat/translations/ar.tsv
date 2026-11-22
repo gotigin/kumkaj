@@ -602,8 +602,8 @@ optional_login_help	دخول اختياري (معرف + كلمة مرور). يض
 or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
 or_unlock_shop_login	ﺮﺠﺘﻤﻟﺍ ﻰﻟﺇ ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ ﻊﻣ ﺢﺘﻓ ﻭﺃ
 shop_login_help	.(ﺖﻧﺮﺘﻧﻹ﻿ﺎﺑ ﻝﺎﺼﺗﺍ ﻥﻭﺩ ﻞﻤﻌﻳ) ﻲﺼﺨﺸﻟﺍ ﻒﻳﺮﻌﺘﻟﺍ ﻢﻗﺭ ﻦﻣ ًﻻ﻿ﺪﺑ ﺮﺠﺘﻤﻟﺍ ﺍﺬﻫ ﻲﻔﻇﻮﻤﺑ ﻦﻴﺻﺎﺨﻟﺍ
-cloud_account_title	[ar] Tabiyat account
-cloud_account_help	[ar] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	حساب Tabiyat
+cloud_account_help	سجّل أو سجّل الدخول بنفس الحساب المستخدم في tabiyat.shop/account. ينشئ معرّف السحابة وخطة مجانية.
 cloud_name_ph	(ﻱﺭﺎﻴﺘﺧﺍ) ﻢﺳﻻ﻿ﺍ
 cloud_email_ph	ﻲﻧﻭﺮﺘﻜﻟﺇ ﺪﻳﺮﺑ
 cloud_password_ph	ﺭﻭﺮﻤﻟﺍ ﺔﻤﻠﻛ
@@ -887,6 +887,8 @@ opening_client	فتح العميل…
 preparing_desk	تجهيز الطاولة…
 opening_server	فتح الخادم…
 creating_server	إنشاء خادم…
+setup_restoring	جارٍ استعادة النسخة الاحتياطية…
+setup_restored	تمت الاستعادة — افتح القفل برقم PIN للمالك من تلك النسخة.
 add_dishes	أضف الأدوية
 order_so_far	في هذا الطلب: {n} · {total}
 no_dish_match	لا يوجد عنصر يطابق "{q}"

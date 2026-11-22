@@ -602,8 +602,8 @@ optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa;
 or_unlock_login	Oswa debloke ak id antre + modpas
 or_unlock_shop_login	Oswa debloke ak login nan magazen an
 shop_login_help	Si ou vle: déblotché ak non itilizatè ak modpas anplwaye magazen sa a olye pou yo PIN (travay offline).
-cloud_account_title	[ht] Tabiyat account
-cloud_account_help	[ht] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat kont
+cloud_account_help	Enskri oswa konekte ak menm kont ak tabiyat.shop/account. Kreye cloud id ou ak plan gratis la.
 cloud_name_ph	Non (si ou vle)
 cloud_email_ph	Imèl
 cloud_password_ph	Modpas
@@ -887,6 +887,8 @@ opening_client	Ap louvri kliyan…
 preparing_desk	Ap pare kontwa…
 opening_server	Ap louvri sèvè…
 creating_server	Ap kreye sèvè…
+setup_restoring	Ap restore backup…
+setup_restored	Restore — debloke ak PIN Pwopriyetè nan backup sa a.
 add_dishes	Ajoute medikaman
 order_so_far	Nan kòmand sa a: {n} · {total}
 no_dish_match	Pa gen atik ki koresponn ak "{q}"

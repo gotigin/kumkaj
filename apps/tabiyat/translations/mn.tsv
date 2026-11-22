@@ -602,20 +602,20 @@ optional_login_help	Заавал биш нэвтрэлт (id + нууц үг). �
 or_unlock_login	Эсвэл нэвтрэх id + нууц үгээр түгжээ тайлна
 or_unlock_shop_login	Эсвэл дэлгүүрт нэвтрэх замаар түгжээг тайлаарай
 shop_login_help	Нэмэлт: PIN кодын оронд энэ дэлгүүрийн ажилтнуудын хэрэглэгчийн нэр, нууц үгээр түгжээг тайлна (офлайнаар ажилладаг).
-cloud_account_title	[mn] Tabiyat account
-cloud_account_help	[mn] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat бүртгэл
+cloud_account_help	tabiyat.shop/account-тай ижил бүртгэлээр бүртгүүлэх эсвэл нэвтэрнэ үү. Таны cloud id болон үнэгүй төлөвлөгөөг үүсгэнэ.
 cloud_name_ph	Нэр (заавал биш)
 cloud_email_ph	Имэйл
-cloud_password_ph	[mn] Password
-cloud_continue	[mn] Continue
+cloud_password_ph	Нууц үг
+cloud_continue	Үргэлжлүүлэх
 cloud_forgot	Нууц үгээ мартсан уу?
 cloud_web_methods	Google болон вэбсайт дээрх бусад аргууд
-cloud_signing_in	[mn] Signing in…
+cloud_signing_in	Нэвтэрч байна…
 cloud_sending_reset	Дахин тохируулах холбоосыг илгээж байна…
-cloud_forgot_sent	[mn] If that email has an account, a reset link is on the way.
+cloud_forgot_sent	Тэр имэйлд бүртгэл байвал дахин тохируулах холбоос илгээгдэнэ.
 cloud_welcome	Signed in as {user} · {plan}
 cloud_created	Бүртгэл үүсгэсэн. Боломжтой үедээ баталгаажуулахын тулд имэйлээ шалгана уу.
-cloud_cancel	[mn] Cancel
+cloud_cancel	Цуцлах
 permission_preset	Ажил
 product_only_tabiyat	Табият бол эмийн сангийн үйлдлийн систем юм: эм зарах, багц/хугацаа дууссан нягтлан бодох бүртгэл, кредит болон ном - таны төхөөрөмж дээр офлайн. Хуваарийн H / Rx тугууд нь эзэмшигчийн тэмдэглэл бөгөөд дагаж мөрдөхгүй.
 purchases_cogs	Худалдан авалт (өртөг)
@@ -887,6 +887,8 @@ opening_client	Клиент нээгдэж байна…
 preparing_desk	Ширээ бэлтгэж байна…
 opening_server	Сервер нээгдэж байна…
 creating_server	Сервер үүсгэж байна…
+setup_restoring	Нөөц сэргээж байна…
+setup_restored	Сэргээгдлээ — тэр нөөцийн Эзний PIN-ээр нээнэ үү.
 add_dishes	Эм нэмнэ
 order_so_far	Энэ захиалгад: {n} · {total}
 no_dish_match	"{q}"-д тохирох зүйл алга

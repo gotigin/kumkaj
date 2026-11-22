@@ -601,20 +601,20 @@ offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
 or_unlock_shop_login	ꯅꯠꯔꯒꯥ ꯗꯨꯀꯥꯟ ꯂꯣꯒꯏꯅꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯑꯅꯂꯣꯛ ꯇꯧꯕꯥ꯫
-shop_login_help	[mni] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mni] Tabiyat account
-cloud_account_help	[mni] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mni] Name (optional)
-cloud_email_ph	[mni] Email
+shop_login_help	ঐচ্ছিক: PIN গী মহুত্তা মশিগী শপকী ষ্টাফ য়ুজরনেম অমসুং পাসৱর্দনা অনলক তৌবিয়ু (অফলাইন থবক তৌই)।
+cloud_account_title	Tabiyat অ্যাকাউন্ট
+cloud_account_help	tabiyat.shop/account গী মরম্না অ্যাকাউন্ট অদুনা রেজিস্টর তৌবিয়ু নত্ত্রগা সাইন ইন তৌবিয়ু। নহাক্কী cloud id অমসুং ফ্রী প্ল্যান শেম্মী।
+cloud_name_ph	মিং (ঐচ্ছিক)
+cloud_email_ph	ইমেইল
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
-cloud_forgot	[mni] Forgot password?
-cloud_web_methods	[mni] Google and other methods on the website
-cloud_signing_in	[mni] Signing in…
-cloud_sending_reset	[mni] Sending reset link…
-cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
+cloud_forgot	পাসৱর্দ কাওরব্রা?
+cloud_web_methods	ৱেবসাইত্তা Google অমসুং অতোপ্পা মথৌ
+cloud_signing_in	সাইন ইন তৌরি…
+cloud_sending_reset	রিসেট লিংক থাদোক্লি…
+cloud_forgot_sent	অদুগী ইমেইলদা একাউন্ট লৈরবদি রিসেট লিংক লমদা লৈরি।
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[mni] Account created. Check your email to verify when you can.
+cloud_created	একাউন্ট শেম্লে। অহল্লক্পগীদমক ইমেইল য়েংবিয়ু।
 cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 product_only_tabiyat	Tabiyat ꯑꯁꯤ ꯍꯤꯗꯥꯛ ꯀꯦꯟꯐꯝ ꯆꯠꯍꯟꯕ ꯁꯤꯁ꯭ꯇꯦꯝꯅꯤ: ꯍꯤꯗꯥꯛ ꯌꯣꯟꯕ, ꯕꯦꯆ/ꯑꯦꯛꯁꯄꯥꯌꯔꯤ ꯂꯥꯏꯔꯤꯛ, ꯈꯥꯇꯥ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇ ꯑꯣꯐꯂꯥꯏꯟ. ꯁꯦꯗ꯭ꯌꯨꯜ H / Rx ꯃꯈꯨꯠ ꯑꯁꯤ ꯃꯄꯨꯒꯤ ꯅꯣꯠꯅꯤ, ꯆꯠꯅꯕꯤ ꯅꯠꯇꯦ.
@@ -887,6 +887,8 @@ opening_client	ꯈꯣꯡꯖꯦꯜ ꯍꯥꯡꯗꯣꯛꯂꯤ…
 preparing_desk	ꯇꯦꯕꯜ ꯁꯦꯝꯂꯤ…
 opening_server	Server ꯍꯥꯡꯗꯣꯛꯂꯤ…
 creating_server	Server ꯁꯥꯂꯤ…
+setup_restoring	ꯕꯦꯛꯑꯄ ꯍꯟꯗꯣꯛꯂꯤ…
+setup_restored	ꯍꯟꯗꯣꯛꯂꯦ — ꯃꯁꯤꯒꯤ ꯕꯦꯛꯑꯄꯒꯤ ꯃꯄꯨ PIN ꯅ ꯍꯥꯡꯗꯣꯛꯎ।
 add_dishes	ꯍꯤꯗꯥꯛ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 order_so_far	ꯌꯥꯕ ꯑꯁꯤꯗ: {n} · {total}
 no_dish_match	“{q}”ꯒ ꯆꯥꯅꯕ ꯄꯣꯠ ꯂꯩꯇꯦ

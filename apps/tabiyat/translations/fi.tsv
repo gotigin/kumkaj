@@ -602,8 +602,8 @@ optional_login_help	Valinnainen kirjautuminen (tunnus + salasana). Omistaja aset
 or_unlock_login	Tai avaa lukitus kirjautumistunnuksella ja salasanalla
 or_unlock_shop_login	Tai avaa lukitus myymälään kirjautumalla
 shop_login_help	Valinnainen: avaa lukitus tämän kaupan henkilökunnan käyttäjätunnuksella ja salasanalla PIN-koodin sijaan (toimii offline-tilassa).
-cloud_account_title	[fi] Tabiyat account
-cloud_account_help	[fi] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyatn tili
+cloud_account_help	Rekisteröidy tai kirjaudu sisään samalla tilillä kuin tabiyat.shop/account. Luo pilvitunnuksesi ja ilmaisen suunnitelmasi.
 cloud_name_ph	Nimi (valinnainen)
 cloud_email_ph	Sähköposti
 cloud_password_ph	Salasana
@@ -887,6 +887,8 @@ opening_client	Avataan päätettä…
 preparing_desk	Valmistellaan pöytää…
 opening_server	Avataan palvelinta…
 creating_server	Luodaan palvelinta…
+setup_restoring	Palautetaan varmuuskopiota…
+setup_restored	Palautettu — avaa lukitus kyseisen varmuuskopion omistajan PIN-koodilla.
 add_dishes	Lisää lääkkeitä
 order_so_far	Tässä tilauksessa: {n} · {total}
 no_dish_match	Yksikään kohde ei vastaa "{q}"

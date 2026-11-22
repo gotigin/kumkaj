@@ -602,8 +602,8 @@ optional_login_help	任意ログイン（ID＋パスワード）。オーナー�
 or_unlock_login	またはログインID＋パスワードで解除
 or_unlock_shop_login	またはショップログインでロック解除
 shop_login_help	オプション: PIN の代わりにこのショップのスタッフのユーザー名とパスワードを使用してロックを解除します (オフラインで機能します)。
-cloud_account_title	[ja] Tabiyat account
-cloud_account_help	[ja] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyatアカウント
+cloud_account_help	tabiyat.shop/account と同じアカウントで登録またはサインインします。クラウドIDと無料プランを作成します。
 cloud_name_ph	名前 (オプション)
 cloud_email_ph	電子メール
 cloud_password_ph	パスワード
@@ -887,6 +887,8 @@ opening_client	クライアントを開いています…
 preparing_desk	デスクを準備しています…
 opening_server	サーバーを開いています…
 creating_server	サーバーを作成しています…
+setup_restoring	バックアップを復元しています…
+setup_restored	復元しました — そのバックアップのオーナーPINでロック解除してください。
 add_dishes	薬を追加する
 order_so_far	この注文：{n} · {total}
 no_dish_match	「{q}」に一致する項目はありません

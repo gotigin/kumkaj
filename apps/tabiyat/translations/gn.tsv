@@ -602,8 +602,8 @@ optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; p
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
 or_unlock_shop_login	Térã ojedesblokea tenda jeike rupive
 shop_login_help	Opcional: ojepe’a ko tenda mba’apoharakuéra réra ha ñe’ẽñemi reheve PIN rangue (omba’apo offline).
-cloud_account_title	[gn] Tabiyat account
-cloud_account_help	[gn] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat mombe'upy
+cloud_account_help	Ejeregistra térã eike peteĩ cuenta reheve tabiyat.shop/account ndive. Ojapo nde id cloud ha plan gratuito.
 cloud_name_ph	Téra (ojeporavóva) .
 cloud_email_ph	Correo electrónico rehegua
 cloud_password_ph	Taiñomi
@@ -887,6 +887,8 @@ opening_client	Oipe'ávo cliente...
 preparing_desk	Oñembosako'ívo escritorio...
 opening_server	Oipe'ávo servidor...
 creating_server	Omoheñóivo servidor...
+setup_restoring	Oñemoĩjeyhína backup…
+setup_restored	Oñemoĩjey — eike PIN Dueño pe backup-gui.
 add_dishes	Oñemoĩ pype pohã
 order_so_far	Ko tembiapoukapy rehe: {n} · {total}
 no_dish_match	Ndaipóri mba’e ojoajúva “{q}” rehe.

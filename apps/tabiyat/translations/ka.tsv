@@ -602,8 +602,8 @@ optional_login_help	არასავალდებულო შესვლ�
 or_unlock_login	ან განბლოკეთ შესვლის ID + პაროლით
 or_unlock_shop_login	ან განბლოკეთ მაღაზიის შესვლის საშუალებით
 shop_login_help	არასავალდებულო: განბლოკეთ ამ მაღაზიის პერსონალის მომხმარებლის სახელით და პაროლით PIN-ის ნაცვლად (მუშაობს ხაზგარეშე).
-cloud_account_title	[ka] Tabiyat account
-cloud_account_help	[ka] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat ანგარიში
+cloud_account_help	დარეგისტრირდით ან შედით იგივე ანგარიშით, რაც tabiyat.shop/account-ზეა. ქმნის თქვენს ღრუბლოვან id-ს და უფასო გეგმას.
 cloud_name_ph	სახელი (სურვილისამებრ)
 cloud_email_ph	ელფოსტა
 cloud_password_ph	პაროლი
@@ -887,6 +887,8 @@ opening_client	კლიენტის გახსნა…
 preparing_desk	მაგიდის მომზადება…
 opening_server	სერვერის გახსნა…
 creating_server	სერვერის შექმნა…
+setup_restoring	სარეზერვო ასლის აღდგენა…
+setup_restored	აღდგენილია — განბლოკეთ იმ სარეზერვო ასლის მფლობელის PIN-ით.
 add_dishes	დაამატეთ მედიკამენტები
 order_so_far	ამ შეკვეთით: {n} · {total}
 no_dish_match	არცერთი ელემენტი არ შეესაბამება „{q}“-ს

@@ -602,8 +602,8 @@ optional_login_help	Inicio de sesión opcional (id + contrasinal). O dono pono u
 or_unlock_login	Ou desbloquee con id de inicio de sesión + contrasinal
 or_unlock_shop_login	Ou desbloquear co inicio de sesión na tenda
 shop_login_help	Opcional: desbloquealo co nome de usuario e contrasinal do persoal desta tenda en lugar do PIN (funciona sen conexión).
-cloud_account_title	[gl] Tabiyat account
-cloud_account_help	[gl] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Conta Tabiyat
+cloud_account_help	Rexístrese ou inicie sesión coa mesma conta que tabiyat.shop/account. Crea o teu ID na nube e o teu plan gratuíto.
 cloud_name_ph	Nome (opcional)
 cloud_email_ph	Correo electrónico
 cloud_password_ph	Contrasinal
@@ -887,6 +887,8 @@ opening_client	Abrindo o cliente…
 preparing_desk	Preparando o mostrador…
 opening_server	Abrindo o servidor…
 creating_server	Creando o servidor…
+setup_restoring	Restaurando a copia de seguridade…
+setup_restored	Restaurada — desbloquea co PIN de propietario desa copia.
 add_dishes	Engade medicamentos
 order_so_far	Neste pedido: {n} · {total}
 no_dish_match	Ningún elemento coincide con "{q}"

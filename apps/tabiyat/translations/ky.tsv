@@ -602,8 +602,8 @@ optional_login_help	Кошумча логин (id + сырсөз). Ээси би
 or_unlock_login	Же логин id + сырсөз менен кулпусун ачыңыз
 or_unlock_shop_login	Же дүкөнгө кирүү менен кулпусун ачыңыз
 shop_login_help	Кошумча: PINдин ордуна бул дүкөндүн кызматкеринин логин жана сырсөз менен кулпусун ачыңыз (офлайн режиминде иштейт).
-cloud_account_title	[ky] Tabiyat account
-cloud_account_help	[ky] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat аккаунту
+cloud_account_help	tabiyat.shop/account менен бирдей аккаунт менен катталыңыз же кириңиз. Булут id жана акысыз планыңызды түзөт.
 cloud_name_ph	Аты (милдеттүү эмес)
 cloud_email_ph	Email
 cloud_password_ph	Купуя сөз
@@ -887,6 +887,8 @@ opening_client	кардар ачылууда…
 preparing_desk	Үстөл даярдалууда…
 opening_server	Сервер ачылууда…
 creating_server	Сервер түзүлүүдө…
+setup_restoring	Камдык көчürmө калыбына келтирилүүдө…
+setup_restored	Калыбына келтирилди — ошол камдык көчүрмөдөгү Ээ PIN менен ачыңыз.
 add_dishes	Дары-дармектерди кошуңуз
 order_so_far	Бул буйрутма боюнча: {n} · {total}
 no_dish_match	"{q}" эч нерсе дал келбейт

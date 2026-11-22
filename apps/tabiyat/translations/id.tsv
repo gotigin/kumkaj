@@ -602,8 +602,8 @@ optional_login_help	Login opsional (ID + kata sandi). Pemilik mengaturnya sekali
 or_unlock_login	Atau buka kunci dengan ID login + kata sandi
 or_unlock_shop_login	Atau buka kunci dengan login toko
 shop_login_help	Opsional: buka kunci dengan nama pengguna dan kata sandi staf toko ini, bukan PIN (berfungsi offline).
-cloud_account_title	[id] Tabiyat account
-cloud_account_help	[id] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Akun Tabiyat
+cloud_account_help	Daftar atau masuk dengan akun yang sama seperti tabiyat.shop/account. Membuat id cloud dan paket gratis Anda.
 cloud_name_ph	Nama (opsional)
 cloud_email_ph	E-mail
 cloud_password_ph	Kata sandi
@@ -887,6 +887,8 @@ opening_client	Membuka klien…
 preparing_desk	Mempersiapkan meja…
 opening_server	Membuka pelayan…
 creating_server	Membuat pelayan…
+setup_restoring	Memulihkan cadangan…
+setup_restored	Dipulihkan — buka kunci dengan PIN Pemilik dari cadangan itu.
 add_dishes	Tambahkan obat-obatan
 order_so_far	Di pesanan ini: {n} · {total}
 no_dish_match	Tidak ada item yang cocok dengan “{q}”

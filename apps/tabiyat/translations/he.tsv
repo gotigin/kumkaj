@@ -602,8 +602,8 @@ optional_login_help	כניסה אופציונלית (מזהה + סיסמה). ה�
 or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
 or_unlock_shop_login	תונחל הסינכ תועצמאב הליענה תא לטב וא
 shop_login_help	.(ןווקמ אל בצמב דבוע) PIN םוקמב תונחה תווצ לש המסיסהו שמתשמה םש םע הליענה תא ל
-cloud_account_title	[he] Tabiyat account
-cloud_account_help	[he] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat ןובשח
+cloud_account_help	.ךלש תימניחה תינכותהו ןנעה ההזמ תא רצוי .tabiyat.shop/account ומכ ןובשח ותוא ם
 cloud_name_ph	(ילנויצפוא) םש
 cloud_email_ph	יִנֹורטקֶלֶא
 cloud_password_ph	הָמסיִס
@@ -887,6 +887,8 @@ opening_client	פותח מסוף…
 preparing_desk	מכין שולחן…
 opening_server	פותח שרת…
 creating_server	יוצר שרת…
+setup_restoring	משחזרים גיבוי…
+setup_restored	שוחזר — בטל נעילה עם PIN הבעלים מאותו גיבוי.
 add_dishes	הוסף תרופות
 order_so_far	בהזמנה הזו: {n} · {total}
 no_dish_match	אין פריט תואם "{q}"

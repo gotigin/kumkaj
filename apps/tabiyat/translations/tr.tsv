@@ -600,22 +600,22 @@ net_word	Net
 offline_badge	ÇEVRİMDIŞI
 optional_login_help	İsteğe bağlı giriş (kimlik + parola). Sahibi bir kez ayarlar; sonrasında parolayı yalnızca kullanıcı değiştirebilir.
 or_unlock_login	Veya giriş kimliği + parola ile kilidi açın
-or_unlock_shop_login	[tr] Or unlock with shop login
-shop_login_help	[tr] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[tr] Tabiyat account
-cloud_account_help	[tr] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[tr] Name (optional)
-cloud_email_ph	[tr] Email
-cloud_password_ph	[tr] Password
-cloud_continue	[tr] Continue
-cloud_forgot	[tr] Forgot password?
-cloud_web_methods	[tr] Google and other methods on the website
-cloud_signing_in	[tr] Signing in…
-cloud_sending_reset	[tr] Sending reset link…
-cloud_forgot_sent	[tr] If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[tr] Account created. Check your email to verify when you can.
-cloud_cancel	[tr] Cancel
+or_unlock_shop_login	Veya mağaza girişi ile kilidi aç
+shop_login_help	İsteğe bağlı: PIN yerine bu mağazanın personel kullanıcı adı ve şifresiyle kilidi açın (çevrimdışı çalışır).
+cloud_account_title	Tabiyat hesabı
+cloud_account_help	tabiyat.shop/account ile aynı hesapla kaydolun veya oturum açın. Bulut kimliğinizi ve ücretsiz planınızı oluşturur.
+cloud_name_ph	Ad (isteğe bağlı)
+cloud_email_ph	E-posta
+cloud_password_ph	Şifre
+cloud_continue	Devam
+cloud_forgot	Şifrenizi mi unuttunuz?
+cloud_web_methods	Web sitesinde Google ve diğer yöntemler
+cloud_signing_in	Oturum açılıyor…
+cloud_sending_reset	Sıfırlama bağlantısı gönderiliyor…
+cloud_forgot_sent	O e-postanın bir hesabı varsa sıfırlama bağlantısı yolda.
+cloud_welcome	{user} · {plan} olarak oturum açıldı
+cloud_created	Hesap oluşturuldu. Doğrulamak için uygun olduğunuzda e-postanızı kontrol edin.
+cloud_cancel	İptal
 permission_preset	İzin ön ayarı
 product_only_tabiyat	Bu uygulama yalnızca Tabiyat — restoran işletim sistemi. Diğer işler için ayrı Kumkaj ürünleri var.
 purchases_cogs	Alımlar (COGS)
@@ -887,6 +887,8 @@ opening_client	Müşteri açılıyor…
 preparing_desk	Masa hazırlanıyor…
 opening_server	Sunucu açılıyor…
 creating_server	Sunucu oluşturuluyor…
+setup_restoring	Yedek geri yükleniyor…
+setup_restored	Geri yüklendi — o yedekteki Sahip PIN’i ile kilidi açın.
 add_dishes	İlaç ekle
 order_so_far	Bu siparişte: {n} · {total}
 no_dish_match	“{q}” ile eşleşen ürün yok

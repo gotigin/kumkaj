@@ -602,8 +602,8 @@ optional_login_help	Nebūtinas prisijungimas (id + slaptažodis). Savininkas nus
 or_unlock_login	Arba atrakinkite prisijungimo id + slaptažodžiu
 or_unlock_shop_login	Arba atrakinkite prisijungę prie parduotuvės
 shop_login_help	Pasirenkama: atrakinkite naudodami šios parduotuvės personalo naudotojo vardą ir slaptažodį, o ne PIN kodą (veikia neprisijungus).
-cloud_account_title	[lt] Tabiyat account
-cloud_account_help	[lt] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat paskyra
+cloud_account_help	Užsiregistruokite arba prisijunkite tuo pačiu paskyra kaip tabiyat.shop/account. Sukuria jūsų debesies id ir nemokamą planą.
 cloud_name_ph	Vardas (neprivaloma)
 cloud_email_ph	El. paštas
 cloud_password_ph	Slaptažodis
@@ -887,6 +887,8 @@ opening_client	Atidaromas klientas…
 preparing_desk	Ruošiamas stalas…
 opening_server	Atidaromas serveris…
 creating_server	Kuriamas serveris…
+setup_restoring	Atkuriama atsarginė kopija…
+setup_restored	Atkurta — atrakinkite tos atsarginės kopijos savininko PIN.
 add_dishes	Pridėkite vaistų
 order_so_far	Šiame užsakyme: {n} · {total}
 no_dish_match	Nė vienas elementas neatitinka „{q}“

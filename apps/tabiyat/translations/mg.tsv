@@ -602,8 +602,8 @@ optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mame
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
 or_unlock_shop_login	Na sokafy amin'ny fidirana amin'ny fivarotana
 shop_login_help	Azo atao: sokafy amin'ny solon'anarana sy tenimiafina mpiasan'ity fivarotana ity fa tsy PIN (miasa ivelan'ny aterineto).
-cloud_account_title	[mg] Tabiyat account
-cloud_account_help	[mg] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Kaonty Tabiyat
+cloud_account_help	Misoratra anarana na midira amin’ny kaonty mitovy amin’ny tabiyat.shop/account. Mamorona ny cloud id sy ny drafitra maimaim-poana.
 cloud_name_ph	Anarana (tsy voatery)
 cloud_email_ph	mailaka
 cloud_password_ph	Password
@@ -887,6 +887,8 @@ opening_client	Manokatra mpanjifa…
 preparing_desk	Manomana birao…
 opening_server	Manokatra mpizara…
 creating_server	Mamorona mpizara…
+setup_restoring	Famerenana ny backup…
+setup_restored	Naverina — sokafy amin’ny PIN Tompon’ny backup izany.
 add_dishes	Ampio fanafody
 order_so_far	Amin'ity baiko ity: {n} · {total}
 no_dish_match	Tsy misy singa mifanaraka amin'ny "{q}"

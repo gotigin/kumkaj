@@ -602,8 +602,8 @@ optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iest
 or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
 or_unlock_shop_login	Vai arī atbloķējiet, izmantojot veikala pieteikšanos
 shop_login_help	Pēc izvēles: atbloķējiet, izmantojot šī veikala personāla lietotājvārdu un paroli, nevis PIN kodu (darbojas bezsaistē).
-cloud_account_title	[lv] Tabiyat account
-cloud_account_help	[lv] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat konts
+cloud_account_help	Reģistrējieties vai pierakstieties ar to pašu kontu kā tabiyat.shop/account. Izveido jūsu mākoņa id un bezmaksas plānu.
 cloud_name_ph	Vārds (neobligāti)
 cloud_email_ph	E-pasts
 cloud_password_ph	Parole
@@ -887,6 +887,8 @@ opening_client	Atver termināli…
 preparing_desk	Sagatavo galdu…
 opening_server	Atver serveri…
 creating_server	Izveido serveri…
+setup_restoring	Atjauno dublējumu…
+setup_restored	Atjaunots — atbloķējiet ar tās dublējuma īpašnieka PIN.
 add_dishes	Pievienojiet zāles
 order_so_far	Šajā pasūtījumā: {n} · {total}
 no_dish_match	Neviens vienums neatbilst “{q}”

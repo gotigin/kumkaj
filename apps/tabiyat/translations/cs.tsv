@@ -602,8 +602,8 @@ optional_login_help	Volitelné přihlášení (id + heslo). Vlastník nastaví j
 or_unlock_login	Nebo odemkněte pomocí přihlašovacího jména + hesla
 or_unlock_shop_login	Nebo odemkněte přihlášením do obchodu
 shop_login_help	Volitelné: místo PIN odemkněte pomocí uživatelského jména a hesla zaměstnanců tohoto obchodu (funguje offline).
-cloud_account_title	[cs] Tabiyat account
-cloud_account_help	[cs] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Účet Tabiyat
+cloud_account_help	Zaregistrujte se nebo se přihlaste pomocí stejného účtu jako tabiyat.shop/account. Vytvoří vaše cloudové ID a bezplatný plán.
 cloud_name_ph	Jméno (volitelné)
 cloud_email_ph	E-mail
 cloud_password_ph	Heslo
@@ -887,6 +887,8 @@ opening_client	Otevírání klienta…
 preparing_desk	Příprava stolu…
 opening_server	Otevírání serveru…
 creating_server	Vytváření serveru…
+setup_restoring	Obnovování zálohy…
+setup_restored	Obnoveno — odemkněte PIN vlastníka z této zálohy.
 add_dishes	Přidejte léky
 order_so_far	V tomto pořadí: {n} · {total}
 no_dish_match	Žádná položka neodpovídá „{q}“

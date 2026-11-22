@@ -602,8 +602,8 @@ optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyu
 or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
 or_unlock_shop_login	Və ya mağaza girişi ilə kilidini açın
 shop_login_help	Könüllü: PIN əvəzinə bu mağazanın işçi adı və parolu ilə kilidi açın (oflayn işləyir).
-cloud_account_title	[az] Tabiyat account
-cloud_account_help	[az] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Tabiyat hesabı
+cloud_account_help	tabiyat.shop/account ilə eyni hesabla qeydiyyatdan keçin və ya daxil olun. Bulud id və pulsuz planınızı yaradır.
 cloud_name_ph	Ad (istəyə görə)
 cloud_email_ph	E-poçt
 cloud_password_ph	parol
@@ -887,6 +887,8 @@ opening_client	Klient açılır…
 preparing_desk	Masa hazırlanır…
 opening_server	Server açılır…
 creating_server	Server yaradılır…
+setup_restoring	Ehtiyat bərpa olunur…
+setup_restored	Bərpa olundu — həmin ehtiyatdakı Sahib PIN ilə kilidi açın.
 add_dishes	Dərman əlavə et
 order_so_far	Bu sifarişdə: {n} · {total}
 no_dish_match	“{q}” ilə uyğun gələn məhsul yoxdur

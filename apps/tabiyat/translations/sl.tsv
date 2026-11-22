@@ -600,22 +600,22 @@ net_word	Neto
 offline_badge	BREZ POVEZAVE
 optional_login_help	Neobvezna prijava (id + geslo). Lastnik nastavi enkrat; geslo lahko pozneje spremeni samo uporabnik.
 or_unlock_login	Ali odklenite s prijavnim id + geslom
-or_unlock_shop_login	[sl] Or unlock with shop login
-shop_login_help	[sl] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sl] Tabiyat account
-cloud_account_help	[sl] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[sl] Name (optional)
-cloud_email_ph	[sl] Email
-cloud_password_ph	[sl] Password
-cloud_continue	[sl] Continue
-cloud_forgot	[sl] Forgot password?
-cloud_web_methods	[sl] Google and other methods on the website
-cloud_signing_in	[sl] Signing in…
-cloud_sending_reset	[sl] Sending reset link…
-cloud_forgot_sent	[sl] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	Ali odkleni s prijavo v trgovino
+shop_login_help	Izbirno: odklenite z uporabniškim imenom in geslom osebja te trgovine namesto PIN (deluje brez povezave).
+cloud_account_title	Račun Tabiyat
+cloud_account_help	Registrirajte se ali se prijavite z istim računom kot tabiyat.shop/account. Ustvari vaš cloud id in brezplačni načrt.
+cloud_name_ph	Ime (izbirno)
+cloud_email_ph	E-pošta
+cloud_password_ph	Geslo
+cloud_continue	Nadaljuj
+cloud_forgot	Ste pozabili geslo?
+cloud_web_methods	Google in druge metode na spletnem mestu
+cloud_signing_in	Prijavljanje…
+cloud_sending_reset	Pošiljanje povezave za ponastavitev…
+cloud_forgot_sent	Če ima ta e-pošta račun, je povezava za ponastavitev na poti.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[sl] Account created. Check your email to verify when you can.
-cloud_cancel	[sl] Cancel
+cloud_created	Račun ustvarjen. Preverite e-pošto za potrditev, ko lahko.
+cloud_cancel	Prekliči
 permission_preset	Delo
 product_only_tabiyat	Tabiyat je lekarniški operacijski sistem: prodaja zdravil, knjigovodstvo serij/potekov, kredit in knjige – brez povezave v vaših napravah. Zastavice seznama H / Rx so opombe lastnika, ne skladnost.
 purchases_cogs	Nakupi (nabavna vrednost)
@@ -887,6 +887,8 @@ opening_client	Odpiranje odjemalca…
 preparing_desk	Priprava pulta…
 opening_server	Odpiranje strežnika…
 creating_server	Ustvarjanje strežnika…
+setup_restoring	Obnavljanje varnostne kopije…
+setup_restored	Obnovljeno — odklenite z lastniškim PIN-om iz te varnostne kopije.
 add_dishes	Dodajte zdravila
 order_so_far	V tem naročilu: {n} · {total}
 no_dish_match	Noben element se ne ujema z “{q}”

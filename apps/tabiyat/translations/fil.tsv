@@ -602,8 +602,8 @@ optional_login_help	Opsyonal na pag-login (id + password). Nagtatakda ang may-ar
 or_unlock_login	O i-unlock gamit ang login id + password
 or_unlock_shop_login	O i-unlock gamit ang pag-login sa tindahan
 shop_login_help	Opsyonal: i-unlock gamit ang username at password ng staff ng shop na ito sa halip na PIN (gumagana offline).
-cloud_account_title	[fil] Tabiyat account
-cloud_account_help	[fil] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	Account ng Tabiyat
+cloud_account_help	Magrehistro o mag-sign in gamit ang parehong account gaya ng tabiyat.shop/account. Gumagawa ng cloud id at libreng plan mo.
 cloud_name_ph	Pangalan (opsyonal)
 cloud_email_ph	Email
 cloud_password_ph	Password
@@ -887,6 +887,8 @@ opening_client	Binubuksan ang kliyente…
 preparing_desk	Inihahanda ang desk…
 opening_server	Binubuksan ang server…
 creating_server	Gumagawa ng server…
+setup_restoring	Ibinabalik ang backup…
+setup_restored	Naibalik — i-unlock gamit ang Owner PIN mula sa backup na iyon.
 add_dishes	Magdagdag ng mga gamot
 order_so_far	Sa order na ito: {n} · {total}
 no_dish_match	Walang item na tumutugma sa "{q}"
