@@ -576,7 +576,7 @@ currency_use_help	Przewiń i dotknij opcji Użyj dla dowolnej obsługiwanej walu
 day_close_help	Rejestracja zamknięcia dnia zapisuje to podsumowanie (i wariancję szuflady, jeśli została zliczona) w dzienniku audytu. Nie przestaje sprzedawać.
 expenses_word	Wydatki
 feature_access_help	Co mogą otworzyć — opcjonalne; powyższe zadanie już ustawia wartość domyślną
-fresh_book_kirano	Świeży = pusty katalog (dodaj pozycje później). Książka = wpisz stan początkowy i poniżej kto jest Ci winien.
+fresh_book_kirano	Od zera = pusty katalog (dodaj pozycje później). Księga = wpisz poniżej stan początkowy i kto jest Ci winien.
 fresh_selected	Świeżo wybrane — katalog pozostaje pusty. Kliknij Gotowe, gdy będziesz gotowy.
 gross_word	Brutto
 how_start	Jak chcesz zacząć?
