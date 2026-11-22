@@ -1,6 +1,6 @@
 # Moklanjo privacy policy
 
-_Last updated: 16 November 2026_
+_Last updated: 22 November 2026_
 
 ## Who we are
 
@@ -16,7 +16,8 @@ settings — are stored **on the devices where you install Moklanjo**.
 
 - You do **not** need a Kumkaj account to use the app locally.
 - We do **not** require cloud sync for booking or day-to-day desk use.
-- Optional Kumkaj Cloud (if offered later) will be separate and opt-in.
+- Optional Kumkaj Cloud at [moklanjo.com/shop](https://moklanjo.com/shop) is
+  separate and opt-in; local books stay on your devices unless you choose it.
 
 ## What the app stores
 
@@ -59,8 +60,8 @@ Data leaves the device only when **you** choose to, for example:
 - Pair **extra counters and rider phones on your office LAN** (Server ↔
   Client on your Wi‑Fi) — traffic stays on your network, not a Kumkaj
   cloud
-- Optional features you turn on later (e.g. cloud) — described when
-  available
+- Optional Kumkaj Cloud features you turn on (account, sync) — see
+  [moklanjo.com/shop](https://moklanjo.com/shop) and in-app Cloud settings
 
 **On the office Wi‑Fi**, the Server also answers two pages for people on
 that network:

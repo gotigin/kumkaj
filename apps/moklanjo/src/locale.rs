@@ -738,7 +738,7 @@ fn en(key: &str) -> String {
         "server_remove_pin_ph" => "Owner PIN to remove a server",
         "only_owner_remove_server" => "Only the Owner can remove a server",
         "owner_pin_remove_server" => "Owner PIN required to remove this server",
-        "device_setup_help" => "Server keeps the books here. Client pairs to a Server.",
+        "device_setup_help" => "Server keeps the books here. Client pairs to a Server. With no Server yet, Restore backup opens books from a file you pick (same checks as Settings restore).",
         "currency" => "Currency",
         "backup" => "Backup",
         "settings_sec_diag" => "Diagnostics",
