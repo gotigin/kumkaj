@@ -705,7 +705,7 @@ expenses_word	경비
 feature_access_help	선택한 직원에 대한 기능 액세스(추가 후 탭)
 footer_local	로컬 SQLite · 영원히 무료 · 클라우드 없음
 fresh_book_moklanjo	새로 = 빈 카탈로그(항목은 나중에 추가). 장부 = 아래에 기초 재고와 누가 빚졌는지 입력.
-fresh_selected	Fresh 선택됨 — 카탈로그가 비어 있습니다. 준비되면 Done을 누르세요.
+fresh_selected	Fresh 선택됨 — 카탈로그가 비어 있습니다. 준비되면 완료를 누르세요.
 gross_word	총액
 how_start	어떻게 시작하시겠어요?
 later_country_pack	나중에: 설정 → 세금과 결제 이름에 국가 팩을 적용하세요.

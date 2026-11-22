@@ -563,7 +563,7 @@ job_preview	प्रिभ्यु
 test_receipt_sent	सेमपोल रिसिप्ट हरनाय
 test_label_sent	सेमपोल लेबेल हरनाय
 test_print_no_printer	बै हाबानि थाखाय प्रिन्टार गैया — बे जायगायाव मोनसे दाजाबदेर
-printers_host_only	प्रिन्टारफोरा दखान डिभाइस (Server) आव सेट खालामनाय जादों। बेयो अब्लासिम साख्रि दैथायहरो — Search / add / assign stay at the server। Test page (आनजाद पेज) आ server आव थाङो।
+printers_host_only	प्रिन्टारफोरा दखान डिभाइस (Server) आव सेट खालामनाय जादों। बेयो अब्लासिम साख्रि दैथायहरो — नायगिर / दाजाब / बिथोन Server आव थानाय। टेस्ट बिलाइ Server आव थाङो।
 printers_pool_heading	प्रिन्टार
 printers_routes_heading	माव प्रिन्ट जायो
 printer_label_ph	मुं (जेरै Desk)

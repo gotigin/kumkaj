@@ -705,7 +705,7 @@ expenses_word	费用
 feature_access_help	所选员工的功能权限（添加后再点）
 footer_local	本地SQLite · 永久免费 · 零云端
 fresh_book_moklanjo	从头开始 = 空目录（稍后添加商品）。账本 = 在下方填写期初库存和谁欠你的钱。
-fresh_selected	已选Fresh — 目录保持为空。准备好后点击Done。
+fresh_selected	已选Fresh — 目录保持为空。准备好后点击完成。
 gross_word	毛额
 how_start	您想如何开始？
 later_country_pack	稍后：设置 → 应用国家包，以使用当地的税和付款名称。

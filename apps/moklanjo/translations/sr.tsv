@@ -358,7 +358,7 @@ books_locked_through	Закључано до
 counter_agency_ph	Назив шалтера/агенције (опционо)
 create_backup	Направите резервну копију
 day_close_summary	Закључак дана
-delete_party	Delete selected customer or supplier
+delete_party	Obriši izabranog partnera
 dispatch_to_rider	Отпрема резервисано → јахач
 docket_charge_ph	Доцкет цхарге
 declared_value_ph	Декларисана вредност

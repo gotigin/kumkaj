@@ -705,7 +705,7 @@ expenses_word	経費
 feature_access_help	選択した譜表の機能へのアクセス (追加後にタップ)
 footer_local	ローカルSQLite・永久無料・クラウドなし
 fresh_book_moklanjo	最初から = 空のカタログ（商品はあとで追加）。帳簿 = 下に期首在庫と、売掛の相手を入力。
-fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたらDoneをタップ。
+fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたら完了をタップ。
 gross_word	粗利益
 how_start	どのように始めますか？
 later_country_pack	あとで：設定 → 税と支払いの表示名に国パックを適用。

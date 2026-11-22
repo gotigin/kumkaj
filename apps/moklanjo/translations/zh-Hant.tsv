@@ -705,7 +705,7 @@ expenses_word	費用
 feature_access_help	選定員工的功能存取權限（新增後點選）
 footer_local	本地SQLite · 永久免費 · 零雲端
 fresh_book_moklanjo	新鮮 = 空目錄（稍後新增項目）。 Book = 在下面輸入期初庫存以及誰欠您的錢。
-fresh_selected	已選Fresh — 目錄保持為空。準備好後點擊Done。
+fresh_selected	已選Fresh — 目錄保持為空。準備好後點擊完成。
 gross_word	毛額
 how_start	您想如何開始？
 later_country_pack	稍後：設置 → 應用國家包，以使用當地的稅和付款名稱。

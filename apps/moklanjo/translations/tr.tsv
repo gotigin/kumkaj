@@ -705,7 +705,7 @@ expenses_word	Giderler
 feature_access_help	Seçilen personel için özellik erişimi (ekledikten sonra dokunun)
 footer_local	Yerel SQLite · Sonsuza dek ücretsiz · Bulut yok
 fresh_book_moklanjo	Sıfırdan = boş katalog (ürünleri sonra ekleyin). Defter = aşağıya açılış stokunu ve size borcu olanı yazın.
-fresh_selected	Fresh seçili — katalog boş kalacak. Hazır olduğunuzda Done'a dokunun.
+fresh_selected	Fresh seçili — katalog boş kalacak. Hazır olduğunuzda Bitti'ye dokunun.
 gross_word	Brüt
 how_start	Nasıl başlamak istersiniz?
 later_country_pack	Sonra: Ayarlar → vergi ve ödeme etiketleri için ülke paketinizi uygulayın.

@@ -168,7 +168,7 @@ backup_settings	Ka jingpynkylla bad jingpynbeit
 lock_app	Khang ia ka app
 pick	Jied
 select	Jied
-advance	Advance
+advance	Ka jingsiew lypa
 owner	U trai
 staff	Ki nongtrei
 photo	Ka dur
@@ -705,7 +705,7 @@ expenses_word	Ki jinglut jingsep
 feature_access_help	Ka jingrung ia ki jingdonkam na ka bynta ki nongtrei ba la jied (tap hadien ba la pynrung)
 footer_local	Local SQLite · Laitluid junom · Zero Lyer
 fresh_book_moklanjo	Fresh = katalog kaba thylli (pynrung ia ki tiar hadien). Ka kot = thoh ia ka stock kaba plie bad mano ba donkam ia phi harum.
-fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Tap Done ynda la dep.
+fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Tap La dep ynda la dep.
 gross_word	Baroh
 how_start	Kumno phi kwah ban sdang?
 later_country_pack	Hadien: Ki jingpynbeit → pyndonkam ia ka pack ri jong phi na ka bynta ki jingthoh khajna bad jingsiew.
@@ -790,7 +790,7 @@ logo_default	Logo: Kumkaj dak (ba la buh) — jied hi lada phi don
 tmpl_current	Ka jinglong mynta: {} — {}
 tmpl_selected	La jied: {} — {}
 setup_complete	La pyndep ia ka jingpynbeit
-onboard_fresh_tmpl	Ka thymmai · {} — ka katalog ka sdang thylli; pyndap ia ki tiar ha ki Item, nangta Done.
+onboard_fresh_tmpl	Ka thymmai · {} — ka katalog ka sdang thylli; pyndap ia ki tiar ha ki Item, nangta La dep.
 onboard_book_tmpl	Ka kot · {} — pyndap ia ki tiar bad ka jingai jingbit ba plie, nangta la dep.
 onboard_template_tmpl	Kyrteng ia ka jaka lada phi kwah, nangta jied kumno ban sdang.
 tmpl_blurb	Ki kot phah bad ka jaka buh kot: ki nongphah, ki nongkit, ka kot sngi, ka AWB.
