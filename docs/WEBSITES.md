@@ -213,12 +213,20 @@ at all, so three things live in the HTML. Each site owns its copy under
   real first screen, named by the Open Graph and Twitter tags in
   `shell/head.html` (home) and in the privacy, terms and account pages. One
   set of tags serves WhatsApp, X, LinkedIn, Facebook, Telegram, Discord,
-  Slack and iMessage; JPEG because some of them cannot read WebP, under
-  300 KB because WhatsApp drops bigger ones. After the first screen
-  changes: `./sites/<site>/scripts/preview-web.sh` in one terminal,
+  Slack, iMessage, Instagram link stickers, and Google’s large-image preview
+  (`robots` `max-image-preview:large` on the home shell). Required tags:
+  `og:title` / `description` / `url` / `type` / `site_name` / `image` (+
+  `type` `width` `height` `alt`), `twitter:card=summary_large_image` +
+  title / description / image / `image:alt`, plus `canonical` and meta
+  description — all absolute HTTPS, in the first HTML (no wasm). JPEG
+  because some apps cannot read WebP; under 300 KB because WhatsApp drops
+  bigger ones. After the first screen changes:
+  `./sites/<site>/scripts/preview-web.sh` in one terminal,
   `./sites/<site>/scripts/make-link-preview.sh http://127.0.0.1:<port>/` in
   another, commit the picture, deploy. On the home page its address carries
-  a hash of the file, because those apps keep a preview for days.
+  a hash of the file, because those apps keep a preview for days. Gate:
+  `./scripts/check-link-previews.sh` (live) or `--local` against preview
+  ports.
 - **Head tags in one place** — `shell/head.html` (title, description,
   canonical, icons, preview tags, `WebSite` JSON-LD) is read by both
   `deploy-firebase.sh` and `preview-web.sh`; it used to be pasted in each.
