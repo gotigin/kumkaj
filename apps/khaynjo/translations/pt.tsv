@@ -813,7 +813,7 @@ virtual_length_mm	Comprimento virtual (mm)
 reported_width_mm	Largura informada (mm)
 reported_length_mm	Comprimento informado (mm)
 reported_paper	Informado: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Papel virtual: {paper}
 printer_paper_help	Informado é o papel para o qual o driver desta impressora está definido; a app apenas o lê, e N/D significa que não há driver a quem perguntar. Virtual é o papel que você diz estar realmente na impressora, em mm; um comprimento vazio é um rolo. A impressora imprime no seu próprio papel; o papel virtual diz à app quanto dele é papel real, para a pré-visualização, o comprimento da página e a posição do recibo. Procurar impressoras preenche um papel virtual vazio e nunca altera um que você definiu.
 preview_help	Este recibo tal como é impresso na impressora escolhida abaixo, em tamanho real no papel virtual dela. Branco é onde imprime, o papel cinza fica fora do alcance da impressora, e a tinta esbatida é cortada. Os nove quadrados são o papel: toque onde o recibo deve ficar. Um recibo longo continua em mais páginas. Escolher uma impressora só altera a pré-visualização.
 job_layout	Planta

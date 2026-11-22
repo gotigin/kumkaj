@@ -813,7 +813,7 @@ virtual_length_mm	Dherer virtual ah (mm)
 reported_width_mm	Ballaca la soo sheegay (mm)
 reported_length_mm	Dhererka la soo sheegay (mm)
 reported_paper	La soo sheegay: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Waraaq virtual: {paper}
 printer_paper_help	La soo sheegay waa warqadda darawalka daabacahan loo dejiyay; app-ku wuu akhriyaa oo keliya, “—” waxay ka dhigan tahay inaanu jirin darawal la weydiiyo. Virtual waa warqadda aad adigu sheegto inay dhab ahaan ku jirto daabacaha, oo mm ah; dherer bannaan waa duub. Daabacuhu wuxuu ku daabacaa warqaddiisa; warqadda virtual-ka ahi waxay app-ka u sheegtaa inta ka mid ah ee warqad dhab ah, si loogu isticmaalo hordhaca, dhererka bogga iyo booska rasiidka. Raadi daabacayaasha waxay buuxisaa warqad virtual ah oo bannaan, weligeedna ma beddesho mid aad adigu dejisay.
 preview_help	Rasiidkan sida uu ugu daabacmo daabacaha hoos laga doortay, cabbir dhab ah oo saaran warqaddiisa virtual-ka ah. Caddaanku waa meesha uu wax ku daabaco, warqadda cawlan daabacuhu ma gaaro, khadka khafiifka ahna waa la gooyaa. Sagaalka afargees waa warqadda: taabo meesha rasiidku ku fadhiisanayo. Rasiid dheer wuxuu u gudbaa bogag kale. Dooranka daabace wuxuu beddelaa hordhaca oo keliya.
 job_layout	Qaab

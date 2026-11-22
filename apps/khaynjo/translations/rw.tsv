@@ -813,7 +813,7 @@ virtual_length_mm	Uburebure virtual (mm)
 reported_width_mm	Ubugari bwatangajwe (mm)
 reported_length_mm	Uburebure bwatangajwe (mm)
 reported_paper	Ibyatangajwe: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Ipapiro virtual: {paper}
 printer_paper_help	Ibyatangajwe ni impapuro porogaramu ya capyi (driver) y'iyi capyi yashyizweho; iyi porogaramu irazisoma gusa, kandi N/A bivuga ko nta driver ihari yo kubaza. Virtual ni impapuro uvuga ko ziri muri capyi koko, muri mm; uburebure butanditse ni umuzingo. Capyi icapa ku mpapuro zayo bwite; impapuro virtual zibwira iyi porogaramu ingano yazo iriho impapuro nyazo, ku bw'igaragaza, uburebure bw'urupapuro n'aho agapapuro kajya. Shaka amacapyi yuzuza impapuro virtual zitanditse kandi ntijya ihindura izo washyizeho.
 preview_help	Aka gapapuro nk'uko gacapwa kuri capyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu capyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya capyi bihindura igaragaza gusa.
 job_layout	Imiterere

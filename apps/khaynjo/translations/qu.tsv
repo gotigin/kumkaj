@@ -813,7 +813,7 @@ virtual_length_mm	Virtual suni (mm)
 reported_width_mm	Willasqa kinray (mm)
 reported_length_mm	Willasqa suni (mm)
 reported_paper	Willasqa: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Virtual papel: {paper}
 printer_paper_help	Willasqaqa kay impresorap drivernin churasqa rapim; appqa ñawinchallanmi, “Mana” niyqa mana tapunapaq driver kanchu ninanmi. Virtualqa impresorapi chiqapta kachkan nispa nisqayki rapim, mm-pi; ch'usaq suniqa muyuqmi. Impresoraqa kikin rapinpi imprimin; virtual rapiqa appman willan hayk'a chiqap rapi kasqanta, ñawpaq qhawaypaq, rapip suninpaq, boletap kananpaqpas. Impresorakunata maskay ch'usaq virtual rapita hunt'achin, manataq hayk'appas churasqaykita tikranchu.
 preview_help	Kay boletaqa uraypi akllasqa impresorapi imprimikusqanman hina, virtual rapinpi chiqap sayayninpi. Yuraqpi imprimin, uqi rapimanqa impresora mana chayanchu, pisi rikukuq tintataq kuchusqa. Isqun t'aqakunaqa rapim: boleta kanan kaqpi ñit'iy. Suni boletaqa astawan rapikunaman rin. Impresorata akllayqa ñawpaq qhawayllatan tikran.
 job_layout	Diseño

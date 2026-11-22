@@ -5,8 +5,8 @@ pin_hint	Eigenaar-PIN begint met 0000
 sell	Bestellingen
 buy	Inkoop
 books	Dagboek
-books_help	Stand van vandaag. Bestelling = bestellingen in. Inkoop = inkopen & kosten. Partijen = kredietklanten & leveranciers.
-buy_help	Onkostenbonnen en leveranciersfacturen (geld eruit). Op rekening blijft in het partijenboek.
+books_help	Stand van vandaag. Bestelling = bestellingen in. Inkoop = inkopen & kosten. Relaties = kredietklanten & leveranciers.
+buy_help	Onkostenbonnen en leveranciersfacturen (geld eruit). Op rekening blijft in het relatiesboek.
 sell_money_in	Bestelling opnemen
 buy_money_out	Kosten / leveranciersfactuur
 record_purchase	Inkoop boeken
@@ -971,7 +971,7 @@ local_badge	LOKAAL
 mix_type_hint_khaynjo	Verdeel over contant / UPI / kaart / krediet indien nodig. Voor krediet is hierboven een klant nodig.
 money_in_sales	Geld in (verkopen)
 net_word	Netto
-offline_badge	OFFLINE
+offline_badge	Offline
 optional_login_help	Optionele login (id + wachtwoord). De eigenaar stelt het een keer in; daarna kan alleen de gebruiker het wachtwoord wijzigen.
 or_unlock_login	Of ontgrendelen met login-id + wachtwoord
 permission_preset	Machtigingsprofiel

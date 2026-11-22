@@ -971,7 +971,7 @@ local_badge	LOKAL
 mix_type_hint_khaynjo	Dela på kontanter / UPI / kort / kredit om det behövs. Kredit behöver en kund ovan.
 money_in_sales	Pengar i (försäljning)
 net_word	Netto
-offline_badge	OFFLINE
+offline_badge	Offline
 optional_login_help	Valfri inloggning (id + lösenord). Ägaren sätter en gång; endast användaren kan ändra lösenordet senare.
 or_unlock_login	Eller lås upp med inloggnings-id + lösenord
 permission_preset	Jobb

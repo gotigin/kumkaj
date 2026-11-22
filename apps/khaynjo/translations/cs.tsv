@@ -971,7 +971,7 @@ local_badge	MÍSTNÍ
 mix_type_hint_khaynjo	V případě potřeby rozdělit na hotovost / UPI / kartu / kredit. Kredit potřebuje zákazníka výše.
 money_in_sales	Peníze v (prodej)
 net_word	Síť
-offline_badge	OFFLINE
+offline_badge	Offline
 optional_login_help	Volitelné přihlášení (id + heslo). Vlastník nastaví jednou; heslo může později změnit pouze uživatel.
 or_unlock_login	Nebo odemkněte pomocí přihlašovacího jména + hesla
 permission_preset	Job

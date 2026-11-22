@@ -5,7 +5,7 @@ pin_hint	Umnikazi PIN uqala ngokuthi 0000
 sell	I-oda yokudlela
 buy	Thenga
 books	Incwadi yosuku
-books_help	Isifinyezo se-akhawunti yanamuhla. Ama-oda = ama-oda angenayo. Thenga = ukuthenga nezindleko. Izinhlangothi = amakhasimende esikweletu nabaphakeli.
+books_help	Isifinyezo se-akhawunti yanamuhla. Ama-oda = ama-oda angenayo. Thenga = ukuthenga nezindleko. Amakhasimende = amakhasimende esikweletu nabahlinzeki.
 buy_help	Amarisidi ezindleko kanye nezikweletu zezivakashi zabahlinzeki (imali ekhishiwe). Ku-akhawunti kuhlala kubhuja yekhasimende noma yabahlinzeki.
 sell_money_in	Thatha i-oda
 buy_money_out	Izindleko / ibhili yesivakashi somphakeli

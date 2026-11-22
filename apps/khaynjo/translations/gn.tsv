@@ -813,7 +813,7 @@ virtual_length_mm	Puku virtual (mm)
 reported_width_mm	Pe oñemombe'úva (mm)
 reported_length_mm	Puku oñemombe'úva (mm)
 reported_paper	Oñemombe'úva: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Papel virtual: {paper}
 printer_paper_help	Oñemombe'úva ha'e pe kuatia ko impresora driver oñemboguapyhápe; app omoñe'ẽnte upéva, ha N/A he'ise ndaipóri driver oñeporandu hag̃ua. Virtual ha'e pe kuatia nde eréva oĩha añetehápe impresora-pe, mm-pe; puku nandi ha'e jere. Impresora oimprimi ikuatia teépe; kuatia virtual omombe'u app-pe mboýpa upévagui kuatia añetegua, vista previa, togue pukukue ha comprobante renda rehehápe. Eheka umi impresora omyenyhẽ kuatia virtual nandi ha araka'eve nomoambuéi pe nde remboguapy va'ekue.
 preview_help	Ko comprobante oñeimprimiháicha impresora oñeiporavóva yvy gotyo, tuichakue añetépe ikuatia virtual ári. Morotĩ ha'e oñeimprimihápe, kuatia hũngy impresora ndohupytýi, ha tinta hesakãva oñekytĩ. Umi nueve cuadro ha'e pe kuatia: epoko comprobante opyta vaerãhápe. Comprobante ipukúva oho hetave toguépe. Impresora jeporavo omoambue vista previa añoite.
 job_layout	Diseño rehegua

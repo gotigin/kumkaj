@@ -971,7 +971,7 @@ local_badge	LOCALE
 mix_type_hint_khaynjo	Dividi tra contanti / UPI / carta / credito se serve. Il credito richiede un cliente sopra.
 money_in_sales	Denaro in entrata (vendite)
 net_word	Netto
-offline_badge	OFFLINE
+offline_badge	Non in linea
 optional_login_help	Accesso facoltativo (id + password). Il titolare lo imposta una volta; poi solo l'utente può cambiare la password.
 or_unlock_login	Oppure sblocca con id di accesso + password
 permission_preset	Preset permessi

@@ -971,7 +971,7 @@ local_badge	KOHALIK
 mix_type_hint_khaynjo	Vajadusel jagage sularaha / UPI / kaardi / krediidi vahel. Krediit vajab klienti eespool.
 money_in_sales	Raha sisse (müük)
 net_word	Neto
-offline_badge	OFFLINE
+offline_badge	Võrguta
 optional_login_help	Valikuline sisselogimine (id + parool). Omanik komplekteerib üks kord; ainult kasutaja saab hiljem parooli muuta.
 or_unlock_login	Või avage sisselogimise ID + parool
 permission_preset	Töö

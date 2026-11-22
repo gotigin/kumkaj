@@ -813,7 +813,7 @@ virtual_length_mm	Virtual uzunlik (mm)
 reported_width_mm	Xabar qilingan kenglik (mm)
 reported_length_mm	Xabar qilingan uzunlik (mm)
 reported_paper	Xabar qilingan: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Virtual qogʻoz: {paper}
 printer_paper_help	Xabar qilingan — bu printer drayveri sozlangan qogʻoz; ilova uni faqat oʻqiydi, „yoʻq“ esa soʻraladigan drayver yoʻqligini bildiradi. Virtual — printerda haqiqatan bor deb siz aytgan qogʻoz, mm da; boʻsh uzunlik — rulon. Printer oʻz qogʻoziga chop etadi; virtual qogʻoz ilovaga uning qancha qismi haqiqiy qogʻoz ekanini aytadi: oldindan koʻrish, sahifa uzunligi va chek joyi uchun. Printerlarni topish boʻsh virtual qogʻozni toʻldiradi va siz belgilaganini hech qachon oʻzgartirmaydi.
 preview_help	Bu chek pastda tanlangan printerda qanday chop etilsa shunday, uning virtual qogʻozida haqiqiy oʻlchamda. Oq joy — chop etiladigan joy, kulrang qogʻozga printer yetmaydi, xira siyoh esa kesiladi. Toʻqqizta katak — qogʻoz: chek turishi kerak boʻlgan joyni bosing. Uzun chek keyingi sahifalarga oʻtadi. Printer tanlash faqat oldindan koʻrishni oʻzgartiradi.
 job_layout	Joylashuv

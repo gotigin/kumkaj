@@ -5,8 +5,8 @@ pin_hint	Inhaber-PIN beginnt mit 0000
 sell	Bestellung
 buy	Einkauf
 books	Tagesbuch
-books_help	Heutige Lage. Bestellung = Bestellungen rein. Kauf = Einkäufe & Ausgaben. Parteien = Kreditkunden & Lieferanten.
-buy_help	Ausgabenbelege und Lieferantenrechnungen (Geld raus). Auf Rechnung bleibt im Parteienkonto.
+books_help	Heutige Lage. Bestellung = Bestellungen rein. Kauf = Einkäufe & Ausgaben. Konten = Kreditkunden & Lieferanten.
+buy_help	Ausgabenbelege und Lieferantenrechnungen (Geld raus). Auf Rechnung bleibt im Kontenbuch.
 sell_money_in	Bestellung aufnehmen
 buy_money_out	Ausgabe / Lieferantenrechnung
 record_purchase	Einkauf buchen
@@ -971,7 +971,7 @@ local_badge	LOKAL
 mix_type_hint_khaynjo	Bei Bedarf auf Bar / UPI / Karte / Kredit aufteilen. Für Kredit ist oben ein Kunde nötig.
 money_in_sales	Geld rein (Verkäufe)
 net_word	Netto
-offline_badge	OFFLINE
+offline_badge	Offline
 optional_login_help	Optionaler Login (ID + Passwort). Der Inhaber setzt ihn einmal; später kann nur der Benutzer das Passwort ändern.
 or_unlock_login	Oder mit Login-ID + Passwort entsperren
 permission_preset	Berechtigungsprofil

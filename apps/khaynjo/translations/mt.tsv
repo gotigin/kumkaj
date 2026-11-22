@@ -971,7 +971,7 @@ local_badge	LOKALI
 mix_type_hint_khaynjo	Qsim fi flus kontanti / UPI / karta / kreditu jekk meħtieġ. Il-kreditu jeħtieġ klijent hawn fuq.
 money_in_sales	Flus fi (bejgħ)
 net_word	Nett
-offline_badge	OFFLINE
+offline_badge	Offline
 optional_login_help	Login fakultattiv (id + password). Sid issettja darba; l-utent biss jista' jibdel il-password aktar tard.
 or_unlock_login	Jew iftaħ bl-id tal-login + password
 permission_preset	Xogħol

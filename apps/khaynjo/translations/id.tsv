@@ -813,7 +813,7 @@ virtual_length_mm	Panjang virtual (mm)
 reported_width_mm	Lebar yang dilaporkan (mm)
 reported_length_mm	Panjang yang dilaporkan (mm)
 reported_paper	Dilaporkan: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Kertas virtual: {paper}
 printer_paper_help	Dilaporkan adalah kertas yang diatur pada driver printer ini; aplikasi hanya membacanya, dan “Tidak ada” berarti tidak ada driver yang bisa ditanya. Virtual adalah kertas yang menurut Anda benar-benar ada di printer, dalam mm; panjang kosong berarti gulungan. Printer mencetak di kertasnya sendiri; kertas virtual memberi tahu aplikasi seberapa banyak darinya yang merupakan kertas nyata, untuk pratinjau, panjang halaman, dan letak struk. Cari printer mengisi kertas virtual yang kosong dan tidak pernah mengubah yang sudah Anda atur.
 preview_help	Struk ini seperti saat dicetak di printer yang dipilih di bawah, dalam ukuran sebenarnya di kertas virtualnya. Putih adalah tempat mencetak, kertas abu-abu di luar jangkauan printer, dan tinta pudar terpotong. Sembilan kotak itu adalah kertasnya: ketuk tempat struk seharusnya berada. Struk panjang berlanjut ke halaman berikutnya. Memilih printer hanya mengubah pratinjau.
 job_layout	Tata letak
@@ -971,7 +971,7 @@ local_badge	LOKAL
 mix_type_hint_khaynjo	Bagi ke tunai / UPI / kartu / kredit jika perlu. Kredit butuh pelanggan di atas.
 money_in_sales	Uang masuk (penjualan)
 net_word	Neto
-offline_badge	OFFLINE
+offline_badge	LUAR DARING
 optional_login_help	Login opsional (ID + kata sandi). Pemilik mengaturnya sekali; setelah itu hanya pengguna yang bisa mengubah kata sandi.
 or_unlock_login	Atau buka kunci dengan ID login + kata sandi
 permission_preset	Preset izin

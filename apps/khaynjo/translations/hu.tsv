@@ -971,7 +971,7 @@ local_badge	HELYI
 mix_type_hint_khaynjo	Oszd meg készpénz / UPI / kártya / hitel között, ha szükséges. A hitelhez a fenti ügyfél kell.
 money_in_sales	Pénz (értékesítés)
 net_word	Nettó
-offline_badge	OFFLINE
+offline_badge	Offline
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
 or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
 permission_preset	Munka
