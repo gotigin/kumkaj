@@ -899,22 +899,22 @@ till_to_bank	Касса → банк
 units_heading	Өлшем бірліктері
 unlock_after_pairing	PIN енгізіңіз
 unlock_with_login	Кірумен құлыпты ашу
-or_unlock_shop_login	[kk] Or unlock with shop login
-shop_login_help	[kk] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[kk] Khaynjo account
-cloud_account_help	[kk] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[kk] Name (optional)
-cloud_email_ph	[kk] Email
-cloud_password_ph	[kk] Password
-cloud_continue	[kk] Continue
-cloud_forgot	[kk] Forgot password?
-cloud_web_methods	[kk] Google and other methods on the website
-cloud_signing_in	[kk] Signing in…
-cloud_sending_reset	[kk] Sending reset link…
-cloud_forgot_sent	[kk] If that email has an account, a reset link is on the way.
-cloud_welcome	[kk] Signed in as {user} · {plan}
-cloud_created	[kk] Account created. Check your email to verify when you can.
-cloud_cancel	[kk] Cancel
+or_unlock_shop_login	Немесе дүкен кіруімен құлыпты ашыңыз
+shop_login_help	Міндетті емес: PIN орнына осы дүкен қызметкерлерінің пайдаланушы аты мен құпия сөзімен құлыпты ашыңыз (офлайн жұмыс істейді).
+cloud_account_title	Khaynjo тіркелгісі
+cloud_account_help	khaynjo.com/account сияқты сол тіркелгімен тіркеліңіз немесе кіріңіз. Бұлт id және тегін жоспар жасайды.
+cloud_name_ph	Аты (міндетті емес)
+cloud_email_ph	Электрондық пошта
+cloud_password_ph	Құпия сөз
+cloud_continue	Жалғастыру
+cloud_forgot	Құпия сөзді ұмыттыңыз ба?
+cloud_web_methods	Сайттағы Google және басқа әдістер
+cloud_signing_in	Кіру…
+cloud_sending_reset	Қалпына келтіру сілтемесін жіберу…
+cloud_forgot_sent	Егер сол поштада тіркелгі болса, қалпына келтіру сілтемесі жолда.
+cloud_welcome	{user} ретінде кірді · {plan}
+cloud_created	Тіркелгі жасалды. Растау үшін поштаны тексеріңіз.
+cloud_cancel	Бас тарту
 unmark	Белгіні алу
 update_my_password	Құпиясөзімді жаңарту
 update_my_pin	Кіруімді жаңарту

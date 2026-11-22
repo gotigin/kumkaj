@@ -899,22 +899,22 @@ till_to_bank	Kasse → bank
 units_heading	Enheter
 unlock_after_pairing	Skriv inn PIN
 unlock_with_login	Lås opp med innlogging
-or_unlock_shop_login	[no] Or unlock with shop login
-shop_login_help	[no] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[no] Khaynjo account
-cloud_account_help	[no] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[no] Name (optional)
-cloud_email_ph	[no] Email
-cloud_password_ph	[no] Password
-cloud_continue	[no] Continue
-cloud_forgot	[no] Forgot password?
-cloud_web_methods	[no] Google and other methods on the website
-cloud_signing_in	[no] Signing in…
-cloud_sending_reset	[no] Sending reset link…
-cloud_forgot_sent	[no] If that email has an account, a reset link is on the way.
-cloud_welcome	[no] Signed in as {user} · {plan}
-cloud_created	[no] Account created. Check your email to verify when you can.
-cloud_cancel	[no] Cancel
+or_unlock_shop_login	Eller lås opp med butikkinnlogging
+shop_login_help	Valgfritt: lås opp med denne butikkens personalbrukernavn og passord i stedet for PIN (fungerer frakoblet).
+cloud_account_title	Khaynjo-konto
+cloud_account_help	Registrer deg eller logg inn med samme konto som khaynjo.com/account. Oppretter sky-id og gratisplan.
+cloud_name_ph	Navn (valgfritt)
+cloud_email_ph	E-post
+cloud_password_ph	Passord
+cloud_continue	Fortsett
+cloud_forgot	Glemt passord?
+cloud_web_methods	Google og andre metoder på nettstedet
+cloud_signing_in	Logger inn…
+cloud_sending_reset	Sender tilbakestillingslenke…
+cloud_forgot_sent	Hvis den e-posten har en konto, er tilbakestillingslenken på vei.
+cloud_welcome	Logget inn som {user} · {plan}
+cloud_created	Konto opprettet. Sjekk e-posten for å bekrefte når du kan.
+cloud_cancel	Avbryt
 unmark	Fjern merke
 update_my_password	Oppdater passordet mitt
 update_my_pin	Oppdater innloggingen min

@@ -899,22 +899,22 @@ till_to_bank	Касс → банк
 units_heading	Нэгжүүд
 unlock_after_pairing	PIN оруулна
 unlock_with_login	Нэвтрэлтээр түгжээ тайлах
-or_unlock_shop_login	[mn] Or unlock with shop login
-shop_login_help	[mn] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mn] Khaynjo account
-cloud_account_help	[mn] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[mn] Name (optional)
-cloud_email_ph	[mn] Email
-cloud_password_ph	[mn] Password
-cloud_continue	[mn] Continue
-cloud_forgot	[mn] Forgot password?
-cloud_web_methods	[mn] Google and other methods on the website
-cloud_signing_in	[mn] Signing in…
-cloud_sending_reset	[mn] Sending reset link…
-cloud_forgot_sent	[mn] If that email has an account, a reset link is on the way.
-cloud_welcome	[mn] Signed in as {user} · {plan}
-cloud_created	[mn] Account created. Check your email to verify when you can.
-cloud_cancel	[mn] Cancel
+or_unlock_shop_login	Эсвэл дэлгүүрийн нэвтрэлтээр түгжээг тайлаарай
+shop_login_help	Сонголттой: PIN-ийн оронд энэ дэлгүүрийн ажилтны хэрэглэгчийн нэр, нууц үгээр түгжээг тайлаарай (офлайнаар ажиллана).
+cloud_account_title	Khaynjo бүртгэл
+cloud_account_help	khaynjo.com/account-тай ижил бүртгэлээр бүртгүүлэх эсвэл нэвтрэх. Таны үүлэн id болон үнэгүй төлөвлөгөөг үүсгэнэ.
+cloud_name_ph	Нэр (сонголттой)
+cloud_email_ph	И-мэйл
+cloud_password_ph	Нууц үг
+cloud_continue	Үргэлжлүүлэх
+cloud_forgot	Нууц үгээ мартсан уу?
+cloud_web_methods	Вэбсайт дээрх Google болон бусад аргууд
+cloud_signing_in	Нэвтэрч байна…
+cloud_sending_reset	Дахин тохируулах холбоос илгээж байна…
+cloud_forgot_sent	Хэрэв тэр и-мэйл бүртгэлтэй бол шуудангаар дахин тохируулах холбоос ирж байна.
+cloud_welcome	{user}ээр нэвтэрсэн · {plan}
+cloud_created	Бүртгэл үүсгэгдлээ. Баталгаажуулахын тулд и-мэйлээ шалгана уу.
+cloud_cancel	Цуцлах
 unmark	Тэмдэглэгээг авах
 update_my_password	Нууц үгээ шинэчлэх
 update_my_pin	Нэвтрэлтээ шинэчлэх

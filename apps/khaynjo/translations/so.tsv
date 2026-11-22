@@ -899,22 +899,22 @@ till_to_bank	Sanduuqa → bangiga
 units_heading	Cutubyada
 unlock_after_pairing	Geli PIN
 unlock_with_login	Ku fur gelitaanka
-or_unlock_shop_login	[so] Or unlock with shop login
-shop_login_help	[so] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[so] Khaynjo account
-cloud_account_help	[so] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[so] Name (optional)
-cloud_email_ph	[so] Email
-cloud_password_ph	[so] Password
-cloud_continue	[so] Continue
-cloud_forgot	[so] Forgot password?
-cloud_web_methods	[so] Google and other methods on the website
-cloud_signing_in	[so] Signing in…
-cloud_sending_reset	[so] Sending reset link…
-cloud_forgot_sent	[so] If that email has an account, a reset link is on the way.
-cloud_welcome	[so] Signed in as {user} · {plan}
-cloud_created	[so] Account created. Check your email to verify when you can.
-cloud_cancel	[so] Cancel
+or_unlock_shop_login	Ama fur gelitaanka dukaanka
+shop_login_help	Ikhtiyaari: fur magaca isticmaalaha iyo erayga sirta ee shaqaalaha dukaankan halkii PIN (wuu shaqeeyaa offline).
+cloud_account_title	Akoonka Khaynjo
+cloud_account_help	Isdiiwaangeli ama gal akoonka la mid ah khaynjo.com/account. Wuxuu abuurayaa id-gaaga daruuraha iyo qorshaha bilaashka ah.
+cloud_name_ph	Magaca (ikhtiyaari)
+cloud_email_ph	Iimayl
+cloud_password_ph	Erayga sirta
+cloud_continue	Sii wad
+cloud_forgot	Ma illowday erayga sirta?
+cloud_web_methods	Google iyo habab kale ee websaydhka
+cloud_signing_in	Wuu gelayaa…
+cloud_sending_reset	Wuxuu diraa xiriirka dib-u-dejinta…
+cloud_forgot_sent	Haddii iimaylkaas uu leeyahay akoon, xiriirka dib-u-dejinta wuu imanayaa.
+cloud_welcome	Waxaad u gashay sidii {user} · {plan}
+cloud_created	Akoonka waa la sameeyay. Hubi iimaylka si aad u xaqiijiso markaad awooddo.
+cloud_cancel	Jooji
 unmark	Ka saar calaamadda
 update_my_password	Cusbooneysii furahayga sirta
 update_my_pin	Cusbooneysii gelitaankayga

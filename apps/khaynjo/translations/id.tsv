@@ -899,22 +899,22 @@ till_to_bank	Kasir → bank
 units_heading	Satuan
 unlock_after_pairing	Masukkan PIN
 unlock_with_login	Buka kunci dengan login
-or_unlock_shop_login	[id] Or unlock with shop login
-shop_login_help	[id] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[id] Khaynjo account
-cloud_account_help	[id] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[id] Name (optional)
-cloud_email_ph	[id] Email
-cloud_password_ph	[id] Password
-cloud_continue	[id] Continue
-cloud_forgot	[id] Forgot password?
-cloud_web_methods	[id] Google and other methods on the website
-cloud_signing_in	[id] Signing in…
-cloud_sending_reset	[id] Sending reset link…
-cloud_forgot_sent	[id] If that email has an account, a reset link is on the way.
-cloud_welcome	[id] Signed in as {user} · {plan}
-cloud_created	[id] Account created. Check your email to verify when you can.
-cloud_cancel	[id] Cancel
+or_unlock_shop_login	Atau buka kunci dengan login toko
+shop_login_help	Opsional: buka kunci dengan nama pengguna dan kata sandi staf toko ini, bukan PIN (bekerja offline).
+cloud_account_title	Akun Khaynjo
+cloud_account_help	Daftar atau masuk dengan akun yang sama seperti khaynjo.com/account. Membuat id cloud dan paket gratis Anda.
+cloud_name_ph	Nama (opsional)
+cloud_email_ph	Email
+cloud_password_ph	Kata sandi
+cloud_continue	Lanjutkan
+cloud_forgot	Lupa kata sandi?
+cloud_web_methods	Google dan metode lain di situs web
+cloud_signing_in	Sedang masuk…
+cloud_sending_reset	Mengirim tautan reset…
+cloud_forgot_sent	Jika email itu punya akun, tautan reset sedang dikirim.
+cloud_welcome	Masuk sebagai {user} · {plan}
+cloud_created	Akun dibuat. Periksa email untuk verifikasi bila bisa.
+cloud_cancel	Batal
 unmark	Batalkan tanda
 update_my_password	Ubah kata sandi saya
 update_my_pin	Ubah PIN saya

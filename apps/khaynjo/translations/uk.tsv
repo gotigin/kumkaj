@@ -899,22 +899,22 @@ till_to_bank	Каса → банк
 units_heading	Одиниці
 unlock_after_pairing	Введіть PIN
 unlock_with_login	Розблокувати входом
-or_unlock_shop_login	[uk] Or unlock with shop login
-shop_login_help	[uk] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[uk] Khaynjo account
-cloud_account_help	[uk] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[uk] Name (optional)
-cloud_email_ph	[uk] Email
-cloud_password_ph	[uk] Password
-cloud_continue	[uk] Continue
-cloud_forgot	[uk] Forgot password?
-cloud_web_methods	[uk] Google and other methods on the website
-cloud_signing_in	[uk] Signing in…
-cloud_sending_reset	[uk] Sending reset link…
-cloud_forgot_sent	[uk] If that email has an account, a reset link is on the way.
-cloud_welcome	[uk] Signed in as {user} · {plan}
-cloud_created	[uk] Account created. Check your email to verify when you can.
-cloud_cancel	[uk] Cancel
+or_unlock_shop_login	Або розблокуйте входом у магазин
+shop_login_help	Необов’язково: розблокуйте ім’ям користувача й паролем персоналу цього магазину замість PIN (працює офлайн).
+cloud_account_title	Обліковий запис Khaynjo
+cloud_account_help	Зареєструйтесь або увійдіть з тим самим обліковим записом, що й на khaynjo.com/account. Створює ваш хмарний id і безкоштовний план.
+cloud_name_ph	Ім’я (необов’язково)
+cloud_email_ph	Ел. пошта
+cloud_password_ph	Пароль
+cloud_continue	Продовжити
+cloud_forgot	Забули пароль?
+cloud_web_methods	Google та інші способи на сайті
+cloud_signing_in	Вхід…
+cloud_sending_reset	Надсилання посилання для скидання…
+cloud_forgot_sent	Якщо ця пошта має обліковий запис, посилання для скидання вже в дорозі.
+cloud_welcome	Увійшли як {user} · {plan}
+cloud_created	Обліковий запис створено. Перевірте пошту для підтвердження, коли зможете.
+cloud_cancel	Скасувати
 unmark	Зняти позначку
 update_my_password	Оновити мій пароль
 update_my_pin	Оновити мій вхід

@@ -899,22 +899,22 @@ till_to_bank	→ banka çenli
 units_heading	Bölümler
 unlock_after_pairing	PIN giriziň
 unlock_with_login	Giriş bilen açyň
-or_unlock_shop_login	[tk] Or unlock with shop login
-shop_login_help	[tk] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[tk] Khaynjo account
-cloud_account_help	[tk] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[tk] Name (optional)
-cloud_email_ph	[tk] Email
-cloud_password_ph	[tk] Password
-cloud_continue	[tk] Continue
-cloud_forgot	[tk] Forgot password?
-cloud_web_methods	[tk] Google and other methods on the website
-cloud_signing_in	[tk] Signing in…
-cloud_sending_reset	[tk] Sending reset link…
-cloud_forgot_sent	[tk] If that email has an account, a reset link is on the way.
-cloud_welcome	[tk] Signed in as {user} · {plan}
-cloud_created	[tk] Account created. Check your email to verify when you can.
-cloud_cancel	[tk] Cancel
+or_unlock_shop_login	Ýa-da dükan girişi bilen açyň
+shop_login_help	Islege görä: PIN-iň ýerine şu dükanyň işgärleriniň ulanyjy ady we paroly bilen açyň (oflayn işleýär).
+cloud_account_title	Khaynjo hasaby
+cloud_account_help	khaynjo.com/account bilen birmeňzeş hasap bilen hasaba alyň ýa-da giriň. Bulut id we mugt meýilnama döredýär.
+cloud_name_ph	At (islege görä)
+cloud_email_ph	E-poçta
+cloud_password_ph	Parol
+cloud_continue	Dowam et
+cloud_forgot	Paroly unutdyňyzmy?
+cloud_web_methods	Saýtdaky Google we beýleki usullar
+cloud_signing_in	Girilýär…
+cloud_sending_reset	Täzeden düzmek baglanyşygy iberilýär…
+cloud_forgot_sent	Şol e-poçtada hasap bar bolsa, täzeden düzmek baglanyşygy ýolda.
+cloud_welcome	{user} hökmünde girildi · {plan}
+cloud_created	Hasap döredildi. Tassyklamak üçin e-poçtany barlaň.
+cloud_cancel	Ýatyr
 unmark	Bellik
 update_my_password	Parolymy täzeläň
 update_my_pin	Girişimi täzeläň

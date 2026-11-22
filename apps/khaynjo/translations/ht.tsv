@@ -900,21 +900,21 @@ units_heading	Inite
 unlock_after_pairing	Antre PIN
 unlock_with_login	Debloke ak antre
 or_unlock_shop_login	Oswa debloke ak login nan magazen an
-shop_login_help	[ht] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+shop_login_help	Opsyonèl: débloke ak non itilizatè ak modpas anplwaye magazen sa a olye de PIN (fonksyone offline).
 cloud_account_title	Khaynjo kont
-cloud_account_help	[ht] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_account_help	Enskri oswa konekte ak menm kont ak khaynjo.com/account. Kreye id nwaj ou ak plan gratis.
 cloud_name_ph	Non (si ou vle)
-cloud_email_ph	[ht] Email
-cloud_password_ph	[ht] Password
+cloud_email_ph	Imèl
+cloud_password_ph	Modpas
 cloud_continue	Kontinye
-cloud_forgot	[ht] Forgot password?
-cloud_web_methods	[ht] Google and other methods on the website
+cloud_forgot	Bliye modpas?
+cloud_web_methods	Google ak lòt metòd sou sit la
 cloud_signing_in	Siyen nan...
 cloud_sending_reset	Ap voye lyen reset...
 cloud_forgot_sent	Si imel sa a gen yon kont, yon lyen reset ap sou wout la.
 cloud_welcome	Siyen an kòm {user} · {plan}
-cloud_created	[ht] Account created. Check your email to verify when you can.
-cloud_cancel	[ht] Cancel
+cloud_created	Kont kreye. Tcheke imèl pou verifye lè ou kapab.
+cloud_cancel	Anile
 unmark	Retire mak
 update_my_password	Mete modpas mwen ajou
 update_my_pin	Mete antre mwen ajou

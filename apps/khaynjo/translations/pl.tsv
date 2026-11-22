@@ -899,22 +899,22 @@ till_to_bank	Kasa → bank
 units_heading	Jednostki
 unlock_after_pairing	Wpisz PIN
 unlock_with_login	Odblokuj za pomocą loginu
-or_unlock_shop_login	[pl] Or unlock with shop login
-shop_login_help	[pl] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[pl] Khaynjo account
-cloud_account_help	[pl] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[pl] Name (optional)
-cloud_email_ph	[pl] Email
-cloud_password_ph	[pl] Password
-cloud_continue	[pl] Continue
-cloud_forgot	[pl] Forgot password?
-cloud_web_methods	[pl] Google and other methods on the website
-cloud_signing_in	[pl] Signing in…
-cloud_sending_reset	[pl] Sending reset link…
-cloud_forgot_sent	[pl] If that email has an account, a reset link is on the way.
-cloud_welcome	[pl] Signed in as {user} · {plan}
-cloud_created	[pl] Account created. Check your email to verify when you can.
-cloud_cancel	[pl] Cancel
+or_unlock_shop_login	Lub odblokuj logowaniem sklepu
+shop_login_help	Opcjonalnie: odblokuj nazwą użytkownika i hasłem personelu tego sklepu zamiast PIN (działa offline).
+cloud_account_title	Konto Khaynjo
+cloud_account_help	Zarejestruj się lub zaloguj tym samym kontem co khaynjo.com/account. Tworzy twój identyfikator chmury i darmowy plan.
+cloud_name_ph	Imię (opcjonalnie)
+cloud_email_ph	E-mail
+cloud_password_ph	Hasło
+cloud_continue	Kontynuuj
+cloud_forgot	Nie pamiętasz hasła?
+cloud_web_methods	Google i inne metody na stronie
+cloud_signing_in	Logowanie…
+cloud_sending_reset	Wysyłanie linku resetu…
+cloud_forgot_sent	Jeśli ten e-mail ma konto, link resetu jest w drodze.
+cloud_welcome	Zalogowano jako {user} · {plan}
+cloud_created	Konto utworzone. Sprawdź e-mail, aby zweryfikować, gdy możesz.
+cloud_cancel	Anuluj
 unmark	Odznacz
 update_my_password	Zaktualizuj moje hasło
 update_my_pin	Zaktualizuj moje dane logowania

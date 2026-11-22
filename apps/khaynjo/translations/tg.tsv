@@ -899,22 +899,22 @@ till_to_bank	Қуттӣ → бонк
 units_heading	Воҳидҳо
 unlock_after_pairing	PIN-ро ворид кунед
 unlock_with_login	Бо воридшавӣ кушоед
-or_unlock_shop_login	[tg] Or unlock with shop login
-shop_login_help	[tg] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[tg] Khaynjo account
-cloud_account_help	[tg] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[tg] Name (optional)
-cloud_email_ph	[tg] Email
-cloud_password_ph	[tg] Password
-cloud_continue	[tg] Continue
-cloud_forgot	[tg] Forgot password?
-cloud_web_methods	[tg] Google and other methods on the website
-cloud_signing_in	[tg] Signing in…
-cloud_sending_reset	[tg] Sending reset link…
-cloud_forgot_sent	[tg] If that email has an account, a reset link is on the way.
-cloud_welcome	[tg] Signed in as {user} · {plan}
-cloud_created	[tg] Account created. Check your email to verify when you can.
-cloud_cancel	[tg] Cancel
+or_unlock_shop_login	Ё бо вуруди мағоза кушоед
+shop_login_help	Ихтиёрӣ: ба ҷои PIN бо номи корбар ва пароли кормандони ин мағоза кушоед (офлайн кор мекунад).
+cloud_account_title	Ҳисоби Khaynjo
+cloud_account_help	Бо ҳамон ҳисоби khaynjo.com/account сабти ном кунед ё ворид шавед. Id абрӣ ва нақшаи ройгони шуморо месозад.
+cloud_name_ph	Ном (ихтиёрӣ)
+cloud_email_ph	Почтаи электронӣ
+cloud_password_ph	Парол
+cloud_continue	Давом додан
+cloud_forgot	Паролро фаромӯш кардед?
+cloud_web_methods	Google ва усулҳои дигар дар сомона
+cloud_signing_in	Воридшавӣ…
+cloud_sending_reset	Фиристодани пайванди барқароркунӣ…
+cloud_forgot_sent	Агар он почта ҳисоб дошта бошад, пайванди барқароркунӣ равон аст.
+cloud_welcome	Ҳамчун {user} ворид шудед · {plan}
+cloud_created	Ҳисоб сохта шуд. Барои тасдиқ почтаро санҷед.
+cloud_cancel	Бекор кардан
 unmark	Бардоштани қайд
 update_my_password	Нав кардани пароли ман
 update_my_pin	Нав кардани воридшавии ман

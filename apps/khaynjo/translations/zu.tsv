@@ -899,22 +899,22 @@ till_to_bank	Irejista yemali → ibhange
 units_heading	Amayunithi
 unlock_after_pairing	Faka PIN
 unlock_with_login	Vula ngokungena ngemvume
-or_unlock_shop_login	[zu] Or unlock with shop login
-shop_login_help	[zu] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[zu] Khaynjo account
-cloud_account_help	[zu] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[zu] Name (optional)
-cloud_email_ph	[zu] Email
-cloud_password_ph	[zu] Password
-cloud_continue	[zu] Continue
-cloud_forgot	[zu] Forgot password?
-cloud_web_methods	[zu] Google and other methods on the website
-cloud_signing_in	[zu] Signing in…
-cloud_sending_reset	[zu] Sending reset link…
-cloud_forgot_sent	[zu] If that email has an account, a reset link is on the way.
-cloud_welcome	[zu] Signed in as {user} · {plan}
-cloud_created	[zu] Account created. Check your email to verify when you can.
-cloud_cancel	[zu] Cancel
+or_unlock_shop_login	Noma vula ngokungena kwesitolo
+shop_login_help	Okukhethwa: vula ngegama lomsebenzisi nephasiwedi yabasebenzi balesi sitolo esikhundleni se-PIN (kusebenza ngaphandle kwe-inthanethi).
+cloud_account_title	I-akhawunti ye-Khaynjo
+cloud_account_help	Bhalisa noma ngena nge-akhawunti efanayo ne-khaynjo.com/account. Kwakha i-id yefu yakho kanye nohlelo lwamahhala.
+cloud_name_ph	Igama (okukhethwa)
+cloud_email_ph	I-imeyili
+cloud_password_ph	Iphasiwedi
+cloud_continue	Qhubeka
+cloud_forgot	Ukhohlwe iphasiwedi?
+cloud_web_methods	I-Google nezinye izindlela kuwebhusayithi
+cloud_signing_in	Kuyangena…
+cloud_sending_reset	Kuthumela isixhumanisi sokusetha kabusha…
+cloud_forgot_sent	Uma leyo imeyili ine-akhawunti, isixhumanisi sokusetha kabusha siyeza.
+cloud_welcome	Ungene njengo-{user} · {plan}
+cloud_created	I-akhawunti idaliwe. Hlola i-imeyili ukuze uqinisekise uma ungakwazi.
+cloud_cancel	Khansela
 unmark	Susa ukumaka
 update_my_password	Buyekeza iphasiwedi yami
 update_my_pin	Buyekeza ukungena kwami ngemvume

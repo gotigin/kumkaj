@@ -899,22 +899,22 @@ till_to_bank	Do → banka
 units_heading	Jednotky
 unlock_after_pairing	Zadajte PIN
 unlock_with_login	Odomknite prihlásením
-or_unlock_shop_login	[sk] Or unlock with shop login
-shop_login_help	[sk] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sk] Khaynjo account
-cloud_account_help	[sk] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[sk] Name (optional)
-cloud_email_ph	[sk] Email
-cloud_password_ph	[sk] Password
-cloud_continue	[sk] Continue
-cloud_forgot	[sk] Forgot password?
-cloud_web_methods	[sk] Google and other methods on the website
-cloud_signing_in	[sk] Signing in…
-cloud_sending_reset	[sk] Sending reset link…
-cloud_forgot_sent	[sk] If that email has an account, a reset link is on the way.
-cloud_welcome	[sk] Signed in as {user} · {plan}
-cloud_created	[sk] Account created. Check your email to verify when you can.
-cloud_cancel	[sk] Cancel
+or_unlock_shop_login	Alebo odomknite prihlásením obchodu
+shop_login_help	Voliteľné: odomknite používateľským menom a heslom personálu tohto obchodu namiesto PIN (funguje offline).
+cloud_account_title	Účet Khaynjo
+cloud_account_help	Zaregistrujte sa alebo sa prihláste rovnakým účtom ako na khaynjo.com/account. Vytvorí váš cloud id a bezplatný plán.
+cloud_name_ph	Meno (voliteľné)
+cloud_email_ph	E-mail
+cloud_password_ph	Heslo
+cloud_continue	Pokračovať
+cloud_forgot	Zabudli ste heslo?
+cloud_web_methods	Google a iné metódy na webe
+cloud_signing_in	Prihlasovanie…
+cloud_sending_reset	Odosielanie odkazu na obnovenie…
+cloud_forgot_sent	Ak má tento e-mail účet, odkaz na obnovenie je na ceste.
+cloud_welcome	Prihlásený ako {user} · {plan}
+cloud_created	Účet vytvorený. Skontrolujte e-mail na overenie, keď môžete.
+cloud_cancel	Zrušiť
 unmark	Zrušiť označenie
 update_my_password	Aktualizujte moje heslo
 update_my_pin	Aktualizujte moje prihlásenie

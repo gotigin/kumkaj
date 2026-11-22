@@ -899,22 +899,22 @@ till_to_bank	Míg → bank
 units_heading	Egységek
 unlock_after_pairing	Írja be: PIN
 unlock_with_login	Feloldás bejelentkezéssel
-or_unlock_shop_login	[hu] Or unlock with shop login
-shop_login_help	[hu] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[hu] Khaynjo account
-cloud_account_help	[hu] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[hu] Name (optional)
-cloud_email_ph	[hu] Email
-cloud_password_ph	[hu] Password
-cloud_continue	[hu] Continue
-cloud_forgot	[hu] Forgot password?
-cloud_web_methods	[hu] Google and other methods on the website
-cloud_signing_in	[hu] Signing in…
-cloud_sending_reset	[hu] Sending reset link…
-cloud_forgot_sent	[hu] If that email has an account, a reset link is on the way.
-cloud_welcome	[hu] Signed in as {user} · {plan}
-cloud_created	[hu] Account created. Check your email to verify when you can.
-cloud_cancel	[hu] Cancel
+or_unlock_shop_login	Vagy oldja fel üzleti bejelentkezéssel
+shop_login_help	Opcionális: PIN helyett az üzlet személyzetének felhasználónevével és jelszavával oldja fel (offline működik).
+cloud_account_title	Khaynjo-fiók
+cloud_account_help	Regisztráljon vagy jelentkezzen be ugyanazzal a fiókkal, mint a khaynjo.com/account. Létrehozza a felhőazonosítóját és az ingyenes csomagot.
+cloud_name_ph	Név (opcionális)
+cloud_email_ph	E-mail
+cloud_password_ph	Jelszó
+cloud_continue	Folytatás
+cloud_forgot	Elfelejtette a jelszót?
+cloud_web_methods	Google és más módszerek a webhelyen
+cloud_signing_in	Bejelentkezés…
+cloud_sending_reset	Visszaállító hivatkozás küldése…
+cloud_forgot_sent	Ha ehhez az e-mailhez tartozik fiók, a visszaállító hivatkozás úton van.
+cloud_welcome	Bejelentkezve: {user} · {plan}
+cloud_created	Fiók létrehozva. Ellenőrizze az e-mailt a megerősítéshez, amikor tud.
+cloud_cancel	Mégse
 unmark	Törölje a jelölést
 update_my_password	Frissítse a jelszavamat
 update_my_pin	Frissítse a bejelentkezésemet

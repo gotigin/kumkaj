@@ -899,22 +899,22 @@ till_to_bank	Qullqi waqaychaq → banco
 units_heading	Unidades nisqakuna
 unlock_after_pairing	Yaykuy PIN .
 unlock_with_login	Yaykuywan kichay
-or_unlock_shop_login	[qu] Or unlock with shop login
-shop_login_help	[qu] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[qu] Khaynjo account
-cloud_account_help	[qu] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[qu] Name (optional)
-cloud_email_ph	[qu] Email
-cloud_password_ph	[qu] Password
-cloud_continue	[qu] Continue
-cloud_forgot	[qu] Forgot password?
-cloud_web_methods	[qu] Google and other methods on the website
-cloud_signing_in	[qu] Signing in…
-cloud_sending_reset	[qu] Sending reset link…
-cloud_forgot_sent	[qu] If that email has an account, a reset link is on the way.
-cloud_welcome	[qu] Signed in as {user} · {plan}
-cloud_created	[qu] Account created. Check your email to verify when you can.
-cloud_cancel	[qu] Cancel
+or_unlock_shop_login	Utaq tienda yaykuyninwan kichay
+shop_login_help	Ajllana: PIN rantinta kay tiendapa personalpa usuario sutinta passwordnintawan kichay (offline llamkan).
+cloud_account_title	Khaynjo cuenta
+cloud_account_help	khaynjo.com/account hina kaq cuentawan registrakuy utaq yaykuy. Nube id niyki chaymanta qasi planta ruwan.
+cloud_name_ph	Suti (ajllana)
+cloud_email_ph	Correo
+cloud_password_ph	Password
+cloud_continue	Qatiy
+cloud_forgot	¿Passwordta qunqarqanki?
+cloud_web_methods	Google hinaspa huk metodokuna webpi
+cloud_signing_in	Yaykuchkan…
+cloud_sending_reset	Reset enlace kachachkan…
+cloud_forgot_sent	Chay correopa cuentanta kaptenqa, reset enlace ñanpi.
+cloud_welcome	{user} hina yaykusqa · {plan}
+cloud_created	Cuenta ruwasqa. Correota qhawariy verificananpaq.
+cloud_cancel	Cancelay
 unmark	Qhichuy
 update_my_password	Contraseñayta musuqyachiy
 update_my_pin	Yaykusqayta musuqyachiy

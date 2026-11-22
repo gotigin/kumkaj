@@ -899,22 +899,22 @@ till_to_bank	櫃檯 → 銀行
 units_heading	單位
 unlock_after_pairing	輸入密碼
 unlock_with_login	用登錄解鎖
-or_unlock_shop_login	[zh-TW] Or unlock with shop login
-shop_login_help	[zh-TW] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[zh-TW] Khaynjo account
-cloud_account_help	[zh-TW] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[zh-TW] Name (optional)
-cloud_email_ph	[zh-TW] Email
-cloud_password_ph	[zh-TW] Password
-cloud_continue	[zh-TW] Continue
-cloud_forgot	[zh-TW] Forgot password?
-cloud_web_methods	[zh-TW] Google and other methods on the website
-cloud_signing_in	[zh-TW] Signing in…
-cloud_sending_reset	[zh-TW] Sending reset link…
-cloud_forgot_sent	[zh-TW] If that email has an account, a reset link is on the way.
-cloud_welcome	[zh-TW] Signed in as {user} · {plan}
-cloud_created	[zh-TW] Account created. Check your email to verify when you can.
-cloud_cancel	[zh-TW] Cancel
+or_unlock_shop_login	或用店鋪登入解鎖
+shop_login_help	選用：用本店員工使用者名稱和密碼解鎖，而不是 PIN（可離線）。
+cloud_account_title	Khaynjo 帳戶
+cloud_account_help	使用與 khaynjo.com/account 相同的帳戶註冊或登入。建立您的雲端 id 和免費方案。
+cloud_name_ph	姓名（選用）
+cloud_email_ph	電子郵件
+cloud_password_ph	密碼
+cloud_continue	繼續
+cloud_forgot	忘記密碼？
+cloud_web_methods	網站上的 Google 及其他方式
+cloud_signing_in	正在登入…
+cloud_sending_reset	正在傳送重設連結…
+cloud_forgot_sent	若該電郵有帳戶，重設連結正在傳送。
+cloud_welcome	已登入為 {user} · {plan}
+cloud_created	帳戶已建立。有空時請查收電郵以驗證。
+cloud_cancel	取消
 unmark	取消標記
 update_my_password	修改我的密碼
 update_my_pin	修改我的PIN

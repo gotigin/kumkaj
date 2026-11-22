@@ -899,22 +899,22 @@ till_to_bank	Ikhawuntara → ibhanki
 units_heading	Iiyunithi
 unlock_after_pairing	Faka i-PIN
 unlock_with_login	Vula ngokungena
-or_unlock_shop_login	[xh] Or unlock with shop login
-shop_login_help	[xh] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[xh] Khaynjo account
-cloud_account_help	[xh] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[xh] Name (optional)
-cloud_email_ph	[xh] Email
-cloud_password_ph	[xh] Password
-cloud_continue	[xh] Continue
-cloud_forgot	[xh] Forgot password?
-cloud_web_methods	[xh] Google and other methods on the website
-cloud_signing_in	[xh] Signing in…
-cloud_sending_reset	[xh] Sending reset link…
-cloud_forgot_sent	[xh] If that email has an account, a reset link is on the way.
-cloud_welcome	[xh] Signed in as {user} · {plan}
-cloud_created	[xh] Account created. Check your email to verify when you can.
-cloud_cancel	[xh] Cancel
+or_unlock_shop_login	Okanye vula ngokungena kwevenkile
+shop_login_help	Okukhethiweyo: vula ngegama lomsebenzisi negama lokugqitha labasebenzi bale venkile endaweni ye-PIN (isebenza ngaphandle kwe-intanethi).
+cloud_account_title	Iakhawunti ye-Khaynjo
+cloud_account_help	Bhalisa okanye ngena ngeakhawunti efanayo ne-khaynjo.com/account. Yenza i-id yefu yakho kunye nesicwangciso sasimahla.
+cloud_name_ph	Igama (okukhethiweyo)
+cloud_email_ph	I-imeyile
+cloud_password_ph	Igama lokugqitha
+cloud_continue	Qhubeka
+cloud_forgot	Uyilibele igama lokugqitha?
+cloud_web_methods	I-Google nezinye iindlela kwiwebhusayithi
+cloud_signing_in	Iyangena…
+cloud_sending_reset	Ithumela ikhonkco lokuseta kwakhona…
+cloud_forgot_sent	Ukuba leyo imeyile ineakhawunti, ikhonkco lokuseta kwakhona liyeza.
+cloud_welcome	Ungene njengo-{user} · {plan}
+cloud_created	Iakhawunti yenziwe. Jonga i-imeyile ukuze uqinisekise xa unako.
+cloud_cancel	Rhoxisa
 unmark	Susa uphawu
 update_my_password	Hlaziya igama lam lokugqitha
 update_my_pin	Hlaziya ungeno lwam

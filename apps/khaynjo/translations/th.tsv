@@ -899,22 +899,22 @@ till_to_bank	เคาน์เตอร์ → ธนาคาร
 units_heading	หน่วย
 unlock_after_pairing	ใส่รหัส PIN
 unlock_with_login	ปลดล็อกด้วยการเข้าสู่ระบบ
-or_unlock_shop_login	[th] Or unlock with shop login
-shop_login_help	[th] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[th] Khaynjo account
-cloud_account_help	[th] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[th] Name (optional)
-cloud_email_ph	[th] Email
-cloud_password_ph	[th] Password
-cloud_continue	[th] Continue
-cloud_forgot	[th] Forgot password?
-cloud_web_methods	[th] Google and other methods on the website
-cloud_signing_in	[th] Signing in…
-cloud_sending_reset	[th] Sending reset link…
-cloud_forgot_sent	[th] If that email has an account, a reset link is on the way.
-cloud_welcome	[th] Signed in as {user} · {plan}
-cloud_created	[th] Account created. Check your email to verify when you can.
-cloud_cancel	[th] Cancel
+or_unlock_shop_login	หรือปลดล็อกด้วยการเข้าสู่ระบบร้าน
+shop_login_help	ทางเลือก: ปลดล็อกด้วยชื่อผู้ใช้และรหัสผ่านพนักงานร้านนี้แทน PIN (ใช้แบบออฟไลน์ได้)
+cloud_account_title	บัญชี Khaynjo
+cloud_account_help	ลงทะเบียนหรือลงชื่อเข้าใช้ด้วยบัญชีเดียวกับ khaynjo.com/account สร้างรหัสคลาวด์และแผนฟรีของคุณ
+cloud_name_ph	ชื่อ (ไม่บังคับ)
+cloud_email_ph	อีเมล
+cloud_password_ph	รหัสผ่าน
+cloud_continue	ดำเนินการต่อ
+cloud_forgot	ลืมรหัสผ่าน?
+cloud_web_methods	Google และวิธีอื่นบนเว็บไซต์
+cloud_signing_in	กำลังลงชื่อเข้าใช้…
+cloud_sending_reset	กำลังส่งลิงก์รีเซ็ต…
+cloud_forgot_sent	หากอีเมลนั้นมีบัญชี ลิงก์รีเซ็ตกำลังส่งไป
+cloud_welcome	ลงชื่อเข้าใช้แล้วเป็น {user} · {plan}
+cloud_created	สร้างบัญชีแล้ว ตรวจอีเมลเพื่อยืนยันเมื่อทำได้
+cloud_cancel	ยกเลิก
 unmark	ยกเลิกเครื่องหมาย
 update_my_password	เปลี่ยนรหัสผ่านของฉัน
 update_my_pin	เปลี่ยน PIN ของฉัน

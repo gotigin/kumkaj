@@ -899,22 +899,22 @@ till_to_bank	Kase → banka
 units_heading	Vienības
 unlock_after_pairing	Ievadiet PIN
 unlock_with_login	Atbloķēt ar pieteikšanos
-or_unlock_shop_login	[lv] Or unlock with shop login
-shop_login_help	[lv] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[lv] Khaynjo account
-cloud_account_help	[lv] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[lv] Name (optional)
-cloud_email_ph	[lv] Email
-cloud_password_ph	[lv] Password
-cloud_continue	[lv] Continue
-cloud_forgot	[lv] Forgot password?
-cloud_web_methods	[lv] Google and other methods on the website
-cloud_signing_in	[lv] Signing in…
-cloud_sending_reset	[lv] Sending reset link…
-cloud_forgot_sent	[lv] If that email has an account, a reset link is on the way.
-cloud_welcome	[lv] Signed in as {user} · {plan}
-cloud_created	[lv] Account created. Check your email to verify when you can.
-cloud_cancel	[lv] Cancel
+or_unlock_shop_login	Vai atbloķējiet ar veikala pieteikšanos
+shop_login_help	Neobligāti: atbloķējiet ar šā veikala personāla lietotājvārdu un paroli PIN vietā (darbojas bezsaistē).
+cloud_account_title	Khaynjo konts
+cloud_account_help	Reģistrējieties vai pierakstieties ar to pašu kontu kā khaynjo.com/account. Izveido jūsu mākoņa id un bezmaksas plānu.
+cloud_name_ph	Vārds (neobligāti)
+cloud_email_ph	E-pasts
+cloud_password_ph	Parole
+cloud_continue	Turpināt
+cloud_forgot	Aizmirsāt paroli?
+cloud_web_methods	Google un citas metodes vietnē
+cloud_signing_in	Pierakstās…
+cloud_sending_reset	Sūta atiestatīšanas saiti…
+cloud_forgot_sent	Ja šim e-pastam ir konts, atiestatīšanas saite ir ceļā.
+cloud_welcome	Pierakstījies kā {user} · {plan}
+cloud_created	Konts izveidots. Pārbaudiet e-pastu, lai verificētu, kad varat.
+cloud_cancel	Atcelt
 unmark	Noņemt atzīmi
 update_my_password	Atjaunināt manu paroli
 update_my_pin	Atjaunināt manu pieteikšanos

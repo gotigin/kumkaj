@@ -899,22 +899,22 @@ till_to_bank	Vola → banky
 units_heading	Singan-javatra
 unlock_after_pairing	Ampidiro PIN
 unlock_with_login	Esory ny hidy amin'ny fidirana
-or_unlock_shop_login	[mg] Or unlock with shop login
-shop_login_help	[mg] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mg] Khaynjo account
-cloud_account_help	[mg] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[mg] Name (optional)
-cloud_email_ph	[mg] Email
-cloud_password_ph	[mg] Password
-cloud_continue	[mg] Continue
-cloud_forgot	[mg] Forgot password?
-cloud_web_methods	[mg] Google and other methods on the website
-cloud_signing_in	[mg] Signing in…
-cloud_sending_reset	[mg] Sending reset link…
-cloud_forgot_sent	[mg] If that email has an account, a reset link is on the way.
-cloud_welcome	[mg] Signed in as {user} · {plan}
-cloud_created	[mg] Account created. Check your email to verify when you can.
-cloud_cancel	[mg] Cancel
+or_unlock_shop_login	Na sokafy amin’ny fidirana fivarotana
+shop_login_help	Safidy: sokafy amin’ny anaran’ny mpampiasa sy tenimiafina mpiasa amin’ity fivarotana ity fa tsy PIN (miasa ivelan’ny aterineto).
+cloud_account_title	Kaonty Khaynjo
+cloud_account_help	Misoratra anarana na midira amin’ny kaonty mitovy amin’ny khaynjo.com/account. Mamorona id rahona sy drafitra maimaim-poana.
+cloud_name_ph	Anarana (safidy)
+cloud_email_ph	Mailaka
+cloud_password_ph	Tenimiafina
+cloud_continue	Tohizo
+cloud_forgot	Hadino ny tenimiafina?
+cloud_web_methods	Google sy fomba hafa ao amin’ny tranonkala
+cloud_signing_in	Miditra…
+cloud_sending_reset	Mandefa rohy famerenana…
+cloud_forgot_sent	Raha manana kaonty io mailaka io dia eny an-dalana ny rohy famerenana.
+cloud_welcome	Niditra ho {user} · {plan}
+cloud_created	Noforonina ny kaonty. Jereo ny mailaka hanamarina rehefa afaka.
+cloud_cancel	Ajanony
 unmark	Esory ny marika
 update_my_password	Vaovao ny tenimiafiko
 update_my_pin	Vaovao ny fidirako

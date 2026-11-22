@@ -904,7 +904,7 @@ shop_login_help	Opciono: otključajte korisničkim imenom i lozinkom osoblja ove
 cloud_account_title	Khaynjo račun
 cloud_account_help	Registrujte se ili se prijavite sa istim nalogom kao khaynjo.com/account. Kreira vaš cloud ID i besplatni plan.
 cloud_name_ph	Ime (opcionalno)
-cloud_email_ph	[bs] Email
+cloud_email_ph	E-pošta
 cloud_password_ph	Lozinka
 cloud_continue	Nastavi
 cloud_forgot	Zaboravili ste lozinku?

@@ -899,22 +899,22 @@ till_to_bank	Kasa → banka
 units_heading	Birimler
 unlock_after_pairing	PIN girin
 unlock_with_login	Girişle kilidi aç
-or_unlock_shop_login	[tr] Or unlock with shop login
-shop_login_help	[tr] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[tr] Khaynjo account
-cloud_account_help	[tr] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[tr] Name (optional)
-cloud_email_ph	[tr] Email
-cloud_password_ph	[tr] Password
-cloud_continue	[tr] Continue
-cloud_forgot	[tr] Forgot password?
-cloud_web_methods	[tr] Google and other methods on the website
-cloud_signing_in	[tr] Signing in…
-cloud_sending_reset	[tr] Sending reset link…
-cloud_forgot_sent	[tr] If that email has an account, a reset link is on the way.
-cloud_welcome	[tr] Signed in as {user} · {plan}
-cloud_created	[tr] Account created. Check your email to verify when you can.
-cloud_cancel	[tr] Cancel
+or_unlock_shop_login	Veya mağaza girişi ile kilidi açın
+shop_login_help	İsteğe bağlı: PIN yerine bu mağazanın personel kullanıcı adı ve parolası ile kilidi açın (çevrimdışı çalışır).
+cloud_account_title	Khaynjo hesabı
+cloud_account_help	khaynjo.com/account ile aynı hesapla kaydolun veya oturum açın. Bulut kimliğinizi ve ücretsiz planı oluşturur.
+cloud_name_ph	Ad (isteğe bağlı)
+cloud_email_ph	E-posta
+cloud_password_ph	Parola
+cloud_continue	Devam
+cloud_forgot	Parolayı unuttunuz?
+cloud_web_methods	Sitede Google ve diğer yöntemler
+cloud_signing_in	Oturum açılıyor…
+cloud_sending_reset	Sıfırlama bağlantısı gönderiliyor…
+cloud_forgot_sent	Bu e-postanın hesabı varsa sıfırlama bağlantısı yolda.
+cloud_welcome	{user} olarak oturum açıldı · {plan}
+cloud_created	Hesap oluşturuldu. Doğrulamak için e-postanızı kontrol edin.
+cloud_cancel	İptal
 unmark	İşareti kaldır
 update_my_password	Parolamı güncelle
 update_my_pin	PIN'imi güncelle
