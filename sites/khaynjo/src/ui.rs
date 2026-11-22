@@ -84,7 +84,9 @@ script_mod! {
     }
     // World shelf (chapter 8) native names: TextFont plus every script the
     // 199-country list needs. Its own family so these fonts load only when
-    // chapter 8 draws (a family loads all members on first use).
+    // chapter 8 draws (a family loads all members on first use). First paint
+    // defers the parade (main.rs shelf_warmup) so Mali-T830 can compile the
+    // hero before WorldFont + shelf Images join the WebGL wave.
     let WorldFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
         gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
@@ -249,19 +251,13 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
         }
     }
+    // Flat rule (was a custom dashed SDF). Same place in the KOT toy; Mali
+    // cannot spare another unique draw_bg pixel shader on this page.
     let TicketRule = View{
         width: Fill height: 9
-        show_bg: true
-        draw_bg +: {
-            pixel: fn() {
-                let x = self.pos.x * self.rect_size.x
-                let y = self.pos.y * self.rect_size.y
-                let dash = step(0.45, fract(x / 7.0))
-                let row = 1.0 - step(1.2, abs(y - 4.5))
-                let a = dash * row * 0.75
-                return vec4(vec3(0.149, 0.043, 0.031) * a, a)
-            }
-        }
+        flow: Down
+        align: Align{x: 0.0 y: 0.5}
+        RoundedView{width: Fill height: 1 draw_bg +: {color: #x260B0840 border_radius: 0.}}
     }
     let Ticket = Markdown{
         selectable: true
@@ -574,21 +570,13 @@ script_mod! {
     }
 
     // ---- Grounds --------------------------------------------------------
-    // Hero ground: cream with a pool of warm lamp light top-left.
-    let LampBand = View{
+    // Hero ground: warm cream (was a custom lamp-glow pixel shader — that
+    // unique draw_bg failed to compile on Mali-T830 with the rest of the page).
+    let LampBand = RoundedView{
         width: Fill height: Fit
         flow: Down
         align: Align{x: 0.5 y: 0.0}
-        show_bg: true
-        draw_bg +: {
-            pixel: fn() {
-                let aspect = self.rect_size.x / max(1.0, self.rect_size.y)
-                let d = length(vec2((self.pos.x - 0.15) * aspect, self.pos.y - 0.05))
-                let lamp = 1.0 - smoothstep(0.0, 1.3, d)
-                let base = mix(vec3(0.976, 0.957, 0.941), vec3(0.965, 0.925, 0.894), self.pos.y)
-                return vec4(mix(base, vec3(0.992, 0.890, 0.733), lamp * 0.5), 1.0)
-            }
-        }
+        draw_bg +: {color: #xF8EADF border_radius: 0.}
     }
     // Flat section bands (RoundedView radius 0 — a Fit View skips show_bg).
     let CreamBand = RoundedView{
@@ -721,21 +709,14 @@ script_mod! {
         disc := StepDisc{}
         title := H3{width: Fill}
     }
-    // A point: gold dot, bold line, plain line (direct children for overrides).
+    // A point: bold line + plain line (direct children for DSL overrides).
+    // Gold disc was a custom draw_bg pixel shader unique to this site; dropped
+    // for Mali-T830. Left padding keeps the same indent the disc occupied.
     let Point = View{
         width: Fill height: Fit
         flow: Down
         spacing: 3
         padding: Inset{left: 20. right: 0. top: 0. bottom: 2.}
-        show_bg: true
-        draw_bg +: {
-            pixel: fn() {
-                let p = self.pos * self.rect_size
-                let d = length(p - vec2(6.0, 11.0))
-                let a = 1.0 - smoothstep(4.0, 5.2, d)
-                return vec4(vec3(0.965, 0.616, 0.173) * a, a)
-            }
-        }
         head := Strong{body: "Point"}
         line := Body{body: "Detail"}
     }

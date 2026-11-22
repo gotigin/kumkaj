@@ -99,6 +99,20 @@ const NAV_LINKS: [(&[LiveId], &str); 6] = [
     (ids!(go_faq), "faq"),
 ];
 
+/// Hidden until first-paint warmup ends — keeps Mali-T830 WebGL from compiling
+/// the whole long page + shelf Images + WorldFont in one wave (blank cream).
+const DEFERRED_FIRST_PAINT: [&[LiveId]; 9] = [
+    ids!(floor_card),
+    ids!(menus),
+    ids!(how),
+    ids!(features),
+    ids!(menu_starters),
+    ids!(offline),
+    ids!(pricing),
+    ids!(faq),
+    ids!(closing),
+];
+
 /// Each band's content column; side padding / max width set per tier.
 const WRAPS: [&[LiveId]; 10] = [
     ids!(hero_wrap),
@@ -468,6 +482,10 @@ pub struct App {
     shelf_anim_frame: NextFrame,
     #[rust]
     shelf_last_t: f64,
+    /// Frames left before revealing deferred bands + first `paint_shelf`
+    /// (Mali-T830 first-wave budget: hero copy only, then the rest).
+    #[rust]
+    shelf_warmup_frames: u8,
     /// Top-bar nav section currently in view (scroll spy).
     #[rust]
     nav_active: PendingSection,
@@ -1169,6 +1187,27 @@ impl App {
         }
     }
 
+    /// After hero shaders settle, reveal deferred bands and bind the parade.
+    fn maybe_finish_shelf_warmup(&mut self, cx: &mut Cx) {
+        if self.shelf_warmup_frames == 0 {
+            return;
+        }
+        self.shelf_warmup_frames = self.shelf_warmup_frames.saturating_sub(1);
+        if self.shelf_warmup_frames > 0 {
+            let _ = cx.new_next_frame();
+            return;
+        }
+        for path in DEFERRED_FIRST_PAINT {
+            self.ui.view(cx, path).set_visible(cx, true);
+        }
+        self.paint_floor(cx);
+        self.paint_shelf(cx);
+        if self.shelf_want_playing {
+            self.set_shelf_playing(cx, true);
+        }
+        self.ui.redraw(cx);
+    }
+
     fn set_shelf_speed(&mut self, cx: &mut Cx, level: u8) {
         self.shelf_speed_level = level.min(SHELF_SPEED_MAX_LEVEL);
         self.paint_shelf_chrome(cx);
@@ -1409,15 +1448,21 @@ fn open_link(cx: &mut Cx, url: &str) {
 impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
         // Script #[rust] bools/u8 default to false/0 — set parade defaults here.
-        self.shelf_playing = true;
+        // Shelf starts paused/hidden: first-wave WebGL on Mali-T830 cannot
+        // compile hero + 10 Images + WorldFont together (blank cream canvas).
+        self.shelf_playing = false;
         self.shelf_want_playing = true;
         self.shelf_flow_left = true;
         self.shelf_speed_level = SHELF_SPEED_DEFAULT_LEVEL;
         self.rebuild_shelf_hits();
         self.reset_shelf_slots();
         self.apply_gates(cx);
-        self.paint_floor(cx);
-        self.paint_shelf(cx);
+        for path in DEFERRED_FIRST_PAINT {
+            self.ui.view(cx, path).set_visible(cx, false);
+        }
+        for path in SHELF_SLOTS {
+            self.ui.view(cx, path).set_visible(cx, false);
+        }
         self.paint_nav_active(cx);
         // Keys go to the page from the start (the `page` selection root also
         // answers Ctrl/Cmd+A with nothing focused).
@@ -1425,9 +1470,9 @@ impl MatchEvent for App {
         self.pending_section = self.section_from_page(cx);
         self.pending_frames = 120;
         self.pending_stable = 0;
-        if self.shelf_playing {
-            self.shelf_arm_anim(cx);
-        }
+        // ~0.25s at 60fps — enough for hero RoundedView/text to compile alone.
+        self.shelf_warmup_frames = 24;
+        let _ = cx.new_next_frame();
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
     }
@@ -1550,6 +1595,7 @@ impl AppMain for App {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
+                self.maybe_finish_shelf_warmup(cx);
                 self.paint_nav_active(cx);
                 if ne.set.contains(&self.shelf_anim_frame) {
                     self.tick_shelf_anim(cx, ne.time);
