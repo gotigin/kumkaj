@@ -17,7 +17,7 @@ if [[ ! -f "$WEBJS" ]]; then
   exit 1
 fi
 for needle in css_layout_size_for_canvas "visualViewport.addEventListener" "Desktop site" \
-  "fire_resize_debounced" "canvas.width !== sw"; do
+  "fire_resize_debounced" "canvas.width !== sw" "full_canvas"; do
   if ! grep -q "$needle" "$WEBJS"; then
     echo "error: $WEBJS missing '$needle' (web_mobile_layout_width patch)" >&2
     fail=1

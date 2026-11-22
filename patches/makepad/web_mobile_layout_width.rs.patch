@@ -28,10 +28,14 @@
          var h;
          var canvas = this.canvas;
 +        var is_touch = !!(this.detect && (this.detect.is_touch_device || this.detect.is_android));
++        // Sites use <canvas class="full_canvas">; also accept fullpage attr.
++        var is_fullpage = !!(canvas.getAttribute("fullpage")
++            || (canvas.classList && canvas.classList.contains("full_canvas")));
  
-         if (canvas.getAttribute("fullpage")) {
+-        if (canvas.getAttribute("fullpage")) {
++        if (is_fullpage) {
              if (this.detect.is_add_to_homescreen_safari) { // extremely ugly. but whatever.
-@@ -1314,22 +1333,53 @@
+@@ -1314,22 +1335,53 @@
                  }
              }
              else {
@@ -65,7 +69,7 @@
 +        // smeared text while scrolling).
 +        w = Math.max(1, Math.round(w));
 +        h = Math.max(1, Math.round(h));
-+        if (is_touch && canvas.getAttribute("fullpage")) {
++        if (is_touch && is_fullpage) {
 +            // Canvas tracks the clamped viewport; html/body get WIDTH only.
 +            // Setting body height to the URL-bar-shrunk viewport raced the
 +            // mobile-viewport-guard (height intentionally left alone) and
