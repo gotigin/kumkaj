@@ -1341,7 +1341,7 @@ template_need_download	Pobierz publiczną półkę zdjęć potraw (~1459 potraw)
 template_download_shelf	Pobierz półkę zdjęć
 template_info	{c} kategorii i {d} dań ze zdjęciami, gotowe do dodania. Ceny zaczynają się od 0 INR — ustaw swoje później.
 template_import	Importuj cały szablon
-template_confirm	Dodać {d} potraw wraz z ich kategoriami? Naczynia, które już masz, pozostają takie, jakie są.
+template_confirm	Dodać {d} potraw wraz z ich kategoriami? Dania, które już masz, pozostają takie, jakie są.
 template_yes	Tak, importuj
 template_importing	Importuję menu…
 template_import_progress	Importowanie… {d}/{t}
@@ -1350,7 +1350,7 @@ template_imported	Dodano {d} dań i {c} kategorii — ustaw ich ceny na tym ekra
 client_template_heading	Menu klienta
 client_template_info	{title}: {c} kategorie, {d} dania z cenami, zdjęciami i pseudonimami. Tylko brakujące dania — nazwy, które już masz, pozostają.
 client_template_import	Zaimportuj to menu
-client_template_confirm	Dodać {d} dań z {title}? Naczynia, które już masz, pozostają takie, jakie są.
+client_template_confirm	Dodać {d} dań z {title}? Dania, które już masz, pozostają takie, jakie są.
 client_template_importing	Importowanie {title}…
 client_template_done	Każde danie od {title} jest w Twoim menu.
 client_template_imported	Dodano {d} dań i {c} kategorii z {title}
