@@ -99,7 +99,7 @@ slip_col_header	Isihloko
 slip_columns_help	Ububanzi bekholomu ngayinye bufaka isikhala sayo sokuqala nesokugcina. Umbhalo usongeka ngaphakathi kwekholomu yawo; okudlula ububanzi bokuqukethwe kuyanqunywa, ephepheni nasekubukeni kuqala.
 bill_total_qty_label	Isamba selebula ye-qty
 bill_total_subtotal_label	Isamba selebula engaphansi
-bill_total_grand_label	Ilebula ephelele ephelele
+bill_total_grand_label	Ilebula ephelele
 bill_total_paid_label	Ilebula ephelele ekhokhelwe
 bill_meta_pair	Yabelana ngomugqa
 bill_pair_alone	Ngedwa

@@ -438,7 +438,7 @@ allow_firewall	Eheja ambue tembipurukuéra toñembojoaju
 firewall_blocked	Ko komputadóra firewall ojoko hína ambue tembipuru — epoko Eheja ambue tembipuru oñembojoaju.
 firewall_waiting	Oha'arõvo pe admin ñe'ẽmondo...
 lan_join_help	Ambue tembipuru’ípe: Modo Cliente → Eheka pe tenda servidor (térã ehai {addr}) → código de emparejamiento {code}.
-lan_pair_status	Wi‑Fi {addr} Ñemby Ñemby
+lan_pair_status	Wi‑Fi {addr} Ñemby
 lan_join_help_no_addr	Embojoaju ko tembipuru Wi‑Fi rehe peteĩ dirección rehegua.
 lan_not_listening	Ndoaceptái umi tembipuru (puerto {port} hembiapo heta). Emoñepyrũ jey pe app.
 lan_tills_off	Tills extra oime apagado. Eheja chupekuéra toheja ambue tembipuru ojoaju.
