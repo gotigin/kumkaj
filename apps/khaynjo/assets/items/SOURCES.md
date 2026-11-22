@@ -529,3 +529,8 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `middle-eastern/borek.webp` | market trays with BOREK price signs and baklava | Cheese borek - Lily's Cafe, Brighton 2024-02-03.jpg | Andy Li | CC0 | https://commons.wikimedia.org/wiki/File:Cheese_borek_-_Lily%27s_Cafe,_Brighton_2024-02-03.jpg | resized, WebP |
 | `pizza-pasta/spaghetti-and-meatballs.webp` | meatballs and wine with almost no spaghetti visible | Spaghetti and meatballs on plate.jpg | jeffreyw | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Spaghetti_and_meatballs_on_plate.jpg | resized, WebP |
+
+## L14 pass3 2026-11-22T14:43:01Z
+- hot-beverages/americano.webp ← Commons File:Long_Black_Coffee.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Long_Black_Coffee.jpg
+- hot-beverages/espresso.webp ← Commons File:Espresso_Coffee_01.jpg (CC0) https://commons.wikimedia.org/wiki/File:Espresso_Coffee_01.jpg
+- hot-beverages/cutting-chai.webp ← Commons File:Cutting_chai.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Cutting_chai.jpg
