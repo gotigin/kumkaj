@@ -813,7 +813,7 @@ test_bill_format	Inyemezabuguzi y'igerageza
 test_bill_sent	Igereranya ry'inyemezabuguzi ryoherejwe
 test_print_no_printer	Nta mucapyi w'ako kazi — hitamo umwe kuri iki rubuga
 std_print	Ubunini bwo gucapa inyemezabuguzi
-std_print_help	Ingano yimyandikire ya Standard Portrait na Landscape fagitire yimirimo kuri OS / icapiro ryinyandiko (andika amanota - ntabwo ari muto / Bisanzwe / Kinini). Ingano imwe ku byerekezo byombi.
+std_print_help	Ingano y’imyandikire ku fagitire ihagaze n’ipfunyitse kuri OS / printer zinyandiko (andika points — si Small/Normal/Large). Ingano imwe ku buryo bwombi.
 save_std_print	Bika ubunini bwo gucapa inyemezabuguzi
 std_print_saved	Ubunini bwo gucapa inyemezabuguzi bwabitswe
 print_brand_kit	Ibikoresho by'ikirango byo gucapa

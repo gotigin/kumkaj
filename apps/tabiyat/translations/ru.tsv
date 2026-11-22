@@ -58,7 +58,7 @@ today_prefix	Сегодня
 owed	долг
 back	Назад
 sold_out	Нет в наличии
-restock	Вернуть
+restock	Пополнить склад
 not_tracked	Без учёта
 in_stock	в наличии
 marked_sold_out	Отмечено нет в наличии
@@ -753,7 +753,7 @@ your_category	Ваша категория
 suggested_category	Предложено — из наших товаров
 category_search_ph	Категория — найдите свою или введите новую
 cancel_item_short	Отменить
-return_to_customer	Сдача
+return_to_customer	Вернуть клиенту
 short_by	Не хватает
 tip_not_sale	Чаевые (персоналу, не выручка)
 right_settle	Принимать оплату

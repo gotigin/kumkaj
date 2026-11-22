@@ -813,7 +813,7 @@ test_bill_format	Test bill
 test_bill_sent	Bill en hma thawn a ni
 test_print_no_printer	Hna kha atan print na awm lo — he screen-ah pakhat thlang
 std_print	Bill print len
-std_print_help	OS / document printer-a Standard Portrait leh Landscape bill hnathawhna tur font size (point ziah luh — Small/Normal/Large ni lovin). Orientation pahnih ah hian size inang vek.
+std_print_help	OS / document printer-a bill ding leh a zau atan font size (points ziak rawh — Small/Normal/Large ni lovin). Orientation pahnihah size thuhmun.
 save_std_print	Bill print len dah tha
 std_print_saved	Bill print len dah tha a ni
 print_brand_kit	Print hmingchhiar bung

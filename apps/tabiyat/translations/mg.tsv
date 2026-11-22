@@ -813,7 +813,7 @@ test_bill_format	Fitsapana faktiora
 test_bill_sent	Fampisehoana faktiora nalefa
 test_print_no_printer	Tsy misy mpanonta ho an'io asa io — mifidiana iray amin'ity efijery ity
 std_print	Haben'ny pirinty faktiora
-std_print_help	Haben'ny endritsoratra ho an'ny asa faktiora Standard Portrait sy Landscape amin'ny mpanonta printy OS / document (mampidira teboka — fa tsy Small/Normal/Large). Mitovy habe amin'ny orientation roa.
+std_print_help	Haben'ny endritsoratra ho an'ny faktiora mijoro sy mitsivalana amin'ny printer OS / antontan-taratasy (ampidiro points — tsy Small/Normal/Large). Haben mitovy amin'ny orientation roa.
 save_std_print	Tehirizo ny haben'ny pirinty faktiora
 std_print_saved	Voatahiry ny haben'ny pirinty faktiora
 print_brand_kit	Printy kit brandy

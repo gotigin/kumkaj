@@ -813,7 +813,7 @@ test_bill_format	Subukin ang resibo
 test_bill_sent	Ipinadala ang preview ng bill
 test_print_no_printer	Walang printer para sa trabahong iyon — pumili ng isa sa screen na ito
 std_print	Laki ng pag-print ng bill
-std_print_help	Laki ng font para sa Standard Portrait at Landscape bill na mga trabaho sa mga OS / document printer (magpasok ng mga punto — hindi Maliit/Normal/Malaki). Parehong laki sa parehong oryentasyon.
+std_print_help	Laki ng font para sa patayo at pahigang bill jobs sa OS / document printers (ilagay ang points — hindi Small/Normal/Large). Parehong laki sa parehong oryentasyon.
 save_std_print	I-save ang laki ng pag-print ng bill
 std_print_saved	Na-save ang laki ng pag-print ng bill
 print_brand_kit	Ilimbag ang tatak
