@@ -756,7 +756,7 @@ server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasa
 approval_pin_ph	Pengurus PIN (hanya jika ditanya)
 menu_search_ph	Cari item menu atau kod pendek
 customer_paid_ph	Pelanggan bayar
-tip_ph	Petua
+tip_ph	Tip
 find_server	Cari server kedai
 bill_format	Format bil
 bill_header_ph	Alamat | telefon
@@ -896,7 +896,7 @@ buy_unit_ph	Unit (kg, liter, pcs)
 add_another_way	+ Tambah cara lain
 parts_status	Masuk {a} daripada {b} · {c} kiri
 save_expense	Jimat perbelanjaan
-rest_ph	Rehat
+rest_ph	Baki
 low_badge	rendah
 stock_empty	Tiada apa-apa dalam stok lagi — perkara yang anda rakam pada Beli dipaparkan di sini.
 recent_changes	Perubahan terkini

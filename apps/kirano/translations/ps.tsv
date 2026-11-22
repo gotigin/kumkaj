@@ -413,7 +413,7 @@ forget_device	هېرول
 last_seen	لیدل
 copy_pair_code	د جوړه کولو کوډ کاپي کړئ
 new_pair_code	نوی جوړه کوډ
-pair_finishing	جوړه جوړه ... د هټۍ د کتابونو پلي کول
+pair_finishing	جوړه ... د هټۍ د کتابونو پلي کول
 pair_opening	د الرې پرانیستل...
 lan_offline_waiting	د پلورنځي سرور د السرسي وړ نه دی · {n} انتظار
 lan_connecting	هټۍ سره نښلول...
@@ -732,7 +732,7 @@ discount_reason_ph	دلیل (د بیلګې په توګه منظم میلمه، �
 opening_float_ph	نغدې نن سهار په دراز کې واچولې
 shift_counted_ph	په سپارلو کې نغدي شمیرل کیږي
 opening_float	د پیسو خلاصول (فلوټ)
-shift_handover	د لیږد لیږد
+shift_handover	د لیږد
 shift_since	دا بدلون له هغه راهیسې
 expected_in_drawer	په دراز کې تمه کیږي
 right_discount	تخفیف ورکړئ
