@@ -708,7 +708,7 @@ new_password_ph	Új jelszó (nem kötelező)
 new_pin_ph	Új PIN (4–12 számjegy)
 note_bank_ph	Megjegyzés (befizetés, felvétel,…)
 note_buy_expense_ph	Megjegyzés (üzemanyag, bérleti díj,…)
-options_tabiyat_ph	Opciók — Méret*: Kicsi=199, Nagy=399 | Öntetek+3: sajt=40, olíva=30 | Extra sajt = 40
+options_tabiyat_ph	Opciók — Méret*: Kicsi=199, Nagy=399…
 phone_ph	Telefon
 place_name_ph	A hely neve
 qty_example_ph	Mennyiség (pl. 1,5 kg-nál)

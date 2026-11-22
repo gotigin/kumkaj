@@ -708,7 +708,7 @@ new_password_ph	Cyfrinair newydd (dewisol)
 new_pin_ph	PIN newydd (4–12 digid)
 note_bank_ph	Nodyn (cyfran, tynnu'n ôl, …)
 note_buy_expense_ph	Nodyn (tanwydd, rhent, …)
-options_tabiyat_ph	Opsiynau — Maint*: Bach=199, Mawr=399 | Ychwanegion+3: Caws=40, Olewydd=30 | Caws ychwanegol=40
+options_tabiyat_ph	Opsiynau — Maint*: Bach=199, Mawr=399…
 phone_ph	Ffôn
 place_name_ph	Enw'r lle hwn
 qty_example_ph	Nifer (e.e. 1.5 ar gyfer kg)

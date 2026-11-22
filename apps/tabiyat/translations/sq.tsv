@@ -708,7 +708,7 @@ new_password_ph	Fjalëkalim i ri (opsional)
 new_pin_ph	PIN i ri (4–12 shifra)
 note_bank_ph	Shënim (depozitë, tërheqje, …)
 note_buy_expense_ph	Shënim (karburant, qira, …)
-options_tabiyat_ph	Opsione — Madhësia*: Vogël=199, Madhe=399 | Shtesa+3: Djathë=40, Ullinj=30 | Djathë shtesë=40
+options_tabiyat_ph	Opsione — Madhësia*: Vogël=199, Madhe=399…
 phone_ph	Telefoni
 place_name_ph	Emri i këtij vendi
 qty_example_ph	Sasia (p.sh. 1.5 për kg)
