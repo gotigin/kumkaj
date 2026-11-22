@@ -7948,18 +7948,21 @@ fn queue(job: Job) -> Result<(), String> {
 
     let mut slot = TX.lock().unwrap();
     ensure_worker(&mut slot)?;
-    match slot.as_ref().unwrap().send(job) {
+    let tx = slot
+        .as_ref()
+        .ok_or_else(|| "print worker not ready — try again".to_string())?;
+    match tx.send(job) {
         Ok(()) => Ok(()),
         Err(mpsc::SendError(job)) => {
             // Worker died (panic / exit). Start a fresh one and retry once.
             *slot = None;
             ensure_worker(&mut slot)?;
-            slot.as_ref()
-                .unwrap()
-                .send(job)
-                .map_err(|_| {
-                    "print worker stopped — restart the app, then try again".into()
-                })
+            let tx = slot
+                .as_ref()
+                .ok_or_else(|| "print worker not ready — try again".to_string())?;
+            tx.send(job).map_err(|_| {
+                "print worker stopped — restart the app, then try again".into()
+            })
         }
     }
 }
