@@ -1416,7 +1416,7 @@ kind_dish	Jídlo, které děláme
 buy_unit_ph	Jednotka (kg, litr, ks)
 add_another_way	+ Přidat další způsob
 parts_status	Zadáno {a} z {b} · Zbývá {c}
-save_expense	Ušetřete náklady
+save_expense	Uložit výdaj
 rest_ph	Zbytek
 low_badge	Nízká
 stock_empty	Zatím není nic na skladě – zde se zobrazí to, co nahrajete na Koupit.

@@ -1416,7 +1416,7 @@ kind_dish	Roog, mida teeme
 buy_unit_ph	Ühik (kg, liiter, tk)
 add_another_way	+ Lisage teine viis
 parts_status	Sisestatud {a}/{b} · {c} jäänud
-save_expense	Säästke kulusid
+save_expense	Salvesta kulu
 rest_ph	Jääk
 low_badge	Madal
 stock_empty	Midagi pole veel laos – siin kuvatakse see, mida salvestate jaotises Osta.
