@@ -1100,7 +1100,7 @@ starting_pin_ph	PIN awal (4–12 digit)
 station_name_ph	Nama stasiun (mis. Tandoor, Fryer, Cold)
 station_new_ph	Stasiun dapur (opsional, mis. Tandoor — dibuat jika baru)
 table_name_ph	Nama meja (mis. Patio 1, Counter 2)
-tax_rate_ph	Nama tarif pajak atau % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Nama tarif pajak atau % — Standar, Dikurangi, 0, 5, 12, 18, 20
 to_code_ph	Kode ke (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan

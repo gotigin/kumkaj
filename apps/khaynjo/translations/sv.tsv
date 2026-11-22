@@ -1100,7 +1100,7 @@ starting_pin_ph	Start-PIN (4–12 siffror)
 station_name_ph	Stationsnamn (t.ex. Tandoor, Fryer, Cold)
 station_new_ph	Köksstation (valfritt, t.ex. Tandoor — skapad om ny)
 table_name_ph	Bordnamn (t.ex. uteplats 1, disk 2)
-tax_rate_ph	Skattesatsens namn eller % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Skattesatsens namn eller % — Standard, Nedsatt, 0, 5, 12, 18, 20
 to_code_ph	Till kod (kg)
 uncleared_no_ph	Oavstämt # ovan
 unit_cost_ph	Enhetskostnad

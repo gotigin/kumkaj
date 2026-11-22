@@ -1100,7 +1100,7 @@ starting_pin_ph	PIN inicial (4–12 dígitos)
 station_name_ph	Nombre de la estación (ej. Tandoor, Fryer, Cold)
 station_new_ph	Estación de cocina (opcional, ej. Tandoor — se crea si es nueva)
 table_name_ph	Nombre de la mesa (ej. Patio 1, Counter 2)
-tax_rate_ph	Nombre de la tasa o % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Nombre de la tasa o % — Estándar, Reducido, 0, 5, 12, 18, 20
 to_code_ph	Código a (kg)
 uncleared_no_ph	N.º no compensado de arriba
 unit_cost_ph	Costo unitario

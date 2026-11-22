@@ -1100,7 +1100,7 @@ starting_pin_ph	시작 PIN(4–12자리)
 station_name_ph	스테이션 이름(예: Tandoor, Fryer, Cold)
 station_new_ph	주방 스테이션(선택, 예: Tandoor — 새 것이면 생성됨)
 table_name_ph	테이블 이름(예: Patio 1, Counter 2)
-tax_rate_ph	세율 이름 또는 % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	세율 이름 또는 % — 표준, 경감, 0, 5, 12, 18, 20
 to_code_ph	대상 코드(kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가

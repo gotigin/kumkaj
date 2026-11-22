@@ -1100,7 +1100,7 @@ starting_pin_ph	Начальный PIN (4–12 цифр)
 station_name_ph	Название станции (напр. Tandoor, Fryer, Cold)
 station_new_ph	Кухонная станция (необязательно, напр. Tandoor — создастся, если новая)
 table_name_ph	Название стола (напр. Patio 1, Counter 2)
-tax_rate_ph	Название ставки или % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Название ставки или % — Стандарт, Льготный, 0, 5, 12, 18, 20
 to_code_ph	Код в (kg)
 uncleared_no_ph	Непроведённый № выше
 unit_cost_ph	Себестоимость единицы

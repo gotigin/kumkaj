@@ -1100,7 +1100,7 @@ starting_pin_ph	Byrjar PIN (4–12 tölustafir)
 station_name_ph	Heiti stöðvar (t.d. Tandoor, Fryer, Cold)
 station_new_ph	Eldhússtöð (valfrjálst, t.d. Tandoor — búin til ef ný)
 table_name_ph	Nafn borðstofuborðs (t.d. verönd 1, borði 2)
-tax_rate_ph	Nafn skatthlutfalls eða % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Nafn skatthlutfalls eða % — Staðlað, Lækkað, 0, 5, 12, 18, 20
 to_code_ph	Að kóða (kg)
 uncleared_no_ph	Óhreinsað # að ofan
 unit_cost_ph	Einingakostnaður

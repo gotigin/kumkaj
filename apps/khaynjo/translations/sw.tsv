@@ -1100,7 +1100,7 @@ starting_pin_ph	PIN ya kuanzia (tarakimu 4–12)
 station_name_ph	Jina la kituo (mf. Tandoor, Fryer, Cold)
 station_new_ph	Kituo cha jikoni (hiari, mf. Tandoor — huundwa ikiwa kipya)
 table_name_ph	Jina la meza (mf. Patio 1, Counter 2)
-tax_rate_ph	Jina la kiwango cha kodi au % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Jina la kiwango cha kodi au % — Kawaida, Ilaiyopunguzwa, 0, 5, 12, 18, 20
 to_code_ph	Msimbo kwenda (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo

@@ -1100,7 +1100,7 @@ starting_pin_ph	Start-PIN (4–12 cijfers)
 station_name_ph	Stationnaam (bijv. Tandoor, Fryer, Cold)
 station_new_ph	Keukenstation (optioneel, bijv. Tandoor — wordt aangemaakt indien nieuw)
 table_name_ph	Tafelnaam (bijv. Patio 1, Counter 2)
-tax_rate_ph	Belastingtariefnaam of % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Belastingtariefnaam of % — Standaard, Verlaagd, 0, 5, 12, 18, 20
 to_code_ph	Naar code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
 unit_cost_ph	Kosten per eenheid

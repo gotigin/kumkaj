@@ -1100,7 +1100,7 @@ starting_pin_ph	PIN เริ่มต้น (4–12 หลัก)
 station_name_ph	ชื่อสถานี (เช่น Tandoor, Fryer, Cold)
 station_new_ph	สถานีครัว (ไม่บังคับ เช่น Tandoor — สร้างใหม่หากยังไม่มี)
 table_name_ph	ชื่อโต๊ะ (เช่น Patio 1, Counter 2)
-tax_rate_ph	ชื่ออัตราภาษีหรือ % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	ชื่ออัตราภาษีหรือ % — มาตรฐาน, ลด, 0, 5, 12, 18, 20
 to_code_ph	รหัสถึง (kg)
 uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
 unit_cost_ph	ต้นทุนต่อหน่วย

@@ -1100,7 +1100,7 @@ starting_pin_ph	開始PIN（4–12桁）
 station_name_ph	ステーション名（例：Tandoor, Fryer, Cold）
 station_new_ph	キッチンステーション（任意、例：Tandoor — 新規なら作成）
 table_name_ph	テーブル名（例：Patio 1, Counter 2）
-tax_rate_ph	税率名または % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	税率名または % — 標準, 軽減, 0, 5, 12, 18, 20
 to_code_ph	変換先コード（kg）
 uncleared_no_ph	上の未清算番号
 unit_cost_ph	単価

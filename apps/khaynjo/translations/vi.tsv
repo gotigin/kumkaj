@@ -1100,7 +1100,7 @@ starting_pin_ph	PIN ban đầu (4–12 chữ số)
 station_name_ph	Tên trạm (ví dụ Tandoor, Fryer, Cold)
 station_new_ph	Trạm bếp (tùy chọn, ví dụ Tandoor — sẽ tạo nếu mới)
 table_name_ph	Tên bàn (ví dụ Patio 1, Counter 2)
-tax_rate_ph	Tên thuế suất hoặc % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Tên thuế suất hoặc % — Chuẩn, Giảm, 0, 5, 12, 18, 20
 to_code_ph	Mã đến (kg)
 uncleared_no_ph	Số chưa quyết toán ở trên
 unit_cost_ph	Chi phí đơn vị

@@ -1100,7 +1100,7 @@ starting_pin_ph	Başlangıç PIN'i (4–12 rakam)
 station_name_ph	İstasyon adı (örn. Tandoor, Fryer, Cold)
 station_new_ph	Mutfak istasyonu (isteğe bağlı, örn. Tandoor — yeniyse oluşturulur)
 table_name_ph	Masa adı (örn. Patio 1, Counter 2)
-tax_rate_ph	Vergi oranı adı veya % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Vergi oranı adı veya % — Standart, İndirimli, 0, 5, 12, 18, 20
 to_code_ph	Hedef kod (kg)
 uncleared_no_ph	Yukarıdaki mahsuplaşmamış #
 unit_cost_ph	Birim maliyet

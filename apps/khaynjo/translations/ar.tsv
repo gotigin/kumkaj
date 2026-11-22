@@ -1100,7 +1100,7 @@ starting_pin_ph	رمز البدء (4–12 رقمًا)
 station_name_ph	اسم المحطة (مثال Tandoor, Fryer, Cold)
 station_new_ph	محطة المطبخ (اختياري، مثال Tandoor — تُنشأ إن كانت جديدة)
 table_name_ph	اسم الطاولة (مثال Patio 1, Counter 2)
-tax_rate_ph	اسم معدل الضريبة أو % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	اسم معدل الضريبة أو % — قياسي، مخفّض, 0, 5, 12, 18, 20
 to_code_ph	الرمز إلى (kg)
 uncleared_no_ph	الرقم غير المُسوّى أعلاه
 unit_cost_ph	تكلفة الوحدة
