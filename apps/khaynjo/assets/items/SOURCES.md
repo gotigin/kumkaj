@@ -462,3 +462,12 @@ need the author and licence named.
 - author: see Commons file page
 - retrieved: 2026-11-22
 - lane: L14
+
+## Replaced 2026-11-22 (L15 mushroom-pizza kanda-bhaji pani-puri fafda)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `pizza-pasta/mushroom-pizza.webp` | pepperoni-and-mushroom pizza in a delivery box | Pizza Funghi mit Pizzahalter.JPG | 4028mdk09 | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Pizza_Funghi_mit_Pizzahalter.JPG | resized, WebP |
+| `street-food-chaat/kanda-bhaji.webp` | stuffed green chili pakora with potato filling | Kanda Bhaji.JPG | Adityakerkar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Kanda_Bhaji.JPG | resized, WebP |
+| `street-food-chaat/pani-puri.webp` | empty unfilled puri shells in a metal pot | Golgappa Pani Puri India.jpg | Yusuke Kawasaki | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Golgappa_Pani_Puri_India.jpg | resized, WebP |
+| `snacks/fafda.webp` | single fafda strip on newspaper with Hindi text and ads | Fanfada and kadhi(sweet) with fried green chillis | Rishabhbenganijain | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Fanfada_and_kadhi(sweet)_with_fried_green_chillis(garnished_with_spices).jpg | resized, WebP |
