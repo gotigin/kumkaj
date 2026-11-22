@@ -39,7 +39,7 @@ editing_item	Pag-edit
 save	I-save
 remove	Alisin
 removed_items	Inalis ang mga item sa menu
-removed_help	Ibinabalik ng Restore ang menu item sa menu nang eksakto tulad ng dati — presyo, larawan at kategorya. Ang aming istante ng mga pinggan ay hindi kailanman naaalis, kaya ang isang ulam ay palaging maaaring idagdag muli.
+removed_help	Ibinabalik ng Restore ang menu item sa menu nang eksakto tulad ng dati — presyo, larawan at kategorya. Ang aming istante ng mga ulam ay hindi kailanman naaalis, kaya ang isang ulam ay palaging maaaring idagdag muli.
 restore_item	Ibalik
 empty_catalog	Wala pang ulam.
 total	Kabuuan
@@ -71,10 +71,10 @@ split	Hatiin
 send_kot	Ipadala KOT
 send_kot_to	Ipadala → {kitchens}
 send_kot_again	Magdagdag ng mga pagkain para sa susunod na KOT
-send_kot_held	Hawak na pinggan — alisin sa pagkakahawak upang ipadala
+send_kot_held	Hawak na ulam — alisin sa pagkakahawak upang ipadala
 reprint_kot	Pinili muli ang pag-print
-reprint_kot_ok	Naka-print muli ng {n} pinggan · {slips} slip → {kitchens}
-reprint_kot_needed	Magpadala muna ng KOT — pagkatapos ay isama ang mga pinggan at napiling muli ang print
+reprint_kot_ok	Naka-print muli ng {n} ulam · {slips} slip → {kitchens}
+reprint_kot_needed	Magpadala muna ng KOT — pagkatapos ay isama ang mga ulam at napiling muli ang print
 reprint_kot_none_selected	Nilaktawan ang bawat ipinadalang ulam — i-tap ang In print sa mga ipi-print muli
 reprint_kot_client	Mag-print muli ({n}) para sa {place} naipadala — mga print sa kusina sa Server
 print_cancelled_kot	Nakansela lahat
@@ -171,9 +171,9 @@ kot_station_not_allowed	Hindi pinapayagang gumamit ng kusina: {station}
 kot_station_none	Wala pang mga istasyon ng kusina — magdagdag ng isa sa ilalim ng Kusina o Mga Setting → Mga Lugar · mga istasyon
 pos_tab_items	Nagdagdag ng mga item sa menu
 pos_tab_payment	Pagbabayad
-hold_send	Humawak mula sa kusina
-hold_send_on	Ginanap
-hold_send_meta	Hinawakan — hindi ito KOT
+hold_send	I-hold
+hold_send_on	Naka-hold
+hold_send_meta	Naka-hold — hindi ito KOT
 station_remove	Alisin ang istasyon
 station_remove_ph	I-tap ang isang istasyon sa listahan para alisin ito
 station_removed	Inalis ang istasyon: {name}
@@ -273,7 +273,7 @@ all_items	Lahat ng mga item sa menu
 frequent	Madalas
 added_items	Nagdagdag ng mga item sa menu ng Menu
 added_items_empty	Wala pa sa order na ito — magdagdag ng ulam mula sa Lahat ng mga item sa menu o isang kategorya.
-frequent_config_help	Karamihan sa mga ibinebentang pinggan mula sa mga nakumpletong bayarin. Itakda kung ilang araw ang titingnan at kung gaano karaming mga pagkain ang ipapakita.
+frequent_config_help	Karamihan sa mga ibinebentang ulam mula sa mga nakumpletong bayarin. Itakda kung ilang araw ang titingnan at kung gaano karaming mga pagkain ang ipapakita.
 frequent_days_ph	Araw (1)
 frequent_limit_ph	Mga item sa menu ng menu (24)
 frequent_apply	Mag-apply
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	Bagong voucher code
 split_evenly	Hatiin nang pantay-pantay
 waitlist	Listahan ng naghihintay
 fire_course	Ipadala ang kurso sa kusina
-hold_item	Humawak mula sa kusina
+hold_item	I-hold
 waiter_call	Tumawag ng waiter
 waitlist_add	Idagdag sa waitlist
 floor_view_grid	Hanay
@@ -794,7 +794,7 @@ route_default_kitchen	Walang istasyon (hindi nakatalagang mga pagkain)
 route_kot_station	Kusina
 route_dont_print	Walang printer
 stations_heading	Mga istasyon ng kusina
-stations_help	Magdagdag ng mga istasyon ng kusina para sa mga pinggan at KOT. Sa bawat istasyon, ilakip ang mga printer nito (matatagpuan sa ilalim ng Mga Setting → Mga Printer), itakda ang priyoridad, at piliin ang Una na gumagana o I-print sa lahat. I-save ang mga pagbabago habang nagpapatuloy ka — walang button na I-save.
+stations_help	Magdagdag ng mga istasyon ng kusina para sa mga ulam at KOT. Sa bawat istasyon, ilakip ang mga printer nito (matatagpuan sa ilalim ng Mga Setting → Mga Printer), itakda ang priyoridad, at piliin ang Una na gumagana o I-print sa lahat. I-save ang mga pagbabago habang nagpapatuloy ka — walang button na I-save.
 station_print_heading	Mga printer para sa istasyong ito
 station_print_help	Pumili ng istasyon, pagkatapos ay mag-attach ng isa o higit pang mga printer. ↑↓ nagtatakda ng try order. Ang una na gumagana ay humihinto pagkatapos ng unang tagumpay; I-print sa lahat ng ipinapadala sa bawat naka-attach na printer. Ang bawat pagbabago ay nakakatipid kaagad.
 station_print_pick_ph	Istasyon upang magtakda ng mga printer
@@ -1381,11 +1381,11 @@ setup_restoring	Ibinabalik ang backup…
 setup_restored	Naibalik — i-unlock gamit ang Owner PIN mula sa backup na iyon.
 split_help	I-tap ang mga pagkaing binabayaran ng isang bisita · {n} ang napili
 split_send_first	Magpadala muna ng KOT — tanging mga pagkaing mayroon ang kusina ang maaaring mapunta sa isang hiwalay na singil
-split_pick_some	I-tap muna ang mga pinggan para sa hiwalay na bill
+split_pick_some	I-tap muna ang mga ulam para sa hiwalay na bill
 split_done	Separate bill made — ito ay nasa dining hall sa tabi ng dining table na ito
 split_marked	hiwalay na bill
 order_empty_pick	Walang laman ang order — i-tap ang Magdagdag ng mga pagkain sa itaas upang pumili ng mga pagkain.
-add_dishes	Magdagdag ng mga pinggan
+add_dishes	Magdagdag ng mga ulam
 order_so_far	Sa order na ito: {n} · {total}
 no_dish_match	Walang ulam na tumutugma sa “{q}”
 pick_done	Tapos na

@@ -39,7 +39,7 @@ editing_item	Edytowanie
 save	Zapisz
 remove	Usuń
 removed_items	Usunięte pozycje
-removed_help	Przywróć umieszcza pozycję z powrotem w menu dokładnie tak, jak była — cena, zdjęcie i kategoria. Nasza półka z naczyniami nigdy nie jest usuwana, więc zawsze można dołożyć nowe danie.
+removed_help	Przywróć umieszcza pozycję z powrotem w menu dokładnie tak, jak była — cena, zdjęcie i kategoria. Nasza półka z daniami nigdy nie jest usuwana, więc zawsze można dołożyć nowe danie.
 restore_item	Przywróć
 empty_catalog	Nie ma jeszcze naczyń.
 total	Razem
