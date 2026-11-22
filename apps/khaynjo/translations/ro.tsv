@@ -1054,7 +1054,7 @@ logo_default	Logo: marca Kumkaj (implicit) — alege-l pe al tău dacă ai
 tmpl_current	Curent: {} — {}
 tmpl_selected	Selectat: {} — {}
 setup_complete	Configurare completă
-onboard_fresh_tmpl	Fresh · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
+onboard_fresh_tmpl	Nou · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
 onboard_book_tmpl	Registru · {} — adaugă articole și credit de început, apoi Gata.
 onboard_template_tmpl	Pune numele locului dacă vrei, apoi alege cum să începi.
 tmpl_blurb	Mese, comenzi, bonuri de bucătărie, note și cărți.

@@ -1054,7 +1054,7 @@ logo_default	Logotipoa: Kumkaj marka (lehenetsia) — aukeratu zurea baduzu
 tmpl_current	Unekoa: {} — {}
 tmpl_selected	Hautatuta: {} — {}
 setup_complete	Konfigurazioa osatuta
-onboard_fresh_tmpl	Fresh · {} — katalogoa hutsik hasten da; gehitu artikuluak Artikuluetan, gero Eginda.
+onboard_fresh_tmpl	Berria · {} — katalogoa hutsik hasten da; gehitu artikuluak Artikuluetan, gero Eginda.
 onboard_book_tmpl	Liburuak · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
 onboard_template_tmpl	Izena eman lekuari nahi baduzu, gero aukeratu nola hasi.
 tmpl_blurb	Mahaiak, eskaerak, sukaldeko txartelak, kontuak eta liburuak.

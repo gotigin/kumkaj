@@ -1054,7 +1054,7 @@ logo_default	Logo: Kumkaj-merke (standard) — velg ditt eget hvis du har ett
 tmpl_current	Nåværende: {} — {}
 tmpl_selected	Valgt: {} — {}
 setup_complete	Oppsett fullført
-onboard_fresh_tmpl	Fresh · {} — katalogen starter tom; legg til varer i Varer, deretter Ferdig.
+onboard_fresh_tmpl	Ny · {} — katalogen starter tom; legg til varer i Varer, deretter Ferdig.
 onboard_book_tmpl	Bøker · {} — legg til varer og åpningskreditt, deretter Ferdig.
 onboard_template_tmpl	Gi stedet et navn om du vil, og velg hvordan du vil starte.
 tmpl_blurb	Bord, bestilling, kjøkkenlapper, regning og bøker.

@@ -1054,7 +1054,7 @@ logo_default	Logo: Kumkaj belgisi (andoza) — boʻlsa oʻzingiznikini tanlang
 tmpl_current	Joriy: {} — {}
 tmpl_selected	Tanlandi: {} — {}
 setup_complete	Sozlama tugadi
-onboard_fresh_tmpl	Fresh · {} — katalog boʻsh boshlanadi; mahsulotni Mahsulotlarga qoʻshing, soʻng Tayyor.
+onboard_fresh_tmpl	Yangi · {} — katalog boʻsh boshlanadi; mahsulotni Mahsulotlarga qoʻshing, soʻng Tayyor.
 onboard_book_tmpl	Kitoblar · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
 onboard_template_tmpl	Xohlasangiz joyga nom bering, soʻng qanday boshlashni tanlang.
 tmpl_blurb	Stol, buyurtma, oshxona varaq, hisob va kitob.

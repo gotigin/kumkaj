@@ -1054,7 +1054,7 @@ logo_default	Logotip: znak Kumkaj (privzeto) — izberite svojega, če ga imate
 tmpl_current	Trenutno: {} — {}
 tmpl_selected	Izbrano: {} — {}
 setup_complete	Nastavitev končana
-onboard_fresh_tmpl	Fresh · {} — katalog se začne prazen; dodajte artikle v Artikli, nato Končano.
+onboard_fresh_tmpl	Novo · {} — katalog se začne prazen; dodajte artikle v Artikli, nato Končano.
 onboard_book_tmpl	Knjige · {} — dodajte artikle in začetni kredit, nato Končano.
 onboard_template_tmpl	Če želite, poimenujte kraj, nato izberite, kako začeti.
 tmpl_blurb	Mize, naročila, kuhinjski listki, računi in knjige.

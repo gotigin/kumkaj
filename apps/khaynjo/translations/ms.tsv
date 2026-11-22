@@ -1054,7 +1054,7 @@ logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
 tmpl_current	Semasa: {} — {}
 tmpl_selected	Dipilih: {} — {}
 setup_complete	Persediaan selesai
-onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu, kemudian Selesai.
+onboard_fresh_tmpl	Baharu · {} — katalog bermula kosong; tambah item dalam Item, kemudian Selesai.
 onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
 onboard_template_tmpl	Namakan tempat itu jika anda mahu, kemudian pilih cara untuk bermula.
 tmpl_blurb	Meja makan, tempahan, tiket dapur, pengebilan dan lejar.

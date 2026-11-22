@@ -1054,7 +1054,7 @@ logo_default	Logo: marc Kumkaj (rhagosodiad) — dewiswch eich un chi os oes gen
 tmpl_current	Cyfredol: {} — {}
 tmpl_selected	Wedi dewis: {} — {}
 setup_complete	Gosodiad wedi'i gwblhau
-onboard_fresh_tmpl	Fresh · {} — mae'r catalog yn dechrau'n wag; ychwanegwch eitemau yn Eitemau, yna Wedi gorffen.
+onboard_fresh_tmpl	Newydd · {} — mae'r catalog yn dechrau'n wag; ychwanegwch eitemau yn Eitemau, yna Wedi gorffen.
 onboard_book_tmpl	Llyfrau · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
 onboard_template_tmpl	Enwch y lle os dymunwch, yna dewiswch sut i ddechrau.
 tmpl_blurb	Byrddau, archebu, tocynnau cegin, bilio, a llyfrau.

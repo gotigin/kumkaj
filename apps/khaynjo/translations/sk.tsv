@@ -1054,7 +1054,7 @@ logo_default	Logo: značka Kumkaj (predvolené) — vyberte si svoje vlastné, a
 tmpl_current	Aktuálne: {} — {}
 tmpl_selected	Vybrané: {} — {}
 setup_complete	Nastavenie je dokončené
-onboard_fresh_tmpl	Fresh · {} — katalóg začína prázdny; pridajte položky v Položky a potom Hotovo.
+onboard_fresh_tmpl	Nové · {} — katalóg začína prázdny; pridajte položky v Položky a potom Hotovo.
 onboard_book_tmpl	Knihy · {} — pridajte položky a otvorenie kreditu a potom Hotovo.
 onboard_template_tmpl	Ak chcete, pomenujte miesto a potom vyberte, ako začať.
 tmpl_blurb	Jedálenské stoly, objednávanie, lístky do kuchyne, účtovanie a knihy.

@@ -1054,7 +1054,7 @@ logo_default	Logotipas: Kumkaj ženklas (numatytasis) — jei turite, pasirinkit
 tmpl_current	Dabartinis: {} — {}
 tmpl_selected	Pasirinkta: {} — {}
 setup_complete	Sąranka baigta
-onboard_fresh_tmpl	Fresh · {} — katalogas prasideda tuščias; pridėkite prekes Prekėse, tada Atlikta.
+onboard_fresh_tmpl	Naujas · {} — katalogas prasideda tuščias; pridėkite prekes Prekėse, tada Atlikta.
 onboard_book_tmpl	Knygos · {} — pridėkite prekes ir pradinį kreditą, tada Atlikta.
 onboard_template_tmpl	Jei norite, pavadinkite vietą, tada pasirinkite, kaip pradėti.
 tmpl_blurb	Stalai, užsakymai, virtuvės lapeliai, sąskaitos ir knygos.
