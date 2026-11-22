@@ -205,7 +205,7 @@ my_pin_settings	ᱤᱧᱟᱜ ᱯᱤᱱ
 settings_hub_help_my_pin	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱥᱟᱭᱤᱱ ᱟᱠᱟᱱ ᱦᱚᱲ ᱞᱟᱹᱜᱤᱫ ᱟᱱᱞᱚᱠ ᱯᱤᱱ ᱵᱚᱫᱚᱞ ᱢᱮ᱾
 team_self_help	ᱢᱤᱫ ᱥᱟᱭᱤᱱ-ᱤᱱ: ᱢᱤᱫ ᱱᱟᱶᱟ ᱯᱤᱱ, ᱢᱤᱫ ᱱᱟᱶᱟ ᱯᱟᱥᱣᱟᱨᱰ, ᱵᱟᱝᱠᱷᱟᱱ ᱵᱟᱱᱟᱨ ᱜᱮ ᱾ ᱟᱢ ᱴᱷᱮᱱ ᱡᱟᱦᱟᱸ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱟ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱵᱟᱠᱥᱚ ᱠᱷᱟᱹᱞᱤ ᱟᱲᱟᱜ ᱢᱮ᱾ ᱢᱟᱞᱤᱠ ᱠᱩᱞᱤᱭᱮᱢ ᱡᱩᱫᱤ ᱟᱢ ᱮᱴᱟᱜ ᱮᱴᱟᱜ ᱥᱠᱨᱤᱱ ᱥᱮ ᱟᱹᱭᱫᱟᱹᱨ ᱠᱚ ᱞᱟᱹᱠᱛᱤᱭᱟᱢ ᱠᱟᱱᱟ ᱾
 pick	ᱵᱟᱪᱷᱟᱣ ᱢᱮ
-advance	अग्रिम
+advance	ᱟᱜᱽᱨᱤᱢ
 owner	ᱢᱟᱞᱤᱠ
 staff	ᱠᱟᱹᱢᱤᱭᱟᱹ
 photo	ᱪᱤᱛᱟᱹᱨ
@@ -600,21 +600,21 @@ net_word	ᱱᱮᱴ
 offline_badge	ᱚᱯᱷᱞᱟᱭᱤᱱ
 optional_login_help	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ (ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱢᱤᱫ ᱫᱷᱟᱣ ᱥᱮᱴ ᱮᱫᱟᱭ; ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱜᱮ ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱥᱣᱟᱨᱰ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
 or_unlock_login	ᱟᱨ ᱵᱟᱝ ᱞᱚᱜᱤᱱ ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱚᱱᱞᱚᱠ
-or_unlock_shop_login	बाङा दुकान लगिन ते खुलान मे
-shop_login_help	इच्छाअनुसार: PIN बादला नोआ दुकान स्टाफ युजरनेम आर पासवर्ड ते खुलान मे (अफलाइन कामोक्आ)।
-cloud_account_title	Tabiyat खाता
-cloud_account_help	tabiyat.shop/account साकान खाता ते रजिस्टर मे या साइन इन मे। आमाक् cloud id आर बेगार योजना तेयारोक्आ।
-cloud_name_ph	ञुतुम (इच्छाअनुसार)
-cloud_email_ph	इमेल
+or_unlock_shop_login	ᱟᱨ ᱵᱟᱝ ᱫᱚᱠᱟᱱ ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+shop_login_help	ᱚᱯᱥᱚᱱᱟᱞ: PIN ᱵᱟᱫᱽᱞᱟ ᱱᱚᱣᱟ ᱫᱚᱠᱟᱱ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ ᱟᱨ ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ (offline ᱠᱟᱹᱢᱤᱭᱟᱜᱼᱟ)᱾
+cloud_account_title	Tabiyat ᱮᱠᱟᱣᱩᱱᱴ
+cloud_account_help	tabiyat.shop/account ᱥᱟᱹᱠᱟᱹᱱ ᱮᱠᱟᱣᱩᱱᱴ ᱥᱟᱶ ᱨᱮᱡᱤᱥᱴᱚᱨ ᱢᱮ ᱟᱨ ᱵᱟᱝ ᱥᱟᱭᱤᱱ ᱤᱱ ᱢᱮ᱾ ᱟᱢᱟᱜ cloud id ᱟᱨ ᱵᱮᱜᱟᱨ ᱯᱞᱟᱱ ᱛᱮᱭᱟᱨᱚᱜᱼᱟ᱾
+cloud_name_ph	ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
+cloud_email_ph	ᱤᱢᱮᱞ
 cloud_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 cloud_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
-cloud_forgot	पासवर्ड हादामेना?
-cloud_web_methods	वेबसाइट रे Google आर एटाक् तरीका
-cloud_signing_in	साइन इन होक्काना…
-cloud_sending_reset	रीसेट लिंक कुलोकाना…
-cloud_forgot_sent	ओना इमेल रे खाता मेनाक्खान रीसेट लिंक होड़ रे मेनाक्आ।
-cloud_welcome	{user} · {plan} लेका साइन इन मेनाक्आ
-cloud_created	खाता तेयारोएना। सत्यापित लागोत् इमेल चेक मे।
+cloud_forgot	ᱯᱟᱥᱣᱟᱨᱰ ᱦᱟᱫᱟᱢᱮᱱᱟ?
+cloud_web_methods	ᱣᱮᱵᱥᱟᱭᱤᱴ ᱨᱮ Google ᱟᱨ ᱮᱴᱟᱜ ᱛᱚᱨᱤᱠᱟ
+cloud_signing_in	ᱥᱟᱭᱤᱱ ᱤᱱ ᱦᱚᱜᱼᱟ…
+cloud_sending_reset	ᱨᱤᱥᱮᱴ ᱞᱤᱝᱠ ᱠᱩᱞᱚᱜᱼᱟ…
+cloud_forgot_sent	ᱚᱱᱟ ᱤᱢᱮᱞ ᱨᱮ ᱮᱠᱟᱣᱩᱱᱴ ᱢᱮᱱᱟᱜᱼᱟ ᱠᱷᱟᱱ ᱨᱤᱥᱮᱴ ᱞᱤᱝᱠ ᱦᱚᱲ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ᱾
+cloud_welcome	{user} · {plan} ᱞᱮᱠᱟ ᱥᱟᱭᱤᱱ ᱤᱱ ᱢᱮᱱᱟᱜᱼᱟ
+cloud_created	ᱮᱠᱟᱣᱩᱱᱴ ᱛᱮᱭᱟᱨᱚᱮᱱᱟ᱾ ᱥᱚᱛᱭᱟᱯᱤᱛ ᱞᱟᱹᱜᱤᱫ ᱤᱢᱮᱞ ᱪᱮᱠ ᱢᱮ᱾
 cloud_cancel	ᱵᱚᱱᱫᱚ
 permission_preset	ᱱᱩᱠᱨᱤ
 product_only_tabiyat	ᱛᱟᱵᱤᱭᱟᱴ ᱫᱚ ᱯᱷᱟᱨᱢᱟᱥᱭ ᱚᱯᱨᱮᱴᱤᱝ ᱥᱤᱥᱴᱚᱢ ᱠᱟᱱᱟᱺ ᱨᱟᱱ ᱟᱠᱨᱤᱧ, ᱵᱮᱪ/ᱢᱩᱪᱟᱹᱫ ᱵᱩᱠ ᱫᱚᱦᱚ, ᱠᱨᱮᱰᱤᱴ ᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ — ᱟᱢᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱚᱯᱷᱞᱟᱭᱤᱱ᱾ ᱥᱮᱰᱭᱩᱞ ᱮᱪ/ᱟᱨᱮᱠᱥ ᱯᱷᱞᱟᱜᱽ ᱫᱚ ᱢᱟᱞᱤᱠ ᱱᱚᱴ ᱠᱟᱱᱟ, ᱢᱟᱱᱟᱣ ᱫᱚ ᱵᱟᱝ ᱠᱟᱱᱟ ᱾
