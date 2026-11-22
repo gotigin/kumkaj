@@ -569,7 +569,7 @@ amend_help	ਸੋਧ, ਰੱਦ ਜਾਂ ਵਾਪਸੀ ਲਈ ਵਿਕਰੀ
 applied_total_cap	ਲਾਗੂ ਕੁੱਲ
 bank_balance	ਬੈਂਕ ਬਕਾਇਆ
 bank_net_today	ਅੱਜ ਦਾ ਬੈਂਕ ਨੈੱਟ
-branch_export_help	Export backups ਫੋਲਡਰ ਵਿੱਚ branch_snapshot_CODE_DATE.json ਲખਦਾ ਹੈ ਤੇ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਦੂਜੇ ਆਊਟਲੈਟ ਦਾ ਦਿਨ ਇੰਪੋਰਟ ਕਰਨ ਲਈ, ਉਸਦੀ ਫਾਈਲ ਉਸੇ ਫੋਲਡਰ ਵਿੱਚ import_branch_snapshot.json ਨਾਂ ਨਾਲ ਰੱਖੋ, ਫਿਰ Import ਦਬਾਓ।
+branch_export_help	ਨਿਰਯਾਤ ਫੋਲਡਰ ਵਿੱਚ branch_snapshot_CODE_DATE.json ਲખਦਾ ਹੈ ਤੇ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਦੂਜੇ ਆਊਟਲੈਟ ਦਾ ਦਿਨ ਇੰਪੋਰਟ ਕਰਨ ਲਈ, ਉਸਦੀ ਫਾਈਲ ਉਸੇ ਫੋਲਡਰ ਵਿੱਚ import_branch_snapshot.json ਨਾਂ ਨਾਲ ਰੱਖੋ, ਫਿਰ Import ਦਬਾਓ।
 brand_shown_help	ਐਪ ਦੇ ਅੰਦਰ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ। ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਇੰਸਟਾਲ ਐਪ ਦਾ ਨਾਂ ਤੇ ਆਈਕਨ ਪਲੇਟਫਾਰਮ ਲਿਸਟਿੰਗ ਵਾਂਗ ਹੀ ਰਹਿੰਦੇ ਹਨ।
 app_icon	ਐਪ ਆਈਕਨ
 logo_help	ਐਪ ਦੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਦੁਕਾਨ ਦਾ ਵਿਕਲਪਿਕ ਨਿਸ਼ਾਨ।

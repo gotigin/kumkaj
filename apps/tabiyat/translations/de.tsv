@@ -569,7 +569,7 @@ amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten.
 applied_total_cap	ANGEWENDET GESAMT
 bank_balance	Bankguthaben
 bank_net_today	Bank-Netto heute
-branch_export_help	Export schreibt branch_snapshot_CODE_DATE.json in den Sicherungsordner und kopiert es in die Zwischenablage. Um den Tag einer anderen Filiale zu importieren, speichern Sie deren Datei als import_branch_snapshot.json im selben Ordner und tippen Sie auf Import.
+branch_export_help	Der Export schreibt branch_snapshot_CODE_DATE.json in den Sicherungsordner und kopiert es in die Zwischenablage. Um den Tag einer anderen Filiale zu importieren, speichern Sie deren Datei als import_branch_snapshot.json im selben Ordner und tippen Sie auf Importieren.
 brand_shown_help	Wird auf Bildschirmen in der App gezeigt. Installierter App-Name und Symbol auf diesem Gerät bleiben wie im Store-Eintrag.
 app_icon	App-Symbol
 logo_help	Optionales Shop-Logo auf den Bildschirmen der App.

@@ -569,7 +569,7 @@ amend_help	সংশোধন, বাতিল বা ঘূৰাইৰ বা�
 applied_total_cap	প্ৰয়োগ মুঠ
 bank_balance	বেংক বেলেন্স
 bank_net_today	আজিৰ বেংক নেট
-branch_export_help	Export এ backups ফোল্ডাৰত branch_snapshot_CODE_DATE.json লিখে আৰু ক্লিপবোৰ্ডলৈ কপি কৰে। আন আউটলেটৰ দিন আমদানি কৰিবলৈ, তাৰ ফাইলটো একে ফোল্ডাৰত import_branch_snapshot.json নামেৰে ৰাখক, তাৰপিছত Import টিপক।
+branch_export_help	ৰপ্তানিএ backups ফোল্ডাৰত branch_snapshot_CODE_DATE.json লিখে আৰু ক্লিপবোৰ্ডলৈ কপি কৰে। আন আউটলেটৰ দিন আমদানি কৰিবলৈ, তাৰ ফাইলটো একে ফোল্ডাৰত import_branch_snapshot.json নামেৰে ৰাখক, তাৰপিছত Import টিপক।
 brand_shown_help	এপৰ ভিতৰৰ পৰ্দাত দেখুওৱা হয়। এই ডিভাইচত ইনষ্টল কৰা এপৰ নাম আৰু আইকন প্লেটফৰ্ম তালিকা অনুসৰিয়েই থাকে।
 app_icon	এপ আইকন
 logo_help	এপৰ স্ক্ৰীণত দোকানৰ ঐচ্ছিক চিন।

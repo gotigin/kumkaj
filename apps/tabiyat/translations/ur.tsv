@@ -569,7 +569,7 @@ amend_help	ترمیم، منسوخی یا واپسی کے لیے فروخت من
 applied_total_cap	لاگو کل
 bank_balance	بینک بیلنس
 bank_net_today	آج کا بینک نیٹ
-branch_export_help	Export بیک اپ فولڈر میں branch_snapshot_CODE_DATE.json لکھتا ہے اور کلپ بورڈ پر کاپی کرتا ہے۔ دوسرے آؤٹ لیٹ کا دن امپورٹ کرنے کے لیے، اس کی فائل اسی فولڈر میں import_branch_snapshot.json نام سے رکھیں، پھر Import دبائیں۔
+branch_export_help	برآمد بیک اپ فولڈر میں branch_snapshot_CODE_DATE.json لکھتی ہے اور کلپ بورڈ پر کاپی کرتی ہے۔ دوسرے آؤٹ لیٹ کا دن درآمد کرنے کے لیے اس کی فائل اسی فولڈر میں import_branch_snapshot.json کے طور پر محفوظ کریں، پھر درآمد دبائیں۔
 brand_shown_help	ایپ کے اندر اسکرینوں پر دکھایا جاتا ہے۔ اس ڈیوائس پر انسٹال ایپ کا نام اور آئیکن پلیٹفارم لسٹنگ جیسا ہی رہتا ہے۔
 app_icon	ایپ آئیکن
 logo_help	ایپ کی اسکرینوں پر دکان کا اختیاری نشان۔

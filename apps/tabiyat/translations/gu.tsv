@@ -569,7 +569,7 @@ amend_help	સુધારો, રદ અથવા પરત માટે વે
 applied_total_cap	લાગુ કુલ
 bank_balance	બેંક બાકી
 bank_net_today	આજનું બેંક નેટ
-branch_export_help	Export backups ફોલ્ડરમાં branch_snapshot_CODE_DATE.json લખે છે અને ક્લિપબોર્ડ પર કૉપી કરે છે. બીજા આઉટલેટનો દિવસ ઇમ્પોર્ટ કરવા, તેની ફાઇલ એ જ ફોલ્ડરમાં import_branch_snapshot.json નામે રાખો, પછી Import દબાવો.
+branch_export_help	નિકાસ બેકઅપ ફોલ્ડરમાં branch_snapshot_CODE_DATE.json લખે છે અને ક્લિપબોર્ડ પર કૉપી કરે છે. બીજા આઉટલેટનો દિવસ આયાત કરવા તેની ફાઇલને એ જ ફોલ્ડરમાં import_branch_snapshot.json તરીકે સાચવો, પછી આયાત દબાવો.
 brand_shown_help	એપની અંદરની સ્ક્રીન પર બતાવવામાં આવે છે. આ ડિવાઇસ પર ઇન્સ્ટોલ કરેલ એપનું નામ અને આઇકન પ્લેટફોર્મ લિસ્ટિંગ પ્રમાણે જ રહે છે.
 app_icon	એપ આઇકન
 logo_help	એપની સ્ક્રીન પર દુકાનનું વૈકલ્પિક ચિહ્ન.

@@ -569,7 +569,7 @@ amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modif
 applied_total_cap	TOTAL APPLIQUÉ
 bank_balance	Solde bancaire
 bank_net_today	Net bancaire du jour
-branch_export_help	Export écrit branch_snapshot_CODE_DATE.json dans le dossier des sauvegardes et le copie dans le presse-papiers. Pour importer le jour d'un autre point de vente, enregistrez son fichier sous import_branch_snapshot.json dans le même dossier, puis touchez Import.
+branch_export_help	L’export écrit branch_snapshot_CODE_DATE.json dans le dossier des sauvegardes et le copie dans le presse-papiers. Pour importer la journée d’un autre point de vente, enregistrez son fichier comme import_branch_snapshot.json dans le même dossier, puis appuyez sur Importer.
 brand_shown_help	Affiché sur les écrans dans l'app. Le nom et l'icône de l'app installée sur cet appareil restent ceux de la boutique.
 app_icon	Icône de l'application
 logo_help	Marque du magasin optionnelle sur les écrans de l'application.

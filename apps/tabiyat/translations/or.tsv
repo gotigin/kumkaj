@@ -569,7 +569,7 @@ amend_help	ସଂଶୋଧନ, ବାତିଲ କିମ୍ବା ଫେରସ�
 applied_total_cap	ଲାଗୁ ମୋଟ
 bank_balance	ବ୍ୟାଙ୍କ ବାଲାନ୍ସ
 bank_net_today	ଆଜିର ବ୍ୟାଙ୍କ ନେଟ୍
-branch_export_help	Export backups ଫୋଲ୍ଡରରେ branch_snapshot_CODE_DATE.json ଲେଖେ ଏବଂ କ୍ଲିପବୋର୍ଡକୁ କପି କରେ। ଅନ୍ୟ ଆଉଟଲେଟର ଦିନ ଇମ୍ପୋର୍ଟ କରିବାକୁ, ଏହାର ଫାଇଲକୁ ସେହି ଫୋଲ୍ଡରରେ import_branch_snapshot.json ଭାବେ ରଖନ୍ତୁ, ତା'ପରେ Import ଦବାନ୍ତୁ।
+branch_export_help	ରପ୍ତାନି ଫୋଲ୍ଡରରେ branch_snapshot_CODE_DATE.json ଲେଖେ ଏବଂ କ୍ଲିପବୋର୍ଡକୁ କପି କରେ। ଅନ୍ୟ ଆଉଟଲେଟର ଦିନ ଇମ୍ପୋର୍ଟ କରିବାକୁ, ଏହାର ଫାଇଲକୁ ସେହି ଫୋଲ୍ଡରରେ import_branch_snapshot.json ଭାବେ ରଖନ୍ତୁ, ତା'ପରେ Import ଦବାନ୍ତୁ।
 brand_shown_help	ଆପ୍ ଭିତରେ ସ୍କ୍ରିନରେ ଦେଖାଯାଏ। ଏହି ଡିଭାଇସରେ ଇନଷ୍ଟଲ୍ ହୋଇଥିବା ଆପ୍ ନାମ ଏବଂ ଆଇକନ୍ ପ୍ଲାଟଫର୍ମ ଲିଷ୍ଟିଂ ଭଳି ରହେ।
 app_icon	ଆପ୍ ଆଇକନ୍
 logo_help	ଆପ୍ ସ୍କ୍ରିନରେ ଦୋକାନର ଇଚ୍ଛାଧୀନ ଚିହ୍ନ।
