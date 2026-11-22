@@ -158,6 +158,32 @@ pub fn create_local_server(base: &Path, name: &str) -> Result<(LocalServerInfo, 
     Ok((info, store))
 }
 
+/// First-run: create the one offline Server by restoring a verified backup.
+///
+/// Reuses [`store::check_backup_file`] (meta.app = moklanjo, refuse newer schema)
+/// and [`Store::restore_from_to_path`]. Refuses when a Server already exists —
+/// Settings → Backup → Restore is the path once books are open.
+pub fn create_local_server_from_backup(
+    base: &Path,
+    backup: &Path,
+) -> Result<(LocalServerInfo, Store), String> {
+    store::check_backup_file(backup)?;
+    if offline_server_id(base)?.is_some() {
+        return Err(
+            "This install already has a shop server — use Settings → Backup → Restore backup."
+                .into(),
+        );
+    }
+    let (info, empty) = create_local_server(base, "")?;
+    let dest = empty.db_path().to_path_buf();
+    drop(empty);
+    let store = Store::restore_from_to_path(backup, &dest)?;
+    let _ = store.set_device_role("server");
+    // Restored books already have rates / Owner PIN — skip the template offer.
+    let _ = store.set_app_template_offer_done();
+    Ok((info, store))
+}
+
 pub fn open_server(base: &Path, server_id: &str) -> Result<Store, String> {
     let reg = load_registry(base)?;
     if !reg.servers.iter().any(|s| s.id == server_id) {
@@ -364,5 +390,72 @@ mod tests {
         fs::write(app_language_path(&base), "not json").unwrap();
         assert!(load_app_language(&base).is_none());
         let _ = fs::remove_dir_all(base);
+    }
+
+    /// First-run restore: empty install → backup with a sale → Server books
+    /// open with that sale; a second restore attempt is refused.
+    #[test]
+    fn first_run_restore_from_backup_opens_server_with_sale() {
+        use crate::domain::{Cart, Money, PayMethod, Product};
+
+        let source_base = temp_base();
+        let (source_info, source) = create_local_server(&source_base, "Source desk").unwrap();
+        let owner = source.list_staff().unwrap().into_iter().next().unwrap();
+        source
+            .upsert_product(&Product::new_basic(new_id(), "Local 1 kg", Money::from_rupees(60)))
+            .unwrap();
+        let p = source.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let sale = source
+            .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, &owner)
+            .unwrap();
+        let sale_id = sale.id.clone();
+        let invoice = sale.invoice_no.clone();
+        let backup = source_base.join("first-run-backup.sqlite3");
+        source.backup_to(&backup).unwrap();
+        drop(source);
+        assert!(store::check_backup_file(&backup).is_ok());
+
+        let dest = temp_base();
+        assert!(offline_server_id(&dest).unwrap().is_none());
+        let (info, restored) = create_local_server_from_backup(&dest, &backup).unwrap();
+        assert_ne!(info.id, source_info.id);
+        assert_eq!(offline_server_id(&dest).unwrap().as_deref(), Some(info.id.as_str()));
+        let got = restored.get_sale(&sale_id).unwrap().expect("sale from backup");
+        assert_eq!(got.invoice_no, invoice);
+        assert_eq!(restored.sale_lines(&sale_id).unwrap().len(), 1);
+        assert!(restored.app_template_offer_done().unwrap());
+        assert_eq!(restored.device_role().unwrap().as_deref(), Some("server"));
+        drop(restored);
+
+        let err = match create_local_server_from_backup(&dest, &backup) {
+            Err(e) => e,
+            Ok(_) => panic!("second restore should fail"),
+        };
+        assert!(err.contains("already has a shop server"), "{err}");
+
+        // Newer schema refused before any Server is created.
+        let other = temp_base();
+        let newer = other.join("newer.sqlite3");
+        fs::copy(&backup, &newer).unwrap();
+        {
+            let conn = rusqlite::Connection::open(&newer).unwrap();
+            conn.execute(
+                "INSERT OR REPLACE INTO meta(key, value) VALUES('schema_version', '50')",
+                [],
+            )
+            .unwrap();
+        }
+        let err = match create_local_server_from_backup(&other, &newer) {
+            Err(e) => e,
+            Ok(_) => panic!("newer schema should fail"),
+        };
+        assert!(err.contains("newer Moklanjo"), "{err}");
+        assert!(offline_server_id(&other).unwrap().is_none());
+
+        let _ = fs::remove_dir_all(source_base);
+        let _ = fs::remove_dir_all(dest);
+        let _ = fs::remove_dir_all(other);
     }
 }

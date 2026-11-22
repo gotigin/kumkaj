@@ -253,6 +253,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         for path in [ids!(device_role_server), ids!(device_role_server_on)] {
             self.ui.button(cx, path).set_text(cx, &s("this_shop"));
         }
+        self.ui
+            .button(cx, ids!(device_role_restore))
+            .set_text(cx, &s("restore_backup"));
         for path in [ids!(device_role_client), ids!(device_role_client_on)] {
             self.ui.button(cx, path).set_text(cx, &s("extra_till"));
         }

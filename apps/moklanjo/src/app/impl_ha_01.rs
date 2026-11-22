@@ -281,6 +281,16 @@ impl App {
                             }
                         }
                     }
+                    FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(setup_restore_pick) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            match self.materialize_picked_backup(cx, path) {
+                                Ok(file) => self.restore_backup_on_setup(cx, file),
+                                Err(e) => self.set_status(cx, e),
+                            }
+                        }
+                    }
                     FileDialogAction::SaveFileSelected { id, path }
                         if *id == live_id!(backup_save_pick) =>
                     {
@@ -1056,6 +1066,9 @@ impl App {
             ids!(device_role_client_on),
         ) {
             self.begin_client_mode(cx);
+        }
+        if self.ui.button(cx, ids!(device_role_restore)).clicked(actions) {
+            self.begin_setup_restore(cx);
         }
         if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
             request_role_open_cancel();
