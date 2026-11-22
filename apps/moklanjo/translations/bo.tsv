@@ -226,8 +226,8 @@ opening_client	ཚོང་ཤག་ཁ་ཕྱེ་བ།
 preparing_desk	ཡིག་ཅོག་གྲ་སྒྲིག་བྱེད་བཞིན་ཡོད།
 opening_server	སར་བར་ཁ་ཕྱེ་བཞིན་ཡོད།
 creating_server	གསབ་ལེན་གསར་བཟོ་བྱེད་བཞིན་ཡོད།
-setup_restoring	Restoring backup…
-setup_restored	Restored — unlock with the Owner PIN from that backup.
+setup_restoring	ཉར་ཚགས་སླར་གསོ་བྱེད་བཞིན་ཡོད།…
+setup_restored	སླར་གསོ་བྱས་ཟིན། — ཉར་ཚགས་དེའི་བདག་པོའི་PIN གྱིས་ཁ་ཕྱེ།
 diag_privacy_help	དྲན་ཐོ་རྣམས་འཕྲུལ་ཆས་འདིའི་སྟེང་དུ་བསྡད་ཡོད། གསང་བ་(PIN, གསང་གྲངས་)ནམ་ཡང་གསོག་འཇོག་བྱེད་ཀྱི་མེད། ཐབས་འཕྲུལ་ནས་ཐུམ་སྒྲིལ་མཉམ་སྤྱོད་བྱེད་པར་དུས་རྒྱུན་ཁྱེད་ཀྱི་ཆོག་མཆན་གསལ་པོ་དགོས།
 diag_level	ཞིབ་ཕྲའི་རིམ་པ།
 diag_level_error	ནོར་འཁྲུལ།
