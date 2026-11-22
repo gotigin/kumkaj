@@ -5,7 +5,7 @@ pin_hint	O PIN do dono começa em 0000
 sell	Pedidos
 buy	Compras
 books	Livro do dia
-books_help	Posição de hoje. Pedidos = pedidos que entram. Compras = compras e despesas. Partes = clientes a crédito e fornecedores.
+books_help	Posição de hoje. Pedidos = pedidos que entram. Compras = compras e despesas. Contactos = clientes a crédito e fornecedores.
 buy_help	Vales de despesa e faturas de fornecedores (dinheiro que sai). O em conta fica no livro da parte.
 sell_money_in	Fazer um pedido
 buy_money_out	Despesa / fatura de fornecedor
@@ -46,7 +46,7 @@ total	Total
 cash	Dinheiro
 upi	UPI
 card	Cartão
-credit	Partes
+credit	Contactos
 clear	Limpar
 ready_to_sell	Pronto para enviar
 today_prefix	Hoje

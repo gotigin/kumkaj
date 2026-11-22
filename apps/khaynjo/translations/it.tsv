@@ -5,7 +5,7 @@ pin_hint	Il PIN del titolare inizia con 0000
 sell	Ordini
 buy	Acquisti
 books	Libro del giorno
-books_help	Posizione di oggi. Ordini = ordini in entrata. Acquisti = acquisti e spese. Parti = clienti a credito e fornitori.
+books_help	Posizione di oggi. Ordini = ordini in entrata. Acquisti = acquisti e spese. Contatti = clienti a credito e fornitori.
 buy_help	Buoni spesa e fatture fornitori (denaro in uscita). A conto resta nel libro della parte.
 sell_money_in	Prendi un ordine
 buy_money_out	Spesa / fattura fornitore
@@ -46,7 +46,7 @@ total	Totale
 cash	Contanti
 upi	UPI
 card	Carta
-credit	Parti
+credit	Contatti
 clear	Svuota
 ready_to_sell	Pronto a spedire
 today_prefix	Oggi
