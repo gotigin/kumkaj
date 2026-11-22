@@ -324,6 +324,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 ids!(device_role_server_on),
                 ids!(device_role_client),
                 ids!(device_role_client_on),
+                ids!(device_role_restore),
             ] {
                 self.ui.button(cx, path).set_visible(cx, false);
             }
@@ -340,6 +341,15 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
                 ids!(device_role_client_on),
                 device_role == DeviceRole::Client,
             );
+            // Restore only when no Server exists yet (paint_role_open_busy_chrome
+            // also gates it; keep the hide here so choice-state sync agrees).
+            let can_setup_restore = {
+                let st = app_state().lock().unwrap();
+                st.local_servers.is_empty()
+            };
+            self.ui
+                .button(cx, ids!(device_role_restore))
+                .set_visible(cx, can_setup_restore);
         }
         self.paint_choice_pair(
             cx,

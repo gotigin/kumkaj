@@ -399,6 +399,96 @@ impl App {
         self.maybe_smoke_auto_unlock(cx);
     }
 
+    /// First-run restore finished: books are the backup; skip templates → Lock.
+    fn finish_server_restored_opened(&mut self, cx: &mut Cx, store: Store) {
+        self.paint_role_open_busy_chrome(cx);
+        let old = {
+            let mut st = app_state().lock().unwrap();
+            let old = st.store.take();
+            st.store = Some(store);
+            st.picking_server = false;
+            st.awaiting_app_template = false;
+            let _ = st.refresh_local_servers();
+            let chosen = (st.language_follow_platform, st.locale.language.clone());
+            let _ = st.reload_all();
+            st.language_follow_platform = chosen.0;
+            st.locale.language = chosen.1;
+            Self::persist_setup_language(&mut st);
+            st.session = None;
+            st.clear_team_edit_selection();
+            // Owner PIN / staff come from the backup (reload_all set owner_setup_complete).
+            self.finish_as_server(&mut st, true);
+            st.status = st.t("setup_restored");
+            old
+        };
+        drop_store_off_ui(old);
+        self.sync_chrome(cx);
+        end_role_open_busy();
+        self.paint_role_open_busy_chrome(cx);
+        self.maybe_smoke_auto_unlock(cx);
+    }
+
+    /// DeviceSetup: pick a backup when no Server exists yet.
+    fn begin_setup_restore(&mut self, cx: &mut Cx) {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        self.resolve_data_base(cx);
+        let (ok, title) = {
+            let mut st = app_state().lock().unwrap();
+            let _ = st.refresh_local_servers();
+            if !st.local_servers.is_empty() {
+                (
+                    false,
+                    st.t("choose_device_use"), // already has a Server — Settings restore
+                )
+            } else {
+                (true, st.t("restore_backup"))
+            }
+        };
+        if !ok {
+            self.set_status(
+                cx,
+                "This install already has a shop server — use Settings → Backup → Restore backup.",
+            );
+            return;
+        }
+        cx.open_select_file_dialog(
+            FileDialog::new()
+                .set_title(title)
+                .add_filter("Backups".into(), vec!["sqlite3".into()])
+                .set_id(live_id!(setup_restore_pick)),
+        );
+    }
+
+    fn restore_backup_on_setup(&mut self, cx: &mut Cx, backup: PathBuf) {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        self.resolve_data_base(cx);
+        let job = (|| -> Result<PathBuf, String> {
+            store::check_backup_file(&backup)?;
+            let mut st = app_state().lock().unwrap();
+            let _ = st.refresh_local_servers();
+            if !st.local_servers.is_empty() {
+                return Err(
+                    "This install already has a shop server — use Settings → Backup → Restore backup."
+                        .into(),
+                );
+            }
+            st.data_base
+                .clone()
+                .ok_or_else(|| "No data directory".to_string())
+        })();
+        match job {
+            Ok(base) => {
+                server_restore_job(base, backup);
+                self.paint_role_open_busy_chrome(cx);
+            }
+            Err(e) => self.set_status(cx, e),
+        }
+    }
+
     /// Brand-new Server before Owner PIN — remote catalogue offer.
     fn should_offer_app_template(st: &AppState) -> bool {
         // Isolated UI smoke jumps straight to Owner PIN / unlock.
@@ -974,16 +1064,19 @@ impl App {
             .unwrap()
             .clone()
             .unwrap_or_else(|| app_t("opening_client"));
-        let awaiting_tmpl = app_state()
+        let (awaiting_tmpl, can_setup_restore) = app_state()
             .try_lock()
-            .map(|st| st.awaiting_app_template)
-            .unwrap_or(false);
+            .map(|st| (st.awaiting_app_template, st.local_servers.is_empty()))
+            .unwrap_or((false, false));
         // Offline LAN: no multi-server pick UI (cloud-only later).
         let show_pick = false;
         // Hide Server/Client while creating/opening or while App Template is offered.
         self.ui
             .view(cx, ids!(device_role_actions))
             .set_visible(cx, !busy && !show_pick && !awaiting_tmpl);
+        self.ui
+            .button(cx, ids!(device_role_restore))
+            .set_visible(cx, !busy && !show_pick && !awaiting_tmpl && can_setup_restore);
         self.ui
             .view(cx, ids!(server_pick_section))
             .set_visible(cx, show_pick);

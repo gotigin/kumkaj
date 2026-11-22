@@ -144,6 +144,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         for path in [ids!(device_role_client), ids!(device_role_client_on)] {
             self.ui.button(cx, path).set_text(cx, &s("extra_till"));
         }
+        self.ui
+            .button(cx, ids!(device_role_restore))
+            .set_text(cx, &s("restore_backup"));
         self.ui.button(cx, ids!(customer_clear)).set_text(cx, &s("clear"));
         self.ui.button(cx, ids!(undo_snack_btn)).set_text(cx, &s("undo"));
         self.ui.button(cx, ids!(inv_adjust_minus)).set_text(cx, &s("stock_minus"));

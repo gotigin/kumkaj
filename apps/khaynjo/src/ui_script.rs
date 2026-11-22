@@ -6220,6 +6220,8 @@ script_mod! {
                                                 device_role_server_on := StackPrimaryBtn{text: "Server" visible: false}
                                                 device_role_client := StackSecondaryBtn{text: "Client"}
                                                 device_role_client_on := StackPrimaryBtn{text: "Client" visible: false}
+                                                // First-run only (no Server yet): reuse Settings restore checks.
+                                                device_role_restore := StackSecondaryBtn{text: "Restore backup"}
                                             }
                                             // Busy: replace Server/Client with status + Cancel
                                             // (DEV.md 7b — never set_text on wrapping Stack* faces).

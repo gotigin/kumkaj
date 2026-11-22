@@ -1023,6 +1023,8 @@ enum RoleOpenReady {
     ServerNew(Store),
     /// `switching_in` = previous role was not Server (extra-tills reset).
     ServerExisting { store: Store, switching_in: bool },
+    /// First-run: Server books created by restoring a verified backup.
+    ServerRestored(Store),
 }
 
 fn role_open_once() -> &'static Mutex<Option<Result<RoleOpenReady, String>>> {
@@ -1223,6 +1225,32 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
                     store,
                     switching_in,
                 })
+            })();
+            role_open_finish(open_gen, result);
+        });
+}
+
+/// First-run: create the one Server by restoring a verified backup (worker).
+fn server_restore_job(base: PathBuf, backup: PathBuf) {
+    if !role_open_start(&app_t("setup_restoring")) {
+        return;
+    }
+    let open_gen = role_open_gen().load(std::sync::atomic::Ordering::SeqCst);
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-server-restore".into())
+        .spawn(move || {
+            net::stop_server();
+            let result = (|| -> Result<RoleOpenReady, String> {
+                menu_images::ensure_android_menu_assets(&base);
+                if role_open_stale(open_gen) {
+                    return Err("Cancelled".into());
+                }
+                let (_info, store) =
+                    local_servers::create_local_server_from_backup(&base, &backup)?;
+                if role_open_stale(open_gen) {
+                    return Err("Cancelled".into());
+                }
+                Ok(RoleOpenReady::ServerRestored(store))
             })();
             role_open_finish(open_gen, result);
         });
