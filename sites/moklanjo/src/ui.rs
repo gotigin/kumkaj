@@ -1289,7 +1289,8 @@ script_mod! {
                                     spacing: 4
                                     Eyebrow{body: "COMPANY"}
                                     Strong{body: "GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
-                                    Small{body: "mearaj@gotigin.com"}
+                                    Small{body: "support@gotigin.com"}
+                                    Small{body: "Director · mearaj@gmail.com"}
                                 }
                                 View{
                                     width: Fill height: Fit

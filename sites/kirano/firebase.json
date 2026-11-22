@@ -159,7 +159,7 @@
       "emailPassword": true,
       "googleSignIn": {
         "oAuthBrandDisplayName": "Kirano",
-        "supportEmail": "mearaj@gotigin.com",
+        "supportEmail": "support@gotigin.com",
         "authorizedRedirectUris": [
           "https://kirano.shop/__/auth/handler",
           "https://kirano-shop.firebaseapp.com/__/auth/handler"

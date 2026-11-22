@@ -19,8 +19,9 @@ kirano.shop is a Makepad site with a thin static shell. We aim to use cookieless
 
 ## Contact / grievance
 
-- Email: TODO_OWNER@gotigin.example
-- Grievance: TODO_OWNER — grievance officer details pending
-- Address: TODO_OWNER — Gotigin registered address pending
+Under India's Digital Personal Data Protection Act, 2023:
 
-Brand privacy: [kumkaj.com/privacy](https://kumkaj.com/privacy).
+- Support / privacy email: [support@gotigin.com](mailto:support@gotigin.com)
+- Grievance officer: Mearaj Abdulaziz Bhagad, Director · [mearaj@gmail.com](mailto:mearaj@gmail.com)
+- Address: C/O Mearaj AB, Gosiya Manzil, Darbargadh, Dhoraji, Rajkot, Gujarat 360410, India
+

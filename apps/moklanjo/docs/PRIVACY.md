@@ -90,13 +90,12 @@ children.
 
 ## Contact / grievance
 
-Under India's Digital Personal Data Protection Act, 2023, contact details for
-privacy and grievance will be published here when Gotigin supplies official
-details.
+Under India's Digital Personal Data Protection Act, 2023:
 
-- Email: _(to be filled)_
-- Grievance officer: _(to be filled)_
-- Address: _(to be filled)_
+- Support / privacy email: [support@gotigin.com](mailto:support@gotigin.com)
+- Grievance officer: Mearaj Abdulaziz Bhagad, Director · [mearaj@gmail.com](mailto:mearaj@gmail.com)
+- Address: C/O Mearaj AB, Gosiya Manzil, Darbargadh, Dhoraji, Rajkot, Gujarat 360410, India
+
 
 ## Changes
 

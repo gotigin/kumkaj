@@ -878,6 +878,7 @@ script_mod! {
                                 flow: Down
                                 spacing: 2
                                 Small{body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                Small{body: "support@gotigin.com"}
                                 View{
                                     width: Fit height: Fit
                                     flow: Right

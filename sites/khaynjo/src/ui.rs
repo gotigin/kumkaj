@@ -1716,6 +1716,7 @@ script_mod! {
                                                 draw_block +: { selection_color: #xCFE3FFFF }
                                             }
                                             OnRedBody{body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                            OnRedBody{body: "support@gotigin.com"}
                                             View{
                                                 width: Fit height: Fit
                                                 flow: Right

@@ -205,7 +205,7 @@
       "emailPassword": true,
       "googleSignIn": {
         "oAuthBrandDisplayName": "Khaynjo",
-        "supportEmail": "mearaj@gotigin.com",
+        "supportEmail": "support@gotigin.com",
         "authorizedRedirectUris": [
           "https://khaynjo.com/__/auth/handler",
           "https://khaynjo-2b2a2.firebaseapp.com/__/auth/handler"

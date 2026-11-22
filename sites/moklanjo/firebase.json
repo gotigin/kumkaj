@@ -159,7 +159,7 @@
       "emailPassword": true,
       "googleSignIn": {
         "oAuthBrandDisplayName": "Moklanjo",
-        "supportEmail": "mearaj@gotigin.com",
+        "supportEmail": "support@gotigin.com",
         "authorizedRedirectUris": [
           "https://moklanjo.com/__/auth/handler",
           "https://moklanjo-com.firebaseapp.com/__/auth/handler"
