@@ -164,7 +164,7 @@ kot_station_ph	Kuchnia
 kot_station_dd	Kuchnia
 kot_station_dd_n	Kuchnia · {stations}
 kot_set_station	Skorzystaj z tej stacji
-kot_station_applied	Stacja ustawiona na naczyniach {n}: {station}
+kot_station_applied	Stacja ustawiona na daniach {n}: {station}
 kot_station_cleared	Stacja wyczyszczona z {n} naczyń: {station}
 kot_station_needed	Najpierw wybierz stację kuchenną
 kot_station_not_allowed	Zakaz korzystania z kuchni: {station}
