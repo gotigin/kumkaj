@@ -1112,7 +1112,7 @@ book_kind_month	Lejar bulan ini
 book_kind_aging	Tertunggak / debit-kredit
 book_kind_balance	Kunci kira-kira
 order_help	Ketik item menu untuk menambahkannya.
-floor_help	Ketik meja makan untuk mengambil atau menukar pesanan. Warna menunjukkan percuma → duduk → dapur → sedia → makan → bil → dibayar. Senarai tunggu, tempahan dan meja makan tambahan terdapat dalam bahagian di bawah.
+floor_help	Ketik meja makan untuk mengambil atau menukar pesanan. Warna menunjukkan kosong → duduk → dapur → sedia → makan → bil → dibayar. Senarai tunggu, tempahan dan meja makan tambahan terdapat dalam bahagian di bawah.
 kitchen_help	Tiket dapur (KOT), terbaharu terakhir. Mula → Sedia → Selesai memindahkan tiket bersama. Tiket tidak pernah menunjukkan harga.
 kitchen_empty	Tiada tiket terbuka.
 add_a_table	Tambah meja makan
