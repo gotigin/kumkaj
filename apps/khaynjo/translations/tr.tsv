@@ -796,7 +796,7 @@ route_dont_print	Yazdırma
 stations_heading	Mutfak istasyonları
 stations_help	Yemekler ve KOT için mutfak istasyonları ekleyin. Her istasyonda yazıcılarını bağlayın (Ayarlar → Yazıcılar altında bulunur), önceliği ayarlayın ve İlk çalışanı veya Tümüne basmayı seçin. Değişiklikler kaydedilirken otomatik olarak kaydedilir — Kaydet butonu yoktur.
 station_print_heading	Bu istasyonun yazıcıları
-station_print_help	Bir istasyon seçin, sonra bir veya daha fazla yazıcı ekleyin. ↑↓ deneme sırasını ayarlar. İlk başarılı durur; Tümüne yazdır eklenen her yazıcıya gönderir.
+station_print_help	Bir istasyon seçin, sonra bir veya daha fazla yazıcı ekleyin. ↑↓ deneme sırasını ayarlar. İlk başarılı durur; «Hepsi üzerinde baskı al» eklenen her yazıcıya gönderir. Her değişiklik hemen kaydedilir.
 station_print_pick_ph	Yazıcıları ayarlanacak istasyon
 station_print_pick_first	Önce bir mutfak istasyonu seçin
 station_print_editing	“{name}” yazıcıları düzenleniyor
@@ -1287,7 +1287,7 @@ std_size_l	Büyük
 save_std_print	Yazdırma boyutunu kaydet
 std_print_saved	Yazdırma boyutu kaydedildi
 print_brand_kit	Yazdırma marka kiti
-print_brand_kit_help	İsteğe bağlı damga ve ödeme QR’ı hesaplarda ve LAN ekranda. Ödeme QR yoksa yukarıdaki UPI tutar QR’ı verir.
+print_brand_kit_help	Hesap yüzlerinde ve LAN misafir ekranında isteğe bağlı damga ve ödeme QR görselleri. Yukarıdaki VPA’dan dinamik UPI QR, ödeme QR görseli yokken de çalışır.
 choose_stamp	Damga seç
 clear_stamp	Damgayı kaldır
 stamp_set	Damga: dosyada — misafir ekranı ve hesapta ad

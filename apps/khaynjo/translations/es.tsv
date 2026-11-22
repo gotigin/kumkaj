@@ -796,7 +796,7 @@ route_dont_print	No imprimir
 stations_heading	Estaciones de cocina
 stations_help	Agregue estaciones de cocina para platos y KOT. En cada estación, adjunte sus impresoras (encuentrándolas en Configuración → Impresoras), establezca la prioridad y elija Primera que funcione o Imprimir en todas. Los cambios se guardan a medida que los realiza — no hay botón Guardar.
 station_print_heading	Impresoras de esta estación
-station_print_help	Elija una estación y adjunte una o más impresoras. ↑↓ fija el orden de intento. La primera que funciona detiene; Imprimir en todas envía a cada impresora adjunta.
+station_print_help	Elija una estación y adjunte una o más impresoras. ↑↓ fija el orden de intento. La primera que funciona detiene; «Imprimir en todas» envía a cada impresora adjunta. Cada cambio se guarda de inmediato.
 station_print_pick_ph	Estación para configurar impresoras
 station_print_pick_first	Elija primero una estación de cocina
 station_print_editing	Editando impresoras de “{name}”
@@ -1287,7 +1287,7 @@ std_size_l	Grande
 save_std_print	Guardar tamaño de impresión
 std_print_saved	Tamaño de impresión guardado
 print_brand_kit	Kit de marca impresa
-print_brand_kit_help	Sello y QR de pago opcionales en cuentas y pantalla LAN. Sin QR de pago, el UPI de arriba da el QR del importe.
+print_brand_kit_help	Imágenes opcionales de sello y QR de pago en el anverso de la cuenta y la pantalla LAN para invitados. El QR UPI dinámico del VPA de arriba sigue funcionando sin imagen de QR de pago.
 choose_stamp	Elegir sello
 clear_stamp	Quitar sello
 stamp_set	Sello: en archivo — pantalla de invitados y nombre en cuenta

@@ -796,7 +796,7 @@ route_dont_print	Não imprimir
 stations_heading	Estações da cozinha
 stations_help	Adicione estações da cozinha para pratos e KOT. Em cada estação, anexe suas impressoras (encontradas em Configurações → Impressoras), defina a prioridade e escolha Primeira que funciona ou Imprimir em todas. As alterações são salvas conforme você vai — não há botão Salvar.
 station_print_heading	Impressoras desta estação
-station_print_help	Escolha uma estação e anexe uma ou mais impressoras. ↑↓ define a ordem de tentativa. A primeira que funciona para; Imprimir em todas envia para cada impressora anexada.
+station_print_help	Escolha uma estação e anexe uma ou mais impressoras. ↑↓ define a ordem de tentativa. A primeira que funciona para; «Imprimir em todos» envia para cada impressora anexada. Cada alteração guarda de imediato.
 station_print_pick_ph	Estação para definir impressoras
 station_print_pick_first	Escolha primeiro uma estação de cozinha
 station_print_editing	A editar impressoras de “{name}”
@@ -1287,7 +1287,7 @@ std_size_l	Grande
 save_std_print	Guardar tamanho de impressão
 std_print_saved	Tamanho de impressão guardado
 print_brand_kit	Kit de marca impressa
-print_brand_kit_help	Carimbo e QR de pagamento opcionais em contas e ecrã LAN. Sem QR de pagamento, o UPI acima dá o QR do valor.
+print_brand_kit_help	Imagens opcionais de carimbo e QR de pagamento na face da conta e no ecrã de convidados LAN. O QR UPI dinâmico do VPA acima continua a funcionar sem imagem de QR de pagamento.
 choose_stamp	Escolher carimbo
 clear_stamp	Remover carimbo
 stamp_set	Carimbo: em ficheiro — ecrã de convidados e nome na conta

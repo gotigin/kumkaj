@@ -796,7 +796,7 @@ route_dont_print	Ne pas imprimer
 stations_heading	Stations de cuisine
 stations_help	Ajoutez des stations de cuisine pour les plats et le KOT. Sur chaque station, attachez ses imprimantes (trouvées sous Paramètres → Imprimantes), définissez la priorité et choisissez « Premier qui fonctionne » ou « Imprimer sur toutes ». Les modifications sont enregistrées automatiquement — aucun bouton Enregistrer n'est nécessaire.
 station_print_heading	Imprimantes de ce poste
-station_print_help	Choisissez un poste, puis attachez une ou plusieurs imprimantes. ↑↓ définit l'ordre d'essai. La première qui réussit s'arrête ; Imprimer sur toutes envoie à chaque imprimante attachée.
+station_print_help	Choisissez un poste, puis attachez une ou plusieurs imprimantes. ↑↓ définit l’ordre d’essai. La première qui réussit s’arrête ; «Imprimer sur tous» envoie à chaque imprimante attachée. Chaque changement s’enregistre immédiatement.
 station_print_pick_ph	Poste pour régler les imprimantes
 station_print_pick_first	Choisissez d'abord un poste de cuisine
 station_print_editing	Modification des imprimantes de « {name} »
@@ -1287,7 +1287,7 @@ std_size_l	Grand
 save_std_print	Enregistrer la taille d'impression
 std_print_saved	Taille d'impression enregistrée
 print_brand_kit	Kit de marque imprimé
-print_brand_kit_help	Tampon et QR de paiement optionnels sur notes et écran LAN. Sans QR de paiement, l’UPI ci-dessus donne le QR du montant.
+print_brand_kit_help	Images facultatives de tampon et de QR de paiement sur la face des notes et l’écran invité LAN. Le QR UPI dynamique du VPA ci-dessus fonctionne encore sans image de QR de paiement.
 choose_stamp	Choisir le tampon
 clear_stamp	Retirer le tampon
 stamp_set	Tampon : en fichier — écran invité et nom sur note

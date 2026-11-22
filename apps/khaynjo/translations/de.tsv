@@ -796,7 +796,7 @@ route_dont_print	Nicht drucken
 stations_heading	Küchenstationen
 stations_help	Füge Küchenstationen für Gerichte und KOT hinzu. An jeder Station druckbare Geräte (unter Einstellungen → Druckgeräte) zuweisen, Priorität festlegen und entweder „Erstes verfügbares Gerät" oder „Auf allen drucken" wählen. Änderungen werden automatisch gespeichert – kein Speichern-Button nötig.
 station_print_heading	Drucker für diese Station
-station_print_help	Station wählen, dann einen oder mehrere Drucker anhängen. ↑↓ setzt die Versuchreihenfolge. Der erste erfolgreiche stoppt; Auf alle drucken sendet an jeden angehängten Drucker.
+station_print_help	Station wählen, dann einen oder mehrere Drucker anhängen. ↑↓ setzt die Versuchreihenfolge. Der erste erfolgreiche stoppt; «Auf allen drucken» sendet an jeden angehängten Drucker. Jede Änderung speichert sofort.
 station_print_pick_ph	Station für Druckereinstellung
 station_print_pick_first	Zuerst eine Küchenstation wählen
 station_print_editing	Drucker für „{name}“ bearbeiten
@@ -1287,7 +1287,7 @@ std_size_l	Groß
 save_std_print	Druckgröße speichern
 std_print_saved	Druckgröße gespeichert
 print_brand_kit	Druck-Markenkit
-print_brand_kit_help	Optional Stempel und Zahlungs-QR auf Belegen und LAN-Anzeige. Ohne Zahlungs-QR liefert die UPI oben den Betrags-QR.
+print_brand_kit_help	Optionale Stempel- und Zahlungs-QR-Bilder auf Belegvorderseiten und der LAN-Gästeanzeige. Dynamischer UPI-QR aus der VPA oben funktioniert weiter, wenn kein Zahlungs-QR-Bild gesetzt ist.
 choose_stamp	Stempel wählen
 clear_stamp	Stempel entfernen
 stamp_set	Stempel: gespeichert — Gästeanzeige und Name auf Beleg

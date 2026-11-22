@@ -796,7 +796,7 @@ route_dont_print	Usichapishe
 stations_heading	Maeneo ya kituo cha matunda
 stations_help	Ongeza maeneo ya kituo cha matunda kwa chakula na KOT. Kila kwenye eneo,unganisha vifaa vyake vya kuvunja (vinapatikana chini ya Mipangilio → Vifaa vya kuvunja), weka mpango wa kwanza, na uchague Kwanza ambayo inafanya kazi au Vunja kwenye yote. Mabadiliko hubaki ukibadilisha – hakuna kitufe cha Hifadhi.
 station_print_heading	Printa za kituo hiki
-station_print_help	Chagua kituo, kisha ambatisha printa moja au zaidi. ↑↓ huweka mpangilio wa majaribio. Ya kwanza inayofaulu inasimama; Chapisha kwa zote hutuma kwa kila printa iliyounganishwa.
+station_print_help	Chagua kituo, kisha ambatisha printa moja au zaidi. ↑↓ huweka mpangilio wa majaribio. Ya kwanza inayofaulu inasimama; «Piga kwa wote» hutuma kwa kila printa iliyounganishwa. Kila badiliko huhifadhiwa mara moja.
 station_print_pick_ph	Kituo cha kuweka printa
 station_print_pick_first	Chagua kituo cha jiko kwanza
 station_print_editing	Inahariri printa za “{name}”
@@ -1287,7 +1287,7 @@ std_size_l	Kubwa
 save_std_print	Hifadhi ukubwa wa kuchapisha
 std_print_saved	Ukubwa wa kuchapisha umehifadhiwa
 print_brand_kit	Seti ya chapa ya chapa
-print_brand_kit_help	Muhuri na QR ya malipo hiari kwenye bili na skrini ya LAN. Bila QR ya malipo, UPI hapo juu inatoa QR ya kiasi.
+print_brand_kit_help	Picha za hiari za muhuri na QR ya malipo kwenye uso wa bili na skrini ya wageni ya LAN. QR dinamiki ya UPI kutoka VPA hapo juu bado inafanya kazi bila picha ya QR ya malipo.
 choose_stamp	Chagua muhuri
 clear_stamp	Ondoa muhuri
 stamp_set	Muhuri: kwenye faili — skrini ya wageni na jina kwenye bili

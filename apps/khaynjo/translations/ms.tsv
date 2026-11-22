@@ -796,7 +796,7 @@ route_dont_print	Tiada pencetak
 stations_heading	Stesen dapur
 stations_help	Tambahkan stesen dapur untuk hidangan dan KOT. Pada setiap stesen, lampirkan pencetaknya (terdapat di bawah Tetapan → Pencetak), tetapkan keutamaan dan pilih Pertama yang berfungsi atau Cetak pada semua. Perubahan disimpan semasa anda pergi — tiada butang Simpan.
 station_print_heading	Pencetak untuk stesen ini
-station_print_help	Pilih stesen, kemudian lampirkan satu atau lebih pencetak. ↑↓ set cuba order. Pertama yang berfungsi berhenti selepas kejayaan pertama; Cetak pada semua hantaran ke setiap pencetak yang dilampirkan. Setiap perubahan menjimatkan serta-merta.
+station_print_help	Pilih stesen, kemudian lampirkan satu atau lebih pencetak. ↑↓ menetapkan urutan cuba. Yang pertama berjaya berhenti selepas kejayaan pertama; «Cetak pada semua» menghantar ke setiap pencetak dilampirkan. Setiap perubahan disimpan serta-merta.
 station_print_pick_ph	Stesen untuk menetapkan pencetak
 station_print_pick_first	Pilih stesen dapur dahulu
 station_print_editing	Mengedit pencetak untuk “{name}”

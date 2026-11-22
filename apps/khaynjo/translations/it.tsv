@@ -796,7 +796,7 @@ route_dont_print	Non stampare
 stations_heading	Postazioni della cucina
 stations_help	Aggiungi postazioni della cucina per piatti e KOT. Su ogni postazione, collega le stampanti (trovate in Impostazioni → Stampanti), imposta la priorità e scegli "Prima che funziona" o "Stampa su tutte". Le modifiche vengono salvate automaticamente mentre lavori — nessun pulsante Salva.
 station_print_heading	Stampanti di questa stazione
-station_print_help	Scegli una stazione, poi collega una o più stampanti. ↑↓ imposta l'ordine di prova. La prima che riesce si ferma; Stampa su tutte invia a ogni stampante collegata.
+station_print_help	Scegli una stazione, poi collega una o più stampanti. ↑↓ imposta l’ordine di prova. La prima che riesce si ferma; «Stampa su tutti» invia a ogni stampante collegata. Ogni modifica si salva subito.
 station_print_pick_ph	Stazione per impostare le stampanti
 station_print_pick_first	Seleziona prima una stazione cucina
 station_print_editing	Modifica stampanti di “{name}”
@@ -1287,7 +1287,7 @@ std_size_l	Grande
 save_std_print	Salva dimensione stampa
 std_print_saved	Dimensione stampa salvata
 print_brand_kit	Kit marchio stampa
-print_brand_kit_help	Timbro e QR di pagamento opzionali su conti e display LAN. Senza QR di pagamento, l’UPI sopra dà il QR dell’importo.
+print_brand_kit_help	Immagini opzionali di timbro e QR di pagamento sul fronte dei conti e sul display ospiti LAN. Il QR UPI dinamico dal VPA sopra funziona ancora senza immagine QR di pagamento.
 choose_stamp	Scegli timbro
 clear_stamp	Rimuovi timbro
 stamp_set	Timbro: in file — display ospiti e nome sul conto

@@ -796,7 +796,7 @@ route_dont_print	不打印
 stations_heading	厨房工作站
 stations_help	为菜品和 KOT 添加厨房工作站。在每个工作站上，附加其打印机（在“设置 → 打印机”下找到），设置优先级，并选择“第一个可用”或“全部打印”。更改会即时保存——无需保存按钮。
 station_print_heading	此工位的打印机
-station_print_help	选择工位，再挂接一台或多台打印机。↑↓ 设定尝试顺序。第一个成功即停止；全部打印会发到每台已挂接打印机。
+station_print_help	选择工位，再挂接一台或多台打印机。↑↓ 设定尝试顺序。第一个成功即停止；「全部打印」 会发到每台已挂接打印机。每次更改立即保存。
 station_print_pick_ph	要设置打印机的工位
 station_print_pick_first	请先选择厨房工位
 station_print_editing	正在编辑“{name}”的打印机
@@ -1287,7 +1287,7 @@ std_size_l	大
 save_std_print	保存账单字号
 std_print_saved	已保存账单字号
 print_brand_kit	打印品牌套件
-print_brand_kit_help	可选印章与付款二维码用于账单与局域网显示。未设付款码时，上方 UPI 生成金额码。
+print_brand_kit_help	账单正面与局域网客人屏上的可选印章和付款二维码图片。未设置付款二维码图片时，上方 VPA 的动态 UPI 二维码仍可用。
 choose_stamp	选择印章
 clear_stamp	清除印章
 stamp_set	印章：已存档 — 宾客屏与账单标注

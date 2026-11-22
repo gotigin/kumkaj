@@ -796,7 +796,7 @@ route_dont_print	印刷しない
 stations_heading	キッチンステーション
 stations_help	料理と KOT（厨房注文票）用のキッチンステーションを追加します。各ステーションでプリンターを接続し（設定 → プリンター）、優先順位を設定し、「動作する最初のもの」または「すべてに印刷」を選択します。変更は即座に保存されますので、保存ボタンはありません
 station_print_heading	このステーションのプリンター
-station_print_help	ステーションを選び、プリンターを1台以上付けます。↑↓ は試行順。最初に成功したところで止まり、すべてに印刷は付けた全機へ送ります。
+station_print_help	ステーションを選び、プリンターを1台以上付けます。↑↓ は試行順。最初に成功したところで止まり、「すべてで印刷」 は付けた全機へ送ります。変更はすぐ保存されます。
 station_print_pick_ph	プリンターを設定するステーション
 station_print_pick_first	先に厨房ステーションを選択してください
 station_print_editing	「{name}」のプリンターを編集中
@@ -1287,7 +1287,7 @@ std_size_l	大
 save_std_print	伝票サイズを保存
 std_print_saved	伝票サイズを保存しました
 print_brand_kit	印刷ブランドキット
-print_brand_kit_help	任意のスタンプと支払いQRを伝票とLAN表示に。支払いQRが無い場合は上のUPIで金額QR。
+print_brand_kit_help	伝票面と LAN ゲスト表示の任意スタンプ／支払い QR 画像。支払い QR 画像が無いときも、上の VPA からの動的 UPI QR は使えます。
 choose_stamp	スタンプを選ぶ
 clear_stamp	スタンプを消す
 stamp_set	スタンプ：保存済み — ゲスト表示と伝票名

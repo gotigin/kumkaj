@@ -796,7 +796,7 @@ route_dont_print	Không in
 stations_heading	Trạm bếp
 stations_help	Thêm trạm bếp cho món ăn và KOT. Tại mỗi trạm, gắn máy in của nó (tìm trong Cài đặt → Máy in), thiết lập ưu tiên và chọn In đầu tiên hoạt động hoặc In trên tất cả. Thay đổi được lưu ngay khi thực hiện — không có nút Lưu.
 station_print_heading	Máy in của trạm này
-station_print_help	Chọn trạm, rồi gắn một hoặc nhiều máy in. ↑↓ đặt thứ tự thử. Máy đầu thành công thì dừng; In trên tất cả gửi tới mọi máy đã gắn.
+station_print_help	Chọn trạm, rồi gắn một hoặc nhiều máy in. ↑↓ đặt thứ tự thử. Máy đầu thành công thì dừng; «In trên tất cả» gửi tới mọi máy đã gắn. Mỗi thay đổi lưu ngay.
 station_print_pick_ph	Trạm để đặt máy in
 station_print_pick_first	Hãy chọn trạm bếp trước
 station_print_editing	Đang sửa máy in của “{name}”
@@ -1287,7 +1287,7 @@ std_size_l	Lớn
 save_std_print	Lưu cỡ in
 std_print_saved	Đã lưu cỡ in
 print_brand_kit	Bộ thương hiệu in
-print_brand_kit_help	Tem và QR thanh toán tùy chọn trên hóa đơn và màn LAN. Không có QR thanh toán thì UPI phía trên tạo QR số tiền.
+print_brand_kit_help	Ảnh tem và QR thanh toán tùy chọn trên mặt hóa đơn và màn khách LAN. QR UPI động từ VPA phía trên vẫn chạy khi chưa đặt ảnh QR thanh toán.
 choose_stamp	Chọn tem
 clear_stamp	Xóa tem
 stamp_set	Tem: đã lưu — màn khách và tên trên hóa đơn

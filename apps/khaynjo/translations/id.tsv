@@ -796,7 +796,7 @@ route_dont_print	Jangan cetak
 stations_heading	Stasiun dapur
 stations_help	Tambahkan stasiun dapur untuk hidangan dan KOT. Pada setiap stasiun, pasang printernya (ditemukan di Pengaturan → Printer), atur prioritas, dan pilih yang pertama berfungsi atau Cetak di semua. Perubahan disimpan saat Anda melakukan — tidak ada tombol Simpan.
 station_print_heading	Printer stasiun ini
-station_print_help	Pilih stasiun, lalu pasang satu atau lebih printer. ↑↓ mengatur urutan percobaan. Yang pertama berhasil berhenti; Cetak ke semua mengirim ke setiap printer terpasang.
+station_print_help	Pilih stasiun, lalu pasang satu atau lebih printer. ↑↓ mengatur urutan percobaan. Yang pertama berhasil berhenti; «Cetak di semua» mengirim ke setiap printer terpasang. Setiap perubahan tersimpan segera.
 station_print_pick_ph	Stasiun untuk mengatur printer
 station_print_pick_first	Pilih stasiun dapur dulu
 station_print_editing	Mengedit printer “{name}”
@@ -1287,7 +1287,7 @@ std_size_l	Besar
 save_std_print	Simpan ukuran cetak
 std_print_saved	Ukuran cetak disimpan
 print_brand_kit	Kit merek cetak
-print_brand_kit_help	Stempel dan QR bayar opsional di tagihan dan tampilan LAN. Tanpa QR bayar, UPI di atas memberi QR jumlah.
+print_brand_kit_help	Gambar stempel dan QR bayar opsional pada muka tagihan dan tampilan tamu LAN. QR UPI dinamis dari VPA di atas tetap berfungsi bila tidak ada gambar QR bayar.
 choose_stamp	Pilih stempel
 clear_stamp	Hapus stempel
 stamp_set	Stempel: tersimpan — tampilan tamu dan nama di tagihan

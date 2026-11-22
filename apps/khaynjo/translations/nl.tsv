@@ -796,7 +796,7 @@ route_dont_print	Niet afdrukken
 stations_heading	Keukenstations
 stations_help	Voeg keukens voor gerechten en KOT toe. Bevestig op elk station de bijbehorende printers (te vinden onder Instellingen → Printers), stel prioriteit in en kies Eerst dat werkt of Afdrukken op alle. Wijzigingen worden automatisch opgeslagen — geen Opslaan-knop.
 station_print_heading	Printers voor dit station
-station_print_help	Kies een station en koppel een of meer printers. ↑↓ zet de probeervolgorde. De eerste die lukt stopt; Afdrukken op alle stuurt naar elke gekoppelde printer.
+station_print_help	Kies een station en koppel een of meer printers. ↑↓ zet de probeervolgorde. De eerste die lukt stopt; «Afdrukken op alle» stuurt naar elke gekoppelde printer. Elke wijziging wordt meteen opgeslagen.
 station_print_pick_ph	Station om printers in te stellen
 station_print_pick_first	Kies eerst een keukenstation
 station_print_editing	Printers voor “{name}” bewerken
@@ -1287,7 +1287,7 @@ std_size_l	Groot
 save_std_print	Printgrootte opslaan
 std_print_saved	Printgrootte opgeslagen
 print_brand_kit	Printmerk-kit
-print_brand_kit_help	Optionele stempel en betaal-QR op rekeningen en LAN-scherm. Zonder betaal-QR geeft de UPI hierboven de bedrag-QR.
+print_brand_kit_help	Optionele stempel- en betaal-QR-afbeeldingen op rekeningen en het LAN-gastenscherm. Dynamische UPI-QR van de VPA hierboven werkt nog zonder betaal-QR-afbeelding.
 choose_stamp	Stempel kiezen
 clear_stamp	Stempel wissen
 stamp_set	Stempel: opgeslagen — gastenscherm en naam op rekening
