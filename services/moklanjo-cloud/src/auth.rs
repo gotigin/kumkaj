@@ -1,4 +1,4 @@
-//! Verify Firebase ID tokens for the Khaynjo Firebase project only.
+//! Verify Firebase ID tokens for the Moklanjo Firebase project only.
 
 use jsonwebtoken::{decode, decode_header, Algorithm, DecodingKey, Validation};
 use serde::Deserialize;

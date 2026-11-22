@@ -1,7 +1,9 @@
-//! Tabiyat Cloud API — milestone 1: ensure account + plans.
+//! Tabiyat Cloud API — Auth account + plans + sandbox billing (Stripe/Paddle/mock).
 //! Own Postgres; clients never talk to the DB. Firebase Auth: `tabiyat-shop`.
+//! Stripe/Paddle ops: Chrome profile **MEARAJ (Gotigin)**.
 
 mod auth;
+mod billing;
 mod db;
 mod routes;
 
@@ -13,11 +15,14 @@ use tower_http::cors::CorsLayer;
 use tower_http::trace::TraceLayer;
 use tracing_subscriber::EnvFilter;
 
+use billing::BillingConfig;
+
 pub struct AppState {
     pub pool: sqlx::PgPool,
     pub product_code: &'static str,
     pub firebase_project_id: String,
     pub verifier: auth::FirebaseVerifier,
+    pub billing: Option<BillingConfig>,
 }
 
 #[tokio::main]
@@ -28,8 +33,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let database_url = std::env::var("DATABASE_URL")
         .map_err(|_| "DATABASE_URL is required (Postgres for Tabiyat cloud only)")?;
-    let firebase_project_id = std::env::var("FIREBASE_PROJECT_ID")
-        .unwrap_or_else(|_| "tabiyat-shop".to_string());
+    let firebase_project_id =
+        std::env::var("FIREBASE_PROJECT_ID").unwrap_or_else(|_| "tabiyat-shop".to_string());
     let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
     let port: u16 = std::env::var("PORT")
         .ok()
@@ -38,12 +43,24 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let pool = db::connect_and_migrate(&database_url).await?;
     let verifier = auth::FirebaseVerifier::new(firebase_project_id.clone());
+    let billing_cfg = BillingConfig::from_env();
+    if billing_cfg.enabled {
+        tracing::info!(
+            mode = billing_cfg.mode.as_str(),
+            default_provider = billing_cfg.default_provider.as_str(),
+            providers = ?billing_cfg.enabled_providers(),
+            "billing enabled"
+        );
+    } else {
+        tracing::info!("billing disabled (set BILLING_ENABLED=1 for sandbox/live checkout)");
+    }
 
     let state = Arc::new(AppState {
         pool,
         product_code: "tabiyat",
         firebase_project_id,
         verifier,
+        billing: Some(billing_cfg),
     });
 
     let app = Router::new()

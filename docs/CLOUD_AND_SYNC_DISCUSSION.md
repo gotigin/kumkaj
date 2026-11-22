@@ -158,11 +158,12 @@ loyalty. Auth can stay on Firebase either way.
   stable `api.<domain>` (site HTTPS→HTTP API is mixed-content blocked until
   then — native apps OK on HTTP), in-app OAuth/phone, shop connect,
   restore/seed, `sync_outbox` drain. **Billing sandbox (2026-11-22):**
-  Khaynjo cloud has checkout + webhooks for **mock / Stripe / Paddle**
-  (`services/khaynjo-cloud/docs/BILLING_SANDBOX.md`); Chrome profile
-  **MEARAJ (Gotigin)**. Local mock smoke proves activate → subscription;
-  Stripe/Paddle test keys + Price ids still to be pasted when dashboards
-  are ready.
+  **All four** product clouds have checkout + webhooks for
+  **mock / Stripe / Paddle** (`services/*-cloud/docs/BILLING_SANDBOX.md`);
+  site `/account` plan buttons + app `cloud_api` purchase helpers.
+  Chrome profile **MEARAJ (Gotigin)**. Local mock smoke proves activate →
+  subscription on each product; Stripe/Paddle test keys + Price ids still
+  to be pasted per product when dashboards are ready.
 - Code lives under `services/{khaynjo,moklanjo,kirano,tabiyat}-cloud/`
   (standalone Cargo projects — not Makepad app members).
 - **Grow and scale** without redesigning from scratch: API and DB as
@@ -192,10 +193,11 @@ Summary: **Free forever** + **Steady (10 GB)** + **Swift (25 GB)** +
 **Priority (50 GB)** + **Custom**. Paid plans include free forever. All
 paid tiers are **live** sync; they differ by **quota** and **bandwidth**
 only (no device caps, no connection-interval tiers). Yearly INR **raw
-(ex-tax)** list: ₹6,000 / ₹12,000 / ₹24,000 / quote; tax (GST/VAT/etc.)
-added by the **billing gateway** per buyer country. After subscription
-ends: 1 month grace (13 months cloud run), retrieve until +2 months, then
-delete eligible; weekly cancellable notices in that window.
+(ex-tax)** self-serve list: ₹6,000 / ₹12,000 / ₹24,000; **Custom** is a
+negotiated quote that **may be below Steady or above Priority**. Tax
+(GST/VAT/etc.) added by the **billing gateway** per buyer country. After
+subscription ends: 1 month grace (13 months cloud run), retrieve until
++2 months, then delete eligible; weekly cancellable notices in that window.
 
 Plan catalog is **seeded in each product’s cloud DB** and returned by the
 API — apps display what the API returns (so copy can change without an

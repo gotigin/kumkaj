@@ -1,0 +1,179 @@
+use axum::body::Bytes;
+use axum::extract::State;
+use axum::http::{HeaderMap, StatusCode};
+use axum::response::{IntoResponse, Response};
+use axum::Json;
+use serde_json::Value;
+use std::sync::Arc;
+use uuid::Uuid;
+
+use crate::AppState;
+
+use super::config::Provider;
+use super::{activate_subscription, BillingError};
+
+pub async fn handle_stripe_webhook(
+    State(state): State<Arc<AppState>>,
+    headers: HeaderMap,
+    body: Bytes,
+) -> Response {
+    let Some(cfg) = state.billing.as_ref() else {
+        return err(StatusCode::SERVICE_UNAVAILABLE, "billing disabled");
+    };
+    let secret = match cfg.stripe_webhook_secret.as_deref() {
+        Some(s) => s,
+        None => return err(StatusCode::SERVICE_UNAVAILABLE, "stripe webhook not configured"),
+    };
+    let sig = match headers.get("Stripe-Signature").and_then(|v| v.to_str().ok()) {
+        Some(s) => s,
+        None => return err(StatusCode::BAD_REQUEST, "missing Stripe-Signature"),
+    };
+    if let Err(e) = super::stripe::verify_signature(secret, sig, &body, 300) {
+        return err(StatusCode::BAD_REQUEST, e);
+    }
+    let payload: Value = match serde_json::from_slice(&body) {
+        Ok(v) => v,
+        Err(e) => return err(StatusCode::BAD_REQUEST, e.to_string()),
+    };
+    let event_id = payload
+        .get("id")
+        .and_then(|v| v.as_str())
+        .unwrap_or("stripe_unknown");
+    let event_type = payload
+        .get("type")
+        .and_then(|v| v.as_str())
+        .unwrap_or("");
+
+    if event_type == "checkout.session.completed" {
+        let obj = payload.pointer("/data/object").cloned().unwrap_or(Value::Null);
+        let meta = obj.get("metadata").cloned().unwrap_or(Value::Null);
+        let account_id = meta
+            .get("account_id")
+            .and_then(|v| v.as_str())
+            .and_then(|s| Uuid::parse_str(s).ok());
+        let plan_id = meta
+            .get("plan_id")
+            .and_then(|v| v.as_str())
+            .unwrap_or("")
+            .to_string();
+        let checkout_id = meta
+            .get("checkout_id")
+            .and_then(|v| v.as_str())
+            .and_then(|s| Uuid::parse_str(s).ok());
+        let sub_id = obj
+            .get("subscription")
+            .and_then(|v| v.as_str())
+            .map(str::to_string);
+        if let (Some(account_id), true) = (account_id, !plan_id.is_empty()) {
+            if let Err(e) = activate_subscription(
+                &state.pool,
+                account_id,
+                &plan_id,
+                Provider::Stripe,
+                sub_id.as_deref(),
+                checkout_id,
+                event_id,
+                payload.clone(),
+            )
+            .await
+            {
+                return billing_err(e);
+            }
+        }
+    }
+
+    Json(serde_json::json!({ "received": true })).into_response()
+}
+
+pub async fn handle_paddle_webhook(
+    State(state): State<Arc<AppState>>,
+    headers: HeaderMap,
+    body: Bytes,
+) -> Response {
+    let Some(cfg) = state.billing.as_ref() else {
+        return err(StatusCode::SERVICE_UNAVAILABLE, "billing disabled");
+    };
+    let secret = match cfg.paddle_webhook_secret.as_deref() {
+        Some(s) => s,
+        None => return err(StatusCode::SERVICE_UNAVAILABLE, "paddle webhook not configured"),
+    };
+    let sig = match headers
+        .get("Paddle-Signature")
+        .and_then(|v| v.to_str().ok())
+    {
+        Some(s) => s,
+        None => return err(StatusCode::BAD_REQUEST, "missing Paddle-Signature"),
+    };
+    if let Err(e) = super::paddle::verify_signature(secret, sig, &body) {
+        return err(StatusCode::BAD_REQUEST, e);
+    }
+    let payload: Value = match serde_json::from_slice(&body) {
+        Ok(v) => v,
+        Err(e) => return err(StatusCode::BAD_REQUEST, e.to_string()),
+    };
+    let event_id = payload
+        .get("event_id")
+        .and_then(|v| v.as_str())
+        .or_else(|| payload.get("notification_id").and_then(|v| v.as_str()))
+        .unwrap_or("paddle_unknown");
+    let event_type = payload
+        .get("event_type")
+        .and_then(|v| v.as_str())
+        .unwrap_or("");
+
+    if matches!(
+        event_type,
+        "transaction.completed" | "subscription.activated" | "subscription.created"
+    ) {
+        let data = payload.get("data").cloned().unwrap_or(Value::Null);
+        let custom = data
+            .get("custom_data")
+            .cloned()
+            .or_else(|| data.pointer("/transaction/custom_data").cloned())
+            .unwrap_or(Value::Null);
+        let account_id = custom
+            .get("account_id")
+            .and_then(|v| v.as_str())
+            .and_then(|s| Uuid::parse_str(s).ok());
+        let plan_id = custom
+            .get("plan_id")
+            .and_then(|v| v.as_str())
+            .unwrap_or("")
+            .to_string();
+        let checkout_id = custom
+            .get("checkout_id")
+            .and_then(|v| v.as_str())
+            .and_then(|s| Uuid::parse_str(s).ok());
+        let sub_id = data
+            .get("subscription_id")
+            .and_then(|v| v.as_str())
+            .or_else(|| data.get("id").and_then(|v| v.as_str()))
+            .map(str::to_string);
+        if let (Some(account_id), true) = (account_id, !plan_id.is_empty()) {
+            if let Err(e) = activate_subscription(
+                &state.pool,
+                account_id,
+                &plan_id,
+                Provider::Paddle,
+                sub_id.as_deref(),
+                checkout_id,
+                event_id,
+                payload.clone(),
+            )
+            .await
+            {
+                return billing_err(e);
+            }
+        }
+    }
+
+    Json(serde_json::json!({ "received": true })).into_response()
+}
+
+fn err(status: StatusCode, message: impl Into<String>) -> Response {
+    (status, Json(serde_json::json!({ "error": message.into() }))).into_response()
+}
+
+fn billing_err(e: BillingError) -> Response {
+    err(e.status(), e.message())
+}

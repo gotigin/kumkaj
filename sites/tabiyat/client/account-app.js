@@ -52,6 +52,10 @@ const els = {
   userProviders: $("session-providers"),
   cloudUser: $("session-cloud-user"),
   cloudPlan: $("session-cloud-plan"),
+  cardCloudPlans: $("card-cloud-plans"),
+  planList: $("plan-list"),
+  billingHint: $("billing-hint"),
+  billingStatus: $("billing-status"),
   passwordHint: $("password-hint"),
   passwordCurrentWrap: $("password-current-wrap"),
   passwordEmailWrap: $("password-email-wrap"),
@@ -185,6 +189,113 @@ function paintPasswordCard(user) {
 function paintCloudPlaceholders() {
   if (els.cloudUser) els.cloudUser.textContent = "—";
   if (els.cloudPlan) els.cloudPlan.textContent = "—";
+  if (els.cardCloudPlans) els.cardCloudPlans.hidden = true;
+  if (els.planList) els.planList.innerHTML = "";
+  if (els.billingStatus) els.billingStatus.textContent = "";
+}
+
+function formatInrPaise(paise) {
+  if (paise == null) return "Quote";
+  if (paise === 0) return "₹0";
+  return `₹${(paise / 100).toLocaleString("en-IN")}/yr ex-tax`;
+}
+
+async function startCheckout(user, planId, provider) {
+  if (!user) return;
+  setBusy(true);
+  showError("");
+  try {
+    const idToken = await user.getIdToken();
+    const res = await fetch(`${CLOUD_API_BASE}/v1/billing/checkout`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ plan_id: planId, provider }),
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(body.error || `Checkout HTTP ${res.status}`);
+    if (provider === "mock" && body.checkout_id) {
+      const done = await fetch(`${CLOUD_API_BASE}/v1/billing/sandbox/complete`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ checkout_id: body.checkout_id }),
+      });
+      const doneBody = await done.json().catch(() => ({}));
+      if (!done.ok) throw new Error(doneBody.error || `Complete HTTP ${done.status}`);
+      showOk(`Sandbox: activated ${doneBody.plan_id} until ${String(doneBody.ends_at || "").slice(0, 10)}`);
+      await syncCloudAccount(user);
+      return;
+    }
+    if (body.url) {
+      window.location.href = body.url;
+      return;
+    }
+    throw new Error("Checkout did not return a URL");
+  } catch (err) {
+    showError(err?.message || "Checkout failed");
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function paintBillingPlans(user, idToken) {
+  if (!els.cardCloudPlans || !els.planList) return;
+  try {
+    const [cfgRes, plansRes] = await Promise.all([
+      fetch(`${CLOUD_API_BASE}/v1/billing/config`, {
+        headers: { Authorization: `Bearer ${idToken}` },
+      }),
+      fetch(`${CLOUD_API_BASE}/v1/plans`, {
+        headers: { Authorization: `Bearer ${idToken}` },
+      }),
+    ]);
+    if (!cfgRes.ok || !plansRes.ok) {
+      els.cardCloudPlans.hidden = true;
+      return;
+    }
+    const cfg = await cfgRes.json();
+    const plans = await plansRes.json();
+    if (!cfg.enabled) {
+      els.cardCloudPlans.hidden = true;
+      return;
+    }
+    els.cardCloudPlans.hidden = false;
+    if (els.billingStatus) {
+      els.billingStatus.textContent = `Billing mode: ${cfg.mode} · providers: ${(cfg.providers || []).join(", ") || "none"} · default: ${cfg.default_provider || "—"}`;
+    }
+    const sellable = (plans || []).filter(
+      (p) => p.includes_live_cloud && p.plan_id !== "custom" && p.checkout_ready
+    );
+    els.planList.innerHTML = "";
+    if (!sellable.length) {
+      els.planList.innerHTML =
+        "<p class=\"auth-hint\">No self-serve plans are checkout-ready yet. For Stripe/Paddle, set price ids on the plans table (see BILLING_SANDBOX.md).</p>";
+      return;
+    }
+    const provider = cfg.default_provider || "mock";
+    for (const plan of sellable) {
+      const row = document.createElement("div");
+      row.className = "plan-row";
+      const meta = document.createElement("div");
+      meta.innerHTML = `<strong>${plan.title}</strong><span>${formatInrPaise(plan.price_inr_paise)} · ${plan.quota_gb || "—"} GB</span>`;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn btn-primary";
+      btn.textContent = provider === "mock" ? `Sandbox activate ${plan.title}` : `Pay with ${provider}`;
+      btn.addEventListener("click", () => void startCheckout(user, plan.plan_id, provider));
+      row.appendChild(meta);
+      row.appendChild(btn);
+      els.planList.appendChild(row);
+    }
+  } catch (err) {
+    console.warn("billing plans:", err?.message || err);
+    els.cardCloudPlans.hidden = true;
+  }
 }
 
 async function syncCloudAccount(user) {
@@ -206,14 +317,17 @@ async function syncCloudAccount(user) {
     if (subRes.ok) {
       const sub = await subRes.json();
       if (els.cloudPlan) {
-        els.cloudPlan.textContent = sub.title || sub.plan_id || "—";
+        const until = sub.ends_at ? ` · until ${String(sub.ends_at).slice(0, 10)}` : "";
+        els.cloudPlan.textContent = `${sub.title || sub.plan_id || "—"}${until}`;
       }
     } else if (els.cloudPlan) {
       els.cloudPlan.textContent = "Free forever";
     }
+    await paintBillingPlans(user, idToken);
   } catch (err) {
     if (els.cloudUser) els.cloudUser.textContent = "Unavailable";
     if (els.cloudPlan) els.cloudPlan.textContent = "—";
+    if (els.cardCloudPlans) els.cardCloudPlans.hidden = true;
     // Soft-fail: Auth still works if the API host is down or CORS-blocked.
     console.warn("cloud sync:", err?.message || err);
   }

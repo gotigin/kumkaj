@@ -1368,17 +1368,45 @@ impl App {
             .as_ref()
             .map(|s| s.title.clone())
             .unwrap_or_else(|| "Free forever".into());
+        let catalog = bootstrap
+            .plans
+            .iter()
+            .filter(|p| p.includes_live_cloud && p.plan_id != "custom")
+            .map(|p| {
+                format!(
+                    "{} {}",
+                    p.title,
+                    cloud_api::format_plan_price_inr(p.price_inr_paise)
+                )
+            })
+            .collect::<Vec<_>>()
+            .join(" · ");
+        let billing_note = match bootstrap.billing.as_ref() {
+            Some(b) if b.enabled => format!(
+                " Cloud billing: {} ({})",
+                b.default_provider.as_deref().unwrap_or("—"),
+                b.providers.join(",")
+            ),
+            _ => String::new(),
+        };
         let status_msg = {
             let st = app_state().lock().unwrap();
             let base = st
                 .t("cloud_welcome")
                 .replace("{user}", &bootstrap.me.username)
                 .replace("{plan}", &plan_title);
-            if created {
+            let mut msg = if created {
                 format!("{} — {}", st.t("cloud_created"), base)
             } else {
                 base
+            };
+            if !catalog.is_empty() {
+                msg.push_str(&format!(" | Plans: {catalog}"));
             }
+            if !billing_note.is_empty() {
+                msg.push_str(&billing_note);
+            }
+            msg
         };
         let apply = (|| -> Result<(), String> {
             let mut st = app_state().lock().unwrap();

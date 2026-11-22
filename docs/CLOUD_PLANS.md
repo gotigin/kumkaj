@@ -53,7 +53,13 @@ List prices are the **raw** amount Kumkaj charges for the plan. They do
 | Steady | **₹6,000** |
 | Swift | **₹12,000** |
 | Priority | **₹24,000** |
-| Custom | Quote (typically at least Priority unless we agree otherwise) |
+| Custom | Quote — may be below Steady or above Priority (agreed terms) |
+
+- **Custom** is sales-led: yearly amount, quota, and bandwidth are whatever
+  Gotigin and the client agree. The quote **may be less than Steady** or
+  **more than Priority** (or anywhere between). Still **tax-exclusive** raw
+  list + tax at the gateway; still includes Free forever local. Custom is
+  never a self-serve checkout SKU.
 
 ### Tax at the billing gateway (unified worldwide)
 

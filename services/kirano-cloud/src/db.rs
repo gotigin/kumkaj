@@ -1,5 +1,5 @@
 use chrono::{DateTime, Utc};
-use sqlx::postgres::PgPoolOptions;
+use sqlx::postgres::{PgPoolOptions, PgRow};
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
 
@@ -33,6 +33,19 @@ pub struct PlanRow {
     pub bandwidth_band: String,
     pub price_inr_paise: Option<i64>,
     pub includes_live_cloud: bool,
+    pub stripe_price_id: Option<String>,
+    pub paddle_price_id: Option<String>,
+}
+
+#[derive(Debug, Clone)]
+#[allow(dead_code)]
+pub struct CheckoutRow {
+    pub checkout_id: Uuid,
+    pub account_id: Uuid,
+    pub plan_id: String,
+    pub provider: String,
+    pub status: String,
+    pub external_id: Option<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -178,11 +191,26 @@ fn username_base(claims: &FirebaseClaims) -> String {
     }
 }
 
+fn plan_from_row(r: &PgRow) -> PlanRow {
+    PlanRow {
+        plan_id: r.get("plan_id"),
+        sort_order: r.get("sort_order"),
+        title: r.get("title"),
+        quota_gb: r.get("quota_gb"),
+        bandwidth_band: r.get("bandwidth_band"),
+        price_inr_paise: r.get("price_inr_paise"),
+        includes_live_cloud: r.get("includes_live_cloud"),
+        stripe_price_id: r.try_get("stripe_price_id").ok().flatten(),
+        paddle_price_id: r.try_get("paddle_price_id").ok().flatten(),
+    }
+}
+
 pub async fn list_plans(pool: &PgPool) -> Result<Vec<PlanRow>, sqlx::Error> {
     let rows = sqlx::query(
         r#"
         SELECT plan_id, sort_order, title, quota_gb, bandwidth_band,
-               price_inr_paise, includes_live_cloud
+               price_inr_paise, includes_live_cloud,
+               stripe_price_id, paddle_price_id
         FROM plans WHERE active = TRUE
         ORDER BY sort_order
         "#,
@@ -190,18 +218,164 @@ pub async fn list_plans(pool: &PgPool) -> Result<Vec<PlanRow>, sqlx::Error> {
     .fetch_all(pool)
     .await?;
 
-    Ok(rows
-        .into_iter()
-        .map(|r| PlanRow {
-            plan_id: r.get("plan_id"),
-            sort_order: r.get("sort_order"),
-            title: r.get("title"),
-            quota_gb: r.get("quota_gb"),
-            bandwidth_band: r.get("bandwidth_band"),
-            price_inr_paise: r.get("price_inr_paise"),
-            includes_live_cloud: r.get("includes_live_cloud"),
-        })
-        .collect())
+    Ok(rows.iter().map(plan_from_row).collect())
+}
+
+pub async fn plan_by_id(pool: &PgPool, plan_id: &str) -> Result<Option<PlanRow>, sqlx::Error> {
+    let row = sqlx::query(
+        r#"
+        SELECT plan_id, sort_order, title, quota_gb, bandwidth_band,
+               price_inr_paise, includes_live_cloud,
+               stripe_price_id, paddle_price_id
+        FROM plans WHERE plan_id = $1 AND active = TRUE
+        "#,
+    )
+    .bind(plan_id)
+    .fetch_optional(pool)
+    .await?;
+    Ok(row.as_ref().map(plan_from_row))
+}
+
+pub async fn insert_checkout(
+    pool: &PgPool,
+    checkout_id: Uuid,
+    account_id: Uuid,
+    plan_id: &str,
+    provider: &str,
+    external_id: &str,
+    checkout_url: &str,
+) -> Result<(), sqlx::Error> {
+    sqlx::query(
+        r#"
+        INSERT INTO billing_checkouts (
+            checkout_id, account_id, plan_id, provider, status, external_id, checkout_url
+        ) VALUES ($1, $2, $3, $4, 'pending', $5, $6)
+        "#,
+    )
+    .bind(checkout_id)
+    .bind(account_id)
+    .bind(plan_id)
+    .bind(provider)
+    .bind(external_id)
+    .bind(checkout_url)
+    .execute(pool)
+    .await?;
+    Ok(())
+}
+
+pub async fn checkout_by_id(
+    pool: &PgPool,
+    checkout_id: Uuid,
+) -> Result<Option<CheckoutRow>, sqlx::Error> {
+    let row = sqlx::query(
+        r#"
+        SELECT checkout_id, account_id, plan_id, provider, status, external_id
+        FROM billing_checkouts WHERE checkout_id = $1
+        "#,
+    )
+    .bind(checkout_id)
+    .fetch_optional(pool)
+    .await?;
+    Ok(row.map(|r| CheckoutRow {
+        checkout_id: r.get("checkout_id"),
+        account_id: r.get("account_id"),
+        plan_id: r.get("plan_id"),
+        provider: r.get("provider"),
+        status: r.get("status"),
+        external_id: r.get("external_id"),
+    }))
+}
+
+pub async fn mark_checkout_completed(pool: &PgPool, checkout_id: Uuid) -> Result<(), sqlx::Error> {
+    sqlx::query(
+        r#"
+        UPDATE billing_checkouts
+        SET status = 'completed', completed_at = now()
+        WHERE checkout_id = $1
+        "#,
+    )
+    .bind(checkout_id)
+    .execute(pool)
+    .await?;
+    Ok(())
+}
+
+/// Returns true if this event was newly inserted (false = already seen).
+pub async fn record_billing_event(
+    pool: &PgPool,
+    provider: &str,
+    event_id: &str,
+    payload: &serde_json::Value,
+) -> Result<bool, sqlx::Error> {
+    let result = sqlx::query(
+        r#"
+        INSERT INTO billing_events (provider, event_id, payload)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (provider, event_id) DO NOTHING
+        "#,
+    )
+    .bind(provider)
+    .bind(event_id)
+    .bind(payload)
+    .execute(pool)
+    .await?;
+    Ok(result.rows_affected() > 0)
+}
+
+pub async fn mark_billing_event_processed(
+    pool: &PgPool,
+    provider: &str,
+    event_id: &str,
+) -> Result<(), sqlx::Error> {
+    sqlx::query(
+        r#"
+        UPDATE billing_events SET processed = TRUE
+        WHERE provider = $1 AND event_id = $2
+        "#,
+    )
+    .bind(provider)
+    .bind(event_id)
+    .execute(pool)
+    .await?;
+    Ok(())
+}
+
+pub async fn upsert_paid_subscription(
+    pool: &PgPool,
+    account_id: Uuid,
+    plan_id: &str,
+    provider: &str,
+    external_subscription_id: Option<&str>,
+    checkout_id: Option<Uuid>,
+    started_at: DateTime<Utc>,
+    ends_at: DateTime<Utc>,
+) -> Result<(), sqlx::Error> {
+    sqlx::query(
+        r#"
+        INSERT INTO subscriptions (
+            account_id, plan_id, status, started_at, ends_at,
+            provider, external_subscription_id, last_checkout_id
+        ) VALUES ($1, $2, 'active', $3, $4, $5, $6, $7)
+        ON CONFLICT (account_id) DO UPDATE SET
+            plan_id = EXCLUDED.plan_id,
+            status = 'active',
+            started_at = EXCLUDED.started_at,
+            ends_at = EXCLUDED.ends_at,
+            provider = EXCLUDED.provider,
+            external_subscription_id = EXCLUDED.external_subscription_id,
+            last_checkout_id = EXCLUDED.last_checkout_id
+        "#,
+    )
+    .bind(account_id)
+    .bind(plan_id)
+    .bind(started_at)
+    .bind(ends_at)
+    .bind(provider)
+    .bind(external_subscription_id)
+    .bind(checkout_id)
+    .execute(pool)
+    .await?;
+    Ok(())
 }
 
 pub async fn subscription_for(
