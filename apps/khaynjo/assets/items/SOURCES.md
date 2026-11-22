@@ -44,6 +44,9 @@ file name, ≤1024 px WebP). Sources Wikimedia Commons (incl. Unsplash via Commo
 | `bar/bourbon.webp` | liquor-store whiskey shelf | Glass of bourbon cropped.jpg | J Yochem | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=148521031 | resized, WebP |
 | `bar/gin.webp` | liquor-store gin shelf | Gin and tonic cocktail with wedge of lime.jpg | Davidnuescheler | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=120301896 | resized, WebP |
 | `bar/sherry.webp` | wooden wall shelf / bar décor, not a drink | Port wine.jpg | Jon Sullivan | [Public domain](https://creativecommons.org/publicdomain/mark/1.0/) | https://commons.wikimedia.org/w/index.php?curid=25990 | resized, WebP |
+| `pizza-pasta/tortellini.webp` | raw uncooked tortellini on a board | Vegetable tortellini.jpg | E4024 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=69092642 | resized, WebP |
+| `continental/shrimp-scampi.webp` | live Norway lobster on a seabed | Shrimp Scampi (6434894099).jpg | Phil Whitehouse | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=59275125 | resized, WebP |
+| `continental/t-bone-steak.webp` | cake shaped like a raw T-bone | Steak 03 bg 040306.jpg | Jon Sullivan (PDPhoto.org) | [Copyrighted free use](https://commons.wikimedia.org/wiki/Commons:Copyright_tags/General_free_media#Copyrighted_free_use) | https://commons.wikimedia.org/w/index.php?curid=881326 | resized, WebP |
 
 ## Not recorded
 
