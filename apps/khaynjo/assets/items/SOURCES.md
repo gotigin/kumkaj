@@ -586,3 +586,10 @@ need the author and licence named.
 | `sides-dips/hollandaise-sauce.webp` | full Eggs Benedict plate instead of sauce | Fresh Asparagus and hollandaise.jpg | J.P.Lon | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Fresh_Asparagus_and_hollandaise.jpg | resized, WebP |
 | `japanese/takoyaki.webp` | takeout with branded condiment packet text | Takoyaki dish.jpg | Ocdp | CC0 | https://commons.wikimedia.org/wiki/File:Takoyaki_dish.jpg | resized, WebP |
 | `street-food-chaat/vada-pav.webp` | deconstructed vada and pav on red tray | Vada Pav-Indian street food.JPG | Rameshng | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Vada_Pav-Indian_street_food.JPG | resized, WebP |
+
+## Author correction 2026-11-22 (L15 hollandaise takoyaki vada-pav)
+| File | Correction |
+|---|---|
+| `sides-dips/hollandaise-sauce.webp` | Author is Mark James Miller (not J.P.Lon) |
+| `japanese/takoyaki.webp` | Author is sayo ts (not Ocdp) |
+| `street-food-chaat/vada-pav.webp` | Author is Rutvi Mistry (not Rameshng) |
