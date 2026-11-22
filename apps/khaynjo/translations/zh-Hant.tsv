@@ -919,7 +919,7 @@ unmark	取消標記
 update_my_password	修改我的密碼
 update_my_pin	修改我的PIN
 duress_heading	緊急解鎖PIN（僅店主）
-duress_help	可選。解鎖時若輸入此PIN而非您的PIN，則清除銷售記錄——菜單、價格、桌臺和員工保留。僅在被強迫時使用。留空保存可關閉。勿與任何人的PIN相同。
+duress_help	僅限離線區域網的伺服器/客戶端——不是雲功能。預設關閉：店主儲存此 PIN 一次即可開啟（團隊，包括在客戶端收銀上）。若解鎖時輸入此 PIN 而非真實員工 PIN，伺服器上的帳簿分錄被清除，收銀以店主身分正常開啟——菜單、價格、桌臺、員工與設定保留。不刪除架構與設定。切勿與任何人的 PIN 相同。用清除按鈕關閉。
 duress_pin_ph	緊急PIN（4–12位）
 duress_confirm_ph	再輸入一次確認
 save_duress_pin	保存緊急PIN

@@ -919,7 +919,7 @@ unmark	Batalkan tanda
 update_my_password	Ubah kata sandi saya
 update_my_pin	Ubah PIN saya
 duress_heading	PIN buka darurat (hanya pemilik)
-duress_help	Opsional. Jika PIN ini diketik saat buka kunci menggantikan milik Anda, riwayat penjualan dihapus — menu, harga, meja, dan staf tetap. Hanya jika dipaksa. Simpan kosong untuk mematikan. Jangan sama dengan PIN siapa pun.
+duress_help	Hanya Server/Klien LAN luring — bukan fitur cloud. Mati bawaan: Pemilik mengaktifkannya sekali dengan menyimpan PIN ini (Tim, termasuk di kasir Klien). Jika PIN ini diketik saat buka kunci menggantikan PIN staf sungguhan, entri buku dihapus di Server dan kasir terbuka sebagai Pemilik tampak biasa — menu, harga, meja, staf, dan pengaturan tetap. Skema dan konfigurasi tidak dihapus. Jangan sama dengan PIN siapa pun. Matikan dengan tombol hapus.
 duress_pin_ph	PIN darurat (4–12 digit)
 duress_confirm_ph	Ketik lagi untuk konfirmasi
 save_duress_pin	Simpan PIN darurat

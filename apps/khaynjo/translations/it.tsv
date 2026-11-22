@@ -919,7 +919,7 @@ unmark	Togli segno
 update_my_password	Cambia la mia password
 update_my_pin	Cambia il mio PIN
 duress_heading	PIN di sblocco di emergenza (solo titolare)
-duress_help	Facoltativo. Se al sblocco digiti questo PIN al posto del tuo, la cronologia vendite viene cancellata — menu, prezzi, tavoli e personale restano. Solo se costretto. Salva vuoto per spegnere. Non uguale al PIN di nessuno.
+duress_help	Solo Server/Client offline in LAN — non è una funzione cloud. Spento di default: il proprietario lo attiva una volta salvando questo PIN (Team, anche su una cassa Client). Se al sblocco digiti questo PIN al posto di un PIN staff reale, le scritture dei libri sul Server vengono cancellate e la cassa si apre come Proprietario con aspetto normale — menu, prezzi, tavoli, personale e impostazioni restano. Schema e config non si cancellano. Mai uguale al PIN di qualcuno. Spegnilo col pulsante cancella.
 duress_pin_ph	PIN di emergenza (4–12 cifre)
 duress_confirm_ph	Digitare di nuovo
 save_duress_pin	Salva PIN di emergenza

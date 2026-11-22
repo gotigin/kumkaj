@@ -919,7 +919,7 @@ unmark	Bỏ đánh dấu
 update_my_password	Đổi mật khẩu của tôi
 update_my_pin	Đổi PIN của tôi
 duress_heading	PIN mở khóa khẩn (chỉ chủ)
-duress_help	Tùy chọn. Nếu gõ PIN này thay PIN của bạn khi mở khóa, lịch sử bán bị xóa — thực đơn, giá, bàn và nhân viên giữ lại. Chỉ khi bị ép. Lưu trống để tắt. Không trùng PIN ai.
+duress_help	Chỉ Server/Máy khách LAN ngoại tuyến — không phải tính năng đám mây. Mặc định tắt: Chủ bật một lần bằng cách lưu PIN này (Nhóm, kể cả trên quầy Máy khách). Nếu gõ PIN này lúc mở khóa thay PIN nhân viên thật, bút toán sổ trên Máy chủ bị xóa và quầy mở như Chủ nhìn bình thường — thực đơn, giá, bàn, nhân viên và cài đặt giữ lại. Không xóa lược đồ và cấu hình. Đừng trùng PIN của ai. Tắt bằng nút xóa.
 duress_pin_ph	PIN khẩn (4–12 chữ số)
 duress_confirm_ph	Gõ lại để xác nhận
 save_duress_pin	Lưu PIN khẩn

@@ -919,7 +919,7 @@ unmark	Desmarcar
 update_my_password	Alterar a minha senha
 update_my_pin	Alterar o meu PIN
 duress_heading	PIN de desbloqueio de emergência (só dono)
-duress_help	Opcional. Se este PIN for digitado no desbloqueio em vez do seu, o histórico de vendas é apagado — menu, preços, mesas e pessoal ficam. Só sob coerção. Guarde vazio para desligar. Não igual a nenhum PIN.
+duress_help	Apenas Server/Client offline em LAN — não é função na nuvem. Desligado por omissão: o proprietário liga-o uma vez ao guardar este PIN (Equipa, inclusive numa caixa Cliente). Se este PIN for escrito no desbloqueio em vez de um PIN de pessoal real, os lançamentos dos livros são apagados no Servidor e a caixa abre como Proprietário com aspeto normal — menu, preços, mesas, pessoal e definições ficam. O esquema e a config não são apagados. Nunca igual ao PIN de ninguém. Desligue com o botão limpar.
 duress_pin_ph	PIN de emergência (4–12 dígitos)
 duress_confirm_ph	Digite de novo
 save_duress_pin	Guardar PIN de emergência

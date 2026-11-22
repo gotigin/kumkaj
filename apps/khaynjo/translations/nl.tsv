@@ -919,7 +919,7 @@ unmark	Markering verwijderen
 update_my_password	Mijn wachtwoord wijzigen
 update_my_pin	Mijn PIN wijzigen
 duress_heading	Nood-ontgrendelings-PIN (alleen eigenaar)
-duress_help	Optioneel. Als deze PIN bij ontgrendelen i.p.v. de jouwe wordt ingevoerd, wordt de verkoopgeschiedenis gewist — menu, prijzen, tafels en personeel blijven. Alleen bij dwang. Leeg opslaan om uit te zetten. Niet iemands PIN.
+duress_help	Alleen offline Server/Client op LAN — geen cloudfunctie. Standaard uit: de eigenaar zet het één keer aan door deze PIN op te slaan (Team, ook op een Client-kassa). Als deze PIN bij ontgrendelen i.p.v. een echte personeels-PIN wordt getypt, worden boekingen op de Server gewist en opent de kassa als Eigenaar met normaal uiterlijk — menu, prijzen, tafels, personeel en instellingen blijven. Schema en config worden niet verwijderd. Nooit hetzelfde als iemands PIN. Uit met de wis-knop.
 duress_pin_ph	Nood-PIN (4–12 cijfers)
 duress_confirm_ph	Typ opnieuw ter bevestiging
 save_duress_pin	Nood-PIN opslaan

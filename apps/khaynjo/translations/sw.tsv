@@ -919,7 +919,7 @@ unmark	Ondoa alama
 update_my_password	Badilisha nenosiri langu
 update_my_pin	Badilisha PIN yangu
 duress_heading	PIN ya dharura ya kufungua (mmiliki pekee)
-duress_help	Hiari. Ikiwa PIN hii itaandikwa badala yako unapofungua, historia ya mauzo hufutwa — menyu, bei, meza na wafanyakazi hubaki. Tu ukilazimishwa. Hifadhi tupu kuzima. Isiwe PIN ya mtu yeyote.
+duress_help	Seva/Mteja ya LAN nje ya mtandao pekee — si kipengele cha wingu. Imezimwa kwa chaguo-msingi: Mmiliki huwasha mara moja kwa kuhifadhi PIN hii (Timu, ikiwa ni pamoja na kaunta ya Mteja). Ikiwa PIN hii itaandikwa kufungua badala ya PIN halisi ya mfanyakazi, maingizo ya vitabu kwenye Seva hufutwa na kaunta hufunguka kama Mmiliki inaonekana kawaida — menyu, bei, meza, wafanyakazi na mipangilio hubaki. Schema na usanidi hazifutwi. Kamwe isiwe sawa na PIN ya mtu yeyote. Zima kwa kitufe cha futa.
 duress_pin_ph	PIN ya dharura (tarakimu 4–12)
 duress_confirm_ph	Andika tena kuthibitisha
 save_duress_pin	Hifadhi PIN ya dharura
