@@ -16,7 +16,7 @@ the devices where you install Kirano**.
 
 - You do **not** need a Kumkaj account to use the app locally.
 - We do **not** require cloud sync for billing or day-to-day till use.
-- Optional Kumkaj Cloud (if offered later) will be separate and opt-in.
+- Optional Kumkaj Cloud (Steady / Swift / Priority / Custom via the product shop site) is separate and opt-in.
 
 ## What the app stores
 
@@ -47,7 +47,7 @@ Data leaves the device only when **you** choose to, for example:
 - Share or print a bill / receipt (system share sheet or a printer you configure)
 - Pair **extra tills on your shop LAN** (Server ↔ Client on your Wi‑Fi) —
   traffic stays on your network, not a Kumkaj cloud by default
-- Optional features you turn on later (e.g. cloud) — described when available
+- Optional cloud features you turn on — described when you open the shop site
 
 We do not sell shop data or use it for advertising.
 
