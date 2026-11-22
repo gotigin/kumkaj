@@ -588,7 +588,7 @@ currency_use_help	Bla og trykk Bruk for en hvilken som helst støttet valuta.
 day_close_help	Å registrere et dagsoppgjør lagrer dette sammendraget (og skuffavvik hvis telt) i revisjonsloggen. Det stopper ikke salg.
 expenses_word	Utgifter
 feature_access_help	Hva de kan åpne — valgfritt; jobben over setter allerede et standardvalg
-fresh_book_tabiyat	Fersk = tom katalog (legg til varer senere). Bok = type åpningslager og hvem som skylder deg under.
+fresh_book_tabiyat	Ny = tom katalog (legg til varer senere). Bok = skriv inn åpningslager og hvem som skylder deg under.
 fresh_selected	Fresh valgt — katalogen forblir tom. Trykk Ferdig når du er klar.
 gross_word	Brutto
 how_start	Hvordan vil du starte?
