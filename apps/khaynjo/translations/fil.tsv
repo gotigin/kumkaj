@@ -1189,7 +1189,7 @@ server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkata
 print_bill	I-print ang bill
 table_actions	Mga aksyon sa hapag kainan
 move_merge_table	Ilipat / pagsamahin ang hapag kainan
-move_help	Ilipat ang order ng dining table na ito sa isang libreng dining table, o pagsamahin ito sa isang tumatakbo.
+move_help	Ilipat ang order ng dining table na ito sa isang bakanteng dining table, o pagsamahin ito sa isang tumatakbong mesa.
 move_target_ph	Pangalan ng hapag-kainan (hal. D5, P2)
 approval_pin_ph	Manager PIN (kung tatanungin lang)
 move_here	Lumipat dito

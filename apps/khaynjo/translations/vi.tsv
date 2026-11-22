@@ -624,7 +624,7 @@ rollup	Tổng hợp
 save_brand	Lưu thương hiệu
 save_business_id	Lưu mã thuế & % dịch vụ
 save_business_name	Lưu tên doanh nghiệp
-save_features	Lưu tính năng nhân viên đã chọn
+save_features	Lưu
 save_features_named	Lưu {name}
 save_features_ok	Đã lưu cấu hình cho {name}
 save_names	Lưu tên

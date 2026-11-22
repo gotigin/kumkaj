@@ -624,7 +624,7 @@ rollup	รวมยอด
 save_brand	บันทึกแบรนด์
 save_business_id	บันทึกเลขภาษีและ % บริการ
 save_business_name	บันทึกชื่อธุรกิจ
-save_features	บันทึกฟีเจอร์พนักงานที่เลือก
+save_features	บันทึก
 save_features_named	บันทึก {name}
 save_features_ok	บันทึกการตั้งค่าสำหรับ {name}
 save_names	บันทึกชื่อ

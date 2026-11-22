@@ -624,7 +624,7 @@ rollup	Сводка
 save_brand	Сохранить бренд
 save_business_id	Сохранить налоговый ID и % сервиса
 save_business_name	Сохранить имя бизнеса
-save_features	Сохранить функции выбранного сотрудника
+save_features	Сохранить
 save_features_named	Сохранить {name}
 save_features_ok	Сохранена настройка для {name}
 save_names	Сохранить имена

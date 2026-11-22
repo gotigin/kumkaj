@@ -624,7 +624,7 @@ rollup	Consolidado
 save_brand	Guardar marca
 save_business_id	Guardar id fiscal y % de servicio
 save_business_name	Guardar nombre del negocio
-save_features	Guardar funciones del personal seleccionado
+save_features	Guardar
 save_features_named	Guardar {name}
 save_features_ok	Configuración guardada para {name}
 save_names	Guardar nombres

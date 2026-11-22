@@ -624,7 +624,7 @@ rollup	Özet
 save_brand	Markayı kaydet
 save_business_id	Vergi kimliği ve hizmet % kaydet
 save_business_name	İşletme adını kaydet
-save_features	Seçili personelin özelliklerini kaydet
+save_features	Kaydet
 save_features_named	{name} kaydet
 save_features_ok	{name} için ayar kaydedildi
 save_names	İsimleri kaydet

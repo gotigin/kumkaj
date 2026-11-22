@@ -1189,7 +1189,7 @@ server_host_selected	Używając {host} — wprowadź kod parowania, a następnie
 print_bill	Wydrukuj rachunek
 table_actions	Działania przy stole
 move_merge_table	Przenieś / połącz stół jadalny
-move_help	Przenieś zamówienie tego stołu do bezpłatnego stołu jadalnego lub połącz go z działającym stołem.
+move_help	Przenieś zamówienie tego stołu do wolnego stołu, lub połącz go z działającym stołem.
 move_target_ph	Nazwa stołu do jadalni (np. D5, P2)
 approval_pin_ph	Menedżer PIN (tylko jeśli zostaniesz o to poproszony)
 move_here	Przenieś się tutaj

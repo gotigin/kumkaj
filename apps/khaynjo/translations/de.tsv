@@ -624,7 +624,7 @@ rollup	Zusammenfassung
 save_brand	Marke speichern
 save_business_id	Steuer-ID & Service-% speichern
 save_business_name	Geschäftsnamen speichern
-save_features	Funktionen für gewähltes Personal speichern
+save_features	Speichern
 save_features_named	{name} speichern
 save_features_ok	Speicherte Setup für {name}
 save_names	Namen speichern

@@ -624,7 +624,7 @@ rollup	Regroupé
 save_brand	Enregistrer la marque
 save_business_id	Enregistrer l'id fiscal et le % de service
 save_business_name	Enregistrer le nom de l'entreprise
-save_features	Enregistrer les fonctions du personnel sélectionné
+save_features	Enregistrer
 save_features_named	Enregistrer {name}
 save_features_ok	Configuration enregistrée pour {name}
 save_names	Enregistrer les noms

@@ -624,7 +624,7 @@ rollup	集計
 save_brand	ブランドを保存
 save_business_id	事業者IDとサービス%を保存
 save_business_name	事業者名を保存
-save_features	選択したスタッフの機能を保存
+save_features	保存
 save_features_named	{name} を保存
 save_features_ok	{name} の設定を保存しました
 save_names	名前を保存

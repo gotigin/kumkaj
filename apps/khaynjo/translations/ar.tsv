@@ -624,7 +624,7 @@ rollup	تجميع
 save_brand	احفظ العلامة
 save_business_id	احفظ الرقم الضريبي ونسبة الخدمة
 save_business_name	احفظ اسم النشاط
-save_features	احفظ ميزات الموظف المحدد
+save_features	حفظ
 save_features_named	حفظ {name}
 save_features_ok	حفظ إعدادات {name}
 save_names	احفظ الأسماء

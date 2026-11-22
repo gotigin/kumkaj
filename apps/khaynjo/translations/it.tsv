@@ -624,7 +624,7 @@ rollup	Riepilogo
 save_brand	Salva marchio
 save_business_id	Salva id fiscale e % servizio
 save_business_name	Salva nome attività
-save_features	Salva funzioni personale selezionato
+save_features	Salva
 save_features_named	Salva {name}
 save_features_ok	Impostazioni salvate per {name}
 save_names	Salva nomi

@@ -624,7 +624,7 @@ rollup	彙總
 save_brand	保存品牌
 save_business_id	保存企業稅號和服務%
 save_business_name	保存企業名稱
-save_features	保存所選員工的功能
+save_features	保存
 save_features_named	保存 {name}
 save_features_ok	已保存 {name} 的設置
 save_names	保存名稱
