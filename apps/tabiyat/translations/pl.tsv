@@ -1,6 +1,6 @@
 # Polish — Polski (pl). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Kod kreskowy / EAN
-composition_ph	Sól / skład (można przeszukiwać)
+composition_ph	Sól (chem.) / skład (wyszukiwalne)
 schedule_h_off	Harmonogram H — wyłączony (flaga właściciela)
 schedule_h_on	Harmonogram H — włączony (flaga właściciela)
 rx_expected_off	Oczekiwano odbioru Rx — wyłączone (flaga właściciela)

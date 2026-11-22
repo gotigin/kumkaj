@@ -1,6 +1,6 @@
 # Italian — Italiano (it). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Codice a barre / EAN
-composition_ph	Sale / composizione (ricercabile)
+composition_ph	Sale chimico / composizione (ricercabile)
 schedule_h_off	Schedule H — no (segno del titolare)
 schedule_h_on	Schedule H — sì (segno del titolare)
 rx_expected_off	Rx attesa — no (segno del titolare)

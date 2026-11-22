@@ -1,6 +1,6 @@
 # Catalan — Català (ca). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Codi de barres / EAN
-composition_ph	Sal / composició (cercable)
+composition_ph	Sal (química) / composició (cercable)
 schedule_h_off	Programa H: desactivat (bandera del propietari)
 schedule_h_on	Horari H: activat (bandera del propietari)
 rx_expected_off	S'esperava recepció: desactivada (bandera del propietari)

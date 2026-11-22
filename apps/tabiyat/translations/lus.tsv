@@ -1,6 +1,6 @@
 # Mizo — Mizo ṭawng (lus). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Barcode / EAN hmanga siam a ni
-composition_ph	Salt / composition ( zawn theih) 1.1.
+composition_ph	Salt / composition (zawn theih)
 schedule_h_off	Schedule H — off (a neitu flag) 1.1.
 schedule_h_on	Schedule H — on (neitu flag) 1.1.
 rx_expected_off	Rx beisei — off (neitu flag) .
