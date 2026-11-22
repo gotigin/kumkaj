@@ -932,7 +932,7 @@ upi_amount_ph	UPI jumlah
 void	Batal
 write_off_ap	Hapus kira AP
 write_off_heading	Hapus kira (jelas tanpa bayaran)
-write_off_nil	Hapus kira / tiada baki
+write_off_nil	Penghapusan / tiada baki
 your_brand	Jenama anda (dalam apl)
 your_categories	Kategori anda
 account_kind	Jenis akaun (ketik satu)

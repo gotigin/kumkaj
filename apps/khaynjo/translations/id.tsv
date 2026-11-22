@@ -932,7 +932,7 @@ upi_amount_ph	Jumlah UPI
 void	Batalkan
 write_off_ap	Penghapusan piutang AP
 write_off_heading	Hapus buku (selesaikan tanpa bayar)
-write_off_nil	Hapus buku / saldo nol
+write_off_nil	Penghapusan / saldo nol
 your_brand	Merek Anda (di aplikasi)
 your_categories	Kategori Anda
 account_kind	Jenis akun (ketuk satu)

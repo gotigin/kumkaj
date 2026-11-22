@@ -155,7 +155,7 @@ kot_sent_hint	Laaste KOT is na {kitchens} gestuur. Tik om geregte vir die volgen
 kot_sent_printing	KOT na {kitchens} gestuur — druk
 kot_sent_not_printed	KOT na {kitchens} gestuur maar NIE gedruk nie: {why}. Vertel die kombuis, dan reg die drukker en druk dit weer.
 kot_sent_screen	KOT vir {kitchens}
-kot_queued_shop	KOT vir {place} → {kitchens} gespaar; die winkeltoestel druk dit
+kot_queued_shop	KOT vir {place} → {kitchens} gestoor; die winkeltoestel druk dit
 kot_job_label	KOT vir {place} → {kitchens}
 kot_job_reached	KOT vir {place} bereik {kitchens}
 kot_unassigned	Kombuis (geen stasie nie)
@@ -498,7 +498,7 @@ floor_layout_save	Slaai opstelling op
 floor_layout_open	Open tafel
 floor_layout_edit	Bewerk opstelling
 floor_layout_pick	Tik 'n tafel om sy opstelling te bewerk
-floor_layout_saved	Tafelopstelling gespaar
+floor_layout_saved	Tafelopstelling gestoor
 floor_layout_nudge_left	← 20
 floor_layout_nudge_right	→ 20
 floor_layout_nudge_up	↑ 20
@@ -794,9 +794,9 @@ route_default_kitchen	Geen stasie (onbeheerde geregte)
 route_kot_station	Keukin
 route_dont_print	Geen drukker
 stations_heading	Keukinstasies
-stations_help	Voeg keukinstasies by vir geregte en KOT. Bevestig aan elke stasie sy drukkers (vind onder Instellings → Drukkers), stel prioriteit in, en kies Eerste wat werk of Druk op almal. Veranderinge word gespaar terwyl jy gaan — geen Opslaan-knoop nie.
+stations_help	Voeg keukinstasies by vir geregte en KOT. Bevestig aan elke stasie sy drukkers (vind onder Instellings → Drukkers), stel prioriteit in, en kies Eerste wat werk of Druk op almal. Veranderinge word gestoor terwyl jy gaan — geen Opslaan-knoop nie.
 station_print_heading	Drukkers vir hierdie stasie
-station_print_help	Kies 'n stasie, bevestig dan een of meer drukkers. ↑↓ stel die probeerorde in. Eerste wat werk stop na die eerste sukses; Druk op almal stuur na elke aangeslote drukker. Elke verandering word onmiddellik gespaar.
+station_print_help	Kies 'n stasie, bevestig dan een of meer drukkers. ↑↓ stel die probeerorde in. Eerste wat werk stop na die eerste sukses; Druk op almal stuur na elke aangeslote drukker. Elke verandering word onmiddellik gestoor.
 station_print_pick_ph	Stasie om drukkers te stel
 station_print_pick_first	Kies eers 'n keukinstasie
 station_print_editing	Bewerk drukkers vir "{name}"
@@ -818,7 +818,7 @@ printer_paper_help	Gerapporteer is die papier waarop hierdie drukker se drywer g
 preview_help	Hierdie strokie soos dit druk op die drukker wat hieronder gekies is, op ware grootte op sy virtuele papier. Wit is waar dit druk, grys papier is buite die drukker se bereik, en vervaagde ink word afgesny. Die nege blokkies is die papier: tik waar die strokie moet sit. 'n Lang strokie gaan oor na meer bladsye. Om 'n drukker te kies verander net die voorskou.
 job_layout	Opstelling
 job_delivery	Hoe die taak gestuur word
-job_delivery_help	OS-dokument, ruwe bytes of ESC/POS. Die rekening en die keukintiket behou elkeen sy eie. Beide taak kan na enige drukker gaan wat “Soek drukkers” gespaar het.
+job_delivery_help	OS-dokument, ruwe bytes of ESC/POS. Die rekening en die keukintiket behou elkeen sy eie. Beide taak kan na enige drukker gaan wat “Soek drukkers” gestoor het.
 station_vp_attached	Drukker aangesluit
 station_vp_detached	Drukker verwyder van stasie
 station_print_summary	{mode} · {n} drukker(s)
@@ -852,14 +852,14 @@ batch_cancel_title	Kansellering van gemerkte geregte – een rede, een kansellas
 batch_cancel_ok	{n} gereg(te) gekanselleer · {slips} kansellasie-oorklee(f) → {kitchens}
 batch_cancel_ok_noprint	{n} gereg(te) gekanselleer – KOT outo-druk is af, dus geen kansellasie-oorkleef nie
 no_printer_kitchen_station	Geen drukker vir daardie kombuisstasie – Kombuis → Kombuisstasies → Drukkers vir hierdie stasie
-printers_saved	Opspaar
+printers_saved	Gestoor
 test_page_sent	Testblad gestuur – kyk na die drukker
 test_page_sent_one	Testblad gestuur na {name} – kyk na daardie drukker
 printers_found	Vind {n}: {list}
 printers_find_synced	Vind {n} — {new} nuut
-printer_on_device	opgespaar
+printer_on_device	opgestoor
 printer_already_added	reeds bygevoeg
-printer_already_saved	Reeds opgespaar: {name}
+printer_already_saved	Reeds opgestoor: {name}
 find_printers	Soek drukkers
 printers_looking	Soek…
 saving_printer	Voeg drukker by…
