@@ -460,7 +460,7 @@ optional_login_heading	Accesso facoltativo
 rights_heading	Permessi
 ops_panel	Ops locali
 crm_heading	Ospiti e messaggi
-crm_help	Compleanni e fedeltà: coda SMS/WhatsApp. {name}, {points}. Il titolare invia.
+crm_help	Compleanni, fedeltà, inattivi e top ospiti — coda di intent SMS o WhatsApp. Usa {name} e {points} nel messaggio. Il titolare tocca invia; niente parte da solo.
 crm_queue_sms	Coda SMS
 crm_queue_wa	Coda WhatsApp
 crm_seg_bday_week	Compleanni sett.

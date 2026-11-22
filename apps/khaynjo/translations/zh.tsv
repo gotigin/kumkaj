@@ -460,7 +460,7 @@ optional_login_heading	可选登录
 rights_heading	权限
 ops_panel	本地运营
 crm_heading	宾客与消息
-crm_help	生日与积分：短信/WhatsApp队列。{name}、{points}。店主发送。
+crm_help	生日、积分、不活跃与顶级客人——排队 SMS 或 WhatsApp 意图。消息里用 {name} 和 {points}。店主点发送；不会自动群发。
 crm_queue_sms	排队短信
 crm_queue_wa	排队 WhatsApp
 crm_seg_bday_week	本周生日
@@ -1222,7 +1222,7 @@ kot_field_on	显示
 kot_field_off	隐藏
 kot_field_size	字号
 kot_weight_light	细
-bill_kot_panel_help	账单内容与厨房小票字体。上方的内容宽度同时是账单和厨房小票的宽度。
+bill_kot_panel_help	账单与厨房小票版式，各自有内容宽度。账单收银员是开单或结清的人；KOT 服务员是发送该厨房票的人——完整订单故事留在账簿。
 std_size_ph	例如 18, 20, 26…
 kot_show_shop	店名
 kot_hide_shop	隐藏店名
@@ -1280,7 +1280,7 @@ test_bill_format	测试账单
 test_bill_sent	账单预览已发送
 test_print_no_printer	该任务没有打印机 — 在此屏幕选择一个
 std_print	账单字号
-std_print_help	标准纵向与横向账单字号（热敏 KOT 单独设置）。两种方向相同字号。
+std_print_help	操作系统/文档打印机上 Standard Portrait 与 Landscape 账单作业的字号（输入磅值——不是小/中/大）。两种方向相同。厨房小票字号在 KOT 页签。
 std_size_s	小
 std_size_m	标准
 std_size_l	大

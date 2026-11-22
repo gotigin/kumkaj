@@ -460,7 +460,7 @@ optional_login_heading	Optionale Anmeldung
 rights_heading	Rechte
 ops_panel	Lokale Ops
 crm_heading	Gäste & Nachrichten
-crm_help	Geburtstage & Treue: SMS/WhatsApp-Warteschlange. {name}, {points}. Inhaber sendet.
+crm_help	Geburtstage, Treue, Inaktive und Top-Gäste — Warteschlange für SMS- oder WhatsApp-Intents. Nutzen Sie {name} und {points} in der Nachricht. Der Inhaber tippt Senden; nichts geht von allein raus.
 crm_queue_sms	SMS-Warteschlange
 crm_queue_wa	WhatsApp-Warteschlange
 crm_seg_bday_week	Geburtstage Woche
@@ -1222,7 +1222,7 @@ kot_field_on	anzeigen
 kot_field_off	ausblenden
 kot_field_size	Schriftgröße
 kot_weight_light	Leicht
-bill_kot_panel_help	Rechnungsinhalt und Küchenbon-Typografie. Die Inhaltsbreite oben gilt für Rechnung und Küchenbon.
+bill_kot_panel_help	Layout für Rechnung und Küchenbon, jeweils mit eigener Inhaltsbreite. Rechnungs-Kassierer ist, wer die Rechnung ausstellte oder abschloss; KOT-Kellner, wer den Küchenbon sandte — die volle Bestellgeschichte bleibt in den Büchern.
 std_size_ph	z. B. 18, 20, 26…
 kot_show_shop	Geschäftsname
 kot_hide_shop	Geschäft ausblenden

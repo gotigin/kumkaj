@@ -460,7 +460,7 @@ optional_login_heading	Inicio de sesión opcional
 rights_heading	Permisos
 ops_panel	Ops locales
 crm_heading	Huéspedes y mensajes
-crm_help	Cumpleaños y lealtad: cola SMS/WhatsApp. {name}, {points}. El dueño envía.
+crm_help	Cumpleaños, fidelidad, inactivos y mejores clientes — cola de intents SMS o WhatsApp. Use {name} y {points} en el mensaje. El propietario toca enviar; nada se dispara solo.
 crm_queue_sms	Cola SMS
 crm_queue_wa	Cola WhatsApp
 crm_seg_bday_week	Cumpleaños semana

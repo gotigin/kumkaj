@@ -460,7 +460,7 @@ optional_login_heading	Đăng nhập tùy chọn
 rights_heading	Quyền
 ops_panel	Vận hành cục bộ
 crm_heading	Khách & tin nhắn
-crm_help	Sinh nhật & điểm — hàng đợi SMS/WhatsApp. {name}, {points}. Chủ gửi.
+crm_help	Sinh nhật, trung thành, không hoạt động và khách top — hàng đợi intent SMS hoặc WhatsApp. Dùng {name} và {points} trong tin. Chủ chạm gửi; không tự bắn.
 crm_queue_sms	Xếp SMS
 crm_queue_wa	Xếp WhatsApp
 crm_seg_bday_week	Sinh nhật tuần
@@ -1222,7 +1222,7 @@ kot_field_on	hiện
 kot_field_off	ẩn
 kot_field_size	Cỡ chữ
 kot_weight_light	Mảnh
-bill_kot_panel_help	Nội dung hóa đơn và chữ phiếu bếp. Độ rộng nội dung ở trên là độ rộng của cả hóa đơn và phiếu bếp.
+bill_kot_panel_help	Bố cục hóa đơn và phiếu bếp, mỗi cái có bề rộng nội dung riêng. Thu ngân hóa đơn là người phát hành hoặc tất toán; phục vụ KOT là người gửi phiếu bếp đó — câu chuyện đơn đầy đủ nằm trong sổ.
 std_size_ph	vd. 18, 20, 26…
 kot_show_shop	Tên cửa hàng
 kot_hide_shop	Ẩn cửa hàng
@@ -1280,7 +1280,7 @@ test_bill_format	Kiểm tra hóa đơn
 test_bill_sent	Xem trước hóa đơn đã được gửi
 test_print_no_printer	Không có máy in cho công việc đó — chọn một cái trên màn hình này
 std_print	Cỡ in hóa đơn
-std_print_help	Cỡ chữ cho hóa đơn Standard Dọc và Ngang (KOT nhiệt riêng). Cùng cỡ ở cả hai hướng.
+std_print_help	Cỡ chữ cho lệnh in hóa đơn Standard Portrait và Landscape trên máy in OS/tài liệu (nhập point — không phải Small/Normal/Large). Cùng cỡ cả hai hướng. Cỡ phiếu bếp ở tab KOT.
 std_size_s	Nhỏ
 std_size_m	Thường
 std_size_l	Lớn

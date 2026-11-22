@@ -460,7 +460,7 @@ optional_login_heading	선택 로그인
 rights_heading	권한
 ops_panel	로컬 운영
 crm_heading	손님과 메시지
-crm_help	생일·로열티 — SMS/WhatsApp 대기열. {name}, {points}. 사장이 보냄.
+crm_help	생일·로열티·휴면·상위 손님 — SMS 또는 WhatsApp 인텐트 대기열. 메시지에 {name}과 {points}를 쓰세요. 사장이 보내기를 누릅니다. 자동 대량 발송 없음.
 crm_queue_sms	SMS 대기열
 crm_queue_wa	WhatsApp 대기열
 crm_seg_bday_week	이번 주 생일
@@ -1222,7 +1222,7 @@ kot_field_on	표시
 kot_field_off	숨김
 kot_field_size	글꼴 크기
 kot_weight_light	얇게
-bill_kot_panel_help	영수증 내용과 주방 전표 서체. 위의 내용 폭이 영수증과 주방 전표의 폭입니다.
+bill_kot_panel_help	영수증과 주방 전표 레이아웃, 각각 내용 폭이 있습니다. 영수증 캐셔는 발행·정산한 사람, KOT 웨이터는 그 주방표를 보낸 사람 — 전체 주문 이야기는 장부에 남습니다.
 std_size_ph	예: 18, 20, 26…
 kot_show_shop	매장 이름
 kot_hide_shop	매장 숨기기
@@ -1280,7 +1280,7 @@ test_bill_format	영수증 테스트
 test_bill_sent	영수증 미리보기 전송됨
 test_print_no_printer	해당 작업용 프린터 없음 — 이 화면에서 하나 선택하세요
 std_print	영수증 글자 크기
-std_print_help	표준 세로·가로 영수증 글자 크기(열전사 KOT는 별도). 두 방향 모두 같은 크기.
+std_print_help	OS/문서 프린터의 Standard Portrait·Landscape 영수증 작업 글자 크기(포인트 입력 — Small/Normal/Large 아님). 두 방향 모두 같은 크기. 주방 전표 크기는 KOT 탭.
 std_size_s	작게
 std_size_m	보통
 std_size_l	크게

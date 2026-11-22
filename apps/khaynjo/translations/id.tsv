@@ -460,7 +460,7 @@ optional_login_heading	Login opsional
 rights_heading	Hak akses
 ops_panel	Ops lokal
 crm_heading	Tamu & pesan
-crm_help	Ulang tahun & loyalitas — antrean SMS/WhatsApp. {name}, {points}. Pemilik mengirim.
+crm_help	Ulang tahun, loyalitas, tidak aktif, dan tamu teratas — antrean intent SMS atau WhatsApp. Pakai {name} dan {points} di pesan. Pemilik mengetuk kirim; tidak ada yang meledak sendiri.
 crm_queue_sms	Antre SMS
 crm_queue_wa	Antre WhatsApp
 crm_seg_bday_week	Ultah minggu ini
@@ -1222,7 +1222,7 @@ kot_field_on	tampil
 kot_field_off	sembunyi
 kot_field_size	Ukuran font
 kot_weight_light	Tipis
-bill_kot_panel_help	Isi tagihan dan tipografi slip dapur. Lebar konten di atas adalah lebar tagihan dan slip dapur.
+bill_kot_panel_help	Tata letak tagihan dan slip dapur, masing-masing lebar konten sendiri. Kasir Tagihan adalah yang menerbitkan atau melunasi tagihan; Pelayan KOT yang mengirim tiket dapur itu — cerita pesanan lengkap tetap di buku.
 std_size_ph	mis. 18, 20, 26…
 kot_show_shop	Nama toko
 kot_hide_shop	Sembunyikan toko

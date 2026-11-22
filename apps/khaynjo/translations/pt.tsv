@@ -460,7 +460,7 @@ optional_login_heading	Início de sessão opcional
 rights_heading	Permissões
 ops_panel	Ops locais
 crm_heading	Hóspedes e mensagens
-crm_help	Aniversários e fidelidade: fila SMS/WhatsApp. {name}, {points}. O dono envia.
+crm_help	Aniversários, fidelidade, inativos e melhores clientes — fila de intents SMS ou WhatsApp. Use {name} e {points} na mensagem. O dono toca em enviar; nada dispara sozinho.
 crm_queue_sms	Fila SMS
 crm_queue_wa	Fila WhatsApp
 crm_seg_bday_week	Aniv. semana

@@ -460,7 +460,7 @@ optional_login_heading	เข้าสู่ระบบแบบเลือก
 rights_heading	สิทธิ์
 ops_panel	งานในร้าน
 crm_heading	แขกและข้อความ
-crm_help	วันเกิดและสะสมแต้ม — คิว SMS/WhatsApp {name} {points} เจ้าของส่ง
+crm_help	วันเกิด สะสมแต้ม ไม่ได้มา และลูกค้าท็อป — คิว intent SMS หรือ WhatsApp ใช้ {name} และ {points} ในข้อความ เจ้าของแตะส่ง ไม่ยิงเอง
 crm_queue_sms	คิว SMS
 crm_queue_wa	คิว WhatsApp
 crm_seg_bday_week	วันเกิดสัปดาห์นี้
@@ -1222,7 +1222,7 @@ kot_field_on	แสดง
 kot_field_off	ซ่อน
 kot_field_size	ขนาดฟอนต์
 kot_weight_light	บาง
-bill_kot_panel_help	เนื้อหาบิลและตัวอักษรสลิปครัว ความกว้างเนื้อหาด้านบนคือความกว้างของทั้งบิลและสลิปครัว
+bill_kot_panel_help	เลย์เอาต์บิลและสลิปครัว แต่ละอันมีความกว้างเนื้อหาเอง แคชเชียร์บิลคือผู้ออกหรือเคลียร์บิล; พนักงานเสิร์ฟ KOT คือผู้ส่งตั๋วครัวนั้น — เรื่องออเดอร์เต็มอยู่ในสมุด
 std_size_ph	เช่น 18, 20, 26…
 kot_show_shop	ชื่อร้าน
 kot_hide_shop	ซ่อนร้าน
@@ -1280,7 +1280,7 @@ test_bill_format	ทดสอบใบแจ้งหนี้
 test_bill_sent	ส่งตัวอย่างใบแจ้งหนี้แล้ว
 test_print_no_printer	ไม่มีเครื่องพิมพ์สำหรับงานนี้ — เลือกหนึ่งรายการบนหน้าจอนี้
 std_print	ขนาดพิมพ์บิล
-std_print_help	ขนาดตัวอักษรสำหรับบิล Standard แนวตั้งและแนวนอน (KOT ความร้อนแยก). ขนาดเดียวกันทั้งสองทิศทาง
+std_print_help	ขนาดตัวอักษรงานพิมพ์บิล Standard Portrait และ Landscape บนเครื่องพิมพ์ OS/เอกสาร (ใส่พอยต์ — ไม่ใช่ Small/Normal/Large) ขนาดเดียวกันทั้งสองทิศ ขนาดสลิปครัวอยู่แท็บ KOT
 std_size_s	เล็ก
 std_size_m	ปกติ
 std_size_l	ใหญ่

@@ -460,7 +460,7 @@ optional_login_heading	Kuingia kwa hiari
 rights_heading	Haki
 ops_panel	Operesheni za ndani
 crm_heading	Wageni na ujumbe
-crm_help	Siku ya kuzaliwa na uaminifu — foleni SMS/WhatsApp. {name}, {points}. Mmiliki hutuma.
+crm_help	Siku ya kuzaliwa, uaminifu, wasiohai na wageni wakuu — foleni ya nia za SMS au WhatsApp. Tumia {name} na {points} kwenye ujumbe. Mmiliki hugusa tuma; hakuna kinachojipiga chenyewe.
 crm_queue_sms	Foleni SMS
 crm_queue_wa	Foleni WhatsApp
 crm_seg_bday_week	Siku kuzaliwa wiki

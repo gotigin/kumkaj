@@ -460,7 +460,7 @@ optional_login_heading	Необязательный вход
 rights_heading	Права
 ops_panel	Локальные операции
 crm_heading	Гости и сообщения
-crm_help	Дни рождения и лояльность — очередь SMS/WhatsApp. {name}, {points}. Владелец шлёт.
+crm_help	Дни рождения, лояльность, неактивные и лучшие гости — очередь SMS или WhatsApp intents. В сообщении {name} и {points}. Владелец нажимает отправить; ничего само не рассылается.
 crm_queue_sms	Очередь SMS
 crm_queue_wa	Очередь WhatsApp
 crm_seg_bday_week	ДР на неделе

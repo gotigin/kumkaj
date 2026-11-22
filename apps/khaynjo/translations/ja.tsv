@@ -460,7 +460,7 @@ optional_login_heading	任意のログイン
 rights_heading	権限
 ops_panel	ローカル業務
 crm_heading	ゲストとメッセージ
-crm_help	誕生日・ポイント。SMS/WhatsApp待ち。{name}・{points}。店主が送信。
+crm_help	誕生日・ロイヤルティ・休眠・上位ゲスト — SMS または WhatsApp の intent 待ち。メッセージに {name} と {points}。オーナーが送信をタップ。勝手に一斉送信しません。
 crm_queue_sms	SMSをキュー
 crm_queue_wa	WhatsAppをキュー
 crm_seg_bday_week	今週の誕生日
@@ -1222,7 +1222,7 @@ kot_field_on	表示
 kot_field_off	非表示
 kot_field_size	フォントサイズ
 kot_weight_light	細
-bill_kot_panel_help	伝票内容と厨房伝票の体裁。上の内容幅が、伝票と厨房伝票の両方の幅です。
+bill_kot_panel_help	伝票と厨房伝票のレイアウト。それぞれ内容幅あり。伝票のキャッシャーは発行／精算した人、KOT ウェイターはその厨房伝票を送った人 — 注文の全経緯は帳簿に残ります。
 std_size_ph	例: 18, 20, 26…
 kot_show_shop	店名
 kot_hide_shop	店名を隠す
@@ -1280,7 +1280,7 @@ test_bill_format	請求書テスト
 test_bill_sent	請求書のプレビューが送信されました
 test_print_no_printer	そのジョブ用のプリンターがありません — この画面で一つ選択してください
 std_print	伝票の文字サイズ
-std_print_help	標準タテ・ヨコ伝票の文字サイズ（サーマルKOTは別）。両向きで同じサイズ。
+std_print_help	OS／ドキュメントプリンターでの Standard Portrait・Landscape 伝票ジョブのフォントサイズ（ポイントで入力 — Small/Normal/Large ではない）。向きが違っても同じサイズ。厨房伝票サイズは KOT タブ。
 std_size_s	小
 std_size_m	標準
 std_size_l	大

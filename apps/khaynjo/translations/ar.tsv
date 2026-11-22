@@ -460,7 +460,7 @@ optional_login_heading	تسجيل دخول اختياري
 rights_heading	الصلاحيات
 ops_panel	العمليات المحلية
 crm_heading	الضيوف والرسائل
-crm_help	أعياد الميلاد والولاء — طابور SMS/WhatsApp. {name} و{points}. المالك يرسل.
+crm_help	أعياد الميلاد والولاء وغير النشطين وكبار الضيوف — طابور نوايا SMS أو WhatsApp. استخدم {name} و{points} في الرسالة. المالك يضغط إرسال؛ لا يُبث شيء تلقائيًا.
 crm_queue_sms	طابور SMS
 crm_queue_wa	طابور WhatsApp
 crm_seg_bday_week	أعياد هذا الأسبوع
@@ -1222,7 +1222,7 @@ kot_field_on	إظهار
 kot_field_off	إخفاء
 kot_field_size	حجم الخط
 kot_weight_light	رفيع
-bill_kot_panel_help	محتوى الفاتورة وطباعة إيصالات المطبخ. عرض المحتوى أعلاه هو عرض الفاتورة وإيصال المطبخ معًا.
+bill_kot_panel_help	تخطيط الفاتورة وإيصال المطبخ، لكل منهما عرض محتوى خاص. أمين صندوق الفاتورة من أصدرها أو سوّاها؛ نادل KOT من أرسل تذكرة المطبخ تلك — قصة الطلب الكاملة تبقى في الدفاتر.
 std_size_ph	مثال 18, 20, 26…
 kot_show_shop	اسم المحل
 kot_hide_shop	إخفاء المحل
@@ -1280,7 +1280,7 @@ test_bill_format	اختبار الفاتورة
 test_bill_sent	تم إرسال معاينة الفاتورة
 test_print_no_printer	لا يوجد طابعة لهذا الطلب — اختر واحدة من هذه الشاشة
 std_print	حجم طباعة الفاتورة
-std_print_help	حجم الخط لفواتير Standard الطولية والعرضية (KOT الحراري منفصل). نفس الحجم في الاتجاهين.
+std_print_help	حجم الخط لمهام فاتورة Standard Portrait وLandscape على طابعات نظام التشغيل / المستندات (أدخل النقاط — لا صغير/عادي/كبير). نفس الحجم في الاتجاهين. أحجام إيصالات المطبخ في تبويب KOT.
 std_size_s	صغير
 std_size_m	عادي
 std_size_l	كبير

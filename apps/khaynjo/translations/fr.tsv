@@ -460,7 +460,7 @@ optional_login_heading	Connexion facultative
 rights_heading	Droits
 ops_panel	Ops locales
 crm_heading	Invités et messages
-crm_help	Anniversaires et fidélité : file SMS/WhatsApp. {name}, {points}. Le patron envoie.
+crm_help	Anniversaires, fidélité, inactifs et meilleurs clients — file d’intents SMS ou WhatsApp. Utilisez {name} et {points} dans le message. Le propriétaire appuie sur envoyer ; rien ne part tout seul.
 crm_queue_sms	File SMS
 crm_queue_wa	File WhatsApp
 crm_seg_bday_week	Anniv. semaine

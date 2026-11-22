@@ -460,7 +460,7 @@ optional_login_heading	Optioneel inloggen
 rights_heading	Rechten
 ops_panel	Lokale ops
 crm_heading	Gasten en berichten
-crm_help	Verjaardagen & loyaliteit — SMS/WhatsApp-wachtrij. {name}, {points}. Eigenaar stuurt.
+crm_help	Verjaardagen, loyaliteit, inactieven en topgasten — wachtrij voor SMS- of WhatsApp-intents. Gebruik {name} en {points} in het bericht. De eigenaar tikt verzenden; niets knalt vanzelf.
 crm_queue_sms	SMS-wachtrij
 crm_queue_wa	WhatsApp-wachtrij
 crm_seg_bday_week	Verjaardagen week
@@ -1222,7 +1222,7 @@ kot_field_on	tonen
 kot_field_off	verberg
 kot_field_size	Lettergrootte
 kot_weight_light	Licht
-bill_kot_panel_help	Rekeninginhoud en keukenbon-typografie. De inhoudsbreedte hierboven geldt voor de rekening en de keukenbon.
+bill_kot_panel_help	Opmaak voor rekening en keukenbon, elk met eigen inhoudsbreedte. Rekening-kassier is wie de rekening uitgaf of afrekende; KOT-ober wie dat keukenticket stuurde — het volle bestelverhaal blijft in de boeken.
 std_size_ph	bijv. 18, 20, 26…
 kot_show_shop	Naam zaak
 kot_hide_shop	Zaak verbergen
