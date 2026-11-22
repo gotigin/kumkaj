@@ -19,7 +19,7 @@ board_cols_fmt	{n} kol.
 board_summary_fmt	{total} kort · {drafts} kladder · {booked} booket
 board_card_no_charges	Ingen gebyrer endnu
 board_card_charges	gebyrer
-board_card_booked	Booking
+board_card_booked	Booket
 board_draft_gone	Den kladde er ikke længere på «Tavle»
 board_draft_closed	Den kladde er allerede afsluttet eller kasseret
 board_discard	Kassér

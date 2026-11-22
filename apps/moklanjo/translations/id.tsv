@@ -19,7 +19,7 @@ board_cols_fmt	{n} kol
 board_summary_fmt	{total} kartu · {drafts} draf · {booked} terdaftar
 board_card_no_charges	Belum ada biaya
 board_card_charges	biaya
-board_card_booked	Booking
+board_card_booked	Terdaftar
 board_draft_gone	Draf itu sudah tidak ada di «Papan»
 board_draft_closed	Draf itu sudah selesai atau dibuang
 board_discard	Buang
