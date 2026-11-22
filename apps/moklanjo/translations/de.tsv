@@ -875,7 +875,7 @@ credit_khata_amount_ph	Kredit- / Kontobetrag
 credit_limit_ph	Kreditlimit (0 = keines)
 dim_unit_code_ph	Maßeinheitscode (cm)
 divisor_ph	Volumendivisor (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Zuschlag / kg
 first_amount_ph	Erster Betrag
 first_kg_ph	Erstes kg (Staffel)
 from_code_ph	Von Code (Sack)

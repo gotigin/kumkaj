@@ -875,7 +875,7 @@ credit_khata_amount_ph	Krediet- / rekeningbedrag
 credit_limit_ph	Kredietlimiet (0 = geen)
 dim_unit_code_ph	Code dimensie-eenheid (cm)
 divisor_ph	Volumedeler (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Toeslag / kg
 first_amount_ph	Eerste bedrag
 first_kg_ph	Eerste kg (staffel)
 from_code_ph	Van code (zak)

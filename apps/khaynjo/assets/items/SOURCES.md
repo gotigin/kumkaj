@@ -593,3 +593,6 @@ need the author and licence named.
 | `sides-dips/hollandaise-sauce.webp` | Author is Mark James Miller (not J.P.Lon) |
 | `japanese/takoyaki.webp` | Author is sayo ts (not Ocdp) |
 | `street-food-chaat/vada-pav.webp` | Author is Rutvi Mistry (not Rameshng) |
+
+## L14 indo pass5 2026-11-22T14:55:25Z
+- indo-chinese/dragon-chicken.webp ← crop remove "DRAGON CHICKEN" display-case label from prior Commons asset

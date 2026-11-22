@@ -875,7 +875,7 @@ credit_khata_amount_ph	Kredit / khata belopp
 credit_limit_ph	Kreditgräns (0 = ingen)
 dim_unit_code_ph	Måttenhetskod (cm)
 divisor_ph	Volumetrisk divisor (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Tillägg / kg
 first_amount_ph	Första beloppet
 first_kg_ph	Första kg (platta)
 from_code_ph	Från kod (påse)

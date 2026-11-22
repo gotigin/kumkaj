@@ -875,7 +875,7 @@ credit_khata_amount_ph	Import de crèdit / khata
 credit_limit_ph	Límit de crèdit (0 = cap)
 dim_unit_code_ph	Codi d'unitat de dimensió (cm)
 divisor_ph	Divisor volumètric (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Suplement / kg
 first_amount_ph	Primer import
 first_kg_ph	Primer kg (losa)
 from_code_ph	Codi d'origen (sac)

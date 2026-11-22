@@ -875,7 +875,7 @@ credit_khata_amount_ph	Valor a crédito / conta
 credit_limit_ph	Limite de crédito (0 = nenhum)
 dim_unit_code_ph	Código de unidade de dimensão (cm)
 divisor_ph	Divisor volumétrico (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Suplemento / kg
 first_amount_ph	Primeiro valor
 first_kg_ph	Primeiro kg (faixa)
 from_code_ph	Código de (saco)

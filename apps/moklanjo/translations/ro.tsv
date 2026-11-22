@@ -875,7 +875,7 @@ credit_khata_amount_ph	Credit / sumă pe cont
 credit_limit_ph	Limită de credit (0 = niciuna)
 dim_unit_code_ph	Cod unitate de dimensiune (cm)
 divisor_ph	Divizor volumetric (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Supliment / kg
 first_amount_ph	Prima sumă
 first_kg_ph	Primul kg (tranșă)
 from_code_ph	Din cod (sac)

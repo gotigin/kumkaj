@@ -875,7 +875,7 @@ credit_khata_amount_ph	Suma kreditu / kreditnej knihy
 credit_limit_ph	Úverový limit (0 = žiadny)
 dim_unit_code_ph	Kód jednotky rozmeru (cm)
 divisor_ph	Objemový deliteľ (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Príplatok / kg
 first_amount_ph	Prvá suma
 first_kg_ph	Prvý kg (doska)
 from_code_ph	Z kódu (taška)

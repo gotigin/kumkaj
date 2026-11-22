@@ -875,7 +875,7 @@ credit_khata_amount_ph	Hitel / hitel főkönyvi összeg
 credit_limit_ph	Hitelkeret (0 = nincs)
 dim_unit_code_ph	Méretegység kódja (cm)
 divisor_ph	Térfogatosztó (5000)
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Pótdíj / kg
 first_amount_ph	Első összeg
 first_kg_ph	Első kg (lap)
 from_code_ph	Kódból (táska)
