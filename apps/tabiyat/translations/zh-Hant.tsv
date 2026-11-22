@@ -730,7 +730,7 @@ book_kind_today	今日帳本
 book_kind_month	本月帳本
 book_kind_aging	未結 / 借貸
 book_kind_balance	資產負債表
-order_help	選擇一個未結訂單，或選擇桌臺開始新訂單。點選就緒菜品，發送 KOT，為一個或多個菜品結帳，拆分帳單並完成付款。
+order_help	點選品項以加入。
 categories_help	點「使用」將上方商品歸入該類。照片為分類提供圖片；沒有照片則顯示首字母。
 dish_search_ph	搜尋名稱、鹽或條碼...
 sizes_as_items_ph	規格作為獨立菜品（可選）— 半份=120, 整份=200

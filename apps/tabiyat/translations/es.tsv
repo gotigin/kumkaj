@@ -617,7 +617,7 @@ cloud_welcome	Iniciado sesión como {user} · {plan}
 cloud_created	Cuenta creada. Revisa tu correo electrónico para verificar cuando puedas.
 cloud_cancel	Cancelar
 permission_preset	Preajuste de permisos
-product_only_tabiyat	Esta app es solo Tabiyat, el sistema para restaurantes. Otros oficios tienen sus propios productos Kumkaj.
+product_only_tabiyat	Tabiyat es el sistema operativo de farmacia: venta de medicamentos, libros de lote/caducidad, crédito y contabilidad — sin conexión en sus dispositivos. Las marcas Schedule H / Rx son notas del dueño, no cumplimiento normativo.
 purchases_cogs	Compras (COGS)
 restore_help	Restaurar: elige una copia. Los libros se abren como estaban entonces; los de ahora se guardan antes, así que se puede deshacer.
 wipe_data_heading	Borrar datos locales
