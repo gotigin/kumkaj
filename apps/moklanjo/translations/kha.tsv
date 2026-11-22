@@ -3,13 +3,13 @@ app_tagline	Ki kot jong ki nongkit mar + ka miej buh kot. Laitluid.
 unlock	Plie ia ka jingkhang
 pin_hint	U trai PIN u sdang kum u 0000 .
 sell	Ka jingbuh jaka
-nav_board	Board
-board	Board
+nav_board	Ka jingpein
+board	Ka jingpein
 park_draft	Pynsah kum ka draft
 board_help	Ki jingthoh bym pat dep (la buh haduh ba phin da tap «Pynduh noh» lane «Shim ia ka jingsiew») bad ki jingdie ba la buh mynta ka sngi. Ha ka «Ka jingbuh jaka», tap «Pynsah kum ka draft» hapdeng ka kam jong phi (la buh ia ka hangne, ym ha ki jingkhein); tap ia ka draft ban bteng ia ka.
 board_empty	Ym pat don kard.
 board_park_nothing	Ym don ei ei ban buh kum ka draft — pyndap ia ki jingsiew lane ki jingtip ba bniah shaphang ka jingpynrung kyrteng
-board_parked	La buh ha ka «Board» — ka miej ka thylli mynta
+board_parked	La buh ha ka «Ka jingpein» — ka miej ka thylli mynta
 board_draft	Ka jingthoh
 board_booked	La buh
 board_filter_all	Baroh
@@ -20,7 +20,7 @@ board_summary_fmt	{total} ki karta · {drafts} ki jingthoh · {booked} la buh
 board_card_no_charges	Ym pat pyndap bai lutksan
 board_card_charges	ki jingsiew
 board_card_booked	Ka jingbuh jaka
-board_draft_gone	Kata ka jingthoh kam don shuh ha ka «Board»
+board_draft_gone	Kata ka jingthoh kam don shuh ha ka «Ka jingpein»
 board_draft_closed	Kata ka draft ka la dep ne la pyndam noh
 board_discard	Pynduh noh
 board_discarded	La weng noh ia ka draft

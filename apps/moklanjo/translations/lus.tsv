@@ -40,13 +40,13 @@ reports_help	Ni lehkha, ba nei te leh kan ba te, bank lehkha, sum sen lehkha, hm
 reports_today	Ni lehkha (vawiin)
 reports_month	Hmuh leh hloh (thla)
 reports_aging	La awm / ba-ba
-reports_balance_sheet	Balance sheet
+reports_balance_sheet	Thil neih list
 reports	Bank bu leh hlawkna/sualna
 refresh	Thar leh
 undo	Ti lo leh
 start_tracking	Chhiar tan
 stock_minus	− Stock
-stock_plus	+ Stock
+stock_plus	+ Thil dah
 settle_cash	Sum in pe
 settle_card	Card in pe
 items	Rate & services te pawh a awm bawk
@@ -204,7 +204,7 @@ device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a i
 currency	Sum hming
 backup	Backup
 settings_sec_diag	Harsatna en
-settings_sec_privacy	Privacy
+settings_sec_privacy	Mahni thil humhalh
 privacy_policy_help	Thuruk · PRIVACY.md · moklanjo.com/privacy
 dont_use	Hmang suh
 receipt_printers_dd	He device ah hian printer te a awm · Dawng
@@ -487,7 +487,7 @@ autostart_done_off	He computer hian a tan hunah app a hawng tawh lo.
 right_allowed	Phal
 right_with_approval	Phalna nen
 right_denied	Phal lo
-editing_staff	Rights for
+editing_staff	Dan tur
 team_pick_ph	Siam tur hnathawk — hming, hmangtu hming, emaw thlang
 select_staff	He hnathawk thlang
 rights_help	Rights — tap to change: Allowed → Approval nen (chutih lai chuan manager pakhat PIN) → A phal loh.
@@ -891,7 +891,7 @@ note_expense_ph	Lehkha (petrol, office, …)
 notify_phone_ph	Phone hriattirna (WhatsApp/SMS hook) a ni.
 options_moklanjo_ph	Thil thlan theih ( duhthlan tur) — A lian=20, Thilpek wrap=10
 part_second_way_ph	Dan pahnihna then (duh chuan)
-phone_ph	Phone
+phone_ph	Biakna number
 address_ph	Chenna hmun
 party_custom_fields_heading	Custom field (mi thlan bik) te .
 party_custom_help	He party-ah hian label leh value eng pawh dah la — WhatsApp, GSTIN, route code, ...
@@ -925,7 +925,7 @@ pay_credit	Ba
 book_kind_today	Vawiin lehkha
 book_kind_month	He thla lehkha
 book_kind_aging	La awm / ba-ba
-book_kind_balance	Balance sheet
+book_kind_balance	Thil neih list
 ops_desk_help	USB barcode scanner hmangin AWB chu scan la (a nih loh leh type rawh) → Find. Tichuan advance la, label print la, COD la la. Label-te chuan Code 128-ah an print.
 role_help_consignor	Role: Consignor — AR (kan bat an nei). Same firm pawh Carrier a ni thei bawk.
 role_help_carrier	Role: Carrier — AP (an bat kan nei). Same firm pawh Consignor a ni thei bawk.
