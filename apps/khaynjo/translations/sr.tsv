@@ -165,7 +165,7 @@ kot_station_dd	Кухиња
 kot_station_dd_n	Кухиња · {stations}
 kot_set_station	Користите ову станицу
 kot_station_applied	Станица постављена на {n} тањира: {station}
-kot_station_cleared	Станица очишћена од {n} посуда: {station}
+kot_station_cleared	Станица очишћена од {n} јела: {station}
 kot_station_needed	Прво изаберите кухињску станицу
 kot_station_not_allowed	Није дозвољено користити кухињу: {station}
 kot_station_none	Још нема кухињских станица — додајте једну под Кухиња или Подешавања → Подручја · станице
