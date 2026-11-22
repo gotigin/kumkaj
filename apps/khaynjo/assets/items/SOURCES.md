@@ -76,3 +76,13 @@ need the author and licence named.
 | `desserts/cream-caramel-cup.webp` | apple pastry shell with caramel drizzle | Crème caramel | Anette B | Public domain | https://commons.wikimedia.org/w/index.php?curid=5840387 | resized, WebP |
 | `desserts/mochi.webp` | pale rectangular fudge/barfi blocks | Daifuku 001 | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=115421922 | resized, WebP |
 | `desserts/mooncake.webp` | Indian nut sweet with timestamp watermark | Mooncake | Lybil BER | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=18193968 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 mexican)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `mexican/mexican-street-corn-cup.webp` | creamy corn chowder soup | Traditional "esquites" | Alondrapr | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=83574656 | resized, WebP |
+| `mexican/picanha.webp` | stuffed meat roll, not picanha | GrilledPicanha | Darubrub | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=106311293 | resized, WebP |
+| `mexican/queso-dip.webp` | cochinita pibil taco platter | queso fundido | stu_spivack | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://www.flickr.com/photos/35034346243@N01/486808698 | resized, WebP |
+| `mexican/salsa-roja.webp` | three mixed green/orange dips | Mmm... red pepper salsa-salsa roja | jeffreyw | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/7927684@N03/6097292944 | resized, WebP |
+| `mexican/tortilla-soup.webp` | soup beside Catrina skull figurine / busy restaurant table | Sopa de tortilla, Mazatlán, 15 de noviembre de 2022 | El Nuevo Doge | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=125555690 | resized, WebP |
