@@ -181,6 +181,18 @@
     ],
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/download",
+        "destination": "https://play.google.com/store/apps/details?id=com.khaynjo",
+        "type": 302
+      },
+      {
+        "source": "/download/**",
+        "destination": "https://play.google.com/store/apps/details?id=com.khaynjo",
+        "type": 302
+      }
+    ],
     "rewrites": [
       {
         "source": "/",

@@ -215,7 +215,9 @@ impl Tier {
 
     fn spacing(self) -> (f64, f64, f64) {
         match self {
-            Self::Phone => (16.0, 14.0, 12.0),
+            // pad_v was 14 — section heads sat flush under the sticky bar
+            // when scrolled (phone evidence 2026-11-22: "wholesaler" eaten).
+            Self::Phone => (16.0, 36.0, 14.0),
             Self::Narrow => (26.0, 20.0, 14.0),
             Self::Tablet => (40.0, 26.0, 18.0),
             Self::Desk => (60.0, 30.0, 20.0),
@@ -265,7 +267,9 @@ impl App {
             self.pending_section = Some(id);
             return 0.0;
         }
-        let y = (target.pos.y - top.pos.y).max(0.0);
+        // Leave a little previous-band peek so the heading is not flush
+        // against the sticky top bar (scroll-margin under chrome).
+        let y = (target.pos.y - top.pos.y - 20.0).max(0.0);
         page.set_scroll_pos(cx, dvec2(0.0, y));
         if let Some(i) = CHAPTERS.iter().position(|(cid, _)| *cid == id) {
             self.paint_chrome(cx, i);

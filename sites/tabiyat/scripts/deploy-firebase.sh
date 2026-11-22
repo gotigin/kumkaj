@@ -145,7 +145,7 @@ fi
 # Facebook keep a preview for days and only fetch again for a new address.
 PREVIEW_URL="https://tabiyat.shop/media/link-preview.jpg?v=$(sha256sum "$PREVIEW" | cut -c1-10)"
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-BODY_INJECT='        <noscript><p>Tabiyat — pharmacy counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/download">Download</a></p></noscript>
+BODY_INJECT='        <noscript><p>Tabiyat — pharmacy counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a></p></noscript>
     </body>'
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
 '"$BODY_INJECT"

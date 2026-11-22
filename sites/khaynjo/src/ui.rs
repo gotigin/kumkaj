@@ -295,12 +295,14 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Maroon
+        // line_spacing 0.8 clipped the second wrap line on phones ("Every
+        // country at" with "your counter" painted into a too-short Fit box).
         font_size: 38.
-        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 38. line_spacing: 0.8}
-        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 38. line_spacing: 0.8}
+        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 38. line_spacing: 0.95}
+        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 38. line_spacing: 0.95}
         draw_text +: {
             color: Maroon
-            text_style: theme.font_bold{font_family: DisplayFont font_size: 38. line_spacing: 0.8}
+            text_style: theme.font_bold{font_family: DisplayFont font_size: 38. line_spacing: 0.95}
         }
     }
     let H3 = Markdown{

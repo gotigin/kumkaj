@@ -44,6 +44,21 @@ if [[ "$(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt")" -lt 60 ]]; then
   echo "error: could not read the site's characters from $SITE/src" >&2
   exit 1
 fi
+# Rust `\u{f04c}` escapes are four source characters, not the glyph. Pull
+# those codepoints so FA solid (and any other PUA icons) survive subsetting
+# — otherwise shelf play/pause chips paint □ tofu on the live site.
+FA_RANGES=""
+while read -r hex; do
+  [[ -n "$hex" ]] || continue
+  if [[ -n "$FA_RANGES" ]]; then
+    FA_RANGES+=","
+  fi
+  FA_RANGES+="U+${hex}"
+done < <(grep -ohE '\\u\{[0-9a-fA-F]+\}' "$SITE"/src/*.rs | sed -E 's/\\u\{([0-9a-fA-F]+)\}/\1/' | tr 'a-f' 'A-F' | sort -u)
+if [[ -z "$FA_RANGES" ]]; then
+  # Shelf chips in ui.rs / main.rs — keep even if grep misshapes.
+  FA_RANGES='U+F04B,U+F04C,U+F053,U+F054,U+F067,U+F068'
+fi
 
 before=0
 after=0
@@ -54,6 +69,7 @@ for font in "$FONT_DIR"/*.ttf "$FONT_DIR"/*.otf "$OUT"/makepad_widgets/resources
   ranges='U+0020-007E'
   case "$name" in
     Noto*) ;;                       # a script face: its Latin is never drawn
+    fa-solid*) ranges="$ranges,$FA_RANGES" ;;  # PUA icons from `\u{…}` in sources
     *) ranges="$ranges,$LATIN_MORE" ;;
   esac
   if ! pyftsubset "$font" --output-file="$WORK/$name" \

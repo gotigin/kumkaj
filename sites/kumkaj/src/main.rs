@@ -85,7 +85,7 @@ const DOT_SLOTS: [&[LiveId]; 7] = [
 /// this wide (px), and stack otherwise — width-based, not tier-based: a
 /// fixed prop beside a headline needs its own width plus a readable text
 /// column whatever the device.
-const ROWS: [(&[LiveId], f64); 9] = [
+const ROWS: [(&[LiveId], f64); 10] = [
     (ids!(hero.hero_row), 848.0),
     (ids!(hero.hero_ctas), 480.0),
     // `trade.cards` stays Down (two pairs). Targeting it used to lay the
@@ -94,6 +94,8 @@ const ROWS: [(&[LiveId], f64); 9] = [
     (ids!(trade.cards.pair_bot), 640.0),
     (ids!(books.tiles), 720.0),
     (ids!(offline.toy_head), 420.0),
+    // Cloud copy + Planned pill: stack before the pill clips on landscape.
+    (ids!(free.prices.cloud_row), 520.0),
     (ids!(gotigin.product_row_1), 640.0),
     (ids!(gotigin.product_row_2), 640.0),
     (ids!(footer.footer_row), 640.0),
@@ -763,7 +765,7 @@ mod tests {
     #[test]
     fn display_type_shrinks_more_than_body_on_phones() {
         let display = Tier::Phone.type_scale(54.0);
-        let body = Tier::Phone.type_scale(16.0);
+        let body = Tier::Phone.type_scale(15.5);
         assert!(display < body);
         assert_eq!(Tier::Phone.type_scale(13.0), 1.0);
         assert_eq!(Tier::Desk.type_scale(54.0), 1.0);

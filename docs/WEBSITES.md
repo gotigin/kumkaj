@@ -115,6 +115,15 @@ architecture. Until then the legal pages for the Play listing come from
 the legacy static stubs under `web/kumkaj/`, `apps/*/web/` (built with
 `scripts/build-site.sh`); nothing else is built there any more.
 
+### Body type size (phone feel)
+
+**Normal body** across Makepad product/brand sites targets **15.5px**
+desk size (Khaynjo `Body` / Moklanjo `Body`), then phone `type_scale`
+(~0.93–0.95). Lede/subhead stays larger (~18–19). Do not shrink display
+headlines to “fix” body feel — change `Body` / `Lede` only. Documented
+after Android Chrome phone pass 2026-11-22 (kumkaj was too big at Body 16
++ Lede 20).
+
 ### Threads
 
 Build with **`--no-threads`** so ordinary hosting does not need

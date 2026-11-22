@@ -135,6 +135,18 @@
     ],
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/download",
+        "destination": "/",
+        "type": 302
+      },
+      {
+        "source": "/download/**",
+        "destination": "/",
+        "type": 302
+      }
+    ],
     "rewrites": [
       {
         "source": "/",

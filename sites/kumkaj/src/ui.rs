@@ -129,14 +129,17 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Muted
-        font_size: 20.
-        text_style_normal: theme.font_regular{font_family: TextFont font_size: 20. line_spacing: 1.45}
-        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 20. line_spacing: 1.45}
+        // Lede sits under headlines; keep it above Body but not phone-huge
+        // (was 20 — read larger than Khaynjo/Moklanjo on the same handset).
+        font_size: 18.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 18. line_spacing: 1.45}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 18. line_spacing: 1.45}
         draw_text +: {
             color: Muted
-            text_style: theme.font_regular{font_family: TextFont font_size: 20. line_spacing: 1.45}
+            text_style: theme.font_regular{font_family: TextFont font_size: 18. line_spacing: 1.45}
         }
     }
+    // Normal body across Makepad sites: 15.5 (Khaynjo/Moklanjo target).
     let Body = Markdown{
         selectable: true
         height: Fit
@@ -147,12 +150,12 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Muted
-        font_size: 16.
-        text_style_normal: theme.font_regular{font_family: TextFont font_size: 16. line_spacing: 1.45}
-        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.45}
+        font_size: 15.5
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15.5 line_spacing: 1.45}
         draw_text +: {
             color: Muted
-            text_style: theme.font_regular{font_family: TextFont font_size: 16. line_spacing: 1.45}
+            text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
         }
     }
     let Strong = Markdown{
@@ -859,7 +862,9 @@ script_mod! {
                                     }
                                 }
                                 RoundedView{width: Fill height: 1 draw_bg +: {color: Rule border_radius: 0.}}
-                                View{
+                                // ROWS stacks this under ~520 content px so the
+                                // Planned pill is never clipped on landscape phones.
+                                cloud_row := View{
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 16
