@@ -409,7 +409,7 @@ allow_extra_tills	Дозволите додатне касе
 amend	Изменити
 apply_country_pack	Примените пакет за земљу
 datetime_appearance	Појава датума и времена
-datetime_appearance_help	У књигама се налази први РФЦ3339 из прве године. These only change how dates and clocks look on bills, KOT, reports, and the screen.
+datetime_appearance_help	Књиге изнутра чувају RFC3339 са годином на почетку. Ово мења само како датуми и сатови изгледају на рачунима, KOT-у, извештајима и екрану.
 datetime_example	Пример сада: {ex}
 date_order	Редослед датума
 date_order_dmy	D/M/Y
@@ -444,9 +444,9 @@ choose_icon	Изаберите икону
 choose_logo	Изаберите лого
 clear_icon	Обриши икона
 clear_photo	Обриши фотографију
-copy_day_book_csv	Copy day ledger CSV
+copy_day_book_csv	Копирај CSV дневне књиге
 copy_day_close	Копирај затварање дана
-copy_items_csv	Copy menu items CSV
+copy_items_csv	Копирај CSV ставки менија
 copy_outstanding_csv	Преузето копија CSV
 copy_parties_csv	Копирај купце и добављаче CSV
 copy_party_ledger_csv	Копирај књигу купаца CSV
@@ -460,7 +460,7 @@ optional_login_heading	Опционо пријављивање
 rights_heading	Права
 ops_panel	Локалне операције
 crm_heading	Гости и поруке
-crm_help	Рођендан, лојалност, неактивни и врхунски гости — ред SMS или WhatsApp намере. Користи {name} and {points} in the message. Owner taps send; nothing blasts by itself.
+crm_help	Рођендан, лојалност, неактивни и врхунски гости — ред SMS или WhatsApp намере. У поруци користите {name} и {points}. Власник додирује Пошаљи; особље додаје у ред.
 crm_queue_sms	Ред SMS
 crm_queue_wa	Ред WhatsApp
 crm_seg_bday_week	Недеља рођендана
@@ -495,15 +495,15 @@ floor_layout_y	Y
 floor_layout_w	W
 floor_layout_h	H
 floor_layout_save	Сачувај изглед
-floor_layout_open	Open dining table
+floor_layout_open	Отвори сто
 floor_layout_edit	Уредите изглед
-floor_layout_pick	Tap a dining table to edit its layout
-floor_layout_saved	Dining table layout saved
+floor_layout_pick	Додирните сто да уредите распоред
+floor_layout_saved	Распоред столова сачуван
 floor_layout_nudge_left	← 20
 floor_layout_nudge_right	→ 20
 floor_layout_nudge_up	↑ 20
 floor_layout_nudge_down	↓ 20
-sibling_pickers_help	Додирните Он/Офф попут јединица — сакријте области, станице и пореске стопе од свакодневних бирача; pack defaults stay.
+sibling_pickers_help	Додирните Укључено/Искључено попут јединица — сакријте области, станице и пореске стопе од свакодневних бирача; подразумеване вредности пакета остају.
 bulk_price_apply	Примени скупну цену
 card_terminal_optional	Картични терминал/линк за плаћање (опционо када је интернет доступан)
 copy_report	Копирај извештај
@@ -524,11 +524,11 @@ tax_invoice_saved_off	Пореска фактура сакривена — са�
 pay_methods	Начини плаћања
 pay_methods_help	Која дугмад се приказују на Прими уплату. Готовина увек остаје. Неки шаблони продавнице почињу само са Готовином — овде поново укључите UPI / Картица / Кредит / Подела.
 create_backup	Направите резервну копију
-credit_limit_heading	Credit limit (selected customer or supplier)
+credit_limit_heading	Лимит дуга (изабрана / именована странка)
 day_close_summary	Закључак дана
-delete_party	Delete selected customer or supplier
+delete_party	Обриши изабрану странку
 delivery	Испорука
-done_open_books	Done — open ledgers
+done_open_books	Готово — отвори књиге
 drawer_count	Број фиока (опционо)
 expense_heading	Трошкови
 export_day	Дан извоза
@@ -582,7 +582,7 @@ pay_ap_cash	Платите АП готовином
 pay_ap_heading	Плати оно што им дугујемо (АП)
 pay_ap_upi	Плати АП UPI
 pay_selected_heading	Плати изабрано (измири дуг / узми аванс)
-pick_from_items	Pick from our menu items
+pick_from_items	Изабери из наших ставки
 prev_country	Претходна земља
 print_open	Штампај / отвори
 reason_amend_ph	Разлог за измену / поништење / повраћај
@@ -609,7 +609,7 @@ role_cashier	благајник
 role_customer	Муштерија
 role_manager	Менаџер
 history_retention	Историја трговине
-history_retention_help	Auto-clear old sales and KOTs. Мени, особље и подешавања остају. Брисање сада брише све редове за трговање и задржава подешавање.
+history_retention_help	Аутоматски брише стару продају и KOT-ове. Мени, особље и подешавања остају. Брисање сада брише све редове за трговање и задржава подешавање.
 history_off	Задржи
 history_day_close	На затварању дана
 history_after_hours	После сати
@@ -620,7 +620,7 @@ history_cleared	Историја трговања је очишћена — по
 history_retention_saved	Брисање историје је сачувано
 history_hours_saved	Сати историје су сачувани
 history_owner_only	Само власник или администратор може да обрише историју
-rollup	Summary rollup
+rollup	Сажетак
 save_brand	Сачувај бренд
 save_business_id	Сачувајте пословни ИД
 save_business_name	Сачувајте назив предузећа
