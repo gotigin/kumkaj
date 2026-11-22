@@ -589,7 +589,7 @@ day_close_help	Ka jingthoh ia ka sngi ba khang ka buh ia kane ka jingpynkylla (b
 expenses_word	Ki jinglut jingsep
 feature_access_help	Kaei kaba ki lah ban plie — ka jingjied; Ka kam haneng ka la dep buh ia ka jinglong ba la buh lypa
 fresh_book_tabiyat	Fresh = katalog kaba thylli (pynrung ia ki tiar hadien). Ka kot = thoh ia ka stock kaba plie bad mano ba donkam ia phi harum.
-fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Kyntip Done ynda la dep.
+fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Kyntip La dep ynda la dep.
 gross_word	Baroh
 how_start	Kumno phi kwah ban sdang?
 later_country_pack	Hadien: Ki jingpynbeit → pyndonkam ia ka pack ri jong phi na ka bynta ki jingthoh khajna bad jingsiew.
@@ -602,7 +602,7 @@ optional_login_help	Ka jingrung kaba lah ban jied (id + ka ktien rieh). U trai s
 or_unlock_login	Lane plie da ka id login + ka ktien rieh
 or_unlock_shop_login	Or unlock with shop login
 shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	तबीयत खाता
+cloud_account_title	Ka account Tabiyat
 cloud_account_help	Register lane sign in bad ka account kaba long kum tabiyat.shop/account. Ka pynthaw ia ka cloud ID jong phi bad ka plan ba kyrkhu.
 cloud_name_ph	Name (optional)
 cloud_email_ph	Email

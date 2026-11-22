@@ -602,8 +602,8 @@ optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a da
 or_unlock_login	Emaw lut hmingchhiar + password in hawng
 or_unlock_shop_login	Or unlock with shop login
 shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	तबीयत खाता
-cloud_account_help	tabiyat.shop/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_account_title	Tabiyat account
+cloud_account_help	tabiyat.shop/account account ang bawk khuan register ema sign in rawh. I cloud ID leh free plan a siam.
 cloud_name_ph	Name (optional)
 cloud_email_ph	Email
 cloud_password_ph	Password
@@ -613,7 +613,7 @@ cloud_web_methods	Google and other methods on the website
 cloud_signing_in	इन कर रहे हैं…
 cloud_sending_reset	Sending reset link…
 cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
+cloud_welcome	{user} · {plan} angin sign in a ni
 cloud_created	Account created. Check your email to verify when you can.
 cloud_cancel	Cancel
 permission_preset	Hna
