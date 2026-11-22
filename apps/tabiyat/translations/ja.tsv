@@ -519,7 +519,7 @@ find_printers	プリンターを探す
 printers_looking	この端末とWi‑Fiでプリンターを検索中…
 saving_printer	プリンターの追加中…
 cancelled	取消
-printers_tap_find	「プリンターを探す」をタップ — システムプリンターとこのWi‑Fiのネットワークレシートプリンターが一覧表示されます。
+printers_tap_find	この端末で使えるプリンターを表示するには「探す」をタップします。
 printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
 printer_from_find	{name} を追加しました
 queue_refused	店で受け付けられなかったもの（{n}）— レジで一件ずつ確認してください:

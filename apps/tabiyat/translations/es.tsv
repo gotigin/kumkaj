@@ -519,7 +519,7 @@ find_printers	Buscar impresoras
 printers_looking	Buscando impresoras en este dispositivo y Wi‑Fi…
 saving_printer	Agregando impresora…
 cancelled	Cancelado
-printers_tap_find	Pulse Buscar impresoras: se listan las del sistema y las de recibos en red de este Wi‑Fi.
+printers_tap_find	Toque Buscar para listar las impresoras que este dispositivo puede usar.
 printers_none_found	No se encontraron impresoras: escriba un nombre del sistema o una dirección de red (p. ej. 192.168.1.50).
 printer_from_find	Se agregó {name}
 queue_refused	No aceptado por el local ({n}): revisa cada uno en caja:

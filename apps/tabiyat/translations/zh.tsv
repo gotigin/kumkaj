@@ -520,7 +520,7 @@ find_printers	查找打印机
 printers_looking	正在本设备和 Wi‑Fi 上查找打印机…
 saving_printer	正在添加打印机…
 cancelled	已取消
-printers_tap_find	点按查找打印机——将列出系统打印机和本 Wi‑Fi 上的网络收据打印机。
+printers_tap_find	点按「查找」，列出此设备可用的打印机。
 printers_none_found	未找到打印机——请输入系统打印机名称或网络地址（如 192.168.1.50）。
 printer_from_find	已添加 {name}
 queue_refused	店里未接受（{n}）— 请在柜台逐一核对：
