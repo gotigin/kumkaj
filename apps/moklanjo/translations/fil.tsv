@@ -768,8 +768,8 @@ locked_word	Naka-lock
 show_pin	Ipakita ang PIN
 hide_pin	Itago ang PIN
 set_owner_pin	Itakda ang MAY-ARI PIN
-enter_owner_passcode	ENTER PASSCODE NG MAY-ARI
-enter_staff_passcode	Ipasok ang STAFF PASSCODE
+enter_owner_passcode	Ipasok ang passcode ng may-ari
+enter_staff_passcode	Ipasok ang passcode ng staff
 pin_count_zero	0 / 12 digit · hindi bababa sa 4, pagkatapos ay OK
 pin_count_need	{} / 12 digit · kailangan ng {} pa
 pin_count_full	12 / 12 digit · pindutin ang OK

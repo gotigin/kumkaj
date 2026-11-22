@@ -768,8 +768,8 @@ locked_word	Wichqasqa
 show_pin	Qawachiy PIN .
 hide_pin	Pakakuy PIN .
 set_owner_pin	Kamayuqpa PIN-ta churay
-enter_owner_passcode	ENTER DUEÑOPA CÓDIGO DE PASO
-enter_staff_passcode	ENTRADA DEL PERSONAL nisqa
+enter_owner_passcode	Dueñopa código de paso-ta qillqay
+enter_staff_passcode	Personalpa código de paso-ta qillqay
 pin_count_zero	0 / 12 yupay · 4llapas, chaymanta Allinmi
 pin_count_need	{} / 12 yupay · {} astawan necesitan
 pin_count_full	12 / 12 yupay · Allinmi ñit’iy
