@@ -189,6 +189,9 @@ pub async fn complete_mock_checkout(
     if checkout.status == "completed" {
         return Ok(());
     }
+    // Event id must be unique per checkout — a global id made every later
+    // sandbox complete a no-op (plans stayed Free forever).
+    let event_id = format!("mock.sandbox.complete.{checkout_id}");
     activate_subscription(
         pool,
         account.account_id,
@@ -196,7 +199,7 @@ pub async fn complete_mock_checkout(
         Provider::Mock,
         Some(&format!("mock_sub_{checkout_id}")),
         Some(checkout_id),
-        "mock.sandbox.complete",
+        &event_id,
         serde_json::json!({ "checkout_id": checkout_id }),
     )
     .await?;

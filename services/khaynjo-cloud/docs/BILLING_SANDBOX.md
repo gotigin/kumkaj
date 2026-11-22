@@ -10,6 +10,21 @@ everything runs in **sandbox / test mode**, with a local **mock** provider so
 we can prove checkout → webhook/activation → subscription without waiting on
 either gateway UI.
 
+### Status (2026-11-22)
+
+| Piece | State |
+| --- | --- |
+| API checkout + webhooks (`mock` / `stripe` / `paddle`) | **Done** in `services/khaynjo-cloud` |
+| Mock local smoke (`./scripts/local-smoke.sh`) | **Green** |
+| `/account` sandbox plan buttons | **Done** (needs cloud API + `BILLING_ENABLED=1`) |
+| Stripe Test Price ids + keys | **Owner** — MEARAJ (Gotigin) Dashboard |
+| Paddle sandbox Price ids + keys | **Owner** — MEARAJ (Gotigin) sandbox |
+| Live mode / Firebase site redeploy | Only after owner approval |
+
+**Next:** create sandbox catalog in Stripe + Paddle, put keys in gitignored
+`.env`, run `./scripts/apply-sandbox-price-ids.sh`, then
+`BILLING_DEFAULT_PROVIDER=stripe` (or `paddle`) and a test checkout.
+
 ---
 
 ## 1. Modes
