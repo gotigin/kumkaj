@@ -309,9 +309,11 @@ change):
   use shows empty boxes (khaynjo.com's shelf search is the one text box).
   Variable display faces are pinned to the `ui.rs` weight before subset
   (kumkaj Fraunces `wght=620`, khaynjo Baloo 2 `wght=720`; moklanjo/kirano/
-  tabiyat Anek pin is L16). That drops unused masters from the staged
-  file; prove with `netlog.mjs` + `magick compare` on a before/after
-  preview (see `Internal/sprint/shots/L4/fonts/`).
+  tabiyat Anek pin is L16). Sprint 2026-11-22 netlog (local, no gzip):
+  Fraunces 269 KB → 49 KB decoded; total first-visit wire ~6830 KB →
+  ~6610 KB. `magick compare` AE ≪ 0.02% at 390×844 / 1280×800 vs
+  glyph-only (residual AA from static vs variable raster). Evidence:
+  `Internal/sprint/shots/L4/fonts/`.
 - **Versioned and cached:** deploy gives the wasm and its loader
   `?v=<build id>`, and `firebase.json` now serves `*.wasm` `immutable`, so a
   returning visitor downloads it once per release.
