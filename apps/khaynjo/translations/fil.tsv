@@ -696,7 +696,7 @@ backup_copy_overdue	Walang naiwang backup na kopya sa device na ito sa loob ng {
 backup_copy_failed	Hindi ma-save doon ang backup na kopya — pumili ng ibang lugar
 clock_off	Ang orasan ng device na ito ay {min} min sa server ng shop — itakda ang tamang oras sa device na ito
 printers_heading	Mga Printer
-printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng test page sa device na iyon lang. Mga bill printer: Bill at KOT format → Bill. Mga printer sa kusina: Kusina → Mga istasyon ng kusina (magdagdag muna ng istasyon — Hindi gumagawa ng mga istasyon ang “Maghanap ng mga printer”).
+printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng pahina ng pagsubok sa device na iyon lang. Mga bill printer: Bill at KOT format → Bill. Mga printer sa kusina: Kusina → Mga istasyon ng kusina (magdagdag muna ng istasyon — Hindi gumagawa ng mga istasyon ang “Maghanap ng mga printer”).
 printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ito hanggang nagpapadala ng mga singil at KOT doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
 printers_find_heading	Maghanap ng mga printer
 printers_find_tip	Ini-scan ng Maghanap ang device na ito at pinapanatiling napapanahon ang listahan.
@@ -829,17 +829,17 @@ route_down	Pababa
 route_remove	Alisin
 route_clear	Maaliwalas
 save_printers	I-save ang mga printer
-print_test_page	Mag-print ng test page
+print_test_page	Mag-print ng pahina ng pagsubok
 no_printer_assigned	Walang printer
 test_page_no_printer	Walang printer para sa {place} — mag-attach ng printer dito, pagkatapos ay subukang muli
-test_page_pick_first	Pumili muna ng mga printer para sa isang test page — pagkatapos ay Mag-print ng isang test page
-test_printers_dd	Mga printer para sa isang test page
-test_printers_dd_n	{n} printer para sa isang test page · i-tap para baguhin
+test_page_pick_first	Pumili muna ng mga printer para sa isang pahina ng pagsubok — pagkatapos ay Mag-print ng isang pahina ng pagsubok
+test_printers_dd	Mga printer para sa isang pahina ng pagsubok
+test_printers_dd_n	{n} printer para sa isang pahina ng pagsubok · i-tap para baguhin
 kot_test_printers_dd	Mga Printer para sa Pagsubok KOT
 kot_test_printers_dd_n	{n} printer para sa Pagsubok KOT · i-tap para baguhin
 test_printer_picked	Pagsubok sa: {name}
 test_printer_cleared	Hindi naka-on ang pagsubok: {name}
-test_page_sent_n	Ipinadala ang test page sa {n} na mga printer
+test_page_sent_n	Ipinadala ang pahina ng pagsubok sa {n} na mga printer
 test_kot_pick_first	Pumili muna ng mga printer para sa Pagsubok KOT — pagkatapos ay Pagsubok KOT
 test_kot_sent_n	Ipinadala ang pagsubok KOT sa {n} na mga printer
 cancel_pick	Markahan
@@ -853,7 +853,7 @@ batch_cancel_ok	{n} kinansela ang mga pagkain · {slips} kanselahin ang mga slip
 batch_cancel_ok_noprint	Nakansela ang {n} dish — KOT naka-off ang auto-print, kaya walang cancel slip
 no_printer_kitchen_station	Walang printer para sa istasyon ng kusina na iyon — Kusina → Mga istasyon ng kusina → Mga printer para sa istasyong ito
 printers_saved	Nai-save
-test_page_sent	Naipadala ang test page — tingnan ang printer
+test_page_sent	Naipadala ang pahina ng pagsubok — tingnan ang printer
 test_page_sent_one	Ang pahina ng pagsubok ay ipinadala sa {name} — tingnan ang printer na iyon
 printers_found	Natagpuan {n}: {list}
 printers_find_synced	Natagpuan ang {n} — {new} bago

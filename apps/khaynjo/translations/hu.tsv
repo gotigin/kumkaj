@@ -834,9 +834,9 @@ no_printer_assigned	Nincs nyomtató
 test_page_no_printer	Nincs nyomtató a következőhöz: {place} – csatlakoztasson hozzá nyomtatót, majd próbálja újra
 test_page_pick_first	Először válasszon nyomtató(ka)t a tesztoldalhoz — majd nyomtasson tesztoldalt
 test_printers_dd	Nyomtatók egy tesztoldalhoz
-test_printers_dd_n	{n} printers for a test page · tap to change
+test_printers_dd_n	{n} nyomtató tesztoldalhoz · koppintson a váltáshoz
 kot_test_printers_dd	Nyomtatók teszthez KOT
-kot_test_printers_dd_n	{n} printers for Test KOT · tap to change
+kot_test_printers_dd_n	{n} nyomtató KOT-teszthez · koppintson a váltáshoz
 test_printer_picked	Teszt itt: {name}
 test_printer_cleared	Nincs tesztelés: {name}
 test_page_sent_n	Tesztoldal elküldve {n} nyomtatókra

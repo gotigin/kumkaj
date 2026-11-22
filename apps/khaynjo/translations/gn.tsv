@@ -1189,7 +1189,7 @@ server_host_selected	Eipurúvo {host} — emoinge pe código de emparejamiento, 
 print_bill	Impresión factura rehegua
 table_actions	Umi tembiapo mesa ojekaru haguã
 move_merge_table	Oñemomýi / ombojoaju mesa okaru haguã
-move_help	Emoinge ko mesa comedor pedido peteĩ mesa comedor gratuita-pe, térã embojoaju peteĩ oñemboguatávape.
+move_help	Emoinge ko mesa comedor pedido peteĩ mesa comedor vacante-pe, térã embojoaju peteĩ oñemboguatávape.
 move_target_ph	Mesa ojekaru haguã réra (e.g. D5, P2) .
 approval_pin_ph	Motenondehára PIN (oñeporandúramo añoite) .
 move_here	Eñemongu’e ko’ápe
