@@ -101,6 +101,13 @@ if ! command -v pandoc >/dev/null 2>&1; then
   echo "error: pandoc required to present PRIVACY.md at /privacy" >&2
   exit 1
 fi
+PREVIEW="$SITE/static/media/link-preview.jpg"
+if [[ ! -f "$PREVIEW" ]]; then
+  echo "error: missing sites/khaynjo/static/media/link-preview.jpg — run sites/khaynjo/scripts/make-link-preview.sh" >&2
+  exit 1
+fi
+PREVIEW_V="$(sha256sum "$PREVIEW" | cut -c1-10)"
+PREVIEW_URL="https://khaynjo.com/media/link-preview.jpg?v=$PREVIEW_V"
 mkdir -p "$OUT/privacy"
 pandoc "$PRIVACY_MD" \
   -f markdown \
@@ -108,10 +115,19 @@ pandoc "$PRIVACY_MD" \
   --template="$PRIVACY_TMPL" \
   --metadata title="Privacy — Khaynjo" \
   -V lang=en \
+  -V preview_v="$PREVIEW_V" \
   -o "$OUT/privacy/index.html"
 # Keep the source file available, but /privacy is the formatted page.
 cp "$PRIVACY_MD" "$OUT/privacy.md"
 echo "Presented /privacy from apps/khaynjo/docs/PRIVACY.md (formatted HTML + privacy.md source)"
+
+# Cache-bust og/twitter image on secondary shells (same sha10 as home).
+for secondary in privacy terms account; do
+  f="$OUT/$secondary/index.html"
+  [[ -f "$f" ]] || continue
+  sed -i -E "s#(https://khaynjo\.com/media/link-preview\.jpg)(\?v=[0-9a-f]+)?\"#\1?v=$PREVIEW_V\"#g" "$f"
+done
+
 
 if [[ ! -f "$OUT/v1/catalogue/public/index.json" ]]; then
   echo "error: catalogue missing in $OUT/v1/catalogue/" >&2
@@ -143,14 +159,7 @@ TMP="$OUT/index.html.tmp"
 # Title, description and link-preview tags live in shell/head.html (one copy
 # for deploy and preview). Crawlers and chat apps read this HTML only — they
 # never run the wasm.
-PREVIEW="$SITE/static/media/link-preview.jpg"
-if [[ ! -f "$PREVIEW" ]]; then
-  echo "error: missing sites/khaynjo/static/media/link-preview.jpg — run sites/khaynjo/scripts/make-link-preview.sh" >&2
-  exit 1
-fi
-# The picture's address changes when the picture does: WhatsApp, Telegram and
-# Facebook keep a preview for days and only fetch again for a new address.
-PREVIEW_URL="https://khaynjo.com/media/link-preview.jpg?v=$(sha256sum "$PREVIEW" | cut -c1-10)"
+# PREVIEW_URL already set above (sha10 of link-preview.jpg).
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
         <noscript><p>Khaynjo — restaurant operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://play.google.com/store/apps/details?id=com.khaynjo">Get it on Google Play</a></p></noscript>

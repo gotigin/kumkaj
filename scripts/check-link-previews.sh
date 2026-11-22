@@ -55,6 +55,11 @@ tabiyat.shop|/privacy|https://tabiyat.shop
 tabiyat.shop|/terms|https://tabiyat.shop
 tabiyat.shop|/account|https://tabiyat.shop
 ghalbol.com|/|https://ghalbol.com
+ghalbol.com|/privacy|https://ghalbol.com
+ghalbol.com|/terms|https://ghalbol.com
+ghalbol.com|/support|https://ghalbol.com
+ghalbol.com|/about|https://ghalbol.com
+ghalbol.com|/data-deletion|https://ghalbol.com
 EOF
 }
 

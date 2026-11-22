@@ -49,6 +49,7 @@ present_privacy() {
     --template="$PRIVACY_TMPL" \
     --metadata title="Privacy — Kumkaj" \
     -V lang=en \
+    -V preview_v="$PREVIEW_V" \
     -o "$OUT/privacy/index.html"
   cp "$PRIVACY_MD" "$OUT/privacy.md"
   echo "Presented /privacy from $PRIVACY_MD"
@@ -76,7 +77,22 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
   # Fonts: only the characters this site draws (the repo keeps them whole).
   "$SITE/scripts/subset-fonts.sh" "$OUT"
+  PREVIEW="$SITE/static/media/link-preview.jpg"
+  if [[ ! -f "$PREVIEW" ]]; then
+    echo "error: missing sites/kumkaj/static/media/link-preview.jpg — run sites/kumkaj/scripts/make-link-preview.sh" >&2
+    exit 1
+  fi
+  PREVIEW_V="$(sha256sum "$PREVIEW" | cut -c1-10)"
+  PREVIEW_URL="https://kumkaj.com/media/link-preview.jpg?v=$PREVIEW_V"
   present_privacy
+
+  # Cache-bust og/twitter image on secondary shells (same sha10 as home).
+  for secondary in privacy terms account; do
+    f="$OUT/$secondary/index.html"
+    [[ -f "$f" ]] || continue
+    sed -i -E "s#(https://kumkaj\.com/media/link-preview\.jpg)(\?v=[0-9a-f]+)?\"#\1?v=${PREVIEW_V}\"#g" "$f"
+  done
+
 
   BUILD_ID="preview-$(date -u +%Y%m%d%H%M%S)"
   INDEX="$OUT/index.html"
@@ -84,14 +100,7 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   # Title, description and link-preview tags live in shell/head.html (one copy
   # for deploy and preview). Crawlers and chat apps read this HTML only — they
   # never run the wasm.
-  PREVIEW="$SITE/static/media/link-preview.jpg"
-  if [[ ! -f "$PREVIEW" ]]; then
-    echo "error: missing sites/kumkaj/static/media/link-preview.jpg — run sites/kumkaj/scripts/make-link-preview.sh" >&2
-    exit 1
-  fi
-  # The picture's address changes when the picture does: WhatsApp, Telegram and
-  # Facebook keep a preview for days and only fetch again for a new address.
-  PREVIEW_URL="https://kumkaj.com/media/link-preview.jpg?v=$(sha256sum "$PREVIEW" | cut -c1-10)"
+  # PREVIEW_URL already set above (sha10 of link-preview.jpg).
   HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
   BODY_INJECT='        <noscript><p>Kumkaj — business operating systems by Gotigin. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a></p></noscript>
     </body>'
