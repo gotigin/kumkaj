@@ -255,7 +255,7 @@ amounts_show	Ipakita
 counter	Kahera
 dine_in	Kain sa loob
 takeaway	Dala-uwi
-order	Umorder
+order	Order
 tables	Mga hapag kainan
 kitchen	Kusina
 sales	Benta
@@ -1112,7 +1112,7 @@ book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
 order_help	Mag-tap ng menu item para idagdag ito.
-floor_help	Mag-tap ng hapag kainan para kunin o baguhin ang umorder. Ang mga kulay ay nagpapakita ng bakante → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at magdagdag ng hapag kainan ay nasa mga seksyon sa ibaba.
+floor_help	Mag-tap ng hapag kainan para kunin o baguhin ang order. Ang mga kulay ay nagpapakita ng bakante → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at magdagdag ng hapag kainan ay nasa mga seksyon sa ibaba.
 kitchen_help	Mga tiket sa kusina (KOT), pinakabago ang huli. Magsimula → Handa → Tapos na, inilipat ang isang tiket. Ang mga tiket ay hindi kailanman nagpapakita ng mga presyo.
 kitchen_empty	Walang bukas na tiket.
 add_a_table	Magdagdag ng hapag kainan
