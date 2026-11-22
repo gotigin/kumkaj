@@ -787,7 +787,7 @@ printer_format_custom	نیا اپنا فارمیٹ
 printer_format_custom_label	اپنا
 printer_format_custom_added	اس روٹ کے لیے اپنا فارمیٹ شامل ہو گیا
 add_printer	پرنٹر شامل کریں
-remove_printer	آخری ہٹائیں
+remove_printer	ہٹائیں
 route_pick_ph	بل یا باورچی خانہ
 route_bill	بل
 route_default_kitchen	ڈیفالٹ باورچی خانہ
@@ -826,7 +826,7 @@ station_print_summary_none	اس اسٹیشن پر ابھی پرنٹر نہیں �
 stations_none	ابھی کوئی اسٹیشن نہیں — نیچے ایک شامل کریں۔ مینو آئٹمز کوئی اسٹیشن لے سکتے ہیں تاکہ ان کا KOT وہیں چھپے۔
 route_up	اوپر
 route_down	نیچے
-route_remove	آخری ہٹائیں
+route_remove	ہٹائیں
 route_clear	پرنٹ نہ کریں
 save_printers	پرنٹر محفوظ کریں
 print_test_page	ٹیسٹ صفحہ چھاپیں

@@ -787,7 +787,7 @@ printer_format_custom	ନୂଆ ନିଜସ୍ୱ ଫର୍ମାଟ୍
 printer_format_custom_label	ନିଜସ୍ୱ
 printer_format_custom_added	ଏହି ରୁଟ୍ ପାଇଁ ନିଜସ୍ୱ ଫର୍ମାଟ୍ ଯୋଡ଼ାଗଲା
 add_printer	ପ୍ରିଣ୍ଟର ଯୋଡ଼ନ୍ତୁ
-remove_printer	ଶେଷଟି କାଢ଼ନ୍ତୁ
+remove_printer	ବାହାର କରନ୍ତୁ
 route_pick_ph	ବିଲ୍ କିମ୍ବା ରୋଷେଇ
 route_bill	ବିଲ୍
 route_default_kitchen	ଡିଫଲ୍ଟ ରୋଷେଇ
@@ -826,7 +826,7 @@ station_print_summary_none	ଏହି ଷ୍ଟେସନରେ ଏପର୍ଯ୍
 stations_none	ଏପର୍ଯ୍ୟନ୍ତ ଷ୍ଟେସନ୍ ନାହିଁ — ତଳେ ଗୋଟିଏ ଯୋଡ଼ନ୍ତୁ। ମେନୁ ଆଇଟମ୍ ଗୋଟିଏ ଷ୍ଟେସନ୍ ବ୍ୟବହାର କରିପାରେ ଯାହାଦ୍ୱାରା ସେମାନଙ୍କ KOT ସେଠାରେ ଛପା ହୁଏ।
 route_up	ଉପରକୁ
 route_down	ତଳକୁ
-route_remove	ଶେଷଟି କାଢ଼ନ୍ତୁ
+route_remove	ବାହାର କରନ୍ତୁ
 route_clear	ପ୍ରିଣ୍ଟ କରନ୍ତୁ ନାହିଁ
 save_printers	ପ୍ରିଣ୍ଟର ସଞ୍ଚୟ କରନ୍ତୁ
 print_test_page	ପରୀକ୍ଷା ପୃଷ୍ଠା ଛାପନ୍ତୁ

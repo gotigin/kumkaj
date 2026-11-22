@@ -787,7 +787,7 @@ printer_format_custom	নতুন নিজস্ব ফরম্যাট
 printer_format_custom_label	নিজস্ব
 printer_format_custom_added	এই রুটের জন্য নিজস্ব ফরম্যাট যোগ হয়েছে
 add_printer	প্রিন্টার যোগ
-remove_printer	শেষটা সরান
+remove_printer	সরান
 route_pick_ph	বিল বা রান্নাঘর
 route_bill	বিল
 route_default_kitchen	ডিফল্ট রান্নাঘর
@@ -826,7 +826,7 @@ station_print_summary_none	এই স্টেশনে এখনো প্র�
 stations_none	এখনো কোনো স্টেশন নেই — নিচে একটি যোগ করুন। মেনুর আইটেম একটি স্টেশন নিতে পারে যাতে তার KOT সেখানে ছাপা হয়।
 route_up	উপরে
 route_down	নিচে
-route_remove	শেষটা সরান
+route_remove	সরান
 route_clear	প্রিন্ট করবেন না
 save_printers	প্রিন্টার সংরক্ষণ
 print_test_page	টেস্ট পাতা ছাপুন

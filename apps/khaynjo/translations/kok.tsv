@@ -160,8 +160,8 @@ kot_job_label	{place} चो KOT → {kitchens}
 kot_job_reached	{place} चो KOT {kitchens} मेरेन पावलो
 kot_unassigned	किचन (स्टेशन ना)
 kot_unassigned_held	{n} पदार्थ स्टेशना बगर होल्ड — धाडपाक ओळीचेर होल्ड काडात
-kot_station_ph	किचन
-kot_station_dd	किचन
+kot_station_ph	रांदचेकूड
+kot_station_dd	रांदचेकूड
 kot_station_dd_n	किचन · {stations}
 kot_set_station	हें स्टेशन वापरात
 kot_station_applied	{n} पदार्थांचेर स्टेशन लागलें: {station}
@@ -787,7 +787,7 @@ printer_format_custom	नवी सानुकूल प्रोफायल
 printer_format_custom_label	कस्टम
 printer_format_custom_added	ह्या जाग्या खातीर सानुकूल प्रोफायल जोडला
 add_printer	प्रिंटर जोडचो
-remove_printer	काडचें
+remove_printer	काडांत
 route_pick_ph	बिल वा रांदचे कुडीचें स्टेशन
 route_bill	बिल
 route_default_kitchen	स्टेशन ना (अनियुक्त डिश) .
@@ -826,7 +826,7 @@ station_print_summary_none	ह्या स्टेशनाचेर अजू
 stations_none	अजून स्टेशनां नात — सकयल एक जोडात. मेनू आयटमांनी स्टेशन वापरूं येता देखून तांचे केओटी थंय छापता.
 route_up	वयर
 route_down	सकयल
-route_remove	काडचें
+route_remove	काडांत
 route_clear	नितळ
 save_printers	प्रिंटर जतनाय घेयात
 print_test_page	चांचणी पान छापचें
@@ -1407,7 +1407,7 @@ unpriced_note	तुमच्या मेनूंतल्या {n} पदा
 show_unpriced	मोल नासतना फकत पदार्थ दाखयात
 show_all_dishes	सगळे आयदनां दाखय
 role_waiter	वेटर
-role_kitchen	रांदचे कुडीकूड[सुदर]
+role_kitchen	रांदचेकूड
 role_title_rest_ph	भुमिकेचें नांव (देखीक कॅप्टन, हेड कूक)
 preset_help_rest	वेटर: ऑर्डर घेता आनी टेबलां सर्व्ह करता. कॅशियर: फारीकणी लेगीत हाताळटा. रांदचीकूड: रांदचे कुडीचो डिस्प्ले स्क्रीन. वेवस्थापक: तशेंच मेनू वेवस्थापन करता, ऑर्डर रद्द करता आनी सवलती लागू करता.
 kind_raw	कच्चो माल

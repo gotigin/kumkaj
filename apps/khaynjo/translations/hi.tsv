@@ -787,7 +787,7 @@ printer_format_custom	नया अपना फ़ॉर्मैट
 printer_format_custom_label	अपना
 printer_format_custom_added	इस रूट के लिए अपना फ़ॉर्मैट जोड़ा गया
 add_printer	प्रिंटर जोड़ें
-remove_printer	आखिरी हटाएँ
+remove_printer	हटाएँ
 route_pick_ph	बिल या रसोई
 route_bill	बिल
 route_default_kitchen	डिफ़ॉल्ट रसोई
@@ -826,7 +826,7 @@ station_print_summary_none	इस स्टेशन पर अभी प्र�
 stations_none	अभी कोई स्टेशन नहीं — नीचे एक जोड़ें। मेनू आइटम कोई स्टेशन चुन सकते हैं ताकि उनका KOT वहीं छपे।
 route_up	ऊपर
 route_down	नीचे
-route_remove	आखिरी हटाएँ
+route_remove	हटाएँ
 route_clear	प्रिंट न करें
 save_printers	प्रिंटर सहेजें
 print_test_page	टेस्ट पेज छापें

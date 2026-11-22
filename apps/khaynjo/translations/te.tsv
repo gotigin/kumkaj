@@ -787,7 +787,7 @@ printer_format_custom	కొత్త అనుకూల ఫార్మాట�
 printer_format_custom_label	అనుకూల
 printer_format_custom_added	ఈ మార్గానికి అనుకూల ఫార్మాట్ జోడించబడింది
 add_printer	ప్రింటర్ జోడించు
-remove_printer	చివరిది తొలగించు
+remove_printer	తొలగించు
 route_pick_ph	బిల్ లేదా వంటగది
 route_bill	బిల్
 route_default_kitchen	డిఫాల్ట్ వంటగది
@@ -826,7 +826,7 @@ station_print_summary_none	ఈ స్టేషన్‌పై ప్రింట
 stations_none	ఇంకా స్టేషన్లు లేవు — కింద ఒకటి జోడించండి. మెనూ ఐటమ్‌లు ఒక స్టేషన్‌ను వాడవచ్చు, అప్పుడు వాటి KOT అక్కడ ముద్రించబడుతుంది.
 route_up	పైకి
 route_down	కిందికి
-route_remove	చివరిది తొలగించు
+route_remove	తొలగించు
 route_clear	ప్రింట్ వద్దు
 save_printers	ప్రింటర్లను సేవ్ చేయి
 print_test_page	టెస్ట్ పేజీ ముద్రించు

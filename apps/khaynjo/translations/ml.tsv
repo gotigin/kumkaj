@@ -787,7 +787,7 @@ printer_format_custom	പുതിയ സ്വന്തം ഫോർമാറ�
 printer_format_custom_label	സ്വന്തം
 printer_format_custom_added	ഈ റൂട്ടിന് സ്വന്തം ഫോർമാറ്റ് ചേർത്തു
 add_printer	പ്രിന്റർ ചേർക്കുക
-remove_printer	അവസാനത്തേത് നീക്കം
+remove_printer	നീക്കം
 route_pick_ph	ബിൽ അല്ലെങ്കിൽ അടുക്കള
 route_bill	ബിൽ
 route_default_kitchen	ഡിഫോൾട്ട് അടുക്കള
@@ -826,7 +826,7 @@ station_print_summary_none	ഈ സ്റ്റേഷനിൽ ഇതുവരെ
 stations_none	ഇതുവരെ സ്റ്റേഷനുകളില്ല — താഴെ ഒന്ന് ചേർക്കുക. മെനു ഇനങ്ങൾക്ക് ഒരു സ്റ്റേഷൻ ഉപയോഗിക്കാം, അപ്പോൾ അവയുടെ KOT അവിടെ അച്ചടിക്കും.
 route_up	മുകളിലേക്ക്
 route_down	താഴേക്ക്
-route_remove	അവസാനത്തേത് നീക്കം
+route_remove	നീക്കം
 route_clear	പ്രിന്റ് വേണ്ട
 save_printers	പ്രിന്ററുകൾ സംരക്ഷിക്കുക
 print_test_page	ടെസ്റ്റ് പേജ് അച്ചടിക്കുക

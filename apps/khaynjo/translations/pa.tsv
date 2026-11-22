@@ -787,7 +787,7 @@ printer_format_custom	ਨਵਾਂ ਆਪਣਾ ਫਾਰਮੈਟ
 printer_format_custom_label	ਆਪਣਾ
 printer_format_custom_added	ਇਸ ਰੂਟ ਲਈ ਆਪਣਾ ਫਾਰਮੈਟ ਜੋੜਿਆ
 add_printer	ਪ੍ਰਿੰਟਰ ਜੋੜੋ
-remove_printer	ਆਖਰੀ ਹਟਾਓ
+remove_printer	ਹਟਾਓ
 route_pick_ph	ਬਿੱਲ ਜਾਂ ਰਸੋਈ
 route_bill	ਬਿੱਲ
 route_default_kitchen	ਡਿਫੌਲਟ ਰਸੋਈ
@@ -826,7 +826,7 @@ station_print_summary_none	ਇਸ ਸਟੇਸ਼ਨ ’ਤੇ ਹਾਲੇ ਪ�
 stations_none	ਅਜੇ ਕੋਈ ਸਟੇਸ਼ਨ ਨਹੀਂ — ਹੇਠਾਂ ਇੱਕ ਜੋੜੋ। ਮੀਨੂ ਆਈਟਮਾਂ ਕੋਈ ਸਟੇਸ਼ਨ ਵਰਤ ਸਕਦੀਆਂ ਹਨ ਤਾਂ ਜੋ ਉਹਨਾਂ ਦਾ KOT ਉੱਥੇ ਛਪੇ।
 route_up	ਉੱਪਰ
 route_down	ਹੇਠਾਂ
-route_remove	ਆਖਰੀ ਹਟਾਓ
+route_remove	ਹਟਾਓ
 route_clear	ਛਾਪੋ ਨਾ
 save_printers	ਪ੍ਰਿੰਟਰ ਸੰਭਾਲੋ
 print_test_page	ਟੈਸਟ ਪੰਨਾ ਛਾਪੋ

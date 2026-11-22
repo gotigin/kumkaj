@@ -787,7 +787,7 @@ printer_format_custom	নতুন নিজা ফৰ্মেট
 printer_format_custom_label	নিজা
 printer_format_custom_added	এই ৰুটৰ বাবে নিজা ফৰ্মেট যোগ কৰা হ'ল
 add_printer	প্ৰিণ্টাৰ যোগ
-remove_printer	শেষটো আঁতৰাওক
+remove_printer	আঁতৰাওক
 route_pick_ph	বিল বা ৰন্ধনশালা
 route_bill	বিল
 route_default_kitchen	ডিফ’ল্ট ৰন্ধনশালা
@@ -826,7 +826,7 @@ station_print_summary_none	এই ষ্টেচনত এতিয়ালৈ
 stations_none	এতিয়ালৈকে ষ্টেচন নাই — তলত এটা যোগ কৰক। মেনুৰ বস্তুৱে এটা ষ্টেচন ব্যৱহাৰ কৰিব পাৰে যাতে সিহঁতৰ KOT তাতে ছপা হয়।
 route_up	ওপৰলৈ
 route_down	তললৈ
-route_remove	শেষটো আঁতৰাওক
+route_remove	আঁতৰাওক
 route_clear	প্ৰিণ্ট নকৰিব
 save_printers	প্ৰিণ্টাৰ সংৰক্ষণ কৰক
 print_test_page	পৰীক্ষা পৃষ্ঠা ছপা কৰক

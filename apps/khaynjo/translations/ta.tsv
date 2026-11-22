@@ -787,7 +787,7 @@ printer_format_custom	புதிய தனிப்பயன் வடிவ�
 printer_format_custom_label	தனிப்பயன்
 printer_format_custom_added	இந்த வழிக்குத் தனிப்பயன் வடிவம் சேர்க்கப்பட்டது
 add_printer	அச்சுப்பொறி சேர்
-remove_printer	கடைசியை நீக்கு
+remove_printer	அகற்று
 route_pick_ph	பில் அல்லது சமையலறை
 route_bill	பில்
 route_default_kitchen	இயல்பு சமையலறை
@@ -826,7 +826,7 @@ station_print_summary_none	இந்த நிலையத்தில் அச
 stations_none	இன்னும் நிலையங்கள் இல்லை — கீழே ஒன்று சேர்க்கவும். மெனு பொருட்கள் ஒரு நிலையத்தைப் பயன்படுத்தலாம், அப்போது அவற்றின் KOT அங்கே அச்சாகும்.
 route_up	மேலே
 route_down	கீழே
-route_remove	கடைசியை நீக்கு
+route_remove	அகற்று
 route_clear	அச்சிட வேண்டாம்
 save_printers	அச்சுப்பொறிகளைச் சேமி
 print_test_page	சோதனைப் பக்கம் அச்சிடு

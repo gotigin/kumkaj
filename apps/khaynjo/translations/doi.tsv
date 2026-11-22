@@ -914,7 +914,7 @@ cloud_sending_reset	रीसेट लिंक भेजना...
 cloud_forgot_sent	जेकर उस ईमेल दा खाता ऐ तां रीसेट लिंक रस्ते च ऐ।
 cloud_welcome	{user} · {plan} दे रूप च साइन इन कीता गेदा ऐ
 cloud_created	खाता बनाया गया। कदूं करी सकदे ओ इस गल्लै गी सत्यापन करने लेई अपने ईमेल दी जांच करो।
-cloud_cancel	रद्द
+cloud_cancel	रद्द करो
 unmark	अनमार्क
 update_my_password	मेरा पासवर्ड अपडेट करो
 update_my_pin	मेरा साइन-इन अपडेट करो

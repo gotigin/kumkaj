@@ -787,7 +787,7 @@ printer_format_custom	નવું પોતાનું ફોર્મેટ
 printer_format_custom_label	પોતાનું
 printer_format_custom_added	આ રૂટ માટે પોતાનું ફોર્મેટ ઉમેર્યું
 add_printer	પ્રિન્ટર ઉમેરો
-remove_printer	છેલ્લું કાઢો
+remove_printer	દૂર કરો
 route_pick_ph	બિલ અથવા રસોડું
 route_bill	બિલ
 route_default_kitchen	ડિફૉલ્ટ રસોડું
@@ -826,7 +826,7 @@ station_print_summary_none	આ સ્ટેશન પર હજુ પ્રિ�
 stations_none	હજી કોઈ સ્ટેશન નથી — નીચે એક ઉમેરો. મેનૂ આઇટમ કોઈ સ્ટેશન વાપરી શકે જેથી તેમનો KOT ત્યાં છપાય.
 route_up	ઉપર
 route_down	નીચે
-route_remove	છેલ્લું કાઢો
+route_remove	દૂર કરો
 route_clear	છાપો નહીં
 save_printers	પ્રિન્ટર સાચવો
 print_test_page	ટેસ્ટ પેજ છાપો

@@ -160,8 +160,8 @@ kot_job_label	{place} के KOT → {kitchens}
 kot_job_reached	{place} के KOT {kitchens} पहुंचे
 kot_unassigned	किचन (स्टेशन नइ हे)
 kot_unassigned_held	{n} व्यंजन बिना स्टेशन रोके हे — भेजे बर लाइन म रोक हटाव
-kot_station_ph	किचन
-kot_station_dd	किचन
+kot_station_ph	रसोई
+kot_station_dd	रसोई
 kot_station_dd_n	किचन · {stations}
 kot_set_station	ए स्टेशन लगाव
 kot_station_applied	{n} व्यंजन म स्टेशन लगिस: {station}
@@ -787,7 +787,7 @@ printer_format_custom	नवा अपना फ़ॉर्मैट
 printer_format_custom_label	अपना
 printer_format_custom_added	इस रूट बर अपना फ़ॉर्मैट जोड़ा गे
 add_printer	प्रिंटर जोड़व
-remove_printer	आखिरी हटाव
+remove_printer	हटाव
 route_pick_ph	बिल या रसोई
 route_bill	बिल
 route_default_kitchen	डिफ़ॉल्ट रसोई
@@ -826,7 +826,7 @@ station_print_summary_none	इस स्टेशन पर अभी प्र�
 stations_none	अभी कोनो स्टेशन नइ — नीचे एक जोड़व। मेनू आइटम कोनो स्टेशन चुन सकते हें ताकि उनका KOT उहीं छपे।
 route_up	ऊपर
 route_down	नीचे
-route_remove	आखिरी हटाव
+route_remove	हटाव
 route_clear	प्रिंट न करव
 save_printers	प्रिंटर सहेजव
 print_test_page	टेस्ट पेज छापें

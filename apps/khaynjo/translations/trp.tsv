@@ -914,7 +914,7 @@ cloud_sending_reset	রিসেট লিঙ্ক পাঠানো হচ্
 cloud_forgot_sent	যদি সেই ইমেলের একটি অ্যাকাউন্ট থাকে, একটি রিসেট লিঙ্ক পথে রয়েছে৷
 cloud_welcome	{user} · {plan} হিসাবে সাইন ইন করেছেন৷
 cloud_created	অ্যাকাউন্ট তৈরি করা হয়েছে। আপনি কখন পারেন তা যাচাই করতে আপনার ইমেল চেক করুন।
-cloud_cancel	বাতিল করুন
+cloud_cancel	চানচেল খাইদি
 unmark	মারক খিবি দি
 update_my_password	আনি পাসুওরদ কুতাল খাইদি
 update_my_pin	আনি সিগন-ইন কুতাল খলাই দি

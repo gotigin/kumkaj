@@ -787,7 +787,7 @@ printer_format_custom	नवा स्वतःचा फॉरमॅट
 printer_format_custom_label	स्वतःचा
 printer_format_custom_added	या मार्गासाठी स्वतःचा फॉरमॅट जोडला
 add_printer	प्रिंटर जोडा
-remove_printer	शेवटचे काढा
+remove_printer	काढा
 route_pick_ph	बिल किंवा स्वयंपाकघर
 route_bill	बिल
 route_default_kitchen	डीफॉल्ट स्वयंपाकघर
@@ -826,7 +826,7 @@ station_print_summary_none	या स्टेशनवर अद्याप �
 stations_none	अजून स्टेशन नाहीत — खाली एक जोडा. मेनू आयटम एखादे स्टेशन वापरू शकतात म्हणजे त्यांचा KOT तिथे छापला जातो.
 route_up	वर
 route_down	खाली
-route_remove	शेवटचे काढा
+route_remove	काढा
 route_clear	छापू नका
 save_printers	प्रिंटर जतन करा
 print_test_page	चाचणी पान छापा

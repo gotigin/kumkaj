@@ -787,7 +787,7 @@ printer_format_custom	ಹೊಸ ಸ್ವಂತ ಫಾರ್ಮ್ಯಾಟ್
 printer_format_custom_label	ಸ್ವಂತ
 printer_format_custom_added	ಈ ಮಾರ್ಗಕ್ಕೆ ಸ್ವಂತ ಫಾರ್ಮ್ಯಾಟ್ ಸೇರಿಸಲಾಗಿದೆ
 add_printer	ಮುದ್ರಕ ಸೇರಿಸಿ
-remove_printer	ಕೊನೆಯದನ್ನು ತೆಗೆ
+remove_printer	ತೆಗೆದುಹಾಕಿ
 route_pick_ph	ಬಿಲ್ ಅಥವಾ ಅಡುಗೆ
 route_bill	ಬಿಲ್
 route_default_kitchen	ಡೀಫಾಲ್ಟ್ ಅಡುಗೆ
@@ -826,7 +826,7 @@ station_print_summary_none	ಈ ಸ್ಟೇಷನ್‌ನಲ್ಲಿ ಇನ್
 stations_none	ಇನ್ನೂ ಸ್ಟೇಷನ್‌ಗಳಿಲ್ಲ — ಕೆಳಗೆ ಒಂದನ್ನು ಸೇರಿಸಿ. ಮೆನು ಐಟಂಗಳು ಒಂದು ಸ್ಟೇಷನ್ ಬಳಸಬಹುದು, ಆಗ ಅವುಗಳ KOT ಅಲ್ಲಿ ಮುದ್ರಣವಾಗುತ್ತದೆ.
 route_up	ಮೇಲೆ
 route_down	ಕೆಳಗೆ
-route_remove	ಕೊನೆಯದನ್ನು ತೆಗೆ
+route_remove	ತೆಗೆದುಹಾಕಿ
 route_clear	ಮುದ್ರಿಸಬೇಡಿ
 save_printers	ಮುದ್ರಕಗಳನ್ನು ಉಳಿಸಿ
 print_test_page	ಪರೀಕ್ಷಾ ಪುಟ ಮುದ್ರಿಸಿ
