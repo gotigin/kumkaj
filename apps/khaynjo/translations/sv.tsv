@@ -288,7 +288,7 @@ zero_sales_saved_off	Försäljningen måste ha ett pris över 0 INR
 floor_areas_help	Områden är rum eller zoner på golvet (Dine In, Parcel, AC …). Lägg först till ett område och lägg sedan bord i det - varje område är en separat grupp på golvet.
 area_new_ph	Nytt område/rum (t.ex. AC, trädgård)
 add_area	Lägg till område
-area_added	Området "{name}" är klart – lägg till tabeller i det
+area_added	Området "{name}" är klart – lägg till bord i det
 no_favorites	Inga favoriter än – lägg till objekt från listan nedan.
 add_to_bill	Lägg till på räkningen
 added	Tillagd
@@ -402,7 +402,7 @@ add_note	Lägg till anteckning
 add_opening_balance	Lägg till ingående saldo
 add_staff	Lägg till personal
 add_station	Lägg till station
-add_table	Lägg till tabell
+add_table	Lägg till bord
 add_unit	Lägg till enhet
 add_use_name	Lägg till / använd detta namn
 allow_extra_tills	Tillåt extra kassar
@@ -497,7 +497,7 @@ floor_layout_h	H
 floor_layout_save	Spara layout
 floor_layout_open	Öppet bord
 floor_layout_edit	Redigera layout
-floor_layout_pick	Tryck på en tabell för att redigera dess layout
+floor_layout_pick	Tryck på ett bord för att redigera dess layout
 floor_layout_saved	Bordsplanen har sparats
 floor_layout_nudge_left	← 20
 floor_layout_nudge_right	→ 20
@@ -1115,7 +1115,7 @@ order_help	Tryck på ett objekt för att lägga till det.
 floor_help	Tryck på ett bord för att ta eller ändra beställningen. Färger visar ledigt → sittande → kök → redo → ätande → räkning → betalt. Väntelista, bokningar och tilläggsbord finns i avsnitten nedan.
 kitchen_help	Köksbiljetter (KOT), senaste sist. Start → Klar → Klar flyttar en biljett. Biljetter visar aldrig priser.
 kitchen_empty	Inga öppna biljetter.
-add_a_table	Lägg till en tabell
+add_a_table	Lägg till ett bord
 add_station_heading	Lägg till en köksstation
 categories_help	Tryck på Använd för att spara objektet ovan under den kategorin. Foto ger kategorin en bild; utan en visar den sina initialer.
 dish_search_ph	Artikelnamn — sök i våra rätter eller skriv din egen
@@ -1167,7 +1167,7 @@ move_short	Flytta
 cancel_item_title	Avbryt den här artikeln — köket får en avbeställningssedel
 nc_item_title	Gör detta föremål gratis (NC)
 charge_again_title	Debitera den här artikeln igen
-move_item_title	Flytta detta objekt till en annan tabell
+move_item_title	Flytta detta objekt till ett annat bord
 already_cooked	Redan tillagad (slöseri)
 not_cooked_yet	Inte kokt ännu
 return_to_customer	Växel till kund
@@ -1176,7 +1176,7 @@ tip_not_sale	Tips (personalens, inte en rea)
 right_settle	Ta betalt
 right_cancel_sent	Avbryt en skickad vara
 right_complimentary	Gratis (NC)
-right_move_table	Flytta / slå samman tabeller
+right_move_table	Flytta / slå samman bord
 right_reprint	Skriv ut räkningen igen
 right_allowed	Tillåtet
 right_with_approval	Med godkännande
@@ -1188,7 +1188,7 @@ servers_found_pick	Tryck på butiken du vill ansluta till.
 server_host_selected	Använd {host} — ange kopplingskoden och sedan Koppla nu.
 print_bill	Skriv ut räkningen
 table_actions	Bordåtgärder
-move_merge_table	Flytta / slå samman tabell
+move_merge_table	Flytta / slå samman bord
 move_help	Flytta denna tabells ordning till ett ledigt bord, eller slå samman det till ett löpande.
 move_target_ph	Bordnamn (t.ex. D5, P2)
 approval_pin_ph	Chefs-PIN (endast om tillfrågad)
@@ -1196,15 +1196,15 @@ move_here	Flytta hit
 merge_into	Gå in i den
 line_reason_ph	Orsak (t.ex. gäst ändrade åsikt, slut i lager)
 line_qty_ph	Hur många ska avbrytas (tomt = alla)
-line_target_ph	Flytta till tabell (t.ex. D5)
+line_target_ph	Flytta till bord (t.ex. D5)
 confirm	Bekräfta
 menu_search_ph	Sök objekt eller kortkod
 customer_paid_ph	Kunden betalade
 tip_ph	Tips
 table_area_ph	Område (t.ex. Dine In, Parcel, AC)
 table_range_ph	Många på en gång: D1-D20
-add_these_tables	Lägg till dessa tabeller
-remove_these_tables	Ta bort dessa tabeller
+add_these_tables	Lägg till dessa bord
+remove_these_tables	Ta bort dessa bord
 table_remove_ph	Ta bort: T1-T24, eller ett bords namn
 find_server	Hitta butikens server
 bill_format	Notaformat
