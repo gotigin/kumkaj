@@ -65,3 +65,14 @@ need the author and licence named.
 | `japanese/tendon.webp` | deer tendon in a market vat | Typical example of Tendon | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=57177667 | resized, WebP |
 | `japanese/hayashi-rice.webp` | Japanese curry rice | グリル小宝のハイシライス | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=115626332 | resized, WebP |
 | `japanese/teriyaki-chicken.webp` | glazed beef, not chicken | Chicken Teriyaki (with rice and slaw) at Toshi’s Teriyaki Grill, Seattle, Washington | Zheng Zhou | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=149642243 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 desserts)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `desserts/angel-food-cake.webp` | chocolate cake with strawberries and pretzel rods | AngelFoodCake | Jennifer | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=2851702 | resized, WebP |
+| `desserts/basque-cheesecake.webp` | mocha cake slice with mint, not burnt Basque | Burnt Bake Cheesecake Khas Basque Spanyol | Aqilla Rahmi | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/w/index.php?curid=179430209 | resized, WebP |
+| `desserts/clafoutis.webp` | savoury herb bread, not cherry clafoutis | Clafoutis cerises | Popo le Chien | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=50222498 | resized, WebP |
+| `desserts/cream-caramel-cup.webp` | apple pastry shell with caramel drizzle | Crème caramel | Anette B | Public domain | https://commons.wikimedia.org/w/index.php?curid=5840387 | resized, WebP |
+| `desserts/mochi.webp` | pale rectangular fudge/barfi blocks | Daifuku 001 | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=115421922 | resized, WebP |
+| `desserts/mooncake.webp` | Indian nut sweet with timestamp watermark | Mooncake | Lybil BER | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=18193968 | resized, WebP |
