@@ -358,7 +358,7 @@ party_name_selected_ph	पार्टीनि मुं (एबा साय�
 password_ph	पासवार्ड
 pay_ap_card	AP कार्ड जों हो
 pay_ap_cash	AP नगद हो
-pay_ap_heading	जांखौ जों जोंखा बेखौ हो (AP)
+pay_ap_heading	जांखौ जोंखा बेखौ हो (AP)
 pay_ap_upi	AP UPI हो
 pay_selected_heading	सायखजानायखौ हो (जोंखा फोजोब / एडभान्स ला)
 print_open	प्रिन्ट / खेव
@@ -603,7 +603,7 @@ or_unlock_login	एबा लगइन id + पासवार्डजों �
 or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	तबीयत खाता
-cloud_account_help	tabiyat.shop/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_account_help	tabiyat.shop/account जों एखे खाताजों रजिष्टर एबा साइन इन खालाम। नोंथांनि क्लाउड आईडी आरो फ्री प्लान दानो।
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
@@ -613,7 +613,7 @@ cloud_web_methods	वेबसाइट पर Google और अन्य तर
 cloud_signing_in	इन कर रहे हैं…
 cloud_sending_reset	रीसेट लिंक भेजा जा रहा है...
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
-cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
+cloud_welcome	{user} · {plan} बादि साइन इन जाबाय
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
 cloud_cancel	रद्द करना
 permission_preset	खामानि

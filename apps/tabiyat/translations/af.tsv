@@ -460,7 +460,7 @@ printers_help	Vind drukkers, tik een aan om dit te kies, en druk dan 'n testblad
 printers_host_only	Drukkers word op die winkeltoestel (Bediener) gestel. Hierdie register stuur rekeninge en ou kaarte daarheen — Vind / voeg by / ken toe bly op die Bediener. Testblad en faktuurdrukgrootte gaan na die Bediener.
 printers_find_heading	Soek drukkers
 printers_find_tip	Vind sken hierdie toestel en hou die lys up-to-date.
-printers_pool_empty	(nog nie nie — tik Vind)
+printers_pool_empty	(nog nie — tik Vind)
 printer_assign_dd	Egte drukker: {place}
 printer_assign_pick	Kies egte drukker
 printer_profile_heading	Opstelling

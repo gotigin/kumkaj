@@ -37,7 +37,7 @@ settle_cash	Pynbeit ia ka pisa
 settle_card	Ka kard pynbeit
 items	Ki dawai
 nav_items	Ki dawai
-items_help	Tap ia ka item ban pynbeit ia ka. Ka item kaba thymmai ka pynkhuid ia ka phorm. Wad da ka kyrteng lane u code ba lyngkot, buh ia ka dor (0 ka long kaba bha), nangta Add. Ki jingdie kiba la dep ban buh jingthoh ki buh ia ka kyrteng kaba la pynngat ia ki.
+items_help	Kyntip ia ka item ban pynbeit ia ka. Ka item kaba thymmai ka pynkhuid ia ka phorm. Wad da ka kyrteng lane u code ba lyngkot, buh ia ka dor (0 ka long kaba bha), nangta Add. Ki jingdie kiba la dep ban buh jingthoh ki buh ia ka kyrteng kaba la pynngat ia ki.
 add_item	Pyndap ia ka tiar
 new_item	Ka tiar thymmai
 adding_item	Ka jingpynrung ia ka tiar kaba thymmai .
@@ -149,13 +149,13 @@ diag_send_help	Ka jingmynjur ka long kawei ka paket, nangta ka kut noh. Kaba shi
 diag_send_approved	La mynjur ban iasam na ka bynta kawei ka package (kan kut noh shen)
 diag_export_send	Pynlong ia ka package ba iasam (donkam ia ka jingmynjur)
 diag_export_send_done	Share ia ka jingbam ba la pynkhreh ha ka por {path} — jied shano ban buh, nangta phah tang sha ka jingkyrshan Kumkaj
-diag_save_bundle	Save ia ka kopi jong ka jingpeit bniah
+diag_save_bundle	Buh ia ka kopi jong ka jingpeit bniah
 diag_bundle_saved	Ka kopi jong ka jingpeit bniah la buh ha ka {path} .
 diag_bundle_failed	Ym lah ban save ia ka copy jong ka jingpeit bniah — pyrshang biang .
 diag_clear	Pynkhuid ia ki jingthoh jingkhein
 diag_cleared	La pynkhuid ia ki jingthoh jingkhein
 sidebar_settings	Ka bynta ba shadien
-sidebar_settings_help	Kijuh ki icon kum ki rel ba shadien. Drag ia ka row ban pynbeit biang. Pynphai ia u switch ban pyni ne buhrieh. Ka Settings bad ka Lock ki sah beit ha ka bar.
+sidebar_settings_help	Kijuh ki icon kum ki rel ba shadien. Drag ia ka row ban pynbeit biang. Pynphai ia u switch ban pyni ne buhrieh. Ka Jingpynbeit bad ka Lock ki sah beit ha ka bar.
 sidebar_always_on_short	Baroh shilynter
 sidebar_menu_items	Ki tiar
 sidebar_enable_all	Pynlong ia baroh
@@ -450,7 +450,7 @@ last_update_at	Ka jingpynkylla kaba khatduh: {time}.
 pair_intro	Peit ia u server, lane type ia ka address bad pairing code jong u.
 queue_waiting	Ka jingap ban poi ha ka dukan ({n}):
 queue_tries	La pyrshang {n} sien · ka jubab ba khatduh: {e}
-save_backup_copy	Save ia ka kopi ba la buh...
+save_backup_copy	Buh ia ka kopi ba la buh...
 backup_copy_saved	La buh ia ka kopi ba la buh — buh ia ka ha kane ka tiar (ka USB lane kawei pat ka tiar)
 backup_copy_overdue	Ym don kopi ba la buh kyrpang na kane ka tiar haduh {n} sngi — Ki jingpynbeit → Ka jingpynkylla .
 backup_copy_failed	Ka copy ba la buh lypa kam lah ban buh hangta — jied ia kawei pat ka jaka .
@@ -478,7 +478,7 @@ virtual_printers_heading	Ki nongpynmih kot ba shisha
 virtual_printers_empty	Ym pat don ki nongpynmih ba shisha — buh ia ki dor harum, nangta Save. Hadien ba phi la don katto katne, nion ia kawei ha ka list ban pynbeit.
 virtual_printer_name_ph	Ka kyrteng jong ka kor shon dur (ba lah ban jied)
 virtual_printer_create	Shna ia ka kor shon dur
-virtual_printer_save	Save ia ka kor shon dur
+virtual_printer_save	Buh ia ka kor shon dur
 virtual_printer_delete	Pyndam noh ia ka printer ba shisha
 virtual_printer_created	La shna ia ka kor shon dur “{name}”
 virtual_printer_deleted	La pyndam noh ia ka jingpynmih kot “{name}”
@@ -589,7 +589,7 @@ day_close_help	Ka jingthoh ia ka sngi ba khang ka buh ia kane ka jingpynkylla (b
 expenses_word	Ki jinglut jingsep
 feature_access_help	Kaei kaba ki lah ban plie — ka jingjied; Ka kam haneng ka la dep buh ia ka jinglong ba la buh lypa
 fresh_book_tabiyat	Fresh = katalog kaba thylli (pynrung ia ki tiar hadien). Ka kot = thoh ia ka stock kaba plie bad mano ba donkam ia phi harum.
-fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Tap Done ynda la dep.
+fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Kyntip Done ynda la dep.
 gross_word	Baroh
 how_start	Kumno phi kwah ban sdang?
 later_country_pack	Hadien: Ki jingpynbeit → pyndonkam ia ka pack ri jong phi na ka bynta ki jingthoh khajna bad jingsiew.
@@ -603,7 +603,7 @@ or_unlock_login	Lane plie da ka id login + ka ktien rieh
 or_unlock_shop_login	Or unlock with shop login
 shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
 cloud_account_title	तबीयत खाता
-cloud_account_help	tabiyat.shop/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_account_help	Register lane sign in bad ka account kaba long kum tabiyat.shop/account. Ka pynthaw ia ka cloud ID jong phi bad ka plan ba kyrkhu.
 cloud_name_ph	Name (optional)
 cloud_email_ph	Email
 cloud_password_ph	Password
@@ -613,7 +613,7 @@ cloud_web_methods	Google and other methods on the website
 cloud_signing_in	इन कर रहे हैं…
 cloud_sending_reset	Sending reset link…
 cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
+cloud_welcome	La sign in kum {user} · {plan}
 cloud_created	Account created. Check your email to verify when you can.
 cloud_cancel	Cancel
 permission_preset	Ka kam
@@ -642,7 +642,7 @@ staff_name_ph	Kyrteng jong ki nongtrei
 staff_copy_hire_ph	Kopi ia ka jingpynbeit na (jied)
 staff_copy_hire	Pyndonkam ia ka setup jong une u briew
 staff_edit_name_ph	Pyni ia ka kyrteng
-staff_rename	Save ia ka kyrteng
+staff_rename	Buh ia ka kyrteng
 staff_copy_edit_ph	Copy ia ka jingpynbeit na uwei pat u briew .
 staff_copy_edit	Copy ia ka jingpynbeit jong ki sha ki ba la jied .
 staff_copy_edit_onto	Copy ia ka jingpynbeit jong ki sha ka {name} .
@@ -655,7 +655,7 @@ staff_copy_same	Kata ka dei kajuh ka briew — jied ia uwei pat .
 staff_rename_need_selected	Jied mano ban pynkylla kyrteng nyngkong .
 team_pick_hint	Jied mano ban pynbeit — ki screen, ki hok pisa, bad ki steshon ki paw tang na ka bynta uta u briew.
 team_features_changed	La pynkylla ia ki screen — Pynsah ia ka jingpynbeit na ka bynta une u briew .
-team_rights_changed	La pynkylla ia ki hok — Save ia ka jingpynbeit na ka bynta une u briew .
+team_rights_changed	La pynkylla ia ki hok — Buh ia ka jingpynbeit na ka bynta une u briew .
 they_owe_us	Ki don ram ha ngi
 unit_at_cap	Ka bynta @
 units_help	Ki code na ka bynta ki jingthoh jong ki mar (kg, ka bynta, ka pla). Kawei pa kawei ka unit ka dei ban pyniasoh — beit ne lyngba kiwei pat ki unit — bad ka jingthew (kg · cm · ml · pc), kum. 1 kret = 2 synduk bad 1 synduk = 20 cm. Ki jingkylla: 1 na = u nongpynkylla sha. Ki pisa kim ju long ki unit.
@@ -676,7 +676,7 @@ pin_hint_paired	Ka jingpynkhreh haduh ka jingpyniasoh — plie ban die .
 pin_hint_pair_first	Ka jingpynkylla — pyniasoh bad ka tiar dukan nyngkong .
 unlock_to_continue	Plie ia ka jingkhang ban bteng
 no_staff_yet	Ym pat don nongtrei — plie kum u Trai, nangta ka Team .
-icon_new_selected	Icon: la jied ia ka file thymmai — tap Save ia ka kyrteng .
+icon_new_selected	Icon: la jied ia ka file thymmai — tap Buh ia ka kyrteng .
 icon_custom	Icon: dak jaka ba la shna kyrpang
 icon_default	Icon: Kumkaj dak (ba la buh) — jied ia kawei kaba la buh kyrpang
 logo_yours	Logo: ka dak jong ka dukan jong phi — la pyni ha ki screen bad ki resit .
@@ -729,8 +729,8 @@ book_kind_today	Ki kot mynta ka sngi
 book_kind_month	Ki kot jong une u bnai .
 book_kind_aging	Ka jingsah / jingsiew-jingsiew
 book_kind_balance	Ka jingkhein jingdiah
-order_help	Tap ia ka item ban pyndap ia ka.
-categories_help	Tap Use ban file ia ka item kaba don haneng hapoh kata ka kyrdan. Photo ka ai ia ka kyrdan ia ka dur; khlem kawei ka pyni ia ki dak ba nyngkong jong ka.
+order_help	Kyntip ia ka item ban pyndap ia ka.
+categories_help	Kyntip Pyndonkam ban file ia ka item kaba don haneng hapoh kata ka kyrdan. Photo ka ai ia ka kyrdan ia ka dur; khlem kawei ka pyni ia ki dak ba nyngkong jong ka.
 dish_search_ph	Ka kyrteng wad, ka umsoh lane ka barkod...
 sizes_as_items_ph	Ki jingheh kum ki tiar ba kyrpang (da jied) — Shiteng=120, Ba pura=200
 dish_group_ph	Ka jingkhlain / kynhun pack (da kaba jied) — e.g. 500mg ka lyngkhot
@@ -763,7 +763,7 @@ right_denied	Ym shah
 editing_staff	Ka jingpynbeit
 finding_server	Ngi wad ia ka server jong ka dukan ha kane ka Wi‑Fi...
 no_server_found	Ym don ba lap. Ha ka Server: Ki jingpynbeit → Kiwei pat ki tiar → Ailad ia ki jingpynbna ba kham bun (juh Wi‑Fi). Lane type ia ka IP ba la pyni hangta.
-servers_found_pick	Tap ia ka dukan kaba phi kwah ban pyniasoh.
+servers_found_pick	Kyntip ia ka dukan kaba phi kwah ban pyniasoh.
 server_host_selected	Da kaba pyndonkam {host} — pynrung ia u code jong ka pairing, nangta Pair mynta.
 approval_pin_ph	Manager PIN (tang lada kylli)
 menu_search_ph	Ka jingwad ia ka item lane ka code lyngkot .
@@ -841,7 +841,7 @@ upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI kyrteng jong u nongsiew (da jied)
 show_upi_qr	Pyni UPI QR
 close_upi_qr	Khang
-upi_qr_help	U nongthied u scan bad u siew. Tap Shim ia ka jingsiew hadien ba ki la siew. Ka screen kaba ar: plie ia ka Server URL /pyni ha ka LAN.
+upi_qr_help	U nongthied u scan bad u siew. Kyntip Shim ia ka jingsiew hadien ba ki la siew. Ka screen kaba ar: plie ia ka Server URL /pyni ha ka LAN.
 role_help_customer	Ka bynta: U nongthied — u nongkit ram (ki don ram ha ngi). Ujuh u nongthied ne u nongsam u lah ruh ban pynbiang stock.
 role_help_both	Ki kam: U nongthied + U nongsam — uwei u nongthied ne u nongsam, ka kot jingkhein jingdiah bad ki kot jingkhein jingdiah ba dei ban siew, net ha ki Report.
 role_help_supplier	Ka bynta: U nongsam — ngi donkam ia ki na ka bynta ki jingthied.

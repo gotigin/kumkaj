@@ -569,7 +569,7 @@ amend_help	Eiporavo peteĩ ñemuha emoambue, emboyke térã embojevy hag̃ua. Um
 applied_total_cap	TOTAL APLICADO rehegua
 bank_balance	Saldo bancario rehegua
 bank_net_today	Banco neto ko'ã árape
-branch_export_help	Exportación ohai ohai branch_snapshot_CODE_DATE.json pe carpeta de copias de seguridad-pe ha okopia portapapeles-pe. Ojegueru hag̃ua ambue salida ára, eñongatu iñemohendaha import_branch_snapshot.json ramo peteĩchagua kundahárape, upéi epoko Import-pe.
+branch_export_help	Exportación ohai branch_snapshot_CODE_DATE.json pe carpeta de copias de seguridad-pe ha okopia portapapeles-pe. Ojegueru hag̃ua ambue salida ára, eñongatu iñemohendaha import_branch_snapshot.json ramo peteĩchagua kundahárape, upéi epoko Import-pe.
 brand_shown_help	Ojehechauka umi pantalla oĩvape pe app ryepýpe. Pe app réra ha icono oñeinstaláva ko tembipuru’ípe opyta plataforma lista ramo.
 app_icon	App icono
 logo_help	Pe marca opcional tenda rehegua umi pantalla oĩvape pe app-pe.
@@ -667,7 +667,7 @@ who_unlocking	Mávapa odesblokea hína?
 locked_word	Oñemboty
 set_owner_pin	CONJUNTO JEJAPO PIN .
 enter_owner_passcode	OIKE CÓDIGO DE PASO JEJAPO rehegua
-enter_staff_passcode	OIKE CÓDIGO DE PERSONAL PERSONAL-PE
+enter_staff_passcode	Eike código de personal-pe
 pin_hint_choose	Eiporavo 4–12 dígito · Eike térã Emboguejy eñongatu hag̃ua
 pin_hint_new	Ipyahu 4–12 dígito Ijára PIN · Eike térã Emboguejy
 pin_hint_shop_code	Tenda tembipuru · código de emparejamiento {} .

@@ -841,7 +841,7 @@ upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-Empfänger (optional)
 show_upi_qr	UPI-QR zeigen
 close_upi_qr	Schließen
-upi_qr_help	Kunde scannt und zahlt. Nach der Zahlung Zahlung annehmen antippen. Zweiter Bildschirm: Server-URL /display im LAN öffnen.
+upi_qr_help	Kunde scannt und zahlt. Nach der Zahlung „Zahlung annehmen“ antippen. Zweiter Bildschirm: Server-URL /display im LAN öffnen.
 role_help_customer	Rolle: Kunde — AR (sie schulden uns). Dieselbe Firma kann auch Lieferant sein.
 role_help_both	Rollen: Versender + Frachtführer — eine Partei, AR- und AP-Bücher, netto in Berichten.
 role_help_supplier	Rolle: Lieferant — AP für Einkäufe.
