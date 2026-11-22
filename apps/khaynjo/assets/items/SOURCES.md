@@ -414,3 +414,38 @@ need the author and licence named.
 | `soups-salads/minestrone.webp` | table spread with Parmigiano package and branded beer | Homemade minestrone soup | Liat Portal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Homemade_minestrone_soup.jpg | resized, WebP |
 | `thai-asian/roti-canai.webp` | kottu-style chopped bread stew with fried egg | Roti canai with sauce.JPG | BrokenSphere | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Roti_canai_with_sauce.JPG | resized, WebP |
 | `south-indian/rasam.webp` | sambar vada in a metal bowl | Rasam.JPG | M | Public domain | https://commons.wikimedia.org/wiki/File:Rasam.JPG | resized, WebP |
+
+### hot-beverages/chai-latte.webp
+- source: https://commons.wikimedia.org/wiki/File:Chai_Latte_-_The_Flour_Pot_Bakery_2026-05-20.jpg
+- license: CC0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
+
+### hot-beverages/egg-coffee.webp
+- source: https://commons.wikimedia.org/wiki/File:Egg_Coffee_(6923068614).jpg
+- license: CC BY 2.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
+
+### hot-beverages/french-press-coffee.webp
+- source: https://commons.wikimedia.org/wiki/File:French_press_cafetiere_with_coffee_on_Coffee_Right_in_Brno,_Brno-City_District.jpg
+- license: CC BY 3.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
+
+### hot-beverages/hong-kong-milk-tea.webp
+- source: https://commons.wikimedia.org/wiki/File:Hong_Kong_milk_tea.jpg
+- license: CC BY-SA 3.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
+
+### ice-cream/dondurma.webp
+- source: https://commons.wikimedia.org/wiki/File:Dondurma_with_kabak.jpg
+- license: CC BY-SA 4.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
