@@ -723,7 +723,7 @@ to_code_ph	კოდირება (კგ)
 uncleared_no_ph	გაუგებარი # ზემოთ
 unit_cost_ph	ერთეულის ღირებულება
 unit_name_bag_ph	სახელი (ჩანთა)
-unit_plate_ph	ერთეული (ფირფიტა / ცალი - ცარიელი = თითოეული)
+unit_plate_ph	ერთეული (ცარიელი = თითო)
 pay_credit	ანგარიშზე
 book_kind_today	დღეს ჩანაწერები
 book_kind_month	ამ თვის ჩანაწერები

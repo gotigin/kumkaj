@@ -723,7 +723,7 @@ to_code_ph	Kod do (kg)
 uncleared_no_ph	Niewyjaśniony # powyżej
 unit_cost_ph	Koszt jednostkowy
 unit_name_bag_ph	Imię (torba)
-unit_plate_ph	Jednostka (płyta / szt. — puste = każda)
+unit_plate_ph	Jednostka (puste = każda)
 pay_credit	Na konto
 book_kind_today	Księgi na dziś
 book_kind_month	Księgi tego miesiąca
@@ -900,7 +900,7 @@ low_stock_alert	Kończy się — kup wkrótce: {items}
 unpriced_note	Przedmioty {n} na Twoich przedmiotach nie mają jeszcze ceny — opłata wynosi 0, dopóki jej nie ustawisz.
 show_unpriced	Pokaż tylko przedmioty bez ceny
 show_all_dishes	Pokaż wszystkie elementy
-role_title_rest_ph	Stanowisko (np. kapitan, główny kucharz)
+role_title_rest_ph	Stanowisko (np. kapitan)
 preset_help_rest	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
 kind_resale	Kupione lekarstwo
 kind_dish	Nie licz zapasów

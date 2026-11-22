@@ -723,7 +723,7 @@ to_code_ph	Mã đến (kg)
 uncleared_no_ph	Số chưa quyết toán ở trên
 unit_cost_ph	Chi phí đơn vị
 unit_name_bag_ph	Tên (Bag)
-unit_plate_ph	Đơn vị (đĩa / cái — trống = mỗi cái)
+unit_plate_ph	Đơn vị (trống = mỗi cái)
 pay_credit	Ghi nợ
 book_kind_today	Sổ hôm nay
 book_kind_month	Sổ tháng này
@@ -900,7 +900,7 @@ low_stock_alert	Sắp hết — mua sớm: {items}
 unpriced_note	Các mặt hàng {n} trên các mặt hàng của bạn chưa có giá - chúng lập hóa đơn ở mức 0 cho đến khi bạn đặt giá.
 show_unpriced	Chỉ hiển thị các mặt hàng không có giá
 show_all_dishes	Hiển thị tất cả các mục
-role_title_rest_ph	Chức danh (vd. trưởng ca, bếp trưởng)
+role_title_rest_ph	Chức danh (vd. trưởng ca)
 preset_help_rest	Thu ngân: bán. Quản lý: bán + mục + hủy/sửa.
 kind_resale	Thuốc mua vào
 kind_dish	Không đếm

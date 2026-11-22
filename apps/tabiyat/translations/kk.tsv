@@ -723,7 +723,7 @@ to_code_ph	Қай кодқа (kg)
 uncleared_no_ph	Жоғарыдағы тазаланбаған №
 unit_cost_ph	Бірлік құны
 unit_name_bag_ph	Аты (Қап)
-unit_plate_ph	Бірлік (тәрелке / pc — бос = дана)
+unit_plate_ph	Бірлік (бос = әрқайсы)
 pay_credit	Несие
 book_kind_today	Бүгінгі кітаптар
 book_kind_month	Осы айдың кітаптары

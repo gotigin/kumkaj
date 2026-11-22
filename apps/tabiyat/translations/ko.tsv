@@ -723,7 +723,7 @@ to_code_ph	목표 코드 (kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가
 unit_name_bag_ph	이름(Bag)
-unit_plate_ph	단위(접시/개 — 비움 = 개당)
+unit_plate_ph	단위(비움 = 개당)
 pay_credit	외상
 book_kind_today	오늘 장부
 book_kind_month	이번 달 장부
@@ -900,7 +900,7 @@ low_stock_alert	재고 부족 — 곧 구매하세요: {items}
 unpriced_note	항목의 {n} 항목에는 아직 가격이 없습니다. 가격을 설정할 때까지는 0으로 청구됩니다.
 show_unpriced	가격이 없는 항목만 표시
 show_all_dishes	모든 항목 표시
-role_title_rest_ph	직함 (예: 캡틴, 주방장)
+role_title_rest_ph	직함 (예: 캡틴)
 preset_help_rest	캐셔: 판매. 매니저: 판매 + 항목 + 취소/수정.
 kind_resale	매입 약품
 kind_dish	재고 미집계

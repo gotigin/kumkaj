@@ -723,7 +723,7 @@ to_code_ph	पर्यंत कोड (kg)
 uncleared_no_ph	वरील अनक्लिअर्ड #
 unit_cost_ph	एकक किंमत
 unit_name_bag_ph	नाव (Bag)
-unit_plate_ph	एकक (प्लेट / तुकडा — रिकामे = प्रत्येकी)
+unit_plate_ph	एकक (रिकामे = प्रत्येक)
 pay_credit	उधारी
 book_kind_today	आजची वही
 book_kind_month	या महिन्याची वही

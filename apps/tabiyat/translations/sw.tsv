@@ -723,7 +723,7 @@ to_code_ph	Hadı msimbo (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo
 unit_name_bag_ph	Jina (Bag)
-unit_plate_ph	Kitengo (sahani / kipande — tupu = kila moja)
+unit_plate_ph	Kitengo (tupu = kila moja)
 pay_credit	Mkopo
 book_kind_today	Kitabu cha leo
 book_kind_month	Kitabu cha mwezi huu
@@ -900,7 +900,7 @@ low_stock_alert	Inakaribia kwisha — nunua mapema: {items}
 unpriced_note	Vipengee vya {n} kwenye bidhaa zako bado havina bei - vitatozwa 0 hadi utakapoweka kimoja.
 show_unpriced	Onyesha bidhaa tu bila bei
 show_all_dishes	Onyesha vitu vyote
-role_title_rest_ph	Cheo (mf. kapteni, mpishi mkuu)
+role_title_rest_ph	Cheo (mf. kapteni)
 preset_help_rest	Keshia: kuuza. Meneja: kuuza + bidhaa + kufuta/kurekebisha.
 kind_resale	Dawa iliyonunuliwa
 kind_dish	Haihesabiwi

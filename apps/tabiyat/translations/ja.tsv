@@ -723,7 +723,7 @@ to_code_ph	変換先コード（kg）
 uncleared_no_ph	上の未清算番号
 unit_cost_ph	単価
 unit_name_bag_ph	名前（Bag）
-unit_plate_ph	単位（皿 / 個 — 空欄 = 各）
+unit_plate_ph	単位（空欄 = 各）
 pay_credit	掛け
 book_kind_today	今日の帳簿
 book_kind_month	今月の帳簿
@@ -900,7 +900,7 @@ low_stock_alert	残りわずか — 早めに補充: {items}
 unpriced_note	アイテムの {n} アイテムにはまだ価格がありません。価格を設定するまでは 0 で請求されます。
 show_unpriced	価格のない商品のみを表示
 show_all_dishes	すべてのアイテムを表示
-role_title_rest_ph	役職（例: キャプテン、料理長）
+role_title_rest_ph	役職（例: キャプテン）
 preset_help_rest	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
 kind_resale	仕入れ薬
 kind_dish	未管理

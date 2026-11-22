@@ -723,7 +723,7 @@ to_code_ph	לקוד (ק״ג)
 uncleared_no_ph	לא מותאם # למעלה
 unit_cost_ph	עלות ליחידה
 unit_name_bag_ph	שם (שק)
-unit_plate_ph	יחידה (צלחת / יח׳ — ריק = כל אחת)
+unit_plate_ph	יחידה (ריק = כל אחד)
 pay_credit	אשראי
 book_kind_today	ספרי היום
 book_kind_month	ספרי החודש

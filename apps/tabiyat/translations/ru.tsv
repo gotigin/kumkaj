@@ -723,7 +723,7 @@ to_code_ph	Код в (kg)
 uncleared_no_ph	Непроведённый № выше
 unit_cost_ph	Себестоимость единицы
 unit_name_bag_ph	Название (Bag)
-unit_plate_ph	Единица (тарелка / шт. — пусто = каждая)
+unit_plate_ph	Единица (пусто = каждая)
 pay_credit	Кредит
 book_kind_today	Книга за сегодня
 book_kind_month	Книга за этот месяц
@@ -900,7 +900,7 @@ low_stock_alert	Заканчивается — купите скоро: {items}
 unpriced_note	У {n} ваших товаров ещё нет цены — они считаются по 0, пока вы не зададите.
 show_unpriced	Показать только товары без цены
 show_all_dishes	Показать все товары
-role_title_rest_ph	Должность (напр. капитан, шеф-повар)
+role_title_rest_ph	Должность (напр. капитан)
 preset_help_rest	Кассир: продажа. Менеджер: продажа + позиции + аннуляция/правка.
 kind_resale	Купленное лекарство
 kind_dish	Без учёта

@@ -723,7 +723,7 @@ to_code_ph	Ikhodi (kg)
 uncleared_no_ph	Akucaciswanga # ngenhla
 unit_cost_ph	Izindleko zeyunithi
 unit_name_bag_ph	Igama (Isikhwama)
-unit_plate_ph	Iyunithi (ipuleti / pc — blank = ngayinye)
+unit_plate_ph	Iyunithi (engenalutho = ngayinye)
 pay_credit	Ku-akhawunti
 book_kind_today	Namuhla amaleja
 book_kind_month	Amaleja enyanga
@@ -753,7 +753,7 @@ your_category	Isigaba sakho
 suggested_category	Okuphakanyisiwe - kusuka ezintweni zethu
 category_search_ph	Isigaba — sesha eyakho noma thayipha entsha
 cancel_item_short	Khansela
-return_to_customer	Buyela kukhasimende
+return_to_customer	Buyisela kumthengi
 short_by	Kafushane nje
 tip_not_sale	Ithiphu (abasebenzi, hhayi ukuthengisa)
 right_settle	Thatha inkokhelo
@@ -900,7 +900,7 @@ low_stock_alert	Iyaphela — thenga maduze: {items}
 unpriced_note	Izinto ze-{n} ezintweni zakho azinayo intengo okwamanje — zikhokha ku-0 uze usethe eyodwa.
 show_unpriced	Bonisa kuphela izinto ngaphandle kwenani
 show_all_dishes	Bonisa zonke izinto
-role_title_rest_ph	Isihloko sendima (isb. UCaptain, Head cook)
+role_title_rest_ph	Isihloko sendima (isb. UCaptain)
 preset_help_rest	Umthengisi: thengisa. Umphathi: thengisa + izinto + ukuqeda/ukulungisa.
 kind_resale	Uthenge umuthi
 kind_dish	Ungabali isitoko

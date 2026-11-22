@@ -723,7 +723,7 @@ to_code_ph	Към код (kg)
 uncleared_no_ph	Неизчистен № по-горе
 unit_cost_ph	Единична цена
 unit_name_bag_ph	Име (Торба)
-unit_plate_ph	Единица (чиния / бр. — празно = брой)
+unit_plate_ph	Единица (празно = всяка)
 pay_credit	Кредит
 book_kind_today	Книги за днес
 book_kind_month	Книги за този месец

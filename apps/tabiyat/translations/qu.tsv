@@ -723,7 +723,7 @@ to_code_ph	Codificanapaq (kg) .
 uncleared_no_ph	Mana ch'uyanchasqa # hawapi
 unit_cost_ph	Unidadpa chanin
 unit_name_bag_ph	Suti (Bolsa) .
-unit_plate_ph	Unidad (placa / pc — ch'usaq = sapa) .
+unit_plate_ph	Unidad (vacío = sapa)
 pay_credit	Cuentamanta
 book_kind_today	Kunan pacha hatun qillqakuna
 book_kind_month	Kay killapi hatun qillqakuna

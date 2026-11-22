@@ -724,7 +724,7 @@ to_code_ph	到單位代碼 (kg)
 uncleared_no_ph	上方未清算編號
 unit_cost_ph	單位成本
 unit_name_bag_ph	名稱（Bag）
-unit_plate_ph	單位（盤/件 — 空 = 每件）
+unit_plate_ph	單位（空白 = 每件）
 pay_credit	賒帳
 book_kind_today	今日帳本
 book_kind_month	本月帳本

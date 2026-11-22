@@ -723,7 +723,7 @@ to_code_ph	ವರೆಗಿನ ಕೋಡ್ (kg)
 uncleared_no_ph	ಮೇಲಿನ ಅನ್‌ಕ್ಲಿಯರ್ಡ್ #
 unit_cost_ph	ಘಟಕ ವೆಚ್ಚ
 unit_name_bag_ph	ಹೆಸರು (Bag)
-unit_plate_ph	ಘಟಕ (ಪ್ಲೇಟ್ / ಪೀಸ್ — ಖಾಲಿ = ಪ್ರತಿಯೊಂದು)
+unit_plate_ph	ಘಟಕ (ಖಾಲಿ = ಪ್ರತಿ)
 pay_credit	ಸಾಲ
 book_kind_today	ಇಂದಿನ ಪುಸ್ತಕ
 book_kind_month	ಈ ತಿಂಗಳ ಪುಸ್ತಕ

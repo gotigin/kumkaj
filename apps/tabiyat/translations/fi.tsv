@@ -723,7 +723,7 @@ to_code_ph	Kohdekoodi (kg)
 uncleared_no_ph	Täsmäyttämätön nro yllä
 unit_cost_ph	Yksikkökustannus
 unit_name_bag_ph	Nimi (pussi)
-unit_plate_ph	Yksikkö (lautanen / kpl — tyhjä = kappale)
+unit_plate_ph	Yksikkö (tyhjä = kukin)
 pay_credit	Luotto
 book_kind_today	Tämän päivän kirjat
 book_kind_month	Tämän kuun kirjat

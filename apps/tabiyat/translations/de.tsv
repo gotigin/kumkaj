@@ -723,7 +723,7 @@ to_code_ph	Nach-Code (kg)
 uncleared_no_ph	Ungeprüfte Nr. oben
 unit_cost_ph	Stückkosten
 unit_name_bag_ph	Name (Bag)
-unit_plate_ph	Einheit (Teller / Stück — leer = je)
+unit_plate_ph	Einheit (leer = je)
 pay_credit	Kredit
 book_kind_today	Heutiges Buch
 book_kind_month	Buch dieses Monats
@@ -900,7 +900,7 @@ low_stock_alert	Wird knapp — bald nachkaufen: {items}
 unpriced_note	{n} Ihrer Artikel haben noch keinen Preis — sie werden mit 0 berechnet, bis Sie einen setzen.
 show_unpriced	Nur Artikel ohne Preis zeigen
 show_all_dishes	Alle Artikel zeigen
-role_title_rest_ph	Rolle (z. B. Oberkellner, Küchenchef)
+role_title_rest_ph	Rolle (z. B. Captain)
 preset_help_rest	Kassierer: verkaufen. Manager: verkaufen + Artikel + Storno/Korrektur.
 kind_resale	Gekauftes Medikament
 kind_dish	Nicht gezählt

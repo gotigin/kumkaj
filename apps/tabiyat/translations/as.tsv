@@ -723,7 +723,7 @@ to_code_ph	লৈ কোড (kg)
 uncleared_no_ph	ওপৰৰ আনক্লিয়াৰ্ড #
 unit_cost_ph	একক খৰচ
 unit_name_bag_ph	নাম (Bag)
-unit_plate_ph	একক (প্লেট / টুকুৰা — খালী = প্ৰতিটো)
+unit_plate_ph	একক (খালী = প্ৰতিটো)
 pay_credit	বাকী
 book_kind_today	আজিৰ বহী
 book_kind_month	এই মাহৰ বহী

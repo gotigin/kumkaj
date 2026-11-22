@@ -723,7 +723,7 @@ to_code_ph	Хүрэх код (kg)
 uncleared_no_ph	Дээрх цэвэрлэгдээгүй №
 unit_cost_ph	Нэгж өртөг
 unit_name_bag_ph	Нэр (Уут)
-unit_plate_ph	Нэгж (таваг / pc — хоосон = ширхэг)
+unit_plate_ph	Нэгж (хоосон = тус бүр)
 pay_credit	Зээл
 book_kind_today	Өнөөдрийн ном
 book_kind_month	Энэ сарын ном

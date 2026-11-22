@@ -723,7 +723,7 @@ to_code_ph	Ke kode (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan
 unit_name_bag_ph	Nama (Bag)
-unit_plate_ph	Satuan (piring / pcs — kosong = tiap)
+unit_plate_ph	Satuan (kosong = tiap)
 pay_credit	Kredit
 book_kind_today	Buku hari ini
 book_kind_month	Buku bulan ini
@@ -900,7 +900,7 @@ low_stock_alert	Hampir habis — segera beli: {items}
 unpriced_note	Item {n} pada item Anda belum memiliki harga — tagihannya adalah 0 hingga Anda menetapkannya.
 show_unpriced	Tampilkan hanya item tanpa harga
 show_all_dishes	Tampilkan semua item
-role_title_rest_ph	Jabatan (mis. kapten, kepala koki)
+role_title_rest_ph	Jabatan (mis. kapten)
 preset_help_rest	Kasir: jual. Manajer: jual + item + batal/ubah.
 kind_resale	Obat beli
 kind_dish	Tidak dihitung

@@ -723,7 +723,7 @@ to_code_ph	के कोड (kg)
 uncleared_no_ph	ऊपर वाला अनक्लियर्ड #
 unit_cost_ph	इकाई लागत
 unit_name_bag_ph	नाम (Bag)
-unit_plate_ph	इकाई (प्लेट / पीस — खाली = प्रत्येक)
+unit_plate_ph	इकाई (खाली = हर एक)
 pay_credit	उधार
 book_kind_today	आज के बही
 book_kind_month	ई महीने के बही
@@ -900,7 +900,7 @@ low_stock_alert	कम हो रहल हई — जल्दी खरीद�
 unpriced_note	आपके आइटम पर {n} आइटम की अभी तक कोई कीमत नहीं है - जब तक आप एक सेट नहीं करते तब तक उनका बिल 0 पर होता है।
 show_unpriced	बिना कीमत के केवल आइटम दिखाएं
 show_all_dishes	सभी आइटम दिखाएं
-role_title_rest_ph	पद (जैसे कैप्टन, मुख्य रसोइया)
+role_title_rest_ph	पद (जैसे कैप्टन)
 preset_help_rest	कैशियर: बेचें। मैनेजर: बेचेऽ + आइटम + रद्द/संशोधन।
 kind_resale	दवा खरीदी
 kind_dish	स्टॉक की गिनती मत करो

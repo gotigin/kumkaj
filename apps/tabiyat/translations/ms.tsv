@@ -723,7 +723,7 @@ to_code_ph	Ke kod (kg)
 uncleared_no_ph	Tidak dikosongkan # di atas
 unit_cost_ph	Kos seunit
 unit_name_bag_ph	Nama (Beg)
-unit_plate_ph	Unit (pinggan / pc — kosong = setiap satu)
+unit_plate_ph	Unit (kosong = setiap satu)
 pay_credit	Pada akaun
 book_kind_today	Hari ini lejar
 book_kind_month	Lejar bulan ini
@@ -900,7 +900,7 @@ low_stock_alert	Hampir habis — beli segera: {items}
 unpriced_note	Item {n} pada item anda belum mempunyai harga lagi — ia mengebil pada 0 sehingga anda menetapkan satu.
 show_unpriced	Tunjukkan hanya item tanpa harga
 show_all_dishes	Tunjukkan semua item
-role_title_rest_ph	Tajuk peranan (cth. Kapten, Ketua tukang masak)
+role_title_rest_ph	Tajuk peranan (cth. Kapten)
 preset_help_rest	Juruwang: jual. Pengurus: jual + item + batal/pinda.
 kind_resale	Ubat dibeli
 kind_dish	Jangan kira stok

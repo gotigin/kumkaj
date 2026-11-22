@@ -723,7 +723,7 @@ to_code_ph	Að kóða (kg)
 uncleared_no_ph	Óhreinsað # að ofan
 unit_cost_ph	Einingakostnaður
 unit_name_bag_ph	Nafn (poki)
-unit_plate_ph	Eining (plata / stk — auð = hver)
+unit_plate_ph	Eining (tómt = hvert)
 pay_credit	Á reikning
 book_kind_today	Dagbækur í dag
 book_kind_month	Dagbók í þessum mánuði
@@ -900,7 +900,7 @@ low_stock_alert	Þverr — kaupið fljótt: {items}
 unpriced_note	{n} hlutir á hlutunum þínum hafa ekkert verð ennþá - þeir greiða á 0 þar til þú setur einn.
 show_unpriced	Sýna aðeins hluti án verðs
 show_all_dishes	Sýna alla hluti
-role_title_rest_ph	Hlutverkstitill (t.d. skipstjóri, yfirkokkur)
+role_title_rest_ph	Hlutverkstitill (t.d. skipstjóri)
 preset_help_rest	Gjaldkeri: selja. Framkvæmdastjóri: selja + matseðill + ógilda / breyta.
 kind_resale	Keypti lyf
 kind_dish	Ekki telja lager

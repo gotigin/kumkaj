@@ -723,7 +723,7 @@ to_code_ph	ကုဒ်သို့ (kg)
 uncleared_no_ph	မရှင်းလင်းသေးသော # အထက်
 unit_cost_ph	ယူနစ်ဈေးနှုန်း
 unit_name_bag_ph	အမည် (ထုပ်)
-unit_plate_ph	ယူနစ် (ပလိတ် / ထုံး — ဗလာ = တစ်ခုအလိုက်)
+unit_plate_ph	ယူနစ် (ဗလာ = တစ်ခုစီ)
 pay_credit	အကြွေး
 book_kind_today	ယနေ့စာအုပ်များ
 book_kind_month	ဒီလစာအုပ်များ

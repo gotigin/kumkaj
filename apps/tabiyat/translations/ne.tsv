@@ -723,7 +723,7 @@ to_code_ph	सम्म कोड (kg)
 uncleared_no_ph	माथि नमिलेको #
 unit_cost_ph	एकाइ लागत
 unit_name_bag_ph	नाम (बोरा)
-unit_plate_ph	एकाइ (प्लेट / pc — खाली = हरेक)
+unit_plate_ph	एकाइ (खाली = प्रत्येक)
 pay_credit	उधारो
 book_kind_today	आजको खाता
 book_kind_month	यो महिनाको खाता

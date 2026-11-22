@@ -723,7 +723,7 @@ to_code_ph	به کد (kg)
 uncleared_no_ph	شماره تطبیق‌نشده بالا
 unit_cost_ph	بهای واحد
 unit_name_bag_ph	نام (کیسه)
-unit_plate_ph	واحد (بشقاب / دانه — خالی = هر کدام)
+unit_plate_ph	واحد (خالی = هر یک)
 pay_credit	نسیه
 book_kind_today	دفترهای امروز
 book_kind_month	دفترهای این ماه

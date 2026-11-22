@@ -723,7 +723,7 @@ to_code_ph	ਤੱਕ ਕੋਡ (kg)
 uncleared_no_ph	ਉੱਪਰ ਵਾਲਾ ਅਣ-ਕਲੀਅਰ #
 unit_cost_ph	ਇਕਾਈ ਲਾਗਤ
 unit_name_bag_ph	ਨਾਂ (Bag)
-unit_plate_ph	ਇਕਾਈ (ਪਲੇਟ / ਪੀਸ — ਖਾਲੀ = ਹਰੇਕ)
+unit_plate_ph	ਇਕਾਈ (ਖਾਲੀ = ਹਰੇਕ)
 pay_credit	ਉਧਾਰ
 book_kind_today	ਅੱਜ ਦੀ ਬਹੀ
 book_kind_month	ਇਸ ਮਹੀਨੇ ਦੀ ਬਹੀ

@@ -723,7 +723,7 @@ to_code_ph	వరకు కోడ్ (kg)
 uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
 unit_cost_ph	యూనిట్ ధర
 unit_name_bag_ph	పేరు (Bag)
-unit_plate_ph	యూనిట్ (ప్లేట్ / పీస్ — ఖాళీ = ప్రతీది)
+unit_plate_ph	యూనిట్ (ఖాళీ = ప్రతి)
 pay_credit	అప్పు
 book_kind_today	ఈరోజు పుస్తకం
 book_kind_month	ఈ నెల పుస్తకం

@@ -723,7 +723,7 @@ to_code_ph	ወደ ኮድ (ኪግ)
 uncleared_no_ph	ካልተጠራቀመ # በላይ
 unit_cost_ph	የአንድ ዋጋ
 unit_name_bag_ph	ስም (ከረጢት)
-unit_plate_ph	መለኪያ (ሳህን / ቁራጭ — ባዶ = እያንዳንዱ)
+unit_plate_ph	ክፍል (ባዶ = እያንዳንዱ)
 pay_credit	ብድር
 book_kind_today	የዛሬ መዝገቦች
 book_kind_month	የዚህ ወር መዝገቦች

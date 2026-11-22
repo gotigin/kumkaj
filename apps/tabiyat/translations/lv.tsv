@@ -723,7 +723,7 @@ to_code_ph	Uz kodu (kg)
 uncleared_no_ph	Nesaskaņotais nr. augšā
 unit_cost_ph	Vienības izmaksas
 unit_name_bag_ph	Nosaukums (maiss)
-unit_plate_ph	Vienība (šķīvis / gab — tukšs = gabals)
+unit_plate_ph	Vienība (tukšs = katrs)
 pay_credit	Kredīts
 book_kind_today	Šodienas grāmatas
 book_kind_month	Šī mēneša grāmatas

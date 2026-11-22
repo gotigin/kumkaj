@@ -723,7 +723,7 @@ to_code_ph	Kodeerida (kg)
 uncleared_no_ph	Selgitamata # ülal
 unit_cost_ph	Ühiku maksumus
 unit_name_bag_ph	Nimi (kott)
-unit_plate_ph	Ühik (plaat / tk - tühi = igaüks)
+unit_plate_ph	Ühik (tühi = iga)
 pay_credit	Arvel
 book_kind_today	Tänased raamatud
 book_kind_month	Selle kuu raamatud
@@ -900,7 +900,7 @@ low_stock_alert	otsas – ostke varsti: {items}
 unpriced_note	{n} üksustel teie üksustel pole veel hinda – nende arveldamine on 0, kuni selle määrate.
 show_unpriced	Kuva ainult üksused ilma hinnata
 show_all_dishes	Kuva kõik üksused
-role_title_rest_ph	Rolli nimetus (nt kapten, peakokk)
+role_title_rest_ph	Rolli nimetus (nt kapten)
 preset_help_rest	Kassapidaja: müüa. Haldaja: müüa + esemed + tühine/muuda.
 kind_resale	Ostis ravimeid
 kind_dish	Ärge arvestage aktsiaid

@@ -724,7 +724,7 @@ to_code_ph	到单位代码 (kg)
 uncleared_no_ph	上方未清算编号
 unit_cost_ph	单位成本
 unit_name_bag_ph	名称（Bag）
-unit_plate_ph	单位（盘/件 — 空 = 每件）
+unit_plate_ph	单位（空 = 每件）
 pay_credit	赊账
 book_kind_today	今日账本
 book_kind_month	本月账本
@@ -901,7 +901,7 @@ low_stock_alert	库存不足——尽快补货：{items}
 unpriced_note	你的商品里有 {n} 个还没有价格 — 在你设价之前按 0 计费。
 show_unpriced	只显示没有价格的商品
 show_all_dishes	显示全部商品
-role_title_rest_ph	职位（如领班、主厨）
+role_title_rest_ph	职位（如领班）
 preset_help_rest	收银员：销售。经理：销售+项目+作废/修改。
 kind_resale	购入的药品
 kind_dish	未计数

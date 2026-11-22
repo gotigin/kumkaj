@@ -723,7 +723,7 @@ to_code_ph	Naar kode (kg)
 uncleared_no_ph	Onbevestigde # hierbo
 unit_cost_ph	Eenheidskoste
 unit_name_bag_ph	Naam (Pak)
-unit_plate_ph	Eenheid (plaat / st – leeg = elk)
+unit_plate_ph	Eenheid (leeg = elk)
 pay_credit	Krediet
 book_kind_today	Vandag se boeke
 book_kind_month	Boeke vir die maand
@@ -900,7 +900,7 @@ low_stock_alert	Baie laag — koop gou: {items}
 unpriced_note	{n} items op jou items het nog geen prys nie — hulle faktureer teen 0 totdat jy een instel.
 show_unpriced	Wys net items sonder 'n prys
 show_all_dishes	Wys alle items
-role_title_rest_ph	Roltitel (bv. Kaptein, Hoofkok)
+role_title_rest_ph	Roltitel (bv. Kaptein)
 preset_help_rest	Kasier: verkoop. Bestuurder: verkoop + items + leegmaak/bewerk.
 kind_resale	Gekoopte medisyne
 kind_dish	Tel nie voorraad nie

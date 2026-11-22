@@ -723,7 +723,7 @@ to_code_ph	Til kode (kg)
 uncleared_no_ph	Uoppgjort # over
 unit_cost_ph	Enhetskost
 unit_name_bag_ph	Navn (Pose)
-unit_plate_ph	Enhet (tallerken / pc — tomt = stk)
+unit_plate_ph	Enhet (tom = hver)
 pay_credit	Kreditt
 book_kind_today	Dagens bøker
 book_kind_month	Denne månedens bøker

@@ -723,7 +723,7 @@ to_code_ph	कोडं कर्तुं (किलो) .
 uncleared_no_ph	उपरि # अस्पष्टम्
 unit_cost_ph	इकाई लागत
 unit_name_bag_ph	नाम (बैग) ९.
-unit_plate_ph	इकाई (प्लेट / pc — रिक्त = प्रत्येक)
+unit_plate_ph	मात्रा (शून्यम् = प्रत्येकम्)
 pay_credit	खातेन
 book_kind_today	अद्य लेजर्स
 book_kind_month	अस्मिन् मासे लेजर्

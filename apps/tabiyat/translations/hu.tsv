@@ -723,7 +723,7 @@ to_code_ph	Kódolni (kg)
 uncleared_no_ph	Tisztázatlan # fent
 unit_cost_ph	Egységköltség
 unit_name_bag_ph	Név (táska)
-unit_plate_ph	Egység (tányér / db – üres = mindegyik)
+unit_plate_ph	Egység (üres = egyenként)
 pay_credit	Számlára
 book_kind_today	Ma könyvek
 book_kind_month	E havi könyvek

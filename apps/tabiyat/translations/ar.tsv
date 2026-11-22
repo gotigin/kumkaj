@@ -723,7 +723,7 @@ to_code_ph	إلى الرمز (kg)
 uncleared_no_ph	الرقم غير المُسوّى أعلاه
 unit_cost_ph	تكلفة الوحدة
 unit_name_bag_ph	الاسم (Bag)
-unit_plate_ph	الوحدة (طبق / قطعة — فارغ = كل واحد)
+unit_plate_ph	الوحدة (فارغ = كل واحد)
 pay_credit	ائتمان
 book_kind_today	دفتر اليوم
 book_kind_month	دفتر هذا الشهر
@@ -900,7 +900,7 @@ low_stock_alert	ينفد قريبًا — اشترِ قريبًا: {items}
 unpriced_note	عناصر {n} الموجودة في العناصر الخاصة بك ليس لها سعر حتى الآن - يتم إصدار الفاتورة بـ 0 حتى تقوم بتعيين واحد.
 show_unpriced	عرض فقط العناصر التي ليس لها سعر
 show_all_dishes	إظهار كافة العناصر
-role_title_rest_ph	المسمى (مثل كابتن، رئيس الطهاة)
+role_title_rest_ph	المسمى (مثل كابتن)
 preset_help_rest	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
 kind_resale	دواء مشتَرى
 kind_dish	غير محسوب

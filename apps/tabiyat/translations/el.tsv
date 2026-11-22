@@ -723,7 +723,7 @@ to_code_ph	Προς κωδικό (kg)
 uncleared_no_ph	Μη συμφωνημένο # πάνω
 unit_cost_ph	Κόστος μονάδας
 unit_name_bag_ph	Όνομα (σακούλα)
-unit_plate_ph	Μονάδα (πιάτο / τεμ — κενό = ένα)
+unit_plate_ph	Μονάδα (κενό = καθένα)
 pay_credit	Συναλλασσόμενοι
 book_kind_today	Βιβλία σήμερα
 book_kind_month	Βιβλία αυτού του μήνα

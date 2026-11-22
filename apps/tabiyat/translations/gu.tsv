@@ -723,7 +723,7 @@ to_code_ph	સુધીનો કોડ (kg)
 uncleared_no_ph	ઉપરનો અનક્લિયર્ડ #
 unit_cost_ph	એકમ ખર્ચ
 unit_name_bag_ph	નામ (Bag)
-unit_plate_ph	એકમ (પ્લેટ / પીસ — ખાલી = દરેક)
+unit_plate_ph	એકમ (ખાલી = દરેક)
 pay_credit	ઉધાર
 book_kind_today	આજનો ચોપડો
 book_kind_month	આ મહિનાનો ચોપડો

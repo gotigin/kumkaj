@@ -723,7 +723,7 @@ to_code_ph	Till kod (kg)
 uncleared_no_ph	Oavstämt # ovan
 unit_cost_ph	Enhetskostnad
 unit_name_bag_ph	Namn (påse)
-unit_plate_ph	Enhet (platta / st — tom = varje)
+unit_plate_ph	Enhet (tomt = varje)
 pay_credit	Kredit
 book_kind_today	Idag böcker
 book_kind_month	Böcker denna månad
@@ -900,7 +900,7 @@ low_stock_alert	Snart slut – köp snart: {items}
 unpriced_note	{n}-artiklar på dina föremål har inget pris än – de faktureras till 0 tills du ställer in ett.
 show_unpriced	Visa endast varor utan pris
 show_all_dishes	Visa alla objekt
-role_title_rest_ph	Rolltitel (t.ex. kapten, chefskock)
+role_title_rest_ph	Rolltitel (t.ex. kapten)
 preset_help_rest	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
 kind_resale	Köpte medicin
 kind_dish	Räkna inte lager

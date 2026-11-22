@@ -723,7 +723,7 @@ to_code_ph	में कोड (kg)
 uncleared_no_ph	ऊपर ना मिलल #
 unit_cost_ph	इकाई लागत
 unit_name_bag_ph	नाम (बोरा)
-unit_plate_ph	इकाई (प्लेट / pc — खाली = हर एक)
+unit_plate_ph	इकाई (खाली = हर एक)
 pay_credit	उधार
 book_kind_today	आज के बही
 book_kind_month	एह महीना के बही
@@ -900,7 +900,7 @@ low_stock_alert	घटत बा — जल्दी कीनीं: {items}
 unpriced_note	रउरा {n} सामान के अबहीं ले दाम नइखे — दाम राखे ले ऊ 0 पर बिल होला।
 show_unpriced	खाली बिना दाम के सामान देखाईं
 show_all_dishes	सब सामान देखाईं
-role_title_rest_ph	भूमिका के नाम (जइसे कैप्टन, मुख्य रसोइया)
+role_title_rest_ph	भूमिका के नाम (जइसे कैप्टन)
 preset_help_rest	कैशियर: बेचल। मैनेजर: बेचल + सामान + रद्द/सुधार।
 kind_resale	कीनल दवाई
 kind_dish	स्टॉक मत गिनीं

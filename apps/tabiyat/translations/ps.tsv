@@ -723,7 +723,7 @@ to_code_ph	کوډ کول (کیلوګرام)
 uncleared_no_ph	ناڅرګنده # پورته
 unit_cost_ph	د واحد لګښت
 unit_name_bag_ph	نوم (کیګ)
-unit_plate_ph	واحد (پلیټ / پی سی - خالي = هر یو)
+unit_plate_ph	واحد (خالي = هر یو)
 pay_credit	کریډیټ
 book_kind_today	نن ورځ کتابونه
 book_kind_month	پدې میاشت کې کتابونه

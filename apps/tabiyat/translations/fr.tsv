@@ -723,7 +723,7 @@ to_code_ph	Code cible (kg)
 uncleared_no_ph	N° non compensé ci-dessus
 unit_cost_ph	Coût unitaire
 unit_name_bag_ph	Nom (Bag)
-unit_plate_ph	Unité (assiette / pièce — vide = chacun)
+unit_plate_ph	Unité (vide = chacun)
 pay_credit	Crédit
 book_kind_today	Livre du jour
 book_kind_month	Livre de ce mois
@@ -900,7 +900,7 @@ low_stock_alert	Bientôt épuisé — à racheter : {items}
 unpriced_note	{n} articles de vos articles n'ont pas encore de prix — ils sont facturés à 0 tant que vous n'en mettez pas.
 show_unpriced	Afficher seulement les articles sans prix
 show_all_dishes	Afficher tous les articles
-role_title_rest_ph	Poste (ex. chef de rang, chef cuisinier)
+role_title_rest_ph	Poste (ex. capitaine)
 preset_help_rest	Caissier : vendre. Responsable : vendre + articles + annuler/modifier.
 kind_resale	Médicament acheté
 kind_dish	Non suivi

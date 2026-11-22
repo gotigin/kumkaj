@@ -723,7 +723,7 @@ to_code_ph	വരെയുള്ള കോഡ് (kg)
 uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
 unit_cost_ph	യൂണിറ്റ് വില
 unit_name_bag_ph	പേര് (Bag)
-unit_plate_ph	യൂണിറ്റ് (പ്ലേറ്റ് / പീസ് — ശൂന്യം = ഓരോന്നും)
+unit_plate_ph	യൂണിറ്റ് (ശൂന്യം = ഓരോന്നും)
 pay_credit	കടം
 book_kind_today	ഇന്നത്തെ ബുക്ക്
 book_kind_month	ഈ മാസത്തെ ബുക്ക്

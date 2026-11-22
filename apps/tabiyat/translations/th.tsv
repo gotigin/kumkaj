@@ -723,7 +723,7 @@ to_code_ph	รหัสถึง (kg)
 uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
 unit_cost_ph	ต้นทุนต่อหน่วย
 unit_name_bag_ph	ชื่อ (Bag)
-unit_plate_ph	หน่วย (จาน / ชิ้น — ว่าง = แต่ละชิ้น)
+unit_plate_ph	หน่วย (ว่าง = แต่ละชิ้น)
 pay_credit	เครดิต
 book_kind_today	สมุดวันนี้
 book_kind_month	สมุดเดือนนี้
@@ -900,7 +900,7 @@ low_stock_alert	ใกล้หมด — ควรซื้อเร็วๆ �
 unpriced_note	สินค้าของคุณ {n} รายการยังไม่มีราคา — คิดเงินที่ 0 จนกว่าจะตั้ง
 show_unpriced	แสดงเฉพาะสินค้าที่ไม่มีราคา
 show_all_dishes	แสดงสินค้าทั้งหมด
-role_title_rest_ph	ตำแหน่ง (เช่น กัปตัน หัวหน้าเชฟ)
+role_title_rest_ph	ตำแหน่ง (เช่น กัปตัน)
 preset_help_rest	แคชเชียร์: ขาย ผู้จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
 kind_resale	ยาที่ซื้อมา
 kind_dish	ไม่นับ

@@ -723,7 +723,7 @@ to_code_ph	Código para (kg)
 uncleared_no_ph	Nº não compensado acima
 unit_cost_ph	Custo unitário
 unit_name_bag_ph	Nome (Bag)
-unit_plate_ph	Unidade (prato / peça — vazio = cada)
+unit_plate_ph	Unidade (vazio = cada)
 pay_credit	Crédito
 book_kind_today	Livro de hoje
 book_kind_month	Livro deste mês
@@ -900,7 +900,7 @@ low_stock_alert	Está acabando — compre logo: {items}
 unpriced_note	Os itens {n} em seus itens ainda não têm preço – eles cobram 0 até que você defina um.
 show_unpriced	Mostrar apenas itens sem preço
 show_all_dishes	Mostrar todos os itens
-role_title_rest_ph	Cargo (ex. capitão, chefe de cozinha)
+role_title_rest_ph	Cargo (ex. capitão)
 preset_help_rest	Caixa: vender. Gerente: vender + itens + anular/alterar.
 kind_resale	Medicamento comprado
 kind_dish	Sem contagem

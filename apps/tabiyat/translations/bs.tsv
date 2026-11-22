@@ -723,7 +723,7 @@ to_code_ph	U kod (kg)
 uncleared_no_ph	Neusklađeni # iznad
 unit_cost_ph	Cijena jedinice
 unit_name_bag_ph	Ime (vreća)
-unit_plate_ph	Jedinica (tanjir / kom — prazno = komad)
+unit_plate_ph	Jedinica (prazno = svaka)
 pay_credit	Stranke
 book_kind_today	Današnje knjige
 book_kind_month	Knjige ovog mjeseca

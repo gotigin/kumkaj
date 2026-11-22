@@ -723,7 +723,7 @@ to_code_ph	Către cod (kg)
 uncleared_no_ph	Necompensat nr. deasupra
 unit_cost_ph	Cost unitar
 unit_name_bag_ph	Nume (Sac)
-unit_plate_ph	Unitate (farfurie / pc — gol = bucată)
+unit_plate_ph	Unitate (gol = fiecare)
 pay_credit	Pe credit
 book_kind_today	Cărțile de azi
 book_kind_month	Cărțile lunii acesteia

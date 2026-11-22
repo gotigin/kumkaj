@@ -723,7 +723,7 @@ to_code_ph	កូដទៅ (kg)
 uncleared_no_ph	មិនទាន់សម្អាត # ខាងលើ
 unit_cost_ph	ថ្លៃឯកតា
 unit_name_bag_ph	ឈ្មោះ (ថង់)
-unit_plate_ph	ឯកតា (ចាន / pc — ទទេ = មួយៗ)
+unit_plate_ph	ឯកតា (ទទេ = មួយៗ)
 pay_credit	ជំពាក់
 book_kind_today	សៀវភៅថ្ងៃនេះ
 book_kind_month	សៀវភៅខែនេះ

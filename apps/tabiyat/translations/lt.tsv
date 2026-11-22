@@ -723,7 +723,7 @@ to_code_ph	Į kodą (kg)
 uncleared_no_ph	Neišvalytas Nr. aukščiau
 unit_cost_ph	Vieneto savikaina
 unit_name_bag_ph	Pavadinimas (Maišas)
-unit_plate_ph	Vienetas (lėkštė / pc — tuščia = vnt.)
+unit_plate_ph	Vienetas (tuščia = kiekvienas)
 pay_credit	Kreditas
 book_kind_today	Šiandienos knygos
 book_kind_month	Šio mėnesio knygos

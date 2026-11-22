@@ -723,7 +723,7 @@ to_code_ph	कोड करने लेई (किलो)
 uncleared_no_ph	ऊपर अस्पष्ट #
 unit_cost_ph	इकाई लागत
 unit_name_bag_ph	नाम (बैग) दा
-unit_plate_ph	इकाई (प्लेट / पीसी — खाली = हर इक)
+unit_plate_ph	इकाई (खाली = हर एक)
 pay_credit	खाते पर
 book_kind_today	आज लेजर
 book_kind_month	इस महीने लेजर

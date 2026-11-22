@@ -723,7 +723,7 @@ to_code_ph	পর্যন্ত কোড (kg)
 uncleared_no_ph	উপরের অমীমাংসিত #
 unit_cost_ph	একক খরচ
 unit_name_bag_ph	নাম (Bag)
-unit_plate_ph	একক (প্লেট / পিস — খালি = প্রতিটি)
+unit_plate_ph	একক (খালি = প্রতিটি)
 pay_credit	বাকি
 book_kind_today	আজকের খাতা
 book_kind_month	এই মাসের খাতা

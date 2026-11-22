@@ -723,7 +723,7 @@ to_code_ph	За кодирање (кг)
 uncleared_no_ph	Необрађено # изнад
 unit_cost_ph	Јединични трошак
 unit_name_bag_ph	Име (торба)
-unit_plate_ph	Јединица (плоча / ком — празно = сваки)
+unit_plate_ph	Јединица (празно = свака)
 pay_credit	На рачун
 book_kind_today	Данашње књиге
 book_kind_month	Главне књиге овог месеца

@@ -723,7 +723,7 @@ to_code_ph	Hedef kod (kg)
 uncleared_no_ph	Yukarıdaki mahsuplaşmamış #
 unit_cost_ph	Birim maliyet
 unit_name_bag_ph	Ad (Bag)
-unit_plate_ph	Birim (tabak / adet — boş = her biri)
+unit_plate_ph	Birim (boş = her biri)
 pay_credit	Veresiye
 book_kind_today	Bugünün defteri
 book_kind_month	Bu ayın defteri
@@ -900,7 +900,7 @@ low_stock_alert	Azalıyor — yakında alın: {items}
 unpriced_note	Ürünlerinizden {n} tanesinin henüz fiyatı yok — siz koyana kadar 0 yazılır.
 show_unpriced	Yalnızca fiyatı olmayan ürünleri göster
 show_all_dishes	Tüm ürünleri göster
-role_title_rest_ph	Unvan (ör. kaptan, şef aşçı)
+role_title_rest_ph	Unvan (ör. kaptan)
 preset_help_rest	Kasiyer: satış. Yönetici: satış + öğeler + iptal/düzeltme.
 kind_resale	Alınan ilaç
 kind_dish	Sayılmıyor

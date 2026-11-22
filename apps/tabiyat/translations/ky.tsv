@@ -723,7 +723,7 @@ to_code_ph	Код үчүн (кг)
 uncleared_no_ph	Жогоруда # тазаланган жок
 unit_cost_ph	Бирдиктин баасы
 unit_name_bag_ph	Аты (баштык)
-unit_plate_ph	Бирдик (пластинка / PC - бош = ар бири)
+unit_plate_ph	Бирдик (бош = ар бир)
 pay_credit	Эсепте
 book_kind_today	Бүгүнкү күндө китепчелер
 book_kind_month	Бул айдын эсеби

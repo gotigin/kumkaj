@@ -723,7 +723,7 @@ to_code_ph	Code hma (kg)
 uncleared_no_ph	Thianghlim loh # chung
 unit_cost_ph	Unit man
 unit_name_bag_ph	Hming (Bag)
-unit_plate_ph	Unit (plate / pc — ruak = tin)
+unit_plate_ph	Unit (ruak = tin)
 pay_credit	Ba
 book_kind_today	Vawiin lehkha
 book_kind_month	He thla lehkha
@@ -900,7 +900,7 @@ low_stock_alert	A tlem mek — lei thuai: {items}
 unpriced_note	I thila {n} items te hian man an la nei lo — pakhat i set hma loh chuan 0 ah an bill thin.
 show_unpriced	Item man tel lo chauh entir rawh
 show_all_dishes	Item zawng zawng entir rawh
-role_title_rest_ph	Hna hming (entir Captain, Chhum hotu)
+role_title_rest_ph	Hna hming (entir Captain)
 preset_help_rest	Sum khawmtu: zuar. Hotu: zuar + thil + tihbo/siam.
 kind_resale	Damdawi lei a ni
 kind_dish	Stock chhiar suh
