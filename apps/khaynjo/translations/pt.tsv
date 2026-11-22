@@ -683,7 +683,7 @@ lan_not_listening	Sem aceitar dispositivos agora — outro programa pode estar a
 lan_tills_off	As caixas extra estão desligadas. Os livros desta loja ficam neste dispositivo. Permita caixas extra se outro dispositivo também deve receber pedidos ou faturar.
 paired_with	Emparelhado com a loja em {url}
 not_paired	Não emparelhado — ligue-se ao servidor da loja.
-choose_device_use	Escolha como este dispositivo é usado.
+choose_device_use	Escolha Servidor, Cliente ou restaurar uma cópia.
 paired_note	Emparelhado. Desbloqueie para vender, ou Atualizar para trazer o mais recente da loja.
 last_update_at	Última atualização da loja: {time}.
 pair_intro	Encontre o servidor ou digite o endereço e o código de emparelhamento.

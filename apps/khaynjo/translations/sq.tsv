@@ -683,7 +683,7 @@ lan_not_listening	Nuk po pranon pajisje (porta {port} e zënë). Rinisni aplikac
 lan_tills_off	Kasat shtesë janë fikur. Lejojini që një pajisje tjetër të bashkohet.
 paired_with	I çiftuar · {url}
 not_paired	I paçiftuar
-choose_device_use	Zgjidhni Server ose Terminal.
+choose_device_use	Zgjidhni Server, Klient ose rivendosni një kopje rezervë.
 paired_note	I çiftuar. Zhbllokoni për të shitur, ose Rifresko për të fundit.
 last_update_at	Përditësimi i fundit: {time}.
 pair_intro	Gjeni serverin, ose shkruani adresën dhe kodin e çiftimit.

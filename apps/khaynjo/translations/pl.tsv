@@ -683,7 +683,7 @@ lan_not_listening	Nie akceptuje urządzeń (port {port} zajęty). Uruchom ponown
 lan_tills_off	Dodatkowe kasy są wyłączone. Zezwól im na dołączenie innego urządzenia.
 paired_with	Sparowany · {url}
 not_paired	Nie sparowane
-choose_device_use	Wybierz serwer lub klienta.
+choose_device_use	Wybierz Serwer, Klient lub przywróć kopię zapasową.
 paired_note	Sparowane. Odblokuj, aby sprzedać lub odśwież, aby uzyskać najnowsze informacje.
 last_update_at	Ostatnia aktualizacja: {time}.
 pair_intro	Znajdź serwer lub wpisz jego adres i kod parowania.

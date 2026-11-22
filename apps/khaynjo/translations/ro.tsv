@@ -683,7 +683,7 @@ lan_not_listening	Nu acceptă dispozitive (portul {port} e ocupat). Repornește 
 lan_tills_off	Casele suplimentare sunt oprite. Permite-le ca să se alăture alt dispozitiv.
 paired_with	Împerecheat · {url}
 not_paired	Neîmperecheat
-choose_device_use	Alege Server sau Client.
+choose_device_use	Alegeți Server, Client sau restaurați o copie de rezervă.
 paired_note	Împerecheat. Deblochează ca să vinzi, sau Reîmprospătează pentru ultimele.
 last_update_at	Ultima actualizare: {time}.
 pair_intro	Găsește serverul sau tastează adresa și codul de împerechere.

@@ -683,7 +683,7 @@ lan_not_listening	Tar ikke imot enheter (port {port} er opptatt). Start appen p�
 lan_tills_off	Ekstra kasser er av. Tillat dem så en annen enhet kan bli med.
 paired_with	Paret · {url}
 not_paired	Ikke paret
-choose_device_use	Velg Server eller Klient.
+choose_device_use	Velg Server, Klient, eller gjenopprett en sikkerhetskopi.
 paired_note	Paret. Lås opp for å selge, eller Oppdater for det siste.
 last_update_at	Siste oppdatering: {time}.
 pair_intro	Finn serveren, eller skriv adressen og paringskoden.

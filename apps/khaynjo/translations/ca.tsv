@@ -683,7 +683,7 @@ lan_not_listening	No s'accepten dispositius (el port {port} està ocupat). Reini
 lan_tills_off	Les caixes extra estan desactivades. Permeteu-les perquè un altre dispositiu s'hi uneixi.
 paired_with	Aparellat · {url}
 not_paired	No aparellat
-choose_device_use	Trieu Servidor o Client.
+choose_device_use	Trieu Servidor, Client o restaureu una còpia.
 paired_note	Aparellat. Desbloquegeu per vendre, o Actualitza per tenir l'últim.
 last_update_at	Darrera actualització: {time}.
 pair_intro	Trobeu el servidor, o escriviu-ne l'adreça i el codi d'aparellament.

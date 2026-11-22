@@ -683,7 +683,7 @@ lan_not_listening	目前无法接受设备连接 — 可能有其他程序占用
 lan_tills_off	额外柜台已关闭。本店账本保存在本机。若另一台设备也要点单或结账，请允许额外柜台。
 paired_with	已与 {url} 上的店铺配对
 not_paired	未配对 — 请连接店内服务器。
-choose_device_use	选择本设备的用途。
+choose_device_use	选择服务器、客户端，或恢复备份。
 paired_note	已配对。解锁即可收款，或点刷新获取店里的最新数据。
 last_update_at	最后一次从店里更新：{time}。
 pair_intro	查找服务器，或输入其地址和配对码。

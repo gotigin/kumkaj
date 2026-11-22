@@ -683,7 +683,7 @@ lan_not_listening	Qurilmalarni qabul qilmaydi ({port} port band). Ilovani qayta 
 lan_tills_off	Qoʻshimcha kassalar oʻchiq. Boshqa qurilma qoʻshilishi uchun ruxsat bering.
 paired_with	Juftlangan · {url}
 not_paired	Juftlanmagan
-choose_device_use	Server yoki Mijozni tanlang.
+choose_device_use	Server, Mijozni tanlang yoki zaxirani tiklang.
 paired_note	Juftlangan. Sotish uchun qulfni oching yoki oxirgisi uchun Yangilang.
 last_update_at	Oxirgi yangilanish: {time}.
 pair_intro	Serverni toping yoki manzil va juftlash kodini yozing.

@@ -683,7 +683,7 @@ lan_not_listening	Hindi tumatanggap ng mga device (port {port} busy). I-restart 
 lan_tills_off	Naka-off ang mga extra tills. Payagan silang payagan ang isa pang device na sumali.
 paired_with	Ipinares · {url}
 not_paired	Hindi ipinares
-choose_device_use	Piliin ang Server o Kliyente.
+choose_device_use	Piliin ang Server, Client, o i-restore ang backup.
 paired_note	Ipinares. I-unlock para ibenta, o I-refresh para sa pinakabago.
 last_update_at	Huling update: {time}.
 pair_intro	Hanapin ang server, o i-type ang address at code ng pagpapares nito.

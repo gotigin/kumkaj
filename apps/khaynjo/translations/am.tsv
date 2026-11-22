@@ -683,7 +683,7 @@ lan_not_listening	መሣሪያዎችን አይቀበልም (ወደብ {port} ተ
 lan_tills_off	ተጨማሪ ቆጣሪዎች ጠፍተዋል። ሌላ መሣሪያ እንዲቀላቀል ይፍቀዱ።
 paired_with	ተጣምሯል · {url}
 not_paired	አልተጣመረም
-choose_device_use	ሰርቨር ወይም ክላየንት ይምረጡ።
+choose_device_use	ሰርቨር፣ ክላይንት ይምረጡ ወይም ተተኪ ይመልሱ።
 paired_note	ተጣምሯል። ለመሸጥ ይክፈቱ፣ ወይም የቅርቡን ለማግኘት ያድሱ።
 last_update_at	የመጨረሻ ዝማኔ፦ {time}።
 pair_intro	ሰርቨሩን ያግኙ፣ ወይም አድራሻውን እና የማጣመሪያ ኮዱን ይጻፉ።

@@ -683,7 +683,7 @@ lan_not_listening	Tager ikke imod enheder (port {port} er optaget). Genstart app
 lan_tills_off	Ekstra kasser er slået fra. Tillad dem for at lade en anden enhed deltage.
 paired_with	Parret · {url}
 not_paired	Ikke parret
-choose_device_use	Vælg Server eller Klient.
+choose_device_use	Vælg Server, Klient, eller gendan en sikkerhedskopi.
 paired_note	Parret. Lås op for at sælge, eller Opdater for det seneste.
 last_update_at	Seneste opdatering: {time}.
 pair_intro	Find serveren, eller skriv dens adresse og parringskode.

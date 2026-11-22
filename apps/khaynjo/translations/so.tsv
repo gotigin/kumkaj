@@ -683,7 +683,7 @@ lan_not_listening	Ma aqbalayo qalabyo (dekedda {port} waa mashquul). Dib u bilow
 lan_tills_off	Sanduuqyada dheeraadka ah waa dansan yihiin. Oggolow si qalab kale u soo biiro.
 paired_with	Waa la isku xiray · {url}
 not_paired	Lama isku xirin
-choose_device_use	Dooro Server ama Macaamiil.
+choose_device_use	Dooro Server, Macmiil, ama soo celi kayd.
 paired_note	Waa la isku xiray. Fur si aad u iibiso, ama Cusbooneysii kan ugu dambeeyay.
 last_update_at	Cusbooneysiinta u dambeysay: {time}.
 pair_intro	Raadi server-ka, ama qor cinwaankiisa iyo koodhka isku-xirka.

@@ -683,7 +683,7 @@ lan_not_listening	Nie toestelle aanvaar (poort {port} besig). Herlaai die app.
 lan_tills_off	Ekstrasifte is af. Laat hulle toe om 'n ander toestel toe te laat om aan te sluit.
 paired_with	Gepaar · {url}
 not_paired	Nie gepaar nie
-choose_device_use	Kies Server of Kliënt.
+choose_device_use	Kies Bediener, Kliënt, of herstel ’n rugsteun.
 paired_note	Gepaar. Ontgrendel om te verkoop, of Ververs vir die nuutste.
 last_update_at	Laaste update: {time}.
 pair_intro	Vind die server, of tipe sy adres en paar kode.

@@ -683,7 +683,7 @@ lan_not_listening	Ddim yn derbyn dyfeisiau (porth {port} yn brysur). Ailgychwynn
 lan_tills_off	Mae tiliau ychwanegol i ffwrdd. Caniatewch nhw i adael i ddyfais arall ymuno.
 paired_with	Wedi'i baru · {url}
 not_paired	Heb ei baru
-choose_device_use	Dewiswch Weinydd neu Gleient.
+choose_device_use	Dewiswch Weinydd, Cleient, neu adfer copi wrth gefn.
 paired_note	Wedi'i baru. Datgloi i werthu, neu Adnewyddu ar gyfer y diweddaraf.
 last_update_at	Diweddariad olaf: {time}.
 pair_intro	Dewch o hyd i'r gweinydd, neu teipiwch ei gyfeiriad a'r cod paru.

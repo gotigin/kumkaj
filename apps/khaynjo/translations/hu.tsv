@@ -683,7 +683,7 @@ lan_not_listening	Nem fogad eszközöket (a {port} port foglalt). Indítsa újra
 lan_tills_off	Az extra kassza ki van kapcsolva. Engedélyezze, hogy egy másik eszköz csatlakozzon.
 paired_with	Párosítva · {url}
 not_paired	Nincs párosítva
-choose_device_use	Válassza a Szerver vagy a Kliens lehetőséget.
+choose_device_use	Válasszon Szervert, Klienst, vagy állítson vissza biztonsági mentést.
 paired_note	Párosítva. Oldja fel az eladáshoz, vagy frissítse a legújabbat.
 last_update_at	Utolsó frissítés: {time}.
 pair_intro	Keresse meg a szervert, vagy írja be a címét és a párosítási kódot.

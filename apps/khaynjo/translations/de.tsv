@@ -683,7 +683,7 @@ lan_not_listening	Gerade werden keine Geräte angenommen — ein anderes Program
 lan_tills_off	Extra-Kassen sind aus. Die Bücher dieses Lokals bleiben auf diesem Gerät. Extra-Kassen erlauben, wenn ein weiteres Gerät ebenfalls Bestellungen aufnehmen oder kassieren soll.
 paired_with	Gekoppelt mit dem Lokal unter {url}
 not_paired	Nicht gekoppelt — mit dem Server des Lokals verbinden.
-choose_device_use	Wählen Sie, wie dieses Gerät genutzt wird.
+choose_device_use	Wählen Sie Server, Client oder eine Sicherung wiederherstellen.
 paired_note	Gekoppelt. Entsperren zum Verkaufen, oder Aktualisieren für den neuesten Stand des Lokals.
 last_update_at	Letzte Aktualisierung vom Lokal: {time}.
 pair_intro	Server suchen oder seine Adresse und den Kopplungscode eingeben.

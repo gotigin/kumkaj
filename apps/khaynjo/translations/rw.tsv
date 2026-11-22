@@ -683,7 +683,7 @@ lan_not_listening	Ntabwo yakira ibikoresho (port {port} irakora). Ongera utangiz
 lan_tills_off	Kontwari zindi zirazimye. Zemerere kugira ngo ikindi gikoresho gihuze.
 paired_with	Byahujwe · {url}
 not_paired	Ntabwo byahujwe
-choose_device_use	Hitamo Seriveri cyangwa Kiliya.
+choose_device_use	Hitamo Seriveri, Umukiriya, cyangwa subiza backup.
 paired_note	Byahujwe. Fungura kugira ngo ugurishe, cyangwa Vugurura ibiheruka.
 last_update_at	Ivugurura rya nyuma: {time}.
 pair_intro	Shaka seriveri, cyangwa wandike aderesi yayo na kode yo guhuza.

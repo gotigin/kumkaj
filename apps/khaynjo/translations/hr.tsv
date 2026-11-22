@@ -683,7 +683,7 @@ lan_not_listening	Ne prima uređaje (priključak {port} zauzet). Ponovno pokreni
 lan_tills_off	Dodatne blagajne su isključene. Dopustite ih da se drugi uređaj može pridružiti.
 paired_with	Upareno · {url}
 not_paired	Nije upareno
-choose_device_use	Odaberite Server ili Klijent.
+choose_device_use	Odaberite Poslužitelj, Klijent ili vratite sigurnosnu kopiju.
 paired_note	Upareno. Otključajte za prodaju ili Osvježi za najnovije.
 last_update_at	Zadnje ažuriranje: {time}.
 pair_intro	Pronađite server ili upišite adresu i kod uparivanja.

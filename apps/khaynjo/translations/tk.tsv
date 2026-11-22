@@ -683,7 +683,7 @@ lan_not_listening	Enjamlary kabul etmezlik (port {port} meşgul). Programmany t�
 lan_tills_off	Goşmaça tölegler öçürildi. Başga enjamyň birleşmegine rugsat beriň.
 paired_with	Jübütlenen · {url}
 not_paired	Jübüt däl
-choose_device_use	Serwer ýa-da Müşderi saýlaň.
+choose_device_use	Serwer, Müşderi saýlaň ýa-da ätiýaçlygy dikeldiň.
 paired_note	Jübüt. Satmak üçin açyň ýa-da iň soňkusy üçin täzeläň.
 last_update_at	Iň soňky täzelenme: {time}.
 pair_intro	Serweri tapyň ýa-da onuň salgysyny we jübüt koduny ýazyň.

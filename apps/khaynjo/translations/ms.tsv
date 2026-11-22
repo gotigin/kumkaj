@@ -683,7 +683,7 @@ lan_not_listening	Tidak menerima peranti (port {port} sibuk). Mulakan semula apl
 lan_tills_off	Tills tambahan dimatikan. Benarkan mereka membenarkan peranti lain bergabung.
 paired_with	Berpasangan · {url}
 not_paired	Tidak berpasangan
-choose_device_use	Pilih Pelayan atau Pelanggan.
+choose_device_use	Pilih Pelayan, Klien, atau pulihkan sandaran.
 paired_note	Berpasangan. Buka kunci untuk menjual, atau Muat semula untuk yang terkini.
 last_update_at	Kemas kini terakhir: {time}.
 pair_intro	Cari pelayan, atau taip alamat dan kod pasangannya.

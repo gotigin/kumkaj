@@ -683,7 +683,7 @@ lan_not_listening	Laitteita ei oteta vastaan (portti {port} varattu). Käynnist�
 lan_tills_off	Lisäkassat ovat pois päältä. Salli ne, jotta toinen laite voi liittyä.
 paired_with	Paritettu · {url}
 not_paired	Ei paritettu
-choose_device_use	Valitse palvelin tai pääte.
+choose_device_use	Valitse Palvelin, Asiakas tai palauta varmuuskopio.
 paired_note	Paritettu. Avaa lukitus myydäksesi tai päivitä saadaksesi uusimman.
 last_update_at	Viimeisin päivitys: {time}.
 pair_intro	Etsi palvelin tai kirjoita sen osoite ja parituskoodi.

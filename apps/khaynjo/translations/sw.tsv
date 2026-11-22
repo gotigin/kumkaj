@@ -683,7 +683,7 @@ lan_not_listening	Haipokei vifaa sasa — huenda programu nyingine inatumia mlan
 lan_tills_off	Kaunta za ziada zimezimwa. Hesabu za duka hili zinabaki kwenye kifaa hiki. Ruhusu kaunta za ziada ikiwa kifaa kingine pia kitapokea oda au kutoza.
 paired_with	Imeoanishwa na duka kwenye {url}
 not_paired	Haijaoanishwa — unganisha na seva ya duka.
-choose_device_use	Chagua jinsi kifaa hiki kinavyotumika.
+choose_device_use	Chagua Seva, Mteja, au rejesha nakala rudufu.
 paired_note	Imeoanishwa. Fungua ili kuuza, au Onyesha upya kupata taarifa mpya kutoka dukani.
 last_update_at	Sasisho la mwisho kutoka dukani: {time}.
 pair_intro	Tafuta seva, au andika anwani yake na msimbo wa kuoanisha.

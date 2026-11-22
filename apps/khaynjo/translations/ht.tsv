@@ -683,7 +683,7 @@ lan_not_listening	Pa ap aksepte aparèy (pò {port} okipe). Relanse aplikasyon a
 lan_tills_off	Lòt kes yo eten. Pèmèt yo pou yon lòt aparèy rantre.
 paired_with	Makonnen · {url}
 not_paired	Pa makonnen
-choose_device_use	Chwazi Sèvè oswa Kliyan.
+choose_device_use	Chwazi Sèvè, Kliyan, oswa restore yon backup.
 paired_note	Makonnen. Debloke pou vann, oswa Rafrechi pou dènye a.
 last_update_at	Dènye aktyalizasyon: {time}.
 pair_intro	Chèche sèvè a, oswa ekri adrès li ak kòd makonnen an.

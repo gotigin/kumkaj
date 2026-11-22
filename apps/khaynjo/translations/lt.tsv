@@ -683,7 +683,7 @@ lan_not_listening	Nepriima įrenginių (prievadas {port} užimtas). Paleiskite p
 lan_tills_off	Papildomos kasos išjungtos. Leiskite, kad kitas įrenginys prisijungtų.
 paired_with	Susieta · {url}
 not_paired	Nesusieta
-choose_device_use	Pasirinkite Serverį arba Klientą.
+choose_device_use	Pasirinkite Serverį, Klientą arba atkurkite atsarginę kopiją.
 paired_note	Susieta. Atrakinkite, kad parduotumėte, arba Atnaujinkite naujausiam.
 last_update_at	Paskutinis atnaujinimas: {time}.
 pair_intro	Raskite serverį arba įveskite adresą ir susiejimo kodą.

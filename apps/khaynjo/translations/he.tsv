@@ -683,7 +683,7 @@ lan_not_listening	לא מקבל מכשירים (יציאה {port} תפוסה). �
 lan_tills_off	קופות נוספות כבויות. אפשרו אותן כדי שמכשיר אחר יצטרף.
 paired_with	מזווג · {url}
 not_paired	לא מזווג
-choose_device_use	בחרו שרת או מסוף.
+choose_device_use	בחרו שרת, לקוח או שחזרו גיבוי.
 paired_note	מזווג. פתחו כדי למכור, או רעננו לעדכני.
 last_update_at	עדכון אחרון: {time}.
 pair_intro	מצאו את השרת, או הקלידו את הכתובת ואת קוד הזיווג.

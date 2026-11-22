@@ -683,7 +683,7 @@ lan_not_listening	Accepterar inte enheter (port {port} upptagen). Starta om appe
 lan_tills_off	Extra kassar är avstängda. Tillåt dem att låta en annan enhet gå med.
 paired_with	Parat · {url}
 not_paired	Inte parat
-choose_device_use	Välj Server eller Klient.
+choose_device_use	Välj Server, Klient eller återställ en säkerhetskopia.
 paired_note	Parat. Lås upp för att sälja, eller uppdatera för det senaste.
 last_update_at	Senaste uppdatering: {time}.
 pair_intro	Hitta servern eller skriv in dess adress och kopplingskod.

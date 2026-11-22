@@ -683,7 +683,7 @@ lan_not_listening	Aucun appareil accepté pour l'instant — un autre programme 
 lan_tills_off	Les caisses supplémentaires sont désactivées. Les comptes de l'établissement restent sur cet appareil. Autorisez-les si un autre appareil doit aussi prendre des commandes ou encaisser.
 paired_with	Associé à l'établissement sur {url}
 not_paired	Non associé — connectez-vous au serveur de l'établissement.
-choose_device_use	Choisissez comment cet appareil est utilisé.
+choose_device_use	Choisissez Serveur, Client, ou restaurer une sauvegarde.
 paired_note	Associé. Déverrouillez pour vendre, ou Actualiser pour récupérer les dernières données.
 last_update_at	Dernière mise à jour de l'établissement : {time}.
 pair_intro	Trouvez le serveur, ou saisissez son adresse et le code d'appairage.

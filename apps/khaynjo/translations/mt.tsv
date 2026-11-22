@@ -683,7 +683,7 @@ lan_not_listening	Ma jaċċettax apparat (port {port} okkupat). Ibda mill-ġdid 
 lan_tills_off	Tills żejda huma mitfija. Ħallihom iħallu apparat ieħor jingħaqad.
 paired_with	Imqabbad · {url}
 not_paired	Mhux paired
-choose_device_use	Agħżel Server jew Klijent.
+choose_device_use	Agħżel Server, Client, jew irrestawra backup.
 paired_note	Imqabbad. Iftaħ biex tbigħ, jew Aġġorna għall-aħħar.
 last_update_at	L-aħħar aġġornament: {time}.
 pair_intro	Sib is-server, jew ittajpja l-indirizz u l-kodiċi tat-tqabbil tiegħu.

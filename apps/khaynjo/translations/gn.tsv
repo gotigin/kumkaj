@@ -683,7 +683,7 @@ lan_not_listening	Ndoaceptái umi tembipuru (puerto {port} hembiapo heta). Emoñ
 lan_tills_off	Tills extra oime apagado. Eheja chupekuéra toheja ambue tembipuru ojoaju.
 paired_with	Oñembojoaju · {url} .
 not_paired	Ndaha’éi oñembojoajúva
-choose_device_use	Eiporavo Servidor térã Cliente.
+choose_device_use	Eiporavo Servidor, Cliente, térã emoĩjey backup.
 paired_note	Oñembojoajúva. Emboguejy evende hag̃ua, térã Embopyahu ipyahuvévape g̃uarã.
 last_update_at	Ñembopyahu paha: {time}.
 pair_intro	Eheka pe servidor, térã ehai idirección ha código de emparejamiento.

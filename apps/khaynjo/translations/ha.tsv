@@ -683,7 +683,7 @@ lan_not_listening	Ba a karɓar na'urori ba (tashar {port} a aiki). Sake kunna ma
 lan_tills_off	Ƙarin akwatunan kuɗi a kashe. Yarda da su don barin wata na'ura ta shiga.
 paired_with	An haɗa · {url}
 not_paired	Ba a haɗa ba
-choose_device_use	Zaɓi Server ko Abokin haɗi.
+choose_device_use	Zaɓi Uwar gida, Abokin ciniki, ko maido belu.
 paired_note	An haɗa. Buɗe don sayarwa, ko Sabunta don sabo.
 last_update_at	Sabuntawa ta ƙarshe: {time}.
 pair_intro	Nemo server, ko rubuta adireshi da lambar haɗinsa.

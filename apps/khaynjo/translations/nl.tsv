@@ -683,7 +683,7 @@ lan_not_listening	Neemt nu geen apparaten aan — misschien gebruikt een ander p
 lan_tills_off	Extra kassa's staan uit. De boeken van deze zaak blijven op dit apparaat. Sta extra kassa's toe als een ander apparaat ook bestellingen moet opnemen of afrekenen.
 paired_with	Gekoppeld aan de zaak op {url}
 not_paired	Niet gekoppeld — verbind met de server van de zaak.
-choose_device_use	Kies hoe dit apparaat wordt gebruikt.
+choose_device_use	Kies Server, Client, of herstel een back-up.
 paired_note	Gekoppeld. Ontgrendel om te verkopen, of Vernieuwen voor het laatste van de zaak.
 last_update_at	Laatste update van de zaak: {time}.
 pair_intro	Zoek de server, of typ het adres en de koppelcode.

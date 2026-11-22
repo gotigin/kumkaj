@@ -683,7 +683,7 @@ lan_not_listening	Ko gbigba awọn ẹrọ (ibudo {port} nšišẹ). Tun app b�
 lan_tills_off	Afikun tills wa ni pipa. Gba wọn laaye lati jẹ ki ẹrọ miiran darapọ.
 paired_with	So pọ · {url}
 not_paired	Ko so pọ
-choose_device_use	Yan Olupin tabi Onibara.
+choose_device_use	Yan Server, Client, tàbí tun àwárípadà.
 paired_note	So pọ. Ṣii silẹ lati ta, tabi Tuntun fun tuntun.
 last_update_at	Imudojuiwọn to kẹhin: {time}.
 pair_intro	Wa olupin naa, tabi tẹ adirẹsi rẹ ati koodu sisọ pọ.

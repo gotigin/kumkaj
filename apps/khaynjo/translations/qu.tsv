@@ -683,7 +683,7 @@ lan_not_listening	Dispositivokuna mana chaskispa (puerto {port} ocupado). Appta 
 lan_tills_off	Extra caja registradoras nisqakunan manaña kashanchu. Saqiy huk aparatota hukllawanankupaq saqiy.
 paired_with	Parisqa · {url} .
 not_paired	Mana parischasqachu
-choose_device_use	Servidor utaq Cliente nisqapi akllay.
+choose_device_use	Servidor, Cliente akllay utaq iskaychasqata kutichiy.
 paired_note	Iskay iskaymanta. Vendenapaq kichay, utaq Refresh qhipa kaqpaq.
 last_update_at	Qhipa kaq musuqyachiy: {time}.
 pair_intro	Servidorta maskay, utaq direccionninta chaymanta tupachiy códigonta qillqay.

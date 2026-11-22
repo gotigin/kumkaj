@@ -683,7 +683,7 @@ lan_not_listening	Nepřijímá zařízení (port {port} obsazený). Restartujte 
 lan_tills_off	Extra pokladny jsou vypnuté. Umožněte jim, aby se připojilo jiné zařízení.
 paired_with	Spárováno · {url}
 not_paired	Nespárováno
-choose_device_use	Vyberte Server nebo Klient.
+choose_device_use	Zvolte Server, Klient nebo obnovte zálohu.
 paired_note	Spárováno. Chcete-li prodat, odemkněte nebo aktualizujte nejnovější.
 last_update_at	Poslední aktualizace: {time}.
 pair_intro	Najděte server nebo zadejte jeho adresu a párovací kód.

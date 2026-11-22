@@ -683,7 +683,7 @@ lan_not_listening	Cihazlar qəbul olunmur (port {port} məşğuldur). Tətbiqi y
 lan_tills_off	Əlavə kassalar bağlıdır. Başqa cihazın qoşulması üçün onlara icazə verin.
 paired_with	Qoşulub · {url}
 not_paired	Qoşulmayıb
-choose_device_use	Server və ya Klient seçin.
+choose_device_use	Server, Klient seçin və ya ehtiyatı bərpa edin.
 paired_note	Qoşulub. Satış üçün kilidi açın və ya ən sonu almaq üçün Yenilə.
 last_update_at	Son yeniləmə: {time}.
 pair_intro	Serveri tapın və ya onun ünvanını və qoşulma kodunu yazın.

@@ -683,7 +683,7 @@ lan_not_listening	Tekur ekki við tækjum (gátt {port} upptekið). Endurræstu 
 lan_tills_off	Auka kassar eru lausir. Leyfðu þeim að leyfa öðru tæki að vera með.
 paired_with	Parað · {url}
 not_paired	Ekki parað
-choose_device_use	Veldu Server eða Client.
+choose_device_use	Veldu Miðlara, Biðlara eða endurheimtu öryggisafrit.
 paired_note	Pöruð. Opnaðu til að selja, eða endurnýjaðu til að fá það nýjasta.
 last_update_at	Síðasta uppfærsla: {time}.
 pair_intro	Finndu netþjóninn eða sláðu inn heimilisfang hans og pörunarkóða.

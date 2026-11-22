@@ -683,7 +683,7 @@ lan_not_listening	Non se aceptan dispositivos (o porto {port} está ocupado). Re
 lan_tills_off	As caixas extra están desactivadas. Permítaas para que outro dispositivo se una.
 paired_with	Emparellado · {url}
 not_paired	Non emparellado
-choose_device_use	Escolla Servidor ou Cliente.
+choose_device_use	Escolla Servidor, Cliente ou restaure unha copia.
 paired_note	Emparellado. Desbloquee para vender, ou Actualizar para ter o último.
 last_update_at	Última actualización: {time}.
 pair_intro	Atope o servidor, ou escriba o seu enderezo e o código de emparellamento.

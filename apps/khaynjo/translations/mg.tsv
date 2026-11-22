@@ -683,7 +683,7 @@ lan_not_listening	Tsy mandray fitaovana (port {port} feno). Avereno ny fampihara
 lan_tills_off	Tsy mandeha ny vola fanampiny. Avelao izy ireo hampiditra fitaovana iray hafa.
 paired_with	Nifandray · {url}
 not_paired	Tsy mifandray
-choose_device_use	Fidio Server na Client.
+choose_device_use	Safidio Server, Client, na avereno ny backup.
 paired_note	Nifandray. Sokafy mba hivarotra, na havaozy ho an'ny vaovao farany.
 last_update_at	Fanavaozam-baovao farany: {time}.
 pair_intro	Tadiavo ny mpizara, na soraty ny adiresy sy ny kaody fifandirana.

@@ -683,7 +683,7 @@ lan_not_listening	Ne sprejema naprav (vrata {port} so zasedena). Znova zaženite
 lan_tills_off	Dodatne blagajne so izklopljene. Dovolite jih, da se pridruži druga naprava.
 paired_with	Povezano · {url}
 not_paired	Ni povezano
-choose_device_use	Izberite Strežnik ali Odjemalec.
+choose_device_use	Izberite Strežnik, Odjemalec ali obnovite varnostno kopijo.
 paired_note	Povezano. Odklenite za prodajo ali Osvežite za najnovejše.
 last_update_at	Zadnja osvežitev: {time}.
 pair_intro	Poiščite strežnik ali vnesite naslov in kodo za povezavo.

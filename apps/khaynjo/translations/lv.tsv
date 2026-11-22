@@ -683,7 +683,7 @@ lan_not_listening	Neņem pretī ierīces (ports {port} aizņemts). Restartējiet
 lan_tills_off	Papildu kases ir izslēgtas. Atļaujiet tās, lai cita ierīce var pievienoties.
 paired_with	Savienots pārī · {url}
 not_paired	Nav savienots pārī
-choose_device_use	Izvēlieties serveri vai termināli.
+choose_device_use	Izvēlieties Serveri, Klientu vai atjaunojiet dublējumu.
 paired_note	Savienots pārī. Atbloķējiet, lai pārdotu, vai atsvaidziniet jaunāko.
 last_update_at	Pēdējais atjauninājums: {time}.
 pair_intro	Atrodiet serveri vai ierakstiet tā adresi un pāra kodu.

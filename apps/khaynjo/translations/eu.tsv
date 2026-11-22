@@ -683,7 +683,7 @@ lan_not_listening	Ez ditu gailuak onartzen ({port} ataka okupatuta). Berrabiaraz
 lan_tills_off	Kutxa gehigarriak itzalita daude. Baimendu beste gailu bat elkartzeko.
 paired_with	Parekatuta · {url}
 not_paired	Parekatugabe
-choose_device_use	Aukeratu Zerbitzaria edo Bezeroa.
+choose_device_use	Aukeratu Zerbitzaria, Bezeroa edo leheneratu babeskopia.
 paired_note	Parekatuta. Desblokeatu saltzeko, edo Freskatu azkena lortzeko.
 last_update_at	Azken eguneratzea: {time}.
 pair_intro	Aurkitu zerbitzaria, edo idatzi helbidea eta parekatze-kodea.

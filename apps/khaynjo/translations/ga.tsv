@@ -683,7 +683,7 @@ lan_not_listening	Ní cheadaítear gléasanna (port {port} gnóthach). Atosaigh 
 lan_tills_off	Tá bainc bhreise as oifig. Lig dóibh go dtabharfaidh siad deis do ghléas eile dul isteach.
 paired_with	Péireáilte · {url}
 not_paired	Níor péireáilte
-choose_device_use	Roghnaigh "Server" nó "Client".
+choose_device_use	Roghnaigh Freastalaí, Cliant, nó athchóirigh cúltaca.
 paired_note	Péireáilte. Díscríobh chun díol, nó Athnuaigh don ceann is déanaí.
 last_update_at	Nuashonrú deireanach: {time}.
 pair_intro	Faigh an freastalaí, nó clóscríobh a sheoladh agus a chód péireála.

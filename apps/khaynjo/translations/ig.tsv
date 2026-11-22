@@ -683,7 +683,7 @@ lan_not_listening	Anaghị anabata ngwaọrụ (ọdụ {port} na-arụ ọrụ)
 lan_tills_off	Kaụnta ndị ọzọ gbanyụrụ. Kwe ha ka ngwaọrụ ọzọ jikọọ.
 paired_with	Ejikọrọ · {url}
 not_paired	Ejikọghị
-choose_device_use	Họrọ Sava ma ọ bụ Ngwa njedebe.
+choose_device_use	Họrọ Sava, Klient, ma ọ bụ weghachi ndabere.
 paired_note	Ejikọrọ. Mepee ka ị ree, ma ọ bụ Mee ọhụrụ maka nke kacha ọhụrụ.
 last_update_at	Mmelite ikpeazụ: {time}.
 pair_intro	Chọta sava, ma ọ bụ dee adreesị ya na koodu njikọ.

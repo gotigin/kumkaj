@@ -683,7 +683,7 @@ lan_not_listening	Ayizamkeli izixhobo (iporti {port} ixakekile). Qalisa i-app kw
 lan_tills_off	Ezinye iikhawuntara zicinyiwe. Zivumele ukuze esinye isixhobo sijoyine.
 paired_with	Kudityanisiwe · {url}
 not_paired	Akudityaniswanga
-choose_device_use	Khetha iSeva okanye iKlayenti.
+choose_device_use	Khetha iSeva, uMxumi, okanye buyisela i-backup.
 paired_note	Kudityanisiwe. Vula ukuze uthengise, okanye Hlaziya okutsha.
 last_update_at	Uhlaziyo lokugqibela: {time}.
 pair_intro	Fumana iseva, okanye chwetheza idilesi yayo ngekhowudi yokudibanisa.
