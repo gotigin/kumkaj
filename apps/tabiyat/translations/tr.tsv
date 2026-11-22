@@ -433,7 +433,7 @@ lan_live	Canlı
 lan_sending	{n} gönderiliyor
 lan_sign_in_to_send	{n} göndermek için yeniden giriş yapın
 lan_pair_again	Bu cihazı yeniden eşleştirin
-lan_update_app	Uygulamayı güncelleyin — bu cihaz ile restoran sunucusunun sürümleri farklı
+lan_update_app	Uygulamayı güncelleyin — bu cihaz ile mağaza sunucusunun sürümleri farklı
 allow_firewall	Diğer cihazların bağlanmasına izin ver
 firewall_blocked	Bu bilgisayarın güvenlik duvarı diğer cihazları engelliyor — “Diğer cihazların bağlanmasına izin ver”e dokunun.
 firewall_waiting	Yönetici onayı bekleniyor…

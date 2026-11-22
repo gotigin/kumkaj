@@ -433,7 +433,7 @@ lan_live	Langsung
 lan_sending	{n} sedang dikirim
 lan_sign_in_to_send	Masuk lagi untuk mengirim {n}
 lan_pair_again	Pasangkan perangkat ini lagi
-lan_update_app	Perbarui aplikasi — perangkat ini dan server restoran beda versi
+lan_update_app	Perbarui aplikasi — perangkat ini dan server toko beda versi
 allow_firewall	Izinkan perangkat lain terhubung
 firewall_blocked	Firewall komputer ini memblokir perangkat lain — ketuk “Izinkan perangkat lain terhubung”.
 firewall_waiting	Menunggu izin admin…
