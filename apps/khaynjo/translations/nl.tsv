@@ -801,9 +801,9 @@ station_print_pick_ph	Station om printers in te stellen
 station_print_pick_first	Kies eerst een keukenstation
 station_print_editing	Printers voor “{name}” bewerken
 station_vps_dd	Printers voor dit station
-station_vps_dd_n	{n} printer(s) · tik om te wijzigen
+station_vps_dd_n	{n} printers · tik om te wijzigen
 bill_printers_dd	Printers voor de rekening
-bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
+bill_printers_dd_n	{n} printers voor de rekening · tik om te wijzigen
 paper_heading	Virtueel papier
 paper_size	{w} × {h} mm
 paper_roll	rol van {w} mm
@@ -821,7 +821,7 @@ job_delivery	Hoe de taak wordt verzonden
 job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en het keukenticket behouden elk hun eigen. Elke taak kan naar elke printer gaan die “Printers zoeken” heeft opgeslagen.
 station_vp_attached	Printer gekoppeld
 station_vp_detached	Printer van station verwijderd
-station_print_summary	{mode} · {n} printer(s)
+station_print_summary	{mode} · {n} printers
 station_print_summary_none	Nog geen printers op dit station — zal niet afdrukken
 stations_none	Nog geen stations — voeg er hieronder één toe. Menu-items kunnen een station gebruiken zodat hun KOT daar wordt afgedrukt.
 route_up	Omhoog
@@ -832,16 +832,16 @@ save_printers	Printers opslaan
 print_test_page	Testpagina afdrukken
 no_printer_assigned	Geen printer
 test_page_no_printer	Geen printer voor {place} — wijs er hierboven een toe en probeer opnieuw
-test_page_pick_first	Kies eerst testprinter(s) — daarna een testpagina afdrukken
+test_page_pick_first	Kies eerst testprinters — daarna een testpagina afdrukken
 test_printers_dd	Printers voor testpagina
-test_printers_dd_n	{n} testprinter(s) · tik om te wijzigen
+test_printers_dd_n	{n} testprinters · tik om te wijzigen
 kot_test_printers_dd	Printers voor Test KOT
-kot_test_printers_dd_n	{n} Test KOT-printer(s) · tik om te wijzigen
+kot_test_printers_dd_n	{n} Test KOT-printers · tik om te wijzigen
 test_printer_picked	Testen op: {name}
 test_printer_cleared	Niet testen op: {name}
-test_page_sent_n	Testpagina verstuurd naar {n} printer(s)
-test_kot_pick_first	Kies eerst printer(s) voor Test KOT — daarna Test KOT
-test_kot_sent_n	Test KOT verstuurd naar {n} printer(s)
+test_page_sent_n	Testpagina verstuurd naar {n} printers
+test_kot_pick_first	Kies eerst printers voor Test KOT — daarna Test KOT
+test_kot_sent_n	Test KOT verstuurd naar {n} printers
 cancel_pick	Markeren
 cancel_pick_on	Gemarkeerd
 cancel_pick_meta	Gemarkeerd om te annuleren

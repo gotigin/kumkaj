@@ -1359,7 +1359,7 @@ resv_name_ph	Pangalan ng bisita
 resv_phone_ph	Telepono (opsyonal)
 resv_guests_ph	mga panauhin
 resv_when_ph	Kailan — 20:30, bukas 13:00
-resv_table_ph	Dining table (opsyonal)
+resv_table_ph	Hapag kainan (opsyonal)
 resv_add	Magpareserba ng hapag kainan
 resv_seat	Nakaupo
 resv_none	Walang paparating na booking.
