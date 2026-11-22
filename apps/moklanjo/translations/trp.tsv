@@ -718,8 +718,8 @@ optional_login_help	ওপতিওনাল লগিন (ইদ + পাসু
 or_unlock_login	এবা লগিন ইদ + ককতুমা বাই লচক ফিয়গুই দি
 or_unlock_shop_login	অথবা দোকান লগইন সঙ্গে আনলক
 shop_login_help	ঐচ্ছিক: PIN এর পরিবর্তে এই দোকানের কর্মীদের ব্যবহারকারীর নাম এবং পাসওয়ার্ড দিয়ে আনলক করুন (অফলাইনে কাজ করে)।
-cloud_account_title	মোকলঞ্জো অ্যাকাউন্ট
-cloud_account_help	moklanjo.com/account হিসাবে একই অ্যাকাউন্ট দিয়ে নিবন্ধন করুন বা সাইন ইন করুন৷ আপনার ক্লাউড আইডি এবং বিনামূল্যের পরিকল্পনা তৈরি করে।
+cloud_account_title	মোকলানজো খাতা
+cloud_account_help	moklanjo.com/account হিসাবে একই অ্যাকাউন্ট দিয়ে নিবন্ধন করুন বা সাইন ইন করুন। আপনার ক্লাউড আইডি এবং বিনামূল্যের পরিকল্পনা তৈরি করে।
 cloud_name_ph	নাম (ঐচ্ছিক)
 cloud_email_ph	ইমেইল
 cloud_password_ph	পাসওয়ার্ড

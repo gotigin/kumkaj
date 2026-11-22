@@ -722,8 +722,8 @@ cloud_account_title	[mni] Moklanjo account
 cloud_account_help	[mni] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
 cloud_name_ph	[mni] Name (optional)
 cloud_email_ph	[mni] Email
-cloud_password_ph	[mni] Password
-cloud_continue	[mni] Continue
+cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
+cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
 cloud_forgot	[mni] Forgot password?
 cloud_web_methods	[mni] Google and other methods on the website
 cloud_signing_in	[mni] Signing in…
@@ -731,7 +731,7 @@ cloud_sending_reset	[mni] Sending reset link…
 cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
 cloud_welcome	[mni] Signed in as {user} · {plan}
 cloud_created	[mni] Account created. Check your email to verify when you can.
-cloud_cancel	[mni] Cancel
+cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 preset_help_moklanjo	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.
 product_locked_moklanjo	ꯃꯣꯛꯂꯥꯟꯖꯣ꯫

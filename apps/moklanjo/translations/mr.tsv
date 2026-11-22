@@ -716,22 +716,22 @@ net_word	नेट
 offline_badge	ऑफलाइन
 optional_login_help	ऐच्छिक लॉगिन (आयडी + पासवर्ड). मालक एकदा लावतो; नंतर फक्त वापरकर्ताच पासवर्ड बदलू शकतो.
 or_unlock_login	किंवा लॉगिन आयडी + पासवर्डने अनलॉक करा
-or_unlock_shop_login	[mr] Or unlock with shop login
-shop_login_help	[mr] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mr] Moklanjo account
-cloud_account_help	[mr] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[mr] Name (optional)
-cloud_email_ph	[mr] Email
-cloud_password_ph	[mr] Password
-cloud_continue	[mr] Continue
-cloud_forgot	[mr] Forgot password?
-cloud_web_methods	[mr] Google and other methods on the website
-cloud_signing_in	[mr] Signing in…
-cloud_sending_reset	[mr] Sending reset link…
-cloud_forgot_sent	[mr] If that email has an account, a reset link is on the way.
-cloud_welcome	[mr] Signed in as {user} · {plan}
-cloud_created	[mr] Account created. Check your email to verify when you can.
-cloud_cancel	[mr] Cancel
+or_unlock_shop_login	किंवा दुकान लॉगिनने अनलॉक करा
+shop_login_help	पर्यायी: PIN ऐवजी या दुकानाच्या स्टाफ युजरनेम आणि पासवर्डने अनलॉक करा (ऑफलाइन चालते).
+cloud_account_title	मोक्लांजो खाते
+cloud_account_help	moklanjo.com/account सारख्याच खात्याने नोंदणी किंवा साइन इन करा. तुमची क्लाउड आयडी आणि मोफत योजना तयार करते.
+cloud_name_ph	नाव (पर्यायी)
+cloud_email_ph	ईमेल
+cloud_password_ph	पासवर्ड
+cloud_continue	सुरू ठेवा
+cloud_forgot	पासवर्ड विसरलात?
+cloud_web_methods	वेबसाइटवर Google आणि इतर पद्धती
+cloud_signing_in	साइन इन होत आहे…
+cloud_sending_reset	रीसेट लिंक पाठवत आहे…
+cloud_forgot_sent	त्या ईमेलवर खाते असल्यास रीसेट लिंक पाठवली आहे.
+cloud_welcome	{user} · {plan} म्हणून साइन इन
+cloud_created	खाते तयार झाले. शक्य तेव्हा पडताळणीसाठी ईमेल तपासा.
+cloud_cancel	रद्द
 permission_preset	काम
 preset_help_moklanjo	कॅशियर: विक्री. व्यवस्थापक: विक्री + आयटम + रद्द/दुरुस्ती.
 product_locked_moklanjo	Moklanjo

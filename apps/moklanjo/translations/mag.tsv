@@ -719,7 +719,7 @@ or_unlock_login	भा लॉगिन आईडी + पासवर्ड स�
 or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	मोक्लांजो खाता
-cloud_account_help	moklanjo.com/account वाले उसी खाते से पंजीकरण करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_account_help	moklanjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
@@ -731,7 +731,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	[hi] Cancel
+cloud_cancel	रद्द करऽ
 permission_preset	काम
 preset_help_moklanjo	कैशियर: बेचें। मैनेजर: बेचेऽ + आइटम + रद्द/संशोधन।
 product_locked_moklanjo	Moklanjo

@@ -716,22 +716,22 @@ net_word	نیٹ
 offline_badge	آف لائن
 optional_login_help	اختیاری لاگ اِن (ID + پاس وٲرڈ)۔ مٲلک چُھ یہٕ اکہ لٹہٕ سیٹ کران۔ صرف اِستِمال کَرن وول ہیکہِ پَتہٕ پاس وٲرڈ بَدلٲوِتھ۔
 or_unlock_login	یا لاگ اِن آی ڈی + پاس وأرڈ سۭتۍ ان لاک
-or_unlock_shop_login	[ks] Or unlock with shop login
-shop_login_help	[ks] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ks] Moklanjo account
-cloud_account_help	[ks] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ks] Name (optional)
-cloud_email_ph	[ks] Email
-cloud_password_ph	[ks] Password
-cloud_continue	[ks] Continue
-cloud_forgot	[ks] Forgot password?
-cloud_web_methods	[ks] Google and other methods on the website
-cloud_signing_in	[ks] Signing in…
-cloud_sending_reset	[ks] Sending reset link…
-cloud_forgot_sent	[ks] If that email has an account, a reset link is on the way.
-cloud_welcome	[ks] Signed in as {user} · {plan}
-cloud_created	[ks] Account created. Check your email to verify when you can.
-cloud_cancel	[ks] Cancel
+or_unlock_shop_login	یا دُکان لاگ اِن سٟتۍ ان لاک کٔرِو
+shop_login_help	اختیاری: PIN بجاے یِمہِ دُکانہِ کِس عملہِ سٕنٛدِس صارف ناو تہٕ پاس ورڈ سٟتۍ ان لاک کٔرِو (آف لائن کأم کران).
+cloud_account_title	موکلانجو اکاؤنٹ
+cloud_account_help	moklanjo.com/account وٲلِس اَکۍ اکاؤنٹس سٟتۍ رجسٹر یا سائن اِن کٔرِو۔ تُہنٛد کلاؤڈ آئی ڈی تہٕ مُفت پلان بناوان۔
+cloud_name_ph	ناو (اختیاری)
+cloud_email_ph	ای میل
+cloud_password_ph	پاس ورڈ
+cloud_continue	جاری
+cloud_forgot	پاس ورڈ موشُم؟
+cloud_web_methods	ویب سائٹس پؠٹھ Google تہٕ باقی طٔریٖقہٕ
+cloud_signing_in	سائن اِن گژھان…
+cloud_sending_reset	ری سیٹ لنک سوزان…
+cloud_forgot_sent	اگر تَمِس ای میلس اکاؤنٹ چھُ تہ ری سیٹ لنک چھُ سوزنہٕ آمُت۔
+cloud_welcome	{user} · {plan} پٲٹھۍ سائن اِن
+cloud_created	اکاؤنٹ بنٛیہ۔ ییلہٕ ہؠکہِ تصدیٖق کرنٔہ باپتھ پنُن ای میل وٕچھیو۔
+cloud_cancel	منسوخ
 permission_preset	کام
 preset_help_moklanjo	کیشیئر: کٕنُن۔ منیجر: کٕنُن + چیٖز + کالعدم / ترمیم۔
 product_locked_moklanjo	Moklanjo
