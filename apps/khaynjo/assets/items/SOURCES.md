@@ -54,3 +54,13 @@ folders not yet replaced above.
 
 When a folder is reviewed, add its sources here: CC BY and CC BY-SA photos
 need the author and licence named.
+
+## Replaced 2026-11-22 (L15 japanese)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `japanese/gyoza.webp` | Chinese stir-fry with quail egg, not dumplings | Yaki-Gyōza in Utsunomiya | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=44323922 | resized, WebP |
+| `japanese/soba.webp` | dry uncooked noodle bundles | Zaru soba by spinachdip | spinachdip | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=1931155 | resized, WebP |
+| `japanese/tendon.webp` | deer tendon in a market vat | Typical example of Tendon | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=57177667 | resized, WebP |
+| `japanese/hayashi-rice.webp` | Japanese curry rice | グリル小宝のハイシライス | Ocdp | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=115626332 | resized, WebP |
+| `japanese/teriyaki-chicken.webp` | glazed beef, not chicken | Chicken Teriyaki (with rice and slaw) at Toshi’s Teriyaki Grill, Seattle, Washington | Zheng Zhou | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=149642243 | resized, WebP |
