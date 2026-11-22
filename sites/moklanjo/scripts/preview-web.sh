@@ -54,6 +54,31 @@ present_privacy() {
   cp "$PRIVACY_MD" "$OUT/privacy.md"
   echo "Presented /privacy from $PRIVACY_MD"
 }
+present_cancellation() {
+  local CANCELLATION_MD="$ROOT/apps/moklanjo/docs/CANCELLATION.md"
+  local CANCELLATION_TMPL="$SITE/cancellation-template.html"
+  if [[ ! -f "$CANCELLATION_MD" ]]; then
+    echo "error: missing $CANCELLATION_MD" >&2
+    exit 1
+  fi
+  if [[ ! -f "$CANCELLATION_TMPL" ]]; then
+    echo "error: missing $CANCELLATION_TMPL" >&2
+    exit 1
+  fi
+  mkdir -p "$OUT/cancellation"
+  pandoc "$CANCELLATION_MD" \
+    -f markdown \
+    -t html5 \
+    --template="$CANCELLATION_TMPL" \
+    --metadata title="Cancellation — Moklanjo" \
+    -V lang=en \
+    -V preview_v="$PREVIEW_V" \
+    -o "$OUT/cancellation/index.html"
+  cp "$CANCELLATION_MD" "$OUT/cancellation.md"
+  echo "Presented /cancellation from $CANCELLATION_MD"
+}
+
+
 
 if [[ "$DO_BUILD" -eq 1 ]]; then
   echo "1/3 Build Makepad wasm (moklanjo-site, release, --no-threads)"
@@ -85,9 +110,10 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   PREVIEW_V="$(sha256sum "$PREVIEW" | cut -c1-10)"
   PREVIEW_URL="https://moklanjo.com/media/link-preview.jpg?v=$PREVIEW_V"
   present_privacy
+  present_cancellation
 
   # Cache-bust og/twitter image on secondary shells (same sha10 as home).
-  for secondary in privacy terms account; do
+  for secondary in privacy terms cancellation account shop; do
     f="$OUT/$secondary/index.html"
     [[ -f "$f" ]] || continue
     sed -i -E "s#(https://moklanjo\.com/media/link-preview\.jpg)(\?v=[0-9a-f]+)?\"#\1?v=${PREVIEW_V}\"#g" "$f"

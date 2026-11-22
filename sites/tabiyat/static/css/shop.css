@@ -136,3 +136,15 @@
 .legal-nav a {
   color: #9a0e10;
 }
+
+/* Desk: plans / product cards sit on one row when there is room */
+@media (min-width: 820px) {
+  .shop-main {
+    max-width: 56rem;
+  }
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 0.85rem;
+  }
+}

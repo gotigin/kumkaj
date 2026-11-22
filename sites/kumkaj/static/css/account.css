@@ -1,0 +1,193 @@
+/* Account / auth — light palette matching /terms */
+.account-main {
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  font-family: system-ui, sans-serif;
+  color: #041534;
+  line-height: 1.5;
+}
+.account-main h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+}
+.account-lede {
+  color: #3a4a6a;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+.account-status {
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+.auth-error {
+  background: #fde8ea;
+  color: #A23E18;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.auth-ok {
+  background: #e8f5ee;
+  color: #0d5c34;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.auth-hint {
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  color: #3a4a6a;
+}
+.link-phone {
+  margin-top: 0.85rem;
+}
+.auth-link-row {
+  flex-direction: column;
+}
+.auth-link-row .btn-provider {
+  margin: 0;
+}
+.btn[hidden],
+.auth-card [hidden] {
+  display: none !important;
+}
+.auth-card {
+  background: #F4F6FB;
+  border: 1px solid #e8dcd6;
+  border-radius: 0.55rem;
+  padding: 1rem 1.1rem 1.15rem;
+  margin: 0 0 1rem;
+}
+.auth-card h2 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+.auth-card label {
+  display: block;
+  font-size: 0.8rem;
+  color: #3a4a6a;
+  margin: 0.55rem 0 0.25rem;
+}
+.auth-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.4rem;
+  border: 1px solid #d4c4bc;
+  background: #fff;
+  color: #041534;
+  font: inherit;
+}
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.45rem;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #041534;
+  background: #eee4df;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: #A23E18;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #d4c4bc;
+}
+.btn-provider {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #d4c4bc;
+  margin: 0.35rem 0 0;
+}
+.btn-provider:hover {
+  border-color: #A23E18;
+  color: #A23E18;
+}
+.auth-or {
+  text-align: center;
+  color: #3a4a6a;
+  font-size: 0.8rem;
+  margin: 0.85rem 0;
+}
+.session-meta {
+  font-size: 0.85rem;
+  color: #3a4a6a;
+  word-break: break-all;
+}
+.session-meta strong {
+  color: #041534;
+  display: block;
+  margin-top: 0.65rem;
+}
+.legal-nav {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+.legal-nav a {
+  color: #A23E18;
+}
+.legal-foot {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: #3a4a6a;
+  font-size: 0.85rem;
+}
+.legal-foot-company {
+  color: #041534;
+  font-weight: 600;
+}
+.account-back {
+  margin: 0 0 1rem;
+}
+.account-back a {
+  color: #A23E18;
+  text-decoration: none;
+}
+.account-back a:hover {
+  text-decoration: underline;
+}
+.plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.plan-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid #eadfd8;
+}
+.plan-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.plan-row strong {
+  display: block;
+}
+.plan-row span {
+  color: #3a4a6a;
+  font-size: 0.9rem;
+}

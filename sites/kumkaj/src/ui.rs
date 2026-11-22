@@ -1066,6 +1066,8 @@ script_mod! {
                                     to_privacy := GhostBtn{text: "Privacy"}
                                     to_terms := GhostBtn{text: "Terms"}
                                     to_cancellation := GhostBtn{text: "Cancellation"}
+                                    to_shop := GhostBtn{text: "Cloud shop"}
+                                    to_account := GhostBtn{text: "Account"}
                                 }
                             }
                         }

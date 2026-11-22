@@ -84,8 +84,32 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   cp "$PRIVACY_MD" "$OUT/privacy.md"
   echo "Presented /privacy from $PRIVACY_MD"
 
+
+  CANCELLATION_MD="$ROOT/apps/khaynjo/docs/CANCELLATION.md"
+  CANCELLATION_TMPL="$SITE/cancellation-template.html"
+  if [[ ! -f "$CANCELLATION_MD" ]]; then
+    echo "error: missing $CANCELLATION_MD" >&2
+    exit 1
+  fi
+  if [[ ! -f "$CANCELLATION_TMPL" ]]; then
+    echo "error: missing $CANCELLATION_TMPL" >&2
+    exit 1
+  fi
+  mkdir -p "$OUT/cancellation"
+  pandoc "$CANCELLATION_MD" \
+    -f markdown \
+    -t html5 \
+    --template="$CANCELLATION_TMPL" \
+    --metadata title="Cancellation — Khaynjo" \
+    -V lang=en \
+    -V preview_v="$PREVIEW_V" \
+    -o "$OUT/cancellation/index.html"
+  cp "$CANCELLATION_MD" "$OUT/cancellation.md"
+  echo "Presented /cancellation from $CANCELLATION_MD"
+
+
   # Cache-bust og/twitter image on secondary shells (same sha10 as home).
-  for secondary in privacy terms account; do
+  for secondary in privacy terms cancellation account shop; do
     f="$OUT/$secondary/index.html"
     [[ -f "$f" ]] || continue
     sed -i -E "s#(https://khaynjo\.com/media/link-preview\.jpg)(\?v=[0-9a-f]+)?\"#\1?v=$PREVIEW_V\"#g" "$f"

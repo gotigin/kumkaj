@@ -1,0 +1,150 @@
+/* Shop / cart — light palette aligned with /account */
+.shop-main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  font-family: system-ui, sans-serif;
+  color: #041534;
+  line-height: 1.5;
+}
+.shop-main h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+}
+.shop-lede {
+  color: #3a4a6a;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+.shop-back a {
+  color: #A23E18;
+  text-decoration: none;
+}
+.shop-back a:hover {
+  text-decoration: underline;
+}
+.shop-status {
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.shop-ok {
+  background: #e8f0e8;
+  color: #1C460E;
+}
+.shop-error {
+  background: #fdeee8;
+  color: #A23E18;
+}
+.shop-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+.shop-card {
+  background: #F4F6FB;
+  border: 1px solid #D5DCE8;
+  border-radius: 0.55rem;
+  padding: 1rem 1.1rem;
+}
+.shop-card h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+}
+.shop-blurb {
+  margin: 0 0 0.5rem;
+  color: #3a4a6a;
+  font-size: 0.9rem;
+}
+.shop-price {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+.shop-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.shop-pill {
+  font-size: 0.85rem;
+  color: #1C460E;
+  font-weight: 600;
+}
+.shop-cart {
+  background: #F4F6FB;
+  border: 1px solid #D5DCE8;
+  border-radius: 0.55rem;
+  padding: 1rem 1.1rem;
+}
+.shop-cart h2 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+.shop-cart-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid #D5DCE8;
+}
+.shop-cart-row:first-of-type {
+  border-top: 0;
+}
+.shop-cart-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.45rem;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #041534;
+  background: #E4E9F2;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: #A23E18;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #B8C2D4;
+}
+.shop-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: #3a4a6a;
+}
+.legal-nav {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+.legal-nav a {
+  color: #A23E18;
+}
+
+/* Desk: plans / product cards sit on one row when there is room */
+@media (min-width: 820px) {
+  .shop-main {
+    max-width: 56rem;
+  }
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 0.85rem;
+  }
+}

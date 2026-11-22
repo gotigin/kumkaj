@@ -33,6 +33,8 @@ const LAN_PILOT_PASSED: bool = false;
 const PRIVACY_PATH: &str = "/privacy";
 const TERMS_PATH: &str = "/terms/";
 const CANCELLATION_PATH: &str = "/cancellation";
+const SHOP_PATH: &str = "/shop";
+const ACCOUNT_PATH: &str = "/account";
 const PUBLIC_HOST: &str = "https://kumkaj.com";
 
 /// App layout floor: design for ≥320 CSS px (360 is the common Android phone width). Narrower viewports scroll
@@ -704,6 +706,14 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(to_cancellation)).clicked(actions) {
             let url = self.site_url(cx, CANCELLATION_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_shop)).clicked(actions) {
+            let url = self.site_url(cx, SHOP_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_account)).clicked(actions) {
+            let url = self.site_url(cx, ACCOUNT_PATH);
             open_link(cx, &url);
         }
         if self.ui.button(cx, ids!(foot_gotigin)).clicked(actions) {
