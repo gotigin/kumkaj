@@ -198,10 +198,10 @@ owner	Pemilik
 staff	Kakitangan
 photo	Foto
 ok	OK
-this_shop	Mod pelayan
+this_shop	Mod server
 extra_till	Mod pelanggan
 off	Mati
-server	Mod pelayan
+server	Mod server
 client	Mod pelanggan
 language_currency	Bahasa & mata wang
 language	Bahasa
@@ -212,15 +212,15 @@ lang_platform_now	Bahasa peranti sekarang
 selected_language	Dipilih
 this_device	PERANTI INI
 device_use_q	Bagaimanakah peranti ini akan digunakan?
-choose_server	Pilih pelayan
-choose_server_hint	Buka pelayan sedia ada atau buat satu untuk perniagaan lain.
-create_new_server	Buat pelayan baharu
+choose_server	Pilih server
+choose_server_hint	Buka server sedia ada atau buat satu untuk perniagaan lain.
+create_new_server	Buat server baharu
 open_server	Buka
-new_server_name_ph	Nama pelayan baharu (pilihan)
-server_remove_pin_ph	Pemilik PIN untuk mengalih keluar pelayan
-only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
-owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
-device_setup_help	Peranti ini boleh jadi kedai (Pelayan) atau kaunter tambahan (Klien). Membuka satu tidak memadam yang lain. Klien yang dipasangkan ingat kedai — tiada kod pasangan setiap mula semula. Belum ada Pelayan, «Pulihkan sandaran» membuka lejar daripada fail yang anda pilih (semakan sama seperti Pulihkan dalam Tetapan).
+new_server_name_ph	Nama server baharu (pilihan)
+server_remove_pin_ph	Pemilik PIN untuk mengalih keluar server
+only_owner_remove_server	Hanya Pemilik boleh mengalih keluar server
+owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar server ini
+device_setup_help	Peranti ini boleh jadi kedai (Server) atau kaunter tambahan (Klien). Membuka satu tidak memadam yang lain. Klien yang dipasangkan ingat kedai — tiada kod pasangan setiap mula semula. Belum ada Server, «Pulihkan sandaran» membuka lejar daripada fail yang anda pilih (semakan sama seperti Pulihkan dalam Tetapan).
 currency	mata wang
 backup	Sandaran
 use	guna
@@ -321,7 +321,7 @@ export_day	Hari eksport
 extra_note_bill_ph	Nota tambahan pada bil / jualan ini
 extra_tills_heading	Kaunter tambahan
 other_devices_help_heading	Sediakan peranti lain
-other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Pelayan menjawab semula. Pencetak tambahan ditetapkan pada Pelayan (Tetapan → Pencetak) — sehingga tambahan menghantar bil ke sana.
+other_devices_help	Pada peranti ini (Server): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari server kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Server menjawab semula. Pencetak tambahan ditetapkan pada Server (Tetapan → Pencetak) — sehingga tambahan menghantar bil ke sana.
 forget_shop	Lupakan kedai ini
 goods_received	Barang diterima
 import_day	Hari import
@@ -390,7 +390,7 @@ save_features_named	Jimat {name}
 save_features_ok	Persediaan disimpan untuk {name}
 save_names	Simpan nama
 second_way	Cara kedua
-server_ip_ph	IP pelayan (cth. 192.168.1.10)
+server_ip_ph	IP server (cth. 192.168.1.10)
 set_credit_limit	Gunakan had kepada pelanggan atau pembekal
 set_login_selected	Gunakan log masuk untuk dipilih
 set_login_named	Mohon log masuk ke {name}
@@ -405,47 +405,47 @@ backup_copy_to	Salinan juga pergi ke {dir}.
 backup_copy_btn	Salin juga sandaran ke folder…
 autostart_off	Mulakan dengan komputer ini
 autostart_on	Bermula dengan komputer ini ✓ — ketik untuk berhenti
-autostart_done_on	Komputer ini kini membuka apl apabila ia dimulakan — pelayan kedai kembali selepas bekalan elektrik terputus.
+autostart_done_on	Komputer ini kini membuka apl apabila ia dimulakan — server kedai kembali selepas bekalan elektrik terputus.
 autostart_done_off	Komputer ini tidak lagi membuka apl apabila ia dimulakan.
 device_forgotten	Kedai terlupa peranti ini — gandingkan sekali lagi dengan kod semasa kedai. Pesanan yang menunggu di atasnya disimpan.
-lan_offline	Pelayan kedai tidak dapat dihubungi
+lan_offline	Server kedai tidak dapat dihubungi
 forget_device	lupa
 last_seen	dilihat
 copy_pair_code	Salin kod berpasangan
 new_pair_code	Kod gandingan baharu
 pair_finishing	Pasangan penamat… menggunakan lejar kedai
 pair_opening	Membuka kaunter…
-lan_offline_waiting	Pelayan kedai tidak dapat dihubungi · {n} menunggu
+lan_offline_waiting	Server kedai tidak dapat dihubungi · {n} menunggu
 lan_connecting	Menyambung ke kedai…
 lan_live	Langsung
 lan_sending	{n} menghantar
 lan_sign_in_to_send	Log masuk semula untuk menghantar {n}
 lan_pair_again	Gandingkan peranti ini sekali lagi
-lan_update_app	Kemas kini apl — peranti ini dan pelayan kedai mempunyai versi yang berbeza
+lan_update_app	Kemas kini apl — peranti ini dan server kedai mempunyai versi yang berbeza
 allow_firewall	Benarkan peranti lain bersambung
 firewall_blocked	Dinding api komputer ini menyekat peranti lain — ketik Benarkan peranti lain bersambung.
 firewall_waiting	Menunggu gesaan pentadbir…
-lan_join_help	Pada peranti lain: Mod Pelanggan → Cari pelayan kedai (atau taip {addr}) → kod berpasangan {code}.
+lan_join_help	Pada peranti lain: Mod Pelanggan → Cari server kedai (atau taip {addr}) → kod berpasangan {code}.
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Sambungkan peranti ini ke Wi‑Fi untuk mendapatkan alamat.
 lan_not_listening	Tidak menerima peranti (port {port} sibuk). Mulakan semula apl.
 lan_tills_off	Tills tambahan dimatikan. Benarkan mereka membenarkan peranti lain bergabung.
 paired_with	Berpasangan · {url}
 not_paired	Tidak berpasangan
-choose_device_use	Pilih Pelayan atau Pelanggan.
+choose_device_use	Pilih Server atau Pelanggan.
 paired_note	Berpasangan. Buka kunci untuk menjual, atau Muat semula untuk yang terkini.
 last_update_at	Kemas kini terakhir: {time}.
-pair_intro	Cari pelayan, atau taip alamat dan kod pasangannya.
+pair_intro	Cari server, atau taip alamat dan kod pasangannya.
 queue_waiting	Menunggu untuk sampai ke kedai ({n}):
 queue_tries	Mencuba {n} kali · jawapan terakhir: {e}
 save_backup_copy	Simpan salinan sandaran…
 backup_copy_saved	Salinan sandaran disimpan — jauhkannya dari peranti ini (stik USB atau peranti lain)
 backup_copy_overdue	Tiada salinan sandaran meninggalkan peranti ini selama {n} hari — Tetapan → Sandaran
 backup_copy_failed	Salinan sandaran tidak dapat disimpan di sana — pilih tempat lain
-clock_off	Jam peranti ini berada {min} min dari pelayan kedai — tetapkan masa yang sesuai pada peranti ini
+clock_off	Jam peranti ini berada {min} min dari server kedai — tetapkan masa yang sesuai pada peranti ini
 printers_heading	Pencetak
 printers_help	Cari pencetak, ketik satu untuk memilihnya, kemudian Cetak halaman ujian pada peranti itu sahaja. Pencetak bil: Format Bil & Slip → Bil.
-printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Ini sehingga menghantar bil dan tiket lama ke sana — Cari / tambah / tetapkan penginapan di Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
+printers_host_only	Pencetak ditetapkan pada peranti kedai (Server). Ini sehingga menghantar bil dan tiket lama ke sana — Cari / tambah / tetapkan penginapan di Server. Halaman ujian dan saiz cetakan bil pergi ke Server.
 printers_find_heading	Cari pencetak
 printers_find_tip	Cari imbasan peranti ini dan pastikan senarai terkini.
 printers_pool_empty	(belum ada — ketik Cari)
@@ -569,7 +569,7 @@ payment_qr_heading	QR pembayaran
 payment_qr_image_help	QR statik pada bil dan paparan pelanggan; sebaliknya membayar menggunakan UPI QR dinamik daripada VPA di atas.
 cash_in_hand	Wang tunai di tangan (kaunter)
 change_my_pin_heading	Log masuk saya
-connect_to_server	Sambung ke Pelayan
+connect_to_server	Sambung ke Server
 counter_locked	Kaunter 01 · Dikunci
 country_pack_help	Pek negara menetapkan nama cukai dan matematik, rel gaji segera dan id perniagaan yang dicetak pada bil. Kumkaj tidak memfailkan cukai atau mengeluarkan e-invois kerajaan di mana-mana sahaja.
 currency_use_help	Tatal dan ketik Gunakan untuk mana-mana mata wang yang disokong.
@@ -620,7 +620,7 @@ restore_owner_only	Hanya Pemilik boleh memulihkan sandaran.
 wipe_owner_pin_needed	Masukkan Pemilik PIN untuk memadam data setempat.
 wipe_nothing_selected	Pilih perkara yang hendak dipadamkan dahulu.
 wipe_done	Data tempatan yang dipilih dipadamkan.
-wipe_schema_done	Persediaan kedai dipadam — pilih Pelayan atau Pelanggan untuk meneruskan.
+wipe_schema_done	Persediaan kedai dipadam — pilih Server atau Pelanggan untuk meneruskan.
 rounded_total	Jumlah Bulat
 setup_app_kirano	Sediakan Kirano
 shop_logo_optional	Logo kedai (pilihan)
@@ -749,15 +749,15 @@ right_allowed	dibenarkan
 right_with_approval	Dengan kelulusan
 right_denied	Tidak dibenarkan
 editing_staff	Mengedit
-finding_server	Mencari pelayan kedai pada Wi‑Fi ini…
-no_server_found	Tiada ditemui. Pada Pelayan: Tetapan → Peranti lain → Benarkan tills tambahan (sama Wi‑Fi). Atau taip IP yang ditunjukkan di sana.
+finding_server	Mencari server kedai pada Wi‑Fi ini…
+no_server_found	Tiada ditemui. Pada Server: Tetapan → Peranti lain → Benarkan tills tambahan (sama Wi‑Fi). Atau taip IP yang ditunjukkan di sana.
 servers_found_pick	Ketik kedai yang ingin anda sambungkan.
 server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasangkan sekarang.
 approval_pin_ph	Pengurus PIN (hanya jika ditanya)
 menu_search_ph	Cari item menu atau kod pendek
 customer_paid_ph	Pelanggan bayar
 tip_ph	Petua
-find_server	Cari pelayan kedai
+find_server	Cari server kedai
 bill_format	Format bil
 bill_header_ph	Alamat | telefon
 fssai_ph	FSSAI / lesen kedai no. (pilihan)
@@ -829,7 +829,7 @@ upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nama penerima (pilihan)
 show_upi_qr	Tunjukkan UPI QR
 close_upi_qr	tutup
-upi_qr_help	Pelanggan mengimbas dan membayar. Ketik Ambil pembayaran selepas mereka membayar. Skrin kedua: buka URL Pelayan /paparan pada LAN.
+upi_qr_help	Pelanggan mengimbas dan membayar. Ketik Ambil pembayaran selepas mereka membayar. Skrin kedua: buka URL Server /paparan pada LAN.
 role_help_customer	Peranan: Pelanggan — lejar kredit (mereka berhutang kepada kami). Pelanggan atau pembekal yang sama juga boleh membekalkan stok.
 role_help_both	Peranan: Pelanggan + Pembekal — seorang pelanggan atau pembekal, lejar kredit dan lejar berbayar, bersih dalam Laporan.
 role_help_supplier	Peranan: Pembekal — kita berhutang kepada mereka untuk pembelian.
@@ -856,7 +856,7 @@ client_template_imported	Menambah item {d} dan kategori {c} daripada {title}
 app_template_heading	Templat kedai
 app_template_blurb	Pilih katalog permulaan dan tetapan kedai. «Langkau buat masa ini» membiarkan rak kosong.
 app_template_skip	Langkau buat masa ini
-app_template_status	Pelayan sedia — import templat, atau langkau
+app_template_status	Server sedia — import templat, atau langkau
 app_template_importing	Memohon {title}…
 app_template_import_selected	Import yang dipilih
 app_template_wipe_warn	Ini mengosongkan data dagangan dalam buku (jualan, lejar) dan menggunakan tetapan kedai daripada templat. Teruskan?
