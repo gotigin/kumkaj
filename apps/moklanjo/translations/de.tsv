@@ -719,7 +719,7 @@ offline_badge	OFFLINE
 optional_login_help	Optionaler Login (ID + Passwort). Der Inhaber setzt ihn einmal; später kann nur der Benutzer das Passwort ändern.
 or_unlock_login	Oder mit Login-ID + Passwort entsperren
 or_unlock_shop_login	Oder mit Shop-Login freischalten
-shop_login_help	Optional: Entsperren Sie mit dem Benutzernamen und Passwort des Mitarbeiters dieses Shops anstelle der PIN (funktioniert offline).
+shop_login_help	Wahlweise: Entsperren Sie mit dem Benutzernamen und Passwort des Mitarbeiters dieses Shops anstelle der PIN (funktioniert offline).
 cloud_account_title	Moklanjo-Konto
 cloud_account_help	Registrieren Sie sich oder melden Sie sich mit demselben Konto wie moklanjo.com/account an. Erstellt Ihre Cloud-ID und Ihren kostenlosen Plan.
 cloud_name_ph	Name (freiwillig)
