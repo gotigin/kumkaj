@@ -605,7 +605,7 @@ cloud_welcome	{user} · {plan}(으)로 로그인됨
 cloud_created	계정이 만들어졌습니다. 확인을 위해 이메일을 확인하세요.
 cloud_cancel	취소
 permission_preset	권한 프리셋
-product_only_kirano	이 앱은 Kirano 전용 — 식당 운영 시스템입니다. 다른 업종은 별도의 Kumkaj 제품이 있습니다.
+product_only_kirano	Kirano는 식료품점 / 키라나 운영 체제입니다: 카운터 판매, 재고, 외상, 장부 — 기기에서 오프라인.
 purchases_cogs	매입(COGS)
 restore_help	복원: 백업을 고르세요. 장부가 그때 모습으로 열립니다. 지금 장부는 먼저 저장되므로 되돌릴 수 있습니다.
 wipe_data_heading	로컬 데이터 삭제

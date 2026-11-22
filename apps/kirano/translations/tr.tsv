@@ -605,7 +605,7 @@ cloud_welcome	{user} · {plan} olarak oturum açıldı
 cloud_created	Hesap oluşturuldu. Doğrulamak için e-postanızı kontrol edin.
 cloud_cancel	İptal
 permission_preset	İzin ön ayarı
-product_only_kirano	Bu uygulama yalnızca Kirano — restoran işletim sistemi. Diğer işler için ayrı Kumkaj ürünleri var.
+product_only_kirano	Kirano bakkal / kirana işletim sistemidir: tezgahta satış, stok, kredi ve defterler — cihazlarınızda çevrimdışı.
 purchases_cogs	Alımlar (COGS)
 restore_help	Geri yükle: bir yedek seçin. Defterler o anki hâliyle açılır; şimdiki defterler önce kaydedilir, geri alınabilir.
 wipe_data_heading	Yerel verileri sil

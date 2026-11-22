@@ -605,7 +605,7 @@ cloud_welcome	{user} · {plan} としてサインイン中
 cloud_created	アカウントを作成しました。確認のためメールを確認してください。
 cloud_cancel	キャンセル
 permission_preset	権限プリセット
-product_only_kirano	このアプリは Kirano 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
+product_only_kirano	Kirano は食料品店 / キラナのオペレーティングシステムです。カウンター販売、在庫、掛け売り、帳簿 — 端末でオフライン。
 purchases_cogs	仕入（COGS）
 restore_help	復元：バックアップを選びます。帳簿はその時点の状態で開きます。今の帳簿は先に保存されるので元に戻せます。
 wipe_data_heading	ローカルデータを削除

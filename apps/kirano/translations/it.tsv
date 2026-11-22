@@ -605,7 +605,7 @@ cloud_welcome	Accesso come {user} · {plan}
 cloud_created	Account creato. Controlla l’email per verificare quando puoi.
 cloud_cancel	Annulla
 permission_preset	Preset permessi
-product_only_kirano	Questa app è solo Kirano, il sistema per ristoranti. Gli altri mestieri hanno prodotti Kumkaj a parte.
+product_only_kirano	Kirano è il sistema operativo per negozi di alimentari / kirana: vendita al banco, scorte, credito e libri — offline sui tuoi dispositivi.
 purchases_cogs	Acquisti (COGS)
 restore_help	Ripristina: scegli un backup. I libri si aprono com'erano allora; quelli attuali vengono salvati prima, quindi si può annullare.
 wipe_data_heading	Elimina dati locali

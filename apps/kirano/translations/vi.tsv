@@ -605,7 +605,7 @@ cloud_welcome	Đã đăng nhập là {user} · {plan}
 cloud_created	Đã tạo tài khoản. Kiểm tra email để xác minh khi bạn có thể.
 cloud_cancel	Hủy
 permission_preset	Mẫu quyền
-product_only_kirano	Ứng dụng này chỉ là Kirano — hệ thống vận hành nhà hàng. Ngành khác có sản phẩm Kumkaj riêng.
+product_only_kirano	Kirano là hệ điều hành tạp hóa / kirana: bán quầy, tồn kho, tín dụng và sổ sách — ngoại tuyến trên thiết bị của bạn.
 purchases_cogs	Mua hàng (COGS)
 restore_help	Khôi phục: chọn một bản sao lưu. Sổ sách mở như lúc đó; sổ hiện tại được lưu trước nên có thể hoàn tác.
 wipe_data_heading	Xóa dữ liệu cục bộ

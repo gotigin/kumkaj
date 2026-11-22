@@ -605,7 +605,7 @@ cloud_welcome	Masuk sebagai {user} · {plan}
 cloud_created	Akun dibuat. Periksa email Anda untuk verifikasi saat bisa.
 cloud_cancel	Batal
 permission_preset	Preset izin
-product_only_kirano	Aplikasi ini hanya Kirano — sistem operasi restoran. Usaha lain punya produk Kumkaj tersendiri.
+product_only_kirano	Kirano adalah sistem operasi toko kelontong / kirana: jual di kasir, stok, kredit, dan buku — offline di perangkat Anda.
 purchases_cogs	Pembelian (COGS)
 restore_help	Pulihkan: pilih cadangan. Pembukuan terbuka seperti saat itu; yang sekarang disimpan dulu, jadi bisa dibatalkan.
 wipe_data_heading	Hapus data lokal
