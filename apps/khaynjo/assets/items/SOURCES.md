@@ -395,3 +395,10 @@ need the author and licence named.
 | File | The old photo showed | Original title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `soups-salads/pea-soup.webp` | cafeteria tray with pancake, jam, bread, milk | Pea Soup with Dumplings | Liat Portal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=181137627 | resized, WebP |
+
+### desserts/sachertorte.webp
+- source: https://commons.wikimedia.org/wiki/File:Sachertorte_cake_at_Caf%C3%A9_Sperl,_Vienna_(2026).jpg
+- license: CC BY-SA 4.0 (cropped to remove plate-rim cafe mark; no Hotel Sacher seal)
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
