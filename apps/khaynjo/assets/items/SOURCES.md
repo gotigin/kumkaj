@@ -209,3 +209,15 @@ need the author and licence named.
 | File | The old photo showed | Original title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `indo-chinese/veg-fried-rice.webp` | seafood fried rice with squid | Restaurant style Fried rice | Medhi jyoti | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=136464711 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indian-mains pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indian-mains/chingri-malai-curry.webp` | Thai-style shrimp stew with asparagus/carrots | Chingri Malai Curry | CosmicEmperor | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=39530357 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indo-chinese pass 3)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indo-chinese/chicken-hakka-noodles.webp` | fish-ball rice-noodle soup | Tasty hakka noodles image | SGUae | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/w/index.php?curid=145060235 | resized, WebP |
