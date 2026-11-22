@@ -46,7 +46,7 @@ total	Jemi
 cash	Nagt
 upi	UPI
 card	Kart
-credit	Müşderiler we üpjün edijiler
+credit	Taraplar
 clear	Arassala
 ready_to_sell	Kitap ýazgysyna taýýar
 today_prefix	Bu gün
@@ -598,7 +598,7 @@ report_day_lens_help	Diňe görnüş — «Güni ýapmak» haçan «Bu gün» t�
 report_lens_day_close	Gün ýapylyşy boýunça
 report_lens_midnight	Ýary gije boýunça
 refresh_from_shop	Dükandan täzelen
-refund	Yzyna gaýtaryp bermek
+refund	Yzyna
 remove_selected	Saýlananlary aýyryň
 request_bill	Hasap talap
 restaurant_name_ph	Restoranyň ady (islege görä)

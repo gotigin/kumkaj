@@ -1162,7 +1162,7 @@ line_sent_state	Nalefa any an-dakozia
 line_nc_state	Maimaim-poana (NC) — tsy ampandoavina
 cancel_item_short	Ajanony
 nc_short	NC
-charge_again_short	Manaova saran-dàlana
+charge_again_short	Ampindrao
 move_short	Mifindra
 cancel_item_title	Fafao ity entana ity — mahazo taratasy fanafoanana ny lakozia
 nc_item_title	Ataovy maimaim-poana ity entana ity (NC)
@@ -1297,7 +1297,7 @@ clear_payment_qr	Manaisotra fandoavam-bola QR
 payment_qr_set	Fandoavam-bola QR: ao amin'ny rakitra — aseho amin'ny efijery vahiny (misolo ny vola UPI QR eo)
 payment_qr_none	Fandoavam-bola QR: tsy misy — vola QR avy amin'ny UPI ID rehefa mandoa
 aggregator_import	Baiko mpanangona (rakitra)
-aggregator_import_help	Fampidirana eo an-toerana tsy voatery: apetraho import_aggregator_orders.json ao amin'ny lahatahiry backups (array na {"orders":[…]}), avy eo tsindrio Import. Tsy manakana ny compteur mihitsy; mivantana Zomato/Swiggy dia Cloud.
+aggregator_import_help	Fampidirana eo an-toerana tsy voatery: apetraho import_aggregator_orders.json ao amin'ny lahatahiry backups (array na {"orders":[…]}), avy eo tsindrio Import. Tsy manakana ny tezm-barotra mihitsy; mivantana Zomato/Swiggy dia Cloud.
 import_aggregator_file	Fampidirana rakitra aggregator
 team_pick_ph	Mpiasa azo ovaina — anarana, username, na misafidiana
 select_staff	Safidio ity mpiasa ity

@@ -2,7 +2,7 @@
 app_tagline	Restaurante pedidokuna, cocina & libro mayorkuna. Mana internetpi mana qullqiyuq.
 unlock	Desbloquear
 pin_hint	Dueño PIN 0000 hina qallarikun
-sell	Restaurante kamachiy
+sell	Kamachiy
 buy	Rantinakuy
 books	P’unchaw hatun qillqa
 books_help	Kunan punchaw willakuypa resumennin. Pedidos = pedidokuna yaykumuq Rantinakuy = rantiykuna hinaspa gastokuna. Clientekuna chaymanta suministradores = crédito rantiqkuna chaymanta suministradores.
@@ -46,7 +46,7 @@ total	Llapan
 cash	Qullqi
 upi	UPI
 card	Tarjeta
-credit	Clientekuna hinaspa suministradorkuna
+credit	Partikuna
 clear	Chuya
 ready_to_sell	Libro mayorpaq listo
 today_prefix	Kunan punchaw
@@ -255,7 +255,7 @@ amounts_show	Qhawachiy
 counter	Mostrador
 dine_in	Ukupi mikhuy
 takeaway	Apakuy
-order	Restaurante kamachiy
+order	Kamachiy
 tables	Mikhuna mesakuna
 kitchen	Cocina
 sales	Qhatuy

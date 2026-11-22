@@ -46,7 +46,7 @@ total	Total rehegua
 cash	Efectivo rehegua
 upi	UPI
 card	Tarjeta
-credit	Cliente ha proveedor-kuéra
+credit	Partíkuera
 clear	Hesakã porã
 ready_to_sell	Oĩma preparádo ojerreserva hag̃ua
 today_prefix	Ko árape
@@ -255,7 +255,7 @@ amounts_show	Ohechauka
 counter	Mostrador
 dine_in	Okaru-pype
 takeaway	Ojegueraha haguã
-order	Pe pedido restaurante rehegua
+order	Pedido
 tables	Mesa ojekaru haguã
 kitchen	Kosina
 sales	Ñemuha rehegua
@@ -929,7 +929,7 @@ duress_off	Desbloqueo de emergencia PIN oñembogue
 duress_saved	Desbloqueo de emergencia PIN oñeñongatu
 duress_cleared	Desbloqueo de emergencia PIN oñembogue
 upi_amount_ph	UPI monto rehegua
-void	Venta anulado rehegua
+void	Anula
 write_off_ap	Ohai AP-gui
 write_off_heading	Ojehai (oñemopotî ojepaga'ÿre) .
 write_off_nil	Ohai / saldo nil

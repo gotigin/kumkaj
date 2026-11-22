@@ -2,7 +2,7 @@
 app_tagline	Objednávky restaurací, kuchyně a knihy. Zdarma offline.
 unlock	Odemknout
 pin_hint	Vlastník PIN začíná na 0000
-sell	Objednávka
+sell	Objednávky
 buy	Koupit
 books	Denní kniha
 books_help	Dnešní shrnutí účtu. Objednávky = přicházející objednávky. Koupit = nákupy a výdaje. Zákazníci a dodavatelé = úvěroví zákazníci a dodavatelé.
@@ -46,7 +46,7 @@ total	Celkem
 cash	Hotovost
 upi	UPI
 card	Karta
-credit	Zákazníci a dodavatelé
+credit	Strany
 clear	Jasný
 ready_to_sell	Připraveno k rezervaci
 today_prefix	dnes
@@ -255,7 +255,7 @@ amounts_show	Zobrazit
 counter	Pult
 dine_in	Večeřet
 takeaway	Jídlo s sebou
-order	Objednávka restaurace
+order	Objednávka
 tables	Jídelní stoly
 kitchen	Kuchyně
 sales	Prodej
