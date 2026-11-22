@@ -366,7 +366,7 @@ new_server_name_ph	Yangi server nomi (ixtiyoriy)
 server_remove_pin_ph	Serverni olib tashlash uchun eganing PIN kodi
 only_owner_remove_server	Serverni faqat Egasi olib tashlay oladi
 owner_pin_remove_server	Bu serverni olib tashlash uchun eganing PIN kodi kerak
-device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi.
+device_setup_help	Bu qurilma do‘kon (Server) yoki qo‘shimcha kassa (Mijoz) bo‘lishi mumkin. Birini ochish ikkinchisini o‘chirmaydi. Juftlangan Mijoz do‘konni eslaydi — har qayta ishga tushirishda juftlash kodi kerak emas. Hali Server yo‘q bo‘lsa, «Zaxira nusxadan tiklash» tanlagan fayldan kitoblarni ochadi (Sozlamalardagi Tiklash bilan bir xil tekshiruvlar).
 app_template_heading	Do'kon shablonlari
 app_template_blurb	Boshlang‘ich menyuni tanlang. O‘tkazib yuborish do‘konni bo‘sh qoldiradi.
 app_template_apply	Shablonni import qilish

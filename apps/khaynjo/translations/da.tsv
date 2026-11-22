@@ -366,7 +366,7 @@ new_server_name_ph	Nyt servernavn (valgfrit)
 server_remove_pin_ph	Ejer-PIN for at fjerne en server
 only_owner_remove_server	Kun ejeren kan fjerne en server
 owner_pin_remove_server	Ejer-PIN kræves for at fjerne denne server
-device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server.
+device_setup_help	Denne enhed kan være butikken (Server) eller en ekstra kasse (Klient). At åbne den ene sletter ikke den anden. En parret Klient husker butikken — ingen parringskode ved hver genstart. Uden Server endnu åbner «Gendan sikkerhedskopi» bøgerne fra en fil, du vælger (samme tjek som Gendan i Indstillinger).
 app_template_heading	Butiksskabeloner
 app_template_blurb	Vælg en startmenu. Spring over lader en tom butik.
 app_template_apply	Importér skabelon

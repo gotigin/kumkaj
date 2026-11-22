@@ -366,7 +366,7 @@ new_server_name_ph	Uuden palvelimen nimi (valinnainen)
 server_remove_pin_ph	Omistajan PIN palvelimen poistoon
 only_owner_remove_server	Vain omistaja voi poistaa palvelimen
 owner_pin_remove_server	Tämän palvelimen poistoon tarvitaan omistajan PIN
-device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelimeen.
+device_setup_help	Tämä laite voi olla kauppa (Palvelin) tai lisäkassa (Asiakas). Toisen avaaminen ei tyhjennä toista. Paritettu Asiakas muistaa kaupan — ei parituskoodia jokaisella uudelleenkäynnistyksellä. Ilman Palvelinta vielä «Palauta varmuuskopio» avaa kirjat valitsemastasi tiedostosta (samat tarkistukset kuin Palauta asetuksissa).
 app_template_heading	Myymäläpohjat
 app_template_blurb	Valitse aloitusvalikko. Ohitus jättää tyhjän kaupan.
 app_template_apply	Tuo pohja

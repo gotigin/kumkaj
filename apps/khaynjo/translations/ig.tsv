@@ -366,7 +366,7 @@ new_server_name_ph	Aha sava ọhụrụ (ọ bụghị iwu)
 server_remove_pin_ph	PIN onye nwe iji wepụ sava
 only_owner_remove_server	Naanị Onye nwe nwere ike iwepụ sava
 owner_pin_remove_server	Achọrọ PIN onye nwe iji wepụ sava a
-device_setup_help	Sava na-edebe akwụkwọ ebe a. Ngwa njedebe na-ejikọ na Sava.
+device_setup_help	Njiarụ a nwere ike ịbụ ụlọ ahịa (Sava) ma ọ bụ tebụl ego ọzọ (Klient). Imepe otu anaghị ehichapụ nke ọzọ. Klient ejikọtara na-echeta ụlọ ahịa — enweghị koodu njikọ n’oge ọ bụla ịmaliteghachi. Enweghị Sava ugbu a, «Weghachi nchekwa» na-emepe akwụkwọ site na faịlụ ị họọrọ (nyocha otu ahụ dị ka Weghachi na Ntọala).
 app_template_heading	Ụdị ụlọ ahịa
 app_template_blurb	Họrọ menu mmalite. Ịmafee na-ahapụ ụlọ ahịa tọgbọ.
 app_template_apply	Bubata ụdị

@@ -366,7 +366,7 @@ new_server_name_ph	Nowa nazwa serwera (opcjonalnie)
 server_remove_pin_ph	Właściciel PIN, aby usunąć serwer
 only_owner_remove_server	Tylko właściciel może usunąć serwer
 owner_pin_remove_server	Właściciel PIN wymagany do usunięcia tego serwera
-device_setup_help	Serwer prowadzi tutaj księgi. Klient łączy się z serwerem.
+device_setup_help	To urządzenie może być sklepem (Serwer) lub dodatkową kasą (Klient). Otwarcie jednego nie kasuje drugiego. Sparowany Klient pamięta sklep — bez kodu parowania przy każdym restarcie. Gdy nie ma jeszcze Serwera, «Przywróć kopię zapasową» otwiera księgi z wybranego pliku (te same sprawdzenia co Przywróć w Ustawieniach).
 app_template_heading	Szablony sklepu
 app_template_blurb	Wybierz menu startowe. Pominięcie zostawia pusty sklep.
 app_template_apply	Importuj szablon

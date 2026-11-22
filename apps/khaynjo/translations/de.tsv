@@ -366,7 +366,7 @@ new_server_name_ph	Name des neuen Servers (optional)
 server_remove_pin_ph	Owner-PIN zum Entfernen
 only_owner_remove_server	Nur der Owner darf einen Server entfernen
 owner_pin_remove_server	Owner-PIN nötig, um diesen Server zu entfernen
-device_setup_help	Der Server führt die Bücher hier. Ein Client koppelt sich mit einem Server.
+device_setup_help	Dieses Gerät kann der Laden (Server) oder eine Extra-Kasse (Client) sein. Eines zu öffnen löscht das andere nicht. Ein gekoppelter Client merkt sich den Laden — kein Kopplungscode bei jedem Neustart. Ohne Server öffnet «Sicherung wiederherstellen» die Bücher aus einer Datei Ihrer Wahl (gleiche Prüfungen wie Wiederherstellen in den Einstellungen).
 app_template_heading	Geschäftsvorlagen
 app_template_blurb	Wählen Sie ein Startmenü. Überspringen lässt einen leeren Laden.
 app_template_apply	Vorlage importieren

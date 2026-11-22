@@ -366,7 +366,7 @@ new_server_name_ph	Yeni sunucu adı (isteğe bağlı)
 server_remove_pin_ph	Kaldırmak için Owner PIN
 only_owner_remove_server	Sunucuyu yalnızca Owner silebilir
 owner_pin_remove_server	Bu sunucuyu kaldırmak için Owner PIN gerekli
-device_setup_help	Sunucu defterleri burada tutar. İstemci bir sunucuyla eşleşir.
+device_setup_help	Bu cihaz dükkân (Sunucu) veya ek kasa (İstemci) olabilir. Birini açmak diğerini silmez. Eşleşmiş İstemci dükkânı hatırlar — her yeniden başlatmada eşleşme kodu gerekmez. Henüz Sunucu yokken «Yedeği geri yükle», seçtiğiniz bir dosyadan defterleri açar (Ayarlar’daki Geri yükle ile aynı kontroller).
 app_template_heading	Mağaza şablonları
 app_template_blurb	Bir başlangıç menüsü seçin. Atlamak boş dükkân bırakır.
 app_template_apply	Şablonu içe aktar

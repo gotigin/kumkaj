@@ -366,7 +366,7 @@ new_server_name_ph	新服务器名称（可选）
 server_remove_pin_ph	删除服务器需 Owner PIN
 only_owner_remove_server	仅 Owner 可删除服务器
 owner_pin_remove_server	删除此服务器需要 Owner PIN
-device_setup_help	服务器在此保存账簿。客户端与服务器配对。
+device_setup_help	本设备可以是店铺（服务器）或额外收银（客户端）。打开其一不会清除另一个。已配对的客户端会记住店铺——每次重启无需配对码。尚无服务器时，「恢复备份」 从您选择的文件打开账簿（检查与设置中的恢复相同）。
 app_template_heading	店铺模板
 app_template_blurb	选一个起步菜单。跳过会留下空店。
 app_template_apply	导入模板

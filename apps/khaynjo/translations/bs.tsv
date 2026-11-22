@@ -366,7 +366,7 @@ new_server_name_ph	Ime novog Servera (nije obavezno)
 server_remove_pin_ph	PIN vlasnika za uklanjanje Servera
 only_owner_remove_server	Samo Vlasnik može ukloniti Server
 owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
-device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
+device_setup_help	Ovaj uređaj može biti prodavnica (Server) ili dodatna kasa (Klijent). Otvaranje jednog ne briše drugi. Upareni Klijent pamti prodavnicu — bez koda uparivanja pri svakom restartu. Bez Servera još, «Vrati rezervnu kopiju» otvara knjige iz datoteke koju odaberete (iste provjere kao Vrati u Postavkama).
 app_template_heading	Šabloni za radnju
 app_template_blurb	Izaberite početni meni. Preskakanje ostavlja praznu radnju.
 app_template_apply	Uvezi šablon

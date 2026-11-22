@@ -366,7 +366,7 @@ new_server_name_ph	Emri i serverit të ri (opsional)
 server_remove_pin_ph	PIN-i i pronarit për të hequr një server
 only_owner_remove_server	Vetëm Pronari mund të heqë një server
 owner_pin_remove_server	PIN-i i pronarit kërkohet për të hequr këtë server
-device_setup_help	Serveri i mban librat këtu. Terminali çiftohet me një Server.
+device_setup_help	Ky pajisje mund të jetë dyqani (Server) ose një arkë shtesë (Klient). Hapja e njërës nuk fshin tjetrën. Klienti i çiftuar mban mend dyqanin — pa kod çiftimi në çdo rinisje. Pa Server ende, «Rikthe kopjen rezervë» hap librat nga një skedar që zgjidhni (të njëjtat kontrolle si Rivendos te Cilësimet).
 app_template_heading	Shabllone dyqani
 app_template_blurb	Zgjidhni një menu fillestare. Kapërcimi lë një dyqan bosh.
 app_template_apply	Importo shabllonin

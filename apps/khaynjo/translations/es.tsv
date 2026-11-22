@@ -366,7 +366,7 @@ new_server_name_ph	Nombre del servidor nuevo (opcional)
 server_remove_pin_ph	PIN del propietario para quitar
 only_owner_remove_server	Solo el propietario puede quitar un servidor
 owner_pin_remove_server	Se requiere el PIN del propietario para quitar este servidor
-device_setup_help	El servidor guarda los libros aquí. El cliente se empareja con un servidor.
+device_setup_help	Este dispositivo puede ser la tienda (Servidor) o una caja extra (Cliente). Abrir uno no borra el otro. Un Cliente emparejado recuerda la tienda: no hace falta código de emparejamiento en cada reinicio. Sin Servidor aún, «Restaurar copia» abre los libros desde un archivo que elija (mismas comprobaciones que Restaurar en Ajustes).
 app_template_heading	Plantillas de tienda
 app_template_blurb	Elija un menú de inicio. Omitir deja una tienda vacía.
 app_template_apply	Importar plantilla
