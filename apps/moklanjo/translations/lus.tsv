@@ -713,7 +713,7 @@ local_badge	CHHUNG
 measures_help_moklanjo	Booking desk-a parcel teh dan. I hman tur unit-ah hian dimension leh weight type rawh — standard (cm, m, in, ft · kg, g, lb, oz) emaw, a chunga cm / kg nena inzawm (direct emaw unit dang kaltlangin emaw) nangmah ngeiin unit siam rawh. Lehkhabuah hian kg. Field pakhat chu a awm reng theih nan ruak dah la.
 mix_type_hint_moklanjo	Engzat nge pakhatah (cash / UPI / card / credit) tih type rawh. Bill-ah hian add up tur a ni. Credit hian a chunga customer a mamawh a ni.
 money_in_sales	Sum lut (zuar)
-more_help_moklanjo	Catalogue, sales, credit, team, backup — a tul hunah stock leh extra tills te pawh a awm bawk.
+more_help_moklanjo	Thil list, zuar, credit, team, backup — a tul hunah stock leh till belh te pawh a awm bawk.
 net_word	Chhiar zawng
 offline_badge	NET TEL LO
 optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a dah; hmangtu chauhvin password a thlak thei nakinah.
