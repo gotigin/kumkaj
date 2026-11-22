@@ -718,22 +718,22 @@ net_word	الصافي
 offline_badge	دون اتصال
 optional_login_help	دخول اختياري (معرف + كلمة مرور). يضبطه المالك مرة واحدة؛ وبعدها يمكن للمستخدم فقط تغيير كلمة المرور.
 or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
-or_unlock_shop_login	ﺮﺠﺘﻤﻟﺍ ﻰﻟﺇ ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ ﻊﻣ ﺢﺘﻓ ﻭﺃ
-shop_login_help	.(ﺖﻧﺮﺘﻧﻹ﻿ﺎﺑ ﻝﺎﺼﺗﺍ ﻥﻭﺩ ﻞﻤﻌﻳ) ﻲﺼﺨﺸﻟﺍ ﻒﻳﺮﻌﺘﻟﺍ ﻢﻗﺭ ﻦﻣ ًﻻ﻿ﺪﺑ ﺮﺠﺘﻤﻟﺍ ﺍﺬﻫ ﻲﻔﻇﻮﻤﺑ ﻦﻴﺻﺎﺨﻟﺍ
-cloud_account_title	ﻮﺠﻧﻼ﻿ﻛﻮﻣ ﺏﺎﺴﺣ
-cloud_account_help	.ﺔﻴﻧﺎﺠﻣ ﺔﻄﺧﻭ ﻚﺑ ﺹﺎﺨﻟﺍ ﺔﺑﺎﺤﺴﻟﺍ ﻑﺮﻌﻣ ﺊﺸﻨﻳ .moklanjo.com/account ﻞﺜﻣ ﺏﺎﺴﺤﻟﺍ ﺲﻔﻨﺑ
-cloud_name_ph	(ﻱﺭﺎﻴﺘﺧﺍ) ﻢﺳﻻ﻿ﺍ
-cloud_email_ph	ﻲﻧﻭﺮﺘﻜﻟﺇ ﺪﻳﺮﺑ
-cloud_password_ph	ﺭﻭﺮﻤﻟﺍ ﺔﻤﻠﻛ
-cloud_continue	ﻞﻤﻜﻳ
-cloud_forgot	؟ﺮﺴﻟﺍ ﺔﻤﻠﻛ ﺖﻴﺴﻧ ﻞﻫ
-cloud_web_methods	ﻊﻗﻮﻤﻟﺍ ﻰﻠﻋ ﻕﺮﻄﻟﺍ ﻦﻣ ﺎﻫﺮﻴﻏﻭ ﻞﺟﻮﺟ
-cloud_signing_in	...ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ
-cloud_sending_reset	...ﻦﻴﻴﻌﺘﻟﺍ ﺓﺩﺎﻋﺇ ﻂﺑﺍﺭ ﻝﺎﺳﺭﺇ ٍﺭﺎﺟ
-cloud_forgot_sent	.ﻖﻳﺮﻄﻟﺍ ﻲﻓ ﻦﻴﻴﻌﺗ ﺓﺩﺎﻋﺇ ﻂﺑﺍﺭ ﻙﺎﻨﻫ ﻥﻮﻜﻴﺴﻓ ،ﺏﺎﺴﺣ ﻰﻠﻋ ﻱﻮﺘﺤﻳ ﻲﻧﻭﺮﺘﻜﻟﻹ﻿ﺍ ﺪﻳﺮﺒﻟﺍ ﺍﺬﻫ ﻥ
-cloud_welcome	{user} · {plan} ﻢﺳﺎﺑ ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ ﻢﺗ
-cloud_created	.ﻚﻟﺫ ﻊﻴﻄﺘﺴﺗ ﺎﻣﺪﻨﻋ ﻖﻘﺤﺘﻠﻟ ﻲﻧﻭﺮﺘﻜﻟﻹ﻿ﺍ ﻙﺪﻳﺮﺑ ﻦﻣ ﻖﻘﺤﺗ .ﺏﺎﺴﺤﻟﺍ ءﺎﺸﻧﺇ ﻢﺗ
-cloud_cancel	ﻲﻐﻠﻳ
+or_unlock_shop_login	أو افتح القفل بتسجيل دخول المتجر
+shop_login_help	اختياري: افتح القفل باسم مستخدم وكلمة مرور موظفي هذا المتجر بدلًا من PIN (يعمل دون اتصال).
+cloud_account_title	حساب Moklanjo
+cloud_account_help	سجّل أو سجّل الدخول بنفس حساب moklanjo.com/account. ينشئ معرّف السحابة وخطة مجانية.
+cloud_name_ph	الاسم (اختياري)
+cloud_email_ph	البريد الإلكتروني
+cloud_password_ph	كلمة المرور
+cloud_continue	متابعة
+cloud_forgot	نسيت كلمة المرور؟
+cloud_web_methods	Google وطرق أخرى على الموقع
+cloud_signing_in	جارٍ تسجيل الدخول…
+cloud_sending_reset	جارٍ إرسال رابط إعادة التعيين…
+cloud_forgot_sent	إذا كان لهذا البريد حساب، فرابط إعادة التعيين في الطريق.
+cloud_welcome	تم تسجيل الدخول باسم {user} · {plan}
+cloud_created	تم إنشاء الحساب. تحقق من بريدك للتحقق عندما تستطيع.
+cloud_cancel	إلغاء
 permission_preset	الوظيفة
 preset_help_moklanjo	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
 product_locked_moklanjo	Moklanjo

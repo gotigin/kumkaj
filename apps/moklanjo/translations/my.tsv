@@ -155,7 +155,7 @@ weight_kg_ph	တကယ့် ကီလိုဂရမ်
 length_cm_ph	L စင်တီမီတာ
 breadth_cm_ph	B စင်တီမီတာ
 height_cm_ph	ဇ စင်တီမီတာ
-chargeable_kg	ကီလိုဂရမ်တာဝန်ခံ
+chargeable_kg	ငွေကောက် kg
 awb_label	AWB
 booking_help	Consignor + consignee (OK blank) → ဦးတည်ရာ → အလေးချိန် → နှုန်းထား → အကောင့်/ငွေ → ပေးချေပါ။ ပြေစာပေါ်တွင် AWB ပုံနှိပ်သည်။ နောက်တစ်ကြိမ် ဘွတ်ကင်လုပ်ခြင်းသည် စားပွဲခုံကို ရှင်းလင်းစေသည်။ Rounded သည် Applied နှင့် ညီမျှသည် — ဘေလ်ကိုပတ်ရန်သာ တည်းဖြတ်ပါ။
 cart_empty_hint	စားပွဲခုံဗလာ — ကုန်စည်ပို့ဆောင်သူ/လက်ဝယ်ရှိ စိတ်ကြိုက်ရွေးချယ်နိုင်သည်၊ ဦးတည်ရာနှင့် အလေးချိန်ကို သတ်မှတ်ပါ၊ နှုန်းထားတစ်ခုပေါ်တွင် ADD ကိုနှိပ်ပါ၊ ထို့နောက် ပေးချေပါ။
@@ -360,7 +360,7 @@ create_backup	မိတ္တူ တည်ဆောက်ရန်
 day_close_summary	နေ့အဆုံး အကျဉ်းချုပ်
 delete_party	ရွေးချယ်ထားသော ပါတီကို ဖျက်ရန်
 dispatch_to_rider	Dispatch booked → မြင်းစီးသူ
-docket_charge_ph	Docket Charge
+docket_charge_ph	အခကြေးငွေ ဘောက်ချာ
 declared_value_ph	တန်ဖိုးကိုကြေငြာခဲ့သည်။
 contents_ph	မာတိကာ
 eway_ph	E-way bill no.
