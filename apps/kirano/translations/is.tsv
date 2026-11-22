@@ -567,7 +567,7 @@ stamp_heading	Stimpill
 stamp_image_help	Valfrjáls stimpilmynd á prentuðum seðlum og viðskiptavinaskjánum.
 payment_qr_heading	Greiðslu QR
 payment_qr_image_help	Static QR á reikningum og viðskiptavinaskjá; annars er greitt með kraftmiklum UPI QR frá VPA hér að ofan.
-cash_in_hand	Handbært fé (til)
+cash_in_hand	Handbært fé (kassi)
 change_my_pin_heading	Innskráningin mín
 connect_to_server	Tengstu við netþjóninn
 counter_locked	Teljari 01 · Læstur
@@ -660,7 +660,7 @@ pin_hint_choose	Veldu 4–12 tölustafi · Sláðu inn eða Aflæsa til að vist
 pin_hint_new	Nýr 4–12 stafa eigandi PIN · Sláðu inn eða opnaðu
 pin_hint_shop_code	Verslaðu tæki · pörunarkóði {}
 pin_hint_books	Þetta tæki heldur bókhaldinu
-pin_hint_paired	Auka þar til parað - opnaðu til að selja
+pin_hint_paired	Auka kassi parað — opnaðu til að selja
 pin_hint_pair_first	Auka til — para fyrst við búðartækið
 unlock_to_continue	Opnaðu til að halda áfram
 no_staff_yet	Ekkert starfsfólk ennþá - opnaðu sem eigandi, síðan teymi
