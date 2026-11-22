@@ -1189,7 +1189,7 @@ server_host_selected	Använd {host} — ange kopplingskoden och sedan Koppla nu.
 print_bill	Skriv ut räkningen
 table_actions	Bordåtgärder
 move_merge_table	Flytta / slå samman bord
-move_help	Flytta denna tabells ordning till ett ledigt bord, eller slå samman det till ett löpande.
+move_help	Flytta detta bords beställning till ett ledigt bord, eller slå samman den med en pågående.
 move_target_ph	Bordnamn (t.ex. D5, P2)
 approval_pin_ph	Chefs-PIN (endast om tillfrågad)
 move_here	Flytta hit
