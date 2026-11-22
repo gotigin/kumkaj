@@ -294,10 +294,10 @@ add_to_bill	Idagdag sa bill
 added	Idinagdag
 owes_word	may utang
 selected_word	Napili
-chip_clear_credit	malinaw - Credit o kumuha ng advance
+chip_clear_credit	malinaw — Kredito o kumuha ng paunang bayad
 chip_missing_customer	Nawawala ang napiling customer — pumili muli
 chip_no_customer	Wala pang customer — mag-type ng pangalan, pagkatapos ay i-tap ang Credit
-credit_summary_fmt	{} mga customer · bukas na credit {} · mga advance na gaganapin {}
+credit_summary_fmt	{} mga customer · bukas na credit {} · mga paunang bayad na hawak {}
 recent_label	Kamakailan:
 kot_new_waiting	BAGO — naghihintay
 kot_preparing	PAGHAHANDA
@@ -581,7 +581,7 @@ pay_ap_card	Magbayad ng AP card
 pay_ap_cash	Magbayad ng AP cash
 pay_ap_heading	Bayaran ang utang natin sa kanila (AP)
 pay_ap_upi	Magbayad ng AP UPI
-pay_selected_heading	Pinili ang pagbabayad (bayaran ang utang / kumuha ng advance)
+pay_selected_heading	Pinili ang pagbabayad (bayaran ang utang / kumuha ng paunang bayad)
 pick_from_items	Pumili mula sa aming mga item sa menu
 prev_country	Nakaraang bansa
 print_open	I-print / buksan
@@ -1112,7 +1112,7 @@ book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
 order_help	Mag-tap ng menu item para idagdag ito.
-floor_help	Mag-tap ng dining table para kunin o baguhin ang order. Ang mga kulay ay nagpapakita ng libre → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at add-dining table ay nasa mga seksyon sa ibaba.
+floor_help	Mag-tap ng dining table para kunin o baguhin ang umorder. Ang mga kulay ay nagpapakita ng bakante → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at add-dining table ay nasa mga seksyon sa ibaba.
 kitchen_help	Mga tiket sa kusina (KOT), pinakabago ang huli. Magsimula → Handa → Tapos na, inilipat ang isang tiket. Ang mga tiket ay hindi kailanman nagpapakita ng mga presyo.
 kitchen_empty	Walang bukas na tiket.
 add_a_table	Magdagdag ng hapag kainan

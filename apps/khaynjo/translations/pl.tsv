@@ -294,7 +294,7 @@ add_to_bill	Dodaj do rachunku
 added	Dodano
 owes_word	jest winien
 selected_word	Wybrane
-chip_clear_credit	clear — Kredyt lub pobranie zaliczki
+chip_clear_credit	wyczyść — Kredyt lub pobranie zaliczki
 chip_missing_customer	Brak wybranego klienta — wybierz ponownie
 chip_no_customer	Nie masz jeszcze klienta — wpisz nazwę, a następnie stuknij opcję Kredyt
 credit_summary_fmt	{} klienci · otwarty kredyt {} · posiadane zaliczki {}
@@ -1112,7 +1112,7 @@ book_kind_month	Księgi tego miesiąca
 book_kind_aging	Zaległość / kredyt debetowy
 book_kind_balance	Bilans
 order_help	Kliknij pozycję, aby go dodać.
-floor_help	Kliknij stół, aby przyjąć lub zmienić kolejność. Kolory pokazują wolne → siedzące → kuchnia → gotowe → jedzenie → rachunek → zapłacony. Lista oczekujących, rezerwacje i dodatkowe stoły znajdują się w poniższych sekcjach.
+floor_help	Kliknij stół, aby przyjąć lub zmienić zamówienie. Kolory pokazują wolne → siedzące → kuchnia → gotowe → jedzenie → rachunek → zapłacony. Lista oczekujących, rezerwacje i dodatkowe stoły znajdują się w poniższych sekcjach.
 kitchen_help	Bilety kuchenne (KOT), najnowsze na końcu. Start → Gotowe → Zrobione przesuwa bilet dalej. Bilety nigdy nie pokazują cen.
 kitchen_empty	Brak otwartych biletów.
 add_a_table	Dodaj stół jadalny

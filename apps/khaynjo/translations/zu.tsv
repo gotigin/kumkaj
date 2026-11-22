@@ -294,7 +294,7 @@ add_to_bill	Engeza kubhili yesivakashi
 added	Kwengeziwe
 owes_word	ukweleta
 selected_word	Ikhethiwe
-chip_clear_credit	cacile - Credit noma thatha kusengaphambili
+chip_clear_credit	cacile — Ikhredithi noma thatha imali yangaphambili
 chip_missing_customer	Ikhasimende elikhethiwe alikho — khetha futhi
 chip_no_customer	Alikho ikhasimende okwamanje — thayipha igama, bese uthepha okuthi Ikhredithi
 credit_summary_fmt	{} amakhasimende · ikhredithi evulekile {} · intuthuko ebanjiwe {}
@@ -581,7 +581,7 @@ pay_ap_card	Khokha ikhadi le-AP
 pay_ap_cash	Khokha imali ye-AP
 pay_ap_heading	Khokha lokho esibakweleta kona (AP)
 pay_ap_upi	Khokha i-AP UPI
-pay_selected_heading	Khokha ukhethiwe (khokha isikweletu / thatha kusengaphambili)
+pay_selected_heading	Khokha ukhethiwe (khokha isikweletu / thatha imali yangaphambili)
 pick_from_items	Khetha ezintweni zethu zemenyu
 prev_country	Izwe langaphambilini
 print_open	Phrinta / vula

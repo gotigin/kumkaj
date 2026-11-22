@@ -1112,7 +1112,7 @@ book_kind_month	Akwụkwọ ọnwa a
 book_kind_aging	Na-eche / debit-kredit
 book_kind_balance	Akwụkwọ nguzozi
 order_help	Kpatụ ihe ka ị tinye ya.
-floor_help	Kpatụ tebụl ka ị were ma ọ bụ gbanwee iwu. Agba na-egosi n'efu → nọ ọdụ → kichin → njikere → na-eri → ụgwọ → akwụrụ. Ndepụta nchere, ndebe, na itinye tebụl nọ na ngalaba dị n'okpuru.
+floor_help	Kpatụ tebụl ka ị were ma ọ bụ gbanwee iwu nhazi. Agba na-egosi efu → nọ ọdụ → kichin → njikere → na-eri → ụgwọ → akwụghachi. Ndepụta nchere, ndoputa, na tebụl mgbakwunye dị na ngalaba dị n'okpuru.
 kitchen_help	Tiketi kichin (KOT), nke kacha ọhụrụ n'ikpeazụ. Malite → Njikere → Emeela na-ebugharị tiketi. Tiketi anaghị egosi ọnụahịa.
 kitchen_empty	Enweghị tiketi mepere.
 add_a_table	Tinye tebụl

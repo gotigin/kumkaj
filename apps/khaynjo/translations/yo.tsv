@@ -294,10 +294,10 @@ add_to_bill	Fi kun si owo
 added	Fi kun
 owes_word	gbese
 selected_word	Ti yan
-chip_clear_credit	ko o - Kirẹditi tabi gba ilosiwaju
+chip_clear_credit	kó ó — Kirẹ́dítì tàbí gba owó ìṣáájú
 chip_missing_customer	Onibara ti o yan sonu — mu lẹẹkansi
 chip_no_customer	Ko si alabara sibẹsibẹ - tẹ orukọ kan, lẹhinna tẹ Kirẹditi ni kia kia
-credit_summary_fmt	{} onibara · ṣiṣi kirẹditi {} · awọn ilọsiwaju ti o waye {}
+credit_summary_fmt	{} onibara · ṣiṣi kirẹditi {} · awọn owó ìṣáájú tí a pa mọ́ {}
 recent_label	Laipẹ:
 kot_new_waiting	NEW - nduro
 kot_preparing	Ìmúrasílẹ̀
@@ -581,7 +581,7 @@ pay_ap_card	San kaadi AP
 pay_ap_cash	San owo AP
 pay_ap_heading	San ohun ti a jẹ wọn (AP)
 pay_ap_upi	San AP UPI
-pay_selected_heading	Sanwo ti a yan (yanju gbese / gba ilosiwaju)
+pay_selected_heading	Sanwo ti a yan (yanju gbese / gba owó ìṣáájú)
 pick_from_items	Yan lati inu akojọ aṣayan wa
 prev_country	Ti tẹlẹ orilẹ-ede
 print_open	Tẹjade / ṣii
@@ -1112,7 +1112,7 @@ book_kind_month	Awọn akọọlẹ oṣu yii
 book_kind_aging	Dayato si / debiti-kirẹditi
 book_kind_balance	Iwe iwontunwonsi
 order_help	Fọwọ ba ohun akojọ aṣayan kan lati fi kun.
-floor_help	Fọwọ ba tabili ounjẹ kan lati mu tabi yi aṣẹ pada. Awọn awọ ṣe afihan ọfẹ → joko → ibi idana → ṣetan → jijẹ → owo → isanwo. Akojọ idaduro, awọn ifiṣura, ati awọn tabili ounjẹ afikun wa ni awọn apakan ni isalẹ.
+floor_help	Fọwọ́ ba tábílì oúnjẹ kan láti mú tàbí yí àṣẹ oúnjẹ padà. Àwọn àwọ̀ ṣe àfihàn òfo → jókòó → ibi ìdáná → ṣetán → jíjẹ → ìwé owó → ìsanwó. Àkójọ ìdúró, àwọn ìfíṣúra, àti àwọn tábílì afikún wà ní àwọn apá ní ìsàlẹ̀.
 kitchen_help	Tiketi ibi idana ounjẹ (KOT), tuntun kẹhin. Bẹrẹ → Ṣetan → Ti ṣee gbe tikẹti kan lọ. Tiketi ko fihan awọn idiyele.
 kitchen_empty	Ko si awọn tikẹti ṣiṣi.
 add_a_table	Fi tabili ounjẹ kun

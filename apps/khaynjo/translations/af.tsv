@@ -1112,7 +1112,7 @@ book_kind_month	Boeke vir die maand
 book_kind_aging	Uitstaande / debet-krediet
 book_kind_balance	Balansrekening
 order_help	Tik op 'n item om dit by te voeg.
-floor_help	Tik op 'n tafel om die bestelling te neem of te verander. Kleure wys vry → gesit → keuken → gereed → ete → rekening → betaal. Wagtelys, reserwes en toevoeg-tafels is in die afdelings hieronder.
+floor_help	Tik op 'n tafel om die bestelling te neem of te verander. Kleure wys oop → gesit → keuken → gereed → ete → rekening → betaal. Wagtelys, reserwes en toevoeg-tafels is in die afdelings hieronder.
 kitchen_help	Keukentikkies (KOT), nuutste laaste. Start → Gereed → Gereed beweeg 'n tikkie langs. Tikkies wys nooit pryse nie.
 kitchen_empty	Geen oop tikkies nie.
 add_a_table	Voeg 'n tafel by

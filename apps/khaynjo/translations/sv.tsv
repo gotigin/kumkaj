@@ -1112,7 +1112,7 @@ book_kind_month	Böcker denna månad
 book_kind_aging	Utestående / debet-kredit
 book_kind_balance	Balansräkning
 order_help	Tryck på ett objekt för att lägga till det.
-floor_help	Tryck på ett bord för att ta eller ändra ordningen. Färger visar gratis → sittande → kök → redo → ätande → räkning → betald. Väntelista, reservationer och tilläggstabeller finns i avsnitten nedan.
+floor_help	Tryck på ett bord för att ta eller ändra beställningen. Färger visar ledigt → sittande → kök → redo → ätande → räkning → betalt. Väntelista, bokningar och tilläggsbord finns i avsnitten nedan.
 kitchen_help	Köksbiljetter (KOT), senaste sist. Start → Klar → Klar flyttar en biljett. Biljetter visar aldrig priser.
 kitchen_empty	Inga öppna biljetter.
 add_a_table	Lägg till en tabell

@@ -294,7 +294,7 @@ add_to_bill	Pridať na účet
 added	Pridané
 owes_word	dlhuje
 selected_word	Vybrané
-chip_clear_credit	clear — Úver alebo záloha
+chip_clear_credit	vyrovnané — Úver alebo záloha
 chip_missing_customer	Chýba vybraný zákazník – vyberte ho znova
 chip_no_customer	Zatiaľ žiadny zákazník – zadajte meno a potom klepnite na Kredit
 credit_summary_fmt	{} zákazníkov · otvorený kredit {} · držané zálohy {}
