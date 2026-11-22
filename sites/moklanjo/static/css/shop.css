@@ -141,6 +141,13 @@
   color: #9a0e10;
 }
 
+/* Desk: Checkout / Clear stay on one row when there is room */
+@media (min-width: 600px) {
+  .shop-cart-actions {
+    flex-wrap: nowrap;
+  }
+}
+
 /* Desk: plans / product cards sit on one row when there is room */
 @media (min-width: 820px) {
   .shop-main {
