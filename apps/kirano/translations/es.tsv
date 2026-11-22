@@ -683,12 +683,12 @@ amount_ph	Importe
 amount_received_ph	Importe recibido
 amount_we_pay_ph	Importe que pagamos
 business_name_ph	Nombre del negocio
-code_bag_ph	Código (bag)
+code_bag_ph	Código (saco)
 conv_factor_ph	Factor (25 = 1 saco → 25 kg)
 country_code_ph	Código de país ej. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe a crédito / cuenta
 credit_limit_ph	Límite de crédito (0 = ninguno)
-from_code_ph	Código desde (bag)
+from_code_ph	Código desde (saco)
 login_id_opt_ph	Id de acceso (opcional)
 manager_pin_ph	PIN del gerente (solo si no puedes anular)
 new_branch_name_ph	Nombre de la nueva sucursal
@@ -710,7 +710,7 @@ tax_rate_ph	Tipo impositivo o % (p. ej. 5, 18)
 to_code_ph	Código a (kg)
 uncleared_no_ph	N.º no compensado de arriba
 unit_cost_ph	Costo unitario
-unit_name_bag_ph	Nombre (Bag)
+unit_name_bag_ph	Nombre (saco)
 unit_plate_ph	Unidad (plato / pieza — vacío = cada uno)
 pay_credit	Crédito
 book_kind_today	Libro de hoy

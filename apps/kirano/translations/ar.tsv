@@ -683,12 +683,12 @@ amount_ph	المبلغ
 amount_received_ph	المبلغ المستلم
 amount_we_pay_ph	المبلغ الذي ندفعه
 business_name_ph	اسم النشاط التجاري
-code_bag_ph	الرمز (bag)
+code_bag_ph	الرمز (كيس)
 conv_factor_ph	العامل (25 = 1 bag → 25 kg)
 country_code_ph	رمز الدولة مثال IN, GB, US, AE, BR
 credit_khata_amount_ph	مبلغ الائتمان / الحساب
 credit_limit_ph	حد الائتمان (0 = لا شيء)
-from_code_ph	الرمز من (bag)
+from_code_ph	الرمز من (كيس)
 login_id_opt_ph	معرف الدخول (اختياري)
 manager_pin_ph	رمز المدير (فقط إذا لم تتمكن من الإلغاء)
 new_branch_name_ph	اسم الفرع الجديد
@@ -710,7 +710,7 @@ tax_rate_ph	معدل الضريبة أو % (مثل 5، 18)
 to_code_ph	الرمز إلى (kg)
 uncleared_no_ph	الرقم غير المُسوّى أعلاه
 unit_cost_ph	تكلفة الوحدة
-unit_name_bag_ph	الاسم (Bag)
+unit_name_bag_ph	الاسم (كيس)
 unit_plate_ph	الوحدة (طبق / قطعة — فارغ = كل واحد)
 pay_credit	ائتمان
 book_kind_today	دفتر اليوم

@@ -683,12 +683,12 @@ amount_ph	തുക
 amount_received_ph	ലഭിച്ച തുക
 amount_we_pay_ph	ഞങ്ങൾ നൽകുന്ന തുക
 business_name_ph	ബിസിനസ്സിന്റെ പേര്
-code_bag_ph	കോഡ് (bag)
+code_bag_ph	കോഡ് (ചാക്ക്)
 conv_factor_ph	ഘടകം (25 = 1 bag → 25 kg)
 country_code_ph	രാജ്യ കോഡ് ഉദാ. IN, GB, US, AE, BR
 credit_khata_amount_ph	കടം / ഖാത്ത തുക
 credit_limit_ph	കട പരിധി (0 = ഇല്ല)
-from_code_ph	നിന്നുള്ള കോഡ് (bag)
+from_code_ph	നിന്നുള്ള കോഡ് (ചാക്ക്)
 login_id_opt_ph	ലോഗിൻ ഐഡി (ഓപ്ഷണൽ)
 manager_pin_ph	മാനേജർ PIN (നിങ്ങൾക്ക് റദ്ദാക്കാൻ കഴിയില്ലെങ്കിൽ മാത്രം)
 new_branch_name_ph	പുതിയ ശാഖയുടെ പേര്
@@ -710,7 +710,7 @@ tax_rate_ph	നികുതി നിരക്ക് അല്ലെങ്കി
 to_code_ph	ലേക്കുള്ള കോഡ് (kg)
 uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
 unit_cost_ph	യൂണിറ്റ് വില
-unit_name_bag_ph	പേര് (Bag)
+unit_name_bag_ph	പേര് (ചാക്ക്)
 unit_plate_ph	യൂണിറ്റ് (പ്ലേറ്റ് / പീസ് — ശൂന്യം = ഓരോന്നും)
 pay_credit	കടം
 book_kind_today	ഇന്നത്തെ ബുക്ക്

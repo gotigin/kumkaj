@@ -683,12 +683,12 @@ amount_ph	금액
 amount_received_ph	받은 금액
 amount_we_pay_ph	우리가 지불하는 금액
 business_name_ph	사업체 이름
-code_bag_ph	코드(bag)
+code_bag_ph	코드(포대)
 conv_factor_ph	계수(25 = 1 bag → 25 kg)
 country_code_ph	국가 코드 예: IN, GB, US, AE, BR
 credit_khata_amount_ph	외상 / 계정 금액
 credit_limit_ph	신용 한도(0 = 없음)
-from_code_ph	시작 코드(bag)
+from_code_ph	시작 코드(포대)
 login_id_opt_ph	로그인 ID(선택)
 manager_pin_ph	관리자 PIN(취소할 수 없는 경우에만)
 new_branch_name_ph	새 지점 이름
@@ -710,7 +710,7 @@ tax_rate_ph	세율 또는 % (예: 5, 18)
 to_code_ph	대상 코드(kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가
-unit_name_bag_ph	이름(Bag)
+unit_name_bag_ph	이름(포대)
 unit_plate_ph	단위(접시/개 — 비움 = 개당)
 pay_credit	외상
 book_kind_today	오늘 장부

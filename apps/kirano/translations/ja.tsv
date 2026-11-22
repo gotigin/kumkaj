@@ -683,12 +683,12 @@ amount_ph	金額
 amount_received_ph	受領金額
 amount_we_pay_ph	当方が支払う金額
 business_name_ph	事業名
-code_bag_ph	コード（bag）
+code_bag_ph	コード（袋）
 conv_factor_ph	係数（25 = 1 bag → 25 kg）
 country_code_ph	国コード 例：IN, GB, US, AE, BR
 credit_khata_amount_ph	掛け / 口座金額
 credit_limit_ph	与信限度（0 = なし）
-from_code_ph	変換元コード（bag）
+from_code_ph	変換元コード（袋）
 login_id_opt_ph	ログインID（任意）
 manager_pin_ph	マネージャーPIN（取消できない場合のみ）
 new_branch_name_ph	新しい支店名
@@ -710,7 +710,7 @@ tax_rate_ph	税率または %（例：5、18）
 to_code_ph	変換先コード（kg）
 uncleared_no_ph	上の未清算番号
 unit_cost_ph	単価
-unit_name_bag_ph	名前（Bag）
+unit_name_bag_ph	名前（袋）
 unit_plate_ph	単位（皿 / 個 — 空欄 = 各）
 pay_credit	掛け
 book_kind_today	今日の帳簿

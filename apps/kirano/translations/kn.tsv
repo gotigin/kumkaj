@@ -683,12 +683,12 @@ amount_ph	ಮೊತ್ತ
 amount_received_ph	ಸ್ವೀಕರಿಸಿದ ಮೊತ್ತ
 amount_we_pay_ph	ನಾವು ಪಾವತಿಸುವ ಮೊತ್ತ
 business_name_ph	ವ್ಯಾಪಾರದ ಹೆಸರು
-code_bag_ph	ಕೋಡ್ (bag)
+code_bag_ph	ಕೋಡ್ (ಚೀಲ)
 conv_factor_ph	ಗುಣಾಂಕ (25 = 1 bag → 25 kg)
 country_code_ph	ದೇಶದ ಕೋಡ್ ಉದಾ. IN, GB, US, AE, BR
 credit_khata_amount_ph	ಸಾಲ / ಖಾತಾ ಮೊತ್ತ
 credit_limit_ph	ಸಾಲದ ಮಿತಿ (0 = ಇಲ್ಲ)
-from_code_ph	ಇಂದ ಕೋಡ್ (bag)
+from_code_ph	ಇಂದ ಕೋಡ್ (ಚೀಲ)
 login_id_opt_ph	ಲಾಗಿನ್ ಐಡಿ (ಐಚ್ಛಿಕ)
 manager_pin_ph	ವ್ಯವಸ್ಥಾಪಕ PIN (ನೀವು ರದ್ದುಮಾಡಲು ಸಾಧ್ಯವಾಗದಿದ್ದರೆ ಮಾತ್ರ)
 new_branch_name_ph	ಹೊಸ ಶಾಖೆಯ ಹೆಸರು
@@ -710,7 +710,7 @@ tax_rate_ph	ತೆರಿಗೆ ದರ ಅಥವಾ % (ಉದಾ. 5, 18)
 to_code_ph	ಗೆ ಕೋಡ್ (kg)
 uncleared_no_ph	ಮೇಲಿನ ಅನ್‌ಕ್ಲಿಯರ್ಡ್ #
 unit_cost_ph	ಘಟಕ ವೆಚ್ಚ
-unit_name_bag_ph	ಹೆಸರು (Bag)
+unit_name_bag_ph	ಹೆಸರು (ಚೀಲ)
 unit_plate_ph	ಘಟಕ (ಪ್ಲೇಟ್ / ಪೀಸ್ — ಖಾಲಿ = ಪ್ರತಿಯೊಂದು)
 pay_credit	ಸಾಲ
 book_kind_today	ಇಂದಿನ ಪುಸ್ತಕ

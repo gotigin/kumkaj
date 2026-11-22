@@ -683,12 +683,12 @@ amount_ph	தொகை
 amount_received_ph	பெறப்பட்ட தொகை
 amount_we_pay_ph	நாங்கள் செலுத்தும் தொகை
 business_name_ph	வணிகப் பெயர்
-code_bag_ph	குறியீடு (bag)
+code_bag_ph	குறியீடு (மூட்டை)
 conv_factor_ph	காரணி (25 = 1 bag → 25 kg)
 country_code_ph	நாட்டுக் குறியீடு எ.கா. IN, GB, US, AE, BR
 credit_khata_amount_ph	கடன் / காதா தொகை
 credit_limit_ph	கடன் வரம்பு (0 = இல்லை)
-from_code_ph	இருந்து குறியீடு (bag)
+from_code_ph	இருந்து குறியீடு (மூட்டை)
 login_id_opt_ph	உள்நுழைவு ஐடி (விருப்பம்)
 manager_pin_ph	மேலாளர் PIN (ரத்து செய்ய முடியாவிட்டால் மட்டும்)
 new_branch_name_ph	புதிய கிளையின் பெயர்
@@ -710,7 +710,7 @@ tax_rate_ph	வரி விகிதம் அல்லது % (எ.கா. 5,
 to_code_ph	க்கு குறியீடு (kg)
 uncleared_no_ph	மேலே உள்ள தீர்க்கப்படாத #
 unit_cost_ph	அலகு விலை
-unit_name_bag_ph	பெயர் (Bag)
+unit_name_bag_ph	பெயர் (மூட்டை)
 unit_plate_ph	அலகு (தட்டு / துண்டு — வெறுமை = ஒவ்வொன்றும்)
 pay_credit	கடன்
 book_kind_today	இன்றைய புத்தகம்

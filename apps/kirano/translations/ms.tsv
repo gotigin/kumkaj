@@ -645,7 +645,7 @@ team_pick_hint	Pilih siapa yang hendak diedit — skrin, hak wang dan stesen dip
 team_features_changed	Skrin ditukar — Simpan persediaan untuk orang ini
 team_rights_changed	Hak ditukar — Simpan persediaan untuk orang ini
 they_owe_us	Mereka berhutang dengan kita
-unit_at_cap	Unit @
+unit_at_cap	Kadar unit
 units_help	Kod untuk label item menu (kg, sekeping, beg). Setiap unit mesti memaut — terus atau melalui unit lain — kepada standard (kg · cm · ml · pc), cth. 1 peti = 2 kotak dan 1 kotak = 20 cm. Penukaran: 1 daripada = faktor kepada. Mata wang tidak pernah unit.
 units_picker_help	Ketik Hidupkan/Mati untuk menunjukkan unit dalam pemilih Beli dan Item. Mati unit masih tukar.
 unit_picker_on	hidup

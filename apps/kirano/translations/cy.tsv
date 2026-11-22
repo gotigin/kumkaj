@@ -683,12 +683,12 @@ amount_ph	Swm
 amount_received_ph	Swm a dderbyniwyd
 amount_we_pay_ph	Swm rydym yn ei dalu
 business_name_ph	Enw busnes
-code_bag_ph	Cod (bag)
+code_bag_ph	Cod (sach)
 conv_factor_ph	Ffactor (25 = 1 bag → 25 kg)
 country_code_ph	Cod gwlad e.e. IN, GB, US, AE, BR
 credit_khata_amount_ph	Credyd / swm cyfrif
 credit_limit_ph	Terfyn credyd (0 = dim)
-from_code_ph	O god (bag)
+from_code_ph	O god (sach)
 login_id_opt_ph	Enw defnyddiwr (gofynnol, unigryw)
 manager_pin_ph	PIN rheolwr i gymeradwyo (dim ond os na allwch ddiddymu)
 new_branch_name_ph	Enw cangen newydd
@@ -710,7 +710,7 @@ tax_rate_ph	Enw cyfradd dreth neu % — Safonol, Llai, 0, 5, 12, 18, 20
 to_code_ph	I god (kg)
 uncleared_no_ph	Rhif heb ei glirio # uchod
 unit_cost_ph	Cost uned
-unit_name_bag_ph	Enw (Bag)
+unit_name_bag_ph	Enw (sach)
 unit_plate_ph	Uned (plât / pc — gwag = yr un)
 pay_credit	Credyd
 book_kind_today	Llyfrau heddiw

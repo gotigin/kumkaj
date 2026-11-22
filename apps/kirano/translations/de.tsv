@@ -683,12 +683,12 @@ amount_ph	Betrag
 amount_received_ph	Erhaltener Betrag
 amount_we_pay_ph	Betrag, den wir zahlen
 business_name_ph	Geschäftsname
-code_bag_ph	Code (bag)
+code_bag_ph	Code (Tasche)
 conv_factor_ph	Faktor (25 = 1 bag → 25 kg)
 country_code_ph	Ländercode z. B. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredit- / Kontobetrag
 credit_limit_ph	Kreditlimit (0 = keines)
-from_code_ph	Von Code (bag)
+from_code_ph	Von Code (Sack)
 login_id_opt_ph	Login-ID (optional)
 manager_pin_ph	Manager-PIN (nur wenn Sie nicht stornieren können)
 new_branch_name_ph	Name der neuen Filiale
@@ -710,7 +710,7 @@ tax_rate_ph	Steuersatz oder % (z. B. 5, 18)
 to_code_ph	Zu Code (kg)
 uncleared_no_ph	Ungeprüfte Nr. oben
 unit_cost_ph	Stückkosten
-unit_name_bag_ph	Name (Bag)
+unit_name_bag_ph	Name (Tasche)
 unit_plate_ph	Einheit (Teller / Stück — leer = je)
 pay_credit	Kredit
 book_kind_today	Heutiges Buch

@@ -683,12 +683,12 @@ amount_ph	ରାଶି
 amount_received_ph	ମିଳିଥିବା ରାଶି
 amount_we_pay_ph	ଆମେ ଦେଉଥିବା ରାଶି
 business_name_ph	ବ୍ୟବସାୟ ନାମ
-code_bag_ph	କୋଡ୍ (bag)
+code_bag_ph	କୋଡ୍ (ବସ୍ତା)
 conv_factor_ph	ଗୁଣକ (25 = 1 bag → 25 kg)
 country_code_ph	ଦେଶ କୋଡ୍ ଯେପରି IN, GB, US, AE, BR
 credit_khata_amount_ph	ବାକି / ଖାତା ରାଶି
 credit_limit_ph	ବାକି ସୀମା (0 = ନାହିଁ)
-from_code_ph	ରୁ କୋଡ୍ (bag)
+from_code_ph	ରୁ କୋଡ୍ (ବସ୍ତା)
 login_id_opt_ph	ଲଗଇନ୍ ଆଇଡି (ଇଚ୍ଛାଧୀନ)
 manager_pin_ph	ମ୍ୟାନେଜର PIN (କେବଳ ଯଦି ଆପଣ ବାତିଲ କରିପାରିବେ ନାହିଁ)
 new_branch_name_ph	ନୂଆ ଶାଖା ନାମ
@@ -710,7 +710,7 @@ tax_rate_ph	କର ହାର କିମ୍ବା % (ଯଥା 5, 18)
 to_code_ph	କୁ କୋଡ୍ (kg)
 uncleared_no_ph	ଉପର ଅନକ୍ଲିୟର୍ଡ #
 unit_cost_ph	ୟୁନିଟ୍ ମୂଲ୍ୟ
-unit_name_bag_ph	ନାମ (Bag)
+unit_name_bag_ph	ନାମ (ବସ୍ତା)
 unit_plate_ph	ୟୁନିଟ୍ (ପ୍ଲେଟ୍ / ପିସ୍ — ଖାଲି = ପ୍ରତ୍ୟେକ)
 pay_credit	ବାକି
 book_kind_today	ଆଜିର ବହି

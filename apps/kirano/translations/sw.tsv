@@ -683,12 +683,12 @@ amount_ph	Kiasi
 amount_received_ph	Kiasi kilichopokelewa
 amount_we_pay_ph	Kiasi tunacholipa
 business_name_ph	Jina la biashara
-code_bag_ph	Msimbo (bag)
+code_bag_ph	Msimbo (gunia)
 conv_factor_ph	Kizigeu (25 = 1 bag → 25 kg)
 country_code_ph	Msimbo wa nchi mf. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kiasi cha mkopo / akaunti
 credit_limit_ph	Kikomo cha mkopo (0 = hakuna)
-from_code_ph	Msimbo kutoka (bag)
+from_code_ph	Msimbo kutoka (gunia)
 login_id_opt_ph	Kitambulisho cha kuingia (hiari)
 manager_pin_ph	PIN ya meneja (ikiwa tu huwezi kubatilisha)
 new_branch_name_ph	Jina la tawi jipya
@@ -710,7 +710,7 @@ tax_rate_ph	Kiwango cha ushuru au % (mf. 5, 18)
 to_code_ph	Msimbo kwenda (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo
-unit_name_bag_ph	Jina (Bag)
+unit_name_bag_ph	Jina (gunia)
 unit_plate_ph	Kitengo (sahani / kipande — tupu = kila moja)
 pay_credit	Mkopo
 book_kind_today	Kitabu cha leo

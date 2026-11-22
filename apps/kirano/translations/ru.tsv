@@ -683,12 +683,12 @@ amount_ph	Сумма
 amount_received_ph	Полученная сумма
 amount_we_pay_ph	Сумма, которую мы платим
 business_name_ph	Название бизнеса
-code_bag_ph	Код (bag)
+code_bag_ph	Код (мешок)
 conv_factor_ph	Коэффициент (25 = 1 bag → 25 кг)
 country_code_ph	Код страны, напр. IN, GB, US, AE, BR
 credit_khata_amount_ph	Сумма в кредит / на счёт
 credit_limit_ph	Лимит кредита (0 = нет)
-from_code_ph	Код из (bag)
+from_code_ph	Код из (мешок)
 login_id_opt_ph	ID входа (необязательно)
 manager_pin_ph	PIN менеджера (только если вы не можете отменить)
 new_branch_name_ph	Название нового филиала
@@ -710,7 +710,7 @@ tax_rate_ph	Налоговая ставка или % (напр. 5, 18)
 to_code_ph	Код в (kg)
 uncleared_no_ph	Непроведённый № выше
 unit_cost_ph	Себестоимость единицы
-unit_name_bag_ph	Название (Bag)
+unit_name_bag_ph	Название (мешок)
 unit_plate_ph	Единица (тарелка / шт. — пусто = каждая)
 pay_credit	Кредит
 book_kind_today	Книга за сегодня

@@ -683,12 +683,12 @@ amount_ph	Сума
 amount_received_ph	Отримана сума
 amount_we_pay_ph	Сума, яку ми платимо
 business_name_ph	Назва бізнесу
-code_bag_ph	Код (bag)
+code_bag_ph	Код (мішок)
 conv_factor_ph	Коефіцієнт (25 = 1 bag → 25 kg)
 country_code_ph	Код країни, напр. IN, GB, US, AE, BR
 credit_khata_amount_ph	Сума кредиту / khata
 credit_limit_ph	Кредитний ліміт (0 = немає)
-from_code_ph	Код джерела (bag)
+from_code_ph	Код джерела (мішок)
 login_id_opt_ph	Ім'я користувача (обов'язкове, унікальне)
 manager_pin_ph	PIN менеджера для схвалення (лише якщо ви не можете анулювати)
 new_branch_name_ph	Назва нової філії
@@ -710,7 +710,7 @@ tax_rate_ph	Назва ставки податку або % — Стандарт
 to_code_ph	Код призначення (kg)
 uncleared_no_ph	№ незвіреного вище
 unit_cost_ph	Собівартість одиниці
-unit_name_bag_ph	Назва (Bag)
+unit_name_bag_ph	Назва (мішок)
 unit_plate_ph	Одиниця (plate / pc — порожньо = кожна)
 pay_credit	Кредит
 book_kind_today	Книги сьогодні

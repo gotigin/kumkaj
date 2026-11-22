@@ -683,12 +683,12 @@ amount_ph	金额
 amount_received_ph	收到金额
 amount_we_pay_ph	我们支付的金额
 business_name_ph	企业名称
-code_bag_ph	代码（bag）
+code_bag_ph	代码（袋）
 conv_factor_ph	系数（25 = 1 bag → 25 kg）
 country_code_ph	国家代码，如 IN, GB, US, AE, BR
 credit_khata_amount_ph	赊账金额
 credit_limit_ph	信用额度（0 = 无）
-from_code_ph	从代码（bag）
+from_code_ph	从代码（袋）
 login_id_opt_ph	登录 ID（可选）
 manager_pin_ph	经理 PIN（仅当您无法作废时）
 new_branch_name_ph	新分支名称
@@ -710,7 +710,7 @@ tax_rate_ph	税率或 %（例如 5、18）
 to_code_ph	到代码（kg）
 uncleared_no_ph	上方未清算编号
 unit_cost_ph	单位成本
-unit_name_bag_ph	名称（Bag）
+unit_name_bag_ph	名称（袋）
 unit_plate_ph	单位（盘/件 — 空 = 每件）
 pay_credit	赊账
 book_kind_today	今日账本

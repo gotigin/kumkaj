@@ -683,12 +683,12 @@ amount_ph	Bedrag
 amount_received_ph	Ontvangen bedrag
 amount_we_pay_ph	Bedrag dat wij betalen
 business_name_ph	Bedrijfsnaam
-code_bag_ph	Code (bag)
+code_bag_ph	Code (zak)
 conv_factor_ph	Factor (25 = 1 zak → 25 kg)
 country_code_ph	Landcode bijv. IN, GB, US, AE, BR
 credit_khata_amount_ph	Krediet- / rekeningbedrag
 credit_limit_ph	Kredietlimiet (0 = geen)
-from_code_ph	Van code (bag)
+from_code_ph	Van code (zak)
 login_id_opt_ph	Login-id (optioneel)
 manager_pin_ph	Manager-PIN (alleen als je niet kunt annuleren)
 new_branch_name_ph	Naam nieuwe vestiging
@@ -710,7 +710,7 @@ tax_rate_ph	Belastingtarief of % (bijv. 5, 18)
 to_code_ph	Naar code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
 unit_cost_ph	Kosten per eenheid
-unit_name_bag_ph	Naam (Bag)
+unit_name_bag_ph	Naam (zak)
 unit_plate_ph	Eenheid (bord / stuk — leeg = elk)
 pay_credit	Krediet
 book_kind_today	Boek van vandaag

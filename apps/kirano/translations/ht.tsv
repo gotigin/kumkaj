@@ -683,12 +683,12 @@ amount_ph	Montan
 amount_received_ph	Montan resevwa
 amount_we_pay_ph	Montan nou peye
 business_name_ph	Non biznis
-code_bag_ph	Kòd (bag)
+code_bag_ph	Kòd (sak)
 conv_factor_ph	Faktè (25 = 1 bag → 25 kg)
 country_code_ph	Kòd peyi pa egzanp IN, GB, US, AE, BR
 credit_khata_amount_ph	Montan kredi / khata
 credit_limit_ph	Limit kredi (0 = pa gen)
-from_code_ph	Kòd sous (bag)
+from_code_ph	Kòd sous (sak)
 login_id_opt_ph	Non itilizatè (obligatwa, inik)
 manager_pin_ph	PIN manadjè pou apwouve (sèlman si ou pa ka anile)
 new_branch_name_ph	Non nouvo siksinal
@@ -710,7 +710,7 @@ tax_rate_ph	Non to taks oswa % — Estanda, Redwi, 0, 5, 12, 18, 20
 to_code_ph	Kòd destinasyon (kg)
 uncleared_no_ph	Nimewo ki poko regle anwo
 unit_cost_ph	Pri inite
-unit_name_bag_ph	Non (Bag)
+unit_name_bag_ph	Non (sak)
 unit_plate_ph	Inite (plate / pc — vid = chak)
 pay_credit	Kredi
 book_kind_today	Liv jodi a

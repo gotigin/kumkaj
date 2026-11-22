@@ -683,12 +683,12 @@ amount_ph	रक्कम
 amount_received_ph	मिळालेली रक्कम
 amount_we_pay_ph	आम्ही देतो ती रक्कम
 business_name_ph	व्यवसायाचे नाव
-code_bag_ph	कोड (bag)
+code_bag_ph	कोड (गोणी)
 conv_factor_ph	गुणक (25 = 1 bag → 25 kg)
 country_code_ph	देश कोड उदा. IN, GB, US, AE, BR
 credit_khata_amount_ph	उधारी / खाते रक्कम
 credit_limit_ph	उधारी मर्यादा (0 = नाही)
-from_code_ph	पासून कोड (bag)
+from_code_ph	पासून कोड (गोणी)
 login_id_opt_ph	लॉगिन आयडी (पर्यायी)
 manager_pin_ph	व्यवस्थापक PIN (फक्त तुम्ही रद्द करू शकत नसाल तर)
 new_branch_name_ph	नवीन शाखेचे नाव
@@ -710,7 +710,7 @@ tax_rate_ph	कर दर किंवा % (उदा. 5, 18)
 to_code_ph	ला कोड (kg)
 uncleared_no_ph	वरील अनक्लिअर्ड #
 unit_cost_ph	एकक किंमत
-unit_name_bag_ph	नाव (Bag)
+unit_name_bag_ph	नाव (गोणी)
 unit_plate_ph	एकक (प्लेट / तुकडा — रिकामे = प्रत्येकी)
 pay_credit	उधारी
 book_kind_today	आजची वही

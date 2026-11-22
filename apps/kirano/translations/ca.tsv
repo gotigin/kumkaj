@@ -683,12 +683,12 @@ amount_ph	Import
 amount_received_ph	Import rebut
 amount_we_pay_ph	Import que paguem
 business_name_ph	Nom del negoci
-code_bag_ph	Codi (bag)
+code_bag_ph	Codi (sac)
 conv_factor_ph	Factor (25 = 1 sac → 25 kg)
 country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Import de crèdit / khata
 credit_limit_ph	Límit de crèdit (0 = cap)
-from_code_ph	Codi d'origen (bag)
+from_code_ph	Codi d'origen (sac)
 login_id_opt_ph	Nom d'usuari (obligatori, únic)
 manager_pin_ph	PIN d'encarregat per aprovar (només si no podeu anul·lar)
 new_branch_name_ph	Nom de la sucursal nova
@@ -710,7 +710,7 @@ tax_rate_ph	Nom del tipus impositiu o % — Estàndard, Reduït, 0, 5, 12, 18, 2
 to_code_ph	Codi de destí (kg)
 uncleared_no_ph	Núm. no conciliat de dalt
 unit_cost_ph	Cost unitari
-unit_name_bag_ph	Nom (Bag)
+unit_name_bag_ph	Nom (sac)
 unit_plate_ph	Unitat (plate / pc — buit = cada un)
 pay_credit	Crèdit
 book_kind_today	Llibres d'avui

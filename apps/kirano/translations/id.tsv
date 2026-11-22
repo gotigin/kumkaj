@@ -142,7 +142,7 @@ diag_bundle_saved	Salinan diagnostik disimpan ke {path}
 diag_bundle_failed	Tidak dapat menyimpan salinan diagnostik — coba lagi
 diag_clear	Hapus log diagnostik
 diag_cleared	Log diagnostik telah dihapus
-sidebar_settings	Sidebar
+sidebar_settings	Bilah sisi
 sidebar_settings_help	Ikon yang sama dengan rel samping. Seret baris untuk mengubah urutan. Balikkan sakelar untuk menampilkan atau menyembunyikan. Pengaturan dan Kunci selalu tetap berada pada bilah.
 sidebar_always_on_short	Selalu nyala
 sidebar_menu_items	Item
@@ -683,12 +683,12 @@ amount_ph	Jumlah
 amount_received_ph	Jumlah diterima
 amount_we_pay_ph	Jumlah yang kami bayar
 business_name_ph	Nama bisnis
-code_bag_ph	Kode (bag)
+code_bag_ph	Kode (karung)
 conv_factor_ph	Faktor (25 = 1 bag → 25 kg)
 country_code_ph	Kode negara mis. IN, GB, US, AE, BR
 credit_khata_amount_ph	Jumlah kredit / akun
 credit_limit_ph	Batas kredit (0 = tidak ada)
-from_code_ph	Kode dari (bag)
+from_code_ph	Kode dari (karung)
 login_id_opt_ph	Id login (opsional)
 manager_pin_ph	PIN manajer (hanya jika Anda tidak dapat membatalkan)
 new_branch_name_ph	Nama cabang baru
@@ -710,7 +710,7 @@ tax_rate_ph	Tarif pajak atau % (mis. 5, 18)
 to_code_ph	Kode ke (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan
-unit_name_bag_ph	Nama (Bag)
+unit_name_bag_ph	Nama (karung)
 unit_plate_ph	Satuan (piring / pcs — kosong = tiap)
 pay_credit	Kredit
 book_kind_today	Buku hari ini

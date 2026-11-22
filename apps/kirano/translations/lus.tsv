@@ -683,12 +683,12 @@ amount_ph	Sum zat
 amount_received_ph	Sum dawng zat
 amount_we_pay_ph	Kan pe sum zat
 business_name_ph	Sumdawn hming
-code_bag_ph	Code (bag)
+code_bag_ph	Code (em)
 conv_factor_ph	Factor (25 = 1 bag → 25 kg)
 country_code_ph	Ram code entir IN, GB, US, AE, BR
 credit_khata_amount_ph	Ba / khata sum zat
 credit_limit_ph	Ba tiam (0 = awm lo)
-from_code_ph	Code atanga (bag)
+from_code_ph	Code atanga (em)
 login_id_opt_ph	Hmangtu hming (a ngai, then)
 manager_pin_ph	Hotu PIN, phal nan (tihbo theih loh chauh)
 new_branch_name_ph	Branch thar hming
@@ -710,7 +710,7 @@ tax_rate_ph	Chhiah zat hming emaw % — Dan, Tlem, 0, 5, 12, 18, 20
 to_code_ph	Code hma (kg)
 uncleared_no_ph	Thianghlim loh # chung
 unit_cost_ph	Unit man
-unit_name_bag_ph	Hming (Bag)
+unit_name_bag_ph	Hming (em)
 unit_plate_ph	Unit (plate / pc — ruak = tin)
 pay_credit	Ba
 book_kind_today	Vawiin lehkha

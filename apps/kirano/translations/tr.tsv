@@ -683,12 +683,12 @@ amount_ph	Tutar
 amount_received_ph	Alınan tutar
 amount_we_pay_ph	Ödediğimiz tutar
 business_name_ph	İşletme adı
-code_bag_ph	Kod (bag)
+code_bag_ph	Kod (çuval)
 conv_factor_ph	Katsayı (25 = 1 bag → 25 kg)
 country_code_ph	Ülke kodu örn. IN, GB, US, AE, BR
 credit_khata_amount_ph	Veresiye / hesap tutarı
 credit_limit_ph	Kredi limiti (0 = yok)
-from_code_ph	Kaynak kod (bag)
+from_code_ph	Kaynak kod (çuval)
 login_id_opt_ph	Giriş kimliği (isteğe bağlı)
 manager_pin_ph	Yönetici PIN'i (yalnızca iptal edemiyorsanız)
 new_branch_name_ph	Yeni şube adı
@@ -710,7 +710,7 @@ tax_rate_ph	Vergi oranı veya % (örn. 5, 18)
 to_code_ph	Hedef kod (kg)
 uncleared_no_ph	Yukarıdaki mahsuplaşmamış #
 unit_cost_ph	Birim maliyet
-unit_name_bag_ph	Ad (Bag)
+unit_name_bag_ph	Ad (çuval)
 unit_plate_ph	Birim (tabak / adet — boş = her biri)
 pay_credit	Veresiye
 book_kind_today	Bugünün defteri

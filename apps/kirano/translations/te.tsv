@@ -683,12 +683,12 @@ amount_ph	మొత్తం
 amount_received_ph	అందిన మొత్తం
 amount_we_pay_ph	మేము చెల్లించే మొత్తం
 business_name_ph	వ్యాపార పేరు
-code_bag_ph	కోడ్ (bag)
+code_bag_ph	కోడ్ (సంచి)
 conv_factor_ph	కారకం (25 = 1 bag → 25 kg)
 country_code_ph	దేశ కోడ్ ఉదా. IN, GB, US, AE, BR
 credit_khata_amount_ph	అప్పు / ఖాతా మొత్తం
 credit_limit_ph	క్రెడిట్ పరిమితి (0 = లేదు)
-from_code_ph	నుండి కోడ్ (bag)
+from_code_ph	నుండి కోడ్ (సంచి)
 login_id_opt_ph	లాగిన్ ఐడి (ఐచ్ఛికం)
 manager_pin_ph	మేనేజర్ PIN (మీరు రద్దు చేయలేకపోతే మాత్రమే)
 new_branch_name_ph	కొత్త శాఖ పేరు
@@ -710,7 +710,7 @@ tax_rate_ph	పన్ను రేటు లేదా % (ఉదా. 5, 18)
 to_code_ph	కు కోడ్ (kg)
 uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
 unit_cost_ph	యూనిట్ ధర
-unit_name_bag_ph	పేరు (Bag)
+unit_name_bag_ph	పేరు (సంచి)
 unit_plate_ph	యూనిట్ (ప్లేట్ / పీస్ — ఖాళీ = ప్రతీది)
 pay_credit	అప్పు
 book_kind_today	ఈరోజు పుస్తకం

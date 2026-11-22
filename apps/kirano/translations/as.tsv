@@ -683,12 +683,12 @@ amount_ph	পৰিমাণ
 amount_received_ph	পোৱা পৰিমাণ
 amount_we_pay_ph	আমি দিয়া পৰিমাণ
 business_name_ph	ব্যৱসায়ৰ নাম
-code_bag_ph	কোড (bag)
+code_bag_ph	কোড (বস্তা)
 conv_factor_ph	গুণক (25 = 1 bag → 25 kg)
 country_code_ph	দেশৰ কোড যেনে IN, GB, US, AE, BR
 credit_khata_amount_ph	বাকী / খাতা পৰিমাণ
 credit_limit_ph	বাকীৰ সীমা (0 = নাই)
-from_code_ph	পৰা কোড (bag)
+from_code_ph	পৰা কোড (বস্তা)
 login_id_opt_ph	লগইন আইডি (ঐচ্ছিক)
 manager_pin_ph	মেনেজাৰ PIN (কেৱল যদি আপুনি বাতিল কৰিব নোৱাৰে)
 new_branch_name_ph	নতুন শাখাৰ নাম
@@ -710,7 +710,7 @@ tax_rate_ph	কৰ হাৰ বা % (যেনে 5, 18)
 to_code_ph	লৈ কোড (kg)
 uncleared_no_ph	ওপৰৰ আনক্লিয়াৰ্ড #
 unit_cost_ph	একক খৰচ
-unit_name_bag_ph	নাম (Bag)
+unit_name_bag_ph	নাম (বস্তা)
 unit_plate_ph	একক (প্লেট / টুকুৰা — খালী = প্ৰতিটো)
 pay_credit	বাকী
 book_kind_today	আজিৰ বহী

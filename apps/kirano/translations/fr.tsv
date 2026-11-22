@@ -688,7 +688,7 @@ conv_factor_ph	Facteur (25 = 1 bag → 25 kg)
 country_code_ph	Code pays ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Montant crédit / compte
 credit_limit_ph	Limite de crédit (0 = aucune)
-from_code_ph	Code de départ (bag)
+from_code_ph	Code de départ (sac)
 login_id_opt_ph	Identifiant (facultatif)
 manager_pin_ph	PIN du responsable (seulement si vous ne pouvez pas annuler)
 new_branch_name_ph	Nom de la nouvelle succursale
@@ -710,7 +710,7 @@ tax_rate_ph	Taux de taxe ou % (p. ex. 5, 18)
 to_code_ph	Code vers (kg)
 uncleared_no_ph	N° non compensé ci-dessus
 unit_cost_ph	Coût unitaire
-unit_name_bag_ph	Nom (Bag)
+unit_name_bag_ph	Nom (sac)
 unit_plate_ph	Unité (assiette / pièce — vide = chacun)
 pay_credit	Crédit
 book_kind_today	Livre du jour

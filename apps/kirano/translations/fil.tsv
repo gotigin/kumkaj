@@ -688,7 +688,7 @@ conv_factor_ph	Salik (25 = 1 bag → 25 kg)
 country_code_ph	Country code hal. SA, GB, US, AE, BR
 credit_khata_amount_ph	Halaga ng credit / credit ledger
 credit_limit_ph	Limitasyon sa kredito (0 = wala)
-from_code_ph	Mula sa code (bag)
+from_code_ph	Mula sa code (supot)
 login_id_opt_ph	Username (kinakailangan, natatangi)
 manager_pin_ph	Manager PIN para aprubahan (kung hindi mo mapapawalang-bisa)
 new_branch_name_ph	Bagong pangalan ng sangay
@@ -710,7 +710,7 @@ tax_rate_ph	Pangalan ng rate ng buwis o % — Karaniwan, Binawasan, 0, 5, 12, 18
 to_code_ph	Sa code (kg)
 uncleared_no_ph	Hindi na-clear ang # sa itaas
 unit_cost_ph	Gastos ng yunit
-unit_name_bag_ph	Pangalan (Bag)
+unit_name_bag_ph	Pangalan (supot)
 unit_plate_ph	Yunit (plate / pc — blangko = bawat isa)
 pay_credit	Sa account
 book_kind_today	Mga ledger ngayon

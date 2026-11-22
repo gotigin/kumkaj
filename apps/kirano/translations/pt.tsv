@@ -683,12 +683,12 @@ amount_ph	Valor
 amount_received_ph	Valor recebido
 amount_we_pay_ph	Valor que pagamos
 business_name_ph	Nome da empresa
-code_bag_ph	Código (bag)
+code_bag_ph	Código (saco)
 conv_factor_ph	Fator (25 = 1 bag → 25 kg)
 country_code_ph	Código do país ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Valor a crédito / conta
 credit_limit_ph	Limite de crédito (0 = nenhum)
-from_code_ph	Código de (bag)
+from_code_ph	Código de (saco)
 login_id_opt_ph	Id de login (opcional)
 manager_pin_ph	PIN do gerente (apenas se você não puder anular)
 new_branch_name_ph	Nome da nova filial
@@ -710,7 +710,7 @@ tax_rate_ph	Taxa ou % (ex.: 5, 18)
 to_code_ph	Código para (kg)
 uncleared_no_ph	Nº não compensado acima
 unit_cost_ph	Custo unitário
-unit_name_bag_ph	Nome (Bag)
+unit_name_bag_ph	Nome (saco)
 unit_plate_ph	Unidade (prato / peça — vazio = cada)
 pay_credit	Crédito
 book_kind_today	Livro de hoje

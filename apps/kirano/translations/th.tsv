@@ -683,12 +683,12 @@ amount_ph	จำนวนเงิน
 amount_received_ph	จำนวนเงินที่ได้รับ
 amount_we_pay_ph	จำนวนเงินที่เราจ่าย
 business_name_ph	ชื่อธุรกิจ
-code_bag_ph	รหัส (bag)
+code_bag_ph	รหัส (กระสอบ)
 conv_factor_ph	ตัวประกอบ (25 = 1 bag → 25 kg)
 country_code_ph	รหัสประเทศ เช่น IN, GB, US, AE, BR
 credit_khata_amount_ph	จำนวนเครดิต / บัญชี
 credit_limit_ph	วงเงินเครดิต (0 = ไม่มี)
-from_code_ph	รหัสจาก (bag)
+from_code_ph	รหัสจาก (กระสอบ)
 login_id_opt_ph	รหัสเข้าสู่ระบบ (ไม่บังคับ)
 manager_pin_ph	PIN ผู้จัดการ (เฉพาะเมื่อคุณไม่สามารถยกเลิกได้)
 new_branch_name_ph	ชื่อสาขาใหม่
@@ -710,7 +710,7 @@ tax_rate_ph	อัตราภาษี หรือ % (เช่น 5, 18)
 to_code_ph	รหัสถึง (kg)
 uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
 unit_cost_ph	ต้นทุนต่อหน่วย
-unit_name_bag_ph	ชื่อ (Bag)
+unit_name_bag_ph	ชื่อ (กระสอบ)
 unit_plate_ph	หน่วย (จาน / ชิ้น — ว่าง = แต่ละชิ้น)
 pay_credit	เครดิต
 book_kind_today	สมุดวันนี้

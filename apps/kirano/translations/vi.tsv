@@ -683,12 +683,12 @@ amount_ph	Số tiền
 amount_received_ph	Số tiền đã nhận
 amount_we_pay_ph	Số tiền chúng ta trả
 business_name_ph	Tên doanh nghiệp
-code_bag_ph	Mã (bag)
+code_bag_ph	Mã (bao)
 conv_factor_ph	Hệ số (25 = 1 bag → 25 kg)
 country_code_ph	Mã quốc gia ví dụ IN, GB, US, AE, BR
 credit_khata_amount_ph	Số tiền ghi nợ / tài khoản
 credit_limit_ph	Hạn mức nợ (0 = không)
-from_code_ph	Mã từ (bag)
+from_code_ph	Mã từ (bao)
 login_id_opt_ph	ID đăng nhập (tùy chọn)
 manager_pin_ph	PIN quản lý (chỉ khi bạn không thể hủy)
 new_branch_name_ph	Tên chi nhánh mới
@@ -710,7 +710,7 @@ tax_rate_ph	Thuế suất hoặc % (vd. 5, 18)
 to_code_ph	Mã đến (kg)
 uncleared_no_ph	Số chưa quyết toán ở trên
 unit_cost_ph	Chi phí đơn vị
-unit_name_bag_ph	Tên (Bag)
+unit_name_bag_ph	Tên (bao)
 unit_plate_ph	Đơn vị (đĩa / cái — trống = mỗi cái)
 pay_credit	Ghi nợ
 book_kind_today	Sổ hôm nay

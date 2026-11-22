@@ -683,12 +683,12 @@ amount_ph	Məbləğ
 amount_received_ph	Alınan məbləğ
 amount_we_pay_ph	Ödədiyimiz məbləğ
 business_name_ph	Biznes adı
-code_bag_ph	Kod (bag)
+code_bag_ph	Kod (torba)
 conv_factor_ph	Əmsal (25 = 1 bag → 25 kg)
 country_code_ph	Ölkə kodu, məs. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredit / khata məbləği
 credit_limit_ph	Kredit limiti (0 = yoxdur)
-from_code_ph	Haradan kodu (bag)
+from_code_ph	Haradan kodu (torba)
 login_id_opt_ph	İstifadəçi adı (mütləq, unikal)
 manager_pin_ph	Təsdiq üçün Menecer PIN-i (yalnız etibarsız edə bilmirsinizsə)
 new_branch_name_ph	Yeni filial adı
@@ -710,7 +710,7 @@ tax_rate_ph	Vergi dərəcəsinin adı və ya % — Standart, Azaldılmış, 0, 5
 to_code_ph	Hara kodu (kg)
 uncleared_no_ph	Yuxarıdakı üzləşməmiş №
 unit_cost_ph	Vahid mayası
-unit_name_bag_ph	Ad (Bag)
+unit_name_bag_ph	Ad (torba)
 unit_plate_ph	Vahid (plate / pc — boş = ədəd)
 pay_credit	Kredit
 book_kind_today	Bu günün kitabları

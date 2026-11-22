@@ -683,12 +683,12 @@ amount_ph	رقم
 amount_received_ph	موصولہ رقم
 amount_we_pay_ph	ہم جو رقم دیتے ہیں
 business_name_ph	کاروبار کا نام
-code_bag_ph	کوڈ (bag)
+code_bag_ph	کوڈ (بوری)
 conv_factor_ph	عامل (25 = 1 bag → 25 kg)
 country_code_ph	ملکی کوڈ مثلاً IN, GB, US, AE, BR
 credit_khata_amount_ph	ادھار / کھاتہ رقم
 credit_limit_ph	ادھار حد (0 = کوئی نہیں)
-from_code_ph	سے کوڈ (bag)
+from_code_ph	سے کوڈ (بوری)
 login_id_opt_ph	لاگ ان آئی ڈی (اختیاری)
 manager_pin_ph	مینیجر PIN (صرف اس صورت میں جب آپ منسوخ نہ کر سکیں)
 new_branch_name_ph	نئی شاخ کا نام
@@ -710,7 +710,7 @@ tax_rate_ph	ٹیکس شرح یا % (مثلاً 5، 18)
 to_code_ph	کو کوڈ (kg)
 uncleared_no_ph	اوپر والا غیر کلیئر #
 unit_cost_ph	فی یونٹ لاگت
-unit_name_bag_ph	نام (Bag)
+unit_name_bag_ph	نام (بوری)
 unit_plate_ph	یونٹ (پلیٹ / پیس — خالی = ہر ایک)
 pay_credit	ادھار
 book_kind_today	آج کی کتاب
