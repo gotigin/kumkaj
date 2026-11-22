@@ -700,7 +700,7 @@ conv_factor_ph	العامل (25 = 1 bag → 25 kg)
 country_code_ph	رمز الدولة مثال IN, GB, US, AE, BR
 credit_khata_amount_ph	مبلغ الائتمان / الحساب
 credit_limit_ph	حد الائتمان (0 = لا شيء)
-from_code_ph	الرمز من (bag)
+from_code_ph	من الرمز (bag)
 login_id_opt_ph	معرف الدخول (اختياري)
 manager_pin_ph	رمز المدير (فقط إذا لم تتمكن من الإلغاء)
 new_branch_name_ph	اسم الفرع الجديد
@@ -708,7 +708,7 @@ new_password_ph	كلمة مرور جديدة (اختياري)
 new_pin_ph	رمز جديد (4–12 رقمًا)
 note_bank_ph	ملاحظة (إيداع، سحب، …)
 note_buy_expense_ph	ملاحظة (وقود، إيجار، …)
-options_tabiyat_ph	خيارات (اختياري) — Extra cheese=40, Large=80
+options_tabiyat_ph	خيارات (الحجم*: صغير=199، كبير=399…)
 phone_ph	الهاتف
 place_name_ph	اسم هذا المكان
 qty_example_ph	الكمية (مثال 1.5 للكيلوغرام)
@@ -719,7 +719,7 @@ short_code_ph	الرمز القصير (MG02)
 starting_password_ph	كلمة مرور البدء (اختياري)
 starting_pin_ph	رمز البدء (4–12 رقمًا)
 tax_rate_ph	معدل الضريبة أو % (مثل 5، 18)
-to_code_ph	الرمز إلى (kg)
+to_code_ph	إلى الرمز (kg)
 uncleared_no_ph	الرقم غير المُسوّى أعلاه
 unit_cost_ph	تكلفة الوحدة
 unit_name_bag_ph	الاسم (Bag)

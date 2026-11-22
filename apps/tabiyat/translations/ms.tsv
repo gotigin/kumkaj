@@ -700,7 +700,7 @@ conv_factor_ph	Faktor (25 = 1 beg → 25 kg)
 country_code_ph	Kod negara cth. IN, GB, AS, AE, BR
 credit_khata_amount_ph	Jumlah kredit / lejar kredit
 credit_limit_ph	Had kredit (0 = tiada)
-from_code_ph	Dari kod (beg)
+from_code_ph	Dari kod (bag)
 login_id_opt_ph	Nama pengguna (diperlukan, unik)
 manager_pin_ph	Pengurus PIN untuk meluluskan (hanya jika anda tidak boleh membatalkan)
 new_branch_name_ph	Nama cawangan baru
@@ -719,7 +719,7 @@ short_code_ph	Kod pendek (MG02)
 starting_password_ph	Kata laluan permulaan (pilihan)
 starting_pin_ph	Bermula PIN (4–12 digit)
 tax_rate_ph	Nama kadar cukai atau % — Standard, Dikurangkan, 0, 5, 12, 18, 20
-to_code_ph	Kepada kod (kg)
+to_code_ph	Ke kod (kg)
 uncleared_no_ph	Tidak dikosongkan # di atas
 unit_cost_ph	Kos seunit
 unit_name_bag_ph	Nama (Beg)

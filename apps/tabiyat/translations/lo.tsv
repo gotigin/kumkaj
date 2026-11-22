@@ -708,7 +708,7 @@ new_password_ph	ລະຫັດຜ່ານໃໝ່ (ທາງເລືອກ)
 new_pin_ph	ໃໝ່ PIN (4–12 ຕົວເລກ)
 note_bank_ph	ໝາຍເຫດ (ຝາກ, ຖອນ,…)
 note_buy_expense_ph	ໝາຍເຫດ (ນໍ້າມັນ, ຄ່າເຊົ່າ,…)
-options_tabiyat_ph	ຕົວເລືອກ — ຂະໜາດ*: ນ້ອຍ=199, ໃຫຍ່=399 | Toppings+3: Cheese=40, Olive=30 | ເນີຍແຂງ = 40
+options_tabiyat_ph	Options (Size*: Small=199, Large=399…)
 phone_ph	ໂທລະສັບ
 place_name_ph	ຊື່ຂອງສະຖານທີ່ນີ້
 qty_example_ph	ຈໍານວນ (ເຊັ່ນ: 1.5 ສໍາລັບກິໂລ)

@@ -708,7 +708,7 @@ new_password_ph	نیا پاس ورڈ (اختیاری)
 new_pin_ph	نیا PIN (4–12 ہندسے)
 note_bank_ph	نوٹ (جمع، نکاسی، …)
 note_buy_expense_ph	نوٹ (ایندھن، کرایہ، …)
-options_tabiyat_ph	اختیارات (اختیاری) — Extra cheese=40, Large=80
+options_tabiyat_ph	اختیارات (سائز*: چھوٹا=199، بڑا=399…)
 phone_ph	فون
 place_name_ph	اس جگہ کا نام
 qty_example_ph	مقدار (مثلاً kg کے لیے 1.5)
@@ -719,7 +719,7 @@ short_code_ph	مختصر کوڈ (MG02)
 starting_password_ph	ابتدائی پاس ورڈ (اختیاری)
 starting_pin_ph	ابتدائی PIN (4–12 ہندسے)
 tax_rate_ph	ٹیکس شرح یا % (مثلاً 5، 18)
-to_code_ph	کو کوڈ (kg)
+to_code_ph	تک کوڈ (kg)
 uncleared_no_ph	اوپر والا غیر کلیئر #
 unit_cost_ph	فی یونٹ لاگت
 unit_name_bag_ph	نام (Bag)

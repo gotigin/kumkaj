@@ -708,7 +708,7 @@ new_password_ph	కొత్త పాస్‌వర్డ్ (ఐచ్ఛి�
 new_pin_ph	కొత్త PIN (4–12 అంకెలు)
 note_bank_ph	గమనిక (డిపాజిట్, ఉపసంహరణ, …)
 note_buy_expense_ph	గమనిక (ఇంధనం, అద్దె, …)
-options_tabiyat_ph	ఎంపికలు (ఐచ్ఛికం) — Extra cheese=40, Large=80
+options_tabiyat_ph	ఎంపికలు (సైజ్*: చిన్న=199, పెద్ద=399…)
 phone_ph	ఫోన్
 place_name_ph	ఈ ప్రదేశం పేరు
 qty_example_ph	పరిమాణం (ఉదా. kg కోసం 1.5)
@@ -719,7 +719,7 @@ short_code_ph	చిన్న కోడ్ (MG02)
 starting_password_ph	ప్రారంభ పాస్‌వర్డ్ (ఐచ్ఛికం)
 starting_pin_ph	ప్రారంభ PIN (4–12 అంకెలు)
 tax_rate_ph	పన్ను రేటు లేదా % (ఉదా. 5, 18)
-to_code_ph	కు కోడ్ (kg)
+to_code_ph	వరకు కోడ్ (kg)
 uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
 unit_cost_ph	యూనిట్ ధర
 unit_name_bag_ph	పేరు (Bag)

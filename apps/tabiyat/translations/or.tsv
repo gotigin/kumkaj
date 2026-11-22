@@ -708,7 +708,7 @@ new_password_ph	ନୂଆ ପାସୱାର୍ଡ (ଇଚ୍ଛାଧୀନ)
 new_pin_ph	ନୂଆ PIN (4–12 ଅଙ୍କ)
 note_bank_ph	ଟିପ୍ପଣୀ (ଜମା, ଉଠାଣ, …)
 note_buy_expense_ph	ଟିପ୍ପଣୀ (ଇନ୍ଧନ, ଭଡ଼ା, …)
-options_tabiyat_ph	ବିକଳ୍ପ (ଇଚ୍ଛାଧୀନ) — Extra cheese=40, Large=80
+options_tabiyat_ph	ବିକଳ୍ପ (ଆକାର*: ଛୋଟ=199, ବଡ଼=399…)
 phone_ph	ଫୋନ୍
 place_name_ph	ଏହି ସ୍ଥାନର ନାମ
 qty_example_ph	ପରିମାଣ (ଯେପରି kg ପାଇଁ 1.5)
@@ -719,7 +719,7 @@ short_code_ph	ଛୋଟ କୋଡ୍ (MG02)
 starting_password_ph	ଆରମ୍ଭ ପାସୱାର୍ଡ (ଇଚ୍ଛାଧୀନ)
 starting_pin_ph	ଆରମ୍ଭ PIN (4–12 ଅଙ୍କ)
 tax_rate_ph	କର ହାର କିମ୍ବା % (ଯଥା 5, 18)
-to_code_ph	କୁ କୋଡ୍ (kg)
+to_code_ph	ପର୍ଯ୍ୟନ୍ତ କୋଡ୍ (kg)
 uncleared_no_ph	ଉପର ଅନକ୍ଲିୟର୍ଡ #
 unit_cost_ph	ୟୁନିଟ୍ ମୂଲ୍ୟ
 unit_name_bag_ph	ନାମ (Bag)

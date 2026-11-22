@@ -708,7 +708,7 @@ new_password_ph	Nova senha (opcional)
 new_pin_ph	Novo PIN (4–12 dígitos)
 note_bank_ph	Nota (depósito, saque, …)
 note_buy_expense_ph	Nota (combustível, aluguel, …)
-options_tabiyat_ph	Opções (opcional) — Extra cheese=40, Large=80
+options_tabiyat_ph	Opções (Tamanho*: Pequeno=199, Grande=399…)
 phone_ph	Telefone
 place_name_ph	Nome deste local
 qty_example_ph	Quantidade (ex. 1,5 para kg)

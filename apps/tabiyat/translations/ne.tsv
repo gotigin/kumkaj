@@ -700,7 +700,7 @@ conv_factor_ph	गुणक (25 = 1 बोरा → 25 kg)
 country_code_ph	देशको कोड जस्तै IN, GB, US, AE, BR
 credit_khata_amount_ph	उधारो / खाता रकम
 credit_limit_ph	उधारो सीमा (0 = छैन)
-from_code_ph	बाट कोड (बोरा)
+from_code_ph	बाट कोड (bag)
 login_id_opt_ph	प्रयोगकर्ता नाम (आवश्यक, अद्वितीय)
 manager_pin_ph	स्वीकृतिका लागि प्रबन्धकको PIN (रद्द गर्न नसके मात्र)
 new_branch_name_ph	नयाँ शाखाको नाम
@@ -708,7 +708,7 @@ new_password_ph	नयाँ पासवर्ड (ऐच्छिक)
 new_pin_ph	नयाँ PIN (4–12 अंक)
 note_bank_ph	टिप्पणी (जम्मा, झिकेको, …)
 note_buy_expense_ph	टिप्पणी (इन्धन, भाडा, …)
-options_tabiyat_ph	विकल्प — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+options_tabiyat_ph	विकल्प (साइज*: सानो=199, ठूलो=399…)
 phone_ph	फोन
 place_name_ph	यो ठाउँको नाम
 qty_example_ph	परिमाण (जस्तै kg का लागि 1.5)
@@ -719,7 +719,7 @@ short_code_ph	छोटो कोड (MG02)
 starting_password_ph	सुरुको पासवर्ड (ऐच्छिक)
 starting_pin_ph	सुरुको PIN (4–12 अंक)
 tax_rate_ph	कर दर वा % (जस्तै 5, 18)
-to_code_ph	मा कोड (kg)
+to_code_ph	सम्म कोड (kg)
 uncleared_no_ph	माथि नमिलेको #
 unit_cost_ph	एकाइ लागत
 unit_name_bag_ph	नाम (बोरा)

@@ -708,7 +708,7 @@ new_password_ph	新しいパスワード（任意）
 new_pin_ph	新しいPIN（4–12桁）
 note_bank_ph	メモ（入金、出金、…）
 note_buy_expense_ph	メモ（燃料、家賃、…）
-options_tabiyat_ph	オプション（任意）— Extra cheese=40, Large=80
+options_tabiyat_ph	オプション（サイズ*: 小=199、大=399…）
 phone_ph	電話
 place_name_ph	この場所の名前
 qty_example_ph	数量（例：kg は 1.5）

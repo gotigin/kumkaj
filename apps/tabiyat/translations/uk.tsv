@@ -700,7 +700,7 @@ conv_factor_ph	Коефіцієнт (25 = 1 bag → 25 kg)
 country_code_ph	Код країни, напр. IN, GB, US, AE, BR
 credit_khata_amount_ph	Сума кредиту / khata
 credit_limit_ph	Кредитний ліміт (0 = немає)
-from_code_ph	Код джерела (bag)
+from_code_ph	Код з (bag)
 login_id_opt_ph	Ім'я користувача (обов'язкове, унікальне)
 manager_pin_ph	PIN менеджера для схвалення (лише якщо ви не можете анулювати)
 new_branch_name_ph	Назва нової філії
@@ -708,7 +708,7 @@ new_password_ph	Новий пароль (необов'язково)
 new_pin_ph	Новий PIN (4–12 цифр)
 note_bank_ph	Нотатка (внесок, зняття, …)
 note_buy_expense_ph	Нотатка (пальне, оренда, …)
-options_tabiyat_ph	Варіанти — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+options_tabiyat_ph	Варіанти (Розмір*: Малий=199, Великий=399…)
 phone_ph	Телефон
 place_name_ph	Назва цього місця
 qty_example_ph	К-сть (напр. 1.5 для kg)
@@ -719,7 +719,7 @@ short_code_ph	Короткий код (MG02)
 starting_password_ph	Початковий пароль (необов'язково)
 starting_pin_ph	Початковий PIN (4–12 цифр)
 tax_rate_ph	Назва ставки податку або % — Стандартна, Знижена, 0, 5, 12, 18, 20
-to_code_ph	Код призначення (kg)
+to_code_ph	Код у (kg)
 uncleared_no_ph	№ незвіреного вище
 unit_cost_ph	Собівартість одиниці
 unit_name_bag_ph	Назва (Bag)

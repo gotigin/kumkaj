@@ -700,7 +700,7 @@ conv_factor_ph	Facteur (25 = 1 bag → 25 kg)
 country_code_ph	Code pays ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Montant crédit / compte
 credit_limit_ph	Limite de crédit (0 = aucune)
-from_code_ph	Code de départ (bag)
+from_code_ph	Code source (bag)
 login_id_opt_ph	Identifiant (facultatif)
 manager_pin_ph	PIN du responsable (seulement si vous ne pouvez pas annuler)
 new_branch_name_ph	Nom de la nouvelle succursale
@@ -708,7 +708,7 @@ new_password_ph	Nouveau mot de passe (facultatif)
 new_pin_ph	Nouveau PIN (4–12 chiffres)
 note_bank_ph	Note (dépôt, retrait, …)
 note_buy_expense_ph	Note (carburant, loyer, …)
-options_tabiyat_ph	Options (facultatif) — Extra cheese=40, Large=80
+options_tabiyat_ph	Options (Taille*: Petit=199, Grand=399…)
 phone_ph	Téléphone
 place_name_ph	Nom de ce lieu
 qty_example_ph	Quantité (ex. 1,5 pour kg)
@@ -719,7 +719,7 @@ short_code_ph	Code court (MG02)
 starting_password_ph	Mot de passe de départ (facultatif)
 starting_pin_ph	PIN de départ (4–12 chiffres)
 tax_rate_ph	Taux de taxe ou % (p. ex. 5, 18)
-to_code_ph	Code vers (kg)
+to_code_ph	Code cible (kg)
 uncleared_no_ph	N° non compensé ci-dessus
 unit_cost_ph	Coût unitaire
 unit_name_bag_ph	Nom (Bag)

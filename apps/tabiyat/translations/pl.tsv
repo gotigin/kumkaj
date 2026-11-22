@@ -700,7 +700,7 @@ conv_factor_ph	Współczynnik (25 = 1 worek → 25 kg)
 country_code_ph	Kod kraju, np. W, GB, USA, AE, BR
 credit_khata_amount_ph	Kwota kredytu/księgi kredytowej
 credit_limit_ph	Limit kredytowy (0 = brak)
-from_code_ph	Z kodu (torba)
+from_code_ph	Kod z (bag)
 login_id_opt_ph	Nazwa użytkownika (wymagana, unikalna)
 manager_pin_ph	Menedżer PIN do zatwierdzenia (tylko jeśli nie możesz unieważnić)
 new_branch_name_ph	Nowa nazwa oddziału
@@ -719,7 +719,7 @@ short_code_ph	Krótki kod (MG02)
 starting_password_ph	Hasło startowe (opcjonalnie)
 starting_pin_ph	Zaczynając od PIN (4–12 cyfr)
 tax_rate_ph	Nazwa stawki podatku lub % — Standardowa, Obniżona, 0, 5, 12, 18, 20
-to_code_ph	Do kodu (kg)
+to_code_ph	Kod do (kg)
 uncleared_no_ph	Niewyjaśniony # powyżej
 unit_cost_ph	Koszt jednostkowy
 unit_name_bag_ph	Imię (torba)

@@ -700,7 +700,7 @@ conv_factor_ph	Kizigeu (25 = 1 bag → 25 kg)
 country_code_ph	Msimbo wa nchi mf. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kiasi cha mkopo / akaunti
 credit_limit_ph	Kikomo cha mkopo (0 = hakuna)
-from_code_ph	Msimbo kutoka (bag)
+from_code_ph	Kutoka msimbo (bag)
 login_id_opt_ph	Kitambulisho cha kuingia (hiari)
 manager_pin_ph	PIN ya meneja (ikiwa tu huwezi kubatilisha)
 new_branch_name_ph	Jina la tawi jipya
@@ -708,7 +708,7 @@ new_password_ph	Nenosiri jipya (hiari)
 new_pin_ph	PIN mpya (tarakimu 4–12)
 note_bank_ph	Kumbuka (kuweka, kutoa, …)
 note_buy_expense_ph	Kumbuka (mafuta, kodi, …)
-options_tabiyat_ph	Chaguo (hiari) — Extra cheese=40, Large=80
+options_tabiyat_ph	Chaguo (Ukubwa*: Ndogo=199, Kubwa=399…)
 phone_ph	Simu
 place_name_ph	Jina la mahali hapa
 qty_example_ph	Kiasi (mf. 1.5 kwa kg)
@@ -719,7 +719,7 @@ short_code_ph	Msimbo mfupi (MG02)
 starting_password_ph	Nenosiri la kuanzia (hiari)
 starting_pin_ph	PIN ya kuanzia (tarakimu 4–12)
 tax_rate_ph	Kiwango cha ushuru au % (mf. 5, 18)
-to_code_ph	Msimbo kwenda (kg)
+to_code_ph	Hadı msimbo (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo
 unit_name_bag_ph	Jina (Bag)

@@ -708,7 +708,7 @@ new_password_ph	Yeni parola (isteğe bağlı)
 new_pin_ph	Yeni PIN (4–12 rakam)
 note_bank_ph	Not (para yatırma, çekme, …)
 note_buy_expense_ph	Not (yakıt, kira, …)
-options_tabiyat_ph	Seçenekler (isteğe bağlı) — Extra cheese=40, Large=80
+options_tabiyat_ph	Seçenekler (Boyut*: Küçük=199, Büyük=399…)
 phone_ph	Telefon
 place_name_ph	Bu yerin adı
 qty_example_ph	Miktar (örn. kg için 1,5)

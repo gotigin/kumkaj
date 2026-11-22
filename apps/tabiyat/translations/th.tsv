@@ -708,7 +708,7 @@ new_password_ph	รหัสผ่านใหม่ (ไม่บังคั�
 new_pin_ph	PIN ใหม่ (4–12 หลัก)
 note_bank_ph	หมายเหตุ (ฝาก ถอน …)
 note_buy_expense_ph	หมายเหตุ (เชื้อเพลิง ค่าเช่า …)
-options_tabiyat_ph	ตัวเลือก (ไม่บังคับ) — Extra cheese=40, Large=80
+options_tabiyat_ph	ตัวเลือก (ขนาด*: เล็ก=199, ใหญ่=399…)
 phone_ph	โทรศัพท์
 place_name_ph	ชื่อสถานที่นี้
 qty_example_ph	ปริมาณ (เช่น 1.5 สำหรับกก.)

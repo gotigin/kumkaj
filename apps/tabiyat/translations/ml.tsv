@@ -708,7 +708,7 @@ new_password_ph	പുതിയ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
 new_pin_ph	പുതിയ PIN (4–12 അക്കങ്ങൾ)
 note_bank_ph	കുറിപ്പ് (നിക്ഷേപം, പിൻവലിക്കൽ, …)
 note_buy_expense_ph	കുറിപ്പ് (ഇന്ധനം, വാടക, …)
-options_tabiyat_ph	ഓപ്ഷനുകൾ (ഓപ്ഷണൽ) — Extra cheese=40, Large=80
+options_tabiyat_ph	ഓപ്ഷനുകൾ (വലുപ്പം*: ചെറുത്=199, വലുത്=399…)
 phone_ph	ഫോൺ
 place_name_ph	ഈ സ്ഥലത്തിന്റെ പേര്
 qty_example_ph	അളവ് (ഉദാ. kg ക്ക് 1.5)
@@ -719,7 +719,7 @@ short_code_ph	ചെറിയ കോഡ് (MG02)
 starting_password_ph	ആരംഭ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
 starting_pin_ph	ആരംഭ PIN (4–12 അക്കങ്ങൾ)
 tax_rate_ph	നികുതി നിരക്ക് അല്ലെങ്കിൽ % (ഉദാ. 5, 18)
-to_code_ph	ലേക്കുള്ള കോഡ് (kg)
+to_code_ph	വരെയുള്ള കോഡ് (kg)
 uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
 unit_cost_ph	യൂണിറ്റ് വില
 unit_name_bag_ph	പേര് (Bag)

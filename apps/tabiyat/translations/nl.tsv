@@ -700,7 +700,7 @@ conv_factor_ph	Factor (25 = 1 zak → 25 kg)
 country_code_ph	Landcode bijv. IN, GB, US, AE, BR
 credit_khata_amount_ph	Krediet- / rekeningbedrag
 credit_limit_ph	Kredietlimiet (0 = geen)
-from_code_ph	Van code (bag)
+from_code_ph	Van-code (bag)
 login_id_opt_ph	Login-id (optioneel)
 manager_pin_ph	Manager-PIN (alleen als je niet kunt annuleren)
 new_branch_name_ph	Naam nieuwe vestiging
@@ -708,7 +708,7 @@ new_password_ph	Nieuw wachtwoord (optioneel)
 new_pin_ph	Nieuwe PIN (4–12 cijfers)
 note_bank_ph	Notitie (storting, opname, …)
 note_buy_expense_ph	Notitie (brandstof, huur, …)
-options_tabiyat_ph	Opties (optioneel) — Extra cheese=40, Large=80
+options_tabiyat_ph	Opties (Maat*: Klein=199, Groot=399…)
 phone_ph	Telefoon
 place_name_ph	Naam van deze plek
 qty_example_ph	Aantal (bijv. 1,5 voor kg)
@@ -719,7 +719,7 @@ short_code_ph	Korte code (MG02)
 starting_password_ph	Startwachtwoord (optioneel)
 starting_pin_ph	Start-PIN (4–12 cijfers)
 tax_rate_ph	Belastingtarief of % (bijv. 5, 18)
-to_code_ph	Naar code (kg)
+to_code_ph	Naar-code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
 unit_cost_ph	Kosten per eenheid
 unit_name_bag_ph	Naam (Bag)

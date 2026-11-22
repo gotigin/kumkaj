@@ -708,7 +708,7 @@ new_password_ph	नया पासवर्ड (वैकल्पिक)
 new_pin_ph	नया PIN (4–12 अंक)
 note_bank_ph	टिप्पणी (जमा, निकासी, …)
 note_buy_expense_ph	टिप्पणी (ईंधन, किराया, …)
-options_tabiyat_ph	विकल्प (वैकल्पिक) — Extra cheese=40, Large=80
+options_tabiyat_ph	Options (Size*: Small=199, Large=399…)
 phone_ph	फ़ोन
 place_name_ph	ई जगह के नाम
 qty_example_ph	मात्रा (जैसे kg खातिर 1.5)

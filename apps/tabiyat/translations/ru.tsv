@@ -708,7 +708,7 @@ new_password_ph	Новый пароль (необязательно)
 new_pin_ph	Новый PIN (4–12 цифр)
 note_bank_ph	Примечание (депозит, снятие, …)
 note_buy_expense_ph	Примечание (топливо, аренда, …)
-options_tabiyat_ph	Опции (необязательно) — Extra cheese=40, Large=80
+options_tabiyat_ph	Варианты (Размер*: Малый=199, Большой=399…)
 phone_ph	Телефон
 place_name_ph	Название этого места
 qty_example_ph	Количество (напр. 1,5 для кг)

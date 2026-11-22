@@ -700,7 +700,7 @@ conv_factor_ph	ضریب (۲۵ = ۱ کیسه → ۲۵ kg)
 country_code_ph	کد کشور مثلاً IN, GB, US, AE, BR
 credit_khata_amount_ph	مبلغ نسیه / خاتا
 credit_limit_ph	سقف نسیه (۰ = هیچ)
-from_code_ph	از کد (کیسه)
+from_code_ph	از کد (bag)
 login_id_opt_ph	نام کاربری (لازم، یکتا)
 manager_pin_ph	PIN مدیر برای تأیید (فقط اگر نمی‌توانید ابطال کنید)
 new_branch_name_ph	نام شعبه تازه
@@ -708,7 +708,7 @@ new_password_ph	گذرواژه تازه (اختیاری)
 new_pin_ph	PIN تازه (۴–۱۲ رقم)
 note_bank_ph	یادداشت (واریز، برداشت، …)
 note_buy_expense_ph	یادداشت (سوخت، اجاره، …)
-options_tabiyat_ph	گزینه — اندازه*: کوچک=۱۹۹، بزرگ=۳۹۹ | افزودنی+۳: پنیر=۴۰، زیتون=۳۰ | پنیر اضافه=۴۰
+options_tabiyat_ph	گزینه‌ها (اندازه*: کوچک=199، بزرگ=399…)
 phone_ph	تلفن
 place_name_ph	نام این محل
 qty_example_ph	تعداد (مثلاً ۱٫۵ برای kg)

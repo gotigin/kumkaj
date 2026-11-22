@@ -700,7 +700,7 @@ conv_factor_ph	계수(25 = 1 bag → 25 kg)
 country_code_ph	국가 코드 예: IN, GB, US, AE, BR
 credit_khata_amount_ph	외상 / 계정 금액
 credit_limit_ph	신용 한도(0 = 없음)
-from_code_ph	시작 코드(bag)
+from_code_ph	시작 코드 (bag)
 login_id_opt_ph	로그인 ID(선택)
 manager_pin_ph	관리자 PIN(취소할 수 없는 경우에만)
 new_branch_name_ph	새 지점 이름
@@ -708,7 +708,7 @@ new_password_ph	새 비밀번호(선택)
 new_pin_ph	새 PIN(4–12자리)
 note_bank_ph	메모(입금, 출금, …)
 note_buy_expense_ph	메모(연료, 임대료, …)
-options_tabiyat_ph	옵션(선택) — Extra cheese=40, Large=80
+options_tabiyat_ph	옵션 (크기*: 소=199, 대=399…)
 phone_ph	전화
 place_name_ph	이 장소의 이름
 qty_example_ph	수량(예: kg는 1.5)
@@ -719,7 +719,7 @@ short_code_ph	짧은 코드(MG02)
 starting_password_ph	시작 비밀번호(선택)
 starting_pin_ph	시작 PIN(4–12자리)
 tax_rate_ph	세율 또는 % (예: 5, 18)
-to_code_ph	대상 코드(kg)
+to_code_ph	목표 코드 (kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가
 unit_name_bag_ph	이름(Bag)

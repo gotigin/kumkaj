@@ -708,7 +708,7 @@ new_password_ph	ਨਵਾਂ ਪਾਸਵਰਡ (ਵਿਕਲਪਿਕ)
 new_pin_ph	ਨਵਾਂ PIN (4–12 ਅੰਕ)
 note_bank_ph	ਨੋਟ (ਜਮ੍ਹਾਂ, ਕਢਵਾਉਣਾ, …)
 note_buy_expense_ph	ਨੋਟ (ਬਾਲਣ, ਕਿਰਾਇਆ, …)
-options_tabiyat_ph	ਵਿਕਲਪ (ਵਿਕਲਪਿਕ) — Extra cheese=40, Large=80
+options_tabiyat_ph	ਵਿਕਲਪ (ਸਾਈਜ਼*: ਛੋਟਾ=199, ਵੱਡਾ=399…)
 phone_ph	ਫ਼ੋਨ
 place_name_ph	ਇਸ ਥਾਂ ਦਾ ਨਾਂ
 qty_example_ph	ਮਾਤਰਾ (ਉਦਾ. kg ਲਈ 1.5)
@@ -719,7 +719,7 @@ short_code_ph	ਛੋਟਾ ਕੋਡ (MG02)
 starting_password_ph	ਸ਼ੁਰੂਆਤੀ ਪਾਸਵਰਡ (ਵਿਕਲਪਿਕ)
 starting_pin_ph	ਸ਼ੁਰੂਆਤੀ PIN (4–12 ਅੰਕ)
 tax_rate_ph	ਟੈਕਸ ਦਰ ਜਾਂ % (ਜਿਵੇਂ 5, 18)
-to_code_ph	ਨੂੰ ਕੋਡ (kg)
+to_code_ph	ਤੱਕ ਕੋਡ (kg)
 uncleared_no_ph	ਉੱਪਰ ਵਾਲਾ ਅਣ-ਕਲੀਅਰ #
 unit_cost_ph	ਇਕਾਈ ਲਾਗਤ
 unit_name_bag_ph	ਨਾਂ (Bag)

@@ -700,7 +700,7 @@ conv_factor_ph	Faktor (25 = 1 bag → 25 kg)
 country_code_ph	Kode negara mis. IN, GB, US, AE, BR
 credit_khata_amount_ph	Jumlah kredit / akun
 credit_limit_ph	Batas kredit (0 = tidak ada)
-from_code_ph	Kode dari (bag)
+from_code_ph	Dari kode (bag)
 login_id_opt_ph	Id login (opsional)
 manager_pin_ph	PIN manajer (hanya jika Anda tidak dapat membatalkan)
 new_branch_name_ph	Nama cabang baru
@@ -708,7 +708,7 @@ new_password_ph	Kata sandi baru (opsional)
 new_pin_ph	PIN baru (4–12 digit)
 note_bank_ph	Catatan (setoran, penarikan, …)
 note_buy_expense_ph	Catatan (bahan bakar, sewa, …)
-options_tabiyat_ph	Opsi (opsional) — Extra cheese=40, Large=80
+options_tabiyat_ph	Opsi (Ukuran*: Kecil=199, Besar=399…)
 phone_ph	Telepon
 place_name_ph	Nama tempat ini
 qty_example_ph	Jumlah (mis. 1,5 untuk kg)
@@ -719,7 +719,7 @@ short_code_ph	Kode pendek (MG02)
 starting_password_ph	Kata sandi awal (opsional)
 starting_pin_ph	PIN awal (4–12 digit)
 tax_rate_ph	Tarif pajak atau % (mis. 5, 18)
-to_code_ph	Kode ke (kg)
+to_code_ph	Ke kode (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan
 unit_name_bag_ph	Nama (Bag)

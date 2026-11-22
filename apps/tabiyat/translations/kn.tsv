@@ -708,7 +708,7 @@ new_password_ph	ಹೊಸ ಪಾಸ್‌ವರ್ಡ್ (ಐಚ್ಛಿಕ)
 new_pin_ph	ಹೊಸ PIN (4–12 ಅಂಕೆಗಳು)
 note_bank_ph	ಟಿಪ್ಪಣಿ (ಠೇವಣಿ, ಹಿಂಪಡೆಯುವಿಕೆ, …)
 note_buy_expense_ph	ಟಿಪ್ಪಣಿ (ಇಂಧನ, ಬಾಡಿಗೆ, …)
-options_tabiyat_ph	ಆಯ್ಕೆಗಳು (ಐಚ್ಛಿಕ) — Extra cheese=40, Large=80
+options_tabiyat_ph	ಆಯ್ಕೆಗಳು (ಗಾತ್ರ*: ಸಣ್ಣ=199, ದೊಡ್ಡ=399…)
 phone_ph	ಫೋನ್
 place_name_ph	ಈ ಸ್ಥಳದ ಹೆಸರು
 qty_example_ph	ಪ್ರಮಾಣ (ಉದಾ. kg ಗೆ 1.5)
@@ -719,7 +719,7 @@ short_code_ph	ಚಿಕ್ಕ ಕೋಡ್ (MG02)
 starting_password_ph	ಆರಂಭಿಕ ಪಾಸ್‌ವರ್ಡ್ (ಐಚ್ಛಿಕ)
 starting_pin_ph	ಆರಂಭಿಕ PIN (4–12 ಅಂಕೆಗಳು)
 tax_rate_ph	ತೆರಿಗೆ ದರ ಅಥವಾ % (ಉದಾ. 5, 18)
-to_code_ph	ಗೆ ಕೋಡ್ (kg)
+to_code_ph	ವರೆಗಿನ ಕೋಡ್ (kg)
 uncleared_no_ph	ಮೇಲಿನ ಅನ್‌ಕ್ಲಿಯರ್ಡ್ #
 unit_cost_ph	ಘಟಕ ವೆಚ್ಚ
 unit_name_bag_ph	ಹೆಸರು (Bag)

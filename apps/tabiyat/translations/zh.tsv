@@ -700,7 +700,7 @@ conv_factor_ph	系数（25 = 1 bag → 25 kg）
 country_code_ph	国家代码，如 IN, GB, US, AE, BR
 credit_khata_amount_ph	赊账金额
 credit_limit_ph	信用额度（0 = 无）
-from_code_ph	从代码（bag）
+from_code_ph	来自单位代码 (bag)
 login_id_opt_ph	登录 ID（可选）
 manager_pin_ph	经理 PIN（仅当您无法作废时）
 new_branch_name_ph	新分支名称
@@ -708,7 +708,7 @@ new_password_ph	新密码（可选）
 new_pin_ph	新 PIN（4–12 位）
 note_bank_ph	备注（存款、取款、…）
 note_buy_expense_ph	备注（燃料、租金、…）
-options_tabiyat_ph	选项（可选）— Extra cheese=40, Large=80
+options_tabiyat_ph	选项（规格*: 小=199，大=399…）
 phone_ph	电话
 place_name_ph	此地点名称
 qty_example_ph	数量（例如 kg 用 1.5）
@@ -719,7 +719,7 @@ short_code_ph	短代码（MG02）
 starting_password_ph	初始密码（可选）
 starting_pin_ph	初始 PIN（4–12 位）
 tax_rate_ph	税率或 %（例如 5、18）
-to_code_ph	到代码（kg）
+to_code_ph	到单位代码 (kg)
 uncleared_no_ph	上方未清算编号
 unit_cost_ph	单位成本
 unit_name_bag_ph	名称（Bag）

@@ -708,7 +708,7 @@ new_password_ph	புதிய கடவுச்சொல் (விருப�
 new_pin_ph	புதிய PIN (4–12 இலக்கங்கள்)
 note_bank_ph	குறிப்பு (வைப்பு, எடுப்பு, …)
 note_buy_expense_ph	குறிப்பு (எரிபொருள், வாடகை, …)
-options_tabiyat_ph	விருப்பங்கள் (விருப்பம்) — Extra cheese=40, Large=80
+options_tabiyat_ph	விருப்பங்கள் (அளவு*: சிறிய=199, பெரிய=399…)
 phone_ph	தொலைபேசி
 place_name_ph	இந்த இடத்தின் பெயர்
 qty_example_ph	அளவு (எ.கா. கிலோவுக்கு 1.5)
@@ -719,7 +719,7 @@ short_code_ph	குறுகிய குறியீடு (MG02)
 starting_password_ph	தொடக்க கடவுச்சொல் (விருப்பம்)
 starting_pin_ph	தொடக்க PIN (4–12 இலக்கங்கள்)
 tax_rate_ph	வரி விகிதம் அல்லது % (எ.கா. 5, 18)
-to_code_ph	க்கு குறியீடு (kg)
+to_code_ph	வரை குறியீடு (kg)
 uncleared_no_ph	மேலே உள்ள தீர்க்கப்படாத #
 unit_cost_ph	அலகு விலை
 unit_name_bag_ph	பெயர் (Bag)

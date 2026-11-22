@@ -708,7 +708,7 @@ new_password_ph	নতুন পাসওয়ার্ড (ঐচ্ছিক)
 new_pin_ph	নতুন PIN (4–12 সংখ্যা)
 note_bank_ph	নোট (জমা, উত্তোলন, …)
 note_buy_expense_ph	নোট (জ্বালানি, ভাড়া, …)
-options_tabiyat_ph	বিকল্প (ঐচ্ছিক) — Extra cheese=40, Large=80
+options_tabiyat_ph	বিকল্প (সাইজ*: ছোট=199, বড়=399…)
 phone_ph	ফোন
 place_name_ph	এই জায়গার নাম
 qty_example_ph	পরিমাণ (যেমন kg-এর জন্য 1.5)
@@ -719,7 +719,7 @@ short_code_ph	ছোট কোড (MG02)
 starting_password_ph	শুরুর পাসওয়ার্ড (ঐচ্ছিক)
 starting_pin_ph	শুরুর PIN (4–12 সংখ্যা)
 tax_rate_ph	করের হার বা % (যেমন 5, 18)
-to_code_ph	তে কোড (kg)
+to_code_ph	পর্যন্ত কোড (kg)
 uncleared_no_ph	উপরের অমীমাংসিত #
 unit_cost_ph	একক খরচ
 unit_name_bag_ph	নাম (Bag)

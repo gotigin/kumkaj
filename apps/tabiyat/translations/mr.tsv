@@ -708,7 +708,7 @@ new_password_ph	नवीन पासवर्ड (पर्यायी)
 new_pin_ph	नवीन PIN (4–12 अंक)
 note_bank_ph	टीप (ठेव, काढणे, …)
 note_buy_expense_ph	टीप (इंधन, भाडे, …)
-options_tabiyat_ph	पर्याय (पर्यायी) — Extra cheese=40, Large=80
+options_tabiyat_ph	पर्याय (आकार*: लहान=199, मोठा=399…)
 phone_ph	फोन
 place_name_ph	या जागेचे नाव
 qty_example_ph	प्रमाण (उदा. kg साठी 1.5)
@@ -719,7 +719,7 @@ short_code_ph	लहान कोड (MG02)
 starting_password_ph	सुरुवातीचा पासवर्ड (पर्यायी)
 starting_pin_ph	सुरुवातीचा PIN (4–12 अंक)
 tax_rate_ph	कर दर किंवा % (उदा. 5, 18)
-to_code_ph	ला कोड (kg)
+to_code_ph	पर्यंत कोड (kg)
 uncleared_no_ph	वरील अनक्लिअर्ड #
 unit_cost_ph	एकक किंमत
 unit_name_bag_ph	नाव (Bag)
