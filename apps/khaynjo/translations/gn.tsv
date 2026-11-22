@@ -46,7 +46,7 @@ total	Total rehegua
 cash	Efectivo rehegua
 upi	UPI
 card	Tarjeta
-credit	Partíkuera
+credit	Cliente kuéra
 clear	Hesakã porã
 ready_to_sell	Oĩma preparádo ojerreserva hag̃ua
 today_prefix	Ko árape
@@ -426,7 +426,7 @@ bank	Banco
 bank_in	Banco en
 bank_out	Banco osẽva
 bank_reconciliation	Reconciliación bancaria
-bank_to_till	Banco → till
+bank_to_till	Banco → caja
 book_add_dish	Aranduka — omoĩ tembi’u / mba’e
 book_opening_credit	Aranduka — crédito apertura rehegua
 branch_name_sell_ph	Sucursal réra oñevende haguã chugui
@@ -895,7 +895,7 @@ take_payment	Ogueraha pago
 tax_added_till	{tax} exclusivo rehegua
 tax_inside_price	{tax} oikehápe
 tax_invoice	Factura tributaria rehegua
-till_to_bank	Till → banco rehegua
+till_to_bank	Caja → banco
 units_heading	Unidad-kuéra rehegua
 unlock_after_pairing	Oike PIN .
 unlock_with_login	Ojepe’a jeike rupive
@@ -1162,7 +1162,7 @@ line_sent_state	Oñemondóva cocina-pe
 line_nc_state	Complimentario (NC) — ndojehepyme'ẽi
 cancel_item_short	Ombogue
 nc_short	Ndaipóri cargo
-charge_again_short	Cargo rehegua
+charge_again_short	Cobrar
 move_short	Oñemongu’e
 cancel_item_title	Embogue ko mba’e — kosina ohupyty peteĩ boleta de cancelación
 nc_item_title	Ejapo ko mba'e complimentario (NC) .

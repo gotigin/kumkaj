@@ -46,7 +46,7 @@ total	Ngụkọta
 cash	Ego aka
 upi	UPI
 card	Kaadị
-credit	Ndị otu
+credit	Ndị ahịa
 clear	Hichapụ
 ready_to_sell	Dị njikere ide
 today_prefix	Taa
@@ -307,7 +307,7 @@ kot_cancelled	KAGBUO
 kot_start_btn	Malite
 kot_mark_ready	Kaa dị njikere
 kot_done_btn	Emeela
-table_free	Nwere onwe — kpatụ ka ị malite iwu
+table_free	Efu — kpatụ ka ị malite iwu
 start_order	Malite iwu
 open_bill	Mepee ụgwọ
 collect_payment	Nakọta ụgwọ
@@ -1119,7 +1119,7 @@ add_a_table	Tinye tebụl
 add_station_heading	Tinye ọdụ kichin
 categories_help	Kpatụ Jiri ka ị tinye ihe dị n'elu n'okpuru ụdị ahụ. Foto na-enye ụdị onyonyo; enweghị ya, ọ na-egosi mkpụrụedemede mbụ ya.
 dish_search_ph	Aha ihe — chọọ nri anyị ma ọ bụ dee nke gị
-tile_free	N'efu
+tile_free	Efu
 tile_occupied	Nwere ndị ọbịa
 tile_food_ready	Nri dị njikere
 tile_bill_printed	E bipụtara ụgwọ

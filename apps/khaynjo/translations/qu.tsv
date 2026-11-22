@@ -46,7 +46,7 @@ total	Llapan
 cash	Qullqi
 upi	UPI
 card	Tarjeta
-credit	Partikuna
+credit	Rantiqkuna
 clear	Chuya
 ready_to_sell	Libro mayorpaq listo
 today_prefix	Kunan punchaw
@@ -929,7 +929,7 @@ duress_off	Desbloqueo de emergencia PIN apagasqa kachkan
 duress_saved	Emergencia kichariy PIN waqaychasqa
 duress_cleared	Desbloqueo de emergencia PIN apagasqa
 upi_amount_ph	UPI qullqi
-void	Void rantiy
+void	Rantiy manam
 write_off_ap	AP nisqamanta qillqay
 write_off_heading	Qillqay (mana qullqita quspa chuya) .
 write_off_nil	Qillqay / nil balance
@@ -1162,7 +1162,7 @@ line_sent_state	Cocinaman kachasqa
 line_nc_state	Complimentary (NC) — mana qullqita qusqachu
 cancel_item_short	Cancelar
 nc_short	NC
-charge_again_short	Cargo
+charge_again_short	Cobray
 move_short	Kuyuy
 cancel_item_title	Kay menú elementota cancelar — cocinaqa cancelación slip nisqatam chaskikun
 nc_item_title	Kay menú nisqapi kaqtaqa mana qullqillapaq ruway (NC) .

@@ -46,7 +46,7 @@ total	Lapapọ
 cash	Owo owo
 upi	UPI
 card	Kaadi
-credit	Ẹgbẹ
+credit	Àwọn oníbàárà
 clear	Ko o
 ready_to_sell	Ṣetan si iwe afọwọkọ
 today_prefix	Loni
@@ -426,7 +426,7 @@ bank	Banki
 bank_in	Bank sinu
 bank_out	Owo jade ti awọn ile ifowo pamo
 bank_reconciliation	Ilaja banki
-bank_to_till	Banki → titi di
+bank_to_till	Banki → àpótí owó
 book_add_dish	Ledger - ṣafikun satelaiti / ohun akojọ aṣayan
 book_opening_credit	Leja - ṣiṣi kirẹditi
 branch_name_sell_ph	Orukọ ẹka lati ta lati
@@ -895,7 +895,7 @@ take_payment	Gba owo sisan
 tax_added_till	{tax} iyasoto
 tax_inside_price	{tax} ifisi
 tax_invoice	risiti owo-ori
-till_to_bank	Titi → banki
+till_to_bank	Àpótí owó → banki
 units_heading	Awọn ẹya
 unlock_after_pairing	Wọle PIN
 unlock_with_login	Ṣii silẹ pẹlu wiwọle
@@ -1162,7 +1162,7 @@ line_sent_state	Ti firanṣẹ si ibi idana ounjẹ
 line_nc_state	Baramu (NC) - ko gba agbara
 cancel_item_short	Fagilee
 nc_short	Ko si idiyele
-charge_again_short	Gba agbara
+charge_again_short	Gba owó
 move_short	Gbe
 cancel_item_title	Fagilee ohun akojọ aṣayan yii - ibi idana ounjẹ gba isokuso ifagile
 nc_item_title	Jẹ ki ohun akojọ aṣayan yii jẹ ibaramu (NC)
@@ -1170,7 +1170,7 @@ charge_again_title	Gba agbara si nkan akojọ aṣayan yii lẹẹkansi
 move_item_title	Gbe nkan akojọ aṣayan yii lọ si tabili ounjẹ miiran
 already_cooked	Ti jinna tẹlẹ (egbin)
 not_cooked_yet	Ko jinna sibẹsibẹ
-return_to_customer	Pada si onibara
+return_to_customer	Owó àyípadà
 short_by	Kukuru nipa
 tip_not_sale	Imọran (awọn oṣiṣẹ, kii ṣe tita)
 right_settle	Gba owo sisan

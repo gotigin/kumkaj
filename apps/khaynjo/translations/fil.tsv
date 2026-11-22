@@ -46,7 +46,7 @@ total	Kabuuan
 cash	Cash
 upi	UPI
 card	Kard
-credit	Mga partido
+credit	Mga account
 clear	Maaliwalas
 ready_to_sell	Handa na sa ledger
 today_prefix	Ngayong araw
@@ -252,7 +252,7 @@ sidebar_order_saved	Na-save ang order sa sidebar
 sidebar_visibility_saved	Na-save ang visibility ng sidebar
 amounts_hide	Magtago
 amounts_show	Ipakita
-counter	Counter
+counter	Kahera
 dine_in	Kain sa loob
 takeaway	Dala-uwi
 order	Order
@@ -426,7 +426,7 @@ bank	Bangko
 bank_in	Pasok sa bangko
 bank_out	Cash out sa bangko
 bank_reconciliation	Pagtutugma sa bangko
-bank_to_till	Bangko → hanggang
+bank_to_till	Bangko → kahon
 book_add_dish	Ledger — magdagdag ng ulam / item sa menu
 book_opening_credit	Ledger — pagbubukas ng kredito
 branch_name_sell_ph	Pangalan ng branch kung saan ibebenta
@@ -895,7 +895,7 @@ take_payment	Kunin ang bayad
 tax_added_till	{tax} eksklusibo
 tax_inside_price	{tax} kasama
 tax_invoice	Invoice ng buwis
-till_to_bank	Hanggang → bangko
+till_to_bank	Kahon → bangko
 units_heading	Mga yunit
 unlock_after_pairing	Ilagay ang PIN
 unlock_with_login	I-unlock gamit ang pag-login
@@ -1170,7 +1170,7 @@ charge_again_title	I-charge muli ang menu item na ito
 move_item_title	Ilipat ang menu item na ito sa isa pang hapag kainan
 already_cooked	Naluto na (waste)
 not_cooked_yet	Hindi pa luto
-return_to_customer	Bumalik sa customer
+return_to_customer	Sukli sa customer
 short_by	Kulang ng
 tip_not_sale	Tip (mga tauhan, hindi benta)
 right_settle	Kunin ang bayad

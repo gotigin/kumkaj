@@ -46,7 +46,7 @@ total	Totaal
 cash	Kontant
 upi	UPI
 card	Kaart
-credit	Partye
+credit	Rekeninge
 clear	Maak skoon
 ready_to_sell	Gereed om te boek
 today_prefix	Vandag
@@ -307,7 +307,7 @@ kot_cancelled	KANSLEER
 kot_start_btn	Begin
 kot_mark_ready	Merk gereed
 kot_done_btn	Gereed
-table_free	Vry — tik om 'n bestelling te begin
+table_free	Oop — tik om 'n bestelling te begin
 start_order	Begin bestelling
 open_bill	Oop rekening
 collect_payment	Betaling versamel
@@ -426,7 +426,7 @@ bank	Bank
 bank_in	Bank in
 bank_out	Bank uit
 bank_reconciliation	Bankversoenlikheid
-bank_to_till	Boek → kasregister
+bank_to_till	Bank → kasregister
 book_add_dish	Boeking — voeg gereg / item by
 book_opening_credit	Boeking — oopende krediet
 branch_name_sell_ph	Taknaam om van te verkoop
@@ -1119,14 +1119,14 @@ add_a_table	Voeg 'n tafel by
 add_station_heading	Voeg 'n keukinstasie by
 categories_help	Tik Gebruik om die item hierbo onder daardie kategorie te lê. Foto gee die kategorie 'n prentjie; sonder een wys dit sy inisiale.
 dish_search_ph	Itemnaam — soek ons geregte of tik jou eie
-tile_free	Vry
+tile_free	Oop
 tile_occupied	Beset
 tile_food_ready	Voedsel gereed
 tile_bill_printed	Rekening gedruk
 tile_paid	Betaal
 tile_bill_btn	Rekening
 tile_occupy_btn	Sit gaste neer
-tile_free_btn	Vrye tafel
+tile_free_btn	Maak tafel oop
 tile_ready_btn	Vrye tafel
 tile_undo_bill	Ongedaan maak rekening
 summary_busy	Tafels besig

@@ -307,7 +307,7 @@ kot_cancelled	NANAFOANA
 kot_start_btn	Manomboha
 kot_mark_ready	Vonona i Mark
 kot_done_btn	Vita
-table_free	Maimaim-poana — tsindrio hanombohana baiko
+table_free	Malalaka — tsindrio hanombohana baiko
 start_order	Atombohy ny baiko
 open_bill	Saram-bola misokatra
 collect_payment	Maka vola
@@ -1126,7 +1126,7 @@ tile_bill_printed	Noprinta ny kaonty
 tile_paid	Voaloa
 tile_bill_btn	Faktiora
 tile_occupy_btn	Mipetraha ny vahiny
-tile_free_btn	Latabatra maimaim-poana
+tile_free_btn	Latabatra malalaka
 tile_ready_btn	Latabatra maimaim-poana
 tile_undo_bill	Haverina ny kaonty
 summary_busy	feno ny latabatra

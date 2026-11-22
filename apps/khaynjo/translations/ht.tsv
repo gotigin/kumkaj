@@ -307,7 +307,7 @@ kot_cancelled	ANILE
 kot_start_btn	Kòmanse
 kot_mark_ready	Make pare
 kot_done_btn	Fini
-table_free	Lib — peze pou kòmanse yon kòmand
+table_free	Vid — peze pou kòmanse yon kòmand
 start_order	Kòmanse kòmand
 open_bill	Louvri kont
 collect_payment	Resevwa peman
@@ -1119,7 +1119,7 @@ add_a_table	Ajoute yon tab
 add_station_heading	Ajoute yon estasyon kwizin
 categories_help	Peze Sèvi pou klase atik anwo a anba kategori sa a. Foto bay kategori a yon imaj; san li, li montre inisyal li.
 dish_search_ph	Non atik — chèche plat nou yo oswa ekri pa w
-tile_free	Lib
+tile_free	Vid
 tile_occupied	Okipe
 tile_food_ready	Manje pare
 tile_bill_printed	Kont enprime

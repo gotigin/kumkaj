@@ -426,7 +426,7 @@ bank	Bainc
 bank_in	Banc isteach
 bank_out	Bain as an bhanc
 bank_reconciliation	Aontú bainc
-bank_to_till	Banc → tille
+bank_to_till	Banc → ciste
 book_add_dish	Leabhar — cuir mias / earra
 book_opening_credit	Leabhar — creidmheasanna oscailte
 branch_name_sell_ph	Ainmbrainse le díol as
@@ -895,7 +895,7 @@ take_payment	Glac íocaíocht
 tax_added_till	{tax} eisiach
 tax_inside_price	{tax} san áireamh
 tax_invoice	Sonras cánach
-till_to_bank	Go dtí → banc
+till_to_bank	Ciste → banc
 units_heading	Aonaid
 unlock_after_pairing	Cuir isteach PIN
 unlock_with_login	Díghlasáil le logáil isteach
