@@ -1172,7 +1172,7 @@ already_cooked	Sudah masak (membazir)
 not_cooked_yet	Belum masak lagi
 return_to_customer	Baki kepada pelanggan
 short_by	Pendek oleh
-tip_not_sale	Petua (kakitangan, bukan jualan)
+tip_not_sale	Tip (kakitangan, bukan jualan)
 right_settle	Ambil bayaran
 right_cancel_sent	Batalkan item menu yang dihantar
 right_complimentary	Percuma (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Beralih ke meja makan (cth. D5)
 confirm	sahkan
 menu_search_ph	Cari item menu atau kod pendek
 customer_paid_ph	Pelanggan bayar
-tip_ph	Petua
+tip_ph	Tip
 table_area_ph	Kawasan (cth. Dine In, Parcel, AC)
 table_range_ph	Banyak sekali gus: D1-D20
 add_these_tables	Tambah meja makan ini

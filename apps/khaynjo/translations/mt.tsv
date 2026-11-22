@@ -932,7 +932,7 @@ upi_amount_ph	Ammont UPI
 void	Annulla
 write_off_ap	Ikteb lil AP
 write_off_heading	Tħassir (ċar mingħajr ħlas)
-write_off_nil	Write off / nil bilanċ
+write_off_nil	Ħassar / nil bilanċ
 your_brand	Il-marka tiegħek (fl-app)
 your_categories	Il-kategoriji tiegħek
 account_kind	Tip ta' kont (tektek wieħed)
@@ -1200,7 +1200,7 @@ line_target_ph	Imxi fuq il-mejda (eż. D5)
 confirm	Ikkonferma
 menu_search_ph	Fittex oġġett jew kodiċi qasir
 customer_paid_ph	Klijent imħallas
-tip_ph	Suggeriment
+tip_ph	Tip
 table_area_ph	Żona (eż. Dine In, Parcel, AC)
 table_range_ph	Ħafna f'daqqa: D1-D20
 add_these_tables	Żid dawn it-mwejjed

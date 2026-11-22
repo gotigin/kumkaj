@@ -936,7 +936,7 @@ write_off_nil	Kọ bí òfo / iwọ̀ntúnwònsì òdo
 your_brand	Aami rẹ (ninu-app)
 your_categories	Awọn ẹka rẹ
 account_kind	Iru akọọlẹ (tẹ ọkan)
-actual_total_cap	Àpapọ̀ Àpapọ̀
+actual_total_cap	Àpapọ̀ Gidi
 amend_help	Yan tita lati tunse, ofo, tabi agbapada. Awọn atunṣe tọju itan kikun. Lapapọ Iyika bẹrẹ dogba si Ohun elo — ṣatunkọ nikan lati yika. Ofo ati agbapada le nilo Oniwun tabi Alakoso PIN (ti tẹ loke; ti o gbasilẹ pẹlu orukọ rẹ).
 applied_total_cap	AWURE LAPAPO
 bank_balance	Bank iwontunwonsi
@@ -1172,7 +1172,7 @@ already_cooked	Ti jinna tẹlẹ (egbin)
 not_cooked_yet	Ko jinna sibẹsibẹ
 return_to_customer	Owó àyípadà
 short_by	Kukuru nipa
-tip_not_sale	Imọran (awọn oṣiṣẹ, kii ṣe tita)
+tip_not_sale	Tíìpù (awọn oṣiṣẹ, kii ṣe tita)
 right_settle	Gba owo sisan
 right_cancel_sent	Fagilee ohun akojọ aṣayan ti a firanṣẹ
 right_complimentary	Ibaramu (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Lọ si tabili ounjẹ (fun apẹẹrẹ D5)
 confirm	Jẹrisi
 menu_search_ph	Wa ohun akojọ aṣayan tabi koodu kukuru
 customer_paid_ph	Onibara san
-tip_ph	Imọran
+tip_ph	Tíìpù
 table_area_ph	Agbegbe (fun apẹẹrẹ Dine In, Parcel, AC)
 table_range_ph	Ọpọlọpọ ni ẹẹkan: D1-D20
 add_these_tables	Fi awọn tabili ounjẹ wọnyi kun

@@ -1172,7 +1172,7 @@ already_cooked	ປຸງ​ແຕ່ງ​ແລ້ວ (ເສຍ​ຫາຍ​
 not_cooked_yet	ຍັງບໍ່ໄດ້ປຸງແຕ່ງເທື່ອ
 return_to_customer	ກັບຄືນຫາລູກຄ້າ
 short_by	ສັ້ນໂດຍ
-tip_not_sale	ຄໍາແນະນໍາ (ຂອງພະນັກງານ, ບໍ່ແມ່ນການຂາຍ)
+tip_not_sale	ທິບ (ຂອງພະນັກງານ, ບໍ່ແມ່ນການຂາຍ)
 right_settle	ເອົາການຈ່າຍເງິນ
 right_cancel_sent	ຍົກເລີກລາຍການທີ່ສົ່ງ
 right_complimentary	ຟຣີ (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	ຍ້າຍໄປໂຕະກິນເຂົ້າ (ເຊັ່
 confirm	ຢືນຢັນ
 menu_search_ph	ຊອກຫາລາຍການ ຫຼືລະຫັດສັ້ນ
 customer_paid_ph	ລູກຄ້າຈ່າຍແລ້ວ
-tip_ph	ເຄັດລັບ
+tip_ph	ທິບ
 table_area_ph	ພື້ນທີ່ (ເຊັ່ນ: Dine In, Parcel, AC)
 table_range_ph	ຫຼາຍຄັ້ງ: D1-D20
 add_these_tables	ເພີ່ມຕາຕະລາງຮັບປະທານອາຫານເຫຼົ່ານີ້

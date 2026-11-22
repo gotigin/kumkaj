@@ -1172,7 +1172,7 @@ already_cooked	უკვე მოხარშული (გაფლანგ�
 not_cooked_yet	ჯერ არ არის მოხარშული
 return_to_customer	დაუბრუნდით მომხმარებელს
 short_by	მოკლედ
-tip_not_sale	რჩევა (პერსონალის, არა გაყიდვის)
+tip_not_sale	ჩაის ფული (პერსონალის, არა გაყიდვა)
 right_settle	მიიღეთ გადახდა
 right_cancel_sent	გაგზავნილი მენიუს ელემენტის გაუქმება
 right_complimentary	უფასო (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	სასადილო მაგიდაზე გადას
 confirm	დაადასტურეთ
 menu_search_ph	მოძებნეთ მენიუს ელემენტი ან მოკლე კოდი
 customer_paid_ph	მომხმარებელმა გადაიხადა
-tip_ph	რჩევა
+tip_ph	ჩაის ფული
 table_area_ph	ფართობი (მაგ. Dine In, Parcel, AC)
 table_range_ph	ბევრი ერთდროულად: D1-D20
 add_these_tables	დაამატეთ ეს სასადილო მაგიდები

@@ -1172,7 +1172,7 @@ already_cooked	Dagoeneko eginda (hondakina)
 not_cooked_yet	Oraindik egiteke
 return_to_customer	Itzuli bezeroari
 short_by	Falta
-tip_not_sale	Aholkua (langileena, ez salmenta)
+tip_not_sale	Propina (langileena, ez salmenta)
 right_settle	Kobratu
 right_cancel_sent	Ezeztatu bidalitako artikulu bat
 right_complimentary	Oparia (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Mahai honetara mugitu (adib. D5)
 confirm	Berretsi
 menu_search_ph	Bilatu artikulua edo kode laburra
 customer_paid_ph	Bezeroak ordaindu du
-tip_ph	Aholkua
+tip_ph	Propina
 table_area_ph	Eremua (adib. Bertan, Etxera, Klimatizatua)
 table_range_ph	Asko batera: D1-D20
 add_these_tables	Gehitu mahai hauek

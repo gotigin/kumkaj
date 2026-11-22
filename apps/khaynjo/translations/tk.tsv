@@ -1172,7 +1172,7 @@ already_cooked	Eýýäm bişirildi (isrip)
 not_cooked_yet	Entek bişirilenok
 return_to_customer	Müşderä gaýdyp geliň
 short_by	Gysgaça
-tip_not_sale	Maslahat (işgärler, satuw däl)
+tip_not_sale	Çaýpul (işgärlerinki, satuw däl)
 right_settle	Töleg alyň
 right_cancel_sent	Iberilen menýu elementini ýatyryň
 right_complimentary	Tölegli (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Nahar stoluna geçiň (mes. D5)
 confirm	Tassykla
 menu_search_ph	Menýu elementini ýa-da gysga kody gözläň
 customer_paid_ph	Müşderi töledi
-tip_ph	Maslahat
+tip_ph	Çaýpul
 table_area_ph	Meýdany (meselem, naharhana, posilka, AC)
 table_range_ph	Birbada köp: D1-D20
 add_these_tables	Bu nahar stollaryny goşuň

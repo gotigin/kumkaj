@@ -1172,7 +1172,7 @@ already_cooked	Þegar eldað (sóun)
 not_cooked_yet	Ekki eldað ennþá
 return_to_customer	Aftur til viðskiptavinar
 short_by	Stutt eftir
-tip_not_sale	Ábending (starfsfólk, ekki útsala)
+tip_not_sale	Þjórfé (starfsfólks, ekki sala)
 right_settle	Taktu við greiðslu
 right_cancel_sent	Hætta við sent valmyndaratriði
 right_complimentary	Ókeypis (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Færðu þig yfir á borðstofuborð (t.d. D5)
 confirm	Staðfesta
 menu_search_ph	Leita í valmyndaratriði eða stuttkóða
 customer_paid_ph	Viðskiptavinur greiddi
-tip_ph	Ábending
+tip_ph	Þjórfé
 table_area_ph	Svæði (t.d. Dine In, Parcel, AC)
 table_range_ph	Margir í einu: D1-D20
 add_these_tables	Bættu þessum borðstofuborðum við

@@ -1172,7 +1172,7 @@ already_cooked	Már megfőtt (pazarlás)
 not_cooked_yet	Még nem főtt
 return_to_customer	Visszajáró
 short_by	Röviden
-tip_not_sale	Tipp (személyzet, nem eladás)
+tip_not_sale	Borravaló (személyzeté, nem eladás)
 right_settle	Fogadja el a fizetést
 right_cancel_sent	Elküldött tétel törlése
 right_complimentary	Ingyenes (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Menjen az étkezőasztalhoz (pl. D5)
 confirm	Erősítse meg
 menu_search_ph	Keressen elemet vagy rövid kódot
 customer_paid_ph	Az ügyfél fizetett
-tip_ph	Tipp
+tip_ph	Borravaló
 table_area_ph	Terület (pl. étkezés, csomag, légkondi)
 table_range_ph	Sok egyszerre: D1-D20
 add_these_tables	Adja hozzá ezeket az étkezőasztalokat

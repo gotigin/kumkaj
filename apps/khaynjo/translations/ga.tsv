@@ -1172,7 +1172,7 @@ already_cooked	Réamhchócaráilte (dramhaíl)
 not_cooked_yet	Níor cócaráilte fós
 return_to_customer	Fill ar ais chuig custaiméir
 short_by	Gearr ar
-tip_not_sale	Leide (na foirne, ní díolachán)
+tip_not_sale	Tip (na foirne, ní díolachán)
 right_settle	Glac íocaíocht
 right_cancel_sent	Cealaigh mír a sheoladh
 right_complimentary	Ar fáil saor in aisce (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Bog chuig an tábla (m.sh. D5)
 confirm	Deimhnigh
 menu_search_ph	Cuardaigh mír nó cód gearr
 customer_paid_ph	Íoc an custaiméir
-tip_ph	Leid
+tip_ph	Tip
 table_area_ph	Réimse (m.sh. Ithe sa láthair, Pacáiste, AC)
 table_range_ph	A lán ag an am céanna: D1-D20
 add_these_tables	Cuir na táblaí seo leis

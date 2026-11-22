@@ -1172,7 +1172,7 @@ already_cooked	Веќе сварено (трошење)
 not_cooked_yet	Сè уште не е сварено
 return_to_customer	Врати се на клиентот
 short_by	Накратко
-tip_not_sale	Совет (на персоналот, а не на продажба)
+tip_not_sale	Бакшиш (на персоналот, не е продажба)
 right_settle	Земете плаќање
 right_cancel_sent	Откажете испратена ставка од менито
 right_complimentary	Бесплатно (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Премести на трпезариска маса (на пр.
 confirm	Потврди
 menu_search_ph	Пребарајте ставка од менито или краток код
 customer_paid_ph	Клиентот платил
-tip_ph	Совет
+tip_ph	Бакшиш
 table_area_ph	Област (на пр. вечера, парцела, климатизација)
 table_range_ph	Многу одеднаш: D1-D20
 add_these_tables	Додадете ги овие трпезариски маси
