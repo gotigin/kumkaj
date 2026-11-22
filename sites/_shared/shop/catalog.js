@@ -6,7 +6,7 @@ export const CLOUD_CATALOG = [
   {
     id: "free",
     title: "Free forever",
-    blurb: "Full local product + LAN. No cloud fee.",
+    blurb: "Full local product on your devices. No cloud fee.",
     priceInrPaise: 0,
     quotaGb: null,
     sellable: false,

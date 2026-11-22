@@ -12,4 +12,8 @@ assert.equal(formatInrPaise(null), "Quote");
 assert.ok(CLOUD_CATALOG.find((p) => p.id === "steady").sellable);
 assert.ok(CLOUD_CATALOG.find((p) => p.id === "custom").quoteOnly);
 assert.ok(!CLOUD_CATALOG.find((p) => p.id === "free").sellable);
+assert.ok(
+  !/\bLAN\b/i.test(CLOUD_CATALOG.find((p) => p.id === "free").blurb),
+  "Free forever blurb must not claim LAN until LAN_PILOT_PASSED"
+);
 console.log("catalog.test.mjs: ok");
