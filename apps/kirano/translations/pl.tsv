@@ -605,7 +605,7 @@ cloud_welcome	Zalogowano jako {user} · {plan}
 cloud_created	Konto utworzone. Sprawdź e-mail, aby zweryfikować, gdy możesz.
 cloud_cancel	Anuluj
 permission_preset	Praca
-product_only_kirano	Kirano to system operacyjny dla sklepów spożywczych/kirana: sprzedaż hurtowa, zapasy, kredyty i książki — w trybie offline na Twoich urządzeniach.
+product_only_kirano	Kirano to system operacyjny sklepu spożywczego / kirana: sprzedaż przy ladzie, stany magazynowe, kredyt i księgi — offline na twoich urządzeniach.
 purchases_cogs	Zakupy (COGS)
 restore_help	Przywróć: wybierz kopię zapasową. Księgi otwierają się tak, jak wtedy; księgi w obecnym stanie są zapisywane jako pierwsze, więc można to cofnąć.
 wipe_data_heading	Usuń dane lokalne

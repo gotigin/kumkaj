@@ -605,7 +605,7 @@ cloud_welcome	Naka-sign in bilang {user} · {plan}
 cloud_created	Nagawa ang account. Suriin ang email para i-verify kapag pwede.
 cloud_cancel	Kanselahin
 permission_preset	Trabaho
-product_only_kirano	Ang Kirano ay ang grocery / kirana operating system: counter sell, stock, credit at mga libro — offline sa iyong mga device.
+product_only_kirano	Ang Kirano ay ang operating system ng grocery / kirana: benta sa counter, stock, utang at mga aklat — offline sa iyong mga device.
 purchases_cogs	Mga Pagbili (COGS)
 restore_help	I-restore: pumili ng backup. Bukas ang mga ledger tulad ng dati; ang mga ledger tulad ng mga ito ngayon ay nai-save muna, kaya maaari itong i-undo.
 wipe_data_heading	Tanggalin ang lokal na data

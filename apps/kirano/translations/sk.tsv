@@ -605,7 +605,7 @@ cloud_welcome	Prihlásení ako {user} · {plan}
 cloud_created	Účet vytvorený. Skontrolujte e-mail a overte, keď budete môcť.
 cloud_cancel	Zrušiť
 permission_preset	Práca
-product_only_kirano	Kirano je operačný systém pre potraviny / kirana: predaj na pult, akcie, úvery a knihy – offline na vašich zariadeniach.
+product_only_kirano	Kirano je operačný systém pre potraviny / kirana: pultový predaj, zásoby, úver a účtovné knihy – offline na vašich zariadeniach.
 purchases_cogs	Nákupy (COGS)
 restore_help	Obnoviť: vyberte zálohu. Knihy sa otvárajú tak, ako boli vtedy; knihy tak, ako sú teraz, sa uložia ako prvé, takže to možno vrátiť späť.
 wipe_data_heading	Odstráňte miestne údaje
