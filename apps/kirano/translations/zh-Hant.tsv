@@ -167,7 +167,7 @@ frequent_apply	應用
 frequent_saved	頻繁：最後 {d} 天、熱門 {n} — {c} 項目
 frequent_empty	本時段尚無已完成銷售 — 結算一筆帳單（設置允許時可 ₹0）後會出現在此。
 zero_sales	零元銷售
-zero_sales_help	允許商品定價為 £0，帳單以 £0 結算（免費/業主願望）。預設為啟用狀態，因此免費封面仍會出現在常見書籍和日常書籍中。
+zero_sales_help	允許商品定價為 ₹0，帳單以 ₹0 結算（免費 / 店主意願）。預設開啟，以便免費單仍會出現在常售和日記帳中。
 zero_sales_on	零元銷售：開
 zero_sales_off	零元銷售：關
 zero_sales_saved_on	已保存零元銷售許可（開）
@@ -238,7 +238,7 @@ allow_extra_tills	允許額外櫃檯
 amend	修改
 apply_country_pack	應用國家包
 datetime_appearance	日期與時間顯示方式
-datetime_appearance_help	書籍中保留了年度第一版 RFC3339。這些只會改變日期和時鐘在帳單、報告和螢幕上的顯示方式。
+datetime_appearance_help	帳簿內部仍保留年-先 RFC3339。
 datetime_example	當前示例：{ex}
 date_order	日期順序
 date_order_dmy	D/M/Y
@@ -576,7 +576,7 @@ currency_use_help	滾動併為任何支持的貨幣點擊使用。
 day_close_help	記錄日結會將此彙總（及盤點差異）保存到審計日誌。不會停止銷售。
 expenses_word	費用
 feature_access_help	所選員工的功能權限（添加後點擊）
-fresh_book_kirano	新鮮 = 空目錄（稍後新增項目）。 Book = 在下面輸入期初庫存以及誰欠您的錢。
+fresh_book_kirano	全新 = 空目錄（稍後新增商品）。帳簿 = 在下方輸入期初庫存以及誰欠您的錢。
 fresh_selected	已選Fresh — 目錄保持為空。準備好後點擊Done。
 gross_word	毛額
 how_start	您想如何開始？
@@ -605,11 +605,11 @@ cloud_welcome	已登入為 {user} · {plan}
 cloud_created	帳戶已建立。有空時請查收郵件以完成驗證。
 cloud_cancel	取消
 permission_preset	權限預設
-product_only_kirano	Kirano 是雜貨店/kirana 作業系統：櫃檯銷售、庫存、信貸和書籍 - 在您的設備上離線。
+product_only_kirano	Kirano 是雜貨店／kirana 作業系統：櫃檯銷售、庫存、賒帳和帳簿 — 在您的裝置上離線運作。
 purchases_cogs	採購(COGS)
 restore_help	恢復：選擇一個備份。帳本會回到當時的樣子；當前帳本會先保存，所以可以撤回。
 wipe_data_heading	刪除本地數據
-wipe_data_help	僅限擁有者 — 與 Windows 解除安裝相同的選擇。業務記錄會清除交易記錄，但保留項目和設定（例如緊急解鎖 PIN 碼）。商店設定會刪除書籍資料庫。螢幕首選項清除視窗/語言。使用所有者 PIN 進行確認。團隊上的緊急解鎖 PIN 碼是單獨的（解鎖時秘密擦除）。
+wipe_data_help	僅限擁有者 — 與 Windows 解除安裝相同的選擇。業務記錄會清除交易紀錄，但保留商品和設定（例如緊急解鎖 PIN）。商店設定會刪除帳簿資料庫。螢幕偏好清除視窗/語言。使用擁有者 PIN 確認。團隊上的緊急解鎖 PIN 是單獨的（解鎖時秘密擦除）。
 wipe_trading	營業記錄
 wipe_schema	店鋪設置
 wipe_ui	屏幕偏好
@@ -672,7 +672,7 @@ logo_default	徽標：Kumkaj 標誌（默認）— 如有自己的請選擇
 setup_complete	設置完成
 onboard_fresh_tmpl	全新 · {} — 目錄從空開始；在物品中添加，然後點完成。
 onboard_book_tmpl	帳本 · {} — 添加物品和期初賒帳，然後點完成。
-tmpl_blurb	Kirana 櫃檯：出售、庫存、哈塔、供應商購買、書籍。
+tmpl_blurb	Kirana 櫃檯：銷售、庫存、賒帳、供應商採購、帳簿。
 reports_facet_title	報表
 reports_facet_help	日記帳、往來帳齡、銀行記錄和期間損益。
 against_bill_ph	對應上方帳單號（可選）

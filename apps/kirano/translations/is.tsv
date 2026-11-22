@@ -168,7 +168,7 @@ frequent_saved	Tíð: síðustu {d} dag(ar), efstu {n} — {c} hlutir
 frequent_empty	Engin sala hefur verið lokið á þessu tímabili enn – gerðu upp reikning (₹0 leyfilegt þegar stillingar segja það) og þær birtast hér.
 zero_sales	Núllsala
 zero_sales_help	Leyfa hluti sem eru verðlagðir 0 INR og reikninga greiddir á ₹ 0 (ókeypis / ósk eiganda). Sjálfgefið er kveikt þannig að ókeypis forsíður birtast enn í tíðar- og dagbókum.
-zero_sales_on	Leyfa 0 £
+zero_sales_on	Leyfa ₹0
 zero_sales_off	Krefjast verð
 zero_sales_saved_on	Núllsala leyfð
 zero_sales_saved_off	Sala verður að hafa verð yfir 0 INR

@@ -167,7 +167,7 @@ frequent_apply	应用
 frequent_saved	频繁：最后 {d} 天、热门 {n} — {c} 项目
 frequent_empty	本时段尚无已完成销售 — 结算一笔账单（设置允许时可 ₹0）后会出现在此。
 zero_sales	零元销售
-zero_sales_help	允许商品定价为 £0，账单以 £0 结算（免费/业主愿望）。默认情况下处于启用状态，因此免费封面仍会出现在常见书籍和日常书籍中。
+zero_sales_help	允许商品定价为 ₹0，账单以 ₹0 结算（免费 / 店主意愿）。默认开启，以便免费单仍会出现在常售和日记账中。
 zero_sales_on	零元销售：开
 zero_sales_off	零元销售：关
 zero_sales_saved_on	已保存零元销售许可（开）
@@ -238,7 +238,7 @@ allow_extra_tills	允许额外柜台
 amend	修改
 apply_country_pack	应用国家包
 datetime_appearance	日期与时间显示方式
-datetime_appearance_help	书籍中保留了年度第一版 RFC3339。这些只会改变日期和时钟在账单、报告和屏幕上的显示方式。
+datetime_appearance_help	账本内部仍保留年-先 RFC3339。
 datetime_example	当前示例：{ex}
 date_order	日期顺序
 date_order_dmy	D/M/Y
@@ -609,7 +609,7 @@ product_only_kirano	Kirano 是杂货店 / kirana 操作系统：柜台销售、�
 purchases_cogs	采购(COGS)
 restore_help	恢复：选择一个备份。账本会回到当时的样子；当前账本会先保存，所以可以撤回。
 wipe_data_heading	删除本地数据
-wipe_data_help	仅限所有者 — 与 Windows 卸载相同的选择。业务记录会清除交易历史记录，但保留项目和设置（例如紧急解锁 PIN 码）。商店设置会删除书籍数据库。屏幕首选项清除窗口/语言。使用所有者 PIN 进行确认。团队上的紧急解锁 PIN 码是单独的（解锁时秘密擦除）。
+wipe_data_help	仅限所有者 — 与 Windows 卸载相同的选择。业务记录会清除交易历史，但保留商品和设置（例如紧急解锁 PIN）。商店设置会删除账本数据库。屏幕偏好清除窗口/语言。使用所有者 PIN 确认。团队上的紧急解锁 PIN 是单独的（解锁时秘密擦除）。
 wipe_trading	营业记录
 wipe_schema	店铺设置
 wipe_ui	屏幕偏好
@@ -672,7 +672,7 @@ logo_default	徽标：Kumkaj 标志（默认）— 如有自己的请选择
 setup_complete	设置完成
 onboard_fresh_tmpl	全新 · {} — 目录从空开始；在物品中添加，然后点完成。
 onboard_book_tmpl	账本 · {} — 添加物品和期初赊账，然后点完成。
-tmpl_blurb	Kirana 柜台：出售、库存、哈塔、供应商购买、书籍。
+tmpl_blurb	Kirana 柜台：销售、库存、赊账、供应商采购、账本。
 reports_facet_title	报表
 reports_facet_help	日记账、往来账龄、银行记录和期间损益。
 against_bill_ph	对应上方账单号（可选）
