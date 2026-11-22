@@ -578,3 +578,11 @@ need the author and licence named.
 - indian-mains/fish-tikka.webp ← Commons File:Ajwaini_Fish_Tikka.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Ajwaini_Fish_Tikka.jpg — was deep-fried batter/pakora
 - indian-mains/paneer-tikka.webp ← Commons File:Bawarchi_Paneer_Tikka.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Bawarchi_Paneer_Tikka.jpg — was fish tikka plated as paneer
 - indian-mains/paneer-lababdar.webp ← Commons File:Aloo_Gobi_And_Paneer_Lababdar_-_The_Indismart_Hotel_-_Salt_Lake_City_-_Kolkata_2023-09-10_5205.jpg crop paneer compartment (CC BY 3.0) https://commons.wikimedia.org/wiki/File:Aloo_Gobi_And_Paneer_Lababdar_-_The_Indismart_Hotel_-_Salt_Lake_City_-_Kolkata_2023-09-10_5205.jpg — was paneer tikka appetizer
+
+## Replaced 2026-11-22 (L15 hollandaise takoyaki vada-pav)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `sides-dips/hollandaise-sauce.webp` | full Eggs Benedict plate instead of sauce | Fresh Asparagus and hollandaise.jpg | J.P.Lon | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Fresh_Asparagus_and_hollandaise.jpg | resized, WebP |
+| `japanese/takoyaki.webp` | takeout with branded condiment packet text | Takoyaki dish.jpg | Ocdp | CC0 | https://commons.wikimedia.org/wiki/File:Takoyaki_dish.jpg | resized, WebP |
+| `street-food-chaat/vada-pav.webp` | deconstructed vada and pav on red tray | Vada Pav-Indian street food.JPG | Rameshng | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Vada_Pav-Indian_street_food.JPG | resized, WebP |
