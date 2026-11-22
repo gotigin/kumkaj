@@ -86,8 +86,8 @@ kot_banner	Banner
 kot_item_prefix	Prefisso voce
 kot_strike	Barrare il nome
 kot_strike_note	Barrare la nota
-kot_strike_on	Sì
-kot_strike_off	No
+kot_strike_on	Attivo
+kot_strike_off	Disattivo
 bill_item_layout	Layout voci
 bill_item_layout_columns	Colonne
 bill_item_layout_stacked	Impilato
@@ -136,8 +136,8 @@ bill_total_grand_label	Etichetta totale
 bill_total_paid_label	Etichetta pagato
 bill_meta_pair	Condividi riga con
 bill_pair_alone	Da solo
-bill_item_piece_on	Sì
-bill_item_piece_off	No
+bill_item_piece_on	Attivo
+bill_item_piece_off	Disattivo
 bill_total_qty	Qtà totale
 bill_total_subtotal	Subtotale
 bill_total_grand	Totale
@@ -1024,8 +1024,8 @@ they_owe_us	Ci devono
 unit_at_cap	Prezzo unit.
 units_help	Codici per etichette articoli (kg, piece, bag). Ogni unità deve collegarsi — direttamente o tramite altre unità — a uno standard (kg · cm · ml · pc), es. 1 crate = 2 box e 1 box = 20 cm. Conversioni: 1 from = factor to. Le valute non sono mai unità.
 units_picker_help	Tocca Sì/No per mostrare un'unità in Acquisto e Menu. Le unità disattivate convertano ancora.
-unit_picker_on	Sì
-unit_picker_off	No
+unit_picker_on	Attivo
+unit_picker_off	Disattivo
 we_owe_them	Dobbiamo loro
 who_unlocking	Chi sta sbloccando?
 locked_word	Bloccato
