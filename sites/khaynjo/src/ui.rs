@@ -1738,6 +1738,7 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         to_privacy := NavLink{text: "Privacy"}
                                         to_terms := NavLink{text: "Terms"}
+                                        to_cancellation := NavLink{text: "Cancellation"}
                                         to_shop := NavLink{text: "Cloud shop"}
                                         to_account := NavLink{text: "Account"}
                                         to_play := NavLink{text: "Google Play"}

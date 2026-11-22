@@ -91,7 +91,17 @@ separate Khaynjo plan.
 
 ---
 
-## 3. Subscription life, grace, deletion
+## 3. Cancellation and refund (commercial)
+
+Prepaid cloud terms are not unwound mid-term as a normal path; next renewal is
+always the customer’s choice; exceptions go to
+[support@gotigin.com](mailto:support@gotigin.com). Full policy stack:
+
+- Company: https://gotigin.com/cancellation  
+- Brand: https://kumkaj.com/cancellation  
+- Product: `/cancellation` on each product site (e.g. https://khaynjo.com/cancellation)
+
+## 4. Subscription life, grace, deletion
 
 Clock starts from **subscription end** (renewal moves the end date).
 
@@ -125,7 +135,7 @@ Clock starts from **subscription end** (renewal moves the end date).
 
 ---
 
-## 4. Gate for other paid services
+## 5. Gate for other paid services
 
 Future paid services (support packs, messaging add-ons, etc. — defined
 separately) require the shop to be a member of **Steady, Swift, Priority,
@@ -137,7 +147,7 @@ hosting is separate platform cost.
 
 ---
 
-## 5. Rollout
+## 6. Rollout
 
 1. Documented here (2026-11-21).
 2. Implement entitlements + metering on **Khaynjo** first.

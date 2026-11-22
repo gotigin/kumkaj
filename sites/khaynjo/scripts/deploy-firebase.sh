@@ -130,8 +130,32 @@ pandoc "$PRIVACY_MD" \
 cp "$PRIVACY_MD" "$OUT/privacy.md"
 echo "Presented /privacy from apps/khaynjo/docs/PRIVACY.md (formatted HTML + privacy.md source)"
 
+# Same CANCELLATION.md pattern as privacy — formatted presentation.
+CANCELLATION_MD="$ROOT/apps/khaynjo/docs/CANCELLATION.md"
+CANCELLATION_TMPL="$SITE/cancellation-template.html"
+if [[ ! -f "$CANCELLATION_MD" ]]; then
+  echo "error: missing $CANCELLATION_MD" >&2
+  exit 1
+fi
+if [[ ! -f "$CANCELLATION_TMPL" ]]; then
+  echo "error: missing $CANCELLATION_TMPL" >&2
+  exit 1
+fi
+mkdir -p "$OUT/cancellation"
+pandoc "$CANCELLATION_MD" \
+  -f markdown \
+  -t html5 \
+  --template="$CANCELLATION_TMPL" \
+  --metadata title="Cancellation — Khaynjo" \
+  -V lang=en \
+  -V preview_v="$PREVIEW_V" \
+  -o "$OUT/cancellation/index.html"
+cp "$CANCELLATION_MD" "$OUT/cancellation.md"
+echo "Presented /cancellation from apps/khaynjo/docs/CANCELLATION.md"
+
+
 # Cache-bust og/twitter image on secondary shells (same sha10 as home).
-for secondary in privacy terms account; do
+for secondary in privacy terms cancellation account; do
   f="$OUT/$secondary/index.html"
   [[ -f "$f" ]] || continue
   sed -i -E "s#(https://khaynjo\.com/media/link-preview\.jpg)(\?v=[0-9a-f]+)?\"#\1?v=$PREVIEW_V\"#g" "$f"
@@ -158,6 +182,10 @@ if [[ ! -f "$OUT/privacy/index.html" ]]; then
   echo "error: privacy page missing after pandoc" >&2
   exit 1
 fi
+if [[ ! -f "$OUT/cancellation/index.html" ]]; then
+  echo "error: cancellation page missing after pandoc" >&2
+  exit 1
+fi
 
 # Crawl/Analytics shell on the Makepad index (same document as the canvas).
 # Cache-bust query so browsers fetch new wasm/JS after each deploy (filenames
@@ -171,7 +199,7 @@ TMP="$OUT/index.html.tmp"
 # PREVIEW_URL already set above (sha10 of link-preview.jpg).
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
-        <noscript><p>Khaynjo — restaurant operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://play.google.com/store/apps/details?id=com.khaynjo">Get it on Google Play</a></p></noscript>
+        <noscript><p>Khaynjo — restaurant operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a> · <a href="https://play.google.com/store/apps/details?id=com.khaynjo">Get it on Google Play</a></p></noscript>
     </body>'
 awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
   BEGIN { done_title=0; done_body=0 }

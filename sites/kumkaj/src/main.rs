@@ -32,6 +32,7 @@ const LAN_PILOT_PASSED: bool = false;
 /// Same-host legal pages (deploy-firebase.sh stages them next to the wasm).
 const PRIVACY_PATH: &str = "/privacy";
 const TERMS_PATH: &str = "/terms/";
+const CANCELLATION_PATH: &str = "/cancellation";
 const PUBLIC_HOST: &str = "https://kumkaj.com";
 
 /// App layout floor: design for ≥320 CSS px (360 is the common Android phone width). Narrower viewports scroll
@@ -699,6 +700,10 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(to_terms)).clicked(actions) {
             let url = self.site_url(cx, TERMS_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_cancellation)).clicked(actions) {
+            let url = self.site_url(cx, CANCELLATION_PATH);
             open_link(cx, &url);
         }
         if self.ui.button(cx, ids!(foot_gotigin)).clicked(actions) {

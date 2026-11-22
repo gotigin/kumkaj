@@ -126,8 +126,32 @@ pandoc "$PRIVACY_MD" \
 cp "$PRIVACY_MD" "$OUT/privacy.md"
 echo "Presented /privacy from $PRIVACY_MD"
 
+# Same CANCELLATION.md pattern as privacy — formatted presentation.
+CANCELLATION_MD="$ROOT/apps/kirano/docs/CANCELLATION.md"
+CANCELLATION_TMPL="$SITE/cancellation-template.html"
+if [[ ! -f "$CANCELLATION_MD" ]]; then
+  echo "error: missing $CANCELLATION_MD" >&2
+  exit 1
+fi
+if [[ ! -f "$CANCELLATION_TMPL" ]]; then
+  echo "error: missing $CANCELLATION_TMPL" >&2
+  exit 1
+fi
+mkdir -p "$OUT/cancellation"
+pandoc "$CANCELLATION_MD" \
+  -f markdown \
+  -t html5 \
+  --template="$CANCELLATION_TMPL" \
+  --metadata title="Cancellation — Kirano" \
+  -V lang=en \
+  -V preview_v="$PREVIEW_V" \
+  -o "$OUT/cancellation/index.html"
+cp "$CANCELLATION_MD" "$OUT/cancellation.md"
+echo "Presented /cancellation from apps/kirano/docs/CANCELLATION.md"
+
+
 # Cache-bust og/twitter image on secondary shells (same sha10 as home).
-for secondary in privacy terms account; do
+for secondary in privacy terms cancellation account; do
   f="$OUT/$secondary/index.html"
   [[ -f "$f" ]] || continue
   sed -i -E "s#(https://kirano\.shop/media/link-preview\.jpg)(\?v=[0-9a-f]+)?\"#\1?v=$PREVIEW_V\"#g" "$f"
@@ -136,6 +160,10 @@ done
 
 if [[ ! -f "$OUT/privacy/index.html" ]]; then
   echo "error: privacy page missing after pandoc" >&2
+  exit 1
+fi
+if [[ ! -f "$OUT/cancellation/index.html" ]]; then
+  echo "error: cancellation page missing after pandoc" >&2
   exit 1
 fi
 if [[ ! -f "$OUT/terms/index.html" ]]; then
@@ -163,7 +191,7 @@ TMP="$OUT/index.html.tmp"
 # never run the wasm.
 # PREVIEW_URL already set above (sha10 of link-preview.jpg).
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-BODY_INJECT='        <noscript><p>Kirano — grocery counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a></p></noscript>
+BODY_INJECT='        <noscript><p>Kirano — grocery counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
 '"$BODY_INJECT"

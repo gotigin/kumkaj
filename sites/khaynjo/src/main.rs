@@ -55,6 +55,7 @@ const WHATSAPP_MESSAGE: &str = "Khaynjo demo — restaurant type, tables, city";
 /// Same-host legal pages (deploy-firebase.sh stages them next to the wasm).
 const PRIVACY_PATH: &str = "/privacy";
 const TERMS_PATH: &str = "/terms/";
+const CANCELLATION_PATH: &str = "/cancellation";
 const SHOP_PATH: &str = "/shop";
 const ACCOUNT_PATH: &str = "/account";
 const PUBLIC_HOST: &str = "https://khaynjo.com";
@@ -1491,6 +1492,10 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(to_terms)).clicked(actions) {
             let url = self.site_url(cx, TERMS_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_cancellation)).clicked(actions) {
+            let url = self.site_url(cx, CANCELLATION_PATH);
             open_link(cx, &url);
         }
         if self.ui.button(cx, ids!(to_shop)).clicked(actions)
