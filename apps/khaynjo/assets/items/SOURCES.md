@@ -175,3 +175,23 @@ need the author and licence named.
 | `indian-mains/pithla.webp` | dry red mash, not yellow besan pithla | Pithla-Bhakri (51373736404) | solarisgirl | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=119735217 | resized, WebP |
 | `indian-mains/shami-kebab.webp` | cutlets with pasta collage inset | Shami Kabab | Miansari66 | Public domain | https://commons.wikimedia.org/w/index.php?curid=12628044 | resized, WebP |
 | `indian-mains/south-indian-meals-thali.webp` | masala dosa with kitty-party promo standee | A Thali, famous South Indian meal served on a banana leaf | Melanie M | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=27710383 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indian-rice)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indian-rice/coconut-rice.webp` | nasi lemak with chicken/egg and coconut cream | Coconut rice with crispies | Lakshmibsriram | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40734054 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indian-sweets)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indian-sweets/lavang-latika.webp` | shakarpara/fried dough bits in yellow bowl | Lobongo lotika001 | Rahulpratapsingh06 | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=32614762 | resized, WebP |
+| `indian-sweets/qubani-ka-meetha.webp` | moong-dal-style halwa with cream and almonds | Kubani ka Meetha | Manasi nafde | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40690449 | resized, WebP |
+| `indian-sweets/sohan-halwa.webp` | walnut caramel tart, not translucent sohan | Multani-sohan-halwa | Bhutta1984 | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=25569403 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indo-chinese)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indo-chinese/american-chop-suey.webp` | Western macaroni beef goulash | Chopsuey | Gaurav Vaidya (User:Gaurav) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=2734778 | resized, WebP |
