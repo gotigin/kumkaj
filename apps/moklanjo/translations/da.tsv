@@ -6,7 +6,7 @@ sell	Bestilling
 nav_board	Tavle
 board	Tavle
 park_draft	Parkér kladde
-board_help	Åbne kladder (bliver stående, indtil du bruger «Kassér» eller «Tag betaling») og dagens bogførte salg. Tryk på «Parkér kladde» i «Booking» midt i arbejdet (gemmes her, ikke i bøgerne); tryk på en kladde for at fortsætte.
+board_help	Åbne kladder (bliver stående, indtil du bruger «Kassér» eller «Tag betaling») og dagens bogførte salg. Tryk på «Parkér kladde» i «Bestilling» midt i arbejdet (gemmes her, ikke i bøgerne); tryk på en kladde for at fortsætte.
 board_empty	Ingen kort endnu.
 board_park_nothing	Intet at parkere — tilføj gebyrer eller bookingoplysninger
 board_parked	Parkeret på «Tavle» — disken er fri
@@ -26,7 +26,7 @@ board_discard	Kassér
 board_discarded	Kladde kasseret
 buy	Udbetaling
 books	Dagbog
-books_help	Dagens stilling. Booking = pakker ind. Udbetaling = transportørregninger og udgifter. Parter = afsendere og transportører.
+books_help	Dagens stilling. Bestilling = pakker ind. Udbetaling = transportørregninger og udgifter. Parter = afsendere og transportører.
 buy_help	Udgiftsbilag og transportørregninger (penge ud). På konto bliver på partens reskontro.
 sell_money_in	Book en pakke
 buy_money_out	Udgift / transportørregning
