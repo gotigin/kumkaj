@@ -223,5 +223,8 @@ after billing is wired.
 - Later (not now): Kumkaj brand “my products” / Gotigin brand tree via
   `account_external_links` — still separate product Auth + DBs.
 
+**Owner next (Stripe/Paddle sandbox → Paddle prod):** see
+[`CLOUD_NEXT_OWNER.md`](CLOUD_NEXT_OWNER.md).
+
 When continuing, start from [`CLOUD_PLANS.md`](CLOUD_PLANS.md), this file,
 and vision §20–22.

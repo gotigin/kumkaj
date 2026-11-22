@@ -871,6 +871,8 @@ script_mod! {
                                     spacing: 10
                                     to_privacy := GhostBtn{text: "Privacy"}
                                     to_terms := GhostBtn{text: "Terms"}
+to_shop := GhostBtn{text: "Cloud shop"}
+to_account := GhostBtn{text: "Account"}
                                 }
                             }
                             View{

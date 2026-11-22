@@ -1978,6 +1978,9 @@ impl App {
         self.ui
             .button(cx, ids!(lock_cloud_web))
             .set_visible(cx, !busy);
+        self.ui
+            .button(cx, ids!(lock_cloud_shop))
+            .set_visible(cx, !busy);
         if busy {
             if let Ok(st) = app_state().try_lock() {
                 let cancel = st.t("cloud_cancel");

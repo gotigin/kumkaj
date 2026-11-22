@@ -333,6 +333,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(lock_cloud_web))
             .set_text(cx, &s("cloud_web_methods"));
         self.ui
+            .button(cx, ids!(lock_cloud_shop))
+            .set_text(cx, "Cloud plans / shop");
+        self.ui
             .button(cx, ids!(lock_cloud_cancel))
             .set_text(cx, &s("cloud_cancel"));
         self.ui
