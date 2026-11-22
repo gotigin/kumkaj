@@ -392,6 +392,15 @@ pub struct App {
     /// At most one queued page-step while an animation is running.
     #[rust]
     page_queue: Option<f64>,
+    /// Scroll Y last used for rail / chapter chrome (finger free-scroll + post-layout).
+    #[rust]
+    last_chrome_scroll_y: f64,
+    /// NextFrame token for chrome sync after layout catches up to scroll_pos.
+    #[rust]
+    chrome_sync_frame: NextFrame,
+    /// True when a chrome sync was requested (avoid mid-Draw walk.width mutation).
+    #[rust]
+    chrome_sync_pending: bool,
 }
 
 impl App {
@@ -416,18 +425,22 @@ impl App {
         }
     }
 
-    /// Footer flush with the page bottom — no further scroll (last chapter is short).
+    /// True when vertical scroll cannot go further (or the page fits in one view).
+    /// Prefer scroll metrics over footer-rect flush: short last chapters often leave
+    /// Start below the spy mark forever, and footer-rect checks misfired on wasm.
     fn at_page_end(&self, cx: &Cx) -> bool {
         let page = self.ui.view(cx, ids!(page));
-        let footer = self.ui.view(cx, ids!(footer));
-        if !page.area().is_valid(cx) || !footer.area().is_valid(cx) {
+        if !page.area().is_valid(cx) {
             return false;
         }
-        let page_rect = page.area().rect(cx);
-        let footer_rect = footer.area().rect(cx);
-        let page_bottom = page_rect.pos.y + page_rect.size.y;
-        let footer_bottom = footer_rect.pos.y + footer_rect.size.y;
-        footer_bottom <= page_bottom + 6.0
+        let total = page.get_scroll_view_total().y;
+        let visible = page.get_scroll_view_visible().y;
+        let max = (total - visible).max(0.0);
+        let y = page.get_scroll_pos().y;
+        if max <= 1.0 {
+            return true;
+        }
+        y >= max - 4.0
     }
 
     /// Section tops in document Y (same space as `spy_mark`).
@@ -446,38 +459,32 @@ impl App {
 
     /// Continuous journey progress 0..=1 from scroll position (not discrete chapters).
     fn journey_progress(&self, cx: &Cx) -> f64 {
-        let n = SECTIONS.len();
-        if n <= 1 {
-            return 0.0;
-        }
-        // Short last chapter never reaches the sticky spy mark before the footer.
-        if self.at_page_end(cx) {
-            return 1.0;
-        }
+        let at_end = self.at_page_end(cx);
         let mark = self.spy_mark(cx);
         let tops = self.section_tops(cx);
-        let page = self.ui.view(cx, ids!(page));
-        if page.area().is_valid(cx) {
-            let pr = page.area().rect(cx);
-            let promote = pr.pos.y + pr.size.y * 0.42;
-            if tops[n - 1] <= promote {
-                return 1.0;
-            }
+        journey_progress_from(&tops, mark, at_end)
+    }
+
+    /// Schedule chrome sync on the next frame (after layout reflects scroll_pos).
+    fn request_chrome_sync(&mut self, cx: &mut Cx) {
+        self.chrome_sync_pending = true;
+        self.chrome_sync_frame = cx.new_next_frame();
+    }
+
+    fn run_chrome_sync(&mut self, cx: &mut Cx) {
+        if !self.chrome_sync_pending {
+            return;
         }
-        let mut idx = 0usize;
-        for i in 0..n {
-            if tops[i] <= mark {
-                idx = i;
-            }
+        if self.scroll_animating() {
+            // Keep pending; try again after the page-step settles.
+            self.chrome_sync_frame = cx.new_next_frame();
+            return;
         }
-        if idx >= n - 1 {
-            return 1.0;
-        }
-        let a = tops[idx];
-        let b = tops[idx + 1];
-        let span = (b - a).max(1.0);
-        let local = ((mark - a) / span).clamp(0.0, 1.0);
-        (idx as f64 + local) / (n as f64 - 1.0)
+        self.chrome_sync_pending = false;
+        self.last_chrome_scroll_y = self.page(cx).get_scroll_pos().y;
+        self.paint_scroll_chrome(cx);
+        self.ui.view(cx, ids!(track_row)).redraw(cx);
+        self.ui.view(cx, ids!(step_pill)).redraw(cx);
     }
 
     fn track_width(&self, cx: &Cx) -> f64 {
@@ -538,6 +545,8 @@ impl App {
         self.page_queue = None;
         self.page(cx).set_scroll_pos(cx, dvec2(0.0, y));
         self.paint_scroll_chrome(cx);
+        // Layout lags scroll_pos by a frame — re-snap rail/chapter with fresh tops.
+        self.request_chrome_sync(cx);
         self.ui.redraw(cx);
     }
 
@@ -587,6 +596,8 @@ impl App {
             self.scroll_anim_t0 = 0.0;
             self.wheel_accum = 0.0;
             self.paint_scroll_chrome(cx);
+            // Post-layout sync: section tops used mid-anim are often still stale.
+            self.request_chrome_sync(cx);
             self.ui.redraw(cx);
             if let Some(dir) = self.page_queue.take() {
                 self.start_viewport_page(cx, dir);
@@ -674,29 +685,20 @@ impl App {
     /// Which chapter owns the viewport (just under the top bar).
     fn active_chapter(&self, cx: &Cx) -> usize {
         let n = SECTIONS.len();
-        // Start + footer are shorter than the viewport, so Start's top never
-        // crosses the sticky spy mark. Promote the last bead once Start is
-        // well into view, or when the page is already at the footer.
-        if self.at_page_end(cx) {
-            return n - 1;
-        }
+        let at_end = self.at_page_end(cx);
         let mark = self.spy_mark(cx);
         let tops = self.section_tops(cx);
+        // Start + footer are shorter than the viewport, so Start's top often
+        // never crosses the sticky spy mark. Promote once Start reaches the
+        // mid-viewport, or when scroll is already at the end.
         let page = self.ui.view(cx, ids!(page));
-        if page.area().is_valid(cx) {
+        let last_promoted = if page.area().is_valid(cx) {
             let pr = page.area().rect(cx);
-            let promote = pr.pos.y + pr.size.y * 0.42;
-            if tops[n - 1] <= promote {
-                return n - 1;
-            }
-        }
-        let mut idx = 0usize;
-        for (i, top) in tops.iter().enumerate() {
-            if *top <= mark {
-                idx = i;
-            }
-        }
-        idx
+            tops[n - 1] <= pr.pos.y + pr.size.y * 0.55
+        } else {
+            false
+        };
+        active_chapter_from(&tops, mark, at_end, last_promoted)
     }
 
     fn paint_scroll_chrome(&mut self, cx: &mut Cx) {
@@ -704,6 +706,7 @@ impl App {
         if active != self.chapter {
             self.paint_chrome(cx, active);
         } else {
+            // Same chapter: still advance the orange fill with scroll.
             self.snap_rail_fill(cx);
         }
     }
@@ -1089,6 +1092,55 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
     });
 }
 
+/// Continuous rail fill 0..=1 from section tops + spy mark.
+/// `scroll_at_end` forces a full rail — short last chapters never cross the mark.
+fn journey_progress_from(tops: &[f64], mark: f64, scroll_at_end: bool) -> f64 {
+    let n = tops.len();
+    if n <= 1 {
+        return 0.0;
+    }
+    if scroll_at_end {
+        return 1.0;
+    }
+    let mut idx = 0usize;
+    for (i, top) in tops.iter().enumerate() {
+        if *top <= mark {
+            idx = i;
+        }
+    }
+    if idx >= n - 1 {
+        return 1.0;
+    }
+    let a = tops[idx];
+    let b = tops[idx + 1];
+    let span = (b - a).max(1.0);
+    let local = ((mark - a) / span).clamp(0.0, 1.0);
+    (idx as f64 + local) / (n as f64 - 1.0)
+}
+
+/// Active chapter index from the same geometry as the rail fill.
+fn active_chapter_from(
+    tops: &[f64],
+    mark: f64,
+    scroll_at_end: bool,
+    last_promoted: bool,
+) -> usize {
+    let n = tops.len();
+    if n == 0 {
+        return 0;
+    }
+    if scroll_at_end || last_promoted {
+        return n - 1;
+    }
+    let mut idx = 0usize;
+    for (i, top) in tops.iter().enumerate() {
+        if *top <= mark {
+            idx = i;
+        }
+    }
+    idx
+}
+
 /// `#weigh`, `#2` (1-based chapter number) → section id.
 fn section_from_hash(hash: &str) -> Option<&'static str> {
     let key = hash.trim_start_matches('#').trim().to_ascii_lowercase();
@@ -1229,6 +1281,9 @@ impl AppMain for App {
                 if ne.set.contains(&self.scroll_anim_frame) {
                     self.tick_scroll_anim(cx, ne.time);
                 }
+                if ne.set.contains(&self.chrome_sync_frame) {
+                    self.run_chrome_sync(cx);
+                }
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
@@ -1254,12 +1309,12 @@ impl AppMain for App {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
-                // Finger-drag free-scroll: update beads when the chapter flips.
-                // (Do not snap the rail width on every Draw — that smeared text.)
+                // Finger free-scroll + post-layout: do not mutate walk.width mid-Draw
+                // (wasm text smear). Detect scroll change and sync on NextFrame.
                 if !self.scroll_animating() {
-                    let active = self.active_chapter(cx);
-                    if active != self.chapter {
-                        self.paint_chrome(cx, active);
+                    let y = self.page(cx).get_scroll_pos().y;
+                    if (y - self.last_chrome_scroll_y).abs() > 0.25 {
+                        self.request_chrome_sync(cx);
                     }
                 }
                 if let Some(section) = self.pending_section {
@@ -1322,5 +1377,60 @@ mod tests {
     fn phone_layout_hides_rail_names() {
         assert_eq!(Tier::Phone.bead(), (30.0, false));
         assert!(Tier::Desk.bead().1);
+    }
+
+    #[test]
+    fn rail_fill_tracks_mark_between_chapters() {
+        // Nine chapter tops spaced 1000 px; spy mark halfway through chapter 0 → Weigh.
+        let tops: [f64; 9] = std::array::from_fn(|i| i as f64 * 1000.0);
+        let mid_walkin = 500.0;
+        let p = journey_progress_from(&tops, mid_walkin, false);
+        // (0 + 0.5) / 8 = 0.0625 — fill has left the first bead toward Weigh.
+        assert!((p - 0.0625).abs() < 1e-9, "got {p}");
+        assert_eq!(active_chapter_from(&tops, mid_walkin, false, false), 0);
+
+        let into_weigh = 1000.0;
+        let p2 = journey_progress_from(&tops, into_weigh, false);
+        assert!((p2 - 0.125).abs() < 1e-9, "got {p2}");
+        assert_eq!(active_chapter_from(&tops, into_weigh, false, false), 1);
+    }
+
+    #[test]
+    fn rail_fill_completes_when_scroll_ends_even_if_last_top_misses_mark() {
+        // Start sits below the spy mark forever (short last chapter + footer).
+        let tops: [f64; 9] = std::array::from_fn(|i| i as f64 * 1000.0);
+        let mark_still_on_offline = 7000.0; // Offline top = 7000, Start = 8000
+        let stuck = journey_progress_from(&tops, mark_still_on_offline, false);
+        assert!(stuck < 1.0, "without end flag fill must not claim complete: {stuck}");
+        assert_eq!(
+            active_chapter_from(&tops, mark_still_on_offline, false, false),
+            7,
+            "spy still on Offline"
+        );
+
+        let done = journey_progress_from(&tops, mark_still_on_offline, true);
+        assert_eq!(done, 1.0);
+        assert_eq!(
+            active_chapter_from(&tops, mark_still_on_offline, true, false),
+            8
+        );
+        assert_eq!(
+            active_chapter_from(&tops, mark_still_on_offline, false, true),
+            8,
+            "mid-viewport promote lights Start"
+        );
+    }
+
+    #[test]
+    fn rail_fill_never_goes_backwards_across_a_chapter_boundary() {
+        let tops: [f64; 9] = std::array::from_fn(|i| i as f64 * 1000.0);
+        let mut prev = 0.0;
+        for mark in (0..=8000).step_by(50) {
+            let p = journey_progress_from(&tops, mark as f64, false);
+            assert!(p + 1e-12 >= prev, "progress went backwards at mark={mark}: {p} < {prev}");
+            prev = p;
+        }
+        assert_eq!(journey_progress_from(&tops, 8000.0, false), 1.0);
+        assert_eq!(journey_progress_from(&tops, 9000.0, true), 1.0);
     }
 }

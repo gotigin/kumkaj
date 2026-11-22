@@ -297,10 +297,28 @@ impl App {
         }
     }
 
+    /// Vertical scroll cannot go further (short last chapter never crosses the spy).
+    fn at_page_end(&self, cx: &Cx) -> bool {
+        let page = self.ui.view(cx, ids!(page));
+        if !page.area().is_valid(cx) {
+            return false;
+        }
+        let max = (page.get_scroll_view_total().y - page.get_scroll_view_visible().y).max(0.0);
+        let y = page.get_scroll_pos().y;
+        max <= 1.0 || y >= max - 4.0
+    }
+
     fn active_chapter(&self, cx: &Cx) -> usize {
         let page = self.ui.view(cx, ids!(page));
         if !page.area().is_valid(cx) {
             return self.chapter;
+        }
+        let n = SECTIONS.len();
+        if n == 0 {
+            return self.chapter;
+        }
+        if self.at_page_end(cx) {
+            return n - 1;
         }
         let bar = self.ui.view(cx, ids!(top_bar));
         let mark = if bar.area().is_valid(cx) {
@@ -308,14 +326,20 @@ impl App {
         } else {
             page.area().rect(cx).pos.y + 72.0
         };
+        let page_rect = page.area().rect(cx);
+        let promote_y = page_rect.pos.y + page_rect.size.y * 0.55;
         let mut idx = 0usize;
         for (i, (_, path)) in SECTIONS.iter().enumerate() {
             let w = self.ui.widget(cx, path);
             if !w.area().is_valid(cx) {
                 continue;
             }
-            if w.area().rect(cx).pos.y <= mark {
+            let top = w.area().rect(cx).pos.y;
+            if top <= mark {
                 idx = i;
+            }
+            if i == n - 1 && top <= promote_y {
+                return n - 1;
             }
         }
         idx

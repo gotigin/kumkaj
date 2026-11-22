@@ -428,6 +428,11 @@ deep chrome (navy / deep red), never grey-on-grey.
      section actually changes — not on every `Event::Draw`.
    - Short last sections need an `at_page_end` (or mid-viewport) promote
      so the last nav item lights when the footer is already on screen.
+     Prefer **`scroll_pos ≥ max_scroll − ε`** over footer-rect flush (wasm
+     often never reports flush). Continuous rails (Moklanjo) must
+     `snap_rail_fill` when the chapter is unchanged and re-sync on
+     **NextFrame** after scroll — layout tops lag `set_scroll_pos`, and
+     finger free-scroll never hits the claimed wheel path.
    - After a wasm rebuild, hard-refresh; stale `?v=` tabs can keep an old
      binary (`RuntimeError: unreachable`).
 

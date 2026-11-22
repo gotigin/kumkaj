@@ -54,10 +54,17 @@ Implementation lives in `src/main.rs`:
    `scroll_anim_t0` + `NextFrame` (~0.52 s, ease-out cubic). Not an
    asymptotic lerp that crawls forever at the end.
 3. **Last chapter (Start)** — Start + footer are shorter than the
-   viewport, so Start’s top never crosses the sticky spy mark. 
-   `at_page_end` / mid-viewport promote force chapter 9 when the footer
-   is flush or Start is well into view. Without that, Offline stays lit
-   and Start stays hollow at the bottom.
+   viewport, so Start’s top never crosses the sticky spy mark.
+   `at_page_end` is **scroll_pos ≥ max_scroll − 4** (not a footer-rect
+   flush — that missed on wasm). Mid-viewport promote (~55%) also lights
+   Start when it is well on screen. Without that, Offline stays lit and
+   the orange fill never reaches the last bead.
+4. **Rail stays in sync with the page** — `set_scroll_pos` updates
+   geometry one frame late. Mid-anim `snap_rail_fill` can use stale
+   section tops; finger free-scroll never hit `Event::Scroll` after the
+   wheel claim. Fix: always `snap_rail_fill` when the chapter is
+   unchanged, and `request_chrome_sync` → `NextFrame` after settle /
+   when Draw sees scroll Y move (no mid-Draw `walk.width` mutation).
 
 ### Wasm text ghosting — do not regress
 
@@ -69,13 +76,17 @@ We hit this when:
 |---|---|---|
 | Eased **rail width** via perpetual `NextFrame` | `walk.width` thrash + full redraw mid-scroll | Snap rail width; no rail ease loop |
 | `paint_chrome` / `set_text` on beads **every anim tick** | Glyphs redrawn while scroll_pos is moving | Mid-flight: `set_scroll_pos` + `snap_rail_fill` only; full `paint_chrome` on settle (and when chapter flips) |
-| `paint_scroll_chrome` / `snap_rail_fill` on **every `Event::Draw`** | Mid-draw layout mutation | Chrome updates from Scroll / anim tick / chapter change — not blanket Draw |
+| `paint_scroll_chrome` / `snap_rail_fill` on **every `Event::Draw`** | Mid-draw layout mutation | Detect scroll on Draw → sync on **NextFrame**; never mutate rail width inside Draw |
 | Slow asymptotic scroll lerp (many tiny frames) | More partial paints | Prefer timed ease (~0.5 s), then stop |
 
 **Safe mid-anim:** `page.set_scroll_pos` + `snap_rail_fill` + redraw
-`page` / `track_row`. **On complete:** `paint_scroll_chrome` (beads +
-step pill). Do not reintroduce continuous `tick_rail_fill` easing or
-label rewrites inside `tick_scroll_anim`.
+`page` / `track_row`. **On complete:** `paint_scroll_chrome` + one
+post-layout `chrome_sync` frame. Do not reintroduce continuous
+`tick_rail_fill` easing or label rewrites inside `tick_scroll_anim`.
+
+Unit tests pin `journey_progress_from` / `active_chapter_from` (fill
+advances between beads; scroll-end forces 1.0 when the last top never
+crosses the mark).
 
 Hard-refresh the preview after a wasm rebuild (`?v=preview-…` in
 `index.html`); an old tab can keep a previous build and even hit
