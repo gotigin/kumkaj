@@ -156,7 +156,7 @@ diag_clear	কুচাক নাইমানি লগস
 diag_cleared	বেমার নাইমানি লগস সুকাকজাক খা
 sidebar_settings	সিদে বার
 sidebar_settings_help	সিদে নি রাইল নি হাই খেন ইচন রক. ওরদের খুলাইনা বাগুই কাইসা রউ দরাগ খাইদি. সুইতচ ন ফলিপ খাইউই ফুনুকদি এবা রুদি. সেতিং তেই লচক জত জরা বার ও তংনাই.
-sidebar_always_on_short	জরা জরা
+sidebar_always_on_short	মুংথুং
 sidebar_menu_items	মানুই
 sidebar_enable_all	জতন সুনামদি
 sidebar_disable_all	জত ন সুকাক দি
@@ -192,7 +192,7 @@ chip_missing_customer	চংজাক বরক কুমাজাক — তে
 chip_no_customer	তাবুক জরাও বরক কুরুই — মুং সুইদি, হাখে চরেদিত ন তাপ দি .
 credit_summary_fmt	{} বরক · রাং রুজাক {} · সুকাং রুজাক {}
 recent_label	তাবুকনি:
-inventory	মানুই মানুই
+inventory	ইনভেনটরি
 branches	বরানচ
 credit_customers	পারতয় রক (খাতা তেই মানুই তুবুনাই)
 customer_name_ph	পারতয় নি মুং

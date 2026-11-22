@@ -669,7 +669,7 @@ set_owner_pin	ṢETO OLUWA PIN
 enter_owner_passcode	Tẹ koodu iwọle OWNER
 enter_staff_passcode	Tẹ koodu iwọle Oṣiṣẹ
 pin_hint_choose	Yan awọn nọmba 4–12 · Tẹ sii tabi Ṣii silẹ lati fipamọ
-pin_hint_new	Tuntun 4–12 oni-nọmba oni-nọmba PIN · Wọle tabi Ṣii silẹ
+pin_hint_new	Tuntun 4–12 oni-nọmba PIN · Wọle tabi Ṣii silẹ
 pin_hint_shop_code	Ohun elo itaja · koodu sisopọ {}
 pin_hint_books	Ẹrọ yii ni awọn iwe-ipamọ
 pin_hint_paired	Afikun till so pọ - šii lati ta

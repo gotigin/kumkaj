@@ -863,7 +863,7 @@ client_template_info	{title}: {c} categoríakuna, {d} imakuna chaninkuna, fotoku
 client_template_import	Kay hampikunata hawa mamallaktamanta apamuy
 client_template_confirm	{title}manta {d} nisqakunata yapay? Imakunaña kapuqniykiqa kasqanman hinam qipan.
 client_template_importing	Hawamanta apamuspa {title}...
-client_template_done	{title} nisqamanta sapa imapas imapas ruwasqaykikunapim kachkan.
+client_template_done	{title} nisqamanta sapa imapas ruwasqaykikunapim kachkan.
 client_template_imported	{d} elementokuna chaymanta {c} categoríakuna {title} kaqmanta yapasqa
 app_template_heading	Tiendap plantillankuna
 app_template_blurb	Qallariy catálogo chaymanta tienda allichaykunata akllay. «Kunankamaqa saltay» ñit'iptinqa estante ch'usaqmi kanqa.
