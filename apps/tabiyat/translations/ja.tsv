@@ -617,7 +617,7 @@ cloud_welcome	{user} · {plan} としてサインイン
 cloud_created	アカウントが作成されました。メールをチェックして、いつ確認できるかを確認してください。
 cloud_cancel	キャンセル
 permission_preset	権限プリセット
-product_only_tabiyat	このアプリは Tabiyat 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
+product_only_tabiyat	Tabiyat は薬局オペレーティングシステムです。医薬品販売、ロット／期限の帳簿、掛けと帳簿を端末でオフライン。Schedule H / Rx 印はオーナー備考であり、コンプライアンスではありません。
 purchases_cogs	仕入（COGS）
 restore_help	復元：バックアップを選びます。帳簿はその時点の状態で開きます。今の帳簿は先に保存されるので元に戻せます。
 wipe_data_heading	ローカルデータを削除

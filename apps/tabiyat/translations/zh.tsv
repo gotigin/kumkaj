@@ -618,7 +618,7 @@ cloud_welcome	已登录为 {user} · {plan}
 cloud_created	账户已创建。方便时请查收邮件完成验证。
 cloud_cancel	取消
 permission_preset	权限预设
-product_only_tabiyat	此应用仅为 Tabiyat——餐厅经营系统。其他行业另有独立的 Kumkaj 产品。
+product_only_tabiyat	Tabiyat 是药房操作系统：药品销售、批次/效期记账、赊销与账本——在您的设备上离线运行。Schedule H / Rx 标记是店主备注，不是合规认证。
 purchases_cogs	采购(COGS)
 restore_help	恢复：选择一个备份。账本会回到当时的样子；当前账本会先保存，所以可以撤回。
 wipe_data_heading	删除本地数据

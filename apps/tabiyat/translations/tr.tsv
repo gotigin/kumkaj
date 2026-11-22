@@ -617,7 +617,7 @@ cloud_welcome	{user} · {plan} olarak oturum açıldı
 cloud_created	Hesap oluşturuldu. Doğrulamak için uygun olduğunuzda e-postanızı kontrol edin.
 cloud_cancel	İptal
 permission_preset	İzin ön ayarı
-product_only_tabiyat	Bu uygulama yalnızca Tabiyat — restoran işletim sistemi. Diğer işler için ayrı Kumkaj ürünleri var.
+product_only_tabiyat	Tabiyat eczane işletim sistemidir: ilaç satışı, parti/skt defteri, veresiye ve defterler — cihazlarınızda çevrimdışı. Schedule H / Rx işaretleri sahip notudur, uyumluluk değildir.
 purchases_cogs	Alımlar (COGS)
 restore_help	Geri yükle: bir yedek seçin. Defterler o anki hâliyle açılır; şimdiki defterler önce kaydedilir, geri alınabilir.
 wipe_data_heading	Yerel verileri sil

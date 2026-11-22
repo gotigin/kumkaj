@@ -617,7 +617,7 @@ cloud_welcome	{user} · {plan} ਵਜੋਂ ਸਾਈਨ ਇਨ
 cloud_created	ਖਾਤਾ ਬਣ ਗਿਆ। ਜਦੋਂ ਹੋ ਸਕੇ ਤਸਦੀਕ ਲਈ ਆਪਣੀ ਈਮੇਲ ਚੈੱਕ ਕਰੋ।
 cloud_cancel	ਰੱਦ ਕਰੋ
 permission_preset	ਇਜਾਜ਼ਤ ਪ੍ਰੀਸੈੱਟ
-product_only_tabiyat	ਇਹ ਐਪ ਸਿਰਫ਼ Tabiyat ਹੈ — ਰੈਸਟੋਰੈਂਟ ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ। ਹੋਰ ਕਾਰੋਬਾਰਾਂ ਲਈ ਵੱਖਰੇ Kumkaj ਉਤਪਾਦ ਹਨ।
+product_only_tabiyat	Tabiyat ਦਵਾਈ ਦੀ ਦੁਕਾਨ ਦਾ ਆਪਰੇਟਿੰਗ ਸਿਸਟਮ ਹੈ: ਦਵਾਈ ਵਿਕਰੀ, ਬੈਚ/ਮਿਆਦ ਬਹੀ, ਉਧਾਰ ਅਤੇ ਕਿਤਾਬਾਂ — ਤੁਹਾਡੇ ਡਿਵਾਈਸਾਂ ਤੇ ਆਫਲਾਈਨ। Schedule H / Rx ਨਿਸ਼ਾਨ ਮਾਲਕ ਦੀਆਂ ਨੋਟਾਂ ਹਨ, ਪਾਲਣਾ ਨਹੀਂ।
 purchases_cogs	ਖਰੀਦਾਂ (COGS)
 restore_help	Restore: ਇੱਕ ਬੈਕਅੱਪ ਚੁਣੋ। ਖਾਤੇ ਉਸ ਵੇਲੇ ਵਾਂਗ ਖੁੱਲ੍ਹਣਗੇ; ਹੁਣ ਦੇ ਖਾਤੇ ਪਹਿਲਾਂ ਸਾਂਭੇ ਜਾਂਦੇ ਹਨ, ਤਾਂ ਜੋ ਇਹ ਵਾਪਸ ਹੋ ਸਕੇ।
 wipe_data_heading	ਸਥਾਨਕ ਡਾਟਾ ਮਿਟਾਓ
