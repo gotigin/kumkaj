@@ -545,7 +545,7 @@ duress_off	I-PIN yokuvula engxamisekileyo icinyiwe
 duress_saved	I-PIN yokuvula engxamisekileyo igciniwe
 duress_cleared	I-PIN yokuvula engxamisekileyo icinyiwe
 upi_amount_ph	Imali ye-UPI
-void	Rhoxisa ngokupheleleyo
+void	Rhoxisa
 write_off_ap	Cima i-AP
 write_off_heading	Cima (cima ngaphandle kwentlawulo)
 write_off_nil	Cima / ibhalansi engento

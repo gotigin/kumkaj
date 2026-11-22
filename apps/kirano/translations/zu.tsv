@@ -40,7 +40,7 @@ total	Ingqikithi
 cash	Imali
 upi	UPI
 card	Ikhadi
-credit	Amakhasimende nabahlinzeki
+credit	Izinhlangothi
 clear	Kucace
 today_prefix	Namuhla
 owed	ezivelele
@@ -545,7 +545,7 @@ duress_off	Ukuvula izimo eziphuthumayo PIN kuvaliwe
 duress_saved	Ukuvula izimo eziphuthumayo PIN kulondoloziwe
 duress_cleared	Ukuvula izimo eziphuthumayo PIN kuvaliwe
 upi_amount_ph	UPI inani
-void	Ukuthengisa okuyize
+void	Khansela
 write_off_ap	Sula i-AP
 write_off_heading	Sula (sula ngaphandle kwenkokhelo)
 write_off_nil	Susa / awukho ibhalansi
