@@ -125,3 +125,17 @@ need the author and licence named.
 | `hot-beverages/noon-chai.webp` | tea room set with branded Chai Jaai coaster | Kashmiri Chai | Miansari66 | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=46332032 | resized, WebP |
 | `hot-beverages/rooibos-tea.webp` | dry loose-leaf pile only | Cup of rooibos tea (23427608102) | StockyPics | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=97601418 | resized, WebP |
 | `hot-beverages/vienna-coffee.webp` | empty decorated ceramic mug | Wiener Melange | Summ | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=3935385 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 ice-cream)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `ice-cream/cassata.webp` | Sicilian cassata cake with candied fruit, not ice cream | Cassata Icecream | Olivesil | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=103385692 | resized, WebP |
+| `ice-cream/dondurma.webp` | kaymak/cream with jam and walnuts | Dondurma (5065600007) | Klearchos Kapoutsis | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=15396627 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indian-breads)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indian-breads/bakarkhani.webp` | keema plate with plain roti | Bakarkhani Roti | KoyeliC | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40945048 | resized, WebP |
+| `indian-breads/pathiri.webp` | neer dosa on a menu plate | Pathiri 02 | Vis M | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=136912437 | resized, WebP |
