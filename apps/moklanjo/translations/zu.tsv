@@ -569,8 +569,8 @@ printers_routes_heading	Lapho izinto ziphrinta khona
 printer_label_ph	Igama (isb. Ideski)
 printer_target_ph	umphathi:9100 · bt:MAC · usb:VID:PID · igama lesistimu
 printer_mode_heading	Iphrofayela yemiphumela emisha
-printer_mode_standard	Ukuma ngobude okuvamile
-printer_mode_landscape	I-Standard Landscape
+printer_mode_standard	I-Portrait ejwayelekile
+printer_mode_landscape	I-Landscape ejwayelekile
 printer_mode_thermal	Okushisayo
 printer_mode_standard_short	Ukuma ngobude
 printer_mode_landscape_short	Ukuma kwezwe

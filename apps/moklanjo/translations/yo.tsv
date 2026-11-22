@@ -569,8 +569,8 @@ printers_routes_heading	Ibi ti awọn nkan tẹjade
 printer_label_ph	Orukọ (fun apẹẹrẹ. Iduro)
 printer_target_ph	ogun:9100 · bt: MAC · usb: VID: PID · eto orukọ
 printer_mode_heading	Profaili fun awọn abajade tuntun
-printer_mode_standard	Aworan Standard
-printer_mode_landscape	Standard Landscape
+printer_mode_standard	Portrait deede
+printer_mode_landscape	Àlàfo deede
 printer_mode_thermal	Gbona
 printer_mode_standard_short	Aworan
 printer_mode_landscape_short	Ala-ilẹ

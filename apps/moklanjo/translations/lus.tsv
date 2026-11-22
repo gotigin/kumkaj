@@ -2,7 +2,7 @@
 app_tagline	Courier-agency lehkhabu + booking desk a awm bawk. Offline ah a thlawna hman theih a ni.
 unlock	Hawng
 pin_hint	Neitu PIN chu 0000 atangin a tan
-sell	Booking tih a ni
+sell	Booking
 nav_board	Board
 board	Board
 park_draft	Draft angin save rawh
@@ -19,7 +19,7 @@ board_cols_fmt	{n} column-ah a awm
 board_summary_fmt	{total} card a ni · {drafts} draft a ni · {booked} booked a ni
 board_card_no_charges	Fees a la awm lo
 board_card_charges	fees pek a ni
-board_card_booked	Booking tih a ni
+board_card_booked	Booked
 board_draft_gone	Chu draft chu «Board» ah a awm tawh lo
 board_draft_closed	Chu draft chu tihfel emaw delete emaw a ni tawh
 board_discard	Discard
@@ -360,7 +360,7 @@ create_backup	Backup siam
 day_close_summary	Ni khar tlangpui
 delete_party	Mi thlan paih bo
 dispatch_to_rider	Dispatch booked → rider a ni
-docket_charge_ph	Docket lak a ni
+docket_charge_ph	Docket man
 declared_value_ph	Hlutna puan chhuah
 contents_ph	A chhunga thu awmte
 eway_ph	E-way bill no.
@@ -569,12 +569,12 @@ printers_routes_heading	Printna hmun
 printer_label_ph	Hming (e.g. Desk) tih a ni.
 printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system hming
 printer_mode_heading	Output thar siamna tur profile
-printer_mode_standard	Standard Portrait a ni
-printer_mode_landscape	Standard Landscape a ni
-printer_mode_thermal	Thermal a ni
+printer_mode_standard	Portrait pangngai
+printer_mode_landscape	Landscape pangngai
+printer_mode_thermal	Thermal
 printer_mode_standard_short	Ding
 printer_mode_landscape_short	Phai
-printer_mode_thermal_short	Thermal a ni
+printer_mode_thermal_short	Thermal
 printer_format_custom	Khop mahni thar
 printer_format_custom_label	Mahni
 printer_format_custom_added	He hmun atan khop mahni telh a ni
