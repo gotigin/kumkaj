@@ -1200,7 +1200,9 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill body: "Rider A · 14 drops"}
+                                        // Keep this label short: on a 320 CSS-px column the longer
+                                        // "Rider A · 14 drops" wrapped mid-word ("drop s").
+                                        Body{width: Fill body: "A · 14 drops"}
                                         cod_a1 := NumCol{Mono{width: Fill body: "₹ 4,250"}}
                                         cod_a2 := NumCol{Mono{width: Fill body: "₹ 4,250"}}
                                     }
@@ -1208,7 +1210,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill body: "Rider B · 9 drops"}
+                                        Body{width: Fill body: "B · 9 drops"}
                                         cod_b1 := NumCol{Mono{width: Fill body: "₹ 3,100"}}
                                         cod_b2 := NumCol{Mono{width: Fill draw_text.color: BadInk body: "₹ 2,900"}}
                                     }

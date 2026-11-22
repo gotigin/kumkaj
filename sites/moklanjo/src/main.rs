@@ -245,12 +245,13 @@ const NUM_COLS: [(&[LiveId], f64, f64); 14] = [
     (ids!(price.rc_b2), 100.0, 72.0),
     (ids!(price.rc_c1), 96.0, 72.0),
     (ids!(price.rc_c2), 100.0, 72.0),
-    (ids!(cod.cod_h1), 96.0, 88.0),
-    (ids!(cod.cod_h2), 96.0, 88.0),
-    (ids!(cod.cod_a1), 96.0, 88.0),
-    (ids!(cod.cod_a2), 96.0, 88.0),
-    (ids!(cod.cod_b1), 96.0, 88.0),
-    (ids!(cod.cod_b2), 96.0, 88.0),
+    // Phone amount cols 80 (was 88): leaves room for "A · 14 drops" at 320 CSS px.
+    (ids!(cod.cod_h1), 96.0, 80.0),
+    (ids!(cod.cod_h2), 96.0, 80.0),
+    (ids!(cod.cod_a1), 96.0, 80.0),
+    (ids!(cod.cod_a2), 96.0, 80.0),
+    (ids!(cod.cod_b1), 96.0, 80.0),
+    (ids!(cod.cod_b2), 96.0, 80.0),
 ];
 const NUM_COLS_FULL_FROM: f64 = 420.0;
 /// Fixed-width props: (path, desk width, the min width of their row).
