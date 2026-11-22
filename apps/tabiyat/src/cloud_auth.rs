@@ -14,6 +14,7 @@ pub const FIREBASE_API_KEY: &str = "AIzaSyD75kxX6GHrsoqvpP8Mynb1k8PT0lrEMDk";
 pub const FIREBASE_PROJECT_ID: &str = "tabiyat-shop";
 pub const FIREBASE_AUTH_DOMAIN: &str = "tabiyat.shop";
 pub const ACCOUNT_WEB_URL: &str = "https://tabiyat.shop/account";
+pub const SHOP_WEB_URL: &str = "https://tabiyat.shop/shop";
 
 const IDENTITY_BASE: &str = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE: &str = "https://securetoken.googleapis.com/v1";
@@ -347,6 +348,11 @@ pub fn clear_session(db_path: &Path) {
 /// Open the product `/account` page for Google / Microsoft / GitHub / phone.
 pub fn open_account_in_browser() -> Result<(), String> {
     open_url(ACCOUNT_WEB_URL)
+}
+
+/// Cloud plan shop (cart + checkout via /account).
+pub fn open_shop_in_browser() -> Result<(), String> {
+    open_url(SHOP_WEB_URL)
 }
 
 pub fn open_url(url: &str) -> Result<(), String> {

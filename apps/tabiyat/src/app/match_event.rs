@@ -1146,6 +1146,12 @@ impl MatchEvent for App {
                 Err(e) => self.set_status(cx, e),
             }
         }
+        if self.ui.button(cx, ids!(lock_cloud_shop)).clicked(actions) {
+            match cloud_auth::open_shop_in_browser() {
+                Ok(()) => self.set_status(cx, "Opening cloud shop…"),
+                Err(e) => self.set_status(cx, e),
+            }
+        }
         if self.choice_chip_clicked(cx, actions, ids!(role_owner), ids!(role_owner_on)) {
             {
                 let mut st = app_state().lock().unwrap();

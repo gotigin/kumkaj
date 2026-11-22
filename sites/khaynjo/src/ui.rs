@@ -1613,10 +1613,11 @@ script_mod! {
                                     WarmCard{
                                         spacing: 12
                                         draw_bg +: {color: #xFBF4EE}
-                                        Pill{label.body: "Kumkaj Cloud · planned"}
-                                        H3{body: "Pay only for the cloud you use"}
-                                        Body{body: "When Kumkaj Cloud arrives it is optional: you pay for the cloud resources you actually consume. Same rates for everyone — a single café and a chain see the same price sheet."}
-                                        Small{body: "Your local Khaynjo keeps working with or without it."}
+                                        Pill{label.body: "Kumkaj Cloud · optional"}
+                                        H3{body: "Yearly cloud if you want it"}
+                                        Body{body: "Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way."}
+                                        Small{body: "Shop plans at /shop · sign in at /account"}
+                                        go_cloud_shop := PrimaryBtn{text: "Open cloud shop"}
                                     }
                                 }
                             }
@@ -1652,7 +1653,7 @@ script_mod! {
                                         flow: Right
                                         spacing: 16
                                         faq_langs := FaqItem{q.body: "Can my staff use their own language?" a.body: "Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script."}
-                                        FaqItem{q.body: "What does it cost?" a.body: "Nothing, on your own devices — every feature, forever. Only the optional Kumkaj Cloud, when it arrives, is paid by usage."}
+                                        FaqItem{q.body: "What does it cost?" a.body: "Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy."}
                                     }
                                 }
                             }
@@ -1737,6 +1738,8 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         to_privacy := NavLink{text: "Privacy"}
                                         to_terms := NavLink{text: "Terms"}
+                                        to_shop := NavLink{text: "Cloud shop"}
+                                        to_account := NavLink{text: "Account"}
                                         to_play := NavLink{text: "Google Play"}
                                         to_kumkaj := NavLink{text: "kumkaj.com"}
                                     }

@@ -1263,7 +1263,7 @@ script_mod! {
                                         Strong{width: Fill body: "Second counter and rider phone: joined over the office Wi‑Fi"}
                                     }
                                 }
-                                Fact{head.body: "Free forever on your devices" line.body: "Nothing is counted per rider, user or parcel. No subscription."}
+                                Fact{head.body: "Free forever on your devices" line.body: "Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop."}
                             }
                         }
 

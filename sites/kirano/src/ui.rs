@@ -839,7 +839,7 @@ script_mod! {
                                 spacing: 20
                                 Point{head.body: "No per-bill charge" line.body: "No fee per sale, item, till or staff PIN on the local install."}
                                 Point{head.body: "Android, Windows, Linux" line.body: "The same Kirano on the phone behind the counter and the desktop till."}
-                                Point{head.body: "Cloud later, by usage" line.body: "Optional Kumkaj Cloud when you want it — billed for what you use."}
+                                Point{head.body: "Optional Kumkaj Cloud" line.body: "Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop."}
                             }
                         }
 

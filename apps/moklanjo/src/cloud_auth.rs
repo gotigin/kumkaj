@@ -14,6 +14,7 @@ pub const FIREBASE_API_KEY: &str = "AIzaSyB5E2V97YXGraGHdwnXYQhPsLdFpOIpDy0";
 pub const FIREBASE_PROJECT_ID: &str = "moklanjo-com";
 pub const FIREBASE_AUTH_DOMAIN: &str = "moklanjo.com";
 pub const ACCOUNT_WEB_URL: &str = "https://moklanjo.com/account";
+pub const SHOP_WEB_URL: &str = "https://moklanjo.com/shop";
 
 const IDENTITY_BASE: &str = "https://identitytoolkit.googleapis.com/v1";
 const SECURE_TOKEN_BASE: &str = "https://securetoken.googleapis.com/v1";
@@ -347,6 +348,11 @@ pub fn clear_session(db_path: &Path) {
 /// Open the product `/account` page for Google / Microsoft / GitHub / phone.
 pub fn open_account_in_browser() -> Result<(), String> {
     open_url(ACCOUNT_WEB_URL)
+}
+
+/// Cloud plan shop (cart + checkout via /account).
+pub fn open_shop_in_browser() -> Result<(), String> {
+    open_url(SHOP_WEB_URL)
 }
 
 pub fn open_url(url: &str) -> Result<(), String> {

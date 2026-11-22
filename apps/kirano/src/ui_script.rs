@@ -5483,6 +5483,7 @@ script_mod! {
                                     lock_cloud_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                     lock_cloud_forgot := QuietFitBtn{text: "Forgot password?"}
                                     lock_cloud_web := QuietFitBtn{text: "Google and other methods on the website"}
+                                    lock_cloud_shop := QuietFitBtn{text: "Cloud plans / shop"}
                                     View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 0
