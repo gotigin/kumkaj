@@ -191,7 +191,7 @@ TMP="$OUT/index.html.tmp"
 # never run the wasm.
 # PREVIEW_URL already set above (sha10 of link-preview.jpg).
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-BODY_INJECT='        <noscript><p>Moklanjo — courier operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
+BODY_INJECT='        <noscript><p>Moklanjo — courier operating system. Cloud plans (ex-tax/yr): Free forever ₹0 · Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 · Custom quote — <a href="/shop">/shop</a>. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
 '"$BODY_INJECT"
