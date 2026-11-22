@@ -68,7 +68,7 @@ applied	Inilapat
 note_ph	Tandaan (opsyonal)
 rounded	BILOG
 split	Hatiin
-bill_item_layout	Layout ng item ng menu
+bill_item_layout	Layout ng item
 bill_item_layout_columns	Mga hanay
 bill_item_layout_stacked	Nakasalansan
 bill_item_header	Mga header ng column
@@ -170,11 +170,11 @@ nav_settings	Mga setting
 nav_lock	I-lock
 all_items	Lahat ng mga item
 frequent	Madalas
-added_items	Nagdagdag ng mga item ng Menu
+added_items	Nagdagdag ng mga item
 added_items_empty	Wala pa sa bill na ito — magdagdag ng item mula sa Lahat ng item o isang kategorya.
 frequent_config_help	Karamihan sa mga nabentang item mula sa mga nakumpletong bill. Itakda kung ilang araw ang titingnan at kung gaano karaming mga item ang ipapakita.
 frequent_days_ph	Araw (1)
-frequent_limit_ph	Mga item ng menu (24)
+frequent_limit_ph	Mga item (24)
 frequent_apply	Mag-apply
 frequent_saved	Madalas: huling (mga) araw ng {d}, nangungunang {n} — {c} na mga item
 frequent_empty	Wala pang nakumpletong benta sa panahong ito — bayaran ang isang bill (₹0 pinapayagan kapag sinabi ng Mga Setting) at makikita ang mga ito dito.
@@ -339,7 +339,7 @@ goods_received	Natanggap ang mga kalakal
 import_day	Araw ng pag-import
 import_items_csv_plain	Mag-import ng mga item CSV…
 import_parties_csv	Mag-import ng mga customer at supplier CSV…
-item_name	Pangalan ng item ng menu
+item_name	Pangalan ng item
 login_id_ph	Pangalan ng gumagamit
 mark_cleared	Nag-clear si Mark
 new_party_clear	Bagong customer o supplier (malinaw na form)
@@ -636,7 +636,7 @@ wipe_schema_done	Na-wipe ang setup ng shop — piliin ang Server o Client para m
 rounded_total	Bilugan Kabuuan
 setup_app_tabiyat	I-set up ang Tabiyat
 shop_logo_optional	Logo ng tindahan (opsyonal)
-stock_type_help	I-type ang pangalan ng item (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item ng menu na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
+stock_type_help	I-type ang pangalan ng item (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
 team_owner_help	Iwanang blangko ang tao upang magdagdag ng isang tao: pangalan, trabaho, username, PIN, at isang opsyonal na password, pagkatapos ay Idagdag. Pumili ng taong mag-e-edit sa parehong uri ng form — pangalan, username, password, screen, at karapatan — pagkatapos ay I-save. Ang iyong sariling PIN at password ay isang pag-sign-in sa ibaba. Hindi binabago ng May-ari ang PIN ng sinuman.
 staff_name_ph	Pangalan ng tauhan
 staff_copy_hire_ph	Kopyahin ang setup mula sa (opsyonal)
