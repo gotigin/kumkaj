@@ -19,7 +19,7 @@ board_cols_fmt	{n} cột
 board_summary_fmt	{total} thẻ · {drafts} nháp · {booked} đã nhận gửi
 board_card_no_charges	Chưa có phí
 board_card_charges	khoản phí
-board_card_booked	Gửi hàng
+board_card_booked	Đặt đơn
 board_draft_gone	Bản nháp đó không còn trên «Bảng»
 board_draft_closed	Bản nháp đó đã hoàn tất hoặc đã bị bỏ
 board_discard	Bỏ
@@ -92,7 +92,7 @@ counter	Quầy
 parcel	Kiện
 order	Đơn
 sales	Đặt chỗ
-sales_refunds	Đặt chỗ và hoàn tiền
+sales_refunds	Đặt đơn và hoàn tiền
 day_close	Chốt ngày
 reports_expenses	Báo cáo và chi
 nav_reports	Báo cáo
@@ -679,7 +679,7 @@ booking_measures	Kích thước đơn
 drawer_count	Đếm ngăn tiền (tùy chọn)
 spreadsheet_csv	Bảng tính (CSV)
 bank_reconciliation	Đối chiếu ngân hàng
-book_add_product	Gửi — thêm sản phẩm / cước
+book_add_product	Đặt đơn — thêm sản phẩm / cước
 book_opening_credit	Gửi — nợ đầu kỳ
 account_kind	Loại tài khoản (chạm một)
 active_ledger	Sổ đang dùng
@@ -931,8 +931,8 @@ role_help_consignor	Vai trò: Người gửi — AR (họ nợ chúng ta). Cùng
 role_help_carrier	Vai trò: Hãng vận chuyển — AP (chúng ta nợ họ). Cùng một công ty cũng có thể là người gửi.
 role_help_both	Vai trò: Người gửi hàng + Nhà cung cấp — một bên, sổ cái AR và AP, có trong Báo cáo.
 role_help_supplier	Vai trò: Nhà cung cấp - AP để mua hàng.
-lane_declared_label	Đặt tài khoản
-lane_owner_label	Đặt phòng bằng tiền mặt
+lane_declared_label	Đặt đơn ghi sổ
+lane_owner_label	Đặt đơn tiền mặt
 money_lane_bill	Bill: {lane}
 sel_copy	Sao chép
 sel_select_all	Chọn tất cả

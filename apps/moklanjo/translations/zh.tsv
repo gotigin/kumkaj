@@ -19,7 +19,7 @@ board_cols_fmt	{n} 列
 board_summary_fmt	{total} 张卡片 · {drafts} 份草稿 · {booked} 件已登记
 board_card_no_charges	暂无费用
 board_card_charges	项费用
-board_card_booked	寄件
+board_card_booked	预订
 board_draft_gone	该草稿已不在「看板」上
 board_draft_closed	该草稿已完成或已丢弃
 board_discard	丢弃
@@ -91,8 +91,8 @@ split	拆分
 counter	柜台
 parcel	包裹
 order	订单
-sales	寄件
-sales_refunds	寄件与退款
+sales	预订
+sales_refunds	预订与退款
 day_close	日结
 reports_expenses	报表与支出
 nav_reports	报表
@@ -679,8 +679,8 @@ booking_measures	寄件尺寸
 drawer_count	抽屉盘点（可选）
 spreadsheet_csv	电子表格(CSV)
 bank_reconciliation	银行对账
-book_add_product	寄件 — 添加产品/费率
-book_opening_credit	寄件 — 期初赊账
+book_add_product	预订 — 添加产品/费率
+book_opening_credit	预订 — 期初贷项
 account_kind	账户类型（点选其一）
 active_ledger	当前账本
 actual_total_cap	实际总额
@@ -931,8 +931,8 @@ role_help_consignor	角色：寄件人 — AR（他们欠我们）。同一家�
 role_help_carrier	角色：承运人 — AP（我们欠他们）。同一家公司也可以是寄件人。
 role_help_both	角色：寄件人 + 承运商 — 同一个往来方，应收和应付账本，报表显示净额。
 role_help_supplier	角色：供应商 — 采购的应付账。
-lane_declared_label	记账寄件
-lane_owner_label	现金寄件
+lane_declared_label	记账预订
+lane_owner_label	现金预订
 money_lane_bill	账单：{lane}
 sel_copy	复制
 sel_select_all	全选

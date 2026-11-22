@@ -19,7 +19,7 @@ board_cols_fmt	{n} стб.
 board_summary_fmt	Карточек: {total} · черновиков: {drafts} · принято: {booked}
 board_card_no_charges	Сборов пока нет
 board_card_charges	сборов
-board_card_booked	Отправка
+board_card_booked	Бронирование
 board_draft_gone	Этого черновика уже нет в разделе «Доска»
 board_draft_closed	Этот черновик уже завершён или удалён
 board_discard	Удалить
@@ -91,8 +91,8 @@ split	Разделить
 counter	Стойка
 parcel	Посылка
 order	Заказ
-sales	Отправки
-sales_refunds	Отправки и возвраты
+sales	Бронирования
+sales_refunds	Бронирования и возвраты
 day_close	Закрытие дня
 reports_expenses	Отчёты и расходы
 nav_reports	Отчёты
@@ -679,8 +679,8 @@ booking_measures	Размеры отправки
 drawer_count	Пересчёт кассы (необязательно)
 spreadsheet_csv	Таблица (CSV)
 bank_reconciliation	Банковская сверка
-book_add_product	Отправка — добавить продукт / тариф
-book_opening_credit	Отправка — начальный кредит
+book_add_product	Бронь — добавить продукт / тариф
+book_opening_credit	Бронь — начальный кредит
 account_kind	Тип счёта (нажмите один)
 active_ledger	Активная книга
 actual_total_cap	ФАКТИЧЕСКИЙ ИТОГ
@@ -931,8 +931,8 @@ role_help_consignor	Роль: Отправитель — AR (они должны
 role_help_carrier	Роль: Перевозчик — AP (мы должны им). Та же фирма может быть и отправителем.
 role_help_both	Роли: Отправитель + Перевозчик — одна сторона, книги AR и AP, нетто в Отчётах.
 role_help_supplier	Роль: Поставщик — кредиторка по закупкам.
-lane_declared_label	Отправка в счёт
-lane_owner_label	Отправка за наличные
+lane_declared_label	Бронь в счёт
+lane_owner_label	Бронь за наличные
 money_lane_bill	Билл: {lane}
 sel_copy	Копировать
 sel_select_all	Выделить всё

@@ -679,8 +679,8 @@ booking_measures	اقدامات رزرو
 drawer_count	شمارش کشو (اختیاری)
 spreadsheet_csv	صفحه گسترده (CSV)
 bank_reconciliation	تطبیق بانک
-book_add_product	کتاب - اضافه کردن محصول / نرخ
-book_opening_credit	دفتر — نسیه آغازین
+book_add_product	رزرو — افزودن محصول / نرخ
+book_opening_credit	رزرو — اعتبار ابتدایی
 account_kind	نوع حساب (یکی را بزنید)
 active_ledger	دفتر کل
 actual_total_cap	جمع واقعی

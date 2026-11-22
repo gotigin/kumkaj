@@ -19,7 +19,7 @@ board_cols_fmt	{n} sütun
 board_summary_fmt	{total} kart · {drafts} taslak · {booked} kabul edildi
 board_card_no_charges	Henüz ücret yok
 board_card_charges	ücret
-board_card_booked	Gönderi
+board_card_booked	Rezervasyon
 board_draft_gone	O taslak artık «Pano» bölümünde yok
 board_draft_closed	O taslak zaten tamamlandı veya silindi
 board_discard	Sil
@@ -679,8 +679,8 @@ booking_measures	Gönderi ölçüleri
 drawer_count	Çekmece sayımı (isteğe bağlı)
 spreadsheet_csv	E-tablo (CSV)
 bank_reconciliation	Banka mutabakatı
-book_add_product	Gönderi — ürün / tarife ekle
-book_opening_credit	Gönderi — açılış kredisi
+book_add_product	Rezervasyon — ürün / tarife ekle
+book_opening_credit	Rezervasyon — açılış kredisi
 account_kind	Hesap türü (birine dokun)
 active_ledger	Aktif defter
 actual_total_cap	GERÇEK TOPLAM
