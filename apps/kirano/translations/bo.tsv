@@ -875,6 +875,8 @@ opening_client	ཚོང་ཤག་ཁ་ཕྱེ་བ།
 preparing_desk	ཡིག་ཅོག་གྲ་སྒྲིག་བྱེད་བཞིན་ཡོད།
 opening_server	སར་བར་ཁ་ཕྱེ་བཞིན་ཡོད།
 creating_server	གསབ་ལེན་གསར་བཟོ་བྱེད་བཞིན་ཡོད།
+setup_restoring	Restoring backup…
+setup_restored	Restored — unlock with the Owner PIN from that backup.
 add_dishes	རྣམ་གྲངས་ཁ་སྣོན་བྱས་པ།
 order_so_far	གོ་རིམ་འདིའི་ཐོག་: {n} · {total}
 no_dish_match	"{q}"དང་མཐུན་པའི་རྣམ་གྲངས་གཅིག་ཀྱང་མེད།
