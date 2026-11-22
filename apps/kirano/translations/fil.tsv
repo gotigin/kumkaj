@@ -527,7 +527,7 @@ take_payment	Kunin ang bayad
 tax_added_till	{tax} eksklusibo
 tax_inside_price	{tax} kasama
 tax_invoice	Invoice ng buwis
-till_to_bank	kahon → bangko
+till_to_bank	Kahon → bangko
 units_heading	Mga yunit
 unlock_after_pairing	Ilagay ang PIN
 unlock_with_login	I-unlock gamit ang pag-login
@@ -660,7 +660,7 @@ pin_hint_choose	Pumili ng 4–12 digit · Ipasok o I-unlock para i-save
 pin_hint_new	Bagong 4–12 digit na May-ari PIN · Enter o I-unlock
 pin_hint_shop_code	Mamili ng device · code ng pagpapares {}
 pin_hint_books	Hawak ng device na ito ang mga ledger
-pin_hint_paired	Extra kahon paired — i-unlock para ibenta
+pin_hint_paired	Extra kahon na naka-pair — i-unlock para magbenta
 pin_hint_pair_first	Extra till — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team
