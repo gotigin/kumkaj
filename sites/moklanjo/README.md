@@ -54,8 +54,11 @@ Implementation in `src/main.rs`:
    `snap_rail_fill` from `journey_progress` (never mutate rail width
    mid-Draw — wasm text smear).
 3. **Last chapter (Start)** — `at_page_end` is
-   `scroll_pos ≥ max_scroll − 4`; mid-viewport (~55%) also promotes Start
-   so the last bead and fill complete at the bottom.
+   `scroll_pos ≥ max_scroll − 4` **only when** scroll metrics are ready
+   (`total`/`visible` real and `max > 4`). Never treat “not laid out yet”
+   as end — that filled the whole orange rail on Walk-in (2026-11-22).
+   Mid-viewport (~55%) also promotes Start at the bottom. Section tops
+   must span ≥ 80 px before progress leaves 0.
 4. **Bead taps / deep links** may ease to a chapter; PageUp/PageDown/Space
    jump one viewport **immediately**; arrows nudge 64 px.
 

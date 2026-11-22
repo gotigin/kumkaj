@@ -22,6 +22,33 @@
 
 ------------------------------------------------------------------------
 
+## Firebase deploy policy (quota / cost — hard rule)
+
+**Do not** run `firebase deploy` / `*/scripts/deploy-firebase.sh` on every
+small change. Hosting uploads consume Firebase quota and make the bill
+expensive.
+
+| Step | Required |
+| --- | --- |
+| 1 | Fix + test **locally** (`preview-web.sh` / `run-web.sh` / desktop) until the change is complete |
+| 2 | Wait for **explicit owner approval** for that deploy |
+| 3 | Only then deploy, with the approval flag |
+
+Scripts refuse a real Hosting upload unless one of:
+
+```bash
+./sites/<site>/scripts/deploy-firebase.sh --i-approve-firebase-deploy
+# or
+GOTIGIN_APPROVE_FIREBASE_DEPLOY=1 ./sites/<site>/scripts/deploy-firebase.sh
+```
+
+`--dry-run` is always allowed (build/stage only; no upload). Agents must
+default to local preview and **must not** invent approval.
+
+Shared gate: [`scripts/require-firebase-deploy-approval.sh`](../scripts/require-firebase-deploy-approval.sh).
+
+------------------------------------------------------------------------
+
 ## 1. Three sites, three jobs
 
 | Site | Who arrives | Its job | Main action |

@@ -1,0 +1,26 @@
+---
+description: Never Firebase-deploy Kumkaj websites without owner approval
+globs:
+  - sites/**/scripts/deploy-firebase.sh
+  - docs/WEBSITES.md
+alwaysApply: true
+---
+
+# Firebase Hosting deploy — owner approval required
+
+Hosting uploads burn Firebase **quota and money**.
+
+## Do
+
+- Fix and verify **locally** (`preview-web.sh` / `run-web.sh` / desktop) until the change is complete.
+- Deploy **only** after the owner explicitly approves **this** deploy.
+- Use `--i-approve-firebase-deploy` or `GOTIGIN_APPROVE_FIREBASE_DEPLOY=1` (scripts enforce this).
+- `--dry-run` is fine anytime (no Hosting upload).
+
+## Do not
+
+- Deploy after every small tweak or incomplete fix.
+- Invent approval, assume “they want it live”, or chain multi-site deploys without asking.
+- Bypass `scripts/require-firebase-deploy-approval.sh`.
+
+Canonical policy: `docs/WEBSITES.md` § Firebase deploy policy.

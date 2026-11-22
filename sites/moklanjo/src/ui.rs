@@ -769,8 +769,10 @@ script_mod! {
                                     margin: Inset{left: 44. right: 44. top: 12. bottom: 0.}
                                     draw_bg +: {color: #x1A3568 border_radius: 1.5}
                                 }
+                                // Start as a short stub at Walk-in — never a long bar
+                                // (snap_rail_fill owns width from journey progress).
                                 rail_prog := RoundedView{
-                                    width: 120 height: 3
+                                    width: 24 height: 3
                                     margin: Inset{left: 44. top: 12. bottom: 0.}
                                     draw_bg +: {color: OrangeLogo border_radius: 1.5}
                                 }

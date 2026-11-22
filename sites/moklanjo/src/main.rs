@@ -418,9 +418,10 @@ impl App {
         }
     }
 
-    /// True when vertical scroll cannot go further (or the page fits in one view).
-    /// Prefer scroll metrics over footer-rect flush: short last chapters often leave
-    /// Start below the spy mark forever, and footer-rect checks misfired on wasm.
+    /// True when the user has scrolled to the bottom (short last chapter never
+    /// crosses the spy mark). Must **not** fire before scroll metrics exist —
+    /// `total ≈ visible` on first frames was wrongly treated as “end” and filled
+    /// the whole orange rail while still on Walk-in.
     fn at_page_end(&self, cx: &Cx) -> bool {
         let page = self.ui.view(cx, ids!(page));
         if !page.area().is_valid(cx) {
@@ -428,11 +429,16 @@ impl App {
         }
         let total = page.get_scroll_view_total().y;
         let visible = page.get_scroll_view_visible().y;
-        let max = (total - visible).max(0.0);
-        let y = page.get_scroll_pos().y;
-        if max <= 1.0 {
-            return true;
+        // Layout / scroll view not ready yet.
+        if total < 32.0 || visible < 32.0 {
+            return false;
         }
+        let max = (total - visible).max(0.0);
+        // Page still fits in one view — not "scrolled to end"; use geometry only.
+        if max <= 4.0 {
+            return false;
+        }
+        let y = page.get_scroll_pos().y;
         y >= max - 4.0
     }
 
@@ -444,8 +450,22 @@ impl App {
             tops[i] = if w.area().is_valid(cx) {
                 w.area().rect(cx).pos.y
             } else {
-                tops[i.saturating_sub(1)]
+                f64::NAN
             };
+        }
+        // Fill holes from the previous valid top so progress never jumps to 1.0
+        // because every chapter collapsed to the same Y before layout.
+        let mut last = tops[0];
+        if !last.is_finite() {
+            last = 0.0;
+            tops[0] = 0.0;
+        }
+        for i in 1..tops.len() {
+            if tops[i].is_finite() {
+                last = tops[i];
+            } else {
+                tops[i] = last;
+            }
         }
         tops
     }
@@ -502,7 +522,14 @@ impl App {
     /// NextFrame width animation redraw loop smeared text on wasm.
     fn snap_rail_fill(&mut self, cx: &mut Cx) {
         const RAIL_INSET: f64 = 44.0;
-        let width = (self.track_width(cx) * self.journey_progress(cx)).max(24.0);
+        let progress = self.journey_progress(cx);
+        // Tiny stub at 0 so the first bead still has a glow tick; never a long
+        // bar while progress is still at the start of the story.
+        let width = if progress <= 0.001 {
+            24.0
+        } else {
+            (self.track_width(cx) * progress).max(24.0)
+        };
         if let Some(mut view) = self.ui.view(cx, ids!(track_row.rail_prog)).borrow_mut() {
             let cur = match view.walk.width {
                 Size::Fixed(w) => w,
@@ -976,6 +1003,9 @@ impl App {
             scale_labels(&page, tier, &self.desk_font, &mut next);
             self.paint_chrome(cx, self.chapter);
         }
+        // First layout (and every reflow) — re-measure section tops so the rail
+        // is not stuck full from a pre-layout snap.
+        self.request_chrome_sync(cx);
         self.ui.redraw(cx);
     }
 
@@ -1037,6 +1067,14 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
 fn journey_progress_from(tops: &[f64], mark: f64, scroll_at_end: bool) -> f64 {
     let n = tops.len();
     if n <= 1 {
+        return 0.0;
+    }
+    let first = tops[0];
+    let last = tops[n - 1];
+    let laid_out = first.is_finite() && last.is_finite() && (last - first).abs() >= 80.0;
+    // Chapters not laid out yet — stay at the start. Do not honor scroll_at_end
+    // either: that flag was the bug that filled the rail on first paint.
+    if !laid_out {
         return 0.0;
     }
     if scroll_at_end {
@@ -1335,6 +1373,15 @@ mod tests {
         let p2 = journey_progress_from(&tops, into_weigh, false);
         assert!((p2 - 0.125).abs() < 1e-9, "got {p2}");
         assert_eq!(active_chapter_from(&tops, into_weigh, false, false), 1);
+    }
+
+    #[test]
+    fn rail_stays_empty_when_chapters_not_laid_out_yet() {
+        // Before layout, tops often collapse to the same Y — must not fill the rail.
+        let stacked = [100.0; 9];
+        assert_eq!(journey_progress_from(&stacked, 120.0, false), 0.0);
+        // And must not treat a false "at end" as full when geometry is unknown.
+        assert_eq!(journey_progress_from(&stacked, 120.0, true), 0.0);
     }
 
     #[test]

@@ -9,6 +9,7 @@
 #
 #   ./sites/kumkaj/scripts/deploy-firebase.sh
 #   ./sites/kumkaj/scripts/deploy-firebase.sh --dry-run
+#   ./sites/kumkaj/scripts/deploy-firebase.sh --i-approve-firebase-deploy  # owner-approved upload
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
@@ -34,6 +35,7 @@ fi
 for arg in "$@"; do
   case "$arg" in
     --dry-run) DRY=1 ;;
+    --i-approve-firebase-deploy) ;;  # handled by require_firebase_deploy_approval
     -h|--help)
       sed -n '2,16p' "$0"
       exit 0
@@ -44,6 +46,13 @@ for arg in "$@"; do
       ;;
   esac
 done
+
+
+# Firebase Hosting uploads burn quota — require owner approval (docs/WEBSITES.md).
+# shellcheck source=../../../scripts/require-firebase-deploy-approval.sh
+source "$ROOT/scripts/require-firebase-deploy-approval.sh"
+require_firebase_deploy_approval "$DRY" "$@"
+
 
 export PATH="${HOME}/.local/bin:${PATH}"
 
