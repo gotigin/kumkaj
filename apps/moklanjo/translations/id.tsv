@@ -6,7 +6,7 @@ sell	Pemesanan
 nav_board	Papan
 board	Papan
 park_draft	Tunda sebagai draf
-board_help	Draf terbuka (disimpan sampai Anda mengetuk «Buang» atau «Terima pembayaran») dan penjualan yang terdaftar hari ini. Di «Booking», ketuk «Tunda sebagai draf» di tengah pekerjaan (disimpan di sini, bukan di pembukuan); ketuk draf untuk melanjutkan.
+board_help	Draf terbuka (disimpan sampai Anda mengetuk «Buang» atau «Terima pembayaran») dan penjualan yang terdaftar hari ini. Di «Pemesanan», ketuk «Tunda sebagai draf» di tengah pekerjaan (disimpan di sini, bukan di pembukuan); ketuk draf untuk melanjutkan.
 board_empty	Belum ada kartu.
 board_park_nothing	Tidak ada yang bisa ditunda — tambahkan biaya atau detail booking
 board_parked	Ditunda di «Papan» — meja kerja kosong
@@ -26,7 +26,7 @@ board_discard	Buang
 board_discarded	Draf dibuang
 buy	Bayar keluar
 books	Buku harian
-books_help	Posisi hari ini. Booking = paket masuk. Bayar keluar = tagihan kurir & biaya. Pihak = pengirim & kurir pengangkut.
+books_help	Posisi hari ini. Pemesanan = paket masuk. Bayar keluar = tagihan kurir & biaya. Pihak = pengirim & kurir pengangkut.
 buy_help	Voucher biaya dan tagihan kurir (uang keluar). Yang di akun tetap di buku pihak.
 sell_money_in	Booking paket
 buy_money_out	Biaya / tagihan kurir

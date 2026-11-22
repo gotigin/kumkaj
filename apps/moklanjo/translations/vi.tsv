@@ -6,7 +6,7 @@ sell	Đặt đơn
 nav_board	Bảng
 board	Bảng
 park_draft	Tạm gác bản nháp
-board_help	Các bản nháp đang mở (giữ lại cho đến khi bạn chạm «Bỏ» hoặc «Nhận thanh toán») và doanh số đã nhận gửi hôm nay. Ở «Gửi hàng», chạm «Tạm gác bản nháp» khi đang làm dở (lưu ở đây, không vào sổ sách); chạm một bản nháp để làm tiếp.
+board_help	Các bản nháp đang mở (giữ lại cho đến khi bạn chạm «Bỏ» hoặc «Nhận thanh toán») và doanh số đã nhận gửi hôm nay. Ở «Đặt đơn», chạm «Tạm gác bản nháp» khi đang làm dở (lưu ở đây, không vào sổ sách); chạm một bản nháp để làm tiếp.
 board_empty	Chưa có thẻ nào.
 board_park_nothing	Không có gì để tạm gác — hãy thêm phí hoặc thông tin gửi hàng
 board_parked	Đã gác lên «Bảng» — bàn làm việc đã trống
@@ -26,7 +26,7 @@ board_discard	Bỏ
 board_discarded	Đã bỏ bản nháp
 buy	Chi ra
 books	Sổ ngày
-books_help	Tình hình hôm nay. Gửi hàng = bưu kiện vào. Chi ra = hóa đơn nhà vận chuyển & chi phí. Đối tác = người gửi & nhà vận chuyển.
+books_help	Tình hình hôm nay. Đặt đơn = bưu kiện vào. Chi ra = hóa đơn nhà vận chuyển & chi phí. Đối tác = người gửi & nhà vận chuyển.
 buy_help	Phiếu chi và hóa đơn nhà vận chuyển (tiền ra). Ghi sổ ở lại sổ đối tác.
 sell_money_in	Gửi một bưu kiện
 buy_money_out	Chi phí / hóa đơn vận chuyển
