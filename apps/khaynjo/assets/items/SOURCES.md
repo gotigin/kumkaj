@@ -91,3 +91,16 @@ need the author and licence named.
 | `mexican/tortilla-soup.webp` | soup beside Catrina skull figurine / busy restaurant table | Sopa de tortilla, Mazatlán, 15 de noviembre de 2022 | El Nuevo Doge | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=125555690 | resized, WebP |
 
 | `mexican/salsa-roja.webp` | (correction) previous pick was huevos rancheros | Salsa Roja Recipe | goblinbox_(queen_of_ad_hoc_bento) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/25977089@N00/16171574958 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 fast-food)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `fast-food/aloo-tikki-burger.webp` | collage of burger halves and raw patties | Aloo Tikki Burger | Vikramdewangan22889 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40948527 | resized, WebP |
+| `fast-food/chicken-burger.webp` | chicken salad sandwich on ciabatta | Chargrilled Chicken Burger - Leon | Andy Li | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=132322598 | resized, WebP |
+| `fast-food/crispy-chicken-burger.webp` | three chicken nuggets | Fried chicken burger | Kurt Kaiser | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=105804754 | resized, WebP |
+| `fast-food/fried-fish-fillet.webp` | pan-seared fish with broccoli and carrots | Fried Fish Fillet | Miansari66 | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=45458215 | resized, WebP |
+| `fast-food/grilled-cheese-sandwich.webp` | cheese-stuffed flatbread with spinach salad | Grilled cheese sandwich | Maggie Hoffman | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=50007101 | resized, WebP |
+| `fast-food/hot-wings.webp` | wings on fries with restaurant brand watermark | Homemade buffalo wings | stef yau | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=864949 | resized, WebP |
+| `fast-food/paneer-burger.webp` | beef hamburger with lettuce | Caffine Rush Smoothie and Achari Paneer Burger - The Honeyed Tale Cafe, Vadodara - 04 | Bhagyashri Wakhale | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=103649835 | resized, WebP |
+| `fast-food/pulled-pork-sandwich.webp` | pulled pork roast only, no sandwich | Pulled-pork-sandwiches | Dktue | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=74992599 | resized, WebP |
