@@ -515,3 +515,6 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `pizza-pasta/bbq-chicken-pizza.webp` | pizza with La Pino'z, Cremica, and Del Monte sachets | B.B.Q. Chicken Pizza (26679384893).jpg | Dale Cruse | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:B.B.Q._Chicken_Pizza_(26679384893).jpg | resized, WebP |
 | `snacks/thattai.webp` | hand holding crackers with deity figurines and a branded mug | A depiction of a snack -Thattu Vadai.JPG | commons contributor | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:A_depiction_of_a_snack_-Thattu_Vadai.JPG | resized, WebP |
+
+## L14 pass2 2026-11-22T14:39:55Z
+- indian-breads/koki.webp ← Commons File:Kokii.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Kokii.jpg
