@@ -406,7 +406,7 @@ server_ip_ph	Server-IP (z. B. 192.168.1.10)
 set_credit_limit	Kreditlimit setzen
 set_login_selected	Login für Auswahl setzen
 set_login_named	Login für {name} setzen
-shop	Shop
+shop	Laden
 show	Anzeigen
 spreadsheet_csv	Tabelle (CSV)
 start_fresh	Neu anfangen
@@ -778,7 +778,7 @@ kot_field_on	anzeigen
 kot_field_off	ausblenden
 kot_field_show	Anzeigen
 kot_field_hide	Ausblenden
-bill_line_shop	Shop
+bill_line_shop	Laden
 bill_line_address	Adresse
 bill_line_fssai	FSSAI
 bill_line_title	Titel

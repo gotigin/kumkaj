@@ -366,12 +366,12 @@ reason_amend_ph	Dahilan para baguhin / walang bisa / refund
 reason_note_ph	Dahilan / tala (pag-aaksaya, bilang,…)
 record_day_close	I-save ang araw malapit
 business_day	Kailan nagsisimulang muli ang «Ngayong araw»?
-business_day_help	Sa «Hanggang pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi hanggang i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 12:00 am lokal na oras.
+business_day_help	Sa «Hanggang pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi hanggang i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 00:00 lokal na oras.
 biz_day_until_close	Hanggang pagsasara ng araw
 biz_day_midnight	Hatinggabi sa kalendaryo
 business_day_saved	Na-save ang araw ng negosyo
 report_day_lens	Tingnan ang «Ngayong araw» bilang
-report_day_lens_help	Pagtingin lang — hindi nito binabago kung kailan sinisimulang muli ng «Pagsasara ng araw» ang «Ngayong araw». Sinusundan ng «Ayon sa pagsasara ng araw» ang huling pagsasara ng araw; pumuputol ang «Ayon sa hatinggabi» sa 12:00 am lokal na oras.
+report_day_lens_help	Pagtingin lang — hindi nito binabago kung kailan sinisimulang muli ng «Pagsasara ng araw» ang «Ngayong araw». Sinusundan ng «Ayon sa pagsasara ng araw» ang huling pagsasara ng araw; pumuputol ang «Ayon sa hatinggabi» sa 00:00 lokal na oras.
 report_lens_day_close	Ayon sa pagsasara ng araw
 report_lens_midnight	Ayon sa hatinggabi
 refresh_from_shop	I-refresh mula sa tindahan

@@ -52,7 +52,7 @@ total	Jumlah
 cash	Tunai
 upi	UPI
 card	Kad
-credit	Pelanggan dan pembekal
+credit	Pihak
 clear	Jelas
 today_prefix	Hari ini
 owed	cemerlang
@@ -557,7 +557,7 @@ duress_off	Buka kunci kecemasan PIN dimatikan
 duress_saved	Buka kunci kecemasan PIN disimpan
 duress_cleared	Buka kunci kecemasan PIN dimatikan
 upi_amount_ph	UPI jumlah
-void	Jualan batal
+void	Batal
 write_off_ap	Hapus AP
 write_off_heading	Hapus kira (jelas tanpa bayaran)
 write_off_nil	Hapus kira / tiada baki

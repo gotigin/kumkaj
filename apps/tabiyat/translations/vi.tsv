@@ -912,7 +912,7 @@ stock_empty	Chưa có hàng tồn — những gì ghi ở Mua sẽ hiện ở đ
 recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
-money_lane_bill	Bill: {lane}
+money_lane_bill	Hóa đơn: {lane}
 sel_copy	Sao chép
 sel_select_all	Chọn tất cả
 sel_copied	Đã sao chép

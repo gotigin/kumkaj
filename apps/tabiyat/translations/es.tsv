@@ -366,12 +366,12 @@ reason_amend_ph	Motivo de modificación / anulación / reembolso
 reason_note_ph	Motivo / nota (merma, conteo, …)
 record_day_close	Registrar cierre del día
 business_day	¿Cuándo se reinicia «Hoy»?
-business_day_help	Con «Hasta el cierre del día», «Libro del día» sigue abierto pasada la medianoche hasta que registre el cierre del día. Con «Medianoche del calendario», el día se corta a las 12:00 a. m., hora local.
+business_day_help	Con «Hasta el cierre del día», «Libro del día» sigue abierto pasada la medianoche hasta que registre el cierre del día. Con «Medianoche del calendario», el día se corta a las 00:00, hora local.
 biz_day_until_close	Hasta el cierre del día
 biz_day_midnight	Medianoche del calendario
 business_day_saved	Día de trabajo guardado
 report_day_lens	Ver «Hoy» como
-report_day_lens_help	Solo cambia la vista: no cambia cuándo «Cierre del día» reinicia «Hoy». «Por cierre del día» sigue el último cierre del día; «Por medianoche» corta a las 12:00 a. m., hora local.
+report_day_lens_help	Solo cambia la vista: no cambia cuándo «Cierre del día» reinicia «Hoy». «Por cierre del día» sigue el último cierre del día; «Por medianoche» corta a las 00:00, hora local.
 report_lens_day_close	Por cierre del día
 report_lens_midnight	Por medianoche
 refresh_from_shop	Actualizar desde la tienda

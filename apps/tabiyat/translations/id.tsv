@@ -105,9 +105,9 @@ bill_meta_pair	Satu baris dengan
 bill_pair_alone	Sendiri
 bill_item_piece_on	Aktif
 bill_item_piece_off	Nonaktif
-bill_total_qty	Total qty
+bill_total_qty	Jumlah total
 bill_total_subtotal	Subtotal
-bill_total_grand	Grand total
+bill_total_grand	Total keseluruhan
 bill_total_number_under	Angka di bawah
 bill_total_caption_under	Label di bawah
 bill_total_own_line	Baris sendiri
@@ -375,7 +375,7 @@ report_day_lens_help	Hanya tampilan — tidak mengubah kapan «Tutup hari» memu
 report_lens_day_close	Menurut tutup hari
 report_lens_midnight	Menurut tengah malam
 refresh_from_shop	Segarkan dari toko
-refund	Refund
+refund	Pengembalian
 remove_selected	Hapus terpilih
 request_bill	Minta tagihan
 restaurant_name_ph	Nama toko (opsional)

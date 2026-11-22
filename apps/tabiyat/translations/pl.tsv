@@ -375,7 +375,7 @@ report_day_lens_help	Tylko widok — nie zmienia tego, kiedy «Zamknięcie dnia�
 report_lens_day_close	Wg zamknięcia dnia
 report_lens_midnight	Wg północy
 refresh_from_shop	Odśwież ze sklepu
-refund	Zwrot pieniędzy
+refund	Zwrot
 remove_selected	Usuń wybrane
 request_bill	Poproś o rachunek
 restaurant_name_ph	Nazwa sklepu (opcjonalnie)
@@ -557,7 +557,7 @@ duress_off	Odblokowanie awaryjne PIN jest wyłączone
 duress_saved	Odblokowanie awaryjne PIN zapisane
 duress_cleared	Odblokowanie awaryjne PIN wyłączone
 upi_amount_ph	UPI ilość
-void	Nieważna sprzedaż
+void	Anuluj
 write_off_ap	Odpisz AP
 write_off_heading	Odpisz (wyczyść bez płatności)
 write_off_nil	Odpisz / saldo zerowe
