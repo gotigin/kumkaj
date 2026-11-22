@@ -624,7 +624,7 @@ unlock_with_login	Lås op med login
 update_my_password	Opdatér min adgangskode
 update_my_pin	Opdatér min PIN
 duress_heading	Nødoplåsnings-PIN (kun Ejer)
-duress_help	Valgfri. Hvis denne PIN tastes ved oplåsning i stedet for din, slettes alle bogposteringer (bookinger, reskontro, historik), og disken åbner som ejer og ser normal ud — takster, parter, zoner, personale og indstillinger bliver. Skema og konfiguration slettes ikke. Brug den kun, hvis du tvinges til at låse op. Lad stå tom og gem for at slå fra. Aldrig den samme som nogens PIN.
+duress_help	Kun offline Server/Client LAN — ikke en cloud-funktion. Fra som standard: Ejeren tænder den én gang ved at gemme denne PIN (Team, også på en Client-kasse). Hvis denne PIN indtastes ved oplåsning i stedet for en rigtig personale-PIN, slettes bogføring på Serveren, og skrivebordet åbner som Ejer der ser normal ud — takster, parter, zoner, personale og indstillinger bliver. Skema og konfiguration slettes ikke. Aldrig den samme som nogens PIN. Slå fra med ryd-knappen.
 duress_pin_ph	Nød-PIN (4–12 cifre)
 duress_confirm_ph	Skriv igen for at bekræfte
 save_duress_pin	Gem nød-PIN

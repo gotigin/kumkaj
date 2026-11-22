@@ -624,7 +624,7 @@ unlock_with_login	Desbloquear con acceso
 update_my_password	Cambiar mi contraseña
 update_my_pin	Actualizar mi PIN
 duress_heading	PIN de desbloqueo de emergencia (solo dueño)
-duress_help	Opcional. Si se teclea este PIN al desbloquear en lugar del tuyo, se borran todas las entradas de los libros (envíos, libros mayores, historial) y el mostrador se abre como Dueño con aspecto normal — tarifas, partes, zonas, personal y ajustes se quedan. El esquema y la configuración no se borran. Úsalo solo si te obligan a desbloquear. Déjalo en blanco y guarda para desactivarlo. Nunca el mismo que el PIN de nadie.
+duress_help	Solo Server/Client en LAN sin conexión — no es función en la nube. Apagado por defecto: el propietario lo activa una vez al guardar este PIN (Equipo, también en una caja Cliente). Si se escribe este PIN al desbloquear en lugar de un PIN de personal real, se borran los asientos de los libros en el Servidor y la caja abre como Propietario con aspecto normal — tarifas, partidos, zonas, personal y ajustes se quedan. No se borran el esquema ni la configuración. Nunca igual que el PIN de nadie. Apáguelo con el botón borrar.
 duress_pin_ph	PIN de emergencia (4–12 dígitos)
 duress_confirm_ph	Escríbalo otra vez
 save_duress_pin	Guardar PIN de emergencia

@@ -624,7 +624,7 @@ unlock_with_login	Zhblloko me hyrje
 update_my_password	Përditëso fjalëkalimin tim
 update_my_pin	Përditëso kodin tim PIN
 duress_heading	PIN-i i zhbllokimit të urgjencës (vetëm Pronari)
-duress_help	Fakultative. Nëse ky kod PIN është shtypur në shkyçje në vend të tuajit, të gjitha regjistrimet e librave fshihen (rezervimet, regjistrat, historiku) dhe tavolina hapet si "Owner" duket normale - tarifat, festat, zonat, stafi dhe cilësimet qëndrojnë. Skema dhe konfigurimi nuk fshihen. Përdoreni vetëm nëse jeni të detyruar ta zhbllokoni. Lëreni bosh dhe ruajeni për ta fikur. Asnjëherë i njëjtë me PIN-in e askujt.
+duress_help	Vetëm Server/Client LAN offline — jo funksion cloud. Fikur si parazgjedhje: Pronari e ndez një herë duke ruajtur këtë PIN (Ekipi, edhe në një arkë Client). Nëse ky PIN shtypet në zhbllokim në vend të një PIN real stafi, fshihen regjistrimet e librave në Server dhe tavolina hapet si Pronar me pamje normale — tarifat, palët, zonat, stafi dhe cilësimet mbeten. Skema dhe konfigurimi nuk fshihen. Kurrë i njëjtë me PIN-in e dikujt. Fikeni me butonin e pastrimit.
 duress_pin_ph	PIN-i i urgjencës (4–12 shifra)
 duress_confirm_ph	Shkruajeni përsëri për ta konfirmuar
 save_duress_pin	Ruaj PIN-in e urgjencës

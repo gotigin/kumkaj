@@ -624,7 +624,7 @@ unlock_with_login	Debloke ak antre
 update_my_password	Mete modpas mwen ajou
 update_my_pin	Mete PIN mwen an ajou
 duress_heading	PIN debloke ijans (Pwopriyetè sèlman)
-duress_help	Si ou vle. Si yo tape PIN sa a nan déblotché olye pou yo pa w la, tout antre liv yo efase (rezèvasyon, ledgers, istwa) epi biwo a ouvri kòm Pwopriyetè ki parèt nòmal — tarif yo, pati yo, zòn, anplwaye yo ak anviwònman yo rete. Chema ak konfigirasyon yo pa efase. Sèvi ak sèlman si ou oblije déblotché. Kite vid epi sove pou fèmen. Pa janm menm jan ak PIN pèsonn.
+duress_help	Offline Server/Client LAN sèlman — se pa cloud. Etenn pa defo: Pwopriyetè a limen yon fwa lè li sove PIN sa a (Ekip, menm sou Client till). Si yo tape PIN sa a nan debloke olye de yon PIN anplwaye reyèl, antre liv yo efase sou Server epi biwo a louvri kòm Pwopriyetè ki sanble nòmal — pri, pati, zòn, anplwaye ak paramet yo rete. Schema ak config pa efase. Pa janm menm ak PIN okenn moun. Etenn ak bouton netwaye a.
 duress_pin_ph	PIN ijans (4–12 chif)
 duress_confirm_ph	Tape ankò pou konfime
 save_duress_pin	Anrejistre PIN ijans

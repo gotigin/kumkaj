@@ -624,7 +624,7 @@ unlock_with_login	Girişlə kilidi aç
 update_my_password	Parolumu yenilə
 update_my_pin	PIN-imi yenilə
 duress_heading	Fövqəladə kilid PIN-i (yalnız Sahib)
-duress_help	İstəyə bağlı. Kilid açılarkən sizin əvəzinizə bu PIN yazılsa, bütün kitab yazıları silinir (qəbullar, dəftərlər, tarixçə) və masa normal görünən Sahib kimi açılır — tariflər, tərəflər, zonalar, heyət və ayarlar qalır. Sxem və konfiqurasiya silinmir. Yalnız məcburən açmağınız lazım olanda istifadə edin. Söndürmək üçün boş buraxıb saxlayın. Heç kimin PIN-i ilə eyni olmasın.
+duress_help	Yalnız offline Server/Client LAN — bulud funksiyası deyil. Defolt sönülü: Sahib bu PIN-i saxlamaqla bir dəfə yandırır (Komanda, Client kassasında da). Kilidi açarkən real işçi PIN-i əvəzinə bu PIN yazılsa, Serverdə kitab qeydləri silinir və masa Sahib kimi normal görünüşlə açılır — tariflər, tərəflər, zonalar, personal və ayarlar qalır. Sxema və konfiqurasiya silinmir. Heç kəsin PIN-i ilə eyni olmasın. Təmizlə düyməsi ilə söndürün.
 duress_pin_ph	Fövqəladə PIN (4–12 rəqəm)
 duress_confirm_ph	Təsdiq üçün yenidən yazın
 save_duress_pin	Fövqəladə PIN-i saxla

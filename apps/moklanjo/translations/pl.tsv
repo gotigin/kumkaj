@@ -624,7 +624,7 @@ unlock_with_login	Odblokuj za pomocą loginu
 update_my_password	Zaktualizuj moje hasło
 update_my_pin	Zaktualizuj mój PIN
 duress_heading	Odblokowanie awaryjne PIN (tylko właściciel)
-duress_help	Fakultatywny. Jeśli przy odblokowaniu zostanie wpisany ten PIN zamiast Twojego, wszystkie wpisy w książkach zostaną usunięte (rezerwacje, księgi rachunkowe, historia), a biurko otworzy się jako Właściciel wyglądający normalnie — stawki, imprezy, strefy, personel i ustawienia pozostaną. Schemat i konfiguracja nie są usuwane. Używaj tylko wtedy, gdy jesteś zmuszony do odblokowania. Pozostaw puste i zapisz, aby wyłączyć. Nigdy taki sam, jak czyjkolwiek PIN.
+duress_help	Tylko offline Server/Klient w LAN — to nie funkcja chmury. Domyślnie wyłączone: właściciel włącza raz, zapisując ten PIN (Zespół, także na kasie Klienta). Jeśli przy odblokowaniu wpiszesz ten PIN zamiast prawdziwego PIN personelu, wpisy ksiąg na Serwerze są kasowane, a kasa otwiera się jako Właściciel z normalnym wyglądem — menu, ceny, stoły, personel i ustawienia zostają. Schemat i konfiguracja nie są usuwane. Nigdy taki sam jak czyjś PIN. Wyłącz przyciskiem wyczyść.
 duress_pin_ph	Alarmowy PIN (4–12 cyfr)
 duress_confirm_ph	Wpisz ponownie, aby potwierdzić
 save_duress_pin	Zapisz awaryjne PIN

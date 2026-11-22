@@ -624,7 +624,7 @@ unlock_with_login	用登录解锁
 update_my_password	修改我的密码
 update_my_pin	更新我的 PIN
 duress_heading	紧急解锁PIN（仅店主）
-duress_help	可选。如果开锁时输入的是这个 PIN 而不是你的，全部账本记录会被清除（寄件、分类账、历史），柜台会以店主身份打开，看起来正常 — 费率、往来方、区域、员工和设置都保留。结构和配置不会删除。只在被迫开锁时使用。留空并保存即可关闭。绝不能与任何人的 PIN 相同。
+duress_help	仅限离线局域网的服务器/客户端——不是云功能。默认关闭：店主保存此 PIN 一次即可开启（团队，包括在客户端收银上）。若解锁时输入此 PIN 而非真实员工 PIN，服务器上的账簿分录被清除，收银以店主身份正常打开——菜单、价格、桌台、员工与设置保留。不删除架构与配置。切勿与任何人的 PIN 相同。用清除按钮关闭。
 duress_pin_ph	紧急PIN（4–12位）
 duress_confirm_ph	再输入一次确认
 save_duress_pin	保存紧急PIN

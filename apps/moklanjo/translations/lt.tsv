@@ -624,7 +624,7 @@ unlock_with_login	Atrakinti prisijungimu
 update_my_password	Atnaujinti mano slaptažodį
 update_my_pin	Atnaujinti mano PIN kodą
 duress_heading	Avarinis atrakinimo PIN (tik Savininkas)
-duress_help	Neprivaloma. Jei atrakinant įvedamas šis PIN kodas, o ne jūsų, visi knygų įrašai bus ištrinti (užsakymai, knygos, istorija), o stalas atidaromas kaip savininkas, atrodantis įprastai – įkainiai, vakarėliai, zonos, darbuotojai ir nustatymai išlieka. Schema ir konfigūracija neištrinamos. Naudokite tik tada, kai esate priversti atrakinti. Palikite tuščią ir išsaugokite, kad išjungtumėte. Niekada nesutampa su kieno nors PIN.
+duress_help	Tik offline Server/Client LAN — ne debesų funkcija. Pagal numatymą išjungta: Savininkas įjungia kartą išsaugodamas šį PIN (Komanda, ir Client kasoje). Jei atrakinant įvedamas šis PIN vietoj tikro personalo PIN, knygų įrašai Server’yje ištrinami ir stalas atsidaro kaip Savininkas su įprasta išvaizda — tarifai, šalys, zonos, personalas ir nustatymai lieka. Schema ir konfigūracija netrinamos. Niekada toks pats kaip kieno nors PIN. Išjunkite valymo mygtuku.
 duress_pin_ph	Avarinis PIN (4–12 skaitmenų)
 duress_confirm_ph	Įveskite dar kartą patvirtinimui
 save_duress_pin	Išsaugoti avarinį PIN

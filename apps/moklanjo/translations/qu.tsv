@@ -624,7 +624,7 @@ unlock_with_login	Yaykuywan kichay
 update_my_password	Contraseñayta musuqyachiy
 update_my_pin	PIN nisqayta musuqyachiy
 duress_heading	Desbloqueo de emergencia PIN (Dueñolla) .
-duress_help	Akllanapaq. Sichus kay PIN kichaypi qillqasqa kachkan qampa rantinpi, llapa librokuna yaykuykuna pichasqa kanku (reservakuna, libro mayorkuna, historia) chaymanta mesa kichakun Dueño normal qhaway hina — tarifakuna, fiestakuna, zonas, personal chaymanta configuración qhipakunku. Esquema chaymanta config mana qullusqachu. Kichayta obligasqa kaspalla llamk'achiy. Ch’usaqllata saqispa wañuchinaykipaq waqaychay. Mana hayk'aqpas piqpa PIN nisqawan kaqllachu.
+duress_help	Offline Server/Client LANulla — mana cloudchu. Kichasqa mana: Dueño huk kutiqa kay PIN waqaychaspa kanchaykun (Equipo, Client cajapipas). Sichus kay PIN qillqakun kichaypi chiqap personal PIN rantinpuni, Serverpi libro yaykuykuna chinkachikun hinaspa escritorio Dueño hina normal rikchaywan kichakun — tarifas, partidos, zonas, personal, ajustesña. Schema, config mana chinkachikunchu. Ama pipas PIN hina kanachu. Wañuchiy limpiar botónwan.
 duress_pin_ph	Emergencia PIN (4–12 yupaykuna) .
 duress_confirm_ph	Hukmanta qillqay takyachinaykipaq
 save_duress_pin	Waqaychay emergencia PIN .

@@ -624,7 +624,7 @@ unlock_with_login	I-unlock gamit ang pag-login
 update_my_password	I-update ang aking password
 update_my_pin	I-update ang aking PIN
 duress_heading	Emergency unlock PIN (May-ari lang)
-duress_help	Opsyonal. Kung ang PIN na ito ay nai-type sa pag-unlock sa halip na sa iyo, ang lahat ng mga entry sa aklat ay mapupunas (mga booking, ledger, history) at magbubukas ang desk bilang May-ari na mukhang normal — ang mga rate, party, zone, staff at setting ay mananatili. Ang schema at config ay hindi tinatanggal. Gamitin lang kung napipilitan kang mag-unlock. Iwanang blangko at i-save para i-off. Hindi kailanman katulad ng PIN ng sinuman.
+duress_help	Offline Server/Client LAN lang — hindi cloud feature. Naka-off by default: bine-on ng May-ari nang minsan sa pag-save ng PIN na ito (Team, pati sa Client till). Kung ito ang PIN na i-type sa unlock sa halip na totoong staff PIN, mabubura ang mga entry sa libro sa Server at magbubukas ang desk bilang May-ari na mukhang normal — mananatili ang rate, party, zone, staff at settings. Hindi mabubura ang schema at config. Huwag kailanman kapareho ng PIN ninuman. I-off gamit ang clear button.
 duress_pin_ph	Emergency PIN (4–12 digit)
 duress_confirm_ph	Mag-type muli para kumpirmahin
 save_duress_pin	I-save ang emergency PIN

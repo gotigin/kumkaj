@@ -624,7 +624,7 @@ unlock_with_login	Kirish bilan qulfni ochish
 update_my_password	Parolimni yangilash
 update_my_pin	PIN kodimni yangilang
 duress_heading	Favqulodda qulf ochish PIN (faqat Egasi)
-duress_help	Ixtiyoriy. Agar bu PIN kod sizniki o‘rniga qulfni ochishda kiritilsa, barcha kitoblar yozuvlari o‘chiriladi (bandlar, daftarlar, tarix) va stol Egasi ko‘rinishida ochiladi — tariflar, partiyalar, zonalar, xodimlar va sozlamalar qoladi. Sxema va konfiguratsiya o'chirilmaydi. Agar siz qulfni ochishga majbur bo'lsangizgina foydalaning. Bo'sh qoldiring va o'chirish uchun saqlang. Hech kimning PIN-kodi bilan bir xil emas.
+duress_help	Faqat offline Server/Client LAN — bulut funksiyasi emas. Standart o‘chiq: Egasi shu PIN ni saqlab bir marta yoqadi (Jamoa, Client kassasida ham). Qulfni ochganda haqiqiy xodim PIN o‘rniga shu PIN yozilsa, Serverdagi kitob yozuvlari o‘chiriladi va stol Egasi sifatida oddiy ko‘rinishda ochiladi — tariflar, tomonlar, zonalar, xodimlar va sozlamalar qoladi. Sxema va konfiguratsiya o‘chirilmaydi. Hech kimning PIN i bilan bir xil bo‘lmasin. Tozalash tugmasi bilan o‘chiring.
 duress_pin_ph	Favqulodda PIN (4–12 raqam)
 duress_confirm_ph	Tasdiqlash uchun qayta yozing
 save_duress_pin	Favqulodda PIN ni saqlash

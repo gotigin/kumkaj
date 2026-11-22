@@ -624,7 +624,7 @@ unlock_with_login	Lås upp med inloggning
 update_my_password	Uppdatera mitt lösenord
 update_my_pin	Uppdatera min PIN-kod
 duress_heading	PIN-kod för nödupplåsning (endast ägare)
-duress_help	Frivillig. Om denna PIN-kod skrivs in vid upplåsning istället för din, raderas alla bokposter (bokningar, reskontra, historik) och skrivbordet öppnas som ägaren ser normalt ut - priser, fester, zoner, personal och inställningar stannar. Schema och konfiguration raderas inte. Använd endast om du tvingas låsa upp. Lämna tomt och spara för att stänga av. Aldrig samma som någons PIN-kod.
+duress_help	Endast offline Server/Client LAN — inte en molnfunktion. Av som standard: Ägaren slår på den en gång genom att spara denna PIN (Team, även på en Client-kassa). Om denna PIN skrivs vid upplåsning i stället för en riktig personal-PIN raderas bokföring på Servern och skrivbordet öppnas som Ägare som ser normal ut — taxor, parter, zoner, personal och inställningar blir kvar. Schema och konfiguration raderas inte. Aldrig samma som någons PIN. Stäng av med rensa-knappen.
 duress_pin_ph	Nöd-PIN (4–12 siffror)
 duress_confirm_ph	Skriv igen för att bekräfta
 save_duress_pin	Spara nöd-PIN

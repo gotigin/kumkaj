@@ -624,7 +624,7 @@ unlock_with_login	Giriş bilen açyň
 update_my_password	Parolymy täzeläň
 update_my_pin	PIN-i täzeläň
 duress_heading	Gyssagly gulpy açmak PIN (Diňe eýesi)
-duress_help	Meýletin. Bu PIN seniň deregiňe gulp bilen ýazylsa, ähli kitap ýazgylary süpürilýär (bronlamalar, ýazgylar, taryh) we stoluň eýesi adaty görünýän ýaly açylýar - nyrhlar, oturylyşyklar, zonalar, işgärler we sazlamalar. Shema we konfigurasiýa pozulmaýar. Diňe gulpy açmaga mejbur bolsaňyz ulanyň. Boş goýuň we öçürmek üçin tygşytlaň. Hiç haçan hiç kimiň PIN-i bilen deň bolmaz.
+duress_help	Diňe offline Server/Client LAN — bulut aýratynlygy däl. Deslapdan öçürilen: Eýesi şu PIN-i saklap bir gezek açýar (Topar, Client kassasynda hem). Gulpy açanda hakyky işgär PIN-iň ýerine şu PIN ýazylsa, Serverdäki kitap ýazgylary öçürilýär we stol Eýesi hökmünde adaty görnüşde açylýar — tarifler, taraplar, zonalar, işgärler we sazlamalar galýar. Shema we konfigurasiýa öçürilmeýär. Hiç kimiň PIN-i bilen deň bolmasyn. Arassala düwmesi bilen öçüriň.
 duress_pin_ph	Gyssagly PIN (4–12 san)
 duress_confirm_ph	Tassyklamak üçin gaýtadan ýazyň
 save_duress_pin	Gyssagly kömek PIN

@@ -624,7 +624,7 @@ unlock_with_login	Buɗe da shiga
 update_my_password	Sabunta kalmar sirrina
 update_my_pin	Sabunta PIN na
 duress_heading	PIN na buɗewa na gaggawa (Mamallaki kaɗai)
-duress_help	Na zaɓi. Idan an buga wannan PIN ɗin a buše maimakon naku, ana share duk shigarwar littattafan (littattafai, ledoji, tarihi) kuma tebur yana buɗewa kamar yadda Mai shi ke kallon al'ada - ƙimar kuɗi, jam'iyyun, yankuna, ma'aikata da saitunan saiti. Ba a share tsari da saiti ba. Yi amfani kawai idan an tilasta muku buše. Bar komai kuma a ajiye don kashewa. Karka taɓa zama daidai da PIN ɗin kowa.
+duress_help	Offline Server/Client LAN kawai — ba cloud ba. Kashe ta tsohuwa: Mai shi yana kunna sau ɗaya ta hanyar adana wannan PIN (Team, har ma a Client till). Idan an buga wannan PIN a buɗewa maimakon ainihin PIN ma'aikaci, shigarwar littattafai a Server ana goge su kuma tebur yana buɗewa a matsayin Mai shi mai kama da na yau da kullum — farashi, bangarori, yankuna, ma'aikata da saituna sun rage. Schema da config ba a share su. Kada ta zama iri ɗaya da PIN kowa. Kashe da maɓallin share.
 duress_pin_ph	PIN na gaggawa (lambobi 4–12)
 duress_confirm_ph	Sake rubutawa don tabbatarwa
 save_duress_pin	Ajiye PIN na gaggawa

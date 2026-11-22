@@ -624,7 +624,7 @@ unlock_with_login	Desbloqueja amb l'inici de sessió
 update_my_password	Actualitza la meva contrasenya
 update_my_pin	Actualitza el meu PIN
 duress_heading	PIN de desbloqueig d'emergència (només el Propietari)
-duress_help	Opcional. Si s'escriu aquest PIN al desbloquejar en comptes del teu, s'esborren totes les entrades dels llibres (reserves, llibres majors, historial) i l'escriptori s'obre com a Propietari amb un aspecte normal: les tarifes, les festes, les zones, el personal i la configuració es mantenen. L'esquema i la configuració no s'eliminen. Utilitzeu només si esteu obligats a desbloquejar. Deixa en blanc i desa per desactivar-lo. Mai és el mateix que el PIN de ningú.
+duress_help	Només Server/Client en LAN fora de línia — no és funció al núvol. Desactivat per defecte: el propietari l’activa un cop desant aquest PIN (Equip, també en una caixa Client). Si es tecleja aquest PIN en desbloquejar en lloc d’un PIN de personal real, s’esborren les entrades dels llibres al Server i l’escriptori s’obre com a Propietari amb aspecte normal — tarifes, parts, zones, personal i ajustos es queden. L’esquema i la configuració no s’esborren. Mai igual que el PIN de ningú. Apagueu-lo amb el botó d’esborrar.
 duress_pin_ph	PIN d'emergència (4–12 dígits)
 duress_confirm_ph	Torneu-lo a escriure per confirmar
 save_duress_pin	Desa el PIN d'emergència

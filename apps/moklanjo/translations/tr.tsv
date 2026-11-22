@@ -624,7 +624,7 @@ unlock_with_login	Girişle kilidi aç
 update_my_password	Parolamı güncelle
 update_my_pin	PIN'imi güncelle
 duress_heading	Acil kilit açma PIN'i (yalnızca sahip)
-duress_help	İsteğe bağlı. Kilit açma sırasında sizinki yerine bu PIN yazılırsa, tüm kitap girişleri silinir (rezervasyonlar, defterler, geçmiş) ve masa, Sahip normal görünen bir şekilde açılır; ücretler, partiler, bölgeler, personel ve ayarlar kalır. Şema ve yapılandırma silinmez. Yalnızca kilidi açmak zorunda kaldığınızda kullanın. Boş bırakın ve kapatmak için kaydedin. Asla kimsenin PIN'iyle aynı olmaz.
+duress_help	Yalnızca çevrimdışı Server/İstemci LAN — bulut özelliği değil. Varsayılan kapalı: Sahip bu PIN’i kaydederek bir kez açar (Ekip, bir İstemci kasasında da). Kilit açılışında gerçek bir personel PIN’i yerine bu yazılırsa, defter kayıtları Sunucuda silinir ve kasa Sahip olarak normal görünür — ücretler, taraflar, bölgeler, personel ve ayarlar kalır. Şema ve yapılandırma silinmez. Kimsenin PIN’iyle aynı olmasın. Temizle düğmesiyle kapatın.
 duress_pin_ph	Acil PIN (4–12 hane)
 duress_confirm_ph	Onay için yeniden yazın
 save_duress_pin	Acil PIN'i kaydet

@@ -624,7 +624,7 @@ unlock_with_login	Avage sisselogimisega
 update_my_password	Uuenda mu parooli
 update_my_pin	Uuenda minu PIN-koodi
 duress_heading	Hädaavamine PIN (ainult omanik)
-duress_help	Valikuline. Kui avamisel sisestatakse see PIN-kood teie oma asemel, kustutatakse kõik raamatute kirjed (broneeringud, pearaamatud, ajalugu) ja töölaud avaneb tavalise omanikuna – hinnad, peod, tsoonid, töötajad ja seaded jäävad alles. Skeemi ja konfiguratsiooni ei kustutata. Kasutage ainult siis, kui olete sunnitud lukust avama. Jätke tühjaks ja salvestage väljalülitamiseks. Mitte kunagi sama, mis kellegi PIN-kood.
+duress_help	Ainult offline Server/Client LAN — pole pilvefunktsioon. Vaikimisi väljas: Omanik lülitab korra sisse selle PIN-i salvestades (Meeskond, ka Client kassas). Kui avamisel sisestatakse see PIN päris personali PIN-i asemel, kustutatakse Serveril raamatukanded ja laud avaneb Omanikuna normaalse välimusega — tariifid, osapooled, tsoonid, personal ja seaded jäävad. Skeemi ja seadistust ei kustutata. Kunagi sama kui kellegi PIN. Lülita välja tühjendusnupuga.
 duress_pin_ph	Hädaabi PIN (4–12 numbrit)
 duress_confirm_ph	Kinnitamiseks tippige uuesti
 save_duress_pin	Salvesta hädaolukord PIN

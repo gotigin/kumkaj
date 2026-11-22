@@ -624,7 +624,7 @@ unlock_with_login	Ku fur gelitaanka
 update_my_password	Cusbooneysii furahayga sirta
 update_my_pin	Cusbooneysii PIN-kayga
 duress_heading	PIN-ka furitaanka degdegga ah (Milkiilaha kaliya)
-duress_help	Ikhtiyaari Haddii lambarka sirta ah lagu qoro furaha halkii kaaga, dhammaan buugaagta la geliyo waa la tirtiraa (buugis, buug-gacmeedyo, taariikh) oo miisku wuxuu u furmayaa sidii mulkiilaha oo u muuqda mid caadi ah - qiimayaasha, xafladaha, aagagga, shaqaalaha iyo habayntu way joogayaan. Qorshaha iyo habaynta lama tirtirin. Isticmaal kaliya haddii lagugu qasbo inaad furto. Banaan ku dhaaf oo kaydi si aad u damiso. Marna lama mid aha PIN-ka qof kasta.
+duress_help	Offline Server/Client LAN oo keliya — maaha cloud. Off ahaan: Mulkiiluhu wuxuu shidaa hal mar isagoo kaydiya PIN-kan (Koox, Client till sidoo kale). Haddii PIN-kan la qoro marka la furo beddelka PIN shaqaale dhab ah, diiwaanka buugaagta Server waa la tirtiro oo miiska wuxuu u furmaa sidii Mulkiile oo caadi u eg — qiimaha, dhinacyada, aagagga, shaqaalaha iyo settings way sii jiraan. Schema iyo config lama tirtirayo. Weligaa ha la mid noqon PIN qof. Demi badhanka nadiifinta.
 duress_pin_ph	PIN degdeg ah (4–12 lambar)
 duress_confirm_ph	Mar kale qor si aad u xaqiijiso
 save_duress_pin	Kaydi PIN-ka degdegga ah

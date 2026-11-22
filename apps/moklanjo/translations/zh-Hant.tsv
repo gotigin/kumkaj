@@ -624,7 +624,7 @@ unlock_with_login	用登錄解鎖
 update_my_password	修改我的密碼
 update_my_pin	更新我的 PIN 碼
 duress_heading	緊急解鎖PIN（僅店主）
-duress_help	選修的。如果在解鎖時輸入此 PIN 碼而不是您的 PIN 碼，則所有書籍條目都會被擦除（預訂、分類帳、歷史記錄），並且辦公桌打開時所有者看起來很正常 - 價格、派對、區域、員工和設定保持不變。架構和配置不會被刪除。僅當您被迫解鎖時才使用。留空並儲存以關閉。切勿與任何人的 PIN 碼相同。
+duress_help	僅離線伺服器/客戶端區域網 — 非雲端功能。預設關閉：負責人儲存此 PIN 後開啟一次（團隊，含客戶端櫃檯）。若解鎖時輸入此 PIN 而非真實員工 PIN，伺服器上的帳簿分錄會清空，櫃檯以負責人正常外觀開啟 — 運價、往來、分區、員工與設定保留。結構與設定不會刪除。不可與任何人的 PIN 相同。用清除按鈕關閉。
 duress_pin_ph	緊急PIN（4–12位）
 duress_confirm_ph	再輸入一次確認
 save_duress_pin	保存緊急PIN

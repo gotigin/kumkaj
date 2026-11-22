@@ -624,7 +624,7 @@ unlock_with_login	Ontgrendelen met login
 update_my_password	Mijn wachtwoord wijzigen
 update_my_pin	Mijn PIN wijzigen
 duress_heading	Nood-ontgrendelings-PIN (alleen eigenaar)
-duress_help	Optioneel. Als deze PIN bij het ontgrendelen wordt getypt in plaats van die van u, worden alle boekregels gewist (boekingen, boeken, geschiedenis) en opent het loket als eigenaar, ogenschijnlijk normaal — tarieven, partijen, zones, personeel en instellingen blijven. Schema en configuratie worden niet verwijderd. Gebruik dit alleen als u gedwongen wordt te ontgrendelen. Laat leeg en sla op om uit te zetten. Nooit dezelfde PIN als die van iemand.
+duress_help	Alleen offline Server/Client op LAN — geen cloudfunctie. Standaard uit: de eigenaar zet het één keer aan door deze PIN op te slaan (Team, ook op een Client-kassa). Als deze PIN bij ontgrendelen i.p.v. een echte personeels-PIN wordt getypt, worden boekingen op de Server gewist en opent de kassa als Eigenaar met normaal uiterlijk — tarieven, partijen, zones, personeel en instellingen blijven. Schema en config worden niet verwijderd. Nooit hetzelfde als iemands PIN. Uit met de wis-knop.
 duress_pin_ph	Nood-PIN (4–12 cijfers)
 duress_confirm_ph	Typ opnieuw ter bevestiging
 save_duress_pin	Nood-PIN opslaan

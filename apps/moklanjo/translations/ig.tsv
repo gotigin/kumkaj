@@ -624,7 +624,7 @@ unlock_with_login	Mepee site na nbanye
 update_my_password	Melite okwuntughe m
 update_my_pin	Melite PIN m
 duress_heading	PIN mmepe mberede (naanị Onye nwe)
-duress_help	Nhọrọ. Ọ bụrụ na pịnyere PIN a na mkpọghe kama nke gị, a na-ehichapụ ndenye akwụkwọ niile (nkwado, akwụkwọ akụkọ, akụkọ ihe mere eme) ma desktọpụ ahụ ga-emepe ka onye nwe ya na-ele anya nkịtị - ọnụego, oriri, mpaghara, ndị ọrụ na ntọala nọrọ. A naghị ehichapụ atụmatụ na nhazi. Jiri naanị ma ọ bụrụ na amanye gị imeghe. Hapụ oghere wee chekwaa ka gbanyụọ. Ọ dịghị adị ka PIN onye ọ bụla.
+duress_help	Offline Server/Client LAN naanị — ọ bụghị cloud. Gbanyụrụ site na ndabara: Onye nwe na-agbanye otu ugboro site na ịchekwa PIN a (Otu, ọbụna na Client till). Ọ bụrụ na PIN a ka edepụtara na mgbape kama PIN ọrụ n'ezie, ndenye akwụkwọ na Server ka ehichapụrụ ma tebụl meghee dị ka Onye nwe na-ele anya nkịtị — ọnụego, ndị otu, mpaghara, ndị ọrụ na ntọala na-anọ. Schema na config anaghị ehichapụ. Ekwela ka ọ bụrụ otu ihe na PIN onye ọ bụla. Gbanyụọ site na bọtịnụ ihicha.
 duress_pin_ph	PIN mberede (ọnụọgụ 4–12)
 duress_confirm_ph	Dee ọzọ ka ị kwado
 save_duress_pin	Chekwaa PIN mberede

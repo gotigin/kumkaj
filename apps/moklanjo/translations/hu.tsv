@@ -624,7 +624,7 @@ unlock_with_login	Feloldás bejelentkezéssel
 update_my_password	Frissítse a jelszavamat
 update_my_pin	Frissítse a PIN-kódomat
 duress_heading	Vészfeloldás PIN (csak a tulajdonos)
-duress_help	Választható. Ha ezt a PIN-kódot írják be a feloldáskor az Öné helyett, akkor az összes könyvbejegyzés törlődik (foglalások, főkönyvek, előzmények), és az asztal normál kinézetű Tulajdonosként nyílik meg – az árak, a pártok, a zónák, a személyzet és a beállítások megmaradnak. A séma és a konfiguráció nem törlődik. Csak akkor használja, ha kénytelen feloldani. Hagyja üresen, és mentse a kikapcsoláshoz. Soha nem ugyanaz, mint bárkinek a PIN-kódja.
+duress_help	Csak offline Server/Client LAN — nem felhőfunkció. Alapból ki: a Tulajdonos egyszer bekapcsolja ennek a PIN-nek a mentésével (Csapat, Client kasszán is). Ha feloldáskor ezt a PIN-t írják be valódi személyzeti PIN helyett, a Serveren a könyvbejegyzések törlődnek, és az asztal Tulajdonosként, normál kinézettel nyílik — díjak, felek, zónák, személyzet és beállítások megmaradnak. A séma és a konfiguráció nem törlődik. Soha ne egyezzen senki PIN-jével. Kapcsolja ki a törlés gombbal.
 duress_pin_ph	Vészhelyzet PIN (4–12 számjegy)
 duress_confirm_ph	A megerősítéshez írja be újra
 save_duress_pin	Vészhelyzet mentése PIN

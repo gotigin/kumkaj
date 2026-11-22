@@ -624,7 +624,7 @@ unlock_with_login	Sblocca con accesso
 update_my_password	Cambia la mia password
 update_my_pin	Aggiorna il mio PIN
 duress_heading	PIN di sblocco di emergenza (solo titolare)
-duress_help	Facoltativo. Se questo PIN viene digitato allo sblocco al posto del tuo, tutte le scritture dei libri vengono cancellate (spedizioni, mastri, cronologia) e il banco si apre come Titolare, con aspetto normale — tariffe, parti, zone, personale e impostazioni restano. Schema e configurazione non si cancellano. Usalo solo se sei costretto a sbloccare. Lascia vuoto e salva per disattivare. Mai uguale al PIN di qualcuno.
+duress_help	Solo Server/Client offline in LAN — non è una funzione cloud. Spento di default: il proprietario lo attiva una volta salvando questo PIN (Team, anche su una cassa Client). Se al sblocco digiti questo PIN al posto di un PIN staff reale, le scritture dei libri sul Server vengono cancellate e la cassa si apre come Proprietario con aspetto normale — tariffe, parti, zone, personale e impostazioni restano. Schema e config non si cancellano. Mai uguale al PIN di qualcuno. Spegnilo col pulsante cancella.
 duress_pin_ph	PIN di emergenza (4–12 cifre)
 duress_confirm_ph	Digitare di nuovo
 save_duress_pin	Salva PIN di emergenza

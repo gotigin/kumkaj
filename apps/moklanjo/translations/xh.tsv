@@ -624,7 +624,7 @@ unlock_with_login	Vula ngokungena
 update_my_password	Hlaziya igama lam lokugqitha
 update_my_pin	Hlaziya i-PIN yam
 duress_heading	I-PIN yokuvula engxamisekileyo (Umnini kuphela)
-duress_help	Ukhetho. Ukuba le PIN ichwethezwe ekuvuleni endaweni yeyakho, onke amangeno eencwadi ayacinywa (ubhukisho, iileja, imbali) kwaye idesika ivula njengoMnikazi ojongeka njengesiqhelo — iireyithi, amaqela, iindawo, abasebenzi kunye nesetingi zihlala. I-schema kunye noqwalaselo alucinywanga. Sebenzisa kuphela xa unyanzelekile ukuba uvule. Shiya kungenanto kwaye ugcine ukuze ucime. Ayisoze yafana ne-PIN yakhe nabani na.
+duress_help	I-offline Server/Client LAN kuphela — ayiyonto ye-cloud. Icimile ngokwendalo: Umnini uyivula kanye ngokugcina le PIN (Iqela, nakwi-Client till). Ukuba le PIN ithayipha ekuvuleni endaweni ye-PIN yabasebenzi yokwenyani, okufakiweyo kwiincwadi kwi-Server kuyacinywa kwaye ideski livuleka njengoMnini obonakala eqhelekile — amaxabiso, amaqela, iindawo, abasebenzi kunye nezicwangciso ziyahlala. I-schema ne-config azicinywa. Ungaze ifane ne-PIN yanabani na. Cima ngeqhosha lokucima.
 duress_pin_ph	I-PIN engxamisekileyo (amanani 4–12)
 duress_confirm_ph	Chwetheza kwakhona ukuze uqinisekise
 save_duress_pin	Gcina i-PIN engxamisekileyo

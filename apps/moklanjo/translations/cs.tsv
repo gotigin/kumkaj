@@ -624,7 +624,7 @@ unlock_with_login	Odemkněte přihlášením
 update_my_password	Aktualizujte mé heslo
 update_my_pin	Aktualizujte můj PIN
 duress_heading	Nouzové odemknutí PIN (pouze vlastník)
-duress_help	Volitelný. Pokud tento PIN zadáte při odemykání místo vašeho, všechny položky knih budou vymazány (rezervace, účetní knihy, historie) a stůl se otevře jako vlastník vypadá normálně – sazby, večírky, zóny, personál a nastavení zůstanou. Schéma a konfigurace nebudou odstraněny. Používejte pouze v případě, že jste nuceni odemknout. Ponechte prázdné a uložte pro vypnutí. Nikdy není stejný jako něčí PIN.
+duress_help	Jen offline Server/Client v LAN — není cloudová funkce. Ve výchozím stavu vypnuto: majitel to jednou zapne uložením tohoto PIN (Tým, i na pokladně Client). Pokud se při odemčení zadá tento PIN místo skutečného personálního PIN, smažou se zápisy knih na Serveru a pult se otevře jako Majitel s normálním vzhledem — sazby, strany, zóny, personál a nastavení zůstanou. Schéma a konfigurace se nemazají. Nikdy stejný jako něčí PIN. Vypněte tlačítkem vymazat.
 duress_pin_ph	Nouzové PIN (4–12 číslic)
 duress_confirm_ph	Zadejte znovu pro potvrzení
 save_duress_pin	Uložit nouzové PIN

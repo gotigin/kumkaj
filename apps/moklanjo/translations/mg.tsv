@@ -624,7 +624,7 @@ unlock_with_login	Esory ny hidy amin'ny fidirana
 update_my_password	Vaovao ny tenimiafiko
 update_my_pin	Havaozy ny PIN-ko
 duress_heading	Fanokafana vonjy maika PIN (Ho an'ny Tompony ihany)
-duress_help	Tsy voatery. Raha soratana amin'ny fisokafana ity PIN ity fa tsy ny anao, dia voafafa avokoa ny fidirana amin'ny boky (famandrihana, bokim-bola, tantara) ary misokatra ny birao raha toa ka mijanona ho ara-dalàna ny tompony — ny sarany, ny fety, ny faritra, ny mpiasa ary ny toe-javatra mijanona. Tsy voafafa ny schema sy ny config. Ampiasao ihany raha voatery manokatra. Avelao ho banga ary tehirizo mba hialana. Tsy mitovy amin'ny PIN an'iza na iza.
+duress_help	Offline Server/Client LAN ihany — tsy cloud. Maty amin'ny alalan'ny default: Ny Tompony manala azy indray mandeha amin'ny fitehirizana ity PIN ity (Ekipa, ao amin'ny Client till koa). Raha sofina ity PIN ity amin'ny fanokafana fa tsy PIN mpiasa tena izy, dia voafafa ny fidirana boky ao amin'ny Server ary misokatra ny birao toy ny Tompony mitovy amin'ny mahazatra — vidiny, antoko, faritra, mpiasa ary settings mijanona. Tsy voafafa ny schema sy config. Aza mitovy amin'ny PIN an'olona. Vonoy amin'ny bokotra fanalana.
 duress_pin_ph	Vonjy maika PIN (isa 4–12)
 duress_confirm_ph	Soraty indray mba hanamafisana
 save_duress_pin	Tahirizo ny PIN vonjy maika

@@ -624,7 +624,7 @@ unlock_with_login	Iftaħ bil-login
 update_my_password	Aġġorna l-password tiegħi
 update_my_pin	Aġġorna l-PIN tiegħi
 duress_heading	PIN ta' sblokk ta' emerġenza (Sid biss)
-duress_help	Fakultattiv. Jekk dan il-PIN jiġi ttajpjat waqt il-ftuħ minflok tiegħek, l-entrati kollha tal-kotba jintmesħu (prenotazzjonijiet, kotba, storja) u l-iskrivanija tiftaħ bħala Sid li tidher normali — rati, partijiet, żoni, persunal u settings jibqgħu. L-iskema u l-konfigurazzjoni mhumiex imħassra. Uża biss jekk tkun sfurzat li tiftaħ. Ħalli vojt u ħlief biex titfi. Qatt l-istess bħall-PIN ta 'ħadd.
+duress_help	Server/Client LAN offline biss — mhix karatteristika cloud. Mitfi b’mod awtomatiku: is-Sid jixgħelha darba billi jsalva dan il-PIN (Tim, anke fuq kaxxa Client). Jekk dan il-PIN jinkiteb fl-unlock minflok PIN tal-istaff reali, l-entrati tal-kotba jintmesħu fuq is-Server u l-iskrivanija tinfetaħ bħala Sid b’dehra normali — rati, partijiet, żoni, staff u settings jibqgħu. L-iskema u l-konfigurazzjoni ma jitħassrux. Qatt l-istess bħall-PIN ta’ ħadd. Itfi bil-buttuna ċara.
 duress_pin_ph	PIN ta' Emerġenza (4–12-il ċifra)
 duress_confirm_ph	Erġa' ittajpja biex tikkonferma
 save_duress_pin	Issejvja PIN ta' emerġenza
