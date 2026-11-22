@@ -683,7 +683,7 @@ logo_yours	Logo: logo eich siop — yn cael ei ddangos ar sgriniau a derbynebau
 logo_default	Logo: marc Kumkaj (rhagosodiad) — dewiswch eich un chi os oes gennych un
 setup_complete	Gosodiad wedi'i gwblhau
 onboard_fresh_tmpl	Newydd · {} — mae'r catalog yn dechrau'n wag; ychwanegwch eitemau yn Eitemau, yna Wedi gorffen.
-onboard_book_tmpl	Book · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
+onboard_book_tmpl	Llyfr · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
 tmpl_blurb	Cownter fferyllfa: meddyginiaethau, swp/dod i ben, khata, llyfrau.
 reports_facet_title	Adroddiadau
 reports_facet_help	Llyfrau'r dydd, heneiddio partïon, postiadau banc, ac elw a cholled y cyfnod.

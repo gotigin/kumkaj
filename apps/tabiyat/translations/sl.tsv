@@ -683,7 +683,7 @@ logo_yours	Logotip: logotip vašega lokala — prikazan na zaslonih in računih
 logo_default	Logotip: znak Kumkaj (privzeto) — izberite svojega, če ga imate
 setup_complete	Nastavitev končana
 onboard_fresh_tmpl	Novo · {} — katalog se začne prazen; dodajte artikle v Artikli, nato Končano.
-onboard_book_tmpl	Book · {} — dodajte artikle in začetni kredit, nato Končano.
+onboard_book_tmpl	Knjiga · {} — dodajte artikle in začetni kredit, nato Končano.
 tmpl_blurb	Lekarniški pult: zdravila, serija/rok uporabnosti, khata, knjige.
 reports_facet_title	Poročila
 reports_facet_help	Dnevniki, staranje partnerjev, bančne knjižbe in obdobni dobiček in izguba.

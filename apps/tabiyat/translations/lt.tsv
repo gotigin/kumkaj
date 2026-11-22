@@ -683,7 +683,7 @@ logo_yours	Logotipas: jūsų parduotuvės logotipas — rodomas ekranuose ir kvi
 logo_default	Logotipas: Kumkaj ženklas (numatytasis) — jei turite, pasirinkite savo
 setup_complete	Sąranka baigta
 onboard_fresh_tmpl	Šviežia · {} — katalogas prasideda tuščias; pridėkite prekes Prekėse, tada Atlikta.
-onboard_book_tmpl	Book · {} — pridėkite prekes ir pradinį kreditą, tada Atlikta.
+onboard_book_tmpl	Knyga · {} — pridėkite prekes ir pradinį kreditą, tada Atlikta.
 tmpl_blurb	Vaistinės skaitiklis: vaistai, partija / galiojimo laikas, khata, knygos.
 reports_facet_title	Ataskaitos
 reports_facet_help	Dienos knygos, šalių senėjimas, banko įrašai ir laikotarpio pelnas bei nuostolis.

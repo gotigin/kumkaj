@@ -38,13 +38,13 @@ settle_card	Kart kartoçkasy
 items	Dermanlar
 nav_items	Dermanlar
 items_help	Redaktirlemek üçin bir elemente basyň. Täze element formany arassalaýar. Ady ýa-da gysga kody bilen gözläň, bahany kesgitläň (0 gowy), soňra Goşuň. Satyşlar eýýäm hasaba alnan atlary saklaýarlar.
-add_item	Menýu elementini goşuň
-new_item	Täze menýu elementi
-adding_item	Täze menýu elementini goşmak
+add_item	Harytini goşuň
+new_item	Täze haryti
+adding_item	Täze harytini goşmak
 editing_item	Redaktirlemek
 save	Saklaň
 remove	Aýyr
-removed_items	Menýu elementleri aýryldy
+removed_items	Harytleri aýryldy
 removed_help	Dikeltmek elementi edil öňki ýaly goýýar - bahasy, suraty we kategoriýasy.
 restore_item	Dikelt
 empty_catalog	Entek derman ýok.
@@ -68,7 +68,7 @@ applied	Ulanylýar
 note_ph	Bellik (islege görä)
 rounded	TERJIME EDILDI
 split	Bölün
-bill_item_layout	Menýu menýusynyň tertibi
+bill_item_layout	Menýu harytsynyň tertibi
 bill_item_layout_columns	Sütünler
 bill_item_layout_stacked	Toplanan
 bill_item_header	Sütün sözbaşylary
@@ -168,13 +168,13 @@ reports_expenses	Bank ýazgysy & P&L
 nav_reports	Hasabat
 nav_settings	Sazlamalar
 nav_lock	Gulp
-all_items	Menýu elementleriniň hemmesi
+all_items	Harytleriniň hemmesi
 frequent	Quygy-ýygydan
-added_items	Menýu elementleri goşuldy
+added_items	Harytleri goşuldy
 added_items_empty	Bu tölegde entek hiç zat ýok - itemshli elementlerden ýa-da kategoriýadan bir zat goşuň.
 frequent_config_help	Doldurylan kagyzlardan köp satylan zatlar. Näçe gün seretmelidigini we näçe zady görkezmelidigini kesgitläň.
 frequent_days_ph	Günler (1)
-frequent_limit_ph	Menýu elementleri (24)
+frequent_limit_ph	Harytleri (24)
 frequent_apply	Giriş
 frequent_saved	Quygy-ýygydan: soňky {d} günler, iň ýokary {n} - {c} zatlar
 frequent_empty	Bu döwürde entek gutarnykly satuw ýok - hasaby çözüň (Sazlamalar şeýle diýlende rugsat berilýär) we olar şu ýerde görkezýärler.
@@ -240,7 +240,7 @@ dont_use	Ulanmaň
 add_branch	Şaha goşuň
 add_conversion	Öwürmek goşuň
 add_dishes_items	Haryt goşuň
-add_item_plain	Menýu elementini goşuň
+add_item_plain	Harytini goşuň
 add_note	Bellik goşuň
 add_opening_balance	Açylyş balansyny goşuň
 add_staff	Işgär goşuň
@@ -287,7 +287,7 @@ clear_icon	Nyşan arassala
 clear_photo	Suraty arassalaň
 copy_day_book_csv	Gün ýazgysyny CSV göçüriň
 copy_day_close	Güni ýakyn wagtda göçüriň
-copy_items_csv	Menýu elementlerini CSV göçüriň
+copy_items_csv	Harytlerini CSV göçüriň
 copy_outstanding_csv	Ajaýyp CSV göçüriň
 copy_parties_csv	Müşderileri we üpjün edijileri göçüriň CSV
 copy_party_ledger_csv	Müşderi ýazgysyny CSV göçüriň
@@ -337,9 +337,9 @@ other_devices_help	Bu enjamda (Serwer): Beýleki enjamlar extra Goşmaça işlem
 forget_shop	Bu dükany ýatdan çykaryň
 goods_received	Harytlar
 import_day	Import güni
-import_items_csv_plain	Menýu elementlerini import CSV…
+import_items_csv_plain	Harytlerini import CSV…
 import_parties_csv	Müşderileri we üpjün edijileri import ediň CSV…
-item_name	Menýu menýusynyň ady
+item_name	Menýu harytsynyň ady
 login_id_ph	Ulanyjy ady
 mark_cleared	Mark arassalandy
 new_party_clear	Täze müşderi ýa-da üpjün ediji (anyk görnüş)
@@ -574,7 +574,7 @@ brand_shown_help	Programmanyň içindäki ekranlarda görkezilýär. Bu enjamda 
 app_icon	Programma nyşany
 logo_help	Programmadaky ekranlarda goşmaça dükan belligi.
 onboard_layout	Näme alýarsyň
-item_photo_help	Meýletin. Suratsyz menýu elementiniň adyndan baş harplary görkezýäris.
+item_photo_help	Meýletin. Suratsyz harytiniň adyndan baş harplary görkezýäris.
 stamp_heading	Marka
 stamp_image_help	Çap edilen kagyzlarda we müşderiniň ekranynda goşmaça möhür şekili.
 payment_qr_heading	Töleg QR
@@ -636,7 +636,7 @@ wipe_schema_done	Dükany gurnamak süpürildi - Dowam etmek üçin Serwer ýa-da
 rounded_total	Jemi jemlenen
 setup_app_tabiyat	Tabiýat guruň
 shop_logo_optional	Dükanyň nyşany (islege görä)
-stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu elementleri bir gezek yzarlamaga başlamaly.
+stock_type_help	Harytiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk harytleri bir gezek yzarlamaga başlamaly.
 team_owner_help	Kimdir birini goşmak üçin adamy boş goýuň: ady, iş, ulanyjy ady, PIN we goşmaça parol, soňra Goşuň. Şol bir görnüşi - adyny, ulanyjy adyny, parolyny, ekranlaryny we hukuklaryny redaktirlemek üçin adamy saýlaň - soňra Saklaň. Öz PIN we parolyňyz aşakda bir giriş. Eýesi başga biriniň PINini üýtgetmeýär.
 staff_name_ph	Işgärleriň ady
 staff_copy_hire_ph	Gurluşy göçüriň (islege görä)
@@ -658,7 +658,7 @@ team_features_changed	Ekranlar üýtgedi - Bu adam üçin sazlamany ýazdyryň
 team_rights_changed	Hukuklar üýtgedi - Bu adam üçin sazlamany ýazdyryň
 they_owe_us	Olar bize bergili
 unit_at_cap	Bölüm @
-units_help	Menýu elementleriniň bellikleri üçin kodlar (kg, bölek, sumka). Her bölüm, gönüden-göni ýa-da beýleki bölümleriň üsti bilen - standart (kg · cm · ml · pc) bilen baglanyşmalydyr. 1 sandyk = 2 guty we 1 guty = 20 sm. Öwrülişler: 1-den = faktor. Walýutalar hiç haçan birlik däl.
+units_help	Harytleriniň bellikleri üçin kodlar (kg, bölek, sumka). Her bölüm, gönüden-göni ýa-da beýleki bölümleriň üsti bilen - standart (kg · cm · ml · pc) bilen baglanyşmalydyr. 1 sandyk = 2 guty we 1 guty = 20 sm. Öwrülişler: 1-den = faktor. Walýutalar hiç haçan birlik däl.
 units_picker_help	Satyn almak we önümleri saýlaýan bölümde görkezmek üçin Işletmek / Öçürmek düwmesine basyň. Öçürilen bölümler henizem öwrüler.
 unit_picker_on	Işlediň
 unit_picker_off	Öçürilen
@@ -682,8 +682,8 @@ icon_default	Nyşan: Kumkaj belligi (deslapky) - adaty birini saýlaň
 logo_yours	Logotip: dükanyňyzyň nyşany - ekranlarda we kwitansiýalarda görkezilýär
 logo_default	Logotip: Kumkaj belligi (deslapky) - bar bolsa özüňizi saýlaň
 setup_complete	Gurnama tamamlandy
-onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu elementlerine menýu elementlerini goşuň, soňra ýerine ýetirildi.
-onboard_book_tmpl	Ledger · {} - menýu elementlerini goşuň we karz açyň, soňra ýerine ýetirildi.
+onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; harytlerine harytlary goşuň, soňra ýerine ýetirildi.
+onboard_book_tmpl	Defter · {} - harytlary goşuň we karz açyň, soňra ýerine ýetirildi.
 tmpl_blurb	Dermanhana hasaplaýjy: dermanlar, partiýa / möhleti, hata, kitaplar.
 reports_facet_title	Hasabat
 reports_facet_help	Gündelik ýazgylar, müşderi ýa-da üpjün edijiniň garramagy, bank ýazgylary we döwür P&L.
@@ -729,10 +729,10 @@ book_kind_today	Şu gün ýazgylar
 book_kind_month	Bu aý ýazgylar
 book_kind_aging	Görnükli / debet-karz
 book_kind_balance	Balans
-order_help	Goşmak üçin menýu elementine basyň.
+order_help	Goşmak üçin harytine basyň.
 categories_help	Ýokardaky harydy şol kategoriýa goýmak üçin «Ulany» basyň. Surat kategoriýa surat berýär; ýok bolsa başlangyç harplary görkezýär.
 dish_search_ph	Gözlegiň ady, duz ýa-da ştrih-kod…
-sizes_as_items_ph	Aýry-aýry menýu elementleri hökmünde ululyklar (islege görä) - Halfarym = 120, Doly = 200
+sizes_as_items_ph	Aýry-aýry harytleri hökmünde ululyklar (islege görä) - Halfarym = 120, Doly = 200
 dish_group_ph	Güýç / paket topary (islege görä) - meselem 500mg zolak
 discount	Arzanladyş
 remove_discount	Arzanladyşy aýyryň
@@ -748,7 +748,7 @@ shift_handover	Çalyşmak
 shift_since	Şondan bäri bu üýtgeşiklik
 expected_in_drawer	Çyzgyda garaşylýar
 right_discount	Arzanladyş beriň
-new_category_row	Täze kategoriýa - menýu elementini ýatda saklanyňyzda döredildi
+new_category_row	Täze kategoriýa - harytini ýatda saklanyňyzda döredildi
 your_category	Siziň kategoriýaňyz
 suggested_category	Teklip - önümlerimizden
 category_search_ph	Kategoriýa - özüňizi gözläň ýa-da täzesini ýazyň
@@ -766,7 +766,7 @@ no_server_found	Hiç kim tapylmady Serwerde: Sazlamalar → Beýleki enjamlar ex
 servers_found_pick	Birikmek isleýän dükanyňyza degiň.
 server_host_selected	{host} ulanyp - jübütleme koduny giriziň, soňra jübütläň.
 approval_pin_ph	Dolandyryjy PIN (diňe soralsa)
-menu_search_ph	Menýu elementini ýa-da gysga kody gözläň
+menu_search_ph	Harytini ýa-da gysga kody gözläň
 customer_paid_ph	Müşderi töledi
 tip_ph	Maslahat
 find_server	Dükanyň serwerini tapyň
@@ -829,7 +829,7 @@ payment_qr_none	Töleg QR: ýok - töläniňizde UPI ID-den QR mukdary
 team_pick_ph	Redaktirlemek üçin işgärler - ady, ulanyjy ady ýa-da saýlamak
 select_staff	Bu işgärleri saýlaň
 rights_help	Bu adam üçin pul hereketleri - aýlaw üçin basyň: Rugsat → Başlyk PIN zerur → Rugsat berilmeýär. Hasaby çap etmek diňe hasaplar; bölümler aşakdaky gözegçilik sanawydyr.
-own_item_name	Muny öz menýu elementiniň ady hökmünde ulanyň
+own_item_name	Muny öz harytiniň ady hökmünde ulanyň
 on_your_menu	Lukmançylyk sanawynda
 edit	Redaktirläň
 schemes	Shemalar / teklipler
@@ -901,7 +901,7 @@ unpriced_note	Harytlaryňyzdaky {n} elementleriniň entek bahasy ýok - birini k
 show_unpriced	Diňe bahasyz zatlary görkeziň
 show_all_dishes	Itemshli elementleri görkez
 role_title_rest_ph	Rol ady (meselem, kapitan, baş aşpez)
-preset_help_rest	Kassir: sat. Dolandyryjy: satmak + menýu elementleri + boş / üýtgetmek.
+preset_help_rest	Kassir: sat. Dolandyryjy: satmak + harytleri + boş / üýtgetmek.
 kind_resale	Derman satyn aldyňyz
 kind_dish	Bir stocka hasaplama
 buy_unit_ph	Bölüm (kg, litr, kompýuterler)

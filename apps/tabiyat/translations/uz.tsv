@@ -683,7 +683,7 @@ logo_yours	Logo: doʻkon logotipingiz — ekran va kvitansiyada koʻrinadi
 logo_default	Logo: Kumkaj belgisi (andoza) — boʻlsa oʻzingiznikini tanlang
 setup_complete	Sozlama tugadi
 onboard_fresh_tmpl	Yangi · {} — katalog boʻsh boshlanadi; mahsulotni Mahsulotlarga qoʻshing, soʻng Tayyor.
-onboard_book_tmpl	Book · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
+onboard_book_tmpl	Kitob · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
 tmpl_blurb	Dorixona hisoblagichi: dori-darmonlar, partiyalar / yaroqlilik muddati, xat, kitoblar.
 reports_facet_title	Hisobotlar
 reports_facet_help	Kunlik daftarlar, kontragent eskirishi, bank yozuvlari va davr foyda-zarari.

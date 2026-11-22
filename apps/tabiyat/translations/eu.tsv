@@ -683,7 +683,7 @@ logo_yours	Logotipoa: zure dendaren logotipoa — pantailetan eta ordainagirieta
 logo_default	Logotipoa: Kumkaj marka (lehenetsia) — aukeratu zurea baduzu
 setup_complete	Konfigurazioa osatuta
 onboard_fresh_tmpl	Berria · {} — katalogoa hutsik hasten da; gehitu artikuluak Artikuluetan, gero Eginda.
-onboard_book_tmpl	Book · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
+onboard_book_tmpl	Liburua · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
 tmpl_blurb	Farmaziako kontagailua: sendagaiak, sorta/iraungipena, khata, liburuak.
 reports_facet_title	Txostenak
 reports_facet_help	Eguneko liburuak, alderdien zahartzea, banku-idazpenak eta aldiaren irabazi-galera.

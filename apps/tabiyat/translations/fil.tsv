@@ -683,7 +683,7 @@ logo_yours	Logo: logo ng iyong tindahan — ipinapakita sa mga screen at resibo
 logo_default	Logo: Kumkaj markahan (default) — piliin ang sarili mo kung mayroon ka
 setup_complete	Kumpleto na ang setup
 onboard_fresh_tmpl	Bago · {} — walang laman ang katalogo sa umpisa; magdagdag ng item sa Mga gamot, tapos Tapos na.
-onboard_book_tmpl	Ledger · {} — magdagdag ng mga item at pambungad na credit, pagkatapos ay Tapos na.
+onboard_book_tmpl	Aklat · {} — magdagdag ng mga item at pambungad na credit, pagkatapos ay Tapos na.
 tmpl_blurb	Counter ng botika: mga gamot, batch/expire, khata, mga libro.
 reports_facet_title	Mga ulat
 reports_facet_help	Mga day ledger, customer o supplier na tumatanda, mga post sa bangko, at period P&L.
