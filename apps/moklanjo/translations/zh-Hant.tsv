@@ -523,7 +523,7 @@ lan_not_listening	目前無法接受設備連接 — 可能有其他程序佔用
 lan_tills_off	額外櫃檯已關閉。本店帳本保存在本機。若另一臺設備也要點單或結帳，請允許額外櫃檯。
 paired_with	已與 {url} 上的店鋪配對
 not_paired	未配對 — 請連接店內服務器。
-choose_device_use	選擇本設備的用途。
+choose_device_use	選擇伺服器或客戶端。
 paired_note	已配對。解鎖即可收款，或點刷新獲取店裡的最新數據。
 last_update_at	最後一次從店裡更新：{time}。
 pair_intro	查找服務器，或輸入其地址和配對碼。

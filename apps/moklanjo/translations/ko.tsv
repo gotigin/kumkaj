@@ -523,7 +523,7 @@ lan_not_listening	지금은 기기를 받지 못합니다 — 다른 프로그�
 lan_tills_off	추가 계산대가 꺼져 있습니다. 이 사무소의 장부는 이 기기에 있습니다. 다른 기기에서도 택배 접수나 결제를 하려면 추가 계산대를 허용하세요.
 paired_with	{url}의 매장과 페어링됨
 not_paired	페어링 안 됨 — 매장 서버에 연결하세요.
-choose_device_use	이 기기를 어떻게 쓸지 고르세요.
+choose_device_use	서버 또는 클라이언트를 고르세요.
 paired_note	페어링됨. 잠금을 풀어 판매하거나, 새로고침으로 매장의 최신 내용을 받으세요.
 last_update_at	매장에서 마지막 업데이트: {time}.
 pair_intro	서버를 찾거나 주소와 페어링 코드를 입력하세요.

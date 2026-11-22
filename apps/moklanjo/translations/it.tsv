@@ -523,7 +523,7 @@ lan_not_listening	Al momento non accetta dispositivi: un altro programma potrebb
 lan_tills_off	Le casse extra sono spente. I libri di questo ufficio restano su questo dispositivo. Consenti le casse extra se anche un altro dispositivo deve registrare spedizioni o incassare.
 paired_with	Abbinato al locale su {url}
 not_paired	Non abbinato: collegati al server del locale.
-choose_device_use	Scegli come usare questo dispositivo.
+choose_device_use	Scegli Server o Client.
 paired_note	Abbinato. Sblocca per vendere, oppure Aggiorna per avere gli ultimi dati del locale.
 last_update_at	Ultimo aggiornamento dal locale: {time}.
 pair_intro	Trova il server, oppure scrivi il suo indirizzo e il codice di abbinamento.

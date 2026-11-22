@@ -523,7 +523,7 @@ lan_not_listening	Ahora no se aceptan dispositivos: otro programa puede estar us
 lan_tills_off	Las cajas extra están desactivadas. Los libros de esta oficina se quedan en este dispositivo. Permite cajas extra si otro dispositivo también debe registrar envíos o cobrar.
 paired_with	Vinculado al local en {url}
 not_paired	Sin vincular: conéctate al servidor del local.
-choose_device_use	Elige cómo se usa este dispositivo.
+choose_device_use	Elige Servidor o Cliente.
 paired_note	Vinculado. Desbloquea para vender, o Actualizar para traer lo último del local.
 last_update_at	Última actualización del local: {time}.
 pair_intro	Busca el servidor o escribe su dirección y el código de emparejamiento.

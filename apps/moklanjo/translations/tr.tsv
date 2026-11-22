@@ -523,7 +523,7 @@ lan_not_listening	Şu an cihaz kabul edilmiyor — {port} numaralı bağlantı n
 lan_tills_off	Ek kasalar kapalı. Bu ofisin defterleri bu cihazda kalır. Başka bir cihaz da gönderi kaydedecek veya ödeme alacaksa ek kasalara izin verin.
 paired_with	{url} adresindeki dükkânla eşleşti
 not_paired	Eşleşmedi — dükkânın sunucusuna bağlanın.
-choose_device_use	Bu cihazın nasıl kullanılacağını seçin.
+choose_device_use	Sunucu veya İstemci seçin.
 paired_note	Eşleşti. Satış için kilidi açın ya da dükkândan en güncel hâli almak için Yenile'ye dokunun.
 last_update_at	Dükkândan son güncelleme: {time}.
 pair_intro	Sunucuyu bulun ya da adresini ve eşleştirme kodunu yazın.

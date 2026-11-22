@@ -523,7 +523,7 @@ lan_not_listening	Saat ini tidak menerima perangkat — mungkin program lain mem
 lan_tills_off	Til tambahan mati. Pembukuan kantor ini tetap di perangkat ini. Izinkan til tambahan bila perangkat lain juga perlu mencatat kiriman atau menerima pembayaran.
 paired_with	Terpasang dengan toko di {url}
 not_paired	Belum terpasang — sambungkan ke server toko.
-choose_device_use	Pilih cara perangkat ini digunakan.
+choose_device_use	Pilih Server atau Klien.
 paired_note	Terpasang. Buka kunci untuk menjual, atau Segarkan untuk mengambil data terbaru dari toko.
 last_update_at	Pembaruan terakhir dari toko: {time}.
 pair_intro	Cari server, atau ketik alamat dan kode pasangannya.
