@@ -122,7 +122,10 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   # for deploy and preview). Crawlers and chat apps read this HTML only — they
   # never run the wasm.
   HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-  awk -v head="$HEAD_INJECT" -v bid="$BUILD_ID" '
+  BODY_INJECT='        <noscript><p>Khaynjo — restaurant operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a> · <a href="/photo-credits">Photo credits</a> · <a href="https://play.google.com/store/apps/details?id=com.khaynjo">Get it on Google Play</a></p></noscript>
+    </body>'
+  awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
+    BEGIN { done_title=0; done_body=0 }
     /<title>khaynjo-site<\/title>/ && !done_title {
       print head
       done_title=1
@@ -131,7 +134,16 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
     {
       gsub(/\.\/makepad_platform\/web_gl\.js/, "./makepad_platform/web_gl.js?v=" bid)
       gsub(/\.\/khaynjo-site\.wasm/, "./khaynjo-site.wasm?v=" bid)
-      print
+    }
+    /<\/body>/ && !done_body {
+      print body
+      done_body=1
+      next
+    }
+    { print }
+    END {
+      if (!done_title) exit 2
+      if (!done_body) exit 3
     }
   ' "$INDEX" > "$TMP"
   mv "$TMP" "$INDEX"

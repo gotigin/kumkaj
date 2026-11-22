@@ -199,7 +199,7 @@ TMP="$OUT/index.html.tmp"
 # PREVIEW_URL already set above (sha10 of link-preview.jpg).
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
 BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
-        <noscript><p>Khaynjo — restaurant operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a> · <a href="https://play.google.com/store/apps/details?id=com.khaynjo">Get it on Google Play</a></p></noscript>
+        <noscript><p>Khaynjo — restaurant operating system. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a> · <a href="/photo-credits">Photo credits</a> · <a href="https://play.google.com/store/apps/details?id=com.khaynjo">Get it on Google Play</a></p></noscript>
     </body>'
 awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
   BEGIN { done_title=0; done_body=0 }
