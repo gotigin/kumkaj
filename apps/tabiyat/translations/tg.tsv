@@ -600,22 +600,22 @@ net_word	Соф
 offline_badge	БЕ ШАБАКА
 optional_login_help	Воридшавии ихтиёрӣ (шиноснома + парол). Соҳиб як бор мегузорад; танҳо корбар баъдтар паролро иваз мекунад.
 or_unlock_login	Ё бо шиносномаи воридшавӣ + парол кушоед
-or_unlock_shop_login	
-shop_login_help	
-cloud_account_title	
-cloud_account_help	
-cloud_name_ph	
-cloud_email_ph	
-cloud_password_ph	
-cloud_continue	
-cloud_forgot	
-cloud_web_methods	
-cloud_signing_in	
-cloud_sending_reset	
-cloud_forgot_sent	
+or_unlock_shop_login	[tg] Or unlock with shop login
+shop_login_help	[tg] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[tg] Tabiyat account
+cloud_account_help	[tg] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[tg] Name (optional)
+cloud_email_ph	[tg] Email
+cloud_password_ph	[tg] Password
+cloud_continue	[tg] Continue
+cloud_forgot	[tg] Forgot password?
+cloud_web_methods	[tg] Google and other methods on the website
+cloud_signing_in	[tg] Signing in…
+cloud_sending_reset	[tg] Sending reset link…
+cloud_forgot_sent	[tg] If that email has an account, a reset link is on the way.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	
-cloud_cancel	
+cloud_created	[tg] Account created. Check your email to verify when you can.
+cloud_cancel	[tg] Cancel
 permission_preset	Кор
 product_only_tabiyat	Табият системаи оператсионии дорухона аст: фурӯши доруҳо, баҳисобгирии партия/мӯҳлат, кредит ва китобҳо - офлайн дар дастгоҳҳои шумо. Ҷадвали H / Rx парчамҳо қайдҳои соҳиб мебошанд, на мувофиқат.
 purchases_cogs	Харидҳо (COGS)
