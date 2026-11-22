@@ -19,7 +19,7 @@ reports_today	Ka kot sngi (mynta ka sngi)
 reports_month	Ka jingmyntoi bad jingduhnong (bnai)
 reports_aging	Ka jingsah / jingsiew-jingsiew
 reports_balance_sheet	Ka jingkhein jingdiah
-reports	Ka kot bank bad ka jingmih
+reports	Kot bank & P&L
 refresh	Pynthymmai
 undo	Pynkylla
 start_tracking	Sdang ban buddien
@@ -27,7 +27,7 @@ stock_minus	- Stok
 stock_plus	+ Stok
 settle_cash	Pynbeit ia ka pisa
 settle_card	Ka kard pynbeit
-items	Ka jingbam bad ki tiar
+items	Jingbam
 nav_items	Menu
 more	Kiwei pat
 your_items	Ka menu jong phi

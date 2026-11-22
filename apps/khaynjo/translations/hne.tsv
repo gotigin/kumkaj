@@ -172,7 +172,7 @@ kot_station_none	अभी कोनो किचन स्टेशन नइ �
 pos_tab_items	जोड़े चीज
 pos_tab_payment	भुगतान
 hold_send	रोकव
-hold_send_on	रोके हे
+hold_send_on	रोकय
 hold_send_meta	रोके हे — ए KOT नइ
 station_remove	स्टेशन हटाव
 station_remove_ph	हटाए बर सूची म स्टेशन दबाव
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	नवा वाउचर कोड
 split_evenly	बराबर बाँटें
 waitlist	वेटलिस्ट
 fire_course	कोर्स भेजव
-hold_item	रोकें
+hold_item	रोकव
 waiter_call	वेटर बुलाएँ
 waitlist_add	वेटलिस्ट म जोड़व
 floor_view_grid	ग्रिड
