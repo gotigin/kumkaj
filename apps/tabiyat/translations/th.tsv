@@ -194,7 +194,7 @@ credit_summary_fmt	{} ลูกค้า · เครดิตเปิด {} ·
 recent_label	ล่าสุด:
 inventory	สต็อก
 branches	สาขา
-credit_customers	ลูกค้าเครดิต
+credit_customers	คู่ค้า (บัญชีเครดิตและซัพพลายเออร์)
 customer_name_ph	ชื่อคู่ค้า
 new_customer_ph	ชื่อคู่ค้าใหม่
 item_price_ph	ราคา

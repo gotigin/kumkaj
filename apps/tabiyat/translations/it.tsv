@@ -194,7 +194,7 @@ credit_summary_fmt	{} clienti · credito aperto {} · anticipi trattenuti {}
 recent_label	Recenti:
 inventory	Scorte
 branches	Filiali
-credit_customers	Clienti a credito
+credit_customers	Parti (credito e fornitori)
 customer_name_ph	Nome parte
 new_customer_ph	Nome nuova parte
 item_price_ph	Prezzo

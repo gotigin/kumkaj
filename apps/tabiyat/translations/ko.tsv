@@ -194,7 +194,7 @@ credit_summary_fmt	{} 고객 · 미결제 외상 {} · 선불 보관 {}
 recent_label	최근:
 inventory	재고
 branches	지점
-credit_customers	외상 고객
+credit_customers	거래처 (외상·공급업체)
 customer_name_ph	거래처명
 new_customer_ph	새 거래처명
 item_price_ph	가격

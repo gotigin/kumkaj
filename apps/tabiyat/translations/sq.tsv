@@ -836,7 +836,7 @@ schemes	Skemat / ofertat
 schemes_help	Bli-një-merr-një, përqindje ulje dhe paketa fikse. Shembull: Blini 2 paracetamol merrni 1 vitaminë.
 scheme_bogo_ph	Blini 2 paracetamole merrni 1 vitaminë
 add_scheme	Shto BOGO
-schedule_ph	Orët / happy hour — Hën–Pre 07:00–11:00 ose HappyHour 17:00–19:00=150
+schedule_ph	Orët (p.sh. Hën-Pre 07:00-11:00)
 upi_vpa_ph	Id UPI (VPA)
 upi_payee_ph	Emri i përfituesit UPI (opsional)
 show_upi_qr	Shfaq UPI QR

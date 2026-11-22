@@ -194,7 +194,7 @@ credit_summary_fmt	{} clientes · crédito aberto {} · adiantamentos {}
 recent_label	Recente:
 inventory	Estoque
 branches	Filiais
-credit_customers	Clientes a crédito
+credit_customers	Partes (fiado e fornecedores)
 customer_name_ph	Nome da parte
 new_customer_ph	Nome da nova parte
 item_price_ph	Preço

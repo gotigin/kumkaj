@@ -194,7 +194,7 @@ credit_summary_fmt	{} müşteri · açık veresiye {} · avans tutuluyor {}
 recent_label	Son:
 inventory	Stok
 branches	Şubeler
-credit_customers	Veresiye müşteri
+credit_customers	Taraflar (veresiye ve tedarikçiler)
 customer_name_ph	Taraf adı
 new_customer_ph	Yeni taraf adı
 item_price_ph	Fiyat

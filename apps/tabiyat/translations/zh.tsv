@@ -194,7 +194,7 @@ credit_summary_fmt	{} 位客户 · 未结赊账 {} · 预付 {}
 recent_label	最近:
 inventory	库存
 branches	分店
-credit_customers	赊账客户
+credit_customers	往来方（记账与供应商）
 customer_name_ph	往来方名称
 new_customer_ph	新往来方名称
 item_price_ph	价格

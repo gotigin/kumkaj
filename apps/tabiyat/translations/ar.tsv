@@ -194,7 +194,7 @@ credit_summary_fmt	{} عميل · ائتمان مفتوح {} · دفعات مح�
 recent_label	الأخيرة:
 inventory	المخزون
 branches	فروع
-credit_customers	عملاء الآجل
+credit_customers	الأطراف (خانة وموردون)
 customer_name_ph	اسم الطرف
 new_customer_ph	اسم الطرف الجديد
 item_price_ph	السعر

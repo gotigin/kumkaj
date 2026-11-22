@@ -194,7 +194,7 @@ credit_summary_fmt	{} khách · ghi nợ mở {} · tạm ứng giữ {}
 recent_label	Gần đây:
 inventory	Kho
 branches	Chi nhánh
-credit_customers	Khách ghi nợ
+credit_customers	Bên liên quan (ghi nợ & nhà cung cấp)
 customer_name_ph	Tên đối tác
 new_customer_ph	Tên đối tác mới
 item_price_ph	Giá

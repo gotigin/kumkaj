@@ -194,7 +194,7 @@ credit_summary_fmt	{} klanten · open krediet {} · voorschotten {}
 recent_label	Recent:
 inventory	Voorraad
 branches	Vestigingen
-credit_customers	Klanten op krediet
+credit_customers	Partijen (khata & leveranciers)
 customer_name_ph	Partijnaam
 new_customer_ph	Naam nieuwe partij
 item_price_ph	Prijs

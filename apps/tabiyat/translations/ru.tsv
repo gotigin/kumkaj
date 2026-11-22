@@ -194,7 +194,7 @@ credit_summary_fmt	{} клиентов · открытый кредит {} · а
 recent_label	Недавние:
 inventory	Запасы
 branches	Филиалы
-credit_customers	Клиенты в долг
+credit_customers	Контрагенты (долг и поставщики)
 customer_name_ph	Имя стороны
 new_customer_ph	Имя новой стороны
 item_price_ph	Цена

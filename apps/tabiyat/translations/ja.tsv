@@ -194,7 +194,7 @@ credit_summary_fmt	{} 顧客 · 未精算 {} · 前払い {}
 recent_label	最近:
 inventory	在庫
 branches	店舗
-credit_customers	掛売客
+credit_customers	取引先（掛けと仕入先）
 customer_name_ph	取引先名
 new_customer_ph	新規取引先名
 item_price_ph	価格

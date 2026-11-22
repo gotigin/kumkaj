@@ -194,7 +194,7 @@ credit_summary_fmt	{} 位客戶 · 未結賒帳 {} · 預付 {}
 recent_label	最近:
 inventory	庫存
 branches	分店
-credit_customers	賒帳客戶
+credit_customers	往來方（記帳與供應商）
 customer_name_ph	往來方名稱
 new_customer_ph	新往來方名稱
 item_price_ph	單價

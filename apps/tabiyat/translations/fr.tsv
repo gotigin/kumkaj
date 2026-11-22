@@ -194,7 +194,7 @@ credit_summary_fmt	{} clients · crédit ouvert {} · avances gardées {}
 recent_label	Récent :
 inventory	Stock
 branches	Succursales
-credit_customers	Clients à crédit
+credit_customers	Parties (khata et fournisseurs)
 customer_name_ph	Nom de la partie
 new_customer_ph	Nom de nouvelle partie
 item_price_ph	Prix

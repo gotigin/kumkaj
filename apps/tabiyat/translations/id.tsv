@@ -194,7 +194,7 @@ credit_summary_fmt	{} pelanggan · kredit terbuka {} · uang muka disimpan {}
 recent_label	Terbaru:
 inventory	Stok
 branches	Cabang
-credit_customers	Pelanggan kredit
+credit_customers	Pihak (khata & pemasok)
 customer_name_ph	Nama pihak
 new_customer_ph	Nama pihak baru
 item_price_ph	Harga

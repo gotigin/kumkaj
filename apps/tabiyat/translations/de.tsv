@@ -194,7 +194,7 @@ credit_summary_fmt	{} Kunden · offener Kredit {} · Anzahlungen {}
 recent_label	Zuletzt:
 inventory	Bestand
 branches	Filialen
-credit_customers	Kreditkunden
+credit_customers	Parteien (Khata & Lieferanten)
 customer_name_ph	Parteiname
 new_customer_ph	Name der neuen Partei
 item_price_ph	Preis
