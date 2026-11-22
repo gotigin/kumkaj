@@ -47,7 +47,7 @@ cash	Готовина
 upi	UPI
 card	Картичка
 credit	Страни
-clear	Јасно
+clear	Исчисти
 ready_to_sell	Подготвен за книга
 today_prefix	Денес
 today_mid	денес
@@ -294,7 +294,7 @@ add_to_bill	Додај во сметката за гости
 added	Додадено
 owes_word	должи
 selected_word	Избрани
-chip_clear_credit	јасно - Кредит или аванс
+chip_clear_credit	подмирено — Кредит или аванс
 chip_missing_customer	Недостасува избран клиент - изберете повторно
 chip_no_customer	Сè уште нема клиент - напишете име, па допрете Кредит
 credit_summary_fmt	{} клиенти · отворен кредит {} · задржани аванси {}

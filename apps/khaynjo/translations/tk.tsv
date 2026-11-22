@@ -294,7 +294,7 @@ add_to_bill	Hasaba goşuň
 added	Goşuldy
 owes_word	bergileri bar
 selected_word	Saýlandy
-chip_clear_credit	düşnükli - Karz beriň ýa-da öňünden alyň
+chip_clear_credit	hasaplaşylan — Karz beriň ýa-da öňünden alyň
 chip_missing_customer	Saýlanan müşderi ýitirim - täzeden saýlaň
 chip_no_customer	Entek müşderi ýok - at ýazyň, soňra Kredit düwmesine basyň
 credit_summary_fmt	{} müşderiler · açyk karz {} · öňe gidişlikler {}

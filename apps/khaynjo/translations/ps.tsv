@@ -47,7 +47,7 @@ cash	نغدې
 upi	UPI
 card	کارت
 credit	اړخونه
-clear	روښانه
+clear	پاکول
 ready_to_sell	کتاب ته چمتو دی
 today_prefix	نن
 today_mid	نن
@@ -294,7 +294,7 @@ add_to_bill	په بل کې اضافه کړئ
 added	زیاته کړه
 owes_word	پورونه
 selected_word	ټاکل شوی
-chip_clear_credit	واضح - کریډیټ یا مخکې اخیستل
+chip_clear_credit	تصفیه — کریډیټ یا مخکې اخیستل
 chip_missing_customer	ټاکل شوی پیرودونکي ورک شوي - بیا غوره کړئ
 chip_no_customer	تراوسه هیڅ پیرودونکی نشته - نوم ولیکئ، بیا کریډیټ ټایپ کړئ
 credit_summary_fmt	{} پیرودونکي · خلاص کریډیټ {} · پرمختګونه ترسره شوي {}

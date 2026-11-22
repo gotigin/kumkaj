@@ -47,7 +47,7 @@ cash	Цасх
 upi	UPI
 card	Цард
 credit	Стране
-clear	Јасно
+clear	Обриши
 ready_to_sell	Спреман за књигу
 today_prefix	данас
 today_mid	данас
@@ -294,7 +294,7 @@ add_to_bill	Додај на рачун
 added	Додато
 owes_word	дугује
 selected_word	Изабрано
-chip_clear_credit	цлеар — Кредити или узети унапред
+chip_clear_credit	измирено — Кредит или узети аванс
 chip_missing_customer	Недостаје изабрани купац — изаберите поново
 chip_no_customer	Још увек нема клијента — унесите име, а затим додирните Кредит
 credit_summary_fmt	{} клијената · отворени кредит {} · задржани аванси {}

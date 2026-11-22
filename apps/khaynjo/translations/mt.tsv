@@ -294,7 +294,7 @@ add_to_bill	Żid mal-kont
 added	Miżjud
 owes_word	jaf
 selected_word	Magħżula
-chip_clear_credit	ċara — Ikkredita jew tieħu bil-quddiem
+chip_clear_credit	saldjat — Ikkredita jew tieħu bil-quddiem
 chip_missing_customer	Klijent magħżul nieqes — agħżel mill-ġdid
 chip_no_customer	Għadu l-ebda klijent — ikteb isem, imbagħad tektek Kreditu
 credit_summary_fmt	{} klijenti · kreditu miftuħ {} · avvanzi miżmuma {}

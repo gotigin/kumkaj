@@ -47,7 +47,7 @@ cash	ເງິນສົດ
 upi	UPI
 card	ບັດ
 credit	ຝ່າຍ
-clear	ຈະແຈ້ງ
+clear	ລຶບ
 ready_to_sell	ພ້ອມຈອງແລ້ວ
 today_prefix	ມື້ນີ້
 today_mid	ມື້ນີ້
@@ -294,7 +294,7 @@ add_to_bill	ເພີ່ມໃສ່ໃບບິນ
 added	ເພີ່ມແລ້ວ
 owes_word	ເປັນໜີ້
 selected_word	ເລືອກແລ້ວ
-chip_clear_credit	ຈະແຈ້ງ — ສິນເຊື່ອ ຫຼືເອົາລ່ວງໜ້າ
+chip_clear_credit	ຊຳລະແລ້ວ — ສິນເຊື່ອ ຫຼືເອົາລ່ວງໜ້າ
 chip_missing_customer	ຂາດລູກຄ້າທີ່ເລືອກ — ເລືອກອີກຄັ້ງ
 chip_no_customer	ບໍ່ມີລູກຄ້າເທື່ອ — ພິມຊື່, ຈາກນັ້ນແຕະ ເຄຣດິດ
 credit_summary_fmt	{}ລູກຄ້າ · ເປີດເຄຣດິດ {} · ຈອງລ່ວງໜ້າ {}

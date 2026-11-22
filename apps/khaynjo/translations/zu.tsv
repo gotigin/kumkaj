@@ -47,7 +47,7 @@ cash	Imali
 upi	UPI
 card	Ikhadi
 credit	Amakhasimende
-clear	Kucace
+clear	Sula
 ready_to_sell	Ilungele incwadi
 today_prefix	Namuhla
 today_mid	namuhla
@@ -294,7 +294,7 @@ add_to_bill	Engeza kubhili yesivakashi
 added	Kwengeziwe
 owes_word	ukweleta
 selected_word	Ikhethiwe
-chip_clear_credit	cacile — Ikhredithi noma thatha imali yangaphambili
+chip_clear_credit	kukhokhiwe — Ikhredithi noma thatha imali yangaphambili
 chip_missing_customer	Ikhasimende elikhethiwe alikho — khetha futhi
 chip_no_customer	Alikho ikhasimende okwamanje — thayipha igama, bese uthepha okuthi Ikhredithi
 credit_summary_fmt	{} amakhasimende · ikhredithi evulekile {} · intuthuko ebanjiwe {}

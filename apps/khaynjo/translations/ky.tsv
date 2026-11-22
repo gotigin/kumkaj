@@ -47,7 +47,7 @@ cash	Накталай акча
 upi	UPI
 card	Карта
 credit	Тараптар
-clear	Таза
+clear	Тазалоо
 ready_to_sell	Каттоого даяр
 today_prefix	Бүгүн
 today_mid	бүгүн
@@ -294,7 +294,7 @@ add_to_bill	Конок эсебине кошуу
 added	Кошулган
 owes_word	карыздар
 selected_word	Тандалган
-chip_clear_credit	ачык-айкын — Кредит же аванс алуу
+chip_clear_credit	төлөнгөн — Кредит же аванс алуу
 chip_missing_customer	Тандалган кардар жок — кайра тандаңыз
 chip_no_customer	Азырынча кардар жок — атын терип, андан соң "Кредит" баскычын таптаңыз
 credit_summary_fmt	{} кардарлар · ачык кредит {} · алынган аванстар {}

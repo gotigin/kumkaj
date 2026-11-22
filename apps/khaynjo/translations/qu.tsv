@@ -47,7 +47,7 @@ cash	Qullqi
 upi	UPI
 card	Tarjeta
 credit	Rantiqkuna
-clear	Chuya
+clear	Ch'uychay
 ready_to_sell	Libro mayorpaq listo
 today_prefix	Kunan punchaw
 today_mid	kunan punchaw
@@ -294,7 +294,7 @@ add_to_bill	Invitado qullqiman yapay
 added	Yapachisqa
 owes_word	manukuna
 selected_word	Akllasqa
-chip_clear_credit	chuya — Crédito utaq ñawpaqmanta hapiy
+chip_clear_credit	paganña — Crédito utaq ñawpaqmanta hapiy
 chip_missing_customer	Akllasqa rantiq chinkasqa — yapamanta akllay
 chip_no_customer	Manaraq rantiq — sutita qillqay, chaymanta Crédito ñit'iy
 credit_summary_fmt	{} rantiqkuna · kichasqa qullqi quy {} · ñawpaq qullqikuna hap'isqa {} .

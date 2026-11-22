@@ -294,7 +294,7 @@ add_to_bill	Ampio amin'ny faktiora
 added	Nampiana
 owes_word	manan-kolazaina
 selected_word	Voafantina
-chip_clear_credit	mazava — Mandoa na maka fampindramam-bola mialoha
+chip_clear_credit	voaloa — Mandoa na maka vola mialoha
 chip_missing_customer	Mpividy voafantina tsy hita — mifidiana indray
 chip_no_customer	Tsy mbola misy mpanjifa — manorata anarana, avy eo tsindrio ny Credit
 credit_summary_fmt	{} mpanjifa · crédit misokatra {} · avanços notazonina {}

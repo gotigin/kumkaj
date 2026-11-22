@@ -294,7 +294,7 @@ add_to_bill	By rekening voeg
 added	Toegevoeg
 owes_word	skuldig
 selected_word	Geselekteer
-chip_clear_credit	duidelik — Krediet of neem vooruitbetaling
+chip_clear_credit	uitgeklaar — Krediet of neem vooruitbetaling
 chip_missing_customer	Geselekteerde klant ontbreek — kies weer
 chip_no_customer	Nog geen klant — tik 'n naam, dan druk Krediet
 credit_summary_fmt	{} kliente · oop krediet {} · vooruitbetalings gehou {}

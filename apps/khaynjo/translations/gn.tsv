@@ -47,7 +47,7 @@ cash	Efectivo rehegua
 upi	UPI
 card	Tarjeta
 credit	Cliente kuéra
-clear	Hesakã porã
+clear	Embogue
 ready_to_sell	Oĩma preparádo ojerreserva hag̃ua
 today_prefix	Ko árape
 today_mid	ko árape
@@ -294,7 +294,7 @@ add_to_bill	Oñembojoapy factura-pe
 added	Oñembojoapy
 owes_word	odevéva
 selected_word	Ojeporavóva
-chip_clear_credit	hesakãva — Crédito térã ogueraha anticipado
+chip_clear_credit	ojehechauka'ỹ — Crédito térã ogueraha anticipado
 chip_missing_customer	Ojeporavóva cliente ofaltáva — eiporavo jey
 chip_no_customer	Ndaipóri gueteri cliente — ehai peteĩ téra, upéi epoko Crédito rehe
 credit_summary_fmt	{} cliente · crédito abierto {} · anticipo ojeguerekóva {}

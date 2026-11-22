@@ -47,7 +47,7 @@ cash	Tunai
 upi	UPI
 card	Kad
 credit	Pihak
-clear	Jelas
+clear	Hapus
 ready_to_sell	Sedia untuk lejar
 today_prefix	Hari ini
 today_mid	hari ini
@@ -294,7 +294,7 @@ add_to_bill	Tambahkan pada bil
 added	Ditambah
 owes_word	berhutang
 selected_word	Dipilih
-chip_clear_credit	jelas — Kredit atau ambil pendahuluan
+chip_clear_credit	lunas — beri kredit atau ambil pendahuluan
 chip_missing_customer	Pelanggan terpilih tiada — pilih lagi
 chip_no_customer	Belum ada pelanggan — taip nama, kemudian ketik Kredit
 credit_summary_fmt	{} pelanggan · kredit terbuka {} · pendahuluan dipegang {}

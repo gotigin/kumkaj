@@ -47,7 +47,7 @@ cash	Készpénz
 upi	UPI
 card	kártya
 credit	Felek
-clear	Világos
+clear	Törlés
 ready_to_sell	Foglalásra készen
 today_prefix	Ma
 today_mid	ma
@@ -294,7 +294,7 @@ add_to_bill	Hozzáadás a számlához
 added	Hozzáadva
 owes_word	tartozik
 selected_word	Kiválasztva
-chip_clear_credit	egyértelmű — Jóváírás vagy előleg felvétele
+chip_clear_credit	rendezve — Hitel vagy előleg felvétele
 chip_missing_customer	Hiányzik a kiválasztott ügyfél – válasszon újra
 chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Credit elemre
 credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {}

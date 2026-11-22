@@ -47,7 +47,7 @@ cash	Cash
 upi	UPI
 card	Kard
 credit	Mga account
-clear	Maaliwalas
+clear	Burahin
 ready_to_sell	Handa na sa ledger
 today_prefix	Ngayong araw
 today_mid	ngayon
@@ -294,7 +294,7 @@ add_to_bill	Idagdag sa bill
 added	Idinagdag
 owes_word	may utang
 selected_word	Napili
-chip_clear_credit	malinaw — Kredito o kumuha ng paunang bayad
+chip_clear_credit	bayad na — Kredito o kumuha ng paunang bayad
 chip_missing_customer	Nawawala ang napiling customer — pumili muli
 chip_no_customer	Wala pang customer — mag-type ng pangalan, pagkatapos ay i-tap ang Credit
 credit_summary_fmt	{} mga customer · bukas na credit {} · mga paunang bayad na hawak {}

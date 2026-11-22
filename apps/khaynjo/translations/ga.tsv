@@ -294,7 +294,7 @@ add_to_bill	Cuir leis an mbille
 added	Cuireadh leis
 owes_word	tá iasacht
 selected_word	Roghnaithe
-chip_clear_credit	soiléir — Creidmheas nó glac roimh ré
+chip_clear_credit	glanta — Creidmheas nó glac réamhíocaíocht
 chip_missing_customer	Níor aimsíodh an custaiméir roghnaithe — roghnaigh arís
 chip_no_customer	Gan custaiméir fós — clóscríobh ainm, ansin sconna ar Creidmheas
 credit_summary_fmt	{} custaiméirí · creidmheas oscailte {} · réamhíocaíochtaí coimeádta {}
