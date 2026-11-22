@@ -33,7 +33,7 @@ editing_item	Redigerar
 save	Spara
 remove	Ta bort
 removed_items	Borttagna artiklar
-removed_help	Restore sätter tillbaka objektet i artiklar precis som det var — pris, foto och kategori.
+removed_help	Återställ sätter tillbaka objektet i artiklar precis som det var — pris, foto och kategori.
 restore_item	Återställ
 empty_catalog	Inga föremål ännu.
 total	Totalt
