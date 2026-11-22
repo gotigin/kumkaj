@@ -167,7 +167,7 @@ frequent_apply	Použít
 frequent_saved	Časté: posledních {d} dnů, nejlepší {n} — {c} položky
 frequent_empty	V tomto období ještě nebyly dokončeny žádné prodeje – vyrovnejte účet (povoleno 0 ₹, když to říká Nastavení) a zobrazí se zde.
 zero_sales	Prodeje s nulovou hodnotou
-zero_sales_help	Povolit položky s cenou 0 ₹ a účty za 0 ₹ (zdarma / přání majitele). Ve výchozím nastavení zapnuto, takže bezplatné obálky se stále zobrazují v knihách Časté a denní.
+zero_sales_help	Povolit položky s cenou ₹0 a účty za ₹0 (zdarma / přání majitele). Ve výchozím nastavení zapnuto, takže bezplatné prodeje se stále zobrazují v Častých a v deníku.
 zero_sales_on	Povolit 0 ₹
 zero_sales_off	Vyžadovat cenu
 zero_sales_saved_on	Prodej s nulovou hodnotou povolen
