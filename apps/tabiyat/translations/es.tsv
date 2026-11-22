@@ -559,7 +559,7 @@ duress_cleared	PIN de emergencia desactivado
 upi_amount_ph	Importe UPI
 void	Anular
 write_off_ap	Cancelar AP
-write_off_heading	Cancelar (liquidar sin pago)
+write_off_heading	Dar de baja (saldar sin pago)
 write_off_nil	Cancelar / saldo a cero
 your_brand	Tu marca (en la app)
 your_categories	Tus categorías

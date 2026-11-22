@@ -559,7 +559,7 @@ duress_cleared	Acil kilit açma PIN'i kapatıldı
 upi_amount_ph	UPI tutarı
 void	İptal et
 write_off_ap	AP sil
-write_off_heading	Sil (ödemeden kapat)
+write_off_heading	Borçtan düş (ödemesiz kapat)
 write_off_nil	Sil / bakiye sıfır
 your_brand	Markanız (uygulamada)
 your_categories	Kategorileriniz
