@@ -614,7 +614,7 @@ history_off	Panatilihin
 history_day_close	Sa pagsasara ng araw
 history_after_hours	Pagkatapos ng mga oras
 history_hours_ph	Oras (1–168, default 4)
-history_hours_save	Makatipid ng mga oras
+history_hours_save	I-save ang mga oras
 history_clear_now	I-clear ang kasaysayan ngayon
 history_cleared	Na-clear ang kasaysayan ng kalakalan — pinananatili ang setup
 history_retention_saved	Na-save ang pag-clear ng kasaysayan
