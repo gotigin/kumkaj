@@ -549,3 +549,8 @@ need the author and licence named.
 - ice-cream/ice-cream-cake.webp ← Commons File:Cookies_n_cream_ice_cream_cake!.jpg crop (CC BY-SA 2.0) https://commons.wikimedia.org/wiki/File:Cookies_n_cream_ice_cream_cake!.jpg
 - ice-cream/coffee-ice-cream.webp ← Commons File:Espresso_flake_ice_cream_(7869081922).jpg crop (CC BY 2.0) https://commons.wikimedia.org/wiki/File:Espresso_flake_ice_cream_(7869081922).jpg
 - ice-cream/dondurma.webp ← Commons File:Dondurma_(5065600007).jpg crop stretch demo (CC BY 2.0) https://commons.wikimedia.org/wiki/File:Dondurma_(5065600007).jpg
+
+## L14 pass3b 2026-11-22T14:47:51Z
+- hot-beverages/irani-chai.webp ← Commons File:Irani_chai_and_osmania_biscuits.jpg crop tea (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Irani_chai_and_osmania_biscuits.jpg
+- hot-beverages/instant-coffee.webp ← Commons File:Cup_of_coffee_on_black_background.jpg (CC BY 3.0) https://commons.wikimedia.org/wiki/File:Cup_of_coffee_on_black_background.jpg
+- fast-food/club-sandwich.webp ← crop remove Coca-Cola can from existing asset
