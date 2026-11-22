@@ -116,11 +116,13 @@ const PROPS: [(&[LiveId], f64, f64); 2] = [
     (ids!(brand.bill_card), 420.0, 1024.0),
     (ids!(sell.ticket), 330.0, 760.0),
 ];
-const START_ROWS: [(&[LiveId], f64); 2] = [
+const START_ROWS: [(&[LiveId], f64); 3] = [
     (ids!(start.close_cta.buttons), 440.0),
     // The footer container stays Down (links, then the copyright). Stacking
     // `start.footer` itself put the copyright beside the links.
     (ids!(start.footer.footer_row), 480.0),
+    // Privacy · Terms · Cancellation · Cloud shop · Account overflow a phone row.
+    (ids!(start.footer.footer_links), 520.0),
 ];
 
 /// The eight top-bar tiles (their width shrinks on the narrowest phones).

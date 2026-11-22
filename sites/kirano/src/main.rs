@@ -100,7 +100,7 @@ const BILL_LINES: [(&[LiveId], &str, u32); 3] = [
 
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise.
-const ROWS: [(&[LiveId], f64); 10] = [
+const ROWS: [(&[LiveId], f64); 11] = [
     (ids!(brand.brand_row), 1024.0),
     // Stack Download/WhatsApp before ~440 so the secondary label never clips
     // on 400 CSS-px WebKit (and similar phone content columns).
@@ -113,6 +113,8 @@ const ROWS: [(&[LiveId], f64); 10] = [
     (ids!(free.free_row), 700.0),
     (ids!(start.close_cta.buttons), 440.0),
     (ids!(footer.footer_row), 480.0),
+    // Five legal/shop pills overflow a phone content column when kept on one row.
+    (ids!(footer.footer_links), 520.0),
 ];
 const PROPS: [(&[LiveId], f64, f64); 2] = [
     (ids!(brand.bill_card), 420.0, 1024.0),
