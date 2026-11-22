@@ -560,3 +560,13 @@ need the author and licence named.
 ## L14 breads pass3 2026-11-22T14:49:24Z
 - indian-breads/pathiri.webp ← Commons File:Pathiri.jpg (CC BY-SA 3.0) https://commons.wikimedia.org/wiki/File:Pathiri.jpg
 - indian-breads/paratha.webp ← Commons File:Paratha_is_a_dough_fried_flatbread_native_to_India_and_Pakistan.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Paratha_is_a_dough_fried_flatbread_native_to_India_and_Pakistan.jpg
+
+## Replaced 2026-11-22 (L15 farmhouse arepas oyakodon mezze tabbouleh)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `pizza-pasta/farmhouse-pizza.webp` | pizza with odd yellow center blob in cardboard box | Vegetarian pizza.jpg | Food Recipes | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Vegetarian_pizza.jpg | resized, WebP |
+| `mexican/arepas.webp` | hand holding stuffed arepa over styrofoam | Arepa perico.jpg | Pequeño mar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Arepa_perico.jpg | resized, WebP |
+| `japanese/oyakodon.webp` | oyakodon in disposable plastic takeout tub | Oyakodon 003.jpg | Ocdp | CC0 | https://commons.wikimedia.org/wiki/File:Oyakodon_003.jpg | resized, WebP |
+| `middle-eastern/mezze-platter.webp` | crowded gold tray with diners' hands | Mezze platter.jpg | Shreya13jain | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Mezze_platter.jpg | resized, WebP |
+| `middle-eastern/tabbouleh.webp` | four-compartment mezze with hummus/lentils | Flickr - cyclonebill - Tabbouleh.jpg | cyclonebill | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Tabbouleh.jpg | resized, WebP |
