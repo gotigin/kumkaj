@@ -1111,7 +1111,7 @@ book_kind_today	今日帳本
 book_kind_month	本月帳本
 book_kind_aging	未結 / 借貸
 book_kind_balance	資產負債表
-order_help	選擇一個未結訂單，或選擇桌臺開始新訂單。點選就緒菜品，發送 KOT，為一個或多個菜品結帳，拆分帳單並完成付款。
+order_help	點按一項即可新增。
 floor_help	點按桌臺以開單或改單。顏色表示空閒 → 入座 → 廚房 → 就緒 → 用餐 → 帳單 → 已付。 候位、預訂與加桌在下方各區。
 kitchen_help	廚房票（KOT），最新在後。開始 → 就緒 → 完成推動票據。票據從不顯示價格。
 kitchen_empty	現在沒有打開的訂單。
