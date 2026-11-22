@@ -937,7 +937,7 @@ your_brand	A sua marca (na app)
 your_categories	As suas categorias
 account_kind	Tipo de conta (toque num)
 actual_total_cap	TOTAL REAL
-amend_help	Selecione uma venda para alterar, anular ou reembolsar. As alterações guardam todo o histórico.
+amend_help	Selecione uma venda para emendar, anular ou reembolsar. As emendas mantêm o histórico completo. O total arredondado começa igual ao aplicado — edite só para arredondar. Anular e reembolsar podem exigir o PIN de proprietário ou gerente (escrito acima; registado com o seu nome).
 applied_total_cap	TOTAL APLICADO
 bank_balance	Saldo bancário
 bank_net_today	Líquido bancário de hoje
@@ -1308,7 +1308,7 @@ own_item_name	Usar como nome do seu item
 on_your_menu	No seu cardápio
 edit	Editar
 schemes	Ofertas
-schemes_help	Compre X ganhe Y — ao fechar. Ex. Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, desconto percentual e combos fixos. Os combos expandem-se em linhas de cozinha em «Enviar comanda»; os componentes ficam retidos até o combo disparar. Exemplo: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Compre 2 Thali, leve 1 Chaas
 add_scheme	Adicionar BOGO
 schedule_ph	Horário / happy hour — Mon-Fri 07:00-11:00 ou HappyHour 17:00-19:00=150

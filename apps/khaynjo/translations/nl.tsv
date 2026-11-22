@@ -937,7 +937,7 @@ your_brand	Jouw merk (in de app)
 your_categories	Jouw categorieën
 account_kind	Rekeningsoort (tik er een)
 actual_total_cap	WERKELIJK TOTAAL
-amend_help	Selecteer een verkoop om te wijzigen, annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis.
+amend_help	Selecteer een verkoop om te wijzigen, te annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis. Afgerond totaal start gelijk aan Toegepast — bewerk alleen om af te ronden. Annuleren en terugbetalen kunnen een eigenaar- of manager-PIN vragen (hierboven getypt; vastgelegd met je naam).
 applied_total_cap	TOEGEPAST TOTAAL
 bank_balance	Banksaldo
 bank_net_today	Bank netto vandaag
@@ -1308,7 +1308,7 @@ own_item_name	Gebruik als eigen artikelnaam
 on_your_menu	Op uw menukaart
 edit	Bewerken
 schemes	Aanbiedingen
-schemes_help	Koop X krijg Y — bij afrekenen. Bijv. Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, procentkorting en vaste combo’s. Combo’s vouwen uit tot keukenregels bij «Naar keuken»; onderdelen blijven vastgehouden tot de combo afgaat. Voorbeeld: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Koop 2 Thali, krijg 1 Chaas
 add_scheme	BOGO toevoegen
 schedule_ph	Tijden / happy hour — Mon-Fri 07:00-11:00 of HappyHour 17:00-19:00=150

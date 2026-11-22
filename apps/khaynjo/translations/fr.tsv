@@ -937,7 +937,7 @@ your_brand	Votre marque (dans l'app)
 your_categories	Vos catégories
 account_kind	Type de compte (touchez-en un)
 actual_total_cap	TOTAL RÉEL
-amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modifications gardent tout l'historique.
+amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modifications gardent tout l’historique. Le total arrondi commence égal à l’appliqué — n’éditez que pour arrondir. Annuler et rembourser peuvent exiger le code PIN propriétaire ou manager (saisi ci-dessus ; enregistré avec votre nom).
 applied_total_cap	TOTAL APPLIQUÉ
 bank_balance	Solde bancaire
 bank_net_today	Net bancaire du jour
@@ -1308,7 +1308,7 @@ own_item_name	Utiliser comme nom de votre article
 on_your_menu	Sur votre carte
 edit	Modifier
 schemes	Offres
-schemes_help	Achetez X obtenez Y — à l'encaissement. Ex. Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, remise en pourcentage et menus fixes. Les menus s’étendent en lignes cuisine sur «Envoyer en cuisine» ; les composants restent retenus jusqu’au déclenchement. Exemple : Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Achetez 2 Thali, 1 Chaas offert
 add_scheme	Ajouter BOGO
 schedule_ph	Horaires / happy hour — Mon-Fri 07:00-11:00 ou HappyHour 17:00-19:00=150

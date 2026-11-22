@@ -937,7 +937,7 @@ your_brand	Thương hiệu của bạn (trong app)
 your_categories	Danh mục của bạn
 account_kind	Loại tài khoản (chạm một)
 actual_total_cap	TỔNG THỰC
-amend_help	Chọn một đơn để sửa, hủy hoặc hoàn tiền. Sửa đổi giữ toàn bộ lịch sử.
+amend_help	Chọn một giao bán để sửa, hủy hoặc hoàn tiền. Sửa giữ nguyên lịch sử đầy đủ. Tổng làm tròn bắt đầu bằng số đã áp dụng — chỉ sửa để làm tròn. Hủy và hoàn có thể cần PIN Chủ hoặc Quản lý (gõ ở trên; ghi kèm tên bạn).
 applied_total_cap	TỔNG ÁP DỤNG
 bank_balance	Số dư ngân hàng
 bank_net_today	Ròng ngân hàng hôm nay
@@ -1308,7 +1308,7 @@ own_item_name	Dùng làm tên món của riêng bạn
 on_your_menu	Có trong thực đơn
 edit	Sửa
 schemes	Ưu đãi
-schemes_help	Mua X tặng Y — khi thanh toán. VD Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, giảm theo %, và combo cố định. Combo mở thành dòng bếp khi «Gửi bếp»; thành phần giữ lại đến khi combo kích hoạt. Ví dụ: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Mua 2 Thali tặng 1 Chaas
 add_scheme	Thêm BOGO
 schedule_ph	Giờ / happy hour — Mon-Fri 07:00-11:00 hoặc HappyHour 17:00-19:00=150

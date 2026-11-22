@@ -937,7 +937,7 @@ your_brand	Chapa yako (kwenye app)
 your_categories	Aina zako
 account_kind	Aina ya akaunti (gusa moja)
 actual_total_cap	JUMLA HALISI
-amend_help	Chagua mauzo ya kurekebisha, kufuta au kurejesha. Marekebisho huhifadhi historia kamili.
+amend_help	Chagua mauzo ya kurekebisha, kufuta au kurejesha. Marekebisho huhifadhi historia kamili. Jumla iliyozungushwa huanza sawa na Iliyotumika — hariri tu ili kuzungusha. Kufuta na kurejesha huenda yakahitaji PIN ya Mmiliki au Meneja (imeandikwa juu; imerekodiwa na jina lako).
 applied_total_cap	JUMLA ILIYOTUMIKA
 bank_balance	Salio la benki
 bank_net_today	Jumla ya benki leo
@@ -1308,7 +1308,7 @@ own_item_name	Tumia kama jina lako la bidhaa
 on_your_menu	Kwenye menyu yako
 edit	Hariri
 schemes	Ofa
-schemes_help	Nunua X pata Y — kiotomatiki maliponi. Mf. Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, punguzo la asilimia, na kombo zilizowekwa. Kombo hupanuka kuwa mistari ya jikoni kwenye «Tuma jikoni»; sehemu hubaki shikiliwa hadi kombo iwashwe. Mfano: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Nunua Thali 2, pata Chaas 1
 add_scheme	Ongeza BOGO
 schedule_ph	Saa / happy hour — Mon-Fri 07:00-11:00 au HappyHour 17:00-19:00=150

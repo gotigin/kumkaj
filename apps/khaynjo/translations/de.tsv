@@ -937,7 +937,7 @@ your_brand	Deine Marke (in der App)
 your_categories	Deine Kategorien
 account_kind	Kontoart (eines tippen)
 actual_total_cap	TATSÄCHLICH GESAMT
-amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten. Korrekturen behalten den vollen Verlauf.
+amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten. Korrekturen behalten den vollen Verlauf. Der gerundete Gesamtbetrag startet gleich dem Angewandten — nur zum Runden bearbeiten. Storno und Erstattung können eine Inhaber- oder Manager-PIN brauchen (oben eingegeben; mit Ihrem Namen vermerkt).
 applied_total_cap	ANGEWENDET GESAMT
 bank_balance	Bankguthaben
 bank_net_today	Bank-Netto heute
@@ -1308,7 +1308,7 @@ own_item_name	Als eigenen Artikelnamen verwenden
 on_your_menu	Auf Ihrer Karte
 edit	Bearbeiten
 schemes	Angebote
-schemes_help	Kauf X erhalt Y — beim Kassieren. Z. B. Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, Prozent-Rabatt und feste Combos. Combos werden bei «An Küche» zu Küchenzeilen; Bestandteile bleiben gehalten, bis der Combo auslöst. Beispiel: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	2 Thali kaufen, 1 Chaas gratis
 add_scheme	BOGO hinzufügen
 schedule_ph	Zeiten / Happy Hour — Mon-Fri 07:00-11:00 oder HappyHour 17:00-19:00=150

@@ -937,7 +937,7 @@ your_brand	你的品牌（应用内）
 your_categories	你的分类
 account_kind	账户类型（点选其一）
 actual_total_cap	实际总额
-amend_help	选择一笔销售进行修改、作废或退款。修改保留完整历史。
+amend_help	选择一笔销售进行修改、作废或退款。修改保留完整历史。四舍五入合计起初等于已应用金额——仅在取整时编辑。作废和退款可能需要店主或经理 PIN（在上方输入；与您的姓名一并记录）。
 applied_total_cap	应付总额
 bank_balance	银行余额
 bank_net_today	今日银行净额
@@ -1308,7 +1308,7 @@ own_item_name	用作您自己的菜品名称
 on_your_menu	已在您的菜单中
 edit	编辑
 schemes	优惠方案
-schemes_help	买 X 送 Y — 结账自动。例：Buy 2 Thali get 1 Chaas
+schemes_help	买一送一、百分比折扣与固定套餐。套餐在「送厨」时展开为厨房行；组件一直挂起直到套餐触发。例：Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	买 2 份 Thali 送 1 份 Chaas
 add_scheme	添加买赠
 schedule_ph	时段/欢乐时光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:00=150

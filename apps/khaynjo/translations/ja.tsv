@@ -937,7 +937,7 @@ your_brand	あなたのブランド（アプリ内）
 your_categories	あなたのカテゴリ
 account_kind	口座の種類（1つタップ）
 actual_total_cap	実合計
-amend_help	修正・取消・返金する売上を選んでください。修正は全履歴を保持します。
+amend_help	修正・取消・返金する売上を選んでください。修正は全履歴を保持します。端数処理後の合計は適用額と同じ値から始まります。端数のためだけ編集してください。取消と返金にはオーナーまたはマネージャーのPINが必要な場合があります（上で入力；お名前とともに記録）。
 applied_total_cap	適用合計
 bank_balance	銀行残高
 bank_net_today	本日の銀行純額
@@ -1308,7 +1308,7 @@ own_item_name	自分の品名として使う
 on_your_menu	メニューに登録済み
 edit	編集
 schemes	キャンペーン
-schemes_help	X買ってY無料 — 会計時自動。例 Buy 2 Thali get 1 Chaas
+schemes_help	BOGO・割引率・固定コンボ。コンボは「厨房へ」で厨房行に展開され、発火まで構成品は保留されます。例：Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Thali 2 つで Chaas 1 つ無料
 add_scheme	BOGOを追加
 schedule_ph	時間/ハッピーアワー — Mon-Fri 07:00-11:00 または HappyHour 17:00-19:00=150

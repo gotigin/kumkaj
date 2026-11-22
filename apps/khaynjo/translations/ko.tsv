@@ -937,7 +937,7 @@ your_brand	내 브랜드(앱 안)
 your_categories	내 카테고리
 account_kind	계정 종류(하나 누르기)
 actual_total_cap	실제 합계
-amend_help	수정, 취소 또는 환불할 판매를 선택하세요. 수정 내역은 전체 기록을 유지합니다.
+amend_help	수정·취소·환불할 매출을 선택하세요. 수정은 전체 이력을 유지합니다. 반올림 합계는 적용액과 같게 시작합니다. 반올림할 때만 편집하세요. 취소와 환불에는 소유자 또는 매니저 PIN이 필요할 수 있습니다(위에 입력; 이름과 함께 기록).
 applied_total_cap	적용 합계
 bank_balance	은행 잔액
 bank_net_today	오늘 은행 순액
@@ -1308,7 +1308,7 @@ own_item_name	내 품목 이름으로 사용
 on_your_menu	내 메뉴에 있음
 edit	편집
 schemes	할인/세트
-schemes_help	X 구매 시 Y — 결제 시 자동. 예: Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, 비율 할인, 고정 콤보. 콤보는 «주방으로» 시 주방 줄로 펼쳐지고, 구성은 콤보가 발동할 때까지 보류됩니다. 예: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	Thali 2개 구매 시 Chaas 1개 증정
 add_scheme	BOGO 추가
 schedule_ph	시간/해피아워 — Mon-Fri 07:00-11:00 또는 HappyHour 17:00-19:00=150

@@ -937,7 +937,7 @@ your_brand	你的品牌（應用內）
 your_categories	你的分類
 account_kind	帳戶類型（點選其一）
 actual_total_cap	實際總額
-amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。
+amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。四捨五入合計起初等於已套用金額——僅在取整時編輯。作廢和退款可能需要店主或經理 PIN（在上方輸入；與您的姓名一併記錄）。
 applied_total_cap	應付總額
 bank_balance	銀行餘額
 bank_net_today	今日銀行淨額
@@ -1308,7 +1308,7 @@ own_item_name	用作您自己的菜品名稱
 on_your_menu	已在您的菜單中
 edit	編輯
 schemes	優惠方案
-schemes_help	買 X 送 Y — 結帳自動。例：Buy 2 Thali get 1 Chaas
+schemes_help	買一送一、百分比折扣與固定套餐。套餐在「送廚」時展開為廚房列；元件一直保留直到套餐觸發。例：Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	買 2 份 Thali 送 1 杯 Chaas
 add_scheme	添加買贈
 schedule_ph	時段/歡樂時光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:00=150

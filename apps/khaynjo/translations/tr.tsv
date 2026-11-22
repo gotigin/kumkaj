@@ -937,7 +937,7 @@ your_brand	Markanız (uygulamada)
 your_categories	Kategorileriniz
 account_kind	Hesap türü (birine dokun)
 actual_total_cap	GERÇEK TOPLAM
-amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tam geçmişi korur.
+amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tüm geçmişi korur. Yuvarlanmış toplam, Uygulanan ile aynı başlar — yalnızca yuvarlamak için düzenleyin. İptal ve iade Sahip veya Yönetici PIN’i isteyebilir (yukarıda yazılır; adınızla kaydedilir).
 applied_total_cap	UYGULANAN TOPLAM
 bank_balance	Banka bakiyesi
 bank_net_today	Bugünkü banka neti
@@ -1308,7 +1308,7 @@ own_item_name	Kendi ürün adınız olarak kullanın
 on_your_menu	Menünüzde
 edit	Düzenle
 schemes	Kampanyalar
-schemes_help	X al Y kazan — ödemede otomatik. Örn. Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, yüzde indirim ve sabit kombolar. Kombolar «Mutfağa gönder» ile mutfak satırlarına açılır; parçalar kombo ateşlenene kadar tutulur. Örnek: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	2 Thali al, 1 Chaas kazan
 add_scheme	BOGO ekle
 schedule_ph	Saat / happy hour — Mon-Fri 07:00-11:00 veya HappyHour 17:00-19:00=150
