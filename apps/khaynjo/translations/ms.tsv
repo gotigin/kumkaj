@@ -27,19 +27,19 @@ stock_minus	− Stok
 stock_plus	+ Stok
 settle_cash	Selesaikan wang tunai
 settle_card	Settle kad
-items	Menu & item menu
+items	Menu & item
 nav_items	Menu
 more	Lagi
 your_items	Menu anda
-items_help	Ketik item menu untuk mengeditnya. Item menu baharu mengosongkan borang. Cari hidangan kami atau taip nama dan foto anda sendiri, tetapkan harga (0 tidak mengapa), kemudian Tambah. Jualan yang telah direkodkan kekalkan nama mereka dicaj.
-add_item	Tambah item menu
-new_item	Item menu baharu
-adding_item	Menambah item menu baharu
+items_help	Ketik item untuk mengeditnya. Item baharu mengosongkan borang. Cari hidangan kami atau taip nama dan foto anda sendiri, tetapkan harga (0 tidak mengapa), kemudian Tambah. Jualan yang telah direkodkan kekalkan nama mereka dicaj.
+add_item	Tambah item
+new_item	Item baharu
+adding_item	Menambah item baharu
 editing_item	Mengedit
 save	Simpan
 remove	Alih keluar
-removed_items	Item menu dialih keluar
-removed_help	Pulihkan meletakkan item menu kembali pada menu sama seperti sebelumnya — harga, foto dan kategori. Rak hidangan kami tidak pernah dikeluarkan, jadi hidangan sentiasa boleh ditambah lagi.
+removed_items	Item dialih keluar
+removed_help	Pulihkan meletakkan item kembali pada menu sama seperti sebelumnya — harga, foto dan kategori. Rak hidangan kami tidak pernah dikeluarkan, jadi hidangan sentiasa boleh ditambah lagi.
 restore_item	Pulihkan
 empty_catalog	Tiada hidangan lagi.
 total	Jumlah
@@ -83,12 +83,12 @@ print_cancelled_kot_needed	Buka meja makan dengan hidangan yang dibatalkan dahul
 print_cancelled_kot_none	Tiada hidangan yang dibatalkan pada pesanan ini
 print_cancelled_kot_client	Cetakan dibatalkan ({n}) untuk {place} dihantar — cetakan dapur di Pelayan
 kot_banner	Sepanduk yang baik hati
-kot_item_prefix	Awalan item menu
+kot_item_prefix	Awalan item
 kot_strike	Nama hidangan Strike
 kot_strike_note	Nota hidangan pukul
 kot_strike_on	hidup
 kot_strike_off	Mati
-bill_item_layout	Susun atur item menu
+bill_item_layout	Susun atur item
 bill_item_layout_columns	Lajur
 bill_item_layout_stacked	Bertindan
 bill_item_header	Pengepala lajur
@@ -169,7 +169,7 @@ kot_station_cleared	Stesen dibersihkan daripada {n} hidangan: {station}
 kot_station_needed	Pilih stesen dapur dahulu
 kot_station_not_allowed	Tidak dibenarkan menggunakan dapur: {station}
 kot_station_none	Tiada stesen dapur lagi — tambah satu di bawah Dapur atau Tetapan → Kawasan · stesen
-pos_tab_items	Menambah item menu
+pos_tab_items	Menambah item
 pos_tab_payment	Bayaran
 hold_send	Tahan dari dapur
 hold_send_on	Diadakan
@@ -245,7 +245,7 @@ sidebar_hidden	Tersembunyi
 sidebar_always_on	Sentiasa di bar
 sidebar_shown_hint	Ditunjukkan pada rel sisi / tab bawah
 sidebar_hidden_hint	Tersembunyi dari bar
-sidebar_menu_items	Menu & Menu item menu
+sidebar_menu_items	Menu & item
 sidebar_enable_all	Dayakan Semua
 sidebar_disable_all	Lumpuhkan Semua
 sidebar_order_saved	Pesanan bar sisi disimpan
@@ -267,15 +267,15 @@ nav_settings	tetapan
 nav_lock	Kunci
 no_sale_yet	Tiada jualan lagi
 favorites	Kegemaran
-favorites_help	Item menu yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item menu di bawah.
+favorites_help	Item yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item di bawah.
 your_favorites	Kegemaran anda
-all_items	Semua item menu
+all_items	Semua item
 frequent	Kerap
-added_items	Menambah item menu
-added_items_empty	Tiada apa-apa pada pesanan ini lagi — tambahkan hidangan daripada Semua item menu atau kategori.
+added_items	Menambah item
+added_items_empty	Tiada apa-apa pada pesanan ini lagi — tambahkan hidangan daripada Semua item atau kategori.
 frequent_config_help	Kebanyakan hidangan dijual daripada bil yang telah siap. Tetapkan berapa hari untuk melihat dan berapa banyak hidangan untuk ditunjukkan.
 frequent_days_ph	Hari (1)
-frequent_limit_ph	Item menu (24)
+frequent_limit_ph	Item (24)
 frequent_apply	Mohon
 frequent_saved	Kerap: {d} hari terakhir, hidangan {n} teratas — {c}
 frequent_empty	Tiada jualan lengkap dalam tempoh ini lagi — selesaikan bil (₹0 dibenarkan apabila Tetapan menyatakan demikian) dan ia dipaparkan di sini.
@@ -289,7 +289,7 @@ floor_areas_help	Kawasan ialah bilik atau zon di dewan makan (Dine In, Parcel, A
 area_new_ph	Kawasan / bilik baharu (cth. AC, Taman)
 add_area	Tambah kawasan
 area_added	Kawasan “{name}” sedia — tambahkan meja makan ke dalamnya
-no_favorites	Tiada kegemaran lagi — tambah item menu daripada senarai di bawah.
+no_favorites	Tiada kegemaran lagi — tambah item daripada senarai di bawah.
 add_to_bill	Tambahkan pada bil
 added	Ditambah
 owes_word	berhutang
@@ -321,7 +321,7 @@ branches_org	Cawangan & org
 credit_customers	Pihak (akaun kredit)
 customer_name_ph	Nama pelanggan atau pembekal
 new_customer_ph	Nama pelanggan atau pembekal baharu
-item_name_ph	Nama item menu (cth. Masala Dosa)
+item_name_ph	Nama item (cth. Masala Dosa)
 item_price_ph	harga
 start_template	produk
 team	Pasukan
@@ -396,8 +396,8 @@ use	guna
 dont_use	jangan guna
 add_branch	Tambah cawangan
 add_conversion	Tambah penukaran
-add_dishes_items	Tambah hidangan & item menu
-add_item_plain	Tambah item menu
+add_dishes_items	Tambah hidangan & item
+add_item_plain	Tambah item
 add_note	Tambah nota
 add_opening_balance	Tambah baki pembukaan
 add_staff	Tambah kakitangan
@@ -427,7 +427,7 @@ bank_in	Bank masuk
 bank_out	Tunai keluar dari bank
 bank_reconciliation	Penyesuaian bank
 bank_to_till	Bank → kaunter
-book_add_dish	Lejar — tambah hidangan / item menu
+book_add_dish	Lejar — tambah hidangan / item
 book_opening_credit	Lejar — kredit pembukaan
 branch_name_sell_ph	Nama cawangan untuk dijual
 bring_my_book	Bawa lejar saya
@@ -446,7 +446,7 @@ clear_icon	Kosongkan ikon
 clear_photo	Foto yang jelas
 copy_day_book_csv	Salin lejar hari CSV
 copy_day_close	Tutup hari salinan
-copy_items_csv	Salin item menu CSV
+copy_items_csv	Salin item CSV
 copy_outstanding_csv	Salin tertunggak CSV
 copy_parties_csv	Salin pelanggan dan pembekal CSV
 copy_party_ledger_csv	Salin lejar pelanggan CSV
@@ -540,9 +540,9 @@ other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan kasir t
 forget_shop	Lupakan kedai ini
 goods_received	Barang diterima
 import_day	Hari import
-import_items_csv_plain	Import item menu CSV…
+import_items_csv_plain	Import item CSV…
 import_parties_csv	Import pelanggan dan pembekal CSV…
-item_name	Nama item menu
+item_name	Nama item
 kitchen_printing	Pencetak
 login_id_ph	Nama pengguna
 mark_cleared	Mark dibersihkan
@@ -582,7 +582,7 @@ pay_ap_cash	Bayar tunai AP
 pay_ap_heading	Bayar apa yang kita berhutang kepada mereka (AP)
 pay_ap_upi	Bayar AP UPI
 pay_selected_heading	Bayar dipilih (selesaikan hutang / ambil pendahuluan)
-pick_from_items	Pilih daripada item menu kami
+pick_from_items	Pilih daripada item kami
 prev_country	Negara sebelumnya
 print_open	Cetak / buka
 reason_amend_ph	Sebab pindaan / batal / bayaran balik
@@ -823,7 +823,7 @@ station_vp_attached	Pencetak dilampirkan
 station_vp_detached	Pencetak dikeluarkan dari stesen
 station_print_summary	{mode} · {n} pencetak
 station_print_summary_none	Tiada pencetak di stesen ini lagi — ia tidak akan mencetak
-stations_none	Tiada stesen lagi — tambah satu di bawah. Item menu boleh menggunakan stesen supaya KOT mereka dicetak di sana.
+stations_none	Tiada stesen lagi — tambah satu di bawah. Item boleh menggunakan stesen supaya KOT mereka dicetak di sana.
 route_up	Naik
 route_down	Bawah
 route_remove	Alih keluar
@@ -946,7 +946,7 @@ brand_shown_help	Ditunjukkan pada skrin dalam apl. Nama dan ikon apl yang dipasa
 app_icon	Ikon apl
 logo_help	Tanda kedai pilihan pada skrin dalam apl.
 onboard_layout	Apa yang anda dapat
-item_photo_help	Pilihan. Tanpa foto kami menunjukkan huruf awal dari nama item menu.
+item_photo_help	Pilihan. Tanpa foto kami menunjukkan huruf awal dari nama item.
 stamp_heading	setem
 stamp_image_help	Imej setem pilihan pada bil bercetak dan paparan tetamu.
 payment_qr_heading	QR pembayaran
@@ -961,7 +961,7 @@ day_close_help	Rakaman penutupan hari menyimpan ringkasan ini (dan varians laci 
 expenses_word	Perbelanjaan
 feature_access_help	Perkara yang boleh mereka buka — pilihan; kerja di atas sudah menetapkan lalai
 footer_local	SQLite Tempatan · Percuma Selamanya · Awan Sifar
-fresh_book_khaynjo	Segar = menu kosong (tambah hidangan kemudian dalam Menu). Lejar = taip item menu buka dan siapa yang berhutang dengan anda di bawah.
+fresh_book_khaynjo	Segar = menu kosong (tambah hidangan kemudian dalam Menu). Lejar = taip item buka dan siapa yang berhutang dengan anda di bawah.
 fresh_selected	Baru dipilih — katalog kekal kosong. Ketik Selesai apabila bersedia.
 gross_word	kasar
 how_start	Bagaimana anda mahu bermula?
@@ -975,7 +975,7 @@ offline_badge	LUAR TALIAN
 optional_login_help	Log masuk pilihan (id + kata laluan). Set pemilik sekali; hanya pengguna boleh menukar kata laluan kemudian.
 or_unlock_login	Atau buka kunci dengan id log masuk + kata laluan
 permission_preset	Kerja
-preset_help_khaynjo	Juruwang: jual. Pengurus: jual + item menu + batal/pinda.
+preset_help_khaynjo	Juruwang: jual. Pengurus: jual + item + batal/pinda.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Apl ini Khaynjo sahaja — sistem pengendalian restoran. Perdagangan lain menghadapi penghantaran sebagai produk Kumkaj berasingan.
 purchases_cogs	Pembelian (COGS)
@@ -997,7 +997,7 @@ wipe_schema_done	Persediaan kedai dipadam — pilih Pelayan atau Pelanggan untuk
 rounded_total	Jumlah Bulat
 setup_app_khaynjo	Sediakan Khaynjo
 shop_logo_optional	Logo kedai (pilihan)
-stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
+stock_type_help	Taip nama item (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
 team_owner_help	Biarkan orang itu kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN dan kata laluan pilihan, kemudian Tambah. Pilih orang untuk mengedit jenis borang yang sama — nama, nama pengguna, kata laluan, skrin dan hak — kemudian Simpan. PIN dan kata laluan anda sendiri adalah satu log masuk di bahagian bawah. Pemilik tidak mengubah PIN milik orang lain.
 staff_name_ph	Nama kakitangan
 staff_copy_hire_ph	Salin persediaan daripada (pilihan)
@@ -1022,7 +1022,7 @@ team_features_changed	Skrin ditukar — Simpan persediaan untuk orang ini
 team_rights_changed	Hak ditukar — Simpan persediaan untuk orang ini
 they_owe_us	Mereka berhutang dengan kita
 unit_at_cap	Unit @
-units_help	Kod untuk label item menu (kg, sekeping, beg). Setiap unit mesti memaut — terus atau melalui unit lain — kepada standard (kg · cm · ml · pc), cth. 1 peti = 2 kotak dan 1 kotak = 20 cm. Penukaran: 1 daripada = faktor kepada. Mata wang tidak pernah unit.
+units_help	Kod untuk label item (kg, sekeping, beg). Setiap unit mesti memaut — terus atau melalui unit lain — kepada standard (kg · cm · ml · pc), cth. 1 peti = 2 kotak dan 1 kotak = 20 cm. Penukaran: 1 daripada = faktor kepada. Mata wang tidak pernah unit.
 units_picker_help	Ketik Hidup/Mati untuk menunjukkan unit dalam pemilih Beli dan Menu. Mati unit masih tukar.
 unit_picker_on	hidup
 unit_picker_off	Mati
@@ -1055,7 +1055,7 @@ tmpl_current	Semasa: {} — {}
 tmpl_selected	Dipilih: {} — {}
 setup_complete	Persediaan selesai
 onboard_fresh_tmpl	Baharu · {} — katalog bermula kosong; tambah item dalam Item, kemudian Selesai.
-onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
+onboard_book_tmpl	Lejar · {} — tambah item dan kredit pembukaan, kemudian Selesai.
 onboard_template_tmpl	Namakan tempat itu jika anda mahu, kemudian pilih cara untuk bermula.
 tmpl_blurb	Meja makan, tempahan, tiket dapur, pengebilan dan lejar.
 tmpl_how	Jual di kaunter; Dewan makan untuk meja makan & KOT; Lejar untuk lejar hari.
@@ -1076,7 +1076,7 @@ country_code_ph	Kod negara cth. IN, GB, AS, AE, BR
 credit_khata_amount_ph	Jumlah kredit / lejar kredit
 credit_limit_ph	Had kredit (0 = tiada)
 from_code_ph	Dari kod (beg)
-item_name_lang_ph	Nama item menu — taipkannya dalam bahasa anda
+item_name_lang_ph	Nama item — taipkannya dalam bahasa anda
 login_id_opt_ph	Nama pengguna (diperlukan, unik)
 manager_pin_ph	Pengurus PIN untuk meluluskan (hanya jika anda tidak boleh membatalkan)
 new_branch_name_ph	Nama cawangan baru
@@ -1111,14 +1111,14 @@ book_kind_today	Hari ini lejar
 book_kind_month	Lejar bulan ini
 book_kind_aging	Tertunggak / debit-kredit
 book_kind_balance	Kunci kira-kira
-order_help	Ketik item menu untuk menambahkannya.
+order_help	Ketik item untuk menambahkannya.
 floor_help	Ketik meja makan untuk mengambil atau menukar pesanan. Warna menunjukkan kosong → duduk → dapur → sedia → makan → bil → dibayar. Senarai tunggu, tempahan dan meja makan tambahan terdapat dalam bahagian di bawah.
 kitchen_help	Tiket dapur (KOT), terbaharu terakhir. Mula → Sedia → Selesai memindahkan tiket bersama. Tiket tidak pernah menunjukkan harga.
 kitchen_empty	Tiada tiket terbuka.
 add_a_table	Tambah meja makan
 add_station_heading	Tambah stesen dapur
-categories_help	Ketik Gunakan untuk memfailkan item menu di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
-dish_search_ph	Nama item menu — cari hidangan kami atau taip hidangan anda sendiri
+categories_help	Ketik Gunakan untuk memfailkan item di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
+dish_search_ph	Nama item — cari hidangan kami atau taip hidangan anda sendiri
 tile_free	Kosong
 tile_occupied	diduduki
 tile_food_ready	Makanan siap
@@ -1133,7 +1133,7 @@ summary_busy	meja makan sibuk
 summary_to_collect	untuk mengumpul
 summary_on_floor	di dewan makan
 floor	Dewan makan
-sizes_as_items_ph	Saiz sebagai item menu berasingan (pilihan) — Separuh=120, Penuh=200
+sizes_as_items_ph	Saiz sebagai item berasingan (pilihan) — Separuh=120, Penuh=200
 dish_group_ph	Kumpulan hidangan (pilihan) — cth. Paneer Tikka
 discount	Diskaun
 remove_discount	Alih keluar diskaun
@@ -1154,7 +1154,7 @@ floor_in_kitchen	Di dapur
 floor_eating	Dihidangkan
 pick_category	Pilih satu kategori
 close_category_list	Tutup senarai kategori
-new_category_row	Kategori baharu — dibuat apabila anda menyimpan item menu
+new_category_row	Kategori baharu — dibuat apabila anda menyimpan item
 your_category	Kategori anda
 suggested_category	Dicadangkan - dari hidangan kami
 category_search_ph	Kategori — cari milik anda atau taip yang baharu
@@ -1164,17 +1164,17 @@ cancel_item_short	Batal
 nc_short	Tiada caj
 charge_again_short	Caj
 move_short	Bergerak
-cancel_item_title	Batalkan item menu ini — dapur mendapat slip pembatalan
-nc_item_title	Jadikan item menu ini percuma (NC)
-charge_again_title	Caj item menu ini sekali lagi
-move_item_title	Alihkan item menu ini ke meja makan lain
+cancel_item_title	Batalkan item ini — dapur mendapat slip pembatalan
+nc_item_title	Jadikan item ini percuma (NC)
+charge_again_title	Caj item ini sekali lagi
+move_item_title	Alihkan item ini ke meja makan lain
 already_cooked	Sudah masak (membazir)
 not_cooked_yet	Belum masak lagi
 return_to_customer	Baki kepada pelanggan
 short_by	Pendek oleh
 tip_not_sale	Tip (kakitangan, bukan jualan)
 right_settle	Ambil bayaran
-right_cancel_sent	Batalkan item menu yang dihantar
+right_cancel_sent	Batalkan item yang dihantar
 right_complimentary	Percuma (NC)
 right_move_table	Gerakkan / gabungkan meja makan
 right_reprint	Cetak bil lagi
@@ -1198,7 +1198,7 @@ line_reason_ph	Sebab (mis. tetamu berubah fikiran, kehabisan stok)
 line_qty_ph	Berapa banyak yang perlu dibatalkan (kosong = semua)
 line_target_ph	Beralih ke meja makan (cth. D5)
 confirm	sahkan
-menu_search_ph	Cari item menu atau kod pendek
+menu_search_ph	Cari item atau kod pendek
 customer_paid_ph	Pelanggan bayar
 tip_ph	Tip
 table_area_ph	Kawasan (cth. Dine In, Parcel, AC)
@@ -1302,9 +1302,9 @@ import_aggregator_file	Import fail agregator
 team_pick_ph	Kakitangan untuk mengedit — nama, nama pengguna atau pilih
 select_staff	Pilih kakitangan ini
 rights_help	Tindakan wang & dewan makan untuk orang ini — ketik untuk kitar: Dibenarkan → Memerlukan bos PIN → Tidak dibenarkan. Cetak bil sekali lagi adalah bil sahaja; stesen dapur adalah senarai semak di bawah.
-dish_picker_help	Cari atau semak imbas hidangan kami dan ketik satu untuk mengisi nama dan fotonya — atau simpan nama anda sendiri. Tetapkan harga anda (0 tidak mengapa), kemudian Tambah item menu.
+dish_picker_help	Cari atau semak imbas hidangan kami dan ketik satu untuk mengisi nama dan fotonya — atau simpan nama anda sendiri. Tetapkan harga anda (0 tidak mengapa), kemudian Tambah item.
 close_dish_list	Tutup senarai hidangan
-own_item_name	Gunakan ini sebagai nama item menu anda sendiri
+own_item_name	Gunakan ini sebagai nama item anda sendiri
 on_your_menu	Pada menu anda
 edit	Sunting
 schemes	Skim / tawaran
@@ -1326,7 +1326,7 @@ dine_in_pick_table	Dine-in — pilih meja makan pada skrin Dewan Makan
 choose_table	Pilih meja makan
 change_table	Tukar meja makan
 pick_table_banner	Pilih meja makan untuk pesanan ini
-items_word	item menu
+items_word	item
 items_section	Item
 back_to_order	Kembali kepada pesanan
 new_items_head	Belum dihantar lagi
