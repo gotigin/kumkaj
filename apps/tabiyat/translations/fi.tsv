@@ -708,7 +708,7 @@ new_password_ph	Uusi salasana (valinnainen)
 new_pin_ph	Uusi PIN (4–12 numeroa)
 note_bank_ph	Huomautus (talletus, nosto, …)
 note_buy_expense_ph	Huomautus (polttoaine, vuokra, …)
-options_tabiyat_ph	Valinnat — Koko*: Pieni=199, Suuri=399 | Lisukkeet+3: Juusto=40, Oliivi=30 | Lisäjuusto=40
+options_tabiyat_ph	Valinnat — Koko*: Pieni=199, Suuri=399…
 phone_ph	Puhelin
 place_name_ph	Tämän paikan nimi
 qty_example_ph	Määrä (esim. 1,5 kilolle)

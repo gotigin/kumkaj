@@ -708,7 +708,7 @@ new_password_ph	Nova lozinka (nije obavezno)
 new_pin_ph	Novi PIN (4–12 cifara)
 note_bank_ph	Napomena (uplata, isplata, …)
 note_buy_expense_ph	Napomena (gorivo, kirija, …)
-options_tabiyat_ph	Opcije — Veličina*: Mala=199, Velika=399 | Dodaci+3: Sir=40, Maslina=30 | Dodatni sir=40
+options_tabiyat_ph	Opcije — Veličina*: Mala=199, Velika=399…
 phone_ph	Telefon
 place_name_ph	Ime ovog mjesta
 qty_example_ph	Kol. (npr. 1.5 za kg)

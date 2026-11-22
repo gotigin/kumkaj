@@ -708,7 +708,7 @@ new_password_ph	Nytt lösenord (valfritt)
 new_pin_ph	Ny PIN-kod (4–12 siffror)
 note_bank_ph	Notera (insättning, uttag, ...)
 note_buy_expense_ph	Obs (bränsle, hyra, …)
-options_tabiyat_ph	Alternativ — Storlek*: Liten=199, Stor=399 | Toppings+3: Ost=40, Olive=30 | Extra ost=40
+options_tabiyat_ph	Alternativ — Storlek*: Liten=199, Stor=399…
 phone_ph	Telefon
 place_name_ph	Namnet på denna plats
 qty_example_ph	Antal (t.ex. 1,5 för kg)

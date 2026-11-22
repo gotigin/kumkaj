@@ -708,7 +708,7 @@ new_password_ph	Nytt passord (valgfritt)
 new_pin_ph	Ny PIN (4–12 sifre)
 note_bank_ph	Notat (innskudd, uttak, …)
 note_buy_expense_ph	Notat (drivstoff, leie, …)
-options_tabiyat_ph	Valg — Størrelse*: Liten=199, Stor=399 | Tillegg+3: Ost=40, Oliven=30 | Ekstra ost=40
+options_tabiyat_ph	Valg — Størrelse*: Liten=199, Stor=399…
 phone_ph	Telefon
 place_name_ph	Navn på dette stedet
 qty_example_ph	Antall (f.eks. 1.5 for kg)

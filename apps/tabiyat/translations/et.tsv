@@ -708,7 +708,7 @@ new_password_ph	Uus parool (valikuline)
 new_pin_ph	Uus PIN (4–12 numbrit)
 note_bank_ph	Märkus (deposiit, väljamakse, ...)
 note_buy_expense_ph	Märkus (kütus, rent, …)
-options_tabiyat_ph	Valikud — Suurus*: Väike=199, Suur=399 | Lisandid+3: Juust=40, Oliiv=30 | Lisajuust = 40
+options_tabiyat_ph	Valikud — Suurus*: Väike=199, Suur=399…
 phone_ph	Telefon
 place_name_ph	Selle koha nimi
 qty_example_ph	Kogus (nt 1,5 kg kohta)
