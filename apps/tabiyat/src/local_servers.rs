@@ -177,7 +177,15 @@ pub fn create_local_server_from_backup(
     let (info, empty) = create_local_server(base, "")?;
     let dest = empty.db_path().to_path_buf();
     drop(empty);
-    let store = Store::restore_from_to_path(backup, &dest)?;
+    let store = match Store::restore_from_to_path(backup, &dest) {
+        Ok(store) => store,
+        Err(e) => {
+            // A restore that fails part-way must not leave an empty Server
+            // behind: it would hide first-run Restore and block a retry.
+            let _ = delete_local_server(base, &info.id);
+            return Err(e);
+        }
+    };
     let _ = store.set_device_role("server");
     // Restored books already have catalogue / Owner PIN — skip the template offer.
     let _ = store.set_app_template_offer_done();
@@ -280,6 +288,34 @@ pub fn open_default_server() -> Result<Store, String> {
 mod tests {
     use super::*;
     use std::time::{SystemTime, UNIX_EPOCH};
+
+    /// A restore that fails after the Server was created leaves the install
+    /// at first run: no Server registered, nothing left on disk, retry allowed.
+    #[test]
+    fn failed_first_run_restore_leaves_no_server_behind() {
+        let source_base = temp_base();
+        let (_info, source) = create_local_server(&source_base, "Source desk").unwrap();
+        let backup = source_base.join("other-page-size.sqlite3");
+        source.backup_to(&backup).unwrap();
+        drop(source);
+        // A different page size passes the backup check, but SQLite cannot
+        // copy it into WAL-mode books: a dependable mid-restore failure.
+        {
+            let conn = rusqlite::Connection::open(&backup).unwrap();
+            conn.execute_batch("PRAGMA journal_mode=DELETE; PRAGMA page_size=8192; VACUUM;")
+                .unwrap();
+        }
+        assert!(store::check_backup_file(&backup).is_ok());
+
+        let dest = temp_base();
+        assert!(create_local_server_from_backup(&dest, &backup).is_err());
+        assert!(offline_server_id(&dest).unwrap().is_none());
+        assert!(list_local_servers(&dest).unwrap().is_empty());
+        let leftovers = fs::read_dir(servers_root(&dest)).map(|d| d.count()).unwrap_or(0);
+        assert_eq!(leftovers, 0);
+        let _ = fs::remove_dir_all(source_base);
+        let _ = fs::remove_dir_all(dest);
+    }
 
     fn temp_base() -> PathBuf {
         let nanos = SystemTime::now()
