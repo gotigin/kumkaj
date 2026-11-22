@@ -37,7 +37,7 @@ removed_help	Imupadabọ fi ohun naa pada si Awọn nkan gangan bi o ti jẹ - i
 restore_item	Mu pada
 empty_catalog	Ko si awọn nkan sibẹsibẹ.
 total	Lapapọ
-cash	Owo owo
+cash	Owo
 upi	UPI
 card	Kaadi
 credit	Ẹgbẹ
@@ -221,7 +221,7 @@ server_remove_pin_ph	Olohun PIN lati yọ olupin kuro
 only_owner_remove_server	Olohun nikan ni o le yọ olupin kuro
 owner_pin_remove_server	Olohun PIN nilo lati yọ olupin yii kuro
 device_setup_help	Olupin ntọju awọn akọọlẹ nibi. Awọn orisii alabara si olupin kan.
-currency	Owo owo
+currency	Owo
 backup	Afẹyinti
 use	Lo
 dont_use	Maṣe lo
@@ -370,7 +370,7 @@ restaurant_name_ph	Orukọ ile itaja (aṣayan)
 restore_backup	Mu afẹyinti pada
 role_both	Mejeeji
 role_admin	Abojuto
-role_cashier	Owo owo
+role_cashier	Owo
 role_customer	Onibara
 role_manager	Alakoso
 history_retention	Itan iṣowo

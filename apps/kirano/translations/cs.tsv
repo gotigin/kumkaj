@@ -670,7 +670,7 @@ icon_default	Ikona: Značka Kumkaj (výchozí) — vyberte si vlastní
 logo_yours	Logo: logo vašeho obchodu – zobrazené na obrazovkách a účtenkách
 logo_default	Logo: značka Kumkaj (výchozí) — vyberte si vlastní, pokud nějaké máte
 setup_complete	Nastavení dokončeno
-onboard_fresh_tmpl	Fresh · {} — katalog začíná prázdný; přidat položky do položky Položky a poté Hotovo.
+onboard_fresh_tmpl	Fresh · {} — katalog začíná prázdný; přidat položky v Položkách a poté Hotovo.
 onboard_book_tmpl	Rezervovat · {} — přidejte položky a úvodní kredit a poté Hotovo.
 tmpl_blurb	Počítadlo Kirana: prodej, sklad, khata, dodavatel nakupuje, knihy.
 reports_facet_title	Zprávy

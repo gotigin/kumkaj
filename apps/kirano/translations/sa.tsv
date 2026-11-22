@@ -632,7 +632,7 @@ staff_copy_hire	अस्य व्यक्तिस्य सेटअपस�
 staff_edit_name_ph	नाम प्रदर्शयतु
 staff_rename	नाम रक्षतु
 staff_copy_edit_ph	अन्यस्मात् व्यक्तितः सेटअपं प्रतिलिख्यताम्
-staff_copy_edit	तेषां सेटअपं चयनितं प्रति प्रतिलिख्यताम्
+staff_copy_edit	तेषां सेटअपं चयनितं प्रतिलिख्यताम्
 staff_copy_edit_onto	तेषां सेटअपं {name} इत्यत्र प्रतिलिख्यताम्।
 staff_deactivate_named	निष्कासित {name} .
 staff_renamed	नाम रक्षितम्

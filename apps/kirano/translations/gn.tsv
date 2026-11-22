@@ -426,7 +426,7 @@ allow_firewall	Eheja ambue tembipurukuéra toñembojoaju
 firewall_blocked	Ko komputadóra firewall ojoko hína ambue tembipuru — epoko Eheja ambue tembipuru oñembojoaju.
 firewall_waiting	Oha'arõvo pe admin ñe'ẽmondo...
 lan_join_help	Ambue tembipuru’ípe: Modo Cliente → Eheka pe tenda servidor (térã ehai {addr}) → código de emparejamiento {code}.
-lan_pair_status	Wi‑Fi {addr} Ñemby Ñemby
+lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Embojoaju ko tembipuru Wi‑Fi rehe peteĩ dirección rehegua.
 lan_not_listening	Ndoaceptái umi tembipuru (puerto {port} hembiapo heta). Emoñepyrũ jey pe app.
 lan_tills_off	Tills extra oime apagado. Eheja chupekuéra toheja ambue tembipuru ojoaju.
@@ -655,7 +655,7 @@ who_unlocking	Mávapa odesblokea hína?
 locked_word	Oñemboty
 set_owner_pin	CONJUNTO JEJAPO PIN .
 enter_owner_passcode	OIKE CÓDIGO DE PASO JEJAPO rehegua
-enter_staff_passcode	OIKE CÓDIGO DE PERSONAL PERSONAL-PE
+enter_staff_passcode	OIKE CÓDIGO DE PERSONAL-PE
 pin_hint_choose	Eiporavo 4–12 dígito · Eike térã Emboguejy eñongatu hag̃ua
 pin_hint_new	Ipyahu 4–12 dígito Ijára PIN · Eike térã Emboguejy
 pin_hint_shop_code	Tenda tembipuru · código de emparejamiento {} .
