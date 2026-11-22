@@ -26,13 +26,13 @@ settle_card	Bayaran ng kard
 items	Mga item
 nav_items	Mga item
 items_help	Mag-tap ng item para i-edit ito. Ni-clear ng bagong item ang form. Maghanap ayon sa pangalan o maikling code, magtakda ng presyo (0 ay okay), pagkatapos ay Idagdag. Ang mga benta na naitala na ay panatilihin ang pangalan kung saan sila sinisingil.
-add_item	Magdagdag ng item sa menu
-new_item	Bagong menu item
-adding_item	Pagdaragdag ng bagong item sa menu
+add_item	Magdagdag ng item
+new_item	Bagong item
+adding_item	Pagdaragdag ng bagong item
 editing_item	Pag-edit
 save	I-save
 remove	Alisin
-removed_items	Inalis ang mga item sa menu
+removed_items	Inalis ang mga item
 removed_help	Ibinabalik ng Restore ang item sa Mga Item nang eksakto tulad ng dati — presyo, larawan at kategorya.
 restore_item	Ibalik
 empty_catalog	Wala pang mga item.
@@ -56,11 +56,11 @@ applied	Inilapat
 note_ph	Tandaan (opsyonal)
 rounded	BILOG
 split	Hatiin
-bill_item_layout	Layout ng item sa menu ng menu
+bill_item_layout	Layout ng item
 bill_item_layout_columns	Mga hanay
 bill_item_layout_stacked	Nakasalansan
 bill_item_header	Mga header ng column
-bill_item_name	Pangalan ng item sa menu ng menu
+bill_item_name	Pangalan ng item
 bill_item_qty	Dami
 bill_item_price	Presyo
 bill_item_amount	Halaga
@@ -156,13 +156,13 @@ reports_expenses	Bank ledger at P&L
 nav_reports	Mga ulat
 nav_settings	Mga setting
 nav_lock	I-lock
-all_items	Lahat ng mga item sa menu
+all_items	Lahat ng mga item
 frequent	Madalas
-added_items	Nagdagdag ng mga item sa menu ng Menu
+added_items	Nagdagdag ng mga item
 added_items_empty	Wala pa sa bill na ito — magdagdag ng item mula sa Lahat ng item o isang kategorya.
 frequent_config_help	Karamihan sa mga nabentang item mula sa mga nakumpletong bill. Itakda kung ilang araw ang titingnan at kung gaano karaming mga item ang ipapakita.
 frequent_days_ph	Araw (1)
-frequent_limit_ph	Mga item sa menu ng menu (24)
+frequent_limit_ph	Mga item (24)
 frequent_apply	Mag-apply
 frequent_saved	Madalas: huling (mga) araw ng {d}, nangungunang {n} — {c} na mga item
 frequent_empty	Wala pang nakumpletong benta sa panahong ito — bayaran ang isang bill (₹0 pinapayagan kapag sinabi ng Mga Setting) at makikita ang mga ito dito.
@@ -228,7 +228,7 @@ dont_use	Huwag gumamit
 add_branch	Magdagdag ng sangay
 add_conversion	Magdagdag ng conversion
 add_dishes_items	Magdagdag ng mga item
-add_item_plain	Magdagdag ng item sa menu
+add_item_plain	Magdagdag ng item
 add_note	Magdagdag ng tala
 add_opening_balance	Magdagdag ng pambungad na balanse
 add_staff	Magdagdag ng mga tauhan
@@ -275,7 +275,7 @@ clear_icon	I-clear ang icon
 clear_photo	Maaliwalas na larawan
 copy_day_book_csv	Kopyahin ang ledger ng araw CSV
 copy_day_close	Pagsara ng araw ng kopya
-copy_items_csv	Kopyahin ang mga item sa menu CSV
+copy_items_csv	Kopyahin ang mga item CSV
 copy_outstanding_csv	Kopyahin ang natitirang CSV
 copy_parties_csv	Kopyahin ang mga customer at supplier CSV
 copy_party_ledger_csv	Kopyahin ang ledger ng customer CSV
@@ -325,9 +325,9 @@ other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulut
 forget_shop	Kalimutan ang tindahang ito
 goods_received	Natanggap ang mga kalakal
 import_day	Araw ng pag-import
-import_items_csv_plain	Mag-import ng mga item sa menu CSV…
+import_items_csv_plain	Mag-import ng mga item CSV…
 import_parties_csv	Mag-import ng mga customer at supplier CSV…
-item_name	Pangalan ng item sa menu ng menu
+item_name	Pangalan ng item
 login_id_ph	Pangalan ng gumagamit
 mark_cleared	Nag-clear si Mark
 new_party_clear	Bagong customer o supplier (malinaw na form)
@@ -562,7 +562,7 @@ brand_shown_help	Ipinapakita sa mga screen sa loob ng app. Ang naka-install na p
 app_icon	Icon ng app
 logo_help	Opsyonal na marka ng tindahan sa mga screen sa app.
 onboard_layout	Kung ano ang makukuha mo
-item_photo_help	Opsyonal. Kung walang larawan, ipinapakita namin ang mga inisyal mula sa pangalan ng item sa menu.
+item_photo_help	Opsyonal. Kung walang larawan, ipinapakita namin ang mga inisyal mula sa pangalan ng item.
 stamp_heading	selyo
 stamp_image_help	Opsyonal na stamp na imahe sa mga naka-print na bill at ang display ng customer.
 payment_qr_heading	QR ng pagbabayad
@@ -624,7 +624,7 @@ wipe_schema_done	Na-wipe ang setup ng shop — piliin ang Server o Client para m
 rounded_total	Bilugan Kabuuan
 setup_app_kirano	I-set up ang Kirano
 shop_logo_optional	Logo ng tindahan (opsyonal)
-stock_type_help	I-type ang pangalan ng item sa menu (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item sa menu ng menu na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
+stock_type_help	I-type ang pangalan ng item (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
 team_owner_help	Iwanang blangko ang tao upang magdagdag ng isang tao: pangalan, trabaho, username, PIN, at isang opsyonal na password, pagkatapos ay Idagdag. Pumili ng taong mag-e-edit sa parehong uri ng form — pangalan, username, password, screen, at karapatan — pagkatapos ay I-save. Ang iyong sariling PIN at password ay isang pag-sign-in sa ibaba. Hindi binabago ng May-ari ang PIN ng sinuman.
 staff_name_ph	Pangalan ng tauhan
 staff_copy_hire_ph	Kopyahin ang setup mula sa (opsyonal)
@@ -646,7 +646,7 @@ team_features_changed	Binago ang mga screen — I-save ang setup para sa taong i
 team_rights_changed	Binago ang mga karapatan — I-save ang setup para sa taong ito
 they_owe_us	May utang sila sa amin
 unit_at_cap	Yunit @
-units_help	Mga code para sa mga label ng item sa menu (kg, piraso, bag). Ang bawat unit ay dapat mag-link — direkta o sa pamamagitan ng iba pang mga unit — sa isang pamantayan (kg · cm · ml · pc), hal. 1 crate = 2 box at 1 box = 20 cm. Mga Conversion: 1 mula sa = salik sa. Ang mga pera ay hindi kailanman mga yunit.
+units_help	Mga code para sa mga label ng item (kg, piraso, bag). Ang bawat unit ay dapat mag-link — direkta o sa pamamagitan ng iba pang mga unit — sa isang pamantayan (kg · cm · ml · pc), hal. 1 crate = 2 box at 1 box = 20 cm. Mga conversion: 1 from = factor to. Ang mga currency ay hindi kailanman mga unit.
 units_picker_help	I-tap ang On/Off para magpakita ng unit sa mga picker ng Bumili at Mga Item. Naka-off pa rin ang mga unit.
 unit_picker_on	Naka-on
 unit_picker_off	Naka-off
@@ -717,10 +717,10 @@ book_kind_today	Mga ledger ngayon
 book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
-order_help	Mag-tap ng menu item para idagdag ito.
+order_help	Mag-tap ng item para idagdag ito.
 categories_help	I-tap ang Gamitin para ilagay ang item sa itaas sa kategoriyang iyon. Binibigyan ng larawan ang kategorya; kung wala, initials ang lumalabas.
 dish_search_ph	Maghanap ng mga item o maikling code…
-sizes_as_items_ph	Mga laki bilang hiwalay na mga item sa menu (opsyonal) — Kalahati=120, Buo=200
+sizes_as_items_ph	Mga laki bilang hiwalay na mga item (opsyonal) — Kalahati=120, Buo=200
 dish_group_ph	Pangkat ng laki ng pack (opsyonal) — hal. Atta 1kg / 5kg
 discount	diskwento
 remove_discount	Alisin ang diskwento
@@ -736,7 +736,7 @@ shift_handover	Paglipat ng shift
 shift_since	Ang shift na ito mula noon
 expected_in_drawer	Inaasahan sa drawer
 right_discount	Bigyan ng discount
-new_category_row	Bagong kategorya — nilikha kapag nai-save mo ang item sa menu
+new_category_row	Bagong kategorya — nilikha kapag nai-save mo ang item
 your_category	Iyong kategorya
 suggested_category	Iminungkahing — mula sa aming mga item
 category_search_ph	Kategorya — maghanap sa iyo o mag-type ng bago
@@ -754,7 +754,7 @@ no_server_found	Walang nahanap. Sa Server: Mga Setting → Iba pang mga device �
 servers_found_pick	I-tap ang shop na gusto mong kumonekta.
 server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkatapos ay Ipares ngayon.
 approval_pin_ph	Manager PIN (kung tatanungin lang)
-menu_search_ph	Maghanap ng item sa menu o maikling code
+menu_search_ph	Maghanap ng item o maikling code
 customer_paid_ph	Nagbayad ang customer
 tip_ph	Dagdag
 find_server	Hanapin ang server ng shop
@@ -817,7 +817,7 @@ payment_qr_none	QR ng Pagbabayad: wala — halaga QR mula sa UPI ID kapag nagbab
 team_pick_ph	Mga tauhan na ie-edit — pangalan, username, o pipiliin
 select_staff	Piliin ang tauhan na ito
 rights_help	Mga aksyong pera para sa taong ito — i-tap para umikot: Pinapayagan → Kailangan ng boss PIN → Hindi pinapayagan. I-print muli ang bill ay mga bill lamang; ang mga seksyon ay ang checklist sa ibaba.
-own_item_name	Gamitin ito bilang iyong sariling pangalan ng item sa menu
+own_item_name	Gamitin ito bilang iyong sariling pangalan ng item
 on_your_menu	Sa catalog
 edit	I-edit
 schemes	Mga scheme / alok
