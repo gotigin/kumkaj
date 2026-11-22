@@ -171,7 +171,7 @@ kot_station_not_allowed	हें किचन वापरपाक मेळ�
 kot_station_none	अजून किचन स्टेशन नात — किचन वा सेटिंग → वाठार · स्टेशन हांगा एक जोडात
 pos_tab_items	जोडिल्ले वस्तू
 pos_tab_payment	फारीक
-hold_send	होल्ड
+hold_send	धर
 hold_send_on	होल्ड केलां
 hold_send_meta	होल्ड — हो KOT न्हय
 station_remove	स्टेशन काडात
@@ -255,7 +255,7 @@ amounts_show	दाखोवचें
 counter	गल्लो
 dine_in	डाइन-इन करप
 takeaway	टेकअवे
-order	क्रम
+order	ऑर्डर
 tables	टेबलां
 kitchen	रांदचेकूड
 sales	विक्री
@@ -307,7 +307,7 @@ kot_cancelled	रद्द केलां
 kot_start_btn	सुरवात
 kot_mark_ready	मार्क तयार
 kot_done_btn	जालें
-table_free	फुकट — ऑर्डर सुरू करपाक टॅप करात
+table_free	रिकामें — ऑर्डर सुरू करपाक टॅप करात
 start_order	ऑर्डर सुरू करप
 open_bill	उक्ते बिल
 collect_payment	फारीकणी एकठांय करप

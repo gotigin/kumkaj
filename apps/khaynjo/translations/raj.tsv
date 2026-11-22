@@ -46,7 +46,7 @@ total	कुल
 cash	नकद
 upi	UPI
 card	कार्ड
-credit	ग्राहक अर आपूर्तिकर्ता
+credit	पार्टी
 clear	साफ करो
 ready_to_sell	बुकिंग करण नै त्यार
 today_prefix	आज
@@ -171,8 +171,8 @@ kot_station_not_allowed	रसोई रो उपयोग करण री अ
 kot_station_none	अबार तांई कोई रसोई रो स्टेशन कोनी है — रसोई या सेटिंग्स → क्षेत्र · स्टेशन रै तळै एक जोड़ो
 pos_tab_items	जोड़ी गई चीजां
 pos_tab_payment	भुगतान
-hold_send	रसोईघर सूं रुको
-hold_send_on	आयोजित
+hold_send	रोको
+hold_send_on	रोक्यो
 hold_send_meta	राख्यो गयो — यो KOT कोनी
 station_remove	स्टेशन नै हटाओ
 station_remove_ph	सूची मांय सूं कोई स्टेशन नै हटाबा रै वास्तै टैप करो
@@ -255,7 +255,7 @@ amounts_show	दिखाओ
 counter	काउंटर
 dine_in	भोजन करो
 takeaway	ले जाबा तांई
-order	रेस्टोरेंट रो आदेश
+order	ऑर्डर
 tables	भोजन री मेज
 kitchen	रसोई
 sales	बिक्री
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	नयो वाउचर कोड
 split_evenly	समान रूप सूं बांटो
 waitlist	प्रतीक्षा सूची
 fire_course	रसोईघर मांय पाठ्यक्रम भेजो
-hold_item	रसोईघर सूं रुको
+hold_item	रोको
 waiter_call	वेटर नै बुलाओ
 waitlist_add	प्रतीक्षा सूची मांय जोड़ो
 floor_view_grid	ग्रिड
@@ -929,7 +929,7 @@ duress_off	आपातकालीन अनलॉक PIN बंद है
 duress_saved	आपातकालीन अनलॉक PIN बचायो गयो
 duress_cleared	आपातकालीन अनलॉक PIN बंद कर दियो गयो
 upi_amount_ph	UPI रकम
-void	शून्य बिक्री
+void	रद्द करो
 write_off_ap	एपी नै बंद कर दो
 write_off_heading	लिखो (बिना भुगतान किये साफ करो)
 write_off_nil	लिखो / शून्य शेष राशि

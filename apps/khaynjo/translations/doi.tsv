@@ -2,7 +2,7 @@
 app_tagline	रेस्टोरेंट दे आर्डर, किचन & लेजर। मुफ्त ऑफलाइन।
 unlock	अनलॉक करना
 pin_hint	मालिक PIN 0000 दे रूप च शुरू होंदा ऐ
-sell	रेस्टोरेंट दा ऑर्डर
+sell	ऑर्डर
 buy	खरीदें
 books	दिन लेजर
 books_help	आज का खाता सार। आर्डर = आने आले आर्डर खरीद = खरीद ते खर्च। ग्राहक ते आपूर्तिकर्ता = क्रेडिट ग्राहक ते आपूर्तिकर्ता।
@@ -46,7 +46,7 @@ total	कुल
 cash	नकद
 upi	UPI
 card	कार्ड
-credit	ग्राहक ते आपूर्तिकर्ता
+credit	पार्टी
 clear	साफ कर दे
 ready_to_sell	लेजर करने के लिए तैयार
 today_prefix	आज
@@ -171,8 +171,8 @@ kot_station_not_allowed	रसोई दा इस्तेमाल करन�
 kot_station_none	अजें तगर कोई रसोई स्टेशन नेईं — रसोई जां सेटिंग्स → क्षेत्र · स्टेशनें दे हेठ इक जोड़ो
 pos_tab_items	मेनू आइटम जोड़े गए
 pos_tab_payment	भुगतान करना
-hold_send	रसोई से पकड़ो
-hold_send_on	आयोजित कीता
+hold_send	रोको
+hold_send_on	रोके दा
 hold_send_meta	पकड़ा — इस KOT नहीं
 station_remove	स्टेशन हटाओ
 station_remove_ph	इसगी हटाने लेई सूची च कुसै स्टेशन पर टैप करो
@@ -255,7 +255,7 @@ amounts_show	दिखाओ
 counter	काउंटर
 dine_in	डाइन-इन
 takeaway	टेकअवे
-order	रेस्टोरेंट दा ऑर्डर
+order	ऑर्डर
 tables	डाइनिंग टेबल
 kitchen	रसोई
 sales	बिक्री
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	नए वाउचर कोड
 split_evenly	बराबर बंटें
 waitlist	प्रतीक्षा सूची
 fire_course	रसोई च कोर्स भेजना
-hold_item	रसोई से पकड़ो
+hold_item	रोको
 waiter_call	वेटर को फोन करो
 waitlist_add	वेटलिस्ट च जोड़ो
 floor_view_grid	ग्रिड

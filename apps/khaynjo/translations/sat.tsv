@@ -307,7 +307,7 @@ kot_cancelled	ᱨᱚᱫᱽ ᱦᱩᱭᱮᱱᱟ
 kot_start_btn	ᱮᱦᱚᱵᱽ ᱢᱮ
 kot_mark_ready	ᱪᱤᱱᱦᱟᱹ ᱥᱟᱯᱲᱟᱣ ᱜᱮᱭᱟ
 kot_done_btn	ᱥᱟᱹᱛ ᱮᱱᱟ
-table_free	ᱯᱷᱨᱤ — ᱚᱰᱟᱨ ᱮᱦᱚᱵ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
+table_free	ᱠᱷᱟᱹᱞᱤ — ᱚᱰᱟᱨ ᱮᱦᱚᱵ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
 start_order	ᱚᱰᱟᱨ ᱮᱦᱚᱵ ᱢᱮ
 open_bill	ᱵᱤᱞ ᱡᱷᱤᱡᱽ ᱢᱮ
 collect_payment	ᱯᱮᱢᱮᱱᱴ ᱢᱤᱫᱴᱟᱹᱝ ᱢᱮ
@@ -899,21 +899,21 @@ till_to_bank	ᱵᱮᱝᱠ ᱦᱟᱹᱵᱤᱡ
 units_heading	ᱭᱩᱱᱤᱴ
 unlock_after_pairing	ᱯᱤᱱ ᱮᱢ ᱢᱮ
 unlock_with_login	ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
-or_unlock_shop_login	[sat] Or unlock with shop login
-shop_login_help	[sat] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	ᱟᱨ ᱵᱟᱝ ᱫᱚᱠᱟᱱ ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+shop_login_help	ᱚᱯᱥᱚᱱᱟᱞ: PIN ᱵᱚᱫᱚᱞ ᱛᱮ ᱱᱚᱣᱟ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱴᱟᱯᱷ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ ᱟᱨ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱛᱮ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ (ᱚᱯᱷᱞᱟᱭᱤᱱ ᱠᱟᱹᱢᱤᱭᱟ)᱾
 cloud_account_title	ᱠᱷᱟᱭᱱᱡᱚ ᱠᱷᱟᱛᱟ
-cloud_account_help	[sat] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_account_help	khaynjo.com/account ᱥᱟᱶ ᱢᱤᱫ ᱜᱮ ᱮᱠᱟᱣᱩᱱᱴ ᱛᱮ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱟᱨ ᱵᱟᱝ ᱥᱟᱭᱤᱱ ᱤᱱ ᱢᱮ᱾ ᱟᱢᱟᱜ ᱠᱞᱟᱣᱰ ᱟᱭᱰᱤ ᱟᱨ ᱯᱷᱨᱤ ᱯᱞᱟᱱ ᱛᱮᱭᱟᱨᱟ᱾
 cloud_name_ph	ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
 cloud_email_ph	ᱤᱢᱮᱞ
 cloud_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 cloud_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
-cloud_forgot	[sat] Forgot password?
-cloud_web_methods	[sat] Google and other methods on the website
-cloud_signing_in	[sat] Signing in…
-cloud_sending_reset	[sat] Sending reset link…
-cloud_forgot_sent	[sat] If that email has an account, a reset link is on the way.
-cloud_welcome	[sat] Signed in as {user} · {plan}
-cloud_created	[sat] Account created. Check your email to verify when you can.
+cloud_forgot	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱦᱤᱲᱤᱧ ᱠᱮᱫᱟ?
+cloud_web_methods	ᱣᱮᱵᱥᱟᱭᱤᱴ ᱨᱮ Google ᱟᱨ ᱮᱴᱟᱜ ᱦᱚᱨ
+cloud_signing_in	ᱥᱟᱭᱤᱱ ᱤᱱ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ…
+cloud_sending_reset	ᱨᱤᱥᱮᱴ ᱞᱤᱝᱠ ᱠᱩᱞ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ…
+cloud_forgot_sent	ᱡᱩᱫᱤ ᱚᱱᱟ ᱤᱢᱮᱞ ᱨᱮ ᱮᱠᱟᱣᱩᱱᱴ ᱢᱮᱱᱟᱜᱼᱟ, ᱨᱤᱥᱮᱴ ᱞᱤᱝᱠ ᱦᱤᱡᱩᱜ ᱠᱟᱱᱟ᱾
+cloud_welcome	{user} · {plan} ᱞᱮᱠᱟ ᱥᱟᱭᱤᱱ ᱤᱱ ᱮᱱᱟ
+cloud_created	ᱮᱠᱟᱣᱩᱱᱴ ᱛᱮᱭᱟᱨ ᱮᱱᱟ᱾ ᱡᱚᱠᱷᱚᱱ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱚᱱᱟ ᱡᱷᱚᱜ ᱤᱢᱮᱞ ᱧᱮᱞ ᱢᱮ ᱥᱟᱹᱨᱤ ᱞᱟᱹᱜᱤᱫ᱾
 cloud_cancel	ᱵᱚᱱᱫᱚ
 unmark	ᱪᱤᱱᱦᱟᱹ ᱵᱟᱝ ᱢᱮ
 update_my_password	ᱤᱧᱟᱜ ᱯᱟᱥᱣᱟᱨᱰ ᱟᱯᱰᱮᱴ ᱢᱮ
@@ -1126,7 +1126,7 @@ tile_bill_printed	ᱵᱤᱞ ᱪᱷᱟᱯᱟ ᱮᱱᱟ
 tile_paid	ᱯᱮᱭᱰ
 tile_bill_btn	ᱵᱤᱞ
 tile_occupy_btn	ᱯᱮᱲᱟ ᱠᱚ ᱫᱩᱲᱩᱵ ᱢᱮ
-tile_free_btn	ᱯᱷᱨᱤ ᱴᱮᱵᱩᱞ
+tile_free_btn	ᱴᱮᱵᱩᱞ ᱠᱷᱟᱹᱞᱤ ᱢᱮ
 tile_ready_btn	ᱯᱷᱨᱤ ᱴᱮᱵᱩᱞ
 tile_undo_bill	ᱵᱤᱞ ᱚᱪᱚᱜ ᱢᱮ
 summary_busy	ᱴᱮᱵᱩᱞ ᱠᱚ ᱵᱤᱡᱤ ᱜᱮᱭᱟ

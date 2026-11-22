@@ -46,7 +46,7 @@ total	ಒಟ್ಟು
 cash	ನಗದು
 upi	UPI
 card	ಕಾರ್ಡ್
-credit	ಗಿರಾಕಿಲು ಬೊಕ್ಕ ಪೂರೈಕೆದಾರೆರ್
+credit	ಪಾರ್ಟಿ
 clear	ತೆರಿಪಾಲೆ
 ready_to_sell	ಬುಕ್ ಮಲ್ಪೆರೆ ರೆಡಿ
 today_prefix	ಇನಿ
@@ -171,7 +171,7 @@ kot_station_not_allowed	ಅಡುಗೆಮನೆನ್ ಬಳಕೆ ಮಲ್ಪ
 kot_station_none	ಇತ್ತೆ ಅಡುಗೆಮನೆ ನಿಲ್ದಾಣೊಲು ಇಜ್ಜಿ — ಅಡುಗೆಮನೆ ಅತ್ತಂದೆ ಸೆಟ್ಟಿಂಗ್ಸ್ → ಪ್ರದೇಶೊಲು · ನಿಲ್ದಾಣೊಲೆನ ಅಡಿಟ್ ಒಂಜಿ ಸೇರಾವೊಡು
 pos_tab_items	ಸೇರ್ಸಾಯಿನ ಐಟಂಲು
 pos_tab_payment	ಪಾವತಿ
-hold_send	ಅಡುಗೆಮನೆಡ್ದ್ ಹಿಡಿಯೊಡು
+hold_send	ಹಿಡಿ
 hold_send_on	ನಡತ್ಂಡ್
 hold_send_meta	ನಡತ್ಂಡ್ — ಉಂದು KOT ಅತ್ತ್
 station_remove	ನಿಲ್ದಾಣೊನು ದೆತ್ತ್ ಪಾಡ್ಲೆ
@@ -255,7 +255,7 @@ amounts_show	ತೋಜಾಲೆ
 counter	ಕೌಂಟರ್
 dine_in	ಡೈನ್-ಇನ್
 takeaway	ಟೇಕ್ ಅವೆ
-order	ರೆಸ್ಟೋರೆಂಟ್ ಆದೇಶ
+order	ಆದೇಶ
 tables	ಊಟದ ಮೇಜಿಲು
 kitchen	ಅಡುಗೆಮನೆ
 sales	ಮಾರಾಟ
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	ಪೊಸ ವೌಚರ್ ಕೋಡ್
 split_evenly	ಸಮವಾದ್ ಪಾಡ್ಲೆ
 waitlist	ನಿರೀಕ್ಷೆದ ಪಟ್ಟಿ
 fire_course	ಅಡುಗೆಮನೆಗ್ ಕೋರ್ಸ್ ಕಡಪುಡುಲೆ
-hold_item	ಅಡುಗೆಮನೆಡ್ದ್ ಹಿಡಿಯೊಡು
+hold_item	ಹಿಡಿ
 waiter_call	ವೇಟರ್ ಗ್ ಕಾಲ್ ಮಲ್ಪುಲೆ
 waitlist_add	ನಿರೀಕ್ಷೆದ ಪಟ್ಟಿಗ್ ಸೇರಾಲೆ
 floor_view_grid	ಗ್ರಿಡ್

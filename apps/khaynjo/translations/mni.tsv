@@ -899,21 +899,21 @@ till_to_bank	ꯐꯝ → ꯕꯦꯡꯛ
 units_heading	ꯌꯨꯅꯤꯠ
 unlock_after_pairing	PIN ꯏꯕꯤꯌꯨ
 unlock_with_login	ꯆꯪꯕꯅ ꯍꯥꯡꯗꯣꯛꯎ
-or_unlock_shop_login	[mni] Or unlock with shop login
-shop_login_help	[mni] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	ꯅꯠꯇ꯭ꯔꯒ ꯀꯦꯟꯐꯝ ꯆꯪꯕꯅ ꯍꯥꯡꯗꯣꯛꯎ
+shop_login_help	ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ: PINꯒꯤ ꯃꯍꯨꯠꯇ ꯀꯦꯟꯐꯝ ꯑꯁꯤꯒꯤ ꯁ꯭ꯇꯥꯐ ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ (ꯑꯣꯐꯂꯥꯏꯟꯗ ꯊꯕꯛ ꯇꯧꯏ)꯫
 cloud_account_title	ꯈꯥꯏꯟꯖꯣ ꯑꯦꯀꯥꯎꯟꯇ
-cloud_account_help	[mni] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_account_help	khaynjo.com/accountꯒꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯑꯃꯒꯤꯅ ꯔꯦꯖꯤꯁ꯭ꯇꯔ ꯇꯧꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯂꯨ꯫ ꯅꯍꯥꯛꯀꯤ ꯀ꯭ꯂꯥꯎꯗ id ꯑꯃꯁꯨꯡ ꯃꯈꯥ ꯉꯥꯏꯗꯕ plan ꯁꯦꯝꯃꯤ꯫
 cloud_name_ph	ꯃꯤꯡ (ꯑꯣꯄꯁꯟꯅꯦꯜ)
 cloud_email_ph	ꯏꯃꯦꯏꯜ
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
-cloud_forgot	[mni] Forgot password?
-cloud_web_methods	[mni] Google and other methods on the website
-cloud_signing_in	[mni] Signing in…
-cloud_sending_reset	[mni] Sending reset link…
-cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
-cloud_welcome	[mni] Signed in as {user} · {plan}
-cloud_created	[mni] Account created. Check your email to verify when you can.
+cloud_forgot	ꯄꯥꯁꯋꯥꯔꯗ ꯀꯥꯎꯔꯤꯕꯔꯥ?
+cloud_web_methods	ꯋꯦꯕꯁꯥꯏꯇꯇ Google ꯑꯃꯁꯨꯡ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡꯁꯤꯡ
+cloud_signing_in	ꯆꯪꯂꯤ…
+cloud_sending_reset	ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯊꯥꯔꯤ…
+cloud_forgot_sent	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯗ ꯑꯦꯀꯥꯎꯟꯇ ꯂꯩꯔꯕꯗꯤ, ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯂꯥꯛꯂꯤ꯫
+cloud_welcome	{user} · {plan} ꯑꯣꯏꯅ ꯆꯪꯂꯦ
+cloud_created	ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯝꯈ꯭ꯔꯦ꯫ ꯌꯥꯔꯕꯗ ꯏꯃꯦꯏꯜ ꯌꯦꯡꯁꯤꯟꯕꯤꯌꯨ, ꯆꯥꯡꯗꯝꯅꯕ꯫
 cloud_cancel	ꯇꯣꯛꯎ
 unmark	ꯃꯥꯏꯊꯤꯜ ꯂꯣꯠꯎ
 update_my_password	ꯑꯩꯒꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ

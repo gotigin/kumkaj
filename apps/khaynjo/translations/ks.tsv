@@ -172,7 +172,7 @@ kot_station_none	وٕنیُک تام چُھ نہٕ کچن سٹیشن — کچن 
 pos_tab_items	شٲمِل کَرنہٕ آمٕتۍ چیٖز
 pos_tab_payment	اَدٲیگی
 hold_send	رُکاوُن
-hold_send_on	منعقد کرنہٕ آمُت
+hold_send_on	رُکٲوِتھ
 hold_send_meta	منعقد — یہ نہٕ KOT
 station_remove	سٹیشن ہٹٲوِو
 station_remove_ph	یہِ ہٹاونہٕ خٲطرٕ کٔرِو لِسٹَس منٛز أکِس سٹیشنَس پٮ۪ٹھ دبٲیِو
@@ -307,7 +307,7 @@ kot_cancelled	منسوخ کرنہٕ آمُت
 kot_start_btn	شروع کرُن
 kot_mark_ready	نشان زد تیار
 kot_done_btn	مُکمل
-table_free	مُفت — آرڈر شروع کرنہٕ خٲطرٕ ٹیپ کٔرِو
+table_free	خٲلی — آرڈر شروع کرنہٕ خٲطرٕ ٹیپ کٔرِو
 start_order	آرڈر کٔرِو شروع
 open_bill	بِل کھولو
 collect_payment	ادٲیگی کٔرِو جمع

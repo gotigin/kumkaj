@@ -2,7 +2,7 @@
 app_tagline	रेस्टोरेंट आदेश, किचन & लेजर्स। निःशुल्क अफलाइन।
 unlock	अनलॉक
 pin_hint	स्वामिः PIN 0000 इति आरभ्यते
-sell	भोजनालयस्य आदेशः
+sell	आदेशः
 buy	क्रीणातु
 books	दिवस लेजर
 books_help	अद्यतनं लेखासारांशः। आदेशाः = आगच्छन्तः आदेशाः क्रयणं = क्रयणं व्ययः च। ग्राहकाः आपूर्तिकर्ताश्च = ऋणग्राहकाः आपूर्तिकर्ताश्च।
@@ -46,7 +46,7 @@ total	कुल
 cash	नगदम्
 upi	UPI
 card	कार्ड
-credit	ग्राहकाः आपूर्तिकर्ताश्च
+credit	पार्टी
 clear	स्पष्टम्
 ready_to_sell	लेजरं कर्तुं सज्जः
 today_prefix	अद्य
@@ -171,7 +171,7 @@ kot_station_not_allowed	पाकशालायाः उपयोगः न �
 kot_station_none	अद्यापि पाकशालास्थानकानि नास्ति — पाकशाला अथवा सेटिंग्स् → क्षेत्राणि · स्टेशनानाम् अन्तर्गतं एकं योजयन्तु
 pos_tab_items	मेनू-वस्तूनि योजिताः
 pos_tab_payment	भुक्ति
-hold_send	पाकशालातः धारयन्तु
+hold_send	धारयतु
 hold_send_on	आयोजितः
 hold_send_meta	धारितः — न एतत् KOT .
 station_remove	स्टेशनं निष्कासयन्तु
@@ -255,7 +255,7 @@ amounts_show	दर्शयतु
 counter	काउण्टर्
 dine_in	भोजन-इन्
 takeaway	टेकअवे
-order	भोजनालयस्य आदेशः
+order	आदेशः
 tables	भोजनमेजः
 kitchen	पाकशाला
 sales	विक्रयः
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	नवीन वाउचर कोड
 split_evenly	समं विभक्तम्
 waitlist	प्रतीक्षासूची
 fire_course	पाठ्यक्रमं पाकशालायां प्रेषयन्तु
-hold_item	पाकशालातः धारयन्तु
+hold_item	धारयतु
 waiter_call	परिचारकं आह्वयन्तु
 waitlist_add	प्रतीक्षासूचौ योजयतु
 floor_view_grid	जालम्

@@ -46,7 +46,7 @@ total	Baroh
 cash	Ka pisa
 upi	UPI
 card	Kad
-credit	Ki nongthied bad ki nongsam
+credit	Parties
 clear	Pynkhuid
 ready_to_sell	La pynkhreh ban book
 today_prefix	Mynta ka sngi
@@ -171,7 +171,7 @@ kot_station_not_allowed	Ym shah ban pyndonkam ia ka kamra bam: {station} .
 kot_station_none	Ym pat don ki jaka shet jingshet — pynrung kawei hapoh Ka jaka shet jingshet lane ki jingpynbeit → Ki jaka · ki jaka shet jingshet .
 pos_tab_items	Ki tiar ba la pyndap
 pos_tab_payment	Ka jingsiew
-hold_send	Ka jingbat na kamra shet
+hold_send	Bat
 hold_send_on	La pynlong
 hold_send_meta	Ka la pynlong — ba kane ka KOT .
 station_remove	Pynduh noh ia ka steshon
@@ -255,7 +255,7 @@ amounts_show	Pyni
 counter	Ka kaunta
 dine_in	Ka jingbam hapoh
 takeaway	Jingbam
-order	Ka jingbthah ha ka jaka bam
+order	Jingbthah
 tables	Ki miej bam
 kitchen	Kamra bam
 sales	Ka jingdie
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	U code voucher ba thymmai
 split_evenly	Pyniabynta mar katjuh
 waitlist	Ka thup ap
 fire_course	Phah ia ka jinghikai sha kamra shet
-hold_item	Ka jingbat na kamra shet
+hold_item	Bat
 waiter_call	Khot ia u nongshakri
 waitlist_add	Pynrung ha ka thup ap
 floor_view_grid	Ka grid
@@ -929,7 +929,7 @@ duress_off	Ka jingplie kyrkieh PIN ka la khang
 duress_saved	Plie kyrkieh PIN la pynim
 duress_cleared	Ka jingplie kyrkieh PIN la pynlip
 upi_amount_ph	UPI ka jingbun
-void	Ka jingdie kaba khlem jingmut
+void	Pynsangeh
 write_off_ap	Thoh noh ia ka AP
 write_off_heading	Thoh noh (pynkhuid khlem da siew)
 write_off_nil	Thoh noh / bym don jingsah
