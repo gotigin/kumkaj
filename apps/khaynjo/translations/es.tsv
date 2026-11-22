@@ -941,7 +941,7 @@ amend_help	Seleccione una venta para enmendar, anular o reembolsar. Las enmienda
 applied_total_cap	TOTAL APLICADO
 bank_balance	Saldo bancario
 bank_net_today	Neto bancario de hoy
-branch_export_help	Export escribe branch_snapshot_CODE_DATE.json en la carpeta de copias y lo copia al portapapeles. Para importar el día de otro local, guarda su archivo como import_branch_snapshot.json en la misma carpeta y toca Import.
+branch_export_help	Export escribe branch_snapshot_CODE_DATE.json en la carpeta de copias y lo copia al portapapeles. Para importar el día de otro local, guarda su archivo como import_branch_snapshot.json en la misma carpeta y toca «Importar».
 brand_shown_help	Se muestra en las pantallas dentro de la app. El nombre y el icono de la app instalada en este dispositivo quedan como en la tienda.
 app_icon	Icono de la aplicación
 logo_help	Marca opcional de la tienda en las pantallas de la aplicación.

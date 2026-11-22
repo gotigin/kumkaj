@@ -941,7 +941,7 @@ amend_help	Valige müük, mida soovite muuta, tühistada või raha tagastada. Mu
 applied_total_cap	RAKENDATUD KOKKU
 bank_balance	Panga saldo
 bank_net_today	Panga nett täna
-branch_export_help	Eksport kirjutab faili branch_snapshot_CODE_DATE.json varukoopiate kausta ja kopeerib selle lõikepuhvrisse. Teise müügikoha päeva importimiseks salvestage selle fail nimega import_branch_snapshot.json samasse kausta ja puudutage seejärel valikut Import.
+branch_export_help	Eksport kirjutab faili branch_snapshot_CODE_DATE.json varukoopiate kausta ja kopeerib selle lõikepuhvrisse. Teise müügikoha päeva importimiseks salvestage selle fail nimega import_branch_snapshot.json samasse kausta ja puudutage seejärel valikut «Impordi».
 brand_shown_help	Kuvatakse rakenduse sees olevatel ekraanidel. Selle seadme installitud rakenduse nimi ja ikoon jäävad platvormi loendiks.
 app_icon	Rakenduse ikoon
 logo_help	Valikuline poemärk rakenduse ekraanidel.
@@ -1297,7 +1297,7 @@ clear_payment_qr	Tühjenda makse QR
 payment_qr_set	Makse QR: failis – kuvatakse külaliste ekraanil (asendab summa UPI QR seal)
 payment_qr_none	Makse QR: puudub — summa QR alates UPI ID maksmisel
 aggregator_import	Koondtellimused (fail)
-aggregator_import_help	Valikuline kohalik import: sisestage import_aggregator_orders.json varukoopiate kausta (massiivi või {"orders":[…]}), seejärel puudutage valikut Import. Ei blokeeri loendurit kunagi; live Zomato/Swiggy on pilv.
+aggregator_import_help	Valikuline kohalik import: sisestage import_aggregator_orders.json varukoopiate kausta (massiivi või {"orders":[…]}), seejärel puudutage valikut «Impordi». Ei blokeeri loendurit kunagi; live Zomato/Swiggy on pilv.
 import_aggregator_file	Impordi koondfail
 team_pick_ph	Töötajad, keda muuta – nimi, kasutajanimi või valik
 select_staff	Valige see personal

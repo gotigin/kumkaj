@@ -941,7 +941,7 @@ amend_help	Eiporavo peteĩ ñemuha emoambue, emboyke térã embojevy hag̃ua. Um
 applied_total_cap	TOTAL APLICADO rehegua
 bank_balance	Saldo bancario rehegua
 bank_net_today	Banco neto ko'ã árape
-branch_export_help	Export ohai branch_snapshot_CODE_DATE.json pe carpeta de copias de seguridad-pe ha okopia portapapeles-pe. Ojegueru hag̃ua ambue salida ára, eñongatu iñemohendaha import_branch_snapshot.json ramo peteĩchagua kundahárape, upéi epoko Import-pe.
+branch_export_help	Export ohai branch_snapshot_CODE_DATE.json pe carpeta de copias de seguridad-pe ha okopia portapapeles-pe. Ojegueru hag̃ua ambue salida ára, eñongatu iñemohendaha import_branch_snapshot.json ramo peteĩchagua kundahárape, upéi epoko «Egueru»-pe.
 brand_shown_help	Ojehechauka umi pantalla oĩvape pe app ryepýpe. Pe app réra ha icono oñeinstaláva ko tembipuru’ípe opyta plataforma lista ramo.
 app_icon	App icono
 logo_help	Pe marca opcional tenda rehegua umi pantalla oĩvape pe app-pe.
@@ -1297,7 +1297,7 @@ clear_payment_qr	Pago hesakãva QR
 payment_qr_set	QR de pago: archivo-pe — ojehechaukáva invitado jehechaukahápe (omyengovia monto UPI QR upépe)
 payment_qr_none	Pago QR: ndaipóri — monto QR guive UPI ID ojepagávo
 aggregator_import	Umi pedido agregador rehegua (archivo) .
-aggregator_import_help	Opcional Importación local: emoĩ import_aggregator_orders.json pe carpeta de copias de seguridad-pe (array térã {"orders":[…]}), upéi epoko Import-pe. Araka’eve ndojokói pe contador; oikove Zomato/Swiggy ha’e Arai.
+aggregator_import_help	Opcional Importación local: emoĩ import_aggregator_orders.json pe carpeta de copias de seguridad-pe (array térã {"orders":[…]}), upéi epoko «Egueru»-pe. Araka’eve ndojokói pe contador; oikove Zomato/Swiggy ha’e Arai.
 import_aggregator_file	Egueru archivo agregador rehegua
 team_pick_ph	Mba’apoharakuéra oñemboheko hag̃ua — héra, puruhára réra térã oiporavova’erã
 select_staff	Eiporavo ko mba’apoharakuéra

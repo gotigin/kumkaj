@@ -941,7 +941,7 @@ amend_help	اختر بيعًا للتعديل أو الإلغاء أو الاس�
 applied_total_cap	المجموع المطبق
 bank_balance	رصيد البنك
 bank_net_today	صافي البنك اليوم
-branch_export_help	يُعدّ Export ملف branch_snapshot_CODE_DATE.json في مجلد النسخ الاحتياطي وينسخه إلى الحافظة. لاستيراد يوم منفذ آخر، احفظ ملفه باسم import_branch_snapshot.json في نفس المجلد، ثم اضغط Import.
+branch_export_help	يُعدّ Export ملف branch_snapshot_CODE_DATE.json في مجلد النسخ الاحتياطي وينسخه إلى الحافظة. لاستيراد يوم منفذ آخر، احفظ ملفه باسم import_branch_snapshot.json في نفس المجلد، ثم اضغط «استيراد».
 brand_shown_help	يظهر على الشاشات داخل التطبيق. يبقى اسم التطبيق المثبت وأيقونته على هذا الجهاز كما في قائمة المنصة.
 app_icon	أيقونة التطبيق
 logo_help	علامة اختيار متاحة لوضع شعار المتجر على الشاشات في التطبيق.

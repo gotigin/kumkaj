@@ -941,7 +941,7 @@ amend_help	Mifidiana varotra hanovana, hanafoana, na hahazoana famerenam-bola. N
 applied_total_cap	TOTALY NATAO
 bank_balance	Balan'ny banky
 bank_net_today	Banky net anio
-branch_export_help	Ny fanondranana dia manoratra branch_snapshot_CODE_DATE.json ao amin'ny lahatahiry backups ary mandika izany any amin'ny clipboard. Raha hanimporta ny andron'ny fivarotana hafa, tehirizo ny rakitra ho import_branch_snapshot.json ao amin'ny lahatahiry iray ihany, avy eo tsindrio Import.
+branch_export_help	Ny fanondranana dia manoratra branch_snapshot_CODE_DATE.json ao amin'ny lahatahiry backups ary mandika izany any amin'ny clipboard. Raha hanimporta ny andron'ny fivarotana hafa, tehirizo ny rakitra ho import_branch_snapshot.json ao amin'ny lahatahiry iray ihany, avy eo tsindrio «Hampiditra».
 brand_shown_help	Haseho amin'ny efijery ao anatin'ny app. Ny anaran'ny app napetraka sy ny kisary eo amin'ity fitaovana ity dia mijanona ho eo amin'ny lisitry ny sehatra.
 app_icon	Sary famantarana app
 logo_help	Famantarana fivarotana tsy voatery eo amin'ny efijery ao amin'ny app.
@@ -1297,7 +1297,7 @@ clear_payment_qr	Manaisotra fandoavam-bola QR
 payment_qr_set	Fandoavam-bola QR: ao amin'ny rakitra — aseho amin'ny efijery vahiny (misolo ny vola UPI QR eo)
 payment_qr_none	Fandoavam-bola QR: tsy misy — vola QR avy amin'ny UPI ID rehefa mandoa
 aggregator_import	Baiko mpanangona (rakitra)
-aggregator_import_help	Fampidirana eo an-toerana tsy voatery: apetraho import_aggregator_orders.json ao amin'ny lahatahiry backups (array na {"orders":[…]}), avy eo tsindrio Import. Tsy manakana ny tezm-barotra mihitsy; mivantana Zomato/Swiggy dia Cloud.
+aggregator_import_help	Fampidirana eo an-toerana tsy voatery: apetraho import_aggregator_orders.json ao amin'ny lahatahiry backups (array na {"orders":[…]}), avy eo tsindrio «Hampiditra». Tsy manakana ny tezm-barotra mihitsy; mivantana Zomato/Swiggy dia Cloud.
 import_aggregator_file	Fampidirana rakitra aggregator
 team_pick_ph	Mpiasa azo ovaina — anarana, username, na misafidiana
 select_staff	Safidio ity mpiasa ity

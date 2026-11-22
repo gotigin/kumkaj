@@ -941,7 +941,7 @@ amend_help	Alege o vânzare de modificat, anulat sau rambursat. Modificările p�
 applied_total_cap	TOTAL APLICAT
 bank_balance	Sold bancar
 bank_net_today	Net bancar azi
-branch_export_help	Exportul scrie branch_snapshot_CODE_DATE.json în folderul de copii de rezervă și îl copiază în clipboard. Ca să imporți ziua altei unități, salvează fișierul ei ca import_branch_snapshot.json în același folder, apoi atinge Import.
+branch_export_help	Exportul scrie branch_snapshot_CODE_DATE.json în folderul de copii de rezervă și îl copiază în clipboard. Ca să imporți ziua altei unități, salvează fișierul ei ca import_branch_snapshot.json în același folder, apoi atinge «Importă».
 brand_shown_help	Se arată pe ecranele din aplicație. Numele și pictograma aplicației instalate pe acest dispozitiv rămân ca în lista platformei.
 app_icon	Pictogramă aplicație
 logo_help	Marcajul localului, opțional, pe ecranele din aplicație.
@@ -1297,7 +1297,7 @@ clear_payment_qr	Golește QR de plată
 payment_qr_set	QR de plată: în fișier — se arată pe ecranul pentru oaspeți (înlocuiește acolo QR-ul UPI al sumei)
 payment_qr_none	QR de plată: niciunul — QR de sumă din ID UPI la plată
 aggregator_import	Comenzi agregator (fișier)
-aggregator_import_help	Import local opțional: pune import_aggregator_orders.json în folderul de copii de rezervă (tablou sau {"orders":[…]}), apoi atinge Import. Nu blochează niciodată casa; Zomato/Swiggy live este Cloud.
+aggregator_import_help	Import local opțional: pune import_aggregator_orders.json în folderul de copii de rezervă (tablou sau {"orders":[…]}), apoi atinge «Importă». Nu blochează niciodată casa; Zomato/Swiggy live este Cloud.
 import_aggregator_file	Importă fișier agregator
 team_pick_ph	Personal de editat — nume, nume de utilizator sau alege
 select_staff	Selectează acest angajat

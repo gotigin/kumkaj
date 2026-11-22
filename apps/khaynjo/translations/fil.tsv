@@ -941,7 +941,7 @@ amend_help	Pumili ng isang benta upang susugan, mawawalan ng bisa, o i-refund. P
 applied_total_cap	NILAPAT NA KABUUAN
 bank_balance	Balanse sa bangko
 bank_net_today	Bank net ngayon
-branch_export_help	Isinulat ng export ang branch_snapshot_CODE_DATE.json sa folder ng mga backup at kinokopya ito sa clipboard. Upang mag-import ng isa pang araw ng outlet, i-save ang file nito bilang import_branch_snapshot.json sa parehong folder, pagkatapos ay i-tap ang Import.
+branch_export_help	Isinulat ng export ang branch_snapshot_CODE_DATE.json sa folder ng mga backup at kinokopya ito sa clipboard. Upang mag-import ng isa pang araw ng outlet, i-save ang file nito bilang import_branch_snapshot.json sa parehong folder, pagkatapos ay i-tap ang «I-import».
 brand_shown_help	Ipinapakita sa mga screen sa loob ng app. Ang naka-install na pangalan at icon ng app sa device na ito ay nananatiling listahan ng platform.
 app_icon	Icon ng app
 logo_help	Opsyonal na marka ng tindahan sa mga screen sa app.
@@ -1297,7 +1297,7 @@ clear_payment_qr	I-clear ang QR ng pagbabayad
 payment_qr_set	QR ng Pagbabayad: nasa file — ipinapakita sa display ng bisita (pinapalitan ang halagang UPI QR doon)
 payment_qr_none	QR ng Pagbabayad: wala — halaga QR mula sa UPI ID kapag nagbabayad
 aggregator_import	Mga order ng aggregator (file)
-aggregator_import_help	Opsyonal na Lokal na pag-import: ilagay ang import_aggregator_orders.json sa folder ng mga backup (array o {"orders":[…]}), pagkatapos ay i-tap ang Import. Huwag kailanman hinaharangan ang counter; live na Zomato/Swiggy ay Cloud.
+aggregator_import_help	Opsyonal na Lokal na pag-import: ilagay ang import_aggregator_orders.json sa folder ng mga backup (array o {"orders":[…]}), pagkatapos ay i-tap ang «I-import». Huwag kailanman hinaharangan ang counter; live na Zomato/Swiggy ay Cloud.
 import_aggregator_file	Mag-import ng aggregator file
 team_pick_ph	Mga tauhan na ie-edit — pangalan, username, o pipiliin
 select_staff	Piliin ang tauhan na ito

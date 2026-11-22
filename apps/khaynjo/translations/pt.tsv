@@ -941,7 +941,7 @@ amend_help	Selecione uma venda para emendar, anular ou reembolsar. As emendas ma
 applied_total_cap	TOTAL APLICADO
 bank_balance	Saldo bancário
 bank_net_today	Líquido bancário de hoje
-branch_export_help	Export escreve branch_snapshot_CODE_DATE.json na pasta de cópias e copia para a área de transferência. Para importar o dia de outra loja, guarde o ficheiro como import_branch_snapshot.json na mesma pasta e toque em Import.
+branch_export_help	Export escreve branch_snapshot_CODE_DATE.json na pasta de cópias e copia para a área de transferência. Para importar o dia de outra loja, guarde o ficheiro como import_branch_snapshot.json na mesma pasta e toque em «Importar».
 brand_shown_help	Mostrado nos ecrãs dentro da app. O nome e o ícone da app instalada neste dispositivo ficam como na loja.
 app_icon	Ícone do aplicativo
 logo_help	Marca da loja opcional nas telas do aplicativo.

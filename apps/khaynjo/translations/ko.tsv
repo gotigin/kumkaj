@@ -1297,7 +1297,7 @@ clear_payment_qr	결제 QR 지우기
 payment_qr_set	결제 QR: 저장됨 — 손님 화면에(금액 UPI QR 대체)
 payment_qr_none	결제 QR: 없음 — 결제 시 UPI로 금액 QR
 aggregator_import	애그리게이터 주문(파일)
-aggregator_import_help	선택 Local: backups에 import_aggregator_orders.json을 두고 Import. 카운터는 멈추지 않음; 라이브 Zomato/Swiggy = Cloud.
+aggregator_import_help	선택 Local: backups에 import_aggregator_orders.json을 두고 «가져오기». 카운터는 멈추지 않음; 라이브 Zomato/Swiggy = Cloud.
 import_aggregator_file	애그리게이터 파일 가져오기
 team_pick_ph	편집할 직원 이름
 select_staff	이 직원 선택

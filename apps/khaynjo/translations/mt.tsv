@@ -1297,7 +1297,7 @@ clear_payment_qr	QR ta' ħlas ċar
 payment_qr_set	QR tal-Pagament: fuq il-fajl — muri fuq id-display tal-mistednin (jissostitwixxi l-ammont UPI QR hemmhekk)
 payment_qr_none	QR tal-Ħlas: xejn — ammont QR mill-ID UPI meta tħallas
 aggregator_import	Ordnijiet Aggregator (file)
-aggregator_import_help	Import Lokali Opcjonali: poġġi import_aggregator_orders.json fil-folder tal-backups (array jew {"orders":[…]}), imbagħad iġġefħ Import. Qatt ma jħalli l-kontatur; Zomato/Swiggy live huwa Cloud.
+aggregator_import_help	Import Lokali Opcjonali: poġġi import_aggregator_orders.json fil-folder tal-backups (array jew {"orders":[…]}), imbagħad iġġefħ «Importa». Qatt ma jħalli l-kontatur; Zomato/Swiggy live huwa Cloud.
 import_aggregator_file	Importa fajl tal-aġġregatur
 team_pick_ph	Staff biex jeditja — isim, username, jew agħżel
 select_staff	Agħżel dan il-persunal

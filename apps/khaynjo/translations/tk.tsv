@@ -941,7 +941,7 @@ amend_help	Düzediş, ýatyrmak ýa-da yzyna gaýtarmak üçin satuw saýlaň. D
 applied_total_cap	JEMLE .JI JEMLE .JI
 bank_balance	Bank balansy
 bank_net_today	Şu gün bank arassa
-branch_export_help	Eksport ätiýaçlyk bukjasyna branch_snapshot_CODE_DATE.json ýazýar we bufer paneline göçürýär. Başga bir söwda gününi import etmek üçin faýlyny şol bukjada import_branch_snapshot.json görnüşinde saklaň, soňra bolsa Import düwmesine basyň.
+branch_export_help	Eksport ätiýaçlyk bukjasyna branch_snapshot_CODE_DATE.json ýazýar we bufer paneline göçürýär. Başga bir söwda gününi import etmek üçin faýlyny şol bukjada import_branch_snapshot.json görnüşinde saklaň, soňra bolsa «Import et» düwmesine basyň.
 brand_shown_help	Programmanyň içindäki ekranlarda görkezilýär. Bu enjamda gurnalan programma ady we nyşany platforma sanawy hökmünde galýar.
 app_icon	Programma nyşany
 logo_help	Programmadaky ekranlarda goşmaça dükan belligi.
@@ -1297,7 +1297,7 @@ clear_payment_qr	Töleg QR-ny arassalaň
 payment_qr_set	Töleg QR: faýlda - myhman ekranynda görkezilýär (UPI QR mukdaryny çalyşýar)
 payment_qr_none	Töleg QR: ýok - töläniňizde UPI ID-den QR mukdary
 aggregator_import	Agregator sargytlary (faýl)
-aggregator_import_help	Meýletin ýerli import: import_aggregator_orders.json ätiýaçlyk bukjasyna (massiw ýa-da {"sargytlar": […]}) goýuň, soňra Import düwmesine basyň. Hasaby hiç wagt bloklamaň; janly Zomato / Swiggy “Bulut”.
+aggregator_import_help	Meýletin ýerli import: import_aggregator_orders.json ätiýaçlyk bukjasyna (massiw ýa-da {"sargytlar": […]}) goýuň, soňra «Import et» düwmesine basyň. Hasaby hiç wagt bloklamaň; janly Zomato / Swiggy “Bulut”.
 import_aggregator_file	Agregator faýlyny import ediň
 team_pick_ph	Redaktirlemek üçin işgärler - ady, ulanyjy ady ýa-da saýlamak
 select_staff	Bu işgärleri saýlaň

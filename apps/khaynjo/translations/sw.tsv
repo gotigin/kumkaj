@@ -1297,7 +1297,7 @@ clear_payment_qr	Ondoa QR ya malipo
 payment_qr_set	QR ya malipo: kwenye faili — skrini ya wageni (badala ya QR UPI ya kiasi)
 payment_qr_none	QR ya malipo: hakuna — QR ya kiasi kutoka UPI unapolipa
 aggregator_import	Oda za aggregator (faili)
-aggregator_import_help	Local ya hiari: weka import_aggregator_orders.json kwenye backups kisha Import. Kaunta haizuiwi; Zomato/Swiggy moja kwa moja = Cloud.
+aggregator_import_help	Local ya hiari: weka import_aggregator_orders.json kwenye backups kisha «Leta». Kaunta haizuiwi; Zomato/Swiggy moja kwa moja = Cloud.
 import_aggregator_file	Ingiza faili ya aggregator
 team_pick_ph	Jina la mfanyakazi wa kuhariri
 select_staff	Chagua mfanyakazi huyu

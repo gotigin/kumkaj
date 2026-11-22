@@ -941,7 +941,7 @@ amend_help	Kies 'n verkoping om te verander, nie-geldig gemaak of terugbetaal. V
 applied_total_cap	TOEGEPASTE TOTAAL
 bank_balance	Bank balans
 bank_net_today	Bank netto vandag
-branch_export_help	Eksport skryf branch_snapshot_CODE_DATE.json in die rugsteunmap en kopieer dit na die knipplynpad. Om 'n ander uitlaat se dag te importeer, stoor sy lêer as import_branch_snapshot.json in dieselfde map, tjop dan Import.
+branch_export_help	Eksport skryf branch_snapshot_CODE_DATE.json in die rugsteunmap en kopieer dit na die knipplynpad. Om 'n ander uitlaat se dag te importeer, stoor sy lêer as import_branch_snapshot.json in dieselfde map, tjop dan «Voer in».
 brand_shown_help	Gewys op skerm binne die app. Die geïnstalleerde appnaam en ikoon op hierdie toestel bly dieselfde as die platformlys.
 app_icon	App-ikoon
 logo_help	Opsionele winkelmerk op skerm in die app.
