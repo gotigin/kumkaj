@@ -43,6 +43,7 @@ file name, ≤1024 px WebP). Sources Wikimedia Commons (incl. Unsplash via Commo
 | `cold-beverages/coconut-milkshake.webp` | person drinking (face partial) | COCONUT MILKSHAKE.jpg | Yuvaqueen | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=106263821 | resized, WebP |
 | `bar/bourbon.webp` | liquor-store whiskey shelf | Glass of bourbon cropped.jpg | J Yochem | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=148521031 | resized, WebP |
 | `bar/gin.webp` | liquor-store gin shelf | Gin and tonic cocktail with wedge of lime.jpg | Davidnuescheler | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=120301896 | resized, WebP |
+| `bar/sherry.webp` | wooden wall shelf / bar décor, not a drink | Port wine.jpg | Jon Sullivan | [Public domain](https://creativecommons.org/publicdomain/mark/1.0/) | https://commons.wikimedia.org/w/index.php?curid=25990 | resized, WebP |
 
 ## Not recorded
 
