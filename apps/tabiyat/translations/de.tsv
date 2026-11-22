@@ -730,7 +730,7 @@ book_kind_month	Buch dieses Monats
 book_kind_aging	Offen / Soll-Haben
 book_kind_balance	Bilanz
 order_help	Tippe auf einen Artikel, um ihn hinzuzufügen.
-categories_help	Eine Kategorie zeigt, zu welchem Menüteil ein Gericht gehört – z. B. Snacks, Hauptgang oder Biryani. Erstelle Kategorien auf deine Art: unsere Namen wählen, umbenennen oder eigene hinzufügen.
+categories_help	Tippen Sie auf «Verwenden», um den Artikel oben dieser Kategorie zuzuordnen. Ein Foto gibt der Kategorie ein Bild; ohne zeigt sie ihre Initialen.
 dish_search_ph	Name, Wirkstoff oder Barcode suchen…
 sizes_as_items_ph	Größen als eigene Artikel (optional) — Halb=120, Voll=200
 dish_group_ph	Stärke / Packungsgruppe (optional) — z. B. Streifen 500mg

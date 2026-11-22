@@ -730,7 +730,7 @@ book_kind_month	Tämän kuun kirjat
 book_kind_aging	Avoimet / debet-kredit
 book_kind_balance	Tase
 order_help	Napauta tuotetta lisätäksesi sen.
-categories_help	Napauta Käytä arkistoidaksesi yllä olevan tuotteen tuohon luokkaan. Kuva antaa luokalle kuvan; ilman sitä näytetään nimikirjaimet.
+categories_help	Napauta «Käytä» sijoittaaksesi yllä olevan tuotteen tuohon luokkaan. Kuva antaa luokalle kuvan; ilman sitä näkyvät alkukirjaimet.
 dish_search_ph	Hae nimellä, suolalla tai viivakoodilla…
 sizes_as_items_ph	Koot erillisinä tuotteina (valinnainen) — Puolikas=120, Täysi=200
 dish_group_ph	Vahvuus/pakkausryhmä (valinnainen) – esim. 500 mg liuska

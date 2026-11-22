@@ -730,7 +730,7 @@ book_kind_month	Knjige tega meseca
 book_kind_aging	Neplačano / debet-kredit
 book_kind_balance	Bilanca
 order_help	Tapnite artikel, da ga dodate.
-categories_help	Tapnite Uporabi, da artikel zgoraj vložite v to kategorijo. Fotografija da kategoriji sliko; brez nje se pokažejo začetnice.
+categories_help	Tapnite «Uporabi», da postavite zgornji artikel v to kategorijo. Fotografija da kategoriji sliko; brez nje pokaže začetnice.
 dish_search_ph	Išči ime, sol ali črtno kodo ...
 sizes_as_items_ph	Velikosti kot ločeni artikli (neobvezno) — Polovica=120, Cel=200
 dish_group_ph	Jakost / skupina pakiranja (neobvezno) — npr. 500 mg trak

@@ -730,7 +730,7 @@ book_kind_month	Šī mēneša grāmatas
 book_kind_aging	Neapmaksāts / debets-kredīts
 book_kind_balance	Bilance
 order_help	Pieskarieties pozīcijai, lai to pievienotu.
-categories_help	Pieskarieties Lietot, lai ievietotu augšējo pozīciju tajā kategorijā. Foto dod kategorijai attēlu; bez tā rāda iniciāļus.
+categories_help	Pieskarieties «Lietot», lai ievietotu preci augšā tajā kategorijā. Foto piešķir kategorijai attēlu; bez tā rāda iniciāļus.
 dish_search_ph	Meklēt vārdu, sāli vai svītrkodu…
 sizes_as_items_ph	Izmēri kā atsevišķas pozīcijas (nav obligāti) — Puse=120, Pilns=200
 dish_group_ph	Spēka/pakojuma grupa (pēc izvēles) — piem. 500 mg sloksne

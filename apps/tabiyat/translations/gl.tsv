@@ -730,7 +730,7 @@ book_kind_month	Libros deste mes
 book_kind_aging	Pendente / debe-haber
 book_kind_balance	Balance
 order_help	Prema un artigo para engadilo.
-categories_help	Prema Usar para clasificar o artigo de arriba nesa categoría. A foto dá unha imaxe á categoría; sen ela, mostra as iniciais.
+categories_help	Toca «Usar» para arquivar o artigo de arriba nesa categoría. A foto dá imaxe á categoría; sen ela mostra as iniciais.
 dish_search_ph	Busca nome, sal ou código de barras...
 sizes_as_items_ph	Tamaños como artigos á parte (opcional) — Half=120, Full=200
 dish_group_ph	Grupo de forza / paquete (opcional) - p. tira de 500 mg

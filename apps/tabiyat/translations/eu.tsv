@@ -730,7 +730,7 @@ book_kind_month	Hilabete honetako liburuak
 book_kind_aging	Ordaindu gabe / zordun-hartzekodun
 book_kind_balance	Balantzea
 order_help	Sakatu artikulu bat hura gehitzeko.
-categories_help	Sakatu Erabili goiko artikulua kategoria horretan sartzeko. Argazkiak irudi bat ematen dio kategoriari; gabe inizialak erakusten ditu.
+categories_help	Sakatu «Erabili» goiko artikulua kategoria horren azpian jartzeko. Argazkiak kategoriari irudia ematen dio; gabe hasierako hizkiak erakusten ditu.
 dish_search_ph	Bilatu izena, gatza edo barra-kodea...
 sizes_as_items_ph	Neurriak artikulu bereizi gisa (aukerakoa) — Erdia=120, Osoa=200
 dish_group_ph	Indarra / pakete taldea (aukerakoa) - adibidez. 500 mg zerrenda

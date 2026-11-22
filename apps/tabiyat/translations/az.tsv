@@ -730,7 +730,7 @@ book_kind_month	Bu ayın kitabları
 book_kind_aging	Ödənilməmiş / debet-kredit
 book_kind_balance	Balans hesabatı
 order_help	Əlavə etmək üçün məhsula toxunun.
-categories_help	Yuxarıdakı məhsulu həmin kateqoriyaya salmaq üçün İstifadə et düyməsinə toxunun. Şəkil kateqoriyaya şəkil verir; olmayanda baş hərflərini göstərir.
+categories_help	Yuxarıdakı məhsulu həmin kateqoriyaya qoymaq üçün «İstifadə et» düyməsinə toxunun. Foto kateqoriyaya şəkil verir; yoxdursa baş hərfləri göstərir.
 dish_search_ph	Ad, duz və ya barkod axtar…
 sizes_as_items_ph	Ölçülər ayrı məhsul kimi (istəyə bağlı) — Half=120, Full=200
 dish_group_ph	Doza / qablaşdırma qrupu (istəyə bağlı) — məs. 500mg zolaq

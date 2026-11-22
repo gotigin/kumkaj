@@ -433,7 +433,7 @@ lan_live	En direct
 lan_sending	{n} en cours d’envoi
 lan_sign_in_to_send	Reconnectez-vous pour envoyer {n}
 lan_pair_again	Associez de nouveau cet appareil
-lan_update_app	Mettez l'app à jour : cet appareil et le serveur du restaurant n'ont pas la même version
+lan_update_app	Mettez l'app à jour : cet appareil et le serveur de la boutique n'ont pas la même version
 allow_firewall	Autoriser les autres appareils à se connecter
 firewall_blocked	Le pare-feu de cet ordinateur bloque les autres appareils — touchez « Autoriser les autres appareils à se connecter ».
 firewall_waiting	En attente de l'autorisation administrateur…
@@ -730,7 +730,7 @@ book_kind_month	Livre de ce mois
 book_kind_aging	En suspens / débit-crédit
 book_kind_balance	Bilan
 order_help	Touchez un article pour l'ajouter.
-categories_help	Une catégorie indique à quelle partie du menu appartient un plat — snacks, plat principal ou biryani. Créez vos catégories : choisissez nos noms, renommez-les ou ajoutez les vôtres.
+categories_help	Touchez «Utiliser» pour classer l’article ci-dessus dans cette catégorie. La photo donne une image à la catégorie ; sans photo, elle affiche ses initiales.
 dish_search_ph	Chercher nom, sel ou code-barres…
 sizes_as_items_ph	Tailles en articles séparés (facultatif) — Demi=120, Entier=200
 dish_group_ph	Groupe dosage / boîte (facultatif) — p. ex. plaquette 500 mg

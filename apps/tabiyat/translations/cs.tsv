@@ -730,7 +730,7 @@ book_kind_month	Knihy tohoto měsíce
 book_kind_aging	Nesplacený / debetní kredit
 book_kind_balance	Rozvaha
 order_help	Klepnutím na položku ji přidáte.
-categories_help	Klepnutím na Použít zařadíte výše uvedenou položku do této kategorie. Fotografie dává kategorii obrázek; bez něj ukazuje své iniciály.
+categories_help	Klepněte na «Použít», abyste položku výše zařadili do této kategorie. Fotka dá kategorii obrázek; bez ní ukazuje iniciály.
 dish_search_ph	Vyhledejte jméno, sůl nebo čárový kód…
 sizes_as_items_ph	Velikosti jako samostatné položky (volitelné) — Half=120, Full=200
 dish_group_ph	Síla / skupina balení (volitelné) — např. 500 mg proužek

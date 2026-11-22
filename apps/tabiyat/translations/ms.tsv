@@ -39,7 +39,7 @@ items	Ubat-ubatan
 nav_items	Ubat-ubatan
 items_help	Ketik item untuk mengeditnya. Item baharu mengosongkan borang. Cari mengikut nama atau kod pendek, tetapkan harga (0 tidak mengapa), kemudian Tambah. Jualan yang telah direkodkan kekalkan nama mereka dicaj.
 add_item	Tambah item menu
-new_item	Item menu baharu
+new_item	Item baharu
 adding_item	Menambah item menu baharu
 editing_item	Mengedit
 save	Simpan
@@ -730,7 +730,7 @@ book_kind_month	Lejar bulan ini
 book_kind_aging	Tertunggak / debit-kredit
 book_kind_balance	Kunci kira-kira
 order_help	Ketik item menu untuk menambahkannya.
-categories_help	Ketik Gunakan untuk memfailkan item menu di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
+categories_help	Ketik «guna» untuk failkan item di atas di bawah kategori itu. Foto memberi gambar kepada kategori; tanpa itu ia menunjukkan huruf singkatan.
 dish_search_ph	Cari nama, garam atau kod bar…
 sizes_as_items_ph	Saiz sebagai item menu berasingan (pilihan) — Separuh=120, Penuh=200
 dish_group_ph	Kekuatan / kumpulan pek (pilihan) — cth. jalur 500mg

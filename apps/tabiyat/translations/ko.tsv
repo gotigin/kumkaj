@@ -730,7 +730,7 @@ book_kind_month	이번 달 장부
 book_kind_aging	미결제 / 차변-대변
 book_kind_balance	대차대조표
 order_help	항목을 눌러 추가하세요.
-categories_help	카테고리는 요리가 메뉴의 어느 부분에 속하는지 보여줍니다 — 예: 스낵, 메인 코스, 비리야니. 원하는 방식으로 카테고리를 만드세요: 제안하는 이름을 선택하거나, 이름을 바꾸거나, 직접 추가하세요.
+categories_help	「사용」을 눌러 위 품목을 해당 분류에 넣습니다. 사진이 있으면 분류에 이미지가 생기고, 없으면 이니셜이 표시됩니다.
 dish_search_ph	이름, 소금 또는 바코드를 검색하세요…
 sizes_as_items_ph	사이즈를 별도 품목으로 (선택) — 하프=120, 풀=200
 dish_group_ph	강도/팩 그룹(선택 사항) — 예: 500mg 스트립

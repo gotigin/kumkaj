@@ -730,7 +730,7 @@ book_kind_month	Bu aý ýazgylar
 book_kind_aging	Görnükli / debet-karz
 book_kind_balance	Balans
 order_help	Goşmak üçin menýu elementine basyň.
-categories_help	Şol kategoriýa boýunça ýokardaky menýu elementini faýl etmek üçin ulanyň. Surat kategoriýa surat berýär; birinjisinden baş harplaryny görkezýär.
+categories_help	Ýokardaky harydy şol kategoriýa goýmak üçin «Ulany» basyň. Surat kategoriýa surat berýär; ýok bolsa başlangyç harplary görkezýär.
 dish_search_ph	Gözlegiň ady, duz ýa-da ştrih-kod…
 sizes_as_items_ph	Aýry-aýry menýu elementleri hökmünde ululyklar (islege görä) - Halfarym = 120, Doly = 200
 dish_group_ph	Güýç / paket topary (islege görä) - meselem 500mg zolak

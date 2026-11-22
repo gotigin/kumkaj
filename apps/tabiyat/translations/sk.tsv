@@ -730,7 +730,7 @@ book_kind_month	Knihy na tento mesiac
 book_kind_aging	Nesplatený/debetný kredit
 book_kind_balance	Súvaha
 order_help	Klepnutím na položku ju pridáte.
-categories_help	Klepnutím na Použiť zaradíte vyššie uvedenú položku do tejto kategórie. Fotografia dáva kategórii obrázok; bez jedného ukazuje svoje iniciály.
+categories_help	Klepnite na «Použiť», aby ste položku vyššie zaradili do tejto kategórie. Fotka dá kategórii obrázok; bez nej ukazuje iniciály.
 dish_search_ph	Vyhľadajte názov, soľ alebo čiarový kód…
 sizes_as_items_ph	Veľkosti ako samostatné položky (voliteľné) — polovica=120, plná=200
 dish_group_ph	Sila / skupina balenia (voliteľné) — napr. 500 mg prúžok

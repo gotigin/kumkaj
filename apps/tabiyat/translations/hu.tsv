@@ -730,7 +730,7 @@ book_kind_month	E havi könyvek
 book_kind_aging	Tartozás / betéti jóváírás
 book_kind_balance	Mérleg
 order_help	Koppintson egy elemre a hozzáadáshoz.
-categories_help	Koppintson a Használat elemre, hogy a fenti elemet az adott kategóriába sorolja. A Photo képet ad a kategóriának; egy nélkül a kezdőbetűit mutatja.
+categories_help	Koppintson a «Használ» gombra, hogy a fenti tételt abba a kategóriába tegye. A fénykép képet ad a kategóriának; nélküle a kezdőbetűk látszanak.
 dish_search_ph	Név, só vagy vonalkód keresése…
 sizes_as_items_ph	Méretek külön tételként (opcionális) — Fél=120, Teljes=200
 dish_group_ph	Erő/csomag csoport (opcionális) — pl. 500 mg-os csík

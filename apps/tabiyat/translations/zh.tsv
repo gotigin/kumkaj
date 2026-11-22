@@ -731,7 +731,7 @@ book_kind_month	本月账本
 book_kind_aging	未结 / 借贷
 book_kind_balance	资产负债表
 order_help	点按一项即可添加。
-categories_help	分类显示一道菜属于菜单的哪一部分 — 如小吃、主菜或印度香饭。按您的方式创建分类：选择我们建议的名称、重命名或添加您自己的。
+categories_help	点「使用」将上方商品归入该类。照片为分类提供图片；没有照片则显示首字母。
 dish_search_ph	搜索名称、成分或条码…
 sizes_as_items_ph	规格作为独立菜品（可选）— 半份=120, 整份=200
 dish_group_ph	规格 / 包装组（可选）— 例如 500 mg 板

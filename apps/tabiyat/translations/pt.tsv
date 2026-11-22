@@ -730,7 +730,7 @@ book_kind_month	Livro deste mês
 book_kind_aging	Pendente / débito-crédito
 book_kind_balance	Balanço patrimonial
 order_help	Toque num artigo para o adicionar.
-categories_help	Uma categoria mostra a que parte do cardápio um prato pertence — petiscos, prato principal ou biryani. Crie categorias do seu jeito: escolha nossos nomes, renomeie-os ou adicione os seus.
+categories_help	Toque em «Usar» para arquivar o artigo acima nessa categoria. A foto dá uma imagem à categoria; sem ela mostra as iniciais.
 dish_search_ph	Pesquise nome, sal ou código de barras…
 sizes_as_items_ph	Tamanhos como itens separados (opcional) — Meia=120, Inteira=200
 dish_group_ph	Grupo de força/pacote (opcional) — por ex. tira de 500mg

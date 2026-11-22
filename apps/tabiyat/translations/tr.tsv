@@ -730,7 +730,7 @@ book_kind_month	Bu ayın defteri
 book_kind_aging	Bakiye / borç-alacak
 book_kind_balance	Bilanço
 order_help	Eklemek için bir ürüne dokunun.
-categories_help	Kategori, bir yemeğin menünün hangi bölümüne ait olduğunu gösterir — örn. atıştırmalıklar, ana yemek veya biryani. Kategorileri kendi tarzınızda oluşturun: önerdiğimiz isimleri seçin, yeniden adlandırın veya kendi isminizi ekleyin.
+categories_help	Yukarıdaki kalemi o kategoriye koymak için «Kullan»a dokunun. Fotoğraf kategoriye görsel verir; yoksa baş harflerini gösterir.
 dish_search_ph	Ad, etken madde veya barkod ara…
 sizes_as_items_ph	Boyutlar ayrı ürün (isteğe bağlı) — Yarım=120, Tam=200
 dish_group_ph	Doz / ambalaj grubu (isteğe bağlı) — ör. 500 mg şerit

@@ -39,7 +39,7 @@ items	Mga gamot
 nav_items	Mga gamot
 items_help	Mag-tap ng item para i-edit ito. Ni-clear ng bagong item ang form. Maghanap ayon sa pangalan o maikling code, magtakda ng presyo (0 ay okay), pagkatapos ay Idagdag. Ang mga benta na naitala na ay panatilihin ang pangalan kung saan sila sinisingil.
 add_item	Magdagdag ng item sa menu
-new_item	Bagong menu item
+new_item	Bagong item
 adding_item	Pagdaragdag ng bagong item sa menu
 editing_item	Pag-edit
 save	I-save
@@ -287,7 +287,7 @@ clear_icon	I-clear ang icon
 clear_photo	Maaliwalas na larawan
 copy_day_book_csv	Kopyahin ang ledger ng araw CSV
 copy_day_close	Pagsara ng araw ng kopya
-copy_items_csv	Kopyahin ang mga item sa menu CSV
+copy_items_csv	Kopyahin ang CSV ng mga item
 copy_outstanding_csv	Kopyahin ang natitirang CSV
 copy_parties_csv	Kopyahin ang mga customer at supplier CSV
 copy_party_ledger_csv	Kopyahin ang ledger ng customer CSV
@@ -682,7 +682,7 @@ icon_default	Icon: Kumkaj mark (default) — pumili ng custom
 logo_yours	Logo: logo ng iyong tindahan — ipinapakita sa mga screen at resibo
 logo_default	Logo: Kumkaj markahan (default) — piliin ang sarili mo kung mayroon ka
 setup_complete	Kumpleto na ang setup
-onboard_fresh_tmpl	Bago · {} — ang catalog ay nagsisimulang walang laman; magdagdag ng mga item sa menu sa mga item sa menu ng Menu, pagkatapos ay Tapos na.
+onboard_fresh_tmpl	Bago · {} — walang laman ang katalogo sa umpisa; magdagdag ng item sa Mga gamot, tapos Tapos na.
 onboard_book_tmpl	Ledger · {} — magdagdag ng mga item sa menu at pambungad na credit, pagkatapos ay Tapos na.
 tmpl_blurb	Counter ng botika: mga gamot, batch/expire, khata, mga libro.
 reports_facet_title	Mga ulat
@@ -729,8 +729,8 @@ book_kind_today	Mga ledger ngayon
 book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
-order_help	Mag-tap ng menu item para idagdag ito.
-categories_help	I-tap ang Gamitin upang i-file ang menu item sa itaas sa ilalim ng kategoryang iyon. Ang larawan ay nagbibigay sa kategorya ng isang larawan; kung walang isa ay ipinapakita nito ang mga inisyal nito.
+order_help	Mag-tap ng item para idagdag ito.
+categories_help	I-tap ang «Gamitin» upang ilagay ang item sa itaas sa ilalim ng kategoryang iyon. Ang larawan ay nagbibigay ng litrato sa kategorya; kung wala, ipinapakita ang mga inisyal.
 dish_search_ph	Hanapin ang pangalan, asin o barcode...
 sizes_as_items_ph	Mga laki bilang hiwalay na mga item sa menu (opsyonal) — Kalahati=120, Buo=200
 dish_group_ph	Lakas / pangkat ng pack (opsyonal) — hal. 500mg strip
@@ -901,7 +901,7 @@ unpriced_note	Ang {n} na mga item sa iyong mga item ay wala pang presyo — nani
 show_unpriced	Ipakita lamang ang mga item na walang presyo
 show_all_dishes	Ipakita ang lahat ng mga item
 role_title_rest_ph	Pamagat ng tungkulin (hal. Captain, Head cook)
-preset_help_rest	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
+preset_help_rest	Cashier: ibenta. Manager: ibenta + mga item + void/amend.
 kind_resale	Bumili ng gamot
 kind_dish	Huwag magbilang ng stock
 buy_unit_ph	Yunit (kg, litro, mga pcs)

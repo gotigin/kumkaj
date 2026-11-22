@@ -730,7 +730,7 @@ book_kind_month	Knjige ovog mjeseca
 book_kind_aging	Otvoreno / dug-potraživanje
 book_kind_balance	Bilanca
 order_help	Dodirnite stavku da je dodate.
-categories_help	Dodirnite Koristi da stavku iznad stavite u tu kategoriju. Fotografija daje kategoriji sliku; bez nje pokazuje inicijale.
+categories_help	Dodirnite «Koristi» da stavite artikl iznad u tu kategoriju. Fotografija daje kategoriji sliku; bez nje pokazuje inicijale.
 dish_search_ph	Traži naziv, sastav ili barkod…
 sizes_as_items_ph	Veličine kao zasebne stavke (nije obavezno) — Pola=120, Cijelo=200
 dish_group_ph	Grupa jačine / pakovanja (nije obavezno) — npr. traka 500mg

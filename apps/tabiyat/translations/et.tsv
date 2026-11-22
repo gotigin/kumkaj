@@ -730,7 +730,7 @@ book_kind_month	Selle kuu raamatud
 book_kind_aging	Tasumata / deebetkrediit
 book_kind_balance	Bilanss
 order_help	Üksuse lisamiseks puudutage seda.
-categories_help	Puudutage valikut Kasuta, et salvestada ülaltoodud üksus selle kategooria alla. Foto annab kategooriale pildi; ilma üheta näitab see oma initsiaale.
+categories_help	Puudutage «Kasutage», et panna ülal olev toode sellesse kategooriasse. Foto annab kategooriale pildi; ilma selleta näitab initsiaale.
 dish_search_ph	Otsi nime, soola või vöötkoodi…
 sizes_as_items_ph	Suurused eraldi üksustena (valikuline) — pool=120, täis=200
 dish_group_ph	Tugevus / pakirühm (valikuline) — nt. 500 mg riba
