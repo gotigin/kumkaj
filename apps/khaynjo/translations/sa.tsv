@@ -109,7 +109,7 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल सं.
 bill_line_time	कालः
 bill_line_cashier	कैशियर
-bill_line_table	Dining table
+bill_line_table	भोजनमेजः
 bill_line_items	वस्तूनि
 bill_line_total	कुल
 bill_line_footer	पादलेखः
@@ -503,7 +503,7 @@ floor_layout_nudge_left	← 20
 floor_layout_nudge_right	→ 20
 floor_layout_nudge_up	↑ 20
 floor_layout_nudge_down	↓ 20
-sibling_pickers_help	यूनिट् इव On/Off इति ट्याप् कुर्वन्तु — दैनन्दिन-उत्कर्षकेभ्यः क्षेत्राणि, स्टेशनाः, कर-दराः च गोपयन्तु; pack defaults तिष्ठन्ति।
+sibling_pickers_help	यूनिट् इव चालू/बन्दं ट्याप् कुर्वन्तु — दैनन्दिन-चयनकेभ्यः क्षेत्राणि, स्टेशनाः, कर-दराः च गोपयन्तु; पैक्-डिफ़ॉल्ट् तिष्ठन्ति।
 bulk_price_apply	बल्क मूल्यं प्रयोजयन्तु
 card_terminal_optional	कार्ड टर्मिनल् / भुगतानलिङ्क् (अन्तर्जाल उपलब्धे वैकल्पिकम्)
 copy_report	प्रतिवेदनं प्रतिलिख्यताम्
@@ -993,7 +993,7 @@ restore_owner_only	केवलं स्वामिः एव बैकअप�
 wipe_owner_pin_needed	स्थानीयदत्तांशं विलोपयितुं Owner PIN इति प्रविष्टं कुर्वन्तु ।
 wipe_nothing_selected	प्रथमं किं विलोपनीयं इति चिनोतु।
 wipe_done	चयनितः स्थानीयदत्तांशः विलोपितः।
-wipe_schema_done	Shop setup wiped — निरन्तरं कर्तुं Server अथवा Client इति चिनोतु ।
+wipe_schema_done	दुकान-सेटअपः अपमृष्टः — निरन्तरं कर्तुं Server अथवा Client चिनोतु।
 rounded_total	गोल कुल
 setup_app_khaynjo	सेट अप Khaynjo .
 shop_logo_optional	दुकानस्य लोगो (वैकल्पिकः) २.
@@ -1232,7 +1232,7 @@ kot_show_waiter	परिचारकः
 kot_hide_waiter	परिचारकं गोपयतु
 kot_show_station	स्टेशन
 kot_hide_station	स्टेशनं गोपयन्तु
-kot_show_table	Dining table
+kot_show_table	भोजनमेजः
 kot_hide_table	भोजनमेजं गोपयन्तु
 kot_show_kot_no	KOT सं
 kot_hide_kot_no	गोपन KOT सं
