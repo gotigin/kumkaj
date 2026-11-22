@@ -139,3 +139,17 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `indian-breads/bakarkhani.webp` | keema plate with plain roti | Bakarkhani Roti | KoyeliC | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40945048 | resized, WebP |
 | `indian-breads/pathiri.webp` | neer dosa on a menu plate | Pathiri 02 | Vis M | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=136912437 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 pizza-pasta)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `pizza-pasta/cannelloni.webp` | dry uncooked pasta tubes | Baked cannelloni, Rauenthal | Gerda Arendt | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=139409198 | resized, WebP |
+| `pizza-pasta/cheese-garlic-bread.webp` | creamy salad spread on toast | Garlic bread - on plate, ready to eat | Infrogmation of New Orleans | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=155898740 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 snacks)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `snacks/bajji.webp` | blurry street-stall montage of many fried snacks | Andhra famous mirchi bajji | Bhaskaranaidu | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40893688 | resized, WebP |
+| `snacks/chakna.webp` | whisky/Coke party table, not a chakna mix | Spicy and namkeen garlic mixture snack with peanuts… | Billjones94 | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=151455203 | resized, WebP |
