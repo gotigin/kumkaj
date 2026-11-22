@@ -1,6 +1,6 @@
 # Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). One key<TAB>text per line, in en() order; keep {placeholders}.
 app_tagline	ᱨᱮᱥᱴᱩᱨᱮᱱᱴ ᱚᱰᱚᱨ, ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱾ ᱯᱷᱨᱤ ᱚᱯᱷᱞᱟᱭᱤᱱ᱾
-unlock	ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+unlock	ᱡᱷᱤᱡᱽ
 pin_hint	ᱢᱟᱞᱤᱠ ᱯᱤᱱ 0000 ᱠᱷᱚᱱ ᱮᱦᱚᱵᱚᱜᱼᱟ
 sell	ᱚᱰᱚᱨ ᱢᱮ
 buy	ᱠᱤᱨᱤᱧ ᱢᱮ
@@ -19,7 +19,7 @@ reports_today	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ (ᱛᱮᱦᱮᱧ)
 reports_month	ᱞᱟᱵᱷ ᱟᱨ ᱦᱟᱹᱱ (ᱪᱟᱸᱫᱚ)
 reports_aging	ᱟᱩᱴᱥᱴᱮᱱᱰᱤᱝ / ᱰᱟᱠᱛᱚᱨ-ᱥᱤᱟᱨ
 reports_balance_sheet	ᱵᱮᱞᱮᱱᱥ ᱥᱤᱴ
-reports	ᱵᱮᱝᱠ ᱵᱩᱠ ᱟᱨ ᱯᱤ ᱟᱨ ᱮᱞ
+reports	ᱵᱮᱝᱠ ᱵᱩᱠ ᱟᱨ ᱞᱟᱵᱷ-ᱠᱷᱟᱹᛁ
 refresh	ᱛᱟᱹᱯᱤᱥ ᱢᱮ
 undo	ᱟᱱᱰᱩ
 start_tracking	ᱴᱨᱮᱠᱤᱝ ᱮᱦᱚᱵ ᱢᱮ
