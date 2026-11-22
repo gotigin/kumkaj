@@ -6,7 +6,7 @@ sell	Rezervări
 nav_board	Panou
 board	Panou
 park_draft	Salvează ca ciornă
-board_help	Ciorne deschise (păstrate până la «Șterge» sau «Încasează plata») și vânzările înregistrate azi. În «Expediere», apasă «Salvează ca ciornă» în timpul lucrului (se salvează aici, nu în evidență); apasă o ciornă ca s-o reiei.
+board_help	Ciorne deschise (păstrate până la «Șterge» sau «Încasează plata») și vânzările înregistrate azi. În «Rezervare», apasă «Salvează ca ciornă» în timpul lucrului (se salvează aici, nu în evidență); apasă o ciornă ca s-o reiei.
 board_empty	Niciun card încă.
 board_park_nothing	Nimic de salvat ca ciornă — adaugă taxe sau detalii de expediere
 board_parked	Salvată pe «Panou» — biroul e liber
@@ -19,14 +19,14 @@ board_cols_fmt	{n} coloane
 board_summary_fmt	{total} carduri · {drafts} ciorne · {booked} înregistrate
 board_card_no_charges	Nicio taxă încă
 board_card_charges	taxe
-board_card_booked	Expediere
+board_card_booked	Rezervări
 board_draft_gone	Ciorna aceea nu mai este pe «Panou»
 board_draft_closed	Ciorna aceea a fost deja finalizată sau ștearsă
 board_discard	Șterge
 board_discarded	Ciornă ștearsă
 buy	Plată
 books	Jurnalul zilei
-books_help	Poziția de azi. Expediere = colete intrate. Plată = facturi de transportator și cheltuieli. Parteneri = expeditori și transportatori.
+books_help	Poziția de azi. Rezervare = colete intrate. Plată = facturi de transportator și cheltuieli. Parteneri = expeditori și transportatori.
 buy_help	Documente de cheltuieli și facturi de transportator (bani ieșiți). Pe cont rămâne în registrul partenerului.
 sell_money_in	Înregistrează un colet
 buy_money_out	Cheltuială / factură transportator
@@ -91,8 +91,8 @@ split	Împarte
 counter	Tejghea
 parcel	Colet
 order	Comandă
-sales	Expedieri
-sales_refunds	Expedieri și rambursări
+sales	Rezervări
+sales_refunds	Rezervări și rambursări
 day_close	Închidere de zi
 reports_expenses	Registru bancar și P&P
 nav_reports	Rapoarte
@@ -679,8 +679,8 @@ booking_measures	Măsuri de expediere
 drawer_count	Numărătoare sertar (opțional)
 spreadsheet_csv	Foaie de calcul (CSV)
 bank_reconciliation	Reconciliere bancară
-book_add_product	Registru — adaugă produs / tarif
-book_opening_credit	Registru — credit de deschidere
+book_add_product	Rezervare — adaugă produs / tarif
+book_opening_credit	Rezervare — credit inițial
 account_kind	Tip de cont (atinge unul)
 active_ledger	Registru activ
 actual_total_cap	TOTAL REAL
@@ -931,8 +931,8 @@ role_help_consignor	Rol: Expeditor — AR (ne datorează). Aceeași firmă poate
 role_help_carrier	Rol: Transportator — AP (le datorăm). Aceeași firmă poate fi și expeditor.
 role_help_both	Roluri: Expeditor + Transportator — un partener, registre AR și AP, net în Rapoarte.
 role_help_supplier	Rol: Furnizor — AP pentru achiziții.
-lane_declared_label	Expediere în cont
-lane_owner_label	Expediere cu numerar
+lane_declared_label	Rezervare pe cont
+lane_owner_label	Rezervare numerar
 money_lane_bill	Notă: {lane}
 sel_copy	Copiază
 sel_select_all	Selectează tot
