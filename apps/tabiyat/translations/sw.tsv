@@ -1,6 +1,6 @@
 # Swahili — Kiswahili (sw). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Msimbopau / EAN
-composition_ph	Chumvi / muundo (unaoweza kutafutwa)
+composition_ph	Salt / muundo (inayoweza kutafutwa)
 schedule_h_off	Ratiba H - imezimwa (bendera ya mmiliki)
 schedule_h_on	Ratiba H - imewashwa (bendera ya mmiliki)
 rx_expected_off	Rx inatarajiwa - imezimwa (bendera ya mmiliki)

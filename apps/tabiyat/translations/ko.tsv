@@ -1,6 +1,6 @@
 # Korean — 한국어 (ko). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	바코드 / EAN
-composition_ph	소금/성분(검색 가능)
+composition_ph	염·성분(검색 가능)
 schedule_h_off	스케줄 H - 꺼짐(소유자 플래그)
 schedule_h_on	스케줄 H - 켜짐(소유자 플래그)
 rx_expected_off	Rx 예상 — 꺼짐(소유자 플래그)
@@ -731,7 +731,7 @@ book_kind_aging	미결제 / 차변-대변
 book_kind_balance	대차대조표
 order_help	항목을 눌러 추가하세요.
 categories_help	「사용」을 눌러 위 품목을 해당 분류에 넣습니다. 사진이 있으면 분류에 이미지가 생기고, 없으면 이니셜이 표시됩니다.
-dish_search_ph	이름, 소금 또는 바코드를 검색하세요…
+dish_search_ph	이름, 염/성분 또는 바코드 검색…
 sizes_as_items_ph	사이즈를 별도 품목으로 (선택) — 하프=120, 풀=200
 dish_group_ph	강도/팩 그룹(선택 사항) — 예: 500mg 스트립
 discount	할인

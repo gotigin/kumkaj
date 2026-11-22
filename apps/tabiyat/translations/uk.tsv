@@ -1,6 +1,6 @@
 # Ukrainian — Українська (uk). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Штрих-код / ​​EAN
-composition_ph	Сіль / склад (з можливістю пошуку)
+composition_ph	Сіль (хім.) / склад (пошук)
 schedule_h_off	Розклад H — вимкнено (прапор власника)
 schedule_h_on	Таблиця H — увімкнено (прапор власника)
 rx_expected_off	Rx очікуваний — вимкнено (прапор власника)

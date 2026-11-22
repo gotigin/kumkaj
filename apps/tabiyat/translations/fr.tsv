@@ -1,6 +1,6 @@
 # French — Français (fr). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Code-barres / EAN
-composition_ph	Sel / composition (recherchable)
+composition_ph	Sel (chimique) / composition (recherchable)
 schedule_h_off	Schedule H — non (marque du propriétaire)
 schedule_h_on	Schedule H — oui (marque du propriétaire)
 rx_expected_off	Rx attendue — non (marque du propriétaire)
