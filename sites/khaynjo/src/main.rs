@@ -11,6 +11,7 @@
 //! Native preview helpers (ignored in the browser):
 //! - `SITE_PREVIEW=390x844:menus` opens a 390×844 window scrolled to a
 //!   section (id, old chapter id, or nothing for the top).
+//! - `SITE_SHELF_QUERY=Antigua` fills the world-shelf search (with preview).
 //! - `SITE_LINKS=local` sends the kumkaj.com link to the local wasm server.
 //!
 //! In the browser, `#menus` (or an old chapter link such as `#kot`) opens
@@ -414,6 +415,9 @@ pub struct App {
     pending_last_y: f64,
     #[rust]
     pending_stable: u8,
+    /// Native-only: apply shelf search once the menus section has settled.
+    #[rust]
+    pending_shelf_query: Option<String>,
     /// Playing the continuous flow (search always forces pause).
     #[rust]
     shelf_playing: bool,
@@ -734,8 +738,30 @@ impl App {
         if section.is_some() {
             self.pending_section = section;
             self.pending_frames = 120;
-        self.pending_stable = 0;
+            self.pending_stable = 0;
         }
+        if let Ok(q) = std::env::var("SITE_SHELF_QUERY") {
+            let q = q.trim().to_string();
+            if !q.is_empty() {
+                self.pending_shelf_query = Some(q);
+            }
+        }
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    fn flush_pending_shelf_query(&mut self, cx: &mut Cx) {
+        let Some(q) = self.pending_shelf_query.take() else {
+            return;
+        };
+        self.ui
+            .text_input(cx, ids!(menus.shelf_find))
+            .set_text(cx, &q);
+        self.set_shelf_query(cx, q);
+        // Skip the typing quiet window so preview screenshots see the card.
+        self.shelf_search_quiet_until = 0.0;
+        self.shelf_search_dirty = true;
+        let _ = self.flush_shelf_search_paint(cx, 0.0);
+        let _ = self.flush_shelf_search_paint(cx, 1.0);
     }
 
     /// Which content section owns the viewport (just under the sticky bar).
@@ -1520,9 +1546,14 @@ impl AppMain for App {
                         self.pending_last_y = y;
                         if self.pending_frames == 0 || self.pending_stable >= 3 {
                             self.pending_section = None;
+                            #[cfg(not(target_arch = "wasm32"))]
+                            self.flush_pending_shelf_query(cx);
                         }
                     }
                     let _ = cx.new_next_frame();
+                } else {
+                    #[cfg(not(target_arch = "wasm32"))]
+                    self.flush_pending_shelf_query(cx);
                 }
             }
             Event::Draw(_) => {
@@ -1543,9 +1574,14 @@ impl AppMain for App {
                         self.pending_last_y = y;
                         if self.pending_frames == 0 || self.pending_stable >= 3 {
                             self.pending_section = None;
+                            #[cfg(not(target_arch = "wasm32"))]
+                            self.flush_pending_shelf_query(cx);
                         }
                     }
                     let _ = cx.new_next_frame();
+                } else {
+                    #[cfg(not(target_arch = "wasm32"))]
+                    self.flush_pending_shelf_query(cx);
                 }
             }
             _ => {}

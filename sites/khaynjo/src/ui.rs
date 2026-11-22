@@ -944,16 +944,17 @@ script_mod! {
             }
         }
         // Two-line country title band (e.g. "Antigua and Barbuda" at 200px).
+        // 15px bold needs ~52px for two lines + descenders (40 still clipped Barbuda).
         country_wrap := View{
-            width: Fill height: 40
+            width: Fill height: 52
             country := Strong{
                 body: "Country"
                 font_size: 15.
-                text_style_normal: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.1}
-                text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.1}
+                text_style_normal: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.15}
+                text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.15}
                 draw_text +: {
                     color: Ink
-                    text_style: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.1}
+                    text_style: theme.font_bold{font_family: StrongFont font_size: 15. line_spacing: 1.15}
                 }
             }
         }
@@ -982,7 +983,7 @@ script_mod! {
         }
         // Two-line dish band with room for descenders ("Fungee and pepperpot").
         dish_wrap := View{
-            width: Fill height: 44
+            width: Fill height: 50
             dish := Body{
                 body: "Famous dish"
                 font_size: 14.
@@ -996,7 +997,7 @@ script_mod! {
     }
     // Fixed shell = max parade card height (photo + text bands + pad).
     let ShelfSlot = View{
-        width: 200 height: 274
+        width: 200 height: 292
         card := ShelfCard{}
     }
 
@@ -1217,7 +1218,7 @@ script_mod! {
                                 // Clipped stage: each slot is abs-positioned and wraps on its
                                 // own so only one card rebinds when it leaves — no full-strip hitch.
                                 shelf_parade := ScrollXView{
-                                    width: Fill height: 274
+                                    width: Fill height: 292
                                     scroll_bars: {
                                         show_scroll_x: true
                                         show_scroll_y: false
@@ -1225,7 +1226,7 @@ script_mod! {
                                         scroll_bar_x: {bar_size: 0. drag_scrolling: false axis_lock: true}
                                     }
                                     shelf_strip := View{
-                                        width: Fill height: 274
+                                        width: Fill height: 292
                                         flow: Overlay
                                         s0 := ShelfSlot{}
                                         s1 := ShelfSlot{}
