@@ -601,7 +601,7 @@ cloud_web_methods	Vebsaytda Google va boshqa usullar
 cloud_signing_in	Kirilmoqda…
 cloud_sending_reset	Qayta o‘rnatish havolasi yuborilmoqda…
 cloud_forgot_sent	Agar o‘sha emailda hisob bo‘lsa, qayta o‘rnatish havolasi yo‘lda.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} sifatida kirildi
 cloud_created	Hisob yaratildi. Tasdiqlash uchun emailni tekshiring.
 cloud_cancel	Bekor qilish
 permission_preset	Ish

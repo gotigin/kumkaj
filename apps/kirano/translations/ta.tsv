@@ -601,7 +601,7 @@ cloud_web_methods	இணையதளத்தில் Google மற்றும
 cloud_signing_in	உள்நுழைகிறது…
 cloud_sending_reset	மீட்டமை இணைப்பு அனுப்பப்படுகிறது…
 cloud_forgot_sent	அந்த மின்னஞ்சலுக்கு கணக்கு இருந்தால், மீட்டமை இணைப்பு அனுப்பப்பட்டுள்ளது.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} ஆக உள்நுழைந்துள்ளீர்கள்
 cloud_created	கணக்கு உருவாக்கப்பட்டது. முடிந்தால் உறுதிப்படுத்த உங்கள் மின்னஞ்சலைப் பாருங்கள்.
 cloud_cancel	ரத்து
 permission_preset	அனுமதி முன்னமைவு

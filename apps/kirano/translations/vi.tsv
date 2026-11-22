@@ -601,7 +601,7 @@ cloud_web_methods	Google và các cách khác trên trang web
 cloud_signing_in	Đang đăng nhập…
 cloud_sending_reset	Đang gửi liên kết đặt lại…
 cloud_forgot_sent	Nếu email đó có tài khoản, liên kết đặt lại đang được gửi.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Đã đăng nhập là {user} · {plan}
 cloud_created	Đã tạo tài khoản. Kiểm tra email để xác minh khi bạn có thể.
 cloud_cancel	Hủy
 permission_preset	Mẫu quyền

@@ -601,7 +601,7 @@ cloud_web_methods	Saýtda Google we beýleki usullar
 cloud_signing_in	Girilýär…
 cloud_sending_reset	Täzeden düzmek baglanyşygy iberilýär…
 cloud_forgot_sent	Şol emailde hasap bar bolsa, täzeden düzmek baglanyşygy ýolda.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} hökmünde girildi
 cloud_created	Hasap döredildi. Tassyklamak üçin email-i barlaň.
 cloud_cancel	Ýatyr
 permission_preset	Iş

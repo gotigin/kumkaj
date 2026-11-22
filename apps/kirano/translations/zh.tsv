@@ -601,7 +601,7 @@ cloud_web_methods	网站上的 Google 及其他方式
 cloud_signing_in	正在登录…
 cloud_sending_reset	正在发送重置链接…
 cloud_forgot_sent	如果该邮箱有账户，重置链接正在发送。
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	已登录为 {user} · {plan}
 cloud_created	账户已创建。有空时请查收邮件以完成验证。
 cloud_cancel	取消
 permission_preset	权限预设

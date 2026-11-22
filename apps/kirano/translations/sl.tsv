@@ -601,7 +601,7 @@ cloud_web_methods	Google in druge metode na spletnem mestu
 cloud_signing_in	Prijavljanje…
 cloud_sending_reset	Pošiljanje povezave za ponastavitev…
 cloud_forgot_sent	Če ima ta e-pošta račun, je povezava za ponastavitev na poti.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Prijavljeni kot {user} · {plan}
 cloud_created	Račun ustvarjen. Preverite e-pošto za potrditev, ko lahko.
 cloud_cancel	Prekliči
 permission_preset	Delo

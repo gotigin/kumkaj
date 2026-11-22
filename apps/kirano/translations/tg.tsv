@@ -601,7 +601,7 @@ cloud_web_methods	Google ва усулҳои дигар дар сомона
 cloud_signing_in	Воридшавӣ…
 cloud_sending_reset	Ирсоли пайванди барқароркунӣ…
 cloud_forgot_sent	Агар он почта ҳисоб дошта бошад, пайванди барқароркунӣ дар роҳ аст.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Ҳамчун {user} · {plan} ворид шудед
 cloud_created	Ҳисоб сохта шуд. Барои тасдиқ почтаро санҷед.
 cloud_cancel	Бекор кардан
 permission_preset	Кор

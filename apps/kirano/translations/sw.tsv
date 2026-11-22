@@ -601,7 +601,7 @@ cloud_web_methods	Google na njia nyingine kwenye tovuti
 cloud_signing_in	Inaingia…
 cloud_sending_reset	Inatuma kiungo cha kuweka upya…
 cloud_forgot_sent	Ikiwa barua pepe hiyo ina akaunti, kiungo cha kuweka upya kinakuja.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Umeingia kama {user} · {plan}
 cloud_created	Akaunti imeundwa. Angalia barua pepe yako kuthibitisha unapoweza.
 cloud_cancel	Ghairi
 permission_preset	Kipimo cha ruhusa

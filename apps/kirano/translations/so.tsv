@@ -601,7 +601,7 @@ cloud_web_methods	Google iyo habab kale ee website-ka
 cloud_signing_in	Gelaya…
 cloud_sending_reset	Diraya xiriirka dib-u-dejinta…
 cloud_forgot_sent	Haddii emailkaasi leeyahay akoon, xiriir dib-u-dejin ayaa socda.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Waxaa lagu galay sidii {user} · {plan}
 cloud_created	Akoonka waa la abuuray. Hubi emailka si aad u xaqiijiso markaad awooddo.
 cloud_cancel	Jooji
 permission_preset	Shaqo

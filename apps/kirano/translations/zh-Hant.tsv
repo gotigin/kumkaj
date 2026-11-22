@@ -601,7 +601,7 @@ cloud_web_methods	網站上的 Google 及其他方式
 cloud_signing_in	登入中…
 cloud_sending_reset	正在傳送重設連結…
 cloud_forgot_sent	若該電子郵件有帳戶，重設連結正在傳送。
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	已登入為 {user} · {plan}
 cloud_created	帳戶已建立。有空時請查收郵件以完成驗證。
 cloud_cancel	取消
 permission_preset	權限預設

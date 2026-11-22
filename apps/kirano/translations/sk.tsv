@@ -601,7 +601,7 @@ cloud_web_methods	Google a ďalšie metódy na webe
 cloud_signing_in	Prihlasovanie…
 cloud_sending_reset	Odosielanie odkazu na reset…
 cloud_forgot_sent	Ak má tento e-mail účet, odkaz na reset je na ceste.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Prihlásení ako {user} · {plan}
 cloud_created	Účet vytvorený. Skontrolujte e-mail a overte, keď budete môcť.
 cloud_cancel	Zrušiť
 permission_preset	Práca

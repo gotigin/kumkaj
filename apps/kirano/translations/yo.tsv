@@ -601,7 +601,7 @@ cloud_web_methods	Google àti ọ̀nà mìíràn lórí ojú-òpó wẹ́ẹ̀b�
 cloud_signing_in	Ń wọlé…
 cloud_sending_reset	Ń fi ìjápọ̀ àtúnṣe ránṣẹ́…
 cloud_forgot_sent	Tí ímeèlì yẹn bá ní àkọọ́lẹ̀, ìjápọ̀ àtúnṣe ń bọ̀.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Wọlé gẹ́gẹ́ bí {user} · {plan}
 cloud_created	A ti ṣẹ̀dá àkọọ́lẹ̀. Ṣàyẹ̀wò ímeèlì rẹ láti jẹ́rìí nígbàtí o bá lè.
 cloud_cancel	Fagilé
 permission_preset	Iṣẹ

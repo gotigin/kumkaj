@@ -601,7 +601,7 @@ cloud_web_methods	I-Google nezinye iindlela kwiwebhusayithi
 cloud_signing_in	Iyangena…
 cloud_sending_reset	Ithumela ikhonkco lokuseta kwakhona…
 cloud_forgot_sent	Ukuba loo imeyile ineakhawunti, ikhonkco lokuseta kwakhona liyeza.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Ungene njengo-{user} · {plan}
 cloud_created	Iakhawunti yenziwe. Jonga i-imeyile yakho ukuze uqinisekise xa unako.
 cloud_cancel	Rhoxisa
 permission_preset	Umsebenzi

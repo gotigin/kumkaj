@@ -601,7 +601,7 @@ cloud_web_methods	Google та інші способи на сайті
 cloud_signing_in	Вхід…
 cloud_sending_reset	Надсилання посилання для скидання…
 cloud_forgot_sent	Якщо в цієї пошти є обліковий запис, посилання для скидання вже надсилається.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Увійшли як {user} · {plan}
 cloud_created	Обліковий запис створено. Перевірте пошту, щоб підтвердити, коли зможете.
 cloud_cancel	Скасувати
 permission_preset	Посада

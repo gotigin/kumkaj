@@ -601,7 +601,7 @@ cloud_web_methods	Google och andra metoder på webbplatsen
 cloud_signing_in	Loggar in…
 cloud_sending_reset	Skickar återställningslänk…
 cloud_forgot_sent	Om den e-posten har ett konto är en återställningslänk på väg.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Inloggad som {user} · {plan}
 cloud_created	Konto skapat. Kontrollera e-posten för att verifiera när du kan.
 cloud_cancel	Avbryt
 permission_preset	Jobb

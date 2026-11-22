@@ -601,7 +601,7 @@ cloud_web_methods	Google и други начини на сајту
 cloud_signing_in	Пријављивање…
 cloud_sending_reset	Слање линка за ресет…
 cloud_forgot_sent	Ако та е-пошта има налог, линк за ресет је на путу.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Пријављени као {user} · {plan}
 cloud_created	Налог направљен. Проверите е-пошту да потврдите кад можете.
 cloud_cancel	Откажи
 permission_preset	Посао

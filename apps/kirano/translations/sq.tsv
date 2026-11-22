@@ -601,7 +601,7 @@ cloud_web_methods	Google dhe metoda të tjera në faqen e internetit
 cloud_signing_in	Duke u futur…
 cloud_sending_reset	Duke dërguar lidhjen e rivendosjes…
 cloud_forgot_sent	Nëse ai email ka një llogari, një lidhje rivendosjeje është në rrugë.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	I futur si {user} · {plan}
 cloud_created	Llogaria u krijua. Kontrolloni emailin për të verifikuar kur të mundni.
 cloud_cancel	Anulo
 permission_preset	Puna

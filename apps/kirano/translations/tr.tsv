@@ -601,7 +601,7 @@ cloud_web_methods	Web sitesinde Google ve diğer yöntemler
 cloud_signing_in	Oturum açılıyor…
 cloud_sending_reset	Sıfırlama bağlantısı gönderiliyor…
 cloud_forgot_sent	Bu e-postanın hesabı varsa sıfırlama bağlantısı yolda.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} olarak oturum açıldı
 cloud_created	Hesap oluşturuldu. Doğrulamak için e-postanızı kontrol edin.
 cloud_cancel	İptal
 permission_preset	İzin ön ayarı

@@ -601,7 +601,7 @@ cloud_web_methods	ویب سائٹ پر Google اور دیگر طریقے
 cloud_signing_in	سائن اِن ہو رہا ہے…
 cloud_sending_reset	ری سیٹ لنک بھیجا جا رہا ہے…
 cloud_forgot_sent	اگر اس ای میل کا اکاؤنٹ ہے تو ری سیٹ لنک بھیج دیا گیا ہے۔
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} کے طور پر سائن ان
 cloud_created	اکاؤنٹ بن گیا۔ جب ہو سکے تصدیق کے لیے اپنا ای میل چیک کریں۔
 cloud_cancel	منسوخ
 permission_preset	اجازت پری سیٹ
