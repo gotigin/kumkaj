@@ -929,7 +929,7 @@ duress_off	ཛ་དྲག་ལྡེ་མིག་ཕྱེ་ PIN ཁ་བ�
 duress_saved	ཛ་དྲག་ལྡེ་མིག་ཕྱེ་ PIN ཉར་ཚགས་བྱས།
 duress_cleared	ཛ་དྲག་གི་ལྡེ་མིག་PINཁ་བསྡམས།
 upi_amount_ph	UPI དངུལ་འབོར།
-void	ནུས་མེད་ཚོང་འགྲེམས།
+void	ནུས་མེད།
 write_off_ap	AP བྲིས།
 write_off_heading	རྩིས་མེད་གཏོང་དགོས། (དངུལ་སྤྲོད་མི་དགོས་པར་གཙང་བཟོ།)
 write_off_nil	རྩིས་མེད་བཏང་བ། ལྷག་མ་མེད་པ།
