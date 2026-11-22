@@ -1162,11 +1162,11 @@ line_sent_state	Sent í eldhús
 line_nc_state	Ókeypis (NC) - ekki gjaldfært
 cancel_item_short	Hætta við
 nc_short	Ekkert gjald
-charge_again_short	Hleðsla
+charge_again_short	Innheimta
 move_short	Færa
 cancel_item_title	Hætta við þetta valmyndaratriði — eldhúsið fær afpöntunarseðil
 nc_item_title	Gerðu þetta valmyndaratriði ókeypis (NC)
-charge_again_title	Hlaða þetta valmyndaratriði aftur
+charge_again_title	Innheimta þetta atriði aftur
 move_item_title	Færðu þetta valmyndaratriði yfir á annað borðstofuborð
 already_cooked	Þegar eldað (sóun)
 not_cooked_yet	Ekki eldað ennþá

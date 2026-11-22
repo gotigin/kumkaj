@@ -1162,11 +1162,11 @@ line_sent_state	Kööki saadetud
 line_nc_state	Tasuta (NC) – tasuta
 cancel_item_short	Tühista
 nc_short	Tasuta
-charge_again_short	Lae
+charge_again_short	Võta tasu
 move_short	Liiguta
 cancel_item_title	Tühista see üksus — köök saab tühistamislehe
 nc_item_title	Muuda see üksus tasuta (NC)
-charge_again_title	Laadige see üksus uuesti laadima
+charge_again_title	Võta selle üksuse eest uuesti tasu
 move_item_title	Teisaldage see üksus teisele söögilauale
 already_cooked	Juba keedetud (raiskamine)
 not_cooked_yet	Pole veel küpsetatud
