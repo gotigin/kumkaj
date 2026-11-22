@@ -53,7 +53,7 @@ items	Ọnụego & ọrụ
 nav_items	Ọnụ ego
 more	Ọzọ
 your_items	Ọnụego gị
-items_help	Ahiri nke ọ bụla bụ ọnụego (dịka Mpaghara Mpaghara A). Nkeji na-abụkarị n'arọ. Pịa iji dezie.
+items_help	Ahiri nke ọ bụla bụ ọnụego (dịka Mpaghara A). Nkeji na-abụkarị n'arọ. Pịa iji dezie.
 add_item	Tinye ọnụego
 new_item	Ọnụọgụ ọhụrụ
 adding_item	Na-agbakwụnye ọnụego ọhụrụ
@@ -136,7 +136,7 @@ branches_org	Alaka na nzukọ
 credit_customers	Ndị otu (ndị ji ụgwọ na ndị ji ụgwọ)
 customer_name_ph	Aha onye otu
 new_customer_ph	Aha onye otu ọhụrụ
-item_name_ph	Ọnụego aha (dịka Mpaghara Mpaghara A)
+item_name_ph	Aha ọnụego (dịka Mpaghara A)
 item_price_ph	Kwa kilogram / nke mbụ slab
 start_template	Ngwaahịa
 next_booking	Ndokwa ọzọ
@@ -645,7 +645,7 @@ caption_outstanding	NA-ECHE
 caption_bank	ỤLỌ AKỤ
 paid_by	Onye kwụrụ
 second_way	Ụzọ nke abụọ
-weight_in	Ibu ibu
+weight_in	Ibu
 size_in	Nha na
 goods_received	Ngwaahịa natara
 expense_heading	Mmefu

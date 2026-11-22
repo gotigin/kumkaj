@@ -21,7 +21,7 @@ board_card_no_charges	Ym pat pyndap bai lutksan
 board_card_charges	ki jingsiew
 board_card_booked	Ka jingbuh jaka
 board_draft_gone	Kata ka jingthoh kam don shuh ha ka «Board»
-board_draft_closed	Kata ka draft ka la dep dep ne la pyndam noh
+board_draft_closed	Kata ka draft ka la dep ne la pyndam noh
 board_discard	Pynduh noh
 board_discarded	La weng noh ia ka draft
 buy	Siew noh
@@ -268,13 +268,13 @@ allow_extra_tills	Ailad ia ki till ba kham bun
 amend	Pynkylla
 apply_country_pack	Pyndonkam ia ka ri pack
 datetime_appearance	Ka tarik & ka por jingmih
-datetime_appearance_help	Ki kot ki buh ia ka RFC3339 kaba nyngkong eh hapoh. Kine ki pynkylla tang kumno ki tarik bad ki kynja kynja por ki paw ha ki resit, ki jingthoh, ki kaiphod, bad ka screen.
+datetime_appearance_help	Ki kot ki buh ia ka RFC3339 kaba nyngkong eh hapoh. Kine ki pynkylla tang kumno ki tarik bad ki kynja por ki paw ha ki resit, ki jingthoh, ki kaiphod, bad ka screen.
 datetime_example	Nuksa mynta: {ex} .
 date_order	Ka jingbthah ia ka tarik
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
-time_format	Ka kynja kynja
+time_format	Ka por
 time_format_24h	24-kynta
 time_format_12h	12-kynta
 attach_bill_photo	Pyndait ia ka dur jong ka bill
@@ -533,7 +533,7 @@ save_backup_copy	Save ia ka kopi ba la buh...
 backup_copy_saved	La buh ia ka kopi ba la buh — buh ia ka ha kane ka tiar (ka USB lane kawei pat ka tiar)
 backup_copy_overdue	Ym don kopi ba la buh kyrpang na kane ka tiar haduh {n} sngi — Ki jingpynbeit → Ka jingpynkylla .
 backup_copy_failed	Ka copy ba la buh lypa kam lah ban buh hangta — jied ia kawei pat ka jaka .
-clock_off	Ka kynja kynja jong kane ka tiar ka long {min} min na ka server jong ka dukan — buh ia ka por kaba biang ha kane ka tiar .
+clock_off	Ka kynja jong kane ka tiar ka long {min} min na ka server jong ka dukan — buh ia ka por kaba biang ha kane ka tiar .
 printers_heading	Ki nongpynmih kot ha kane ka tiar
 printers_help	Peit ia ki printer ba shisha, nangta jied ia ka Receipt lane AWB label. Kawei pa kawei ka kam ka don la ka jong ka jingheh, ka dur ne ka dur, bad kumno la phah ia ki byte. Ka label ka shon ia u bar code. Ka jaka kaba thylli = wat print.
 job_width	Ka jingheh jong ka jingdon (mm)
