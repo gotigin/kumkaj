@@ -1132,7 +1132,7 @@ tile_undo_bill	ยกเลิกบิล
 summary_busy	โต๊ะมีลูกค้า
 summary_to_collect	รอเก็บเงิน
 summary_on_floor	ในร้าน
-floor	พื้นที่
+floor	ห้องอาหาร
 sizes_as_items_ph	ขนาดเป็นรายการแยก (ไม่บังคับ) — ครึ่ง=120, เต็ม=200
 dish_group_ph	กลุ่มอาหาร (ไม่บังคับ) — เช่น Paneer Tikka
 discount	ส่วนลด
