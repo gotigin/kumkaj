@@ -888,7 +888,7 @@ low_stock_alert	Hampir habis — segera beli: {items}
 unpriced_note	Item {n} pada item Anda belum memiliki harga — tagihannya adalah 0 hingga Anda menetapkannya.
 show_unpriced	Tampilkan hanya item tanpa harga
 show_all_dishes	Tampilkan semua item
-role_title_rest_ph	Jabatan (mis. kapten, kepala koki)
+role_title_rest_ph	Jabatan (mis. kapten)
 preset_help_rest	Kasir: jual. Manajer: jual + item + batal/ubah.
 kind_resale	Dibeli untuk dijual
 kind_dish	Tidak dihitung

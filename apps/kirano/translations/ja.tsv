@@ -888,7 +888,7 @@ low_stock_alert	残りわずか — 早めに補充: {items}
 unpriced_note	アイテムの {n} アイテムにはまだ価格がありません。価格を設定するまでは 0 で請求されます。
 show_unpriced	価格のない商品のみを表示
 show_all_dishes	すべてのアイテムを表示
-role_title_rest_ph	役職（例: キャプテン、料理長）
+role_title_rest_ph	役職（例: キャプテン）
 preset_help_rest	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
 kind_resale	売るために買った
 kind_dish	未管理

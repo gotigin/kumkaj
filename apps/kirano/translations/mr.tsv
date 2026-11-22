@@ -888,7 +888,7 @@ low_stock_alert	कमी होत आहे — लवकर घ्या: {it
 unpriced_note	तुमच्या {n} आयटमना अजून किंमत नाही — किंमत देईपर्यंत ते 0 वर बिल होतात.
 show_unpriced	फक्त किंमत नसलेले आयटम दाखवा
 show_all_dishes	सर्व आयटम दाखवा
-role_title_rest_ph	पद (उदा. कॅप्टन, मुख्य आचारी)
+role_title_rest_ph	पद (उदा. कॅप्टन)
 preset_help_rest	कॅशियर: विक्री. व्यवस्थापक: विक्री + आयटम + रद्द/दुरुस्ती.
 kind_resale	विकण्यासाठी घेतलेले
 kind_dish	मोजणी नाही
