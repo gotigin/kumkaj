@@ -35,8 +35,26 @@
     <h1>Account</h1>
     <p class="account-lede">One account for the site and apps — same form whether you’re new or returning.</p>
     <p class="account-status" id="auth-status">Continue with email, a provider, or phone.</p>
+    <p class="auth-ok" id="checkout-pending" hidden></p>
     <p class="auth-ok" id="auth-ok" hidden></p>
     <p class="auth-error" id="auth-error" hidden></p>
+    <script>
+      (function () {
+        try {
+          var plan = (new URL(location.href).searchParams.get("checkout") || "")
+            .trim()
+            .toLowerCase();
+          var titles = { steady: "Steady", swift: "Swift", priority: "Priority" };
+          if (!titles[plan]) return;
+          var el = document.getElementById("checkout-pending");
+          if (!el) return;
+          el.hidden = false;
+          el.textContent =
+            titles[plan] +
+            " is ready after you sign in — sandbox mock checkout, no live charge.";
+        } catch (e) {}
+      })();
+    </script>
 
     <div id="auth-gate">
       <section class="auth-card" aria-labelledby="email-heading">
