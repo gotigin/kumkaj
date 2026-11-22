@@ -902,8 +902,8 @@ show_unpriced	نمایش فقط موارد بدون قیمت
 show_all_dishes	نمایش همه موارد
 role_title_rest_ph	عنوان نقش (مثلاً کاپیتان، سرآشپز)
 preset_help_rest	صندوقدار: فروش. مدیر: فروش + کالا + ابطال/اصلاح.
-kind_resale	دارو خرید
-kind_dish	سهام حساب نکن
+kind_resale	داروی خریداری‌شده
+kind_dish	موجودی نشمار
 buy_unit_ph	واحد (kg، لیتر، دانه)
 add_another_way	+ افزودن راه دیگر
 parts_status	{a} از {b} وارد شد · {c} مانده

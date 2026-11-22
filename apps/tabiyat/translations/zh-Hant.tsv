@@ -903,7 +903,7 @@ show_unpriced	僅顯示沒有價格的商品
 show_all_dishes	顯示所有項目
 role_title_rest_ph	職位（如領班、主廚）
 preset_help_rest	收銀員：銷售。經理：銷售+項目+作廢/修改。
-kind_resale	買了藥
+kind_resale	購入藥品
 kind_dish	不計算庫存
 buy_unit_ph	單位（公斤、升、個）
 add_another_way	+ 另一種方式

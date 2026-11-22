@@ -902,7 +902,7 @@ show_unpriced	Chỉ hiển thị các mặt hàng không có giá
 show_all_dishes	Hiển thị tất cả các mục
 role_title_rest_ph	Chức danh (vd. trưởng ca, bếp trưởng)
 preset_help_rest	Thu ngân: bán. Quản lý: bán + mục + hủy/sửa.
-kind_resale	Mua thuốc
+kind_resale	Thuốc mua vào
 kind_dish	Không đếm
 buy_unit_ph	Đơn vị (kg, lít, cái)
 add_another_way	+ Thêm cách khác

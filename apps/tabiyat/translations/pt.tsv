@@ -902,7 +902,7 @@ show_unpriced	Mostrar apenas itens sem preço
 show_all_dishes	Mostrar todos os itens
 role_title_rest_ph	Cargo (ex. capitão, chefe de cozinha)
 preset_help_rest	Caixa: vender. Gerente: vender + itens + anular/alterar.
-kind_resale	Comprou remédio
+kind_resale	Medicamento comprado
 kind_dish	Sem contagem
 buy_unit_ph	Unidade (kg, litro, un)
 add_another_way	+ Outra forma

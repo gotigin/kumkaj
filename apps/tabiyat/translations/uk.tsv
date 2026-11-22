@@ -902,7 +902,7 @@ show_unpriced	Показувати лише товари без ціни
 show_all_dishes	Показати всі елементи
 role_title_rest_ph	Назва ролі (напр. Капітан, Шеф-кухар)
 preset_help_rest	Касир: продає. Менеджер: продає + позиції + анулювання/виправлення.
-kind_resale	Купили ліки
+kind_resale	Куплені ліки
 kind_dish	Не рахуйте запаси
 buy_unit_ph	Одиниця (kg, litre, pcs)
 add_another_way	+ Додати інший спосіб

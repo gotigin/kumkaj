@@ -902,7 +902,7 @@ show_unpriced	Pokaż tylko przedmioty bez ceny
 show_all_dishes	Pokaż wszystkie elementy
 role_title_rest_ph	Stanowisko (np. kapitan, główny kucharz)
 preset_help_rest	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
-kind_resale	Kupiłem lekarstwo
+kind_resale	Kupione lekarstwo
 kind_dish	Nie licz zapasów
 buy_unit_ph	Jednostka (kg, litr, szt.)
 add_another_way	+ Dodaj inny sposób

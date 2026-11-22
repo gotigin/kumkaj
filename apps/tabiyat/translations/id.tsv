@@ -902,7 +902,7 @@ show_unpriced	Tampilkan hanya item tanpa harga
 show_all_dishes	Tampilkan semua item
 role_title_rest_ph	Jabatan (mis. kapten, kepala koki)
 preset_help_rest	Kasir: jual. Manajer: jual + item + batal/ubah.
-kind_resale	Membeli obat
+kind_resale	Obat beli
 kind_dish	Tidak dihitung
 buy_unit_ph	Satuan (kg, liter, pcs)
 add_another_way	+ Cara lain

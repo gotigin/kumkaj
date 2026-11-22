@@ -902,8 +902,8 @@ show_unpriced	가격이 없는 항목만 표시
 show_all_dishes	모든 항목 표시
 role_title_rest_ph	직함 (예: 캡틴, 주방장)
 preset_help_rest	캐셔: 판매. 매니저: 판매 + 항목 + 취소/수정.
-kind_resale	약을 샀다
-kind_dish	수량 없음
+kind_resale	매입 약품
+kind_dish	재고 미집계
 buy_unit_ph	단위 (kg, 리터, 개)
 add_another_way	+ 다른 방법
 parts_status	입력 {a} / {b} · 남은 {c}

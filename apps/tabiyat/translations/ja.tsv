@@ -902,7 +902,7 @@ show_unpriced	価格のない商品のみを表示
 show_all_dishes	すべてのアイテムを表示
 role_title_rest_ph	役職（例: キャプテン、料理長）
 preset_help_rest	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
-kind_resale	薬を買った
+kind_resale	仕入れ薬
 kind_dish	未管理
 buy_unit_ph	単位（kg・L・個）
 add_another_way	+ 別の方法

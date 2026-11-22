@@ -902,7 +902,7 @@ show_unpriced	عرض فقط العناصر التي ليس لها سعر
 show_all_dishes	إظهار كافة العناصر
 role_title_rest_ph	المسمى (مثل كابتن، رئيس الطهاة)
 preset_help_rest	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
-kind_resale	اشترى الدواء
+kind_resale	دواء مشتَرى
 kind_dish	غير محسوب
 buy_unit_ph	الوحدة (كغ، لتر، قطعة)
 add_another_way	+ طريقة أخرى
