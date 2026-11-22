@@ -731,7 +731,7 @@ book_kind_aging	En suspens / débit-crédit
 book_kind_balance	Bilan
 order_help	Touchez un article pour l'ajouter.
 categories_help	Touchez «Utiliser» pour classer l’article ci-dessus dans cette catégorie. La photo donne une image à la catégorie ; sans photo, elle affiche ses initiales.
-dish_search_ph	Chercher nom, sel ou code-barres…
+dish_search_ph	Chercher nom, sel chimique ou code-barres…
 sizes_as_items_ph	Tailles en articles séparés (facultatif) — Demi=120, Entier=200
 dish_group_ph	Groupe dosage / boîte (facultatif) — p. ex. plaquette 500 mg
 discount	Remise

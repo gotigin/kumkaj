@@ -1,6 +1,6 @@
 # Japanese — 日本語 (ja). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	バーコード/EAN
-composition_ph	塩・成分（検索可能）
+composition_ph	塩類・成分（検索可能）
 schedule_h_off	スケジュール H — オフ (所有者フラグ)
 schedule_h_on	スケジュールH — オン（オーナーフラグ）
 rx_expected_off	Rx が期待されています — オフ (所有者フラグ)
@@ -731,7 +731,7 @@ book_kind_aging	未精算 / 借方・貸方
 book_kind_balance	貸借対照表
 order_help	商品をタップして追加します。
 categories_help	「使用」をタップして上の品目をそのカテゴリに入れます。写真があればカテゴリに画像が付き、なければ頭文字が表示されます。
-dish_search_ph	名前、塩、バーコードを検索…
+dish_search_ph	名前、塩類・成分、バーコードを検索…
 sizes_as_items_ph	サイズを別品目に（任意）— ハーフ=120, フル=200
 dish_group_ph	強度 / パック グループ (オプション) — 例: 500mgストリップ
 discount	割引
