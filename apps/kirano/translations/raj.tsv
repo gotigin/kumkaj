@@ -199,10 +199,10 @@ staff	कर्मचारी
 photo	फोटू
 ok	ठीक छै
 this_shop	सर्वर मोड
-extra_till	ग्राहक मोड
+extra_till	क्लाइंट मोड
 off	बंद
 server	सर्वर मोड
-client	ग्राहक मोड
+client	क्लाइंट मोड
 language_currency	भाषा अर मुद्रा
 language	भाषा
 language_setup_hint	इण उपकरण री भाषा रो पालन करो, या खुद कोई एक चुणो।
