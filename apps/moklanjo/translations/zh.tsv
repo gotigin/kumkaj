@@ -26,7 +26,7 @@ board_discard	丢弃
 board_discarded	草稿已丢弃
 buy	支出
 books	日记账
-books_help	今日状况。预订 = 包裹入。支出 = 承运商账单和费用。往来方 = 预订人和承运商。
+books_help	今日状况。预订 = 包裹入。支出 = 承运商账单和费用。往来方 = 寄件人和承运商。
 buy_help	费用凭证和承运商账单（支出）。记账的留在往来方账本。
 sell_money_in	寄一个包裹
 buy_money_out	费用 / 承运商账单
