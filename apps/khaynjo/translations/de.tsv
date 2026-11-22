@@ -777,9 +777,9 @@ printer_target_ph	Adresse oder Systemname
 printer_target_default	Standarddrucker
 printer_wire_heading	Format
 printer_wire_escpos	KOT
-printer_wire_os	Standard Hochformat
-printer_wire_os_portrait	Standard Hochformat
-printer_wire_os_landscape	Standard Querformat
+printer_wire_os	Hochformat
+printer_wire_os_portrait	Hochformat
+printer_wire_os_landscape	Querformat
 printer_wire_escpos_short	KOT
 printer_wire_os_short	Hochformat
 printer_wire_os_landscape_short	Querformat

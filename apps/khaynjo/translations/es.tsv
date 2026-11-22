@@ -777,9 +777,9 @@ printer_target_ph	Dirección o nombre del sistema
 printer_target_default	impresora predeterminada
 printer_wire_heading	Formato
 printer_wire_escpos	KOT
-printer_wire_os	Estándar vertical
-printer_wire_os_portrait	Estándar vertical
-printer_wire_os_landscape	Estándar apaisado
+printer_wire_os	Vertical
+printer_wire_os_portrait	Vertical
+printer_wire_os_landscape	Apaisado
 printer_wire_escpos_short	KOT
 printer_wire_os_short	Vertical
 printer_wire_os_landscape_short	Apaisado

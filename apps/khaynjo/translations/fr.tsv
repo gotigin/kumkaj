@@ -779,7 +779,7 @@ printer_wire_heading	Format
 printer_wire_escpos	KOT
 printer_wire_os	Portrait
 printer_wire_os_portrait	Portrait
-printer_wire_os_landscape	Standard paysage
+printer_wire_os_landscape	Paysage
 printer_wire_escpos_short	KOT
 printer_wire_os_short	Portrait
 printer_wire_os_landscape_short	Paysage

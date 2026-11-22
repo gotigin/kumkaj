@@ -777,9 +777,9 @@ printer_target_ph	Endereço ou nome do sistema
 printer_target_default	impressora padrão
 printer_wire_heading	Formato
 printer_wire_escpos	KOT
-printer_wire_os	Padrão retrato
-printer_wire_os_portrait	Padrão retrato
-printer_wire_os_landscape	Padrão paisagem
+printer_wire_os	Retrato
+printer_wire_os_portrait	Retrato
+printer_wire_os_landscape	Paisagem
 printer_wire_escpos_short	KOT
 printer_wire_os_short	Retrato
 printer_wire_os_landscape_short	Paisagem

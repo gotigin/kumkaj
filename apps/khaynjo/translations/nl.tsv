@@ -777,9 +777,9 @@ printer_target_ph	Adres of systeemnaam
 printer_target_default	standaardprinter
 printer_wire_heading	Indeling
 printer_wire_escpos	KOT
-printer_wire_os	Standaard staand
-printer_wire_os_portrait	Standaard staand
-printer_wire_os_landscape	Standaard liggend
+printer_wire_os	Staand
+printer_wire_os_portrait	Staand
+printer_wire_os_landscape	Liggend
 printer_wire_escpos_short	KOT
 printer_wire_os_short	Staand
 printer_wire_os_landscape_short	Liggend

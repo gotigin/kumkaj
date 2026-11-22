@@ -777,9 +777,9 @@ printer_target_ph	Адрес или имя в системе
 printer_target_default	принтер по умолчанию
 printer_wire_heading	Формат
 printer_wire_escpos	KOT
-printer_wire_os	Обычный книжный
-printer_wire_os_portrait	Обычный книжный
-printer_wire_os_landscape	Обычный альбомный
+printer_wire_os	Книжная
+printer_wire_os_portrait	Книжная
+printer_wire_os_landscape	Альбомная
 printer_wire_escpos_short	KOT
 printer_wire_os_short	Книжная
 printer_wire_os_landscape_short	Альбомная
