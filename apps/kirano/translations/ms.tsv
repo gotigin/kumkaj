@@ -26,13 +26,13 @@ settle_card	Settle kad
 items	Item
 nav_items	Item
 items_help	Ketik item untuk mengeditnya. Item baharu mengosongkan borang. Cari mengikut nama atau kod pendek, tetapkan harga (0 tidak mengapa), kemudian Tambah. Jualan yang telah direkodkan kekalkan nama mereka dicaj.
-add_item	Tambah item menu
-new_item	Item menu baharu
-adding_item	Menambah item menu baharu
+add_item	Tambah item
+new_item	Item baharu
+adding_item	Menambah item baharu
 editing_item	Mengedit
 save	Simpan
 remove	Alih keluar
-removed_items	Item menu dialih keluar
+removed_items	Item dialih keluar
 removed_help	Pulihkan meletakkan item kembali dalam Item sama seperti sebelumnya — harga, foto dan kategori.
 restore_item	Pulihkan
 empty_catalog	Tiada item lagi.
@@ -56,11 +56,11 @@ applied	Digunakan
 note_ph	Nota (pilihan)
 rounded	MEMBULAT
 split	Berpisah
-bill_item_layout	Susun atur item menu
+bill_item_layout	Susun atur item
 bill_item_layout_columns	Lajur
 bill_item_layout_stacked	Bertindan
 bill_item_header	Pengepala lajur
-bill_item_name	Nama item menu
+bill_item_name	Nama item
 bill_item_qty	Kuantiti
 bill_item_price	harga
 bill_item_amount	Jumlah
@@ -156,13 +156,13 @@ reports_expenses	Lejar bank & P&L
 nav_reports	Laporan
 nav_settings	tetapan
 nav_lock	Kunci
-all_items	Semua item menu
+all_items	Semua item
 frequent	Kerap
-added_items	Menambah item menu
+added_items	Menambah item
 added_items_empty	Tiada apa-apa pada bil ini lagi — tambahkan item daripada Semua item atau kategori.
 frequent_config_help	Kebanyakan barang terjual daripada bil yang telah siap. Tetapkan berapa hari untuk melihat dan berapa banyak item untuk ditunjukkan.
 frequent_days_ph	Hari (1)
-frequent_limit_ph	Item menu (24)
+frequent_limit_ph	Item (24)
 frequent_apply	Mohon
 frequent_saved	Kerap: {d} hari lepas, item {n} teratas — {c}
 frequent_empty	Tiada jualan lengkap dalam tempoh ini lagi — selesaikan bil (₹0 dibenarkan apabila Tetapan menyatakan demikian) dan ia dipaparkan di sini.
@@ -228,7 +228,7 @@ dont_use	jangan guna
 add_branch	Tambah cawangan
 add_conversion	Tambah penukaran
 add_dishes_items	Tambah item
-add_item_plain	Tambah item menu
+add_item_plain	Tambah item
 add_note	Tambah nota
 add_opening_balance	Tambah baki pembukaan
 add_staff	Tambah kakitangan
@@ -275,7 +275,7 @@ clear_icon	Kosongkan ikon
 clear_photo	Foto yang jelas
 copy_day_book_csv	Salin lejar hari CSV
 copy_day_close	Tutup hari salinan
-copy_items_csv	Salin item menu CSV
+copy_items_csv	Salin item CSV
 copy_outstanding_csv	Salin tertunggak CSV
 copy_parties_csv	Salin pelanggan dan pembekal CSV
 copy_party_ledger_csv	Salin lejar pelanggan CSV
@@ -325,9 +325,9 @@ other_devices_help	Pada peranti ini (Server): Peranti lain → Benarkan tills ta
 forget_shop	Lupakan kedai ini
 goods_received	Barang diterima
 import_day	Hari import
-import_items_csv_plain	Import item menu CSV…
+import_items_csv_plain	Import item CSV…
 import_parties_csv	Import pelanggan dan pembekal CSV…
-item_name	Nama item menu
+item_name	Nama item
 login_id_ph	Nama pengguna
 mark_cleared	Mark dibersihkan
 new_party_clear	Pelanggan atau pembekal baharu (borang jelas)
@@ -562,7 +562,7 @@ brand_shown_help	Ditunjukkan pada skrin dalam apl. Nama dan ikon apl yang dipasa
 app_icon	Ikon apl
 logo_help	Tanda kedai pilihan pada skrin dalam apl.
 onboard_layout	Apa yang anda dapat
-item_photo_help	Pilihan. Tanpa foto kami menunjukkan huruf awal dari nama item menu.
+item_photo_help	Pilihan. Tanpa foto kami menunjukkan huruf awal dari nama item.
 stamp_heading	setem
 stamp_image_help	Imej setem pilihan pada bil bercetak dan paparan pelanggan.
 payment_qr_heading	QR pembayaran
@@ -624,7 +624,7 @@ wipe_schema_done	Persediaan kedai dipadam — pilih Server atau Client untuk men
 rounded_total	Jumlah Bulat
 setup_app_kirano	Sediakan Kirano
 shop_logo_optional	Logo kedai (pilihan)
-stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
+stock_type_help	Taip nama item (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
 team_owner_help	Biarkan orang itu kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN dan kata laluan pilihan, kemudian Tambah. Pilih orang untuk mengedit jenis borang yang sama — nama, nama pengguna, kata laluan, skrin dan hak — kemudian Simpan. PIN dan kata laluan anda sendiri adalah satu log masuk di bahagian bawah. Pemilik tidak mengubah PIN milik orang lain.
 staff_name_ph	Nama kakitangan
 staff_copy_hire_ph	Salin persediaan daripada (pilihan)
@@ -646,7 +646,7 @@ team_features_changed	Skrin ditukar — Simpan persediaan untuk orang ini
 team_rights_changed	Hak ditukar — Simpan persediaan untuk orang ini
 they_owe_us	Mereka berhutang dengan kita
 unit_at_cap	Kadar unit
-units_help	Kod untuk label item menu (kg, sekeping, beg). Setiap unit mesti memaut — terus atau melalui unit lain — kepada standard (kg · cm · ml · pc), cth. 1 peti = 2 kotak dan 1 kotak = 20 cm. Penukaran: 1 daripada = faktor kepada. Mata wang tidak pernah unit.
+units_help	Kod untuk label item (kg, sekeping, beg). Setiap unit mesti memaut — terus atau melalui unit lain — kepada standard (kg · cm · ml · pc), cth. 1 peti = 2 kotak dan 1 kotak = 20 cm. Penukaran: 1 daripada = faktor kepada. Mata wang tidak pernah unit.
 units_picker_help	Ketik Hidupkan/Mati untuk menunjukkan unit dalam pemilih Beli dan Item. Mati unit masih tukar.
 unit_picker_on	hidup
 unit_picker_off	Mati
@@ -670,8 +670,8 @@ icon_default	Ikon: Kumkaj tanda (lalai) — pilih yang tersuai
 logo_yours	Logo: logo kedai anda — ditunjukkan pada skrin dan resit
 logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
 setup_complete	Persediaan selesai
-onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu, kemudian Selesai.
-onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
+onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item dalam item, kemudian Selesai.
+onboard_book_tmpl	Lejar · {} — tambah item dan kredit pembukaan, kemudian Selesai.
 tmpl_blurb	Kaunter Kirana: jual, stok, khata, beli pembekal, buku.
 reports_facet_title	Laporan
 reports_facet_help	Lejar hari, penuaan pelanggan atau pembekal, jawatan bank dan tempoh P&L.
@@ -717,10 +717,10 @@ book_kind_today	Hari ini lejar
 book_kind_month	Lejar bulan ini
 book_kind_aging	Tertunggak / debit-kredit
 book_kind_balance	Kunci kira-kira
-order_help	Ketik item menu untuk menambahkannya.
-categories_help	Ketik Gunakan untuk memfailkan item menu di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
+order_help	Ketik item untuk menambahkannya.
+categories_help	Ketik Gunakan untuk memfailkan item di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
 dish_search_ph	Cari item atau kod pendek…
-sizes_as_items_ph	Saiz sebagai item menu berasingan (pilihan) — Separuh=120, Penuh=200
+sizes_as_items_ph	Saiz sebagai item berasingan (pilihan) — Separuh=120, Penuh=200
 dish_group_ph	Kumpulan saiz pek (pilihan) — cth. Atta 1kg / 5kg
 discount	Diskaun
 remove_discount	Alih keluar diskaun
@@ -736,7 +736,7 @@ shift_handover	Penyerahan syif
 shift_since	Peralihan ini sejak
 expected_in_drawer	Dijangka dalam laci
 right_discount	Beri diskaun
-new_category_row	Kategori baharu — dibuat apabila anda menyimpan item menu
+new_category_row	Kategori baharu — dibuat apabila anda menyimpan item
 your_category	Kategori anda
 suggested_category	Dicadangkan — daripada item kami
 category_search_ph	Kategori — cari milik anda atau taip yang baharu
@@ -754,7 +754,7 @@ no_server_found	Tiada ditemui. Pada Server: Tetapan → Peranti lain → Benarka
 servers_found_pick	Ketik kedai yang ingin anda sambungkan.
 server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasangkan sekarang.
 approval_pin_ph	Pengurus PIN (hanya jika ditanya)
-menu_search_ph	Cari item menu atau kod pendek
+menu_search_ph	Cari item atau kod pendek
 customer_paid_ph	Pelanggan bayar
 tip_ph	Tip
 find_server	Cari server kedai
@@ -817,7 +817,7 @@ payment_qr_none	QR Pembayaran: tiada — jumlah QR daripada UPI ID semasa membua
 team_pick_ph	Kakitangan untuk mengedit — nama, nama pengguna atau pilih
 select_staff	Pilih kakitangan ini
 rights_help	Tindakan wang untuk orang ini — ketik untuk berbasikal: Dibenarkan → Memerlukan PIN bos → Tidak dibenarkan. Cetak bil sekali lagi adalah bil sahaja; bahagian adalah senarai semak di bawah.
-own_item_name	Gunakan ini sebagai nama item menu anda sendiri
+own_item_name	Gunakan ini sebagai nama item anda sendiri
 on_your_menu	Dalam katalog
 edit	Sunting
 schemes	Skim / tawaran
@@ -889,7 +889,7 @@ unpriced_note	Item {n} pada item anda belum mempunyai harga lagi — ia mengebil
 show_unpriced	Tunjukkan hanya item tanpa harga
 show_all_dishes	Tunjukkan semua item
 role_title_rest_ph	Tajuk peranan (cth. Kapten)
-preset_help_rest	Juruwang: jual. Pengurus: jual + item menu + batal/pinda.
+preset_help_rest	Juruwang: jual. Pengurus: jual + item + batal/pinda.
 kind_resale	Dibeli untuk dijual
 kind_dish	Jangan kira stok
 buy_unit_ph	Unit (kg, liter, pcs)
