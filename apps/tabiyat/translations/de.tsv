@@ -588,7 +588,7 @@ currency_use_help	Scrollen und für jede unterstützte Währung Verwenden tippen
 day_close_help	Das Buchen eines Tagesabschlusses speichert diese Übersicht (und Ladendifferenz, falls gezählt) im Audit-Log. Es stoppt den Verkauf nicht.
 expenses_word	Ausgaben
 feature_access_help	Funktionszugriff für gewähltes Personal (nach Hinzufügen tippen)
-fresh_book_tabiyat	Fresh = leerer Katalog (Artikel später hinzufügen). Book = Anfangsbestand und wer Ihnen etwas schuldet unten eintragen.
+fresh_book_tabiyat	Neu = leerer Katalog (Artikel später hinzufügen). Buch = Anfangsbestand und wer Ihnen etwas schuldet unten eintragen.
 fresh_selected	Fresh gewählt – Katalog bleibt leer. Tippen Sie auf Done, wenn Sie bereit sind.
 gross_word	Brutto
 how_start	Wie möchten Sie beginnen?

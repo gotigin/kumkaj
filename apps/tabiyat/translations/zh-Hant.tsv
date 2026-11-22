@@ -589,7 +589,7 @@ currency_use_help	滾動併為任何支持的貨幣點擊使用。
 day_close_help	記錄日結會將此彙總（及盤點差異）保存到審計日誌。不會停止銷售。
 expenses_word	費用
 feature_access_help	所選員工的功能權限（添加後點擊）
-fresh_book_tabiyat	新鮮 = 空目錄（稍後新增項目）。 Book = 在下面輸入期初庫存以及誰欠您的錢。
+fresh_book_tabiyat	新鮮 = 空目錄（稍後新增項目）。 帳簿 = 在下面輸入期初庫存以及誰欠您的錢。
 fresh_selected	已選Fresh — 目錄保持為空。準備好後點擊Done。
 gross_word	毛額
 how_start	您想如何開始？
