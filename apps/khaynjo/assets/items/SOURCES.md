@@ -628,3 +628,9 @@ need the author and licence named.
 ## L14 fast-food pass5 2026-11-22T15:01:09Z
 - fast-food/grilled-chicken-sandwich.webp ← Commons File:Chicken_sandwich.jpg (CC BY-SA 3.0) https://commons.wikimedia.org/wiki/File:Chicken_sandwich.jpg — was Café Coffee Day branded plate/napkin
 - fast-food/paneer-burger.webp ← crop remove "The Honeyed Tale" branded bottle from prior asset
+
+## Replaced 2026-11-22 (after the shelf lanes)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `snacks/kothimbir-vadi.webp` | pastry rolls with a spinach filling, not the steamed-then-fried coriander and gram-flour cake | Kothimbir Wadi 1 | Hrishikesh | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Kothimbir_Wadi_1.jpg | resized, WebP |
