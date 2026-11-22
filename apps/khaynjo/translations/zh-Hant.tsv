@@ -703,7 +703,7 @@ printers_find_tip	“查找”會掃描本機並更新列表。系統打印機�
 printers_pool_heading	1. 您的打印機
 printers_pool_tip	“查找”會掃描本機並更新列表。
 printers_pool_empty	(暫無 — 請在下方添加)
-printers_routes_help	選擇地點，再選擇打印機。勾選名稱 (KOT)、(Standard Portrait) 或 (Standard Landscape)。↑↓ 順序（第一個最高）。取消勾選即可移除。完成後點 Done。
+printers_routes_help	找出作業系統已認識的印表機。在「帳單與 KOT 格式」中將它們指定給帳單和各個廚房。
 printer_assign_dd	為 {place} 選擇打印機
 printer_assign_pick	選擇真實打印機
 printer_profile_heading	版式

@@ -703,7 +703,7 @@ printers_find_tip	検索はこの端末をスキャンして一覧を更新し�
 printers_pool_heading	1. お使いのプリンター
 printers_pool_tip	検索はこの端末をスキャンして一覧を更新します。
 printers_pool_empty	(まだありません — 下で追加)
-printers_routes_help	場所を選び、プリンターを選択。名前 (KOT)、(Standard Portrait)、(Standard Landscape) にチェック。↑↓ 順（先頭が最優先）。外すと削除。終わったら Done。
+printers_routes_help	オペレーティングシステムが既に認識しているプリンターを探します。「伝票＆KOT形式」で伝票と各厨房に割り当てます。
 printer_assign_dd	{place} のプリンターを選ぶ
 printer_assign_pick	実プリンターを選択
 printer_profile_heading	レイアウト

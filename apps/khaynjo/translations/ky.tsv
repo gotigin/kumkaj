@@ -2,7 +2,7 @@
 app_tagline	Ресторан заказдары, ашкана жана китепчелер. Акысыз оффлайн.
 unlock	Кулпуну ачуу
 pin_hint	Ээси PIN 0000ден башталат
-sell	Ресторан заказы
+sell	Заказ
 buy	Сатып алуу
 books	Күн китеби
 books_help	Бүгүнкү эсептин корутундусу. Заказдар = келе жаткан буйрутмалар. Сатып алуу = сатып алуулар жана чыгашалар. Кардарлар жана жеткирүүчүлөр = кредиттик кардарлар жана жеткирүүчүлөр.
@@ -46,7 +46,7 @@ total	Бардыгы
 cash	Накталай акча
 upi	UPI
 card	Карта
-credit	Кардарлар жана камсыздоочулар
+credit	Тараптар
 clear	Таза
 ready_to_sell	Каттоого даяр
 today_prefix	Бүгүн
@@ -109,7 +109,7 @@ bill_line_customer	Кардар
 bill_line_bill_no	Эсеп №
 bill_line_time	Убакыт
 bill_line_cashier	Кассир
-bill_line_table	Тамактануучу стол
+bill_line_table	Стол
 bill_line_items	Товарлар
 bill_line_total	Бардыгы
 bill_line_footer	Колонтитул
@@ -255,7 +255,7 @@ amounts_show	Көрсөтүү
 counter	Прилавок
 dine_in	Тамактануу
 takeaway	Алып кетүү
-order	Ресторан заказы
+order	Заказ
 tables	Тамактануучу столдор
 kitchen	Ашкана
 sales	Сатуу
@@ -929,7 +929,7 @@ duress_off	Шашылыш кулпуну ачуу PIN өчүк
 duress_saved	Шашылыш кулпуну ачуу PIN сакталды
 duress_cleared	Шашылыш кулпуну ачуу PIN өчүрүлдү
 upi_amount_ph	UPI сумма
-void	Жарамсыз сатуу
+void	Жокко чыгар
 write_off_ap	AP өчүрүү
 write_off_heading	Четтетүү (төлөмсүз тазалоо)
 write_off_nil	Жоюу/нөл баланс
@@ -1132,7 +1132,7 @@ tile_undo_bill	Конок эсебин жокко чыгаруу
 summary_busy	ашкана үстөлдөрү бош эмес
 summary_to_collect	чогултуу
 summary_on_floor	ашканада
-floor	Ашкана
+floor	Зал
 sizes_as_items_ph	Өлчөмдөрү өзүнчө меню пункттары катары (милдеттүү эмес) — Half=120, Full=200
 dish_group_ph	Тамак-аш тобу (милдеттүү эмес) — мис. Панир Тикка
 discount	Арзандатуу
@@ -1162,11 +1162,11 @@ line_sent_state	Ашканага жиберилди
 line_nc_state	Кошумча (NC) — төлөнбөйт
 cancel_item_short	Жокко чыгаруу
 nc_short	NC
-charge_again_short	Заряддоо
+charge_again_short	Акы ал
 move_short	Жылдыруу
 cancel_item_title	Менюнун бул пунктун жокко чыгаруу — ашкана жокко чыгаруу слипин алат
 nc_item_title	Менюнун бул пунктун акысыз кылуу (NC)
-charge_again_title	Бул меню пунктун кайра заряддаңыз
+charge_again_title	Бул позицияны кайра эсептеңиз
 move_item_title	Бул меню пунктун башка ашкана үстөлүнө жылдырыңыз
 already_cooked	Бышырылган (ысырап)
 not_cooked_yet	Бышыра элек
@@ -1232,7 +1232,7 @@ kot_show_waiter	Официант
 kot_hide_waiter	Официантты жашыр
 kot_show_station	Станция
 kot_hide_station	Станцияны жашыруу
-kot_show_table	Тамактануучу стол
+kot_show_table	Стол
 kot_hide_table	Тамактануучу үстөлдү жашыруу
 kot_show_kot_no	KOT №
 kot_hide_kot_no	Жашыруу KOT Жок

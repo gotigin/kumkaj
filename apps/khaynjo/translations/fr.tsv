@@ -46,7 +46,7 @@ total	Total
 cash	Espèces
 upi	UPI
 card	Carte
-credit	Parties
+credit	Tiers
 clear	Effacer
 ready_to_sell	Prêt à expédier
 today_prefix	Aujourd'hui
@@ -703,7 +703,7 @@ printers_find_tip	Rechercher analyse cet appareil et tient la liste à jour. Imp
 printers_pool_heading	1. Vos imprimantes
 printers_pool_tip	Rechercher analyse cet appareil et tient la liste à jour.
 printers_pool_empty	(aucune encore — ajoutez ci-dessous)
-printers_routes_help	Choisissez un lieu, puis Sélectionner l'imprimante. Cochez Nom (KOT), (Standard Portrait) ou (Standard Landscape). ↑↓ ordre (le premier est prioritaire). Décochez pour retirer. Appuyez sur Done.
+printers_routes_help	Trouvez les imprimantes que le système d’exploitation connaît déjà. Assignez-les à l’addition et à chaque cuisine sous Format addition et KOT.
 printer_assign_dd	Choisir l'imprimante pour {place}
 printer_assign_pick	Sélectionner l'imprimante réelle
 printer_profile_heading	Mise en page

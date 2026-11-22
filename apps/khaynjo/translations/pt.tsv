@@ -703,7 +703,7 @@ printers_find_tip	Procurar analisa este dispositivo e mantém a lista atualizada
 printers_pool_heading	1. As suas impressoras
 printers_pool_tip	Procurar analisa este dispositivo e mantém a lista atualizada.
 printers_pool_empty	(nenhuma ainda — adicione abaixo)
-printers_routes_help	Escolha um local e depois Selecionar impressora. Marque Nome (KOT), (Standard Portrait) ou (Standard Landscape). ↑↓ ordem (o primeiro é prioridade). Desmarque para remover. Toque Done.
+printers_routes_help	Encontre as impressoras que o sistema operativo já conhece. Atribua-as à conta e a cada cozinha em Formato de conta e KOT.
 printer_assign_dd	Escolher impressora para {place}
 printer_assign_pick	Selecionar impressora real
 printer_profile_heading	Planta

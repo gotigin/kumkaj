@@ -589,12 +589,12 @@ reason_amend_ph	Motivo de modificación / anulación / reembolso
 reason_note_ph	Motivo / nota (merma, conteo, …)
 record_day_close	Registrar cierre del día
 business_day	¿Cuándo se reinicia «Hoy»?
-business_day_help	Con «Hasta el cierre del día», «Libro del día» sigue abierto pasada la medianoche hasta que registre el cierre del día. Con «Medianoche del calendario», el día se corta a las 12:00 a. m., hora local.
+business_day_help	Con «Hasta el cierre del día», «Libro del día» sigue abierto pasada la medianoche hasta que registre el cierre del día. Con «Medianoche del calendario», el día se corta a las 00:00, hora local.
 biz_day_until_close	Hasta el cierre del día
 biz_day_midnight	Medianoche del calendario
 business_day_saved	Día de trabajo guardado
 report_day_lens	Ver «Hoy» como
-report_day_lens_help	Solo cambia la vista: no cambia cuándo «Cierre del día» reinicia «Hoy». «Por cierre del día» sigue el último cierre del día; «Por medianoche» corta a las 12:00 a. m., hora local.
+report_day_lens_help	Solo cambia la vista: no cambia cuándo «Cierre del día» reinicia «Hoy». «Por cierre del día» sigue el último cierre del día; «Por medianoche» corta a las 00:00, hora local.
 report_lens_day_close	Por cierre del día
 report_lens_midnight	Por medianoche
 refresh_from_shop	Actualizar desde la tienda
@@ -703,7 +703,7 @@ printers_find_tip	Buscar escanea este dispositivo y mantiene la lista al día. P
 printers_pool_heading	1. Sus impresoras
 printers_pool_tip	Buscar escanea este dispositivo y mantiene la lista al día.
 printers_pool_empty	(ninguna aún — añada abajo)
-printers_routes_help	Elija un lugar, luego Seleccionar impresora. Marque Nombre (KOT), (Standard Portrait) o (Standard Landscape). ↑↓ orden (el primero es mayor). Desmarque para quitar. Toque Done al terminar.
+printers_routes_help	Encuentre las impresoras que el sistema operativo ya conoce. Asígnelas a la cuenta y a cada cocina en Formato de cuenta y KOT.
 printer_assign_dd	Elegir impresora para {place}
 printer_assign_pick	Seleccionar impresora real
 printer_profile_heading	Diseño

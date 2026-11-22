@@ -2,7 +2,7 @@
 app_tagline	Mga order sa restaurant, kusina at ledger. Libreng offline.
 unlock	I-unlock
 pin_hint	Ang may-ari PIN ay nagsisimula bilang 0000
-sell	Order ng restaurant
+sell	Order
 buy	Bumili
 books	Day ledger
 books_help	Buod ng account ngayon. Mga order = mga order na pumapasok. Bumili = mga pagbili at gastos. Mga customer at supplier = mga customer at supplier ng credit.
@@ -46,7 +46,7 @@ total	Kabuuan
 cash	Cash
 upi	UPI
 card	Kard
-credit	Mga customer at supplier
+credit	Mga partido
 clear	Maaliwalas
 ready_to_sell	Handa na sa ledger
 today_prefix	Ngayong araw
@@ -109,7 +109,7 @@ bill_line_customer	Kostumer
 bill_line_bill_no	Blg. ng bill
 bill_line_time	Oras
 bill_line_cashier	Kahera
-bill_line_table	Dining table
+bill_line_table	Mesa
 bill_line_items	Mga item
 bill_line_total	Kabuuan
 bill_line_footer	Footer
@@ -189,7 +189,7 @@ settings_sec_pickers	Mga lugar · istasyon · mga rate ng buwis
 settings_sec_printers	Mga Printer
 settings_sec_bill	Bill at KOT na format
 settings_sec_selling	Mga scheme at benta
-bill_kot_tab_bill	Bill
+bill_kot_tab_bill	Resibo
 bill_kot_tab_kot	KOT
 settings_sec_alerts	Mga alerto
 alerts_help	Gaano katagal nananatili ang mga status message sa screen para sa iyo (pag-login na ito).
@@ -255,7 +255,7 @@ amounts_show	Ipakita
 counter	Counter
 dine_in	Kain sa loob
 takeaway	Dala-uwi
-order	Order ng restaurant
+order	Order
 tables	Mga hapag kainan
 kitchen	Kusina
 sales	Benta
@@ -307,7 +307,7 @@ kot_cancelled	KINANSELA
 kot_start_btn	Magsimula
 kot_mark_ready	Handa na si Mark
 kot_done_btn	Tapos na
-table_free	Vacant — i-tap para magsimula ng order
+table_free	Bakante — i-tap para magsimula ng order
 start_order	Simulan ang order
 open_bill	Buksan ang bill
 collect_payment	Kolektahin ang bayad
@@ -589,12 +589,12 @@ reason_amend_ph	Dahilan para baguhin / walang bisa / refund
 reason_note_ph	Dahilan / tala (pag-aaksaya, bilang,…)
 record_day_close	I-save ang araw malapit
 business_day	Kailan nagsisimulang muli ang «Ngayong araw»?
-business_day_help	Sa «Hanggang pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi hanggang i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 12:00 am lokal na oras.
+business_day_help	Sa «Hanggang pagsasara ng araw», tuloy ang «Day ledger» lampas hatinggabi hanggang i-record mo ang pagsasara ng araw. Sa «Hatinggabi sa kalendaryo», napuputol ang araw sa 00:00 lokal na oras.
 biz_day_until_close	Hanggang pagsasara ng araw
 biz_day_midnight	Hatinggabi sa kalendaryo
 business_day_saved	Na-save ang araw ng negosyo
 report_day_lens	Tingnan ang «Ngayong araw» bilang
-report_day_lens_help	Pagtingin lang — hindi nito binabago kung kailan sinisimulang muli ng «Pagsasara ng araw» ang «Ngayong araw». Sinusundan ng «Ayon sa pagsasara ng araw» ang huling pagsasara ng araw; pumuputol ang «Ayon sa hatinggabi» sa 12:00 am lokal na oras.
+report_day_lens_help	Pagtingin lang — hindi nito binabago kung kailan sinisimulang muli ng «Pagsasara ng araw» ang «Ngayong araw». Sinusundan ng «Ayon sa pagsasara ng araw» ang huling pagsasara ng araw; pumuputol ang «Ayon sa hatinggabi» sa 00:00 lokal na oras.
 report_lens_day_close	Ayon sa pagsasara ng araw
 report_lens_midnight	Ayon sa hatinggabi
 refresh_from_shop	I-refresh mula sa tindahan
@@ -789,7 +789,7 @@ printer_format_custom_added	Idinagdag ang custom na profile para sa lugar na ito
 add_printer	Magdagdag ng printer
 remove_printer	Alisin
 route_pick_ph	Bill o isang istasyon ng kusina
-route_bill	Bill
+route_bill	Resibo
 route_default_kitchen	Walang istasyon (hindi nakatalagang mga pagkain)
 route_kot_station	Kusina
 route_dont_print	Walang printer
@@ -929,7 +929,7 @@ duress_off	Naka-off ang emergency unlock PIN
 duress_saved	Na-save ang emergency unlock PIN
 duress_cleared	Naka-off ang emergency unlock PIN
 upi_amount_ph	UPI halaga
-void	Walang bisa sa pagbebenta
+void	Kanselahin
 write_off_ap	Isulat ang AP
 write_off_heading	I-write off (i-clear nang walang bayad)
 write_off_nil	Isulat / walang balanse
@@ -1119,12 +1119,12 @@ add_a_table	Magdagdag ng hapag kainan
 add_station_heading	Magdagdag ng istasyon ng kusina
 categories_help	I-tap ang Gamitin upang i-file ang menu item sa itaas sa ilalim ng kategoryang iyon. Ang larawan ay nagbibigay sa kategorya ng isang larawan; kung walang isa ay ipinapakita nito ang mga inisyal nito.
 dish_search_ph	Pangalan ng item sa menu ng menu — hanapin ang aming mga pagkain o i-type ang iyong sarili
-tile_free	bakante
+tile_free	Bakante
 tile_occupied	Okupado
 tile_food_ready	Handa na ang pagkain
 tile_bill_printed	Naka-print ang bill
 tile_paid	Binayaran
-tile_bill_btn	Bill
+tile_bill_btn	Resibo
 tile_occupy_btn	Paupuin ang mga bisita
 tile_free_btn	Iwanan ang hapag kainan
 tile_ready_btn	Iwanan ang hapag kainan
@@ -1132,7 +1132,7 @@ tile_undo_bill	I-undo ang bill
 summary_busy	abala ang mga hapag kainan
 summary_to_collect	upang mangolekta
 summary_on_floor	sa dining hall
-floor	Dining hall
+floor	Bulwagan
 sizes_as_items_ph	Mga laki bilang hiwalay na mga item sa menu (opsyonal) — Kalahati=120, Buo=200
 dish_group_ph	Pangkat ng ulam (opsyonal) — hal. Paneer Tikka
 discount	diskwento
@@ -1162,7 +1162,7 @@ line_sent_state	Ipinadala sa kusina
 line_nc_state	Komplimentaryo (NC) — hindi sinisingil
 cancel_item_short	Kanselahin
 nc_short	Walang bayad
-charge_again_short	singilin
+charge_again_short	Singilin
 move_short	Ilipat
 cancel_item_title	Kanselahin ang menu item na ito — ang kusina ay makakakuha ng cancel slip
 nc_item_title	Gawing komplimentaryo (NC) ang item sa menu na ito
@@ -1232,7 +1232,7 @@ kot_show_waiter	Tagasilbi
 kot_hide_waiter	Itago ang waiter
 kot_show_station	Istasyon
 kot_hide_station	Itago ang istasyon
-kot_show_table	Dining table
+kot_show_table	Mesa
 kot_hide_table	Itago ang hapag kainan
 kot_show_kot_no	Blg. ng KOT
 kot_hide_kot_no	Itago ang KOT Hindi

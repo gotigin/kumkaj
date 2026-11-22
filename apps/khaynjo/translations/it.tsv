@@ -703,7 +703,7 @@ printers_find_tip	Trova analizza questo dispositivo e tiene l'elenco aggiornato.
 printers_pool_heading	1. Le tue stampanti
 printers_pool_tip	Trova analizza questo dispositivo e tiene l'elenco aggiornato.
 printers_pool_empty	(nessuna ancora — aggiungi sotto)
-printers_routes_help	Scegli un posto, poi Seleziona stampante. Spunta Nome (KOT), (Standard Portrait) o (Standard Landscape). ↑↓ ordine (il primo è massimo). Togli per rimuovere. Poi Done.
+printers_routes_help	Trova le stampanti che il sistema operativo già conosce. Assegnale al conto e a ogni cucina in Formato conto e KOT.
 printer_assign_dd	Scegli stampante per {place}
 printer_assign_pick	Seleziona stampante reale
 printer_profile_heading	Pianta

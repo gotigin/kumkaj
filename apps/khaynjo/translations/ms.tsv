@@ -2,7 +2,7 @@
 app_tagline	Pesanan restoran, dapur & lejar. Percuma di luar talian.
 unlock	Buka kunci
 pin_hint	Pemilik PIN bermula sebagai 0000
-sell	Pesanan restoran
+sell	Pesanan
 buy	Beli
 books	Lejar hari
 books_help	Ringkasan akaun hari ini. Pesanan = pesanan masuk. Beli = pembelian dan perbelanjaan. Pelanggan dan pembekal = pelanggan dan pembekal kredit.
@@ -46,7 +46,7 @@ total	Jumlah
 cash	Tunai
 upi	UPI
 card	Kad
-credit	Pelanggan dan pembekal
+credit	Pihak
 clear	Jelas
 ready_to_sell	Sedia untuk lejar
 today_prefix	Hari ini
@@ -109,7 +109,7 @@ bill_line_customer	Pelanggan
 bill_line_bill_no	No. bil
 bill_line_time	Masa
 bill_line_cashier	Juruwang
-bill_line_table	Meja makan
+bill_line_table	Meja
 bill_line_items	Item
 bill_line_total	Jumlah
 bill_line_footer	Pengaki
@@ -255,7 +255,7 @@ amounts_show	Tunjukkan
 counter	Kaunter
 dine_in	Makan dalam
 takeaway	Bawa pulang
-order	Pesanan restoran
+order	Pesanan
 tables	Meja makan
 kitchen	Dapur
 sales	Jualan
@@ -929,7 +929,7 @@ duress_off	Buka kunci kecemasan PIN dimatikan
 duress_saved	Buka kunci kecemasan PIN disimpan
 duress_cleared	Buka kunci kecemasan PIN dimatikan
 upi_amount_ph	UPI jumlah
-void	Jualan batal
+void	Batal
 write_off_ap	Hapus AP
 write_off_heading	Hapus kira (jelas tanpa bayaran)
 write_off_nil	Hapus kira / tiada baki
@@ -1119,7 +1119,7 @@ add_a_table	Tambah meja makan
 add_station_heading	Tambah stesen dapur
 categories_help	Ketik Gunakan untuk memfailkan item menu di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
 dish_search_ph	Nama item menu — cari hidangan kami atau taip hidangan anda sendiri
-tile_free	kosong
+tile_free	Kosong
 tile_occupied	diduduki
 tile_food_ready	Makanan siap
 tile_bill_printed	Bil dicetak
@@ -1162,7 +1162,7 @@ line_sent_state	Dihantar ke dapur
 line_nc_state	Percuma (NC) — tidak dicaj
 cancel_item_short	Batal
 nc_short	Tiada caj
-charge_again_short	caj
+charge_again_short	Caj
 move_short	Bergerak
 cancel_item_title	Batalkan item menu ini — dapur mendapat slip pembatalan
 nc_item_title	Jadikan item menu ini percuma (NC)
@@ -1232,7 +1232,7 @@ kot_show_waiter	pelayan
 kot_hide_waiter	Sembunyikan pelayan
 kot_show_station	Stesen
 kot_hide_station	Sembunyikan stesen
-kot_show_table	Meja makan
+kot_show_table	Meja
 kot_hide_table	Sorok meja makan
 kot_show_kot_no	No. KOT
 kot_hide_kot_no	Sembunyikan KOT No

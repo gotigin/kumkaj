@@ -703,7 +703,7 @@ printers_find_tip	Bul bu cihazı tarar ve listeyi güncel tutar. Önce sistem ya
 printers_pool_heading	1. Yazıcılarınız
 printers_pool_tip	Bul bu cihazı tarar ve listeyi güncel tutar.
 printers_pool_empty	(henüz yok — aşağıya ekleyin)
-printers_routes_help	Bir yer seçin, sonra Yazıcı seçin. Ad (KOT), (Standard Portrait) veya (Standard Landscape) işaretleyin. ↑↓ sıra (ilk en yüksek). Kaldırmak için işareti kaldırın. Bitince Done.
+printers_routes_help	İşletim sisteminin zaten bildiği yazıcıları bulun. Bunları Hesap ve KOT biçimi altında hesaba ve her mutfağa atayın.
 printer_assign_dd	{place} için yazıcı seç
 printer_assign_pick	Gerçek yazıcı seç
 printer_profile_heading	Yerleşim

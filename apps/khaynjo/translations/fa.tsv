@@ -307,7 +307,7 @@ kot_cancelled	لغو
 kot_start_btn	شروع
 kot_mark_ready	آماده علامت بزن
 kot_done_btn	انجام شد
-table_free	آزاد — برای شروع سفارش بزنید
+table_free	خالی — برای شروع سفارش بزنید
 start_order	شروع سفارش
 open_bill	باز کردن صورتحساب
 collect_payment	گرفتن پرداخت
@@ -1119,7 +1119,7 @@ add_a_table	افزودن یک میز
 add_station_heading	افزودن ایستگاه آشپزخانه
 categories_help	استفاده را بزنید تا کالای بالا زیر آن دسته برود. عکس به دسته تصویر می‌دهد؛ بدون آن حرف‌های اول دیده می‌شود.
 dish_search_ph	نام کالا — در غذاهای ما جستجو کنید یا مال خودتان را بنویسید
-tile_free	آزاد
+tile_free	خالی
 tile_occupied	اشغال
 tile_food_ready	غذا آماده
 tile_bill_printed	صورتحساب چاپ شد

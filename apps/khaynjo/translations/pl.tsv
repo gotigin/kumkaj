@@ -31,7 +31,7 @@ items	Menu i pozycje
 nav_items	Menu
 more	Więcej
 your_items	Twoje menu
-items_help	Kliknij pozycję, aby go edytować. Nowa pozycja czyści formularz. Przeszukaj nasze dania lub wpisz własne imię i zdjęcie, ustal cenę (0 jest w porządku), a następnie Dodaj. Sprzedaż już zarejestrowana zachowuje nazwisko, za które została obciążona.
+items_help	Kliknij pozycję, aby ją edytować. Nowa pozycja czyści formularz. Przeszukaj nasze dania lub wpisz własną nazwę i zdjęcie, ustal cenę (0 jest w porządku), a następnie Dodaj. Sprzedaż już zarejestrowana zachowuje nazwę, z którą została obciążona.
 add_item	Dodaj pozycję
 new_item	Nowy przedmiot
 adding_item	Dodawanie nowej pozycji
@@ -109,7 +109,7 @@ bill_line_customer	Klient
 bill_line_bill_no	Nr rachunku
 bill_line_time	Czas
 bill_line_cashier	Kasjer
-bill_line_table	Stół jadalny
+bill_line_table	Stół
 bill_line_items	Przedmioty
 bill_line_total	Razem
 bill_line_footer	Stopka
@@ -598,7 +598,7 @@ report_day_lens_help	Tylko widok — nie zmienia tego, kiedy «Zamknięcie dnia�
 report_lens_day_close	Wg zamknięcia dnia
 report_lens_midnight	Wg północy
 refresh_from_shop	Odśwież ze sklepu
-refund	Zwrot pieniędzy
+refund	Zwrot
 remove_selected	Usuń wybrane
 request_bill	Poproś o rachunek
 restaurant_name_ph	Nazwa restauracji (opcjonalnie)
@@ -703,7 +703,7 @@ printers_find_tip	Znajdź skanuje to urządzenie i aktualizuje listę.
 printers_pool_heading	Drukarki
 printers_pool_tip	Funkcja Znajdź skanuje to urządzenie i aktualizuje tę listę.
 printers_pool_empty	(jeszcze żaden — kliknij Znajdź)
-printers_routes_help	Znajdź drukarki, które system operacyjny już zna. Przypisz je do rachunku i do każdej kuchni w formacie Bill & KOT.
+printers_routes_help	Znajdź drukarki, które system operacyjny już zna. Przypisz je do rachunku i do każdej kuchni w formacie Rachunek i KOT.
 printer_assign_dd	Prawdziwa drukarka: {place}
 printer_assign_pick	Wybierz prawdziwą drukarkę
 printer_profile_heading	Układ
@@ -929,7 +929,7 @@ duress_off	Odblokowanie awaryjne PIN jest wyłączone
 duress_saved	Odblokowanie awaryjne PIN zapisane
 duress_cleared	Odblokowanie awaryjne PIN wyłączone
 upi_amount_ph	UPI ilość
-void	Nieważna sprzedaż
+void	Anuluj
 write_off_ap	Odpisz AP
 write_off_heading	Odpisz (wyczyść bez płatności)
 write_off_nil	Odpisz / saldo zerowe
@@ -1162,11 +1162,11 @@ line_sent_state	Wysłano do kuchni
 line_nc_state	Bezpłatnie (NC) — nie jest pobierana opłata
 cancel_item_short	Anuluj
 nc_short	Gratis
-charge_again_short	Ładuj
+charge_again_short	Nalicz
 move_short	Rusz się
 cancel_item_title	Anuluj tę pozycję — kuchnia otrzyma dokument anulowania
 nc_item_title	Spraw, aby ten przedmiot był bezpłatny (NC)
-charge_again_title	Naładuj ten przedmiot ponownie
+charge_again_title	Nalicz tę pozycję ponownie
 move_item_title	Przenieś ten przedmiot na inny stół w jadalni
 already_cooked	Już ugotowane (marnotrawstwo)
 not_cooked_yet	Jeszcze nie ugotowane
@@ -1232,7 +1232,7 @@ kot_show_waiter	Kelner
 kot_hide_waiter	Ukryj kelnera
 kot_show_station	Stacja
 kot_hide_station	Ukryj stację
-kot_show_table	Stół jadalny
+kot_show_table	Stół
 kot_hide_table	Ukryj stół jadalny
 kot_show_kot_no	Nr KOT
 kot_hide_kot_no	Ukryj KOT Nie

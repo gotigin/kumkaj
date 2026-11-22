@@ -252,7 +252,7 @@ sidebar_order_saved	Ordni tal-Istrixxa tal-ġenb salvata
 sidebar_visibility_saved	Viżibilità tal-istrixxa tal-ġenb salvata
 amounts_hide	Aħbi
 amounts_show	Uri
-counter	Counter
+counter	Bank tal-bejgħ
 dine_in	Ikla ġewwa
 takeaway	Ħu ma' Ħdejk
 order	Ordni
@@ -307,7 +307,7 @@ kot_cancelled	IKKANĊELLATA
 kot_start_btn	Ibda
 kot_mark_ready	Immarka lest
 kot_done_btn	Magħmul
-table_free	Ħieles — tektek biex tibda ordni
+table_free	Vojta — tektek biex tibda ordni
 start_order	Ibda l-ordni
 open_bill	Kont miftuħa
 collect_payment	Iġbor il-ħlas
@@ -1166,7 +1166,7 @@ charge_again_short	Ħlas
 move_short	Nimxu
 cancel_item_title	Ikkanċella dan l-oġġett — il-kċina tirċievi slip tal-kanċellament
 nc_item_title	Agħmel dan l-oġġett kumplimentari (NC)
-charge_again_title	Iċċarġja dan l-oġġett mill-ġdid
+charge_again_title	Erġa' iħallas dan l-oġġett
 move_item_title	Mexxi dan l-oġġett għal mejda oħra
 already_cooked	Diġà imsajjar (ħela)
 not_cooked_yet	Għadu mhux imsajjar

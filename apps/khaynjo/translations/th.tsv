@@ -703,7 +703,7 @@ printers_find_tip	ค้นหาจะสแกนอุปกรณ์นี�
 printers_pool_heading	1. เครื่องพิมพ์ของคุณ
 printers_pool_tip	ค้นหาจะสแกนอุปกรณ์นี้และอัปเดตรายการ
 printers_pool_empty	(ยังไม่มี — เพิ่มด้านล่าง)
-printers_routes_help	เลือกสถานที่ แล้วเลือกเครื่องพิมพ์ ติ๊กชื่อ (KOT), (Standard Portrait) หรือ (Standard Landscape) ↑↓ ลำดับ (อันแรกสูงสุด) เอาติ๊กออกเพื่อลบ เสร็จแล้ว Done
+printers_routes_help	ค้นหาเครื่องพิมพ์ที่ระบบปฏิบัติการรู้จักอยู่แล้ว กำหนดให้กับบิลและแต่ละครัวภายใต้รูปแบบบิลและ KOT
 printer_assign_dd	เลือกเครื่องพิมพ์สำหรับ {place}
 printer_assign_pick	เลือกเครื่องพิมพ์จริง
 printer_profile_heading	เลย์เอาต์

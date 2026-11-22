@@ -101,7 +101,7 @@ bill_item_col_sep	Spaltlinien
 slip_columns	Spalten
 slip_col_header	Kopf
 bill_line_logo	Logo
-bill_line_shop	Shop
+bill_line_shop	Laden
 bill_line_address	Adresse
 bill_line_fssai	FSSAI
 bill_line_title	Titel
@@ -633,7 +633,7 @@ server_ip_ph	Server-IP (z. B. 192.168.1.10)
 set_credit_limit	Kreditlimit setzen
 set_login_selected	Login für Auswahl setzen
 set_login_named	Login für {name} setzen
-shop	Shop
+shop	Laden
 show	Anzeigen
 spreadsheet_csv	Tabelle (CSV)
 start_fresh	Neu anfangen
@@ -703,7 +703,7 @@ printers_find_tip	Suchen scannt dieses Gerät und hält die Liste aktuell. Syste
 printers_pool_heading	1. Ihre Drucker
 printers_pool_tip	Suchen scannt dieses Gerät und hält die Liste aktuell.
 printers_pool_empty	(noch keine — unten hinzufügen)
-printers_routes_help	Ort wählen, dann Drucker wählen. Name (KOT), (Standard Portrait) oder (Standard Landscape) anhaken. ↑↓ Reihenfolge (erster = höchste). Abhaken zum Entfernen. Fertig mit Done.
+printers_routes_help	Finden Sie Drucker, die das Betriebssystem bereits kennt. Weisen Sie sie der Rechnung und jeder Küche unter Rechnung- & KOT-Format zu.
 printer_assign_dd	Drucker für {place} wählen
 printer_assign_pick	Echten Drucker wählen
 printer_profile_heading	Grundriss

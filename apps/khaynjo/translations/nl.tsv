@@ -703,7 +703,7 @@ printers_find_tip	Zoeken scant dit apparaat en houdt de lijst bij. Eerst systeem
 printers_pool_heading	1. Uw printers
 printers_pool_tip	Zoeken scant dit apparaat en houdt de lijst bij.
 printers_pool_empty	(nog geen — voeg hieronder toe)
-printers_routes_help	Kies een plek, daarna Printer kiezen. Vink Naam (KOT), (Standard Portrait) of (Standard Landscape) aan. ↑↓ volgorde (eerste is hoogst). Uitvinken om te verwijderen. Daarna Done.
+printers_routes_help	Zoek printers die het besturingssysteem al kent. Wijs ze toe aan de rekening en aan elke keuken onder Rekening- & KOT-opmaak.
 printer_assign_dd	Kies printer voor {place}
 printer_assign_pick	Echte printer kiezen
 printer_profile_heading	Indeling

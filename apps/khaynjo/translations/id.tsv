@@ -138,9 +138,9 @@ bill_meta_pair	Satu baris dengan
 bill_pair_alone	Sendiri
 bill_item_piece_on	Aktif
 bill_item_piece_off	Nonaktif
-bill_total_qty	Total qty
+bill_total_qty	Jumlah total
 bill_total_subtotal	Subtotal
-bill_total_grand	Grand total
+bill_total_grand	Total keseluruhan
 bill_total_number_under	Angka di bawah
 bill_total_caption_under	Label di bawah
 bill_total_own_line	Baris sendiri
@@ -598,7 +598,7 @@ report_day_lens_help	Hanya tampilan — tidak mengubah kapan «Tutup hari» memu
 report_lens_day_close	Menurut tutup hari
 report_lens_midnight	Menurut tengah malam
 refresh_from_shop	Segarkan dari toko
-refund	Refund
+refund	Pengembalian
 remove_selected	Hapus terpilih
 request_bill	Minta tagihan
 restaurant_name_ph	Nama restoran (opsional)
@@ -703,7 +703,7 @@ printers_find_tip	Temukan memindai perangkat ini dan menjaga daftar tetap mutakh
 printers_pool_heading	1. Printer Anda
 printers_pool_tip	Temukan memindai perangkat ini dan menjaga daftar tetap mutakhir.
 printers_pool_empty	(belum ada — tambah di bawah)
-printers_routes_help	Pilih tempat, lalu Pilih printer. Centang Nama (KOT), (Standard Portrait), atau (Standard Landscape). ↑↓ urutan (pertama tertinggi). Hapus centang untuk melepas. Ketuk Done.
+printers_routes_help	Temukan printer yang sudah dikenal sistem operasi. Tetapkan ke struk dan setiap dapur di bawah format Struk & KOT.
 printer_assign_dd	Pilih printer untuk {place}
 printer_assign_pick	Pilih printer nyata
 printer_profile_heading	Tata letak

@@ -589,12 +589,12 @@ reason_amend_ph	수정/취소/환불 사유
 reason_note_ph	사유 / 메모(폐기, 실사…)
 record_day_close	마감 기록
 business_day	«오늘» 화면은 언제 새로 시작하나요?
-business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 오전 12:00에 날짜가 바뀝니다.
+business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 00:00에 날짜가 바뀝니다.
 biz_day_until_close	마감할 때까지
 biz_day_midnight	달력 자정
 business_day_saved	영업일 설정을 저장했습니다
 report_day_lens	«오늘» 보기 기준
-report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 오전 12:00에 나눕니다.
+report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 00:00에 나눕니다.
 report_lens_day_close	마감 기준
 report_lens_midnight	자정 기준
 refresh_from_shop	매장에서 새로고침
@@ -703,7 +703,7 @@ printers_find_tip	찾기는 이 기기를 스캔하고 목록을 최신으로 �
 printers_pool_heading	1. 내 프린터
 printers_pool_tip	찾기는 이 기기를 스캔하고 목록을 최신으로 유지합니다.
 printers_pool_empty	(아직 없음 — 아래에서 추가)
-printers_routes_help	장소를 고른 뒤 프린터 선택. 이름 (KOT), (Standard Portrait) 또는 (Standard Landscape) 체크. ↑↓ 순서(첫 번째가 최고). 제거하려면 해제. 끝나면 Done.
+printers_routes_help	운영 체제가 이미 알고 있는 프린터를 찾으세요. 「영수증 및 KOT 형식」에서 영수증과 각 주방에 할당하세요.
 printer_assign_dd	{place} 프린터 선택
 printer_assign_pick	실제 프린터 선택
 printer_profile_heading	레이아웃

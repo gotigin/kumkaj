@@ -703,7 +703,7 @@ printers_find_tip	Tafuta huchanganua kifaa hiki na kuweka orodha ikisasishwa. Pr
 printers_pool_heading	1. Printa zako
 printers_pool_tip	Tafuta huchanganua kifaa hiki na kuweka orodha ikisasishwa.
 printers_pool_empty	(bado hakuna — ongeza hapa chini)
-printers_routes_help	Chagua mahali, kisha Chagua printa. Tiki Jina (KOT), (Standard Portrait) au (Standard Landscape). ↑↓ mpangilio (ya kwanza juu). Ondoa tiki kuondoa. Kisha Done.
+printers_routes_help	Tafuta printa ambazo mfumo wa uendeshaji tayari unazijua. Ziweke kwenye bili na jiko kila moja chini ya umbizo la Bili na KOT.
 printer_assign_dd	Chagua printa kwa {place}
 printer_assign_pick	Chagua printa halisi
 printer_profile_heading	Mpangilio
@@ -1132,7 +1132,7 @@ tile_undo_bill	Tendua bili
 summary_busy	meza zinatumika
 summary_to_collect	za kukusanya
 summary_on_floor	sakafuni
-floor	Sakafu
+floor	Ukumbi
 sizes_as_items_ph	Ukubwa kama bidhaa tofauti (hiari) — Nusu=120, Kamili=200
 dish_group_ph	Kundi la chakula (hiari) — mf. Paneer Tikka
 discount	Punguzo

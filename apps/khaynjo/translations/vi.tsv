@@ -703,7 +703,7 @@ printers_find_tip	Tìm quét thiết bị này và giữ danh sách cập nhật
 printers_pool_heading	1. Máy in của bạn
 printers_pool_tip	Tìm quét thiết bị này và giữ danh sách cập nhật.
 printers_pool_empty	(chưa có — thêm bên dưới)
-printers_routes_help	Chọn nơi, rồi Chọn máy in. Đánh dấu Tên (KOT), (Standard Portrait) hoặc (Standard Landscape). ↑↓ thứ tự (đầu tiên cao nhất). Bỏ dấu để gỡ. Xong thì Done.
+printers_routes_help	Tìm máy in mà hệ điều hành đã biết. Gán chúng cho hóa đơn và từng bếp trong Định dạng hóa đơn & KOT.
 printer_assign_dd	Chọn máy in cho {place}
 printer_assign_pick	Chọn máy in thật
 printer_profile_heading	Bố cục
@@ -1421,7 +1421,7 @@ stock_empty	Chưa có hàng tồn — những gì ghi ở Mua sẽ hiện ở đ
 recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
-money_lane_bill	Bill: {lane}
+money_lane_bill	Hóa đơn: {lane}
 sel_copy	Sao chép
 sel_select_all	Chọn tất cả
 sel_copied	Đã sao chép
