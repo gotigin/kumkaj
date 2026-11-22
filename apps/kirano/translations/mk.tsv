@@ -116,7 +116,7 @@ settings_sec_selling	Шеми и продажба
 settings_sec_alerts	Известувања
 alerts_help	Колку долго пораките за статус остануваат на екранот за вас (ова најавување).
 snack_secs_ph	Секунди (3–60, стандардно 10)
-snack_secs_save	Заштедете време за предупредување
+snack_secs_save	Зачувај време за предупредување
 snack_secs_saved	Зачувано време на предупредување — {n} секунди
 settings_sec_backup	Бекап и обновување
 settings_sec_diag	Дијагностика
@@ -379,14 +379,14 @@ history_off	Задржи
 history_day_close	На затворен ден
 history_after_hours	По часови
 history_hours_ph	Часови (1–168, стандардно 4)
-history_hours_save	Заштедете часови
+history_hours_save	Зачувај часови
 history_clear_now	Исчисти ја историјата сега
 history_hours_saved	Часовите во историјата се зачувани
 rollup	Збирен преглед
 save_brand	Зачувај бренд
 save_business_id	Зачувај бизнис ID
 save_features	Зачувај
-save_features_named	Заштедете {name}
+save_features_named	Зачувај {name}
 save_features_ok	Зачувано поставување за {name}
 save_names	Зачувај имиња
 second_way	Втор начин
@@ -725,7 +725,7 @@ dish_group_ph	Група за големина на пакување (опцио
 discount	Попуст
 remove_discount	Отстранете го попустот
 apply_discount	Примени попуст
-save_opening_cash	Заштедете готовина за отворање
+save_opening_cash	Зачувај готовина за отворање
 close_shift_print	Затворете го менувачот и отпечатете го листот
 discount_ph	10% или 50
 discount_reason_ph	Причина (на пр. редовен гостин, доцна храна)

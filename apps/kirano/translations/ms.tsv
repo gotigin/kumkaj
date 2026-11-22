@@ -116,7 +116,7 @@ settings_sec_selling	Skim & jualan
 settings_sec_alerts	Makluman
 alerts_help	Berapa lama mesej status kekal pada skrin untuk anda (log masuk ini).
 snack_secs_ph	Saat (3–60, lalai 10)
-snack_secs_save	Jimat masa makluman
+snack_secs_save	Simpan masa makluman
 snack_secs_saved	Masa makluman disimpan — {n} saat
 settings_sec_backup	Sandaran & pulihkan
 settings_sec_diag	Diagnostik
@@ -379,14 +379,14 @@ history_off	Simpan
 history_day_close	Pada hari tutup
 history_after_hours	Selepas berjam-jam
 history_hours_ph	Jam (1–168, lalai 4)
-history_hours_save	Jimat jam
+history_hours_save	Simpan jam
 history_clear_now	Kosongkan sejarah sekarang
 history_hours_saved	Jam sejarah disimpan
 rollup	Penggulungan ringkasan
-save_brand	Jimat jenama
+save_brand	Simpan jenama
 save_business_id	Simpan id perniagaan
 save_features	Simpan
-save_features_named	Jimat {name}
+save_features_named	Simpan {name}
 save_features_ok	Persediaan disimpan untuk {name}
 save_names	Simpan nama
 second_way	Cara kedua

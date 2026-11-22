@@ -116,7 +116,7 @@ settings_sec_selling	Skipur & sala
 settings_sec_alerts	Viðvaranir
 alerts_help	Hversu lengi stöðuskilaboð eru á skjánum fyrir þig (þessi innskráning).
 snack_secs_ph	Sekúndur (3–60, sjálfgefið 10)
-snack_secs_save	Sparaðu viðvörunartíma
+snack_secs_save	Vista viðvörunartíma
 snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
 settings_sec_backup	Afrita og endurheimta
 settings_sec_diag	Greining
@@ -379,14 +379,14 @@ history_off	Halda
 history_day_close	Á lokadegi
 history_after_hours	Eftir klst
 history_hours_ph	Klukkutímar (1–168, sjálfgefið 4)
-history_hours_save	Sparaðu tíma
+history_hours_save	Vista tíma
 history_clear_now	Hreinsaðu sögu núna
 history_hours_saved	Sagatímar vistaðir
 rollup	Samantekt
 save_brand	Vista vörumerki
 save_business_id	Vista viðskiptaauðkenni
 save_features	Vista
-save_features_named	Sparaðu {name}
+save_features_named	Vista {name}
 save_features_ok	Vistað uppsetning fyrir {name}
 save_names	Vista nöfn
 second_way	Önnur leið
@@ -725,7 +725,7 @@ dish_group_ph	Pakkningastærðarhópur (valfrjálst) — t.d. Að 1 kg / 5 kg
 discount	Afsláttur
 remove_discount	Fjarlægðu afslátt
 apply_discount	Sækja um afslátt
-save_opening_cash	Sparaðu opnunarfé
+save_opening_cash	Vista opnunarfé
 close_shift_print	Lokaðu vaktinni og prentaðu miðann
 discount_ph	10% eða 50
 discount_reason_ph	Ástæða (t.d. venjulegur gestur, seinn matur)

@@ -116,7 +116,7 @@ settings_sec_selling	Schematy i sprzedaż
 settings_sec_alerts	Alerty
 alerts_help	Jak długo komunikaty o statusie pozostają na ekranie (w tym logowaniu).
 snack_secs_ph	Sekundy (3–60, domyślnie 10)
-snack_secs_save	Oszczędź czas alertu
+snack_secs_save	Zapisz czas alertu
 snack_secs_saved	Zapisano czas alertu — {n} sekund
 settings_sec_backup	Kopia zapasowa i przywracanie
 settings_sec_diag	Diagnostyka
@@ -379,7 +379,7 @@ history_off	Zachowaj
 history_day_close	W dzień zamknięty
 history_after_hours	Po godzinach
 history_hours_ph	Godziny (1–168, domyślnie 4)
-history_hours_save	Oszczędzaj godziny
+history_hours_save	Zapisz godziny
 history_clear_now	Wyczyść historię teraz
 history_hours_saved	Zapisano godziny historii
 rollup	Zestawienie
@@ -725,7 +725,7 @@ dish_group_ph	Grupa wielkości opakowania (opcjonalnie) – np. Atta 1kg / 5kg
 discount	Rabat
 remove_discount	Usuń rabat
 apply_discount	Zastosuj zniżkę
-save_opening_cash	Zaoszczędź gotówkę na otwarcie
+save_opening_cash	Zapisz gotówkę otwarcia
 close_shift_print	Zamknij zmianę i wydrukuj odcinek
 discount_ph	10% lub 50
 discount_reason_ph	Powód (np. stały gość, późne jedzenie)
