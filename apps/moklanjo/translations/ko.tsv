@@ -41,7 +41,7 @@ reports_today	일계장(오늘)
 reports_month	손익(월)
 reports_aging	미결 / Dr-Cr
 reports_balance_sheet	대차대조표
-reports	보고서
+reports	은행장부 및 손익
 refresh	새로고침
 undo	실행 취소
 start_tracking	수량 관리 시작

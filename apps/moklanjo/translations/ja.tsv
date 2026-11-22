@@ -41,7 +41,7 @@ reports_today	日次帳簿（今日）
 reports_month	損益（月）
 reports_aging	未収／Dr-Cr
 reports_balance_sheet	貸借対照表
-reports	レポート
+reports	銀行帳と損益
 refresh	更新
 undo	元に戻す
 start_tracking	在庫管理開始
