@@ -71,15 +71,15 @@ split	बंटवारा हो जाओ
 send_kot	KOT भेज दे
 send_kot_to	भेजें → {kitchens} ऐ
 send_kot_again	अगले KOT के लिए पकवान जोड़ें
-send_kot_held	पकड़े बर्तन — भेजने के लिए अनहोल्ड
+send_kot_held	पकड़े व्यंजन — भेजने के लिए अनहोल्ड
 reprint_kot	प्रिंट फिर चुनेआ गेआ
-reprint_kot_ok	छपे {n} बर्तन फिर · {slips} पर्ची → {kitchens}
-reprint_kot_needed	पैह् ले इक KOT भेजो — फिर बर्तन शामल करो ते चुने गेदे गी दुबारा प्रिंट करो
+reprint_kot_ok	छपे {n} व्यंजन फिर · {slips} पर्ची → {kitchens}
+reprint_kot_needed	पैह् ले इक KOT भेजो — फिर व्यंजन शामल करो ते चुने गेदे गी दुबारा प्रिंट करो
 reprint_kot_none_selected	हर भेजी गेदी डिश गी छोड़ी दित्ता जंदा ऐ — दुबारा छपने आस्तै उनें पर प्रिंट च टैप करो
 reprint_kot_client	{place} भेजे गेदे लेई दुबारा ({n}) प्रिंट करो — सर्वर पर रसोई प्रिंट
 print_cancelled_kot	प्रिंट सारे रद्द
-print_cancelled_kot_ok	मुद्रित {n} रद्द कीते गेदे बर्तन · {slips} स्लिप → {kitchens}
-print_cancelled_kot_needed	पैह्ले रद्द कीते गेदे बर्तनें कन्नै डाइनिंग टेबल खोलो
+print_cancelled_kot_ok	मुद्रित {n} रद्द कीते गेदे व्यंजन · {slips} स्लिप → {kitchens}
+print_cancelled_kot_needed	पैह्ले रद्द कीते गेदे व्यंजनें कन्नै डाइनिंग टेबल खोलो
 print_cancelled_kot_none	इस आर्डर पर कोई रद्द व्यंजन नेईं
 print_cancelled_kot_client	{place} भेजे गेदे लेई प्रिंट रद्द ({n}) — सर्वर पर रसोई प्रिंट
 kot_banner	दयालु बैनर
@@ -159,13 +159,13 @@ kot_queued_shop	KOT {place} → {kitchens} बचाए गेदे लेई; 
 kot_job_label	{place} → {kitchens} दे लेई KOT
 kot_job_reached	KOT {place} दे लेई {kitchens}
 kot_unassigned	रसोई (कोई स्टेशन नहीं)
-kot_unassigned_held	बिना स्टेशन दे {n} बर्तन रखे — भेजने दी लाइन पर अनहोल्ड
+kot_unassigned_held	बिना स्टेशन दे {n} व्यंजन रखे — भेजने दी लाइन पर अनहोल्ड
 kot_station_ph	रसोई
 kot_station_dd	रसोई
 kot_station_dd_n	रसोई · {stations} ऐ
 kot_set_station	इस स्टेशन दा इस्तेमाल करो
 kot_station_applied	{n} व्यंजनों पर सेट स्टेशन: {station}
-kot_station_cleared	{n} बर्तनों से क्लियर स्टेशन: {station}
+kot_station_cleared	{n} व्यंजनों से क्लियर स्टेशन: {station}
 kot_station_needed	पहले किचन स्टेशन चुनें
 kot_station_not_allowed	रसोई दा इस्तेमाल करने दी अनुमति नेईं ऐ: {station}
 kot_station_none	अजें तगर कोई रसोई स्टेशन नेईं — रसोई जां सेटिंग्स → क्षेत्र · स्टेशनें दे हेठ इक जोड़ो
@@ -790,11 +790,11 @@ add_printer	प्रिंटर जोड़ो
 remove_printer	हटाओ
 route_pick_ph	बिल या कोई किचन स्टेशन
 route_bill	बिल
-route_default_kitchen	कोई स्टेशन (अनसाइन कीते गेदे बर्तन)
+route_default_kitchen	कोई स्टेशन (अनसाइन कीते गेदे व्यंजन)
 route_kot_station	रसोई
 route_dont_print	कोई प्रिंटर नहीं
 stations_heading	रसोई दे स्टेशन
-stations_help	बर्तन ते KOT लेई रसोई स्टेशन जोड़ो। हर स्टेशन पर, उंदे प्रिंटरें (सेटिंग्स → प्रिंटर दे हेठ दित्ते गेदे) गी संलग्न करो, प्राथमिकता सेट करो, ते पैह् ले जेह् ड़ा कम्म करदा ऐ जां सारें पर प्रिंट चुनो. बदलाव बचाओ जिन्ना तुस जांदे ओ — कोई बचाओ बटन नेईं।
+stations_help	व्यंजन ते KOT लेई रसोई स्टेशन जोड़ो। हर स्टेशन पर, उंदे प्रिंटरें (सेटिंग्स → प्रिंटर दे हेठ दित्ते गेदे) गी संलग्न करो, प्राथमिकता सेट करो, ते पैह् ले जेह् ड़ा कम्म करदा ऐ जां सारें पर प्रिंट चुनो. बदलाव बचाओ जिन्ना तुस जांदे ओ — कोई बचाओ बटन नेईं।
 station_print_heading	इस स्टेशन लेई प्रिंटर
 station_print_help	इक स्टेशन चुनो, फिर इक जां मते प्रिंटर संलग्न करो। ↑↓ सेट करदा ऐ कोशिश क्रम। पैह्ला जेह्ड़ा कम्म करदा ऐ ओह् पैह्ली सफलता दे बाद गै रुकी जंदा ऐ; हर संलग्न प्रिंटर गी सारे भेजने पर प्रिंट करो। हर बदलाव तुरंत बचांदा ऐ।
 station_print_pick_ph	प्रिंटर सेट करने लेई स्टेशन
@@ -850,7 +850,7 @@ batch_cancel_n	रद्द करो चिह्नित ({n})
 batch_cancel_none	पैह् ले इक जां मते भेजे गेदे व्यंजनें गी चिऱन्नत करो — फिर रद्द करो चिऱन्नत करो
 batch_cancel_title	चिह्नित व्यंजन रद्द करो — इक कारण, प्रति रसोईघर इक रद्द पर्ची
 batch_cancel_ok	{n} व्यंजन रद्द · {slips} पर्ची रद्द → {kitchens}
-batch_cancel_ok_noprint	{n} बर्तन रद्द — KOT ऑटो-प्रिंट बंद ऐ, इसलेई कोई रद्द पर्ची नेईं
+batch_cancel_ok_noprint	{n} व्यंजन रद्द — KOT ऑटो-प्रिंट बंद ऐ, इसलेई कोई रद्द पर्ची नेईं
 no_printer_kitchen_station	उस रसोई स्टेशन आस्तै कोई प्रिंटर नेईं — रसोई → रसोई स्टेशन → इस स्टेशन आस्तै प्रिंटर
 printers_saved	बचाया गया
 test_page_sent	परीक्षण पृष्ठ भेजेआ गेआ — प्रिंटर दी जांच करो
@@ -1379,12 +1379,12 @@ opening_server	सर्वर खोलने दा...
 creating_server	सर्वर बनाना...
 setup_restoring	बैकअप बहाल होआ करदा ऐ…
 setup_restored	बहाल होई गेआ — उस बैकअप दे मालिक PIN कन्नै अनलॉक करो।
-split_help	इक मेहमान दा भुगतान करदा ऐ · {n} चुने दा बर्तन टैप करो
-split_send_first	पैह्ले KOT भेजो — रसोई च जेह्ड़े बर्तन होंदे न ओह् गै बक्खरे बिल च जाई सकदे न
-split_pick_some	पैह्ले बक्खरे बिल आस्तै बर्तनें गी टैप करो
+split_help	इक मेहमान दा भुगतान करदा ऐ · {n} चुने दा व्यंजन टैप करो
+split_send_first	पैह्ले KOT भेजो — रसोई च जेह्ड़े व्यंजन होंदे न ओह् गै बक्खरे बिल च जाई सकदे न
+split_pick_some	पैह्ले बक्खरे बिल आस्तै व्यंजनें गी टैप करो
 split_done	अलग बिल बनाया — इस डाइनिंग टेबल दे बगल च डाइनिंग हॉल च ऐ
 split_marked	अलग बिल
-order_empty_pick	खाली आर्डर करो — पकवान चुनने लेई ऊपर बर्तन जोड़ो टैप करो।
+order_empty_pick	खाली आर्डर करो — पकवान चुनने लेई ऊपर व्यंजन जोड़ो टैप करो।
 add_dishes	व्यंजन जोड़ो
 order_so_far	इस आर्डर पर: {n} · {total}
 no_dish_match	कोई पकवान “{q}” से मेल नहीं खांदा।

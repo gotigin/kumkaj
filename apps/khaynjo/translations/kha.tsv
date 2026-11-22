@@ -46,7 +46,7 @@ total	Baroh
 cash	Ka pisa
 upi	UPI
 card	Kad
-credit	Parties
+credit	Ki party
 clear	Pynkhuid
 ready_to_sell	La pynkhreh ban book
 today_prefix	Mynta ka sngi
@@ -1112,7 +1112,7 @@ book_kind_month	Ki kot jong une u bnai .
 book_kind_aging	Ka jingsah / jingsiew-jingsiew
 book_kind_balance	Ka jingkhein jingdiah
 order_help	Tap ia ka item ban pyndap ia ka.
-floor_help	Tap ia ka miej bam ban shim ne pynkylla ia ka jingpynbeit. Ki rong ki pyni ba laitluid → shong → kamra shet → pynkhreh → bam → bill → siew. Ka thup ap, ki jaka buh jaka, bad ki miej bam ba la pyndap ki don ha ki bynta harum.
+floor_help	Tap ia ka miej bam ban shim ne pynkylla ia ka jingpynbeit. Ki rong ki pyni ba thylli → shong → kamra shet → pynkhreh → bam → bill → siew. Ka thup ap, ki jaka buh jaka, bad ki miej bam ba la pyndap ki don ha ki bynta harum.
 kitchen_help	Ki tiket bam (KOT), kiba thymmai tam. Sdang → Pynkhreh → La dep ka pynkhih ia ka tiket ryngkat. Ki tiket kim ju pyni ia ka dor.
 kitchen_empty	Ki tiket ba plie.
 add_a_table	Pyndap ia ka miej bam
@@ -1189,7 +1189,7 @@ server_host_selected	Da kaba pyndonkam {host} — pynrung ia u code jong ka pair
 print_bill	Pynmih bill
 table_actions	Ki jingleh jong ka miej bam
 move_merge_table	Pynkynriah / pyniasoh ia ka miej bam
-move_help	Pynkylla ia kane ka order jong ka miej bam sha ka miej bam kaba laitluid, lane pyniasoh ia ka sha kawei kaba iaid.
+move_help	Pynkylla ia kane ka order jong ka miej bam sha ka miej bam kaba thylli, lane pyniasoh ia ka sha kawei kaba iaid.
 move_target_ph	Kyrteng jong ka miej bam (nuksa D5, P2)
 approval_pin_ph	Manager PIN (tang lada kylli)
 move_here	Pynkynriah shane
