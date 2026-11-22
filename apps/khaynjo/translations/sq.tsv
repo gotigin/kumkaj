@@ -930,9 +930,9 @@ duress_saved	PIN-i i zhbllokimit të urgjencës u ruajt
 duress_cleared	PIN-i i zhbllokimit të urgjencës u fik
 upi_amount_ph	Shuma UPI
 void	Anulo
-write_off_ap	Fshi AP
-write_off_heading	Fshirje (pastro pa pagesë)
-write_off_nil	Fshirje / gjendje zero
+write_off_ap	Fshi AP nga bilanci
+write_off_heading	Fshi nga bilanci (pastro pa pagesë)
+write_off_nil	Fshi nga bilanci / gjendje zero
 your_brand	Marka juaj (në aplikacion)
 your_categories	Kategoritë tuaja
 account_kind	Lloji i llogarisë (prekni një)

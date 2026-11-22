@@ -930,7 +930,7 @@ duress_saved	Buka kunci kecemasan PIN disimpan
 duress_cleared	Buka kunci kecemasan PIN dimatikan
 upi_amount_ph	UPI jumlah
 void	Batal
-write_off_ap	Hapus AP
+write_off_ap	Hapus kira AP
 write_off_heading	Hapus kira (jelas tanpa bayaran)
 write_off_nil	Hapus kira / tiada baki
 your_brand	Jenama anda (dalam apl)

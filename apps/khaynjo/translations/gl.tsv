@@ -930,9 +930,9 @@ duress_saved	PIN de desbloqueo de emerxencia gardado
 duress_cleared	PIN de desbloqueo de emerxencia desactivado
 upi_amount_ph	Importe UPI
 void	Anular
-write_off_ap	Cancelar o AP
-write_off_heading	Cancelación (limpar sen pagamento)
-write_off_nil	Cancelación / saldo cero
+write_off_ap	Dar de baixa o AP
+write_off_heading	Dar de baixa (limpar sen pagamento)
+write_off_nil	Dar de baixa / saldo cero
 your_brand	A súa marca (dentro da app)
 your_categories	As súas categorías
 account_kind	Tipo de conta (prema un)
