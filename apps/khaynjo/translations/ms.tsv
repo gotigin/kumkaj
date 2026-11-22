@@ -194,7 +194,7 @@ bill_kot_tab_kot	KOT
 settings_sec_alerts	Makluman
 alerts_help	Berapa lama mesej status kekal pada skrin untuk anda (log masuk ini).
 snack_secs_ph	Saat (3–60, lalai 10)
-snack_secs_save	Jimat masa makluman
+snack_secs_save	Simpan masa makluman
 snack_secs_saved	Masa makluman disimpan — {n} saat
 settings_sec_whatsapp	WhatsApp
 whatsapp_cloud_help	Gunakan Meta WhatsApp Cloud API anda sendiri. Cipta token System User dengan whatsapp_business_messaging (token sementara papan pemuka akan tamat tempoh). Butiran hanya kekal pada Pelayan ini — tidak sekali-kali pada kaunter tambahan. “Diterima” bermaksud Meta telah mengambil permintaan itu, bukan tetamu telah menerimanya.
@@ -614,18 +614,18 @@ history_off	Simpan
 history_day_close	Pada hari tutup
 history_after_hours	Selepas berjam-jam
 history_hours_ph	Jam (1–168, lalai 4)
-history_hours_save	Jimat jam
+history_hours_save	Simpan jam
 history_clear_now	Kosongkan sejarah sekarang
 history_cleared	Sejarah dagangan dikosongkan — persediaan disimpan
 history_retention_saved	Pembersihan sejarah disimpan
 history_hours_saved	Jam sejarah disimpan
 history_owner_only	Hanya Pemilik atau Pentadbir boleh mengosongkan sejarah
 rollup	Penggulungan ringkasan
-save_brand	Jimat jenama
+save_brand	Simpan jenama
 save_business_id	Simpan id perniagaan
 save_business_name	Simpan nama perniagaan
 save_features	Simpan
-save_features_named	Jimat {name}
+save_features_named	Simpan {name}
 save_features_ok	Persediaan disimpan untuk {name}
 save_names	Simpan nama
 second_way	Cara kedua
@@ -1416,7 +1416,7 @@ kind_dish	Lauk yang kami buat
 buy_unit_ph	Unit (kg, liter, pcs)
 add_another_way	+ Tambah cara lain
 parts_status	Masuk {a} daripada {b} · {c} kiri
-save_expense	Jimat perbelanjaan
+save_expense	Simpan perbelanjaan
 rest_ph	Rehat
 low_badge	rendah
 stock_empty	Tiada apa-apa dalam stok lagi — perkara yang anda rakam pada Beli dipaparkan di sini.
