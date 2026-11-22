@@ -718,7 +718,7 @@ book_kind_month	Livre de ce mois
 book_kind_aging	En suspens / débit-crédit
 book_kind_balance	Bilan
 order_help	Touchez un article pour l'ajouter.
-categories_help	Une catégorie indique à quelle partie du menu appartient un plat — snacks, plat principal ou biryani. Créez vos catégories : choisissez nos noms, renommez-les ou ajoutez les vôtres.
+categories_help	Appuyez sur Utiliser pour classer l’article ci-dessus dans cette catégorie. La photo donne une image à la catégorie ; sinon elle montre ses initiales.
 dish_search_ph	Chercher des articles ou un code court…
 sizes_as_items_ph	Tailles en articles séparés (facultatif) — Demi=120, Entier=200
 dish_group_ph	Groupe de conditionnement (facultatif) — p. ex. Atta 1 kg / 5 kg

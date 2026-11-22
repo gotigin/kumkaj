@@ -718,7 +718,7 @@ book_kind_month	Buch dieses Monats
 book_kind_aging	Offen / Soll-Haben
 book_kind_balance	Bilanz
 order_help	Tippe auf einen Artikel, um ihn hinzuzufügen.
-categories_help	Eine Kategorie zeigt, zu welchem Menüteil ein Gericht gehört – z. B. Snacks, Hauptgang oder Biryani. Erstelle Kategorien auf deine Art: unsere Namen wählen, umbenennen oder eigene hinzufügen.
+categories_help	Tippe auf Verwenden, um den Artikel oben dieser Kategorie zuzuordnen. Foto gibt der Kategorie ein Bild; ohne zeigt sie ihre Initialen.
 dish_search_ph	Artikel oder Kurzcode suchen…
 sizes_as_items_ph	Größen als eigene Artikel (optional) — Halb=120, Voll=200
 dish_group_ph	Packungsgrößengruppe (optional) — z. B. Atta 1kg / 5kg

@@ -718,7 +718,7 @@ book_kind_month	Libro de este mes
 book_kind_aging	Pendiente / débito-crédito
 book_kind_balance	Balance general
 order_help	Toca un artículo para añadirlo.
-categories_help	Una categoría indica a qué parte del menú pertenece un plato: aperitivos, plato principal o biryani. Crea categorías a tu manera: elige nuestros nombres, renómbralos o añade los tuyos.
+categories_help	Toca Usar para archivar el artículo de arriba en esa categoría. La foto da imagen a la categoría; sin ella muestra sus iniciales.
 dish_search_ph	Buscar artículos o código corto…
 sizes_as_items_ph	Tamaños como productos aparte (opcional) — Media=120, Entera=200
 dish_group_ph	Grupo de tamaño de pack (opcional) — p. ej. Atta 1 kg / 5 kg

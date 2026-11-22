@@ -718,7 +718,7 @@ book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
 order_help	Mag-tap ng menu item para idagdag ito.
-categories_help	I-tap ang Gamitin upang i-file ang menu item sa itaas sa ilalim ng kategoryang iyon. Ang larawan ay nagbibigay sa kategorya ng isang larawan; kung walang isa ay ipinapakita nito ang mga inisyal nito.
+categories_help	I-tap ang Gamitin para ilagay ang item sa itaas sa kategoriyang iyon. Binibigyan ng larawan ang kategorya; kung wala, initials ang lumalabas.
 dish_search_ph	Maghanap ng mga item o maikling code…
 sizes_as_items_ph	Mga laki bilang hiwalay na mga item sa menu (opsyonal) — Kalahati=120, Buo=200
 dish_group_ph	Pangkat ng laki ng pack (opsyonal) — hal. Atta 1kg / 5kg

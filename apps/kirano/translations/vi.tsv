@@ -718,7 +718,7 @@ book_kind_month	Sổ tháng này
 book_kind_aging	Nợ tồn / ghi nợ-có
 book_kind_balance	Bảng cân đối
 order_help	Chạm vào một món để thêm.
-categories_help	Danh mục cho thấy một món thuộc phần nào của thực đơn — ví dụ món ăn nhẹ, món chính hoặc biryani. Tạo danh mục theo cách của bạn: chọn tên chúng tôi gợi ý, đổi tên chúng hoặc thêm của riêng bạn.
+categories_help	Chạm Dùng để xếp mặt hàng phía trên vào danh mục đó. Ảnh tạo hình cho danh mục; không có thì hiện chữ cái đầu.
 dish_search_ph	Tìm kiếm các mục hoặc mã ngắn…
 sizes_as_items_ph	Cỡ thành món riêng (tuỳ chọn) — Nửa=120, Đầy=200
 dish_group_ph	Nhóm kích thước gói (tùy chọn) - ví dụ: Thêm 1kg / 5kg
