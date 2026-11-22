@@ -68,7 +68,7 @@ applied	Áp dụng
 note_ph	Ghi chú (tùy chọn)
 rounded	Đã làm tròn
 split	Chia
-bill_item_layout	Bố cục món
+bill_item_layout	Bố cục mục
 bill_item_layout_columns	Cột
 bill_item_layout_stacked	Xếp dọc
 bill_item_header	Tiêu đề cột
@@ -174,7 +174,7 @@ added_items	Đã thêm
 added_items_empty	Chưa có gì trên hóa đơn này - thêm một mục từ Tất cả các mục hoặc một danh mục.
 frequent_config_help	Các mặt hàng được bán nhiều nhất từ ​​các hóa đơn đã hoàn thành. Đặt số ngày cần xem và số lượng mục cần hiển thị.
 frequent_days_ph	Ngày (1)
-frequent_limit_ph	Món (24)
+frequent_limit_ph	Mục (24)
 frequent_apply	Áp dụng
 frequent_saved	Thường xuyên: (các) ngày {d} gần đây nhất, các mục {n} — {c} hàng đầu
 frequent_empty	Chưa có bán hoàn tất trong kỳ này — thanh toán một hóa đơn (₹0 nếu Cài đặt cho phép) rồi chúng hiện ở đây.
@@ -732,7 +732,7 @@ book_kind_balance	Bảng cân đối
 order_help	Chạm vào một mục để thêm.
 categories_help	Chạm «Dùng» để xếp mặt hàng phía trên vào danh mục đó. Ảnh cho danh mục một hình; không có thì hiện chữ cái đầu.
 dish_search_ph	Tìm kiếm tên, muối hoặc mã vạch…
-sizes_as_items_ph	Cỡ thành món riêng (tuỳ chọn) — Nửa=120, Đầy=200
+sizes_as_items_ph	Cỡ thành mục riêng (tuỳ chọn) — Nửa=120, Đầy=200
 dish_group_ph	Nhóm sức mạnh / gói (tùy chọn) - ví dụ: dải 500mg
 discount	Giảm giá
 remove_discount	Bỏ giảm giá
@@ -786,7 +786,7 @@ bill_line_customer	Khách hàng
 bill_line_bill_no	Số hóa đơn
 bill_line_time	Giờ
 bill_line_cashier	Thu ngân
-bill_line_items	Món
+bill_line_items	Mục
 bill_line_total	Tổng
 bill_line_footer	Chân trang
 bill_line_upi	UPI
