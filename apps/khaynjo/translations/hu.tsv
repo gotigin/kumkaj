@@ -1112,7 +1112,7 @@ book_kind_month	E havi könyvek
 book_kind_aging	Tartozás / betéti jóváírás
 book_kind_balance	Mérleg
 order_help	Koppintson egy elemre a hozzáadáshoz.
-floor_help	Érintse meg az étkezőasztalt a sorrend elfogadásához vagy módosításához. A színek ingyenes → ülő → konyha → kész → evés → számla → fizetett. A várólistát, a foglalásokat és az étkezőasztalokat az alábbi szakaszokban találja.
+floor_help	Érintse meg az étkezőasztalt a rendelés elfogadásához vagy módosításához. A színek üres → ülő → konyha → kész → evés → számla → fizetett. A várólistát, a foglalásokat és az étkezőasztalokat az alábbi szakaszokban találja.
 kitchen_help	Konyhajegyek (KOT), a legújabb utolsó. A Start → Kész → Kész a jegyet továbbítja. A jegyek soha nem mutatják az árakat.
 kitchen_empty	Nincs nyitott jegy.
 add_a_table	Adjon hozzá egy étkezőasztalt
