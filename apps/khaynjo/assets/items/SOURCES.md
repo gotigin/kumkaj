@@ -611,3 +611,10 @@ need the author and licence named.
 | `mexican/churros.webp` | Author is Jorge Castro Ruso (not Fernando García) |
 | `middle-eastern/shawarma.webp` | Author is Vera Yu and David Li (not Ewan Munro) |
 | `thai-asian/nasi-goreng.webp` | Author is Supardisahabu (not Midori) |
+
+## Replaced 2026-11-22 (L15 burrito elote)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `mexican/burrito.webp` | hand-held wrap with hands in background | Smothered beef burrito.JPG | Jeffrey Beall | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/wiki/File:Smothered_beef_burrito.JPG | resized, WebP |
+| `mexican/elote.webp` | plain corn cob sections on toothpicks | Elote recipe.jpg | SimpleFoodie | Public domain | https://commons.wikimedia.org/wiki/File:Elote_recipe.jpg | resized, WebP |
