@@ -157,12 +157,16 @@ after Android Chrome phone pass 2026-11-22 (kumkaj was too big at Body 16
 blank cream canvas after wasm load — WebGL `compile_fail.vertex` /
 `Missing shader in FromWasmAllocVao` in CDP. Sibling Makepad sites
 (kumkaj, moklanjo, kirano, tabiyat, wadhu, gotigin) paint on the same
-tablet when opened one-tab-at-a-time. Cause is site-specific shader /
-font pressure from the world-shelf (many Noto script faces + parade
-textures), not the VV-resize freeze. Not fixed without gutting the
-shelf’s multilingual fonts; treat as an **accepted residual** for that
-class of GPU (2026-11-22 dual-device pass). Prefer a current phone Chrome
-for Khaynjo QA.
+tablet when opened one-tab-at-a-time. Cause is site-specific first-wave
+WebGL pressure (long page + floor toy + world-shelf Noto faces + parade
+textures), not the VV-resize freeze. Sprint 2026-11-22 tried: plain shelf
+`Image` (no SDF), flat LampBand/Point/TicketRule (no unique `pixel`
+shaders), and deferred reveal of floor/menus/shelf after hero warmup —
+AGS2 stayed cream-blank (~20+ `compile_fail` in one-tab Chrome). A real
+fix needs fewer simultaneous Makepad programs on that GPU (or a
+`patches/makepad/` WebGL budget change); treat as an **accepted residual**
+for that class of GPU. Prefer a current phone Chrome for Khaynjo QA.
+Evidence: `Internal/sprint/shots/L4/mali/`.
 
 ### Threads
 
