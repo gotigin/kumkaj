@@ -337,7 +337,7 @@ advance	ایڈوانس
 owner	مالِک
 staff	مُلازِم
 photo	فوٹو
-auto	Auto
+auto	آٹو
 prev	پٔتِم
 next	بیٚیہِ
 ok	OK
@@ -604,7 +604,7 @@ request_bill	درخواست بِل
 restaurant_name_ph	ریسٹورنٹُک ناو (اختیاری)
 restore_backup	بیک اپ کْریو ریسٹور
 role_both	دۄشوے
-role_admin	Admin
+role_admin	ایڈمن
 role_cashier	کیشیئر
 role_customer	گاہَک
 role_manager	منیجر
@@ -644,7 +644,7 @@ floor_cols_fit_sub	{n} فٹ یتھے
 floor_cols_fits	فٹ چُھ
 floor_cols_scroll	اَکہِ طرفہٕ چھُ طومار
 floor_cols_min	کالم: کم از کم 1 — یا سکرین فٹ گژھنہٕ خٲطرٕ ترٲوِو یہِ خٲلی
-floor_zoom_auto	Auto
+floor_zoom_auto	آٹو
 floor_zoom_out	زوم آؤٹ
 floor_zoom_in	زوم اِن کٔرِو
 backup_auto	پرٛٮ۪تھ دۄہ چھُ پانَے بیک اپ · ٲخری {when} · پٔتِم 14 دۄہ چھِ {dir} منٛز تھاونہٕ آمٕتۍ۔

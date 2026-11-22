@@ -337,7 +337,7 @@ advance	اڳتي وڌايو
 owner	مالڪ
 staff	عملو
 photo	تصوير
-auto	Auto
+auto	خودڪار
 prev	پوءِ وارو
 next	اڳتي
 ok	OK
@@ -604,7 +604,7 @@ request_bill	بل جي درخواست ڪريو
 restaurant_name_ph	ريستوران جو نالو (اختياري)
 restore_backup	بيڪ اپ بحال ڪريو
 role_both	ٻئي
-role_admin	Admin
+role_admin	ايڊمن
 role_cashier	ڪيشيئر
 role_customer	گراهڪ
 role_manager	مئنيجر
@@ -644,7 +644,7 @@ floor_cols_fit_sub	{n} هتي فٽ ٿئي ٿو
 floor_cols_fits	فٽ ٿئي ٿو
 floor_cols_scroll	ڪوڙا پهلو ڏانهن ڦري ٿو
 floor_cols_min	ڪالمن: گهٽ ۾ گهٽ 1 — يا اسڪرين سان فٽ ڪرڻ لاءِ خالي ڇڏي ڏيو
-floor_zoom_auto	Auto
+floor_zoom_auto	خودڪار
 floor_zoom_out	ٻاهر زوم ڪريو
 floor_zoom_in	اندر زوم ڪريو
 backup_auto	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو · آخري {when} · گذريل 14 ڏينهن {dir} ۾ محفوظ آهن.

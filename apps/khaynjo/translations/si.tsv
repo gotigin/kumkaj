@@ -604,7 +604,7 @@ request_bill	අමුත්තන්ගේ බිල්පත ඉල්ලන�
 restaurant_name_ph	අවන්හලේ නම (විකල්ප)
 restore_backup	උපස්ථය ප්‍රතිසාධනය කරන්න
 role_both	දෙකම
-role_admin	Admin
+role_admin	පරිපාලක
 role_cashier	මුදල් අයකැමි
 role_customer	පාරිභෝගිකයා
 role_manager	කළමනාකරු
@@ -1308,7 +1308,7 @@ own_item_name	මෙය ඔබගේ මෙනු අයිතම නාමය �
 on_your_menu	ඔබේ මෙනුවේ
 edit	සංස්කරණය
 schemes	යෝජනා ක්රම / දීමනා
-schemes_help	BOGO, සියයට අඩු, සහ ස්ථාවර සංයෝජන. සංයෝජන යවන්න KOT මත මුළුතැන්ගෙයි රේඛා දක්වා විහිදේ; කොම්බෝ ගිනි ගන්නා තෙක් සංරචක රඳවා තබා ගනී. උදාහරණය: Buy 2 Thali get 1 Chaas
+schemes_help	BOGO, සියයට අඩු, සහ ස්ථාවර සංයෝජන. සංයෝජන Send KOT මත කුස්සි රේඛා දක්වා විහිදේ; කොම්බෝ දැවෙන තෙක් කොටස් රඳවා තබයි. උදා: තාලි 2ක් මිලදී ගෙන චාස් 1ක් ලබා ගන්න
 scheme_bogo_ph	තාලි 2ක් ගන්න, චාස් 1ක් නොමිලේ
 add_scheme	BOGO එකතු කරන්න
 schedule_ph	පැය / ප්‍රීතිමත් පැය - Mon-Fri 07:00-11:00 හෝ HappyHour 17:00-19:00=150
