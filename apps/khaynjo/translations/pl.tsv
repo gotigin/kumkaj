@@ -1126,7 +1126,7 @@ tile_bill_printed	Wydrukowano rachunek
 tile_paid	Płatny
 tile_bill_btn	Rachunek
 tile_occupy_btn	Usiądź gości
-tile_free_btn	Opuść stół jadalny
+tile_free_btn	Zwolnij stół
 tile_ready_btn	Opuść stół jadalny
 tile_undo_bill	Cofnij rachunek
 summary_busy	stoły w jadalni są zajęte

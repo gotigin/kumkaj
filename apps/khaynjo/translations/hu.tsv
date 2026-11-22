@@ -1126,7 +1126,7 @@ tile_bill_printed	Bill nyomtatva
 tile_paid	Fizetett
 tile_bill_btn	Számla
 tile_occupy_btn	Ültesse le a vendégeket
-tile_free_btn	Távolítsa el az étkezőasztalt
+tile_free_btn	Szabadítsa fel az asztalt
 tile_ready_btn	Távolítsa el az étkezőasztalt
 tile_undo_bill	Számla visszavonása
 summary_busy	foglaltak az étkezőasztalok
