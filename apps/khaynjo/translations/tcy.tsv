@@ -1,6 +1,6 @@
 # Tulu — ತುಳು (tcy). One key<TAB>text per line, in en() order; keep {placeholders}.
 app_tagline	ರೆಸ್ಟೋರೆಂಟ್ ಆದೇಶೊಲು, ಅಡುಗೆಮನೆ ಬೊಕ್ಕ ಪುಸ್ತಕೊಲು. ಉಚಿತ ಆಫ್ಲೈನ್.
-unlock	ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ
+unlock	ಅನ್ಲಾಕ್
 pin_hint	ಮಾಲೀಕೆರ್ PIN 0000 ಡ್ದ್ ಸುರು ಆಪುಂಡು
 sell	ಆದೇಶ
 buy	ಕೊಂಡೊಲೆ
@@ -929,7 +929,7 @@ duress_off	ತುರ್ತು ಅನ್ಲಾಕ್ PIN ಆಫ್ ಆತ್ಂ�
 duress_saved	ತುರ್ತು ಅನ್ಲಾಕ್ PIN ಉಳಿತಾಯ ಆತ್ಂಡ್
 duress_cleared	ತುರ್ತು ಅನ್ಲಾಕ್ PIN ಆಫ್ ಆತ್ಂಡ್
 upi_amount_ph	UPI ಮೊತ್ತ
-void	ರದ್ದು ಮಾರಾಟ
+void	ರದ್ದು
 write_off_ap	ಎಪಿನ್ ಬರೆಲೆ
 write_off_heading	ಬರೆಯೆರೆ (ಪಾವತಿ ಇಜ್ಜಂದೆ ತೆರಿಪಾಲೆ)
 write_off_nil	ಬರೆಯೆರೆ / ಶೂನ್ಯ ಬ್ಯಾಲೆನ್ಸ್

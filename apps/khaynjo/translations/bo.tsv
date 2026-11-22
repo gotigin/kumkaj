@@ -1,6 +1,6 @@
 # Tibetan — བོད་སྐད་ (bo). One key<TAB>text per line, in en() order; keep {placeholders}.
 app_tagline	ཟ་ཁང་གི་མངགས་ཉོ། ཐབ་ཚང་དང་རྩིས་ཁྲ། དྲ་རྒྱའི་ཕྱི་རོལ་དུ་རིན་མེད།
-unlock	ལྡེ་མིག་ཕྱེ་བ།
+unlock	ཕྱེ།
 pin_hint	བདག་པོ་PIN 0000 ནས་འགོ་འཛུགས།
 sell	མངགས་ཉོ།
 buy	ཉོ།
@@ -27,7 +27,7 @@ stock_minus	− མཛོད་ཁང་།
 stock_plus	+ མཛོད་ཁང་།
 settle_cash	དངུལ་རྩིས་རྒྱག་པ།
 settle_card	གཏན་འཇགས་བྱང་བུ།
-items	དཀར་ཆག་དང་དཀར་ཆག་རྣམ་གྲངས།
+items	དཀར་ཆག།
 nav_items	དཀར་ཆག
 more	དེ་ལས་མང༌།
 your_items	ཁྱེད་ཀྱི་དཀར་ཆག།
@@ -260,7 +260,7 @@ tables	ཟ་ཁང་གི་ཅོག་ཙེ།
 kitchen	ཐབ་ཚང་།
 sales	ཚོང་འགྲེམས།
 sales_refunds	ཚོང་དང་དངུལ་ཕྱིར་སྤྲོད།
-day_close	ཉིན་མོ་སྒོ་བརྒྱབ་པ།
+day_close	ཉིན་མོ་སྒོ་རྒྱག
 reports_expenses	དངུལ་ཁང་གི་རྩིས་ཁྲ་དང་P&L
 nav_reports	སྙན་ཞུ།
 nav_settings	སྒྲིག་སྟངས།

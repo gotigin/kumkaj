@@ -1,6 +1,6 @@
 # Khasi — Khasi (kha). One key<TAB>text per line, in en() order; keep {placeholders}.
 app_tagline	Ki jingbthah jong ki jaka bam, ki kamra bam & ki kot. Laitluid.
-unlock	Plie ia ka jingkhang
+unlock	Plie
 pin_hint	U trai PIN u sdang kum u 0000 .
 sell	Jingbthah
 buy	Thied
@@ -260,7 +260,7 @@ tables	Ki miej bam
 kitchen	Kamra bam
 sales	Ka jingdie
 sales_refunds	Ka jingdie bad jingpynphai pisa
-day_close	Ka sngi kaba khang
+day_close	Khang sngi
 reports_expenses	Ka kot bank bad ka jingmih
 nav_reports	Ki kaiphod
 nav_settings	Ki jingpynbeit
