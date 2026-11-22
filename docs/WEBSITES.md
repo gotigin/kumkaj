@@ -306,11 +306,12 @@ change):
   390×844 and 1280×800: the frames are identical pixel for pixel (only
   khaynjo.com's moving shelf differs, as it does between any two runs).
   Two limits: text a visitor *types* in a script the site's copy does not
-  use shows empty boxes (khaynjo.com's shelf search is the one text box),
-  and the three variable display faces keep their variation tables —
-  Fraunces is still 184 KB compressed, Anek Latin 145 KB; pinning each to
-  the weights `ui.rs` asks for would save about 150 KB on kumkaj.com and
-  90 KB on moklanjo.com.
+  use shows empty boxes (khaynjo.com's shelf search is the one text box).
+  Variable display faces are pinned to the `ui.rs` weight before subset
+  (kumkaj Fraunces `wght=620`, khaynjo Baloo 2 `wght=720`; moklanjo/kirano/
+  tabiyat Anek pin is L16). That drops unused masters from the staged
+  file; prove with `netlog.mjs` + `magick compare` on a before/after
+  preview (see `Internal/sprint/shots/L4/fonts/`).
 - **Versioned and cached:** deploy gives the wasm and its loader
   `?v=<build id>`, and `firebase.json` now serves `*.wasm` `immutable`, so a
   returning visitor downloads it once per release.
