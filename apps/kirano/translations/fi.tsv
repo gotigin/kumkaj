@@ -535,7 +535,7 @@ unmark	Poista merkintä
 update_my_password	Päivitä salasanani
 update_my_pin	Päivitä kirjautumiseni
 duress_heading	Hätäavauksen PIN (vain omistaja)
-duress_help	Valinnainen. Jos kirjoitetaan tämä PIN-koodi lukituksen avaamisen yhteydessä sinun sijaan, kaikki kirjat pyyhitään (myynti, kirjanpito, historia) ja kassa avautuu normaalilta omistajalta – tuotteet, hinnat, laskurit, henkilökunta ja asetukset säilyvät. Kaavaa ja määrityksiä ei poisteta. Käytä vain, jos sinun on pakko avata lukitus. Jätä tyhjäksi ja sammuta tallenna. Ei koskaan sama kuin kenenkään PIN-koodi.
+duress_help	Vain offline Server/Client LAN — ei pilvitoiminto. Oletuksena pois: Omistaja kytkee sen kerran tallentamalla tämän PIN-koodin (Tiimi, myös Client-kassalla). Jos tämä PIN kirjoitetaan avauksessa oikean henkilöstö-PIN:n sijaan, kirjanpidon viennit pyyhitään Serveriltä ja tiski aukeaa Omistajana normaalin näköisenä — hinnat, osapuolet, vyöhykkeet, henkilöstö ja asetukset jäävät. Skeemaa ja asetuksia ei poisteta. Ei koskaan sama kuin kenenkään PIN. Sammuta tyhjennyspainikkeella.
 duress_pin_ph	Hätä-PIN (4–12 numeroa)
 duress_confirm_ph	Kirjoita uudelleen vahvistaaksesi
 save_duress_pin	Tallenna hätä-PIN

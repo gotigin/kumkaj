@@ -535,7 +535,7 @@ unmark	Démarquer
 update_my_password	Changer mon mot de passe
 update_my_pin	Changer mon PIN
 duress_heading	PIN de déverrouillage d'urgence (propriétaire seul)
-duress_help	Facultatif. Si ce PIN est saisi au déverrouillage à la place du vôtre, toutes les écritures des livres sont effacées (ventes, grands livres, historique) et la caisse s'ouvre comme Propriétaire, d'apparence normale — articles, prix, comptoirs, équipe et réglages restent. Le schéma et la configuration ne sont pas supprimés. À n'utiliser que si l'on vous force à déverrouiller. Laissez vide et enregistrez pour désactiver. Jamais identique au PIN de quelqu'un.
+duress_help	Uniquement LAN Server/Client hors ligne — pas une fonction cloud. Désactivé par défaut : le Owner l’active une fois en enregistrant ce PIN (équipe, y compris sur caisse Client). Si ce PIN est saisi au déverrouillage à la place du vrai PIN du personnel, les écritures sont effacées sur le Server et la caisse s’ouvre en Owner d’apparence normale — articles, prix, comptoirs, personnel et réglages restent. Schéma et config ne sont pas effacés. Jamais le même que le PIN de quelqu’un. Désactiver avec le bouton d’effacement.
 duress_pin_ph	PIN d'urgence (4–12 chiffres)
 duress_confirm_ph	Retapez pour confirmer
 save_duress_pin	Enregistrer le PIN d'urgence

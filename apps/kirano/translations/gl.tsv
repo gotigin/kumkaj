@@ -535,7 +535,7 @@ unmark	Desmarcar
 update_my_password	Actualizar o meu contrasinal
 update_my_pin	Actualizar o meu inicio de sesión
 duress_heading	PIN de desbloqueo de emerxencia (só o Dono)
-duress_help	Opcional. Se se escribe este PIN ao desbloquear en lugar do teu, borraranse todas as entradas dos libros (vendas, libros contables, historial) e a caixa ábrese como un propietario con aspecto normal: os elementos, os prezos, os mostradores, o persoal e a configuración permanecen. O esquema e a configuración non se eliminan. Use só se está obrigado a desbloquear. Deixa en branco e garda para desactivar. Nunca é o mesmo que o PIN de ninguén.
+duress_help	Só Server/Client en LAN sen conexión — non é función na nube. Desactivado por defecto: o propietario actívao unha vez ao gardar este PIN (Equipo, tamén nunha caixa Client). Se se teclea este PIN ao desbloquear no canto dun PIN de persoal real, bórranse as entradas dos libros no Server e o escritorio ábrese como Propietario con aspecto normal — tarifas, partes, zonas, persoal e axustes quedan. O esquema e a configuración non se borran. Nunca igual ao PIN de ninguén. Apágao co botón de limpar.
 duress_pin_ph	PIN de emerxencia (4–12 díxitos)
 duress_confirm_ph	Escríbao outra vez para confirmar
 save_duress_pin	Gardar o PIN de emerxencia

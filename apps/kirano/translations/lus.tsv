@@ -535,7 +535,7 @@ unmark	Chhinchhiah paih
 update_my_password	Ka password thar leh
 update_my_pin	Ka lutna thar leh
 duress_heading	Hawngna PIN hlauhawm (Neitu chauh)
-duress_help	Duh zawk thlang. He PIN hi i PIN ai chuan unlock-ah type a nih chuan lehkhabu entry zawng zawng (sales, ledgers, history) a wipe vek a, till chu Owner looking normal angin a inhawng ang — items, prices, counters, staffs leh settings te chu a awm reng a ni. Schema leh config a delete lo. Unlock tura nawr i nih chuan chauh hmang ang che. Blank ah dah la, off turin save rawh. Tu PIN nen a inang ngai lo.
+duress_help	Offline Server/Client LAN chauh — cloud feature a ni lo. Default-ah a off: Owner hian he PIN hi savein vawi khat a tihchhuah (Team, Client till-ah pawh). Unlock-ah staff PIN dik tak aiin he PIN hi type a nih chuan Server-a lehkhabu entry te tihboral a ni a, desk chu Owner angin a normal takin a hawn — rate te, party te, zone te, staff leh setting te an awm reng. Schema leh config tihboral a ni lo. Tuman PIN nen a inang lo tur a ni. Clear button-in tihtawp rawh.
 duress_pin_ph	PIN hlauhawm (digit 4–12)
 duress_confirm_ph	Ziak leh la, nemnghet turin
 save_duress_pin	PIN hlauhawm dah tha

@@ -535,7 +535,7 @@ unmark	Demarchează
 update_my_password	Actualizează parola mea
 update_my_pin	Actualizează autentificarea mea
 duress_heading	PIN de deblocare de urgență (doar Proprietar)
-duress_help	Opțional. Dacă acest PIN este tastat la deblocare în locul tău, toate înregistrările din registre sunt șterse (vânzări, registre, istoric) și casa se deschide ca proprietar și arată normal — articolele, prețurile, tejghelele, personalul și setările rămân. Schema și configurația nu se șterg. Folosește-l doar dacă ești forțat să deblochezi. Lasă gol și salvează ca să-l oprești. Niciodată același cu PIN-ul cuiva.
+duress_help	Doar Server/Client LAN offline — nu e funcție cloud. Oprit implicit: Proprietarul îl activează o dată salvând acest PIN (Echipă, și pe o casă Client). Dacă se tastează acest PIN la deblocare în locul unui PIN real de personal, înregistrările din cărți se șterg pe Server și biroul se deschide ca Proprietar cu aspect normal — tarife, părți, zone, personal și setări rămân. Schema și configurația nu se șterg. Niciodată la fel ca PIN-ul cuiva. Opriți cu butonul de ștergere.
 duress_pin_ph	PIN de urgență (4–12 cifre)
 duress_confirm_ph	Tastează din nou pentru confirmare
 save_duress_pin	Salvează PIN-ul de urgență

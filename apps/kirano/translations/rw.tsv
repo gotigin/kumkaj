@@ -535,7 +535,7 @@ unmark	Kuraho akamenyetso
 update_my_password	Vugurura ijambo ryanjye ry'ibanga
 update_my_pin	Vugurura kwinjira kwanjye
 duress_heading	PIN yo gufungura mu bihe by'ihutirwa (Nyir'iduka gusa)
-duress_help	Bihitamo. Niba iyi PIN yanditswe mugukingura aho kuba iyanyu, ibitabo byose byanditse byahanaguwe (kugurisha, igitabo, amateka, amateka) hanyuma kugeza igihe bifunguye nka nyirubwite asa nibisanzwe - ibintu, ibiciro, compte, abakozi nigenamiterere bigumaho. Igishushanyo na config ntibisibwe. Koresha gusa niba uhatiwe gufungura. Kureka ubusa hanyuma ubike kugirango uzimye. Ntukigere umeze nka PIN ya buriwese.
+duress_help	Offline Server/Client LAN gusa — si cloud. Irafunze bya default: Nyirizina ayimaliza rimwe abika uyu PIN (Itsinda, na kuri Client till). Niba uyu PIN wanditswe mu gufungura aho PIN y’abakozi nyayo yari, inyandiko z’ibitabo kuri Server zirahanagurwa kandi ameza akingura nka Nyirizina asa n’bisanzwe — ibiciro, impande, uturere, abakozi n’igenamiterere biguma. Schema na config ntizihanagurwa. Ntigomba kuba kimwe na PIN ya undi. Zimura ukoresheje bouton yo gusiba.
 duress_pin_ph	PIN y'ihutirwa (imibare 4–12)
 duress_confirm_ph	Ongera wandike wemeze
 save_duress_pin	Bika PIN y'ihutirwa

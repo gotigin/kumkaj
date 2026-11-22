@@ -535,7 +535,7 @@ unmark	Bỏ đánh dấu
 update_my_password	Đổi mật khẩu của tôi
 update_my_pin	Đổi PIN của tôi
 duress_heading	PIN mở khóa khẩn (chỉ chủ)
-duress_help	Không bắt buộc. Nếu mã PIN này được nhập khi mở khóa thay vì mã PIN của bạn, thì tất cả các mục nhập sách sẽ bị xóa (doanh số, sổ cái, lịch sử) và ngăn tính tiền sẽ mở ra với tư cách Chủ sở hữu trông bình thường - các mặt hàng, giá cả, bộ đếm, nhân viên và cài đặt vẫn giữ nguyên. Lược đồ và cấu hình không bị xóa. Chỉ sử dụng nếu bạn buộc phải mở khóa. Để trống và lưu để tắt. Không bao giờ giống mã PIN của bất kỳ ai.
+duress_help	Chỉ Server/Máy khách LAN ngoại tuyến — không phải tính năng đám mây. Mặc định tắt: Chủ bật một lần bằng cách lưu PIN này (Nhóm, kể cả trên quầy Máy khách). Nếu gõ PIN này lúc mở khóa thay PIN nhân viên thật, bút toán sổ trên Máy chủ bị xóa và quầy mở như Chủ nhìn bình thường — cước, đối tác, vùng, nhân viên và cài đặt giữ lại. Không xóa lược đồ và cấu hình. Đừng trùng PIN của ai. Tắt bằng nút xóa.
 duress_pin_ph	PIN khẩn (4–12 chữ số)
 duress_confirm_ph	Gõ lại để xác nhận
 save_duress_pin	Lưu PIN khẩn

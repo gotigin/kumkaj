@@ -535,7 +535,7 @@ unmark	Odstrani oznako
 update_my_password	Posodobi moje geslo
 update_my_pin	Posodobi mojo prijavo
 duress_heading	PIN za odklepanje v sili (samo Lastnik)
-duress_help	Neobvezno. Če pri odklepanju vnesete to kodo PIN namesto vaše, se izbrišejo vsi vnosi v knjige (prodaja, poslovne knjige, zgodovina) in blagajna se odpre kot Lastnik, ki je videti normalno – predmeti, cene, števci, osebje in nastavitve ostanejo. Shema in konfiguracija se ne izbrišeta. Uporabite samo, če ste prisiljeni odkleniti. Pustite prazno in shranite za izklop. Nikoli enak PIN kodi nikogar.
+duress_help	Samo offline Server/Client LAN — ni funkcija v oblaku. Privzeto izklopljeno: Lastnik jo vklopi enkrat z shranitvijo tega PIN (Ekipa, tudi na blagajni Client). Če se ta PIN vnese ob odklepu namesto pravega osebja PIN, se zbrišejo vnosi knjig na Serverju in pult se odpre kot Lastnik z normalnim videzom — tarife, stranke, cone, osebje in nastavitve ostanejo. Shema in konfiguracija se ne zbrišeta. Nikoli enak kot kakršenkoli PIN. Izklopite z gumbom za brisanje.
 duress_pin_ph	PIN v sili (4–12 števk)
 duress_confirm_ph	Vnesite znova za potrditev
 save_duress_pin	Shrani PIN v sili

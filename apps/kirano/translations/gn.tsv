@@ -535,7 +535,7 @@ unmark	Desmarka
 update_my_password	Embopyahu che ñe’ẽñemi
 update_my_pin	Embopyahu che jeike
 duress_heading	Desbloqueo de emergencia PIN (Ijára añoite) .
-duress_help	Poravokuaa. Ko PIN ojehai ramo desbloqueo-pe nde rangue, opaite aranduka jeike oñembogue (venta, libro mayor, tembiasakue) ha pe caja ojepe’a Propietario ojehechaháicha normal — umi mba’e, precio, contador, personal ha configuración opyta. Esquema ha config ndojepe’ái. Eipuru ojeobligáramo añoite redesblokea hag̃ua. Eheja en blanco ha eñongatu oñembogue hagua. Araka'eve ndaha'éi peteĩcha avave PIN ndive.
+duress_help	Offline Server/Client LAN añoite — ndaha'éi cloud. Oñembogue default-pe: Dueño ombojeýma peteĩ jey oñongatúvo ko PIN (Equipo, Client caja-pe avei). Ojehai ramo ko PIN ojepe'ávo peteĩ PIN personal añetegua rendaguépe, oñembogue umi entrada libro Server-pe ha escritorio ojepe'a Dueñoicha ojehecháva normal — tarifas, partidos, zonas, personal ha ajustes opyta. Schema ha config ndojejapói. Aníke ojoja avave PIN ndive. Embogue botón limpiar ndive.
 duress_pin_ph	Emergencia PIN (4–12 dígito) .
 duress_confirm_ph	Ehai jey emoañete hag̃ua
 save_duress_pin	Oñongatu emergencia PIN .

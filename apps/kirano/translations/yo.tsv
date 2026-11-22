@@ -535,7 +535,7 @@ unmark	Yọ aami
 update_my_password	Ṣe imudojuiwọn ọrọ igbaniwọle mi
 update_my_pin	Ṣe imudojuiwọn iwọle mi
 duress_heading	Ṣii silẹ pajawiri PIN (Onini nikan)
-duress_help	iyan. Ti PIN yii ba ti tẹ ni ṣiṣi silẹ dipo tirẹ, gbogbo awọn titẹ sii iwe ni a parẹ (titaja, awọn iwe akọọlẹ, itan-akọọlẹ) ati pe titi yoo ṣii bi Olohun ti n wo deede - awọn ohun kan, awọn idiyele, awọn iṣiro, oṣiṣẹ ati awọn eto duro. Eto ati atunto ko paarẹ. Lo nikan ti o ba fi agbara mu lati ṣii. Fi òfo silẹ ki o fipamọ lati paa. Maṣe jẹ kanna bi PIN ẹnikẹni.
+duress_help	Offline Server/Client LAN nikan — kii ṣe cloud. Pa dipo aiyipada: Oniwun tan ni ẹẹkan nipa fipamọ PIN yii (Ẹgbẹ, paapaa lori Client till). Ti PIN yii ba jẹ titẹ ni ṣiṣi dipo PIN oṣiṣẹ gidi, awọn titẹ iwe lori Server yoo parẹ ati tabili ṣii bi Oniwun ti o dabi deede — awọn oṣuwọn, awọn ẹgbẹ, awọn agbegbe, oṣiṣẹ ati eto wa. Schema ati config kii ṣe parẹ. Maṣe jẹ kanna bi PIN ẹnikẹni. Pa pẹlu bọtini mimọ.
 duress_pin_ph	Pajawiri PIN (4-12 awọn nọmba)
 duress_confirm_ph	Tẹ lẹẹkansi lati jẹrisi
 save_duress_pin	Fi pajawiri pamọ PIN

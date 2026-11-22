@@ -535,7 +535,7 @@ unmark	Desmarkatu
 update_my_password	Eguneratu nire pasahitza
 update_my_pin	Eguneratu nire saio-hasiera
 duress_heading	Larrialdi-desblokeo PINa (Jabea soilik)
-duress_help	Aukerakoa. PIN hau desblokeatzeko orduan idazten bada zurea ordez, liburu-sarrera guztiak ezabatzen dira (salmentak, liburu-liburuak, historia) eta kutxatila Jabe gisa irekitzen da normalean: elementuak, prezioak, mostradoreak, langileak eta ezarpenak geratzen dira. Eskema eta konfigurazioa ez dira ezabatzen. Erabili soilik desblokeatzera behartuta zaudenean. Utzi hutsik eta gorde itzaltzeko. Inoiz ez da inoren PINaren berdina.
+duress_help	Offline Server/Client LAN soilik — ez da hodeiko eginbidea. Desaktibatuta lehenetsita: Jabeak behin aktibatzen du PIN hau gordeta (Taldea, Client kutxan ere). Desblokeatzean benetako langile PIN baten ordez PIN hau idazten bada, liburu-sarrerak ezabatzen dira Serverrean eta mahaia Jabe gisa irekitzen da itxura normalean — tarifak, aldeak, zonak, langileak eta ezarpenak geratzen dira. Eskema eta konfigurazioa ez dira ezabatzen. Inoren PIN berdina inoiz ez. Itzali garbitu botoiarekin.
 duress_pin_ph	Larrialdi PINa (4–12 digitu)
 duress_confirm_ph	Idatzi berriro berresteko
 save_duress_pin	Gorde larrialdi PINa

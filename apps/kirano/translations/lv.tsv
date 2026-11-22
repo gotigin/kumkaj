@@ -535,7 +535,7 @@ unmark	Noņemt atzīmi
 update_my_password	Atjaunināt manu paroli
 update_my_pin	Atjaunināt manu pieteikšanos
 duress_heading	Ārkārtas atbloķēšanas PIN (tikai īpašnieks)
-duress_help	Pēc izvēles. Ja atbloķēšanas laikā tiek ievadīts šis PIN kods, nevis jūsu, visi grāmatu ieraksti tiek dzēsti (pārdošana, virsgrāmatas, vēsture) un kase tiek atvērta, kā īpašnieks izskatās normāli — preces, cenas, skaitītāji, darbinieki un iestatījumi paliek. Shēma un konfigurācija netiek dzēsta. Izmantojiet tikai tad, ja esat spiests atbloķēt. Atstājiet tukšu un saglabājiet, lai izslēgtu. Nekad nav tas pats, kas nevienam.
+duress_help	Tikai offline Server/Client LAN — nav mākoņa funkcija. Pēc noklusējuma izslēgts: Īpašnieks ieslēdz vienreiz, saglabājot šo PIN (Komanda, arī uz Client kases). Ja atslēdzot ievada šo PIN vietā īsta personāla PIN, grāmatu ieraksti uz Server tiek dzēsti un galds atveras kā Īpašnieks ar normālu izskatu — tarifi, puses, zonas, personāls un iestatījumi paliek. Shēma un konfigurācija netiek dzēsta. Nekad tāds pats kā kāda PIN. Izslēdziet ar notīrīšanas pogu.
 duress_pin_ph	Ārkārtas PIN (4–12 cipari)
 duress_confirm_ph	Ierakstiet vēlreiz, lai apstiprinātu
 save_duress_pin	Saglabāt ārkārtas PIN

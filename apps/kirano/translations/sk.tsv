@@ -535,7 +535,7 @@ unmark	Zrušiť označenie
 update_my_password	Aktualizujte moje heslo
 update_my_pin	Aktualizujte moje prihlásenie
 duress_heading	Núdzové odomknutie PIN (iba vlastník)
-duress_help	Voliteľné. Ak tento PIN zadáte pri odomykaní namiesto vášho, všetky položky v knihách sa vymažú (predaj, účtovné knihy, história) a pokladňa sa otvorí ako vlastník vyzerá normálne – položky, ceny, pulty, personál a nastavenia zostanú. Schéma a konfigurácia sa neodstránia. Používajte iba vtedy, ak ste nútení odomknúť. Ak chcete vypnúť, nechajte prázdne a uložte. Nikdy nie je rovnaký ako PIN kohokoľvek.
+duress_help	Len offline Server/Client LAN — nie je cloud funkcia. Predvolene vypnuté: Majiteľ to raz zapne uložením tohto PIN (Tím, aj na pokladni Client). Ak sa pri odomknutí zadá tento PIN namiesto skutočného personálneho PIN, zápisy kníh na Serveri sa vymažú a pult sa otvorí ako Majiteľ s normálnym vzhľadom — sadzby, strany, zóny, personál a nastavenia ostanú. Schéma a konfigurácia sa nemažú. Nikdy rovnaký ako niečí PIN. Vypnite tlačidlom vymazať.
 duress_pin_ph	Núdzové PIN (4–12 číslic)
 duress_confirm_ph	Potvrďte opätovným zadaním
 save_duress_pin	Uložiť núdzovú situáciu PIN

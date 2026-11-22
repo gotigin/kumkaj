@@ -535,7 +535,7 @@ unmark	Makni oznaku
 update_my_password	Ažuriraj moju lozinku
 update_my_pin	Ažuriraj moju prijavu
 duress_heading	PIN za hitno otključavanje (samo Vlasnik)
-duress_help	Neobavezno. Ako se ovaj PIN upiše pri otključavanju umjesto vašeg, brišu se svi unosi u knjige (prodaja, knjige, povijest) i blagajna se otvara kao Vlasnik i izgleda normalno — stavke, cijene, šalteri, osoblje i postavke ostaju. Shema i konfiguracija se ne brišu. Koristite samo ako ste prisiljeni otključati. Ostavite prazno i ​​spremite za isključivanje. Nikada isti kao nečiji PIN.
+duress_help	Samo offline Server/Client LAN — nije cloud značajka. Isključeno prema zadanim: Vlasnik ga uključi jednom spremanjem ovog PIN-a (Tim, i na Client blagajni). Ako se ovaj PIN upiše pri otključavanju umjesto pravog osoblja PIN-a, brišu se unosi knjiga na Serveru i pult se otvara kao Vlasnik normalnog izgleda — tarife, strane, zone, osoblje i postavke ostaju. Shema i konfiguracija se ne brišu. Nikad isti kao nečiji PIN. Isključite gumbom za brisanje.
 duress_pin_ph	Hitni PIN (4–12 znamenki)
 duress_confirm_ph	Upišite opet za potvrdu
 save_duress_pin	Spremi hitni PIN

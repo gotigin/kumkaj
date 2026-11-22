@@ -535,7 +535,7 @@ unmark	Nyahtanda
 update_my_password	Kemas kini kata laluan saya
 update_my_pin	Kemas kini log masuk saya
 duress_heading	Buka kunci kecemasan PIN (Pemilik sahaja)
-duress_help	Pilihan. Jika PIN ini ditaip pada buka kunci dan bukannya milik anda, semua entri buku dipadamkan (jualan, lejar, sejarah) dan sehingga dibuka sebagai Pemilik kelihatan biasa — item, harga, kaunter, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadamkan. Gunakan hanya jika anda terpaksa membuka kunci. Biarkan kosong dan simpan untuk mematikan. Tidak pernah sama dengan PIN sesiapa sahaja.
+duress_help	Hanya Server/Client LAN luar talian — bukan ciri awan. Lalai dimatikan: Pemilik menghidupkannya sekali dengan menyimpan PIN ini (Pasukan, termasuk pada till Client). Jika PIN ini ditaip semasa buka kunci dan bukannya PIN kakitangan sebenar, entri buku dipadam pada Server dan till dibuka sebagai Owner nampak biasa — item, harga, kaunter, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadam. Jangan sama dengan PIN sesiapa. Matikan dengan butang kosong/padam.
 duress_pin_ph	Kecemasan PIN (4–12 digit)
 duress_confirm_ph	Taip sekali lagi untuk mengesahkan
 save_duress_pin	Simpan kecemasan PIN

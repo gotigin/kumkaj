@@ -535,7 +535,7 @@ unmark	Bain an marc
 update_my_password	Nuashonraigh mo phasfhocal
 update_my_pin	Nuashonraigh mo shíniú isteach
 duress_heading	Díghlasáil éigeandála PIN (Úinéir amháin)
-duress_help	Roghnach. Má tá an UAP seo clóscríofa ag an díghlasáil seachas mise, scriostar gach iontráil leabhar (díolacháin, mórleabhair, stair) agus osclaíonn an till mar Úinéir ag breathnú go gnáth - fanann na míreanna, praghsanna, cuntair, foireann agus socruithe. Ní scriostar scéimre agus cumraíocht. Bain úsáid as ach amháin má tá tú éigean a dhíghlasáil. Fág bán agus sábháil chun é a mhúchadh. Ná mar a chéile le PIN aon duine.
+duress_help	Server/Client LAN as líne amháin — ní gné néil é. As de réir réamhshocraithe: Casann an tÚinéir air uair amháin tríd an PIN seo a shábháil (Foireann, ar till Client freisin). Má chlóscríobhtar an PIN seo ag díghlasáil in ionad PIN foirne fíor, scriostar iontrálacha leabhar ar an Server agus osclaíonn an deasc mar Úinéir a bhreathnaíonn normal — fanann rátaí, páirtithe, criosanna, foireann agus socruithe. Ní scriostar an scéimre ná an chumraíocht. Ná bíodh sé mar an gcéanna le PIN aon duine. Múch leis an gcnaipe glanta.
 duress_pin_ph	Paindéal Éigeandála (4–12 dhigit)
 duress_confirm_ph	Cineál arís chun a dhearbhú
 save_duress_pin	Sábháil PIN éigeandála

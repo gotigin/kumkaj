@@ -535,7 +535,7 @@ unmark	Markierung aufheben
 update_my_password	Mein Passwort ändern
 update_my_pin	Meine PIN ändern
 duress_heading	Notfall-Entsperr-PIN (nur Inhaber)
-duress_help	Optional. Wird diese PIN beim Entsperren statt Ihrer eingegeben, werden alle Bucheinträge gelöscht (Verkäufe, Bücher, Verlauf) und die Kasse öffnet sich als Inhaber, scheinbar normal — Artikel, Preise, Theken, Personal und Einstellungen bleiben. Schema und Konfiguration werden nicht gelöscht. Nur nutzen, wenn Sie zum Entsperren gezwungen werden. Leer lassen und speichern zum Ausschalten. Niemals dieselbe PIN wie irgendwer.
+duress_help	Nur Offline-Server/Client-LAN — kein Cloud-Feature. Standard aus: Owner schaltet es einmal an, indem er diese PIN speichert (Team, auch auf Client-Kasse). Wird diese PIN beim Entsperren statt einer echten Mitarbeiter-PIN eingegeben, werden Buchungen auf dem Server gelöscht und die Kasse öffnet als Owner normal wirkend — Artikel, Preise, Theken, Personal und Einstellungen bleiben. Schema und Config werden nicht gelöscht. Niemals dieselbe PIN wie jemand anderes. Ausschalten mit der Löschen-Taste.
 duress_pin_ph	Notfall-PIN (4–12 Ziffern)
 duress_confirm_ph	Nochmals eingeben
 save_duress_pin	Notfall-PIN speichern

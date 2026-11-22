@@ -535,7 +535,7 @@ unmark	Dad-nodi
 update_my_password	Diweddaru fy nghyfrinair
 update_my_pin	Diweddaru fy mewngofnodi
 duress_heading	PIN datgloi argyfwng (Perchennog yn unig)
-duress_help	Dewisol. Os yw'r PIN hwn wedi'i deipio wrth ddatgloi yn lle'ch un chi, caiff pob cofnod llyfr ei ddileu (gwerthiannau, cyfriflyfrau, hanes) ac mae'r til yn agor fel Perchennog yn edrych yn normal - mae eitemau, prisiau, cownteri, staff a gosodiadau yn aros. Nid yw sgema a chyfluniad yn cael eu dileu. Defnyddiwch dim ond os cewch eich gorfodi i ddatgloi. Gadewch yn wag a chadwch i ddiffodd. Byth yr un fath â PIN unrhyw un.
+duress_help	Dim ond Server/Client LAN all-lein — nid nodwedd cwmwl. Diffodd yn ddiofyn: Mae’r Perchennog yn ei droi ymlaen unwaith drwy gadw’r PIN hwn (Tîm, hefyd ar till Client). Os teipir y PIN hwn wrth ddatgloi yn lle PIN staff go iawn, mae cofnodion llyfrau ar y Server yn cael eu dileu a’r ddesg yn agor fel Perchennog sy’n edrych yn normal — cyfraddau, partïon, parthau, staff a gosodiadau yn aros. Nid yw’r cynllun a’r cyfluniad yn cael eu dileu. Byth yr un fath â PIN unrhyw un. Diffoddwch gyda’r botwm clirio.
 duress_pin_ph	PIN argyfwng (4–12 digid)
 duress_confirm_ph	Teipiwch eto i gadarnhau
 save_duress_pin	Cadw PIN argyfwng

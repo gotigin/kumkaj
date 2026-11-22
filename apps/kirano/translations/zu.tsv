@@ -535,7 +535,7 @@ unmark	Susa ukumaka
 update_my_password	Buyekeza iphasiwedi yami
 update_my_pin	Buyekeza ukungena kwami ngemvume
 duress_heading	Ukuvula izimo eziphuthumayo PIN (Umnikazi kuphela)
-duress_help	Ongakukhetha. Uma le phinikhodi ibhalwe ekuvuleni esikhundleni seyakho, konke okufakiwe kwezincwadi kuyasulwa (ukuthengisa, amaleja, umlando) futhi ithayela livuleka njengomnikazi elibukeka lijwayelekile — izinto, amanani, izinto zokubala, abasebenzi nezilungiselelo zihlala. I-schema ne-config akususwa. Sebenzisa kuphela uma uphoqelekile ukuthi uvule. Shiya kungenalutho futhi ulondoloze ukuze uvale. Ayifani nephinikhodi yanoma ubani.
+duress_help	I-offline Server/Client LAN kuphela — akuyona cloud. Kuvaliwe ngokuzenzakalelayo: Umnikazi uyivula kanye ngokulondoloza le PIN (Ithimba, nakwi-Client till). Uma le PIN ithayipha ekuvuleni esikhundleni se-PIN yabasebenzi yangempela, okufakiwe ezincwadini ku-Server kuyasulwa futhi ideski livuleka njengoMnikazi obukeka ujwayelekile — amanani, izinhlangano, izindawo, abasebenzi nezilungiselelo ziyahlala. I-schema ne-config azisulwa. Ungalokothi ifane ne-PIN yanoma ubani. Vala ngenkinobho yokusula.
 duress_pin_ph	Isimo esiphuthumayo PIN (amadijithi angu-4–12)
 duress_confirm_ph	Thayipha futhi ukuze uqinisekise
 save_duress_pin	Londoloza isimo esiphuthumayo PIN

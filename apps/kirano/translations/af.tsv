@@ -535,7 +535,7 @@ unmark	Onmerk
 update_my_password	Update my wagwoord
 update_my_pin	Update my aanmelding
 duress_heading	Noodontgrendelings-PIN (Eienaar alleen)
-duress_help	Opsioneel. As hierdie PIN by ontsluiting in plaas van joune ingetik word, word alle boekinskrywings uitgevee (verkope, grootboeke, geskiedenis) en die kasregister maak oop as Eienaar en lyk normaal — items, pryse, toonbanke, personeel en instellings bly. Skema en konfigurasie word nie uitgevee nie. Gebruik net as jy gedwing word om te ontsluit. Laat leeg en stoor om dit af te skakel. Nooit dieselfde as enigiemand se PIN nie.
+duress_help	Slegs vanlyn Server/Client LAN — nie 'n wolkfunksie nie. Verstek af: Eienaar skakel dit een keer aan deur hierdie PIN te stoor (Span, ook op 'n Client-kas). As hierdie PIN by ontsluiting in plaas van 'n regte personeel-PIN getik word, word boekeinskrywings op die Server gewis en die lessenaar oop as Eienaar wat normaal lyk — tariewe, partye, sones, personeel en instellings bly. Skema en konfigurasie word nie geskrap nie. Nooit dieselfde as enigiemand se PIN nie. Skakel af met die wis-knoppie.
 duress_pin_ph	Nood-PIN (4–12 syfers)
 duress_confirm_ph	Tipe weer om te bevestig
 save_duress_pin	Stoor nood-PIN

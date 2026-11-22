@@ -535,7 +535,7 @@ unmark	Afmerkja
 update_my_password	Uppfærðu lykilorðið mitt
 update_my_pin	Uppfærðu innskráninguna mína
 duress_heading	Neyðaropnun PIN (aðeins eigandi)
-duress_help	Valfrjálst. Ef þetta PIN-númer er slegið inn við aflæsingu í stað þinnar, þurrkast allar bókafærslur út (sala, bókhald, sögu) og kassann opnast eins og Eigandi lítur eðlilega út - hlutir, verð, teljarar, starfsfólk og stillingar haldast. Skema og stillingum er ekki eytt. Notaðu aðeins ef þú neyðist til að opna. Skildu eftir autt og vistaðu til að slökkva á. Aldrei það sama og PIN-númer neins.
+duress_help	Aðeins offline Server/Client LAN — ekki skýjaeiginleiki. Sjálfgefið af: Eigandi kveikir einu sinni með því að vista þennan PIN (Teymi, líka á Client kassa). Ef þessi PIN er sleginn inn við opnun í stað raunverulegs starfsmanna PIN, eru bókfærslur á Server eyddar og borðið opnast sem Eigandi með eðlilegu útliti — gjöld, aðilar, svæði, starfsfólk og stillingar verða eftir. Skema og stillingar eru ekki eyddar. Aldrei sami og PIN einhvers. Slökktu með hreinsunarhnappinum.
 duress_pin_ph	Neyðarnúmer PIN (4–12 tölustafir)
 duress_confirm_ph	Sláðu inn aftur til að staðfesta
 save_duress_pin	Vista neyðartilvik PIN

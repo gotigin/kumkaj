@@ -535,7 +535,7 @@ unmark	Pynduh dak
 update_my_password	Pynthymmai ia ka password jong nga
 update_my_pin	Pynthymmai ia ka jingrung jong nga
 duress_heading	Ka jingplie kyrkieh PIN (tang u trai)
-duress_help	Ba lah ban jied. Lada ia kane ka PIN la type ha ka por plie ha ka jaka jong ka jong phi, baroh ki jingthoh kot la pyndam noh (ki jingdie, ki kot lyngkdop, ka histori) bad ka till ka plie kum u Trai uba peit kumba ju long — ki tiar, ki dor, ki counter, ki nongtrei bad ki jingpynbeit ki sah. Ka schema bad ka config ba la buh. Pyndonkam tang lada phi shah pynbor ban plie. Ieh thylli bad save ban pynlip. Ym ju long kumjuh bad ka PIN jongno jongno ruh.
+duress_help	Tang Offline Server/Client LAN — ym dei ka jingleh cloud. Off da ka default: U Nongdon u pynlong ia kane ka PIN ha ka por ba u save (Team, ha ka Client till ruh). Lada ia kane ka PIN la type ha ka por ba plie ha ka jaka jong ka PIN u nongtrei ba shisha, ki entry jong ki kot ha u Server ki long ban pyndam noh bad ka shuki ka plie kum u Nongdon ba iohi normal — ki dor, ki party, ki zone, ki nongtrei bad ki setting ki sah. Schema bad config kim pyndam. Wat long kumba ka PIN jonguei ruh. Pynleit da ka knop clear.
 duress_pin_ph	Kyrkieh PIN (4-12 tylli ki dak)
 duress_confirm_ph	Type biang ban pynthikna
 save_duress_pin	Pyllait ia ka jingeh PIN
