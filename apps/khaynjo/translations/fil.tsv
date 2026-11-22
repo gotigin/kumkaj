@@ -405,7 +405,7 @@ add_station	Magdagdag ng istasyon
 add_table	Magdagdag ng hapag kainan
 add_unit	Magdagdag ng unit
 add_use_name	Idagdag / gamitin ang pangalang ito
-allow_extra_tills	Payagan ang mga dagdag na tills
+allow_extra_tills	Payagan ang mga dagdag na kahera
 amend	Baguhin
 apply_country_pack	Ilapat ang country pack
 datetime_appearance	Petsa at oras na hitsura
@@ -536,7 +536,7 @@ extra_note_bill_ph	Dagdag na tala sa bill / sale na ito
 extra_note_expense_ph	Dagdag na tala sa huling gastos
 extra_tills_heading	Mga dagdag na kaha
 other_devices_help_heading	Mag-set up ng iba pang device
-other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang tills. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Maghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server. Ang mga printer sa kusina ay nakatakda sa Server (Mga Setting → Mga Printer) — ang mga dagdag na till ay nagpapadala ng KOTs doon.
+other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang kahera. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Maghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server. Ang mga printer sa kusina ay nakatakda sa Server (Mga Setting → Mga Printer) — ang mga dagdag na kahera ay nagpapadala ng KOTs doon.
 forget_shop	Kalimutan ang tindahang ito
 goods_received	Natanggap ang mga kalakal
 import_day	Araw ng pag-import
@@ -637,7 +637,7 @@ shop	Tindahan
 show	Ipakita
 spreadsheet_csv	Talaan (CSV)
 start_fresh	Magsimula ng bago
-stop_extra_tills	Itigil ang mga extra tills
+stop_extra_tills	Itigil ang mga extra kahera
 floor_cols_ph	Mga hanay
 floor_cols_fit	Pagkasyahin ang screen
 floor_cols_fit_sub	{n} kasya dito
@@ -680,7 +680,7 @@ lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Ikonekta ang device na ito sa Wi‑Fi para sa isang address.
 lan_no_address	Wala pang Wi‑Fi address — kumonekta sa shop Wi‑Fi.
 lan_not_listening	Hindi tumatanggap ng mga device (port {port} busy). I-restart ang app.
-lan_tills_off	Naka-off ang mga extra tills. Payagan silang payagan ang isa pang device na sumali.
+lan_tills_off	Naka-off ang mga extra kahera. Payagan silang payagan ang isa pang device na sumali.
 paired_with	Ipinares · {url}
 not_paired	Hindi ipinares
 choose_device_use	Piliin ang Server, Client, o i-restore ang backup.
@@ -919,7 +919,7 @@ unmark	Alisin ang marka
 update_my_password	I-update ang aking password
 update_my_pin	I-update ang aking pag-sign in
 duress_heading	Emergency unlock PIN (May-ari lang)
-duress_help	Opsyonal. Kung ang PIN na ito ay nai-type sa pag-unlock sa halip na sa iyo, ang lahat ng mga entry sa ledger ay mapupunas (mga benta, ledger, history) at ang till ay magbubukas bilang May-ari na mukhang normal — ang menu, mga presyo, dining table, staff at mga setting ay mananatili. Ang schema at config ay hindi tinatanggal. Gamitin lang kung napipilitan kang mag-unlock. Iwanang blangko at i-save para i-off. Hindi kailanman katulad ng PIN ng sinuman.
+duress_help	Opsyonal. Kung ang PIN na ito ay nai-type sa pag-unlock sa halip na sa iyo, ang lahat ng mga entry sa ledger ay mapupunas (mga benta, ledger, history) at ang kahera ay magbubukas bilang May-ari na mukhang normal — ang menu, mga presyo, dining table, staff at mga setting ay mananatili. Ang schema at config ay hindi tinatanggal. Gamitin lang kung napipilitan kang mag-unlock. Iwanang blangko at i-save para i-off. Hindi kailanman katulad ng PIN ng sinuman.
 duress_pin_ph	Emergency PIN (4–12 digit)
 duress_confirm_ph	Mag-type muli para kumpirmahin
 save_duress_pin	I-save ang emergency PIN
@@ -1043,7 +1043,7 @@ pin_hint_new	Bagong 4–12 digit na May-ari PIN · Enter o I-unlock
 pin_hint_shop_code	Mamili ng device · code ng pagpapares {}
 pin_hint_books	Hawak ng device na ito ang mga ledger
 pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
-pin_hint_pair_first	Extra till — ipares muna sa shop device
+pin_hint_pair_first	Dagdag na kahera — ipares muna sa shop device
 unlock_to_continue	I-unlock upang magpatuloy
 no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team
 icon_new_selected	Icon: bagong file ang napili — i-tap ang I-save ang brand
@@ -1183,7 +1183,7 @@ right_with_approval	Nang may pagsang-ayon
 right_denied	Hindi pinapayagan
 editing_staff	Pag-edit
 finding_server	Naghahanap ng server ng shop dito Wi‑Fi…
-no_server_found	Walang nahanap. Sa Server: Mga Setting → Iba pang mga device → Payagan ang mga dagdag na tills (pareho Wi‑Fi). O i-type ang IP na ipinapakita doon.
+no_server_found	Walang nahanap. Sa Server: Mga Setting → Iba pang mga device → Payagan ang mga dagdag na kahera (pareho Wi‑Fi). O i-type ang IP na ipinapakita doon.
 servers_found_pick	I-tap ang shop na gusto mong kumonekta.
 server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkatapos ay Ipares ngayon.
 print_bill	I-print ang bill

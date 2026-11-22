@@ -405,7 +405,7 @@ add_station	Tambah stesen
 add_table	Tambah meja makan
 add_unit	Tambah unit
 add_use_name	Tambah / gunakan nama ini
-allow_extra_tills	Benarkan tills tambahan
+allow_extra_tills	Benarkan kasir tambahan
 amend	Pinda
 apply_country_pack	Gunakan pek negara
 datetime_appearance	Penampilan tarikh & masa
@@ -637,7 +637,7 @@ shop	Kedai
 show	Tunjukkan
 spreadsheet_csv	Hamparan (CSV)
 start_fresh	Mulakan dengan segar
-stop_extra_tills	Berhenti tills tambahan
+stop_extra_tills	Berhenti kasir tambahan
 floor_cols_ph	Lajur
 floor_cols_fit	Muatkan skrin
 floor_cols_fit_sub	{n} muat di sini
@@ -680,7 +680,7 @@ lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Sambungkan peranti ini ke Wi‑Fi untuk mendapatkan alamat.
 lan_no_address	Belum ada alamat Wi‑Fi — sambung ke kedai Wi‑Fi.
 lan_not_listening	Tidak menerima peranti (port {port} sibuk). Mulakan semula apl.
-lan_tills_off	Tills tambahan dimatikan. Benarkan mereka membenarkan peranti lain bergabung.
+lan_tills_off	Kasir tambahan dimatikan. Benarkan mereka membenarkan peranti lain bergabung.
 paired_with	Berpasangan · {url}
 not_paired	Tidak berpasangan
 choose_device_use	Pilih Pelayan, Klien, atau pulihkan sandaran.
@@ -1183,7 +1183,7 @@ right_with_approval	Dengan kelulusan
 right_denied	Tidak dibenarkan
 editing_staff	Mengedit
 finding_server	Mencari pelayan kedai pada Wi‑Fi ini…
-no_server_found	Tiada ditemui. Pada Pelayan: Tetapan → Peranti lain → Benarkan tills tambahan (sama Wi‑Fi). Atau taip IP yang ditunjukkan di sana.
+no_server_found	Tiada ditemui. Pada Pelayan: Tetapan → Peranti lain → Benarkan kasir tambahan (sama Wi‑Fi). Atau taip IP yang ditunjukkan di sana.
 servers_found_pick	Ketik kedai yang ingin anda sambungkan.
 server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasangkan sekarang.
 print_bill	Cetak bil

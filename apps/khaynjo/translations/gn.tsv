@@ -405,7 +405,7 @@ add_station	Ombojoapy estación
 add_table	Oñemoĩve mesa ojekaru haguã
 add_unit	Oñemoĩve unidad
 add_use_name	Emoĩ / eipuru ko téra
-allow_extra_tills	Ojeheja umi tills extra
+allow_extra_tills	Ojeheja umi caja extra
 amend	Omoambue
 apply_country_pack	Ojeporu paquete tetãme
 datetime_appearance	Ára & aravo ojehechauka
@@ -509,17 +509,17 @@ card_terminal_optional	Terminal de tarjeta / enlace de pago (opcional oĩ jave i
 copy_report	Ekopia marandu
 counted_cash_ph	Ojeipapa efectivo oĩva cajón-pe
 country_tax	Tetã & impuesto rehegua
-tax_chrome	Umi etiqueta tributaria rehegua till
+tax_chrome	Umi etiqueta tributaria rehegua caja
 tax_chrome_help	Oñembogue jave, pe mesa jerure omokañy umi líneas GST/impuesto ñembohepy ha umi GST-repy-pype ñemoĩ. Umi impuesto tasa ha Tetã ha impuesto ñemboheko opyta — emyandy jey umi etiqueta araka'eve. Unos ñemuha ñemboguatarã oñepyrũ kóva oñembogue reheve.
 tax_chrome_on	Ohechauka
 tax_chrome_off	Oñomi
-tax_chrome_saved_on	Umi etiqueta tributaria rehegua till
-tax_chrome_saved_off	Umi etiqueta tributaria kañymby till rehe
-tax_invoice_till	Factura tributaria rehegua till
+tax_chrome_saved_on	Umi etiqueta tributaria rehegua caja
+tax_chrome_saved_off	Umi etiqueta tributaria kañymby caja rehe
+tax_invoice_till	Factura tributaria rehegua caja
 tax_invoice_help	Oñembogue jave, umi cuenta ha'e nota viru añoite ha umi votõ Factura impuesto / Nota viru oñemokañy mesa jerurépe. Unos ñemuha ñemboguatarã oñepyrũ kóva oñembogue reheve — emyandy Ehechauka araka'eve reiporavo jey hag̃ua Factura impuesto.
 tax_invoice_on	Ohechauka
 tax_invoice_off	Oñomi
-tax_invoice_saved_on	Factura tributaria rehegua till
+tax_invoice_saved_on	Factura tributaria rehegua caja
 tax_invoice_saved_off	Factura tributaria kañymby — Memo efectivo añoite
 pay_methods	Umi mba’e ojejapóva ojepaga haguã
 pay_methods_help	Mba'e votõ ojehechauka Ehupyty pago-pe. Viru opyta tapiaite. Unos ñemuha ñemboguatarã oñepyrũ Viru añoite reheve — emyandy jey ápe UPI / Tarjeta / Crédito / Ñemboja'o.
@@ -534,9 +534,9 @@ expense_heading	Gasto rehegua
 export_day	Exportación ára
 extra_note_bill_ph	Nota extra ko factura / venta rehe
 extra_note_expense_ph	Nota extra gasto paha rehegua
-extra_tills_heading	Tills extra rehegua
+extra_tills_heading	Caja extra rehegua
 other_devices_help_heading	Emohenda ambue tembipuru
-other_devices_help	Ko tembipuru’ípe (Servidor): Ambue tembipuru → Eheja tills extra. Ñañamindu’u pe código de emparejamiento ha dirección Wi‑Fi rehe. Epoko Eheja ambue tembipurukuéra toñembojoaju ojehechaukáramo. Peteĩ komputadórape, epoko Eñepyrũ ko komputadóragui. Ambue tembipuru’ípe: emoĩ pe app, eiporavo Modo Cliente, Eheka pe tenda servidor (térã ehai dirección), emoinge pe código de emparejamiento, Embojoaju ko’áĝa. Umi pedido ohaꞌarõ tembipuru’ípe oguejy ramo Wi‑Fi ha oho Servidor ombohovái jeývo. Umi impresora cocina rehegua oñemohenda Servidor-pe (Configuración → Impresora) — tills extra omondo KOTs upépe.
+other_devices_help	Ko tembipuru’ípe (Servidor): Ambue tembipuru → Eheja caja extra. Ñañamindu’u pe código de emparejamiento ha dirección Wi‑Fi rehe. Epoko Eheja ambue tembipurukuéra toñembojoaju ojehechaukáramo. Peteĩ komputadórape, epoko Eñepyrũ ko komputadóragui. Ambue tembipuru’ípe: emoĩ pe app, eiporavo Modo Cliente, Eheka pe tenda servidor (térã ehai dirección), emoinge pe código de emparejamiento, Embojoaju ko’áĝa. Umi pedido ohaꞌarõ tembipuru’ípe oguejy ramo Wi‑Fi ha oho Servidor ombohovái jeývo. Umi impresora cocina rehegua oñemohenda Servidor-pe (Configuración → Impresora) — caja extra omondo KOTs upépe.
 forget_shop	Hesarái ko tendagui
 goods_received	Mba’erepy ohupytýva
 import_day	Importación ára
@@ -637,7 +637,7 @@ shop	Tenda
 show	Ohechauka
 spreadsheet_csv	Hoja de cálculo (CSV) rehegua .
 start_fresh	Eñepyrũ pyahu
-stop_extra_tills	Ojejoko umi tills extra
+stop_extra_tills	Ojejoko umi caja extra
 floor_cols_ph	Umi columna rehegua
 floor_cols_fit	Pantalla ajuste rehegua
 floor_cols_fit_sub	{n} oike ko’ápe
@@ -662,7 +662,7 @@ last_seen	ojehecha
 copy_pair_code	Ekopia código de emparejamiento rehegua
 new_pair_code	Código de emparejamiento pyahu
 pair_finishing	Par de acabado... oaplikávo umi aranduka tenda rehegua
-pair_opening	Oipe'ávo pe till...
+pair_opening	Oipe'ávo pe caja...
 pair_copied	Código de emparejamiento ojekopia
 kot_waiting	Oha’arõvo omondo
 lan_offline_waiting	Servidor de tenda ndaikatúiva oñeguahẽ · {n} oha'arõva
@@ -697,7 +697,7 @@ backup_copy_failed	Pe copia de seguridad ndaikatúi oñeñongatu upépe — eipo
 clock_off	Ko tembipuru reloj oĩ {min} min tenda servidor-gui — emohenda aravo hekopete ko tembipuru’ípe
 printers_heading	Impresora-kuéra
 printers_help	Eheka impresorakuéra, epoko peteĩva rehe eiporavo hag̃ua, upéi Eimprimi peteĩ página prueba rehegua upe tembipuru’ípe añoite. Impresora factura rehegua: Factura & formato KOT → Factura. Impresora kosina rehegua: Kosina → Estaciones de cocina (emoĩ raẽ peteĩ estación — Find ndojapói estaciones).
-printers_host_only	Umi impresora oñemohenda tembipuru’i tenda rehegua (Servidor). Kóva till omondo factura ha KOTs upépe — Eheka / emoĩ / easigna estancia Servidor-pe. Página de prueba ha impresión factura tuichakue oho Servidor-pe.
+printers_host_only	Umi impresora oñemohenda tembipuru’i tenda rehegua (Servidor). Kóva caja omondo factura ha KOTs upépe — Eheka / emoĩ / easigna estancia Servidor-pe. Página de prueba ha impresión factura tuichakue oho Servidor-pe.
 printers_find_heading	Eheka umi impresora
 printers_find_tip	Find oescanea ko dispositivo ha omantene lista ára ha ára.
 printers_pool_heading	Impresora-kuéra
@@ -1043,7 +1043,7 @@ pin_hint_new	Ipyahu 4–12 dígito Ijára PIN · Eike térã Emboguejy
 pin_hint_shop_code	Tenda tembipuru · código de emparejamiento {} .
 pin_hint_books	Ko aparato oguereko umi aranduka
 pin_hint_paired	Extra hasta emparejado — desbloqueo oñevende haguã
-pin_hint_pair_first	Extra till — embojoaju pe tembipuru tenda rehegua raẽ
+pin_hint_pair_first	Extra caja — embojoaju pe tembipuru tenda rehegua raẽ
 unlock_to_continue	Edesblokea eñepyrũ hag̃ua
 no_staff_yet	Ndaipóri gueteri personal — desbloqueo Propietario ramo, upéi Equipo
 icon_new_selected	Icono: archivo pyahu ojeporavóva — epoko Ñongatu marca rehe
@@ -1183,7 +1183,7 @@ right_with_approval	Aprobación reheve
 right_denied	Ndojehejái
 editing_staff	Edición rehegua
 finding_server	Ojehekávo pe tenda servidor ko Wi‑Fi...
-no_server_found	Ndaipóri ojejuhúva. Servidor-pe: Ñemboheko → Ambue tembipuru → Eheja tills extra (peteĩchagua Wi‑Fi). Térã ehai IP ojehechaukáva upépe.
+no_server_found	Ndaipóri ojejuhúva. Servidor-pe: Ñemboheko → Ambue tembipuru → Eheja caja extra (peteĩchagua Wi‑Fi). Térã ehai IP ojehechaukáva upépe.
 servers_found_pick	Epoko pe tenda reñembojoajuséva rehe.
 server_host_selected	Eipurúvo {host} — emoinge pe código de emparejamiento, upéi Embojoaju ko’áĝa.
 print_bill	Impresión factura rehegua

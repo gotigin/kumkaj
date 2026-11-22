@@ -366,7 +366,7 @@ new_server_name_ph	Ainm freastalaí nua (roghnach)
 server_remove_pin_ph	PIN úinéara chun freastalaí a bhaint
 only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhaint
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
-device_setup_help	Is féidir leis an ngléas seo a bheith ina siopa (Freastalaí) nó till breise (Cliant). Ní scriosann oscailt ceann amháin an ceann eile. Cuimhníonn Cliant péireáilte ar an siopa — gan cód péireála ar gach atosú. Gan Freastalaí fós, osclaíonn «Athbhunú cúltaca» na leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú sna Socruithe).
+device_setup_help	Is féidir leis an ngléas seo a bheith ina siopa (Freastalaí) nó bosca airgid breise (Cliant). Ní scriosann oscailt ceann amháin an ceann eile. Cuimhníonn Cliant péireáilte ar an siopa — gan cód péireála ar gach atosú. Gan Freastalaí fós, osclaíonn «Athbhunú cúltaca» na leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú sna Socruithe).
 app_template_heading	Teimpléid siopa
 app_template_blurb	Roghnaigh biachlár tosaigh. Fágann scipeáil siopa folamh.
 app_template_apply	Iompórtáil teimpléad
@@ -919,7 +919,7 @@ unmark	Bain an marc
 update_my_password	Nuashonraigh mo phasfhocal
 update_my_pin	Nuashonraigh mo shíniú isteach
 duress_heading	Díghlasáil éigeandála PIN (Úinéir amháin)
-duress_help	Roghnach. Má chlóscríobhtar an PIN seo ag díghlasáil in ionad do do chuid féin, scriostar gach iontráil leabhar (díolacháin, lédair, stair) agus osclaítear an till mar Úinéir ag breathnú gnáth — fanann an roghchlár, praghsanna, táblaí, foireann agus socruithe. Ní scriostar scéim ná cumraíocht. Úsáid ach má tá tú daingnithe díghlasáil. Fág folamh agus sábháil chun é a mhúchadh. Ní bhíonn riamh mar an PIN aon duine eile.
+duress_help	Roghnach. Má chlóscríobhtar an PIN seo ag díghlasáil in ionad do do chuid féin, scriostar gach iontráil leabhar (díolacháin, lédair, stair) agus osclaítear an bosca airgid mar Úinéir ag breathnú gnáth — fanann an roghchlár, praghsanna, táblaí, foireann agus socruithe. Ní scriostar scéim ná cumraíocht. Úsáid ach má tá tú daingnithe díghlasáil. Fág folamh agus sábháil chun é a mhúchadh. Ní bhíonn riamh mar an PIN aon duine eile.
 duress_pin_ph	Paindéal Éigeandála (4–12 dhigit)
 duress_confirm_ph	Cineál arís chun a dhearbhú
 save_duress_pin	Sábháil PIN éigeandála
@@ -951,7 +951,7 @@ stamp_heading	Stampa
 stamp_image_help	Íomhá stampa roghnach ar bhilleanna clóite agus ar thaispeántas na gcuairteoirí.
 payment_qr_heading	Íocaíocht QR
 payment_qr_image_help	QR statach ar bhilleanna agus taispeáint aoi; murach sin, úsáideann íocaíocht QR UPI dinimiciúil ón VPA thuas.
-cash_in_hand	Airgead ar láimh (till)
+cash_in_hand	Airgead ar láimh (bosca airgid)
 change_my_pin_heading	Mo logáil isteach
 connect_to_server	Ceangail leis an "Server"
 counter_locked	Cuntar 01 · Dúnta

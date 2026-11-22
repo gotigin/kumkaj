@@ -1043,7 +1043,7 @@ pin_hint_new	Nový 4–12-miestny vlastník PIN · Zadajte alebo odomknite
 pin_hint_shop_code	Zariadenie obchodu · párovací kód {}
 pin_hint_books	Toto zariadenie drží knihy
 pin_hint_paired	Extra do spárovania – odomknite na predaj
-pin_hint_pair_first	Extra till — najskôr spárujte so zariadením obchodu
+pin_hint_pair_first	Extra pokladňa — najskôr spárujte so zariadením obchodu
 unlock_to_continue	Ak chcete pokračovať, odomknite
 no_staff_yet	Zatiaľ žiadny personál – odomknite ako vlastník, potom tím
 icon_new_selected	Ikona: vybratý nový súbor – klepnite na Uložiť značku

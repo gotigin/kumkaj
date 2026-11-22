@@ -405,7 +405,7 @@ add_station	Żid stazzjon
 add_table	Żid il-mejda
 add_unit	Żid l-unità
 add_use_name	Żid / uża dan l-isem
-allow_extra_tills	Ħalli tills żejda
+allow_extra_tills	Ħalli kaxxi żejda
 amend	Emenda
 apply_country_pack	Applika pakkett tal-pajjiż
 datetime_appearance	Id-dehra tad-data u l-ħin
@@ -514,7 +514,7 @@ tax_chrome_help	Meta mitfi, il-mejda tal-ordnijiet taħbi l-linji tal-istima tal
 tax_chrome_on	Uri
 tax_chrome_off	Aħbi
 tax_chrome_saved_on	Tikketti tat-taxxa fuq sall
-tax_chrome_saved_off	Tikketti tat-taxxa moħbija fuq till
+tax_chrome_saved_off	Tikketti tat-taxxa moħbija fuq kaxxa
 tax_invoice_till	Fattura tat-taxxa fuq sall
 tax_invoice_help	Meta mitfi, il-kontijiet huma biss irċevuti tal-flus kontanti u l-buttuni Fattura tat-taxxa / Irċevuta tal-flus jinħbew fuq il-mejda tal-ordnijiet. Xi mudelli tal-ħanut jibdew b'dan mitfi — ixgħel Uri meta trid biex terġa' tagħżel Fattura tat-taxxa.
 tax_invoice_on	Uri
@@ -536,7 +536,7 @@ extra_note_bill_ph	Nota żejda fuq dan il-kont/bejgħ
 extra_note_expense_ph	Nota żejda dwar l-aħħar spiża
 extra_tills_heading	Kaxxi żejda
 other_devices_help_heading	Waħħal apparati oħra
-other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli tills żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb. Stampaturi tal-kċina huma ssettjati fuq is-Server (Għażliet → Stampaturi) — tills żejda jibgħatu KOTs hemmhekk.
+other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli kaxxi żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb. Stampaturi tal-kċina huma ssettjati fuq is-Server (Għażliet → Stampaturi) — kaxxi żejda jibgħatu KOTs hemmhekk.
 forget_shop	Tinsa dan il-ħanut
 goods_received	Oġġetti riċevuti
 import_day	Jum l-importazzjoni
@@ -637,7 +637,7 @@ shop	Ħanut
 show	Uri
 spreadsheet_csv	Folja tad-Dejta (CSV)
 start_fresh	Ibda frisk
-stop_extra_tills	Waqqaf tills żejda
+stop_extra_tills	Waqqaf kaxxi żejda
 floor_cols_ph	Kolonni
 floor_cols_fit	Skrin tajbin
 floor_cols_fit_sub	{n} tajbin hawn
@@ -662,7 +662,7 @@ last_seen	jidher
 copy_pair_code	Ikkopja l-kodiċi tal-parir
 new_pair_code	Kodiċi ta 'tqabbil ġdid
 pair_finishing	Jirfinaw par... japplikaw il-kotba tal-ħanut
-pair_opening	Niftaħ it-till...
+pair_opening	Niftaħ it-kaxxa...
 pair_copied	Kodiċi ta' tqabbil kkupjat
 kot_waiting	Stennija biex tibgħat
 lan_offline_waiting	Server tal-ħanut ma jistax jintlaħaq · {n} qed jistenna
@@ -697,7 +697,7 @@ backup_copy_failed	Il-kopja tal-backup ma setgħetx tiġi ssejvjata hemmhekk —
 clock_off	L-arloġġ ta' dan l-apparat huwa {min} min barra mis-server tal-ħanut — issettja l-ħin it-tajjeb fuq dan l-apparat
 printers_heading	Stampaturi
 printers_help	Sib stampaturi, tektek wieħed biex tagħżelha, imbagħad Stampa paġna tat-test fuq dak l-apparat biss. Stampaturi ta' Bill: Kont u KOT format → Bill. Stampaturi tal-kċina: Kċina → Stazzjonijiet tal-kċina (żid stazzjon l-ewwel — Sib ma toħloqx stazzjonijiet).
-printers_host_only	Stampaturi huma ssettjati fuq l-apparat tal-ħanut (Server). Dan till jibgħat kontijiet u KOTs hemmhekk — Sib / żid / jassenja waqfa fuq is-Server. Il-paġna tat-test u d-daqs tal-istampar tal-kont imorru fis-Server.
+printers_host_only	Stampaturi huma ssettjati fuq l-apparat tal-ħanut (Server). Dan kaxxa jibgħat kontijiet u KOTs hemmhekk — Sib / żid / jassenja waqfa fuq is-Server. Il-paġna tat-test u d-daqs tal-istampar tal-kont imorru fis-Server.
 printers_find_heading	Sib stampaturi
 printers_find_tip	Sib tiskenja dan l-apparat u żżomm il-lista aġġornata.
 printers_pool_heading	Stampaturi
@@ -919,7 +919,7 @@ unmark	Neħħi l-marka
 update_my_password	Aġġorna l-password tiegħi
 update_my_pin	Aġġorna s-sign-in tiegħi
 duress_heading	PIN ta' sblokk ta' emerġenza (Sid biss)
-duress_help	Fakultattiv. Jekk dan il-PIN jiġi ttajpjat meta jinfetaħ minflok tiegħek, l-entrati kollha tal-kotba jintmesħu (bejgħ, kotba, storja) u t-till jiftaħ bħala Sid jidher normali — menu, prezzijiet, mwejjed, persunal u għażliet jibqgħu. L-iskema u l-konfigurazzjoni mhumiex imħassra. Uża biss jekk tkun sfurzat li tiftaħ. Ħalli vojt u issejvja biex titfi. Qatt l-istess bħall-PIN ta 'ħadd.
+duress_help	Fakultattiv. Jekk dan il-PIN jiġi ttajpjat meta jinfetaħ minflok tiegħek, l-entrati kollha tal-kotba jintmesħu (bejgħ, kotba, storja) u t-kaxxa jiftaħ bħala Sid jidher normali — menu, prezzijiet, mwejjed, persunal u għażliet jibqgħu. L-iskema u l-konfigurazzjoni mhumiex imħassra. Uża biss jekk tkun sfurzat li tiftaħ. Ħalli vojt u issejvja biex titfi. Qatt l-istess bħall-PIN ta 'ħadd.
 duress_pin_ph	PIN ta' Emerġenza (4–12-il ċifra)
 duress_confirm_ph	Erġa' ittajpja biex tikkonferma
 save_duress_pin	Issejvja PIN ta' emerġenza
@@ -951,7 +951,7 @@ stamp_heading	Timbru
 stamp_image_help	Immaġini tat-timbru fakultattiv fuq il-kontijiet stampati u l-wiri tal-mistieden.
 payment_qr_heading	Ħlas QR
 payment_qr_image_help	QR statiku fuq il-kontijiet u l-wiri tal-mistieden; inkella l-ħlas juża QR UPI dinamiku mill-VPA t'hawn fuq.
-cash_in_hand	Flus fl-idejn (till)
+cash_in_hand	Flus fl-idejn (kaxxa)
 change_my_pin_heading	Id-dħul tiegħi
 connect_to_server	Qabbad mas-Server
 counter_locked	Counter 01 · Imsakkar
@@ -1043,7 +1043,7 @@ pin_hint_new	PIN ġdid tas-Sid b'4–12-il ċifra · Daħħal jew Nisfrutta
 pin_hint_shop_code	Apparat tal-ħanut · kodiċi ta' pairing {}
 pin_hint_books	Dan l-apparat iżomm il-kotba
 pin_hint_paired	Till żejjed imqabbad — iftaħ biex tbigħ
-pin_hint_pair_first	Extra till — l-ewwel koppja mal-apparat tal-ħanut
+pin_hint_pair_first	Extra kaxxa — l-ewwel koppja mal-apparat tal-ħanut
 unlock_to_continue	Iftaħ biex tkompli
 no_staff_yet	Għadu l-ebda persunal — nisfrutta bħala Sid, imbagħad Tim
 icon_new_selected	Ikona: fajl ġdid magħżul — tektek Issejvja l-marka
@@ -1183,7 +1183,7 @@ right_with_approval	Bl-approvazzjoni
 right_denied	Mhux permess
 editing_staff	Editjar
 finding_server	Qed tfittex is-server tal-ħanut fuq dan il-Wi-Fi...
-no_server_found	Xejn misjub. Fuq is-Server: Għażliet → Apparat ieħor → Ħalli tills żejda (l-istess Wi‑Fi). Jew ittajpja l-IP muri hemmhekk.
+no_server_found	Xejn misjub. Fuq is-Server: Għażliet → Apparat ieħor → Ħalli kaxxi żejda (l-istess Wi‑Fi). Jew ittajpja l-IP muri hemmhekk.
 servers_found_pick	Tektek il-ħanut li trid tikkonnettja miegħu.
 server_host_selected	Bl-użu ta' {host} — daħħal il-kodiċi tat-tqabbil, imbagħad Pair issa.
 print_bill	Stampa polza

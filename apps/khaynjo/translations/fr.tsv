@@ -718,7 +718,7 @@ vp_delivery_escpos	Commandes thermiques ESC/POS
 virtual_printer_new	Nouvelle imprimante virtuelle
 virtual_printer_selected	Modification de « {name} » — touchez une autre dans la liste pour changer
 virtual_printer_tap_list	Touchez une imprimante virtuelle dans la liste pour la modifier
-config_layout_portrait	Standard portrait
+config_layout_portrait	Portrait
 config_layout_landscape	Paysage
 config_send_os	Spouleur système
 config_send_escpos	ESC/POS
@@ -777,11 +777,11 @@ printer_target_ph	Adresse ou nom système
 printer_target_default	imprimante par défaut
 printer_wire_heading	Format
 printer_wire_escpos	KOT
-printer_wire_os	Standard portrait
-printer_wire_os_portrait	Standard portrait
+printer_wire_os	Portrait
+printer_wire_os_portrait	Portrait
 printer_wire_os_landscape	Standard paysage
 printer_wire_escpos_short	KOT
-printer_wire_os_short	Standard portrait
+printer_wire_os_short	Portrait
 printer_wire_os_landscape_short	Paysage
 printer_format_custom	Nouveau format personnalisé
 printer_format_custom_label	Personnalisé

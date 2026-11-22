@@ -1043,7 +1043,7 @@ pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
 pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
 pin_hint_books	Ez a készülék a könyveket tárolja
 pin_hint_paired	Extra ig párosítva – oldja fel az eladáshoz
-pin_hint_pair_first	Extra till — először párosítsa a bolti eszközt
+pin_hint_pair_first	Extra kassza — először párosítsa a bolti eszközt
 unlock_to_continue	A folytatáshoz oldja fel a zárolást
 no_staff_yet	Még nincs személyzet – oldja fel tulajdonosként, majd csapatként
 icon_new_selected	Ikon: új fájl kiválasztva – érintse meg a Márka mentése lehetőséget

@@ -405,7 +405,7 @@ add_station	Bæta við stöð
 add_table	Bæta við borðstofuborði
 add_unit	Bæta við einingu
 add_use_name	Bættu við / notaðu þetta nafn
-allow_extra_tills	Leyfa auka tills
+allow_extra_tills	Leyfa auka kassa
 amend	Breyta
 apply_country_pack	Notaðu landspakka
 datetime_appearance	Útlit dagsetningar og tíma
@@ -509,17 +509,17 @@ card_terminal_optional	Kortastöð / greiðslutengil (valfrjálst þegar interne
 copy_report	Afrita skýrslu
 counted_cash_ph	Talið reiðufé í skúffu
 country_tax	Land & skattur
-tax_chrome	Skattmerkingar á till
+tax_chrome	Skattmerkingar á kassa
 tax_chrome_help	Þegar slökkt er felur pöntunarborðið GST/skattmatslínur og staðgengla fyrir GST í verði. Skatthlutföll og stillingar lands og skatts haldast — kveiktu aftur á merkjum hvenær sem er. Sum verslunarsniðmát byrja með slökkt á þessu.
 tax_chrome_on	Sýna
 tax_chrome_off	Fela
-tax_chrome_saved_on	Skattmerkingar á till
-tax_chrome_saved_off	Skattmerki falið á till
-tax_invoice_till	Skattreikningur á till
+tax_chrome_saved_on	Skattmerkingar á kassa
+tax_chrome_saved_off	Skattmerki falið á kassa
+tax_invoice_till	Skattreikningur á kassa
 tax_invoice_help	Þegar slökkt er eru reikningar aðeins staðgreiðslukvittanir og hnapparnir Skattreikningur / Staðgreiðslukvittun eru faldir á pöntunarborðinu. Sum verslunarsniðmát byrja með slökkt á þessu — kveiktu á Sýna hvenær sem er til að velja Skattreikning aftur.
 tax_invoice_on	Sýna
 tax_invoice_off	Fela
-tax_invoice_saved_on	Skattreikningur á till
+tax_invoice_saved_on	Skattreikningur á kassa
 tax_invoice_saved_off	Skattreikningur falinn - Aðeins staðgreiðsluminning
 pay_methods	Greiðslumáta
 pay_methods_help	Hvaða hnappar birtast í Taka við greiðslu. Reiðufé helst alltaf. Sum verslunarsniðmát byrja eingöngu með Reiðufé — kveiktu aftur á UPI / Kort / Lán / Skipta hér.

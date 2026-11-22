@@ -405,7 +405,7 @@ add_station	Fi ibudo kun
 add_table	Fi tabili ounjẹ kun
 add_unit	Fi ẹyọkan kun
 add_use_name	Fikun-un / lo orukọ yii
-allow_extra_tills	Gba afikun tills
+allow_extra_tills	Gba afikun tabili owó
 amend	Ṣe atunṣe
 apply_country_pack	Waye idii orilẹ-ede
 datetime_appearance	Ọjọ & irisi akoko
@@ -509,17 +509,17 @@ card_terminal_optional	ebute kaadi / ọna asopọ isanwo (aṣayan nigbati inta
 copy_report	Daakọ iroyin
 counted_cash_ph	Ti a kà owo ni duroa
 country_tax	Orilẹ-ede & owo-ori
-tax_chrome	Awọn aami-ori lori till
+tax_chrome	Awọn aami-ori lori tabili owó
 tax_chrome_help	Nígbà tí ó bá pa, tábìlì àṣẹ yóò fi àwọn ìlà ìṣirò GST/owó-orí àti àwọn àyè GST-nínú-iye pamọ́. Àwọn ìwọ̀n owó-orí àti ètò Orílẹ̀-èdè àti owó-orí yóò wà — tan àwọn àmì padà nígbàkúgbà. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú èyí ní pípa.
 tax_chrome_on	Fihan
 tax_chrome_off	Tọju
-tax_chrome_saved_on	Awọn aami-ori lori till
+tax_chrome_saved_on	Awọn aami-ori lori tabili owó
 tax_chrome_saved_off	Awọn aami-ori ti o pamọ titi di
-tax_invoice_till	risiti ori lori till
+tax_invoice_till	risiti ori lori tabili owó
 tax_invoice_help	Nígbà tí ó bá pa, àwọn ìwé owó jẹ́ ìwé owó-ọwọ́ nìkan, a sì fi àwọn bọ́tìnnì Ìwé owó-orí / Ìwé owó-ọwọ́ pamọ́ lórí tábìlì àṣẹ. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú èyí ní pípa — tan Fihàn nígbàkúgbà láti yan Ìwé owó-orí lẹ́ẹ̀kan sí i.
 tax_invoice_on	Fihan
 tax_invoice_off	Tọju
-tax_invoice_saved_on	risiti ori lori till
+tax_invoice_saved_on	risiti ori lori tabili owó
 tax_invoice_saved_off	Iwe-owo owo-ori pamọ - Akọsilẹ owo nikan
 pay_methods	Awọn ọna isanwo
 pay_methods_help	Àwọn bọ́tìnnì wo ló ń hàn lórí Gba ìsanwó. Owó-ọwọ́ máa ń wà nígbà gbogbo. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú Owó-ọwọ́ nìkan — tan UPI / Káàdì / Gbèsè / Pín padà níbí.
@@ -536,7 +536,7 @@ extra_note_bill_ph	Akọsilẹ afikun lori owo / tita yii
 extra_note_expense_ph	Afikun akọsilẹ lori kẹhin inawo
 extra_tills_heading	Àwọn káńtà àfikún
 other_devices_help_heading	Ṣeto awọn ẹrọ miiran
-other_devices_help	Lori ẹrọ yii (Olupin): Awọn ẹrọ miiran → Gba afikun tills laaye. Ṣe akiyesi koodu sisopọ ati adirẹsi Wi‑Fi. Fọwọ ba Gba awọn ẹrọ miiran laaye lati sopọ ti o ba han. Lori kọnputa, tẹ Bẹrẹ pẹlu kọnputa yii ni kia kia. Lori ẹrọ kọọkan miiran: fi ohun elo naa sori ẹrọ, yan Ipo Onibara, Wa olupin ile itaja (tabi tẹ adirẹsi naa), tẹ koodu sisopọ pọ, So pọ ni bayi. Awọn aṣẹ duro lori ẹrọ ti Wi‑Fi ba silẹ ki o lọ nigbati olupin naa ba dahun lẹẹkansi. Awọn atẹwe ibi idana ti ṣeto lori olupin (Awọn Eto → Awọn atẹwe) - afikun tills firanṣẹ KOTs nibẹ.
+other_devices_help	Lori ẹrọ yii (Olupin): Awọn ẹrọ miiran → Gba afikun tabili owó laaye. Ṣe akiyesi koodu sisopọ ati adirẹsi Wi‑Fi. Fọwọ ba Gba awọn ẹrọ miiran laaye lati sopọ ti o ba han. Lori kọnputa, tẹ Bẹrẹ pẹlu kọnputa yii ni kia kia. Lori ẹrọ kọọkan miiran: fi ohun elo naa sori ẹrọ, yan Ipo Onibara, Wa olupin ile itaja (tabi tẹ adirẹsi naa), tẹ koodu sisopọ pọ, So pọ ni bayi. Awọn aṣẹ duro lori ẹrọ ti Wi‑Fi ba silẹ ki o lọ nigbati olupin naa ba dahun lẹẹkansi. Awọn atẹwe ibi idana ti ṣeto lori olupin (Awọn Eto → Awọn atẹwe) - afikun tabili owó firanṣẹ KOTs nibẹ.
 forget_shop	Gbagbe ile itaja yii
 goods_received	Awọn ọja ti a gba
 import_day	Ojo agbewọle
@@ -637,7 +637,7 @@ shop	Itaja
 show	Fihan
 spreadsheet_csv	Iwe kika (CSV)
 start_fresh	Bẹrẹ alabapade
-stop_extra_tills	Da afikun tills
+stop_extra_tills	Da afikun tabili owó
 floor_cols_ph	Awọn ọwọn
 floor_cols_fit	Iboju ibamu
 floor_cols_fit_sub	{n} yẹ nibi
@@ -680,7 +680,7 @@ lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	So ẹrọ yi pọ si Wi‑Fi fun adirẹsi kan.
 lan_no_address	Ko si adirẹsi Wi‑Fi sibẹsibẹ - sopọ si ile itaja Wi‑Fi.
 lan_not_listening	Ko gbigba awọn ẹrọ (ibudo {port} nšišẹ). Tun app bẹrẹ.
-lan_tills_off	Afikun tills wa ni pipa. Gba wọn laaye lati jẹ ki ẹrọ miiran darapọ.
+lan_tills_off	Afikun tabili owó wa ni pipa. Gba wọn laaye lati jẹ ki ẹrọ miiran darapọ.
 paired_with	So pọ · {url}
 not_paired	Ko so pọ
 choose_device_use	Yan Server, Client, tàbí tun àwárípadà.
@@ -1043,7 +1043,7 @@ pin_hint_new	Tuntun 4–12 oni-nọmba oni-nọmba PIN · Wọle tabi Ṣii sil�
 pin_hint_shop_code	Ohun elo itaja · koodu sisopọ {}
 pin_hint_books	Ẹrọ yii ni awọn iwe-ipamọ
 pin_hint_paired	Afikun till so pọ - šii lati ta
-pin_hint_pair_first	Afikun till - bata si ẹrọ itaja ni akọkọ
+pin_hint_pair_first	Afikun tabili owó - bata si ẹrọ itaja ni akọkọ
 unlock_to_continue	Ṣii silẹ lati tẹsiwaju
 no_staff_yet	Ko si oṣiṣẹ sibẹsibẹ - ṣii bi Olohun, lẹhinna Ẹgbẹ
 icon_new_selected	Aami: faili titun ti a ti yan - tẹ Fipamọ ami iyasọtọ ni kia kia
@@ -1183,7 +1183,7 @@ right_with_approval	Pẹlu ifọwọsi
 right_denied	Ko gba laaye
 editing_staff	Ṣatunkọ
 finding_server	Wiwa olupin ile itaja lori eyi Wi‑Fi…
-no_server_found	Ko si ọkan ti a rii. Lori olupin naa: Eto → Awọn ẹrọ miiran → Gba afikun awọn tills (kanna Wi‑Fi). Tabi tẹ IP ti o han nibẹ.
+no_server_found	Ko si ọkan ti a rii. Lori olupin naa: Eto → Awọn ẹrọ miiran → Gba afikun awọn tabili owó (kanna Wi‑Fi). Tabi tẹ IP ti o han nibẹ.
 servers_found_pick	Fọwọ ba ile itaja ti o fẹ sopọ si.
 server_host_selected	Lilo {host} — tẹ koodu isọpọ sii, lẹhinna Sopọ ni bayi.
 print_bill	Owo titẹ sita
