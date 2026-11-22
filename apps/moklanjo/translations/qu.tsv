@@ -133,7 +133,7 @@ inventory	Inventario nisqa
 inventory_stock	Inventario & stock nisqa
 branches	Ramakuna
 branches_org	Sucursales & org
-credit_customers	Partidokuna (manukuqkuna & manukuqkuna) .
+credit_customers	Partidokuna (deudores & acreedores)
 customer_name_ph	Cliente utaq suministradorpa sutin
 new_customer_ph	Musuq rantiqpa utaq suministradorpa sutin
 item_name_ph	Tasa suti (e.g. Zona Superficial A) .
