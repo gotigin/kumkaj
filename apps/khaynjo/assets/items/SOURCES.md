@@ -47,6 +47,11 @@ file name, ≤1024 px WebP). Sources Wikimedia Commons (incl. Unsplash via Commo
 | `pizza-pasta/tortellini.webp` | raw uncooked tortellini on a board | Vegetable tortellini.jpg | E4024 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=69092642 | resized, WebP |
 | `continental/shrimp-scampi.webp` | live Norway lobster on a seabed | Shrimp Scampi (6434894099).jpg | Phil Whitehouse | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=59275125 | resized, WebP |
 | `continental/t-bone-steak.webp` | cake shaped like a raw T-bone | Steak 03 bg 040306.jpg | Jon Sullivan (PDPhoto.org) | [Copyrighted free use](https://commons.wikimedia.org/wiki/Commons:Copyright_tags/General_free_media#Copyrighted_free_use) | https://commons.wikimedia.org/w/index.php?curid=881326 | resized, WebP |
+| `bakery-cafe/crumpet.webp` | cheese toastie on M&S paper, not a crumpet | Buttered crumpet2.jpg | LoopZilla (crop: AlbertCahalan) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=137967 | resized, WebP |
+| `bakery-cafe/cheese-straws.webp` | bakery tray with price tag / promo text | Kaesestangen.png | Benedikt Köhler | [CC BY-SA 2.0 de](https://creativecommons.org/licenses/by-sa/2.0/de/deed.en) | https://commons.wikimedia.org/wiki/File:Kaesestangen.png | resized, WebP |
+| `bakery-cafe/multigrain-bread.webp` | branded DANZ packaged loaf | Multigrain.jpg | Jongleur100 | [Public domain](https://creativecommons.org/publicdomain/mark/1.0/) | https://commons.wikimedia.org/wiki/File:Multigrain.jpg | resized, WebP |
+| `bakery-cafe/sandwich-bread-loaf.webp` | branded packaged sandwich bread | Tin Loaf - one slash in the crust.jpg | Mike Finn | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=105193069 | resized, WebP |
+| `bar/cognac.webp` | glasses printed DANGER / COGNAC | Cognac glass.jpg | Didier Descouens | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Cognac_glass.jpg | resized, WebP |
 
 ## Not recorded
 
