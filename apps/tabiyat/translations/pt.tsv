@@ -1,6 +1,6 @@
 # Portuguese — Português (pt). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Código de barras/EAN
-composition_ph	Sal/composição (pesquisável)
+composition_ph	Sal (química) / composição (pesquisável)
 schedule_h_off	Cronograma H - desativado (sinalizador do proprietário)
 schedule_h_on	Cronograma H - ativado (sinalizador do proprietário)
 rx_expected_off	Rx esperado - desativado (sinalizador do proprietário)
