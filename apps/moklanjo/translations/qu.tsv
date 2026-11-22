@@ -839,7 +839,7 @@ run_word	Sillakuq kallpay
 parcels_fmt	{n} paquetes nisqakuna
 parcel_history	Willarina
 attempt_fmt	{n} nisqamanta kallpachakuy
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} pza
 note_reason_ph	Nota otaq razon
 ops_pick_first	Ñawpaqta paquetekunata akllay — ñit’iy utaq escanear
 cod_to_collect	Entregasqa — COD huñunapaq

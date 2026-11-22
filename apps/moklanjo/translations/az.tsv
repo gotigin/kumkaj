@@ -868,7 +868,7 @@ bulk_csv_ph	Kütləvi CSV — destinasiya, alıcı, kq, cod_paise, qeyd
 business_name_ph	Biznes adı
 category_new_ph	Kateqoriya (istəyə bağlı, yenidirsə yaradılır)
 cod_amount_ph	COD məbləği
-code_bag_ph	Kod (bag)
+code_bag_ph	Kod (torba)
 conv_factor_ph	Əmsal (25 = 1 bag → 25 kg)
 country_code_ph	Ölkə kodu, məs. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredit / khata məbləği
@@ -878,7 +878,7 @@ divisor_ph	Həcm böləni (5000)
 extra_per_kg_ph	Əlavə / kq
 first_amount_ph	Birinci məbləğ
 first_kg_ph	Birinci kq (slab)
-from_code_ph	Haradan kodu (bag)
+from_code_ph	Haradan kodu (torba)
 item_name_lang_ph	Məhsul adı — öz dilinizdə yazın
 login_id_opt_ph	İstifadəçi adı (mütləq, unikal)
 manager_pin_ph	Təsdiq üçün Menecer PIN-i (yalnız etibarsız edə bilmirsinizsə)
@@ -918,7 +918,7 @@ to_code_ph	Hara kodu (kg)
 uncleared_no_ph	Yuxarıdakı üzləşməmiş №
 unit_cost_ph	Vahid mayası
 unit_kg_blank_ph	Vahid (kq və ya boş)
-unit_name_bag_ph	Ad (Bag)
+unit_name_bag_ph	Ad (torba)
 weight_unit_code_ph	Çəki vahidi kodu (kq)
 zone_name_ph	Zona adı
 pay_credit	Kredit

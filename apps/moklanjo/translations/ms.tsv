@@ -839,7 +839,7 @@ run_word	Lari penunggang
 parcels_fmt	bungkusan {n}
 parcel_history	Sejarah
 attempt_fmt	Cuba {n}
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} unit
 note_reason_ph	Nota atau alasan
 ops_pick_first	Pilih bungkusan dahulu — ketik atau imbasnya
 cod_to_collect	Dihantar — COD untuk dikutip

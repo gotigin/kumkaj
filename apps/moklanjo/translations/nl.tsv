@@ -677,7 +677,7 @@ your_brand	Jouw merk (in de app)
 units_heading	Eenheden
 booking_measures	Boekingsmaten
 drawer_count	Ladetelling (optioneel)
-spreadsheet_csv	Spreadsheet (CSV)
+spreadsheet_csv	Rekenblad (CSV)
 bank_reconciliation	Bankafstemming
 book_add_product	Boeking — product / tarief toevoegen
 book_opening_credit	Boeking — openingskrediet
@@ -868,7 +868,7 @@ bulk_csv_ph	Bulk-CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	Bedrijfsnaam
 category_new_ph	Categorie (optioneel, wordt aangemaakt indien nieuw)
 cod_amount_ph	COD-bedrag
-code_bag_ph	Code (bag)
+code_bag_ph	Code (zak)
 conv_factor_ph	Factor (25 = 1 zak → 25 kg)
 country_code_ph	Landcode bijv. IN, GB, US, AE, BR
 credit_khata_amount_ph	Krediet- / rekeningbedrag
@@ -878,7 +878,7 @@ divisor_ph	Volumedeler (5000)
 extra_per_kg_ph	Extra / kg
 first_amount_ph	Eerste bedrag
 first_kg_ph	Eerste kg (staffel)
-from_code_ph	Van code (bag)
+from_code_ph	Van code (zak)
 item_name_lang_ph	Artikelnaam — typ in je eigen taal
 login_id_opt_ph	Login-id (optioneel)
 manager_pin_ph	Manager-PIN (alleen als je niet kunt annuleren)
@@ -918,7 +918,7 @@ to_code_ph	Naar code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
 unit_cost_ph	Kosten per eenheid
 unit_kg_blank_ph	Eenheid (kg of leeg)
-unit_name_bag_ph	Naam (Bag)
+unit_name_bag_ph	Naam (zak)
 weight_unit_code_ph	Code gewichtseenheid (kg)
 zone_name_ph	Zonenaam
 pay_credit	Krediet

@@ -868,7 +868,7 @@ bulk_csv_ph	CSV ya wingi — destination,consignee,kg,cod_paise,note
 business_name_ph	Jina la biashara
 category_new_ph	Jamii (hiari, huundwa ikiwa mpya)
 cod_amount_ph	Kiasi cha COD
-code_bag_ph	Msimbo (bag)
+code_bag_ph	Msimbo (gunia)
 conv_factor_ph	Kizigeu (25 = 1 bag → 25 kg)
 country_code_ph	Msimbo wa nchi mf. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kiasi cha mkopo / akaunti
@@ -878,7 +878,7 @@ divisor_ph	Kigawanyo cha ujazo (5000)
 extra_per_kg_ph	Ziada / kg
 first_amount_ph	Kiasi cha kwanza
 first_kg_ph	Kg ya kwanza (kipande)
-from_code_ph	Msimbo kutoka (bag)
+from_code_ph	Msimbo kutoka (gunia)
 item_name_lang_ph	Jina la bidhaa — andika kwa lugha yako
 login_id_opt_ph	Kitambulisho cha kuingia (hiari)
 manager_pin_ph	PIN ya meneja (ikiwa tu huwezi kubatilisha)
@@ -918,7 +918,7 @@ to_code_ph	Msimbo kwenda (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo
 unit_kg_blank_ph	Kitengo (kg au tupu)
-unit_name_bag_ph	Jina (Bag)
+unit_name_bag_ph	Jina (gunia)
 weight_unit_code_ph	Msimbo wa kitengo cha uzito (kg)
 zone_name_ph	Jina la eneo
 pay_credit	Mkopo

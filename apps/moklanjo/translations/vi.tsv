@@ -868,7 +868,7 @@ bulk_csv_ph	CSV hàng loạt — destination,consignee,kg,cod_paise,note
 business_name_ph	Tên doanh nghiệp
 category_new_ph	Danh mục (tùy chọn, sẽ tạo nếu mới)
 cod_amount_ph	Số tiền COD
-code_bag_ph	Mã (bag)
+code_bag_ph	Mã (bao)
 conv_factor_ph	Hệ số (25 = 1 bag → 25 kg)
 country_code_ph	Mã quốc gia ví dụ IN, GB, US, AE, BR
 credit_khata_amount_ph	Số tiền ghi nợ / tài khoản
@@ -878,7 +878,7 @@ divisor_ph	Số chia thể tích (5000)
 extra_per_kg_ph	Thêm / kg
 first_amount_ph	Số tiền đầu tiên
 first_kg_ph	Kg đầu tiên (bậc)
-from_code_ph	Mã từ (bag)
+from_code_ph	Mã từ (bao)
 item_name_lang_ph	Tên mặt hàng — nhập bằng ngôn ngữ của bạn
 login_id_opt_ph	ID đăng nhập (tùy chọn)
 manager_pin_ph	PIN quản lý (chỉ khi bạn không thể hủy)
@@ -918,7 +918,7 @@ to_code_ph	Mã đến (kg)
 uncleared_no_ph	Số chưa quyết toán ở trên
 unit_cost_ph	Chi phí đơn vị
 unit_kg_blank_ph	Đơn vị (kg hoặc trống)
-unit_name_bag_ph	Tên (Bag)
+unit_name_bag_ph	Tên (bao)
 weight_unit_code_ph	Mã đơn vị trọng lượng (kg)
 zone_name_ph	Tên khu vực
 pay_credit	Ghi nợ

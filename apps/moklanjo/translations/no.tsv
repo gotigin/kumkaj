@@ -332,7 +332,7 @@ international	Internasjonal
 pick_logo	Velg logo
 booking_scope_hint_domestic	Volumetrisk ÷5000 (innenlands) — trykk på Internasjonal for ÷6000 luft
 booking_scope_hint_intl	Volumetrisk ÷6000 (internasjonal luft) – trykk innenriks for butikk ÷5000
-cod_register	COD register
+cod_register	COD-register
 collect_cod	Samle COD (AWB)
 consignments_dispatch	Forsendelser og forsendelse
 consignor_party_ph	Avsender/partinavn
@@ -852,7 +852,7 @@ facet_bank_title	Rapporter
 facet_bank_help	Dagbøker, aldring av parter, bankposter og periode-resultat.
 facet_ops_title	Forsendelser og forsendelse
 facet_ops_help	Skann eller skriv AWB → Finn, forover deretter / skriv ut etikett / COD. Sendes til rytter eller transportør.
-facet_cod_title	COD register
+facet_cod_title	COD-register
 facet_cod_help	Hent ved levering, send deretter til avsender.
 facet_riders_title	Ryttere (egen flåte)
 facet_riders_help	Legg til ryttere, og send deretter bestilte AWB-er fra Ops.

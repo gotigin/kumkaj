@@ -868,7 +868,7 @@ bulk_csv_ph	대량 CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	사업체 이름
 category_new_ph	카테고리(선택, 새 것이면 생성됨)
 cod_amount_ph	COD 금액
-code_bag_ph	코드(bag)
+code_bag_ph	코드(포대)
 conv_factor_ph	계수(25 = 1 bag → 25 kg)
 country_code_ph	국가 코드 예: IN, GB, US, AE, BR
 credit_khata_amount_ph	외상 / 계정 금액
@@ -878,7 +878,7 @@ divisor_ph	부피 나눗수(5000)
 extra_per_kg_ph	추가 / kg
 first_amount_ph	첫 금액
 first_kg_ph	첫 kg(구간)
-from_code_ph	시작 코드(bag)
+from_code_ph	시작 코드(포대)
 item_name_lang_ph	품목 이름 — 사용하는 언어로 입력하세요
 login_id_opt_ph	로그인 ID(선택)
 manager_pin_ph	관리자 PIN(취소할 수 없는 경우에만)
@@ -918,7 +918,7 @@ to_code_ph	대상 코드(kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가
 unit_kg_blank_ph	단위(kg 또는 비움)
-unit_name_bag_ph	이름(Bag)
+unit_name_bag_ph	이름(포대)
 weight_unit_code_ph	무게 단위 코드(kg)
 zone_name_ph	구역 이름
 pay_credit	외상

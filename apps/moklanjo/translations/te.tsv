@@ -868,7 +868,7 @@ bulk_csv_ph	బల్క్ CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	వ్యాపార పేరు
 category_new_ph	వర్గం (ఐచ్ఛికం, కొత్తదైతే సృష్టించబడుతుంది)
 cod_amount_ph	COD మొత్తం
-code_bag_ph	కోడ్ (bag)
+code_bag_ph	కోడ్ (సంచి)
 conv_factor_ph	కారకం (25 = 1 bag → 25 kg)
 country_code_ph	దేశ కోడ్ ఉదా. IN, GB, US, AE, BR
 credit_khata_amount_ph	అప్పు / ఖాతా మొత్తం
@@ -878,7 +878,7 @@ divisor_ph	ఘనపరిమాణ భాజకం (5000)
 extra_per_kg_ph	అదనపు / kg
 first_amount_ph	మొదటి మొత్తం
 first_kg_ph	మొదటి kg (స్లాబ్)
-from_code_ph	నుండి కోడ్ (bag)
+from_code_ph	నుండి కోడ్ (సంచి)
 item_name_lang_ph	వస్తువు పేరు — మీ భాషలో టైప్ చేయండి
 login_id_opt_ph	లాగిన్ ఐడి (ఐచ్ఛికం)
 manager_pin_ph	మేనేజర్ PIN (మీరు రద్దు చేయలేకపోతే మాత్రమే)
@@ -918,7 +918,7 @@ to_code_ph	కు కోడ్ (kg)
 uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
 unit_cost_ph	యూనిట్ ధర
 unit_kg_blank_ph	యూనిట్ (kg లేదా ఖాళీ)
-unit_name_bag_ph	పేరు (Bag)
+unit_name_bag_ph	పేరు (సంచి)
 weight_unit_code_ph	బరువు యూనిట్ కోడ్ (kg)
 zone_name_ph	జోన్ పేరు
 pay_credit	అప్పు

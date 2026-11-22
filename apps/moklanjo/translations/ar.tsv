@@ -868,7 +868,7 @@ bulk_csv_ph	CSV جماعي — destination,consignee,kg,cod_paise,note
 business_name_ph	اسم النشاط التجاري
 category_new_ph	الفئة (اختياري، تُنشأ إن كانت جديدة)
 cod_amount_ph	مبلغ الدفع عند الاستلام
-code_bag_ph	الرمز (bag)
+code_bag_ph	الرمز (كيس)
 conv_factor_ph	العامل (25 = 1 bag → 25 kg)
 country_code_ph	رمز الدولة مثال IN, GB, US, AE, BR
 credit_khata_amount_ph	مبلغ الائتمان / الحساب
@@ -878,7 +878,7 @@ divisor_ph	المقسوم الحجمي (5000)
 extra_per_kg_ph	إضافي / كيلوغرام
 first_amount_ph	المبلغ الأول
 first_kg_ph	أول كيلوغرام (شريحة)
-from_code_ph	الرمز من (bag)
+from_code_ph	الرمز من (كيس)
 item_name_lang_ph	اسم الصنف — اكتبه بلغتك
 login_id_opt_ph	معرف الدخول (اختياري)
 manager_pin_ph	رمز المدير (فقط إذا لم تتمكن من الإلغاء)
@@ -918,7 +918,7 @@ to_code_ph	الرمز إلى (kg)
 uncleared_no_ph	الرقم غير المُسوّى أعلاه
 unit_cost_ph	تكلفة الوحدة
 unit_kg_blank_ph	الوحدة (كيلوغرام أو فارغ)
-unit_name_bag_ph	الاسم (Bag)
+unit_name_bag_ph	الاسم (كيس)
 weight_unit_code_ph	رمز وحدة الوزن (kg)
 zone_name_ph	اسم المنطقة
 pay_credit	ائتمان

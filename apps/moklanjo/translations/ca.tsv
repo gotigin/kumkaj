@@ -868,7 +868,7 @@ bulk_csv_ph	CSV massiu — destinació, consignatari, kg, cod_paise, nota
 business_name_ph	Nom del negoci
 category_new_ph	Categoria (opcional, es crea si és nova)
 cod_amount_ph	Import de pagament contra reemborsament
-code_bag_ph	Codi (bag)
+code_bag_ph	Codi (sac)
 conv_factor_ph	Factor (25 = 1 sac → 25 kg)
 country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Import de crèdit / khata
@@ -878,7 +878,7 @@ divisor_ph	Divisor volumètric (5000)
 extra_per_kg_ph	Extra / kg
 first_amount_ph	Primer import
 first_kg_ph	Primer kg (losa)
-from_code_ph	Codi d'origen (bag)
+from_code_ph	Codi d'origen (sac)
 item_name_lang_ph	Nom de l'article — escriviu-lo en la vostra llengua
 login_id_opt_ph	Nom d'usuari (obligatori, únic)
 manager_pin_ph	PIN d'encarregat per aprovar (només si no podeu anul·lar)
@@ -918,7 +918,7 @@ to_code_ph	Codi de destí (kg)
 uncleared_no_ph	Núm. no conciliat de dalt
 unit_cost_ph	Cost unitari
 unit_kg_blank_ph	Unitat (kg o en blanc)
-unit_name_bag_ph	Nom (Bag)
+unit_name_bag_ph	Nom (sac)
 weight_unit_code_ph	Codi de la unitat de pes (kg)
 zone_name_ph	Nom de la zona
 pay_credit	Crèdit

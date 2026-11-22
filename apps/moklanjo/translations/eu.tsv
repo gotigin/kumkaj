@@ -839,7 +839,7 @@ run_word	Txirrindulari korrika
 parcels_fmt	{n} paketeak
 parcel_history	Historia
 attempt_fmt	Saiatu {n}
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} ale
 note_reason_ph	Oharra edo arrazoia
 ops_pick_first	Aukeratu paketeak lehenik: sakatu edo eskaneatu
 cod_to_collect	Entregatua — kobratzeko

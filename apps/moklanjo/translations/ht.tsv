@@ -839,7 +839,7 @@ run_word	Kavalye kouri
 parcels_fmt	{n} pasèl
 parcel_history	Istwa
 attempt_fmt	Eseye {n}
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} pyès
 note_reason_ph	Remak oswa rezon
 ops_pick_first	Chwazi pasèl yo an premye - tape yo oswa eskane yo
 cod_to_collect	Delivre - COD pou kolekte
@@ -868,7 +868,7 @@ bulk_csv_ph	Bulk CSV — destinasyon, destinataire, kg, cod_paise, nòt
 business_name_ph	Non biznis
 category_new_ph	Kategori (opsyonèl, kreye si nouvo)
 cod_amount_ph	COD kantite lajan
-code_bag_ph	Kòd (bag)
+code_bag_ph	Kòd (sak)
 conv_factor_ph	Faktè (25 = 1 bag → 25 kg)
 country_code_ph	Kòd peyi pa egzanp IN, GB, US, AE, BR
 credit_khata_amount_ph	Montan kredi / khata
@@ -878,7 +878,7 @@ divisor_ph	Divizè volumétrique (5000)
 extra_per_kg_ph	Siplemantè / kg
 first_amount_ph	Premye kantite lajan
 first_kg_ph	Premye kg (dal)
-from_code_ph	Kòd sous (bag)
+from_code_ph	Kòd sous (sak)
 item_name_lang_ph	Non atik — ekri l nan lang ou
 login_id_opt_ph	Non itilizatè (obligatwa, inik)
 manager_pin_ph	PIN manadjè pou apwouve (sèlman si ou pa ka anile)
@@ -918,7 +918,7 @@ to_code_ph	Kòd destinasyon (kg)
 uncleared_no_ph	Nimewo ki poko regle anwo
 unit_cost_ph	Pri inite
 unit_kg_blank_ph	Inite (kg oswa vid)
-unit_name_bag_ph	Non (Bag)
+unit_name_bag_ph	Non (sak)
 weight_unit_code_ph	Kòd inite pwa (kg)
 zone_name_ph	Non zòn
 pay_credit	Kredi

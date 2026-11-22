@@ -868,7 +868,7 @@ bulk_csv_ph	ബൾക്ക് CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	ബിസിനസ്സിന്റെ പേര്
 category_new_ph	വിഭാഗം (ഓപ്ഷണൽ, പുതിയതാണെങ്കിൽ സൃഷ്ടിക്കും)
 cod_amount_ph	COD തുക
-code_bag_ph	കോഡ് (bag)
+code_bag_ph	കോഡ് (ചാക്ക്)
 conv_factor_ph	ഘടകം (25 = 1 bag → 25 kg)
 country_code_ph	രാജ്യ കോഡ് ഉദാ. IN, GB, US, AE, BR
 credit_khata_amount_ph	കടം / ഖാത്ത തുക
@@ -878,7 +878,7 @@ divisor_ph	വ്യാപ്ത ഹരണം (5000)
 extra_per_kg_ph	അധികം / kg
 first_amount_ph	ആദ്യ തുക
 first_kg_ph	ആദ്യ kg (സ്ലാബ്)
-from_code_ph	നിന്നുള്ള കോഡ് (bag)
+from_code_ph	നിന്നുള്ള കോഡ് (ചാക്ക്)
 item_name_lang_ph	ഇനത്തിന്റെ പേര് — നിങ്ങളുടെ ഭാഷയിൽ ടൈപ്പ് ചെയ്യുക
 login_id_opt_ph	ലോഗിൻ ഐഡി (ഓപ്ഷണൽ)
 manager_pin_ph	മാനേജർ PIN (നിങ്ങൾക്ക് റദ്ദാക്കാൻ കഴിയില്ലെങ്കിൽ മാത്രം)
@@ -918,7 +918,7 @@ to_code_ph	ലേക്കുള്ള കോഡ് (kg)
 uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
 unit_cost_ph	യൂണിറ്റ് വില
 unit_kg_blank_ph	യൂണിറ്റ് (kg അല്ലെങ്കിൽ ശൂന്യം)
-unit_name_bag_ph	പേര് (Bag)
+unit_name_bag_ph	പേര് (ചാക്ക്)
 weight_unit_code_ph	ഭാര യൂണിറ്റ് കോഡ് (kg)
 zone_name_ph	സോണിന്റെ പേര്
 pay_credit	കടം

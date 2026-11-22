@@ -868,7 +868,7 @@ bulk_csv_ph	批量 CSV — 目的地、收貨人、公斤、cod_paise、註釋
 business_name_ph	企業名稱
 category_new_ph	類別（可選，新類別將自動創建）
 cod_amount_ph	化學需氧量
-code_bag_ph	代碼（bag）
+code_bag_ph	代碼（袋）
 conv_factor_ph	係數（25 = 1 bag → 25 kg）
 country_code_ph	國家代碼，如 IN, GB, US, AE, BR
 credit_khata_amount_ph	賒帳金額
@@ -878,7 +878,7 @@ divisor_ph	體積除數 (5000)
 extra_per_kg_ph	額外/公斤
 first_amount_ph	首筆金額
 first_kg_ph	第一公斤（板）
-from_code_ph	從代碼（bag）
+from_code_ph	從代碼（袋）
 item_name_lang_ph	物品名稱 — 用您的語言輸入
 login_id_opt_ph	登錄 ID（可選）
 manager_pin_ph	經理 PIN（僅當您無法作廢時）
@@ -918,7 +918,7 @@ to_code_ph	到代碼（kg）
 uncleared_no_ph	上方未清算編號
 unit_cost_ph	單位成本
 unit_kg_blank_ph	單位（公斤或空白）
-unit_name_bag_ph	名稱（Bag）
+unit_name_bag_ph	名稱（袋）
 weight_unit_code_ph	重量單位代碼（kg）
 zone_name_ph	區域名稱
 pay_credit	賒帳

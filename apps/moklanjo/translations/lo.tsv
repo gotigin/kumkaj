@@ -839,7 +839,7 @@ run_word	Rider ແລ່ນ
 parcels_fmt	ພັດສະດຸ {n}
 parcel_history	ປະຫວັດສາດ
 attempt_fmt	ພະຍາຍາມ {n}
-pieces_short_fmt	{n} pcs
+pieces_short_fmt	{n} ອັນ
 note_reason_ph	ຫມາຍເຫດຫຼືເຫດຜົນ
 ops_pick_first	ເລືອກເອົາ parcels ທໍາອິດ - ແຕະໃຫ້ເຂົາເຈົ້າຫຼືສະແກນໃຫ້ເຂົາເຈົ້າ
 cod_to_collect	ສົ່ງແລ້ວ — COD ເພື່ອເກັບກຳ

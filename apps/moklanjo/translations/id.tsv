@@ -677,7 +677,7 @@ your_brand	Merek Anda (di aplikasi)
 units_heading	Satuan
 booking_measures	Ukuran booking
 drawer_count	Hitung laci (opsional)
-spreadsheet_csv	Spreadsheet (CSV)
+spreadsheet_csv	Lembar sebar (CSV)
 bank_reconciliation	Rekonsiliasi bank
 book_add_product	Booking — tambah produk / tarif
 book_opening_credit	Booking — kredit awal
@@ -868,7 +868,7 @@ bulk_csv_ph	CSV massal — destination,consignee,kg,cod_paise,note
 business_name_ph	Nama bisnis
 category_new_ph	Kategori (opsional, dibuat jika baru)
 cod_amount_ph	Jumlah COD
-code_bag_ph	Kode (bag)
+code_bag_ph	Kode (karung)
 conv_factor_ph	Faktor (25 = 1 bag → 25 kg)
 country_code_ph	Kode negara mis. IN, GB, US, AE, BR
 credit_khata_amount_ph	Jumlah kredit / akun
@@ -878,7 +878,7 @@ divisor_ph	Pembagi volumetrik (5000)
 extra_per_kg_ph	Tambahan / kg
 first_amount_ph	Jumlah pertama
 first_kg_ph	Kg pertama (slab)
-from_code_ph	Kode dari (bag)
+from_code_ph	Kode dari (karung)
 item_name_lang_ph	Nama item — ketik dalam bahasa Anda
 login_id_opt_ph	Id login (opsional)
 manager_pin_ph	PIN manajer (hanya jika Anda tidak dapat membatalkan)
@@ -918,7 +918,7 @@ to_code_ph	Kode ke (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan
 unit_kg_blank_ph	Satuan (kg atau kosong)
-unit_name_bag_ph	Nama (Bag)
+unit_name_bag_ph	Nama (karung)
 weight_unit_code_ph	Kode satuan berat (kg)
 zone_name_ph	Nama zona
 pay_credit	Kredit

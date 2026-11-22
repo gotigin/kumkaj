@@ -878,7 +878,7 @@ divisor_ph	Diviseur volumétrique (5000)
 extra_per_kg_ph	Supplément / kg
 first_amount_ph	Premier montant
 first_kg_ph	Premier kg (tranche)
-from_code_ph	Code de départ (bag)
+from_code_ph	Code de départ (sac)
 item_name_lang_ph	Nom de l'article — saisissez-le dans votre langue
 login_id_opt_ph	Identifiant (facultatif)
 manager_pin_ph	PIN du responsable (seulement si vous ne pouvez pas annuler)
@@ -918,7 +918,7 @@ to_code_ph	Code vers (kg)
 uncleared_no_ph	N° non compensé ci-dessus
 unit_cost_ph	Coût unitaire
 unit_kg_blank_ph	Unité (kg ou vide)
-unit_name_bag_ph	Nom (Bag)
+unit_name_bag_ph	Nom (sac)
 weight_unit_code_ph	Code d'unité de poids (kg)
 zone_name_ph	Nom de la zone
 pay_credit	Crédit

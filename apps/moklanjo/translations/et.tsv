@@ -332,7 +332,7 @@ international	Rahvusvaheline
 pick_logo	Valige logo
 booking_scope_hint_domestic	Mahuline ÷5000 (siseriiklik) – puudutage Rahvusvahelist, et saada ÷6000 õhku
 booking_scope_hint_intl	Mahuline ÷6000 (rahvusvaheline õhk) — kraan siseriiklik poe jaoks ÷5000
-cod_register	COD register
+cod_register	COD-register
 collect_cod	COD (AWB) kogumine
 consignments_dispatch	Saadetised ja lähetamine
 consignor_party_ph	Kaubasaatja/partei nimi
@@ -852,7 +852,7 @@ facet_bank_title	Aruanded
 facet_bank_help	Päevaraamatud, klientide või tarnijate vananemine, pangapostitused ja perioodi kasumiaruanded.
 facet_ops_title	Saadetised ja lähetamine
 facet_ops_help	Skannige või tippige AWB → Otsi, seejärel liigutage / printige silt / COD. Saatmine sõitjale või vedajale.
-facet_cod_title	COD register
+facet_cod_title	COD-register
 facet_cod_help	Koguge kätte kohaletoimetamisel, seejärel edastage kaubasaatjale.
 facet_riders_title	Ratturid (oma laevastik)
 facet_riders_help	Lisage sõitjaid ja saatke seejärel Opsist broneeritud AWB-d.

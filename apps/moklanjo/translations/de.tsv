@@ -868,7 +868,7 @@ bulk_csv_ph	Bulk-CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	Geschäftsname
 category_new_ph	Kategorie (optional, wird neu erstellt)
 cod_amount_ph	COD-Betrag
-code_bag_ph	Code (bag)
+code_bag_ph	Code (Tasche)
 conv_factor_ph	Faktor (25 = 1 bag → 25 kg)
 country_code_ph	Ländercode z. B. IN, GB, US, AE, BR
 credit_khata_amount_ph	Kredit- / Kontobetrag
@@ -878,7 +878,7 @@ divisor_ph	Volumendivisor (5000)
 extra_per_kg_ph	Extra / kg
 first_amount_ph	Erster Betrag
 first_kg_ph	Erstes kg (Staffel)
-from_code_ph	Von Code (bag)
+from_code_ph	Von Code (Sack)
 item_name_lang_ph	Artikelname — in Ihrer Sprache eingeben
 login_id_opt_ph	Login-ID (optional)
 manager_pin_ph	Manager-PIN (nur wenn Sie nicht stornieren können)
@@ -918,7 +918,7 @@ to_code_ph	Zu Code (kg)
 uncleared_no_ph	Ungeprüfte Nr. oben
 unit_cost_ph	Stückkosten
 unit_kg_blank_ph	Einheit (kg oder leer)
-unit_name_bag_ph	Name (Bag)
+unit_name_bag_ph	Name (Tasche)
 weight_unit_code_ph	Gewichtseinheitscode (kg)
 zone_name_ph	Zonenname
 pay_credit	Kredit

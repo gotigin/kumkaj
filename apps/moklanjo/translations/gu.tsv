@@ -868,7 +868,7 @@ bulk_csv_ph	બલ્ક CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	વ્યવસાયનું નામ
 category_new_ph	શ્રેણી (વૈકલ્પિક, નવી હોય તો બનશે)
 cod_amount_ph	COD રકમ
-code_bag_ph	કોડ (bag)
+code_bag_ph	કોડ (બોરો)
 conv_factor_ph	ગુણક (25 = 1 bag → 25 kg)
 country_code_ph	દેશ કોડ દા.ત. IN, GB, US, AE, BR
 credit_khata_amount_ph	ઉધાર / ખાતા રકમ
@@ -878,7 +878,7 @@ divisor_ph	કદ વિભાજક (5000)
 extra_per_kg_ph	વધારાના / kg
 first_amount_ph	પ્રથમ રકમ
 first_kg_ph	પ્રથમ kg (સ્લેબ)
-from_code_ph	થી કોડ (bag)
+from_code_ph	થી કોડ (બોરો)
 item_name_lang_ph	વસ્તુનું નામ — તમારી ભાષામાં લખો
 login_id_opt_ph	લોગિન આઈડી (વૈકલ્પિક)
 manager_pin_ph	મેનેજર PIN (ફક્ત જો તમે રદ કરી શકતા ન હો)
@@ -918,7 +918,7 @@ to_code_ph	ને કોડ (kg)
 uncleared_no_ph	ઉપરનો અનક્લિયર્ડ #
 unit_cost_ph	એકમ ખર્ચ
 unit_kg_blank_ph	એકમ (kg અથવા ખાલી)
-unit_name_bag_ph	નામ (Bag)
+unit_name_bag_ph	નામ (બોરો)
 weight_unit_code_ph	વજન એકમ કોડ (kg)
 zone_name_ph	ઝોનનું નામ
 pay_credit	ઉધાર

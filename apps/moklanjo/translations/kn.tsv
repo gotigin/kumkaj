@@ -868,7 +868,7 @@ bulk_csv_ph	ಬಲ್ಕ್ CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	ವ್ಯಾಪಾರದ ಹೆಸರು
 category_new_ph	ವರ್ಗ (ಐಚ್ಛಿಕ, ಹೊಸದಾದರೆ ರಚಿಸಲಾಗುತ್ತದೆ)
 cod_amount_ph	COD ಮೊತ್ತ
-code_bag_ph	ಕೋಡ್ (bag)
+code_bag_ph	ಕೋಡ್ (ಚೀಲ)
 conv_factor_ph	ಗುಣಾಂಕ (25 = 1 bag → 25 kg)
 country_code_ph	ದೇಶದ ಕೋಡ್ ಉದಾ. IN, GB, US, AE, BR
 credit_khata_amount_ph	ಸಾಲ / ಖಾತಾ ಮೊತ್ತ
@@ -878,7 +878,7 @@ divisor_ph	ಘನಫಲ ಭಾಜಕ (5000)
 extra_per_kg_ph	ಹೆಚ್ಚುವರಿ / kg
 first_amount_ph	ಮೊದಲ ಮೊತ್ತ
 first_kg_ph	ಮೊದಲ kg (ಸ್ಲ್ಯಾಬ್)
-from_code_ph	ಇಂದ ಕೋಡ್ (bag)
+from_code_ph	ಇಂದ ಕೋಡ್ (ಚೀಲ)
 item_name_lang_ph	ವಸ್ತುವಿನ ಹೆಸರು — ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಬರೆಯಿರಿ
 login_id_opt_ph	ಲಾಗಿನ್ ಐಡಿ (ಐಚ್ಛಿಕ)
 manager_pin_ph	ವ್ಯವಸ್ಥಾಪಕ PIN (ನೀವು ರದ್ದುಮಾಡಲು ಸಾಧ್ಯವಾಗದಿದ್ದರೆ ಮಾತ್ರ)
@@ -918,7 +918,7 @@ to_code_ph	ಗೆ ಕೋಡ್ (kg)
 uncleared_no_ph	ಮೇಲಿನ ಅನ್‌ಕ್ಲಿಯರ್ಡ್ #
 unit_cost_ph	ಘಟಕ ವೆಚ್ಚ
 unit_kg_blank_ph	ಘಟಕ (kg ಅಥವಾ ಖಾಲಿ)
-unit_name_bag_ph	ಹೆಸರು (Bag)
+unit_name_bag_ph	ಹೆಸರು (ಚೀಲ)
 weight_unit_code_ph	ತೂಕ ಘಟಕ ಕೋಡ್ (kg)
 zone_name_ph	ವಲಯದ ಹೆಸರು
 pay_credit	ಸಾಲ

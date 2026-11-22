@@ -677,7 +677,7 @@ your_brand	I hmingchhiar (app chhung)
 units_heading	Unit
 booking_measures	Booking tih dan tur
 drawer_count	Bawm chhiar (duh chuan)
-spreadsheet_csv	Spreadsheet (CSV)
+spreadsheet_csv	CSV spreadsheet
 bank_reconciliation	Bank inmil
 book_add_product	Lehkhabu — product / rate dah belh
 book_opening_credit	Lehkha — tan lai ba
@@ -868,7 +868,7 @@ bulk_csv_ph	Bulk CSV — kalna tur,consignee,kg,cod_paise,note
 business_name_ph	Sumdawn hming
 category_new_ph	Pawl (duh chuan, thar chuan siam)
 cod_amount_ph	COD zat a ni
-code_bag_ph	Code (bag)
+code_bag_ph	Code (em)
 conv_factor_ph	Factor (25 = 1 bag → 25 kg)
 country_code_ph	Ram code entir IN, GB, US, AE, BR
 credit_khata_amount_ph	Ba / khata sum zat
@@ -878,7 +878,7 @@ divisor_ph	Volumetric divisor (5000) a ni.
 extra_per_kg_ph	Extra / kg
 first_amount_ph	Pakhatna pawisa
 first_kg_ph	Kg hmasa ber (slab) .
-from_code_ph	Code atanga (bag)
+from_code_ph	Code atanga (em)
 item_name_lang_ph	Thil hming — i ṭawngin ziak
 login_id_opt_ph	Hmangtu hming (a ngai, then)
 manager_pin_ph	Hotu PIN, phal nan (tihbo theih loh chauh)
@@ -918,7 +918,7 @@ to_code_ph	Code hma (kg)
 uncleared_no_ph	Thianghlim loh # chung
 unit_cost_ph	Unit man
 unit_kg_blank_ph	Unit (kg emaw blank emaw) 1.1.
-unit_name_bag_ph	Hming (Bag)
+unit_name_bag_ph	Hming (em)
 weight_unit_code_ph	A rih zawng unit code (kg) 1.1.
 zone_name_ph	Zone hming
 pay_credit	Ba

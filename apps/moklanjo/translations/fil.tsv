@@ -878,7 +878,7 @@ divisor_ph	Panghati ng volumetric (5000)
 extra_per_kg_ph	Dagdag / kg
 first_amount_ph	Unang halaga
 first_kg_ph	Unang kg (slab)
-from_code_ph	Mula sa code (bag)
+from_code_ph	Mula sa code (supot)
 item_name_lang_ph	Pangalan ng item sa menu ng menu — i-type ito sa iyong wika
 login_id_opt_ph	Username (kinakailangan, natatangi)
 manager_pin_ph	Manager PIN para aprubahan (kung hindi mo mapapawalang-bisa)
@@ -918,7 +918,7 @@ to_code_ph	Sa code (kg)
 uncleared_no_ph	Hindi na-clear ang # sa itaas
 unit_cost_ph	Gastos ng yunit
 unit_kg_blank_ph	Yunit (kg o blangko)
-unit_name_bag_ph	Pangalan (Bag)
+unit_name_bag_ph	Pangalan (supot)
 weight_unit_code_ph	Code ng unit ng timbang (kg)
 zone_name_ph	Pangalan ng zone
 pay_credit	Sa account

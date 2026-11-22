@@ -868,7 +868,7 @@ bulk_csv_ph	CSV masivo: destino, destinatario, kg, cod_paise, nota
 business_name_ph	Nome do negocio
 category_new_ph	Categoría (opcional, créase se é nova)
 cod_amount_ph	Cantidade de COD
-code_bag_ph	Código (bag)
+code_bag_ph	Código (saco)
 conv_factor_ph	Factor (25 = 1 saco → 25 kg)
 country_code_ph	Código de país, p. ex. IN, GB, US, AE, BR
 credit_khata_amount_ph	Importe de crédito / khata
@@ -878,7 +878,7 @@ divisor_ph	Divisor volumétrico (5000)
 extra_per_kg_ph	Extra / kg
 first_amount_ph	Primeira cantidade
 first_kg_ph	Primeiro kg (lousa)
-from_code_ph	Código de orixe (bag)
+from_code_ph	Código de orixe (saco)
 item_name_lang_ph	Nome do artigo — escríbao na súa lingua
 login_id_opt_ph	Nome de usuario (obrigatorio, único)
 manager_pin_ph	PIN de encargado para aprobar (só se non pode anular)
@@ -918,7 +918,7 @@ to_code_ph	Código de destino (kg)
 uncleared_no_ph	Núm. non conciliado de arriba
 unit_cost_ph	Custo unitario
 unit_kg_blank_ph	Unidade (kg ou en branco)
-unit_name_bag_ph	Nome (Bag)
+unit_name_bag_ph	Nome (saco)
 weight_unit_code_ph	Código de unidade de peso (kg)
 zone_name_ph	Nome da zona
 pay_credit	Crédito

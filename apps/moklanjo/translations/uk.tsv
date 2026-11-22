@@ -868,7 +868,7 @@ bulk_csv_ph	Масовий CSV — призначення, вантажооде�
 business_name_ph	Назва бізнесу
 category_new_ph	Категорія (необов'язково, створюється, якщо нова)
 cod_amount_ph	Сума COD
-code_bag_ph	Код (bag)
+code_bag_ph	Код (мішок)
 conv_factor_ph	Коефіцієнт (25 = 1 bag → 25 kg)
 country_code_ph	Код країни, напр. IN, GB, US, AE, BR
 credit_khata_amount_ph	Сума кредиту / khata
@@ -878,7 +878,7 @@ divisor_ph	Об'ємний дільник (5000)
 extra_per_kg_ph	Екстра / кг
 first_amount_ph	Перша сума
 first_kg_ph	Перший кг (плита)
-from_code_ph	Код джерела (bag)
+from_code_ph	Код джерела (мішок)
 item_name_lang_ph	Назва позиції — впишіть її своєю мовою
 login_id_opt_ph	Ім'я користувача (обов'язкове, унікальне)
 manager_pin_ph	PIN менеджера для схвалення (лише якщо ви не можете анулювати)
@@ -918,7 +918,7 @@ to_code_ph	Код призначення (kg)
 uncleared_no_ph	№ незвіреного вище
 unit_cost_ph	Собівартість одиниці
 unit_kg_blank_ph	Одиниця (кг або порожній)
-unit_name_bag_ph	Назва (Bag)
+unit_name_bag_ph	Назва (мішок)
 weight_unit_code_ph	Код одиниці вимірювання ваги (кг)
 zone_name_ph	Назва зони
 pay_credit	Кредит
