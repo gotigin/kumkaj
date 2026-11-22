@@ -285,10 +285,10 @@ zero_sales_on	Payagan ang ₹0
 zero_sales_off	Nangangailangan ng presyo
 zero_sales_saved_on	Pinapayagan ang mga benta na walang halaga
 zero_sales_saved_off	Ang mga benta ay dapat na may presyong higit sa ₹0
-floor_areas_help	Ang mga lugar ay mga silid o zone sa dining hall (Dine In, Parcel, AC …). Magdagdag muna ng isang lugar, pagkatapos ay ilagay ang mga dining table dito — bawat lugar ay isang hiwalay na grupo sa dining hall.
+floor_areas_help	Ang mga lugar ay mga silid o zone sa bulwagang kainan (Dine In, Parcel, AC …). Magdagdag muna ng isang lugar, pagkatapos ay ilagay ang mga hapag kainan dito — bawat lugar ay isang hiwalay na grupo sa bulwagang kainan.
 area_new_ph	Bagong lugar / kwarto (hal. AC, Hardin)
 add_area	Magdagdag ng lugar
-area_added	Handa na ang lugar na “{name}” — magdagdag ng mga dining table dito
+area_added	Handa na ang lugar na “{name}” — magdagdag ng mga hapag kainan dito
 no_favorites	Wala pang mga paborito — magdagdag ng mga item sa menu mula sa listahan sa ibaba.
 add_to_bill	Idagdag sa bill
 added	Idinagdag
@@ -453,7 +453,7 @@ copy_party_ledger_csv	Kopyahin ang ledger ng customer CSV
 copy_receipt	Kopyahin ang resibo
 share_whatsapp	Ibahagi WhatsApp
 lan_pages_heading	Mga guest page sa Wi‑Fi
-lan_pages_help	Sa Wi‑Fi ng shop na ito, gumagana ang mga guest page para sa display board, mga token, expo, kiosk, dining table QR, at feedback. Kailangan ng mga bisita sa mobile data ang Cloud sa ibang pagkakataon. Ang terminal ng card / link ng pagbabayad ay opsyonal kapag nakabukas ang internet — hindi nito hinaharangan ang counter.
+lan_pages_help	Sa Wi‑Fi ng shop na ito, gumagana ang mga guest page para sa display board, mga token, expo, kiosk, hapag kainan QR, at feedback. Kailangan ng mga bisita sa mobile data ang Cloud sa ibang pagkakataon. Ang terminal ng card / link ng pagbabayad ay opsyonal kapag nakabukas ang internet — hindi nito hinaharangan ang counter.
 diag_send_heading	Ibahagi ang device na ito
 kot_dest_heading	istasyon ng kusina
 optional_login_heading	Opsyonal na pag-login
@@ -497,7 +497,7 @@ floor_layout_h	H
 floor_layout_save	I-save ang layout
 floor_layout_open	Buksan ang hapag kainan
 floor_layout_edit	I-edit ang layout
-floor_layout_pick	I-tap ang dining table para i-edit ang layout nito
+floor_layout_pick	I-tap ang hapag kainan para i-edit ang layout nito
 floor_layout_saved	Na-save ang layout ng hapag kainan
 floor_layout_nudge_left	← 20
 floor_layout_nudge_right	→ 20
@@ -919,7 +919,7 @@ unmark	Alisin ang marka
 update_my_password	I-update ang aking password
 update_my_pin	I-update ang aking pag-sign in
 duress_heading	Emergency unlock PIN (May-ari lang)
-duress_help	Opsyonal. Kung ang PIN na ito ay nai-type sa pag-unlock sa halip na sa iyo, ang lahat ng mga entry sa ledger ay mapupunas (mga benta, ledger, history) at ang kahera ay magbubukas bilang May-ari na mukhang normal — ang menu, mga presyo, dining table, staff at mga setting ay mananatili. Ang schema at config ay hindi tinatanggal. Gamitin lang kung napipilitan kang mag-unlock. Iwanang blangko at i-save para i-off. Hindi kailanman katulad ng PIN ng sinuman.
+duress_help	Opsyonal. Kung ang PIN na ito ay nai-type sa pag-unlock sa halip na sa iyo, ang lahat ng mga entry sa ledger ay mapupunas (mga benta, ledger, history) at ang kahera ay magbubukas bilang May-ari na mukhang normal — ang menu, mga presyo, hapag kainan, staff at mga setting ay mananatili. Ang schema at config ay hindi tinatanggal. Gamitin lang kung napipilitan kang mag-unlock. Iwanang blangko at i-save para i-off. Hindi kailanman katulad ng PIN ng sinuman.
 duress_pin_ph	Emergency PIN (4–12 digit)
 duress_confirm_ph	Mag-type muli para kumpirmahin
 save_duress_pin	I-save ang emergency PIN
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Bago · {} — ang catalog ay nagsisimulang walang laman; mag
 onboard_book_tmpl	Ledger · {} — magdagdag ng mga item sa menu at pambungad na credit, pagkatapos ay Tapos na.
 onboard_template_tmpl	Pangalanan ang lugar kung gusto mo, pagkatapos ay piliin kung paano magsisimula.
 tmpl_blurb	Mga hapag kainan, pag-order, mga tiket sa kusina, pagsingil, at mga ledger.
-tmpl_how	Ibenta sa counter; Bulwagan para sa dining table & KOT; Mga ledger para sa araw na ledger.
+tmpl_how	Ibenta sa counter; Bulwagan para sa hapag kainan & KOT; Mga ledger para sa araw na ledger.
 reports_facet_title	Mga ulat
 reports_facet_help	Mga day ledger, customer o supplier na tumatanda, mga post sa bangko, at period P&L.
 against_bill_ph	Laban sa bill # sa itaas (opsyonal)
@@ -1112,7 +1112,7 @@ book_kind_month	Mga ledger sa buwang ito
 book_kind_aging	Natitirang / debit-credit
 book_kind_balance	Balanse sheet
 order_help	Mag-tap ng menu item para idagdag ito.
-floor_help	Mag-tap ng dining table para kunin o baguhin ang umorder. Ang mga kulay ay nagpapakita ng bakante → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at add-dining table ay nasa mga seksyon sa ibaba.
+floor_help	Mag-tap ng hapag kainan para kunin o baguhin ang umorder. Ang mga kulay ay nagpapakita ng bakante → nakaupo → kusina → handa → kumain → bill → bayad. Ang waitlist, reservation, at add-hapag kainan ay nasa mga seksyon sa ibaba.
 kitchen_help	Mga tiket sa kusina (KOT), pinakabago ang huli. Magsimula → Handa → Tapos na, inilipat ang isang tiket. Ang mga tiket ay hindi kailanman nagpapakita ng mga presyo.
 kitchen_empty	Walang bukas na tiket.
 add_a_table	Magdagdag ng hapag kainan
@@ -1131,7 +1131,7 @@ tile_ready_btn	Iwanan ang hapag kainan
 tile_undo_bill	I-undo ang bill
 summary_busy	abala ang mga hapag kainan
 summary_to_collect	upang mangolekta
-summary_on_floor	sa dining hall
+summary_on_floor	sa bulwagang kainan
 floor	Bulwagan
 sizes_as_items_ph	Mga laki bilang hiwalay na mga item sa menu (opsyonal) — Kalahati=120, Buo=200
 dish_group_ph	Pangkat ng ulam (opsyonal) — hal. Paneer Tikka
@@ -1189,7 +1189,7 @@ server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkata
 print_bill	I-print ang bill
 table_actions	Mga aksyon sa hapag kainan
 move_merge_table	Ilipat / pagsamahin ang hapag kainan
-move_help	Ilipat ang order ng dining table na ito sa isang bakanteng dining table, o pagsamahin ito sa isang tumatakbong mesa.
+move_help	Ilipat ang order ng hapag kainan na ito sa isang bakanteng hapag kainan, o pagsamahin ito sa isang tumatakbong mesa.
 move_target_ph	Pangalan ng hapag-kainan (hal. D5, P2)
 approval_pin_ph	Manager PIN (kung tatanungin lang)
 move_here	Lumipat dito
@@ -1203,7 +1203,7 @@ customer_paid_ph	Nagbayad ang customer
 tip_ph	Dagdag
 table_area_ph	Lugar (hal. Dine In, Parcel, AC)
 table_range_ph	Marami nang sabay-sabay: D1-D20
-add_these_tables	Idagdag ang mga dining table na ito
+add_these_tables	Idagdag ang mga hapag kainan na ito
 remove_these_tables	Alisin ang mga hapag kainan na ito
 table_remove_ph	Alisin: T1-T24, o pangalan ng isang hapag kainan
 find_server	Hanapin ang server ng shop
@@ -1301,7 +1301,7 @@ aggregator_import_help	Opsyonal na Lokal na pag-import: ilagay ang import_aggreg
 import_aggregator_file	Mag-import ng aggregator file
 team_pick_ph	Mga tauhan na ie-edit — pangalan, username, o pipiliin
 select_staff	Piliin ang tauhan na ito
-rights_help	Mga aksyon sa pera at dining hall para sa taong ito — i-tap para umikot: Allowed → Needs boss PIN → Hindi pinapayagan. I-print muli ang bill ay mga bill lamang; Ang mga istasyon ng kusina ay ang checklist sa ibaba.
+rights_help	Mga aksyon sa pera at bulwagang kainan para sa taong ito — i-tap para umikot: Allowed → Needs boss PIN → Hindi pinapayagan. I-print muli ang bill ay mga bill lamang; Ang mga istasyon ng kusina ay ang checklist sa ibaba.
 dish_picker_help	Maghanap o mag-browse sa aming mga pagkain at mag-tap ng isa para punan ang pangalan at larawan nito — o panatilihin ang iyong sariling pangalan. Itakda ang iyong presyo (0 ay fine), pagkatapos ay Magdagdag ng menu item.
 close_dish_list	Isara ang listahan ng ulam
 own_item_name	Gamitin ito bilang iyong sariling pangalan ng item sa menu
@@ -1322,7 +1322,7 @@ recall_kot_ph	KOT # para maalala
 role_help_customer	Tungkulin: Customer — credit ledger (may utang sila sa amin). Ang parehong customer o supplier ay maaari ding magbigay ng stock.
 role_help_both	Mga Tungkulin: Customer + Supplier — isang customer o supplier, credit ledger at payable ledger, net sa Reports.
 role_help_supplier	Tungkulin: Supplier — may utang tayo sa kanila para sa mga pagbili.
-dine_in_pick_table	Dine-in — pumili ng dining table sa screen ng Bulwagan
+dine_in_pick_table	Dine-in — pumili ng hapag kainan sa screen ng Bulwagan
 choose_table	Pumili ng hapag kainan
 change_table	Baguhin ang hapag kainan
 pick_table_banner	Pumili ng hapag kainan para sa order na ito
@@ -1382,7 +1382,7 @@ setup_restored	Naibalik — i-unlock gamit ang May-ari PIN mula sa backup na iyo
 split_help	I-tap ang mga pagkaing binabayaran ng isang bisita · {n} ang napili
 split_send_first	Magpadala muna ng KOT — tanging mga pagkaing mayroon ang kusina ang maaaring mapunta sa isang hiwalay na singil
 split_pick_some	I-tap muna ang mga ulam para sa hiwalay na bill
-split_done	Separate bill made — ito ay nasa dining hall sa tabi ng dining table na ito
+split_done	Separate bill made — ito ay nasa bulwagang kainan sa tabi ng hapag kainan na ito
 split_marked	hiwalay na bill
 order_empty_pick	Walang laman ang order — i-tap ang Magdagdag ng mga pagkain sa itaas upang pumili ng mga pagkain.
 add_dishes	Magdagdag ng mga ulam
