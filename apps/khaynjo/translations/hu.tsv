@@ -1189,7 +1189,7 @@ server_host_selected	A {host} használatával — írja be a párosítási kódo
 print_bill	Számla nyomtatása
 table_actions	Az ebédlőasztal műveletei
 move_merge_table	Az étkezőasztal áthelyezése/egyesítése
-move_help	Helyezze át ezt az étkezőasztalt egy ingyenes étkezőasztalba, vagy egyesítse egy futó asztallal.
+move_help	Helyezze át ennek az asztalnak a rendelését egy üres asztalra, vagy egyesítse egy futó asztallal.
 move_target_ph	Az étkezőasztal neve (pl. D5, P2)
 approval_pin_ph	Menedzser PIN (csak kérésre)
 move_here	Költözz ide

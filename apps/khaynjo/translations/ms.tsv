@@ -1189,7 +1189,7 @@ server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasa
 print_bill	Cetak bil
 table_actions	Aksi meja makan
 move_merge_table	Gerakkan / gabungkan meja makan
-move_help	Alihkan pesanan meja makan ini ke meja makan percuma, atau gabungkannya menjadi meja yang sedang berjalan.
+move_help	Alihkan pesanan meja makan ini ke meja kosong, atau gabungkannya dengan meja yang sedang berjalan.
 move_target_ph	Nama meja makan (cth. D5, P2)
 approval_pin_ph	Pengurus PIN (hanya jika ditanya)
 move_here	Pindah ke sini
