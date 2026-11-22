@@ -822,6 +822,7 @@ script_mod! {
                                         spacing: 10
                                         to_privacy := SecondaryBtn{text: "Privacy"}
                                         to_terms := SecondaryBtn{text: "Terms"}
+                                        to_cancellation := SecondaryBtn{text: "Cancellation"}
 to_shop := SecondaryBtn{text: "Cloud shop"}
 to_account := SecondaryBtn{text: "Account"}
                                     }

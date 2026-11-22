@@ -1065,6 +1065,7 @@ script_mod! {
                                     spacing: 10
                                     to_privacy := GhostBtn{text: "Privacy"}
                                     to_terms := GhostBtn{text: "Terms"}
+                                    to_cancellation := GhostBtn{text: "Cancellation"}
                                 }
                             }
                         }
