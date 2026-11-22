@@ -13,6 +13,9 @@
 # forms still work. Names are replaced with placeholders (some of these
 # faces reserve their name for the unmodified font).
 #
+# Variable display faces are pinned to the weight `ui.rs` draws (Fraunces
+# wght=620) before subsetting, so the staged file drops unused masters.
+#
 #   ./sites/kumkaj/scripts/subset-fonts.sh <staged public dir>
 #
 # Needs pyftsubset (fonttools). Without it the fonts stay whole: the site
@@ -20,9 +23,6 @@
 # script the site's own copy does not use shows empty boxes — add a sample
 # of it to the sources if that ever matters.
 # Used by preview-web.sh and deploy-firebase.sh.
-#
-# Variable display faces are pinned to the weight `ui.rs` draws (Fraunces
-# wght=620) before subsetting, so the staged file drops unused masters.
 set -euo pipefail
 
 OUT="${1:?usage: subset-fonts.sh <staged public dir>}"
@@ -48,7 +48,7 @@ if [[ "$(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt")" -lt 60 ]]; then
   exit 1
 fi
 
-# Pin variable display to the instance ui.rs asks for (weight: 620.0).
+# Pin Fraunces to the instance ui.rs asks for (FontMember weight: 620.0).
 if [[ -f "$FONT_DIR/Fraunces-Variable.ttf" ]] && command -v fonttools >/dev/null 2>&1; then
   before_pin="$(stat -c %s "$FONT_DIR/Fraunces-Variable.ttf")"
   if fonttools varLib.instancer "$FONT_DIR/Fraunces-Variable.ttf" \
@@ -62,33 +62,6 @@ if [[ -f "$FONT_DIR/Fraunces-Variable.ttf" ]] && command -v fonttools >/dev/null
   fi
 fi
 
-# Pin variable display faces to the weight ui.rs asks for (Fraunces
-# FontMember weight: 620) before glyph subsetting — variation tables
-# otherwise stay huge on the wire (docs/WEBSITES.md § fonts).
-pin_variable_display() {
-  local font="$1" pinned="$2"
-  case "$(basename "$font")" in
-    Fraunces-Variable.ttf)
-      python3 - "$font" "$pinned" <<'PY'
-import sys
-from fontTools.ttLib import TTFont
-from fontTools.varLib import instancer
-src, dst = sys.argv[1], sys.argv[2]
-font = TTFont(src)
-if "fvar" not in font:
-    font.save(dst)
-else:
-    instancer.instantiateVariableFont(
-        font, {"wght": 620, "opsz": 9, "SOFT": 0, "WONK": 0}
-    ).save(dst)
-PY
-      ;;
-    *)
-      cp "$font" "$pinned"
-      ;;
-  esac
-}
-
 before=0
 after=0
 count=0
@@ -100,8 +73,7 @@ for font in "$FONT_DIR"/*.ttf "$FONT_DIR"/*.otf "$OUT"/makepad_widgets/resources
     Noto*) ;;                       # a script face: its Latin is never drawn
     *) ranges="$ranges,$LATIN_MORE" ;;
   esac
-  pin_variable_display "$font" "$WORK/pinned-$name"
-  if ! pyftsubset "$WORK/pinned-$name" --output-file="$WORK/$name" \
+  if ! pyftsubset "$font" --output-file="$WORK/$name" \
       --text-file="$WORK/chars.txt" --unicodes="$ranges" \
       --layout-features='*' --notdef-outline --no-hinting --obfuscate-names \
       > "$WORK/log.txt" 2>&1; then
