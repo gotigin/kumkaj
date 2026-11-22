@@ -334,7 +334,7 @@ booking_scope_hint_domestic	Volumétrica ÷5000 (doméstica) - toque Internacion
 booking_scope_hint_intl	Volumétrico ÷6000 (aire internacional) — toque Doméstico para tenda ÷5000
 cod_register	Rexistro COD
 collect_cod	Recoller COD (AWB)
-consignments_dispatch	Envíos e envíos
+consignments_dispatch	Envíos e despacho
 consignor_party_ph	Nome do remitente/parte
 copy_day_book_csv	Copiar o libro do día CSV
 copy_day_close	Copiar o peche do día
@@ -850,7 +850,7 @@ cod_to_hand_in	COD para entregar
 parcel_one_fmt	Paquete {n}
 facet_bank_title	Informes
 facet_bank_help	Libros do día, antigüidade de partes, asentos bancarios e PyG do período.
-facet_ops_title	Envíos e envíos
+facet_ops_title	Envíos e despacho
 facet_ops_help	Escanee ou escriba AWB → Buscar e, a continuación, avance / imprima etiquetas / COD. Envío a piloto ou transportista.
 facet_cod_title	Rexistro COD
 facet_cod_help	Recollida na entrega e despois remitir ao remitente.

@@ -6,7 +6,7 @@ sell	Reservas
 nav_board	Tablero
 board	Tablero
 park_draft	Aparcar borrador
-board_help	Borradores abiertos (se guardan hasta que pulse «Descartar» o «Cobrar») y las ventas registradas hoy. En «Envíos», pulse «Aparcar borrador» a mitad del trabajo (se guarda aquí, no en los libros); pulse un borrador para retomarlo.
+board_help	Borradores abiertos (se guardan hasta que pulse «Descartar» o «Cobrar») y las ventas registradas hoy. En «Reservas», pulse «Aparcar borrador» a mitad del trabajo (se guarda aquí, no en los libros); pulse un borrador para retomarlo.
 board_empty	Aún no hay tarjetas.
 board_park_nothing	Nada que aparcar: añada cargos o datos del envío
 board_parked	Aparcado en «Tablero»: el puesto queda libre
@@ -19,14 +19,14 @@ board_cols_fmt	{n} col.
 board_summary_fmt	{total} tarjetas · {drafts} borradores · {booked} registrados
 board_card_no_charges	Aún sin cargos
 board_card_charges	cargos
-board_card_booked	Envíos
+board_card_booked	Reservas
 board_draft_gone	Ese borrador ya no está en «Tablero»
 board_draft_closed	Ese borrador ya se terminó o se descartó
 board_discard	Descartar
 board_discarded	Borrador descartado
 buy	Pagos
 books	Libro del día
-books_help	Posición de hoy. Envíos = paquetes que entran. Pagos = facturas de transportistas y gastos. Partes = remitentes y transportistas.
+books_help	Posición de hoy. Reservas = paquetes que entran. Pagos = facturas de transportistas y gastos. Partes = remitentes y transportistas.
 buy_help	Vales de gasto y facturas de transportistas (dinero que sale). Lo de cuenta queda en el libro de la parte.
 sell_money_in	Registrar un paquete
 buy_money_out	Gasto / factura transportista
@@ -91,8 +91,8 @@ split	Dividir
 counter	Mostrador
 parcel	Paquete
 order	Pedido
-sales	Envíos
-sales_refunds	Envíos y reembolsos
+sales	Reservas
+sales_refunds	Reservas y reembolsos
 day_close	Cierre del día
 reports_expenses	Informes y gastos
 nav_reports	Informes
@@ -679,8 +679,8 @@ booking_measures	Medidas del envío
 drawer_count	Conteo de caja (opcional)
 spreadsheet_csv	Hoja de cálculo (CSV)
 bank_reconciliation	Conciliación bancaria
-book_add_product	Envío — añadir producto / tarifa
-book_opening_credit	Envío — crédito inicial
+book_add_product	Reserva — añadir producto / tarifa
+book_opening_credit	Reserva — crédito inicial
 account_kind	Tipo de cuenta (toca uno)
 active_ledger	Libro activo
 actual_total_cap	TOTAL REAL
@@ -931,8 +931,8 @@ role_help_consignor	Rol: Remitente — AR (nos deben). La misma firma también p
 role_help_carrier	Rol: Transportista — AP (les debemos). La misma firma también puede ser remitente.
 role_help_both	Roles: Remitente + Transportista — una parte, libros AR y AP, neto en Informes.
 role_help_supplier	Rol: Proveedor — AP de compras.
-lane_declared_label	Envío a cuenta
-lane_owner_label	Envío al contado
+lane_declared_label	Reserva a cuenta
+lane_owner_label	Reserva al contado
 money_lane_bill	Factura: {lane}
 sel_copy	Copiar
 sel_select_all	Seleccionar todo

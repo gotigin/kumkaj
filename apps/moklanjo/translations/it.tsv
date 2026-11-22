@@ -6,9 +6,9 @@ sell	Prenotazioni
 nav_board	Bacheca
 board	Bacheca
 park_draft	Metti in attesa
-board_help	Bozze aperte (restano finché non tocchi «Scarta» o «Incassa») e le vendite accettate oggi. In «Spedizioni» tocca «Metti in attesa» a metà lavoro (salvato qui, non nei libri); tocca una bozza per riprenderla.
+board_help	Bozze aperte (restano finché non tocchi «Scarta» o «Incassa») e le vendite accettate oggi. In «Prenotazioni» tocca «Metti in attesa» a metà lavoro (salvato qui, non nei libri); tocca una bozza per riprenderla.
 board_empty	Ancora nessuna scheda.
-board_park_nothing	Niente da mettere in attesa: aggiungi addebiti o dati della spedizione
+board_park_nothing	Niente da mettere in attesa: aggiungi addebiti o dati della prenotazione
 board_parked	In attesa in «Bacheca»: la postazione è libera
 board_draft	Bozza
 board_booked	Accettato
@@ -19,14 +19,14 @@ board_cols_fmt	{n} col.
 board_summary_fmt	{total} schede · {drafts} bozze · {booked} accettate
 board_card_no_charges	Ancora nessun addebito
 board_card_charges	addebiti
-board_card_booked	Spedizioni
+board_card_booked	Prenotazioni
 board_draft_gone	Quella bozza non è più in «Bacheca»
 board_draft_closed	Quella bozza è già stata completata o scartata
 board_discard	Scarta
 board_discarded	Bozza scartata
 buy	Pagamenti
 books	Libro del giorno
-books_help	Posizione di oggi. Spedizioni = pacchi in entrata. Pagamenti = fatture corrieri e spese. Parti = mittenti e corrieri.
+books_help	Posizione di oggi. Prenotazioni = pacchi in entrata. Pagamenti = fatture corrieri e spese. Parti = mittenti e corrieri.
 buy_help	Buoni spesa e fatture corrieri (denaro in uscita). A conto resta nel libro della parte.
 sell_money_in	Registra un pacco
 buy_money_out	Spesa / fattura corriere
@@ -91,8 +91,8 @@ split	Dividi
 counter	Banco
 parcel	Pacco
 order	Ordine
-sales	Spedizioni
-sales_refunds	Spedizioni e rimborsi
+sales	Prenotazioni
+sales_refunds	Prenotazioni e rimborsi
 day_close	Chiusura giorno
 reports_expenses	Report e spese
 nav_reports	Report
@@ -139,7 +139,7 @@ new_customer_ph	Nome nuova parte
 item_name_ph	Nome tariffa (es. Surface Zone A)
 item_price_ph	Per kg / prima fascia
 start_template	Prodotto
-next_booking	Prossima spedizione
+next_booking	Prossima prenotazione
 destination_ph	Città / zona di destinazione
 consignee_ph	Destinatario
 consignee_phone_ph	Telefono del destinatario
@@ -679,8 +679,8 @@ booking_measures	Misure spedizione
 drawer_count	Conteggio cassa (facoltativo)
 spreadsheet_csv	Foglio di calcolo (CSV)
 bank_reconciliation	Riconciliazione bancaria
-book_add_product	Spedizione — aggiungi prodotto / tariffa
-book_opening_credit	Spedizione — credito iniziale
+book_add_product	Prenotazione — aggiungi prodotto / tariffa
+book_opening_credit	Prenotazione — credito iniziale
 account_kind	Tipo conto (tocca uno)
 active_ledger	Libro attivo
 actual_total_cap	TOTALE EFFETTIVO

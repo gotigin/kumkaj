@@ -6,7 +6,7 @@ sell	Reservas
 nav_board	Quadro
 board	Quadro
 park_draft	Pôr em espera
-board_help	Rascunhos abertos (ficam até tocar em «Descartar» ou «Receber pagamento») e as vendas registadas hoje. Em «Envios», toque em «Pôr em espera» a meio do trabalho (fica guardado aqui, não nos livros); toque num rascunho para o retomar.
+board_help	Rascunhos abertos (ficam até tocar em «Descartar» ou «Receber pagamento») e as vendas registadas hoje. Em «Reservas», toque em «Pôr em espera» a meio do trabalho (fica guardado aqui, não nos livros); toque num rascunho para o retomar.
 board_empty	Ainda sem cartões.
 board_park_nothing	Nada para pôr em espera: adicione encargos ou dados do envio
 board_parked	Em espera em «Quadro»: o posto está livre
@@ -19,14 +19,14 @@ board_cols_fmt	{n} col.
 board_summary_fmt	{total} cartões · {drafts} rascunhos · {booked} registados
 board_card_no_charges	Ainda sem encargos
 board_card_charges	encargos
-board_card_booked	Envios
+board_card_booked	Reservas
 board_draft_gone	Esse rascunho já não está em «Quadro»
 board_draft_closed	Esse rascunho já foi concluído ou descartado
 board_discard	Descartar
 board_discarded	Rascunho descartado
 buy	Pagamentos
 books	Livro do dia
-books_help	Posição de hoje. Envios = encomendas que entram. Pagamentos = faturas de transportadoras e despesas. Partes = remetentes e transportadoras.
+books_help	Posição de hoje. Reservas = encomendas que entram. Pagamentos = faturas de transportadoras e despesas. Partes = remetentes e transportadoras.
 buy_help	Vales de despesa e faturas de transportadoras (dinheiro que sai). O em conta fica no livro da parte.
 sell_money_in	Registar uma encomenda
 buy_money_out	Despesa / fatura transportadora
@@ -679,8 +679,8 @@ booking_measures	Medidas do envio
 drawer_count	Contagem da gaveta (opcional)
 spreadsheet_csv	Folha de cálculo (CSV)
 bank_reconciliation	Conciliação bancária
-book_add_product	Envio — adicionar produto / tarifa
-book_opening_credit	Envio — crédito inicial
+book_add_product	Reserva — adicionar produto / tarifa
+book_opening_credit	Reserva — crédito inicial
 account_kind	Tipo de conta (toque num)
 active_ledger	Livro ativo
 actual_total_cap	TOTAL REAL

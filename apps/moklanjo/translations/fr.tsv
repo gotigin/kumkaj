@@ -6,7 +6,7 @@ sell	Réservations
 nav_board	Tableau
 board	Tableau
 park_draft	Mettre en attente
-board_help	Brouillons ouverts (conservés jusqu'à «Abandonner» ou «Encaisser») et ventes enregistrées aujourd'hui. Dans «Envois», appuyez sur «Mettre en attente» en cours de saisie (enregistré ici, pas dans les livres) ; appuyez sur un brouillon pour le reprendre.
+board_help	Brouillons ouverts (conservés jusqu'à «Abandonner» ou «Encaisser») et ventes enregistrées aujourd'hui. Dans «Réservations», appuyez sur «Mettre en attente» en cours de saisie (enregistré ici, pas dans les livres) ; appuyez sur un brouillon pour le reprendre.
 board_empty	Pas encore de carte.
 board_park_nothing	Rien à mettre en attente : ajoutez des frais ou les détails de l'envoi
 board_parked	Mis en attente dans «Tableau» : le poste est libre
@@ -19,14 +19,14 @@ board_cols_fmt	{n} col.
 board_summary_fmt	{total} cartes · {drafts} brouillons · {booked} enregistrés
 board_card_no_charges	Pas encore de frais
 board_card_charges	frais
-board_card_booked	Envois
+board_card_booked	Réservations
 board_draft_gone	Ce brouillon n'est plus dans «Tableau»
 board_draft_closed	Ce brouillon a déjà été terminé ou abandonné
 board_discard	Abandonner
 board_discarded	Brouillon abandonné
 buy	Paiements
 books	Livre du jour
-books_help	Position du jour. Envois = colis entrants. Paiements = factures transporteurs et dépenses. Parties = expéditeurs et transporteurs.
+books_help	Position du jour. Réservations = colis entrants. Paiements = factures transporteurs et dépenses. Parties = expéditeurs et transporteurs.
 buy_help	Bons de dépense et factures transporteurs (argent sortant). Le montant au compte reste au livre de la partie.
 sell_money_in	Enregistrer un colis
 buy_money_out	Dépense / facture transporteur
@@ -91,8 +91,8 @@ split	Partager
 counter	Comptoir
 parcel	Colis
 order	Commande
-sales	Envois
-sales_refunds	Envois et remboursements
+sales	Réservations
+sales_refunds	Réservations et remboursements
 day_close	Clôture du jour
 reports_expenses	Rapports et dépenses
 nav_reports	Rapports
@@ -679,8 +679,8 @@ booking_measures	Mesures d'envoi
 drawer_count	Comptage de caisse (facultatif)
 spreadsheet_csv	Tableur (CSV)
 bank_reconciliation	Rapprochement bancaire
-book_add_product	Envoi — ajouter produit / tarif
-book_opening_credit	Envoi — crédit d'ouverture
+book_add_product	Réservation — ajouter produit / tarif
+book_opening_credit	Réservation — crédit d'ouverture
 account_kind	Type de compte (touchez-en un)
 active_ledger	Livre actif
 actual_total_cap	TOTAL RÉEL
@@ -931,8 +931,8 @@ role_help_consignor	Rôle : Expéditeur — AR (ils nous doivent). La même soci
 role_help_carrier	Rôle : Transporteur — AP (nous leur devons). La même société peut aussi être expéditeur.
 role_help_both	Rôles : Expéditeur + Transporteur — une partie, livres AR et AP, net dans Rapports.
 role_help_supplier	Rôle : Fournisseur — AP des achats.
-lane_declared_label	Envoi en compte
-lane_owner_label	Envoi au comptant
+lane_declared_label	Réservation en compte
+lane_owner_label	Réservation au comptant
 money_lane_bill	Facture : {lane}
 sel_copy	Copier
 sel_select_all	Tout sélectionner
