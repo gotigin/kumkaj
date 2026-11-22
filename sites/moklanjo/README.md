@@ -35,62 +35,42 @@ The tracking rail under the top bar is the chapter nav: beads behind the
 parcel turn yellow, the current one orange. `#weigh` (or `#2`) in the URL
 opens that chapter.
 
-## Scroll: viewport page-steps (not chapter snap)
+## Scroll: free-scroll + rail in sync
 
-Wheel / trackpad / PageUp·PageDown / Space do **not** free-scroll the
-`ScrollYView`. A small intentional stroke eases about **one viewport**
-(~92% of visible height, ~0.5 s ease-out cubic). The orange rail fill
-moves with that motion. Arrow keys still nudge 64 px for fine reading;
-finger-drag on the page still free-scrolls (escape hatch). Bead taps
-animate to that chapter.
+Wheel, trackpad, and finger-drag **free-scroll** the `ScrollYView` at the
+user’s own speed. The old “one viewport per stroke” page-step was removed
+(2026-11-22) — it locked scrolling to a fixed ease.
 
-Implementation lives in `src/main.rs`:
+**What stays:** the horizontal parcel-journey rail (orange fill + beads +
+`1 / 9 · …` pill) must track where you are in the story as you scroll.
+That is independent of page-steps.
 
-1. **Claim the wheel before the scroll view** — `handle_wheel_page` runs
-   on `Event::Scroll` *before* `ui.handle_event`, sets `handled_y`, and
-   accumulates delta (threshold 28). Ignore `ScrollPhase::Momentum` so a
-   flick does not race several pages. Web usually sends `phase: None`.
-2. **Time-based page anim** — `scroll_anim_from` / `scroll_anim_to` /
-   `scroll_anim_t0` + `NextFrame` (~0.52 s, ease-out cubic). Not an
-   asymptotic lerp that crawls forever at the end.
-3. **Last chapter (Start)** — Start + footer are shorter than the
-   viewport, so Start’s top never crosses the sticky spy mark.
-   `at_page_end` is **scroll_pos ≥ max_scroll − 4** (not a footer-rect
-   flush — that missed on wasm). Mid-viewport promote (~55%) also lights
-   Start when it is well on screen. Without that, Offline stays lit and
-   the orange fill never reaches the last bead.
-4. **Rail stays in sync with the page** — `set_scroll_pos` updates
-   geometry one frame late. Mid-anim `snap_rail_fill` can use stale
-   section tops; finger free-scroll never hit `Event::Scroll` after the
-   wheel claim. Fix: always `snap_rail_fill` when the chapter is
-   unchanged, and `request_chrome_sync` → `NextFrame` after settle /
-   when Draw sees scroll Y move (no mid-Draw `walk.width` mutation).
+Implementation in `src/main.rs`:
+
+1. **No wheel claim** — `ScrollYView` owns free-scroll. Do not reintroduce
+   `handled_y` page-steps.
+2. **Rail sync** — on `Event::Scroll` and when Draw sees scroll Y move,
+   `request_chrome_sync` → `NextFrame` → `paint_scroll_chrome` /
+   `snap_rail_fill` from `journey_progress` (never mutate rail width
+   mid-Draw — wasm text smear).
+3. **Last chapter (Start)** — `at_page_end` is
+   `scroll_pos ≥ max_scroll − 4`; mid-viewport (~55%) also promotes Start
+   so the last bead and fill complete at the bottom.
+4. **Bead taps / deep links** may ease to a chapter; PageUp/PageDown/Space
+   jump one viewport **immediately**; arrows nudge 64 px.
 
 ### Wasm text ghosting — do not regress
 
-On Makepad wasm, **mutating layout or label text every animation /
-Draw frame** leaves previous glyphs visible for a beat (smear / trail).
-We hit this when:
+| Cause | Rule |
+|---|---|
+| Eased rail width via perpetual `NextFrame` | Snap rail width; no rail ease loop |
+| `paint_chrome` / `set_text` on beads every anim tick | Mid bead-jump: scroll + `snap_rail_fill` only; full chrome on settle |
+| `snap_rail_fill` on every `Event::Draw` | Sync on **NextFrame** after scroll |
 
-| Cause | Why it smears | Rule |
-|---|---|---|
-| Eased **rail width** via perpetual `NextFrame` | `walk.width` thrash + full redraw mid-scroll | Snap rail width; no rail ease loop |
-| `paint_chrome` / `set_text` on beads **every anim tick** | Glyphs redrawn while scroll_pos is moving | Mid-flight: `set_scroll_pos` + `snap_rail_fill` only; full `paint_chrome` on settle (and when chapter flips) |
-| `paint_scroll_chrome` / `snap_rail_fill` on **every `Event::Draw`** | Mid-draw layout mutation | Detect scroll on Draw → sync on **NextFrame**; never mutate rail width inside Draw |
-| Slow asymptotic scroll lerp (many tiny frames) | More partial paints | Prefer timed ease (~0.5 s), then stop |
+Unit tests pin `journey_progress_from` / `active_chapter_from`.
 
-**Safe mid-anim:** `page.set_scroll_pos` + `snap_rail_fill` + redraw
-`page` / `track_row`. **On complete:** `paint_scroll_chrome` + one
-post-layout `chrome_sync` frame. Do not reintroduce continuous
-`tick_rail_fill` easing or label rewrites inside `tick_scroll_anim`.
-
-Unit tests pin `journey_progress_from` / `active_chapter_from` (fill
-advances between beads; scroll-end forces 1.0 when the last top never
-crosses the mark).
-
-Hard-refresh the preview after a wasm rebuild (`?v=preview-…` in
-`index.html`); an old tab can keep a previous build and even hit
-`RuntimeError: unreachable`.
+Hard-refresh after a wasm rebuild (`?v=preview-…`); stale tabs can keep an
+old binary (`RuntimeError: unreachable`).
 
 ## Story (9 chapters — "one parcel, from counter to settled")
 

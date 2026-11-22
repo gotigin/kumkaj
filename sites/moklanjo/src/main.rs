@@ -17,7 +17,6 @@
 
 pub use makepad_widgets;
 
-use makepad_widgets::makepad_platform::event::{ScrollEvent, ScrollPhase};
 use makepad_widgets::*;
 
 mod weight;
@@ -376,23 +375,17 @@ pub struct App {
     pending_last_y: f64,
     #[rust]
     pending_stable: u8,
-    /// Animated viewport page-step (wheel / Page keys / bead).
+    /// Optional ease when a rail bead jumps to a chapter (not used for wheel).
     #[rust]
     scroll_anim_from: f64,
     #[rust]
     scroll_anim_to: Option<f64>,
-    /// NextFrame time when the current page-step started (0 = take next tick).
+    /// NextFrame time when a bead jump started (0 = take next tick).
     #[rust]
     scroll_anim_t0: f64,
     #[rust]
     scroll_anim_frame: NextFrame,
-    /// Wheel delta accumulator (one intentional stroke → one page).
-    #[rust]
-    wheel_accum: f64,
-    /// At most one queued page-step while an animation is running.
-    #[rust]
-    page_queue: Option<f64>,
-    /// Scroll Y last used for rail / chapter chrome (finger free-scroll + post-layout).
+    /// Scroll Y last used for rail / chapter chrome (free-scroll + post-layout).
     #[rust]
     last_chrome_scroll_y: f64,
     /// NextFrame token for chrome sync after layout catches up to scroll_pos.
@@ -542,7 +535,6 @@ impl App {
         let y = y.clamp(0.0, self.max_scroll_y(cx));
         self.scroll_anim_to = None;
         self.scroll_anim_t0 = 0.0;
-        self.page_queue = None;
         self.page(cx).set_scroll_pos(cx, dvec2(0.0, y));
         self.paint_scroll_chrome(cx);
         // Layout lags scroll_pos by a frame — re-snap rail/chapter with fresh tops.
@@ -550,6 +542,7 @@ impl App {
         self.ui.redraw(cx);
     }
 
+    /// Bead / deep-link jump only — wheel and trackpad free-scroll the ScrollYView.
     fn animate_scroll_to_y(&mut self, cx: &mut Cx, y: f64) {
         let y = y.clamp(0.0, self.max_scroll_y(cx));
         let cur = self.page(cx).get_scroll_pos().y;
@@ -564,15 +557,6 @@ impl App {
         self.ui.redraw(cx);
     }
 
-    /// One screenful in `dir` (+1 down / −1 up), eased; rail tracks with it.
-    fn start_viewport_page(&mut self, cx: &mut Cx, dir: f64) {
-        let dir = if dir < 0.0 { -1.0 } else { 1.0 };
-        let cur = self.page(cx).get_scroll_pos().y;
-        let target = cur + dir * self.viewport_step(cx);
-        self.wheel_accum = 0.0;
-        self.animate_scroll_to_y(cx, target);
-    }
-
     fn tick_scroll_anim(&mut self, cx: &mut Cx, time: f64) {
         let Some(target) = self.scroll_anim_to else {
             return;
@@ -580,75 +564,27 @@ impl App {
         if self.scroll_anim_t0 <= 0.0 {
             self.scroll_anim_t0 = time;
         }
-        // ~0.5 s ease-out — slower than the first cut, still finishes cleanly.
-        const DUR: f64 = 0.52;
+        const DUR: f64 = 0.4;
         let t = ((time - self.scroll_anim_t0) / DUR).clamp(0.0, 1.0);
         let ease = 1.0 - (1.0 - t).powi(3);
         let y = self.scroll_anim_from + (target - self.scroll_anim_from) * ease;
         let page = self.page(cx);
         page.set_scroll_pos(cx, dvec2(0.0, y));
-        // Mid-flight: move the orange line only. Rewriting bead labels every
-        // frame was a big source of the text ghost trails on wasm.
+        // Mid-flight: orange fill only — no bead label rewrites (wasm smear).
         self.snap_rail_fill(cx);
         if t >= 1.0 {
             page.set_scroll_pos(cx, dvec2(0.0, target));
             self.scroll_anim_to = None;
             self.scroll_anim_t0 = 0.0;
-            self.wheel_accum = 0.0;
             self.paint_scroll_chrome(cx);
-            // Post-layout sync: section tops used mid-anim are often still stale.
             self.request_chrome_sync(cx);
             self.ui.redraw(cx);
-            if let Some(dir) = self.page_queue.take() {
-                self.start_viewport_page(cx, dir);
-            }
             return;
         }
         self.scroll_anim_frame = cx.new_next_frame();
         self.ui.view(cx, ids!(page)).redraw(cx);
         self.ui.view(cx, ids!(track_row)).redraw(cx);
         self.ui.view(cx, ids!(step_pill)).redraw(cx);
-    }
-
-    /// Claim the wheel before ScrollYView free-scrolls; one stroke → one page.
-    fn handle_wheel_page(&mut self, cx: &mut Cx, se: &ScrollEvent) {
-        let page = self.ui.view(cx, ids!(page));
-        if !page.area().is_valid(cx) || !page.area().clipped_rect(cx).contains(se.abs) {
-            return;
-        }
-        se.handled_y.set(true);
-
-        // Web usually sends phase None; native trackpads send Momentum / Ended.
-        // Ignore coasting so a flick does not race through several pages.
-        match se.phase {
-            ScrollPhase::Momentum => return,
-            ScrollPhase::Touched | ScrollPhase::Ended | ScrollPhase::MomentumEnded => {
-                self.wheel_accum = 0.0;
-                return;
-            }
-            ScrollPhase::None | ScrollPhase::Began | ScrollPhase::Changed => {}
-        }
-
-        let delta = se.scroll.y;
-        if delta.abs() < 0.5 {
-            return;
-        }
-        const THRESH: f64 = 28.0;
-        if self.scroll_animating() {
-            self.wheel_accum += delta;
-            if self.wheel_accum.abs() >= THRESH {
-                self.page_queue = Some(self.wheel_accum.signum());
-                self.wheel_accum = 0.0;
-            }
-            return;
-        }
-        self.wheel_accum += delta;
-        if self.wheel_accum.abs() < THRESH {
-            return;
-        }
-        let dir = self.wheel_accum.signum();
-        self.wheel_accum = 0.0;
-        self.start_viewport_page(cx, dir);
     }
 
     fn scroll_by(&mut self, cx: &mut Cx, delta: f64) {
@@ -774,9 +710,13 @@ impl App {
             KeyCode::ArrowDown => self.scroll_by(cx, 64.0),
             KeyCode::ArrowUp => self.scroll_by(cx, -64.0),
             KeyCode::PageDown | KeyCode::Space if !ke.modifiers.shift => {
-                self.start_viewport_page(cx, 1.0);
+                let step = self.viewport_step(cx);
+                self.scroll_by(cx, step);
             }
-            KeyCode::PageUp => self.start_viewport_page(cx, -1.0),
+            KeyCode::PageUp => {
+                let step = self.viewport_step(cx);
+                self.scroll_by(cx, -step);
+            }
             KeyCode::Home => self.scroll_to_y_now(cx, 0.0),
             KeyCode::End => {
                 let end = self.max_scroll_y(cx);
@@ -1269,14 +1209,16 @@ impl AppMain for App {
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
         self.match_event(cx, event);
-        // Claim the wheel before ScrollYView free-scrolls the page.
-        if let Event::Scroll(se) = event {
-            self.handle_wheel_page(cx, se);
-        }
         self.ui.handle_event(cx, event, &mut Scope::empty());
         match event {
             Event::Startup | Event::WindowGeomChange(_) => self.apply_responsive(cx),
             Event::KeyDown(ke) => self.handle_scroll_keys(cx, ke),
+            // Free wheel / trackpad: ScrollYView owns the motion; keep the rail synced.
+            Event::Scroll(_) => {
+                if !self.scroll_animating() {
+                    self.request_chrome_sync(cx);
+                }
+            }
             Event::NextFrame(ne) => {
                 if ne.set.contains(&self.scroll_anim_frame) {
                     self.tick_scroll_anim(cx, ne.time);

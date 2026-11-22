@@ -415,24 +415,22 @@ deep chrome (navy / deep red), never grey-on-grey.
 9. **Wasm scroll / chrome — do not ghost text.** On Makepad wasm,
    rewriting labels or mutating `walk.width` every `NextFrame` / `Draw`
    while `scroll_pos` is moving leaves previous glyphs visible for a
-   beat. Moklanjo’s viewport page-steps
+   beat. Moklanjo
    ([`sites/moklanjo/README.md`](../sites/moklanjo/README.md) § Scroll)
-   are the worked example:
-   - Claim the wheel (`handled_y`) **before** `ui.handle_event` if the
-     site owns paging; ignore trackpad `Momentum`.
-   - Animate with a **timed** ease (~0.5 s), not a perpetual rail-fill
-     lerp that schedules `NextFrame` forever.
-   - Mid-anim: `set_scroll_pos` + optional rail width snap only — **no**
-     `set_text` on beads / nav every tick.
-   - Full nav chrome (`paint_chrome`) on settle or when the active
-     section actually changes — not on every `Event::Draw`.
+   is the worked example for a continuous chapter rail:
+   - Prefer **normal free-scroll** (do not claim the wheel into fixed
+     page-steps — that locks the user to one speed).
+   - Keep the **horizontal rail / beads in sync** with vertical scroll:
+     `snap_rail_fill` when the chapter is unchanged; re-sync chrome on
+     **NextFrame** after `Event::Scroll` / scroll-Y change on Draw
+     (layout tops lag `set_scroll_pos`; never mutate rail width mid-Draw).
+   - Bead / deep-link jumps may use a short timed ease; mid-anim:
+     `set_scroll_pos` + rail snap only — **no** `set_text` on beads every
+     tick. Full `paint_chrome` on settle or when the active section changes.
    - Short last sections need an `at_page_end` (or mid-viewport) promote
      so the last nav item lights when the footer is already on screen.
      Prefer **`scroll_pos ≥ max_scroll − ε`** over footer-rect flush (wasm
-     often never reports flush). Continuous rails (Moklanjo) must
-     `snap_rail_fill` when the chapter is unchanged and re-sync on
-     **NextFrame** after scroll — layout tops lag `set_scroll_pos`, and
-     finger free-scroll never hits the claimed wheel path.
+     often never reports flush).
    - After a wasm rebuild, hard-refresh; stale `?v=` tabs can keep an old
      binary (`RuntimeError: unreachable`).
 
