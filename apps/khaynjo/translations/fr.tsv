@@ -1113,7 +1113,7 @@ book_kind_aging	En suspens / débit-crédit
 book_kind_balance	Bilan
 order_help	Touchez un article pour l'ajouter.
 floor_help	Touchez une table pour prendre ou modifier la commande. Les couleurs montrent libre → assis → cuisine → prêt → en train de manger → addition → payé. Liste d’attente, réservations et ajout de tables sont dans les sections ci-dessous.
-kitchen_help	Suivez le prêt par variante ou par article — enregistrez-le dans le KOT comme vous voulez.
+kitchen_help	Tickets cuisine (KOT), le plus récent en bas. Démarrer → Prêt → Fait fait avancer le ticket. Les tickets n’affichent jamais de prix.
 kitchen_empty	Rien d'ouvert pour l'instant.
 add_a_table	Ajouter une table
 add_station_heading	Ajouter un poste · ex. Tandoor, Inde du Sud

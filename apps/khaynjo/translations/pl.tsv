@@ -1113,7 +1113,7 @@ book_kind_aging	Zaległość / kredyt debetowy
 book_kind_balance	Bilans
 order_help	Kliknij pozycję, aby go dodać.
 floor_help	Kliknij stół, aby przyjąć lub zmienić kolejność. Kolory pokazują wolne → siedzące → kuchnia → gotowe → jedzenie → rachunek → zapłacony. Lista oczekujących, rezerwacje i dodatkowe stoły znajdują się w poniższych sekcjach.
-kitchen_help	Bilety kuchenne (KOT), najnowsze na końcu. Start → Gotowe → Gotowe przesuwa bilet dalej. Bilety nigdy nie pokazują cen.
+kitchen_help	Bilety kuchenne (KOT), najnowsze na końcu. Start → Gotowe → Zrobione przesuwa bilet dalej. Bilety nigdy nie pokazują cen.
 kitchen_empty	Brak otwartych biletów.
 add_a_table	Dodaj stół jadalny
 add_station_heading	Dodaj stację kuchenną

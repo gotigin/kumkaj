@@ -1113,7 +1113,7 @@ book_kind_aging	未精算 / 借方・貸方
 book_kind_balance	貸借対照表
 order_help	商品をタップして追加します。
 floor_help	テーブルをタップして注文の開始や変更。色は空席 → 着席 → 厨房 → 提供可 → 食事中 → 伝票 → 会計済。 ウェイティング・予約・テーブル追加は下の各セクション。
-kitchen_help	バリアント別またはアイテム別に準備量を記録 — KOT に好きな方法で記録。
+kitchen_help	厨房伝票（KOT）、新しいものが末尾。開始 → 提供可 → 完了で伝票が進みます。伝票に価格は出しません。
 kitchen_empty	現在開いているものはありません。
 add_a_table	テーブルを追加
 add_station_heading	ステーションを追加 · 例：タンドール、南インド

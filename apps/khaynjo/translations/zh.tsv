@@ -1113,7 +1113,7 @@ book_kind_aging	未结 / 借贷
 book_kind_balance	资产负债表
 order_help	点按一项即可添加。
 floor_help	点按桌台以开单或改单。颜色表示空闲 → 入座 → 厨房 → 就绪 → 就餐 → 账单 → 已付。 候位、预订与加桌在下方各区。
-kitchen_help	按变体或按菜品跟踪出餐量 — 在 KOT 中按您想要的方式记录。
+kitchen_help	厨房票（KOT），最新在后。开始 → 就绪 → 完成推动票据。票据从不显示价格。
 kitchen_empty	现在没有打开的订单。
 add_a_table	添加桌子
 add_station_heading	添加工位 · 如坦都里、南印度

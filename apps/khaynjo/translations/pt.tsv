@@ -1113,7 +1113,7 @@ book_kind_aging	Pendente / débito-crédito
 book_kind_balance	Balanço patrimonial
 order_help	Toque num artigo para o adicionar.
 floor_help	Toque numa mesa para tomar ou alterar o pedido. As cores mostram livre → sentados → cozinha → pronto → a comer → conta → pago. Lista de espera, reservas e adicionar mesas estão nas secções abaixo.
-kitchen_help	Acompanhe o pronto por variante ou por item — registre no KOT como quiser.
+kitchen_help	Tickets de cozinha (KOT), o mais recente no fim. Iniciar → Pronto → Feito avança o ticket. Os tickets nunca mostram preços.
 kitchen_empty	Nada aberto agora.
 add_a_table	Adicionar uma mesa
 add_station_heading	Adicionar estação · ex. Tandoor, Sul da Índia

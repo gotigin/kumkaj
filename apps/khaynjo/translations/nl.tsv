@@ -1113,7 +1113,7 @@ book_kind_aging	Openstaand / debet-credit
 book_kind_balance	Balans
 order_help	Tik op een artikel om het toe te voegen.
 floor_help	Tik op een tafel om de bestelling te nemen of te wijzigen. Kleuren tonen vrij → gezeten → keuken → klaar → aan het eten → rekening → betaald. Wachtlijst, reserveringen en tafels toevoegen staan in de secties hieronder.
-kitchen_help	Volg gereed per variant of per item — noteer in de KOT zoals je wilt.
+kitchen_help	Keukentickets (KOT), nieuwste onderaan. Start → Klaar → Gedaan schuift een ticket door. Tickets tonen nooit prijzen.
 kitchen_empty	Nu niets open.
 add_a_table	Tafel toevoegen
 add_station_heading	Station toevoegen · bv. Tandoor, Zuid-Indiaas

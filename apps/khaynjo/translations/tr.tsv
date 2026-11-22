@@ -1113,7 +1113,7 @@ book_kind_aging	Bakiye / borç-alacak
 book_kind_balance	Bilanço
 order_help	Eklemek için bir ürüne dokunun.
 floor_help	Siparişi almak veya değiştirmek için bir masaya dokunun. Renkler boş → oturdu → mutfak → hazır → yiyor → hesap → ödendi gösterir. Bekleme listesi, rezervasyonlar ve masa ekleme aşağıdaki bölümlerde.
-kitchen_help	Her varyant veya ürün için hazır olanı takip edin — KOT'a istediğiniz gibi kaydedin.
+kitchen_help	Mutfak fişleri (KOT), en yenisi sonda. Başlat → Hazır → Bitti fişi ilerletir. Fişler asla fiyat göstermez.
 kitchen_empty	Şu an açık bir şey yok.
 add_a_table	Masa ekle
 add_station_heading	İstasyon ekle · örn. Tandır, Güney Hint

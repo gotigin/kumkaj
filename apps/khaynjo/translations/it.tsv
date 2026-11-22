@@ -1113,7 +1113,7 @@ book_kind_aging	In sospeso / dare-avere
 book_kind_balance	Bilancio
 order_help	Tocca un articolo per aggiungerlo.
 floor_help	Tocca un tavolo per prendere o cambiare l’ordine. I colori mostrano libero → seduti → cucina → pronto → a tavola → conto → pagato. Lista d’attesa, prenotazioni e aggiungi tavoli sono nelle sezioni sotto.
-kitchen_help	Traccia il pronto per variante o per articolo — registralo nel KOT come vuoi.
+kitchen_help	Ticket cucina (KOT), il più nuovo in fondo. Avvia → Pronto → Fatto fa avanzare il ticket. I ticket non mostrano mai i prezzi.
 kitchen_empty	Niente di aperto ora.
 add_a_table	Aggiungi un tavolo
 add_station_heading	Aggiungi postazione · es. Tandoor, Sud India

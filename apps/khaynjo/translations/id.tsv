@@ -1113,7 +1113,7 @@ book_kind_aging	Terutang / debit-kredit
 book_kind_balance	Neraca
 order_help	Ketuk item untuk menambahkannya.
 floor_help	Ketuk meja untuk mengambil atau mengubah pesanan. Warna menunjukkan kosong → duduk → dapur → siap → makan → tagihan → lunas. Daftar tunggu, reservasi, dan tambah meja ada di bagian di bawah.
-kitchen_help	Lacak yang siap per varian atau per item — catat di KOT sesuai keinginan.
+kitchen_help	Tiket dapur (KOT), terbaru di akhir. Mulai → Siap → Selesai menggeser tiket. Tiket tidak pernah menampilkan harga.
 kitchen_empty	Belum ada yang terbuka.
 add_a_table	Tambah meja
 add_station_heading	Tambah stasiun · mis. Tandoor, India Selatan

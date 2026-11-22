@@ -1113,7 +1113,7 @@ book_kind_aging	Inayodaiwa / debiti-krediti
 book_kind_balance	Karatasi ya mizania
 order_help	Gusa bidhaa ili kuiongeza.
 floor_help	Gusa meza kuchukua au kubadilisha oda. Rangi zinaonyesha wazi → wamekaa → jiko → tayari → wanakula → bili → limelipwa. Orodha ya kusubiri, uhifadhi, na ongeza meza ziko katika sehemu zilizo chini.
-kitchen_help	Fuatilia kilicho tayari kwa kila aina au bidhaa — rekodi katika KOT unavyopenda.
+kitchen_help	Tiketi za jiko (KOT), mpya zaidi mwishoni. Anza → Tayari → Imekwisha inasogeza tiketi. Tiketi hazionyeshi bei kamwe.
 kitchen_empty	Hakuna kilichowazi sasa.
 add_a_table	Ongeza meza
 add_station_heading	Ongeza kituo · mf. Tandoor, Uhindi Kusini
