@@ -196,8 +196,8 @@ const SHELF_GAP: f64 = 12.0;
 const SHELF_PITCH: f64 = SHELF_CARD_W + SHELF_GAP;
 /// Left inset so a paused/reset strip shows a full first card with a clear
 /// right-edge peek of the next — not a flush crop that reads as a layout bug
-/// on a phone (evidence 2026-11-22).
-const SHELF_EDGE_INSET: f64 = 8.0;
+/// on a phone (evidence 2026-11-22). 16 px keeps the peek off the content edge.
+const SHELF_EDGE_INSET: f64 = 16.0;
 /// Parade speed: level 0 = still, then +SHELF_SPEED_STEP px/s per click.
 /// Cap is high so a long press of + can race the strip; default stays gentle.
 const SHELF_SPEED_STEP: f64 = 40.0;
