@@ -590,8 +590,8 @@ optional_login_help	ಐಚ್ಛಿಕ ಲಾಗಿನ್ (ಐಡಿ + ಗುಪ
 or_unlock_login	ಅತ್ತ್ಂಡ ಲಾಗ್ ಇನ್ ಐಡಿ + ಪಾಸ್ ವರ್ಡ್ ಡ್ ಅನ್ ಲಾಕ್ ಮಲ್ಪುಲೆ
 or_unlock_shop_login	ಅಥವಾ ಅಂಗಡಿ ಲಾಗಿನ್u200cನೊಂದಿಗೆ ಅನ್u200cಲಾಕ್ ಮಾಡಿ
 shop_login_help	ಐಚ್ಛಿಕ: PIN ಬದಲಿಗೆ ಈ ಅಂಗಡಿಯ ಸಿಬ್ಬಂದಿ ಬಳಕೆದಾರಹೆಸರು ಮತ್ತು ಪಾಸ್u200cವರ್ಡ್u200cನೊಂದಿಗೆ ಅನ್u200cಲಾಕ್ ಮಾಡಿ (ಆಫ್u200cಲೈನ್u200cನಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ).
-cloud_account_title	[tcy] Kirano account
-cloud_account_help	[tcy] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_account_title	ಕಿರಾನೋ ಖಾತೆ
+cloud_account_help	kirano.shop/account ಅದೇ ಖಾತೆಯಿಂದ ನೋಂದಣಿ ಅಥವಾ ಸೈನ್ ಇನ್ ಮಾಡಿ. ನಿಮ್ಮ ಕ್ಲೌಡ್ ಐಡಿ ಮತ್ತು ಉಚಿತ ಯೋಜನೆ ರಚಿಸುತ್ತದೆ.
 cloud_name_ph	ಹೆಸರು (ಐಚ್ಛಿಕ)
 cloud_email_ph	ಇಮೇಲ್
 cloud_password_ph	ಪಾಸ್ವರ್ಡ್

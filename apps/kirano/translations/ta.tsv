@@ -588,22 +588,22 @@ net_word	நிகரம்
 offline_badge	ஆஃப்லைன்
 optional_login_help	விருப்ப உள்நுழைவு (ஐடி + கடவுச்சொல்). உரிமையாளர் ஒருமுறை அமைப்பார்; பின்னர் பயனர் மட்டுமே கடவுச்சொல்லை மாற்ற முடியும்.
 or_unlock_login	அல்லது உள்நுழைவு ஐடி + கடவுச்சொல்லால் திறக்கவும்
-or_unlock_shop_login	[ta] Or unlock with shop login
-shop_login_help	[ta] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ta] Kirano account
-cloud_account_help	[ta] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ta] Name (optional)
-cloud_email_ph	[ta] Email
-cloud_password_ph	[ta] Password
-cloud_continue	[ta] Continue
-cloud_forgot	[ta] Forgot password?
-cloud_web_methods	[ta] Google and other methods on the website
-cloud_signing_in	[ta] Signing in…
-cloud_sending_reset	[ta] Sending reset link…
-cloud_forgot_sent	[ta] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	அல்லது கடை உள்நுழைவால் திற
+shop_login_help	விரும்பினால்: PINக்கு பதில் இந்தக் கடையின் பணியாளர் பயனர்பெயர் மற்றும் கடவுச்சொல்லால் திறக்க (ஆஃப்லைனில் வேலை செய்யும்).
+cloud_account_title	கிரானோ கணக்கு
+cloud_account_help	kirano.shop/account அதே கணக்கில் பதிவு செய்யுங்கள் அல்லது உள்நுழையுங்கள். உங்கள் கிளவுட் ஐடி மற்றும் இலவச திட்டத்தை உருவாக்கும்.
+cloud_name_ph	பெயர் (விரும்பினால்)
+cloud_email_ph	மின்னஞ்சல்
+cloud_password_ph	கடவுச்சொல்
+cloud_continue	தொடர்
+cloud_forgot	கடவுச்சொல் மறந்துவிட்டதா?
+cloud_web_methods	இணையதளத்தில் Google மற்றும் பிற வழிகள்
+cloud_signing_in	உள்நுழைகிறது…
+cloud_sending_reset	மீட்டமை இணைப்பு அனுப்பப்படுகிறது…
+cloud_forgot_sent	அந்த மின்னஞ்சலுக்கு கணக்கு இருந்தால், மீட்டமை இணைப்பு அனுப்பப்பட்டுள்ளது.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[ta] Account created. Check your email to verify when you can.
-cloud_cancel	[ta] Cancel
+cloud_created	கணக்கு உருவாக்கப்பட்டது. முடிந்தால் உறுதிப்படுத்த உங்கள் மின்னஞ்சலைப் பாருங்கள்.
+cloud_cancel	ரத்து
 permission_preset	அனுமதி முன்னமைவு
 product_only_kirano	இந்த செயலி Kirano மட்டும் — உணவக இயக்க அமைப்பு. பிற தொழில்களுக்கு தனி Kumkaj தயாரிப்புகள் வருகின்றன.
 purchases_cogs	கொள்முதல் (COGS)

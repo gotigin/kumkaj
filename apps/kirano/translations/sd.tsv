@@ -588,22 +588,22 @@ net_word	نيٽ
 offline_badge	آف لائن
 optional_login_help	رضا مطابق لاگ ان (آءِ ڊي + پاسورڊ). مالڪ هڪ ڀيرو مقرر ڪري ٿو؛ رڳو استعمال ڪندڙ ئي بعد ۾ پاسورڊ تبديل ڪري سگهي ٿو.
 or_unlock_login	يا لاگ ان آءِ ڊي + پاسورڊ سان ان لاڪ ڪريو
-or_unlock_shop_login	[sd] Or unlock with shop login
-shop_login_help	[sd] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sd] Kirano account
-cloud_account_help	[sd] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[sd] Name (optional)
-cloud_email_ph	[sd] Email
-cloud_password_ph	[sd] Password
-cloud_continue	[sd] Continue
-cloud_forgot	[sd] Forgot password?
-cloud_web_methods	[sd] Google and other methods on the website
-cloud_signing_in	[sd] Signing in…
-cloud_sending_reset	[sd] Sending reset link…
-cloud_forgot_sent	[sd] If that email has an account, a reset link is on the way.
-cloud_welcome	[sd] Signed in as {user} · {plan}
-cloud_created	[sd] Account created. Check your email to verify when you can.
-cloud_cancel	[sd] Cancel
+or_unlock_shop_login	يا دڪان لاگ ان سان ان لاڪ ڪريو
+shop_login_help	اختياري: PIN بدران هن دڪان جي عملدار يوزرنيم ۽ پاسورڊ سان ان لاڪ ڪريو (آف لائن ڪم ڪري ٿو).
+cloud_account_title	کرانو اڪائونٽ
+cloud_account_help	kirano.shop/account واري ساڳئي اڪائونٽ سان رجسٽر يا سائن ان ڪريو. توهان جي ڪلائوڊ آءِ ڊي ۽ مفت پلان ٺاهي ٿو.
+cloud_name_ph	نالو (اختياري)
+cloud_email_ph	اي ميل
+cloud_password_ph	پاسورڊ
+cloud_continue	جاري رکو
+cloud_forgot	پاسورڊ وسري ويو؟
+cloud_web_methods	ويب سائيٽ تي Google ۽ ٻيا طريقا
+cloud_signing_in	سائن ان ٿي رهيو آهي…
+cloud_sending_reset	ري سيٽ لنڪ موڪلي رهيو آهي…
+cloud_forgot_sent	جيڪڏهن ان اي ميل جو اڪائونٽ آهي ته ري سيٽ لنڪ موڪليو ويو آهي.
+cloud_welcome	{user} · {plan} طور سائن ان
+cloud_created	اڪائونٽ ٺهي ويو. جڏهن ٿي سگهي تصديق لاءِ پنهنجي اي ميل چيڪ ڪريو.
+cloud_cancel	منسوخ
 permission_preset	نوڪري
 product_only_kirano	ڪرانو هڪ پسارڪو / ڪريانا آپريٽنگ سسٽم آهي: انسداد وڪرو، اسٽاڪ، ڪريڊٽ ۽ ڪتاب - آف لائن توهان جي ڊوائيس تي.
 purchases_cogs	خريداريون (COGS)

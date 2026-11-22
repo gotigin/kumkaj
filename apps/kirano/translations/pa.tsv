@@ -588,22 +588,22 @@ net_word	ਨੈੱਟ
 offline_badge	ਆਫ਼ਲਾਈਨ
 optional_login_help	ਵਿਕਲਪਿਕ ਲਾਗਇਨ (ਆਈਡੀ + ਪਾਸਵਰਡ)। ਮਾਲਕ ਇੱਕ ਵਾਰ ਲਗਾਉਂਦਾ ਹੈ; ਬਾਅਦ ਵਿੱਚ ਸਿਰਫ਼ ਵਰਤੋਂਕਾਰ ਹੀ ਪਾਸਵਰਡ ਬਦਲ ਸਕਦਾ ਹੈ।
 or_unlock_login	ਜਾਂ ਲਾਗਇਨ ਆਈਡੀ + ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
-or_unlock_shop_login	[pa] Or unlock with shop login
-shop_login_help	[pa] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[pa] Kirano account
-cloud_account_help	[pa] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[pa] Name (optional)
-cloud_email_ph	[pa] Email
-cloud_password_ph	[pa] Password
-cloud_continue	[pa] Continue
-cloud_forgot	[pa] Forgot password?
-cloud_web_methods	[pa] Google and other methods on the website
-cloud_signing_in	[pa] Signing in…
-cloud_sending_reset	[pa] Sending reset link…
-cloud_forgot_sent	[pa] If that email has an account, a reset link is on the way.
-cloud_welcome	[pa] Signed in as {user} · {plan}
-cloud_created	[pa] Account created. Check your email to verify when you can.
-cloud_cancel	[pa] Cancel
+or_unlock_shop_login	ਜਾਂ ਦੁਕਾਨ ਲਾਗਇਨ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
+shop_login_help	ਵਿਕਲਪਿਕ: PIN ਦੀ ਬਜਾਏ ਇਸ ਦੁਕਾਨ ਦੇ ਸਟਾਫ਼ ਯੂਜ਼ਰਨੇਮ ਅਤੇ ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ (ਆਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ)।
+cloud_account_title	ਕਿਰਾਨੋ ਖਾਤਾ
+cloud_account_help	kirano.shop/account ਵਾਲੇ ਉਸੇ ਖਾਤੇ ਨਾਲ ਰਜਿਸਟਰ ਜਾਂ ਸਾਈਨ ਇਨ ਕਰੋ। ਤੁਹਾਡੀ ਕਲਾਉਡ ਆਈਡੀ ਅਤੇ ਮੁਫ਼ਤ ਯੋਜਨਾ ਬਣਾਉਂਦਾ ਹੈ।
+cloud_name_ph	ਨਾਮ (ਵਿਕਲਪਿਕ)
+cloud_email_ph	ਈਮੇਲ
+cloud_password_ph	ਪਾਸਵਰਡ
+cloud_continue	ਜਾਰੀ ਰੱਖੋ
+cloud_forgot	ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?
+cloud_web_methods	ਵੈੱਬਸਾਈਟ ਉੱਤੇ Google ਅਤੇ ਹੋਰ ਤਰੀਕੇ
+cloud_signing_in	ਸਾਈਨ ਇਨ ਹੋ ਰਿਹਾ ਹੈ…
+cloud_sending_reset	ਰੀਸੈੱਟ ਲਿੰਕ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…
+cloud_forgot_sent	ਜੇ ਉਸ ਈਮੇਲ ਦਾ ਖਾਤਾ ਹੈ ਤਾਂ ਰੀਸੈੱਟ ਲਿੰਕ ਭੇਜ ਦਿੱਤਾ ਗਿਆ ਹੈ।
+cloud_welcome	{user} · {plan} ਵਜੋਂ ਸਾਈਨ ਇਨ
+cloud_created	ਖਾਤਾ ਬਣ ਗਿਆ। ਜਦੋਂ ਹੋ ਸਕੇ ਤਸਦੀਕ ਲਈ ਆਪਣੀ ਈਮੇਲ ਚੈੱਕ ਕਰੋ।
+cloud_cancel	ਰੱਦ ਕਰੋ
 permission_preset	ਇਜਾਜ਼ਤ ਪ੍ਰੀਸੈੱਟ
 product_only_kirano	ਇਹ ਐਪ ਸਿਰਫ਼ Kirano ਹੈ — ਰੈਸਟੋਰੈਂਟ ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ। ਹੋਰ ਕਾਰੋਬਾਰਾਂ ਲਈ ਵੱਖਰੇ Kumkaj ਉਤਪਾਦ ਹਨ।
 purchases_cogs	ਖਰੀਦਾਂ (COGS)

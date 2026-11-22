@@ -590,7 +590,7 @@ optional_login_help	नांगौब्ला लगइन (id + पासव�
 or_unlock_login	एबा लगइन id + पासवार्डजों खुलि हो
 or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
-cloud_account_title	[hi] Kirano account
+cloud_account_title	किरानो खाता
 cloud_account_help	kirano.shop/account के समान खाते से रजिस्टर या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
@@ -603,7 +603,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	[hi] Cancel
+cloud_cancel	केन्सेल
 permission_preset	खामानि
 product_only_kirano	किरान'आ गेलामाल/किराना अपारेटिं सिस्टेम: काउन्टर सेल्स, स्टक मेनेजमेन्ट, क्रेदित आरो बहीखाता लाखिनाय - गासैबो नोंथांनि डिभाइसफोराव अफलाइन।
 purchases_cogs	बायनाय (COGS)

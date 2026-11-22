@@ -594,8 +594,8 @@ cloud_account_title	[mni] Kirano account
 cloud_account_help	[mni] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	[mni] Name (optional)
 cloud_email_ph	[mni] Email
-cloud_password_ph	[mni] Password
-cloud_continue	[mni] Continue
+cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
+cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
 cloud_forgot	[mni] Forgot password?
 cloud_web_methods	[mni] Google and other methods on the website
 cloud_signing_in	[mni] Signing in…
@@ -603,7 +603,7 @@ cloud_sending_reset	[mni] Sending reset link…
 cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
 cloud_welcome	[mni] Signed in as {user} · {plan}
 cloud_created	[mni] Account created. Check your email to verify when you can.
-cloud_cancel	[mni] Cancel
+cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 product_only_kirano	Kirano ꯍꯥꯏꯕ ꯀꯤꯔꯥꯅꯥ ꯑꯣꯄꯔꯦꯇꯤꯡ ꯁꯤꯁ꯭ꯇꯦꯝꯅꯤ: ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗ ꯌꯣꯟꯕ, ꯁ꯭ꯇꯣꯛ, ꯁꯦꯜ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯃꯁꯤꯟꯗ ꯑꯣꯐꯂꯥꯏꯟ.
 purchases_cogs	ꯂꯩꯕ (COGS)

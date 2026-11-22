@@ -594,8 +594,8 @@ cloud_account_title	[sat] Kirano account
 cloud_account_help	[sat] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	[sat] Name (optional)
 cloud_email_ph	[sat] Email
-cloud_password_ph	[sat] Password
-cloud_continue	[sat] Continue
+cloud_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
+cloud_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
 cloud_forgot	[sat] Forgot password?
 cloud_web_methods	[sat] Google and other methods on the website
 cloud_signing_in	[sat] Signing in…
@@ -603,7 +603,7 @@ cloud_sending_reset	[sat] Sending reset link…
 cloud_forgot_sent	[sat] If that email has an account, a reset link is on the way.
 cloud_welcome	[sat] Signed in as {user} · {plan}
 cloud_created	[sat] Account created. Check your email to verify when you can.
-cloud_cancel	[sat] Cancel
+cloud_cancel	ᱵᱚᱱᱫᱚ
 permission_preset	ᱱᱩᱠᱨᱤ
 product_only_kirano	ᱠᱤᱨᱟᱱᱳ ᱫᱚ ᱜᱽᱨᱚᱥᱟᱨᱤ/ᱠᱤᱨᱟᱱᱟ ᱚᱯᱨᱮᱴᱤᱝ ᱥᱤᱥᱴᱚᱢ ᱠᱟᱱᱟᱺ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱟᱠᱨᱤᱧ, ᱥᱴᱚᱠ, ᱠᱨᱮᱰᱤᱴ ᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ — ᱟᱢᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱚᱯᱷᱞᱟᱭᱤᱱ᱾
 purchases_cogs	ᱠᱤᱨᱤᱧ ᱠᱚ (ᱥᱤ ᱚ ᱡᱤ ᱮᱥ)

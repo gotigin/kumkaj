@@ -588,22 +588,22 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (id + पासवर्ड)। मालिक एक बेर राखैत छथि; बादमे केवल उपयोगकर्ता पासवर्ड बदलि सकैत छथि।
 or_unlock_login	वा लॉगिन id + पासवर्डसँ अनलॉक करू
-or_unlock_shop_login	[mai] Or unlock with shop login
-shop_login_help	[mai] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mai] Kirano account
-cloud_account_help	[mai] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mai] Name (optional)
-cloud_email_ph	[mai] Email
-cloud_password_ph	[mai] Password
-cloud_continue	[mai] Continue
-cloud_forgot	[mai] Forgot password?
-cloud_web_methods	[mai] Google and other methods on the website
-cloud_signing_in	[mai] Signing in…
-cloud_sending_reset	[mai] Sending reset link…
-cloud_forgot_sent	[mai] If that email has an account, a reset link is on the way.
-cloud_welcome	[mai] Signed in as {user} · {plan}
-cloud_created	[mai] Account created. Check your email to verify when you can.
-cloud_cancel	[mai] Cancel
+or_unlock_shop_login	या दुकान लॉगिन सँ अनलॉक करू
+shop_login_help	वैकल्पिक: पिनक बजाय एहि दुकानक स्टाफ उपयोगकर्ता नाम आ पासवर्ड सँ अनलॉक करू (ऑफ़लाइन काज करैत अछि)।
+cloud_account_title	किरानो खाता
+cloud_account_help	kirano.shop/account वाले खाता सँ रजिस्टर या साइन इन करू। अहाँक क्लाउड आईडी आ निःशुल्क योजना बनाबैत अछि।
+cloud_name_ph	नाम (वैकल्पिक)
+cloud_email_ph	ईमेल
+cloud_password_ph	पासवर्ड
+cloud_continue	आगाँ बढ़ू
+cloud_forgot	पासवर्ड बिसरि गेलहुँ?
+cloud_web_methods	वेबसाइट पर Google आ आन तरीका
+cloud_signing_in	साइन इन भऽ रहल अछि…
+cloud_sending_reset	रीसेट लिंक पठाओल जा रहल अछि…
+cloud_forgot_sent	जँ ओहि ईमेल पर खाता अछि तँ रीसेट लिंक पठाओल गेल अछि।
+cloud_welcome	{user} · {plan} रूपमे साइन इन
+cloud_created	खाता बनल। जखन सकी प्रमाणित करबाक लेल ईमेल जाँचू।
+cloud_cancel	रद्द
 permission_preset	काज
 product_only_kirano	Kirano किराना दोकानक संचालन प्रणाली अछि: काउंटर बिक्री, स्टॉक, उधार आ बही — अहाँक डिवाइसपर ऑफलाइन।
 purchases_cogs	खरीद (COGS)
