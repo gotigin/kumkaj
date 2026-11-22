@@ -31,7 +31,7 @@ items	ମେନୁ ଏବଂ ଆଇଟମ୍
 nav_items	ମେନୁ
 more	ଅଧିକ
 your_items	ଆପଣଙ୍କ ମେନୁ
-items_help	ପ୍ରତ୍ୟେକ ଧାଡ଼ି ଗୋଟିଏ ଖାଦ୍ୟ କିମ୍ବା ଆଇଟମ୍ (ଯେପରି Masala Dosa)। ଏହାର ମୂଲ୍ୟ ଏବଂ ରୋଷେଇ ଷ୍ଟେସନ୍ ଯୋଡ଼ନ୍ତୁ। ସମ୍ପାଦନା ପାଇଁ ଦବାନ୍ତୁ।
+items_help	ଆଇଟମ୍ ଟ୍ୟାପ୍ କରି ସମ୍ପାଦନ। New item ଫର୍ମ ସଫା କରେ। ଆମ ଖାଦ୍ୟ ଖୋଜନ୍ତୁ କିମ୍ବା ନିଜ ନାମ/ଫଟୋ ଲେଖନ୍ତୁ, ଦାମ୍ ଦିଅନ୍ତୁ (0 ଠିକ୍), ତାପରେ Add। ଆଗରୁ ନଥି ବିକ୍ରୟ ସେହି ନାମରେ ରହେ ଯେଉଁଥିରେ ଚାର୍ଜ ହୋଇଥିଲା।
 add_item	ଆଇଟମ୍ ଯୋଡ଼ନ୍ତୁ
 new_item	ନୂଆ ଆଇଟମ୍
 adding_item	ନୂଆ ଆଇଟମ୍ ଯୋଡ଼ୁଛି
@@ -1222,7 +1222,7 @@ kot_field_on	ଦେଖାଅ
 kot_field_off	ଲୁଚାଅ
 kot_field_size	ଫଣ୍ଟ ଆକାର
 kot_weight_light	ହାଲୁକା
-bill_kot_panel_help	ବିଲ୍ ବିଷୟବସ୍ତୁ ଓ ରୋଷେଇ ସ୍ଲିପ୍ ଟାଇପୋଗ୍ରାଫି। ଉପରେ ଥିବା ବିଷୟବସ୍ତୁ ଚଉଡ଼ା ହିଁ ବିଲ୍ ଓ ରୋଷେଇ ସ୍ଲିପ୍ ଦୁହିଁର ଚଉଡ଼ା।
+bill_kot_panel_help	ବିଲ୍ ଓ କିଚେନ୍ ସ୍ଲିପ୍ ଲେଆଉଟ୍, ପ୍ରତ୍ୟେକର ନିଜ ବିଷୟ ଚଉଡ଼ା। Bill Cashier ବିଲ୍ ଜାରି/ସେଟଲ୍ କରିଥିବା; KOT Waiter କିଚେନ୍ ଟିକେଟ୍ ପଠାଇଥିବା — ପୂର୍ଣ୍ଣ ଅର୍ଡର କାହାଣୀ ବହିରେ।
 std_size_ph	ଯେପରି 18, 20, 26…
 kot_show_shop	ଦୋକାନ ନାମ
 kot_hide_shop	ଦୋକାନ ଲୁଚାନ୍ତୁ
@@ -1315,7 +1315,7 @@ schedule_ph	ସମୟ / ହ୍ୟାପି ଆୱାର — Mon-Fri 07:00-11:00 
 upi_qr	UPI QR
 show_upi_qr	UPI QR ଦେଖାନ୍ତୁ
 close_upi_qr	ବନ୍ଦ
-upi_qr_help	ଅତିଥି ସ୍କାନ କରି ଦେବେ। ପରେ Take payment ଦବାନ୍ତୁ।
+upi_qr_help	ଅତିଥି ସ୍କାନ୍ କରି ପେମେଣ୍ଟ କରନ୍ତି। ପେମେଣ୍ଟ ପରେ «Take payment» ଟ୍ୟାପ୍ କରନ୍ତୁ। ଦ୍ୱିତୀୟ ସ୍କ୍ରିନ୍: LAN ରେ Server URL /display ଖୋଲନ୍ତୁ।
 kot_recall	ଫେରାନ୍ତୁ
 recently_done	ଏବେ ସରିଥିବା
 recall_kot_ph	ଫେରାଇବାକୁ KOT #

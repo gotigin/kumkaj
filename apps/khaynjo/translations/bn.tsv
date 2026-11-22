@@ -31,7 +31,7 @@ items	মেনু ও আইটেম
 nav_items	মেনু
 more	আরও
 your_items	আপনার মেনু
-items_help	প্রতিটি সারি একটি খাবার বা আইটেম (যেমন Masala Dosa)। তার দাম ও রান্নাঘর স্টেশন যোগ করুন। সম্পাদনার জন্য চাপুন।
+items_help	আইটেমে ট্যাপ করে সম্পাদনা। New item ফর্ম খালি করে। আমাদের খাবার খুঁজুন বা নিজের নাম/ছবি লিখুন, দাম দিন (0 ঠিক), তারপর Add। আগে নথিভুক্ত বিক্রি সেই নামেই থাকে যে নামে চার্জ হয়েছিল।
 add_item	আইটেম যোগ করুন
 new_item	নতুন আইটেম
 adding_item	নতুন আইটেম যোগ হচ্ছে
@@ -1222,7 +1222,7 @@ kot_field_on	দেখাও
 kot_field_off	লুকাও
 kot_field_size	ফন্ট আকার
 kot_weight_light	হালকা
-bill_kot_panel_help	বিল বিষয়বস্তু ও রান্নাঘর স্লিপ টাইপোগ্রাফি। ওপরের বিষয়বস্তুর প্রস্থই বিল ও রান্নাঘর স্লিপ দুটোর প্রস্থ।
+bill_kot_panel_help	বিল ও কিচেন স্লিপ লেআউট, প্রত্যেকের নিজস্ব কন্টেন্ট প্রস্থ। Bill Cashier বিল ইস্যু/সেটলকারী; KOT Waiter কিচেন টিকিট পাঠক — পুরো অর্ডার কাহিনি খাতায় থাকে।
 std_size_ph	যেমন 18, 20, 26…
 kot_show_shop	দোকানের নাম
 kot_hide_shop	দোকান লুকান
@@ -1315,7 +1315,7 @@ schedule_ph	সময় / হ্যাপি আওয়ার — Mon-Fri 07:
 upi_qr	UPI QR
 show_upi_qr	UPI QR দেখান
 close_upi_qr	বন্ধ
-upi_qr_help	অতিথি স্ক্যান করে পেমেন্ট করুন। পরে Take payment চাপুন।
+upi_qr_help	অতিথি স্ক্যান করে পেমেন্ট করেন। পেমেন্টের পর «Take payment» চাপুন। দ্বিতীয় স্ক্রিন: LAN-এ Server URL /display খুলুন।
 kot_recall	ফেরান
 recently_done	সম্প্রতি শেষ
 recall_kot_ph	ফেরাতে KOT #

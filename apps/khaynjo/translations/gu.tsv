@@ -31,7 +31,7 @@ items	મેનૂ અને આઇટમ
 nav_items	મેનૂ
 more	વધુ
 your_items	તમારું મેનૂ
-items_help	દરેક હરોળ એક વાનગી અથવા આઇટમ છે (દા.ત. Masala Dosa). તેની કિંમત અને રસોડું સ્ટેશન ઉમેરો. ફેરફાર માટે દબાવો.
+items_help	આઇટમ ટેપ કરીને સંપાદન. New item ફોર્મ સાફ કરે. અમારી વાનગી શોધો કે પોતાનું નામ/ફોટો લખો, ભાવ મૂકો (0 ઠીક), પછી Add. પહેલાં નોંધાયેલ વેચાણ તે જ નામે રહે જેના પર ચાર્જ થયું.
 add_item	આઇટમ ઉમેરો
 new_item	નવી આઇટમ
 adding_item	નવી આઇટમ ઉમેરી રહ્યા છે
@@ -1222,7 +1222,7 @@ kot_field_on	બતાવો
 kot_field_off	છુપાવો
 kot_field_size	ફોન્ટ કદ
 kot_weight_light	હળવું
-bill_kot_panel_help	બિલ સામગ્રી અને રસોડાની સ્લિપ ટાઇપોગ્રાફી. ઉપરની સામગ્રી પહોળાઈ જ બિલ અને રસોડાની સ્લિપ બંનેની પહોળાઈ છે.
+bill_kot_panel_help	બિલ અને કિચન સ્લિપ લેઆઉટ, દરેકની પોતાની સામગ્રી પહોળાઈ. Bill Cashier બિલ જારી/સેટલ કરનાર; KOT Waiter કિચન ટિકિટ મોકલનાર — પૂરી ઓર્ડર વાર્તા ચોપડામાં રહે.
 std_size_ph	દા.ત. 18, 20, 26…
 kot_show_shop	દુકાનનું નામ
 kot_hide_shop	દુકાન છુપાવો
@@ -1315,7 +1315,7 @@ schedule_ph	સમય / હૅપી અવર — Mon-Fri 07:00-11:00 અથવ
 upi_qr	UPI QR
 show_upi_qr	UPI QR બતાવો
 close_upi_qr	બંધ
-upi_qr_help	મહેમાન સ્કેન કરી ચૂકવે. પછી Take payment દબાવો.
+upi_qr_help	મહેમાન સ્કેન કરી ચૂકવે. ચૂકવ્યા પછી «Take payment» ટેપ કરો. બીજી સ્ક્રીન: LAN પર Server URL /display ખોલો.
 kot_recall	પાછું લાવો
 recently_done	હમણાં પૂર્ણ
 recall_kot_ph	પાછું લાવવા KOT #

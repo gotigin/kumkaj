@@ -31,7 +31,7 @@ items	मेनू व आइटम
 nav_items	मेनू
 more	और
 your_items	आपका मेनू
-items_help	हर पंक्ति एक व्यंजन या आइटम है (जैसे Masala Dosa)। उसकी कीमत और किचन स्टेशन जोड़ें। संपादन के लिए दबाएँ।
+items_help	आइटम दबाने पर संपादन। New item फ़ॉर्म साफ़ करता है। हमारे व्यंजन खोजें या अपना नाम/फ़ोटो लिखें, दाम लगाएँ (0 ठीक), फिर Add। पहले दर्ज बिक्री उसी नाम पर रहती है जिससे चार्ज हुई थी।
 add_item	आइटम जोड़ें
 new_item	नया आइटम
 adding_item	नया आइटम जोड़ रहे हैं
@@ -1222,7 +1222,7 @@ kot_field_on	दिखाएँ
 kot_field_off	छिपाएँ
 kot_field_size	फ़ॉन्ट आकार
 kot_weight_light	हल्का
-bill_kot_panel_help	बिल सामग्री और रसोई पर्ची टाइपोग्राफी। ऊपर की सामग्री चौड़ाई बिल और रसोई पर्ची दोनों की चौड़ाई तय करती है।
+bill_kot_panel_help	बिल और किचन पर्ची लेआउट, प्रत्येक की अपनी सामग्री चौड़ाई। Bill Cashier बिल जारी/सेटल करने वाला; KOT Waiter किचन टिकट भेजने वाला — पूरी ऑर्डर कहानी बही में रहती है।
 std_size_ph	जैसे 18, 20, 26…
 kot_show_shop	दुकान का नाम
 kot_hide_shop	दुकान छिपाएँ
@@ -1315,7 +1315,7 @@ schedule_ph	समय / हैप्पी आवर — Mon-Fri 07:00-11:00 य
 upi_qr	UPI QR
 show_upi_qr	UPI QR दिखाएँ
 close_upi_qr	बंद
-upi_qr_help	मेहमान स्कैन कर भुगतान करें। भुगतान के बाद Take payment दबाएँ।
+upi_qr_help	मेहमान स्कैन कर भुगतान करें। भुगतान के बाद «Take payment» दबाएँ। दूसरी स्क्रीन: LAN पर Server URL /display खोलें।
 kot_recall	वापस लाएँ
 recently_done	अभी पूरे
 recall_kot_ph	KOT # वापस लाने को

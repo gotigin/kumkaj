@@ -31,7 +31,7 @@ items	মেনু আৰু বস্তু
 nav_items	মেনু
 more	অধিক
 your_items	আপোনাৰ মেনু
-items_help	প্ৰতিটো শাৰী এটা খাদ্য বা বস্তু (যেনে Masala Dosa)। তাৰ দাম আৰু পাকঘৰ ষ্টেচন যোগ কৰক। সম্পাদনাৰ বাবে টিপক।
+items_help	আইটেমত টেপ কৰি সম্পাদনা। New item ফৰ্ম চাফা কৰে। আমাৰ খাদ্য বিচাৰক বা নিজৰ নাম/ফটো লিখক, দাম দিয়ক (0 ঠিক), তাৰপিছত Add। আগতে নথিভুক্ত বিক্ৰী সেই নামতে থাকে যি নামত চাৰ্জ হৈছিল।
 add_item	বস্তু যোগ কৰক
 new_item	নতুন বস্তু
 adding_item	নতুন বস্তু যোগ কৰিছে
@@ -1222,7 +1222,7 @@ kot_field_on	দেখুৱাওক
 kot_field_off	লুকুৱাওক
 kot_field_size	ফণ্ট আকাৰ
 kot_weight_light	পাতল
-bill_kot_panel_help	বিল বিষয়বস্তু আৰু ৰন্ধনশালা স্লিপ টাইপ'গ্ৰাফী। ওপৰৰ বিষয়বস্তুৰ বহলেই বিল আৰু ৰন্ধনশালা স্লিপ দুয়োটাৰে বহল।
+bill_kot_panel_help	বিল আৰু কিচেন শ্লিপ লেআউট, প্ৰত্যেকৰ নিজৰ সমল প্ৰস্থ। Bill Cashier বিল জাৰি/ছেটল কৰোঁতা; KOT Waiter কিচেন টিকট পঠিওঁতা — সম্পূৰ্ণ অৰ্ডাৰ কাহিনী বহীত।
 std_size_ph	যেনে 18, 20, 26…
 kot_show_shop	দোকানৰ নাম
 kot_hide_shop	দোকান লুকুৱাওক
@@ -1315,7 +1315,7 @@ schedule_ph	সময় / হেপ্পী আৱাৰ — Mon-Fri 07:00-11:
 upi_qr	UPI QR
 show_upi_qr	UPI QR দেখুৱাওক
 close_upi_qr	বন্ধ
-upi_qr_help	অতিথি স্কেন কৰি পৰিশোধ কৰক। পাছত Take payment টিপক।
+upi_qr_help	অতিথি স্কেন কৰি পেমেণ্ট কৰে। পেমেণ্টৰ পাছত «Take payment» টেপ কৰক। দ্বিতীয় স্ক্ৰীন: LANত Server URL /display খোলক।
 kot_recall	ঘূৰাই আনক
 recently_done	এতিয়াই শেষ
 recall_kot_ph	ঘূৰাই আনিবলৈ KOT #

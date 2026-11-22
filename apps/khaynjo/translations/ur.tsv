@@ -31,7 +31,7 @@ items	مینو اور آئٹمز
 nav_items	مینو
 more	مزید
 your_items	آپ کا مینو
-items_help	ہر قطار ایک ڈش یا آئٹم ہے (مثلاً Masala Dosa)۔ اس کی قیمت اور کچن اسٹیشن شامل کریں۔ ترمیم کے لیے دبائیں۔
+items_help	آئٹم ٹیپ کر کے ترمیم۔ New item فارم صاف کرتا ہے۔ ہماری ڈش تلاش کریں یا اپنا نام/تصویر لکھیں، دام لگائیں (0 ٹھیک)، پھر Add۔ پہلے درج فروخت اسی نام پر رہتی ہے جس پر چارج ہوئی۔
 add_item	آئٹم شامل کریں
 new_item	نیا آئٹم
 adding_item	نیا آئٹم شامل کر رہا ہے
@@ -1222,7 +1222,7 @@ kot_field_on	دکھائیں
 kot_field_off	چھپائیں
 kot_field_size	فونٹ سائز
 kot_weight_light	ہلکا
-bill_kot_panel_help	بل مواد اور باورچی خانے کی سلپ ٹائپوگرافی۔ اوپر کی مواد کی چوڑائی ہی بل اور باورچی خانے کی سلپ دونوں کی چوڑائی ہے۔
+bill_kot_panel_help	بل اور کچن سلپ لے آؤٹ، ہر ایک کی اپنی مواد چوڑائی۔ Bill Cashier بل جاری/سیٹل کرنے والا؛ KOT Waiter کچن ٹکٹ بھیجنے والا — پوری آرڈر کہانی کھاتوں میں رہتی ہے۔
 std_size_ph	جیسے 18, 20, 26…
 kot_show_shop	دکان کا نام
 kot_hide_shop	دکان چھپائیں
@@ -1315,7 +1315,7 @@ schedule_ph	وقت / ہیپی آور — Mon-Fri 07:00-11:00 یا HappyHour 17:0
 upi_qr	UPI QR
 show_upi_qr	UPI QR دکھائیں
 close_upi_qr	بند
-upi_qr_help	مہمان اسکین کر کے ادا کرے۔ پھر Take payment دبائیں۔
+upi_qr_help	مہمان اسکین کر کے ادا کریں۔ ادا کے بعد «Take payment» دبائیں۔ دوسری اسکرین: LAN پر Server URL /display کھولیں۔
 kot_recall	واپس لائیں
 recently_done	ابھی مکمل
 recall_kot_ph	واپس لانے کے لیے KOT #
