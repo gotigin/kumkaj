@@ -899,22 +899,22 @@ till_to_bank	קופה → בנק
 units_heading	יחידות
 unlock_after_pairing	הזינו PIN
 unlock_with_login	פתח עם כניסה
-or_unlock_shop_login	תונחל הסינכ תועצמאב הליענה תא לטב וא
-shop_login_help	.(ןווקמ אל בצמב דבוע) PIN םוקמב תונחה תווצ לש המסיסהו שמתשמה םש םע הליענה תא ל
-cloud_account_title	Khaynjo ןובשח
-cloud_account_help	.ךלש תימניחה תינכותהו ןנעה ההזמ תא רצוי .khaynjo.com/account ומכ ןובשח ותוא םע
-cloud_name_ph	(ילנויצפוא) םש
-cloud_email_ph	יִנֹורטקֶלֶא
-cloud_password_ph	הָמסיִס
-cloud_continue	ךיִׁשמַהְל
-cloud_forgot	?המסיס תחכש
-cloud_web_methods	רתאב תופסונ תוטישו לגוג
-cloud_signing_in	...סנכנ
-cloud_sending_reset	...סופיאל רושיק חלוש
-cloud_forgot_sent	.ךרדב סופיאל רושיק ,ןובשח שי הזה ליימיאל םא
-cloud_welcome	{user} · {plan} רותב רבוחמ
-cloud_created	.לוכי התא יתמ תמאל ידכ ךלש ליימיאה תא קודב .רצונ ןובשח
-cloud_cancel	לֵטַבְל
+or_unlock_shop_login	או בטל נעילה עם כניסת החנות
+shop_login_help	אופציונלי: בטל נעילה עם שם המשתמש והסיסמה של צוות החנות במקום PIN (עובד Offline).
+cloud_account_title	חשבון Khaynjo
+cloud_account_help	הירשם או היכנס עם אותו חשבון כמו khaynjo.com/account. יוצר את מזהה הענן והתוכנית החינמית שלך.
+cloud_name_ph	שם (אופציונלי)
+cloud_email_ph	אימייל
+cloud_password_ph	סיסמה
+cloud_continue	המשך
+cloud_forgot	שכחת סיסמה?
+cloud_web_methods	Google ושיטות אחרות באתר
+cloud_signing_in	מתחבר…
+cloud_sending_reset	שולח קישור לאיפוס…
+cloud_forgot_sent	אם לאימייל הזה יש חשבון, קישור האיפוס בדרך.
+cloud_welcome	מחובר כ־{user} · {plan}
+cloud_created	החשבון נוצר. בדוק את האימייל לאימות כשתוכל.
+cloud_cancel	ביטול
 unmark	בטל סימון
 update_my_password	עדכן את הסיסמה שלי
 update_my_pin	עדכן את הכניסה שלי

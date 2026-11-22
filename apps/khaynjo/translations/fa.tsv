@@ -899,22 +899,22 @@ till_to_bank	صندوق → بانک
 units_heading	واحدها
 unlock_after_pairing	PIN را وارد کنید
 unlock_with_login	باز کردن قفل با ورود
-or_unlock_shop_login	ﺪﯿﻨﮐ ﺯﺎﺑ ﺍﺭ ﻞﻔﻗ ﻩﺎﮕﺷﻭﺮﻓ ﻪﺑ ﺩﻭﺭﻭ ﺎﺑ ﺎﯾ
-shop_login_help	.(ﺪﻨﮐ ﯽﻣ ﺭﺎﮐ ﻦﯾﻼ﻿ﻓﺁ) ﺪﯿﻨﮐ ﺯﺎﺑ ﻦﯿﭘ ﯼﺎﺟ ﻪﺑ ﻩﺎﮕﺷﻭﺮﻓ ﻦﯾﺍ ﻥﺎﻨﮐﺭﺎﮐ ﺭﻮﺒﻋ ﺰﻣﺭ ﻭ ﯼﺮﺑﺭﺎﮐ
-cloud_account_title	ﻮﺠﻨﯿﺧ ﺏﺎﺴﺣ
-cloud_account_help	.ﺪﻨﮐ ﯽﻣ ﺩﺎﺠﯾﺍ ﺍﺭ ﺎﻤﺷ ﻥﺎﮕﯾﺍﺭ ﺡﺮﻃ ﻭ ﯼﺮﺑﺍ ﻪﺳﺎﻨﺷ .ﺪﯾﻮﺷ ﺩﺭﺍﻭ ﺎﯾ ﺪﯿﻨﮐ ﻡﺎﻧ ﺖﺒﺛ khaynj
-cloud_name_ph	(ﯼﺭﺎﯿﺘﺧﺍ) ﻡﺎﻧ
-cloud_email_ph	ﻞﯿﻤﯾﺍ
-cloud_password_ph	ﺭﻮﺒﻋ ﺰﻣﺭ
-cloud_continue	ﺪﯿﻫﺩ ﻪﻣﺍﺩﺍ
-cloud_forgot	؟ﺪﯾﺍ ﻩﺩﺮﮐ ﺵﻮﻣﺍﺮﻓ ﺍﺭ ﺭﻮﺒﻋ ﺰﻣﺭ
-cloud_web_methods	ﺖﯾﺎﺳ ﺏﻭ ﺭﺩ ﺮﮕﯾﺩ ﯼﺎﻫ ﺵﻭﺭ ﻭ ﻞﮔﻮﮔ
-cloud_signing_in	…ﻢﺘﺴﯿﺳ ﻪﺑ ﺩﻭﺭﻭ
-cloud_sending_reset	…ﯽﻧﺎﺸﻧﺯﺎﺑ ﮏﻨﯿﻟ ﻝﺎﺳﺭﺍ ﻝﺎﺣ ﺭﺩ
-cloud_forgot_sent	.ﺖﺳﺍ ﻩﺍﺭ ﺭﺩ ﯽﻧﺎﺸﻧﺯﺎﺑ ﺪﻧﻮﯿﭘ ،ﺪﺷﺎﺑ ﻪﺘﺷﺍﺩ ﯼﺮﺑﺭﺎﮐ ﺏﺎﺴﺣ ﻞﯿﻤﯾﺍ ﻥﺁ ﺮﮔﺍ
-cloud_welcome	{user} · {plan} ﻥﺍﻮﻨﻋ ﻪﺑ ﻩﺪﺷ ﺩﺭﺍﻭ
-cloud_created	.ﺪﯿﻨﮐ ﺪﯿﯾﺄﺗ ﻥﺎﮑﻣﺍ ﺕﺭﻮﺻ ﺭﺩ ﺎﺗ ﺪﯿﻨﮐ ﯽﺳﺭﺮﺑ ﺍﺭ ﺩﻮﺧ ﻞﯿﻤﯾﺍ .ﺪﺷ ﺩﺎﺠﯾﺍ ﺏﺎﺴﺣ
-cloud_cancel	ﺪﯿﻨﮐ ﻮﻐﻟ
+or_unlock_shop_login	یا با ورود فروشگاه قفل را باز کنید
+shop_login_help	اختیاری: به‌جای PIN با نام کاربری و رمز کارکنان این فروشگاه قفل را باز کنید (آفلاین کار می‌کند).
+cloud_account_title	حساب Khaynjo
+cloud_account_help	با همان حساب khaynjo.com/account ثبت‌نام یا وارد شوید. شناسه ابری و طرح رایگان شما را می‌سازد.
+cloud_name_ph	نام (اختیاری)
+cloud_email_ph	ایمیل
+cloud_password_ph	رمز عبور
+cloud_continue	ادامه
+cloud_forgot	رمز را فراموش کردید؟
+cloud_web_methods	Google و روش‌های دیگر در وب‌سایت
+cloud_signing_in	در حال ورود…
+cloud_sending_reset	در حال ارسال پیوند بازنشانی…
+cloud_forgot_sent	اگر آن ایمیل حساب داشته باشد، پیوند بازنشانی در راه است.
+cloud_welcome	وارد شده به‌عنوان {user} · {plan}
+cloud_created	حساب ساخته شد. وقتی توانستید ایمیل را برای تأیید بررسی کنید.
+cloud_cancel	لغو
 unmark	برداشتن علامت
 update_my_password	به‌روزرسانی گذرواژه من
 update_my_pin	به‌روزرسانی ورود من
