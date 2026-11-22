@@ -891,7 +891,7 @@ show_all_dishes	Барлық элементтерді көрсету
 role_title_rest_ph	Лауазым (мыс. Капитан, Бас аспаз)
 preset_help_rest	Кассир: сатады. Басқарушы: сату + тауар + күшін жою/түзету.
 kind_resale	Сату үшін сатып алды
-kind_dish	Акцияны есептемеңіз
+kind_dish	Қорды есептемеңіз
 buy_unit_ph	Бірлік (kg, литр, дана)
 add_another_way	+ Басқа тәсіл қосу
 parts_status	Енгізілді {a} / {b} · {c} қалды
