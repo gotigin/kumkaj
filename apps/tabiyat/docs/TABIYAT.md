@@ -42,6 +42,12 @@ wipe). Settings → Brand → **Shop templates**: same sources; **Continue/Cance
 wipe then full pack apply. Medicines → Import starter shelf stays items-only.
 Public catalogue / cloud login download = later (no fake UI).
 
+**First-run Restore backup (2026-11-22):** on DeviceSetup when no Server exists
+yet, **Restore backup** reuses Settings restore checks (`meta.app` = tabiyat,
+refuse a newer schema) and opens the books as that backup — Owner PIN from the
+backup; template offer skipped. Once a Server exists, Settings → Backup →
+Restore is the path.
+
 ------------------------------------------------------------------------
 
 ## 2. Compliance posture (hard rule)

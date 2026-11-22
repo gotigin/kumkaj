@@ -101,6 +101,11 @@ owner-facing copy or code.
   wipe (`wipe_trading_data_keep_structure`) then `apply_app_template_pack`.
   Menu → Item templates stays items-only additive. Public catalogue / cloud login
   download = later (no fake UI).
+- **First-run Restore backup (2026-11-22):** on DeviceSetup when no Server exists
+  yet, **Restore backup** reuses Settings restore checks (`meta.app` = kirano,
+  refuse a newer schema) and opens the books as that backup — Owner PIN from the
+  backup; template offer skipped. Once a Server exists, Settings → Backup →
+  Restore is the path.
 - Parties: **Customer** (khata/AR) and **Supplier** / wholesaler (AP) —
   role labels on one party UUID.
 - Shell: **Books · Sell · Buy · Items · Sales · Inventory · Credit ·
