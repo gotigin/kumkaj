@@ -86,3 +86,5 @@ need the author and licence named.
 | `mexican/queso-dip.webp` | cochinita pibil taco platter | queso fundido | stu_spivack | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://www.flickr.com/photos/35034346243@N01/486808698 | resized, WebP |
 | `mexican/salsa-roja.webp` | three mixed green/orange dips | Mmm... red pepper salsa-salsa roja | jeffreyw | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/7927684@N03/6097292944 | resized, WebP |
 | `mexican/tortilla-soup.webp` | soup beside Catrina skull figurine / busy restaurant table | Sopa de tortilla, Mazatlán, 15 de noviembre de 2022 | El Nuevo Doge | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=125555690 | resized, WebP |
+
+| `mexican/salsa-roja.webp` | (correction) previous pick was huevos rancheros | Salsa Roja Recipe | goblinbox_(queen_of_ad_hoc_bento) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/25977089@N00/16171574958 | resized, WebP |
