@@ -982,7 +982,7 @@ purchases_cogs	採購(COGS)
 qty_cap	數量
 restore_help	恢復：選擇一個備份。帳本會回到當時的樣子；當前帳本會先保存，所以可以撤回。
 wipe_data_heading	刪除本地數據
-wipe_data_help	僅店主 — 與 Windows 卸載相同選項。營業記錄清除歷史並保留菜單/設置。店鋪設置刪除帳本。屏幕偏好：窗口/語言。用店主 PIN 確認。
+wipe_data_help	僅店主——與 Windows 解除安裝相同選項。營業記錄清除交易歷史但保留菜單與設定（如緊急解鎖 PIN）。店鋪設定刪除帳簿資料庫。螢幕偏好清除視窗/語言。用店主 PIN 確認。團隊上的緊急解鎖 PIN 另計（解鎖時隱蔽擦除）。
 wipe_trading	營業記錄
 wipe_schema	店鋪設置
 wipe_ui	屏幕偏好
@@ -1261,7 +1261,7 @@ content_width_bill_help	客人帳單的列印寬度（mm，40–210）。在任�
 content_width_kot_help	廚房單的列印寬度（mm，40–210）。在任何紙張上都以此實際尺寸列印；在較窄的紙張上，超出列印邊緣的部分會被裁切（見紙張）。客人帳單有自己的寬度，在帳單分頁設定。
 vp_paper_width	內容寬度（毫米）
 vp_paper_width_ph	或輸入內容寬度，40–210 毫米
-vp_paper_width_help	內容寬度在「帳單與 KOT 格式」中設置。適用於帳單和廚房小票。
+vp_paper_width_help	內容寬度在「帳單與 KOT 格式」中設定——帳單（預設 210 mm）與廚房小票（預設 80 mm）分開。
 kot_size	字號
 kot_size_s	小
 kot_size_m	標準

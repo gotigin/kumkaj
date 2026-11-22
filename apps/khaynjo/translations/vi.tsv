@@ -1261,7 +1261,7 @@ content_width_bill_help	Hóa đơn của khách in rộng bao nhiêu, tính bằ
 content_width_kot_help	Phiếu bếp in rộng bao nhiêu, tính bằng mm (40–210). Phiếu in đúng kích thước thật này trên mọi loại giấy; trên giấy hẹp hơn, phần vượt quá mép in bị cắt (xem Giấy). Hóa đơn của khách có độ rộng riêng ở thẻ Hóa đơn.
 vp_paper_width	Khổ nội dung (mm)
 vp_paper_width_ph	Hoặc nhập khổ nội dung, 40–210 mm
-vp_paper_width_help	Khổ nội dung đặt trong Định dạng hóa đơn & KOT. Áp dụng cho hóa đơn và phiếu bếp.
+vp_paper_width_help	Độ rộng nội dung đặt trong «Định dạng hóa đơn & KOT» — riêng hóa đơn (mặc định 210 mm) và phiếu bếp (mặc định 80 mm).
 kot_size	Cỡ chữ
 kot_size_s	Nhỏ
 kot_size_m	Thường

@@ -982,7 +982,7 @@ purchases_cogs	仕入（COGS）
 qty_cap	数量
 restore_help	復元：バックアップを選びます。帳簿はその時点の状態で開きます。今の帳簿は先に保存されるので元に戻せます。
 wipe_data_heading	ローカルデータを削除
-wipe_data_help	オーナーのみ — Windowsアンインストールと同じ選択肢。取引記録は履歴を消しメニュー/設定を残す。店舗セットアップは帳簿を削除。画面設定はウィンドウ/言語。オーナーPINで確認。
+wipe_data_help	オーナーのみ — Windows アンインストールと同じ選択肢。営業記録は取引履歴を消しメニューと設定は残す（緊急解除 PIN など）。店舗設定は帳簿 DB を削除。画面設定はウィンドウ/言語をクリア。オーナー PIN で確認。チームの緊急解除 PIN は別（解除時の内密ワイプ）。
 wipe_trading	取引記録
 wipe_schema	店舗セットアップ
 wipe_ui	画面の設定
@@ -1261,7 +1261,7 @@ content_width_bill_help	お客様の伝票の印刷幅（mm、40–210）。ど�
 content_width_kot_help	キッチン伝票の印刷幅（mm、40–210）。どの用紙にもこの実寸で印刷されます。これより狭い用紙では、印刷範囲の端を超えた部分が切れます（用紙を参照）。お客様の伝票の幅は会計タブで別に設定します。
 vp_paper_width	内容幅（mm）
 vp_paper_width_ph	または内容幅を入力、40–210 mm
-vp_paper_width_help	内容幅は伝票とKOT形式で設定します。伝票と厨房チケットの両方に適用されます。
+vp_paper_width_help	内容幅は「伝票＆KOT形式」で設定 — 伝票（既定 210 mm）と厨房伝票（既定 80 mm）は別々。
 kot_size	文字サイズ
 kot_size_s	小
 kot_size_m	標準
