@@ -602,8 +602,8 @@ optional_login_help	ঐচ্ছিক লগইন (আইডি + পাসও
 or_unlock_login	অথবা লগইন আইডি + পাসওয়ার্ড দিয়ে আনলক করুন
 or_unlock_shop_login	অথবা দোকান লগইন সঙ্গে আনলক
 shop_login_help	ঐচ্ছিক: PIN এর পরিবর্তে এই দোকানের কর্মীদের ব্যবহারকারীর নাম এবং পাসওয়ার্ড দিয়ে আনলক করুন (অফলাইনে কাজ করে)।
-cloud_account_title	[bn] Tabiyat account
-cloud_account_help	[bn] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	তবিয়ত খাতা
+cloud_account_help	tabiyat.shop/account হিসাবে একই অ্যাকাউন্ট দিয়ে নিবন্ধন করুন বা সাইন ইন করুন। আপনার ক্লাউড আইডি এবং বিনামূল্যের পরিকল্পনা তৈরি করে।
 cloud_name_ph	নাম (ঐচ্ছিক)
 cloud_email_ph	ইমেইল
 cloud_password_ph	পাসওয়ার্ড

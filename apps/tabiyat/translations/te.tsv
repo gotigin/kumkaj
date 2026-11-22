@@ -600,22 +600,22 @@ net_word	నికరం
 offline_badge	ఆఫ్‌లైన్
 optional_login_help	ఐచ్ఛిక లాగిన్ (ఐడీ + పాస్‌వర్డ్). యజమాని ఒకసారి సెట్ చేస్తారు; తర్వాత వినియోగదారు మాత్రమే పాస్‌వర్డ్ మార్చగలరు.
 or_unlock_login	లేదా లాగిన్ ఐడీ + పాస్‌వర్డ్‌తో అన్‌లాక్ చేయండి
-or_unlock_shop_login	[te] Or unlock with shop login
-shop_login_help	[te] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[te] Tabiyat account
-cloud_account_help	[te] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[te] Name (optional)
-cloud_email_ph	[te] Email
-cloud_password_ph	[te] Password
-cloud_continue	[te] Continue
-cloud_forgot	[te] Forgot password?
-cloud_web_methods	[te] Google and other methods on the website
-cloud_signing_in	[te] Signing in…
-cloud_sending_reset	[te] Sending reset link…
-cloud_forgot_sent	[te] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	లేదా షాప్ లాగిన్‌తో అన్‌లాక్ చేయండి
+shop_login_help	ఐచ్ఛికం: PIN బదులు ఈ షాప్ సిబ్బంది యూజర్‌నేమ్ మరియు పాస్‌వర్డ్‌తో అన్‌లాక్ చేయండి (ఆఫ్‌లైన్‌లో పనిచేస్తుంది).
+cloud_account_title	తబియత్ ఖాతా
+cloud_account_help	tabiyat.shop/account అదే ఖాతాతో నమోదు చేసుకోండి లేదా సైన్ ఇన్ చేయండి. మీ క్లౌడ్ ఐడి మరియు ఉచిత ప్లాన్ సృష్టిస్తుంది.
+cloud_name_ph	పేరు (ఐచ్ఛికం)
+cloud_email_ph	ఇమెయిల్
+cloud_password_ph	పాస్‌వర్డ్
+cloud_continue	కొనసాగించు
+cloud_forgot	పాస్‌వర్డ్ మర్చిపోయారా?
+cloud_web_methods	వెబ్‌సైట్‌లో Google మరియు ఇతర మార్గాలు
+cloud_signing_in	సైన్ ఇన్ అవుతోంది…
+cloud_sending_reset	రీసెట్ లింక్ పంపుతోంది…
+cloud_forgot_sent	ఆ ఇమెయిల్‌కు ఖాతా ఉంటే, రీసెట్ లింక్ పంపబడింది.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[te] Account created. Check your email to verify when you can.
-cloud_cancel	[te] Cancel
+cloud_created	ఖాతా సృష్టించబడింది. సాధ్యమైనప్పుడు ధృవీకరించడానికి మీ ఇమెయిల్ చూడండి.
+cloud_cancel	రద్దు
 permission_preset	అనుమతి ప్రీసెట్
 product_only_tabiyat	ఈ యాప్ Tabiyat మాత్రమే — రెస్టారెంట్ ఆపరేటింగ్ సిస్టమ్. ఇతర వ్యాపారాలకు వేరే Kumkaj ఉత్పత్తులు వస్తాయి.
 purchases_cogs	కొనుగోళ్లు (COGS)

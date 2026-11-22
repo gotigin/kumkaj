@@ -602,8 +602,8 @@ optional_login_help	އިޚްތިޔާރީ ލޮގިން (އައިޑީ + ޕާސްވ
 or_unlock_login	ނުވަތަ ލޮގިން އައިޑީ + ޕާސްވޯޑް އިން އަންލޮކް ކޮށްލާށެވެ
 or_unlock_shop_login	ެވެށާލްށޮކ ްކޮލްނައ ްނެގްށޮކ ްނިގޮލ ަރާހިފ ަތަވުނ
 shop_login_help	.ެވެށާލްށޮކ ްކޮލްނައ ްނިއ (ީނަރުކ ްތަކްއަސަމ ްށޮކްނިއަލްފޮއ) ިއަގުލަދަބ ެގްނިޕ ްޑޯވްސާޕ ިދައ ްމޭނރަޒޫޔ ެގްނުފަޒްއަވުމ ެގިއަރާހިފ ިމ :ީރާޔ
-cloud_account_title	[dv] Tabiyat account
-cloud_account_help	[dv] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	ެވެޓްނުއަކެއ ޯޖްނިއަޚ
+cloud_account_help	tabiyat.shop/account ެވެއަދްއަފުއ ްނޭލްޕ ޭލިހ ިއާއ ީޑިއައ ްޑުއަލްކ ެގާބިތ .ްނުވ ްނިއ ްނިއަސ ަތަވުނ ީރްޓްސިޖަރ ްނުކަޓްނުއަކެއ
 cloud_name_ph	(ީރާޔިތްޚިއ) ްނަނ
 cloud_email_ph	ްލިއެމީއ
 cloud_password_ph	ްޑރަވްސާޕ

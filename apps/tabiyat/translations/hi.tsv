@@ -602,15 +602,15 @@ optional_login_help	वैकल्पिक लॉगिन (आईडी + प
 or_unlock_login	या लॉगिन आईडी + पासवर्ड से अनलॉक करें
 or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
-cloud_account_title	[hi] Tabiyat account
-cloud_account_help	[hi] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	तबीयत खाता
+cloud_account_help	tabiyat.shop/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
 cloud_continue	जारी रखना
 cloud_forgot	पासवर्ड भूल गए?
 cloud_web_methods	वेबसाइट पर Google और अन्य तरीके
-cloud_signing_in	इन कर रहे हैं…
+cloud_signing_in	साइन इन हो रहा है…
 cloud_sending_reset	रीसेट लिंक भेजा जा रहा है...
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया

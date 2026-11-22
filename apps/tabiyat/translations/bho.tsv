@@ -602,8 +602,8 @@ optional_login_help	मरजी के लॉगिन (id + पासवर्
 or_unlock_login	भा लॉगिन id + पासवर्ड से अनलॉक करीं
 or_unlock_shop_login	या दुकान लॉगिन के साथ अनलॉक करीं
 shop_login_help	वैकल्पिक: पिन के जगह एह दुकान के स्टाफ यूजरनेम आ पासवर्ड से अनलॉक करीं (ऑफलाइन काम करेला)।
-cloud_account_title	[bho] Tabiyat account
-cloud_account_help	[bho] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	खयनजो खाता बा
+cloud_account_help	tabiyat.shop/account जइसन खाता से रजिस्टर करीं भा साइन इन करीं. राउर क्लाउड आईडी आ फ्री प्लान बनावेला।
 cloud_name_ph	नाम (वैकल्पिक) के बा।
 cloud_email_ph	ईमेल पर भेजल जा सकेला
 cloud_password_ph	पासवर्ड

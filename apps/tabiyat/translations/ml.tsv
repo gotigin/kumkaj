@@ -602,8 +602,8 @@ optional_login_help	ഓപ്ഷണൽ ലോഗിൻ (ഐഡി + പാസ്
 or_unlock_login	അല്ലെങ്കിൽ ലോഗിൻ ഐഡി + പാസ്‌വേഡ് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
 or_unlock_shop_login	അല്ലെങ്കിൽ ഷോപ്പ് ലോഗിൻ ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
 shop_login_help	ഓപ്ഷണൽ: PIN-ന് പകരം ഈ ഷോപ്പിൻ്റെ സ്റ്റാഫ് ഉപയോക്തൃനാമവും പാസ്u200cവേഡും ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക (ഓഫ്u200cലൈനിൽ പ്രവർത്തിക്കുന്നു).
-cloud_account_title	[ml] Tabiyat account
-cloud_account_help	[ml] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	തബിയത്ത് അക്കൗണ്ട്
+cloud_account_help	tabiyat.shop/account അതേ അക്കൗണ്ടിൽ രജിസ്റ്റർ ചെയ്യുക അല്ലെങ്കിൽ സൈൻ ഇൻ ചെയ്യുക. നിങ്ങളുടെ ക്ലൗഡ് ഐഡിയും സൗജന്യ പ്ലാനും ഉണ്ടാക്കുന്നു.
 cloud_name_ph	പേര് (ഓപ്ഷണൽ)
 cloud_email_ph	Email
 cloud_password_ph	രഹസ്യവാക്ക്

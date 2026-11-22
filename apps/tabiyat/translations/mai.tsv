@@ -602,8 +602,8 @@ optional_login_help	वैकल्पिक लॉगिन (id + पासव�
 or_unlock_login	वा लॉगिन id + पासवर्डसँ अनलॉक करू
 or_unlock_shop_login	या दुकान लॉगिन के साथ अनलॉक
 shop_login_help	वैकल्पिक: पिन (ऑफलाइन काज करैत अछि) के बजाय एहि दुकान के स्टाफ यूजरनेम आ पासवर्ड सं अनलॉक करू.
-cloud_account_title	[mai] Tabiyat account
-cloud_account_help	[mai] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_account_title	तबीयत खाता
+cloud_account_help	tabiyat.shop/account वाले खाता सँ रजिस्टर या साइन इन करू। अहाँक क्लाउड आईडी आ निःशुल्क योजना बनाबैत अछि।
 cloud_name_ph	नाम (वैकल्पिक) २.
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड

@@ -602,7 +602,7 @@ optional_login_help	Ka jingrung kaba lah ban jied (id + ka ktien rieh). U trai s
 or_unlock_login	Lane plie da ka id login + ka ktien rieh
 or_unlock_shop_login	Or unlock with shop login
 shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
+cloud_account_title	तबीयत खाता
 cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Name (optional)
 cloud_email_ph	Email
