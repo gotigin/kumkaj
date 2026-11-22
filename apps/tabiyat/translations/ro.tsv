@@ -682,7 +682,7 @@ icon_default	Pictogramă: marca Kumkaj (implicit) — alege una proprie
 logo_yours	Logo: logo-ul localului tău — se arată pe ecrane și chitanțe
 logo_default	Logo: marca Kumkaj (implicit) — alege-l pe al tău dacă ai
 setup_complete	Configurare completă
-onboard_fresh_tmpl	Nou · · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
+onboard_fresh_tmpl	Nou · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
 onboard_book_tmpl	Book · {} — adaugă articole și credit de început, apoi Gata.
 tmpl_blurb	Tejghea de farmacie: medicamente, lot/expirare, registru de credit, registre.
 reports_facet_title	Rapoarte

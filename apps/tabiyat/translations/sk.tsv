@@ -682,7 +682,7 @@ icon_default	Ikona: Značka Kumkaj (predvolené) — vyberte si vlastnú
 logo_yours	Logo: logo vášho obchodu – zobrazené na obrazovkách a účtenkách
 logo_default	Logo: značka Kumkaj (predvolené) — vyberte si svoje vlastné, ak nejaké máte
 setup_complete	Nastavenie je dokončené
-onboard_fresh_tmpl	Nové · · {} — katalóg začína prázdny; pridať položky do položky Položky a potom Hotovo.
+onboard_fresh_tmpl	Nové · {} — katalóg začína prázdny; pridať položky do položky Položky a potom Hotovo.
 onboard_book_tmpl	Rezervovať · {} — pridajte položky a otvorenie kreditu a potom Hotovo.
 tmpl_blurb	Lekárenský pult: lieky, šarža/exspirácia, kata, knihy.
 reports_facet_title	Správy

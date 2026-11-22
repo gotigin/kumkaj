@@ -682,7 +682,7 @@ icon_default	Ikon: Kumkaj-merke (standard) — velg et eget
 logo_yours	Logo: butikklogoen din — vises på skjermer og kvitteringer
 logo_default	Logo: Kumkaj-merke (standard) — velg ditt eget hvis du har ett
 setup_complete	Oppsett fullført
-onboard_fresh_tmpl	Ny · · {} — katalogen starter tom; legg til varer i Varer, deretter Ferdig.
+onboard_fresh_tmpl	Ny · {} — katalogen starter tom; legg til varer i Varer, deretter Ferdig.
 onboard_book_tmpl	Book · {} — legg til varer og åpningskreditt, deretter Ferdig.
 tmpl_blurb	Apoteksteller: medisiner, batch/utløp, khata, bøker.
 reports_facet_title	Rapporter
