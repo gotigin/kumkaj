@@ -937,7 +937,7 @@ your_brand	તમારી બ્રાન્ડ (એપમાં)
 your_categories	તમારી શ્રેણીઓ
 account_kind	ખાતાનો પ્રકાર (એક દબાવો)
 actual_total_cap	ખરું કુલ
-amend_help	સુધારો, રદ અથવા પરત માટે વેચાણ પસંદ કરો. સુધારાનો પૂરો ઇતિહાસ રહે છે.
+amend_help	સુધારો, રદ અથવા પરત માટે વેચાણ પસંદ કરો. સુધારાનો પૂરો ઇતિહાસ રહે છે. Rounded Total શરૂમાં Applied જેટલું હોય છે — ફક્ત ગોળ કરવા માટે બદલો. રદ અને પરતમાં Owner અથવા Manager PIN લાગી શકે (ઉપર ટાઇપ; તમારા નામ સાથે નોંધાય).
 applied_total_cap	લાગુ કુલ
 bank_balance	બેંક બાકી
 bank_net_today	આજનું બેંક નેટ
