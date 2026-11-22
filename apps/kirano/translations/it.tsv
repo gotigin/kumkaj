@@ -91,7 +91,7 @@ bill_total_grand_label	Etichetta totale
 bill_total_paid_label	Etichetta pagato
 bill_meta_pair	Condividi riga con
 bill_pair_alone	Da solo
-bill_item_piece_on	Sì
+bill_item_piece_on	Attivo
 bill_item_piece_off	Spento
 bill_total_qty	Qtà totale
 bill_total_subtotal	Subtotale

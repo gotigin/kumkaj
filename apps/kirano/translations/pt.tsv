@@ -91,7 +91,7 @@ bill_total_grand_label	Rótulo total
 bill_total_paid_label	Rótulo pago
 bill_meta_pair	Partilhar linha com
 bill_pair_alone	Sozinho
-bill_item_piece_on	Sim
+bill_item_piece_on	Ativado
 bill_item_piece_off	Desligado
 bill_total_qty	Qtd total
 bill_total_subtotal	Subtotal

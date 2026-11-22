@@ -91,7 +91,7 @@ bill_total_grand_label	Etiqueta total
 bill_total_paid_label	Etiqueta pagado
 bill_meta_pair	Compartir línea con
 bill_pair_alone	Solo
-bill_item_piece_on	Sí
+bill_item_piece_on	Activado
 bill_item_piece_off	Apagado
 bill_total_qty	Cant. total
 bill_total_subtotal	Subtotal

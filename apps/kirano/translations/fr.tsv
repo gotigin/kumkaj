@@ -91,8 +91,8 @@ bill_total_grand_label	Libellé total
 bill_total_paid_label	Libellé payé
 bill_meta_pair	Partager la ligne avec
 bill_pair_alone	Seul
-bill_item_piece_on	Oui
-bill_item_piece_off	Arrêt
+bill_item_piece_on	Activé
+bill_item_piece_off	Désactivé
 bill_total_qty	Qté totale
 bill_total_subtotal	Sous-total
 bill_total_grand	Total
