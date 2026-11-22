@@ -172,7 +172,7 @@ kot_station_none	ഇതുവരെ അടുക്കള സ്റ്റേഷ�
 pos_tab_items	ചേർത്തവ
 pos_tab_payment	പേയ്മെന്റ്
 hold_send	ഹോൾഡ്
-hold_send_on	തടഞ്ഞു
+hold_send_on	ഹോൾഡ്
 hold_send_meta	തടഞ്ഞു — ഈ KOT-ൽ ഇല്ല
 station_remove	സ്റ്റേഷൻ നീക്കുക
 station_remove_ph	നീക്കാൻ പട്ടികയിൽ ഒരു സ്റ്റേഷൻ ടാപ്പ് ചെയ്യുക
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	പുതിയ വൗച്ചർ കോഡ്
 split_evenly	തുല്യമായി വിഭജിക്കുക
 waitlist	വെയ്റ്റ്‌ലിസ്റ്റ്
 fire_course	കോഴ്സ് അയയ്ക്കുക
-hold_item	നിർത്തിവയ്ക്കുക
+hold_item	ഹോൾഡ്
 waiter_call	വെയ്റ്ററെ വിളിക്കുക
 waitlist_add	വെയ്റ്റ്‌ലിസ്റ്റിൽ ചേർക്കുക
 floor_view_grid	ഗ്രിഡ്

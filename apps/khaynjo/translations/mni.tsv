@@ -901,10 +901,10 @@ unlock_after_pairing	PIN ꯏꯕꯤꯌꯨ
 unlock_with_login	ꯆꯪꯕꯅ ꯍꯥꯡꯗꯣꯛꯎ
 or_unlock_shop_login	[mni] Or unlock with shop login
 shop_login_help	[mni] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mni] Khaynjo account
+cloud_account_title	ꯈꯥꯏꯟꯖꯣ ꯑꯦꯀꯥꯎꯟꯇ
 cloud_account_help	[mni] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[mni] Name (optional)
-cloud_email_ph	[mni] Email
+cloud_name_ph	ꯃꯤꯡ (ꯑꯣꯄꯁꯟꯅꯦꯜ)
+cloud_email_ph	ꯏꯃꯦꯏꯜ
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
 cloud_forgot	[mni] Forgot password?

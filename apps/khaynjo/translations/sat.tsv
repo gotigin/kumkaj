@@ -901,10 +901,10 @@ unlock_after_pairing	ᱯᱤᱱ ᱮᱢ ᱢᱮ
 unlock_with_login	ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
 or_unlock_shop_login	[sat] Or unlock with shop login
 shop_login_help	[sat] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sat] Khaynjo account
+cloud_account_title	ᱠᱷᱟᱭᱱᱡᱚ ᱠᱷᱟᱛᱟ
 cloud_account_help	[sat] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[sat] Name (optional)
-cloud_email_ph	[sat] Email
+cloud_name_ph	ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
+cloud_email_ph	ᱤᱢᱮᱞ
 cloud_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 cloud_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
 cloud_forgot	[sat] Forgot password?
