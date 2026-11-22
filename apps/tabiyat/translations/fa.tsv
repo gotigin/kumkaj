@@ -185,7 +185,7 @@ zero_sales_off	قیمت لازم است
 zero_sales_saved_on	فروش با مبلغ صفر مجاز است
 zero_sales_saved_off	فروش باید قیمتی بالاتر از ₹۰ داشته باشد
 added	افزوده شد
-owes_word	بدهکار است
+owes_word	بدهی
 selected_word	انتخاب‌شده
 chip_clear_credit	پاک — نسیه یا گرفتن پیش‌پرداخت
 chip_missing_customer	مشتری انتخاب‌شده نیست — دوباره انتخاب کنید

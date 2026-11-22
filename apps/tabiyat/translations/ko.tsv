@@ -185,7 +185,7 @@ zero_sales_off	0원 판매: 꺼짐
 zero_sales_saved_on	0원 판매 허용 저장됨(켜짐)
 zero_sales_saved_off	0원 판매 허용 저장됨(꺼짐)
 added	추가됨
-owes_word	빚짐
+owes_word	외상
 selected_word	선택됨
 chip_clear_credit	정산 완료 — 외상을 주거나 선불 받기
 chip_missing_customer	선택한 고객이 없습니다 — 다시 선택하세요

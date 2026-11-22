@@ -185,7 +185,7 @@ zero_sales_off	ゼロ売上: オフ
 zero_sales_saved_on	ゼロ売上許可を保存しました（オン）
 zero_sales_saved_off	ゼロ売上許可を保存しました（オフ）
 added	追加済み
-owes_word	未払い
+owes_word	未収
 selected_word	選択済み
 chip_clear_credit	精算済み — 掛けにするか前払いを受ける
 chip_missing_customer	選択した顧客が見つかりません — 選び直してください
