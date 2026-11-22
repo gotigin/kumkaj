@@ -88,7 +88,11 @@
   margin-top: 0.85rem;
 }
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
   padding: 0.55rem 0.9rem;
   border-radius: 0.45rem;
   border: none;
