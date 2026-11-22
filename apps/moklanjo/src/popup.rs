@@ -53,6 +53,9 @@ fn popup_is_tap(press: DVec2, press_time: f64, release: DVec2, release_time: f64
 /// The field is on screen: at least half of it inside the page's visible
 /// band (`page_viewport`: top, height). Scrolled under the header or off
 /// the bottom, a floating list would hide until it is back.
+/// Kept for the placement tests (and a future `AnchoredPopup`); in-page
+/// SuggestLists do not call it yet.
+#[allow(dead_code)]
 fn popup_anchor_on_page(anchor: Rect, page: (f64, f64)) -> bool {
     let (top, h) = page;
     if anchor.size.x < 0.5 || anchor.size.y < 0.5 {
@@ -67,6 +70,7 @@ fn popup_anchor_on_page(anchor: Rect, page: (f64, f64)) -> bool {
 
 /// Where a floating list goes against its field.
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[allow(dead_code)]
 struct PopupPlace {
     pos: DVec2,
     width: f64,
@@ -78,6 +82,9 @@ struct PopupPlace {
 /// Under the field when the list fits there (or there is more room below
 /// than above), otherwise above it; never past the window edges.
 /// `want_h` is the panel's height last frame (0 before its first draw).
+/// Placement oracle — exercised by `popup_tests`; wire into a floating
+/// panel when Moklanjo grows one (Khaynjo `AnchoredPopup`).
+#[allow(dead_code)]
 fn place_popup(anchor: Rect, want_h: f64, window: DVec2, gap: f64, edge: f64, min_w: f64) -> PopupPlace {
     let width = anchor.size.x.max(min_w).min((window.x - 2.0 * edge).max(1.0));
     let x = anchor
