@@ -17,7 +17,7 @@ reports_today	일계장(오늘)
 reports_month	손익(월)
 reports_aging	미결 / Dr-Cr
 reports_balance_sheet	대차대조표
-reports	보고서
+reports	은행장부 및 손익
 undo	실행 취소
 stock_minus	− 재고
 stock_plus	+ 재고
@@ -193,7 +193,7 @@ my_pin_settings	내 PIN
 settings_hub_help_my_pin	이 기기에 로그인한 사람의 잠금 해제 PIN을 바꿉니다.
 team_self_help	잠금 해제 PIN(및 선택 로그인 비밀번호)은 본인만 바꿀 수 있습니다. 다른 화면이나 권한이 필요하면 점주에게 요청하세요.
 pick	선택
-advance	진행
+advance	선수금
 owner	점주
 staff	직원
 photo	사진
@@ -706,7 +706,7 @@ service_pct_ph	서비스 % 선택 0/10/12
 short_code_ph	짧은 코드(MG02)
 starting_password_ph	시작 비밀번호(선택)
 starting_pin_ph	시작 PIN(4–12자리)
-tax_rate_ph	세율 이름 또는 % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	세율 또는 % (예: 5, 18)
 to_code_ph	대상 코드(kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가
@@ -741,7 +741,7 @@ your_category	내 카테고리
 suggested_category	제안 — 우리 품목에서
 category_search_ph	카테고리 — 검색하거나 새로 입력
 cancel_item_short	취소
-return_to_customer	거스름돈
+return_to_customer	고객에게 반품
 short_by	부족
 tip_not_sale	팁 (직원 몫, 매출 아님)
 right_settle	결제 받기
@@ -824,7 +824,7 @@ schemes	할인/세트
 schemes_help	하나 사면 하나, 퍼센트 할인, 묶음. 예: 쌀 2에 기름 1.
 scheme_bogo_ph	쌀 2, 기름 1
 add_scheme	BOGO 추가
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	시간 (예: 월–금 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI 수취인(선택)
 show_upi_qr	UPI QR 표시

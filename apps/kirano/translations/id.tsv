@@ -17,7 +17,7 @@ reports_today	Buku harian (hari ini)
 reports_month	Laba rugi (bulan)
 reports_aging	Tunggakan / Dr-Cr
 reports_balance_sheet	Neraca
-reports	Laporan
+reports	Buku bank & L&R
 undo	Urungkan
 stock_minus	− Stok
 stock_plus	+ Stok
@@ -92,7 +92,7 @@ bill_total_paid_label	Label dibayar
 bill_meta_pair	Satu baris dengan
 bill_pair_alone	Sendiri
 bill_item_piece_on	Aktif
-bill_item_piece_off	Nonaktif
+bill_item_piece_off	Mati
 bill_total_qty	Jumlah total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total keseluruhan
@@ -193,7 +193,7 @@ my_pin_settings	PIN saya
 settings_hub_help_my_pin	Ubah PIN buka kunci orang yang masuk di perangkat ini.
 team_self_help	Hanya Anda yang dapat mengubah PIN buka kunci (dan kata sandi masuk opsional). Layar atau hak lain: minta pemilik.
 pick	Pilih
-advance	Lanjut
+advance	Uang muka
 owner	Pemilik
 staff	Staf
 photo	Foto
@@ -706,7 +706,7 @@ service_pct_ph	Layanan % opsional 0/10/12
 short_code_ph	Kode pendek (MG02)
 starting_password_ph	Kata sandi awal (opsional)
 starting_pin_ph	PIN awal (4–12 digit)
-tax_rate_ph	Nama tarif pajak atau % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Tarif pajak atau % (mis. 5, 18)
 to_code_ph	Kode ke (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan
@@ -741,7 +741,7 @@ your_category	Kategori Anda
 suggested_category	Disarankan — dari item kami
 category_search_ph	Kategori — cari milik Anda atau ketik baru
 cancel_item_short	Batal
-return_to_customer	Kembalian
+return_to_customer	Kembalikan ke pelanggan
 short_by	Kurang
 tip_not_sale	Tip (untuk staf, bukan penjualan)
 right_settle	Terima pembayaran
@@ -824,7 +824,7 @@ schemes	Skema
 schemes_help	Beli satu gratis satu, diskon persen, dan bundel. Contoh: 2 beras dapat 1 minyak.
 scheme_bogo_ph	2 beras, 1 minyak
 add_scheme	Tambah BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Jam (mis. Sen-Jum 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Penerima UPI (opsional)
 show_upi_qr	Tampilkan QR UPI

@@ -17,7 +17,7 @@ reports_today	Päevaraamat (täna)
 reports_month	Kasum ja kahjum (kuu)
 reports_aging	Tasumata / deebetkrediit
 reports_balance_sheet	Bilanss
-reports	Pangaraamat ja P&L
+reports	Pangaraamat & K&K
 undo	Võta tagasi
 stock_minus	− Varud
 stock_plus	+ Laoseis
@@ -193,7 +193,7 @@ my_pin_settings	Minu PIN
 settings_hub_help_my_pin	Muutke sellesse seadmesse sisse logitud inimese avamisnumbrit PIN.
 team_self_help	Üks sisselogimine: uus PIN, uus parool või mõlemad. Jätke lahter tühjaks, et hoida seda, mis teil on. Küsige omanikult, kas vajate erinevaid ekraane või õigusi.
 pick	Vali
-advance	Edasiminek
+advance	Ettemaks
 owner	Omanik
 staff	Personal
 photo	Foto

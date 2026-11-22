@@ -17,7 +17,7 @@ reports_today	დღის წიგნი (დღეს)
 reports_month	მოგება და ზარალი (თვე)
 reports_aging	გადაუხდელი / დებეტ-კრედიტ
 reports_balance_sheet	ბალანსი
-reports	საბანკო წიგნი და მ/ზ
+reports	საბანკო წიგნი და მ&ზ
 undo	გაუქმება
 stock_minus	− მარაგი
 stock_plus	+ მარაგი
@@ -193,7 +193,7 @@ my_pin_settings	ჩემი PIN
 settings_hub_help_my_pin	შეცვალეთ განბლოკვის PIN ამ მოწყობილობაზე შესული პირისთვის.
 team_self_help	ერთი შესვლა: ახალი PIN, ახალი პაროლი, ან ორივე. დატოვეთ უჯრა ცარიელი, რომ დარჩეს რაც გაქვთ. სთხოვეთ მფლობელს, თუ სხვა ეკრანები ან უფლებები გჭირდებათ.
 pick	აირჩიე
-advance	წინასწარ
+advance	ავანსი
 owner	მფლობელი
 staff	პერსონალი
 photo	ფოტო

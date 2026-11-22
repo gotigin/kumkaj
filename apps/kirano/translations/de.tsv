@@ -17,7 +17,7 @@ reports_today	Tagesbuch (heute)
 reports_month	Gewinn & Verlust (Monat)
 reports_aging	Offen / Dr-Cr
 reports_balance_sheet	Bilanz
-reports	Berichte
+reports	Bankbuch & GuV
 undo	Rückgängig
 stock_minus	− Bestand
 stock_plus	+ Bestand
@@ -193,7 +193,7 @@ my_pin_settings	Mein PIN
 settings_hub_help_my_pin	Ändern Sie die Entsperr-PIN der angemeldeten Person auf diesem Gerät.
 team_self_help	Nur Sie können Ihre Entsperr-PIN (und optional das Anmeldepasswort) ändern. Andere Bildschirme oder Rechte: den Inhaber fragen.
 pick	Wählen
-advance	Weiter
+advance	Anzahlung
 owner	Inhaber
 staff	Personal
 photo	Foto
@@ -592,7 +592,7 @@ or_unlock_shop_login	Oder mit Shop-Login freischalten
 shop_login_help	Optional: Entsperren Sie mit dem Benutzernamen und Passwort des Mitarbeiters dieses Shops anstelle der PIN (funktioniert offline).
 cloud_account_title	Kirano-Konto
 cloud_account_help	Registrieren Sie sich oder melden Sie sich mit demselben Konto wie kirano.shop/account an. Erstellt Ihre Cloud-ID und Ihren kostenlosen Plan.
-cloud_name_ph	Name (optional)
+cloud_name_ph	Name (freiwillig)
 cloud_email_ph	E-Mail
 cloud_password_ph	Passwort
 cloud_continue	Weitermachen
@@ -603,7 +603,7 @@ cloud_sending_reset	Link zum Zurücksetzen wird gesendet…
 cloud_forgot_sent	Wenn für diese E-Mail ein Konto vorhanden ist, ist ein Link zum Zurücksetzen unterwegs.
 cloud_welcome	Angemeldet als {user} · {plan}
 cloud_created	Konto erstellt. Überprüfen Sie Ihre E-Mails, um dies zu überprüfen, wann immer Sie können.
-cloud_cancel	Stornieren
+cloud_cancel	Abbrechen
 permission_preset	Berechtigungsprofil
 product_only_kirano	Diese App ist nur Kirano – das System für Restaurants. Andere Branchen haben eigene Kumkaj-Produkte.
 purchases_cogs	Einkäufe (COGS)
@@ -706,7 +706,7 @@ service_pct_ph	Service % optional 0/10/12
 short_code_ph	Kurzcode (MG02)
 starting_password_ph	Startpasswort (optional)
 starting_pin_ph	Start-PIN (4–12 Ziffern)
-tax_rate_ph	Steuersatzname oder % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Steuersatz oder % (z. B. 5, 18)
 to_code_ph	Zu Code (kg)
 uncleared_no_ph	Ungeprüfte Nr. oben
 unit_cost_ph	Stückkosten
@@ -741,7 +741,7 @@ your_category	Ihre Kategorie
 suggested_category	Vorgeschlagen — aus unseren Artikeln
 category_search_ph	Kategorie — eigene suchen oder neue tippen
 cancel_item_short	Stornieren
-return_to_customer	Rückgeld
+return_to_customer	An Kunden zurückgeben
 short_by	Es fehlen
 tip_not_sale	Trinkgeld (fürs Personal, kein Umsatz)
 right_settle	Kassieren
@@ -824,7 +824,7 @@ schemes	Angebote
 schemes_help	Kauf eins, eins gratis, Prozentnachlass und Bündel. Beispiel: 2 Reis, 1 Öl.
 scheme_bogo_ph	2 Reis, 1 Öl
 add_scheme	BOGO hinzufügen
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Zeiten (z. B. Mo–Fr 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-Empfänger (optional)
 show_upi_qr	UPI-QR zeigen

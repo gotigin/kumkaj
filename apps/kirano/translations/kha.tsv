@@ -17,7 +17,7 @@ reports_today	Ka kot sngi (mynta ka sngi)
 reports_month	Ka jingmyntoi bad jingduhnong (bnai)
 reports_aging	Ka jingsah / jingsiew-jingsiew
 reports_balance_sheet	Ka jingkhein jingdiah
-reports	Ka kot bank bad ka jingmih
+reports	Kot bank bad ba lai/ba jah
 undo	Pynkylla
 stock_minus	- Stok
 stock_plus	+ Stok
@@ -193,7 +193,7 @@ my_pin_settings	Ka PIN jong nga
 settings_hub_help_my_pin	Pynkylla ia ka jingplie PIN na ka bynta u briew uba la rung ha kane ka tiar.
 team_self_help	Kawei ka jingpynrung: ka PIN kaba thymmai, ka password kaba thymmai, lane baroh ar. Ieh ia ka synduk kaba thylli ban buh ia kaei kaba phi don. Kylli ia u Trai lada phi donkam ia ki screen ne ki hok bapher bapher.
 pick	Jied
-advance	Jingkiew
+advance	Advance
 owner	U trai
 staff	Ki nongtrei
 photo	Ka dur
@@ -244,7 +244,7 @@ date_order	Ka jingbthah ia ka tarik
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
-time_format	Ka kynja kynja
+time_format	Ka por
 time_format_24h	24-kynta
 time_format_12h	12-kynta
 attach_bill_photo	Pyndait ia ka dur jong ka bill
@@ -442,7 +442,7 @@ save_backup_copy	Save ia ka kopi ba la buh...
 backup_copy_saved	La buh ia ka kopi ba la buh — buh ia ka ha kane ka tiar (ka USB lane kawei pat ka tiar)
 backup_copy_overdue	Ym don kopi ba la buh kyrpang na kane ka tiar haduh {n} sngi — Ki jingpynbeit → Ka jingpynkylla .
 backup_copy_failed	Ka copy ba la buh lypa kam lah ban buh hangta — jied ia kawei pat ka jaka .
-clock_off	Ka kynja kynja jong kane ka tiar ka long {min} min na ka server jong ka dukan — buh ia ka por kaba biang ha kane ka tiar .
+clock_off	Ka kynja jong kane ka tiar ka long {min} min na ka server jong ka dukan — buh ia ka por kaba biang ha kane ka tiar .
 printers_heading	Ki nongpynmih kot
 printers_help	Pyni ia ki printer, nion ia kawei ban jied ia ka, nangta Print ia ka sla test tang ha kata ka tiar. Ki nongpynmih bill: Ka rukom pynmih bill bad slip → bill.
 printers_host_only	Ia ki printer la buh ha ka tiar dukan (Server). Kane ka till ka phah ia ki bill bad ki tiket barim hangta — Shem / pyndap / ai jaka sah ha ka Server. Ka sla test bad ka jingheh jong ka jingpynmih bill ka leit sha ka Server.

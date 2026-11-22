@@ -17,7 +17,7 @@ reports_today	د ورځې کتاب (نن)
 reports_month	ګټه او تاوان (میاشت)
 reports_aging	بقایا / ډاکټر-Cr
 reports_balance_sheet	بیالنس پاڼه
-reports	د بانک کتاب او L&P
+reports	د بانک کتاب او ګټه/تاوان
 undo	بیرته راګرځول
 stock_minus	- ذخیره
 stock_plus	+ ذخیره
@@ -193,7 +193,7 @@ my_pin_settings	زما پن
 settings_hub_help_my_pin	د هغه چا لپاره چې په دې وسیله السلیک شوی وي د غیر الک PIN بدل کړئ.
 team_self_help	و یې لرئ. د مالک څخه پوښتنه وکړئ که تاسو مختلف سکرینونو یا حقونو ته اړتیا لرئ.
 pick	غوره کړه
-advance	پرمختگ
+advance	مخکې تادیه
 owner	خاوند
 staff	کارکوونکي
 photo	انځور

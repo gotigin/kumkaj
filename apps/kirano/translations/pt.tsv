@@ -17,7 +17,7 @@ reports_today	Livro do dia (hoje)
 reports_month	Lucros e perdas (mês)
 reports_aging	Pendente / Dr-Cr
 reports_balance_sheet	Balanço
-reports	Relatórios
+reports	Livro banco e P&L
 undo	Desfazer
 stock_minus	− Estoque
 stock_plus	+ Estoque
@@ -92,7 +92,7 @@ bill_total_paid_label	Rótulo pago
 bill_meta_pair	Partilhar linha com
 bill_pair_alone	Sozinho
 bill_item_piece_on	Sim
-bill_item_piece_off	Não
+bill_item_piece_off	Desligado
 bill_total_qty	Qtd total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total
@@ -193,7 +193,7 @@ my_pin_settings	O meu PIN
 settings_hub_help_my_pin	Altere o PIN de desbloqueio de quem está ligado neste dispositivo.
 team_self_help	Só você pode alterar o seu PIN de desbloqueio (e a palavra-passe de início opcional). Se precisar de outros ecrãs ou direitos, fale com o dono.
 pick	Escolher
-advance	Avançar
+advance	Adiantamento
 owner	Dono
 staff	Equipa
 photo	Foto
@@ -706,7 +706,7 @@ service_pct_ph	Serviço % opcional 0/10/12
 short_code_ph	Código curto (MG02)
 starting_password_ph	Senha inicial (opcional)
 starting_pin_ph	PIN inicial (4–12 dígitos)
-tax_rate_ph	Nome da taxa ou % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Taxa ou % (ex.: 5, 18)
 to_code_ph	Código para (kg)
 uncleared_no_ph	Nº não compensado acima
 unit_cost_ph	Custo unitário
@@ -741,7 +741,7 @@ your_category	Sua categoria
 suggested_category	Sugerido - de nossos itens
 category_search_ph	Categoria — procure a sua ou digite uma nova
 cancel_item_short	Cancelar
-return_to_customer	Troco para o cliente
+return_to_customer	Devolver ao cliente
 short_by	Faltam
 tip_not_sale	Gorjeta (da equipe, não é venda)
 right_settle	Receber pagamento
@@ -824,7 +824,7 @@ schemes	Ofertas
 schemes_help	Leve um grátis, desconto percentual e lotes. Exemplo: 2 de arroz e 1 de óleo.
 scheme_bogo_ph	2 arroz, 1 óleo
 add_scheme	Adicionar BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Horário (ex.: seg-sex 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Beneficiário UPI (opcional)
 show_upi_qr	Mostrar QR UPI

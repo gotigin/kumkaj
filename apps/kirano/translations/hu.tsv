@@ -17,7 +17,7 @@ reports_today	Napi könyv (ma)
 reports_month	Nyereség és veszteség (hónap)
 reports_aging	Tartozás / betéti jóváírás
 reports_balance_sheet	Mérleg
-reports	Bankkönyv és P&L
+reports	Bankkönyv és E&V
 undo	Visszavonás
 stock_minus	− Készlet
 stock_plus	+ Készlet
@@ -193,7 +193,7 @@ my_pin_settings	Saját PIN
 settings_hub_help_my_pin	Módosítsa a feloldó PIN-t az eszközön bejelentkezett személy számára.
 team_self_help	Egy bejelentkezés: új PIN, új jelszó vagy mindkettő. Hagyjon üresen egy négyzetet, hogy megtartsa, amije van. Kérdezze meg a Tulajdonost, ha más képernyőkre vagy jogokra van szüksége.
 pick	Csákány
-advance	Előre
+advance	Előleg
 owner	Tulajdonos
 staff	Személyzet
 photo	Fotó

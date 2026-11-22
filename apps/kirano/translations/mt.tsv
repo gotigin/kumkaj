@@ -17,7 +17,7 @@ reports_today	Ktieb tal-ġurnata (illum)
 reports_month	Qligħ u telf (xahar)
 reports_aging	Pendenti / Dr-Cr
 reports_balance_sheet	Karta tal-bilanċ
-reports	Ktieb tal-bank u qligħ/telf
+reports	Ktieb bank u Q&T
 undo	Erġa' lura
 stock_minus	− Stokk
 stock_plus	+ Stokk
@@ -193,7 +193,7 @@ my_pin_settings	PIN tiegħi
 settings_hub_help_my_pin	Ibdel il-PIN tal-unlock għall-persuna li tkun iffirmat fuq dan it-tagħmir.
 team_self_help	Id-dħul wieħed: PIN ġdid, password ġdida, jew it-tnejn. Ħalli kaxxa vojta biex iżżomm dak li għandek. Staqsi lis-Sid jekk għandekx bżonn skrins jew drittijiet differenti.
 pick	Agħżel
-advance	Bil-quddiem
+advance	Avanz
 owner	Sid
 staff	Persunal
 photo	Ritratt

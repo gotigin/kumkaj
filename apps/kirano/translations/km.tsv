@@ -17,7 +17,7 @@ reports_today	សៀវភៅប្រចាំថ្ងៃ (ថ្ងៃនេ�
 reports_month	ចំណេញ និងខាត (ខែ)
 reports_aging	សមតុល្យ / ជំពាក់-ជំពាក់
 reports_balance_sheet	តារាងតុល្យការ
-reports	សៀវភៅធនាគារ និងច&ខ
+reports	សៀវភៅធនាគារ និង ចំណេញ/ខាត
 undo	មិនធ្វើវិញ
 stock_minus	− ស្តុក
 stock_plus	+ ស្តុក
@@ -193,7 +193,7 @@ my_pin_settings	PIN របស់ខ្ញុំ
 settings_hub_help_my_pin	ប្ដូរ PIN ដោះសោរបស់អ្នកដែលបានចូលឧបករណ៍នេះ។
 team_self_help	ការចូលមួយ៖ PIN ថ្មី ពាក្យសម្ងាត់ថ្មី ឬទាំងពីរ។ ទុកប្រអប់ទទេដើម្បីរក្សាអ្វីដែលមាន។ សួរម្ចាស់ បើអ្នកត្រូវការអេក្រង់ ឬសិទ្ធិផ្សេង។
 pick	យក
-advance	ប្រាក់មុន
+advance	ប្រាក់បង់មុន
 owner	ម្ចាស់
 staff	បុគ្គលិក
 photo	រូប

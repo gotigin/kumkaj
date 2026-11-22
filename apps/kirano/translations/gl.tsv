@@ -17,7 +17,7 @@ reports_today	Libro do día (hoxe)
 reports_month	Perdas e ganancias (mes)
 reports_aging	Pendente / Debe-Haber
 reports_balance_sheet	Balance
-reports	Libro do banco e PyG
+reports	Libro banco e P&G
 undo	Desfacer
 stock_minus	− Existencias
 stock_plus	+ Existencias
@@ -193,7 +193,7 @@ my_pin_settings	O meu PIN
 settings_hub_help_my_pin	Cambie o PIN de desbloqueo da persoa que iniciou sesión neste dispositivo.
 team_self_help	Un só inicio de sesión: un PIN novo, un contrasinal novo ou os dous. Deixe unha caixiña baleira para conservar o que ten. Pídalle ao Dono se precisa outras pantallas ou dereitos.
 pick	Escoller
-advance	Adianto
+advance	Anticipo
 owner	Dono
 staff	Persoal
 photo	Foto

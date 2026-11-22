@@ -17,7 +17,7 @@ reports_today	Dagbók (í dag)
 reports_month	Hagnaður og tap (mánuður)
 reports_aging	Útistandandi / debet-kredit
 reports_balance_sheet	Efnahagsreikningur
-reports	Bankabók & P&L
+reports	Bankabók & H&T
 undo	Afturkalla
 stock_minus	- Stock
 stock_plus	+ Lager
@@ -193,7 +193,7 @@ my_pin_settings	PIN minn
 settings_hub_help_my_pin	Breyttu aflæsingu PIN fyrir þann sem er skráður inn á þetta tæki.
 team_self_help	Ein innskráning: nýtt PIN, nýtt lykilorð eða bæði. Skildu eftir auðan kassa til að geyma það sem þú átt. Spyrðu eigandann hvort þú þurfir aðra skjái eða réttindi.
 pick	Veldu
-advance	Fyrirfram
+advance	Forskot
 owner	Eigandi
 staff	Starfsfólk
 photo	Mynd
@@ -706,7 +706,7 @@ service_pct_ph	Þjónustuhlutfall valfrjálst 0/10/12
 short_code_ph	Stutt kóða (MG02)
 starting_password_ph	Byrjunarlykilorð (valfrjálst)
 starting_pin_ph	Byrjar PIN (4–12 tölustafir)
-tax_rate_ph	Nafn skatthlutfalls eða % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Skatthlutfall eða % (t.d. 5, 18)
 to_code_ph	Að kóða (kg)
 uncleared_no_ph	Óhreinsað # að ofan
 unit_cost_ph	Einingakostnaður

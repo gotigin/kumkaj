@@ -17,7 +17,7 @@ reports_today	Boky andro (androany)
 reports_month	Tombony sy fatiantoka (volana)
 reports_aging	Tsy voaloa / Dr-Cr
 reports_balance_sheet	Taratasy fanamarinam-bola
-reports	Bokin'ny banky & Teti-bola sy Fatiantoka
+reports	Boky banky & T&V
 undo	Manafoana
 stock_minus	− Tahiry
 stock_plus	+ Tahiry
@@ -193,7 +193,7 @@ my_pin_settings	Ny PIN-ko
 settings_hub_help_my_pin	Ovay ny PIN fanokafana ho an'ny olona misoratra anarana amin'ity fitaovana ity.
 team_self_help	Fidirana iray: PIN vaovao, tenimiafina vaovao, na ny roa. Avela banga ny boaty iray mba hitazomana izay anananao. Manontania ny Tompony raha mila efijery na zo hafa ianao.
 pick	Safidio
-advance	Mandroso
+advance	Vola aloha
 owner	Tompony
 staff	Mpiasa
 photo	Sary
@@ -801,7 +801,7 @@ test_bill_format	Fitsapana faktiora
 test_bill_sent	Fampisehoana faktiora nalefa
 test_print_no_printer	Tsy misy mpanonta ho an'io asa io — mifidiana iray amin'ity efijery ity
 std_print	Haben'ny pirinty faktiora
-std_print_help	Haben'ny endritsoratra ho an'ny asa faktiora Standard Portrait sy Landscape amin'ny mpanonta printy OS / document (mampidira teboka — fa tsy Small/Normal/Large). Mitovy habe amin'ny orientation roa.
+std_print_help	Haben'ny endritsoratra ho an'ny faktiora mijoro sy mitsivalana amin'ny printer OS / antontan-taratasy (ampidiro points — tsy Small/Normal/Large). Haben mitovy amin'ny orientation roa.
 save_std_print	Tehirizo ny haben'ny pirinty faktiora
 std_print_saved	Voatahiry ny haben'ny pirinty faktiora
 print_brand_kit	Printy kit brandy

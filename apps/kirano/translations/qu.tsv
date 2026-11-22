@@ -17,7 +17,7 @@ reports_today	P'unchaw hatun qillqa (kunan) .
 reports_month	Ganancia & perdida (killapi) .
 reports_aging	Pendiente / débito-crédito nisqa
 reports_balance_sheet	Balance nisqa
-reports	Banco mayor & P&L
+reports	Banco libro & G&P
 undo	Deshacer
 stock_minus	− Waqay
 stock_plus	+ Waqay
@@ -193,7 +193,7 @@ my_pin_settings	Mi PIN .
 settings_hub_help_my_pin	Kay dispositivopi yaykusqa runapaq kichay PIN tikray.
 team_self_help	Huk yaykuy: musuq PIN, musuq yaykuna rimay, utaq iskaynin. Huk cajata ch’usaqllata saqey ima kapuqniykipas waqaychanaykipaq. Dueñota tapuy sichus hukniray pantallakunata otaq derechokunata necesitanki.
 pick	Pikllay
-advance	Ñawpaqman puriy
+advance	Ñawpaq qullqi
 owner	Dueño
 staff	Personal
 photo	Foto
@@ -354,12 +354,12 @@ reason_amend_ph	Razón enmienda / anulado / devolución
 reason_note_ph	Razón / nota (desperdicio, yupay, ...) .
 record_day_close	P’unchay qayllapi waqaychay
 business_day	¿Hayk'aqmi «Kunan punchaw» musuqmantam qallarin?
-business_day_help	«P’unchaw wichq’ay kama» akllaspaqa «P’unchaw hatun qillqa» chawpi tutamanta qatiykachan, punchaw wichq'ayta qillqanki kama. «Calendario chawpi tuta» akllaspaqa punchaw local 12:00 tutapi kutin.
+business_day_help	«P’unchaw wichq’ay kama» akllaspaqa «P’unchaw hatun qillqa» chawpi tutamanta qatiykachan, punchaw wichq'ayta qillqanki kama. «Calendario chawpi tuta» akllaspaqa punchaw local 00:00 tutapi kutin.
 biz_day_until_close	P’unchaw wichq’ay kama
 biz_day_midnight	Calendario chawpi tuta
 business_day_saved	Negocio punchaw waqaychasqa
 report_day_lens	«Kunan punchaw» kay hina qhaway
-report_day_lens_help	Qhawayllam — manam tikranchu «P’unchaw wichq’ay» hayk'aq «Kunan punchaw» musuqyachin. «P’unchaw wichq’ay hina» qhipa punchaw wichq'aymanta yupay; «Chawpi tuta hina» local 12:00 tutapi kutin.
+report_day_lens_help	Qhawayllam — manam tikranchu «P’unchaw wichq’ay» hayk'aq «Kunan punchaw» musuqyachin. «P’unchaw wichq’ay hina» qhipa punchaw wichq'aymanta yupay; «Chawpi tuta hina» local 00:00 tutapi kutin.
 report_lens_day_close	P’unchaw wichq’ay hina
 report_lens_midnight	Chawpi tuta hina
 refresh_from_shop	Tiendamanta musuqyachiy

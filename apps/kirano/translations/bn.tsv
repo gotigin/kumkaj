@@ -17,7 +17,7 @@ reports_today	দিনের খাতা (আজ)
 reports_month	লাভ ও ক্ষতি (মাস)
 reports_aging	বকেয়া / Dr-Cr
 reports_balance_sheet	ব্যালেন্স শিট
-reports	রিপোর্ট
+reports	ব্যাংক খাতা ও লাভ-ক্ষতি
 undo	পূর্বাবস্থা
 stock_minus	− স্টক
 stock_plus	+ স্টক
@@ -193,7 +193,7 @@ my_pin_settings	আমার PIN
 settings_hub_help_my_pin	এই ডিভাইসে সাইন-ইন থাকা ব্যক্তির আনলক PIN বদলান।
 team_self_help	শুধু আপনি আপনার আনলক PIN (এবং ঐচ্ছিক লগইন পাসওয়ার্ড) বদলাতে পারেন। অন্য স্ক্রিন বা অধিকার লাগলে মালিককে বলুন।
 pick	বাছুন
-advance	এগোন
+advance	অগ্রিম
 owner	মালিক
 staff	কর্মী
 photo	ছবি
@@ -354,12 +354,12 @@ reason_amend_ph	সংশোধন / বাতিল / ফেরতের কা
 reason_note_ph	কারণ / নোট (নষ্ট, গণনা, …)
 record_day_close	দিন শেষ রেকর্ড করুন
 business_day	«আজ» কখন নতুন করে শুরু হয়?
-business_day_help	«দিন শেষ পর্যন্ত» বেছে নিলে আপনি দিন শেষ রেকর্ড না করা পর্যন্ত «দিনের খাতা» মাঝরাতের পরেও চলতে থাকে। «ক্যালেন্ডারের মাঝরাত» বেছে নিলে দিন স্থানীয় সময় রাত 12:00টায় কাটা হয়।
+business_day_help	«দিন শেষ পর্যন্ত» বেছে নিলে আপনি দিন শেষ রেকর্ড না করা পর্যন্ত «দিনের খাতা» মাঝরাতের পরেও চলতে থাকে। «ক্যালেন্ডারের মাঝরাত» বেছে নিলে দিন স্থানীয় সময় রাত 00:00টায় কাটা হয়।
 biz_day_until_close	দিন শেষ পর্যন্ত
 biz_day_midnight	ক্যালেন্ডারের মাঝরাত
 business_day_saved	ব্যবসার দিন সেভ হয়েছে
 report_day_lens	«আজ» এভাবে দেখুন
-report_day_lens_help	শুধু দেখার জন্য — «দিন শেষ» কখন «আজ» নতুন করে শুরু করে, এতে তা বদলায় না। «দিন শেষ অনুযায়ী» শেষ দিন শেষ থেকে গোনে; «মাঝরাত অনুযায়ী» স্থানীয় সময় রাত 12:00টায় কাটে।
+report_day_lens_help	শুধু দেখার জন্য — «দিন শেষ» কখন «আজ» নতুন করে শুরু করে, এতে তা বদলায় না। «দিন শেষ অনুযায়ী» শেষ দিন শেষ থেকে গোনে; «মাঝরাত অনুযায়ী» স্থানীয় সময় রাত 00:00টায় কাটে।
 report_lens_day_close	দিন শেষ অনুযায়ী
 report_lens_midnight	মাঝরাত অনুযায়ী
 refresh_from_shop	দোকান থেকে রিফ্রেশ
@@ -603,7 +603,7 @@ cloud_sending_reset	রিসেট লিঙ্ক পাঠানো হচ্
 cloud_forgot_sent	যদি সেই ইমেলের একটি অ্যাকাউন্ট থাকে, একটি রিসেট লিঙ্ক পথে রয়েছে৷
 cloud_welcome	{user} · {plan} হিসাবে সাইন ইন করেছেন৷
 cloud_created	অ্যাকাউন্ট তৈরি করা হয়েছে। আপনি কখন পারেন তা যাচাই করতে আপনার ইমেল চেক করুন।
-cloud_cancel	বাতিল করুন
+cloud_cancel	বাতিল
 permission_preset	অনুমতি প্রিসেট
 product_only_kirano	এই অ্যাপ শুধু Kirano — রেস্তোরাঁর অপারেটিং সিস্টেম। অন্য ব্যবসার জন্য আলাদা Kumkaj পণ্য আছে।
 purchases_cogs	কেনাকাটা (COGS)
@@ -706,7 +706,7 @@ service_pct_ph	সার্ভিস % ঐচ্ছিক 0/10/12
 short_code_ph	ছোট কোড (MG02)
 starting_password_ph	শুরুর পাসওয়ার্ড (ঐচ্ছিক)
 starting_pin_ph	শুরুর PIN (4–12 সংখ্যা)
-tax_rate_ph	করের হারের নাম বা % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	করের হার বা % (যেমন 5, 18)
 to_code_ph	তে কোড (kg)
 uncleared_no_ph	উপরের অমীমাংসিত #
 unit_cost_ph	একক খরচ
@@ -824,7 +824,7 @@ schemes	স্কিম / অফার
 schemes_help	এক কিনলে এক, শতাংশ ছাড়, ও বান্ডিল। উদাহরণ: 2 চালে 1 তেল।
 scheme_bogo_ph	2 চালে 1 তেল
 add_scheme	BOGO যোগ
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	সময় (যেমন সোম-শুক্র 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI প্রাপক (ঐচ্ছিক)
 show_upi_qr	UPI QR দেখান

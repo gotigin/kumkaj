@@ -17,7 +17,7 @@ reports_today	Llyfr y dydd (heddiw)
 reports_month	Elw a cholled (mis)
 reports_aging	Heb ei dalu / Dr-Cr
 reports_balance_sheet	Mantolen
-reports	Llyfr banc ac elw/colled
+reports	Llyfr banc a E&C
 undo	Dadwneud
 stock_minus	− Stoc
 stock_plus	+ Stoc
@@ -193,7 +193,7 @@ my_pin_settings	Fy PIN
 settings_hub_help_my_pin	Newidiwch PIN datgloi'r person sydd wedi mewngofnodi ar y ddyfais hon.
 team_self_help	Un mewngofnod: PIN newydd, cyfrinair newydd, neu'r ddau. Gadewch flwch yn wag i gadw'r hyn sydd gennych. Gofynnwch i'r Perchennog os oes angen sgriniau neu hawliau gwahanol arnoch.
 pick	Dewis
-advance	Rhagdaliad
+advance	Taliad ymlaen llaw
 owner	Perchennog
 staff	Gweithwyr
 photo	Llun

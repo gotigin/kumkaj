@@ -17,7 +17,7 @@ reports_today	የቀን መዝገብ (ዛሬ)
 reports_month	ትርፍ እና ኪሳራ (ወር)
 reports_aging	ያልተከፈለ / ዴቢት-ክሬዲት
 reports_balance_sheet	የሂሳብ መዝገብ
-reports	የባንክ መዝገብ እና ትርፍ/ኪሳራ
+reports	የባንክ መጽሐፍ እና ትርፍ/ኪሳራ
 undo	ቀልብስ
 stock_minus	− ክምችት
 stock_plus	+ ክምችት
@@ -193,7 +193,7 @@ my_pin_settings	የእኔ ፒን
 settings_hub_help_my_pin	በዚህ መሣሪያ ላይ ለገባው ሰው የመክፈቻ ፒን ይቀይሩ።
 team_self_help	አንድ መግቢያ፦ አዲስ ፒን፣ አዲስ የይለፍ ቃል፣ ወይም ሁለቱም። ያለዎትን ለማቆየት ሳጥን ባዶ ይተዉ። የተለየ ማያ ወይም መብት ከፈለጉ ባለቤቱን ይጠይቁ።
 pick	ምረጥ
-advance	ቅድሚያ
+advance	ቅድመ ክፍያ
 owner	ባለቤት
 staff	ሰራተኛ
 photo	ፎቶ

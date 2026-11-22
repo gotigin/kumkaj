@@ -17,7 +17,7 @@ reports_today	Ileja yosuku (namuhla)
 reports_month	Inzuzo nokulahlekelwa (inyanga)
 reports_aging	Okusasele / debit-credit
 reports_balance_sheet	Ibhalansi
-reports	Incwadi yebhange ne-P&L
+reports	Incwadi yebhange & I&I
 undo	Hlehlisa
 stock_minus	− Isitoko
 stock_plus	+ Isitoko
@@ -193,7 +193,7 @@ my_pin_settings	Eyami PIN
 settings_hub_help_my_pin	Shintsha ukuvula PIN komuntu ongene ngemvume kule divayisi.
 team_self_help	Ukungena ngemvume okukodwa: PIN entsha, iphasiwedi entsha, noma kokubili. Shiya ibhokisi lingenalutho ukuze ugcine lokho onakho. Buza Umnikazi ukuthi udinga izikrini ezihlukile noma amalungelo.
 pick	Khetha
-advance	Phambili
+advance	Imali yangaphambili
 owner	Umnikazi
 staff	Abasebenzi
 photo	Isithombe
@@ -801,7 +801,7 @@ test_bill_format	Ibhili yokuhlola
 test_bill_sent	Ukuhlola kuqala kwebhili yesivakashi sesivakashi kuthunyelwe
 test_print_no_printer	Ayikho iphrinta yalowo msebenzi — khetha eyodwa kulesi sikrini
 std_print	Usayizi wokuphrinta webhili yesivakashi sesivakashi
-std_print_help	Usayizi wefonti wemisebenzi yebhili ye-Standard Portrait kanye ne-Landscape kumaphrinta we-OS/amadokhumenti (faka amaphuzu — hhayi Okuncane/Okuvamile/Kukhulu). Usayizi ofanayo kuzo zombili izimo.
+std_print_help	Usayizi wefonti wemisebenzi yebhili eqondile nephansi kumaphrinta e-OS / amadokhumenti (faka amaphoyinti — hhayi Small/Normal/Large). Usayizi ofanayo kuzo zombili izinhlobo.
 save_std_print	Londoloza usayizi wokuphrinta webhili yesivakashi
 std_print_saved	Usayizi wokuphrinta webhili yesivakashi sesivakashi ulondoloziwe
 print_brand_kit	Phrinta ikhithi yomkhiqizo

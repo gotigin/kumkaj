@@ -17,7 +17,7 @@ reports_today	Dziennik dnia (dziś)
 reports_month	Zysk i strata (miesiąc)
 reports_aging	Należności / Wn-Ma
 reports_balance_sheet	Bilans
-reports	Księga bankowa i RZiS
+reports	Księga bankowa i Z&S
 undo	Cofnij
 stock_minus	− Zapas
 stock_plus	+ Magazyn
@@ -193,7 +193,7 @@ my_pin_settings	Mój PIN
 settings_hub_help_my_pin	Zmień odblokowanie PIN dla osoby zalogowanej na tym urządzeniu.
 team_self_help	Jedno logowanie: nowe PIN, nowe hasło lub jedno i drugie. Pozostaw puste pole, aby zachować to, co masz. Zapytaj właściciela, czy potrzebujesz innych ekranów lub uprawnień.
 pick	Wybierz
-advance	Postęp
+advance	Zaliczka
 owner	Właściciel
 staff	Personel
 photo	Zdjęcie
@@ -741,7 +741,7 @@ your_category	Twoja kategoria
 suggested_category	Sugerowane — z naszych produktów
 category_search_ph	Kategoria — wyszukaj swoją lub wpisz nową
 cancel_item_short	Anuluj
-return_to_customer	Wróć do klienta
+return_to_customer	Zwróć klientowi
 short_by	Krótko
 tip_not_sale	Napiwek (dla personelu, nie na sprzedaż)
 right_settle	Przyjmij płatność
@@ -824,7 +824,7 @@ schemes	Schematy / oferty
 schemes_help	Kup jeden, zyskaj jeden, rabat procentowy i stałe pakiety. Przykład: Kup 2 ryże, a otrzymasz 1 olej.
 scheme_bogo_ph	Kup 2 ryże, a otrzymasz 1 olej
 add_scheme	Dodaj BOGO
-schedule_ph	Godziny otwarcia — pon.-pt. 07:00-11:00 lub wieczór 17:00-19:00=150
+schedule_ph	Godziny (np. pon–pt 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nazwa odbiorcy płatności (opcjonalnie)
 show_upi_qr	Pokaż UPI QR

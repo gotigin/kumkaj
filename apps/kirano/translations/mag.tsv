@@ -17,7 +17,7 @@ reports_today	रोज़ बही (आज)
 reports_month	लाभ आउर हानि (महीना)
 reports_aging	बकाया / Dr-Cr
 reports_balance_sheet	बैलेंस शीट
-reports	रिपोर्ट
+reports	बैंक बही आ लाभ-हानि
 undo	पूर्ववत
 stock_minus	− स्टॉक
 stock_plus	+ स्टॉक
@@ -193,7 +193,7 @@ my_pin_settings	हमर PIN
 settings_hub_help_my_pin	ई डिवाइस पर साइन-इन व्यक्ति के अनलॉक PIN बदलें।
 team_self_help	केवल अपने अपना अनलॉक PIN (आउर वैकल्पिक लॉगिन पासवर्ड) बदल सकऽ हैं। अलग स्क्रीन भा अधिकार चाही त मालिक से कहें।
 pick	चुनऽ
-advance	आगे
+advance	अग्रिम
 owner	मालिक
 staff	कर्मचारी
 photo	फ़ोटो
@@ -354,12 +354,12 @@ reason_amend_ph	संशोधन / रद्द / वापसी के क�
 reason_note_ph	कारण / नोट (नुकसान, गिनती, …)
 record_day_close	दिन बंद दर्ज करऽ
 business_day	«आज» कब नया शुरू होवऽ हे?
-business_day_help	«दिन बंद तक» चुने पर «रोज़ बही» आधा रात के बादो चलते रहऽ हे, जब तक तूँ दिन बंद दर्ज न करऽ ह। «कैलेंडर के आधा रात» चुने पर दिन इहाँ के समय से रात 12:00 बजे कटऽ हे।
+business_day_help	«दिन बंद तक» चुने पर «रोज़ बही» आधा रात के बादो चलते रहऽ हे, जब तक तूँ दिन बंद दर्ज न करऽ ह। «कैलेंडर के आधा रात» चुने पर दिन इहाँ के समय से रात 00:00 बजे कटऽ हे।
 biz_day_until_close	दिन बंद तक
 biz_day_midnight	कैलेंडर के आधा रात
 business_day_saved	कारोबारी दिन सहेजल गेल
 report_day_lens	«आज» के अइसे देखऽ
-report_day_lens_help	खाली देखे ला — एकरा से ई न बदलऽ हे कि «दिन बंद» कब «आज» के नया शुरू करऽ हे। «दिन बंद के हिसाब से» पिछला दिन बंद से गिनऽ हे; «आधा रात के हिसाब से» इहाँ के समय से रात 12:00 बजे कटऽ हे।
+report_day_lens_help	खाली देखे ला — एकरा से ई न बदलऽ हे कि «दिन बंद» कब «आज» के नया शुरू करऽ हे। «दिन बंद के हिसाब से» पिछला दिन बंद से गिनऽ हे; «आधा रात के हिसाब से» इहाँ के समय से रात 00:00 बजे कटऽ हे।
 report_lens_day_close	दिन बंद के हिसाब से
 report_lens_midnight	आधा रात के हिसाब से
 refresh_from_shop	दुकान से ताज़ा करऽ
@@ -706,7 +706,7 @@ service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	छोटा कोड (MG02)
 starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
 starting_pin_ph	शुरुआती PIN (4–12 अंक)
-tax_rate_ph	कर दर के नाम भा % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	कर दर या % (जैसे 5, 18)
 to_code_ph	के कोड (kg)
 uncleared_no_ph	ऊपर वाला अनक्लियर्ड #
 unit_cost_ph	इकाई लागत
@@ -824,7 +824,7 @@ schemes	स्कीम / ऑफ़र
 schemes_help	एक खरीदें-एक पाएं, प्रतिशत छूट, और निश्चित बंडल। उदाहरण: 2 चावल खरीदें और 1 तेल प्राप्त करें।
 scheme_bogo_ph	2 चावल खरीदें 1 तेल पाएं
 add_scheme	BOGO जोड़ऽ
-schedule_ph	घंटे - सोम-शुक्र 07:00-11:00 या शाम 17:00-19:00=150
+schedule_ph	समय (जैसे सोम-शुक्र 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI प्राप्तकर्ता (वैकल्पिक)
 show_upi_qr	UPI QR देखावऽ

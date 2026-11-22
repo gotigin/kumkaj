@@ -17,7 +17,7 @@ reports_today	Книга дня (сьогодні)
 reports_month	Прибутки й збитки (місяць)
 reports_aging	Непогашене / Дт-Кт
 reports_balance_sheet	Баланс
-reports	Банківська книга і П/З
+reports	Банківська книга і П&З
 undo	Скасувати
 stock_minus	− Запас
 stock_plus	+ Запас
@@ -824,7 +824,7 @@ schemes	Акції / пропозиції
 schemes_help	Купуйте один-отримайте один, відсоткова знижка та фіксовані пакети. Приклад: купіть 2 рису і отримайте 1 олію.
 scheme_bogo_ph	Купуйте 2 рису, отримуйте 1 олію
 add_scheme	Додати BOGO
-schedule_ph	Графік роботи — пн-пт 07:00-11:00 або вечір 17:00-19:00=150
+schedule_ph	Години (напр. пн–пт 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Ім'я отримувача UPI (необов'язково)
 show_upi_qr	Показати QR UPI

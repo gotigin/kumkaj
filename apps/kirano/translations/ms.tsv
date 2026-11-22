@@ -17,7 +17,7 @@ reports_today	Lejar hari (hari ini)
 reports_month	Untung & rugi (bulan)
 reports_aging	Tertunggak / debit-kredit
 reports_balance_sheet	Kunci kira-kira
-reports	Lejar bank & P&L
+reports	Buku bank & U&R
 undo	Buat asal
 stock_minus	− Stok
 stock_plus	+ Stok
@@ -193,7 +193,7 @@ my_pin_settings	PIN saya
 settings_hub_help_my_pin	Tukar buka kunci PIN untuk orang yang log masuk pada peranti ini.
 team_self_help	Satu log masuk: PIN baharu, kata laluan baharu atau kedua-duanya. Biarkan kotak kosong untuk menyimpan apa yang anda ada. Tanya Pemilik jika anda memerlukan skrin atau hak yang berbeza.
 pick	Pilih
-advance	terlebih dahulu
+advance	Bayaran pendahuluan
 owner	Pemilik
 staff	Kakitangan
 photo	Foto
@@ -824,7 +824,7 @@ schemes	Skim / tawaran
 schemes_help	Beli-satu-dapat-satu, diskaun peratus dan berkas tetap. Contoh: Beli 2 beras dapat 1 minyak.
 scheme_bogo_ph	Beli 2 nasi dapat 1 minyak
 add_scheme	Tambah BOGO
-schedule_ph	Jam — Isnin-Jumaat 07:00-11:00 atau Petang 17:00-19:00=150
+schedule_ph	Waktu (cth. Isn-Jum 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nama penerima (pilihan)
 show_upi_qr	Tunjukkan UPI QR

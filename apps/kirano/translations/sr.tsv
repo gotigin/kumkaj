@@ -17,7 +17,7 @@ reports_today	Дневник (данас)
 reports_month	Добит и губитак (месец)
 reports_aging	Неизмирени/дебитно-кредитни
 reports_balance_sheet	Биланс стања
-reports	Банковна књига & П&Л
+reports	Банкарска књига и Д&Г
 undo	Поништи
 stock_minus	− Залиха
 stock_plus	+ Стоцк
@@ -193,7 +193,7 @@ my_pin_settings	мој PIN
 settings_hub_help_my_pin	Промените откључавање PIN за особу која је пријављена на овом уређају.
 team_self_help	Једно пријављивање: нова PIN, нова лозинка или обоје. Оставите поље празно да задржите оно што имате. Питајте власника да ли су вам потребни различити екрани или права.
 pick	Пицк
-advance	Напред
+advance	Аванс
 owner	Власник
 staff	Особље
 photo	Пхото

@@ -17,7 +17,7 @@ reports_today	日次帳簿（今日）
 reports_month	損益（月）
 reports_aging	未収／Dr-Cr
 reports_balance_sheet	貸借対照表
-reports	レポート
+reports	銀行帳と損益
 undo	元に戻す
 stock_minus	− 在庫
 stock_plus	+ 在庫
@@ -193,7 +193,7 @@ my_pin_settings	自分のPIN
 settings_hub_help_my_pin	この端末にサインイン中の人の解除PINを変更します。
 team_self_help	解除PIN（と任意のログインパスワード）は本人だけが変更できます。別の画面や権限が必要ならオーナーに頼んでください。
 pick	選ぶ
-advance	進める
+advance	前受金
 owner	オーナー
 staff	スタッフ
 photo	写真
@@ -706,7 +706,7 @@ service_pct_ph	サービス % 任意 0/10/12
 short_code_ph	短いコード（MG02）
 starting_password_ph	開始パスワード（任意）
 starting_pin_ph	開始PIN（4–12桁）
-tax_rate_ph	税率名または % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	税率または %（例：5、18）
 to_code_ph	変換先コード（kg）
 uncleared_no_ph	上の未清算番号
 unit_cost_ph	単価
@@ -741,7 +741,7 @@ your_category	あなたのカテゴリ
 suggested_category	提案 — 当社のアイテムから
 category_search_ph	カテゴリ — 検索、または新しく入力
 cancel_item_short	取消
-return_to_customer	お釣り
+return_to_customer	お客様に返品
 short_by	不足
 tip_not_sale	チップ（スタッフ分・売上外）
 right_settle	会計
@@ -824,7 +824,7 @@ schemes	キャンペーン
 schemes_help	1つ買うと1つ、パーセント割引、セット。例：米2で油1。
 scheme_bogo_ph	米2、油1
 add_scheme	BOGOを追加
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	時間（例：月–金 07:00-11:00）
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI受取人名（任意）
 show_upi_qr	UPI QRを表示

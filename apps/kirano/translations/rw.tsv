@@ -17,7 +17,7 @@ reports_today	Igitabo cy'umunsi (uyu munsi)
 reports_month	Inyungu n'igihombo (ukwezi)
 reports_aging	Ibitarishyurwa / Dr-Cr
 reports_balance_sheet	Inyandiko y'umusaruro
-reports	Igitabo cy'ibank n'inyungu
+reports	Igitabo cy'ibank & I&Y
 undo	Subiza inyuma
 stock_minus	− Ububiko
 stock_plus	+ Ububiko
@@ -77,7 +77,7 @@ virtual_length_mm	Uburebure virtual (mm)
 reported_width_mm	Ubugari bwatangajwe (mm)
 reported_length_mm	Uburebure bwatangajwe (mm)
 reported_paper	Ibyatangajwe: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Birtuale: {paper}
 printer_paper_help	Ibyatangajwe ni impapuro porogaramu ya capyi (driver) y'iyi capyi yashyizweho; iyi porogaramu irazisoma gusa, kandi N/A bivuga ko nta driver ihari yo kubaza. Virtual ni impapuro uvuga ko ziri muri capyi koko, muri mm; uburebure butanditse ni umuzingo. Capyi icapa ku mpapuro zayo bwite; impapuro virtual zibwira iyi porogaramu ingano yazo iriho impapuro nyazo, ku bw'igaragaza, uburebure bw'urupapuro n'aho agapapuro kajya. Shaka amacapyi yuzuza impapuro virtual zitanditse kandi ntijya ihindura izo washyizeho.
 preview_help	Aka gapapuro nk'uko gacapwa kuri capyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu capyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya capyi bihindura igaragaza gusa.
 slip_col_start	Umwanya w’intangiriro (px)
@@ -801,7 +801,7 @@ test_bill_format	Inyemezabuguzi y'igerageza
 test_bill_sent	Igereranya ry'inyemezabuguzi ryoherejwe
 test_print_no_printer	Nta mucapyi w'ako kazi — hitamo umwe kuri iki rubuga
 std_print	Ubunini bwo gucapa inyemezabuguzi
-std_print_help	Ingano yimyandikire ya Standard Portrait na Landscape fagitire yimirimo kuri OS / icapiro ryinyandiko (andika amanota - ntabwo ari muto / Bisanzwe / Kinini). Ingano imwe ku byerekezo byombi.
+std_print_help	Ingano y’imyandikire ku fagitire ihagaze n’ipfunyitse kuri OS / printer zinyandiko (andika points — si Small/Normal/Large). Ingano imwe ku buryo bwombi.
 save_std_print	Bika ubunini bwo gucapa inyemezabuguzi
 std_print_saved	Ubunini bwo gucapa inyemezabuguzi bwabitswe
 print_brand_kit	Ibikoresho by'ikirango byo gucapa

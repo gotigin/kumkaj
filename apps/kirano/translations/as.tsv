@@ -17,7 +17,7 @@ reports_today	দিন বহী (আজি)
 reports_month	লাভ আৰু লোকচান (মাহ)
 reports_aging	বাকী / Dr-Cr
 reports_balance_sheet	ভাৰসাম্য পত্ৰ
-reports	প্ৰতিবেদন
+reports	বেংক বহী আৰু লাভ-লোকচান
 undo	পূৰ্বৱত
 stock_minus	− ষ্টক
 stock_plus	+ ষ্টক
@@ -193,7 +193,7 @@ my_pin_settings	মোৰ PIN
 settings_hub_help_my_pin	এই ডিভাইচত ছাইন-ইন থকা ব্যক্তিৰ আনলক PIN সলনি কৰক।
 team_self_help	কেৱল আপুনি আপোনাৰ আনলক PIN (আৰু ঐচ্ছিক লগইন পাছৱৰ্ড) সলনি কৰিব পাৰে। অন্য স্ক্ৰীন বা অধিকাৰ লাগিলে মালিকক কওক।
 pick	বাছক
-advance	আগুৱাই
+advance	অগ্ৰিম
 owner	মালিক
 staff	কৰ্মচাৰী
 photo	ফটো
@@ -354,12 +354,12 @@ reason_amend_ph	সংশোধন / বাতিল / ঘূৰাইৰ কা
 reason_note_ph	কাৰণ / টোকা (নষ্ট, গণনা, …)
 record_day_close	দিন বন্ধ লিপিবদ্ধ কৰক
 business_day	«আজি» কেতিয়া নতুনকৈ আৰম্ভ হয়?
-business_day_help	«দিন বন্ধ লৈকে» বাছিলে, আপুনি দিন বন্ধ লিপিবদ্ধ নকৰালৈকে «দিন বহী» মাজনিশাৰ পিছতো চলি থাকে। «কেলেণ্ডাৰৰ মাজনিশা» বাছিলে, দিন স্থানীয় সময় ৰাতি 12:00 বজাত কটা যায়।
+business_day_help	«দিন বন্ধ লৈকে» বাছিলে, আপুনি দিন বন্ধ লিপিবদ্ধ নকৰালৈকে «দিন বহী» মাজনিশাৰ পিছতো চলি থাকে। «কেলেণ্ডাৰৰ মাজনিশা» বাছিলে, দিন স্থানীয় সময় ৰাতি 00:00 বজাত কটা যায়।
 biz_day_until_close	দিন বন্ধ লৈকে
 biz_day_midnight	কেলেণ্ডাৰৰ মাজনিশা
 business_day_saved	ব্যৱসায়িক দিন সংৰক্ষণ কৰা হ'ল
 report_day_lens	«আজি» এনেদৰে চাওক
-report_day_lens_help	কেৱল চাবৰ বাবে — «দিন বন্ধ»-এ কেতিয়া «আজি» নতুনকৈ আৰম্ভ কৰে, সেয়া ইয়াৰ দ্বাৰা সলনি নহয়। «দিন বন্ধ অনুসৰি»-এ শেষ দিন বন্ধৰ পৰা গণে; «মাজনিশা অনুসৰি»-এ স্থানীয় সময় ৰাতি 12:00 বজাত কাটে।
+report_day_lens_help	কেৱল চাবৰ বাবে — «দিন বন্ধ»-এ কেতিয়া «আজি» নতুনকৈ আৰম্ভ কৰে, সেয়া ইয়াৰ দ্বাৰা সলনি নহয়। «দিন বন্ধ অনুসৰি»-এ শেষ দিন বন্ধৰ পৰা গণে; «মাজনিশা অনুসৰি»-এ স্থানীয় সময় ৰাতি 00:00 বজাত কাটে।
 report_lens_day_close	দিন বন্ধ অনুসৰি
 report_lens_midnight	মাজনিশা অনুসৰি
 refresh_from_shop	দোকানৰ পৰা সতেজ কৰক
@@ -603,7 +603,7 @@ cloud_sending_reset	ৰিছেট লিংক প্ৰেৰণ কৰা �
 cloud_forgot_sent	যদি সেই ইমেইলটোৰ এটা একাউণ্ট আছে, তেন্তে এটা ৰিছেট লিংক বাটত আছে।
 cloud_welcome	{user} · {plan} হিচাপে চাইন ইন কৰা হৈছে
 cloud_created	একাউণ্ট সৃষ্টি কৰা হৈছে। আপুনি কেতিয়া পাৰে পৰীক্ষা কৰিবলৈ আপোনাৰ ইমেইল পৰীক্ষা কৰক।
-cloud_cancel	বাতিল কৰক
+cloud_cancel	বাতিল
 permission_preset	অনুমতি প্ৰিছেট
 product_only_kirano	এই এপ কেৱল Kirano — ৰেষ্টুৰেণ্ট অপাৰেটিং চিষ্টেম। আন ব্যৱসায়ৰ বাবে বেলেগ Kumkaj সামগ্ৰী আছে।
 purchases_cogs	ক্ৰয় (COGS)
@@ -706,7 +706,7 @@ service_pct_ph	সেৱা % ঐচ্ছিক 0/10/12
 short_code_ph	চুটি কোড (MG02)
 starting_password_ph	আৰম্ভণি পাছৱৰ্ড (ঐচ্ছিক)
 starting_pin_ph	আৰম্ভণি PIN (4–12 সংখ্যা)
-tax_rate_ph	কৰ হাৰৰ নাম বা % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	কৰ হাৰ বা % (যেনে 5, 18)
 to_code_ph	লৈ কোড (kg)
 uncleared_no_ph	ওপৰৰ আনক্লিয়াৰ্ড #
 unit_cost_ph	একক খৰচ
@@ -824,7 +824,7 @@ schemes	স্কিম / অফাৰ
 schemes_help	এটা কিনিলে এটা, শতাংশ ৰেহাই, আৰু বাণ্ডিল। উদাহৰণ: 2 চাউলত 1 তেল।
 scheme_bogo_ph	2 চাউলত 1 তেল
 add_scheme	BOGO যোগ
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	সময় (যেনে সোম-শুক্ৰ 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI গ্ৰহণকাৰী (ঐচ্ছিক)
 show_upi_qr	UPI QR দেখুৱাওক

@@ -17,7 +17,7 @@ reports_today	Libri i ditës (sot)
 reports_month	Fitim dhe humbje (muaj)
 reports_aging	Të papaguara / debit-kredit
 reports_balance_sheet	Bilanci
-reports	Libri i bankës dhe fitimi
+reports	Libri bankë dhe F&H
 undo	Zhbëj
 stock_minus	− Stoku
 stock_plus	+ Stoku
@@ -193,7 +193,7 @@ my_pin_settings	PIN-i im
 settings_hub_help_my_pin	Ndryshoni PIN-in e zhbllokimit për personin e futur në këtë pajisje.
 team_self_help	Një hyrje: PIN i ri, fjalëkalim i ri, ose të dyja. Lini një kuti bosh për të mbajtur atë që keni. Pyesni Pronarin nëse ju duhen ekrane ose të drejta të ndryshme.
 pick	Zgjidh
-advance	Paradhënie
+advance	Avans
 owner	Pronari
 staff	Stafi
 photo	Foto

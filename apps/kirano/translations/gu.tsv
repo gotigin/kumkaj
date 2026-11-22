@@ -17,7 +17,7 @@ reports_today	રોજમેળ (આજે)
 reports_month	નફો અને નુકસાન (મહિનો)
 reports_aging	બાકી / Dr-Cr
 reports_balance_sheet	સરવૈયું
-reports	અહેવાલ
+reports	બેંક બહી અને નફો-નુકસાન
 undo	પૂર્વવત
 stock_minus	− સ્ટોક
 stock_plus	+ સ્ટોક
@@ -193,7 +193,7 @@ my_pin_settings	મારો PIN
 settings_hub_help_my_pin	આ ડિવાઇસ પર સાઇન-ઇન વ્યક્તિનો અનલૉક PIN બદલો.
 team_self_help	ફક્ત તમે તમારો અનલૉક PIN (અને વૈકલ્પિક લૉગિન પાસવર્ડ) બદલી શકો. અલગ સ્ક્રીન અથવા અધિકાર જોઈએ તો માલિકને કહો.
 pick	પસંદ
-advance	આગળ
+advance	એડવાન્સ
 owner	માલિક
 staff	કર્મચારી
 photo	ફોટો
@@ -354,12 +354,12 @@ reason_amend_ph	સુધારો / રદ / પરતનું કારણ
 reason_note_ph	કારણ / નોંધ (બગાડ, ગણતરી, …)
 record_day_close	દિવસ બંધ નોંધો
 business_day	«આજે» ક્યારે નવેસરથી શરૂ થાય?
-business_day_help	«દિવસ બંધ સુધી» પસંદ કરો તો તમે દિવસ બંધ નોંધો ત્યાં સુધી «રોજમેળ» મધરાત પછી પણ ચાલુ રહે છે. «કૅલેન્ડરની મધરાત» પસંદ કરો તો દિવસ સ્થાનિક સમય મુજબ રાતે 12:00 વાગ્યે કપાય છે.
+business_day_help	«દિવસ બંધ સુધી» પસંદ કરો તો તમે દિવસ બંધ નોંધો ત્યાં સુધી «રોજમેળ» મધરાત પછી પણ ચાલુ રહે છે. «કૅલેન્ડરની મધરાત» પસંદ કરો તો દિવસ સ્થાનિક સમય મુજબ રાતે 00:00 વાગ્યે કપાય છે.
 biz_day_until_close	દિવસ બંધ સુધી
 biz_day_midnight	કૅલેન્ડરની મધરાત
 business_day_saved	વેપારી દિવસ સચવાયો
 report_day_lens	«આજે» આ રીતે જુઓ
-report_day_lens_help	ફક્ત જોવા માટે — «દિવસ બંધ» ક્યારે «આજે»ને નવેસરથી શરૂ કરે છે તે આનાથી બદલાતું નથી. «દિવસ બંધ પ્રમાણે» છેલ્લા દિવસ બંધથી ગણે છે; «મધરાત પ્રમાણે» સ્થાનિક સમય મુજબ રાતે 12:00 વાગ્યે કપાય છે.
+report_day_lens_help	ફક્ત જોવા માટે — «દિવસ બંધ» ક્યારે «આજે»ને નવેસરથી શરૂ કરે છે તે આનાથી બદલાતું નથી. «દિવસ બંધ પ્રમાણે» છેલ્લા દિવસ બંધથી ગણે છે; «મધરાત પ્રમાણે» સ્થાનિક સમય મુજબ રાતે 00:00 વાગ્યે કપાય છે.
 report_lens_day_close	દિવસ બંધ પ્રમાણે
 report_lens_midnight	મધરાત પ્રમાણે
 refresh_from_shop	દુકાનમાંથી તાજું કરો
@@ -706,7 +706,7 @@ service_pct_ph	સેવા % વૈકલ્પિક 0/10/12
 short_code_ph	ટૂંકો કોડ (MG02)
 starting_password_ph	શરૂઆતનો પાસવર્ડ (વૈકલ્પિક)
 starting_pin_ph	શરૂઆતનો PIN (4–12 અંક)
-tax_rate_ph	કર દરનું નામ અથવા % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	કર દર અથવા % (જેમ કે 5, 18)
 to_code_ph	ને કોડ (kg)
 uncleared_no_ph	ઉપરનો અનક્લિયર્ડ #
 unit_cost_ph	એકમ ખર્ચ
@@ -824,7 +824,7 @@ schemes	સ્કીમ / ઓફર
 schemes_help	એક ખરીદે એક, ટકા છૂટ, અને બંડલ. ઉદાહરણ: 2 ચોખા પર 1 તેલ.
 scheme_bogo_ph	2 ચોખા પર 1 તેલ
 add_scheme	BOGO ઉમેરો
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	સમય (જેમ કે સોમ-શુક્ર 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI પ્રાપ્તકર્તા (વૈકલ્પિક)
 show_upi_qr	UPI QR બતાવો

@@ -17,7 +17,7 @@ reports_today	Дневная книга (сегодня)
 reports_month	Прибыль и убытки (месяц)
 reports_aging	Задолженность / Dr-Cr
 reports_balance_sheet	Баланс
-reports	Отчёты
+reports	Банковская книга и ПиУ
 undo	Отменить
 stock_minus	− Запас
 stock_plus	+ Запас
@@ -193,7 +193,7 @@ my_pin_settings	Мой PIN
 settings_hub_help_my_pin	Смените PIN разблокировки вошедшего на этом устройстве.
 team_self_help	Только вы можете сменить свой PIN разблокировки (и необязательный пароль входа). Другие экраны или права — спросите владельца.
 pick	Выбрать
-advance	Далее
+advance	Аванс
 owner	Владелец
 staff	Персонал
 photo	Фото
@@ -706,7 +706,7 @@ service_pct_ph	Сервис % необязательно 0/10/12
 short_code_ph	Короткий код (MG02)
 starting_password_ph	Начальный пароль (необязательно)
 starting_pin_ph	Начальный PIN (4–12 цифр)
-tax_rate_ph	Название ставки или % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Налоговая ставка или % (напр. 5, 18)
 to_code_ph	Код в (kg)
 uncleared_no_ph	Непроведённый № выше
 unit_cost_ph	Себестоимость единицы
@@ -741,7 +741,7 @@ your_category	Ваша категория
 suggested_category	Предложено — из наших товаров
 category_search_ph	Категория — найдите свою или введите новую
 cancel_item_short	Отменить
-return_to_customer	Сдача
+return_to_customer	Вернуть клиенту
 short_by	Не хватает
 tip_not_sale	Чаевые (персоналу, не выручка)
 right_settle	Принимать оплату
@@ -824,7 +824,7 @@ schemes	Акции
 schemes_help	Один в подарок, скидка в процентах и наборы. Пример: 2 риса и 1 масло.
 scheme_bogo_ph	2 риса, 1 масло
 add_scheme	Добавить BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Часы (напр. пн–пт 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Получатель UPI (необяз.)
 show_upi_qr	Показать QR UPI

@@ -17,7 +17,7 @@ reports_today	Dagbok (idag)
 reports_month	Resultat (månad)
 reports_aging	Utestående / Dr-Kr
 reports_balance_sheet	Balansräkning
-reports	Bankbok och resultat
+reports	Bankbok & R&F
 undo	Ångra
 stock_minus	− Lager
 stock_plus	+ Lager
@@ -193,7 +193,7 @@ my_pin_settings	Min PIN-kod
 settings_hub_help_my_pin	Ändra upplåsnings-PIN för personen som är inloggad på den här enheten.
 team_self_help	En inloggning: en ny PIN-kod, ett nytt lösenord eller båda. Lämna en ruta tom för att behålla det du har. Fråga ägaren om du behöver andra skärmar eller rättigheter.
 pick	Välj
-advance	Avancera
+advance	Förskott
 owner	Ägare
 staff	Personal
 photo	Foto
@@ -706,7 +706,7 @@ service_pct_ph	Service % valfritt 0/10/12
 short_code_ph	Kortkod (MG02)
 starting_password_ph	Startlösenord (valfritt)
 starting_pin_ph	Start-PIN (4–12 siffror)
-tax_rate_ph	Skattesatsens namn eller % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Skattesats eller % (t.ex. 5, 18)
 to_code_ph	Till kod (kg)
 uncleared_no_ph	Oavstämt # ovan
 unit_cost_ph	Enhetskostnad

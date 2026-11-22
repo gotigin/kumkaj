@@ -17,7 +17,7 @@ reports_today	Kitabu cha siku (leo)
 reports_month	Faida na hasara (mwezi)
 reports_aging	Madeni / Dr-Cr
 reports_balance_sheet	Karatasi ya mizania
-reports	Ripoti
+reports	Kitabu cha benki na F&H
 undo	Tendua
 stock_minus	− Hisa
 stock_plus	+ Hisa
@@ -193,7 +193,7 @@ my_pin_settings	PIN yangu
 settings_hub_help_my_pin	Badilisha PIN ya kufungua ya mtu aliyeingia kwenye kifaa hiki.
 team_self_help	Wewe tu ndiye unayeweza kubadilisha PIN yako ya kufungua (na nenosiri la hiari la kuingia). Skrini au haki zingine: muulize mmiliki.
 pick	Chagua
-advance	Endelea
+advance	Malipo ya mapema
 owner	Mmiliki
 staff	Wafanyakazi
 photo	Picha
@@ -706,7 +706,7 @@ service_pct_ph	Huduma % hiari 0/10/12
 short_code_ph	Msimbo mfupi (MG02)
 starting_password_ph	Nenosiri la kuanzia (hiari)
 starting_pin_ph	PIN ya kuanzia (tarakimu 4–12)
-tax_rate_ph	Jina la kiwango cha kodi au % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Kiwango cha ushuru au % (mf. 5, 18)
 to_code_ph	Msimbo kwenda (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo
@@ -741,7 +741,7 @@ your_category	Kundi lako
 suggested_category	Imependekezwa - kutoka kwa vitu vyetu
 category_search_ph	Kundi — tafuta lako au andika jipya
 cancel_item_short	Ghairi
-return_to_customer	Chenji kwa mteja
+return_to_customer	Rudisha kwa mteja
 short_by	Pungufu
 tip_not_sale	Bakshishi (ya wafanyakazi, si mauzo)
 right_settle	Pokea malipo
@@ -824,7 +824,7 @@ schemes	Ofa
 schemes_help	Nunua moja upate moja, punguzo la asilimia, na vifurushi. Mfano: mchele 2, mafuta 1.
 scheme_bogo_ph	mchele 2, mafuta 1
 add_scheme	Ongeza BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Saa (mf. Jumatatu-Ijumaa 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Mpokeaji UPI (si lazima)
 show_upi_qr	Onyesha QR ya UPI

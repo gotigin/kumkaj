@@ -17,7 +17,7 @@ reports_today	روز بک (آج)
 reports_month	نفع و نقصان (مہینہ)
 reports_aging	بقایا / Dr-Cr
 reports_balance_sheet	بیلنس شیٹ
-reports	رپورٹ
+reports	بینک بہی اور نفع و نقصان
 undo	واپس
 stock_minus	− اسٹاک
 stock_plus	+ اسٹاک
@@ -92,7 +92,7 @@ bill_total_paid_label	ادا لیبل
 bill_meta_pair	ایک قطار میں ساتھ
 bill_pair_alone	اکیلا
 bill_item_piece_on	آن
-bill_item_piece_off	آف
+bill_item_piece_off	بند
 bill_total_qty	کل مقدار
 bill_total_subtotal	ذیلی کل
 bill_total_grand	کل
@@ -193,7 +193,7 @@ my_pin_settings	میرا PIN
 settings_hub_help_my_pin	اس ڈیوائس پر سائن ان شخص کا ان لاک PIN بدلیں۔
 team_self_help	صرف آپ اپنا ان لاک PIN (اور اختیاری لاگ اِن پاس ورڈ) بدل سکتے ہیں۔ الگ اسکرینیں یا حقوق چاہیں تو مالک سے کہیں۔
 pick	چنیں
-advance	آگے
+advance	ایڈوانس
 owner	مالک
 staff	عملہ
 photo	تصویر
@@ -354,12 +354,12 @@ reason_amend_ph	ترمیم / منسوخی / واپسی کی وجہ
 reason_note_ph	وجہ / نوٹ (ضیاع، گنتی، …)
 record_day_close	دن بند درج کریں
 business_day	«آج» کب نئے سرے سے شروع ہوتا ہے؟
-business_day_help	«دن بند تک» منتخب کرنے پر «روز بک» آدھی رات کے بعد بھی چلتی رہتی ہے، جب تک آپ دن بند درج نہ کریں۔ «کیلنڈر کی آدھی رات» منتخب کرنے پر دن مقامی وقت کے مطابق رات 12:00 بجے کٹتا ہے۔
+business_day_help	«دن بند تک» منتخب کرنے پر «روز بک» آدھی رات کے بعد بھی چلتی رہتی ہے، جب تک آپ دن بند درج نہ کریں۔ «کیلنڈر کی آدھی رات» منتخب کرنے پر دن مقامی وقت کے مطابق رات 00:00 بجے کٹتا ہے۔
 biz_day_until_close	دن بند تک
 biz_day_midnight	کیلنڈر کی آدھی رات
 business_day_saved	کاروباری دن محفوظ ہو گیا
 report_day_lens	«آج» کو ایسے دیکھیں
-report_day_lens_help	صرف دیکھنے کے لیے — اس سے یہ نہیں بدلتا کہ «دن بند» کب «آج» کو نئے سرے سے شروع کرتا ہے۔ «دن بند کے حساب سے» پچھلے دن بند سے گنتا ہے؛ «آدھی رات کے حساب سے» مقامی وقت کے مطابق رات 12:00 بجے کٹتا ہے۔
+report_day_lens_help	صرف دیکھنے کے لیے — اس سے یہ نہیں بدلتا کہ «دن بند» کب «آج» کو نئے سرے سے شروع کرتا ہے۔ «دن بند کے حساب سے» پچھلے دن بند سے گنتا ہے؛ «آدھی رات کے حساب سے» مقامی وقت کے مطابق رات 00:00 بجے کٹتا ہے۔
 report_lens_day_close	دن بند کے حساب سے
 report_lens_midnight	آدھی رات کے حساب سے
 refresh_from_shop	دکان سے تازہ کریں
@@ -706,7 +706,7 @@ service_pct_ph	سروس % اختیاری 0/10/12
 short_code_ph	مختصر کوڈ (MG02)
 starting_password_ph	ابتدائی پاس ورڈ (اختیاری)
 starting_pin_ph	ابتدائی PIN (4–12 ہندسے)
-tax_rate_ph	ٹیکس شرح کا نام یا % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	ٹیکس شرح یا % (مثلاً 5، 18)
 to_code_ph	کو کوڈ (kg)
 uncleared_no_ph	اوپر والا غیر کلیئر #
 unit_cost_ph	فی یونٹ لاگت
@@ -824,7 +824,7 @@ schemes	اسکیم / آفر
 schemes_help	ایک خریدیں ایک پائیں، فیصد رعایت، اور بنڈل۔ مثال: 2 چاول پر 1 تیل۔
 scheme_bogo_ph	2 چاول پر 1 تیل
 add_scheme	BOGO شامل کریں
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	اوقات (مثلاً پیر-جمعہ 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI وصول کنندہ (اختیاری)
 show_upi_qr	UPI QR دکھائیں

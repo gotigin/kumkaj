@@ -17,7 +17,7 @@ reports_today	Dagboek (vandaag)
 reports_month	Winst & verlies (maand)
 reports_aging	Openstaand / Dr-Cr
 reports_balance_sheet	Balans
-reports	Rapporten
+reports	Bankboek & W&V
 undo	Ongedaan
 stock_minus	− Voorraad
 stock_plus	+ Voorraad
@@ -193,7 +193,7 @@ my_pin_settings	Mijn PIN
 settings_hub_help_my_pin	Wijzig de ontgrendel-PIN van de persoon die op dit apparaat is aangemeld.
 team_self_help	Alleen u kunt uw ontgrendel-PIN (en optioneel inlogwachtwoord) wijzigen. Andere schermen of rechten: vraag de eigenaar.
 pick	Kies
-advance	Verder
+advance	Voorschot
 owner	Eigenaar
 staff	Personeel
 photo	Foto
@@ -706,7 +706,7 @@ service_pct_ph	Service % optioneel 0/10/12
 short_code_ph	Korte code (MG02)
 starting_password_ph	Startwachtwoord (optioneel)
 starting_pin_ph	Start-PIN (4–12 cijfers)
-tax_rate_ph	Belastingtariefnaam of % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Belastingtarief of % (bijv. 5, 18)
 to_code_ph	Naar code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
 unit_cost_ph	Kosten per eenheid
@@ -741,7 +741,7 @@ your_category	Uw categorie
 suggested_category	Voorgesteld — uit onze artikelen
 category_search_ph	Categorie — zoek de uwe of typ een nieuwe
 cancel_item_short	Annuleren
-return_to_customer	Wisselgeld
+return_to_customer	Terug naar klant
 short_by	Tekort
 tip_not_sale	Fooi (voor personeel, geen omzet)
 right_settle	Afrekenen
@@ -824,7 +824,7 @@ schemes	Aanbiedingen
 schemes_help	Eén kopen één gratis, procentkorting en bundels. Voorbeeld: 2 rijst, 1 olie.
 scheme_bogo_ph	2 rijst, 1 olie
 add_scheme	BOGO toevoegen
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Uren (bijv. ma-vr 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-ontvanger (optioneel)
 show_upi_qr	Toon UPI-QR

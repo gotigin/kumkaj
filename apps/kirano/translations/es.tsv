@@ -17,7 +17,7 @@ reports_today	Libro del día (hoy)
 reports_month	Ganancias y pérdidas (mes)
 reports_aging	Pendiente / Dr-Cr
 reports_balance_sheet	Balance general
-reports	Informes
+reports	Libro banco y PyG
 undo	Deshacer
 stock_minus	− Existencias
 stock_plus	+ Existencias
@@ -92,7 +92,7 @@ bill_total_paid_label	Etiqueta pagado
 bill_meta_pair	Compartir línea con
 bill_pair_alone	Solo
 bill_item_piece_on	Sí
-bill_item_piece_off	No
+bill_item_piece_off	Apagado
 bill_total_qty	Cant. total
 bill_total_subtotal	Subtotal
 bill_total_grand	Total
@@ -193,7 +193,7 @@ my_pin_settings	Mi PIN
 settings_hub_help_my_pin	Cambia el PIN de desbloqueo de quien está conectado en este dispositivo.
 team_self_help	Solo tú puedes cambiar tu PIN de desbloqueo (y la contraseña de inicio opcional). Si necesitas otras pantallas o derechos, habla con el dueño.
 pick	Elegir
-advance	Avanzar
+advance	Anticipo
 owner	Dueño
 staff	Personal
 photo	Foto
@@ -706,7 +706,7 @@ service_pct_ph	Servicio % opcional 0/10/12
 short_code_ph	Código corto (MG02)
 starting_password_ph	Contraseña inicial (opcional)
 starting_pin_ph	PIN inicial (4–12 dígitos)
-tax_rate_ph	Nombre de la tasa o % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Tipo impositivo o % (p. ej. 5, 18)
 to_code_ph	Código a (kg)
 uncleared_no_ph	N.º no compensado de arriba
 unit_cost_ph	Costo unitario
@@ -824,7 +824,7 @@ schemes	Ofertas
 schemes_help	Dos por uno, porcentaje de descuento y lotes. Ejemplo: 2 de arroz y 1 de aceite.
 scheme_bogo_ph	2 arroz, 1 aceite
 add_scheme	Añadir BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Horario (p. ej. lun-vie 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Nombre UPI (opcional)
 show_upi_qr	Mostrar QR UPI

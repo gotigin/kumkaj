@@ -17,7 +17,7 @@ reports_today	Күндөлүк китепче (бүгүн)
 reports_month	Пайда жана чыгым (ай)
 reports_aging	Төлөнбөгөн/дебет-кредит
 reports_balance_sheet	Баланс
-reports	Банк китеби жана P&L
+reports	Банк китеби жана П&З
 undo	Жок кылуу
 stock_minus	− запас
 stock_plus	+ Сток
@@ -193,7 +193,7 @@ my_pin_settings	Менин PIN
 settings_hub_help_my_pin	Бул түзмөккө кирген адам үчүн кулпуну ачууну PIN өзгөртүңүз.
 team_self_help	Бир кирүү: жаңы PIN, жаңы сырсөз же экөө тең. Колуңузда болгон нерсени сактоо үчүн кутучаны бош калтырыңыз. Башка экрандар же укуктар керекпи же жокпу, Ээсинен сураңыз.
 pick	Тандоо
-advance	Алдын ала
+advance	Аванс
 owner	Ээси
 staff	Кызматкерлер
 photo	Сүрөт

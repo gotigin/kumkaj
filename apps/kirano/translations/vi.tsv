@@ -17,7 +17,7 @@ reports_today	Sổ ngày (hôm nay)
 reports_month	Lãi lỗ (tháng)
 reports_aging	Công nợ / Dr-Cr
 reports_balance_sheet	Bảng cân đối
-reports	Báo cáo
+reports	Sổ ngân hàng & Lãi/lỗ
 undo	Hoàn tác
 stock_minus	− Kho
 stock_plus	+ Kho
@@ -193,7 +193,7 @@ my_pin_settings	PIN của tôi
 settings_hub_help_my_pin	Đổi PIN mở khóa của người đang đăng nhập trên thiết bị này.
 team_self_help	Chỉ bạn mới đổi được PIN mở khóa (và mật khẩu đăng nhập tùy chọn). Cần màn hình hoặc quyền khác thì hỏi chủ.
 pick	Chọn
-advance	Tiếp
+advance	Tạm ứng
 owner	Chủ
 staff	Nhân viên
 photo	Ảnh
@@ -706,7 +706,7 @@ service_pct_ph	Dịch vụ % tùy chọn 0/10/12
 short_code_ph	Mã ngắn (MG02)
 starting_password_ph	Mật khẩu ban đầu (tùy chọn)
 starting_pin_ph	PIN ban đầu (4–12 chữ số)
-tax_rate_ph	Tên thuế suất hoặc % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Thuế suất hoặc % (vd. 5, 18)
 to_code_ph	Mã đến (kg)
 uncleared_no_ph	Số chưa quyết toán ở trên
 unit_cost_ph	Chi phí đơn vị
@@ -741,7 +741,7 @@ your_category	Danh mục của bạn
 suggested_category	Được đề xuất - từ các mặt hàng của chúng tôi
 category_search_ph	Danh mục — tìm của bạn hoặc gõ mới
 cancel_item_short	Hủy
-return_to_customer	Tiền thối lại
+return_to_customer	Trả lại khách
 short_by	Còn thiếu
 tip_not_sale	Tiền tip (của nhân viên, không phải doanh thu)
 right_settle	Thu tiền
@@ -824,7 +824,7 @@ schemes	Ưu đãi
 schemes_help	Mua một tặng một, giảm theo phần trăm và gói. Ví dụ: 2 gạo được 1 dầu.
 scheme_bogo_ph	2 gạo, 1 dầu
 add_scheme	Thêm BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Giờ (vd. T2–T6 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Người nhận UPI (tuỳ chọn)
 show_upi_qr	Hiện QR UPI

@@ -17,7 +17,7 @@ reports_today	Eguneko liburua (gaur)
 reports_month	Irabazi-galera (hilabetea)
 reports_aging	Ordaindu gabe / Dr-Cr
 reports_balance_sheet	Balantzea
-reports	Banku-liburua eta irabazi-galera
+reports	Banku-liburua eta I&G
 undo	Desegin
 stock_minus	− Stocka
 stock_plus	+ Stocka
@@ -193,7 +193,7 @@ my_pin_settings	Nire PINa
 settings_hub_help_my_pin	Aldatu gailu honetan saioa hasi duenaren desblokeo PINa.
 team_self_help	Saio hasiera bat: PIN berria, pasahitz berria edo biak. Utzi koadro bat hutsik daukazuna gordetzeko. Galdetu Jabeari beste pantaila edo eskubide batzuk behar badituzu.
 pick	Aukeratu
-advance	Aurrerakina
+advance	Aurrerakin
 owner	Jabea
 staff	Langileak
 photo	Argazkia

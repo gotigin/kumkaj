@@ -17,7 +17,7 @@ reports_today	日记账（今天）
 reports_month	损益（月）
 reports_aging	未结 / Dr-Cr
 reports_balance_sheet	资产负债表
-reports	报表
+reports	银行账与损益
 undo	撤销
 stock_minus	− 库存
 stock_plus	+ 库存
@@ -193,7 +193,7 @@ my_pin_settings	我的密码
 settings_hub_help_my_pin	更改此设备上已登录人员的解锁密码。
 team_self_help	只有你可以更改自己的解锁密码（及可选登录口令）。需要其他界面或权限请找店主。
 pick	选择
-advance	推进
+advance	预付款
 owner	店主
 staff	员工
 photo	照片
@@ -706,7 +706,7 @@ service_pct_ph	服务 % 可选 0/10/12
 short_code_ph	短代码（MG02）
 starting_password_ph	初始密码（可选）
 starting_pin_ph	初始 PIN（4–12 位）
-tax_rate_ph	税率名称或 % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	税率或 %（例如 5、18）
 to_code_ph	到代码（kg）
 uncleared_no_ph	上方未清算编号
 unit_cost_ph	单位成本
@@ -741,7 +741,7 @@ your_category	您的分类
 suggested_category	建议 — 来自我们的商品
 category_search_ph	分类 — 搜索已有或输入新分类
 cancel_item_short	取消
-return_to_customer	找零
+return_to_customer	退回给顾客
 short_by	还差
 tip_not_sale	小费（归员工，非营业额）
 right_settle	收款
@@ -824,7 +824,7 @@ schemes	优惠方案
 schemes_help	买一送一、百分比折扣和组合。例如：2 袋米送 1 瓶油。
 scheme_bogo_ph	2 米 1 油
 add_scheme	添加买赠
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	营业时间（例如周一至周五 07:00-11:00）
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI收款人（可选）
 show_upi_qr	显示 UPI 二维码
