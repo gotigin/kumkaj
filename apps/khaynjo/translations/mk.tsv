@@ -208,7 +208,7 @@ whatsapp_save	Зачувај WhatsApp
 whatsapp_test	Тестирај врска
 whatsapp_disconnect	Прекини врска
 whatsapp_send_bill	Испрати преку WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp ОК
 whatsapp_consent_help	Гостинот се согласи да прима WhatsApp пораки. Само телефонски број не е согласност.
 whatsapp_server_only	Поставете го WhatsApp на серверскиот уред на продавницата
 settings_sec_backup	Бекап и обновување

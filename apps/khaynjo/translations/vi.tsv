@@ -208,7 +208,7 @@ whatsapp_save	Lưu WhatsApp
 whatsapp_test	Kiểm tra kết nối
 whatsapp_disconnect	Ngắt kết nối
 whatsapp_send_bill	Gửi qua WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	Đồng ý WhatsApp
 whatsapp_consent_help	Khách đã đồng ý nhận tin nhắn WhatsApp. Chỉ có số điện thoại thì chưa phải là sự đồng ý.
 whatsapp_server_only	Thiết lập WhatsApp trên thiết bị Máy chủ của cửa hàng
 settings_sec_backup	Sao lưu & khôi phục

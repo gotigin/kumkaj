@@ -208,7 +208,7 @@ whatsapp_save	Зберегти WhatsApp
 whatsapp_test	Перевірити з'єднання
 whatsapp_disconnect	Від'єднати
 whatsapp_send_bill	Надіслати через WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	Згода WhatsApp
 whatsapp_consent_help	Гість погодився отримувати повідомлення WhatsApp. Сам лише номер телефону — не згода.
 whatsapp_server_only	Налаштуйте WhatsApp на пристрої Сервер крамниці
 settings_sec_backup	Резервна копія й відновлення

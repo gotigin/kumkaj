@@ -5,8 +5,8 @@ pin_hint	I-PIN yomnini iqala ngo-0000
 sell	Iodolo
 buy	Thenga
 books	Incwadi yosuku
-books_help	Isimo sanamhlanje. Iodolo = ii-odolo ezingenayo. Thenga = okuthengiweyo neendleko. Amaqela = abathengi bekhredithi nababoneleli.
-buy_help	Amaxwebhu eenkcitho nee-akhawunti zababoneleli (imali ephumayo). Okwis-akhawunti kuhlala kwincwadi yeqela.
+books_help	Isimo sanamhlanje. Iodolo = ii-odolo ezingenayo. Thenga = okuthengiweyo neendleko. Abathengi = abathengi bekhredithi nababoneleli.
+buy_help	Amaxwebhu eenkcitho nee-akhawunti zababoneleli (imali ephumayo). Okwis-akhawunti kuhlala kwincwadi yabathengi.
 sell_money_in	Thatha iodolo
 buy_money_out	Ixwebhu lenkcitho / i-akhawunti yomboneleli
 record_purchase	Bhala okuthengiweyo

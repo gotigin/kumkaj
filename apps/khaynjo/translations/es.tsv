@@ -208,7 +208,7 @@ whatsapp_save	Guardar WhatsApp
 whatsapp_test	Probar conexión
 whatsapp_disconnect	Desconectar
 whatsapp_send_bill	Enviar por WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp aceptado
 whatsapp_consent_help	El cliente aceptó recibir mensajes de WhatsApp. Un número de teléfono por sí solo no es consentimiento.
 whatsapp_server_only	Configura WhatsApp en el dispositivo Servidor de la tienda
 settings_sec_backup	Copia de seguridad y restauración

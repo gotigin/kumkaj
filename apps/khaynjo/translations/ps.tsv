@@ -208,7 +208,7 @@ whatsapp_save	WhatsApp خوندي کړئ
 whatsapp_test	اړیکه وازمویئ
 whatsapp_disconnect	اړیکه پرې کړئ
 whatsapp_send_bill	د WhatsApp له لارې ولېږئ
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp منل
 whatsapp_consent_help	میلمه د WhatsApp پیغامونو ترلاسه کولو سره موافقه کړې ده. یوازې د تلیفون شمېره درلودل رضایت نه دی.
 whatsapp_server_only	WhatsApp د هټۍ په سرور وسیله کې تنظیم کړئ
 settings_sec_backup	بیک اپ او بیا رغونه

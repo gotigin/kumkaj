@@ -208,7 +208,7 @@ whatsapp_save	Αποθήκευση WhatsApp
 whatsapp_test	Δοκιμή σύνδεσης
 whatsapp_disconnect	Αποσύνδεση
 whatsapp_send_bill	Αποστολή μέσω WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	Συμφωνία WhatsApp
 whatsapp_consent_help	Ο επισκέπτης συμφώνησε να λαμβάνει μηνύματα WhatsApp. Ένας αριθμός τηλεφώνου από μόνος του δεν είναι συγκατάθεση.
 whatsapp_server_only	Ρυθμίστε το WhatsApp στη συσκευή Server του μαγαζιού
 settings_sec_backup	Αντίγραφο ασφαλείας και επαναφορά

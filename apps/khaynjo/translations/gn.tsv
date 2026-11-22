@@ -5,7 +5,7 @@ pin_hint	Ijára PIN oñepyrũ 0000 ramo
 sell	Pedido
 buy	Jogua
 books	Aranduka ára rehegua
-books_help	Ko árapegua. Pedido = pedido oúva. Jogua = mba’e ojejoguáva ha gasto. Partíkuera = crédito rehegua.
+books_help	Ko árapegua. Pedido = pedido oúva. Jogua = mba’e ojejoguáva ha gasto. Cliente kuéra = crédito rehegua.
 buy_help	Vale gasto rehegua ha factura proveedor rehegua (pirapire osêva). Opytáva cuenta-pe libro mayor cliente térã proveedor-pe.
 sell_money_in	Ejagarra peteĩ pedido
 buy_money_out	Gasto / factura proveedor rehegua
@@ -208,7 +208,7 @@ whatsapp_save	Eñongatu WhatsApp
 whatsapp_test	Eha'ã joaju
 whatsapp_disconnect	Emboja'o joaju
 whatsapp_send_bill	Emondo WhatsApp rupive
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp OĨ
 whatsapp_consent_help	Invitado omoneĩ ohupyty hag̃ua WhatsApp marandu. Teléfono papapy añónte ndaha'éi ñemoneĩ.
 whatsapp_server_only	Emboheko WhatsApp tenda Servidor tembipurúpe
 settings_sec_backup	Copia de seguridad & jegueru jey

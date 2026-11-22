@@ -208,7 +208,7 @@ whatsapp_save	שמור WhatsApp
 whatsapp_test	בדוק חיבור
 whatsapp_disconnect	נתק
 whatsapp_send_bill	שלח ב-WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	אישור WhatsApp
 whatsapp_consent_help	האורח הסכים לקבל הודעות WhatsApp. מספר טלפון לבדו אינו הסכמה.
 whatsapp_server_only	הגדר את WhatsApp במכשיר השרת של החנות
 settings_sec_backup	גיבוי ושחזור

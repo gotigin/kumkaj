@@ -208,7 +208,7 @@ whatsapp_save	WhatsApp を保存
 whatsapp_test	接続をテスト
 whatsapp_disconnect	切断
 whatsapp_send_bill	WhatsApp で送信
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp同意
 whatsapp_consent_help	お客様が WhatsApp メッセージの受信に同意しました。電話番号だけでは同意になりません。
 whatsapp_server_only	店舗のサーバー端末で WhatsApp を設定してください
 settings_sec_backup	バックアップとリストア

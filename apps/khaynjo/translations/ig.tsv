@@ -5,8 +5,8 @@ pin_hint	PIN onye nwe na-amalite dị ka 0000
 sell	Ọda
 buy	Zụta
 books	Akwụkwọ ụbọchị
-books_help	Ọnọdụ taa. Iwu = iwu na-abata. Zụta = ịzụta na mmefu. Ndị otu = ndị ahịa kredit na ndị na-ebunye.
-buy_help	Akwụkwọ mmefu na ụgwọ ndị na-ebunye (ego na-apụ). Ihe fọdụrụ n'aka na-anọ n'akwụkwọ onye otu.
+books_help	Ọnọdụ taa. Oda = oda na-abata. Zụta = ịzụta na mmefu. Ndị ahịa = ndị ahịa kredit na ndị na-ebunye.
+buy_help	Akwụkwọ mmefu na ụgwọ ndị na-ebunye (ego na-apụ). Ihe fọdụrụ n'aka na-anọ n'akwụkwọ onye ahịa.
 sell_money_in	Were iwu
 buy_money_out	Mmefu / ụgwọ onye na-ebunye
 record_purchase	Dee ịzụta
@@ -255,7 +255,7 @@ amounts_show	Gosi
 counter	Kaụnta
 dine_in	N'ime ụlọ
 takeaway	Were laa
-order	Ọda
+order	Oda
 tables	Tebụl
 kitchen	Kichin
 sales	Ahịa

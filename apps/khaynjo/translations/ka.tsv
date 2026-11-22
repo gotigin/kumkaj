@@ -208,7 +208,7 @@ whatsapp_save	WhatsApp-ის შენახვა
 whatsapp_test	კავშირის შემოწმება
 whatsapp_disconnect	კავშირის გაწყვეტა
 whatsapp_send_bill	გაგზავნა WhatsApp-ით
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp კი
 whatsapp_consent_help	სტუმარი დათანხმდა WhatsApp შეტყობინებების მიღებას. მხოლოდ ტელეფონის ნომერი თანხმობა არ არის.
 whatsapp_server_only	დააყენეთ WhatsApp მაღაზიის სერვერის მოწყობილობაზე
 settings_sec_backup	სარეზერვო ასლი და აღდგენა

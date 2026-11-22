@@ -5,8 +5,8 @@ pin_hint	PIN na mamallaki yana farawa da 0000
 sell	Oda
 buy	Saya
 books	Littafin yini
-books_help	Matsayin yau. Oda = odar da suka shigo. Saya = sayayya da kuɗin fita. Jam'i = abokan ciniki na bashi da masu kaya.
-buy_help	Takardun kuɗin fita da lissafin mai kaya (kuɗi ya fita). Abin da ke kan asusu yana kan littafin jam'i.
+books_help	Matsayin yau. Oda = odar da suka shigo. Saya = sayayya da kuɗin fita. Abokan ciniki = abokan ciniki na bashi da masu kaya.
+buy_help	Takardun kuɗin fita da lissafin mai kaya (kuɗi ya fita). Abin da ke kan asusu yana kan littafin abokan ciniki.
 sell_money_in	Ɗauki oda
 buy_money_out	Kuɗin fita / lissafin mai kaya
 record_purchase	Rubuta saya

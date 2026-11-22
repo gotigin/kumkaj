@@ -208,7 +208,7 @@ whatsapp_save	Simpan WhatsApp
 whatsapp_test	Uji koneksi
 whatsapp_disconnect	Putuskan sambungan
 whatsapp_send_bill	Kirim lewat WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp oke
 whatsapp_consent_help	Tamu setuju menerima pesan WhatsApp. Nomor telepon saja bukan persetujuan.
 whatsapp_server_only	Atur WhatsApp di perangkat Server toko
 settings_sec_backup	Cadangan & pulihkan

@@ -208,7 +208,7 @@ whatsapp_save	Gorde WhatsApp
 whatsapp_test	Probatu konexioa
 whatsapp_disconnect	Deskonektatu
 whatsapp_send_bill	Bidali WhatsApp bidez
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp Ados
 whatsapp_consent_help	Gonbidatuak WhatsApp mezuak jasotzea onartu du. Telefono-zenbakia soilik ez da baimena.
 whatsapp_server_only	Konfiguratu WhatsApp dendaren Zerbitzari gailuan
 settings_sec_backup	Babeskopia eta leheneratzea

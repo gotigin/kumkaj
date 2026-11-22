@@ -208,7 +208,7 @@ whatsapp_save	Запази WhatsApp
 whatsapp_test	Тествай връзката
 whatsapp_disconnect	Прекъсни връзката
 whatsapp_send_bill	Изпрати през WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	WhatsApp ОК
 whatsapp_consent_help	Гостът се съгласи да получава съобщения в WhatsApp. Само телефонен номер не е съгласие.
 whatsapp_server_only	Настройте WhatsApp на устройството Сървър на заведението
 settings_sec_backup	Резервно копие и възстановяване

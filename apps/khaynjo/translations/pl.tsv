@@ -208,7 +208,7 @@ whatsapp_save	Zapisz WhatsApp
 whatsapp_test	Testuj połączenie
 whatsapp_disconnect	Rozłącz
 whatsapp_send_bill	Wyślij przez WhatsApp
-whatsapp_consent	WhatsApp OK
+whatsapp_consent	Zgoda WhatsApp
 whatsapp_consent_help	Gość zgodził się otrzymywać wiadomości WhatsApp. Sam numer telefonu nie jest zgodą.
 whatsapp_server_only	Skonfiguruj WhatsApp na urządzeniu Serwer sklepu
 settings_sec_backup	Kopia zapasowa i przywracanie
