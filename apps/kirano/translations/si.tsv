@@ -588,22 +588,22 @@ net_word	ශුද්ධ
 offline_badge	නොබැඳි
 optional_login_help	විකල්ප පුරනය වීම (id + මුරපදය). හිමිකරු එක් වරක් සකසයි; පසුව මුරපදය වෙනස් කළ හැක්කේ පරිශීලකයාට පමණි.
 or_unlock_login	නැතහොත් පිවිසුම් හැඳුනුම්පත + මුරපදය සමඟ අගුළු ඇරීම
-or_unlock_shop_login	[si] Or unlock with shop login
-shop_login_help	[si] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[si] Kirano account
-cloud_account_help	[si] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[si] Name (optional)
-cloud_email_ph	[si] Email
-cloud_password_ph	[si] Password
-cloud_continue	[si] Continue
-cloud_forgot	[si] Forgot password?
-cloud_web_methods	[si] Google and other methods on the website
-cloud_signing_in	[si] Signing in…
-cloud_sending_reset	[si] Sending reset link…
-cloud_forgot_sent	[si] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	නැතහොත් වෙළඳසැල් පිවිසුමෙන් අගුළු හරින්න
+shop_login_help	විකල්ප: PIN වෙනුවට මෙම වෙළඳසැලේ සේවක පරිශීලක නාමය සහ මුරපදයෙන් අගුළු හරින්න (නොබැඳිව ක්‍රියා කරයි).
+cloud_account_title	Kirano ගිණුම
+cloud_account_help	kirano.shop/account හි ඇති එකම ගිණුමෙන් ලියාපදිංචි වන්න හෝ පුරනය වන්න. ඔබේ වලාකුළු id සහ නොමිලේ සැලැස්ම සාදයි.
+cloud_name_ph	නම (විකල්ප)
+cloud_email_ph	විද්‍යුත් තැපෑල
+cloud_password_ph	මුරපදය
+cloud_continue	ඉදිරියට
+cloud_forgot	මුරපදය අමතකද?
+cloud_web_methods	වෙබ් අඩවියේ Google සහ වෙනත් ක්‍රම
+cloud_signing_in	පුරනය වෙමින්…
+cloud_sending_reset	යළි සැකසුම් සබැඳිය යවමින්…
+cloud_forgot_sent	එම විද්‍යුත් තැපෑලට ගිණුමක් තිබේ නම්, යළි සැකසුම් සබැඳියක් යවමින් ඇත.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[si] Account created. Check your email to verify when you can.
-cloud_cancel	[si] Cancel
+cloud_created	ගිණුම සාදන ලදී. තහවුරු කිරීමට හැකි විට විද්‍යුත් තැපෑල පරීක්ෂා කරන්න.
+cloud_cancel	අවලංගු කරන්න
 permission_preset	රැකියාව
 product_only_kirano	කිරානෝ යනු සිල්ලර බඩු / කිරණ මෙහෙයුම් පද්ධතියයි: කවුන්ටර විකිණීම, කොටස්, ණය සහ පොත් - ඔබගේ උපාංගවල නොබැඳි.
 purchases_cogs	මිලදී ගැනීම් (COGS)

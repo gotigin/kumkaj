@@ -588,22 +588,22 @@ net_word	Нето
 offline_badge	ОФЛАЈН
 optional_login_help	Изборно најавување (ид + лозинка). Сопственик поставува еднаш; само корисникот може да ја смени лозинката подоцна.
 or_unlock_login	Или отклучете со ID за најава + лозинка
-or_unlock_shop_login	[mk] Or unlock with shop login
-shop_login_help	[mk] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mk] Kirano account
-cloud_account_help	[mk] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mk] Name (optional)
-cloud_email_ph	[mk] Email
-cloud_password_ph	[mk] Password
-cloud_continue	[mk] Continue
-cloud_forgot	[mk] Forgot password?
-cloud_web_methods	[mk] Google and other methods on the website
-cloud_signing_in	[mk] Signing in…
-cloud_sending_reset	[mk] Sending reset link…
-cloud_forgot_sent	[mk] If that email has an account, a reset link is on the way.
-cloud_welcome	[mk] Signed in as {user} · {plan}
-cloud_created	[mk] Account created. Check your email to verify when you can.
-cloud_cancel	[mk] Cancel
+or_unlock_shop_login	Или отклучи со најава во продавницата
+shop_login_help	Изборно: отклучи со корисничко име и лозинка на персоналот на оваа продавница наместо PIN (работи офлајн).
+cloud_account_title	Сметка Kirano
+cloud_account_help	Регистрирајте се или најавете се со истата сметка како kirano.shop/account. Создава вашиот cloud id и бесплатен план.
+cloud_name_ph	Име (изборно)
+cloud_email_ph	Е-пошта
+cloud_password_ph	Лозинка
+cloud_continue	Продолжи
+cloud_forgot	Ја заборавивте лозинката?
+cloud_web_methods	Google и други методи на мрежното место
+cloud_signing_in	Најавување…
+cloud_sending_reset	Испраќање врска за ресет…
+cloud_forgot_sent	Ако таа е-пошта има сметка, врската за ресет е на пат.
+cloud_welcome	Најавени како {user} · {plan}
+cloud_created	Сметката е создадена. Проверете ја е-поштата за потврда кога можете.
+cloud_cancel	Откажи
 permission_preset	Работа
 product_only_kirano	Kirano е оперативен систем за намирници/кирана: шалтер за продажба, акции, кредит и книги — офлајн на вашите уреди.
 purchases_cogs	Набавки (COGS)

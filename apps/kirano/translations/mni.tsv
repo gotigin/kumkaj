@@ -588,21 +588,21 @@ net_word	ꯁꯦꯟꯊꯣꯛ
 offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-or_unlock_shop_login	[mni] Or unlock with shop login
-shop_login_help	[mni] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mni] Kirano account
-cloud_account_help	[mni] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mni] Name (optional)
-cloud_email_ph	[mni] Email
+or_unlock_shop_login	নত্ত্রগা শপ লোগিননা অনলক তৌ
+shop_login_help	ঐচ্ছিক: PINগী মহুত্তা শপ অসিগী স্টাফ ইউজারনেম অমসুং পাসৱর্দনা অনলক তৌ (অফলাইনদা থবক তৌই)।
+cloud_account_title	Kirano একাউন্ট
+cloud_account_help	kirano.shop/accountগী মতো একাউন্ট অদুমনা রেজিস্টর তৌবা নত্ত্রগা সাইন ইন তৌ। নহাক্কী ক্লাউদ id অমসুং ফ্রি প্লান শেম্মি।
+cloud_name_ph	মিং (ঐচ্ছিক)
+cloud_email_ph	ইমেইল
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
-cloud_forgot	[mni] Forgot password?
-cloud_web_methods	[mni] Google and other methods on the website
-cloud_signing_in	[mni] Signing in…
-cloud_sending_reset	[mni] Sending reset link…
-cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
-cloud_welcome	[mni] Signed in as {user} · {plan}
-cloud_created	[mni] Account created. Check your email to verify when you can.
+cloud_forgot	পাসৱর্দ কাওখ্রব্রা?
+cloud_web_methods	ৱেবসাইটতা Google অমসুং অতোপ্পা মথোংশিং
+cloud_signing_in	সাইন ইন তৌরি…
+cloud_sending_reset	রিসেট লিংক থাদোকলি…
+cloud_forgot_sent	ইমেইল অদুদা একাউন্ট লৈরবদি রিসেট লিংক তা রৈ।
+cloud_welcome	{user} · {plan} ওইনা সাইন ইন তৌরে
+cloud_created	একাউন্ট শেমখ্রে। ভেরিফাই তৌনবগীদমক ইমেইল যেংউ।
 cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 product_only_kirano	Kirano ꯍꯥꯏꯕ ꯀꯤꯔꯥꯅꯥ ꯑꯣꯄꯔꯦꯇꯤꯡ ꯁꯤꯁ꯭ꯇꯦꯝꯅꯤ: ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗ ꯌꯣꯟꯕ, ꯁ꯭ꯇꯣꯛ, ꯁꯦꯜ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯃꯁꯤꯟꯗ ꯑꯣꯐꯂꯥꯏꯟ.

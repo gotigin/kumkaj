@@ -588,22 +588,22 @@ net_word	Neto
 offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
-or_unlock_shop_login	[mg] Or unlock with shop login
-shop_login_help	[mg] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mg] Kirano account
-cloud_account_help	[mg] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mg] Name (optional)
-cloud_email_ph	[mg] Email
-cloud_password_ph	[mg] Password
-cloud_continue	[mg] Continue
-cloud_forgot	[mg] Forgot password?
-cloud_web_methods	[mg] Google and other methods on the website
-cloud_signing_in	[mg] Signing in…
-cloud_sending_reset	[mg] Sending reset link…
-cloud_forgot_sent	[mg] If that email has an account, a reset link is on the way.
-cloud_welcome	[mg] Signed in as {user} · {plan}
-cloud_created	[mg] Account created. Check your email to verify when you can.
-cloud_cancel	[mg] Cancel
+or_unlock_shop_login	Na sokafy amin'ny fidirana amin'ny fivarotana
+shop_login_help	Tsy voatery: sokafy amin'ny anaran'ny mpampiasa sy ny tenimiafina ny mpiasa amin'ity fivarotana ity fa tsy PIN (miasa offline).
+cloud_account_title	Kaonty Kirano
+cloud_account_help	Misoratra anarana na midira miaraka amin'ny kaonty mitovy amin'ny kirano.shop/account. Mamorona ny id rahona sy ny drafitra maimaim-poanao.
+cloud_name_ph	Anarana (tsy voatery)
+cloud_email_ph	Mailaka
+cloud_password_ph	Tenimiafina
+cloud_continue	Tohizo
+cloud_forgot	Hadino ny tenimiafina?
+cloud_web_methods	Google sy fomba hafa amin'ny tranonkala
+cloud_signing_in	Miditra…
+cloud_sending_reset	Mandefa rohy fanavaozana…
+cloud_forgot_sent	Raha manana kaonty io mailaka io dia misy rohy fanavaozana eny an-dalana.
+cloud_welcome	Niditra ho {user} · {plan}
+cloud_created	Kaonty noforonina. Jereo ny mailakao mba hanamarina rehefa afaka ianao.
+cloud_cancel	Aoka
 permission_preset	Asa
 product_only_kirano	Kirano no rafitra fiasana enta-madinika / kirana: fivarotana counter, stock, credit ary boky - ivelan'ny fitaovanao.
 purchases_cogs	Fividianana (COGS)

@@ -588,22 +588,22 @@ net_word	Neto
 offline_badge	AKUKHO INTANETHI
 optional_login_help	Ungeno olukhethwayo (igama + igama lokugqitha). Umnini umisa kanye; umsebenzisi kuphela onokutshintsha igama lokugqitha kamva.
 or_unlock_login	Okanye vula ngegama lokungena + igama lokugqitha
-or_unlock_shop_login	[xh] Or unlock with shop login
-shop_login_help	[xh] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[xh] Kirano account
-cloud_account_help	[xh] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[xh] Name (optional)
-cloud_email_ph	[xh] Email
-cloud_password_ph	[xh] Password
-cloud_continue	[xh] Continue
-cloud_forgot	[xh] Forgot password?
-cloud_web_methods	[xh] Google and other methods on the website
-cloud_signing_in	[xh] Signing in…
-cloud_sending_reset	[xh] Sending reset link…
-cloud_forgot_sent	[xh] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	Okanye vula ngokungena kwevenkile
+shop_login_help	Ukhetho: vula ngegama lomsebenzisi negama lokugqitha labasebenzi bale venkile endaweni ye-PIN (iyasebenza ngaphandle kwe-intanethi).
+cloud_account_title	Iakhawunti ye-Kirano
+cloud_account_help	Bhalisa okanye ngena ngeakhawunti efanayo ne-kirano.shop/account. Yenza i-id yakho yefu kunye nesicwangciso sasimahla.
+cloud_name_ph	Igama (ukhetho)
+cloud_email_ph	I-imeyile
+cloud_password_ph	Igama lokugqitha
+cloud_continue	Qhubeka
+cloud_forgot	Ulibele igama lokugqitha?
+cloud_web_methods	I-Google nezinye iindlela kwiwebhusayithi
+cloud_signing_in	Iyangena…
+cloud_sending_reset	Ithumela ikhonkco lokuseta kwakhona…
+cloud_forgot_sent	Ukuba loo imeyile ineakhawunti, ikhonkco lokuseta kwakhona liyeza.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[xh] Account created. Check your email to verify when you can.
-cloud_cancel	[xh] Cancel
+cloud_created	Iakhawunti yenziwe. Jonga i-imeyile yakho ukuze uqinisekise xa unako.
+cloud_cancel	Rhoxisa
 permission_preset	Umsebenzi
 product_only_kirano	IKirano yigrosari / inkqubo yokusebenza yekirana: ukuthengiswa kwekhawuntara, isitokhwe, ikhredithi kunye neencwadi - ngaphandle kweintanethi kwizixhobo zakho.
 purchases_cogs	Okuthengiweyo (i-COGS)

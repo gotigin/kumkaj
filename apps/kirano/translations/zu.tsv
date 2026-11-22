@@ -588,22 +588,22 @@ net_word	Okusele
 offline_badge	OKUNGAxhumekile ku-inthanethi
 optional_login_help	Ukungena ngemvume ngokuzithandela (id + iphasiwedi). Umnikazi usetha kanye; umsebenzisi kuphela ongashintsha iphasiwedi kamuva.
 or_unlock_login	Noma vula nge-id yokungena + nephasiwedi
-or_unlock_shop_login	[zu] Or unlock with shop login
-shop_login_help	[zu] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[zu] Kirano account
-cloud_account_help	[zu] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[zu] Name (optional)
-cloud_email_ph	[zu] Email
-cloud_password_ph	[zu] Password
-cloud_continue	[zu] Continue
-cloud_forgot	[zu] Forgot password?
-cloud_web_methods	[zu] Google and other methods on the website
-cloud_signing_in	[zu] Signing in…
-cloud_sending_reset	[zu] Sending reset link…
-cloud_forgot_sent	[zu] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	Noma vula ngokungena kwesitolo
+shop_login_help	Ongakhetha: vula ngegama lomsebenzisi nephasiwedi yabasebenzi balesi sitolo esikhundleni se-PIN (kusebenza ngaphandle kwe-inthanethi).
+cloud_account_title	I-akhawunti ye-Kirano
+cloud_account_help	Bhalisa noma ngena nge-akhawunti efanayo ne-kirano.shop/account. Kwakha i-id yakho yefu kanye nohlelo lwamahhala.
+cloud_name_ph	Igama (ongakhetha)
+cloud_email_ph	I-imeyili
+cloud_password_ph	Iphasiwedi
+cloud_continue	Qhubeka
+cloud_forgot	Ukhohlwe iphasiwedi?
+cloud_web_methods	I-Google nezinye izindlela kuwebhusayithi
+cloud_signing_in	Iyangena…
+cloud_sending_reset	Ithumela isixhumanisi sokusetha kabusha…
+cloud_forgot_sent	Uma leyo imeyili ine-akhawunti, isixhumanisi sokusetha kabusha siyeza.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[zu] Account created. Check your email to verify when you can.
-cloud_cancel	[zu] Cancel
+cloud_created	I-akhawunti idaliwe. Hlola i-imeyili yakho ukuze uqinisekise lapho ungakwazi.
+cloud_cancel	Khansela
 permission_preset	Umsebenzi
 product_only_kirano	I-Kirano iwuhlelo lokusebenza lwegrosa / kirana: ukuthengiswa kwekhawunta, isitoko, isikweletu nezincwadi — okungaxhunyiwe ku-inthanethi kumadivayisi akho.
 purchases_cogs	Ukuthenga (COGS)

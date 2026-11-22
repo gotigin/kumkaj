@@ -601,7 +601,7 @@ cloud_web_methods	Google da sauran hanyoyin akan gidan yanar gizon
 cloud_signing_in	Ana shiga…
 cloud_sending_reset	Ana aika hanyar haɗin sake saiti…
 cloud_forgot_sent	Idan imel ɗin yana da asusu, hanyar haɗin sake saiti yana kan hanya.
-cloud_welcome	[ha] Signed in as {user} · {plan}
+cloud_welcome	An shiga a matsayin {user} · {plan}
 cloud_created	An ƙirƙira asusu. Bincika imel ɗin ku don tabbatarwa lokacin da za ku iya.
 cloud_cancel	Soke
 permission_preset	Aiki
