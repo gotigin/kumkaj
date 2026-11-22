@@ -39,7 +39,7 @@ editing_item	Klippingu
 save	Vista
 remove	Fjarlægja
 removed_items	Fjarlægt valmyndaratriði
-removed_help	Restore setur valmyndaratriðið aftur á valmyndina nákvæmlega eins og það var - verð, mynd og flokkur. Hillan okkar af leirtau er aldrei tekin af og því er alltaf hægt að bæta við réttum aftur.
+removed_help	“Endurheimta” setur valmyndaratriðið aftur á valmyndina nákvæmlega eins og það var - verð, mynd og flokkur. Hillan okkar af leirtau er aldrei tekin af og því er alltaf hægt að bæta við réttum aftur.
 restore_item	Endurheimta
 empty_catalog	Engir diskar ennþá.
 total	Samtals

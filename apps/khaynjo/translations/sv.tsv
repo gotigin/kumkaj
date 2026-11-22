@@ -818,7 +818,7 @@ printer_paper_help	Rapporterat är det papper som den här skrivarens drivrutin 
 preview_help	Det här kvittot så som det skrivs ut på skrivaren som valts nedan, i verklig storlek på dess virtuella papper. Vitt är där den skriver, grått papper är utom skrivarens räckhåll, och blekt bläck skärs av. De nio rutorna är papperet: tryck där kvittot ska sitta. Ett långt kvitto fortsätter på fler sidor. Att välja skrivare ändrar bara förhandsvisningen.
 job_layout	Upplägg
 job_delivery	Hur jobbet skickas
-job_delivery_help	OS-dokument, råbytes eller ESC/POS. Notan och köksbiljetten behåller var sin. Båda jobben kan gå till alla skrivare som Find har sparat.
+job_delivery_help	OS-dokument, råbytes eller ESC/POS. Notan och köksbiljetten behåller var sin. Båda jobben kan gå till alla skrivare som “Hitta skrivare” har sparat.
 station_vp_attached	Skrivare ansluten
 station_vp_detached	Skrivaren har tagits bort från stationen
 station_print_summary	{mode} · {n} skrivare(r)

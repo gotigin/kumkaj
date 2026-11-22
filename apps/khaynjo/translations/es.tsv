@@ -818,7 +818,7 @@ printer_paper_help	Informado es el papel al que está ajustado el controlador de
 preview_help	Este ticket tal como se imprime en la impresora elegida abajo, a tamaño real sobre su papel virtual. El blanco es donde imprime, el papel gris queda fuera del alcance de la impresora y la tinta atenuada se corta. Los nueve cuadros son el papel: toca donde debe ir el ticket. Un ticket largo sigue en más páginas. Elegir una impresora solo cambia la vista previa.
 job_layout	Diseño
 job_delivery	Cómo se envía el trabajo
-job_delivery_help	Documento del sistema operativo, bytes crudos o ESC/POS. La cuenta y el ticket de cocina mantienen sus propios datos. Cualquiera de los trabajos puede ir a cualquier impresora encontrada por Find.
+job_delivery_help	Documento del sistema operativo, bytes crudos o ESC/POS. La cuenta y el ticket de cocina mantienen sus propios datos. Cualquiera de los trabajos puede ir a cualquier impresora encontrada por “Buscar impresoras”.
 station_vp_attached	Impresora adjunta
 station_vp_detached	Impresora quitada de la estación
 station_print_summary	{mode} · {n} impresora(s)

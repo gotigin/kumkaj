@@ -619,7 +619,7 @@ history_clear_now	Очистити історію зараз
 history_cleared	Історію торгівлі очищено — налаштування збережено
 history_retention_saved	Очищення історії збережено
 history_hours_saved	Години історії збережено
-history_owner_only	Лише Власник або Admin можуть очистити історію
+history_owner_only	Лише Власник або Адмін можуть очистити історію
 rollup	Зведення
 save_brand	Зберегти бренд
 save_business_id	Зберегти ідентифікатор бізнесу

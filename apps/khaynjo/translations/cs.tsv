@@ -818,7 +818,7 @@ printer_paper_help	Hlášený je papír, na který je nastaven ovladač této ti
 preview_help	Tato účtenka tak, jak se vytiskne na tiskárně vybrané níže, ve skutečné velikosti na jejím virtuálním papíru. Bílá je místo, kde se tiskne, šedý papír je mimo dosah tiskárny a vybledlý tisk se ořízne. Devět čtverců je papír: klepněte tam, kde má účtenka být. Dlouhá účtenka pokračuje na dalších stránkách. Výběr tiskárny mění jen náhled.
 job_layout	Rozložení
 job_delivery	Jak je úloha odeslána
-job_delivery_help	Dokument OS, nezpracované bajty nebo ESC/POS. Účet a lístek do kuchyně si ponechají každý svůj. Každá úloha může přejít na jakoukoli tiskárnu, kterou funkce Find uložila.
+job_delivery_help	Dokument OS, nezpracované bajty nebo ESC/POS. Účet a lístek do kuchyně si ponechají každý svůj. Každá úloha může přejít na jakoukoli tiskárnu, kterou funkce “Najděte tiskárny” uložila.
 station_vp_attached	Připojena tiskárna
 station_vp_detached	Tiskárna odstraněna ze stanice
 station_print_summary	{mode} · {n} tiskáren

@@ -818,7 +818,7 @@ printer_paper_help	Déclaré est le papier sur lequel le pilote de cette imprima
 preview_help	Ce ticket tel qu'il s'imprime sur l'imprimante choisie ci-dessous, en taille réelle sur son papier virtuel. Le blanc est là où elle imprime, le papier gris est hors de portée de l'imprimante, et l'encre estompée est coupée. Les neuf cases sont le papier : touchez l'endroit où le ticket doit se placer. Un long ticket continue sur d'autres pages. Choisir une imprimante ne change que l'aperçu.
 job_layout	Mise en page
 job_delivery	Mode d'envoi du travail
-job_delivery_help	Document OS, bytes bruts ou ESC/POS. La facture et le ticket de cuisine conservent chacun les leurs. Chaque travail peut être envoyé à n'importe quelle imprimante trouvée par Find.
+job_delivery_help	Document OS, bytes bruts ou ESC/POS. La facture et le ticket de cuisine conservent chacun les leurs. Chaque travail peut être envoyé à n'importe quelle imprimante trouvée par “Rechercher des imprimantes”.
 station_vp_attached	Imprimante attachée
 station_vp_detached	Imprimante retirée du poste
 station_print_summary	{mode} · {n} imprimante(s)

@@ -818,7 +818,7 @@ printer_paper_help	Iliyoripotiwa ni karatasi ambayo dereva wa printa hii ameweke
 preview_help	Risiti hii kama inavyochapishwa kwenye printa iliyochaguliwa hapa chini, kwa ukubwa halisi kwenye karatasi yake pepe. Nyeupe ni mahali inapochapisha, karatasi ya kijivu haifikiwi na printa, na wino uliofifia hukatwa. Miraba tisa ni karatasi: gusa mahali risiti inapaswa kukaa. Risiti ndefu huendelea kwenye kurasa zaidi. Kuchagua printa hubadilisha onyesho la awali tu.
 job_layout	Mpangilio
 job_delivery	Jinsi kazi inavyoandikwa
-job_delivery_help	Dola la OS, mabano ya asili, au ESC/POS. Fursa na tiketi za kituo kila moja hubaki zake. Kazi yoyote inaweza kwenda kwenye vifaa vilivyopatikana Find ilivyohifadhiwa.
+job_delivery_help	Dola la OS, mabano ya asili, au ESC/POS. Fursa na tiketi za kituo kila moja hubaki zake. Kazi yoyote inaweza kwenda kwenye vifaa vilivyopatikana “Tafuta printa” ilivyohifadhiwa.
 station_vp_attached	Printa imeambatishwa
 station_vp_detached	Printa imeondolewa kutoka kituo
 station_print_summary	{mode} · printa {n}

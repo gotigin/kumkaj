@@ -980,7 +980,7 @@ product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Din l-app hija Khaynjo biss — sistema operattiva tar-ristoranti. Kummerċ ieħor jiffaċċja vapur bħala prodotti Kumkaj separati.
 purchases_cogs	Xiri (COGS)
 qty_cap	QTY
-restore_help	Restore: agħżel backup. Il-kotba jiftħu kif kienu dakinhar; il-kotba kif inhuma issa jiġu salvati l-ewwel, u għalhekk dan jista 'jitneħħa.
+restore_help	“Irrestawra”: agħżel backup. Il-kotba jiftħu kif kienu dakinhar; il-kotba kif inhuma issa jiġu salvati l-ewwel, u għalhekk dan jista 'jitneħħa.
 wipe_data_heading	Ħassar id-dejta lokali
 wipe_data_help	Sid biss — istess għażliet bħal Windows uninstall. Ir-rekords tan-negozju jikklerjaw l-istorja tal-kummerċ iżda jżommu l-menu u s-setup (bħall-PIN tal-isblokk ta' emerġenza). Is-setup tal-ħanut tneħħi d-database tal-kotba. Il-preferenzi tal-iskrin jikklerjaw it-tieqa/lingwa. Ikkonferma bil-PIN tas-Sid. Il-PIN tal-ftuħ ta' emerġenza fuq it-Tim huwa separat (imsaħ moħbi waqt il-ftuħ).
 wipe_trading	Rekords tan-negozju

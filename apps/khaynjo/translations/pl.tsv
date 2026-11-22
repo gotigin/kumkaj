@@ -818,7 +818,7 @@ printer_paper_help	Zgłoszony to papier, na który ustawiony jest sterownik tej 
 preview_help	Ten paragon tak, jak drukuje się na drukarce wybranej poniżej, w rzeczywistym rozmiarze na jej papierze wirtualnym. Białe to miejsce druku, szary papier jest poza zasięgiem drukarki, a wyblakły tusz zostaje obcięty. Dziewięć kwadratów to papier: dotknij tam, gdzie ma znaleźć się paragon. Długi paragon przechodzi na kolejne strony. Wybór drukarki zmienia tylko podgląd.
 job_layout	Układ
 job_delivery	Jak praca jest wysyłana
-job_delivery_help	Dokument systemu operacyjnego, surowe bajty lub ESC/POS. Rachunek i bilet do kuchni zachowują swoje własne. Każde zadanie może zostać przesłane do dowolnej drukarki zapisanej przez Find.
+job_delivery_help	Dokument systemu operacyjnego, surowe bajty lub ESC/POS. Rachunek i bilet do kuchni zachowują swoje własne. Każde zadanie może zostać przesłane do dowolnej drukarki zapisanej przez “Znajdź drukarki”.
 station_vp_attached	Drukarka podłączona
 station_vp_detached	Drukarka usunięta ze stacji
 station_print_summary	{mode} · {n} drukarki

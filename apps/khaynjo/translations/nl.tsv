@@ -818,7 +818,7 @@ printer_paper_help	Gemeld is het papier waarop het stuurprogramma van deze print
 preview_help	Deze bon zoals hij afdrukt op de printer die hieronder gekozen is, op ware grootte op het virtuele papier ervan. Wit is waar hij afdrukt, grijs papier ligt buiten het bereik van de printer, en vervaagde inkt wordt afgesneden. De negen vakjes zijn het papier: tik waar de bon moet staan. Een lange bon gaat verder op meer pagina's. Een printer kiezen verandert alleen het voorbeeld.
 job_layout	Indeling
 job_delivery	Hoe de taak wordt verzonden
-job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en het keukenticket behouden elk hun eigen. Elke taak kan naar elke printer gaan die Find heeft opgeslagen.
+job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en het keukenticket behouden elk hun eigen. Elke taak kan naar elke printer gaan die “Printers zoeken” heeft opgeslagen.
 station_vp_attached	Printer gekoppeld
 station_vp_detached	Printer van station verwijderd
 station_print_summary	{mode} · {n} printer(s)

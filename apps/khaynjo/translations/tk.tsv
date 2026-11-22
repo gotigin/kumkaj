@@ -696,7 +696,7 @@ backup_copy_overdue	Bu enjamy {n} günüň dowamynda ätiýaçlyk nusgasy galdyr
 backup_copy_failed	Backtiýaçlyk nusgasyny ol ýerde saklap bolmady - başga bir ýeri saýlaň
 clock_off	Bu enjamyň sagady dükanyň serwerinden {min} minut uzaklykda - bu enjamda gerekli wagty belläň
 printers_heading	Çap edijiler
-printers_help	Printerleri tapyň, saýlamak üçin birini basyň, soňra diňe şol enjamda synag sahypasyny çap ediň. Hasap printerleri: Bill & KOT formaty → Hasap. Aşhana printerleri: Aşhana → Aşhana stansiýalary (ilki stansiýa goşuň - Find stansiýa döredenok).
+printers_help	Printerleri tapyň, saýlamak üçin birini basyň, soňra diňe şol enjamda synag sahypasyny çap ediň. Hasap printerleri: Bill & KOT formaty → Hasap. Aşhana printerleri: Aşhana → Aşhana stansiýalary (ilki stansiýa goşuň - “Printerleri tapyň” stansiýa döredenok).
 printers_host_only	Printerler dükan enjamynda (Serwer) gurnalan. Hasaplary we KOT iberýänçä - Serwerde galmagy tapyň / goşuň / belläň. Synag sahypasy we hasaby çap etmegiň ölçegi Serwere gidýär.
 printers_find_heading	Printerleri tapyň
 printers_find_tip	Bu enjamy skanirläň we sanawy täzeläp duruň.

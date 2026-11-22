@@ -696,7 +696,7 @@ backup_copy_overdue	{n} napig nem készült biztonsági másolat az eszközről 
 backup_copy_failed	A biztonsági másolatot nem lehetett oda menteni – válasszon másik helyet
 clock_off	Ennek az eszköznek az órája {min} percre van az üzlet szerverétől – állítsa be a megfelelő időt ezen az eszközön
 printers_heading	Nyomtatók
-printers_help	Keresse meg a nyomtatókat, koppintson az egyikre a kiválasztásához, majd nyomtasson tesztoldalt csak azon az eszközön. Számlanyomtatók: Számla és KOT formátum → Számla. Konyhai nyomtatók: Konyha → Konyhai állomások (először adjon hozzá egy állomást – A Find nem hoz létre állomásokat).
+printers_help	Keresse meg a nyomtatókat, koppintson az egyikre a kiválasztásához, majd nyomtasson tesztoldalt csak azon az eszközön. Számlanyomtatók: Számla és KOT formátum → Számla. Konyhai nyomtatók: Konyha → Konyhai állomások (először adjon hozzá egy állomást – A “Keressen nyomtatókat” nem hoz létre állomásokat).
 printers_host_only	A nyomtatók a bolt eszközén (szerveren) vannak beállítva. Ez a pénztár számlákat és KOT-kat küld oda — Keresse meg / adja hozzá / rendelje hozzá a kiszolgálón maradást. A tesztoldal és a számla nyomtatási mérete a szerverre kerül.
 printers_find_heading	Keressen nyomtatókat
 printers_find_tip	A Keresés beolvassa ezt az eszközt, és naprakészen tartja a listát.
@@ -736,7 +736,7 @@ config_saved	Frissítve
 config_selected	„{name}” kiválasztva
 printer_output_heading	Virtuális nyomtatók
 virtual_printers_heading	Virtuális nyomtatók
-virtual_printers_empty	No virtual printers yet — set values below, then Save. Miután megvan néhány, koppintson egyet a listában a szerkesztéshez.
+virtual_printers_empty	Még nincsenek virtuális nyomtatók — állítsa be az értékeket alább, majd “Mentés”. Ha már van néhány, koppintson egyre a listában a szerkesztéshez.
 virtual_printer_name_ph	Virtuális nyomtató neve (nem kötelező)
 virtual_printer_create	Virtuális nyomtató létrehozása
 virtual_printer_save	Mentse el a virtuális nyomtatót

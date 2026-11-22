@@ -696,7 +696,7 @@ backup_copy_overdue	Sellest seadmest pole {n} päeva jooksul ühtegi varukoopiat
 backup_copy_failed	Varukoopiat ei saanud sinna salvestada – valige teine koht
 clock_off	Selle seadme kell on {min} min poe serverist maas – määrake selles seadmes õige aeg
 printers_heading	Printerid
-printers_help	Otsige üles printerid, puudutage seda selle valimiseks ja seejärel printige testleht ainult selles seadmes. Arveprinterid: arve ja KOT vorming → Arve. Köögiprinterid: Köök → Köögijaamad (lisage kõigepealt jaam — Find ei loo jaamu).
+printers_help	Otsige üles printerid, puudutage seda selle valimiseks ja seejärel printige testleht ainult selles seadmes. Arveprinterid: arve ja KOT vorming → Arve. Köögiprinterid: Köök → Köögijaamad (lisage kõigepealt jaam — “Otsige printereid” ei loo jaamu).
 printers_host_only	Printerid seadistatakse kaupluse seadmes (serveris). See kassa saadab sinna arveid ja KOT-d — serveris viibimise leidmine / lisamine / määramine. Testleht ja arve trükisuurus lähevad serverisse.
 printers_find_heading	Otsige printereid
 printers_find_tip	Otsi skannib seda seadet ja hoiab loendi ajakohasena.
@@ -818,7 +818,7 @@ printer_paper_help	Teatatud on paber, millele selle printeri draiver on seadista
 preview_help	See tšekk nii, nagu see prinditakse allpool valitud printeris, tegelikus suuruses selle virtuaalsel paberil. Valge on koht, kuhu prinditakse, hall paber jääb printeri ulatusest välja ja tuhm tint lõigatakse ära. Üheksa ruutu on paber: puudutage kohta, kus tšekk peab asuma. Pikk tšekk jätkub järgmistel lehtedel. Printeri valimine muudab ainult eelvaadet.
 job_layout	Paigutus
 job_delivery	Kuidas töö saadetakse
-job_delivery_help	OS-i dokument, töötlemata baidid või ESC/POS. Arve ja köögipilet jäävad igaüks omale. Kumbki töö võib minna mis tahes printerisse, mille Find on salvestanud.
+job_delivery_help	OS-i dokument, töötlemata baidid või ESC/POS. Arve ja köögipilet jäävad igaüks omale. Kumbki töö võib minna mis tahes printerisse, mille “Otsige printereid” on salvestanud.
 station_vp_attached	Printer lisatud
 station_vp_detached	Printer jaamast eemaldatud
 station_print_summary	{mode} · {n} printerid

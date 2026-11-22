@@ -818,7 +818,7 @@ printer_paper_help	Gerapporteer is die papier waarop hierdie drukker se drywer g
 preview_help	Hierdie strokie soos dit druk op die drukker wat hieronder gekies is, op ware grootte op sy virtuele papier. Wit is waar dit druk, grys papier is buite die drukker se bereik, en vervaagde ink word afgesny. Die nege blokkies is die papier: tik waar die strokie moet sit. 'n Lang strokie gaan oor na meer bladsye. Om 'n drukker te kies verander net die voorskou.
 job_layout	Opstelling
 job_delivery	Hoe die taak gestuur word
-job_delivery_help	OS-dokument, ruwe bytes of ESC/POS. Die rekening en die keukintiket behou elkeen sy eie. Beide taak kan na enige drukker gaan wat Find gespaar het.
+job_delivery_help	OS-dokument, ruwe bytes of ESC/POS. Die rekening en die keukintiket behou elkeen sy eie. Beide taak kan na enige drukker gaan wat “Soek drukkers” gespaar het.
 station_vp_attached	Drukker aangesluit
 station_vp_detached	Drukker verwyder van stasie
 station_print_summary	{mode} · {n} drukker(s)

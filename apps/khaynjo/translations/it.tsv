@@ -818,7 +818,7 @@ printer_paper_help	Dichiarata è la carta su cui è impostato il driver di quest
 preview_help	Questo scontrino come viene stampato sulla stampante scelta qui sotto, a grandezza reale sulla sua carta virtuale. Il bianco è dove stampa, la carta grigia è fuori dalla portata della stampante e l'inchiostro sbiadito viene tagliato. I nove riquadri sono la carta: tocca dove deve stare lo scontrino. Uno scontrino lungo prosegue su altre pagine. Scegliere una stampante cambia solo l'anteprima.
 job_layout	Pianta
 job_delivery	Come viene inviato il lavoro
-job_delivery_help	Documento OS, byte grezzi o ESC/POS. Il conto e lo scontrino della cucina mantengono ciascuno i propri. Ogni lavoro può essere inviato a qualsiasi stampante trovata da Find.
+job_delivery_help	Documento OS, byte grezzi o ESC/POS. Il conto e lo scontrino della cucina mantengono ciascuno i propri. Ogni lavoro può essere inviato a qualsiasi stampante trovata da “Trova stampanti”.
 station_vp_attached	Stampante collegata
 station_vp_detached	Stampante rimossa dalla stazione
 station_print_summary	{mode} · {n} stampante/i

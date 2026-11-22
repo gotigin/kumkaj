@@ -619,7 +619,7 @@ history_clear_now	Καθαρισμός ιστορικού τώρα
 history_cleared	Το ιστορικό συναλλαγών καθαρίστηκε — η ρύθμιση έμεινε
 history_retention_saved	Ο καθαρισμός ιστορικού αποθηκεύτηκε
 history_hours_saved	Οι ώρες ιστορικού αποθηκεύτηκαν
-history_owner_only	Μόνο ο Ιδιοκτήτης ή ο Admin μπορεί να καθαρίσει το ιστορικό
+history_owner_only	Μόνο ο Ιδιοκτήτης ή ο Διαχειριστής μπορεί να καθαρίσει το ιστορικό
 rollup	Σύνοψη
 save_brand	Αποθήκευση επωνυμίας
 save_business_id	Αποθήκευση id επιχείρησης

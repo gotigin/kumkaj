@@ -818,7 +818,7 @@ printer_paper_help	Hlásený je papier, na ktorý je nastavený ovládač tejto 
 preview_help	Tento bloček tak, ako sa vytlačí na tlačiarni vybranej nižšie, v skutočnej veľkosti na jej virtuálnom papieri. Biele je miesto, kde tlačí, sivý papier je mimo dosahu tlačiarne a vyblednutý atrament sa oreže. Deväť štvorcov je papier: ťuknite tam, kde má bloček byť. Dlhý bloček pokračuje na ďalších stranách. Výber tlačiarne mení len náhľad.
 job_layout	Rozloženie
 job_delivery	Ako sa úloha odosiela
-job_delivery_help	Dokument OS, nespracované bajty alebo ESC/POS. Účet a lístok do kuchyne si ponechajú svoje. Každá úloha môže prejsť na ktorúkoľvek tlačiareň, ktorú funkcia Find uložila.
+job_delivery_help	Dokument OS, nespracované bajty alebo ESC/POS. Účet a lístok do kuchyne si ponechajú svoje. Každá úloha môže prejsť na ktorúkoľvek tlačiareň, ktorú funkcia “Nájdite tlačiarne” uložila.
 station_vp_attached	Pripojená tlačiareň
 station_vp_detached	Tlačiareň bola odstránená zo stanice
 station_print_summary	{mode} · {n} tlačiarní

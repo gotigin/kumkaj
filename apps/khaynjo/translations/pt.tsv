@@ -818,7 +818,7 @@ printer_paper_help	Informado é o papel para o qual o driver desta impressora es
 preview_help	Este recibo tal como é impresso na impressora escolhida abaixo, em tamanho real no papel virtual dela. Branco é onde imprime, o papel cinza fica fora do alcance da impressora, e a tinta esbatida é cortada. Os nove quadrados são o papel: toque onde o recibo deve ficar. Um recibo longo continua em mais páginas. Escolher uma impressora só altera a pré-visualização.
 job_layout	Planta
 job_delivery	Como o trabalho é enviado
-job_delivery_help	Documento do sistema operacional, bytes brutos ou ESC/POS. A conta e o ticket da cozinha mantêm os seus próprios. Qualquer um dos trabalhos pode ir para qualquer impressora encontrada pelo Find.
+job_delivery_help	Documento do sistema operacional, bytes brutos ou ESC/POS. A conta e o ticket da cozinha mantêm os seus próprios. Qualquer um dos trabalhos pode ir para qualquer impressora encontrada pelo “Procurar impressoras”.
 station_vp_attached	Impressora anexada
 station_vp_detached	Impressora removida da estação
 station_print_summary	{mode} · {n} impressora(s)

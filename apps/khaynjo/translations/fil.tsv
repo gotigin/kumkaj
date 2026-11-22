@@ -39,7 +39,7 @@ editing_item	Pag-edit
 save	I-save
 remove	Alisin
 removed_items	Inalis ang mga item sa menu
-removed_help	Ibinabalik ng Restore ang menu item sa menu nang eksakto tulad ng dati — presyo, larawan at kategorya. Ang aming istante ng mga ulam ay hindi kailanman naaalis, kaya ang isang ulam ay palaging maaaring idagdag muli.
+removed_help	Ibinabalik ng “Ibalik” ang menu item sa menu nang eksakto tulad ng dati — presyo, larawan at kategorya. Ang aming istante ng mga ulam ay hindi kailanman naaalis, kaya ang isang ulam ay palaging maaaring idagdag muli.
 restore_item	Ibalik
 empty_catalog	Wala pang ulam.
 total	Kabuuan
@@ -696,7 +696,7 @@ backup_copy_overdue	Walang naiwang backup na kopya sa device na ito sa loob ng {
 backup_copy_failed	Hindi ma-save doon ang backup na kopya — pumili ng ibang lugar
 clock_off	Ang orasan ng device na ito ay {min} min sa server ng shop — itakda ang tamang oras sa device na ito
 printers_heading	Mga Printer
-printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng test page sa device na iyon lang. Mga bill printer: Bill at KOT format → Bill. Mga printer sa kusina: Kusina → Mga istasyon ng kusina (magdagdag muna ng istasyon — Hindi gumagawa ng mga istasyon ang Find).
+printers_help	Maghanap ng mga printer, i-tap ang isa para piliin ito, pagkatapos ay Mag-print ng test page sa device na iyon lang. Mga bill printer: Bill at KOT format → Bill. Mga printer sa kusina: Kusina → Mga istasyon ng kusina (magdagdag muna ng istasyon — Hindi gumagawa ng mga istasyon ang “Maghanap ng mga printer”).
 printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ito hanggang nagpapadala ng mga singil at KOT doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok at laki ng pag-print ng bill ay mapupunta sa Server.
 printers_find_heading	Maghanap ng mga printer
 printers_find_tip	Ini-scan ng Maghanap ang device na ito at pinapanatiling napapanahon ang listahan.
@@ -818,7 +818,7 @@ printer_paper_help	Ang iniulat ay ang papel kung saan nakatakda ang driver ng pr
 preview_help	Ang resibong ito kung paano ito mapi-print sa printer na pinili sa ibaba, sa totoong laki sa virtual na papel nito. Puti ang bahaging napi-print, ang kulay-abong papel ay hindi abot ng printer, at ang maputlang tinta ay napuputol. Ang siyam na kahon ay ang papel: i-tap kung saan dapat ilagay ang resibo. Ang mahabang resibo ay tumutuloy sa mas maraming pahina. Ang pagpili ng printer ay nagbabago lang sa preview.
 job_layout	Ayos
 job_delivery	Paano ipinadala ang trabaho
-job_delivery_help	Dokumento ng OS, raw byte, o ESC/POS. Ang bill at ang tiket sa kusina ay may kanya-kanyang hawak. Maaaring mapunta ang alinmang trabaho sa anumang printer na na-save ng Find.
+job_delivery_help	Dokumento ng OS, raw byte, o ESC/POS. Ang bill at ang tiket sa kusina ay may kanya-kanyang hawak. Maaaring mapunta ang alinmang trabaho sa anumang printer na na-save ng “Maghanap ng mga printer”.
 station_vp_attached	Naka-attach ang printer
 station_vp_detached	Inalis ang printer sa istasyon
 station_print_summary	{mode} · {n} mga printer

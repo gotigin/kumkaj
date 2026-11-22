@@ -818,7 +818,7 @@ printer_paper_help	Dilaporkan adalah kertas yang diatur pada driver printer ini;
 preview_help	Struk ini seperti saat dicetak di printer yang dipilih di bawah, dalam ukuran sebenarnya di kertas virtualnya. Putih adalah tempat mencetak, kertas abu-abu di luar jangkauan printer, dan tinta pudar terpotong. Sembilan kotak itu adalah kertasnya: ketuk tempat struk seharusnya berada. Struk panjang berlanjut ke halaman berikutnya. Memilih printer hanya mengubah pratinjau.
 job_layout	Tata letak
 job_delivery	Cara pengiriman pekerjaan
-job_delivery_help	Dokumen OS, byte mentah, atau ESC/POS. Tagihan dan tiket dapur masing-masing menyimpannya sendiri. Pekerjaan mana pun dapat dikirim ke printer yang ditemukan oleh Find.
+job_delivery_help	Dokumen OS, byte mentah, atau ESC/POS. Tagihan dan tiket dapur masing-masing menyimpannya sendiri. Pekerjaan mana pun dapat dikirim ke printer yang ditemukan oleh “Cari printer”.
 station_vp_attached	Printer dipasang
 station_vp_detached	Printer dilepas dari stasiun
 station_print_summary	{mode} · {n} printer
