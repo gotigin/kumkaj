@@ -194,6 +194,10 @@ const MAX_CONTENT_WIDE: f64 = 1280.0;
 const SHELF_CARD_W: f64 = 200.0;
 const SHELF_GAP: f64 = 12.0;
 const SHELF_PITCH: f64 = SHELF_CARD_W + SHELF_GAP;
+/// Left inset so a paused/reset strip shows a full first card with a clear
+/// right-edge peek of the next — not a flush crop that reads as a layout bug
+/// on a phone (evidence 2026-11-22).
+const SHELF_EDGE_INSET: f64 = 8.0;
 /// Parade speed: level 0 = still, then +SHELF_SPEED_STEP px/s per click.
 /// Cap is high so a long press of + can race the strip; default stays gentle.
 const SHELF_SPEED_STEP: f64 = 40.0;
@@ -837,12 +841,38 @@ impl App {
 
     fn place_shelf_slot(&mut self, cx: &mut Cx, slot: usize) {
         // Overlay + margin.left acts like abs X (this Makepad has no walk.abs_pos).
+        // Inset keeps the left of a snapped card off the content edge so the
+        // right-hand peek reads as intentional carousel, not overflow.
         if let Some(mut view) = self.ui.view(cx, SHELF_SLOTS[slot]).borrow_mut() {
-            view.walk.margin.left = self.shelf_slot_x[slot];
+            view.walk.margin.left = self.shelf_slot_x[slot] + SHELF_EDGE_INSET;
             view.walk.margin.top = 0.0;
             view.walk.margin.right = 0.0;
             view.walk.margin.bottom = 0.0;
         }
+    }
+
+    /// Shift every slot so the nearest card sits at x=0 (plus edge inset on
+    /// place). Used when pausing so a mid-scroll half-card does not look like
+    /// a crop bug on a phone.
+    fn snap_shelf_to_nearest_card(&mut self, cx: &mut Cx) {
+        let mut best_i = 0usize;
+        let mut best_abs = f64::INFINITY;
+        for i in 0..SHELF_SLOT_COUNT {
+            let a = self.shelf_slot_x[i].abs();
+            if a < best_abs {
+                best_abs = a;
+                best_i = i;
+            }
+        }
+        let shift = self.shelf_slot_x[best_i];
+        if shift.abs() < 0.5 {
+            return;
+        }
+        for i in 0..SHELF_SLOT_COUNT {
+            self.shelf_slot_x[i] -= shift;
+        }
+        self.place_all_shelf_slots(cx);
+        self.ui.view(cx, ids!(menus.shelf_parade)).redraw(cx);
     }
 
     fn place_all_shelf_slots(&mut self, cx: &mut Cx) {
@@ -1103,6 +1133,9 @@ impl App {
         self.paint_shelf_chrome(cx);
         if playing {
             self.shelf_arm_anim(cx);
+        } else {
+            // Pause: land on a full card + intentional next-card peek.
+            self.snap_shelf_to_nearest_card(cx);
         }
     }
 

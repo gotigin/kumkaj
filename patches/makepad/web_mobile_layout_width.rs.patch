@@ -66,13 +66,17 @@
 +        w = Math.max(1, Math.round(w));
 +        h = Math.max(1, Math.round(h));
 +        if (is_touch && canvas.getAttribute("fullpage")) {
++            // Canvas tracks the clamped viewport; html/body get WIDTH only.
++            // Setting body height to the URL-bar-shrunk viewport raced the
++            // mobile-viewport-guard (height intentionally left alone) and
++            // intermittently zoomed/cropped the page while scrolling.
 +            canvas.style.width = w + "px";
 +            canvas.style.height = h + "px";
 +            try {
 +                document.documentElement.style.width = w + "px";
++                document.documentElement.style.maxWidth = w + "px";
 +                document.body.style.width = w + "px";
-+                document.documentElement.style.height = h + "px";
-+                document.body.style.height = h + "px";
++                document.body.style.maxWidth = w + "px";
 +            } catch (_e) { }
 +        }
 +        // Same-size assignment still resets some WebGL contexts — only

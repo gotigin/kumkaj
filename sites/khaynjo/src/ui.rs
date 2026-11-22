@@ -565,8 +565,11 @@ script_mod! {
             color_focus: #x00000000
         }
     }
+    // 44×44 finger target (phone evidence 2026-11-22: 9 px pad was ~32 tall).
     let PagerBtn = SecondaryBtn{
-        padding: Inset{left: 14. right: 14. top: 9. bottom: 9.}
+        width: 44 height: 44
+        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        align: Align{x: 0.5 y: 0.5}
         draw_text +: {text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
     }
 

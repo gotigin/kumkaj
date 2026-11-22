@@ -29,6 +29,15 @@ if grep -q "visualViewport.addEventListener('scroll'" "$WEBJS"; then
   echo "error: $WEBJS must not listen to visualViewport scroll for resize" >&2
   fail=1
 fi
+# Must NOT clamp html/body height (races mobile-viewport-guard; zoomed crop).
+if grep -q 'document.body.style.height' "$WEBJS"; then
+  echo "error: $WEBJS must not set document.body.style.height on touch clamp" >&2
+  fail=1
+fi
+if ! grep -q 'document.body.style.maxWidth' "$WEBJS"; then
+  echo "error: $WEBJS must set document.body.style.maxWidth on touch clamp" >&2
+  fail=1
+fi
 
 echo "== patch listed in setup-makepad.sh =="
 if ! grep -q 'web_mobile_layout_width' "$ROOT/scripts/setup-makepad.sh"; then

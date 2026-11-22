@@ -124,6 +124,19 @@ headlines to “fix” body feel — change `Body` / `Lede` only. Documented
 after Android Chrome phone pass 2026-11-22 (kumkaj was too big at Body 16
 + Lede 20).
 
+### Accepted device limit — Khaynjo on old Mali (AGS2)
+
+**Huawei AGS2-W09 / Mali-T830 / Chrome 101:** `khaynjo.com` can paint a
+blank cream canvas after wasm load — WebGL `compile_fail.vertex` /
+`Missing shader in FromWasmAllocVao` in CDP. Sibling Makepad sites
+(kumkaj, moklanjo, kirano, tabiyat, wadhu, gotigin) paint on the same
+tablet when opened one-tab-at-a-time. Cause is site-specific shader /
+font pressure from the world-shelf (many Noto script faces + parade
+textures), not the VV-resize freeze. Not fixed without gutting the
+shelf’s multilingual fonts; treat as an **accepted residual** for that
+class of GPU (2026-11-22 dual-device pass). Prefer a current phone Chrome
+for Khaynjo QA.
+
 ### Threads
 
 Build with **`--no-threads`** so ordinary hosting does not need
@@ -142,7 +155,7 @@ have vanished on the next setup):
 | `slides_view_story_axis` | `SlidesView` `axis: Vertical`; tap / swipe / wheel flip one chapter (OS momentum ignored); presenter keys ↓ → PgDn Space, ↑ ← PgUp, Home / End; `goal_slide()` / `slide_count()` |
 | `web_init_window_order` | wasm `ToWasmInit` runs `Event::Startup` (which creates window 0) **before** applying the window geometry — without it the canvas sticks on "Loading.." with an IdPool panic |
 | `web_aux_buttons_stay` | mouse side buttons stay in-app; canvas context menu is Copy / Select all; PageUp–arrows/Space not stolen by the shell |
-| `web_mobile_layout_width` | wasm: on touch, clamp canvas layout to `min(inner, outer, screen)` — Android Chrome **Desktop site** fakes `innerWidth` ~980 on a ~393 phone and made every Makepad site unusable (2026-11-21). Debounced `visualViewport` **resize** only (no VV **scroll**); skip no-op WebGL buffer realloc — URL-bar animation used to freeze scroll and smear text on Android Chrome / Firefox / Samsung Internet (2026-11-22). Keep in sync with `scripts/web/mobile_layout_size.js`. Gate: `./scripts/check-web-mobile-layout.sh` |
+| `web_mobile_layout_width` | wasm: on touch, clamp canvas layout to `min(inner, outer, screen)` — Android Chrome **Desktop site** fakes `innerWidth` ~980 on a ~393 phone and made every Makepad site unusable (2026-11-21). Debounced `visualViewport` **resize** only (no VV **scroll**); skip no-op WebGL buffer realloc — URL-bar animation used to freeze scroll and smear text on Android Chrome / Firefox / Samsung Internet (2026-11-22). Clamp sets canvas + html/body **width/maxWidth** only — do **not** set body height (that raced `mobile-viewport-guard.js` and intermittently zoomed/cropped while scrolling, 2026-11-22). Keep in sync with `scripts/web/mobile_layout_size.js`. Gate: `./scripts/check-web-mobile-layout.sh` |
 | `text_selection` | one selection model for apps and sites: drag selects across blocks like a browser page (from a margin too on sites, `select_from_gaps`; wheel and edge auto-scroll while dragging), double-click word, long-press / 0.5 s hold on touch; `View { selection_root: true }` (the site's `page`) answers Ctrl/Cmd+A and Copy of what is highlighted; on wasm the end of a touch selection opens the same Copy / Select all menu (`FromWasmShowClipboardActions`) |
 
 **Site text selection is on (2026-11-13)** with that one model — see
