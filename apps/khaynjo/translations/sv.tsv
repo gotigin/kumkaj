@@ -285,7 +285,7 @@ zero_sales_on	Tillåt 0 INR
 zero_sales_off	Kräv pris
 zero_sales_saved_on	Nollförsäljning tillåten
 zero_sales_saved_off	Försäljningen måste ha ett pris över 0 INR
-floor_areas_help	Områden är rum eller zoner på golvet (Dine In, Parcel, AC …). Lägg först till ett område och lägg sedan bord i det - varje område är en separat grupp på golvet.
+floor_areas_help	Områden är rum eller zoner i salen (Dine In, Parcel, AC …). Lägg först till ett område och lägg sedan bord i det - varje område är en separat grupp i salen.
 area_new_ph	Nytt område/rum (t.ex. AC, trädgård)
 add_area	Lägg till område
 area_added	Området "{name}" är klart – lägg till bord i det
@@ -1131,7 +1131,7 @@ tile_ready_btn	Ledigt bord
 tile_undo_bill	Ångra faktura
 summary_busy	bord upptagna
 summary_to_collect	att samla in
-summary_on_floor	på golvet
+summary_on_floor	i salen
 floor	Sal
 sizes_as_items_ph	Storlekar som separata artiklar (valfritt) — Hälften=120, Hel=200
 dish_group_ph	Rättgrupp (valfritt) — t.ex. Paneer Tikka
@@ -1301,7 +1301,7 @@ aggregator_import_help	Valfri lokal import: lägg import_aggregator_orders.json 
 import_aggregator_file	Importera aggregatorfil
 team_pick_ph	Personal att redigera - namn, användarnamn eller val
 select_staff	Välj denna personal
-rights_help	Pengar och golvåtgärder för den här personen — tryck för att cykla: Tillåtet → Behöver chefs-PIN → Ej tillåtet. Skriv ut räkningen igen är bara räkningar; köksstationer är checklistan nedan.
+rights_help	Pengar- och salsåtgärder för den här personen — tryck för att cykla: Tillåtet → Behöver chefs-PIN → Ej tillåtet. Skriv ut räkningen igen är bara räkningar; köksstationer är checklistan nedan.
 dish_picker_help	Sök eller bläddra bland våra rätter och tryck på en för att fylla i dess namn och foto - eller behåll ditt eget namn. Ställ in ditt pris (0 är bra) och sedan Lägg till objekt.
 close_dish_list	Stäng maträttslistan
 own_item_name	Använd detta som ditt eget objektnamn
@@ -1382,7 +1382,7 @@ setup_restored	Återställd — lås upp med ägar-PIN från den säkerhetskopia
 split_help	Tryck på rätterna en gäst betalar för · {n} plockade
 split_send_first	Skicka KOT först — endast rätter köket har kan gå till en separat räkning
 split_pick_some	Tryck först på rätterna för den separata räkningen
-split_done	Separat räkning gjord - den ligger på golvet bredvid det här bordet
+split_done	Separat räkning gjord – den finns i salen bredvid det här bordet
 split_marked	separat räkning
 order_empty_pick	Beställ tom — tryck på Lägg till rätter ovan för att välja rätter.
 add_dishes	Lägg till rätter
