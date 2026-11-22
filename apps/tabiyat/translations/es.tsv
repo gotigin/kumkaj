@@ -268,7 +268,7 @@ bank_in	Ingreso a banco
 bank_out	Retiro de banco
 bank_reconciliation	Conciliación bancaria
 bank_to_till	Banco → caja
-book_add_dish	Apertura — añadir artículo
+book_add_dish	Libro — añadir artículo
 book_opening_credit	Envío — crédito inicial
 branch_name_sell_ph	Nombre de la sucursal desde la que vender
 bring_my_book	Traer mi libro

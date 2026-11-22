@@ -268,7 +268,7 @@ bank_in	Versement banque
 bank_out	Retrait banque
 bank_reconciliation	Rapprochement bancaire
 bank_to_till	Banque → caisse
-book_add_dish	Ouverture — ajouter un article
+book_add_dish	Livre — ajouter un article
 book_opening_credit	Envoi — crédit d'ouverture
 branch_name_sell_ph	Nom de la succursale de vente
 bring_my_book	Apporter mon livre

@@ -268,7 +268,7 @@ bank_in	Versamento banca
 bank_out	Prelievo banca
 bank_reconciliation	Riconciliazione bancaria
 bank_to_till	Banca → cassa
-book_add_dish	Apertura — aggiungi articolo
+book_add_dish	Libro — aggiungi articolo
 book_opening_credit	Spedizione — credito iniziale
 branch_name_sell_ph	Nome della filiale da cui vendere
 bring_my_book	Porta il mio libro
