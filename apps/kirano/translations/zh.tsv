@@ -385,7 +385,7 @@ history_hours_saved	历史时长已保存
 rollup	汇总
 save_brand	保存品牌
 save_business_id	保存企业税号和服务%
-save_features	保存所选员工的功能
+save_features	保存
 save_features_named	保存 {name}
 save_features_ok	已保存 {name} 的设置
 save_names	保存名称

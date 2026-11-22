@@ -593,7 +593,7 @@ shop_login_help	Opciono: otključajte korisničkim imenom i lozinkom osoblja ove
 cloud_account_title	kirano account
 cloud_account_help	Registrirajte se ili se prijavite s istim računom kao kirano.shop/account. Kreira vaš cloud ID i besplatni plan.
 cloud_name_ph	Ime (opcionalno)
-cloud_email_ph	[bs] Email
+cloud_email_ph	E-pošta
 cloud_password_ph	Lozinka
 cloud_continue	Nastavi
 cloud_forgot	Zaboravili ste lozinku?

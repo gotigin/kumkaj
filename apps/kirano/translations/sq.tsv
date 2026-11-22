@@ -588,22 +588,22 @@ net_word	Neto
 offline_badge	JASHTË LINJE
 optional_login_help	Hyrje opsionale (id + fjalëkalim). Pronari e vendos një herë; vetëm përdoruesi mund ta ndryshojë fjalëkalimin më vonë.
 or_unlock_login	Ose zhblloko me id hyrjeje + fjalëkalim
-or_unlock_shop_login	[sq] Or unlock with shop login
-shop_login_help	[sq] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sq] Kirano account
-cloud_account_help	[sq] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[sq] Name (optional)
-cloud_email_ph	[sq] Email
-cloud_password_ph	[sq] Password
-cloud_continue	[sq] Continue
-cloud_forgot	[sq] Forgot password?
-cloud_web_methods	[sq] Google and other methods on the website
-cloud_signing_in	[sq] Signing in…
-cloud_sending_reset	[sq] Sending reset link…
-cloud_forgot_sent	[sq] If that email has an account, a reset link is on the way.
+or_unlock_shop_login	Ose shkyç me hyrjen e dyqanit
+shop_login_help	Opsionale: shkyç me emrin e përdoruesit dhe fjalëkalimin e stafit të këtij dyqani në vend të PIN-it (funksionon offline).
+cloud_account_title	Llogaria Kirano
+cloud_account_help	Regjistrohu ose hyr me të njëjtën llogari si kirano.shop/account. Krijon id-në tuaj në cloud dhe planin falas.
+cloud_name_ph	Emri (opsionale)
+cloud_email_ph	Email
+cloud_password_ph	Fjalëkalimi
+cloud_continue	Vazhdo
+cloud_forgot	Keni harruar fjalëkalimin?
+cloud_web_methods	Google dhe metoda të tjera në faqen e internetit
+cloud_signing_in	Duke u futur…
+cloud_sending_reset	Duke dërguar lidhjen e rivendosjes…
+cloud_forgot_sent	Nëse ai email ka një llogari, një lidhje rivendosjeje është në rrugë.
 cloud_welcome	Signed in as {user} · {plan}
-cloud_created	[sq] Account created. Check your email to verify when you can.
-cloud_cancel	[sq] Cancel
+cloud_created	Llogaria u krijua. Kontrolloni emailin për të verifikuar kur të mundni.
+cloud_cancel	Anulo
 permission_preset	Puna
 product_only_kirano	Kirano është sistemi operativ i sendeve ushqimore / kirana: shitje, aksione, kredi dhe libra — jashtë linje në pajisjet tuaja.
 purchases_cogs	Blerjet (COGS)

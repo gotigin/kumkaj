@@ -385,7 +385,7 @@ history_hours_saved	이력 시간 저장됨
 rollup	롤업
 save_brand	브랜드 저장
 save_business_id	사업자 ID와 서비스 % 저장
-save_features	선택한 직원의 기능 저장
+save_features	저장
 save_features_named	{name} 저장
 save_features_ok	{name} 설정 저장됨
 save_names	이름 저장

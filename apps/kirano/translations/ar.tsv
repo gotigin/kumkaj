@@ -385,7 +385,7 @@ history_hours_saved	تم حفظ ساعات السجل
 rollup	تجميع
 save_brand	احفظ العلامة
 save_business_id	احفظ الرقم الضريبي ونسبة الخدمة
-save_features	احفظ ميزات الموظف المحدد
+save_features	حفظ
 save_features_named	حفظ {name}
 save_features_ok	حفظ إعدادات {name}
 save_names	احفظ الأسماء

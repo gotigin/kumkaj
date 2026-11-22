@@ -588,22 +588,22 @@ net_word	Nett
 offline_badge	OFFLINE
 optional_login_help	Login fakultattiv (id + password). Sid issettja darba; l-utent biss jista' jibdel il-password aktar tard.
 or_unlock_login	Jew iftaħ bl-id tal-login + password
-or_unlock_shop_login	[mt] Or unlock with shop login
-shop_login_help	[mt] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mt] Kirano account
-cloud_account_help	[mt] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mt] Name (optional)
-cloud_email_ph	[mt] Email
-cloud_password_ph	[mt] Password
-cloud_continue	[mt] Continue
-cloud_forgot	[mt] Forgot password?
-cloud_web_methods	[mt] Google and other methods on the website
-cloud_signing_in	[mt] Signing in…
-cloud_sending_reset	[mt] Sending reset link…
-cloud_forgot_sent	[mt] If that email has an account, a reset link is on the way.
-cloud_welcome	[mt] Signed in as {user} · {plan}
-cloud_created	[mt] Account created. Check your email to verify when you can.
-cloud_cancel	[mt] Cancel
+or_unlock_shop_login	Jew spoġġi bil-login tal-ħanut
+shop_login_help	Fakultattiv: spoġġi bl-username u l-password tal-istaff ta’ dan il-ħanut minflok PIN (jaħdem offline).
+cloud_account_title	Kont Kirano
+cloud_account_help	Irreġistra jew idħol bl-istess kont bħal kirano.shop/account. Joħloq l-id tal-cloud u l-pjan b’xejn tiegħek.
+cloud_name_ph	Isem (fakultattiv)
+cloud_email_ph	Email
+cloud_password_ph	Password
+cloud_continue	Kompli
+cloud_forgot	Insejt il-password?
+cloud_web_methods	Google u metodi oħra fuq il-websajt
+cloud_signing_in	Qed jidħol…
+cloud_sending_reset	Qed jibgħat il-link tar-reset…
+cloud_forgot_sent	Jekk dik l-email għandha kont, link tar-reset qed jiġi.
+cloud_welcome	Illoggjat bħala {user} · {plan}
+cloud_created	Kont maħluq. Iċċekkja l-email biex tivverifika meta tista’.
+cloud_cancel	Ikkanċella
 permission_preset	Xogħol
 product_only_kirano	Kirano hija s-sistema operattiva tal-grocer/kirana: counter sell, stokk, kreditu u kotba — offline fuq it-tagħmir tiegħek.
 purchases_cogs	Xiri (COGS)

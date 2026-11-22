@@ -591,7 +591,7 @@ or_unlock_login	Ili otključajte id-em prijave + lozinkom
 or_unlock_shop_login	Ili otključajte prijavom u trgovinu
 shop_login_help	Izborno: otključajte korisničkim imenom i lozinkom osoblja ove trgovine umjesto PIN-a (radi izvan mreže).
 cloud_account_title	kirano račun
-cloud_account_help	[hr] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_account_help	Registrirajte se ili prijavite istim računom kao kirano.shop/account. Stvara vaš cloud id i besplatni plan.
 cloud_name_ph	Ime (nije obavezno)
 cloud_email_ph	E-mail
 cloud_password_ph	Lozinka

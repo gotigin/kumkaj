@@ -385,7 +385,7 @@ history_hours_saved	Horas do histórico salvas
 rollup	Consolidado
 save_brand	Guardar marca
 save_business_id	Guardar id fiscal e % de serviço
-save_features	Guardar funções do funcionário selecionado
+save_features	Guardar
 save_features_named	Salvar {name}
 save_features_ok	Configuração salva para {name}
 save_names	Guardar nomes
@@ -771,7 +771,7 @@ bill_line_address	Endereço
 bill_line_fssai	FSSAI
 bill_line_title	Título
 bill_line_customer	Cliente
-bill_line_bill_no	N.º da conta
+bill_line_bill_no	N.º da fatura
 bill_line_time	Hora
 bill_line_cashier	Caixa
 bill_line_items	Itens

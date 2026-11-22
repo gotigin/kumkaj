@@ -588,22 +588,22 @@ net_word	خالص
 offline_badge	آفلاین
 optional_login_help	ورود اختیاری (شناسه + گذرواژه). مالک یک بار می‌گذارد؛ بعد فقط خود کاربر گذرواژه را عوض می‌کند.
 or_unlock_login	یا با شناسه ورود + گذرواژه قفل را باز کنید
-or_unlock_shop_login	ﺪﯿﻨﮐ ﺯﺎﺑ ﺍﺭ ﻞﻔﻗ ﻩﺎﮕﺷﻭﺮﻓ ﻪﺑ ﺩﻭﺭﻭ ﺎﺑ ﺎﯾ
-shop_login_help	.(ﺪﻨﮐ ﯽﻣ ﺭﺎﮐ ﻦﯾﻼ﻿ﻓﺁ) ﺪﯿﻨﮐ ﺯﺎﺑ ﻦﯿﭘ ﯼﺎﺟ ﻪﺑ ﻩﺎﮕﺷﻭﺮﻓ ﻦﯾﺍ ﻥﺎﻨﮐﺭﺎﮐ ﺭﻮﺒﻋ ﺰﻣﺭ ﻭ ﯼﺮﺑﺭﺎﮐ
-cloud_account_title	kirano ﺖﻧﺎﮐﺍ
-cloud_account_help	.ﺪﻨﮐ ﯽﻣ ﺩﺎﺠﯾﺍ ﺍﺭ ﺎﻤﺷ ﻥﺎﮕﯾﺍﺭ ﺡﺮﻃ ﻭ ﯼﺮﺑﺍ ﻪﺳﺎﻨﺷ .ﺪﯾﻮﺷ ﺩﺭﺍﻭ ﺎﯾ ﺪﯿﻨﮐ ﻡﺎﻧ ﺖﺒﺛ kirano
-cloud_name_ph	(ﯼﺭﺎﯿﺘﺧﺍ) ﻡﺎﻧ
-cloud_email_ph	ﻞﯿﻤﯾﺍ
-cloud_password_ph	ﺭﻮﺒﻋ ﺰﻣﺭ
-cloud_continue	ﺪﯿﻫﺩ ﻪﻣﺍﺩﺍ
-cloud_forgot	؟ﺪﯾﺍ ﻩﺩﺮﮐ ﺵﻮﻣﺍﺮﻓ ﺍﺭ ﺭﻮﺒﻋ ﺰﻣﺭ
-cloud_web_methods	ﺖﯾﺎﺳ ﺏﻭ ﺭﺩ ﺮﮕﯾﺩ ﯼﺎﻫ ﺵﻭﺭ ﻭ ﻞﮔﻮﮔ
-cloud_signing_in	…ﻢﺘﺴﯿﺳ ﻪﺑ ﺩﻭﺭﻭ
-cloud_sending_reset	…ﯽﻧﺎﺸﻧﺯﺎﺑ ﮏﻨﯿﻟ ﻝﺎﺳﺭﺍ ﻝﺎﺣ ﺭﺩ
-cloud_forgot_sent	.ﺖﺳﺍ ﻩﺍﺭ ﺭﺩ ﯽﻧﺎﺸﻧﺯﺎﺑ ﺪﻧﻮﯿﭘ ،ﺪﺷﺎﺑ ﻪﺘﺷﺍﺩ ﯼﺮﺑﺭﺎﮐ ﺏﺎﺴﺣ ﻞﯿﻤﯾﺍ ﻥﺁ ﺮﮔﺍ
-cloud_welcome	{user} · {plan} ﻥﺍﻮﻨﻋ ﻪﺑ ﻩﺪﺷ ﺩﺭﺍﻭ
-cloud_created	.ﺪﯿﻨﮐ ﺪﯿﯾﺄﺗ ﻥﺎﮑﻣﺍ ﺕﺭﻮﺻ ﺭﺩ ﺎﺗ ﺪﯿﻨﮐ ﯽﺳﺭﺮﺑ ﺍﺭ ﺩﻮﺧ ﻞﯿﻤﯾﺍ .ﺪﺷ ﺩﺎﺠﯾﺍ ﺏﺎﺴﺣ
-cloud_cancel	ﺪﯿﻨﮐ ﻮﻐﻟ
+or_unlock_shop_login	یا با ورود فروشگاه باز کنید
+shop_login_help	اختیاری: به جای PIN با نام کاربری و رمز عبور کارکنان این فروشگاه باز کنید (آفلاین کار می‌کند).
+cloud_account_title	حساب Kirano
+cloud_account_help	با همان حساب kirano.shop/account ثبت‌نام یا وارد شوید. شناسه ابری و طرح رایگان شما را می‌سازد.
+cloud_name_ph	نام (اختیاری)
+cloud_email_ph	ایمیل
+cloud_password_ph	رمز عبور
+cloud_continue	ادامه
+cloud_forgot	رمز عبور را فراموش کرده‌اید؟
+cloud_web_methods	گوگل و روش‌های دیگر در وب‌سایت
+cloud_signing_in	در حال ورود…
+cloud_sending_reset	در حال ارسال پیوند بازنشانی…
+cloud_forgot_sent	اگر آن ایمیل حسابی داشته باشد، پیوند بازنشانی در راه است.
+cloud_welcome	وارد شده به‌عنوان {user} · {plan}
+cloud_created	حساب ساخته شد. وقتی توانستید برای تأیید ایمیل را بررسی کنید.
+cloud_cancel	لغو
 permission_preset	شغل
 product_only_kirano	Kirano سیستم عامل خواربارفروشی / kirana است: فروش پیشخوان، سهام، اعتبار و کتاب — آفلاین در دستگاه های شما.
 purchases_cogs	خرید (بهای تمام‌شده)

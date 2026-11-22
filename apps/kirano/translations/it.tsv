@@ -385,7 +385,7 @@ history_hours_saved	Orari cronologia salvati
 rollup	Riepilogo
 save_brand	Salva marchio
 save_business_id	Salva id fiscale e % servizio
-save_features	Salva funzioni personale selezionato
+save_features	Salva
 save_features_named	Salva {name}
 save_features_ok	Impostazioni salvate per {name}
 save_names	Salva nomi
@@ -771,7 +771,7 @@ bill_line_address	Indirizzo
 bill_line_fssai	FSSAI
 bill_line_title	Titolo
 bill_line_customer	Cliente
-bill_line_bill_no	N. conto
+bill_line_bill_no	N. scontrino
 bill_line_time	Ora
 bill_line_cashier	Cassiere
 bill_line_items	Articoli

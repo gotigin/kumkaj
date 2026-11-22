@@ -385,7 +385,7 @@ history_hours_saved	Masaa ya historia yaliyohifadhiwa
 rollup	Muhtasari
 save_brand	Hifadhi chapa
 save_business_id	Hifadhi kitambulisho cha kodi na % ya huduma
-save_features	Hifadhi vipengele vya mfanyakazi aliyechaguliwa
+save_features	Hifadhi
 save_features_named	Hifadhi {name}
 save_features_ok	Imetengenezwa mipangilio ya {name}
 save_names	Hifadhi majina
@@ -545,7 +545,7 @@ duress_off	PIN ya dharura ya kufungua imezimwa
 duress_saved	PIN ya dharura ya kufungua imehifadhiwa
 duress_cleared	PIN ya dharura ya kufungua imezimwa
 upi_amount_ph	Kiasi cha UPI
-void	Futa
+void	Batilisha
 write_off_ap	Futa AP
 write_off_heading	Futa (maliza bila malipo)
 write_off_nil	Futa / salio sifuri

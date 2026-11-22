@@ -332,7 +332,7 @@ login_id_ph	Nazwa użytkownika
 mark_cleared	Marek oczyścił
 new_party_clear	Nowy klient lub dostawca (czytelny formularz)
 new_party_kind_supplier_ph	Nowy rodzaj klienta lub dostawcy (Dostawca)
-next_order	Następne zamówienie (posprzątane biurko)
+next_order	Następne zamówienie (wyczyść biurko)
 note_gstin_ph	Uwaga / GSTIN / przypomnienie o umowie
 notes_attach_party	Notatki i załączniki (wybrany klient lub dostawca)
 notes_attach_sale	Notatki i załączniki (wybrana sprzedaż)
