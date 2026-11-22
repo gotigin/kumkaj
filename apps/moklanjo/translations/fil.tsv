@@ -316,7 +316,7 @@ awb_pools_heading	Mga pool ng numero ng carrier ng AWB
 add_awb_pool	Magdagdag ng AWB pool
 awb_pool_carrier_ph	Pangalan ng partido ng carrier
 awb_pool_start_ph	Simula no.
-awb_pool_end_ph	End no.
+awb_pool_end_ph	Wakas no.
 awb_pool_prefix_ph	Prefix (opsyonal)
 awb_pool_label_ph	Label (opsyonal)
 pieces_ph	Mga piraso (blangko = 1) — palawakin para sa kargamento / maraming piraso

@@ -281,8 +281,8 @@ attach_bill_photo	Faktuurfoto heg
 attach_pdf	PDF heg
 attach_photo	Foto heg
 bank	Bank
-bank_in	Bank in
-bank_out	Bank uit
+bank_in	Bankstorting
+bank_out	Bankonttrekking
 bank_to_till	Boek → kasregister
 till_to_bank	Kas → bank
 mark_cleared	Gemerk as geskoon
