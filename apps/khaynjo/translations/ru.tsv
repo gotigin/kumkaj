@@ -427,7 +427,7 @@ bank_in	Внести в банк
 bank_out	Снять из банка
 bank_reconciliation	Банковская сверка
 bank_to_till	Банк → касса
-book_add_dish	Заказ — добавить блюдо / позицию
+book_add_dish	Книга — добавить блюдо / позицию
 book_opening_credit	Отправка — начальный кредит
 branch_name_sell_ph	Имя филиала для продажи
 bring_my_book	Принести мою книгу

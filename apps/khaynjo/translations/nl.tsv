@@ -427,7 +427,7 @@ bank_in	Bankstorting
 bank_out	Bankopname
 bank_reconciliation	Bankafstemming
 bank_to_till	Bank → kassa
-book_add_dish	Bestelling — gerecht / artikel toevoegen
+book_add_dish	Boek — gerecht / artikel toevoegen
 book_opening_credit	Boeking — openingskrediet
 branch_name_sell_ph	Naam van vestiging om uit te verkopen
 bring_my_book	Breng mijn boek
