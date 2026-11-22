@@ -588,22 +588,22 @@ net_word	純額
 offline_badge	オフライン
 optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
 or_unlock_login	またはログインID＋パスワードで解除
-or_unlock_shop_login	[ja] Or unlock with shop login
-shop_login_help	[ja] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ja] Kirano account
-cloud_account_help	[ja] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ja] Name (optional)
-cloud_email_ph	[ja] Email
-cloud_password_ph	[ja] Password
-cloud_continue	[ja] Continue
-cloud_forgot	[ja] Forgot password?
-cloud_web_methods	[ja] Google and other methods on the website
-cloud_signing_in	[ja] Signing in…
-cloud_sending_reset	[ja] Sending reset link…
-cloud_forgot_sent	[ja] If that email has an account, a reset link is on the way.
-cloud_welcome	[ja] Signed in as {user} · {plan}
-cloud_created	[ja] Account created. Check your email to verify when you can.
-cloud_cancel	[ja] Cancel
+or_unlock_shop_login	または店舗ログインで解除
+shop_login_help	任意：PINの代わりにこの店舗のスタッフのユーザー名とパスワードで解除（オフライン可）。
+cloud_account_title	Kiranoアカウント
+cloud_account_help	kirano.shop/account と同じアカウントで登録またはサインイン。クラウドIDと無料プランを作成します。
+cloud_name_ph	名前（任意）
+cloud_email_ph	メール
+cloud_password_ph	パスワード
+cloud_continue	続ける
+cloud_forgot	パスワードをお忘れですか？
+cloud_web_methods	ウェブサイトのGoogleとその他の方法
+cloud_signing_in	サインイン中…
+cloud_sending_reset	リセットリンクを送信中…
+cloud_forgot_sent	そのメールにアカウントがあれば、リセットリンクを送信しています。
+cloud_welcome	{user} · {plan} としてサインイン中
+cloud_created	アカウントを作成しました。確認のためメールを確認してください。
+cloud_cancel	キャンセル
 permission_preset	権限プリセット
 product_only_kirano	このアプリは Kirano 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
 purchases_cogs	仕入（COGS）

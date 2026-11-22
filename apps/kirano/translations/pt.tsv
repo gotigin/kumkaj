@@ -588,22 +588,22 @@ net_word	Líquido
 offline_badge	OFFLINE
 optional_login_help	Acesso opcional (id + senha). O dono define uma vez; depois só o utilizador pode alterar a senha.
 or_unlock_login	Ou desbloquear com id de acesso + senha
-or_unlock_shop_login	[pt] Or unlock with shop login
-shop_login_help	[pt] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[pt] Kirano account
-cloud_account_help	[pt] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[pt] Name (optional)
-cloud_email_ph	[pt] Email
-cloud_password_ph	[pt] Password
-cloud_continue	[pt] Continue
-cloud_forgot	[pt] Forgot password?
-cloud_web_methods	[pt] Google and other methods on the website
-cloud_signing_in	[pt] Signing in…
-cloud_sending_reset	[pt] Sending reset link…
-cloud_forgot_sent	[pt] If that email has an account, a reset link is on the way.
-cloud_welcome	[pt] Signed in as {user} · {plan}
-cloud_created	[pt] Account created. Check your email to verify when you can.
-cloud_cancel	[pt] Cancel
+or_unlock_shop_login	Ou desbloquear com o login da loja
+shop_login_help	Opcional: desbloquear com o utilizador e a palavra-passe do pessoal desta loja em vez do PIN (funciona offline).
+cloud_account_title	Conta Kirano
+cloud_account_help	Registe-se ou inicie sessão com a mesma conta de kirano.shop/account. Cria o seu id na nuvem e o plano gratuito.
+cloud_name_ph	Nome (opcional)
+cloud_email_ph	Email
+cloud_password_ph	Palavra-passe
+cloud_continue	Continuar
+cloud_forgot	Esqueceu a palavra-passe?
+cloud_web_methods	Google e outros métodos no site
+cloud_signing_in	A iniciar sessão…
+cloud_sending_reset	A enviar o link de reposição…
+cloud_forgot_sent	Se esse email tiver uma conta, um link de reposição está a caminho.
+cloud_welcome	Sessão iniciada como {user} · {plan}
+cloud_created	Conta criada. Verifique o email para confirmar quando puder.
+cloud_cancel	Cancelar
 permission_preset	Predefinição de permissões
 product_only_kirano	Este app é só Kirano, o sistema para restaurantes. Outros ramos têm produtos Kumkaj próprios.
 purchases_cogs	Compras (COGS)

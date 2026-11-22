@@ -588,22 +588,22 @@ net_word	bersih
 offline_badge	LUAR TALIAN
 optional_login_help	Log masuk pilihan (id + kata laluan). Set pemilik sekali; hanya pengguna boleh menukar kata laluan kemudian.
 or_unlock_login	Atau buka kunci dengan id log masuk + kata laluan
-or_unlock_shop_login	[ms] Or unlock with shop login
-shop_login_help	[ms] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ms] Kirano account
-cloud_account_help	[ms] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ms] Name (optional)
-cloud_email_ph	[ms] Email
-cloud_password_ph	[ms] Password
-cloud_continue	[ms] Continue
-cloud_forgot	[ms] Forgot password?
-cloud_web_methods	[ms] Google and other methods on the website
-cloud_signing_in	[ms] Signing in…
-cloud_sending_reset	[ms] Sending reset link…
-cloud_forgot_sent	[ms] If that email has an account, a reset link is on the way.
-cloud_welcome	[ms] Signed in as {user} · {plan}
-cloud_created	[ms] Account created. Check your email to verify when you can.
-cloud_cancel	[ms] Cancel
+or_unlock_shop_login	Atau buka kunci dengan log masuk kedai
+shop_login_help	Pilihan: buka kunci dengan nama pengguna dan kata laluan staf kedai ini, bukan PIN (berfungsi luar talian).
+cloud_account_title	Akaun Kirano
+cloud_account_help	Daftar atau log masuk dengan akaun yang sama seperti kirano.shop/account. Mencipta id awan dan pelan percuma anda.
+cloud_name_ph	Nama (pilihan)
+cloud_email_ph	E-mel
+cloud_password_ph	Kata laluan
+cloud_continue	Teruskan
+cloud_forgot	Lupa kata laluan?
+cloud_web_methods	Google dan kaedah lain di laman web
+cloud_signing_in	Sedang log masuk…
+cloud_sending_reset	Menghantar pautan set semula…
+cloud_forgot_sent	Jika e-mel itu ada akaun, pautan set semula sedang dihantar.
+cloud_welcome	Log masuk sebagai {user} · {plan}
+cloud_created	Akaun dicipta. Semak e-mel anda untuk pengesahan bila boleh.
+cloud_cancel	Batal
 permission_preset	Kerja
 product_only_kirano	Kirano ialah sistem pengendalian runcit / kirana: jualan kaunter, stok, kredit dan buku — di luar talian pada peranti anda.
 purchases_cogs	Pembelian (COGS)
