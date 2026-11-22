@@ -1301,7 +1301,7 @@ aggregator_import_help	Munasqa Llaqtamanta apamuy: import_aggregator_orders.json
 import_aggregator_file	Huñuq willañiqita hawamanta apamuy
 team_pick_ph	Llamk'anapaq llamk'aqkuna — suti, llamk'achiqpa sutin, icha akllana
 select_staff	Kay llamkaqkunata akllay
-rights_help	Qullqi & mikhuy wasi ruwaykuna kay runapaq — tap to cycle: Saqisqa → Jefeta necesitan PIN → Mana saqisqachu. Invitado facturata yapamanta imprimiy invitado facturakunalla; cocina estaciones nisqakunan kay urapi lista de comprobación nisqapi kashan.
+rights_help	Qullqi & mikhuy wasi ruwaykuna kay runapaq — ñit'iy ciclanapaq: «Permitisqa» → «Aprobacionwan» → «Mana saqisqachu». «Invitado facturata yapamanta imprimiy» invitado facturakunalla; cocina estaciones urapi checklistpi kashan.
 dish_picker_help	Maskay utaq mikhuyniyku maskay chaymanta hukninta ñit'iy sutinta chaymanta fotonta hunt'achinaykipaq — utaq kikin sutiykita waqaychay. Precioykita churay (0 allinmi), chaymanta menú elementota yapay.
 close_dish_list	Platokuna listata wichqay
 own_item_name	Kayta kikiykipa menú elemento sutiyki hina llamk'achiy

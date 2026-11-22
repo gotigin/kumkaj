@@ -796,7 +796,7 @@ route_dont_print	Nincs nyomtató
 stations_heading	Konyhai állomások
 stations_help	Adjon hozzá konyhai állomásokat az edényekhez és KOT. Mindegyik állomáshoz csatlakoztassa a nyomtatóit (a Beállítások → Nyomtatók alatt található), állítsa be a prioritást, és válassza az Első, ami működik vagy a Nyomtatás mindenre lehetőséget. A változtatásokat menet közben menti – nincs Mentés gomb.
 station_print_heading	Nyomtatók ehhez az állomáshoz
-station_print_help	Válasszon ki egy állomást, majd csatlakoztasson egy vagy több nyomtatót. ↑↓ próbasorrendet állít be. First that works stops after the first success; Print on all sends to every attached printer. Each change saves immediately.
+station_print_help	Válasszon állomást, majd csatoljon egy vagy több nyomtatót. ↑↓ a próbálkozási sorrend. Az első sikeres megáll; «Nyomtatás az összesre» minden csatolt nyomtatóra küld. Minden változás azonnal mentésre kerül.
 station_print_pick_ph	Állomás a nyomtatók beállításához
 station_print_pick_first	Először válasszon egy konyhai állomást
 station_print_editing	Nyomtatók szerkesztése a következőhöz: „{name}”
