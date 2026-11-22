@@ -740,7 +740,7 @@ apply_discount	தள்ளுபடி செய்
 save_opening_cash	தொடக்கப் பணத்தைச் சேமி
 close_shift_print	ஷிஃப்டை முடித்து சீட்டு அச்சிடு
 discount_ph	10% அல்லது 50
-discount_reason_ph	காரணம் (எ.கா. வழக்கமான விருந்தினர், உணவு தாமதம்)
+discount_reason_ph	காரணம் (வழக்கமான வாடிக்கையாளர், தாமதம்…)
 opening_float_ph	இன்று காலை டிராயரில் வைத்த பணம்
 shift_counted_ph	ஒப்படைப்பில் எண்ணிய பணம்
 opening_float	தொடக்கப் பணம்

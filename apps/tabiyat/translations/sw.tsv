@@ -740,7 +740,7 @@ apply_discount	Weka punguzo
 save_opening_cash	Hifadhi pesa ya kuanzia
 close_shift_print	Funga zamu na chapisha risiti
 discount_ph	10% au 50
-discount_reason_ph	Sababu (mf. mteja wa kawaida, chakula kimechelewa)
+discount_reason_ph	Sababu (mteja wa kawaida, kuchelewa…)
 opening_float_ph	Pesa iliyowekwa droo asubuhi
 shift_counted_ph	Pesa iliyohesabiwa wakati wa kukabidhi
 opening_float	Pesa ya kuanzia

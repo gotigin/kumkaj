@@ -740,7 +740,7 @@ apply_discount	ใช้ส่วนลด
 save_opening_cash	บันทึกเงินทอนตั้งต้น
 close_shift_print	ปิดกะและพิมพ์ใบ
 discount_ph	10% หรือ 50
-discount_reason_ph	เหตุผล (เช่น ลูกค้าประจำ, อาหารช้า)
+discount_reason_ph	เหตุผล (ลูกค้าประจำ, ล่าช้า…)
 opening_float_ph	เงินสดที่ใส่ลิ้นชักเมื่อเช้า
 shift_counted_ph	เงินสดที่นับตอนส่งกะ
 opening_float	เงินทอนตั้งต้น

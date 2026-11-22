@@ -740,7 +740,7 @@ apply_discount	Aplicar desconto
 save_opening_cash	Salvar fundo de caixa
 close_shift_print	Fechar turno e imprimir
 discount_ph	10% ou 50
-discount_reason_ph	Motivo (ex. cliente frequente, comida atrasada)
+discount_reason_ph	Motivo (cliente habitual, atraso…)
 opening_float_ph	Dinheiro colocado no caixa esta manhã
 shift_counted_ph	Dinheiro contado na troca
 opening_float	Fundo de caixa

@@ -740,7 +740,7 @@ apply_discount	應用折扣
 save_opening_cash	保存備用金
 close_shift_print	交班並打印交班單
 discount_ph	10% 或 50
-discount_reason_ph	原因（如常客、上菜慢）
+discount_reason_ph	原因（老顧客、延遲…）
 opening_float_ph	今早放入錢箱的現金
 shift_counted_ph	交班時點算的現金
 opening_float	備用金

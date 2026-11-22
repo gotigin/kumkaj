@@ -740,7 +740,7 @@ apply_discount	सूट लावा
 save_opening_cash	सुरुवातीची रोकड जतन करा
 close_shift_print	शिफ्ट बंद करा व चिठ्ठी छापा
 discount_ph	10% किंवा 50
-discount_reason_ph	कारण (उदा. नियमित पाहुणे, जेवण उशिरा)
+discount_reason_ph	कारण (नेहमीचा ग्राहक, उशीर…)
 opening_float_ph	आज सकाळी ड्रॉवरमध्ये ठेवलेली रोकड
 shift_counted_ph	हस्तांतराच्या वेळी मोजलेली रोकड
 opening_float	सुरुवातीची रोकड

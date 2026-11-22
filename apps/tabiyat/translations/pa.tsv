@@ -740,7 +740,7 @@ apply_discount	ਛੋਟ ਲਾਓ
 save_opening_cash	ਸ਼ੁਰੂਆਤੀ ਨਕਦ ਸੰਭਾਲੋ
 close_shift_print	ਸ਼ਿਫ਼ਟ ਬੰਦ ਕਰੋ ਅਤੇ ਪਰਚੀ ਛਾਪੋ
 discount_ph	10% ਜਾਂ 50
-discount_reason_ph	ਕਾਰਨ (ਜਿਵੇਂ ਨਿਯਮਤ ਮਹਿਮਾਨ, ਖਾਣੇ ਵਿੱਚ ਦੇਰ)
+discount_reason_ph	ਕਾਰਨ (ਨਿਯਮਤ ਗਾਹਕ, ਦੇਰੀ…)
 opening_float_ph	ਅੱਜ ਸਵੇਰੇ ਦਰਾਜ਼ ਵਿੱਚ ਰੱਖੀ ਨਕਦੀ
 shift_counted_ph	ਸੌਂਪਣ ਵੇਲੇ ਗਿਣੀ ਨਕਦੀ
 opening_float	ਸ਼ੁਰੂਆਤੀ ਨਕਦ

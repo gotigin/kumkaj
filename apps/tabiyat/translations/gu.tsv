@@ -740,7 +740,7 @@ apply_discount	ડિસ્કાઉન્ટ લાગુ કરો
 save_opening_cash	શરૂઆતની રોકડ સાચવો
 close_shift_print	શિફ્ટ બંધ કરો અને સ્લિપ છાપો
 discount_ph	10% અથવા 50
-discount_reason_ph	કારણ (દા.ત. નિયમિત મહેમાન, જમવામાં મોડું)
+discount_reason_ph	કારણ (નિયમિત ગ્રાહક, વિલંબ…)
 opening_float_ph	આજે સવારે ડ્રોઅરમાં મૂકેલી રોકડ
 shift_counted_ph	સોંપણી વખતે ગણેલી રોકડ
 opening_float	શરૂઆતની રોકડ

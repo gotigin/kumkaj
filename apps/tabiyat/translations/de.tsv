@@ -740,7 +740,7 @@ apply_discount	Rabatt anwenden
 save_opening_cash	Wechselgeld speichern
 close_shift_print	Schicht abschließen und drucken
 discount_ph	10 % oder 50
-discount_reason_ph	Grund (z. B. Stammgast, Essen verspätet)
+discount_reason_ph	Grund (Stammkunde, Verspätung…)
 opening_float_ph	Heute früh in die Kasse gelegt
 shift_counted_ph	Beim Übergeben gezählt
 opening_float	Wechselgeld (Anfang)

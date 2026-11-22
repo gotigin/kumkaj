@@ -740,7 +740,7 @@ apply_discount	ରିହାତି ଦିଅନ୍ତୁ
 save_opening_cash	ଆରମ୍ଭ ନଗଦ ସଞ୍ଚୟ କରନ୍ତୁ
 close_shift_print	ସିଫ୍ଟ ବନ୍ଦ କରି ସ୍ଲିପ ଛାପନ୍ତୁ
 discount_ph	10% ବା 50
-discount_reason_ph	କାରଣ (ଯେପରି ନିୟମିତ ଅତିଥି, ଖାଦ୍ୟରେ ବିଳମ୍ବ)
+discount_reason_ph	କାରଣ (ନିୟମିତ ଗ୍ରାହକ, ବିଳମ୍ବ…)
 opening_float_ph	ଆଜି ସକାଳେ ଡ୍ରୟରରେ ରଖିଥିବା ନଗଦ
 shift_counted_ph	ହସ୍ତାନ୍ତରରେ ଗଣାଯାଇଥିବା ନଗଦ
 opening_float	ଆରମ୍ଭ ନଗଦ

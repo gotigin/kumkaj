@@ -740,7 +740,7 @@ apply_discount	ഡിസ്കൗണ്ട് നൽകുക
 save_opening_cash	തുടക്ക പണം സേവ് ചെയ്യുക
 close_shift_print	ഷിഫ്റ്റ് അവസാനിപ്പിച്ച് സ്ലിപ്പ് പ്രിന്റ് ചെയ്യുക
 discount_ph	10% അല്ലെങ്കിൽ 50
-discount_reason_ph	കാരണം (ഉദാ. സ്ഥിരം അതിഥി, ഭക്ഷണം വൈകി)
+discount_reason_ph	കാരണം (സ്ഥിരം ഉപഭോക്താവ്, കാലതാമസം…)
 opening_float_ph	ഇന്ന് രാവിലെ ഡ്രോയറിൽ വച്ച പണം
 shift_counted_ph	കൈമാറുമ്പോൾ എണ്ണിയ പണം
 opening_float	തുടക്ക പണം

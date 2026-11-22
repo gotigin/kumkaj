@@ -740,7 +740,7 @@ apply_discount	Applica sconto
 save_opening_cash	Salva fondo cassa
 close_shift_print	Chiudi turno e stampa
 discount_ph	10% o 50
-discount_reason_ph	Motivo (es. cliente abituale, piatto in ritardo)
+discount_reason_ph	Motivo (cliente abituale, ritardo…)
 opening_float_ph	Contanti messi in cassa stamattina
 shift_counted_ph	Contanti contati al cambio
 opening_float	Fondo cassa

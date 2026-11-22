@@ -740,7 +740,7 @@ apply_discount	Appliquer la remise
 save_opening_cash	Enregistrer le fond de caisse
 close_shift_print	Clôturer le service et imprimer
 discount_ph	10 % ou 50
-discount_reason_ph	Motif (ex. client fidèle, plat en retard)
+discount_reason_ph	Motif (client régulier, retard…)
 opening_float_ph	Espèces mises en caisse ce matin
 shift_counted_ph	Espèces comptées à la relève
 opening_float	Fond de caisse

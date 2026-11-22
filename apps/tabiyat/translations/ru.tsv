@@ -740,7 +740,7 @@ apply_discount	Применить скидку
 save_opening_cash	Сохранить размен
 close_shift_print	Закрыть смену и печатать
 discount_ph	10% или 50
-discount_reason_ph	Причина (напр. постоянный гость, задержка блюд)
+discount_reason_ph	Причина (постоянный клиент, задержка…)
 opening_float_ph	Наличные, положенные в кассу утром
 shift_counted_ph	Наличные при передаче смены
 opening_float	Размен на начало дня

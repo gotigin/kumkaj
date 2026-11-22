@@ -740,7 +740,7 @@ apply_discount	డిస్కౌంట్ ఇవ్వండి
 save_opening_cash	ప్రారంభ నగదు సేవ్ చేయి
 close_shift_print	షిఫ్ట్ ముగించి స్లిప్ ప్రింట్ చేయి
 discount_ph	10% లేదా 50
-discount_reason_ph	కారణం (ఉదా. రెగ్యులర్ అతిథి, ఆహారం ఆలస్యం)
+discount_reason_ph	కారణం (రెగ్యులర్ కస్టమర్, ఆలస్యం…)
 opening_float_ph	ఈ ఉదయం డ్రాయర్‌లో పెట్టిన నగదు
 shift_counted_ph	అప్పగింతలో లెక్కించిన నగదు
 opening_float	ప్రారంభ నగదు

@@ -740,7 +740,7 @@ apply_discount	छुट लगाउनुहोस्
 save_opening_cash	सुरुको नगद सुरक्षित गर्नुहोस्
 close_shift_print	सिफ्ट बन्द गरी पर्ची छाप्नुहोस्
 discount_ph	10% वा 50
-discount_reason_ph	कारण (जस्तै नियमित पाहुना, ढिलो खाना)
+discount_reason_ph	कारण (नियमित ग्राहक, ढिलाइ…)
 opening_float_ph	आज बिहान दराजमा राखेको नगद
 shift_counted_ph	हस्तान्तरणमा गनेको नगद
 opening_float	सुरुको नगद (फ्लोट)

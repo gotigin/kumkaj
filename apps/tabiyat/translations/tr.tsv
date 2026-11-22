@@ -740,7 +740,7 @@ apply_discount	İndirim uygula
 save_opening_cash	Açılış nakdini kaydet
 close_shift_print	Vardiyayı kapat ve fiş yazdır
 discount_ph	%10 veya 50
-discount_reason_ph	Neden (ör. müdavim, geciken yemek)
+discount_reason_ph	Neden (düzenli müşteri, gecikme…)
 opening_float_ph	Bu sabah kasaya konan nakit
 shift_counted_ph	Devirde sayılan nakit
 opening_float	Açılış nakdi

@@ -740,7 +740,7 @@ apply_discount	Zastosuj zniżkę
 save_opening_cash	Zaoszczędź gotówkę na otwarcie
 close_shift_print	Zamknij zmianę i wydrukuj odcinek
 discount_ph	10% lub 50
-discount_reason_ph	Powód (np. stały gość, późne jedzenie)
+discount_reason_ph	Powód (stały klient, opóźnienie…)
 opening_float_ph	Gotówka włożona do szuflady dziś rano
 shift_counted_ph	Gotówka liczona przy przekazaniu
 opening_float	Otwarcie gotówki (pływak)

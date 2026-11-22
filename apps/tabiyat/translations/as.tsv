@@ -740,7 +740,7 @@ apply_discount	ৰেহাই দিয়ক
 save_opening_cash	আৰম্ভণিৰ নগদ সাঁচক
 close_shift_print	শিফ্ট বন্ধ কৰি চিলিপ ছপা কৰক
 discount_ph	10% বা 50
-discount_reason_ph	কাৰণ (যেনে নিয়মীয়া অতিথি, খাদ্যত পলম)
+discount_reason_ph	কাৰণ (নিয়মীয়া গ্ৰাহক, পলম…)
 opening_float_ph	আজি পুৱা ড্ৰয়াৰত ৰখা নগদ
 shift_counted_ph	হস্তান্তৰত গণা নগদ
 opening_float	আৰম্ভণিৰ নগদ

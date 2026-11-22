@@ -740,7 +740,7 @@ apply_discount	Guna diskaun
 save_opening_cash	Simpan wang tunai pembukaan
 close_shift_print	Tutup syif dan cetak slip
 discount_ph	10% atau 50
-discount_reason_ph	Sebab (cth. tetamu tetap, makanan lewat)
+discount_reason_ph	Sebab (pelanggan tetap, kelewatan…)
 opening_float_ph	Wang tunai dimasukkan ke dalam laci pagi ini
 shift_counted_ph	Wang tunai dikira semasa penyerahan
 opening_float	Wang tunai pembukaan (terapung)

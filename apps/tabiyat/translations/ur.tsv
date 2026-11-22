@@ -740,7 +740,7 @@ apply_discount	رعایت لگائیں
 save_opening_cash	ابتدائی نقد محفوظ کریں
 close_shift_print	شفٹ بند کریں اور پرچی چھاپیں
 discount_ph	10% یا 50
-discount_reason_ph	وجہ (مثلاً مستقل مہمان، کھانے میں تاخیر)
+discount_reason_ph	وجہ (باقاعدہ گاہک، تاخیر…)
 opening_float_ph	آج صبح دراز میں رکھی نقدی
 shift_counted_ph	حوالگی پر گنی گئی نقدی
 opening_float	ابتدائی نقد

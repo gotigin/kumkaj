@@ -740,7 +740,7 @@ apply_discount	Застосувати знижку
 save_opening_cash	Зберегти початкову готівку
 close_shift_print	Закрити зміну й надрукувати талон
 discount_ph	10% або 50
-discount_reason_ph	Причина (напр. постійний гість, страва запізнилася)
+discount_reason_ph	Причина (постійний клієнт, затримка…)
 opening_float_ph	Готівка, покладена в шухляду цього ранку
 shift_counted_ph	Готівка, порахована під час передачі
 opening_float	Початкова готівка (розмін)

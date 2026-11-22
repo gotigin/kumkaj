@@ -740,7 +740,7 @@ apply_discount	تطبيق الخصم
 save_opening_cash	احفظ النقد الافتتاحي
 close_shift_print	أغلق الوردية واطبع الإيصال
 discount_ph	10% أو 50
-discount_reason_ph	السبب (مثل ضيف دائم، تأخر الطعام)
+discount_reason_ph	السبب (زبون دائم، تأخير…)
 opening_float_ph	النقد الموضوع في الدرج صباحًا
 shift_counted_ph	النقد المعدود عند التسليم
 opening_float	النقد الافتتاحي

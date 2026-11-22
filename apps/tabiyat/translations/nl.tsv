@@ -740,7 +740,7 @@ apply_discount	Korting toepassen
 save_opening_cash	Wisselgeld opslaan
 close_shift_print	Dienst afsluiten en bon printen
 discount_ph	10% of 50
-discount_reason_ph	Reden (bijv. vaste gast, eten te laat)
+discount_reason_ph	Reden (vaste klant, vertraging…)
 opening_float_ph	Contant vanmorgen in de la gelegd
 shift_counted_ph	Contant geteld bij overdracht
 opening_float	Wisselgeld (begin)

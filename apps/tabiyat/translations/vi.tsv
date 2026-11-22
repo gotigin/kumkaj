@@ -740,7 +740,7 @@ apply_discount	Áp dụng giảm giá
 save_opening_cash	Lưu tiền đầu ca
 close_shift_print	Đóng ca và in phiếu
 discount_ph	10% hoặc 50
-discount_reason_ph	Lý do (vd. khách quen, món ra trễ)
+discount_reason_ph	Lý do (khách quen, chậm…)
 opening_float_ph	Tiền bỏ vào ngăn kéo sáng nay
 shift_counted_ph	Tiền đếm khi giao ca
 opening_float	Tiền đầu ca

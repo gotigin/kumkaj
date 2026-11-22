@@ -740,7 +740,7 @@ apply_discount	割引を適用
 save_opening_cash	釣銭準備金を保存
 close_shift_print	シフト締め・伝票印刷
 discount_ph	10% または 50
-discount_reason_ph	理由（例：常連、提供遅れ）
+discount_reason_ph	理由（常連客、遅れ…）
 opening_float_ph	今朝レジに入れた現金
 shift_counted_ph	引き継ぎ時の現金
 opening_float	釣銭準備金

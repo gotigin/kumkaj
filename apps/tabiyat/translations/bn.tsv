@@ -740,7 +740,7 @@ apply_discount	ছাড় দিন
 save_opening_cash	শুরুর নগদ সংরক্ষণ
 close_shift_print	শিফট বন্ধ করে স্লিপ ছাপুন
 discount_ph	10% বা 50
-discount_reason_ph	কারণ (যেমন নিয়মিত অতিথি, খাবারে দেরি)
+discount_reason_ph	কারণ (নিয়মিত গ্রাহক, দেরি…)
 opening_float_ph	আজ সকালে ড্রয়ারে রাখা নগদ
 shift_counted_ph	হস্তান্তরে গোনা নগদ
 opening_float	শুরুর নগদ

@@ -740,7 +740,7 @@ apply_discount	ರಿಯಾಯಿತಿ ನೀಡಿ
 save_opening_cash	ಆರಂಭಿಕ ನಗದು ಉಳಿಸಿ
 close_shift_print	ಶಿಫ್ಟ್ ಮುಗಿಸಿ ಸ್ಲಿಪ್ ಮುದ್ರಿಸಿ
 discount_ph	10% ಅಥವಾ 50
-discount_reason_ph	ಕಾರಣ (ಉದಾ. ನಿಯಮಿತ ಅತಿಥಿ, ಆಹಾರ ತಡ)
+discount_reason_ph	ಕಾರಣ (ನಿಯಮಿತ ಗ್ರಾಹಕ, ವಿಳಂಬ…)
 opening_float_ph	ಇಂದು ಬೆಳಿಗ್ಗೆ ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಇಟ್ಟ ನಗದು
 shift_counted_ph	ಹಸ್ತಾಂತರದಲ್ಲಿ ಎಣಿಸಿದ ನಗದು
 opening_float	ಆರಂಭಿಕ ನಗದು

@@ -740,7 +740,7 @@ apply_discount	اعمال تخفیف
 save_opening_cash	ذخیره نقد آغازین
 close_shift_print	بستن شیفت و چاپ برگه
 discount_ph	۱۰٪ یا ۵۰
-discount_reason_ph	دلیل (مثلاً مهمان همیشگی، غذای دیر)
+discount_reason_ph	دلیل (مشتری دائم، تأخیر…)
 opening_float_ph	نقدی که صبح در کشو گذاشته شد
 shift_counted_ph	نقد شمرده‌شده هنگام تحویل شیفت
 opening_float	نقد آغازین (تنخواه)

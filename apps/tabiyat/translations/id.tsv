@@ -740,7 +740,7 @@ apply_discount	Terapkan diskon
 save_opening_cash	Simpan kas awal
 close_shift_print	Tutup shift dan cetak slip
 discount_ph	10% atau 50
-discount_reason_ph	Alasan (mis. tamu tetap, makanan telat)
+discount_reason_ph	Alasan (pelanggan tetap, keterlambatan…)
 opening_float_ph	Kas yang dimasukkan pagi ini
 shift_counted_ph	Kas yang dihitung saat serah terima
 opening_float	Kas awal
