@@ -68,7 +68,7 @@ applied	Ulanylýar
 note_ph	Bellik (islege görä)
 rounded	TERJIME EDILDI
 split	Bölün
-bill_item_layout	Menýu harytsynyň tertibi
+bill_item_layout	Harydyň tertibi
 bill_item_layout_columns	Sütünler
 bill_item_layout_stacked	Toplanan
 bill_item_header	Sütün sözbaşylary
@@ -339,7 +339,7 @@ goods_received	Harytlar
 import_day	Import güni
 import_items_csv_plain	Harytlerini import CSV…
 import_parties_csv	Müşderileri we üpjün edijileri import ediň CSV…
-item_name	Menýu harytsynyň ady
+item_name	Harydyň ady
 login_id_ph	Ulanyjy ady
 mark_cleared	Mark arassalandy
 new_party_clear	Täze müşderi ýa-da üpjün ediji (anyk görnüş)
