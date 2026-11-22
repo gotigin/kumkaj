@@ -998,7 +998,7 @@ rounded_total	Total arredondado
 setup_app_khaynjo	Configurar Khaynjo
 shop_logo_optional	Logótipo da loja (opcional)
 stock_type_help	Escreva o nome do item (parte basta), uma quantidade, e ajuste. Itens ainda não contados precisam de Começar contagem uma vez.
-team_owner_help	O dono cria cada pessoa com nome, título de função, predefinição de permissões e PIN inicial. O dono não pode alterar o PIN de ninguém depois — só essa pessoa pode atualizar o seu próprio PIN.
+team_owner_help	Deixe a pessoa em branco para acrescentar alguém: nome, cargo, utilizador, PIN e palavra-passe opcional, depois Adicionar. Escolha uma pessoa para editar o mesmo formulário — nome, utilizador, palavra-passe, ecrãs e direitos — depois Guardar. O seu PIN e palavra-passe são um único acesso em baixo. O proprietário não muda o PIN de mais ninguém.
 staff_name_ph	Nome / id da equipe
 staff_copy_hire_ph	Copiar configuração de (opcional)
 staff_copy_hire	Use a configuração dessa pessoa
@@ -1301,7 +1301,7 @@ aggregator_import_help	Local opcional: coloque import_aggregator_orders.json em 
 import_aggregator_file	Importar ficheiro agregador
 team_pick_ph	Nome do funcionário a editar
 select_staff	Escolher este funcionário
-rights_help	Permissões — toque para mudar: Permitido → Com aprovação (PIN do gerente na hora) → Não permitido.
+rights_help	Ações de dinheiro e salão para esta pessoa — toque para ciclar: Permitido → Precisa do PIN do chefe → Não permitido. Reimprimir conta é só contas; as estações de cozinha são a lista abaixo.
 dish_picker_help	Procure ou navegue pelos nossos pratos e toque num para preencher o nome e a foto, ou mantenha o seu próprio nome. Defina o preço (0 é aceito) e depois Adicionar item.
 close_dish_list	Fechar lista de pratos
 own_item_name	Usar como nome do seu item

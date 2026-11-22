@@ -998,7 +998,7 @@ rounded_total	舍入总额
 setup_app_khaynjo	设置 Khaynjo
 shop_logo_optional	店铺标志（可选）
 stock_type_help	输入项目名称（部分即可）、数量，然后调整。尚未盘点的项目需要先开始计数一次。
-team_owner_help	店主为每位员工创建姓名、角色头衔、权限预设和初始PIN。店主之后不能更改任何人的PIN — 只有本人可以更新自己的PIN。
+team_owner_help	留空此人可新增：姓名、岗位、用户名、PIN 与可选密码，然后添加。选中某人编辑同一类表单——姓名、用户名、密码、屏幕与权限——然后保存。您自己的 PIN 与密码是底部一次登录。店主不改别人的 PIN。
 staff_name_ph	员工姓名/编号
 staff_copy_hire_ph	从（可选）复制设置
 staff_copy_hire	使用此人的设置
@@ -1301,7 +1301,7 @@ aggregator_import_help	可选本地：将 import_aggregator_orders.json 放入 b
 import_aggregator_file	导入聚合商文件
 team_pick_ph	要编辑的员工姓名
 select_staff	选择该员工
-rights_help	权限 — 点击切换：允许 → 需审批（当场输入经理 PIN）→ 不允许。
+rights_help	此人的金钱与楼面操作 — 点按循环：允许 → 需要老板 PIN → 不允许。再打账单仅指账单；厨房工位是下方清单。
 dish_picker_help	搜索或浏览我们的菜品，点一下即可填入名称和图片，也可以保留您自己的名称。填写价格（可以为 0），然后添加菜品。
 close_dish_list	关闭菜品列表
 own_item_name	用作您自己的菜品名称

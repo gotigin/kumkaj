@@ -998,7 +998,7 @@ rounded_total	반올림 합계
 setup_app_khaynjo	Khaynjo 설정
 shop_logo_optional	매장 로고(선택)
 stock_type_help	항목 이름을 입력(일부만으로 충분), 수량을 입력한 뒤 조정하세요. 아직 세지 않은 항목은 수량 관리 시작이 한 번 필요합니다.
-team_owner_help	점주는 각 직원을 이름, 역할 제목, 권한 프리셋, 시작 PIN으로 생성합니다. 점주는 나중에 누구의 PIN도 변경할 수 없으며, 본인만 자신의 PIN을 업데이트할 수 있습니다.
+team_owner_help	사람을 비워 두면 추가: 이름·직무·사용자 이름·PIN·선택 비밀번호, 그다음 추가. 사람을 고르면 같은 양식을 편집 — 이름·사용자 이름·비밀번호·화면·권한 — 그다음 저장. 본인 PIN과 비밀번호는 아래 한 번의 로그인. 소유자는 다른 사람 PIN을 바꾸지 않습니다.
 staff_name_ph	직원 이름 / ID
 staff_copy_hire_ph	설정 복사 (선택 사항)
 staff_copy_hire	이 사람의 설정 사용
@@ -1301,7 +1301,7 @@ aggregator_import_help	선택 Local: backups에 import_aggregator_orders.json을
 import_aggregator_file	애그리게이터 파일 가져오기
 team_pick_ph	편집할 직원 이름
 select_staff	이 직원 선택
-rights_help	권한 — 눌러서 변경: 허용 → 승인 필요 (그 자리에서 관리자 PIN) → 허용 안 함.
+rights_help	이 사람의 돈·홀 작업 — 눌러 순환: 허용 → 보스 PIN 필요 → 불가. 영수증 다시 인쇄는 영수증만; 주방 스테이션은 아래 목록.
 dish_picker_help	요리를 검색하거나 둘러보고 하나를 누르면 이름과 사진이 채워집니다. 직접 정한 이름을 써도 됩니다. 가격을 넣고(0도 가능) 품목을 추가하세요.
 close_dish_list	요리 목록 닫기
 own_item_name	내 품목 이름으로 사용

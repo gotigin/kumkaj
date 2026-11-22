@@ -998,7 +998,7 @@ rounded_total	Total arrondi
 setup_app_khaynjo	Configurer Khaynjo
 shop_logo_optional	Logo de la boutique (facultatif)
 stock_type_help	Écrivez le nom de l'article (un bout suffit), une quantité, puis ajustez. Les articles pas encore comptés ont besoin de Commencer le suivi une fois.
-team_owner_help	Le propriétaire crée chaque personne avec un nom, un titre de rôle, un préréglage de permissions et un PIN de départ. Le propriétaire ne peut plus changer le PIN de personne — seule cette personne peut mettre à jour son propre PIN.
+team_owner_help	Laissez la personne vide pour en ajouter une : nom, poste, identifiant, PIN et mot de passe optionnel, puis Ajouter. Choisissez une personne pour éditer le même formulaire — nom, identifiant, mot de passe, écrans et droits — puis Enregistrer. Votre propre PIN et mot de passe sont une seule connexion en bas. Le propriétaire ne change le PIN de personne d’autre.
 staff_name_ph	Nom / id du personnel
 staff_copy_hire_ph	Copier la configuration depuis (optionnel)
 staff_copy_hire	Utiliser la configuration de cette personne
@@ -1301,7 +1301,7 @@ aggregator_import_help	Local optionnel : placez import_aggregator_orders.json da
 import_aggregator_file	Importer le fichier agrégateur
 team_pick_ph	Nom de l'employé à modifier
 select_staff	Choisir cet employé
-rights_help	Droits — touchez pour changer : Autorisé → Avec approbation (PIN du responsable à ce moment) → Non autorisé.
+rights_help	Actions argent et salle pour cette personne — touchez pour cycler : Autorisé → PIN du chef requis → Non autorisé. Réimprimer l’addition = additions seulement ; les postes cuisine sont la liste ci-dessous.
 dish_picker_help	Cherchez ou parcourez nos plats et touchez-en un pour remplir son nom et sa photo, ou gardez votre propre nom. Indiquez votre prix (0 accepté), puis Ajouter l'article.
 close_dish_list	Fermer la liste des plats
 own_item_name	Utiliser comme nom de votre article

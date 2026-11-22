@@ -998,7 +998,7 @@ rounded_total	Gerundeter Gesamtbetrag
 setup_app_khaynjo	Khaynjo einrichten
 shop_logo_optional	Shop-Logo (optional)
 stock_type_help	Artikelname eintippen (Teil genügt), Menge eingeben, dann anpassen. Noch nicht gezählte Artikel brauchen einmal Zählung starten.
-team_owner_help	Der Inhaber erstellt jede Person mit Name, Rollentitel, Berechtigungsprofil und Start-PIN. Der Inhaber kann später keine PIN ändern – nur die Person selbst kann ihre eigene PIN aktualisieren.
+team_owner_help	Person leer lassen zum Hinzufügen: Name, Job, Benutzername, PIN und optionales Passwort, dann Hinzufügen. Person wählen, um dasselbe Formular zu bearbeiten — Name, Benutzername, Passwort, Bildschirme und Rechte — dann Speichern. Ihre eigene PIN und Ihr Passwort sind eine Anmeldung unten. Der Inhaber ändert niemandes andere PIN.
 staff_name_ph	Mitarbeitername / ID
 staff_copy_hire_ph	Einrichtung kopieren von (optional)
 staff_copy_hire	Diese Personeneinstellung verwenden
@@ -1301,7 +1301,7 @@ aggregator_import_help	Optional Local: import_aggregator_orders.json in backups 
 import_aggregator_file	Aggregator-Datei importieren
 team_pick_ph	Name des Mitarbeiters
 select_staff	Diesen Mitarbeiter wählen
-rights_help	Rechte — antippen zum Ändern: Erlaubt → Mit Freigabe (Manager-PIN in dem Moment) → Nicht erlaubt.
+rights_help	Geld- und Saal-Aktionen für diese Person — tippen zum Durchschalten: Erlaubt → Chef-PIN nötig → Nicht erlaubt. Rechnung erneut drucken gilt nur Rechnungen; Küchenstationen sind die Liste unten.
 dish_picker_help	Suchen oder stöbern Sie in unseren Gerichten und tippen Sie eines an, um Name und Foto zu übernehmen – oder behalten Sie Ihren eigenen Namen. Preis eingeben (0 ist erlaubt), dann Artikel hinzufügen.
 close_dish_list	Gerichteliste schließen
 own_item_name	Als eigenen Artikelnamen verwenden

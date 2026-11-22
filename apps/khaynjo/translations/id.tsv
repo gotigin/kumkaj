@@ -998,7 +998,7 @@ rounded_total	Total dibulatkan
 setup_app_khaynjo	Siapkan Khaynjo
 shop_logo_optional	Logo toko (opsional)
 stock_type_help	Ketik nama item (sebagian saja cukup), jumlah, lalu sesuaikan. Item yang belum dihitung perlu Mulai hitung sekali.
-team_owner_help	Pemilik membuat setiap orang dengan nama, judul peran, preset izin, dan PIN awal. Pemilik tidak bisa mengubah PIN siapa pun nanti — hanya orang itu yang bisa memperbarui PIN-nya sendiri.
+team_owner_help	Biarkan orang kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN, dan sandi opsional, lalu Tambah. Pilih orang untuk mengedit formulir yang sama — nama, nama pengguna, sandi, layar, dan hak — lalu Simpan. PIN dan sandi Anda sendiri adalah satu masuk di bawah. Pemilik tidak mengubah PIN orang lain.
 staff_name_ph	Nama / id staf
 staff_copy_hire_ph	Salin pengaturan dari (opsional)
 staff_copy_hire	Gunakan pengaturan orang ini
@@ -1301,7 +1301,7 @@ aggregator_import_help	Opsional Local: taruh import_aggregator_orders.json di ba
 import_aggregator_file	Impor berkas agregator
 team_pick_ph	Nama staf yang diubah
 select_staff	Pilih staf ini
-rights_help	Hak — ketuk untuk ubah: Diizinkan → Dengan persetujuan (PIN manajer saat itu) → Tidak diizinkan.
+rights_help	Tindakan uang & lantai untuk orang ini — ketuk untuk berganti: Diizinkan → Perlu PIN atasan → Tidak diizinkan. Cetak ulang tagihan hanya tagihan; stasiun dapur adalah daftar di bawah.
 dish_picker_help	Cari atau telusuri hidangan kami lalu ketuk satu untuk mengisi nama dan fotonya, atau pakai nama Anda sendiri. Isi harga (0 boleh), lalu Tambah item.
 close_dish_list	Tutup daftar hidangan
 own_item_name	Pakai sebagai nama item Anda sendiri

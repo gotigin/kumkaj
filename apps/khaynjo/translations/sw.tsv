@@ -998,7 +998,7 @@ rounded_total	Jumla iliyozungushwa
 setup_app_khaynjo	Sanidi Khaynjo
 shop_logo_optional	Nembo ya duka (si lazima)
 stock_type_help	Andika jina la bidhaa (sehemu yake inatosha), idadi, kisha rekebisha. Bidhaa ambazo bado hazijahesabiwa zinahitaji Anza kuhesabu mara moja.
-team_owner_help	Mmiliki humtengeneza kila mtu kwa jina, cheo cha jukumu, kipimo cha ruhusa, na PIN ya kuanzia. Mmiliki hawezi kubadilisha PIN ya mtu yeyote baadaye — mtu huyo pekee ndiye anayeweza kusasisha PIN yake.
+team_owner_help	Acha mtu tupu kuongeza mtu: jina, kazi, jina la mtumiaji, PIN na nenosiri la hiari, kisha Ongeza. Chagua mtu kuhariri fomu ile ile — jina, jina la mtumiaji, nenosiri, skrini na haki — kisha Hifadhi. PIN yako na nenosiri ni kuingia moja chini. Mmiliki habadilishi PIN ya mtu mwingine.
 staff_name_ph	Jina / kitambulisho cha mfanyakazi
 staff_copy_hire_ph	Kopia mipangilio kutoka (chaguo)
 staff_copy_hire	Tumia mipangilio ya mtu huyu
@@ -1301,7 +1301,7 @@ aggregator_import_help	Local ya hiari: weka import_aggregator_orders.json kwenye
 import_aggregator_file	Ingiza faili ya aggregator
 team_pick_ph	Jina la mfanyakazi wa kuhariri
 select_staff	Chagua mfanyakazi huyu
-rights_help	Haki — gusa kubadilisha: Inaruhusiwa → Kwa idhini (PIN ya meneja wakati huo) → Hairuhusiwi.
+rights_help	Vitendo vya fedha na sakafu kwa mtu huyu — gusa kubadilisha: Ruhusiwa → Inahitaji PIN ya bosi → Hairuhusiwi. Chapisha bili tena ni bili tu; vituo vya jiko ni orodha chini.
 dish_picker_help	Tafuta au vinjari vyakula vyetu na uguse kimoja kujaza jina na picha yake, au tumia jina lako. Weka bei (0 inakubalika), kisha Ongeza bidhaa.
 close_dish_list	Funga orodha ya vyakula
 own_item_name	Tumia kama jina lako la bidhaa

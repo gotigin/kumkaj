@@ -998,7 +998,7 @@ rounded_total	Yuvarlanmış toplam
 setup_app_khaynjo	Khaynjo kurulumu
 shop_logo_optional	Dükkan logosu (isteğe bağlı)
 stock_type_help	Öğe adını yazın (bir kısmı yeterli), miktar girin, sonra ayarlayın. Henüz sayılmamış öğeler bir kez Sayımı başlat gerektirir.
-team_owner_help	Sahibi her kişiyi isim, rol unvanı, izin ön ayarı ve başlangıç PIN'i ile oluşturur. Sahibi daha sonra kimsenin PIN'ini değiştiremez — yalnızca o kişi kendi PIN'ini güncelleyebilir.
+team_owner_help	Birini eklemek için kişiyi boş bırakın: ad, iş, kullanıcı adı, PIN ve isteğe bağlı parola, sonra Ekle. Aynı formu düzenlemek için birini seçin — ad, kullanıcı adı, parola, ekranlar ve haklar — sonra Kaydet. Kendi PIN’iniz ve parolanız altta tek oturum açmadır. Sahip başkasının PIN’ini değiştirmez.
 staff_name_ph	Personel adı / kimliği
 staff_copy_hire_ph	Ayarın kopyalanacağı kişi (isteğe bağlı)
 staff_copy_hire	Bu kişinin ayarlarını kullan
@@ -1301,7 +1301,7 @@ aggregator_import_help	İsteğe bağlı Local: backups’a import_aggregator_ord
 import_aggregator_file	Toplayıcı dosyasını içe aktar
 team_pick_ph	Düzenlenecek personel adı
 select_staff	Bu personeli seç
-rights_help	Yetkiler — değiştirmek için dokunun: İzinli → Onayla (o anda müdür PIN'i) → İzin yok.
+rights_help	Bu kişi için para ve salon işlemleri — döngü için dokunun: İzinli → Patron PIN’i gerekir → İzin yok. Fişi yeniden yazdır yalnızca fişler; mutfak istasyonları aşağıdaki listedir.
 dish_picker_help	Yemeklerimizde arayın ya da göz atın ve birine dokunun; adı ve fotoğrafı dolar. Dilerseniz kendi adınızı kullanın. Fiyatı girin (0 olabilir), sonra Ürün ekle.
 close_dish_list	Yemek listesini kapat
 own_item_name	Kendi ürün adınız olarak kullanın

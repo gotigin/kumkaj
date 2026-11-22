@@ -998,7 +998,7 @@ rounded_total	Afgerond totaal
 setup_app_khaynjo	Khaynjo instellen
 shop_logo_optional	Winkellogo (optioneel)
 stock_type_help	Typ de artikelnaam (een deel is genoeg), een aantal, en pas aan. Artikelen die nog niet geteld zijn, hebben een keer Telling starten nodig.
-team_owner_help	De eigenaar maakt elke persoon aan met naam, roltitel, machtigingsprofiel en start-PIN. De eigenaar kan later niemands PIN wijzigen – alleen die persoon kan zijn eigen PIN bijwerken.
+team_owner_help	Laat de persoon leeg om iemand toe te voegen: naam, functie, gebruikersnaam, PIN en optioneel wachtwoord, dan Toevoegen. Kies een persoon om datzelfde formulier te bewerken — naam, gebruikersnaam, wachtwoord, schermen en rechten — dan Opslaan. Je eigen PIN en wachtwoord zijn één aanmelding onderaan. De eigenaar wijzigt niemands andere PIN.
 staff_name_ph	Personeelsnaam / id
 staff_copy_hire_ph	Kopieer instellingen van (optioneel)
 staff_copy_hire	Gebruik de instellingen van deze persoon
@@ -1301,7 +1301,7 @@ aggregator_import_help	Optioneel Local: zet import_aggregator_orders.json in bac
 import_aggregator_file	Aggregatorbestand importeren
 team_pick_ph	Naam van medewerker
 select_staff	Deze medewerker kiezen
-rights_help	Rechten — tik om te wijzigen: Toegestaan → Met goedkeuring (manager-pincode op dat moment) → Niet toegestaan.
+rights_help	Geld- en zaalacties voor deze persoon — tik om te wisselen: Toegestaan → Baas-PIN nodig → Niet toegestaan. Rekening opnieuw printen is alleen rekeningen; keukenstations staan in de lijst hieronder.
 dish_picker_help	Zoek of blader door onze gerechten en tik er een aan voor naam en foto, of houd uw eigen naam. Vul de prijs in (0 mag), dan Artikel toevoegen.
 close_dish_list	Gerechtenlijst sluiten
 own_item_name	Gebruik als eigen artikelnaam

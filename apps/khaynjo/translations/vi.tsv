@@ -998,7 +998,7 @@ rounded_total	Tổng đã làm tròn
 setup_app_khaynjo	Thiết lập Khaynjo
 shop_logo_optional	Logo cửa hàng (tùy chọn)
 stock_type_help	Gõ tên mục (một phần là đủ), số lượng, rồi điều chỉnh. Mục chưa đếm cần Bắt đầu đếm một lần.
-team_owner_help	Chủ tạo mỗi người với tên, chức danh vai trò, mẫu quyền và PIN ban đầu. Chủ không thể đổi PIN của ai sau này — chỉ người đó mới cập nhật được PIN của mình.
+team_owner_help	Để trống người để thêm: tên, việc, tên đăng nhập, PIN và mật khẩu tùy chọn, rồi Thêm. Chọn người để sửa cùng kiểu biểu mẫu — tên, tên đăng nhập, mật khẩu, màn hình và quyền — rồi Lưu. PIN và mật khẩu của bạn là một lần đăng nhập ở dưới. Chủ không đổi PIN của người khác.
 staff_name_ph	Tên / mã nhân viên
 staff_copy_hire_ph	Sao chép cấu hình từ (tùy chọn)
 staff_copy_hire	Sử dụng cấu hình của người này
@@ -1301,7 +1301,7 @@ aggregator_import_help	Local tùy chọn: đặt import_aggregator_orders.json v
 import_aggregator_file	Nhập tệp aggregator
 team_pick_ph	Tên nhân viên cần sửa
 select_staff	Chọn nhân viên này
-rights_help	Quyền — chạm để đổi: Được phép → Cần duyệt (PIN quản lý ngay lúc đó) → Không được phép.
+rights_help	Thao tác tiền & sàn cho người này — chạm để xoay: Cho phép → Cần PIN sếp → Không cho phép. In lại hóa đơn chỉ hóa đơn; trạm bếp là danh sách dưới.
 dish_picker_help	Tìm hoặc xem danh sách món, chạm vào một món để điền tên và ảnh, hoặc giữ tên của bạn. Nhập giá (0 cũng được), rồi Thêm món.
 close_dish_list	Đóng danh sách món
 own_item_name	Dùng làm tên món của riêng bạn
