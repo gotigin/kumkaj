@@ -1280,7 +1280,7 @@ test_bill_format	Fitsapana faktiora
 test_bill_sent	Fampisehoana faktiora nalefa
 test_print_no_printer	Tsy misy mpanonta ho an'io asa io — mifidiana iray amin'ity efijery ity
 std_print	Haben'ny pirinty faktiora
-std_print_help	Haben'ny endritsoratra ho an'ny asa faktiora Standard Portrait sy Landscape amin'ny OS / mpanonta antontan-taratasy (ampidiro isa — tsy Small/Normal/Large). Mitovy habe amin'ny lafiny roa. Ny haben'ny taratasy ao amin'ny lakozianina dia ao amin'ny tabilao KOT.
+std_print_help	Haben'ny endritsoratra ho an'ny asa faktiora Standard Portrait sy Landscape amin'ny OS / mpanonta antontan-taratasy (ampidiro isa — tsy Kely/Ara-dalàna/Lehibe). Mitovy habe amin'ny lafiny roa. Ny haben'ny taratasy ao amin'ny lakozianina dia ao amin'ny tabilao KOT.
 std_size_s	Kely
 std_size_m	Ara-dalàna
 std_size_l	Lehibe

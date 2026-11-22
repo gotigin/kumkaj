@@ -1280,7 +1280,7 @@ test_bill_format	ทดสอบใบแจ้งหนี้
 test_bill_sent	ส่งตัวอย่างใบแจ้งหนี้แล้ว
 test_print_no_printer	ไม่มีเครื่องพิมพ์สำหรับงานนี้ — เลือกหนึ่งรายการบนหน้าจอนี้
 std_print	ขนาดพิมพ์บิล
-std_print_help	ขนาดตัวอักษรงานพิมพ์บิล Standard Portrait และ Landscape บนเครื่องพิมพ์ OS/เอกสาร (ใส่พอยต์ — ไม่ใช่ Small/Normal/Large) ขนาดเดียวกันทั้งสองทิศ ขนาดสลิปครัวอยู่แท็บ KOT
+std_print_help	ขนาดตัวอักษรงานพิมพ์บิล Standard Portrait และ Landscape บนเครื่องพิมพ์ OS/เอกสาร (ใส่พอยต์ — ไม่ใช่ เล็ก/ปกติ/ใหญ่) ขนาดเดียวกันทั้งสองทิศ ขนาดสลิปครัวอยู่แท็บ KOT
 std_size_s	เล็ก
 std_size_m	ปกติ
 std_size_l	ใหญ่

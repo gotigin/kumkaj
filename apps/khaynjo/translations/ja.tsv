@@ -1280,7 +1280,7 @@ test_bill_format	請求書テスト
 test_bill_sent	請求書のプレビューが送信されました
 test_print_no_printer	そのジョブ用のプリンターがありません — この画面で一つ選択してください
 std_print	伝票の文字サイズ
-std_print_help	OS／ドキュメントプリンターでの Standard Portrait・Landscape 伝票ジョブのフォントサイズ（ポイントで入力 — Small/Normal/Large ではない）。向きが違っても同じサイズ。厨房伝票サイズは KOT タブ。
+std_print_help	OS／ドキュメントプリンターでの Standard Portrait・Landscape 伝票ジョブのフォントサイズ（ポイントで入力 — 小/標準/大 ではない）。向きが違っても同じサイズ。厨房伝票サイズは KOT タブ。
 std_size_s	小
 std_size_m	標準
 std_size_l	大

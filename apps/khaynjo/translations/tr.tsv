@@ -1280,7 +1280,7 @@ test_bill_format	Fatura testi
 test_bill_sent	Fatura önizlemesi gönderildi
 test_print_no_printer	O iş için yazıcı yok — bu ekrandan birini seçin
 std_print	Fiş yazı boyutu
-std_print_help	OS / belge yazıcılarında Standard Portrait ve Landscape hesap işleri için punto (Small/Normal/Large değil — punto girin). Her iki yönde aynı boyut. Mutfak slip boyutları KOT sekmesinde.
+std_print_help	OS / belge yazıcılarında Standard Portrait ve Landscape hesap işleri için punto (Küçük/Normal/Büyük değil — punto girin). Her iki yönde aynı boyut. Mutfak slip boyutları KOT sekmesinde.
 std_size_s	Küçük
 std_size_m	Normal
 std_size_l	Büyük

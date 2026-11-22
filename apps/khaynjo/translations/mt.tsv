@@ -1280,7 +1280,7 @@ test_bill_format	Prova tal-kont
 test_bill_sent	Preview tal-kont bagħt
 test_print_no_printer	M'hemmx stampatur għal dak ix-xogħol — agħżel wieħed minn din l-iskrin
 std_print	Daqs tal-istampar tal-bill
-std_print_help	Daqs tal-font għal xogħol tal-fattura Standard Portrait u Landscape fuq OS / stampaturi tad-dokumenti (daħħal il-punti — mhux Small/Normal/Large). L-istess daqs fuq iż-żewġ orientazzjonijiet. Id-daqsijiet tal-slip tal-kċina huma fuq it-tab KOT.
+std_print_help	Daqs tal-font għal xogħol tal-fattura Standard Portrait u Landscape fuq OS / stampaturi tad-dokumenti (daħħal il-punti — mhux Żgħir/Normali/Kbir). L-istess daqs fuq iż-żewġ orientazzjonijiet. Id-daqsijiet tal-slip tal-kċina huma fuq it-tab KOT.
 std_size_s	Żgħir
 std_size_m	Normali
 std_size_l	Kbir

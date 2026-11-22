@@ -1280,7 +1280,7 @@ test_bill_format	영수증 테스트
 test_bill_sent	영수증 미리보기 전송됨
 test_print_no_printer	해당 작업용 프린터 없음 — 이 화면에서 하나 선택하세요
 std_print	영수증 글자 크기
-std_print_help	OS/문서 프린터의 Standard Portrait·Landscape 영수증 작업 글자 크기(포인트 입력 — Small/Normal/Large 아님). 두 방향 모두 같은 크기. 주방 전표 크기는 KOT 탭.
+std_print_help	OS/문서 프린터의 Standard Portrait·Landscape 영수증 작업 글자 크기(포인트 입력 — 작게/보통/크게 아님). 두 방향 모두 같은 크기. 주방 전표 크기는 KOT 탭.
 std_size_s	작게
 std_size_m	보통
 std_size_l	크게
