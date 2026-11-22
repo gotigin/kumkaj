@@ -295,3 +295,24 @@ need the author and licence named.
 - author: Thamizhpparithi Maari
 - url: https://commons.wikimedia.org/wiki/File:Schezwan_fried_rice.jpg
 - reason: prior looked like turmeric rice with whole dried chillies rather than schezwan fried rice
+
+## L14 replace indian-sweets/badam-halwa.webp
+- commons: File:Picture_of_Badam_halwa.JPG
+- license: CC BY-SA 4.0
+- author: Nithyasrm
+- url: https://commons.wikimedia.org/wiki/File:Picture_of_Badam_halwa.JPG
+- reason: prior was molded sohan-style cake with condensed milk drizzle
+
+## L14 replace indian-sweets/coconut-laddu.webp
+- commons: File:Coconut_ladoo,_Assam.jpg
+- license: CC BY-SA 4.0
+- author: Baby Devi 26
+- url: https://commons.wikimedia.org/wiki/File:Coconut_ladoo,_Assam.jpg
+- reason: prior was bright orange ball (not classic white coconut laddu)
+
+## L14 replace fast-food/chicken-bucket.webp
+- commons: File:Fried_Chicken_(Unsplash).jpg
+- license: CC0
+- author: Unsplash / via Commons
+- url: https://commons.wikimedia.org/wiki/File:Fried_Chicken_(Unsplash).jpg
+- reason: prior was KFC-branded bucket with Colonel logo
