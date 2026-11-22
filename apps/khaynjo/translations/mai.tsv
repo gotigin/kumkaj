@@ -683,7 +683,7 @@ lan_not_listening	डिवाइस नहि लऽ रहल अछि (प�
 lan_tills_off	अतिरिक्त टिल बंद अछि। आन डिवाइसकेँ जुड़बाक लेल अनुमति दिअ।
 paired_with	जुड़ल · {url}
 not_paired	नहि जुड़ल
-choose_device_use	सर्वर वा क्लाइंट चुनू।
+choose_device_use	सर्वर, क्लाइंट, वा बैकअप बहाल करू चुनू।
 paired_note	जुड़ल। बेचबाक लेल अनलॉक करू, वा नव लेल ताजा करू।
 last_update_at	पछिला अपडेट: {time}।
 pair_intro	सर्वर खोजू, वा ओकर पता आ पेयरिंग कोड लिखू।

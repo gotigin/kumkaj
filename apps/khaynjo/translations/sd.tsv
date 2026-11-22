@@ -683,7 +683,7 @@ lan_not_listening	جي ڊوائيس قبول نٿا ٿين (پورٽ {port} مص
 lan_tills_off	اضافي ڪيش ڪائونٽر بند آهن. ٻئي ڊوائيس کي شامل ٿيڻ جي اجازت ڏيو.
 paired_with	جوڙيل · {url}
 not_paired	نه جوڙو
-choose_device_use	Server يا Client چونڊيو.
+choose_device_use	سرور، ڪلائنٽ، يا بيڪ اپ بحال ڪريو چونڊيو.
 paired_note	جوڙو ٿيل. وڪرو ڪرڻ لاءِ آنلاڪ ڪريو، يا تازو ڪرڻ لاءِ ريفريش ڪريو.
 last_update_at	آخري تازه ڪاري: {time}.
 pair_intro	سرور ڳوليو، يا انجو پتو ۽ پئيرنگ ڪوڊ لکو.

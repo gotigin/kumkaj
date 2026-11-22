@@ -683,7 +683,7 @@ lan_not_listening	Device pawm lo (port {port} a hmang). App tan leh.
 lan_tills_off	Dawhkan dang a tih. Phal la, device dang tel ve thei turin.
 paired_with	Pair a ni · {url}
 not_paired	Pair lo
-choose_device_use	Server emaw Dawr dang thlang.
+choose_device_use	Server, Client, emaw Backup kir leh thlang rawh.
 paired_note	Pair a ni. Hawng la, zuar turin, emaw Thar leh, tawp ber atan.
 last_update_at	Thar leh tawp: {time}.
 pair_intro	Server zawng, emaw a address leh pair code ziak.

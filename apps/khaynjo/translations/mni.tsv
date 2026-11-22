@@ -683,7 +683,7 @@ lan_not_listening	ꯃꯁꯤꯟ ꯌꯥꯗꯦ (ꯄꯣꯔꯇ {port} ꯁꯤꯖꯤꯟ
 lan_tills_off	ꯐꯝ ꯍꯦꯟꯕ ꯊꯤꯡꯂꯦ. ꯌꯥꯕꯤꯌꯨ, ꯃꯁꯤꯟ ꯑꯇꯣꯞꯄ ꯌꯥꯎꯅꯕ.
 paired_with	ꯄꯦꯌꯔ ꯇꯧꯔꯦ · {url}
 not_paired	ꯄꯦꯌꯔ ꯇꯧꯗꯦ
-choose_device_use	Server ꯅꯠꯇ꯭ꯔꯒ ꯈꯣꯡꯖꯦꯜ ꯈꯟꯕꯤꯌꯨ.
+choose_device_use	Server, ꯈꯣꯡꯖꯦꯜ, ꯅꯠꯇ꯭ꯔꯒ ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ ꯈꯟꯕꯤꯌꯨ।
 paired_note	ꯄꯦꯌꯔ ꯇꯧꯔꯦ. ꯍꯥꯡꯗꯣꯛꯎ, ꯌꯣꯟꯅꯕ, ꯅꯠꯇ꯭ꯔꯒ ꯑꯔꯣꯏꯕꯒꯤꯗꯃꯛ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ.
 last_update_at	ꯑꯅꯧ ꯇꯧꯕ ꯑꯔꯣꯏꯕ: {time}.
 pair_intro	server ꯊꯤꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒ ꯃꯁꯤꯒꯤ ꯑꯦꯗ꯭ꯔꯦꯁ ꯑꯃꯁꯨꯡ ꯄꯦꯌꯔ ꯀꯣꯗ ꯏꯕꯤꯌꯨ.

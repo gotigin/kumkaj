@@ -683,7 +683,7 @@ lan_not_listening	Ka jingpdiang ia ki tiar (ka port {port} ka bunkam). Pynmih bi
 lan_tills_off	Ki till ba kham bun ki la off. Ailad ia ki ban ailad ia kawei pat ka tiar ban iasoh.
 paired_with	Pyniasoh · {url}
 not_paired	Ba la pyniadei
-choose_device_use	Jied Server lane Client.
+choose_device_use	Jied Server, Client, ne Pynphai biang ia ka backup.
 paired_note	Ka jingpyniadei. Plie ban die, lane Refresh na ka bynta kaba thymmai.
 last_update_at	Ka jingpynkylla kaba khatduh: {time}.
 pair_intro	Peit ia u server, lane type ia ka address bad pairing code jong u.

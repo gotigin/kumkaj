@@ -683,7 +683,7 @@ lan_not_listening	ڈیوائس چُھ نْہ قبول کران (پورٹ {port} 
 lan_tills_off	اضٲفی کَش کاؤنٹر چھِ بند۔ بیٚیِس آلہٕ شٲمِل گژھنُک اجازت دِیِو۔
 paired_with	جورٕ · {url}
 not_paired	جورٕ نہٕ
-choose_device_use	Server یا Client ژٲرِو۔
+choose_device_use	سرور، کلائنٹ، یا بیک اپ کْریو ریسٹور ژٲرِو۔
 paired_note	جورۍ۔ کٕننہٕ خٲطرٕ کٔرِو ان لاک یا تازٕ ترین خٲطرٕ ریفریش۔
 last_update_at	آخری اپ ڈیٹ: {time}۔
 pair_intro	سرور ژھانٛڑِو، یا کٔرِو اَمیُک پتہ تہٕ پیئرِنٛگ کوڈ ٹایپ ۔
