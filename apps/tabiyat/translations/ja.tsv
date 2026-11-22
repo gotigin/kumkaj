@@ -268,7 +268,7 @@ bank_in	銀行へ入金
 bank_out	銀行から出金
 bank_reconciliation	銀行照合
 bank_to_till	銀行→レジ
-book_add_dish	ブック — アイテム/アイテムを追加
+book_add_dish	帳簿 — 品目を追加
 book_opening_credit	受付 — 期首の掛け
 branch_name_sell_ph	販売する店舗名
 bring_my_book	自分の帳簿を持ってくる
