@@ -527,7 +527,7 @@ take_payment	Taktu við greiðslu
 tax_added_till	{tax} einkarétt
 tax_inside_price	{tax} innifalið
 tax_invoice	Skattreikningur
-till_to_bank	Til → banki
+till_to_bank	Kassi → banki
 units_heading	Einingar
 unlock_after_pairing	Sláðu inn PIN
 unlock_with_login	Opnaðu með innskráningu

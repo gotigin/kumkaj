@@ -527,7 +527,7 @@ take_payment	ເອົາການຈ່າຍເງິນ
 tax_added_till	{tax} ພິເສດ
 tax_inside_price	{tax} ລວມ
 tax_invoice	ໃບເກັບພາສີ
-till_to_bank	ຮອດ → ທະນາຄານ
+till_to_bank	ເຄົາເຕີ → ທະນາຄານ
 units_heading	ໜ່ວຍ
 unlock_after_pairing	ໃສ່ PIN
 unlock_with_login	ປົດລັອກດ້ວຍການເຂົ້າສູ່ລະບົບ

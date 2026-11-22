@@ -527,7 +527,7 @@ take_payment	Glac íocaíocht
 tax_added_till	{tax} eisiach
 tax_inside_price	{tax} san áireamh
 tax_invoice	Sonras cánach
-till_to_bank	Go dtí → banc
+till_to_bank	Ciste → banc
 units_heading	Aonaid
 unlock_after_pairing	Cuir isteach PIN
 unlock_with_login	Díghlasáil le logáil isteach

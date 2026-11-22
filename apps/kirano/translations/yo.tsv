@@ -255,7 +255,7 @@ bank	Banki
 bank_in	Bank sinu
 bank_out	Owo jade ti awọn ile ifowo pamo
 bank_reconciliation	Ilaja banki
-bank_to_till	Banki → titi di
+bank_to_till	Banki → àpótí owó
 book_add_dish	Iwe - fi ohun kan / ohun kan kun
 book_opening_credit	Leja - ṣiṣi kirẹditi
 branch_name_sell_ph	Orukọ ẹka lati ta lati
@@ -527,7 +527,7 @@ take_payment	Gba owo sisan
 tax_added_till	{tax} iyasoto
 tax_inside_price	{tax} ifisi
 tax_invoice	risiti owo-ori
-till_to_bank	Titi → banki
+till_to_bank	Àpótí owó → banki
 units_heading	Awọn ẹya
 unlock_after_pairing	Wọle PIN
 unlock_with_login	Ṣii silẹ pẹlu wiwọle
