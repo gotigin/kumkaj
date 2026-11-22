@@ -260,7 +260,7 @@ tables	भोजनमेजः
 kitchen	पाकशाला
 sales	विक्रयः
 sales_refunds	विक्रय एवं धनवापसी
-day_close	दिवसः समाप्तः
+day_close	दिवस-समाप्तिः
 reports_expenses	बैंक लेजर एवं पी एंड एल
 nav_reports	प्रतिवेदनानि
 nav_settings	सेटिंग्स्
@@ -1162,11 +1162,11 @@ line_sent_state	पाकशालायाः कृते प्रेषि�
 line_nc_state	प्रशंसात्मक (NC) — न आरोपितम्
 cancel_item_short	रद्दं कुर्वन्तु
 nc_short	न शुल्कम्
-charge_again_short	आरोपः
+charge_again_short	शुल्कः
 move_short	चाल
 cancel_item_title	एतत् मेनू-वस्तु रद्दं कुरुत — पाकशालायां रद्दीकरण-स्लिप् प्राप्यते
 nc_item_title	एतत् मेनू-वस्तुं निःशुल्कं कुर्वन्तु (NC)
-charge_again_title	पुनः एतत् मेनू-वस्तु चार्जं कुर्वन्तु
+charge_again_title	पुनः एतस्य मेनू-वस्तुनः शुल्कं गृह्णातु
 move_item_title	एतत् मेनू-वस्तु अन्यस्मिन् भोजनमेजं प्रति स्थानान्तरयन्तु
 already_cooked	पूर्वमेव पक्त्वा (अपव्ययम्) २.
 not_cooked_yet	अद्यापि न पक्त्वा
