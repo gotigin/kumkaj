@@ -888,7 +888,7 @@ low_stock_alert	库存不足——尽快补货：{items}
 unpriced_note	您的商品上的 {n} 商品还没有价格 — 在您设置 1 之前，它们的计费价格为 0。
 show_unpriced	仅显示没有价格的商品
 show_all_dishes	显示所有项目
-role_title_rest_ph	职位（如领班、主厨）
+role_title_rest_ph	职位（如领班）
 preset_help_rest	收银员：销售。经理：销售+项目+作废/修改。
 kind_resale	买来卖
 kind_dish	未计数
