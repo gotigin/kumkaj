@@ -136,6 +136,18 @@
 .legal-nav a {
   color: #9a0e10;
 }
+.legal-foot {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: #6b4a3f;
+  font-size: 0.85rem;
+}
+.legal-foot-company {
+  color: #260b08;
+  font-weight: 600;
+}
 
 /* Desk: plans / product cards sit on one row when there is room */
 @media (min-width: 820px) {
