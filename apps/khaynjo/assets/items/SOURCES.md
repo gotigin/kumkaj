@@ -403,3 +403,14 @@ need the author and licence named.
 - author: see Commons file page
 - retrieved: 2026-11-22
 - lane: L14
+
+## Replaced 2026-11-22 (L15 street egg-roll+frankie, soups sprout+minestrone, thai roti-canai, south rasam)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `street-food-chaat/egg-roll.webp` | Thai fried spring rolls with chopsticks | EGG ROLL.JPG | Satadaldas1966 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:EGG_ROLL.JPG | resized, WebP |
+| `street-food-chaat/frankie.webp` | nachos with cheese sauce and jalapeños | Aloo Corn Frankie Roll.jpg | Senjuti Dey | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Aloo_Corn_Frankie_Roll.jpg | resized, WebP |
+| `soups-salads/sprout-salad.webp` | roasted Brussels sprouts with apple and feta | Sprouts Salad.JPG | Ravi Talwar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Sprouts_Salad.JPG | resized, WebP |
+| `soups-salads/minestrone.webp` | table spread with Parmigiano package and branded beer | Homemade minestrone soup | Liat Portal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Homemade_minestrone_soup.jpg | resized, WebP |
+| `thai-asian/roti-canai.webp` | kottu-style chopped bread stew with fried egg | Roti canai with sauce.JPG | BrokenSphere | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Roti_canai_with_sauce.JPG | resized, WebP |
+| `south-indian/rasam.webp` | sambar vada in a metal bowl | Rasam.JPG | M | Public domain | https://commons.wikimedia.org/wiki/File:Rasam.JPG | resized, WebP |
