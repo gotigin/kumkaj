@@ -366,7 +366,7 @@ new_server_name_ph	server ꯑꯅꯧꯕꯒꯤ ꯃꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔ�
 server_remove_pin_ph	ꯃꯄꯨꯒꯤ PIN, server ꯂꯣꯠꯅꯕ
 only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
-device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ.
+device_setup_help	ꯃꯁꯤꯒꯤ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤ ꯀꯦꯟꯐꯝ (Server) ꯅꯠꯇ꯭ꯔꯒ ꯍꯦꯟꯒꯠꯄ ꯇꯤꯜ (ꯈꯣꯡꯖꯦꯜ) ꯑꯣꯏꯕ ꯌꯥꯏ। ꯑꯃ ꯍꯥꯡꯗꯣꯛꯂꯕꯗ ꯑꯇꯣꯞꯄ ꯃꯥꯡꯗꯦ। ꯆꯨꯞꯄ ꯈꯣꯡꯖꯦꯜꯅ ꯀꯦꯟꯐꯝ ꯅꯤꯡꯁꯤꯡꯏ — ꯔꯤꯁ꯭ꯇꯥꯔꯠ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯆꯨꯞꯄ ꯀꯣꯗ ꯃꯊꯧ ꯇꯥꯗꯦ। ꯍꯧꯖꯤꯛ Server ꯂꯩꯇ꯭ꯔꯕꯗ «ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ»ꯅ ꯅꯍꯥꯛꯅ ꯈꯟꯈꯤꯕ ꯐꯥꯏꯜꯗꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯍꯥꯡꯗꯣꯛꯏ (ꯌꯦꯡꯕ Settings ꯍꯟꯕꯤꯔꯛꯄ ꯃꯥꯟꯅꯕ)।
 app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
 app_template_blurb	অহানগী মেনু খাইবিয়ু। স্কিপ তৌবদা দুকান অহাংবা ওইরগে।
 app_template_apply	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ

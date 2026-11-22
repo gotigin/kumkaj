@@ -366,7 +366,7 @@ new_server_name_ph	Server thar hming (duh chuan)
 server_remove_pin_ph	Neitu PIN, server paih nan
 only_owner_remove_server	Neitu chauhvin server a paih thei
 owner_pin_remove_server	He server paih nan Neitu PIN a ngai
-device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a inmil.
+device_setup_help	He device hi shop (Server) emaw till belh (Client) a ni thei. Pakhat hawn leh a dang a bo lo. Client pair tawh chuan shop a hre reng — restart tin pairing code a ngai lo. Server a la awm loh chuan «Backup kir leh» hian i thlan file atangin lehkha a hawn (ensuring Settings restore ang).
 app_template_heading	Dawr template-te
 app_template_blurb	Menu bul tan i thlang ang. Kaltlang chuan dawr a ruak a awm ang.
 app_template_apply	Template import rawh
