@@ -365,3 +365,21 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `soups-salads/quinoa-salad.webp` | sweet quinoa porridge with dried apricots/nuts | Quinoa Salad | jeffreyw | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=80213073 | resized, WebP |
 | `soups-salads/cream-of-tomato-soup.webp` | orange sauce in mini skillet (dip, not soup bowl) | Cream of Tomato Soup | Jonathunder | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | https://commons.wikimedia.org/w/index.php?curid=46076436 | resized, WebP |
+
+## L14 replace indian-sweets/sitabhog.webp
+- commons: File:Sitabhog,_a_type_of_popular_sweets,_from_Putiram,_College_St.,_West_Bengal,_India.jpg
+- license: CC0
+- url: https://commons.wikimedia.org/wiki/File:Sitabhog,_a_type_of_popular_sweets,_from_Putiram,_College_St.,_West_Bengal,_India.jpg
+- reason: prior tray photo had a fly on the sweet
+
+## L14 replace ice-cream/soft-serve.webp
+- commons: File:Soft_Serve_Ice_Cream_in_cone_(28966999042).jpg
+- license: CC BY-SA 2.0
+- url: https://commons.wikimedia.org/wiki/File:Soft_Serve_Ice_Cream_in_cone_(28966999042).jpg
+- reason: prior cup had branded rc sticker
+
+## L14 replace ice-cream/maple-walnut-ice-cream.webp
+- commons: File:Maple_Bourbon_Ice_Cream_with_Toasted_Pecans_(11901703596).jpg
+- license: CC BY 2.0
+- url: https://commons.wikimedia.org/wiki/File:Maple_Bourbon_Ice_Cream_with_Toasted_Pecans_(11901703596).jpg
+- reason: prior was soufflé plate with tiny ice cream scoop
