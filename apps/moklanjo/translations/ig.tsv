@@ -10,10 +10,10 @@ board_help	Mpempe akwụkwọ emechabeghị (dobere ruo mgbe ị pịa «Tufuo»
 board_empty	Enweghị kaadị ma.
 board_park_nothing	Ọnweghị ihe ị ga-echekwa dị ka mpempe akwụkwọ - gbakwunye ụgwọ ma ọ bụ nkọwa ntinye akwụkwọ
 board_parked	Echekwara na «Bọdụ» - desktọpụ ahụ tọgbọ chakoo ugbu a
-board_draft	Draft
+board_draft	Ndetu
 board_booked	Edere akwụkwọ
 board_filter_all	Niile
-board_filter_draft	Draft
+board_filter_draft	Ndetu
 board_filter_booked	Edere akwụkwọ
 board_cols_fmt	kọlụm {n}
 board_summary_fmt	kaadị {total} · akwụkwọ {drafts} · {booked} gbara akwụkwọ

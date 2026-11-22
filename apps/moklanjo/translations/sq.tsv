@@ -10,10 +10,10 @@ board_help	Draftet e hapura (mbahen derisa të prekni «Hidhe» ose «Merr pages
 board_empty	Ende nuk ka karta.
 board_park_nothing	Nuk ka çfarë të lihet mënjanë — shtoni tarifa ose të dhëna rezervimi
 board_parked	U la te «Tabela» — tavolina e punës është e lirë
-board_draft	Draft
+board_draft	Skicë
 board_booked	Rezervuar
 board_filter_all	Të gjitha
-board_filter_draft	Draft
+board_filter_draft	Skicë
 board_filter_booked	Rezervuar
 board_cols_fmt	{n} kol.
 board_summary_fmt	{total} karta · {drafts} drafte · {booked} të rezervuara

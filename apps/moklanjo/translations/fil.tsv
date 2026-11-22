@@ -10,10 +10,10 @@ board_help	Mga bukas na draft (nananatili hanggang «I-discard» o «Kunin ang b
 board_empty	Wala pang card.
 board_park_nothing	Walang maitatabi — magdagdag ng mga singil o detalye ng booking
 board_parked	Itinabi sa «Board» — bakante na ang mesa
-board_draft	Draft
+board_draft	Burador
 board_booked	Naka-book
 board_filter_all	Lahat
-board_filter_draft	Draft
+board_filter_draft	Burador
 board_filter_booked	Naka-book
 board_cols_fmt	{n} hanay
 board_summary_fmt	{total} card · {drafts} draft · {booked} na-book
