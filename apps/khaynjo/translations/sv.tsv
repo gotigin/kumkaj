@@ -1332,7 +1332,7 @@ back_to_order	Tillbaka till beställning
 new_items_head	Inte skickat ännu
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} inklusive)
-cancel_needs_table	Öppna den här beställningen från Floor (ett bord) för att avbryta efter att köket har det — disk KOTs stannar på biljetten tills du tar betalt
+cancel_needs_table	Öppna den här beställningen från «Sal» (ett bord) för att avbryta efter att köket har det — disk KOTs stannar på biljetten tills du tar betalt
 taxable_value	Skattepliktigt värde
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Börja med vår menymall
