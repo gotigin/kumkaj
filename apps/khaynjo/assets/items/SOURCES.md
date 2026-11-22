@@ -224,3 +224,12 @@ need the author and licence named.
 | File | The old photo showed | Original title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `indo-chinese/chicken-hakka-noodles.webp` | fish-ball rice-noodle soup | Tasty hakka noodles image | SGUae | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/w/index.php?curid=145060235 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 sides-dips)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `sides-dips/gochujang.webp` | ssambap wrap with spicy pork, not a gochujang bowl | Cold Soup, Gochujang, Vegetables - Flying Chicken | avlxyz | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://www.flickr.com/photos/10559879@N00/4431160349 | resized, WebP |
+| `sides-dips/cheese-dip.webp` | spinach artichoke dip with "Vegan Cheese Dip Sauce" text overlay | beer/cheese dip and pretzels + fried green tomatoes | theogeo | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/91252560@N00/4202111048 | resized, WebP |
+| `sides-dips/dinner-roll-with-butter.webp` | Swiss Chalet chicken plate with fries and QR promo sign | Warm Sourdough Bread Rolls with sea salt, olive oil, Seville | avlxyz | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://www.flickr.com/photos/10559879@N00/3748584403 | resized, WebP |
+| `sides-dips/mint-chutney.webp` | hands holding vada pav, not a chutney bowl | Pudina Chutney | Ramesh NG | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=14999452 | resized, WebP |
