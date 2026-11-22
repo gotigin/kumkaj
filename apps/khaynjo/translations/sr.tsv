@@ -445,7 +445,7 @@ choose_logo	Изаберите лого
 clear_icon	Обриши икона
 clear_photo	Обриши фотографију
 copy_day_book_csv	Copy day ledger CSV
-copy_day_close	Копирај дан близу
+copy_day_close	Копирај затварање дана
 copy_items_csv	Copy menu items CSV
 copy_outstanding_csv	Преузето копија CSV
 copy_parties_csv	Копирај купце и добављаче CSV
@@ -587,7 +587,7 @@ prev_country	Претходна земља
 print_open	Штампај / отвори
 reason_amend_ph	Разлог за измену / поништење / повраћај
 reason_note_ph	Разлог / напомена (расипање, бројање, …)
-record_day_close	Сачувајте дан близу
+record_day_close	Сачувај затварање дана
 business_day	Када «данас» почиње изнова?
 business_day_help	Уз избор «До затварања дана», «Дневник» тече и после поноћи док не забележите затварање дана. Уз избор «Календарска поноћ», дан се сече у 00:00 по локалном времену.
 biz_day_until_close	До затварања дана
@@ -611,7 +611,7 @@ role_manager	Менаџер
 history_retention	Историја трговине
 history_retention_help	Auto-clear old sales and KOTs. Мени, особље и подешавања остају. Брисање сада брише све редове за трговање и задржава подешавање.
 history_off	Задржи
-history_day_close	На дан близу
+history_day_close	На затварању дана
 history_after_hours	После сати
 history_hours_ph	Сати (1–168, подразумевано 4)
 history_hours_save	Уштедите сате

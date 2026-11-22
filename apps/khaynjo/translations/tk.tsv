@@ -445,7 +445,7 @@ choose_logo	Logotip saýlaň
 clear_icon	Nyşan arassala
 clear_photo	Suraty arassalaň
 copy_day_book_csv	Gün ýazgysyny CSV göçüriň
-copy_day_close	Güni ýakyn wagtda göçüriň
+copy_day_close	Güni ýapmagy göçür
 copy_items_csv	Menýu elementlerini CSV göçüriň
 copy_outstanding_csv	Ajaýyp CSV göçüriň
 copy_parties_csv	Müşderileri we üpjün edijileri göçüriň CSV
@@ -587,7 +587,7 @@ prev_country	Öňki ýurt
 print_open	Çap et / aç
 reason_amend_ph	Düzediş / ýatyrmak / yzyna gaýtarmagyň sebäbi
 reason_note_ph	Sebäp / bellik (isrip, sanamak,…)
-record_day_close	Güni ýakyn saklaň
+record_day_close	Güni ýapmagy ýaz
 business_day	«Bu gün» haçan täzeden başlaýar?
 business_day_help	«Gün ýapylýança» saýlansa, siz gün ýapylyşyny ýazýançaňyz «Gün ýazgysy» ýary gijeden soň hem dowam edýär. «Senenama boýunça ýary gije» saýlansa, gün ýerli wagt bilen 00:00-da kesilýär.
 biz_day_until_close	Gün ýapylýança
@@ -611,7 +611,7 @@ role_manager	Dolandyryjy
 history_retention	Söwda taryhy
 history_retention_help	Köne satuwlary we KOT-lary awtomatiki arassalaň. Menýu, işgärler we sazlamalar galýar. Arassalamak indi ähli söwda hatarlaryny süpürýär we gurnamagy dowam etdirýär.
 history_off	Saklaň
-history_day_close	Closeakyn gün
+history_day_close	Güni ýapmakda
 history_after_hours	Birnäçe sagatdan soň
 history_hours_ph	Sagatlar (1–168, başlangyç 4)
 history_hours_save	Sagady tygşytlaň

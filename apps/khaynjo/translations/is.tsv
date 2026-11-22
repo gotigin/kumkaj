@@ -445,7 +445,7 @@ choose_logo	Veldu lógó
 clear_icon	Hreinsa tákn
 clear_photo	Hreinsa mynd
 copy_day_book_csv	Afrita dagbók CSV
-copy_day_close	Afrita daginn nálægt
+copy_day_close	Afrita dagslok
 copy_items_csv	Afrita valmyndaratriði CSV
 copy_outstanding_csv	Afrita útistandandi CSV
 copy_parties_csv	Afritaðu viðskiptavini og birgja CSV
@@ -587,7 +587,7 @@ prev_country	Fyrra land
 print_open	Prenta / opna
 reason_amend_ph	Ástæða fyrir breytingu / ógildingu / endurgreiðslu
 reason_note_ph	Ástæða / athugasemd (sóun, talning, ...)
-record_day_close	Bjargaðu deginum nálægt
+record_day_close	Skrá dagslok
 business_day	Hvenær byrjar «Í dag» upp á nýtt?
 business_day_help	Með «Fram að dagslokum» heldur «Dagbók» áfram fram yfir miðnætti, þar til þú skráir dagslok. Með «Miðnætti samkvæmt dagatali» lýkur deginum klukkan 00:00 að staðartíma.
 biz_day_until_close	Fram að dagslokum
