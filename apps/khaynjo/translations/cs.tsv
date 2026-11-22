@@ -701,7 +701,7 @@ printers_host_only	Tiskárny jsou nastaveny na zařízení prodejny (Server). To
 printers_find_heading	Najděte tiskárny
 printers_find_tip	Najít prohledá toto zařízení a udržuje seznam aktuální.
 printers_pool_heading	Tiskárny
-printers_pool_tip	Find prohledá toto zařízení a udržuje tento seznam aktuální.
+printers_pool_tip	Najít prohledá toto zařízení a udržuje tento seznam aktuální.
 printers_pool_empty	(zatím žádné – klepněte na Najít)
 printers_routes_help	Najděte tiskárny, které operační systém již zná. Přiřaďte je k účtu a každé kuchyni ve formátu Bill & KOT.
 printer_assign_dd	Skutečná tiskárna: {place}

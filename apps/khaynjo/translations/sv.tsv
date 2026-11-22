@@ -699,9 +699,9 @@ printers_heading	Skrivare
 printers_help	Hitta skrivare, tryck på en för att välja den och skriv sedan ut en testsida endast på den enheten. Notaskrivare: Nota- och KOT-format → Nota. Köksskrivare: Kök → Köksstationer (lägg till en station först — Hitta skapar inte stationer).
 printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och KOT dit — Hitta / lägg till / tilldela vistelse på servern. Testsida och fakturautskriftsstorlek går till servern.
 printers_find_heading	Hitta skrivare
-printers_find_tip	Find skannar den här enheten och håller listan uppdaterad.
+printers_find_tip	Hitta skannar den här enheten och håller listan uppdaterad.
 printers_pool_heading	Skrivare
-printers_pool_tip	Find skannar den här enheten och håller den här listan uppdaterad.
+printers_pool_tip	Hitta skannar den här enheten och håller den här listan uppdaterad.
 printers_pool_empty	(ingen ännu - tryck på Hitta)
 printers_routes_help	Hitta skrivare som operativsystemet redan känner till. Tilldela dem till notan och till varje kök under Nota- och KOT-format.
 printer_assign_dd	Riktig skrivare: {place}

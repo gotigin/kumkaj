@@ -699,9 +699,9 @@ printers_heading	Prentarar
 printers_help	Finndu prentara, pikkaðu á einn til að velja hann og prentaðu síðan prufusíðu eingöngu á því tæki. Bill prentarar: Bill & KOT snið → Bill. Eldhúsprentarar: Eldhús → Eldhússtöðvar (bættu við stöð fyrst — Finna býr ekki til stöðvar).
 printers_host_only	Prentarar eru stilltir á verslunartækinu (þjónn). Þessi til sendir reikninga og KOTs þangað - Finndu / bættu við / úthlutaðu dvöl á þjóninum. Prófsíða og prentstærð reikninga fara á netþjóninn.
 printers_find_heading	Finndu prentara
-printers_find_tip	Find skannar þetta tæki og heldur listanum uppfærðum.
+printers_find_tip	Finna skannar þetta tæki og heldur listanum uppfærðum.
 printers_pool_heading	Prentarar
-printers_pool_tip	Find skannar þetta tæki og heldur þessum lista uppfærðum.
+printers_pool_tip	Finna skannar þetta tæki og heldur þessum lista uppfærðum.
 printers_pool_empty	(engin enn — pikkaðu á Finna)
 printers_routes_help	Finndu prentara sem stýrikerfið þekkir nú þegar. Úthlutaðu þeim á reikninginn og hvert eldhús undir Bill & KOT sniði.
 printer_assign_dd	Raunverulegur prentari: {place}

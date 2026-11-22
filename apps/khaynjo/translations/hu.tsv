@@ -699,9 +699,9 @@ printers_heading	Nyomtatók
 printers_help	Keresse meg a nyomtatókat, koppintson az egyikre a kiválasztásához, majd nyomtasson tesztoldalt csak azon az eszközön. Számlanyomtatók: Számla és KOT formátum → Számla. Konyhai nyomtatók: Konyha → Konyhai állomások (először adjon hozzá egy állomást – A Find nem hoz létre állomásokat).
 printers_host_only	A nyomtatók a bolt eszközén (szerveren) vannak beállítva. Ez a pénztár számlákat és KOT-kat küld oda — Keresse meg / adja hozzá / rendelje hozzá a kiszolgálón maradást. A tesztoldal és a számla nyomtatási mérete a szerverre kerül.
 printers_find_heading	Keressen nyomtatókat
-printers_find_tip	A Find beolvassa ezt az eszközt, és naprakészen tartja a listát.
+printers_find_tip	A Keresés beolvassa ezt az eszközt, és naprakészen tartja a listát.
 printers_pool_heading	Nyomtatók
-printers_pool_tip	A Find beolvassa az eszközt, és naprakészen tartja ezt a listát.
+printers_pool_tip	A Keresés beolvassa az eszközt, és naprakészen tartja ezt a listát.
 printers_pool_empty	(még nincs – érintse meg a Keresés gombot)
 printers_routes_help	Keresse meg az operációs rendszer által már ismert nyomtatókat. Rendelje hozzá őket a számlához és minden konyhához Bill & KOT formátumban.
 printer_assign_dd	Valódi nyomtató: {place}
@@ -832,7 +832,7 @@ save_printers	Mentse el a nyomtatókat
 print_test_page	Nyomtasson ki egy tesztoldalt
 no_printer_assigned	Nincs nyomtató
 test_page_no_printer	Nincs nyomtató a következőhöz: {place} – csatlakoztasson hozzá nyomtatót, majd próbálja újra
-test_page_pick_first	Pick printers for a test page first — then Print a test page
+test_page_pick_first	Először válasszon nyomtató(ka)t a tesztoldalhoz — majd nyomtasson tesztoldalt
 test_printers_dd	Nyomtatók egy tesztoldalhoz
 test_printers_dd_n	{n} printers for a test page · tap to change
 kot_test_printers_dd	Nyomtatók teszthez KOT
