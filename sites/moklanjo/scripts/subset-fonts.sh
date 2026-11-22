@@ -65,8 +65,13 @@ font = TTFont(src)
 if "fvar" not in font:
     font.save(dest)
     raise SystemExit(0)
-instantiateVariableFont(font, {"wght": (wmin, wmax), "wdth": 100}, overlap=True)
-font.save(dest)
+# Return value is the pinned face (do not assume in-place mutation).
+pinned = instantiateVariableFont(
+    font, {"wght": (wmin, wmax), "wdth": 100}, overlap=True
+)
+pinned.save(dest)
+axes = [(a.axisTag, a.minValue, a.maxValue) for a in pinned["fvar"].axes] if "fvar" in pinned else []
+print(f"pinned AnekLatin axes={axes}", file=sys.stderr)
 PY
 }
 
