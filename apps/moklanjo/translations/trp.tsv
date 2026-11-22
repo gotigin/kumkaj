@@ -12,7 +12,7 @@ board_park_nothing	তননা বাগুই মুংসা ফান কু
 board_parked	«বোর্ড» ও তনজাক — ডেস্ক খালি
 board_draft	ড্রাফ্ট
 board_booked	বোক খাইজাক
-board_filter_all	All
+board_filter_all	গুরি
 board_filter_draft	ড্রাফ্ট
 board_filter_booked	বোক খাইজাক
 board_cols_fmt	{n} খলম

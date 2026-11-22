@@ -12,7 +12,7 @@ board_park_nothing	Mba’eve oñeñongatu haĝua borrador ramo — omoĩve cargo
 board_parked	Oñongatu «Tablero»-pe — pe mesa oĩ nandi ko’áĝa
 board_draft	Borrador
 board_booked	Ojerreserva
-board_filter_all	All
+board_filter_all	Opavave
 board_filter_draft	Borrador
 board_filter_booked	Ojerreserva
 board_cols_fmt	{n} columna-kuéra rehegua

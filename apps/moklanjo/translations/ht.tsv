@@ -12,7 +12,7 @@ board_park_nothing	Pa gen anyen pou mete sou kote — ajoute frè oswa detay rez
 board_parked	Sove sou «Tablo» — biwo a lib
 board_draft	Bouyon
 board_booked	Anrezève
-board_filter_all	All
+board_filter_all	Tout
 board_filter_draft	Bouyon
 board_filter_booked	Anrezève
 board_cols_fmt	{n} kolòn

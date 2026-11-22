@@ -12,7 +12,7 @@ board_park_nothing	ठेवण्यासारखे काही नाह�
 board_parked	«बोर्ड» वर ठेवले — डेस्क मोकळा आहे
 board_draft	ड्राफ्ट
 board_booked	बुक झाले
-board_filter_all	All
+board_filter_all	सर्व
 board_filter_draft	ड्राफ्ट
 board_filter_booked	बुक झाले
 board_cols_fmt	{n} स्तंभ

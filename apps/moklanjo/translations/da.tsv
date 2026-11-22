@@ -12,7 +12,7 @@ board_park_nothing	Intet at parkere — tilføj gebyrer eller bookingoplysninger
 board_parked	Parkeret på «Tavle» — disken er fri
 board_draft	Kladde
 board_booked	Booket
-board_filter_all	All
+board_filter_all	Alle
 board_filter_draft	Kladde
 board_filter_booked	Booket
 board_cols_fmt	{n} kol.

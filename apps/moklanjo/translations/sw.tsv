@@ -12,7 +12,7 @@ board_park_nothing	Hakuna cha kuweka kando — ongeza ada au maelezo ya uhifadhi
 board_parked	Imewekwa kwenye «Ubao» — dawati liko wazi
 board_draft	Rasimu
 board_booked	Imesajiliwa
-board_filter_all	All
+board_filter_all	Zote
 board_filter_draft	Rasimu
 board_filter_booked	Imesajiliwa
 board_cols_fmt	Safu {n}

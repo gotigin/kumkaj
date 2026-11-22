@@ -12,7 +12,7 @@ board_park_nothing	Tidak ada yang bisa ditunda — tambahkan biaya atau detail b
 board_parked	Ditunda di «Papan» — meja kerja kosong
 board_draft	Draf
 board_booked	Terdaftar
-board_filter_all	All
+board_filter_all	Semua
 board_filter_draft	Draf
 board_filter_booked	Terdaftar
 board_cols_fmt	{n} kol

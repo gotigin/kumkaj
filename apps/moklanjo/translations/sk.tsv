@@ -12,7 +12,7 @@ board_park_nothing	Nie je čo odložiť — pridajte poplatky alebo údaje rezer
 board_parked	Odložené na «Nástenka» — pult je voľný
 board_draft	Koncept
 board_booked	Rezervované
-board_filter_all	All
+board_filter_all	Všetky
 board_filter_draft	Koncept
 board_filter_booked	Rezervované
 board_cols_fmt	{n} stĺp.

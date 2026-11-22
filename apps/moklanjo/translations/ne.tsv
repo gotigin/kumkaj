@@ -12,7 +12,7 @@ board_park_nothing	राख्ने केही छैन — शुल्क
 board_parked	«बोर्ड» मा राखियो — डेस्क खाली छ
 board_draft	मस्यौदा
 board_booked	बुक भयो
-board_filter_all	All
+board_filter_all	सबै
 board_filter_draft	मस्यौदा
 board_filter_booked	बुक भयो
 board_cols_fmt	{n} स्तम्भ

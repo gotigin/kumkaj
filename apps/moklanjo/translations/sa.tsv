@@ -12,7 +12,7 @@ board_park_nothing	स्थापयितुं किमपि नास्�
 board_parked	«फलकम्» इत्यत्र स्थापितम् — कार्यपटः रिक्तः अस्ति
 board_draft	प्रारूपम्
 board_booked	पञ्जीकृतम्
-board_filter_all	All
+board_filter_all	सर्वे
 board_filter_draft	प्रारूपम्
 board_filter_booked	पञ्जीकृतम्
 board_cols_fmt	{n} स्तम्भाः

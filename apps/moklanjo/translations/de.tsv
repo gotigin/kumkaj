@@ -12,7 +12,7 @@ board_park_nothing	Nichts zu parken – fügen Sie Gebühren oder Buchungsdetail
 board_parked	Auf «Pinnwand» geparkt – der Schalter ist frei
 board_draft	Entwurf
 board_booked	Aufgegeben
-board_filter_all	All
+board_filter_all	Alle
 board_filter_draft	Entwurf
 board_filter_booked	Aufgegeben
 board_cols_fmt	{n} Sp.

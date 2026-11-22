@@ -12,7 +12,7 @@ board_park_nothing	رکڻ لاءِ ڪجهه ناهي — چارج يا بکنگ 
 board_parked	«بورڊ» تي رکيو ويو — ڊيسڪ خالي آهي
 board_draft	ڊرافٽ
 board_booked	بک ٿيل
-board_filter_all	All
+board_filter_all	سڀ
 board_filter_draft	ڊرافٽ
 board_filter_booked	بک ٿيل
 board_cols_fmt	{n} ڪالم

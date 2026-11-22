@@ -12,7 +12,7 @@ board_park_nothing	Niente da mettere in attesa: aggiungi addebiti o dati della s
 board_parked	In attesa in «Bacheca»: la postazione è libera
 board_draft	Bozza
 board_booked	Accettato
-board_filter_all	All
+board_filter_all	Tutti
 board_filter_draft	Bozza
 board_filter_booked	Accettato
 board_cols_fmt	{n} col.

@@ -12,7 +12,7 @@ board_park_nothing	გადასადები არაფერია — �
 board_parked	შენახულია «დაფა»-ზე — სამუშაო მაგიდა თავისუფალია
 board_draft	მონახაზი
 board_booked	დაჯავშნილი
-board_filter_all	All
+board_filter_all	ყველა
 board_filter_draft	მონახაზი
 board_filter_booked	დაჯავშნილი
 board_cols_fmt	{n} სვეტი

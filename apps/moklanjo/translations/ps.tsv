@@ -12,7 +12,7 @@ board_park_nothing	د مسوده په توګه د خوندي کولو لپاره
 board_parked	په «بورډ» کې خوندي شو — ډیسک اوس خالي دی
 board_draft	مسوده
 board_booked	بک شوی
-board_filter_all	All
+board_filter_all	ټول
 board_filter_draft	مسوده
 board_filter_booked	بک شوی
 board_cols_fmt	{n} کالمونه

@@ -12,7 +12,7 @@ board_park_nothing	Qaralama kimi yadda saxlamaq üçün heç nə yoxdur — öd�
 board_parked	Yadda saxlanıldı: «Lövhə» — iş masası indi boşdur
 board_draft	Qaralama
 board_booked	Sifariş olunub
-board_filter_all	All
+board_filter_all	Hamısı
 board_filter_draft	Qaralama
 board_filter_booked	Sifariş olunub
 board_cols_fmt	{n} sütun

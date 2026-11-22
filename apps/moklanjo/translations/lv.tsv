@@ -12,7 +12,7 @@ board_park_nothing	Nav ko atlikt — pievienojiet maksas vai rezervācijas datus
 board_parked	Atlikts sadaļā «Tāfele» — darba vieta ir brīva
 board_draft	Melnraksts
 board_booked	Rezervēts
-board_filter_all	All
+board_filter_all	Visi
 board_filter_draft	Melnraksts
 board_filter_booked	Rezervēts
 board_cols_fmt	{n} kol.

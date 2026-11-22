@@ -12,7 +12,7 @@ board_park_nothing	Хойшлуулах зүйл алга — хураамж э�
 board_parked	«Самбар»-д хадгаллаа — ширээ чөлөөтэй
 board_draft	Ноорог
 board_booked	Захиалагдсан
-board_filter_all	All
+board_filter_all	Бүгд
 board_filter_draft	Ноорог
 board_filter_booked	Захиалагдсан
 board_cols_fmt	{n} багана

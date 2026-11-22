@@ -12,7 +12,7 @@ board_park_nothing	보관할 내용이 없습니다 — 요금이나 접수 정�
 board_parked	«보드»에 보관했습니다 — 데스크가 비었습니다
 board_draft	임시
 board_booked	접수됨
-board_filter_all	All
+board_filter_all	전체
 board_filter_draft	임시
 board_filter_booked	접수됨
 board_cols_fmt	{n}열

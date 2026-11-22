@@ -12,7 +12,7 @@ board_park_nothing	રાખવા જેવું કંઈ નથી — ચ�
 board_parked	«બોર્ડ» પર રાખ્યું — ડેસ્ક ખાલી છે
 board_draft	ડ્રાફ્ટ
 board_booked	બુક થયું
-board_filter_all	All
+board_filter_all	બધા
 board_filter_draft	ડ્રાફ્ટ
 board_filter_booked	બુક થયું
 board_cols_fmt	{n} સ્તંભ

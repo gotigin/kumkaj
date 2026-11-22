@@ -12,7 +12,7 @@ board_park_nothing	ରଖିବାକୁ କିଛି ନାହିଁ — ଶୁ
 board_parked	«ବୋର୍ଡ»ରେ ରଖାଗଲା — ଡେସ୍କ ଖାଲି ଅଛି
 board_draft	ଡ୍ରାଫ୍ଟ
 board_booked	ବୁକ୍ ହୋଇଛି
-board_filter_all	All
+board_filter_all	ସବୁ
 board_filter_draft	ଡ୍ରାଫ୍ଟ
 board_filter_booked	ବୁକ୍ ହୋଇଛି
 board_cols_fmt	{n} ସ୍ତମ୍ଭ

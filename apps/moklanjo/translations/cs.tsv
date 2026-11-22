@@ -12,7 +12,7 @@ board_park_nothing	Není co odložit — přidejte poplatky nebo údaje rezervac
 board_parked	Odloženo na «Nástěnka» — pracoviště je volné
 board_draft	Koncept
 board_booked	Zarezervováno
-board_filter_all	All
+board_filter_all	Vše
 board_filter_draft	Koncept
 board_filter_booked	Zarezervováno
 board_cols_fmt	{n} sl.

@@ -12,7 +12,7 @@ board_park_nothing	چیزی برای کنار گذاشتن نیست — هزین
 board_parked	روی «تابلو» کنار گذاشته شد — میز آزاد است
 board_draft	پیش‌نویس
 board_booked	رزرو شده است
-board_filter_all	All
+board_filter_all	همه
 board_filter_draft	پیش‌نویس
 board_filter_booked	رزرو شده است
 board_cols_fmt	{n} ستون

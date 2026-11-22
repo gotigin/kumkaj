@@ -12,7 +12,7 @@ board_park_nothing	Akukho nto yokubeka ecaleni — yongeza iintlawulo okanye iin
 board_parked	Ibekwe ku-«Ibhodi» — idesika ayinanto
 board_draft	Idrafti
 board_booked	Ibhukishiwe
-board_filter_all	All
+board_filter_all	Zonke
 board_filter_draft	Idrafti
 board_filter_booked	Ibhukishiwe
 board_cols_fmt	Iikholamu ezi-{n}

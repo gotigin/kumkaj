@@ -12,7 +12,7 @@ board_park_nothing	Ingenting å parkere — legg til gebyrer eller bestillingsde
 board_parked	Parkert på «Tavle» — disken er ledig
 board_draft	Utkast
 board_booked	Bestilt
-board_filter_all	All
+board_filter_all	Alle
 board_filter_draft	Utkast
 board_filter_booked	Bestilt
 board_cols_fmt	{n} kol.

@@ -12,7 +12,7 @@ board_park_nothing	रखे ला कुछ न हे — शुल्क य
 board_parked	«बोर्ड» पर रख देल गेल — डेस्क खाली हे
 board_draft	ड्राफ़्ट
 board_booked	बुक भेल
-board_filter_all	All
+board_filter_all	सब
 board_filter_draft	ड्राफ़्ट
 board_filter_booked	बुक भेल
 board_cols_fmt	{n} स्तंभ

@@ -12,7 +12,7 @@ board_park_nothing	គ្មានអ្វីដែលត្រូវរក្�
 board_parked	បានរក្សាទុកនៅលើ «ក្តារ» — តុទទេឥឡូវនេះ
 board_draft	សេចក្តីព្រាង
 board_booked	បានកក់ទុក
-board_filter_all	All
+board_filter_all	ទាំងអស់
 board_filter_draft	សេចក្តីព្រាង
 board_filter_booked	បានកក់ទុក
 board_cols_fmt	{n} ជួរ

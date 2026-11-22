@@ -12,7 +12,7 @@ board_park_nothing	Pole midagi kõrvale panna — lisage tasud või broneeringu 
 board_parked	Pandud kõrvale jaotisse «Tahvel» — töölaud on vaba
 board_draft	Mustand
 board_booked	Broneeritud
-board_filter_all	All
+board_filter_all	Kõik
 board_filter_draft	Mustand
 board_filter_booked	Broneeritud
 board_cols_fmt	{n} veergu

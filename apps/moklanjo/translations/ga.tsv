@@ -12,7 +12,7 @@ board_park_nothing	Níl aon rud le cur ar leataobh — cuir táillí nó sonraí
 board_parked	Sábháilte ar «Bord» — tá an deasc folamh anois
 board_draft	Dréacht
 board_booked	Curtha in áirithe
-board_filter_all	All
+board_filter_all	Uile
 board_filter_draft	Dréacht
 board_filter_booked	Curtha in áirithe
 board_cols_fmt	{n} colún

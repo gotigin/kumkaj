@@ -12,7 +12,7 @@ board_park_nothing	Чизе барои гузоштан нест — ҳаққи 
 board_parked	Ба «Тахта» гузошта шуд — миз холӣ аст
 board_draft	Сиёҳнавис
 board_booked	Зан карда шуд
-board_filter_all	All
+board_filter_all	Ҳама
 board_filter_draft	Сиёҳнавис
 board_filter_booked	Зан карда шуд
 board_cols_fmt	{n} сутун

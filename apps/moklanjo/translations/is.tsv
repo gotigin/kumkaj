@@ -12,7 +12,7 @@ board_park_nothing	Ekkert til að leggja til hliðar — bættu við gjöldum e�
 board_parked	Vistað á «Tafla» — afgreiðslan er laus
 board_draft	Drög
 board_booked	Bókað
-board_filter_all	All
+board_filter_all	Allt
 board_filter_draft	Drög
 board_filter_booked	Bókað
 board_cols_fmt	{n} dálkar

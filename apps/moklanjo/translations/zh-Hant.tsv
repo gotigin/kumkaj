@@ -12,7 +12,7 @@ board_park_nothing	沒有可擱置的內容 — 請加入費用或預訂資訊
 board_parked	已存入「看板」 — 檯面已清空
 board_draft	草稿
 board_booked	已預訂
-board_filter_all	All
+board_filter_all	全部
 board_filter_draft	草稿
 board_filter_booked	已預訂
 board_cols_fmt	{n} 列

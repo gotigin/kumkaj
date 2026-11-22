@@ -12,7 +12,7 @@ board_park_nothing	Ei mitään siirrettävää sivuun — lisää maksuja tai va
 board_parked	Siirretty kohtaan «Taulu» — vastaanotto on vapaa
 board_draft	Luonnos
 board_booked	Varattu
-board_filter_all	All
+board_filter_all	Kaikki
 board_filter_draft	Luonnos
 board_filter_booked	Varattu
 board_cols_fmt	{n} sar.

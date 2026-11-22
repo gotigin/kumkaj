@@ -12,7 +12,7 @@ board_park_nothing	Ni kaj odložiti — dodajte stroške ali podatke rezervacije
 board_parked	Odloženo na «Tabla» — pult je prost
 board_draft	Osnutek
 board_booked	Rezervirano
-board_filter_all	All
+board_filter_all	Vse
 board_filter_draft	Osnutek
 board_filter_booked	Rezervirano
 board_cols_fmt	{n} stolp.

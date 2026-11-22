@@ -12,7 +12,7 @@ board_park_nothing	እንደ ረቂቅ የሚቀመጥ ምንም ነገር የ�
 board_parked	በ«ቦርድ» ተቀምጧል — ጠረጴዛው አሁን ባዶ ነው
 board_draft	ረቂቅ
 board_booked	የተያዙ
-board_filter_all	All
+board_filter_all	ሁሉም
 board_filter_draft	ረቂቅ
 board_filter_booked	የተያዙ
 board_cols_fmt	{n} አምዶች

@@ -12,7 +12,7 @@ board_park_nothing	မူကြမ်းအဖြစ် သိမ်းဆည်
 board_parked	«ဘုတ်» တွင် သိမ်းဆည်းထားသည် — စားပွဲသည် ယခု ဗလာဖြစ်နေသည်
 board_draft	မူကြမ်း
 board_booked	ဘွတ်ကင်လုပ်ထားသည်။
-board_filter_all	All
+board_filter_all	အားလုံး
 board_filter_draft	မူကြမ်း
 board_filter_booked	ဘွတ်ကင်လုပ်ထားသည်။
 board_cols_fmt	ကော်လံ {n} ခု

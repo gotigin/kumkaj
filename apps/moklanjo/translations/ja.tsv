@@ -12,7 +12,7 @@ board_park_nothing	保留するものがありません — 料金または受�
 board_parked	「ボード」に保留しました — デスクは空です
 board_draft	下書き
 board_booked	受付済み
-board_filter_all	All
+board_filter_all	すべて
 board_filter_draft	下書き
 board_filter_booked	受付済み
 board_cols_fmt	{n} 列

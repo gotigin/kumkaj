@@ -12,7 +12,7 @@ board_park_nothing	ບໍ່ມີຫຍັງທີ່ຈະບັນທຶກ�
 board_parked	ບັນທຶກໃນ «ກະດານ» — ໂຕະຫວ່າງເປົ່າ
 board_draft	ສະບັບຮ່າງ
 board_booked	ຈອງແລ້ວ
-board_filter_all	All
+board_filter_all	ທັງໝົດ
 board_filter_draft	ສະບັບຮ່າງ
 board_filter_booked	ຈອງແລ້ວ
 board_cols_fmt	{n} ຖັນ

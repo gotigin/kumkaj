@@ -12,7 +12,7 @@ board_park_nothing	אין מה לשמור כטיוטה — הוסיפו חיוב
 board_parked	נשמר אל «לוח» — העמדה פנויה
 board_draft	טיוטה
 board_booked	הוזמן
-board_filter_all	All
+board_filter_all	הכל
 board_filter_draft	טיוטה
 board_filter_booked	הוזמן
 board_cols_fmt	{n} עמודות

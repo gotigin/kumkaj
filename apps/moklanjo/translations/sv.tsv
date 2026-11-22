@@ -12,7 +12,7 @@ board_park_nothing	Inget att parkera — lägg till avgifter eller bokningsuppgi
 board_parked	Parkerat på «Tavla» — disken är tom
 board_draft	Utkast
 board_booked	Bokad
-board_filter_all	All
+board_filter_all	Alla
 board_filter_draft	Utkast
 board_filter_booked	Bokad
 board_cols_fmt	{n} kol.

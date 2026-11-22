@@ -12,7 +12,7 @@ board_park_nothing	Няма чаго адкладаць — дадайце зб�
 board_parked	Адкладзена на «Дошка» — стол вольны
 board_draft	Чарнавік
 board_booked	Забранавана
-board_filter_all	All
+board_filter_all	Усе
 board_filter_draft	Чарнавік
 board_filter_booked	Забранавана
 board_cols_fmt	{n} слупк.

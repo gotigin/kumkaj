@@ -12,7 +12,7 @@ board_park_nothing	Нема што да се остави настрана — �
 board_parked	Оставено на «Табла» — бирото е слободно
 board_draft	Нацрт
 board_booked	Резервирано
-board_filter_all	All
+board_filter_all	Сите
 board_filter_draft	Нацрт
 board_filter_booked	Резервирано
 board_cols_fmt	{n} кол.

@@ -12,7 +12,7 @@ board_park_nothing	Nada que aparcar: añada cargos o datos del envío
 board_parked	Aparcado en «Tablero»: el puesto queda libre
 board_draft	Borrador
 board_booked	Registrado
-board_filter_all	All
+board_filter_all	Todos
 board_filter_draft	Borrador
 board_filter_booked	Registrado
 board_cols_fmt	{n} col.

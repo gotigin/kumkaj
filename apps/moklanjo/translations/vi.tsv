@@ -12,7 +12,7 @@ board_park_nothing	Không có gì để tạm gác — hãy thêm phí hoặc th
 board_parked	Đã gác lên «Bảng» — bàn làm việc đã trống
 board_draft	Nháp
 board_booked	Đã nhận gửi
-board_filter_all	All
+board_filter_all	Tất cả
 board_filter_draft	Nháp
 board_filter_booked	Đã nhận gửi
 board_cols_fmt	{n} cột

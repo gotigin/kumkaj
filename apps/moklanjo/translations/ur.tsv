@@ -12,7 +12,7 @@ board_park_nothing	رکھنے کو کچھ نہیں — چارجز یا بکنگ 
 board_parked	«بورڈ» پر رکھ دیا — ڈیسک خالی ہے
 board_draft	ڈرافٹ
 board_booked	بک ہوا
-board_filter_all	All
+board_filter_all	سب
 board_filter_draft	ڈرافٹ
 board_filter_booked	بک ہوا
 board_cols_fmt	{n} کالم

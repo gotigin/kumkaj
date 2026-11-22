@@ -12,7 +12,7 @@ board_park_nothing	Nincs mit félretenni — adjon meg díjakat vagy foglalási 
 board_parked	Félretéve ide: «Tábla» — a pult szabad
 board_draft	Piszkozat
 board_booked	Lefoglalt
-board_filter_all	All
+board_filter_all	Összes
 board_filter_draft	Piszkozat
 board_filter_booked	Lefoglalt
 board_cols_fmt	{n} oszl.

@@ -12,7 +12,7 @@ board_park_nothing	വയ്ക്കാൻ ഒന്നുമില്ല — �
 board_parked	«ബോർഡ്»-ൽ വെച്ചു — ഡെസ്ക് ഒഴിഞ്ഞു
 board_draft	ഡ്രാഫ്റ്റ്
 board_booked	ബുക്ക് ചെയ്തു
-board_filter_all	All
+board_filter_all	എല്ലാം
 board_filter_draft	ഡ്രാഫ്റ്റ്
 board_filter_booked	ബുക്ക് ചെയ്തു
 board_cols_fmt	{n} നിര

@@ -12,7 +12,7 @@ board_park_nothing	ਰੱਖਣ ਲਈ ਕੁਝ ਨਹੀਂ — ਖਰਚੇ �
 board_parked	«ਬੋਰਡ» 'ਤੇ ਰੱਖ ਦਿੱਤਾ — ਡੈਸਕ ਖਾਲੀ ਹੈ
 board_draft	ਡਰਾਫਟ
 board_booked	ਬੁੱਕ ਹੋਇਆ
-board_filter_all	All
+board_filter_all	ਸਭ
 board_filter_draft	ਡਰਾਫਟ
 board_filter_booked	ਬੁੱਕ ਹੋਇਆ
 board_cols_fmt	{n} ਕਾਲਮ

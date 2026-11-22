@@ -12,7 +12,7 @@ board_park_nothing	ไม่มีอะไรให้พัก — เพิ�
 board_parked	พักไว้บน «บอร์ด» แล้ว — โต๊ะทำงานว่าง
 board_draft	ร่าง
 board_booked	รับฝากแล้ว
-board_filter_all	All
+board_filter_all	ทั้งหมด
 board_filter_draft	ร่าง
 board_filter_booked	รับฝากแล้ว
 board_cols_fmt	{n} คอลัมน์

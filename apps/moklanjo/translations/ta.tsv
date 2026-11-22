@@ -12,7 +12,7 @@ board_park_nothing	வைக்க ஒன்றுமில்லை — கட�
 board_parked	«பலகை»-இல் வைக்கப்பட்டது — டெஸ்க் காலி
 board_draft	வரைவு
 board_booked	பதிவானது
-board_filter_all	All
+board_filter_all	அனைத்தும்
 board_filter_draft	வரைவு
 board_filter_booked	பதிவானது
 board_cols_fmt	{n} நெடுவரிசை

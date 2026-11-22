@@ -12,7 +12,7 @@ board_park_nothing	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧꯕꯥ 
 board_parked	«ꯕꯣꯔꯗ»ꯗꯥ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ — ꯗꯦꯁ꯭ꯛ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯏꯪꯔꯦ
 board_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ
 board_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
-board_filter_all	All
+board_filter_all	ꯑꯄꯨꯟꯕ
 board_filter_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ
 board_filter_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
 board_cols_fmt	{n} ꯀꯂꯃꯁꯤꯡ

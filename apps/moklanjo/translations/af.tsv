@@ -12,7 +12,7 @@ board_park_nothing	Niks om opsy te sit nie — voeg koste of besprekingsbesonder
 board_parked	Opsy gesit op «Bord» — die toonbank is vry
 board_draft	Konsep
 board_booked	Bespreek
-board_filter_all	All
+board_filter_all	Alles
 board_filter_draft	Konsep
 board_filter_booked	Bespreek
 board_cols_fmt	{n} kol.

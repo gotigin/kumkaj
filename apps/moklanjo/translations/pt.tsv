@@ -12,7 +12,7 @@ board_park_nothing	Nada para pôr em espera: adicione encargos ou dados do envio
 board_parked	Em espera em «Quadro»: o posto está livre
 board_draft	Rascunho
 board_booked	Registrado
-board_filter_all	All
+board_filter_all	Todos
 board_filter_draft	Rascunho
 board_filter_booked	Registrado
 board_cols_fmt	{n} col.

@@ -12,7 +12,7 @@ board_park_nothing	لا شيء لتعليقه — أضف رسوماً أو تف�
 board_parked	تم التعليق في «اللوحة» — المكتب فارغ
 board_draft	مسودة
 board_booked	مسجّل
-board_filter_all	All
+board_filter_all	الكل
 board_filter_draft	مسودة
 board_filter_booked	مسجّل
 board_cols_fmt	{n} أعمدة

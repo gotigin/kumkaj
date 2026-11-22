@@ -12,7 +12,7 @@ board_park_nothing	Wax la dhigo ma jiro — ku dar khidmado ama faahfaahinta boo
 board_parked	Waxaa la dhigay «Loox» — miisku waa bannaan yahay
 board_draft	Qabyo
 board_booked	Boossaday
-board_filter_all	All
+board_filter_all	Dhammaan
 board_filter_draft	Qabyo
 board_filter_booked	Boossaday
 board_cols_fmt	{n} tiir

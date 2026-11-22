@@ -12,7 +12,7 @@ board_park_nothing	ৰাখিবলৈ একো নাই — মাচুল
 board_parked	«ব'ৰ্ড»-ত ৰখা হ'ল — ডেস্ক খালী
 board_draft	খচৰা
 board_booked	বুক হৈছে
-board_filter_all	All
+board_filter_all	সকলো
 board_filter_draft	খচৰা
 board_filter_booked	বুক হৈছে
 board_cols_fmt	{n} স্তম্ভ

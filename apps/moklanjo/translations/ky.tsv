@@ -12,7 +12,7 @@ board_park_nothing	Кийинкиге коё турган эч нерсе жок
 board_parked	Сакталды: «Такта» — стол азыр бош
 board_draft	Каралама
 board_booked	Заказдалган
-board_filter_all	All
+board_filter_all	Баары
 board_filter_draft	Каралама
 board_filter_booked	Заказдалган
 board_cols_fmt	{n} мамыча

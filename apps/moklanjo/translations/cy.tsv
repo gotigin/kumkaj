@@ -12,7 +12,7 @@ board_park_nothing	Dim byd i'w roi o'r neilltu — ychwanegwch ffioedd neu fanyl
 board_parked	Wedi'i gadw ar «Bwrdd» — mae'r ddesg yn wag nawr
 board_draft	Drafft
 board_booked	Wedi'i archebu
-board_filter_all	All
+board_filter_all	Popeth
 board_filter_draft	Drafft
 board_filter_booked	Wedi'i archebu
 board_cols_fmt	{n} colofn

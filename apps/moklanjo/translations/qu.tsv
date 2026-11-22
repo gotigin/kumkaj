@@ -12,7 +12,7 @@ board_park_nothing	Imapas saqinapaq manam kanchu — qullqi utaq reservacion wil
 board_parked	«Tabla» kaqpi saqisqa — mesa ch'usaqmi
 board_draft	Borrador
 board_booked	Reservado
-board_filter_all	All
+board_filter_all	Llapan
 board_filter_draft	Borrador
 board_filter_booked	Reservado
 board_cols_fmt	{n} columna

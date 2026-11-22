@@ -12,7 +12,7 @@ board_park_nothing	Няма какво да се отложи — добавет
 board_parked	Отложено на «Табло» — бюрото е свободно
 board_draft	Чернова
 board_booked	Резервирано
-board_filter_all	All
+board_filter_all	Всички
 board_filter_draft	Чернова
 board_filter_booked	Резервирано
 board_cols_fmt	{n} кол.

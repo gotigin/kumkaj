@@ -12,7 +12,7 @@ board_park_nothing	Tiada apa untuk diketepikan — tambah caj atau butiran tempa
 board_parked	Diketepikan di «Papan» — meja kosong
 board_draft	Draf
 board_booked	Tempah
-board_filter_all	All
+board_filter_all	Semua
 board_filter_draft	Draf
 board_filter_booked	Tempah
 board_cols_fmt	{n} lajur

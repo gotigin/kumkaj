@@ -12,7 +12,7 @@ board_park_nothing	Nie ma czego odłożyć — dodaj opłaty lub dane rezerwacji
 board_parked	Odłożono na «Tablica» — stanowisko jest wolne
 board_draft	Szkic
 board_booked	Zarezerwowane
-board_filter_all	All
+board_filter_all	Wszystkie
 board_filter_draft	Szkic
 board_filter_booked	Zarezerwowane
 board_cols_fmt	{n} kol.

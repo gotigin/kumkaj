@@ -12,7 +12,7 @@ board_park_nothing	Chetga qoʻyadigan narsa yoʻq — toʻlovlar yoki rezervasyo
 board_parked	«Doska» ga qoʻyildi — ish joyi boʻsh
 board_draft	Qoralama
 board_booked	Band qilingan
-board_filter_all	All
+board_filter_all	Hammasi
 board_filter_draft	Qoralama
 board_filter_booked	Band qilingan
 board_cols_fmt	{n} ustun

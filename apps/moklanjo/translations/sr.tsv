@@ -12,7 +12,7 @@ board_park_nothing	Нема шта да се одложи — додајте т�
 board_parked	Одложено на «Табла» — пулт је слободан
 board_draft	Нацрт
 board_booked	Резервисано
-board_filter_all	All
+board_filter_all	Све
 board_filter_draft	Нацрт
 board_filter_booked	Резервисано
 board_cols_fmt	{n} кол.

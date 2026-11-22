@@ -12,7 +12,7 @@ board_park_nothing	Nta cyo gushyira ku ruhande — ongeramo amafaranga ya serivi
 board_parked	Byashyizwe kuri «Ikibaho» — ameza y'akazi arimo ubusa
 board_draft	Imbanzirizamushinga
 board_booked	Yanditse
-board_filter_all	All
+board_filter_all	Byose
 board_filter_draft	Imbanzirizamushinga
 board_filter_booked	Yanditse
 board_cols_fmt	Inkingi {n}

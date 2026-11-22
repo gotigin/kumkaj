@@ -12,7 +12,7 @@ board_park_nothing	Кейінге қоятын ештеңе жоқ — алым�
 board_parked	Сақталды: «Тақта» — үстел қазір бос
 board_draft	Нобай
 board_booked	Брондалды
-board_filter_all	All
+board_filter_all	Барлығы
 board_filter_draft	Нобай
 board_filter_booked	Брондалды
 board_cols_fmt	{n} баған

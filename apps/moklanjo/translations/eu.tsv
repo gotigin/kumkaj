@@ -12,7 +12,7 @@ board_park_nothing	Ez dago ezer albo batera uzteko: gehitu karguak edo erreserba
 board_parked	Gordeta: «Arbela» — mahaia libre dago
 board_draft	Zirriborroa
 board_booked	Erreserbatua
-board_filter_all	All
+board_filter_all	Denak
 board_filter_draft	Zirriborroa
 board_filter_booked	Erreserbatua
 board_cols_fmt	{n} zutabe

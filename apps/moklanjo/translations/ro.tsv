@@ -12,7 +12,7 @@ board_park_nothing	Nimic de salvat ca ciornă — adaugă taxe sau detalii de ex
 board_parked	Salvată pe «Panou» — biroul e liber
 board_draft	Ciornă
 board_booked	Înregistrat
-board_filter_all	All
+board_filter_all	Toate
 board_filter_draft	Ciornă
 board_filter_booked	Înregistrat
 board_cols_fmt	{n} coloane

@@ -12,7 +12,7 @@ board_park_nothing	Walang maitatabi — magdagdag ng mga singil o detalye ng boo
 board_parked	Itinabi sa «Board» — bakante na ang mesa
 board_draft	Draft
 board_booked	Naka-book
-board_filter_all	All
+board_filter_all	Lahat
 board_filter_draft	Draft
 board_filter_booked	Naka-book
 board_cols_fmt	{n} hanay

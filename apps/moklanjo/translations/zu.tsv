@@ -12,7 +12,7 @@ board_park_nothing	Akukho okungabekwa eceleni — engeza izindleko noma imininin
 board_parked	Kubekwe ku-«Ibhodi» — ideski alinalutho
 board_draft	Okusalungiswa
 board_booked	Ibhukhiwe
-board_filter_all	All
+board_filter_all	Konke
 board_filter_draft	Okusalungiswa
 board_filter_booked	Ibhukhiwe
 board_cols_fmt	Amakholomu angu-{n}

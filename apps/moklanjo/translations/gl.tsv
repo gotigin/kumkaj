@@ -12,7 +12,7 @@ board_park_nothing	Non hai nada que aparcar: engada cargos ou datos da reserva
 board_parked	Aparcado en «Taboleiro»: o escritorio queda libre
 board_draft	Borrador
 board_booked	Reservado
-board_filter_all	All
+board_filter_all	Todo
 board_filter_draft	Borrador
 board_filter_booked	Reservado
 board_cols_fmt	{n} col.

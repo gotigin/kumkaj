@@ -12,7 +12,7 @@ board_park_nothing	Nėra ko atidėti — pridėkite mokesčių arba užsakymo du
 board_parked	Atidėta į «Lenta» — darbo vieta laisva
 board_draft	Juodraštis
 board_booked	Užsakyta
-board_filter_all	All
+board_filter_all	Visi
 board_filter_draft	Juodraštis
 board_filter_booked	Užsakyta
 board_cols_fmt	{n} stulp.

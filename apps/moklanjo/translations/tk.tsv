@@ -12,7 +12,7 @@ board_park_nothing	Gyra goýmaga zat ýok — tölegleri ýa-da zakaz maglumatla
 board_parked	«Tagta» bölümine goýuldy — iş ýeri boş
 board_draft	Garalama
 board_booked	Zakaz edildi
-board_filter_all	All
+board_filter_all	Hemmesi
 board_filter_draft	Garalama
 board_filter_booked	Zakaz edildi
 board_cols_fmt	{n} sütün

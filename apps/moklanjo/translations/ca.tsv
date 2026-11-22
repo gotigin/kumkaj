@@ -12,7 +12,7 @@ board_park_nothing	No hi ha res per aparcar: afegiu càrrecs o dades de la reser
 board_parked	Aparcat a «Tauler»: l'escriptori queda lliure
 board_draft	Esborrany
 board_booked	Reservat
-board_filter_all	All
+board_filter_all	Tot
 board_filter_draft	Esborrany
 board_filter_booked	Reservat
 board_cols_fmt	{n} col.

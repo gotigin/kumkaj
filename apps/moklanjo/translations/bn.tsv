@@ -12,7 +12,7 @@ board_park_nothing	রাখার মতো কিছু নেই — চা�
 board_parked	«বোর্ড»-এ রাখা হয়েছে — ডেস্ক খালি
 board_draft	খসড়া
 board_booked	বুক হয়েছে
-board_filter_all	All
+board_filter_all	সব
 board_filter_draft	খসড়া
 board_filter_booked	বুক হয়েছে
 board_cols_fmt	{n} কলাম

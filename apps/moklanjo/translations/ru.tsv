@@ -12,7 +12,7 @@ board_park_nothing	Нечего откладывать — добавьте сб
 board_parked	Отложено в раздел «Доска» — рабочее место свободно
 board_draft	Черновик
 board_booked	Принято
-board_filter_all	All
+board_filter_all	Все
 board_filter_draft	Черновик
 board_filter_booked	Принято
 board_cols_fmt	{n} стб.

@@ -12,7 +12,7 @@ board_park_nothing	Ym don ei ei ban buh kum ka draft — pyndap ia ki jingsiew l
 board_parked	La buh ha ka «Board» — ka miej ka thylli mynta
 board_draft	Draft
 board_booked	La buh
-board_filter_all	All
+board_filter_all	Baroh
 board_filter_draft	Draft
 board_filter_booked	La buh
 board_cols_fmt	{n} ki tnum

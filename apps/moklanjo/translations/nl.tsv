@@ -12,7 +12,7 @@ board_park_nothing	Niets om te parkeren — voeg kosten of boekingsgegevens toe
 board_parked	Geparkeerd op «Bord» — de balie is vrij
 board_draft	Concept
 board_booked	Aangenomen
-board_filter_all	All
+board_filter_all	Alles
 board_filter_draft	Concept
 board_filter_booked	Aangenomen
 board_cols_fmt	{n} kol.

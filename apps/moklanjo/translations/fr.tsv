@@ -12,7 +12,7 @@ board_park_nothing	Rien à mettre en attente : ajoutez des frais ou les détails
 board_parked	Mis en attente dans «Tableau» : le poste est libre
 board_draft	Brouillon
 board_booked	Enregistré
-board_filter_all	All
+board_filter_all	Tous
 board_filter_draft	Brouillon
 board_filter_booked	Enregistré
 board_cols_fmt	{n} col.

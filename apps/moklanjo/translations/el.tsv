@@ -12,7 +12,7 @@ board_park_nothing	Τίποτα για αποθήκευση — προσθέστ
 board_parked	Αποθηκεύτηκε στον «Πίνακας» — το γραφείο είναι ελεύθερο
 board_draft	Πρόχειρο
 board_booked	Κράτηση
-board_filter_all	All
+board_filter_all	Όλα
 board_filter_draft	Πρόχειρο
 board_filter_booked	Κράτηση
 board_cols_fmt	{n} στ.

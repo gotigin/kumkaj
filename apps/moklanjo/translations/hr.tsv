@@ -12,7 +12,7 @@ board_park_nothing	Nema se što odložiti — dodajte naknade ili podatke o buki
 board_parked	Odloženo na «Ploča» — šalter je slobodan
 board_draft	Nacrt
 board_booked	Bukirano
-board_filter_all	All
+board_filter_all	Sve
 board_filter_draft	Nacrt
 board_filter_booked	Bukirano
 board_cols_fmt	{n} st.

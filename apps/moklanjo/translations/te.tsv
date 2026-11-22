@@ -12,7 +12,7 @@ board_park_nothing	ఉంచడానికి ఏమీ లేదు — ఛా
 board_parked	«బోర్డ్»లో ఉంచబడింది — డెస్క్ ఖాళీగా ఉంది
 board_draft	డ్రాఫ్ట్
 board_booked	బుక్ అయింది
-board_filter_all	All
+board_filter_all	అన్నీ
 board_filter_draft	డ్రాఫ్ట్
 board_filter_booked	బుక్ అయింది
 board_cols_fmt	{n} నిలువు వరుసలు

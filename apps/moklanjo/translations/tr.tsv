@@ -12,7 +12,7 @@ board_park_nothing	Bekletilecek bir şey yok — ücret veya gönderi bilgisi ek
 board_parked	«Pano» bölümüne alındı — banko boş
 board_draft	Taslak
 board_booked	Kabul edildi
-board_filter_all	All
+board_filter_all	Tümü
 board_filter_draft	Taslak
 board_filter_booked	Kabul edildi
 board_cols_fmt	{n} sütun

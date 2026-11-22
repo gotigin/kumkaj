@@ -12,7 +12,7 @@ board_park_nothing	没有可搁置的内容 — 请添加费用或寄件信息
 board_parked	已存入「看板」 — 台面已清空
 board_draft	草稿
 board_booked	已登记
-board_filter_all	All
+board_filter_all	全部
 board_filter_draft	草稿
 board_filter_booked	已登记
 board_cols_fmt	{n} 列

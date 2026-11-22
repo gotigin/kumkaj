@@ -12,7 +12,7 @@ board_park_nothing	Մի կողմ դնելու ոչինչ չկա — ավելաց
 board_parked	Պահված է «Տախտակ» բաժնում — սեղանն ազատ է
 board_draft	Սևագիր
 board_booked	Ամրագրված
-board_filter_all	All
+board_filter_all	Բոլորը
 board_filter_draft	Սևագիր
 board_filter_booked	Ամրագրված
 board_cols_fmt	{n} սյունակ

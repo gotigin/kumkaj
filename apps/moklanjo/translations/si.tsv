@@ -12,7 +12,7 @@ board_park_nothing	තැබීමට කිසිවක් නැත — ගා
 board_parked	«පුවරුව» හි තබන ලදී — මේසය හිස්ය
 board_draft	කෙටුම්පත
 board_booked	වෙන්කර ඇත
-board_filter_all	All
+board_filter_all	සියල්ල
 board_filter_draft	කෙටුම්පත
 board_filter_booked	වෙන්කර ඇත
 board_cols_fmt	තීරු {n}
@@ -226,8 +226,8 @@ opening_client	සේවාලාභියා විවෘත කරමින්
 preparing_desk	මේසය සූදානම් කරමින්...
 opening_server	සේවාදායකය විවෘත කරමින්...
 creating_server	සේවාදායකය නිර්මාණය කරමින්...
-setup_restoring	Restoring backup…
-setup_restored	Restored — unlock with the Owner PIN from that backup.
+setup_restoring	උපස්ථය යළි පිහිටුවමින්…
+setup_restored	යළි පිහිටුවන ලදී — එම උපස්ථයේ හිමිකරු PIN එකෙන් අගුළු හරින්න.
 diag_privacy_help	ලඝු-සටහන් මෙම උපාංගයේ පවතී. රහස් (PIN, මුරපද) කිසිදා ගබඩා නොවේ. උපාංගයෙන් පිටත පැකේජයක් බෙදා ගැනීමට සෑම අවස්ථාවකදීම ඔබේ පැහැදිලි අනුමැතිය අවශ්‍ය වේ - කිසිවිටෙක විකුණනු නොලැබේ හෝ තෙවන පාර්ශවයන්ට ලබා නොදේ.
 diag_level	විස්තර මට්ටම
 diag_level_error	දෝෂ
