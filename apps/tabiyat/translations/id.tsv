@@ -559,7 +559,7 @@ duress_cleared	PIN darurat dimatikan
 upi_amount_ph	Jumlah UPI
 void	Batalkan
 write_off_ap	Hapuskan AP
-write_off_heading	Hapuskan (selesaikan tanpa bayar)
+write_off_heading	Hapus piutang (selesaikan tanpa bayar)
 write_off_nil	Hapuskan / saldo nol
 your_brand	Merek Anda (di aplikasi)
 your_categories	Kategori Anda
