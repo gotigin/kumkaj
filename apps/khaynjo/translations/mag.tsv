@@ -19,7 +19,7 @@ reports_today	रोज़ बही (आज)
 reports_month	लाभ आउर हानि (महीना)
 reports_aging	बकाया / Dr-Cr
 reports_balance_sheet	बैलेंस शीट
-reports	रिपोर्ट
+reports	बैंक बही व लाभ-हानि
 refresh	ताज़ा करऽ
 undo	पूर्ववत
 start_tracking	गिनती शुरू
@@ -31,7 +31,7 @@ items	मेनू आउर आइटम
 nav_items	मेनू
 more	आउर
 your_items	अपन मेनू
-items_help	हर पंक्ति एक व्यंजन भा आइटम हई (जैसे Masala Dosa)। ओकर कीमत आउर किचन स्टेशन जोड़ें। संपादन खातिर दबाऽ।
+items_help	आइटम दबाने पर संपादन। «नया आइटम» फ़ॉर्म साफ़ करऽ हई। हमार व्यंजन खोजऽ या अपना नाम/फ़ोटो लिखऽ, दाम लगावऽ (0 ठीक), फेर «आइटम जोड़ऽ»। पहिले दर्ज बिक्री ओही नाम पर रहऽ हई जेकरा पर चार्ज भेल।
 add_item	आइटम जोड़ऽ
 new_item	नया आइटम
 adding_item	नया आइटम जोड़ रहल हथ
@@ -280,7 +280,7 @@ frequent_apply	लागू करऽ
 frequent_saved	अक्सर: पिछले {d} दिन, शीर्ष {n} — {c} व्यंजन
 frequent_empty	ई अवधि में अबहीं कोई पूरी बिक्री नइखे — बिल निपटाऽ (सेटिंग में ₹0 मान्य हो त) आउर वे हियाँ दिखेंगे।
 zero_sales	शून्य मूल्य बिक्री
-zero_sales_help	ऑर्डर डेस्क पर ₹0 व्यंजन आउर ₹0 भुगतान के अनुमति दें। बंद करने पर पेमेंट में राशि चाहिए।
+zero_sales_help	₹0 दाम वाला व्यंजन आ ₹0 पर चुकावल बिल अनुमति दें (मुफ़्त / Owner इच्छा)। डिफ़ॉल्ट चालू ताकि मुफ़्त कवर Frequent आ दिन के बही में दिखें।
 zero_sales_on	शून्य बिक्री: चालू
 zero_sales_off	शून्य बिक्री: बंद
 zero_sales_saved_on	शून्य बिक्री के अनुमति सहेजी (चालू)
@@ -460,7 +460,7 @@ optional_login_heading	वैकल्पिक लॉगिन
 rights_heading	अधिकार
 ops_panel	स्थानीय काम
 crm_heading	मेहमान आउर संदेश
-crm_help	जन्मदिन, लॉयल्टी — SMS/WhatsApp कतार। {name} आउर {points}। मालिक भेजतऽ हई।
+crm_help	जन्मदिन, लॉयल्टी, निष्क्रिय आ टॉप मेहमान — SMS भा WhatsApp इरादा कतार में। संदेश में {name} आ {points}। Owner भेजऽ हथिन; अपने आप कुछ नईं भेजल जा हई।
 crm_queue_sms	SMS कतार
 crm_queue_wa	WhatsApp कतार
 crm_seg_bday_week	जन्मदिन सप्ताह
@@ -1222,7 +1222,7 @@ kot_field_on	देखावऽ
 kot_field_off	छिपावऽ
 kot_field_size	फ़ॉन्ट आकार
 kot_weight_light	हल्का
-bill_kot_panel_help	बिल सामग्री आउर रसोई पर्ची टाइपोग्राफी। ऊपर के सामग्री चौड़ाई बिल आउर रसोई पर्ची दोनों के चौड़ाई तय करतऽ हई।
+bill_kot_panel_help	बिल आ किचन पर्ची लेआउट, प्रत्येक के अपना सामग्री चौड़ाई। Bill Cashier बिल जारी/सेटल करे वाला; KOT Waiter किचन टिकट भेजे वाला — पूरी ऑर्डर कहानी बही में रहऽ हई।
 std_size_ph	जैसे 18, 20, 26…
 kot_show_shop	दुकान के नाम
 kot_hide_shop	दुकान छिपावऽ
@@ -1280,7 +1280,7 @@ test_bill_format	टेस्ट बिल
 test_bill_sent	बिल के नमूना भेजा
 test_print_no_printer	ऊ काम खातिर प्रिंटर नइखे — इसी स्क्रीन पर एक चुनऽ
 std_print	बिल प्रिंट आकार
-std_print_help	स्टैंडर्ड पोर्ट्रेट आउर लैंडस्केप बिल जॉब खातिर अक्षर आकार (थर्मल KOT अलग)। दोनों ओरिऽटेशन पर एक ही आकार।
+std_print_help	OS / दस्तावेज़ प्रिंटर पर Standard Portrait आ Landscape बिल जॉब के फ़ॉन्ट आकार (पॉइंट लिखऽ — Small/Normal/Large नईं)। दोनों ओरिएंटेशन पर एक आकार। किचन स्लिप आकार KOT टैब पर।
 std_size_s	छोटा
 std_size_m	सामान्य
 std_size_l	बड़ा
@@ -1301,21 +1301,21 @@ aggregator_import_help	वैकल्पिक Local: backups में import_
 import_aggregator_file	एग्रीगेटर फ़ाइल आयात
 team_pick_ph	संपादन हेतु स्टाफ़ के नाम
 select_staff	ई स्टाफ़ चुनऽ
-rights_help	अधिकार — बदलने खातिर दबावऽ: अनुमति हई → अनुमोदन के साथ (उसी समय मैनेजर के PIN) → अनुमति नहीं।
+rights_help	ई व्यक्ति के पैसे आ फ़्लोर काम — दबाने पर चक्र: अनुमति → बॉस PIN चाहिए → अनुमति नईं। बिल फेर प्रिंट सिर्फ़ बिल; किचन स्टेशन नीचे के सूची।
 dish_picker_help	हमर व्यंजन खोजऽ भा देखऽ आउर एक दबावऽ — ओकर नाम आउर फ़ोटो भर जाएगा, भा अपना नाम रखें। अपनी कीमत डालेऽ (0 ओ चलेगा), फिर आइटम जोड़ें।
 close_dish_list	व्यंजन सूची बंद करऽ
 own_item_name	एकरा के अपने आइटम के नाम बनावऽ
 on_your_menu	अपन मेनू में
 edit	बदलेऽ
 schemes	स्कीम / ऑफ़र
-schemes_help	खरीदेऽ X पाऽ Y — भुगतान पर अपने आप। उदाहरण: 2 थाली किनऽ, 1 छाछ पाऽ
+schemes_help	खरीदेऽ X पाऽ Y, प्रतिशत छूट आ तय कॉम्बो। कॉम्बो Send KOT पर किचन लाइन में खुलऽ हई; कॉम्बो चले तक हिस्सा रुकल रहऽ हई। उदाहरण: 2 थाली किनऽ, 1 छाछ पाऽ
 scheme_bogo_ph	2 थाली खरीदऽ, 1 छाछ पावऽ
 add_scheme	BOGO जोड़ऽ
 schedule_ph	समय / हैप्पी आवर — Mon-Fri 07:00-11:00 भा HappyHour 17:00-19:00=150
 upi_qr	UPI QR
 show_upi_qr	UPI QR देखावऽ
 close_upi_qr	बंद
-upi_qr_help	मेहमान स्कैन कर भुगतान करें। भुगतान के बाद Take payment दबाऽ।
+upi_qr_help	मेहमान स्कैन कर भुगतान करें। भुगतान के बाद «भुगतान लेऽ» दबाएँ। दूसरी स्क्रीन: LAN पर Server URL /display खोलें।
 kot_recall	वापस लाऽ
 recently_done	अबहीं पूरे
 recall_kot_ph	KOT # वापस लाने के
