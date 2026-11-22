@@ -684,7 +684,7 @@ book_opening_credit	Réservation — crédit d'ouverture
 account_kind	Type de compte (touchez-en un)
 active_ledger	Livre actif
 actual_total_cap	TOTAL RÉEL
-amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modifications gardent tout l'historique.
+amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modifications conservent tout l’historique. Rounded Total commence égal à Applied — modifiez seulement pour arrondir. Annulation et remboursement peuvent exiger le PIN propriétaire ou manager (saisi au-dessus ; enregistré à votre nom).
 applied_total_cap	TOTAL APPLIQUÉ
 bank_balance	Solde bancaire
 bank_net_today	Net bancaire du jour

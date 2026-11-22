@@ -684,7 +684,7 @@ book_opening_credit	کتاب - د پرانیستلو کریډیټ
 account_kind	د حساب ډول (یو ټایپ)
 active_ledger	فعال لیجر
 actual_total_cap	اصلي مجموعه
-amend_help	کن د مالک یا مدیر PIN ته اړتیا ولري (پورته ټایپ شوی؛ ستاسو د نوم سره ثبت شوی).
+amend_help	کن د مالک یا مدیر PIN ته اړتیا ولري (پورته ټایپ شوی؛ ستاسو د نوم سره ثبت شوی). Rounded Total = Applied at start — edit only to round. Void/refund may need Owner/Manager PIN (typed above; with your name).
 applied_total_cap	ټولټال پلي شوي
 bank_balance	د بانک بیالنس
 bank_net_today	نن ورځ د بانک جال

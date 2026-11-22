@@ -684,7 +684,7 @@ book_opening_credit	Rezervasyon — açılış kredisi
 account_kind	Hesap türü (birine dokun)
 active_ledger	Aktif defter
 actual_total_cap	GERÇEK TOPLAM
-amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tam geçmişi korur.
+amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tüm geçmişi korur. Yuvarlanmış toplam, Uygulanan ile aynı başlar — yalnızca yuvarlamak için düzenleyin. İptal ve iade Sahip veya Yönetici PIN’i isteyebilir (yukarıda yazılır; adınızla kaydedilir).
 applied_total_cap	UYGULANAN TOPLAM
 bank_balance	Banka bakiyesi
 bank_net_today	Bugünkü banka neti

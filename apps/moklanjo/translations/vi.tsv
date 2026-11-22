@@ -684,7 +684,7 @@ book_opening_credit	Gửi — nợ đầu kỳ
 account_kind	Loại tài khoản (chạm một)
 active_ledger	Sổ đang dùng
 actual_total_cap	TỔNG THỰC
-amend_help	Chọn một đơn để sửa, hủy hoặc hoàn tiền. Sửa đổi giữ toàn bộ lịch sử.
+amend_help	Chọn một giao bán để sửa, hủy hoặc hoàn tiền. Sửa giữ nguyên lịch sử đầy đủ. Tổng làm tròn bắt đầu bằng số đã áp dụng — chỉ sửa để làm tròn. Hủy và hoàn có thể cần PIN Chủ hoặc Quản lý (gõ ở trên; ghi kèm tên bạn).
 applied_total_cap	TỔNG ÁP DỤNG
 bank_balance	Số dư ngân hàng
 bank_net_today	Ròng ngân hàng hôm nay
