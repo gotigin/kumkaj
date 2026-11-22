@@ -158,3 +158,12 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `snacks/bajji.webp` | blurry street-stall montage of many fried snacks | Andhra famous mirchi bajji | Bhaskaranaidu | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40893688 | resized, WebP |
 | `snacks/chakna.webp` | whisky/Coke party table, not a chakna mix | Spicy and namkeen garlic mixture snack with peanuts… | Billjones94 | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=151455203 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indian-mains)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indian-mains/undhiyu.webp` | Indo-Chinese manchurian/kofta balls | Undhiyu | Jatan1992 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40987190 | resized, WebP |
+| `indian-mains/pithla.webp` | dry red mash, not yellow besan pithla | Pithla-Bhakri (51373736404) | solarisgirl | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=119735217 | resized, WebP |
+| `indian-mains/shami-kebab.webp` | cutlets with pasta collage inset | Shami Kabab | Miansari66 | Public domain | https://commons.wikimedia.org/w/index.php?curid=12628044 | resized, WebP |
+| `indian-mains/south-indian-meals-thali.webp` | masala dosa with kitty-party promo standee | A Thali, famous South Indian meal served on a banana leaf | Melanie M | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=27710383 | resized, WebP |
