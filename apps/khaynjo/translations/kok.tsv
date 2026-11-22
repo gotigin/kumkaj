@@ -1306,7 +1306,7 @@ dish_picker_help	आमचीं आयदनां सोदून वा ब�
 close_dish_list	आयदांची वळेरी बंद कर
 own_item_name	हें तुमचें स्वताचें आयटम नांव म्हणून वापरात
 on_your_menu	तुमच्या मेनूंत
-edit	संपादन करात[बदल]
+edit	संपादन करात
 schemes	येवजण्यो / ऑफर
 schemes_help	बीओजीओ, टक्केवारी-ऑफ, आनी फिक्स्ड कॉम्बो. सेंड कोटाचेर कॉम्बो किचन लायनींत विस्तारतात. कॉम्बो सक्रीय जाय मेरेन घटक धरून उरतात. देखीक: 2 थाळी विकतें घेयात, 1 चास घेयात
 scheme_bogo_ph	2 थाळी विकत्यो घेयात, 1 चास घेयात
@@ -1354,7 +1354,7 @@ client_template_confirm	{title} चे {d} पदार्थ जोडचे? �
 client_template_importing	आयात {title}...
 client_template_done	{title} मेरेनचो दरेक पदार्थ तुमच्या मेनूंत आसा.
 client_template_imported	{d} पदार्थ आनी {title} सावन {c} वर्ग जोडले
-resv_heading	आरक्षण[बदल]
+resv_heading	आरक्षण
 resv_name_ph	सोयऱ्यांचें नांव
 resv_phone_ph	फोन (पर्यायी)
 resv_guests_ph	सोयऱ्यांनी
