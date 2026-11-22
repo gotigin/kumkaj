@@ -875,7 +875,7 @@ credit_khata_amount_ph	Ba / khata sum zat
 credit_limit_ph	Ba tiam (0 = awm lo)
 dim_unit_code_ph	Dimension unit code (cm) a ni.
 divisor_ph	Volumetric divisor (5000) a ni.
-extra_per_kg_ph	Extra / kg
+extra_per_kg_ph	Belh / kg
 first_amount_ph	Pakhatna pawisa
 first_kg_ph	Kg hmasa ber (slab) .
 from_code_ph	Code atanga (em)
