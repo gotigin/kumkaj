@@ -249,7 +249,7 @@ sidebar_menu_items	مینو او توکي
 sidebar_enable_all	ټول فعال کړئ
 sidebar_disable_all	ټول غیر فعال کړئ
 sidebar_order_saved	د غاړې امر خوندي شو
-sidebar_visibility_saved	د غاړې د لید لید خوندي شو
+sidebar_visibility_saved	د غاړې لید خوندي شو
 amounts_hide	پټول
 amounts_show	ښودل
 counter	کاونټر
@@ -496,7 +496,7 @@ floor_layout_w	W
 floor_layout_h	H
 floor_layout_save	ترتیب خوندي کړئ
 floor_layout_open	میز خلاص کړئ
-floor_layout_edit	ترتیب ترتیب کړئ
+floor_layout_edit	ترتیب کړئ
 floor_layout_pick	یو جدول د دې ترتیب کولو لپاره ټایپ کړئ
 floor_layout_saved	د میز ترتیب خوندي شو
 floor_layout_nudge_left	← 20
@@ -661,7 +661,7 @@ forget_device	هېرول
 last_seen	لیدل
 copy_pair_code	د جوړه کولو کوډ کاپي کړئ
 new_pair_code	نوی جوړه کوډ
-pair_finishing	جوړه جوړه ... د هټۍ د کتابونو پلي کول
+pair_finishing	جوړه کېږي... د هټۍ د کتابونو پلي کول
 pair_opening	د الرې پرانیستل...
 pair_copied	د جوړه کولو کوډ کاپي شوی
 kot_waiting	د لیږلو انتظار
@@ -1146,7 +1146,7 @@ discount_reason_ph	دلیل (د بیلګې په توګه منظم میلمه، �
 opening_float_ph	نغدې نن سهار په دراز کې واچولې
 shift_counted_ph	په سپارلو کې نغدي شمیرل کیږي
 opening_float	د پیسو خلاصول (فلوټ)
-shift_handover	د لیږد لیږد
+shift_handover	د شفټ سپارل
 shift_since	دا بدلون له هغه راهیسې
 expected_in_drawer	په دراز کې تمه کیږي
 right_discount	تخفیف ورکړئ
@@ -1370,7 +1370,7 @@ kitchen_all_day_head	اوس پخلی کول
 kitchen_tab_live	ژوندی
 kitchen_tab_recall	یادول
 kitchen_tab_stations	سټیشنونه
-split_bill	د بیل بیل
+split_bill	بیل وویشئ
 split_go	جال بیل جوړ کړئ
 cancel	لغوه کړئ
 opening_client	کلاینټ پرانیستل کېږي…

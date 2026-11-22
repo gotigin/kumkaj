@@ -1384,7 +1384,7 @@ split_send_first	Ñawpaqtaqa KOTta apachiy — cocinapi kaq platokunallam sapaq 
 split_pick_some	Ñawpaqtaqa sapaq invitado facturapaq platokunata ñit’iy
 split_done	Sapaq invitado factura ruwasqa — kay mikhuy mesa lado mikhuy wasipi kachkan
 split_marked	sapaq invitado factura
-order_empty_pick	Ch’usaq kamachiy — ñit’iy Yapay platokunata platokunata akllanaykipaq.
+order_empty_pick	Ch’usaq kamachiy — ñit’iy Yapay platokunata akllanaykipaq.
 add_dishes	Mikhukunata yapay
 order_so_far	Kay kamachiypi: {n} · {total}
 no_dish_match	Mana ima mikhuypas “{q}” nisqawan tupanchu.

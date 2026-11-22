@@ -140,7 +140,7 @@ bill_item_piece_on	Он
 bill_item_piece_off	Офф
 bill_total_qty	Тотал кти
 bill_total_subtotal	Међузбир
-bill_total_grand	Укупно укупно
+bill_total_grand	Укупно
 bill_total_number_under	Број испод
 bill_total_caption_under	Ознака испод
 bill_total_own_line	Сопствена линија

@@ -12,7 +12,7 @@ buy_money_out	Owo sisan / olupese
 record_purchase	Fipamọ rira naa
 add_expense	Gbigba owo
 bank_book	Iwe akọọlẹ banki
-credit_help	Onibara tabi id awọn olupese jẹ alailẹgbẹ (awọn orukọ le tun). Onibara nṣiṣẹ iwe-kirẹditi kirẹditi kan (jẹ wa); Olupese kan ta ọja wa (a jẹ wọn); mejeeji ni itanran. Ledgers duro lọtọ; awọn iroyin fihan net.
+credit_help	Oníbàárà tàbí id awọn olupese jẹ̀ aláìlẹ́gbẹ́ (àwọn orúkọ le tún). Oníbàárà ńṣiṣẹ́ ìwé-kírẹ́dítì kan (jẹ́ wa); Olùpèsè kan ta ọjà wa (a jẹ́ wọn); méjèèjì ní ìtànran. Ledgers dúró lọ́tọ̀; àwọn ìroyìn fi hàn net.
 party_kind_ph	Awọn ipa: Onibara, Olupese, mejeeji…
 reports_help	Iwe akọọlẹ ọjọ, awọn onigbese & awọn ayanilowo, iwe akọọlẹ banki, awọn owo inawo, èrè & pipadanu.
 reports_today	Iwe akọọlẹ ọjọ (loni)
@@ -43,7 +43,7 @@ removed_help	Pada sipo fi ohun akojọ aṣayan pada si ori akojọ aṣayan gan
 restore_item	Mu pada
 empty_catalog	Ko si awopọ sibẹsibẹ.
 total	Lapapọ
-cash	Owo owo
+cash	Owó
 upi	UPI
 card	Kaadi
 credit	Àwọn oníbàárà
@@ -390,7 +390,7 @@ settings_app_tmpl_note	Gbígbé wọlé lẹ́ẹ̀kan sí i máa ń pa títà, 
 app_template_wipe_warn	Èyí máa pa dátà ìṣòwò inú àwọn ìwé rẹ́ (títà, KOT, àwọn ìwé àkọọ́lẹ̀) yóò sì lo ètò ilé ìtajà ti àdàkọ náà. Àkójọ oúnjẹ àti ìṣètò lè yí padà. Ṣé kí a tẹ̀síwájú?
 app_template_wipe_continue	Tesiwaju
 app_template_wipe_cancel	Fagilee
-currency	Owo owo
+currency	Owó
 backup	Afẹyinti
 use	Lo
 dont_use	Maṣe lo
@@ -605,7 +605,7 @@ restaurant_name_ph	Orukọ ile ounjẹ (aṣayan)
 restore_backup	Mu afẹyinti pada
 role_both	Mejeeji
 role_admin	Abojuto
-role_cashier	Owo owo
+role_cashier	Olùgbà owó
 role_customer	Onibara
 role_manager	Alakoso
 history_retention	Itan iṣowo
@@ -711,7 +711,7 @@ printer_send_heading	Ifijiṣẹ
 vp_delivery_heading	Ifijiṣẹ
 vp_delivery_help	Bii itẹwe fojuhan yii ṣe nfi awọn iṣẹ ranṣẹ - iwe OS, awọn baiti aise, tabi ESC/POS. Akoonu isokuso (iwọn iru, ipari, awọn ala) jẹ ipinnu nipasẹ ọna kika owo / KOT, kii ṣe nibi.
 vp_type_size_heading	Iru iwọn
-vp_wrap_heading	Ipari ipari
+vp_wrap_heading	Ìparí
 vp_margin_heading	Ala
 vp_delivery_spooler	Iwe aṣẹ OS (spooler eto)
 vp_delivery_escpos	ESC/POS awọn pipaṣẹ igbona
@@ -975,7 +975,7 @@ offline_badge	Aisinipo
 optional_login_help	Iyan iwọle (id + ọrọ igbaniwọle). Eni tosaaju lẹẹkan; olumulo nikan le yi ọrọ igbaniwọle pada nigbamii.
 or_unlock_login	Tabi ṣii pẹlu wiwọle id + ọrọigbaniwọle
 permission_preset	Iṣẹ
-preset_help_khaynjo	Owo owo: ta. Alakoso: ta + awọn ohun akojọ aṣayan + ofo / atunṣe.
+preset_help_khaynjo	Owó: ta. Alákòóso: ta + àwọn ohun àkójọ àṣàyàn + òfo / àtúnṣe.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ohun elo yii jẹ Khaynjo nikan - ẹrọ iṣẹ ṣiṣe ounjẹ. Awọn oju-ọja iṣowo miiran gbe omi bi awọn ọja Kumkaj lọtọ.
 purchases_cogs	Awọn rira (COGS)
@@ -1319,7 +1319,7 @@ upi_qr_help	Alejo sikanu ati ki o sanwo. Tẹ Mu sisanwo lẹhin ti wọn sanwo.
 kot_recall	Ranti
 recently_done	Laipe ṣe
 recall_kot_ph	KOT # lati ranti
-role_help_customer	Ipa: Onibara - iwe-kirẹditi kirẹditi (wọn jẹ wa). Onibara kanna tabi olupese le tun pese ọja iṣura.
+role_help_customer	Ipá: Oníbàárà — ìwé-kírẹ́dítì (wọn jẹ́ wa). Oníbàárà kannáà tàbí olùpèsè le tún pèsè ọjà ìṣúra.
 role_help_both	Awọn ipa: Onibara + Olupese - alabara kan tabi olupese, iwe-kirẹditi ati awọn iwe afọwọkọ sisan, apapọ ni Awọn ijabọ.
 role_help_supplier	Ipa: Olupese - a jẹ wọn fun awọn rira.
 dine_in_pick_table	Dine-in — mu tabili ile ijeun loju iboju ile ijeun

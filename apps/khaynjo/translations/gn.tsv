@@ -676,7 +676,7 @@ allow_firewall	Eheja ambue tembipurukuéra toñembojoaju
 firewall_blocked	Ko komputadóra firewall ojoko hína ambue tembipuru — epoko Eheja ambue tembipuru oñembojoaju.
 firewall_waiting	Oha'arõvo pe admin ñe'ẽmondo...
 lan_join_help	Ambue tembipuru’ípe: Modo Cliente → Eheka pe tenda servidor (térã ehai {addr}) → código de emparejamiento {code}.
-lan_pair_status	Wi‑Fi {addr} Ñemby Ñemby
+lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Embojoaju ko tembipuru Wi‑Fi rehe peteĩ dirección rehegua.
 lan_no_address	Ndaipóri gueteri Wi‑Fi dirección — embojoaju tenda Wi‑Fi ndive.
 lan_not_listening	Ndoaceptái umi tembipuru (puerto {port} hembiapo heta). Emoñepyrũ jey pe app.
@@ -1033,7 +1033,7 @@ show_pin	Ohechauka PIN
 hide_pin	Oñomi PIN .
 set_owner_pin	CONJUNTO JEJAPO PIN .
 enter_owner_passcode	OIKE CÓDIGO DE PASO JEJAPO rehegua
-enter_staff_passcode	OIKE CÓDIGO DE PERSONAL PERSONAL-PE
+enter_staff_passcode	OIKE CÓDIGO DE PERSONAL-PE
 pin_count_zero	0 / 12 dígito · por lo menos 4, upéi OK
 pin_count_need	{} / 12 dígito · oikotevẽ {} hetave
 pin_count_full	12 / 12 dígito · ojepyso OK
@@ -1241,7 +1241,7 @@ kot_width_58	58 mm
 kot_width_80	80 mm
 kot_kind_heading	KOT mba’eporã
 kot_kind_original	Ypykue
-kot_kind_duplicate	Ojejapo jey jey
+kot_kind_duplicate	Ojejapo jey
 kot_kind_modified	Oñemoambue
 kot_kind_cancelled	Oñembogue
 kot_style_heading	Tipo de campo tuichakue & ipohýi
