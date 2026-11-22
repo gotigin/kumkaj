@@ -618,3 +618,7 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `mexican/burrito.webp` | hand-held wrap with hands in background | Smothered beef burrito.JPG | Jeffrey Beall | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/wiki/File:Smothered_beef_burrito.JPG | resized, WebP |
 | `mexican/elote.webp` | plain corn cob sections on toothpicks | Elote recipe.jpg | SimpleFoodie | Public domain | https://commons.wikimedia.org/wiki/File:Elote_recipe.jpg | resized, WebP |
+
+## L14 pass5 2026-11-22T14:59:05Z
+- fast-food/club-sandwich.webp ← tighter crop remove Coca-Cola can from prior asset
+- hot-beverages/oolong-tea.webp ← Commons File:Dongding_feuilles_liqueur.jpg (CC BY-SA 3.0) https://commons.wikimedia.org/wiki/File:Dongding_feuilles_liqueur.jpg — was branded hourglass takeaway cup
