@@ -1301,7 +1301,7 @@ aggregator_import_help	Import Tempatan pilihan: letakkan import_aggregator_order
 import_aggregator_file	Import fail agregator
 team_pick_ph	Kakitangan untuk mengedit — nama, nama pengguna atau pilih
 select_staff	Pilih kakitangan ini
-rights_help	Tindakan wang & dewan makan untuk orang ini — ketik untuk berbasikal: Dibenarkan → Memerlukan bos PIN → Tidak dibenarkan. Cetak bil sekali lagi adalah bil sahaja; stesen dapur adalah senarai semak di bawah.
+rights_help	Tindakan wang & dewan makan untuk orang ini — ketik untuk kitar: Dibenarkan → Memerlukan bos PIN → Tidak dibenarkan. Cetak bil sekali lagi adalah bil sahaja; stesen dapur adalah senarai semak di bawah.
 dish_picker_help	Cari atau semak imbas hidangan kami dan ketik satu untuk mengisi nama dan fotonya — atau simpan nama anda sendiri. Tetapkan harga anda (0 tidak mengapa), kemudian Tambah item menu.
 close_dish_list	Tutup senarai hidangan
 own_item_name	Gunakan ini sebagai nama item menu anda sendiri
