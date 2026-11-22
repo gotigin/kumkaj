@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Comprehensive books-level user journeys for Khaynjo + Moklanjo.
+# Comprehensive books-level user journeys for Khaynjo, Moklanjo, Kirano, Tabiyat.
 # Never reaches the OS printer/opener (fake lp/lpr/xdg-open + Capture sink).
 #
 # Usage (workspace root):
