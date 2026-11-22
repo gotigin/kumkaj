@@ -696,7 +696,7 @@ amount_received_ph	Sum dawng zat
 amount_we_pay_ph	Kan pe sum zat
 business_name_ph	Sumdawn hming
 code_bag_ph	Code (bag)
-conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+conv_factor_ph	Factor (25 = 1 ip → 25 kg)
 country_code_ph	Ram code entir IN, GB, US, AE, BR
 credit_khata_amount_ph	Ba / khata sum zat
 credit_limit_ph	Ba tiam (0 = awm lo)
@@ -771,7 +771,7 @@ customer_paid_ph	Customer pe
 tip_ph	Lawmman
 find_server	Dawr server zawng
 bill_format	Bill rem dan
-bill_header_ph	Address | phone
+bill_header_ph	Hmun | phone
 fssai_ph	Ruihhlo licence no. (optional — i thumal hman dan)
 bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
 kot_field_on	lantir
@@ -904,7 +904,7 @@ role_title_rest_ph	Hna hming (entir Captain, Chhum hotu)
 preset_help_rest	Sum khawmtu: zuar. Hotu: zuar + thil + tihbo/siam.
 kind_resale	Damdawi lei a ni
 kind_dish	Stock chhiar suh
-buy_unit_ph	Unit (kg, litre, pcs)
+buy_unit_ph	Unit (kg, litre, thrang)
 add_another_way	+ Dan dang telh
 parts_status	{b} zinga {a} ziak · {c} la awm
 save_expense	Sum sen dah tha
