@@ -203,7 +203,7 @@ whatsapp_token_ph	ᱮᱠᱥᱮᱥ ᱴᱚᱠᱮᱱ (ᱚᱱᱟ ᱜᱮ ᱫᱚᱦᱚ
 whatsapp_template_ph	ᱵᱤᱞ ᱴᱮᱢᱯᱞᱮᱴ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
 whatsapp_template_lang_ph	ᱴᱮᱢᱯᱞᱮᱴ ᱨᱮᱭᱟᱜ ᱯᱟᱹᱨᱥᱤ (ᱡᱮᱞᱠᱟ en)
 whatsapp_enable	ᱪᱟᱹᱞᱩᱭ ᱢᱮ
-whatsapp_disable	Off
+whatsapp_disable	ᱵᱚᱱᱫᱚ
 whatsapp_save	WhatsApp ᱥᱟᱸᱪᱟᱣ ᱢᱮ
 whatsapp_test	ᱡᱚᱯᱲᱟᱣ ᱵᱤᱱᱤᱰ ᱢᱮ
 whatsapp_disconnect	ᱡᱚᱯᱲᱟᱣ ᱚᱪᱚᱜ ᱢᱮ
@@ -905,8 +905,8 @@ cloud_account_title	[sat] Khaynjo account
 cloud_account_help	[sat] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
 cloud_name_ph	[sat] Name (optional)
 cloud_email_ph	[sat] Email
-cloud_password_ph	[sat] Password
-cloud_continue	[sat] Continue
+cloud_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
+cloud_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
 cloud_forgot	[sat] Forgot password?
 cloud_web_methods	[sat] Google and other methods on the website
 cloud_signing_in	[sat] Signing in…
@@ -914,7 +914,7 @@ cloud_sending_reset	[sat] Sending reset link…
 cloud_forgot_sent	[sat] If that email has an account, a reset link is on the way.
 cloud_welcome	[sat] Signed in as {user} · {plan}
 cloud_created	[sat] Account created. Check your email to verify when you can.
-cloud_cancel	[sat] Cancel
+cloud_cancel	ᱵᱚᱱᱫᱚ
 unmark	ᱪᱤᱱᱦᱟᱹ ᱵᱟᱝ ᱢᱮ
 update_my_password	ᱤᱧᱟᱜ ᱯᱟᱥᱣᱟᱨᱰ ᱟᱯᱰᱮᱴ ᱢᱮ
 update_my_pin	ᱤᱧᱟᱜ ᱥᱟᱭᱤᱱ-ᱤᱱ ᱟᱯᱰᱮᱴ ᱢᱮ
@@ -1377,6 +1377,8 @@ opening_client	ᱠᱞᱟᱭᱮᱱᱴ ᱡᱷᱤᱡᱽ...
 preparing_desk	ᱰᱮᱥᱠ ᱥᱟᱯᱲᱟᱣ...
 opening_server	ᱥᱮᱨᱵᱷᱟᱨ ᱡᱷᱤᱡᱽ...
 creating_server	ᱥᱮᱨᱵᱷᱟᱨ ᱵᱮᱱᱟᱣ...
+setup_restoring	ᱵᱮᱠᱚᱯ ᱨᱩᱣᱟᱹᱲ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ…
+setup_restored	ᱨᱩᱣᱟᱹᱲ ᱮᱱᱟ — ᱚᱱᱟ ᱵᱮᱠᱚᱯ ᱨᱮᱱ ᱢᱟᱹᱞᱤᱠ PIN ᱛᱮ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ।
 split_help	ᱢᱤᱫ ᱯᱮᱲᱟ ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱠᱟᱛᱮ ᱰᱤᱥ ᱠᱚ ᱴᱮᱯ ᱢᱮ · {n} ᱵᱟᱪᱷᱟᱣ ᱠᱮᱫᱟ
 split_send_first	ᱞᱟᱦᱟᱨᱮ KOT ᱵᱷᱮᱡᱟᱭ ᱢᱮ — ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱢᱮᱱᱟᱜ ᱫᱟᱠᱟ ᱠᱚ ᱜᱮ ᱟᱞᱟᱜ ᱵᱤᱞ ᱨᱮ ᱪᱟᱞᱟᱜᱼᱟ
 split_pick_some	ᱞᱟᱦᱟᱨᱮ ᱵᱷᱮᱜᱟᱨ ᱵᱤᱞ ᱞᱟᱹᱜᱤᱫ ᱰᱤᱥ ᱠᱚ ᱴᱮᱯ ᱢᱮ

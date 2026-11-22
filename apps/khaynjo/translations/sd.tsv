@@ -203,7 +203,7 @@ whatsapp_token_ph	رسائي ٽوڪن (ساڳيو رکڻ لاءِ خالي ڇڏ�
 whatsapp_template_ph	بل ٽيمپليٽ جو نالو (اختياري)
 whatsapp_template_lang_ph	ٽيمپليٽ جي ٻولي (مثال en)
 whatsapp_enable	چالو ڪريو
-whatsapp_disable	Off
+whatsapp_disable	بند
 whatsapp_save	WhatsApp محفوظ ڪريو
 whatsapp_test	ڳانڍاپو جاچيو
 whatsapp_disconnect	ڳانڍاپو ختم ڪريو
@@ -899,22 +899,22 @@ till_to_bank	ڪيش ڪائونٽر → بئنڪ
 units_heading	يونٽس
 unlock_after_pairing	داخل ڪريو PIN
 unlock_with_login	لاگ ان سان کوليو
-or_unlock_shop_login	[sd] Or unlock with shop login
-shop_login_help	[sd] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sd] Khaynjo account
-cloud_account_help	[sd] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[sd] Name (optional)
-cloud_email_ph	[sd] Email
-cloud_password_ph	[sd] Password
-cloud_continue	[sd] Continue
-cloud_forgot	[sd] Forgot password?
-cloud_web_methods	[sd] Google and other methods on the website
-cloud_signing_in	[sd] Signing in…
-cloud_sending_reset	[sd] Sending reset link…
-cloud_forgot_sent	[sd] If that email has an account, a reset link is on the way.
-cloud_welcome	[sd] Signed in as {user} · {plan}
-cloud_created	[sd] Account created. Check your email to verify when you can.
-cloud_cancel	[sd] Cancel
+or_unlock_shop_login	يا دڪان لاگ ان سان ان لاڪ ڪريو
+shop_login_help	اختياري: PIN بدران هن دڪان جي عملدار يوزرنيم ۽ پاسورڊ سان ان لاڪ ڪريو (آف لائن ڪم ڪري ٿو).
+cloud_account_title	کهائن جو اڪائونٽ
+cloud_account_help	khaynjo.com/account واري ساڳئي اڪائونٽ سان رجسٽر يا سائن ان ڪريو. توهان جي ڪلائوڊ آءِ ڊي ۽ مفت پلان ٺاهي ٿو.
+cloud_name_ph	نالو (اختياري)
+cloud_email_ph	اي ميل
+cloud_password_ph	پاسورڊ
+cloud_continue	جاري رکو
+cloud_forgot	پاسورڊ وسري ويو؟
+cloud_web_methods	ويب سائيٽ تي Google ۽ ٻيا طريقا
+cloud_signing_in	سائن ان ٿي رهيو آهي…
+cloud_sending_reset	ري سيٽ لنڪ موڪلي رهيو آهي…
+cloud_forgot_sent	جيڪڏهن ان اي ميل جو اڪائونٽ آهي ته ري سيٽ لنڪ موڪليو ويو آهي.
+cloud_welcome	{user} · {plan} طور سائن ان
+cloud_created	اڪائونٽ ٺهي ويو. جڏهن ٿي سگهي تصديق لاءِ پنهنجي اي ميل چيڪ ڪريو.
+cloud_cancel	منسوخ
 unmark	غير نشان لڳايو
 update_my_password	منهنجو پاسورڊ اپڊيٽ ڪريو
 update_my_pin	منهنجو سائن-ان اپڊيٽ ڪريو
@@ -1377,6 +1377,8 @@ opening_client	ڪسٽمر کوليو پيو وڃي...
 preparing_desk	ميز تيار پيو ڪيو وڃي...
 opening_server	سرور کوليو پيو وڃي...
 creating_server	سرور ٺاهي پيو وڃي...
+setup_restoring	بيڪ اپ بحال ٿي رهيو آهي…
+setup_restored	بحال ٿي ويو — ان بيڪ اپ جي مالڪ PIN سان ان لاڪ ڪريو.
 split_help	هر مهمان جي لاءِ جن کا ئونڻيون ڏيو · {n} چونڊيا ويا
 split_send_first	KOT پهريون موڪليو — رڳو اهي کا ئونڻيون جيڪي ڪچن وٽ آهن الڳ بل ۾ وڃڻ جي قابل آهن
 split_pick_some	پهريون الڳ بل لاءِ کا ئونڻيون چونڊيو

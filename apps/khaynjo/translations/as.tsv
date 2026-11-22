@@ -203,7 +203,7 @@ whatsapp_token_ph	এক্সেছ ট'কেন (আগৰটো ৰাখি
 whatsapp_template_ph	বিল টেমপ্লেটৰ নাম (ঐচ্ছিক)
 whatsapp_template_lang_ph	টেমপ্লেটৰ ভাষা (যেনে en)
 whatsapp_enable	অন কৰক
-whatsapp_disable	Off
+whatsapp_disable	বন্ধ
 whatsapp_save	WhatsApp সংৰক্ষণ কৰক
 whatsapp_test	সংযোগ পৰীক্ষা কৰক
 whatsapp_disconnect	সংযোগ বিচ্ছিন্ন কৰক
@@ -624,7 +624,7 @@ rollup	ৰোল-আপ
 save_brand	ব্ৰেণ্ড সংৰক্ষণ কৰক
 save_business_id	ব্যৱসায় আইডি আৰু সেৱা % সংৰক্ষণ কৰক
 save_business_name	ব্যৱসায়ৰ নাম সংৰক্ষণ কৰক
-save_features	বাছনি কৰা কৰ্মচাৰীৰ বৈশিষ্ট্য সংৰক্ষণ কৰক
+save_features	সংৰক্ষণ কৰক
 save_features_named	{name} সাঁচক
 save_features_ok	{name} ৰ ছেটআপ সাঁচা হ’ল
 save_names	নাম সংৰক্ষণ কৰক
@@ -909,7 +909,7 @@ cloud_password_ph	পাছৱৰ্ড
 cloud_continue	অব্যাহত ৰাখক
 cloud_forgot	পাছৱৰ্ড পাহৰিলেনে?
 cloud_web_methods	ৱেবছাইটত গুগল আৰু অন্যান্য পদ্ধতি
-cloud_signing_in	Sign in...
+cloud_signing_in	চাইন ইন হৈ আছে…
 cloud_sending_reset	ৰিছেট লিংক প্ৰেৰণ কৰা হৈছে...
 cloud_forgot_sent	যদি সেই ইমেইলটোৰ এটা একাউণ্ট আছে, তেন্তে এটা ৰিছেট লিংক বাটত আছে।
 cloud_welcome	{user} · {plan} হিচাপে চাইন ইন কৰা হৈছে
@@ -1127,7 +1127,7 @@ tile_paid	পইচা দিলে
 tile_bill_btn	বিল
 tile_occupy_btn	অতিথি বহুৱাওক
 tile_free_btn	টেবুল খালী কৰক
-tile_ready_btn	সাজু
+tile_ready_btn	টেবুল খালী কৰক
 tile_undo_bill	বিল ঘূৰাই
 summary_busy	টেবুল ব্যস্ত
 summary_to_collect	আদায় বাকী
@@ -1377,6 +1377,8 @@ opening_client	ক্লায়েণ্ট খোল খাইছে…
 preparing_desk	ডেস্ক সাজু হৈছে…
 opening_server	চাৰ্ভাৰ খোল খাইছে…
 creating_server	চাৰ্ভাৰ সৃষ্টি হৈছে…
+setup_restoring	বেকআপ পুনৰুদ্ধাৰ হৈ আছে…
+setup_restored	পুনৰুদ্ধাৰ হ’ল — সেই বেকআপৰ মালিক PIN ৰে আনলক কৰক।
 split_help	এজন অতিথিয়ে দিব লগা ব্যঞ্জন টিপক · {n}টা বাছা
 split_send_first	প্ৰথমে KOT পঠিয়াওক — কেৱল পাকঘৰলৈ যোৱা ব্যঞ্জনহে পৃথক বিললৈ যায়
 split_pick_some	প্ৰথমে পৃথক বিলৰ ব্যঞ্জন টিপক
@@ -1405,7 +1407,7 @@ unpriced_note	আপোনাৰ মেনুৰ {n}টা ব্যঞ্জন
 show_unpriced	কেৱল দাম নথকা ব্যঞ্জন দেখুৱাওক
 show_all_dishes	সকলো ব্যঞ্জন দেখুৱাওক
 role_waiter	ৱেটাৰ
-role_kitchen	পাকঘৰ
+role_kitchen	ৰন্ধনশালা
 role_title_rest_ph	পদ (যেনে কেপ্টেইন, মুখ্য ৰান্ধনী)
 preset_help_rest	ৱেটাৰ: অৰ্ডাৰ লয় আৰু টেবুল চম্ভালে। কেচিয়াৰ: ধনো লয়। পাকঘৰ: পাকঘৰৰ স্ক্ৰীণ। মেনেজাৰ: মেনু, বাতিল আৰু ৰেহাইও।
 kind_raw	কেঁচা সামগ্ৰী

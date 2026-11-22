@@ -203,7 +203,7 @@ whatsapp_token_ph	एक्सेस टोकन (ओही ल रखे ब�
 whatsapp_template_ph	बिल टेम्पलेट के नाम (मन चाहे)
 whatsapp_template_lang_ph	टेम्पलेट के भाषा (जइसे en)
 whatsapp_enable	चालू करव
-whatsapp_disable	Off
+whatsapp_disable	बंद
 whatsapp_save	WhatsApp सहेजव
 whatsapp_test	कनेक्शन जाँचव
 whatsapp_disconnect	कनेक्शन हटावव
@@ -624,7 +624,7 @@ rollup	रोल-अप
 save_brand	ब्रांड सहेजव
 save_business_id	व्यापार आईडी व सेवा % सहेजव
 save_business_name	व्यापार का नाम सहेजव
-save_features	चुने कर्मचारी की सुविधाएँ सहेजव
+save_features	सहेजव
 save_features_named	{name} सहेजव
 save_features_ok	{name} का सेटअप सहेजा
 save_names	नाम सहेजव
@@ -914,7 +914,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	[hi] Cancel
+cloud_cancel	रद्द करव
 unmark	चिह्न हटाव
 update_my_password	मेरा पासवर्ड बदलव
 update_my_pin	मेरा PIN बदलव
@@ -1127,7 +1127,7 @@ tile_paid	भुगतान हुआ
 tile_bill_btn	बिल
 tile_occupy_btn	मेहमान बैठाएँ
 tile_free_btn	टेबल खाली करव
-tile_ready_btn	तैयार
+tile_ready_btn	टेबल खाली करव
 tile_undo_bill	बिल वापस
 summary_busy	टेबल व्यस्त
 summary_to_collect	वसूलना हे
@@ -1377,6 +1377,8 @@ opening_client	क्लाइंट खुल रहत हे…
 preparing_desk	डेस्क तैयार हो रहत हे…
 opening_server	सर्वर खुल रहत हे…
 creating_server	सर्वर बन रहत हे…
+setup_restoring	बैकअप बहाल होवत हे…
+setup_restored	बहाल हो गे — ओ बैकअप के मालिक PIN ले अनलॉक करव।
 split_help	एक मेहमान जिन व्यंजनों का भुगतान करेगा ओला दबाव · {n} चुने
 split_send_first	पहिले KOT भेजव — अलग बिल म सिर्फ़ रसोई तक पहुँचे व्यंजन जा सकते हें
 split_pick_some	पहिले अलग बिल के व्यंजन दबाव

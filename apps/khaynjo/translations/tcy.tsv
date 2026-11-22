@@ -203,7 +203,7 @@ whatsapp_token_ph	ಆಕ್ಸೆಸ್ ಟೋಕನ್ (ಅವೆನೇ ದೀ�
 whatsapp_template_ph	ಬಿಲ್ ಟೆಂಪ್ಲೇಟ್‌ದ ಪುದರ್ (ಐಚ್ಛಿಕ)
 whatsapp_template_lang_ph	ಟೆಂಪ್ಲೇಟ್‌ದ ಬಾಸೆ (ಉದಾ. en)
 whatsapp_enable	ಆನ್ ಮಲ್ಪುಲೆ
-whatsapp_disable	Off
+whatsapp_disable	ಆಫ್
 whatsapp_save	WhatsApp ಸೇವ್ ಮಲ್ಪುಲೆ
 whatsapp_test	ಕನೆಕ್ಷನ್ ಪರೀಕ್ಷೆ ಮಲ್ಪುಲೆ
 whatsapp_disconnect	ಕನೆಕ್ಷನ್ ದೆಪ್ಪುಲೆ
@@ -899,22 +899,22 @@ till_to_bank	→ ಬ್ಯಾಂಕ್ ಮುಟ್ಟ
 units_heading	ಘಟಕೊಲು
 unlock_after_pairing	PIN ನ್ ನಮೂದು ಮಲ್ಪುಲೆ
 unlock_with_login	ಲಾಗ್ ಇನ್ ಮಲ್ತ್ದ್ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ
-or_unlock_shop_login	[kn] Or unlock with shop login
-shop_login_help	[kn] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[kn] Khaynjo account
-cloud_account_help	[kn] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[kn] Name (optional)
-cloud_email_ph	[kn] Email
-cloud_password_ph	[kn] Password
-cloud_continue	[kn] Continue
-cloud_forgot	[kn] Forgot password?
-cloud_web_methods	[kn] Google and other methods on the website
-cloud_signing_in	[kn] Signing in…
-cloud_sending_reset	[kn] Sending reset link…
-cloud_forgot_sent	[kn] If that email has an account, a reset link is on the way.
-cloud_welcome	[kn] Signed in as {user} · {plan}
-cloud_created	[kn] Account created. Check your email to verify when you can.
-cloud_cancel	[kn] Cancel
+or_unlock_shop_login	ಅಥವಾ ಅಂಗಡಿ ಲಾಗಿನ್‌ನಿಂದ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+shop_login_help	ಐಚ್ಛಿಕ: PIN ಬದಲು ಈ ಅಂಗಡಿಯ ಸಿಬ್ಬಂದಿ ಬಳಕೆದಾರಹೆಸರು ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ಅನ್‌ಲಾಕ್ ಮಾಡಿ (ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ).
+cloud_account_title	ಖಾಯಂಜೋ ಖಾತೆ
+cloud_account_help	khaynjo.com/account ಅದೇ ಖಾತೆಯಿಂದ ನೋಂದಣಿ ಅಥವಾ ಸೈನ್ ಇನ್ ಮಾಡಿ. ನಿಮ್ಮ ಕ್ಲೌಡ್ ಐಡಿ ಮತ್ತು ಉಚಿತ ಯೋಜನೆ ರಚಿಸುತ್ತದೆ.
+cloud_name_ph	ಹೆಸರು (ಐಚ್ಛಿಕ)
+cloud_email_ph	ಇಮೇಲ್
+cloud_password_ph	ಗುಪ್ತಪದ
+cloud_continue	ಮುಂದುವರಿಸಲೆ
+cloud_forgot	ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ?
+cloud_web_methods	ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ Google ಮತ್ತು ಇತರ ವಿಧಾನಗಳು
+cloud_signing_in	ಸೈನ್ ಇನ್ ಆವೊಂದುಂಡು…
+cloud_sending_reset	ರೀಸೆಟ್ ಲಿಂಕ್ ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…
+cloud_forgot_sent	ಆ ಇಮೇಲ್‌ಗೆ ಖಾತೆ ಇದ್ದರೆ, ರೀಸೆಟ್ ಲಿಂಕ್ ಕಳುಹಿಸಲಾಗಿದೆ.
+cloud_welcome	{user} · {plan} ಆಗಿ ಸೈನ್ ಇನ್
+cloud_created	ಖಾತೆ ರಚಿಸಲಾಗಿದೆ. ಸಾಧ್ಯವಾದಾಗ ಪರಿಶೀಲಿಸಲು ನಿಮ್ಮ ಇಮೇಲ್ ನೋಡಿ.
+cloud_cancel	ರದ್ದು ಮಲ್ಪುಲೆ
 unmark	ಅನ್ ಮಾರ್ಕ್
 update_my_password	ಎನ್ನ ಪಾಸ್ ವರ್ಡ್ ನ್ ಅಪ್ ಡೇಟ್ ಮಲ್ಪುಲೆ
 update_my_pin	ಎನ್ನ ಸೈನ್-ಇನ್ ನ್ ಅಪ್ಡೇಟ್ ಮಲ್ಪುಲೆ
@@ -1377,6 +1377,8 @@ opening_client	ಕ್ಲೈಂಟ್ ನ್ ತೆರೆಯೊಂದುಲ್ಲ
 preparing_desk	ಮೇಜಿನ್ ತಯಾರ್ ಮಲ್ತೊಂದುಲ್ಲೆ...
 opening_server	ಸರ್ವರ್ ತೆರೆಯೊಂದುಂಡು...
 creating_server	ಸರ್ವರ್ ರಚನೆ ಮಲ್ತೊಂದುಲ್ಲೆ...
+setup_restoring	ಬ್ಯಾಕಪ್ ಪಿರ ದೀಪುಂಡು…
+setup_restored	ಪಿರ ದೀತ್‌ಂಡ್ — ಆ ಬ್ಯಾಕಪ್‌ದ ಮಾಲೀಕೆರ್ PIN ಡ್ದ್ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ.
 split_help	ಒರಿ ಅತಿಥಿ ಪಾವತಿ ಮಲ್ಪುನ ಪಾತ್ರೆಲೆನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ · {n} ಪಿಕ್ ಮಲ್ತೆರ್
 split_send_first	ಸುರುಕು KOT ಕಡಪುಡುಲೆ — ಅಡುಗೆಮನೆಟ್ ಉಪ್ಪುನ ಪಾತ್ರೆಲೆನ್ ಮಾತ್ರ ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಗ್ ಪೋವೊಲಿ
 split_pick_some	ಸುರುಕು ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಗ್ ಪಾತ್ರೆಲೆನ್ ಟ್ಯಾಪ್ ಮಲ್ಪುಲೆ

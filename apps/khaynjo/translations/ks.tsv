@@ -203,7 +203,7 @@ whatsapp_token_ph	ایکسیس ٹوکن (سُے تھاونہٕ خٲطرٕ خٲل
 whatsapp_template_ph	بِل ٹیمپلیٹُک ناو (اختیاری)
 whatsapp_template_lang_ph	ٹیمپلیٹٕچ زبان (مثلاً en)
 whatsapp_enable	فعال کٔرِو
-whatsapp_disable	Off
+whatsapp_disable	بند
 whatsapp_save	WhatsApp محفوظ کٔرِو
 whatsapp_test	کنیکشن جانچ کٔرِو
 whatsapp_disconnect	کنیکشن ژھٮ۪نِو
@@ -899,22 +899,22 @@ till_to_bank	کَش کاؤنٹر → بینک
 units_heading	یونٹ
 unlock_after_pairing	دَرٕج PIN
 unlock_with_login	لاگ اِن سۭتۍ کٔرِو ان لاک
-or_unlock_shop_login	[ks] Or unlock with shop login
-shop_login_help	[ks] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ks] Khaynjo account
-cloud_account_help	[ks] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ks] Name (optional)
-cloud_email_ph	[ks] Email
-cloud_password_ph	[ks] Password
-cloud_continue	[ks] Continue
-cloud_forgot	[ks] Forgot password?
-cloud_web_methods	[ks] Google and other methods on the website
-cloud_signing_in	[ks] Signing in…
-cloud_sending_reset	[ks] Sending reset link…
-cloud_forgot_sent	[ks] If that email has an account, a reset link is on the way.
-cloud_welcome	[ks] Signed in as {user} · {plan}
-cloud_created	[ks] Account created. Check your email to verify when you can.
-cloud_cancel	[ks] Cancel
+or_unlock_shop_login	یا دُکان لاگ اِن سٟتۍ ان لاک کٔرِو
+shop_login_help	اختیاری: PIN بجاے یِمہِ دُکانہِ کِس عملہِ سٕنٛدِس صارف ناو تہٕ پاس ورڈ سٟتۍ ان لاک کٔرِو (آف لائن کأم کران).
+cloud_account_title	کھائن جو اکاؤنٹ
+cloud_account_help	khaynjo.com/account وٲلِس اَکۍ اکاؤنٹس سٟتۍ رجسٹر یا سائن اِن کٔرِو۔ تُہنٛد کلاؤڈ آئی ڈی تہٕ مُفت پلان بناوان۔
+cloud_name_ph	ناو (اختیاری)
+cloud_email_ph	ای میل
+cloud_password_ph	پاس ورڈ
+cloud_continue	جاری
+cloud_forgot	پاس ورڈ موشُم؟
+cloud_web_methods	ویب سائٹس پؠٹھ Google تہٕ باقی طٔریٖقہٕ
+cloud_signing_in	سائن اِن گژھان…
+cloud_sending_reset	ری سیٹ لنک سوزان…
+cloud_forgot_sent	اگر تَمِس ای میلس اکاؤنٹ چھُ تہ ری سیٹ لنک چھُ سوزنہٕ آمُت۔
+cloud_welcome	{user} · {plan} پٲٹھۍ سائن اِن
+cloud_created	اکاؤنٹ بنٛیہ۔ ییلہٕ ہؠکہِ تصدیٖق کرنٔہ باپتھ پنُن ای میل وٕچھیو۔
+cloud_cancel	منسوخ
 unmark	ان مارک
 update_my_password	میون پاس ورڈ اپ ڈیٹ
 update_my_pin	میون سائن اِن کٔرِو اپ ڈیٹ
@@ -1126,8 +1126,8 @@ tile_bill_printed	بل چھاپنہٕ آمُت
 tile_paid	ادا
 tile_bill_btn	بِل
 tile_occupy_btn	سیٹ پژھ
-tile_free_btn	فری ٹیبل
-tile_ready_btn	فری ٹیبل
+tile_free_btn	خالی میز
+tile_ready_btn	خالی میز
 tile_undo_bill	بِل کَر واپس
 summary_busy	ٹیبٕل چھِ آوُر
 summary_to_collect	جمع کرنہٕ خٲطرٕ
@@ -1377,6 +1377,8 @@ opening_client	اوپننگ کلائنٹ...
 preparing_desk	ڈیسک تیار کران...
 opening_server	اوپننگ سْروَر...
 creating_server	سرور بناوُن...
+setup_restoring	بیک اپ بحال گژھان…
+setup_restored	بحال گومُت — تَمِس بیک اپ کِس مٲلِک PIN سٟتۍ ان لاک کٔرِو۔
 split_help	تِمن پکوانن پیٹھ دبٲیِو یِمن خٲطرٕ اکھ مہمان ادا کران چھُ۔ {n} چُھ منتخب کرنہٕ آمُت
 split_send_first	گۅڈٕ سوزِو KOT — صرف تِم پکوان یِم کچنس منز آسان چھِ تِم ہیکن الگ بِلہِ منز گٔژھِتھ
 split_pick_some	الگ بِلہِ خٲطرٕ تھپھ کٔرِو گۄڈٕ ڈِش

@@ -203,7 +203,7 @@ whatsapp_token_ph	ਐਕਸੈਸ ਟੋਕਨ (ਪਹਿਲਾ ਰੱਖਣ ਲ
 whatsapp_template_ph	ਬਿੱਲ ਟੈਂਪਲੇਟ ਦਾ ਨਾਮ (ਵਿਕਲਪਿਕ)
 whatsapp_template_lang_ph	ਟੈਂਪਲੇਟ ਦੀ ਭਾਸ਼ਾ (ਜਿਵੇਂ en)
 whatsapp_enable	ਚਾਲੂ ਕਰੋ
-whatsapp_disable	Off
+whatsapp_disable	ਬੰਦ
 whatsapp_save	WhatsApp ਸੇਵ ਕਰੋ
 whatsapp_test	ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ
 whatsapp_disconnect	ਕਨੈਕਸ਼ਨ ਹਟਾਓ
@@ -624,7 +624,7 @@ rollup	ਰੋਲ-ਅੱਪ
 save_brand	ਬ੍ਰਾਂਡ ਸੇਵ ਕਰੋ
 save_business_id	ਕਾਰੋਬਾਰ ਆਈਡੀ ਤੇ ਸੇਵਾ % ਸੇਵ ਕਰੋ
 save_business_name	ਕਾਰੋਬਾਰ ਦਾ ਨਾਂ ਸੇਵ ਕਰੋ
-save_features	ਚੁਣੇ ਸਟਾਫ਼ ਦੀਆਂ ਸਹੂਲਤਾਂ ਸੇਵ ਕਰੋ
+save_features	ਸੇਵ ਕਰੋ
 save_features_named	{name} ਸਾਂਭੋ
 save_features_ok	{name} ਦਾ ਸੈਟਅੱਪ ਸਾਂਭਿਆ
 save_names	ਨਾਂ ਸੇਵ ਕਰੋ
@@ -899,22 +899,22 @@ till_to_bank	ਟਿੱਲ → ਬੈਂਕ
 units_heading	ਇਕਾਈਆਂ
 unlock_after_pairing	ਪਿੰਨ ਦਰਜ ਕਰੋ
 unlock_with_login	ਲਾਗਇਨ ਨਾਲ ਅਨਲਾਕ
-or_unlock_shop_login	[pa] Or unlock with shop login
-shop_login_help	[pa] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[pa] Khaynjo account
-cloud_account_help	[pa] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[pa] Name (optional)
-cloud_email_ph	[pa] Email
-cloud_password_ph	[pa] Password
-cloud_continue	[pa] Continue
-cloud_forgot	[pa] Forgot password?
-cloud_web_methods	[pa] Google and other methods on the website
-cloud_signing_in	[pa] Signing in…
-cloud_sending_reset	[pa] Sending reset link…
-cloud_forgot_sent	[pa] If that email has an account, a reset link is on the way.
-cloud_welcome	[pa] Signed in as {user} · {plan}
-cloud_created	[pa] Account created. Check your email to verify when you can.
-cloud_cancel	[pa] Cancel
+or_unlock_shop_login	ਜਾਂ ਦੁਕਾਨ ਲਾਗਇਨ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
+shop_login_help	ਵਿਕਲਪਿਕ: PIN ਦੀ ਬਜਾਏ ਇਸ ਦੁਕਾਨ ਦੇ ਸਟਾਫ਼ ਯੂਜ਼ਰਨੇਮ ਅਤੇ ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ (ਆਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ)।
+cloud_account_title	ਖਾਇੰਜੋ ਖਾਤਾ
+cloud_account_help	khaynjo.com/account ਵਾਲੇ ਉਸੇ ਖਾਤੇ ਨਾਲ ਰਜਿਸਟਰ ਜਾਂ ਸਾਈਨ ਇਨ ਕਰੋ। ਤੁਹਾਡੀ ਕਲਾਉਡ ਆਈਡੀ ਅਤੇ ਮੁਫ਼ਤ ਯੋਜਨਾ ਬਣਾਉਂਦਾ ਹੈ।
+cloud_name_ph	ਨਾਮ (ਵਿਕਲਪਿਕ)
+cloud_email_ph	ਈਮੇਲ
+cloud_password_ph	ਪਾਸਵਰਡ
+cloud_continue	ਜਾਰੀ ਰੱਖੋ
+cloud_forgot	ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?
+cloud_web_methods	ਵੈੱਬਸਾਈਟ ਉੱਤੇ Google ਅਤੇ ਹੋਰ ਤਰੀਕੇ
+cloud_signing_in	ਸਾਈਨ ਇਨ ਹੋ ਰਿਹਾ ਹੈ…
+cloud_sending_reset	ਰੀਸੈੱਟ ਲਿੰਕ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…
+cloud_forgot_sent	ਜੇ ਉਸ ਈਮੇਲ ਦਾ ਖਾਤਾ ਹੈ ਤਾਂ ਰੀਸੈੱਟ ਲਿੰਕ ਭੇਜ ਦਿੱਤਾ ਗਿਆ ਹੈ।
+cloud_welcome	{user} · {plan} ਵਜੋਂ ਸਾਈਨ ਇਨ
+cloud_created	ਖਾਤਾ ਬਣ ਗਿਆ। ਜਦੋਂ ਹੋ ਸਕੇ ਤਸਦੀਕ ਲਈ ਆਪਣੀ ਈਮੇਲ ਚੈੱਕ ਕਰੋ।
+cloud_cancel	ਰੱਦ ਕਰੋ
 unmark	ਨਿਸ਼ਾਨ ਹਟਾਓ
 update_my_password	ਮੇਰਾ ਪਾਸਵਰਡ ਬਦਲੋ
 update_my_pin	ਮੇਰਾ PIN ਬਦਲੋ
@@ -1127,7 +1127,7 @@ tile_paid	ਭੁਗਤਾਨ ਹੋਇਆ
 tile_bill_btn	ਬਿੱਲ
 tile_occupy_btn	ਮਹਿਮਾਨ ਬਿਠਾਓ
 tile_free_btn	ਟੇਬਲ ਖਾਲੀ ਕਰੋ
-tile_ready_btn	ਤਿਆਰ
+tile_ready_btn	ਟੇਬਲ ਖਾਲੀ ਕਰੋ
 tile_undo_bill	ਬਿੱਲ ਵਾਪਸ
 summary_busy	ਟੇਬਲ ਰੁੱਝੇ
 summary_to_collect	ਵਸੂਲਣਾ ਹੈ
@@ -1377,6 +1377,8 @@ opening_client	ਕਲਾਇੰਟ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
 preparing_desk	ਡੈਸਕ ਤਿਆਰ ਹੋ ਰਿਹਾ ਹੈ…
 opening_server	ਸਰਵਰ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
 creating_server	ਸਰਵਰ ਬਣ ਰਿਹਾ ਹੈ…
+setup_restoring	ਬੈਕਅੱਪ ਬਹਾਲ ਹੋ ਰਿਹਾ ਹੈ…
+setup_restored	ਬਹਾਲ ਹੋ ਗਿਆ — ਉਸ ਬੈਕਅੱਪ ਦੇ ਮਾਲਕ PIN ਨਾਲ ਅਨਲਾਕ ਕਰੋ।
 split_help	ਇੱਕ ਮਹਿਮਾਨ ਜਿਨ੍ਹਾਂ ਦਾ ਭੁਗਤਾਨ ਕਰੇਗਾ ਉਹ ਪਕਵਾਨ ਦਬਾਓ · {n} ਚੁਣੇ
 split_send_first	ਪਹਿਲਾਂ KOT ਭੇਜੋ — ਸਿਰਫ਼ ਰਸੋਈ ਵਿੱਚ ਗਏ ਪਕਵਾਨ ਵੱਖਰੇ ਬਿੱਲ ਵਿੱਚ ਜਾਂਦੇ ਹਨ
 split_pick_some	ਪਹਿਲਾਂ ਵੱਖਰੇ ਬਿੱਲ ਦੇ ਪਕਵਾਨ ਦਬਾਓ

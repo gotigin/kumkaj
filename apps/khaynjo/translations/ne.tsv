@@ -20,7 +20,7 @@ reports_month	नाफा-नोक्सान (महिना)
 reports_aging	बाँकी / डेबिट-क्रेडिट
 reports_balance_sheet	वासलात
 reports	बैंक खाता र नाफा-नोक्सान
-refresh	ताजा गर्नुहोस्
+refresh	ताजा
 undo	पूर्ववत्
 start_tracking	ट्र्याक गर्न सुरु गर्नुहोस्
 stock_minus	− स्टक
@@ -36,7 +36,7 @@ add_item	सामान थप्नुहोस्
 new_item	नयाँ सामान
 adding_item	नयाँ सामान थप्दै
 editing_item	सम्पादन गर्दै
-save	सुरक्षित गर्नुहोस्
+save	सेभ
 remove	हटाउनुहोस्
 removed_items	हटाइएका सामान
 removed_help	फिर्ता ल्याउँदा सामान ठ्याक्कै पहिलेजस्तै मेनुमा आउँछ — मूल्य, फोटो र वर्ग। हाम्रो परिकारको सूची कहिल्यै हट्दैन, त्यसैले परिकार जहिले पनि फेरि थप्न सकिन्छ।
@@ -203,7 +203,7 @@ whatsapp_token_ph	एक्सेस टोकन (उही राख्न ख
 whatsapp_template_ph	बिल टेम्प्लेटको नाम (ऐच्छिक)
 whatsapp_template_lang_ph	टेम्प्लेटको भाषा (जस्तै en)
 whatsapp_enable	चालु गर्नुहोस्
-whatsapp_disable	Off
+whatsapp_disable	बन्द
 whatsapp_save	WhatsApp सुरक्षित गर्नुहोस्
 whatsapp_test	जडान जाँच्नुहोस्
 whatsapp_disconnect	जडान हटाउनुहोस्
@@ -624,7 +624,7 @@ rollup	सारांश
 save_brand	ब्रान्ड सुरक्षित गर्नुहोस्
 save_business_id	व्यवसाय id सुरक्षित गर्नुहोस्
 save_business_name	व्यवसायको नाम सुरक्षित गर्नुहोस्
-save_features	सुरक्षित गर्नुहोस्
+save_features	सेभ
 save_features_named	{name} सुरक्षित गर्नुहोस्
 save_features_ok	{name} को सेटअप सुरक्षित भयो
 save_names	नाम सुरक्षित गर्नुहोस्
@@ -899,22 +899,22 @@ till_to_bank	टिल → बैंक
 units_heading	एकाइ
 unlock_after_pairing	PIN हाल्नुहोस्
 unlock_with_login	लगइनले अनलक गर्नुहोस्
-or_unlock_shop_login	[ne] Or unlock with shop login
-shop_login_help	[ne] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ne] Khaynjo account
-cloud_account_help	[ne] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ne] Name (optional)
-cloud_email_ph	[ne] Email
-cloud_password_ph	[ne] Password
-cloud_continue	[ne] Continue
-cloud_forgot	[ne] Forgot password?
-cloud_web_methods	[ne] Google and other methods on the website
-cloud_signing_in	[ne] Signing in…
-cloud_sending_reset	[ne] Sending reset link…
-cloud_forgot_sent	[ne] If that email has an account, a reset link is on the way.
-cloud_welcome	[ne] Signed in as {user} · {plan}
-cloud_created	[ne] Account created. Check your email to verify when you can.
-cloud_cancel	[ne] Cancel
+or_unlock_shop_login	वा पसल लगइनबाट अनलक गर्नुहोस्
+shop_login_help	वैकल्पिक: PIN को सट्टा यस पसलको स्टाफ युजरनेम र पासवर्डले अनलक गर्नुहोस् (अफलाइन काम गर्छ)।
+cloud_account_title	खायन्जो खाता
+cloud_account_help	khaynjo.com/account कै खाताबाट दर्ता वा साइन इन गर्नुहोस्। तपाईंको क्लाउड आइडी र निःशुल्क योजना बनाउँछ।
+cloud_name_ph	नाम (वैकल्पिक)
+cloud_email_ph	इमेल
+cloud_password_ph	पासवर्ड
+cloud_continue	जारी राख्नुहोस्
+cloud_forgot	पासवर्ड बिर्सनुभयो?
+cloud_web_methods	वेबसाइटमा Google र अन्य तरिका
+cloud_signing_in	साइन इन हुँदैछ…
+cloud_sending_reset	रिसेट लिङ्क पठाउँदै…
+cloud_forgot_sent	त्यो इमेलको खाता भए रिसेट लिङ्क पठाइएको छ।
+cloud_welcome	{user} · {plan} का रूपमा साइन इन
+cloud_created	खाता बन्यो। सक्दा प्रमाणित गर्न इमेल जाँच्नुहोस्।
+cloud_cancel	रद्द
 unmark	चिन्ह हटाउनुहोस्
 update_my_password	मेरो पासवर्ड अपडेट गर्नुहोस्
 update_my_pin	मेरो साइन-इन अपडेट गर्नुहोस्
@@ -1377,6 +1377,8 @@ opening_client	क्लाइन्ट खुल्दै…
 preparing_desk	डेस्क तयार हुँदै…
 opening_server	सर्भर खुल्दै…
 creating_server	सर्भर बन्दै…
+setup_restoring	ब्याकअप पुनर्स्थापना हुँदैछ…
+setup_restored	पुनर्स्थापित — त्यो ब्याकअपको मालिक PIN ले अनलक गर्नुहोस्।
 split_help	एक पाहुनाले तिर्ने परिकार थिच्नुहोस् · {n} छानिए
 split_send_first	पहिले KOT पठाउनुहोस् — भान्सामा पुगेका परिकार मात्र छुट्टै बिलमा जान सक्छन्
 split_pick_some	पहिले छुट्टै बिलका परिकार थिच्नुहोस्

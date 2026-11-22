@@ -37,7 +37,7 @@ new_item	പുതിയ ഇനം
 adding_item	പുതിയ ഇനം ചേർക്കുന്നു
 editing_item	എഡിറ്റ് ചെയ്യുന്നു
 save	സേവ് ചെയ്യുക
-remove	നീക്കം ചെയ്യുക
+remove	നീക്കം
 removed_items	നീക്കിയ ഇനങ്ങൾ
 removed_help	പുനഃസ്ഥാപിച്ചാൽ ഇനം മുമ്പുണ്ടായിരുന്നതുപോലെ മെനുവിൽ വരും — വില, ഫോട്ടോ, വിഭാഗം. ഞങ്ങളുടെ വിഭവങ്ങളുടെ ഷെൽഫ് ഒരിക്കലും നീക്കപ്പെടില്ല, അതിനാൽ ഏത് വിഭവവും വീണ്ടും ചേർക്കാം.
 restore_item	പുനഃസ്ഥാപിക്കുക
@@ -171,7 +171,7 @@ kot_station_not_allowed	ഈ അടുക്കള ഉപയോഗിക്കാ
 kot_station_none	ഇതുവരെ അടുക്കള സ്റ്റേഷനുകളില്ല — അടുക്കള അല്ലെങ്കിൽ ക്രമീകരണങ്ങൾ → ഏരിയകൾ · സ്റ്റേഷനുകളിൽ ഒന്ന് ചേർക്കുക
 pos_tab_items	ചേർത്തവ
 pos_tab_payment	പേയ്മെന്റ്
-hold_send	നിർത്തിവയ്ക്കുക
+hold_send	ഹോൾഡ്
 hold_send_on	തടഞ്ഞു
 hold_send_meta	തടഞ്ഞു — ഈ KOT-ൽ ഇല്ല
 station_remove	സ്റ്റേഷൻ നീക്കുക
@@ -203,7 +203,7 @@ whatsapp_token_ph	ആക്‌സസ് ടോക്കൺ (അതുതന്�
 whatsapp_template_ph	ബിൽ ടെംപ്ലേറ്റിന്റെ പേര് (ഓപ്ഷണൽ)
 whatsapp_template_lang_ph	ടെംപ്ലേറ്റിന്റെ ഭാഷ (ഉദാ. en)
 whatsapp_enable	ഓൺ ചെയ്യുക
-whatsapp_disable	Off
+whatsapp_disable	ഓഫ്
 whatsapp_save	WhatsApp സേവ് ചെയ്യുക
 whatsapp_test	കണക്ഷൻ പരിശോധിക്കുക
 whatsapp_disconnect	കണക്ഷൻ വിച്ഛേദിക്കുക
@@ -624,7 +624,7 @@ rollup	റോൾ-അപ്പ്
 save_brand	ബ്രാൻഡ് സേവ് ചെയ്യുക
 save_business_id	ബിസിനസ് ഐഡിയും സേവന % ഉം സേവ് ചെയ്യുക
 save_business_name	ബിസിനസിന്റെ പേര് സേവ് ചെയ്യുക
-save_features	തിരഞ്ഞെടുത്ത ജീവനക്കാരന്റെ ഫീച്ചറുകൾ സേവ് ചെയ്യുക
+save_features	സേവ് ചെയ്യുക
 save_features_named	{name} സേവ് ചെയ്യുക
 save_features_ok	{name}-ന്റെ സജ്ജീകരണം സേവ് ചെയ്തു
 save_names	പേരുകൾ സേവ് ചെയ്യുക
@@ -899,22 +899,22 @@ till_to_bank	ടിൽ → ബാങ്ക്
 units_heading	യൂണിറ്റുകൾ
 unlock_after_pairing	PIN നൽകുക
 unlock_with_login	ലോഗിൻ ഉപയോഗിച്ച് അൺലോക്ക്
-or_unlock_shop_login	[ml] Or unlock with shop login
-shop_login_help	[ml] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ml] Khaynjo account
-cloud_account_help	[ml] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ml] Name (optional)
-cloud_email_ph	[ml] Email
-cloud_password_ph	[ml] Password
-cloud_continue	[ml] Continue
-cloud_forgot	[ml] Forgot password?
-cloud_web_methods	[ml] Google and other methods on the website
-cloud_signing_in	[ml] Signing in…
-cloud_sending_reset	[ml] Sending reset link…
-cloud_forgot_sent	[ml] If that email has an account, a reset link is on the way.
-cloud_welcome	[ml] Signed in as {user} · {plan}
-cloud_created	[ml] Account created. Check your email to verify when you can.
-cloud_cancel	[ml] Cancel
+or_unlock_shop_login	അല്ലെങ്കിൽ കട ലോഗിൻ കൊണ്ട് അൺലോക്ക് ചെയ്യുക
+shop_login_help	ഐച്ഛികം: PIN-ന് പകരം ഈ കടയിലെ സ്റ്റാഫ് യൂസർനെയിമും പാസ്‌വേഡും കൊണ്ട് അൺലോക്ക് ചെയ്യുക (ഓഫ്‌ലൈനിൽ പ്രവർത്തിക്കും).
+cloud_account_title	ഖായ്ൻജോ അക്കൗണ്ട്
+cloud_account_help	khaynjo.com/account അതേ അക്കൗണ്ടിൽ രജിസ്റ്റർ ചെയ്യുക അല്ലെങ്കിൽ സൈൻ ഇൻ ചെയ്യുക. നിങ്ങളുടെ ക്ലൗഡ് ഐഡിയും സൗജന്യ പ്ലാനും ഉണ്ടാക്കുന്നു.
+cloud_name_ph	പേര് (ഐച്ഛികം)
+cloud_email_ph	ഇമെയിൽ
+cloud_password_ph	പാസ്‌വേഡ്
+cloud_continue	തുടരുക
+cloud_forgot	പാസ്‌വേഡ് മറന്നോ?
+cloud_web_methods	വെബ്‌സൈറ്റിൽ Googleയും മറ്റ് മാർഗങ്ങളും
+cloud_signing_in	സൈൻ ഇൻ ചെയ്യുന്നു…
+cloud_sending_reset	റീസെറ്റ് ലിങ്ക് അയയ്ക്കുന്നു…
+cloud_forgot_sent	ആ ഇമെയിലിന് അക്കൗണ്ട് ഉണ്ടെങ്കിൽ, റീസെറ്റ് ലിങ്ക് അയച്ചിട്ടുണ്ട്.
+cloud_welcome	{user} · {plan} ആയി സൈൻ ഇൻ ചെയ്തു
+cloud_created	അക്കൗണ്ട് സൃഷ്ടിച്ചു. കഴിയുമ്പോൾ സ്ഥിരീകരിക്കാൻ നിങ്ങളുടെ ഇമെയിൽ നോക്കുക.
+cloud_cancel	റദ്ദാക്കുക
 unmark	അടയാളം മാറ്റുക
 update_my_password	എന്റെ പാസ്‌വേഡ് മാറ്റുക
 update_my_pin	എന്റെ PIN മാറ്റുക
@@ -1127,7 +1127,7 @@ tile_paid	പണം നൽകി
 tile_bill_btn	ബിൽ
 tile_occupy_btn	അതിഥികളെ ഇരുത്തുക
 tile_free_btn	ടേബിൾ ഒഴിവാക്കുക
-tile_ready_btn	തയ്യാർ
+tile_ready_btn	ടേബിൾ ഒഴിവാക്കുക
 tile_undo_bill	ബിൽ പഴയപടി
 summary_busy	ടേബിളുകൾ തിരക്കിൽ
 summary_to_collect	പിരിക്കാനുണ്ട്
@@ -1377,6 +1377,8 @@ opening_client	ക്ലയന്റ് തുറക്കുന്നു…
 preparing_desk	ഡെസ്ക് തയ്യാറാക്കുന്നു…
 opening_server	സെർവർ തുറക്കുന്നു…
 creating_server	സെർവർ സൃഷ്ടിക്കുന്നു…
+setup_restoring	ബാക്കപ്പ് പുനഃസ്ഥാപിക്കുന്നു…
+setup_restored	പുനഃസ്ഥാപിച്ചു — ആ ബാക്കപ്പിലെ ഉടമ PIN കൊണ്ട് അൺലോക്ക് ചെയ്യുക.
 split_help	ഒരു അതിഥി പണം നൽകുന്ന വിഭവങ്ങൾ തൊടുക · {n} തിരഞ്ഞെടുത്തു
 split_send_first	ആദ്യം KOT അയയ്ക്കുക — അടുക്കളയിലെത്തിയ വിഭവങ്ങൾ മാത്രം വേറെ ബില്ലിലേക്ക്
 split_pick_some	ആദ്യം വേറെ ബില്ലിലെ വിഭവങ്ങൾ തൊടുക

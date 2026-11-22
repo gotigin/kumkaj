@@ -203,7 +203,7 @@ whatsapp_token_ph	ಆಕ್ಸೆಸ್ ಟೋಕನ್ (ಅದನ್ನೇ ಇ�
 whatsapp_template_ph	ಬಿಲ್ ಟೆಂಪ್ಲೇಟ್ ಹೆಸರು (ಐಚ್ಛಿಕ)
 whatsapp_template_lang_ph	ಟೆಂಪ್ಲೇಟ್ ಭಾಷೆ (ಉದಾ. en)
 whatsapp_enable	ಆನ್ ಮಾಡಿ
-whatsapp_disable	Off
+whatsapp_disable	ಆಫ್
 whatsapp_save	WhatsApp ಉಳಿಸಿ
 whatsapp_test	ಸಂಪರ್ಕ ಪರೀಕ್ಷಿಸಿ
 whatsapp_disconnect	ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ
@@ -624,7 +624,7 @@ rollup	ರೋಲ್-ಅಪ್
 save_brand	ಬ್ರ್ಯಾಂಡ್ ಉಳಿಸಿ
 save_business_id	ವ್ಯವಹಾರ ಐಡಿ ಮತ್ತು ಸೇವೆ % ಉಳಿಸಿ
 save_business_name	ವ್ಯವಹಾರದ ಹೆಸರು ಉಳಿಸಿ
-save_features	ಆಯ್ಕೆಮಾಡಿದ ಸಿಬ್ಬಂದಿ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಉಳಿಸಿ
+save_features	ಉಳಿಸಿ
 save_features_named	{name} ಉಳಿಸಿ
 save_features_ok	{name} ಸೆಟಪ್ ಉಳಿಸಲಾಗಿದೆ
 save_names	ಹೆಸರುಗಳನ್ನು ಉಳಿಸಿ
@@ -791,7 +791,7 @@ remove_printer	ಕೊನೆಯದನ್ನು ತೆಗೆ
 route_pick_ph	ಬಿಲ್ ಅಥವಾ ಅಡುಗೆ
 route_bill	ಬಿಲ್
 route_default_kitchen	ಡೀಫಾಲ್ಟ್ ಅಡುಗೆ
-route_kot_station	ಅಡುಗೆ
+route_kot_station	ಅಡುಗೆಮನೆ
 route_dont_print	ಮುದ್ರಿಸಬೇಡಿ
 stations_heading	ಅಡುಗೆಮನೆ ಸ್ಟೇಷನ್‌ಗಳು
 stations_help	ಖಾದ್ಯಗಳು ಮತ್ತು KOT ಗಾಗಿ ಅಡುಗೆಮನೆ ಸ್ಟೇಷನ್‌ಗಳನ್ನು ಸೇರಿಸಿ. ಪ್ರತಿ ಸ್ಟೇಷನ್‌ಗೆ ಅದರ ಮುದ್ರಕಗಳನ್ನು ಜೋಡಿಸಿ (ಸೆಟ್ಟಿಂಗ್‌ಗಳು → ಮುದ್ರಕಗಳಲ್ಲಿ ಸಿಗುತ್ತವೆ), ಆದ್ಯತೆ ಹೊಂದಿಸಿ, ಮತ್ತು ಮೊದಲು ಕೆಲಸ ಮಾಡುವುದು ಅಥವಾ ಎಲ್ಲದರಲ್ಲೂ ಮುದ್ರಿಸಿ ಆಯ್ಕೆಮಾಡಿ. ಬದಲಾವಣೆಗಳು ತಕ್ಷಣ ಉಳಿಯುತ್ತವೆ — ಉಳಿಸು ಬಟನ್ ಇಲ್ಲ.
@@ -899,22 +899,22 @@ till_to_bank	ಟಿಲ್ → ಬ್ಯಾಂಕ್
 units_heading	ಘಟಕಗಳು
 unlock_after_pairing	PIN ನಮೂದಿಸಿ
 unlock_with_login	ಲಾಗಿನ್‌ನೊಂದಿಗೆ ಅನ್‌ಲಾಕ್
-or_unlock_shop_login	[kn] Or unlock with shop login
-shop_login_help	[kn] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[kn] Khaynjo account
-cloud_account_help	[kn] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[kn] Name (optional)
-cloud_email_ph	[kn] Email
-cloud_password_ph	[kn] Password
-cloud_continue	[kn] Continue
-cloud_forgot	[kn] Forgot password?
-cloud_web_methods	[kn] Google and other methods on the website
-cloud_signing_in	[kn] Signing in…
-cloud_sending_reset	[kn] Sending reset link…
-cloud_forgot_sent	[kn] If that email has an account, a reset link is on the way.
-cloud_welcome	[kn] Signed in as {user} · {plan}
-cloud_created	[kn] Account created. Check your email to verify when you can.
-cloud_cancel	[kn] Cancel
+or_unlock_shop_login	ಅಥವಾ ಅಂಗಡಿ ಲಾಗಿನ್‌ನಿಂದ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+shop_login_help	ಐಚ್ಛಿಕ: PIN ಬದಲು ಈ ಅಂಗಡಿಯ ಸಿಬ್ಬಂದಿ ಬಳಕೆದಾರಹೆಸರು ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ಅನ್‌ಲಾಕ್ ಮಾಡಿ (ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ).
+cloud_account_title	ಖಾಯಂಜೋ ಖಾತೆ
+cloud_account_help	khaynjo.com/account ಅದೇ ಖಾತೆಯಿಂದ ನೋಂದಣಿ ಅಥವಾ ಸೈನ್ ಇನ್ ಮಾಡಿ. ನಿಮ್ಮ ಕ್ಲೌಡ್ ಐಡಿ ಮತ್ತು ಉಚಿತ ಯೋಜನೆ ರಚಿಸುತ್ತದೆ.
+cloud_name_ph	ಹೆಸರು (ಐಚ್ಛಿಕ)
+cloud_email_ph	ಇಮೇಲ್
+cloud_password_ph	ಪಾಸ್‌ವರ್ಡ್
+cloud_continue	ಮುಂದುವರಿಸಿ
+cloud_forgot	ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ?
+cloud_web_methods	ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ Google ಮತ್ತು ಇತರ ವಿಧಾನಗಳು
+cloud_signing_in	ಸೈನ್ ಇನ್ ಆಗುತ್ತಿದೆ…
+cloud_sending_reset	ರೀಸೆಟ್ ಲಿಂಕ್ ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…
+cloud_forgot_sent	ಆ ಇಮೇಲ್‌ಗೆ ಖಾತೆ ಇದ್ದರೆ, ರೀಸೆಟ್ ಲಿಂಕ್ ಕಳುಹಿಸಲಾಗಿದೆ.
+cloud_welcome	{user} · {plan} ಆಗಿ ಸೈನ್ ಇನ್
+cloud_created	ಖಾತೆ ರಚಿಸಲಾಗಿದೆ. ಸಾಧ್ಯವಾದಾಗ ಪರಿಶೀಲಿಸಲು ನಿಮ್ಮ ಇಮೇಲ್ ನೋಡಿ.
+cloud_cancel	ರದ್ದು
 unmark	ಗುರುತು ತೆಗೆಯಿರಿ
 update_my_password	ನನ್ನ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ
 update_my_pin	ನನ್ನ PIN ಬದಲಾಯಿಸಿ
@@ -1127,7 +1127,7 @@ tile_paid	ಪಾವತಿಯಾಗಿದೆ
 tile_bill_btn	ಬಿಲ್
 tile_occupy_btn	ಅತಿಥಿಗಳನ್ನು ಕುಳ್ಳಿರಿಸಿ
 tile_free_btn	ಟೇಬಲ್ ಖಾಲಿ ಮಾಡಿ
-tile_ready_btn	ಸಿದ್ಧ
+tile_ready_btn	ಟೇಬಲ್ ಖಾಲಿ ಮಾಡಿ
 tile_undo_bill	ಬಿಲ್ ರದ್ದು
 summary_busy	ಟೇಬಲ್‌ಗಳು ಕಾರ್ಯನಿರತ
 summary_to_collect	ವಸೂಲಿ ಬಾಕಿ
@@ -1377,6 +1377,8 @@ opening_client	ಕ್ಲೈಂಟ್ ತೆರೆಯಲಾಗುತ್ತಿದ�
 preparing_desk	ಡೆಸ್ಕ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…
 opening_server	ಸರ್ವರ್ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
 creating_server	ಸರ್ವರ್ ರಚಿಸಲಾಗುತ್ತಿದೆ…
+setup_restoring	ಬ್ಯಾಕಪ್ ಮರುಸ್ಥಾಪನೆಯಾಗುತ್ತಿದೆ…
+setup_restored	ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ — ಆ ಬ್ಯಾಕಪ್‌ನ ಮಾಲೀಕ PIN ನಿಂದ ಅನ್‌ಲಾಕ್ ಮಾಡಿ.
 split_help	ಒಬ್ಬ ಅತಿಥಿ ಪಾವತಿಸುವ ಖಾದ್ಯಗಳನ್ನು ಒತ್ತಿ · {n} ಆಯ್ಕೆ
 split_send_first	ಮೊದಲು KOT ಕಳುಹಿಸಿ — ಅಡುಗೆಮನೆಗೆ ಹೋದ ಖಾದ್ಯಗಳು ಮಾತ್ರ ಪ್ರತ್ಯೇಕ ಬಿಲ್‌ಗೆ
 split_pick_some	ಮೊದಲು ಪ್ರತ್ಯೇಕ ಬಿಲ್‌ನ ಖಾದ್ಯಗಳನ್ನು ಒತ್ತಿ

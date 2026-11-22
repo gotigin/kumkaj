@@ -203,7 +203,7 @@ whatsapp_token_ph	యాక్సెస్ టోకెన్ (అదే ఉం�
 whatsapp_template_ph	బిల్ టెంప్లేట్ పేరు (ఐచ్ఛికం)
 whatsapp_template_lang_ph	టెంప్లేట్ భాష (ఉదా. en)
 whatsapp_enable	ఆన్ చేయి
-whatsapp_disable	Off
+whatsapp_disable	ఆఫ్
 whatsapp_save	WhatsApp సేవ్ చేయి
 whatsapp_test	కనెక్షన్ పరీక్షించు
 whatsapp_disconnect	డిస్‌కనెక్ట్ చేయి
@@ -624,7 +624,7 @@ rollup	రోల్-అప్
 save_brand	బ్రాండ్ సేవ్ చేయి
 save_business_id	వ్యాపార ఐడీ & సేవ % సేవ్ చేయి
 save_business_name	వ్యాపార పేరు సేవ్ చేయి
-save_features	ఎంచుకున్న సిబ్బంది ఫీచర్లు సేవ్ చేయి
+save_features	సేవ్ చేయి
 save_features_named	{name} సేవ్ చేయి
 save_features_ok	{name} సెటప్ సేవ్ అయింది
 save_names	పేర్లు సేవ్ చేయి
@@ -899,22 +899,22 @@ till_to_bank	టిల్ → బ్యాంక్
 units_heading	యూనిట్లు
 unlock_after_pairing	PIN నమోదు
 unlock_with_login	లాగిన్‌తో అన్‌లాక్
-or_unlock_shop_login	[te] Or unlock with shop login
-shop_login_help	[te] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[te] Khaynjo account
-cloud_account_help	[te] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[te] Name (optional)
-cloud_email_ph	[te] Email
-cloud_password_ph	[te] Password
-cloud_continue	[te] Continue
-cloud_forgot	[te] Forgot password?
-cloud_web_methods	[te] Google and other methods on the website
-cloud_signing_in	[te] Signing in…
-cloud_sending_reset	[te] Sending reset link…
-cloud_forgot_sent	[te] If that email has an account, a reset link is on the way.
-cloud_welcome	[te] Signed in as {user} · {plan}
-cloud_created	[te] Account created. Check your email to verify when you can.
-cloud_cancel	[te] Cancel
+or_unlock_shop_login	లేదా షాప్ లాగిన్‌తో అన్‌లాక్ చేయండి
+shop_login_help	ఐచ్ఛికం: PIN బదులు ఈ షాప్ సిబ్బంది యూజర్‌నేమ్ మరియు పాస్‌వర్డ్‌తో అన్‌లాక్ చేయండి (ఆఫ్‌లైన్‌లో పనిచేస్తుంది).
+cloud_account_title	ఖాయంజో ఖాతా
+cloud_account_help	khaynjo.com/account అదే ఖాతాతో నమోదు చేసుకోండి లేదా సైన్ ఇన్ చేయండి. మీ క్లౌడ్ ఐడి మరియు ఉచిత ప్లాన్ సృష్టిస్తుంది.
+cloud_name_ph	పేరు (ఐచ్ఛికం)
+cloud_email_ph	ఇమెయిల్
+cloud_password_ph	పాస్‌వర్డ్
+cloud_continue	కొనసాగించు
+cloud_forgot	పాస్‌వర్డ్ మర్చిపోయారా?
+cloud_web_methods	వెబ్‌సైట్‌లో Google మరియు ఇతర మార్గాలు
+cloud_signing_in	సైన్ ఇన్ అవుతోంది…
+cloud_sending_reset	రీసెట్ లింక్ పంపుతోంది…
+cloud_forgot_sent	ఆ ఇమెయిల్‌కు ఖాతా ఉంటే, రీసెట్ లింక్ పంపబడింది.
+cloud_welcome	{user} · {plan}గా సైన్ ఇన్ అయ్యారు
+cloud_created	ఖాతా సృష్టించబడింది. సాధ్యమైనప్పుడు ధృవీకరించడానికి మీ ఇమెయిల్ చూడండి.
+cloud_cancel	రద్దు
 unmark	గుర్తు తీసివేయి
 update_my_password	నా పాస్‌వర్డ్ మార్చు
 update_my_pin	నా PIN మార్చు
@@ -1127,7 +1127,7 @@ tile_paid	చెల్లించారు
 tile_bill_btn	బిల్
 tile_occupy_btn	అతిథులను కూర్చోబెట్టు
 tile_free_btn	టేబుల్ ఖాళీ చేయి
-tile_ready_btn	సిద్ధం
+tile_ready_btn	టేబుల్ ఖాళీ చేయి
 tile_undo_bill	బిల్ రద్దు
 summary_busy	టేబుల్స్ బిజీ
 summary_to_collect	వసూలు చేయాలి
@@ -1377,6 +1377,8 @@ opening_client	క్లయింట్ తెరుస్తోంది…
 preparing_desk	డెస్క్ సిద్ధం చేస్తోంది…
 opening_server	సర్వర్ తెరుస్తోంది…
 creating_server	సర్వర్ సృష్టిస్తోంది…
+setup_restoring	బ్యాకప్ పునరుద్ధరించబడుతోంది…
+setup_restored	పునరుద్ధరించబడింది — ఆ బ్యాకప్ యజమాని PINతో అన్‌లాక్ చేయండి.
 split_help	ఒక అతిథి చెల్లించే వంటకాలను నొక్కండి · {n} ఎంచుకున్నవి
 split_send_first	ముందు KOT పంపండి — వంటగదికి వెళ్ళిన వంటకాలే వేరే బిల్లుకు వెళ్తాయి
 split_pick_some	ముందు వేరే బిల్లు వంటకాలను నొక్కండి

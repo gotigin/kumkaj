@@ -203,7 +203,7 @@ whatsapp_token_ph	އެކްސެސް ޓޯކަން (ހަމަ އެ ބެހެއްޓު�
 whatsapp_template_ph	ބިލް ޓެމްޕްލޭޓްގެ ނަން (އިޚްތިޔާރީ)
 whatsapp_template_lang_ph	ޓެމްޕްލޭޓްގެ ބަސް (މިސާލު en)
 whatsapp_enable	އެނެބަލް ކުރާށެވެ
-whatsapp_disable	Off
+whatsapp_disable	އޮފް
 whatsapp_save	WhatsApp ރައްކާކުރުން
 whatsapp_test	ގުޅުން ޗެކް ކުރާށެވެ
 whatsapp_disconnect	ގުޅުން ކަނޑާލާށެވެ
@@ -1377,6 +1377,8 @@ opening_client	ކްލައިންޓް ހުޅުވަނީ…
 preparing_desk	ޑެސްކް ތައްޔާރުކުރަނީ…
 opening_server	ސަރވަރ ހުޅުވަނީ…
 creating_server	ސަރވަރ ހެދުނީ…
+setup_restoring	ބެކަޕް އަނބުރާ ގެނައިޅަނީ…
+setup_restored	އަނބުރާލެވިއްޖެ — އެ ބެކަޕްގެ އޮނަރ PIN އިން އަންލޮކް ކުރާށެވެ.
 split_help	ގެސްޓެއް ދައްކާ ޑިޝްތައް އަޅާށެވެ · {n} އަޅާފައި
 split_send_first	ފުރަތަމަ KOT ފޮނުވާ — ވަކި ބިލަށް ދާނީ ބަދިގެއަށް ދިޔަ ޑިޝްތަކުން
 split_pick_some	ފުރަތަމަ ވަކި ބިލުގެ ޑިޝްތައް އަޅާށެވެ

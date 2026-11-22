@@ -203,7 +203,7 @@ whatsapp_token_ph	এক্সেস টোকেন (অবন তনানি 
 whatsapp_template_ph	বিল টেম্পলেটনি মুং (চাজাকয়া)
 whatsapp_template_lang_ph	টেম্পলেটনি কক (যেমন en)
 whatsapp_enable	সুনামদি
-whatsapp_disable	Off
+whatsapp_disable	ওফ
 whatsapp_save	WhatsApp মুথাংদি
 whatsapp_test	কুরুংজাক নাইদি
 whatsapp_disconnect	কুরুংজাক খকদি
@@ -1377,6 +1377,8 @@ opening_client	চলিএনত খুলকজাক...
 preparing_desk	দেসক তিয়ার খলাইউই তঙ...
 opening_server	সেরভের খুলাইজাক...
 creating_server	সেরভের সুনামুই তঙ...
+setup_restoring	বেকাপ ফিরিয়া আনানি জারক…
+setup_restored	ফিরিয়া আনা জাইগৌ — ও বেকাপনি ওনার PIN বারে অনলক খালামদি।
 split_help	খরকসা ফাতারসা রাং রুমানি চামুংরকন তাপ দি · {n} চংখা
 split_send_first	পুইলা KOT রহর দি — থুংমুংনি থানি তংনাই চামুংরক সিমি সে তেই কাইসা বিল-ও থাঙুই মান
 split_pick_some	পুইলা কুতাল বিল নি বাগুই দিশ ন তাপ খাই দি

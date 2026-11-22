@@ -203,7 +203,7 @@ whatsapp_token_ph	एक्सेस टोकन (उ'ऐ रक्खने �
 whatsapp_template_ph	बिल टेम्पलेट दा नां (वैकल्पिक)
 whatsapp_template_lang_ph	टेम्पलेट दी भाशा (जि'यां en)
 whatsapp_enable	चालू करो
-whatsapp_disable	Off
+whatsapp_disable	बंद
 whatsapp_save	WhatsApp सेव करो
 whatsapp_test	कनेक्शन जांचो
 whatsapp_disconnect	कनेक्शन हटाओ
@@ -1377,6 +1377,8 @@ opening_client	क्लाइंट खोलने दा...
 preparing_desk	डेस्क तैयार करदे होई...
 opening_server	सर्वर खोलने दा...
 creating_server	सर्वर बनाना...
+setup_restoring	बैकअप बहाल होआ करदा ऐ…
+setup_restored	बहाल होई गेआ — उस बैकअप दे मालिक PIN कन्नै अनलॉक करो।
 split_help	इक मेहमान दा भुगतान करदा ऐ · {n} चुने दा बर्तन टैप करो
 split_send_first	पैह्ले KOT भेजो — रसोई च जेह्ड़े बर्तन होंदे न ओह् गै बक्खरे बिल च जाई सकदे न
 split_pick_some	पैह्ले बक्खरे बिल आस्तै बर्तनें गी टैप करो

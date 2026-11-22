@@ -203,7 +203,7 @@ whatsapp_token_ph	प्रवेश-टोकन (तदेव रक्षि�
 whatsapp_template_ph	बिल-प्रारूपस्य नाम (वैकल्पिकम्)
 whatsapp_template_lang_ph	प्रारूपस्य भाषा (यथा en)
 whatsapp_enable	सक्षमं करोतु
-whatsapp_disable	Off
+whatsapp_disable	अफ
 whatsapp_save	WhatsApp रक्षतु
 whatsapp_test	सम्पर्कं परीक्षताम्
 whatsapp_disconnect	सम्पर्कं विच्छिनत्तु
@@ -899,22 +899,22 @@ till_to_bank	टिल् → तट
 units_heading	इकाइयाँ
 unlock_after_pairing	PIN इति प्रविष्टं कुर्वन्तु ।
 unlock_with_login	प्रवेशेन सह अनलॉक् कुर्वन्तु
-or_unlock_shop_login	[sa] Or unlock with shop login
-shop_login_help	[sa] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sa] Khaynjo account
-cloud_account_help	[sa] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[sa] Name (optional)
-cloud_email_ph	[sa] Email
-cloud_password_ph	[sa] Password
-cloud_continue	[sa] Continue
-cloud_forgot	[sa] Forgot password?
-cloud_web_methods	[sa] Google and other methods on the website
-cloud_signing_in	[sa] Signing in…
-cloud_sending_reset	[sa] Sending reset link…
-cloud_forgot_sent	[sa] If that email has an account, a reset link is on the way.
-cloud_welcome	[sa] Signed in as {user} · {plan}
-cloud_created	[sa] Account created. Check your email to verify when you can.
-cloud_cancel	[sa] Cancel
+or_unlock_shop_login	अथवा आपणस्य प्रवेशेन उद्घाटयन्तु
+shop_login_help	वैकल्पिकम्: PIN स्थाने अस्य आपणस्य कर्मचारिणः उपयोक्तृनाम्ना गुप्तशब्देन च उद्घाटयन्तु (अफ़्फ्लाइन कार्यं करोति)।
+cloud_account_title	खायञ्जो खाता
+cloud_account_help	khaynjo.com/account इत्यनेन एव खातेन पञ्जीकरणं वा प्रवेशं कुर्वन्तु। भवतः मेघ-परिचयपत्रं निःशुल्कयोजनां च निर्माति।
+cloud_name_ph	नाम (वैकल्पिकम्)
+cloud_email_ph	ईपत्रम्
+cloud_password_ph	गुप्तशब्दः
+cloud_continue	निरन्तरं कुर्वन्तु
+cloud_forgot	गुप्तशब्दः विस्मृतः?
+cloud_web_methods	जालपुटे Google अन्ये च उपायाः
+cloud_signing_in	प्रविशति…
+cloud_sending_reset	पुनर्स्थापन-सम्पर्कतन्तुः प्रेष्यते…
+cloud_forgot_sent	यदि तस्मिन् ईपत्रे खाता अस्ति तर्हि पुनर्स्थापन-सम्पर्कतन्तुः प्रेषितः।
+cloud_welcome	{user} · {plan} रूपेण प्रविष्टः
+cloud_created	खाता निर्मितम्। यदा शक्यं स्यात् प्रमाणीकर्तुं ईपत्रं पश्यन्तु।
+cloud_cancel	रद्दं कुर्वन्तु
 unmark	अनमार्क
 update_my_password	मम गुप्तशब्दं अद्यतनं कुर्वन्तु
 update_my_pin	मम प्रवेशं अद्यतनं कुर्वन्तु
@@ -1377,6 +1377,8 @@ opening_client	क्लायन्ट् उद्घाटयन्...
 preparing_desk	मेजस्य सज्जीकरणम्...
 opening_server	सर्वरं उद्घाटयन्...
 creating_server	सर्वरं निर्माय...
+setup_restoring	बैकअपः पुनःस्थाप्यते…
+setup_restored	पुनःस्थापितम् — तस्य बैकअपस्य स्वामिनः PIN इत्यनेन उद्घाटयन्तु।
 split_help	एकः अतिथिः · {n} उद्धृतानि व्यञ्जनानि टङ्कयन्तु
 split_send_first	प्रथमं KOT प्रेषयन्तु — केवलं पाकशालायाः व्यञ्जनानि एव पृथक् बिलं गन्तुं शक्नुवन्ति
 split_pick_some	प्रथमं पृथक् बिलस्य कृते डिश्स् ट्याप् कुर्वन्तु

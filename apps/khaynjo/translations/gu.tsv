@@ -203,7 +203,7 @@ whatsapp_token_ph	ઍક્સેસ ટોકન (એ જ રાખવા ખ�
 whatsapp_template_ph	બિલ ટેમ્પ્લેટનું નામ (વૈકલ્પિક)
 whatsapp_template_lang_ph	ટેમ્પ્લેટની ભાષા (દા.ત. en)
 whatsapp_enable	ચાલુ કરો
-whatsapp_disable	Off
+whatsapp_disable	બંધ
 whatsapp_save	WhatsApp સાચવો
 whatsapp_test	જોડાણ તપાસો
 whatsapp_disconnect	જોડાણ તોડો
@@ -624,7 +624,7 @@ rollup	રોલ-અપ
 save_brand	બ્રાન્ડ સાચવો
 save_business_id	ધંધો આઈડી અને સેવા % સાચવો
 save_business_name	ધંધાનું નામ સાચવો
-save_features	પસંદ કરેલ કર્મચારીની સુવિધાઓ સાચવો
+save_features	સાચવો
 save_features_named	{name} સાચવો
 save_features_ok	{name} નું સેટઅપ સાચવ્યું
 save_names	નામ સાચવો
@@ -1127,7 +1127,7 @@ tile_paid	ચૂકવાયું
 tile_bill_btn	બિલ
 tile_occupy_btn	મહેમાન બેસાડો
 tile_free_btn	ટેબલ ખાલી કરો
-tile_ready_btn	તૈયાર
+tile_ready_btn	ટેબલ ખાલી કરો
 tile_undo_bill	બિલ પાછું
 summary_busy	ટેબલ વ્યસ્ત
 summary_to_collect	વસૂલ કરવાના
@@ -1377,6 +1377,8 @@ opening_client	ક્લાયન્ટ ખુલી રહ્યું છે�
 preparing_desk	ડેસ્ક તૈયાર થઈ રહ્યું છે…
 opening_server	સર્વર ખુલી રહ્યું છે…
 creating_server	સર્વર બની રહ્યું છે…
+setup_restoring	બેકઅપ પુનઃસ્થાપિત થઈ રહ્યું છે…
+setup_restored	પુનઃસ્થાપિત — તે બેકઅપના માલિક PIN થી અનલૉક કરો.
 split_help	એક મહેમાન જેનું ચૂકવશે તે વાનગીઓ દબાવો · {n} પસંદ
 split_send_first	પહેલાં KOT મોકલો — ફક્ત રસોડામાં ગયેલી વાનગીઓ અલગ બિલમાં જાય
 split_pick_some	પહેલાં અલગ બિલની વાનગીઓ દબાવો

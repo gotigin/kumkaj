@@ -203,7 +203,7 @@ whatsapp_token_ph	एक्सेस टोकन (ओहिना रखबा�
 whatsapp_template_ph	बिल टेम्पलेटक नाम (वैकल्पिक)
 whatsapp_template_lang_ph	टेम्पलेटक भाषा (जेना en)
 whatsapp_enable	चालू करू
-whatsapp_disable	Off
+whatsapp_disable	बंद
 whatsapp_save	WhatsApp सहेजू
 whatsapp_test	संपर्क जाँचू
 whatsapp_disconnect	संपर्क तोड़ू
@@ -899,22 +899,22 @@ till_to_bank	टिल → बैंक
 units_heading	इकाई
 unlock_after_pairing	PIN लिखू
 unlock_with_login	लॉगिनसँ अनलॉक करू
-or_unlock_shop_login	[mai] Or unlock with shop login
-shop_login_help	[mai] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mai] Khaynjo account
-cloud_account_help	[mai] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[mai] Name (optional)
-cloud_email_ph	[mai] Email
-cloud_password_ph	[mai] Password
-cloud_continue	[mai] Continue
-cloud_forgot	[mai] Forgot password?
-cloud_web_methods	[mai] Google and other methods on the website
-cloud_signing_in	[mai] Signing in…
-cloud_sending_reset	[mai] Sending reset link…
-cloud_forgot_sent	[mai] If that email has an account, a reset link is on the way.
-cloud_welcome	[mai] Signed in as {user} · {plan}
-cloud_created	[mai] Account created. Check your email to verify when you can.
-cloud_cancel	[mai] Cancel
+or_unlock_shop_login	या दुकान लॉगिन सँ अनलॉक करू
+shop_login_help	वैकल्पिक: पिनक बजाय एहि दुकानक स्टाफ उपयोगकर्ता नाम आ पासवर्ड सँ अनलॉक करू (ऑफ़लाइन काज करैत अछि)।
+cloud_account_title	खैंजो खाता
+cloud_account_help	khaynjo.com/account वाले खाता सँ रजिस्टर या साइन इन करू। अहाँक क्लाउड आईडी आ निःशुल्क योजना बनाबैत अछि।
+cloud_name_ph	नाम (वैकल्पिक)
+cloud_email_ph	ईमेल
+cloud_password_ph	पासवर्ड
+cloud_continue	आगाँ बढ़ू
+cloud_forgot	पासवर्ड बिसरि गेलहुँ?
+cloud_web_methods	वेबसाइट पर Google आ आन तरीका
+cloud_signing_in	साइन इन भऽ रहल अछि…
+cloud_sending_reset	रीसेट लिंक पठाओल जा रहल अछि…
+cloud_forgot_sent	जँ ओहि ईमेल पर खाता अछि तँ रीसेट लिंक पठाओल गेल अछि।
+cloud_welcome	{user} · {plan} रूपमे साइन इन
+cloud_created	खाता बनल। जखन सकी प्रमाणित करबाक लेल ईमेल जाँचू।
+cloud_cancel	रद्द
 unmark	चिन्ह हटाउ
 update_my_password	हमर पासवर्ड अपडेट करू
 update_my_pin	हमर साइन-इन अपडेट करू
@@ -1377,6 +1377,8 @@ opening_client	क्लाइंट खुजि रहल अछि…
 preparing_desk	डेस्क तैयार भऽ रहल अछि…
 opening_server	सर्वर खुजि रहल अछि…
 creating_server	सर्वर बनि रहल अछि…
+setup_restoring	बैकअप पुनर्स्थापित भऽ रहल अछि…
+setup_restored	पुनर्स्थापित — ओहि बैकअपक मालिक PIN सँ अनलॉक करू।
 split_help	एक अतिथि जे व्यंजनक भुगतान करताह ओ दबाउ · {n} चुनल
 split_send_first	पहिने KOT पठाउ — केवल भनसा धरि पहुँचल व्यंजन अलग बिलमे जा सकैत अछि
 split_pick_some	पहिने अलग बिलक व्यंजन दबाउ

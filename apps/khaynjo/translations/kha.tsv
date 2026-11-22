@@ -203,7 +203,7 @@ whatsapp_token_ph	Access token (ieh lyngkhuh ban pynneh)
 whatsapp_template_ph	Kyrteng jong ka template bill (jied)
 whatsapp_template_lang_ph	Ka ktien jong ka template (nuksa en)
 whatsapp_enable	Pynlong
-whatsapp_disable	Off
+whatsapp_disable	Lip
 whatsapp_save	Pynsah WhatsApp
 whatsapp_test	Test ia ka jingpyniasoh
 whatsapp_disconnect	Pynkhlad ia ka jingpyniasoh
@@ -914,7 +914,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	[hi] Cancel
+cloud_cancel	Pynsangeh
 unmark	Pynduh dak
 update_my_password	Pynthymmai ia ka password jong nga
 update_my_pin	Pynthymmai ia ka jingrung jong nga
@@ -1377,6 +1377,8 @@ opening_client	Ka jingplie ia u kliant...
 preparing_desk	Ka jingpynkhreh ia ka miej...
 opening_server	Ka jingplie ia ka server...
 creating_server	Ka jingshna ia ka server...
+setup_restoring	Ka backup ka long ban pynwan…
+setup_restored	La pynwan — plie da ka PIN u Nongdon na kata ka backup.
 split_help	Tap ia ki jingbam ba uwei u nongwan u siew · {n} la shim
 split_send_first	Phah shwa KOT — tang ki jingbam ba ka kamra shet ka don ki lah ban leit sha ka bill ba kyrpang .
 split_pick_some	Tap shwa ia ki pliang na ka bynta ka bill ba kyrpang .

@@ -203,7 +203,7 @@ whatsapp_token_ph	ॲक्सेस टोकन (तोच दवरपाक 
 whatsapp_template_ph	बिल टेम्पलेटाचें नांव (ऐच्छिक)
 whatsapp_template_lang_ph	टेम्पलेटाची भास (देखीक en)
 whatsapp_enable	चालू करात
-whatsapp_disable	Off
+whatsapp_disable	बंद करचें
 whatsapp_save	WhatsApp सांबाळात
 whatsapp_test	जोडणी तपासात
 whatsapp_disconnect	जोडणी तोडात
@@ -624,7 +624,7 @@ rollup	रोल-अप करप
 save_brand	ब्रँड वाचवचो
 save_business_id	वेवसाय आयडी जतनाय घेयात
 save_business_name	वेवसायाचे नांव जतनाय घेयात
-save_features	सांबाळचें
+save_features	सांबाळात
 save_features_named	वाचवचें {name} .
 save_features_ok	{name} खातीर जतनाय घेतिल्लें सेटअप
 save_names	नांवां जतनाय घेयात
@@ -903,7 +903,7 @@ or_unlock_shop_login	वा दुकान लॉगीन करून अन�
 shop_login_help	पर्यायी: पिनाच्या बदलाक ह्या दुकानाच्या कर्मचाऱ्यांच्या वापरप्याचें नांव आनी पासवर्डान अनलॉक करचें (ऑफलायन काम करता).
 cloud_account_title	खायनजो खातें
 cloud_account_help	khaynjo.com/account सारकिल्याच खात्यान नोंदणी करात वा सायन इन करात. तुमचो मेघ आयडी आनी फुकट प्लॅन तयार करता.
-cloud_name_ph	नांव (पर्यायी) 1.1.
+cloud_name_ph	नांव (पर्यायी)
 cloud_email_ph	ईमेल करचें
 cloud_password_ph	पासवर्ड
 cloud_continue	फुडें व्हरप
@@ -1126,8 +1126,8 @@ tile_bill_printed	बिल छापलें
 tile_paid	फारीक केल्लें
 tile_bill_btn	बिल
 tile_occupy_btn	सोयऱ्यांक बसप
-tile_free_btn	मुक्त मेज
-tile_ready_btn	मुक्त मेज
+tile_free_btn	मेज रिकामी करात
+tile_ready_btn	मेज रिकामी करात
 tile_undo_bill	बिल पूर्ववत करचें
 summary_busy	मेज व्यस्त
 summary_to_collect	एकठांय करप
@@ -1377,6 +1377,8 @@ opening_client	उगडपी गिरायक...
 preparing_desk	डेस्क तयार करप...
 opening_server	सर्व्हर उगडटा...
 creating_server	सर्वर तयार करप...
+setup_restoring	बॅकअप परत हाडटात…
+setup_restored	परत हाडलां — त्या बॅकअपच्या धनी PIN न अनलॉक करात.
 split_help	एका सोयऱ्यान फारीक केल्ले पदार्थ टॅप करात · {n} वेंचून काडलो
 split_send_first	पयलीं KOT धाडात — रांदचे कुडींत आशिल्ले पदार्थ फकत वेगळ्या बिलाचेर वचूंक शकतात
 split_pick_some	पयलीं वेगळ्या नोटी खातीर आयदनां टॅप कर

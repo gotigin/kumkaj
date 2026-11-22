@@ -203,7 +203,7 @@ whatsapp_token_ph	অ্যাক্সেস টোকেন (আগেরট�
 whatsapp_template_ph	বিল টেমপ্লেটের নাম (ঐচ্ছিক)
 whatsapp_template_lang_ph	টেমপ্লেটের ভাষা (যেমন en)
 whatsapp_enable	চালু করুন
-whatsapp_disable	Off
+whatsapp_disable	বন্ধ
 whatsapp_save	WhatsApp সেভ করুন
 whatsapp_test	সংযোগ পরীক্ষা করুন
 whatsapp_disconnect	সংযোগ বিচ্ছিন্ন করুন
@@ -624,7 +624,7 @@ rollup	রোল-আপ
 save_brand	ব্র্যান্ড সেভ করুন
 save_business_id	ব্যবসার আইডি ও পরিষেবা % সেভ করুন
 save_business_name	ব্যবসার নাম সেভ করুন
-save_features	বাছাই করা কর্মীর ফিচার সেভ করুন
+save_features	সেভ করুন
 save_features_named	{name} রাখুন
 save_features_ok	{name}-এর সেটআপ রাখা হলো
 save_names	নাম সেভ করুন
@@ -1127,7 +1127,7 @@ tile_paid	পরিশোধিত
 tile_bill_btn	বিল
 tile_occupy_btn	অতিথি বসান
 tile_free_btn	টেবিল খালি করুন
-tile_ready_btn	প্রস্তুত
+tile_ready_btn	টেবিল খালি করুন
 tile_undo_bill	বিল ফেরত
 summary_busy	টেবিল ব্যস্ত
 summary_to_collect	আদায় বাকি
@@ -1377,6 +1377,8 @@ opening_client	ক্লায়েন্ট খুলছে…
 preparing_desk	ডেস্ক তৈরি হচ্ছে…
 opening_server	সার্ভার খুলছে…
 creating_server	সার্ভার তৈরি হচ্ছে…
+setup_restoring	ব্যাকআপ পুনরুদ্ধার হচ্ছে…
+setup_restored	পুনরুদ্ধার হয়েছে — সেই ব্যাকআপের মালিক PIN দিয়ে আনলক করুন।
 split_help	একজন অতিথি যে পদের দাম দেবেন সেগুলো চাপুন · {n}টি বাছা
 split_send_first	আগে KOT পাঠান — শুধু রান্নাঘরে যাওয়া পদ আলাদা বিলে যেতে পারে
 split_pick_some	আগে আলাদা বিলের পদগুলো চাপুন
