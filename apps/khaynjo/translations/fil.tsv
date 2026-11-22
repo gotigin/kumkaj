@@ -796,7 +796,7 @@ route_dont_print	Walang printer
 stations_heading	Mga istasyon ng kusina
 stations_help	Magdagdag ng mga istasyon ng kusina para sa mga ulam at KOT. Sa bawat istasyon, ilakip ang mga printer nito (matatagpuan sa ilalim ng Mga Setting → Mga Printer), itakda ang priyoridad, at piliin ang Una na gumagana o I-print sa lahat. I-save ang mga pagbabago habang nagpapatuloy ka — walang button na I-save.
 station_print_heading	Mga printer para sa istasyong ito
-station_print_help	Pumili ng istasyon, pagkatapos ay mag-attach ng isa o higit pang mga printer. ↑↓ nagtatakda ng try order. Ang una na gumagana ay humihinto pagkatapos ng unang tagumpay; I-print sa lahat ng ipinapadala sa bawat naka-attach na printer. Ang bawat pagbabago ay nakakatipid kaagad.
+station_print_help	Pumili ng istasyon, pagkatapos ay mag-attach ng isa o higit pang printer. ↑↓ ang ayos ng pagsubok. Ang unang gumana ay humihinto pagkatapos ng unang tagumpay; «I-print sa lahat» ay nagpapadala sa bawat naka-attach na printer. Agad na nase-save ang bawat pagbabago.
 station_print_pick_ph	Istasyon upang magtakda ng mga printer
 station_print_pick_first	Pumili muna ng istasyon ng kusina
 station_print_editing	Pag-edit ng mga printer para sa “{name}”
