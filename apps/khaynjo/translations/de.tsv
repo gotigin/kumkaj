@@ -448,7 +448,7 @@ copy_day_book_csv	Tagesbuch-CSV kopieren
 copy_day_close	Tagesabschluss kopieren
 copy_items_csv	Artikel-CSV kopieren
 copy_outstanding_csv	CSV der Offenen kopieren
-copy_parties_csv	Parteien-CSV kopieren
+copy_parties_csv	Konten-CSV kopieren
 copy_party_ledger_csv	Partei-Konto-CSV kopieren
 copy_receipt	Beleg kopieren
 share_whatsapp	WhatsApp teilen
@@ -541,7 +541,7 @@ forget_shop	Diesen Shop vergessen
 goods_received	Wareneingang
 import_day	Tag importieren
 import_items_csv_plain	Artikel-CSV importieren…
-import_parties_csv	Parteien-CSV importieren…
+import_parties_csv	Konten-CSV importieren…
 item_name	Artikelname
 kitchen_printing	Küchendruck
 login_id_ph	Login-ID

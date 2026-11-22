@@ -318,7 +318,7 @@ inventory	Voorraad
 inventory_stock	Voorraad en voorraathouers
 branches	Filiale
 branches_org	Filiale en organisasies
-credit_customers	Partye (khata & leveranciers)
+credit_customers	Rekeninge (krediet & leweransiers)
 customer_name_ph	Party naam
 new_customer_ph	Nuwe party naam
 item_name_ph	Item naam (bv. Masala Dosa)

@@ -46,7 +46,7 @@ total	Jimla
 cash	Tsabar kuɗi
 upi	UPI
 card	Kati
-credit	Jam'i
+credit	Abokan ciniki
 clear	Share
 ready_to_sell	A shirye don rubutu
 today_prefix	Yau
@@ -318,7 +318,7 @@ inventory	Ajiyar kaya
 inventory_stock	Ajiya da kaya
 branches	Reshe
 branches_org	Reshe da ƙungiya
-credit_customers	Jam'i (khata da masu kaya)
+credit_customers	Abokan ciniki (khata da masu kaya)
 customer_name_ph	Sunan jam'i
 new_customer_ph	Sunan sabon jam'i
 item_name_ph	Sunan kaya (misali Masala Dosa)

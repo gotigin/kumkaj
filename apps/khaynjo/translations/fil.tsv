@@ -2,7 +2,7 @@
 app_tagline	Mga order sa restaurant, kusina at ledger. Libreng offline.
 unlock	I-unlock
 pin_hint	Ang may-ari PIN ay nagsisimula bilang 0000
-sell	Order
+sell	Magbenta
 buy	Bumili
 books	Day ledger
 books_help	Buod ng account ngayon. Mga order = mga order na pumapasok. Bumili = mga pagbili at gastos. Mga partido = mga customer at supplier ng credit.
@@ -255,7 +255,7 @@ amounts_show	Ipakita
 counter	Kahera
 dine_in	Kain sa loob
 takeaway	Dala-uwi
-order	Order
+order	Umorder
 tables	Mga hapag kainan
 kitchen	Kusina
 sales	Benta
@@ -318,7 +318,7 @@ inventory	Imbentaryo
 inventory_stock	Imbentaryo at stock
 branches	Mga sanga
 branches_org	Mga sangay at org
-credit_customers	Mga partido (mga credit account)
+credit_customers	Mga account (mga credit account)
 customer_name_ph	Pangalan ng customer o supplier
 new_customer_ph	Bagong customer o pangalan ng supplier
 item_name_ph	Pangalan ng item sa menu ng menu (hal. Masala Dosa)
