@@ -396,7 +396,7 @@ use	ಬಳಕೆ ಮಲ್ಪುಲೆ
 dont_use	ಬಳಕೆ ಮಲ್ಪುಜೆರ್
 add_branch	ಶಾಖೆನ್ ಸೇರಾಲೆ
 add_conversion	ಪರಿವರ್ತನೆನ್ ಸೇರಾಲೆ
-add_dishes_items	ಪಾತ್ರೆಲು ಬೊಕ್ಕ ವಸ್ತುಲೆನ್ ಸೇರಾಲೆ
+add_dishes_items	ಡಿಶ್ ಬೊಕ್ಕ ವಸ್ತುಲೆನ್ ಸೇರಾಲೆ
 add_item_plain	ಐಟಂ ಸೇರಾಲೆ
 add_note	ಟಿಪ್ಪಣಿ ಸೇರಾಲೆ
 add_opening_balance	ಓಪನಿಂಗ್ ಬ್ಯಾಲೆನ್ಸ್ ನ್ ಸೇರಾಲೆ
@@ -1385,7 +1385,7 @@ split_pick_some	ಸುರುಕು ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಗ್ 
 split_done	ಪ್ರತ್ಯೇಕ ಬಿಲ್ ಮಲ್ತೆರ್ - ಉಂದು ಈ ಡೈನಿಂಗ್ ಟೇಬಲ್ ದ ಬರಿಟ್ ಉಪ್ಪುನ ಡೈನಿಂಗ್ ಹಾಲ್ ಡ್ ಉಂಡು
 split_marked	ಪ್ರತ್ಯೇಕ ಬಿಲ್
 order_empty_pick	ಆದೇಶ ಖಾಲಿ — ಭಕ್ಷ್ಯೊಲೆನ್ ದೆತೊನುನಗ ಮಿತ್ತ್ ಭಕ್ಷ್ಯೊಲೆನ್ ಸೇರಾಲೆ ಪನ್ಪಿನೆನ್ ಒತ್ತುಲೆ.
-add_dishes	ಪಾತ್ರೆಲೆನ್ ಪಾಡ್ಲೆ
+add_dishes	ಡಿಶ್ ಸೇರಾಲೆ
 order_so_far	ಈ ಆದೇಶೊಡು: {n} · {total}
 no_dish_match	ಒವ್ವೆ ಒಂಜಿ ಖಾದ್ಯ “{q}” ಗ್ ಸರಿ ಆಪುಜಿ
 pick_done	ಮುಗಿಂಡ್

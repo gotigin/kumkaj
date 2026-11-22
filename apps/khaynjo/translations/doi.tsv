@@ -1385,7 +1385,7 @@ split_pick_some	पैह्ले बक्खरे बिल आस्तै 
 split_done	अलग बिल बनाया — इस डाइनिंग टेबल दे बगल च डाइनिंग हॉल च ऐ
 split_marked	अलग बिल
 order_empty_pick	खाली आर्डर करो — पकवान चुनने लेई ऊपर बर्तन जोड़ो टैप करो।
-add_dishes	बर्तन डालें
+add_dishes	व्यंजन जोड़ो
 order_so_far	इस आर्डर पर: {n} · {total}
 no_dish_match	कोई पकवान “{q}” से मेल नहीं खांदा।
 pick_done	हो गया
