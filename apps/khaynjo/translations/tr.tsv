@@ -930,9 +930,9 @@ duress_saved	Acil kilit açma PIN'i kaydedildi
 duress_cleared	Acil kilit açma PIN'i kapatıldı
 upi_amount_ph	UPI tutarı
 void	İptal et
-write_off_ap	AP sil
-write_off_heading	Sil (ödemeden kapat)
-write_off_nil	Sil / bakiye sıfır
+write_off_ap	AP zarara yaz
+write_off_heading	Zarara yaz (ödemeden kapat)
+write_off_nil	Zarara yaz / bakiye sıfır
 your_brand	Markanız (uygulamada)
 your_categories	Kategorileriniz
 account_kind	Hesap türü (birine dokun)

@@ -930,9 +930,9 @@ duress_saved	PIN ya dharura ya kufungua imehifadhiwa
 duress_cleared	PIN ya dharura ya kufungua imezimwa
 upi_amount_ph	Kiasi cha UPI
 void	Futa
-write_off_ap	Futa AP
-write_off_heading	Futa (maliza bila malipo)
-write_off_nil	Futa / salio sifuri
+write_off_ap	Andika hasara AP
+write_off_heading	Andika hasara (maliza bila malipo)
+write_off_nil	Andika hasara / salio sifuri
 your_brand	Chapa yako (kwenye app)
 your_categories	Aina zako
 account_kind	Aina ya akaunti (gusa moja)
