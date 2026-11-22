@@ -680,7 +680,7 @@ lan_pair_status	Wi-Fi {addr}
 lan_join_help_no_addr	Qabbad dan it-tagħmir ma' Wi-Fi għal indirizz.
 lan_no_address	Għadu l-ebda indirizz Wi‑Fi — ikkonnettja mal-ħanut Wi‑Fi.
 lan_not_listening	Ma jaċċettax apparat (port {port} okkupat). Ibda mill-ġdid l-app.
-lan_tills_off	Tills żejda huma mitfija. Ħallihom iħallu apparat ieħor jingħaqad.
+lan_tills_off	Kaxxi żejda huma mitfija. Ħallihom iħallu apparat ieħor jingħaqad.
 paired_with	Imqabbad · {url}
 not_paired	Mhux paired
 choose_device_use	Agħżel Server, Client, jew irrestawra backup.
@@ -1042,7 +1042,7 @@ pin_hint_choose	Agħżel 4–12-il ċifra · Daħħal jew Nisfrutta biex issalva
 pin_hint_new	PIN ġdid tas-Sid b'4–12-il ċifra · Daħħal jew Nisfrutta
 pin_hint_shop_code	Apparat tal-ħanut · kodiċi ta' pairing {}
 pin_hint_books	Dan l-apparat iżomm il-kotba
-pin_hint_paired	Till żejjed imqabbad — iftaħ biex tbigħ
+pin_hint_paired	Kaxxa żejjed imqabbad — iftaħ biex tbigħ
 pin_hint_pair_first	Extra kaxxa — l-ewwel koppja mal-apparat tal-ħanut
 unlock_to_continue	Iftaħ biex tkompli
 no_staff_yet	Għadu l-ebda persunal — nisfrutta bħala Sid, imbagħad Tim

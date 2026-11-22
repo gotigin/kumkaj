@@ -308,7 +308,7 @@ kot_start_btn	Почни
 kot_mark_ready	Означите спремно
 kot_done_btn	Готово
 table_free	Празно — додирните да започнете поруџбину
-start_order	Започните редослед
+start_order	Започните поруџбину
 open_bill	Отворени рачун
 collect_payment	Прикупите уплату
 table_running	Трчање
@@ -1386,7 +1386,7 @@ split_done	Направљен посебан рачун — налази се у
 split_marked	посебан рачун
 order_empty_pick	Наручите празно — додирните Додај јела изнад да одаберете јела.
 add_dishes	Додајте јела
-order_so_far	Овим редоследом: {n} · {total}
+order_so_far	Овом поруџбином: {n} · {total}
 no_dish_match	Ниједно јело не одговара „{q}“
 pick_done	Готово
 printer_route_mode	Ако више штампача на овом месту

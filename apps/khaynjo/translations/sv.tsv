@@ -509,17 +509,17 @@ card_terminal_optional	Kortterminal/betalningslänk (valfritt när internet är 
 copy_report	Kopiera rapporten
 counted_cash_ph	Räknade kontanter i lådan
 country_tax	Land & skatt
-tax_chrome	Skattelappar på till
+tax_chrome	Skattelappar på kassan
 tax_chrome_help	När av döljer beställningsdisken rader med GST-/skatteuppskattning och platshållare för GST i priset. Skattesatser och inställningar för land och skatt finns kvar — slå på etiketter igen när som helst. Vissa butiksmallar börjar med detta avstängt.
 tax_chrome_on	Visa
 tax_chrome_off	Göm
-tax_chrome_saved_on	Skattelappar på till
-tax_chrome_saved_off	Skatteetiketter gömda på till
-tax_invoice_till	Skattefaktura på till
+tax_chrome_saved_on	Skattelappar på kassan
+tax_chrome_saved_off	Skatteetiketter gömda på kassan
+tax_invoice_till	Skattefaktura på kassan
 tax_invoice_help	När av är notor bara kontantkvitton, och knapparna Skattefaktura / Kontantkvitto döljs på beställningsdisken. Vissa butiksmallar börjar med detta avstängt — slå på Visa när som helst för att välja Skattefaktura igen.
 tax_invoice_on	Visa
 tax_invoice_off	Göm
-tax_invoice_saved_on	Skattefaktura på till
+tax_invoice_saved_on	Skattefaktura på kassan
 tax_invoice_saved_off	Skattefaktura dold — Endast kontantnota
 pay_methods	Betalningsmetoder
 pay_methods_help	Vilka knappar som visas under Ta betalt. Kontant finns alltid kvar. Vissa butiksmallar börjar med bara Kontant — slå på UPI / Kort / Kredit / Dela här igen.
@@ -697,7 +697,7 @@ backup_copy_failed	Säkerhetskopieringen kunde inte sparas där – välj en ann
 clock_off	Den här enhetens klocka är {min} min utanför butikens server – ställ in rätt tid på den här enheten
 printers_heading	Skrivare
 printers_help	Hitta skrivare, tryck på en för att välja den och skriv sedan ut en testsida endast på den enheten. Notaskrivare: Nota- och KOT-format → Nota. Köksskrivare: Kök → Köksstationer (lägg till en station först — Hitta skapar inte stationer).
-printers_host_only	Skrivare ställs in på butiksenheten (server). Denna till skickar räkningar och KOT dit — Hitta / lägg till / tilldela vistelse på servern. Testsida och fakturautskriftsstorlek går till servern.
+printers_host_only	Skrivare ställs in på butiksenheten (server). Denna kassa skickar räkningar och KOT dit — Hitta / lägg till / tilldela vistelse på servern. Testsida och fakturautskriftsstorlek går till servern.
 printers_find_heading	Hitta skrivare
 printers_find_tip	Find skannar den här enheten och håller listan uppdaterad.
 printers_pool_heading	Skrivare
@@ -919,7 +919,7 @@ unmark	Avmarkera
 update_my_password	Uppdatera mitt lösenord
 update_my_pin	Uppdatera min inloggning
 duress_heading	PIN-kod för nödupplåsning (endast ägare)
-duress_help	Valfritt. If this PIN is typed at unlock instead of yours, all books entries are wiped (sales, ledgers, history) and the till opens as Owner looking normal — menu, prices, tables, staff and settings stay. Schema och konfiguration raderas inte. Använd endast om du tvingas låsa upp. Lämna tomt och spara för att stänga av. Aldrig samma som någons PIN-kod.
+duress_help	Endast offline server/klient-LAN — ingen molnfunktion. Av som standard: ägaren aktiverar den en gång genom att spara denna PIN (Team, inklusive på klientkassor). Om denna PIN skrivs vid upplåsning i stället för din riktiga personal-PIN raderas bokföringsposterna på servern och kassan öppnas som ägare. Nödupplåsnings-PIN under Team är separat (hemlig rensning vid upplåsning).
 duress_pin_ph	Nöd-PIN (4–12 siffror)
 duress_confirm_ph	Skriv igen för att bekräfta
 save_duress_pin	Spara nöd-PIN
@@ -951,7 +951,7 @@ stamp_heading	Stämpel
 stamp_image_help	Valfri stämpelbild på tryckta räkningar och gästdisplayen.
 payment_qr_heading	Betalning QR
 payment_qr_image_help	Statisk QR på räkningar och gästvisning; I annat fall använder du en dynamisk UPI QR från VPA ovan.
-cash_in_hand	Kontanter i handen (till)
+cash_in_hand	Kontanter i handen (kassa)
 change_my_pin_heading	Min inloggning
 connect_to_server	Anslut till servern
 counter_locked	Räknare 01 · Låst
@@ -1042,8 +1042,8 @@ pin_hint_choose	Välj 4–12 siffror · Enter eller Lås upp för att spara
 pin_hint_new	Ny 4–12-siffrig ägar-PIN · Ange eller lås upp
 pin_hint_shop_code	Handla enhet · kopplingskod {}
 pin_hint_books	Denna enhet håller böckerna
-pin_hint_paired	Extra till parat – lås upp för att sälja
-pin_hint_pair_first	Extra till — koppla ihop till butiksenheten först
+pin_hint_paired	Extra kassa parat – lås upp för att sälja
+pin_hint_pair_first	Extra kassa — koppla ihop till butiksenheten först
 unlock_to_continue	Lås upp för att fortsätta
 no_staff_yet	Ingen personal ännu – lås upp som ägare och sedan Team
 icon_new_selected	Ikon: ny fil vald — tryck på Spara varumärke

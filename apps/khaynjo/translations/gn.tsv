@@ -680,7 +680,7 @@ lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Embojoaju ko tembipuru Wi‑Fi rehe peteĩ dirección rehegua.
 lan_no_address	Ndaipóri gueteri Wi‑Fi dirección — embojoaju tenda Wi‑Fi ndive.
 lan_not_listening	Ndoaceptái umi tembipuru (puerto {port} hembiapo heta). Emoñepyrũ jey pe app.
-lan_tills_off	Tills extra oime apagado. Eheja chupekuéra toheja ambue tembipuru ojoaju.
+lan_tills_off	Caja extra oime apagado. Eheja chupekuéra toheja ambue tembipuru ojoaju.
 paired_with	Oñembojoaju · {url} .
 not_paired	Ndaha’éi oñembojoajúva
 choose_device_use	Eiporavo Servidor, Cliente, térã emoĩjey backup.
@@ -951,7 +951,7 @@ stamp_heading	Sello
 stamp_image_help	Imagen sello opcional umi factura impresa ha exhibición invitado-pe.
 payment_qr_heading	Pago rehegua QR
 payment_qr_image_help	QR estático umi factura ha invitado jehechauka rehe; ndaupéichairamo opaga oipuru peteĩ QR dinámico UPI VPA yvateguágui.
-cash_in_hand	Efectivo ipópe (till) .
+cash_in_hand	Efectivo ipópe (caja) .
 change_my_pin_heading	Che jeike
 connect_to_server	Embojoaju Servidor ndive
 counter_locked	Contador 01 · Oñemboty
