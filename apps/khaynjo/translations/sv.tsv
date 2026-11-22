@@ -1162,7 +1162,7 @@ line_sent_state	Skickas till köket
 line_nc_state	Gratis (NC) – debiteras inte
 cancel_item_short	Avbryt
 nc_short	NC
-charge_again_short	Ladda
+charge_again_short	Debitera
 move_short	Flytta
 cancel_item_title	Avbryt den här artikeln — köket får en avbeställningssedel
 nc_item_title	Gör detta föremål gratis (NC)
