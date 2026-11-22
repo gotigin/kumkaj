@@ -574,7 +574,7 @@ brand_shown_help	Hiển thị trên các màn hình trong app. Tên và biểu t
 app_icon	Biểu tượng ứng dụng
 logo_help	Dấu hiệu cửa hàng tùy chọn trên màn hình trong ứng dụng.
 onboard_layout	Bạn nhận được gì
-item_photo_help	Tùy chọn. Không có ảnh, chúng tôi hiển thị chữ cái đầu từ tên món.
+item_photo_help	Tùy chọn. Không có ảnh, chúng tôi hiển thị chữ cái đầu từ tên mục.
 stamp_heading	Con dấu
 stamp_image_help	Tùy chọn hình ảnh tem trên hóa đơn in và trưng bày cho khách hàng.
 payment_qr_heading	QR thanh toán
@@ -729,7 +729,7 @@ book_kind_today	Sổ hôm nay
 book_kind_month	Sổ tháng này
 book_kind_aging	Nợ tồn / ghi nợ-có
 book_kind_balance	Bảng cân đối
-order_help	Chạm vào một món để thêm.
+order_help	Chạm vào một mục để thêm.
 categories_help	Chạm «Dùng» để xếp mặt hàng phía trên vào danh mục đó. Ảnh cho danh mục một hình; không có thì hiện chữ cái đầu.
 dish_search_ph	Tìm kiếm tên, muối hoặc mã vạch…
 sizes_as_items_ph	Cỡ thành món riêng (tuỳ chọn) — Nửa=120, Đầy=200
@@ -748,7 +748,7 @@ shift_handover	Giao ca
 shift_since	Ca này từ
 expected_in_drawer	Dự kiến trong ngăn kéo
 right_discount	Giảm giá
-new_category_row	Danh mục mới — tạo khi lưu món
+new_category_row	Danh mục mới — tạo khi lưu mục
 your_category	Danh mục của bạn
 suggested_category	Được đề xuất - từ các mặt hàng của chúng tôi
 category_search_ph	Danh mục — tìm của bạn hoặc gõ mới
@@ -766,7 +766,7 @@ no_server_found	Không tìm thấy máy chủ. Kiểm tra thiết bị của qu�
 servers_found_pick	Chạm vào cửa hàng bạn muốn kết nối.
 server_host_selected	Đang dùng {host} — nhập mã ghép, rồi Ghép ngay.
 approval_pin_ph	PIN quản lý (chỉ khi được hỏi)
-menu_search_ph	Tìm món hoặc mã tắt
+menu_search_ph	Tìm mục hoặc mã tắt
 customer_paid_ph	Khách đưa
 tip_ph	Tiền tip
 find_server	Tìm máy chủ của quán
@@ -829,7 +829,7 @@ payment_qr_none	QR thanh toán: không — QR số tiền từ UPI khi trả
 team_pick_ph	Tên nhân viên cần sửa
 select_staff	Chọn nhân viên này
 rights_help	Hành động kiếm tiền cho người này - nhấn để quay vòng: Được phép → Cần mã PIN của sếp → Không được phép. In hóa đơn lại chỉ là hóa đơn; các phần là danh sách kiểm tra dưới đây.
-own_item_name	Dùng làm tên món của riêng bạn
+own_item_name	Dùng làm tên mục của riêng bạn
 on_your_menu	Trong danh sách thuốc
 edit	Sửa
 schemes	Ưu đãi
