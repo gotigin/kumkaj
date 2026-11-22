@@ -1,11 +1,12 @@
 {
   "name": "kirano-site",
   "private": true,
-  "description": "kirano.shop — Firebase Analytics + Auth client for the Makepad site",
+  "description": "kirano.shop \u2014 Firebase Analytics + Auth client for the Makepad site",
   "scripts": {
     "build:firebase": "esbuild client/firebase-init.js --bundle --format=iife --outfile=static/js/firebase-init.js --minify",
     "build:account": "esbuild client/account-app.js --bundle --format=iife --outfile=static/js/account.js --minify",
-    "build": "npm run build:firebase && npm run build:account"
+    "build": "npm run build:firebase && npm run build:account && npm run build:shop",
+    "build:shop": "esbuild client/shop-app.js --bundle --format=iife --outfile=static/js/shop.js --minify"
   },
   "dependencies": {
     "firebase": "^11.6.0"

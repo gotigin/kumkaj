@@ -1,8 +1,8 @@
 # Kumkaj Cloud plans (yearly)
 
-**Status:** product commercial decision (2026-11-21). Applies to Kumkaj
-products as cloud rolls out (**Khaynjo first**, then copy shape to
-Moklanjo / Kirano / Tabiyat).
+**Status:** product commercial decision (2026-11-21). Same five plans for
+all four Kumkaj products (Khaynjo / Moklanjo / Kirano / Tabiyat). Each
+product has its own Auth, API, DB, and billing sandbox; list prices match.
 
 Doctrine that still wins on conflict: free local forever; cloud optional;
 billing must never hostage the till —

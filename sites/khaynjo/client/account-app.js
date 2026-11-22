@@ -194,6 +194,38 @@ function paintCloudPlaceholders() {
   if (els.billingStatus) els.billingStatus.textContent = "";
 }
 
+
+function pendingCheckoutPlan() {
+  try {
+    const u = new URL(window.location.href);
+    return (u.searchParams.get("checkout") || "").trim().toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
+async function maybeAutoCheckout(user) {
+  const plan = pendingCheckoutPlan();
+  if (!user || !plan || !["steady", "swift", "priority"].includes(plan)) return;
+  // Clear query so refresh does not loop.
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.delete("checkout");
+    window.history.replaceState({}, "", u.pathname + u.search + u.hash);
+  } catch { /* ignore */ }
+  const cfgRes = await fetch(`${CLOUD_API_BASE}/v1/billing/config`, {
+    headers: { Authorization: `Bearer ${await user.getIdToken()}` },
+  });
+  if (!cfgRes.ok) return;
+  const cfg = await cfgRes.json();
+  if (!cfg.enabled) {
+    showError("Billing is not enabled on the cloud API yet.");
+    return;
+  }
+  const provider = cfg.default_provider || "mock";
+  await startCheckout(user, plan, provider);
+}
+
 function formatInrPaise(paise) {
   if (paise == null) return "Quote";
   if (paise === 0) return "₹0";
@@ -324,6 +356,7 @@ async function syncCloudAccount(user) {
       els.cloudPlan.textContent = "Free forever";
     }
     await paintBillingPlans(user, idToken);
+    await maybeAutoCheckout(user);
   } catch (err) {
     if (els.cloudUser) els.cloudUser.textContent = "Unavailable";
     if (els.cloudPlan) els.cloudPlan.textContent = "—";

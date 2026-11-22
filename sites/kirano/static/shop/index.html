@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop — Kirano</title>
+  <meta name="description" content="Kumkaj Cloud yearly plans for Kirano. Local use stays free forever." />
+  <link rel="canonical" href="https://kirano.shop/shop" />
+  <meta name="theme-color" content="#FDF7EA" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/css/shop.css" />
+  <script>
+    window.__KUMKAJ_PRODUCT__ = "kirano";
+    window.__KUMKAJ_PRICES_READY__ = true;
+    window.__KUMKAJ_SUPPORT_MAIL__ = "support@gotigin.com";
+    window.__KUMKAJ_ACCOUNT_HREF__ = "/account";
+  </script>
+  <script src="/js/shop.js" defer></script>
+</head>
+<body>
+  <main class="shop-main">
+    <p class="shop-back"><a href="/">← Kirano</a> · <a href="/account">Account</a></p>
+    <h1>Kumkaj Cloud</h1>
+    <p class="shop-lede">Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.</p>
+    <p id="shop-status" class="shop-status" hidden></p>
+    <div id="shop-catalog" class="shop-grid" aria-label="Cloud plans"></div>
+    <section class="shop-cart" aria-labelledby="cart-heading">
+      <h2 id="cart-heading">Cart</h2>
+      <p id="shop-cart-empty" class="shop-hint">Your cart is empty. Add Steady, Swift, or Priority.</p>
+      <div id="shop-cart-lines"></div>
+      <div class="shop-cart-actions">
+        <button type="button" class="btn btn-primary" id="shop-checkout" disabled>Checkout</button>
+        <button type="button" class="btn btn-ghost" id="shop-clear">Clear</button>
+      </div>
+      <p class="shop-hint">Checkout signs you in on Account, then starts payment (sandbox mock or Stripe/Paddle when keys are set).</p>
+    </section>
+    <p class="legal-nav"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+  </main>
+</body>
+</html>

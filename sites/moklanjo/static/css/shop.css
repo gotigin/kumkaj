@@ -1,0 +1,138 @@
+/* Shop / cart — light palette aligned with /account */
+.shop-main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  font-family: system-ui, sans-serif;
+  color: #260b08;
+  line-height: 1.5;
+}
+.shop-main h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+}
+.shop-lede {
+  color: #6b4a3f;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+.shop-back a {
+  color: #9a0e10;
+  text-decoration: none;
+}
+.shop-back a:hover {
+  text-decoration: underline;
+}
+.shop-status {
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+.shop-ok {
+  background: #e8f5ee;
+  color: #0d5c34;
+}
+.shop-error {
+  background: #fde8ea;
+  color: #9a0e10;
+}
+.shop-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+.shop-card {
+  background: #faf6f4;
+  border: 1px solid #e8dcd6;
+  border-radius: 0.55rem;
+  padding: 1rem 1.1rem;
+}
+.shop-card h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+}
+.shop-blurb {
+  margin: 0 0 0.5rem;
+  color: #6b4a3f;
+  font-size: 0.9rem;
+}
+.shop-price {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+.shop-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.shop-pill {
+  font-size: 0.85rem;
+  color: #0d5c34;
+  font-weight: 600;
+}
+.shop-cart {
+  background: #faf6f4;
+  border: 1px solid #e8dcd6;
+  border-radius: 0.55rem;
+  padding: 1rem 1.1rem;
+}
+.shop-cart h2 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+.shop-cart-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid #eadfd8;
+}
+.shop-cart-row:first-of-type {
+  border-top: 0;
+}
+.shop-cart-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.45rem;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #260b08;
+  background: #eee4df;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: #9a0e10;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #d4c4bc;
+}
+.shop-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: #6b4a3f;
+}
+.legal-nav {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+.legal-nav a {
+  color: #9a0e10;
+}
