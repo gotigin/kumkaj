@@ -220,7 +220,7 @@ new_server_name_ph	Yeni server adı (istəyə bağlı)
 server_remove_pin_ph	Serveri silmək üçün Sahib PIN-i
 only_owner_remove_server	Serveri yalnız Sahib silə bilər
 owner_pin_remove_server	Bu serveri silmək üçün Sahib PIN-i lazımdır
-device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur.
+device_setup_help	Bu cihaz mağaza (Server) və ya əlavə kassa (Klient) ola bilər. Birini açmaq digərini silmir. Cütləşdirilmiş Klient mağazanı xatırlayır — hər yenidən başladıqda cütləşmə kodu lazım deyil. Hələ Server yoxdursa, «Ehtiyat nüsxəni bərpa et» seçdiyiniz fayldan kitabları açır (Parametrlərdəki Bərpa ilə eyni yoxlamalar).
 currency	Valyuta
 backup	Ehtiyat nüsxə
 use	İstifadə et

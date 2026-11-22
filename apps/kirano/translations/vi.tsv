@@ -220,7 +220,7 @@ new_server_name_ph	Tên máy chủ mới (tùy chọn)
 server_remove_pin_ph	Owner PIN để xóa máy chủ
 only_owner_remove_server	Chỉ Owner mới được xóa máy chủ
 owner_pin_remove_server	Cần Owner PIN để xóa máy chủ này
-device_setup_help	Máy chủ giữ sổ sách ở đây. Máy khách ghép đôi với máy chủ.
+device_setup_help	Thiết bị này có thể là cửa hàng (Máy chủ) hoặc quầy thêm (Máy khách). Mở một cái không xóa cái kia. Máy khách đã ghép nhớ cửa hàng — không cần mã ghép mỗi lần khởi động lại. Chưa có Máy chủ, «Khôi phục sao lưu» mở sổ từ tệp bạn chọn (cùng kiểm tra như Khôi phục trong Cài đặt).
 currency	Tiền tệ
 backup	Sao lưu
 use	Dùng
@@ -553,7 +553,7 @@ your_brand	Thương hiệu của bạn (trong app)
 your_categories	Danh mục của bạn
 account_kind	Loại tài khoản (chạm một)
 actual_total_cap	TỔNG THỰC
-amend_help	Chọn một đơn để sửa, hủy hoặc hoàn tiền. Sửa đổi giữ toàn bộ lịch sử.
+amend_help	Chọn một giao bán để sửa, hủy hoặc hoàn tiền. Sửa giữ nguyên lịch sử đầy đủ. Tổng làm tròn bắt đầu bằng số đã áp dụng — chỉ sửa để làm tròn. Hủy và hoàn có thể cần PIN Chủ hoặc Quản lý (gõ ở trên; ghi kèm tên bạn).
 applied_total_cap	TỔNG ÁP DỤNG
 bank_balance	Số dư ngân hàng
 bank_net_today	Ròng ngân hàng hôm nay

@@ -220,7 +220,7 @@ new_server_name_ph	Yeni sunucu adı (isteğe bağlı)
 server_remove_pin_ph	Kaldırmak için Owner PIN
 only_owner_remove_server	Sunucuyu yalnızca Owner silebilir
 owner_pin_remove_server	Bu sunucuyu kaldırmak için Owner PIN gerekli
-device_setup_help	Sunucu defterleri burada tutar. İstemci bir sunucuyla eşleşir.
+device_setup_help	Bu cihaz dükkân (Sunucu) veya ek kasa (İstemci) olabilir. Birini açmak diğerini silmez. Eşleşmiş İstemci dükkânı hatırlar — her yeniden başlatmada eşleşme kodu gerekmez. Henüz Sunucu yokken «Yedeği geri yükle», seçtiğiniz bir dosyadan defterleri açar (Ayarlar’daki Geri yükle ile aynı kontroller).
 currency	Para birimi
 backup	Yedek
 use	Kullan
@@ -553,7 +553,7 @@ your_brand	Markanız (uygulamada)
 your_categories	Kategorileriniz
 account_kind	Hesap türü (birine dokun)
 actual_total_cap	GERÇEK TOPLAM
-amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tam geçmişi korur.
+amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tüm geçmişi korur. Yuvarlanmış toplam, Uygulanan ile aynı başlar — yalnızca yuvarlamak için düzenleyin. İptal ve iade Sahip veya Yönetici PIN’i isteyebilir (yukarıda yazılır; adınızla kaydedilir).
 applied_total_cap	UYGULANAN TOPLAM
 bank_balance	Banka bakiyesi
 bank_net_today	Bugünkü banka neti

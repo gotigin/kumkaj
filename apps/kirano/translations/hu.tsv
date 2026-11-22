@@ -182,7 +182,7 @@ credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {
 recent_label	Legutóbbi:
 inventory	Leltár
 branches	Ágak
-credit_customers	Vevők és beszállítók (hitelszámlák)
+credit_customers	Felek (hitelszámlák)
 customer_name_ph	Vevő vagy szállító neve
 new_customer_ph	Új ügyfél vagy szállító neve
 item_price_ph	Ár
@@ -220,7 +220,7 @@ new_server_name_ph	Új szervernév (nem kötelező)
 server_remove_pin_ph	Tulajdonos PIN a szerver eltávolításához
 only_owner_remove_server	Csak a Tulajdonos távolíthat el egy szervert
 owner_pin_remove_server	A kiszolgáló eltávolításához PIN tulajdonos szükséges
-device_setup_help	A szerver itt tartja a könyveket. A kliens egy szerverhez párosul.
+device_setup_help	Ez az eszköz lehet a bolt (Szerver) vagy egy extra kassza (Kliens). Az egyik megnyitása nem törli a másikat. A párosított Kliens emlékszik a boltra — nincs párosító kód minden újraindításkor. Ha még nincs Szerver, a «Biztonsági másolat visszaállítása» a választott fájlból nyitja a könyveket (ugyanazok az ellenőrzések, mint a Visszaállítás a Beállításokban).
 currency	Pénznem
 backup	Biztonsági mentés
 use	Használja

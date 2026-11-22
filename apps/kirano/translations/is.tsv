@@ -182,7 +182,7 @@ credit_summary_fmt	{} viðskiptavinir · opið inneign {} · fyrirframgreiðslur
 recent_label	Nýlegar:
 inventory	Birgðir
 branches	Útibú
-credit_customers	Viðskiptavinir og birgjar (kreditreikningar)
+credit_customers	Aðilar (kreditreikningar)
 customer_name_ph	Nafn viðskiptavinar eða birgja
 new_customer_ph	Nýr viðskiptavinur eða birgir nafn
 item_price_ph	Verð
@@ -220,7 +220,7 @@ new_server_name_ph	Nýtt nafn netþjóns (valfrjálst)
 server_remove_pin_ph	Eigandi PIN til að fjarlægja netþjón
 only_owner_remove_server	Aðeins eigandinn getur fjarlægt netþjón
 owner_pin_remove_server	Eigandi PIN þarf til að fjarlægja þennan netþjón
-device_setup_help	Þjónninn heldur bókhaldinu hér. Viðskiptavinur parar við netþjón.
+device_setup_help	Þetta tæki getur verið búðin (Miðlari) eða auka kassi (Biðlari). Að opna annað eyðir ekki hinu. Paraður Biðlari man búðina — enginn pörunarkóði við hverja endurræsingu. Án Miðlara enn opnar «Endurheimta öryggisafrit» bækurnar úr skrá sem þú velur (sömu prófanir og Endurheimta í Stillingum).
 currency	Gjaldmiðill
 backup	Afritun
 use	Notaðu

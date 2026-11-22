@@ -220,7 +220,7 @@ new_server_name_ph	新服務器名稱（可選）
 server_remove_pin_ph	刪除服務器需 Owner PIN
 only_owner_remove_server	僅 Owner 可刪除服務器
 owner_pin_remove_server	刪除此服務器需要 Owner PIN
-device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
+device_setup_help	本裝置可以是店鋪（伺服器）或額外收銀（客戶端）。開啟其一不會清除另一個。已配對的客戶端會記住店鋪——每次重新啟動無需配對碼。尚無伺服器時，「恢復備份」 從您選擇的檔案開啟帳簿（檢查與設定中的還原相同）。
 currency	貨幣
 backup	備份
 use	使用
@@ -553,7 +553,7 @@ your_brand	你的品牌（應用內）
 your_categories	你的分類
 account_kind	帳戶類型（點選其一）
 actual_total_cap	實際總額
-amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。
+amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。四捨五入合計起初等於已套用金額——僅在取整時編輯。作廢和退款可能需要店主或經理 PIN（在上方輸入；與您的姓名一併記錄）。
 applied_total_cap	應付總額
 bank_balance	銀行餘額
 bank_net_today	今日銀行淨額

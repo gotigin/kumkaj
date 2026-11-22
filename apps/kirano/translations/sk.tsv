@@ -182,7 +182,7 @@ credit_summary_fmt	{} zákazníkov · otvorený kredit {} · držané zálohy {}
 recent_label	Nedávne:
 inventory	Inventár
 branches	Pobočky
-credit_customers	Zákazníci a dodávatelia (úverové účty)
+credit_customers	Strany (úverové účty)
 customer_name_ph	Meno zákazníka alebo dodávateľa
 new_customer_ph	Meno nového zákazníka alebo dodávateľa
 item_price_ph	Cena
@@ -220,7 +220,7 @@ new_server_name_ph	Nový názov servera (voliteľné)
 server_remove_pin_ph	Vlastník PIN na odstránenie servera
 only_owner_remove_server	Server môže odstrániť iba vlastník
 owner_pin_remove_server	Na odstránenie tohto servera je potrebný vlastník PIN
-device_setup_help	Server tu uchováva knihy. Klient sa spáruje so serverom.
+device_setup_help	Toto zariadenie môže byť obchod (Server) alebo ďalšia pokladnica (Klient). Otvorenie jedného nevymaže druhé. Spárovaný Klient si obchod pamätá — pri každom reštarte nie je potrebný párovací kód. Bez Servera zatiaľ «Obnoviť zálohu» otvorí knihy z vybraného súboru (rovnaké kontroly ako Obnoviť v Nastaveniach).
 currency	mena
 backup	Zálohovanie
 use	Použite

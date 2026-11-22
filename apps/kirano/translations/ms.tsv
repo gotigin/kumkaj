@@ -182,7 +182,7 @@ credit_summary_fmt	{} pelanggan · kredit terbuka {} · pendahuluan dipegang {}
 recent_label	terbaru:
 inventory	Inventori
 branches	Cawangan
-credit_customers	Pelanggan dan pembekal (akaun kredit)
+credit_customers	Pihak (akaun kredit)
 customer_name_ph	Nama pelanggan atau pembekal
 new_customer_ph	Nama pelanggan atau pembekal baharu
 item_price_ph	harga
@@ -220,7 +220,7 @@ new_server_name_ph	Nama pelayan baharu (pilihan)
 server_remove_pin_ph	Pemilik PIN untuk mengalih keluar pelayan
 only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
 owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
-device_setup_help	Pelayan menyimpan lejar di sini. Pasangan pelanggan ke Pelayan.
+device_setup_help	Peranti ini boleh jadi kedai (Pelayan) atau kaunter tambahan (Klien). Membuka satu tidak memadam yang lain. Klien yang dipasangkan ingat kedai — tiada kod pasangan setiap mula semula. Belum ada Pelayan, «Pulihkan sandaran» membuka lejar daripada fail yang anda pilih (semakan sama seperti Pulihkan dalam Tetapan).
 currency	mata wang
 backup	Sandaran
 use	guna
@@ -255,7 +255,7 @@ bank	Bank
 bank_in	Bank masuk
 bank_out	Tunai keluar dari bank
 bank_reconciliation	Penyesuaian bank
-bank_to_till	Bank → sehingga
+bank_to_till	Bank → kaunter
 book_add_dish	Buku — tambah item / item
 book_opening_credit	Lejar — kredit pembukaan
 branch_name_sell_ph	Nama cawangan untuk dijual
@@ -414,7 +414,7 @@ last_seen	dilihat
 copy_pair_code	Salin kod berpasangan
 new_pair_code	Kod gandingan baharu
 pair_finishing	Pasangan penamat… menggunakan lejar kedai
-pair_opening	Membuka sehingga…
+pair_opening	Membuka kaunter…
 lan_offline_waiting	Pelayan kedai tidak dapat dihubungi · {n} menunggu
 lan_connecting	Menyambung ke kedai…
 lan_live	Langsung
@@ -527,7 +527,7 @@ take_payment	Ambil bayaran
 tax_added_till	{tax} eksklusif
 tax_inside_price	{tax} termasuk
 tax_invoice	Invois cukai
-till_to_bank	Sehingga → bank
+till_to_bank	Kaunter → bank
 units_heading	Unit
 unlock_after_pairing	Masukkan PIN
 unlock_with_login	Buka kunci dengan log masuk
@@ -567,7 +567,7 @@ stamp_heading	setem
 stamp_image_help	Imej setem pilihan pada bil bercetak dan paparan pelanggan.
 payment_qr_heading	QR pembayaran
 payment_qr_image_help	QR statik pada bil dan paparan pelanggan; sebaliknya membayar menggunakan UPI QR dinamik daripada VPA di atas.
-cash_in_hand	Wang tunai di tangan (sehingga)
+cash_in_hand	Wang tunai di tangan (kaunter)
 change_my_pin_heading	Log masuk saya
 connect_to_server	Sambung ke Pelayan
 counter_locked	Kaunter 01 · Dikunci
@@ -660,8 +660,8 @@ pin_hint_choose	Pilih 4–12 digit · Masukkan atau Buka Kunci untuk menyimpan
 pin_hint_new	Pemilik 4–12 digit baharu PIN · Masukkan atau Buka Kunci
 pin_hint_shop_code	Beli peranti · kod berpasangan {}
 pin_hint_books	Peranti ini memegang lejar
-pin_hint_paired	Tambahan sehingga berpasangan — buka kunci untuk menjual
-pin_hint_pair_first	Tambahan sehingga — pasangkan ke peranti kedai dahulu
+pin_hint_paired	Kaunter tambahan berpasangan — buka kunci untuk menjual
+pin_hint_pair_first	Kaunter tambahan — pasangkan ke peranti kedai dahulu
 unlock_to_continue	Buka kunci untuk meneruskan
 no_staff_yet	Belum ada kakitangan — buka kunci sebagai Pemilik, kemudian Pasukan
 icon_new_selected	Ikon: fail baharu dipilih — ketik Simpan jenama

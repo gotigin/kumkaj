@@ -220,7 +220,7 @@ new_server_name_ph	Naam nieuwe server (optioneel)
 server_remove_pin_ph	Owner-PIN om te verwijderen
 only_owner_remove_server	Alleen de Owner mag een server verwijderen
 owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
-device_setup_help	De server bewaart hier de boeken. Een client koppelt met een server.
+device_setup_help	Dit apparaat kan de winkel (Server) of een extra kassa (Client) zijn. Eén openen wist de andere niet. Een gekoppelde Client onthoudt de winkel — geen koppelcode bij elke herstart. Zonder Server opent «Back-up herstellen» de boeken uit een bestand dat je kiest (zelfde controles als Herstellen in Instellingen).
 currency	Valuta
 backup	Back-up
 use	Gebruiken
@@ -553,7 +553,7 @@ your_brand	Jouw merk (in de app)
 your_categories	Jouw categorieën
 account_kind	Rekeningsoort (tik er een)
 actual_total_cap	WERKELIJK TOTAAL
-amend_help	Selecteer een verkoop om te wijzigen, annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis.
+amend_help	Selecteer een verkoop om te wijzigen, te annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis. Afgerond totaal start gelijk aan Toegepast — bewerk alleen om af te ronden. Annuleren en terugbetalen kunnen een eigenaar- of manager-PIN vragen (hierboven getypt; vastgelegd met je naam).
 applied_total_cap	TOEGEPAST TOTAAL
 bank_balance	Banksaldo
 bank_net_today	Bank netto vandaag

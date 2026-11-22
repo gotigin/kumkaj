@@ -220,7 +220,7 @@ new_server_name_ph	Nome do novo servidor (opcional)
 server_remove_pin_ph	PIN do dono para remover
 only_owner_remove_server	Só o dono pode remover um servidor
 owner_pin_remove_server	PIN do dono necessário para remover este servidor
-device_setup_help	O servidor guarda os livros aqui. O cliente emparelha com um servidor.
+device_setup_help	Este dispositivo pode ser a loja (Servidor) ou uma caixa extra (Cliente). Abrir um não apaga o outro. Um Cliente emparelhado lembra a loja — sem código de emparelhamento a cada reinício. Sem Servidor ainda, «Restaurar cópia» abre os livros a partir de um ficheiro que escolher (mesmas verificações que Restaurar nas Definições).
 currency	Moeda
 backup	Cópia de segurança
 use	Usar
@@ -553,7 +553,7 @@ your_brand	A sua marca (na app)
 your_categories	As suas categorias
 account_kind	Tipo de conta (toque num)
 actual_total_cap	TOTAL REAL
-amend_help	Selecione uma venda para alterar, anular ou reembolsar. As alterações guardam todo o histórico.
+amend_help	Selecione uma venda para emendar, anular ou reembolsar. As emendas mantêm o histórico completo. O total arredondado começa igual ao aplicado — edite só para arredondar. Anular e reembolsar podem exigir o PIN de proprietário ou gerente (escrito acima; registado com o seu nome).
 applied_total_cap	TOTAL APLICADO
 bank_balance	Saldo bancário
 bank_net_today	Líquido bancário de hoje

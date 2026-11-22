@@ -220,7 +220,7 @@ new_server_name_ph	Name des neuen Servers (optional)
 server_remove_pin_ph	Owner-PIN zum Entfernen
 only_owner_remove_server	Nur der Owner darf einen Server entfernen
 owner_pin_remove_server	Owner-PIN nötig, um diesen Server zu entfernen
-device_setup_help	Der Server führt die Bücher hier. Ein Client koppelt sich mit einem Server.
+device_setup_help	Dieses Gerät kann der Laden (Server) oder eine Extra-Kasse (Client) sein. Eines zu öffnen löscht das andere nicht. Ein gekoppelter Client merkt sich den Laden — kein Kopplungscode bei jedem Neustart. Ohne Server öffnet «Sicherung wiederherstellen» die Bücher aus einer Datei Ihrer Wahl (gleiche Prüfungen wie Wiederherstellen in den Einstellungen).
 currency	Währung
 backup	Sicherung
 use	Verwenden
@@ -553,7 +553,7 @@ your_brand	Deine Marke (in der App)
 your_categories	Deine Kategorien
 account_kind	Kontoart (eines tippen)
 actual_total_cap	TATSÄCHLICH GESAMT
-amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten. Korrekturen behalten den vollen Verlauf.
+amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten. Korrekturen behalten den vollen Verlauf. Der gerundete Gesamtbetrag startet gleich dem Angewandten — nur zum Runden bearbeiten. Storno und Erstattung können eine Inhaber- oder Manager-PIN brauchen (oben eingegeben; mit Ihrem Namen vermerkt).
 applied_total_cap	ANGEWENDET GESAMT
 bank_balance	Bankguthaben
 bank_net_today	Bank-Netto heute

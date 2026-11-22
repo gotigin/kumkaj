@@ -220,7 +220,7 @@ new_server_name_ph	Magaca server cusub (ikhtiyaari)
 server_remove_pin_ph	PIN-ka milkiilaha si loo saaro server
 only_owner_remove_server	Milkiilaha kaliya ayaa server ka saari kara
 owner_pin_remove_server	PIN-ka milkiilaha ayaa loo baahan yahay si loo saaro serverkan
-device_setup_help	Server-ku buugaagta halkan ayuu ku hayaa. Macaamiilku wuxuu la midaysmaa Server.
+device_setup_help	Qalabkani wuxuu noqon karaa dukaanka (Server) ama khaanad dheeraad ah (Macmiil). Furista mid ma tirtirto kan kale. Macmiil la isku xidhay wuu xasuustaa dukaanka — ma jiro kood isku xidh ah dib u bilow kasta. Server weli ma jiro, «Soo celi kaydka» waxay ka furtaa buugaagta fayl aad dooratay (hubinno la mid ah Soo celinta Settings).
 currency	Lacag
 backup	Kayd
 use	Isticmaal

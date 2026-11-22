@@ -220,7 +220,7 @@ new_server_name_ph	Nome do servidor novo (opcional)
 server_remove_pin_ph	PIN do dono para quitar un servidor
 only_owner_remove_server	Só o Dono pode quitar un servidor
 owner_pin_remove_server	Cómpre o PIN do dono para quitar este servidor
-device_setup_help	O Servidor garda os libros aquí. O Cliente emparéllase cun Servidor.
+device_setup_help	Este dispositivo pode ser a tenda (Servidor) ou unha caixa extra (Cliente). Abrir un non borra o outro. Un Cliente emparellado lembra a tenda — sen código de emparellamento en cada reinicio. Sen Servidor aínda, «Restaurar a copia» abre os libros dun ficheiro que elixas (as mesmas comprobacións que Restaurar en Axustes).
 currency	Moeda
 backup	Copia
 use	Usar

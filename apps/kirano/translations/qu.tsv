@@ -220,7 +220,7 @@ new_server_name_ph	Musuq sirwiq suti (munasqa) .
 server_remove_pin_ph	Dueño PIN huk servidorta hurqunapaq
 only_owner_remove_server	Dueñollam huk sirwiqta hurquyta atin
 owner_pin_remove_server	Dueño PIN kay sirwiqta hurqunapaq mañasqa
-device_setup_help	Servidor kaypi hatun qillqakunata waqaychan. Cliente pariskuna huk Servidorman.
+device_setup_help	Kay dispositivo tiendan (Servidor) utaq yapasqa caja (Cliente) kanman. Hukta kichay mana hukta chinkachinchu. T’inkinakuq Cliente tiendata yuyarin — mana código t’inkinapaq sapa qallariypi. Servidor manaraq kaptin, «Waqaychasqa waqaychasqata kutichiy» archivomanta libros kichan ajllasqaykimanta (kikin chequeos Restaurar Configuración nisqapi).
 currency	Qullqi
 backup	Copia de seguridad
 use	Utilizar

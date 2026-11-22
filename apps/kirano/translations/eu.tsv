@@ -220,7 +220,7 @@ new_server_name_ph	Zerbitzari berriaren izena (aukerakoa)
 server_remove_pin_ph	Jabearen PINa zerbitzari bat kentzeko
 only_owner_remove_server	Jabeak soilik ken dezake zerbitzari bat
 owner_pin_remove_server	Jabearen PINa behar da zerbitzari hau kentzeko
-device_setup_help	Zerbitzariak liburuak hemen gordetzen ditu. Bezeroa Zerbitzari batekin parekatzen da.
+device_setup_help	Gailu hau denda (Zerbitzaria) edo kutxa gehigarria (Bezeroa) izan daiteke. Bat irekitzeak ez du bestea ezabatzen. Parekatutako Bezeroak denda gogoratzen du — berrabiarazte bakoitzean ez da behar kodea. Zerbitzaririk gabe oraindik, «Leheneratu babeskopiatik»-k aukeratutako fitxategitik irekitzen ditu liburuak (Ezarpenetako Berrezarri bezalako egiaztapenak).
 currency	Moneta
 backup	Babeskopia
 use	Erabili

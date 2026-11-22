@@ -106,7 +106,7 @@ kot_unassigned	Belum ditetapkan
 settings_hub_help	Buka satu bagian sekaligus — lebih sedikit gulir, pilihan lebih jelas.
 settings_sec_language	Bahasa & mata uang
 settings_sec_country	Negara & pajak
-settings_sec_tills	Til tambahan & cabang
+settings_sec_tills	Kasir tambahan & cabang
 settings_sec_brand	Merek Anda
 settings_sec_units	Satuan & konversi
 settings_sec_pickers	Tarif pajak
@@ -220,7 +220,7 @@ new_server_name_ph	Nama server baru (opsional)
 server_remove_pin_ph	PIN Owner untuk hapus
 only_owner_remove_server	Hanya Owner yang boleh hapus server
 owner_pin_remove_server	PIN Owner wajib untuk menghapus server ini
-device_setup_help	Server menyimpan pembukuan di sini. Klien dipasangkan ke server.
+device_setup_help	Perangkat ini bisa jadi toko (Server) atau kasir tambahan (Klien). Membuka satu tidak menghapus yang lain. Klien yang terpasang mengingat toko — tanpa kode pasangan di setiap mulai ulang. Belum ada Server, «Pulihkan cadangan» membuka pembukuan dari berkas yang Anda pilih (pemeriksaan sama seperti Pulihkan di Pengaturan).
 currency	Mata uang
 backup	Cadangan
 use	Gunakan
@@ -234,7 +234,7 @@ add_opening_balance	Tambah saldo awal
 add_staff	Tambah staf
 add_unit	Tambah satuan
 add_use_name	Tambah / gunakan nama ini
-allow_extra_tills	Izinkan til tambahan
+allow_extra_tills	Izinkan kasir tambahan
 amend	Ubah
 apply_country_pack	Terapkan paket negara
 datetime_appearance	Tampilan tanggal & waktu
@@ -255,7 +255,7 @@ bank	Bank
 bank_in	Masuk bank
 bank_out	Keluar bank
 bank_reconciliation	Rekonsiliasi bank
-bank_to_till	Bank → til
+bank_to_till	Bank → kasir
 book_add_dish	Buku — menambah item/item
 book_opening_credit	Booking — kredit awal
 branch_name_sell_ph	Nama cabang untuk menjual
@@ -398,7 +398,7 @@ shop	Toko
 show	Tampilkan
 spreadsheet_csv	Spreadsheet (CSV)
 start_fresh	Mulai baru
-stop_extra_tills	Hentikan til tambahan
+stop_extra_tills	Hentikan kasir tambahan
 backup_auto	Dicadangkan otomatis setiap hari · terakhir {when} · 14 hari terakhir disimpan di {dir}.
 backup_auto_none	Dicadangkan otomatis setiap hari — yang pertama segera berjalan.
 backup_copy_to	Salinan juga ke {dir}.
@@ -429,7 +429,7 @@ lan_join_help	Perangkat lain dapat tersambung ke perangkat ini — kode pasangan
 lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Hubungkan perangkat ini ke Wi‑Fi untuk alamat.
 lan_not_listening	Saat ini tidak menerima perangkat — mungkin program lain memakai port {port}. Mulai ulang aplikasi.
-lan_tills_off	Til tambahan mati. Pembukuan toko ini tetap di perangkat ini. Izinkan til tambahan bila perangkat lain juga perlu menerima pesanan atau menagih.
+lan_tills_off	Kasir tambahan mati. Pembukuan toko ini tetap di perangkat ini. Izinkan kasir tambahan bila perangkat lain juga perlu menerima pesanan atau menagih.
 paired_with	Terpasang dengan toko di {url}
 not_paired	Belum terpasang — sambungkan ke server toko.
 choose_device_use	Pilih cara perangkat ini digunakan.
@@ -527,7 +527,7 @@ take_payment	Terima pembayaran
 tax_added_till	{tax} eksklusif
 tax_inside_price	{tax} inklusif
 tax_invoice	Faktur pajak
-till_to_bank	Til → bank
+till_to_bank	Kasir → bank
 units_heading	Satuan
 unlock_after_pairing	Masukkan PIN
 unlock_with_login	Buka kunci dengan login
@@ -553,7 +553,7 @@ your_brand	Merek Anda (di aplikasi)
 your_categories	Kategori Anda
 account_kind	Jenis akun (ketuk satu)
 actual_total_cap	TOTAL AKTUAL
-amend_help	Pilih penjualan untuk diubah, dibatalkan, atau dikembalikan. Perubahan menyimpan riwayat lengkap.
+amend_help	Pilih penjualan untuk diubah, dibatalkan, atau dikembalikan. Perubahan menyimpan riwayat lengkap. Total dibulatkan mulai sama dengan yang diterapkan — edit hanya untuk membulatkan. Batalkan dan pengembalian mungkin perlu PIN Pemilik atau Manajer (diketik di atas; dicatat dengan nama Anda).
 applied_total_cap	TOTAL DITERAPKAN
 bank_balance	Saldo bank
 bank_net_today	Neto bank hari ini
@@ -567,7 +567,7 @@ stamp_heading	Stempel
 stamp_image_help	Gambar stempel opsional pada tagihan yang dicetak dan tampilan pelanggan.
 payment_qr_heading	QR Pembayaran
 payment_qr_image_help	QR statis pada tagihan dan tampilan pelanggan; jika tidak, pembayaran menggunakan QR UPI dinamis dari VPA di atas.
-cash_in_hand	Tunai di tangan (til)
+cash_in_hand	Tunai di tangan (kasir)
 change_my_pin_heading	Ubah PIN saya (hanya milik Anda)
 connect_to_server	Hubungkan ke server
 counter_locked	Konter 01 · Terkunci
@@ -660,8 +660,8 @@ pin_hint_choose	Pilih 4–12 digit (keyboard atau pad) · Enter/OK untuk menyimp
 pin_hint_new	PIN pemilik baru 4–12 digit (keyboard atau pad) · Enter/OK
 pin_hint_shop_code	Perangkat toko · kode pasangan {}
 pin_hint_books	Perangkat ini menyimpan buku
-pin_hint_paired	Til tambahan terpasang — buka kunci untuk menjual
-pin_hint_pair_first	Til tambahan — pasangkan ke perangkat toko dulu
+pin_hint_paired	Kasir tambahan terpasang — buka kunci untuk menjual
+pin_hint_pair_first	Kasir tambahan — pasangkan ke perangkat toko dulu
 unlock_to_continue	Buka kunci untuk lanjut
 no_staff_yet	Belum ada staf — buka kunci sebagai Pemilik, lalu Tim
 icon_new_selected	Ikon: file baru dipilih — ketuk Simpan merek

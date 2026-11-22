@@ -220,7 +220,7 @@ new_server_name_ph	Nowa nazwa serwera (opcjonalnie)
 server_remove_pin_ph	Właściciel PIN, aby usunąć serwer
 only_owner_remove_server	Tylko właściciel może usunąć serwer
 owner_pin_remove_server	Właściciel PIN wymagany do usunięcia tego serwera
-device_setup_help	Serwer prowadzi tutaj księgi. Klient łączy się z serwerem.
+device_setup_help	To urządzenie może być sklepem (Serwer) lub dodatkową kasą (Klient). Otwarcie jednego nie kasuje drugiego. Sparowany Klient pamięta sklep — bez kodu parowania przy każdym restarcie. Gdy nie ma jeszcze Serwera, «Przywróć kopię zapasową» otwiera księgi z wybranego pliku (te same sprawdzenia co Przywróć w Ustawieniach).
 currency	Waluta
 backup	Kopia zapasowa
 use	Użyj
@@ -567,7 +567,7 @@ stamp_heading	Pieczęć
 stamp_image_help	Opcjonalny obraz znaczka na drukowanych rachunkach i wyświetlaczu klienta.
 payment_qr_heading	Płatność QR
 payment_qr_image_help	Statyczny kod QR na rachunkach i wyświetlaczu klienta; w przeciwnym razie płatność wykorzystuje dynamiczny kod QR UPI z powyższej umowy VPA.
-cash_in_hand	Gotówka w kasie (do)
+cash_in_hand	Gotówka w kasie (kasa)
 change_my_pin_heading	Moje logowanie
 connect_to_server	Połącz się z serwerem
 counter_locked	Licznik 01 · Zablokowany
@@ -660,7 +660,7 @@ pin_hint_choose	Wybierz 4–12 cyfr · Wprowadź lub Odblokuj, aby zapisać
 pin_hint_new	Nowy 4–12-cyfrowy właściciel PIN · Wprowadź lub odblokuj
 pin_hint_shop_code	Kup urządzenie · kod parowania {}
 pin_hint_books	To urządzenie trzyma księgi
-pin_hint_paired	Dodatkowe do sparowania — odblokuj, aby sprzedać
+pin_hint_paired	Dodatkowa kasa sparowana — odblokuj, aby sprzedawać
 pin_hint_pair_first	Dodatkowa kasa — najpierw sparuj z urządzeniem sklepowym
 unlock_to_continue	Odblokuj, aby kontynuować
 no_staff_yet	Nie ma jeszcze personelu — odblokuj jako właściciel, a następnie jako zespół

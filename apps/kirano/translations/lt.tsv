@@ -220,7 +220,7 @@ new_server_name_ph	Naujo serverio pavadinimas (nebūtina)
 server_remove_pin_ph	Savininko PIN serveriui pašalinti
 only_owner_remove_server	Tik Savininkas gali pašalinti serverį
 owner_pin_remove_server	Šiam serveriui pašalinti reikia savininko PIN
-device_setup_help	Serveris knygas laiko čia. Klientas susiporuoja su Serveriu.
+device_setup_help	Šis įrenginys gali būti parduotuvė (Serveris) arba papildoma kasa (Klientas). Vieno atidarymas neištrina kito. Susietas Klientas prisimena parduotuvę — kiekvieno paleidimo iš naujo nereikia susiejimo kodo. Dar nėra Serverio — «Atkurti iš atsarginės kopijos» atidaro knygas iš pasirinkto failo (tie patys patikrinimai kaip Atkurti Nuostatose).
 currency	Valiuta
 backup	Atsarginė kopija
 use	Naudoti

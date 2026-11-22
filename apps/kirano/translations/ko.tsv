@@ -220,7 +220,7 @@ new_server_name_ph	새 서버 이름(선택)
 server_remove_pin_ph	서버 삭제 Owner PIN
 only_owner_remove_server	Owner만 서버를 삭제할 수 있습니다
 owner_pin_remove_server	이 서버를 삭제하려면 Owner PIN이 필요합니다
-device_setup_help	서버는 장부를 여기에 보관합니다. 클라이언트는 서버와 페어링합니다.
+device_setup_help	이 기기는 매장(서버) 또는 추가 계산대(클라이언트)가 될 수 있습니다. 하나를 열어도 다른 쪽은 지워지지 않습니다. 페어링된 클라이언트는 매장을 기억합니다. 다시 시작할 때마다 페어링 코드가 필요 없습니다. 서버가 아직 없으면 «백업 복원»(으)로 고른 파일에서 장부를 엽니다(설정의 복원과 같은 검사).
 currency	통화
 backup	백업
 use	사용
@@ -354,12 +354,12 @@ reason_amend_ph	수정/취소/환불 사유
 reason_note_ph	사유 / 메모(폐기, 실사…)
 record_day_close	마감 기록
 business_day	«오늘» 화면은 언제 새로 시작하나요?
-business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 오전 12:00에 날짜가 바뀝니다.
+business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 00:00에 날짜가 바뀝니다.
 biz_day_until_close	마감할 때까지
 biz_day_midnight	달력 자정
 business_day_saved	영업일 설정을 저장했습니다
 report_day_lens	«오늘» 보기 기준
-report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 오전 12:00에 나눕니다.
+report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 00:00에 나눕니다.
 report_lens_day_close	마감 기준
 report_lens_midnight	자정 기준
 refresh_from_shop	매장에서 새로고침
@@ -553,7 +553,7 @@ your_brand	내 브랜드(앱 안)
 your_categories	내 카테고리
 account_kind	계정 종류(하나 누르기)
 actual_total_cap	실제 합계
-amend_help	수정, 취소 또는 환불할 판매를 선택하세요. 수정 내역은 전체 기록을 유지합니다.
+amend_help	수정·취소·환불할 매출을 선택하세요. 수정은 전체 이력을 유지합니다. 반올림 합계는 적용액과 같게 시작합니다. 반올림할 때만 편집하세요. 취소와 환불에는 소유자 또는 매니저 PIN이 필요할 수 있습니다(위에 입력; 이름과 함께 기록).
 applied_total_cap	적용 합계
 bank_balance	은행 잔액
 bank_net_today	오늘 은행 순액

@@ -220,7 +220,7 @@ new_server_name_ph	Jina la seva mpya (si lazima)
 server_remove_pin_ph	Owner PIN kuondoa seva
 only_owner_remove_server	Owner pekee anaweza kuondoa seva
 owner_pin_remove_server	Owner PIN inahitajika kuondoa seva hii
-device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
+device_setup_help	Kifaa hiki kinaweza kuwa duka (Seva) au kaunta ya ziada (Mteja). Kufungua kimoja hakufuti kingine. Mteja aliyeoanishwa anakumbuka duka — hakuna msimbo wa kuoanisha kila kuwasha upya. Bila Seva bado, «Rejesha hifadhi» hufungua vitabu kutoka faili unayochagua (ukaguzi uleule wa Rejesha katika mipangilio).
 currency	Sarafu
 backup	Hifadhi nakala
 use	Tumia
@@ -553,7 +553,7 @@ your_brand	Chapa yako (kwenye app)
 your_categories	Aina zako
 account_kind	Aina ya akaunti (gusa moja)
 actual_total_cap	JUMLA HALISI
-amend_help	Chagua mauzo ya kurekebisha, kufuta au kurejesha. Marekebisho huhifadhi historia kamili.
+amend_help	Chagua mauzo ya kurekebisha, kufuta au kurejesha. Marekebisho huhifadhi historia kamili. Jumla iliyozungushwa huanza sawa na Iliyotumika — hariri tu ili kuzungusha. Kufuta na kurejesha huenda yakahitaji PIN ya Mmiliki au Meneja (imeandikwa juu; imerekodiwa na jina lako).
 applied_total_cap	JUMLA ILIYOTUMIKA
 bank_balance	Salio la benki
 bank_net_today	Jumla ya benki leo

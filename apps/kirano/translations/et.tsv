@@ -182,7 +182,7 @@ credit_summary_fmt	{} kliendid · avatud krediit {} · hoitud ettemaksed {}
 recent_label	Viimased:
 inventory	Inventuur
 branches	Filiaalid
-credit_customers	Kliendid ja tarnijad (krediidikontod)
+credit_customers	Osapooled (krediidikontod)
 customer_name_ph	Kliendi või tarnija nimi
 new_customer_ph	Uue kliendi või tarnija nimi
 item_price_ph	Hind
@@ -220,7 +220,7 @@ new_server_name_ph	Uus serveri nimi (valikuline)
 server_remove_pin_ph	Omanik PIN serveri eemaldamiseks
 only_owner_remove_server	Ainult omanik saab serveri eemaldada
 owner_pin_remove_server	Selle serveri eemaldamiseks on vaja omanikku PIN
-device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga.
+device_setup_help	See seade võib olla pood (Server) või lisakassa (Klient). Ühe avamine ei kustuta teist. Seotud Klient mäletab poodi — igal taaskäivitusel pole sidumiskoodi vaja. Kui Serverit veel pole, avab «Taasta varukoopia» raamatud valitud failist (samad kontrollid mis Taasta sätetes).
 currency	Valuuta
 backup	Varundamine
 use	Kasutage
