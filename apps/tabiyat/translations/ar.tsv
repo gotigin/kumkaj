@@ -602,8 +602,8 @@ optional_login_help	دخول اختياري (معرف + كلمة مرور). يض
 or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
 or_unlock_shop_login	ﺮﺠﺘﻤﻟﺍ ﻰﻟﺇ ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ ﻊﻣ ﺢﺘﻓ ﻭﺃ
 shop_login_help	.(ﺖﻧﺮﺘﻧﻹ﻿ﺎﺑ ﻝﺎﺼﺗﺍ ﻥﻭﺩ ﻞﻤﻌﻳ) ﻲﺼﺨﺸﻟﺍ ﻒﻳﺮﻌﺘﻟﺍ ﻢﻗﺭ ﻦﻣ ًﻻ﻿ﺪﺑ ﺮﺠﺘﻤﻟﺍ ﺍﺬﻫ ﻲﻔﻇﻮﻤﺑ ﻦﻴﺻﺎﺨﻟﺍ
-cloud_account_title	ﺔﺤﺼﻟﺍ ﺏﺎﺴﺣ
-cloud_account_help	.ﺔﻴﻧﺎﺠﻣ ﺔﻄﺧﻭ ﻚﺑ ﺹﺎﺨﻟﺍ ﺔﺑﺎﺤﺴﻟﺍ ﻑﺮﻌﻣ ﺊﺸﻨﻳ .tabiyat.shop/account ـﺑ ﺹﺎﺨﻟﺍ ﺏﺎﺴﺤﻟﺍ
+cloud_account_title	[ar] Tabiyat account
+cloud_account_help	[ar] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	(ﻱﺭﺎﻴﺘﺧﺍ) ﻢﺳﻻ﻿ﺍ
 cloud_email_ph	ﻲﻧﻭﺮﺘﻜﻟﺇ ﺪﻳﺮﺑ
 cloud_password_ph	ﺭﻭﺮﻤﻟﺍ ﺔﻤﻠﻛ

@@ -718,8 +718,8 @@ optional_login_help	Mewngofnodi dewisol (id + cyfrinair). Mae'r Perchennog yn go
 or_unlock_login	Neu datgloi gydag id mewngofnodi + cyfrinair
 or_unlock_shop_login	Neu datgloi gyda mewngofnodi siop
 shop_login_help	Dewisol: datgloi gydag enw defnyddiwr a chyfrinair staff y siop hon yn lle PIN (yn gweithio all-lein).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	cyfrif Moklanjo
+cloud_account_help	Cofrestrwch neu llofnodwch gyda'r un cyfrif â moklanjo.com/account. Yn creu eich ID cwmwl a chynllun rhad ac am ddim.
 cloud_name_ph	Enw (dewisol)
 cloud_email_ph	Ebost
 cloud_password_ph	Cyfrinair

@@ -601,7 +601,7 @@ cloud_web_methods	[vi] Google and other methods on the website
 cloud_signing_in	[vi] Signing in…
 cloud_sending_reset	[vi] Sending reset link…
 cloud_forgot_sent	[vi] If that email has an account, a reset link is on the way.
-cloud_welcome	[vi] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[vi] Account created. Check your email to verify when you can.
 cloud_cancel	[vi] Cancel
 permission_preset	Mẫu quyền

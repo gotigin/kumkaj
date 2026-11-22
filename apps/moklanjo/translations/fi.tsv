@@ -718,8 +718,8 @@ optional_login_help	Valinnainen kirjautuminen (tunnus + salasana). Omistaja aset
 or_unlock_login	Tai avaa lukitus kirjautumistunnuksella ja salasanalla
 or_unlock_shop_login	Tai avaa lukitus myymälään kirjautumalla
 shop_login_help	Valinnainen: avaa lukitus tämän kaupan henkilökunnan käyttäjätunnuksella ja salasanalla PIN-koodin sijaan (toimii offline-tilassa).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	Moklanjon tili
+cloud_account_help	Rekisteröidy tai kirjaudu sisään samalla tilillä kuin moklanjo.com/account. Luo pilvitunnuksesi ja ilmaisen suunnitelmasi.
 cloud_name_ph	Nimi (valinnainen)
 cloud_email_ph	Sähköposti
 cloud_password_ph	Salasana

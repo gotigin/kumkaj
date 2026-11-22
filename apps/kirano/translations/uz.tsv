@@ -601,7 +601,7 @@ cloud_web_methods	[uz] Google and other methods on the website
 cloud_signing_in	[uz] Signing in…
 cloud_sending_reset	[uz] Sending reset link…
 cloud_forgot_sent	[uz] If that email has an account, a reset link is on the way.
-cloud_welcome	[uz] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[uz] Account created. Check your email to verify when you can.
 cloud_cancel	[uz] Cancel
 permission_preset	Ish

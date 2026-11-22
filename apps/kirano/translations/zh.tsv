@@ -588,22 +588,22 @@ net_word	净额
 offline_badge	离线
 optional_login_help	可选登录（编号+密码）。店主设置一次；之后只有用户本人可改密码。
 or_unlock_login	或用登录编号+密码解锁
-or_unlock_shop_login	[zh-CN] Or unlock with shop login
-shop_login_help	[zh-CN] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[zh-CN] Kirano account
-cloud_account_help	[zh-CN] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[zh-CN] Name (optional)
-cloud_email_ph	[zh-CN] Email
-cloud_password_ph	[zh-CN] Password
-cloud_continue	[zh-CN] Continue
-cloud_forgot	[zh-CN] Forgot password?
-cloud_web_methods	[zh-CN] Google and other methods on the website
-cloud_signing_in	[zh-CN] Signing in…
-cloud_sending_reset	[zh-CN] Sending reset link…
-cloud_forgot_sent	[zh-CN] If that email has an account, a reset link is on the way.
-cloud_welcome	[zh-CN] Signed in as {user} · {plan}
-cloud_created	[zh-CN] Account created. Check your email to verify when you can.
-cloud_cancel	[zh-CN] Cancel
+or_unlock_shop_login	[zh] Or unlock with shop login
+shop_login_help	[zh] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[zh] Kirano account
+cloud_account_help	[zh] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[zh] Name (optional)
+cloud_email_ph	[zh] Email
+cloud_password_ph	[zh] Password
+cloud_continue	[zh] Continue
+cloud_forgot	[zh] Forgot password?
+cloud_web_methods	[zh] Google and other methods on the website
+cloud_signing_in	[zh] Signing in…
+cloud_sending_reset	[zh] Sending reset link…
+cloud_forgot_sent	[zh] If that email has an account, a reset link is on the way.
+cloud_welcome	Signed in as {user} · {plan}
+cloud_created	[zh] Account created. Check your email to verify when you can.
+cloud_cancel	[zh] Cancel
 permission_preset	权限预设
 product_only_kirano	此应用仅为 Kirano——餐厅经营系统。其他行业另有独立的 Kumkaj 产品。
 purchases_cogs	采购(COGS)

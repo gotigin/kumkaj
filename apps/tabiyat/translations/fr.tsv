@@ -602,8 +602,8 @@ optional_login_help	Connexion facultative (id + mot de passe). Le propriétaire 
 or_unlock_login	Ou déverrouiller avec id de connexion + mot de passe
 or_unlock_shop_login	Ou débloquez avec la connexion à la boutique
 shop_login_help	Facultatif : déverrouillez avec le nom d'utilisateur et le mot de passe du personnel de cette boutique au lieu du code PIN (fonctionne hors ligne).
-cloud_account_title	compte santé
-cloud_account_help	Inscrivez-vous ou connectez-vous avec le même compte que tabiyat.shop/account. Crée votre identifiant cloud et votre forfait gratuit.
+cloud_account_title	[fr] Tabiyat account
+cloud_account_help	[fr] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Nom (facultatif)
 cloud_email_ph	E-mail
 cloud_password_ph	Mot de passe

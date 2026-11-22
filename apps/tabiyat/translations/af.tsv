@@ -602,8 +602,8 @@ optional_login_help	Opsionele aanmelding (ID + wagwoord). Eienaar stel een keer;
 or_unlock_login	Of ontgrendel met aanmeldings-ID en wagwoord
 or_unlock_shop_login	Of ontsluit met winkelaanmelding
 shop_login_help	Opsioneel: ontsluit met hierdie winkel se personeelnaam en wagwoord in plaas van PIN (werk vanlyn).
-cloud_account_title	gesondheidsrekening
-cloud_account_help	Registreer of meld aan met dieselfde rekening as tabiyat.shop/account. Skep jou wolk-ID en gratis plan.
+cloud_account_title	[af] Tabiyat account
+cloud_account_help	[af] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Naam (opsioneel)
 cloud_email_ph	E-pos
 cloud_password_ph	Wagwoord

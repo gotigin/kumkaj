@@ -602,8 +602,8 @@ optional_login_help	ঐচ্ছিক লগইন (আইডি + পাছৱ
 or_unlock_login	বা লগইন আইডি + পাছৱৰ্ডেৰে আনলক কৰক
 or_unlock_shop_login	বা দোকান লগইনৰ সৈতে আনলক
 shop_login_help	বৈকল্পিক: পিনৰ পৰিবৰ্তে এই দোকানৰ কৰ্মচাৰীৰ ব্যৱহাৰকাৰীনাম আৰু পাছৱৰ্ডৰ সৈতে আনলক কৰক (অফলাইন কাম কৰে)।
-cloud_account_title	স্বাস্থ্য একাউণ্ট
-cloud_account_help	tabiyat.shop/account ৰ দৰে একেটা একাউণ্টৰ সৈতে পঞ্জীয়ন বা চাইন ইন কৰক। আপোনাৰ ক্লাউড আইডি আৰু বিনামূলীয়া পৰিকল্পনা সৃষ্টি কৰে।
+cloud_account_title	[as] Tabiyat account
+cloud_account_help	[as] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	নাম (ঐচ্ছিক)
 cloud_email_ph	ইমেইল
 cloud_password_ph	পাছৱৰ্ড

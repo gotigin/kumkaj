@@ -601,7 +601,7 @@ cloud_web_methods	[sk] Google and other methods on the website
 cloud_signing_in	[sk] Signing in…
 cloud_sending_reset	[sk] Sending reset link…
 cloud_forgot_sent	[sk] If that email has an account, a reset link is on the way.
-cloud_welcome	[sk] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[sk] Account created. Check your email to verify when you can.
 cloud_cancel	[sk] Cancel
 permission_preset	Práca

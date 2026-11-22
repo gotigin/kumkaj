@@ -602,8 +602,8 @@ optional_login_help	ورود اختیاری (شناسه + گذرواژه). ما�
 or_unlock_login	یا با شناسه ورود + گذرواژه قفل را باز کنید
 or_unlock_shop_login	ﺪﯿﻨﮐ ﺯﺎﺑ ﺍﺭ ﻞﻔﻗ ﻩﺎﮕﺷﻭﺮﻓ ﻪﺑ ﺩﻭﺭﻭ ﺎﺑ ﺎﯾ
 shop_login_help	.(ﺪﻨﮐ ﯽﻣ ﺭﺎﮐ ﻦﯾﻼ﻿ﻓﺁ) ﺪﯿﻨﮐ ﺯﺎﺑ ﻦﯿﭘ ﯼﺎﺟ ﻪﺑ ﻩﺎﮕﺷﻭﺮﻓ ﻦﯾﺍ ﻥﺎﻨﮐﺭﺎﮐ ﺭﻮﺒﻋ ﺰﻣﺭ ﻭ ﯼﺮﺑﺭﺎﮐ
-cloud_account_title	ﺖﻣﻼ﻿ﺳ ﺏﺎﺴﺣ
-cloud_account_help	.ﺪﻨﮐ ﯽﻣ ﺩﺎﺠﯾﺍ ﺍﺭ ﺎﻤﺷ ﻥﺎﮕﯾﺍﺭ ﺡﺮﻃ ﻭ ﯼﺮﺑﺍ ﻪﺳﺎﻨﺷ .ﺪﯾﻮﺷ ﺩﺭﺍﻭ ﺎﯾ ﻡﺎﻧ ﺖﺒﺛ tabiyat.sho
+cloud_account_title	[fa] Tabiyat account
+cloud_account_help	[fa] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	(ﯼﺭﺎﯿﺘﺧﺍ) ﻡﺎﻧ
 cloud_email_ph	ﻞﯿﻤﯾﺍ
 cloud_password_ph	ﺭﻮﺒﻋ ﺰﻣﺭ

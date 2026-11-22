@@ -602,8 +602,8 @@ optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari 
 or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
 or_unlock_shop_login	O desbloquejar amb l'inici de sessió de la botiga
 shop_login_help	Opcional: desbloquejar amb el nom d'usuari i la contrasenya del personal d'aquesta botiga en lloc del PIN (funciona fora de línia).
-cloud_account_title	compte de salut
-cloud_account_help	Registreu-vos o inicieu sessió amb el mateix compte que tabiyat.shop/account. Crea el teu identificador de núvol i un pla gratuït.
+cloud_account_title	[ca] Tabiyat account
+cloud_account_help	[ca] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Nom (opcional)
 cloud_email_ph	Correu electrònic
 cloud_password_ph	Contrasenya

@@ -718,8 +718,8 @@ optional_login_help	Volitelné přihlášení (id + heslo). Vlastník nastaví j
 or_unlock_login	Nebo odemkněte pomocí přihlašovacího jména + hesla
 or_unlock_shop_login	Nebo odemkněte přihlášením do obchodu
 shop_login_help	Volitelné: místo PIN odemkněte pomocí uživatelského jména a hesla zaměstnanců tohoto obchodu (funguje offline).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	Účet Moklanjo
+cloud_account_help	Zaregistrujte se nebo se přihlaste pomocí stejného účtu jako moklanjo.com/account. Vytvoří vaše cloudové ID a bezplatný plán.
 cloud_name_ph	Jméno (volitelné)
 cloud_email_ph	E-mail
 cloud_password_ph	Heslo

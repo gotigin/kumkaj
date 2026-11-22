@@ -601,7 +601,7 @@ cloud_web_methods	[sq] Google and other methods on the website
 cloud_signing_in	[sq] Signing in…
 cloud_sending_reset	[sq] Sending reset link…
 cloud_forgot_sent	[sq] If that email has an account, a reset link is on the way.
-cloud_welcome	[sq] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[sq] Account created. Check your email to verify when you can.
 cloud_cancel	[sq] Cancel
 permission_preset	Puna

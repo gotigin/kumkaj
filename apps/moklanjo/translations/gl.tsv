@@ -718,8 +718,8 @@ optional_login_help	Inicio de sesión opcional (id + contrasinal). O dono pono u
 or_unlock_login	Ou desbloquee con id de inicio de sesión + contrasinal
 or_unlock_shop_login	Ou desbloquear co inicio de sesión na tenda
 shop_login_help	Opcional: desbloquealo co nome de usuario e contrasinal do persoal desta tenda en lugar do PIN (funciona sen conexión).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	Conta Moklanjo
+cloud_account_help	Rexístrese ou inicie sesión coa mesma conta que moklanjo.com/account. Crea o teu ID na nube e o teu plan gratuíto.
 cloud_name_ph	Nome (opcional)
 cloud_email_ph	Correo electrónico
 cloud_password_ph	Contrasinal

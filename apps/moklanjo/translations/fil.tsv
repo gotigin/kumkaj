@@ -716,22 +716,22 @@ net_word	Neto
 offline_badge	WALANG LINYA
 optional_login_help	Opsyonal na pag-login (id + password). Nagtatakda ang may-ari nang isang beses; ang user lang ang makakapagpalit ng password sa ibang pagkakataon.
 or_unlock_login	O i-unlock gamit ang login id + password
-or_unlock_shop_login	O i-unlock gamit ang pag-login sa tindahan
-shop_login_help	Opsyonal: i-unlock gamit ang username at password ng staff ng shop na ito sa halip na PIN (gumagana offline).
-cloud_account_title	
-cloud_account_help	
-cloud_name_ph	Pangalan (opsyonal)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Magpatuloy
-cloud_forgot	Nakalimutan ang password?
-cloud_web_methods	Google at iba pang mga pamamaraan sa website
-cloud_signing_in	Nagsa-sign in…
-cloud_sending_reset	Ipinapadala ang link sa pag-reset...
-cloud_forgot_sent	Kung may account ang email na iyon, may paparating na link sa pag-reset.
-cloud_welcome	Naka-sign in bilang {user} · {plan}
-cloud_created	Nagawa ang account. Suriin ang iyong email upang i-verify kung kailan mo magagawa.
-cloud_cancel	Kanselahin
+or_unlock_shop_login	[tl] Or unlock with shop login
+shop_login_help	[tl] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[tl] Moklanjo account
+cloud_account_help	[tl] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[tl] Name (optional)
+cloud_email_ph	[tl] Email
+cloud_password_ph	[tl] Password
+cloud_continue	[tl] Continue
+cloud_forgot	[tl] Forgot password?
+cloud_web_methods	[tl] Google and other methods on the website
+cloud_signing_in	[tl] Signing in…
+cloud_sending_reset	[tl] Sending reset link…
+cloud_forgot_sent	[tl] If that email has an account, a reset link is on the way.
+cloud_welcome	[tl] Signed in as {user} · {plan}
+cloud_created	[tl] Account created. Check your email to verify when you can.
+cloud_cancel	[tl] Cancel
 permission_preset	Trabaho
 preset_help_moklanjo	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
 product_locked_moklanjo	Moklanjo

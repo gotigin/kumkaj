@@ -600,22 +600,22 @@ net_word	Grynasis
 offline_badge	NEPRISIJUNGĘS
 optional_login_help	Nebūtinas prisijungimas (id + slaptažodis). Savininkas nustato vieną kartą; vėliau slaptažodį gali keisti tik naudotojas.
 or_unlock_login	Arba atrakinkite prisijungimo id + slaptažodžiu
-or_unlock_shop_login	[lt] Or unlock with shop login
-shop_login_help	[lt] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Arba atrakinkite prisijungę prie parduotuvės
+shop_login_help	Pasirenkama: atrakinkite naudodami šios parduotuvės personalo naudotojo vardą ir slaptažodį, o ne PIN kodą (veikia neprisijungus).
 cloud_account_title	[lt] Tabiyat account
 cloud_account_help	[lt] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[lt] Name (optional)
-cloud_email_ph	[lt] Email
-cloud_password_ph	[lt] Password
-cloud_continue	[lt] Continue
-cloud_forgot	[lt] Forgot password?
-cloud_web_methods	[lt] Google and other methods on the website
-cloud_signing_in	[lt] Signing in…
-cloud_sending_reset	[lt] Sending reset link…
-cloud_forgot_sent	[lt] If that email has an account, a reset link is on the way.
-cloud_welcome	[lt] Signed in as {user} · {plan}
-cloud_created	[lt] Account created. Check your email to verify when you can.
-cloud_cancel	[lt] Cancel
+cloud_name_ph	Vardas (neprivaloma)
+cloud_email_ph	El. paštas
+cloud_password_ph	Slaptažodis
+cloud_continue	Tęsti
+cloud_forgot	Pamiršote slaptažodį?
+cloud_web_methods	Google ir kiti metodai svetainėje
+cloud_signing_in	Prisijungiama…
+cloud_sending_reset	Siunčiama nustatymo iš naujo nuoroda…
+cloud_forgot_sent	Jei tame el. laiške yra paskyra, bus pateikta nuoroda iš naujo.
+cloud_welcome	Prisijungta kaip {user} · {plan}
+cloud_created	Paskyra sukurta. Patikrinkite el. paštą, kad patvirtintumėte, kada galėsite.
+cloud_cancel	Atšaukti
 permission_preset	Darbas
 product_only_tabiyat	„Tabiyat“ yra vaistinės operacinė sistema: vaistų pardavimas, partijų / galiojimo pabaigos apskaita, kreditas ir knygos – neprisijungus jūsų įrenginiuose. Tvarkaraščio H / Rx vėliavėlės yra savininko pastabos, o ne atitiktis.
 purchases_cogs	Pirkimai (parduotų prekių savikaina)

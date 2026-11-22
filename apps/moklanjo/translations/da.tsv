@@ -718,8 +718,8 @@ optional_login_help	Valgfrit login (id + adgangskode). Ejeren sætter det én ga
 or_unlock_login	Eller lås op med login-id + adgangskode
 or_unlock_shop_login	Eller lås op med butikslogin
 shop_login_help	Valgfrit: Lås op med denne butiks brugernavn og adgangskode i stedet for PIN-kode (fungerer offline).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	Moklanjo konto
+cloud_account_help	Registrer eller log ind med samme konto som moklanjo.com/account. Opretter dit sky-id og gratis abonnement.
 cloud_name_ph	Navn (valgfrit)
 cloud_email_ph	E-mail
 cloud_password_ph	Adgangskode

@@ -600,21 +600,21 @@ net_word	Цэвэр
 offline_badge	ОФЛАЙН
 optional_login_help	Заавал биш нэвтрэлт (id + нууц үг). Эзэмшигч нэг удаа тохируулна; нууц үгийг дараа нь зөвхөн хэрэглэгч өөрчилнө.
 or_unlock_login	Эсвэл нэвтрэх id + нууц үгээр түгжээ тайлна
-or_unlock_shop_login	[mn] Or unlock with shop login
-shop_login_help	[mn] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Эсвэл дэлгүүрт нэвтрэх замаар түгжээг тайлаарай
+shop_login_help	Нэмэлт: PIN кодын оронд энэ дэлгүүрийн ажилтнуудын хэрэглэгчийн нэр, нууц үгээр түгжээг тайлна (офлайнаар ажилладаг).
 cloud_account_title	[mn] Tabiyat account
 cloud_account_help	[mn] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mn] Name (optional)
-cloud_email_ph	[mn] Email
+cloud_name_ph	Нэр (заавал биш)
+cloud_email_ph	Имэйл
 cloud_password_ph	[mn] Password
 cloud_continue	[mn] Continue
-cloud_forgot	[mn] Forgot password?
-cloud_web_methods	[mn] Google and other methods on the website
+cloud_forgot	Нууц үгээ мартсан уу?
+cloud_web_methods	Google болон вэбсайт дээрх бусад аргууд
 cloud_signing_in	[mn] Signing in…
-cloud_sending_reset	[mn] Sending reset link…
+cloud_sending_reset	Дахин тохируулах холбоосыг илгээж байна…
 cloud_forgot_sent	[mn] If that email has an account, a reset link is on the way.
-cloud_welcome	[mn] Signed in as {user} · {plan}
-cloud_created	[mn] Account created. Check your email to verify when you can.
+cloud_welcome	Signed in as {user} · {plan}
+cloud_created	Бүртгэл үүсгэсэн. Боломжтой үедээ баталгаажуулахын тулд имэйлээ шалгана уу.
 cloud_cancel	[mn] Cancel
 permission_preset	Ажил
 product_only_tabiyat	Табият бол эмийн сангийн үйлдлийн систем юм: эм зарах, багц/хугацаа дууссан нягтлан бодох бүртгэл, кредит болон ном - таны төхөөрөмж дээр офлайн. Хуваарийн H / Rx тугууд нь эзэмшигчийн тэмдэглэл бөгөөд дагаж мөрдөхгүй.

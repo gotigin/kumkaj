@@ -600,22 +600,22 @@ net_word	Таза
 offline_badge	ОФЛАЙН
 optional_login_help	Кошумча логин (id + сырсөз). Ээси бир жолу белгилейт; кийин гана колдонуучу сырсөздү өзгөртө алат.
 or_unlock_login	Же логин id + сырсөз менен кулпусун ачыңыз
-or_unlock_shop_login	[ky] Or unlock with shop login
-shop_login_help	[ky] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Же дүкөнгө кирүү менен кулпусун ачыңыз
+shop_login_help	Кошумча: PINдин ордуна бул дүкөндүн кызматкеринин логин жана сырсөз менен кулпусун ачыңыз (офлайн режиминде иштейт).
 cloud_account_title	[ky] Tabiyat account
 cloud_account_help	[ky] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ky] Name (optional)
-cloud_email_ph	[ky] Email
-cloud_password_ph	[ky] Password
-cloud_continue	[ky] Continue
-cloud_forgot	[ky] Forgot password?
-cloud_web_methods	[ky] Google and other methods on the website
-cloud_signing_in	[ky] Signing in…
-cloud_sending_reset	[ky] Sending reset link…
-cloud_forgot_sent	[ky] If that email has an account, a reset link is on the way.
-cloud_welcome	[ky] Signed in as {user} · {plan}
-cloud_created	[ky] Account created. Check your email to verify when you can.
-cloud_cancel	[ky] Cancel
+cloud_name_ph	Аты (милдеттүү эмес)
+cloud_email_ph	Email
+cloud_password_ph	Купуя сөз
+cloud_continue	Улантуу
+cloud_forgot	Сырсөздү унуттуңузбу?
+cloud_web_methods	Google жана веб-сайттагы башка ыкмалар
+cloud_signing_in	Кирүүдө…
+cloud_sending_reset	Баштапкы абалга келтирүү шилтемеси жөнөтүлүүдө…
+cloud_forgot_sent	Эгер ал электрондук почтада каттоо эсеби болсо, баштапкы абалга келтирүү шилтемеси жолдо.
+cloud_welcome	Signed in as {user} · {plan}
+cloud_created	Аккаунт түзүлдү. Мүмкүн болгон учурда текшерүү үчүн электрондук почтаңызды текшериңиз.
+cloud_cancel	Жокко чыгаруу
 permission_preset	Жумуш
 product_only_tabiyat	Табият - бул дарыкананын операциялык тутуму: дары-дармектерди сатуу, партияны/жарактуулук мөөнөтүн эсепке алуу, кредит жана китептер - түзмөктөрүңүздө оффлайн. Графиктин H / Rx желектери ылайыктуулук эмес, ээсинин эскертүүлөрү.
 purchases_cogs	Сатып алуулар (COGS)

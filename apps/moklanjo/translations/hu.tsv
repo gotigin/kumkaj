@@ -716,22 +716,22 @@ net_word	Nettó
 offline_badge	OFFLINE
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
 or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
-or_unlock_shop_login	Vagy oldja fel bolti bejelentkezéssel
-shop_login_help	Opcionális: PIN-kód helyett az üzlet személyzetének felhasználónevével és jelszavával oldja fel a zárolást (offline módban működik).
-cloud_account_title	
-cloud_account_help	
-cloud_name_ph	Név (nem kötelező)
-cloud_email_ph	Email
-cloud_password_ph	Jelszó
-cloud_continue	Folytatás
-cloud_forgot	Elfelejtetted a jelszavad?
-cloud_web_methods	Google és egyéb módszerek a weboldalon
-cloud_signing_in	Bejelentkezés…
-cloud_sending_reset	Visszaállítási link küldése…
-cloud_forgot_sent	Ha ez az e-mail rendelkezik fiókkal, akkor a visszaállítási hivatkozás úton van.
-cloud_welcome	{user} · {plan} néven jelentkezett be
-cloud_created	Fiók létrehozva. Nézze meg e-mailjeit, és ellenőrizze, hogy mikor tudja.
-cloud_cancel	Mégse
+or_unlock_shop_login	[hu] Or unlock with shop login
+shop_login_help	[hu] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[hu] Moklanjo account
+cloud_account_help	[hu] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[hu] Name (optional)
+cloud_email_ph	[hu] Email
+cloud_password_ph	[hu] Password
+cloud_continue	[hu] Continue
+cloud_forgot	[hu] Forgot password?
+cloud_web_methods	[hu] Google and other methods on the website
+cloud_signing_in	[hu] Signing in…
+cloud_sending_reset	[hu] Sending reset link…
+cloud_forgot_sent	[hu] If that email has an account, a reset link is on the way.
+cloud_welcome	[hu] Signed in as {user} · {plan}
+cloud_created	[hu] Account created. Check your email to verify when you can.
+cloud_cancel	[hu] Cancel
 permission_preset	Munka
 preset_help_moklanjo	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
 product_locked_moklanjo	Moklanjo

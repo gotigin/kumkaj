@@ -602,8 +602,8 @@ optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyu
 or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
 or_unlock_shop_login	Və ya mağaza girişi ilə kilidini açın
 shop_login_help	Könüllü: PIN əvəzinə bu mağazanın işçi adı və parolu ilə kilidi açın (oflayn işləyir).
-cloud_account_title	sağlamlıq hesabı
-cloud_account_help	Tabiyat.shop/account ilə eyni hesabla qeydiyyatdan keçin və ya daxil olun. Bulud id və pulsuz planınızı yaradır.
+cloud_account_title	[az] Tabiyat account
+cloud_account_help	[az] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Ad (istəyə görə)
 cloud_email_ph	E-poçt
 cloud_password_ph	parol

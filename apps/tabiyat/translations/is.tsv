@@ -600,22 +600,22 @@ net_word	Nettó
 offline_badge	ÓTENGT
 optional_login_help	Valfrjáls innskráning (auðkenni + lykilorð). Eigandi setur einu sinni; aðeins notandinn getur breytt lykilorðinu síðar.
 or_unlock_login	Eða opnaðu með innskráningarauðkenni + lykilorði
-or_unlock_shop_login	[is] Or unlock with shop login
-shop_login_help	[is] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Eða opnaðu með innskráningu í verslun
+shop_login_help	Valfrjálst: opnaðu með notandanafni og lykilorði starfsmanna þessarar verslunar í stað PIN-númers (virkar án nettengingar).
 cloud_account_title	[is] Tabiyat account
 cloud_account_help	[is] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[is] Name (optional)
-cloud_email_ph	[is] Email
-cloud_password_ph	[is] Password
-cloud_continue	[is] Continue
-cloud_forgot	[is] Forgot password?
-cloud_web_methods	[is] Google and other methods on the website
-cloud_signing_in	[is] Signing in…
-cloud_sending_reset	[is] Sending reset link…
-cloud_forgot_sent	[is] If that email has an account, a reset link is on the way.
-cloud_welcome	[is] Signed in as {user} · {plan}
-cloud_created	[is] Account created. Check your email to verify when you can.
-cloud_cancel	[is] Cancel
+cloud_name_ph	Nafn (valfrjálst)
+cloud_email_ph	Tölvupóstur
+cloud_password_ph	Lykilorð
+cloud_continue	Halda áfram
+cloud_forgot	Gleymt lykilorð?
+cloud_web_methods	Google og aðrar aðferðir á vefsíðunni
+cloud_signing_in	Skráir sig inn...
+cloud_sending_reset	Sendir endurstillingartengil...
+cloud_forgot_sent	Ef þessi tölvupóstur er með reikning er endurstillingartengill á leiðinni.
+cloud_welcome	Skráður inn sem {user} · {plan}
+cloud_created	Reikningur búinn til. Athugaðu tölvupóstinn þinn til að staðfesta hvenær þú getur.
+cloud_cancel	Hætta við
 permission_preset	Starf
 product_only_tabiyat	Tabiyat er stýrikerfi apótekanna: lyfsölu, lotu-/útrunnunarbókhald, inneign og bækur — án nettengingar í tækjunum þínum. Dagskrá H / Rx fánar eru athugasemdir frá eiganda, ekki samræmi.
 purchases_cogs	Kaup (COGS)

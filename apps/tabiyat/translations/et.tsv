@@ -603,7 +603,7 @@ or_unlock_login	Või avage sisselogimise ID + parool
 or_unlock_shop_login	Või avage poe sisselogimisega
 shop_login_help	Valikuline: avage lukust selle poe personali kasutajanime ja parooliga, mitte PIN-koodiga (töötab võrguühenduseta).
 cloud_account_title	[et] Tabiyat account
-cloud_account_help	Registreeruge või logige sisse sama kontoga nagu tabiyat.shop/account. Loob teie pilve ID ja tasuta plaani.
+cloud_account_help	[et] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Nimi (valikuline)
 cloud_email_ph	Meil
 cloud_password_ph	Parool

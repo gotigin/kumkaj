@@ -718,8 +718,8 @@ optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; p
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
 or_unlock_shop_login	Térã ojedesblokea tenda jeike rupive
 shop_login_help	Opcional: ojepe’a ko tenda mba’apoharakuéra réra ha ñe’ẽñemi reheve PIN rangue (omba’apo offline).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	Moklanjo mombe'upy
+cloud_account_help	Ejeregistra térã eike peteĩ cuenta reheve moklanjo.com/account ndive. Ojapo nde id cloud ha plan gratuito.
 cloud_name_ph	Téra (ojeporavóva) .
 cloud_email_ph	Correo electrónico rehegua
 cloud_password_ph	Taiñomi

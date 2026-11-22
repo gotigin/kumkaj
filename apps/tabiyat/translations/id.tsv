@@ -600,22 +600,22 @@ net_word	Neto
 offline_badge	OFFLINE
 optional_login_help	Login opsional (ID + kata sandi). Pemilik mengaturnya sekali; setelah itu hanya pengguna yang bisa mengubah kata sandi.
 or_unlock_login	Atau buka kunci dengan ID login + kata sandi
-or_unlock_shop_login	[id] Or unlock with shop login
-shop_login_help	[id] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Atau buka kunci dengan login toko
+shop_login_help	Opsional: buka kunci dengan nama pengguna dan kata sandi staf toko ini, bukan PIN (berfungsi offline).
 cloud_account_title	[id] Tabiyat account
 cloud_account_help	[id] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[id] Name (optional)
-cloud_email_ph	[id] Email
-cloud_password_ph	[id] Password
-cloud_continue	[id] Continue
-cloud_forgot	[id] Forgot password?
-cloud_web_methods	[id] Google and other methods on the website
-cloud_signing_in	[id] Signing in…
-cloud_sending_reset	[id] Sending reset link…
-cloud_forgot_sent	[id] If that email has an account, a reset link is on the way.
-cloud_welcome	[id] Signed in as {user} · {plan}
-cloud_created	[id] Account created. Check your email to verify when you can.
-cloud_cancel	[id] Cancel
+cloud_name_ph	Nama (opsional)
+cloud_email_ph	E-mail
+cloud_password_ph	Kata sandi
+cloud_continue	Melanjutkan
+cloud_forgot	Lupa kata sandi?
+cloud_web_methods	Google dan metode lain di situs web
+cloud_signing_in	Masuk…
+cloud_sending_reset	Mengirim tautan setel ulang…
+cloud_forgot_sent	Jika email tersebut memiliki akun, tautan setel ulang sedang dikirimkan.
+cloud_welcome	Masuk sebagai {user} · {plan}
+cloud_created	Akun dibuat. Periksa email Anda untuk memverifikasi kapan Anda bisa.
+cloud_cancel	Membatalkan
 permission_preset	Preset izin
 product_only_tabiyat	Aplikasi ini hanya Tabiyat — sistem operasi restoran. Usaha lain punya produk Kumkaj tersendiri.
 purchases_cogs	Pembelian (COGS)

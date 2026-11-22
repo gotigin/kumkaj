@@ -602,15 +602,15 @@ optional_login_help	Logáil isteach roghnach (aitheantas + pasfhocal). Socraíon
 or_unlock_login	Nó díghlasáil le haitheantas logála + pasfhocal
 or_unlock_shop_login	Nó díghlasáil le logáil isteach siopa
 shop_login_help	Roghnach: díghlasáil le hainm úsáideora agus pasfhocal foirne an tsiopa seo seachas PIN (oibreacha as líne).
-cloud_account_title	cuntas sláinte
-cloud_account_help	Cláraigh nó sínigh isteach leis an gcuntas céanna le tabiyat.shop/account. Cruthaíonn sé d’aitheantas scamall agus plean saor in aisce.
+cloud_account_title	[ga] Tabiyat account
+cloud_account_help	[ga] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Ainm (roghnach)
 cloud_email_ph	Ríomhphost
 cloud_password_ph	Pasfhocal
 cloud_continue	Lean ort
 cloud_forgot	Focal faire dearmadta?
 cloud_web_methods	Google agus modhanna eile ar an láithreán gréasáin
-cloud_signing_in	Ag síniú isteach…
+cloud_signing_in	Signing in…
 cloud_sending_reset	Nasc athshocraithe á sheoladh…
 cloud_forgot_sent	Má tá cuntas ag an ríomhphost sin, tá nasc athshocraithe ar an mbealach.
 cloud_welcome	Sínithe isteach mar {user} · {plan}

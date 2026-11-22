@@ -602,9 +602,9 @@ optional_login_help	Optionaler Login (ID + Passwort). Der Inhaber setzt ihn einm
 or_unlock_login	Oder mit Login-ID + Passwort entsperren
 or_unlock_shop_login	Oder mit Shop-Login freischalten
 shop_login_help	Optional: Entsperren Sie mit dem Benutzernamen und Passwort des Mitarbeiters dieses Shops anstelle der PIN (funktioniert offline).
-cloud_account_title	Gesundheitskonto
-cloud_account_help	Registrieren Sie sich oder melden Sie sich mit demselben Konto wie tabiyat.shop/account an. Erstellt Ihre Cloud-ID und Ihren kostenlosen Plan.
-cloud_name_ph	[de] Name (optional)
+cloud_account_title	[de] Tabiyat account
+cloud_account_help	[de] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	Name (optional)
 cloud_email_ph	E-Mail
 cloud_password_ph	Passwort
 cloud_continue	Weitermachen

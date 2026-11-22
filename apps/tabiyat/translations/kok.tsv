@@ -602,8 +602,8 @@ optional_login_help	पर्यायी लॉगीन (आयडी + पा
 or_unlock_login	वा लॉगीन आयडी + पासवर्डान उगडात
 or_unlock_shop_login	वा दुकान लॉगीन करून अनलॉक करचें
 shop_login_help	पर्यायी: पिनाच्या बदलाक ह्या दुकानाच्या कर्मचाऱ्यांच्या वापरप्याचें नांव आनी पासवर्डान अनलॉक करचें (ऑफलायन काम करता).
-cloud_account_title	भलायकी खातें
-cloud_account_help	tabiyat.shop/account सारकिल्याच खात्यान नोंदणी करात वा सायन इन करात. तुमचो मेघ आयडी आनी फुकट प्लॅन तयार करता.
+cloud_account_title	[kok] Tabiyat account
+cloud_account_help	[kok] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	नांव (पर्यायी) 1.1.
 cloud_email_ph	ईमेल करचें
 cloud_password_ph	पासवर्ड

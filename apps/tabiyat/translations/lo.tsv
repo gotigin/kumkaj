@@ -600,22 +600,22 @@ net_word	ສຸດທິ
 offline_badge	ອອບລາຍ
 optional_login_help	ທາງເລືອກໃນການເຂົ້າສູ່ລະບົບ (id + ລະຫັດຜ່ານ). ເຈົ້າຂອງຊຸດຫນຶ່ງຄັ້ງ; ພຽງແຕ່ຜູ້ໃຊ້ສາມາດປ່ຽນລະຫັດຜ່ານໃນພາຍຫຼັງ.
 or_unlock_login	ຫຼືປົດລັອກດ້ວຍ ID ເຂົ້າສູ່ລະບົບ + ລະຫັດຜ່ານ
-or_unlock_shop_login	[lo] Or unlock with shop login
-shop_login_help	[lo] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	ຫຼືປົດລັອກດ້ວຍການເຂົ້າສູ່ລະບົບຮ້ານຄ້າ
+shop_login_help	ທາງເລືອກ: ປົດລັອກດ້ວຍຊື່ຜູ້ໃຊ້ ແລະລະຫັດຜ່ານຂອງພະນັກງານຮ້ານນີ້ແທນ PIN (ໃຊ້ໄດ້ແບບອອບລາຍ).
 cloud_account_title	[lo] Tabiyat account
 cloud_account_help	[lo] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[lo] Name (optional)
-cloud_email_ph	[lo] Email
-cloud_password_ph	[lo] Password
-cloud_continue	[lo] Continue
-cloud_forgot	[lo] Forgot password?
-cloud_web_methods	[lo] Google and other methods on the website
-cloud_signing_in	[lo] Signing in…
-cloud_sending_reset	[lo] Sending reset link…
-cloud_forgot_sent	[lo] If that email has an account, a reset link is on the way.
-cloud_welcome	[lo] Signed in as {user} · {plan}
-cloud_created	[lo] Account created. Check your email to verify when you can.
-cloud_cancel	[lo] Cancel
+cloud_name_ph	ຊື່ (ທາງເລືອກ)
+cloud_email_ph	ອີເມວ
+cloud_password_ph	ລະຫັດຜ່ານ
+cloud_continue	ສືບຕໍ່
+cloud_forgot	ລືມລະຫັດຜ່ານ?
+cloud_web_methods	Google ແລະວິທີການອື່ນໆຢູ່ໃນເວັບໄຊທ໌
+cloud_signing_in	ກຳລັງເຂົ້າສູ່ລະບົບ...
+cloud_sending_reset	ກຳລັງສົ່ງລິ້ງຣີເຊັດ...
+cloud_forgot_sent	ຖ້າອີເມລ໌ນັ້ນມີບັນຊີ, ລິ້ງຣີເຊັດແມ່ນກຳລັງຢູ່.
+cloud_welcome	ເຂົ້າສູ່ລະບົບເປັນ {user} · {plan}
+cloud_created	ສ້າງບັນຊີແລ້ວ. ກວດເບິ່ງອີເມວຂອງທ່ານເພື່ອຢືນຢັນເມື່ອເຈົ້າສາມາດ.
+cloud_cancel	ຍົກເລີກ
 permission_preset	ວຽກ
 product_only_tabiyat	Tabiyat ແມ່ນ​ລະ​ບົບ​ປະ​ຕິ​ບັດ​ການ​ຂອງ​ຮ້ານ​ຂາຍ​ຢາ​: ຂາຍ​ຢາ​, batch/expiry bookkeeping​, ເຄຣ​ດິດ​ແລະ​ປຶ້ມ — offline ໃນ​ອຸ​ປະ​ກອນ​ຂອງ​ທ່ານ​. ທຸງຕາຕະລາງ H / Rx ແມ່ນບັນທຶກເຈົ້າຂອງ, ບໍ່ແມ່ນການປະຕິບັດຕາມ.
 purchases_cogs	ການຊື້ (COGS)

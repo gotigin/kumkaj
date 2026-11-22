@@ -600,22 +600,22 @@ net_word	Netto
 offline_badge	OFFLINE
 optional_login_help	Accesso facoltativo (id + password). Il titolare lo imposta una volta; poi solo l'utente può cambiare la password.
 or_unlock_login	Oppure sblocca con id di accesso + password
-or_unlock_shop_login	[it] Or unlock with shop login
-shop_login_help	[it] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Oppure sblocca con l'accesso al negozio
+shop_login_help	Facoltativo: sblocca con il nome utente e la password dello staff di questo negozio invece del PIN (funziona offline).
 cloud_account_title	[it] Tabiyat account
 cloud_account_help	[it] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[it] Name (optional)
-cloud_email_ph	[it] Email
-cloud_password_ph	[it] Password
-cloud_continue	[it] Continue
-cloud_forgot	[it] Forgot password?
-cloud_web_methods	[it] Google and other methods on the website
-cloud_signing_in	[it] Signing in…
-cloud_sending_reset	[it] Sending reset link…
-cloud_forgot_sent	[it] If that email has an account, a reset link is on the way.
-cloud_welcome	[it] Signed in as {user} · {plan}
-cloud_created	[it] Account created. Check your email to verify when you can.
-cloud_cancel	[it] Cancel
+cloud_name_ph	Nome (facoltativo)
+cloud_email_ph	E-mail
+cloud_password_ph	Password
+cloud_continue	Continuare
+cloud_forgot	Ha dimenticato la password?
+cloud_web_methods	Google e altri metodi sul sito web
+cloud_signing_in	Accesso…
+cloud_sending_reset	Invio del link di reimpostazione...
+cloud_forgot_sent	Se quell'e-mail ha un account, è in arrivo un collegamento per il ripristino.
+cloud_welcome	Accesso effettuato come {user} · {plan}
+cloud_created	Conto creato. Controlla la tua email per verificare quando puoi.
+cloud_cancel	Cancellare
 permission_preset	Preset permessi
 product_only_tabiyat	Questa app è solo Tabiyat, il sistema per ristoranti. Gli altri mestieri hanno prodotti Kumkaj a parte.
 purchases_cogs	Acquisti (COGS)

@@ -602,8 +602,8 @@ optional_login_help	Дадатковы лагін (id + пароль). Улад�
 or_unlock_login	Або разблакіраваць з дапамогай лагіна + пароля
 or_unlock_shop_login	Або разблакіруйце з дапамогай уваходу ў краму
 shop_login_help	Дадаткова: разблакіроўка з дапамогай імя карыстальніка і пароля супрацоўнікаў гэтай крамы замест PIN-кода (працуе ў аўтаномным рэжыме).
-cloud_account_title	рахунак здароўя
-cloud_account_help	Зарэгіструйцеся або ўвайдзіце з тым жа ўліковым запісам, што і tabiyat.shop/account. Стварае ваш воблачны ідэнтыфікатар і бясплатны план.
+cloud_account_title	[be] Tabiyat account
+cloud_account_help	[be] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Імя (неабавязкова)
 cloud_email_ph	Электронная пошта
 cloud_password_ph	Пароль

@@ -718,8 +718,8 @@ optional_login_help	Acceso opcional (id + contraseña). El dueño lo pone una ve
 or_unlock_login	O desbloquear con id de acceso + contraseña
 or_unlock_shop_login	O desbloquear con inicio de sesión en la tienda
 shop_login_help	Opcional: desbloquee con el nombre de usuario y la contraseña del personal de esta tienda en lugar del PIN (funciona sin conexión).
-cloud_account_title	
-cloud_account_help	
+cloud_account_title	cuenta moklanjo
+cloud_account_help	Regístrese o inicie sesión con la misma cuenta que moklanjo.com/account. Crea su ID de nube y su plan gratuito.
 cloud_name_ph	Nombre (opcional)
 cloud_email_ph	Correo electrónico
 cloud_password_ph	Contraseña

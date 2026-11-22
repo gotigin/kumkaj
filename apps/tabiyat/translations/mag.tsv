@@ -602,8 +602,8 @@ optional_login_help	वैकल्पिक लॉगिन (आईडी + प
 or_unlock_login	भा लॉगिन आईडी + पासवर्ड से अनलॉक करऽ
 or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
-cloud_account_title	[hi] Tabiyat account
-cloud_account_help	tabiyat.shop/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_account_title	[mag] Tabiyat account
+cloud_account_help	[mag] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
@@ -615,7 +615,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	[hi] Cancel
+cloud_cancel	रद्द करना
 permission_preset	अनुमति प्रीसेट
 product_only_tabiyat	ताबियात फार्मेसी ऑपरेटिंग सिस्टम है: दवा बेचना, बैच/एक्सपायरी बहीखाता, क्रेडिट और किताबें - आपके डिवाइस पर ऑफ़लाइन। शेड्यूल एच/आरएक्स झंडे मालिक के नोट हैं, अनुपालन नहीं।
 purchases_cogs	खरीद (COGS)

@@ -602,8 +602,8 @@ optional_login_help	Aukerako saio-hasiera (id + pasahitza). Jabeak behin ezartze
 or_unlock_login	Edo desblokeatu saio-id + pasahitzarekin
 or_unlock_shop_login	Edo desblokeatu dendan saioa hasteko
 shop_login_help	Aukerakoa: desblokeatu denda honetako langileen erabiltzaile-izenarekin eta pasahitzarekin PINarekin ordez (konexiorik gabe funtzionatzen du).
-cloud_account_title	osasun kontua
-cloud_account_help	Erregistratu edo hasi saioa tabiyat.shop/account kontu berarekin. Zure hodeiko IDa eta doako plana sortzen ditu.
+cloud_account_title	[eu] Tabiyat account
+cloud_account_help	[eu] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	Izena (aukerakoa)
 cloud_email_ph	Posta elektronikoa
 cloud_password_ph	Pasahitza

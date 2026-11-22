@@ -613,7 +613,7 @@ cloud_web_methods	[pl] Google and other methods on the website
 cloud_signing_in	[pl] Signing in…
 cloud_sending_reset	[pl] Sending reset link…
 cloud_forgot_sent	[pl] If that email has an account, a reset link is on the way.
-cloud_welcome	[pl] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[pl] Account created. Check your email to verify when you can.
 cloud_cancel	[pl] Cancel
 permission_preset	Praca

@@ -601,7 +601,7 @@ cloud_web_methods	[tk] Google and other methods on the website
 cloud_signing_in	[tk] Signing in…
 cloud_sending_reset	[tk] Sending reset link…
 cloud_forgot_sent	[tk] If that email has an account, a reset link is on the way.
-cloud_welcome	[tk] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[tk] Account created. Check your email to verify when you can.
 cloud_cancel	[tk] Cancel
 permission_preset	Iş

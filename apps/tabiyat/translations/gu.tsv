@@ -602,8 +602,8 @@ optional_login_help	વૈકલ્પિક લૉગિન (આઈડી + પ
 or_unlock_login	અથવા લૉગિન આઈડી + પાસવર્ડથી અનલૉક કરો
 or_unlock_shop_login	અથવા દુકાન લૉગિન સાથે અનલૉક કરો
 shop_login_help	વૈકલ્પિક: PIN ને બદલે આ દુકાનના સ્ટાફના વપરાશકર્તાનામ અને પાસવર્ડથી અનલૉક કરો (ઑફલાઇન કાર્ય કરે છે).
-cloud_account_title	આરોગ્ય ખાતું
-cloud_account_help	tabiyat.shop/account જેવા જ એકાઉન્ટથી નોંધણી કરો અથવા સાઇન ઇન કરો. તમારું ક્લાઉડ આઈડી અને ફ્રી પ્લાન બનાવે છે.
+cloud_account_title	[gu] Tabiyat account
+cloud_account_help	[gu] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
 cloud_name_ph	નામ (વૈકલ્પિક)
 cloud_email_ph	ઈમેલ
 cloud_password_ph	પાસવર્ડ

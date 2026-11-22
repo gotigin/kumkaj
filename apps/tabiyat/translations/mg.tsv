@@ -600,22 +600,22 @@ net_word	Neto
 offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
-or_unlock_shop_login	[mg] Or unlock with shop login
-shop_login_help	[mg] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Na sokafy amin'ny fidirana amin'ny fivarotana
+shop_login_help	Azo atao: sokafy amin'ny solon'anarana sy tenimiafina mpiasan'ity fivarotana ity fa tsy PIN (miasa ivelan'ny aterineto).
 cloud_account_title	[mg] Tabiyat account
 cloud_account_help	[mg] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[mg] Name (optional)
-cloud_email_ph	[mg] Email
-cloud_password_ph	[mg] Password
-cloud_continue	[mg] Continue
-cloud_forgot	[mg] Forgot password?
-cloud_web_methods	[mg] Google and other methods on the website
-cloud_signing_in	[mg] Signing in…
-cloud_sending_reset	[mg] Sending reset link…
-cloud_forgot_sent	[mg] If that email has an account, a reset link is on the way.
-cloud_welcome	[mg] Signed in as {user} · {plan}
-cloud_created	[mg] Account created. Check your email to verify when you can.
-cloud_cancel	[mg] Cancel
+cloud_name_ph	Anarana (tsy voatery)
+cloud_email_ph	mailaka
+cloud_password_ph	Password
+cloud_continue	FOANA
+cloud_forgot	Hadino ny tenimiafina?
+cloud_web_methods	Google sy fomba hafa amin'ny tranokala
+cloud_signing_in	Miditra…
+cloud_sending_reset	Mandefa rohy famerenana…
+cloud_forgot_sent	Raha manana kaonty io mailaka io, dia misy rohy hamerenana an-dalana.
+cloud_welcome	Niditra ho {user} · {plan}
+cloud_created	Kaonty noforonina. Hamarino ny mailakao mba hanamarina raha azonao atao.
+cloud_cancel	hanafoana
 permission_preset	Asa
 product_only_tabiyat	Tabiyat no rafitra miasa amin'ny fivarotam-panafody: fivarotana fanafody, fitahirizam-boky andiany / lany daty, trosa ary boky - ivelan'ny aterineto amin'ny fitaovanao. Ny saina H / Rx dia naotin'ny tompony fa tsy fanarahan-dalàna.
 purchases_cogs	Fividianana (COGS)

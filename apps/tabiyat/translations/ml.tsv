@@ -600,22 +600,22 @@ net_word	നെറ്റ്
 offline_badge	ഓഫ്‌ലൈൻ
 optional_login_help	ഓപ്ഷണൽ ലോഗിൻ (ഐഡി + പാസ്‌വേഡ്). ഉടമ ഒരിക്കൽ നിശ്ചയിക്കും; പിന്നീട് ഉപയോക്താവിന് മാത്രമേ പാസ്‌വേഡ് മാറ്റാൻ കഴിയൂ.
 or_unlock_login	അല്ലെങ്കിൽ ലോഗിൻ ഐഡി + പാസ്‌വേഡ് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
-or_unlock_shop_login	[ml] Or unlock with shop login
-shop_login_help	[ml] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	അല്ലെങ്കിൽ ഷോപ്പ് ലോഗിൻ ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
+shop_login_help	ഓപ്ഷണൽ: PIN-ന് പകരം ഈ ഷോപ്പിൻ്റെ സ്റ്റാഫ് ഉപയോക്തൃനാമവും പാസ്u200cവേഡും ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക (ഓഫ്u200cലൈനിൽ പ്രവർത്തിക്കുന്നു).
 cloud_account_title	[ml] Tabiyat account
 cloud_account_help	[ml] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	[ml] Name (optional)
-cloud_email_ph	[ml] Email
-cloud_password_ph	[ml] Password
-cloud_continue	[ml] Continue
-cloud_forgot	[ml] Forgot password?
-cloud_web_methods	[ml] Google and other methods on the website
-cloud_signing_in	[ml] Signing in…
-cloud_sending_reset	[ml] Sending reset link…
-cloud_forgot_sent	[ml] If that email has an account, a reset link is on the way.
-cloud_welcome	[ml] Signed in as {user} · {plan}
-cloud_created	[ml] Account created. Check your email to verify when you can.
-cloud_cancel	[ml] Cancel
+cloud_name_ph	പേര് (ഓപ്ഷണൽ)
+cloud_email_ph	Email
+cloud_password_ph	രഹസ്യവാക്ക്
+cloud_continue	തുടരുക
+cloud_forgot	പാസ്വേഡ് മറന്നോ?
+cloud_web_methods	വെബ്u200cസൈറ്റിലെ ഗൂഗിളും മറ്റ് രീതികളും
+cloud_signing_in	സൈൻ ഇൻ ചെയ്യുന്നു...
+cloud_sending_reset	റീസെറ്റ് ലിങ്ക് അയയ്u200cക്കുന്നു...
+cloud_forgot_sent	ആ ഇമെയിലിന് ഒരു അക്കൗണ്ട് ഉണ്ടെങ്കിൽ, ഒരു റീസെറ്റ് ലിങ്ക് വരുന്നു.
+cloud_welcome	{user} · {plan} ആയി സൈൻ ഇൻ ചെയ്u200cതു
+cloud_created	അക്കൗണ്ട് സൃഷ്ടിച്ചു. നിങ്ങൾക്ക് കഴിയുമ്പോൾ സ്ഥിരീകരിക്കാൻ നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക.
+cloud_cancel	റദ്ദാക്കുക
 permission_preset	അനുമതി പ്രീസെറ്റ്
 product_only_tabiyat	ഈ ആപ്പ് Tabiyat മാത്രം — റെസ്റ്റോറന്റ് ഓപ്പറേറ്റിംഗ് സിസ്റ്റം. മറ്റു വ്യാപാരങ്ങൾക്ക് പ്രത്യേക Kumkaj ഉൽപ്പന്നങ്ങൾ.
 purchases_cogs	വാങ്ങലുകൾ (COGS)

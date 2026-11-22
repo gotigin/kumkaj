@@ -613,7 +613,7 @@ cloud_web_methods	[qu] Google and other methods on the website
 cloud_signing_in	[qu] Signing in…
 cloud_sending_reset	[qu] Sending reset link…
 cloud_forgot_sent	[qu] If that email has an account, a reset link is on the way.
-cloud_welcome	[qu] Signed in as {user} · {plan}
+cloud_welcome	Signed in as {user} · {plan}
 cloud_created	[qu] Account created. Check your email to verify when you can.
 cloud_cancel	[qu] Cancel
 permission_preset	Llamkana
