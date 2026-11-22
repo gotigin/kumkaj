@@ -333,7 +333,7 @@ export_day	Ni chhuah
 extra_note_bill_ph	He bill / zuar-ah lehkha dang
 extra_tills_heading	Dawhkan dang
 other_devices_help_heading	Device dang rem
-other_devices_help	He device (Server) ah hian: Device dang → Extra tills phalsak. Pairing code leh Wi‐Fi address te kha chhinchhiah rawh. A lo lang a nih chuan device dangte connect turin phalsak rawh tih kha tap rawh. Computer-ah chuan he computer hmang hian tan rawh tih kha tap rawh. Device pakhatah: app install la, Client Mode thlang la, Dawr server zawng rawh (or address type la), pairing code ziak la, Pair now. Order te chu Wi‐Fi a tlak chuan device-ah a nghak a, Server-in a chhan leh hunah a kal leh thin. Server-ah extra printer set a ni (Settings → Printers) — extra tills hian chutah chuan bill a thawn thin.
+other_devices_help	He device (Server) ah hian: Device dang → Extra kashi phalsak. Pairing code leh Wi‐Fi address te kha chhinchhiah rawh. A lo lang a nih chuan device dangte connect turin phalsak rawh tih kha tap rawh. Computer-ah chuan he computer hmang hian tan rawh tih kha tap rawh. Device pakhatah: app install la, Client Mode thlang la, Dawr server zawng rawh (or address type la), pairing code ziak la, Pair now. Order te chu Wi‐Fi a tlak chuan device-ah a nghak a, Server-in a chhan leh hunah a kal leh thin. Server-ah extra printer set a ni (Settings → Printers) — extra kashi hian chutah chuan bill a thawn thin.
 forget_shop	He dawr hreh
 goods_received	Thil dawng
 import_day	Ni lut

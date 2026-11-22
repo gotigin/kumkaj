@@ -333,7 +333,7 @@ export_day	Ekspor hari
 extra_note_bill_ph	Catatan tambahan pada tagihan / penjualan ini
 extra_tills_heading	Kasir tambahan
 other_devices_help_heading	Siapkan perangkat lain
-other_devices_help	Di perangkat ini (Server): Perangkat lain → Izinkan pemrosesan tambahan. Catat kode penyandingan dan alamat Wi-Fi. Ketuk Izinkan perangkat lain untuk terhubung jika muncul. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: instal aplikasi, pilih Mode Klien, Temukan server toko (atau ketik alamat), masukkan kode penyandingan, Pasangkan sekarang. Pesanan menunggu di perangkat jika Wi‑Fi terputus dan dilanjutkan saat Server menjawab lagi. Printer tambahan diatur di Server (Pengaturan → Printer) — mesin tambahan mengirim tagihan ke sana.
+other_devices_help	Di perangkat ini (Server): Perangkat lain → Izinkan kasir tambahan. Catat kode penyandingan dan alamat Wi-Fi. Ketuk Izinkan perangkat lain untuk terhubung jika muncul. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: instal aplikasi, pilih Mode Klien, Temukan server toko (atau ketik alamat), masukkan kode penyandingan, Pasangkan sekarang. Pesanan menunggu di perangkat jika Wi‑Fi terputus dan dilanjutkan saat Server menjawab lagi. Printer tambahan diatur di Server (Pengaturan → Printer) — kasir tambahan mengirim tagihan ke sana.
 forget_shop	Lupakan toko ini
 goods_received	Barang diterima
 import_day	Impor hari

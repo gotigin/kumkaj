@@ -333,7 +333,7 @@ export_day	Ka sngi shalan
 extra_note_bill_ph	Ka jingthoh ba kham bniah halor kane ka bill / jingdie
 extra_tills_heading	Ki till ba la pyndap
 other_devices_help_heading	Pynbeit ia kiwei pat ki tiar .
-other_devices_help	Ha kane ka tiar (Server): Kiwei pat ki tiar → Ailad ia ki till ba kham bun. Pynkynmaw ia u code jong ka jingpyniadei bad ka jaka sah jong ka Wi‐Fi. Tap Ailad ia kiwei pat ki tiar ban pyniasoh lada ka paw. Ha ka kompiwtor, tap Sdang da kane ka kompiwtor. Ha kawei pa kawei ka tiar: buh ia ka app, jied ia ka Client Mode, Wad ia ka server jong ka dukan (lane type ia ka address), pynrung ia u pairing code, Pair mynta. Ki jingbthah ki ap ha ka tiar lada ka Wi‐Fi ka hiar bad ki leit ynda u Server u jubab biang. Ki nongpynmih kot ba kham heh la buh ha ka Server (Ki jingpynbeit → Ki nongpynmih kot) — ki till ba kham heh ki phah bill hangta.
+other_devices_help	Ha kane ka tiar (Server): Kiwei pat ki tiar → Ailad ia ki kasha ba kham bun. Pynkynmaw ia u code jong ka jingpyniadei bad ka jaka sah jong ka Wi‐Fi. Tap Ailad ia kiwei pat ki tiar ban pyniasoh lada ka paw. Ha ka kompiwtor, tap Sdang da kane ka kompiwtor. Ha kawei pa kawei ka tiar: buh ia ka app, jied ia ka Client Mode, Wad ia ka server jong ka dukan (lane type ia ka address), pynrung ia u pairing code, Pair mynta. Ki jingbthah ki ap ha ka tiar lada ka Wi‐Fi ka hiar bad ki leit ynda u Server u jubab biang. Ki nongpynmih kot ba kham heh la buh ha ka Server (Ki jingpynbeit → Ki nongpynmih kot) — ki kasha ba kham heh ki phah bill hangta.
 forget_shop	Klet noh ia kane ka dukan .
 goods_received	Ki mar ba la ioh
 import_day	Ka sngi wanrah

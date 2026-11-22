@@ -333,7 +333,7 @@ export_day	Xuất ngày
 extra_note_bill_ph	Ghi chú thêm cho hóa đơn / đơn này
 extra_tills_heading	Quầy phụ
 other_devices_help_heading	Thiết lập thiết bị khác
-other_devices_help	Trên thiết bị này (Máy chủ): Các thiết bị khác → Cho phép tính thêm tiền. Lưu ý mã ghép nối và địa chỉ Wi‑Fi. Nhấn vào Cho phép các thiết bị khác kết nối nếu nó xuất hiện. Trên máy tính, nhấn Bắt đầu với máy tính này. Trên các thiết bị khác: cài đặt ứng dụng, chọn Chế độ máy khách, Tìm máy chủ của cửa hàng (hoặc nhập địa chỉ), nhập mã ghép nối, Ghép nối ngay. Các đơn đặt hàng sẽ chờ trên thiết bị nếu Wi‑Fi bị rớt và sẽ biến mất khi Máy chủ trả lời lại. Các máy in bổ sung được đặt trên Máy chủ (Cài đặt → Máy in) — các máy tính bổ sung sẽ gửi hóa đơn đến đó.
+other_devices_help	Trên thiết bị này (Máy chủ): Các thiết bị khác → Cho phép quầy thu ngân thêm. Lưu ý mã ghép nối và địa chỉ Wi‑Fi. Nhấn vào Cho phép các thiết bị khác kết nối nếu nó xuất hiện. Trên máy tính, nhấn Bắt đầu với máy tính này. Trên các thiết bị khác: cài đặt ứng dụng, chọn Chế độ máy khách, Tìm máy chủ của cửa hàng (hoặc nhập địa chỉ), nhập mã ghép nối, Ghép nối ngay. Các đơn đặt hàng sẽ chờ trên thiết bị nếu Wi‑Fi bị rớt và sẽ biến mất khi Máy chủ trả lời lại. Các máy in bổ sung được đặt trên Máy chủ (Cài đặt → Máy in) — các quầy thu ngân thêm sẽ gửi hóa đơn đến đó.
 forget_shop	Quên cửa hàng này
 goods_received	Hàng đã nhận
 import_day	Nhập ngày
@@ -617,7 +617,7 @@ cloud_welcome	Đã đăng nhập với {user} · {plan}
 cloud_created	Đã tạo tài khoản. Kiểm tra email để xác minh khi bạn có thể.
 cloud_cancel	Hủy
 permission_preset	Mẫu quyền
-product_only_tabiyat	Ứng dụng này chỉ là Tabiyat — hệ thống vận hành nhà hàng. Ngành khác có sản phẩm Kumkaj riêng.
+product_only_tabiyat	Tabiyat là hệ điều hành nhà thuốc: bán thuốc, sổ lô/hạn dùng, công nợ và sổ sách — ngoại tuyến trên thiết bị của bạn. Cờ Schedule H / Rx là ghi chú của chủ, không phải tuân thủ.
 purchases_cogs	Mua hàng (COGS)
 restore_help	Khôi phục: chọn một bản sao lưu. Sổ sách mở như lúc đó; sổ hiện tại được lưu trước nên có thể hoàn tác.
 wipe_data_heading	Xóa dữ liệu cục bộ

@@ -333,7 +333,7 @@ export_day	Araw ng pag-export
 extra_note_bill_ph	Dagdag na tala sa bill / sale na ito
 extra_tills_heading	Mga dagdag na kaha
 other_devices_help_heading	Mag-set up ng iba pang device
-other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang tills. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Naghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server. Ang mga dagdag na printer ay nakatakda sa Server (Mga Setting → Mga Printer) — mga dagdag na till ay nagpapadala ng mga singil doon.
+other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang kahera. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Naghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server. Ang mga dagdag na printer ay nakatakda sa Server (Mga Setting → Mga Printer) — mga dagdag na kahera ay nagpapadala ng mga singil doon.
 forget_shop	Kalimutan ang tindahang ito
 goods_received	Natanggap ang mga kalakal
 import_day	Araw ng pag-import

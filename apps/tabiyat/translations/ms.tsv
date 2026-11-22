@@ -333,7 +333,7 @@ export_day	Hari eksport
 extra_note_bill_ph	Nota tambahan pada bil / jualan ini
 extra_tills_heading	Kaunter tambahan
 other_devices_help_heading	Sediakan peranti lain
-other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Pelayan menjawab semula. Pencetak tambahan ditetapkan pada Pelayan (Tetapan → Pencetak) — sehingga tambahan menghantar bil ke sana.
+other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan kaunter tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Pelayan menjawab semula. Pencetak tambahan ditetapkan pada Pelayan (Tetapan → Pencetak) — kaunter tambahan menghantar bil ke sana.
 forget_shop	Lupakan kedai ini
 goods_received	Barang diterima
 import_day	Hari import
