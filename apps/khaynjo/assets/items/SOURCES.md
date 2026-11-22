@@ -534,3 +534,12 @@ need the author and licence named.
 - hot-beverages/americano.webp ← Commons File:Long_Black_Coffee.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Long_Black_Coffee.jpg
 - hot-beverages/espresso.webp ← Commons File:Espresso_Coffee_01.jpg (CC0) https://commons.wikimedia.org/wiki/File:Espresso_Coffee_01.jpg
 - hot-beverages/cutting-chai.webp ← Commons File:Cutting_chai.jpg (CC BY-SA 4.0) https://commons.wikimedia.org/wiki/File:Cutting_chai.jpg
+
+## Replaced 2026-11-22 (L15 sabich menemen tsukemen salsa-roja)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `middle-eastern/sabich.webp` | cut-out sabich with jagged white edges | Sabich.jpg | Gilabrand | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/wiki/File:Sabich.jpg | resized, WebP |
+| `middle-eastern/menemen.webp` | menemen with zerdali restaurant branding | Menemen in pan.jpg | FakirNL | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Menemen_in_pan.jpg | resized, WebP |
+| `japanese/tsukemen.webp` | tsukemen with ETSU logo on bowl | Tsukemen at a Tokyo restaurant.jpg | City Foodsters | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Tsukemen_at_a_Tokyo_restaurant.jpg | resized, WebP |
+| `mexican/salsa-roja.webp` | salsa jar still-life with produce stickers and package text | Salsa roja.jpg | goblinbox_(queen_of_ad_hoc_bento) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Salsa_roja.jpg | resized, WebP |
