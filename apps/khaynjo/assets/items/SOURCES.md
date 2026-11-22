@@ -449,3 +449,16 @@ need the author and licence named.
 - author: see Commons file page
 - retrieved: 2026-11-22
 - lane: L14
+
+### fast-food/combo-meal.webp
+- source: existing asset crop (removed Coca-Cola Zero can from prior Commons-derived plate)
+- license: same as prior asset; cropped for debrand (L14)
+- retrieved: 2026-11-22
+- lane: L14
+
+### indian-mains/chicken-xacuti.webp
+- source: https://commons.wikimedia.org/wiki/File:Chicken_Xacuti.jpg
+- license: CC BY-SA 2.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
