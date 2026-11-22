@@ -344,7 +344,7 @@ login_id_ph	รหัสเข้าสู่ระบบ
 mark_cleared	ทำเครื่องหมายเคลียร์
 new_party_clear	คู่ค้าใหม่ (ล้างฟอร์ม)
 new_party_kind_supplier_ph	ประเภทคู่ค้าใหม่ (ผู้จัดหา)
-next_order	ออเดอร์ถัดไป (ล้างโต๊ะ)
+next_order	ออเดอร์ถัดไป (เคลียร์เคาน์เตอร์)
 note_gstin_ph	หมายเหตุ / GSTIN / เตือนข้อตกลง
 notes_attach_party	หมายเหตุและไฟล์แนบ (คู่ค้าที่เลือก)
 notes_attach_sale	หมายเหตุและไฟล์แนบ (การขายที่เลือก)
