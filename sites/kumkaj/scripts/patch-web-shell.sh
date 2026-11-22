@@ -34,6 +34,7 @@ cp -f "$GUARD_SRC" "$OUT_DIR/js/mobile-viewport-guard.js"
 # hot-reload server implements (python http.server / Firebase 404 forever).
 TMP="$INDEX.tmp"
 awk -v css="$CSS_REL" -v guard="$GUARD_REL" '
+  /<html(>|[[:space:]])/ { print "    <html lang=\"en\">"; next }
   /auto_reload\.js/ { next }
   /name="viewport"/ {
     print "        <meta name='\''viewport'\'' content='\''width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover'\'' />"
