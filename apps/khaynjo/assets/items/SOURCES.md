@@ -195,3 +195,17 @@ need the author and licence named.
 | File | The old photo showed | Original title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `indo-chinese/american-chop-suey.webp` | Western macaroni beef goulash | Chopsuey | Gaurav Vaidya (User:Gaurav) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=2734778 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indian-sweets pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indian-sweets/anarsa.webp` | sesame-coated ball (til laddu style) in hand | Anarasa | Raj.Ranveer | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40991769 | resized, WebP |
+| `indian-sweets/milk-cake.webp` | almond nougat/turrón slabs | Milk cake 02 | Vis M | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=143714336 | cropped brand card, resized, WebP |
+| `indian-sweets/sohan-halwa.webp` | (re-pick) Multani pick looked like carrot halwa + timestamp | Habshi Halwa Sohan - Rampur's Culinary Masterpiece | Syed Momin Iqbal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=103221940 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 indo-chinese pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `indo-chinese/veg-fried-rice.webp` | seafood fried rice with squid | Restaurant style Fried rice | Medhi jyoti | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=136464711 | resized, WebP |
