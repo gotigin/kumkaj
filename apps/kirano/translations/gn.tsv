@@ -167,7 +167,7 @@ frequent_apply	Ejerure
 frequent_saved	Py’ỹi: {d} ára(kuéra) paha, {n} yvategua — {c} mba’e
 frequent_empty	Ndaipóri gueteri venta oñemohu’ãva ko periodo-pe — emohenda peteĩ factura (₹0 ojehejáva Configuración he’íramo upéicha) ha ohechauka hikuái ko’ápe.
 zero_sales	Umi venta orekóva valor cero
-zero_sales_help	Ojeheja umi mba'e ojehepyme'êva ₹0 ha umi factura ojehepyme'êva ₹0 (gratis / propietario oipotáva). On por defecto upéicha umi portada gratuita ojekuaa gueteri umi aranduka Py’ỹi ha ára rehegua.
+zero_sales_help	Ojeheja umi mba'e ojehepyme'êva ₹0 ha umi factura ojehepyme'êva ₹0 (reiete / propietario oipotáva). Oñemyendy por defecto ikatu hag̃ua ñemu reiete ojekuaa gueteri Py’ỹi ha ára kuatiañe’ẽme.
 zero_sales_on	Ojeheja ₹0
 zero_sales_off	Ojerure precio
 zero_sales_saved_on	Ojeheja umi venta valor cero rehegua

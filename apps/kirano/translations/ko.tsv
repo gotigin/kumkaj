@@ -167,7 +167,7 @@ frequent_apply	적용
 frequent_saved	자주: 지난 {d}일, 상위 {n} — {c} 항목
 frequent_empty	이 기간에 완료된 판매가 없습니다 — 계산을 마치면(설정에서 ₹0 허용 시) 여기에 표시됩니다.
 zero_sales	0원 판매
-zero_sales_help	가격이 ₹0인 품목과 청구서가 ₹0로 결제되도록 허용합니다(무료/소유자 희망). 기본적으로 켜져 있으므로 자주 사용하는 책과 일별 책에 무료 표지가 계속 표시됩니다.
+zero_sales_help	가격이 ₹0인 품목과 청구서가 ₹0로 결제되도록 허용합니다(무료/점주 희망). 기본으로 켜져 있어 무료 판매도 자주 쓰는 품목과 일일 장부에 계속 나타납니다.
 zero_sales_on	0원 판매: 켜짐
 zero_sales_off	0원 판매: 꺼짐
 zero_sales_saved_on	0원 판매 허용 저장됨(켜짐)

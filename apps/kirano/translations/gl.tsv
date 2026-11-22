@@ -167,7 +167,7 @@ frequent_apply	Aplicar
 frequent_saved	Frecuentes: últimos días {d}, elementos principais {n} — {c}
 frequent_empty	Aínda non hai vendas pechadas neste período — peche unha conta (₹0 permitido se Axustes o di) e aparecerán aquí.
 zero_sales	Vendas de valor cero
-zero_sales_help	Permite artigos cun prezo de 0 ₹ e facturas liquidadas en 0 ₹ (gratis/desexo do propietario). Activado de forma predeterminada, as portadas gratuítas seguen aparecendo nos libros frecuentes e diarios.
+zero_sales_help	Permite artigos cun prezo de ₹0 e facturas liquidadas en ₹0 (gratis / desexo do propietario). Activado de forma predeterminada para que as vendas gratis sigan aparecendo en Frecuentes e no libro do día.
 zero_sales_on	Permitir ₹0
 zero_sales_off	Exixir prezo
 zero_sales_saved_on	Vendas de valor cero permitidas

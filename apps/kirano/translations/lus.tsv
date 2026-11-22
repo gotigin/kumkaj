@@ -167,7 +167,7 @@ frequent_apply	Hmang
 frequent_saved	A awm fo: {d} ni(s) hnuhnung ber, top {n} — {c} items
 frequent_empty	He hun chhungin bill zo a la awm lo — bill pe (₹0 Remkhawh a phal chuan) chuan hetah an lang ang.
 zero_sales	Man zero zuar
-zero_sales_help	Item man ₹0 leh bill ₹0-a settled (complimentary / owner wish) phalsak rawh. On by default so free covers chu Frequent leh day book-ah a la lang reng a ni.
+zero_sales_help	Item man ₹0 leh bill ₹0-a settled (thilngilnei / owner duhthusam) phalsak rawh. A default-in on a ni, chuvangin thilngilnei hralh pawh Frequent leh ni lehkha-bu ah a lang zel ang.
 zero_sales_on	₹0 phal
 zero_sales_off	Man a ngai
 zero_sales_saved_on	Man zero zuar phal a ni
