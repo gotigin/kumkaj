@@ -1280,7 +1280,7 @@ test_bill_format	Test factuur
 test_bill_sent	Factuurvoorschijning verzonden
 test_print_no_printer	Geen printer voor die taak — kies er een op dit scherm
 std_print	Lettergrootte rekening
-std_print_help	Lettergrootte voor Standard staande en liggende rekeningen (thermisch KOT apart). Zelfde grootte in beide standen.
+std_print_help	Lettergrootte voor Standard Staand- en Liggend-rekeningjobs op OS-/documentprinters (punten invoeren — niet «Klein»/«Normaal»/«Groot»). Dezelfde grootte in beide oriëntaties. Keukenbon-groottes staan op het tabblad «KOT».
 std_size_s	Klein
 std_size_m	Normaal
 std_size_l	Groot

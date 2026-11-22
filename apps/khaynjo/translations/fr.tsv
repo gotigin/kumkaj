@@ -1280,7 +1280,7 @@ test_bill_format	Test facture
 test_bill_sent	Aperçu de la facture envoyé
 test_print_no_printer	Aucun imprimateur pour ce travail — en choisissez un sur cet écran
 std_print	Taille d'impression de facture
-std_print_help	Taille du texte pour factures Standard Portrait et Paysage (KOT thermique à part). Même taille dans les deux orientations.
+std_print_help	Taille de police pour les travaux de note Standard Portrait et Paysage sur imprimantes OS/document (saisissez des points — pas «Petit»/«Normal»/«Grand»). Même taille dans les deux orientations. Les tailles du ticket cuisine sont dans l’onglet «KOT».
 std_size_s	Petit
 std_size_m	Normal
 std_size_l	Grand

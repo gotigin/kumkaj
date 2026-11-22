@@ -1280,7 +1280,7 @@ test_bill_format	Uji tagihan
 test_bill_sent	Pratinjau tagihan dikirim
 test_print_no_printer	Tidak ada printer untuk pekerjaan tersebut — pilih satu di layar ini
 std_print	Ukuran cetak tagihan
-std_print_help	Ukuran huruf untuk tagihan Standard Potret dan Lanskap (KOT termal terpisah). Ukuran sama di kedua orientasi.
+std_print_help	Ukuran font untuk pekerjaan tagihan Standard Tegak dan Mendatar pada printer OS/dokumen (masukkan poin — bukan «Kecil»/«Normal»/«Besar»). Ukuran sama di kedua orientasi. Ukuran slip dapur ada di tab «KOT».
 std_size_s	Kecil
 std_size_m	Normal
 std_size_l	Besar

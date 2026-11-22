@@ -1280,7 +1280,7 @@ test_bill_format	Probar recibo
 test_bill_sent	Vista previa del recibo enviada
 test_print_no_printer	No hay impresora para ese trabajo — elija una en esta pantalla
 std_print	Tamaño de impresión de factura
-std_print_help	Tamaño de tipo para facturas Standard Vertical y Horizontal (KOT térmico aparte). Mismo tamaño en ambas orientaciones.
+std_print_help	Tamaño de fuente para trabajos de cuenta Standard Vertical y Apaisado en impresoras OS/documento (introduzca puntos — no «Pequeño»/«Normal»/«Grande»). Mismo tamaño en ambas orientaciones. Los tamaños del vale de cocina están en la pestaña «KOT».
 std_size_s	Pequeño
 std_size_m	Normal
 std_size_l	Grande

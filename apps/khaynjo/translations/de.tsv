@@ -1280,7 +1280,7 @@ test_bill_format	Rechnung testen
 test_bill_sent	Rechnungsvorschau gesendet
 test_print_no_printer	Kein Drucker für diesen Auftrag — wählen Sie einen auf diesem Bildschirm aus
 std_print	Rechnungs-Schriftgröße
-std_print_help	Schriftgröße für Standard-Hoch- und Querformat-Rechnungen (thermisches KOT getrennt). Gleiche Größe in beiden Ausrichtungen.
+std_print_help	Schriftgröße für Standard-Hochformat- und -Querformat-Rechnungsjobs auf OS-/Dokumentdruckern (Punkte eingeben — nicht «Klein»/«Normal»/«Groß»). Gleiche Größe in beiden Ausrichtungen. Küchenbon-Größen stehen auf dem «KOT»-Tab.
 std_size_s	Klein
 std_size_m	Normal
 std_size_l	Groß

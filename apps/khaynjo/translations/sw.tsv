@@ -1280,7 +1280,7 @@ test_bill_format	Jaribu bilio
 test_bill_sent	Mchoro wa bilio umepigwa
 test_print_no_printer	Hakuna chapa kwa kazi hiyo — chague moja kwenye skrini hii
 std_print	Ukubwa wa kuchapisha bili
-std_print_help	Ukubwa wa herufi kwa bili za Standard Wima na Mlalo (KOT ya joto tofauti). Ukubwa mmoja katika mielekeo yote miwili.
+std_print_help	Ukubwa wa fonti kwa kazi za bili Standard Wima na Mlalo kwenye printa za OS/hati (weka pointi — si «Ndogo»/«Kawaida»/«Kubwa»). Ukubwa sawa katika orientesheni zote mbili. Ukubwa wa slipu za jiko uko kwenye kichupo «KOT».
 std_size_s	Ndogo
 std_size_m	Kawaida
 std_size_l	Kubwa

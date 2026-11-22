@@ -1280,7 +1280,7 @@ test_bill_format	Testar conta
 test_bill_sent	Pré-visualização da conta enviada
 test_print_no_printer	Sem impressora para esse trabalho — escolha uma nesta tela
 std_print	Tamanho de impressão da fatura
-std_print_help	Tamanho do tipo para faturas Standard Retrato e Paisagem (KOT térmico à parte). Mesmo tamanho nas duas orientações.
+std_print_help	Tamanho da fonte para trabalhos de conta Standard Retrato e Paisagem em impressoras OS/documento (introduza pontos — não «Pequeno»/«Normal»/«Grande»). Mesmo tamanho nas duas orientações. Os tamanhos do ticket de cozinha estão no separador «KOT».
 std_size_s	Pequeno
 std_size_m	Normal
 std_size_l	Grande

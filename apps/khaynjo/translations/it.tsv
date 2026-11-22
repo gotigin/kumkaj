@@ -1280,7 +1280,7 @@ test_bill_format	Prova fattura
 test_bill_sent	Anteprima fattura inviata
 test_print_no_printer	Nessun stampante per quel lavoro — scegline uno su questa schermata
 std_print	Dimensione stampa conto
-std_print_help	Dimensione del testo per conti Standard Verticale e Orizzontale (KOT termico a parte). Stessa misura in entrambi gli orientamenti.
+std_print_help	Corpo del carattere per lavori conto Standard Verticale e Orizzontale su stampanti OS/documento (inserisci punti — non «Piccolo»/«Normale»/«Grande»). Stessa misura in entrambe le orientazioni. Le misure dello scontrino cucina sono nella scheda «KOT».
 std_size_s	Piccolo
 std_size_m	Normale
 std_size_l	Grande
