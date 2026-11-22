@@ -403,3 +403,97 @@ fn journey_staff_pins_and_books_report() {
     );
 }
 
+/// Stock out (adjust down) lowers on-hand; oversell is refused.
+#[test]
+fn journey_stock_out_adjust_lowers_qty() {
+    let shop = open_shop();
+    let before = shop
+        .store
+        .list_products(false)
+        .unwrap()
+        .into_iter()
+        .find(|p| p.name == "Antiseptic cream")
+        .unwrap()
+        .stock_qty;
+    let after = shop
+        .store
+        .adjust_stock(&shop.cream.id, -3, "damage", "heat spoilt", &shop.owner)
+        .unwrap();
+    assert_eq!(after, before - 3);
+    let again = shop
+        .store
+        .list_products(false)
+        .unwrap()
+        .into_iter()
+        .find(|p| p.name == "Antiseptic cream")
+        .unwrap()
+        .stock_qty;
+    assert_eq!(again, before - 3);
+    let err = shop
+        .store
+        .adjust_stock(
+            &shop.cream.id,
+            -(again + 1),
+            "damage",
+            "too much",
+            &shop.owner,
+        )
+        .unwrap_err();
+    assert!(
+        err.to_lowercase().contains("stock") || err.to_lowercase().contains("enough"),
+        "stock-out past zero must fail: {err}"
+    );
+}
+
+/// Cash sale return (refund) marks the sale refunded and books stay printable.
+#[test]
+fn journey_cash_sale_return_refunds() {
+    let shop = open_shop();
+    let sale = shop.sell_cash(&[(&shop.ors, 2), (&shop.para, 1)]);
+    assert_eq!(sale.status, "completed");
+    shop.store
+        .refund_sale(
+            &sale.id,
+            "customer returned the ORS and paracetamol",
+            &shop.owner,
+        )
+        .unwrap();
+    let loaded = shop.store.get_sale(&sale.id).unwrap().unwrap();
+    assert_eq!(loaded.status, "refunded");
+    let report = shop.store.books_report_text("today").unwrap();
+    assert!(!report.is_empty());
+}
+
+/// Backup then restore into a fresh path keeps the counter sale.
+#[test]
+fn journey_backup_and_restore_preserves_sale() {
+    let shop = open_shop();
+    let sale = shop.sell_cash(&[(&shop.amox, 1)]);
+    let backup = kumkaj_tabiyat::test_dirs::run_root().join(format!(
+        "tabiyat-journey-backup-{}.sqlite3",
+        SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_nanos()
+    ));
+    shop.store.backup_to(&backup).unwrap();
+    let dest = kumkaj_tabiyat::test_dirs::run_root().join(format!(
+        "tabiyat-journey-restore-{}.sqlite3",
+        SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_nanos()
+    ));
+    let shop_path = shop.path.clone();
+    drop(shop);
+    let restored = Store::restore_from_to_path(&backup, &dest).unwrap();
+    let recent = restored.recent_sales(5).unwrap();
+    assert!(
+        recent.iter().any(|s| s.id == sale.id && s.total_paise == 80_00),
+        "restored books must keep the counter sale"
+    );
+    let _ = std::fs::remove_file(&backup);
+    let _ = std::fs::remove_file(&dest);
+    let _ = std::fs::remove_file(&shop_path);
+}
+
