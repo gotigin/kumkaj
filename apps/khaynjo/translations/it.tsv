@@ -363,9 +363,9 @@ choose_server_hint	Questo dispositivo ha già dei server. Aprine uno o creane un
 create_new_server	Crea nuovo server
 open_server	Apri
 new_server_name_ph	Nome nuovo server (facoltativo)
-server_remove_pin_ph	PIN Owner per rimuovere
-only_owner_remove_server	Solo l'Owner può rimuovere un server
-owner_pin_remove_server	Serve il PIN Owner per rimuovere questo server
+server_remove_pin_ph	PIN Titolare per rimuovere
+only_owner_remove_server	Solo l'Titolare può rimuovere un server
+owner_pin_remove_server	Serve il PIN Titolare per rimuovere questo server
 device_setup_help	Questo dispositivo può essere il negozio (Server) o una cassa extra (Client). Aprirne uno non cancella l’altro. Un Client abbinato ricorda il negozio — niente codice di abbinamento a ogni riavvio. Senza Server ancora, «Ripristina backup» apre i libri da un file che scegli (stessi controlli di Ripristina in Impostazioni).
 app_template_heading	Modelli negozio
 app_template_blurb	Scegli un menu di partenza. Salta lascia un negozio vuoto.

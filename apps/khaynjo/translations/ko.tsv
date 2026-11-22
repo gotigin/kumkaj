@@ -363,9 +363,9 @@ choose_server_hint	이 기기에는 이미 서버가 있습니다. 하나를 열
 create_new_server	새 서버 만들기
 open_server	열기
 new_server_name_ph	새 서버 이름(선택)
-server_remove_pin_ph	서버 삭제 Owner PIN
+server_remove_pin_ph	서버 삭제 점주 PIN
 only_owner_remove_server	Owner만 서버를 삭제할 수 있습니다
-owner_pin_remove_server	이 서버를 삭제하려면 Owner PIN이 필요합니다
+owner_pin_remove_server	이 서버를 삭제하려면 점주 PIN이 필요합니다
 device_setup_help	이 기기는 매장(서버) 또는 추가 계산대(클라이언트)가 될 수 있습니다. 하나를 열어도 다른 쪽은 지워지지 않습니다. 페어링된 클라이언트는 매장을 기억합니다. 다시 시작할 때마다 페어링 코드가 필요 없습니다. 서버가 아직 없으면 «백업 복원»(으)로 고른 파일에서 장부를 엽니다(설정의 복원과 같은 검사).
 app_template_heading	매장 템플릿
 app_template_blurb	시작 메뉴를 고르세요. 건너뛰면 빈 가게로 남습니다.

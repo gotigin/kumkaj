@@ -363,9 +363,9 @@ choose_server_hint	Perangkat ini sudah memiliki server. Buka satu, atau buat ser
 create_new_server	Buat server baru
 open_server	Buka
 new_server_name_ph	Nama server baru (opsional)
-server_remove_pin_ph	PIN Owner untuk hapus
-only_owner_remove_server	Hanya Owner yang boleh hapus server
-owner_pin_remove_server	PIN Owner wajib untuk menghapus server ini
+server_remove_pin_ph	PIN Pemilik untuk hapus
+only_owner_remove_server	Hanya Pemilik yang boleh hapus server
+owner_pin_remove_server	PIN Pemilik wajib untuk menghapus server ini
 device_setup_help	Perangkat ini bisa jadi toko (Server) atau kasir tambahan (Klien). Membuka satu tidak menghapus yang lain. Klien yang terpasang mengingat toko — tanpa kode pasangan di setiap mulai ulang. Belum ada Server, «Pulihkan cadangan» membuka pembukuan dari berkas yang Anda pilih (pemeriksaan sama seperti Pulihkan di Pengaturan).
 app_template_heading	Templat toko
 app_template_blurb	Pilih menu awal. Lewati membuat toko kosong.
@@ -496,7 +496,7 @@ floor_layout_w	W
 floor_layout_h	H
 floor_layout_save	Simpan denah
 floor_layout_open	Buka meja
-floor_layout_edit	Edit denah
+floor_layout_edit	Sunting denah
 floor_layout_pick	Ketuk meja untuk mengedit denah
 floor_layout_saved	Denah meja disimpan
 floor_layout_nudge_left	← 20

@@ -460,7 +460,7 @@ optional_login_heading	Опционо пријављивање
 rights_heading	Права
 ops_panel	Локалне операције
 crm_heading	Гости и поруке
-crm_help	Рођендан, лојалност, неактивни и врхунски гости — ред SMS или WhatsApp намере. Use {name} and {points} in the message. Owner taps send; nothing blasts by itself.
+crm_help	Рођендан, лојалност, неактивни и врхунски гости — ред SMS или WhatsApp намере. Користи {name} and {points} in the message. Owner taps send; nothing blasts by itself.
 crm_queue_sms	Ред SMS
 crm_queue_wa	Ред WhatsApp
 crm_seg_bday_week	Недеља рођендана

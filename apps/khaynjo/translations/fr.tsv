@@ -363,9 +363,9 @@ choose_server_hint	Cet appareil a déjà des serveurs. Ouvrez-en un, ou créez u
 create_new_server	Créer un nouveau serveur
 open_server	Ouvrir
 new_server_name_ph	Nom du nouveau serveur (facultatif)
-server_remove_pin_ph	Code Owner pour supprimer
+server_remove_pin_ph	Code Propriétaire pour supprimer
 only_owner_remove_server	Seul le propriétaire peut supprimer un serveur
-owner_pin_remove_server	Code Owner requis pour supprimer ce serveur
+owner_pin_remove_server	Code Propriétaire requis pour supprimer ce serveur
 device_setup_help	Cet appareil peut être la boutique (Serveur) ou une caisse en plus (Client). En ouvrir un n’efface pas l’autre. Un Client apparié se souvient de la boutique — pas de code d’appariement à chaque redémarrage. Sans Serveur encore, «Restaurer la sauvegarde» ouvre les livres depuis un fichier que vous choisissez (mêmes contrôles que Restaurer dans Réglages).
 app_template_heading	Modèles de boutique
 app_template_blurb	Choisissez un menu de départ. Passer laisse une boutique vide.

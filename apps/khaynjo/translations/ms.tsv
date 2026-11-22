@@ -496,7 +496,7 @@ floor_layout_w	W
 floor_layout_h	H
 floor_layout_save	Simpan susun atur
 floor_layout_open	Buka meja makan
-floor_layout_edit	Edit reka letak
+floor_layout_edit	Sunting reka letak
 floor_layout_pick	Ketik meja makan untuk mengedit reka letaknya
 floor_layout_saved	Susun atur meja makan disimpan
 floor_layout_nudge_left	← 20

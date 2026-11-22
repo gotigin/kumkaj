@@ -363,9 +363,9 @@ choose_server_hint	Dit apparaat heeft al servers. Open er een of maak een nieuwe
 create_new_server	Nieuwe server maken
 open_server	Openen
 new_server_name_ph	Naam nieuwe server (optioneel)
-server_remove_pin_ph	Owner-PIN om te verwijderen
-only_owner_remove_server	Alleen de Owner mag een server verwijderen
-owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
+server_remove_pin_ph	Eigenaar-PIN om te verwijderen
+only_owner_remove_server	Alleen de Eigenaar mag een server verwijderen
+owner_pin_remove_server	Eigenaar-PIN vereist om deze server te verwijderen
 device_setup_help	Dit apparaat kan de winkel (Server) of een extra kassa (Client) zijn. Eén openen wist de andere niet. Een gekoppelde Client onthoudt de winkel — geen koppelcode bij elke herstart. Zonder Server opent «Back-up herstellen» de boeken uit een bestand dat je kiest (zelfde controles als Herstellen in Instellingen).
 app_template_heading	Winkelsjablonen
 app_template_blurb	Kies een startmenu. Overslaan laat een lege winkel.

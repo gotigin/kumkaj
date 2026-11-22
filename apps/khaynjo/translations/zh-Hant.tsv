@@ -363,9 +363,9 @@ choose_server_hint	此設備已有服務器。打開一個，或為另一家企�
 create_new_server	創建新服務器
 open_server	打開
 new_server_name_ph	新服務器名稱（可選）
-server_remove_pin_ph	刪除服務器需 Owner PIN
-only_owner_remove_server	僅 Owner 可刪除服務器
-owner_pin_remove_server	刪除此服務器需要 Owner PIN
+server_remove_pin_ph	刪除服務器需 店主 PIN
+only_owner_remove_server	僅 店主 可刪除服務器
+owner_pin_remove_server	刪除此服務器需要 店主 PIN
 device_setup_help	本裝置可以是店鋪（伺服器）或額外收銀（客戶端）。開啟其一不會清除另一個。已配對的客戶端會記住店鋪——每次重新啟動無需配對碼。尚無伺服器時，「恢復備份」 從您選擇的檔案開啟帳簿（檢查與設定中的還原相同）。
 app_template_heading	店舖範本
 app_template_blurb	選一個起步菜單。略過會留下空店。

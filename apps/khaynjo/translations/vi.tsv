@@ -363,9 +363,9 @@ choose_server_hint	Thiết bị này đã có máy chủ. Mở một cái, hoặ
 create_new_server	Tạo máy chủ mới
 open_server	Mở
 new_server_name_ph	Tên máy chủ mới (tùy chọn)
-server_remove_pin_ph	Owner PIN để xóa máy chủ
-only_owner_remove_server	Chỉ Owner mới được xóa máy chủ
-owner_pin_remove_server	Cần Owner PIN để xóa máy chủ này
+server_remove_pin_ph	Chủ PIN để xóa máy chủ
+only_owner_remove_server	Chỉ Chủ mới được xóa máy chủ
+owner_pin_remove_server	Cần Chủ PIN để xóa máy chủ này
 device_setup_help	Thiết bị này có thể là cửa hàng (Máy chủ) hoặc quầy thêm (Máy khách). Mở một cái không xóa cái kia. Máy khách đã ghép nhớ cửa hàng — không cần mã ghép mỗi lần khởi động lại. Chưa có Máy chủ, «Khôi phục sao lưu» mở sổ từ tệp bạn chọn (cùng kiểm tra như Khôi phục trong Cài đặt).
 app_template_heading	Mẫu cửa hàng
 app_template_blurb	Chọn một thực đơn bắt đầu. Bỏ qua để cửa hàng trống.
