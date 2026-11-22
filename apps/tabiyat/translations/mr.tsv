@@ -194,7 +194,7 @@ credit_summary_fmt	{} ग्राहक · उघडी उधारी {} · �
 recent_label	अलीकडील:
 inventory	स्टॉक
 branches	शाखा
-credit_customers	उधार ग्राहक
+credit_customers	पार्ट्या (खाते आणि पुरवठादार)
 customer_name_ph	पार्टीचे नाव
 new_customer_ph	नवीन पार्टीचे नाव
 item_price_ph	किंमत

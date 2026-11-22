@@ -194,7 +194,7 @@ credit_summary_fmt	{} வாடிக்கையாளர்கள் · தி
 recent_label	சமீபத்தியவை:
 inventory	கையிருப்பு
 branches	கிளைகள்
-credit_customers	கடன் வாடிக்கையாளர்
+credit_customers	தரப்புகள் (கடன் கணக்கு & சப்ளையர்)
 customer_name_ph	தரப்பின் பெயர்
 new_customer_ph	புதிய தரப்பின் பெயர்
 item_price_ph	விலை

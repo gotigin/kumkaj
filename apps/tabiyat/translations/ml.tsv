@@ -194,7 +194,7 @@ credit_summary_fmt	{} ഉപഭോക്താക്കൾ · തുറന്ന
 recent_label	സമീപകാല:
 inventory	സ്റ്റോക്ക്
 branches	ശാഖകൾ
-credit_customers	കടക്കാർ
+credit_customers	പാർട്ടികൾ (ഖാതയും സപ്ലയറും)
 customer_name_ph	പാർട്ടിയുടെ പേര്
 new_customer_ph	പുതിയ പാർട്ടിയുടെ പേര്
 item_price_ph	വില

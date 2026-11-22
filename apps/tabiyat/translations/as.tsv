@@ -194,7 +194,7 @@ credit_summary_fmt	{} গ্ৰাহক · মুকলি বাকী {} · �
 recent_label	শেহতীয়া:
 inventory	ষ্টক
 branches	শাখা
-credit_customers	ধাৰৰ গ্ৰাহক
+credit_customers	পাৰ্টী (খাতা আৰু যোগানকাৰী)
 customer_name_ph	পাৰ্টিৰ নাম
 new_customer_ph	নতুন পাৰ্টিৰ নাম
 item_price_ph	দাম

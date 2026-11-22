@@ -194,7 +194,7 @@ credit_summary_fmt	{} ಗ್ರಾಹಕರು · ತೆರೆದ ಸಾಲ {} �
 recent_label	ಇತ್ತೀಚಿನವು:
 inventory	ದಾಸ್ತಾನು
 branches	ಶಾಖೆಗಳು
-credit_customers	ಸಾಲ ಗ್ರಾಹಕರು
+credit_customers	ಪಾರ್ಟಿಗಳು (ಖಾತಾ ಮತ್ತು ಪೂರೈಕೆದಾರರು)
 customer_name_ph	ಪಾರ್ಟಿ ಹೆಸರು
 new_customer_ph	ಹೊಸ ಪಾರ್ಟಿ ಹೆಸರು
 item_price_ph	ಬೆಲೆ

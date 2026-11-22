@@ -557,7 +557,7 @@ duress_off	Nood-ontgrendelings-PIN staat uit
 duress_saved	Nood-ontgrendelings-PIN opgeslagen
 duress_cleared	Nood-ontgrendelings-PIN uitgeschakeld
 upi_amount_ph	UPI-bedrag
-void	Annuleren
+void	Ongeldig maken
 write_off_ap	AP afschrijven
 write_off_heading	Afschrijven (vereffenen zonder betaling)
 write_off_nil	Afschrijven / saldo nul

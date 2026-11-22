@@ -557,7 +557,7 @@ duress_off	Odblokowanie awaryjne PIN jest wyłączone
 duress_saved	Odblokowanie awaryjne PIN zapisane
 duress_cleared	Odblokowanie awaryjne PIN wyłączone
 upi_amount_ph	UPI ilość
-void	Anuluj
+void	Unieważnij
 write_off_ap	Odpisz AP
 write_off_heading	Odpisz (wyczyść bez płatności)
 write_off_nil	Odpisz / saldo zerowe

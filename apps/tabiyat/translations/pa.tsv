@@ -194,7 +194,7 @@ credit_summary_fmt	{} ਗਾਹਕ · ਖੁੱਲ੍ਹਾ ਉਧਾਰ {} · �
 recent_label	ਹਾਲੀਆ:
 inventory	ਸਟਾਕ
 branches	ਸ਼ਾਖਾਵਾਂ
-credit_customers	ਉਧਾਰ ਗਾਹਕ
+credit_customers	ਪਾਰਟੀਆਂ (ਖਾਤਾ ਅਤੇ ਸਪਲਾਇਰ)
 customer_name_ph	ਪਾਰਟੀ ਦਾ ਨਾਂ
 new_customer_ph	ਨਵੀਂ ਪਾਰਟੀ ਦਾ ਨਾਂ
 item_price_ph	ਕੀਮਤ

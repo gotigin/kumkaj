@@ -607,7 +607,7 @@ cloud_account_help	Registrieren Sie sich oder melden Sie sich mit demselben Kont
 cloud_name_ph	Name (optional)
 cloud_email_ph	E-Mail
 cloud_password_ph	Passwort
-cloud_continue	Weitermachen
+cloud_continue	Weiter
 cloud_forgot	Passwort vergessen?
 cloud_web_methods	Google und andere Methoden auf der Website
 cloud_signing_in	Anmelden…

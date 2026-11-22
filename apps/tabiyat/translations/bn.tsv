@@ -194,7 +194,7 @@ credit_summary_fmt	{} গ্রাহক · খোলা বাকি {} · অ�
 recent_label	সাম্প্রতিক:
 inventory	স্টক
 branches	শাখা
-credit_customers	বাকি গ্রাহক
+credit_customers	পার্টি (খাতা ও সরবরাহকারী)
 customer_name_ph	পার্টির নাম
 new_customer_ph	নতুন পার্টির নাম
 item_price_ph	দাম

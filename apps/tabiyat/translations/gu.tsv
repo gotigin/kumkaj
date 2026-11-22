@@ -194,7 +194,7 @@ credit_summary_fmt	{} ગ્રાહકો · ખુલ્લું ઉધા�
 recent_label	તાજેતરના:
 inventory	સ્ટોક
 branches	શાખા
-credit_customers	ઉધાર ગ્રાહક
+credit_customers	પાર્ટીઓ (ખાતા અને સપ્લાયર)
 customer_name_ph	પાર્ટીનું નામ
 new_customer_ph	નવી પાર્ટીનું નામ
 item_price_ph	કિંમત
