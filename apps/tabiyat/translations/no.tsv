@@ -232,7 +232,7 @@ new_server_name_ph	Nytt servernavn (valgfritt)
 server_remove_pin_ph	Eier-PIN for å fjerne en server
 only_owner_remove_server	Bare Eieren kan fjerne en server
 owner_pin_remove_server	Eier-PIN kreves for å fjerne denne serveren
-device_setup_help	Serveren holder bøkene her. Klient pares med en Server.
+device_setup_help	Denne enheten kan være butikken (Server) eller en ekstra kasse (Klient). Å åpne den ene sletter ikke den andre. En paret Klient husker butikken — ingen paringskode ved hver omstart. Uten Server ennå åpner «Gjenopprett sikkerhetskopi» bøkene fra en fil du velger (samme sjekker som Gjenopprett i Innstillinger).
 currency	Valuta
 backup	Sikkerhetskopi
 use	Bruk

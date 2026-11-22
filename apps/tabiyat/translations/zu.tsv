@@ -232,7 +232,7 @@ new_server_name_ph	Igama leseva entsha (uyazikhethela)
 server_remove_pin_ph	Umnikazi PIN ukususa iseva
 only_owner_remove_server	Umnikazi kuphela ongasusa iseva
 owner_pin_remove_server	Umnikazi PIN uyadingeka ukuze kukhishwe le seva
-device_setup_help	Iseva igcina amaleja lapha. Iklayenti libhangqa kuseva.
+device_setup_help	Le divayisi ingaba yisitolo (Iseva) noma ikhawuntara eyengeziwe (Iklayenti). Ukuvula eyodwa akusuli enye. Ikliyenti ehlanganisiwe iyasikhumbula isitolo — asikho isikhiye sokuhlanganisa lapho uqala kabusha. Ngaphandle kweSeva okwamanje, «Buyisela isipele» ivula izincwadi kusuka kufayela oyikhethayo (ukuhlola okufanayo noBuyisela kuzilungiselelo).
 currency	Imali
 backup	Yenza ikhophi yasenqolobaneni
 use	Sebenzisa

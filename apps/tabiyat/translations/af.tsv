@@ -232,7 +232,7 @@ new_server_name_ph	Nuwe bediener naam (opsioneel)
 server_remove_pin_ph	Eienaar se PIN om 'n bediener te verwyder
 only_owner_remove_server	Slegs die Eienaar kan 'n bediener verwyder
 owner_pin_remove_server	Eienaar se PIN vereis om hierdie bediener te verwyder
-device_setup_help	Die bediener hou die boeke hier. Kliënt paar aan 'n Bediener.
+device_setup_help	Hierdie toestel kan die winkel (Bediener) of ’n ekstra till (Kliënt) wees. Een oopmaak vee nie die ander uit nie. ’n Gepaarde Kliënt onthou die winkel — geen paringskode by elke herbegin nie. Sonder Bediener nog open «Herstel rugsteun» die boeke uit ’n lêer wat jy kies (dieselfde kontroles as Herstel in Instellings).
 currency	Valuta
 backup	Back-up
 use	Gebruik

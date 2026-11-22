@@ -232,7 +232,7 @@ new_server_name_ph	Anaran'ny mpizara vaovao (tsy voatery)
 server_remove_pin_ph	Tompony PIN hanala mpizara
 only_owner_remove_server	Ny Tompony ihany no afaka manala mpizara
 owner_pin_remove_server	Tompony PIN ilaina hanalana ity mpizara ity
-device_setup_help	Server mitazona ny boky eto. Client mifandray amin'ny Server.
+device_setup_help	Ity fitaovana ity dia mety ho ny magazay (Server) na kaontera fanampiny (Client). Ny fanokafana ny iray tsy mamafa ny iray hafa. Ny Client amboarina dia mahatsiaro ny magazay — tsy misy kaody fampifandraisana isaky ny fanombohana indray. Tsy mbola misy Server, «Avereno ny backup» manokatra ny boky avy amin’ny rakitra nofidinao (fanamarinana mitovy amin’ny Averina amin’ny Settings).
 currency	Vola
 backup	Kopia
 use	Ampiasao

@@ -232,7 +232,7 @@ new_server_name_ph	Nama server baru (opsional)
 server_remove_pin_ph	PIN Owner untuk hapus
 only_owner_remove_server	Hanya Owner yang boleh hapus server
 owner_pin_remove_server	PIN Owner wajib untuk menghapus server ini
-device_setup_help	Server menyimpan pembukuan di sini. Klien dipasangkan ke server.
+device_setup_help	Perangkat ini bisa jadi toko (Server) atau kasir tambahan (Klien). Membuka satu tidak menghapus yang lain. Klien yang terpasang mengingat toko — tanpa kode pasangan di setiap mulai ulang. Belum ada Server, «Pulihkan cadangan» membuka pembukuan dari berkas yang Anda pilih (pemeriksaan sama seperti Pulihkan di Pengaturan).
 currency	Mata uang
 backup	Cadangan
 use	Gunakan

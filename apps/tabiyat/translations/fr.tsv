@@ -232,7 +232,7 @@ new_server_name_ph	Nom du nouveau serveur (facultatif)
 server_remove_pin_ph	Code Owner pour supprimer
 only_owner_remove_server	Seul le propriétaire peut supprimer un serveur
 owner_pin_remove_server	Code Owner requis pour supprimer ce serveur
-device_setup_help	Le serveur garde les livres ici. Le client s'appaire à un serveur.
+device_setup_help	Cet appareil peut être la boutique (Serveur) ou une caisse en plus (Client). En ouvrir un n’efface pas l’autre. Un Client apparié se souvient de la boutique — pas de code d’appariement à chaque redémarrage. Sans Serveur encore, «Restaurer la sauvegarde» ouvre les livres depuis un fichier que vous choisissez (mêmes contrôles que Restaurer dans Réglages).
 currency	Devise
 backup	Sauvegarde
 use	Utiliser

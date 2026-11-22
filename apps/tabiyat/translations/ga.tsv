@@ -232,7 +232,7 @@ new_server_name_ph	Ainm freastalaí nua (roghnach)
 server_remove_pin_ph	PIN úinéara chun freastalaí a bhaint
 only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhaint
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
-device_setup_help	Coinníonn an "Server" na leabhair anseo. Déanann an "Client" comhpháirt le "Freastalaí".
+device_setup_help	Is féidir leis an ngléas seo a bheith ina siopa (Freastalaí) nó till breise (Cliant). Ní scriosann oscailt ceann amháin an ceann eile. Cuimhníonn Cliant péireáilte ar an siopa — gan cód péireála ar gach atosú. Gan Freastalaí fós, osclaíonn «Athbhunú cúltaca» na leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú sna Socruithe).
 currency	Airgeadra
 backup	Cúltaca
 use	Bain úsáid as

@@ -232,7 +232,7 @@ new_server_name_ph	Új szervernév (nem kötelező)
 server_remove_pin_ph	Tulajdonos PIN a szerver eltávolításához
 only_owner_remove_server	Csak a Tulajdonos távolíthat el egy szervert
 owner_pin_remove_server	A kiszolgáló eltávolításához PIN tulajdonos szükséges
-device_setup_help	A szerver itt tartja a könyveket. A kliens egy szerverhez párosul.
+device_setup_help	Ez az eszköz lehet a bolt (Szerver) vagy egy extra kassza (Kliens). Az egyik megnyitása nem törli a másikat. A párosított Kliens emlékszik a boltra — nincs párosító kód minden újraindításkor. Ha még nincs Szerver, a «Biztonsági másolat visszaállítása» a választott fájlból nyitja a könyveket (ugyanazok az ellenőrzések, mint a Visszaállítás a Beállításokban).
 currency	Pénznem
 backup	Biztonsági mentés
 use	Használja

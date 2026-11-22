@@ -232,7 +232,7 @@ new_server_name_ph	Izina rishya rya seriveri (bitari ngombwa)
 server_remove_pin_ph	PIN ya nyir'iduka yo gukuraho seriveri
 only_owner_remove_server	Nyir'iduka wenyine ashobora gukuraho seriveri
 owner_pin_remove_server	PIN ya nyir'iduka irakenewe gukuraho iyi seriveri
-device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri.
+device_setup_help	Iki gikoresho gishobora kuba iduka (Seriveri) cyangwa akabati keza (Umukiriya). Gufungura kimwe ntibusanya ikindi. Umukiriya uhujwe yibuka iduka — nta kode yo guhuza igihe cyose ucongoye. Nta Seriveri nanone, «Garura kopi y'inyuma» ifungura ibitabo kuva kuri dosiye uhittamo (igenzura rimwe na Garura muri Igenamiterere).
 currency	Ifaranga
 backup	Kopi y'inyuma
 use	Koresha

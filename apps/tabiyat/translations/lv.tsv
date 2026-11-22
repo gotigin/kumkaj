@@ -232,7 +232,7 @@ new_server_name_ph	Jaunā servera nosaukums (nav obligāts)
 server_remove_pin_ph	Īpašnieka PIN, lai noņemtu serveri
 only_owner_remove_server	Tikai īpašnieks var noņemt serveri
 owner_pin_remove_server	Lai noņemtu šo serveri, vajag īpašnieka PIN
-device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri.
+device_setup_help	Šī ierīce var būt veikals (Serveris) vai papildu kase (Klients). Viena atvēršana neatceļ otru. Savienotais Klients atceras veikalu — nav savienošanas koda katrā restartēšanā. Bez Servera vēl «Atjaunot dublējumu» atver grāmatas no izvēlēta faila (tās pašas pārbaudes kā Atjaunot Iestatījumos).
 currency	Valūta
 backup	Dublējums
 use	Lietot

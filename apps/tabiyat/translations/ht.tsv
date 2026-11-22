@@ -232,7 +232,7 @@ new_server_name_ph	Non nouvo sèvè (opsyonèl)
 server_remove_pin_ph	PIN pwopriyetè pou retire yon sèvè
 only_owner_remove_server	Se sèl Pwopriyetè a ki ka retire yon sèvè
 owner_pin_remove_server	PIN pwopriyetè obligatwa pou retire sèvè sa a
-device_setup_help	Sèvè a kenbe liv yo isit. Kliyan an makonnen ak yon Sèvè.
+device_setup_help	Aparèy sa a ka magazen an (Sèvè) oswa yon kès anplis (Kliyan). Louvri youn pa efase lòt la. Yon Kliyan asosye sonje magazen an — pa gen kòd asosyasyon nan chak redemarrage. San Sèvè ankò, «Retabli sovgad» ouvri liv yo nan yon fichye ou chwazi (menm tcheke ak Restore nan Paramèt).
 currency	Lajan
 backup	Sovgad
 use	Sèvi

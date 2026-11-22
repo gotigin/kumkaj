@@ -232,7 +232,7 @@ new_server_name_ph	Isem ġdid tas-server (mhux obbligatorju)
 server_remove_pin_ph	PIN tas-sid biex tneħħi server
 only_owner_remove_server	Is-Sid biss jista' jneħħi server
 owner_pin_remove_server	PIN tas-sid meħtieġ biex jitneħħa dan is-server
-device_setup_help	Server iżomm il-kotba hawn. Klijent pairs għal Server.
+device_setup_help	Dan l-apparat jista’ jkun il-ħanut (Server) jew kaxxa żejda (Client). Tiftaħ wieħed ma jħassarx l-ieħor. Client imqabbad jiftakar il-ħanut — l-ebda kodiċi ta’ tqabbil f’kull restart. Bla Server għad, «Irrestawra l-backup» jiftaħ il-kotba minn fajl li tagħżel (l-istess kontrolli bħal Irrestawra fis-Settings).
 currency	Munita
 backup	Backup
 use	Użu

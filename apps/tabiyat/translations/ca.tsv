@@ -232,7 +232,7 @@ new_server_name_ph	Nom del servidor nou (opcional)
 server_remove_pin_ph	PIN del propietari per treure un servidor
 only_owner_remove_server	Només el Propietari pot treure un servidor
 owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
-device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
+device_setup_help	Aquest dispositiu pot ser la botiga (Servidor) o una caixa extra (Client). Obrir-ne un no esborra l’altre. Un Client aparellat recorda la botiga — sense codi d’aparellament a cada reinici. Sense Servidor encara, «Restaura la còpia» obre els llibres des d’un fitxer que trieu (mateixes comprovacions que Restaura a Configuració).
 currency	Moneda
 backup	Còpia
 use	Fes servir

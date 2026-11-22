@@ -232,7 +232,7 @@ new_server_name_ph	Ime novega strežnika (neobvezno)
 server_remove_pin_ph	PIN lastnika za odstranitev strežnika
 only_owner_remove_server	Samo Lastnik lahko odstrani strežnik
 owner_pin_remove_server	Za odstranitev tega strežnika je potreben PIN lastnika
-device_setup_help	Strežnik knjige hrani tukaj. Odjemalec se poveže s Strežnikom.
+device_setup_help	Ta naprava je lahko trgovina (Strežnik) ali dodatna blagajna (Odjemalec). Odprtje ene ne zbriše druge. Seznanjen Odjemalec si zapomni trgovino — ni kode seznanitve ob vsakem zagonu. Brez Strežnika še «Obnovi varnostno kopijo» odpre knjige iz izbrane datoteke (enaki pregledi kot Obnovi v Nastavitvah).
 currency	Valuta
 backup	Varnostna kopija
 use	Uporabi

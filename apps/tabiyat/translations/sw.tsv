@@ -232,7 +232,7 @@ new_server_name_ph	Jina la seva mpya (si lazima)
 server_remove_pin_ph	Owner PIN kuondoa seva
 only_owner_remove_server	Owner pekee anaweza kuondoa seva
 owner_pin_remove_server	Owner PIN inahitajika kuondoa seva hii
-device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
+device_setup_help	Kifaa hiki kinaweza kuwa duka (Seva) au kaunta ya ziada (Mteja). Kufungua kimoja hakufuti kingine. Mteja aliyeoanishwa anakumbuka duka — hakuna msimbo wa kuoanisha kila kuwasha upya. Bila Seva bado, «Rejesha hifadhi» hufungua vitabu kutoka faili unayochagua (ukaguzi uleule wa Rejesha katika mipangilio).
 currency	Sarafu
 backup	Hifadhi nakala
 use	Tumia

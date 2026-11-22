@@ -232,7 +232,7 @@ new_server_name_ph	Täze serweriň ady (islege görä)
 server_remove_pin_ph	Serweri aýyrmak üçin eýesi PIN
 only_owner_remove_server	Serwerden diňe eýesi aýryp biler
 owner_pin_remove_server	Bu serweri aýyrmak üçin eýesi PIN talap edilýär
-device_setup_help	Serwer bu ýerde ýazgy ýazgylaryny saklaýar. Müşderi Serwere jübüt.
+device_setup_help	Bu enjam dükan (Serwer) ýa-da goşmaça kassa (Müşderi) bolup biler. Birini açmak beýlekisini pozmaýar. Jübütlenen Müşderi dükany ýatda saklaýar — her täzeden açylanda jübütleme kody gerek däl. Entäk Serwer ýok bolsa, «Uptiýaçlyk nusgasyny dikelt» saýlan faýlyňyzdan kitapları açýar (Sazlamalardaky Dikelt bilen birmeňzeş barlaglar).
 currency	Walýuta
 backup	Uptiýaçlyk
 use	Ulany

@@ -232,7 +232,8 @@ new_server_name_ph	新服務器名稱（可選）
 server_remove_pin_ph	刪除服務器需 Owner PIN
 only_owner_remove_server	僅 Owner 可刪除服務器
 owner_pin_remove_server	刪除此服務器需要 Owner PIN
-device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
+device_setup_help	此裝置可以是店鋪（伺服器）或額外收銀機（用戶端）。開啟其一不會清除另一個。已配對的用戶端會記住店鋪——每次重新啟動無需配對碼。尚無伺服器時，「還原備份」可從您選擇的檔案開啟帳簿（檢查同設定中的還原）。
+
 currency	貨幣
 backup	備份
 use	使用

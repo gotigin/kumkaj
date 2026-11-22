@@ -232,7 +232,7 @@ new_server_name_ph	Nytt servernamn (valfritt)
 server_remove_pin_ph	Ägarens PIN-kod för att ta bort en server
 only_owner_remove_server	Endast ägaren kan ta bort en server
 owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
-device_setup_help	Servern håller böckerna här. Klientpar till en server.
+device_setup_help	Den här enheten kan vara butiken (Server) eller en extra kassa (Klient). Att öppna den ena raderar inte den andra. En parkopplad Klient kommer ihåg butiken — ingen parkopplingskod vid varje omstart. Utan Server ännu öppnar «Återställ säkerhetskopia» böckerna från en fil du väljer (samma kontroller som Återställ i Inställningar).
 currency	Valuta
 backup	Säkerhetskopiering
 use	Använd

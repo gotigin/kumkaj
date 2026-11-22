@@ -232,7 +232,7 @@ new_server_name_ph	新規サーバー名（任意）
 server_remove_pin_ph	削除する Owner PIN
 only_owner_remove_server	サーバーを削除できるのは Owner のみ
 owner_pin_remove_server	このサーバーを削除するには Owner PIN が必要です
-device_setup_help	サーバーはここに帳簿を保存します。クライアントはサーバーとペアリングします。
+device_setup_help	この端末は店舗（サーバー）にも追加レジ（クライアント）にもできます。一方を開いても他方は消えません。ペア済みのクライアントは店舗を覚えます。再起動のたびにペアリングコードは不要です。サーバーがまだないとき、「バックアップを復元」 で選んだファイルから帳簿を開きます（設定の復元と同じ確認）。
 currency	通貨
 backup	バックアップ
 use	使う
