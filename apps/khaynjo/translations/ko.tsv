@@ -1406,7 +1406,7 @@ low_stock_alert	재고 부족 — 곧 구매하세요: {items}
 unpriced_note	메뉴의 요리 {n}개에 아직 가격이 없습니다 — 가격을 정할 때까지 0으로 계산됩니다.
 show_unpriced	가격 없는 요리만 보기
 show_all_dishes	모든 요리 보기
-role_waiter	서버
+role_waiter	웨이터
 role_kitchen	주방
 role_title_rest_ph	직함 (예: 캡틴, 주방장)
 preset_help_rest	서버: 주문을 받고 테이블을 맡음. 계산원: 결제도. 주방: 주방 화면. 매니저: 메뉴, 취소, 할인도.

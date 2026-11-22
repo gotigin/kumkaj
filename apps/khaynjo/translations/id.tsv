@@ -789,7 +789,7 @@ printer_format_custom_added	Format kustom ditambahkan untuk rute ini
 add_printer	Tambah printer
 remove_printer	Hapus terakhir
 route_pick_ph	Struk atau dapur
-route_bill	Struk
+route_bill	Tagihan
 route_default_kitchen	Dapur default
 route_kot_station	Dapur
 route_dont_print	Jangan cetak

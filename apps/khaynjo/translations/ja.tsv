@@ -1406,7 +1406,7 @@ low_stock_alert	残りわずか — 早めに補充: {items}
 unpriced_note	メニューの {n} 品にまだ価格がありません — 設定するまで 0 で会計されます。
 show_unpriced	価格のない料理だけ表示
 show_all_dishes	すべての料理を表示
-role_waiter	ホール係
+role_waiter	ウェイター
 role_kitchen	厨房
 role_title_rest_ph	役職（例: キャプテン、料理長）
 preset_help_rest	ホール係: 注文を受け卓を担当。レジ: 会計も。厨房: 厨房画面。マネージャー: メニュー・取消・割引も。
