@@ -888,7 +888,7 @@ low_stock_alert	Ka jingduna — thied kloi: {items} .
 unpriced_note	Ki tiar {n} ha ki tiar jong phi kim pat don dor haduh mynta — ki bill ha ka 0 haduh ba phin da buh ia kawei.
 show_unpriced	Pyni tang ia ki tiar khlem dor
 show_all_dishes	Pyni ia baroh ki tiar
-role_title_rest_ph	Ka kyrteng kam (kum u Kapten, U nongshet jingshet)
+role_title_rest_ph	Ka kyrteng kam (kum u Kapten)
 preset_help_rest	U nongthied: die. U nongpyniaid: die + tiar + pynkylla/pynkylla.
 kind_resale	La thied ban die
 kind_dish	Ban khein stock .

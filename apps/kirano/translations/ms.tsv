@@ -888,7 +888,7 @@ low_stock_alert	Hampir habis — beli segera: {items}
 unpriced_note	Item {n} pada item anda belum mempunyai harga lagi — ia mengebil pada 0 sehingga anda menetapkan satu.
 show_unpriced	Tunjukkan hanya item tanpa harga
 show_all_dishes	Tunjukkan semua item
-role_title_rest_ph	Tajuk peranan (cth. Kapten, Ketua tukang masak)
+role_title_rest_ph	Tajuk peranan (cth. Kapten)
 preset_help_rest	Juruwang: jual. Pengurus: jual + item menu + batal/pinda.
 kind_resale	Dibeli untuk dijual
 kind_dish	Jangan kira stok

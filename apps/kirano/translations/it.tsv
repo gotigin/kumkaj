@@ -888,7 +888,7 @@ low_stock_alert	Sta finendo — compra presto: {items}
 unpriced_note	{n} articoli dei tuoi articoli non hanno ancora un prezzo — si addebitano a 0 finché non lo imposti.
 show_unpriced	Mostra solo articoli senza prezzo
 show_all_dishes	Mostra tutti gli articoli
-role_title_rest_ph	Ruolo (es. capo sala, capo cuoco)
+role_title_rest_ph	Ruolo (es. Captain)
 preset_help_rest	Cassiere: vendi. Manager: vendi + articoli + annulla/modifica.
 kind_resale	Comprato per rivendere
 kind_dish	Non contato

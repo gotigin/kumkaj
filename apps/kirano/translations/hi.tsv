@@ -888,7 +888,7 @@ low_stock_alert	कम हो रहा है — जल्दी खरीद�
 unpriced_note	आपके {n} आइटम की अभी कोई कीमत नहीं — कीमत डालने तक वे 0 पर बिल होते हैं।
 show_unpriced	सिर्फ़ बिना कीमत वाले आइटम दिखाएँ
 show_all_dishes	सभी आइटम दिखाएँ
-role_title_rest_ph	पद (जैसे कैप्टन, मुख्य रसोइया)
+role_title_rest_ph	पद (जैसे कैप्टन)
 preset_help_rest	कैशियर: बेचें। मैनेजर: बेचें + आइटम + रद्द/संशोधन।
 kind_resale	बेचने के लिए खरीदा
 kind_dish	गिनती नहीं

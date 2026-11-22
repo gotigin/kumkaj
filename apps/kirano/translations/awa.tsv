@@ -888,7 +888,7 @@ low_stock_alert	घटत है — जल्दी लेव: {items}
 unpriced_note	आपके {n} सामान कै अबहीं तक दाम नाहीं — दाम रखै तक ऊ 0 पै बिल होत हैं।
 show_unpriced	बस बिना दाम कै सामान देखावौ
 show_all_dishes	सब सामान देखावौ
-role_title_rest_ph	भूमिका कै नाम (जइसे कैप्टन, मुख्य रसोइया)
+role_title_rest_ph	भूमिका कै नाम (जइसे कैप्टन)
 preset_help_rest	कैसियर: बेचब। मैनेजर: बेचब + सामान + रद्द/सुधार।
 kind_resale	बेचै खातिर लिया
 kind_dish	स्टॉक न गिनौ

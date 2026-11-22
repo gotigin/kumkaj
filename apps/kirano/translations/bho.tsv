@@ -888,7 +888,7 @@ low_stock_alert	घटत बा — जल्दी कीनीं: {items}
 unpriced_note	रउरा {n} सामान के अबहीं ले दाम नइखे — दाम राखे ले ऊ 0 पर बिल होला।
 show_unpriced	खाली बिना दाम के सामान देखाईं
 show_all_dishes	सब सामान देखाईं
-role_title_rest_ph	भूमिका के नाम (जइसे कैप्टन, मुख्य रसोइया)
+role_title_rest_ph	भूमिका के नाम (जइसे कैप्टन)
 preset_help_rest	कैशियर: बेचल। मैनेजर: बेचल + सामान + रद्द/सुधार।
 kind_resale	बेचे खातिर कीनल
 kind_dish	स्टॉक मत गिनीं
