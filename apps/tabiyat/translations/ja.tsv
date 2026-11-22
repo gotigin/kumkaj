@@ -684,7 +684,7 @@ logo_default	ロゴ：Kumkaj マーク（既定）— 独自のものがあれ�
 setup_complete	セットアップ完了
 onboard_fresh_tmpl	新規 · {} — カタログは空から開始；アイテムで追加し、完了をタップ。
 onboard_book_tmpl	帳簿 · {} — アイテムと開始残高を追加し、完了をタップ。
-tmpl_blurb	薬局カウンター: 医薬品、バッチ/有効期限、カタ、書籍。
+tmpl_blurb	薬局カウンター: 医薬品、ロット/使用期限、掛売、帳簿。
 reports_facet_title	レポート
 reports_facet_help	日次帳簿、取引先エイジング、銀行記録、期間損益。
 against_bill_ph	上の請求書番号に対して（任意）

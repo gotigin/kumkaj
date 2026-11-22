@@ -58,7 +58,7 @@ today_prefix	Bugün
 owed	borç
 back	Geri
 sold_out	Tükendi
-restock	Yeniden koy
+restock	Stok yenile
 not_tracked	Sayılmıyor
 in_stock	stokta
 marked_sold_out	Tükendi işaretli
@@ -753,7 +753,7 @@ your_category	Kategoriniz
 suggested_category	Önerilen — bizim ürünlerden
 category_search_ph	Kategori — kendinizinkini arayın ya da yenisini yazın
 cancel_item_short	İptal
-return_to_customer	Para üstü
+return_to_customer	Müşteriye iade
 short_by	Eksik
 tip_not_sale	Bahşiş (personelin, satış değil)
 right_settle	Ödeme al
