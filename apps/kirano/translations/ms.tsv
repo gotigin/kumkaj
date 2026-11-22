@@ -167,7 +167,7 @@ frequent_apply	Mohon
 frequent_saved	Kerap: {d} hari lepas, item {n} teratas — {c}
 frequent_empty	Tiada jualan lengkap dalam tempoh ini lagi — selesaikan bil (₹0 dibenarkan apabila Tetapan menyatakan demikian) dan ia dipaparkan di sini.
 zero_sales	Jualan nilai sifar
-zero_sales_help	Benarkan item berharga ₹0 dan bil dijelaskan pada ₹0 (percuma / kehendak pemilik). Dihidupkan secara lalai supaya kulit percuma masih muncul dalam buku Kerap dan buku harian.
+zero_sales_help	Benarkan item berharga ₹0 dan bil dijelaskan pada ₹0 (percuma / kehendak pemilik). Dihidupkan secara lalai supaya jualan percuma masih muncul dalam Kerap dan lejar harian.
 zero_sales_on	Benarkan ₹0
 zero_sales_off	Memerlukan harga
 zero_sales_saved_on	Jualan nilai sifar dibenarkan
