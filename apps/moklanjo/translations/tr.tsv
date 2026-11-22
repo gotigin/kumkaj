@@ -6,7 +6,7 @@ sell	Rezervasyon
 nav_board	Pano
 board	Pano
 park_draft	Taslağa al
-board_help	Açık taslaklar («Sil» veya «Ödeme al» seçilene kadar saklanır) ve bugün kabul edilen satışlar. «Gönderi» ekranında işin ortasında «Taslağa al» düğmesine dokunun (defterlere değil, buraya kaydedilir); devam etmek için bir taslağa dokunun.
+board_help	Açık taslaklar («Sil» veya «Ödeme al» seçilene kadar saklanır) ve bugün kabul edilen satışlar. «Rezervasyon» ekranında işin ortasında «Taslağa al» düğmesine dokunun (defterlere değil, buraya kaydedilir); devam etmek için bir taslağa dokunun.
 board_empty	Henüz kart yok.
 board_park_nothing	Bekletilecek bir şey yok — ücret veya gönderi bilgisi ekleyin
 board_parked	«Pano» bölümüne alındı — banko boş
@@ -26,7 +26,7 @@ board_discard	Sil
 board_discarded	Taslak silindi
 buy	Ödeme
 books	Gün defteri
-books_help	Bugünkü durum. Gönderi = gelen paketler. Ödeme = taşıyıcı faturaları ve giderler. Taraflar = gönderenler ve taşıyıcılar.
+books_help	Bugünkü durum. Rezervasyon = gelen paketler. Ödeme = taşıyıcı faturaları ve giderler. Taraflar = gönderenler ve taşıyıcılar.
 buy_help	Gider fişleri ve taşıyıcı faturaları (çıkan para). Hesaba olan taraf defterinde kalır.
 sell_money_in	Paket gönder
 buy_money_out	Gider / taşıyıcı faturası
