@@ -428,7 +428,7 @@ bank_out	Retrait banque
 bank_reconciliation	Rapprochement bancaire
 bank_to_till	Banque → caisse
 book_add_dish	Livre — ajouter plat / article
-book_opening_credit	Envoi — crédit d'ouverture
+book_opening_credit	Livre — crédit d'ouverture
 branch_name_sell_ph	Nom de la succursale de vente
 bring_my_book	Apporter mon livre
 business_tax_id_ph	Id fiscal de l'entreprise

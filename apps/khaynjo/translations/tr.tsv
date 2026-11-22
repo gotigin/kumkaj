@@ -428,7 +428,7 @@ bank_out	Bankadan çek
 bank_reconciliation	Banka mutabakatı
 bank_to_till	Banka → kasa
 book_add_dish	Defter — yemek / öğe ekle
-book_opening_credit	Gönderi — açılış kredisi
+book_opening_credit	Defter — açılış kredisi
 branch_name_sell_ph	Satış yapılacak şube adı
 bring_my_book	Defterimi getir
 business_tax_id_ph	İşletme vergi kimliği
