@@ -888,7 +888,7 @@ low_stock_alert	Paubos na — bumili agad: {items}
 unpriced_note	Ang {n} na mga item sa iyong mga item ay wala pang presyo — naniningil sila sa 0 hanggang sa magtakda ka ng isa.
 show_unpriced	Ipakita lamang ang mga item na walang presyo
 show_all_dishes	Ipakita ang lahat ng mga item
-role_title_rest_ph	Pamagat ng tungkulin (hal. Captain, Head cook)
+role_title_rest_ph	Pamagat ng tungkulin (hal. Captain)
 preset_help_rest	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
 kind_resale	Binili para ibenta
 kind_dish	Huwag magbilang ng stock

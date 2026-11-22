@@ -888,7 +888,7 @@ low_stock_alert	Løber tør — køb snart: {items}
 unpriced_note	{n} varer på dine varer har endnu ingen pris — de faktureres til 0, indtil du sætter en.
 show_unpriced	Vis kun varer uden pris
 show_all_dishes	Vis alle varer
-role_title_rest_ph	Rolle (f.eks. Kaptajn, Køkkenchef)
+role_title_rest_ph	Rolle (f.eks. Kaptajn)
 preset_help_rest	Kasserer: sælg. Leder: sælg + varer + annuller/ret.
 kind_resale	Købt til salg
 kind_dish	Tæl ikke lager

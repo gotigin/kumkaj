@@ -888,7 +888,7 @@ low_stock_alert	Bientôt épuisé — à racheter : {items}
 unpriced_note	{n} articles de vos articles n'ont pas encore de prix — ils sont facturés à 0 tant que vous n'en mettez pas.
 show_unpriced	Afficher seulement les articles sans prix
 show_all_dishes	Afficher tous les articles
-role_title_rest_ph	Poste (ex. chef de rang, chef cuisinier)
+role_title_rest_ph	Poste (ex. capitaine)
 preset_help_rest	Caissier : vendre. Responsable : vendre + articles + annuler/modifier.
 kind_resale	Acheté pour la revente
 kind_dish	Non suivi

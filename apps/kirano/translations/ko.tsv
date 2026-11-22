@@ -888,7 +888,7 @@ low_stock_alert	재고 부족 — 곧 구매하세요: {items}
 unpriced_note	항목의 {n} 항목에는 아직 가격이 없습니다. 가격을 설정할 때까지는 0으로 청구됩니다.
 show_unpriced	가격이 없는 항목만 표시
 show_all_dishes	모든 항목 표시
-role_title_rest_ph	직함 (예: 캡틴, 주방장)
+role_title_rest_ph	직함 (예: 캡틴)
 preset_help_rest	캐셔: 판매. 매니저: 판매 + 항목 + 취소/수정.
 kind_resale	팔려고 샀어요
 kind_dish	수량 없음

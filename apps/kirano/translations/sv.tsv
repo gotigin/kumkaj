@@ -888,7 +888,7 @@ low_stock_alert	Snart slut – köp snart: {items}
 unpriced_note	{n}-artiklar på dina föremål har inget pris än – de faktureras till 0 tills du ställer in ett.
 show_unpriced	Visa endast varor utan pris
 show_all_dishes	Visa alla objekt
-role_title_rest_ph	Rolltitel (t.ex. kapten, chefskock)
+role_title_rest_ph	Rolltitel (t.ex. kapten)
 preset_help_rest	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
 kind_resale	Köpt för att sälja
 kind_dish	Räkna inte lager

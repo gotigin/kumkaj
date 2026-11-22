@@ -888,7 +888,7 @@ low_stock_alert	Está acabando — compre logo: {items}
 unpriced_note	Os itens {n} em seus itens ainda não têm preço – eles cobram 0 até que você defina um.
 show_unpriced	Mostrar apenas itens sem preço
 show_all_dishes	Mostrar todos os itens
-role_title_rest_ph	Cargo (ex. capitão, chefe de cozinha)
+role_title_rest_ph	Cargo (ex. capitão)
 preset_help_rest	Caixa: vender. Gerente: vender + itens + anular/alterar.
 kind_resale	Comprei para vender
 kind_dish	Sem contagem
