@@ -1360,7 +1360,7 @@ resv_phone_ph	Telefon (valgfri)
 resv_guests_ph	Gæster
 resv_when_ph	Hvornår — 20:30, i morgen 13:00
 resv_table_ph	Bord (valgfrit)
-resv_add	Book
+resv_add	Reserver
 resv_seat	Sat
 resv_none	Ingen bookinger på vej.
 guests_word	gæster
