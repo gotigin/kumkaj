@@ -35,7 +35,7 @@ add_expense	Utgiftsverifikation
 bank_book	Bankbok
 credit_help	Parti-id är unikt (namn kan upprepas). Roller: Avsändare (AR), Transportör (AP) eller båda på det id. Ledböcker förblir separata; rapporter visar netto.
 party_kind_ph	Anpassad roll (valfritt) – eller tryck på ett chip ovan
-parties_list_heading	Rädda partier
+parties_list_heading	Sparade parter
 reports_help	Dagbok, gäldenärer och borgenärer, bankbok, utgiftsverifikationer, resultat.
 reports_today	Dagbok (idag)
 reports_month	Resultat (månad)
@@ -340,8 +340,8 @@ copy_day_book_csv	Kopiera dagbok CSV
 copy_day_close	Kopiera dagsavslut
 copy_items_csv	Kopiera objekt CSV
 copy_outstanding_csv	Kopiera utestående CSV
-copy_parties_csv	Kopiera partier CSV
-copy_party_ledger_csv	Kopiera partibok CSV
+copy_parties_csv	Kopiera parter CSV
+copy_party_ledger_csv	Kopiera partsreskontra CSV
 copy_receipt	Kopiera kvitto
 copy_report	Kopiera rapporten
 counted_cash_ph	Räknade kontanter i lådan
@@ -368,7 +368,7 @@ insurance_label	Försäkring
 yes_label	Ja
 no_label	Inga
 print_route_label	Skriv ut rutt
-new_party_kind_label	Nytt parti
+new_party_kind_label	Ny typ av part
 done_open_books	Klart - öppna böcker
 export_day	Exportdag
 extra_note_expense_ph	Extra anmärkning om sista utgiften
@@ -380,13 +380,13 @@ fuel_ph	Bränsle
 handover_carrier	Handbokad → transportör
 import_day	Importdag
 import_items_csv	Importera varor/priser CSV...
-import_parties_csv	Importera partier CSV...
+import_parties_csv	Importera parter CSV…
 import_pincodes_csv	Importera pinkoder CSV...
 import_carrier_bill_csv	Importera operatörsfaktura CSV...
 copy_carrier_bill_report	Kopiera den senaste operatörsräkningsrapporten
 use_carrier_cost	Använd transportörens kostnad
 rate_carrier_ph	Transportör (tom = vår försäljningskurs)
-rate_party_ph	Party (tom = alla kunder)
+rate_party_ph	Part (tom = alla kunder)
 carrier_pick_ph	Transportör för kostnad (från jämför)
 item_name	Objektets namn
 load_bulk_row	Ladda bulk rad → skrivbord
@@ -426,8 +426,8 @@ pick_barcode_image	Välj bild att skanna
 share_receipt_whatsapp	Dela kvitto på WhatsApp
 delivery_feedback	Leveransfeedback
 lan_self_book	LAN självbokning
-new_party_clear	Nytt parti (tydlig form)
-new_party_kind_ph	Ny festtyp (leverantör / transportör)
+new_party_clear	Ny part (töm formuläret)
+new_party_kind_ph	Ny typ av part (leverantör / transportör)
 next_country	Nästa land
 prev_country	Föregående land
 note_gstin_ph	Anmärkning / GSTIN / avtalspåminnelse
@@ -437,13 +437,13 @@ org_optional_ph	Organisation (valfritt)
 paid_now	Betalt nu
 pairing_code_ph	Parningskod
 pair_now	Para ihop nu
-party_name_selected_ph	Partinamn (eller använd valt)
+party_name_selected_ph	Partens namn (eller använd vald)
 password_ph	Lösenord
 pay_ap_card	Betala AP-kort
 pay_ap_cash	Betala AP kontant
 pay_ap_upi	Betala AP UPI
 period_bill	Periodräkning
-period_bill_party	Periodräkning (fest)
+period_bill_party	Periodräkning (part)
 period_bill_generate	Skapa faktura
 period_bill_generate_print	Skapa och skriv ut
 booking_bulk_preview	{ok} klara · {bad} med fel
@@ -470,7 +470,7 @@ save_business_name	Spara företagsnamn
 save_features	Spara jobbinställningar
 save_names	Spara namn
 server_ip_ph	Server-IP (t.ex. 192.168.1.10)
-set_credit_limit	Tillämpa gräns för fest
+set_credit_limit	Tillämpa gräns på parten
 set_login_selected	Använd inloggning på valda
 set_login_named	Ansök inloggning på {name}
 shop	Butik

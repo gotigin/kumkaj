@@ -35,7 +35,7 @@ add_expense	Dowód wydatku
 bank_book	Księga bankowa
 credit_help	Identyfikator imprezy jest unikalny (nazwy mogą się powtarzać). Role: Nadawca (AR), Przewoźnik (AP) lub oboje na tym identyfikatorze. Księgi pozostają oddzielne; raporty pokazują netto.
 party_kind_ph	Rola niestandardowa (opcjonalnie) — lub dotknij elementu powyżej
-parties_list_heading	Zapisane imprezy
+parties_list_heading	Zapisani kontrahenci
 reports_help	Księga dzienna, dłużnicy i wierzyciele, księga bankowa, bony wydatków, zyski i straty.
 reports_today	Dziennik dnia (dziś)
 reports_month	Zysk i strata (miesiąc)
@@ -300,7 +300,7 @@ card_amount_ph	Kwota karty
 cash_amount_ph	Kwota gotówkowa
 upi_amount_ph	UPI ilość
 carrier_cost_ph	Koszt przewoźnika
-carrier_party_ph	Impreza przewoźnika
+carrier_party_ph	Przewoźnik (kontrahent)
 choose_icon	Wybierz ikonę
 choose_logo	Wybierz logo
 choose_receipt_stamp	Wybierz stempel paragonowy
@@ -368,7 +368,7 @@ insurance_label	Ubezpieczenie
 yes_label	Tak
 no_label	NIE
 print_route_label	Wydrukuj trasę
-new_party_kind_label	Nowy rodzaj imprezy
+new_party_kind_label	Nowy rodzaj kontrahenta
 done_open_books	Gotowe — otwórz księgi
 export_day	Dzień eksportu
 extra_note_expense_ph	Dodatkowa notatka na temat ostatniego wydatku
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Importuj rachunek przewoźnika CSV…
 copy_carrier_bill_report	Skopiuj ostatni raport dotyczący rachunku operatora
 use_carrier_cost	Skorzystaj z kosztu przewoźnika
 rate_carrier_ph	Przewoźnik (puste = nasz kurs sprzedaży)
-rate_party_ph	Impreza (puste = wszyscy klienci)
+rate_party_ph	Kontrahent (puste = wszyscy klienci)
 carrier_pick_ph	Przewoźnik za cenę (z porównania)
 item_name	Nazwa przedmiotu
 load_bulk_row	Załaduj wiersz zbiorczy → biurko
@@ -443,7 +443,7 @@ pay_ap_card	Zapłać kartą AP
 pay_ap_cash	Zapłać gotówką AP
 pay_ap_upi	Zapłać AP UPI
 period_bill	Rachunek okresowy
-period_bill_party	Rachunek okresowy (impreza)
+period_bill_party	Rachunek okresowy (kontrahent)
 period_bill_generate	Wystaw rachunek
 period_bill_generate_print	Wystaw i wydrukuj
 booking_bulk_preview	Gotowe: {ok} · błędne: {bad}
@@ -455,7 +455,7 @@ reason_note_ph	Powód/uwaga (marnotrawstwo, liczba,…)
 record_day_close	Zapisz zamknięcie dnia
 refresh_from_shop	Odśwież ze sklepu
 refund	Zwrot
-remit_cod	Przekaż COD (impreza)
+remit_cod	Przekaż COD (kontrahent)
 remove_selected	Usuń wybrane
 restore_backup	Przywróć kopię zapasową
 rider_name_ph	Imię jeźdźca

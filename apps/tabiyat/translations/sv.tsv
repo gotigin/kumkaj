@@ -403,7 +403,7 @@ save_features_ok	Sparade inställningar för {name}
 save_names	Spara namn
 second_way	Andra sättet
 server_ip_ph	Server-IP (t.ex. 192.168.1.10)
-set_credit_limit	Tillämpa gräns för fest
+set_credit_limit	Tillämpa gräns på parten
 set_login_selected	Använd inloggning på valda
 set_login_named	Ansök inloggning på {name}
 shop	Butik

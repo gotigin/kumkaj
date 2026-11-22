@@ -27,13 +27,13 @@ board_discarded	Draf dibuang
 buy	Bayar
 books	Lejar hari
 books_help	Kedudukan hari ini. Tempahan = bungkusan masuk. Bayar = bil & perbelanjaan pembawa. Pihak = pengirim & pembawa.
-buy_help	Baucar perbelanjaan dan bil pembawa (wang keluar). Dalam akaun kekal pada lejar parti.
+buy_help	Baucar perbelanjaan dan bil pembawa (wang keluar). Dalam akaun kekal pada lejar pihak.
 sell_money_in	Tempah bungkusan
 buy_money_out	Perbelanjaan / bil pembawa
 record_purchase	Simpan pembelian
 add_expense	Resit perbelanjaan
 bank_book	Lejar bank
-credit_help	Id parti adalah unik (nama mungkin berulang). Peranan: Consignor (AR), Pembawa (AP) atau kedua-duanya pada id tersebut. Lejar kekal berasingan; laporan menunjukkan bersih.
+credit_help	Id pihak adalah unik (nama mungkin berulang). Peranan: Consignor (AR), Pembawa (AP) atau kedua-duanya pada id tersebut. Lejar kekal berasingan; laporan menunjukkan bersih.
 party_kind_ph	Peranan tersuai (pilihan) — atau ketik cip di atas
 parties_list_heading	Pihak yang disimpan
 reports_help	Lejar hari, penghutang & pemiutang, lejar bank, resit perbelanjaan, untung & rugi.
@@ -149,7 +149,7 @@ origin_phone_ph	Telefon penghantar
 origin_address_ph	Alamat pengambilan / asal
 booking_consignor_heading	Konsainor (pelanggan / penghantar)
 booking_consignee_heading	Penerima (penerima)
-booking_consignor_hint	Pilih parti untuk diisi, atau biarkan kosong untuk berjalan masuk. Diperlukan untuk pengambilan rumah dan RTO.
+booking_consignor_hint	Pilih pihak untuk diisi, atau biarkan kosong untuk berjalan masuk. Diperlukan untuk pengambilan rumah dan RTO.
 booking_consignee_hint	Penerima bungkusan. Biarkan kosong untuk menghantar kaunter masuk.
 weight_kg_ph	kg sebenar
 length_cm_ph	L cm
@@ -368,7 +368,7 @@ insurance_label	Insurans
 yes_label	ya
 no_label	Tidak
 print_route_label	Cetak laluan
-new_party_kind_label	Macam parti baru
+new_party_kind_label	Jenis pihak baharu
 done_open_books	Selesai — buka lejar
 export_day	Hari eksport
 extra_note_expense_ph	Nota tambahan pada perbelanjaan terakhir
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Import bil pembawa CSV…
 copy_carrier_bill_report	Salin laporan bil pembawa terakhir
 use_carrier_cost	Gunakan kos pembawa
 rate_carrier_ph	Pembawa (kosong = kadar jualan kami)
-rate_party_ph	Parti (kosong = semua pelanggan)
+rate_party_ph	Pihak (kosong = semua pelanggan)
 carrier_pick_ph	Pembawa untuk kos (daripada perbandingan)
 item_name	Nama item
 load_bulk_row	Muatkan baris pukal → meja
@@ -427,7 +427,7 @@ share_receipt_whatsapp	Kongsi resit di WhatsApp
 delivery_feedback	Maklum balas penghantaran
 lan_self_book	Tempahan sendiri LAN
 new_party_clear	Pelanggan atau pembekal baharu (borang jelas)
-new_party_kind_ph	Jenis parti baharu (Pembekal / Pembawa)
+new_party_kind_ph	Jenis pihak baharu (Pembekal / Pembawa)
 next_country	Negara seterusnya
 prev_country	Negara sebelumnya
 note_gstin_ph	Nota / GSTIN / peringatan perjanjian
@@ -443,7 +443,7 @@ pay_ap_card	Bayar kad AP
 pay_ap_cash	Bayar tunai AP
 pay_ap_upi	Bayar AP UPI
 period_bill	Bil tempoh
-period_bill_party	Bil tempoh (pesta)
+period_bill_party	Bil tempoh (pihak)
 period_bill_generate	Jana bil
 period_bill_generate_print	Jana & cetak
 booking_bulk_preview	{ok} sedia · {bad} bermasalah
@@ -455,7 +455,7 @@ reason_note_ph	Sebab / nota (pembaziran, kiraan,…)
 record_day_close	Simpan hari tutup
 refresh_from_shop	Muat semula dari kedai
 refund	Bayaran balik
-remit_cod	Hantarkan COD (pesta)
+remit_cod	Hantarkan COD (pihak)
 remove_selected	Alih keluar yang dipilih
 restore_backup	Pulihkan sandaran
 rider_name_ph	Nama penunggang
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Baharu · {} — katalog bermula kosong; tambah item dalam It
 onboard_book_tmpl	Lejar · {} — tambah item dan kredit pembukaan, kemudian Selesai.
 onboard_template_tmpl	Namakan tempat itu jika anda mahu, kemudian pilih cara untuk bermula.
 tmpl_blurb	Buku kurier dan meja tempahan: konsainor, pembawa, buku harian, AWB.
-tmpl_how	Tempah bungkusan di meja; Buku hari untuk hari ini; tab untuk kadar, pesta, laporan.
+tmpl_how	Tempah bungkusan di meja; Buku hari untuk hari ini; tab untuk kadar, pihak, laporan.
 app_template_heading	Templat kedai
 app_template_blurb	Pilih meja permulaan. «Langkau buat masa ini» membiarkan senarai pelanggan dan pembekal kosong.
 app_template_skip	Langkau buat masa ini
@@ -900,7 +900,7 @@ party_custom_value_ph	Nilai
 party_custom_add	Tambah medan
 party_custom_remove	Alih keluar medan
 party_custom_empty	Tiada medan tersuai lagi
-party_custom_pick_first	Pilih parti untuk menambah medan tersuai
+party_custom_pick_first	Pilih pihak untuk menambah medan tersuai
 place_name_ph	Nama tempat ini
 price_ph	harga
 qty_example_ph	Kuantiti (cth. 1.5 untuk kg)

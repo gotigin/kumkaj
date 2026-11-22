@@ -76,7 +76,7 @@ reprint_kot	Печать выбранного
 reprint_kot_ok	{n} блюд снова · {slips} слипов → {kitchens}
 reprint_kot_needed	Сначала отправьте KOT — затем отметьте блюда и напечатайте выбранное
 reprint_kot_none_selected	Все отправленные исключены — нажмите «В печати» на нужных
-reprint_kot_client	Печать повторно ({n}) для {place} отправленных — кухня печатает на терминале Официанта
+reprint_kot_client	Печать повторно ({n}) для {place} отправленных — кухня печатает на Сервере
 print_cancelled_kot	Печать всех отменённых
 print_cancelled_kot_ok	Напечатано {n} отменённых · {slips} слип(ов) → {kitchens}
 print_cancelled_kot_needed	Откройте стол с отменёнными блюдами

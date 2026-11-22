@@ -368,7 +368,7 @@ insurance_label	страхування
 yes_label	так
 no_label	немає
 print_route_label	Роздрукувати маршрут
-new_party_kind_label	Новий тип вечірки
+new_party_kind_label	Новий тип контрагента
 done_open_books	Готово — відкрити книги
 export_day	Експортувати день
 extra_note_expense_ph	Додаткова нотатка до останньої витрати

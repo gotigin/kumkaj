@@ -35,7 +35,7 @@ add_expense	Költség utalvány
 bank_book	Bankkönyv
 credit_help	A fél azonosítója egyedi (a nevek ismétlődnek). Szerepek: Feladó (AR), Fuvarozó (AP), vagy mindkettő ezen az azonosítón. A főkönyvek külön maradnak; a jelentések netet mutatnak.
 party_kind_ph	Egyéni szerepkör (opcionális) – vagy koppintson a fenti chipre
-parties_list_heading	Mentett bulik
+parties_list_heading	Mentett partnerek
 reports_help	Napi könyv, adósok és hitelezők, bankkönyv, költségutalványok, nyereség és veszteség.
 reports_today	Napi könyv (ma)
 reports_month	Nyereség és veszteség (hónap)

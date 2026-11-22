@@ -35,7 +35,7 @@ add_expense	Потврда о трошковима
 bank_book	Банкарска књига
 credit_help	ИД странке је јединствен (имена се могу понављати). Улоге: пошиљалац (АР), превозник (АП) или обоје на том ИД-у. Књиге остају одвојене; извештаји показују нет.
 party_kind_ph	Прилагођена улога (опционо) — или додирните чип изнад
-parties_list_heading	Сачуване журке
+parties_list_heading	Сачуване странке
 reports_help	Дневна књига, дужници и повериоци, банкарска књига, признанице о трошковима, добит и губитак.
 reports_today	Дневник (данас)
 reports_month	Добит и губитак (месец)
@@ -149,7 +149,7 @@ origin_phone_ph	Телефон пошиљаоца
 origin_address_ph	Адреса за преузимање / порекло
 booking_consignor_heading	Пошиљалац (купац/пошиљалац)
 booking_consignee_heading	Прималац (прималац)
-booking_consignor_hint	Изаберите забаву коју желите да попуните или оставите празно за улазак. Потребно за преузимање код куће и РТО.
+booking_consignor_hint	Изаберите странку коју желите да попуните или оставите празно за улазак. Потребно за преузимање код куће и РТО.
 booking_consignee_hint	Прималац пакета. Оставите празно за одлазак на шалтеру.
 weight_kg_ph	Стварни кг
 length_cm_ph	Л цм
@@ -368,7 +368,7 @@ insurance_label	Осигурање
 yes_label	Да
 no_label	бр
 print_route_label	Одштампај руту
-new_party_kind_label	Нова врста забаве
+new_party_kind_label	Нова врста странке
 done_open_books	Готово — отвори књиге
 export_day	Дан извоза
 extra_note_expense_ph	Додатна напомена о последњем трошку
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Увези ЦСВ рачун оператера…
 copy_carrier_bill_report	Копирајте последњи извештај о рачуну оператера
 use_carrier_cost	Користите цену оператера
 rate_carrier_ph	Носилац (празно = наш продајни курс)
-rate_party_ph	Забава (празно = сви купци)
+rate_party_ph	Странка (празно = сви купци)
 carrier_pick_ph	Носилац за цену (из поређења)
 item_name	Назив ставке менија
 load_bulk_row	Утовар на велико ред → стол
@@ -427,7 +427,7 @@ share_receipt_whatsapp	Поделите признаницу на ВхатсАп
 delivery_feedback	Повратне информације о испоруци
 lan_self_book	ЛАН саморезервација
 new_party_clear	Нови купац или добављач (јасан образац)
-new_party_kind_ph	Нова врста забаве (добављач/превозник)
+new_party_kind_ph	Нова врста странке (добављач/превозник)
 next_country	Следећа земља
 prev_country	Претходна земља
 note_gstin_ph	Напомена / GSTИН / подсетник за споразум
@@ -443,7 +443,7 @@ pay_ap_card	Платите АП картицу
 pay_ap_cash	Платите АП готовином
 pay_ap_upi	Плати АП UPI
 period_bill	Рачун за период
-period_bill_party	Рачун за период (журка)
+period_bill_party	Рачун за период (странка)
 period_bill_generate	Направи рачун
 period_bill_generate_print	Направи и одштампај
 booking_bulk_preview	Спремно: {ok} · са грешком: {bad}
@@ -455,7 +455,7 @@ reason_note_ph	Разлог / напомена (расипање, бројање
 record_day_close	Сачувајте дан близу
 refresh_from_shop	Освежите из продавнице
 refund	Рефунд
-remit_cod	Пошаљите ЦОД (журка)
+remit_cod	Уплати поузеће (странка)
 remove_selected	Уклони изабрано
 restore_backup	Вратите резервну копију
 rider_name_ph	Име јахача
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Свеже · {} — каталог почиње празан
 onboard_book_tmpl	Књига · {} — додајте ставке менија и почетни кредит, а затим Готово.
 onboard_template_tmpl	Именујте место ако желите, а затим изаберите како да почнете.
 tmpl_blurb	Курирске књиге и пулт за резервације: пошиљаоци, превозници, дневни лист, АВБ.
-tmpl_how	Резервишите пакете на столу; Дневник за данас; картице за стопе, забаве, извештаје.
+tmpl_how	Резервишите пакете на столу; Дневник за данас; картице за стопе, странке, извештаје.
 app_template_heading	Шаблони продавнице
 app_template_blurb	Изаберите почетни пулт. «Прескочи за сада» оставља листу купаца и добављача празну.
 app_template_skip	Прескочи за сада
@@ -894,7 +894,7 @@ part_second_way_ph	Део на други начин (опционо)
 phone_ph	Телефон
 address_ph	Адреса
 party_custom_fields_heading	Прилагођена поља (изабрана страна)
-party_custom_help	Додајте било коју ознаку и вредност на овој забави — ВхатсАпп, ГСТИН, код руте,…
+party_custom_help	Додајте било коју ознаку и вредност на овој странци — ВхатсАпп, ГСТИН, код руте,…
 party_custom_key_ph	Назив поља (нпр. ВхатсАпп)
 party_custom_value_ph	Валуе
 party_custom_add	Додај поље

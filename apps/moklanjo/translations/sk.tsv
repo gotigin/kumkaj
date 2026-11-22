@@ -149,7 +149,7 @@ origin_phone_ph	Telefón odosielateľa
 origin_address_ph	Adresa vyzdvihnutia / pôvodu
 booking_consignor_heading	Odosielateľ (odberateľ/odosielateľ)
 booking_consignee_heading	Príjemca (príjemca)
-booking_consignor_hint	Vyberte si večierok, ktorý chcete vyplniť, alebo ponechajte pole prázdne, aby ste mohli prísť. Potrebné pre domáce vyzdvihnutie a RTO.
+booking_consignor_hint	Vyberte si partnera, ktorého chcete vyplniť, alebo ponechajte pole prázdne, aby ste mohli prísť. Potrebné pre domáce vyzdvihnutie a RTO.
 booking_consignee_hint	Príjemca balíka. V prípade odberov na pultoch ponechajte prázdne.
 weight_kg_ph	Skutočné kg
 length_cm_ph	L cm
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Importovať CSV faktúry operátora…
 copy_carrier_bill_report	Skopírujte posledný prehľad účtu operátora
 use_carrier_cost	Použite cenu operátora
 rate_carrier_ph	Prepravca (prázdne = naša predajná cena)
-rate_party_ph	Večierok (prázdne = všetci zákazníci)
+rate_party_ph	Partner (prázdne = všetci zákazníci)
 carrier_pick_ph	Dopravca za cenu (z porovnania)
 item_name	Názov položky
 load_bulk_row	Načítať hromadný riadok → stôl
@@ -455,7 +455,7 @@ reason_note_ph	Dôvod / poznámka (plytvanie, počet, ...)
 record_day_close	Koniec rekordného dňa
 refresh_from_shop	Obnoviť z obchodu
 refund	Vrátenie peňazí
-remit_cod	Poukázať COD (večierok)
+remit_cod	Poukázať COD (partner)
 remove_selected	Odstrániť vybraté
 restore_backup	Obnoviť zálohu
 rider_name_ph	Meno jazdca
