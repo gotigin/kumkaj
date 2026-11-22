@@ -6,7 +6,7 @@ sell	Rezervări
 nav_board	Panou
 board	Panou
 park_draft	Salvează ca ciornă
-board_help	Ciorne deschise (păstrate până la «Șterge» sau «Încasează plata») și vânzările înregistrate azi. În «Rezervare», apasă «Salvează ca ciornă» în timpul lucrului (se salvează aici, nu în evidență); apasă o ciornă ca s-o reiei.
+board_help	Ciorne deschise (păstrate până la «Șterge» sau «Încasează plata») și vânzările înregistrate azi. În «Rezervări», apasă «Salvează ca ciornă» în timpul lucrului (se salvează aici, nu în evidență); apasă o ciornă ca s-o reiei.
 board_empty	Niciun card încă.
 board_park_nothing	Nimic de salvat ca ciornă — adaugă taxe sau detalii de expediere
 board_parked	Salvată pe «Panou» — biroul e liber
