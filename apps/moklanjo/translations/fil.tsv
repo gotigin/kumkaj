@@ -553,7 +553,7 @@ virtual_length_mm	Virtual na haba (mm)
 reported_width_mm	Iniulat na lapad (mm)
 reported_length_mm	Iniulat na haba (mm)
 reported_paper	Iniulat: {paper}
-virtual_paper	Virtual: {paper}
+virtual_paper	Birtual: {paper}
 printer_paper_help	Ang iniulat ay ang papel kung saan nakatakda ang driver ng printer na ito; binabasa lang ito ng app, at ang N/A ay nangangahulugang walang driver na matatanong. Ang virtual ay ang papel na sinasabi mong talagang nasa printer, sa mm; ang blangkong haba ay rolyo. Nagpi-print ang printer sa sarili nitong papel; sinasabi ng virtual na papel sa app kung gaano karami roon ang totoong papel, para sa preview, haba ng pahina at puwesto ng resibo. Pinupunan ng Maghanap ng mga printer ang blangkong virtual na papel at hindi kailanman binabago ang itinakda mo.
 preview_help	Ang resibong ito kung paano ito mapi-print sa printer na pinili sa ibaba, sa totoong laki sa virtual na papel nito. Puti ang bahaging napi-print, ang kulay-abong papel ay hindi abot ng printer, at ang maputlang tinta ay napuputol. Ang siyam na kahon ay ang papel: i-tap kung saan dapat ilagay ang resibo. Ang mahabang resibo ay tumutuloy sa mas maraming pahina. Ang pagpili ng printer ay nagbabago lang sa preview.
 slip_col_width	Lapad (mm)
@@ -659,8 +659,8 @@ adjustment_notes_heading	Mga adjustment note
 adj_note_amount_ph	Halaga
 adj_note_reason_ph	Dahilan (kinakailangan)
 adj_note_awb_ph	Kaugnay na AWB (opsyonal)
-credit_note_btn	Credit note
-debit_note_btn	Debit note
+credit_note_btn	Tala ng credit
+debit_note_btn	Tala ng debit
 bill_later_heading	Singilin mamaya (dagdag pagkatapos ng booking)
 bill_later_amount_ph	Dagdag na halaga
 bill_later_party_ph	Customer o supplier (kung wala lang sa booking)

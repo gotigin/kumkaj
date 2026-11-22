@@ -45,8 +45,8 @@ reports	Livre de banque et P&L
 refresh	Actualiser
 undo	Annuler
 start_tracking	Commencer le suivi
-stock_minus	− Stock
-stock_plus	+ Stock
+stock_minus	− Stocks
+stock_plus	+ Stocks
 settle_cash	Encaisser
 settle_card	Encaisser carte
 items	Tarifs et services
@@ -61,7 +61,7 @@ editing_item	Modification
 save	Enregistrer
 remove	Retirer
 empty_catalog	Aucun tarif pour l'instant.
-counter_sale	Envoi au comptoir
+counter_sale	Réservation au comptoir
 total	Total
 cash	Espèces
 upi	UPI

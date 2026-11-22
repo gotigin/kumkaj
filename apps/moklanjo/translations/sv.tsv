@@ -419,7 +419,7 @@ settle_rider_pay	Avgör förarens lön
 vehicle_inspect	Fordonsbesiktning
 print_docket	Skriv ut dokument
 franchise_statement	Franchise uttalande
-tally_export	Tally voucher export
+tally_export	Tally-verifikationsexport
 open_whatsapp	Öppna WhatsApp
 copy_sms	Kopiera SMS-text
 pick_barcode_image	Välj bild att skanna

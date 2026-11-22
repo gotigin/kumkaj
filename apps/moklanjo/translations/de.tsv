@@ -722,7 +722,7 @@ or_unlock_shop_login	Oder mit Shop-Login freischalten
 shop_login_help	Optional: Entsperren Sie mit dem Benutzernamen und Passwort des Mitarbeiters dieses Shops anstelle der PIN (funktioniert offline).
 cloud_account_title	Moklanjo-Konto
 cloud_account_help	Registrieren Sie sich oder melden Sie sich mit demselben Konto wie moklanjo.com/account an. Erstellt Ihre Cloud-ID und Ihren kostenlosen Plan.
-cloud_name_ph	Name (optional)
+cloud_name_ph	Name (freiwillig)
 cloud_email_ph	E-Mail
 cloud_password_ph	Passwort
 cloud_continue	Weitermachen
