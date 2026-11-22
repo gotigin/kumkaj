@@ -118,9 +118,10 @@ trample others — without inventing multi-shop product chrome.
 
 Commercial frame (vision §21 + [`CLOUD_PLANS.md`](CLOUD_PLANS.md)): free
 local forever; yearly cloud membership **Steady / Swift / Priority /
-Custom** (quota + live bandwidth). Other paid services require one of
-those paid plans. Billing gateway under watch includes Stripe;
-alternatives OK if better globally. Do not lock geography.
+Custom** (quota + live bandwidth); list prices **tax-exclusive**, tax at
+the billing gateway by country. Other paid services require one of those
+paid plans. Billing gateway under watch includes Stripe (Tax); alternatives
+OK if better globally. Do not lock geography.
 
 AWS credits = **delay the bill** while we learn cost → price. After
 credits, revisit AWS vs GCP (or split) for API/DB on **numbers**, not
@@ -185,8 +186,9 @@ Canonical commercial grid: [`CLOUD_PLANS.md`](CLOUD_PLANS.md).
 Summary: **Free forever** + **Steady (10 GB)** + **Swift (25 GB)** +
 **Priority (50 GB)** + **Custom**. Paid plans include free forever. All
 paid tiers are **live** sync; they differ by **quota** and **bandwidth**
-only (no device caps, no connection-interval tiers). Yearly INR list
-(GST inclusive): ₹6,000 / ₹12,000 / ₹24,000 / quote. After subscription
+only (no device caps, no connection-interval tiers). Yearly INR **raw
+(ex-tax)** list: ₹6,000 / ₹12,000 / ₹24,000 / quote; tax (GST/VAT/etc.)
+added by the **billing gateway** per buyer country. After subscription
 ends: 1 month grace (13 months cloud run), retrieve until +2 months, then
 delete eligible; weekly cancellable notices in that window.
 

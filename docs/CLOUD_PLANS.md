@@ -42,9 +42,12 @@ the shop’s **subscribed** plan only.
 
 ---
 
-## 2. Yearly price (INR, GST 18% inclusive)
+## 2. Yearly price (INR list, **tax exclusive**)
 
-| Plan | Price to customer / year |
+List prices are the **raw** amount Kumkaj charges for the plan. They do
+**not** include GST, VAT, sales tax, or any other local levy.
+
+| Plan | Raw price / year (ex-tax) |
 | --- | --- |
 | Free forever | ₹0 |
 | Steady | **₹6,000** |
@@ -52,13 +55,33 @@ the shop’s **subscribed** plan only.
 | Priority | **₹24,000** |
 | Custom | Quote (typically at least Priority unless we agree otherwise) |
 
-Other currencies / gateways later; keep the same plan shape globally.
-Do not invent India-only product scope — only the INR list above is
-locked for now.
+### Tax at the billing gateway (unified worldwide)
+
+- Kumkaj / Khaynjo send the gateway the **raw** plan amount (+ customer
+  location / tax settings as the gateway requires).
+- The **gateway** (e.g. Stripe Tax or equivalent) computes and collects
+  the correct tax for that buyer’s country. Do **not** hard-code
+  country tax tables or “always 18% GST” into the product.
+- Same five plans everywhere; only the invoice tax line changes by
+  place of supply / registration. No India-only cloud edition.
+
+**India example (18% GST), for clarity only — not a second price list:**
+
+| Plan | Raw | Customer pays if GST 18% applies |
+| --- | --- | --- |
+| Steady | ₹6,000 | ₹7,080 |
+| Swift | ₹12,000 | ₹14,160 |
+| Priority | ₹24,000 | ₹28,320 |
+
+Other currencies / display FX later; keep the **same plan shape** and the
+same **ex-tax** principle. Do not invent India-only product scope — only
+this INR raw list is locked for now.
 
 Planning note (not customer copy): host COGS at full-quota use was
 estimated in discussion; list prices assume typical mix plus scale. Revisit
-from real AWS/GCP bills after metering ships.
+from real AWS/GCP bills after metering ships. Firm tax treatment for
+exports / foreign buyers is a Gotigin CA + gateway-config matter, not a
+separate Khaynjo plan.
 
 ---
 

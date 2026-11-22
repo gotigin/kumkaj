@@ -1033,8 +1033,10 @@ plan membership, for example:
 
 Internally Kumkaj may meter many resources. Externally: **free local
 product; paid yearly cloud plan for quota + bandwidth; same plans for
-everyone.** List prices and lifecycle (grace, retrieve, delete) live in
-[`CLOUD_PLANS.md`](CLOUD_PLANS.md), not as scattered claims here.
+everyone.** List prices are **tax-exclusive (raw)**; GST/VAT/sales tax
+is applied at checkout by the **billing gateway** per buyer country —
+see [`CLOUD_PLANS.md`](CLOUD_PLANS.md). Lifecycle (grace, retrieve,
+delete) lives there too, not as scattered claims here.
 
 Optional later services (SSO, on-premise managed deployments, custom
 integrations) may exist as contracted offerings under **Custom** or as
