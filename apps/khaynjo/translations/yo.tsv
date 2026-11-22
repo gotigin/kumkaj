@@ -318,7 +318,7 @@ inventory	Oja
 inventory_stock	Oja & iṣura
 branches	Awọn ẹka
 branches_org	Awọn ẹka & org
-credit_customers	Awọn alabara ati awọn olupese (awọn akọọlẹ kirẹditi)
+credit_customers	Ẹgbẹ (awọn akọọlẹ kirẹditi)
 customer_name_ph	Onibara tabi orukọ olupese
 new_customer_ph	Onibara titun tabi orukọ olupese
 item_name_ph	Orukọ ohun akojọ aṣayan akojọ (fun apẹẹrẹ Masala Dosa)
@@ -929,7 +929,7 @@ duress_off	Ṣii silẹ pajawiri PIN wa ni pipa
 duress_saved	Ṣii silẹ pajawiri PIN ti fipamọ
 duress_cleared	Ṣii silẹ pajawiri PIN paa
 upi_amount_ph	Iye UPI
-void	Ofo tita
+void	Fagilee
 write_off_ap	Kọ AP
 write_off_heading	Kọ silẹ (ko kuro laisi sisanwo)
 write_off_nil	Kọ pa / nil iwontunwonsi

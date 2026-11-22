@@ -5,7 +5,7 @@ pin_hint	د مالک PIN د 0000 په توګه پیل کیږي
 sell	فرمایش
 buy	پېرود
 books	د ورځې کتاب
-books_help	= امرونه. پیرود = پیرود او لګښتونه. ګوندونه = کریډیټ پیرودونکي او عرضه کونکي.
+books_help	= امرونه. پیرود = پیرود او لګښتونه. اړخونه = کریډیټ پیرودونکي او عرضه کونکي.
 buy_help	رونه او عرضه کوونکي بیلونه (پیسې بهر). په حساب کې د ګوند په لیجر کې پاتې کیږي.
 sell_money_in	یو امر واخلئ
 buy_money_out	لګښت / عرضه کوونکي بل
@@ -46,7 +46,7 @@ total	ټول
 cash	نغدې
 upi	UPI
 card	کارت
-credit	ګوندونه
+credit	اړخونه
 clear	روښانه
 ready_to_sell	کتاب ته چمتو دی
 today_prefix	نن
@@ -318,7 +318,7 @@ inventory	انوینٹری
 inventory_stock	زیرمه او ذخیره
 branches	څانګې
 branches_org	څانګې او ارګانونه
-credit_customers	ګوندونه (خاته او عرضه کوونکي)
+credit_customers	اړخونه (خاته او عرضه کوونکي)
 customer_name_ph	د ګوند نوم
 new_customer_ph	د ګوند نوی نوم
 item_name_ph	د توکي نوم (د مثال په توګه مساله ډوسا)

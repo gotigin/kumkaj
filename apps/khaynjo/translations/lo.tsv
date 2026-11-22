@@ -5,7 +5,7 @@ pin_hint	ເຈົ້າຂອງPINເລີ່ມຕົ້ນ0000
 sell	ຄຳສັ່ງ
 buy	ຊື້
 books	ປຶ້ມມື້
-books_help	ສະຫຼຸບບັນຊີຂອງມື້ນີ້. ຄໍາສັ່ງ = ຄໍາສັ່ງເຂົ້າມາ. ຊື້ = ການຊື້ແລະຄ່າໃຊ້ຈ່າຍ. ລູກຄ້າແລະຜູ້ສະຫນອງ = ລູກຄ້າສິນເຊື່ອແລະຜູ້ສະຫນອງ.
+books_help	ສະຫຼຸບບັນຊີຂອງມື້ນີ້. ຄໍາສັ່ງ = ຄໍາສັ່ງເຂົ້າມາ. ຊື້ = ການຊື້ແລະຄ່າໃຊ້ຈ່າຍ. ຝ່າຍ = ລູກຄ້າສິນເຊື່ອແລະຜູ້ສະຫນອງ.
 buy_help	ໃບເກັບເງິນຄ່າໃຊ້ຈ່າຍ ແລະໃບເກັບເງິນຜູ້ສະໜອງ (ເງິນອອກ). ໃນບັນຊີຍັງຄົງຢູ່ໃນບັນຊີບັນຊີລູກຄ້າຫຼືຜູ້ສະຫນອງ.
 sell_money_in	ເອົາຄໍາສັ່ງ
 buy_money_out	ຄ່າໃຊ້ຈ່າຍ / ບັນຊີລາຍການຜູ້ສະຫນອງ
@@ -46,7 +46,7 @@ total	ທັງໝົດ
 cash	ເງິນສົດ
 upi	UPI
 card	ບັດ
-credit	ລູກຄ້າແລະຜູ້ສະຫນອງ
+credit	ຝ່າຍ
 clear	ຈະແຈ້ງ
 ready_to_sell	ພ້ອມຈອງແລ້ວ
 today_prefix	ມື້ນີ້
@@ -318,7 +318,7 @@ inventory	ສິນຄ້າຄົງຄັງ
 inventory_stock	ສິນຄ້າຄົງຄັງ & ຫຼັກຊັບ
 branches	ສາຂາ
 branches_org	ສາຂາ & org
-credit_customers	ລູກຄ້າ ແລະຜູ້ສະໜອງ (ບັນຊີສິນເຊື່ອ)
+credit_customers	ຝ່າຍ (ບັນຊີສິນເຊື່ອ)
 customer_name_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງ
 new_customer_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງໃໝ່
 item_name_ph	ຊື່ລາຍການ (ເຊັ່ນ: Masala Dosa)
@@ -929,7 +929,7 @@ duress_off	ການປົດລັອກສຸກເສີນ PIN ປິດຢ�
 duress_saved	ບັນທຶກການປົດລັອກສຸກເສີນ PIN
 duress_cleared	ການປົດລັອກສຸກເສີນ PIN ປິດ
 upi_amount_ph	UPI ຈຳນວນ
-void	ການຂາຍໂມ້
+void	ຍົກເລີກ
 write_off_ap	ຂຽນອອກ AP
 write_off_heading	ຂຽນອອກ (ຈະແຈ້ງໂດຍບໍ່ມີການຈ່າຍເງິນ)
 write_off_nil	ຂຽນ off / nil balance
