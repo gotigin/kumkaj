@@ -233,3 +233,16 @@ need the author and licence named.
 | `sides-dips/cheese-dip.webp` | spinach artichoke dip with "Vegan Cheese Dip Sauce" text overlay | beer/cheese dip and pretzels + fried green tomatoes | theogeo | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://www.flickr.com/photos/91252560@N00/4202111048 | resized, WebP |
 | `sides-dips/dinner-roll-with-butter.webp` | Swiss Chalet chicken plate with fries and QR promo sign | Warm Sourdough Bread Rolls with sea salt, olive oil, Seville | avlxyz | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://www.flickr.com/photos/10559879@N00/3748584403 | resized, WebP |
 | `sides-dips/mint-chutney.webp` | hands holding vada pav, not a chutney bowl | Pudina Chutney | Ramesh NG | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=14999452 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 thai-asian)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `thai-asian/kimchi.webp` | six-panel kimchi collage | Korean Kimchi | AhmadElq | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=82449544 | resized, WebP |
+| `thai-asian/chicken-adobo.webp` | packaged cured meat slab with brand sticker | Chicken adobo with potato | Irvin Parco Sto. Tomas | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=124812065 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 south-indian)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `south-indian/gongura-pachadi.webp` | dry tempering spices on banana-leaf plate | Gongura Chutney | Coolcheetahbangalore | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40980789 | resized, WebP |
