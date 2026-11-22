@@ -111,3 +111,17 @@ need the author and licence named.
 |---|---|---|---|---|---|---|
 | `middle-eastern/turkish-delight.webp` | shop display with KOSKA price tags / text | Lokum (Turkish Delight) | ProjectManhattan | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=33188469 | resized, WebP |
 | `middle-eastern/fatteh.webp` | garnished hummus bowl, not layered fatteh | فتة سخينه | (Commons CC0 uploader) | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=163915557 | resized, WebP |
+
+## Replaced 2026-11-22 (L14 hot-beverages)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `hot-beverages/cafe-bombon.webp` | milk poured into black coffee, not layered bombón | Cafe bombon2 | José Manuel Pérez | Public domain | https://commons.wikimedia.org/w/index.php?curid=1820197 | resized, WebP |
+| `hot-beverages/hibiscus-tea.webp` | iced layered pink drink outdoors | A glass of hibiscus tea 01 | claralieu | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=123857735 | resized, WebP |
+| `hot-beverages/hojicha.webp` | dry roasted tea leaves only | Image-Hoji-cha-2 | Greudin | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=3732944 | resized, WebP |
+| `hot-beverages/instant-coffee.webp` | dry instant coffee granules pile | Coffee in cup | Paolo Neo | Public domain | https://commons.wikimedia.org/w/index.php?curid=24902338 | resized, WebP |
+| `hot-beverages/matcha-latte.webp` | spoon of matcha powder only | Matcha green tea latte art | Jeff Nelson | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=112725443 | resized, WebP |
+| `hot-beverages/mocha.webp` | iced layered drinks with straws | Caffè Mocha by Phil | Evilandiie | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | https://commons.wikimedia.org/w/index.php?curid=5682730 | resized, WebP |
+| `hot-beverages/noon-chai.webp` | tea room set with branded Chai Jaai coaster | Kashmiri Chai | Miansari66 | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=46332032 | resized, WebP |
+| `hot-beverages/rooibos-tea.webp` | dry loose-leaf pile only | Cup of rooibos tea (23427608102) | StockyPics | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=97601418 | resized, WebP |
+| `hot-beverages/vienna-coffee.webp` | empty decorated ceramic mug | Wiener Melange | Summ | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=3935385 | resized, WebP |
