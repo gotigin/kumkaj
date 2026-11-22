@@ -718,21 +718,21 @@ net_word	नेट
 offline_badge	OFFLINE
 optional_login_help	नांगौब्ला लगइन (id + पासवार्ड)। गिबिया मोनसे साजो; उन पासवार्ड खालि बाहायग्रा सोलायनो हायो।
 or_unlock_login	एबा लगइन id + पासवार्डजों खुलि हो
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
-shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
-cloud_account_title	मोक्लांजो खाता
-cloud_account_help	moklanjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
-cloud_name_ph	नाम: (वैकल्पिक)
+or_unlock_shop_login	नाथाय दुकान लगिन जों अनलक खालाम
+shop_login_help	साईजायै: PIN नि जायगायाव बे दुकाननि स्टाफ इउजारनेम आरो पासवार्द जों अनलक खालाम (अफलाइनआव काम खालामो)।
+cloud_account_title	Moklanjo एकाउन्ट
+cloud_account_help	moklanjo.com/account निमोनै एकाउन्ट जों रेजिस्टार नाथाय साइन इन खालाम। नोंथांनि क्लाउड id आरो फ्रि प्लान दां।
+cloud_name_ph	मुं (साईजायै)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
-cloud_continue	जारी रखना
-cloud_forgot	पासवर्ड भूल गए?
-cloud_web_methods	वेबसाइट पर Google और अन्य तरीके
-cloud_signing_in	इन कर रहे हैं…
-cloud_sending_reset	रीसेट लिंक भेजा जा रहा है...
-cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
-cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
-cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
+cloud_continue	लाबाय
+cloud_forgot	पासवार्द बावलांबाय?
+cloud_web_methods	वेबसाइटआव Google आरो गुबुन आदबफोर
+cloud_signing_in	साइन इन जागासिनो…
+cloud_sending_reset	रिसेट लिंक दैथायहरगासिनो…
+cloud_forgot_sent	बे इमयेलआव एकाउन्ट दंब्ला रिसेट लिंक लाबायगासिनो।
+cloud_welcome	{user} · {plan} बादि साइन इन जाबाय
+cloud_created	एकाउन्ट दानाय जाबाय। नोंथाङा हानाय समाव इमयेल नागिर।
 cloud_cancel	केन्सेल
 permission_preset	साख्रि
 preset_help_moklanjo	केसियार: फान। मेनेजार: फान + आइटम + बातिल/सोलाय।

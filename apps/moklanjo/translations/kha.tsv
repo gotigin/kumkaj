@@ -718,21 +718,21 @@ net_word	Jar
 offline_badge	KHLEM LAIN
 optional_login_help	Ka jingrung kaba lah ban jied (id + ka ktien rieh). U trai set shisien; tang u nongpyndonkam uba lah ban pynkylla ia ka password hadien.
 or_unlock_login	Lane plie da ka id login + ka ktien rieh
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
-shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
-cloud_account_title	मोक्लांजो खाता
-cloud_account_help	moklanjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
-cloud_name_ph	नाम: (वैकल्पिक)
+or_unlock_shop_login	Lane plie da ka login ka dukan
+shop_login_help	Ba lah ban jied: plie da ka kyrteng nongtrei bad ka password jong kane ka dukan, ym da ka PIN (ka trei offline).
+cloud_account_title	Ka account Moklanjo
+cloud_account_help	Register lane sign in da ka account kaba long kum moklanjo.com/account. Ka thaw ia ka cloud id jong phi bad ka plan bait.
+cloud_name_ph	Kyrteng (lah ban long thylli)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
-cloud_continue	जारी रखना
-cloud_forgot	पासवर्ड भूल गए?
-cloud_web_methods	वेबसाइट पर Google और अन्य तरीके
-cloud_signing_in	इन कर रहे हैं…
-cloud_sending_reset	रीसेट लिंक भेजा जा रहा है...
-cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
-cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
-cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
+cloud_continue	Mynjur
+cloud_forgot	Klet ia ka password?
+cloud_web_methods	Google bad ki lynti kiwei ha ka website
+cloud_signing_in	Ka sign in ka long…
+cloud_sending_reset	Ka phah ia ka link pynkylla…
+cloud_forgot_sent	Lada don account ha kata ka email, ka link pynkylla ka long ha ka lynti.
+cloud_welcome	La sign in kum {user} · {plan}
+cloud_created	La thaw account. Peit ia ka email ban pynshisha ynda lah.
 cloud_cancel	Pynsangeh
 permission_preset	Ka kam
 preset_help_moklanjo	U nongthied: die. U nongpyniaid: die + tiar + pynkylla/pynkylla.
