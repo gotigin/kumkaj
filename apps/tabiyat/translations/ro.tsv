@@ -613,7 +613,7 @@ cloud_web_methods	Google și alte metode pe site
 cloud_signing_in	Se autentifică…
 cloud_sending_reset	Se trimite linkul de resetare…
 cloud_forgot_sent	Dacă acel e-mail are un cont, un link de resetare este pe drum.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Conectat ca {user} · {plan}
 cloud_created	Cont creat. Verificați e-mailul pentru a confirma când puteți.
 cloud_cancel	Anulează
 permission_preset	Post
@@ -836,7 +836,7 @@ schemes	Scheme / oferte
 schemes_help	Unul cumpărat unul gratis, reducere procentuală și pachete fixe. Exemplu: Cumpără 2 paracetamol, primești 1 vitamină.
 scheme_bogo_ph	Cumpără 2 paracetamol, primești 1 vitamină
 add_scheme	Adaugă BOGO
-schedule_ph	Ore — lun-vin 07:00-11:00 sau Seara 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	ID UPI (VPA)
 upi_payee_ph	Nume beneficiar UPI (opțional)
 show_upi_qr	Arată UPI QR

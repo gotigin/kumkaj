@@ -836,7 +836,7 @@ schemes	সকিম / য়াফারমুং
 schemes_help	পাইদি-কাইসা-মানদি-কাইসা, পেরচেনত ওফফ, তেই সৱলাইজাক বুনদলে. উধাহারানা: 2 পারাচেতামোল পাইখে 1 ভিতামিন মাননাই.
 scheme_bogo_ph	পারাচেতামোল 2 পাই খে 1 ভিতামিন মান নাই
 add_scheme	BOGO চাপদি
-schedule_ph	জোরা — সাল-সুম 07:00-11:00 এবা হোরনি 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI রাং মানাই মুং (চাজাক য়া)
 show_upi_qr	ফুনুকদি UPI QR

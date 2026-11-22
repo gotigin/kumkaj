@@ -836,7 +836,7 @@ schemes	Pwomosyon / òf
 schemes_help	Achte-yon sèl-jwenn-yon sèl, pousan remise, ak pakèt fiks. Egzanp: Achte 2 parasetamol jwenn 1 vitamin.
 scheme_bogo_ph	Achte 2 paracetamol jwenn 1 vitamin
 add_scheme	Ajoute BOGO
-schedule_ph	Orè — lendi-vendredi 07:00-11:00 oswa aswè 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Non benefisyè UPI (opsyonèl)
 show_upi_qr	Montre QR UPI

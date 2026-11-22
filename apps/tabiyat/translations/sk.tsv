@@ -613,7 +613,7 @@ cloud_web_methods	Google a ďalšie metódy na webe
 cloud_signing_in	Prihlasuje sa…
 cloud_sending_reset	Odosiela sa odkaz na obnovenie…
 cloud_forgot_sent	Ak má tento e-mail účet, odkaz na obnovenie je na ceste.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Prihlásený ako {user} · {plan}
 cloud_created	Účet vytvorený. Skontrolujte e-mail a overte, keď môžete.
 cloud_cancel	Zrušiť
 permission_preset	Práca
@@ -836,7 +836,7 @@ schemes	Schémy / ponuky
 schemes_help	Kúpiť jeden-dostať jeden, percentá zľava a pevné balíky. Príklad: Kúpou 2 paracetamolu získate 1 vitamín.
 scheme_bogo_ph	Kúpte si 2 paracetamol a získate 1 vitamín
 add_scheme	Pridať BOGO
-schedule_ph	Otváracie hodiny — Po-Pia 07:00-11:00 alebo večer 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI meno príjemcu platby (voliteľné)
 show_upi_qr	Zobraziť UPI QR

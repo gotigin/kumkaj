@@ -836,7 +836,7 @@ schemes	Cynlluniau / cynigion
 schemes_help	Prynu-un-cael-un, y cant i ffwrdd, a bwndeli sefydlog. Enghraifft: Prynwch 2 paracetamol cael 1 fitamin.
 scheme_bogo_ph	Prynwch 2 paracetamol cael 1 fitamin
 add_scheme	Ychwanegu BOGO
-schedule_ph	Oriau - Llun-Gwener 07:00-11:00 neu gyda'r nos 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	ID UPI (VPA)
 upi_payee_ph	Enw talai UPI (dewisol)
 show_upi_qr	Dangos UPI QR

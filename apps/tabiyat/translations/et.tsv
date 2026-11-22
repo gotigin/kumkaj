@@ -836,7 +836,7 @@ schemes	Skeemid/pakkumised
 schemes_help	Ostke üks-ühe, protsendiline allahindlus ja fikseeritud komplektid. Näide: Ostes 2 paratsetamooli, saad 1 vitamiini.
 scheme_bogo_ph	Ostes 2 paratsetamooli, saad 1 vitamiini
 add_scheme	Lisa BOGO
-schedule_ph	Ajad — E-R 07:00-11:00 või õhtul 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI maksesaaja nimi (valikuline)
 show_upi_qr	Kuva UPI QR

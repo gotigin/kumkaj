@@ -718,7 +718,7 @@ service_pct_ph	सेवा % पर्यायी 0/10/12
 short_code_ph	लहान कोड (MG02)
 starting_password_ph	सुरुवातीचा पासवर्ड (पर्यायी)
 starting_pin_ph	सुरुवातीचा PIN (4–12 अंक)
-tax_rate_ph	कर दराचे नाव किंवा % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	कर दर किंवा % (उदा. 5, 18)
 to_code_ph	ला कोड (kg)
 uncleared_no_ph	वरील अनक्लिअर्ड #
 unit_cost_ph	एकक किंमत
@@ -836,7 +836,7 @@ schemes	स्कीम / ऑफर
 schemes_help	एक खरेदी एक मोफत, टक्के सूट, आणि बंडल. उदाहरण: 2 पॅरासिटामॉलवर 1 जीवनसत्व.
 scheme_bogo_ph	2 पॅरासिटामॉलवर 1 जीवनसत्व
 add_scheme	BOGO जोडा
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	वेळ (उदा. सोम-शुक्र 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI प्राप्तकर्ता (पर्यायी)
 show_upi_qr	UPI QR दाखवा

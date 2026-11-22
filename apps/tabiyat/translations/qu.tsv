@@ -613,7 +613,7 @@ cloud_web_methods	Google hinaspa huk ñankuna webpi
 cloud_signing_in	Yaykuchkan…
 cloud_sending_reset	Musuqmanta churay link kachachkan…
 cloud_forgot_sent	Chay correo yupayniyuq kaptin, musuqmanta churay link ñanpi kachkan.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} hinam yaykurqanki
 cloud_created	Yupay ruwakun. Correoykita qhawariy chiqaqchayta atispayki.
 cloud_cancel	Sayachiy
 permission_preset	Llamkana
@@ -836,7 +836,7 @@ schemes	Esquemas / ofrecimientos nisqakuna
 schemes_help	Huk rantiy-hukta-hukta tariy, pachakmanta huknin qullqita, chaymanta takyasqa paquetes. Ejemplo: 2 paracetamol rantiy 1 vitaminata chaskiy.
 scheme_bogo_ph	2 paracetamol rantiy 1 vitaminata tariy
 add_scheme	Yapay BOGO .
-schedule_ph	Horas — Lunes-Vie 07:00-11:00 utaq Ch’isi 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI pagaqpa sutin (munasqa) .
 show_upi_qr	Qawachiy UPI QR

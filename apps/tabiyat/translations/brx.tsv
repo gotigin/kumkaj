@@ -836,7 +836,7 @@ schemes	स्किम / अफार
 schemes_help	बाय-मोनसे-मोनसे, जौखोन्दो बन्द, आरो थि बन्डल। बिदिन्थि : 2 पेरासिटामल बाय, 1 भिटामिन ला।
 scheme_bogo_ph	2 पेरासिटामल बाय, 1 भिटामिन
 add_scheme	BOGO दाजाब
-schedule_ph	घन्टा — सोम-शुक्र 07:00-11:00 एबा मोनाबिलि 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI पायी मुं (नांगौब्ला)
 show_upi_qr	UPI QR दिन्थि

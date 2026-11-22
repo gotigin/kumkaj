@@ -718,7 +718,7 @@ service_pct_ph	Layanan % opsional 0/10/12
 short_code_ph	Kode pendek (MG02)
 starting_password_ph	Kata sandi awal (opsional)
 starting_pin_ph	PIN awal (4–12 digit)
-tax_rate_ph	Nama tarif pajak atau % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Tarif pajak atau % (mis. 5, 18)
 to_code_ph	Kode ke (kg)
 uncleared_no_ph	Nomor belum kliring di atas
 unit_cost_ph	Biaya satuan
@@ -836,7 +836,7 @@ schemes	Skema
 schemes_help	Beli satu gratis satu, diskon, dan bundel. Contoh: 2 parasetamol dapat 1 vitamin.
 scheme_bogo_ph	2 parasetamol, 1 vitamin
 add_scheme	Tambah BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Jam (mis. Sen-Jum 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Penerima UPI (opsional)
 show_upi_qr	Tampilkan QR UPI

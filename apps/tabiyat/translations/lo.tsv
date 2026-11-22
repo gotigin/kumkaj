@@ -836,7 +836,7 @@ schemes	ແຜນງານ / ຂໍ້ສະເໜີ
 schemes_help	ຊື້-ຮັບ-ຫນຶ່ງ, ສ່ວນຫຼຸດ, ແລະຊຸດຄົງທີ່. ຕົວຢ່າງ: ຊື້ຢາພາຣາເຊຕາໂມນ 2 ແຖມ 1 ວິຕາມິນ.
 scheme_bogo_ph	ຊື້ຢາພາຣາເຊຕາໂມນ 2 ແຖມ 1 ວິຕາມິນ
 add_scheme	ເພີ່ມ BOGO
-schedule_ph	ຊົ່ວໂມງ — ຈັນ-ສຸກ 07:00-11:00 ໂມງ ຫຼື ຕອນແລງ 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ຊື່ຜູ້ຮັບເງິນ (ເລືອກໄດ້)
 show_upi_qr	ສະແດງ UPI QR

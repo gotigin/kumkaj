@@ -613,7 +613,7 @@ cloud_web_methods	Google og andre metoder på nettstedet
 cloud_signing_in	Logger inn…
 cloud_sending_reset	Sender tilbakestillingslenke…
 cloud_forgot_sent	Hvis den e-posten har en konto, er en tilbakestillingslenke på vei.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Logget inn som {user} · {plan}
 cloud_created	Konto opprettet. Sjekk e-posten for å bekrefte når du kan.
 cloud_cancel	Avbryt
 permission_preset	Jobb
@@ -836,7 +836,7 @@ schemes	Ordninger / tilbud
 schemes_help	Kjøp-en-få-en, prosent avslag og faste pakker. Eksempel: Kjøp 2 paracet få 1 vitamin.
 scheme_bogo_ph	Kjøp 2 paracet få 1 vitamin
 add_scheme	Legg til BOGO
-schedule_ph	Åpningstider – man-fre 07:00-11:00 eller kveld 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI-ID (VPA)
 upi_payee_ph	UPI-mottakernavn (valgfritt)
 show_upi_qr	Vis UPI QR

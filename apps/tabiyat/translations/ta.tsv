@@ -718,7 +718,7 @@ service_pct_ph	சேவை % விருப்பம் 0/10/12
 short_code_ph	குறுகிய குறியீடு (MG02)
 starting_password_ph	தொடக்க கடவுச்சொல் (விருப்பம்)
 starting_pin_ph	தொடக்க PIN (4–12 இலக்கங்கள்)
-tax_rate_ph	வரி விகிதப் பெயர் அல்லது % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	வரி விகிதம் அல்லது % (எ.கா. 5, 18)
 to_code_ph	க்கு குறியீடு (kg)
 uncleared_no_ph	மேலே உள்ள தீர்க்கப்படாத #
 unit_cost_ph	அலகு விலை
@@ -836,7 +836,7 @@ schemes	திட்டங்கள் / சலுகைகள்
 schemes_help	ஒன்று வாங்கி ஒன்று இலவசம், சதவீத தள்ளுபடி, தொகுப்பு. எ.கா: 2 பாராசிட்டமாலுக்கு 1 வைட்டமின்.
 scheme_bogo_ph	2 பாராசிட்டமாலுக்கு 1 வைட்டமின்
 add_scheme	BOGO சேர்
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	நேரம் (எ.கா. திங்கள்-வெள்ளி 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI பெறுநர் (விருப்ப)
 show_upi_qr	UPI QR காட்டு

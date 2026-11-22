@@ -613,7 +613,7 @@ cloud_web_methods	Google ва усулҳои дигар дар сомона
 cloud_signing_in	Воридшавӣ…
 cloud_sending_reset	Ирсоли пайванди барқарорсозӣ…
 cloud_forgot_sent	Агар он почта ҳисоб дошта бошад, пайванди барқарорсозӣ дар роҳ аст.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Ҳамчун {user} · {plan} ворид шудед
 cloud_created	Ҳисоб сохта шуд. Почтаро барои тасдиқ санҷед, вақте метавонед.
 cloud_cancel	Бекор
 permission_preset	Кор
@@ -836,7 +836,7 @@ schemes	Нақшаҳо / пешниҳодҳо
 schemes_help	Хариди як-як, фоизи тахфиф ва бастаҳои собит. Мисол: 2 парацетамол харед, 1 витамин гиред.
 scheme_bogo_ph	2 парацетамол харед 1 витамин гиред
 add_scheme	Иловаи BOGO
-schedule_ph	Соатҳо - Душанбе-Ҷум 07:00-11:00 ё шом 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	Шиносномаи UPI (VPA)
 upi_payee_ph	Номи гирандаи UPI (ихтиёрӣ)
 show_upi_qr	Нишон додани QR-и UPI

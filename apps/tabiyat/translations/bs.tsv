@@ -836,7 +836,7 @@ schemes	Akcije / ponude
 schemes_help	Kupi-jednu-dobiješ-jednu, popust u procentima i fiksni paketi. Primjer: Kupi 2 paracetamola i dobiješ 1 vitamin.
 scheme_bogo_ph	Kupi 2 paracetamola i dobiješ 1 vitamin
 add_scheme	Dodaj BOGO
-schedule_ph	Sati — Pon-Pet 07:00-11:00 ili Veče 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Ime primaoca UPI (nije obavezno)
 show_upi_qr	Prikaži UPI QR

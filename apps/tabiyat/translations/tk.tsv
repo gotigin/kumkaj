@@ -613,7 +613,7 @@ cloud_web_methods	Websahypada Google we beýleki usullar
 cloud_signing_in	Girilýär…
 cloud_sending_reset	Täzeden düzmek baglanyşygy iberilýär…
 cloud_forgot_sent	Şol e-poçtada hasap bar bolsa, täzeden düzmek baglanyşygy ýolda.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} hökmünde girdiniz
 cloud_created	Hasap döredildi. Mümkin bolanda e-poçtaňyzy barlap tassyklanyň.
 cloud_cancel	Ýatyr
 permission_preset	Iş

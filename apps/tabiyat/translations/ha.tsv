@@ -613,7 +613,7 @@ cloud_web_methods	Google da sauran hanyoyin akan gidan yanar gizon
 cloud_signing_in	Ana shiga…
 cloud_sending_reset	Ana aika hanyar haɗin sake saiti…
 cloud_forgot_sent	Idan imel ɗin yana da asusu, hanyar haɗin sake saiti yana kan hanya.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	An shiga a matsayin {user} · {plan}
 cloud_created	An ƙirƙira asusu. Bincika imel ɗin ku don tabbatarwa lokacin da za ku iya.
 cloud_cancel	Soke
 permission_preset	Aiki
@@ -836,7 +836,7 @@ schemes	Shirye-shirye / tayi
 schemes_help	Sayi-daya-samu-daya, kashi kashi, da kafaffen daure. Misali: Sayi paracetamol 2 sami bitamin 1.
 scheme_bogo_ph	Sayi paracetamol 2 sami bitamin 1
 add_scheme	Ƙara saya-samu
-schedule_ph	Awanni - Litinin-Jumma'a 07:00-11:00 ko Maraice 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	Lambar UPI (VPA)
 upi_payee_ph	Sunan mai karɓar UPI (ba dole ba)
 show_upi_qr	Nuna QR na UPI

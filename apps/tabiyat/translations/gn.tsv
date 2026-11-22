@@ -836,7 +836,7 @@ schemes	Esquemas / ofertas rehegua
 schemes_help	Jogua-peteĩ-ohupyty-peteĩ, porcentaje descuento ha paquete fijo. Techapyrã: Jajogua 2 paracetamol jahupyty 1 vitamina.
 scheme_bogo_ph	Jogua 2 paracetamol ohupyty 1 vitamina
 add_scheme	Oñemoĩve BOGO .
-schedule_ph	Aravo — Lunes-Vie 07:00-11:00 térã Ka’aru 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ojepagáva réra (opcional) .
 show_upi_qr	Ohechauka UPI QR

@@ -836,7 +836,7 @@ schemes	מבצעים / הצעות
 schemes_help	קנה אחד-קבל אחד, אחוז הנחה וחבילות קבועות. דוגמה: קנה 2 אקמול קבל ויטמין 1.
 scheme_bogo_ph	קנה 2 אקמול קבל ויטמין 1
 add_scheme	הוסף BOGO
-schedule_ph	שעות - שני-שישי 07:00-11:00 או ערב 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	מזהה UPI (VPA)
 upi_payee_ph	שם מוטב UPI (לא חובה)
 show_upi_qr	הצג UPI QR

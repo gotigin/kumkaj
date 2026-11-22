@@ -836,7 +836,7 @@ schemes	Ruahman / offer
 schemes_help	Buy-one-get-one, percent off, leh bundle fixed te pawh a awm bawk. Entirnan: Paracetamol 2 lei la vitamin 1 hmu rawh.
 scheme_bogo_ph	Paracetamol 2 lei la, vitamin 1 hmu rawh
 add_scheme	BOGO telh
-schedule_ph	Darkar — Thawhlehni-Zirtawpni 07:00-11:00 emaw Zan dar 17:00-19:00=150 emaw
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI hmingchhiar (VPA)
 upi_payee_ph	UPI dawngtu hming (duh chuan)
 show_upi_qr	UPI QR lantir

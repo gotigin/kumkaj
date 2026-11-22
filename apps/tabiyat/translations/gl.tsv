@@ -836,7 +836,7 @@ schemes	Promocións / ofertas
 schemes_help	Compra un, obtén un, por cento de desconto e paquetes fixos. Exemplo: Mercar 2 paracetamol obtén 1 vitamina.
 scheme_bogo_ph	Compra 2 paracetamol e obtén 1 vitamina
 add_scheme	Engadir BOGO
-schedule_ph	Horario - Lun-Ven 07:00-11:00 ou noite 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Nome do beneficiario UPI (opcional)
 show_upi_qr	Mostrar o QR UPI

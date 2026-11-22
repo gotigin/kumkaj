@@ -836,7 +836,7 @@ schemes	Sémák / ajánlatok
 schemes_help	Vásároljon egyet-egyet, százalékos kedvezmény és rögzített csomagok. Példa: Vegyél 2 paracetamolt, kapsz 1 vitamint.
 scheme_bogo_ph	Vegyél 2 paracetamolt, kapsz 1 vitamint
 add_scheme	BOGO hozzáadása
-schedule_ph	Nyitvatartás: H-P 07:00-11:00 vagy este 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI kedvezményezett neve (nem kötelező)
 show_upi_qr	UPI QR megjelenítése

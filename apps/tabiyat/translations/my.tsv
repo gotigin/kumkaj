@@ -613,7 +613,7 @@ cloud_web_methods	ဝက်ဘ်ဆိုက်ပေါ်ရှိ Google န
 cloud_signing_in	ဝင်နေသည်…
 cloud_sending_reset	ပြန်သတ်မှတ် လင့်ခ် ပို့နေသည်…
 cloud_forgot_sent	ထိုအီးမေးလ်တွင် အကောင့်ရှိပါက ပြန်သတ်မှတ် လင့်ခ် လမ်းတွင်ရှိသည်။
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} အဖြစ် ဝင်ပြီး
 cloud_created	အကောင့် ဖန်တီးပြီး။ အတည်ပြုရန် အီးမေးလ်ကို စစ်ဆေးပါ။
 cloud_cancel	ပယ်ဖျက်
 permission_preset	အလုပ်
@@ -836,7 +836,7 @@ schemes	အစီအစဉ်များ / ကမ်းလှမ်းချက
 schemes_help	ဝယ်-တစ်ခု-ရယူ-တစ်၊ ရာခိုင်နှုန်းလျှော့စျေးနှင့် ပုံသေအတွဲများ။ ဥပမာ- ပါရာစီတမော ၂ လုံးဝယ် ဗီတာမင် ၁ လုံး။
 scheme_bogo_ph	ပါရာစီတမော ၂ လုံးဝယ် ဗီတာမင် ၁ လုံး
 add_scheme	BOGO ထည့်ပါ
-schedule_ph	အလုပ်ချိန် — တနင်္လာ-သောကြာ 07:00-11:00 သို့မဟုတ် ညနေ 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI စာရင်းထဲသို့ငွေပေးရသူအမည် (ရွေးချယ်နိုင်)
 show_upi_qr	UPI QR ပြပါ

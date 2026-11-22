@@ -613,7 +613,7 @@ cloud_web_methods	වෙබ් අඩවියේ Google සහ වෙනත් 
 cloud_signing_in	පුරනය වෙමින්…
 cloud_sending_reset	යළි පිහිටුවීමේ සබැඳිය යවමින්…
 cloud_forgot_sent	එම විද්‍යුත් තැපෑලට ගිණුමක් තිබේ නම්, යළි පිහිටුවීමේ සබැඳියක් යමින් පවතී.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} ලෙස පුරනය විය
 cloud_created	ගිණුම සාදන ලදී. හැකි විට තහවුරු කිරීමට ඔබේ විද්‍යුත් තැපෑල පරීක්ෂා කරන්න.
 cloud_cancel	අවලංගු
 permission_preset	රැකියාව
@@ -836,7 +836,7 @@ schemes	යෝජනා ක්රම / දීමනා
 schemes_help	එකක් මිල දී ගන්න, සියයට වට්ටමක්, සහ ස්ථාවර මිටි. උදාහරණය: පැරසිටමෝල් 2 ක් මිලදී ගන්න, විටමින් 1 ක් ලබා ගන්න.
 scheme_bogo_ph	පැරසිටමෝල් 2 ක් මිලදී ගන්න, විටමින් 1 ක් ලබා ගන්න
 add_scheme	BOGO එකතු කරන්න
-schedule_ph	පැය — සඳු-සිකු 07:00-11:00 හෝ සවස 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ගෙවන්නාගේ නම (විකල්ප)
 show_upi_qr	UPI QR පෙන්වන්න
@@ -887,8 +887,8 @@ opening_client	සේවාලාභියා විවෘත කරමින්
 preparing_desk	මේසය සූදානම් කරමින්...
 opening_server	සේවාදායකය විවෘත කරමින්...
 creating_server	සේවාදායකය නිර්මාණය කරමින්...
-setup_restoring	Restoring backup…
-setup_restored	Restored — unlock with the Owner PIN from that backup.
+setup_restoring	උපස්ථය ප්‍රතිස්ථාපනය කරමින්…
+setup_restored	ප්‍රතිස්ථාපනය කළා — එම උපස්ථයේ හිමිකරු PIN එකෙන් අගුළු හරින්න.
 add_dishes	ඖෂධ එකතු කරන්න
 order_so_far	මෙම ඇණවුම මත: {n} · {total}
 no_dish_match	"{q}" කිසිදු අයිතමයක් නොගැලපේ

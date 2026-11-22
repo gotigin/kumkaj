@@ -836,7 +836,7 @@ schemes	Eskemak / eskaintzak
 schemes_help	Erosi-bat-lortu-bat, ehuneko deskontua eta sorta finkoak. Adibidez: 2 parazetamol erosi bitamina 1.
 scheme_bogo_ph	Erosi 2 paracetamol eta lortu bitamina 1
 add_scheme	Gehitu BOGO
-schedule_ph	Ordutegia — astelehenetik ostiralera 07:00-11:00 edo arratsaldean 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI identifikatzailea (VPA)
 upi_payee_ph	UPI hartzailearen izena (aukerakoa)
 show_upi_qr	Erakutsi UPI QR

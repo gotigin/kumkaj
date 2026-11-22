@@ -836,7 +836,7 @@ schemes	سکیمَن / پیشکشَن ہٕنز
 schemes_help	اکھ ہِیو اکھ مِلِو، فیصد رعایت، تہٕ مُقرر بنڈل۔ مِثال: 2 پیراسیٹامول ہِیو 1 وٹامن مِلِو۔
 scheme_bogo_ph	2 پیراسیٹامول ہِیو 1 وٹامن مِلِو
 add_scheme	BOGO شٲمِل کٔرِو
-schedule_ph	گھنٹہ — سوموار-جمعہ 07:00-11:00 یا شام 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI payee ناو (اختیاری)
 show_upi_qr	شو UPI QR

@@ -613,7 +613,7 @@ cloud_web_methods	Vebsaytda Google va boshqa usullar
 cloud_signing_in	Kirilmoqda…
 cloud_sending_reset	Qayta o‘rnatish havolasi yuborilmoqda…
 cloud_forgot_sent	Agar o‘sha email hisobga ega bo‘lsa, qayta o‘rnatish havolasi yo‘lda.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} sifatida kirdingiz
 cloud_created	Hisob yaratildi. Imkoni bo‘lganda emailni tekshirib tasdiqlang.
 cloud_cancel	Bekor qilish
 permission_preset	Ish
@@ -836,7 +836,7 @@ schemes	Sxemalar / takliflar
 schemes_help	Bitta xarid, foiz chegirma va belgilangan to‘plamlar. Misol: 2 paratsetamol sotib oling, 1 vitamin oling.
 scheme_bogo_ph	2 paratsetamol sotib oling, 1 vitamin oling
 add_scheme	BOGO qoʻshish
-schedule_ph	Ish vaqti - dushanba-juma 07:00-11:00 yoki kechqurun 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI identifikator (VPA)
 upi_payee_ph	UPI oluvchi nomi (ixtiyoriy)
 show_upi_qr	UPI QR koʻrsatish

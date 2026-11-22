@@ -58,7 +58,7 @@ today_prefix	आज
 owed	बाकी
 back	वापस
 sold_out	बिक गया
-restock	फिर रखें
+restock	स्टॉक भरें
 not_tracked	गिनती नहीं
 in_stock	स्टॉक में
 marked_sold_out	बिक चुका चिह्न
@@ -194,7 +194,7 @@ credit_summary_fmt	{} ग्राहक · खुला उधार {} · अ�
 recent_label	हाल का:
 inventory	स्टॉक
 branches	शाखाएँ
-credit_customers	उधार ग्राहक
+credit_customers	पार्टियाँ (खाता और सप्लायर)
 customer_name_ph	पार्टी का नाम
 new_customer_ph	नई पार्टी का नाम
 item_price_ph	कीमत
@@ -718,7 +718,7 @@ service_pct_ph	सेवा % वैकल्पिक 0/10/12
 short_code_ph	छोटा कोड (MG02)
 starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
 starting_pin_ph	शुरुआती PIN (4–12 अंक)
-tax_rate_ph	कर दर का नाम या % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	कर दर या % (जैसे 5, 18)
 to_code_ph	को कोड (kg)
 uncleared_no_ph	ऊपर वाला अनक्लियर्ड #
 unit_cost_ph	इकाई लागत
@@ -756,7 +756,7 @@ cancel_item_short	रद्द
 return_to_customer	ग्राहक को लौटाएँ
 short_by	कम है
 tip_not_sale	टिप (स्टाफ़ की, बिक्री नहीं)
-right_settle	भुगतान लेना
+right_settle	भुगतान लें
 right_allowed	अनुमति है
 right_with_approval	अनुमोदन के साथ
 right_denied	अनुमति नहीं
@@ -836,7 +836,7 @@ schemes	स्कीम / ऑफ़र
 schemes_help	खरीदें-एक-पाएँ-एक, प्रतिशत छूट, और बंडल। उदाहरण: 2 पैरासिटामोल पर 1 विटामिन।
 scheme_bogo_ph	2 पैरासिटामोल पर 1 विटामिन
 add_scheme	BOGO जोड़ें
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	समय (जैसे सोम-शुक्र 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI प्राप्तकर्ता (वैकल्पिक)
 show_upi_qr	UPI QR दिखाएँ

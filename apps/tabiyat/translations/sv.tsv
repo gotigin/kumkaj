@@ -613,7 +613,7 @@ cloud_web_methods	Google och andra metoder på webbplatsen
 cloud_signing_in	Loggar in…
 cloud_sending_reset	Skickar återställningslänk…
 cloud_forgot_sent	Om den e-postadressen har ett konto är en återställningslänk på väg.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Inloggad som {user} · {plan}
 cloud_created	Konto skapat. Kontrollera din e-post för att verifiera när du kan.
 cloud_cancel	Avbryt
 permission_preset	Jobb
@@ -718,7 +718,7 @@ service_pct_ph	Service % valfritt 0/10/12
 short_code_ph	Kortkod (MG02)
 starting_password_ph	Startlösenord (valfritt)
 starting_pin_ph	Start-PIN (4–12 siffror)
-tax_rate_ph	Skattesatsens namn eller % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Skattesats eller % (t.ex. 5, 18)
 to_code_ph	Till kod (kg)
 uncleared_no_ph	Oavstämt # ovan
 unit_cost_ph	Enhetskostnad
@@ -836,7 +836,7 @@ schemes	System/erbjudanden
 schemes_help	Köp-en-få-en, procent rabatt och fasta paket. Exempel: Köp 2 paracetamol få 1 vitamin.
 scheme_bogo_ph	Köp 2 paracetamol få 1 vitamin
 add_scheme	Lägg till BOGO
-schedule_ph	Öppettider — mån-fre 07:00-11:00 eller kväll 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-betalningsmottagarens namn (valfritt)
 show_upi_qr	Visa UPI QR

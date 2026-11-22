@@ -613,7 +613,7 @@ cloud_web_methods	वेबसाइट रे Google आर एटाक् त
 cloud_signing_in	साइन इन होक्काना…
 cloud_sending_reset	रीसेट लिंक कुलोकाना…
 cloud_forgot_sent	ओना इमेल रे खाता मेनाक्खान रीसेट लिंक होड़ रे मेनाक्आ।
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} लेका साइन इन मेनाक्आ
 cloud_created	खाता तेयारोएना। सत्यापित लागोत् इमेल चेक मे।
 cloud_cancel	ᱵᱚᱱᱫᱚ
 permission_preset	ᱱᱩᱠᱨᱤ

@@ -718,7 +718,7 @@ service_pct_ph	ସେବା % ଇଚ୍ଛାଧୀନ 0/10/12
 short_code_ph	ଛୋଟ କୋଡ୍ (MG02)
 starting_password_ph	ଆରମ୍ଭ ପାସୱାର୍ଡ (ଇଚ୍ଛାଧୀନ)
 starting_pin_ph	ଆରମ୍ଭ PIN (4–12 ଅଙ୍କ)
-tax_rate_ph	କର ହାର ନାମ କିମ୍ବା % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	କର ହାର କିମ୍ବା % (ଯଥା 5, 18)
 to_code_ph	କୁ କୋଡ୍ (kg)
 uncleared_no_ph	ଉପର ଅନକ୍ଲିୟର୍ଡ #
 unit_cost_ph	ୟୁନିଟ୍ ମୂଲ୍ୟ
@@ -836,7 +836,7 @@ schemes	ସ୍କିମ / ଅଫର
 schemes_help	ଏକ କିଣିଲେ ଏକ, ଶତକଡ଼ା ଛାଡ଼, ଏବଂ ବଣ୍ଡଲ। ଉଦାହରଣ: 2 ପାରାସେଟାମଲରେ 1 ଭିଟାମିନ୍।
 scheme_bogo_ph	2 ପାରାସେଟାମଲରେ 1 ଭିଟାମିନ୍
 add_scheme	BOGO ଯୋଡ଼ନ୍ତୁ
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	ସମୟ (ଯଥା ସୋମ-ଶୁକ୍ର 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ଗ୍ରହୀତା (ବୈକଳ୍ପିକ)
 show_upi_qr	UPI QR ଦେଖାନ୍ତୁ

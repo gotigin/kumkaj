@@ -613,7 +613,7 @@ cloud_web_methods	I-Google nezinye izindlela kuwebhusayithi
 cloud_signing_in	Iyangena…
 cloud_sending_reset	Ithumela isixhumanisi sokusetha kabusha…
 cloud_forgot_sent	Uma leyo imeyili ine-akhawunti, isixhumanisi sokusetha kabusha sisendleleni.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Ungene njengo-{user} · {plan}
 cloud_created	I-akhawunti yenziwe. Hlola i-imeyili yakho ukuze uqinisekise lapho ungakwazi.
 cloud_cancel	Khansela
 permission_preset	Umsebenzi
@@ -836,7 +836,7 @@ schemes	Izikimu / okunikezwayo
 schemes_help	Thenga-okukodwa-uthole, iphesenti lesaphulelo, nezinqwaba ezilungisiwe. Isibonelo: Thenga ama-paracetamol ama-2 thola ivithamini engu-1.
 scheme_bogo_ph	Thenga i-paracetamol engu-2 thola ivithamini engu-1
 add_scheme	Engeza BOGO
-schedule_ph	Amahora - Msombuluko-uLwesihlanu 07:00-11:00 noma kusihlwa 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI igama lomkhokheli (uma uthanda)
 show_upi_qr	Bonisa UPI QR

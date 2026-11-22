@@ -718,7 +718,7 @@ service_pct_ph	ಸೇವೆ % ಐಚ್ಛಿಕ 0/10/12
 short_code_ph	ಚಿಕ್ಕ ಕೋಡ್ (MG02)
 starting_password_ph	ಆರಂಭಿಕ ಪಾಸ್‌ವರ್ಡ್ (ಐಚ್ಛಿಕ)
 starting_pin_ph	ಆರಂಭಿಕ PIN (4–12 ಅಂಕೆಗಳು)
-tax_rate_ph	ತೆರಿಗೆ ದರದ ಹೆಸರು ಅಥವಾ % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	ತೆರಿಗೆ ದರ ಅಥವಾ % (ಉದಾ. 5, 18)
 to_code_ph	ಗೆ ಕೋಡ್ (kg)
 uncleared_no_ph	ಮೇಲಿನ ಅನ್‌ಕ್ಲಿಯರ್ಡ್ #
 unit_cost_ph	ಘಟಕ ವೆಚ್ಚ
@@ -836,7 +836,7 @@ schemes	ಸ್ಕೀಮ್ / ಆಫರ್
 schemes_help	ಒಂದು ಕೊಂಡರೆ ಒಂದು, ಶೇಕಡಾ ರಿಯಾಯಿತಿ, ಬಂಡಲ್. ಉದಾ: 2 ಪ್ಯಾರಸಿಟಮಾಲ್‌ಗೆ 1 ವಿಟಮಿನ್.
 scheme_bogo_ph	2 ಪ್ಯಾರಸಿಟಮಾಲ್‌ಗೆ 1 ವಿಟಮಿನ್
 add_scheme	BOGO ಸೇರಿಸಿ
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	ಸಮಯ (ಉದಾ. ಸೋಮ-ಶುಕ್ರ 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ಸ್ವೀಕೃತದಾರ (ಐಚ್ಛಿಕ)
 show_upi_qr	UPI QR ತೋರಿಸಿ

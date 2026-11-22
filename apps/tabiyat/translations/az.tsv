@@ -836,7 +836,7 @@ schemes	Sxemlər / təkliflər
 schemes_help	Bir al- bir pulsuz, faiz endirimli və sabit paketlər. Məsələn: 2 paracetamol al 1 vitamin qazan.
 scheme_bogo_ph	2 paracetamol al 1 vitamin qazan
 add_scheme	BOGO əlavə et
-schedule_ph	Saatlar — B.e.–Cümə 07:00-11:00 və ya Axşam 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI alanın adı (istəyə bağlı)
 show_upi_qr	UPI QR göstər

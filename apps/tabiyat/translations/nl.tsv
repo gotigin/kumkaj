@@ -718,7 +718,7 @@ service_pct_ph	Service % optioneel 0/10/12
 short_code_ph	Korte code (MG02)
 starting_password_ph	Startwachtwoord (optioneel)
 starting_pin_ph	Start-PIN (4–12 cijfers)
-tax_rate_ph	Belastingtariefnaam of % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Belastingtarief of % (bijv. 5, 18)
 to_code_ph	Naar code (kg)
 uncleared_no_ph	Niet-verrekend nr. hierboven
 unit_cost_ph	Kosten per eenheid
@@ -836,7 +836,7 @@ schemes	Aanbiedingen
 schemes_help	Eén kopen één gratis, korting en bundels. Voorbeeld: 2 paracetamol, 1 vitamine.
 scheme_bogo_ph	2 paracetamol, 1 vitamine
 add_scheme	BOGO toevoegen
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Uren (bijv. ma-vr 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-ontvanger (optioneel)
 show_upi_qr	Toon UPI-QR

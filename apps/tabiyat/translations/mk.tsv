@@ -836,7 +836,7 @@ schemes	Шеми / понуди
 schemes_help	Купи-еден-земи-еден, проценти попуст и фиксни пакети. Пример: Купете 2 парацетамол и добијте 1 витамин.
 scheme_bogo_ph	Купете 2 парацетамол добијте 1 витамин
 add_scheme	Додај BOGO
-schedule_ph	Работно време - пон-пет 07:00-11:00 часот или навечер 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI име на примач (изборно)
 show_upi_qr	Прикажи UPI QR

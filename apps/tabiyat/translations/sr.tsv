@@ -613,7 +613,7 @@ cloud_web_methods	Google и друге методе на сајту
 cloud_signing_in	Пријављивање…
 cloud_sending_reset	Слање везе за ресетовање…
 cloud_forgot_sent	Ако тај е-маил има налог, веза за ресетовање је на путу.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Пријављени као {user} · {plan}
 cloud_created	Налог направљен. Проверите е-пошту да потврдите кад можете.
 cloud_cancel	Откажи
 permission_preset	Посао
@@ -836,7 +836,7 @@ schemes	Шеме / понуде
 schemes_help	Купи-један-доби-један, проценат попуста и фиксни пакети. Пример: Купите 2 парацетамола и добијете 1 витамин.
 scheme_bogo_ph	Купите 2 парацетамола и добијете 1 витамин
 add_scheme	Додај BOGO
-schedule_ph	Радно време — пон-пет 07:00-11:00 или вече 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI име примаоца уплате (опционо)
 show_upi_qr	Прикажи UPI КР

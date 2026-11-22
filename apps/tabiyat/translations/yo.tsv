@@ -613,7 +613,7 @@ cloud_web_methods	Google àti àwọn ọ̀nà mìíràn lórí ojú òpó wẹ�
 cloud_signing_in	Ń wọlé…
 cloud_sending_reset	Ń fi ọ̀nà àsopọ̀ àtúnṣe ránṣẹ́…
 cloud_forgot_sent	Tí ímeèlì yẹn bá ní àkántì, ọ̀nà àsopọ̀ àtúnṣe ń bọ̀.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	O ti wọlé gẹ́gẹ́ bí {user} · {plan}
 cloud_created	Àkántì ti ṣẹ̀dá. Ṣàyẹ̀wò ímeèlì rẹ láti jẹ́rìísí nígbà tí o bá lè.
 cloud_cancel	Fagilé
 permission_preset	Iṣẹ
@@ -836,7 +836,7 @@ schemes	Awọn eto / ipese
 schemes_help	Ra-ọkan-gba-ọkan, ipin ogorun, ati awọn edidi ti o wa titi. Apeere: Ra paracetamol 2 gba vitamin 1.
 scheme_bogo_ph	Ra paracetamol 2 gba vitamin 1
 add_scheme	Ṣe afikun BOGO
-schedule_ph	Awọn wakati - Mon-jimọọ 07:00-11:00 tabi Alẹ 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI Orukọ payee (aṣayan)
 show_upi_qr	Ṣe afihan UPI QR

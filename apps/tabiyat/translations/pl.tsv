@@ -836,7 +836,7 @@ schemes	Schematy / oferty
 schemes_help	Kup jeden, zyskaj jeden, rabat procentowy i stałe pakiety. Przykład: Kup 2 paracetamol, a otrzymasz 1 witaminę.
 scheme_bogo_ph	Kup 2 paracetamol, a otrzymasz 1 witaminę
 add_scheme	Dodaj BOGO
-schedule_ph	Godziny otwarcia — pon.-pt. 07:00-11:00 lub wieczór 17:00-19:00=150
+schedule_ph	Godziny (np. pon–pt 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nazwa odbiorcy płatności (opcjonalnie)
 show_upi_qr	Pokaż UPI QR

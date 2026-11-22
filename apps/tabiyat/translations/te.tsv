@@ -718,7 +718,7 @@ service_pct_ph	సేవ % ఐచ్ఛికం 0/10/12
 short_code_ph	చిన్న కోడ్ (MG02)
 starting_password_ph	ప్రారంభ పాస్‌వర్డ్ (ఐచ్ఛికం)
 starting_pin_ph	ప్రారంభ PIN (4–12 అంకెలు)
-tax_rate_ph	పన్ను రేటు పేరు లేదా % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	పన్ను రేటు లేదా % (ఉదా. 5, 18)
 to_code_ph	కు కోడ్ (kg)
 uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
 unit_cost_ph	యూనిట్ ధర
@@ -836,7 +836,7 @@ schemes	స్కీమ్‌లు / ఆఫర్‌లు
 schemes_help	ఒకటి కొంటే ఒకటి, శాతం తగ్గింపు, బండిల్. ఉదా: 2 పారాసెటమాల్‌కు 1 విటమిన్.
 scheme_bogo_ph	2 పారాసెటమాల్‌కు 1 విటమిన్
 add_scheme	BOGO జోడించు
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	సమయం (ఉదా. సోమ-శుక్ర 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI స్వీకర్త (ఐచ్ఛికం)
 show_upi_qr	UPI QR చూపు

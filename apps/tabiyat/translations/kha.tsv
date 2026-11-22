@@ -836,7 +836,7 @@ schemes	Ki skhim / jingai
 schemes_help	Thied-kawei-ioh-kawei, ka jingpynhiar percent, bad ki jingbam ba la buh. Nuksa: Thied 2 tylli ki paracetamol ioh 1 vitamin.
 scheme_bogo_ph	Thied 2 tylli ki paracetamol ioh 1 vitamin .
 add_scheme	Pyndap BOGO
-schedule_ph	Ki kynta — Nyngkong-Palei 07:00-11:00 lane Janmiet 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI kyrteng jong u nongsiew (da jied)
 show_upi_qr	Pyni UPI QR

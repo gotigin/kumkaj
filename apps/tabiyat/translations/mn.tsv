@@ -613,7 +613,7 @@ cloud_web_methods	Google болон вэбсайт дээрх бусад арг�
 cloud_signing_in	Нэвтэрч байна…
 cloud_sending_reset	Дахин тохируулах холбоосыг илгээж байна…
 cloud_forgot_sent	Тэр имэйлд бүртгэл байвал дахин тохируулах холбоос илгээгдэнэ.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} болж нэвтэрсэн
 cloud_created	Бүртгэл үүсгэсэн. Боломжтой үедээ баталгаажуулахын тулд имэйлээ шалгана уу.
 cloud_cancel	Цуцлах
 permission_preset	Ажил
@@ -836,7 +836,7 @@ schemes	Схем / санал
 schemes_help	Нэгийг нь аваарай, хувийн хямдралтай, тогтмол багцууд. Жишээ нь: 2 парацетамол аваад 1 витамин аваарай.
 scheme_bogo_ph	2 парацетамол худалдаж аваад 1 витамин аваарай
 add_scheme	BOGO нэмэх
-schedule_ph	Цагийн хуваарь - Даваа-Баасан 07:00-11:00 эсвэл орой 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI танигч (VPA)
 upi_payee_ph	UPI хүлээн авагчийн нэр (заавал биш)
 show_upi_qr	UPI QR харуулах

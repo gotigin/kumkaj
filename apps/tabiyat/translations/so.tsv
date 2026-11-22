@@ -613,7 +613,7 @@ cloud_web_methods	Google iyo habab kale ee websaydhka
 cloud_signing_in	Gelaya…
 cloud_sending_reset	Diraya xiriirika dib-u-dejinta…
 cloud_forgot_sent	Haddii emailkaasi leeyahay akoon, xiriirika dib-u-dejinta waa socdaa.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Waxaad u gashay sidii {user} · {plan}
 cloud_created	Akoonka waa la sameeyay. Hubi emailkaaga si aad u xaqiijiso markaad awooddo.
 cloud_cancel	Jooji
 permission_preset	Shaqo
@@ -836,7 +836,7 @@ schemes	Qorshayaal / yareyn
 schemes_help	Iibso-hal-hel-mid, boqolkiiba dhimis, iyo xidhmooyinka go'an. Tusaale: Iibso 2 paracetamol hel 1 vitamin.
 scheme_bogo_ph	Iibso 2 paracetamol hel 1 vitamin
 add_scheme	Ku dar BOGO
-schedule_ph	Saacadaha - Isniin-Jimcaha 07:00-11:00 ama Fiidkii 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	Aqoonsiga UPI (VPA)
 upi_payee_ph	Magaca lahaanshaha UPI (ikhtiyaari)
 show_upi_qr	Muuji QR-ka UPI

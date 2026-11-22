@@ -836,7 +836,7 @@ schemes	Drafitra / tolotra
 schemes_help	Vidio-iray-mahazo-iray, fihenam-bidy isan-jato ary amboara raikitra. Ohatra: Mividiana paracetamol 2 mahazo vitaminina 1.
 scheme_bogo_ph	Mividiana paracetamol 2 mahazo vitaminina 1
 add_scheme	Ampio BOGO
-schedule_ph	Ora — Mon-Joma 07:00-11:00 na hariva 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI anaran'ny mpandoa (tsy voatery)
 show_upi_qr	Asehoy UPI QR

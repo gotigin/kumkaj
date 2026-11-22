@@ -836,7 +836,7 @@ schemes	Skemas / aanbiedings
 schemes_help	Koop een-kry een, persentasie afslag, en vaste pakkette. Voorbeeld: Koop 2 paracetamol kry 1 vitamien.
 scheme_bogo_ph	Koop 2 paracetamol kry 1 vitamien
 add_scheme	Voeg BOGO by
-schedule_ph	Ure — Ma-Vr 07:00-11:00 of Aand 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI-ID (VPA)
 upi_payee_ph	UPI-betaler naam (opsioneel)
 show_upi_qr	Toon UPI-QR

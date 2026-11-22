@@ -718,7 +718,7 @@ service_pct_ph	서비스 % 선택 0/10/12
 short_code_ph	짧은 코드(MG02)
 starting_password_ph	시작 비밀번호(선택)
 starting_pin_ph	시작 PIN(4–12자리)
-tax_rate_ph	세율 이름 또는 % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	세율 또는 % (예: 5, 18)
 to_code_ph	대상 코드(kg)
 uncleared_no_ph	위 미정산 번호
 unit_cost_ph	단위 원가
@@ -836,7 +836,7 @@ schemes	할인/세트
 schemes_help	하나 사면 하나, 할인, 묶음. 예: 파라세타몰 2에 비타민 1.
 scheme_bogo_ph	파라세타몰 2, 비타민 1
 add_scheme	BOGO 추가
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	시간 (예: 월–금 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI 수취인(선택)
 show_upi_qr	UPI QR 표시

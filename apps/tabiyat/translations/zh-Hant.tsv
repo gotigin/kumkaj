@@ -718,7 +718,7 @@ service_pct_ph	服務 % 可選 0/10/12
 short_code_ph	短代碼（MG02）
 starting_password_ph	初始密碼（可選）
 starting_pin_ph	初始 PIN（4–12 位）
-tax_rate_ph	稅率名稱或 % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	稅率或 %（例如 5、18）
 to_code_ph	到代碼（kg）
 uncleared_no_ph	上方未清算編號
 unit_cost_ph	單位成本
@@ -836,7 +836,7 @@ schemes	優惠方案
 schemes_help	買一送一、折扣和固定捆綁。例如：購買 2 個撲熱息痛可獲得 1 個維生素。
 scheme_bogo_ph	買 2 個撲熱息痛可獲得 1 個維生素
 add_scheme	添加買贈
-schedule_ph	營業時間 — 週一至週五 07:00-11:00 或晚上 17:00-19:00=150
+schedule_ph	營業時間（例如週一至週五 07:00-11:00）
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI收款人（可選）
 show_upi_qr	顯示 UPI 二維碼

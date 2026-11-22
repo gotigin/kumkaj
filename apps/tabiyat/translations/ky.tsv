@@ -613,7 +613,7 @@ cloud_web_methods	Google жана веб-сайттагы башка ыкмал�
 cloud_signing_in	Кирүүдө…
 cloud_sending_reset	Баштапкы абалга келтирүү шилтемеси жөнөтүлүүдө…
 cloud_forgot_sent	Эгер ал электрондук почтада каттоо эсеби болсо, баштапкы абалга келтирүү шилтемеси жолдо.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} катары кирдиңиз
 cloud_created	Аккаунт түзүлдү. Мүмкүн болгон учурда текшерүү үчүн электрондук почтаңызды текшериңиз.
 cloud_cancel	Жокко чыгаруу
 permission_preset	Жумуш
@@ -836,7 +836,7 @@ schemes	Схемалар / сунуштар
 schemes_help	Бирди сатып алуу, пайыздык арзандатуу жана белгиленген таңгактар. Мисал: 2 парацетамол сатып алсаңыз, 1 витамин алыңыз.
 scheme_bogo_ph	2 парацетамол сатып алыңыз 1 витамин алыңыз
 add_scheme	BOGO кошуу
-schedule_ph	Иш убактысы — дүйшөмбү-жума 07:00-11:00 же кечинде 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI алуучунун аты (милдеттүү эмес)
 show_upi_qr	UPI QR көрсөтүү

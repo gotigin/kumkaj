@@ -613,7 +613,7 @@ cloud_web_methods	Google dhe metoda të tjera në sajt
 cloud_signing_in	Duke u identifikuar…
 cloud_sending_reset	Duke dërguar lidhjen e rivendosjes…
 cloud_forgot_sent	Nëse ai email ka një llogari, një lidhje rivendosjeje është në rrugë.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	I futur si {user} · {plan}
 cloud_created	Llogaria u krijua. Kontrolloni emailin për të verifikuar kur mundeni.
 cloud_cancel	Anulo
 permission_preset	Puna
@@ -836,7 +836,7 @@ schemes	Skemat / ofertat
 schemes_help	Bli-një-merr-një, përqindje ulje dhe paketa fikse. Shembull: Blini 2 paracetamol merrni 1 vitaminë.
 scheme_bogo_ph	Blini 2 paracetamole merrni 1 vitaminë
 add_scheme	Shto BOGO
-schedule_ph	Orari — Hënë-Premte 07:00-11:00 ose Mbrëmje 17:00-19:00=150
+schedule_ph	Orët / happy hour — Hën–Pre 07:00–11:00 ose HappyHour 17:00–19:00=150
 upi_vpa_ph	Id UPI (VPA)
 upi_payee_ph	Emri i përfituesit UPI (opsional)
 show_upi_qr	Shfaq UPI QR

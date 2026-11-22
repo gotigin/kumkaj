@@ -836,7 +836,7 @@ schemes	Mga scheme / alok
 schemes_help	Buy-one-get-one, percent off, at fixed bundle. Halimbawa: Bumili ng 2 paracetamol makakuha ng 1 bitamina.
 scheme_bogo_ph	Bumili ng 2 paracetamol makakuha ng 1 bitamina
 add_scheme	Magdagdag ng BOGO
-schedule_ph	Mga Oras — Lun-Biy 07:00-11:00 o Gabi 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI pangalan ng nagbabayad (opsyonal)
 show_upi_qr	Ipakita ang UPI QR

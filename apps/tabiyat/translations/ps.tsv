@@ -613,7 +613,7 @@ cloud_web_methods	په ویب پاڼه کې Google او نورې طریقې
 cloud_signing_in	ننوتل…
 cloud_sending_reset	د بیا تنظیم لینک لیږل کیږي…
 cloud_forgot_sent	که هغه ایمیل حساب ولري، د بیا تنظیم لینک په لاره دی.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	د {user} · {plan} په توګه ننوتلی
 cloud_created	حساب جوړ شو. کله چې کولی شئ خپل ایمیل وګورئ ترڅو تایید کړئ.
 cloud_cancel	لغوه
 permission_preset	دنده

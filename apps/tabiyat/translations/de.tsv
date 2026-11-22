@@ -718,7 +718,7 @@ service_pct_ph	Service % optional 0/10/12
 short_code_ph	Kurzcode (MG02)
 starting_password_ph	Startpasswort (optional)
 starting_pin_ph	Start-PIN (4–12 Ziffern)
-tax_rate_ph	Steuersatzname oder % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Steuersatz oder % (z. B. 5, 18)
 to_code_ph	Zu Code (kg)
 uncleared_no_ph	Ungeprüfte Nr. oben
 unit_cost_ph	Stückkosten
@@ -836,7 +836,7 @@ schemes	Angebote
 schemes_help	Kauf eins, eins gratis, Nachlass und Bündel. Beispiel: 2 Paracetamol, 1 Vitamin.
 scheme_bogo_ph	2 Paracetamol, 1 Vitamin
 add_scheme	BOGO hinzufügen
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Zeiten (z. B. Mo–Fr 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI-Empfänger (optional)
 show_upi_qr	UPI-QR zeigen

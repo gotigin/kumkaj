@@ -836,7 +836,7 @@ schemes	Schémata / nabídky
 schemes_help	Kupte jeden a dostanete jeden, procentuální slevu a pevné balíčky. Příklad: Kupte si 2 paracetamol a získáte 1 vitamín.
 scheme_bogo_ph	Kupte si 2 paracetamol a získejte 1 vitamín
 add_scheme	Přidat BOGO
-schedule_ph	Otevírací doba — Po-Pá 07:00-11:00 nebo Večer 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI jméno příjemce platby (volitelné)
 show_upi_qr	Zobrazit UPI QR

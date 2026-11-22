@@ -718,7 +718,7 @@ service_pct_ph	സേവനം % ഓപ്ഷണൽ 0/10/12
 short_code_ph	ചെറിയ കോഡ് (MG02)
 starting_password_ph	ആരംഭ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
 starting_pin_ph	ആരംഭ PIN (4–12 അക്കങ്ങൾ)
-tax_rate_ph	നികുതി നിരക്കിന്റെ പേര് അല്ലെങ്കിൽ % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	നികുതി നിരക്ക് അല്ലെങ്കിൽ % (ഉദാ. 5, 18)
 to_code_ph	ലേക്കുള്ള കോഡ് (kg)
 uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
 unit_cost_ph	യൂണിറ്റ് വില
@@ -836,7 +836,7 @@ schemes	സ്കീം / ഓഫർ
 schemes_help	ഒന്ന് വാങ്ങിയാൽ ഒന്ന്, ശതമാനം കിഴിവ്, ബണ്ടിൽ. ഉദാ: 2 പാരസെറ്റമോളിന് 1 വിറ്റാമിൻ.
 scheme_bogo_ph	2 പാരസെറ്റമോളിന് 1 വിറ്റാമിൻ
 add_scheme	BOGO ചേർക്കുക
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	സമയം (ഉദാ. തിങ്കൾ-വെള്ളി 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI സ്വീകർത്താവ് (ഓപ്ഷണൽ)
 show_upi_qr	UPI QR കാണിക്കുക

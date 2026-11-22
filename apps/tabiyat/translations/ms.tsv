@@ -836,7 +836,7 @@ schemes	Skim / tawaran
 schemes_help	Beli-satu-dapat-satu, diskaun peratus dan berkas tetap. Contoh: Beli 2 paracetamol dapat 1 vitamin.
 scheme_bogo_ph	Beli 2 paracetamol dapat 1 vitamin
 add_scheme	Tambah BOGO
-schedule_ph	Jam — Isnin-Jumaat 07:00-11:00 atau Petang 17:00-19:00=150
+schedule_ph	Waktu (cth. Isn-Jum 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nama penerima (pilihan)
 show_upi_qr	Tunjukkan UPI QR

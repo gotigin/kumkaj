@@ -718,7 +718,7 @@ service_pct_ph	Service % facultatif 0/10/12
 short_code_ph	Code court (MG02)
 starting_password_ph	Mot de passe de départ (facultatif)
 starting_pin_ph	PIN de départ (4–12 chiffres)
-tax_rate_ph	Nom du taux ou % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Taux de taxe ou % (p. ex. 5, 18)
 to_code_ph	Code vers (kg)
 uncleared_no_ph	N° non compensé ci-dessus
 unit_cost_ph	Coût unitaire
@@ -836,7 +836,7 @@ schemes	Offres
 schemes_help	Un acheté un offert, remise et lots. Exemple : 2 paracétamol pour 1 vitamine.
 scheme_bogo_ph	2 paracétamol, 1 vitamine
 add_scheme	Ajouter BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Horaires (p. ex. lun-ven 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Bénéficiaire UPI (facultatif)
 show_upi_qr	Afficher QR UPI

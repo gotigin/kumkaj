@@ -836,7 +836,7 @@ schemes	Atụmatụ / onyinye
 schemes_help	Zụrụ-otu-nweta-otu, pasentị, yana ngwugwu edoziri. Ọmụmaatụ: Zụrụ paracetamol 2 nweta 1 vitamin.
 scheme_bogo_ph	Zụrụ paracetamol 2 nweta 1 vitamin
 add_scheme	Tinye BOGO
-schedule_ph	Oge awa - Mọnde-Fri 07:00-11:00 ma ọ bụ mgbede 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	Njirimara UPI (VPA)
 upi_payee_ph	Aha onye na-anata UPI (nhọrọ)
 show_upi_qr	Gosi UPI QR

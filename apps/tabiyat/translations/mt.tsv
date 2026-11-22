@@ -613,7 +613,7 @@ cloud_web_methods	Google u metodi oħra fuq il-websajt
 cloud_signing_in	Qed tidħol…
 cloud_sending_reset	Qed jibgħat il-link tar-reset…
 cloud_forgot_sent	Jekk dak l-email għandu kont, link tar-reset qed jiġi.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Idħalt bħala {user} · {plan}
 cloud_created	Kont maħluq. Iċċekkja l-email biex tivverifika meta tista’.
 cloud_cancel	Ikkanċella
 permission_preset	Xogħol
@@ -836,7 +836,7 @@ schemes	Pjanijiet / offerti
 schemes_help	Buy-one-get-one, mija off, u qatet fissi. Eżempju: Ixtri 2 paracetamol iġib 1 vitamina.
 scheme_bogo_ph	Ixtri 2 paracetamol iġib 1 vitamina
 add_scheme	Żid BOGO
-schedule_ph	Ħinijiet — Mon-Gim 07:00-11:00 jew Filgħaxija 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Isem tal-benefiċjarju UPI (għażli)
 show_upi_qr	Uri QR tal-UPI

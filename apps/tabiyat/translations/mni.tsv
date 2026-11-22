@@ -613,7 +613,7 @@ cloud_web_methods	ৱেবসাইত্তা Google অমসুং অত�
 cloud_signing_in	সাইন ইন তৌরি…
 cloud_sending_reset	রিসেট লিংক থাদোক্লি…
 cloud_forgot_sent	অদুগী ইমেইলদা একাউন্ট লৈরবদি রিসেট লিংক লমদা লৈরি।
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	{user} · {plan} ওইনা সাইন ইন তৌরে
 cloud_created	একাউন্ট শেম্লে। অহল্লক্পগীদমক ইমেইল য়েংবিয়ু।
 cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
@@ -836,7 +836,7 @@ schemes	ꯁ꯭ꯀꯤꯝ / ꯑꯣꯐꯔ
 schemes_help	ꯑꯃ ꯂꯩꯕꯗ ꯑꯃ ꯐꯪꯕ, ꯄꯔꯁꯦꯟꯇ ꯍꯟꯊꯍꯟꯕ, ꯑꯃꯁꯨꯡ ꯂꯦꯞꯈꯤꯕ ꯕꯟꯗꯜ. ꯈꯨꯗꯝ: ꯄꯦꯔꯥꯁꯤꯇꯥꯃꯣꯜ ꯲ ꯂꯩꯕꯗ ꯚꯤꯇꯥꯃꯤꯟ ꯱ ꯐꯪꯕꯤꯌꯨ.
 scheme_bogo_ph	ꯄꯦꯔꯥꯁꯤꯇꯥꯃꯣꯜ ꯲ ꯂꯩꯕꯗ ꯚꯤꯇꯥꯃꯤꯟ ꯱ ꯐꯪꯕꯤꯌꯨ
 add_scheme	BOGO ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
-schedule_ph	ꯄꯨꯡ — ꯅꯤꯡꯊꯧꯀꯥꯕ-ꯏꯔꯥꯏ 07:00-11:00 ꯅꯠꯇ꯭ꯔꯒ ꯅꯨꯃꯤꯗꯥꯡ 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI ꯐꯪꯕꯒꯤ ꯃꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 show_upi_qr	UPI QR ꯎꯠꯂꯨ

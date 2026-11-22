@@ -613,7 +613,7 @@ cloud_web_methods	Google n’ubundi buryo ku rubuga
 cloud_signing_in	Irimo kwinjira…
 cloud_sending_reset	Kohereza umurongo wo gusubiramo…
 cloud_forgot_sent	Niba iyo imeri ifite konti, umurongo wo gusubiramo uri mu nzira.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Winjiye nka {user} · {plan}
 cloud_created	Konti yaremwe. Reba imeri yawe kugira ngo wemeze iyo ushoboye.
 cloud_cancel	Hagarika
 permission_preset	Akazi

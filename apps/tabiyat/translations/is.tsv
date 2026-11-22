@@ -718,7 +718,7 @@ service_pct_ph	Þjónustuhlutfall valfrjálst 0/10/12
 short_code_ph	Stutt kóða (MG02)
 starting_password_ph	Byrjunarlykilorð (valfrjálst)
 starting_pin_ph	Byrjar PIN (4–12 tölustafir)
-tax_rate_ph	Nafn skatthlutfalls eða % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Skatthlutfall eða % (t.d. 5, 18)
 to_code_ph	Að kóða (kg)
 uncleared_no_ph	Óhreinsað # að ofan
 unit_cost_ph	Einingakostnaður
@@ -836,7 +836,7 @@ schemes	Skipur/tilboð
 schemes_help	Kauptu einn-fáðu einn, prósenta afslátt og fasta búnta. Dæmi: Kauptu 2 parasetamól fáðu 1 vítamín.
 scheme_bogo_ph	Kauptu 2 parasetamól fáðu 1 vítamín
 add_scheme	Bæta við BOGO
-schedule_ph	Opnunartími — mán-fös 07:00-11:00 eða kvöld 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI nafn greiðsluviðtakanda (valfrjálst)
 show_upi_qr	Sýna UPI QR

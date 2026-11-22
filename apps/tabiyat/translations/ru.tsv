@@ -718,7 +718,7 @@ service_pct_ph	Сервис % необязательно 0/10/12
 short_code_ph	Короткий код (MG02)
 starting_password_ph	Начальный пароль (необязательно)
 starting_pin_ph	Начальный PIN (4–12 цифр)
-tax_rate_ph	Название ставки или % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Налоговая ставка или % (напр. 5, 18)
 to_code_ph	Код в (kg)
 uncleared_no_ph	Непроведённый № выше
 unit_cost_ph	Себестоимость единицы
@@ -836,7 +836,7 @@ schemes	Акции
 schemes_help	Один в подарок, скидка и наборы. Пример: 2 парацетамола и 1 витамин.
 scheme_bogo_ph	2 парацетамола, 1 витамин
 add_scheme	Добавить BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Часы (напр. пн–пт 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Получатель UPI (необяз.)
 show_upi_qr	Показать QR UPI

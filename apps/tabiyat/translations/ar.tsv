@@ -718,7 +718,7 @@ service_pct_ph	الخدمة % اختياري 0/10/12
 short_code_ph	الرمز القصير (MG02)
 starting_password_ph	كلمة مرور البدء (اختياري)
 starting_pin_ph	رمز البدء (4–12 رقمًا)
-tax_rate_ph	اسم معدل الضريبة أو % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	معدل الضريبة أو % (مثل 5، 18)
 to_code_ph	الرمز إلى (kg)
 uncleared_no_ph	الرقم غير المُسوّى أعلاه
 unit_cost_ph	تكلفة الوحدة
@@ -836,7 +836,7 @@ schemes	عروض
 schemes_help	اشترِ واحدًا واحصل على واحد، خصم وحزم. مثال: 2 باراسيتامول و1 فيتامين.
 scheme_bogo_ph	2 باراسيتامول و1 فيتامين
 add_scheme	أضف BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	الساعات (مثل الإثنين–الجمعة 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	مستلم UPI (اختياري)
 show_upi_qr	عرض QR لـ UPI

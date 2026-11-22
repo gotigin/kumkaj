@@ -718,7 +718,7 @@ service_pct_ph	سروس % اختیاری 0/10/12
 short_code_ph	مختصر کوڈ (MG02)
 starting_password_ph	ابتدائی پاس ورڈ (اختیاری)
 starting_pin_ph	ابتدائی PIN (4–12 ہندسے)
-tax_rate_ph	ٹیکس شرح کا نام یا % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	ٹیکس شرح یا % (مثلاً 5، 18)
 to_code_ph	کو کوڈ (kg)
 uncleared_no_ph	اوپر والا غیر کلیئر #
 unit_cost_ph	فی یونٹ لاگت
@@ -836,7 +836,7 @@ schemes	اسکیم / آفر
 schemes_help	ایک خریدیں ایک پائیں، فیصد رعایت، اور بنڈل۔ مثال: 2 پیراسیٹامول پر 1 وٹامن۔
 scheme_bogo_ph	2 پیراسیٹامول پر 1 وٹامن
 add_scheme	BOGO شامل کریں
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	اوقات (مثلاً پیر-جمعہ 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI وصول کنندہ (اختیاری)
 show_upi_qr	UPI QR دکھائیں

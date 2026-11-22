@@ -718,7 +718,7 @@ service_pct_ph	Hizmet % isteğe bağlı 0/10/12
 short_code_ph	Kısa kod (MG02)
 starting_password_ph	Başlangıç parolası (isteğe bağlı)
 starting_pin_ph	Başlangıç PIN'i (4–12 rakam)
-tax_rate_ph	Vergi oranı adı veya % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Vergi oranı veya % (örn. 5, 18)
 to_code_ph	Hedef kod (kg)
 uncleared_no_ph	Yukarıdaki mahsuplaşmamış #
 unit_cost_ph	Birim maliyet
@@ -836,7 +836,7 @@ schemes	Kampanyalar
 schemes_help	Bir al bir bedava, indirim ve paket. Örnek: 2 parasetamole 1 vitamin.
 scheme_bogo_ph	2 parasetamol, 1 vitamin
 add_scheme	BOGO ekle
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Saatler (örn. Pzt-Cum 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI alıcı (isteğe bağlı)
 show_upi_qr	UPI QR göster

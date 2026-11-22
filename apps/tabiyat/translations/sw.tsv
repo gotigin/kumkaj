@@ -718,7 +718,7 @@ service_pct_ph	Huduma % hiari 0/10/12
 short_code_ph	Msimbo mfupi (MG02)
 starting_password_ph	Nenosiri la kuanzia (hiari)
 starting_pin_ph	PIN ya kuanzia (tarakimu 4–12)
-tax_rate_ph	Jina la kiwango cha kodi au % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	Kiwango cha ushuru au % (mf. 5, 18)
 to_code_ph	Msimbo kwenda (kg)
 uncleared_no_ph	Namba ambayo haijafutwa hapo juu
 unit_cost_ph	Gharama ya kitengo
@@ -836,7 +836,7 @@ schemes	Ofa
 schemes_help	Nunua moja upate moja, punguzo, na vifurushi. Mfano: paracetamol 2, vitamini 1.
 scheme_bogo_ph	paracetamol 2, vitamini 1
 add_scheme	Ongeza BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	Saa (mf. Jumatatu-Ijumaa 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Mpokeaji UPI (si lazima)
 show_upi_qr	Onyesha QR ya UPI

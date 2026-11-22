@@ -836,7 +836,7 @@ schemes	Tilbud
 schemes_help	Køb-en-få-en, procent rabat og faste bundter. Eksempel: Køb 2 paracetamol, få 1 vitamin.
 scheme_bogo_ph	Køb 2 paracetamol, få 1 vitamin
 add_scheme	Tilføj BOGO
-schedule_ph	Timer — man-fre 07:00-11:00 eller aften 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI-id (VPA)
 upi_payee_ph	UPI-modtagernavn (valgfrit)
 show_upi_qr	Vis UPI-QR

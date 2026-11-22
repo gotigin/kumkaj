@@ -613,7 +613,7 @@ cloud_web_methods	I-Google nezinye iindlela kwiwebhusayithi
 cloud_signing_in	Iyangena…
 cloud_sending_reset	Ithumela ikhonkco lokuseta kwakhona…
 cloud_forgot_sent	Ukuba loo imeyile ineakhawunti, ikhonkco lokuseta kwakhona lisendleleni.
-cloud_welcome	Signed in as {user} · {plan}
+cloud_welcome	Ungenile njengo-{user} · {plan}
 cloud_created	Iakhawunti yenziwe. Jonga i-imeyile yakho ukuze uqinisekise xa unako.
 cloud_cancel	Rhoxisa
 permission_preset	Umsebenzi
@@ -836,7 +836,7 @@ schemes	Iinkqubo / izibonelelo
 schemes_help	Thenga-enye-fumana-enye, isaphulelo ekhulwini, kunye neenyanda fixed. Umzekelo: Thenga i-2 paracetamol ufumane i-vitamin eyi-1.
 scheme_bogo_ph	Thenga i-2 paracetamol ufumane i-vitamin eyi-1
 add_scheme	Yongeza i-BOGO
-schedule_ph	Iiyure - uMvulo-Fri 07:00-11:00 okanye ngorhatya 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	Inombolo ye-UPI (i-VPA)
 upi_payee_ph	Igama lomntu ofumana i-UPI (akuyomfuneko)
 show_upi_qr	Bonisa i-UPI QR

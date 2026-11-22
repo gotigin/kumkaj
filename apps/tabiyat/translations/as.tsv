@@ -718,7 +718,7 @@ service_pct_ph	সেৱা % ঐচ্ছিক 0/10/12
 short_code_ph	চুটি কোড (MG02)
 starting_password_ph	আৰম্ভণি পাছৱৰ্ড (ঐচ্ছিক)
 starting_pin_ph	আৰম্ভণি PIN (4–12 সংখ্যা)
-tax_rate_ph	কৰ হাৰৰ নাম বা % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	কৰ হাৰ বা % (যেনে 5, 18)
 to_code_ph	লৈ কোড (kg)
 uncleared_no_ph	ওপৰৰ আনক্লিয়াৰ্ড #
 unit_cost_ph	একক খৰচ
@@ -836,7 +836,7 @@ schemes	স্কিম / অফাৰ
 schemes_help	এটা কিনিলে এটা, শতাংশ ৰেহাই, আৰু বাণ্ডিল। উদাহৰণ: 2 পেৰাচিটামলত 1 ভিটামিন।
 scheme_bogo_ph	2 পেৰাচিটামলত 1 ভিটামিন
 add_scheme	BOGO যোগ
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	সময় (যেনে সোম-শুক্ৰ 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI গ্ৰহণকাৰী (ঐচ্ছিক)
 show_upi_qr	UPI QR দেখুৱাওক

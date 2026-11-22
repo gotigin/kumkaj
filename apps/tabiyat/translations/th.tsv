@@ -718,7 +718,7 @@ service_pct_ph	บริการ % ไม่บังคับ 0/10/12
 short_code_ph	รหัสสั้น (MG02)
 starting_password_ph	รหัสผ่านเริ่มต้น (ไม่บังคับ)
 starting_pin_ph	PIN เริ่มต้น (4–12 หลัก)
-tax_rate_ph	ชื่ออัตราภาษีหรือ % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	อัตราภาษี หรือ % (เช่น 5, 18)
 to_code_ph	รหัสถึง (kg)
 uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
 unit_cost_ph	ต้นทุนต่อหน่วย
@@ -836,7 +836,7 @@ schemes	โปรโมชัน
 schemes_help	ซื้อหนึ่งแถมหนึ่ง ส่วนลด และชุด ตัวอย่าง: พาราเซตามอล 2 ได้ วิตามิน 1
 scheme_bogo_ph	พาราเซตามอล 2, วิตามิน 1
 add_scheme	เพิ่ม BOGO
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	เวลา (เช่น จ–ศ 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	ชื่อผู้รับ UPI (ไม่บังคับ)
 show_upi_qr	แสดง QR UPI

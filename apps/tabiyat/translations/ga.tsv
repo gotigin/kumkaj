@@ -836,7 +836,7 @@ schemes	Scéimeanna / tairiscintí
 schemes_help	Ceannaigh-aon-fháil-amháin, faoin gcéad de thalamh, agus babhtaí seasta. Sampla: Ceannaigh 2 paraicéiteamól faigh 1 vitimín.
 scheme_bogo_ph	Ceannaigh 2 paraicéiteamól faigh 1 vitimín
 add_scheme	Cuir BOGO leis
-schedule_ph	Uaireanta - Luan-Aoine 07:00-11:00 nó Tráthnóna 17:00-19:00=150
+schedule_ph	Hours (e.g. Mon-Fri 07:00-11:00)
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	Ainm íocaí UPI (roghnach)
 show_upi_qr	Taispeáin UPI QR

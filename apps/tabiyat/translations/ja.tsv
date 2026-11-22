@@ -718,7 +718,7 @@ service_pct_ph	サービス % 任意 0/10/12
 short_code_ph	短いコード（MG02）
 starting_password_ph	開始パスワード（任意）
 starting_pin_ph	開始PIN（4–12桁）
-tax_rate_ph	税率名または % — Standard, Reduced, 0, 5, 12, 18, 20
+tax_rate_ph	税率または %（例：5、18）
 to_code_ph	変換先コード（kg）
 uncleared_no_ph	上の未清算番号
 unit_cost_ph	単価
@@ -836,7 +836,7 @@ schemes	キャンペーン
 schemes_help	1つ買うと1つ、割引、セット。例：パラセタモール2でビタミン1。
 scheme_bogo_ph	パラセタモール2、ビタミン1
 add_scheme	BOGOを追加
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	時間（例：月–金 07:00-11:00）
 upi_vpa_ph	UPI ID (VPA)
 upi_payee_ph	UPI受取人名（任意）
 show_upi_qr	UPI QRを表示
