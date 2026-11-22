@@ -718,22 +718,22 @@ net_word	Ròng
 offline_badge	NGOẠI TUYẾN
 optional_login_help	Đăng nhập tùy chọn (mã + mật khẩu). Chủ đặt một lần; sau đó chỉ người dùng mới đổi được mật khẩu.
 or_unlock_login	Hoặc mở khóa bằng mã đăng nhập + mật khẩu
-or_unlock_shop_login	[vi] Or unlock with shop login
-shop_login_help	[vi] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[vi] Moklanjo account
-cloud_account_help	[vi] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[vi] Name (optional)
-cloud_email_ph	[vi] Email
-cloud_password_ph	[vi] Password
-cloud_continue	[vi] Continue
-cloud_forgot	[vi] Forgot password?
-cloud_web_methods	[vi] Google and other methods on the website
-cloud_signing_in	[vi] Signing in…
-cloud_sending_reset	[vi] Sending reset link…
-cloud_forgot_sent	[vi] If that email has an account, a reset link is on the way.
-cloud_welcome	[vi] Signed in as {user} · {plan}
-cloud_created	[vi] Account created. Check your email to verify when you can.
-cloud_cancel	[vi] Cancel
+or_unlock_shop_login	Hoặc mở khóa bằng đăng nhập cửa hàng
+shop_login_help	Tùy chọn: mở khóa bằng tên người dùng và mật khẩu nhân viên cửa hàng này thay vì PIN (hoạt động ngoại tuyến).
+cloud_account_title	Tài khoản Moklanjo
+cloud_account_help	Đăng ký hoặc đăng nhập bằng cùng tài khoản với moklanjo.com/account. Tạo ID đám mây và gói miễn phí.
+cloud_name_ph	Tên (tùy chọn)
+cloud_email_ph	Email
+cloud_password_ph	Mật khẩu
+cloud_continue	Tiếp tục
+cloud_forgot	Quên mật khẩu?
+cloud_web_methods	Google và phương thức khác trên trang web
+cloud_signing_in	Đang đăng nhập…
+cloud_sending_reset	Đang gửi liên kết đặt lại…
+cloud_forgot_sent	Nếu email đó có tài khoản, liên kết đặt lại đang được gửi.
+cloud_welcome	Đã đăng nhập với {user} · {plan}
+cloud_created	Đã tạo tài khoản. Kiểm tra email để xác minh khi bạn có thể.
+cloud_cancel	Hủy
 permission_preset	Công việc
 preset_help_moklanjo	Thu ngân: bán. Quản lý: bán + mục + hủy/sửa.
 product_locked_moklanjo	Moklanjo

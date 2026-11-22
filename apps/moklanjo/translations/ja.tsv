@@ -597,7 +597,7 @@ test_page_sent	テストページを送信しました — プリンターを確
 printers_found	このデバイスで見つかりました: {list}
 find_printers	プリンターを探す
 printers_looking	このデバイスと Wi-Fi 上のプリンターを探しています…
-printers_tap_find	[この Wi‑Fi 上のジョブを受け入れるキューのプリンターとネットワーク レシート プリンター (削除されたものやオフラインのものではない) を検索] をタップします。
+printers_tap_find	「プリンターを探す」をタップすると、このWi‑Fi上でジョブを受け付けるキューとネットワークレシートプリンター（削除済み・オフラインを除く）を検索します。
 printers_none_found	プリンターが見つかりません — システム プリンター名またはネットワーク アドレス (例: 192.168.1.50) を入力します。
 receipt_printer_ph	レシートのプリンター
 queue_refused	店で受け付けられなかったもの（{n}）— レジで一件ずつ確認してください:
@@ -718,22 +718,22 @@ net_word	純額
 offline_badge	オフライン
 optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
 or_unlock_login	またはログインID＋パスワードで解除
-or_unlock_shop_login	[ja] Or unlock with shop login
-shop_login_help	[ja] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ja] Moklanjo account
-cloud_account_help	[ja] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ja] Name (optional)
-cloud_email_ph	[ja] Email
-cloud_password_ph	[ja] Password
-cloud_continue	[ja] Continue
-cloud_forgot	[ja] Forgot password?
-cloud_web_methods	[ja] Google and other methods on the website
-cloud_signing_in	[ja] Signing in…
-cloud_sending_reset	[ja] Sending reset link…
-cloud_forgot_sent	[ja] If that email has an account, a reset link is on the way.
-cloud_welcome	[ja] Signed in as {user} · {plan}
-cloud_created	[ja] Account created. Check your email to verify when you can.
-cloud_cancel	[ja] Cancel
+or_unlock_shop_login	または店舗ログインで解除
+shop_login_help	任意：PINの代わりに、この店舗スタッフのユーザー名とパスワードで解除（オフライン可）。
+cloud_account_title	Moklanjoアカウント
+cloud_account_help	moklanjo.com/accountと同じアカウントで登録またはサインインします。クラウドIDと無料プランを作成します。
+cloud_name_ph	名前（任意）
+cloud_email_ph	メール
+cloud_password_ph	パスワード
+cloud_continue	続ける
+cloud_forgot	パスワードをお忘れですか？
+cloud_web_methods	ウェブサイトのGoogleとその他の方法
+cloud_signing_in	サインイン中…
+cloud_sending_reset	リセットリンクを送信中…
+cloud_forgot_sent	そのメールにアカウントがあれば、リセットリンクを送信します。
+cloud_welcome	{user} · {plan} としてサインイン済み
+cloud_created	アカウントを作成しました。都合のよいときにメールで確認してください。
+cloud_cancel	キャンセル
 permission_preset	ジョブ
 preset_help_moklanjo	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
 product_locked_moklanjo	Moklanjo
