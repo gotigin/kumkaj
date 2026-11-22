@@ -961,7 +961,7 @@ day_close_help	Egun-itxiera erregistratzeak laburpen hau (eta tiraderaren aldea,
 expenses_word	Gastuak
 feature_access_help	Zer ireki dezaketen — aukerakoa; goiko lanak dagoeneko lehenetsi bat ezartzen du
 footer_local	SQLite lokala · Dohain betiko · Hoderik gabe
-fresh_book_khaynjo	Fresh = menu hutsa (platerak geroago gehitu Menuan). Book = idatzi behean hasierako artikuluak eta nork zor dizun.
+fresh_book_khaynjo	Berria = menu hutsa (platerak geroago gehitu Menuan). Liburuak = idatzi behean hasierako artikuluak eta nork zor dizun.
 fresh_selected	Fresh hautatuta — katalogoa hutsik geratzen da. Sakatu Eginda prest zaudenean.
 gross_word	Gordina
 how_start	Nola hasi nahi duzu?
@@ -1055,7 +1055,7 @@ tmpl_current	Unekoa: {} — {}
 tmpl_selected	Hautatuta: {} — {}
 setup_complete	Konfigurazioa osatuta
 onboard_fresh_tmpl	Fresh · {} — katalogoa hutsik hasten da; gehitu artikuluak Artikuluetan, gero Eginda.
-onboard_book_tmpl	Book · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
+onboard_book_tmpl	Liburuak · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
 onboard_template_tmpl	Izena eman lekuari nahi baduzu, gero aukeratu nola hasi.
 tmpl_blurb	Mahaiak, eskaerak, sukaldeko txartelak, kontuak eta liburuak.
 tmpl_how	Saldu kutxan; Aretoa mahai eta KOTerako; Liburuak eguneko libururako.

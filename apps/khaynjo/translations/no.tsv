@@ -961,7 +961,7 @@ day_close_help	Å registrere et dagsoppgjør lagrer dette sammendraget (og skuff
 expenses_word	Utgifter
 feature_access_help	Hva de kan åpne — valgfritt; jobben over setter allerede et standardvalg
 footer_local	Lokal SQLite · Gratis for alltid · Ingen sky
-fresh_book_khaynjo	Fresh = tom meny (legg til retter senere i Meny). Book = skriv åpningsvarer og hvem som skylder deg under.
+fresh_book_khaynjo	Ny = tom meny (legg til retter senere i Meny). Bøker = skriv åpningsvarer og hvem som skylder deg under.
 fresh_selected	Fresh valgt — katalogen forblir tom. Trykk Ferdig når du er klar.
 gross_word	Brutto
 how_start	Hvordan vil du starte?
@@ -1055,7 +1055,7 @@ tmpl_current	Nåværende: {} — {}
 tmpl_selected	Valgt: {} — {}
 setup_complete	Oppsett fullført
 onboard_fresh_tmpl	Fresh · {} — katalogen starter tom; legg til varer i Varer, deretter Ferdig.
-onboard_book_tmpl	Book · {} — legg til varer og åpningskreditt, deretter Ferdig.
+onboard_book_tmpl	Bøker · {} — legg til varer og åpningskreditt, deretter Ferdig.
 onboard_template_tmpl	Gi stedet et navn om du vil, og velg hvordan du vil starte.
 tmpl_blurb	Bord, bestilling, kjøkkenlapper, regning og bøker.
 tmpl_how	Selg i kassen; Sal for bord og KOT; Bøker for dagboken.

@@ -961,7 +961,7 @@ day_close_help	Mae cofnodi cau diwrnod yn cadw'r crynodeb hwn (ac amrywiant y dr
 expenses_word	Treuliau
 feature_access_help	Beth allant ei agor — dewisol; mae'r swydd uchod eisoes yn gosod rhagosodiad
 footer_local	SQLite lleol · Am ddim am byth · Dim cwmwl
-fresh_book_khaynjo	Fresh = dewislen wag (ychwanegwch brydau yn ddiweddarach yn y Dewislen). Book = teipiwch eitemau agoriadol a phwy sy'n eich dyled chi isod.
+fresh_book_khaynjo	Newydd = dewislen wag (ychwanegwch brydau yn ddiweddarach yn y Dewislen). Llyfrau = teipiwch eitemau agoriadol a phwy sy'n eich dyled chi isod.
 fresh_selected	Fresh wedi'i ddewis — mae'r catalog yn aros yn wag. Tapiwch Wedi gorffen pan fyddwch yn barod.
 gross_word	Gros
 how_start	Sut hoffech chi ddechrau?
@@ -1055,7 +1055,7 @@ tmpl_current	Cyfredol: {} — {}
 tmpl_selected	Wedi dewis: {} — {}
 setup_complete	Gosodiad wedi'i gwblhau
 onboard_fresh_tmpl	Fresh · {} — mae'r catalog yn dechrau'n wag; ychwanegwch eitemau yn Eitemau, yna Wedi gorffen.
-onboard_book_tmpl	Book · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
+onboard_book_tmpl	Llyfrau · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
 onboard_template_tmpl	Enwch y lle os dymunwch, yna dewiswch sut i ddechrau.
 tmpl_blurb	Byrddau, archebu, tocynnau cegin, bilio, a llyfrau.
 tmpl_how	Gwerthu wrth y cownter; Neuadd ar gyfer byrddau a KOT; Llyfrau ar gyfer llyfr y dydd.

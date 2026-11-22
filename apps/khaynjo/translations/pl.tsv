@@ -427,7 +427,7 @@ bank_in	Bank w
 bank_out	Z banku
 bank_reconciliation	Uzgodnienie konta bankowego
 bank_to_till	Bank → kasa
-book_add_dish	Zarezerwuj — dodaj danie/przedmiot
+book_add_dish	Księga — dodaj danie/pozycję
 book_opening_credit	Księga — kredyt początkowy
 branch_name_sell_ph	Nazwa oddziału, z którego można sprzedawać
 bring_my_book	Przynieś moją księgę
@@ -1055,7 +1055,7 @@ tmpl_current	Aktualne: {} — {}
 tmpl_selected	Wybrane: {} — {}
 setup_complete	Konfiguracja ukończona
 onboard_fresh_tmpl	Świeże · {} – katalog zaczyna się pusty; dodaj pozycje w obszarze Pozycje, a następnie Gotowe.
-onboard_book_tmpl	Zarezerwuj · {} — dodaj pozycje i napisy początkowe, a następnie Gotowe.
+onboard_book_tmpl	Księga · {} — dodaj pozycje i kredyt otwarcia, a następnie Gotowe.
 onboard_template_tmpl	Jeśli chcesz, nazwij miejsce i wybierz, od czego zacząć.
 tmpl_blurb	Stoły do ​​jadalni, zamawianie, bilety kuchenne, fakturowanie i księgi.
 tmpl_how	Sprzedawaj w kasie; Jadalnia na stoły & KOT; Księgi na co dzień.

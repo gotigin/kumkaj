@@ -427,7 +427,7 @@ bank_in	Banka in
 bank_out	Bank ut
 bank_reconciliation	Bankavstämning
 bank_to_till	Bank → kassa
-book_add_dish	Boka — lägg till maträtt/objekt
+book_add_dish	Bok — lägg till maträtt/artikel
 book_opening_credit	Bok — inledande kredit
 branch_name_sell_ph	Filialnamn att sälja från
 bring_my_book	Ta med min bok
@@ -961,7 +961,7 @@ day_close_help	Om du registrerar en stängd dag sparas denna sammanfattning (och
 expenses_word	Utgifter
 feature_access_help	Vad de kan öppna — valfritt; jobbet ovan anger redan en standard
 footer_local	Lokal SQLite · Gratis för alltid · Zero Cloud
-fresh_book_khaynjo	Färsk = tom meny (lägg till rätter senare i Meny). Boka = skriv öppningsobjekt och vem som är skyldig dig nedan.
+fresh_book_khaynjo	Ny = tom meny (lägg till rätter senare i Meny). Bok = skriv öppningsposter och vem som är skyldig dig nedan.
 fresh_selected	Ny markerad — katalogen förblir tom. Tryck på Klar när du är klar.
 gross_word	Grovt
 how_start	Hur vill du börja?
@@ -1055,7 +1055,7 @@ tmpl_current	Aktuell: {} — {}
 tmpl_selected	Valda: {} — {}
 setup_complete	Installationen är klar
 onboard_fresh_tmpl	Färsk · {} — katalogen börjar tom; lägg till objekt i Objekt och sedan Klar.
-onboard_book_tmpl	Boka · {} — lägg till föremål och öppningskredit och sedan Klar.
+onboard_book_tmpl	Bok · {} — lägg till artiklar och öppningskredit, sedan Klar.
 onboard_template_tmpl	Namnge platsen om du vill och välj sedan hur du ska börja.
 tmpl_blurb	Bord, beställning, köksbiljetter, fakturering och böcker.
 tmpl_how	Sälj vid disken; Sal för bord & KOT; Böcker för dagen bok.

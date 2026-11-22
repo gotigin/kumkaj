@@ -961,7 +961,7 @@ day_close_help	Zapis zaključka dneva shrani ta povzetek (in razliko predala, č
 expenses_word	Stroški
 feature_access_help	Kaj lahko odprejo — neobvezno; delo zgoraj že nastavi privzeto
 footer_local	Lokalni SQLite · Za vedno brezplačno · Brez oblaka
-fresh_book_khaynjo	Fresh = prazen meni (jedi dodate pozneje v Meni). Book = spodaj vpišite začetne artikle in kdo vam dolguje.
+fresh_book_khaynjo	Novo = prazen meni (jedi dodate pozneje v Meni). Knjige = spodaj vpišite začetne artikle in kdo vam dolguje.
 fresh_selected	Izbrano Fresh — katalog ostane prazen. Tapnite Končano, ko ste pripravljeni.
 gross_word	Bruto
 how_start	Kako želite začeti?
@@ -1055,7 +1055,7 @@ tmpl_current	Trenutno: {} — {}
 tmpl_selected	Izbrano: {} — {}
 setup_complete	Nastavitev končana
 onboard_fresh_tmpl	Fresh · {} — katalog se začne prazen; dodajte artikle v Artikli, nato Končano.
-onboard_book_tmpl	Book · {} — dodajte artikle in začetni kredit, nato Končano.
+onboard_book_tmpl	Knjige · {} — dodajte artikle in začetni kredit, nato Končano.
 onboard_template_tmpl	Če želite, poimenujte kraj, nato izberite, kako začeti.
 tmpl_blurb	Mize, naročila, kuhinjski listki, računi in knjige.
 tmpl_how	Prodajajte na blagajni; Dvorana za mize in KOT; Knjige za dnevnik.

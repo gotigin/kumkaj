@@ -961,7 +961,7 @@ day_close_help	Ang pagre-record ng isang araw na pagsasara ay nagse-save sa buod
 expenses_word	Mga gastos
 feature_access_help	Ano ang maaari nilang buksan — opsyonal; ang trabaho sa itaas ay nagtatakda na ng default
 footer_local	Lokal na SQLite · Libre Magpakailanman · Zero Cloud
-fresh_book_khaynjo	Fresh = walang laman na menu (magdagdag ng mga pagkain sa ibang pagkakataon sa Menu). Ledger = uri ng pagbubukas ng mga item sa menu at kung sino ang may utang sa iyo sa ibaba.
+fresh_book_khaynjo	Bago = walang laman na menu (magdagdag ng mga pagkain sa ibang pagkakataon sa Menu). Ledger = uri ng pagbubukas ng mga item sa menu at kung sino ang may utang sa iyo sa ibaba.
 fresh_selected	Bagong napili — mananatiling walang laman ang katalogo. I-tap ang Tapos na kapag handa na.
 gross_word	Kabuuan
 how_start	Paano mo gustong magsimula?

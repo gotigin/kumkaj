@@ -961,7 +961,7 @@ day_close_help	Kunni yopishni yozish ushbu xulosani (va sanalsa, tortma farqini)
 expenses_word	Xarajatlar
 feature_access_help	Nimani ocha olishi — ixtiyoriy; yuqoridagi ish allaqachon andozani qoʻyadi
 footer_local	Mahalliy SQLite · Abadiy bepul · Bulutsiz
-fresh_book_khaynjo	Fresh = boʻsh menyu (taomlarni keyin Menyuga qoʻshing). Book = pastda boshlangʻich mahsulot va kim qarzdorligini yozing.
+fresh_book_khaynjo	Yangi = boʻsh menyu (taomlarni keyin Menyuga qoʻshing). Kitoblar = pastda boshlangʻich mahsulot va kim qarzdorligini yozing.
 fresh_selected	Fresh tanlandi — katalog boʻsh qoladi. Tayyor boʻlganingizda Tayyor ni bosing.
 gross_word	Yalpi
 how_start	Qanday boshlamoqchisiz?
@@ -1055,7 +1055,7 @@ tmpl_current	Joriy: {} — {}
 tmpl_selected	Tanlandi: {} — {}
 setup_complete	Sozlama tugadi
 onboard_fresh_tmpl	Fresh · {} — katalog boʻsh boshlanadi; mahsulotni Mahsulotlarga qoʻshing, soʻng Tayyor.
-onboard_book_tmpl	Book · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
+onboard_book_tmpl	Kitoblar · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
 onboard_template_tmpl	Xohlasangiz joyga nom bering, soʻng qanday boshlashni tanlang.
 tmpl_blurb	Stol, buyurtma, oshxona varaq, hisob va kitob.
 tmpl_how	Kassada soting; Zal stol va KOT uchun; Kitoblar kunlik daftar uchun.

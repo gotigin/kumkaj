@@ -961,7 +961,7 @@ day_close_help	Înregistrarea închiderii zilei salvează acest rezumat (și dif
 expenses_word	Cheltuieli
 feature_access_help	Ce pot deschide — opțional; postul de mai sus setează deja o valoare implicită
 footer_local	SQLite local · Gratuit pentru totdeauna · Fără cloud
-fresh_book_khaynjo	Fresh = meniu gol (adaugi felurile mai târziu în Meniu). Book = scrie mai jos articolele de început și cine îți datorează.
+fresh_book_khaynjo	Nou = meniu gol (adaugi felurile mai târziu în Meniu). Registru = scrie mai jos articolele de început și cine îți datorează.
 fresh_selected	Fresh selectat — catalogul rămâne gol. Atinge Gata când ești pregătit.
 gross_word	Brut
 how_start	Cum vrei să începi?
@@ -1055,7 +1055,7 @@ tmpl_current	Curent: {} — {}
 tmpl_selected	Selectat: {} — {}
 setup_complete	Configurare completă
 onboard_fresh_tmpl	Fresh · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
-onboard_book_tmpl	Book · {} — adaugă articole și credit de început, apoi Gata.
+onboard_book_tmpl	Registru · {} — adaugă articole și credit de început, apoi Gata.
 onboard_template_tmpl	Pune numele locului dacă vrei, apoi alege cum să începi.
 tmpl_blurb	Mese, comenzi, bonuri de bucătărie, note și cărți.
 tmpl_how	Vinde la casă; Sală pentru mese și KOT; Cărți pentru jurnalul zilei.

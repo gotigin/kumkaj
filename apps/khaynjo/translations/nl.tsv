@@ -961,7 +961,7 @@ day_close_help	Een dagsluiting boeken bewaart dit overzicht (en ladeverschil ind
 expenses_word	Kosten
 feature_access_help	Functietoegang van gekozen personeel (tik na toevoegen)
 footer_local	Lokale SQLite · Voor altijd gratis · Geen cloud
-fresh_book_khaynjo	Fresh = leeg menu (gerechten later toevoegen in Menu). Book = typ hieronder openingsartikelen en wie u iets schuldig is.
+fresh_book_khaynjo	Nieuw = leeg menu (gerechten later toevoegen in Menu). Boeken = typ hieronder openingsartikelen en wie u iets schuldig is.
 fresh_selected	Fresh gekozen – catalogus blijft leeg. Tik op Done als je klaar bent.
 gross_word	Bruto
 how_start	Hoe wilt u beginnen?
@@ -1055,7 +1055,7 @@ tmpl_current	Huidig: {} — {}
 tmpl_selected	Geselecteerd: {} — {}
 setup_complete	Installatie voltooid
 onboard_fresh_tmpl	Nieuw · {} — catalogus begint leeg; voeg artikelen toe bij Artikelen en tik op Gereed.
-onboard_book_tmpl	Boek · {} — voeg artikelen en beginkrediet toe en tik op Gereed.
+onboard_book_tmpl	Boeken · {} — voeg artikelen en beginkrediet toe en tik op Gereed.
 onboard_template_tmpl	Geef de zaak een naam als u wilt en kies hoe u begint.
 tmpl_blurb	Tafels, bestellingen, keukenbonnen, afrekenen en boeken.
 tmpl_how	Verkoop aan de balie; Zaal voor tafels en bonnen; Boeken voor het dagboek.

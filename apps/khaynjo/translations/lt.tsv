@@ -961,7 +961,7 @@ day_close_help	Dienos uždarymo įrašymas išsaugo šią suvestinę (ir stalči
 expenses_word	Išlaidos
 feature_access_help	Ką gali atidaryti — nebūtina; darbas aukščiau jau nustato numatytąjį
 footer_local	Vietinis SQLite · Nemokamai visam laikui · Be debesies
-fresh_book_khaynjo	Fresh = tuščias meniu (patiekalus vėliau pridėkite Meniu). Book = žemiau įrašykite pradines prekes ir kas jums skolingas.
+fresh_book_khaynjo	Naujas = tuščias meniu (patiekalus vėliau pridėkite Meniu). Knygos = žemiau įrašykite pradines prekes ir kas jums skolingas.
 fresh_selected	Pasirinkta Fresh — katalogas lieka tuščias. Kai būsite pasiruošę, bakstelėkite Atlikta.
 gross_word	Bendras
 how_start	Kaip norite pradėti?
@@ -1055,7 +1055,7 @@ tmpl_current	Dabartinis: {} — {}
 tmpl_selected	Pasirinkta: {} — {}
 setup_complete	Sąranka baigta
 onboard_fresh_tmpl	Fresh · {} — katalogas prasideda tuščias; pridėkite prekes Prekėse, tada Atlikta.
-onboard_book_tmpl	Book · {} — pridėkite prekes ir pradinį kreditą, tada Atlikta.
+onboard_book_tmpl	Knygos · {} — pridėkite prekes ir pradinį kreditą, tada Atlikta.
 onboard_template_tmpl	Jei norite, pavadinkite vietą, tada pasirinkite, kaip pradėti.
 tmpl_blurb	Stalai, užsakymai, virtuvės lapeliai, sąskaitos ir knygos.
 tmpl_how	Parduokite kasoje; Salė stalams ir KOT; Knygos dienos knygai.

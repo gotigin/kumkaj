@@ -961,7 +961,7 @@ day_close_help	Das Buchen eines Tagesabschlusses speichert diese Übersicht (und
 expenses_word	Ausgaben
 feature_access_help	Funktionszugriff für gewähltes Personal (nach Hinzufügen tippen)
 footer_local	Lokales SQLite · Für immer kostenlos · Keine Cloud
-fresh_book_khaynjo	Fresh = leeres Menü (Gerichte später unter Menü hinzufügen). Book = Anfangsartikel und wer Ihnen etwas schuldet unten eintragen.
+fresh_book_khaynjo	Neu = leeres Menü (Gerichte später unter Menü hinzufügen). Bücher = Anfangsartikel und wer Ihnen etwas schuldet unten eintragen.
 fresh_selected	Fresh gewählt – Katalog bleibt leer. Tippen Sie auf Done, wenn Sie bereit sind.
 gross_word	Brutto
 how_start	Wie möchten Sie beginnen?
@@ -1055,7 +1055,7 @@ tmpl_current	Aktuell: {} — {}
 tmpl_selected	Ausgewählt: {} — {}
 setup_complete	Einrichtung abgeschlossen
 onboard_fresh_tmpl	Neu · {} — Katalog startet leer; Artikel unter Artikel hinzufügen, dann Fertig tippen.
-onboard_book_tmpl	Buch · {} — Artikel und Anfangsguthaben hinzufügen, dann Fertig tippen.
+onboard_book_tmpl	Bücher · {} — Artikel und Anfangsguthaben hinzufügen, dann Fertig tippen.
 onboard_template_tmpl	Benennen Sie das Lokal, wenn Sie möchten, und wählen Sie, wie Sie beginnen.
 tmpl_blurb	Tische, Bestellungen, Küchenbons, Abrechnung und Bücher.
 tmpl_how	Am Tresen verkaufen; Saal für Tische & Bons; Bücher für das Tagebuch.
