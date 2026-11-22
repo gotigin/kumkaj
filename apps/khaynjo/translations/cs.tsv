@@ -961,7 +961,7 @@ day_close_help	Záznam uzavření dne uloží tento souhrn (a odchylku v zásuvc
 expenses_word	Výdaje
 feature_access_help	Co mohou otevřít – volitelné; výše uvedená úloha již nastavuje výchozí hodnotu
 footer_local	Místní SQLite · Navždy zdarma · Zero Cloud
-fresh_book_khaynjo	Čerstvé = prázdné menu (přidat jídla později v Menu). Kniha = níže zadejte otevírací položky a kdo vám dluží.
+fresh_book_khaynjo	Nové = prázdné menu (přidat jídla později v Menu). Kniha = níže zadejte otevírací položky a kdo vám dluží.
 fresh_selected	Čerstvě vybráno — katalog zůstane prázdný. Až budete připraveni, klepněte na Hotovo.
 gross_word	Hrubý
 how_start	Jak chcete začít?
