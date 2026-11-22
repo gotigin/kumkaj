@@ -615,7 +615,7 @@ cloud_sending_reset	Link zum Zurücksetzen wird gesendet…
 cloud_forgot_sent	Wenn für diese E-Mail ein Konto vorhanden ist, ist ein Link zum Zurücksetzen unterwegs.
 cloud_welcome	Angemeldet als {user} · {plan}
 cloud_created	Konto erstellt. Überprüfen Sie Ihre E-Mails, um dies zu überprüfen, wann immer Sie können.
-cloud_cancel	Stornieren
+cloud_cancel	Abbrechen
 permission_preset	Berechtigungsprofil
 product_only_tabiyat	Diese App ist nur Tabiyat – das System für Restaurants. Andere Branchen haben eigene Kumkaj-Produkte.
 purchases_cogs	Einkäufe (COGS)

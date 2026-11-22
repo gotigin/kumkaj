@@ -615,7 +615,7 @@ cloud_sending_reset	ৰিছেট লিংক প্ৰেৰণ কৰা �
 cloud_forgot_sent	যদি সেই ইমেইলটোৰ এটা একাউণ্ট আছে, তেন্তে এটা ৰিছেট লিংক বাটত আছে।
 cloud_welcome	{user} · {plan} হিচাপে চাইন ইন কৰা হৈছে
 cloud_created	একাউণ্ট সৃষ্টি কৰা হৈছে। আপুনি কেতিয়া পাৰে পৰীক্ষা কৰিবলৈ আপোনাৰ ইমেইল পৰীক্ষা কৰক।
-cloud_cancel	বাতিল কৰক
+cloud_cancel	বাতিল
 permission_preset	অনুমতি প্ৰিছেট
 product_only_tabiyat	এই এপ কেৱল Tabiyat — ৰেষ্টুৰেণ্ট অপাৰেটিং চিষ্টেম। আন ব্যৱসায়ৰ বাবে বেলেগ Kumkaj সামগ্ৰী আছে।
 purchases_cogs	ক্ৰয় (COGS)

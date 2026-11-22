@@ -103,8 +103,8 @@ bill_total_grand_label	Libellé total
 bill_total_paid_label	Libellé payé
 bill_meta_pair	Partager la ligne avec
 bill_pair_alone	Seul
-bill_item_piece_on	Oui
-bill_item_piece_off	Non
+bill_item_piece_on	Marche
+bill_item_piece_off	Arrêt
 bill_total_qty	Qté totale
 bill_total_subtotal	Sous-total
 bill_total_grand	Total
@@ -212,7 +212,7 @@ photo	Photo
 ok	OK
 this_shop	Mode serveur
 extra_till	Mode client
-off	Non
+off	Arrêt
 server	Serveur
 client	Mode client
 language_currency	Langue et devise

@@ -615,7 +615,7 @@ cloud_sending_reset	রিসেট লিঙ্ক পাঠানো হচ্
 cloud_forgot_sent	যদি সেই ইমেলের একটি অ্যাকাউন্ট থাকে, একটি রিসেট লিঙ্ক পথে রয়েছে৷
 cloud_welcome	{user} · {plan} হিসাবে সাইন ইন করেছেন৷
 cloud_created	অ্যাকাউন্ট তৈরি করা হয়েছে। আপনি কখন পারেন তা যাচাই করতে আপনার ইমেল চেক করুন।
-cloud_cancel	বাতিল করুন
+cloud_cancel	বাতিল
 permission_preset	অনুমতি প্রিসেট
 product_only_tabiyat	এই অ্যাপ শুধু Tabiyat — রেস্তোরাঁর অপারেটিং সিস্টেম। অন্য ব্যবসার জন্য আলাদা Kumkaj পণ্য আছে।
 purchases_cogs	কেনাকাটা (COGS)

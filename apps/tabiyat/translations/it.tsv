@@ -103,8 +103,8 @@ bill_total_grand_label	Etichetta totale
 bill_total_paid_label	Etichetta pagato
 bill_meta_pair	Condividi riga con
 bill_pair_alone	Da solo
-bill_item_piece_on	Sì
-bill_item_piece_off	No
+bill_item_piece_on	Acceso
+bill_item_piece_off	Spento
 bill_total_qty	Qtà totale
 bill_total_subtotal	Subtotale
 bill_total_grand	Totale
@@ -212,7 +212,7 @@ photo	Foto
 ok	OK
 this_shop	Modalità server
 extra_till	Modalità client
-off	No
+off	Spento
 server	Modalità server
 client	Modalità client
 language_currency	Lingua e valuta
@@ -615,7 +615,7 @@ cloud_sending_reset	Invio del link di reimpostazione...
 cloud_forgot_sent	Se quell'e-mail ha un account, è in arrivo un collegamento per il ripristino.
 cloud_welcome	Accesso effettuato come {user} · {plan}
 cloud_created	Conto creato. Controlla la tua email per verificare quando puoi.
-cloud_cancel	Cancellare
+cloud_cancel	Annulla
 permission_preset	Preset permessi
 product_only_tabiyat	Questa app è solo Tabiyat, il sistema per ristoranti. Gli altri mestieri hanno prodotti Kumkaj a parte.
 purchases_cogs	Acquisti (COGS)
