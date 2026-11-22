@@ -366,7 +366,7 @@ new_server_name_ph	Musuq sirwiq suti (munasqa) .
 server_remove_pin_ph	Dueño PIN huk servidorta hurqunapaq
 only_owner_remove_server	Dueñollam huk sirwiqta hurquyta atin
 owner_pin_remove_server	Dueño PIN kay sirwiqta hurqunapaq mañasqa
-device_setup_help	Servidor kaypi hatun qillqakunata waqaychan. Cliente pariskuna huk Servidorman.
+device_setup_help	Kay dispositivo tiendan (Servidor) utaq yapasqa caja (Cliente) kanman. Hukta kichay mana hukta chinkachinchu. T’inkinakuq Cliente tiendata yuyarin — mana código t’inkinapaq sapa qallariypi. Servidor manaraq kaptin, «Waqaychasqa waqaychasqata kutichiy» archivomanta libros kichan ajllasqaykimanta (kikin chequeos Restaurar Configuración nisqapi).
 app_template_heading	Tiendap plantillankuna
 app_template_blurb	Huk qallariy menuta akllay. Saltarqa qhatuta ch'usaqta saqin.
 app_template_apply	Plantillata apamuy
@@ -552,7 +552,7 @@ next_country	Qatiqnin suyu
 next_order	Qatiqnin kamachiy (ch'uya escritorio) .
 nav_drafts	Borrador
 park_draft	Borrador hina waqaychay
-drafts_help	Contadormanta mana tukuq kamachikuykuna, chawpipi saqisqayki — «Pagota hapiy» kama qillqaman manam yaykunchu. Tarjetata ñit'iy «Restaurante kamachiy» kaqpi qatiykachanaykipaq; «Borradorta qulluchiy» borradorta qulluchin. «P’unchaw wichq’ay» kaykunata manam ch'usaqyachinchu.
+drafts_help	Contadormanta mana tukuq kamachikuykuna, chawpipi saqisqayki — «Pagota hapiy» kama qillqaman manam yaykunchu. Tarjetata ñit'iy «Kamachiy» kaqpi qatiykachanaykipaq; «Borradorta qulluchiy» borradorta qulluchin. «P’unchaw wichq’ay» kaykunata manam ch'usaqyachinchu.
 drafts_park_nothing	Imapas saqinapaq manam kanchu — carroman imakunata yapay
 drafts_park_counter_only	«Borrador hina waqaychay» contador kamachikuylam — mesata saqiy utaq «Mikhuna wasi» llamk'achiy
 drafts_parked	«Borrador» kaqpi saqisqa — contador ch'usaqmi

@@ -5,7 +5,7 @@ pin_hint	A PIN tulajdonos 0000-től kezdődik
 sell	Rendelés
 buy	Vásároljon
 books	Napi könyv
-books_help	A mai számlaösszefoglaló. Rendelések = bejövő rendelések. Vásárlás = vásárlások és költségek. Vevők és beszállítók = hitelvevők és beszállítók.
+books_help	A mai számlaösszefoglaló. Rendelések = bejövő rendelések. Vásárlás = vásárlások és költségek. Felek = hitelvevők és beszállítók.
 buy_help	Költségutalványok és szállítói számlák (pénzkiadás). A számlán az ügyfél vagy szállító főkönyvén marad.
 sell_money_in	Vegyen fel egy rendelést
 buy_money_out	Költség / szállítói számla
@@ -318,7 +318,7 @@ inventory	Leltár
 inventory_stock	Készlet és készlet
 branches	Ágak
 branches_org	Fiókok és org
-credit_customers	Vevők és beszállítók (hitelszámlák)
+credit_customers	Felek (hitelszámlák)
 customer_name_ph	Vevő vagy szállító neve
 new_customer_ph	Új ügyfél vagy szállító neve
 item_name_ph	Elem neve (pl. Masala Dosa)
@@ -366,7 +366,7 @@ new_server_name_ph	Új szervernév (nem kötelező)
 server_remove_pin_ph	Tulajdonos PIN a szerver eltávolításához
 only_owner_remove_server	Csak a Tulajdonos távolíthat el egy szervert
 owner_pin_remove_server	A kiszolgáló eltávolításához PIN tulajdonos szükséges
-device_setup_help	A szerver itt tartja a könyveket. A kliens egy szerverhez párosul.
+device_setup_help	Ez az eszköz lehet a bolt (Szerver) vagy egy extra kassza (Kliens). Az egyik megnyitása nem törli a másikat. A párosított Kliens emlékszik a boltra — nincs párosító kód minden újraindításkor. Ha még nincs Szerver, a «Biztonsági másolat visszaállítása» a választott fájlból nyitja a könyveket (ugyanazok az ellenőrzések, mint a Visszaállítás a Beállításokban).
 app_template_heading	Üzletsablonok
 app_template_blurb	Válasszon kezdő menüt. A kihagyás üres boltot hagy.
 app_template_apply	Sablon importálása

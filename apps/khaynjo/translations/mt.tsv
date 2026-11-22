@@ -366,7 +366,7 @@ new_server_name_ph	Isem ġdid tas-server (mhux obbligatorju)
 server_remove_pin_ph	PIN tas-sid biex tneħħi server
 only_owner_remove_server	Is-Sid biss jista' jneħħi server
 owner_pin_remove_server	PIN tas-sid meħtieġ biex jitneħħa dan is-server
-device_setup_help	Server iżomm il-kotba hawn. Klijent pairs għal Server.
+device_setup_help	Dan l-apparat jista’ jkun il-ħanut (Server) jew kaxxa żejda (Client). Tiftaħ wieħed ma jħassarx l-ieħor. Client imqabbad jiftakar il-ħanut — l-ebda kodiċi ta’ tqabbil f’kull restart. Bla Server għad, «Irrestawra l-backup» jiftaħ il-kotba minn fajl li tagħżel (l-istess kontrolli bħal Irrestawra fis-Settings).
 app_template_heading	Mudelli tal-ħanut
 app_template_blurb	Agħżel menu tal-bidu. Aqbeż iħalli ħanut vojt.
 app_template_apply	Importa mudell
@@ -560,7 +560,7 @@ drafts_discard	Ħassar l-abbozz
 drafts_discarded	Abbozz imħassar
 drafts_gone	Dak l-abbozz m'għadux fil-lista
 drafts_closed	Dak l-abbozz diġà tħallas jew tħassar
-drafts_empty	Għad m'hemmx abbozzi. F'«Counter», żid platti u tektek «Issejvja bħala abbozz».
+drafts_empty	Għad m'hemmx abbozzi. F'«Bank tal-bejgħ», żid platti u tektek «Issejvja bħala abbozz».
 drafts_card_kind	Abbozz
 drafts_card_no_lines	Ebda linji
 drafts_card_lines	linji

@@ -5,7 +5,7 @@ pin_hint	Ang may-ari PIN ay nagsisimula bilang 0000
 sell	Order
 buy	Bumili
 books	Day ledger
-books_help	Buod ng account ngayon. Mga order = mga order na pumapasok. Bumili = mga pagbili at gastos. Mga customer at supplier = mga customer at supplier ng credit.
+books_help	Buod ng account ngayon. Mga order = mga order na pumapasok. Bumili = mga pagbili at gastos. Mga partido = mga customer at supplier ng credit.
 buy_help	Mga resibo ng gastos at mga singil sa supplier (nalabas ang pera). Ang on-account ay nananatili sa customer o supplier ledger.
 sell_money_in	Kumuha ng isang order
 buy_money_out	Gastos / bill ng supplier
@@ -318,7 +318,7 @@ inventory	Imbentaryo
 inventory_stock	Imbentaryo at stock
 branches	Mga sanga
 branches_org	Mga sangay at org
-credit_customers	Mga customer at supplier (mga credit account)
+credit_customers	Mga partido (mga credit account)
 customer_name_ph	Pangalan ng customer o supplier
 new_customer_ph	Bagong customer o pangalan ng supplier
 item_name_ph	Pangalan ng item sa menu ng menu (hal. Masala Dosa)
@@ -366,7 +366,7 @@ new_server_name_ph	Bagong pangalan ng server (opsyonal)
 server_remove_pin_ph	May-ari PIN para mag-alis ng server
 only_owner_remove_server	Ang May-ari lang ang makakapag-alis ng server
 owner_pin_remove_server	Kinakailangan ng may-ari PIN na alisin ang server na ito
-device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliyente sa isang Server.
+device_setup_help	Maaaring maging ang tindahan (Server) o dagdag na kahera (Client) ang device na ito. Ang pagbukas ng isa ay hindi buburahin ang isa. Naalala ng naka-pair na Client ang tindahan — walang pairing code sa bawat restart. Kung wala pang Server, binubuksan ng «Ibalik ang backup» ang mga libro mula sa file na pipiliin mo (parehong tseke gaya ng I-restore sa Settings).
 app_template_heading	Mga template ng tindahan
 app_template_blurb	Pumili ng panimulang menu. Ang laktaw ay iiwang walang laman ang tindahan.
 app_template_apply	I-import ang template
@@ -552,9 +552,9 @@ next_country	Susunod na bansa
 next_order	Susunod na order (clear desk)
 nav_drafts	Mga draft
 park_draft	Itabi ang draft
-drafts_help	Mga order sa counter na itinabi mo sa gitna ng pagkuha — hindi papasok sa books hangga't walang «Kunin ang bayad». I-tap ang card para ituloy sa «Order ng restaurant»; inaalis ng «I-discard ang draft» ang draft. Hindi ito binubura ng «Pagsasara ng araw».
+drafts_help	Mga order sa counter na itinabi mo sa gitna ng pagkuha — hindi papasok sa books hangga't walang «Kunin ang bayad». I-tap ang card para ituloy sa «Order»; inaalis ng «I-discard ang draft» ang draft. Hindi ito binubura ng «Pagsasara ng araw».
 drafts_park_nothing	Walang maitatabi — magdagdag ng mga item sa cart
-drafts_park_counter_only	Para lang sa mga order sa counter ang «Itabi ang draft» — iwan ang order ng mesa o gamitin ang «Dining hall»
+drafts_park_counter_only	Para lang sa mga order sa counter ang «Itabi ang draft» — iwan ang order ng mesa o gamitin ang «Bulwagan»
 drafts_parked	Itinabi sa «Mga draft» — bakante na ang counter
 drafts_discard	I-discard ang draft
 drafts_discarded	Na-discard ang draft
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Bago · {} — ang catalog ay nagsisimulang walang laman; mag
 onboard_book_tmpl	Ledger · {} — magdagdag ng mga item sa menu at pambungad na credit, pagkatapos ay Tapos na.
 onboard_template_tmpl	Pangalanan ang lugar kung gusto mo, pagkatapos ay piliin kung paano magsisimula.
 tmpl_blurb	Mga hapag kainan, pag-order, mga tiket sa kusina, pagsingil, at mga ledger.
-tmpl_how	Ibenta sa counter; Dining hall para sa dining table & KOT; Mga ledger para sa araw na ledger.
+tmpl_how	Ibenta sa counter; Bulwagan para sa dining table & KOT; Mga ledger para sa araw na ledger.
 reports_facet_title	Mga ulat
 reports_facet_help	Mga day ledger, customer o supplier na tumatanda, mga post sa bangko, at period P&L.
 against_bill_ph	Laban sa bill # sa itaas (opsyonal)
@@ -1322,7 +1322,7 @@ recall_kot_ph	KOT # para maalala
 role_help_customer	Tungkulin: Customer — credit ledger (may utang sila sa amin). Ang parehong customer o supplier ay maaari ding magbigay ng stock.
 role_help_both	Mga Tungkulin: Customer + Supplier — isang customer o supplier, credit ledger at payable ledger, net sa Reports.
 role_help_supplier	Tungkulin: Supplier — may utang tayo sa kanila para sa mga pagbili.
-dine_in_pick_table	Dine-in — pumili ng dining table sa screen ng Dining hall
+dine_in_pick_table	Dine-in — pumili ng dining table sa screen ng Bulwagan
 choose_table	Pumili ng hapag kainan
 change_table	Baguhin ang hapag kainan
 pick_table_banner	Pumili ng hapag kainan para sa order na ito
@@ -1332,7 +1332,7 @@ back_to_order	Bumalik sa order
 new_items_head	Hindi pa naipadala
 price_ph	Presyo
 price_ph_gst_inside	Presyo ({tax} kasama)
-cancel_needs_table	Buksan ang order na ito mula sa screen ng Dining hall (isang hapag-kainan) upang kanselahin pagkatapos na magkaroon nito ang kusina — mananatili ang counter KOT sa ticket hanggang sa makatanggap ka ng bayad
+cancel_needs_table	Buksan ang order na ito mula sa screen ng Bulwagan (isang hapag-kainan) upang kanselahin pagkatapos na magkaroon nito ang kusina — mananatili ang counter KOT sa ticket hanggang sa makatanggap ka ng bayad
 taxable_value	Nabubuwisan na halaga
 gst_inside_price_note	({tax} kasama)
 start_with_template	Magsimula sa aming template ng menu

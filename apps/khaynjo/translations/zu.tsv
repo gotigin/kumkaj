@@ -5,7 +5,7 @@ pin_hint	Umnikazi PIN uqala ngokuthi 0000
 sell	I-oda yokudlela
 buy	Thenga
 books	Incwadi yosuku
-books_help	Isifinyezo se-akhawunti yanamuhla. Ama-oda = ama-oda angenayo. Thenga = ukuthenga nezindleko. Amakhasimende nabahlinzeki = amakhasimende esikweletu nabaphakeli.
+books_help	Isifinyezo se-akhawunti yanamuhla. Ama-oda = ama-oda angenayo. Thenga = ukuthenga nezindleko. Izinhlangothi = amakhasimende esikweletu nabaphakeli.
 buy_help	Amarisidi ezindleko kanye nezikweletu zezivakashi zabahlinzeki (imali ekhishiwe). Ku-akhawunti kuhlala kubhuja yekhasimende noma yabahlinzeki.
 sell_money_in	Thatha i-oda
 buy_money_out	Izindleko / ibhili yesivakashi somphakeli
@@ -366,7 +366,7 @@ new_server_name_ph	Igama leseva entsha (uyazikhethela)
 server_remove_pin_ph	Umnikazi PIN ukususa iseva
 only_owner_remove_server	Umnikazi kuphela ongasusa iseva
 owner_pin_remove_server	Umnikazi PIN uyadingeka ukuze kukhishwe le seva
-device_setup_help	Iseva igcina amaleja lapha. Iklayenti libhangqa kuseva.
+device_setup_help	Le divayisi ingaba yisitolo (Iseva) noma ikhawuntara eyengeziwe (Iklayenti). Ukuvula eyodwa akusuli enye. Ikliyenti ehlanganisiwe iyasikhumbula isitolo — asikho isikhiye sokuhlanganisa lapho uqala kabusha. Ngaphandle kweSeva okwamanje, «Buyisela isipele» ivula izincwadi kusuka kufayela oyikhethayo (ukuhlola okufanayo noBuyisela kuzilungiselelo).
 app_template_heading	Izifanekiso zesitolo
 app_template_blurb	Khetha imenyu yokuqala. Ukweqa kushiya isitolo singenalutho.
 app_template_apply	Ngenisa isifanekiso

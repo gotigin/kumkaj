@@ -5,7 +5,7 @@ pin_hint	Le PIN du propriétaire commence par 0000
 sell	Commandes
 buy	Achats
 books	Livre du jour
-books_help	Position du jour. Commandes = commandes entrantes. Achats = achats et dépenses. Parties = clients à crédit et fournisseurs.
+books_help	Position du jour. Commandes = commandes entrantes. Achats = achats et dépenses. Tiers = clients à crédit et fournisseurs.
 buy_help	Bons de dépense et factures fournisseurs (argent sortant). Le montant au compte reste au livre de la partie.
 sell_money_in	Prendre une commande
 buy_money_out	Dépense / facture fournisseur
@@ -366,7 +366,7 @@ new_server_name_ph	Nom du nouveau serveur (facultatif)
 server_remove_pin_ph	Code Owner pour supprimer
 only_owner_remove_server	Seul le propriétaire peut supprimer un serveur
 owner_pin_remove_server	Code Owner requis pour supprimer ce serveur
-device_setup_help	Le serveur garde les livres ici. Le client s'appaire à un serveur.
+device_setup_help	Cet appareil peut être la boutique (Serveur) ou une caisse en plus (Client). En ouvrir un n’efface pas l’autre. Un Client apparié se souvient de la boutique — pas de code d’appariement à chaque redémarrage. Sans Serveur encore, «Restaurer la sauvegarde» ouvre les livres depuis un fichier que vous choisissez (mêmes contrôles que Restaurer dans Réglages).
 app_template_heading	Modèles de boutique
 app_template_blurb	Choisissez un menu de départ. Passer laisse une boutique vide.
 app_template_apply	Importer le modèle

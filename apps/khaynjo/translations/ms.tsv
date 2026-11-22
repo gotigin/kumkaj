@@ -5,7 +5,7 @@ pin_hint	Pemilik PIN bermula sebagai 0000
 sell	Pesanan
 buy	Beli
 books	Lejar hari
-books_help	Ringkasan akaun hari ini. Pesanan = pesanan masuk. Beli = pembelian dan perbelanjaan. Pelanggan dan pembekal = pelanggan dan pembekal kredit.
+books_help	Ringkasan akaun hari ini. Pesanan = pesanan masuk. Beli = pembelian dan perbelanjaan. Pihak = pelanggan dan pembekal kredit.
 buy_help	Resit perbelanjaan dan bil pembekal (wang keluar). Dalam akaun kekal pada lejar pelanggan atau pembekal.
 sell_money_in	Ambil pesanan
 buy_money_out	Bil perbelanjaan / pembekal
@@ -318,7 +318,7 @@ inventory	Inventori
 inventory_stock	Inventori & stok
 branches	Cawangan
 branches_org	Cawangan & org
-credit_customers	Pelanggan dan pembekal (akaun kredit)
+credit_customers	Pihak (akaun kredit)
 customer_name_ph	Nama pelanggan atau pembekal
 new_customer_ph	Nama pelanggan atau pembekal baharu
 item_name_ph	Nama item menu (cth. Masala Dosa)
@@ -366,7 +366,7 @@ new_server_name_ph	Nama pelayan baharu (pilihan)
 server_remove_pin_ph	Pemilik PIN untuk mengalih keluar pelayan
 only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
 owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
-device_setup_help	Pelayan menyimpan lejar di sini. Pasangan pelanggan ke Pelayan.
+device_setup_help	Peranti ini boleh jadi kedai (Pelayan) atau kaunter tambahan (Klien). Membuka satu tidak memadam yang lain. Klien yang dipasangkan ingat kedai — tiada kod pasangan setiap mula semula. Belum ada Pelayan, «Pulihkan sandaran» membuka lejar daripada fail yang anda pilih (semakan sama seperti Pulihkan dalam Tetapan).
 app_template_heading	Templat kedai
 app_template_blurb	Pilih menu permulaan. Langkau meninggalkan kedai kosong.
 app_template_apply	Import templat
@@ -552,7 +552,7 @@ next_country	Negara seterusnya
 next_order	Pesanan seterusnya (meja kosong)
 nav_drafts	Draf
 park_draft	Ketepikan draf
-drafts_help	Pesanan kaunter yang anda ketepikan separuh jalan — belum masuk buku sehingga «Ambil bayaran». Ketik kad untuk menyambungnya di «Pesanan restoran»; «Buang draf» membuang draf itu. «Tutup hari» tidak mengosongkannya.
+drafts_help	Pesanan kaunter yang anda ketepikan separuh jalan — belum masuk buku sehingga «Ambil bayaran». Ketik kad untuk menyambungnya di «Pesanan»; «Buang draf» membuang draf itu. «Tutup hari» tidak mengosongkannya.
 drafts_park_nothing	Tiada apa untuk diketepikan — tambah item ke troli
 drafts_park_counter_only	«Ketepikan draf» hanya untuk pesanan kaunter — tinggalkan pesanan meja atau gunakan «Dewan makan»
 drafts_parked	Diketepikan dalam «Draf» — kaunter kosong

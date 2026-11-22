@@ -307,7 +307,7 @@ kot_cancelled	CEALÚ
 kot_start_btn	Tús
 kot_mark_ready	Marc réidh
 kot_done_btn	Déanta
-table_free	Saor — sconna le haghaidh ordú a thosú
+table_free	Folamh — sconna le haghaidh ordú a thosú
 start_order	Tosnaigh ordú
 open_bill	Bille oscailte
 collect_payment	Bailigh íocaíocht
@@ -366,7 +366,7 @@ new_server_name_ph	Ainm freastalaí nua (roghnach)
 server_remove_pin_ph	PIN úinéara chun freastalaí a bhaint
 only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhaint
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
-device_setup_help	Coinníonn an "Server" na leabhair anseo. Déanann an "Client" comhpháirt le "Freastalaí".
+device_setup_help	Is féidir leis an ngléas seo a bheith ina siopa (Freastalaí) nó till breise (Cliant). Ní scriosann oscailt ceann amháin an ceann eile. Cuimhníonn Cliant péireáilte ar an siopa — gan cód péireála ar gach atosú. Gan Freastalaí fós, osclaíonn «Athbhunú cúltaca» na leabhair ó chomhad a roghnaíonn tú (na seiceálacha céanna le hathchóiriú sna Socruithe).
 app_template_heading	Teimpléid siopa
 app_template_blurb	Roghnaigh biachlár tosaigh. Fágann scipeáil siopa folamh.
 app_template_apply	Iompórtáil teimpléad
@@ -554,7 +554,7 @@ nav_drafts	Dréachtaí
 park_draft	Sábháil mar dhréacht
 drafts_help	Orduithe neamhchríochnaithe ón gcuntar a chuir tú ar leataobh — ní théann siad sna leabhair go dtí «Glac íocaíocht». Tapáil cárta chun leanúint ar aghaidh in «Ordú»; scriosann «Scrios dréacht» an dréacht. Ní ghlanann «Dún an lae» iad.
 drafts_park_nothing	Níl aon rud le cur ar leataobh — cuir míreanna sa chiseán
-drafts_park_counter_only	Is d'orduithe ag an gcuntar amháin «Sábháil mar dhréacht» — fág ordú an bhoird, nó úsáid «Urlár»
+drafts_park_counter_only	Is d'orduithe ag an gcuntar amháin «Sábháil mar dhréacht» — fág ordú an bhoird, nó úsáid «Halla»
 drafts_parked	Sábháilte in «Dréachtaí» — tá an cuntar folamh anois
 drafts_discard	Scrios dréacht
 drafts_discarded	Scriosadh an dréacht
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Nua · {} — tosaíonn an catalóg folamh; cuir míreanna le
 onboard_book_tmpl	Leabhar · {} — cuir míreanna agus creidmheas tosaigh, ansin Déanta.
 onboard_template_tmpl	Ainmnigh an áit más mian leat, ansin roghnaigh conas tosú.
 tmpl_blurb	Táblaí, ordú, ticéid cistine, billeáil, agus leabhair.
-tmpl_how	Díol ag an gcuntar; Urlár do tháblaí & KOT; Leabhair don leabhar lae.
+tmpl_how	Díol ag an gcuntar; Halla do tháblaí & KOT; Leabhair don leabhar lae.
 reports_facet_title	Tuairiscí
 reports_facet_help	Leabhair lae, aois pháirtí, postálacha bainc, agus P&L tréimhse.
 against_bill_ph	I gcoinne bille # thuas (roghnach)
@@ -1322,7 +1322,7 @@ recall_kot_ph	KOT # chun cuimhneamh
 role_help_customer	Ról: Custaiméir — khata (tá siad éigeantach dúinn). Is féidir leis an bpáirtí céanna stoc a sholáthar freisin.
 role_help_both	Róil: Custaiméir + Soláthraí — páirt amháin, leabhair khata agus íoctha, glan i dTuairiscí.
 role_help_supplier	Ról: Soláthraí — tá fiacha againn dóibh as ceannacháin.
-dine_in_pick_table	Itin istigh — bain rogha ó thábla ar an Urlár
+dine_in_pick_table	Itin istigh — bain rogha ó thábla ar an Halla
 choose_table	Roghnaigh tábla
 change_table	Tábla athraithe
 pick_table_banner	Roghnaigh bord don ordú seo
@@ -1332,7 +1332,7 @@ back_to_order	Ar ais chuig ord
 new_items_head	Níor seoladh fós
 price_ph	Praghas
 price_ph_gst_inside	Praghas ({tax} san áireamh)
-cancel_needs_table	Oscail an t-ordú seo ó Urlár (bord) chun a chealú tar éis don chistin é a fháil — fanann na KOT cuntar ar an dticéad go dtí go nglactar le híocaíocht
+cancel_needs_table	Oscail an t-ordú seo ó Halla (bord) chun a chealú tar éis don chistin é a fháil — fanann na KOT cuntar ar an dticéad go dtí go nglactar le híocaíocht
 taxable_value	Luach inchomhdaithe
 gst_inside_price_note	({tax} san áireamh)
 start_with_template	Tosaigh lenár teimpléad roghchláir

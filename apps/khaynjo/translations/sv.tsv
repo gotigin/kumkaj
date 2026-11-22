@@ -307,7 +307,7 @@ kot_cancelled	INSTÄLLD
 kot_start_btn	Starta
 kot_mark_ready	Markera redo
 kot_done_btn	Klart
-table_free	Gratis — tryck för att starta en beställning
+table_free	Ledig — tryck för att starta en beställning
 start_order	Startorder
 open_bill	Öppen räkning
 collect_payment	Samla in betalning
@@ -318,7 +318,7 @@ inventory	Inventering
 inventory_stock	Inventering & lager
 branches	Grenar
 branches_org	Filialer & org
-credit_customers	Fester (khata och leverantörer)
+credit_customers	Parter (khata och leverantörer)
 customer_name_ph	Partiets namn
 new_customer_ph	Nytt partinamn
 item_name_ph	Artikelnamn (t.ex. Masala Dosa)
@@ -366,7 +366,7 @@ new_server_name_ph	Nytt servernamn (valfritt)
 server_remove_pin_ph	Ägarens PIN-kod för att ta bort en server
 only_owner_remove_server	Endast ägaren kan ta bort en server
 owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
-device_setup_help	Servern håller böckerna här. Klientpar till en server.
+device_setup_help	Den här enheten kan vara butiken (Server) eller en extra kassa (Klient). Att öppna den ena raderar inte den andra. En parkopplad Klient kommer ihåg butiken — ingen parkopplingskod vid varje omstart. Utan Server ännu öppnar «Återställ säkerhetskopia» böckerna från en fil du väljer (samma kontroller som Återställ i Inställningar).
 app_template_heading	Butiksmallar
 app_template_blurb	Välj en startmeny. Hoppa över lämnar en tom butik.
 app_template_apply	Importera mall
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Färsk · {} — katalogen börjar tom; lägg till objekt i O
 onboard_book_tmpl	Boka · {} — lägg till föremål och öppningskredit och sedan Klar.
 onboard_template_tmpl	Namnge platsen om du vill och välj sedan hur du ska börja.
 tmpl_blurb	Bord, beställning, köksbiljetter, fakturering och böcker.
-tmpl_how	Sälj vid disken; Golv för bord & KOT; Böcker för dagen bok.
+tmpl_how	Sälj vid disken; Sal för bord & KOT; Böcker för dagen bok.
 reports_facet_title	Rapporter
 reports_facet_help	Dagböcker, feståldring, bankinlägg och periodisk P&L.
 against_bill_ph	Mot räkning # ovan (valfritt)

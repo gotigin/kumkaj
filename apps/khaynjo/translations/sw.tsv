@@ -366,7 +366,7 @@ new_server_name_ph	Jina la seva mpya (si lazima)
 server_remove_pin_ph	Owner PIN kuondoa seva
 only_owner_remove_server	Owner pekee anaweza kuondoa seva
 owner_pin_remove_server	Owner PIN inahitajika kuondoa seva hii
-device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
+device_setup_help	Kifaa hiki kinaweza kuwa duka (Seva) au kaunta ya ziada (Mteja). Kufungua kimoja hakufuti kingine. Mteja aliyeoanishwa anakumbuka duka — hakuna msimbo wa kuoanisha kila kuwasha upya. Bila Seva bado, «Rejesha hifadhi» hufungua vitabu kutoka faili unayochagua (ukaguzi uleule wa Rejesha katika mipangilio).
 app_template_heading	Violezo vya duka
 app_template_blurb	Chagua menyu ya kuanzia. Kuruka kunaacha duka tupu.
 app_template_apply	Leta kiolezo
@@ -554,7 +554,7 @@ nav_drafts	Rasimu
 park_draft	Weka kama rasimu
 drafts_help	Oda za kaunta ulizoziweka kando katikati — haziingii vitabuni hadi «Chukua malipo». Gusa kadi ili kuendelea nayo kwenye «Oda»; «Tupa rasimu» hufuta rasimu. «Funga siku» haifuti hizi.
 drafts_park_nothing	Hakuna cha kuweka kando — ongeza bidhaa kwenye kikapu
-drafts_park_counter_only	«Weka kama rasimu» ni kwa oda za kaunta pekee — ondoka kwenye oda ya meza au tumia «Sakafu»
+drafts_park_counter_only	«Weka kama rasimu» ni kwa oda za kaunta pekee — ondoka kwenye oda ya meza au tumia «Ukumbi»
 drafts_parked	Imewekwa kwenye «Rasimu» — kaunta iko wazi
 drafts_discard	Tupa rasimu
 drafts_discarded	Rasimu imetupwa
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Mpya · {} — katalogi huanza tupu; ongeza bidhaa kwenye Bid
 onboard_book_tmpl	Kitabu · {} — ongeza bidhaa na mkopo wa mwanzo, kisha gusa Imekamilika.
 onboard_template_tmpl	Ipe mahali jina ukitaka, kisha chagua jinsi ya kuanza.
 tmpl_blurb	Meza, oda, tiketi za jikoni, bili na vitabu.
-tmpl_how	Uza kaunta; Sakafu kwa meza na KOT; Vitabu kwa daftari la siku.
+tmpl_how	Uza kaunta; Ukumbi kwa meza na KOT; Vitabu kwa daftari la siku.
 reports_facet_title	Ripoti
 reports_facet_help	Vitabu vya siku, umri wa madeni ya wahusika, machapisho ya benki na Faida Hasara ya kipindi.
 against_bill_ph	Dhidi ya bili # hapo juu (hiari)
@@ -1332,7 +1332,7 @@ back_to_order	Rudi kwenye oda
 new_items_head	Bado haijatumwa
 price_ph	Bei
 price_ph_gst_inside	Bei ({tax} imejumuishwa)
-cancel_needs_table	Fungua oda hii kutoka Sakafu (meza) ili kughairi baada ya jiko — KOT za kaunta zinabaki kwenye tiketi hadi malipo
+cancel_needs_table	Fungua oda hii kutoka Ukumbi (meza) ili kughairi baada ya jiko — KOT za kaunta zinabaki kwenye tiketi hadi malipo
 taxable_value	Thamani inayotozwa kodi
 gst_inside_price_note	({tax} imejumuishwa)
 start_with_template	Anza na kiolezo chetu cha menyu

@@ -307,7 +307,7 @@ kot_cancelled	ተሰርዟል
 kot_start_btn	ጀምር
 kot_mark_ready	ዝግጁ ምልክት አድርግ
 kot_done_btn	ጨርስ
-table_free	ነፃ — ትዕዛዝ ለመጀመር ይንኩ
+table_free	ባዶ — ትዕዛዝ ለመጀመር ይንኩ
 start_order	ትዕዛዝ ጀምር
 open_bill	ሂሳብ ክፈት
 collect_payment	ክፍያ ሰብስብ
@@ -366,7 +366,7 @@ new_server_name_ph	አዲስ የሰርቨር ስም (አማራጭ)
 server_remove_pin_ph	ሰርቨር ለማስወገድ የባለቤት ፒን
 only_owner_remove_server	ሰርቨርን ማስወገድ የሚችለው ባለቤት ብቻ ነው
 owner_pin_remove_server	ይህን ሰርቨር ለማስወገድ የባለቤት ፒን ያስፈልጋል
-device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል።
+device_setup_help	ይህ መሣሪያ ሱቁ (ሰርቨር) ወይም ተጨማሪ ገንዘብ መቀበያ (ክላይንት) ሊሆን ይችላል። አንዱን መክፈት ሌላውን አያጠፋም። የተጣመረ ክላይንት ሱቁን ያስታውሳል — በእያንዳንዱ ድጋሚ ማስጀመር የማጣመሪያ ኮድ አያስፈልግም። ገና ሰርቨር ከሌለ «ምትኬ መልስ» ከመረጡት ፋይል መጻሕፍትን ይከፍታል (እንደ መልሶ ማግኘት በቅንብሮች ያሉ ማረጋገጫዎች)።
 app_template_heading	የሱቅ አብነቶች
 app_template_blurb	መነሻ ምናሌ ይምረጡ። መዝለል ባዶ ሱቅ ይተዋል።
 app_template_apply	አብነት አስገባ
@@ -560,7 +560,7 @@ drafts_discard	ረቂቅ ሰርዝ
 drafts_discarded	ረቂቅ ተሰርዟል
 drafts_gone	ያ ረቂቅ ከአሁን በኋላ በዝርዝሩ ውስጥ የለም
 drafts_closed	ያ ረቂቅ አስቀድሞ ተከፍሏል ወይም ተሰርዟል
-drafts_empty	እስካሁን ምንም ረቂቆች የሉም። በ«ባንኮኒ»፣ ምግቦች ያክሉ እና «እንደ ረቂቅ አስቀምጥ»ን ነካ ያድርጉ።
+drafts_empty	እስካሁን ምንም ረቂቆች የሉም። በ«ካውንተር»፣ ምግቦች ያክሉ እና «እንደ ረቂቅ አስቀምጥ»ን ነካ ያድርጉ።
 drafts_card_kind	ረቂቅ
 drafts_card_no_lines	ምንም እቃዎች የሉም
 drafts_card_lines	እቃዎች

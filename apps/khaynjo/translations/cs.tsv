@@ -5,7 +5,7 @@ pin_hint	Vlastník PIN začíná na 0000
 sell	Objednávky
 buy	Koupit
 books	Denní kniha
-books_help	Dnešní shrnutí účtu. Objednávky = přicházející objednávky. Koupit = nákupy a výdaje. Zákazníci a dodavatelé = úvěroví zákazníci a dodavatelé.
+books_help	Dnešní shrnutí účtu. Objednávky = přicházející objednávky. Koupit = nákupy a výdaje. Strany = úvěroví zákazníci a dodavatelé.
 buy_help	Výdajové poukázky a dodavatelské účty (výdaje). On-account zůstává v knize zákazníka nebo dodavatele.
 sell_money_in	Přijmout objednávku
 buy_money_out	Výdajový / dodavatelský účet
@@ -318,7 +318,7 @@ inventory	Inventář
 inventory_stock	Zásoby a zásoby
 branches	Větve
 branches_org	Pobočky a org
-credit_customers	Zákazníci a dodavatelé (úvěrové účty)
+credit_customers	Strany (úvěrové účty)
 customer_name_ph	Jméno zákazníka nebo dodavatele
 new_customer_ph	Jméno nového zákazníka nebo dodavatele
 item_name_ph	Název položky (např. Masala Dosa)
@@ -366,7 +366,7 @@ new_server_name_ph	Nový název serveru (volitelné)
 server_remove_pin_ph	Vlastník PIN pro odebrání serveru
 only_owner_remove_server	Odebrat server může pouze vlastník
 owner_pin_remove_server	K odstranění tohoto serveru je vyžadován vlastník PIN
-device_setup_help	Server uchovává knihy zde. Klient se spáruje se serverem.
+device_setup_help	Toto zařízení může být obchod (Server) nebo další pokladna (Klient). Otevření jednoho nevymaže druhé. Spárovaný Klient si obchod pamatuje — při každém restartu není potřeba párovací kód. Bez Serveru zatím «Obnovit zálohu» otevře knihy z vybraného souboru (stejné kontroly jako Obnovit v Nastavení).
 app_template_heading	Šablony obchodu
 app_template_blurb	Vyberte úvodní menu. Přeskočení nechá prázdný obchod.
 app_template_apply	Importovat šablonu
@@ -552,7 +552,7 @@ next_country	Další země
 next_order	Další objednávka (čistý stůl)
 nav_drafts	Koncepty
 park_draft	Odložit koncept
-drafts_help	Objednávky u pultu, které jste odložili v půli — do knih se dostanou až po «Přijměte platbu». Klepnutím na kartu v ní pokračujete v části «Objednávka restaurace»; «Zahodit koncept» koncept odstraní. «Uzávěrka dne» je nevymaže.
+drafts_help	Objednávky u pultu, které jste odložili v půli — do knih se dostanou až po «Přijměte platbu». Klepnutím na kartu v ní pokračujete v části «Objednávka»; «Zahodit koncept» koncept odstraní. «Uzávěrka dne» je nevymaže.
 drafts_park_nothing	Není co odložit — přidejte položky do košíku
 drafts_park_counter_only	«Odložit koncept» je jen pro objednávky u pultu — opusťte objednávku stolu nebo použijte «Jídelna»
 drafts_parked	Odloženo do «Koncepty» — pult je volný
