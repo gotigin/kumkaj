@@ -337,7 +337,7 @@ advance	সুকাং থাংদি
 owner	মালিক
 staff	কামবরক
 photo	ফত
-auto	Auto
+auto	আটো
 prev	সুকাংনি
 next	উল
 ok	OK
@@ -604,7 +604,7 @@ request_bill	বিল সানমানি
 restaurant_name_ph	চামুং চামুংনি মুং (চাজাক য়া)
 restore_backup	বাচকুপ কিফিলুই তুবুদি
 role_both	বহরক
-role_admin	Admin
+role_admin	এডমিন
 role_cashier	রাং থুমনাই
 role_customer	গ্রাহক
 role_manager	মানাজের
@@ -644,7 +644,7 @@ floor_cols_fit_sub	{n} আর উংখা
 floor_cols_fits	উংখা
 floor_cols_scroll	বুখাক খে সুপরাক দি
 floor_cols_min	কলম: 1 নি সলাই কুবাং — এবা সচরেএন বাই থুংনা বাগুই খালি রুদি
-floor_zoom_auto	Auto
+floor_zoom_auto	আটো
 floor_zoom_out	জওম খাইউই
 floor_zoom_in	জওম খাইদি
 backup_auto	সাল সালসা সাক বাই সাক বাচকুপ খলাইও · সুকাংনি {when} · সুকাংনি 14 সাল {dir} ও তনজাক.
