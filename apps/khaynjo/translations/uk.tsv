@@ -604,7 +604,7 @@ request_bill	Запросити рахунок
 restaurant_name_ph	Назва ресторану (необов'язково)
 restore_backup	Відновити резервну копію
 role_both	Обидва
-role_admin	Admin
+role_admin	Адмін
 role_cashier	Касир
 role_customer	Клієнт
 role_manager	Менеджер

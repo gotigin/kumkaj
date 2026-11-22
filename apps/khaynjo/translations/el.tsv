@@ -604,7 +604,7 @@ request_bill	Αίτημα λογαριασμού
 restaurant_name_ph	Όνομα εστιατορίου (προαιρετικό)
 restore_backup	Επαναφορά αντιγράφου
 role_both	Και τα δύο
-role_admin	Admin
+role_admin	Διαχειριστής
 role_cashier	Ταμίας
 role_customer	Πελάτης
 role_manager	Διευθυντής

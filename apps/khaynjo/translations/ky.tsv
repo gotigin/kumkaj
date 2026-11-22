@@ -604,7 +604,7 @@ request_bill	Коноктун эсебин сураңыз
 restaurant_name_ph	Ресторан аты (милдеттүү эмес)
 restore_backup	Камдык көчүрмөнү калыбына келтирүү
 role_both	экөө тең
-role_admin	Admin
+role_admin	Админ
 role_cashier	Кассир
 role_customer	Кардар
 role_manager	менеджер
