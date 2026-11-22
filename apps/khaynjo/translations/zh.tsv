@@ -1112,7 +1112,7 @@ book_kind_month	本月账本
 book_kind_aging	未结 / 借贷
 book_kind_balance	资产负债表
 order_help	点按一项即可添加。
-floor_help	每张桌子都显示客人是否就座、他们的未结账单以及接下来谁需要服务。
+floor_help	点按桌台以开单或改单。颜色表示空闲 → 入座 → 厨房 → 就绪 → 就餐 → 账单 → 已付。 候位、预订与加桌在下方各区。
 kitchen_help	按变体或按菜品跟踪出餐量 — 在 KOT 中按您想要的方式记录。
 kitchen_empty	现在没有打开的订单。
 add_a_table	添加桌子
@@ -1315,7 +1315,7 @@ schedule_ph	时段/欢乐时光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:0
 upi_qr	UPI QR
 show_upi_qr	显示 UPI 二维码
 close_upi_qr	关闭
-upi_qr_help	客人扫码支付。支付后点 Take payment。
+upi_qr_help	客人扫码付款。付款后点按「收款」。第二块屏：在局域网打开服务器 URL /display。
 kot_recall	召回
 recently_done	刚完成
 recall_kot_ph	要召回的 KOT #

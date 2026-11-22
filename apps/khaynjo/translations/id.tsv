@@ -1112,7 +1112,7 @@ book_kind_month	Buku bulan ini
 book_kind_aging	Terutang / debit-kredit
 book_kind_balance	Neraca
 order_help	Ketuk item untuk menambahkannya.
-floor_help	Setiap meja menunjukkan apakah tamu duduk, berapa tagihan terbuka mereka, dan siapa yang butuh pelayanan berikutnya.
+floor_help	Ketuk meja untuk mengambil atau mengubah pesanan. Warna menunjukkan kosong → duduk → dapur → siap → makan → tagihan → lunas. Daftar tunggu, reservasi, dan tambah meja ada di bagian di bawah.
 kitchen_help	Lacak yang siap per varian atau per item — catat di KOT sesuai keinginan.
 kitchen_empty	Belum ada yang terbuka.
 add_a_table	Tambah meja
@@ -1315,7 +1315,7 @@ schedule_ph	Jam / happy hour — Mon-Fri 07:00-11:00 atau HappyHour 17:00-19:00=
 upi_qr	UPI QR
 show_upi_qr	Tampilkan QR UPI
 close_upi_qr	Tutup
-upi_qr_help	Tamu pindai dan bayar. Lalu ketuk Take payment.
+upi_qr_help	Tamu memindai dan membayar. Ketuk «Terima pembayaran» setelah mereka bayar. Layar kedua: buka URL Server /display di LAN.
 kot_recall	Panggil ulang
 recently_done	Baru selesai
 recall_kot_ph	KOT # untuk recall

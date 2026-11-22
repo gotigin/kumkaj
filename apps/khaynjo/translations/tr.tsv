@@ -1112,7 +1112,7 @@ book_kind_month	Bu ayın defteri
 book_kind_aging	Bakiye / borç-alacak
 book_kind_balance	Bilanço
 order_help	Eklemek için bir ürüne dokunun.
-floor_help	Her masa, misafirlerin oturup oturmadığını, açık hesaplarının ne olduğunu ve sıradaki hizmetin kime gerektiğini gösterir.
+floor_help	Siparişi almak veya değiştirmek için bir masaya dokunun. Renkler boş → oturdu → mutfak → hazır → yiyor → hesap → ödendi gösterir. Bekleme listesi, rezervasyonlar ve masa ekleme aşağıdaki bölümlerde.
 kitchen_help	Her varyant veya ürün için hazır olanı takip edin — KOT'a istediğiniz gibi kaydedin.
 kitchen_empty	Şu an açık bir şey yok.
 add_a_table	Masa ekle
@@ -1315,7 +1315,7 @@ schedule_ph	Saat / happy hour — Mon-Fri 07:00-11:00 veya HappyHour 17:00-19:00
 upi_qr	UPI QR
 show_upi_qr	UPI QR göster
 close_upi_qr	Kapat
-upi_qr_help	Misafir tarayıp öder. Sonra Take payment.
+upi_qr_help	Misafir tarar ve öder. Ödedikten sonra «Ödeme al» dokunun. İkinci ekran: LAN’da Sunucu URL /display açın.
 kot_recall	Geri al
 recently_done	Az önce bitti
 recall_kot_ph	Geri alınacak KOT #

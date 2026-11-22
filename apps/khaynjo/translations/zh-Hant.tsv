@@ -1112,7 +1112,7 @@ book_kind_month	本月帳本
 book_kind_aging	未結 / 借貸
 book_kind_balance	資產負債表
 order_help	選擇一個未結訂單，或選擇桌臺開始新訂單。點選就緒菜品，發送 KOT，為一個或多個菜品結帳，拆分帳單並完成付款。
-floor_help	每張桌子都顯示客人是否就座、他們的未結帳單以及接下來誰需要服務。
+floor_help	點按桌臺以開單或改單。顏色表示空閒 → 入座 → 廚房 → 就緒 → 用餐 → 帳單 → 已付。 候位、預訂與加桌在下方各區。
 kitchen_help	按變體或按菜品跟蹤出餐量 — 在 KOT 中按您想要的方式記錄。
 kitchen_empty	現在沒有打開的訂單。
 add_a_table	添加桌子
@@ -1315,7 +1315,7 @@ schedule_ph	時段/歡樂時光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:0
 upi_qr	UPI QR
 show_upi_qr	顯示 UPI 二維碼
 close_upi_qr	關閉
-upi_qr_help	客人掃碼支付。支付後點 Take payment。
+upi_qr_help	客人掃碼付款。付款後點按「收款」。第二塊螢幕：在區域網開啟伺服器 URL /display。
 kot_recall	召回
 recently_done	剛完成
 recall_kot_ph	要召回的 KOT #

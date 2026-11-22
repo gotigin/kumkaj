@@ -1112,7 +1112,7 @@ book_kind_month	Buch dieses Monats
 book_kind_aging	Offen / Soll-Haben
 book_kind_balance	Bilanz
 order_help	Tippe auf einen Artikel, um ihn hinzuzufügen.
-floor_help	Jeder Tisch zeigt, ob Gäste sitzen, ihre offene Rechnung und wer als Nächstes bedient werden muss.
+floor_help	Tippen Sie einen Tisch, um die Bestellung aufzunehmen oder zu ändern. Farben zeigen frei → sitzend → Küche → fertig → essend → Rechnung → bezahlt. Warteliste, Reservierungen und Tische hinzufügen stehen in den Abschnitten darunter.
 kitchen_help	Verfolge Bereit pro Variante oder pro Artikel – im KOT erfassen, wie du willst.
 kitchen_empty	Gerade nichts offen.
 add_a_table	Tisch hinzufügen
@@ -1315,7 +1315,7 @@ schedule_ph	Zeiten / Happy Hour — Mon-Fri 07:00-11:00 oder HappyHour 17:00-19:
 upi_qr	UPI QR
 show_upi_qr	UPI-QR zeigen
 close_upi_qr	Schließen
-upi_qr_help	Gast scannt und zahlt. Danach Take payment tippen.
+upi_qr_help	Der Gast scannt und zahlt. Tippen Sie danach «Zahlung annehmen». Zweiter Bildschirm: Server-URL /display im LAN öffnen.
 kot_recall	Zurückholen
 recently_done	Gerade fertig
 recall_kot_ph	KOT # zurückholen

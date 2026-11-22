@@ -1112,7 +1112,7 @@ book_kind_month	Boek van deze maand
 book_kind_aging	Openstaand / debet-credit
 book_kind_balance	Balans
 order_help	Tik op een artikel om het toe te voegen.
-floor_help	Elke tafel toont of er gasten zitten, wat hun open rekening is en wie als volgende bediening nodig heeft.
+floor_help	Tik op een tafel om de bestelling te nemen of te wijzigen. Kleuren tonen vrij → gezeten → keuken → klaar → aan het eten → rekening → betaald. Wachtlijst, reserveringen en tafels toevoegen staan in de secties hieronder.
 kitchen_help	Volg gereed per variant of per item — noteer in de KOT zoals je wilt.
 kitchen_empty	Nu niets open.
 add_a_table	Tafel toevoegen
@@ -1315,7 +1315,7 @@ schedule_ph	Tijden / happy hour — Mon-Fri 07:00-11:00 of HappyHour 17:00-19:00
 upi_qr	UPI QR
 show_upi_qr	Toon UPI-QR
 close_upi_qr	Sluiten
-upi_qr_help	Gast scant en betaalt. Daarna Take payment.
+upi_qr_help	De gast scant en betaalt. Tik daarna «Betaling aannemen». Tweede scherm: open Server-URL /display op de LAN.
 kot_recall	Terughalen
 recently_done	Net klaar
 recall_kot_ph	KOT # om terug te halen

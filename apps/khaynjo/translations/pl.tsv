@@ -1315,7 +1315,7 @@ schedule_ph	Godziny / happy hour — pon.-pt. 07:00-11:00 lub HappyHour 17:00-19
 upi_qr	UPI QR
 show_upi_qr	Pokaż UPI QR
 close_upi_qr	Zamknij
-upi_qr_help	Gość skanuje i płaci. Kliknij Przyjmij płatność po zapłaceniu. Drugi ekran: otwórz adres URL serwera/wyświetl w sieci LAN.
+upi_qr_help	Gość skanuje i płaci. Po zapłacie kliknij «Przyjmij płatność». Drugi ekran: otwórz URL Serwera /display w LAN.
 kot_recall	Przypomnij sobie
 recently_done	Niedawno zrobione
 recall_kot_ph	KOT #, aby przypomnieć

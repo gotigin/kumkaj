@@ -1112,7 +1112,7 @@ book_kind_month	今月の帳簿
 book_kind_aging	未精算 / 借方・貸方
 book_kind_balance	貸借対照表
 order_help	商品をタップして追加します。
-floor_help	各テーブルは、ゲストが着席しているか、未精算の請求はいくらか、次に誰がサービスを必要としているかを表示します。
+floor_help	テーブルをタップして注文の開始や変更。色は空席 → 着席 → 厨房 → 提供可 → 食事中 → 伝票 → 会計済。 ウェイティング・予約・テーブル追加は下の各セクション。
 kitchen_help	バリアント別またはアイテム別に準備量を記録 — KOT に好きな方法で記録。
 kitchen_empty	現在開いているものはありません。
 add_a_table	テーブルを追加
@@ -1315,7 +1315,7 @@ schedule_ph	時間/ハッピーアワー — Mon-Fri 07:00-11:00 または Happy
 upi_qr	UPI QR
 show_upi_qr	UPI QRを表示
 close_upi_qr	閉じる
-upi_qr_help	お客さまがスキャンして支払い。その後 Take payment。
+upi_qr_help	お客様がスキャンして支払います。支払い後に 「支払いを受ける」 をタップ。2台目の画面：LAN でサーバー URL /display を開く。
 kot_recall	戻す
 recently_done	最近完了
 recall_kot_ph	戻す KOT #

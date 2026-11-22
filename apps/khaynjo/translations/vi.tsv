@@ -1112,7 +1112,7 @@ book_kind_month	Sổ tháng này
 book_kind_aging	Nợ tồn / ghi nợ-có
 book_kind_balance	Bảng cân đối
 order_help	Chạm vào một món để thêm.
-floor_help	Mỗi bàn cho thấy khách có đang ngồi không, hóa đơn đang mở của họ là gì và ai cần phục vụ tiếp theo.
+floor_help	Chạm bàn để nhận hoặc đổi đơn. Màu cho thấy trống → đã ngồi → bếp → sẵn sàng → đang ăn → hóa đơn → đã trả. Danh sách chờ, đặt chỗ và thêm bàn nằm ở các mục bên dưới.
 kitchen_help	Theo dõi số lượng đã sẵn sàng theo biến thể hoặc theo món — ghi vào KOT theo cách bạn muốn.
 kitchen_empty	Hiện không có gì đang mở.
 add_a_table	Thêm bàn
@@ -1315,7 +1315,7 @@ schedule_ph	Giờ / happy hour — Mon-Fri 07:00-11:00 hoặc HappyHour 17:00-19
 upi_qr	UPI QR
 show_upi_qr	Hiện QR UPI
 close_upi_qr	Đóng
-upi_qr_help	Khách quét và trả. Sau đó bấm Take payment.
+upi_qr_help	Khách quét và trả. Chạm «Nhận thanh toán» sau khi họ trả. Màn thứ hai: mở URL Máy chủ /display trên LAN.
 kot_recall	Gọi lại
 recently_done	Vừa xong
 recall_kot_ph	KOT # cần gọi lại

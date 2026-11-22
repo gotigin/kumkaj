@@ -1112,7 +1112,7 @@ book_kind_month	이번 달 장부
 book_kind_aging	미결제 / 차변-대변
 book_kind_balance	대차대조표
 order_help	항목을 눌러 추가하세요.
-floor_help	각 테이블은 손님이 앉아 있는지, 열린 계산서가 무엇인지, 다음으로 누가 서비스를 필요로 하는지 보여줍니다.
+floor_help	테이블을 눌러 주문을 받거나 바꿉니다. 색은 비어 있음 → 착석 → 주방 → 준비됨 → 식사 중 → 계산서 → 결제됨. 대기열·예약·테이블 추가는 아래 섹션에 있습니다.
 kitchen_help	변형별 또는 항목별로 준비된 수량을 추적하세요 — 원하는 대로 KOT에 기록하세요.
 kitchen_empty	지금 열린 주문이 없습니다.
 add_a_table	테이블 추가
@@ -1315,7 +1315,7 @@ schedule_ph	시간/해피아워 — Mon-Fri 07:00-11:00 또는 HappyHour 17:00-1
 upi_qr	UPI QR
 show_upi_qr	UPI QR 표시
 close_upi_qr	닫기
-upi_qr_help	손님이 스캔 후 결제. 이후 Take payment.
+upi_qr_help	손님이 스캔하고 결제합니다. 결제 후 «결제 받기»을(를) 누르세요. 두 번째 화면: LAN에서 서버 URL /display를 여세요.
 kot_recall	불러오기
 recently_done	방금 완료
 recall_kot_ph	불러올 KOT #

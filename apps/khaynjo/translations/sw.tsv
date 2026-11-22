@@ -1112,7 +1112,7 @@ book_kind_month	Kitabu cha mwezi huu
 book_kind_aging	Inayodaiwa / debiti-krediti
 book_kind_balance	Karatasi ya mizania
 order_help	Gusa bidhaa ili kuiongeza.
-floor_help	Kila meza huonyesha kama wageni wameketi, bili yao iliyo wazi ni ipi, na nani anahitaji huduma inayofuata.
+floor_help	Gusa meza kuchukua au kubadilisha oda. Rangi zinaonyesha wazi → wamekaa → jiko → tayari → wanakula → bili → limelipwa. Orodha ya kusubiri, uhifadhi, na ongeza meza ziko katika sehemu zilizo chini.
 kitchen_help	Fuatilia kilicho tayari kwa kila aina au bidhaa — rekodi katika KOT unavyopenda.
 kitchen_empty	Hakuna kilichowazi sasa.
 add_a_table	Ongeza meza
@@ -1315,7 +1315,7 @@ schedule_ph	Saa / happy hour — Mon-Fri 07:00-11:00 au HappyHour 17:00-19:00=15
 upi_qr	UPI QR
 show_upi_qr	Onyesha QR ya UPI
 close_upi_qr	Funga
-upi_qr_help	Mgeni achanganue alipe. Kisha gusa Take payment.
+upi_qr_help	Mgeni anachanganua na kulipa. Gusa «Chukua malipo» baada ya kulipa. Skrini ya pili: fungua URL ya Seva /display kwenye LAN.
 kot_recall	Rudisha
 recently_done	Yamekamilika hivi karibuni
 recall_kot_ph	KOT # ya kurudisha

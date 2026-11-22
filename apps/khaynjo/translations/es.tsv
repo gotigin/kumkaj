@@ -1112,7 +1112,7 @@ book_kind_month	Libro de este mes
 book_kind_aging	Pendiente / débito-crédito
 book_kind_balance	Balance general
 order_help	Toca un artículo para añadirlo.
-floor_help	Cada mesa muestra si hay comensales, su cuenta abierta y quién necesita atención.
+floor_help	Toque una mesa para tomar o cambiar el pedido. Los colores muestran libre → sentados → cocina → listo → comiendo → cuenta → pagado. Lista de espera, reservas y añadir mesas están en las secciones de abajo.
 kitchen_help	Registra lo listo por variante o por artículo: anótalo en el KOT como prefieras.
 kitchen_empty	Nada abierto ahora.
 add_a_table	Añadir una mesa
@@ -1315,7 +1315,7 @@ schedule_ph	Horario / happy hour — Mon-Fri 07:00-11:00 o HappyHour 17:00-19:00
 upi_qr	UPI QR
 show_upi_qr	Mostrar QR UPI
 close_upi_qr	Cerrar
-upi_qr_help	El cliente escanea y paga. Luego pulse Take payment.
+upi_qr_help	El cliente escanea y paga. Toque «Cobrar» después de pagar. Segunda pantalla: abra la URL del Servidor /display en la LAN.
 kot_recall	Recuperar
 recently_done	Recién hechos
 recall_kot_ph	KOT # a recuperar

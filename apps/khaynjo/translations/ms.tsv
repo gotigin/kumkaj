@@ -1315,7 +1315,7 @@ schedule_ph	Waktu / waktu riang — Isnin-Jumaat 07:00-11:00 atau HappyHour 17:0
 upi_qr	UPI QR
 show_upi_qr	Tunjukkan UPI QR
 close_upi_qr	tutup
-upi_qr_help	Tetamu mengimbas dan membayar. Ketik Ambil pembayaran selepas mereka membayar. Skrin kedua: buka URL Pelayan /paparan pada LAN.
+upi_qr_help	Pelanggan imbas dan bayar. Ketik «Ambil bayaran» selepas mereka bayar. Skrin kedua: buka URL Pelayan /display di LAN.
 kot_recall	Ingat kembali
 recently_done	Baru-baru ini dilakukan
 recall_kot_ph	KOT # untuk diingat semula
