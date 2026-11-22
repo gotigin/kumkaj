@@ -268,7 +268,7 @@ bank_in	V banko
 bank_out	Iz banke
 bank_reconciliation	Uskladitev z banko
 bank_to_till	Banka → blagajna
-book_add_dish	Rezerviraj — dodajte artikel / artikel
+book_add_dish	Knjiga — dodaj artikel
 book_opening_credit	Knjiga — začetni kredit
 branch_name_sell_ph	Ime podružnice, iz katere prodajate
 bring_my_book	Prinesi mojo knjigo
