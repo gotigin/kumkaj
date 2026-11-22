@@ -600,21 +600,21 @@ net_word	Jar
 offline_badge	KHLEM LAIN
 optional_login_help	Ka jingrung kaba lah ban jied (id + ka ktien rieh). U trai set shisien; tang u nongpyndonkam uba lah ban pynkylla ia ka password hadien.
 or_unlock_login	Lane plie da ka id login + ka ktien rieh
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+or_unlock_shop_login	Lane plie da ka login jong ka dukhan
+shop_login_help	Ba lah ban jied: plie da ka kyrteng nongtrei bad password jong kane ka dukhan bad ym da ka PIN (ka treikam offline).
 cloud_account_title	Ka account Tabiyat
 cloud_account_help	Register lane sign in bad ka account kaba long kum tabiyat.shop/account. Ka pynthaw ia ka cloud ID jong phi bad ka plan ba kyrkhu.
-cloud_name_ph	Name (optional)
+cloud_name_ph	Kyrteng (ba lah ban ieh)
 cloud_email_ph	Email
 cloud_password_ph	Password
 cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
+cloud_forgot	Klet ia ka password?
+cloud_web_methods	Google bad kiwei pat ki rukom ha ka website
 cloud_signing_in	इन कर रहे हैं…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
+cloud_sending_reset	Phah ia ka jingjingkit ban pynthymmai…
+cloud_forgot_sent	Lada ka email ka don ka account, ka jingjingkit ban pynthymmai ka leit.
 cloud_welcome	La sign in kum {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
+cloud_created	La thaw ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
 cloud_cancel	Cancel
 permission_preset	Ka kam
 product_only_tabiyat	Ka Tabiyat ka dei ka rukom treikam jong ka dukan dawai: ka jingdie dawai, ka jingbuh kot ba la buh/ba la kut por, ka ram bad ki kot — khlem da don ha ki tiar jong phi. Ki lama jong ka por H / Rx ki dei ki jingthoh jong u trai, ym ka jingbud ryntih.
