@@ -1297,7 +1297,7 @@ clear_payment_qr	ลบ QR ชำระเงิน
 payment_qr_set	QR ชำระ: มีไฟล์ — บนจอแขก (แทน QR UPI ตามยอด)
 payment_qr_none	QR ชำระ: ไม่มี — QR ตามยอดจาก UPI ตอนชำระ
 aggregator_import	ออเดอร์ Aggregator (ไฟล์)
-aggregator_import_help	Local เสริม: ใส่ import_aggregator_orders.json ใน backups แล้ว Import เคาน์เตอร์ไม่ค้าง; Zomato/Swiggy สด = Cloud
+aggregator_import_help	การนำเข้า Local เสริม: ใส่ import_aggregator_orders.json ในโฟลเดอร์สำรอง (อาร์เรย์หรือ {"orders":[…]}) แล้วแตะ «นำเข้า» ไม่เคยบล็อกเคาน์เตอร์; Zomato/Swiggy สดคือ Cloud
 import_aggregator_file	นำเข้าไฟล์ Aggregator
 team_pick_ph	ชื่อพนักงานที่จะแก้ไข
 select_staff	เลือกพนักงานนี้

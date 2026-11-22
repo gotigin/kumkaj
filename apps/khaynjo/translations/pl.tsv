@@ -1297,7 +1297,7 @@ clear_payment_qr	Wyczyść płatność QR
 payment_qr_set	QR płatności: w pliku — wyświetlany na wyświetlaczu gościa (zastępuje tam kwotę UPI QR)
 payment_qr_none	QR płatności: brak — kwota QR z UPI ID przy płatności
 aggregator_import	Zamówienia agregatora (plik)
-aggregator_import_help	Opcjonalny import lokalny: umieść plik import_aggregator_orders.json w folderze kopii zapasowych (tablica lub {"orders":[…]}), a następnie kliknij Importuj. Nigdy nie blokuje licznika; na żywo Zomato/Swiggy is Cloud.
+aggregator_import_help	Opcjonalny import lokalny: umieść plik import_aggregator_orders.json w folderze kopii zapasowych (tablica lub {"orders":[…]}), a następnie kliknij Importuj. Nigdy nie blokuje licznika; na żywo Zomato/Swiggy to Cloud.
 import_aggregator_file	Importuj plik agregatora
 team_pick_ph	Personel do edycji — imię i nazwisko, nazwa użytkownika lub wybór
 select_staff	Wybierz tę laskę

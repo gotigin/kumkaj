@@ -1297,7 +1297,7 @@ clear_payment_qr	Ödeme QR kaldır
 payment_qr_set	Ödeme QR: dosyada — misafir ekranında (tutar UPI QR yerine)
 payment_qr_none	Ödeme QR: yok — öderken UPI’den tutar QR
 aggregator_import	Toplayıcı siparişleri (dosya)
-aggregator_import_help	İsteğe bağlı Local: backups’a import_aggregator_orders.json koyup İçe aktar. Tezgâh durmaz; canlı Zomato/Swiggy = Cloud.
+aggregator_import_help	İsteğe bağlı Yerel içe aktarma: yedekler klasörüne import_aggregator_orders.json koyun (dizi veya {"orders":[…]}) sonra «İçe aktar» dokunun. Tezgâhı asla bloklamaz; canlı Zomato/Swiggy Cloud’dur.
 import_aggregator_file	Toplayıcı dosyasını içe aktar
 team_pick_ph	Düzenlenecek personel adı
 select_staff	Bu personeli seç

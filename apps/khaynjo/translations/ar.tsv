@@ -1297,7 +1297,7 @@ clear_payment_qr	أزل QR الدفع
 payment_qr_set	QR الدفع: محفوظ — على شاشة الضيف (بدل QR مبلغ UPI)
 payment_qr_none	QR الدفع: لا يوجد — QR المبلغ من UPI عند الدفع
 aggregator_import	طلبات المجمّع (ملف)
-aggregator_import_help	محلي اختياري: ضع import_aggregator_orders.json في backups ثم استورد. الكاونتر لا يتوقف؛ Zomato/Swiggy مباشر = Cloud.
+aggregator_import_help	استيراد محلي اختياري: ضع import_aggregator_orders.json في مجلد النسخ الاحتياطية (مصفوفة أو {"orders":[…]}) ثم اضغط «استيراد». لا يوقف الكاونتر أبدًا؛ Zomato/Swiggy المباشر هو Cloud.
 import_aggregator_file	استيراد ملف المجمّع
 team_pick_ph	اسم الموظف للتعديل
 select_staff	اختر هذا الموظف
