@@ -543,3 +543,8 @@ need the author and licence named.
 | `middle-eastern/menemen.webp` | menemen with zerdali restaurant branding | Menemen in pan.jpg | FakirNL | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Menemen_in_pan.jpg | resized, WebP |
 | `japanese/tsukemen.webp` | tsukemen with ETSU logo on bowl | Tsukemen at a Tokyo restaurant.jpg | City Foodsters | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Tsukemen_at_a_Tokyo_restaurant.jpg | resized, WebP |
 | `mexican/salsa-roja.webp` | salsa jar still-life with produce stickers and package text | Salsa roja.jpg | goblinbox_(queen_of_ad_hoc_bento) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Salsa_roja.jpg | resized, WebP |
+
+## L14 pass3 ice-cream 2026-11-22T14:45:49Z
+- ice-cream/ice-cream-cake.webp ← Commons File:Cookies_n_cream_ice_cream_cake!.jpg crop (CC BY-SA 2.0) https://commons.wikimedia.org/wiki/File:Cookies_n_cream_ice_cream_cake!.jpg
+- ice-cream/coffee-ice-cream.webp ← Commons File:Espresso_flake_ice_cream_(7869081922).jpg crop (CC BY 2.0) https://commons.wikimedia.org/wiki/File:Espresso_flake_ice_cream_(7869081922).jpg
+- ice-cream/dondurma.webp ← Commons File:Dondurma_(5065600007).jpg crop stretch demo (CC BY 2.0) https://commons.wikimedia.org/wiki/File:Dondurma_(5065600007).jpg
