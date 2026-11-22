@@ -1,6 +1,6 @@
 # Swahili — Kiswahili (sw). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Msimbopau / EAN
-composition_ph	Salt / muundo (inayoweza kutafutwa)
+composition_ph	Chumvi ya kemikali / muundo (inayoweza kutafutwa)
 schedule_h_off	Ratiba H - imezimwa (bendera ya mmiliki)
 schedule_h_on	Ratiba H - imewashwa (bendera ya mmiliki)
 rx_expected_off	Rx inatarajiwa - imezimwa (bendera ya mmiliki)
@@ -560,7 +560,7 @@ upi_amount_ph	Kiasi cha UPI
 void	Batilisha
 write_off_ap	Ondoa deni la AP
 write_off_heading	Ondoa deni (maliza bila malipo)
-write_off_nil	Futa / salio sifuri
+write_off_nil	Ondoa deni / salio sifuri
 your_brand	Chapa yako (kwenye app)
 your_categories	Aina zako
 account_kind	Aina ya akaunti (gusa moja)

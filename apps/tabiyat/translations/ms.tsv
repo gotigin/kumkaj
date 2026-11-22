@@ -1,6 +1,6 @@
 # Malay — Bahasa Melayu (ms). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Kod Bar / EAN
-composition_ph	Salt / komposisi (boleh dicari)
+composition_ph	Bahan aktif / komposisi (boleh dicari)
 schedule_h_off	Jadual H — dimatikan (bendera pemilik)
 schedule_h_on	Jadual H — hidup (bendera pemilik)
 rx_expected_off	Rx dijangka — dimatikan (bendera pemilik)

@@ -1,6 +1,6 @@
 # Vietnamese — Tiếng Việt (vi). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Mã vạch / EAN
-composition_ph	Salt / thành phần (tìm được)
+composition_ph	Hoạt chất / thành phần (tìm được)
 schedule_h_off	Lịch trình H — tắt (cờ chủ sở hữu)
 schedule_h_on	Lịch trình H — bật (cờ chủ sở hữu)
 rx_expected_off	Dự kiến ​​Rx — tắt (cờ chủ sở hữu)

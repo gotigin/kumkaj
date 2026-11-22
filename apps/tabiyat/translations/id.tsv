@@ -1,6 +1,6 @@
 # Indonesian — Bahasa Indonesia (id). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Kode Batang / EAN
-composition_ph	Garam / komposisi (dapat dicari)
+composition_ph	Zat aktif / komposisi (dapat dicari)
 schedule_h_off	Jadwal H — mati (bendera pemilik)
 schedule_h_on	Jadwal H — aktif (bendera pemilik)
 rx_expected_off	Rx diharapkan — mati (bendera pemilik)

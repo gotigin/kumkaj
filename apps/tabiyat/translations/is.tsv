@@ -1,6 +1,6 @@
 # Icelandic — Íslenska (is). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Strikamerki / EAN
-composition_ph	Salt / samsetning (leitanlegt)
+composition_ph	Salt (efnafræði) / samsetning (leitanlegt)
 schedule_h_off	Dagskrá H — slökkt (eigandafáni)
 schedule_h_on	Dagskrá H — á (fáni eiganda)
 rx_expected_off	Rx væntanleg - slökkt (fáni eiganda)

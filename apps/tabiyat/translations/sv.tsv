@@ -1,6 +1,6 @@
 # Swedish — Svenska (sv). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Streckkod / EAN
-composition_ph	Salt / sammansättning (sökbar)
+composition_ph	Salt (kemiskt) / sammansättning (sökbar)
 schedule_h_off	Schema H – av (ägarflagga)
 schedule_h_on	Schema H — på (ägarens flagga)
 rx_expected_off	Rx förväntat — av (ägarflagga)

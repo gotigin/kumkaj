@@ -1,6 +1,6 @@
 # Norwegian — Norsk (no). One key<TAB>text per line, in en() order; keep {placeholders}.
 barcode_ph	Strekkode / EAN
-composition_ph	Salt / sammensetning (søkbar)
+composition_ph	Salt (kjemisk) / sammensetning (søkbar)
 schedule_h_off	Tidsplan H – av (eierflagg)
 schedule_h_on	Tidsplan H — på (eierflagg)
 rx_expected_off	Rx forventet – av (eierflagg)

@@ -901,7 +901,7 @@ low_stock_alert	庫存不足——儘快補貨：{items}
 unpriced_note	您的商品上的 {n} 商品還沒有價格 — 在您設定 1 之前，它們的計費價格為 0。
 show_unpriced	僅顯示沒有價格的商品
 show_all_dishes	顯示所有項目
-role_title_rest_ph	職位（如領班、主廚）
+role_title_rest_ph	職位（如領班）
 preset_help_rest	收銀員：銷售。經理：銷售+項目+作廢/修改。
 kind_resale	購入藥品
 kind_dish	不計算庫存
