@@ -702,7 +702,7 @@ printers_find_heading	Soek drukkers
 printers_find_tip	Vind sken hierdie toestel en hou die lys up-to-date.
 printers_pool_heading	Drukkers
 printers_pool_tip	Vind sken hierdie toestel en hou hierdie lys up-to-date.
-printers_pool_empty	(nog nie nie — tik Vind)
+printers_pool_empty	(nog nie — tik Vind)
 printers_routes_help	Vind drukkers wat die bedryfstelsel reeds ken. Toewys hulle aan die rekening en aan elke keuken onder Rekening & KOT-formaat.
 printer_assign_dd	Egte drukker: {place}
 printer_assign_pick	Kies egte drukker
