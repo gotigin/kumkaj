@@ -203,7 +203,7 @@ whatsapp_token_ph	Token i qasjes (lëre bosh për ta mbajtur)
 whatsapp_template_ph	Emri i shabllonit të faturës (opsional)
 whatsapp_template_lang_ph	Gjuha e shabllonit (p.sh. en)
 whatsapp_enable	Aktivizo
-whatsapp_disable	Off
+whatsapp_disable	Fikur
 whatsapp_save	Ruaj WhatsApp
 whatsapp_test	Testo lidhjen
 whatsapp_disconnect	Shkëput

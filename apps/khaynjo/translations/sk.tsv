@@ -203,7 +203,7 @@ whatsapp_token_ph	Prístupový token (ponechajte prázdne, ak ho chcete zachova�
 whatsapp_template_ph	Názov šablóny účtu (voliteľné)
 whatsapp_template_lang_ph	Jazyk šablóny (napr. en)
 whatsapp_enable	Povoliť
-whatsapp_disable	Off
+whatsapp_disable	Vyp
 whatsapp_save	Uložiť WhatsApp
 whatsapp_test	Otestovať pripojenie
 whatsapp_disconnect	Odpojiť

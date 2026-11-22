@@ -203,7 +203,7 @@ whatsapp_token_ph	Käyttöoikeustunnus (jätä tyhjäksi säilyttääksesi)
 whatsapp_template_ph	Laskupohjan nimi (valinnainen)
 whatsapp_template_lang_ph	Pohjan kieli (esim. en)
 whatsapp_enable	Ota käyttöön
-whatsapp_disable	Off
+whatsapp_disable	Pois
 whatsapp_save	Tallenna WhatsApp
 whatsapp_test	Testaa yhteys
 whatsapp_disconnect	Katkaise yhteys

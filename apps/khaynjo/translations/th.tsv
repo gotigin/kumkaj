@@ -203,7 +203,7 @@ whatsapp_token_ph	โทเค็นการเข้าถึง (เว้น
 whatsapp_template_ph	ชื่อเทมเพลตบิล (ไม่บังคับ)
 whatsapp_template_lang_ph	ภาษาของเทมเพลต (เช่น en)
 whatsapp_enable	เปิดใช้งาน
-whatsapp_disable	Off
+whatsapp_disable	ปิด
 whatsapp_save	บันทึก WhatsApp
 whatsapp_test	ทดสอบการเชื่อมต่อ
 whatsapp_disconnect	ตัดการเชื่อมต่อ

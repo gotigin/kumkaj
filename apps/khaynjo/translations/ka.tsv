@@ -203,7 +203,7 @@ whatsapp_token_ph	წვდომის ტოკენი (შესანა�
 whatsapp_template_ph	ანგარიშის შაბლონის სახელი (არასავალდებულო)
 whatsapp_template_lang_ph	შაბლონის ენა (მაგ. en)
 whatsapp_enable	ჩართვა
-whatsapp_disable	Off
+whatsapp_disable	გამორთული
 whatsapp_save	WhatsApp-ის შენახვა
 whatsapp_test	კავშირის შემოწმება
 whatsapp_disconnect	კავშირის გაწყვეტა

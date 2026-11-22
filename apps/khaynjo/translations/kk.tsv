@@ -203,7 +203,7 @@ whatsapp_token_ph	Қатынау токені (сақтап қалу үшін б
 whatsapp_template_ph	Шот үлгісінің атауы (міндетті емес)
 whatsapp_template_lang_ph	Үлгі тілі (мысалы, en)
 whatsapp_enable	Қосу
-whatsapp_disable	Off
+whatsapp_disable	Өшіру
 whatsapp_save	WhatsApp сақтау
 whatsapp_test	Қосылымды тексеру
 whatsapp_disconnect	Ажырату

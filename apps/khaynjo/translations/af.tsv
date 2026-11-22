@@ -203,7 +203,7 @@ whatsapp_token_ph	Toegangsteken (laat leeg om dit te behou)
 whatsapp_template_ph	Naam van rekeningsjabloon (opsioneel)
 whatsapp_template_lang_ph	Sjabloontaal (bv. en)
 whatsapp_enable	Aktiveer
-whatsapp_disable	Off
+whatsapp_disable	Af
 whatsapp_save	Stoor WhatsApp
 whatsapp_test	Toets verbinding
 whatsapp_disconnect	Ontkoppel
@@ -245,7 +245,7 @@ sidebar_hidden	Versteek
 sidebar_always_on	Altyd op die balk
 sidebar_shown_hint	Gewys op die sybalk / onderliggende tabblaaie
 sidebar_hidden_hint	Versteek van die balk
-sidebar_menu_items	Menu & Items
+sidebar_menu_items	Spyskaart & items
 sidebar_enable_all	Aktiveer Alle
 sidebar_disable_all	Deaktiveer Alle
 sidebar_order_saved	Sybalk volgorde opgeslaan
@@ -275,7 +275,7 @@ added_items	Toegevoegde item(s)
 added_items_empty	Nog nie op hierdie bestelling geplaas — voeg 'n gereg by van Alle items of 'n kategorie.
 frequent_config_help	Meeste verkoop geregte van afgeteerde rekeninge. Stel hoeveel dae om te kyk en hoeveel geregte om te wys.
 frequent_days_ph	Dae (1)
-frequent_limit_ph	Items (24)
+frequent_limit_ph	Artikels (24)
 frequent_apply	Toepas
 frequent_saved	Gereeld: laaste {d} dag(e), top {n} — {c} gereg(te)
 frequent_empty	Nog geen afgeteerde verkope in hierdie tydperk — betaal 'n rekening (₹0 toegelaat wanneer Instellings sê so) en hulle verskyn hier.
@@ -326,7 +326,7 @@ item_price_ph	Prijs
 start_template	Produk
 team	Span
 team_pins	Span en PINs
-my_pin_settings	My PIN
+my_pin_settings	My PIN-kode
 settings_hub_help_my_pin	Verander die ontsluiting-PIN vir die persoon wat op hierdie toestel aangemeld is.
 team_self_help	Een aanmelding: 'n Nuwe PIN, 'n nuwe wagwoord, of albei. Laat 'n doos leeg om wat jy het te behou. Vra die Eienaar as jy verskillende skerm of regte nodig het.
 backup_settings	Reserveer & instellings
@@ -423,7 +423,7 @@ attach_pdf	PDF heg
 attach_photo	Foto heg
 attachments_last_expense	Aanhangsels (laaste uitgawe)
 bank	Bank
-bank_in	Bank in
+bank_in	Bank inkome
 bank_out	Bank uit
 bank_reconciliation	Bankversoenlikheid
 bank_to_till	Bank → kasregister

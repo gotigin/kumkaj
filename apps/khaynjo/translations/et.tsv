@@ -203,7 +203,7 @@ whatsapp_token_ph	Juurdepääsutõend (säilitamiseks jätke tühjaks)
 whatsapp_template_ph	Arvemalli nimi (valikuline)
 whatsapp_template_lang_ph	Malli keel (nt en)
 whatsapp_enable	Luba
-whatsapp_disable	Off
+whatsapp_disable	Väljas
 whatsapp_save	Salvesta WhatsApp
 whatsapp_test	Testi ühendust
 whatsapp_disconnect	Katkesta ühendus

@@ -203,7 +203,7 @@ whatsapp_token_ph	Jeton d'accès (laisser vide pour le conserver)
 whatsapp_template_ph	Nom du modèle d'addition (facultatif)
 whatsapp_template_lang_ph	Langue du modèle (p. ex. en)
 whatsapp_enable	Activer
-whatsapp_disable	Off
+whatsapp_disable	Désactivé
 whatsapp_save	Enregistrer WhatsApp
 whatsapp_test	Tester la connexion
 whatsapp_disconnect	Déconnecter

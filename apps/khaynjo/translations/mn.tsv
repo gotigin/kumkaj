@@ -203,7 +203,7 @@ whatsapp_token_ph	Хандах токен (хэвээр үлдээх бол хо
 whatsapp_template_ph	Тооцооны загварын нэр (заавал биш)
 whatsapp_template_lang_ph	Загварын хэл (жишээ нь en)
 whatsapp_enable	Идэвхжүүлэх
-whatsapp_disable	Off
+whatsapp_disable	Унтраах
 whatsapp_save	WhatsApp хадгалах
 whatsapp_test	Холболт шалгах
 whatsapp_disconnect	Салгах

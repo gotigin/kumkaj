@@ -156,7 +156,7 @@ kot_sent_printing	KOT sendt til {kitchens} — skriver ut
 kot_sent_not_printed	KOT sendt til {kitchens}, men IKKE skrevet ut: {why}. Si fra til kjøkkenet, rett skriveren og skriv den ut igjen.
 kot_sent_screen	KOT sendt til {kitchens}
 kot_queued_shop	KOT for {place} → {kitchens} lagret; butikkens enhet skriver den ut
-kot_job_label	KOT for {place} → {kitchens}
+kot_job_label	KOT til {place} → {kitchens}
 kot_job_reached	KOT for {place} nådde {kitchens}
 kot_unassigned	Kjøkken (ingen stasjon)
 kot_unassigned_held	Holdt {n} retter uten stasjon — slipp hold på linjen for å sende
@@ -203,7 +203,7 @@ whatsapp_token_ph	Tilgangstoken (la stå tomt for å beholde)
 whatsapp_template_ph	Navn på regningsmal (valgfritt)
 whatsapp_template_lang_ph	Malens språk (f.eks. en)
 whatsapp_enable	Aktiver
-whatsapp_disable	Off
+whatsapp_disable	Av
 whatsapp_save	Lagre WhatsApp
 whatsapp_test	Test tilkoblingen
 whatsapp_disconnect	Koble fra

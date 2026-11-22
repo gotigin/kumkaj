@@ -203,7 +203,7 @@ whatsapp_token_ph	ໂທເຄັນການເຂົ້າເຖິງ (ປະ
 whatsapp_template_ph	ຊື່ແມ່ແບບໃບບິນ (ທາງເລືອກ)
 whatsapp_template_lang_ph	ພາສາຂອງແມ່ແບບ (ເຊັ່ນ en)
 whatsapp_enable	ເປີດໃຊ້
-whatsapp_disable	Off
+whatsapp_disable	ປິດ
 whatsapp_save	ບັນທຶກ WhatsApp
 whatsapp_test	ທົດສອບການເຊື່ອມຕໍ່
 whatsapp_disconnect	ຕັດການເຊື່ອມຕໍ່

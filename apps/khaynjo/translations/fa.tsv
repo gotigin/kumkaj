@@ -203,7 +203,7 @@ whatsapp_token_ph	توکن دسترسی (برای نگه داشتن همان، �
 whatsapp_template_ph	نام قالب صورتحساب (اختیاری)
 whatsapp_template_lang_ph	زبان قالب (مثلاً en)
 whatsapp_enable	روشن کردن
-whatsapp_disable	Off
+whatsapp_disable	خاموش
 whatsapp_save	ذخیرهٔ WhatsApp
 whatsapp_test	آزمایش اتصال
 whatsapp_disconnect	قطع اتصال

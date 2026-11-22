@@ -69,7 +69,7 @@ note_ph	Notiz (optional)
 rounded	Gerundet
 split	Teilen
 send_kot	An Küche
-send_kot_to	Send → {kitchens}
+send_kot_to	Senden → {kitchens}
 send_kot_again	Gerichte für den nächsten KOT hinzufügen
 send_kot_held	Gehaltene Gerichte — freigeben, um zu senden
 reprint_kot	Auswahl erneut drucken
@@ -203,7 +203,7 @@ whatsapp_token_ph	Zugriffstoken (leer lassen, um es zu behalten)
 whatsapp_template_ph	Name der Rechnungsvorlage (optional)
 whatsapp_template_lang_ph	Sprache der Vorlage (z. B. en)
 whatsapp_enable	Aktivieren
-whatsapp_disable	Off
+whatsapp_disable	Aus
 whatsapp_save	WhatsApp speichern
 whatsapp_test	Verbindung testen
 whatsapp_disconnect	Trennen

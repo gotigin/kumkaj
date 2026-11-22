@@ -203,7 +203,7 @@ whatsapp_token_ph	Token ta' aċċess (ħallih vojt biex iżżommu)
 whatsapp_template_ph	Isem tal-mudell tal-kont (mhux obbligatorju)
 whatsapp_template_lang_ph	Lingwa tal-mudell (eż. en)
 whatsapp_enable	Ippermetti
-whatsapp_disable	Off
+whatsapp_disable	Mitfi
 whatsapp_save	Salva WhatsApp
 whatsapp_test	Ittestja l-konnessjoni
 whatsapp_disconnect	Skonnettja

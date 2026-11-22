@@ -203,7 +203,7 @@ whatsapp_token_ph	访问令牌（留空则保持不变）
 whatsapp_template_ph	账单模板名称（可选）
 whatsapp_template_lang_ph	模板语言（例如 en）
 whatsapp_enable	启用
-whatsapp_disable	Off
+whatsapp_disable	关
 whatsapp_save	保存 WhatsApp
 whatsapp_test	测试连接
 whatsapp_disconnect	断开连接

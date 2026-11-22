@@ -203,7 +203,7 @@ whatsapp_token_ph	د لاسرسي ټوکن (د همدې ساتلو لپاره ی
 whatsapp_template_ph	د بل د کينډۍ نوم (اختیاري)
 whatsapp_template_lang_ph	د کينډۍ ژبه (لکه en)
 whatsapp_enable	فعال کړئ
-whatsapp_disable	Off
+whatsapp_disable	بند
 whatsapp_save	WhatsApp خوندي کړئ
 whatsapp_test	اړیکه وازمویئ
 whatsapp_disconnect	اړیکه پرې کړئ

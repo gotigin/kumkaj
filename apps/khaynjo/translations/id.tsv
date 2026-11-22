@@ -203,7 +203,7 @@ whatsapp_token_ph	Token akses (kosongkan untuk mempertahankan)
 whatsapp_template_ph	Nama templat struk (opsional)
 whatsapp_template_lang_ph	Bahasa templat (mis. en)
 whatsapp_enable	Aktifkan
-whatsapp_disable	Off
+whatsapp_disable	Mati
 whatsapp_save	Simpan WhatsApp
 whatsapp_test	Uji koneksi
 whatsapp_disconnect	Putuskan sambungan
@@ -635,7 +635,7 @@ set_login_selected	Atur login terpilih
 set_login_named	Terapkan login ke {name}
 shop	Toko
 show	Tampilkan
-spreadsheet_csv	Spreadsheet (CSV)
+spreadsheet_csv	Lembar sebar (CSV)
 start_fresh	Mulai baru
 stop_extra_tills	Hentikan kasir tambahan
 floor_cols_ph	Kolom

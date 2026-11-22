@@ -203,7 +203,7 @@ whatsapp_token_ph	Token dostępu (zostaw puste, aby zachować)
 whatsapp_template_ph	Nazwa szablonu rachunku (opcjonalnie)
 whatsapp_template_lang_ph	Język szablonu (np. en)
 whatsapp_enable	Włącz
-whatsapp_disable	Off
+whatsapp_disable	Wył.
 whatsapp_save	Zapisz WhatsApp
 whatsapp_test	Testuj połączenie
 whatsapp_disconnect	Rozłącz

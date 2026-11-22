@@ -203,7 +203,7 @@ whatsapp_token_ph	Token de acesso (deixe em branco para manter)
 whatsapp_template_ph	Nome do modelo de conta (opcional)
 whatsapp_template_lang_ph	Idioma do modelo (p. ex. en)
 whatsapp_enable	Ativar
-whatsapp_disable	Off
+whatsapp_disable	Desligado
 whatsapp_save	Guardar WhatsApp
 whatsapp_test	Testar ligação
 whatsapp_disconnect	Desligar

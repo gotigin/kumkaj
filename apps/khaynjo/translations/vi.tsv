@@ -203,7 +203,7 @@ whatsapp_token_ph	Mã truy cập (để trống để giữ nguyên)
 whatsapp_template_ph	Tên mẫu hóa đơn (tùy chọn)
 whatsapp_template_lang_ph	Ngôn ngữ của mẫu (ví dụ en)
 whatsapp_enable	Bật
-whatsapp_disable	Off
+whatsapp_disable	Tắt
 whatsapp_save	Lưu WhatsApp
 whatsapp_test	Kiểm tra kết nối
 whatsapp_disconnect	Ngắt kết nối

@@ -203,7 +203,7 @@ whatsapp_token_ph	Token akses (biarkan kosong untuk mengekalkannya)
 whatsapp_template_ph	Nama templat bil (pilihan)
 whatsapp_template_lang_ph	Bahasa templat (cth. en)
 whatsapp_enable	Dayakan
-whatsapp_disable	Off
+whatsapp_disable	Mati
 whatsapp_save	Simpan WhatsApp
 whatsapp_test	Uji sambungan
 whatsapp_disconnect	Putuskan sambungan

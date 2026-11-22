@@ -203,7 +203,7 @@ whatsapp_token_ph	Piekļuves pilnvara (atstājiet tukšu, lai saglabātu)
 whatsapp_template_ph	Rēķina veidnes nosaukums (nav obligāts)
 whatsapp_template_lang_ph	Veidnes valoda (piem., en)
 whatsapp_enable	Ieslēgt
-whatsapp_disable	Off
+whatsapp_disable	Izslēgts
 whatsapp_save	Saglabāt WhatsApp
 whatsapp_test	Pārbaudīt savienojumu
 whatsapp_disconnect	Atvienot

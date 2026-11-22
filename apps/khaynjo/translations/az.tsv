@@ -203,7 +203,7 @@ whatsapp_token_ph	Giriş tokeni (saxlamaq üçün boş buraxın)
 whatsapp_template_ph	Hesab şablonunun adı (istəyə bağlı)
 whatsapp_template_lang_ph	Şablonun dili (məs. en)
 whatsapp_enable	Aktiv et
-whatsapp_disable	Off
+whatsapp_disable	Söndür
 whatsapp_save	WhatsApp-ı saxla
 whatsapp_test	Əlaqəni yoxla
 whatsapp_disconnect	Əlaqəni kəs

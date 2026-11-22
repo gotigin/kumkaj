@@ -203,7 +203,7 @@ whatsapp_token_ph	アクセストークン（そのまま使う場合は空欄�
 whatsapp_template_ph	伝票テンプレート名（任意）
 whatsapp_template_lang_ph	テンプレートの言語（例: en）
 whatsapp_enable	有効にする
-whatsapp_disable	Off
+whatsapp_disable	オフ
 whatsapp_save	WhatsApp を保存
 whatsapp_test	接続をテスト
 whatsapp_disconnect	切断

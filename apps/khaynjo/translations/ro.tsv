@@ -203,7 +203,7 @@ whatsapp_token_ph	Token de acces (lasă gol pentru a-l păstra)
 whatsapp_template_ph	Numele șablonului de notă (opțional)
 whatsapp_template_lang_ph	Limba șablonului (de ex. en)
 whatsapp_enable	Activează
-whatsapp_disable	Off
+whatsapp_disable	Oprit
 whatsapp_save	Salvează WhatsApp
 whatsapp_test	Testează conexiunea
 whatsapp_disconnect	Deconectează

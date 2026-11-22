@@ -203,7 +203,7 @@ whatsapp_token_ph	Кирүү токени (сактап калуу үчүн бо
 whatsapp_template_ph	Эсеп шаблонунун аталышы (милдеттүү эмес)
 whatsapp_template_lang_ph	Шаблондун тили (мисалы, en)
 whatsapp_enable	Иштетүү
-whatsapp_disable	Off
+whatsapp_disable	Өчүрүү
 whatsapp_save	WhatsApp сактоо
 whatsapp_test	Туташууну текшерүү
 whatsapp_disconnect	Ажыратуу

@@ -203,7 +203,7 @@ whatsapp_token_ph	Մուտքի թոքեն (պահպանելու համար թո�
 whatsapp_template_ph	Հաշվի ձևանմուշի անունը (ըստ ցանկության)
 whatsapp_template_lang_ph	Ձևանմուշի լեզուն (օր.՝ en)
 whatsapp_enable	Միացնել
-whatsapp_disable	Off
+whatsapp_disable	Անջատված
 whatsapp_save	Պահել WhatsApp-ը
 whatsapp_test	Ստուգել կապը
 whatsapp_disconnect	Անջատել կապը

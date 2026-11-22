@@ -203,7 +203,7 @@ whatsapp_token_ph	Erişim belirteci (korumak için boş bırakın)
 whatsapp_template_ph	Fiş şablonu adı (isteğe bağlı)
 whatsapp_template_lang_ph	Şablon dili (ör. en)
 whatsapp_enable	Etkinleştir
-whatsapp_disable	Off
+whatsapp_disable	Kapalı
 whatsapp_save	WhatsApp'ı kaydet
 whatsapp_test	Bağlantıyı sına
 whatsapp_disconnect	Bağlantıyı kes

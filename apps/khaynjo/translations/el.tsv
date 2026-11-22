@@ -203,7 +203,7 @@ whatsapp_token_ph	Διακριτικό πρόσβασης (αφήστε το κ�
 whatsapp_template_ph	Όνομα προτύπου λογαριασμού (προαιρετικό)
 whatsapp_template_lang_ph	Γλώσσα προτύπου (π.χ. en)
 whatsapp_enable	Ενεργοποίηση
-whatsapp_disable	Off
+whatsapp_disable	Ανενεργό
 whatsapp_save	Αποθήκευση WhatsApp
 whatsapp_test	Δοκιμή σύνδεσης
 whatsapp_disconnect	Αποσύνδεση

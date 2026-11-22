@@ -203,7 +203,7 @@ whatsapp_token_ph	Aðgangslykill (skildu eftir autt til að halda honum)
 whatsapp_template_ph	Heiti reikningssniðmáts (valfrjálst)
 whatsapp_template_lang_ph	Tungumál sniðmáts (t.d. en)
 whatsapp_enable	Virkja
-whatsapp_disable	Off
+whatsapp_disable	Af
 whatsapp_save	Vista WhatsApp
 whatsapp_test	Prófa tengingu
 whatsapp_disconnect	Aftengja

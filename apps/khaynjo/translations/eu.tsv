@@ -203,7 +203,7 @@ whatsapp_token_ph	Sarbide-tokena (utzi hutsik mantentzeko)
 whatsapp_template_ph	Kontu-txantiloiaren izena (aukerakoa)
 whatsapp_template_lang_ph	Txantiloiaren hizkuntza (adib. en)
 whatsapp_enable	Gaitu
-whatsapp_disable	Off
+whatsapp_disable	Desaktibatuta
 whatsapp_save	Gorde WhatsApp
 whatsapp_test	Probatu konexioa
 whatsapp_disconnect	Deskonektatu

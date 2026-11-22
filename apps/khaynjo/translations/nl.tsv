@@ -203,7 +203,7 @@ whatsapp_token_ph	Toegangstoken (leeg laten om te behouden)
 whatsapp_template_ph	Naam rekeningsjabloon (optioneel)
 whatsapp_template_lang_ph	Taal van sjabloon (bijv. en)
 whatsapp_enable	Inschakelen
-whatsapp_disable	Off
+whatsapp_disable	Uit
 whatsapp_save	WhatsApp opslaan
 whatsapp_test	Verbinding testen
 whatsapp_disconnect	Verbinding verbreken
@@ -275,7 +275,7 @@ added_items	Toegevoegd
 added_items_empty	Nog niets op deze bestelling — voeg een gerecht toe via All items of een categorie.
 frequent_config_help	Meest verkochte gerechten uit afgesloten rekeningen. Wijzig dagen en aantal hier.
 frequent_days_ph	Dagen (1)
-frequent_limit_ph	Items (24)
+frequent_limit_ph	Artikelen (24)
 frequent_apply	Toepassen
 frequent_saved	Vaak: laatste {d} dag(en), bovenste {n} — {c} gerecht(en)
 frequent_empty	Nog geen voltooide verkopen in deze periode — reken af (₹0 als Instellingen dat toelaat) en ze verschijnen hier.
@@ -635,7 +635,7 @@ set_login_selected	Login instellen voor geselecteerde
 set_login_named	Login toepassen op {name}
 shop	Winkel
 show	Tonen
-spreadsheet_csv	Spreadsheet (CSV)
+spreadsheet_csv	Rekenblad (CSV)
 start_fresh	Opnieuw beginnen
 stop_extra_tills	Extra kassa's stoppen
 floor_cols_ph	Kolommen

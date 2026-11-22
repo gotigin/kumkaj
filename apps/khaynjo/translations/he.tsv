@@ -203,7 +203,7 @@ whatsapp_token_ph	אסימון גישה (השאר ריק כדי לשמור את 
 whatsapp_template_ph	שם תבנית החשבון (לא חובה)
 whatsapp_template_lang_ph	שפת התבנית (למשל en)
 whatsapp_enable	הפעל
-whatsapp_disable	Off
+whatsapp_disable	כבוי
 whatsapp_save	שמור WhatsApp
 whatsapp_test	בדוק חיבור
 whatsapp_disconnect	נתק

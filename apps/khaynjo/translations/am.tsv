@@ -203,7 +203,7 @@ whatsapp_token_ph	የመዳረሻ ቶከን (ያለውን ለማቆየት ባዶ
 whatsapp_template_ph	የሂሳብ አብነት ስም (አማራጭ)
 whatsapp_template_lang_ph	የአብነት ቋንቋ (ለምሳሌ en)
 whatsapp_enable	አንቃ
-whatsapp_disable	Off
+whatsapp_disable	አጥፋ
 whatsapp_save	WhatsApp አስቀምጥ
 whatsapp_test	ግንኙነትን ሞክር
 whatsapp_disconnect	ግንኙነት አቋርጥ

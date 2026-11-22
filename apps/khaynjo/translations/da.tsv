@@ -156,7 +156,7 @@ kot_sent_printing	KOT sendt til {kitchens} — udskriver
 kot_sent_not_printed	KOT sendt til {kitchens} men IKKE udskrevet: {why}. Sig det til køkkenet, ret så printeren og udskriv den igen.
 kot_sent_screen	KOT sendt til {kitchens}
 kot_queued_shop	KOT for {place} → {kitchens} gemt; butikkens enhed udskriver den
-kot_job_label	KOT for {place} → {kitchens}
+kot_job_label	KOT til {place} → {kitchens}
 kot_job_reached	KOT for {place} nåede {kitchens}
 kot_unassigned	Køkken (ingen station)
 kot_unassigned_held	Holdt {n} ret(ter) uden station — slip hold på linjen for at sende
@@ -203,7 +203,7 @@ whatsapp_token_ph	Adgangstoken (lad stå tom for at beholde)
 whatsapp_template_ph	Navn på regningsskabelon (valgfri)
 whatsapp_template_lang_ph	Skabelonens sprog (f.eks. en)
 whatsapp_enable	Slå til
-whatsapp_disable	Off
+whatsapp_disable	Fra
 whatsapp_save	Gem WhatsApp
 whatsapp_test	Test forbindelsen
 whatsapp_disconnect	Afbryd forbindelsen

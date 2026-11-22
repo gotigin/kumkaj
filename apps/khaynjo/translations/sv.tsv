@@ -203,7 +203,7 @@ whatsapp_token_ph	Åtkomsttoken (lämna tomt för att behålla)
 whatsapp_template_ph	Namn på notamall (valfritt)
 whatsapp_template_lang_ph	Mallens språk (t.ex. en)
 whatsapp_enable	Aktivera
-whatsapp_disable	Off
+whatsapp_disable	Av
 whatsapp_save	Spara WhatsApp
 whatsapp_test	Testa anslutning
 whatsapp_disconnect	Koppla från

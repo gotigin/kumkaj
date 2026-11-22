@@ -203,7 +203,7 @@ whatsapp_token_ph	Prieigos raktas (palikite tuščią, kad išliktų)
 whatsapp_template_ph	Sąskaitos šablono pavadinimas (nebūtina)
 whatsapp_template_lang_ph	Šablono kalba (pvz., en)
 whatsapp_enable	Įjungti
-whatsapp_disable	Off
+whatsapp_disable	Išjungta
 whatsapp_save	Išsaugoti WhatsApp
 whatsapp_test	Tikrinti ryšį
 whatsapp_disconnect	Atjungti

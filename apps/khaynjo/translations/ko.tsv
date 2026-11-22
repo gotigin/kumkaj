@@ -203,7 +203,7 @@ whatsapp_token_ph	액세스 토큰(유지하려면 비워 두세요)
 whatsapp_template_ph	영수증 템플릿 이름(선택)
 whatsapp_template_lang_ph	템플릿 언어(예: en)
 whatsapp_enable	사용
-whatsapp_disable	Off
+whatsapp_disable	끄기
 whatsapp_save	WhatsApp 저장
 whatsapp_test	연결 테스트
 whatsapp_disconnect	연결 끊기

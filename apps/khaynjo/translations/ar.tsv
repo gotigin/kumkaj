@@ -203,7 +203,7 @@ whatsapp_token_ph	رمز الوصول (اتركه فارغاً للإبقاء ع
 whatsapp_template_ph	اسم قالب الفاتورة (اختياري)
 whatsapp_template_lang_ph	لغة القالب (مثلاً en)
 whatsapp_enable	تمكين
-whatsapp_disable	Off
+whatsapp_disable	إيقاف
 whatsapp_save	حفظ WhatsApp
 whatsapp_test	اختبار الاتصال
 whatsapp_disconnect	قطع الاتصال

@@ -203,7 +203,7 @@ whatsapp_token_ph	Hozzáférési token (hagyja üresen a megtartáshoz)
 whatsapp_template_ph	Számlasablon neve (nem kötelező)
 whatsapp_template_lang_ph	Sablon nyelve (pl. en)
 whatsapp_enable	Engedélyezés
-whatsapp_disable	Off
+whatsapp_disable	Ki
 whatsapp_save	WhatsApp mentése
 whatsapp_test	Kapcsolat tesztelése
 whatsapp_disconnect	Leválasztás

@@ -203,7 +203,7 @@ whatsapp_token_ph	Access token (iwanang blangko para panatilihin)
 whatsapp_template_ph	Pangalan ng template ng resibo (opsyonal)
 whatsapp_template_lang_ph	Wika ng template (hal. en)
 whatsapp_enable	Paganahin
-whatsapp_disable	Off
+whatsapp_disable	Patay
 whatsapp_save	I-save ang WhatsApp
 whatsapp_test	Subukin ang koneksyon
 whatsapp_disconnect	Idiskonekta

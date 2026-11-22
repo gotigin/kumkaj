@@ -203,7 +203,7 @@ whatsapp_token_ph	Testimoni d'accés (deixeu-lo en blanc per conservar-lo)
 whatsapp_template_ph	Nom de la plantilla de compte (opcional)
 whatsapp_template_lang_ph	Llengua de la plantilla (p. ex. en)
 whatsapp_enable	Activa
-whatsapp_disable	Off
+whatsapp_disable	Desactivat
 whatsapp_save	Desa WhatsApp
 whatsapp_test	Prova la connexió
 whatsapp_disconnect	Desconnecta

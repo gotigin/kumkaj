@@ -203,7 +203,7 @@ whatsapp_token_ph	Токен доступа (оставьте пустым, чт
 whatsapp_template_ph	Название шаблона счёта (необязательно)
 whatsapp_template_lang_ph	Язык шаблона (например, en)
 whatsapp_enable	Включить
-whatsapp_disable	Off
+whatsapp_disable	Выкл.
 whatsapp_save	Сохранить WhatsApp
 whatsapp_test	Проверить соединение
 whatsapp_disconnect	Отключить
