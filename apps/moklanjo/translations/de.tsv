@@ -471,7 +471,7 @@ server_ip_ph	Server-IP (z. B. 192.168.1.10)
 set_credit_limit	Kreditlimit setzen
 set_login_selected	Login für Auswahl setzen
 set_login_named	Login für {name} setzen
-shop	Shop
+shop	Laden
 start_fresh	Neu anfangen
 stop_extra_tills	Extra-Kassen stoppen
 backup_auto	Täglich automatisch gesichert · zuletzt {when} · die letzten 14 Tage liegen in {dir}.

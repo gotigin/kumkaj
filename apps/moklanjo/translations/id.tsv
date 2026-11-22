@@ -2,7 +2,7 @@
 app_tagline	Buku kurir + meja pengiriman. Gratis offline.
 unlock	Buka kunci
 pin_hint	PIN pemilik dimulai 0000
-sell	Booking
+sell	Pemesanan
 nav_board	Papan
 board	Papan
 park_draft	Tunda sebagai draf
@@ -452,7 +452,7 @@ reason_amend_ph	Alasan ubah / batal / refund
 reason_note_ph	Alasan / catatan (susut, hitung, …)
 record_day_close	Catat tutup hari
 refresh_from_shop	Segarkan dari toko
-refund	Refund
+refund	Pengembalian
 remit_cod	Setor COD (pihak)
 remove_selected	Hapus terpilih
 restore_backup	Pulihkan cadangan

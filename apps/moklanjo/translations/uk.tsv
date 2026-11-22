@@ -43,7 +43,7 @@ reports_aging	Непогашене / Дт-Кт
 reports_balance_sheet	Баланс
 reports	Банківська книга і П/З
 refresh	Оновити
-undo	Скасувати дію
+undo	Скасувати
 start_tracking	Почати облік
 stock_minus	− Запас
 stock_plus	+ Запас
@@ -358,7 +358,7 @@ create_backup	Створити резервну копію
 day_close_summary	Підсумок закриття дня
 delete_party	Видалити вибрану сторону
 dispatch_to_rider	Відправлення замовлено → вершник
-docket_charge_ph	Заряд докнету
+docket_charge_ph	Плата за докнет
 declared_value_ph	Оголошена цінність
 contents_ph	Зміст
 eway_ph	№ електронної накладної

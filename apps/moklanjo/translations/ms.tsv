@@ -66,7 +66,7 @@ total	Jumlah
 cash	Tunai
 upi	UPI
 card	Kad
-credit	Pelanggan dan pembekal
+credit	Pihak
 clear	Jelas
 ready_to_sell	Sedia untuk lejar
 today_prefix	Hari ini
@@ -90,7 +90,7 @@ rounded	MEMBULAT
 split	Berpisah
 counter	Kaunter
 parcel	Bungkusan
-order	Pesanan restoran
+order	Pesanan
 sales	Tempahan
 sales_refunds	Tempahan & bayaran balik
 day_close	Tutup hari
@@ -632,7 +632,7 @@ duress_off	Buka kunci kecemasan PIN dimatikan
 duress_saved	Buka kunci kecemasan PIN disimpan
 duress_cleared	Buka kunci kecemasan PIN dimatikan
 vehicle_ph	kenderaan
-void	Jualan batal
+void	Batal
 write_off_ap	Hapus AP
 write_off_nil	Hapus kira / tiada baki
 zone_ph	Zon (nama daripada Kadar)

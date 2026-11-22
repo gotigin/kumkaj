@@ -452,7 +452,7 @@ reason_amend_ph	Powód zmiany / unieważnienia / zwrotu pieniędzy
 reason_note_ph	Powód/uwaga (marnotrawstwo, liczba,…)
 record_day_close	Zapisz zamknięcie dnia
 refresh_from_shop	Odśwież ze sklepu
-refund	Zwrot pieniędzy
+refund	Zwrot
 remit_cod	Przekaż COD (impreza)
 remove_selected	Usuń wybrane
 restore_backup	Przywróć kopię zapasową
@@ -632,7 +632,7 @@ duress_off	Odblokowanie awaryjne PIN jest wyłączone
 duress_saved	Odblokowanie awaryjne PIN zapisane
 duress_cleared	Odblokowanie awaryjne PIN wyłączone
 vehicle_ph	Pojazd
-void	Nieważna sprzedaż
+void	Anuluj
 write_off_ap	Odpisz AP
 write_off_nil	Odpisz / saldo zerowe
 zone_ph	Strefa (nazwa ze Stawek)
