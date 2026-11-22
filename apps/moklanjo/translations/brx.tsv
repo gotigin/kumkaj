@@ -147,7 +147,7 @@ consignee_address_ph	डिलिभारि थं
 origin_name_ph	दैथाय हरग्रानि मुं
 origin_phone_ph	Sender फन
 origin_address_ph	पिकआप / जागायनाय थं
-booking_consignor_heading	Consignor (Customer / sender)
+booking_consignor_heading	कनसाइनर (ग्राहक / सेन्डार)
 booking_consignee_heading	कनसाइनि (रिसिभार)
 booking_consignor_hint	सुफुंनो थाखाय मोनसे दोलो सायख', एबा वाक-इननि थाखाय लांदां दोन। न'आव पिक आप आरो आरटिअ'नि थाखाय गोनां।
 booking_consignee_hint	पार्सेल मोनग्रा। वाक-इन काउन्टर ड्रप-अफनि थाखाय लांदां दोन।
@@ -363,7 +363,7 @@ dispatch_to_rider	राइडारनि → डिस्पैच बुक �
 docket_charge_ph	डकेट चार्ज
 declared_value_ph	फोरमायनाय बेसेन
 contents_ph	गेजेरनि बेसाद
-eway_ph	E-way bill No.
+eway_ph	E-way बिल नं.
 insurance_label	बिमा
 yes_label	हां
 no_label	नङा
@@ -391,7 +391,7 @@ carrier_pick_ph	बेसेननि थाखाय Carrier (रुजुन�
 item_name	आइटमनि मुं
 load_bulk_row	बाल्क सारि ल'ड → डेस्क
 login_id_ph	युजार मुं
-mark_delivered	Mark deliver
+mark_delivered	डेलिभारि जाबाय होनना दिहुन
 manifest_cod_total	COD गासै
 manifest_received_by	जों आजावजानाय
 manifest_sign	साइन
@@ -567,7 +567,7 @@ printers_host_only	प्रिन्टारफोरा दखान डि�
 printers_pool_heading	प्रिन्टार
 printers_routes_heading	माव प्रिन्ट जायो
 printer_label_ph	मुं (जेरै Desk)
-printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_target_ph	प्रिन्टारनि मुं एबा host:9100
 printer_mode_heading	गोदान आउटपुटनि थाखाय प्रफाइल
 printer_mode_standard	स्टेन्डार्ड खड़ा
 printer_mode_landscape	स्टेन्डार्ड गोथै
@@ -864,7 +864,7 @@ amount_ph	रां
 amount_received_ph	मोना रां
 amount_we_pay_ph	जों होनाय रां
 awb_scan_ph	AWB / बारक'ड स्केन
-bulk_csv_ph	Bulk CSV — destination, consignee, kg, cod_paise, note
+bulk_csv_ph	गोबां CSV — destination,consignee,kg,cod_paise,note
 business_name_ph	ब्यापारनि मुं
 category_new_ph	थाखो (नांगौब्ला, गोदानब्ला सृष्टि जायो)
 cod_amount_ph	COD बिबां

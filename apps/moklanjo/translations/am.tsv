@@ -567,7 +567,7 @@ printers_host_only	ማተሚያዎች በሱቁ መሣሪያ (ሰርቨር) ላ�
 printers_pool_heading	ማተሚያዎች
 printers_routes_heading	ነገሮች የት እንደሚታተሙ
 printer_label_ph	ስም (ለምሳሌ ጠረጴዛ)
-printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_target_ph	የአታሚ ስም ወይም host:9100
 printer_mode_heading	ለአዲስ ውጤቶች መገለጫ
 printer_mode_standard	መደበኛ ቁመታዊ
 printer_mode_landscape	መደበኛ አግድም
@@ -889,7 +889,7 @@ note_bank_ph	ማስታወሻ (ተቀማጭ፣ ወጪ፣ …)
 note_buy_expense_ph	ማስታወሻ (ነዳጅ፣ ኪራይ፣ …)
 note_expense_ph	ማስታወሻ (ነዳጅ፣ ቢሮ፣ …)
 notify_phone_ph	የማሳወቂያ ስልክ (WhatsApp/SMS)
-options_moklanjo_ph	Options (optional) — Large=20, Gift wrap=10
+options_moklanjo_ph	አማራጮች (ትልቅ=20፣ የስጦታ መጠቅለያ=10…)
 part_second_way_ph	በሁለተኛ መንገድ ክፍል (አማራጭ)
 phone_ph	ስልክ
 address_ph	አድራሻ

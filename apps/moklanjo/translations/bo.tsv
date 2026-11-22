@@ -567,7 +567,7 @@ printers_host_only	དཔར་འཕྲུལ་རྣམས་ཚོང་ཁ�
 printers_pool_heading	པར་ཁང་།
 printers_routes_heading	གང་དུ་དངོས་པོ་དཔར་བ།
 printer_label_ph	མིང་། (དཔེར་ན་ཅོག་ཙེ།)
-printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_target_ph	པར་འཕྲུལ་གྱི་མིང་ཡང་ན་ host:9100
 printer_mode_heading	ཕྱིར་འདོན་གསར་པའི་སྒྲིག་བཀོད།
 printer_mode_standard	ཚད་ལྡན་གཞུང་།
 printer_mode_landscape	ཚད་ལྡན་འཕྲེད།
@@ -682,7 +682,7 @@ bank_reconciliation	དངུལ་ཁང་མཉམ་སྒྲིག
 book_add_product	དེབ་ — ཐོན་རྫས / གོང་ཚད་ཁ་སྣོན་བྱས་པ།
 book_opening_credit	རྩིས་ཁྲ། བུ་ལོན་ཁ་ཕྱེ་བ།
 account_kind	རྩིས་ཁྲའི་རིགས། (གཅིག་ལ་རྡེབ།)
-active_ledger	Active Accounter
+active_ledger	ད་ལྟའི་རྩིས་ཁྲ།
 actual_total_cap	དངོས་ཡོད་བསྡོམས་འབོར།
 amend_help	བཅོས་སྒྱུར་དང་། ཆ་མེད་གཏོང་བ། ཡང་ན་དངུལ་ཕྱིར་སྤྲོད་བྱེད་པའི་ཚོང་རྫས་འདེམས། བཅོས་སྒྱུར་གྱིས་ལོ་རྒྱུས་ཆ་ཚང་ཉར་ཚགས་བྱེད། སྒོར་ཕྱེད་ཀྱི་བསྡོམས་འབོར་དེ་འཇུག་སྤྱོད་དང་འདྲ་མཉམ་འགོ་འཛུགས། སྒོར་ཕྱེད་ལ་རྐྱངམ་གཅིག་ཞུན་དག་བྱེད། སྟོང་ཆ་དང་དངུལ་ཕྱིར་སྤྲོད་བྱེད་པར་བདག་པོའམ་འགན་འཛིན་དགོས་སྲིད། PIN (གོང་དུ་བྲིས་ཡོད། ཁྱེད་ཀྱི་མིང་དང་བཅས་ཐོ་འགོད་བྱས།)
 applied_total_cap	བཀོལ་སྤྱོད་བསྡོམས་འབོར།
@@ -889,7 +889,7 @@ note_bank_ph	དྲན་ཐོ། (དངུལ་བཅོལ་དང་། �
 note_buy_expense_ph	དྲན་ཐོ། (སྣུམ་དང་། ཁང་གླ། ...)
 note_expense_ph	དྲན་ཐོ། (སྣུམ་དང་། ཡིག་ཚང་། ...)
 notify_phone_ph	བརྡ་གཏོང་ཁ་པར། (WhatsApp/SMS)
-options_moklanjo_ph	Options (optional) — Large=20, Gift wrap=10
+options_moklanjo_ph	གདམ་ཁ་ (ཆེ་བ་=20, ལེགས་ཐུམ་=10…)
 part_second_way_ph	ཐབས་ལམ་གཉིས་པ་བརྒྱུད་ནས་ཆ་ཤས། (འདམ་ཀ)
 phone_ph	ཁ་པར།
 address_ph	ཁ་བྱང་

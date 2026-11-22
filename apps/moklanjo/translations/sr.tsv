@@ -300,7 +300,7 @@ card_amount_ph	Износ картице
 cash_amount_ph	Износ готовине
 upi_amount_ph	UPI износ
 carrier_cost_ph	Цена превозника
-carrier_party_ph	Царриер парти
+carrier_party_ph	Превозник (странка)
 choose_icon	Изаберите икону
 choose_logo	Изаберите лого
 choose_receipt_stamp	Изаберите печат признанице
@@ -336,7 +336,7 @@ cod_register	ЦОД регистар
 collect_cod	Прикупите ЦОД (АВБ)
 consignments_dispatch	Пошиљке и отпрема
 consignor_party_ph	Пошиљалац/име странке
-copy_day_book_csv	Copy day ledger CSV
+copy_day_book_csv	Копирај CSV дневне књиге
 copy_day_close	Копирај дан близу
 copy_items_csv	Копирај ставке CSV
 copy_outstanding_csv	Преузето копија CSV
@@ -358,7 +358,7 @@ books_locked_through	Закључано до
 counter_agency_ph	Назив шалтера/агенције (опционо)
 create_backup	Направите резервну копију
 day_close_summary	Закључак дана
-delete_party	Obriši izabranog partnera
+delete_party	Обриши изабрану странку
 dispatch_to_rider	Отпрема резервисано → јахач
 docket_charge_ph	Доцкет цхарге
 declared_value_ph	Декларисана вредност
@@ -462,7 +462,7 @@ rider_name_ph	Име јахача
 rider_phone_ph	Јахачев телефон
 riders	Јахачи
 riders_own_fleet	Јахачи (сопствена флота)
-rollup	Summary rollup
+rollup	Сажетак
 save_booking_measures	Сачувајте мере резервације
 save_brand	Сачувај бренд
 save_business_id	Сачувајте пословни ИД
@@ -652,7 +652,7 @@ expense_heading	Трошкови
 notes_attach_sale	Белешке и прилози (одабрана продаја)
 notes_attach_party	Напомене и прилози (изабрани купац или добављач)
 attachments_last_expense	Прилози (последњи трошак)
-credit_limit_heading	Credit limit (selected customer or supplier)
+credit_limit_heading	Лимит дуга (изабрана / именована странка)
 pay_selected_heading	Плати изабрано (измири дуг / узми аванс)
 write_off_heading	Отписати (очистити без плаћања)
 adjustment_notes_heading	Корективни документи

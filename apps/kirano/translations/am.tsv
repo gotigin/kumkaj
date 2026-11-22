@@ -676,7 +676,7 @@ tmpl_blurb	የኪራና ቆጣሪ መሸጥ፣ አክሲዮን፣ ካታ፣ አ�
 reports_facet_title	ሪፖርቶች
 reports_facet_help	የቀን መዝገቦች፣ የተዋዋይ እድሜ፣ የባንክ ምዝገባዎች እና የጊዜ ትርፍ/ኪሳራ።
 against_bill_ph	ከላይ ባለው የሂሳብ ቁጥር ላይ (አማራጭ)
-aliases_ph	Short codes & aliases — comma separated (e.g. MG02, atta)
+aliases_ph	ተለዋጭ ስሞች (ሌሎች ስሞች)
 amount_blank_full_ph	መጠን (ባዶ = ሙሉ ቀሪ)
 amount_owed_ph	የተበደረ መጠን
 amount_ph	መጠን
@@ -719,9 +719,9 @@ book_kind_aging	ያልተከፈለ / ዴቢት-ክሬዲት
 book_kind_balance	የሂሳብ መዝገብ
 order_help	ለመጨመር እቃ ይንኩ።
 categories_help	ከላይ ያለውን እቃ በዚያ ምድብ ስር ለማስቀመጥ ተጠቀምን ይንኩ። ፎቶ ለምድቡ ምስል ይሰጣል፤ ከሌለ የመጀመሪያ ፊደላቱን ያሳያል።
-dish_search_ph	Search items or short code…
+dish_search_ph	የእቃ ስም
 sizes_as_items_ph	መጠኖች እንደ ተለያዩ እቃዎች (አማራጭ) — ግማሽ=120፣ ሙሉ=200
-dish_group_ph	Pack size group (optional) — e.g. Atta 1kg / 5kg
+dish_group_ph	የጥቅል ቡድን (አማራጭ)
 discount	ቅናሽ
 remove_discount	ቅናሽ አስወግድ
 apply_discount	ቅናሽ ተግብር
@@ -824,7 +824,7 @@ schemes	ዕቅዶች / ቅናሾች
 schemes_help	አንድ-አንድ-ግኝት-አንድ፣ መቶኛ ቅናሽ እና ቋሚ ጥቅሎችን ይግዙ። ምሳሌ 2 ሩዝ ይግዙ 1 ዘይት ያግኙ።
 scheme_bogo_ph	2 ሩዝ ይግዙ 1 ዘይት ያግኙ
 add_scheme	BOGO ጨምር
-schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+schedule_ph	ሰዓታት (ለምሳሌ ሰኞ-አርብ 07:00-11:00)
 upi_vpa_ph	የ UPI መታወቂያ (VPA)
 upi_payee_ph	የ UPI ተቀባይ ስም (አማራጭ)
 show_upi_qr	UPI QR አሳይ

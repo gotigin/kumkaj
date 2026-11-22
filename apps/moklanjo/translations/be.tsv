@@ -567,7 +567,7 @@ printers_host_only	Прынтары наладжваюцца на прыладз
 printers_pool_heading	Прынтары
 printers_routes_heading	Дзе друкуюцца рэчы
 printer_label_ph	Назва (напрыклад, Стол)
-printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_target_ph	Назва прынтара або host:9100
 printer_mode_heading	Профіль для новых вывадаў
 printer_mode_standard	Стандартны партрэтны
 printer_mode_landscape	Стандартны альбомны
@@ -889,7 +889,7 @@ note_bank_ph	Заўвага (дэпазіт, зняцце, ...)
 note_buy_expense_ph	Заўвага (паліва, арэнда, ...)
 note_expense_ph	Заўвага (паліва, офіс, ...)
 notify_phone_ph	Тэлефон для апавяшчэнняў (WhatsApp/SMS)
-options_moklanjo_ph	Options (optional) — Large=20, Gift wrap=10
+options_moklanjo_ph	Параметры (Вялікі=20, Падарункавая ўпакоўка=10…)
 part_second_way_ph	Частка другім шляхам (неабавязкова)
 phone_ph	Тэлефон
 address_ph	Адрас

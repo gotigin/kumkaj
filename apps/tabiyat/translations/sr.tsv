@@ -285,7 +285,7 @@ choose_icon	Изаберите икону
 choose_logo	Изаберите лого
 clear_icon	Обриши икона
 clear_photo	Обриши фотографију
-copy_day_book_csv	Copy day ledger CSV
+copy_day_book_csv	Копирај CSV дневне књиге
 copy_day_close	Копирај дан близу
 copy_items_csv	Копирај CSV ставки
 copy_outstanding_csv	Преузето копија CSV
@@ -324,9 +324,9 @@ copy_report	Копирај извештај
 counted_cash_ph	Пребројана готовина у фиоци
 country_tax	Држава и порез
 create_backup	Направите резервну копију
-credit_limit_heading	Credit limit (selected customer or supplier)
-delete_party	Delete selected customer or supplier
-done_open_books	Done — open ledgers
+credit_limit_heading	Лимит дуга (изабрана / именована странка)
+delete_party	Обриши изабрану странку
+done_open_books	Готово — отвори књиге
 drawer_count	Број фиока (опционо)
 expense_heading	Трошкови
 export_day	Дан извоза
@@ -394,7 +394,7 @@ history_hours_ph	Сати (1–168, подразумевано 4)
 history_hours_save	Уштедите сате
 history_clear_now	Очистите историју сада
 history_hours_saved	Сати историје су сачувани
-rollup	Summary rollup
+rollup	Сажетак
 save_brand	Сачувај бренд
 save_business_id	Сачувајте пословни ИД
 save_features	Сачувај

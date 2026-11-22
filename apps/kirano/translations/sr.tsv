@@ -273,9 +273,9 @@ choose_icon	Изаберите икону
 choose_logo	Изаберите лого
 clear_icon	Обриши икона
 clear_photo	Обриши фотографију
-copy_day_book_csv	Copy day ledger CSV
+copy_day_book_csv	Копирај CSV дневне књиге
 copy_day_close	Копирај дан близу
-copy_items_csv	Kopiraj stavke CSV
+copy_items_csv	Копирај CSV ставки
 copy_outstanding_csv	Преузето копија CSV
 copy_parties_csv	Копирај купце и добављаче CSV
 copy_party_ledger_csv	Копирај књигу купаца CSV
@@ -312,9 +312,9 @@ copy_report	Копирај извештај
 counted_cash_ph	Пребројана готовина у фиоци
 country_tax	Држава и порез
 create_backup	Направите резервну копију
-credit_limit_heading	Credit limit (selected customer or supplier)
-delete_party	Delete selected customer or supplier
-done_open_books	Done — open ledgers
+credit_limit_heading	Лимит дуга (изабрана / именована странка)
+delete_party	Обриши изабрану странку
+done_open_books	Готово — отвори књиге
 drawer_count	Број фиока (опционо)
 expense_heading	Трошкови
 export_day	Дан извоза
@@ -382,7 +382,7 @@ history_hours_ph	Сати (1–168, подразумевано 4)
 history_hours_save	Уштедите сате
 history_clear_now	Очистите историју сада
 history_hours_saved	Сати историје су сачувани
-rollup	Summary rollup
+rollup	Сажетак
 save_brand	Сачувај бренд
 save_business_id	Сачувајте пословни ИД
 save_features	Сачувај
@@ -816,7 +816,7 @@ payment_qr_set	КР за плаћање: у евиденцији — прика�
 payment_qr_none	Плаћање КР: нема — износ КР од UPI ИД приликом плаћања
 team_pick_ph	Особље за уређивање — име, корисничко име или избор
 select_staff	Изаберите ово особље
-rights_help	Money actions for this person — tap to cycle: Allowed → Needs boss PIN → Not allowed. Штампај рачун поново је само рачун; одељци су контролна листа у наставку.
+rights_help	Новчане акције за ову особу — додирните за циклус: Дозвољено → Потребан је шефов ПИН → Није дозвољено. Штампај рачун поново је само рачун; одељци су контролна листа у наставку.
 own_item_name	Користите ово као име своје ставке менија
 on_your_menu	У каталогу
 edit	Уреди
