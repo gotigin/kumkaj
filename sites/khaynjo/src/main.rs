@@ -184,8 +184,8 @@ const PROPS: [(&[LiveId], f64, f64); 6] = [
     (ids!(status_card), 400.0, 860.0),
 ];
 /// Top-bar section links (six labels + brand + Get it free) need this width
-/// or the last links slide under the CTA.
-const NAV_LINKS_FROM: f64 = 1100.0;
+/// or the CTA is cropped on the right (desk evidence 2026-11-22 at ~1100–1200).
+const NAV_LINKS_FROM: f64 = 1280.0;
 
 const MAX_CONTENT: f64 = 1160.0;
 const MAX_CONTENT_WIDE: f64 = 1280.0;
