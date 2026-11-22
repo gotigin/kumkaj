@@ -624,3 +624,7 @@ need the author and licence named.
 ## L14 pass5 2026-11-22T14:59:05Z
 - fast-food/club-sandwich.webp ← tighter crop remove Coca-Cola can from prior asset
 - hot-beverages/oolong-tea.webp ← Commons File:Dongding_feuilles_liqueur.jpg (CC BY-SA 3.0) https://commons.wikimedia.org/wiki/File:Dongding_feuilles_liqueur.jpg — was branded hourglass takeaway cup
+
+## L14 fast-food pass5 2026-11-22T15:01:09Z
+- fast-food/grilled-chicken-sandwich.webp ← Commons File:Chicken_sandwich.jpg (CC BY-SA 3.0) https://commons.wikimedia.org/wiki/File:Chicken_sandwich.jpg — was Café Coffee Day branded plate/napkin
+- fast-food/paneer-burger.webp ← crop remove "The Honeyed Tale" branded bottle from prior asset
