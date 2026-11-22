@@ -982,7 +982,7 @@ purchases_cogs	Pembelian (COGS)
 qty_cap	JML
 restore_help	Pulihkan: pilih cadangan. Pembukuan terbuka seperti saat itu; yang sekarang disimpan dulu, jadi bisa dibatalkan.
 wipe_data_heading	Hapus data lokal
-wipe_data_help	Hanya pemilik — pilihan sama seperti uninstall Windows. Catatan bisnis menghapus riwayat dan menyimpan menu/pengaturan. Pengaturan toko menghapus buku. Preferensi layar: jendela/bahasa. Konfirmasi dengan PIN pemilik.
+wipe_data_help	Hanya pemilik — pilihan sama seperti uninstall Windows. «Catatan bisnis» menghapus riwayat perdagangan tetapi menyimpan menu dan pengaturan (seperti PIN buka darurat). «Pengaturan toko» menghapus basis data buku. «Preferensi layar» menghapus jendela/bahasa. Konfirmasi dengan PIN Pemilik. PIN buka darurat di «Tim» terpisah (hapus tersembunyi saat buka).
 wipe_trading	Catatan bisnis
 wipe_schema	Pengaturan toko
 wipe_ui	Preferensi layar

@@ -982,7 +982,7 @@ purchases_cogs	Mua hàng (COGS)
 qty_cap	SL
 restore_help	Khôi phục: chọn một bản sao lưu. Sổ sách mở như lúc đó; sổ hiện tại được lưu trước nên có thể hoàn tác.
 wipe_data_heading	Xóa dữ liệu cục bộ
-wipe_data_help	Chỉ chủ — cùng lựa chọn như gỡ Windows. Hồ sơ kinh doanh xóa lịch sử, giữ menu/thiết lập. Thiết lập cửa hàng gỡ sổ. Tuỳ chọn màn hình: cửa sổ/ngôn ngữ. Xác nhận bằng PIN chủ.
+wipe_data_help	Chỉ chủ — cùng lựa chọn như gỡ Windows. «Hồ sơ kinh doanh» xóa lịch sử giao dịch nhưng giữ menu và thiết lập (như PIN mở khẩn). «Thiết lập cửa hàng» gỡ cơ sở dữ liệu sổ. «Tuỳ chọn màn hình» xóa cửa sổ/ngôn ngữ. Xác nhận bằng PIN chủ. PIN mở khẩn trên «Nhóm» là riêng (xóa kín khi mở khóa).
 wipe_trading	Hồ sơ kinh doanh
 wipe_schema	Thiết lập cửa hàng
 wipe_ui	Tuỳ chọn màn hình

@@ -982,7 +982,7 @@ purchases_cogs	Einkäufe (COGS)
 qty_cap	MENGE
 restore_help	Wiederherstellen: eine Sicherung wählen. Die Bücher öffnen sich wie damals; die jetzigen werden vorher gesichert, also umkehrbar.
 wipe_data_heading	Lokale Daten löschen
-wipe_data_help	Nur Inhaber — wie Windows-Deinstallation. Geschäftsdaten löschen den Verlauf und behalten Menü/Einrichtung. Shop-Einrichtung entfernt die Bücher. Bildschirm­einstellungen: Fenster/Sprache. Mit Inhaber-PIN bestätigen.
+wipe_data_help	Nur Inhaber — dieselben Optionen wie bei Windows-Deinstallation. «Geschäftsdaten» löscht den Handelsverlauf, behält aber Menü und Einrichtung (wie die Notfall-Entsperr-PIN). «Shop-Einrichtung» entfernt die Bücher-Datenbank. «Bildschirm­einstellungen» löscht Fenster/Sprache. Mit Inhaber-PIN bestätigen. Die Notfall-Entsperr-PIN unter «Team» ist getrennt (verdeckte Löschung beim Entsperren).
 wipe_trading	Geschäftsdaten
 wipe_schema	Shop-Einrichtung
 wipe_ui	Bildschirm­einstellungen

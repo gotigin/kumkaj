@@ -982,7 +982,7 @@ purchases_cogs	Ununuzi (COGS)
 qty_cap	IDADI
 restore_help	Rejesha: chagua hifadhi. Vitabu vinafunguka kama vilivyokuwa wakati huo; vya sasa vinahifadhiwa kwanza, kwa hiyo unaweza kurudisha.
 wipe_data_heading	Futa data za ndani
-wipe_data_help	Mmiliki pekee — chaguo kama kutoa Windows. Rekodi za biashara hufuta historia na kuweka menyu/usanidi. Usanidi wa duka huondoa vitabu. Mapendeleo ya skrini: dirisha/lugha. Thibitisha kwa PIN ya mmiliki.
+wipe_data_help	Mmiliki pekee — chaguo sawa na kutoa Windows. «Rekodi za biashara» hufuta historia ya biashara lakini huweka menyu na usanidi (kama PIN ya kufungua dharura). «Usanidi wa duka» huondoa hifadhidata ya vitabu. «Mapendeleo ya skrini» hufuta dirisha/lugha. Thibitisha kwa PIN ya Mmiliki. PIN ya kufungua dharura kwenye «Timu» ni tofauti (kufuta kwa siri wakati wa kufungua).
 wipe_trading	Rekodi za biashara
 wipe_schema	Usanidi wa duka
 wipe_ui	Mapendeleo ya skrini

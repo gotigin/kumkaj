@@ -982,7 +982,7 @@ purchases_cogs	Alımlar (COGS)
 qty_cap	ADET
 restore_help	Geri yükle: bir yedek seçin. Defterler o anki hâliyle açılır; şimdiki defterler önce kaydedilir, geri alınabilir.
 wipe_data_heading	Yerel verileri sil
-wipe_data_help	Yalnızca sahip — Windows kaldırma gibi seçenekler. İş kayıtları geçmişi siler, menü/kurulumu tutar. Dükkân kurulumu defterleri kaldırır. Ekran tercihleri: pencere/dil. Sahip PIN ile onaylayın.
+wipe_data_help	Yalnızca sahip — Windows kaldırma ile aynı seçenekler. «İş kayıtları» işlem geçmişini siler ama menü ve kurulumu tutar (acil kilit açma PIN’i gibi). «Dükkân kurulumu» defter veritabanını kaldırır. «Ekran tercihleri» pencere/dili temizler. Sahip PIN ile onaylayın. «Ekip» içindeki acil kilit açma PIN’i ayrıdır (açılışta gizli silme).
 wipe_trading	İş kayıtları
 wipe_schema	Dükkân kurulumu
 wipe_ui	Ekran tercihleri
