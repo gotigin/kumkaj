@@ -104,3 +104,10 @@ need the author and licence named.
 | `fast-food/hot-wings.webp` | wings on fries with restaurant brand watermark | Homemade buffalo wings | stef yau | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=864949 | resized, WebP |
 | `fast-food/paneer-burger.webp` | beef hamburger with lettuce | Caffine Rush Smoothie and Achari Paneer Burger - The Honeyed Tale Cafe, Vadodara - 04 | Bhagyashri Wakhale | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=103649835 | resized, WebP |
 | `fast-food/pulled-pork-sandwich.webp` | pulled pork roast only, no sandwich | Pulled-pork-sandwiches | Dktue | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=74992599 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 middle-eastern)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `middle-eastern/turkish-delight.webp` | shop display with KOSKA price tags / text | Lokum (Turkish Delight) | ProjectManhattan | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | https://commons.wikimedia.org/w/index.php?curid=33188469 | resized, WebP |
+| `middle-eastern/fatteh.webp` | garnished hummus bowl, not layered fatteh | فتة سخينه | (Commons CC0 uploader) | [CC0 1.0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | https://commons.wikimedia.org/w/index.php?curid=163915557 | resized, WebP |
