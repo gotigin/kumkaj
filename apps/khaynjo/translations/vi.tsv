@@ -31,7 +31,7 @@ items	Thực đơn & mục
 nav_items	Thực đơn
 more	Thêm
 your_items	Thực đơn của bạn
-items_help	Mỗi hàng là một món hoặc mục (vd Masala Dosa). Thêm giá và trạm bếp. Chạm để sửa.
+items_help	Chạm món để sửa. «Mục mới» xóa trống biểu mẫu. Tìm món của chúng tôi hoặc gõ tên và ảnh riêng, đặt giá (0 được), rồi «Thêm». Doanh thu đã ghi giữ tên lúc tính tiền.
 add_item	Thêm mục
 new_item	Mục mới
 adding_item	Đang thêm mục mới
@@ -280,7 +280,7 @@ frequent_apply	Áp dụng
 frequent_saved	Thường xuyên: {d} ngày qua, top {n} — {c} món ăn
 frequent_empty	Chưa có bán hoàn tất trong kỳ này — thanh toán một hóa đơn (₹0 nếu Cài đặt cho phép) rồi chúng hiện ở đây.
 zero_sales	Bán giá trị 0
-zero_sales_help	Cho phép món ₹0 và thanh toán ₹0. Tắt thì thanh toán cần số tiền.
+zero_sales_help	Cho phép món giá ₹0 và hóa đơn tất toán ₹0 (miễn phí / ý chủ). Bật mặc định để suất miễn phí vẫn hiện trong «Thường bán» và sổ ngày.
 zero_sales_on	Bán 0: bật
 zero_sales_off	Bán 0: tắt
 zero_sales_saved_on	Đã lưu cho phép bán 0 (bật)

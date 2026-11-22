@@ -31,7 +31,7 @@ items	Menú y artículos
 nav_items	Menú
 more	Más
 your_items	Tu menú
-items_help	Cada fila es un plato o artículo (ej. Masala Dosa). Añade su precio y estación de cocina. Toca para editar.
+items_help	Toque un artículo para editarlo. «Artículo nuevo» limpia el formulario. Busque nuestros platos o escriba su propio nombre y foto, fije un precio (0 vale), luego «Añadir». Las ventas ya registradas conservan el nombre con el que se cobraron.
 add_item	Añadir artículo
 new_item	Artículo nuevo
 adding_item	Añadiendo artículo
@@ -280,7 +280,7 @@ frequent_apply	Aplicar
 frequent_saved	Frecuente: últimos {d} día(s), principales {n} — {c} plato(s)
 frequent_empty	Aún no hay ventas completadas en este período: cobre una cuenta (₹0 si Ajustes lo permite) y aparecerán aquí.
 zero_sales	Ventas a valor cero
-zero_sales_help	Permitir platos a ₹0 y pagos de ₹0. Si está apagado, el cobro exige un importe.
+zero_sales_help	Permitir platos a ₹0 y cuentas saldadas a ₹0 (cortesía / deseo del dueño). Activado por defecto para que las cubiertas gratis sigan en «Frecuentes» y en los libros del día.
 zero_sales_on	Ventas cero: activadas
 zero_sales_off	Ventas cero: desactivadas
 zero_sales_saved_on	Permiso de ventas cero guardado (activado)

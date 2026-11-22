@@ -31,7 +31,7 @@ items	Menü & Artikel
 nav_items	Menü
 more	Mehr
 your_items	Dein Menü
-items_help	Jede Zeile ist ein Gericht oder Artikel (z. B. Masala Dosa). Preis und Küchenstation hinzufügen. Zum Bearbeiten tippen.
+items_help	Tippen Sie einen Artikel zum Bearbeiten. «Neuer Artikel» leert das Formular. Suchen Sie unsere Gerichte oder geben Sie eigenen Namen und Foto ein, setzen Sie einen Preis (0 ist ok), dann «Hinzufügen». Bereits erfasste Verkäufe behalten den Namen, mit dem sie berechnet wurden.
 add_item	Artikel hinzufügen
 new_item	Neuer Artikel
 adding_item	Neuer Artikel wird hinzugefügt
@@ -280,7 +280,7 @@ frequent_apply	Anwenden
 frequent_saved	Häufig: letzte {d} Tag(e), Top {n} — {c} Gericht(er)
 frequent_empty	Noch keine abgeschlossenen Verkäufe in diesem Zeitraum — Rechnung abschließen (₹0 wenn Einstellungen es erlauben), dann erscheinen sie hier.
 zero_sales	Nullwert-Verkäufe
-zero_sales_help	Gerichte und Zahlungen zu ₹0 erlauben. Aus = Zahlung braucht einen Betrag.
+zero_sales_help	Gerichte zu ₹0 und auf ₹0 abgeschlossene Rechnungen erlauben (Gratis / Wunsch des Inhabers). Standard an, damit Gratis-Gänge in «Häufig» und Tagesbüchern bleiben.
 zero_sales_on	Nullverkäufe: an
 zero_sales_off	Nullverkäufe: aus
 zero_sales_saved_on	Nullverkäufe erlaubt gespeichert (an)

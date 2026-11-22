@@ -31,7 +31,7 @@ items	메뉴 및 항목
 nav_items	메뉴
 more	더보기
 your_items	내 메뉴
-items_help	각 행이 요리나 항목입니다(예: Masala Dosa). 가격과 주방 스테이션을 추가하세요. 편집하려면 누르세요.
+items_help	항목을 눌러 편집하세요. «새 항목»은(는) 양식을 비웁니다. 우리 요리를 검색하거나 이름과 사진을 직접 넣고 가격을 정한 뒤(0 가능) «추가». 이미 기록된 판매는 청구 당시 이름을 유지합니다.
 add_item	항목 추가
 new_item	새 항목
 adding_item	새 항목 추가 중
@@ -280,7 +280,7 @@ frequent_apply	적용
 frequent_saved	자주: 마지막 {d} 일, 상위 {n} — {c} 요리
 frequent_empty	이 기간에 완료된 판매가 없습니다 — 계산을 마치면(설정에서 ₹0 허용 시) 여기에 표시됩니다.
 zero_sales	0원 판매
-zero_sales_help	₹0 메뉴와 ₹0 결제를 허용. 끄면 결제에 금액이 필요.
+zero_sales_help	가격 ₹0인 요리와 ₹0로 정산된 계산서를 허용합니다(서비스/소유자 의사). 기본 켜짐이라 무료 건이 «자주»와 일계장에도 남습니다.
 zero_sales_on	0원 판매: 켜짐
 zero_sales_off	0원 판매: 꺼짐
 zero_sales_saved_on	0원 판매 허용 저장됨(켜짐)

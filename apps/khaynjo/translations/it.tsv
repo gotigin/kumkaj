@@ -31,7 +31,7 @@ items	Menu e articoli
 nav_items	Menu
 more	Altro
 your_items	Il tuo menu
-items_help	Ogni riga è un piatto o articolo (es. Masala Dosa). Aggiungi prezzo e stazione cucina. Tocca per modificare.
+items_help	Tocca un articolo per modificarlo. «Nuovo articolo» svuota il modulo. Cerca i nostri piatti o digita nome e foto tuoi, imposta un prezzo (0 va bene), poi «Aggiungi». Le vendite già registrate tengono il nome con cui sono state addebitate.
 add_item	Aggiungi articolo
 new_item	Nuovo articolo
 adding_item	Aggiunta articolo
@@ -280,7 +280,7 @@ frequent_apply	Applica
 frequent_saved	Frequenti: ultimi {d} giorno/i, primi {n} — {c} piatto/i
 frequent_empty	Ancora nessuna vendita completata in questo periodo: chiudi un conto (₹0 se le Impostazioni lo consentono) e comparirà qui.
 zero_sales	Vendite a valore zero
-zero_sales_help	Consenti piatti a ₹0 e pagamenti ₹0. Se spento, il pagamento richiede un importo.
+zero_sales_help	Consenti piatti a ₹0 e conti saldati a ₹0 (omaggio / volontà del titolare). Attivo di default così le coperture gratis restano in «Frequenti» e nei libri del giorno.
 zero_sales_on	Vendite zero: attive
 zero_sales_off	Vendite zero: disattivate
 zero_sales_saved_on	Permesso vendite zero salvato (attivo)

@@ -31,7 +31,7 @@ items	メニューと品目
 nav_items	メニュー
 more	その他
 your_items	あなたのメニュー
-items_help	各行が料理または品目です（例：Masala Dosa）。価格とキッチンステーションを追加。タップで編集。
+items_help	品目をタップして編集。「新しい品目」 でフォームがクリアされます。料理を検索するか、独自の名前と写真を入力し、価格を設定（0 可）してから「追加」。記録済みの売上は請求時の名前を保ちます。
 add_item	品目を追加
 new_item	新しい品目
 adding_item	新しい品目を追加中
@@ -280,7 +280,7 @@ frequent_apply	適用
 frequent_saved	頻出：過去 {d} 日以内で、上位 {n} の {c} 料理
 frequent_empty	この期間に完了した売上はまだありません。会計を済ませると（設定で₹0可）ここに出ます。
 zero_sales	ゼロ円売上
-zero_sales_help	₹0の料理と₹0支払いを許可。オフなら支払いには金額が必要。
+zero_sales_help	価格 ₹0 の料理と ₹0 で締められた伝票を許可（サービス／オーナー意向）。既定でオンなので無料分は 「よく出す」 と日次帳簿にも残ります。
 zero_sales_on	ゼロ売上: オン
 zero_sales_off	ゼロ売上: オフ
 zero_sales_saved_on	ゼロ売上許可を保存しました（オン）

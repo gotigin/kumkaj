@@ -31,7 +31,7 @@ items	Menu et articles
 nav_items	Menu
 more	Plus
 your_items	Votre menu
-items_help	Chaque ligne est un plat ou article (ex. Masala Dosa). Ajoutez son prix et son poste de cuisine. Touchez pour modifier.
+items_help	Touchez un article pour le modifier. «Nouvel article» vide le formulaire. Cherchez nos plats ou saisissez votre nom et photo, fixez un prix (0 accepté), puis «Ajouter». Les ventes déjà enregistrées gardent le nom avec lequel elles ont été facturées.
 add_item	Ajouter un article
 new_item	Nouvel article
 adding_item	Ajout d'un article
@@ -280,7 +280,7 @@ frequent_apply	Appliquer
 frequent_saved	Fréquent : dernier(s) {d} jour(s), premier(s) {n} — {c} plat(s)
 frequent_empty	Pas encore de ventes terminées sur cette période — encaisser une addition (₹0 si Réglages l’autorise) et elles apparaissent ici.
 zero_sales	Ventes à valeur nulle
-zero_sales_help	Autoriser plats à ₹0 et paiements ₹0. Si désactivé, le paiement exige un montant.
+zero_sales_help	Autoriser les plats à ₹0 et les notes réglées à ₹0 (offert / souhait du propriétaire). Activé par défaut pour que les couverts gratuits restent dans «Fréquents» et les livres du jour.
 zero_sales_on	Ventes zéro: activées
 zero_sales_off	Ventes zéro: désactivées
 zero_sales_saved_on	Autorisation ventes zéro enregistrée (activée)

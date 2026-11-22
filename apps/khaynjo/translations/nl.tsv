@@ -31,7 +31,7 @@ items	Menu & artikelen
 nav_items	Menu
 more	Meer
 your_items	Jouw menu
-items_help	Elke rij is een gerecht of artikel (bijv. Masala Dosa). Voeg prijs en keukenstation toe. Tik om te bewerken.
+items_help	Tik op een artikel om te bewerken. «Nieuw artikel» wist het formulier. Zoek onze gerechten of typ eigen naam en foto, zet een prijs (0 mag), dan «Toevoegen». Al vastgelegde verkopen houden de naam waarmee ze in rekening zijn gebracht.
 add_item	Artikel toevoegen
 new_item	Nieuw artikel
 adding_item	Nieuw artikel toevoegen
@@ -280,7 +280,7 @@ frequent_apply	Toepassen
 frequent_saved	Vaak: laatste {d} dag(en), bovenste {n} — {c} gerecht(en)
 frequent_empty	Nog geen voltooide verkopen in deze periode — reken af (₹0 als Instellingen dat toelaat) en ze verschijnen hier.
 zero_sales	Verkopen met waarde nul
-zero_sales_help	Gerechten en betalingen van ₹0 toestaan. Uit = betaling vereist een bedrag.
+zero_sales_help	Gerechten van ₹0 en rekeningen afgesloten op ₹0 toestaan (gratis / wens van de eigenaar). Standaard aan zodat gratis covers in «Vaak» en dagboeken blijven.
 zero_sales_on	Nulverkopen: aan
 zero_sales_off	Nulverkopen: uit
 zero_sales_saved_on	Nulverkopen toegestaan opgeslagen (aan)

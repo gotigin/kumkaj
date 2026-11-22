@@ -31,7 +31,7 @@ items	菜单与项目
 nav_items	菜单
 more	更多
 your_items	你的菜单
-items_help	每行是一道菜或项目（如 Masala Dosa）。添加价格和厨房工位。点击编辑。
+items_help	点按项目以编辑。「新项目」 会清空表单。搜索我们的菜品或输入自有名称和照片，设定价格（可为 0），然后「添加」。已记录的销售保留当时计费的名称。
 add_item	添加项目
 new_item	新项目
 adding_item	正在添加新项目
@@ -280,7 +280,7 @@ frequent_apply	应用
 frequent_saved	高频：最近 {d} 天，前 {n} — {c} 道菜
 frequent_empty	本时段尚无已完成销售 — 结算一笔账单（设置允许时可 ₹0）后会出现在此。
 zero_sales	零元销售
-zero_sales_help	允许 ₹0 菜品和 ₹0 收款。关闭后付款需有金额。
+zero_sales_help	允许标价 ₹0 的菜品以及结清为 ₹0 的账单（赠送 / 店主意愿）。默认开启，以便免费单仍出现在「常点」和日账中。
 zero_sales_on	零元销售：开
 zero_sales_off	零元销售：关
 zero_sales_saved_on	已保存零元销售许可（开）

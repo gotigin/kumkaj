@@ -31,7 +31,7 @@ items	Menü ve öğeler
 nav_items	Menü
 more	Diğer
 your_items	Menünüz
-items_help	Her satır bir yemek veya öğedir (ör. Masala Dosa). Fiyatını ve mutfak istasyonunu ekleyin. Düzenlemek için dokunun.
+items_help	Düzenlemek için bir öğeye dokunun. «Yeni öğe» formu temizler. Yemeklerimizde arayın veya kendi adınızı ve fotoğrafınızı yazın, fiyat koyun (0 olur), sonra «Ekle». Kayıtlı satışlar ücretlendirildikleri adı korur.
 add_item	Öğe ekle
 new_item	Yeni öğe
 adding_item	Yeni öğe ekleniyor
@@ -280,7 +280,7 @@ frequent_apply	Uygula
 frequent_saved	Sık: son {d} gün(ler), üst {n} — {c} yemeği(n)
 frequent_empty	Bu dönemde henüz tamamlanmış satış yok — bir hesabı kapatın (Ayarlar izin verirse ₹0) ve burada görünürler.
 zero_sales	Sıfır değerli satış
-zero_sales_help	₹0 yemek ve ₹0 ödemeye izin ver. Kapalıysa ödemede tutar gerekir.
+zero_sales_help	₹0 fiyatlı yemeklere ve ₹0 ile kapanan hesaplara izin ver (ikram / sahip isteği). Ücretsizler «Sık satılan» ve gün defterinde görünsün diye varsayılan açık.
 zero_sales_on	Sıfır satış: açık
 zero_sales_off	Sıfır satış: kapalı
 zero_sales_saved_on	Sıfır satış izni kaydedildi (açık)

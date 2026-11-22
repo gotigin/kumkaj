@@ -31,7 +31,7 @@ items	Menu & item
 nav_items	Menu
 more	Lainnya
 your_items	Menu Anda
-items_help	Setiap baris adalah hidangan atau item (mis. Masala Dosa). Tambahkan harga dan stasiun dapur. Ketuk untuk mengedit.
+items_help	Ketuk item untuk mengeditnya. «Item baru» mengosongkan formulir. Cari hidangan kami atau ketik nama dan foto sendiri, tetapkan harga (0 boleh), lalu «Tambah». Penjualan yang sudah tercatat mempertahankan nama saat ditagih.
 add_item	Tambah item
 new_item	Item baru
 adding_item	Menambah item baru
@@ -280,7 +280,7 @@ frequent_apply	Terapkan
 frequent_saved	Sering: hari terakhir {d}, teratas {n} — {c} hidangan
 frequent_empty	Belum ada penjualan selesai di periode ini — selesaikan tagihan (₹0 jika Pengaturan mengizinkan) lalu muncul di sini.
 zero_sales	Penjualan nilai nol
-zero_sales_help	Izinkan hidangan ₹0 dan pembayaran ₹0. Mati = pembayaran butuh jumlah.
+zero_sales_help	Izinkan hidangan berharga ₹0 dan tagihan dilunasi ₹0 (gratis / keinginan pemilik). Aktif bawaan agar sajian gratis tetap muncul di «Sering» dan buku harian.
 zero_sales_on	Penjualan nol: aktif
 zero_sales_off	Penjualan nol: mati
 zero_sales_saved_on	Izin penjualan nol disimpan (aktif)

@@ -31,7 +31,7 @@ items	Menu e itens
 nav_items	Menu
 more	Mais
 your_items	O seu menu
-items_help	Cada linha é um prato ou item (ex. Masala Dosa). Adicione o preço e a estação da cozinha. Toque para editar.
+items_help	Toque num item para o editar. «Novo item» limpa o formulário. Procure os nossos pratos ou escreva o seu nome e foto, defina um preço (0 serve), depois «Adicionar». As vendas já registadas mantêm o nome com que foram cobradas.
 add_item	Adicionar item
 new_item	Novo item
 adding_item	A adicionar item
@@ -280,7 +280,7 @@ frequent_apply	Aplicar
 frequent_saved	Frequentes: últimos {d} dia(s), principais {n} — {c} prato(s)
 frequent_empty	Ainda sem vendas concluídas neste período — liquidar uma conta (₹0 se as Definições permitirem) e elas aparecem aqui.
 zero_sales	Vendas de valor zero
-zero_sales_help	Permitir pratos a ₹0 e pagamentos ₹0. Se desligado, o pagamento exige um valor.
+zero_sales_help	Permitir pratos a ₹0 e contas saldadas a ₹0 (cortesia / vontade do dono). Ligado por omissão para as coberturas grátis continuarem em «Frequentes» e nos livros do dia.
 zero_sales_on	Vendas zero: ligadas
 zero_sales_off	Vendas zero: desligadas
 zero_sales_saved_on	Permissão de vendas zero guardada (ligada)

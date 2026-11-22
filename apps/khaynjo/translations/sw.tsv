@@ -31,7 +31,7 @@ items	Menyu na bidhaa
 nav_items	Menyu
 more	Zaidi
 your_items	Menyu yako
-items_help	Kila safu ni sahani au bidhaa (mf. Masala Dosa). Ongeza bei yake na kituo cha jikoni. Gusa kuhariri.
+items_help	Gusa bidhaa kuihariri. «Bidhaa mpya» husafisha fomu. Tafuta vyakula vyetu au andika jina na picha yako, weka bei (0 sawa), kisha «Ongeza». Mauzo yaliyorekodiwa yanahifadhi jina yaliyotozwa nalo.
 add_item	Ongeza bidhaa
 new_item	Bidhaa mpya
 adding_item	Inaongeza bidhaa mpya
@@ -280,7 +280,7 @@ frequent_apply	Tumia
 frequent_saved	Marafiki: siku zilizopita {d}, juu {n} — {c} chakula (vyakula)
 frequent_empty	Bado hakuna mauzo yaliyokamilika katika kipindi hiki — maliza bili (₹0 ikiwa Mipangilio inaruhusu) na zitaonekana hapa.
 zero_sales	Mauzo yenye thamani sifuri
-zero_sales_help	Ruhusu vyakula vya ₹0 na malipo ₹0. Ikiwa imezimwa, malipo yanahitaji kiasi.
+zero_sales_help	Ruhusu sahani bei ₹0 na bili zilizolipwa ₹0 (bure / matakwa ya mmiliki). Imewashwa kwa chaguo-msingi ili bure zibaki katika «Mara kwa mara» na vitabu vya siku.
 zero_sales_on	Mauzo sifuri: washa
 zero_sales_off	Mauzo sifuri: zima
 zero_sales_saved_on	Ruhusa ya mauzo sifuri imehifadhiwa (washa)
