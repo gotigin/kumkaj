@@ -718,22 +718,22 @@ net_word	Զուտ
 offline_badge	ԱՆՑԱՆՑ
 optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբառ)։ Սեփականատերը դնում է մեկ անգամ; հետո գաղտնաբառը կարող է փոխել միայն օգտատերը։
 or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
-or_unlock_shop_login	[hy] Or unlock with shop login
-shop_login_help	[hy] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[hy] Moklanjo account
-cloud_account_help	[hy] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[hy] Name (optional)
-cloud_email_ph	[hy] Email
-cloud_password_ph	[hy] Password
-cloud_continue	[hy] Continue
-cloud_forgot	[hy] Forgot password?
-cloud_web_methods	[hy] Google and other methods on the website
-cloud_signing_in	[hy] Signing in…
-cloud_sending_reset	[hy] Sending reset link…
-cloud_forgot_sent	[hy] If that email has an account, a reset link is on the way.
-cloud_welcome	[hy] Signed in as {user} · {plan}
-cloud_created	[hy] Account created. Check your email to verify when you can.
-cloud_cancel	[hy] Cancel
+or_unlock_shop_login	Կամ բացեք խանութի մուտքով
+shop_login_help	Պարտադիր չէ. բացեք այս խանութի անձնակազմի օգտանունով և գաղտնաբառով՝ PIN-ի փոխարեն (աշխատում է առանց ցանցի).
+cloud_account_title	Moklanjo հաշիվ
+cloud_account_help	Գրանցվեք կամ մտեք նույն հաշվով, ինչ moklanjo.com/account։ Ստեղծում է ամպային id և անվճար պլան։
+cloud_name_ph	Անուն (պարտադիր չէ)
+cloud_email_ph	Էլ․ փոստ
+cloud_password_ph	Գաղտնաբառ
+cloud_continue	Շարունակել
+cloud_forgot	Մոռացե՞լ եք գաղտնաբառը
+cloud_web_methods	Google և այլ մեթոդներ կայքում
+cloud_signing_in	Մուտք…
+cloud_sending_reset	Վերակայման հղումն ուղարկվում է…
+cloud_forgot_sent	Եթե այդ էլ․ փոստն ունի հաշիվ, վերակայման հղումն ճանապարհին է։
+cloud_welcome	Մտել եք որպես {user} · {plan}
+cloud_created	Հաշիվը ստեղծված է։ Ստուգեք էլ․ փոստը հաստատման համար, երբ կարողանաք։
+cloud_cancel	Չեղարկել
 permission_preset	Աշխատանք
 preset_help_moklanjo	Գանձապահ՝ վաճառում է։ Կառավարիչ՝ վաճառք + ապրանքներ + չեղյալ/ուղղում։
 product_locked_moklanjo	Մոկլանջո

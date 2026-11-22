@@ -718,22 +718,22 @@ net_word	တိုးတက်သောငွေ
 offline_badge	အော့ဖ်လိုင်း
 optional_login_help	စိတ်ကြိုက်လော့ဂ်အင် (အိုင်ဒီ + စကားဝှက်)။ ပိုင်ရှင်တစ်ခါတည်း သတ်မှတ်နိုင်ပြီး၊ နောက်ပိုင်းတွင် စကားဝှက်ကို အသုံးပြုသူပဲ ပြောင်းနိုင်သည်။
 or_unlock_login	သို့မဟုတ် လော့ဂ်အင် အိုင်ဒီ + စကားဝှက်ဖြင့် ဖွင့်ရန်
-or_unlock_shop_login	[my] Or unlock with shop login
-shop_login_help	[my] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[my] Moklanjo account
-cloud_account_help	[my] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[my] Name (optional)
-cloud_email_ph	[my] Email
-cloud_password_ph	[my] Password
-cloud_continue	[my] Continue
-cloud_forgot	[my] Forgot password?
-cloud_web_methods	[my] Google and other methods on the website
-cloud_signing_in	[my] Signing in…
-cloud_sending_reset	[my] Sending reset link…
-cloud_forgot_sent	[my] If that email has an account, a reset link is on the way.
-cloud_welcome	[my] Signed in as {user} · {plan}
-cloud_created	[my] Account created. Check your email to verify when you can.
-cloud_cancel	[my] Cancel
+or_unlock_shop_login	သို့မဟုတ် ဆိုင်လော့ဂ်အင်ဖြင့် ဖွင့်ပါ
+shop_login_help	ရွေးချယ်နိုင်: PIN အစား ဤဆိုင်ဝန်ထမ်း အသုံးပြုသူအမည်နှင့် စကားဝှက်ဖြင့် ဖွင့်ပါ (အော့ဖ်လိုင်း အလုပ်လုပ်သည်).
+cloud_account_title	Moklanjo အကောင့်
+cloud_account_help	moklanjo.com/account နှင့် တူညီသော အကောင့်ဖြင့် မှတ်ပုံတင် သို့မဟုတ် ဝင်ပါ။ က্লাวด် id နှင့် အခမဲ့အစီအစဉ် ဖန်တီးသည်။
+cloud_name_ph	အမည် (ရွေးချယ်နိုင်)
+cloud_email_ph	အီးမေးလ်
+cloud_password_ph	စကားဝှက်
+cloud_continue	ဆက်လုပ်ရန်
+cloud_forgot	စကားဝှက် မေ့နေပါသလား?
+cloud_web_methods	ဝဘ်ဆိုက်ရှိ Google နှင့် အခြားနည်းလမ်းများ
+cloud_signing_in	ဝင်နေသည်…
+cloud_sending_reset	ပြန်သတ်မှတ်လင့်ခ် ပို့နေသည်…
+cloud_forgot_sent	ထိုအီးမေးလ်တွင် အကောင့်ရှိလျှင် ပြန်သတ်မှတ်လင့်ခ် လာနေသည်။
+cloud_welcome	{user} · {plan} အဖြစ် ဝင်ပြီး
+cloud_created	အကောင့် ဖန်တီးပြီး။ အတည်ပြုရန် အီးမေးလ်ကို စစ်ဆေးပါ။
+cloud_cancel	ပယ်ဖျက်
 permission_preset	အလုပ်
 preset_help_moklanjo	ငွေထုတ်ယူသူ: ရောင်းသည်။ မန်နေဂျာ: ရောင်းခြင်း + ပစ္စည်းများ + ဖျက်/ပြင်ဆင်ခြင်း။
 product_locked_moklanjo	မိုကလန်ဂျို

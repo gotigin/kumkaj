@@ -718,22 +718,22 @@ net_word	ශුද්ධ
 offline_badge	නොබැඳි
 optional_login_help	විකල්ප පුරනය වීම (id + මුරපදය). හිමිකරු එක් වරක් සකසයි; පසුව මුරපදය වෙනස් කළ හැක්කේ පරිශීලකයාට පමණි.
 or_unlock_login	නැතහොත් පිවිසුම් හැඳුනුම්පත + මුරපදය සමඟ අගුළු ඇරීම
-or_unlock_shop_login	[si] Or unlock with shop login
-shop_login_help	[si] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[si] Moklanjo account
-cloud_account_help	[si] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[si] Name (optional)
-cloud_email_ph	[si] Email
-cloud_password_ph	[si] Password
-cloud_continue	[si] Continue
-cloud_forgot	[si] Forgot password?
-cloud_web_methods	[si] Google and other methods on the website
-cloud_signing_in	[si] Signing in…
-cloud_sending_reset	[si] Sending reset link…
-cloud_forgot_sent	[si] If that email has an account, a reset link is on the way.
-cloud_welcome	[si] Signed in as {user} · {plan}
-cloud_created	[si] Account created. Check your email to verify when you can.
-cloud_cancel	[si] Cancel
+or_unlock_shop_login	නැතහොත් වෙළඳසැල් පිවිසුමෙන් අගුළු හරින්න
+shop_login_help	විකල්ප: PIN වෙනුවට මෙම වෙළඳසැලේ කාර්ය මණ්ඩල පරිශීලක නාමය සහ මුරපදයෙන් අගුළු හරින්න (නොබැඳිව ක්‍රියා කරයි).
+cloud_account_title	Moklanjo ගිණුම
+cloud_account_help	moklanjo.com/account හි එකම ගිණුමෙන් ලියාපදිංචි වන්න හෝ පුරනය වන්න. ඔබේ වලාකුළු id සහ නොමිලේ සැලැස්ම සාදයි.
+cloud_name_ph	නම (විකල්ප)
+cloud_email_ph	විද්‍යුත් තැපෑල
+cloud_password_ph	මුරපදය
+cloud_continue	ඉදිරියට
+cloud_forgot	මුරපදය අමතකද?
+cloud_web_methods	වෙබ් අඩවියේ Google සහ වෙනත් ක්‍රම
+cloud_signing_in	පුරනය වෙමින්…
+cloud_sending_reset	යළි සැකසුම් සබැඳිය යවමින්…
+cloud_forgot_sent	එම ඊමේල් එකට ගිණුමක් තිබේ නම්, යළි සැකසුම් සබැඳිය යන ගමනේ ය.
+cloud_welcome	{user} · {plan} ලෙස පුරනය විය
+cloud_created	ගිණුම සාදන ලදී. හැකි විට සත්‍යාපනයට ඔබේ විද්‍යුත් තැපෑල පරීක්ෂා කරන්න.
+cloud_cancel	අවලංගු කරන්න
 permission_preset	රැකියාව
 preset_help_moklanjo	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
 product_locked_moklanjo	මොක්ලන්ජෝ
@@ -807,12 +807,12 @@ app_template_wipe_continue	දිගටම කරගෙන යන්න
 app_template_wipe_cancel	අවලංගු කරන්න
 public_tmpl_help	මෙම සාප්පුව සඳහා යෙදුම සමඟ එන නියෝජිත පැකේජ. බාගැනීමක් අවශ්‍ය නැත.
 business_day	«අද» නැවත ආරම්භ වන්නේ කවදාද?
-business_day_help	«දවස වසන තුරු» තේරූ විට, ඔබ දවස වසා දැමීම සටහන් කරන තුරු «දින ලෙජරය» මධ්‍යම රාත්‍රියෙන් පසුවත් දිගටම පවතී. «දින දර්ශන මධ්‍යම රාත්‍රිය» තේරූ විට, දවස දේශීය වේලාවෙන් පෙ.ව. 12:00 ට අවසන් වේ.
+business_day_help	«දවස වසන තුරු» තේරූ විට, ඔබ දවස වසා දැමීම සටහන් කරන තුරු «දින ලෙජරය» මධ්‍යම රාත්‍රියෙන් පසුවත් දිගටම පවතී. «දින දර්ශන මධ්‍යම රාත්‍රිය» තේරූ විට, දවස දේශීය වේලාවෙන් 00:00 ට අවසන් වේ.
 biz_day_until_close	දවස වසන තුරු
 biz_day_midnight	දින දර්ශන මධ්‍යම රාත්‍රිය
 business_day_saved	ව්‍යාපාරික දිනය සුරකින ලදී
 report_day_lens	«අද» පෙන්වන ආකාරය
-report_day_lens_help	බැලීමට පමණි — «දවස වැසීම» විසින් «අද» නැවත ආරම්භ කරන වේලාව මෙයින් වෙනස් නොවේ. «දවස වසා දැමීම අනුව» අවසන් දවස වසා දැමීමේ සිට ගණන් කරයි; «මධ්‍යම රාත්‍රිය අනුව» දේශීය වේලාවෙන් පෙ.ව. 12:00 ට කපයි.
+report_day_lens_help	බැලීමට පමණි — «දවස වැසීම» විසින් «අද» නැවත ආරම්භ කරන වේලාව මෙයින් වෙනස් නොවේ. «දවස වසා දැමීම අනුව» අවසන් දවස වසා දැමීමේ සිට ගණන් කරයි; «මධ්‍යම රාත්‍රිය අනුව» දේශීය වේලාවෙන් 00:00 ට කපයි.
 report_lens_day_close	දවස වසා දැමීම අනුව
 report_lens_midnight	මධ්‍යම රාත්‍රිය අනුව
 trk_booked	වෙන්කර ඇත

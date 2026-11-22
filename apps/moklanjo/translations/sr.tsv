@@ -718,22 +718,22 @@ net_word	Нет
 offline_badge	ВАН МРЕЖЕ
 optional_login_help	Опционо пријављивање (ид + лозинка). Власник поставља једном; само корисник може касније да промени лозинку.
 or_unlock_login	Или откључајте помоћу ИД-а за пријаву + лозинке
-or_unlock_shop_login	[sr] Or unlock with shop login
-shop_login_help	[sr] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[sr] Moklanjo account
-cloud_account_help	[sr] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[sr] Name (optional)
-cloud_email_ph	[sr] Email
-cloud_password_ph	[sr] Password
-cloud_continue	[sr] Continue
-cloud_forgot	[sr] Forgot password?
-cloud_web_methods	[sr] Google and other methods on the website
-cloud_signing_in	[sr] Signing in…
-cloud_sending_reset	[sr] Sending reset link…
-cloud_forgot_sent	[sr] If that email has an account, a reset link is on the way.
-cloud_welcome	[sr] Signed in as {user} · {plan}
-cloud_created	[sr] Account created. Check your email to verify when you can.
-cloud_cancel	[sr] Cancel
+or_unlock_shop_login	Или откључај пријавом у продавницу
+shop_login_help	Опционо: откључајте корисничким именом и лозинком особља ове продавнице уместо PIN-а (ради ван мреже).
+cloud_account_title	Налог Moklanjo
+cloud_account_help	Региструјте се или се пријавите истим налогом као moklanjo.com/account. Прави облачни id и бесплатни план.
+cloud_name_ph	Име (опционо)
+cloud_email_ph	Е-пошта
+cloud_password_ph	Лозинка
+cloud_continue	Настави
+cloud_forgot	Заборавили сте лозинку?
+cloud_web_methods	Google и други начини на сајту
+cloud_signing_in	Пријављивање…
+cloud_sending_reset	Слање везе за ресетовање…
+cloud_forgot_sent	Ако та е-пошта има налог, веза за ресетовање је на путу.
+cloud_welcome	Пријављени као {user} · {plan}
+cloud_created	Налог направљен. Проверите е-пошту ради потврде када можете.
+cloud_cancel	Откажи
 permission_preset	Посао
 preset_help_moklanjo	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
 product_locked_moklanjo	Моклањо

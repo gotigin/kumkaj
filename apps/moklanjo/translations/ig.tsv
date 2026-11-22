@@ -718,22 +718,22 @@ net_word	Net
 offline_badge	ANỌGHỊ N'ỊNTANETỊ
 optional_login_help	Nbanye nhọrọ (njirimara + okwuntughe). Onye nwe na-etinye otu ugboro; naanị onye ọrụ nwere ike ịgbanwe okwuntughe ma emechaa.
 or_unlock_login	Ma ọ bụ mepee site na njirimara nbanye + okwuntughe
-or_unlock_shop_login	[ig] Or unlock with shop login
-shop_login_help	[ig] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ig] Moklanjo account
-cloud_account_help	[ig] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ig] Name (optional)
-cloud_email_ph	[ig] Email
-cloud_password_ph	[ig] Password
-cloud_continue	[ig] Continue
-cloud_forgot	[ig] Forgot password?
-cloud_web_methods	[ig] Google and other methods on the website
-cloud_signing_in	[ig] Signing in…
-cloud_sending_reset	[ig] Sending reset link…
-cloud_forgot_sent	[ig] If that email has an account, a reset link is on the way.
-cloud_welcome	[ig] Signed in as {user} · {plan}
-cloud_created	[ig] Account created. Check your email to verify when you can.
-cloud_cancel	[ig] Cancel
+or_unlock_shop_login	Ma ọ bụ mepee site na nbanye ụlọ ahịa
+shop_login_help	Nhọrọ: mepee site na aha njirimara na paswọọdụ ndị ọrụ ụlọ ahịa a kama PIN (na-arụ ọrụ na-enweghị ịntanetị).
+cloud_account_title	Akaụntụ Moklanjo
+cloud_account_help	Debanye aha ma ọ bụ banye jiri otu akaụntụ ahụ dị ka moklanjo.com/account. Ọ na-emepụta cloud id gị na atụmatụ efu.
+cloud_name_ph	Aha (nhọrọ)
+cloud_email_ph	Email
+cloud_password_ph	Paswọọdụ
+cloud_continue	Gaa n'ihu
+cloud_forgot	Chefuru paswọọdụ?
+cloud_web_methods	Google na ụzọ ndị ọzọ na weebụsaịtị
+cloud_signing_in	Na-abanye…
+cloud_sending_reset	Na-eziga njikọ nrụgharị…
+cloud_forgot_sent	Ọ bụrụ na email ahụ nwere akaụntụ, njikọ nrụgharị na-abịa.
+cloud_welcome	Abanyela dị ka {user} · {plan}
+cloud_created	Emepụtara akaụntụ. Lelee email gị iji mere nkwenye mgbe ị nwere ike.
+cloud_cancel	Kagbuo
 permission_preset	Ọrụ
 preset_help_moklanjo	Onye na-anakọta ego: ree. Onye njikwa: ree + ihe + kagbuo kpamkpam/dozie.
 product_locked_moklanjo	Moklanjo

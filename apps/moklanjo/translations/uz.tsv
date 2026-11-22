@@ -718,22 +718,22 @@ net_word	Sof
 offline_badge	OFLAYN
 optional_login_help	Ixtiyoriy kirish (id + parol). Egasi bir marta qoʻyadi; parolni keyin faqat foydalanuvchi oʻzgartira oladi.
 or_unlock_login	Yoki kirish id + parol bilan qulfni oching
-or_unlock_shop_login	[uz] Or unlock with shop login
-shop_login_help	[uz] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[uz] Moklanjo account
-cloud_account_help	[uz] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[uz] Name (optional)
-cloud_email_ph	[uz] Email
-cloud_password_ph	[uz] Password
-cloud_continue	[uz] Continue
-cloud_forgot	[uz] Forgot password?
-cloud_web_methods	[uz] Google and other methods on the website
-cloud_signing_in	[uz] Signing in…
-cloud_sending_reset	[uz] Sending reset link…
-cloud_forgot_sent	[uz] If that email has an account, a reset link is on the way.
-cloud_welcome	[uz] Signed in as {user} · {plan}
-cloud_created	[uz] Account created. Check your email to verify when you can.
-cloud_cancel	[uz] Cancel
+or_unlock_shop_login	Yoki do‘kon kirishi bilan oching
+shop_login_help	Ixtiyoriy: PIN o‘rniga shu do‘kon xodimlarining foydalanuvchi nomi va paroli bilan oching (oflayn ishlaydi).
+cloud_account_title	Moklanjo hisobi
+cloud_account_help	moklanjo.com/account bilan bir xil hisob bilan ro‘yxatdan o‘ting yoki kiring. Bulut id va bepul reja yaratadi.
+cloud_name_ph	Ism (ixtiyoriy)
+cloud_email_ph	Elektron pochta
+cloud_password_ph	Parol
+cloud_continue	Davom etish
+cloud_forgot	Parolni unutdingizmi?
+cloud_web_methods	Saytdagi Google va boshqa usullar
+cloud_signing_in	Kirilmoqda…
+cloud_sending_reset	Qayta o‘rnatish havolasi yuborilmoqda…
+cloud_forgot_sent	Agar o‘sha pochtada hisob bo‘lsa, qayta o‘rnatish havolasi yo‘lda.
+cloud_welcome	{user} · {plan} sifatida kirdingiz
+cloud_created	Hisob yaratildi. Tasdiqlash uchun pochtangizni tekshiring.
+cloud_cancel	Bekor qilish
 permission_preset	Vazifa
 preset_help_moklanjo	Kassir: sotadi. Menejer: savdo + mahsulot + bekor/tuzatish.
 product_locked_moklanjo	Moklanjo

@@ -720,8 +720,8 @@ optional_login_help	Neobavezna prijava (id + lozinka). Vlasnik postavlja jednom;
 or_unlock_login	Ili otključajte id-em prijave + lozinkom
 or_unlock_shop_login	Ili otključajte prijavom u trgovinu
 shop_login_help	Izborno: otključajte korisničkim imenom i lozinkom osoblja ove trgovine umjesto PIN-a (radi izvan mreže).
-cloud_account_title	[hr] Moklanjo account
-cloud_account_help	[hr] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_account_title	Moklanjo račun
+cloud_account_help	Registrirajte se ili se prijavite istim računom kao moklanjo.com/account. Stvara cloud id i besplatni plan.
 cloud_name_ph	Ime (nije obavezno)
 cloud_email_ph	E-mail
 cloud_password_ph	Lozinka

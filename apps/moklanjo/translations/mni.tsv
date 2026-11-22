@@ -718,21 +718,21 @@ net_word	ꯁꯦꯟꯊꯣꯛ
 offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-or_unlock_shop_login	[mni] Or unlock with shop login
-shop_login_help	[mni] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[mni] Moklanjo account
-cloud_account_help	[mni] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[mni] Name (optional)
-cloud_email_ph	[mni] Email
+or_unlock_shop_login	ꯅꯠꯇ꯭ꯔꯒ ꯁꯣꯞ ꯂꯣꯒꯤꯟꯅ ꯍꯥꯡꯗꯣꯛꯎ
+shop_login_help	ꯆꯪꯕ ꯌꯥꯏ: PINꯒꯤ ꯃꯍꯨꯠꯇ ꯁꯣꯞ ꯑꯁꯤꯒꯤ ꯁ꯭ꯇꯥꯐ ꯌꯨꯖꯔꯅꯦꯝ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ (ꯑꯣꯐꯂꯥꯏꯟ ꯊꯕꯛ ꯇꯧꯏ).
+cloud_account_title	Moklanjo ꯑꯦꯀꯥꯎꯟꯇ
+cloud_account_help	moklanjo.com/accountꯒꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯑꯁꯤꯅꯥ ꯔꯦꯖꯤꯁ꯭ꯇꯔ ꯇꯧꯕ ꯅꯠꯇ꯭ꯔꯒ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ. ꯅꯍꯥꯛꯀꯤ ꯀ꯭ꯂꯥꯎꯗ ID ꯑꯃꯁꯨꯡ ꯐ꯭ꯔꯤ ꯄ꯭ꯂꯥꯟ ꯁꯦꯝꯃꯤ.
+cloud_name_ph	ꯃꯤꯡ (ꯆꯪꯕ ꯌꯥꯏ)
+cloud_email_ph	ꯏꯃꯦꯜ
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
-cloud_forgot	[mni] Forgot password?
-cloud_web_methods	[mni] Google and other methods on the website
-cloud_signing_in	[mni] Signing in…
-cloud_sending_reset	[mni] Sending reset link…
-cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
-cloud_welcome	[mni] Signed in as {user} · {plan}
-cloud_created	[mni] Account created. Check your email to verify when you can.
+cloud_forgot	ꯄꯥꯁꯋꯥꯔꯗ ꯀꯥꯎꯔꯕꯔꯥ?
+cloud_web_methods	ꯋꯦꯕꯁꯥꯏꯠꯇ Google ꯑꯃꯁꯨꯡ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡꯁꯤꯡ
+cloud_signing_in	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯤ…
+cloud_sending_reset	ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯊꯥꯔꯤ…
+cloud_forgot_sent	ꯃꯁꯤꯒꯤ ꯏꯃꯦꯜꯗ ꯑꯦꯀꯥꯎꯟꯇ ꯂꯩꯔꯕꯗꯤ ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯊꯥꯔꯤ.
+cloud_welcome	{user} · {plan} ꯑꯣꯏꯅ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+cloud_created	ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯝꯂꯦ. ꯌꯥꯔꯕꯗ ꯏꯃꯦꯜ ꯌꯦꯡꯁꯤꯜꯂꯨ.
 cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 preset_help_moklanjo	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.

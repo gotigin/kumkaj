@@ -718,22 +718,22 @@ net_word	Neto
 offline_badge	BEZSAISTĒ
 optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iestata vienreiz; paroli vēlāk var mainīt tikai lietotājs.
 or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
-or_unlock_shop_login	[lv] Or unlock with shop login
-shop_login_help	[lv] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[lv] Moklanjo account
-cloud_account_help	[lv] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[lv] Name (optional)
-cloud_email_ph	[lv] Email
-cloud_password_ph	[lv] Password
-cloud_continue	[lv] Continue
-cloud_forgot	[lv] Forgot password?
-cloud_web_methods	[lv] Google and other methods on the website
-cloud_signing_in	[lv] Signing in…
-cloud_sending_reset	[lv] Sending reset link…
-cloud_forgot_sent	[lv] If that email has an account, a reset link is on the way.
-cloud_welcome	[lv] Signed in as {user} · {plan}
-cloud_created	[lv] Account created. Check your email to verify when you can.
-cloud_cancel	[lv] Cancel
+or_unlock_shop_login	Vai atbloķēt ar veikala pieteikšanos
+shop_login_help	Neobligāti: atbloķējiet ar šī veikala personāla lietotājvārdu un paroli PIN vietā (darbojas bezsaistē).
+cloud_account_title	Moklanjo konts
+cloud_account_help	Reģistrējieties vai pierakstieties ar to pašu kontu kā moklanjo.com/account. Izveido mākoņa id un bezmaksas plānu.
+cloud_name_ph	Vārds (neobligāti)
+cloud_email_ph	E-pasts
+cloud_password_ph	Parole
+cloud_continue	Turpināt
+cloud_forgot	Aizmirsāt paroli?
+cloud_web_methods	Google un citas metodes vietnē
+cloud_signing_in	Pierakstās…
+cloud_sending_reset	Sūta atiestatīšanas saiti…
+cloud_forgot_sent	Ja šim e-pastam ir konts, atiestatīšanas saite ir ceļā.
+cloud_welcome	Pierakstījies kā {user} · {plan}
+cloud_created	Konts izveidots. Pārbaudiet e-pastu, lai verificētu, kad varat.
+cloud_cancel	Atcelt
 permission_preset	Darbs
 preset_help_moklanjo	Kasieris: pārdod. Vadītājs: pārdod + pozīcijas + anulē/labo.
 product_locked_moklanjo	Moklanjo

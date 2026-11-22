@@ -718,22 +718,22 @@ net_word	Net
 offline_badge	DECONECTAT
 optional_login_help	Autentificare opțională (id + parolă). Proprietarul setează o dată; doar utilizatorul poate schimba parola mai târziu.
 or_unlock_login	Sau deblochează cu id de autentificare + parolă
-or_unlock_shop_login	[ro] Or unlock with shop login
-shop_login_help	[ro] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[ro] Moklanjo account
-cloud_account_help	[ro] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[ro] Name (optional)
-cloud_email_ph	[ro] Email
-cloud_password_ph	[ro] Password
-cloud_continue	[ro] Continue
-cloud_forgot	[ro] Forgot password?
-cloud_web_methods	[ro] Google and other methods on the website
-cloud_signing_in	[ro] Signing in…
-cloud_sending_reset	[ro] Sending reset link…
-cloud_forgot_sent	[ro] If that email has an account, a reset link is on the way.
-cloud_welcome	[ro] Signed in as {user} · {plan}
-cloud_created	[ro] Account created. Check your email to verify when you can.
-cloud_cancel	[ro] Cancel
+or_unlock_shop_login	Sau deblochează cu autentificarea magazinului
+shop_login_help	Opțional: deblochează cu numele de utilizator și parola personalului acestui magazin în loc de PIN (funcționează offline).
+cloud_account_title	Cont Moklanjo
+cloud_account_help	Înregistrează-te sau conectează-te cu același cont ca moklanjo.com/account. Creează id-ul cloud și planul gratuit.
+cloud_name_ph	Nume (opțional)
+cloud_email_ph	E-mail
+cloud_password_ph	Parolă
+cloud_continue	Continuă
+cloud_forgot	Ai uitat parola?
+cloud_web_methods	Google și alte metode pe site
+cloud_signing_in	Se conectează…
+cloud_sending_reset	Se trimite linkul de resetare…
+cloud_forgot_sent	Dacă acel e-mail are un cont, un link de resetare este pe drum.
+cloud_welcome	Conectat ca {user} · {plan}
+cloud_created	Cont creat. Verifică e-mailul pentru confirmare când poți.
+cloud_cancel	Anulează
 permission_preset	Post
 preset_help_moklanjo	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
 product_locked_moklanjo	Moklanjo

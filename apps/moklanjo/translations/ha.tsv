@@ -720,7 +720,7 @@ optional_login_help	Shiga na zaɓi (lamba + kalmar sirri). Mamallaki yana saita 
 or_unlock_login	Ko buɗe da lambar shiga + kalmar sirri
 or_unlock_shop_login	Ko buše tare da shiga shago
 shop_login_help	Na zaɓi: buɗewa da sunan mai amfani da kalmar sirri na ma'aikatan shagon maimakon PIN (yana aiki a layi).
-cloud_account_title	[ha] Moklanjo account
+cloud_account_title	Asusun Moklanjo
 cloud_account_help	Yi rijista ko shiga tare da asusu ɗaya kamar moklanjo.com/account. Yana ƙirƙira id ɗin girgijenku da shirin kyauta.
 cloud_name_ph	Suna (na zaɓi)
 cloud_email_ph	Imel
@@ -731,7 +731,7 @@ cloud_web_methods	Google da sauran hanyoyin akan gidan yanar gizon
 cloud_signing_in	Ana shiga…
 cloud_sending_reset	Ana aika hanyar haɗin sake saiti…
 cloud_forgot_sent	Idan imel ɗin yana da asusu, hanyar haɗin sake saiti yana kan hanya.
-cloud_welcome	[ha] Signed in as {user} · {plan}
+cloud_welcome	An shiga a matsayin {user} · {plan}
 cloud_created	An ƙirƙira asusu. Bincika imel ɗin ku don tabbatarwa lokacin da za ku iya.
 cloud_cancel	Soke
 permission_preset	Aiki

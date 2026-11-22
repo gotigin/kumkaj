@@ -718,22 +718,22 @@ net_word	Grynasis
 offline_badge	NEPRISIJUNGĘS
 optional_login_help	Nebūtinas prisijungimas (id + slaptažodis). Savininkas nustato vieną kartą; vėliau slaptažodį gali keisti tik naudotojas.
 or_unlock_login	Arba atrakinkite prisijungimo id + slaptažodžiu
-or_unlock_shop_login	[lt] Or unlock with shop login
-shop_login_help	[lt] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[lt] Moklanjo account
-cloud_account_help	[lt] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[lt] Name (optional)
-cloud_email_ph	[lt] Email
-cloud_password_ph	[lt] Password
-cloud_continue	[lt] Continue
-cloud_forgot	[lt] Forgot password?
-cloud_web_methods	[lt] Google and other methods on the website
-cloud_signing_in	[lt] Signing in…
-cloud_sending_reset	[lt] Sending reset link…
-cloud_forgot_sent	[lt] If that email has an account, a reset link is on the way.
-cloud_welcome	[lt] Signed in as {user} · {plan}
-cloud_created	[lt] Account created. Check your email to verify when you can.
-cloud_cancel	[lt] Cancel
+or_unlock_shop_login	Arba atrakinti parduotuvės prisijungimu
+shop_login_help	Pasirenkama: atrakinkite šios parduotuvės personalo vartotojo vardu ir slaptažodžiu vietoj PIN (veikia neprisijungus).
+cloud_account_title	Moklanjo paskyra
+cloud_account_help	Registruokitės arba prisijunkite ta pačia paskyra kaip moklanjo.com/account. Sukuria debesų id ir nemokamą planą.
+cloud_name_ph	Vardas (pasirenkama)
+cloud_email_ph	El. paštas
+cloud_password_ph	Slaptažodis
+cloud_continue	Tęsti
+cloud_forgot	Pamiršote slaptažodį?
+cloud_web_methods	Google ir kiti būdai svetainėje
+cloud_signing_in	Prisijungiama…
+cloud_sending_reset	Siunčiama atstatymo nuoroda…
+cloud_forgot_sent	Jei tas el. paštas turi paskyrą, atstatymo nuoroda jau siunčiama.
+cloud_welcome	Prisijungta kaip {user} · {plan}
+cloud_created	Paskyra sukurta. Patikrinkite el. paštą patvirtinimui, kai galėsite.
+cloud_cancel	Atšaukti
 permission_preset	Darbas
 preset_help_moklanjo	Kasininkas: parduoda. Vadovas: pardavimas + prekės + anuliavimas/taisymas.
 product_locked_moklanjo	Moklanjo

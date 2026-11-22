@@ -718,22 +718,22 @@ net_word	Nettó
 offline_badge	ÓTENGT
 optional_login_help	Valfrjáls innskráning (auðkenni + lykilorð). Eigandi setur einu sinni; aðeins notandinn getur breytt lykilorðinu síðar.
 or_unlock_login	Eða opnaðu með innskráningarauðkenni + lykilorði
-or_unlock_shop_login	[is] Or unlock with shop login
-shop_login_help	[is] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[is] Moklanjo account
-cloud_account_help	[is] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[is] Name (optional)
-cloud_email_ph	[is] Email
-cloud_password_ph	[is] Password
-cloud_continue	[is] Continue
-cloud_forgot	[is] Forgot password?
-cloud_web_methods	[is] Google and other methods on the website
-cloud_signing_in	[is] Signing in…
-cloud_sending_reset	[is] Sending reset link…
-cloud_forgot_sent	[is] If that email has an account, a reset link is on the way.
-cloud_welcome	[is] Signed in as {user} · {plan}
-cloud_created	[is] Account created. Check your email to verify when you can.
-cloud_cancel	[is] Cancel
+or_unlock_shop_login	Eða opna með verslunarinngangi
+shop_login_help	Valfrjálst: opnaðu með notandanafni og lykilorði starfsfólks þessarar verslunar í stað PIN (virkar án nettengingar).
+cloud_account_title	Moklanjo-reikningur
+cloud_account_help	Skráðu þig eða skráðu þig inn með sama reikningi og moklanjo.com/account. Býr til skýjaauðkenni og ókeypis áætlun.
+cloud_name_ph	Nafn (valfrjálst)
+cloud_email_ph	Netfang
+cloud_password_ph	Lykilorð
+cloud_continue	Halda áfram
+cloud_forgot	Gleymt lykilorð?
+cloud_web_methods	Google og aðrar aðferðir á vefsíðunni
+cloud_signing_in	Skráir inn…
+cloud_sending_reset	Sendir endurstillingartengil…
+cloud_forgot_sent	Ef það netfang á reikning er endurstillingartengill á leiðinni.
+cloud_welcome	Skráð(ur) inn sem {user} · {plan}
+cloud_created	Reikningur stofnaður. Athugaðu netfangið til að staðfesta þegar þú getur.
+cloud_cancel	Hætta við
 permission_preset	Starf
 preset_help_moklanjo	Gjaldkeri: selja. Framkvæmdastjóri: selja + matseðill + ógilda / breyta.
 product_locked_moklanjo	Moklanjo

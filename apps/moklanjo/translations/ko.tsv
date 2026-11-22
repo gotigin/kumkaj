@@ -807,12 +807,12 @@ app_template_wipe_continue	계속
 app_template_wipe_cancel	취소
 public_tmpl_help	이 매장용으로 앱에 포함된 대리점 팩입니다. 다운로드가 필요 없습니다.
 business_day	«오늘» 화면은 언제 새로 시작하나요?
-business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 오전 12:00에 날짜가 바뀝니다.
+business_day_help	«마감할 때까지» 선택 시, 마감을 기록할 때까지 «일계장» 장부가 자정 이후에도 계속됩니다. «달력 자정» 선택 시, 현지 시각 00:00에 날짜가 바뀝니다.
 biz_day_until_close	마감할 때까지
 biz_day_midnight	달력 자정
 business_day_saved	영업일 설정을 저장했습니다
 report_day_lens	«오늘» 보기 기준
-report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 오전 12:00에 나눕니다.
+report_day_lens_help	보기 전용 — «마감» 시점에 «오늘» 화면이 새로 시작되는 것은 바뀌지 않습니다. «마감 기준»: 마지막 마감부터 계산합니다. «자정 기준»: 현지 시각 00:00에 나눕니다.
 report_lens_day_close	마감 기준
 report_lens_midnight	자정 기준
 trk_booked	접수됨
