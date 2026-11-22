@@ -588,22 +588,22 @@ net_word	Čistý
 offline_badge	OFFLINE
 optional_login_help	Voliteľné prihlásenie (id + heslo). Vlastník nastaví raz; heslo môže neskôr zmeniť iba používateľ.
 or_unlock_login	Alebo odomknite pomocou prihlasovacieho mena + hesla
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[sk] Or unlock with shop login
+shop_login_help	[sk] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[sk] Kirano account
+cloud_account_help	[sk] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[sk] Name (optional)
+cloud_email_ph	[sk] Email
+cloud_password_ph	[sk] Password
+cloud_continue	[sk] Continue
+cloud_forgot	[sk] Forgot password?
+cloud_web_methods	[sk] Google and other methods on the website
+cloud_signing_in	[sk] Signing in…
+cloud_sending_reset	[sk] Sending reset link…
+cloud_forgot_sent	[sk] If that email has an account, a reset link is on the way.
+cloud_welcome	[sk] Signed in as {user} · {plan}
+cloud_created	[sk] Account created. Check your email to verify when you can.
+cloud_cancel	[sk] Cancel
 permission_preset	Práca
 product_only_kirano	Kirano je operačný systém pre potraviny / kirana: predaj na pult, akcie, úvery a knihy – offline na vašich zariadeniach.
 purchases_cogs	Nákupy (COGS)

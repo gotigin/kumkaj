@@ -588,22 +588,22 @@ net_word	สุทธิ
 offline_badge	ออฟไลน์
 optional_login_help	เข้าสู่ระบบเสริม (รหัส + รหัสผ่าน) เจ้าของตั้งครั้งเดียว หลังจากนั้นเฉพาะผู้ใช้เท่านั้นที่เปลี่ยนรหัสผ่านได้
 or_unlock_login	หรือปลดล็อกด้วยรหัสเข้าสู่ระบบ + รหัสผ่าน
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[th] Or unlock with shop login
+shop_login_help	[th] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[th] Kirano account
+cloud_account_help	[th] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[th] Name (optional)
+cloud_email_ph	[th] Email
+cloud_password_ph	[th] Password
+cloud_continue	[th] Continue
+cloud_forgot	[th] Forgot password?
+cloud_web_methods	[th] Google and other methods on the website
+cloud_signing_in	[th] Signing in…
+cloud_sending_reset	[th] Sending reset link…
+cloud_forgot_sent	[th] If that email has an account, a reset link is on the way.
+cloud_welcome	[th] Signed in as {user} · {plan}
+cloud_created	[th] Account created. Check your email to verify when you can.
+cloud_cancel	[th] Cancel
 permission_preset	ชุดสิทธิ์
 product_only_kirano	แอปนี้เป็น Kirano เท่านั้น — ระบบสำหรับร้านอาหาร ธุรกิจอื่นมีผลิตภัณฑ์ Kumkaj แยกต่างหาก
 purchases_cogs	ซื้อ (COGS)

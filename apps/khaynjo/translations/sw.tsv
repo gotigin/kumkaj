@@ -899,22 +899,22 @@ till_to_bank	Kaunta → benki
 units_heading	Vitengo
 unlock_after_pairing	Ingiza PIN
 unlock_with_login	Fungua kwa kuingia
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Khaynjo account
-cloud_account_help	Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[sw] Or unlock with shop login
+shop_login_help	[sw] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[sw] Khaynjo account
+cloud_account_help	[sw] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[sw] Name (optional)
+cloud_email_ph	[sw] Email
+cloud_password_ph	[sw] Password
+cloud_continue	[sw] Continue
+cloud_forgot	[sw] Forgot password?
+cloud_web_methods	[sw] Google and other methods on the website
+cloud_signing_in	[sw] Signing in…
+cloud_sending_reset	[sw] Sending reset link…
+cloud_forgot_sent	[sw] If that email has an account, a reset link is on the way.
+cloud_welcome	[sw] Signed in as {user} · {plan}
+cloud_created	[sw] Account created. Check your email to verify when you can.
+cloud_cancel	[sw] Cancel
 unmark	Ondoa alama
 update_my_password	Badilisha nenosiri langu
 update_my_pin	Badilisha PIN yangu

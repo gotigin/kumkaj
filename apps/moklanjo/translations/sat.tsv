@@ -716,22 +716,22 @@ net_word	ᱱᱮᱴ
 offline_badge	ᱚᱯᱷᱞᱟᱭᱤᱱ
 optional_login_help	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ (ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱢᱤᱫ ᱫᱷᱟᱣ ᱥᱮᱴ ᱮᱫᱟᱭ; ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱜᱮ ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱥᱣᱟᱨᱰ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
 or_unlock_login	ᱟᱨ ᱵᱟᱝ ᱞᱚᱜᱤᱱ ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱚᱱᱞᱚᱠ
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[sat] Or unlock with shop login
+shop_login_help	[sat] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[sat] Moklanjo account
+cloud_account_help	[sat] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[sat] Name (optional)
+cloud_email_ph	[sat] Email
+cloud_password_ph	[sat] Password
+cloud_continue	[sat] Continue
+cloud_forgot	[sat] Forgot password?
+cloud_web_methods	[sat] Google and other methods on the website
+cloud_signing_in	[sat] Signing in…
+cloud_sending_reset	[sat] Sending reset link…
+cloud_forgot_sent	[sat] If that email has an account, a reset link is on the way.
+cloud_welcome	[sat] Signed in as {user} · {plan}
+cloud_created	[sat] Account created. Check your email to verify when you can.
+cloud_cancel	[sat] Cancel
 permission_preset	ᱱᱩᱠᱨᱤ
 preset_help_moklanjo	ᱠᱮᱥᱤᱭᱟᱨ: ᱟᱠᱨᱤᱧ ᱢᱮ᱾ ᱢᱮᱱᱮᱡᱟᱨ: ᱟᱠᱨᱤᱧ + ᱡᱤᱱᱤᱥ + ᱵᱟᱝ/ᱥᱚᱫᱚᱨ᱾
 product_locked_moklanjo	ᱢᱚᱠᱞᱟᱱᱡᱚ

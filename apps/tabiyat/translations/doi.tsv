@@ -600,22 +600,22 @@ net_word	नेट
 offline_badge	OFFLINE दा
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक इक बारी सेट करदा ऐ; सिर्फ बरतूनी गै बाद च पासवर्ड बदली सकदा ऐ।
 or_unlock_login	या लॉगिन आईडी + पासवर्ड कन्नै अनलॉक करो
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	या दुकान लॉगिन कन्नै अनलॉक करो
+shop_login_help	वैकल्पिक: इस दुकान दे स्टाफ यूजरनेम ते पासवर्ड कन्नै पिन (ऑफलाइन कम्म करदा ऐ) दे बजाय अनलॉक करो।
+cloud_account_title	सेहत खाता
+cloud_account_help	tabiyat.shop/account दे समान खाते कन्नै रजिस्टर करो जां साइन इन करो। तुंदी क्लाउड आईडी ते मुफ्त प्लान बनांदा ऐ।
+cloud_name_ph	नाम (वैकल्पिक) ऐ
+cloud_email_ph	ईमेल करो
+cloud_password_ph	पासवर्ड
+cloud_continue	जारी रक्खना
+cloud_forgot	पासवर्ड भूल गए?
+cloud_web_methods	गूगल ते होर तरीके वेबसाइट पर
+cloud_signing_in	साइन इन करदे होई...
+cloud_sending_reset	रीसेट लिंक भेजना...
+cloud_forgot_sent	जेकर उस ईमेल दा खाता ऐ तां रीसेट लिंक रस्ते च ऐ।
+cloud_welcome	{user} · {plan} दे रूप च साइन इन कीता गेदा ऐ
+cloud_created	खाता बनाया गया। कदूं करी सकदे ओ इस गल्लै गी सत्यापन करने लेई अपने ईमेल दी जांच करो।
+cloud_cancel	रद्द
 permission_preset	नौकरी
 product_only_tabiyat	तबियात फार्मेसी ऑपरेटिंग सिस्टम ऐ: दवाई बेचना, बैच/एक्सपायरी बहीखाता, क्रेडिट ते किताबें — तुंदे डिवाइस पर ऑफलाइन। अनुसूची एच / आरएक्स झंडे मालिक दे नोट न, अनुपालन नेईं।
 purchases_cogs	खरीददारी (COGS) ऐ।

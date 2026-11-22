@@ -588,22 +588,22 @@ net_word	Net
 offline_badge	HORS LIGNE
 optional_login_help	Connexion facultative (id + mot de passe). Le propriétaire la définit une fois ; ensuite seul l'utilisateur peut changer le mot de passe.
 or_unlock_login	Ou déverrouiller avec id de connexion + mot de passe
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	Ou débloquez avec la connexion à la boutique
+shop_login_help	Facultatif : déverrouillez avec le nom d'utilisateur et le mot de passe du personnel de cette boutique au lieu du code PIN (fonctionne hors ligne).
+cloud_account_title	compte Kirano
+cloud_account_help	Inscrivez-vous ou connectez-vous avec le même compte que kirano.shop/account. Crée votre identifiant cloud et votre forfait gratuit.
+cloud_name_ph	Nom (facultatif)
+cloud_email_ph	E-mail
+cloud_password_ph	Mot de passe
+cloud_continue	Continuer
+cloud_forgot	Mot de passe oublié ?
+cloud_web_methods	Google et autres méthodes sur le site Web
+cloud_signing_in	Connexion…
+cloud_sending_reset	Envoi du lien de réinitialisation…
+cloud_forgot_sent	Si cet e-mail possède un compte, un lien de réinitialisation est en route.
+cloud_welcome	Connecté en tant que {user} · {plan}
+cloud_created	Compte créé. Vérifiez votre courrier électronique pour vérifier quand vous le pouvez.
+cloud_cancel	Annuler
 permission_preset	Préréglage de permissions
 product_only_kirano	Cette app est uniquement Kirano, le système pour restaurants. Les autres métiers ont leurs propres produits Kumkaj.
 purchases_cogs	Achats (COGS)

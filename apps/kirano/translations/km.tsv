@@ -588,22 +588,22 @@ net_word	សុទ្ធ
 offline_badge	ក្រៅបណ្ដាញ
 optional_login_help	ការចូលស្រេចចិត្ត (អត្តសញ្ញាណ + ពាក្យសម្ងាត់)។ ម្ចាស់កំណត់ម្ដង; មានតែអ្នកប្រើប្ដូរពាក្យសម្ងាត់ពេលក្រោយបាន។
 or_unlock_login	ឬដោះសោដោយអត្តសញ្ញាណចូល + ពាក្យសម្ងាត់
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[km] Or unlock with shop login
+shop_login_help	[km] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[km] Kirano account
+cloud_account_help	[km] Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[km] Name (optional)
+cloud_email_ph	[km] Email
+cloud_password_ph	[km] Password
+cloud_continue	[km] Continue
+cloud_forgot	[km] Forgot password?
+cloud_web_methods	[km] Google and other methods on the website
+cloud_signing_in	[km] Signing in…
+cloud_sending_reset	[km] Sending reset link…
+cloud_forgot_sent	[km] If that email has an account, a reset link is on the way.
+cloud_welcome	[km] Signed in as {user} · {plan}
+cloud_created	[km] Account created. Check your email to verify when you can.
+cloud_cancel	[km] Cancel
 permission_preset	ការងារ
 product_only_kirano	Kirano គឺជាប្រព័ន្ធប្រតិបត្តិការរបស់គ្រឿងទេស / kirana៖ បញ្ជរលក់ ភាគហ៊ុន ឥណទាន និងសៀវភៅ — ក្រៅបណ្តាញនៅលើឧបករណ៍របស់អ្នក។
 purchases_cogs	ការទិញ (COGS)

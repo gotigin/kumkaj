@@ -716,22 +716,22 @@ net_word	ສຸດທິ
 offline_badge	ອອບລາຍ
 optional_login_help	ທາງເລືອກໃນການເຂົ້າສູ່ລະບົບ (id + ລະຫັດຜ່ານ). ເຈົ້າຂອງຊຸດຫນຶ່ງຄັ້ງ; ພຽງແຕ່ຜູ້ໃຊ້ສາມາດປ່ຽນລະຫັດຜ່ານໃນພາຍຫຼັງ.
 or_unlock_login	ຫຼືປົດລັອກດ້ວຍ ID ເຂົ້າສູ່ລະບົບ + ລະຫັດຜ່ານ
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[lo] Or unlock with shop login
+shop_login_help	[lo] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[lo] Moklanjo account
+cloud_account_help	[lo] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[lo] Name (optional)
+cloud_email_ph	[lo] Email
+cloud_password_ph	[lo] Password
+cloud_continue	[lo] Continue
+cloud_forgot	[lo] Forgot password?
+cloud_web_methods	[lo] Google and other methods on the website
+cloud_signing_in	[lo] Signing in…
+cloud_sending_reset	[lo] Sending reset link…
+cloud_forgot_sent	[lo] If that email has an account, a reset link is on the way.
+cloud_welcome	[lo] Signed in as {user} · {plan}
+cloud_created	[lo] Account created. Check your email to verify when you can.
+cloud_cancel	[lo] Cancel
 permission_preset	ວຽກ
 preset_help_moklanjo	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
 product_locked_moklanjo	Moklanjo

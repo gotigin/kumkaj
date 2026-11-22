@@ -600,22 +600,22 @@ net_word	Neto
 offline_badge	BEZSAISTĒ
 optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iestata vienreiz; paroli vēlāk var mainīt tikai lietotājs.
 or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[lv] Or unlock with shop login
+shop_login_help	[lv] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[lv] Tabiyat account
+cloud_account_help	[lv] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[lv] Name (optional)
+cloud_email_ph	[lv] Email
+cloud_password_ph	[lv] Password
+cloud_continue	[lv] Continue
+cloud_forgot	[lv] Forgot password?
+cloud_web_methods	[lv] Google and other methods on the website
+cloud_signing_in	[lv] Signing in…
+cloud_sending_reset	[lv] Sending reset link…
+cloud_forgot_sent	[lv] If that email has an account, a reset link is on the way.
+cloud_welcome	[lv] Signed in as {user} · {plan}
+cloud_created	[lv] Account created. Check your email to verify when you can.
+cloud_cancel	[lv] Cancel
 permission_preset	Amats
 product_only_tabiyat	Tabiyat ir aptieku operētājsistēma: zāļu pārdošana, partiju/derīguma uzskaite, kredīts un grāmatas — bezsaistē jūsu ierīcēs. Grafika H/Rx karodziņi ir īpašnieka piezīmes, nevis atbilstība.
 purchases_cogs	Pirkumi (COGS)

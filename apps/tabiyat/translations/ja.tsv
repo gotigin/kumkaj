@@ -600,22 +600,22 @@ net_word	純額
 offline_badge	オフライン
 optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
 or_unlock_login	またはログインID＋パスワードで解除
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[ja] Or unlock with shop login
+shop_login_help	[ja] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[ja] Tabiyat account
+cloud_account_help	[ja] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[ja] Name (optional)
+cloud_email_ph	[ja] Email
+cloud_password_ph	[ja] Password
+cloud_continue	[ja] Continue
+cloud_forgot	[ja] Forgot password?
+cloud_web_methods	[ja] Google and other methods on the website
+cloud_signing_in	[ja] Signing in…
+cloud_sending_reset	[ja] Sending reset link…
+cloud_forgot_sent	[ja] If that email has an account, a reset link is on the way.
+cloud_welcome	[ja] Signed in as {user} · {plan}
+cloud_created	[ja] Account created. Check your email to verify when you can.
+cloud_cancel	[ja] Cancel
 permission_preset	権限プリセット
 product_only_tabiyat	このアプリは Tabiyat 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
 purchases_cogs	仕入（COGS）

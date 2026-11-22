@@ -899,22 +899,22 @@ till_to_bank	柜台 → 银行
 units_heading	单位
 unlock_after_pairing	输入密码
 unlock_with_login	用登录解锁
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Khaynjo account
-cloud_account_help	Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[zh-CN] Or unlock with shop login
+shop_login_help	[zh-CN] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[zh-CN] Khaynjo account
+cloud_account_help	[zh-CN] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[zh-CN] Name (optional)
+cloud_email_ph	[zh-CN] Email
+cloud_password_ph	[zh-CN] Password
+cloud_continue	[zh-CN] Continue
+cloud_forgot	[zh-CN] Forgot password?
+cloud_web_methods	[zh-CN] Google and other methods on the website
+cloud_signing_in	[zh-CN] Signing in…
+cloud_sending_reset	[zh-CN] Sending reset link…
+cloud_forgot_sent	[zh-CN] If that email has an account, a reset link is on the way.
+cloud_welcome	[zh-CN] Signed in as {user} · {plan}
+cloud_created	[zh-CN] Account created. Check your email to verify when you can.
+cloud_cancel	[zh-CN] Cancel
 unmark	取消标记
 update_my_password	修改我的密码
 update_my_pin	修改我的PIN

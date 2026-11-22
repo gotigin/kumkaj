@@ -899,22 +899,22 @@ till_to_bank	Kasa → banka
 units_heading	Birimler
 unlock_after_pairing	PIN girin
 unlock_with_login	Girişle kilidi aç
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Khaynjo account
-cloud_account_help	Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[tr] Or unlock with shop login
+shop_login_help	[tr] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[tr] Khaynjo account
+cloud_account_help	[tr] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[tr] Name (optional)
+cloud_email_ph	[tr] Email
+cloud_password_ph	[tr] Password
+cloud_continue	[tr] Continue
+cloud_forgot	[tr] Forgot password?
+cloud_web_methods	[tr] Google and other methods on the website
+cloud_signing_in	[tr] Signing in…
+cloud_sending_reset	[tr] Sending reset link…
+cloud_forgot_sent	[tr] If that email has an account, a reset link is on the way.
+cloud_welcome	[tr] Signed in as {user} · {plan}
+cloud_created	[tr] Account created. Check your email to verify when you can.
+cloud_cancel	[tr] Cancel
 unmark	İşareti kaldır
 update_my_password	Parolamı güncelle
 update_my_pin	PIN'imi güncelle

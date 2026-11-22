@@ -899,22 +899,22 @@ till_to_bank	الكاونتر ← البنك
 units_heading	الوحدات
 unlock_after_pairing	أدخل الرمز
 unlock_with_login	افتح القفل بالدخول
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Khaynjo account
-cloud_account_help	Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	ﺮﺠﺘﻤﻟﺍ ﻰﻟﺇ ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ ﻊﻣ ﺢﺘﻓ ﻭﺃ
+shop_login_help	.(ﺖﻧﺮﺘﻧﻹ﻿ﺎﺑ ﻝﺎﺼﺗﺍ ﻥﻭﺩ ﻞﻤﻌﻳ) ﻲﺼﺨﺸﻟﺍ ﻒﻳﺮﻌﺘﻟﺍ ﻢﻗﺭ ﻦﻣ ًﻻ﻿ﺪﺑ ﺮﺠﺘﻤﻟﺍ ﺍﺬﻫ ﻲﻔﻇﻮﻤﺑ ﻦﻴﺻﺎﺨﻟﺍ
+cloud_account_title	ﻮﺠﻨﻳﺎﺧ ﺏﺎﺴﺣ
+cloud_account_help	.ﺔﻴﻧﺎﺠﻣ ﺔﻄﺧﻭ ﻚﺑ ﺹﺎﺨﻟﺍ ﺔﺑﺎﺤﺴﻟﺍ ﻑﺮﻌﻣ ﺊﺸﻨﻳ .khaynjo.com/account ـﺑ ﺹﺎﺨﻟﺍ ﺏﺎﺴﺤﻟﺍ ﺲ
+cloud_name_ph	(ﻱﺭﺎﻴﺘﺧﺍ) ﻢﺳﻻ﻿ﺍ
+cloud_email_ph	ﻲﻧﻭﺮﺘﻜﻟﺇ ﺪﻳﺮﺑ
+cloud_password_ph	ﺭﻭﺮﻤﻟﺍ ﺔﻤﻠﻛ
+cloud_continue	ﻞﻤﻜﻳ
+cloud_forgot	؟ﺮﺴﻟﺍ ﺔﻤﻠﻛ ﺖﻴﺴﻧ ﻞﻫ
+cloud_web_methods	ﻊﻗﻮﻤﻟﺍ ﻰﻠﻋ ﻕﺮﻄﻟﺍ ﻦﻣ ﺎﻫﺮﻴﻏﻭ ﻞﺟﻮﺟ
+cloud_signing_in	...ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ
+cloud_sending_reset	...ﻦﻴﻴﻌﺘﻟﺍ ﺓﺩﺎﻋﺇ ﻂﺑﺍﺭ ﻝﺎﺳﺭﺇ ٍﺭﺎﺟ
+cloud_forgot_sent	.ﻖﻳﺮﻄﻟﺍ ﻲﻓ ﻦﻴﻴﻌﺗ ﺓﺩﺎﻋﺇ ﻂﺑﺍﺭ ﻙﺎﻨﻫ ﻥﻮﻜﻴﺴﻓ ،ﺏﺎﺴﺣ ﻰﻠﻋ ﻱﻮﺘﺤﻳ ﻲﻧﻭﺮﺘﻜﻟﻹ﻿ﺍ ﺪﻳﺮﺒﻟﺍ ﺍﺬﻫ ﻥ
+cloud_welcome	{user} · {plan} ﻢﺳﺎﺑ ﻝﻮﺧﺪﻟﺍ ﻞﻴﺠﺴﺗ ﻢﺗ
+cloud_created	.ﻚﻟﺫ ﻊﻴﻄﺘﺴﺗ ﺎﻣﺪﻨﻋ ﻖﻘﺤﺘﻠﻟ ﻲﻧﻭﺮﺘﻜﻟﻹ﻿ﺍ ﻙﺪﻳﺮﺑ ﻦﻣ ﻖﻘﺤﺗ .ﺏﺎﺴﺤﻟﺍ ءﺎﺸﻧﺇ ﻢﺗ
+cloud_cancel	ﻲﻐﻠﻳ
 unmark	إلغاء التعليم
 update_my_password	غيّر كلمة مروري
 update_my_pin	غيّر رمزي

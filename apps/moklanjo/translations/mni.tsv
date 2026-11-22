@@ -716,22 +716,22 @@ net_word	ꯁꯦꯟꯊꯣꯛ
 offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[mni] Or unlock with shop login
+shop_login_help	[mni] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[mni] Moklanjo account
+cloud_account_help	[mni] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[mni] Name (optional)
+cloud_email_ph	[mni] Email
+cloud_password_ph	[mni] Password
+cloud_continue	[mni] Continue
+cloud_forgot	[mni] Forgot password?
+cloud_web_methods	[mni] Google and other methods on the website
+cloud_signing_in	[mni] Signing in…
+cloud_sending_reset	[mni] Sending reset link…
+cloud_forgot_sent	[mni] If that email has an account, a reset link is on the way.
+cloud_welcome	[mni] Signed in as {user} · {plan}
+cloud_created	[mni] Account created. Check your email to verify when you can.
+cloud_cancel	[mni] Cancel
 permission_preset	ꯊꯕꯛ
 preset_help_moklanjo	ꯁꯦꯟ ꯌꯦꯡꯕ: ꯌꯣꯟꯕ. ꯃꯄꯨꯔꯣꯏ: ꯌꯣꯟꯕ + ꯄꯣꯠ + ꯇꯣꯛꯄ/ꯁꯦꯝꯕ.
 product_locked_moklanjo	ꯃꯣꯛꯂꯥꯟꯖꯣ꯫

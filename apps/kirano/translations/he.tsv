@@ -588,22 +588,22 @@ net_word	נטו
 offline_badge	לא מקוון
 optional_login_help	כניסה אופציונלית (מזהה + סיסמה). הבעלים קובע פעם אחת; רק המשתמש יכול לשנות סיסמה אחר כך.
 or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	תונחל הסינכ תועצמאב הליענה תא לטב וא
+shop_login_help	.(ןווקמ אל בצמב דבוע) PIN םוקמב תונחה תווצ לש המסיסהו שמתשמה םש םע הליענה תא ל
+cloud_account_title	ונאריק ןובשח
+cloud_account_help	.ךלש תימניחה תינכותהו ןנעה ההזמ תא רצוי .kirano.shop/account ומכ ןובשח ותוא םע
+cloud_name_ph	(ילנויצפוא) םש
+cloud_email_ph	יִנֹורטקֶלֶא
+cloud_password_ph	הָמסיִס
+cloud_continue	ךיִׁשמַהְל
+cloud_forgot	?המסיס תחכש
+cloud_web_methods	רתאב תופסונ תוטישו לגוג
+cloud_signing_in	...סנכנ
+cloud_sending_reset	...סופיאל רושיק חלוש
+cloud_forgot_sent	.ךרדב סופיאל רושיק ,ןובשח שי הזה ליימיאל םא
+cloud_welcome	{user} · {plan} רותב רבוחמ
+cloud_created	.לוכי התא יתמ תמאל ידכ ךלש ליימיאה תא קודב .רצונ ןובשח
+cloud_cancel	לֵטַבְל
 permission_preset	תפקיד
 product_only_kirano	Kirano היא מערכת ההפעלה של מכולת / קיראנה: מכירה נגדית, מניות, אשראי וספרים - במצב לא מקוון במכשירים שלך.
 purchases_cogs	רכישות (COGS)

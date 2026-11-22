@@ -716,22 +716,22 @@ net_word	Net
 offline_badge	ALL-LEIN
 optional_login_help	Mewngofnodi dewisol (id + cyfrinair). Mae'r Perchennog yn gosod unwaith; dim ond y defnyddiwr all newid y cyfrinair yn ddiweddarach.
 or_unlock_login	Neu datgloi gydag id mewngofnodi + cyfrinair
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	Neu datgloi gyda mewngofnodi siop
+shop_login_help	Dewisol: datgloi gydag enw defnyddiwr a chyfrinair staff y siop hon yn lle PIN (yn gweithio all-lein).
+cloud_account_title	
+cloud_account_help	
+cloud_name_ph	Enw (dewisol)
+cloud_email_ph	Ebost
+cloud_password_ph	Cyfrinair
+cloud_continue	Parhewch
+cloud_forgot	Wedi anghofio cyfrinair?
+cloud_web_methods	Google a dulliau eraill ar y wefan
+cloud_signing_in	Wrthi'n mewngofnodi…
+cloud_sending_reset	Wrthi'n anfon dolen ailosod…
+cloud_forgot_sent	Os oes gan yr e-bost hwnnw gyfrif, mae dolen ailosod ar y ffordd.
+cloud_welcome	Wedi llofnodi fel {user} · {plan}
+cloud_created	Cyfrif wedi'i greu. Gwiriwch eich e-bost i wirio pryd y gallwch.
+cloud_cancel	Canslo
 permission_preset	Swydd
 preset_help_moklanjo	Ariannwr: gwerthu. Rheolwr: gwerthu + eitemau + diddymu/diwygio.
 product_locked_moklanjo	Moklanjo

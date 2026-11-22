@@ -588,22 +588,22 @@ net_word	Neto
 offline_badge	SIN CONEXIÓN
 optional_login_help	Acceso opcional (id + contraseña). El dueño lo pone una vez; después solo el usuario puede cambiar la contraseña.
 or_unlock_login	O desbloquear con id de acceso + contraseña
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	O desbloquear con inicio de sesión en la tienda
+shop_login_help	Opcional: desbloquee con el nombre de usuario y la contraseña del personal de esta tienda en lugar del PIN (funciona sin conexión).
+cloud_account_title	cuenta kirano
+cloud_account_help	Regístrese o inicie sesión con la misma cuenta que kirano.shop/account. Crea su ID de nube y su plan gratuito.
+cloud_name_ph	Nombre (opcional)
+cloud_email_ph	Correo electrónico
+cloud_password_ph	Contraseña
+cloud_continue	Continuar
+cloud_forgot	¿Has olvidado tu contraseña?
+cloud_web_methods	Google y otros métodos en el sitio web
+cloud_signing_in	Iniciando sesión…
+cloud_sending_reset	Enviando enlace de reinicio...
+cloud_forgot_sent	Si ese correo electrónico tiene una cuenta, un enlace de restablecimiento está en camino.
+cloud_welcome	Iniciado sesión como {user} · {plan}
+cloud_created	Cuenta creada. Revisa tu correo electrónico para verificar cuando puedas.
+cloud_cancel	Cancelar
 permission_preset	Preajuste de permisos
 product_only_kirano	Esta app es solo Kirano, el sistema para restaurantes. Otros oficios tienen sus propios productos Kumkaj.
 purchases_cogs	Compras (COGS)

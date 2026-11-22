@@ -588,22 +588,22 @@ net_word	जाळें
 offline_badge	OFFLINE हें नांव
 optional_login_help	पर्यायी लॉगीन (आयडी + पासवर्ड). मालक एकदां सेट करता; फकत वापरप्याकच फुडें पासवर्ड बदलूं येता.
 or_unlock_login	वा लॉगीन आयडी + पासवर्डान उगडात
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Kirano account
-cloud_account_help	Register or sign in with the same account as kirano.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	वा दुकान लॉगीन करून अनलॉक करचें
+shop_login_help	पर्यायी: पिनाच्या बदलाक ह्या दुकानाच्या कर्मचाऱ्यांच्या वापरप्याचें नांव आनी पासवर्डान अनलॉक करचें (ऑफलायन काम करता).
+cloud_account_title	किरानो खातें
+cloud_account_help	kirano.shop/account सारकिल्याच खात्यान नोंदणी करात वा सायन इन करात. तुमचो मेघ आयडी आनी फुकट प्लॅन तयार करता.
+cloud_name_ph	नांव (पर्यायी) 1.1.
+cloud_email_ph	ईमेल करचें
+cloud_password_ph	पासवर्ड
+cloud_continue	फुडें व्हरप
+cloud_forgot	पासवर्ड विसरलो?
+cloud_web_methods	वेबसायटीचेर गूगल आनी हेर पद्दती
+cloud_signing_in	सायन इन करप...
+cloud_sending_reset	रीसेट दुवो धाडप...
+cloud_forgot_sent	त्या ईमेलाक खातें आसल्यार रीसेट दुवो वाटेर आसा.
+cloud_welcome	{user} · {plan} म्हणून सायन इन केलां
+cloud_created	खातें तयार केलां. तुमकां केन्ना शक्य आसा तें सत्यापीत करपाक तुमचो ईमेल तपासात.
+cloud_cancel	रद्द
 permission_preset	नोकरी
 product_only_kirano	Kirano म्हळ्यार किराणा ऑपरेटिंग सिस्टम: गल्लो विक्री, स्टॉक, उधारी आनी बही — तुमच्या डिव्हायसांचेर ऑफलाइन.
 purchases_cogs	खरेदी (सीओजीएस) 1.1.

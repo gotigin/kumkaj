@@ -716,22 +716,22 @@ net_word	Llika
 offline_badge	OFFLINE nisqa
 optional_login_help	Munasqa yaykuy (id + contraseña). Dueñoqa huk kutillatam churan; ruwaqllam qhipaman yaykuna rimata tikrayta atin.
 or_unlock_login	Utaq yaykuy id + contraseñawan kichay
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[qu] Or unlock with shop login
+shop_login_help	[qu] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[qu] Moklanjo account
+cloud_account_help	[qu] Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[qu] Name (optional)
+cloud_email_ph	[qu] Email
+cloud_password_ph	[qu] Password
+cloud_continue	[qu] Continue
+cloud_forgot	[qu] Forgot password?
+cloud_web_methods	[qu] Google and other methods on the website
+cloud_signing_in	[qu] Signing in…
+cloud_sending_reset	[qu] Sending reset link…
+cloud_forgot_sent	[qu] If that email has an account, a reset link is on the way.
+cloud_welcome	[qu] Signed in as {user} · {plan}
+cloud_created	[qu] Account created. Check your email to verify when you can.
+cloud_cancel	[qu] Cancel
 permission_preset	Llamkana
 preset_help_moklanjo	Cajero: rantikuy. Kamachiq: rantiy + menú nisqapi kaqkuna + ch'usaq/allinchay.
 product_locked_moklanjo	Moklanjo

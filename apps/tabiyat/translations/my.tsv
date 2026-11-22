@@ -600,22 +600,22 @@ net_word	တိုးတက်သောငွေ
 offline_badge	အော့ဖ်လိုင်း
 optional_login_help	စိတ်ကြိုက်လော့ဂ်အင် (အိုင်ဒီ + စကားဝှက်)။ ပိုင်ရှင်တစ်ခါတည်း သတ်မှတ်နိုင်ပြီး၊ နောက်ပိုင်းတွင် စကားဝှက်ကို အသုံးပြုသူပဲ ပြောင်းနိုင်သည်။
 or_unlock_login	သို့မဟုတ် လော့ဂ်အင် အိုင်ဒီ + စကားဝှက်ဖြင့် ဖွင့်ရန်
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[my] Or unlock with shop login
+shop_login_help	[my] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[my] Tabiyat account
+cloud_account_help	[my] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[my] Name (optional)
+cloud_email_ph	[my] Email
+cloud_password_ph	[my] Password
+cloud_continue	[my] Continue
+cloud_forgot	[my] Forgot password?
+cloud_web_methods	[my] Google and other methods on the website
+cloud_signing_in	[my] Signing in…
+cloud_sending_reset	[my] Sending reset link…
+cloud_forgot_sent	[my] If that email has an account, a reset link is on the way.
+cloud_welcome	[my] Signed in as {user} · {plan}
+cloud_created	[my] Account created. Check your email to verify when you can.
+cloud_cancel	[my] Cancel
 permission_preset	အလုပ်
 product_only_tabiyat	Tabiyat သည် ဆေးဆိုင်လည်ပတ်မှုစနစ်ဖြစ်သည်- ဆေးဝါးရောင်းချမှု၊ အစုလိုက်/သက်တမ်းကုန်စာရင်းသွင်းမှု၊ ခရက်ဒစ်နှင့် စာအုပ်များ — သင့်စက်များတွင် အော့ဖ်လိုင်းဖြစ်သည်။ အချိန်ဇယား H/Rx အလံများသည် ပိုင်ရှင်မှတ်စုများဖြစ်ပြီး လိုက်နာမှုမဟုတ်ပေ။
 purchases_cogs	ဝယ်ယူမှုများ (COGS)

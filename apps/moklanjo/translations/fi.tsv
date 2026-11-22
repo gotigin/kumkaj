@@ -716,22 +716,22 @@ net_word	Netto
 offline_badge	EI VERKOSSA
 optional_login_help	Valinnainen kirjautuminen (tunnus + salasana). Omistaja asettaa kerran; vain käyttäjä voi vaihtaa salasanan myöhemmin.
 or_unlock_login	Tai avaa lukitus kirjautumistunnuksella ja salasanalla
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	Tai avaa lukitus myymälään kirjautumalla
+shop_login_help	Valinnainen: avaa lukitus tämän kaupan henkilökunnan käyttäjätunnuksella ja salasanalla PIN-koodin sijaan (toimii offline-tilassa).
+cloud_account_title	
+cloud_account_help	
+cloud_name_ph	Nimi (valinnainen)
+cloud_email_ph	Sähköposti
+cloud_password_ph	Salasana
+cloud_continue	Jatkaa
+cloud_forgot	Unohditko salasanan?
+cloud_web_methods	Google ja muut menetelmät verkkosivustolla
+cloud_signing_in	Kirjaudutaan sisään…
+cloud_sending_reset	Lähetetään nollauslinkkiä…
+cloud_forgot_sent	Jos kyseisellä sähköpostilla on tili, palautuslinkki on tulossa.
+cloud_welcome	Kirjautunut sisään nimellä {user} · {plan}
+cloud_created	Tili luotu. Tarkista sähköpostisi varmistaaksesi, milloin voit.
+cloud_cancel	Peruuttaa
 permission_preset	Työ
 preset_help_moklanjo	Kassahenkilö: myy. Päällikkö: myy + tuotteet + mitätöi/oikaise.
 product_locked_moklanjo	Moklanjo

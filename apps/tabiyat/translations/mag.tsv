@@ -600,22 +600,22 @@ net_word	नेट
 offline_badge	ऑफ़लाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार लगातऽ हई; बाद में केवल उपयोगकर्ता ही पासवर्ड बदल सकऽ है।
 or_unlock_login	भा लॉगिन आईडी + पासवर्ड से अनलॉक करऽ
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
+cloud_account_title	[hi] Tabiyat account
+cloud_account_help	tabiyat.shop/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_name_ph	नाम: (वैकल्पिक)
+cloud_email_ph	ईमेल
+cloud_password_ph	पासवर्ड
+cloud_continue	जारी रखना
+cloud_forgot	पासवर्ड भूल गए?
+cloud_web_methods	वेबसाइट पर Google और अन्य तरीके
+cloud_signing_in	इन कर रहे हैं…
+cloud_sending_reset	रीसेट लिंक भेजा जा रहा है...
+cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
+cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
+cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
+cloud_cancel	[hi] Cancel
 permission_preset	अनुमति प्रीसेट
 product_only_tabiyat	ताबियात फार्मेसी ऑपरेटिंग सिस्टम है: दवा बेचना, बैच/एक्सपायरी बहीखाता, क्रेडिट और किताबें - आपके डिवाइस पर ऑफ़लाइन। शेड्यूल एच/आरएक्स झंडे मालिक के नोट हैं, अनुपालन नहीं।
 purchases_cogs	खरीद (COGS)

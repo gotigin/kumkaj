@@ -899,22 +899,22 @@ till_to_bank	Kontwari → banki
 units_heading	Ibipimo
 unlock_after_pairing	Shyira PIN
 unlock_with_login	Fungura ukoresheje kwinjira
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Khaynjo account
-cloud_account_help	Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[rw] Or unlock with shop login
+shop_login_help	[rw] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[rw] Khaynjo account
+cloud_account_help	[rw] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
+cloud_name_ph	[rw] Name (optional)
+cloud_email_ph	[rw] Email
+cloud_password_ph	[rw] Password
+cloud_continue	[rw] Continue
+cloud_forgot	[rw] Forgot password?
+cloud_web_methods	[rw] Google and other methods on the website
+cloud_signing_in	[rw] Signing in…
+cloud_sending_reset	[rw] Sending reset link…
+cloud_forgot_sent	[rw] If that email has an account, a reset link is on the way.
+cloud_welcome	[rw] Signed in as {user} · {plan}
+cloud_created	[rw] Account created. Check your email to verify when you can.
+cloud_cancel	[rw] Cancel
 unmark	Kuraho akamenyetso
 update_my_password	Vugurura ijambo ryanjye ry'ibanga
 update_my_pin	Vugurura kwinjira kwanjye

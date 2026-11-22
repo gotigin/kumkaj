@@ -716,22 +716,22 @@ net_word	Զուտ
 offline_badge	ԱՆՑԱՆՑ
 optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբառ)։ Սեփականատերը դնում է մեկ անգամ; հետո գաղտնաբառը կարող է փոխել միայն օգտատերը։
 or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Moklanjo account
-cloud_account_help	Register or sign in with the same account as moklanjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	Կամ բացեք խանութի մուտքի միջոցով
+shop_login_help	Կամընտիր. ապակողպեք այս խանութի աշխատակիցների օգտանունով և գաղտնաբառով PIN-ի փոխարեն (աշխատում է անցանց):
+cloud_account_title	
+cloud_account_help	
+cloud_name_ph	Անուն (ըստ ցանկության)
+cloud_email_ph	Էլ
+cloud_password_ph	Գաղտնաբառ
+cloud_continue	Շարունակեք
+cloud_forgot	Մոռացել եք գաղտնաբառը
+cloud_web_methods	Google-ը և այլ մեթոդներ կայքում
+cloud_signing_in	Մուտք գործել…
+cloud_sending_reset	Վերակայման հղումն ուղարկվում է…
+cloud_forgot_sent	Եթե այդ էլփոստը հաշիվ ունի, ապա վերակայման հղումը ճանապարհին է:
+cloud_welcome	Մուտք եք գործել որպես {user} · {plan}
+cloud_created	Ստեղծվել է հաշիվ: Ստուգեք ձեր էլ․ հասցեն՝ ստուգելու համար, երբ կարող եք։
+cloud_cancel	Չեղարկել
 permission_preset	Աշխատանք
 preset_help_moklanjo	Գանձապահ՝ վաճառում է։ Կառավարիչ՝ վաճառք + ապրանքներ + չեղյալ/ուղղում։
 product_locked_moklanjo	Մոկլանջո

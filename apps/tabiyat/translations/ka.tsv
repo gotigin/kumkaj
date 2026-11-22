@@ -600,22 +600,22 @@ net_word	წმინდა
 offline_badge	ოფლაინ
 optional_login_help	არასავალდებულო შესვლა (id + პაროლი). მფლობელი კომპლექტი ერთხელ; მხოლოდ მომხმარებელს შეუძლია შეცვალოს პაროლი მოგვიანებით.
 or_unlock_login	ან განბლოკეთ შესვლის ID + პაროლით
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	[ka] Or unlock with shop login
+shop_login_help	[ka] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
+cloud_account_title	[ka] Tabiyat account
+cloud_account_help	[ka] Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
+cloud_name_ph	[ka] Name (optional)
+cloud_email_ph	[ka] Email
+cloud_password_ph	[ka] Password
+cloud_continue	[ka] Continue
+cloud_forgot	[ka] Forgot password?
+cloud_web_methods	[ka] Google and other methods on the website
+cloud_signing_in	[ka] Signing in…
+cloud_sending_reset	[ka] Sending reset link…
+cloud_forgot_sent	[ka] If that email has an account, a reset link is on the way.
+cloud_welcome	[ka] Signed in as {user} · {plan}
+cloud_created	[ka] Account created. Check your email to verify when you can.
+cloud_cancel	[ka] Cancel
 permission_preset	სამუშაო
 product_only_tabiyat	Tabiyat არის აფთიაქის ოპერაციული სისტემა: მედიკამენტების გაყიდვა, პარტიული/ვადის გასვლის აღრიცხვა, კრედიტი და წიგნები — ხაზგარეშე თქვენს მოწყობილობებზე. განრიგი H / Rx დროშები არის მფლობელის შენიშვნები და არა შესაბამისობა.
 purchases_cogs	შესყიდვები (COGS)

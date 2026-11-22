@@ -600,22 +600,22 @@ net_word	Net
 offline_badge	SENSE XARXA
 optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari el posa un cop; només l'usuari pot canviar la contrasenya després.
 or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
-or_unlock_shop_login	Or unlock with shop login
-shop_login_help	Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	Tabiyat account
-cloud_account_help	Register or sign in with the same account as tabiyat.shop/account. Creates your cloud id and free plan.
-cloud_name_ph	Name (optional)
-cloud_email_ph	Email
-cloud_password_ph	Password
-cloud_continue	Continue
-cloud_forgot	Forgot password?
-cloud_web_methods	Google and other methods on the website
-cloud_signing_in	Signing in…
-cloud_sending_reset	Sending reset link…
-cloud_forgot_sent	If that email has an account, a reset link is on the way.
-cloud_welcome	Signed in as {user} · {plan}
-cloud_created	Account created. Check your email to verify when you can.
-cloud_cancel	Cancel
+or_unlock_shop_login	O desbloquejar amb l'inici de sessió de la botiga
+shop_login_help	Opcional: desbloquejar amb el nom d'usuari i la contrasenya del personal d'aquesta botiga en lloc del PIN (funciona fora de línia).
+cloud_account_title	compte de salut
+cloud_account_help	Registreu-vos o inicieu sessió amb el mateix compte que tabiyat.shop/account. Crea el teu identificador de núvol i un pla gratuït.
+cloud_name_ph	Nom (opcional)
+cloud_email_ph	Correu electrònic
+cloud_password_ph	Contrasenya
+cloud_continue	Continua
+cloud_forgot	Heu oblidat la contrasenya?
+cloud_web_methods	Google i altres mètodes al lloc web
+cloud_signing_in	S'està iniciant la sessió...
+cloud_sending_reset	S'està enviant l'enllaç de restabliment...
+cloud_forgot_sent	Si aquest correu electrònic té un compte, hi ha un enllaç de restabliment en camí.
+cloud_welcome	S'ha iniciat la sessió com a {user} · {plan}
+cloud_created	Compte creat. Revisa el teu correu electrònic per verificar quan puguis.
+cloud_cancel	Cancel·la
 permission_preset	Feina
 product_only_tabiyat	Tabiyat és el sistema operatiu de la farmàcia: venda de medicaments, comptabilitat per lots/caducitat, crèdit i llibres, fora de línia als vostres dispositius. Les marques d'horari H / Rx són notes del propietari, no de compliment.
 purchases_cogs	Compres (COGS)
