@@ -929,7 +929,7 @@ duress_off	Экстраная разблакіроўка PIN выключана
 duress_saved	Экстраная разблакіроўка PIN захавана
 duress_cleared	Экстраная разблакіроўка PIN выключана
 upi_amount_ph	UPI сума
-void	Несапраўдны продаж
+void	Ануляваць
 write_off_ap	Спісаць АП
 write_off_heading	Спісаць (ачысціць без аплаты)
 write_off_nil	Спісаць / абнуліць баланс
@@ -1162,7 +1162,7 @@ line_sent_state	Адправіў на кухню
 line_nc_state	Бясплатна (NC) — не спаганяецца
 cancel_item_short	Адмяніць
 nc_short	Без аплаты
-charge_again_short	Зарадзіць
+charge_again_short	Налічыць
 move_short	Рухайцеся
 cancel_item_title	Адмяніце гэты тавар — кухня атрымае ліст на адмену
 nc_item_title	Зрабіце гэты тавар бясплатным (NC)

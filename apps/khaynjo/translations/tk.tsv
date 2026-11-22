@@ -2,7 +2,7 @@
 app_tagline	Restoran sargytlary, aşhana we kitap ýazgylary. Oflayn mugt.
 unlock	Gulpy aç
 pin_hint	PIN eýesi 0000-den başlaýar
-sell	Restoran zakazy
+sell	Zakaz
 buy	Satyn alyň
 books	Gün ýazgysy
 books_help	Şu günki hasabatyň gysgaça mazmuny. Sargytlar = girýän sargytlar. Satyn almak = satyn almak we çykdajylar. Taraplar = karz müşderileri we üpjün edijiler.
@@ -255,7 +255,7 @@ amounts_show	Görkez
 counter	Kassir
 dine_in	Nahar
 takeaway	Alma
-order	Restoran zakazy
+order	Zakaz
 tables	Nahar saçaklary
 kitchen	Aşhana
 sales	Satyş
@@ -552,7 +552,7 @@ next_country	Indiki ýurt
 next_order	Indiki sargyt (arassa stol)
 nav_drafts	Garalamalar
 park_draft	Garalama goý
-drafts_help	Kassada ýarym ýolda gyra goýan zakazlaryňyz — «Töleg alyň» edilýänçä depderlere girmeýär. Kartoçka basyň — ol «Restoran zakazy» bölüminde dowam eder; «Garalamany poz» garalamany pozýar. «Güni ýapmak» bulary arassalamaýar.
+drafts_help	Kassada ýarym ýolda gyra goýan zakazlaryňyz — «Töleg alyň» edilýänçä depderlere girmeýär. Kartoçka basyň — ol «Zakaz» bölüminde dowam eder; «Garalamany poz» garalamany pozýar. «Güni ýapmak» bulary arassalamaýar.
 drafts_park_nothing	Gyra goýmaga zat ýok — sebede haryt goşuň
 drafts_park_counter_only	«Garalama goý» diňe kassa zakazlary üçin — saçak zakazyndan çykyň ýa-da «Naharhana» ulanyň
 drafts_parked	«Garalamalar» bölümine goýuldy — kassa boş
@@ -929,7 +929,7 @@ duress_off	Gyssagly gulpy PIN öçürildi
 duress_saved	Gyssagly gulpy açmak PIN ýatda saklandy
 duress_cleared	Gyssagly gulpy PIN öçürdi
 upi_amount_ph	UPI mukdary
-void	Satuw boş
+void	Ýatyr
 write_off_ap	AP ýazyň
 write_off_heading	Hasaplaň (tölegsiz aýdyň)
 write_off_nil	Balansy ýazyň
@@ -1162,7 +1162,7 @@ line_sent_state	Aşhana iberildi
 line_nc_state	Tölegli (NC) - töleg alynmaýar
 cancel_item_short	Elatyr
 nc_short	Mugt
-charge_again_short	Zarýad
+charge_again_short	Hasapla
 move_short	Göçüriň
 cancel_item_title	Bu menýu elementini ýatyryň - aşhana ýatyryş ýazgysyny alýar
 nc_item_title	Bu menýu elementini öwgüli ediň (NC)

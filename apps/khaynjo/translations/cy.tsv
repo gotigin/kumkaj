@@ -554,7 +554,7 @@ nav_drafts	Drafftiau
 park_draft	Cadw fel drafft
 drafts_help	Archebion anorffenedig o'r cownter a roesoch o'r neilltu — nid ydynt yn mynd i'r llyfrau nes «Cymryd taliad». Tapiwch gerdyn i barhau ag ef yn «Archeb»; mae «Dileu drafft» yn dileu'r drafft. Nid yw «Cau diwrnod» yn eu clirio.
 drafts_park_nothing	Dim byd i'w roi o'r neilltu — ychwanegwch eitemau at y fasged
-drafts_park_counter_only	Mae «Cadw fel drafft» ar gyfer archebion wrth y cownter yn unig — gadewch archeb y bwrdd, neu defnyddiwch «Llawr»
+drafts_park_counter_only	Mae «Cadw fel drafft» ar gyfer archebion wrth y cownter yn unig — gadewch archeb y bwrdd, neu defnyddiwch «Neuadd»
 drafts_parked	Wedi'i gadw yn «Drafftiau» — mae'r cownter yn wag nawr
 drafts_discard	Dileu drafft
 drafts_discarded	Drafft wedi'i ddileu
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Fresh · {} — mae'r catalog yn dechrau'n wag; ychwanegwch e
 onboard_book_tmpl	Book · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
 onboard_template_tmpl	Enwch y lle os dymunwch, yna dewiswch sut i ddechrau.
 tmpl_blurb	Byrddau, archebu, tocynnau cegin, bilio, a llyfrau.
-tmpl_how	Gwerthu wrth y cownter; Llawr ar gyfer byrddau a KOT; Llyfrau ar gyfer llyfr y dydd.
+tmpl_how	Gwerthu wrth y cownter; Neuadd ar gyfer byrddau a KOT; Llyfrau ar gyfer llyfr y dydd.
 reports_facet_title	Adroddiadau
 reports_facet_help	Llyfrau'r dydd, heneiddio partïon, postiadau banc, ac elw a cholled y cyfnod.
 against_bill_ph	Yn erbyn bil # uchod (dewisol)
@@ -1132,7 +1132,7 @@ tile_undo_bill	Dadwneud bil
 summary_busy	byrddau prysur
 summary_to_collect	i gasglu
 summary_on_floor	ar y llawr
-floor	Llawr
+floor	Neuadd
 sizes_as_items_ph	Meintiau fel eitemau ar wahân (dewisol) — Hanner=120, Llawn=200
 dish_group_ph	Grŵp prydau (dewisol) — e.e. Paneer Tikka
 discount	Disgownt
@@ -1162,7 +1162,7 @@ line_sent_state	Wedi'i anfon i'r gegin
 line_nc_state	Rhad ac am ddim (NC) — heb ei godi
 cancel_item_short	Canslo
 nc_short	NC
-charge_again_short	Codi
+charge_again_short	Codi tâl
 move_short	Symud
 cancel_item_title	Canslo'r eitem hon — mae'r gegin yn cael slip canslo
 nc_item_title	Gwneud yr eitem hon yn rhad (NC)
@@ -1322,7 +1322,7 @@ recall_kot_ph	KOT # i'w alw'n ôl
 role_help_customer	Rôl: Cwsmer — cyfrif (maen nhw'n ein dyled ni). Gall yr un parti hefyd gyflenwi stoc.
 role_help_both	Rolau: Cwsmer + Cyflenwr — un parti, cyfrif a llyfrau taladwy, net yn Adroddiadau.
 role_help_supplier	Rôl: Cyflenwr — rydym yn eu dyled nhw am bryniannau.
-dine_in_pick_table	Bwyta i mewn — dewiswch fwrdd ar y Llawr
+dine_in_pick_table	Bwyta i mewn — dewiswch fwrdd ar y Neuadd
 choose_table	Dewis bwrdd
 change_table	Newid bwrdd
 pick_table_banner	Dewiswch fwrdd ar gyfer yr archeb hon
@@ -1332,7 +1332,7 @@ back_to_order	Yn ôl i'r archeb
 new_items_head	Heb ei anfon eto
 price_ph	Pris
 price_ph_gst_inside	Pris ({tax} wedi'i gynnwys)
-cancel_needs_table	Agorwch yr archeb hon o'r Llawr (bwrdd) i ganslo ar ôl i'r gegin ei chael — mae KOT y cownter yn aros ar y tocyn nes i chi gymryd taliad
+cancel_needs_table	Agorwch yr archeb hon o'r Neuadd (bwrdd) i ganslo ar ôl i'r gegin ei chael — mae KOT y cownter yn aros ar y tocyn nes i chi gymryd taliad
 taxable_value	Gwerth trethadwy
 gst_inside_price_note	({tax} wedi'i gynnwys)
 start_with_template	Dechrau gyda'n templed dewislen

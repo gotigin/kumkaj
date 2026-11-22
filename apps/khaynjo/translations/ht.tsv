@@ -5,7 +5,7 @@ pin_hint	PIN pwopriyetè a kòmanse ak 0000
 sell	Kòmand
 buy	Acha
 books	Liv jounen
-books_help	Pozisyon jodi a. Kòmand = kòmand ki antre. Acha = acha ak depans. Pati = kliyan kredi ak founisè.
+books_help	Pozisyon jodi a. Kòmand = kòmand ki antre. Acha = acha ak depans. Patnè = kliyan kredi ak founisè.
 buy_help	Bòdwo depans ak bòdwo founisè (lajan ki soti). Sa ki sou kont rete nan liv pati a.
 sell_money_in	Pran yon kòmand
 buy_money_out	Depans / bòdwo founisè
@@ -46,7 +46,7 @@ total	Total
 cash	Kach
 upi	UPI
 card	Kat
-credit	Pati
+credit	Patnè
 clear	Efase
 ready_to_sell	Pare pou anrejistre
 today_prefix	Jodi a
@@ -318,7 +318,7 @@ inventory	Envantè
 inventory_stock	Envantè ak stòk
 branches	Siksinal
 branches_org	Siksinal ak òganizasyon
-credit_customers	Pati (khata ak founisè)
+credit_customers	Patnè (khata ak founisè)
 customer_name_ph	Non pati
 new_customer_ph	Non nouvo pati
 item_name_ph	Non atik (pa egzanp Masala Dosa)
@@ -1162,7 +1162,7 @@ line_sent_state	Voye nan kwizin
 line_nc_state	Koutwazi (NC) — pa chaje
 cancel_item_short	Anile
 nc_short	NC
-charge_again_short	Chaje
+charge_again_short	Faktire
 move_short	Deplase
 cancel_item_title	Anile atik sa a — kwizin nan resevwa yon fich anilasyon
 nc_item_title	Fè atik sa a koutwazi (NC)

@@ -929,7 +929,7 @@ duress_off	გადაუდებელი განბლოკვა PIN გ
 duress_saved	გადაუდებელი განბლოკვა PIN შენახულია
 duress_cleared	გადაუდებელი განბლოკვა PIN გამორთულია
 upi_amount_ph	UPI თანხა
-void	ბათილი გაყიდვა
+void	გაუქმება
 write_off_ap	ჩამოწერეთ AP
 write_off_heading	ჩამოწერა (გასუფთავება გადახდის გარეშე)
 write_off_nil	ჩამოწერე / ნულოვანი ნაშთი
@@ -1162,7 +1162,7 @@ line_sent_state	გაგზავნილია სამზარეულო
 line_nc_state	უფასო (NC) - არ არის გადახდილი
 cancel_item_short	გაუქმება
 nc_short	NC
-charge_again_short	დატენვა
+charge_again_short	დარიცხვა
 move_short	გადაადგილება
 cancel_item_title	გააუქმეთ მენიუს ეს ელემენტი - სამზარეულო მიიღებს გაუქმების საბუთს
 nc_item_title	გააკეთეთ მენიუს ეს ელემენტი (NC)

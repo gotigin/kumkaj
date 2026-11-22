@@ -554,7 +554,7 @@ nav_drafts	Qabyo-qoraallo
 park_draft	U dhig qabyo ahaan
 drafts_help	Dalabyada miiska iibka ee aad dhexda uga tagtay — ma galaan buugaagta ilaa «Qaado bixinta». Taabo kaar si aad uga sii waddo «Dalab»; «Tuur qabyo-qoraalka» wuxuu tirtiraa qabyo-qoraalka. «Xiritaanka maalinta» ma tirtiro kuwan.
 drafts_park_nothing	Wax la dhigo ma jiro — ku dar alaab dambiisha
-drafts_park_counter_only	«U dhig qabyo ahaan» waxaa loogu talagalay dalabyada miiska iibka oo keliya — ka bax dalabka miiska ama isticmaal «Sagxadda»
+drafts_park_counter_only	«U dhig qabyo ahaan» waxaa loogu talagalay dalabyada miiska iibka oo keliya — ka bax dalabka miiska ama isticmaal «Hool»
 drafts_parked	Waxaa la dhigay «Qabyo-qoraallo» — miiska iibku waa bannaan yahay
 drafts_discard	Tuur qabyo-qoraalka
 drafts_discarded	Qabyo-qoraalka waa la tuuray
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Nadiif · {} — liisku wuxuu ka bilaabmaa madhan; ku dar ala
 onboard_book_tmpl	Buug · {} — ku dar alaab iyo deynta bilowga, ka dibna Dhamaaday.
 onboard_template_tmpl	Magac goobta haddii aad rabto, ka dibna dooro sida loo bilaabo.
 tmpl_blurb	Miisas, dalabyo, warqado jiko, biilal, iyo buugaag.
-tmpl_how	Ka iibi miiska iibka; Sagxadda miisaska iyo KOT; Buugaagta buugga maalinta.
+tmpl_how	Ka iibi miiska iibka; Hool miisaska iyo KOT; Buugaagta buugga maalinta.
 reports_facet_title	Warbixinno
 reports_facet_help	Buugaagta maalinta, da'da dhinacyada, gelinta bangiga, iyo F&K muddada.
 against_bill_ph	Ka soo horjeed biil # kor (ikhtiyaari)
@@ -1132,7 +1132,7 @@ tile_undo_bill	Ka noqo biilka
 summary_busy	miisas mashquul
 summary_to_collect	la qaadayo
 summary_on_floor	sagxadda
-floor	Sagxadda
+floor	Hool
 sizes_as_items_ph	Cabbirro alaab gooni ah (ikhtiyaari) — Badh=120, Buuxa=200
 dish_group_ph	Kooxda cuntada (ikhtiyaari) — tusaale Paneer Tikka
 discount	Dhimis
@@ -1322,7 +1322,7 @@ recall_kot_ph	Lambarka KOT ee la soo celinayo
 role_help_customer	Door: Macmiil — khata (way na leeyihiin). Isla dhinaca wuxuu sidoo kale keeni karaa kayd.
 role_help_both	Dooraro: Macmiil + Alaab-qeybiye — hal dhinac, buugaag khata iyo la bixinayo, saafiga Warbixinnada.
 role_help_supplier	Door: Alaab-qeybiye — annagu ayaan u leenahay iibsiga.
-dine_in_pick_table	Halkan cun — ka dooro miis Sagxadda
+dine_in_pick_table	Halkan cun — ka dooro miis Hool
 choose_table	Dooro miis
 change_table	Beddel miiska
 pick_table_banner	U dooro miis dalabkan
@@ -1332,7 +1332,7 @@ back_to_order	Ku noqo dalabka
 new_items_head	Weli lama dirin
 price_ph	Qiime
 price_ph_gst_inside	Qiime ({tax} waa ku jira)
-cancel_needs_table	Dalabkan ka fur Sagxadda (miis) si aad u joojiso kadib marka jikadu hesho — KOT-yada miiska iibku waxay ku sii jiraan warqadda ilaa aad qaadato bixinta
+cancel_needs_table	Dalabkan ka fur Hool (miis) si aad u joojiso kadib marka jikadu hesho — KOT-yada miiska iibku waxay ku sii jiraan warqadda ilaa aad qaadato bixinta
 taxable_value	Qiimaha canshuurta lagu xisaabinayo
 gst_inside_price_note	({tax} waa ku jira)
 start_with_template	Ku bilow qaabka menu-geenna

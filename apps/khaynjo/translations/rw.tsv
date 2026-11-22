@@ -929,7 +929,7 @@ duress_off	PIN yo gufungura mu bihe by'ihutirwa irazimye
 duress_saved	PIN yo gufungura mu bihe by'ihutirwa yabitswe
 duress_cleared	PIN yo gufungura mu bihe by'ihutirwa yazimye
 upi_amount_ph	Amafaranga ya UPI
-void	Siba burundu
+void	Siba
 write_off_ap	Siba AP
 write_off_heading	Siba (siba utishyuye)
 write_off_nil	Siba / umusaruro wa zeru

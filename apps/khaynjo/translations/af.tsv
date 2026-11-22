@@ -929,7 +929,7 @@ duress_off	Noodontgrendelings-PIN is uit
 duress_saved	Noodontgrendelings-PIN gestoor
 duress_cleared	Noodontgrendelings-PIN geskakel af
 upi_amount_ph	UPI bedrag
-void	Nie-geldig gemaak
+void	Kanselleer
 write_off_ap	Skryf AP af
 write_off_heading	Skryf af (veeg sonder betaling)
 write_off_nil	Skryf af / nul balans

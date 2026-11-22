@@ -5,7 +5,7 @@ pin_hint	Jabearen PINa hasieran 0000 da
 sell	Eskaera
 buy	Erosketa
 books	Eguneko liburua
-books_help	Gaurko egoera. Eskaera = sartutako eskaerak. Erosketa = erosketak eta gastuak. Alderdiak = kredituzko bezeroak eta hornitzaileak.
+books_help	Gaurko egoera. Eskaera = sartutako eskaerak. Erosketa = erosketak eta gastuak. Aldeak = kredituzko bezeroak eta hornitzaileak.
 buy_help	Gastu-ordeinak eta hornitzaileen fakturak (dirua irten). Kontuan geratzen da alderdiaren liburuan.
 sell_money_in	Hartu eskaera
 buy_money_out	Gastua / hornitzailearen faktura
@@ -46,7 +46,7 @@ total	Guztira
 cash	Eskudirua
 upi	UPI
 card	Txartela
-credit	Alderdiak
+credit	Aldeak
 clear	Garbitu
 ready_to_sell	Libururatzeko prest
 today_prefix	Gaur
@@ -318,7 +318,7 @@ inventory	Inbentarioa
 inventory_stock	Inbentarioa eta stocka
 branches	Sukurtsalak
 branches_org	Sukurtsalak eta erakundea
-credit_customers	Alderdiak (kreditua eta hornitzaileak)
+credit_customers	Aldeak (kreditua eta hornitzaileak)
 customer_name_ph	Alderdiaren izena
 new_customer_ph	Alderdi-izen berria
 item_name_ph	Artikuluaren izena (adib. Masala Dosa)
