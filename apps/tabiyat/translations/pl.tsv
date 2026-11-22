@@ -268,7 +268,7 @@ bank_in	Bank w
 bank_out	Z banku
 bank_reconciliation	Uzgodnienie konta bankowego
 bank_to_till	Bank → kasa
-book_add_dish	Książka — dodaj przedmiot/przedmiot
+book_add_dish	Księga — dodaj pozycję
 book_opening_credit	Księga — kredyt początkowy
 branch_name_sell_ph	Nazwa oddziału, z którego można sprzedawać
 bring_my_book	Przynieś moją księgę
@@ -342,7 +342,7 @@ import_parties_csv	Importuj klientów i dostawców CSV…
 item_name	Nazwa przedmiotu
 login_id_ph	Nazwa użytkownika
 mark_cleared	Marek oczyścił
-new_party_clear	Nowy klient lub dostawca (czytelny formularz)
+new_party_clear	Nowy klient lub dostawca (wyczyść formularz)
 new_party_kind_supplier_ph	Nowy rodzaj klienta lub dostawcy (Dostawca)
 next_order	Następne zamówienie (wyczyść biurko)
 note_gstin_ph	Uwaga / GSTIN / przypomnienie o umowie

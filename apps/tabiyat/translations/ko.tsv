@@ -268,7 +268,7 @@ bank_in	은행 입금
 bank_out	은행 출금
 bank_reconciliation	은행 대사
 bank_to_till	은행 → 계산대
-book_add_dish	도서 - 항목 추가 / 항목
+book_add_dish	장부 — 품목 추가
 book_opening_credit	접수 — 기초 외상
 branch_name_sell_ph	판매할 지점 이름
 bring_my_book	내 장부 가져오기

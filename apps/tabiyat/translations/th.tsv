@@ -268,7 +268,7 @@ bank_in	เข้าธนาคาร
 bank_out	ออกจากธนาคาร
 bank_reconciliation	กระทบยอดธนาคาร
 bank_to_till	ธนาคาร → เคาน์เตอร์
-book_add_dish	จอง — เพิ่มสินค้า
+book_add_dish	สมุด — เพิ่มสินค้า
 book_opening_credit	จอง — เครดิตเริ่มต้น
 branch_name_sell_ph	ชื่อสาขาที่จะขาย
 bring_my_book	นำสมุดของฉันมา

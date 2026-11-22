@@ -268,7 +268,7 @@ bank_in	Depósito no banco
 bank_out	Saque do banco
 bank_reconciliation	Conciliação bancária
 bank_to_till	Banco → caixa
-book_add_dish	Livro — adicionar item/item
+book_add_dish	Livro — adicionar item
 book_opening_credit	Envio — crédito inicial
 branch_name_sell_ph	Nome da filial de onde vender
 bring_my_book	Trazer o meu livro
