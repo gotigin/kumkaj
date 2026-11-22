@@ -693,7 +693,7 @@ brand_shown_help	အက်ပ်ထဲက ဖန်သားပြင်မျ�
 app_icon	အက်ပ် icon
 logo_help	အက်ပ်အတွင်း screen များပေါ်တွင် optional shop mark ရှိနိုင်သည်။
 onboard_layout	သင်ရမည့်အရာ
-item_photo_help	Optional။ ဓာတ်ပုံမပါလျှင် item နာမည်မှ စတင်အက္ခရာများကိုပြသပါမည်။
+item_photo_help	ရွေးချယ်နိုင်သည်။ ဓာတ်ပုံမပါလျှင် ပစ္စည်း နာမည်မှ စတင်အက္ခရာများကိုပြသပါမည်။
 cash_in_hand	လက်ထဲရှိ ငွေ (ငွေကောင်တာ)
 change_my_pin_heading	ကျွန်ုပ်၏ PIN ကိုပြောင်းပါ (သင့်အတွက်သာ)
 connect_to_server	Server နှင့် ချိတ်ဆက်ပါ

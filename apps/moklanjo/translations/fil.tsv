@@ -61,7 +61,7 @@ editing_item	Pag-edit
 save	I-save
 remove	Alisin
 empty_catalog	Wala pang rates.
-counter_sale	Booking sa counter
+counter_sale	Pagbu-book sa counter
 total	Kabuuan
 cash	Cash
 upi	UPI
@@ -139,7 +139,7 @@ new_customer_ph	Bagong customer o pangalan ng supplier
 item_name_ph	Pangalan ng rate (hal. Surface Zone A)
 item_price_ph	Bawat kg / unang slab
 start_template	produkto
-next_booking	Susunod na booking
+next_booking	Susunod na pagbu-book
 destination_ph	Destinasyon na lungsod / sona
 consignee_ph	Pangalan ng tatanggap
 consignee_phone_ph	Telepono ng tatanggap
@@ -684,7 +684,7 @@ book_opening_credit	Ledger — pagbubukas ng kredito
 account_kind	Uri ng account (i-tap ang isa)
 active_ledger	Aktibong ledger
 actual_total_cap	TUNAY NA KABUUAN
-amend_help	Pumili ng isang benta upang susugan, mawawalan ng bisa, o i-refund. Pinapanatili ng mga pagbabago ang buong kasaysayan. Ang Rounded Total ay nagsisimula katumbas ng Applied — i-edit lang sa round. Maaaring kailanganin ng walang bisa at refund ang isang May-ari o Tagapamahala PIN (naka-type sa itaas; naitala gamit ang iyong pangalan).
+amend_help	Pumili ng isang benta upang susugan, mawawalan ng bisa, o i-refund. Pinapanatili ng mga pagbabago ang buong kasaysayan. Ang Na-round na Kabuuan ay nagsisimula katumbas ng Inilapat — i-edit lang sa round. Maaaring kailanganin ng walang bisa at refund ang isang May-ari o Tagapamahala PIN (naka-type sa itaas; naitala gamit ang iyong pangalan).
 applied_total_cap	NILAPAT NA KABUUAN
 bank_balance	Balanse sa bangko
 bank_net_today	Bank net ngayon

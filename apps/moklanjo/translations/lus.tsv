@@ -2,13 +2,13 @@
 app_tagline	Courier-agency lehkhabu + booking desk a awm bawk. Offline ah a thlawna hman theih a ni.
 unlock	Hawng
 pin_hint	Neitu PIN chu 0000 atangin a tan
-sell	Booking
+sell	Booking tih
 nav_board	Ban
 board	Ban
-park_draft	Draft angin save rawh
+park_draft	Draft angin dah rawh
 board_help	Draft siam zawh loh («Paih» emaw «Pek la» emaw i tap thlenga dah) leh vawiin a booked sales te. «Booking tih a ni»-ah chuan i hnathawh lai takah «Draft angin save rawh» kha tap la (hetah hian save a ni a, account-ah save a ni lo); draft pakhat tap la, chhunzawm zel rawh.
 board_empty	Card a la awm lo.
-board_park_nothing	Draft anga save tur engmah a awm lo — charges emaw booking details emaw add
+board_park_nothing	Park tur engmah a awm lo — charge emaw booking details add rawh
 board_parked	«Ban» ah saved — tunah chuan desk chu a khar tawh
 board_draft	Ziak
 board_booked	Book a ni tawh
@@ -23,10 +23,10 @@ board_card_booked	Book a ni tawh
 board_draft_gone	Chu draft chu «Ban» ah a awm tawh lo
 board_draft_closed	Chu draft chu tihfel emaw delete emaw a ni tawh
 board_discard	Paih
-board_discarded	Draft chu tihbo a ni
+board_discarded	Draft chu paih a ni
 buy	Pay out rawh
 books	Ni lehkha
-books_help	Vawiin dinhmun hi. Booking = parcels in. Pawisa pek chhuah = carrier bill & senso. Party hrang hrang = consignor & carrier te.
+books_help	Vawiin dinhmun hi. Booking = parcel lut. Pawisa pek chhuah = carrier bill leh senso. Party hrang hrang = consignor leh carrier te.
 buy_help	Expense voucher leh carrier bill (pawisa chhuak) te. On-account chu party ledger-ah a awm reng a ni.
 sell_money_in	Parcel pakhat book rawh
 buy_money_out	Hman senso / carrier bill a ni
@@ -61,7 +61,7 @@ editing_item	Siam ṭha mek
 save	Dah tha
 remove	Paih
 empty_catalog	Rate a la awm lo.
-counter_sale	Counter booking a awm bawk
+counter_sale	Counter-a booking
 total	A zawng
 cash	Sum
 upi	UPI
@@ -91,8 +91,8 @@ split	Then
 counter	Zuar dawhkan
 parcel	Bawm
 order	Order
-sales	Booking a awm bawk
-sales_refunds	Booking & refund te pawh a awm bawk
+sales	Booking te
+sales_refunds	Booking leh refund te
 day_close	Ni khar
 reports_expenses	Bank lehkha leh H&H
 nav_reports	Report
@@ -139,7 +139,7 @@ new_customer_ph	Mi thar hming
 item_name_ph	Rate hming (e.g. Surface Zone A) 1.1.
 item_price_ph	Kg khatah / slab hmasa ber
 start_template	Thil
-next_booking	Booking lo awm leh tur
+next_booking	Booking a awm leh tur
 destination_ph	Destination khawpui / zone
 consignee_ph	Receiver hming
 consignee_phone_ph	Receiver phone a ni
@@ -463,7 +463,7 @@ rider_phone_ph	Rider phone a ni
 riders	Rider te an ni
 riders_own_fleet	Rider (mahni fleet) te chuan .
 rollup	Khawm
-save_booking_measures	Booking dan tur save rawh
+save_booking_measures	Booking tih dan save rawh
 save_brand	Hmingchhiar dah tha
 save_business_id	Sumdawn hmingchhiar dah tha
 save_business_name	Sumdawn hming dah tha
@@ -491,7 +491,7 @@ editing_staff	Dan tur
 team_pick_ph	Siam tur hnathawk — hming, hmangtu hming, emaw thlang
 select_staff	He hnathawk thlang
 rights_help	Dan — thlak turin tap: Phal → Approval nen (chutih lai manager PIN) → Phal lo.
-right_void_refund	Booking chu void emaw refund emaw theih a ni
+right_void_refund	Booking void emaw refund theih
 right_amend_sale	Recorded booking siamthat
 find_server	Dawr server zawng
 finding_server	He Wi‑Fi-ah dawr server zawng mek…
@@ -662,7 +662,7 @@ adj_note_awb_ph	A inzawm AWB (a duh chuan) .
 credit_note_btn	Credit note a ni
 debit_note_btn	Debit note a ni
 bill_later_heading	Charge hnuah (booking hnuah extra charge)
-bill_later_amount_ph	Extra amount a awm bawk
+bill_later_amount_ph	Belh zat
 bill_later_party_ph	Customer (booking-in a neih loh chuan chauh)
 bill_later_btn	Charge hnuah
 bill_later_extra_oda	ODA
@@ -675,7 +675,7 @@ other_devices_help_heading	Device dang rem
 other_devices_help	He device (Server) ah hian: Device dang → Extra tills phalsak. Pairing code leh Wi‐Fi address te kha chhinchhiah rawh. A lo lang a nih chuan device dangte connect turin phalsak rawh tih kha tap rawh. Computer-ah chuan he computer hmang hian tan rawh tih kha tap rawh. Device pakhatah: app install la, Client Mode thlang la, Dawr server zawng rawh (or address type la), pairing code ziak la, Pair now. Order te chu Wi‐Fi a tlak chuan device-ah a nghak a, Server-in a chhan leh hunah a kal leh thin.
 your_brand	I hmingchhiar (app chhung)
 units_heading	Unit
-booking_measures	Booking tih dan tur
+booking_measures	Booking tih dan
 drawer_count	Bawm chhiar (duh chuan)
 spreadsheet_csv	CSV spreadsheet
 bank_reconciliation	Bank inmil
@@ -710,7 +710,7 @@ gross_word	Kim lo
 how_start	Engtin nge i tan duh?
 later_country_pack	Nakinah: Remkhawh → chhiah leh pek hming atan i ram bung hmang.
 local_badge	CHHUNG
-measures_help_moklanjo	Booking desk-a parcel teh dan. I hman tur unit-ah hian dimension leh weight type rawh — standard (cm, m, in, ft · kg, g, lb, oz) emaw, a chunga cm / kg nena inzawm (direct emaw unit dang kaltlangin emaw) nangmah ngeiin unit siam rawh. Lehkhabuah hian kg. Field pakhat chu a awm reng theih nan ruak dah la.
+measures_help_moklanjo	Booking desk-a parcel teh dan. I hman tur unit-ah hian dimension leh weight type rawh — standard (cm, m, in, ft · kg, g, lb, oz) emaw i unit (cm / kg nen inzawm) hman rawh. Books-ah kg chauh a awm. Field ruak chhuah chuan a awm ang chiah a awm ang.
 mix_type_hint_moklanjo	Engzat nge pakhatah (cash / UPI / card / credit) tih type rawh. Bill-ah hian add up tur a ni. Credit hian a chunga customer a mamawh a ni.
 money_in_sales	Sum lut (zuar)
 more_help_moklanjo	Thil list, zuar, credit, team, backup — a tul hunah stock leh till belh te pawh a awm bawk.

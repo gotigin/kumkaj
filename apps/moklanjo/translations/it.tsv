@@ -684,7 +684,7 @@ book_opening_credit	Prenotazione — credito iniziale
 account_kind	Tipo conto (tocca uno)
 active_ledger	Libro attivo
 actual_total_cap	TOTALE EFFETTIVO
-amend_help	Seleziona una vendita da modificare, annullare o rimborsare. Le modifiche conservano la cronologia completa. Rounded Total inizia uguale ad Applied — modifica solo per arrotondare. Annullamento e rimborso possono richiedere il PIN di proprietario o manager (digitato sopra; registrato con il tuo nome).
+amend_help	Seleziona una vendita da modificare, annullare o rimborsare. Le modifiche conservano la cronologia completa. Totale arrotondato inizia uguale ad Applicato — modifica solo per arrotondare. Annullamento e rimborso possono richiedere il PIN di proprietario o manager (digitato sopra; registrato con il tuo nome).
 applied_total_cap	TOTALE APPLICATO
 bank_balance	Saldo banca
 bank_net_today	Netto banca oggi

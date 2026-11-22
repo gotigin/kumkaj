@@ -684,7 +684,7 @@ book_opening_credit	Fjárhagsbók — upphafsinneign
 account_kind	Reikningstegund (smelltu á einn)
 active_ledger	Virk bók
 actual_total_cap	RAUNU SAMTALS
-amend_help	Veldu sölu til að breyta, ógilda eða endurgreiða. Breytingar halda fullri sögu. Rounded Total byrjar jafnt og Applied — breyttu aðeins í umferð. Ógilt og endurgreiðsla gæti þurft eiganda eða stjórnanda PIN (slá inn hér að ofan; skráð með nafni þínu).
+amend_help	Veldu sölu til að breyta, ógilda eða endurgreiða. Breytingar halda fullri sögu. Ávalaður heildarupphæð byrjar jafnt og Beitt — breyttu aðeins í umferð. Ógilt og endurgreiðsla gæti þurft eiganda eða stjórnanda PIN (slá inn hér að ofan; skráð með nafni þínu).
 applied_total_cap	SEITT SAMTALS
 bank_balance	Inneign banka
 bank_net_today	Nettó bankans í dag

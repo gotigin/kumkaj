@@ -684,7 +684,7 @@ book_opening_credit	Reserva — crédito inicial
 account_kind	Tipo de cuenta (toca uno)
 active_ledger	Libro activo
 actual_total_cap	TOTAL REAL
-amend_help	Seleccione una venta para enmendar, anular o reembolsar. Las enmiendas conservan el historial completo. Rounded Total empieza igual a Applied: edite solo para redondear. Anular y reembolsar pueden pedir el PIN de propietario o gerente (escrito arriba; queda con su nombre).
+amend_help	Seleccione una venta para enmendar, anular o reembolsar. Las enmiendas conservan el historial completo. Total redondeado empieza igual a Aplicado: edite solo para redondear. Anular y reembolsar pueden pedir el PIN de propietario o gerente (escrito arriba; queda con su nombre).
 applied_total_cap	TOTAL APLICADO
 bank_balance	Saldo bancario
 bank_net_today	Neto bancario de hoy

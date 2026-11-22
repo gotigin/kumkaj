@@ -28,7 +28,7 @@ buy	Bayar keluar
 books	Buku harian
 books_help	Posisi hari ini. Pemesanan = paket masuk. Bayar keluar = tagihan kurir & biaya. Pihak = pengirim & kurir pengangkut.
 buy_help	Voucher biaya dan tagihan kurir (uang keluar). Yang di akun tetap di buku pihak.
-sell_money_in	Booking paket
+sell_money_in	Pesan paket
 buy_money_out	Biaya / tagihan kurir
 record_purchase	Catat pembelian
 add_expense	Voucher biaya
@@ -61,7 +61,7 @@ editing_item	Mengedit
 save	Simpan
 remove	Hapus
 empty_catalog	Belum ada tarif.
-counter_sale	Booking konter
+counter_sale	Pemesanan konter
 total	Total
 cash	Tunai
 upi	UPI
@@ -139,7 +139,7 @@ new_customer_ph	Nama pihak baru
 item_name_ph	Nama tarif (mis. Surface Zone A)
 item_price_ph	Per kg / slab pertama
 start_template	Produk
-next_booking	Booking berikutnya
+next_booking	Pemesanan berikutnya
 destination_ph	Kota / zona tujuan
 consignee_ph	Penerima
 consignee_phone_ph	Telepon penerima
@@ -425,7 +425,7 @@ copy_sms	Salin teks SMS
 pick_barcode_image	Pilih gambar untuk pindai
 share_receipt_whatsapp	Bagikan struk via WhatsApp
 delivery_feedback	Umpan balik pengantaran
-lan_self_book	Booking mandiri LAN
+lan_self_book	Pemesanan mandiri LAN
 new_party_clear	Pihak baru (kosongkan formulir)
 new_party_kind_ph	Jenis pihak baru (pemasok / pengangkut)
 next_country	Negara berikutnya
@@ -679,12 +679,12 @@ booking_measures	Ukuran booking
 drawer_count	Hitung laci (opsional)
 spreadsheet_csv	Lembar sebar (CSV)
 bank_reconciliation	Rekonsiliasi bank
-book_add_product	Booking — tambah produk / tarif
-book_opening_credit	Booking — kredit awal
+book_add_product	Pemesanan — tambah produk / tarif
+book_opening_credit	Pemesanan — kredit awal
 account_kind	Jenis akun (ketuk satu)
 active_ledger	Buku aktif
 actual_total_cap	TOTAL AKTUAL
-amend_help	Pilih penjualan untuk diubah, dibatalkan, atau di-refund. Perubahan menyimpan riwayat lengkap. Rounded Total mulai sama dengan Applied — edit hanya untuk membulatkan. Pembatalan dan refund mungkin perlu PIN Pemilik atau Manajer (diketik di atas; dicatat dengan nama Anda).
+amend_help	Pilih penjualan untuk diubah, dibatalkan, atau di-refund. Perubahan menyimpan riwayat lengkap. Total dibulatkan mulai sama dengan Diterapkan — edit hanya untuk membulatkan. Pembatalan dan refund mungkin perlu PIN Pemilik atau Manajer (diketik di atas; dicatat dengan nama Anda).
 applied_total_cap	TOTAL DITERAPKAN
 bank_balance	Saldo bank
 bank_net_today	Neto bank hari ini

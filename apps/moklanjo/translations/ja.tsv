@@ -684,7 +684,7 @@ book_opening_credit	受付 — 期首の掛け
 account_kind	口座の種類（1つタップ）
 active_ledger	アクティブな台帳
 actual_total_cap	実合計
-amend_help	売上を選んで修正・取消・返金。修正は履歴を残します。Rounded Total は Applied と同じ値から開始 — 端数処理のときだけ編集。取消と返金はオーナーまたはマネージャーの PIN が必要な場合があります（上で入力；あなたの名前で記録）。
+amend_help	売上を選んで修正・取消・返金。修正は履歴を残します。端数処理後合計は適用額と同じ値から開始 — 端数処理のときだけ編集。取消と返金はオーナーまたはマネージャーの PIN が必要な場合があります（上で入力；あなたの名前で記録）。
 applied_total_cap	適用合計
 bank_balance	銀行残高
 bank_net_today	本日の銀行純額

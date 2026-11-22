@@ -684,7 +684,7 @@ book_opening_credit	Buchung — Anfangskredit
 account_kind	Kontoart (eines tippen)
 active_ledger	Aktives Konto
 actual_total_cap	TATSÄCHLICH GESAMT
-amend_help	Wählen Sie einen Verkauf zum Ändern, Stornieren oder Erstatten. Änderungen behalten die volle Historie. Rounded Total startet gleich Applied — nur zum Runden bearbeiten. Storno und Erstattung können eine Inhaber- oder Manager-PIN brauchen (oben getippt; mit Ihrem Namen vermerkt).
+amend_help	Wählen Sie einen Verkauf zum Ändern, Stornieren oder Erstatten. Änderungen behalten die volle Historie. Gerundete Summe startet gleich Angewandt — nur zum Runden bearbeiten. Storno und Erstattung können eine Inhaber- oder Manager-PIN brauchen (oben getippt; mit Ihrem Namen vermerkt).
 applied_total_cap	ANGEWENDET GESAMT
 bank_balance	Bankguthaben
 bank_net_today	Bank-Netto heute
