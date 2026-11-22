@@ -962,7 +962,7 @@ expenses_word	Utgifter
 feature_access_help	Hva de kan åpne — valgfritt; jobben over setter allerede et standardvalg
 footer_local	Lokal SQLite · Gratis for alltid · Ingen sky
 fresh_book_khaynjo	Ny = tom meny (legg til retter senere i Meny). Bøker = skriv åpningsvarer og hvem som skylder deg under.
-fresh_selected	Fresh valgt — katalogen forblir tom. Trykk Ferdig når du er klar.
+fresh_selected	“Ny” valgt — katalogen forblir tom. Trykk Ferdig når du er klar.
 gross_word	Brutto
 how_start	Hvordan vil du starte?
 kot_print_help_khaynjo	Når På, skriver hvert kjøkken ut sin egen KOT med en gang du trykker Send.

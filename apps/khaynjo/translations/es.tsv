@@ -48,7 +48,7 @@ upi	UPI
 card	Tarjeta
 credit	Contactos
 clear	Borrar
-ready_to_sell	Listo para enviar
+ready_to_sell	Listo para abrir libros
 today_prefix	Hoy
 today_mid	hoy
 owed	adeudado
@@ -427,8 +427,8 @@ bank_in	Ingreso a banco
 bank_out	Retiro de banco
 bank_reconciliation	Conciliación bancaria
 bank_to_till	Banco → caja
-book_add_dish	Pedido — añadir plato / artículo
-book_opening_credit	Envío — crédito inicial
+book_add_dish	Libro — añadir plato / artículo
+book_opening_credit	Libro — crédito inicial
 branch_name_sell_ph	Nombre de la sucursal desde la que vender
 bring_my_book	Traer mi libro
 business_tax_id_ph	Id fiscal del negocio
@@ -962,7 +962,7 @@ expenses_word	Gastos
 feature_access_help	Acceso a funciones del personal seleccionado (toca tras añadir)
 footer_local	SQLite local · Gratis para siempre · Sin nube
 fresh_book_khaynjo	Nuevo = menú vacío (añada platos después en Menú). Libro = escriba abajo los artículos de apertura y quién le debe.
-fresh_selected	Fresh elegido: el catálogo queda vacío. Toca Done cuando estés listo.
+fresh_selected	“Nuevo” elegido: el catálogo queda vacío. Toca “Listo” cuando estés listo.
 gross_word	Bruto
 how_start	¿Cómo quieres empezar?
 kot_print_help_khaynjo	Cuando se envía un KOT — en el mostrador o desde el dispositivo del camarero — el papel de cocina se imprime aquí solo.

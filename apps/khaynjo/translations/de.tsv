@@ -427,7 +427,7 @@ bank_in	Bankeinzahlung
 bank_out	Bankabhebung
 bank_reconciliation	Bankabstimmung
 bank_to_till	Bank → Kasse
-book_add_dish	Bestellung — Gericht / Artikel hinzufügen
+book_add_dish	Buch — Gericht / Artikel hinzufügen
 book_opening_credit	Buchung — Anfangskredit
 branch_name_sell_ph	Name der Filiale, aus der verkauft wird
 bring_my_book	Mein Buch bringen
@@ -962,7 +962,7 @@ expenses_word	Ausgaben
 feature_access_help	Funktionszugriff für gewähltes Personal (nach Hinzufügen tippen)
 footer_local	Lokales SQLite · Für immer kostenlos · Keine Cloud
 fresh_book_khaynjo	Neu = leeres Menü (Gerichte später unter Menü hinzufügen). Bücher = Anfangsartikel und wer Ihnen etwas schuldet unten eintragen.
-fresh_selected	Fresh gewählt – Katalog bleibt leer. Tippen Sie auf Done, wenn Sie bereit sind.
+fresh_selected	“Neu” gewählt – Katalog bleibt leer. Tippen Sie auf “Fertig”, wenn Sie bereit sind.
 gross_word	Brutto
 how_start	Wie möchten Sie beginnen?
 kot_print_help_khaynjo	Wenn ein KOT gesendet wird – an der Theke oder vom Kellnergerät – druckt das Küchenpapier hier von selbst.

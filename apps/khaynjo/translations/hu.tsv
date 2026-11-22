@@ -48,7 +48,7 @@ upi	UPI
 card	kártya
 credit	Felek
 clear	Törlés
-ready_to_sell	Foglalásra készen
+ready_to_sell	Könyvre készen
 today_prefix	Ma
 today_mid	ma
 owed	kiemelkedő
@@ -1055,7 +1055,7 @@ tmpl_current	Jelenlegi: {} — {}
 tmpl_selected	Kiválasztva: {} — {}
 setup_complete	A beállítás kész
 onboard_fresh_tmpl	Friss · {} — a katalógus üresen kezdődik; adjon hozzá elemeket az Elemek mappához, majd válassza a Kész lehetőséget.
-onboard_book_tmpl	Foglalás · {} — tételek és nyitó kredit hozzáadása, majd Kész.
+onboard_book_tmpl	Könyv · {} — tételek és nyitó kredit hozzáadása, majd Kész.
 onboard_template_tmpl	Ha akarja, nevezze el a helyet, majd válassza ki, hogyan kezdje el.
 tmpl_blurb	Étkezőasztalok, rendelés, konyhajegyek, számlázás és könyvek.
 tmpl_how	Eladás a pultnál; Ebédlő étkezőasztalokhoz & KOT; Könyvek a naphoz könyv.

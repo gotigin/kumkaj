@@ -48,7 +48,7 @@ upi	UPI
 card	カード
 credit	取引先
 clear	クリア
-ready_to_sell	受付準備OK
+ready_to_sell	帳簿の準備OK
 today_prefix	今日
 today_mid	今日
 owed	未収
@@ -427,8 +427,8 @@ bank_in	銀行へ入金
 bank_out	銀行から出金
 bank_reconciliation	銀行照合
 bank_to_till	銀行→レジ
-book_add_dish	注文 — 料理／品目を追加
-book_opening_credit	受付 — 期首の掛け
+book_add_dish	帳簿 — 料理／品目を追加
+book_opening_credit	帳簿 — 期首の掛け
 branch_name_sell_ph	販売する店舗名
 bring_my_book	自分の帳簿を持ってくる
 business_tax_id_ph	事業者の税ID

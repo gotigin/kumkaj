@@ -48,7 +48,7 @@ upi	UPI
 card	บัตร
 credit	คู่ค้า
 clear	ล้าง
-ready_to_sell	พร้อมจอง
+ready_to_sell	พร้อมเปิดสมุด
 today_prefix	วันนี้
 today_mid	วันนี้
 owed	ค้าง
@@ -428,7 +428,7 @@ bank_out	ออกจากธนาคาร
 bank_reconciliation	กระทบยอดธนาคาร
 bank_to_till	ธนาคาร → เคาน์เตอร์
 book_add_dish	สมุด — เพิ่มจาน / รายการ
-book_opening_credit	จอง — เครดิตเริ่มต้น
+book_opening_credit	สมุด — เครดิตเริ่มต้น
 branch_name_sell_ph	ชื่อสาขาที่จะขาย
 bring_my_book	นำสมุดของฉันมา
 business_tax_id_ph	เลขภาษีธุรกิจ
@@ -962,7 +962,7 @@ expenses_word	ค่าใช้จ่าย
 feature_access_help	สิทธิ์ฟีเจอร์ของพนักงานที่เลือก (แตะหลังเพิ่ม)
 footer_local	SQLite ท้องถิ่น · ฟรีตลอดไป · ไม่มีคลาวด์
 fresh_book_khaynjo	ใหม่ = เมนูว่าง (เพิ่มอาหารภายหลังในเมนู) สมุด = พิมพ์รายการเปิดและผู้ที่ติดค้างคุณด้านล่าง
-fresh_selected	เลือก Fresh — แคตตาล็อกจะว่าง แตะ Done เมื่อพร้อม
+fresh_selected	เลือก “ใหม่” — แคตตาล็อกจะว่าง แตะ “เสร็จ” เมื่อพร้อม
 gross_word	รวมยอด
 how_start	คุณต้องการเริ่มต้นอย่างไร
 kot_print_help_khaynjo	เมื่อส่ง KOT — ที่เคาน์เตอร์หรือจากอุปกรณ์ของพนักงานเสิร์ฟ — กระดาษครัวจะพิมพ์ที่นี่เอง

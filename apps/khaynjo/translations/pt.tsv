@@ -962,7 +962,7 @@ expenses_word	Despesas
 feature_access_help	Acesso a funções do funcionário selecionado (toque após adicionar)
 footer_local	SQLite local · Grátis para sempre · Sem nuvem
 fresh_book_khaynjo	Começar do zero = menu vazio (adicione pratos mais tarde no Menu). Livro = escreva abaixo os itens iniciais e quem lhe deve.
-fresh_selected	Fresh escolhido — o catálogo fica vazio. Toque Done quando estiver pronto.
+fresh_selected	“Novo” escolhido — o catálogo fica vazio. Toque “Concluído” quando estiver pronto.
 gross_word	Bruto
 how_start	Como você quer começar?
 kot_print_help_khaynjo	Quando um KOT é enviado — no balcão ou do dispositivo do empregado — o papel da cozinha imprime aqui sozinho.

@@ -48,7 +48,7 @@ upi	UPI
 card	Kartu
 credit	Pihak
 clear	Hapus
-ready_to_sell	Siap booking
+ready_to_sell	Siap buka buku
 today_prefix	Hari ini
 today_mid	hari ini
 owed	utang
@@ -427,8 +427,8 @@ bank_in	Masuk bank
 bank_out	Keluar bank
 bank_reconciliation	Rekonsiliasi bank
 bank_to_till	Bank → kasir
-book_add_dish	Pesan — tambah hidangan / item
-book_opening_credit	Booking — kredit awal
+book_add_dish	Buku — tambah hidangan / item
+book_opening_credit	Buku — kredit awal
 branch_name_sell_ph	Nama cabang untuk menjual
 bring_my_book	Bawa buku saya
 business_tax_id_ph	ID pajak usaha
@@ -962,7 +962,7 @@ expenses_word	Biaya
 feature_access_help	Akses fitur staf terpilih (ketuk setelah menambah)
 footer_local	SQLite lokal · Gratis selamanya · Tanpa cloud
 fresh_book_khaynjo	Baru = menu kosong (tambah hidangan nanti di Menu). Buku = ketik item awal dan siapa yang berutang kepada Anda di bawah.
-fresh_selected	Fresh terpilih — katalog tetap kosong. Ketuk Done saat siap.
+fresh_selected	“Baru” terpilih — katalog tetap kosong. Ketuk “Selesai” saat siap.
 gross_word	Kotor
 how_start	Bagaimana Anda ingin memulai?
 kot_print_help_khaynjo	Saat KOT dikirim — di konter atau dari perangkat pelayan — kertas dapur tercetak di sini dengan sendirinya.

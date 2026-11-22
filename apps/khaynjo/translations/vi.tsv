@@ -962,7 +962,7 @@ expenses_word	Chi phí
 feature_access_help	Quyền tính năng của nhân viên đã chọn (chạm sau khi thêm)
 footer_local	SQLite cục bộ · Miễn phí mãi mãi · Không đám mây
 fresh_book_khaynjo	Mới = thực đơn trống (thêm món sau trong Thực đơn). Sổ = nhập mặt hàng đầu kỳ và ai đang nợ bạn ở bên dưới.
-fresh_selected	Đã chọn Fresh — danh mục trống. Chạm Done khi sẵn sàng.
+fresh_selected	Đã chọn “Mới” — danh mục trống. Chạm “Xong” khi sẵn sàng.
 gross_word	Gộp
 how_start	Bạn muốn bắt đầu thế nào?
 kot_print_help_khaynjo	Khi KOT được gửi — tại quầy hoặc từ thiết bị của nhân viên — giấy bếp tự in ở đây.

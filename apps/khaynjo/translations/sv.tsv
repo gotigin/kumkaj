@@ -1322,7 +1322,7 @@ recall_kot_ph	KOT # att återkalla
 role_help_customer	Roll: Kund – khata (de är skyldiga oss). Samma part kan också leverera lager.
 role_help_both	Roller: Kund + Leverantör — en part, khata och betalningsböcker, netto i Rapporter.
 role_help_supplier	Roll: Leverantör – vi är skyldiga dem för inköp.
-dine_in_pick_table	Ät middag — välj ett bord på Floor
+dine_in_pick_table	Ät middag — välj ett bord på “Sal”
 choose_table	Välj ett bord
 change_table	Byt bord
 pick_table_banner	Välj ett bord för denna beställning

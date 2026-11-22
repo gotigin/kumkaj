@@ -962,7 +962,7 @@ expenses_word	경비
 feature_access_help	선택한 직원의 기능 접근(추가 후 누르기)
 footer_local	로컬 SQLite · 영원히 무료 · 클라우드 없음
 fresh_book_khaynjo	새로 = 빈 메뉴(항목은 나중에 메뉴에서 추가). 장부 = 아래에 기초 항목과 누가 빚졌는지 입력.
-fresh_selected	Fresh 선택됨 — 카탈로그가 비어 있습니다. 준비되면 Done을 누르세요.
+fresh_selected	「새로 시작」 선택됨 — 카탈로그가 비어 있습니다. 준비되면 Done을 누르세요.
 gross_word	총액
 how_start	어떻게 시작하시겠어요?
 kot_print_help_khaynjo	KOT가 전송되면 — 카운터에서든 웨이터 기기에서든 — 주방 용지가 여기서 자동으로 인쇄됩니다.

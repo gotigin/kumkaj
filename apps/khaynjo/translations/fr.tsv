@@ -962,7 +962,7 @@ expenses_word	Dépenses
 feature_access_help	Accès aux fonctions du personnel sélectionné (touchez après l'ajout)
 footer_local	SQLite local · Gratuit pour toujours · Zéro cloud
 fresh_book_khaynjo	À neuf = carte vide (ajoutez les plats plus tard dans Menu). Livre = saisissez ci-dessous les articles d'ouverture et qui vous doit.
-fresh_selected	Fresh choisi — le catalogue reste vide. Touchez Done quand vous êtes prêt.
+fresh_selected	“Nouveau” choisi — le catalogue reste vide. Touchez “Terminé” quand vous êtes prêt.
 gross_word	Brut
 how_start	Comment voulez-vous commencer ?
 kot_print_help_khaynjo	Quand un KOT est envoyé — au comptoir ou depuis l'appareil du serveur — le papier de cuisine s'imprime ici tout seul.
