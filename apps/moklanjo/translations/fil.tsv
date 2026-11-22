@@ -110,16 +110,16 @@ sidebar_hidden_hint	Nakatago sa bar
 sidebar_menu_items	Mga rate
 sidebar_enable_all	Paganahin ang Lahat
 sidebar_disable_all	Huwag paganahin ang Lahat
-sidebar_order_saved	Na-save ang order sa sidebar
+sidebar_order_saved	Na-save ang booking sa sidebar
 sidebar_visibility_saved	Na-save ang visibility ng sidebar
 amounts_hide	Magtago
 amounts_show	Ipakita
 no_sale_yet	Wala pang benta
 favorites	Mga paborito
-favorites_help	Mga item sa menu ng menu na madalas mong ibinebenta, na na-save para sa iyong pag-login. Magdagdag ng isa sa bill, o buuin ang iyong listahan mula sa lahat ng mga item sa menu sa ibaba.
+favorites_help	Mga item na madalas mong ibinebenta, na na-save para sa iyong pag-login. Magdagdag ng isa sa bill, o buuin ang iyong listahan mula sa lahat ng mga item sa ibaba.
 your_favorites	Mga paborito mo
-all_items	Lahat ng mga item sa menu
-no_favorites	Wala pang mga paborito — magdagdag ng mga item sa menu mula sa listahan sa ibaba.
+all_items	Lahat ng mga item
+no_favorites	Wala pang mga paborito — magdagdag ng mga item mula sa listahan sa ibaba.
 add_to_bill	Idagdag sa bill
 added	Idinagdag
 owes_word	may utang
@@ -257,7 +257,7 @@ diag_cleared	Na-clear ang mga diagnostic log
 use	Gamitin
 add_branch	Magdagdag ng sangay
 add_conversion	Magdagdag ng conversion
-add_item_plain	Magdagdag ng item sa menu
+add_item_plain	Magdagdag ng item
 add_note	Magdagdag ng tala
 add_opening_balance	Magdagdag ng pambungad na balanse
 add_rider	Magdagdag ng rider
@@ -270,7 +270,7 @@ apply_country_pack	Ilapat ang country pack
 datetime_appearance	Petsa at oras na hitsura
 datetime_appearance_help	Pinapanatili ng mga aklat ang unang taon na RFC3339 sa loob. Binabago lang nito ang hitsura ng mga petsa at orasan sa mga resibo, label, ulat, at screen.
 datetime_example	Halimbawa ngayon: {ex}
-date_order	Order ng petsa
+date_order	Pagkakasunod ng petsa
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
@@ -338,7 +338,7 @@ consignments_dispatch	Mga padala at pagpapadala
 consignor_party_ph	Consignor / pangalan ng partido
 copy_day_book_csv	Kopyahin ang ledger ng araw CSV
 copy_day_close	Pagsara ng araw ng kopya
-copy_items_csv	Kopyahin ang mga item sa menu CSV
+copy_items_csv	Kopyahin ang mga item (CSV)
 copy_outstanding_csv	Kopyahin ang natitirang CSV
 copy_parties_csv	Kopyahin ang mga customer at supplier CSV
 copy_party_ledger_csv	Kopyahin ang ledger ng customer CSV
@@ -388,7 +388,7 @@ use_carrier_cost	Gamitin ang gastos ng carrier
 rate_carrier_ph	Carrier (blangko = aming sell rate)
 rate_party_ph	Party (blangko = lahat ng customer)
 carrier_pick_ph	Carrier para sa gastos (mula sa paghahambing)
-item_name	Pangalan ng item sa menu ng menu
+item_name	Pangalan ng item
 load_bulk_row	Mag-load ng maramihang hilera → desk
 login_id_ph	Pangalan ng gumagamit
 mark_delivered	Hinatid ni Mark
@@ -498,7 +498,7 @@ finding_server	Naghahanap ng server ng shop dito Wi‑Fi…
 no_server_found	Walang nahanap. Sa Server: Mga Setting → Iba pang mga device → Payagan ang mga dagdag na tills (pareho Wi‑Fi). O i-type ang IP na ipinapakita doon.
 servers_found_pick	I-tap ang shop na gusto mong kumonekta.
 server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkatapos ay Ipares ngayon.
-device_forgotten	Nakalimutan ng shop ang device na ito — ipares itong muli sa kasalukuyang code ng shop. Ang mga order na naghihintay dito ay itinatago.
+device_forgotten	Nakalimutan ng shop ang device na ito — ipares itong muli sa kasalukuyang code ng shop. Ang mga booking na naghihintay dito ay itinatago.
 forget_device	Kalimutan
 last_seen	nakita
 new_pair_code	Bagong code ng pagpapares
@@ -693,7 +693,7 @@ brand_shown_help	Ipinapakita sa mga screen sa loob ng app. Ang naka-install na p
 app_icon	Icon ng app
 logo_help	Opsyonal na marka ng tindahan sa mga screen sa app.
 onboard_layout	Kung ano ang makukuha mo
-item_photo_help	Opsyonal. Kung walang larawan, ipinapakita namin ang mga inisyal mula sa pangalan ng item sa menu.
+item_photo_help	Opsyonal. Kung walang larawan, ipinapakita namin ang mga inisyal mula sa pangalan ng item.
 cash_in_hand	Cash sa kamay (hanggang)
 change_my_pin_heading	Baguhin ang aking PIN (sa iyo lamang)
 connect_to_server	Kumonekta sa Server
@@ -735,7 +735,7 @@ cloud_welcome	Naka-sign in bilang {user} · {plan}
 cloud_created	Nagawa ang account. Suriin ang email para i-verify kapag pwede.
 cloud_cancel	Kanselahin
 permission_preset	Trabaho
-preset_help_moklanjo	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
+preset_help_moklanjo	Cashier: ibenta. Manager: ibenta + item + void/amend.
 product_locked_moklanjo	Moklanjo
 product_only_moklanjo	Ang app na ito ay Moklanjo lamang — mga aklat + booking desk. Ang ibang kalakalan ay nahaharap sa barko bilang hiwalay na mga produkto sa ibang pagkakataon.
 purchases_cogs	Mga Pagbili (COGS)
@@ -757,11 +757,11 @@ wipe_schema_done	Na-wipe ang setup ng shop — piliin ang Server o Client para m
 rounded_total	Bilugan Kabuuan
 setup_app_moklanjo	I-set up ang Moklanjo
 shop_logo_optional	Logo ng tindahan (opsyonal)
-stock_type_help	I-type ang pangalan ng item sa menu (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item sa menu ng menu na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
+stock_type_help	I-type ang pangalan ng item (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
 team_owner_help	Hire: pumili ng trabaho (Cashier / Manager), pangalan + panimulang PIN, pagkatapos ay Magdagdag. Kung iba lang ang taong ito: buksan ang mga screen at mga karapatan sa ibaba, pagkatapos ay I-save ang setup ng trabaho. Ang bawat tao'y nagbabago ng kanilang sariling PIN sa ibaba — Hindi maaaring baguhin ng may-ari ang sinumang iba.
 they_owe_us	May utang sila sa amin
 unit_at_cap	Yunit @
-units_help	Mga code para sa mga label ng item sa menu (kg, piraso, bag). Ang bawat unit ay dapat mag-link — direkta o sa pamamagitan ng iba pang mga unit — sa isang pamantayan (kg · cm · ml · pc), hal. 1 crate = 2 box at 1 box = 20 cm. Mga Conversion: 1 mula sa = salik sa. Ang mga pera ay hindi kailanman mga yunit.
+units_help	Mga code para sa mga label ng item (kg, piraso, bag). Ang bawat unit ay dapat mag-link — direkta o sa pamamagitan ng iba pang mga unit — sa isang pamantayan (kg · cm · ml · pc), hal. 1 crate = 2 box at 1 box = 20 cm. Mga Conversion: 1 mula sa = salik sa. Ang mga pera ay hindi kailanman mga yunit.
 we_owe_them	May utang tayo sa kanila
 who_unlocking	Sino ang nag-a-unlock?
 locked_word	Naka-lock
@@ -790,8 +790,8 @@ logo_default	Logo: Kumkaj markahan (default) — piliin ang sarili mo kung mayro
 tmpl_current	Kasalukuyan: {} — {}
 tmpl_selected	Napili: {} — {}
 setup_complete	Kumpleto na ang setup
-onboard_fresh_tmpl	Bago · {} — ang catalog ay nagsisimulang walang laman; magdagdag ng mga item sa menu sa mga item sa menu ng Menu, pagkatapos ay Tapos na.
-onboard_book_tmpl	Ledger · {} — magdagdag ng mga item sa menu at pambungad na credit, pagkatapos ay Tapos na.
+onboard_fresh_tmpl	Bago · {} — walang laman ang katalogo sa simula; magdagdag ng mga item sa Mga Item, pagkatapos ay Tapos na.
+onboard_book_tmpl	Ledger · {} — magdagdag ng mga item at pambungad na credit, pagkatapos ay Tapos na.
 onboard_template_tmpl	Pangalanan ang lugar kung gusto mo, pagkatapos ay piliin kung paano magsisimula.
 tmpl_blurb	Mga courier book at booking desk: mga consignor, carrier, day book, AWB.
 tmpl_how	Book parcels sa desk; Day book para sa araw na ito; mga tab para sa mga rate, party, ulat.
@@ -879,7 +879,7 @@ extra_per_kg_ph	Dagdag / kg
 first_amount_ph	Unang halaga
 first_kg_ph	Unang kg (slab)
 from_code_ph	Mula sa code (supot)
-item_name_lang_ph	Pangalan ng item sa menu ng menu — i-type ito sa iyong wika
+item_name_lang_ph	Pangalan ng item — i-type ito sa iyong wika
 login_id_opt_ph	Username (kinakailangan, natatangi)
 manager_pin_ph	Manager PIN para aprubahan (kung hindi mo mapapawalang-bisa)
 new_branch_name_ph	Bagong pangalan ng sangay

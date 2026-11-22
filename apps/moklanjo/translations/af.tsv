@@ -195,7 +195,7 @@ device_use_q	Hoe sal hierdie toestel gebruik word?
 choose_server	Kies 'n bediener
 choose_server_hint	Open 'n bestaande bediener of skep een vir 'n ander besigheid.
 create_new_server	Skep nuwe bediener
-open_server	Open
+open_server	Maak oop
 new_server_name_ph	Nuwe bediener naam (opsioneel)
 server_remove_pin_ph	Eienaar se PIN om 'n bediener te verwyder
 only_owner_remove_server	Slegs die Eienaar kan 'n bediener verwyder
