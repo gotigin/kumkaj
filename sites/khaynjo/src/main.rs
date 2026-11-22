@@ -56,6 +56,7 @@ const WHATSAPP_MESSAGE: &str = "Khaynjo demo — restaurant type, tables, city";
 const PRIVACY_PATH: &str = "/privacy";
 const TERMS_PATH: &str = "/terms/";
 const CANCELLATION_PATH: &str = "/cancellation";
+const PHOTO_CREDITS_PATH: &str = "/photo-credits";
 const SHOP_PATH: &str = "/shop";
 const ACCOUNT_PATH: &str = "/account";
 const PUBLIC_HOST: &str = "https://khaynjo.com";
@@ -1496,6 +1497,10 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(to_cancellation)).clicked(actions) {
             let url = self.site_url(cx, CANCELLATION_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_photo_credits)).clicked(actions) {
+            let url = self.site_url(cx, PHOTO_CREDITS_PATH);
             open_link(cx, &url);
         }
         if self.ui.button(cx, ids!(to_shop)).clicked(actions)

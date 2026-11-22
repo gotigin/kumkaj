@@ -908,21 +908,14 @@ script_mod! {
                 border_size: 1.
                 border_radius: 10.
             }
-            // CropToFill alone is a sharp rect — without an SDF radius the
-            // top corners poke past pic_frame's 10px round. Same trick as the
-            // app ProductCard thumb.
+            // Plain CropToFill (no custom SDF+texture pixel). The rounded
+            // pic_frame behind it keeps the look; a get_color() SDF Image
+            // shader was unique to this site and failed to compile on Mali-T830
+            // (webgl.compile_fail.vertex → blank cream canvas). Same visual
+            // intent, far fewer vertex/uniform slots.
             photo := Image{
                 width: Fill height: Fill
                 fit: ImageFit.CropToFill
-                draw_bg +: {
-                    radius: uniform(10.0)
-                    pixel: fn() {
-                        let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                        sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                        sdf.fill(self.get_color())
-                        return sdf.result
-                    }
-                }
             }
             soon := RoundedView{
                 visible: false
@@ -1739,6 +1732,7 @@ script_mod! {
                                         to_privacy := NavLink{text: "Privacy"}
                                         to_terms := NavLink{text: "Terms"}
                                         to_cancellation := NavLink{text: "Cancellation"}
+                                        to_photo_credits := NavLink{text: "Photo credits"}
                                         to_shop := NavLink{text: "Cloud shop"}
                                         to_account := NavLink{text: "Account"}
                                         to_play := NavLink{text: "Google Play"}
