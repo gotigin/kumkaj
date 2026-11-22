@@ -3,13 +3,13 @@ app_tagline	Mga aklat ng courier-agency + booking desk. Libreng offline.
 unlock	I-unlock
 pin_hint	Ang may-ari PIN ay nagsisimula bilang 0000
 sell	Pagbu-book
-nav_board	Board
-board	Board
+nav_board	Pisara
+board	Pisara
 park_draft	Itabi ang draft
 board_help	Mga bukas na draft (nananatili hanggang «I-discard» o «Kunin ang bayad») at ang mga naka-book na benta ngayong araw. Sa «Pagbu-book», i-tap ang «Itabi ang draft» sa gitna ng trabaho (dito naka-save, hindi sa books); i-tap ang draft para ituloy.
 board_empty	Wala pang card.
 board_park_nothing	Walang maitatabi — magdagdag ng mga singil o detalye ng booking
-board_parked	Itinabi sa «Board» — bakante na ang mesa
+board_parked	Itinabi sa «Pisara» — bakante na ang mesa
 board_draft	Burador
 board_booked	Naka-book
 board_filter_all	Lahat
@@ -20,7 +20,7 @@ board_summary_fmt	{total} card · {drafts} draft · {booked} na-book
 board_card_no_charges	Wala pang singil
 board_card_charges	singil
 board_card_booked	Pagbu-book
-board_draft_gone	Wala na sa «Board» ang draft na iyon
+board_draft_gone	Wala na sa «Pisara» ang draft na iyon
 board_draft_closed	Tapos na o na-discard na ang draft na iyon
 board_discard	I-discard
 board_discarded	Na-discard ang draft

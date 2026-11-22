@@ -3,13 +3,13 @@ app_tagline	Boky iraka + birao famandrihana. Maimaim-poana ivelan'ny aterineto.
 unlock	Manokatra
 pin_hint	Ny PIN an'ny tompony dia manomboka amin'ny 0000
 sell	Famandrihana
-nav_board	Board
-board	Board
+nav_board	Tabilao
+board	Tabilao
 park_draft	Tehirizo ho drafitra
 board_help	Drafitra tsy vita (tehirizina mandra-panindry «Ario» na «Manaova fandoavam-bola») sy ny varotra voafandrika androany. Amin'ny «Famandrihana», kitiho ny «Tehirizo ho drafitra» eo afovoan'ny asanao (voatahiry eto fa tsy ao amin'ny kaonty); tsindrio ny drafitra hanohizana izany.
 board_empty	Tsy mbola misy karatra.
 board_park_nothing	Tsy misy hotehirizina ho drafitra — ampio sarany na antsipirian'ny famandrihana
-board_parked	Voatahiry amin'ny «Board» — foana ny birao
+board_parked	Voatahiry amin'ny «Tabilao» — foana ny birao
 board_draft	Drafitra
 board_booked	namandrika
 board_filter_all	Rehetra
@@ -20,7 +20,7 @@ board_summary_fmt	{total} karatra · {drafts} drafitra · {booked} namandrika
 board_card_no_charges	Mbola tsy misy sarany fanampiny
 board_card_charges	sarany
 board_card_booked	Famandrihana
-board_draft_gone	Tsy ao amin'ny «Board» intsony io drafitra io
+board_draft_gone	Tsy ao amin'ny «Tabilao» intsony io drafitra io
 board_draft_closed	Efa vita na voafafa io drafitra io
 board_discard	Ario
 board_discarded	Voafafa ny drafitra
@@ -639,7 +639,7 @@ write_off_ap	Esory ny AP
 write_off_nil	Esory / fifandanjana aotra
 zone_ph	Zone (anarana avy amin'ny Rates)
 caption_today	ANIO
-caption_bookings	BOOKINGS
+caption_bookings	FAMANDRIHANA
 caption_payments_today	FANDOAVAM-BOLA ANIO
 caption_outstanding	FANDOAVAM-BOLA TSY VOALOA
 caption_bank	BANKY

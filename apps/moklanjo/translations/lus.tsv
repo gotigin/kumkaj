@@ -3,26 +3,26 @@ app_tagline	Courier-agency lehkhabu + booking desk a awm bawk. Offline ah a thla
 unlock	Hawng
 pin_hint	Neitu PIN chu 0000 atangin a tan
 sell	Booking
-nav_board	Board
-board	Board
+nav_board	Ban
+board	Ban
 park_draft	Draft angin save rawh
-board_help	Draft siam zawh loh («Discard» emaw «Pek la» emaw i tap thlenga dah) leh vawiin a booked sales te. «Booking tih a ni»-ah chuan i hnathawh lai takah «Draft angin save rawh» kha tap la (hetah hian save a ni a, account-ah save a ni lo); draft pakhat tap la, chhunzawm zel rawh.
+board_help	Draft siam zawh loh («Paih» emaw «Pek la» emaw i tap thlenga dah) leh vawiin a booked sales te. «Booking tih a ni»-ah chuan i hnathawh lai takah «Draft angin save rawh» kha tap la (hetah hian save a ni a, account-ah save a ni lo); draft pakhat tap la, chhunzawm zel rawh.
 board_empty	Card a la awm lo.
 board_park_nothing	Draft anga save tur engmah a awm lo — charges emaw booking details emaw add
-board_parked	«Board» ah saved — tunah chuan desk chu a khar tawh
-board_draft	Draft
+board_parked	«Ban» ah saved — tunah chuan desk chu a khar tawh
+board_draft	Ziak
 board_booked	Book a ni tawh
 board_filter_all	A vaiin
-board_filter_draft	Draft
+board_filter_draft	Ziak
 board_filter_booked	Book a ni tawh
 board_cols_fmt	{n} column-ah a awm
 board_summary_fmt	{total} card a ni · {drafts} draft a ni · {booked} booked a ni
 board_card_no_charges	Fees a la awm lo
 board_card_charges	fees pek a ni
-board_card_booked	Booked
-board_draft_gone	Chu draft chu «Board» ah a awm tawh lo
+board_card_booked	Book a ni tawh
+board_draft_gone	Chu draft chu «Ban» ah a awm tawh lo
 board_draft_closed	Chu draft chu tihfel emaw delete emaw a ni tawh
-board_discard	Discard
+board_discard	Paih
 board_discarded	Draft chu tihbo a ni
 buy	Pay out rawh
 books	Ni lehkha

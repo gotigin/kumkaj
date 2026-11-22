@@ -10,10 +10,10 @@ board_help	Ki jingthoh bym pat dep (la buh haduh ba phin da tap «Pynduh noh» l
 board_empty	Ym pat don kard.
 board_park_nothing	Ym don ei ei ban buh kum ka draft — pyndap ia ki jingsiew lane ki jingtip ba bniah shaphang ka jingpynrung kyrteng
 board_parked	La buh ha ka «Board» — ka miej ka thylli mynta
-board_draft	Draft
+board_draft	Ka jingthoh
 board_booked	La buh
 board_filter_all	Baroh
-board_filter_draft	Draft
+board_filter_draft	Ka jingthoh
 board_filter_booked	La buh
 board_cols_fmt	{n} ki tnum
 board_summary_fmt	{total} ki karta · {drafts} ki jingthoh · {booked} la buh
