@@ -929,7 +929,7 @@ duress_off	ଜରୁରୀ ଅନଲକ୍ PIN ବନ୍ଦ ଅଛି
 duress_saved	ଜରୁରୀ ଅନଲକ୍ PIN ସେଭ୍ ହେଲା
 duress_cleared	ଜରୁରୀ ଅନଲକ୍ PIN ବନ୍ଦ କରାଗଲା
 upi_amount_ph	UPI ରାଶି
-void	ବାତିଲ କରନ୍ତୁ
+void	ବାତିଲ
 write_off_ap	AP ଛାଡ଼ କରନ୍ତୁ
 write_off_heading	ଛାଡ଼ କରନ୍ତୁ (ଦେୟ ବିନା ନିଷ୍ପତ୍ତି)
 write_off_nil	ଛାଡ଼ କରନ୍ତୁ / ବାଲାନ୍ସ ଶୂନ୍ୟ
