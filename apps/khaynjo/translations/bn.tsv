@@ -172,7 +172,7 @@ kot_station_none	এখনো কোনো রান্নাঘর স্টে
 pos_tab_items	যোগ করা আইটেম
 pos_tab_payment	পেমেন্ট
 hold_send	আটকান
-hold_send_on	হোল্ড
+hold_send_on	আটকানো
 hold_send_meta	হোল্ড — এই KOT-এ নয়
 station_remove	স্টেশন সরান
 station_remove_ph	সরাতে তালিকায় একটি স্টেশন চাপুন

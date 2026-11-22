@@ -172,7 +172,7 @@ kot_station_none	अभी कोई रसोई स्टेशन नही�
 pos_tab_items	जोड़े गए आइटम
 pos_tab_payment	भुगतान
 hold_send	रोकें
-hold_send_on	होल्ड
+hold_send_on	रोका
 hold_send_meta	होल्ड — इस KOT में नहीं
 station_remove	स्टेशन हटाएँ
 station_remove_ph	हटाने के लिए सूची में स्टेशन दबाएँ

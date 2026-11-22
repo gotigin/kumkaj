@@ -171,8 +171,8 @@ kot_station_not_allowed	මුළුතැන්ගෙය භාවිතා ක
 kot_station_none	තවමත් මුළුතැන්ගෙයි ස්ථාන නොමැත — මුළුතැන්ගෙය හෝ සැකසීම් → ප්‍රදේශ · ස්ථාන යටතේ එකක් එක් කරන්න
 pos_tab_items	මෙනු අයිතම එකතු කරන ලදී
 pos_tab_payment	ගෙවීම
-hold_send	කුස්සියේ ඉඳන් ඉන්න
-hold_send_on	පවත්වන ලදී
+hold_send	රඳවන්න
+hold_send_on	රඳවා ඇත
 hold_send_meta	රඳවා ඇත - මෙය නොවේ KOT
 station_remove	ස්ථානය ඉවත් කරන්න
 station_remove_ph	එය ඉවත් කිරීමට ලැයිස්තුවේ ඇති ස්ථානයක් තට්ටු කරන්න
@@ -203,7 +203,7 @@ whatsapp_token_ph	ප්‍රවේශ ටෝකනය (එයම තබා ග
 whatsapp_template_ph	බිල්පත් සැකිල්ලේ නම (විකල්ප)
 whatsapp_template_lang_ph	සැකිල්ලේ භාෂාව (උදා. en)
 whatsapp_enable	සබල කරන්න
-whatsapp_disable	Off
+whatsapp_disable	අක්රියයි
 whatsapp_save	WhatsApp සුරකින්න
 whatsapp_test	සම්බන්ධතාවය පරීක්ෂා කරන්න
 whatsapp_disconnect	විසන්ධි කරන්න
@@ -485,7 +485,7 @@ till_voucher_issue_code_ph	නව වවුචර් කේතය
 split_evenly	ඒකාකාරව බෙදන්න
 waitlist	පොරොත්තු ලැයිස්තුව
 fire_course	පාඨමාලාව කුස්සියට යවන්න
-hold_item	කුස්සියේ ඉඳන් ඉන්න
+hold_item	රඳවන්න
 waiter_call	වේටර් අමතන්න
 waitlist_add	පොරොත්තු ලැයිස්තුවට එක් කරන්න
 floor_view_grid	ජාලකය
@@ -899,22 +899,22 @@ till_to_bank	මුදල් ලේඛනය → බැංකුව
 units_heading	ඒකක
 unlock_after_pairing	PIN ඇතුලත් කරන්න
 unlock_with_login	පුරනය වීමත් සමඟ අගුළු හරින්න
-or_unlock_shop_login	[si] Or unlock with shop login
-shop_login_help	[si] Optional: unlock with this shop's staff username and password instead of PIN (works offline).
-cloud_account_title	[si] Khaynjo account
-cloud_account_help	[si] Register or sign in with the same account as khaynjo.com/account. Creates your cloud id and free plan.
-cloud_name_ph	[si] Name (optional)
-cloud_email_ph	[si] Email
-cloud_password_ph	[si] Password
-cloud_continue	[si] Continue
-cloud_forgot	[si] Forgot password?
-cloud_web_methods	[si] Google and other methods on the website
-cloud_signing_in	[si] Signing in…
-cloud_sending_reset	[si] Sending reset link…
-cloud_forgot_sent	[si] If that email has an account, a reset link is on the way.
-cloud_welcome	[si] Signed in as {user} · {plan}
-cloud_created	[si] Account created. Check your email to verify when you can.
-cloud_cancel	[si] Cancel
+or_unlock_shop_login	නැතහොත් සාප්පු ලොගින් එකෙන් අගුළු හරින්න
+shop_login_help	විකල්ප: PIN වෙනුවට මෙම සාප්පුවේ කාර්ය මණ්ඩල පරිශීලක නාමය සහ මුරපදයෙන් අගුළු හරින්න (ඔෆ්ලයින් ක්‍රියා කරයි).
+cloud_account_title	ඛයින්ජෝ ගිණුම
+cloud_account_help	khaynjo.com/account එකේම ගිණුමෙන් ලියාපදිංචි වන්න හෝ පුරන්න. ඔබේ ක්ලවුඩ් හැඳුනුම සහ නොමිලේ සැලැස්ම සාදයි.
+cloud_name_ph	නම (විකල්ප)
+cloud_email_ph	ඊමේල්
+cloud_password_ph	මුරපදය
+cloud_continue	දිගටම කරගෙන යන්න
+cloud_forgot	මුරපදය අමතකද?
+cloud_web_methods	වෙබ් අඩවියේ Google සහ අනෙකුත් ක්‍රම
+cloud_signing_in	පුරන ගනිමින්…
+cloud_sending_reset	යළි සැකසුම් සබැඳිය යවමින්…
+cloud_forgot_sent	එම ඊමේල් ගිණුමක් තිබේ නම් යළි සැකසුම් සබැඳියක් යවා ඇත.
+cloud_welcome	{user} · {plan} ලෙස පුරා ඇත
+cloud_created	ගිණුම සාදන ලදී. හැකි විට සත්‍යාපනයට ඔබේ ඊමේල් පරීක්ෂා කරන්න.
+cloud_cancel	අවලංගු කරන්න
 unmark	සලකුණු ඉවත් කරන්න
 update_my_password	මගේ මුරපදය යාවත්කාලීන කරන්න
 update_my_pin	මගේ පුරනය යාවත්කාලීන කරන්න
@@ -1377,8 +1377,8 @@ opening_client	සේවාලාභියා විවෘත කරමින්
 preparing_desk	මේසය සූදානම් කරමින්...
 opening_server	සේවාදායකය විවෘත කරමින්...
 creating_server	සේවාදායකය නිර්මාණය කරමින්...
-setup_restoring	Restoring backup…
-setup_restored	Restored — unlock with the Owner PIN from that backup.
+setup_restoring	උපස්ථය යළි පිහිටුවමින්…
+setup_restored	යළි පිහිටුවන ලදී — එම උපස්ථයේ හිමිකරු PIN එකෙන් අගුළු හරින්න.
 split_help	එක් අමුත්තෙක් ගෙවන · {n} තෝරාගත් කෑම වර්ග තට්ටු කරන්න
 split_send_first	පළමුව KOT යවන්න - කුස්සියේ ඇති කෑම වර්ග පමණක් වෙනම අමුත්තන්ගේ බිල්පතකට යා හැකිය
 split_pick_some	වෙනම අමුත්තන්ගේ බිල්පත සඳහා පිඟන් කෝප්ප පළමුව තට්ටු කරන්න
