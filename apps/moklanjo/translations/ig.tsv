@@ -535,7 +535,7 @@ backup_copy_overdue	Ọ dịghị oyiri nchekwa hapụrụ ngwaọrụ a ruo ụ
 backup_copy_failed	Enweghị ike ichekwa oyiri nchekwa n'ebe ahụ — họrọ ebe ọzọ
 clock_off	Elekere ngwaọrụ a dị nkeji {min} n'azụ sava ụlọ ahịa — tinye oge ziri ezi na ngwaọrụ a
 printers_heading	Ndị na-ebi akwụkwọ na ngwaọrụ a
-printers_help	Chọta ezigbo ndị nbipute, wee họrọ nnata ma ọ bụ akara AWB. Ọrụ ọ bụla nwere obosara nke ya, eserese ma ọ bụ odida obodo, yana otu esi ezipụ bytes. Akara akara na-ebipụta koodu mkpọchi. Ebe efu = ebipụtala ya.
+printers_help	Chọta ezigbo ndị nbipute, wee họrọ nnata ma ọ bụ akara AWB. Ọrụ ọ bụla nwere obosara nke ya, eserese ma ọ bụ odida obodo, yana otu esi ezipụ bytes. Akara na-ebipụta koodu mkpọchi. Ebe efu = ebipụtala ya.
 job_width	Obosara ihe (mm)
 job_width_ph	Ma ọ bụ pịnye obosara, 40-210 mm
 job_layout	Nhazi
@@ -688,7 +688,7 @@ amend_help	Họrọ ahịa a ga-edozi, kagbuo kpamkpam, ma ọ bụ kwụghachi.
 applied_total_cap	NGỤKỌTA ETINYERE
 bank_balance	Nguzozi ụlọ akụ
 bank_net_today	Net ụlọ akụ taa
-branch_export_help	Mbupụ na-ede foto otu ụbọchị n'ime nchekwa nchekwa ma detuo ya na bọọdụ. Ka ibubata ụbọchị ọpụpụ ọzọ, chekwaa faịlụ ya dị ka import_branch_snapshot.json na folda ahụ, wee pịa Bubata.
+branch_export_help	Mbupụ na-ede foto otu ụbọchị n'ime nchekwa ma detuo ya na bọọdụ. Ka ibubata ụbọchị ọpụpụ ọzọ, chekwaa faịlụ ya dị ka import_branch_snapshot.json na folda ahụ, wee pịa Bubata.
 brand_shown_help	A na-egosi ya na ihuenyo n'ime ngwa. Aha ngwa arụnyere na akara na ngwaọrụ a na-anọ dị ka ndepụta ikpo okwu.
 app_icon	Akara ngwa
 logo_help	Akara ụlọ ahịa nhọrọ na ihuenyo n'ime ngwa.

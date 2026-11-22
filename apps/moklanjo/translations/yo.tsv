@@ -311,7 +311,7 @@ clear_photo	Ko aworan kuro
 clear_stamp	Ko ontẹ kuro
 clear_payment_qr	Ko owo sisan QR kuro
 print_faces	Awọn oju titẹjade (iwe-ẹri / iwe-aṣẹ akoko)
-print_faces_help	Ontẹ iyan ati isanwo QR lẹgbẹẹ aami rẹ lori awọn gbigba gbigba ati awọn owo akoko.
+print_faces_help	Ontẹ iyan ati isanwo QR lẹgbẹẹ aami rẹ lori awọn gbigba ati awọn owo akoko.
 awb_pools_heading	Ti ngbe AWB nọmba adagun
 add_awb_pool	Fi AWB pool
 awb_pool_carrier_ph	Ti ngbe party orukọ
@@ -688,7 +688,7 @@ amend_help	Yan tita lati tunse, ofo, tabi agbapada. Awọn atunṣe tọju itan 
 applied_total_cap	AWURE LAPAPO
 bank_balance	Bank iwontunwonsi
 bank_net_today	Bank net loni
-branch_export_help	Si ilẹ okeere kọ aworan aworan ọjọ kan sinu folda awọn afẹyinti ati daakọ rẹ si agekuru agekuru. Lati gbe ọjọ ijade miiran wọle, fi faili rẹ pamọ bi import_branch_snapshot.json ninu folda yẹn, lẹhinna tẹ Gbe wọle ni kia kia.
+branch_export_help	Si ilẹ okeere kọ aworan ọjọ kan sinu folda awọn afẹyinti ati daakọ rẹ si agekuru. Lati gbe ọjọ ijade miiran wọle, fi faili rẹ pamọ bi import_branch_snapshot.json ninu folda yẹn, lẹhinna tẹ Gbe wọle ni kia kia.
 brand_shown_help	Ti han loju iboju inu ohun elo naa. Orukọ app ti a fi sori ẹrọ ati aami lori ẹrọ yii duro bi atokọ pẹpẹ.
 app_icon	App aami
 logo_help	Iyan itaja ami lori awọn iboju ninu awọn app.

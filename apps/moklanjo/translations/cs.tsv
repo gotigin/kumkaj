@@ -790,7 +790,7 @@ logo_default	Logo: značka Kumkaj (výchozí) — vyberte si vlastní, pokud ně
 tmpl_current	Aktuální: {} — {}
 tmpl_selected	Vybráno: {} — {}
 setup_complete	Nastavení dokončeno
-onboard_fresh_tmpl	Fresh · {} — katalog začíná prázdný; přidat položky do položky Položky a poté Hotovo.
+onboard_fresh_tmpl	Fresh · {} — katalog začíná prázdný; přidat položky v sekci Položky a poté Hotovo.
 onboard_book_tmpl	Rezervovat · {} — přidejte položky a úvodní kredit a poté Hotovo.
 onboard_template_tmpl	Pokud chcete, pojmenujte místo a poté vyberte, jak začít.
 tmpl_blurb	Kurýrní knihy a rezervační pult: odesílatelé, dopravci, denní kniha, AWB.

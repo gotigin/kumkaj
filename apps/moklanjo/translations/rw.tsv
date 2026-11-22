@@ -688,7 +688,7 @@ amend_help	Hitamo igurisha ryo gukosora, gusiba burundu, cyangwa gusubiza. Gukos
 applied_total_cap	IGITERANYO CYASHYIZWEHO
 bank_balance	Umusaruro wa banki
 bank_net_today	Net ya banki uyu munsi
-branch_export_help	Kohereza ibicuruzwa byandika umunsi umwe mububiko bwububiko hanyuma ukabukoporora kuri clip clip. Kuzana undi munsi wo gusohoka, bika dosiye yayo nka import_branch_snapshot.json muri ubwo bubiko, hanyuma ukande Kuzana.
+branch_export_help	Kohereza ibicuruzwa byandika umunsi umwe mububiko hanyuma ukabukoporora kuri clipboard. Kuzana undi munsi wo gusohoka, bika dosiye yayo nka import_branch_snapshot.json muri ubwo bubiko, hanyuma ukande Kuzana.
 brand_shown_help	Bigaragara ku birubuga byo muri porogaramu. Izina rya porogaramu yashyizwemo n'ikimenyetso kuri iki gikoresho biguma nk'uko byanditswe ku rubuga.
 app_icon	Ikimenyetso cya porogaramu
 logo_help	Ikimenyetso cy'iduka bitari ngombwa ku birubuga byo muri porogaramu.
