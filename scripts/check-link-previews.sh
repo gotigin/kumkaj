@@ -38,6 +38,7 @@ wadhu.com|/account|https://wadhu.com
 kumkaj.com|/|https://kumkaj.com
 kumkaj.com|/privacy|https://kumkaj.com
 kumkaj.com|/terms|https://kumkaj.com
+kumkaj.com|/account|https://kumkaj.com
 kumkaj.com|/shop|https://kumkaj.com
 kumkaj.com|/cancellation|https://kumkaj.com
 khaynjo.com|/|https://khaynjo.com
@@ -46,6 +47,7 @@ khaynjo.com|/terms|https://khaynjo.com
 khaynjo.com|/account|https://khaynjo.com
 khaynjo.com|/shop|https://khaynjo.com
 khaynjo.com|/cancellation|https://khaynjo.com
+khaynjo.com|/photo-credits|https://khaynjo.com
 moklanjo.com|/|https://moklanjo.com
 moklanjo.com|/privacy|https://moklanjo.com
 moklanjo.com|/terms|https://moklanjo.com
