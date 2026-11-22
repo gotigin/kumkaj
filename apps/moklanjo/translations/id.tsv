@@ -157,7 +157,7 @@ breadth_cm_ph	Lebar cm
 height_cm_ph	Tinggi cm
 chargeable_kg	Kg ditagih
 awb_label	AWB
-booking_help	Walk-in: tujuan → timbang → pilih tarif → booking akun/tunai → bayar. AWB tercetak di struk. Booking berikutnya mengosongkan meja.
+booking_help	Pengirim + penerima (kosong OK) → tujuan → timbang → pilih tarif → Akun/Tunai → bayar. Di tengah: «Tunda sebagai draf» (simpan di Papan, bukan buku) lalu layani pelanggan berikutnya; ketuk draf di Papan untuk lanjut. AWB tercetak di struk. Booking berikutnya mengosongkan meja.
 cart_empty_hint	Meja kosong — atur tujuan & berat, ketuk ADD pada tarif, lalu bayar.
 team	Tim
 team_pins	Tim & PIN

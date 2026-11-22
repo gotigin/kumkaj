@@ -157,7 +157,7 @@ breadth_cm_ph	cm
 height_cm_ph	wys. cm
 chargeable_kg	Płatne kg
 awb_label	AWB
-booking_help	Nadawca + odbiorca (puste OK) → miejsce docelowe → zważyć → stawka pobrania → Konto/Gotówka → zapłacić. AWB drukuje na paragonie. Następna rezerwacja czyści biurko. Zaokrąglone początki równe Zastosowane — edytuj tylko w celu zaokrąglenia rachunku.
+booking_help	Nadawca + odbiorca (puste OK) → cel → zważ → wybierz stawkę → Konto/Gotówka → zapłać. W trakcie: «Odłóż szkic» (zapisuje na Tablicy, nie w księgach), potem obsłuż kolejnego klienta; stuknij szkic na Tablicy, by wznowić. AWB drukuje się na paragonie. Następna rezerwacja czyści biurko.
 cart_empty_hint	Puste biurko — opcjonalny nadawca/odbiorca, ustaw miejsce docelowe i wagę, dotknij DODAJ stawkę, a następnie zapłać.
 team	Zespół
 team_pins	Zespół & PINs

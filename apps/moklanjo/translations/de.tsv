@@ -157,7 +157,7 @@ breadth_cm_ph	Breite cm
 height_cm_ph	Höhe cm
 chargeable_kg	Abrechnungs-kg
 awb_label	AWB
-booking_help	Laufkundschaft: Ziel → wiegen → Tarif wählen → Konto-/Barbuchung → zahlen. AWB wird auf dem Beleg gedruckt. Nächste Buchung leert den Schalter.
+booking_help	Absender + Empfänger (leer OK) → Ziel → wiegen → Tarif wählen → Konto/Bar → zahlen. Zwischendurch: «Entwurf parken» (speichert auf der Pinnwand, nicht in den Büchern), dann den nächsten Kunden bedienen; Entwurf auf der Pinnwand tippen zum Fortsetzen. AWB wird auf dem Beleg gedruckt. Die nächste Buchung räumt den Schreibtisch.
 cart_empty_hint	Schalter leer – Ziel & Gewicht setzen, bei einem Tarif ADD tippen, dann zahlen.
 team	Team
 team_pins	Team und PIN

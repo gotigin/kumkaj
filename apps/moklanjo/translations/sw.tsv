@@ -157,7 +157,7 @@ breadth_cm_ph	Upana cm
 height_cm_ph	Urefu cm
 chargeable_kg	Kg ya kulipia
 awb_label	AWB
-booking_help	Mteja wa moja kwa moja: marudio → pima → chagua kiwango → akaunti/taslimu → lipa. AWB huchapishwa kwenye risiti. Uhifadhi unaofuata husafisha dawati.
+booking_help	Mtosaji + mpokeaji (tupu OK) → unakoenda → pima → chagua bei → Akaunti/Taslimu → lipa. Katikati: «Weka kama rasimu» (huhifadhi kwenye Ubao, si vitabu) kisha hudumia mteja next; gusa rasimu kwenye Ubao kuendelea. AWB huchapishwa kwenye risiti. Uhifadhi unaofuata husafisha dawati.
 cart_empty_hint	Dawati liko wazi — weka marudio na uzito, gusa ADD kwenye kiwango, kisha lipa.
 team	Timu
 team_pins	Timu na PIN

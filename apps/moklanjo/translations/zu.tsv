@@ -90,7 +90,7 @@ rounded	I-ROUNDED
 split	Hlukanisa
 counter	Ikhawunta
 parcel	Iphasela
-order	I-oda yokudlela
+order	I-oda
 sales	Ukubhuka
 sales_refunds	Ukubhuka nokubuyiselwa imali
 day_close	Ukuvalwa kosuku
@@ -634,7 +634,7 @@ duress_off	Ukuvula izimo eziphuthumayo PIN kuvaliwe
 duress_saved	Ukuvula izimo eziphuthumayo PIN kulondoloziwe
 duress_cleared	Ukuvula izimo eziphuthumayo PIN kuvaliwe
 vehicle_ph	Imoto
-void	Ukuthengisa okuyize
+void	Chitha
 write_off_ap	Sula i-AP
 write_off_nil	Susa / awukho ibhalansi
 zone_ph	Indawo (igama elisuka kuzilinganiso)

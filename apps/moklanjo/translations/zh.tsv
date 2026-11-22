@@ -157,7 +157,7 @@ breadth_cm_ph	宽 cm
 height_cm_ph	高 cm
 chargeable_kg	计费重 kg
 awb_label	运单号
-booking_help	柜台寄件：目的地 → 称重 → 选费率 → 记账/现金 → 付款。运单号印在小票上。下一单清空柜台。
+booking_help	寄件人 + 收件人（可空）→ 目的地 → 称重 → 选单价 → 挂账/现金 → 付款。中途：「存为草稿」（存到看板，不进账本）再接待下一位；点看板上的草稿继续。运单号打在收据上。下一票清空柜台。
 cart_empty_hint	柜台为空 — 设置目的地和重量，在费率上点 ADD，然后付款。
 team	团队
 team_pins	团队与密码

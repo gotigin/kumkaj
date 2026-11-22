@@ -157,7 +157,7 @@ breadth_cm_ph	Breedte cm
 height_cm_ph	Hoogte cm
 chargeable_kg	Te betalen kg
 awb_label	AWB
-booking_help	Binnenlopen: bestemming → wegen → tarief kiezen → op rekening/contant → betalen. AWB wordt op de bon gedrukt. Volgende boeking leegt de balie.
+booking_help	Afzender + ontvanger (leeg OK) → bestemming → wegen → tarief kiezen → Rekening/Contant → betalen. Tussendoor: «Concept parkeren» (bewaart op het Bord, niet in de boeken) en help de volgende klant; tik het concept op het Bord om verder te gaan. AWB wordt op de bon geprint. De volgende boeking maakt het bureau leeg.
 cart_empty_hint	Balie leeg – zet bestemming & gewicht, tik ADD bij een tarief en betaal.
 team	Team
 team_pins	Team en PIN

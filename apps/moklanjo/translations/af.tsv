@@ -634,7 +634,7 @@ duress_off	Noodontgrendelings-PIN is uit
 duress_saved	Noodontgrendelings-PIN gestoor
 duress_cleared	Noodontgrendelings-PIN geskakel af
 vehicle_ph	Voertuig
-void	Nie-geldig gemaak
+void	Maak nietig
 write_off_ap	Skryf AP af
 write_off_nil	Skryf af / nul balans
 zone_ph	Sone (naam uit Tariewe)

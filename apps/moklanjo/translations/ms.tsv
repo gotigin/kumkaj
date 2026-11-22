@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kg boleh dicaj
 awb_label	AWB
-booking_help	Konsainor + penerima (kosong OK) → destinasi → timbang → kadar pilih → Akaun/Tunai → bayar. AWB mencetak pada resit. Tempahan seterusnya mengosongkan meja. Dibundarkan bermula sama dengan Digunakan — edit hanya untuk membulatkan bil.
+booking_help	Pengirim + penerima (kosong OK) → destinasi → timbang → pilih kadar → Akaun/Tunai → bayar. Pertengahan: «Ketepikan draf» (simpan di Papan, bukan lejar) lalu layani pelanggan seterusnya; ketik draf di Papan untuk sambung. AWB dicetak pada resit. Tempahan seterusnya mengosongkan meja.
 cart_empty_hint	Meja kosong — konsainor/penerima pilihan, tetapkan destinasi & berat, ketik TAMBAH pada kadar, kemudian bayar.
 team	Pasukan
 team_pins	Pasukan & PINs

@@ -157,7 +157,7 @@ breadth_cm_ph	Ancho cm
 height_cm_ph	Alto cm
 chargeable_kg	Kg facturable
 awb_label	AWB
-booking_help	Sin cita: destino → pesar → elegir tarifa → envío a cuenta/efectivo → pagar. El AWB se imprime en el recibo. El siguiente envío limpia el mostrador.
+booking_help	Remitente + destinatario (en blanco OK) → destino → pesar → elegir tarifa → Cuenta/Efectivo → pagar. A medias: «Aparcar borrador» (guarda en el Tablero, no en los libros) y atienda al siguiente cliente; toque el borrador en el Tablero para seguir. El AWB se imprime en el recibo. La siguiente reserva libera el escritorio.
 cart_empty_hint	Mostrador vacío: pon destino y peso, toca ADD en una tarifa y paga.
 team	Equipo
 team_pins	Equipo y PIN

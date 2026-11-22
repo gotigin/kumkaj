@@ -88,9 +88,9 @@ applied	Inilapat
 note_ph	Tandaan (opsyonal)
 rounded	BILOG
 split	Hatiin
-counter	Counter
+counter	Bancong
 parcel	Parsela
-order	Order ng restaurant
+order	Order
 sales	Mga booking
 sales_refunds	Mga booking at refund
 day_close	Pagsasara ng araw
@@ -634,7 +634,7 @@ duress_off	Naka-off ang emergency unlock PIN
 duress_saved	Na-save ang emergency unlock PIN
 duress_cleared	Naka-off ang emergency unlock PIN
 vehicle_ph	Sasakyan
-void	Walang bisa sa pagbebenta
+void	Kanselahin
 write_off_ap	Isulat ang AP
 write_off_nil	Isulat / walang balanse
 zone_ph	Zone (pangalan mula sa Rates)

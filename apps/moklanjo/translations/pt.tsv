@@ -157,7 +157,7 @@ breadth_cm_ph	Largura cm
 height_cm_ph	Altura cm
 chargeable_kg	Kg cobrável
 awb_label	AWB
-booking_help	Balcão: destino → pesar → escolher tarifa → envio em conta/dinheiro → pagar. O AWB sai no recibo. O próximo envio limpa o balcão.
+booking_help	Remetente + destinatário (em branco OK) → destino → pesar → escolher tarifa → Conta/Dinheiro → pagar. A meio: «Pôr em espera» (guarda no Quadro, não nos livros) e atenda o próximo cliente; toque o rascunho no Quadro para continuar. O AWB imprime no recibo. A próxima reserva limpa a secretária.
 cart_empty_hint	Balcão vazio — defina destino e peso, toque ADD numa tarifa e pague.
 team	Equipa
 team_pins	Equipa e PIN

@@ -157,7 +157,7 @@ breadth_cm_ph	Largeur cm
 height_cm_ph	Hauteur cm
 chargeable_kg	Kg facturable
 awb_label	AWB
-booking_help	Sans rendez-vous : destination → peser → choisir le tarif → envoi au compte/espèces → payer. L'AWB s'imprime sur le reçu. L'envoi suivant vide le comptoir.
+booking_help	Expéditeur + destinataire (vide OK) → destination → peser → choisir le tarif → Compte/Espèces → payer. En cours: «Mettre en attente» (enregistre sur le Tableau, pas dans les livres) puis servir le client suivant; touchez le brouillon sur le Tableau pour reprendre. L’AWB s’imprime sur le reçu. La réservation suivante libère le bureau.
 cart_empty_hint	Comptoir vide : mettez destination et poids, touchez ADD sur un tarif, puis payez.
 team	Équipe
 team_pins	Équipe et PIN

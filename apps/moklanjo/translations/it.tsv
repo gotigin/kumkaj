@@ -157,7 +157,7 @@ breadth_cm_ph	Larghezza cm
 height_cm_ph	Altezza cm
 chargeable_kg	Kg addebitabile
 awb_label	AWB
-booking_help	Senza appuntamento: destinazione → pesa → scegli tariffa → a conto/contanti → paga. L'AWB si stampa sulla ricevuta. La prossima spedizione svuota il banco.
+booking_help	Mittente + destinatario (vuoto OK) → destinazione → pesa → scegli tariffa → Conto/Contanti → paga. A metà: «Metti in attesa» (salva sulla Bacheca, non nei libri) poi servi il cliente successivo; tocca la bozza sulla Bacheca per riprendere. L’AWB si stampa sulla ricevuta. La prenotazione successiva libera la scrivania.
 cart_empty_hint	Banco vuoto — imposta destinazione e peso, tocca ADD su una tariffa, poi paga.
 team	Squadra
 team_pins	Squadra e PIN
