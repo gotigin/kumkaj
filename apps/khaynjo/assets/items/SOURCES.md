@@ -491,3 +491,11 @@ need the author and licence named.
 - author: see Commons file page
 - retrieved: 2026-11-22
 - lane: L14
+
+## Replaced 2026-11-22 (L15 pesto-pasta pepperoni-pizza marinara-sauce)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `pizza-pasta/pesto-pasta.webp` | bowl of green pesto sauce with no pasta | Pasta al pesto fatto in casa.jpg | Marco Del Torchio 95 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Pasta_al_pesto_fatto_in_casa.jpg | resized, WebP |
+| `pizza-pasta/pepperoni-pizza.webp` | hand holding a slice in a Reggio's branded sleeve | Pepperoni Pizza from Fellini’s Pizza.jpg | BullDawg2021 | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/wiki/File:Pepperoni_Pizza_from_Fellini%E2%80%99s_Pizza.jpg | resized, WebP |
+| `sides-dips/marinara-sauce.webp` | ravioli covered in tomato sauce | Fresh Tomato Sauce (Unsplash).jpg | Unsplash / CC0 via Commons | CC0 | https://commons.wikimedia.org/wiki/File:Fresh_Tomato_Sauce_(Unsplash).jpg | resized, WebP |
