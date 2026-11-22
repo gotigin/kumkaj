@@ -219,8 +219,9 @@ const ROWS: [(&[LiveId], f64); 13] = [
     (ids!(offline.offline_row), 640.0),
     (ids!(start.close_cta.buttons), 440.0),
     (ids!(footer.footer_row), 480.0),
-    // Privacy · Terms · kumkaj.com overflow a phone content column.
-    (ids!(footer.footer_links), 420.0),
+    // Privacy · Terms · Cancellation · Cloud shop · Account · kumkaj.com
+    // overflow a phone content column when kept on one row.
+    (ids!(footer.footer_links), 520.0),
 ];
 /// The weigh toy's four steppers: the name sits above − value + when the
 /// card has no room for a label column (under 340 px of content).
