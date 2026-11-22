@@ -962,7 +962,7 @@ expenses_word	Giderler
 feature_access_help	Seçili personelin özellik erişimi (ekledikten sonra dokunun)
 footer_local	Yerel SQLite · Sonsuza dek ücretsiz · Bulut yok
 fresh_book_khaynjo	Sıfırdan = boş menü (yemekleri sonra Menü'de ekleyin). Defter = aşağıya açılış ürünlerini ve size borcu olanı yazın.
-fresh_selected	“Yeni” seçili — katalog boş kalacak. Hazır olduğunuzda “Tamam”'a dokunun.
+fresh_selected	“Yeni” seçili — katalog boş kalacak. Hazır olduğunuzda “Tamam”a dokunun.
 gross_word	Brüt
 how_start	Nasıl başlamak istersiniz?
 kot_print_help_khaynjo	KOT gönderildiğinde — tezgahtan veya garson cihazından — mutfak kağıdı burada kendiliğinden yazdırılır.
