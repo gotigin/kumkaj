@@ -566,7 +566,7 @@ your_brand	你的品牌（應用內）
 your_categories	你的分類
 account_kind	帳戶類型（點選其一）
 actual_total_cap	實際總額
-amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。
+amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。四捨五入合計起初等於已套用金額——僅在需要四捨五入時改動。作廢與退款可能需要業主或經理 PIN（在上方輸入；與您的姓名一併記錄）。
 applied_total_cap	應付總額
 bank_balance	銀行餘額
 bank_net_today	今日銀行淨額

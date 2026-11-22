@@ -565,7 +565,7 @@ your_brand	Votre marque (dans l'app)
 your_categories	Vos catégories
 account_kind	Type de compte (touchez-en un)
 actual_total_cap	TOTAL RÉEL
-amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modifications gardent tout l'historique.
+amend_help	Sélectionnez une vente à modifier, annuler ou rembourser. Les modifications gardent tout l’historique. Le total arrondi commence égal à l’appliqué — ne changez que pour arrondir. Annuler et rembourser peuvent exiger le PIN propriétaire ou responsable (saisi ci-dessus ; enregistré avec votre nom).
 applied_total_cap	TOTAL APPLIQUÉ
 bank_balance	Solde bancaire
 bank_net_today	Net bancaire du jour

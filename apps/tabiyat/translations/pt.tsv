@@ -565,7 +565,7 @@ your_brand	A sua marca (na app)
 your_categories	As suas categorias
 account_kind	Tipo de conta (toque num)
 actual_total_cap	TOTAL REAL
-amend_help	Selecione uma venda para alterar, anular ou reembolsar. As alterações guardam todo o histórico.
+amend_help	Selecione uma venda para alterar, anular ou reembolsar. As alterações guardam todo o histórico. O total arredondado começa igual ao aplicado — edite só para arredondar. Anular e reembolsar podem exigir o PIN de proprietário ou gerente (escreva acima; fica registado com o seu nome).
 applied_total_cap	TOTAL APLICADO
 bank_balance	Saldo bancário
 bank_net_today	Líquido bancário de hoje

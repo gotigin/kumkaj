@@ -565,7 +565,7 @@ your_brand	あなたのブランド（アプリ内）
 your_categories	あなたのカテゴリ
 account_kind	口座の種類（1つタップ）
 actual_total_cap	実合計
-amend_help	修正・取消・返金する売上を選んでください。修正は全履歴を保持します。
+amend_help	修正・取消・返金する売上を選んでください。修正は全履歴を保持します。丸め合計は適用額と同じ値から始まります—丸めのためだけ編集してください。取消と返金にはオーナーまたはマネージャーのPINが必要な場合があります（上に入力；氏名とともに記録）。
 applied_total_cap	適用合計
 bank_balance	銀行残高
 bank_net_today	本日の銀行純額

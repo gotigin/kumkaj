@@ -565,7 +565,7 @@ your_brand	Markanız (uygulamada)
 your_categories	Kategorileriniz
 account_kind	Hesap türü (birine dokun)
 actual_total_cap	GERÇEK TOPLAM
-amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tam geçmişi korur.
+amend_help	Düzeltmek, iptal etmek veya iade etmek için bir satış seçin. Düzeltmeler tam geçmişi korur. Yuvarlanmış toplam, uygulananla eşit başlar — yalnızca yuvarlamak için değiştirin. İptal ve iade Sahip veya Yönetici PIN’i isteyebilir (yukarıya yazın; adınızla kaydedilir).
 applied_total_cap	UYGULANAN TOPLAM
 bank_balance	Banka bakiyesi
 bank_net_today	Bugünkü banka neti

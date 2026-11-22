@@ -565,7 +565,7 @@ your_brand	Merek Anda (di aplikasi)
 your_categories	Kategori Anda
 account_kind	Jenis akun (ketuk satu)
 actual_total_cap	TOTAL AKTUAL
-amend_help	Pilih penjualan untuk diubah, dibatalkan, atau dikembalikan. Perubahan menyimpan riwayat lengkap.
+amend_help	Pilih penjualan untuk diubah, dibatalkan, atau dikembalikan. Perubahan menyimpan riwayat lengkap. Total dibulatkan mulai sama dengan yang diterapkan — ubah hanya untuk membulatkan. Pembatalan dan pengembalian mungkin perlu PIN Pemilik atau Manajer (ketik di atas; dicatat dengan nama Anda).
 applied_total_cap	TOTAL DITERAPKAN
 bank_balance	Saldo bank
 bank_net_today	Neto bank hari ini

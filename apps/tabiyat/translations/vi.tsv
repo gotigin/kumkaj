@@ -565,7 +565,7 @@ your_brand	Thương hiệu của bạn (trong app)
 your_categories	Danh mục của bạn
 account_kind	Loại tài khoản (chạm một)
 actual_total_cap	TỔNG THỰC
-amend_help	Chọn một đơn để sửa, hủy hoặc hoàn tiền. Sửa đổi giữ toàn bộ lịch sử.
+amend_help	Chọn một đơn để sửa, hủy hoặc hoàn tiền. Sửa đổi giữ toàn bộ lịch sử. Tổng làm tròn bắt đầu bằng số đã áp dụng — chỉ sửa để làm tròn. Hủy và hoàn có thể cần PIN Chủ sở hữu hoặc Quản lý (gõ phía trên; ghi kèm tên bạn).
 applied_total_cap	TỔNG ÁP DỤNG
 bank_balance	Số dư ngân hàng
 bank_net_today	Ròng ngân hàng hôm nay

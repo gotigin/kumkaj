@@ -565,7 +565,7 @@ your_brand	Deine Marke (in der App)
 your_categories	Deine Kategorien
 account_kind	Kontoart (eines tippen)
 actual_total_cap	TATSÄCHLICH GESAMT
-amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten. Korrekturen behalten den vollen Verlauf.
+amend_help	Wählen Sie einen Verkauf zum Korrigieren, Stornieren oder Erstatten. Korrekturen behalten die volle Historie. Gerundete Summe startet gleich der angewandten — nur zum Runden ändern. Storno und Erstattung können eine Owner- oder Manager-PIN brauchen (oben eingeben; mit Ihrem Namen vermerkt).
 applied_total_cap	ANGEWENDET GESAMT
 bank_balance	Bankguthaben
 bank_net_today	Bank-Netto heute

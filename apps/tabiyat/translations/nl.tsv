@@ -565,7 +565,7 @@ your_brand	Jouw merk (in de app)
 your_categories	Jouw categorieën
 account_kind	Rekeningsoort (tik er een)
 actual_total_cap	WERKELIJK TOTAAL
-amend_help	Selecteer een verkoop om te wijzigen, annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis.
+amend_help	Selecteer een verkoop om te wijzigen, te annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis. Afgerond totaal start gelijk aan toegepast — wijzig alleen om af te ronden. Ongeldig maken en terugbetalen kunnen een Owner- of Manager-PIN vragen (hierboven typen; vastgelegd met uw naam).
 applied_total_cap	TOEGEPAST TOTAAL
 bank_balance	Banksaldo
 bank_net_today	Bank netto vandaag

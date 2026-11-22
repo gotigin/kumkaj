@@ -565,7 +565,7 @@ your_brand	Il tuo marchio (nell'app)
 your_categories	Le tue categorie
 account_kind	Tipo conto (tocca uno)
 actual_total_cap	TOTALE EFFETTIVO
-amend_help	Seleziona una vendita da modificare, annullare o rimborsare. Le modifiche conservano tutta la cronologia.
+amend_help	Seleziona una vendita da modificare, annullare o rimborsare. Le modifiche conservano tutta la cronologia. Il totale arrotondato inizia uguale all’applicato — modifica solo per arrotondare. Annullamento e rimborso possono richiedere il PIN del proprietario o del manager (scrivilo sopra; registrato con il tuo nome).
 applied_total_cap	TOTALE APPLICATO
 bank_balance	Saldo banca
 bank_net_today	Netto banca oggi
