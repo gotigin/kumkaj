@@ -102,14 +102,16 @@ const BILL_LINES: [(&[LiveId], &str, u32); 3] = [
 /// this wide (px), and stack otherwise.
 const ROWS: [(&[LiveId], f64); 10] = [
     (ids!(brand.brand_row), 1024.0),
-    (ids!(brand.brand_cta.buttons), 420.0),
+    // Stack Download/WhatsApp before ~440 so the secondary label never clips
+    // on 400 CSS-px WebKit (and similar phone content columns).
+    (ids!(brand.brand_cta.buttons), 440.0),
     (ids!(sell.sell_row), 760.0),
     (ids!(khata.khata_row), 760.0),
     (ids!(buy.buy_row), 760.0),
     (ids!(daybook.day_row), 800.0),
     (ids!(lan.lan_row), 700.0),
     (ids!(free.free_row), 700.0),
-    (ids!(start.close_cta.buttons), 420.0),
+    (ids!(start.close_cta.buttons), 440.0),
     (ids!(footer.footer_row), 480.0),
 ];
 const PROPS: [(&[LiveId], f64, f64); 2] = [

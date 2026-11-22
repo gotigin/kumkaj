@@ -205,7 +205,9 @@ const BEADS: [[&[LiveId]; 8]; 9] = [
 /// column whatever the device.
 const ROWS: [(&[LiveId], f64); 13] = [
     (ids!(walkin.hero_row), 844.0),
-    (ids!(walkin.hero_cta.buttons), 400.0),
+    // "WhatsApp for a demo" + "Download free" need ~420px side-by-side;
+    // WebKit at 400 CSS px still clipped the secondary label at 400.0.
+    (ids!(walkin.hero_cta.buttons), 440.0),
     (ids!(weigh.weigh_row), 820.0),
     // "Try a box" beside the two chips needs the whole card.
     (ids!(weigh.toy_head), 400.0),
@@ -215,7 +217,7 @@ const ROWS: [(&[LiveId], f64); 13] = [
     (ids!(track.track_facts), 760.0),
     (ids!(cod.cod_row), 820.0),
     (ids!(offline.offline_row), 640.0),
-    (ids!(start.close_cta.buttons), 400.0),
+    (ids!(start.close_cta.buttons), 440.0),
     (ids!(footer.footer_row), 480.0),
     // Privacy · Terms · kumkaj.com overflow a phone content column.
     (ids!(footer.footer_links), 420.0),

@@ -102,7 +102,9 @@ const BILL_LINES: [(&[LiveId], &str, u32); 3] = [
 
 const ROWS: [(&[LiveId], f64); 8] = [
     (ids!(brand.brand_row), 1024.0),
-    (ids!(brand.brand_cta.buttons), 420.0),
+    // Stack Download/WhatsApp before ~440 so the secondary label never clips
+    // on 400 CSS-px WebKit (and similar phone content columns).
+    (ids!(brand.brand_cta.buttons), 440.0),
     (ids!(sell.sell_row), 760.0),
     (ids!(search.search_row), 760.0),
     (ids!(batch.batch_row), 760.0),
@@ -115,7 +117,7 @@ const PROPS: [(&[LiveId], f64, f64); 2] = [
     (ids!(sell.ticket), 330.0, 760.0),
 ];
 const START_ROWS: [(&[LiveId], f64); 2] = [
-    (ids!(start.close_cta.buttons), 420.0),
+    (ids!(start.close_cta.buttons), 440.0),
     // The footer container stays Down (links, then the copyright). Stacking
     // `start.footer` itself put the copyright beside the links.
     (ids!(start.footer.footer_row), 480.0),
