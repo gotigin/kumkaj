@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Shrink the fonts in a staged moklanjo.com tree to the characters the site draws.
+# Shrink the fonts in a staged moklanjo.com tree to the characters the site draws,
+# and pin the variable display face to the weights actually drawn (src/ui.rs:
+# AnekLatin weight 640 + 760; width 100). Character subset alone left AnekLatin
+# ~250 KB; pin + subset lands near ~90 KB without changing those drawn weights.
 #
 # Every font a Makepad site declares is fetched before its first frame, and
 # the files are whole typefaces: 5 files, 1.1 MB. This rewrites the
@@ -26,6 +29,9 @@ OUT="${1:?usage: subset-fonts.sh <staged public dir>}"
 SITE="$(cd "$(dirname "$0")/.." && pwd)"
 FONT_DIR="$OUT/moklanjo_site/resources/fonts"
 LATIN_MORE='U+00A0-00FF,U+0100-017F,U+2010-2027,U+2030-203A,U+20A0-20BF,U+2190-2193'
+# Weights drawn in sites/moklanjo/src/ui.rs (Display / DisplaySoft).
+ANEK_WGHT_MIN=640
+ANEK_WGHT_MAX=760
 
 if [[ ! -d "$FONT_DIR" ]]; then
   echo "error: no fonts at $FONT_DIR" >&2
@@ -45,6 +51,25 @@ if [[ "$(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt")" -lt 60 ]]; then
   exit 1
 fi
 
+# Pin AnekLatin's variable axes to the drawn weight range and default width
+# before the glyph subset (fontTools.varLib.instancer).
+pin_anek_latin() {
+  local src="$1" dest="$2"
+  python3 - "$src" "$dest" "$ANEK_WGHT_MIN" "$ANEK_WGHT_MAX" <<'PY'
+import sys
+from fontTools.ttLib import TTFont
+from fontTools.varLib.instancer import instantiateVariableFont
+
+src, dest, wmin, wmax = sys.argv[1], sys.argv[2], float(sys.argv[3]), float(sys.argv[4])
+font = TTFont(src)
+if "fvar" not in font:
+    font.save(dest)
+    raise SystemExit(0)
+instantiateVariableFont(font, {"wght": (wmin, wmax), "wdth": 100}, overlap=True)
+font.save(dest)
+PY
+}
+
 before=0
 after=0
 count=0
@@ -56,7 +81,16 @@ for font in "$FONT_DIR"/*.ttf "$FONT_DIR"/*.otf "$OUT"/makepad_widgets/resources
     Noto*) ;;                       # a script face: its Latin is never drawn
     *) ranges="$ranges,$LATIN_MORE" ;;
   esac
-  if ! pyftsubset "$font" --output-file="$WORK/$name" \
+  src_for_subset="$font"
+  if [[ "$name" == AnekLatin-Variable.ttf ]]; then
+    if ! pin_anek_latin "$font" "$WORK/anek-pinned.ttf" > "$WORK/pin-log.txt" 2>&1; then
+      echo "error: AnekLatin axis pin failed" >&2
+      cat "$WORK/pin-log.txt" >&2
+      exit 1
+    fi
+    src_for_subset="$WORK/anek-pinned.ttf"
+  fi
+  if ! pyftsubset "$src_for_subset" --output-file="$WORK/$name" \
       --text-file="$WORK/chars.txt" --unicodes="$ranges" \
       --layout-features='*' --notdef-outline --no-hinting --obfuscate-names \
       > "$WORK/log.txt" 2>&1; then
@@ -80,4 +114,8 @@ if (( count == 0 )); then
   echo "error: no font matched in $FONT_DIR" >&2
   exit 1
 fi
-echo "Subset $count fonts: $(( before / 1024 )) KB → $(( after / 1024 )) KB ($(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt") characters in the sources)"
+anek_kb=0
+if [[ -f "$FONT_DIR/AnekLatin-Variable.ttf" ]]; then
+  anek_kb=$(( $(stat -c %s "$FONT_DIR/AnekLatin-Variable.ttf") / 1024 ))
+fi
+echo "Subset $count fonts: $(( before / 1024 )) KB → $(( after / 1024 )) KB ($(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt") characters in the sources); AnekLatin ${anek_kb} KB"
