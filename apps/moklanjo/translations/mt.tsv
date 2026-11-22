@@ -158,7 +158,7 @@ height_cm_ph	H ċm
 chargeable_kg	kg taxxabbli
 awb_label	AWB
 booking_help	Konsenjatur + destinatarju (vojt OK) → destinazzjoni → iżen → agħżel rata → Kont/Flus → tħallas. Fil-ħin: «Issejvja bħala abbozz» (issejjaħ fuq Bord, mhux fil-kotba) imbagħad servi l-klijent li jmiss; agħfas l-abbozz fuq Bord biex tkompli. L-AWB jipprintja fuq l-irċevuta. Il-prenotazzjoni li jmiss tikklerja l-iskrivanija.
-cart_empty_hint	Desk vojta — il-kunsinnatarju/destinatarju mhux obbligatorju, issettja d-destinazzjoni u l-piż, tektek ADD fuq rata, imbagħad tħallas.
+cart_empty_hint	Desk vojta — il-kunsinnatarju/destinatarju mhux obbligatorju, issettja d-destinazzjoni u l-piż, tektek ŻID fuq rata, imbagħad tħallas.
 team	Tim
 team_pins	Tim u PINs
 my_pin_settings	PIN tiegħi

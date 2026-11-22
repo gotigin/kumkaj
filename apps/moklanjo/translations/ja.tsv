@@ -158,7 +158,7 @@ height_cm_ph	高さ cm
 chargeable_kg	請求重量 kg
 awb_label	伝票番号
 booking_help	荷送人 + 荷受人（空欄可）→ 宛先 → 計量 → 料金選択 → 掛け/現金 → 支払い。作業の途中：「下書きに保留」（ボードに保存、帳簿には入れない）して次の客へ；ボードの下書きをタップして再開。AWBはレシートに印刷。次の受付でデスクをクリア。
-cart_empty_hint	受付は空です — 宛先と重量を設定し、料金のADDを押して支払ってください。
+cart_empty_hint	受付は空です — 宛先と重量を設定し、料金の追加を押して支払ってください。
 team	チーム
 team_pins	チームとPIN
 my_pin_settings	自分のPIN

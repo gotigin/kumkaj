@@ -158,7 +158,7 @@ height_cm_ph	H cm
 chargeable_kg	Vidiny kg
 awb_label	AWB
 booking_help	Mpandefa + mpandray (foana OK) → toerana → milanja → misafidy vidiny → Kaonty/Vola → mandoa. Anaty asa: «Tehirizo ho drafitra» (mitahiry amin'ny Tabilao, tsy amin'ny boky) avy eo manompo ny mpanjifa manaraka; tsindrio ny drafitra amin'ny Tabilao hanohizana. AWB printy amin'ny fahazoan-dàlana. Ny famandrihana manaraka dia manadio ny birao.
-cart_empty_hint	Latabatra tsy misy na inona na inona — consignor/consignee azo atao, apetraho ny tanjona & lanja, tap ADD amin'ny sarany, dia mandoa.
+cart_empty_hint	Latabatra tsy misy na inona na inona — consignor/consignee azo atao, apetraho ny tanjona & lanja, tap AMPIDIRINA amin'ny sarany, dia mandoa.
 team	Ekipa
 team_pins	Ekipa & PINs
 my_pin_settings	Ny PIN-ko

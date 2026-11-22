@@ -158,7 +158,7 @@ height_cm_ph	H cm
 chargeable_kg	Charge theih kg
 awb_label	AWB
 booking_help	Thawn tu + dawng tu (ruak OK) → kalna tur → rit → rate thlang → Account/Cash → pek. Karah: «Draft angin save rawh» (Ban ah save a ni, lehkhabu ah a ni lo) chuangah customer dang rawngbawl rawh; chhunzawm nan Ban ah draft kha tap rawh. AWB chu receipt-ah a print. Booking thar chuan desk a clear.
-cart_empty_hint	Desk khar — consignor/consignee optional, destination & weight set la, rate pakhatah ADD tap la, chutah chuan pe rawh.
+cart_empty_hint	Desk khar — consignor/consignee optional, destination & weight set la, rate pakhatah TELH tap la, chutah chuan pe rawh.
 team	Pawl
 team_pins	Pawl leh PIN
 my_pin_settings	Ka PIN
@@ -490,7 +490,7 @@ right_denied	Phal lo
 editing_staff	Dan tur
 team_pick_ph	Siam tur hnathawk — hming, hmangtu hming, emaw thlang
 select_staff	He hnathawk thlang
-rights_help	Rights — tap to change: Allowed → Approval nen (chutih lai chuan manager pakhat PIN) → A phal loh.
+rights_help	Dan — thlak turin tap: Phal → Approval nen (chutih lai manager PIN) → Phal lo.
 right_void_refund	Booking chu void emaw refund emaw theih a ni
 right_amend_sale	Recorded booking siamthat
 find_server	Dawr server zawng

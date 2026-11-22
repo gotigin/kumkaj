@@ -158,7 +158,7 @@ height_cm_ph	H cm
 chargeable_kg	Kg ba lah ban siew
 awb_label	AWB
 booking_help	U nongphah + u nongshim (thylli OK) → ka jaka ba leit → ka jingkhia → ka dor → Ka jingkhein/Ka pisa → jingsiew. Hapoh ka kam: «Pynsah kum ka draft» (buh ha Board, ym ha ki kot) nangta shakri ia u nongthoh ba bud; tap ia ka draft ha Board ban bun. AWB ka shon ha ka resit. Ka jingbook kaba bud ka pynkhuid ia ka shuki.
-cart_empty_hint	Ka miej kaba thylli — u nongphah/nongpdiang u lah ban jied, buh ia ka jaka leit & ka jingkhia, tap ADD ha ka dor, nangta siew.
+cart_empty_hint	Ka miej kaba thylli — u nongphah/nongpdiang u lah ban jied, buh ia ka jaka leit & ka jingkhia, tap Pynrung ha ka dor, nangta siew.
 team	Ka kynhun
 team_pins	Ka tim bad ki PIN
 my_pin_settings	Ka PIN jong nga
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Ka thymmai · {} — ka katalog ka sdang thylli; pyndap ia ki
 onboard_book_tmpl	Ka kot · {} — pyndap ia ki tiar bad ka jingai jingbit ba plie, nangta la dep.
 onboard_template_tmpl	Kyrteng ia ka jaka lada phi kwah, nangta jied kumno ban sdang.
 tmpl_blurb	Ki kot phah bad ka jaka buh kot: ki nongphah, ki nongkit, ka kot sngi, ka AWB.
-tmpl_how	Book parcels at the desk; Ka kot sngi na ka bynta mynta ka sngi; tabs for rates, parties, reports.
+tmpl_how	Ha ka shuki buh ia ki parcel; Ka kot sngi na ka bynta mynta ka sngi; ki tab na ka bynta ki dor, ki party, ki report.
 app_template_heading	Ki template dukan
 app_template_blurb	Jied ia ka jingpynbeit kaba sdang. «Skip na ka bynta mynta» ka iehnoh ia ka list jong ki nongthied kaba thylli.
 app_template_skip	Skip na ka bynta mynta

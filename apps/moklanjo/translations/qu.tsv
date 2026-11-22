@@ -158,7 +158,7 @@ height_cm_ph	H cm
 chargeable_kg	Cargakuq kg
 awb_label	AWB
 booking_help	Consignador + consignatario (ch'usaq OK) → destino → pesay → tarifa akllay → Cuenta/Efectivo → pagay. Chaupipi: «Borrador hina waqaychay» (Tablapi waqaychan, mana librospichu) chaymanta qatiqnin clienteta yanapay; Tablapi borradorta ñit'iy hinallaman. AWB recibopi imprimikun. Qatiqnin reservacion escritoriota chuyanchán.
-cart_empty_hint	Escritorio ch'usaq — consignador/consignador opcional, destino & llasaynin churay, ADD ñit'iy huk tarifa kaqpi, chaymanta qullqita quy.
+cart_empty_hint	Escritorio ch'usaq — consignador/consignador opcional, destino & llasaynin churay, YAPAY ñit'iy huk tarifa kaqpi, chaymanta qullqita quy.
 team	Equipo
 team_pins	Equipo & PINs
 my_pin_settings	Mi PIN .

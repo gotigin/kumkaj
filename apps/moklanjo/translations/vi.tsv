@@ -158,7 +158,7 @@ height_cm_ph	Cao cm
 chargeable_kg	Kg tính cước
 awb_label	AWB
 booking_help	Người gửi + người nhận (trống OK) → đích → cân → chọn đơn giá → Tài khoản/Tiền mặt → thanh toán. Giữa chừng: «Tạm gác bản nháp» (lưu trên Bảng, không vào sổ) rồi phục vụ khách tiếp; chạm bản nháp trên Bảng để tiếp tục. AWB in trên biên lai. Đặt chỗ tiếp theo xóa bàn làm việc.
-cart_empty_hint	Quầy trống — nhập nơi đến & cân nặng, chạm ADD ở cước, rồi thanh toán.
+cart_empty_hint	Quầy trống — nhập nơi đến & cân nặng, chạm Thêm ở cước, rồi thanh toán.
 team	Nhóm
 team_pins	Nhóm và PIN
 my_pin_settings	PIN của tôi

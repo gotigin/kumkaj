@@ -158,7 +158,7 @@ height_cm_ph	H cm
 chargeable_kg	Kwishyurwa kg
 awb_label	AWB
 booking_help	Uwohereza + uwakiriye (ubusa OK) → aho bigana → pima → hitamo igiciro → Konti/Amafaranga → wishyure. Hagati: «Shyira nk'imbanzirizamushinga» (bibika kuri Ikibaho, si mu bitabo) hanyuma ufasha umukiriya ukurikira; kanda draft kuri Ikibaho kugira ngo ukomeze. AWB icapa ku resi. Guhagarika gukurikira bisiba ameza.
-cart_empty_hint	Ameza yubusa - uwatumije / uwatumiwe atabishaka, shiraho aho ugana & uburemere, kanda ADD ku gipimo, hanyuma wishyure.
+cart_empty_hint	Ameza yubusa - uwatumije / uwatumiwe atabishaka, shiraho aho ugana & uburemere, kanda ONGERAHO ku gipimo, hanyuma wishyure.
 team	Ikipe
 team_pins	Ikipe na PIN
 my_pin_settings	PIN yanjye

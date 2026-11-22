@@ -158,7 +158,7 @@ height_cm_ph	Yükseklik cm
 chargeable_kg	Ücret kg
 awb_label	AWB
 booking_help	Gönderen + alıcı (boş OK) → varış → tart → ücret seç → Hesap/Nakit → öde. Arada: «Taslağa al» (Panoya kaydeder, defterlere değil) sonra sonraki müşteriye bakın; sürdürmek için Panodaki taslağa dokunun. AWB fişe yazdırılır. Sonraki rezervasyon masayı temizler.
-cart_empty_hint	Masa boş — varış ve ağırlığı girin, tarifede ADD'ye dokunun, sonra ödeyin.
+cart_empty_hint	Masa boş — varış ve ağırlığı girin, tarifede Ekle'ye dokunun, sonra ödeyin.
 team	Ekip
 team_pins	Ekip ve PIN
 my_pin_settings	PIN'im

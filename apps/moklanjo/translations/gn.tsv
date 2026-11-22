@@ -158,7 +158,7 @@ height_cm_ph	H cm
 chargeable_kg	Ojekargakuaa kg
 awb_label	AWB rehegua
 booking_help	Consignador + consignatario (nandi OK) → destino → opesa → ojagarra tarifa → Cuenta/Efectivo → opaga. Mbytépe: «Oñongatu borrador ramo» (oñongatu Tablero-pe, ndaha'éi libros-pe) upéi omba'apo pe cliente oúva ndive; eikutu pe borrador Tablero-pe emoñepyrũ jey hag̃ua. AWB oñeimprimi pe recibo-pe. Pe reserva oúva omopotĩ pe escritorio.
-cart_empty_hint	Escritorio vacío — consignador/consignador opcional, emohenda destino & peso, epoko ADD peteĩ tasa rehe, upéi epaga.
+cart_empty_hint	Escritorio vacío — consignador/consignador opcional, emohenda destino & peso, epoko MOINGE peteĩ tasa rehe, upéi epaga.
 team	Equipo rehegua
 team_pins	Equipo & PINs rehegua
 my_pin_settings	Che PIN .
