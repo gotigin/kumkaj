@@ -740,7 +740,7 @@ apply_discount	Aplicar o desconto
 save_opening_cash	Gardar o efectivo de apertura
 close_shift_print	Pechar o turno e imprimir o tícket
 discount_ph	10% ou 50
-discount_reason_ph	Motivo (p. ex. cliente habitual, comida tarde)
+discount_reason_ph	Reason (regular customer, delay…)
 opening_float_ph	Efectivo posto no caixón esta mañá
 shift_counted_ph	Efectivo contado no relevo
 opening_float	Efectivo de apertura (fondo de caixa)

@@ -740,7 +740,7 @@ apply_discount	Pas korting toe
 save_opening_cash	Stort oopkas
 close_shift_print	Sluit skift en druk kwitansie
 discount_ph	10% of 50
-discount_reason_ph	Reden (bv. gereelde gaste, laat kos)
+discount_reason_ph	Reason (regular customer, delay…)
 opening_float_ph	Oopkas wat vroeër vandag in die lade gestort is
 shift_counted_ph	Oopkas getel by oorgawe
 opening_float	Oopkas (float)

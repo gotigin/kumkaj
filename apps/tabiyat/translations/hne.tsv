@@ -740,7 +740,7 @@ apply_discount	छूट लगाएँ
 save_opening_cash	शुरुआती नकद सहेजव
 close_shift_print	शिफ्ट बंद करव अउ पर्ची छापें
 discount_ph	10% या 50
-discount_reason_ph	कारण (जैसे नियमित मेहमान, खाने म देर)
+discount_reason_ph	कारण (नियमित ग्राहक, देरी…)
 opening_float_ph	आज सुबह दराज़ म रखा नकद
 shift_counted_ph	हेंडओवर पर गिना नकद
 opening_float	शुरुआती नकद (फ़्लोट)

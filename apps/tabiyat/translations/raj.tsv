@@ -740,7 +740,7 @@ apply_discount	छूट लगाओ
 save_opening_cash	खुलबा री नकदी बचाओ
 close_shift_print	शिफ्ट बंद करो अर पर्ची छापो
 discount_ph	10% या 50
-discount_reason_ph	कारण (जियां कै नियमित मेहमान, देर सूं खाणो)
+discount_reason_ph	कारण (नियमित ग्राहक, देरी…)
 opening_float_ph	आज सुबह दराज रै मांय नकदी राखी
 shift_counted_ph	हस्तांतरण रै बगत नकदी री गिणती
 opening_float	नकदी खोलणो (फ्लोट)
