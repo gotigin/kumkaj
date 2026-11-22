@@ -255,7 +255,7 @@ bank	Banco
 bank_in	Banco en
 bank_out	Banco osẽva
 bank_reconciliation	Reconciliación bancaria
-bank_to_till	Banco → till
+bank_to_till	Banco → caja
 book_add_dish	Aranduka — omoĩve mba’e / mba’e
 book_opening_credit	Aranduka — crédito apertura rehegua
 branch_name_sell_ph	Sucursal réra oñevende haguã chugui
@@ -527,7 +527,7 @@ take_payment	Ogueraha pago
 tax_added_till	{tax} exclusivo rehegua
 tax_inside_price	{tax} oikehápe
 tax_invoice	Factura tributaria rehegua
-till_to_bank	Till → banco rehegua
+till_to_bank	Caja → banco
 units_heading	Unidad-kuéra rehegua
 unlock_after_pairing	Oike PIN .
 unlock_with_login	Ojepe’a jeike rupive
@@ -567,7 +567,7 @@ stamp_heading	Sello
 stamp_image_help	Ta'anga sello opcional umi factura impresa ha exhibición cliente.
 payment_qr_heading	Pago rehegua QR
 payment_qr_image_help	QR estático umi factura ha cliente jehechauka rehe; ndaupéichairamo opaga oipuru peteĩ QR UPI dinámico VPA yvateguágui.
-cash_in_hand	Efectivo ipópe (till) .
+cash_in_hand	Efectivo ipópe (caja)
 change_my_pin_heading	Che jeike
 connect_to_server	Embojoaju Servidor ndive
 counter_locked	Contador 01 · Oñemboty

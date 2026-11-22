@@ -567,7 +567,7 @@ stamp_heading	Stämpel
 stamp_image_help	Valfri stämpelbild på tryckta räkningar och kunddisplayen.
 payment_qr_heading	Betalning QR
 payment_qr_image_help	Statisk QR på räkningar och kunddisplay; I annat fall använder du en dynamisk UPI QR från VPA ovan.
-cash_in_hand	Kontanter i handen (till)
+cash_in_hand	Kontanter i handen (kassa)
 change_my_pin_heading	Min inloggning
 connect_to_server	Anslut till servern
 counter_locked	Räknare 01 · Låst

@@ -255,7 +255,7 @@ bank	Bank
 bank_in	Bank ġewwa
 bank_out	Bank barra
 bank_reconciliation	Rikonċiljazzjoni bankarja
-bank_to_till	Bank → biex
+bank_to_till	Bank → kaxxa
 book_add_dish	Ktieb — żid oġġett / oġġett
 book_opening_credit	Ktieb — kreditu tal-ftuħ
 branch_name_sell_ph	Isem tal-fergħa minn fejn tbigħ
@@ -527,7 +527,7 @@ take_payment	Ħu ħlas
 tax_added_till	{tax} esklussiva
 tax_inside_price	{tax} inklużiv
 tax_invoice	Fattura tat-taxxa
-till_to_bank	Lil → bank
+till_to_bank	Kaxxa → bank
 units_heading	Unitajiet
 unlock_after_pairing	Daħħal il-PIN
 unlock_with_login	Iftaħ bil-login
@@ -567,7 +567,7 @@ stamp_heading	Timbru
 stamp_image_help	Immaġini tat-timbru fakultattiv fuq il-kontijiet stampati u l-wiri tal-klijent.
 payment_qr_heading	Ħlas QR
 payment_qr_image_help	QR statiku fuq il-kontijiet u l-wiri tal-klijenti; inkella l-ħlas juża QR UPI dinamiku mill-VPA t'hawn fuq.
-cash_in_hand	Flus fl-idejn (till)
+cash_in_hand	Flus fl-idejn (kaxxa)
 change_my_pin_heading	Id-dħul tiegħi
 connect_to_server	Qabbad mas-Server
 counter_locked	Counter 01 · Imsakkar

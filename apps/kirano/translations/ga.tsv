@@ -255,7 +255,7 @@ bank	Bainc
 bank_in	Banc isteach
 bank_out	Bain as an bhanc
 bank_reconciliation	Aontú bainc
-bank_to_till	Banc → tille
+bank_to_till	Banc → tarraiceán
 book_add_dish	Leabhar — cuir mír / mír leis
 book_opening_credit	Leabhar — creidmheasanna oscailte
 branch_name_sell_ph	Ainmbrainse le díol as
@@ -527,7 +527,7 @@ take_payment	Glac íocaíocht
 tax_added_till	{tax} eisiach
 tax_inside_price	{tax} san áireamh
 tax_invoice	Sonras cánach
-till_to_bank	Ciste → banc
+till_to_bank	Tarraiceán → banc
 units_heading	Aonaid
 unlock_after_pairing	Cuir isteach PIN
 unlock_with_login	Díghlasáil le logáil isteach
@@ -567,7 +567,7 @@ stamp_heading	Stampa
 stamp_image_help	Íomhá stampa roghnach ar bhillí clóite agus taispeáint an chustaiméara.
 payment_qr_heading	Íocaíocht QR
 payment_qr_image_help	QR statach ar bhillí agus taispeáint custaiméirí; ar shlí eile úsáideann íoc UPI QR dinimiciúil ón VPA thuas.
-cash_in_hand	Airgead ar láimh (till)
+cash_in_hand	Airgead ar láimh (tarraiceán)
 change_my_pin_heading	Mo logáil isteach
 connect_to_server	Ceangail leis an "Server"
 counter_locked	Cuntar 01 · Dúnta

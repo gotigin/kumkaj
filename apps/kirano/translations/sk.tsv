@@ -255,7 +255,7 @@ bank	Banka
 bank_in	Banka v
 bank_out	Z banky
 bank_reconciliation	Bankové odsúhlasenie
-bank_to_till	Banka → do
+bank_to_till	Banka → pokladňa
 book_add_dish	Kniha — pridať položku/položku
 book_opening_credit	Kniha — otvárací kredit
 branch_name_sell_ph	Názov pobočky na predaj
@@ -527,7 +527,7 @@ take_payment	Prijmite platbu
 tax_added_till	{tax} exkluzívne
 tax_inside_price	{tax} vrátane
 tax_invoice	Daňový doklad
-till_to_bank	Do → banka
+till_to_bank	Pokladňa → banka
 units_heading	Jednotky
 unlock_after_pairing	Zadajte PIN
 unlock_with_login	Odomknite prihlásením
@@ -567,7 +567,7 @@ stamp_heading	Pečiatka
 stamp_image_help	Voliteľný obrázok pečiatky na vytlačených účtoch a na zákazníckom displeji.
 payment_qr_heading	Platba QR
 payment_qr_image_help	Statické QR na účtoch a zákazníckom displeji; inak platí, že používa dynamický UPI QR z VPA vyššie.
-cash_in_hand	Hotovosť na ruku (do)
+cash_in_hand	Hotovosť na ruku (pokladňa)
 change_my_pin_heading	Moje prihlásenie
 connect_to_server	Pripojte sa k serveru
 counter_locked	Počítadlo 01 · Zamknuté

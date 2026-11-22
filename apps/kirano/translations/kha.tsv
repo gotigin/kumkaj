@@ -255,7 +255,7 @@ bank	Ka bank
 bank_in	Bank ha
 bank_out	Ka bank
 bank_reconciliation	Ka jingpyniasuk ia ka bank
-bank_to_till	Bank → haduh
+bank_to_till	Bank → ka till
 book_add_dish	Book — pyndap ia ka mat / ka mat .
 book_opening_credit	Ka kot — ka jingplie ia ka credit .
 branch_name_sell_ph	Ka kyrteng jong ka tnad ban die na ka
@@ -527,7 +527,7 @@ take_payment	Shim ia ka jingsiew
 tax_added_till	{tax} kaba kyrpang
 tax_inside_price	{tax} kynthup lang
 tax_invoice	Ka jingkhein khajna
-till_to_bank	Haduh → bank
+till_to_bank	Ka till → bank
 units_heading	Ki unit
 unlock_after_pairing	Pynrung PIN
 unlock_with_login	Plie da kaba rung
@@ -567,7 +567,7 @@ stamp_heading	Muhor
 stamp_image_help	Ka dur stamp ba lah ban jied ha ki bill ba la shon bad ka jingpyni jong ki nongthied.
 payment_qr_heading	Ka jingsiew QR
 payment_qr_image_help	Ka QR kaba sngur ha ki bill bad ka jingpyni jong ki nongthied; lym kumta ka jingsiew ka pyndonkam ia ka UPI QR kaba thymmai na ka VPA ba la kdew haneng.
-cash_in_hand	Ka pisa ha kti (haduh)
+cash_in_hand	Ka pisa ha kti (ka till)
 change_my_pin_heading	Ka jingpynrung jong nga
 connect_to_server	Pyniasoh bad ka Server .
 counter_locked	Ka jingkhein 01 · La khang
