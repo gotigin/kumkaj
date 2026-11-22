@@ -266,3 +266,31 @@ need the author and licence named.
 - author: Dikshita Bairagi
 - url: https://commons.wikimedia.org/wiki/File:Crispy_chilli_baby_corn.....jpg
 - reason: prior image looked like veg manchurian balls; swapped to crispy chilli baby corn
+
+## L14 replace desserts/fruit-custard.webp
+- commons: File:Fruit_Custard_2.jpg (pageid from search)
+- license: CC BY-SA 4.0
+- author: Aliva Sahoo
+- url: https://commons.wikimedia.org/wiki/File:Fruit_Custard_2.jpg
+- reason: prior was plain cinnamon custard without fruit
+
+## L14 replace indo-chinese/chilli-prawns.webp
+- commons: File:Ebi_chili.jpg
+- license: CC BY 2.0
+- author: (from Commons metadata)
+- url: https://commons.wikimedia.org/wiki/File:Ebi_chili.jpg
+- reason: prior looked like mushroom/gobi chilli with no prawns
+
+## L14 replace indo-chinese/dragon-chicken.webp
+- commons: File:Dragon_Chicken.jpg (cropped to labeled tray)
+- license: CC BY-SA 4.0
+- author: Vis M
+- url: https://commons.wikimedia.org/wiki/File:Dragon_Chicken.jpg
+- reason: prior was dual-plate with dominant paratha; cropped labeled dragon chicken tray
+
+## L14 replace indo-chinese/schezwan-fried-rice.webp
+- commons: File:Schezwan_fried_rice.jpg
+- license: CC BY-SA 4.0
+- author: Thamizhpparithi Maari
+- url: https://commons.wikimedia.org/wiki/File:Schezwan_fried_rice.jpg
+- reason: prior looked like turmeric rice with whole dried chillies rather than schezwan fried rice
