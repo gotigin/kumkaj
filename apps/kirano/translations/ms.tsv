@@ -670,7 +670,7 @@ icon_default	Ikon: Kumkaj tanda (lalai) — pilih yang tersuai
 logo_yours	Logo: logo kedai anda — ditunjukkan pada skrin dan resit
 logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
 setup_complete	Persediaan selesai
-onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item dalam item, kemudian Selesai.
+onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item dalam Items, kemudian Selesai.
 onboard_book_tmpl	Lejar · {} — tambah item dan kredit pembukaan, kemudian Selesai.
 tmpl_blurb	Kaunter Kirana: jual, stok, khata, beli pembekal, buku.
 reports_facet_title	Laporan
