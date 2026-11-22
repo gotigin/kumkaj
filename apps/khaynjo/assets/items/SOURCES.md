@@ -47,6 +47,10 @@ file name, ≤1024 px WebP). Sources Wikimedia Commons (incl. Unsplash via Commo
 | `cold-beverages/strawberry-milk.webp` | Binggrae branded flavoured-milk bottle lineup | Strawberry Milk in a glass cup. | Swarde11 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Strawberry_Milk_in_a_glass_cup..jpg | resized, WebP |
 | `cold-beverages/avocado-shake.webp` | bowl of avocado chunks (es alpukat style), not a shake glass | Avocado banana smoothing | Shark2025 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Avocado_banana_smoothing.jpg | resized, WebP |
 | `bar/highball.webp` | Jim Beam branded mug with logo | Whisky soda high ball by uca0310 2013 | uca0310 | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Whisky_soda_high_ball_by_uca0310_2013.jpg | resized, WebP |
+| `bar/gin-and-tonic.webp` | Hendrick's / Dry Gin bottles behind glass | Gin and tonic with lemon.jpg | MuseumNext | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/wiki/File:Gin_and_tonic_with_lemon.jpg | resized, WebP |
+| `bar/aviation.webp` | Beefeater / Luxardo / Crème de Violette branded bottles | Aviation Cocktail1.jpg | Erich Wagner | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Aviation_Cocktail1.jpg | resized, WebP |
+| `bar/mulled-wine.webp` | electric kettle dispenser with chalk price signs | Glühwein (hot mulled wine) in a glass with an orange slice 12.jpg | Wheeler Cowperthwaite | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Gl%C3%BChwein_(hot_mulled_wine)_in_a_glass_with_an_orange_slice_12.jpg | resized, WebP |
+| `bar/palm-toddy.webp` | milky rice-beer bottles (handia-style), not poured toddy | Palm wine in a glass cup.jpg | Umasoyee | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | https://commons.wikimedia.org/wiki/File:Palm_wine_in_a_glass_cup.jpg | resized, WebP |
 | `bar/bourbon.webp` | liquor-store whiskey shelf | Glass of bourbon cropped.jpg | J Yochem | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | https://commons.wikimedia.org/w/index.php?curid=148521031 | resized, WebP |
 | `bar/gin.webp` | liquor-store gin shelf | Gin and tonic cocktail with wedge of lime.jpg | Davidnuescheler | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=120301896 | resized, WebP |
 | `bar/sherry.webp` | wooden wall shelf / bar décor, not a drink | Port wine.jpg | Jon Sullivan | [Public domain](https://creativecommons.org/publicdomain/mark/1.0/) | https://commons.wikimedia.org/w/index.php?curid=25990 | resized, WebP |
@@ -473,3 +477,17 @@ need the author and licence named.
 | `street-food-chaat/kanda-bhaji.webp` | stuffed green chili pakora with potato filling | Kanda Bhaji.JPG | Adityakerkar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Kanda_Bhaji.JPG | resized, WebP |
 | `street-food-chaat/pani-puri.webp` | empty unfilled puri shells in a metal pot | Golgappa Pani Puri India.jpg | Yusuke Kawasaki | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/wiki/File:Golgappa_Pani_Puri_India.jpg | resized, WebP |
 | `snacks/fafda.webp` | single fafda strip on newspaper with Hindi text and ads | Fanfada and kadhi(sweet) with fried green chillis | Rishabhbenganijain | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Fanfada_and_kadhi(sweet)_with_fried_green_chillis(garnished_with_spices).jpg | resized, WebP |
+
+### desserts/carrot-cake.webp
+- source: https://commons.wikimedia.org/wiki/File:Slice_of_gluten-free_carrot_cake,_April_2005.jpg
+- license: CC BY-SA 2.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
+
+### desserts/japanese-cheesecake.webp
+- source: https://commons.wikimedia.org/wiki/File:Souffle-style_cheesecake_01.jpg
+- license: CC BY 4.0
+- author: see Commons file page
+- retrieved: 2026-11-22
+- lane: L14
