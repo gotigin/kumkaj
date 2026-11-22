@@ -383,3 +383,15 @@ need the author and licence named.
 - license: CC BY 2.0
 - url: https://commons.wikimedia.org/wiki/File:Maple_Bourbon_Ice_Cream_with_Toasted_Pecans_(11901703596).jpg
 - reason: prior was soufflé plate with tiny ice cream scoop
+
+## Replaced 2026-11-22 (L15 thai-asian pho)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `thai-asian/pho.webp` | pho with Coca-Cola can and restaurant QR tent | Phở bò in a German restaurant 01 | 魔琴 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=141774838 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 soups-salads pea-soup)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `soups-salads/pea-soup.webp` | cafeteria tray with pancake, jam, bread, milk | Pea Soup with Dumplings | Liat Portal | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=181137627 | resized, WebP |
