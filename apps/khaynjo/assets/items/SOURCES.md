@@ -246,3 +246,17 @@ need the author and licence named.
 | File | The old photo showed | Original title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `south-indian/gongura-pachadi.webp` | dry tempering spices on banana-leaf plate | Gongura Chutney | Coolcheetahbangalore | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=40980789 | resized, WebP |
+
+## L14 replace indo-chinese/mushroom-chilli.webp
+- commons: File:Mushroom_Manchurian_dry.jpg (pageid 126126496)
+- license: CC BY-SA 4.0
+- author: Anuradhayeluri
+- url: https://commons.wikimedia.org/wiki/File:Mushroom_Manchurian_dry.jpg
+- reason: prior image was cauliflower/gobi-65 style; swapped to dry mushroom chilli/manchurian
+
+## L14 replace indo-chinese/crispy-corn.webp
+- commons: File:Crispy_chilli_baby_corn.....jpg (pageid 125697710)
+- license: CC BY-SA 4.0
+- author: Dikshita Bairagi
+- url: https://commons.wikimedia.org/wiki/File:Crispy_chilli_baby_corn.....jpg
+- reason: prior image looked like veg manchurian balls; swapped to crispy chilli baby corn
