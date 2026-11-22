@@ -607,7 +607,7 @@ cloud_cancel	रद्द
 permission_preset	अनुमति प्रीसेट
 product_only_kirano	Kirano grocery / kirana operating system ae: counter sell, stock, credit, a books — tohar device ma offline.
 purchases_cogs	खरीद (COGS)
-restore_help	Restore: एक बैकअप चुनव। बही उस समय जैसी खुलेगी; अभी की बही पहिले सहेजी जाती हे, ताकि इसे वापस किया जा सके।
+restore_help	पुनर्स्थापना: एक बैकअप चुनव। बही उस समय जैसी खुलेगी; अभी की बही पहिले सहेजी जाती हे, ताकि इसे वापस किया जा सके।
 wipe_data_heading	स्थानीय डेटा हटाव
 wipe_data_help	Owner bar — Windows uninstall jaisa same choice. Business records trading history la clear karis lekin items a setup rakhe (jaise emergency unlock PIN). Shop setup books database la hata de. Screen preferences window/language la clear kar de. Owner PIN se confirm kar. Team ma emergency unlock PIN alag ae (unlock ma covert wipe).
 wipe_trading	व्यापार रिकॉर्ड
