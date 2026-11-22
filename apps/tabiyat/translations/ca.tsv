@@ -268,7 +268,7 @@ bank_in	Entrada a banc
 bank_out	Sortida de banc
 bank_reconciliation	Conciliació bancària
 bank_to_till	Banc → caixa
-book_add_dish	Llibre — afegir article / article
+book_add_dish	Llibre — afegir article
 book_opening_credit	Llibre — crèdit d'obertura
 branch_name_sell_ph	Nom de la sucursal des d'on es ven
 bring_my_book	Porta el meu llibre

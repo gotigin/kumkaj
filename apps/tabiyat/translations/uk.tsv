@@ -268,7 +268,7 @@ bank_in	Надходження в банк
 bank_out	Витрата з банку
 bank_reconciliation	Звірка банку
 bank_to_till	Банк → каса
-book_add_dish	Забронювати — додати товар / пункт
+book_add_dish	Книга — додати товар
 book_opening_credit	Книга — початковий кредит
 branch_name_sell_ph	Назва філії, з якої продавати
 bring_my_book	Принести мою книгу

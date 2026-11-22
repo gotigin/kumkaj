@@ -268,7 +268,7 @@ bank_in	Bank be
 bank_out	Bank ki
 bank_reconciliation	Banki egyeztetés
 bank_to_till	Bank → pénztár
-book_add_dish	Könyv – tétel/elem hozzáadása
+book_add_dish	Könyv — tétel hozzáadása
 book_opening_credit	Könyv — nyitó kredit
 branch_name_sell_ph	Eladó fiók neve
 bring_my_book	Hozd a könyvemet

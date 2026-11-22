@@ -268,7 +268,7 @@ bank_in	Внос в банка
 bank_out	Теглене от банка
 bank_reconciliation	Съгласуване с банка
 bank_to_till	Банка → каса
-book_add_dish	Резервирай — добави артикул / артикул
+book_add_dish	Книга — добави артикул
 book_opening_credit	Книга — начален кредит
 branch_name_sell_ph	Име на клона, от който се продава
 bring_my_book	Донеси моята книга

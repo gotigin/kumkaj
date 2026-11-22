@@ -269,7 +269,7 @@ bank_in	存入銀行
 bank_out	從銀行取出
 bank_reconciliation	銀行對帳
 bank_to_till	銀行 → 櫃檯
-book_add_dish	書本－新增項目/項目
+book_add_dish	帳簿 — 新增項目
 book_opening_credit	寄件 — 期初賒帳
 branch_name_sell_ph	要從哪個分店銷售
 bring_my_book	帶上我的帳本

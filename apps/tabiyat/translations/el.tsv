@@ -268,7 +268,7 @@ bank_in	Είσπραξη σε τράπεζα
 bank_out	Πληρωμή από τράπεζα
 bank_reconciliation	Συμφωνία τράπεζας
 bank_to_till	Τράπεζα → ταμείο
-book_add_dish	Βιβλίο — προσθήκη στοιχείου/αντικειμένου
+book_add_dish	Βιβλίο — προσθήκη είδους
 book_opening_credit	Βιβλίο — αρχική πίστωση
 branch_name_sell_ph	Όνομα υποκαταστήματος πώλησης
 bring_my_book	Φέρε το βιβλίο μου

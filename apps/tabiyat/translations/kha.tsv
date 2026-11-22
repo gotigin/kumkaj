@@ -268,7 +268,7 @@ bank_in	Bank ha
 bank_out	Ka bank
 bank_reconciliation	Ka jingpyniasuk ia ka bank
 bank_to_till	Bank → haduh
-book_add_dish	Book — pyndap ia ka mat / ka mat .
+book_add_dish	Ka kot — pyndap ia ka mat
 book_opening_credit	Ka kot — ka jingplie ia ka credit .
 branch_name_sell_ph	Ka kyrteng jong ka tnad ban die na ka
 bring_my_book	Wanrah ia ka kot jong nga

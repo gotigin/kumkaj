@@ -268,7 +268,7 @@ bank_in	Bankeinzahlung
 bank_out	Bankabhebung
 bank_reconciliation	Bankabstimmung
 bank_to_till	Bank → Kasse
-book_add_dish	Buchen — Artikel hinzufügen
+book_add_dish	Buch — Artikel hinzufügen
 book_opening_credit	Buchung — Anfangskredit
 branch_name_sell_ph	Name der Filiale, aus der verkauft wird
 bring_my_book	Mein Buch bringen

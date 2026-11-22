@@ -268,7 +268,7 @@ bank_in	Bank ind
 bank_out	Bank ud
 bank_reconciliation	Bankafstemning
 bank_to_till	Bank → kasse
-book_add_dish	Bog — tilføj vare / vare
+book_add_dish	Bog — tilføj vare
 book_opening_credit	Bog — primo-kredit
 branch_name_sell_ph	Filialnavn der sælges fra
 bring_my_book	Hent min bog

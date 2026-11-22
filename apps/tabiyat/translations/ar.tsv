@@ -268,7 +268,7 @@ bank_in	إيداع بنكي
 bank_out	سحب بنكي
 bank_reconciliation	التسوية البنكية
 bank_to_till	البنك ← الكاونتر
-book_add_dish	كتاب - إضافة عنصر / عنصر
+book_add_dish	دفتر — أضف صنفاً
 book_opening_credit	احجز — رصيد افتتاحي
 branch_name_sell_ph	اسم الفرع الذي ستبيع منه
 bring_my_book	أحضر دفتري
