@@ -137,5 +137,8 @@ hosting is separate platform cost.
 2. Implement entitlements + metering on **Khaynjo** first.
 3. Copy plan shape to other Kumkaj apps when their cloud ships.
 
-Do not advertise plans as live in store copy until Auth → connect →
-sync → billing can enforce them.
+**Billing (Khaynjo, 2026-11-22):** sandbox-first Stripe + Paddle + local
+mock — see [`services/khaynjo-cloud/docs/BILLING_SANDBOX.md`](../services/khaynjo-cloud/docs/BILLING_SANDBOX.md).
+Ops dashboards use Chrome profile **MEARAJ (Gotigin)**. Do not advertise
+plans as live in store copy until Auth → connect → sync → **live** billing
+can enforce them.

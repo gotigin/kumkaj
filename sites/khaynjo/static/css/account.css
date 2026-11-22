@@ -168,3 +168,26 @@
 .account-back a:hover {
   text-decoration: underline;
 }
+.plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.plan-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid #eadfd8;
+}
+.plan-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.plan-row strong {
+  display: block;
+}
+.plan-row span {
+  color: #6b4a3f;
+  font-size: 0.9rem;
+}

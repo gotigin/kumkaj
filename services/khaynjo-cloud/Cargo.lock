@@ -866,10 +866,13 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "chrono",
+ "hex",
+ "hmac",
  "jsonwebtoken",
  "reqwest",
  "serde",
  "serde_json",
+ "sha2",
  "sqlx",
  "thiserror",
  "tokio",

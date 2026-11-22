@@ -157,7 +157,12 @@ loyalty. Auth can stay on Firebase either way.
   `GET /v1/plans` + `GET /v1/me/subscription`. **Not yet:** HTTPS/DNS for
   stable `api.<domain>` (site HTTPS→HTTP API is mixed-content blocked until
   then — native apps OK on HTTP), in-app OAuth/phone, shop connect,
-  restore/seed, `sync_outbox` drain, billing checkout.
+  restore/seed, `sync_outbox` drain. **Billing sandbox (2026-11-22):**
+  Khaynjo cloud has checkout + webhooks for **mock / Stripe / Paddle**
+  (`services/khaynjo-cloud/docs/BILLING_SANDBOX.md`); Chrome profile
+  **MEARAJ (Gotigin)**. Local mock smoke proves activate → subscription;
+  Stripe/Paddle test keys + Price ids still to be pasted when dashboards
+  are ready.
 - Code lives under `services/{khaynjo,moklanjo,kirano,tabiyat}-cloud/`
   (standalone Cargo projects — not Makepad app members).
 - **Grow and scale** without redesigning from scratch: API and DB as
@@ -209,7 +214,9 @@ after billing is wired.
   cloud sync is not mixed-content blocked; ALB or equivalent. In-app
   Google/phone later. Keep local PIN / staff username unlock for offline
   till.
-- Billing gateway final pick.
+- Billing: finish Stripe test + Paddle sandbox catalog (Price ids on
+  `plans`), then live flip per BILLING_SANDBOX.md. Both gateways stay
+  supported; mock is sandbox-only.
 - Other paid services that require Steady+ membership.
 - Later (not now): Kumkaj brand “my products” / Gotigin brand tree via
   `account_external_links` — still separate product Auth + DBs.
