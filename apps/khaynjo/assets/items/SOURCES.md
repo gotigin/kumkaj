@@ -351,3 +351,17 @@ need the author and licence named.
 | File | The old photo showed | Original title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `street-food-chaat/chole-kulche.webp` | kulcha tray with restaurant menu text strip | Chole Kulche 01(Indian Food) | Ranjithsiji | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=123283955 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 thai-asian pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `thai-asian/lechon.webp` | raw suckling pigs hanging in butcher shop | Lechon Belly | Irvin Parco Sto. Tomas | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/w/index.php?curid=127221242 | resized, WebP |
+| `thai-asian/kottu-roti.webp` | grainy styrofoam takeout of chopped noodles | Kotthu s piletinom | User:WikiLaurent | Public domain | https://commons.wikimedia.org/w/index.php?curid=47598456 | resized, WebP |
+
+## Replaced 2026-11-22 (L15 soups-salads pass 2)
+
+| File | The old photo showed | Original title | Author | Licence | Source | Changes |
+|---|---|---|---|---|---|---|
+| `soups-salads/quinoa-salad.webp` | sweet quinoa porridge with dried apricots/nuts | Quinoa Salad | jeffreyw | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | https://commons.wikimedia.org/w/index.php?curid=80213073 | resized, WebP |
+| `soups-salads/cream-of-tomato-soup.webp` | orange sauce in mini skillet (dip, not soup bowl) | Cream of Tomato Soup | Jonathunder | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | https://commons.wikimedia.org/w/index.php?curid=46076436 | resized, WebP |
