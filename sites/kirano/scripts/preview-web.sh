@@ -128,7 +128,7 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   # never run the wasm.
   # PREVIEW_URL already set above (sha10 of link-preview.jpg).
   HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-  BODY_INJECT='        <noscript><p>Kirano — grocery counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a></p></noscript>
+  BODY_INJECT='        <noscript><p>Kirano — grocery counter OS. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
   awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
     BEGIN { done_title=0; done_body=0 }
