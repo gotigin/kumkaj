@@ -472,7 +472,7 @@ virtual_printer_new	Print na ru thar
 virtual_printer_selected	“{name}” siam mek — dang list-ah khawih la, thlak turin
 config_layout_portrait	Ding
 config_layout_landscape	Phai
-config_send_os	System spooler
+config_send_os	System lehkha (system spooler)
 config_send_escpos	ESC/POS
 virtual_printers_heading	Print na ru
 virtual_printers_empty	Print na ru a la awm lo — a hnuai zat dah la, Dah tha. I neih hnuah list-ah pakhat khawih la, siam turin.
@@ -728,7 +728,7 @@ pay_credit	Ba
 book_kind_today	Vawiin lehkha
 book_kind_month	He thla lehkha
 book_kind_aging	La awm / ba-ba
-book_kind_balance	Balance sheet
+book_kind_balance	Balance sheet lehkha
 order_help	Thil khawih la, telh turin.
 categories_help	Chung item chu category hnuaiah dah nan «Hmang» tap rawh. Photo-in category ah picture a pe; a awm loh chuan letter hmasa a lantir.
 dish_search_ph	Hming, chi emaw barcode emaw zawng rawh...
@@ -809,7 +809,7 @@ kot_copies	Copy
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-test_bill_format	Test bill
+test_bill_format	Bill test
 test_bill_sent	Bill en hma thawn a ni
 test_print_no_printer	Hna kha atan print na awm lo — he screen-ah pakhat thlang
 std_print	Bill print len

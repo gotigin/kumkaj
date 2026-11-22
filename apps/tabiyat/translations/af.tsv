@@ -264,7 +264,7 @@ attach_pdf	PDF heg
 attach_photo	Foto heg
 attachments_last_expense	Aanhangsels (laaste uitgawe)
 bank	Bank
-bank_in	Bank in
+bank_in	In die bank
 bank_out	Bank uit
 bank_reconciliation	Bankversoenlikheid
 bank_to_till	Boek → kasregister
@@ -893,7 +893,7 @@ add_dishes	Voeg medisyne by
 order_so_far	Op hierdie bestelling: {n} · {total}
 no_dish_match	Geen item stem ooreen met “{q}”
 pick_done	Gereed
-dishes_n	{n} items
+dishes_n	{n} middels
 reorder_ph	Koop meer by
 set_reorder	Stel herbestellvlak in
 low_stock_alert	Baie laag — koop gou: {items}
