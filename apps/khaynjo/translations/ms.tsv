@@ -426,7 +426,7 @@ bank	Bank
 bank_in	Bank masuk
 bank_out	Tunai keluar dari bank
 bank_reconciliation	Penyesuaian bank
-bank_to_till	Bank → sehingga
+bank_to_till	Bank → kaunter
 book_add_dish	Lejar — tambah hidangan / item menu
 book_opening_credit	Lejar — kredit pembukaan
 branch_name_sell_ph	Nama cawangan untuk dijual
@@ -509,17 +509,17 @@ card_terminal_optional	Terminal kad / pautan pembayaran (pilihan apabila interne
 copy_report	Salin laporan
 counted_cash_ph	Dikira wang tunai dalam laci
 country_tax	Negara & cukai
-tax_chrome	Label cukai pada till
+tax_chrome	Label cukai pada kaunter
 tax_chrome_help	Apabila dimatikan, meja pesanan menyembunyikan baris anggaran GST/cukai dan pemegang tempat GST-dalam-harga. Kadar cukai dan tetapan Negara & cukai kekal — hidupkan semula label bila-bila masa. Sesetengah templat kedai bermula dengan ini dimatikan.
 tax_chrome_on	Tunjukkan
 tax_chrome_off	Sembunyi
-tax_chrome_saved_on	Label cukai pada till
-tax_chrome_saved_off	Label cukai disembunyikan pada sehingga
-tax_invoice_till	Invois cukai pada sehingga
+tax_chrome_saved_on	Label cukai pada kaunter
+tax_chrome_saved_off	Label cukai disembunyikan pada kaunter
+tax_invoice_till	Invois cukai pada kaunter
 tax_invoice_help	Apabila dimatikan, bil hanya memo tunai dan butang Invois cukai / Memo tunai disembunyikan di meja pesanan. Sesetengah templat kedai bermula dengan ini dimatikan — hidupkan Tunjuk bila-bila masa untuk memilih Invois cukai semula.
 tax_invoice_on	Tunjukkan
 tax_invoice_off	Sembunyi
-tax_invoice_saved_on	Invois cukai pada sehingga
+tax_invoice_saved_on	Invois cukai pada kaunter
 tax_invoice_saved_off	Invois cukai disembunyikan — Memo tunai sahaja
 pay_methods	Kaedah pembayaran
 pay_methods_help	Butang mana yang muncul pada Terima bayaran. Tunai sentiasa kekal. Sesetengah templat kedai bermula dengan Tunai sahaja — hidupkan semula UPI / Kad / Kredit / Bahagi di sini.
@@ -662,7 +662,7 @@ last_seen	dilihat
 copy_pair_code	Salin kod berpasangan
 new_pair_code	Kod gandingan baharu
 pair_finishing	Pasangan penamat… menggunakan lejar kedai
-pair_opening	Membuka sehingga…
+pair_opening	Membuka kaunter…
 pair_copied	Kod gandingan disalin
 kot_waiting	Menunggu untuk menghantar
 lan_offline_waiting	Pelayan kedai tidak dapat dihubungi · {n} menunggu
@@ -697,7 +697,7 @@ backup_copy_failed	Salinan sandaran tidak dapat disimpan di sana — pilih tempa
 clock_off	Jam peranti ini berada {min} min dari pelayan kedai — tetapkan masa yang sesuai pada peranti ini
 printers_heading	Pencetak
 printers_help	Cari pencetak, ketik satu untuk memilihnya, kemudian Cetak halaman ujian pada peranti itu sahaja. Pencetak bil: Format Bil & KOT → Bil. Pencetak dapur: Dapur → Stesen dapur (tambah stesen dahulu — Cari tidak mencipta stesen).
-printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Ini sehingga menghantar bil dan KOTs sana — Cari / tambah / tetapkan penginapan pada Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
+printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Kaunter ini menghantar bil dan KOTs sana — Cari / tambah / tetapkan penginapan pada Pelayan. Halaman ujian dan saiz cetakan bil pergi ke Pelayan.
 printers_find_heading	Cari pencetak
 printers_find_tip	Cari imbasan peranti ini dan pastikan senarai terkini.
 printers_pool_heading	Pencetak
@@ -895,7 +895,7 @@ take_payment	Ambil bayaran
 tax_added_till	{tax} eksklusif
 tax_inside_price	{tax} termasuk
 tax_invoice	Invois cukai
-till_to_bank	Sehingga → bank
+till_to_bank	Kaunter → bank
 units_heading	Unit
 unlock_after_pairing	Masukkan PIN
 unlock_with_login	Buka kunci dengan log masuk
@@ -919,7 +919,7 @@ unmark	Nyahtanda
 update_my_password	Kemas kini kata laluan saya
 update_my_pin	Kemas kini log masuk saya
 duress_heading	Buka kunci kecemasan PIN (Pemilik sahaja)
-duress_help	Pilihan. Jika PIN ini ditaip pada buka kunci dan bukannya milik anda, semua entri lejar akan dipadamkan (jualan, lejar, sejarah) dan sehingga dibuka sebagai Pemilik kelihatan biasa — menu, harga, meja makan, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadamkan. Gunakan hanya jika anda terpaksa membuka kunci. Biarkan kosong dan simpan untuk mematikan. Tidak pernah sama dengan PIN milik sesiapa.
+duress_help	Pilihan. Jika PIN ini ditaip pada buka kunci dan bukannya milik anda, semua entri lejar akan dipadamkan (jualan, lejar, sejarah) dan kaunter dibuka sebagai Pemilik kelihatan biasa — menu, harga, meja makan, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadamkan. Gunakan hanya jika anda terpaksa membuka kunci. Biarkan kosong dan simpan untuk mematikan. Tidak pernah sama dengan PIN milik sesiapa.
 duress_pin_ph	Kecemasan PIN (4–12 digit)
 duress_confirm_ph	Taip sekali lagi untuk mengesahkan
 save_duress_pin	Simpan kecemasan PIN
@@ -951,7 +951,7 @@ stamp_heading	setem
 stamp_image_help	Imej setem pilihan pada bil bercetak dan paparan tetamu.
 payment_qr_heading	QR pembayaran
 payment_qr_image_help	QR statik pada bil dan paparan tetamu; sebaliknya membayar menggunakan UPI QR dinamik daripada VPA di atas.
-cash_in_hand	Wang tunai di tangan (sehingga)
+cash_in_hand	Wang tunai di tangan (kaunter)
 change_my_pin_heading	Log masuk saya
 connect_to_server	Sambung ke Pelayan
 counter_locked	Kaunter 01 · Dikunci
@@ -1042,8 +1042,8 @@ pin_hint_choose	Pilih 4–12 digit · Masukkan atau Buka Kunci untuk menyimpan
 pin_hint_new	Pemilik 4–12 digit baharu PIN · Masukkan atau Buka Kunci
 pin_hint_shop_code	Beli peranti · kod berpasangan {}
 pin_hint_books	Peranti ini memegang lejar
-pin_hint_paired	Tambahan sehingga berpasangan — buka kunci untuk menjual
-pin_hint_pair_first	Tambahan sehingga — pasangkan ke peranti kedai dahulu
+pin_hint_paired	Kaunter tambahan berpasangan — buka kunci untuk menjual
+pin_hint_pair_first	Kaunter tambahan — pasangkan ke peranti kedai dahulu
 unlock_to_continue	Buka kunci untuk meneruskan
 no_staff_yet	Belum ada kakitangan — buka kunci sebagai Pemilik, kemudian Pasukan
 icon_new_selected	Ikon: fail baharu dipilih — ketik Simpan jenama

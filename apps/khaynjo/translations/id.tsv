@@ -182,7 +182,7 @@ settings_hub_help	Buka satu bagian sekaligus — lebih sedikit gulir, pilihan le
 settings_back	Kembali
 settings_sec_language	Bahasa & mata uang
 settings_sec_country	Negara & pajak
-settings_sec_tills	Til tambahan & cabang
+settings_sec_tills	Kasir tambahan & cabang
 settings_sec_brand	Merek Anda
 settings_sec_units	Satuan & konversi
 settings_sec_pickers	Area · stasiun · tarif pajak
@@ -405,7 +405,7 @@ add_station	Tambah stasiun
 add_table	Tambah meja
 add_unit	Tambah satuan
 add_use_name	Tambah / gunakan nama ini
-allow_extra_tills	Izinkan til tambahan
+allow_extra_tills	Izinkan kasir tambahan
 amend	Ubah
 apply_country_pack	Terapkan paket negara
 datetime_appearance	Tampilan tanggal & waktu
@@ -426,7 +426,7 @@ bank	Bank
 bank_in	Masuk bank
 bank_out	Keluar bank
 bank_reconciliation	Rekonsiliasi bank
-bank_to_till	Bank → til
+bank_to_till	Bank → kasir
 book_add_dish	Pesan — tambah hidangan / item
 book_opening_credit	Booking — kredit awal
 branch_name_sell_ph	Nama cabang untuk menjual
@@ -536,7 +536,7 @@ extra_note_bill_ph	Catatan tambahan pada tagihan / penjualan ini
 extra_note_expense_ph	Catatan tambahan pada biaya terakhir
 extra_tills_heading	Kasir tambahan
 other_devices_help_heading	Siapkan perangkat lain
-other_devices_help	Di perangkat ini (Server): Til tambahan → Izinkan til tambahan. Catat kode pasangan dan alamat Wi‑Fi. Jika muncul, ketuk Izinkan perangkat lain terhubung. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: pasang aplikasi, pilih Mode klien, Cari server toko (atau ketik alamat), masukkan kode, Pasangkan sekarang. Jika Wi‑Fi putus, pesanan menunggu di perangkat dan dikirim saat Server menjawab.
+other_devices_help	Di perangkat ini (Server): Kasir tambahan → Izinkan kasir tambahan. Catat kode pasangan dan alamat Wi‑Fi. Jika muncul, ketuk Izinkan perangkat lain terhubung. Di komputer, ketuk Mulai dengan komputer ini. Di setiap perangkat lain: pasang aplikasi, pilih Mode klien, Cari server toko (atau ketik alamat), masukkan kode, Pasangkan sekarang. Jika Wi‑Fi putus, pesanan menunggu di perangkat dan dikirim saat Server menjawab.
 forget_shop	Lupakan toko ini
 goods_received	Barang diterima
 import_day	Impor hari
@@ -637,7 +637,7 @@ shop	Toko
 show	Tampilkan
 spreadsheet_csv	Spreadsheet (CSV)
 start_fresh	Mulai baru
-stop_extra_tills	Hentikan til tambahan
+stop_extra_tills	Hentikan kasir tambahan
 floor_cols_ph	Kolom
 floor_cols_fit	Sesuai layar
 floor_cols_fit_sub	muat {n}
@@ -680,7 +680,7 @@ lan_pair_status	Wi‑Fi {addr}
 lan_join_help_no_addr	Hubungkan perangkat ini ke Wi‑Fi untuk alamat.
 lan_no_address	Perangkat ini belum punya alamat Wi‑Fi — sambungkan ke Wi‑Fi toko.
 lan_not_listening	Saat ini tidak menerima perangkat — mungkin program lain memakai port {port}. Mulai ulang aplikasi.
-lan_tills_off	Til tambahan mati. Pembukuan toko ini tetap di perangkat ini. Izinkan til tambahan bila perangkat lain juga perlu menerima pesanan atau menagih.
+lan_tills_off	Kasir tambahan mati. Pembukuan toko ini tetap di perangkat ini. Izinkan kasir tambahan bila perangkat lain juga perlu menerima pesanan atau menagih.
 paired_with	Terpasang dengan toko di {url}
 not_paired	Belum terpasang — sambungkan ke server toko.
 choose_device_use	Pilih cara perangkat ini digunakan.
@@ -895,7 +895,7 @@ take_payment	Terima pembayaran
 tax_added_till	{tax} eksklusif
 tax_inside_price	{tax} inklusif
 tax_invoice	Faktur pajak
-till_to_bank	Til → bank
+till_to_bank	Kasir → bank
 units_heading	Satuan
 unlock_after_pairing	Masukkan PIN
 unlock_with_login	Buka kunci dengan login
@@ -951,7 +951,7 @@ stamp_heading	Stempel
 stamp_image_help	Gambar stempel opsional pada tagihan cetak dan tampilan tamu.
 payment_qr_heading	QR Pembayaran
 payment_qr_image_help	QR statis pada tagihan dan tampilan tamu; jika tidak, pembayaran menggunakan QR UPI dinamis dari VPA di atas.
-cash_in_hand	Tunai di tangan (til)
+cash_in_hand	Tunai di tangan (kasir)
 change_my_pin_heading	Ubah PIN saya (hanya milik Anda)
 connect_to_server	Hubungkan ke server
 counter_locked	Konter 01 · Terkunci
@@ -1042,8 +1042,8 @@ pin_hint_choose	Pilih 4–12 digit (keyboard atau pad) · Enter/OK untuk menyimp
 pin_hint_new	PIN pemilik baru 4–12 digit (keyboard atau pad) · Enter/OK
 pin_hint_shop_code	Perangkat toko · kode pasangan {}
 pin_hint_books	Perangkat ini menyimpan buku
-pin_hint_paired	Til tambahan terpasang — buka kunci untuk menjual
-pin_hint_pair_first	Til tambahan — pasangkan ke perangkat toko dulu
+pin_hint_paired	Kasir tambahan terpasang — buka kunci untuk menjual
+pin_hint_pair_first	Kasir tambahan — pasangkan ke perangkat toko dulu
 unlock_to_continue	Buka kunci untuk lanjut
 no_staff_yet	Belum ada staf — buka kunci sebagai Pemilik, lalu Tim
 icon_new_selected	Ikon: file baru dipilih — ketuk Simpan merek

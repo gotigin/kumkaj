@@ -62,7 +62,7 @@ marked_sold_out	Oznaczono jako niedostępny
 add_upper	DODAJ
 na	Nie dotyczy
 qty	Masa/ilość
-unit_at	Oceń @
+unit_at	Cena @
 actual	Rzeczywisty
 applied	Zastosowano
 note_ph	Uwaga (opcjonalnie)
@@ -315,7 +315,7 @@ table_running	Bieganie
 payment_pending	Płatność oczekująca
 collect_at_counter	zbieraj przy ladzie
 inventory	Zapasy
-inventory_stock	Zapasy i zapasy
+inventory_stock	Zapasy i stan
 branches	Gałęzie
 branches_org	Oddziały i organizacje
 credit_customers	Klienci i dostawcy (rachunki kredytowe)
@@ -951,7 +951,7 @@ stamp_heading	Pieczęć
 stamp_image_help	Opcjonalny obraz znaczka na drukowanych rachunkach i wystawie dla gości.
 payment_qr_heading	Płatność QR
 payment_qr_image_help	Statyczny kod QR na rachunkach i wyświetlaczu dla gości; w przeciwnym razie płatność wykorzystuje dynamiczny kod QR UPI z VPA powyżej.
-cash_in_hand	Gotówka w kasie (do)
+cash_in_hand	Gotówka w kasie (kasa)
 change_my_pin_heading	Moje logowanie
 connect_to_server	Połącz się z serwerem
 counter_locked	Licznik 01 · Zablokowany
@@ -1042,7 +1042,7 @@ pin_hint_choose	Wybierz 4–12 cyfr · Wprowadź lub Odblokuj, aby zapisać
 pin_hint_new	Nowy 4–12-cyfrowy właściciel PIN · Wprowadź lub odblokuj
 pin_hint_shop_code	Kup urządzenie · kod parowania {}
 pin_hint_books	To urządzenie trzyma księgi
-pin_hint_paired	Dodatkowe do sparowania — odblokuj, aby sprzedać
+pin_hint_paired	Dodatkowa kasa sparowana — odblokuj, aby sprzedawać
 pin_hint_pair_first	Dodatkowa kasa — najpierw sparuj z urządzeniem sklepowym
 unlock_to_continue	Odblokuj, aby kontynuować
 no_staff_yet	Nie ma jeszcze personelu — odblokuj jako właściciel, a następnie jako zespół
@@ -1170,7 +1170,7 @@ charge_again_title	Nalicz tę pozycję ponownie
 move_item_title	Przenieś ten przedmiot na inny stół w jadalni
 already_cooked	Już ugotowane (marnotrawstwo)
 not_cooked_yet	Jeszcze nie ugotowane
-return_to_customer	Wróć do klienta
+return_to_customer	Reszta dla klienta
 short_by	Krótko
 tip_not_sale	Napiwek (dla personelu, nie na sprzedaż)
 right_settle	Przyjmij płatność

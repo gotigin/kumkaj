@@ -520,7 +520,7 @@ tax_invoice_help	オフにすると、伝票は現金メモのみになり、注
 tax_invoice_on	表示
 tax_invoice_off	非表示
 tax_invoice_saved_on	レジの課税請求書
-tax_invoice_saved_off	課税請求書を非表示 — カシノメモのみ
+tax_invoice_saved_off	課税請求書を非表示 — 現金メモのみ
 pay_methods	決済方法
 pay_methods_help	「支払いを受ける」に表示するボタン。現金は常に残ります。一部の店舗テンプレートは現金のみで始まります — ここで UPI / カード / 掛け / 分割を再びオンにしてください。
 create_backup	バックアップ作成

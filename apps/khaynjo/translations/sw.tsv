@@ -509,18 +509,18 @@ card_terminal_optional	Kituo cha kadi / kiungo cha malipo (hiari ikiwa na intane
 copy_report	Nakili ripoti
 counted_cash_ph	Taslimu iliyohesabiwa kwenye droo
 country_tax	Nchi na kodi
-tax_chrome	Vigezo vya kodi kwenye till
+tax_chrome	Lebo za kodi kwenye kaunta
 tax_chrome_help	Ikizimwa, meza ya oda huficha mistari ya makadirio ya GST/kodi na vishika-nafasi vya GST-ndani-ya-bei. Viwango vya kodi na mipangilio ya Nchi na kodi hubaki — washa lebo tena wakati wowote. Baadhi ya violezo vya duka huanza na hili likiwa limezimwa.
 tax_chrome_on	Onyesha
 tax_chrome_off	Ficha
-tax_chrome_saved_on	Vigezo vya kodi kwenye till
-tax_chrome_saved_off	Vigezo vya kodi vimeshindwa kwenye till
-tax_invoice_till	Faini ya kodi kwenye till
+tax_chrome_saved_on	Lebo za kodi kwenye kaunta
+tax_chrome_saved_off	Lebo za kodi zimefichwa kwenye kaunta
+tax_invoice_till	Ankara ya kodi kwenye kaunta
 tax_invoice_help	Ikizimwa, bili ni risiti za fedha taslimu pekee na vitufe vya Ankara ya kodi / Risiti ya fedha hufichwa kwenye meza ya oda. Baadhi ya violezo vya duka huanza na hili likiwa limezimwa — washa Onyesha wakati wowote kuchagua tena Ankara ya kodi.
 tax_invoice_on	Onyesha
 tax_invoice_off	Ficha
-tax_invoice_saved_on	Faini ya kodi kwenye till
-tax_invoice_saved_off	Faini ya kodi imeshindwa — tu Cash memo
+tax_invoice_saved_on	Ankara ya kodi kwenye kaunta
+tax_invoice_saved_off	Ankara ya kodi imefichwa — memo ya taslimu pekee
 pay_methods	Njia za malipo
 pay_methods_help	Vitufe vipi huonekana kwenye Pokea malipo. Fedha taslimu hubaki daima. Baadhi ya violezo vya duka huanza na Fedha taslimu pekee — washa tena UPI / Kadi / Mkopo / Gawanya hapa.
 create_backup	Tengeneza hifadhi
