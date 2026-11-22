@@ -280,7 +280,7 @@ frequent_apply	لاگو کریں
 frequent_saved	اکثر: پچھلے {d} دن، سرفہرست {n} — {c} ڈشز
 frequent_empty	اس مدت میں مکمل فروخت نہیں — بل نمٹائیں (سیٹنگز میں ₹0 جائز ہو تو) اور یہاں دکھیں گی۔
 zero_sales	صفر قیمت فروخت
-zero_sales_help	₹0 پکوان اور ₹0 ادائیگی کی اجازت دیں۔ بند ہو تو ادائیگی میں رقم چاہیے۔
+zero_sales_help	₹0 قیمت کے پکوان اور ₹0 پر ادا شدہ بل اجازت دیں (مفت / Owner خواہش)۔ ڈیفالٹ چالو تاکہ مفت کور Frequent اور دن کی کتب میں نظر آئیں۔
 zero_sales_on	صفر فروخت: آن
 zero_sales_off	صفر فروخت: آف
 zero_sales_saved_on	صفر فروخت کی اجازت محفوظ (آن)
@@ -460,7 +460,7 @@ optional_login_heading	اختیاری لاگ اِن
 rights_heading	اختیارات
 ops_panel	مقامی کام
 crm_heading	مہمان اور پیغام
-crm_help	سالگرہ، لائلٹی — SMS/WhatsApp قطار۔ {name}، {points}۔ مالک بھیجتا ہے۔
+crm_help	سالگرہ، لائلٹی، غیر فعال اور ٹاپ مہمان — SMS یا WhatsApp ارادے قطار میں۔ پیغام میں {name} اور {points}۔ Owner بھیجتا ہے؛ خود کچھ نہیں بھیجا جاتا۔
 crm_queue_sms	SMS قطار
 crm_queue_wa	WhatsApp قطار
 crm_seg_bday_week	سالگرہ ہفتہ
@@ -1280,7 +1280,7 @@ test_bill_format	ٹیسٹ بل
 test_bill_sent	بل کا نمونہ بھیجا
 test_print_no_printer	اس کام کے لیے پرنٹر نہیں — اسی اسکرین پر ایک چنیں
 std_print	بل پرنٹ سائز
-std_print_help	اسٹینڈرڈ پورٹریٹ اور لینڈ اسکیپ بل جابز کے لیے حرف کا سائز (تھرمل KOT الگ)۔ دونوں رخ پر ایک ہی سائز۔
+std_print_help	OS / دستاویز پرنٹر پر Standard Portrait اور Landscape بل جاب کا فونٹ سائز (پوائنٹس لکھیں — Small/Normal/Large نہیں)۔ دونوں اورینٹیشن پر ایک سائز۔ کچن سلپ سائز KOT ٹیب پر۔
 std_size_s	چھوٹا
 std_size_m	عام
 std_size_l	بڑا
@@ -1301,7 +1301,7 @@ aggregator_import_help	اختیاری Local: backups میں import_aggregator_or
 import_aggregator_file	ایگریگیٹر فائل درآمد
 team_pick_ph	ترمیم کے لیے عملے کا نام
 select_staff	یہ عملہ منتخب کریں
-rights_help	اختیارات — بدلنے کے لیے دبائیں: اجازت ہے → منظوری کے ساتھ (اسی وقت مینیجر کا PIN) → اجازت نہیں۔
+rights_help	اس شخص کے پیسے اور فلور کام — ٹیپ پر چکر: اجازت → باس PIN چاہیے → اجازت نہیں۔ بل دوبارہ پرنٹ صرف بل؛ کچن اسٹیشن نیچے والی فہرست۔
 dish_picker_help	ہمارے پکوان تلاش کریں یا دیکھیں اور کسی ایک کو دبائیں — اس کا نام اور تصویر بھر جائیں گے، یا اپنا نام رکھیں۔ قیمت لکھیں (0 بھی ٹھیک ہے)، پھر آئٹم شامل کریں۔
 close_dish_list	پکوانوں کی فہرست بند کریں
 own_item_name	اسے اپنے آئٹم کے نام کے طور پر استعمال کریں

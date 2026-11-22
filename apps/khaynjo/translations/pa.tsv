@@ -280,7 +280,7 @@ frequent_apply	ਲਾਗੂ
 frequent_saved	ਅਕਸਰ: ਪਿਛਲੇ {d} ਦਿਨ, ਸਿਖਰਲੇ {n} — {c} ਪਕਵਾਨ
 frequent_empty	ਇਸ ਅਰਸੇ ਵਿੱਚ ਪੂਰੀ ਵਿਕਰੀ ਨਹੀਂ — ਬਿਲ ਨਿਪਟਾਓ (ਸੈਟਿੰਗ ਵਿੱਚ ₹0 ਮਨਜ਼ੂਰ ਹੋਵੇ ਤਾਂ) ਅਤੇ ਇੱਥੇ ਦਿਖਣਗੀਆਂ।
 zero_sales	ਜ਼ੀਰੋ ਮੁੱਲ ਵਿਕਰੀ
-zero_sales_help	₹0 ਪਕਵਾਨ ਅਤੇ ₹0 ਭੁਗਤਾਨ ਮਨਜ਼ੂਰ ਕਰੋ। ਬੰਦ ਹੋਵੇ ਤਾਂ ਭੁਗਤਾਨ ਵਿੱਚ ਰਕਮ ਚਾਹੀਦੀ ਹੈ।
+zero_sales_help	₹0 ਕੀਮਤ ਵਾਲੇ ਪਕਵਾਨ ਅਤੇ ₹0 ਤੇ ਭਰੇ ਬਿੱਲ ਇਜਾਜ਼ਤ ਦਿਓ (ਮੁਫ਼ਤ / Owner ਇੱਛਾ)। ਡਿਫਾਲਟ ਚਾਲੂ ਤਾਂ ਜੋ ਮੁਫ਼ਤ ਕਵਰ Frequent ਅਤੇ ਦਿਨ ਦੀਆਂ ਬਹੀਆਂ ਵਿੱਚ ਦਿਖਣ।
 zero_sales_on	ਜ਼ੀਰੋ ਵਿਕਰੀ: ਚਾਲੂ
 zero_sales_off	ਜ਼ੀਰੋ ਵਿਕਰੀ: ਬੰਦ
 zero_sales_saved_on	ਜ਼ੀਰੋ ਵਿਕਰੀ ਇਜਾਜ਼ਤ ਸੰਭਾਲੀ (ਚਾਲੂ)
@@ -460,7 +460,7 @@ optional_login_heading	ਵਿਕਲਪਿਕ ਲੌਗਇਨ
 rights_heading	ਅਧਿਕਾਰ
 ops_panel	ਸਥਾਨਕ ਕੰਮ
 crm_heading	ਮਹਿਮਾਨ ਅਤੇ ਸੁਨੇਹੇ
-crm_help	ਜਨਮਦਿਨ, ਲਾਇਲਟੀ — SMS/WhatsApp ਕਤਾਰ. {name}, {points}. ਮਾਲਕ ਭੇਜਦਾ ਹੈ.
+crm_help	ਜਨਮਦਿਨ, ਲਾਇਲਟੀ, ਨਿਸ਼ਕਿਰਿਆ ਅਤੇ ਟਾਪ ਮਹਿਮਾਨ — SMS ਜਾਂ WhatsApp ਇਰਾਦੇ ਕਤਾਰ ਵਿੱਚ। ਸੁਨੇਹੇ ਵਿੱਚ {name} ਅਤੇ {points}। Owner ਭੇਜਦਾ ਹੈ; ਆਪਣੇ ਆਪ ਕੁਝ ਨਹੀਂ ਭੇਜਿਆ ਜਾਂਦਾ।
 crm_queue_sms	SMS ਕਤਾਰ
 crm_queue_wa	WhatsApp ਕਤਾਰ
 crm_seg_bday_week	ਜਨਮਦਿਨ ਹਫ਼ਤਾ
@@ -1280,7 +1280,7 @@ test_bill_format	ਟੈਸਟ ਬਿੱਲ
 test_bill_sent	ਬਿੱਲ ਦਾ ਨਮੂਨਾ ਭੇਜਿਆ
 test_print_no_printer	ਉਸ ਕੰਮ ਲਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ — ਇਸੇ ਸਕ੍ਰੀਨ 'ਤੇ ਇੱਕ ਚੁਣੋ
 std_print	ਬਿੱਲ ਪ੍ਰਿੰਟ ਆਕਾਰ
-std_print_help	ਸਟੈਂਡਰਡ ਪੋਰਟਰੇਟ ਅਤੇ ਲੈਂਡਸਕੇਪ ਬਿੱਲ ਜੌਬਾਂ ਲਈ ਅੱਖਰ ਆਕਾਰ (ਥਰਮਲ KOT ਵੱਖਰਾ)। ਦੋਵੇਂ ਓਰੀਐਂਟੇਸ਼ਨਾਂ 'ਤੇ ਇੱਕੋ ਆਕਾਰ।
+std_print_help	OS / ਦਸਤਾਵੇਜ਼ ਪ੍ਰਿੰਟਰ ਉੱਤੇ Standard Portrait ਅਤੇ Landscape ਬਿੱਲ ਜਾਬ ਦਾ ਫੌਂਟ ਆਕਾਰ (ਪੁਆਇੰਟ ਲਿਖੋ — Small/Normal/Large ਨਹੀਂ)। ਦੋਹਾਂ ਓਰੀਐਂਟੇਸ਼ਨਾਂ ਉੱਤੇ ਇੱਕ ਆਕਾਰ। ਕਿਚਨ ਸਲਿੱਪ ਆਕਾਰ KOT ਟੈਬ ਉੱਤੇ।
 std_size_s	ਛੋਟਾ
 std_size_m	ਆਮ
 std_size_l	ਵੱਡਾ
@@ -1301,7 +1301,7 @@ aggregator_import_help	ਵਿਕਲਪਿਕ Local: backups ਵਿੱਚ import_
 import_aggregator_file	ਐਗਰੀਗੇਟਰ ਫਾਈਲ ਆਯਾਤ
 team_pick_ph	ਬਦਲਣ ਲਈ ਸਟਾਫ਼ ਦਾ ਨਾਮ
 select_staff	ਇਹ ਸਟਾਫ਼ ਚੁਣੋ
-rights_help	ਅਧਿਕਾਰ — ਬਦਲਣ ਲਈ ਟੈਪ ਕਰੋ: ਇਜਾਜ਼ਤ ਹੈ → ਮਨਜ਼ੂਰੀ ਨਾਲ (ਉਸੇ ਵੇਲੇ ਮੈਨੇਜਰ ਦਾ PIN) → ਇਜਾਜ਼ਤ ਨਹੀਂ।
+rights_help	ਇਸ ਵਿਅਕਤੀ ਦੇ ਪੈਸੇ ਅਤੇ ਫਲੋਰ ਕੰਮ — ਟੈਪ ਤੇ ਚੱਕਰ: ਇਜਾਜ਼ਤ → ਬੌਸ PIN ਚਾਹੀਦਾ → ਨਹੀਂ। ਬਿੱਲ ਮੁੜ ਪ੍ਰਿੰਟ ਸਿਰਫ਼ ਬਿੱਲ; ਕਿਚਨ ਸਟੇਸ਼ਨ ਹੇਠਲੀ ਸੂਚੀ।
 dish_picker_help	ਸਾਡੇ ਪਕਵਾਨ ਲੱਭੋ ਜਾਂ ਵੇਖੋ ਅਤੇ ਇੱਕ 'ਤੇ ਟੈਪ ਕਰੋ — ਉਸਦਾ ਨਾਮ ਤੇ ਫੋਟੋ ਭਰ ਜਾਣਗੇ, ਜਾਂ ਆਪਣਾ ਨਾਮ ਰੱਖੋ। ਕੀਮਤ ਪਾਓ (0 ਵੀ ਠੀਕ ਹੈ), ਫਿਰ ਆਈਟਮ ਜੋੜੋ।
 close_dish_list	ਪਕਵਾਨਾਂ ਦੀ ਸੂਚੀ ਬੰਦ ਕਰੋ
 own_item_name	ਇਸਨੂੰ ਆਪਣੇ ਆਈਟਮ ਦੇ ਨਾਮ ਵਜੋਂ ਵਰਤੋ

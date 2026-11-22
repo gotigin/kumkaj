@@ -280,7 +280,7 @@ frequent_apply	প্রয়োগ
 frequent_saved	ঘন ঘন: শেষ {d} দিন, শীর্ষ {n} — {c}টি খাবার
 frequent_empty	এই সময়ে সম্পূর্ণ বিক্রি নেই — বিল নিষ্পত্তি করুন (সেটিংসে ₹0 অনুমোদিত হলে) এখানে দেখাবে।
 zero_sales	শূন্য মূল্য বিক্রি
-zero_sales_help	₹0 খাবার ও ₹0 পেমেন্ট অনুমতি দিন। বন্ধ থাকলে পেমেন্টে টাকা লাগবে।
+zero_sales_help	₹0 দামের খাবার ও ₹0-এ মিটানো বিল অনুমতি দিন (বিনামূল্যে / Owner ইচ্ছা)। ডিফল্ট চালু যাতে বিনামূল্যে কভার Frequent ও দিনের খাতায় দেখা যায়।
 zero_sales_on	শূন্য বিক্রি: চালু
 zero_sales_off	শূন্য বিক্রি: বন্ধ
 zero_sales_saved_on	শূন্য বিক্রির অনুমতি সংরক্ষিত (চালু)
@@ -460,7 +460,7 @@ optional_login_heading	ঐচ্ছিক লগইন
 rights_heading	অধিকার
 ops_panel	স্থানীয় কাজ
 crm_heading	অতিথি ও বার্তা
-crm_help	জন্মদিন, লয়্যালটি — SMS/WhatsApp কিউ। {name}, {points}। মালিক পাঠায়।
+crm_help	জন্মদিন, লয়্যালটি, নিষ্ক্রিয় ও শীর্ষ অতিথি — SMS বা WhatsApp ইন্টেন্ট সারিতে। বার্তায় {name} ও {points}। Owner পাঠান; নিজে থেকে কিছু যায় না।
 crm_queue_sms	SMS কিউ
 crm_queue_wa	WhatsApp কিউ
 crm_seg_bday_week	জন্মদিন সপ্তাহ
@@ -1280,7 +1280,7 @@ test_bill_format	টেস্ট বিল
 test_bill_sent	বিলের নমুনা পাঠানো হলো
 test_print_no_printer	ওই কাজের প্রিন্টার নেই — এই স্ক্রিনেই একটি বাছুন
 std_print	বিল প্রিন্ট আকার
-std_print_help	স্ট্যান্ডার্ড পোর্ট্রেট ও ল্যান্ডস্কেপ বিল কাজের অক্ষরের আকার (থার্মাল KOT আলাদা)। দুই অভিমুখেই একই আকার।
+std_print_help	OS / ডকুমেন্ট প্রিন্টারে Standard Portrait ও Landscape বিল জবের ফন্ট সাইজ (পয়েন্ট লিখুন — Small/Normal/Large নয়)। দুই ওরিয়েন্টেশনে এক সাইজ। কিচেন স্লিপ সাইজ KOT ট্যাবে।
 std_size_s	ছোট
 std_size_m	সাধারণ
 std_size_l	বড়
@@ -1301,7 +1301,7 @@ aggregator_import_help	ঐচ্ছিক Local: backups-এ import_aggregator_o
 import_aggregator_file	অ্যাগ্রিগেটর ফাইল আমদানি
 team_pick_ph	সম্পাদনার জন্য কর্মীর নাম
 select_staff	এই কর্মী বেছে নিন
-rights_help	অধিকার — বদলাতে চাপুন: অনুমতি আছে → অনুমোদন সহ (তখনই ম্যানেজারের PIN) → অনুমতি নেই।
+rights_help	এই ব্যক্তির টাকা ও ফ্লোর কাজ — ট্যাপে চক্র: অনুমতি → বস PIN লাগে → নয়। বিল আবার প্রিন্ট শুধু বিল; কিচেন স্টেশন নিচের তালিকা।
 dish_picker_help	আমাদের খাবার খুঁজুন বা দেখুন, একটিতে চাপ দিলে তার নাম ও ছবি ভরে যাবে — অথবা নিজের নাম রাখুন। দাম দিন (0-ও চলবে), তারপর আইটেম যোগ করুন।
 close_dish_list	খাবারের তালিকা বন্ধ করুন
 own_item_name	এটিকে আপনার নিজের আইটেমের নাম হিসেবে ব্যবহার করুন

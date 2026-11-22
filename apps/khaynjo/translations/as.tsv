@@ -280,7 +280,7 @@ frequent_apply	প্ৰয়োগ
 frequent_saved	সঘনে: শেষ {d} দিন, শীৰ্ষ {n} — {c}টা খাদ্য
 frequent_empty	এই সময়ছোৱাত সম্পূৰ্ণ বিক্ৰী নাই — বিল মীমাংসা কৰক (ছেটিঙত ₹0 অনুমোদিত হ'লে) ইয়াত দেখা যাব।
 zero_sales	শূন্য মূল্য বিক্ৰী
-zero_sales_help	₹0 খাদ্য আৰু ₹0 পেমেণ্টৰ অনুমতি দিয়ক। বন্ধ থাকিলে পেমেণ্টত ধন লাগিব।
+zero_sales_help	₹0 দামৰ খাদ্য আৰু ₹0ত পৰিশোধ কৰা বিল অনুমতি দিয়ক (বিনামূল্যে / Owner ইচ্ছা)। ডিফল্ট চালু যাতে বিনামূল্যে কভাৰ Frequent আৰু দিনৰ বহীত দেখা যায়।
 zero_sales_on	শূন্য বিক্ৰী: চালু
 zero_sales_off	শূন্য বিক্ৰী: বন্ধ
 zero_sales_saved_on	শূন্য বিক্ৰীৰ অনুমতি সংৰক্ষিত (চালু)
@@ -460,7 +460,7 @@ optional_login_heading	ঐচ্ছিক লগইন
 rights_heading	অধিকাৰ
 ops_panel	স্থানীয় কাম
 crm_heading	অতিথি আৰু বাৰ্তা
-crm_help	জন্মদিন, লয়ালটি — SMS/WhatsApp সার। {name}, {points}। গৰাকী পঠায়।
+crm_help	জন্মদিন, লয়ালটি, নিষ্ক্ৰিয় আৰু শীৰ্ষ অতিথি — SMS বা WhatsApp ইনটেণ্ট সারিত। বাৰ্তাত {name} আৰু {points}। Owner পঠায়; নিজে একো নাযায়।
 crm_queue_sms	SMS সার
 crm_queue_wa	WhatsApp সার
 crm_seg_bday_week	জন্মদিন সপ্তাহ
@@ -1280,7 +1280,7 @@ test_bill_format	পৰীক্ষা বিল
 test_bill_sent	বিলৰ নমুনা পঠিওৱা হ’ল
 test_print_no_printer	সেই কামৰ বাবে প্ৰিণ্টাৰ নাই — এই স্ক্ৰীণতে এটা বাছক
 std_print	বিল প্ৰিণ্ট আকাৰ
-std_print_help	ষ্টেণ্ডাৰ্ড পোৰ্ট্ৰেইট আৰু লেণ্ডস্কেপ বিল কামৰ আখৰৰ আকাৰ (থাৰ্মেল KOT পৃথক)। দুয়ো দিশতে একে আকাৰ।
+std_print_help	OS / ডকুমেণ্ট প্ৰিণ্টাৰত Standard Portrait আৰু Landscape বিল জবৰ ফণ্ট আকাৰ (পইণ্ট লিখক — Small/Normal/Large নহয়)। দুয়ো অৰিয়েণ্টেচনত একে আকাৰ। কিচেন শ্লিপ আকাৰ KOT টেবত।
 std_size_s	সৰু
 std_size_m	সাধাৰণ
 std_size_l	ডাঙৰ
@@ -1301,7 +1301,7 @@ aggregator_import_help	ঐচ্ছিক Local: backupsত import_aggregator_or
 import_aggregator_file	এগ্ৰিগেটৰ ফাইল আমদানি
 team_pick_ph	সম্পাদনাৰ বাবে কৰ্মীৰ নাম
 select_staff	এই কৰ্মী বাছক
-rights_help	অধিকাৰ — সলনি কৰিবলৈ টেপ কৰক: অনুমতি আছে → অনুমোদন সহ (তেতিয়াই মেনেজাৰৰ PIN) → অনুমতি নাই।
+rights_help	এই ব্যক্তিৰ টকা আৰু ফ্লোৰ কাম — টেপত চক্ৰ: অনুমতি → বছ PIN লাগে → নহয়। বিল পুনৰ প্ৰিণ্ট কেৱল বিল; কিচেন ষ্টেচন তলৰ তালিকা।
 dish_picker_help	আমাৰ ব্যঞ্জন বিচাৰক বা চাওক আৰু এটাত টেপ কৰক — তাৰ নাম আৰু ফটো ভৰি যাব, নহলে নিজৰ নাম ৰাখক। দাম দিয়ক (0-ও চলিব), তাৰপিছত আইটেম যোগ কৰক।
 close_dish_list	ব্যঞ্জনৰ তালিকা বন্ধ কৰক
 own_item_name	ইয়াক আপোনাৰ নিজৰ আইটেমৰ নাম হিচাপে ব্যৱহাৰ কৰক

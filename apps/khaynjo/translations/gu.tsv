@@ -280,7 +280,7 @@ frequent_apply	લાગુ કરો
 frequent_saved	વારંવાર: છેલ્લા {d} દિવસ, ટોચની {n} — {c} વાનગી
 frequent_empty	આ સમયગાળામાં પૂર્ણ વેચાણ નથી — બિલ પૂરું કરો (સેટિંગમાં ₹0 માન્ય હોય તો) અહીં દેખાશે.
 zero_sales	શૂન્ય કિંમત વેચાણ
-zero_sales_help	₹0 વાનગી અને ₹0 ચુકવણી મંજૂર કરો. બંધ હોય તો ચુકવણીમાં રકમ જોઈએ.
+zero_sales_help	₹0 કિંમતની વાનગી અને ₹0 પર ચૂકવેલ બિલ મંજૂર કરો (મફત / Owner ઇચ્છા). ડિફૉલ્ટ ચાલુ જેથી મફત કવર Frequent અને દિવસની ચોપડામાં દેખાય.
 zero_sales_on	શૂન્ય વેચાણ: ચાલુ
 zero_sales_off	શૂન્ય વેચાણ: બંધ
 zero_sales_saved_on	શૂન્ય વેચાણ પરવાનગી સચવાઈ (ચાલુ)
@@ -460,7 +460,7 @@ optional_login_heading	વૈકલ્પિક લૉગિન
 rights_heading	અધિકારો
 ops_panel	સ્થાનિક કામ
 crm_heading	મહેમાન અને સંદેશ
-crm_help	જન્મદિવસ, લોયલ્ટી — SMS/WhatsApp કતાર. {name}, {points}. માલિક મોકલે.
+crm_help	જન્મદિવસ, લોયલ્ટી, નિષ્ક્રિય અને ટોચના મહેમાન — SMS અથવા WhatsApp ઇરાદા કતારમાં. સંદેશમાં {name} અને {points}. Owner મોકલે; પોતે કંઈ નથી મોકલાતું.
 crm_queue_sms	SMS કતાર
 crm_queue_wa	WhatsApp કતાર
 crm_seg_bday_week	જન્મદિવસ અઠવાડિયું
@@ -1280,7 +1280,7 @@ test_bill_format	ટેસ્ટ બિલ
 test_bill_sent	બિલનો નમૂનો મોકલ્યો
 test_print_no_printer	એ કામ માટે પ્રિન્ટર નથી — આ જ સ્ક્રીન પર એક પસંદ કરો
 std_print	બિલ પ્રિન્ટ કદ
-std_print_help	સ્ટાન્ડર્ડ પોર્ટ્રેટ અને લેન્ડસ્કેપ બિલ જોબ માટે અક્ષર કદ (થર્મલ KOT અલગ). બંને દિશામાં એક જ કદ.
+std_print_help	OS / દસ્તાવેજ પ્રિન્ટર પર Standard Portrait અને Landscape બિલ જોબનું ફોન્ટ કદ (પોઇન્ટ લખો — Small/Normal/Large નહીં). બંને ઓરિએન્ટેશન પર એક કદ. કિચન સ્લિપ કદ KOT ટેબ પર.
 std_size_s	નાનું
 std_size_m	સામાન્ય
 std_size_l	મોટું
@@ -1301,7 +1301,7 @@ aggregator_import_help	વૈકલ્પિક Local: backupsમાં import_a
 import_aggregator_file	એગ્રિગેટર ફાઇલ આયાત
 team_pick_ph	ફેરફાર માટે સ્ટાફનું નામ
 select_staff	આ સ્ટાફ પસંદ કરો
-rights_help	અધિકાર — બદલવા ટેપ કરો: મંજૂર → મંજૂરી સાથે (તે સમયે મેનેજરનો PIN) → મંજૂર નથી.
+rights_help	આ વ્યક્તિના પૈસા અને ફ્લોર કામ — ટેપથી ચક્ર: મંજૂર → બોસ PIN જોઈએ → નહીં. બિલ ફરી પ્રિન્ટ ફક્ત બિલ; કિચન સ્ટેશન નીચેની યાદી.
 dish_picker_help	અમારી વાનગીઓ શોધો કે જુઓ અને એક પર ટેપ કરો — તેનું નામ અને ફોટો ભરાઈ જશે, અથવા તમારું નામ રાખો. કિંમત લખો (0 પણ ચાલે), પછી આઇટમ ઉમેરો.
 close_dish_list	વાનગીઓની યાદી બંધ કરો
 own_item_name	આને તમારી પોતાની આઇટમના નામ તરીકે વાપરો
