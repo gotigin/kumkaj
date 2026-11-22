@@ -11229,6 +11229,15 @@ pub fn check_backup_file(path: &Path) -> Result<(), String> {
     if (!app.is_empty() && app != APP_MARK) || (!template.is_empty() && !template.starts_with("tabiyat")) {
         return Err(format!("{} is another app's backup, not these books", path.display()));
     }
+    // A backup from a future build must not open as today's books.
+    let ver = meta("schema_version");
+    if let Ok(n) = ver.parse::<i64>()
+        && n > SCHEMA_STAMP
+    {
+        return Err(format!(
+            "These books were written by a newer Tabiyat (schema {n}). Update the app, then restore."
+        ));
+    }
     Ok(())
 }
 

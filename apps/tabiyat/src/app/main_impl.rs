@@ -525,6 +525,9 @@ impl App {
                         store,
                         switching_in,
                     }) => self.finish_server_existing_opened(cx, store, switching_in),
+                    Ok(RoleOpenReady::ServerRestored(store)) => {
+                        self.finish_server_restored_opened(cx, store)
+                    }
                     Err(e) if e == "Cancelled" => {
                         self.set_status(cx, app_t("cancelled"));
                         self.paint_role_open_busy_chrome(cx);

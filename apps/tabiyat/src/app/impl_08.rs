@@ -423,13 +423,17 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
             return Ok(path.to_path_buf());
         }
         let bytes = cx.read_content_uri(&text).ok_or_else(|| "Could not read that backup".to_string())?;
-        let dir = app_state()
-            .lock()
-            .unwrap()
-            .store
-            .as_ref()
-            .map(|s| s.auto_backup_dir())
-            .ok_or_else(|| "No store".to_string())?;
+        // Settings restore uses the open books' backups/; first-run has no store yet.
+        let dir = {
+            let st = app_state().lock().unwrap();
+            if let Some(store) = st.store.as_ref() {
+                store.auto_backup_dir()
+            } else if let Some(base) = st.data_base.as_ref() {
+                base.join("backups")
+            } else {
+                return Err("No data directory".into());
+            }
+        };
         std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         let file = dir.join(format!("picked-{}.sqlite3", chrono::Local::now().format("%Y%m%d-%H%M%S")));
         std::fs::write(&file, bytes).map_err(|e| e.to_string())?;
