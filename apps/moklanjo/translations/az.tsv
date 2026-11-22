@@ -157,7 +157,7 @@ breadth_cm_ph	B sm
 height_cm_ph	H sm
 chargeable_kg	Ödənişli kq
 awb_label	AWB
-booking_help	Konsiqtor + konsignor (boş, OK) → təyinat → → pick rate → Hesab/Nağd → ödəniş. AWB qəbzdə çap olunur. Növbəti sifariş masanı boşaldır. Yuvarlaqlaşdırılmış başlanğıc Tətbiqə bərabərdir — yalnız hesabı yuvarlaqlaşdırmaq üçün redaktə edin.
+booking_help	Göndərən + alan (boş OK) → təyinat → çək → tarif seç → Hesab/Nağd → ödə. Arada: «Qaralama olaraq yadda saxlayın» (Lövhə-da saxlayır, kitablarda yox) sonra növbəti müştəriyə bax; davam etmək üçün Lövhə-dakı qaralamaya toxun. AWB qəbzdə çap olunur. Növbəti bron masanı təmizləyir.
 cart_empty_hint	Masa boş — göndərən/alıcı isteğe bağlı, təyinat və çəkini təyin edin, sonra qiymət üzərinə ƏLAVƏ et və ödə.
 team	Heyət
 team_pins	Heyət və PIN-lər

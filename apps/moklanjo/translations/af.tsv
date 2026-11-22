@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Aanklagbare kg
 awb_label	AWB
-booking_help	Versender + ontvanger (leeg OK) → bestemming → weeg → kies tarief → Rekening/Kontant → betaal. Luchtvrachtbrief word op die kwitansie gedruk. Volgende bespreking maak die tafel skoon. Afronding begin gelyk aan Toegepas — wysig net om die rekening af te rond.
+booking_help	Versender + ontvanger (leeg OK) → bestemming → weeg → kies tarief → Rekening/Kontant → betaal. Tussendeur: «Sit konsep opsy» (stoor op Bord, nie boeke nie) bedien dan die volgende kliënt; tik die konsep op Bord om voort te gaan. AWB word op die kwitansie gedruk. Volgende bespreking maak die lessenaar skoon.
 cart_empty_hint	Skakelbord leeg — versender/ontvanger opsioneel, stel bestemming en gewig in, tik BYVOEG op 'n koers, en betaal dan.
 team	Span
 team_pins	Span en PINs

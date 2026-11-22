@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	kg inmhuirir
 awb_label	AWB
-booking_help	Coinsíní + coinsíní (bán ceart go leor) → ceann scríbe → meáigh → ráta roghnaithe → Cuntas/Airgead → íoc. Priontáil AWB ar an admháil. Glanann an chéad áirithint eile an deasc. Tosaíonn chothromú cothrom le Feidhmeach — cuir in eagar ach amháin chun an bille a shlánú.
+booking_help	Seoltóir + faighteoir (folamh OK) → ceann scríbe → meáigh → roghnaigh ráta → Cuntas/Airgead → íoc. Idir an dá linn: «Sábháil mar dhréacht» (sábhálann ar Bord, ní sna leabhair) ansin freastail ar an chéad chustaiméir eile; tapáil an dréacht ar Bord chun leanúint. Priontálann AWB ar an admháil. Glanann an chéad áirithint eile an deasc.
 cart_empty_hint	Deasc folamh — coinsíneoir/coinsíní roghnach, socraigh ceann scríbe & meáchan, tapáil ADD ar ráta, ansin íoc.
 team	Foireann
 team_pins	Foireann & PINanna

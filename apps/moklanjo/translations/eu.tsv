@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kargatzeko kg
 awb_label	AWB
-booking_help	Bidaltzailea + hartzailea (hutsik Ados) → helmuga → pisatu → hautaketa-tasa → Kontua/Dirua → ordaindu. AWB-k ordainagirian inprimatzen du. Hurrengo erreserbak mahaia garbitzen du. Hasiera biribilduak Aplikatuaren berdinak dira — editatu faktura biribiltzeko soilik.
+booking_help	Igorlea + hartzailea (hutsik OK) → helmuga → pisatu → tarifa aukeratu → Kontua/Dirua → ordaindu. Tartean: «Gorde zirriborro gisa» (Arbela-ean gordetzen du, ez liburuetan) gero hurrengo bezeroa zerbitzatu; sakatu zirriborroa Arbela-ean jarraitzeko. AWB agirian inprimatzen da. Hurrengo erreserbak mahaia garbitzen du.
 cart_empty_hint	Mahaia hutsik: bidaltzailea/hartzailea aukerakoa da, ezarri helmuga eta pisua, sakatu GEHITU tarifa bat, eta gero ordaindu.
 team	Taldea
 team_pins	Taldea eta PINak

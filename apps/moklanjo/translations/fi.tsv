@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Maksullinen kg
 awb_label	AWB
-booking_help	Lähettäjä + vastaanottaja (tyhjä OK) → kohde → punnitus → keräilyhinta → Tili/käteinen → maksa. AWB tulostaa kuitille. Seuraava varaus tyhjentää pöydän. Pyöristetty alkaa yhtä kuin Applied – muokkaa vain pyöristääksesi laskun.
+booking_help	Lähettäjä + vastaanottaja (tyhjä OK) → kohde → punnitse → valitse hinta → Tili/Käteinen → maksa. Kesken: «Siirrä luonnoksiin» (tallentaa Taulu-lle, ei kirjoihin) palvele sitten seuraavaa asiakasta; napauta luonnosta Taulu-lla jatkaaksesi. AWB tulostuu kuittiin. Seuraava varaus tyhjentää pöydän.
 cart_empty_hint	Työpöytä tyhjä – lähettäjä/vastaanottaja valinnainen, aseta määränpää ja paino, napauta hinnan kohdalla LISÄÄ ja maksa sitten.
 team	Tiimi
 team_pins	Tiimi ja PIN-koodit

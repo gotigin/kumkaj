@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Afregningskg
 awb_label	AWB
-booking_help	Afsender + modtager (tom er OK) → destination → vej → vælg takst → Konto/Kontant → betal. AWB udskrives på kvitteringen. Næste booking rydder disken. Afrundet starter lig med Anvendt — ret kun for at afrunde regningen.
+booking_help	Afsender + modtager (tom OK) → destination → vej → vælg takst → Konto/Kontant → betal. Undervejs: «Parkér kladde» (gemmer på Tavle, ikke i bøgerne) betjen derefter næste kunde; tryk kladden på Tavle for at fortsætte. AWB udskrives på kvitteringen. Næste booking rydder skrivebordet.
 cart_empty_hint	Disken er tom — afsender/modtager er valgfri, sæt destination og vægt, tryk TILFØJ på en takst, og betal så.
 team	Team
 team_pins	Team og PIN

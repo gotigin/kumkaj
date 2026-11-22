@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	kg de pago
 awb_label	AWB
-booking_help	Remitente + destinatario (en branco OK) → destino → pesar → taxa de recollida → Conta/Efectivo → pagar. AWB imprime no recibo. A seguinte reserva despexa a mesa. Comezos redondeados iguais a Aplicado: edite só para redondear a factura.
+booking_help	Remitente + destinatario (en branco OK) → destino → pesar → elixir tarifa → Conta/Efectivo → pagar. Mentres: «Aparcar o borrador» (garda no Taboleiro, non nos libros) e atende o seguinte cliente; toca o borrador no Taboleiro para seguir. O AWB imprímese no recibo. A seguinte reserva limpa o escritorio.
 cart_empty_hint	Escritorio baleiro: o remitente/destinatario opcional, establece o destino e o peso, toca ENGADIR nunha tarifa e, a continuación, paga.
 team	Equipo
 team_pins	Equipo e PIN

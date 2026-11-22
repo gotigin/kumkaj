@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kg càrrecable
 awb_label	AWB
-booking_help	Remitent + destinatari (en blanc està bé) → destinació → pesar → tarifa → Compte/Efectiu → pagar. L’AWB s’imprimeix al rebut. La propera reserva allibera la taulell. Els començaments arrodonits igualen a Aplicat — només editar per arrodonir la factura.
+booking_help	Remitent + destinatari (en blanc OK) → destinació → pesar → triar tarifa → Compte/Efectiu → pagar. Mentrestant: «Aparca l'esborrany» (desa al Tauler, no als llibres) i atén el client següent; toca l’esborrany al Tauler per continuar. L’AWB s’imprimeix al rebut. La reserva següent buida l’escriptori.
 cart_empty_hint	Escriptori buit — remitent/destinatari opcional, estableix destinació i pes, toca AFEGIR en una tarifa, després paga.
 team	Equip
 team_pins	Equip i PIN

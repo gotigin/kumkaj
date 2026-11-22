@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Sisingilin kg
 awb_label	AWB
-booking_help	Consignor + consignee (blangko OK) → destinasyon → timbangin → pick rate → Account/Cash → bayaran. AWB prints sa resibo. Inalis ng susunod na booking ang desk. Ang rounded na simula ay katumbas ng Applied — i-edit lang para bilugan ang bill.
+booking_help	Consignor + consignee (blangko OK) → destinasyon → timbangin → piliin ang rate → Account/Cash → bayaran. Sa gitna: «Itabi ang draft» (sine-save sa Pisara, hindi sa mga aklat) tapos pagsilbihan ang susunod na customer; i-tap ang draft sa Pisara para ituloy. Nagpi-print ang AWB sa resibo. Nililinis ng susunod na booking ang desk.
 cart_empty_hint	Walang laman ang mesa — opsyonal ang consignor/consignee, itakda ang patutunguhan at timbang, i-tap ang ADD sa isang rate, pagkatapos ay magbayad.
 team	Koponan
 team_pins	Koponan at PINs

@@ -157,7 +157,7 @@ breadth_cm_ph	B sm
 height_cm_ph	H sm
 chargeable_kg	To'lanadigan kg
 awb_label	AWB
-booking_help	Yuk jo'natuvchi + qabul qiluvchi (bo'sh OK) → belgilangan manzil → tortish → tanlash stavkasi → Hisob/Naqd pul → to'lash. AWB kvitansiyada chop etadi. Keyingi bronlash stolni tozalaydi. Yaxlitlangan boshlar Qo'llaniladigan ga teng — faqat hisobni yaxlitlash uchun tahrirlang.
+booking_help	Yuboruvchi + oluvchi (boʻsh OK) → manzil → tort → tarif tanla → Hisob/Naqd → toʻla. Orada: «Qoralamaga qoʻyish» (Doskaga saqlaydi, kitoblarga emas) keyin keyingi mijozni xizmat qil; davom etish uchun Doskadagi qoralamani bosing. AWB chekda chop etiladi. Keyingi bron stolni tozalaydi.
 cart_empty_hint	Ish stoli boʻsh — joʻnatuvchi/oluvchi ixtiyoriy, boradigan joy va vaznni belgilang, tarif boʻyicha QOʻSHISH tugmasini bosing, soʻng toʻlang.
 team	Jamoa
 team_pins	Jamoa va PIN

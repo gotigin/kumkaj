@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Maksas kg
 awb_label	AWB
-booking_help	Sūtītājs + saņēmējs (tukšs OK) → galamērķis → svērt → atlases likme → Konts/skaidra nauda → samaksa. AWB drukā uz čeka. Nākamā rezervācija notīra galdu. Noapaļots sākas vienāds ar Applied — rediģējiet tikai, lai noapaļotu rēķinu.
+booking_help	Sūtītājs + saņēmējs (tukšs OK) → galamērķis → sver → izvēlies tarifu → Konts/Skaidra → maksā. Pa vidu: «Atlikt melnrakstu» (saglabā uz Tāfele, ne grāmatās) tad apkalpo nākamo klientu; pieskaries melnrakstam uz Tāfele, lai turpinātu. AWB drukā uz čeka. Nākamā rezervācija notīra galdu.
 cart_empty_hint	Galds ir tukšs — nosūtītājs/saņēmējs nav obligāti, iestatiet galamērķi un svaru, pie likmes pieskarieties PIEVIENOT, pēc tam maksājiet.
 team	Komanda
 team_pins	Komanda un PIN

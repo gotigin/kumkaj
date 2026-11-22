@@ -157,7 +157,7 @@ breadth_cm_ph	Lled cm
 height_cm_ph	Uchder cm
 chargeable_kg	Kg i'w godi
 awb_label	AWB
-booking_help	Anfonwr + derbynnydd (gwag yn iawn) → cyrchfan → pwyso → dewis cyfradd → Cyfrif/Arian parod → talu. Mae AWB yn argraffu ar y dderbynneb. Mae'r archeb nesaf yn clirio'r ddesg. Mae'r talgryn yn dechrau'n hafal i'r hyn a gymhwyswyd — golygwch dim ond i dalgrynnu'r bil.
+booking_help	Anfonydd + derbynnydd (gwag OK) → cyrchfan → pwyso → dewis tariff → Cyfrif/Arian → talu. Ar y ffordd: «Cadw fel drafft» (cadw ar Bwrdd, nid yn y llyfrau) yna gwasanaethu’r cwsmer nesaf; tapio’r drafft ar Bwrdd i barhau. Mae AWB yn argraffu ar y derbynneb. Mae’r archeb nesaf yn clirio’r ddesg.
 cart_empty_hint	Desg yn wag — anfonwr/derbynnydd yn ddewisol, gosodwch gyrchfan a phwysau, tapiwch YCHWANEGU ar gyfradd, yna talwch.
 team	Tîm
 team_pins	Tîm a PIN

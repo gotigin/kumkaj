@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Gjaldskyld kg
 awb_label	AWB
-booking_help	Sendandi + viðtakandi (autt í lagi) → áfangastaður → vigtun → tínsluhlutfall → Reikningur/reiðufé → borga. AWB prentar á kvittunina. Næsta bókun hreinsar skrifborðið. Ávalar byrjunar jafngildir Beitt - breyttu aðeins til að hringlaga reikninginn.
+booking_help	Sendandi + viðtakandi (autt OK) → áfangastaður → vigta → velja gjald → Reikningur/Reiðufé → borga. Á meðan: «Vista sem drög» (vistar á Tafla, ekki í bókum) þjónaðu svo næsta viðskiptavini; ýttu á uppkastið á Tafla til að halda áfram. AWB prentast á kvittun. Næsta bókun hreinsar skrifborðið.
 cart_empty_hint	Skrifborð tómt — sendandi/viðtakandi valfrjálst, stilltu áfangastað og þyngd, pikkaðu á BÆTA AÐ við gjaldskrá og borgaðu síðan.
 team	Lið
 team_pins	Lið & PINs

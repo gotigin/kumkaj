@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Dobíjecí kg
 awb_label	AWB
-booking_help	Odesílatel + příjemce (prázdné OK) → místo určení → vážení → sazba pro odběr → Účet/Hotovost → platba. AWB se vytiskne na účtenku. Další rezervace vyčistí stůl. Zaokrouhlený začíná rovný Použito — upravte pouze pro zaokrouhlení účtu.
+booking_help	Odesílatel + příjemce (prázdné OK) → místo určení → vážení → sazba → Účet/Hotovost → platba. Mezitím: «Odložit koncept» (uloží na Nástěnka, ne do knih) pak obslužte dalšího zákazníka; klepněte na koncept na Nástěnka pro pokračování. AWB se tiskne na účtence. Další rezervace vyčistí stůl.
 cart_empty_hint	Stůl prázdný – odesílatel/příjemce volitelný, nastavte místo určení a hmotnost, klepněte na PŘIDAT u sazby a poté zaplaťte.
 team	Tým
 team_pins	Tým & PINs

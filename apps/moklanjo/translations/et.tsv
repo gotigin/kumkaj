@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Tasuline kg
 awb_label	AWB
-booking_help	Kauba saatja + kaubasaaja (tühi OK) → sihtkoht → kaalumine → komplekteerimismäär → Konto/sularaha → maks. AWB prindib kviitungile. Järgmine broneering tühjendab laua. Ümardatud algus on võrdne Rakendatud – muutke ainult arve ümardamiseks.
+booking_help	Saatja + saaja (tühi OK) → sihtkoht → kaalu → vali tariif → Konto/Sularaha → maksa. Vahepeal: «Pane mustand kõrvale» (salvestab Tahvel-ile, mitte raamatutesse) teeni siis järgmist klienti; jätkamiseks toksake mustandit Tahvel-il. AWB trükitakse kviitungile. Järgmine broneering tühjendab laua.
 cart_empty_hint	Töölaud tühi – kaubasaatja/kaubasaaja valikuline, määrake sihtkoht ja kaal, puudutage hinna juures LISA, seejärel makske.
 team	Meeskond
 team_pins	Meeskond ja PIN-d

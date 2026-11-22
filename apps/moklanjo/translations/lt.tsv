@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Apmokestinami kg
 awb_label	AWB
-booking_help	Siuntėjas + gavėjas (tuščia Gerai) → paskirties vieta → svėrimas → paėmimo tarifas → Sąskaita / grynieji pinigai → sumokėti. AWB spausdina ant kvito. Kitas užsakymas išvalys stalą. Suapvalintos pradžios lygis Taikomas – redaguokite tik norėdami apvalinti sąskaitą.
+booking_help	Siuntėjas + gavėjas (tuščia OK) → paskirtis → sverk → rinkis tarifą → Sąskaita/Grynieji → mokėk. Tarp darbo: «Atidėti juodraštį» (saugo ant Lenta, ne knygose) tada aptarnauk kitą klientą; bakstelėk juodraštį ant Lenta, kad tęstum. AWB spausdinamas ant kvito. Kita rezervacija išvalo stalą.
 cart_empty_hint	Stalas tuščias – siuntėjas / gavėjas pasirinktinai, nustatykite paskirties vietą ir svorį, bakstelėkite PRIDĖTI prie tarifo, tada mokėkite.
 team	Komanda
 team_pins	Komanda ir PIN

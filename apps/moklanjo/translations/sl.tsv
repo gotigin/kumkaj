@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Plačljivo kg
 awb_label	AWB
-booking_help	Pošiljatelj + prejemnik (prazno OK) → destinacija → tehtanje → stopnja izbire → Račun/gotovina → plačilo. AWB se natisne na potrdilu. Naslednja rezervacija počisti mizo. Zaokroženo se začne enako Uporabljeno — uredite samo za zaokroževanje računa.
+booking_help	Pošiljatelj + prejemnik (prazno OK) → destinacija → tehtaj → izberi tarifo → Račun/Gotovina → plačaj. Medtem: «Odloži osnutek» (shrani na Tabla, ne v knjige) nato strezi naslednjemu; tapni osnutek na Tabla za nadaljevanje. AWB se natisne na računu. Naslednja rezervacija počisti mizo.
 cart_empty_hint	Prazna miza — pošiljatelj/prejemnik izbirno, nastavite destinacijo in težo, tapnite DODAJ na stopnji in nato plačajte.
 team	Ekipa
 team_pins	Ekipa in PIN

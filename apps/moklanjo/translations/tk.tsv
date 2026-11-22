@@ -157,7 +157,7 @@ breadth_cm_ph	B sm
 height_cm_ph	H sm
 chargeable_kg	Zarýad berilýän kg
 awb_label	AWB
-booking_help	Iberiji + alyjy (boş OK) → barmaly ýer → agramy → saýlama nyrhy → Hasap / Nagt → tölemek. AWB kwitansiýada çap edýär. Indiki bron etmek stoly arassalaýar. Tegelek “Applied” -e deň başlaýar - diňe hasaby tegeleklemek üçin redaktirläň.
+booking_help	Iberiji + alyjy (boş OK) → barmaly ýer → çek → tarif saýla → Hasap/Nagt → töle. Ara: «Garalama goý» (Tagta-da saklaýar, kitaplardan däl) soň indiki müşderä hyzmat et; dowam etmek üçin Tagta-daky garalamany bas. AWB çekde çap edilýär. Indiki bron stoly arassalaýar.
 cart_empty_hint	Stol boş - iberiji / iberiji islege bagly, barjak ýerini we agramyny kesgitläň, nyrh boýunça ADD-e basyň, soň töläň.
 team	Topar
 team_pins	Topar & PINs

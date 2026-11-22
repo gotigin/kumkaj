@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Teretni kg
 awb_label	AWB
-booking_help	Pošiljalac + primalac (prazno je OK) → odredište → vaganje → izbor tarife → Konto/Kasa → plaćanje. AWB se štampa na računu. Sljedeća rezervacija oslobađa sto. Zaokruženo počinje jednako kao Primijenjeno — uređujte samo da biste zaokružili račun.
+booking_help	Pošiljalac + primalac (prazno OK) → odredište → vaganje → izbor tarife → Konto/Kasa → plaćanje. Usput: «Odloži nacrt» (sprema na Tabla, ne u knjige) zatim usluži sljedećeg; dodirni skicu na Tabla za nastavak. AWB se štampa na računu. Sljedeća rezervacija čisti sto.
 cart_empty_hint	Stol je prazan — pošiljalac/primaoc opcionalno, postavite odredište i težinu, dodirnite DODAJ na tarifi, zatim platite.
 team	Tim
 team_pins	Tim i PIN-ovi

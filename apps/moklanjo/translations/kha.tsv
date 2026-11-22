@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kg ba lah ban siew
 awb_label	AWB
-booking_help	U nongphah + u nongshim (ba thylli OK) → ka jaka ba leit → ka jingkhia → ka dor shim → Ka jingkhein jingdiah/Ka pisa → ka jingsiew. Ka AWB ka shon ha ka resit. Ka jingbook kaba bud ka pynkhuid ia ka miej. Ka jingsdang kaba round ka iaryngkat bad ka Applied — edit tang ban pyllun ia ka bill.
+booking_help	U nongphah + u nongshim (thylli OK) → ka jaka ba leit → ka jingkhia → ka dor → Ka jingkhein/Ka pisa → jingsiew. Hapoh ka kam: «Pynsah kum ka draft» (buh ha Board, ym ha ki kot) nangta shakri ia u nongthoh ba bud; tap ia ka draft ha Board ban bun. AWB ka shon ha ka resit. Ka jingbook kaba bud ka pynkhuid ia ka shuki.
 cart_empty_hint	Ka miej kaba thylli — u nongphah/nongpdiang u lah ban jied, buh ia ka jaka leit & ka jingkhia, tap ADD ha ka dor, nangta siew.
 team	Ka kynhun
 team_pins	Ka tim bad ki PIN

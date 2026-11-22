@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Chaje kg
 awb_label	AWB
-booking_help	Expéditeur + destinataire (blank OK) → destinasyon → peze → to chwazi → Kont/Lajan Kach → peye. AWB enprime sou resi a. Pwochen anrjistreman efase biwo a. Awondi kòmanse egal ak Aplike — modifye sèlman pou awondi bòdwo a.
+booking_help	Expéditè + destinatè (vid OK) → destinasyon → peze → chwazi pri → Kont/Lajan → peye. Nan mitan: «Sove kòm bouyon» (sove sou Tablo, pa nan liv yo) epi sèvi pwochen kliyan; tape bouyon an sou Tablo pou kontinye. AWB enprime sou resi a. Pwochen rezèvasyon an netwaye biwo a.
 cart_empty_hint	Biwo vid — konvoyeur/destinataire si ou vle, mete destinasyon ak pwa, tape AJOUTE sou yon pousantaj, epi peye.
 team	Ekip
 team_pins	Ekip ak PIN

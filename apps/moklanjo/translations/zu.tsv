@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	I-kg ekhokhiswayo
 awb_label	AWB
-booking_help	Umthumeli + othunyiwe (okungenalutho KULUNGILE) → indawo → kala → isilinganiso sokukhetha → I-akhawunti/Ukheshi → khokha. I-AWB iphrinta kurisidi. Ukubhukha okulandelayo kusula ideski. I-rounding iqala ilingana ne-Applied — hlela kuphela ukuzungeza ibhili.
+booking_help	Umthumeli + othunyiwe (okungenalutho OK) → indawo → kala → khetha inani → I-akhawunti/Ukheshi → khokha. Phakathi: «Beka njengokusalungiswa» (ilondoloza ku-Ibhodi, hhayi ezincwadini) bese usebenzela ikhasimende elilandelayo; thepha idrafti ku-Ibhodi ukuze uqhubeke. I-AWB iphrinta kurisidi. Ukubhukha okulandelayo kusula ideski.
 cart_empty_hint	Ideski alinalutho — umthumeli/umthumeli uyazikhethela, setha indawo oya kuyo nesisindo, cindezela okuthi ENGEZA inani, bese ukhokha.
 team	Ithimba
 team_pins	Ithimba & PINs

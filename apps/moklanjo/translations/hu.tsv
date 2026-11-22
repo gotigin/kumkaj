@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Térhető kg
 awb_label	AWB
-booking_help	Feladó + címzett (üres OK) → rendeltetési hely → mérleg → komissiózási díj → Számla/Készpénz → fizetés. Az AWB a nyugtára nyomtat. A következő foglalás kiüríti az asztalt. A kerekített kezdetek megegyeznek az Alkalmazott értékkel – csak a számla kerekítéséhez szerkessze.
+booking_help	Feladó + címzett (üres OK) → cél → mérj → válassz díjat → Számla/Készpénz → fizess. Közben: «Félretétel piszkozatként» (a Tábla-ra ment, nem a könyvekbe) majd szolgáld ki a következőt; koppints a vázlatra a Tábla-on a folytatáshoz. Az AWB a nyugtára nyomtatódik. A következő foglalás kiüríti az asztalt.
 cart_empty_hint	Üres az íróasztal – a feladó/címzett választható, állítsa be a rendeltetési helyet és a súlyt, koppintson a HOZZÁADÁS gombra az árfolyamon, majd fizessen.
 team	Csapat
 team_pins	Csapat és PINs

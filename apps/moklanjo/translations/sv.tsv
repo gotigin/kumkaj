@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Laddbar kg
 awb_label	AWB
-booking_help	Avsändare + mottagare (blank OK) → destination → väga → plocktaxa → Konto/Kontant → betala. AWB skriver ut på kvittot. Nästa bokning rensar skrivbordet. Avrundade starter lika med Tillämpad — redigera endast för att runda sedeln.
+booking_help	Avsändare + mottagare (tom OK) → destination → väg → välj taxa → Konto/Kontant → betala. Under tiden: «Parkera utkast» (sparar på Tavla, inte i böckerna) betjäna sedan nästa kund; tryck utkastet på Tavla för att fortsätta. AWB skrivs ut på kvittot. Nästa bokning rensar skrivbordet.
 cart_empty_hint	Skrivbordet är tomt — avsändare/mottagare valfritt, ställ in destination och vikt, tryck på LÄGG TILL på ett pris och betala sedan.
 team	Team
 team_pins	Team & PIN-koder

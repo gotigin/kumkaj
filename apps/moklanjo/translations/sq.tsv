@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	kg me pagesë
 awb_label	AWB
-booking_help	Dërguesi + marrësi (bosh OK) → destinacioni → peshoni → tarifa e zgjedhjes → Llogari/Para → paguaj. AWB printon në faturë. Rezervimi tjetër pastron tavolinën. Rrumbullakimi fillon i barabartë me Aplikuar - modifiko vetëm për të rrumbullakosur faturën.
+booking_help	Dërguesi + marrësi (bosh OK) → destinacioni → pesho → zgjidh tarifën → Llogari/Para → paguaj. Në mes: «Lëre si draft» (ruan në Tabela, jo në libra) pastaj shërbe klientin tjetër; prek skicën në Tabela për të vazhduar. AWB printohet në faturë. Rezervimi tjetër pastron tavolinën.
 cart_empty_hint	Tavolina bosh - dërguesi/marrësi është opsional, caktoni destinacionin dhe peshën, prekni SHTO mbi një tarifë dhe më pas paguani.
 team	Ekipi
 team_pins	Ekipi dhe PIN-et

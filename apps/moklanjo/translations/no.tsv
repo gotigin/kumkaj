@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Ladbart kg
 awb_label	AWB
-booking_help	Avsender + mottaker (blank OK) → destinasjon → veiing → plukktakst → Konto/Kontant → betal. AWB skrives ut på kvitteringen. Neste bestilling rydder skrivebordet. Avrundede starter lik Brukt – rediger bare for å runde regningen.
+booking_help	Avsender + mottaker (tom OK) → destinasjon → vei → velg takst → Konto/Kontant → betal. Underveis: «Parker utkast» (lagrer på Tavle, ikke i bøkene) betjen deretter neste kunde; trykk utkastet på Tavle for å fortsette. AWB skrives ut på kvitteringen. Neste booking tømmer skrivebordet.
 cart_empty_hint	Skrivebordet er tomt – avsender/mottaker valgfritt, angi destinasjon og vekt, trykk på LEGG TIL på en pris, og betal.
 team	Lag
 team_pins	Team og PIN

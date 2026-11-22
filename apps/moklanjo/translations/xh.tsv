@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	I-kg ehlawulelwayo
 awb_label	AWB
-booking_help	Umthumeli + umthumeli (akukho nto KULUNGILEYO) → indawo ekuyiwa kuyo → ubunzima → khetha ireyithi → Iakhawunti/Imali → hlawula. I-AWB iprinta kwirisithi. Ukubhukisha okulandelayo kucoca idesika. Isiqalo esijikwe ngokulingana ne-Fakelwe — hlela kuphela ukurhangqa ityala.
+booking_help	Umthumeli + umamkeli (akukho nto OK) → indawo → linganisa → khetha ireyithi → Iakhawunti/Imali → hlawula. Phakathi: «Beka njengedrafti» (igcina kwi-Ibhodi, hayi kwiincwadi) emva koko khonzo umthengi olandelayo; chofoza idrafti kwi-Ibhodi ukuze uqhubeke. I-AWB iprinta kwirisithi. Ukubhukisha okulandelayo kucoca idesika.
 cart_empty_hint	Idesika ayinanto — umthumeli/umthumeli ngokuzikhethela, seta indawo oya kuyo & nobunzima, cofa u-ADD kwireyithi, emva koko uhlawule.
 team	Iqela
 team_pins	Iqela nee-PIN

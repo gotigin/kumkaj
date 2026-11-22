@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Charge theih kg
 awb_label	AWB
-booking_help	Consignor + consignee (blank OK) → kalna tur → rit lam → pick rate → Account/Cash → pek tur. AWB chuan receipt-ah a print thin. Next booking chuan desk chu a clear leh ta. Rounded hi Applied nen a inang tan a — bill round nan chauh edit tur a ni.
+booking_help	Thawn tu + dawng tu (ruak OK) → kalna tur → rit → rate thlang → Account/Cash → pek. Karah: «Draft angin save rawh» (Ban ah save a ni, lehkhabu ah a ni lo) chuangah customer dang rawngbawl rawh; chhunzawm nan Ban ah draft kha tap rawh. AWB chu receipt-ah a print. Booking thar chuan desk a clear.
 cart_empty_hint	Desk khar — consignor/consignee optional, destination & weight set la, rate pakhatah ADD tap la, chutah chuan pe rawh.
 team	Pawl
 team_pins	Pawl leh PIN

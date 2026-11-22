@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kg de taxat
 awb_label	AWB
-booking_help	Expeditor + destinatar (gol e în regulă) → destinație → cântărește → alege tariful → Cont/Numerar → plătește. AWB se tipărește pe chitanță. Expedierea următoare golește tejgheaua. Rotunjit pornește egal cu Aplicat — editează doar ca să rotunjești nota.
+booking_help	Expeditor + destinatar (gol OK) → destinație → cântărește → alege tariful → Cont/Numerar → plătește. Pe parcurs: «Salvează ca ciornă» (salvează pe Panou, nu în cărți) apoi servește următorul client; atinge ciorna pe Panou pentru a continua. AWB se tipărește pe chitanță. Următoarea rezervare golește biroul.
 cart_empty_hint	Tejghea goală — expeditorul/destinatarul sunt opționali, pune destinația și greutatea, atinge ADAUGĂ pe un tarif, apoi plătește.
 team	Echipă
 team_pins	Echipă și PIN
