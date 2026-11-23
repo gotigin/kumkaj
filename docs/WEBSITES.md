@@ -22,6 +22,17 @@
 
 ------------------------------------------------------------------------
 
+## Language catalogue (same as apps — hard rule)
+
+Every Kumkaj **app** ships one shared 115-language catalogue
+(`LANGUAGES` + translation tables). **No app may omit a language another
+app has.** Websites must not invent a smaller set: when a site claims
+languages or draws native names / samples, it uses that same catalogue and
+the script faces those strings need (`WorldFont`). Gate:
+`./scripts/check-language-parity.sh`.
+
+------------------------------------------------------------------------
+
 ## Firebase deploy policy (quota / cost — hard rule for **agents**)
 
 **Owner** may deploy normally:

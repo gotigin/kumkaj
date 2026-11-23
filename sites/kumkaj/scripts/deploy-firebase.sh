@@ -85,18 +85,42 @@ mkdir -p "$OUT"
 rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
 rsync -a "$SITE/static/" "$OUT/"
 "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
-# §06 WordChips draw Hindi/Gujarati/Tamil/Bengali/Urdu via WorldFont — those
-# Noto files must be in the package or visitors see tofu boxes again.
+# §06 WordChips cover the full app catalogue — WorldFonts script faces required.
+if ! bash "$ROOT/scripts/check-language-parity.sh"; then
+  echo "error: language parity failed — fix apps before deploying kumkaj.com" >&2
+  exit 1
+fi
 for noto in \
+  NotoSans-Regular.ttf \
   NotoSansDevanagari-Regular.ttf \
   NotoSansGujarati-Regular.ttf \
   NotoSansTamil-Regular.ttf \
   NotoSansBengali-Regular.ttf \
-  NotoSansArabic-Regular.ttf
+  NotoSansTelugu-Regular.ttf \
+  NotoSansKannada-Regular.ttf \
+  NotoSansMalayalam-Regular.ttf \
+  NotoSansGurmukhi-Regular.ttf \
+  NotoSansOriya-Regular.ttf \
+  NotoSansArabic-Regular.ttf \
+  NotoSansHebrew-Regular.ttf \
+  NotoSansThai-Regular.ttf \
+  NotoSansSinhala-Regular.ttf \
+  NotoSansMyanmar-Regular.ttf \
+  NotoSansKhmer-Regular.ttf \
+  NotoSansLao-Regular.ttf \
+  NotoSansTibetan-Regular.ttf \
+  NotoSansEthiopic-Regular.ttf \
+  NotoSansThaana-Regular.ttf \
+  NotoSansGeorgian-Regular.ttf \
+  NotoSansArmenian-Regular.ttf \
+  NotoSansMeeteiMayek-Regular.ttf \
+  NotoSansOlChiki-Regular.ttf \
+  CatalogueCJK.ttf \
+  CatalogueHangul.ttf
 do
   if [[ ! -f "$SITE/resources/fonts/$noto" ]]; then
-    echo "error: missing $SITE/resources/fonts/$noto (WordChip scripts need WorldFont)" >&2
-    echo "copy from sites/khaynjo/resources/fonts/ or restore — do not strip while WordChips remain" >&2
+    echo "error: missing $SITE/resources/fonts/$noto (catalogue WordChips need WorldFont)" >&2
+    echo "copy from apps/khaynjo/resources/fonts/ — do not strip while chips remain" >&2
     exit 1
   fi
 done

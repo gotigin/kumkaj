@@ -402,7 +402,16 @@ toolbar ℹ) carries the words, or they go:
   "(Operating snapshot — … later filing view.)");
 - a grey paragraph under a heading ("Books keep year-first RFC3339 inside…").
 Any user-visible string must also be in every language pack: an English-only
-hint is two bugs. **Checks:** `layout_labels_carry_no_explanations` (every
+hint is two bugs.
+
+**Language catalogue parity (hard rule):** the `LANGUAGES` list and
+`translations/*.tsv` set must be **identical across all four apps**. No app
+may miss a language another app has. Websites that claim or draw catalogue
+languages use that same set and must ship the script fonts those native
+names need (`WorldFont` / apps `WorldFonts`). Gate:
+`./scripts/check-language-parity.sh` (also from `product-cert.sh`).
+
+**Checks:** `layout_labels_carry_no_explanations` (every
 app) fails on a 60+ character literal in a layout label; and
 `./scripts/ui-text-inventory.sh <app> <copy of a neutral demo shop>` walks
 every sidebar screen and Settings panel of the running app and fails on a

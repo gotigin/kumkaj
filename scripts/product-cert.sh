@@ -127,6 +127,11 @@ run_fast() {
     set -euo pipefail
     echo "== lock-guards =="
     bash "$ROOT/apps/$app/scripts/check-lock-guards.sh"
+    echo "== language-parity (once) =="
+    if [[ "${GOTIGIN_LANG_PARITY_DONE:-}" != "1" ]]; then
+      bash "$ROOT/scripts/check-language-parity.sh"
+      export GOTIGIN_LANG_PARITY_DONE=1
+    fi
     echo "== ui-translations =="
     bash "$ROOT/scripts/check-ui-translations.sh" --app "$app"
     echo "== never-print =="

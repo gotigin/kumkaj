@@ -46,13 +46,36 @@ script_mod! {
     let TextFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
     }
+    // Same script faces as apps WorldFonts — every catalogue language's
+    // native_name must paint. Latin chrome stays on TextFont/StrongFont.
     let WorldFont = FontFamily{
-        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        latin := FontMember{res: crate_resource("self:resources/fonts/NotoSans-Regular.ttf") asc: -0.1 desc: 0.0}
         devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
-        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
         bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
+        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
+        telugu := FontMember{res: crate_resource("self:resources/fonts/NotoSansTelugu-Regular.ttf") asc: 0.0 desc: 0.0}
+        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
+        kannada := FontMember{res: crate_resource("self:resources/fonts/NotoSansKannada-Regular.ttf") asc: 0.0 desc: 0.0}
+        malayalam := FontMember{res: crate_resource("self:resources/fonts/NotoSansMalayalam-Regular.ttf") asc: 0.0 desc: 0.0}
+        gurmukhi := FontMember{res: crate_resource("self:resources/fonts/NotoSansGurmukhi-Regular.ttf") asc: 0.0 desc: 0.0}
+        odia := FontMember{res: crate_resource("self:resources/fonts/NotoSansOriya-Regular.ttf") asc: 0.0 desc: 0.0}
         arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
+        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
+        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
+        sinhala := FontMember{res: crate_resource("self:resources/fonts/NotoSansSinhala-Regular.ttf") asc: 0.0 desc: 0.0}
+        myanmar := FontMember{res: crate_resource("self:resources/fonts/NotoSansMyanmar-Regular.ttf") asc: 0.0 desc: 0.0}
+        khmer := FontMember{res: crate_resource("self:resources/fonts/NotoSansKhmer-Regular.ttf") asc: 0.0 desc: 0.0}
+        lao := FontMember{res: crate_resource("self:resources/fonts/NotoSansLao-Regular.ttf") asc: 0.0 desc: 0.0}
+        tibetan := FontMember{res: crate_resource("self:resources/fonts/NotoSansTibetan-Regular.ttf") asc: 0.0 desc: 0.0}
+        ethiopic := FontMember{res: crate_resource("self:resources/fonts/NotoSansEthiopic-Regular.ttf") asc: 0.0 desc: 0.0}
+        thaana := FontMember{res: crate_resource("self:resources/fonts/NotoSansThaana-Regular.ttf") asc: 0.0 desc: 0.0}
+        georgian := FontMember{res: crate_resource("self:resources/fonts/NotoSansGeorgian-Regular.ttf") asc: 0.0 desc: 0.0}
+        armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
+        meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
+        olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
+        // Catalogue-only CJK / Hangul subsets (not full LXGW / Noto CJK).
+        cjk := FontMember{res: crate_resource("self:resources/fonts/CatalogueCJK.ttf") asc: 0.0 desc: 0.0}
+        hangul := FontMember{res: crate_resource("self:resources/fonts/CatalogueHangul.ttf") asc: 0.0 desc: 0.0}
     }
 
     // The vendored SDF text shader adds `sdf_luma_bias` coverage to the whole
@@ -521,6 +544,9 @@ script_mod! {
         spacing: 4
         padding: Inset{left: 18. right: 18. top: 12. bottom: 14.}
         draw_bg +: {color: Panel border_color: Rule border_size: 1. border_radius: 12.}
+        // Markdown shapes via text_style_* (TextFlow), not only draw_text.
+        // draw_text alone left chips on Latin TextFont/StrongFont → tofu.
+        // Match khaynjo shelf native: set both.
         lang := Markdown{
             selectable: true
             height: Fit
@@ -531,7 +557,14 @@ script_mod! {
 
             width: Fit
             padding: 0.
-            draw_text +: {color: Faint text_style: theme.font_regular{font_family: WorldFont font_size: 13.}}
+            font_color: Faint
+            font_size: 13.
+            text_style_normal: theme.font_regular{font_family: WorldFont font_size: 13. line_spacing: 1.2}
+            text_style_bold: theme.font_bold{font_family: WorldFont font_size: 13. line_spacing: 1.2}
+            draw_text +: {
+                color: Faint
+                text_style: theme.font_regular{font_family: WorldFont font_size: 13. line_spacing: 1.2}
+            }
             body: "Language"
         
         }
@@ -540,10 +573,18 @@ script_mod! {
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
+            draw_selection +: { color: #x2E5BADFF }
             draw_block +: { selection_color: #x2E5BADFF }
             width: Fit
             padding: 0.
-            draw_text +: {color: Ink text_style: theme.font_bold{font_family: WorldFont font_size: 24.}}
+            font_color: Ink
+            font_size: 24.
+            text_style_normal: theme.font_regular{font_family: WorldFont font_size: 24. line_spacing: 1.15}
+            text_style_bold: theme.font_bold{font_family: WorldFont font_size: 24. line_spacing: 1.15}
+            draw_text +: {
+                color: Ink
+                text_style: theme.font_bold{font_family: WorldFont font_size: 24. line_spacing: 1.15}
+            }
             body: "Word"
         }
     }
@@ -907,17 +948,128 @@ script_mod! {
                         languages := Chapter{
                             Eyebrow{body: "06 · LANGUAGES"}
                             Headline{body: "Speaks your staff's language."}
-                            Lede{body: "115 languages on screen, with Arabic and Urdu right to left. One floor word — “Food ready” — as Khaynjo shows it:"}
+                            Lede{body: "The same 115-language catalogue as every Kumkaj app — Arabic and Urdu right to left. Native names below; “Food ready” samples for Hindi, Gujarati, Tamil, Bengali, Urdu, and English:"}
                             words := View{
                                 width: Fill height: Fit
                                 flow: Right{wrap: true}
                                 spacing: 12
-                                WordChip{lang.body: "हिन्दी" word.body: "खाना तैयार"}
-                                WordChip{lang.body: "ગુજરાતી" word.body: "જમવાનું તૈયાર"}
-                                WordChip{lang.body: "தமிழ்" word.body: "உணவு தயார்"}
-                                WordChip{lang.body: "বাংলা" word.body: "খাবার তৈরি"}
-                                WordChip{lang.body: "اردو" word.body: "کھانا تیار"}
+                                // BEGIN CATALOGUE_LANG_CHIPS
                                 WordChip{lang.body: "English" word.body: "Food ready"}
+                                WordChip{lang.body: "हिन्दी" word.body: "खाना तैयार"}
+                                WordChip{lang.body: "বাংলা" word.body: "খাবার তৈরি"}
+                                WordChip{lang.body: "తెలుగు" word.body: "తెలుగు"}
+                                WordChip{lang.body: "मराठी" word.body: "मराठी"}
+                                WordChip{lang.body: "தமிழ்" word.body: "உணவு தயார்"}
+                                WordChip{lang.body: "اردو" word.body: "کھانا تیار"}
+                                WordChip{lang.body: "ગુજરાતી" word.body: "જમવાનું તૈયાર"}
+                                WordChip{lang.body: "ಕನ್ನಡ" word.body: "ಕನ್ನಡ"}
+                                WordChip{lang.body: "മലയാളം" word.body: "മലയാളം"}
+                                WordChip{lang.body: "ଓଡ଼ିଆ" word.body: "ଓଡ଼ିଆ"}
+                                WordChip{lang.body: "ਪੰਜਾਬੀ" word.body: "ਪੰਜਾਬੀ"}
+                                WordChip{lang.body: "অসমীয়া" word.body: "অসমীয়া"}
+                                WordChip{lang.body: "मैथिली" word.body: "मैथिली"}
+                                WordChip{lang.body: "संस्कृतम्" word.body: "संस्कृतम्"}
+                                WordChip{lang.body: "كٲشُر" word.body: "كٲشُر"}
+                                WordChip{lang.body: "नेपाली" word.body: "नेपाली"}
+                                WordChip{lang.body: "سنڌي" word.body: "سنڌي"}
+                                WordChip{lang.body: "कोंकणी" word.body: "कोंकणी"}
+                                WordChip{lang.body: "डोगरी" word.body: "डोगरी"}
+                                WordChip{lang.body: "ꯃꯤꯇꯩꯂꯣꯟ" word.body: "ꯃꯤꯇꯩꯂꯣꯟ"}
+                                WordChip{lang.body: "ᱥᱟᱱᱛᱟᱲᱤ" word.body: "ᱥᱟᱱᱛᱟᱲᱤ"}
+                                WordChip{lang.body: "बर'" word.body: "बर'"}
+                                WordChip{lang.body: "भोजपुरी" word.body: "भोजपुरी"}
+                                WordChip{lang.body: "अवधी" word.body: "अवधी"}
+                                WordChip{lang.body: "मगही" word.body: "मगही"}
+                                WordChip{lang.body: "छत्तीसगढ़ी" word.body: "छत्तीसगढ़ी"}
+                                WordChip{lang.body: "राजस्थानी" word.body: "राजस्थानी"}
+                                WordChip{lang.body: "ತುಳು" word.body: "ತುಳು"}
+                                WordChip{lang.body: "ককবরক" word.body: "ককবরক"}
+                                WordChip{lang.body: "Mizo ṭawng" word.body: "Mizo ṭawng"}
+                                WordChip{lang.body: "Khasi" word.body: "Khasi"}
+                                WordChip{lang.body: "गोंयची कोंकणी" word.body: "गोंयची कोंकणी"}
+                                WordChip{lang.body: "བོད་སྐད་" word.body: "བོད་སྐད་"}
+                                WordChip{lang.body: "සිංහල" word.body: "සිංහල"}
+                                WordChip{lang.body: "ދިވެހި" word.body: "ދިވެހި"}
+                                WordChip{lang.body: "پښتو" word.body: "پښتو"}
+                                WordChip{lang.body: "فارسی" word.body: "فارسی"}
+                                WordChip{lang.body: "中文" word.body: "中文"}
+                                WordChip{lang.body: "繁體中文" word.body: "繁體中文"}
+                                WordChip{lang.body: "粵語" word.body: "粵語"}
+                                WordChip{lang.body: "日本語" word.body: "日本語"}
+                                WordChip{lang.body: "한국어" word.body: "한국어"}
+                                WordChip{lang.body: "Tiếng Việt" word.body: "Tiếng Việt"}
+                                WordChip{lang.body: "ไทย" word.body: "ไทย"}
+                                WordChip{lang.body: "Bahasa Indonesia" word.body: "Bahasa Indonesia"}
+                                WordChip{lang.body: "Bahasa Melayu" word.body: "Bahasa Melayu"}
+                                WordChip{lang.body: "Filipino" word.body: "Filipino"}
+                                WordChip{lang.body: "မြန်မာ" word.body: "မြန်မာ"}
+                                WordChip{lang.body: "ខ្មែរ" word.body: "ខ្មែរ"}
+                                WordChip{lang.body: "ລາວ" word.body: "ລາວ"}
+                                WordChip{lang.body: "العربية" word.body: "العربية"}
+                                WordChip{lang.body: "עברית" word.body: "עברית"}
+                                WordChip{lang.body: "Türkçe" word.body: "Türkçe"}
+                                WordChip{lang.body: "Azərbaycan" word.body: "Azərbaycan"}
+                                WordChip{lang.body: "Қазақша" word.body: "Қазақша"}
+                                WordChip{lang.body: "Oʻzbekcha" word.body: "Oʻzbekcha"}
+                                WordChip{lang.body: "Кыргызча" word.body: "Кыргызча"}
+                                WordChip{lang.body: "Тоҷикӣ" word.body: "Тоҷикӣ"}
+                                WordChip{lang.body: "Türkmençe" word.body: "Türkmençe"}
+                                WordChip{lang.body: "Монгол" word.body: "Монгол"}
+                                WordChip{lang.body: "Español" word.body: "Español"}
+                                WordChip{lang.body: "Français" word.body: "Français"}
+                                WordChip{lang.body: "Português" word.body: "Português"}
+                                WordChip{lang.body: "Deutsch" word.body: "Deutsch"}
+                                WordChip{lang.body: "Italiano" word.body: "Italiano"}
+                                WordChip{lang.body: "Русский" word.body: "Русский"}
+                                WordChip{lang.body: "Українська" word.body: "Українська"}
+                                WordChip{lang.body: "Polski" word.body: "Polski"}
+                                WordChip{lang.body: "Nederlands" word.body: "Nederlands"}
+                                WordChip{lang.body: "Română" word.body: "Română"}
+                                WordChip{lang.body: "Magyar" word.body: "Magyar"}
+                                WordChip{lang.body: "Čeština" word.body: "Čeština"}
+                                WordChip{lang.body: "Slovenčina" word.body: "Slovenčina"}
+                                WordChip{lang.body: "Български" word.body: "Български"}
+                                WordChip{lang.body: "Српски" word.body: "Српски"}
+                                WordChip{lang.body: "Hrvatski" word.body: "Hrvatski"}
+                                WordChip{lang.body: "Bosanski" word.body: "Bosanski"}
+                                WordChip{lang.body: "Slovenščina" word.body: "Slovenščina"}
+                                WordChip{lang.body: "Ελληνικά" word.body: "Ελληνικά"}
+                                WordChip{lang.body: "Svenska" word.body: "Svenska"}
+                                WordChip{lang.body: "Norsk" word.body: "Norsk"}
+                                WordChip{lang.body: "Dansk" word.body: "Dansk"}
+                                WordChip{lang.body: "Suomi" word.body: "Suomi"}
+                                WordChip{lang.body: "Íslenska" word.body: "Íslenska"}
+                                WordChip{lang.body: "Gaeilge" word.body: "Gaeilge"}
+                                WordChip{lang.body: "Cymraeg" word.body: "Cymraeg"}
+                                WordChip{lang.body: "Català" word.body: "Català"}
+                                WordChip{lang.body: "Euskara" word.body: "Euskara"}
+                                WordChip{lang.body: "Galego" word.body: "Galego"}
+                                WordChip{lang.body: "Lietuvių" word.body: "Lietuvių"}
+                                WordChip{lang.body: "Latviešu" word.body: "Latviešu"}
+                                WordChip{lang.body: "Eesti" word.body: "Eesti"}
+                                WordChip{lang.body: "Malti" word.body: "Malti"}
+                                WordChip{lang.body: "Shqip" word.body: "Shqip"}
+                                WordChip{lang.body: "Македонски" word.body: "Македонски"}
+                                WordChip{lang.body: "Беларуская" word.body: "Беларуская"}
+                                WordChip{lang.body: "ქართული" word.body: "ქართული"}
+                                WordChip{lang.body: "Հայերեն" word.body: "Հայերեն"}
+                                WordChip{lang.body: "Kiswahili" word.body: "Kiswahili"}
+                                WordChip{lang.body: "አማርኛ" word.body: "አማርኛ"}
+                                WordChip{lang.body: "Hausa" word.body: "Hausa"}
+                                WordChip{lang.body: "Yorùbá" word.body: "Yorùbá"}
+                                WordChip{lang.body: "Igbo" word.body: "Igbo"}
+                                WordChip{lang.body: "isiZulu" word.body: "isiZulu"}
+                                WordChip{lang.body: "isiXhosa" word.body: "isiXhosa"}
+                                WordChip{lang.body: "Afrikaans" word.body: "Afrikaans"}
+                                WordChip{lang.body: "Soomaali" word.body: "Soomaali"}
+                                WordChip{lang.body: "Ikinyarwanda" word.body: "Ikinyarwanda"}
+                                WordChip{lang.body: "Malagasy" word.body: "Malagasy"}
+                                WordChip{lang.body: "Português (Brasil)" word.body: "Português (Brasil)"}
+                                WordChip{lang.body: "Español (México)" word.body: "Español (México)"}
+                                WordChip{lang.body: "Kreyòl ayisyen" word.body: "Kreyòl ayisyen"}
+                                WordChip{lang.body: "Runa Simi" word.body: "Runa Simi"}
+                                WordChip{lang.body: "Avañe'ẽ" word.body: "Avañe'ẽ"}
+                                // END CATALOGUE_LANG_CHIPS
                             }
                             Small{body: "Same shaping engine as the apps, so joined letters and right-to-left lines come out right."}
                         }
