@@ -943,6 +943,10 @@ the site keys are separate from the app keys (marketing copy, not POS terms).
 3. Write the 110 rows for real (rules above), then
    `./scripts/check-ui-translations.sh --site <site>` and
    `cargo test -p <site>-site` (kumkaj.com: `kumkaj-site`).
+   A whole language at once (all five sites; texts the sites share are
+   written once): `./scripts/site-translation-batch.sh export <code>` lists
+   the English still waiting, `apply <code> <english<TAB>translation file>`
+   writes it into every site, `status` counts what is left per language.
 4. Look at it: `PORT=… ./sites/<site>/scripts/preview-web.sh`, open
    `http://127.0.0.1:<port>/#l=hi` and an RTL language (`#l=ur`), phone
    width included.
