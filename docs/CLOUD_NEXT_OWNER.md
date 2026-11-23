@@ -2,32 +2,20 @@
 
 After solo shop/account/billing scaffolding: pick up here.
 
-## Pending API + DB (all four products)
+## Done 2026-11-23 (sandbox)
 
-- ~~HTTPS + DNS: `api.<product-domain>` (ALB)~~ **Done 2026-11-23** — `https://api.khaynjo.com` / `api.moklanjo.com` / `api.kirano.shop` / `api.tabiyat.shop` (shared ALB `kumkaj-cloud-apis`, ACM ISSUED). Redeploy product Hosting for `/account` JS when ready.
-- ~~Stable base URL~~ — sites + app `DEFAULT_CLOUD_API_BASE` point at those HTTPS hosts (commit + Firebase deploy still needed for live sites).
-- Deploy billing migration `0002` + `BILLING_ENABLED=1` on each AWS API (sandbox first).
-- Confirm plans seed + Custom quote path (no self-serve checkout).
+- HTTPS APIs live: `https://api.khaynjo.com` / `api.moklanjo.com` / `api.kirano.shop` / `api.tabiyat.shop`.
+- Sites + app `DEFAULT_CLOUD_API_BASE` → HTTPS; Firebase Hosting redeployed (all four).
+- Stripe Test: restricted `rk_test_` key, 3 yearly Prices, 4 webhook endpoints + `whsec_` in each `services/*-cloud/.env.development`.
+- AWS ECS: `BILLING_ENABLED=1`, `BILLING_MODE=sandbox`, Test Stripe keys on all four APIs (healthz reports sandbox).
+- Migration `0003_sandbox_stripe_prices.sql` sets Stripe Test price ids on `plans`.
+- Local mock smoke: `./scripts/smoke-all-clouds.sh` **PASSED** (4/4).
+- Local Stripe Checkout session create **OK** after disabling Stripe Tax (not supported for India accounts).
+- Env split: use `.env.development` (Test) vs `.env.production` placeholder; live keys stay out of local files until approved.
 
-## Stripe + Paddle full test (sandbox)
+## Still open
 
-Chrome profile **MEARAJ (Gotigin)**.
-
-1. Create yearly INR Prices (ex-tax ₹6k / ₹12k / ₹24k) per product (or shared catalog with separate webhook endpoints).
-2. Put test keys in each `services/*-cloud/.env` (gitignored).
-3. `./scripts/apply-sandbox-price-ids.sh` per product.
-4. `stripe listen` / Paddle sandbox notifications → `/v1/billing/webhooks/{stripe|paddle}`.
-5. Prove: site `/shop` → cart → `/account?checkout=` → gateway → `/v1/me/subscription`.
-6. Prove: app lock → Cloud plans/shop → same account → subscription refresh after return.
-
-Mock path already: `./scripts/smoke-all-clouds.sh`.
-
-## Production (Paddle first)
-
-Only after sandbox E2E green and owner approval:
-
-- Live Paddle prices + keys; `BILLING_MODE=live`; mock disabled.
-- Firebase Hosting redeploy for `/shop` + `/account` (requires `--i-approve-firebase-deploy`).
-- Flip AWS secrets; monitor webhooks.
-
-Do **not** ship live Stripe/Paddle without that approval.
+- Browser E2E: `/shop` → Stripe test card → `/v1/me/subscription` (and app lock path) per product.
+- Paddle sandbox Prices + API keys + 4 notification URLs (not wired yet).
+- Move AWS Stripe keys from task env into Secrets Manager when that API is reliable.
+- Production flip (Paddle-first live) — **blocked** until you explicitly approve. Do **not** set `BILLING_MODE=live`.
