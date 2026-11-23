@@ -1,121 +1,121 @@
 # Marathi — मराठी (mr). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-the_promise	@@EN@@ The promise
-kumkaj_business_operating_systems	@@EN@@ KUMKAJ · BUSINESS OPERATING SYSTEMS
-the_internet_went_down_the	@@EN@@ The internet went down.\nThe counter didn't.
-kumkaj_is_the_brand_for	@@EN@@ Kumkaj is the brand for concrete business operating system apps — complete business management software that runs on your own devices. Each product is built for one trade: courier, restaurant, grocery, pharmacy.
-choose_your_trade	@@EN@@ Choose your trade  ↓
-watch_it_keep_working	@@EN@@ Watch it keep working
-this_counter_right_now	@@EN@@ THIS COUNTER, RIGHT NOW
-internet	@@EN@@ Internet
-down	@@EN@@ Down
-taking_orders	@@EN@@ Taking orders
-yes	@@EN@@ Yes
-bills_and_dockets	@@EN@@ Bills and dockets
-saving	@@EN@@ Saving
-day_book	@@EN@@ Day book
-adding_up	@@EN@@ Adding up
-nothing_on_this_counter_waits	@@EN@@ Nothing on this counter waits for the cloud.
-scroll_or_use_the_dots	@@EN@@ Scroll or use the dots to jump between sections.
-n_02_built_for_your_trade	@@EN@@ 02 · BUILT FOR YOUR TRADE
-a_desk_for_each_trade	@@EN@@ A desk for each trade.\nNot one app with a switch.
-not_one_app_with_a	@@EN@@ Not one app with a trade switch. Each product is designed around one kind of counter, in that trade's own words.
-courier_offices_franchise_counters_own	@@EN@@ COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS
-book_label_hand_over_track	@@EN@@ Book → label → hand over → track → settle.
-next_booking_in_one_tap	@@EN@@ Next booking in one tap
-actual_or_volumetric_weight_rounded	@@EN@@ Actual or volumetric weight, rounded your way
-rider_cash_on_delivery_expected	@@EN@@ Rider cash on delivery: expected against handed in
-visit_moklanjo_com	@@EN@@ Visit moklanjo.com  →
-restaurants_caf_s_quick_service	@@EN@@ RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES
-table_kitchen_bill_day_close	@@EN@@ Table → kitchen → bill → day close.
-every_table_s_minutes_and	@@EN@@ Every table's minutes and bill at a glance
-one_kot_per_kitchen_station	@@EN@@ One KOT per kitchen station — never prices
-cash_upi_part_payment_due	@@EN@@ Cash, UPI, part payment, Due and tip
-visit_khaynjo_com	@@EN@@ Visit khaynjo.com  →
-kirana_grocery_neighbourhood_shops	@@EN@@ KIRANA · GROCERY · NEIGHBOURHOOD SHOPS
-sell_khata_stock_day_book	@@EN@@ Sell → khata → stock → day book.
-fast_counter_sell_with_short	@@EN@@ Fast counter sell with short codes
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues
-buy_into_stock_offline_forever	@@EN@@ Buy into stock — offline forever
-visit_kirano_shop	@@EN@@ Visit kirano.shop  →
-chemists_pharmacy_counters	@@EN@@ CHEMISTS · PHARMACY COUNTERS
-medicine_batch_bill_day_close	@@EN@@ Medicine → batch → bill → day close.
-barcode_and_salt_composition_search	@@EN@@ Barcode and salt / composition search
-batch_and_expiry_alerts_on	@@EN@@ Batch and expiry alerts on purchases
-owner_schedule_h_rx_notes	@@EN@@ Owner Schedule H / Rx notes — not fake compliance
-visit_tabiyat_shop	@@EN@@ Visit tabiyat.shop  →
-n_03_your_books_stay_with	@@EN@@ 03 · YOUR BOOKS STAY WITH YOU
-your_books_live_in_your	@@EN@@ Your books live in your shop.
-sales_parties_and_the_day	@@EN@@ Sales, parties and the day book are written on the device at your counter — not on a server you rent.
-on_your_device	@@EN@@ On your device
-every_sale_payment_and_docket	@@EN@@ Every sale, payment and docket is saved on the computer or tablet you own.
-no_account_with_us	@@EN@@ No account with us
-install_it_and_start_no	@@EN@@ Install it and start. No sign-up, no card on file.
-copies_you_keep	@@EN@@ Copies you keep
-save_a_backup_copy_whenever	@@EN@@ Save a backup copy whenever you like. It is a file, and it is yours.
-extra_counters_and_tablets_join	@@EN@@ Extra counters and tablets join over your own Wi-Fi — with no internet in between.
-n_04_try_it	@@EN@@ 04 · TRY IT
-pull_the_plug_on_the	@@EN@@ Pull the plug on the internet.
-kumkaj_apps_don_t_phone	@@EN@@ Kumkaj apps don't phone home to work. Cut the internet and watch what changes at the counter.
-cut_the_internet	@@EN@@ Cut the internet
-internet_on	@@EN@@ Internet: on
-book_a_parcel_or_take	@@EN@@ Book a parcel or take an order
-save_the_bill_or_docket	@@EN@@ Save the bill or docket
-day_book_totals	@@EN@@ Day book totals
-find_an_old_sale	@@EN@@ Find an old sale
-the_internet_is_on_and	@@EN@@ The internet is on — and the counter isn't using it.
-things_that_leave_the_shop	@@EN@@ Things that leave the shop, like a WhatsApp receipt, still need the internet to arrive.
-n_05_price	@@EN@@ 05 · PRICE
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_charge_per_seat_user	@@EN@@ No charge per seat, user, table, rider, parcel or local device. Not a trial.
-on_your_own_devices	@@EN@@ On your own devices
-n_0_forever	@@EN@@ ₹0, forever
-pay_only_for_what_you	@@EN@@ Pay only for what you use — the same rates for everyone.
-planned	@@EN@@ Planned
-cloud_is_planned_and_optional	@@EN@@ Cloud is planned and optional. The counter works without it.
-n_06_languages	@@EN@@ 06 · LANGUAGES
-speaks_your_staff_s_language	@@EN@@ Speaks your staff's language.
-the_same_115_language_catalogue	@@EN@@ The same 115-language catalogue as every Kumkaj app — Arabic and Urdu right to left. Native names below; “Food ready” samples for Hindi, Gujarati, Tamil, Bengali, Urdu, and English:
-same_shaping_engine_as_the	@@EN@@ Same shaping engine as the apps, so joined letters and right-to-left lines come out right.
-n_07_who_makes_it	@@EN@@ 07 · WHO MAKES IT
-made_under_gotigin	@@EN@@ Made under Gotigin.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system_apps	@@EN@@ Concrete business operating system apps
-products	@@EN@@ PRODUCTS
-courier_restaurant_grocery_pharmacy	@@EN@@ Courier · restaurant · grocery · pharmacy
-courier_desk_book_label_hand	@@EN@@ Courier desk — book, label, hand over, settle.
-restaurant_system_table_kitchen_bill	@@EN@@ Restaurant system — table, kitchen, bill, day close.
-grocery_counter_sell_khata_stock	@@EN@@ Grocery counter — sell, khata, stock, day book.
-pharmacy_counter_batch_expiry_bill	@@EN@@ Pharmacy counter — batch, expiry, bill, day close.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_built_for_your_trade	@@EN@@ Built for your trade
-chapter_your_books	@@EN@@ Your books
-chapter_try_it_offline	@@EN@@ Try it offline
-chapter_price	@@EN@@ Price
-chapter_languages	@@EN@@ Languages
-chapter_who_makes_it	@@EN@@ Who makes it
-toy_bring_back	@@EN@@ Bring the internet back
-toy_internet_off	@@EN@@ Internet: off
-toy_verdict_off	@@EN@@ Internet off — and nothing on the counter changed.
-acct_page_title	@@EN@@ Account — Kumkaj
-acct_lede	@@EN@@ Each Kumkaj product has its own account (and its own cloud). Choose the trade you run — sign-in and checkout stay on that product site.
-acct_product_accounts	@@EN@@ Product accounts
-acct_moklanjo_blurb	@@EN@@ Courier OS account
-acct_khaynjo_blurb	@@EN@@ Restaurant OS account
-acct_kirano_blurb	@@EN@@ Kirana counter account
-acct_tabiyat_blurb	@@EN@@ Pharmacy counter account
-acct_open_account	@@EN@@ Open account
-shop_page_title	@@EN@@ Shop — Kumkaj
-shop_lede	@@EN@@ Yearly cloud plans — same five shapes for every trade (Free forever, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / year ex-tax, or Custom quote). Tax is added at checkout. Each product keeps its own shop and account.
-shop_product_shops	@@EN@@ Product cloud shops
-shop_moklanjo_blurb	@@EN@@ Courier desk cloud for moklanjo.com
-shop_khaynjo_blurb	@@EN@@ Restaurant cloud for khaynjo.com
-shop_kirano_blurb	@@EN@@ Kirana counter cloud for kirano.shop
-shop_tabiyat_blurb	@@EN@@ Pharmacy counter cloud for tabiyat.shop
-shop_open_shop	@@EN@@ Open shop
+the_promise	वचन
+kumkaj_business_operating_systems	KUMKAJ · बिझनेस ऑपरेटिंग सिस्टम
+the_internet_went_down_the	इंटरनेट बंद झाले.\nकाउंटर थांबला नाही.
+kumkaj_is_the_brand_for	Kumkaj हा प्रत्यक्ष कामाच्या बिझनेस ऑपरेटिंग सिस्टम ॲप्सचा ब्रँड आहे — तुमच्या स्वतःच्या उपकरणांवर चालणारे संपूर्ण व्यवसाय व्यवस्थापन सॉफ्टवेअर. प्रत्येक उत्पादन एका व्यवसायासाठी बनवले आहे: कुरिअर, रेस्टॉरंट, किराणा, फार्मसी.
+choose_your_trade	तुमचा व्यवसाय निवडा  ↓
+watch_it_keep_working	ते चालू राहताना पाहा
+this_counter_right_now	हा काउंटर, आत्ता
+internet	इंटरनेट
+down	बंद
+taking_orders	ऑर्डर घेणे
+yes	हो
+bills_and_dockets	बिले आणि डॉकेट
+saving	जतन होत आहेत
+day_book	रोज बही
+adding_up	बेरीज होत आहे
+nothing_on_this_counter_waits	या काउंटरवर काहीही क्लाउडची वाट पाहत नाही.
+scroll_or_use_the_dots	विभागांमध्ये जाण्यासाठी स्क्रोल करा किंवा ठिपके वापरा.
+n_02_built_for_your_trade	02 · तुमच्या व्यवसायासाठी बनवलेले
+a_desk_for_each_trade	प्रत्येक व्यवसायासाठी स्वतःचा डेस्क.\nस्विच असलेले एक ॲप नाही.
+not_one_app_with_a	व्यवसाय बदलण्याचा स्विच असलेले एक ॲप नाही. प्रत्येक उत्पादन एका प्रकारच्या काउंटरभोवती, त्या व्यवसायाच्या स्वतःच्या शब्दांत बनवले आहे.
+courier_offices_franchise_counters_own	कुरिअर कार्यालये · फ्रँचायझी काउंटर · स्वतःचे रायडर
+book_label_hand_over_track	बुक → लेबल → सुपूर्द → ट्रॅक → हिशेब.
+next_booking_in_one_tap	एका टॅपमध्ये पुढचे बुकिंग
+actual_or_volumetric_weight_rounded	प्रत्यक्ष किंवा व्हॉल्यूमेट्रिक वजन, तुमच्या पद्धतीने राउंड
+rider_cash_on_delivery_expected	रायडरचे कॅश ऑन डिलिव्हरी: अपेक्षित विरुद्ध जमा
+visit_moklanjo_com	moklanjo.com पाहा  →
+restaurants_caf_s_quick_service	रेस्टॉरंट · कॅफे · क्विक सर्व्हिस · बेकरी
+table_kitchen_bill_day_close	टेबल → स्वयंपाकघर → बिल → दिवस बंद.
+every_table_s_minutes_and	प्रत्येक टेबलची मिनिटे आणि बिल एका नजरेत
+one_kot_per_kitchen_station	प्रत्येक स्वयंपाकघर स्टेशनसाठी एक KOT — किंमत कधीच नाही
+cash_upi_part_payment_due	रोख, UPI, अंशतः भरणा, उधारी आणि टिप
+visit_khaynjo_com	khaynjo.com पाहा  →
+kirana_grocery_neighbourhood_shops	किराणा · ग्रोसरी · आसपासची दुकाने
+sell_khata_stock_day_book	विक्री → खाते → स्टॉक → रोज बही.
+fast_counter_sell_with_short	छोट्या कोडने जलद काउंटर विक्री
+customer_credit_and_supplier_dues	ग्राहकाची उधारी आणि पुरवठादाराचे देणे
+buy_into_stock_offline_forever	खरेदी थेट स्टॉकमध्ये — कायम ऑफलाइन
+visit_kirano_shop	kirano.shop पाहा  →
+chemists_pharmacy_counters	केमिस्ट · फार्मसी काउंटर
+medicine_batch_bill_day_close	औषध → बॅच → बिल → दिवस बंद.
+barcode_and_salt_composition_search	बारकोड आणि सॉल्ट / घटकाने शोध
+batch_and_expiry_alerts_on	खरेदीवर बॅच आणि मुदतीच्या सूचना
+owner_schedule_h_rx_notes	मालकाच्या Schedule H / Rx नोंदी — पालनाचा आव नाही
+visit_tabiyat_shop	tabiyat.shop पाहा  →
+n_03_your_books_stay_with	03 · तुमच्या वह्या तुमच्याकडेच राहतात
+your_books_live_in_your	तुमच्या वह्या तुमच्या दुकानात राहतात.
+sales_parties_and_the_day	विक्री, पार्टी आणि रोज बही तुमच्या काउंटरवरच्या उपकरणावर लिहिली जाते — भाड्याच्या सर्व्हरवर नाही.
+on_your_device	तुमच्या उपकरणावर
+every_sale_payment_and_docket	प्रत्येक विक्री, पेमेंट आणि डॉकेट तुमच्या मालकीच्या संगणकावर किंवा टॅबलेटवर जतन होते.
+no_account_with_us	आमच्याकडे खाते नाही
+install_it_and_start_no	इंस्टॉल करा आणि सुरू करा. ना साइन-अप, ना कार्डची माहिती.
+copies_you_keep	तुमच्याकडे राहणाऱ्या प्रती
+save_a_backup_copy_whenever	हवी तेव्हा बॅकअप प्रत जतन करा. ती एक फाइल आहे, आणि ती तुमची आहे.
+extra_counters_and_tablets_join	जादा काउंटर आणि टॅबलेट तुमच्या स्वतःच्या Wi-Fi वरून जोडले जातात — मध्ये इंटरनेटशिवाय.
+n_04_try_it	04 · वापरून पाहा
+pull_the_plug_on_the	इंटरनेटचा प्लग काढून टाका.
+kumkaj_apps_don_t_phone	Kumkaj ॲप्सना काम करण्यासाठी बाहेर संपर्क करावा लागत नाही. इंटरनेट तोडा आणि काउंटरवर काय बदलते ते पाहा.
+cut_the_internet	इंटरनेट तोडा
+internet_on	इंटरनेट: चालू
+book_a_parcel_or_take	पार्सल बुक करा किंवा ऑर्डर घ्या
+save_the_bill_or_docket	बिल किंवा डॉकेट जतन करा
+day_book_totals	रोज बहीची बेरीज
+find_an_old_sale	जुनी विक्री शोधा
+the_internet_is_on_and	इंटरनेट चालू आहे — आणि काउंटर ते वापरत नाही.
+things_that_leave_the_shop	दुकानाबाहेर जाणाऱ्या गोष्टींना, जसे WhatsApp पावती, पोहोचण्यासाठी अजूनही इंटरनेट लागते.
+n_05_price	05 · किंमत
+free_forever_on_your_devices	तुमच्या उपकरणांवर कायम मोफत.
+no_charge_per_seat_user	सीट, वापरकर्ता, टेबल, रायडर, पार्सल किंवा लोकल उपकरणामागे शुल्क नाही. ही चाचणी आवृत्ती नाही.
+on_your_own_devices	तुमच्या स्वतःच्या उपकरणांवर
+n_0_forever	₹0, कायम
+pay_only_for_what_you	जेवढे वापराल तेवढेच द्या — सर्वांसाठी तेच दर.
+planned	नियोजित
+cloud_is_planned_and_optional	क्लाउड नियोजित आणि ऐच्छिक आहे. काउंटर त्याशिवाय चालतो.
+n_06_languages	06 · भाषा
+speaks_your_staff_s_language	तुमच्या कर्मचाऱ्यांची भाषा बोलतो.
+the_same_115_language_catalogue	प्रत्येक Kumkaj ॲपमधील तीच 115 भाषांची यादी — अरबी आणि उर्दू उजवीकडून डावीकडे. खाली भाषांची स्वतःची नावे; हिंदी, गुजराती, तमिळ, बंगाली, उर्दू आणि इंग्रजीत “जेवण तयार” चे नमुने:
+same_shaping_engine_as_the	ॲप्ससारखेच शेपिंग इंजिन, म्हणून जोडाक्षरे आणि उजवीकडून डावीकडे लिहिलेल्या ओळी नीट दिसतात.
+n_07_who_makes_it	07 · हे कोण बनवते
+made_under_gotigin	Gotigin अंतर्गत बनवलेले.
+trademark	ट्रेडमार्क
+memon_for_find_it_pronounced	मेमन भाषेत “शोधा” · उच्चार गो-टी-गीन
+company	कंपनी
+brand	ब्रँड
+concrete_business_operating_system_apps	प्रत्यक्ष कामाची बिझनेस ऑपरेटिंग सिस्टम ॲप्स
+products	उत्पादने
+courier_restaurant_grocery_pharmacy	कुरिअर · रेस्टॉरंट · किराणा · फार्मसी
+courier_desk_book_label_hand	कुरिअर डेस्क — बुक, लेबल, सुपूर्द, हिशेब.
+restaurant_system_table_kitchen_bill	रेस्टॉरंट सिस्टम — टेबल, स्वयंपाकघर, बिल, दिवस बंद.
+grocery_counter_sell_khata_stock	किराणा काउंटर — विक्री, खाते, स्टॉक, रोज बही.
+pharmacy_counter_batch_expiry_bill	फार्मसी काउंटर — बॅच, मुदत, बिल, दिवस बंद.
+privacy	गोपनीयता
+terms	अटी
+cancellation	रद्दीकरण धोरण
+cloud_shop	क्लाउड शॉप
+account	खाते
+chapter_built_for_your_trade	तुमच्या व्यवसायासाठी बनवलेले
+chapter_your_books	तुमच्या वह्या
+chapter_try_it_offline	ऑफलाइन वापरून पाहा
+chapter_price	दर
+chapter_languages	भाषा
+chapter_who_makes_it	हे कोण बनवते
+toy_bring_back	इंटरनेट परत आणा
+toy_internet_off	इंटरनेट: बंद
+toy_verdict_off	इंटरनेट बंद — आणि काउंटरवर काहीही बदलले नाही.
+acct_page_title	खाते — Kumkaj
+acct_lede	प्रत्येक Kumkaj उत्पादनाचे स्वतःचे खाते (आणि स्वतःचे क्लाउड) आहे. तुम्ही चालवता तो व्यवसाय निवडा — साइन-इन आणि चेकआउट त्याच उत्पादनाच्या साइटवर होतात.
+acct_product_accounts	उत्पादन खाती
+acct_moklanjo_blurb	कुरिअर OS खाते
+acct_khaynjo_blurb	रेस्टॉरंट OS खाते
+acct_kirano_blurb	किराणा काउंटर खाते
+acct_tabiyat_blurb	फार्मसी काउंटर खाते
+acct_open_account	खाते उघडा
+shop_page_title	शॉप — Kumkaj
+shop_lede	वार्षिक क्लाउड प्लॅन — प्रत्येक व्यवसायासाठी तेच पाच प्रकार (कायम मोफत, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / वर्ष, कर वगळून, किंवा कस्टम कोटेशन). कर चेकआउटवेळी जोडला जातो. प्रत्येक उत्पादनाचे स्वतःचे शॉप आणि खाते.
+shop_product_shops	उत्पादन क्लाउड शॉप
+shop_moklanjo_blurb	moklanjo.com साठी कुरिअर डेस्क क्लाउड
+shop_khaynjo_blurb	khaynjo.com साठी रेस्टॉरंट क्लाउड
+shop_kirano_blurb	kirano.shop साठी किराणा काउंटर क्लाउड
+shop_tabiyat_blurb	tabiyat.shop साठी फार्मसी काउंटर क्लाउड
+shop_open_shop	शॉप उघडा

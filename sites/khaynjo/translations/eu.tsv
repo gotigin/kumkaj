@@ -206,7 +206,6 @@ shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment 
 acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
 shop_cloud_plans	@@EN@@ Cloud plans
 acct_federated	@@EN@@ Federated sign-in
-key	@@EN@@ English
 acct_err_invalid_email	@@EN@@ Enter a valid email address.
 acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
 acct_err_wrong_password	@@EN@@ Wrong password.

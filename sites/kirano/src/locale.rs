@@ -177,7 +177,6 @@ pub const EN: &[(&str, &str)] = &[
     ("acct_billing_hint", "Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority)."),
     ("shop_cloud_plans", "Cloud plans"),
     ("acct_federated", "Federated sign-in"),
-    ("key", "English"),
     ("acct_err_invalid_email", "Enter a valid email address."),
     ("acct_err_weak_password", "Use a password with at least 6 characters."),
     ("acct_err_wrong_password", "Wrong password."),

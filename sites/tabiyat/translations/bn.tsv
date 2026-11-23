@@ -1,228 +1,227 @@
 # Bengali — বাংলা (bn). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-key	@@EN@@ English
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	উদাহরণ
+download_free	বিনামূল্যে ডাউনলোড করুন
+whatsapp_for_a_demo	ডেমোর জন্য WhatsApp করুন
+free_on_android_windows_and	Android, Windows আর Linux-এ বিনামূল্যে।
+the_pharmacy_counter	ফার্মেসির কাউন্টার
+pharmacy_counter	ফার্মেসির কাউন্টার
+tabiyat_the_pharmacy_counter	TABIYAT · ফার্মেসির কাউন্টার
+pharmacy_counter_offline_your_books	ফার্মেসির কাউন্টার। অফলাইন। আপনার নিজের হিসাবের খাতা।
+medicines_barcode_and_salt_search	ওষুধ, বারকোড আর সল্ট দিয়ে খোঁজ, ব্যাচ আর মেয়াদ — আপনার নিজের হিসাবের খাতার জন্য, আপনার ডিভাইসে। শুধু মালিকের জন্য চিহ্ন; ড্রাগস অ্যাক্ট মানার ভান কখনো নয়।
+tap_the_bill_to_walk	কাউন্টারের একটি বিক্রি দেখতে বিলে ট্যাপ করুন
+cash_memo	ক্যাশ মেমো
+ready	তৈরি
+total	মোট
+tap_to_add_the_first	প্রথম ওষুধ যোগ করতে ট্যাপ করুন
+example_pharmacy_lines_not_a	উদাহরণ ফার্মেসি লাইন, আসল বিলিং কাউন্টার নয়। Tabiyat একই পথে চলে: বিক্রি → হিসাব মেটানো → দিনের খাতা।
+n_2_counter_sell	2 · কাউন্টারে বিক্রি
+medicine_quantity_pay_three_taps	ওষুধ, পরিমাণ, পেমেন্ট — তিন ট্যাপ।
+upi_qr_ready	UPI QR তৈরি
+example_bill	উদাহরণ বিল
+fast_counter_billing	দ্রুত কাউন্টার বিলিং
+add_the_line_set_the	লাইন যোগ করুন, পরিমাণ দিন, পেমেন্ট নিন — নগদ, UPI বা ভাগ করে।
+gst_tax_invoice_or_cash	GST ট্যাক্স ইনভয়েস বা ক্যাশ মেমো
+the_bill_lane_you_need	বিক্রির জন্য যে বিল দরকার, সেটাই।
+day_book_follows	দিনের খাতা সঙ্গে চলে
+every_tender_lands_in_books	বিক্রি শেষ করলেই প্রতিটি পেমেন্ট দিনের খাতায় ওঠে।
+n_3_barcode_salt	3 · বারকোড ও সল্ট
+scan_the_barcode_or_find	বারকোড স্ক্যান করুন — বা সল্ট দিয়ে খুঁজুন।
+search	খুঁজুন
+composition_paracetamol_strip_of_10	কম্পোজিশন: Paracetamol · 10-এর স্ট্রিপ
+salt_amoxicillin	সল্ট: amoxicillin
+ranks_barcode_name_and_composition	বারকোড, নাম আর কম্পোজিশন একসঙ্গে মিলিয়ে সাজায়।
+wedge_scanner_or_type_enter	ওয়েজ স্ক্যানার বা Enter চাপুন — লাইন বিলে চলে আসে।
+barcode_first	আগে বারকোড
+scan_or_paste_the_code	কোড স্ক্যান বা পেস্ট করুন; ক্যাটালগে মিলে যাওয়া ওষুধ সামনে আসে।
+salt_composition	সল্ট / কম্পোজিশন
+type_the_salt_when_the	গ্রাহক ব্র্যান্ডের নাম না বললে সল্ট টাইপ করুন।
+owner_rx_schedule_h_flags	মালিকের Rx / Schedule H চিহ্ন
+reminders_you_set_not_a	আপনার রাখা রিমাইন্ডার — কোনো আইনি রেজিস্টার নয়, কোনো চিকিৎসা-পরামর্শ নয়।
+n_4_batch_expiry	4 · ব্যাচ ও মেয়াদ
+batch_and_expiry_on_your	আপনার খাতায় ব্যাচ আর মেয়াদ — মালিকের জন্য সতর্কবার্তা।
+buy_batch_a12	কেনা · ব্যাচ A12
+expires_2027_03_alert_in	মেয়াদ শেষ 2027-03 · 7 দিনে সতর্কবার্তা
+ors_sachets_batch_b04	ORS স্যাশে · ব্যাচ B04
+expires_2026_11_near_expiry	মেয়াদ শেষ 2026-11 · দিনের খাতায় মেয়াদ-ফুরোনোর কাছাকাছি পট্টি
+shop_bookkeeping_only_not_drugs	শুধু দোকানের হিসাব রাখা — ড্রাগস অ্যাক্ট মানা নয়।
+batch_on_buy	কেনার সময় ব্যাচ
+record_batch_and_expiry_when	স্টক এলে ব্যাচ আর মেয়াদ লিখে রাখুন।
+near_expiry_alerts	মেয়াদ ফুরোনোর আগে সতর্কবার্তা
+books_and_sell_can_hint	তারিখ পেরোনোর আগেই দিনের খাতা আর বিক্রি স্ক্রিন ইঙ্গিত দিতে পারে।
+owner_practice	মালিকের নিয়ম
+fefo_hints_and_rx_notes	FEFO ইঙ্গিত আর Rx নোট মানা আপনার হাতে — আপনি যা লেখেন, Tabiyat তাই রাখে।
+n_5_khata	5 · খাতা
+customer_credit_and_supplier_dues	গ্রাহকের বাকি আর সরবরাহকারীর দেনা একই পার্টি খাতায়।
+mehta_clinic_customer	মেহতা ক্লিনিক · গ্রাহক
+due_from_earlier	আগের বাকি
+today_s_sale_due	+ আজকের বিক্রি (বাকি)
+balance	বাকি মোট
+settle_later_part_cash_part	পরে হিসাব মেটান — কিছু নগদ, কিছু UPI। সরবরাহকারীর দেনা (AP)-ও একই পার্টি স্ক্রিনে।
+due_on_the_bill	বিলে বাকি
+leave_a_balance_on_khata	আলাদা খাতা-অ্যাপ ছাড়াই খাতায় বাকি রাখুন।
+supplier_buys_too	সরবরাহকারীর কাছ থেকে কেনাও
+who_you_owe_updates_when	স্টক এলেই কার কাছে কত দেনা হালনাগাদ হয়।
+auditable	যাচাইযোগ্য
+who_when_and_how_much	কে, কখন আর কত — সব দিনের খাতায় থাকে।
+n_6_internet_down	6 · ইন্টারনেট বন্ধ?
+the_internet_drops_the_counter	ইন্টারনেট চলে যায়। কাউন্টার বিক্রি চালিয়ে যায়।
+router_no_internet	রাউটার: ইন্টারনেট নেই
+main_counter_selling_and_settling	প্রধান কাউন্টার: বিক্রি আর হিসাব চলছে
+second_till_joined_on_your	দ্বিতীয় বিলিং কাউন্টার: আপনার নিজের Wi-Fi-তে যুক্ত
+books_live_on_the_shop	হিসাবের খাতা থাকে দোকানের ডিভাইসে
+when_the_internet_drops_nothing	ইন্টারনেট চলে গেলে ফার্মেসির কাউন্টারে কিছুই তার অপেক্ষায় থাকে না।
+one_server_lan_clients	একটি সার্ভার, LAN ক্লায়েন্ট
+extra_tills_share_the_same	বাড়তি বিলিং কাউন্টার দোকানের নেটওয়ার্কে একই হিসাবের খাতা ভাগ করে।
+n_7_free_forever_locally	7 · লোকালে চিরকাল বিনামূল্যে
+free_forever_on_your_devices	আপনার ডিভাইসে চিরকাল বিনামূল্যে।
+no_per_bill_charge	প্রতি বিলে কোনো চার্জ নেই
+no_fee_per_sale_medicine	লোকাল ইনস্টলে বিক্রি, ওষুধ, বিলিং কাউন্টার বা কর্মীর PIN প্রতি কোনো ফি নেই।
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	ফোনে আর ডেস্কটপ বিলিং কাউন্টারে একই Tabiyat।
+optional_kumkaj_cloud	ঐচ্ছিক Kumkaj Cloud
+yearly_steady_6k_swift_12k	বার্ষিক Steady ₹6k · Swift ₹12k · Priority ₹24k, কর বাদে (বা কাস্টম কোটেশন)। কিনুন /shop-এ।
+n_8_start	8 · শুরু করুন
+put_tabiyat_on_the_counter	Tabiyat নিয়ে আসুন আপনার কাউন্টারে।
+download_free_or_whatsapp_for	বিনামূল্যে ডাউনলোড করুন, বা আপনার ফার্মেসি আর শহর জানিয়ে পুরো ডেমোর জন্য WhatsApp করুন।
+privacy	গোপনীয়তা
+terms	শর্তাবলি
+cancellation	বাতিলের নীতি
+cloud_shop	ক্লাউড শপ
+account	অ্যাকাউন্ট
+chapter_counter_sell	কাউন্টারে বিক্রি
+chapter_barcode_salt	বারকোড ও সল্ট
+chapter_batch_expiry	ব্যাচ ও মেয়াদ
+chapter_khata	খাতা
+chapter_extra_till	বাড়তি বিলিং কাউন্টার
+chapter_offline	অফলাইন
+chapter_start	শুরু করুন
+bill_selling	বিক্রি চলছে
+bill_settle	পেমেন্ট
+bill_paid	পরিশোধিত
+bill_next_line	পরের লাইন যোগ করতে ট্যাপ করুন
+bill_settle_hint	পেমেন্টের জন্য ট্যাপ করুন — নগদ বা UPI
+bill_upi_paid	UPI ₹ 162 · পরিশোধিত
+bill_paid_line	পরিশোধিত · দিনের খাতা হালনাগাদ
+lan_eyebrow	6 · বাড়তি বিলিং কাউন্টার
+lan_title	দোকানের Wi-Fi-তে আরেকটি বিলিং কাউন্টার।
+cta_installers_note	প্রতিটি ইনস্টলার পরিষ্কার মেশিনে ইনস্টলের পরীক্ষা পাস করলেই এখানে আসবে। ততদিন WhatsApp-এ ডেমো চেয়ে নিন।
+cta_whatsapp_soon	WhatsApp ডেমো লাইন শীঘ্রই খুলছে। আপনার মেসেজ হবে: “{message}”।
+acct_page_title	অ্যাকাউন্ট — Tabiyat
+acct_lede	সাইট আর অ্যাপের জন্য একটিই অ্যাকাউন্ট — নতুন হোন বা পুরোনো, একই ফর্ম।
+acct_email	ইমেইল
+acct_name_optional	নাম (ঐচ্ছিক)
+acct_password	পাসওয়ার্ড
+acct_continue	এগিয়ে যান
+acct_forgot	পাসওয়ার্ড ভুলে গেছেন?
+acct_reset_hint	আমরা একটি রিসেট লিংক ইমেইল করব। যে ঠিকানায় সাইন আপ করেছিলেন, সেটাই দিন।
+acct_send_reset	রিসেট লিংক পাঠান
+acct_cancel	বাতিল
+acct_or_continue	অথবা এভাবে এগিয়ে যান
+acct_phone	ফোন
+acct_mobile	মোবাইল নম্বর
+acct_send_sms	SMS কোড পাঠান
+acct_sms_code	SMS কোড
+acct_confirm_code	কোড নিশ্চিত করুন
+acct_signed_in	সাইন ইন করা আছে
+acct_signed_in_as	যে অ্যাকাউন্টে সাইন ইন
+acct_status	অবস্থা
+acct_sign_in_methods	সাইন-ইনের উপায়
+acct_cloud_username	ক্লাউড ইউজারনেম
+acct_plan	প্ল্যান
+acct_resend_verify	যাচাইয়ের ইমেইল আবার পাঠান
+acct_sign_out	সাইন আউট
+acct_cloud_sandbox	Kumkaj Cloud (স্যান্ডবক্স)
+acct_current_password	বর্তমান পাসওয়ার্ড
+acct_email_for_password	পাসওয়ার্ড দিয়ে সাইন-ইনের ইমেইল
+acct_new_password	নতুন পাসওয়ার্ড
+acct_confirm_new_password	নতুন পাসওয়ার্ড নিশ্চিত করুন
+acct_add_way	সাইন ইনের আরেকটি উপায় যোগ করুন
+acct_link_hint	উপায়গুলো একই অ্যাকাউন্টে যুক্ত করুন, যাতে একটি কাজ না করলেও অ্যাক্সেস ফিরে পান।
+acct_link_google	Google যুক্ত করুন
+acct_link_microsoft	Microsoft যুক্ত করুন
+acct_link_github	GitHub যুক্ত করুন
+acct_link_phone	ফোন যুক্ত করুন
+acct_send_sms_link	যুক্ত করতে SMS পাঠান
+acct_confirm_link_phone	নিশ্চিত করে ফোন যুক্ত করুন
+shop_page_title	শপ — Tabiyat
+shop_lede	বার্ষিক ক্লাউড প্ল্যান — কর যোগ হয় চেকআউটে। আপনার নিজের ডিভাইসে পুরো Tabiyat অ্যাপ চিরকাল বিনামূল্যে, কোনো বিজ্ঞাপন ছাড়া।
+shop_cart	কার্ট
+shop_cart_empty_hint	আপনার কার্ট খালি। Steady, Swift বা Priority যোগ করুন।
+shop_checkout	চেকআউট
+shop_clear	মুছুন
+shop_checkout_hint	চেকআউট আপনাকে অ্যাকাউন্টে সাইন ইন করায়, তারপর পেমেন্ট শুরু করে (স্যান্ডবক্স মক, বা কী সেট থাকলে Paddle)।
+acct_billing_hint	বার্ষিক প্ল্যান — চেকআউটে গেটওয়ে কর যোগ করে। লোকাল ব্যবহার চিরকাল বিনামূল্যে। কাস্টম-এর জন্য কোটেশন (Steady-র চেয়ে কম বা Priority-র চেয়ে বেশি হতে পারে)।
+shop_cloud_plans	ক্লাউড প্ল্যান
+acct_federated	ফেডারেটেড সাইন-ইন
+acct_err_invalid_email	সঠিক ইমেইল ঠিকানা দিন।
+acct_err_weak_password	কমপক্ষে 6 অক্ষরের পাসওয়ার্ড দিন।
+acct_err_wrong_password	পাসওয়ার্ড ভুল।
+acct_err_invalid_credential	ইমেইল বা পাসওয়ার্ড ভুল।
+acct_err_popup_closed	সাইন-ইনের উইন্ডো বন্ধ হয়ে গেছে।
+acct_err_popup_cancelled	সাইন-ইন বাতিল হয়েছে।
+acct_err_unauthorized_domain	এই ডোমেইন Firebase Auth-এর জন্য অনুমোদিত নয়।
+acct_err_method_disabled	সাইন-ইনের এই উপায় এখনো চালু হয়নি।
+acct_err_too_many	অনেকবার চেষ্টা হয়েছে। পরে আবার চেষ্টা করুন।
+acct_err_phone_format	দেশের কোডসহ পুরো ফোন নম্বর দিন (যেমন +91…)।
+acct_err_sms_code	এই SMS কোড ভুল বা মেয়াদ শেষ।
+acct_err_no_account	এই ইমেইলে কোনো অ্যাকাউন্ট নেই। নতুন বানাতে এগিয়ে যান, বা অন্য উপায় ব্যবহার করুন।
+acct_err_recent_login	নিরাপত্তার জন্য আবার সাইন ইন করুন, তারপর এই বদলটি আবার করুন।
+acct_err_credential_in_use	সাইন-ইনের এই উপায় আগে থেকেই অন্য একটি অ্যাকাউন্টে ব্যবহার হচ্ছে।
+acct_err_email_in_use	এই ইমেইল আগে থেকেই অন্য একটি অ্যাকাউন্টে ব্যবহার হচ্ছে।
+acct_err_already_linked	এই উপায় আগে থেকেই এই অ্যাকাউন্টে যুক্ত।
+acct_err_exists_other_method	এই ইমেইলে অন্য সাইন-ইন উপায়ের একটি অ্যাকাউন্ট আগে থেকেই আছে। আগে সেই উপায়ে সাইন ইন করুন, তারপর আপনার অ্যাকাউন্ট পেজ থেকে এটি যুক্ত করুন।
+acct_err_generic	কিছু একটা ভুল হয়েছে।
+acct_method_password	ইমেইল ও পাসওয়ার্ড
+acct_pw_hint_change	আপনার পাসওয়ার্ড বদলান। বর্তমান পাসওয়ার্ড দিয়ে নিশ্চিত করবেন।
+acct_pw_hint_add	একটি পাসওয়ার্ড যোগ করুন, যাতে ইমেইল দিয়েও সাইন ইন করতে পারেন (কোনো প্রোভাইডার না পাওয়া গেলে কাজে লাগে)।
+acct_pw_change	পাসওয়ার্ড বদলান
+acct_pw_add	পাসওয়ার্ড যোগ করুন
+acct_billing_off	ক্লাউড API-তে বিলিং এখনো চালু হয়নি।
+acct_billing_no_provider	ক্লাউড API-তে কোনো আসল বিলিং প্রোভাইডার চালু নেই (শুধু মক, তাও লোকাল)।
+price_quote	কোটেশন
+price_per_year	₹{amount}/বছর, কর বাদে
+acct_pay_received	পেমেন্ট পাওয়া গেছে — আপনার প্ল্যান হালনাগাদ হচ্ছে…
+acct_pay_declined	পেমেন্ট প্রত্যাখ্যাত বা ব্যর্থ হয়েছে
+acct_pay_failed_detail	{detail}। আপনার প্ল্যান বদলায়নি।
+acct_checkout_closed	চেকআউট বন্ধ হয়েছে — কোনো পেমেন্ট সম্পন্ন হয়নি। আপনার প্ল্যান আগের মতোই।
+acct_checkout_failed	চেকআউট ব্যর্থ হয়েছে
+acct_pay_with	{provider} দিয়ে পেমেন্ট করুন
+acct_plan_until	{plan} · {date} পর্যন্ত
+acct_unavailable	পাওয়া যাচ্ছে না
+acct_continue_hint	ইমেইল, কোনো প্রোভাইডার বা ফোন দিয়ে এগিয়ে যান।
+acct_signed_in_fallback	(সাইন ইন করা)
+acct_email_verified	ইমেইল যাচাই হয়েছে
+acct_email_unverified	ইমেইল এখনো যাচাই হয়নি — আপনার ইনবক্স দেখুন
+acct_signed_in_phone	ফোন দিয়ে সাইন ইন করা
+acct_none_listed	এখনো কিছু নেই
+acct_signed_in_status	আপনি সাইন ইন করেছেন।
+acct_created	অ্যাকাউন্ট তৈরি হয়েছে। সময় পেলে যাচাইয়ের জন্য আপনার ইমেইল দেখুন।
+acct_reset_sent	এই ইমেইলের অ্যাকাউন্ট থাকলে একটি রিসেট লিংক পাঠানো হচ্ছে। আপনার ইনবক্স দেখুন।
+acct_another_method	অন্য কোনো উপায়
+acct_exists_via	{email}-এর একটি অ্যাকাউন্ট আগে থেকেই {method} দিয়ে আছে। আগে সেভাবে সাইন ইন করুন, তারপর আপনার অ্যাকাউন্ট পেজ থেকে এই প্রোভাইডার যুক্ত করুন।
+acct_enter_current_pw	আপনার বর্তমান পাসওয়ার্ড দিন।
+acct_relogin_retry	সাইন আউট করে আবার সাইন ইন করুন, তারপর চেষ্টা করুন।
+acct_pw_mismatch	নতুন পাসওয়ার্ড আর নিশ্চিতকরণ মিলছে না।
+acct_pw_updated	পাসওয়ার্ড বদলানো হয়েছে।
+acct_enter_email_pw	পাসওয়ার্ড দিয়ে সাইন-ইনের জন্য একটি ইমেইল দিন।
+acct_pw_added	পাসওয়ার্ড যোগ হয়েছে। এখন ইমেইল দিয়েও সাইন ইন করতে পারবেন।
+acct_method_linked	সাইন-ইনের উপায় যুক্ত হয়েছে।
+acct_phone_linked	ফোন এই অ্যাকাউন্টে যুক্ত হয়েছে।
+acct_verify_sent	যাচাইয়ের ইমেইল পাঠানো হয়েছে — আপনার ইনবক্স দেখুন।
+shop_pricing_soon	দাম শীঘ্রই আসছে
+shop_request_quote	কোটেশন চান
+shop_add_to_cart	কার্টে যোগ করুন
+shop_notify_later	পরে জানাবেন
+shop_included	অন্তর্ভুক্ত
+shop_in_cart	{plan} আপনার কার্টে আছে।
+shop_remove	সরান
+shop_cart_is_empty	কার্ট খালি।
+shop_prices_unpublished	এই প্রোডাক্টের সেলফ-সার্ভ দাম এখনো প্রকাশিত হয়নি। কাস্টম কোটেশন চান বা পরে আবার দেখুন।
+shop_cart_cleared	কার্ট খালি করা হয়েছে।
+plan_free_title	চিরকাল বিনামূল্যে
+plan_free_blurb	আপনার ডিভাইসে পুরো লোকাল প্রোডাক্ট। ক্লাউডের কোনো ফি নেই।
+plan_steady_blurb	লাইভ ক্লাউড · 10 GB · কম ব্যান্ডউইথ
+plan_swift_blurb	লাইভ ক্লাউড · 25 GB · মাঝারি ব্যান্ডউইথ
+plan_priority_blurb	লাইভ ক্লাউড · 50 GB · সর্বোচ্চ সাধারণ ব্যান্ডউইথ
+plan_custom_title	কাস্টম
+plan_custom_blurb	সম্মত কোটা ও ব্যান্ডউইথ। কোটেশন Steady-র চেয়ে কম বা Priority-র চেয়ে বেশি হতে পারে।

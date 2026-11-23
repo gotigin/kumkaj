@@ -1,255 +1,254 @@
 # Gujarati — ગુજરાતી (gu). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-key	@@EN@@ English
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	ઉદાહરણ
+length	લંબાઈ
+download_free	મફત ડાઉનલોડ કરો
+whatsapp_for_a_demo	ડેમો માટે WhatsApp કરો
+free_on_android_windows_and	Android, Windows અને Linux પર મફત.
+courier_operating_system	કુરિયર ઑપરેટિંગ સિસ્ટમ
+parcel_journey	પાર્સલની સફર
+walk_in	વૉક-ઇન
+weigh	વજન
+price	ભાવ
+label	લેબલ
+hand_over	સોંપણી
+track	ટ્રૅક
+offline	ઑફલાઇન
+start	શરૂ કરો
+moklanjo_courier_operating_system	MOKLANJO · કુરિયર ઑપરેટિંગ સિસ્ટમ
+book_move_and_settle_every	દરેક પાર્સલ બુક કરો, રવાના કરો અને હિસાબ પતાવો — તમારાં પોતાનાં ઉપકરણો પર એક કુરિયર OS.
+parties_books_cod_labels_awb	પાર્ટી, ચોપડા, COD, લેબલ, AWB પૂલ, ટ્રૅકિંગ, રાઇડર્સ અને બિલિંગ — કાઉન્ટરથી હિસાબ પતે ત્યાં સુધીનું આખું ચક્ર, ઇન્ટરનેટ હોય કે ન હોય. તમારાં ઉપકરણો પર મફત.
+the_walk_in_loop	વૉક-ઇનનું ચક્ર
+actual_and_volumetric_side_by	ખરું અને વૉલ્યુમેટ્રિક, બાજુબાજુમાં.
+charge	ચાર્જ
+your_rate_card_cash_or	તમારું રેટ કાર્ડ, રોકડ કે ખાતું.
+next_booking	આગલું બુકિંગ
+one_tap_clears_the_counter	એક ટૅપમાં કાઉન્ટર આગલા વૉક-ઇન માટે ખાલી.
+scroll_the_parcel_journey_rail	સ્ક્રોલ કરો — ઉપરની પાર્સલ સફરની પટ્ટી તમે વાર્તામાં ક્યાં છો તે બતાવે છે.
+n_2_weigh_it_right	2 · સાચું વજન
+actual_or_volumetric_whichever_is	ખરું કે વૉલ્યુમેટ્રિક — જે વધુ હોય તે, તમારી રીતે રાઉન્ડ કરેલું.
+try_a_box	એક ખોખું અજમાવો
+domestic	દેશમાં
+international	આંતરરાષ્ટ્રીય
+breadth	પહોળાઈ
+height	ઊંચાઈ
+weight_on_the_scale	ત્રાજવા પરનું વજન
+chargeable_weight	ચાર્જપાત્ર વજન
+the_box_s_size_sets	ખોખાનું માપ ચાર્જ નક્કી કરે છે.
+higher_of_the_two_rounded	બેમાંથી વધુ, આગલા 0.5 kg સુધી ઉપર રાઉન્ડ કરેલું.
+in_the_app_the_divisor	ઍપમાં ભાજક, રાઉન્ડિંગનું પગલું અને તમારા એકમો (cm કે ઇંચ, kg કે lb) દુકાન પોતે નક્કી કરે છે. “આંતરરાષ્ટ્રીય” ચિપ સેટિંગ્સને અડ્યા વગર એક બુકિંગ માટે ÷6000 કરે છે.
+n_3_price_it	3 · ભાવ નક્કી કરો
+your_rate_cards_your_party	તમારાં રેટ કાર્ડ, તમારી પાર્ટીના ભાવ — અને દરેક ડૉકેટ પર તમારું માર્જિન.
+rate_card	રેટ કાર્ડ
+zone_service	ઝોન · સેવા
+first_0_5_kg	પહેલા 0.5 kg
+each_0_5_kg	દરેક 0.5 kg
+local_surface	લોકલ · સરફેસ
+within_state_express	રાજ્યની અંદર · એક્સપ્રેસ
+metro_air	મેટ્રો · એર
+zone_service_weight_slab	ઝોન × સેવા × વજન સ્લૅબ
+first_slab_and_each_extra	પહેલો સ્લૅબ અને દરેક વધારાનો સ્લૅબ, દરેક ઝોન અને સેવા મુજબ.
+a_consignor_s_own_card	મોકલનારનું પોતાનું કાર્ડ
+regular_senders_get_their_rates	નિયમિત મોકલનારને તેમના ભાવ મળે છે; બાકી બધા માટે ડિફૉલ્ટ કાર્ડ.
+margin_at_the_desk	ડેસ્ક પર જ માર્જિન
+your_sell_price_against_the	દરેક ડૉકેટ પર તમારો વેચાણ ભાવ વિરુદ્ધ કેરિયરનો ભાવ.
+n_4_label_it	4 · લેબલ લગાવો
+awb_from_your_own_number	તમારા પોતાના નંબર પૂલમાંથી AWB. લેબલ, સ્કૅન, શોધો.
+number_pools_per_carrier	દરેક કેરિયરના નંબર પૂલ
+enter_each_carrier_s_start	દરેક કેરિયરની શરૂ–અંતની શ્રેણી એક વાર લખો; દરેક બુકિંગ આગલો નંબર લે છે.
+code_128_labels	Code 128 લેબલ
+the_awb_goes_on_the	AWB ખોખા પર બારકોડ તરીકે અને સાદા આંકડામાં આવે છે.
+scan_to_find	સ્કૅન કરી શોધો
+scan_a_label_to_open	લેબલ સ્કૅન કરો — તેનું ડૉકેટ ખૂલે છે અને ત્યાંથી જ કામ કરો.
+n_5_hand_over	5 · સોંપણી
+hand_it_to_a_carrier	કેરિયરને સોંપો, અથવા તમારો પોતાનો રાઇડર મોકલો. એક જ સિસ્ટમ.
+into_a_carrier_bag	કેરિયર બૅગમાં
+the_manifest_holds_exactly_the	મૅનિફેસ્ટમાં બરાબર તમે પસંદ કરેલાં પાર્સલ જ હોય છે — બધાં કે એક પણ નહીં. બીજા કેરિયર સાથે બુક થયેલું પાર્સલ આ બૅગમાં જઈ શકતું નથી.
+onto_your_own_rider_s	તમારા રાઇડરની ફેરીમાં
+pick_the_parcels_print_the	પાર્સલ પસંદ કરો, રન શીટ છાપો, અને રાઇડર એ જ ઍપમાં રાઇડર મોડમાં કામ કરે છે — ડિલિવરીના પુરાવા સહિત.
+n_6_track_and_prove	6 · ટ્રૅક કરો અને સાબિત કરો
+every_move_recorded_and_only	દરેક હિલચાલ નોંધાય — અને ફક્ત અર્થપૂર્ણ હિલચાલ જ.
+booked	બુક થયું
+with_carrier	કેરિયર પાસે
+out_for_delivery	ડિલિવરી માટે બહાર
+delivered	પહોંચાડ્યું
+booked_with_carrier_out_for	બુક થયું → કેરિયર પાસે → ડિલિવરી માટે બહાર → પહોંચાડ્યું
+failed	નિષ્ફળ
+reason_out_again_or_return	→ કારણ → ફરી બહાર, અથવા મોકલનારને પરત.
+impossible_moves_refused	અશક્ય હિલચાલ નકારાય છે
+delivered_returned_and_cancelled	પહોંચાડ્યું, પરત થયું અને રદ — આ અંતિમ છે.
+proof_of_delivery	ડિલિવરીનો પુરાવો
+a_photo_and_the_receiver	ડૉકેટ પર એક ફોટો અને લેનારની સહી.
+failed_deliveries	નિષ્ફળ ડિલિવરી
+reasons_attempts_out_again_or	કારણો, પ્રયત્નો, ફરી બહાર, અથવા મોકલનારને પરત.
+n_7_money_comes_home	7 · પૈસા ઘરે આવે છે
+cod_you_can_see_expected	દેખાતું COD: અપેક્ષિત, જમા કરેલું, દરેક મોકલનારનું લેણું.
+rider_cash_end_of_run	ફેરીના અંતે રાઇડરની રોકડ
+rider	રાઇડર
+expected	અપેક્ષિત
+handed_in	જમા કર્યું
+a_14_drops	A · 14 ડિલિવરી
+b_9_drops	B · 9 ડિલિવરી
+short_200_on_rider_b	રાઇડર B પર ₹ 200 ઓછા — નામથી જણાવાયું, કોઈ કુલમાં ખોવાયું નથી.
+cod_register	COD રજિસ્ટર
+collected_against_paid_out_per	વસૂલ વિરુદ્ધ ચૂકવેલું, દરેક મોકલનાર મુજબ, રેમિટન્સ બૅચ સાથે.
+rider_settlement	રાઇડરનો હિસાબ
+expected_against_handed_in_and	અપેક્ષિત વિરુદ્ધ જમા, અને કમિશનની સ્લિપ.
+books_that_close	મેળ ખાતા ચોપડા
+day_book_month_bill_per	રોજમેળ, દરેક ખાતાનું માસિક બિલ, અને તમારા એકાઉન્ટન્ટ માટે GST સારાંશ CSV.
+n_8_internet_down	8 · ઇન્ટરનેટ બંધ?
+keep_booking	બુકિંગ ચાલુ રાખો.
+booking_labels_scanning_cod_and	બુકિંગ, લેબલ, સ્કૅનિંગ, COD અને ચોપડા બધું તમારાં ઉપકરણો પર ચાલે છે. ઇન્ટરનેટ જાય તો પણ કાઉન્ટર પર કંઈ તેની રાહ જોતું નથી.
+office_router_no_internet	ઑફિસ રાઉટર: ઇન્ટરનેટ નથી
+desk_still_booking	ડેસ્ક: બુકિંગ ચાલુ
+second_counter_and_rider_phone	બીજું કાઉન્ટર અને રાઇડરનો ફોન: ઑફિસના Wi-Fi પર જોડાયેલાં
+free_forever_on_your_devices	તમારાં ઉપકરણો પર કાયમ મફત
+nothing_per_rider_user_or	રાઇડર, યુઝર કે પાર્સલ દીઠ કંઈ નહીં. વૈકલ્પિક Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/વર્ષ, કર સિવાય — /shop.
+n_9_start	9 · શરૂ કરો
+one_courier_os_your_parcels	એક કુરિયર OS. તમારાં પાર્સલ. તમારા ચોપડા.
+moklanjo_is_a_complete_courier	Moklanjo એ Kumkaj હેઠળની સંપૂર્ણ કુરિયર ઑપરેટિંગ સિસ્ટમ છે — Android, Windows અને Linux પર. રાઇડર્સ એ જ ઍપ રાઇડર મોડમાં વાપરે છે.
+trademark	ટ્રેડમાર્ક
+memon_for_find_it_pronounced	મેમણ ભાષામાં “શોધી કાઢ” · ઉચ્ચાર ગો-ટી-ગીન
+company	કંપની
+brand	બ્રાન્ડ
+concrete_business_operating_system	નક્કર બિઝનેસ ઑપરેટિંગ સિસ્ટમ ઍપ્સ
+product	પ્રોડક્ટ
+courier_operating_system_under	Kumkaj હેઠળ કુરિયર ઑપરેટિંગ સિસ્ટમ
+privacy	ગોપનીયતા
+terms	શરતો
+cancellation	રદ કરવાની નીતિ
+cloud_shop	ક્લાઉડ શૉપ
+account	ખાતું
+weigh_it_right	સાચું વજન
+price_it	ભાવ નક્કી કરો
+label_it	લેબલ લગાવો
+track_and_prove	ટ્રૅક કરો અને સાબિત કરો
+money_comes_home	પૈસા ઘરે આવે છે
+internet_down	ઇન્ટરનેટ બંધ
+bead_hand	સોંપો
+bead_offline_short	ઑફલાઇન
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	ત્રાજવા પર: {kg} kg
+weight_scale_wins	ત્રાજવાનું વજન ચાર્જ નક્કી કરે છે.
+cta_installers_note	દરેક ઇન્સ્ટોલર સ્વચ્છ મશીન પર ઇન્સ્ટોલની ચકાસણી પાસ કરે કે તરત અહીં આવશે. ત્યાં સુધી WhatsApp પર ડેમો માગો.
+cta_whatsapp_soon	WhatsApp ડેમો લાઇન જલદી શરૂ થશે. તમારો મેસેજ આવો હશે: “{message}”.
+acct_page_title	ખાતું — Moklanjo
+acct_lede	સાઇટ અને ઍપ માટે એક જ ખાતું — નવા હો કે પાછા આવ્યા હો, એ જ ફૉર્મ.
+acct_email	ઈમેલ
+acct_name_optional	નામ (વૈકલ્પિક)
+acct_password	પાસવર્ડ
+acct_continue	આગળ વધો
+acct_forgot	પાસવર્ડ ભૂલી ગયા?
+acct_reset_hint	અમે રીસેટ લિંક ઈમેલ કરીશું. જે સરનામાથી સાઇન અપ કર્યું હતું તે જ વાપરો.
+acct_send_reset	રીસેટ લિંક મોકલો
+acct_cancel	રદ
+acct_or_continue	અથવા આનાથી આગળ વધો
+acct_phone	ફોન
+acct_mobile	મોબાઇલ નંબર
+acct_send_sms	SMS કોડ મોકલો
+acct_sms_code	SMS કોડ
+acct_confirm_code	કોડની પુષ્ટિ કરો
+acct_signed_in	સાઇન ઇન છે
+acct_signed_in_as	સાઇન ઇન થયેલું ખાતું
+acct_status	સ્થિતિ
+acct_sign_in_methods	સાઇન-ઇનની રીતો
+acct_cloud_username	ક્લાઉડ યુઝરનેમ
+acct_plan	પ્લાન
+acct_resend_verify	ચકાસણી ઈમેલ ફરી મોકલો
+acct_sign_out	સાઇન આઉટ
+acct_cloud_sandbox	Kumkaj Cloud (સૅન્ડબૉક્સ)
+acct_current_password	હાલનો પાસવર્ડ
+acct_email_for_password	પાસવર્ડ સાઇન-ઇન માટે ઈમેલ
+acct_new_password	નવો પાસવર્ડ
+acct_confirm_new_password	નવા પાસવર્ડની પુષ્ટિ કરો
+acct_add_way	સાઇન ઇનની બીજી રીત ઉમેરો
+acct_link_hint	રીતોને એક જ ખાતા સાથે જોડો, જેથી એક નિષ્ફળ જાય તોય પ્રવેશ પાછો મેળવી શકો.
+acct_link_google	Google જોડો
+acct_link_microsoft	Microsoft જોડો
+acct_link_github	GitHub જોડો
+acct_link_phone	ફોન જોડો
+acct_send_sms_link	જોડવા માટે SMS મોકલો
+acct_confirm_link_phone	પુષ્ટિ કરી ફોન જોડો
+shop_page_title	શૉપ — Moklanjo
+shop_lede	વાર્ષિક ક્લાઉડ પ્લાન — કર ચેકઆઉટ વખતે ઉમેરાય છે. તમારાં પોતાનાં ઉપકરણો પર આખી Moklanjo ઍપ કાયમ મફત, જાહેરાત વગર.
+shop_cart	કાર્ટ
+shop_cart_empty_hint	તમારું કાર્ટ ખાલી છે. Steady, Swift કે Priority ઉમેરો.
+shop_checkout	ચેકઆઉટ
+shop_clear	સાફ કરો
+shop_checkout_hint	ચેકઆઉટ તમને ખાતામાં સાઇન ઇન કરાવે છે, પછી ચુકવણી શરૂ કરે છે (સૅન્ડબૉક્સ મૉક, અથવા કી સેટ હોય તો Paddle).
+acct_billing_hint	વાર્ષિક પ્લાન — ચેકઆઉટ વખતે ગેટવે કર ઉમેરે છે. લોકલ ઉપયોગ કાયમ મફત. કસ્ટમ માટે ભાવપત્રક (Steady કરતાં ઓછું કે Priority કરતાં વધુ હોઈ શકે).
+shop_cloud_plans	ક્લાઉડ પ્લાન
+acct_federated	ફેડરેટેડ સાઇન-ઇન
+acct_err_invalid_email	માન્ય ઈમેલ સરનામું લખો.
+acct_err_weak_password	ઓછામાં ઓછા 6 અક્ષરનો પાસવર્ડ વાપરો.
+acct_err_wrong_password	ખોટો પાસવર્ડ.
+acct_err_invalid_credential	ઈમેલ કે પાસવર્ડ ખોટો છે.
+acct_err_popup_closed	સાઇન-ઇન વિન્ડો બંધ થઈ.
+acct_err_popup_cancelled	સાઇન-ઇન રદ થયું.
+acct_err_unauthorized_domain	આ ડોમેન Firebase Auth માટે અધિકૃત નથી.
+acct_err_method_disabled	આ સાઇન-ઇન રીત હજી ચાલુ નથી.
+acct_err_too_many	બહુ વધારે પ્રયત્નો. પછીથી ફરી પ્રયત્ન કરો.
+acct_err_phone_format	દેશ કોડ સાથે આખો ફોન નંબર લખો (જેમ કે +91…).
+acct_err_sms_code	એ SMS કોડ ખોટો છે અથવા તેની મુદત પૂરી થઈ છે.
+acct_err_no_account	એ ઈમેલનું કોઈ ખાતું નથી. નવું બનાવવા આગળ વધો, અથવા બીજી રીત વાપરો.
+acct_err_recent_login	સુરક્ષા માટે ફરી સાઇન ઇન કરો, પછી આ ફેરફાર ફરી કરો.
+acct_err_credential_in_use	એ સાઇન-ઇન રીત પહેલેથી બીજા ખાતામાં વપરાય છે.
+acct_err_email_in_use	એ ઈમેલ પહેલેથી બીજા ખાતામાં વપરાય છે.
+acct_err_already_linked	એ રીત પહેલેથી આ ખાતા સાથે જોડાયેલી છે.
+acct_err_exists_other_method	આ ઈમેલથી બીજી સાઇન-ઇન રીતવાળું ખાતું પહેલેથી છે. પહેલાં એ રીતથી સાઇન ઇન કરો, પછી તમારા ખાતાના પાનેથી આ રીત જોડો.
+acct_err_generic	કંઈક ખોટું થયું.
+acct_method_password	ઈમેલ અને પાસવર્ડ
+acct_pw_hint_change	તમારો પાસવર્ડ બદલો. હાલના પાસવર્ડથી પુષ્ટિ કરશો.
+acct_pw_hint_add	પાસવર્ડ ઉમેરો જેથી ઈમેલથી પણ સાઇન ઇન કરી શકો (કોઈ પ્રોવાઇડર ઉપલબ્ધ ન હોય ત્યારે કામ આવે).
+acct_pw_change	પાસવર્ડ બદલો
+acct_pw_add	પાસવર્ડ ઉમેરો
+acct_billing_off	ક્લાઉડ API પર બિલિંગ હજી ચાલુ નથી.
+acct_billing_no_provider	ક્લાઉડ API પર કોઈ સાચો બિલિંગ પ્રોવાઇડર ચાલુ નથી (ફક્ત મૉક, તે પણ લોકલ).
+price_quote	ભાવપત્રક
+price_per_year	₹{amount}/વર્ષ, કર સિવાય
+acct_pay_received	ચુકવણી મળી — તમારો પ્લાન તાજો થાય છે…
+acct_pay_declined	ચુકવણી નકારાઈ કે નિષ્ફળ ગઈ
+acct_pay_failed_detail	{detail}. તમારો પ્લાન બદલાયો નથી.
+acct_checkout_closed	ચેકઆઉટ બંધ થયું — કોઈ ચુકવણી પૂરી થઈ નથી. તમારો પ્લાન એ જ છે.
+acct_checkout_failed	ચેકઆઉટ નિષ્ફળ
+acct_pay_with	{provider} થી ચૂકવો
+acct_plan_until	{plan} · {date} સુધી
+acct_unavailable	ઉપલબ્ધ નથી
+acct_continue_hint	ઈમેલ, કોઈ પ્રોવાઇડર કે ફોનથી આગળ વધો.
+acct_signed_in_fallback	(સાઇન ઇન છે)
+acct_email_verified	ઈમેલની ચકાસણી થઈ
+acct_email_unverified	ઈમેલની ચકાસણી હજી થઈ નથી — તમારું ઇનબૉક્સ જુઓ
+acct_signed_in_phone	ફોનથી સાઇન ઇન છે
+acct_none_listed	હજી કોઈ નથી
+acct_signed_in_status	તમે સાઇન ઇન છો.
+acct_created	ખાતું બન્યું. સમય મળે ત્યારે ચકાસણી માટે તમારો ઈમેલ જુઓ.
+acct_reset_sent	એ ઈમેલનું ખાતું હશે તો રીસેટ લિંક આવી રહી છે. તમારું ઇનબૉક્સ જુઓ.
+acct_another_method	બીજી રીત
+acct_exists_via	{email} નું ખાતું પહેલેથી {method} દ્વારા છે. પહેલાં એ રીતે સાઇન ઇન કરો, પછી તમારા ખાતાના પાનેથી આ પ્રોવાઇડર જોડો.
+acct_enter_current_pw	તમારો હાલનો પાસવર્ડ લખો.
+acct_relogin_retry	સાઇન આઉટ કરી ફરી સાઇન ઇન કરો, પછી ફરી પ્રયત્ન કરો.
+acct_pw_mismatch	નવો પાસવર્ડ અને પુષ્ટિ મેળ ખાતાં નથી.
+acct_pw_updated	પાસવર્ડ બદલાયો.
+acct_enter_email_pw	પાસવર્ડ સાઇન-ઇન માટે એક ઈમેલ લખો.
+acct_pw_added	પાસવર્ડ ઉમેરાયો. હવે તમે ઈમેલથી પણ સાઇન ઇન કરી શકો છો.
+acct_method_linked	સાઇન-ઇન રીત જોડાઈ.
+acct_phone_linked	ફોન આ ખાતા સાથે જોડાયો.
+acct_verify_sent	ચકાસણી ઈમેલ મોકલાયો — તમારું ઇનબૉક્સ જુઓ.
+shop_pricing_soon	ભાવ જલદી આવશે
+shop_request_quote	ભાવપત્રક માગો
+shop_add_to_cart	કાર્ટમાં ઉમેરો
+shop_notify_later	પછી જણાવજો
+shop_included	સામેલ
+shop_in_cart	{plan} તમારા કાર્ટમાં છે.
+shop_remove	કાઢો
+shop_cart_is_empty	કાર્ટ ખાલી છે.
+shop_prices_unpublished	આ પ્રોડક્ટના સ્વ-સેવા ભાવ હજી પ્રકાશિત થયા નથી. કસ્ટમ ભાવપત્રક માગો અથવા પછીથી જુઓ.
+shop_cart_cleared	કાર્ટ સાફ થયું.
+plan_free_title	કાયમ મફત
+plan_free_blurb	તમારાં ઉપકરણો પર આખી લોકલ પ્રોડક્ટ. ક્લાઉડની કોઈ ફી નહીં.
+plan_steady_blurb	લાઇવ ક્લાઉડ · 10 GB · ઓછી બૅન્ડવિડ્થ
+plan_swift_blurb	લાઇવ ક્લાઉડ · 25 GB · મધ્યમ બૅન્ડવિડ્થ
+plan_priority_blurb	લાઇવ ક્લાઉડ · 50 GB · સૌથી ઊંચી માનક બૅન્ડવિડ્થ
+plan_custom_title	કસ્ટમ
+plan_custom_blurb	નક્કી થયેલ ક્વોટા અને બૅન્ડવિડ્થ. ભાવપત્રક Steady કરતાં ઓછું કે Priority કરતાં વધુ હોઈ શકે.
