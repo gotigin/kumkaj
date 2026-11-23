@@ -319,9 +319,17 @@ change):
   returning visitor downloads it once per release.
 - **Not shipped any more:** the `.br` twin cargo-makepad writes beside
   every file (Firebase compresses on its own and never serves them), and
-  on khaynjo.com four banners and three screenshots (4.2 MB) that sat in
-  `resources/media/` with nothing drawing them — the originals are in
-  `apps/khaynjo/assets/`.
+  on khaynjo.com the old banner/screenshot stills (multi‑MB PNG/WebP) that
+  sat in `resources/media/` and `static/media/` with nothing drawing them —
+  originals stay in `apps/khaynjo/assets/` if needed. Cleared again
+  2026-11-23 (`static/media/` keeps only link-preview + touch icon + small
+  app-icon.webp).
+- **Images are not inside the `.wasm`.** The release wasm is almost entirely
+  the Makepad runtime (~6.2 MB raw → ~1.3 MB brotli). `crate_resource` icons
+  and fonts are separate HTTP fetches after the wasm; world-shelf photos
+  already use a placeholder (`soon`) until their WebP arrives. Further first‑
+  paint wins are deferring chapter‑8 `WorldFont` members until the shelf is
+  on screen — not embedding PNGs in the binary (they never were).
 - **Product tiles** are 192 px WebP with transparent corners, made from the
   masters in `apps/<app>/assets/` and `assets/images/`. The masters are a
   rounded tile on an opaque white or black square (Kirano's also has a

@@ -50,14 +50,15 @@ Deploys cache-bust `khaynjo-site.wasm` / `web_gl.js` with a build id in
 `index.html` so browsers pick up new builds without a hard refresh.
 
 Static overlays live in `static/` (catalogue under `static/v1/catalogue/`,
-marketing stills under `static/media/`). Banners and the app icon come from
-`apps/khaynjo/assets/` (`KhaynjoBanner-*.png`, `khaynjo-app-icon-512x512.png`)
-into `resources/media/` (webp, the app tile only — it is the one picture
-the pages draw from there) and `static/media/`. Publish the public dish
-shelf + starters with `./apps/khaynjo/scripts/publish-catalogue.sh`. Chapter
-dish photos and screenshots also ship inside the wasm package via
-`resources/dishes/` and `resources/media/`. Optional AI atmosphere video:
-drop a `.webm` under `static/media/` (does not replace the Makepad story).
+shell media under `static/media/`: `link-preview.jpg`, touch icon, small
+`app-icon.webp`). The Makepad tile the pages draw is
+`resources/media/app-icon.webp` only (from `apps/khaynjo/assets/`). Do **not**
+ship unused banner/screenshot PNG masters in `static/media/` — they bloat
+deploys and are not drawn. Publish the public dish shelf + starters with
+`./apps/khaynjo/scripts/publish-catalogue.sh`. World-shelf dish photos live
+under `resources/dishes/world/` as sidecar WebPs and are **fetched over HTTP
+with a placeholder** (not baked into the `.wasm`). Optional AI atmosphere
+video: drop a `.webm` under `static/media/` (does not replace the Makepad story).
 **Download CTA** opens the live Play listing:
 https://play.google.com/store/apps/details?id=com.khaynjo
 `/privacy` presents [`apps/khaynjo/docs/PRIVACY.md`](../../apps/khaynjo/docs/PRIVACY.md)
