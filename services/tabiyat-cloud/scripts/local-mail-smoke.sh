@@ -29,8 +29,8 @@ export AWS_SDK_LOAD_CONFIG=1
 
 # aws login / SSO session → env keys the Rust SDK understands (never commit keys)
 if command -v aws >/dev/null; then
-  if CREDS=""; then
-    eval ""
+  if CREDS="$(aws configure export-credentials --format env 2>/dev/null)"; then
+    eval "$CREDS"
   fi
 fi
 export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-ap-south-1}"
