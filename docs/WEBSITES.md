@@ -22,19 +22,24 @@
 
 ------------------------------------------------------------------------
 
-## Firebase deploy policy (quota / cost — hard rule)
+## Firebase deploy policy (quota / cost — hard rule for **agents**)
 
-**Do not** run `firebase deploy` / `*/scripts/deploy-firebase.sh` on every
-small change. Hosting uploads consume Firebase quota and make the bill
-expensive.
+**Owner** may deploy normally:
+
+```bash
+./sites/<site>/scripts/deploy-firebase.sh
+```
+
+No extra flag. Running the script yourself is approval.
+
+**AI agents** (Cursor sets `CURSOR_AGENT=1`) must **not** upload Hosting on
+every small change. They:
 
 | Step | Required |
 | --- | --- |
 | 1 | Fix + test **locally** (`preview-web.sh` / `run-web.sh` / desktop) until the change is complete |
 | 2 | Wait for **explicit owner approval** for that deploy |
-| 3 | Only then deploy, with the approval flag |
-
-Scripts refuse a real Hosting upload unless one of:
+| 3 | Only then deploy with an approval flag |
 
 ```bash
 ./sites/<site>/scripts/deploy-firebase.sh --i-approve-firebase-deploy
@@ -45,7 +50,8 @@ GOTIGIN_APPROVE_FIREBASE_DEPLOY=1 ./sites/<site>/scripts/deploy-firebase.sh
 `--dry-run` is always allowed (build/stage only; no upload). Agents must
 default to local preview and **must not** invent approval.
 
-Shared gate: [`scripts/require-firebase-deploy-approval.sh`](../scripts/require-firebase-deploy-approval.sh).
+Shared gate: [`scripts/require-firebase-deploy-approval.sh`](../scripts/require-firebase-deploy-approval.sh)
+— blocks only when `CURSOR_AGENT=1` or `GOTIGIN_AI_AGENT=1`.
 
 ------------------------------------------------------------------------
 
