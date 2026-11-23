@@ -30,6 +30,24 @@ cloud on top; they do not remove or shrink local / LAN capability.
 - **Data amount (quota):** 10 / 25 / 50 GB (Custom as agreed).
 - **Bandwidth (sync speed):** lower / mid / highest standard (Custom as agreed).
 
+### Internal metering caps (not customer copy)
+
+Do **not** put these figures on the shop, Makepad pricing band, JSON-LD,
+or account blurbs — customer copy stays “lower / mid / highest” (or
+quota-only). Enforcement / COGS tracking only:
+
+| Plan | Sync bandwidth cap |
+| --- | --- |
+| Steady | **1 Mbps** |
+| Swift | **2.5 Mbps** |
+| Priority | **5 Mbps** |
+| Custom | As contracted |
+
+Derived 2026-11-23 from Steady full-burn COGS ~₹5,085/yr (10 GB +
+attributed API + Postgres + egress) against list ₹6,000; Swift/Priority
+scaled on the same ladder. All paid plans stay **live** when connected —
+the cap is throttle, not batch interval.
+
 ### What plans do **not** differ on
 
 - **Live cloud** — Steady / Swift / Priority are all **live** sync. Do not
@@ -83,8 +101,9 @@ Other currencies / display FX later; keep the **same plan shape** and the
 same **ex-tax** principle. Do not invent India-only product scope — only
 this INR raw list is locked for now.
 
-Planning note (not customer copy): host COGS at full-quota use was
-estimated in discussion; list prices assume typical mix plus scale. Revisit
+Planning note (not customer copy): Steady full-burn COGS ~₹5,085/yr
+(10 GB + attributed API + Postgres + egress) underpins list ₹6,000 and the
+internal Mbps caps above; Swift/Priority scale on the same ladder. Revisit
 from real AWS/GCP bills after metering ships. Firm tax treatment for
 exports / foreign buyers is a Gotigin CA + gateway-config matter, not a
 separate Khaynjo plan.

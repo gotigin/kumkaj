@@ -34,10 +34,10 @@ Paddle sandbox keys when ready (same Chrome profile).
 
 ```bash
 docker compose up -d
-cp .env.example .env
+cp .env.example .env.development
 # BILLING_ENABLED=1 already in the example
 ./scripts/local-smoke.sh
-# or: set -a && source .env && set +a && cargo run
+# or: set -a && source .env.development && set +a && cargo run
 ```
 
 API default: `http://127.0.0.1:8080`.

@@ -1,7 +1,7 @@
 //! Kirano Cloud API client — account, plans, sandbox billing checkout.
 //!
 //! Base URL defaults to the current Fargate task; override with
-//! `KIRANO_CLOUD_API_BASE` (IPs change on redeploy — prefer env/DNS later).
+//! `KIRANO_CLOUD_API_BASE` (default `https://api.kirano.shop`).
 //! Paid upgrades: same Stripe/Paddle/mock flow as https://kirano.shop/account.
 
 use serde::Deserialize;
@@ -9,8 +9,8 @@ use serde::Serialize;
 
 use crate::cloud_auth::{self, AuthSession};
 
-/// Last known public task URL (ap-south-1). Prefer `KIRANO_CLOUD_API_BASE`.
-pub const DEFAULT_CLOUD_API_BASE: &str = "http://3.108.215.51:8080";
+/// Stable HTTPS API (ALB). Override with `KIRANO_CLOUD_API_BASE` if needed.
+pub const DEFAULT_CLOUD_API_BASE: &str = "https://api.kirano.shop";
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct MeResponse {

@@ -27,10 +27,10 @@ import {
 
 const $ = (id) => document.getElementById(id);
 
-/** Override via `window.__KUMKAJ_CLOUD_API__` (no trailing slash). IPs change on redeploy. */
+/** Override via `window.__KUMKAJ_CLOUD_API__` (no trailing slash). */
 const CLOUD_API_BASE =
   (typeof window !== "undefined" && window.__KUMKAJ_CLOUD_API__) ||
-  "http://3.108.215.51:8080";
+  "https://api.kirano.shop";
 
 const els = {
   gate: $("auth-gate"),

@@ -1,7 +1,7 @@
 //! Tabiyat Cloud API client — account, plans, sandbox billing checkout.
 //!
 //! Base URL defaults to the current Fargate task; override with
-//! `TABIYAT_CLOUD_API_BASE` (IPs change on redeploy — prefer env/DNS later).
+//! `TABIYAT_CLOUD_API_BASE` (default `https://api.tabiyat.shop`).
 //! Paid upgrades: same Stripe/Paddle/mock flow as https://tabiyat.shop/account.
 
 use serde::Deserialize;
@@ -9,8 +9,8 @@ use serde::Serialize;
 
 use crate::cloud_auth::{self, AuthSession};
 
-/// Last known public task URL (ap-south-1). Prefer `TABIYAT_CLOUD_API_BASE`.
-pub const DEFAULT_CLOUD_API_BASE: &str = "http://13.234.122.113:8080";
+/// Stable HTTPS API (ALB). Override with `TABIYAT_CLOUD_API_BASE` if needed.
+pub const DEFAULT_CLOUD_API_BASE: &str = "https://api.tabiyat.shop";
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct MeResponse {

@@ -199,6 +199,9 @@ negotiated quote that **may be below Steady or above Priority**. Tax
 subscription ends: 1 month grace (13 months cloud run), retrieve until
 +2 months, then delete eligible; weekly cancellable notices in that window.
 
+Internal sync caps (not advertised): Steady **1 Mbps** · Swift **2.5 Mbps**
+· Priority **5 Mbps** — see [`CLOUD_PLANS.md`](CLOUD_PLANS.md).
+
 Plan catalog is **seeded in each product’s cloud DB** and returned by the
 API — apps display what the API returns (so copy can change without an
 app-store release when possible). Purchase / subscribe mutations come
@@ -206,7 +209,6 @@ after billing is wired.
 
 ## 7. Open for the next discussion
 
-- Concrete bandwidth cap numbers (Steady / Swift / Priority).
 - **AWS v1 live (2026-11-21):** all four products — private RDS + ECS
   Fargate API in `ap-south-1` (Gotigin `mearaj@gotigin.com`). App Runner
   create was blocked on the account — Fargate used instead. Local smoke

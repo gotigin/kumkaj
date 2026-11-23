@@ -4,8 +4,8 @@ After solo shop/account/billing scaffolding: pick up here.
 
 ## Pending API + DB (all four products)
 
-- HTTPS + DNS: `api.<product-domain>` (ALB) — site `/account` HTTPS→HTTP is mixed-content blocked today.
-- Stable base URL in site `account-app.js` / app `*_CLOUD_API_BASE` (stop raw Fargate IPs).
+- ~~HTTPS + DNS: `api.<product-domain>` (ALB)~~ **Done 2026-11-23** — `https://api.khaynjo.com` / `api.moklanjo.com` / `api.kirano.shop` / `api.tabiyat.shop` (shared ALB `kumkaj-cloud-apis`, ACM ISSUED). Redeploy product Hosting for `/account` JS when ready.
+- ~~Stable base URL~~ — sites + app `DEFAULT_CLOUD_API_BASE` point at those HTTPS hosts (commit + Firebase deploy still needed for live sites).
 - Deploy billing migration `0002` + `BILLING_ENABLED=1` on each AWS API (sandbox first).
 - Confirm plans seed + Custom quote path (no self-serve checkout).
 

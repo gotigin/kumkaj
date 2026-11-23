@@ -27,10 +27,10 @@ import {
 
 const $ = (id) => document.getElementById(id);
 
-/** Override via `window.__KUMKAJ_CLOUD_API__` (no trailing slash). IPs change on redeploy. */
+/** Override via `window.__KUMKAJ_CLOUD_API__` (no trailing slash). */
 const CLOUD_API_BASE =
   (typeof window !== "undefined" && window.__KUMKAJ_CLOUD_API__) ||
-  "http://16.4.73.77:8080";
+  "https://api.moklanjo.com";
 
 const els = {
   gate: $("auth-gate"),

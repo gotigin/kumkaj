@@ -17,7 +17,7 @@ Firebase Auth project: `kirano-shop` (same as kirano.com `/account`).
 
 ```bash
 docker compose up -d
-cp .env.example .env
+cp .env.example .env.development
 # export vars from .env
 cargo run
 ```

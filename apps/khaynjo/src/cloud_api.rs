@@ -1,7 +1,7 @@
 //! Khaynjo Cloud API client — account, plans, sandbox billing checkout.
 //!
 //! Base URL defaults to the current Fargate task; override with
-//! `KHAYNJO_CLOUD_API_BASE` (IPs change on redeploy — prefer env/DNS later).
+//! `KHAYNJO_CLOUD_API_BASE` (default `https://api.khaynjo.com`).
 //! Paid upgrades: same Stripe/Paddle/mock flow as https://khaynjo.com/account.
 
 use serde::Deserialize;
@@ -9,8 +9,8 @@ use serde::Serialize;
 
 use crate::cloud_auth::{self, AuthSession};
 
-/// Last known public task URL (ap-south-1). Prefer `KHAYNJO_CLOUD_API_BASE`.
-pub const DEFAULT_CLOUD_API_BASE: &str = "http://16.4.32.208:8080";
+/// Stable HTTPS API (ALB). Override with `KHAYNJO_CLOUD_API_BASE` if needed.
+pub const DEFAULT_CLOUD_API_BASE: &str = "https://api.khaynjo.com";
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct MeResponse {

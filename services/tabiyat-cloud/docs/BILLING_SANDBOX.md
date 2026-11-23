@@ -68,7 +68,7 @@ buyer-country levy at the gateway.
 ```bash
 cd services/tabiyat-cloud
 docker compose up -d
-cp .env.example .env   # BILLING_ENABLED=1, BILLING_DEFAULT_PROVIDER=mock
+cp .env.example .env.development   # BILLING_ENABLED=1, BILLING_DEFAULT_PROVIDER=mock
 ./scripts/local-smoke.sh
 ```
 

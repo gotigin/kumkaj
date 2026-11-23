@@ -42,6 +42,8 @@
 .env
 .env.*
 !.env.example
+# Local Stripe/Paddle sandbox wiring (may contain whsec / helpers)
+Internal/stripe-sandbox-*.env
 
 # OS / editor noise
 .DS_Store
