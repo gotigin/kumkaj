@@ -13,7 +13,7 @@ cash_memo	کیش میمو
 ready	تیار
 total	کل
 tap_to_add_the_first	پہلا آئٹم شامل کرنے کے لیے ٹیپ کریں
-example_grocery_lines_not_a	مثالی کریانہ لائنیں، اصل بلنگ کاؤنٹر نہیں۔ Kirano بھی یہی راستہ اپناتا ہے: فروخت → حساب → روز بک۔
+example_grocery_lines_not_a	مثالی کریانہ لائنیں، اصل بلنگ کاؤنٹر نہیں۔ Kirano بھی یہی راستہ اپناتا ہے: فروخت ← حساب ← روز بک۔
 n_2_counter_sell	2 · کاؤنٹر فروخت
 item_quantity_pay_three_taps	آئٹم، مقدار، ادائیگی — تین ٹیپ۔
 upi_qr_ready	UPI QR تیار

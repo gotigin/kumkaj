@@ -71,9 +71,9 @@ booked	ثبت شده
 with_carrier	نزد حامل
 out_for_delivery	در مسیر تحویل
 delivered	تحویل شد
-booked_with_carrier_out_for	ثبت شده → نزد حامل → در مسیر تحویل → تحویل شد
+booked_with_carrier_out_for	ثبت شده ← نزد حامل ← در مسیر تحویل ← تحویل شد
 failed	ناموفق
-reason_out_again_or_return	→ دلیل → ارسال دوباره، یا بازگشت به فرستنده.
+reason_out_again_or_return	← دلیل ← ارسال دوباره، یا بازگشت به فرستنده.
 impossible_moves_refused	جابه‌جایی‌های ناممکن پذیرفته نمی‌شوند
 delivered_returned_and_cancelled	تحویل‌شده، برگشتی و لغوشده نهایی‌اند.
 proof_of_delivery	مدرک تحویل

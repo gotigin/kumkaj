@@ -20,29 +20,29 @@ n_02_built_for_your_trade	02 · ستاسو د سوداګرۍ لپاره جوړ �
 a_desk_for_each_trade	د هرې سوداګرۍ لپاره یو مېز.\nد سویچ سره یو اپ نه.
 not_one_app_with_a	د سوداګرۍ د سویچ سره یو اپ نه. هر محصول د یو ډول کاونټر په شاوخوا ډیزاین شوی، د هماغې سوداګرۍ په خپلو کلمو.
 courier_offices_franchise_counters_own	د کوریر دفترونه · د فرنچایز کاونټرونه · خپل رایډران
-book_label_hand_over_track	بک → لیبل → سپارل → تعقیب → تصفیه.
+book_label_hand_over_track	بک ← لیبل ← سپارل ← تعقیب ← تصفیه.
 next_booking_in_one_tap	په یوه ټک بله بکنگ
 actual_or_volumetric_weight_rounded	ریښتینی یا حجمي وزن، ستاسو په خوښه ګرد شوی
 rider_cash_on_delivery_expected	د رایډر COD: تمه د سپارل شویو په وړاندې
-visit_moklanjo_com	moklanjo.com وګورئ  →
+visit_moklanjo_com	moklanjo.com وګورئ  ←
 restaurants_caf_s_quick_service	رستورانتونه · کافې · چټک خدمت · بیکرۍ
-table_kitchen_bill_day_close	میز → پخلنځی → بل → د ورځې بندول.
+table_kitchen_bill_day_close	میز ← پخلنځی ← بل ← د ورځې بندول.
 every_table_s_minutes_and	د هر میز دقیقې او بل په یوه نظر کې
 one_kot_per_kitchen_station	د پخلنځي هرې برخې ته یو KOT — هېڅکله بیې نه
 cash_upi_part_payment_due	نغدې، UPI، برخه ییزه ورکړه، پور او ټیپ
-visit_khaynjo_com	khaynjo.com وګورئ  →
+visit_khaynjo_com	khaynjo.com وګورئ  ←
 kirana_grocery_neighbourhood_shops	کوچنۍ هټۍ · سودا · د ګاونډ هټۍ
-sell_khata_stock_day_book	پلور → د پور کتاب → ذخیره → د ورځې کتاب.
+sell_khata_stock_day_book	پلور ← د پور کتاب ← ذخیره ← د ورځې کتاب.
 fast_counter_sell_with_short	د لنډو کوډونو سره د کاونټر چټک پلور
 customer_credit_and_supplier_dues	د پیرودونکي پور او د عرضه کوونکي د ورکړې وړ پیسې
 buy_into_stock_offline_forever	ذخیرې ته پېرود — تل لپاره آفلاین
-visit_kirano_shop	kirano.shop وګورئ  →
+visit_kirano_shop	kirano.shop وګورئ  ←
 chemists_pharmacy_counters	درمل پلورونکي · د درملتون کاونټرونه
-medicine_batch_bill_day_close	درمل → دسته → بل → د ورځې بندول.
+medicine_batch_bill_day_close	درمل ← دسته ← بل ← د ورځې بندول.
 barcode_and_salt_composition_search	د بارکوډ او فعالو موادو / ترکیب له مخې لټون
 batch_and_expiry_alerts_on	په پېرودونو کې د دستې او د پای نېټې خبرتیاوې
 owner_schedule_h_rx_notes	د مالک Schedule H / Rx یادښتونه — جعلي اطاعت نه
-visit_tabiyat_shop	tabiyat.shop وګورئ  →
+visit_tabiyat_shop	tabiyat.shop وګورئ  ←
 n_03_your_books_stay_with	03 · ستاسو حسابونه له تاسو سره پاتې کېږي
 your_books_live_in_your	ستاسو حسابونه ستاسو په هټۍ کې دي.
 sales_parties_and_the_day	پلور، اړخونه او د ورځې کتاب ستاسو د کاونټر په وسیله کې لیکل کېږي — نه په هغه سرور چې په کرایه یې اخلئ.

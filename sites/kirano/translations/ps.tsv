@@ -13,7 +13,7 @@ cash_memo	نغد بل
 ready	چمتو
 total	ټول
 tap_to_add_the_first	د لومړي توکي د ورزیاتولو لپاره وټکوئ
-example_grocery_lines_not_a	د سودا بېلګې کرښې، ژوندی صندوق نه دی. Kirano هماغه لار تعقیبوي: پلور → تصفیه → د ورځې کتاب.
+example_grocery_lines_not_a	د سودا بېلګې کرښې، ژوندی صندوق نه دی. Kirano هماغه لار تعقیبوي: پلور ← تصفیه ← د ورځې کتاب.
 n_2_counter_sell	2 · د کاونټر پلور
 item_quantity_pay_three_taps	توکی، مقدار، ورکړه — درې ټکه.
 upi_qr_ready	UPI QR چمتو

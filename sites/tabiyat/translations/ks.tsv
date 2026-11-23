@@ -13,7 +13,7 @@ cash_memo	کیش میمو
 ready	تیار
 total	کُل
 tap_to_add_the_first	گۄڈنِچ دوا شٲمِل کرنہٕ خٲطرٕ ٹیپ کٔرِو
-example_pharmacy_lines_not_a	مِثالی فارمیسی لائن، اصلی کاؤنٹر نہٕ۔ Tabiyat چھُ سُے وَتھ پکان: فروخت → حساب → دۄہُک کھاتہ۔
+example_pharmacy_lines_not_a	مِثالی فارمیسی لائن، اصلی کاؤنٹر نہٕ۔ Tabiyat چھُ سُے وَتھ پکان: فروخت ← حساب ← دۄہُک کھاتہ۔
 n_2_counter_sell	2 · کاؤنٹر فروخت
 medicine_quantity_pay_three_taps	دوا، مقدار، ادائیگی — ترٛے ٹیپ۔
 upi_qr_ready	UPI QR تیار

@@ -71,9 +71,9 @@ booked	بُک گۆو
 with_carrier	کیرِیرَس نِش
 out_for_delivery	ڈلیوری خٲطرٕ نیبر
 delivered	واتنۆو
-booked_with_carrier_out_for	بُک گۆو → کیرِیرَس نِش → ڈلیوری خٲطرٕ نیبر → واتنۆو
+booked_with_carrier_out_for	بُک گۆو ← کیرِیرَس نِش ← ڈلیوری خٲطرٕ نیبر ← واتنۆو
 failed	ناکام
-reason_out_again_or_return	→ وجہ → دوبارٕ نیبر، یا سوزَن وولَس واپس کٔرِو۔
+reason_out_again_or_return	← وجہ ← دوبارٕ نیبر، یا سوزَن وولَس واپس کٔرِو۔
 impossible_moves_refused	ناممکن قدم نامنظوٗر
 delivered_returned_and_cancelled	واتنۆو، واپس تہٕ منسوخ — یِم چھِ آخری۔
 proof_of_delivery	ڈلیوری ثبوت

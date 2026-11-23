@@ -13,7 +13,7 @@ cash_memo	ނަގުދު ބިލް
 ready	ތައްޔާރު
 total	ޖުމްލަ
 tap_to_add_the_first	ފުރަތަމަ ބޭސް އިތުރުކުރުމަށް ޓެޕްކުރައްވާ
-example_pharmacy_lines_not_a	މިސާލު ފާމަސީ ލައިންތައް، ލައިވް ޓިލެއް ނޫން. Tabiyat ވެސް ދަނީ އެ މަގުގައި: ވިއްކުން → ހިސާބު ނިންމުން → ދުވަހުގެ ފޮތް.
+example_pharmacy_lines_not_a	މިސާލު ފާމަސީ ލައިންތައް، ލައިވް ޓިލެއް ނޫން. Tabiyat ވެސް ދަނީ އެ މަގުގައި: ވިއްކުން ← ހިސާބު ނިންމުން ← ދުވަހުގެ ފޮތް.
 n_2_counter_sell	2 · ކައުންޓަރު ވިއްކުން
 medicine_quantity_pay_three_taps	ބޭސް، ޢަދަދު، ފައިސާ — ތިން ޓެޕް.
 upi_qr_ready	UPI QR ތައްޔާރު

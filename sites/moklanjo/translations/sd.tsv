@@ -71,9 +71,9 @@ booked	بُڪ ٿيل
 with_carrier	ڪيريئر وٽ
 out_for_delivery	پهچائڻ لاءِ ٻاهر
 delivered	پهچايو ويو
-booked_with_carrier_out_for	بُڪ ٿيل → ڪيريئر وٽ → پهچائڻ لاءِ ٻاهر → پهچايو ويو
+booked_with_carrier_out_for	بُڪ ٿيل ← ڪيريئر وٽ ← پهچائڻ لاءِ ٻاهر ← پهچايو ويو
 failed	ناڪام
-reason_out_again_or_return	→ سبب → ٻيهر ٻاهر، يا موڪليندڙ ڏانهن واپس.
+reason_out_again_or_return	← سبب ← ٻيهر ٻاهر، يا موڪليندڙ ڏانهن واپس.
 impossible_moves_refused	ناممڪن قدم رد
 delivered_returned_and_cancelled	پهچايل، واپس ٿيل ۽ منسوخ — اهي آخري آهن.
 proof_of_delivery	پهچائڻ جو ثبوت

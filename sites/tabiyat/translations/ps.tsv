@@ -13,7 +13,7 @@ cash_memo	نغد بل
 ready	چمتو
 total	ټول
 tap_to_add_the_first	د لومړي درمل د ورزیاتولو لپاره وټکوئ
-example_pharmacy_lines_not_a	د درملتون بېلګې کرښې، ژوندی صندوق نه دی. Tabiyat هماغه لار تعقیبوي: پلور → تصفیه → د ورځې کتاب.
+example_pharmacy_lines_not_a	د درملتون بېلګې کرښې، ژوندی صندوق نه دی. Tabiyat هماغه لار تعقیبوي: پلور ← تصفیه ← د ورځې کتاب.
 n_2_counter_sell	2 · د کاونټر پلور
 medicine_quantity_pay_three_taps	درمل، مقدار، ورکړه — درې ټکه.
 upi_qr_ready	UPI QR چمتو

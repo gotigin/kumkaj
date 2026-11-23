@@ -71,9 +71,9 @@ booked	ބުކްކޮށްފައި
 with_carrier	ކެރިއަރ އަތުގައި
 out_for_delivery	ޑެލިވަރީއަށް ނުކުމެފައި
 delivered	ޑެލިވަރކުރެވިއްޖެ
-booked_with_carrier_out_for	ބުކްކޮށްފައި → ކެރިއަރ އަތުގައި → ޑެލިވަރީއަށް ނުކުމެފައި → ޑެލިވަރކުރެވިއްޖެ
+booked_with_carrier_out_for	ބުކްކޮށްފައި ← ކެރިއަރ އަތުގައި ← ޑެލިވަރީއަށް ނުކުމެފައި ← ޑެލިވަރކުރެވިއްޖެ
 failed	ނާކާމިޔާބު
-reason_out_again_or_return	→ ސަބަބު → އަލުން ނުކުމުން، ނުވަތަ ފޮނުވި މީހާއަށް އަނބުރާ.
+reason_out_again_or_return	← ސަބަބު ← އަލުން ނުކުމުން، ނުވަތަ ފޮނުވި މީހާއަށް އަނބުރާ.
 impossible_moves_refused	ނުވާނެ ބަދަލުތައް ރަދުކުރެވޭ
 delivered_returned_and_cancelled	ޑެލިވަރކުރެވުނު، އަނބުރާ ފޮނުވުނު އަދި ކެންސަލްކުރެވުނު ޕާސަލް ނިމިފައި.
 proof_of_delivery	ޑެލިވަރީގެ ހެކި

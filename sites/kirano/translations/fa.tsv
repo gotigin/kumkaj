@@ -13,7 +13,7 @@ cash_memo	فاکتور نقدی
 ready	آماده
 total	جمع
 tap_to_add_the_first	برای افزودن نخستین کالا بزنید
-example_grocery_lines_not_a	ردیف‌های نمونه خواربار، نه یک صندوق واقعی. Kirano همین مسیر را دنبال می‌کند: فروش → تسویه → دفتر روز.
+example_grocery_lines_not_a	ردیف‌های نمونه خواربار، نه یک صندوق واقعی. Kirano همین مسیر را دنبال می‌کند: فروش ← تسویه ← دفتر روز.
 n_2_counter_sell	2 · فروش پشت پیشخوان
 item_quantity_pay_three_taps	کالا، مقدار، پرداخت — سه لمس.
 upi_qr_ready	UPI QR آماده

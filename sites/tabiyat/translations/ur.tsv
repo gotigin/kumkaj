@@ -13,7 +13,7 @@ cash_memo	کیش میمو
 ready	تیار
 total	کل
 tap_to_add_the_first	پہلی دوا شامل کرنے کے لیے ٹیپ کریں
-example_pharmacy_lines_not_a	مثالی فارمیسی لائنیں، اصل بلنگ کاؤنٹر نہیں۔ Tabiyat بھی یہی راستہ اپناتا ہے: فروخت → حساب → روز بک۔
+example_pharmacy_lines_not_a	مثالی فارمیسی لائنیں، اصل بلنگ کاؤنٹر نہیں۔ Tabiyat بھی یہی راستہ اپناتا ہے: فروخت ← حساب ← روز بک۔
 n_2_counter_sell	2 · کاؤنٹر فروخت
 medicine_quantity_pay_three_taps	دوا، مقدار، ادائیگی — تین ٹیپ۔
 upi_qr_ready	UPI QR تیار

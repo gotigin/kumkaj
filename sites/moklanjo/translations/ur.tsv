@@ -71,9 +71,9 @@ booked	بک ہوا
 with_carrier	کیریئر کے پاس
 out_for_delivery	ڈیلیوری کے لیے باہر
 delivered	پہنچا دیا
-booked_with_carrier_out_for	بک ہوا → کیریئر کے پاس → ڈیلیوری کے لیے باہر → پہنچا دیا
+booked_with_carrier_out_for	بک ہوا ← کیریئر کے پاس ← ڈیلیوری کے لیے باہر ← پہنچا دیا
 failed	ناکام
-reason_out_again_or_return	→ وجہ → دوبارہ باہر، یا بھیجنے والے کو واپس۔
+reason_out_again_or_return	← وجہ ← دوبارہ باہر، یا بھیجنے والے کو واپس۔
 impossible_moves_refused	ناممکن قدم مسترد
 delivered_returned_and_cancelled	پہنچا دیا، واپس ہوا اور منسوخ — یہ حتمی ہیں۔
 proof_of_delivery	ڈیلیوری کا ثبوت

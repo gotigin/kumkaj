@@ -71,9 +71,9 @@ booked	بک شوی
 with_carrier	له کیریر سره
 out_for_delivery	د تحویل لپاره بهر
 delivered	تحویل شو
-booked_with_carrier_out_for	بک شوی → له کیریر سره → د تحویل لپاره بهر → تحویل شو
+booked_with_carrier_out_for	بک شوی ← له کیریر سره ← د تحویل لپاره بهر ← تحویل شو
 failed	ناکام
-reason_out_again_or_return	→ دلیل → بیا بهر، یا لېږونکي ته بېرته.
+reason_out_again_or_return	← دلیل ← بیا بهر، یا لېږونکي ته بېرته.
 impossible_moves_refused	ناشوني حرکتونه ردېږي
 delivered_returned_and_cancelled	تحویل شوي، بېرته راغلي او لغوه شوي وروستي دي.
 proof_of_delivery	د تحویل ثبوت

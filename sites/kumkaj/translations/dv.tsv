@@ -20,29 +20,29 @@ n_02_built_for_your_trade	02 · ތިޔަބޭފުޅާގެ ވިޔަފާރިއަށ�
 a_desk_for_each_trade	ކޮންމެ ވިޔަފާރިއަކަށް ޑެސްކެއް.\nސްވިޗެއް ހުންނަ އެއް އެޕެއް ނޫން.
 not_one_app_with_a	ވިޔަފާރި ބަދަލުކުރާ ސްވިޗެއް ހުންނަ އެއް އެޕެއް ނޫން. ކޮންމެ ޕްރޮޑަކްޓެއް ޑިޒައިންކޮށްފައިވަނީ އެއް ބާވަތެއްގެ ކައުންޓަރަކަށް، އެ ވިޔަފާރިއެއްގެ އަމިއްލަ ބަސްތަކުން.
 courier_offices_franchise_counters_own	ކޫރިއަރ އޮފީސް · ފްރެންޗައިޒް ކައުންޓަރު · އަމިއްލަ ރައިޑަރުން
-book_label_hand_over_track	ބުކް → ލޭބަލް → ހަވާލު → ޓްރެކް → ހިސާބު ނިންމުން.
+book_label_hand_over_track	ބުކް ← ލޭބަލް ← ހަވާލު ← ޓްރެކް ← ހިސާބު ނިންމުން.
 next_booking_in_one_tap	އެއް ޓެޕަކުން ދެން އޮތް ބުކިން
 actual_or_volumetric_weight_rounded	ހަޤީޤީ ނުވަތަ ވޮލިއުމެޓްރިކް ބަރުދަން، ތިޔަބޭފުޅާގެ ގޮތަށް ރައުންޑްކޮށް
 rider_cash_on_delivery_expected	ރައިޑަރުގެ COD: ލިބެންވީ، ހަވާލުކުރިއާ އަޅާކިޔައި
-visit_moklanjo_com	moklanjo.com އަށް ޒިޔާރަތްކުރައްވާ  →
+visit_moklanjo_com	moklanjo.com އަށް ޒިޔާރަތްކުރައްވާ  ←
 restaurants_caf_s_quick_service	ރެސްޓޯރަންޓް · ކެފޭ · ކުއިކް ސާވިސް · ބޭކަރީ
-table_kitchen_bill_day_close	މޭޒު → ބަދިގެ → ބިލް → ދުވަސް ބަންދު.
+table_kitchen_bill_day_close	މޭޒު ← ބަދިގެ ← ބިލް ← ދުވަސް ބަންދު.
 every_table_s_minutes_and	ކޮންމެ މޭޒެއްގެ މިނިޓާއި ބިލް އެއް ބެލުމަކުން
 one_kot_per_kitchen_station	ބަދިގޭގެ ކޮންމެ ސްޓޭޝަނަކަށް އެއް KOT — ދުވަހަކުވެސް އަގެއް ނެތް
 cash_upi_part_payment_due	ނަގުދު، UPI، ބައެއް ފައިސާ، ބާކީ އަދި ޓިޕް
-visit_khaynjo_com	khaynjo.com އަށް ޒިޔާރަތްކުރައްވާ  →
+visit_khaynjo_com	khaynjo.com އަށް ޒިޔާރަތްކުރައްވާ  ←
 kirana_grocery_neighbourhood_shops	ކުދި ފިހާރަ · ގްރޮސަރީ · އަވަށުގެ ފިހާރަ
-sell_khata_stock_day_book	ވިއްކުން → ދަރަނި ފޮތް → ސްޓޮކް → ދުވަހުގެ ފޮތް.
+sell_khata_stock_day_book	ވިއްކުން ← ދަރަނި ފޮތް ← ސްޓޮކް ← ދުވަހުގެ ފޮތް.
 fast_counter_sell_with_short	ކުރު ކޯޑުތަކުން އަވަސް ކައުންޓަރު ވިއްކުން
 customer_credit_and_supplier_dues	ކަސްޓަމަރުގެ ދަރަންޏާއި ސަޕްލަޔަރަށް ދައްކަންޖެހޭ ފައިސާ
 buy_into_stock_offline_forever	ސްޓޮކަށް ގަތުން — އަބަދުވެސް އޮފްލައިން
-visit_kirano_shop	kirano.shop އަށް ޒިޔާރަތްކުރައްވާ  →
+visit_kirano_shop	kirano.shop އަށް ޒިޔާރަތްކުރައްވާ  ←
 chemists_pharmacy_counters	ކެމިސްޓް · ފާމަސީ ކައުންޓަރު
-medicine_batch_bill_day_close	ބޭސް → ބެޗް → ބިލް → ދުވަސް ބަންދު.
+medicine_batch_bill_day_close	ބޭސް ← ބެޗް ← ބިލް ← ދުވަސް ބަންދު.
 barcode_and_salt_composition_search	ބާކޯޑާއި ބޭހުގެ މާއްދާ / އެކުލެވޭ މާއްދާއިން ހޯދުން
 batch_and_expiry_alerts_on	ގަތުމުގައި ބެޗާއި އެކްސްޕަޔަރީގެ އިންޒާރު
 owner_schedule_h_rx_notes	ވެރިފަރާތުގެ Schedule H / Rx ނޯޓު — ދޮގު ދިމާވުމެއް ނޫން
-visit_tabiyat_shop	tabiyat.shop އަށް ޒިޔާރަތްކުރައްވާ  →
+visit_tabiyat_shop	tabiyat.shop އަށް ޒިޔާރަތްކުރައްވާ  ←
 n_03_your_books_stay_with	03 · ތިޔަބޭފުޅާގެ ހިސާބު ފޮތް ތިޔަބޭފުޅާގެ އަތުގައި
 your_books_live_in_your	ތިޔަބޭފުޅާގެ ހިސާބު ފޮތް ހުންނަނީ ތިޔަބޭފުޅާގެ ފިހާރައިގައި.
 sales_parties_and_the_day	ވިއްކުންތަކާއި، ޕާޓީތަކާއި، ދުވަހުގެ ފޮތް ލިޔެވެނީ ތިޔަބޭފުޅާގެ ކައުންޓަރުގައިވާ ޑިވައިސްގައި — ކުއްޔަށް ހިފާ ސާވަރެއްގައެއް ނޫން.
