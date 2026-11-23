@@ -23,10 +23,6 @@ pub fn router() -> Router<Arc<AppState>> {
         .route("/v1/billing/checkout", post(billing_checkout))
         .route("/v1/billing/sandbox/complete", post(billing_sandbox_complete))
         .route(
-            "/v1/billing/webhooks/stripe",
-            post(billing::handle_stripe_webhook),
-        )
-        .route(
             "/v1/billing/webhooks/paddle",
             post(billing::handle_paddle_webhook),
         )
@@ -125,8 +121,6 @@ async fn plans(State(state): State<Arc<AppState>>, headers: HeaderMap) -> Respon
                             && p.includes_live_cloud
                             && p.plan_id != "custom"
                             && (b.provider_enabled(Provider::Mock)
-                                || (b.provider_enabled(Provider::Stripe)
-                                    && p.stripe_price_id.is_some())
                                 || (b.provider_enabled(Provider::Paddle)
                                     && p.paddle_price_id.is_some()))
                     });
@@ -202,7 +196,7 @@ async fn billing_checkout(
     let provider = match body.provider.as_deref() {
         Some(raw) => match Provider::parse(raw) {
             Some(p) => p,
-            None => return api_err(StatusCode::BAD_REQUEST, "provider must be mock|stripe|paddle"),
+            None => return api_err(StatusCode::BAD_REQUEST, "provider must be mock|paddle"),
         },
         None => cfg.default_provider,
     };

@@ -88,18 +88,11 @@ List prices are the **raw** amount Kumkaj charges for the plan. They do
   into the product.
 - Same five plans everywhere; only the invoice tax line changes by
   place of supply / registration. No India-only cloud edition.
-- **Stripe Tax constraint (do not rediscover the hard way):** Stripe’s
-  supported-countries table separates *customer* location vs *business*
-  location. For **India**, customer location is supported; **business
-  location is not**. An India-based Stripe account gets
-  `stripe_tax_inactive` if Checkout sets `automatic_tax[enabled]=true`.
-  That is account-country capability, not “forgot to enable Tax in the
-  Dashboard,” and not fixed by using a secret key instead of a restricted
-  key. Until Stripe supports India as a business location for Tax, use a
-  gateway that can fulfill tax-at-checkout for our merchant country
-  (planned: **Paddle** as merchant of record / equivalent), or another
-  documented path that still meets this section — never by stripping tax
-  from Checkout to make a smoke pass.
+- **Gateway choice:** Gotigin is India-based. Stripe Tax does **not**
+  support India as a *business location* (API `stripe_tax_inactive`), so
+  **Stripe is not used** for Kumkaj cloud billing. Tax-at-checkout is
+  fulfilled by **Paddle** (merchant of record / equivalent). Never strip
+  tax from checkout to make a smoke pass — see [TESTING.md](TESTING.md).
 
 **India example (18% GST), for clarity only — not a second price list:**
 

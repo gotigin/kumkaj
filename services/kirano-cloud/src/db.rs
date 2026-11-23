@@ -33,6 +33,8 @@ pub struct PlanRow {
     pub bandwidth_band: String,
     pub price_inr_paise: Option<i64>,
     pub includes_live_cloud: bool,
+    /// Legacy column; Stripe billing removed. Kept for DB compat; unused.
+    #[allow(dead_code)]
     pub stripe_price_id: Option<String>,
     pub paddle_price_id: Option<String>,
 }

@@ -1,6 +1,6 @@
-//! Khaynjo Cloud API — Auth account + plans + sandbox billing (Stripe/Paddle/mock).
+//! Khaynjo Cloud API — Auth account + plans + sandbox billing (Paddle/mock).
 //! Own Postgres; clients never talk to the DB. Firebase Auth: `khaynjo-2b2a2`.
-//! Stripe/Paddle ops: Chrome profile **MEARAJ (Gotigin)**.
+//! Paddle ops: Chrome profile **MEARAJ (Gotigin)**.
 
 mod auth;
 mod billing;

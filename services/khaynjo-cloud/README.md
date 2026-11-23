@@ -4,7 +4,7 @@
 
 Firebase Auth project: `khaynjo-2b2a2` (same as khaynjo.com `/account`).
 
-Stripe + Paddle dashboards: Chrome profile **MEARAJ (Gotigin)**.  
+Paddle dashboards: Chrome profile **MEARAJ (Gotigin)**.  
 Sandbox billing guide: [`docs/BILLING_SANDBOX.md`](docs/BILLING_SANDBOX.md).
 
 ## Milestone 1 — Auth + plans
@@ -21,14 +21,12 @@ Sandbox billing guide: [`docs/BILLING_SANDBOX.md`](docs/BILLING_SANDBOX.md).
 | Method | Path | Auth | Purpose |
 | --- | --- | --- | --- |
 | GET | `/v1/billing/config` | Bearer | sandbox/live + enabled providers |
-| POST | `/v1/billing/checkout` | Bearer | start mock / Stripe / Paddle checkout |
+| POST | `/v1/billing/checkout` | Bearer | start mock / Paddle checkout |
 | POST | `/v1/billing/sandbox/complete` | Bearer | finish **mock** checkout locally |
-| POST | `/v1/billing/webhooks/stripe` | Stripe-Signature | activate after test/live pay |
 | POST | `/v1/billing/webhooks/paddle` | Paddle-Signature | activate after sandbox/live pay |
 
 Default local path uses the **mock** provider (`BILLING_DEFAULT_PROVIDER=mock`) so
-checkout → subscription can be proven without gateway keys. Wire Stripe test /
-Paddle sandbox keys when ready (same Chrome profile).
+checkout → subscription can be proven without gateway keys. Wire Paddle sandbox keys when ready (same Chrome profile).
 
 ## Local
 

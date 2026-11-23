@@ -1,6 +1,6 @@
-//! Kirano Cloud API — Auth account + plans + sandbox billing (Stripe/Paddle/mock).
+//! Kirano Cloud API — Auth account + plans + sandbox billing (Paddle/mock).
 //! Own Postgres; clients never talk to the DB. Firebase Auth: `kirano-shop`.
-//! Stripe/Paddle ops: Chrome profile **MEARAJ (Gotigin)**.
+//! Paddle ops: Chrome profile **MEARAJ (Gotigin)**.
 
 mod auth;
 mod billing;

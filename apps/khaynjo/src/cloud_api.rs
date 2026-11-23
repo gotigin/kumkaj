@@ -2,7 +2,7 @@
 //!
 //! Base URL defaults to the current Fargate task; override with
 //! `KHAYNJO_CLOUD_API_BASE` (default `https://api.khaynjo.com`).
-//! Paid upgrades: same Stripe/Paddle/mock flow as https://khaynjo.com/account.
+//! Paid upgrades: same Paddle/mock flow as https://khaynjo.com/account.
 
 use serde::Deserialize;
 use serde::Serialize;
@@ -176,7 +176,7 @@ pub fn start_checkout(
     )
 }
 
-/// Mock sandbox only — activates the plan without Stripe/Paddle UI.
+/// Mock sandbox only — activates the plan without Paddle UI.
 pub fn sandbox_complete(
     id_token: &str,
     checkout_id: &str,

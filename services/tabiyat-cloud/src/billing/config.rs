@@ -1,5 +1,6 @@
 //! Billing env — sandbox by default. Live keys must never ship in sandbox mode.
-//! Stripe / Paddle Dashboards: Chrome profile **MEARAJ (Gotigin)**.
+//! Paddle dashboard: Chrome profile **MEARAJ (Gotigin)**.
+//! Stripe was removed: India business location is incompatible with Stripe Tax (CLOUD_PLANS).
 //!
 //! Mock unpaid activation requires explicit `BILLING_ALLOW_MOCK=1` (local smoke only).
 //! Never set that on public AWS APIs.
@@ -38,7 +39,6 @@ impl BillingMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Provider {
     Mock,
-    Stripe,
     Paddle,
 }
 
@@ -46,7 +46,6 @@ impl Provider {
     pub fn as_str(self) -> &'static str {
         match self {
             Self::Mock => "mock",
-            Self::Stripe => "stripe",
             Self::Paddle => "paddle",
         }
     }
@@ -54,8 +53,9 @@ impl Provider {
     pub fn parse(raw: &str) -> Option<Self> {
         match raw.trim().to_ascii_lowercase().as_str() {
             "mock" => Some(Self::Mock),
-            "stripe" => Some(Self::Stripe),
             "paddle" => Some(Self::Paddle),
+            // Reject legacy stripe — no longer a supported provider.
+            "stripe" => None,
             _ => None,
         }
     }
@@ -71,9 +71,6 @@ pub struct BillingConfig {
     pub success_url: String,
     pub cancel_url: String,
     pub public_api_base: String,
-    pub stripe_secret_key: Option<String>,
-    pub stripe_webhook_secret: Option<String>,
-    pub stripe_publishable_key: Option<String>,
     pub paddle_api_key: Option<String>,
     pub paddle_webhook_secret: Option<String>,
     pub paddle_client_token: Option<String>,
@@ -84,7 +81,6 @@ impl BillingConfig {
         build_config(None)
     }
 
-    /// Test helper — only the provided map is read (process env ignored).
     pub fn from_env_map<I, K, V>(pairs: I) -> Self
     where
         I: IntoIterator<Item = (K, V)>,
@@ -98,10 +94,6 @@ impl BillingConfig {
         build_config(Some(map))
     }
 
-    pub fn stripe_ready(&self) -> bool {
-        nonempty(&self.stripe_secret_key) && nonempty(&self.stripe_webhook_secret)
-    }
-
     pub fn paddle_ready(&self) -> bool {
         nonempty(&self.paddle_api_key)
             && nonempty(&self.paddle_webhook_secret)
@@ -111,13 +103,12 @@ impl BillingConfig {
     pub fn provider_enabled(&self, provider: Provider) -> bool {
         match provider {
             Provider::Mock => self.allow_mock && matches!(self.mode, BillingMode::Sandbox),
-            Provider::Stripe => self.stripe_ready(),
             Provider::Paddle => self.paddle_ready(),
         }
     }
 
     pub fn enabled_providers(&self) -> Vec<&'static str> {
-        [Provider::Mock, Provider::Stripe, Provider::Paddle]
+        [Provider::Mock, Provider::Paddle]
             .into_iter()
             .filter(|p| self.provider_enabled(*p))
             .map(Provider::as_str)
@@ -144,13 +135,7 @@ fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
     let mode_raw = lookup("BILLING_MODE").unwrap_or_else(|| "sandbox".into());
     let mode = match mode_raw.to_ascii_lowercase().as_str() {
         "live" | "production" => BillingMode::Live,
-        "sandbox" | "test" => BillingMode::Sandbox,
-        other => {
-            tracing::warn!(%other, "unknown BILLING_MODE — refusing; use sandbox or live");
-            // Fail closed to sandbox with billing disabled via enabled=false below if weird?
-            // Keep sandbox but require explicit; treat unknown as sandbox for mode enum only.
-            BillingMode::Sandbox
-        }
+        _ => BillingMode::Sandbox,
     };
     let mode_ok = matches!(
         mode_raw.to_ascii_lowercase().as_str(),
@@ -165,18 +150,12 @@ fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
             "1" | "true" | "yes" | "on"
         );
 
-    let allow_mock = truthy(
-        &lookup("BILLING_ALLOW_MOCK").unwrap_or_else(|| "0".into()),
-    );
+    let allow_mock = truthy(&lookup("BILLING_ALLOW_MOCK").unwrap_or_else(|| "0".into()));
 
-    let stripe_secret_key = lookup("STRIPE_SECRET_KEY");
-    let stripe_webhook_secret = lookup("STRIPE_WEBHOOK_SECRET");
-    let stripe_publishable_key = lookup("STRIPE_PUBLISHABLE_KEY");
     let paddle_api_key = lookup("PADDLE_API_KEY");
     let paddle_webhook_secret = lookup("PADDLE_WEBHOOK_SECRET");
     let paddle_client_token = lookup("PADDLE_CLIENT_TOKEN");
 
-    let stripe_ready = nonempty(&stripe_secret_key) && nonempty(&stripe_webhook_secret);
     let paddle_ready = nonempty(&paddle_api_key)
         && nonempty(&paddle_webhook_secret)
         && nonempty(&paddle_client_token);
@@ -186,13 +165,21 @@ fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
         .to_ascii_lowercase()
         .as_str()
     {
-        "stripe" if stripe_ready => Provider::Stripe,
         "paddle" if paddle_ready => Provider::Paddle,
         "mock" if allow_mock => Provider::Mock,
-        _ if stripe_ready => Provider::Stripe,
+        "stripe" => {
+            // Legacy env — ignore; Stripe is not supported for Gotigin.
+            if paddle_ready {
+                Provider::Paddle
+            } else if allow_mock {
+                Provider::Mock
+            } else {
+                Provider::Paddle
+            }
+        }
         _ if paddle_ready => Provider::Paddle,
         _ if allow_mock => Provider::Mock,
-        _ => Provider::Stripe, // prefer real gateway name even if not ready (checkout will error clearly)
+        _ => Provider::Paddle,
     };
 
     BillingConfig {
@@ -206,9 +193,6 @@ fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
             .unwrap_or_else(|| "http://127.0.0.1:8012/account?billing=cancel".into()),
         public_api_base: lookup("PUBLIC_API_BASE")
             .unwrap_or_else(|| "http://127.0.0.1:8080".into()),
-        stripe_secret_key,
-        stripe_webhook_secret,
-        stripe_publishable_key,
         paddle_api_key,
         paddle_webhook_secret,
         paddle_client_token,

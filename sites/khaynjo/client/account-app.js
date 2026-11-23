@@ -315,7 +315,7 @@ async function paintBillingPlans(user, idToken) {
     els.planList.innerHTML = "";
     if (!sellable.length) {
       els.planList.innerHTML =
-        "<p class=\"auth-hint\">No self-serve plans are checkout-ready yet. For Stripe/Paddle, set price ids on the plans table (see BILLING_SANDBOX.md).</p>";
+        "<p class=\"auth-hint\">No self-serve plans are checkout-ready yet. For Paddle, set paddle_price_id on the plans table (see BILLING_SANDBOX.md).</p>";
       return;
     }
     const providers = cfg.providers || [];
@@ -325,7 +325,7 @@ async function paintBillingPlans(user, idToken) {
       null;
     if (!provider) {
       els.planList.innerHTML =
-        "<p class=\"auth-hint\">No payable provider is enabled (Stripe/Paddle). Mock activate is local-only.</p>";
+        "<p class=\"auth-hint\">No payable provider is enabled (Paddle). Mock activate is local-only.</p>";
       return;
     }
     for (const plan of sellable) {

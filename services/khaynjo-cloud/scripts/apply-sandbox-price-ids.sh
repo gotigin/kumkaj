@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-# Apply Stripe / Paddle sandbox Price ids onto the local plans table.
-# Chrome profile for dashboards: MEARAJ (Gotigin).
+# Apply Paddle sandbox Price ids onto the local plans table.
+# Dashboard: Chrome profile **MEARAJ (Gotigin)** — Paddle sandbox.
 #
-# Usage (after creating Prices in Stripe Test + Paddle sandbox):
+# Usage:
 #   export DATABASE_URL='postgres://khaynjo:khaynjo_dev@127.0.0.1:5433/khaynjo_cloud'
-#   export STRIPE_PRICE_STEADY=price_...
-#   export STRIPE_PRICE_SWIFT=price_...
-#   export STRIPE_PRICE_PRIORITY=price_...
 #   export PADDLE_PRICE_STEADY=pri_...
 #   export PADDLE_PRICE_SWIFT=pri_...
 #   export PADDLE_PRICE_PRIORITY=pri_...
@@ -17,20 +14,20 @@ cd "$(dirname "$0")/.."
 : "${DATABASE_URL:?DATABASE_URL required}"
 
 psql "$DATABASE_URL" <<SQL
-UPDATE plans SET stripe_price_id = NULLIF('${STRIPE_PRICE_STEADY:-}', ''),
-                 paddle_price_id = NULLIF('${PADDLE_PRICE_STEADY:-}', '')
+UPDATE plans SET paddle_price_id = NULLIF('${PADDLE_PRICE_STEADY:-}', ''),
+                 stripe_price_id = NULL
  WHERE plan_id = 'steady';
-UPDATE plans SET stripe_price_id = NULLIF('${STRIPE_PRICE_SWIFT:-}', ''),
-                 paddle_price_id = NULLIF('${PADDLE_PRICE_SWIFT:-}', '')
+UPDATE plans SET paddle_price_id = NULLIF('${PADDLE_PRICE_SWIFT:-}', ''),
+                 stripe_price_id = NULL
  WHERE plan_id = 'swift';
-UPDATE plans SET stripe_price_id = NULLIF('${STRIPE_PRICE_PRIORITY:-}', ''),
-                 paddle_price_id = NULLIF('${PADDLE_PRICE_PRIORITY:-}', '')
+UPDATE plans SET paddle_price_id = NULLIF('${PADDLE_PRICE_PRIORITY:-}', ''),
+                 stripe_price_id = NULL
  WHERE plan_id = 'priority';
 
-SELECT plan_id, price_inr_paise, stripe_price_id, paddle_price_id
+SELECT plan_id, price_inr_paise, paddle_price_id, stripe_price_id
 FROM plans
 WHERE plan_id IN ('steady','swift','priority')
 ORDER BY sort_order;
 SQL
 
-echo "OK — sandbox price ids applied (empty env vars clear the column)."
+echo "OK — Paddle sandbox price ids applied (stripe_price_id cleared)."

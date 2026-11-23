@@ -3,11 +3,11 @@
 **Canonical rule for humans and agents.** Tests exist to protect product intent.
 They do **not** exist so we can declare victory by making a check go green.
 
-Incident that triggered this doc (2026-11-23): Stripe Checkout sandbox failed
-because Stripe Tax was not set up for the India account. An agent **removed
-`automatic_tax`** so a local checkout smoke would succeed. That violated
-[`CLOUD_PLANS.md`](CLOUD_PLANS.md) (tax at the gateway). Tax was restored; this
-document exists so that class of “fix” never happens again.
+Incident that triggered this doc (2026-11-23): an agent **removed Stripe
+`automatic_tax`** so a smoke would pass. That violated tax-at-gateway intent.
+Research later showed Stripe Tax cannot serve an India-based merchant at all;
+**Stripe was removed** from Kumkaj billing in favor of Paddle. This document
+still forbids gutting requirements to green a check.
 
 ---
 

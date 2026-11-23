@@ -12,106 +12,6 @@ use crate::AppState;
 use super::config::Provider;
 use super::{activate_subscription, BillingError};
 
-pub async fn handle_stripe_webhook(
-    State(state): State<Arc<AppState>>,
-    headers: HeaderMap,
-    body: Bytes,
-) -> Response {
-    let Some(cfg) = state.billing.as_ref() else {
-        return err(StatusCode::SERVICE_UNAVAILABLE, "billing disabled");
-    };
-    if !cfg.enabled {
-        return err(StatusCode::SERVICE_UNAVAILABLE, "billing disabled");
-    }
-    let secret = match cfg.stripe_webhook_secret.as_deref() {
-        Some(s) => s,
-        None => return err(StatusCode::SERVICE_UNAVAILABLE, "stripe webhook not configured"),
-    };
-    let sig = match headers.get("Stripe-Signature").and_then(|v| v.to_str().ok()) {
-        Some(s) => s,
-        None => return err(StatusCode::BAD_REQUEST, "missing Stripe-Signature"),
-    };
-    if let Err(e) = super::stripe::verify_signature(secret, sig, &body, 300) {
-        return err(StatusCode::BAD_REQUEST, e);
-    }
-    let payload: Value = match serde_json::from_slice(&body) {
-        Ok(v) => v,
-        Err(e) => return err(StatusCode::BAD_REQUEST, e.to_string()),
-    };
-    let event_id = payload
-        .get("id")
-        .and_then(|v| v.as_str())
-        .unwrap_or("stripe_unknown");
-    let event_type = payload
-        .get("type")
-        .and_then(|v| v.as_str())
-        .unwrap_or("");
-
-    if event_type == "checkout.session.completed" {
-        let obj = payload.pointer("/data/object").cloned().unwrap_or(Value::Null);
-        let livemode = payload.get("livemode").and_then(|v| v.as_bool()).unwrap_or(false);
-        let expect_live = matches!(cfg.mode, super::config::BillingMode::Live);
-        if livemode != expect_live {
-            return err(
-                StatusCode::BAD_REQUEST,
-                format!(
-                    "stripe livemode={livemode} does not match BILLING_MODE={}",
-                    cfg.mode.as_str()
-                ),
-            );
-        }
-        let payment_status = obj
-            .get("payment_status")
-            .and_then(|v| v.as_str())
-            .unwrap_or("");
-        if payment_status != "paid" {
-            return err(
-                StatusCode::BAD_REQUEST,
-                format!("stripe checkout payment_status={payment_status}, expected paid"),
-            );
-        }
-        let meta = obj.get("metadata").cloned().unwrap_or(Value::Null);
-        let account_id = meta
-            .get("account_id")
-            .and_then(|v| v.as_str())
-            .and_then(|s| Uuid::parse_str(s).ok());
-        let plan_id = meta
-            .get("plan_id")
-            .and_then(|v| v.as_str())
-            .unwrap_or("")
-            .to_string();
-        let checkout_id = meta
-            .get("checkout_id")
-            .and_then(|v| v.as_str())
-            .and_then(|s| Uuid::parse_str(s).ok());
-        let sub_id = obj
-            .get("subscription")
-            .and_then(|v| v.as_str())
-            .map(str::to_string);
-        if plan_id == "free" || plan_id == "custom" {
-            return err(StatusCode::BAD_REQUEST, "refusing webhook activation for free/custom");
-        }
-        if let (Some(account_id), true) = (account_id, !plan_id.is_empty()) {
-            if let Err(e) = activate_subscription(
-                &state.pool,
-                account_id,
-                &plan_id,
-                Provider::Stripe,
-                sub_id.as_deref(),
-                checkout_id,
-                event_id,
-                payload.clone(),
-            )
-            .await
-            {
-                return billing_err(e);
-            }
-        }
-    }
-
-    Json(serde_json::json!({ "received": true })).into_response()
-}
-
 pub async fn handle_paddle_webhook(
     State(state): State<Arc<AppState>>,
     headers: HeaderMap,
@@ -179,6 +79,9 @@ pub async fn handle_paddle_webhook(
             .and_then(|v| v.as_str())
             .or_else(|| data.get("id").and_then(|v| v.as_str()))
             .map(str::to_string);
+        if plan_id == "free" || plan_id == "custom" {
+            return err(StatusCode::BAD_REQUEST, "refusing webhook activation for free/custom");
+        }
         if let (Some(account_id), true) = (account_id, !plan_id.is_empty()) {
             if let Err(e) = activate_subscription(
                 &state.pool,

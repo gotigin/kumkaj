@@ -1,16 +1,15 @@
-//! Kirano Cloud billing — sandbox first (Stripe + Paddle + local mock).
+//! Kirano Cloud billing — sandbox first (Paddle + local mock). Stripe removed (India Tax incompatible).
 //!
 //! Product doctrine: free local forever; cloud subscription never hostages the till.
-//! Ops: Stripe / Paddle dashboards in Chrome profile **MEARAJ (Gotigin)**.
+//! Ops: Paddle dashboard in Chrome profile **MEARAJ (Gotigin)**.
 
 mod config;
 mod mock;
 mod paddle;
-mod stripe;
 mod webhooks;
 
 pub use config::{BillingConfig, BillingMode, Provider};
-pub use webhooks::{handle_paddle_webhook, handle_stripe_webhook};
+pub use webhooks::handle_paddle_webhook;
 
 use chrono::{Duration, Utc};
 use serde::Serialize;
@@ -30,7 +29,6 @@ pub struct BillingPublicConfig {
     pub mode: &'static str,
     pub providers: Vec<&'static str>,
     pub default_provider: &'static str,
-    pub stripe_publishable_key: Option<String>,
     pub paddle_client_token: Option<String>,
     pub paddle_env: Option<&'static str>,
 }
@@ -83,7 +81,6 @@ pub fn public_config(cfg: &BillingConfig) -> BillingPublicConfig {
         mode: cfg.mode.as_str(),
         providers: cfg.enabled_providers(),
         default_provider: cfg.default_provider.as_str(),
-        stripe_publishable_key: cfg.stripe_publishable_key.clone(),
         paddle_client_token: cfg.paddle_client_token.clone(),
         paddle_env: if cfg.paddle_ready() {
             Some(cfg.mode.paddle_env())
@@ -131,9 +128,6 @@ pub async fn start_checkout(
         Provider::Mock => {
             mock::create_checkout(cfg, checkout_id, account, &plan).await?
         }
-        Provider::Stripe => {
-            stripe::create_checkout(cfg, checkout_id, account, &plan).await?
-        }
         Provider::Paddle => {
             paddle::create_checkout(cfg, checkout_id, account, &plan).await?
         }
@@ -159,7 +153,7 @@ pub async fn start_checkout(
     })
 }
 
-/// Sandbox-only completion for mock checkouts (local E2E without Stripe/Paddle UI).
+/// Sandbox-only completion for mock checkouts (local E2E without Paddle UI).
 pub async fn complete_mock_checkout(
     pool: &PgPool,
     cfg: &BillingConfig,
@@ -287,24 +281,21 @@ mod tests {
         ]);
         assert!(cfg.provider_enabled(Provider::Mock));
         assert_eq!(cfg.default_provider, Provider::Mock);
-        assert!(!cfg.provider_enabled(Provider::Stripe));
     }
 
     #[test]
-    fn stripe_and_paddle_enable_when_keys_present() {
+    fn paddle_enables_when_keys_present() {
         let cfg = BillingConfig::from_env_map([
             ("BILLING_ENABLED", "1"),
             ("BILLING_MODE", "sandbox"),
-            ("STRIPE_SECRET_KEY", "sk_test_x"),
-            ("STRIPE_WEBHOOK_SECRET", "whsec_x"),
             ("PADDLE_API_KEY", "pdl_sdbx_x"),
             ("PADDLE_WEBHOOK_SECRET", "pdl_ntfsec_x"),
             ("PADDLE_CLIENT_TOKEN", "test_x"),
-            ("BILLING_DEFAULT_PROVIDER", "stripe"),
+            ("BILLING_DEFAULT_PROVIDER", "paddle"),
         ]);
-        assert_eq!(cfg.default_provider, Provider::Stripe);
-        assert!(cfg.provider_enabled(Provider::Stripe));
+        assert_eq!(cfg.default_provider, Provider::Paddle);
         assert!(cfg.provider_enabled(Provider::Paddle));
         assert!(!cfg.provider_enabled(Provider::Mock));
+        assert!(Provider::parse("stripe").is_none());
     }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Local smoke — Docker Postgres only. Do not point at AWS RDS.
 # Never set DEV_AUTH_BYPASS=1 on AWS.
-# Billing: mock sandbox path (no Stripe/Paddle keys required).
+# Billing: mock sandbox path (no Paddle keys required).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export DATABASE_URL='postgres://tabiyat:tabiyat_dev@127.0.0.1:5436/tabiyat_cloud'

@@ -36,7 +36,7 @@ refund. You keep the cloud entitlement you paid for through that term
 (subject to the Kirano / Kumkaj terms and documented grace or end-of-term
 steps on the account / cloud docs).
 
-Checkout may use Stripe, Paddle, or another partner shown at payment; their
+Checkout may use Paddle or another partner shown at payment; their
 receipt and any binding consumer rules for that checkout apply to that buy.
 
 ## App stores

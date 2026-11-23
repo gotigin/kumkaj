@@ -2,7 +2,7 @@
 //!
 //! Base URL defaults to the current Fargate task; override with
 //! `MOKLANJO_CLOUD_API_BASE` (default `https://api.moklanjo.com`).
-//! Paid upgrades: same Stripe/Paddle/mock flow as https://moklanjo.com/account.
+//! Paid upgrades: same Paddle/mock flow as https://moklanjo.com/account.
 
 use serde::Deserialize;
 use serde::Serialize;
@@ -176,7 +176,7 @@ pub fn start_checkout(
     )
 }
 
-/// Mock sandbox only — activates the plan without Stripe/Paddle UI.
+/// Mock sandbox only — activates the plan without Paddle UI.
 pub fn sandbox_complete(
     id_token: &str,
     checkout_id: &str,
