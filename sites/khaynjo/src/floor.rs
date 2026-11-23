@@ -62,7 +62,7 @@ impl Visit {
     }
 
     /// Minutes since the guests sat down, as the tile shows them (example).
-    fn minutes(self) -> Option<u32> {
+    pub fn minutes(self) -> Option<u32> {
         match self {
             Visit::Free | Visit::Paid => None,
             Visit::Occupied => Some(2),

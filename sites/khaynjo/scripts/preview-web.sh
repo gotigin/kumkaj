@@ -50,6 +50,9 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   # compresses on its own and never serves those.
   rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
   rsync -a "$SITE/static/" "$OUT/"
+  # Language packs (site i18n): the wasm and site-i18n.js fetch /i18n/<code>.tsv.
+  mkdir -p "$OUT/i18n"
+  cp "$SITE"/translations/*.tsv "$OUT/i18n/"
   "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
   # Fonts: only the characters this site draws (the repo keeps them whole).
   "$SITE/scripts/subset-fonts.sh" "$OUT"

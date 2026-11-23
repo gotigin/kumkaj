@@ -3,6 +3,20 @@ import { CLOUD_CATALOG, formatInrPaise } from "./shop-catalog.js";
 
 const $ = (id) => document.getElementById(id);
 
+/** Site copy in the visitor's language (site-i18n.js; English without it).
+ *  Keys live in each site's src/locale.rs EN (shop_* / plan_*). */
+const T = (key, english) =>
+  typeof window !== "undefined" && typeof window.siteT === "function"
+    ? window.siteT(key, english)
+    : english;
+
+/** Free forever and Custom are words; Steady, Swift and Priority are names. */
+const planTitle = (item) =>
+  item.id === "free" || item.id === "custom"
+    ? T(`plan_${item.id}_title`, item.title)
+    : item.title;
+const planBlurb = (item) => T(`plan_${item.id}_blurb`, item.blurb);
+
 const PRODUCT =
   (typeof window !== "undefined" && window.__KUMKAJ_PRODUCT__) || "khaynjo";
 const PRICES_READY =
@@ -46,7 +60,7 @@ function paintCatalog() {
     card.className = "shop-card";
     card.dataset.planId = item.id;
     const priceLabel = !PRICES_READY && item.sellable
-      ? "Pricing coming soon"
+      ? T("shop_pricing_soon", "Pricing coming soon")
       : formatInrPaise(item.priceInrPaise);
     const actions = document.createElement("div");
     actions.className = "shop-card-actions";
@@ -56,23 +70,25 @@ function paintCatalog() {
       a.href = `mailto:${SUPPORT_MAIL}?subject=${encodeURIComponent(
         `${PRODUCT} Custom cloud quote`
       )}`;
-      a.textContent = "Request quote";
+      a.textContent = T("shop_request_quote", "Request quote");
       actions.appendChild(a);
     } else if (item.sellable) {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "btn btn-primary";
-      btn.textContent = PRICES_READY ? "Add to cart" : "Notify me later";
+      btn.textContent = PRICES_READY
+        ? T("shop_add_to_cart", "Add to cart")
+        : T("shop_notify_later", "Notify me later");
       btn.disabled = !PRICES_READY;
       btn.addEventListener("click", () => addToCart(item.id));
       actions.appendChild(btn);
     } else {
       const span = document.createElement("span");
       span.className = "shop-pill";
-      span.textContent = "Included";
+      span.textContent = T("shop_included", "Included");
       actions.appendChild(span);
     }
-    card.innerHTML = `<h2>${item.title}</h2><p class="shop-blurb">${item.blurb}</p><p class="shop-price">${priceLabel}</p>`;
+    card.innerHTML = `<h2>${planTitle(item)}</h2><p class="shop-blurb">${planBlurb(item)}</p><p class="shop-price">${priceLabel}</p>`;
     card.appendChild(actions);
     root.appendChild(card);
   }
@@ -84,7 +100,11 @@ function addToCart(planId) {
   // One cloud plan at a time (subscription replace).
   saveCart([planId]);
   paintCart();
-  showMsg($("shop-status"), `${item.title} is in your cart.`, "ok");
+  showMsg(
+    $("shop-status"),
+    T("shop_in_cart", "{plan} is in your cart.").replace("{plan}", planTitle(item)),
+    "ok"
+  );
 }
 
 function removeFromCart(planId) {
@@ -111,13 +131,13 @@ function paintCart() {
     if (!item) continue;
     const row = document.createElement("div");
     row.className = "shop-cart-row";
-    row.innerHTML = `<strong>${item.title}</strong><span>${formatInrPaise(
+    row.innerHTML = `<strong>${planTitle(item)}</strong><span>${formatInrPaise(
       item.priceInrPaise
     )}</span>`;
     const rm = document.createElement("button");
     rm.type = "button";
     rm.className = "btn btn-ghost";
-    rm.textContent = "Remove";
+    rm.textContent = T("shop_remove", "Remove");
     rm.addEventListener("click", () => removeFromCart(id));
     row.appendChild(rm);
     root.appendChild(row);
@@ -127,13 +147,16 @@ function paintCart() {
 function goCheckout() {
   const ids = loadCart();
   if (!ids.length) {
-    showMsg($("shop-status"), "Cart is empty.", "error");
+    showMsg($("shop-status"), T("shop_cart_is_empty", "Cart is empty."), "error");
     return;
   }
   if (!PRICES_READY) {
     showMsg(
       $("shop-status"),
-      "Self-serve prices are not published for this product yet. Request a Custom quote or check back later.",
+      T(
+        "shop_prices_unpublished",
+        "Self-serve prices are not published for this product yet. Request a Custom quote or check back later."
+      ),
       "error"
     );
     return;
@@ -146,11 +169,16 @@ function goCheckout() {
 function boot() {
   paintCatalog();
   paintCart();
+  // site-i18n.js loaded a language: repaint the cards and the cart in it.
+  window.addEventListener("site:i18n", () => {
+    paintCatalog();
+    paintCart();
+  });
   $("shop-checkout")?.addEventListener("click", goCheckout);
   $("shop-clear")?.addEventListener("click", () => {
     saveCart([]);
     paintCart();
-    showMsg($("shop-status"), "Cart cleared.", "ok");
+    showMsg($("shop-status"), T("shop_cart_cleared", "Cart cleared."), "ok");
   });
 }
 

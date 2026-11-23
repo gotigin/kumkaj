@@ -90,6 +90,131 @@ script_mod! {
         latin := FontMember{res: crate_resource("self:resources/fonts/LiberationMono-Regular.ttf") asc: 0.0 desc: 0.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
     }
+    // ---- Script faces for translated copy (sites/_shared/i18n/site_i18n.rs).
+    // One family per script: the Latin UI face, then that script's Noto face.
+    // Only the hidden prototypes below use them, so a family (and its files)
+    // loads only when a visitor picks a language in that script; the walker
+    // gives keyed widgets the family and restores their own for Latin.
+    // Faces are cut to the packs' characters at stage time (subset-fonts.sh);
+    // SiteCJK-*.otf come from scripts/site-cjk-font.sh.
+    let UiCyrillic = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+    }
+    let UiGreek = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+    }
+    let UiDevanagari = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiBengali = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiGurmukhi = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansGurmukhi-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiGujarati = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiOriya = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansOriya-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiTamil = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiTelugu = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansTelugu-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiKannada = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansKannada-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiMalayalam = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansMalayalam-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiSinhala = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansSinhala-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiArabic = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiHebrew = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiThaana = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansThaana-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiTibetan = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSerifTibetan-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiOlChiki = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiMeetei = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiThai = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiLao = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansLao-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiKhmer = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansKhmer-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiMyanmar = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansMyanmar-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiEthiopic = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansEthiopic-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiArmenian = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiGeorgian = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSansGeorgian-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
+    let UiCjkSc = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/SiteCJK-SC.otf") asc: 0.0 desc: 0.0}
+    }
+    let UiCjkTc = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/SiteCJK-TC.otf") asc: 0.0 desc: 0.0}
+    }
+    let UiCjkJp = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/SiteCJK-JP.otf") asc: 0.0 desc: 0.0}
+    }
+    let UiCjkKr = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/SiteCJK-KR.otf") asc: 0.0 desc: 0.0}
+    }
+    let UiLatinExt = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        script := FontMember{res: crate_resource("self:resources/fonts/NotoSans-Regular.ttf") asc: 0.0 desc: 0.0}
+    }
 
     // Cream on deep red is the only light-on-dark here; drop the SDF luma
     // bias so it never paints glyph boxes (vendor shader untouched).
@@ -1142,9 +1267,15 @@ script_mod! {
                                     }
                                 }
                                 // Own row so placeholder / typed text stay readable.
+                                // The placeholder is a Label laid over the input (`shelf_find_hint`):
+                                // a TextInput keeps one Latin font, a Label takes the shown
+                                // language's script font (site i18n), so it never draws boxes.
+                                shelf_find_row := View{
+                                width: Fill height: Fit
+                                flow: Overlay
                                 shelf_find := TextInput{
                                     width: Fill height: Fit
-                                    empty_text: "Find a country or dish — e.g. India, biryani, Japan"
+                                    empty_text: ""
                                     padding: Inset{left: 14. right: 14. top: 12. bottom: 12.}
                                     draw_bg +: {
                                         color: Well
@@ -1168,6 +1299,16 @@ script_mod! {
                                         color_empty_focus: Muted
                                         text_style: theme.font_regular{font_family: TextFont font_size: 15.}
                                     }
+                                }
+                                shelf_find_hint := Label{
+                                    width: Fill height: Fit
+                                    margin: Inset{left: 15. right: 15. top: 13.}
+                                    text: "Find a country or dish — e.g. India, biryani, Japan"
+                                    draw_text +: {
+                                        color: Hint
+                                        text_style: theme.font_regular{font_family: TextFont font_size: 15.}
+                                    }
+                                }
                                 }
                                 // Clipped stage: each slot is abs-positioned and wraps on its
                                 // own so only one card rebinds when it leaves — no full-strip hitch.
@@ -1533,7 +1674,7 @@ script_mod! {
                                             spacing: 10
                                             align: Align{y: 0.5}
                                             RoundedView{width: 12 height: 12 draw_bg +: {color: BillLine border_radius: 6.}}
-                                            Body{width: Fill body: "Captains' tablets and the kitchen screen: working together on your own Wi‑Fi"}
+                                            Body{width: Fill body: "Captains' tablets and the kitchen screen: working together on your own Wi-Fi"}
                                         }
                                         ExampleTag{}
                                     }
@@ -1698,6 +1839,41 @@ script_mod! {
                                         to_account := NavLink{text: "Account"}
                                         to_play := NavLink{text: "Google Play"}
                                         to_kumkaj := NavLink{text: "kumkaj.com"}
+                                    }
+                                    // Hidden font prototypes for translated copy (never drawn; see Ui* families).
+                                    i18n_fonts := View{
+                                        visible: false
+                                        width: 0 height: 0
+                                        font_cyrillic := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiCyrillic}}}
+                                        font_greek := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiGreek}}}
+                                        font_devanagari := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiDevanagari}}}
+                                        font_bengali := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiBengali}}}
+                                        font_gurmukhi := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiGurmukhi}}}
+                                        font_gujarati := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiGujarati}}}
+                                        font_oriya := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiOriya}}}
+                                        font_tamil := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiTamil}}}
+                                        font_telugu := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiTelugu}}}
+                                        font_kannada := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiKannada}}}
+                                        font_malayalam := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiMalayalam}}}
+                                        font_sinhala := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiSinhala}}}
+                                        font_arabic := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiArabic}}}
+                                        font_hebrew := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiHebrew}}}
+                                        font_thaana := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiThaana}}}
+                                        font_tibetan := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiTibetan}}}
+                                        font_olchiki := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiOlChiki}}}
+                                        font_meetei := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiMeetei}}}
+                                        font_thai := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiThai}}}
+                                        font_lao := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiLao}}}
+                                        font_khmer := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiKhmer}}}
+                                        font_myanmar := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiMyanmar}}}
+                                        font_ethiopic := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiEthiopic}}}
+                                        font_armenian := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiArmenian}}}
+                                        font_georgian := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiGeorgian}}}
+                                        font_cjk_sc := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiCjkSc}}}
+                                        font_cjk_tc := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiCjkTc}}}
+                                        font_cjk_jp := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiCjkJp}}}
+                                        font_cjk_kr := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiCjkKr}}}
+                                        font_latin_ext := Label{text: "" draw_text +: {text_style: theme.font_regular{font_family: UiLatinExt}}}
                                     }
                                 }
                             }

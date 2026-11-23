@@ -28,6 +28,12 @@ use floor::Visit;
 mod world_shelf;
 use world_shelf::{WorldDish, WORLD};
 
+mod locale;
+
+#[path = "../../_shared/i18n/site_i18n.rs"]
+mod site_i18n;
+use site_i18n::{ScriptGroup, SiteLang};
+
 app_main!(App);
 
 include!("ui.rs");
@@ -383,7 +389,8 @@ fn hash_segments(hash: &str) -> impl Iterator<Item = &str> {
 /// chapter number (`#3`). Unknown → None (stay at the top).
 fn section_from_hash(hash: &str) -> Option<&'static str> {
     for part in hash_segments(hash) {
-        if part.to_ascii_lowercase().starts_with("auth=") {
+        // `#l=hi` (language), `#auth=LO` (signed-in chip): not sections.
+        if site_i18n::is_bridge_segment(part) {
             continue;
         }
         let key = part.to_ascii_lowercase();
@@ -615,6 +622,238 @@ pub struct App {
     photo_bytes: PhotoBytes,
     #[rust]
     photo_pending: PhotoPending,
+    /// Language the page shows (`#l=` from lang-nav.js), its packs and which
+    /// widget shows which `locale::EN` key.
+    #[rust]
+    lang: SiteLang,
+    /// CTA note currently shown under the buttons (repainted on a language change).
+    #[rust]
+    cta_note_key: Option<String>,
+}
+
+/// Font files that draw a script's copy (crate-relative) — the `Ui*`
+/// families in `ui.rs`. `locale::tests::every_translation_draws_with_the_site_fonts`
+/// checks every pack against them. Latin languages keep each widget's own
+/// family (Baloo / Plex, with Plex as the fallback everywhere).
+pub fn script_font_files(group: ScriptGroup) -> Vec<&'static str> {
+    const PLEX: &str = "resources/fonts/IBMPlexSans-Text.ttf";
+    let script = match group {
+        ScriptGroup::Latin | ScriptGroup::Cyrillic | ScriptGroup::Greek => None,
+        ScriptGroup::Devanagari => Some("resources/fonts/NotoSansDevanagari-Regular.ttf"),
+        ScriptGroup::Bengali => Some("resources/fonts/NotoSansBengali-Regular.ttf"),
+        ScriptGroup::Gurmukhi => Some("resources/fonts/NotoSansGurmukhi-Regular.ttf"),
+        ScriptGroup::Gujarati => Some("resources/fonts/NotoSansGujarati-Regular.ttf"),
+        ScriptGroup::Oriya => Some("resources/fonts/NotoSansOriya-Regular.ttf"),
+        ScriptGroup::Tamil => Some("resources/fonts/NotoSansTamil-Regular.ttf"),
+        ScriptGroup::Telugu => Some("resources/fonts/NotoSansTelugu-Regular.ttf"),
+        ScriptGroup::Kannada => Some("resources/fonts/NotoSansKannada-Regular.ttf"),
+        ScriptGroup::Malayalam => Some("resources/fonts/NotoSansMalayalam-Regular.ttf"),
+        ScriptGroup::Sinhala => Some("resources/fonts/NotoSansSinhala-Regular.ttf"),
+        ScriptGroup::Arabic => Some("resources/fonts/NotoSansArabic-Regular.ttf"),
+        ScriptGroup::Hebrew => Some("resources/fonts/NotoSansHebrew-Regular.ttf"),
+        ScriptGroup::Thaana => Some("resources/fonts/NotoSansThaana-Regular.ttf"),
+        ScriptGroup::Tibetan => Some("resources/fonts/NotoSerifTibetan-Regular.ttf"),
+        ScriptGroup::OlChiki => Some("resources/fonts/NotoSansOlChiki-Regular.ttf"),
+        ScriptGroup::MeeteiMayek => Some("resources/fonts/NotoSansMeeteiMayek-Regular.ttf"),
+        ScriptGroup::Thai => Some("resources/fonts/NotoSansThai-Regular.ttf"),
+        ScriptGroup::Lao => Some("resources/fonts/NotoSansLao-Regular.ttf"),
+        ScriptGroup::Khmer => Some("resources/fonts/NotoSansKhmer-Regular.ttf"),
+        ScriptGroup::Myanmar => Some("resources/fonts/NotoSansMyanmar-Regular.ttf"),
+        ScriptGroup::Ethiopic => Some("resources/fonts/NotoSansEthiopic-Regular.ttf"),
+        ScriptGroup::Armenian => Some("resources/fonts/NotoSansArmenian-Regular.ttf"),
+        ScriptGroup::Georgian => Some("resources/fonts/NotoSansGeorgian-Regular.ttf"),
+        ScriptGroup::CjkSc => Some("resources/fonts/SiteCJK-SC.otf"),
+        ScriptGroup::CjkTc => Some("resources/fonts/SiteCJK-TC.otf"),
+        ScriptGroup::CjkJp => Some("resources/fonts/SiteCJK-JP.otf"),
+        ScriptGroup::CjkKr => Some("resources/fonts/SiteCJK-KR.otf"),
+        ScriptGroup::LatinExt => Some("resources/fonts/NotoSans-Regular.ttf"),
+    };
+    let mut files = vec![PLEX];
+    files.extend(script);
+    files
+}
+
+/// Labels the page paints from code (their words come from `App::tr`); they
+/// take the script font / RTL alignment of the shown language too.
+const CODE_TEXT: &[&[LiveId]] = &[
+    ids!(cta_note_text),
+    ids!(close_note_text),
+    ids!(menus.menu_note_text),
+    ids!(go_login),
+];
+
+// ---- Language (sites/_shared/i18n/site_i18n.rs) -------------------------
+
+impl App {
+    /// Site copy for `key` in the language the page shows.
+    fn tr(&self, key: &str) -> String {
+        self.lang.text(key, locale::en(key))
+    }
+
+    /// Language named by the URL hash (`#l=hi`, written by lang-nav.js), or
+    /// `SITE_LANG=hi` for a native preview.
+    fn hash_lang(cx: &Cx) -> Option<&'static str> {
+        if let OsType::Web(page) = cx.os_type() {
+            return site_i18n::lang_from_hash(&page.hash);
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            std::env::var("SITE_LANG")
+                .ok()
+                .and_then(|c| site_i18n::language_by_code(&c))
+                .map(|l| l.code)
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            None
+        }
+    }
+
+    /// Startup / hashchange: follow the picker's choice.
+    fn sync_lang(&mut self, cx: &mut Cx) {
+        let want = Self::hash_lang(cx).unwrap_or("en");
+        if self.lang.last_hash_lang.as_deref() == Some(want) {
+            return;
+        }
+        self.lang.last_hash_lang = Some(want.to_string());
+        if let Some(table) = self.lang.want(want) {
+            self.fetch_pack(cx, table);
+        } else {
+            self.apply_lang(cx);
+        }
+        self.paint_lang_chip(cx);
+    }
+
+    /// `/i18n/<code>.tsv` next to the wasm (staged from `translations/`);
+    /// native reads the crate's file.
+    fn fetch_pack(&mut self, cx: &mut Cx, table: String) {
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("translations")
+                .join(format!("{table}.tsv"));
+            match std::fs::read_to_string(&path) {
+                Ok(text) => {
+                    self.lang.insert_pack(&table, &text);
+                    self.apply_lang(cx);
+                }
+                Err(err) => log!("khaynjo-site: {}: {err}", path.display()),
+            }
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            let id = LiveId::unique();
+            cx.http_request(
+                id,
+                HttpRequest::new(site_i18n::pack_web_path(&table), HttpMethod::GET),
+            );
+            self.lang.set_pending(id, table);
+        }
+    }
+
+    fn handle_lang_responses(&mut self, cx: &mut Cx, responses: &NetworkResponsesEvent) {
+        for response in responses {
+            let (request_id, body) = match response {
+                NetworkResponse::HttpResponse { request_id, response } => (
+                    *request_id,
+                    (200..300)
+                        .contains(&response.status_code)
+                        .then(|| response.body.clone())
+                        .flatten(),
+                ),
+                NetworkResponse::HttpError { request_id, .. } => (*request_id, None),
+                _ => continue,
+            };
+            if self.lang.take_response(request_id, body.as_deref()) {
+                self.apply_lang(cx);
+            }
+        }
+    }
+
+    /// Show the wanted language everywhere once its pack is here.
+    fn apply_lang(&mut self, cx: &mut Cx) {
+        let lang = self.lang.wanted.clone();
+        if lang.is_empty() || !self.lang.has_pack(&lang) {
+            return;
+        }
+        let font = site_i18n::script_family(cx, &self.ui, site_i18n::script_group(&lang));
+        let rtl = site_i18n::is_rtl(&lang);
+        let skip = std::collections::HashSet::new();
+        let ui = self.ui.clone();
+        self.lang
+            .apply(cx, &ui, &lang, &locale::key_for, &locale::en, font.as_ref(), &skip);
+        // Text painted from code: new words, and the script font / alignment.
+        for path in CODE_TEXT {
+            let w = self.ui.widget(cx, path);
+            self.lang.style_widget(&w, font.as_ref(), rtl);
+        }
+        for (path, _) in TABLES {
+            let tile = self.ui.widget(cx, path);
+            for part in [ids!(word), ids!(meta)] {
+                let w = tile.widget(cx, part);
+                self.lang.style_widget(&w, font.as_ref(), rtl);
+            }
+        }
+        self.paint_floor(cx);
+        self.paint_shelf_note(cx);
+        if let Some(key) = self.cta_note_key.clone() {
+            self.show_cta_note(cx, &key);
+        }
+        let label = self
+            .auth_chip_label
+            .clone()
+            .unwrap_or_else(|| self.tr("login"));
+        self.ui.button(cx, ids!(go_login)).set_text(cx, &label);
+        self.paint_lang_chip(cx);
+        self.ui.redraw(cx);
+    }
+
+    /// Top-bar language chip shows the language in use (`HI`, `UR`, `EN`).
+    fn paint_lang_chip(&mut self, cx: &mut Cx) {
+        let code = if self.lang.wanted.is_empty() {
+            "en".to_string()
+        } else {
+            self.lang.wanted.clone()
+        };
+        self.ui
+            .button(cx, ids!(go_lang))
+            .set_text(cx, &code.to_uppercase());
+    }
+
+    /// Note under the world shelf: no match / searching / the parade.
+    fn paint_shelf_note(&mut self, cx: &mut Cx) {
+        let key = if self.shelf_hits.is_empty() && !self.shelf_query.trim().is_empty() {
+            "shelf_no_match"
+        } else if !self.shelf_query.trim().is_empty() {
+            "shelf_search_note"
+        } else {
+            "one_famous_dish_per_country"
+        };
+        let text = self.tr(key);
+        self.ui
+            .widget(cx, ids!(menus.menu_note_text))
+            .set_text(cx, &text);
+    }
+
+    /// Floor tile second line: minutes, minutes + running bill, or paid.
+    fn floor_meta(&self, visit: Visit, amount: u32) -> String {
+        if self.lang.is_english() {
+            return floor::meta(visit, amount);
+        }
+        let rupees = floor::rupees(amount);
+        match (visit, visit.minutes()) {
+            (Visit::Free, _) => String::new(),
+            (Visit::Paid, _) => self.tr("floor_meta_paid").replace("{amount}", &rupees),
+            (Visit::Occupied, Some(min)) => {
+                self.tr("floor_meta_min").replace("{min}", &min.to_string())
+            }
+            (_, Some(min)) => self
+                .tr("floor_meta_min_bill")
+                .replace("{min}", &min.to_string())
+                .replace("{amount}", &rupees),
+            (_, None) => String::new(),
+        }
+    }
 }
 
 impl App {
@@ -650,10 +889,13 @@ impl App {
             for (i, layer) in TILE_LAYERS.iter().enumerate() {
                 tile.view(cx, &[*layer]).set_visible(cx, i == visit.index());
             }
-            tile.widget(cx, ids!(word)).set_text(cx, visit.word());
+            let word = locale::key_for(visit.word())
+                .map(|k| self.tr(k))
+                .unwrap_or_else(|| visit.word().to_string());
+            tile.widget(cx, ids!(word)).set_text(cx, &word);
             // A narrow tile cannot hold "26 min · ₹ 1,560" on one line (it was
             // cut at the tile edge on 360 px phones): minutes, then the bill.
-            let meta = floor::meta(visit, *amount);
+            let meta = self.floor_meta(visit, *amount);
             let meta = if self.floor_narrow {
                 meta.replace(" · ", "\n\n")
             } else {
@@ -679,9 +921,12 @@ impl App {
         }
     }
 
-    fn set_cta_notes(&mut self, cx: &mut Cx, text: &str) {
+    /// Note under both CTA rows (`locale::EN` key; repainted on a language change).
+    fn show_cta_note(&mut self, cx: &mut Cx, key: &str) {
+        self.cta_note_key = Some(key.to_string());
+        let text = self.tr(key).replace("{message}", WHATSAPP_MESSAGE);
         for path in [ids!(cta_note_text), ids!(close_note_text)] {
-            self.ui.widget(cx, path).set_text(cx, text);
+            self.ui.widget(cx, path).set_text(cx, &text);
         }
         self.ui.redraw(cx);
     }
@@ -690,10 +935,7 @@ impl App {
         if DOWNLOADS_LIVE {
             open_link(cx, DOWNLOAD_URL);
         } else {
-            self.set_cta_notes(
-                cx,
-                "Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.",
-            );
+            self.show_cta_note(cx, "cta_installers_note");
         }
     }
 
@@ -703,10 +945,7 @@ impl App {
                 let url = format!("https://wa.me/{number}?text={}", url_encode(WHATSAPP_MESSAGE));
                 open_link(cx, &url);
             }
-            None => self.set_cta_notes(
-                cx,
-                &format!("The WhatsApp demo line opens soon. Your message will read: “{WHATSAPP_MESSAGE}”."),
-            ),
+            None => self.show_cta_note(cx, "cta_whatsapp_soon"),
         }
     }
 
@@ -872,8 +1111,8 @@ impl App {
         let next = read_auth_chip_label(cx);
         if next != self.auth_chip_label {
             self.auth_chip_label = next.clone();
-            let text = next.as_deref().unwrap_or("Login");
-            self.ui.button(cx, ids!(go_login)).set_text(cx, text);
+            let text = next.clone().unwrap_or_else(|| self.tr("login"));
+            self.ui.button(cx, ids!(go_login)).set_text(cx, &text);
             self.ui.redraw(cx);
         }
         if self.auth_chip_poll > 0 {
@@ -914,6 +1153,9 @@ impl App {
         self.ui
             .text_input(cx, ids!(menus.shelf_find))
             .set_text(cx, &q);
+        self.ui
+            .widget(cx, ids!(menus.shelf_find_hint))
+            .set_visible(cx, q.is_empty());
         self.set_shelf_query(cx, q);
         // Skip the typing quiet window so preview screenshots see the card.
         self.shelf_search_quiet_until = 0.0;
@@ -1187,21 +1429,12 @@ impl App {
             for path in SHELF_SLOTS {
                 self.ui.view(cx, path).set_visible(cx, false);
             }
-            self.ui
-                .widget(cx, ids!(menus.menu_note_text))
-                .set_text(cx, "No country or dish matches that search.");
+            self.paint_shelf_note(cx);
             self.paint_shelf_chrome(cx);
             self.ui.view(cx, ids!(menus.shelf_parade)).redraw(cx);
             return;
         }
-        let note = if self.shelf_query.trim().is_empty() {
-            "One famous dish per country — the parade loops the whole world."
-        } else {
-            "Search pauses the parade; clear it to resume or stay paused as you left it."
-        };
-        self.ui
-            .widget(cx, ids!(menus.menu_note_text))
-            .set_text(cx, note);
+        self.paint_shelf_note(cx);
         for i in 0..SHELF_SLOT_COUNT {
             self.paint_shelf_slot(cx, i, false);
             self.place_shelf_slot(cx, i);
@@ -1374,16 +1607,7 @@ impl App {
         // Paint after typing settles (flush_shelf_search_paint).
         self.shelf_search_dirty = true;
         self.shelf_search_quiet_until = 0.0;
-        let note = if self.shelf_hits.is_empty() {
-            "No country or dish matches that search."
-        } else if searching {
-            "Search pauses the parade; clear it to resume or stay paused as you left it."
-        } else {
-            "One famous dish per country — the parade loops the whole world."
-        };
-        self.ui
-            .widget(cx, ids!(menus.menu_note_text))
-            .set_text(cx, note);
+        self.paint_shelf_note(cx);
         self.paint_shelf_chrome(cx);
         self.shelf_anim_frame = cx.new_next_frame();
     }
@@ -1656,10 +1880,7 @@ fn open_same_site(cx: &mut Cx, url: &str) {
 fn open_lang_picker(cx: &mut Cx) {
     #[cfg(target_arch = "wasm32")]
     {
-        let url = match read_auth_chip_label(cx) {
-            Some(label) => format!("#lang&auth={}", url_encode(&label)),
-            None => "#lang".to_string(),
-        };
+        let url = bridge_hash(cx, "lang");
         cx.open_url(&url, OpenUrlInPlace::Yes);
     }
     #[cfg(not(target_arch = "wasm32"))]
@@ -1673,10 +1894,7 @@ fn open_lang_picker(cx: &mut Cx) {
 fn open_auth_menu(cx: &mut Cx) {
     #[cfg(target_arch = "wasm32")]
     {
-        let url = match read_auth_chip_label(cx) {
-            Some(label) => format!("#authmenu&auth={}", url_encode(&label)),
-            None => "#authmenu".to_string(),
-        };
+        let url = bridge_hash(cx, "authmenu");
         cx.open_url(&url, OpenUrlInPlace::Yes);
     }
     #[cfg(not(target_arch = "wasm32"))]
@@ -1684,6 +1902,22 @@ fn open_auth_menu(cx: &mut Cx) {
         let _ = cx;
         log!("auth menu is web-only");
     }
+}
+
+/// `#<action>` for the HTML chrome (`lang` picker, `authmenu`) that keeps the
+/// page's `l=` (language) and `auth=` (signed-in chip) segments.
+#[cfg(target_arch = "wasm32")]
+fn bridge_hash(cx: &Cx, action: &str) -> String {
+    let mut url = format!("#{action}");
+    if let OsType::Web(page) = cx.os_type() {
+        if let Some(lang) = site_i18n::lang_from_hash(&page.hash) {
+            url.push_str(&format!("&l={lang}"));
+        }
+    }
+    if let Some(label) = read_auth_chip_label(cx) {
+        url.push_str(&format!("&auth={}", url_encode(&label)));
+    }
+    url
 }
 
 /// Firebase session chip via `#auth=` hash (firebase-init.js). No web-sys —
@@ -1726,6 +1960,8 @@ impl MatchEvent for App {
         let _ = cx.new_next_frame();
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
+        // `#l=<code>` from lang-nav.js (or SITE_LANG natively): fetch that pack.
+        self.sync_lang(cx);
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
@@ -1769,6 +2005,10 @@ impl MatchEvent for App {
             self.set_shelf_speed(cx, next);
         }
         if let Some(text) = self.ui.text_input(cx, ids!(menus.shelf_find)).changed(actions) {
+            // The placeholder is a Label over the input (translatable, any script).
+            self.ui
+                .widget(cx, ids!(menus.shelf_find_hint))
+                .set_visible(cx, text.is_empty());
             self.set_shelf_query(cx, text);
         }
         let download = self.ui.button(cx, ids!(bar_cta)).clicked(actions)
@@ -1849,6 +2089,7 @@ impl AppMain for App {
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
         if let Event::NetworkResponses(responses) = event {
             self.handle_photo_responses(cx, responses);
+            self.handle_lang_responses(cx, responses);
         }
         self.match_event(cx, event);
         self.ui.handle_event(cx, event, &mut Scope::empty());
@@ -1861,7 +2102,10 @@ impl AppMain for App {
                 self.apply_responsive(cx);
             }
             // hashchange (incl. `#auth=`) arrives as Signal on web.
-            Event::Signal => self.sync_auth_chip(cx),
+            Event::Signal => {
+                self.sync_auth_chip(cx);
+                self.sync_lang(cx);
+            }
             Event::Scroll(_) => {
                 self.paint_nav_active(cx);
             }

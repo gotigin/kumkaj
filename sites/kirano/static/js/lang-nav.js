@@ -1,6 +1,16 @@
 /**
  * Site language button — full Kumkaj 115-language catalogue (same as apps).
- * Stores preference; dispatches "gotigin:lang". Sets html lang + dir for RTL.
+ *
+ * Picking a language really changes the page (docs/WEBSITES.md § Language):
+ * - stores it (localStorage "gotigin.site.lang") and sets html lang + dir;
+ * - writes `#l=<code>` into the URL hash (other segments such as `auth=`
+ *   stay) and fires hashchange: the Makepad wasm reads `l=` and fetches
+ *   `/i18n/<code>.tsv` (no web-sys on the wasm side);
+ * - dispatches "gotigin:lang" ({ lang, meta }): site-i18n.js repaints the
+ *   HTML pages (account, shop) from the same packs.
+ * A link that already carries `#l=hi` wins over the stored choice.
+ * Source: sites/_shared/chrome/lang-nav.js — copied to each site by
+ * scripts/sync-site-i18n.sh; do not edit the copies.
  */
 (function () {
   "use strict";
@@ -14,7 +24,52 @@
     return RTL.indexOf(primary) !== -1;
   }
 
+  function known(code) {
+    return LANGS.some(function (l) { return l.code === code; });
+  }
+
+  /** Hash segments except the ones named (`l`, `lang`, …). */
+  function hashParts(drop) {
+    return String(location.hash || "")
+      .replace(/^#/, "")
+      .split("&")
+      .map(function (p) { return p.trim(); })
+      .filter(function (p) {
+        if (!p) return false;
+        var name = p.split("=")[0].toLowerCase();
+        return drop.indexOf(name) === -1;
+      });
+  }
+
+  function hashLang() {
+    var parts = String(location.hash || "").replace(/^#/, "").split("&");
+    for (var i = 0; i < parts.length; i++) {
+      var m = /^l=(.+)$/i.exec(parts[i].trim());
+      if (!m) continue;
+      var raw = decodeURIComponent(m[1]);
+      var hit = LANGS.find(function (l) { return l.code.toLowerCase() === raw.toLowerCase(); });
+      if (hit) return hit.code;
+    }
+    return null;
+  }
+
+  /** Put `l=<code>` in the hash (English: no `l=`) and tell the wasm. */
+  function syncLangHash(code) {
+    var parts = hashParts(["l"]);
+    if (code !== "en") parts.push("l=" + code);
+    var body = parts.join("&");
+    var next = body ? "#" + body : "";
+    if ((location.hash || "") === next) return;
+    try {
+      // No history entry per language change; Makepad listens to hashchange.
+      history.replaceState(null, "", location.pathname + location.search + next);
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } catch (_) {}
+  }
+
   function current() {
+    var fromHash = hashLang();
+    if (fromHash) return fromHash;
     try {
       var v = localStorage.getItem(KEY);
       if (v && LANGS.some(function (l) { return l.code === v; })) return v;
@@ -37,6 +92,7 @@
     try {
       localStorage.setItem(KEY, meta.code);
     } catch (_) {}
+    syncLangHash(meta.code);
     try {
       window.dispatchEvent(
         new CustomEvent("gotigin:lang", { detail: { lang: meta.code, meta: meta } })
@@ -169,8 +225,67 @@
     });
   }
 
+  /** Full 115-lang menu for Makepad EN nav chip (hash #lang) or HTML topnav slot. */
+  function openPicker() {
+    var host = document.getElementById("site-lang-float");
+    if (!host) {
+      host = document.createElement("div");
+      host.id = "site-lang-float";
+      host.className = "site-lang-chrome";
+      host.style.cssText =
+        "position:fixed;top:56px;right:16px;z-index:2147483000;";
+      document.body.appendChild(host);
+    }
+    paint(host);
+    var pop = host.querySelector(".site-lang-pop");
+    var btn = host.querySelector(".site-lang-btn");
+    if (pop) {
+      pop.hidden = false;
+      if (btn) btn.setAttribute("aria-expanded", "true");
+      var search = pop.querySelector(".site-lang-search");
+      if (search) {
+        setTimeout(function () {
+          search.focus();
+        }, 0);
+      }
+    }
+    // Hide the duplicate EN button — Makepad already shows EN in the topbar.
+    if (btn) btn.style.display = "none";
+  }
+
+  function onHash() {
+    // `#lang` opens the picker (Makepad EN chip); `l=` and `auth=` stay.
+    var parts = String(location.hash || "")
+      .replace(/^#/, "")
+      .split("&")
+      .map(function (p) {
+        return p.trim();
+      })
+      .filter(Boolean);
+    if (parts.indexOf("lang") !== -1) {
+      openPicker();
+      var rest = hashParts(["lang"]).join("&");
+      try {
+        history.replaceState(
+          null,
+          "",
+          location.pathname + location.search + (rest ? "#" + rest : "")
+        );
+      } catch (_) {}
+    }
+    // A hand-edited or shared `#l=` link: follow it.
+    var fromHash = hashLang();
+    if (fromHash && fromHash !== (document.documentElement.lang || "en")) {
+      apply(fromHash);
+    }
+  }
+
   function start() {
+    window.__SITE_LANG__ = { current: current, apply: apply, isRtl: isRtl, langs: LANGS };
     apply(current());
+    window.__SITE_OPEN_LANG__ = openPicker;
+    onHash();
+    window.addEventListener("hashchange", onHash);
     var root = mountRoot();
     if (!root) return;
     paint(root);
