@@ -1,254 +1,254 @@
 # Mizo — Mizo ṭawng (lus). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Entirna
+length	A sei zawng
+download_free	A man lovin download rawh
+whatsapp_for_a_demo	Demo atan WhatsApp rawh
+free_on_android_windows_and	Android, Windows leh Linux-ah a man lovin.
+courier_operating_system	courier hna enkawlna system
+parcel_journey	BAWM KAL KAWNG
+walk_in	Lo kal mai
+weigh	Rit zawng
+price	Man
+label	Hming dahna
+hand_over	Hlan rawh
+track	Zui rawh
+offline	Net tel lo
+start	Ṭan rawh
+moklanjo_courier_operating_system	MOKLANJO · COURIER HNA ENKAWLNA SYSTEM
+book_move_and_settle_every	Bawm tin book la, thawn la, inchhiar fel rawh — i hmanrua ngeiah courier OS pakhat.
+parties_books_cod_labels_awb	Mi te, lehkha te, COD, hming dahna, AWB pool, zuina, hlantu leh bil siam — zuar dawhkan aṭanga inchhiar fel thlengin kal kual pum, internet awm emaw awm lo emaw pawh ni se. I hmanruaah a man lovin.
+the_walk_in_loop	LO KAL MAI KAL KUAL
+actual_and_volumetric_side_by	Rit tak leh lian zawng rit, kawp zelin.
+charge	Man lak
+your_rate_card_cash_or	I man list, sum emaw khata.
+next_booking	Booking dawt leh
+one_tap_clears_the_counter	Vawi khat hmet chauhin zuar dawhkan chu mi lo kal dawt leh atan a ruak.
+scroll_the_parcel_journey_rail	Scroll rawh — a chunga bawm kal kawng chuan thawnthuah khawiah nge i awm tih a lantir.
+n_2_weigh_it_right	2 · RIT ZAWNG DIK TAKIN
+actual_or_volumetric_whichever_is	Rit tak emaw lian zawng rit — a sang zawk chu, i duh angin siam ṭhat.
+try_a_box	Bawm pakhat enchhin rawh
+domestic	Ram chhung
+international	Ram pawn
+breadth	A zau zawng
+height	A sang zawng
+weight_on_the_scale	Rit tehna-ah rit zawng
+chargeable_weight	MAN LAK TUR RIT ZAWNG
+the_box_s_size_sets	Bawm lianzia chuan man a ruat.
+higher_of_the_two_rounded	A pahnih zinga a sang zawk, 0.5 kg dawt leh thlengin chawisan.
+in_the_app_the_divisor	App-ah chuan ṭhenna number, siam ṭhat dan leh i tehna (cm emaw inch, kg emaw lb) chu dawrin a ruat. Ram pawn chip chuan Remkhawh khawih lovin booking pakhat atan ÷6000 a thlak.
+n_3_price_it	3 · MAN RUAT RAWH
+your_rate_cards_your_party	I man list te, i mi man te — leh docket tinah i hlawkna.
+rate_card	Man list
+zone_service	Zone · rawihna
+first_0_5_kg	0.5 kg hmasa
+each_0_5_kg	0.5 kg tin
+local_surface	Local · Lei chung
+within_state_express	State chhung · Rang taka
+metro_air	Metro · Thlawhna
+zone_service_weight_slab	Zone × rawihna × rit zawng slab
+first_slab_and_each_extra	Slab hmasa leh slab belh tin, zone leh rawihna a zirin.
+a_consignor_s_own_card	Thawntu man list ngei
+regular_senders_get_their_rates	Thawntu ṭhin te'n an man an hmu; mi dang zawng zawng tan man list pangngai.
+margin_at_the_desk	Dawhkanah ngei hlawkna
+your_sell_price_against_the	Phurtu man nen i zuar man, docket tinah.
+n_4_label_it	4 · HMING DAHNA BELH RAWH
+awb_from_your_own_number	I number pool ngei aṭangin AWB. Hming dahna, scan, zawng.
+number_pools_per_carrier	Phurtu tin number pool
+enter_each_carrier_s_start	Phurtu tin series ṭanna–tawpna vawi khat ziak rawh; booking tinin number dawt leh a la.
+code_128_labels	Code 128 hming dahna
+the_awb_goes_on_the	AWB chu bawmah barcode leh number pangngaiin a awm.
+scan_to_find	Zawng turin scan rawh
+scan_a_label_to_open	Hming dahna scan la a docket hawng la, thil ti rawh.
+n_5_hand_over	5 · HLAN RAWH
+hand_it_to_a_carrier	Phurtu hnenah pe rawh, emaw i hlantu ngei thawn rawh. System ang chiah.
+into_a_carrier_bag	Phurtu kawrah
+the_manifest_holds_exactly_the	Manifest-ah chuan i thlan bawm te chauh an awm — an zavaia emaw pakhat mah lo. Phurtu dang nena book bawm chu he kawrah a lut thei lo.
+onto_your_own_rider_s	I hlantu ngei kalnaah
+pick_the_parcels_print_the	Bawm thlang la, kal kawng lehkha print la, hlantu chuan app ang chiah hlantu mode-ah a hmang — hlan finfiahna nen.
+n_6_track_and_prove	6 · ZUI LA FINFIAH RAWH
+every_move_recorded_and_only	Kal tin ziak a ni — leh a awmzia nei kal chauh.
+booked	Book a ni tawh
+with_carrier	Phurtu hnenah
+out_for_delivery	Delivery turin a chhuak
+delivered	Bungrua hlan
+booked_with_carrier_out_for	Book a ni tawh → Phurtu hnenah → Delivery turin a chhuak → Bungrua hlan
+failed	Hlawhchham
+reason_out_again_or_return	→ a chhan → chhuak leh, emaw thawntu hnenah kir leh rawh.
+impossible_moves_refused	Theih loh kal hnawl a ni
+delivered_returned_and_cancelled	Hlan tawh, kir leh tawh leh tihbo te chu a tawp an ni.
+proof_of_delivery	Hlan finfiahna
+a_photo_and_the_receiver	Docket-ah thlalak pakhat leh dawngtu hming ziak.
+failed_deliveries	Hlan hlawhchham te
+reasons_attempts_out_again_or	Chhan te, tumna te, chhuak leh, emaw thawntu hnenah kir leh.
+n_7_money_comes_home	7 · PAWISA IN LAMAH A LO KAL
+cod_you_can_see_expected	I hmuh theih COD: beisei, pek lut, thawntu tin pek tur.
+rider_cash_end_of_run	Kal tawpah hlantu sum
+rider	Hlantu
+expected	Beisei
+handed_in	Pek lut
+a_14_drops	A · hlan 14
+b_9_drops	B · hlan 9
+short_200_on_rider_b	Hlantu B-ah ₹ 200 a tlachham — a hming nen, belhkhawmah a bo lo.
+cod_register	COD lehkha
+collected_against_paid_out_per	Khawn leh pek, thawntu tin a zirin, pawisa thawn batch nen.
+rider_settlement	Hlantu inchhiar felna
+expected_against_handed_in_and	Beisei leh pek lut, leh commission lehkha.
+books_that_close	Inchhiar fel thei lehkha
+day_book_month_bill_per	Ni lehkha, account tin thla tin bil, leh i chhiar enkawltu tan GST tawi CSV.
+n_8_internet_down	8 · INTERNET A AWM LO?
+keep_booking	Booking chhunzawm rawh.
+booking_labels_scanning_cod_and	Booking, hming dahna, scan, COD leh lehkha te — an zavaiin i hmanruaah an thawk. Internet a thih pawhin zuar dawhkanah engmah a nghak lo.
+office_router_no_internet	Office router: internet a awm lo
+desk_still_booking	Dawhkan: booking a la kal
+second_counter_and_rider_phone	Zuar dawhkan pahnihna leh hlantu fon: office Wi-Fi-ah inzawm
+free_forever_on_your_devices	I hmanruaah chatuanin a man lovin
+nothing_per_rider_user_or	Hlantu, hmangtu emaw bawm tin man a awm lo. I duh chuan Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/kum, chhiah tel lovin — /shop.
+n_9_start	9 · ṬAN RAWH
+one_courier_os_your_parcels	Courier OS pakhat. I bawm te. I lehkha te.
+moklanjo_is_a_complete_courier	Moklanjo hi Kumkaj hnuaia courier hna enkawlna system famkim a ni — Android, Windows leh Linux. Hlantu te'n app ang chiah hlantu mode-ah an hmang.
+trademark	HMING CHHINCHHIAH
+memon_for_find_it_pronounced	Memon ṭawngin “zawng rawh” · lam dan go-tee-geen
+company	KAWMPANI
+brand	THIL HMING
+concrete_business_operating_system	Hna tak tak atan sumdawnna system app te
+product	THIL SIAM
+courier_operating_system_under	Kumkaj hnuaia courier hna enkawlna system
+privacy	Mimal thuruk
+terms	Dan te
+cancellation	Tihbo dan
+cloud_shop	Cloud dawr
+account	Akaunt
+weigh_it_right	Rit zawng dik takin
+price_it	Man ruat
+label_it	Hming dahna belh
+track_and_prove	Zui la finfiah
+money_comes_home	Pawisa in lamah
+internet_down	Internet a awm lo
+bead_hand	Hlan
+bead_offline_short	Net tel lo
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Rit tehna-ah: {kg} kg
+weight_scale_wins	Rit tehna-a rit zawng chuan man a ruat.
+cta_installers_note	Installer tin hmanrua thar-ah install enfiahna an hlawhtlin hnuah heta lo awm an ni ang. Chumi thleng chu WhatsApp-ah demo dil rawh.
+cta_whatsapp_soon	WhatsApp demo line a lo hawng dawn. I thuchah chu hetiang hi a ni ang: “{message}”.
+acct_page_title	Akaunt — Moklanjo
+acct_lede	Website leh app atan akaunt pakhat — mi thar emaw kir leh emaw, form ang chiah.
+acct_email	E-mail
+acct_name_optional	Hming (i duh chuan)
+acct_password	Thuruk
+acct_continue	Chhunzawm
+acct_forgot	Thuruk i theihnghilh em?
+acct_reset_hint	Thuruk siam ṭhatna link kan e-mail ang che. I sign up nana i e-mail address ang chiah hmang rawh.
+acct_send_reset	Siam ṭhatna link thawn rawh
+acct_cancel	Tihbo
+acct_or_continue	emaw hei hmangin chhunzawm rawh
+acct_phone	Fon
+acct_mobile	Fon number
+acct_send_sms	SMS code thawn rawh
+acct_sms_code	SMS-a code
+acct_confirm_code	Code finfiah rawh
+acct_signed_in	I lut tawh
+acct_signed_in_as	Lut tawh
+acct_status	Dinhmun
+acct_sign_in_methods	Luh kawng te
+acct_cloud_username	Cloud hming
+acct_plan	Ruahmanna
+acct_resend_verify	Finfiahna e-mail thawn leh rawh
+acct_sign_out	Chhuak rawh
+acct_cloud_sandbox	Kumkaj Cloud (enchhinna)
+acct_current_password	Tun thuruk
+acct_email_for_password	Thuruk hmanga luh nan e-mail
+acct_new_password	Thuruk thar
+acct_confirm_new_password	Thuruk thar finfiah rawh
+acct_add_way	Luh kawng dang belh rawh
+acct_link_hint	Kawng te akaunt pakhatah zawm rawh, pakhat a hlawhchham pawhin luh theihna i hmu leh theih nan.
+acct_link_google	Google zawm rawh
+acct_link_microsoft	Microsoft zawm rawh
+acct_link_github	GitHub zawm rawh
+acct_link_phone	Fon zawm rawh
+acct_send_sms_link	Zawm nan SMS thawn rawh
+acct_confirm_link_phone	Finfiah la fon zawm rawh
+shop_page_title	Dawr — Moklanjo
+shop_lede	Kum tin cloud ruahmanna — chhiah chu pawisa pekna-ah belh a ni. I hmanrua ngeiah Moklanjo app pum chu chatuanin a man lovin a awm, advertisement tel lovin.
+shop_cart	Leina bawm
+shop_cart_empty_hint	I leina bawm a ruak. Steady, Swift emaw Priority belh rawh.
+shop_checkout	Pawisa pekna
+shop_clear	Thai fai rawh
+shop_checkout_hint	Pawisa pekna chuan Akaunt-ah a luttir che a, chumi hnuah pawisa pek a ṭan (enchhinna mock, emaw key siam a nih chuan Paddle).
+acct_billing_hint	Kum tin ruahmanna — pawisa pekna-ah gateway-in chhiah a belh. Local hmanna chu chatuanin a man lovin a awm. Duh ang chu man chhut a ni (Steady aiin a hniam emaw Priority aiin a sang thei).
+shop_cloud_plans	Cloud ruahmanna te
+acct_federated	Inzawm luhna
+acct_err_invalid_email	E-mail address dik ziak rawh.
+acct_err_weak_password	Hawrawp 6 tal awmna thuruk hmang rawh.
+acct_err_wrong_password	Thuruk a dik lo.
+acct_err_invalid_credential	E-mail emaw thuruk a dik lo.
+acct_err_popup_closed	Luhna tukverh a khar.
+acct_err_popup_cancelled	Luhna tihbo a ni.
+acct_err_unauthorized_domain	He domain hi Firebase Auth atan phalsak a ni lo.
+acct_err_method_disabled	He luh kawng hi tun thleng hian a ṭan lo.
+acct_err_too_many	Tum tam lutuk. A hnuah tum leh rawh.
+acct_err_phone_format	Ram code nen fon number pum hmang rawh (entirnan +91…).
+acct_err_sms_code	SMS code chu a dik lo emaw a hun a tawp tawh.
+acct_err_no_account	He e-mail hian akaunt a nei lo. Thar siam turin chhunzawm la, emaw kawng dang hmang rawh.
+acct_err_recent_login	Himna atan lut leh la, chumi hnuah he danglamna hi ti leh rawh.
+acct_err_credential_in_use	He luh kawng hi akaunt dangin a hmang tawh.
+acct_err_email_in_use	He e-mail hi akaunt dangin a hmang tawh.
+acct_err_already_linked	He kawng hi he akaunt-ah hian zawm a ni tawh.
+acct_err_exists_other_method	He e-mail hian luh kawng dang hmangin akaunt a nei tawh. A hmasain chu kawng chuan lut la, chumi hnuah i akaunt phek aṭangin hei hi zawm rawh.
+acct_err_generic	Engemaw a diklo.
+acct_method_password	E-mail leh thuruk
+acct_pw_hint_change	I thuruk thlak rawh. Tun thuruk hmangin i finfiah ang.
+acct_pw_hint_add	E-mail hmanga i luh theih nan thuruk belh rawh (provider pakhat a awm loh chuan a ṭangkai).
+acct_pw_change	Thuruk thlak rawh
+acct_pw_add	Thuruk belh rawh
+acct_billing_off	Cloud API-ah bil siamna a la ṭan lo.
+acct_billing_no_provider	Cloud API-ah bil siamna provider tak tak a la ṭan lo (mock chu local-ah chauh).
+price_quote	Man chhut
+price_per_year	₹{amount}/kum, chhiah tel lovin
+acct_pay_received	Pawisa kan dawng — i ruahmanna kan siam thar mek…
+acct_pay_declined	Pawisa pek a hnawl emaw a hlawhchham
+acct_pay_failed_detail	{detail}. I ruahmanna thlak a ni lo.
+acct_checkout_closed	Pawisa pekna a khar — pawisa pek a zo lo. I ruahmanna a danglam lo.
+acct_checkout_failed	Pawisa pekna a hlawhchham
+acct_pay_with	{provider} hmangin pe rawh
+acct_plan_until	{plan} · {date} thleng
+acct_unavailable	A awm lo
+acct_continue_hint	E-mail, provider emaw fon hmangin chhunzawm rawh.
+acct_signed_in_fallback	(lut tawh)
+acct_email_verified	E-mail finfiah a ni
+acct_email_unverified	E-mail a la finfiah lo — i inbox en rawh
+acct_signed_in_phone	Fon hmangin i lut
+acct_none_listed	Tun thleng hian engmah a awm lo
+acct_signed_in_status	I lut tawh.
+acct_created	Akaunt siam a ni. I theih hunah finfiah turin i e-mail en rawh.
+acct_reset_sent	Chu e-mail-in akaunt a neih chuan, siam ṭhatna link a lo kal mek. I inbox en rawh.
+acct_another_method	kawng dang
+acct_exists_via	{email} tan akaunt {method} hmangin a awm tawh. A hmasain chu kawng chuan lut la, chumi hnuah i akaunt phek aṭangin he provider hi zawm rawh.
+acct_enter_current_pw	I tun thuruk ziak rawh.
+acct_relogin_retry	Chhuak la lut leh rawh, chumi hnuah tum leh rawh.
+acct_pw_mismatch	Thuruk thar leh finfiahna a inmil lo.
+acct_pw_updated	Thuruk thlak a ni.
+acct_enter_email_pw	Thuruk hmanga luh nan e-mail ziak rawh.
+acct_pw_added	Thuruk belh a ni. Tunah e-mail hmangin i lut thei bawk.
+acct_method_linked	Luh kawng zawm a ni.
+acct_phone_linked	Fon chu he akaunt-ah zawm a ni.
+acct_verify_sent	Finfiahna e-mail thawn a ni — i inbox en rawh.
+shop_pricing_soon	Man a lo chhuak dawn
+shop_request_quote	Man chhut dil rawh
+shop_add_to_cart	Leina bawmah dah rawh
+shop_notify_later	A hnuah min hrilh rawh
+shop_included	A tel
+shop_in_cart	{plan} chu i leina bawmah a awm.
+shop_remove	Paih rawh
+shop_cart_is_empty	Leina bawm a ruak.
+shop_prices_unpublished	He thil atan hian mahni leina man a la tichhuak lo. Duh ang man chhut dil la emaw a hnuah en leh rawh.
+shop_cart_cleared	Leina bawm thai fai a ni.
+plan_free_title	Chatuanin a man lovin
+plan_free_blurb	I hmanruaah local thil pum. Cloud man a awm lo.
+plan_steady_blurb	Live cloud · 10 GB · bandwidth hniam
+plan_swift_blurb	Live cloud · 25 GB · bandwidth lai
+plan_priority_blurb	Live cloud · 50 GB · bandwidth sang ber
+plan_custom_title	Duh ang
+plan_custom_blurb	Remruat kota leh bandwidth. Man chhut chu Steady aiin a hniam emaw Priority aiin a sang thei.

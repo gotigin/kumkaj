@@ -1,280 +1,280 @@
 # Khasi — Khasi (kha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Nuksa
+free	Kaba thylli
+photo_coming	Ka dur kan wan kloi
+get_it_on_google_play	Ioh na Google Play
+whatsapp_for_a_demo	WhatsApp na ka bynta ka demo
+menus	Ki menu
+how_it_works	Kumno ka trei
+features	Ki jingbha
+offline	Khlem lain
+pricing	Ka dor
+faq	Ki jingkylli
+login	Rung
+get_it_free	Ioh laitluid
+restaurant_pos_free_forever	POS jong ka jaka bam · laitluid junom
+lunch_rush_no_internet_no	Ka jingkynriah jong ka por bam step. Ym don internet. Ym don jingeh.
+khaynjo_runs_your_floor_kitchen	Khaynjo ka pyntrei ia ka jaka bam, ka kamra shet ja bad ka kaunta jong phi ha ki device ba phi la don — na ka miej bam sha ka kamra shet ja sha ka bill, lada don lane ym don internet.
+android_on_google_play_today	Android mynta ha Google Play · Ki package Windows bad Linux kin wan.
+works_with_no_internet	Ka trei khlem internet
+your_books_stay_on_your	Ki kot jong phi ki sah ha ki device jong phi
+n_115_languages_on_screen	115 ki ktien ha ka screen
+your_floor_at_a_glance	Ka jaka bam jong phi ha kawei ka jingkhmih
+tap_a_table_to_walk	Nion ia kawei ka miej bam bad peit ia ka jingwan kawei naduh ka jingsdang haduh ka jingkut. Ki rong bad ki kyntien kiba syn kum ha ka app — bad ka miej bam ka long thylli tang hadien ba la siew ia ka bill.
+every_country	MAN KA RI
+every_country_at_your_counter	Man ka ri ha ka kaunta jong phi
+one_famous_dish_from_every	Kawei ka jingbam ba paw na man ka ri — ka kyrteng jong ka ri ha ka ktien phareng, ka kyrteng ha ka dak jong ka ktien jong ki hi, bad ka kyrteng jong ka jingbam ha ka ktien phareng. Thoh ia kito ki kyntien ha ka menu jong phi. Ka pyrthei ka iaid shaphrang; lada phi kwah ban peit, pynsangeh lane wad.
+find_a_country_or_dish	Wad ia ka ri lane ka jingbam — kum India, biryani, Japan
+one_famous_dish_per_country	Kawei ka jingbam ba paw na man ka ri — kane ka jingiaid ka kynriah ia baroh ka pyrthei.
+how_a_service_runs	KUMNO KA IAID KA JINGSHAKRI
+one_table_start_to_finish	Kawei ka miej bam, naduh ka jingsdang haduh ka jingkut.
+watch_a_table_go_from	Peit kumno ka miej bam ka iaid naduh ba ki shong haduh ba ki siew — ki jingiaid bad ki rong kiba syn kumba ki nongtrei jong phi ki iohi ha ka app.
+occupied	La shong
+in_kitchen	Ha ka kamra shet ja
+food_ready	Ka jingbam ka la khreh
+served	La shakri
+bill_printed	La pynmih ia ka bill
+paid	La siew
+seat_the_table_take_the	Pynshong ha ka miej bam, shim ia ka jingbthah
+mark_the_table_occupied_the	Thoh “La shong” ha ka miej bam ha kaba ki nongbam ki shong. Bujli ia ki jingbam, jied ia ka jingheh, bujli ia ki jingbujli, bad thoh ia ka kot na ka bynta ka kamra shet ja — hapoh ka miej bam hi.
+sizes_and_add_ons	Ka jingheh bad ki jingbujli
+pick_one_size_add_optional	Jied kawei ka jingheh; bujli ia ki jingbujli haduh ka jingkut ba phi la buh.
+a_note_per_dish	Kawei ka kot na man ka jingbam
+less_spicy_travels_with_the	“Tlem sohmynken” ka leit lang bad ka jingbam jong ka.
+t4_occupied	T4 · La shong
+note_less_salt	Ka kot: tlem mluh
+one_ticket_per_kitchen_station	Kawei ka tiket na man ka jaka shet ja
+send_the_order_and_each	Phah ia ka jingbthah bad man ka jaka shet ja ka ioh tang ia ki jingbam jong ka — bad u nombar man ka sngi, ka miej bam, u nongshakri bad man ka kot. Ym don dor: ka kamra shet ja ka shet, ka kaunta ka pynmih ia ka bill.
+prints_itself	Ka pynmih da lade
+send_and_the_ticket_prints	Phah, bad ka tiket ka mih ha ka jaka ba dei — ym donkam ba uno uno un rah.
+example_ticket	Nuksa ka tiket
+the_kitchen_sees_what_to	Ka kamra shet ja ka iohi aiu ban shet mynta
+on_the_kitchen_screen_tickets	Ha ka screen jong ka kamra shet ja ki tiket ki iaid Thymmai → Ka jingpynkhreh → La khreh da kawei ka jingnion. Ki tiket ba tymmen ki kylla rong, “Shet mynta” ka kyrhuh ia man ka jingbam ba dang ap, bad ki jingbam kiba kongsan ki lah ban ap haduh ba ki starter ki leit.
+new	Thymmai
+preparing	Ka jingpynkhreh
+ready	La khreh
+example_kitchen_screen	Nuksa ka screen kamra shet ja
+settle_any_way_the_guest	Pynkhlain ia ka jingsiew kumba u nongbam u siew
+cash_with_change_to_return	Ka pisa lang bad ka pisa ban pynphai, UPI bad ka jingbun pisa ba la don ha ka QR, ka jingsiew bynta, lane Ka bai ha ka kot khata jong u nongthied. Bynta da ki tiar, da ki jaka shong lane ryntieh. Ka miej bam ka long thylli tang haba la siew ia ka bill.
+tips_stay_apart	Ka tip ka sah pat
+a_tip_is_recorded_on	Ka tip la thoh pat — ym ju iasnoh bad ka jingdie.
+t4_bill_printed	T4 · La pynmih ia ka bill
+bill	Ka bill
+customer_paid_cash	U nongthied u la siew (ka pisa)
+return_to_customer	Pynphai sha u nongthied
+close_the_day_you_can	Ka jingkhang sngi ba phi lah ban ngeit
+count_the_drawer_against_the	Kyrhuh ia ka drawer pyrshah bad ka float, ka pisa ba la shim, ki tip bad ka pisa ba la siew — kaba duna lane kaba palat la pyni shai. Pynmih ia ka slip shift, nangta plie ia ka kaiphod sngi da ki nongtrei, ka jaid jingbthah, ka por bad ka jingbam, lang bad ki jingpynsangeh, ki jingbam laitluid bad ki tip.
+shift_close	Khang shift
+opening_float	Ka pisa sdang
+cash_taken	+ ka pisa ba la shim
+cash_tips	+ ki tip pisa
+cash_paid_out	− ka pisa ba la siew
+expected_in_the_drawer	Ka dei ban don ha ka drawer
+counted	La kyrhuh
+short	Duna
+everything_else_the_floor_needs	BAROH KIWEI PAT KI JINGDONKAM JONG KA JAKA BAM
+built_for_a_real_service	La shna na ka bynta ka jingshakri shisha.
+the_changes_that_happen_every	Ki jingkylla kiba jia man ka por bam step — la peit shai, bad la thoh uno, haba bad balei.
+move_and_merge_tables	Pynkylla bad pynlang ia ki miej bam
+guests_change_tables_the_order	Ki nongbam ki kylla miej bam — ka jingbthah bad ki minit jong ka ki leit lang. Ar ki miej bam, kawei ka bill.
+cancel_after_the_kot	Pynsangeh hadien u KOT
+with_a_reason_cooked_or	Lang bad ka daw, la shet lane em, bad uno u la ai jingbit. Ka kamra shet ja ka ioh ia ka slip jingpynsangeh.
+complimentary_dishes	Ki jingbam laitluid
+a_comp_stays_on_the	Ka jingbam laitluid ka sah ha ka bill ha ₹ 0, lang bad ka daw bad u nongai jingbit.
+rights_per_person	Ki hak na man u briew
+each_action_is_allowed_allowed	Man ka kam ka biang, ka biang lang bad u PIN manager, lane kam biang — briew na briew.
+your_menu_your_words	Ka menu jong phi, ki kyntien jong phi
+search_by_name_or_short	Wad da ka kyrteng lane da u code ba lyngkot, lang bad ki kyrteng kiwei ha kiwei pat ki ktien — “ptk” u wad ia Paneer tikka.
+area_prices_and_happy_hour	Ka dor da ka jaka bad happy hour
+a_dearer_price_in_the	Ka dor ba kordor ha ka kamra AC; ki menu jingbam step bad ki dor happy hour da ka por.
+customer_khata	Ka khata jong u nongthied
+part_payments_and_due_go	Ki jingsiew bynta bad Ka bai ki leit ha ka khata jong u nongthied ha Ki party, la pynkhlain hadien.
+reports_that_answer_questions	Ki kaiphod kiba jubab ia ki jingkylli
+sales_by_staff_order_type	Ka jingdie da ki nongtrei, ka jaid jingbthah, ka por bad ka jingbam — lang bad ki jingpynsangeh, ki jingbam laitluid bad ki tip.
+start_with_a_menu	SDANG BAD KAWEI KA MENU
+your_menu_ready_in_minutes	Ka menu jong phi, ka khreh ha khyndiat ki minit.
+set_up_your_counter_and	Pynbeit ia ka kaunta jong phi bad jied kawei ka menu sdang bad ki dur — nangta kylla ia ki kyrteng, ki dor bad ki code kumba phi kwah. Ioh laitluid na khaynjo.com.
+starter_menu	Ka menu sdang
+khaynjo_starter_menu	Ka menu sdang Khaynjo
+world_cuisines_japanese_mexican	Ki jingbam pyrthei — Japan, Mexico, Italy, India, Thai bad kiwei — man ka jingbam bad ka dur jong ka.
+n_14_dishes_11_categories	14 ki jingbam · 11 ki jaid
+cafe_starter	Ka café sdang
+tea_coffee_cold_drinks_bakery	Sha, kofi, ki jingdih khriat, bakery bad jingbam rit — ka khreh na ka bynta ka café kaunta.
+n_22_dishes_4_categories	22 ki jingbam · 4 ki jaid
+photo_shelf	Ka jaka buh dur
+khaynjo_dish_photos	Ki dur jingbam Khaynjo
+the_full_public_photo_shelf	Baroh ka jaka buh dur ba paw — jied ia ka dur na ka bynta man ka jingbam ba phi bujli.
+n_1_459_dish_photos_25	1,459 ki dur jingbam · 25 ki jaid kamra shet ja
+internet_down	YM DON INTERNET?
+the_internet_went_down_the	Ka internet ka la duh. Ka kaunta kam la duh.
+orders_kitchen_tickets_bills_and	Ki jingbthah, ki tiket kamra shet ja, ki bill bad ka kot sngi ki sah ha ki device jong phi hi. Haba ka internet ka duh ha pdeng ka por bam step, ym don ei ei ha ka jaka bam jong phi ba ap ia ka — bad ym don account bad ngi ban rung.
+right_now_mid_lunch	Mynta, ha pdeng ka por bam step
+router_no_internet	Router: ym don internet
+counter_taking_orders_and_settling	Ka kaunta: ka dang shim jingbthah bad pynkhlain ia ki bill
+day_book_every_bill_saved	Ka kot sngi: man ka bill la pynsah ha kane ka device
+captains_tablets_and_the_kitchen	Ki tablet jong ki captain bad ka screen kamra shet ja: ki trei lang ha ka Wi-Fi jong phi hi
+eyebrow_pricing	KA DOR
+free_forever_on_your_devices	Laitluid junom ha ki device jong phi.
+software_capability_is_not_what	Ngim die ia ka bor jong ka software. Pyntrei ia baroh ka Khaynjo ha ki device jong phi khlem dor — ym don ei ei ba la khang hapoh ka plan.
+khaynjo_on_your_devices	Khaynjo ha ki device jong phi
+forever	junom
+every_feature	Man ka jingbha
+floor_kitchen_billing_day_close	Ka jaka bam, ka kamra shet ja, ka bill, ka khang sngi, ki kaiphod — baroh ka app.
+no_per_seat_charge	Ym don dor na man ka jaka shong
+no_charge_per_table_waiter	Ym don dor na man ka miej bam, u nongshakri, ka jingbthah lane ka device.
+no_account_with_us	Ym donkam account bad ngi
+day_to_day_service_needs	Ka jingshakri man ka sngi kam donkam sign-up bad kam donkam internet.
+kumkaj_cloud_optional	Kumkaj Cloud · lada phi kwah
+yearly_cloud_if_you_want	Ka cloud man ka snem lada phi kwah
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / snem khlem ka shuiñ (ka shuiñ ha ka jingsiew). Ka jaid ba la pynbeit ka dei ka jingkhein dor — ka lah ban duna ia Steady lane palat ia Priority. Kumno kumno, Khaynjo ha ka jaka jong phi ka sah laitluid junom.
+shop_plans_at_shop_sign	Thied ia ki plan ha /shop · rung ha /account
+open_cloud_shop	Plie ia ka dukan cloud
+questions	KI JINGKYLLI
+asked_before_every_first_service	La kylli shwa ia man ka jingshakri nyngkong.
+do_i_need_the_internet	Nga donkam ia ka internet?
+no_orders_kots_bills_and	Em. Ki jingbthah, ki KOT, ki bill bad ka kot sngi ki trei khlem internet. Phi donkam ia ka shisien ban ioh ia ka app bad, lada phi kwah, ia ka menu sdang.
+where_are_my_bills_kept	Hangno la buh ia ki bill jong nga?
+on_your_own_device_in	Ha ka device jong phi hi, ha ka dukan jong phi — kam ha ki server jong ngi. Shna ki kopi backup na Ki jingpynbeit bad buh ia ki hangno hangno ba phi kwah.
+which_devices_does_it_run	Ha kiei ki device ka trei?
+android_phones_and_tablets_today	Mynta ha ki phone bad tablet Android, na Google Play. Ki package Windows bad Linux ki dang wan.
+does_it_print_kots_and	Ka pynmih ia ki KOT bad ki bill?
+yes_on_thermal_printers_you	Haoid — ha ki printer thermal ba phi pynbeit ha Ki jingpynbeit → Ki nongpynmih kot, kawei ka tiket kamra shet ja na man ka jaka.
+can_my_staff_use_their	Ki nongtrei jong nga ki lah ban pyndonkam ia ka ktien jong ki?
+yes_the_screens_come_in	Haoid. Ki screen ki wan ha 115 ki ktien, Arabic bad Urdu na kamon sha kadiang, bad ki kyrteng jingbam ki lah ban don ki kyrteng kiwei ha kiwei pat ki dak.
+what_does_it_cost	Katno ka dor jong ka?
+nothing_on_your_own_devices	Ym don ei ei ha ki device jong phi — man ka jingbha, junom. Ka Kumkaj Cloud lada phi kwah ka dei Steady / Swift / Priority man ka snem (lane ka jingkhein dor); plie ia /shop ban thied.
+ready_for_lunch	PHI LA KHREH NA KA BYNTA KA POR BAM STEP?
+run_your_next_service_on	Pyntrei ia ka jingshakri ba bud jong phi ha Khaynjo.
+free_on_google_play_want	Laitluid ha Google Play. Phi kwah ban peit baroh shwa? Phah message sha ngi ha WhatsApp.
+privacy	Ka jingrieh
+terms	Ki kyndon
+cancellation	Ka jingpynsangeh
+photo_credits	Ki nongthaw dur
+cloud_shop	Ka dukan cloud
+account	Ka account
+cta_installers_note	Ki installer kin wan hangne haba man u wei u la jop ia ka jingpule install ha ka mashin ba khuid. Haduh kata, kylli ia ka demo ha WhatsApp.
+cta_whatsapp_soon	Ka lain demo WhatsApp kan plie kloi. Ka message jong phi kan long: “{message}”.
+shelf_no_match	Ym don ri lane jingbam ba iadei bad kata ka jingwad.
+shelf_search_note	Ka jingwad ka pynsangeh ia ka jingiaid; pynkhuid ia ka ban sdang biang lane sah sangeh kumba phi la ieh.
+floor_meta_min	{min} minit
+floor_meta_min_bill	{min} minit · ₹ {amount}
+floor_meta_paid	₹ {amount} la siew
+acct_page_title	Ka account — Khaynjo
+acct_lede	Kawei ka account na ka bynta ka site bad ki app — ka form ka syn lada phi dei thymmai lane phi wan biang.
+acct_email	Ka email
+acct_name_optional	Ka kyrteng (lada phi kwah)
+acct_password	Ka ktien rieh
+acct_continue	Bteng
+acct_forgot	Phi la klet ia ka ktien rieh?
+acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia ka address ba syn ba phi la sign up.
+acct_send_reset	Phah ia ka link reset
+acct_cancel	Pynsangeh
+acct_or_continue	lane bteng da
+acct_phone	Ka phone
+acct_mobile	U nombar mobile
+acct_send_sms	Phah ia u code SMS
+acct_sms_code	U code SMS
+acct_confirm_code	Pynshisha ia u code
+acct_signed_in	La rung
+acct_signed_in_as	La rung kum
+acct_status	Ka jinglong
+acct_sign_in_methods	Ki lad ban rung
+acct_cloud_username	Ka kyrteng cloud
+acct_plan	Ka plan
+acct_resend_verify	Phah biang ia ka email jingpynshisha
+acct_sign_out	Mih
+acct_cloud_sandbox	Kumkaj Cloud (ka jaka pule)
+acct_current_password	Ka ktien rieh mynta
+acct_email_for_password	Ka email na ka bynta ka jingrung da ka ktien rieh
+acct_new_password	Ka ktien rieh thymmai
+acct_confirm_new_password	Pynshisha ia ka ktien rieh thymmai
+acct_add_way	Bujli kawei pat ka lad ban rung
+acct_link_hint	Pyniasoh ia ki lad sha kawei ka account ba phi lah ban ioh biang ia ka jingrung lada kawei ka bym longkam.
+acct_link_google	Pyniasoh ia Google
+acct_link_microsoft	Pyniasoh ia Microsoft
+acct_link_github	Pyniasoh ia GitHub
+acct_link_phone	Pyniasoh ia ka phone
+acct_send_sms_link	Phah SMS ban pyniasoh
+acct_confirm_link_phone	Pynshisha bad pyniasoh ia ka phone
+shop_page_title	Ka dukan — Khaynjo
+shop_lede	Ki plan cloud man ka snem — ka shuiñ la bujli ha ka jingsiew. Baroh ka app Khaynjo ha ki device jong phi ka sah laitluid junom, khlem ki jingpynbna.
+shop_cart	Ka cart
+shop_cart_empty_hint	Ka cart jong phi ka thylli. Bujli ia Steady, Swift, lane Priority.
+shop_checkout	Ka jingsiew
+shop_clear	Pynkhuid
+shop_checkout_hint	Ka jingsiew ka pynrung ia phi ha ka Account, nangta ka sdang ia ka jingsiew (ka mock ka jaka pule lane Paddle haba la buh ia ki key).
+acct_billing_hint	Ki plan man ka snem — ka shuiñ la bujli da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah laitluid junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
+shop_cloud_plans	Ki plan cloud
+acct_federated	Ka jingrung ba iasoh
+acct_err_invalid_email	Thoh ia ka address email ba dei.
+acct_err_weak_password	Pyndonkam ia ka ktien rieh bad 6 ki dak tang khyndiat.
+acct_err_wrong_password	Ka ktien rieh ka bakla.
+acct_err_invalid_credential	Ka email lane ka ktien rieh ka bakla.
+acct_err_popup_closed	La khang ia ka window jingrung.
+acct_err_popup_cancelled	La pynsangeh ia ka jingrung.
+acct_err_unauthorized_domain	Kane ka domain kam don jingbit na ka bynta Firebase Auth.
+acct_err_method_disabled	Kata ka lad ban rung kam pat sdang.
+acct_err_too_many	Bun palat ki jingpyrshang. Pyrshang biang hadien.
+acct_err_phone_format	Pyndonkam ia u nombar phone baroh bad u code ri (kum +91…).
+acct_err_sms_code	Kata u code SMS u bakla lane u la kut ka por.
+acct_err_no_account	Ym don account bad kata ka email. Bteng ban shna kawei, lane pyndonkam ia kiwei pat ki lad.
+acct_err_recent_login	Na ka bynta ka jingshngain, rung biang, nangta pyrshang biang ia kane ka jingkylla.
+acct_err_credential_in_use	Kata ka lad ban rung la pyndonkam da kawei pat ka account.
+acct_err_email_in_use	Kata ka email la pyndonkam da kawei pat ka account.
+acct_err_already_linked	Kata ka lad la iasoh lypa bad kane ka account.
+acct_err_exists_other_method	Don lypa ka account bad kane ka email da kawei pat ka lad ban rung. Rung shwa da kata ka lad, nangta pyniasoh ia kane na ka sla account jong phi.
+acct_err_generic	Don ei ei kaba la bakla.
+acct_method_password	Ka email bad ka ktien rieh
+acct_pw_hint_change	Kylla ia ka ktien rieh jong phi. Phin pynshisha da ka ktien rieh mynta.
+acct_pw_hint_add	Bujli ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
+acct_pw_change	Kylla ia ka ktien rieh
+acct_pw_add	Bujli ia ka ktien rieh
+acct_billing_off	Ka jingsiew bill kam pat sdang ha ka cloud API.
+acct_billing_no_provider	Ym don u nongai jingsiew bill shisha ha ka cloud API (ka mock tang ha ka jaka).
+price_quote	Ka jingkhein dor
+price_per_year	₹{amount}/snem khlem ka shuiñ
+acct_pay_received	La ioh ia ka jingsiew — dang pynthymmai ia ka plan jong phi…
+acct_pay_declined	La pynsangeh lane bym longkam ka jingsiew
+acct_pay_failed_detail	{detail}. Ka plan jong phi kam la kylla.
+acct_checkout_closed	La khang ia ka jingsiew — ym don jingsiew ba la dep. Ka plan jong phi kam kylla.
+acct_checkout_failed	Ka jingsiew ka bym longkam
+acct_pay_with	Siew da {provider}
+acct_plan_until	{plan} · haduh {date}
+acct_unavailable	Ym don
+acct_continue_hint	Bteng da ka email, u nongai, lane ka phone.
+acct_signed_in_fallback	(la rung)
+acct_email_verified	La pynshisha ia ka email
+acct_email_unverified	Kam pat pynshisha ia ka email — peit ia ka inbox jong phi
+acct_signed_in_phone	La rung da ka phone
+acct_none_listed	Ym pat don ei ei
+acct_signed_in_status	Phi la rung.
+acct_created	La shna ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
+acct_reset_sent	Lada don ka account na ka bynta kata ka email, ka link reset ka dang wan. Peit ia ka inbox jong phi.
+acct_another_method	kawei pat ka lad
+acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia kane u nongai na ka sla account jong phi.
+acct_enter_current_pw	Thoh ia ka ktien rieh mynta jong phi.
+acct_relogin_retry	Mih bad rung biang, nangta pyrshang biang.
+acct_pw_mismatch	Ka ktien rieh thymmai bad ka jingpynshisha kim iadei.
+acct_pw_updated	La pynthymmai ia ka ktien rieh.
+acct_enter_email_pw	Thoh ia ka email ban pyndonkam bad ka jingrung da ka ktien rieh.
+acct_pw_added	La bujli ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
+acct_method_linked	La pyniasoh ia ka lad ban rung.
+acct_phone_linked	La pyniasoh ia ka phone bad kane ka account.
+acct_verify_sent	La phah ia ka email jingpynshisha — peit ia ka inbox jong phi.
+shop_pricing_soon	Ki dor kin wan kloi
+shop_request_quote	Kylli ia ka jingkhein dor
+shop_add_to_cart	Bujli ha ka cart
+shop_notify_later	Ong ia nga hadien
+shop_included	La kynthup
+shop_in_cart	{plan} ka don ha ka cart jong phi.
+shop_remove	Weng
+shop_cart_is_empty	Ka cart ka thylli.
+shop_prices_unpublished	Ki dor ban thied da lade kim pat pynpaw na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
+shop_cart_cleared	La pynkhuid ia ka cart.
+plan_free_title	Laitluid junom
+plan_free_blurb	Baroh ka tiar ha ka jaka ha ki device jong phi. Ym don dor cloud.
+plan_steady_blurb	Ka cloud ba im · 10 GB · bandwidth ba duna
+plan_swift_blurb	Ka cloud ba im · 25 GB · bandwidth pdeng
+plan_priority_blurb	Ka cloud ba im · 50 GB · bandwidth ba kham jrong
+plan_custom_title	Ba la pynbeit
+plan_custom_blurb	Ka jingbun bad ka bandwidth ba la ia ngeit. Ka jingkhein dor ka lah ban duna ia Steady lane palat ia Priority.

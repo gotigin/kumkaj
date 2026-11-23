@@ -1,254 +1,254 @@
 # Khasi — Khasi (kha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Nuksa
+length	Ka jingjrong
+download_free	Ioh laitluid
+whatsapp_for_a_demo	WhatsApp na ka bynta ka demo
+free_on_android_windows_and	Laitluid ha Android, Windows bad Linux.
+courier_operating_system	ka system jong ka kam courier
+parcel_journey	KA JINGIAID JONG KA PARSEL
+walk_in	Nongwan
+weigh	Khia
+price	Ka dor
+label	Ka label
+hand_over	Aiti
+track	Bud
+offline	Khlem lain
+start	Sdang
+moklanjo_courier_operating_system	MOKLANJO · KA SYSTEM JONG KA KAM COURIER
+book_move_and_settle_every	Buh jaka, phah bad pynkhlain ia man ka parsel — kawei ka OS courier ha ki device jong phi.
+parties_books_cod_labels_awb	Ki party, ki kot, COD, ki label, ki pool AWB, ka jingbud, ki nongniah kali bad ka bill — baroh ka jingkynriah naduh ka kaunta haduh ka jingpynkhlain, lada don lane ym don internet. Laitluid ha ki device jong phi.
+the_walk_in_loop	KA JINGKYNRIAH NONGWAN
+actual_and_volumetric_side_by	Ka jingkhia shisha bad ka jingkhia da ka jingheh, iakhap ia ki.
+charge	Ka dor
+your_rate_card_cash_or	Ka kot dor jong phi, ka pisa lane ka khata.
+next_booking	Ka jingbuh jaka ba bud
+one_tap_clears_the_counter	Kawei ka jingnion ka pynthylli ia ka kaunta na ka bynta u nongwan ba bud.
+scroll_the_parcel_journey_rail	Scroll — ka lynti jingiaid parsel haneng ka pyni hangno phi don ha ka khana.
+n_2_weigh_it_right	2 · KHIA BA DEI
+actual_or_volumetric_whichever_is	Ka jingkhia shisha lane ka jingkhia da ka jingheh — kaba kham jrong, la pynbeit kumba phi kwah.
+try_a_box	Pyrshang ia kawei ka box
+domestic	Hapoh ka ri
+international	Bar ri
+breadth	Ka jingsaid
+height	Ka jingjrong haneng
+weight_on_the_scale	Ka jingkhia ha ka tarju
+chargeable_weight	KA JINGKHIA BA DONKAM BAN SIEW
+the_box_s_size_sets	Ka jingheh jong ka box ka buh ia ka dor.
+higher_of_the_two_rounded	Kaba kham jrong na kiba ar, la pynkiew sha ka 0.5 kg ba bud.
+in_the_app_the_divisor	Ha ka app ka dukan ka buh ia u nongbynta, ka jingpynbeit bad ki unit jong phi (cm lane inch, kg lane lb). U chip Bar ri u kylla ia ka ÷6000 na ka bynta kawei ka jingbuh jaka khlem da kylla ia Ki jingpynbeit.
+n_3_price_it	3 · BUH DOR
+your_rate_cards_your_party	Ki kot dor jong phi, ki dor party jong phi — bad ka jingmyntoi jong phi ha man u docket.
+rate_card	Ka kot dor
+zone_service	Ka jaka · ka jingshakri
+first_0_5_kg	Ka 0.5 kg nyngkong
+each_0_5_kg	Man ka 0.5 kg
+local_surface	Ha ka jaka · Ha ka khyndew
+within_state_express	Hapoh ka jylla · Ba kloi
+metro_air	Metro · Ha ka lyer
+zone_service_weight_slab	Ka jaka × ka jingshakri × ka slab jingkhia
+first_slab_and_each_extra	Ka slab nyngkong bad man ka slab ba bujli, na man ka jaka bad ka jingshakri.
+a_consignor_s_own_card	Ka kot dor jong u nongphah mar hi
+regular_senders_get_their_rates	Ki nongphah ba bud ki ioh ia ki dor jong ki; ka kot ba la buh ka kynthup ia kiwei baroh.
+margin_at_the_desk	Ka jingmyntoi ha ka miej
+your_sell_price_against_the	Ka dor die jong phi pyrshah bad ka dor jong u nongkit, ha man u docket.
+n_4_label_it	4 · BUH LABEL
+awb_from_your_own_number	AWB na ki pool nombar jong phi hi. Label, scan, wad.
+number_pools_per_carrier	Ki pool nombar na man u nongkit
+enter_each_carrier_s_start	Thoh shisien ia ka series sdang–kut jong man u nongkit; man ka jingbuh jaka ka shim ia u nombar ba bud.
+code_128_labels	Ki label Code 128
+the_awb_goes_on_the	U AWB u leit ha ka box kum ka barcode bad kum ki nombar ba paw.
+scan_to_find	Scan ban wad
+scan_a_label_to_open	Scan ia ka label ban plie ia u docket jong ka bad trei ia ka.
+n_5_hand_over	5 · AITI
+hand_it_to_a_carrier	Ai ia ka sha u nongkit, lane phah ia u nongniah kali jong phi hi. Ka system ba syn.
+into_a_carrier_bag	Hapoh ka pla jong u nongkit
+the_manifest_holds_exactly_the	Ka manifest ka bat tang ia ki parsel ba phi la jied — baroh lane ym don. Ka parsel ba la buh jaka bad kawei pat u nongkit kam lah ban rung ha kane ka pla.
+onto_your_own_rider_s	Ha ka jingleit jong u nongniah kali jong phi
+pick_the_parcels_print_the	Jied ia ki parsel, pynmih ia ka kot jingleit, bad u nongniah kali u trei na ka app ba syn ha ka mode nongniah kali — lang bad ka jingpynshisha jingpynpoi.
+n_6_track_and_prove	6 · BUD BAD PYNSHISHA
+every_move_recorded_and_only	Man ka jingiaid la thoh — bad tang ki jingiaid kiba don jingmut.
+booked	La buh
+with_carrier	Ha u nongkit
+out_for_delivery	La mih ban pynpoi
+delivered	La pynpoi
+booked_with_carrier_out_for	La buh → Ha u nongkit → La mih ban pynpoi → La pynpoi
+failed	Bym longkam
+reason_out_again_or_return	→ ka daw → mih biang, lane pynphai biang sha u nongphah.
+impossible_moves_refused	Ki jingiaid kiba bym lah la len
+delivered_returned_and_cancelled	La pynpoi, la pynphai bad la pynsangeh ki dei kiba kut.
+proof_of_delivery	Ka jingpynshisha jingpynpoi
+a_photo_and_the_receiver	Kawei ka dur bad ka sain jong u nongioh ha u docket.
+failed_deliveries	Ki jingpynpoi kiba bym longkam
+reasons_attempts_out_again_or	Ki daw, ki jingpyrshang, mih biang, lane phai sha u nongphah.
+n_7_money_comes_home	7 · KA PISA KA WAN SHA IING
+cod_you_can_see_expected	Ka COD ba phi lah ban iohi: kaba la kyrmen, kaba la ai, kaba dei ban siew sha man u nongphah mar.
+rider_cash_end_of_run	Ka pisa jong u nongniah kali, ha ka jingkut ka jingleit
+rider	U nongniah kali
+expected	Ba la kyrmen
+handed_in	Ba la ai
+a_14_drops	A · 14 ki jingpynpoi
+b_9_drops	B · 9 ki jingpynpoi
+short_200_on_rider_b	Duna ₹ 200 ha u nongniah kali B — la kyrteng, kam jah ha ka baroh.
+cod_register	Ka kot COD
+collected_against_paid_out_per	Kaba la lum pyrshah bad kaba la siew, na man u nongphah mar, bad ki batch jingphah pisa.
+rider_settlement	Ka jingpynkhlain jong u nongniah kali
+expected_against_handed_in_and	Kaba la kyrmen pyrshah bad kaba la ai, bad ka slip commission.
+books_that_close	Ki kot kiba khang
+day_book_month_bill_per	Ka kot sngi, ka bill man u bnai na man ka account, bad ka CSV jingkhein GST na ka bynta u nongkhein jong phi.
+n_8_internet_down	8 · YM DON INTERNET?
+keep_booking	Bteng ban buh jaka.
+booking_labels_scanning_cod_and	Ka jingbuh jaka, ki label, ka jingscan, ka COD bad ki kot baroh ki trei ha ki device jong phi. Haba ka internet ka duh, ym don ei ei ha ka kaunta ba ap ia ka.
+office_router_no_internet	Router jong ka ophis: ym don internet
+desk_still_booking	Ka miej: dang buh jaka
+second_counter_and_rider_phone	Ka kaunta ba ar bad ka phone jong u nongniah kali: la iasoh ha ka Wi-Fi jong ka ophis
+free_forever_on_your_devices	Laitluid junom ha ki device jong phi
+nothing_per_rider_user_or	Ym don ei ei na man u nongniah kali, u nongpyndonkam lane ka parsel. Kumkaj Cloud lada phi kwah: Steady ₹6k · Swift ₹12k · Priority ₹24k/snem khlem ka shuiñ — /shop.
+n_9_start	9 · SDANG
+one_courier_os_your_parcels	Kawei ka OS courier. Ki parsel jong phi. Ki kot jong phi.
+moklanjo_is_a_complete_courier	Moklanjo ka dei kawei ka system jong ka kam courier baroh hapoh Kumkaj — Android, Windows bad Linux. Ki nongniah kali ki pyndonkam ia ka app ba syn ha ka mode nongniah kali.
+trademark	KA DAK KHAII
+memon_for_find_it_pronounced	Ka ktien Memon na ka bynta “wad ia ka” · la ong go-tee-geen
+company	KA KOMPANI
+brand	KA KYRTENG
+concrete_business_operating_system	Ki app jong ka system kam khaii ba shisha
+product	KA TIAR
+courier_operating_system_under	Ka system jong ka kam courier hapoh Kumkaj
+privacy	Ka jingrieh
+terms	Ki kyndon
+cancellation	Ka jingpynsangeh
+cloud_shop	Ka dukan cloud
+account	Ka account
+weigh_it_right	Khia ba dei
+price_it	Buh dor
+label_it	Buh label
+track_and_prove	Bud bad pynshisha
+money_comes_home	Ka pisa ka wan sha iing
+internet_down	Ym don internet
+bead_hand	Aiti
+bead_offline_short	Khlem lain
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Ha ka tarju: {kg} kg
+weight_scale_wins	Ka jingkhia ha ka tarju ka buh ia ka dor.
+cta_installers_note	Ki installer kin wan hangne haba man u wei u la jop ia ka jingpule install ha ka mashin ba khuid. Haduh kata, kylli ia ka demo ha WhatsApp.
+cta_whatsapp_soon	Ka lain demo WhatsApp kan plie kloi. Ka message jong phi kan long: “{message}”.
+acct_page_title	Ka account — Moklanjo
+acct_lede	Kawei ka account na ka bynta ka site bad ki app — ka form ka syn lada phi dei thymmai lane phi wan biang.
+acct_email	Ka email
+acct_name_optional	Ka kyrteng (lada phi kwah)
+acct_password	Ka ktien rieh
+acct_continue	Bteng
+acct_forgot	Phi la klet ia ka ktien rieh?
+acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia ka address ba syn ba phi la sign up.
+acct_send_reset	Phah ia ka link reset
+acct_cancel	Pynsangeh
+acct_or_continue	lane bteng da
+acct_phone	Ka phone
+acct_mobile	U nombar mobile
+acct_send_sms	Phah ia u code SMS
+acct_sms_code	U code SMS
+acct_confirm_code	Pynshisha ia u code
+acct_signed_in	La rung
+acct_signed_in_as	La rung kum
+acct_status	Ka jinglong
+acct_sign_in_methods	Ki lad ban rung
+acct_cloud_username	Ka kyrteng cloud
+acct_plan	Ka plan
+acct_resend_verify	Phah biang ia ka email jingpynshisha
+acct_sign_out	Mih
+acct_cloud_sandbox	Kumkaj Cloud (ka jaka pule)
+acct_current_password	Ka ktien rieh mynta
+acct_email_for_password	Ka email na ka bynta ka jingrung da ka ktien rieh
+acct_new_password	Ka ktien rieh thymmai
+acct_confirm_new_password	Pynshisha ia ka ktien rieh thymmai
+acct_add_way	Bujli kawei pat ka lad ban rung
+acct_link_hint	Pyniasoh ia ki lad sha kawei ka account ba phi lah ban ioh biang ia ka jingrung lada kawei ka bym longkam.
+acct_link_google	Pyniasoh ia Google
+acct_link_microsoft	Pyniasoh ia Microsoft
+acct_link_github	Pyniasoh ia GitHub
+acct_link_phone	Pyniasoh ia ka phone
+acct_send_sms_link	Phah SMS ban pyniasoh
+acct_confirm_link_phone	Pynshisha bad pyniasoh ia ka phone
+shop_page_title	Ka dukan — Moklanjo
+shop_lede	Ki plan cloud man ka snem — ka shuiñ la bujli ha ka jingsiew. Baroh ka app Moklanjo ha ki device jong phi ka sah laitluid junom, khlem ki jingpynbna.
+shop_cart	Ka cart
+shop_cart_empty_hint	Ka cart jong phi ka thylli. Bujli ia Steady, Swift, lane Priority.
+shop_checkout	Ka jingsiew
+shop_clear	Pynkhuid
+shop_checkout_hint	Ka jingsiew ka pynrung ia phi ha ka Account, nangta ka sdang ia ka jingsiew (ka mock ka jaka pule lane Paddle haba la buh ia ki key).
+acct_billing_hint	Ki plan man ka snem — ka shuiñ la bujli da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah laitluid junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
+shop_cloud_plans	Ki plan cloud
+acct_federated	Ka jingrung ba iasoh
+acct_err_invalid_email	Thoh ia ka address email ba dei.
+acct_err_weak_password	Pyndonkam ia ka ktien rieh bad 6 ki dak tang khyndiat.
+acct_err_wrong_password	Ka ktien rieh ka bakla.
+acct_err_invalid_credential	Ka email lane ka ktien rieh ka bakla.
+acct_err_popup_closed	La khang ia ka window jingrung.
+acct_err_popup_cancelled	La pynsangeh ia ka jingrung.
+acct_err_unauthorized_domain	Kane ka domain kam don jingbit na ka bynta Firebase Auth.
+acct_err_method_disabled	Kata ka lad ban rung kam pat sdang.
+acct_err_too_many	Bun palat ki jingpyrshang. Pyrshang biang hadien.
+acct_err_phone_format	Pyndonkam ia u nombar phone baroh bad u code ri (kum +91…).
+acct_err_sms_code	Kata u code SMS u bakla lane u la kut ka por.
+acct_err_no_account	Ym don account bad kata ka email. Bteng ban shna kawei, lane pyndonkam ia kiwei pat ki lad.
+acct_err_recent_login	Na ka bynta ka jingshngain, rung biang, nangta pyrshang biang ia kane ka jingkylla.
+acct_err_credential_in_use	Kata ka lad ban rung la pyndonkam da kawei pat ka account.
+acct_err_email_in_use	Kata ka email la pyndonkam da kawei pat ka account.
+acct_err_already_linked	Kata ka lad la iasoh lypa bad kane ka account.
+acct_err_exists_other_method	Don lypa ka account bad kane ka email da kawei pat ka lad ban rung. Rung shwa da kata ka lad, nangta pyniasoh ia kane na ka sla account jong phi.
+acct_err_generic	Don ei ei kaba la bakla.
+acct_method_password	Ka email bad ka ktien rieh
+acct_pw_hint_change	Kylla ia ka ktien rieh jong phi. Phin pynshisha da ka ktien rieh mynta.
+acct_pw_hint_add	Bujli ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
+acct_pw_change	Kylla ia ka ktien rieh
+acct_pw_add	Bujli ia ka ktien rieh
+acct_billing_off	Ka jingsiew bill kam pat sdang ha ka cloud API.
+acct_billing_no_provider	Ym don u nongai jingsiew bill shisha ha ka cloud API (ka mock tang ha ka jaka).
+price_quote	Ka jingkhein dor
+price_per_year	₹{amount}/snem khlem ka shuiñ
+acct_pay_received	La ioh ia ka jingsiew — dang pynthymmai ia ka plan jong phi…
+acct_pay_declined	La pynsangeh lane bym longkam ka jingsiew
+acct_pay_failed_detail	{detail}. Ka plan jong phi kam la kylla.
+acct_checkout_closed	La khang ia ka jingsiew — ym don jingsiew ba la dep. Ka plan jong phi kam kylla.
+acct_checkout_failed	Ka jingsiew ka bym longkam
+acct_pay_with	Siew da {provider}
+acct_plan_until	{plan} · haduh {date}
+acct_unavailable	Ym don
+acct_continue_hint	Bteng da ka email, u nongai, lane ka phone.
+acct_signed_in_fallback	(la rung)
+acct_email_verified	La pynshisha ia ka email
+acct_email_unverified	Kam pat pynshisha ia ka email — peit ia ka inbox jong phi
+acct_signed_in_phone	La rung da ka phone
+acct_none_listed	Ym pat don ei ei
+acct_signed_in_status	Phi la rung.
+acct_created	La shna ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
+acct_reset_sent	Lada don ka account na ka bynta kata ka email, ka link reset ka dang wan. Peit ia ka inbox jong phi.
+acct_another_method	kawei pat ka lad
+acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia kane u nongai na ka sla account jong phi.
+acct_enter_current_pw	Thoh ia ka ktien rieh mynta jong phi.
+acct_relogin_retry	Mih bad rung biang, nangta pyrshang biang.
+acct_pw_mismatch	Ka ktien rieh thymmai bad ka jingpynshisha kim iadei.
+acct_pw_updated	La pynthymmai ia ka ktien rieh.
+acct_enter_email_pw	Thoh ia ka email ban pyndonkam bad ka jingrung da ka ktien rieh.
+acct_pw_added	La bujli ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
+acct_method_linked	La pyniasoh ia ka lad ban rung.
+acct_phone_linked	La pyniasoh ia ka phone bad kane ka account.
+acct_verify_sent	La phah ia ka email jingpynshisha — peit ia ka inbox jong phi.
+shop_pricing_soon	Ki dor kin wan kloi
+shop_request_quote	Kylli ia ka jingkhein dor
+shop_add_to_cart	Bujli ha ka cart
+shop_notify_later	Ong ia nga hadien
+shop_included	La kynthup
+shop_in_cart	{plan} ka don ha ka cart jong phi.
+shop_remove	Weng
+shop_cart_is_empty	Ka cart ka thylli.
+shop_prices_unpublished	Ki dor ban thied da lade kim pat pynpaw na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
+shop_cart_cleared	La pynkhuid ia ka cart.
+plan_free_title	Laitluid junom
+plan_free_blurb	Baroh ka tiar ha ka jaka ha ki device jong phi. Ym don dor cloud.
+plan_steady_blurb	Ka cloud ba im · 10 GB · bandwidth ba duna
+plan_swift_blurb	Ka cloud ba im · 25 GB · bandwidth pdeng
+plan_priority_blurb	Ka cloud ba im · 50 GB · bandwidth ba kham jrong
+plan_custom_title	Ba la pynbeit
+plan_custom_blurb	Ka jingbun bad ka bandwidth ba la ia ngeit. Ka jingkhein dor ka lah ban duna ia Steady lane palat ia Priority.

@@ -1,280 +1,280 @@
 # Tibetan — བོད་སྐད་ (bo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	དཔེ་མཚོན།
+free	སྟོང་པ།
+photo_coming	པར་མྱུར་དུ་ཡོང་གི་རེད།
+get_it_on_google_play	Google Play ནས་ལེན་རོགས།
+whatsapp_for_a_demo	མཐོང་སྟོན་ཆེད་ WhatsApp བྱེད་རོགས།
+menus	དཀར་ཆག
+how_it_works	འདི་ཇི་ལྟར་ལས་ཀ་བྱེད་དམ།
+features	ཁྱད་ཆོས།
+offline	དྲ་མེད།
+pricing	རིན་གོང་།
+faq	དྲི་བ་དང་ལན།
+login	ནང་འཛུལ།
+get_it_free	རིན་མེད་དུ་ལེན་རོགས།
+restaurant_pos_free_forever	ཟ་ཁང་གི་ POS · རྟག་ཏུ་རིན་མེད།
+lunch_rush_no_internet_no	ཉིན་གུང་གི་འཚང་ཁ། དྲ་རྒྱ་མེད། དཀའ་ངལ་མེད།
+khaynjo_runs_your_floor_kitchen	Khaynjo ཡིས་ཁྱེད་རང་གི་ཟ་ཁང་། ཐབ་ཚང་དང་ཚོང་ཅོག་རྣམས་ཁྱེད་ལ་ཡོད་ཟིན་པའི་སྒྲིག་ཆས་སྟེང་འཁོར་སྐྱོད་བྱེད། — ཅོག་ཙེ་ནས་ཐབ་ཚང་བར། ཐབ་ཚང་ནས་འཛིན་བྱང་བར། དྲ་རྒྱ་ཡོད་ཀྱང་མེད་ཀྱང་།
+android_on_google_play_today	Android དེ་རིང་ Google Play ནང་། · Windows དང་ Linux ཐུམ་སྒྲིལ་ཡོང་བཞིན་ཡོད།
+works_with_no_internet	དྲ་རྒྱ་མེད་ཀྱང་ལས་ཀ་བྱེད།
+your_books_stay_on_your	ཁྱེད་ཀྱི་རྩིས་ཁྲ་ཁྱེད་ཀྱི་སྒྲིག་ཆས་སྟེང་གནས།
+n_115_languages_on_screen	བརྙན་ཡོལ་སྟེང་སྐད་ཡིག 115
+your_floor_at_a_glance	མིག་ལམ་གཅིག་གིས་ཁྱེད་ཀྱི་ཟ་ཁང་།
+tap_a_table_to_walk	ཅོག་ཙེ་ཞིག་མནན་ནས་མགྲོན་པོ་ཐེངས་གཅིག་གི་ཡོང་སྐྱོད་འགོ་ནས་མཇུག་བར་ལྟ་རོགས། ཉེར་སྤྱོད་ནང་གི་ཚོན་མདོག་དང་ཚིག་དེ་ཉིད། — འཛིན་བྱང་གི་རིན་སྤྲད་རྗེས་ཁོ་ནར་ཅོག་ཙེ་སྟོང་པར་འགྱུར།
+every_country	རྒྱལ་ཁབ་ཚང་མ།
+every_country_at_your_counter	ཁྱེད་ཀྱི་ཚོང་ཅོག་ཐོག་རྒྱལ་ཁབ་ཚང་མ།
+one_famous_dish_from_every	རྒྱལ་ཁབ་རེ་རེའི་གྲགས་ཅན་ཟས་རིགས་གཅིག — རྒྱལ་ཁབ་ཀྱི་དབྱིན་ཡིག་མིང་། ཁོ་ཚོའི་རང་གི་ཡིག་གཟུགས་ཀྱི་མིང་། ཟས་རིགས་ཀྱི་དབྱིན་ཡིག་མིང་། ཚིག་དེ་དག་ཁྱེད་ཀྱི་དཀར་ཆག་ནང་འབྲི་རོགས། འཛམ་གླིང་མུ་མཐུད་དུ་འགྲོ་བཞིན་ཡོད། ལྟ་འདོད་ན་མཚམས་འཇོག་གམ་འཚོལ་རོགས།
+find_a_country_or_dish	རྒྱལ་ཁབ་བམ་ཟས་རིགས་འཚོལ་རོགས། — དཔེར་ན། India, biryani, Japan
+one_famous_dish_per_country	རྒྱལ་ཁབ་རེར་གྲགས་ཅན་ཟས་རིགས་གཅིག — སྐོར་སྐྱོད་འདིས་འཛམ་གླིང་ཧྲིལ་པོ་བསྐོར།
+how_a_service_runs	ཞབས་ཞུ་ཇི་ལྟར་འཁོར་སྐྱོད་བྱེད་དམ།
+one_table_start_to_finish	ཅོག་ཙེ་གཅིག འགོ་ནས་མཇུག་བར།
+watch_a_table_go_from	ཅོག་ཙེ་ཞིག་བསྡད་པ་ནས་རིན་སྤྲད་པའི་བར་ཇི་ལྟར་འགྲོ་བ་ལྟ་རོགས། — ཁྱེད་ཀྱི་ལས་བྱེད་པས་ཉེར་སྤྱོད་ནང་མཐོང་བའི་གོ་རིམ་དང་ཚོན་མདོག་དེ་ཉིད།
+occupied	བཞུགས་ཡོད།
+in_kitchen	ཐབ་ཚང་ནང་།
+food_ready	ཁ་ལག་གྲ་སྒྲིག་ཟིན།
+served	ཞབས་ཞུ་བྱས།
+bill_printed	འཛིན་བྱང་པར་སྐྲུན་ཟིན།
+paid	རིན་སྤྲད་ཟིན།
+seat_the_table_take_the	ཅོག་ཙེར་བསྡད་དུ་བཅུག་ནས་མངགས་ཉོ་ལེན་རོགས།
+mark_the_table_occupied_the	མགྲོན་པོ་བསྡད་མ་ཐག་ཅོག་ཙེ་“བཞུགས་ཡོད”ཅེས་རྟགས་རྒྱག་རོགས། ཟས་རིགས་སྣོན། ཆེ་ཆུང་འདེམས། ཁ་སྣོན་སྣོན། ཐབ་ཚང་ཆེད་མཆན་འབྲི་རོགས། — ཅོག་ཙེ་ཐོག་ཉིད་དུ།
+sizes_and_add_ons	ཆེ་ཆུང་དང་ཁ་སྣོན།
+pick_one_size_add_optional	ཆེ་ཆུང་གཅིག་འདེམས་རོགས། ཁྱེད་ཀྱིས་གཏན་འཁེལ་བྱས་པའི་ཚད་བར་ཁ་སྣོན་སྣོན་ཆོག
+a_note_per_dish	ཟས་རིགས་རེར་མཆན་གཅིག
+less_spicy_travels_with_the	“ཚ་བ་ཉུང་ཉུང་”ཞེས་པ་ཟས་རིགས་དེ་ཉིད་དང་མཉམ་དུ་འགྲོ།
+t4_occupied	T4 · བཞུགས་ཡོད།
+note_less_salt	མཆན། ཚྭ་ཉུང་ཉུང་།
+one_ticket_per_kitchen_station	ཐབ་ཚང་གི་ས་ཚིགས་རེར་ཤོག་བྱང་གཅིག
+send_the_order_and_each	མངགས་ཉོ་བསྐུར་ན་ས་ཚིགས་རེ་རེར་རང་གི་ཟས་རིགས་ཁོ་ན་འབྱོར། — ཉིན་རེའི་ཨང་གྲངས། ཅོག་ཙེ། ཞབས་ཞུ་བ། མཆན་ཚང་མ་དང་བཅས། རིན་གོང་གཏན་ནས་མེད། ཐབ་ཚང་གིས་ཁ་ལག་བཟོ། ཚོང་ཅོག་གིས་འཛིན་བྱང་བཟོ།
+prints_itself	རང་བཞིན་གྱིས་པར་སྐྲུན།
+send_and_the_ticket_prints	བསྐུར་ན་ཤོག་བྱང་ས་ཚིགས་འོས་འཚམས་སུ་པར་སྐྲུན་འགྱུར། — སུས་ཀྱང་འཁྱེར་དགོས་མེད།
+example_ticket	དཔེ་མཚོན་ཤོག་བྱང་།
+the_kitchen_sees_what_to	ད་ལྟ་ཅི་ཞིག་བཟོ་དགོས་པ་ཐབ་ཚང་གིས་མཐོང་།
+on_the_kitchen_screen_tickets	ཐབ་ཚང་གི་བརྙན་ཡོལ་ཐོག་ཤོག་བྱང་རྣམས་ཐེངས་གཅིག་མནན་ནས་གསར་པ → གྲ་སྒྲིག་བྱེད་བཞིན་པ → གྲ་སྒྲིག་ཟིན་པར་འགྱུར། ཤོག་བྱང་རྙིང་པའི་ཚོན་མདོག་ཇེ་ཟབ་ཏུ་འགྲོ། “ད་ལྟ་བཟོ་དགོས་”ཀྱིས་སྒུག་བཞིན་པའི་ཟས་རིགས་ཚང་མ་གྲངས་རྩིས་བྱེད། སྔོན་ཟས་མ་འགྲོ་བར་གཙོ་ཟས་སྒུག་ཆོག
+new	གསར་པ།
+preparing	གྲ་སྒྲིག་བྱེད་བཞིན་པ།
+ready	གྲ་སྒྲིག་ཟིན།
+example_kitchen_screen	དཔེ་མཚོན་ཐབ་ཚང་བརྙན་ཡོལ།
+settle_any_way_the_guest	མགྲོན་པོས་ཇི་ལྟར་སྤྲད་ཀྱང་རྩིས་སྒྲིག་བྱེད་རོགས།
+cash_with_change_to_return	ལྷག་མ་ཕྱིར་སྤྲོད་དགོས་པའི་དངུལ་ལྷོད། QR ནང་སྔོན་ནས་ཡོད་པའི་དངུལ་གྲངས་དང་བཅས་པའི་ UPI། ཆ་ཤས་སྤྲོད་པ། ཡང་ན་ཉོ་མཁན་གྱི་བུ་ལོན་དེབ་ཏུ་སྤྲོད་རྒྱུ། དངོས་རྫས། སྡོད་ས། ཡང་ན་ཆ་སྙོམས་སུ་བགོ་རོགས། འཛིན་བྱང་གི་རིན་སྤྲད་རྗེས་ཁོ་ནར་ཅོག་ཙེ་སྟོང་པར་འགྱུར།
+tips_stay_apart	བྱ་དགའ་ལོགས་སུ་གནས།
+a_tip_is_recorded_on	བྱ་དགའ་ལོགས་སུ་ཐོ་འགོད་བྱེད། — ཚོང་འགྲེམས་ནང་གཏན་ནས་མི་སྲེ།
+t4_bill_printed	T4 · འཛིན་བྱང་པར་སྐྲུན་ཟིན།
+bill	འཛིན་བྱང་།
+customer_paid_cash	ཉོ་མཁན་གྱིས་སྤྲད། (དངུལ་ལྷོད)
+return_to_customer	ཉོ་མཁན་ལ་ཕྱིར་སྤྲོད།
+close_the_day_you_can	ཡིད་ཆེས་རུང་བའི་ཉིན་མོ་སྒོ་རྒྱག
+count_the_drawer_against_the	སྒམ་ཆུང་ནང་གི་དངུལ་ཐོག་མའི་དངུལ། བླངས་པའི་དངུལ་ལྷོད། བྱ་དགའ། སྤྲད་པའི་དངུལ་ལྷོད་དང་བསྡུར་ནས་གྲངས་རྩིས་རོགས། — ཆད་པའམ་ལྷག་པ་གསལ་པོར་སྟོན། ལས་ཚན་ཤོག་བུ་པར་སྐྲུན་བྱས་རྗེས། ལས་བྱེད་པ། མངགས་ཉོའི་རིགས། ཆུ་ཚོད། ཟས་རིགས་ལྟར་ཉིན་མོའི་སྙན་ཞུ་ཁ་ཕྱེ་རོགས། — ཆ་མེད། རིན་མེད་ཟས་རིགས། བྱ་དགའ་དང་བཅས།
+shift_close	ལས་ཚན་སྒོ་རྒྱག
+opening_float	ཐོག་མའི་དངུལ།
+cash_taken	+ བླངས་པའི་དངུལ་ལྷོད།
+cash_tips	+ དངུལ་ལྷོད་བྱ་དགའ།
+cash_paid_out	− སྤྲད་པའི་དངུལ་ལྷོད།
+expected_in_the_drawer	སྒམ་ཆུང་ནང་ཡོད་དགོས།
+counted	གྲངས་རྩིས་ཟིན།
+short	ཆད།
+everything_else_the_floor_needs	ཟ་ཁང་ལ་དགོས་པའི་གཞན་ཚང་མ།
+built_for_a_real_service	ཞབས་ཞུ་དངོས་ཡོད་ཆེད་བཟོས་པ།
+the_changes_that_happen_every	ཉིན་གུང་རེ་རེར་བྱུང་བའི་འགྱུར་ལྡོག — གསལ་པོར་ཐག་གཅོད་བྱེད། སུ་དང་། ནམ། ཅིའི་ཕྱིར་ཚང་མ་ཐོ་འགོད།
+move_and_merge_tables	ཅོག་ཙེ་སྤོ་བ་དང་མཉམ་སྡེབ།
+guests_change_tables_the_order	མགྲོན་པོས་ཅོག་ཙེ་བརྗེ། — མངགས་ཉོ་དང་དེའི་སྐར་མ་ཁོ་ཚོ་དང་མཉམ་དུ་འགྲོ། ཅོག་ཙེ་གཉིས། འཛིན་བྱང་གཅིག
+cancel_after_the_kot	KOT རྗེས་ཆ་མེད།
+with_a_reason_cooked_or	རྒྱུ་མཚན་དང་བཅས། བཟོས་ཡོད་མེད། སུས་ཆོག་མཆན་སྤྲད་པ། ཐབ་ཚང་ལ་ཆ་མེད་ཤོག་བུ་འབྱོར།
+complimentary_dishes	རིན་མེད་ཟས་རིགས།
+a_comp_stays_on_the	རིན་མེད་ཟས་རིགས་འཛིན་བྱང་ཐོག་ ₹ 0 ལ་གནས། རྒྱུ་མཚན་དང་ཆོག་མཆན་པ་དང་བཅས།
+rights_per_person	མི་རེ་རེའི་ཐོབ་ཐང་།
+each_action_is_allowed_allowed	ལས་ཀ་རེ་རེ་ཆོག་པ། དོ་དམ་པའི་ PIN དང་བཅས་ཆོག་པ། ཡང་ན་མི་ཆོག་པ། — མི་རེ་རེ་ལྟར།
+your_menu_your_words	ཁྱེད་ཀྱི་དཀར་ཆག ཁྱེད་ཀྱི་ཚིག
+search_by_name_or_short	མིང་ངམ་ཨང་རྟགས་ཐུང་ངུས་འཚོལ་རོགས། སྐད་ཡིག་གཞན་གྱི་མིང་གཞན་དང་བཅས། — “ptk” ཡིས་ Paneer tikka རྙེད།
+area_prices_and_happy_hour	ས་ཁུལ་ལྟར་རིན་གོང་དང་ རིན་ཆག་ཆུ་ཚོད།
+a_dearer_price_in_the	AC ཁང་མིག་ནང་རིན་གོང་མཐོ་བ། ཆུ་ཚོད་ལྟར་ཞོགས་ཟས་ཀྱི་དཀར་ཆག་དང་ རིན་ཆག་ཆུ་ཚོད་ཀྱི་རིན་གོང་།
+customer_khata	ཉོ་མཁན་གྱི་བུ་ལོན་དེབ།
+part_payments_and_due_go	ཆ་ཤས་སྤྲོད་པ་དང་སྤྲོད་རྒྱུ་ཕྱོགས་ནང་ཉོ་མཁན་གྱི་ཐོ་ཁོངས་སུ་འགྲོ། རྗེས་སུ་རྩིས་སྒྲིག་བྱེད།
+reports_that_answer_questions	དྲི་བར་ལན་འདེབས་པའི་སྙན་ཞུ།
+sales_by_staff_order_type	ལས་བྱེད་པ། མངགས་ཉོའི་རིགས། ཆུ་ཚོད། ཟས་རིགས་ལྟར་ཚོང་འགྲེམས། — ཆ་མེད། རིན་མེད་ཟས་རིགས། བྱ་དགའི་ཐོ་དང་བཅས།
+start_with_a_menu	དཀར་ཆག་གཅིག་ནས་འགོ་འཛུགས།
+your_menu_ready_in_minutes	ཁྱེད་ཀྱི་དཀར་ཆག སྐར་མ་ཁ་ཤས་ནང་གྲ་སྒྲིག་ཟིན།
+set_up_your_counter_and	ཁྱེད་ཀྱི་ཚོང་ཅོག་སྒྲིག་ནས་པར་དང་བཅས་པའི་འགོ་འཛུགས་དཀར་ཆག་གཅིག་འདེམས་རོགས། — དེ་རྗེས་མིང་། རིན་གོང་། ཨང་རྟགས་རྣམས་རང་འདོད་ལྟར་བསྒྱུར་རོགས། khaynjo.com ནས་རིན་མེད་དུ་ཕབ་ལེན་བྱེད་རོགས།
+starter_menu	འགོ་འཛུགས་དཀར་ཆག
+khaynjo_starter_menu	Khaynjo འགོ་འཛུགས་དཀར་ཆག
+world_cuisines_japanese_mexican	འཛམ་གླིང་གི་ཟས་རིགས། — ཉི་ཧོང་། མེག་སི་ཀོ། ཨི་ཏ་ལི། རྒྱ་གར། ཐཱའི་སོགས། — ཟས་རིགས་རེ་རེ་རང་གི་པར་དང་བཅས།
+n_14_dishes_11_categories	ཟས་རིགས་ 14 · རིགས་ 11
+cafe_starter	ཇ་ཁང་གི་འགོ་འཛུགས།
+tea_coffee_cold_drinks_bakery	ཇ། ཀ་ཧྥེ། འཐུང་བྱ་གྲང་མོ། བག་ལེབ་དང་ཟས་ཕྲན། — ཚོང་ཅོག་ཇ་ཁང་ཆེད་གྲ་སྒྲིག་ཟིན།
+n_22_dishes_4_categories	ཟས་རིགས་ 22 · རིགས་ 4
+photo_shelf	པར་རིས་སྒམ།
+khaynjo_dish_photos	Khaynjo ཟས་རིགས་ཀྱི་པར།
+the_full_public_photo_shelf	སྤྱི་ཡི་པར་རིས་སྒམ་ཧྲིལ་པོ། — ཁྱེད་ཀྱིས་སྣོན་པའི་ཟས་རིགས་གང་ཡིན་ཡང་དེའི་པར་འདེམས་རོགས།
+n_1_459_dish_photos_25	ཟས་རིགས་ཀྱི་པར་ 1,459 · ཐབ་ཚང་རིགས་ 25
+internet_down	དྲ་རྒྱ་ཆད་སོང་ངམ།
+the_internet_went_down_the	དྲ་རྒྱ་ཆད་སོང་། ཚོང་ཅོག་མ་ཆད།
+orders_kitchen_tickets_bills_and	མངགས་ཉོ། ཐབ་ཚང་གི་ཤོག་བྱང་། འཛིན་བྱང་དང་ཉིན་རྩིས་རྣམས་ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་གནས། ཉིན་གུང་གི་བར་དུ་དྲ་རྒྱ་ཆད་ཀྱང་ཁྱེད་ཀྱི་ཟ་ཁང་ནང་ཅི་ཡང་དེར་སྒུག་མི་དགོས། — ང་ཚོའི་ཕྱོགས་སུ་ནང་འཛུལ་དགོས་པའི་ཐོ་ཁོངས་ཀྱང་མེད།
+right_now_mid_lunch	ད་ལྟ། ཉིན་གུང་གི་བར་དུ།
+router_no_internet	དྲ་འབྲེལ་ཆས། དྲ་རྒྱ་མེད།
+counter_taking_orders_and_settling	ཚོང་ཅོག མངགས་ཉོ་ལེན་བཞིན་འཛིན་བྱང་རྩིས་སྒྲིག་བྱེད་བཞིན།
+day_book_every_bill_saved	ཉིན་རྩིས། འཛིན་བྱང་ཚང་མ་སྒྲིག་ཆས་འདིའི་སྟེང་ཉར་ཟིན།
+captains_tablets_and_the_kitchen	ཞབས་ཞུ་དཔོན་གྱི་པང་སྒྲིག་དང་ཐབ་ཚང་གི་བརྙན་ཡོལ། ཁྱེད་རང་གི་ Wi-Fi སྟེང་མཉམ་དུ་ལས་ཀ་བྱེད་བཞིན།
+eyebrow_pricing	རིན་གོང་།
+free_forever_on_your_devices	ཁྱེད་ཀྱི་སྒྲིག་ཆས་སྟེང་རྟག་ཏུ་རིན་མེད།
+software_capability_is_not_what	ང་ཚོས་མཉེན་ཆས་ཀྱི་ནུས་པ་མི་འཚོང་། Khaynjo ཧྲིལ་པོ་ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་རིན་མེད་དུ་འཁོར་སྐྱོད་བྱེད་རོགས། — ཅི་ཡང་འཆར་གཞིའི་རྒྱབ་ཏུ་སྒོ་བརྒྱབ་མེད།
+khaynjo_on_your_devices	ཁྱེད་ཀྱི་སྒྲིག་ཆས་སྟེང་ Khaynjo
+forever	རྟག་ཏུ།
+every_feature	ཁྱད་ཆོས་ཚང་མ།
+floor_kitchen_billing_day_close	ཟ་ཁང་། ཐབ་ཚང་། འཛིན་བྱང་། ཉིན་མོ་སྒོ་རྒྱག སྙན་ཞུ། — ཉེར་སྤྱོད་ཧྲིལ་པོ།
+no_per_seat_charge	སྡོད་ས་རེར་གླ་ཆ་མེད།
+no_charge_per_table_waiter	ཅོག་ཙེ། ཞབས་ཞུ་བ། མངགས་ཉོ། ཡང་ན་སྒྲིག་ཆས་རེར་གླ་ཆ་མེད།
+no_account_with_us	ང་ཚོའི་ཕྱོགས་སུ་ཐོ་ཁོངས་མི་དགོས།
+day_to_day_service_needs	ཉིན་རེའི་ཞབས་ཞུར་ཐོ་འགོད་མི་དགོས། དྲ་རྒྱ་ཡང་མི་དགོས།
+kumkaj_cloud_optional	Kumkaj Cloud · འདོད་བློ་ལྟར།
+yearly_cloud_if_you_want	འདོད་ན་ལོ་རེའི་སྤྲིན་ཞབས་ཞུ།
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / ལོ། ཁྲལ་མ་ཚུད། (ཁྲལ་རིན་སྤྲོད་སྐབས།) སྒེར་བཟོ་ནི་རིན་ཐོ་ཞིག་ཡིན། — Steady ལས་དམའ་བའམ་ Priority ལས་མཐོ་བ་ཡོང་སྲིད། གང་ལྟར་ཡང་ས་གནས་ཀྱི་ Khaynjo རྟག་ཏུ་རིན་མེད།
+shop_plans_at_shop_sign	འཆར་གཞི་ /shop ནང་ཉོ་རོགས། · /account ནང་ནང་འཛུལ་བྱེད་རོགས།
+open_cloud_shop	སྤྲིན་ཚོང་ཁང་ཁ་ཕྱེ་རོགས།
+questions	དྲི་བ།
+asked_before_every_first_service	ཞབས་ཞུ་དང་པོ་རེ་རེའི་སྔོན་དུ་དྲིས་པ།
+do_i_need_the_internet	ང་ལ་དྲ་རྒྱ་དགོས་སམ།
+no_orders_kots_bills_and	མི་དགོས། མངགས་ཉོ། KOT། འཛིན་བྱང་དང་ཉིན་རྩིས་རྣམས་དྲ་རྒྱ་མེད་ཀྱང་ལས་ཀ་བྱེད། ཉེར་སྤྱོད་ཕབ་ལེན་དང་། འདོད་ན་འགོ་འཛུགས་དཀར་ཆག་ལེན་པར་ཐེངས་གཅིག་ཁོ་ན་དགོས།
+where_are_my_bills_kept	ངའི་འཛིན་བྱང་གང་དུ་ཉར་བ་རེད།
+on_your_own_device_in	ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་། ཁྱེད་ཀྱི་ཚོང་ཁང་ནང་། — ང་ཚོའི་ཞབས་ཞུ་ཆས་སྟེང་མིན། སྒྲིག་སྟངས་ནས་གྲབས་ཉར་འདྲ་བཤུས་བཟོས་ནས་གང་དུ་འདོད་པར་ཉར་རོགས།
+which_devices_does_it_run	འདི་སྒྲིག་ཆས་གང་དག་སྟེང་འཁོར་སྐྱོད་བྱེད་དམ།
+android_phones_and_tablets_today	དེ་རིང་ Android ཁ་པར་དང་པང་སྒྲིག་སྟེང་། Google Play ནས། Windows དང་ Linux ཐུམ་སྒྲིལ་ལམ་དུ་ཡོད།
+does_it_print_kots_and	འདིས་ KOT དང་འཛིན་བྱང་པར་སྐྲུན་བྱེད་དམ།
+yes_on_thermal_printers_you	བྱེད། — ཁྱེད་ཀྱིས་སྒྲིག་སྟངས → པར་ཆས་ནང་སྒྲིག་པའི་དྲོད་པར་ཆས་སྟེང་། ས་ཚིགས་རེར་ཐབ་ཚང་ཤོག་བྱང་གཅིག
+can_my_staff_use_their	ངའི་ལས་བྱེད་པས་རང་གི་སྐད་ཡིག་བེད་སྤྱོད་ཐུབ་བམ།
+yes_the_screens_come_in	ཐུབ། བརྙན་ཡོལ་རྣམས་སྐད་ཡིག་ 115 ནང་ཡོད། ཨ་རབ་དང་ཨུར་དུ་གཡས་ནས་གཡོན་དུ། ཟས་རིགས་ཀྱི་མིང་དང་མཉམ་དུ་ཡིག་གཟུགས་གཞན་གྱི་མིང་གཞན་ཡང་འཇོག་ཆོག
+what_does_it_cost	འདིའི་གོང་ཚད་ག་ཚོད་ཡིན།
+nothing_on_your_own_devices	ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་ཅི་ཡང་མེད། — ཁྱད་ཆོས་ཚང་མ། རྟག་ཏུ། འདོད་བློ་ལྟར་གྱི་ Kumkaj Cloud ནི་ལོ་རེའི་ Steady / Swift / Priority (ཡང་ན་སྒེར་བཟོའི་རིན་ཐོ།) ཡིན། ཉོ་བར་ /shop ཁ་ཕྱེ་རོགས།
+ready_for_lunch	ཉིན་གུང་ཆེད་གྲ་སྒྲིག་ཟིན་ནམ།
+run_your_next_service_on	ཁྱེད་ཀྱི་ཞབས་ཞུ་རྗེས་མ་ Khaynjo སྟེང་འཁོར་སྐྱོད་བྱེད་རོགས།
+free_on_google_play_want	Google Play ནང་རིན་མེད། སྔོན་ལ་ཡོངས་རྫོགས་ལྟ་འདོད་དམ། WhatsApp ནང་ང་ཚོར་འཕྲིན་ཡིག་བསྐུར་རོགས།
+privacy	སྒེར་གསང་།
+terms	ཆ་རྐྱེན།
+cancellation	ཆ་མེད་གཏོང་བ།
+photo_credits	པར་རིས་མཁན།
+cloud_shop	སྤྲིན་ཚོང་ཁང་།
+account	ཐོ་ཁོངས།
+cta_installers_note	སྒྲིག་འཇུག་ཆས་རེ་རེ་མ་ལག་གཙང་མའི་སྟེང་སྒྲིག་འཇུག་ཚོད་ལྟ་ལེགས་འགྲུབ་བྱུང་རྗེས་འདིར་ཡོང་། དེ་བར་ WhatsApp ནང་མཐོང་སྟོན་ཞུ་རོགས།
+cta_whatsapp_soon	WhatsApp མཐོང་སྟོན་ལམ་ཐིག་མྱུར་དུ་ཁ་ཕྱེ་གི་རེད། ཁྱེད་ཀྱི་འཕྲིན་ཡིག་འདི་ལྟར་འགྱུར། “{message}”།
+shelf_no_match	འཚོལ་ཞིབ་དེ་དང་མཐུན་པའི་རྒྱལ་ཁབ་བམ་ཟས་རིགས་མེད།
+shelf_search_note	འཚོལ་ཞིབ་ཀྱིས་སྐོར་སྐྱོད་མཚམས་འཇོག་བྱེད། བསྐྱར་དུ་འགོ་འཛུགས་ཆེད་འཚོལ་ཞིབ་གཙང་སེལ་བྱེད་རོགས། མིན་ན་ཁྱེད་ཀྱིས་བཞག་པ་ལྟར་མཚམས་འཇོག་ནས་གནས།
+floor_meta_min	སྐར་མ་ {min}
+floor_meta_min_bill	སྐར་མ་ {min} · ₹ {amount}
+floor_meta_paid	₹ {amount} སྤྲད་ཟིན།
+acct_page_title	ཐོ་ཁོངས། — Khaynjo
+acct_lede	དྲ་ཚིགས་དང་ཉེར་སྤྱོད་ཆེད་ཐོ་ཁོངས་གཅིག — གསར་པ་ཡིན་ནའང་ཕྱིར་ལོག་ཡིན་ནའང་རེའུ་མིག་དེ་ཉིད།
+acct_email	གློག་འཕྲིན།
+acct_name_optional	མིང་། (འདོད་བློ་ལྟར།)
+acct_password	གསང་གྲངས།
+acct_continue	མུ་མཐུད།
+acct_forgot	གསང་གྲངས་བརྗེད་སོང་ངམ།
+acct_reset_hint	ང་ཚོས་བསྐྱར་སྒྲིག་སྦྲེལ་མཐུད་གློག་འཕྲིན་དུ་བསྐུར་གྱི་ཡིན། ཐོ་འགོད་བྱས་པའི་ཁ་བྱང་དེ་ཉིད་བེད་སྤྱོད་རོགས།
+acct_send_reset	བསྐྱར་སྒྲིག་སྦྲེལ་མཐུད་བསྐུར་རོགས།
+acct_cancel	ཆ་མེད་གཏོང་བ།
+acct_or_continue	ཡང་ན་འདིས་མུ་མཐུད།
+acct_phone	ཁ་པར།
+acct_mobile	ལག་ཁ་པར་ཨང་གྲངས།
+acct_send_sms	SMS ཨང་རྟགས་བསྐུར་རོགས།
+acct_sms_code	SMS ཨང་རྟགས།
+acct_confirm_code	ཨང་རྟགས་གཏན་འཁེལ་བྱེད་རོགས།
+acct_signed_in	ནང་འཛུལ་ཟིན།
+acct_signed_in_as	འདི་ལྟར་ནང་འཛུལ།
+acct_status	གནས་བབ།
+acct_sign_in_methods	ནང་འཛུལ་ཐབས་ལམ།
+acct_cloud_username	སྤྲིན་བེད་སྤྱོད་མིང་།
+acct_plan	འཆར་གཞི།
+acct_resend_verify	ར་སྤྲོད་གློག་འཕྲིན་བསྐྱར་དུ་བསྐུར།
+acct_sign_out	ཕྱིར་ཐོན།
+acct_cloud_sandbox	Kumkaj Cloud (ཚོད་ལྟའི་ཁོར་ཡུག)
+acct_current_password	ད་ལྟའི་གསང་གྲངས།
+acct_email_for_password	གསང་གྲངས་ནང་འཛུལ་ཆེད་གློག་འཕྲིན།
+acct_new_password	གསང་གྲངས་གསར་པ།
+acct_confirm_new_password	གསང་གྲངས་གསར་པ་གཏན་འཁེལ།
+acct_add_way	ནང་འཛུལ་ཐབས་ལམ་གཞན་ཞིག་སྣོན་རོགས།
+acct_link_hint	ཐབས་ལམ་རྣམས་ཐོ་ཁོངས་གཅིག་ལ་སྦྲེལ་རོགས། གཅིག་ཕམ་ན་ཡང་འཛུལ་ཆོག་བསྐྱར་དུ་ཐོབ་ཐུབ།
+acct_link_google	Google སྦྲེལ།
+acct_link_microsoft	Microsoft སྦྲེལ།
+acct_link_github	GitHub སྦྲེལ།
+acct_link_phone	ཁ་པར་སྦྲེལ།
+acct_send_sms_link	སྦྲེལ་ཆེད་ SMS བསྐུར།
+acct_confirm_link_phone	གཏན་འཁེལ་བྱས་ནས་ཁ་པར་སྦྲེལ།
+shop_page_title	ཚོང་ཁང་། — Khaynjo
+shop_lede	ལོ་རེའི་སྤྲིན་འཆར་གཞི། — ཁྲལ་རིན་སྤྲོད་སྐབས་སྣོན། ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་ Khaynjo ཉེར་སྤྱོད་ཧྲིལ་པོ་རྟག་ཏུ་རིན་མེད། ཁྱབ་བསྒྲགས་མེད།
+shop_cart	ཉོ་སྒམ།
+shop_cart_empty_hint	ཁྱེད་ཀྱི་ཉོ་སྒམ་སྟོང་པ་རེད། Steady, Swift ཡང་ན་ Priority སྣོན་རོགས།
+shop_checkout	རིན་སྤྲོད།
+shop_clear	གཙང་སེལ།
+shop_checkout_hint	རིན་སྤྲོད་ཀྱིས་ཁྱེད་ཐོ་ཁོངས་སུ་ནང་འཛུལ་བྱེད་དུ་བཅུག་རྗེས་རིན་སྤྲོད་འགོ་འཛུགས། (ཚོད་ལྟའི་ཁོར་ཡུག་གི་དཔེ་བཟོ། ཡང་ན་ལྡེ་མིག་སྒྲིག་ཡོད་ན་ Paddle།)
+acct_billing_hint	ལོ་རེའི་འཆར་གཞི། — རིན་སྤྲོད་སྐབས་སྒོ་ལམ་གྱིས་ཁྲལ་སྣོན། ས་གནས་བེད་སྤྱོད་རྟག་ཏུ་རིན་མེད། སྒེར་བཟོ་ནི་རིན་ཐོ་ཞིག་ཡིན། (Steady ལས་དམའ་བའམ་ Priority ལས་མཐོ་བ་ཡོང་སྲིད།)
+shop_cloud_plans	སྤྲིན་འཆར་གཞི།
+acct_federated	མཉམ་འབྲེལ་ནང་འཛུལ།
+acct_err_invalid_email	གློག་འཕྲིན་ཁ་བྱང་ཏག་ཏག་འབྲི་རོགས།
+acct_err_weak_password	ཉུང་མཐར་ཡིག་འབྲུ་ 6 ཡོད་པའི་གསང་གྲངས་བེད་སྤྱོད་རོགས།
+acct_err_wrong_password	གསང་གྲངས་ནོར་འདུག
+acct_err_invalid_credential	གློག་འཕྲིན་ནམ་གསང་གྲངས་ནོར་འདུག
+acct_err_popup_closed	ནང་འཛུལ་སྒེའུ་ཁུང་ཁ་བརྒྱབ་སོང་།
+acct_err_popup_cancelled	ནང་འཛུལ་ཆ་མེད་བཏང་སོང་།
+acct_err_unauthorized_domain	ཁྱབ་ཁོངས་འདི་ Firebase Auth ཆེད་ཆོག་མཆན་མེད།
+acct_err_method_disabled	ནང་འཛུལ་ཐབས་ལམ་དེ་ད་དུང་སྤྱོད་མེད།
+acct_err_too_many	ཚོད་ལྟ་མང་དྲགས་སོང་། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།
+acct_err_phone_format	རྒྱལ་ཁབ་ཀྱི་ཨང་རྟགས་དང་བཅས་པའི་ཁ་པར་ཨང་གྲངས་ཆ་ཚང་བེད་སྤྱོད་རོགས། (དཔེར་ན། +91…)
+acct_err_sms_code	SMS ཨང་རྟགས་དེ་ནོར་བའམ་དུས་ཡོལ་སོང་།
+acct_err_no_account	གློག་འཕྲིན་དེར་ཐོ་ཁོངས་མེད། གསར་བཟོ་ཆེད་མུ་མཐུད། ཡང་ན་ཐབས་ལམ་གཞན་བེད་སྤྱོད་རོགས།
+acct_err_recent_login	བདེ་འཇགས་ཆེད་བསྐྱར་དུ་ནང་འཛུལ་བྱས་རྗེས་འགྱུར་ལྡོག་འདི་ཡང་བསྐྱར་བྱེད་རོགས།
+acct_err_credential_in_use	ནང་འཛུལ་ཐབས་ལམ་དེ་ཐོ་ཁོངས་གཞན་ཞིག་གིས་བེད་སྤྱོད་བྱས་ཟིན།
+acct_err_email_in_use	གློག་འཕྲིན་དེ་ཐོ་ཁོངས་གཞན་ཞིག་གིས་བེད་སྤྱོད་བྱས་ཟིན།
+acct_err_already_linked	ཐབས་ལམ་དེ་ཐོ་ཁོངས་འདི་དང་སྦྲེལ་ཟིན།
+acct_err_exists_other_method	གློག་འཕྲིན་འདིས་ནང་འཛུལ་ཐབས་ལམ་གཞན་ཞིག་བེད་སྤྱོད་བྱས་པའི་ཐོ་ཁོངས་ཤིག་ཡོད་ཟིན། སྔོན་ལ་ཐབས་ལམ་དེས་ནང་འཛུལ་བྱས་རྗེས་ཁྱེད་ཀྱི་ཐོ་ཁོངས་ཤོག་ངོས་ནས་འདི་སྦྲེལ་རོགས།
+acct_err_generic	ནོར་འཁྲུལ་ཞིག་བྱུང་སོང་།
+acct_method_password	གློག་འཕྲིན་དང་གསང་གྲངས།
+acct_pw_hint_change	ཁྱེད་ཀྱི་གསང་གྲངས་བསྒྱུར་རོགས། ད་ལྟའི་གསང་གྲངས་ཀྱིས་གཏན་འཁེལ་བྱེད་དགོས།
+acct_pw_hint_add	གློག་འཕྲིན་གྱིས་ཀྱང་ནང་འཛུལ་ཐུབ་ཆེད་གསང་གྲངས་ཤིག་སྣོན་རོགས། (ཞབས་ཞུ་མཁོ་སྤྲོད་པ་མི་འཐོབ་སྐབས་ཕན་ཐོགས་ཡོད།)
+acct_pw_change	གསང་གྲངས་བསྒྱུར།
+acct_pw_add	གསང་གྲངས་སྣོན།
+acct_billing_off	སྤྲིན་གྱི་ API སྟེང་རིན་སྤྲོད་ད་དུང་ཁ་ཕྱེ་མེད།
+acct_billing_no_provider	སྤྲིན་གྱི་ API སྟེང་རིན་སྤྲོད་མཁོ་སྤྲོད་པ་དངོས་ཡོད་གཅིག་ཀྱང་ཁ་ཕྱེ་མེད། (དཔེ་བཟོ་ཁོ་ན་ས་གནས་སུ་ཡོད།)
+price_quote	རིན་ཐོ།
+price_per_year	₹{amount}/ལོ། ཁྲལ་མ་ཚུད།
+acct_pay_received	རིན་སྤྲོད་འབྱོར་སོང་། — ཁྱེད་ཀྱི་འཆར་གཞི་གསར་བསྐྱར་བྱེད་བཞིན་པ…
+acct_pay_declined	རིན་སྤྲོད་ཁས་མ་བླངས་སམ་ཕམ་སོང་།
+acct_pay_failed_detail	{detail}། ཁྱེད་ཀྱི་འཆར་གཞི་བསྒྱུར་མེད།
+acct_checkout_closed	རིན་སྤྲོད་ཁ་བརྒྱབ་སོང་། — རིན་སྤྲོད་ལེགས་འགྲུབ་མ་བྱུང་། ཁྱེད་ཀྱི་འཆར་གཞི་མ་འགྱུར།
+acct_checkout_failed	རིན་སྤྲོད་ཕམ་སོང་།
+acct_pay_with	{provider} ཡིས་རིན་སྤྲོད།
+acct_plan_until	{plan} · {date} བར།
+acct_unavailable	མི་འཐོབ།
+acct_continue_hint	གློག་འཕྲིན། ཞབས་ཞུ་མཁོ་སྤྲོད་པ། ཡང་ན་ཁ་པར་གྱིས་མུ་མཐུད།
+acct_signed_in_fallback	(ནང་འཛུལ་ཟིན།)
+acct_email_verified	གློག་འཕྲིན་ར་སྤྲོད་ཟིན།
+acct_email_unverified	གློག་འཕྲིན་ད་དུང་ར་སྤྲོད་མེད། — ཁྱེད་ཀྱི་འབྱོར་སྒམ་ལ་ལྟ་རོགས།
+acct_signed_in_phone	ཁ་པར་གྱིས་ནང་འཛུལ་ཟིན།
+acct_none_listed	ད་དུང་ཐོ་ཅི་ཡང་མེད།
+acct_signed_in_status	ཁྱེད་ནང་འཛུལ་ཟིན།
+acct_created	ཐོ་ཁོངས་བཟོས་ཟིན། སྐབས་བདེ་དུས་ར་སྤྲོད་ཆེད་ཁྱེད་ཀྱི་གློག་འཕྲིན་ལ་ལྟ་རོགས།
+acct_reset_sent	གལ་ཏེ་གློག་འཕྲིན་དེའི་ཐོ་ཁོངས་ཡོད་ན་བསྐྱར་སྒྲིག་སྦྲེལ་མཐུད་ལམ་དུ་ཡོད། ཁྱེད་ཀྱི་འབྱོར་སྒམ་ལ་ལྟ་རོགས།
+acct_another_method	ཐབས་ལམ་གཞན་ཞིག
+acct_exists_via	{email} ཡི་ཐོ་ཁོངས་ {method} བརྒྱུད་ནས་ཡོད་ཟིན། སྔོན་ལ་ཐབས་ལམ་དེས་ནང་འཛུལ་བྱས་རྗེས་ཁྱེད་ཀྱི་ཐོ་ཁོངས་ཤོག་ངོས་ནས་ཞབས་ཞུ་མཁོ་སྤྲོད་པ་འདི་སྦྲེལ་རོགས།
+acct_enter_current_pw	ཁྱེད་ཀྱི་ད་ལྟའི་གསང་གྲངས་འབྲི་རོགས།
+acct_relogin_retry	ཕྱིར་ཐོན་ནས་བསྐྱར་དུ་ནང་འཛུལ་བྱས་རྗེས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།
+acct_pw_mismatch	གསང་གྲངས་གསར་པ་དང་གཏན་འཁེལ་གཉིས་མི་མཐུན།
+acct_pw_updated	གསང་གྲངས་གསར་བསྒྱུར་བྱས་ཟིན།
+acct_enter_email_pw	གསང་གྲངས་ནང་འཛུལ་དང་མཉམ་དུ་བེད་སྤྱོད་རྒྱུའི་གློག་འཕྲིན་ཞིག་འབྲི་རོགས།
+acct_pw_added	གསང་གྲངས་སྣོན་ཟིན། ད་ནི་གློག་འཕྲིན་གྱིས་ཀྱང་ནང་འཛུལ་ཐུབ།
+acct_method_linked	ནང་འཛུལ་ཐབས་ལམ་སྦྲེལ་ཟིན།
+acct_phone_linked	ཁ་པར་ཐོ་ཁོངས་འདི་དང་སྦྲེལ་ཟིན།
+acct_verify_sent	ར་སྤྲོད་གློག་འཕྲིན་བཏང་ཟིན། — ཁྱེད་ཀྱི་འབྱོར་སྒམ་ལ་ལྟ་རོགས།
+shop_pricing_soon	རིན་གོང་མྱུར་དུ་ཡོང་།
+shop_request_quote	རིན་ཐོ་ཞུ།
+shop_add_to_cart	ཉོ་སྒམ་དུ་སྣོན།
+shop_notify_later	རྗེས་སུ་ང་ལ་བརྡ་ཁྱབ་གཏོང་།
+shop_included	ཚུད་ཡོད།
+shop_in_cart	{plan} ཁྱེད་ཀྱི་ཉོ་སྒམ་ནང་ཡོད།
+shop_remove	སུབ།
+shop_cart_is_empty	ཉོ་སྒམ་སྟོང་པ་རེད།
+shop_prices_unpublished	ཐོན་རྫས་འདིའི་རང་ཉོའི་རིན་གོང་ད་དུང་ཁྱབ་བསྒྲགས་བྱས་མེད། སྒེར་བཟོའི་རིན་ཐོ་ཞུ་བའམ་རྗེས་སུ་ཡང་བསྐྱར་ལྟ་རོགས།
+shop_cart_cleared	ཉོ་སྒམ་གཙང་སེལ་བྱས་ཟིན།
+plan_free_title	རྟག་ཏུ་རིན་མེད།
+plan_free_blurb	ཁྱེད་ཀྱི་སྒྲིག་ཆས་སྟེང་ས་གནས་ཐོན་རྫས་ཆ་ཚང་། སྤྲིན་གྱི་གླ་ཆ་མེད།
+plan_steady_blurb	དུས་ཐོག་སྤྲིན། · 10 GB · དྲ་ཞེང་དམའ་བ།
+plan_swift_blurb	དུས་ཐོག་སྤྲིན། · 25 GB · དྲ་ཞེང་འབྲིང་།
+plan_priority_blurb	དུས་ཐོག་སྤྲིན། · 50 GB · ཚད་ལྡན་དྲ་ཞེང་མཐོ་ཤོས།
+plan_custom_title	སྒེར་བཟོ།
+plan_custom_blurb	གྲོས་མཐུན་བྱས་པའི་ཚད་དང་དྲ་ཞེང་། རིན་ཐོ་ Steady ལས་དམའ་བའམ་ Priority ལས་མཐོ་བ་ཡོང་སྲིད།

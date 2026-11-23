@@ -1,230 +1,230 @@
 # Tibetan — བོད་སྐད་ (bo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	དཔེ་མཚོན།
+download_free	རིན་མེད་ཕབ་ལེན།
+whatsapp_for_a_demo	མཐོང་སྟོན་ཆེད་ WhatsApp བྱེད་རོགས།
+free_on_android_windows_and	Android, Windows དང་ Linux སྟེང་རིན་མེད།
+the_grocery_counter	ཟ་ཆས་ཚོང་ཅོག
+busy_counter	བྲེལ་བའི་ཚོང་ཅོག
+kirano_the_grocery_counter	KIRANO · ཟ་ཆས་ཚོང་ཅོག
+busy_counter_no_internet_still	བྲེལ་བའི་ཚོང་ཅོག དྲ་རྒྱ་མེད། ད་དུང་འཛིན་བྱང་བཟོ་བཞིན།
+sell_khata_stock_and_the	བཙོང་བ། བུ་ལོན་དེབ། ཉར་ཚགས་དང་ཉིན་རྩིས། — ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་། རྩིས་དེབ། · བཙོང་བ། · ཉོ། · དངོས་རྫས། ཟ་ཁང་གི་ས་ཁུལ་མེད། ཐབ་ཚང་མེད། ཅོག་ཙེ་མེད།
+tap_the_bill_to_walk	ཚོང་ཅོག་གི་ཚོང་འགྲེམས་ཤིག་ལྟ་བར་འཛིན་བྱང་མནན་རོགས།
+cash_memo	དངུལ་ལྷོད་འཛིན་བྱང་།
+ready	གྲ་སྒྲིག་ཟིན།
+total	བསྡོམས།
+tap_to_add_the_first	དངོས་རྫས་དང་པོ་སྣོན་པར་མནན་རོགས།
+example_grocery_lines_not_a	དཔེ་མཚོན་ཟ་ཆས་ཐོ་གྲལ། དངོས་ཡོད་དངུལ་སྒམ་མིན། Kirano ཡང་ལམ་དེ་ཉིད་དུ་འགྲོ། བཙོང་བ → རྩིས་སྒྲིག → ཉིན་རྩིས།
+n_2_counter_sell	2 · ཚོང་ཅོག་གི་བཙོང་བ།
+item_quantity_pay_three_taps	དངོས་རྫས། གྲངས་ཚད། རིན་སྤྲོད། — མནན་ཐེངས་གསུམ།
+upi_qr_ready	UPI QR གྲ་སྒྲིག་ཟིན།
+example_bill	དཔེ་མཚོན་འཛིན་བྱང་།
+search_by_name_or_short	མིང་ངམ་ཨང་རྟགས་ཐུང་ངུས་འཚོལ།
+type_atta_at5_or_an	atta, AT5 ཡང་ན་མིང་གཞན་ཞིག་འབྲི་རོགས། — ཐོ་གྲལ་དེ་འཛིན་བྱང་སྟེང་འབབ།
+kg_g_pc_l_ml	ཀེ་ཇི། ཀ་རམ། ཧྲིལ་པོ། ལི་ཊར། མི་ལི།
+quantity_in_the_unit_the	ཐུམ་བུས་བེད་སྤྱོད་པའི་ཚད་གཞི་ནང་གྲངས་ཚད། རིན་གོང་རྗེས་སུ་འབྲང་།
+cash_upi_or_split	དངུལ་ལྷོད། UPI ཡང་ན་བགོ་བ།
+settle_on_the_counter_the	ཚོང་ཅོག་ཐོག་རྩིས་སྒྲིག་བྱེད། ཉིན་རྩིས་ཀྱིས་རིན་སྤྲོད་ཐབས་ལམ་ཐོ་འགོད་བྱེད།
+n_3_khata	3 · བུ་ལོན་དེབ།
+credit_without_a_crm_put	CRM མེད་པར་བུ་ལོན། — ཁོ་ཚོའི་བུ་ལོན་དེབ་ཏུ་འགོད།
+ramesh_customer	ར་མེཤ། · ཉོ་མཁན།
+due_from_earlier	སྔོན་གྱི་བུ་ལོན།
+today_s_sale_due	+ དེ་རིང་གི་ཚོང་འགྲེམས། (བུ་ལོན།)
+balance	ལྷག་མ།
+settle_later_in_parties_part	རྗེས་སུ་ཚོང་ཟླའི་ནང་རྩིས་སྒྲིག་བྱེད། — ཆ་ཤས་དངུལ་ལྷོད། ཆ་ཤས་ UPI། ཐོ་གྲལ་གཙང་སེལ།
+due_on_the_bill	འཛིན་བྱང་སྟེང་གི་བུ་ལོན།
+what_s_left_goes_on	ལྷག་མ་ཉོ་མཁན་གྱི་བུ་ལོན་དེབ་ཏུ་འགྲོ། — རྩིས་དེབ་ཉེར་སྤྱོད་ལོགས་སུ་མི་དགོས།
+one_party_two_roles	ཚོང་ཟླ་གཅིག ལས་འགན་གཉིས།
+customer_ar_and_supplier_ap	ཉོ་མཁན་ནས་ལེན་དགོས་པ་དང་མཁོ་སྤྲོད་པར་སྤྲོད་དགོས་པ་གཉིས་ཀྱིས་ཚོང་ཟླའི་དེབ་གཅིག་མཉམ་སྤྱོད་བྱེད།
+who_when_how_much	སུ། ནམ། ག་ཚོད།
+every_credit_and_settlement_stays	བུ་ལོན་དང་རྩིས་སྒྲིག་རེ་རེ་ཉིན་རྩིས་ནང་གནས།
+n_4_buy_stock	4 · ཉོ་བ་དང་ཉར་ཚགས།
+buy_from_the_wholesaler_stock	བསྡོམས་ཚོང་བ་ནས་ཉོ། — ཉར་ཚགས་དང་ཁྱེད་ཀྱིས་སུ་ལ་སྤྲོད་དགོས་པ་མཉམ་དུ་གསར་བསྒྱུར་འགྱུར།
+purchase_sharma_wholesale	ཉོ་བ། · ཤར་མ་བསྡོམས་ཚོང་།
+stock_50_kg_ap_7	ཉར་ཚགས་ +50 kg · སྤྲོད་དགོས་ ₹ 7,200
+stock_12_l_ap_1	ཉར་ཚགས་ +12 L · སྤྲོད་དགོས་ ₹ 1,560
+resale_stock_not_kitchen_raw	བསྐྱར་འཚོང་གི་ཉར་ཚགས། — ཐབ་ཚང་གི་རྒྱུ་ཆ་མིན། ཉོ་སྐབས་ཚོ་ཨང་དང་དུས་ཡོལ་འདོད་བློ་ལྟར།
+buy_creates_stock	ཉོ་བས་ཉར་ཚགས་བཟོ།
+receive_the_goods_the_catalogue	ཚོང་ཟོག་ལེན། དཀར་ཆག་གི་གྲངས་ཚད་འཕར།
+who_we_owe	ང་ཚོས་སུ་ལ་སྤྲོད་དགོས།
+supplier_balance_sits_on_the	མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་ལྷག་མ་ཉོ་མཁན་གྱི་བུ་ལོན་དེབ་དང་ཚོང་ཟླ་གཅིག་པའི་སྟེང་གནས།
+low_stock_at_a_glance	ཉར་ཚགས་ཉུང་བ་མིག་ལམ་གཅིག་གིས།
+inventory_shows_what_is_running	ཉར་ཚགས་ཀྱིས་བྲེལ་འཚུབ་རྗེས་མའི་སྔོན་དུ་ཅི་ཞིག་ཟད་འགྲོ་བཞིན་པ་སྟོན།
+n_5_day_book	5 · ཉིན་རྩིས།
+cash_vs_upi_counted_and	དངུལ་ལྷོད་དང་ UPI བསྡུར་ནས་གྲངས་རྩིས། — ཁྱད་པར་གསལ་པོར་བཀོད།
+today_s_drawer	དེ་རིང་གི་དངུལ་སྒམ།
+opening_float	ཐོག་མའི་དངུལ།
+cash_sales	+ དངུལ་ལྷོད་ཚོང་འགྲེམས།
+upi_sales	+ UPI ཚོང་འགྲེམས།
+cash_paid_out	− སྤྲད་པའི་དངུལ་ལྷོད།
+expected_cash	ཡོང་དགོས་པའི་དངུལ་ལྷོད།
+counted	གྲངས་རྩིས་ཟིན།
+short	ཆད།
+tenders_stay_separate	རིན་སྤྲོད་ཐབས་ལམ་ལོགས་སུ་གནས།
+cash_and_upi_never_mix	དངུལ་ལྷོད་དང་ UPI གཉིས་ནམ་ཡང་གསང་བའི་བསྡོམས་གྲངས་གཅིག་ཏུ་མི་འདྲེས།
+shift_close	ལས་ཚན་སྒོ་རྒྱག
+close_the_shift_print_the	ལས་ཚན་སྒོ་རྒྱག ཤོག་བུ་པར་སྐྲུན། རྗེས་མ་གཙང་མར་འགོ་འཛུགས།
+gst_facing_bills	GST དང་འབྲེལ་བའི་འཛིན་བྱང་།
+tax_invoice_or_cash_memo	ཁྲལ་འཛིན་ནམ་དངུལ་ལྷོད་འཛིན་བྱང་། — ཉིན་མོའི་སྙན་ཞུར་གཉིས་ཀ་ཚུད།
+books_sell_buy_items_four	རྩིས་དེབ། · བཙོང་བ། · ཉོ། · དངོས་རྫས། — བརྙན་ཡོལ་བཞི། ཟ་ཁང་གི་ས་ཁུལ་མེད།
+n_6_internet_down	6 · དྲ་རྒྱ་ཆད་སོང་ངམ།
+the_internet_drops_the_counter	དྲ་རྒྱ་ཆད། ཚོང་ཅོག་གིས་མུ་མཐུད་དུ་འཚོང་།
+router_no_internet	དྲ་འབྲེལ་ཆས། དྲ་རྒྱ་མེད།
+main_counter_selling_and_settling	ཚོང་ཅོག་གཙོ་བོ། འཚོང་བཞིན་རྩིས་སྒྲིག་བྱེད་བཞིན།
+second_till_joined_on_your	དངུལ་སྒམ་གཉིས་པ། ཁྱེད་རང་གི་ Wi-Fi སྟེང་སྦྲེལ་ཡོད།
+books_live_on_the_shop	རྩིས་དེབ་ཚོང་ཁང་གི་སྒྲིག་ཆས་སྟེང་གནས།
+when_the_internet_drops_mid	བྲེལ་འཚུབ་ཀྱི་བར་དུ་དྲ་རྒྱ་ཆད་ཀྱང་ཚོང་ཅོག་ཏུ་ཅི་ཡང་དེར་སྒུག་མི་དགོས།
+one_server_lan_clients	ཞབས་ཞུ་ཆས་གཅིག LAN སྤྱོད་མཁན།
+extra_tills_share_the_same	ཁ་སྣོན་དངུལ་སྒམ་རྣམས་ཀྱིས་ཚོང་ཁང་གི་དྲ་རྒྱ་བརྒྱུད་རྩིས་དེབ་གཅིག་པ་མཉམ་སྤྱོད་བྱེད།
+n_7_free_forever_locally	7 · ས་གནས་སུ་རྟག་ཏུ་རིན་མེད།
+free_forever_on_your_devices	ཁྱེད་ཀྱི་སྒྲིག་ཆས་སྟེང་རྟག་ཏུ་རིན་མེད།
+no_per_bill_charge	འཛིན་བྱང་རེར་གླ་ཆ་མེད།
+no_fee_per_sale_item	ས་གནས་སྒྲིག་འཇུག་སྟེང་ཚོང་འགྲེམས། དངོས་རྫས། དངུལ་སྒམ། ཡང་ན་ལས་བྱེད་པའི་ PIN རེར་གླ་ཆ་མེད།
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	ཚོང་ཅོག་རྒྱབ་ཀྱི་ཁ་པར་དང་ཅོག་སྟེང་དངུལ་སྒམ་གཉིས་སྟེང་ Kirano གཅིག་པ།
+optional_kumkaj_cloud	འདོད་བློ་ལྟར་གྱི་ Kumkaj Cloud
+yearly_steady_6k_swift_12k	ལོ་རེར་ Steady ₹6k · Swift ₹12k · Priority ₹24k ཁྲལ་མ་ཚུད། (ཡང་ན་སྒེར་བཟོའི་རིན་ཐོ།) /shop ནང་ཉོ་རོགས།
+n_8_start	8 · འགོ་འཛུགས།
+put_kirano_on_the_counter	Kirano ཚོང་ཅོག་ཏུ་འཇོག་རོགས།
+download_free_or_whatsapp_for	རིན་མེད་ཕབ་ལེན་བྱེད་དམ། ཁྱེད་ཀྱི་ཚོང་ཁང་གི་རིགས་དང་གྲོང་ཁྱེར་དང་བཅས་མཐོང་སྟོན་ཆེད་ WhatsApp བྱེད་རོགས།
+privacy	སྒེར་གསང་།
+terms	ཆ་རྐྱེན།
+cancellation	ཆ་མེད་གཏོང་བ།
+cloud_shop	སྤྲིན་ཚོང་ཁང་།
+account	ཐོ་ཁོངས།
+chapter_counter_sell	ཚོང་ཅོག་གི་བཙོང་བ།
+chapter_khata	བུ་ལོན་དེབ།
+chapter_buy_stock	ཉོ་བ་དང་ཉར་ཚགས།
+chapter_day_book	ཉིན་རྩིས།
+chapter_extra_till	ཁ་སྣོན་དངུལ་སྒམ།
+chapter_offline	དྲ་མེད།
+chapter_start	འགོ་འཛུགས།
+bill_selling	འཚོང་བཞིན།
+bill_settle	རྩིས་སྒྲིག
+bill_paid	རིན་སྤྲད་ཟིན།
+bill_next_item	དངོས་རྫས་རྗེས་མ་སྣོན་པར་མནན་རོགས།
+bill_settle_hint	རྩིས་སྒྲིག་ཆེད་མནན་རོགས། — དངུལ་ལྷོད་དམ་ UPI
+bill_cash_return	དངུལ་ལྷོད་ ₹ 600 · ཕྱིར་སྤྲོད་ ₹ 15
+bill_paid_line	རིན་སྤྲད་ཟིན། · ཉིན་རྩིས་གསར་བསྒྱུར་བྱས།
+lan_eyebrow	6 · ཁ་སྣོན་དངུལ་སྒམ།
+lan_title	ཚོང་ཁང་གི་ Wi-Fi སྟེང་དངུལ་སྒམ་གཞན་ཞིག
+cta_installers_note	སྒྲིག་འཇུག་ཆས་རེ་རེ་མ་ལག་གཙང་མའི་སྟེང་སྒྲིག་འཇུག་ཚོད་ལྟ་ལེགས་འགྲུབ་བྱུང་རྗེས་འདིར་ཡོང་། དེ་བར་ WhatsApp ནང་མཐོང་སྟོན་ཞུ་རོགས།
+cta_whatsapp_soon	WhatsApp མཐོང་སྟོན་ལམ་ཐིག་མྱུར་དུ་ཁ་ཕྱེ་གི་རེད། ཁྱེད་ཀྱི་འཕྲིན་ཡིག་འདི་ལྟར་འགྱུར། “{message}”།
+acct_page_title	ཐོ་ཁོངས། — Kirano
+acct_lede	དྲ་ཚིགས་དང་ཉེར་སྤྱོད་ཆེད་ཐོ་ཁོངས་གཅིག — གསར་པ་ཡིན་ནའང་ཕྱིར་ལོག་ཡིན་ནའང་རེའུ་མིག་དེ་ཉིད།
+acct_email	གློག་འཕྲིན།
+acct_name_optional	མིང་། (འདོད་བློ་ལྟར།)
+acct_password	གསང་གྲངས།
+acct_continue	མུ་མཐུད།
+acct_forgot	གསང་གྲངས་བརྗེད་སོང་ངམ།
+acct_reset_hint	ང་ཚོས་བསྐྱར་སྒྲིག་སྦྲེལ་མཐུད་གློག་འཕྲིན་དུ་བསྐུར་གྱི་ཡིན། ཐོ་འགོད་བྱས་པའི་ཁ་བྱང་དེ་ཉིད་བེད་སྤྱོད་རོགས།
+acct_send_reset	བསྐྱར་སྒྲིག་སྦྲེལ་མཐུད་བསྐུར་རོགས།
+acct_cancel	ཆ་མེད་གཏོང་བ།
+acct_or_continue	ཡང་ན་འདིས་མུ་མཐུད།
+acct_phone	ཁ་པར།
+acct_mobile	ལག་ཁ་པར་ཨང་གྲངས།
+acct_send_sms	SMS ཨང་རྟགས་བསྐུར་རོགས།
+acct_sms_code	SMS ཨང་རྟགས།
+acct_confirm_code	ཨང་རྟགས་གཏན་འཁེལ་བྱེད་རོགས།
+acct_signed_in	ནང་འཛུལ་ཟིན།
+acct_signed_in_as	འདི་ལྟར་ནང་འཛུལ།
+acct_status	གནས་བབ།
+acct_sign_in_methods	ནང་འཛུལ་ཐབས་ལམ།
+acct_cloud_username	སྤྲིན་བེད་སྤྱོད་མིང་།
+acct_plan	འཆར་གཞི།
+acct_resend_verify	ར་སྤྲོད་གློག་འཕྲིན་བསྐྱར་དུ་བསྐུར།
+acct_sign_out	ཕྱིར་ཐོན།
+acct_cloud_sandbox	Kumkaj Cloud (ཚོད་ལྟའི་ཁོར་ཡུག)
+acct_current_password	ད་ལྟའི་གསང་གྲངས།
+acct_email_for_password	གསང་གྲངས་ནང་འཛུལ་ཆེད་གློག་འཕྲིན།
+acct_new_password	གསང་གྲངས་གསར་པ།
+acct_confirm_new_password	གསང་གྲངས་གསར་པ་གཏན་འཁེལ།
+acct_add_way	ནང་འཛུལ་ཐབས་ལམ་གཞན་ཞིག་སྣོན་རོགས།
+acct_link_hint	ཐབས་ལམ་རྣམས་ཐོ་ཁོངས་གཅིག་ལ་སྦྲེལ་རོགས། གཅིག་ཕམ་ན་ཡང་འཛུལ་ཆོག་བསྐྱར་དུ་ཐོབ་ཐུབ།
+acct_link_google	Google སྦྲེལ།
+acct_link_microsoft	Microsoft སྦྲེལ།
+acct_link_github	GitHub སྦྲེལ།
+acct_link_phone	ཁ་པར་སྦྲེལ།
+acct_send_sms_link	སྦྲེལ་ཆེད་ SMS བསྐུར།
+acct_confirm_link_phone	གཏན་འཁེལ་བྱས་ནས་ཁ་པར་སྦྲེལ།
+shop_page_title	ཚོང་ཁང་། — Kirano
+shop_lede	ལོ་རེའི་སྤྲིན་འཆར་གཞི། — རིན་སྤྲོད་སྐབས་ཁྲལ་སྣོན། ཁྱེད་རང་གི་སྒྲིག་ཆས་སྟེང་ Kirano ཉེར་སྤྱོད་ཧྲིལ་པོ་རྟག་ཏུ་རིན་མེད། ཁྱབ་བསྒྲགས་མེད།
+shop_cart	ཉོ་སྒམ།
+shop_cart_empty_hint	ཁྱེད་ཀྱི་ཉོ་སྒམ་སྟོང་པ་རེད། Steady, Swift ཡང་ན་ Priority སྣོན་རོགས།
+shop_checkout	རིན་སྤྲོད།
+shop_clear	གཙང་སེལ།
+shop_checkout_hint	རིན་སྤྲོད་ཀྱིས་ཁྱེད་ཐོ་ཁོངས་སུ་ནང་འཛུལ་བྱེད་དུ་བཅུག་རྗེས་རིན་སྤྲོད་འགོ་འཛུགས། (ཚོད་ལྟའི་ཁོར་ཡུག་གི་དཔེ་བཟོ། ཡང་ན་ལྡེ་མིག་སྒྲིག་ཡོད་ན་ Paddle།)
+acct_billing_hint	ལོ་རེའི་འཆར་གཞི། — རིན་སྤྲོད་སྐབས་སྒོ་ལམ་གྱིས་ཁྲལ་སྣོན། ས་གནས་བེད་སྤྱོད་རྟག་ཏུ་རིན་མེད། སྒེར་བཟོ་ནི་རིན་ཐོ་ཞིག་ཡིན། (Steady ལས་དམའ་བའམ་ Priority ལས་མཐོ་བ་ཡོང་སྲིད།)
+shop_cloud_plans	སྤྲིན་འཆར་གཞི།
+acct_federated	མཉམ་འབྲེལ་ནང་འཛུལ།
+acct_err_invalid_email	གློག་འཕྲིན་ཁ་བྱང་ཏག་ཏག་འབྲི་རོགས།
+acct_err_weak_password	ཉུང་མཐར་ཡིག་འབྲུ་ 6 ཡོད་པའི་གསང་གྲངས་བེད་སྤྱོད་རོགས།
+acct_err_wrong_password	གསང་གྲངས་ནོར་འདུག
+acct_err_invalid_credential	གློག་འཕྲིན་ནམ་གསང་གྲངས་ནོར་འདུག
+acct_err_popup_closed	ནང་འཛུལ་སྒེའུ་ཁུང་ཁ་བརྒྱབ་སོང་།
+acct_err_popup_cancelled	ནང་འཛུལ་ཆ་མེད་བཏང་སོང་།
+acct_err_unauthorized_domain	ཁྱབ་ཁོངས་འདི་ Firebase Auth ཆེད་ཆོག་མཆན་མེད།
+acct_err_method_disabled	ནང་འཛུལ་ཐབས་ལམ་དེ་ད་དུང་སྤྱོད་མེད།
+acct_err_too_many	ཚོད་ལྟ་མང་དྲགས་སོང་། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།
+acct_err_phone_format	རྒྱལ་ཁབ་ཀྱི་ཨང་རྟགས་དང་བཅས་པའི་ཁ་པར་ཨང་གྲངས་ཆ་ཚང་བེད་སྤྱོད་རོགས། (དཔེར་ན། +91…)
+acct_err_sms_code	SMS ཨང་རྟགས་དེ་ནོར་བའམ་དུས་ཡོལ་སོང་།
+acct_err_no_account	གློག་འཕྲིན་དེར་ཐོ་ཁོངས་མེད། གསར་བཟོ་ཆེད་མུ་མཐུད། ཡང་ན་ཐབས་ལམ་གཞན་བེད་སྤྱོད་རོགས།
+acct_err_recent_login	བདེ་འཇགས་ཆེད་བསྐྱར་དུ་ནང་འཛུལ་བྱས་རྗེས་འགྱུར་ལྡོག་འདི་ཡང་བསྐྱར་བྱེད་རོགས།
+acct_err_credential_in_use	ནང་འཛུལ་ཐབས་ལམ་དེ་ཐོ་ཁོངས་གཞན་ཞིག་གིས་བེད་སྤྱོད་བྱས་ཟིན།
+acct_err_email_in_use	གློག་འཕྲིན་དེ་ཐོ་ཁོངས་གཞན་ཞིག་གིས་བེད་སྤྱོད་བྱས་ཟིན།
+acct_err_already_linked	ཐབས་ལམ་དེ་ཐོ་ཁོངས་འདི་དང་སྦྲེལ་ཟིན།
+acct_err_exists_other_method	གློག་འཕྲིན་འདིས་ནང་འཛུལ་ཐབས་ལམ་གཞན་ཞིག་བེད་སྤྱོད་བྱས་པའི་ཐོ་ཁོངས་ཤིག་ཡོད་ཟིན། སྔོན་ལ་ཐབས་ལམ་དེས་ནང་འཛུལ་བྱས་རྗེས་ཁྱེད་ཀྱི་ཐོ་ཁོངས་ཤོག་ངོས་ནས་འདི་སྦྲེལ་རོགས།
+acct_err_generic	ནོར་འཁྲུལ་ཞིག་བྱུང་སོང་།
+acct_method_password	གློག་འཕྲིན་དང་གསང་གྲངས།
+acct_pw_hint_change	ཁྱེད་ཀྱི་གསང་གྲངས་བསྒྱུར་རོགས། ད་ལྟའི་གསང་གྲངས་ཀྱིས་གཏན་འཁེལ་བྱེད་དགོས།
+acct_pw_hint_add	གློག་འཕྲིན་གྱིས་ཀྱང་ནང་འཛུལ་ཐུབ་ཆེད་གསང་གྲངས་ཤིག་སྣོན་རོགས། (ཞབས་ཞུ་མཁོ་སྤྲོད་པ་མི་འཐོབ་སྐབས་ཕན་ཐོགས་ཡོད།)
+acct_pw_change	གསང་གྲངས་བསྒྱུར།
+acct_pw_add	གསང་གྲངས་སྣོན།
+acct_billing_off	སྤྲིན་གྱི་ API སྟེང་རིན་སྤྲོད་ད་དུང་ཁ་ཕྱེ་མེད།
+acct_billing_no_provider	སྤྲིན་གྱི་ API སྟེང་རིན་སྤྲོད་མཁོ་སྤྲོད་པ་དངོས་ཡོད་གཅིག་ཀྱང་ཁ་ཕྱེ་མེད། (དཔེ་བཟོ་ཁོ་ན་ས་གནས་སུ་ཡོད།)
+price_quote	རིན་ཐོ།
+price_per_year	₹{amount}/ལོ། ཁྲལ་མ་ཚུད།
+acct_pay_received	རིན་སྤྲོད་འབྱོར་སོང་། — ཁྱེད་ཀྱི་འཆར་གཞི་གསར་བསྐྱར་བྱེད་བཞིན་པ…
+acct_pay_declined	རིན་སྤྲོད་ཁས་མ་བླངས་སམ་ཕམ་སོང་།
+acct_pay_failed_detail	{detail}། ཁྱེད་ཀྱི་འཆར་གཞི་བསྒྱུར་མེད།
+acct_checkout_closed	རིན་སྤྲོད་ཁ་བརྒྱབ་སོང་། — རིན་སྤྲོད་ལེགས་འགྲུབ་མ་བྱུང་། ཁྱེད་ཀྱི་འཆར་གཞི་མ་འགྱུར།
+acct_checkout_failed	རིན་སྤྲོད་ཕམ་སོང་།
+acct_pay_with	{provider} ཡིས་རིན་སྤྲོད།
+acct_plan_until	{plan} · {date} བར།
+acct_unavailable	མི་འཐོབ།
+acct_continue_hint	གློག་འཕྲིན། ཞབས་ཞུ་མཁོ་སྤྲོད་པ། ཡང་ན་ཁ་པར་གྱིས་མུ་མཐུད།
+acct_signed_in_fallback	(ནང་འཛུལ་ཟིན།)
+acct_email_verified	གློག་འཕྲིན་ར་སྤྲོད་ཟིན།
+acct_email_unverified	གློག་འཕྲིན་ད་དུང་ར་སྤྲོད་མེད། — ཁྱེད་ཀྱི་འབྱོར་སྒམ་ལ་ལྟ་རོགས།
+acct_signed_in_phone	ཁ་པར་གྱིས་ནང་འཛུལ་ཟིན།
+acct_none_listed	ད་དུང་ཐོ་ཅི་ཡང་མེད།
+acct_signed_in_status	ཁྱེད་ནང་འཛུལ་ཟིན།
+acct_created	ཐོ་ཁོངས་བཟོས་ཟིན། སྐབས་བདེ་དུས་ར་སྤྲོད་ཆེད་ཁྱེད་ཀྱི་གློག་འཕྲིན་ལ་ལྟ་རོགས།
+acct_reset_sent	གལ་ཏེ་གློག་འཕྲིན་དེའི་ཐོ་ཁོངས་ཡོད་ན་བསྐྱར་སྒྲིག་སྦྲེལ་མཐུད་ལམ་དུ་ཡོད། ཁྱེད་ཀྱི་འབྱོར་སྒམ་ལ་ལྟ་རོགས།
+acct_another_method	ཐབས་ལམ་གཞན་ཞིག
+acct_exists_via	{email} ཡི་ཐོ་ཁོངས་ {method} བརྒྱུད་ནས་ཡོད་ཟིན། སྔོན་ལ་ཐབས་ལམ་དེས་ནང་འཛུལ་བྱས་རྗེས་ཁྱེད་ཀྱི་ཐོ་ཁོངས་ཤོག་ངོས་ནས་ཞབས་ཞུ་མཁོ་སྤྲོད་པ་འདི་སྦྲེལ་རོགས།
+acct_enter_current_pw	ཁྱེད་ཀྱི་ད་ལྟའི་གསང་གྲངས་འབྲི་རོགས།
+acct_relogin_retry	ཕྱིར་ཐོན་ནས་བསྐྱར་དུ་ནང་འཛུལ་བྱས་རྗེས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།
+acct_pw_mismatch	གསང་གྲངས་གསར་པ་དང་གཏན་འཁེལ་གཉིས་མི་མཐུན།
+acct_pw_updated	གསང་གྲངས་གསར་བསྒྱུར་བྱས་ཟིན།
+acct_enter_email_pw	གསང་གྲངས་ནང་འཛུལ་དང་མཉམ་དུ་བེད་སྤྱོད་རྒྱུའི་གློག་འཕྲིན་ཞིག་འབྲི་རོགས།
+acct_pw_added	གསང་གྲངས་སྣོན་ཟིན། ད་ནི་གློག་འཕྲིན་གྱིས་ཀྱང་ནང་འཛུལ་ཐུབ།
+acct_method_linked	ནང་འཛུལ་ཐབས་ལམ་སྦྲེལ་ཟིན།
+acct_phone_linked	ཁ་པར་ཐོ་ཁོངས་འདི་དང་སྦྲེལ་ཟིན།
+acct_verify_sent	ར་སྤྲོད་གློག་འཕྲིན་བཏང་ཟིན། — ཁྱེད་ཀྱི་འབྱོར་སྒམ་ལ་ལྟ་རོགས།
+shop_pricing_soon	རིན་གོང་མྱུར་དུ་ཡོང་།
+shop_request_quote	རིན་ཐོ་ཞུ།
+shop_add_to_cart	ཉོ་སྒམ་དུ་སྣོན།
+shop_notify_later	རྗེས་སུ་ང་ལ་བརྡ་ཁྱབ་གཏོང་།
+shop_included	ཚུད་ཡོད།
+shop_in_cart	{plan} ཁྱེད་ཀྱི་ཉོ་སྒམ་ནང་ཡོད།
+shop_remove	སུབ།
+shop_cart_is_empty	ཉོ་སྒམ་སྟོང་པ་རེད།
+shop_prices_unpublished	ཐོན་རྫས་འདིའི་རང་ཉོའི་རིན་གོང་ད་དུང་ཁྱབ་བསྒྲགས་བྱས་མེད། སྒེར་བཟོའི་རིན་ཐོ་ཞུ་བའམ་རྗེས་སུ་ཡང་བསྐྱར་ལྟ་རོགས།
+shop_cart_cleared	ཉོ་སྒམ་གཙང་སེལ་བྱས་ཟིན།
+plan_free_title	རྟག་ཏུ་རིན་མེད།
+plan_free_blurb	ཁྱེད་ཀྱི་སྒྲིག་ཆས་སྟེང་ས་གནས་ཐོན་རྫས་ཆ་ཚང་། སྤྲིན་གྱི་གླ་ཆ་མེད།
+plan_steady_blurb	དུས་ཐོག་སྤྲིན། · 10 GB · དྲ་ཞེང་དམའ་བ།
+plan_swift_blurb	དུས་ཐོག་སྤྲིན། · 25 GB · དྲ་ཞེང་འབྲིང་།
+plan_priority_blurb	དུས་ཐོག་སྤྲིན། · 50 GB · ཚད་ལྡན་དྲ་ཞེང་མཐོ་ཤོས།
+plan_custom_title	སྒེར་བཟོ།
+plan_custom_blurb	གྲོས་མཐུན་བྱས་པའི་ཚད་དང་དྲ་ཞེང་། རིན་ཐོ་ Steady ལས་དམའ་བའམ་ Priority ལས་མཐོ་བ་ཡོང་སྲིད།

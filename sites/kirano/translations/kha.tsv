@@ -1,230 +1,230 @@
 # Khasi — Khasi (kha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Nuksa
+download_free	Ioh laitluid
+whatsapp_for_a_demo	WhatsApp na ka bynta ka demo
+free_on_android_windows_and	Laitluid ha Android, Windows bad Linux.
+the_grocery_counter	ka kaunta dukan tiar
+busy_counter	Ka kaunta ba khie
+kirano_the_grocery_counter	KIRANO · KA KAUNTA DUKAN TIAR
+busy_counter_no_internet_still	Ka kaunta ba khie. Ym don internet. Dang pynmih bill.
+sell_khata_stock_and_the	Die, khata, ki tiar bad ka kot sngi — ha ki device jong phi hi. Ki kot · Die · Thied · Ki tiar. Ym don jaka bam, ym don kamra shet ja, ym don miej bam.
+tap_the_bill_to_walk	Nion ia ka bill ban peit ia ka jingdie kawei ha ka kaunta
+cash_memo	Ka bill pisa
+ready	La khreh
+total	Baroh
+tap_to_add_the_first	Nion ban bujli ia ka tiar nyngkong
+example_grocery_lines_not_a	Nuksa ki lain tiar dukan, kam dei ka kaunta ba im. Kirano ka bud ia ka lynti ba syn: die → pynkhlain → ka kot sngi.
+n_2_counter_sell	2 · KA JINGDIE HA KA KAUNTA
+item_quantity_pay_three_taps	Ka tiar, ka jingbun, ka jingsiew — lai ki jingnion.
+upi_qr_ready	U QR UPI u la khreh
+example_bill	Nuksa ka bill
+search_by_name_or_short	Wad da ka kyrteng lane da u code ba lyngkot
+type_atta_at5_or_an	Thoh atta, AT5 lane kawei pat ka kyrteng — ka lain ka poi ha ka bill.
+kg_g_pc_l_ml	kilo, gram, tylli, lit, mili
+quantity_in_the_unit_the	Ka jingbun ha ka unit ba pyndonkam ka packet; ka dor ka bud.
+cash_upi_or_split	Ka pisa, UPI lane bynta
+settle_on_the_counter_the	Pynkhlain ha ka kaunta; ka kot sngi ka thoh ia ka lad jingsiew.
+n_3_khata	3 · KA KHATA
+credit_without_a_crm_put	Ka bai khlem CRM — buh ha ka khata jong ki.
+ramesh_customer	Ramesh · U nongthied
+due_from_earlier	Ka bai na mynshwa
+today_s_sale_due	+ ka jingdie mynta (Ka bai)
+balance	Ka bai ba sah
+settle_later_in_parties_part	Pynkhlain hadien ha Ki party — bynta ka pisa, bynta UPI, pynkhuid ia ka lain.
+due_on_the_bill	Ka bai ha ka bill
+what_s_left_goes_on	Kaba sah ka leit ha ka khata jong u nongthied — ym donkam ka app kot pat.
+one_party_two_roles	Kawei ka party, ar ki kam
+customer_ar_and_supplier_ap	AR jong u nongthied bad AP jong u nongsam ki ia shim bynta ia ka kot party ba syn.
+who_when_how_much	Uno, haba, katno
+every_credit_and_settlement_stays	Man ka bai bad ka jingpynkhlain ka sah ha ka kot sngi.
+n_4_buy_stock	4 · THIED BAD KI TIAR
+buy_from_the_wholesaler_stock	Thied na u nongdie bun — ki tiar bad uno phi dei ban siew ki pynthymmai lang.
+purchase_sharma_wholesale	Ka jingthied · Sharma Wholesale
+stock_50_kg_ap_7	Ki tiar +50 kg · AP ₹ 7,200
+stock_12_l_ap_1	Ki tiar +12 L · AP ₹ 1,560
+resale_stock_not_kitchen_raw	Ki tiar ban die biang — kam dei ki tiar kamra shet ja. Ka batch bad ka por kut lada phi kwah ha ka jingthied.
+buy_creates_stock	Ka jingthied ka shna ia ki tiar
+receive_the_goods_the_catalogue	Ioh ia ki tiar; ka jingbun ha ka catalogue ka kiew.
+who_we_owe	Uno ngi dei ban siew
+supplier_balance_sits_on_the	Ka bai jong u nongsam ka sah ha ka party ba syn kum ka khata jong u nongthied.
+low_stock_at_a_glance	Ki tiar kiba duna ha kawei ka jingkhmih
+inventory_shows_what_is_running	Ka inventory ka pyni aiu ba dang kut shwa ia ka jingkynriah ba bud.
+n_5_day_book	5 · KA KOT SNGI
+cash_vs_upi_counted_and	Ka pisa pyrshah UPI, la kyrhuh — bad ka jingkylla la pyni.
+today_s_drawer	Ka drawer mynta
+opening_float	Ka pisa sdang
+cash_sales	+ ka jingdie pisa
+upi_sales	+ ka jingdie UPI
+cash_paid_out	− ka pisa ba la siew
+expected_cash	Ka pisa ba la kyrmen
+counted	La kyrhuh
+short	Duna
+tenders_stay_separate	Ki lad jingsiew ki sah pat pat
+cash_and_upi_never_mix	Ka pisa bad UPI kim ju iasnoh ha kawei ka baroh ba bym shai.
+shift_close	Khang shift
+close_the_shift_print_the	Khang ia ka shift, pynmih ia ka slip, sdang ia kaba bud ba khuid.
+gst_facing_bills	Ki bill GST
+tax_invoice_or_cash_memo	Ka invoice shuiñ lane ka bill pisa — ka kaiphod sngi ka bat ia kiba ar.
+books_sell_buy_items_four	Ki kot · Die · Thied · Ki tiar — saw ki screen, bad ym don jaka bam.
+n_6_internet_down	6 · YM DON INTERNET?
+the_internet_drops_the_counter	Ka internet ka duh. Ka kaunta ka dang die.
+router_no_internet	Router: ym don internet
+main_counter_selling_and_settling	Ka kaunta kongsan: dang die bad pynkhlain
+second_till_joined_on_your	Ka kaunta pisa ba ar: la iasoh ha ka Wi-Fi jong phi hi
+books_live_on_the_shop	Ki kot ki sah ha ki device jong ka dukan
+when_the_internet_drops_mid	Haba ka internet ka duh ha pdeng ka jingkynriah, ym don ei ei ha ka kaunta ba ap ia ka.
+one_server_lan_clients	Kawei ka Server, ki LAN Client
+extra_tills_share_the_same	Ki kaunta pisa kiba bujli ki ia pyndonkam ia ki kot ba syn ha ka network jong ka dukan.
+n_7_free_forever_locally	7 · LAITLUID JUNOM HA KA JAKA
+free_forever_on_your_devices	Laitluid junom ha ki device jong phi.
+no_per_bill_charge	Ym don dor na man ka bill
+no_fee_per_sale_item	Ym don dor na man ka jingdie, ka tiar, ka kaunta pisa lane u PIN nongtrei ha ka install ha ka jaka.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Ka Kirano ba syn ha ka phone hadien ka kaunta bad ha ka kaunta pisa desktop.
+optional_kumkaj_cloud	Kumkaj Cloud lada phi kwah
+yearly_steady_6k_swift_12k	Man ka snem Steady ₹6k · Swift ₹12k · Priority ₹24k khlem ka shuiñ (lane ka jingkhein dor). Thied ha /shop.
+n_8_start	8 · SDANG
+put_kirano_on_the_counter	Buh ia Kirano ha ka kaunta.
+download_free_or_whatsapp_for	Ioh laitluid, lane WhatsApp na ka bynta ka jingpyni lang bad ka jaid dukan bad ka nongbah jong phi.
+privacy	Ka jingrieh
+terms	Ki kyndon
+cancellation	Ka jingpynsangeh
+cloud_shop	Ka dukan cloud
+account	Ka account
+chapter_counter_sell	Ka jingdie ha ka kaunta
+chapter_khata	Ka khata
+chapter_buy_stock	Thied bad ki tiar
+chapter_day_book	Ka kot sngi
+chapter_extra_till	Ka kaunta pisa ba bujli
+chapter_offline	Khlem lain
+chapter_start	Sdang
+bill_selling	Dang die
+bill_settle	Siew
+bill_paid	La siew
+bill_next_item	Nion ban bujli ia ka tiar ba bud
+bill_settle_hint	Nion ban siew — ka pisa lane UPI
+bill_cash_return	Ka pisa ₹ 600 · pynphai ₹ 15
+bill_paid_line	La siew · ka kot sngi la pynthymmai
+lan_eyebrow	6 · KA KAUNTA PISA BA BUJLI
+lan_title	Kawei pat ka kaunta pisa ha ka Wi-Fi jong ka dukan.
+cta_installers_note	Ki installer kin wan hangne haba man u wei u la jop ia ka jingpule install ha ka mashin ba khuid. Haduh kata, kylli ia ka demo ha WhatsApp.
+cta_whatsapp_soon	Ka lain demo WhatsApp kan plie kloi. Ka message jong phi kan long: “{message}”.
+acct_page_title	Ka account — Kirano
+acct_lede	Kawei ka account na ka bynta ka site bad ki app — ka form ka syn lada phi dei thymmai lane phi wan biang.
+acct_email	Ka email
+acct_name_optional	Ka kyrteng (lada phi kwah)
+acct_password	Ka ktien rieh
+acct_continue	Bteng
+acct_forgot	Phi la klet ia ka ktien rieh?
+acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia ka address ba syn ba phi la sign up.
+acct_send_reset	Phah ia ka link reset
+acct_cancel	Pynsangeh
+acct_or_continue	lane bteng da
+acct_phone	Ka phone
+acct_mobile	U nombar mobile
+acct_send_sms	Phah ia u code SMS
+acct_sms_code	U code SMS
+acct_confirm_code	Pynshisha ia u code
+acct_signed_in	La rung
+acct_signed_in_as	La rung kum
+acct_status	Ka jinglong
+acct_sign_in_methods	Ki lad ban rung
+acct_cloud_username	Ka kyrteng cloud
+acct_plan	Ka plan
+acct_resend_verify	Phah biang ia ka email jingpynshisha
+acct_sign_out	Mih
+acct_cloud_sandbox	Kumkaj Cloud (ka jaka pule)
+acct_current_password	Ka ktien rieh mynta
+acct_email_for_password	Ka email na ka bynta ka jingrung da ka ktien rieh
+acct_new_password	Ka ktien rieh thymmai
+acct_confirm_new_password	Pynshisha ia ka ktien rieh thymmai
+acct_add_way	Bujli kawei pat ka lad ban rung
+acct_link_hint	Pyniasoh ia ki lad sha kawei ka account ba phi lah ban ioh biang ia ka jingrung lada kawei ka bym longkam.
+acct_link_google	Pyniasoh ia Google
+acct_link_microsoft	Pyniasoh ia Microsoft
+acct_link_github	Pyniasoh ia GitHub
+acct_link_phone	Pyniasoh ia ka phone
+acct_send_sms_link	Phah SMS ban pyniasoh
+acct_confirm_link_phone	Pynshisha bad pyniasoh ia ka phone
+shop_page_title	Ka dukan — Kirano
+shop_lede	Ki plan cloud man ka snem — ka shuiñ la bujli ha ka jingsiew. Baroh ka app Kirano ha ki device jong phi ka sah laitluid junom, khlem ki jingpynbna.
+shop_cart	Ka cart
+shop_cart_empty_hint	Ka cart jong phi ka thylli. Bujli ia Steady, Swift, lane Priority.
+shop_checkout	Ka jingsiew
+shop_clear	Pynkhuid
+shop_checkout_hint	Ka jingsiew ka pynrung ia phi ha ka Account, nangta ka sdang ia ka jingsiew (ka mock ka jaka pule lane Paddle haba la buh ia ki key).
+acct_billing_hint	Ki plan man ka snem — ka shuiñ la bujli da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah laitluid junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
+shop_cloud_plans	Ki plan cloud
+acct_federated	Ka jingrung ba iasoh
+acct_err_invalid_email	Thoh ia ka address email ba dei.
+acct_err_weak_password	Pyndonkam ia ka ktien rieh bad 6 ki dak tang khyndiat.
+acct_err_wrong_password	Ka ktien rieh ka bakla.
+acct_err_invalid_credential	Ka email lane ka ktien rieh ka bakla.
+acct_err_popup_closed	La khang ia ka window jingrung.
+acct_err_popup_cancelled	La pynsangeh ia ka jingrung.
+acct_err_unauthorized_domain	Kane ka domain kam don jingbit na ka bynta Firebase Auth.
+acct_err_method_disabled	Kata ka lad ban rung kam pat sdang.
+acct_err_too_many	Bun palat ki jingpyrshang. Pyrshang biang hadien.
+acct_err_phone_format	Pyndonkam ia u nombar phone baroh bad u code ri (kum +91…).
+acct_err_sms_code	Kata u code SMS u bakla lane u la kut ka por.
+acct_err_no_account	Ym don account bad kata ka email. Bteng ban shna kawei, lane pyndonkam ia kiwei pat ki lad.
+acct_err_recent_login	Na ka bynta ka jingshngain, rung biang, nangta pyrshang biang ia kane ka jingkylla.
+acct_err_credential_in_use	Kata ka lad ban rung la pyndonkam da kawei pat ka account.
+acct_err_email_in_use	Kata ka email la pyndonkam da kawei pat ka account.
+acct_err_already_linked	Kata ka lad la iasoh lypa bad kane ka account.
+acct_err_exists_other_method	Don lypa ka account bad kane ka email da kawei pat ka lad ban rung. Rung shwa da kata ka lad, nangta pyniasoh ia kane na ka sla account jong phi.
+acct_err_generic	Don ei ei kaba la bakla.
+acct_method_password	Ka email bad ka ktien rieh
+acct_pw_hint_change	Kylla ia ka ktien rieh jong phi. Phin pynshisha da ka ktien rieh mynta.
+acct_pw_hint_add	Bujli ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
+acct_pw_change	Kylla ia ka ktien rieh
+acct_pw_add	Bujli ia ka ktien rieh
+acct_billing_off	Ka jingsiew bill kam pat sdang ha ka cloud API.
+acct_billing_no_provider	Ym don u nongai jingsiew bill shisha ha ka cloud API (ka mock tang ha ka jaka).
+price_quote	Ka jingkhein dor
+price_per_year	₹{amount}/snem khlem ka shuiñ
+acct_pay_received	La ioh ia ka jingsiew — dang pynthymmai ia ka plan jong phi…
+acct_pay_declined	La pynsangeh lane bym longkam ka jingsiew
+acct_pay_failed_detail	{detail}. Ka plan jong phi kam la kylla.
+acct_checkout_closed	La khang ia ka jingsiew — ym don jingsiew ba la dep. Ka plan jong phi kam kylla.
+acct_checkout_failed	Ka jingsiew ka bym longkam
+acct_pay_with	Siew da {provider}
+acct_plan_until	{plan} · haduh {date}
+acct_unavailable	Ym don
+acct_continue_hint	Bteng da ka email, u nongai, lane ka phone.
+acct_signed_in_fallback	(la rung)
+acct_email_verified	La pynshisha ia ka email
+acct_email_unverified	Kam pat pynshisha ia ka email — peit ia ka inbox jong phi
+acct_signed_in_phone	La rung da ka phone
+acct_none_listed	Ym pat don ei ei
+acct_signed_in_status	Phi la rung.
+acct_created	La shna ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
+acct_reset_sent	Lada don ka account na ka bynta kata ka email, ka link reset ka dang wan. Peit ia ka inbox jong phi.
+acct_another_method	kawei pat ka lad
+acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia kane u nongai na ka sla account jong phi.
+acct_enter_current_pw	Thoh ia ka ktien rieh mynta jong phi.
+acct_relogin_retry	Mih bad rung biang, nangta pyrshang biang.
+acct_pw_mismatch	Ka ktien rieh thymmai bad ka jingpynshisha kim iadei.
+acct_pw_updated	La pynthymmai ia ka ktien rieh.
+acct_enter_email_pw	Thoh ia ka email ban pyndonkam bad ka jingrung da ka ktien rieh.
+acct_pw_added	La bujli ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
+acct_method_linked	La pyniasoh ia ka lad ban rung.
+acct_phone_linked	La pyniasoh ia ka phone bad kane ka account.
+acct_verify_sent	La phah ia ka email jingpynshisha — peit ia ka inbox jong phi.
+shop_pricing_soon	Ki dor kin wan kloi
+shop_request_quote	Kylli ia ka jingkhein dor
+shop_add_to_cart	Bujli ha ka cart
+shop_notify_later	Ong ia nga hadien
+shop_included	La kynthup
+shop_in_cart	{plan} ka don ha ka cart jong phi.
+shop_remove	Weng
+shop_cart_is_empty	Ka cart ka thylli.
+shop_prices_unpublished	Ki dor ban thied da lade kim pat pynpaw na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
+shop_cart_cleared	La pynkhuid ia ka cart.
+plan_free_title	Laitluid junom
+plan_free_blurb	Baroh ka tiar ha ka jaka ha ki device jong phi. Ym don dor cloud.
+plan_steady_blurb	Ka cloud ba im · 10 GB · bandwidth ba duna
+plan_swift_blurb	Ka cloud ba im · 25 GB · bandwidth pdeng
+plan_priority_blurb	Ka cloud ba im · 50 GB · bandwidth ba kham jrong
+plan_custom_title	Ba la pynbeit
+plan_custom_blurb	Ka jingbun bad ka bandwidth ba la ia ngeit. Ka jingkhein dor ka lah ban duna ia Steady lane palat ia Priority.
