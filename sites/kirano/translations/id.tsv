@@ -1,230 +1,230 @@
 # Indonesian — Bahasa Indonesia (id). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Contoh
+download_free	Unduh gratis
+whatsapp_for_a_demo	WhatsApp untuk demo
+free_on_android_windows_and	Gratis di Android, Windows, dan Linux.
+the_grocery_counter	konter toko kelontong
+busy_counter	Konter ramai
+kirano_the_grocery_counter	KIRANO · KONTER TOKO KELONTONG
+busy_counter_no_internet_still	Konter ramai. Tanpa internet. Tetap menagih.
+sell_khata_stock_and_the	Jual, buku utang, stok, dan buku harian — di perangkat Anda sendiri. Pembukuan · Jual · Beli · Item. Tanpa ruang makan, tanpa dapur, tanpa meja.
+tap_the_bill_to_walk	Ketuk struk untuk menelusuri satu penjualan konter
+cash_memo	Nota tunai
+ready	Siap
+total	Jumlah
+tap_to_add_the_first	Ketuk untuk menambah item pertama
+example_grocery_lines_not_a	Contoh baris belanjaan, bukan kasir sungguhan. Kirano mengikuti alur yang sama: jual → lunasi → buku harian.
+n_2_counter_sell	2 · JUAL DI KONTER
+item_quantity_pay_three_taps	Item, jumlah, bayar — tiga ketukan.
+upi_qr_ready	QR UPI siap
+example_bill	Contoh struk
+search_by_name_or_short	Cari berdasarkan nama atau kode singkat
+type_atta_at5_or_an	Ketik atta, AT5, atau alias — barisnya masuk ke struk.
+kg_g_pc_l_ml	kg, g, pcs, L, ml
+quantity_in_the_unit_the	Jumlah dalam satuan kemasan; harga mengikuti.
+cash_upi_or_split	Tunai, UPI, atau dibagi
+settle_on_the_counter_the	Lunasi di konter; buku harian mencatat cara bayarnya.
+n_3_khata	3 · BUKU UTANG
+credit_without_a_crm_put	Kredit tanpa CRM — catat di buku utangnya.
+ramesh_customer	Ramesh · Pelanggan
+due_from_earlier	Utang sebelumnya
+today_s_sale_due	+ penjualan hari ini (utang)
+balance	Saldo
+settle_later_in_parties_part	Lunasi nanti di Pihak — sebagian tunai, sebagian UPI, bereskan barisnya.
+due_on_the_bill	Utang di struk
+what_s_left_goes_on	Sisanya masuk ke buku utang pelanggan — tanpa aplikasi buku besar terpisah.
+one_party_two_roles	Satu pihak, dua peran
+customer_ar_and_supplier_ap	Piutang pelanggan dan utang pemasok berbagi buku pihak yang sama.
+who_when_how_much	Siapa, kapan, berapa
+every_credit_and_settlement_stays	Setiap kredit dan pelunasan tetap tercatat di buku harian.
+n_4_buy_stock	4 · BELI & STOK
+buy_from_the_wholesaler_stock	Beli dari grosir — stok dan utang Anda diperbarui bersamaan.
+purchase_sharma_wholesale	Pembelian · Grosir Sharma
+stock_50_kg_ap_7	Stok +50 kg · Utang ₹ 7,200
+stock_12_l_ap_1	Stok +12 L · Utang ₹ 1,560
+resale_stock_not_kitchen_raw	Stok untuk dijual kembali — bukan bahan dapur. Batch dan kedaluwarsa opsional saat membeli.
+buy_creates_stock	Pembelian menambah stok
+receive_the_goods_the_catalogue	Terima barangnya; jumlah di katalog bertambah.
+who_we_owe	Kepada siapa kita berutang
+supplier_balance_sits_on_the	Saldo pemasok ada di pihak yang sama dengan buku utang pelanggan.
+low_stock_at_a_glance	Stok menipis dalam sekali lihat
+inventory_shows_what_is_running	Inventaris menunjukkan apa yang hampir habis sebelum keramaian berikutnya.
+n_5_day_book	5 · BUKU HARIAN
+cash_vs_upi_counted_and	Tunai vs UPI, dihitung — dan selisihnya disebut jelas.
+today_s_drawer	Laci hari ini
+opening_float	Modal awal
+cash_sales	+ penjualan tunai
+upi_sales	+ penjualan UPI
+cash_paid_out	− tunai keluar
+expected_cash	Tunai yang seharusnya
+counted	Terhitung
+short	Kurang
+tenders_stay_separate	Cara bayar tetap terpisah
+cash_and_upi_never_mix	Tunai dan UPI tidak pernah tercampur menjadi satu total misterius.
+shift_close	Tutup shift
+close_the_shift_print_the	Tutup shift, cetak slip, mulai shift berikutnya dengan bersih.
+gst_facing_bills	Tagihan siap GST
+tax_invoice_or_cash_memo	Faktur pajak atau nota tunai — laporan harian memuat keduanya.
+books_sell_buy_items_four	Pembukuan · Jual · Beli · Item — empat layar, tanpa ruang makan restoran.
+n_6_internet_down	6 · INTERNET MATI?
+the_internet_drops_the_counter	Internet putus. Konter tetap berjualan.
+router_no_internet	Router: tanpa internet
+main_counter_selling_and_settling	Konter utama: berjualan dan melunasi
+second_till_joined_on_your	Kasir kedua: tersambung di Wi-Fi Anda sendiri
+books_live_on_the_shop	Pembukuan ada di perangkat toko
+when_the_internet_drops_mid	Saat internet putus di tengah keramaian, tidak ada yang menunggu di konter.
+one_server_lan_clients	Satu server, klien LAN
+extra_tills_share_the_same	Kasir tambahan berbagi pembukuan yang sama lewat jaringan toko.
+n_7_free_forever_locally	7 · GRATIS SELAMANYA SECARA LOKAL
+free_forever_on_your_devices	Gratis selamanya di perangkat Anda.
+no_per_bill_charge	Tanpa biaya per tagihan
+no_fee_per_sale_item	Tanpa biaya per penjualan, item, kasir, atau PIN staf pada instalasi lokal.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Kirano yang sama di ponsel di balik konter dan di kasir desktop.
+optional_kumkaj_cloud	Kumkaj Cloud opsional
+yearly_steady_6k_swift_12k	Tahunan Steady ₹6rb · Swift ₹12rb · Priority ₹24rb belum termasuk pajak (atau penawaran Khusus). Beli di /shop.
+n_8_start	8 · MULAI
+put_kirano_on_the_counter	Pasang Kirano di konter.
+download_free_or_whatsapp_for	Unduh gratis, atau WhatsApp untuk dipandu sesuai jenis toko dan kota Anda.
+privacy	Privasi
+terms	Ketentuan
+cancellation	Pembatalan
+cloud_shop	Toko cloud
+account	Akun
+chapter_counter_sell	Jual di konter
+chapter_khata	Buku utang
+chapter_buy_stock	Beli & stok
+chapter_day_book	Buku harian
+chapter_extra_till	Kasir tambahan
+chapter_offline	Luring
+chapter_start	Mulai
+bill_selling	Menjual
+bill_settle	Lunasi
+bill_paid	Lunas
+bill_next_item	Ketuk untuk menambah item berikutnya
+bill_settle_hint	Ketuk untuk melunasi — tunai atau UPI
+bill_cash_return	Tunai ₹ 600 · kembalian ₹ 15
+bill_paid_line	Lunas · buku harian diperbarui
+lan_eyebrow	6 · KASIR TAMBAHAN
+lan_title	Satu kasir lagi di Wi-Fi toko.
+cta_installers_note	Penginstal akan dipasang di sini setelah masing-masing lolos uji instal di mesin bersih. Sampai saat itu, minta demo lewat WhatsApp.
+cta_whatsapp_soon	Jalur demo WhatsApp segera dibuka. Pesan Anda akan berbunyi: “{message}”.
+acct_page_title	Akun — Kirano
+acct_lede	Satu akun untuk situs dan aplikasi — formulir yang sama, baik Anda baru maupun kembali.
+acct_email	Alamat email
+acct_name_optional	Nama (opsional)
+acct_password	Kata sandi
+acct_continue	Lanjut
+acct_forgot	Lupa kata sandi?
+acct_reset_hint	Kami akan mengirim tautan atur ulang lewat email. Gunakan alamat yang sama dengan saat Anda mendaftar.
+acct_send_reset	Kirim tautan atur ulang
+acct_cancel	Batal
+acct_or_continue	atau lanjutkan dengan
+acct_phone	Telepon
+acct_mobile	Nomor ponsel
+acct_send_sms	Kirim kode SMS
+acct_sms_code	Kode SMS
+acct_confirm_code	Konfirmasi kode
+acct_signed_in	Sudah masuk
+acct_signed_in_as	Masuk sebagai
+acct_status	Status akun
+acct_sign_in_methods	Cara masuk
+acct_cloud_username	Nama pengguna cloud
+acct_plan	Paket
+acct_resend_verify	Kirim ulang email verifikasi
+acct_sign_out	Keluar
+acct_cloud_sandbox	Kumkaj Cloud (lingkungan uji)
+acct_current_password	Kata sandi saat ini
+acct_email_for_password	Email untuk masuk dengan kata sandi
+acct_new_password	Kata sandi baru
+acct_confirm_new_password	Konfirmasi kata sandi baru
+acct_add_way	Tambah cara masuk lain
+acct_link_hint	Tautkan beberapa cara ke akun yang sama agar Anda bisa memulihkan akses jika salah satunya gagal.
+acct_link_google	Tautkan Google
+acct_link_microsoft	Tautkan Microsoft
+acct_link_github	Tautkan GitHub
+acct_link_phone	Tautkan telepon
+acct_send_sms_link	Kirim SMS untuk menautkan
+acct_confirm_link_phone	Konfirmasi & tautkan telepon
+shop_page_title	Toko — Kirano
+shop_lede	Paket cloud tahunan — pajak ditambahkan saat checkout. Aplikasi Kirano lengkap di perangkat Anda tetap gratis selamanya, tanpa iklan.
+shop_cart	Keranjang
+shop_cart_empty_hint	Keranjang Anda kosong. Tambahkan Steady, Swift, atau Priority.
+shop_checkout	Bayar
+shop_clear	Kosongkan
+shop_checkout_hint	Pembayaran akan memasukkan Anda ke Akun, lalu memulai pembayaran (simulasi sandbox, atau Paddle bila kunci sudah diatur).
+acct_billing_hint	Paket tahunan — pajak ditambahkan saat checkout oleh gateway. Pemakaian lokal tetap gratis selamanya. Khusus berupa penawaran harga (bisa di bawah Steady atau di atas Priority).
+shop_cloud_plans	Paket cloud
+acct_federated	Masuk terfederasi
+acct_err_invalid_email	Masukkan alamat email yang valid.
+acct_err_weak_password	Gunakan kata sandi minimal 6 karakter.
+acct_err_wrong_password	Kata sandi salah.
+acct_err_invalid_credential	Email atau kata sandi salah.
+acct_err_popup_closed	Jendela masuk ditutup.
+acct_err_popup_cancelled	Masuk dibatalkan.
+acct_err_unauthorized_domain	Domain ini tidak diizinkan untuk Firebase Auth.
+acct_err_method_disabled	Cara masuk itu belum diaktifkan.
+acct_err_too_many	Terlalu banyak percobaan. Coba lagi nanti.
+acct_err_phone_format	Gunakan nomor telepon lengkap dengan kode negara (mis. +91…).
+acct_err_sms_code	Kode SMS itu salah atau kedaluwarsa.
+acct_err_no_account	Tidak ada akun dengan email itu. Lanjutkan untuk membuatnya, atau gunakan cara lain.
+acct_err_recent_login	Demi keamanan, masuk lagi, lalu ulangi perubahan ini.
+acct_err_credential_in_use	Cara masuk itu sudah dipakai oleh akun lain.
+acct_err_email_in_use	Email itu sudah dipakai oleh akun lain.
+acct_err_already_linked	Cara itu sudah tertaut ke akun ini.
+acct_err_exists_other_method	Sudah ada akun dengan email ini yang memakai cara masuk berbeda. Masuk dengan cara itu dulu, lalu tautkan cara ini dari halaman akun Anda.
+acct_err_generic	Terjadi kesalahan.
+acct_method_password	Email & kata sandi
+acct_pw_hint_change	Ubah kata sandi Anda. Anda akan mengonfirmasi dengan kata sandi saat ini.
+acct_pw_hint_add	Tambahkan kata sandi agar Anda juga bisa masuk dengan email (berguna jika penyedia tidak tersedia).
+acct_pw_change	Ubah kata sandi
+acct_pw_add	Tambah kata sandi
+acct_billing_off	Penagihan belum diaktifkan di API cloud.
+acct_billing_no_provider	Belum ada penyedia penagihan sungguhan yang aktif di API cloud (simulasi hanya lokal).
+price_quote	Penawaran harga
+price_per_year	₹{amount}/thn belum termasuk pajak
+acct_pay_received	Pembayaran diterima — memperbarui paket Anda…
+acct_pay_declined	Pembayaran ditolak atau gagal
+acct_pay_failed_detail	{detail}. Paket Anda tidak diubah.
+acct_checkout_closed	Checkout ditutup — tidak ada pembayaran yang selesai. Paket Anda tidak berubah.
+acct_checkout_failed	Checkout gagal
+acct_pay_with	Bayar dengan {provider}
+acct_plan_until	{plan} · sampai {date}
+acct_unavailable	Tidak tersedia
+acct_continue_hint	Lanjutkan dengan email, penyedia, atau telepon.
+acct_signed_in_fallback	(sudah masuk)
+acct_email_verified	Email terverifikasi
+acct_email_unverified	Email belum diverifikasi — periksa kotak masuk Anda
+acct_signed_in_phone	Masuk dengan telepon
+acct_none_listed	Belum ada
+acct_signed_in_status	Anda sudah masuk.
+acct_created	Akun dibuat. Periksa email Anda untuk verifikasi bila sempat.
+acct_reset_sent	Jika ada akun untuk email itu, tautan atur ulang sedang dikirim. Periksa kotak masuk Anda.
+acct_another_method	cara lain
+acct_exists_via	Akun untuk {email} sudah ada lewat {method}. Masuk dengan cara itu dulu, lalu tautkan penyedia ini dari halaman akun Anda.
+acct_enter_current_pw	Masukkan kata sandi Anda saat ini.
+acct_relogin_retry	Keluar lalu masuk lagi, kemudian coba ulang.
+acct_pw_mismatch	Kata sandi baru dan konfirmasinya tidak cocok.
+acct_pw_updated	Kata sandi diperbarui.
+acct_enter_email_pw	Masukkan email untuk masuk dengan kata sandi.
+acct_pw_added	Kata sandi ditambahkan. Sekarang Anda juga bisa masuk dengan email.
+acct_method_linked	Cara masuk ditautkan.
+acct_phone_linked	Telepon ditautkan ke akun ini.
+acct_verify_sent	Email verifikasi terkirim — periksa kotak masuk Anda.
+shop_pricing_soon	Harga segera hadir
+shop_request_quote	Minta penawaran
+shop_add_to_cart	Tambah ke keranjang
+shop_notify_later	Beri tahu saya nanti
+shop_included	Termasuk
+shop_in_cart	{plan} ada di keranjang Anda.
+shop_remove	Hapus
+shop_cart_is_empty	Keranjang kosong.
+shop_prices_unpublished	Harga swalayan untuk produk ini belum diterbitkan. Minta penawaran Khusus atau periksa lagi nanti.
+shop_cart_cleared	Keranjang dikosongkan.
+plan_free_title	Gratis selamanya
+plan_free_blurb	Produk lokal lengkap di perangkat Anda. Tanpa biaya cloud.
+plan_steady_blurb	Cloud langsung · 10 GB · bandwidth lebih rendah
+plan_swift_blurb	Cloud langsung · 25 GB · bandwidth menengah
+plan_priority_blurb	Cloud langsung · 50 GB · bandwidth standar tertinggi
+plan_custom_title	Khusus
+plan_custom_blurb	Kuota & bandwidth sesuai kesepakatan. Penawaran bisa di bawah Steady atau di atas Priority.
