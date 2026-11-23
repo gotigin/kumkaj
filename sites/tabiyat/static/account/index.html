@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Account — Tabiyat</title>
+  <title data-i18n="acct_page_title">Account — Tabiyat</title>
   <meta name="description" content="Create a Tabiyat account or sign in." />
   <link rel="canonical" href="https://tabiyat.shop/account" />
   <meta name="theme-color" content="#FBFCFC" />
@@ -29,12 +29,14 @@
   <link rel="stylesheet" href="/css/account.css" />
   <script src="/js/account.js" defer></script>
   <script src="/js/firebase-init.js" defer></script>
+  <script src="/js/lang-nav.js" defer></script>
+  <script src="/js/site-i18n.js" defer></script>
 </head>
 <body>
 <main class="account-main">
-    <p class="account-back"><a href="/">← Tabiyat</a> · <a href="/shop">Cloud shop</a></p>
-    <h1>Account</h1>
-    <p class="account-lede">One account for the site and apps — same form whether you’re new or returning.</p>
+    <p class="account-back"><a href="/">← Tabiyat</a> · <a href="/shop" data-i18n="cloud_shop">Cloud shop</a></p>
+    <h1 data-i18n="account">Account</h1>
+    <p class="account-lede" data-i18n="acct_lede">One account for the site and apps — same form whether you’re new or returning.</p>
     <p class="account-status" id="auth-status">Continue with email, a provider, or phone.</p>
     <p class="auth-ok" id="checkout-pending" hidden></p>
     <p class="auth-ok" id="auth-ok" hidden></p>
@@ -59,56 +61,56 @@
 
     <div id="auth-gate">
       <section class="auth-card" aria-labelledby="email-heading">
-        <h2 id="email-heading">Email</h2>
+        <h2 id="email-heading" data-i18n="acct_email">Email</h2>
         <form id="form-email">
-          <label for="auth-display-name">Name (optional)</label>
+          <label for="auth-display-name" data-i18n="acct_name_optional">Name (optional)</label>
           <input id="auth-display-name" name="name" type="text" autocomplete="name" />
-          <label for="auth-email">Email</label>
+          <label for="auth-email" data-i18n="acct_email">Email</label>
           <input id="auth-email" name="email" type="email" autocomplete="email" required />
-          <label for="auth-password">Password</label>
+          <label for="auth-password" data-i18n="acct_password">Password</label>
           <input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="6" />
           <div class="auth-actions">
-            <button type="submit" class="btn btn-primary" id="btn-continue">Continue</button>
-            <button type="button" class="btn btn-ghost" id="btn-forgot-toggle">Forgot password?</button>
+            <button type="submit" class="btn btn-primary" id="btn-continue" data-i18n="acct_continue">Continue</button>
+            <button type="button" class="btn btn-ghost" id="btn-forgot-toggle" data-i18n="acct_forgot">Forgot password?</button>
           </div>
         </form>
         <div id="forgot-panel" hidden>
-          <p class="auth-hint">We’ll email a reset link. Use the same address you signed up with.</p>
+          <p class="auth-hint" data-i18n="acct_reset_hint">We’ll email a reset link. Use the same address you signed up with.</p>
           <form id="form-forgot">
-            <label for="auth-forgot-email">Email</label>
+            <label for="auth-forgot-email" data-i18n="acct_email">Email</label>
             <input id="auth-forgot-email" name="forgot-email" type="email" autocomplete="email" required />
             <div class="auth-actions">
-              <button type="submit" class="btn btn-primary">Send reset link</button>
-              <button type="button" class="btn btn-ghost" id="btn-forgot-cancel">Cancel</button>
+              <button type="submit" class="btn btn-primary" data-i18n="acct_send_reset">Send reset link</button>
+              <button type="button" class="btn btn-ghost" id="btn-forgot-cancel" data-i18n="acct_cancel">Cancel</button>
             </div>
           </form>
         </div>
       </section>
 
-      <p class="auth-or">or continue with</p>
-      <section class="auth-card" aria-label="Federated sign-in">
+      <p class="auth-or" data-i18n="acct_or_continue">or continue with</p>
+      <section class="auth-card" aria-label="Federated sign-in" data-i18n-aria-label="acct_federated">
         <button type="button" class="btn btn-provider" id="btn-google">Google</button>
         <button type="button" class="btn btn-provider" id="btn-microsoft">Microsoft</button>
         <button type="button" class="btn btn-provider" id="btn-github">GitHub</button>
       </section>
 
       <section class="auth-card" aria-labelledby="phone-heading">
-        <h2 id="phone-heading">Phone</h2>
+        <h2 id="phone-heading" data-i18n="acct_phone">Phone</h2>
         <div id="auth-phone-step">
           <form id="form-phone">
-            <label for="auth-phone">Mobile number</label>
+            <label for="auth-phone" data-i18n="acct_mobile">Mobile number</label>
             <input id="auth-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91…" />
             <div class="auth-actions">
-              <button type="submit" class="btn btn-primary">Send SMS code</button>
+              <button type="submit" class="btn btn-primary" data-i18n="acct_send_sms">Send SMS code</button>
             </div>
           </form>
         </div>
         <div id="auth-sms-step" hidden>
           <form id="form-sms">
-            <label for="auth-sms-code">SMS code</label>
+            <label for="auth-sms-code" data-i18n="acct_sms_code">SMS code</label>
             <input id="auth-sms-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" />
             <div class="auth-actions">
-              <button type="submit" class="btn btn-primary">Confirm code</button>
+              <button type="submit" class="btn btn-primary" data-i18n="acct_confirm_code">Confirm code</button>
             </div>
           </form>
         </div>
@@ -118,48 +120,48 @@
 
     <div id="auth-session" hidden>
       <section class="auth-card">
-        <h2>Signed in</h2>
+        <h2 data-i18n="acct_signed_in">Signed in</h2>
         <div class="session-meta">
-          <strong>Signed in as</strong>
+          <strong data-i18n="acct_signed_in_as">Signed in as</strong>
           <span id="session-email"></span>
-          <strong>Status</strong>
+          <strong data-i18n="acct_status">Status</strong>
           <span id="session-verified"></span>
-          <strong>Sign-in methods</strong>
+          <strong data-i18n="acct_sign_in_methods">Sign-in methods</strong>
           <span id="session-providers"></span>
-          <strong>Cloud username</strong>
+          <strong data-i18n="acct_cloud_username">Cloud username</strong>
           <span id="session-cloud-user">—</span>
-          <strong>Plan</strong>
+          <strong data-i18n="acct_plan">Plan</strong>
           <span id="session-cloud-plan">—</span>
         </div>
         <div class="auth-actions">
-          <button type="button" class="btn btn-ghost" id="btn-resend-verify">Resend verification email</button>
-          <button type="button" class="btn btn-primary" id="btn-signout">Sign out</button>
+          <button type="button" class="btn btn-ghost" id="btn-resend-verify" data-i18n="acct_resend_verify">Resend verification email</button>
+          <button type="button" class="btn btn-primary" id="btn-signout" data-i18n="acct_sign_out">Sign out</button>
         </div>
       </section>
 
 
       <section class="auth-card" id="card-cloud-plans" aria-labelledby="plans-heading" hidden>
-        <h2 id="plans-heading">Kumkaj Cloud (sandbox)</h2>
-        <p class="auth-hint" id="billing-hint">Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).</p>
+        <h2 id="plans-heading" data-i18n="acct_cloud_sandbox">Kumkaj Cloud (sandbox)</h2>
+        <p class="auth-hint" id="billing-hint" data-i18n="acct_billing_hint">Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).</p>
         <p class="auth-hint" id="billing-status"></p>
         <div id="plan-list" class="plan-list"></div>
       </section>
 
       <section class="auth-card" id="card-password" aria-labelledby="password-heading">
-        <h2 id="password-heading">Password</h2>
+        <h2 id="password-heading" data-i18n="acct_password">Password</h2>
         <p class="auth-hint" id="password-hint"></p>
         <form id="form-password">
           <div id="password-current-wrap">
-            <label for="auth-current-password">Current password</label>
+            <label for="auth-current-password" data-i18n="acct_current_password">Current password</label>
             <input id="auth-current-password" type="password" autocomplete="current-password" minlength="6" />
           </div>
           <div id="password-email-wrap" hidden>
-            <label for="auth-set-email">Email for password sign-in</label>
+            <label for="auth-set-email" data-i18n="acct_email_for_password">Email for password sign-in</label>
             <input id="auth-set-email" type="email" autocomplete="email" />
           </div>
-          <label for="auth-new-password">New password</label>
+          <label for="auth-new-password" data-i18n="acct_new_password">New password</label>
           <input id="auth-new-password" type="password" autocomplete="new-password" required minlength="6" />
-          <label for="auth-new-password2">Confirm new password</label>
+          <label for="auth-new-password2" data-i18n="acct_confirm_new_password">Confirm new password</label>
           <input id="auth-new-password2" type="password" autocomplete="new-password" required minlength="6" />
           <div class="auth-actions">
             <button type="submit" class="btn btn-primary" id="btn-password-save">Save password</button>
@@ -168,26 +170,26 @@
       </section>
 
       <section class="auth-card" aria-labelledby="link-heading">
-        <h2 id="link-heading">Add another way to sign in</h2>
-        <p class="auth-hint">Link methods to the same account so you can recover access if one fails.</p>
+        <h2 id="link-heading" data-i18n="acct_add_way">Add another way to sign in</h2>
+        <p class="auth-hint" data-i18n="acct_link_hint">Link methods to the same account so you can recover access if one fails.</p>
         <div class="auth-actions auth-link-row">
-          <button type="button" class="btn btn-provider" id="btn-link-google">Link Google</button>
-          <button type="button" class="btn btn-provider" id="btn-link-microsoft">Link Microsoft</button>
-          <button type="button" class="btn btn-provider" id="btn-link-github">Link GitHub</button>
+          <button type="button" class="btn btn-provider" id="btn-link-google" data-i18n="acct_link_google">Link Google</button>
+          <button type="button" class="btn btn-provider" id="btn-link-microsoft" data-i18n="acct_link_microsoft">Link Microsoft</button>
+          <button type="button" class="btn btn-provider" id="btn-link-github" data-i18n="acct_link_github">Link GitHub</button>
         </div>
         <div id="link-phone-wrap" class="link-phone">
           <form id="form-link-phone">
-            <label for="auth-link-phone">Link phone</label>
+            <label for="auth-link-phone" data-i18n="acct_link_phone">Link phone</label>
             <input id="auth-link-phone" type="tel" autocomplete="tel" placeholder="+91…" />
             <div class="auth-actions">
-              <button type="submit" class="btn btn-primary">Send SMS to link</button>
+              <button type="submit" class="btn btn-primary" data-i18n="acct_send_sms_link">Send SMS to link</button>
             </div>
           </form>
           <form id="form-link-sms" hidden>
-            <label for="auth-link-sms-code">SMS code</label>
+            <label for="auth-link-sms-code" data-i18n="acct_sms_code">SMS code</label>
             <input id="auth-link-sms-code" type="text" inputmode="numeric" autocomplete="one-time-code" />
             <div class="auth-actions">
-              <button type="submit" class="btn btn-primary">Confirm &amp; link phone</button>
+              <button type="submit" class="btn btn-primary" data-i18n="acct_confirm_link_phone">Confirm &amp; link phone</button>
             </div>
           </form>
         </div>
@@ -196,9 +198,9 @@
     </div>
 
     <p class="legal-nav">
-      <a href="/privacy">Privacy</a> ·
-      <a href="/terms">Terms</a> ·
-      <a href="/cancellation">Cancellation</a>
+      <a href="/privacy" data-i18n="privacy">Privacy</a> ·
+      <a href="/terms" data-i18n="terms">Terms</a> ·
+      <a href="/cancellation" data-i18n="cancellation">Cancellation</a>
     </p>
     <p class="legal-foot">
       <span class="legal-foot-company">GOTIGIN SOFTWARE &amp; HARDWARE PRIVATE LIMITED</span>

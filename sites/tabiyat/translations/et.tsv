@@ -1,0 +1,172 @@
+# Estonian — Eesti (et). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
+example	@@EN@@ Example
+download_free	@@EN@@ Download free
+whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
+free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
+the_pharmacy_counter	@@EN@@ the pharmacy counter
+pharmacy_counter	@@EN@@ Pharmacy counter
+tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
+pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
+medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
+tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
+cash_memo	@@EN@@ Cash memo
+ready	@@EN@@ Ready
+total	@@EN@@ Total
+tap_to_add_the_first	@@EN@@ Tap to add the first medicine
+example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
+n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
+medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
+upi_qr_ready	@@EN@@ UPI QR ready
+example_bill	@@EN@@ Example bill
+fast_counter_billing	@@EN@@ Fast counter billing
+add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
+gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
+the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
+day_book_follows	@@EN@@ Day book follows
+every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
+n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
+scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
+search	@@EN@@ Search
+composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
+salt_amoxicillin	@@EN@@ Salt: amoxicillin
+ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
+wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
+barcode_first	@@EN@@ Barcode first
+scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
+salt_composition	@@EN@@ Salt / composition
+type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
+owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
+reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
+n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
+batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
+buy_batch_a12	@@EN@@ Buy · batch A12
+expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
+ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
+expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
+shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
+batch_on_buy	@@EN@@ Batch on buy
+record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
+near_expiry_alerts	@@EN@@ Near-expiry alerts
+books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
+owner_practice	@@EN@@ Owner practice
+fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
+n_5_khata	@@EN@@ 5 · KHATA
+customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
+mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
+due_from_earlier	@@EN@@ Due from earlier
+today_s_sale_due	@@EN@@ + today's sale (Due)
+balance	@@EN@@ Balance
+settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
+due_on_the_bill	@@EN@@ Due on the bill
+leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
+supplier_buys_too	@@EN@@ Supplier buys too
+who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
+auditable	@@EN@@ Auditable
+who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
+n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
+the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
+router_no_internet	@@EN@@ Router: no internet
+main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
+second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
+books_live_on_the_shop	@@EN@@ Books live on the shop devices
+when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
+one_server_lan_clients	@@EN@@ One Server, LAN Clients
+extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
+n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
+free_forever_on_your_devices	@@EN@@ Free forever on your devices.
+no_per_bill_charge	@@EN@@ No per-bill charge
+no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
+android_windows_linux	@@EN@@ Android, Windows, Linux
+the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
+optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
+yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
+n_8_start	@@EN@@ 8 · START
+put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
+download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
+privacy	@@EN@@ Privacy
+terms	@@EN@@ Terms
+cancellation	@@EN@@ Cancellation
+cloud_shop	@@EN@@ Cloud shop
+account	@@EN@@ Account
+chapter_counter_sell	@@EN@@ Counter sell
+chapter_barcode_salt	@@EN@@ Barcode & salt
+chapter_batch_expiry	@@EN@@ Batch & expiry
+chapter_khata	@@EN@@ Khata
+chapter_extra_till	@@EN@@ Extra till
+chapter_offline	@@EN@@ Offline
+chapter_start	@@EN@@ Start
+bill_selling	@@EN@@ Selling
+bill_settle	@@EN@@ Settle
+bill_paid	@@EN@@ Paid
+bill_next_line	@@EN@@ Tap to add the next line
+bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
+bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
+bill_paid_line	@@EN@@ Paid · day book updated
+lan_eyebrow	@@EN@@ 6 · EXTRA TILL
+lan_title	@@EN@@ Another till on the shop Wi-Fi.
+cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
+cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
+acct_page_title	@@EN@@ Account — Tabiyat
+acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
+acct_email	@@EN@@ Email
+acct_name_optional	@@EN@@ Name (optional)
+acct_password	@@EN@@ Password
+acct_continue	@@EN@@ Continue
+acct_forgot	@@EN@@ Forgot password?
+acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
+acct_send_reset	@@EN@@ Send reset link
+acct_cancel	@@EN@@ Cancel
+acct_or_continue	@@EN@@ or continue with
+acct_phone	@@EN@@ Phone
+acct_mobile	@@EN@@ Mobile number
+acct_send_sms	@@EN@@ Send SMS code
+acct_sms_code	@@EN@@ SMS code
+acct_confirm_code	@@EN@@ Confirm code
+acct_signed_in	@@EN@@ Signed in
+acct_signed_in_as	@@EN@@ Signed in as
+acct_status	@@EN@@ Status
+acct_sign_in_methods	@@EN@@ Sign-in methods
+acct_cloud_username	@@EN@@ Cloud username
+acct_plan	@@EN@@ Plan
+acct_resend_verify	@@EN@@ Resend verification email
+acct_sign_out	@@EN@@ Sign out
+acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
+acct_current_password	@@EN@@ Current password
+acct_email_for_password	@@EN@@ Email for password sign-in
+acct_new_password	@@EN@@ New password
+acct_confirm_new_password	@@EN@@ Confirm new password
+acct_add_way	@@EN@@ Add another way to sign in
+acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
+acct_link_google	@@EN@@ Link Google
+acct_link_microsoft	@@EN@@ Link Microsoft
+acct_link_github	@@EN@@ Link GitHub
+acct_link_phone	@@EN@@ Link phone
+acct_send_sms_link	@@EN@@ Send SMS to link
+acct_confirm_link_phone	@@EN@@ Confirm & link phone
+shop_page_title	@@EN@@ Shop — Tabiyat
+shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
+shop_cart	@@EN@@ Cart
+shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
+shop_checkout	@@EN@@ Checkout
+shop_clear	@@EN@@ Clear
+shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
+acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
+shop_cloud_plans	@@EN@@ Cloud plans
+acct_federated	@@EN@@ Federated sign-in
+shop_pricing_soon	@@EN@@ Pricing coming soon
+shop_request_quote	@@EN@@ Request quote
+shop_add_to_cart	@@EN@@ Add to cart
+shop_notify_later	@@EN@@ Notify me later
+shop_included	@@EN@@ Included
+shop_in_cart	@@EN@@ {plan} is in your cart.
+shop_remove	@@EN@@ Remove
+shop_cart_is_empty	@@EN@@ Cart is empty.
+shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
+shop_cart_cleared	@@EN@@ Cart cleared.
+plan_free_title	@@EN@@ Free forever
+plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
+plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
+plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
+plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
+plan_custom_title	@@EN@@ Custom
+plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.

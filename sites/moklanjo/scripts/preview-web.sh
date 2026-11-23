@@ -99,6 +99,9 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   # compresses on its own and never serves those.
   rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
   rsync -a "$SITE/static/" "$OUT/"
+  # Language packs (site i18n): the wasm and site-i18n.js fetch /i18n/<code>.tsv.
+  mkdir -p "$OUT/i18n"
+  cp "$SITE"/translations/*.tsv "$OUT/i18n/"
   "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
   # Fonts: only the characters this site draws (the repo keeps them whole).
   "$SITE/scripts/subset-fonts.sh" "$OUT"
@@ -128,7 +131,9 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   # never run the wasm.
   # PREVIEW_URL already set above (sha10 of link-preview.jpg).
   HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-  BODY_INJECT='        <noscript><p>Moklanjo — courier operating system. Cloud plans (ex-tax/yr): Free forever ₹0 · Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 · Custom quote — <a href="/shop">/shop</a>. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
+  BODY_INJECT='        <link rel="stylesheet" href="./css/auth-nav.css?v='"$BUILD_ID"'">
+        <script src="./js/lang-nav.js?v='"$BUILD_ID"'" defer></script>
+        <noscript><p>Moklanjo — courier operating system. Cloud plans (ex-tax/yr): Free forever ₹0 · Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 · Custom quote — <a href="/shop">/shop</a>. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
   awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
     BEGIN { done_title=0; done_body=0 }

@@ -5,6 +5,8 @@
 #
 #   ./scripts/scaffold-ui-translations.sh --app khaynjo
 #   ./scripts/scaffold-ui-translations.sh --app khaynjo --standin-english
+#   ./scripts/scaffold-ui-translations.sh --site kumkaj   # a website: same as
+#     ./scripts/scaffold-site-translations.sh kumkaj (marked stand-ins the site tests refuse)
 #
 # With --standin-english, missing rows get the English source temporarily;
 # replace those with real translations, then:
@@ -20,6 +22,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --app) APP="${2:-}"; shift 2 ;;
     --standin-english) STANDIN=1; shift ;;
+    --site) exec "$ROOT/scripts/scaffold-site-translations.sh" "${2:?--site needs a site: khaynjo | moklanjo | kirano | tabiyat | kumkaj}" ;;
     -h|--help)
       sed -n '2,14p' "$0"
       exit 0

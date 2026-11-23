@@ -109,9 +109,42 @@ if [[ -f "$KUMKAJ_UI" ]]; then
   fi
 fi
 
+# Websites translate their own copy into the same catalogue (site i18n):
+# sites/_shared/i18n/languages.rs and lang-nav.js LANGS = the apps' LANGUAGES,
+# every site's static/js carries the shared lang-nav.js / site-i18n.js, and
+# every site ships the apps' set of translation tables.
+SITES=(khaynjo moklanjo kirano tabiyat kumkaj)
+site_codes="$(extract_codes "$ROOT/sites/_shared/i18n/languages.rs")"
+if [[ "$site_codes" != "$ref_codes" ]]; then
+  echo "error: sites/_shared/i18n/languages.rs differs from apps/$REF LANGUAGES — run ./scripts/sync-site-i18n.sh" >&2
+  fail=1
+fi
+nav_codes="$(gawk '/var LANGS = \[/ { s = $0; while (match(s, /"code": "([^"]+)"/, m)) { print m[1]; s = substr(s, RSTART + RLENGTH) } }' "$ROOT/sites/_shared/chrome/lang-nav.js")"
+if [[ "$nav_codes" != "$ref_codes" ]]; then
+  echo "error: sites/_shared/chrome/lang-nav.js LANGS differs from apps/$REF LANGUAGES (codes or order)" >&2
+  fail=1
+fi
+for site in "${SITES[@]}"; do
+  for js in lang-nav.js site-i18n.js; do
+    if ! cmp -s "$ROOT/sites/_shared/chrome/$js" "$ROOT/sites/$site/static/js/$js"; then
+      echo "error: sites/$site/static/js/$js is not the shared copy — run ./scripts/sync-site-i18n.sh" >&2
+      fail=1
+    fi
+  done
+  if [[ ! -f "$ROOT/sites/$site/src/locale.rs" ]]; then
+    echo "error: sites/$site/src/locale.rs missing (site language support)" >&2
+    fail=1
+  fi
+  tsv="$(tsv_stems "$ROOT/sites/$site/translations" 2>/dev/null || true)"
+  if [[ "$tsv" != "$ref_tsv" ]]; then
+    echo "error: sites/$site/translations set differs from apps/$REF — run ./scripts/scaffold-site-translations.sh $site" >&2
+    fail=1
+  fi
+done
+
 if [[ "$fail" -ne 0 ]]; then
-  echo "language parity FAILED after site chip check" >&2
+  echo "language parity FAILED after the site checks" >&2
   exit 1
 fi
 
-echo "language parity OK: ${#APPS[@]} apps × $ref_n LANGUAGES codes, $(printf '%s\n' "$ref_tsv" | grep -c .) translation tables, core WorldFonts present, kumkaj chips=$ref_n"
+echo "language parity OK: ${#APPS[@]} apps × $ref_n LANGUAGES codes, $(printf '%s\n' "$ref_tsv" | grep -c .) translation tables, core WorldFonts present, kumkaj chips=$ref_n, ${#SITES[@]} sites on the same catalogue and tables"

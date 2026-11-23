@@ -9,3 +9,7 @@ license = "MIT OR Apache-2.0"
 # (docs/WEBSITES.md §3). Copied from sites/kumkaj, then diverged.
 [dependencies]
 makepad-widgets = { path = "../../vendor/makepad/widgets" }
+
+# Font coverage test for the language packs (locale.rs tests) — not in the wasm.
+[dev-dependencies]
+rustybuzz = { version = "0.18.0", path = "../../vendor/makepad/libs/rustybuzz" }

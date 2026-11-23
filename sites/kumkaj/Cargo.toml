@@ -7,3 +7,7 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 makepad-widgets = { path = "../../vendor/makepad/widgets" }
+
+# Font coverage test for the language packs (locale.rs tests) — not in the wasm.
+[dev-dependencies]
+rustybuzz = { version = "0.18.0", path = "../../vendor/makepad/libs/rustybuzz" }

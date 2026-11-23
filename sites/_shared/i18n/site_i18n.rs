@@ -89,6 +89,71 @@ pub fn is_rtl(lang: &str) -> bool {
     )
 }
 
+const RLM: char = '\u{200F}';
+const WORD_JOINER: char = '\u{2060}';
+
+/// A strongly right-to-left letter (Hebrew, Arabic, Syriac, Thaana, N'Ko and
+/// the Arabic presentation forms).
+fn is_rtl_letter(c: char) -> bool {
+    c.is_alphabetic() && matches!(c as u32, 0x0590..=0x08FF | 0xFB1D..=0xFDFF | 0xFE70..=0xFEFF)
+}
+
+/// Copy for a right-to-left language, with invisible marks for Makepad's
+/// line breaker and bidi pass.
+///
+/// The vendored text stack shapes every wrapped line with a left-to-right
+/// base direction (`draw/src/text/shaper.rs`) and appends a space that no
+/// longer fits to the line anyway (`layouter.rs`). Right-aligned RTL copy
+/// then puts punctuation that ends a line (، ۔ .) beside the line's *first*
+/// word, sits a space-width short of the right edge, and a nearly full line
+/// spills past the left edge, where it is clipped. Without touching vendor
+/// code:
+/// - RIGHT-TO-LEFT MARK before a space that follows right-to-left text (the
+///   punctuation there stays with its words) and after it when right-to-left
+///   text follows too (the space stays in the run, at the line's left end);
+/// - otherwise a WORD JOINER after the space, so the space is no longer a
+///   blank segment: one that does not fit starts the next line instead of
+///   spilling;
+/// - RIGHT-TO-LEFT MARK at the end when the copy ends in punctuation after
+///   right-to-left words.
+///
+/// Spaces after numbers or Latin words get no RLM, so `₹ 1,240` or
+/// `{min} منٹ` keep their order. Latin words inside an RTL sentence still
+/// keep left-to-right order between them (base direction; vendor limit).
+pub fn rtl_marks(text: &str) -> String {
+    let chars: Vec<char> = text.chars().collect();
+    let mut out = String::with_capacity(text.len() + text.len() / 2);
+    // Direction of the nearest strong letter so far: Some(true) = RTL.
+    let mut last_strong: Option<bool> = None;
+    for (i, &c) in chars.iter().enumerate() {
+        if c == ' ' {
+            let prev = chars[..i].iter().rev().find(|c| !c.is_whitespace());
+            let next = chars[i + 1..].iter().find(|c| !c.is_whitespace());
+            let after_rtl = last_strong == Some(true) && prev.is_some_and(|p| !p.is_numeric());
+            let before_rtl = next.is_some_and(|n| is_rtl_letter(*n));
+            if after_rtl {
+                out.push(RLM);
+            }
+            out.push(' ');
+            out.push(if after_rtl && before_rtl { RLM } else { WORD_JOINER });
+            continue;
+        }
+        if c.is_alphabetic() {
+            last_strong = Some(is_rtl_letter(c));
+        }
+        out.push(c);
+    }
+    let ends_in_mark = chars
+        .iter()
+        .rev()
+        .find(|c| !c.is_whitespace())
+        .is_some_and(|c| !c.is_alphanumeric());
+    if ends_in_mark && last_strong == Some(true) {
+        out.push(RLM);
+    }
+    out
+}
+
 /// The writing system a language's site copy is drawn in — picks the
 /// prototype font family (`ScriptGroup::proto_id`).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -456,10 +521,16 @@ impl SiteLang {
         if self.is_english() {
             return english.to_string();
         }
-        self.pack(&self.shown)
+        let text = self
+            .pack(&self.shown)
             .and_then(|p| p.get(key))
             .cloned()
-            .unwrap_or_else(|| english.to_string())
+            .unwrap_or_else(|| english.to_string());
+        if is_rtl(&self.shown) {
+            rtl_marks(&text)
+        } else {
+            text
+        }
     }
 
     /// Show `lang` on every keyed widget under `root`.
@@ -500,6 +571,7 @@ impl SiteLang {
                 .as_ref()
                 .and_then(|p| p.get(key).cloned())
                 .unwrap_or_else(|| english.to_string());
+            let want = if rtl { rtl_marks(&want) } else { want };
             if w.text() != want {
                 w.set_text(cx, &want);
             }
@@ -614,6 +686,56 @@ pub fn script_family(cx: &mut Cx, ui: &WidgetRef, group: ScriptGroup) -> Option<
     let proto = ui.widget(cx, &[live_id!(i18n_fonts), group.proto_id()]);
     let label = proto.borrow::<Label>()?;
     Some(label.draw_text.text_style.font_family.clone())
+}
+
+#[cfg(test)]
+mod rtl_mark_tests {
+    use super::*;
+
+    const R: char = RLM;
+    const J: char = WORD_JOINER;
+
+    #[test]
+    fn marks_never_change_the_visible_text() {
+        for s in [
+            "ہر پارسل بک کریں، روانہ کریں اور حساب مکمل کریں — آپ کے اپنے آلات پر ایک کوریئر OS۔",
+            "₹ {amount} ادا ہو گئے",
+            "Android، Windows اور Linux پر مفت۔",
+            "שלום עולם.",
+            "Free on Android, Windows and Linux.",
+        ] {
+            let marked = rtl_marks(s);
+            assert_eq!(marked.replace([R, J], ""), s);
+            // Every space carries a mark: no blank segment the line breaker
+            // would append past the line's width.
+            for (i, _) in marked.match_indices(' ') {
+                let next = marked[i + 1..].chars().next();
+                assert!(matches!(next, Some(R) | Some(J)), "bare space in {marked:?}");
+            }
+        }
+    }
+
+    #[test]
+    fn punctuation_and_spaces_stay_inside_rtl_runs() {
+        assert_eq!(
+            rtl_marks("بک کریں، روانہ"),
+            format!("بک{R} {R}کریں،{R} {R}روانہ")
+        );
+        assert_eq!(rtl_marks("שלום עולם."), format!("שלום{R} {R}עולם.{R}"));
+    }
+
+    #[test]
+    fn numbers_and_latin_keep_their_order() {
+        // No RLM next to a number or after a Latin word: only word joiners.
+        assert_eq!(
+            rtl_marks("₹ 1,240 ادا ہو گئے"),
+            format!("₹ {J}1,240 {J}ادا{R} {R}ہو{R} {R}گئے")
+        );
+        assert_eq!(rtl_marks("{min} منٹ"), format!("{{min}} {J}منٹ"));
+        assert_eq!(rtl_marks("Free on Android."), format!("Free {J}on {J}Android."));
+        // Placeholders survive for the caller's replace().
+        assert!(rtl_marks("₹ {amount} ادا").contains("{amount}"));
+    }
 }
 
 #[cfg(test)]
@@ -782,6 +904,9 @@ pub mod checks {
                         '\\' => match chars.next() {
                             Some('"') => s.push('"'),
                             Some('\\') => s.push('\\'),
+                            // The script tokenizer turns these into the real character.
+                            Some('n') => s.push('\n'),
+                            Some('t') => s.push('\t'),
                             Some(other) => {
                                 s.push('\\');
                                 s.push(other);

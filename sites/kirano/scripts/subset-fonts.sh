@@ -39,7 +39,9 @@ fi
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 # One line holding every distinct character of the sources.
-cat "$SITE"/src/*.rs | LC_ALL=C.UTF-8 grep -o . | LC_ALL=C.UTF-8 sort -u | tr -d '\n' > "$WORK/chars.txt"
+# Site copy (src/*.rs) and every language pack (translations/*.tsv): the script
+# faces keep exactly the characters the translated page can draw.
+cat "$SITE"/src/*.rs "$SITE"/translations/*.tsv | LC_ALL=C.UTF-8 grep -o . | LC_ALL=C.UTF-8 sort -u | tr -d '\n' > "$WORK/chars.txt"
 if [[ "$(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt")" -lt 60 ]]; then
   echo "error: could not read the site's characters from $SITE/src" >&2
   exit 1

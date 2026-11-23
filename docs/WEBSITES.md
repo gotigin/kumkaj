@@ -31,6 +31,17 @@ languages or draws native names / samples, it uses that same catalogue and
 the script faces those strings need (`WorldFont`). Gate:
 `./scripts/check-language-parity.sh`.
 
+**The sites speak it too (2026-11-23).** All five Makepad sites translate
+their own copy: the top-bar chip (it shows the code in use — `EN`, `HI`,
+`UR`) opens lang-nav.js's 115-language picker, which writes `#l=<code>`
+(kept beside `#auth=` / sections) and localStorage; the wasm reads the hash
+and repaints the page, the account and shop pages repaint through
+`site-i18n.js`. Arabic-script and Hebrew languages right-align. No
+preference-only picker: a language whose words are not in the site's packs
+does not ship (site tests). Packs are fetched per language
+(`/i18n/<code>.tsv`), not baked into the wasm. How it works and how to add
+copy: [`DEV.md`](DEV.md) § Languages → Websites.
+
 ------------------------------------------------------------------------
 
 ## Firebase deploy policy (quota / cost — hard rule for **agents**)

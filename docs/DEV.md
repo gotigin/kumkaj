@@ -884,6 +884,72 @@ bulk fill is still running, `KUMKAJ_ALLOW_TRANSLATION_GAPS=1` skips the
 stop — never for a Store / AUR release. Aliases `pt-BR`→`pt`,
 `es-MX`→`es`, `yue`→`zh-Hant`, `gom`→`kok` need no TSV of their own.
 
+### Websites (khaynjo, moklanjo, kirano, tabiyat, kumkaj.com)
+
+Since 2026-11-23 the sites translate their own copy into the same catalogue —
+the language chip in the top bar (and `#l=<code>` in the URL) changes the
+words, not just a stored preference. Same quality rules as the apps above;
+the site keys are separate from the app keys (marketing copy, not POS terms).
+
+| Piece | Where |
+|---|---|
+| Shared runtime (catalogue, `#l=` hash, pack parsing, widget walker, script fonts, RTL marks, pack tests) | `sites/_shared/i18n/site_i18n.rs` (each site: `#[path = "../../_shared/i18n/site_i18n.rs"] mod site_i18n;`) |
+| Catalogue | `sites/_shared/i18n/languages.rs`, generated from `apps/khaynjo/src/locale.rs` by `./scripts/sync-site-i18n.sh` |
+| English + keys | `sites/<site>/src/locale.rs` — `EN` (page copy, code-set copy, account / shop pages, shop script) and `UI_SKIP` (names, numbers, mock-ups) |
+| Packs | `sites/<site>/translations/<code>.tsv` — 110 tables, same stems as the apps; `key<TAB>text`, `\n` = line break |
+| HTML account / shop | `data-i18n="key"` (also `-placeholder`, `-aria-label`, `-title`); scripts call `T("key", "English")`; `static/js/site-i18n.js` paints them |
+| Bridge | `sites/_shared/chrome/lang-nav.js` writes `#l=<code>` + localStorage; the wasm reads the hash on start-up and on hashchange (`Event::Signal`). No web-sys. |
+
+- **Packs are not baked into the wasm** (110 packs would add 0.5–0.9 MB to
+  every first visit). `preview-web.sh` / `deploy-firebase.sh` stage
+  `translations/*.tsv` as `/i18n/<code>.tsv`; the wasm fetches the picked
+  language with `cx.http_request`, native previews read the crate's files
+  (`SITE_LANG=hi` picks one).
+- **How copy is matched:** `ui.rs` text is found by its English. A Label /
+  Markdown / Button whose text is an `EN` value shows that key's
+  translation; text set from code goes through `App::tr(key)` /
+  `App::tr_en(english)` and the site's `apply_lang` repaints it.
+  `every_ui_string_is_keyed_or_skipped` fails when `ui.rs` gains copy that
+  is in neither `EN` nor `UI_SKIP`. Two keys may not share one English.
+- **Fonts:** Makepad downloads every member of a font family the first time
+  it draws with it, so script faces are never added to the page's own
+  families. Each site has one hidden prototype Label per script
+  (`i18n_fonts` in `ui.rs`, families `Ui*`); the walker swaps keyed widgets
+  to that family for a non-Latin language and restores the originals for a
+  Latin one. `subset-fonts.sh` cuts the faces to the characters the packs
+  use. Chinese / Japanese / Korean come from `SiteCJK-{SC,TC,JP,KR}.otf`:
+  rerun `./scripts/site-cjk-font.sh <site>` after those packs change.
+  `every_translation_draws_with_the_site_fonts` fails on a character the
+  site's faces cannot draw (U+2011, the non-breaking hyphen, is not in IBM
+  Plex — write `-`).
+- **Right to left:** keyed text right-aligns. The vendored text stack shapes
+  each wrapped line left-to-right and appends a space that does not fit to
+  the line anyway, so `site_i18n::rtl_marks` adds invisible marks (RLM /
+  word joiner) to RTL copy: line-final punctuation stays with its words,
+  lines meet the right edge, nothing spills past the left edge. Still a
+  vendor limit: Latin words inside an RTL sentence keep left-to-right order
+  between them, and a line can start with ، ۔ or — .
+- **Not translated (yet):** legal pages (terms / privacy / cancellation),
+  account-app.js status and error messages, mock-up receipts / tickets and
+  product names (`UI_SKIP`).
+
+**Adding or changing site copy**
+
+1. Add or edit the row in `sites/<site>/src/locale.rs` `EN` (or put a name /
+   mock-up in `UI_SKIP`); for HTML add `data-i18n="key"`.
+2. `./scripts/scaffold-site-translations.sh <site>`
+   (= `./scripts/scaffold-ui-translations.sh --site <site>`): every pack gets
+   the key, new rows as `@@EN@@ English` — a marker the tests refuse.
+3. Write the 110 rows for real (rules above), then
+   `./scripts/check-ui-translations.sh --site <site>` and
+   `cargo test -p <site>-site` (kumkaj.com: `kumkaj-site`).
+4. Look at it: `PORT=… ./sites/<site>/scripts/preview-web.sh`, open
+   `http://127.0.0.1:<port>/#l=hi` and an RTL language (`#l=ur`), phone
+   width included.
+
+`./scripts/check-language-parity.sh` also fails when a site's catalogue,
+lang-nav.js languages, chrome scripts or pack set drift from the apps.
+
 ## Development vs production env
 
 Each concrete product uses **reverse-DNS under its own domain** (Moklanjo: `com.moklanjo`; Khaynjo: `com.khaynjo`), not under `com.kumkaj.*` — see vision §1 and each app's brief.

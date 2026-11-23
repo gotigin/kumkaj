@@ -1238,6 +1238,7 @@ name = "kirano-site"
 version = "0.1.0"
 dependencies = [
  "makepad-widgets",
+ "rustybuzz",
 ]
 
 [[package]]
@@ -1339,6 +1340,7 @@ name = "kumkaj-site"
 version = "0.1.0"
 dependencies = [
  "makepad-widgets",
+ "rustybuzz",
 ]
 
 [[package]]
@@ -1867,6 +1869,7 @@ name = "moklanjo-site"
 version = "0.1.0"
 dependencies = [
  "makepad-widgets",
+ "rustybuzz",
 ]
 
 [[package]]
@@ -2761,6 +2764,7 @@ name = "tabiyat-site"
 version = "0.1.0"
 dependencies = [
  "makepad-widgets",
+ "rustybuzz",
 ]
 
 [[package]]

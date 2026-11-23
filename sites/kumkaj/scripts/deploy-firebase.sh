@@ -97,6 +97,9 @@ mkdir -p "$OUT"
 # compresses on its own and never serves those.
 rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
 rsync -a "$SITE/static/" "$OUT/"
+# Language packs (site i18n): the wasm and site-i18n.js fetch /i18n/<code>.tsv.
+mkdir -p "$OUT/i18n"
+cp "$SITE"/translations/*.tsv "$OUT/i18n/"
 "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
 # §06 WordChips cover the full app catalogue — WorldFonts script faces required.
 if ! bash "$ROOT/scripts/check-language-parity.sh"; then
@@ -222,7 +225,9 @@ TMP="$OUT/index.html.tmp"
 # never run the wasm.
 # PREVIEW_URL already set above (sha10 of link-preview.jpg).
 HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIEW_URL|g" "$SITE/shell/head.html")"
-BODY_INJECT='        <noscript><p>Kumkaj — business operating systems by Gotigin. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
+BODY_INJECT='        <link rel="stylesheet" href="./css/auth-nav.css?v='"$BUILD_ID"'">
+        <script src="./js/lang-nav.js?v='"$BUILD_ID"'" defer></script>
+        <noscript><p>Kumkaj — business operating systems by Gotigin. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
 # Optional Analytics bundle if the owner added client/firebase-init.js later.
 if [[ -f "$OUT/js/firebase-init.js" ]]; then

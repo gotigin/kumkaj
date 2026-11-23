@@ -22,6 +22,12 @@ use makepad_widgets::*;
 mod weight;
 use weight::{Parcel, DOMESTIC_DIVISOR, INTERNATIONAL_DIVISOR};
 
+mod locale;
+
+#[path = "../../_shared/i18n/site_i18n.rs"]
+mod site_i18n;
+use site_i18n::{ScriptGroup, SiteLang};
+
 app_main!(App);
 
 include!("ui.rs");
@@ -401,6 +407,253 @@ pub struct App {
     /// True when a chrome sync was requested (avoid mid-Draw walk.width mutation).
     #[rust]
     chrome_sync_pending: bool,
+    /// Language the page shows (`#l=` from lang-nav.js), its packs and which
+    /// widget shows which `locale::EN` key.
+    #[rust]
+    lang: SiteLang,
+    /// CTA note currently shown under the buttons (repainted on a language change).
+    #[rust]
+    cta_note_key: Option<String>,
+}
+
+/// Font files that draw a script's copy (crate-relative) — the `Ui*`
+/// families in `ui.rs`. `locale::tests::every_translation_draws_with_the_site_fonts`
+/// checks every pack against them. Latin languages keep each widget's own
+/// family.
+pub fn script_font_files(group: ScriptGroup) -> Vec<&'static str> {
+    const PLEX: &str = "resources/fonts/IBMPlexSans-Text.ttf";
+    let script = match group {
+        ScriptGroup::Latin | ScriptGroup::Cyrillic | ScriptGroup::Greek => None,
+        ScriptGroup::Devanagari => Some("resources/fonts/NotoSansDevanagari-Regular.ttf"),
+        ScriptGroup::Bengali => Some("resources/fonts/NotoSansBengali-Regular.ttf"),
+        ScriptGroup::Gurmukhi => Some("resources/fonts/NotoSansGurmukhi-Regular.ttf"),
+        ScriptGroup::Gujarati => Some("resources/fonts/NotoSansGujarati-Regular.ttf"),
+        ScriptGroup::Oriya => Some("resources/fonts/NotoSansOriya-Regular.ttf"),
+        ScriptGroup::Tamil => Some("resources/fonts/NotoSansTamil-Regular.ttf"),
+        ScriptGroup::Telugu => Some("resources/fonts/NotoSansTelugu-Regular.ttf"),
+        ScriptGroup::Kannada => Some("resources/fonts/NotoSansKannada-Regular.ttf"),
+        ScriptGroup::Malayalam => Some("resources/fonts/NotoSansMalayalam-Regular.ttf"),
+        ScriptGroup::Sinhala => Some("resources/fonts/NotoSansSinhala-Regular.ttf"),
+        ScriptGroup::Arabic => Some("resources/fonts/NotoSansArabic-Regular.ttf"),
+        ScriptGroup::Hebrew => Some("resources/fonts/NotoSansHebrew-Regular.ttf"),
+        ScriptGroup::Thaana => Some("resources/fonts/NotoSansThaana-Regular.ttf"),
+        ScriptGroup::Tibetan => Some("resources/fonts/NotoSerifTibetan-Regular.ttf"),
+        ScriptGroup::OlChiki => Some("resources/fonts/NotoSansOlChiki-Regular.ttf"),
+        ScriptGroup::MeeteiMayek => Some("resources/fonts/NotoSansMeeteiMayek-Regular.ttf"),
+        ScriptGroup::Thai => Some("resources/fonts/NotoSansThai-Regular.ttf"),
+        ScriptGroup::Lao => Some("resources/fonts/NotoSansLao-Regular.ttf"),
+        ScriptGroup::Khmer => Some("resources/fonts/NotoSansKhmer-Regular.ttf"),
+        ScriptGroup::Myanmar => Some("resources/fonts/NotoSansMyanmar-Regular.ttf"),
+        ScriptGroup::Ethiopic => Some("resources/fonts/NotoSansEthiopic-Regular.ttf"),
+        ScriptGroup::Armenian => Some("resources/fonts/NotoSansArmenian-Regular.ttf"),
+        ScriptGroup::Georgian => Some("resources/fonts/NotoSansGeorgian-Regular.ttf"),
+        ScriptGroup::CjkSc => Some("resources/fonts/SiteCJK-SC.otf"),
+        ScriptGroup::CjkTc => Some("resources/fonts/SiteCJK-TC.otf"),
+        ScriptGroup::CjkJp => Some("resources/fonts/SiteCJK-JP.otf"),
+        ScriptGroup::CjkKr => Some("resources/fonts/SiteCJK-KR.otf"),
+        ScriptGroup::LatinExt => Some("resources/fonts/NotoSans-Regular.ttf"),
+    };
+    let mut files = vec![PLEX];
+    files.extend(script);
+    files
+}
+
+// ---- Language (sites/_shared/i18n/site_i18n.rs) -------------------------
+
+impl App {
+    /// Site copy for `key` in the language the page shows.
+    fn tr(&self, key: &str) -> String {
+        self.lang.text(key, locale::en(key))
+    }
+
+    /// Site copy whose English is `english` (code tables such as chapter
+    /// names); text with no `EN` key is shown as it is.
+    fn tr_en(&self, english: &str) -> String {
+        match locale::key_for(english) {
+            Some(key) => self.tr(key),
+            None => english.to_string(),
+        }
+    }
+
+    /// Language named by the URL hash (`#l=hi`, written by lang-nav.js), or
+    /// `SITE_LANG=hi` for a native preview.
+    fn hash_lang(cx: &Cx) -> Option<&'static str> {
+        if let OsType::Web(page) = cx.os_type() {
+            return site_i18n::lang_from_hash(&page.hash);
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            std::env::var("SITE_LANG")
+                .ok()
+                .and_then(|c| site_i18n::language_by_code(&c))
+                .map(|l| l.code)
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            None
+        }
+    }
+
+    /// Startup / hashchange: follow the picker's choice.
+    fn sync_lang(&mut self, cx: &mut Cx) {
+        let want = Self::hash_lang(cx).unwrap_or("en");
+        if self.lang.last_hash_lang.as_deref() == Some(want) {
+            return;
+        }
+        self.lang.last_hash_lang = Some(want.to_string());
+        if let Some(table) = self.lang.want(want) {
+            self.fetch_pack(cx, table);
+        } else {
+            self.apply_lang(cx);
+        }
+        self.paint_lang_chip(cx);
+    }
+
+    /// `/i18n/<code>.tsv` next to the wasm (staged from `translations/`);
+    /// native reads the crate's file.
+    fn fetch_pack(&mut self, cx: &mut Cx, table: String) {
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("translations")
+                .join(format!("{table}.tsv"));
+            match std::fs::read_to_string(&path) {
+                Ok(text) => {
+                    self.lang.insert_pack(&table, &text);
+                    self.apply_lang(cx);
+                }
+                Err(err) => log!("site i18n: {}: {err}", path.display()),
+            }
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            let id = LiveId::unique();
+            cx.http_request(
+                id,
+                HttpRequest::new(site_i18n::pack_web_path(&table), HttpMethod::GET),
+            );
+            self.lang.set_pending(id, table);
+        }
+    }
+
+    fn handle_lang_responses(&mut self, cx: &mut Cx, responses: &NetworkResponsesEvent) {
+        for response in responses {
+            let (request_id, body) = match response {
+                NetworkResponse::HttpResponse { request_id, response } => (
+                    *request_id,
+                    (200..300)
+                        .contains(&response.status_code)
+                        .then(|| response.body.clone())
+                        .flatten(),
+                ),
+                NetworkResponse::HttpError { request_id, .. } => (*request_id, None),
+                _ => continue,
+            };
+            if self.lang.take_response(request_id, body.as_deref()) {
+                self.apply_lang(cx);
+            }
+        }
+    }
+
+    /// Top-bar language chip shows the language in use (`HI`, `UR`, `EN`).
+    fn paint_lang_chip(&mut self, cx: &mut Cx) {
+        let code = if self.lang.wanted.is_empty() {
+            "en".to_string()
+        } else {
+            self.lang.wanted.clone()
+        };
+        self.ui
+            .button(cx, ids!(go_lang))
+            .set_text(cx, &code.to_uppercase());
+    }
+
+    /// Walk the page with the wanted language and give the labels painted
+    /// from code (`code_text`) the script font / RTL alignment. Returns
+    /// false while the pack is still loading.
+    fn walk_lang(&mut self, cx: &mut Cx, code_text: &[&[LiveId]]) -> bool {
+        let lang = self.lang.wanted.clone();
+        if lang.is_empty() || !self.lang.has_pack(&lang) {
+            return false;
+        }
+        let font = site_i18n::script_family(cx, &self.ui, site_i18n::script_group(&lang));
+        let rtl = site_i18n::is_rtl(&lang);
+        let skip = std::collections::HashSet::new();
+        let ui = self.ui.clone();
+        self.lang
+            .apply(cx, &ui, &lang, &locale::key_for, &locale::en, font.as_ref(), &skip);
+        for path in code_text {
+            let w = self.ui.widget(cx, path);
+            self.lang.style_widget(&w, font.as_ref(), rtl);
+        }
+        true
+    }
+}
+
+/// `#<action>` for the HTML chrome (`lang` picker) that keeps the page's
+/// `l=` (language) segment.
+#[cfg(target_arch = "wasm32")]
+fn bridge_hash(cx: &Cx, action: &str) -> String {
+    let mut url = format!("#{action}");
+    if let OsType::Web(page) = cx.os_type() {
+        if let Some(lang) = site_i18n::lang_from_hash(&page.hash) {
+            url.push_str(&format!("&l={lang}"));
+        }
+    }
+    url
+}
+
+/// Language chip → `#lang`: lang-nav.js opens the 115-language picker.
+fn open_lang_picker(cx: &mut Cx) {
+    #[cfg(target_arch = "wasm32")]
+    {
+        let url = bridge_hash(cx, "lang");
+        cx.open_url(&url, OpenUrlInPlace::Yes);
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let _ = cx;
+        log!("language picker is web-only");
+    }
+}
+
+/// Labels moklanjo paints from code (their words come from `App::tr`); they
+/// take the script font / RTL alignment of the shown language too.
+const CODE_TEXT: &[&[LiveId]] = &[
+    ids!(step_name),
+    ids!(walkin.hero_cta.note),
+    ids!(start.close_cta.note),
+    ids!(weigh.len.value),
+    ids!(weigh.bre.value),
+    ids!(weigh.hei.value),
+    ids!(weigh.act.value),
+    ids!(weigh.charge),
+    ids!(weigh.working),
+    ids!(weigh.actual),
+    ids!(weigh.winner),
+];
+
+impl App {
+    /// Show the wanted language everywhere once its pack is here.
+    fn apply_lang(&mut self, cx: &mut Cx) {
+        if !self.walk_lang(cx, CODE_TEXT) {
+            return;
+        }
+        let lang = self.lang.wanted.clone();
+        let font = site_i18n::script_family(cx, &self.ui, site_i18n::script_group(&lang));
+        let rtl = site_i18n::is_rtl(&lang);
+        for bead in BEADS.iter() {
+            let w = self.ui.widget(cx, bead[7]);
+            self.lang.style_widget(&w, font.as_ref(), rtl);
+        }
+        let chapter = self.chapter;
+        self.paint_chrome(cx, chapter);
+        self.paint_weight(cx);
+        if let Some(key) = self.cta_note_key.clone() {
+            self.show_cta_note(cx, &key);
+        }
+        self.paint_lang_chip(cx);
+        self.ui.redraw(cx);
+    }
 }
 
 impl App {
@@ -685,9 +938,10 @@ impl App {
     /// here (orange), the rest are ahead — like a docket's tracking line.
     fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
         self.chapter = chapter;
+        let chapter_name = self.tr_en(CHAPTERS[chapter].1);
         self.ui.label(cx, ids!(step_name)).set_text(
             cx,
-            &format!("{} / {} · {}", chapter + 1, CHAPTERS.len(), CHAPTERS[chapter].1),
+            &format!("{} / {} · {}", chapter + 1, CHAPTERS.len(), chapter_name),
         );
         let size = self.ui.window(cx, ids!(main_window)).get_inner_size(cx);
         let short_labels = if size.x >= 1.0 {
@@ -713,7 +967,8 @@ impl App {
             } else {
                 BEAD_LABELS[i]
             };
-            self.ui.label(cx, name).set_text(cx, caption);
+            let caption = self.tr_en(caption);
+            self.ui.label(cx, name).set_text(cx, &caption);
             if let Some(mut label) = self.ui.label(cx, name).borrow_mut() {
                 let hex = if i < chapter {
                     0xF7B043FFu32
@@ -765,38 +1020,41 @@ impl App {
         let set = |cx: &mut Cx, ui: &WidgetRef, path: &[LiveId], text: &str| {
             ui.widget(cx, path).set_text(cx, text);
         };
-        set(cx, &self.ui, ids!(weigh.len.value), &format!("{} cm", p.length_cm));
-        set(cx, &self.ui, ids!(weigh.bre.value), &format!("{} cm", p.breadth_cm));
-        set(cx, &self.ui, ids!(weigh.hei.value), &format!("{} cm", p.height_cm));
-        set(cx, &self.ui, ids!(weigh.act.value), &format!("{} kg", weight::fmt_kg_1(p.actual_g)));
-        set(cx, &self.ui, ids!(weigh.charge), &format!("{} kg", weight::fmt_kg_1(p.chargeable_g())));
+        let cm = |n: u64| self.tr("weight_cm").replace("{n}", &n.to_string());
+        let kg = |s: String| self.tr("weight_kg").replace("{kg}", &s);
+        set(cx, &self.ui, ids!(weigh.len.value), &cm(p.length_cm));
+        set(cx, &self.ui, ids!(weigh.bre.value), &cm(p.breadth_cm));
+        set(cx, &self.ui, ids!(weigh.hei.value), &cm(p.height_cm));
+        set(cx, &self.ui, ids!(weigh.act.value), &kg(weight::fmt_kg_1(p.actual_g)));
+        set(cx, &self.ui, ids!(weigh.charge), &kg(weight::fmt_kg_1(p.chargeable_g())));
         set(
             cx,
             &self.ui,
             ids!(weigh.working),
-            &format!(
-                "{} × {} × {} ÷ {} = {} kg",
-                p.length_cm,
-                p.breadth_cm,
-                p.height_cm,
-                p.divisor,
-                weight::fmt_centi_kg(p.volumetric_centi_kg())
-            ),
+            &self
+                .tr("weight_working")
+                .replace("{l}", &p.length_cm.to_string())
+                .replace("{b}", &p.breadth_cm.to_string())
+                .replace("{h}", &p.height_cm.to_string())
+                .replace("{d}", &p.divisor.to_string())
+                .replace("{kg}", &weight::fmt_centi_kg(p.volumetric_centi_kg())),
         );
         set(
             cx,
             &self.ui,
             ids!(weigh.actual),
-            &format!("On the scale: {} kg", weight::fmt_kg_1(p.actual_g)),
+            &self
+                .tr("weight_on_scale")
+                .replace("{kg}", &weight::fmt_kg_1(p.actual_g)),
         );
         set(
             cx,
             &self.ui,
             ids!(weigh.winner),
-            if p.volumetric_wins() {
-                "The box's size sets the charge."
+            &if p.volumetric_wins() {
+                self.tr_en("The box's size sets the charge.")
             } else {
-                "The weight on the scale sets the charge."
+                self.tr("weight_scale_wins")
             },
         );
         let international = p.divisor == INTERNATIONAL_DIVISOR;
@@ -844,9 +1102,12 @@ impl App {
         }
     }
 
-    fn set_cta_notes(&mut self, cx: &mut Cx, text: &str) {
+    /// Note under both CTA rows (`locale::EN` key; repainted on a language change).
+    fn show_cta_note(&mut self, cx: &mut Cx, key: &str) {
+        self.cta_note_key = Some(key.to_string());
+        let text = self.tr(key).replace("{message}", WHATSAPP_MESSAGE);
         for path in [ids!(walkin.hero_cta.note), ids!(start.close_cta.note)] {
-            self.ui.widget(cx, path).set_text(cx, text);
+            self.ui.widget(cx, path).set_text(cx, &text);
         }
         self.ui.redraw(cx);
     }
@@ -855,10 +1116,7 @@ impl App {
         if DOWNLOADS_LIVE {
             open_link(cx, DOWNLOAD_URL);
         } else {
-            self.set_cta_notes(
-                cx,
-                "Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.",
-            );
+            self.show_cta_note(cx, "cta_installers_note");
         }
     }
 
@@ -868,10 +1126,7 @@ impl App {
                 let url = format!("https://wa.me/{number}?text={}", url_encode(WHATSAPP_MESSAGE));
                 open_link(cx, &url);
             }
-            None => self.set_cta_notes(
-                cx,
-                &format!("The WhatsApp demo line opens soon. Your message will read: “{WHATSAPP_MESSAGE}”."),
-            ),
+            None => self.show_cta_note(cx, "cta_whatsapp_soon"),
         }
     }
 
@@ -1131,7 +1386,11 @@ fn active_chapter_from(
 
 /// `#weigh`, `#2` (1-based chapter number) → section id.
 fn section_from_hash(hash: &str) -> Option<&'static str> {
-    let key = hash.trim_start_matches('#').trim().to_ascii_lowercase();
+    // `#l=hi` (language bridge) and `#lang` are not sections.
+    let key = site_i18n::hash_segments(hash)
+        .find(|part| !site_i18n::is_bridge_segment(part))
+        .unwrap_or("")
+        .to_ascii_lowercase();
     if key.is_empty() {
         return None;
     }
@@ -1206,9 +1465,14 @@ impl MatchEvent for App {
         self.pending_stable = 0;
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
+        // `#l=<code>` from lang-nav.js (or SITE_LANG natively): fetch that pack.
+        self.sync_lang(cx);
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
+        if self.ui.button(cx, ids!(go_lang)).clicked(actions) {
+            open_lang_picker(cx);
+        }
         for (i, [hit, ..]) in BEADS.iter().enumerate() {
             if self.ui.button(cx, hit).clicked(actions) {
                 self.go_to(cx, i);
@@ -1268,11 +1532,16 @@ impl AppMain for App {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
+        if let Event::NetworkResponses(responses) = event {
+            self.handle_lang_responses(cx, responses);
+        }
         self.match_event(cx, event);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         match event {
             Event::Startup | Event::WindowGeomChange(_) => self.apply_responsive(cx),
             Event::KeyDown(ke) => self.handle_scroll_keys(cx, ke),
+            // hashchange (lang-nav.js writes `#l=<code>`) arrives as Signal on web.
+            Event::Signal => self.sync_lang(cx),
             // Free wheel / trackpad: ScrollYView owns the motion; keep the rail synced.
             Event::Scroll(_) => {
                 if !self.scroll_animating() {
