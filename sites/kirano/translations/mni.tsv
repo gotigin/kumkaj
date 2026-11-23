@@ -1,230 +1,230 @@
 # Manipuri — ꯃꯤꯇꯩꯂꯣꯟ (mni). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	ꯈꯨꯗꯝ
+download_free	ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ
+whatsapp_for_a_demo	ꯗꯦꯃꯣꯒꯤꯗꯃꯛ WhatsApp ꯇꯧꯕꯤꯌꯨ
+free_on_android_windows_and	Android, Windows ꯑꯃꯁꯨꯡ Linux ꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ꯫
+the_grocery_counter	ꯀꯤꯔꯥꯅꯥ ꯗꯨꯀꯥꯅꯒꯤ ꯀꯥꯎꯟꯇꯔ
+busy_counter	ꯊꯕꯛ ꯌꯥꯝꯕ ꯀꯥꯎꯟꯇꯔ
+kirano_the_grocery_counter	KIRANO · ꯀꯤꯔꯥꯅꯥ ꯗꯨꯀꯥꯅꯒꯤ ꯀꯥꯎꯟꯇꯔ
+busy_counter_no_internet_still	ꯊꯕꯛ ꯌꯥꯝꯕ ꯀꯥꯎꯟꯇꯔ꯫ ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯦ꯫ ꯍꯧꯖꯤꯛꯁꯨ ꯕꯤꯂꯤꯡ ꯆꯠꯂꯤ꯫
+sell_khata_stock_and_the	ꯌꯣꯟꯕ, ꯈꯥꯇꯥ, ꯁ꯭ꯇꯣꯛ ꯑꯃꯁꯨꯡ ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯃꯁꯥꯒꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ꯫ ꯍꯤꯁꯥꯕ · ꯌꯣꯟꯕ · ꯂꯩꯕ · ꯄꯣꯠ꯫ ꯂꯝ ꯂꯩꯇꯦ, ꯆꯥꯛꯍꯣꯡ ꯂꯩꯇꯦ, ꯐꯝ ꯂꯩꯇꯦ꯫
+tap_the_bill_to_walk	ꯀꯥꯎꯟꯇꯔꯒꯤ ꯌꯣꯟꯕ ꯑꯃꯥ ꯌꯦꯡꯅꯕꯥ ꯕꯤꯂꯗꯥ ꯅꯝꯕꯤꯌꯨ
+cash_memo	ꯀꯦꯁ ꯃꯦꯃꯣ
+ready	ꯁꯦꯝꯈ꯭ꯔꯦ
+total	ꯑꯄꯨꯟꯕ
+tap_to_add_the_first	ꯑꯍꯥꯅꯕ ꯄꯣꯠ ꯍꯥꯄꯆꯤꯟꯅꯕꯥ ꯅꯝꯕꯤꯌꯨ
+example_grocery_lines_not_a	ꯈꯨꯗꯝ ꯀꯤꯔꯥꯅꯥ ꯂꯥꯏꯟꯁꯤꯡ, ꯑꯁꯦꯡꯕ ꯀꯥꯎꯟꯇꯔ ꯅꯠꯇꯦ꯫ Kirano ꯅꯥ ꯂꯝꯕꯤ ꯑꯗꯨꯃꯛ ꯆꯠꯂꯤ: ꯌꯣꯟꯕ → ꯍꯤꯁꯥꯕ → ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ꯫
+n_2_counter_sell	2 · ꯀꯥꯎꯟꯇꯔꯗꯥ ꯌꯣꯟꯕ
+item_quantity_pay_three_taps	ꯄꯣꯠ, ꯃꯁꯤꯡ, ꯁꯦꯟ ꯄꯤꯕ — ꯅꯝꯕ ꯑꯍꯨꯝ꯫
+upi_qr_ready	UPI QR ꯁꯦꯝꯈ꯭ꯔꯦ
+example_bill	ꯈꯨꯗꯝ ꯕꯤꯜ
+search_by_name_or_short	ꯃꯤꯡ ꯅꯠꯔꯒꯥ ꯁꯥꯡꯗꯕ ꯀꯣꯗꯅꯥ ꯊꯤꯕꯤꯌꯨ
+type_atta_at5_or_an	ꯑꯥꯇꯥ, AT5 ꯅꯠꯔꯒꯥ ꯑꯇꯣꯞꯄ ꯃꯤꯡ ꯏꯕꯤꯌꯨ — ꯂꯥꯏꯟ ꯑꯗꯨ ꯕꯤꯂꯗꯥ ꯊꯣꯀꯏ꯫
+kg_g_pc_l_ml	ꯀꯤꯂꯣ, ꯒ꯭ꯔꯥꯝ, ꯃꯁꯤꯡ, ꯂꯤꯇꯔ, ꯃꯤꯂꯤ
+quantity_in_the_unit_the	ꯄꯦꯀꯦꯠꯀꯤ ꯌꯨꯅꯤꯇꯇꯥ ꯃꯁꯤꯡ; ꯃꯃꯜ ꯃꯁꯥꯃꯛ ꯂꯥꯀꯏ꯫
+cash_upi_or_split	ꯁꯦꯟ, UPI ꯅꯠꯔꯒꯥ ꯈꯥꯌꯗꯨꯅꯥ
+settle_on_the_counter_the	ꯀꯥꯎꯟꯇꯔꯗꯥꯃꯛ ꯍꯤꯁꯥꯕ ꯃꯄꯨꯡ ꯐꯥꯍꯅꯕꯤꯌꯨ; ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛꯅꯥ ꯁꯦꯟ ꯄꯤꯕꯒꯤ ꯃꯑꯣꯡ ꯏꯊꯝꯏ꯫
+n_3_khata	3 · ꯈꯥꯇꯥ
+credit_without_a_crm_put	CRM ꯂꯩꯇꯅꯥ ꯄꯤꯗꯔꯤꯕ — ꯃꯈꯣꯌꯒꯤ ꯈꯥꯇꯥꯗꯥ ꯏꯕꯤꯌꯨ꯫
+ramesh_customer	ꯔꯃꯦꯁ · ꯀꯁ꯭ꯇꯃꯔ
+due_from_earlier	ꯃꯃꯥꯡꯒꯤ ꯄꯤꯗꯔꯤꯕ
+today_s_sale_due	+ ꯉꯁꯤꯒꯤ ꯌꯣꯟꯕ (ꯄꯤꯗꯔꯤꯕ)
+balance	ꯑꯄꯨꯟꯕ ꯄꯤꯗꯔꯤꯕ
+settle_later_in_parties_part	ꯃꯇꯨꯡꯗꯥ ꯄꯥꯔꯇꯤꯗꯥ ꯍꯤꯁꯥꯕ ꯃꯄꯨꯡ ꯐꯥꯍꯅꯕꯤꯌꯨ — ꯈꯔꯥ ꯁꯦꯟ, ꯈꯔꯥ UPI, ꯈꯥꯇꯥ ꯁꯦꯡꯏ꯫
+due_on_the_bill	ꯕꯤꯂꯗꯥ ꯄꯤꯗꯔꯤꯕ
+what_s_left_goes_on	ꯂꯦꯃꯍꯧꯔꯤꯕ ꯑꯗꯨ ꯀꯁ꯭ꯇꯃꯔꯒꯤ ꯈꯥꯇꯥꯗꯥ ꯆꯠꯂꯤ — ꯇꯣꯉꯥꯟꯅꯥ ꯂꯦꯖꯔ ꯑꯦꯞ ꯃꯊꯧ ꯇꯥꯗꯦ꯫
+one_party_two_roles	ꯄꯥꯔꯇꯤ ꯑꯃꯥ, ꯊꯧꯗꯥꯡ ꯑꯅꯤ
+customer_ar_and_supplier_ap	ꯀꯁ꯭ꯇꯃꯔꯗꯒꯤ ꯐꯪꯒꯗꯕ (AR) ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕꯗꯥ ꯄꯤꯒꯗꯕ (AP) ꯄꯥꯔꯇꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯈꯛꯇꯥ ꯂꯩ꯫
+who_when_how_much	ꯀꯅꯥ, ꯀꯗꯥꯏꯗꯥ, ꯀꯌꯥ
+every_credit_and_settlement_stays	ꯄꯤꯗꯔꯤꯕ ꯑꯃꯁꯨꯡ ꯍꯤꯁꯥꯕ ꯃꯄꯨꯡ ꯐꯥꯍꯅꯕ ꯈꯨꯗꯤꯡꯃꯛ ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛꯇꯥ ꯂꯩ꯫
+n_4_buy_stock	4 · ꯂꯩꯕ ꯑꯃꯁꯨꯡ ꯁ꯭ꯇꯣꯛ
+buy_from_the_wholesaler_stock	ꯍꯣꯂꯁꯦꯂꯔꯗꯒꯤ ꯂꯩꯕꯤꯌꯨ — ꯁ꯭ꯇꯣꯛ ꯑꯃꯁꯨꯡ ꯀꯅꯥꯗꯥ ꯄꯤꯒꯗꯒꯦ, ꯑꯅꯤꯃꯛ ꯄꯨꯟꯅꯥ ꯑꯅꯧꯕ ꯑꯣꯏ꯫
+purchase_sharma_wholesale	ꯂꯩꯕ · Sharma Wholesale
+stock_50_kg_ap_7	ꯁ꯭ꯇꯣꯛ +50 kg · AP ₹ 7,200
+stock_12_l_ap_1	ꯁ꯭ꯇꯣꯛ +12 L · AP ₹ 1,560
+resale_stock_not_kitchen_raw	ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯌꯣꯟꯅꯕꯒꯤ ꯁ꯭ꯇꯣꯛ — ꯆꯥꯛꯍꯣꯡꯒꯤ ꯊꯣꯡꯗꯕ ꯄꯣꯠ ꯅꯠꯇꯦ꯫ ꯂꯩꯕꯗꯥ ꯄꯥꯝꯂꯕꯗꯤ ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ꯫
+buy_creates_stock	ꯂꯩꯕꯅꯥ ꯁ꯭ꯇꯣꯛ ꯁꯦꯝꯏ
+receive_the_goods_the_catalogue	ꯄꯣꯠꯂꯝ ꯂꯧꯁꯤꯟꯕꯤꯌꯨ; ꯀꯦꯇꯂꯣꯒꯀꯤ ꯃꯁꯤꯡ ꯍꯦꯅꯒꯠꯂꯀꯏ꯫
+who_we_owe	ꯑꯩꯈꯣꯌꯅꯥ ꯀꯅꯥꯗꯥ ꯄꯤꯒꯗꯒꯦ
+supplier_balance_sits_on_the	ꯄꯤꯔꯤꯕꯒꯤ ꯄꯤꯗꯔꯤꯕ ꯀꯁ꯭ꯇꯃꯔꯒꯤ ꯈꯥꯇꯥ ꯂꯩꯕ ꯄꯥꯔꯇꯤ ꯑꯗꯨꯃꯛꯇꯥ ꯂꯩ꯫
+low_stock_at_a_glance	ꯌꯦꯡꯕ ꯑꯃꯗꯥ ꯍꯟꯊꯕ ꯁ꯭ꯇꯣꯛ
+inventory_shows_what_is_running	ꯏꯟꯚꯦꯟꯇꯔꯤꯅꯥ ꯃꯊꯪꯒꯤ ꯃꯤ ꯌꯥꯝꯕꯒꯤ ꯃꯃꯥꯡꯗꯥ ꯀꯔꯤ ꯂꯣꯏꯔꯛꯂꯤꯕꯒꯦ ꯇꯥꯛꯏ꯫
+n_5_day_book	5 · ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
+cash_vs_upi_counted_and	ꯁꯦꯟ ꯑꯃꯁꯨꯡ UPI, ꯃꯁꯤꯡ ꯊꯤꯜꯂꯕ — ꯑꯃꯁꯨꯡ ꯈꯦꯟꯅꯕ ꯃꯌꯦꯛ ꯁꯦꯡꯅꯥ꯫
+today_s_drawer	ꯉꯁꯤꯒꯤ ꯗ꯭ꯔꯣꯌꯔ
+opening_float	ꯍꯧꯔꯛꯐꯝꯒꯤ ꯁꯦꯟ
+cash_sales	+ ꯁꯦꯟꯅꯥ ꯌꯣꯟꯕ
+upi_sales	+ UPI ꯅꯥ ꯌꯣꯟꯕ
+cash_paid_out	− ꯄꯤꯔꯕ ꯁꯦꯟ
+expected_cash	ꯂꯩꯒꯗꯕ ꯁꯦꯟ
+counted	ꯃꯁꯤꯡ ꯊꯤꯜꯂꯦ
+short	ꯍꯟꯊꯔꯦ
+tenders_stay_separate	ꯁꯦꯟ ꯄꯤꯕꯒꯤ ꯃꯑꯣꯡꯁꯤꯡ ꯇꯣꯉꯥꯟꯅꯥ ꯂꯩ
+cash_and_upi_never_mix	ꯁꯦꯟ ꯑꯃꯁꯨꯡ UPI ꯀꯩꯗꯧꯉꯩꯗꯁꯨ ꯈꯉꯗꯕ ꯑꯄꯨꯟꯕ ꯑꯃꯗꯥ ꯌꯥꯎꯃꯤꯟꯗꯦ꯫
+shift_close	ꯁꯤꯐꯠ ꯊꯤꯡꯕ
+close_the_shift_print_the	ꯁꯤꯐꯠ ꯊꯤꯡꯕꯤꯌꯨ, ꯁ꯭ꯂꯤꯞ ꯄ꯭ꯔꯤꯟꯠ ꯇꯧꯕꯤꯌꯨ, ꯃꯊꯪꯒꯤ ꯁꯤꯐꯠ ꯁꯦꯡꯅꯥ ꯍꯧꯕꯤꯌꯨ꯫
+gst_facing_bills	GST ꯕꯤꯜꯁꯤꯡ
+tax_invoice_or_cash_memo	ꯇꯦꯛꯁ ꯏꯅꯚꯣꯏꯁ ꯅꯠꯔꯒꯥ ꯀꯦꯁ ꯃꯦꯃꯣ — ꯅꯨꯃꯤꯠꯀꯤ ꯔꯤꯄꯣꯔꯇꯇꯥ ꯑꯅꯤꯃꯛ ꯂꯩ꯫
+books_sell_buy_items_four	ꯍꯤꯁꯥꯕ · ꯌꯣꯟꯕ · ꯂꯩꯕ · ꯄꯣꯠ — ꯁ꯭ꯛꯔꯤꯟ ꯃꯔꯤ, ꯑꯃꯁꯨꯡ ꯔꯦꯁ꯭ꯇꯣꯔꯦꯟꯠꯀꯤ ꯂꯝ ꯂꯩꯇꯦ꯫
+n_6_internet_down	6 · ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯕꯔꯥ?
+the_internet_drops_the_counter	ꯏꯟꯇꯔꯅꯦꯠ ꯂꯣꯏꯔꯦ꯫ ꯀꯥꯎꯟꯇꯔꯅꯥ ꯌꯣꯟꯕ ꯃꯈꯥ ꯆꯠꯊꯔꯤ꯫
+router_no_internet	ꯔꯥꯎꯇꯔ: ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯦ
+main_counter_selling_and_settling	ꯃꯔꯨꯑꯣꯏꯕ ꯀꯥꯎꯟꯇꯔ: ꯌꯣꯟꯕ ꯑꯃꯁꯨꯡ ꯍꯤꯁꯥꯕ ꯆꯠꯂꯤ
+second_till_joined_on_your	ꯑꯅꯤꯁꯨꯕꯥ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ: ꯅꯍꯥꯛꯀꯤ ꯃꯁꯥꯒꯤ Wi-Fi ꯗꯥ ꯁꯝꯅꯔꯦ
+books_live_on_the_shop	ꯍꯤꯁꯥꯕ ꯂꯥꯏꯔꯤꯛ ꯗꯨꯀꯥꯅꯒꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯂꯩ
+when_the_internet_drops_mid	ꯃꯤ ꯌꯥꯝꯕꯒꯤ ꯃꯔꯛꯇꯥ ꯏꯟꯇꯔꯅꯦꯠ ꯂꯣꯏꯔꯕꯁꯨ ꯀꯥꯎꯟꯇꯔꯗꯥ ꯀꯔꯤꯒꯨꯝꯕ ꯑꯃꯠꯇꯅꯥ ꯃꯁꯤꯕꯨ ꯉꯥꯏꯗꯦ꯫
+one_server_lan_clients	ꯁꯥꯔꯚꯔ ꯑꯃꯥ, LAN ꯀ꯭ꯂꯥꯏꯑꯦꯟꯇꯁꯤꯡ
+extra_tills_share_the_same	ꯍꯦꯟꯅꯥ ꯂꯩꯕ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔꯁꯤꯡꯅꯥ ꯗꯨꯀꯥꯅꯒꯤ ꯅꯦꯇꯋꯥꯔꯛꯇꯥ ꯍꯤꯁꯥꯕ ꯂꯥꯏꯔꯤꯛ ꯑꯗꯨꯃꯛ ꯁꯔꯨꯛ ꯌꯥꯏ꯫
+n_7_free_forever_locally	7 · ꯂꯣꯀꯦꯂꯗꯥ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ
+free_forever_on_your_devices	ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ꯫
+no_per_bill_charge	ꯕꯤꯜ ꯈꯨꯗꯤꯡꯗꯥ ꯁꯦꯟ ꯂꯧꯗꯦ
+no_fee_per_sale_item	ꯂꯣꯀꯦꯜ ꯏꯟꯁ꯭ꯇꯣꯂꯗꯥ ꯌꯣꯟꯕ, ꯄꯣꯠ, ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ ꯅꯠꯔꯒꯥ ꯁ꯭ꯇꯥꯐ PIN ꯈꯨꯗꯤꯡꯗꯥ ꯁꯦꯟ ꯂꯧꯗꯦ꯫
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	ꯀꯥꯎꯟꯇꯔꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯂꯩꯕ ꯐꯣꯟ ꯑꯃꯁꯨꯡ ꯗꯦꯁ꯭ꯀꯇꯣꯞ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔꯗꯥ Kirano ꯑꯗꯨꯃꯛ꯫
+optional_kumkaj_cloud	ꯄꯥꯝꯂꯕꯗꯤ Kumkaj Cloud
+yearly_steady_6k_swift_12k	ꯆꯍꯤ ꯈꯨꯗꯤꯡꯒꯤ Steady ₹6k · Swift ₹12k · Priority ₹24k, ꯇꯦꯛꯁ ꯌꯥꯎꯗꯅꯥ (ꯅꯠꯔꯒꯥ ꯀꯁ꯭ꯇꯝ ꯀꯣꯇꯦꯁꯟ)꯫ /shop ꯗꯥ ꯂꯩꯕꯤꯌꯨ꯫
+n_8_start	8 · ꯍꯧꯕꯤꯌꯨ
+put_kirano_on_the_counter	Kirano ꯀꯥꯎꯟꯇꯔꯗꯥ ꯊꯝꯕꯤꯌꯨ꯫
+download_free_or_whatsapp_for	ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯗꯨꯀꯥꯅꯒꯤ ꯃꯈꯜ ꯑꯃꯁꯨꯡ ꯁꯍꯔ ꯍꯥꯌꯗꯨꯅꯥ ꯗꯦꯃꯣꯒꯤꯗꯃꯛ WhatsApp ꯇꯧꯕꯤꯌꯨ꯫
+privacy	ꯄ꯭ꯔꯥꯏꯚꯦꯁꯤ
+terms	ꯆꯠꯅꯕꯤꯁꯤꯡ
+cancellation	ꯇꯣꯛꯄꯒꯤ ꯆꯠꯅꯕꯤ
+cloud_shop	ꯀ꯭ꯂꯥꯎꯗ ꯗꯨꯀꯥꯟ
+account	ꯑꯦꯀꯥꯎꯟꯠ
+chapter_counter_sell	ꯀꯥꯎꯟꯇꯔꯗꯥ ꯌꯣꯟꯕ
+chapter_khata	ꯈꯥꯇꯥ
+chapter_buy_stock	ꯂꯩꯕ ꯑꯃꯁꯨꯡ ꯁ꯭ꯇꯣꯛ
+chapter_day_book	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
+chapter_extra_till	ꯍꯦꯟꯅꯥ ꯂꯩꯕ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ
+chapter_offline	ꯑꯣꯐꯂꯥꯏꯟ
+chapter_start	ꯍꯧꯕꯤꯌꯨ
+bill_selling	ꯌꯣꯟꯂꯤ
+bill_settle	ꯁꯦꯟ ꯄꯤꯕ
+bill_paid	ꯁꯦꯟ ꯄꯤꯔꯦ
+bill_next_item	ꯃꯊꯪꯒꯤ ꯄꯣꯠ ꯍꯥꯄꯆꯤꯟꯅꯕꯥ ꯅꯝꯕꯤꯌꯨ
+bill_settle_hint	ꯁꯦꯟ ꯄꯤꯅꯕꯥ ꯅꯝꯕꯤꯌꯨ — ꯁꯦꯟ ꯅꯠꯔꯒꯥ UPI
+bill_cash_return	ꯁꯦꯟ ₹ 600 · ꯍꯜꯂꯛꯀꯗꯕ ₹ 15
+bill_paid_line	ꯁꯦꯟ ꯄꯤꯔꯦ · ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯅꯧꯕ ꯑꯣꯏꯔꯦ
+lan_eyebrow	6 · ꯍꯦꯟꯅꯥ ꯂꯩꯕ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ
+lan_title	ꯗꯨꯀꯥꯅꯒꯤ Wi-Fi ꯗꯥ ꯑꯇꯣꯞꯄ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ ꯑꯃꯥ꯫
+cta_installers_note	ꯏꯟꯁ꯭ꯇꯣꯂꯔ ꯈꯨꯗꯤꯡꯃꯛ ꯁꯦꯡꯕ ꯃꯦꯁꯤꯟ ꯑꯃꯗꯥ ꯏꯟꯁ꯭ꯇꯣꯜ ꯆꯥꯡꯌꯦꯡꯗꯥ ꯃꯥꯏꯄꯥꯛꯂꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯃꯐꯝ ꯑꯁꯤꯗꯥ ꯂꯥꯛꯀꯅꯤ꯫ ꯃꯗꯨ ꯐꯥꯑꯣꯕ WhatsApp ꯇꯥ ꯗꯦꯃꯣ ꯍꯥꯌꯖꯕꯤꯌꯨ꯫
+cta_whatsapp_soon	WhatsApp ꯗꯦꯃꯣ ꯂꯥꯏꯟ ꯊꯨꯅꯥ ꯍꯥꯡꯒꯅꯤ꯫ ꯅꯍꯥꯛꯀꯤ ꯃꯦꯁꯦꯖ ꯑꯁꯤꯅꯤ: “{message}”꯫
+acct_page_title	ꯑꯦꯀꯥꯎꯟꯠ — Kirano
+acct_lede	ꯁꯥꯏꯠ ꯑꯃꯁꯨꯡ ꯑꯦꯄꯁꯤꯡꯒꯤꯗꯃꯛ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯈꯛ — ꯑꯅꯧꯕ ꯑꯣꯏꯔꯕꯁꯨ ꯍꯜꯂꯛꯂꯕꯁꯨ, ꯐꯣꯔꯝ ꯑꯗꯨꯃꯛ꯫
+acct_email	ꯏꯃꯦꯏꯜ
+acct_name_optional	ꯃꯤꯡ (ꯄꯥꯝꯂꯕꯗꯤ)
+acct_password	ꯄꯥꯁꯋꯥꯔꯗ
+acct_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
+acct_forgot	ꯄꯥꯁꯋꯥꯔꯗ ꯀꯥꯎꯔꯕꯔꯥ?
+acct_reset_hint	ꯑꯩꯈꯣꯌꯅꯥ ꯔꯤꯁꯦꯠ ꯂꯤꯉ꯭ꯛ ꯏꯃꯦꯏꯜ ꯇꯧꯒꯅꯤ꯫ ꯁꯥꯏꯟ ꯑꯞ ꯇꯧꯈꯤꯕ ꯑꯦꯗ꯭ꯔꯦꯁ ꯑꯗꯨꯃꯛ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ꯫
+acct_send_reset	ꯔꯤꯁꯦꯠ ꯂꯤꯉ꯭ꯛ ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_cancel	ꯇꯣꯛꯎ
+acct_or_continue	ꯅꯠꯔꯒꯥ ꯃꯁꯤꯅꯥ ꯃꯈꯥ ꯆꯠꯂꯨ
+acct_phone	ꯐꯣꯟ
+acct_mobile	ꯃꯣꯕꯥꯏꯜ ꯅꯝꯕꯔ
+acct_send_sms	SMS ꯀꯣꯗ ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_sms_code	SMS ꯀꯣꯗ
+acct_confirm_code	ꯀꯣꯗ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕꯤꯌꯨ
+acct_signed_in	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_signed_in_as	ꯃꯁꯤꯒꯤ ꯃꯑꯣꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_status	ꯐꯤꯚꯝ
+acct_sign_in_methods	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡꯁꯤꯡ
+acct_cloud_username	ꯀ꯭ꯂꯥꯎꯗ ꯌꯨꯖꯔꯅꯦꯝ
+acct_plan	ꯄ꯭ꯂꯥꯟ
+acct_resend_verify	ꯆꯦꯛꯁꯤꯟꯅꯕꯒꯤ ꯏꯃꯦꯏꯜ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_sign_out	ꯁꯥꯏꯟ ꯑꯥꯎꯠ
+acct_cloud_sandbox	Kumkaj Cloud (ꯁꯦꯟꯗꯕꯣꯛꯁ)
+acct_current_password	ꯍꯧꯖꯤꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗ
+acct_email_for_password	ꯄꯥꯁꯋꯥꯔꯗ ꯁꯥꯏꯟ-ꯏꯟꯒꯤꯗꯃꯛ ꯏꯃꯦꯏꯜ
+acct_new_password	ꯑꯅꯧꯕ ꯄꯥꯁꯋꯥꯔꯗ
+acct_confirm_new_password	ꯑꯅꯧꯕ ꯄꯥꯁꯋꯥꯔꯗ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕꯤꯌꯨ
+acct_add_way	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯅꯕꯒꯤ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡ ꯑꯃꯥ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ
+acct_link_hint	ꯃꯑꯣꯡꯁꯤꯡ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯈꯛꯇꯥ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ, ꯃꯗꯨꯅꯥ ꯑꯃꯥ ꯃꯥꯏꯊꯤꯔꯕꯁꯨ ꯆꯪꯕꯒꯤ ꯌꯥꯕ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯐꯪꯕ ꯌꯥꯏ꯫
+acct_link_google	Google ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_link_microsoft	Microsoft ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_link_github	GitHub ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_link_phone	ꯐꯣꯟ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_send_sms_link	ꯁꯝꯅꯍꯟꯅꯕꯥ SMS ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_confirm_link_phone	ꯁꯣꯏꯗꯅꯥ ꯇꯧꯗꯨꯅꯥ ꯐꯣꯟ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+shop_page_title	ꯗꯨꯀꯥꯟ — Kirano
+shop_lede	ꯆꯍꯤ ꯈꯨꯗꯤꯡꯒꯤ ꯀ꯭ꯂꯥꯎꯗ ꯄ꯭ꯂꯥꯟ — ꯇꯦꯛꯁ ꯆꯦꯛꯑꯥꯎꯠꯇꯥ ꯍꯥꯄꯆꯤꯜꯂꯤ꯫ ꯅꯍꯥꯛꯀꯤ ꯃꯁꯥꯒꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯃꯄꯨꯡ ꯐꯥꯕ Kirano ꯑꯦꯞ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯂꯩꯒꯅꯤ, ꯑꯦꯗ ꯂꯩꯇꯅꯥ꯫
+shop_cart	ꯀꯥꯔꯠ
+shop_cart_empty_hint	ꯅꯍꯥꯛꯀꯤ ꯀꯥꯔꯠ ꯑꯍꯥꯡꯕꯅꯤ꯫ Steady, Swift ꯅꯠꯔꯒꯥ Priority ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ꯫
+shop_checkout	ꯆꯦꯛꯑꯥꯎꯠ
+shop_clear	ꯁꯦꯡꯗꯣꯛꯄꯤꯌꯨ
+shop_checkout_hint	ꯆꯦꯛꯑꯥꯎꯠꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯑꯦꯀꯥꯎꯟꯇꯇꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯍꯜꯂꯤ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯁꯦꯟ ꯄꯤꯕ ꯍꯧꯗꯣꯀꯏ (ꯁꯦꯟꯗꯕꯣꯛꯁ ꯃꯣꯛ, ꯅꯠꯔꯒꯥ ꯀꯤ ꯁꯦꯝꯂꯕꯗꯤ Paddle)꯫
+acct_billing_hint	ꯆꯍꯤ ꯈꯨꯗꯤꯡꯒꯤ ꯄ꯭ꯂꯥꯟ — ꯆꯦꯛꯑꯥꯎꯠꯇꯥ ꯒꯦꯇꯋꯦꯅꯥ ꯇꯦꯛꯁ ꯍꯥꯄꯆꯤꯜꯂꯤ꯫ ꯂꯣꯀꯦꯜ ꯁꯤꯖꯤꯟꯅꯕ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯂꯩꯒꯅꯤ꯫ ꯀꯁ꯭ꯇꯝ ꯑꯁꯤ ꯀꯣꯇꯦꯁꯟ ꯑꯃꯅꯤ (Steady ꯗꯒꯤ ꯍꯟꯊꯕ ꯅꯠꯔꯒꯥ Priority ꯗꯒꯤ ꯍꯦꯟꯕ ꯑꯣꯏꯕ ꯌꯥꯏ)꯫
+shop_cloud_plans	ꯀ꯭ꯂꯥꯎꯗ ꯄ꯭ꯂꯥꯟꯁꯤꯡ
+acct_federated	ꯐꯦꯗꯔꯦꯇꯦꯗ ꯁꯥꯏꯟ-ꯏꯟ
+acct_err_invalid_email	ꯆꯨꯝꯕ ꯏꯃꯦꯏꯜ ꯑꯦꯗ꯭ꯔꯦꯁ ꯏꯕꯤꯌꯨ꯫
+acct_err_weak_password	ꯌꯥꯃꯗ꯭ꯔꯕꯗꯥ ꯃꯌꯦꯛ 6 ꯂꯩꯕ ꯄꯥꯁꯋꯥꯔꯗ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ꯫
+acct_err_wrong_password	ꯑꯔꯥꯟꯕ ꯄꯥꯁꯋꯥꯔꯗ꯫
+acct_err_invalid_credential	ꯏꯃꯦꯏꯜ ꯅꯠꯔꯒꯥ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯔꯥꯟꯕꯅꯤ꯫
+acct_err_popup_closed	ꯁꯥꯏꯟ-ꯏꯟ ꯋꯤꯟꯗꯣ ꯊꯤꯡꯖꯤꯜꯂꯦ꯫
+acct_err_popup_cancelled	ꯁꯥꯏꯟ-ꯏꯟ ꯇꯣꯛꯈ꯭ꯔꯦ꯫
+acct_err_unauthorized_domain	ꯗꯣꯃꯦꯟ ꯑꯁꯤ Firebase Auth ꯒꯤꯗꯃꯛ ꯌꯥꯕ ꯄꯤꯗ꯭ꯔꯤ꯫
+acct_err_method_disabled	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯍꯥꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ꯫
+acct_err_too_many	ꯍꯣꯠꯅꯕ ꯌꯥꯝꯅꯥ ꯇꯧꯔꯦ꯫ ꯃꯇꯨꯡꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫
+acct_err_phone_format	ꯂꯩꯕꯥꯛꯀꯤ ꯀꯣꯗ ꯌꯥꯎꯕ ꯃꯄꯨꯡ ꯐꯥꯕ ꯐꯣꯟ ꯅꯝꯕꯔ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ (ꯈꯨꯗꯝ +91…)꯫
+acct_err_sms_code	SMS ꯀꯣꯗ ꯑꯗꯨ ꯑꯔꯥꯟꯕ ꯅꯠꯔꯒꯥ ꯃꯇꯝ ꯂꯣꯏꯔꯦ꯫
+acct_err_no_account	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫ ꯑꯅꯧꯕ ꯁꯦꯝꯅꯕꯥ ꯃꯈꯥ ꯆꯠꯂꯨ, ꯅꯠꯔꯒꯥ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ꯫
+acct_err_recent_login	ꯉꯥꯛ-ꯁꯦꯟꯅꯕꯒꯤꯗꯃꯛ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯑꯍꯣꯡꯕ ꯑꯁꯤ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯇꯧꯕꯤꯌꯨ꯫
+acct_err_credential_in_use	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡ ꯑꯗꯨ ꯑꯇꯣꯞꯄ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯅꯥ ꯁꯤꯖꯤꯟꯅꯔꯦ꯫
+acct_err_email_in_use	ꯏꯃꯦꯏꯜ ꯑꯗꯨ ꯑꯇꯣꯞꯄ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯅꯥ ꯁꯤꯖꯤꯟꯅꯔꯦ꯫
+acct_err_already_linked	ꯃꯑꯣꯡ ꯑꯗꯨ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯁꯤꯗꯥ ꯁꯝꯅꯔꯦ꯫
+acct_err_exists_other_method	ꯏꯃꯦꯏꯜ ꯑꯁꯤꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯥ ꯑꯇꯣꯞꯄ ꯁꯥꯏꯟ-ꯏꯟ ꯃꯑꯣꯡꯅꯥ ꯂꯩꯔꯦ꯫ ꯑꯍꯥꯅꯕꯗꯥ ꯃꯑꯣꯡ ꯑꯗꯨꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯂꯃꯥꯏꯗꯒꯤ ꯃꯁꯤ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ꯫
+acct_err_generic	ꯀꯔꯤꯒꯨꯝꯕ ꯑꯃꯥ ꯑꯔꯥꯅꯕ ꯊꯣꯛꯂꯦ꯫
+acct_method_password	ꯏꯃꯦꯏꯜ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗ
+acct_pw_hint_change	ꯅꯍꯥꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄꯤꯌꯨ꯫ ꯍꯧꯖꯤꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗꯅꯥ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯒꯗꯕꯅꯤ꯫
+acct_pw_hint_add	ꯏꯃꯦꯏꯂꯅꯥ ꯁꯨ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕ ꯌꯥꯅꯕꯥ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯃꯥ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ (ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯑꯃꯥ ꯐꯪꯗꯔꯕꯗꯥ ꯀꯥꯟꯅꯒꯅꯤ)꯫
+acct_pw_change	ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄꯤꯌꯨ
+acct_pw_add	ꯄꯥꯁꯋꯥꯔꯗ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ
+acct_billing_off	ꯀ꯭ꯂꯥꯎꯗ API ꯗꯥ ꯕꯤꯂꯤꯡ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯍꯥꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ꯫
+acct_billing_no_provider	ꯀ꯭ꯂꯥꯎꯗ API ꯗꯥ ꯑꯁꯦꯡꯕ ꯕꯤꯂꯤꯡ ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯑꯃꯠꯇꯥ ꯍꯥꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ (ꯃꯣꯛ ꯑꯁꯤ ꯂꯣꯀꯦꯜ ꯈꯛꯇꯅꯤ)꯫
+price_quote	ꯀꯣꯇꯦꯁꯟ
+price_per_year	₹{amount}/ꯆꯍꯤ, ꯇꯦꯛꯁ ꯌꯥꯎꯗꯅꯥ
+acct_pay_received	ꯁꯦꯟ ꯐꯪꯂꯦ — ꯅꯍꯥꯛꯀꯤ ꯄ꯭ꯂꯥꯟ ꯑꯅꯧꯕ ꯑꯣꯏꯍꯜꯂꯤ…
+acct_pay_declined	ꯁꯦꯟ ꯄꯤꯕ ꯌꯥꯗꯔꯦ ꯅꯠꯔꯒꯥ ꯃꯥꯏꯊꯤꯔꯦ
+acct_pay_failed_detail	{detail}꯫ ꯅꯍꯥꯛꯀꯤ ꯄ꯭ꯂꯥꯟ ꯍꯣꯡꯗꯦ꯫
+acct_checkout_closed	ꯆꯦꯛꯑꯥꯎꯠ ꯊꯤꯡꯖꯤꯜꯂꯦ — ꯁꯦꯟ ꯄꯤꯕ ꯑꯃꯠꯇꯥ ꯂꯣꯏꯁꯤꯅꯈꯤꯗꯦ꯫ ꯅꯍꯥꯛꯀꯤ ꯄ꯭ꯂꯥꯟ ꯑꯗꯨꯃꯛ ꯂꯩ꯫
+acct_checkout_failed	ꯆꯦꯛꯑꯥꯎꯠ ꯃꯥꯏꯊꯤꯔꯦ
+acct_pay_with	{provider} ꯅꯥ ꯁꯦꯟ ꯄꯤꯕꯤꯌꯨ
+acct_plan_until	{plan} · {date} ꯐꯥꯑꯣꯕ
+acct_unavailable	ꯐꯪꯗꯦ
+acct_continue_hint	ꯏꯃꯦꯏꯜ, ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯅꯠꯔꯒꯥ ꯐꯣꯅꯅꯥ ꯃꯈꯥ ꯆꯠꯂꯨ꯫
+acct_signed_in_fallback	(ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ)
+acct_email_verified	ꯏꯃꯦꯏꯜ ꯆꯦꯛꯁꯤꯟꯔꯦ
+acct_email_unverified	ꯏꯃꯦꯏꯜ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯆꯦꯛꯁꯤꯟꯗ꯭ꯔꯤ — ꯅꯍꯥꯛꯀꯤ ꯏꯅꯕꯣꯛꯁ ꯌꯦꯡꯕꯤꯌꯨ
+acct_signed_in_phone	ꯐꯣꯅꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_none_listed	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯀꯔꯤꯁꯨ ꯂꯤꯁ꯭ꯇꯇꯥ ꯂꯩꯇꯦ
+acct_signed_in_status	ꯅꯍꯥꯛ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ꯫
+acct_created	ꯑꯦꯀꯥꯎꯟꯠ ꯁꯦꯃꯈ꯭ꯔꯦ꯫ ꯌꯥꯕ ꯃꯇꯃꯗꯥ ꯆꯦꯛꯁꯤꯟꯅꯕꯥ ꯅꯍꯥꯛꯀꯤ ꯏꯃꯦꯏꯜ ꯌꯦꯡꯕꯤꯌꯨ꯫
+acct_reset_sent	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯂꯩꯔꯕꯗꯤ, ꯔꯤꯁꯦꯠ ꯂꯤꯉ꯭ꯛ ꯂꯥꯛꯂꯤ꯫ ꯅꯍꯥꯛꯀꯤ ꯏꯅꯕꯣꯛꯁ ꯌꯦꯡꯕꯤꯌꯨ꯫
+acct_another_method	ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡ
+acct_exists_via	{email} ꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ {method} ꯅꯥ ꯂꯩꯔꯦ꯫ ꯑꯍꯥꯅꯕꯗꯥ ꯃꯑꯣꯡ ꯑꯗꯨꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯂꯃꯥꯏꯗꯒꯤ ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯑꯁꯤ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ꯫
+acct_enter_current_pw	ꯅꯍꯥꯛꯀꯤ ꯍꯧꯖꯤꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯏꯕꯤꯌꯨ꯫
+acct_relogin_retry	ꯁꯥꯏꯟ ꯑꯥꯎꯠ ꯇꯧꯗꯨꯅꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫
+acct_pw_mismatch	ꯑꯅꯧꯕ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯃꯁꯨꯡ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕ ꯃꯥꯟꯅꯗꯦ꯫
+acct_pw_updated	ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧꯕ ꯑꯣꯏꯔꯦ꯫
+acct_enter_email_pw	ꯄꯥꯁꯋꯥꯔꯗ ꯁꯥꯏꯟ-ꯏꯟꯒꯤꯗꯃꯛ ꯏꯃꯦꯏꯜ ꯑꯃꯥ ꯏꯕꯤꯌꯨ꯫
+acct_pw_added	ꯄꯥꯁꯋꯥꯔꯗ ꯍꯥꯄꯆꯤꯜꯂꯦ꯫ ꯍꯧꯖꯤꯛ ꯏꯃꯦꯏꯂꯅꯥ ꯁꯨ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕ ꯌꯥꯏ꯫
+acct_method_linked	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡ ꯁꯝꯅꯔꯦ꯫
+acct_phone_linked	ꯐꯣꯟ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯁꯤꯗꯥ ꯁꯝꯅꯔꯦ꯫
+acct_verify_sent	ꯆꯦꯛꯁꯤꯟꯅꯕꯒꯤ ꯏꯃꯦꯏꯜ ꯊꯥꯔꯦ — ꯅꯍꯥꯛꯀꯤ ꯏꯅꯕꯣꯛꯁ ꯌꯦꯡꯕꯤꯌꯨ꯫
+shop_pricing_soon	ꯃꯃꯜ ꯊꯨꯅꯥ ꯂꯥꯛꯀꯅꯤ
+shop_request_quote	ꯀꯣꯇꯦꯁꯟ ꯍꯥꯌꯖꯕꯤꯌꯨ
+shop_add_to_cart	ꯀꯥꯔꯇꯇꯥ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ
+shop_notify_later	ꯃꯇꯨꯡꯗꯥ ꯑꯩꯉꯣꯟꯗꯥ ꯈꯉꯍꯅꯕꯤꯌꯨ
+shop_included	ꯌꯥꯎꯔꯦ
+shop_in_cart	{plan} ꯅꯍꯥꯛꯀꯤ ꯀꯥꯔꯇꯇꯥ ꯂꯩ꯫
+shop_remove	ꯂꯧꯊꯣꯛꯄꯤꯌꯨ
+shop_cart_is_empty	ꯀꯥꯔꯠ ꯑꯍꯥꯡꯕꯅꯤ꯫
+shop_prices_unpublished	ꯄ꯭ꯔꯣꯗꯛꯠ ꯑꯁꯤꯒꯤ ꯃꯁꯥꯅꯥ ꯂꯩꯕ ꯌꯥꯕ ꯃꯃꯜ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯐꯣꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ꯫ ꯀꯁ꯭ꯇꯝ ꯀꯣꯇꯦꯁꯟ ꯍꯥꯌꯖꯕꯤꯌꯨ ꯅꯠꯔꯒꯥ ꯃꯇꯨꯡꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯌꯦꯡꯕꯤꯌꯨ꯫
+shop_cart_cleared	ꯀꯥꯔꯠ ꯁꯦꯡꯗꯣꯛꯂꯦ꯫
+plan_free_title	ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ
+plan_free_blurb	ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯃꯄꯨꯡ ꯐꯥꯕ ꯂꯣꯀꯦꯜ ꯄ꯭ꯔꯣꯗꯛꯠ꯫ ꯀ꯭ꯂꯥꯎꯗꯀꯤ ꯁꯦꯟ ꯂꯧꯗꯦ꯫
+plan_steady_blurb	ꯂꯥꯏꯚ ꯀ꯭ꯂꯥꯎꯗ · 10 GB · ꯍꯟꯊꯕ ꯕꯦꯟꯗꯋꯤꯗꯊ
+plan_swift_blurb	ꯂꯥꯏꯚ ꯀ꯭ꯂꯥꯎꯗ · 25 GB · ꯃꯌꯥꯏꯒꯤ ꯕꯦꯟꯗꯋꯤꯗꯊ
+plan_priority_blurb	ꯂꯥꯏꯚ ꯀ꯭ꯂꯥꯎꯗ · 50 GB · ꯈ꯭ꯕꯥꯏꯗꯒꯤ ꯋꯥꯡꯕ ꯁ꯭ꯇꯦꯟꯗꯔꯗ ꯕꯦꯟꯗꯋꯤꯗꯊ
+plan_custom_title	ꯀꯁ꯭ꯇꯝ
+plan_custom_blurb	ꯌꯥꯅꯈꯤꯕ ꯀꯣꯇꯥ ꯑꯃꯁꯨꯡ ꯕꯦꯟꯗꯋꯤꯗꯊ꯫ ꯀꯣꯇꯦꯁꯟ Steady ꯗꯒꯤ ꯍꯟꯊꯕ ꯅꯠꯔꯒꯥ Priority ꯗꯒꯤ ꯍꯦꯟꯕ ꯑꯣꯏꯕ ꯌꯥꯏ꯫

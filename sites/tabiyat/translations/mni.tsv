@@ -1,227 +1,227 @@
 # Manipuri — ꯃꯤꯇꯩꯂꯣꯟ (mni). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	ꯈꯨꯗꯝ
+download_free	ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ
+whatsapp_for_a_demo	ꯗꯦꯃꯣꯒꯤꯗꯃꯛ WhatsApp ꯇꯧꯕꯤꯌꯨ
+free_on_android_windows_and	Android, Windows ꯑꯃꯁꯨꯡ Linux ꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ꯫
+the_pharmacy_counter	ꯐꯥꯔꯃꯦꯁꯤꯒꯤ ꯀꯥꯎꯟꯇꯔ
+pharmacy_counter	ꯐꯥꯔꯃꯦꯁꯤ ꯀꯥꯎꯟꯇꯔ
+tabiyat_the_pharmacy_counter	TABIYAT · ꯐꯥꯔꯃꯦꯁꯤꯒꯤ ꯀꯥꯎꯟꯇꯔ
+pharmacy_counter_offline_your_books	ꯐꯥꯔꯃꯦꯁꯤ ꯀꯥꯎꯟꯇꯔ꯫ ꯑꯣꯐꯂꯥꯏꯟ꯫ ꯅꯍꯥꯛꯀꯤ ꯍꯤꯁꯥꯕ ꯂꯥꯏꯔꯤꯛ꯫
+medicines_barcode_and_salt_search	ꯍꯤꯗꯥꯛꯁꯤꯡ, ꯕꯥꯔꯀꯣꯗ ꯑꯃꯁꯨꯡ ꯁꯣꯜꯇꯅꯥ ꯊꯤꯕ, ꯅꯍꯥꯛꯀꯤ ꯍꯤꯁꯥꯕꯀꯤꯗꯃꯛ ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ — ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ꯫ ꯃꯄꯨꯒꯤ ꯃꯥꯔꯛ ꯈꯛꯇꯃꯛ; ꯗ꯭ꯔꯒꯁ ꯑꯦꯛꯇ ꯉꯥꯛꯂꯤ ꯍꯥꯌꯕ ꯑꯔꯥꯅꯕ ꯋꯥ ꯀꯩꯗꯧꯉꯩꯗꯁꯨ ꯍꯥꯌꯗꯦ꯫
+tap_the_bill_to_walk	ꯀꯥꯎꯟꯇꯔꯒꯤ ꯌꯣꯟꯕ ꯑꯃꯥ ꯌꯦꯡꯅꯕꯥ ꯕꯤꯂꯗꯥ ꯅꯝꯕꯤꯌꯨ
+cash_memo	ꯀꯦꯁ ꯃꯦꯃꯣ
+ready	ꯁꯦꯝꯈ꯭ꯔꯦ
+total	ꯑꯄꯨꯟꯕ
+tap_to_add_the_first	ꯑꯍꯥꯅꯕ ꯍꯤꯗꯥꯛ ꯍꯥꯄꯆꯤꯟꯅꯕꯥ ꯅꯝꯕꯤꯌꯨ
+example_pharmacy_lines_not_a	ꯈꯨꯗꯝ ꯐꯥꯔꯃꯦꯁꯤ ꯂꯥꯏꯟꯁꯤꯡ, ꯑꯁꯦꯡꯕ ꯀꯥꯎꯟꯇꯔ ꯅꯠꯇꯦ꯫ Tabiyat ꯅꯥ ꯂꯝꯕꯤ ꯑꯗꯨꯃꯛ ꯆꯠꯂꯤ: ꯌꯣꯟꯕ → ꯍꯤꯁꯥꯕ → ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ꯫
+n_2_counter_sell	2 · ꯀꯥꯎꯟꯇꯔꯗꯥ ꯌꯣꯟꯕ
+medicine_quantity_pay_three_taps	ꯍꯤꯗꯥꯛ, ꯃꯁꯤꯡ, ꯁꯦꯟ ꯄꯤꯕ — ꯅꯝꯕ ꯑꯍꯨꯝ꯫
+upi_qr_ready	UPI QR ꯁꯦꯝꯈ꯭ꯔꯦ
+example_bill	ꯈꯨꯗꯝ ꯕꯤꯜ
+fast_counter_billing	ꯊꯨꯅꯥ ꯀꯥꯎꯟꯇꯔ ꯕꯤꯂꯤꯡ
+add_the_line_set_the	ꯂꯥꯏꯟ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ, ꯃꯁꯤꯡ ꯏꯕꯤꯌꯨ, ꯍꯤꯁꯥꯕ ꯃꯄꯨꯡ ꯐꯥꯍꯅꯕꯤꯌꯨ — ꯁꯦꯟ, UPI ꯅꯠꯔꯒꯥ ꯈꯥꯌꯗꯨꯅꯥ꯫
+gst_tax_invoice_or_cash	GST ꯇꯦꯛꯁ ꯏꯅꯚꯣꯏꯁ ꯅꯠꯔꯒꯥ ꯀꯦꯁ ꯃꯦꯃꯣ
+the_bill_lane_you_need	ꯌꯣꯟꯕꯒꯤꯗꯃꯛ ꯃꯊꯧ ꯇꯥꯕ ꯕꯤꯂꯒꯤ ꯃꯈꯜ꯫
+day_book_follows	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯆꯠꯂꯤ
+every_tender_lands_in_books	ꯌꯣꯟꯕ ꯊꯤꯡꯂꯕꯥ ꯃꯇꯃꯗꯥ ꯁꯦꯟ ꯄꯤꯕ ꯈꯨꯗꯤꯡꯃꯛ ꯍꯤꯁꯥꯕ ꯂꯥꯏꯔꯤꯛꯇꯥ ꯌꯧꯏ꯫
+n_3_barcode_salt	3 · ꯕꯥꯔꯀꯣꯗ ꯑꯃꯁꯨꯡ ꯁꯣꯜꯠ
+scan_the_barcode_or_find	ꯕꯥꯔꯀꯣꯗ ꯁ꯭ꯀꯦꯟ ꯇꯧꯕꯤꯌꯨ — ꯅꯠꯔꯒꯥ ꯁꯣꯜꯇꯅꯥ ꯊꯤꯕꯤꯌꯨ꯫
+search	ꯊꯤꯕꯤꯌꯨ
+composition_paracetamol_strip_of_10	ꯀꯝꯄꯣꯖꯤꯁꯟ: Paracetamol · 10 ꯂꯩꯕ ꯁ꯭ꯠꯔꯤꯞ
+salt_amoxicillin	ꯁꯣꯜꯠ: amoxicillin
+ranks_barcode_name_and_composition	ꯕꯥꯔꯀꯣꯗ, ꯃꯤꯡ ꯑꯃꯁꯨꯡ ꯀꯝꯄꯣꯖꯤꯁꯟ ꯄꯨꯟꯅꯥ ꯊꯥꯛ ꯊꯝꯏ꯫
+wedge_scanner_or_type_enter	ꯋꯦꯖ ꯁ꯭ꯀꯦꯅꯔ ꯅꯠꯔꯒꯥ Enter ꯅꯝꯕꯤꯌꯨ — ꯂꯥꯏꯟ ꯑꯗꯨ ꯕꯤꯂꯗꯥ ꯊꯣꯀꯏ꯫
+barcode_first	ꯑꯍꯥꯅꯕꯗꯥ ꯕꯥꯔꯀꯣꯗ
+scan_or_paste_the_code	ꯀꯣꯗ ꯁ꯭ꯀꯦꯟ ꯇꯧꯕꯤꯌꯨ ꯅꯠꯔꯒꯥ ꯄꯦꯁ꯭ꯠ ꯇꯧꯕꯤꯌꯨ; ꯀꯦꯇꯂꯣꯒꯇꯥ ꯃꯥꯟꯅꯕ ꯍꯤꯗꯥꯛ ꯊꯣꯀꯏ꯫
+salt_composition	ꯁꯣꯜꯠ / ꯀꯝꯄꯣꯖꯤꯁꯟ
+type_the_salt_when_the	ꯀꯁ꯭ꯇꯃꯔꯅꯥ ꯕ꯭ꯔꯦꯟꯗꯀꯤ ꯃꯤꯡ ꯍꯥꯌꯗꯔꯕꯗꯤ ꯁꯣꯜꯠ ꯏꯕꯤꯌꯨ꯫
+owner_rx_schedule_h_flags	ꯃꯄꯨꯒꯤ Rx / Schedule H ꯃꯥꯔꯛ
+reminders_you_set_not_a	ꯅꯍꯥꯛꯅꯥ ꯊꯝꯕ ꯅꯤꯡꯁꯤꯡꯍꯟꯕꯁꯤꯡ — ꯑꯥꯏꯅꯒꯤ ꯔꯦꯖꯤꯁ꯭ꯇꯔ ꯅꯠꯇꯦ, ꯍꯤꯗꯥꯛꯀꯤ ꯄꯥꯎꯇꯥꯛ ꯅꯠꯇꯦ꯫
+n_4_batch_expiry	4 · ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ
+batch_and_expiry_on_your	ꯅꯍꯥꯛꯀꯤ ꯍꯤꯁꯥꯕꯇꯥ ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ — ꯃꯄꯨꯒꯤꯗꯃꯛ ꯆꯦꯀꯁꯤꯅꯍꯟꯕꯁꯤꯡ꯫
+buy_batch_a12	ꯂꯩꯕ · ꯕꯦꯆ A12
+expires_2027_03_alert_in	ꯃꯇꯝ ꯂꯣꯏꯕ 2027-03 · ꯅꯨꯃꯤꯠ 7 ꯗꯥ ꯆꯦꯀꯁꯤꯅꯍꯟꯕ
+ors_sachets_batch_b04	ORS ꯄꯦꯀꯦꯠ · ꯕꯦꯆ B04
+expires_2026_11_near_expiry	ꯃꯇꯝ ꯂꯣꯏꯕ 2026-11 · ꯍꯤꯁꯥꯕꯇꯥ ꯃꯇꯝ ꯂꯣꯏꯔꯛꯂꯤꯕꯒꯤ ꯄꯥꯇꯤ
+shop_bookkeeping_only_not_drugs	ꯗꯨꯀꯥꯅꯒꯤ ꯍꯤꯁꯥꯕ ꯊꯝꯕ ꯈꯛꯇꯃꯛ — ꯗ꯭ꯔꯒꯁ ꯑꯦꯛꯇ ꯉꯥꯛꯄ ꯅꯠꯇꯦ꯫
+batch_on_buy	ꯂꯩꯕꯗꯥ ꯕꯦꯆ
+record_batch_and_expiry_when	ꯁ꯭ꯇꯣꯛ ꯂꯥꯀꯄꯥ ꯃꯇꯃꯗꯥ ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ ꯏꯊꯝꯕꯤꯌꯨ꯫
+near_expiry_alerts	ꯃꯇꯝ ꯂꯣꯏꯔꯛꯂꯤꯕꯒꯤ ꯆꯦꯀꯁꯤꯅꯍꯟꯕꯁꯤꯡ
+books_and_sell_can_hint	ꯇꯥꯡ ꯂꯣꯏꯗ꯭ꯔꯤꯉꯩꯗꯥ ꯍꯤꯁꯥꯕ ꯑꯃꯁꯨꯡ ꯌꯣꯟꯕꯅꯥ ꯈꯉꯍꯅꯕ ꯌꯥꯏ꯫
+owner_practice	ꯃꯄꯨꯒꯤ ꯃꯑꯣꯡ
+fefo_hints_and_rx_notes	FEFO ꯈꯨꯗꯝ ꯑꯃꯁꯨꯡ Rx ꯅꯣꯠꯁꯤꯡ ꯉꯥꯛꯄ ꯑꯁꯤ ꯅꯍꯥꯛꯀꯤ ꯊꯧꯗꯥꯡꯅꯤ — Tabiyat ꯅꯥ ꯅꯍꯥꯛꯅꯥ ꯏꯕ ꯈꯛꯇꯃꯛ ꯏꯊꯝꯏ꯫
+n_5_khata	5 · ꯈꯥꯇꯥ
+customer_credit_and_supplier_dues	ꯀꯁ꯭ꯇꯃꯔꯒꯤ ꯄꯤꯗꯔꯤꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕꯗꯥ ꯄꯤꯒꯗꯕ ꯄꯥꯔꯇꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯈꯛꯇꯥ꯫
+mehta_clinic_customer	Mehta Clinic · ꯀꯁ꯭ꯇꯃꯔ
+due_from_earlier	ꯃꯃꯥꯡꯒꯤ ꯄꯤꯗꯔꯤꯕ
+today_s_sale_due	+ ꯉꯁꯤꯒꯤ ꯌꯣꯟꯕ (ꯄꯤꯗꯔꯤꯕ)
+balance	ꯑꯄꯨꯟꯕ ꯄꯤꯗꯔꯤꯕ
+settle_later_part_cash_part	ꯃꯇꯨꯡꯗꯥ ꯍꯤꯁꯥꯕ ꯃꯄꯨꯡ ꯐꯥꯍꯅꯕꯤꯌꯨ — ꯈꯔꯥ ꯁꯦꯟ, ꯈꯔꯥ UPI꯫ ꯄꯤꯔꯤꯕꯒꯤ AP ꯄꯥꯔꯇꯤ ꯁ꯭ꯛꯔꯤꯟ ꯑꯗꯨꯃꯛꯇꯥ ꯂꯩ꯫
+due_on_the_bill	ꯕꯤꯂꯗꯥ ꯄꯤꯗꯔꯤꯕ
+leave_a_balance_on_khata	ꯇꯣꯉꯥꯟꯅꯥ ꯂꯦꯖꯔ ꯑꯦꯞ ꯂꯩꯇꯅꯥ ꯈꯥꯇꯥꯗꯥ ꯄꯤꯗꯔꯤꯕ ꯊꯝꯕꯤꯌꯨ꯫
+supplier_buys_too	ꯄꯤꯔꯤꯕꯗꯒꯤ ꯂꯩꯕꯁꯨ
+who_you_owe_updates_when	ꯁ꯭ꯇꯣꯛ ꯂꯥꯀꯄꯥ ꯃꯇꯃꯗꯥ ꯀꯅꯥꯗꯥ ꯄꯤꯒꯗꯒꯦ ꯑꯅꯧꯕ ꯑꯣꯏ꯫
+auditable	ꯌꯦꯡꯁꯤꯅꯕ ꯌꯥꯕ
+who_when_and_how_much	ꯀꯅꯥ, ꯀꯗꯥꯏꯗꯥ ꯑꯃꯁꯨꯡ ꯀꯌꯥ — ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛꯇꯥ ꯂꯩ꯫
+n_6_internet_down	6 · ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯕꯔꯥ?
+the_internet_drops_the_counter	ꯏꯟꯇꯔꯅꯦꯠ ꯂꯣꯏꯔꯦ꯫ ꯀꯥꯎꯟꯇꯔꯅꯥ ꯌꯣꯟꯕ ꯃꯈꯥ ꯆꯠꯊꯔꯤ꯫
+router_no_internet	ꯔꯥꯎꯇꯔ: ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯦ
+main_counter_selling_and_settling	ꯃꯔꯨꯑꯣꯏꯕ ꯀꯥꯎꯟꯇꯔ: ꯌꯣꯟꯕ ꯑꯃꯁꯨꯡ ꯍꯤꯁꯥꯕ ꯆꯠꯂꯤ
+second_till_joined_on_your	ꯑꯅꯤꯁꯨꯕꯥ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ: ꯅꯍꯥꯛꯀꯤ ꯃꯁꯥꯒꯤ Wi-Fi ꯗꯥ ꯁꯝꯅꯔꯦ
+books_live_on_the_shop	ꯍꯤꯁꯥꯕ ꯂꯥꯏꯔꯤꯛ ꯗꯨꯀꯥꯅꯒꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯂꯩ
+when_the_internet_drops_nothing	ꯏꯟꯇꯔꯅꯦꯠ ꯂꯣꯏꯔꯕꯁꯨ ꯐꯥꯔꯃꯦꯁꯤ ꯀꯥꯎꯟꯇꯔꯗꯥ ꯀꯔꯤꯒꯨꯝꯕ ꯑꯃꯠꯇꯅꯥ ꯃꯁꯤꯕꯨ ꯉꯥꯏꯗꯦ꯫
+one_server_lan_clients	ꯁꯥꯔꯚꯔ ꯑꯃꯥ, LAN ꯀ꯭ꯂꯥꯏꯑꯦꯟꯇꯁꯤꯡ
+extra_tills_share_the_same	ꯍꯦꯟꯅꯥ ꯂꯩꯕ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔꯁꯤꯡꯅꯥ ꯗꯨꯀꯥꯅꯒꯤ ꯅꯦꯇꯋꯥꯔꯛꯇꯥ ꯍꯤꯁꯥꯕ ꯂꯥꯏꯔꯤꯛ ꯑꯗꯨꯃꯛ ꯁꯔꯨꯛ ꯌꯥꯏ꯫
+n_7_free_forever_locally	7 · ꯂꯣꯀꯦꯂꯗꯥ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ
+free_forever_on_your_devices	ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ꯫
+no_per_bill_charge	ꯕꯤꯜ ꯈꯨꯗꯤꯡꯗꯥ ꯁꯦꯟ ꯂꯧꯗꯦ
+no_fee_per_sale_medicine	ꯂꯣꯀꯦꯜ ꯏꯟꯁ꯭ꯇꯣꯂꯗꯥ ꯌꯣꯟꯕ, ꯍꯤꯗꯥꯛ, ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ ꯅꯠꯔꯒꯥ ꯁ꯭ꯇꯥꯐ PIN ꯈꯨꯗꯤꯡꯗꯥ ꯁꯦꯟ ꯂꯧꯗꯦ꯫
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	ꯐꯣꯟ ꯑꯃꯁꯨꯡ ꯗꯦꯁ꯭ꯀꯇꯣꯞ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔꯗꯥ Tabiyat ꯑꯗꯨꯃꯛ꯫
+optional_kumkaj_cloud	ꯄꯥꯝꯂꯕꯗꯤ Kumkaj Cloud
+yearly_steady_6k_swift_12k	ꯆꯍꯤ ꯈꯨꯗꯤꯡꯒꯤ Steady ₹6k · Swift ₹12k · Priority ₹24k, ꯇꯦꯛꯁ ꯌꯥꯎꯗꯅꯥ (ꯅꯠꯔꯒꯥ ꯀꯁ꯭ꯇꯝ ꯀꯣꯇꯦꯁꯟ)꯫ /shop ꯗꯥ ꯂꯩꯕꯤꯌꯨ꯫
+n_8_start	8 · ꯍꯧꯕꯤꯌꯨ
+put_tabiyat_on_the_counter	Tabiyat ꯀꯥꯎꯟꯇꯔꯗꯥ ꯊꯝꯕꯤꯌꯨ꯫
+download_free_or_whatsapp_for	ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ ꯐꯥꯔꯃꯦꯁꯤ ꯑꯃꯁꯨꯡ ꯁꯍꯔ ꯍꯥꯌꯗꯨꯅꯥ ꯗꯦꯃꯣꯒꯤꯗꯃꯛ WhatsApp ꯇꯧꯕꯤꯌꯨ꯫
+privacy	ꯄ꯭ꯔꯥꯏꯚꯦꯁꯤ
+terms	ꯆꯠꯅꯕꯤꯁꯤꯡ
+cancellation	ꯇꯣꯛꯄꯒꯤ ꯆꯠꯅꯕꯤ
+cloud_shop	ꯀ꯭ꯂꯥꯎꯗ ꯗꯨꯀꯥꯟ
+account	ꯑꯦꯀꯥꯎꯟꯠ
+chapter_counter_sell	ꯀꯥꯎꯟꯇꯔꯗꯥ ꯌꯣꯟꯕ
+chapter_barcode_salt	ꯕꯥꯔꯀꯣꯗ ꯑꯃꯁꯨꯡ ꯁꯣꯜꯠ
+chapter_batch_expiry	ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ
+chapter_khata	ꯈꯥꯇꯥ
+chapter_extra_till	ꯍꯦꯟꯅꯥ ꯂꯩꯕ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ
+chapter_offline	ꯑꯣꯐꯂꯥꯏꯟ
+chapter_start	ꯍꯧꯕꯤꯌꯨ
+bill_selling	ꯌꯣꯟꯂꯤ
+bill_settle	ꯁꯦꯟ ꯄꯤꯕ
+bill_paid	ꯁꯦꯟ ꯄꯤꯔꯦ
+bill_next_line	ꯃꯊꯪꯒꯤ ꯂꯥꯏꯟ ꯍꯥꯄꯆꯤꯟꯅꯕꯥ ꯅꯝꯕꯤꯌꯨ
+bill_settle_hint	ꯁꯦꯟ ꯄꯤꯅꯕꯥ ꯅꯝꯕꯤꯌꯨ — ꯁꯦꯟ ꯅꯠꯔꯒꯥ UPI
+bill_upi_paid	UPI ₹ 162 · ꯁꯦꯟ ꯄꯤꯔꯦ
+bill_paid_line	ꯁꯦꯟ ꯄꯤꯔꯦ · ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯅꯧꯕ ꯑꯣꯏꯔꯦ
+lan_eyebrow	6 · ꯍꯦꯟꯅꯥ ꯂꯩꯕ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ
+lan_title	ꯗꯨꯀꯥꯅꯒꯤ Wi-Fi ꯗꯥ ꯑꯇꯣꯞꯄ ꯕꯤꯂꯤꯡ ꯀꯥꯎꯟꯇꯔ ꯑꯃꯥ꯫
+cta_installers_note	ꯏꯟꯁ꯭ꯇꯣꯂꯔ ꯈꯨꯗꯤꯡꯃꯛ ꯁꯦꯡꯕ ꯃꯦꯁꯤꯟ ꯑꯃꯗꯥ ꯏꯟꯁ꯭ꯇꯣꯜ ꯆꯥꯡꯌꯦꯡꯗꯥ ꯃꯥꯏꯄꯥꯛꯂꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯃꯐꯝ ꯑꯁꯤꯗꯥ ꯂꯥꯛꯀꯅꯤ꯫ ꯃꯗꯨ ꯐꯥꯑꯣꯕ WhatsApp ꯇꯥ ꯗꯦꯃꯣ ꯍꯥꯌꯖꯕꯤꯌꯨ꯫
+cta_whatsapp_soon	WhatsApp ꯗꯦꯃꯣ ꯂꯥꯏꯟ ꯊꯨꯅꯥ ꯍꯥꯡꯒꯅꯤ꯫ ꯅꯍꯥꯛꯀꯤ ꯃꯦꯁꯦꯖ ꯑꯁꯤꯅꯤ: “{message}”꯫
+acct_page_title	ꯑꯦꯀꯥꯎꯟꯠ — Tabiyat
+acct_lede	ꯁꯥꯏꯠ ꯑꯃꯁꯨꯡ ꯑꯦꯄꯁꯤꯡꯒꯤꯗꯃꯛ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯈꯛ — ꯑꯅꯧꯕ ꯑꯣꯏꯔꯕꯁꯨ ꯍꯜꯂꯛꯂꯕꯁꯨ, ꯐꯣꯔꯝ ꯑꯗꯨꯃꯛ꯫
+acct_email	ꯏꯃꯦꯏꯜ
+acct_name_optional	ꯃꯤꯡ (ꯄꯥꯝꯂꯕꯗꯤ)
+acct_password	ꯄꯥꯁꯋꯥꯔꯗ
+acct_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
+acct_forgot	ꯄꯥꯁꯋꯥꯔꯗ ꯀꯥꯎꯔꯕꯔꯥ?
+acct_reset_hint	ꯑꯩꯈꯣꯌꯅꯥ ꯔꯤꯁꯦꯠ ꯂꯤꯉ꯭ꯛ ꯏꯃꯦꯏꯜ ꯇꯧꯒꯅꯤ꯫ ꯁꯥꯏꯟ ꯑꯞ ꯇꯧꯈꯤꯕ ꯑꯦꯗ꯭ꯔꯦꯁ ꯑꯗꯨꯃꯛ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ꯫
+acct_send_reset	ꯔꯤꯁꯦꯠ ꯂꯤꯉ꯭ꯛ ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_cancel	ꯇꯣꯛꯎ
+acct_or_continue	ꯅꯠꯔꯒꯥ ꯃꯁꯤꯅꯥ ꯃꯈꯥ ꯆꯠꯂꯨ
+acct_phone	ꯐꯣꯟ
+acct_mobile	ꯃꯣꯕꯥꯏꯜ ꯅꯝꯕꯔ
+acct_send_sms	SMS ꯀꯣꯗ ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_sms_code	SMS ꯀꯣꯗ
+acct_confirm_code	ꯀꯣꯗ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕꯤꯌꯨ
+acct_signed_in	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_signed_in_as	ꯃꯁꯤꯒꯤ ꯃꯑꯣꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_status	ꯐꯤꯚꯝ
+acct_sign_in_methods	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡꯁꯤꯡ
+acct_cloud_username	ꯀ꯭ꯂꯥꯎꯗ ꯌꯨꯖꯔꯅꯦꯝ
+acct_plan	ꯄ꯭ꯂꯥꯟ
+acct_resend_verify	ꯆꯦꯛꯁꯤꯟꯅꯕꯒꯤ ꯏꯃꯦꯏꯜ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_sign_out	ꯁꯥꯏꯟ ꯑꯥꯎꯠ
+acct_cloud_sandbox	Kumkaj Cloud (ꯁꯦꯟꯗꯕꯣꯛꯁ)
+acct_current_password	ꯍꯧꯖꯤꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗ
+acct_email_for_password	ꯄꯥꯁꯋꯥꯔꯗ ꯁꯥꯏꯟ-ꯏꯟꯒꯤꯗꯃꯛ ꯏꯃꯦꯏꯜ
+acct_new_password	ꯑꯅꯧꯕ ꯄꯥꯁꯋꯥꯔꯗ
+acct_confirm_new_password	ꯑꯅꯧꯕ ꯄꯥꯁꯋꯥꯔꯗ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕꯤꯌꯨ
+acct_add_way	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯅꯕꯒꯤ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡ ꯑꯃꯥ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ
+acct_link_hint	ꯃꯑꯣꯡꯁꯤꯡ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯈꯛꯇꯥ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ, ꯃꯗꯨꯅꯥ ꯑꯃꯥ ꯃꯥꯏꯊꯤꯔꯕꯁꯨ ꯆꯪꯕꯒꯤ ꯌꯥꯕ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯐꯪꯕ ꯌꯥꯏ꯫
+acct_link_google	Google ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_link_microsoft	Microsoft ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_link_github	GitHub ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_link_phone	ꯐꯣꯟ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+acct_send_sms_link	ꯁꯝꯅꯍꯟꯅꯕꯥ SMS ꯊꯥꯔꯛꯄꯤꯌꯨ
+acct_confirm_link_phone	ꯁꯣꯏꯗꯅꯥ ꯇꯧꯗꯨꯅꯥ ꯐꯣꯟ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ
+shop_page_title	ꯗꯨꯀꯥꯟ — Tabiyat
+shop_lede	ꯆꯍꯤ ꯈꯨꯗꯤꯡꯒꯤ ꯀ꯭ꯂꯥꯎꯗ ꯄ꯭ꯂꯥꯟ — ꯇꯦꯛꯁ ꯆꯦꯛꯑꯥꯎꯠꯇꯥ ꯍꯥꯄꯆꯤꯜꯂꯤ꯫ ꯅꯍꯥꯛꯀꯤ ꯃꯁꯥꯒꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯃꯄꯨꯡ ꯐꯥꯕ Tabiyat ꯑꯦꯞ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯂꯩꯒꯅꯤ, ꯑꯦꯗ ꯂꯩꯇꯅꯥ꯫
+shop_cart	ꯀꯥꯔꯠ
+shop_cart_empty_hint	ꯅꯍꯥꯛꯀꯤ ꯀꯥꯔꯠ ꯑꯍꯥꯡꯕꯅꯤ꯫ Steady, Swift ꯅꯠꯔꯒꯥ Priority ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ꯫
+shop_checkout	ꯆꯦꯛꯑꯥꯎꯠ
+shop_clear	ꯁꯦꯡꯗꯣꯛꯄꯤꯌꯨ
+shop_checkout_hint	ꯆꯦꯛꯑꯥꯎꯠꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯑꯦꯀꯥꯎꯟꯇꯇꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯍꯜꯂꯤ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯁꯦꯟ ꯄꯤꯕ ꯍꯧꯗꯣꯀꯏ (ꯁꯦꯟꯗꯕꯣꯛꯁ ꯃꯣꯛ, ꯅꯠꯔꯒꯥ ꯀꯤ ꯁꯦꯝꯂꯕꯗꯤ Paddle)꯫
+acct_billing_hint	ꯆꯍꯤ ꯈꯨꯗꯤꯡꯒꯤ ꯄ꯭ꯂꯥꯟ — ꯆꯦꯛꯑꯥꯎꯠꯇꯥ ꯒꯦꯇꯋꯦꯅꯥ ꯇꯦꯛꯁ ꯍꯥꯄꯆꯤꯜꯂꯤ꯫ ꯂꯣꯀꯦꯜ ꯁꯤꯖꯤꯟꯅꯕ ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ ꯂꯩꯒꯅꯤ꯫ ꯀꯁ꯭ꯇꯝ ꯑꯁꯤ ꯀꯣꯇꯦꯁꯟ ꯑꯃꯅꯤ (Steady ꯗꯒꯤ ꯍꯟꯊꯕ ꯅꯠꯔꯒꯥ Priority ꯗꯒꯤ ꯍꯦꯟꯕ ꯑꯣꯏꯕ ꯌꯥꯏ)꯫
+shop_cloud_plans	ꯀ꯭ꯂꯥꯎꯗ ꯄ꯭ꯂꯥꯟꯁꯤꯡ
+acct_federated	ꯐꯦꯗꯔꯦꯇꯦꯗ ꯁꯥꯏꯟ-ꯏꯟ
+acct_err_invalid_email	ꯆꯨꯝꯕ ꯏꯃꯦꯏꯜ ꯑꯦꯗ꯭ꯔꯦꯁ ꯏꯕꯤꯌꯨ꯫
+acct_err_weak_password	ꯌꯥꯃꯗ꯭ꯔꯕꯗꯥ ꯃꯌꯦꯛ 6 ꯂꯩꯕ ꯄꯥꯁꯋꯥꯔꯗ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ꯫
+acct_err_wrong_password	ꯑꯔꯥꯟꯕ ꯄꯥꯁꯋꯥꯔꯗ꯫
+acct_err_invalid_credential	ꯏꯃꯦꯏꯜ ꯅꯠꯔꯒꯥ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯔꯥꯟꯕꯅꯤ꯫
+acct_err_popup_closed	ꯁꯥꯏꯟ-ꯏꯟ ꯋꯤꯟꯗꯣ ꯊꯤꯡꯖꯤꯜꯂꯦ꯫
+acct_err_popup_cancelled	ꯁꯥꯏꯟ-ꯏꯟ ꯇꯣꯛꯈ꯭ꯔꯦ꯫
+acct_err_unauthorized_domain	ꯗꯣꯃꯦꯟ ꯑꯁꯤ Firebase Auth ꯒꯤꯗꯃꯛ ꯌꯥꯕ ꯄꯤꯗ꯭ꯔꯤ꯫
+acct_err_method_disabled	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯍꯥꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ꯫
+acct_err_too_many	ꯍꯣꯠꯅꯕ ꯌꯥꯝꯅꯥ ꯇꯧꯔꯦ꯫ ꯃꯇꯨꯡꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫
+acct_err_phone_format	ꯂꯩꯕꯥꯛꯀꯤ ꯀꯣꯗ ꯌꯥꯎꯕ ꯃꯄꯨꯡ ꯐꯥꯕ ꯐꯣꯟ ꯅꯝꯕꯔ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ (ꯈꯨꯗꯝ +91…)꯫
+acct_err_sms_code	SMS ꯀꯣꯗ ꯑꯗꯨ ꯑꯔꯥꯟꯕ ꯅꯠꯔꯒꯥ ꯃꯇꯝ ꯂꯣꯏꯔꯦ꯫
+acct_err_no_account	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫ ꯑꯅꯧꯕ ꯁꯦꯝꯅꯕꯥ ꯃꯈꯥ ꯆꯠꯂꯨ, ꯅꯠꯔꯒꯥ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ꯫
+acct_err_recent_login	ꯉꯥꯛ-ꯁꯦꯟꯅꯕꯒꯤꯗꯃꯛ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯑꯍꯣꯡꯕ ꯑꯁꯤ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯇꯧꯕꯤꯌꯨ꯫
+acct_err_credential_in_use	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡ ꯑꯗꯨ ꯑꯇꯣꯞꯄ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯅꯥ ꯁꯤꯖꯤꯟꯅꯔꯦ꯫
+acct_err_email_in_use	ꯏꯃꯦꯏꯜ ꯑꯗꯨ ꯑꯇꯣꯞꯄ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯅꯥ ꯁꯤꯖꯤꯟꯅꯔꯦ꯫
+acct_err_already_linked	ꯃꯑꯣꯡ ꯑꯗꯨ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯁꯤꯗꯥ ꯁꯝꯅꯔꯦ꯫
+acct_err_exists_other_method	ꯏꯃꯦꯏꯜ ꯑꯁꯤꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯃꯥ ꯑꯇꯣꯞꯄ ꯁꯥꯏꯟ-ꯏꯟ ꯃꯑꯣꯡꯅꯥ ꯂꯩꯔꯦ꯫ ꯑꯍꯥꯅꯕꯗꯥ ꯃꯑꯣꯡ ꯑꯗꯨꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯂꯃꯥꯏꯗꯒꯤ ꯃꯁꯤ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ꯫
+acct_err_generic	ꯀꯔꯤꯒꯨꯝꯕ ꯑꯃꯥ ꯑꯔꯥꯅꯕ ꯊꯣꯛꯂꯦ꯫
+acct_method_password	ꯏꯃꯦꯏꯜ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗ
+acct_pw_hint_change	ꯅꯍꯥꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄꯤꯌꯨ꯫ ꯍꯧꯖꯤꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗꯅꯥ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯒꯗꯕꯅꯤ꯫
+acct_pw_hint_add	ꯏꯃꯦꯏꯂꯅꯥ ꯁꯨ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕ ꯌꯥꯅꯕꯥ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯃꯥ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ (ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯑꯃꯥ ꯐꯪꯗꯔꯕꯗꯥ ꯀꯥꯟꯅꯒꯅꯤ)꯫
+acct_pw_change	ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄꯤꯌꯨ
+acct_pw_add	ꯄꯥꯁꯋꯥꯔꯗ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ
+acct_billing_off	ꯀ꯭ꯂꯥꯎꯗ API ꯗꯥ ꯕꯤꯂꯤꯡ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯍꯥꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ꯫
+acct_billing_no_provider	ꯀ꯭ꯂꯥꯎꯗ API ꯗꯥ ꯑꯁꯦꯡꯕ ꯕꯤꯂꯤꯡ ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯑꯃꯠꯇꯥ ꯍꯥꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ (ꯃꯣꯛ ꯑꯁꯤ ꯂꯣꯀꯦꯜ ꯈꯛꯇꯅꯤ)꯫
+price_quote	ꯀꯣꯇꯦꯁꯟ
+price_per_year	₹{amount}/ꯆꯍꯤ, ꯇꯦꯛꯁ ꯌꯥꯎꯗꯅꯥ
+acct_pay_received	ꯁꯦꯟ ꯐꯪꯂꯦ — ꯅꯍꯥꯛꯀꯤ ꯄ꯭ꯂꯥꯟ ꯑꯅꯧꯕ ꯑꯣꯏꯍꯜꯂꯤ…
+acct_pay_declined	ꯁꯦꯟ ꯄꯤꯕ ꯌꯥꯗꯔꯦ ꯅꯠꯔꯒꯥ ꯃꯥꯏꯊꯤꯔꯦ
+acct_pay_failed_detail	{detail}꯫ ꯅꯍꯥꯛꯀꯤ ꯄ꯭ꯂꯥꯟ ꯍꯣꯡꯗꯦ꯫
+acct_checkout_closed	ꯆꯦꯛꯑꯥꯎꯠ ꯊꯤꯡꯖꯤꯜꯂꯦ — ꯁꯦꯟ ꯄꯤꯕ ꯑꯃꯠꯇꯥ ꯂꯣꯏꯁꯤꯅꯈꯤꯗꯦ꯫ ꯅꯍꯥꯛꯀꯤ ꯄ꯭ꯂꯥꯟ ꯑꯗꯨꯃꯛ ꯂꯩ꯫
+acct_checkout_failed	ꯆꯦꯛꯑꯥꯎꯠ ꯃꯥꯏꯊꯤꯔꯦ
+acct_pay_with	{provider} ꯅꯥ ꯁꯦꯟ ꯄꯤꯕꯤꯌꯨ
+acct_plan_until	{plan} · {date} ꯐꯥꯑꯣꯕ
+acct_unavailable	ꯐꯪꯗꯦ
+acct_continue_hint	ꯏꯃꯦꯏꯜ, ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯅꯠꯔꯒꯥ ꯐꯣꯅꯅꯥ ꯃꯈꯥ ꯆꯠꯂꯨ꯫
+acct_signed_in_fallback	(ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ)
+acct_email_verified	ꯏꯃꯦꯏꯜ ꯆꯦꯛꯁꯤꯟꯔꯦ
+acct_email_unverified	ꯏꯃꯦꯏꯜ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯆꯦꯛꯁꯤꯟꯗ꯭ꯔꯤ — ꯅꯍꯥꯛꯀꯤ ꯏꯅꯕꯣꯛꯁ ꯌꯦꯡꯕꯤꯌꯨ
+acct_signed_in_phone	ꯐꯣꯅꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_none_listed	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯀꯔꯤꯁꯨ ꯂꯤꯁ꯭ꯇꯇꯥ ꯂꯩꯇꯦ
+acct_signed_in_status	ꯅꯍꯥꯛ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ꯫
+acct_created	ꯑꯦꯀꯥꯎꯟꯠ ꯁꯦꯃꯈ꯭ꯔꯦ꯫ ꯌꯥꯕ ꯃꯇꯃꯗꯥ ꯆꯦꯛꯁꯤꯟꯅꯕꯥ ꯅꯍꯥꯛꯀꯤ ꯏꯃꯦꯏꯜ ꯌꯦꯡꯕꯤꯌꯨ꯫
+acct_reset_sent	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯂꯩꯔꯕꯗꯤ, ꯔꯤꯁꯦꯠ ꯂꯤꯉ꯭ꯛ ꯂꯥꯛꯂꯤ꯫ ꯅꯍꯥꯛꯀꯤ ꯏꯅꯕꯣꯛꯁ ꯌꯦꯡꯕꯤꯌꯨ꯫
+acct_another_method	ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡ
+acct_exists_via	{email} ꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ {method} ꯅꯥ ꯂꯩꯔꯦ꯫ ꯑꯍꯥꯅꯕꯗꯥ ꯃꯑꯣꯡ ꯑꯗꯨꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯂꯃꯥꯏꯗꯒꯤ ꯄ꯭ꯔꯣꯚꯥꯏꯗꯔ ꯑꯁꯤ ꯁꯝꯅꯍꯅꯕꯤꯌꯨ꯫
+acct_enter_current_pw	ꯅꯍꯥꯛꯀꯤ ꯍꯧꯖꯤꯛꯀꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯏꯕꯤꯌꯨ꯫
+acct_relogin_retry	ꯁꯥꯏꯟ ꯑꯥꯎꯠ ꯇꯧꯗꯨꯅꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫
+acct_pw_mismatch	ꯑꯅꯧꯕ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯃꯁꯨꯡ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕ ꯃꯥꯟꯅꯗꯦ꯫
+acct_pw_updated	ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧꯕ ꯑꯣꯏꯔꯦ꯫
+acct_enter_email_pw	ꯄꯥꯁꯋꯥꯔꯗ ꯁꯥꯏꯟ-ꯏꯟꯒꯤꯗꯃꯛ ꯏꯃꯦꯏꯜ ꯑꯃꯥ ꯏꯕꯤꯌꯨ꯫
+acct_pw_added	ꯄꯥꯁꯋꯥꯔꯗ ꯍꯥꯄꯆꯤꯜꯂꯦ꯫ ꯍꯧꯖꯤꯛ ꯏꯃꯦꯏꯂꯅꯥ ꯁꯨ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕ ꯌꯥꯏ꯫
+acct_method_linked	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡ ꯁꯝꯅꯔꯦ꯫
+acct_phone_linked	ꯐꯣꯟ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯁꯤꯗꯥ ꯁꯝꯅꯔꯦ꯫
+acct_verify_sent	ꯆꯦꯛꯁꯤꯟꯅꯕꯒꯤ ꯏꯃꯦꯏꯜ ꯊꯥꯔꯦ — ꯅꯍꯥꯛꯀꯤ ꯏꯅꯕꯣꯛꯁ ꯌꯦꯡꯕꯤꯌꯨ꯫
+shop_pricing_soon	ꯃꯃꯜ ꯊꯨꯅꯥ ꯂꯥꯛꯀꯅꯤ
+shop_request_quote	ꯀꯣꯇꯦꯁꯟ ꯍꯥꯌꯖꯕꯤꯌꯨ
+shop_add_to_cart	ꯀꯥꯔꯇꯇꯥ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ
+shop_notify_later	ꯃꯇꯨꯡꯗꯥ ꯑꯩꯉꯣꯟꯗꯥ ꯈꯉꯍꯅꯕꯤꯌꯨ
+shop_included	ꯌꯥꯎꯔꯦ
+shop_in_cart	{plan} ꯅꯍꯥꯛꯀꯤ ꯀꯥꯔꯇꯇꯥ ꯂꯩ꯫
+shop_remove	ꯂꯧꯊꯣꯛꯄꯤꯌꯨ
+shop_cart_is_empty	ꯀꯥꯔꯠ ꯑꯍꯥꯡꯕꯅꯤ꯫
+shop_prices_unpublished	ꯄ꯭ꯔꯣꯗꯛꯠ ꯑꯁꯤꯒꯤ ꯃꯁꯥꯅꯥ ꯂꯩꯕ ꯌꯥꯕ ꯃꯃꯜ ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕ ꯐꯣꯡꯗꯣꯛꯂꯃꯗ꯭ꯔꯤ꯫ ꯀꯁ꯭ꯇꯝ ꯀꯣꯇꯦꯁꯟ ꯍꯥꯌꯖꯕꯤꯌꯨ ꯅꯠꯔꯒꯥ ꯃꯇꯨꯡꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯌꯦꯡꯕꯤꯌꯨ꯫
+shop_cart_cleared	ꯀꯥꯔꯠ ꯁꯦꯡꯗꯣꯛꯂꯦ꯫
+plan_free_title	ꯃꯇꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯃꯃꯜ ꯂꯩꯇꯅꯥ
+plan_free_blurb	ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇꯥ ꯃꯄꯨꯡ ꯐꯥꯕ ꯂꯣꯀꯦꯜ ꯄ꯭ꯔꯣꯗꯛꯠ꯫ ꯀ꯭ꯂꯥꯎꯗꯀꯤ ꯁꯦꯟ ꯂꯧꯗꯦ꯫
+plan_steady_blurb	ꯂꯥꯏꯚ ꯀ꯭ꯂꯥꯎꯗ · 10 GB · ꯍꯟꯊꯕ ꯕꯦꯟꯗꯋꯤꯗꯊ
+plan_swift_blurb	ꯂꯥꯏꯚ ꯀ꯭ꯂꯥꯎꯗ · 25 GB · ꯃꯌꯥꯏꯒꯤ ꯕꯦꯟꯗꯋꯤꯗꯊ
+plan_priority_blurb	ꯂꯥꯏꯚ ꯀ꯭ꯂꯥꯎꯗ · 50 GB · ꯈ꯭ꯕꯥꯏꯗꯒꯤ ꯋꯥꯡꯕ ꯁ꯭ꯇꯦꯟꯗꯔꯗ ꯕꯦꯟꯗꯋꯤꯗꯊ
+plan_custom_title	ꯀꯁ꯭ꯇꯝ
+plan_custom_blurb	ꯌꯥꯅꯈꯤꯕ ꯀꯣꯇꯥ ꯑꯃꯁꯨꯡ ꯕꯦꯟꯗꯋꯤꯗꯊ꯫ ꯀꯣꯇꯦꯁꯟ Steady ꯗꯒꯤ ꯍꯟꯊꯕ ꯅꯠꯔꯒꯥ Priority ꯗꯒꯤ ꯍꯦꯟꯕ ꯑꯣꯏꯕ ꯌꯥꯏ꯫

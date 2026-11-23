@@ -1,254 +1,254 @@
 # Bodo — बर' (brx). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	बिदिन्थि
+length	गोलाव
+download_free	बेसेन गैयै डाउनल'ड खालाम
+whatsapp_for_a_demo	डेमोनि थाखाय WhatsApp खालाम
+free_on_android_windows_and	Android, Windows आरो Linux आव बेसेन गैयै।
+courier_operating_system	कुरियार अपारेटिं सिस्टेम
+parcel_journey	पार्सेलनि लामा
+walk_in	वाक-इन
+weigh	ओजन
+price	बेसेन
+label	लेबेल
+hand_over	होनाय
+track	ट्रेक
+offline	अफलाइन
+start	जागाय
+moklanjo_courier_operating_system	MOKLANJO · कुरियार अपारेटिं सिस्टेम
+book_move_and_settle_every	गासै पार्सेल बुक खालाम, दैथाय हो आरो हिसाब खालाम — नोंनि गावनि डिभाइसआव मोनसे कुरियार OS।
+parties_books_cod_labels_awb	पार्टी, बही, COD, लेबेल, AWB पुल, ट्रेकिं, राइडार आरो बिलिं — काउन्टारनिफ्राय हिसाब सिम आबुं चक्र, इन्टारनेट दंब्लाबो गैयाब्लाबो। नोंनि डिभाइसआव बेसेन गैयै।
+the_walk_in_loop	वाक-इननि चक्र
+actual_and_volumetric_side_by	थार आरो भलियुमेट्रिक, लोगोसे।
+charge	चार्ज
+your_rate_card_cash_or	नोंनि रेट कार्ड, नगद एबा खाता।
+next_booking	उननि बुकिं
+one_tap_clears_the_counter	मोनसे सुदुंनायाव काउन्टारआ उननि वाक-इननि थाखाय उदां जायो।
+scroll_the_parcel_journey_rail	स्क्रल खालाम — सायावनि पार्सेल लामा फारियाव नों सल'नि बबेयाव दं बेखौ दिन्थियो।
+n_2_weigh_it_right	2 · थार ओजन खालाम
+actual_or_volumetric_whichever_is	थार एबा भलियुमेट्रिक — जेबा बांसिन, नोंनि राहायाव राउन्ड खालामनाय।
+try_a_box	मोनसे बाकस नाजा
+domestic	हादरनि सिङाव
+international	इन्टारनेसनाल
+breadth	गुवार
+height	गोजौ
+weight_on_the_scale	तुलाआव ओजन
+chargeable_weight	चार्ज जानाय ओजन
+the_box_s_size_sets	बाकसनि साइजआ चार्ज थि खालामो।
+higher_of_the_two_rounded	मोननैनि गेजेराव बांसिनआ, उननि 0.5 kg सिम बांसिन खालामनाय।
+in_the_app_the_divisor	एप्पआव राननाय नम्बर, राउन्ड खालामनाय खांखो आरो नोंनि युनिट (cm एबा इन्स, kg एबा lb) दोकानआ गावनो थि खालामो। इन्टारनेसनाल चिपआ सेटिं सोलायैयै मोनसे बुकिंनि थाखाय ÷6000 खालामो।
+n_3_price_it	3 · बेसेन थि खालाम
+your_rate_cards_your_party	नोंनि रेट कार्डफोर, नोंनि पार्टीनि रेटफोर — आरो गासै डकेटआव नोंनि मुनाफा।
+rate_card	रेट कार्ड
+zone_service	जोन · सार्भिस
+first_0_5_kg	गिबि 0.5 kg
+each_0_5_kg	गासै 0.5 kg
+local_surface	लोकाल · सारफेस
+within_state_express	राज्यनि सिङाव · एक्सप्रेस
+metro_air	मेट्र' · एयार
+zone_service_weight_slab	जोन × सार्भिस × ओजन स्लेब
+first_slab_and_each_extra	गिबि स्लेब आरो गासै बांसिन स्लेब, जोन आरो सार्भिस बादियै।
+a_consignor_s_own_card	दैथाय हरग्रानि गावनि कार्ड
+regular_senders_get_their_rates	सानफ्रोम दैथाय हरग्राफोरा बिसोरनि रेट मोनो; गुबुन गासैनि थाखाय डिफल्ट कार्ड।
+margin_at_the_desk	डेस्कआवनो मुनाफा
+your_sell_price_against_the	केरियारनि बेसेननि सिगाङाव नोंनि फाननाय बेसेन, गासै डकेटआव।
+n_4_label_it	4 · लेबेल लाग
+awb_from_your_own_number	नोंनि गावनि नम्बर पुलनिफ्राय AWB। लेबेल, स्केन, नागिर।
+number_pools_per_carrier	गासै केरियारनि नम्बर पुल
+enter_each_carrier_s_start	गासै केरियारनि जागायनाय–जोबनाय सिरिज मोनसेलि लिर; गासै बुकिंआ उननि नम्बर लायो।
+code_128_labels	Code 128 लेबेल
+the_awb_goes_on_the	AWB आ बाकसआव बारकड आरो साधारण नम्बर मोननैयावबो लागो।
+scan_to_find	नागिरनो स्केन खालाम
+scan_a_label_to_open	मोनसे लेबेल स्केन खालामनानै बिनि डकेट खेव आरो खामानि माव।
+n_5_hand_over	5 · होनाय
+hand_it_to_a_carrier	केरियारनो हो, एबा नोंनि गावनि राइडार दैथाय हो। मोनफानो सिस्टेम।
+into_a_carrier_bag	केरियारनि बेगआव
+the_manifest_holds_exactly_the	मेनिफेस्टआव नों सायखनाय पार्सेलफोरल' थायो — गासैबो, नङाब्ला मोनसेबो नङा। गुबुन केरियारजों बुक जानाय पार्सेलआ बे बेगआव हाबनो हाया।
+onto_your_own_rider_s	नोंनि गावनि राइडारनि लामायाव
+pick_the_parcels_print_the	पार्सेल सायख, रान सिट प्रिन्ट खालाम, आरो राइडारआ मोनफानो एप्पखौ राइडार म'डआव बाहायो — डिलिभारिनि प्रमान लोगोसे।
+n_6_track_and_prove	6 · ट्रेक आरो प्रमान
+every_move_recorded_and_only	गासै सोलायनाय लिरथानो दोनो — आरो थार सोलायनायल'।
+booked	बुक जाबाय
+with_carrier	केरियारनि खाथियाव
+out_for_delivery	डिलिभारिनि थाखाय ओंखारबाय
+delivered	डिलिभारि जाबाय
+booked_with_carrier_out_for	बुक जाबाय → केरियारनि खाथियाव → डिलिभारिनि थाखाय ओंखारबाय → डिलिभारि जाबाय
+failed	फेल जाबाय
+reason_out_again_or_return	→ जाहोन → फिन ओंखार, एबा दैथाय हरग्रानो थांफिन्नाय।
+impossible_moves_refused	जायनो हायै सोलायनाय नेवसियो
+delivered_returned_and_cancelled	डिलिभारि जाबाय, फिननाय आरो केन्सेल — बेफोर जोबथा।
+proof_of_delivery	डिलिभारिनि प्रमान
+a_photo_and_the_receiver	डकेटआव मोनसे फट' आरो लाग्रानि सोही।
+failed_deliveries	फेल जानाय डिलिभारिफोर
+reasons_attempts_out_again_or	जाहोन, नाजानाय, फिन ओंखार, एबा दैथाय हरग्रानो फिननाय।
+n_7_money_comes_home	7 · रां न'आव फैयो
+cod_you_can_see_expected	नुनो हानाय COD: आसा खालामनाय, जमा होनाय, गासै दैथाय हरग्रानो होनांगौ।
+rider_cash_end_of_run	लामा जोबनायआव राइडारनि नगद
+rider	राइडार
+expected	आसा खालामनाय
+handed_in	जमा होनाय
+a_14_drops	A · 14 डिलिभारि
+b_9_drops	B · 9 डिलिभारि
+short_200_on_rider_b	राइडार B आव ₹ 200 खम — मुं लोगोसे, गासैआव गोमानाय नङा।
+cod_register	COD रेजिस्टार
+collected_against_paid_out_per	मोननाय आरो होनाय, गासै दैथाय हरग्रा बादियै, रेमिटेन्स बेच लोगोसे।
+rider_settlement	राइडारनि हिसाब
+expected_against_handed_in_and	आसा खालामनाय आरो जमा होनाय, आरो कमिसन स्लिप।
+books_that_close	जोबनाय बहीफोर
+day_book_month_bill_per	साननि बही, गासै खातानि दाननि बिल, आरो नोंनि एकाउन्टेन्टनि थाखाय GST सारांश CSV।
+n_8_internet_down	8 · इन्टारनेट गैया?
+keep_booking	बुकिं सालाय लां।
+booking_labels_scanning_cod_and	बुकिं, लेबेल, स्केनिं, COD आरो बहीफोर — गासैबो नोंनि डिभाइसआव सलायो। इन्टारनेट थांब्लाबो काउन्टारआव जेबो बिनि थाखाय नेथ'आ।
+office_router_no_internet	अफिसनि राउटार: इन्टारनेट गैया
+desk_still_booking	डेस्क: बुकिं सालाय लांगासिनो
+second_counter_and_rider_phone	नैथि काउन्टार आरो राइडारनि फोन: अफिसनि Wi-Fi आव फोनांजाबनाय
+free_forever_on_your_devices	नोंनि डिभाइसआव गासै समाव बेसेन गैयै
+nothing_per_rider_user_or	राइडार, युजार एबा पार्सेल फ्रोमबो जेबो गैया। गोसो जायोब्ला Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/बोसोर, ट्याक्स गैयै — /shop।
+n_9_start	9 · जागाय
+one_courier_os_your_parcels	मोनसे कुरियार OS। नोंनि पार्सेलफोर। नोंनि बहीफोर।
+moklanjo_is_a_complete_courier	Moklanjo आ Kumkaj नि सिङाव मोनसे आबुं कुरियार अपारेटिं सिस्टेम — Android, Windows आरो Linux। राइडारफोरा मोनफानो एप्पखौ राइडार म'डआव बाहायो।
+trademark	ट्रेडमार्क
+memon_for_find_it_pronounced	मेमन रावआव “नागिर” · बुंनाय गो-टी-गिन
+company	कम्पानि
+brand	ब्रेन्ड
+concrete_business_operating_system	थार खामानिनि बिजनेस अपारेटिं सिस्टेम एप्पफोर
+product	प्रडाक्ट
+courier_operating_system_under	Kumkaj नि सिङाव कुरियार अपारेटिं सिस्टेम
+privacy	प्राइभेसि
+terms	सर्तफोर
+cancellation	केन्सेल नियम
+cloud_shop	क्लाउड दोकान
+account	एकाउन्ट
+weigh_it_right	थार ओजन
+price_it	बेसेन थि
+label_it	लेबेल लागनाय
+track_and_prove	ट्रेक आरो प्रमान
+money_comes_home	रां न'आव फैयो
+internet_down	इन्टारनेट गैया
+bead_hand	होनाय
+bead_offline_short	अफलाइन
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	तुलाआव: {kg} kg
+weight_scale_wins	तुलानि ओजनआ चार्ज थि खालामो।
+cta_installers_note	गासै इन्स्टलारआ साफ मेसिनआव इन्स्टल आनजाद पास जानाय उनाव बेयाव फैगोन। बे सिम WhatsApp आव डेमो बिनाय हो।
+cta_whatsapp_soon	WhatsApp डेमो लाइन गोख्रोंै खेवगोन। नोंनि खिन्थाया बेबादि जागोन: “{message}”।
+acct_page_title	एकाउन्ट — Moklanjo
+acct_lede	साइट आरो एप्पनि थाखाय मोनसेल' एकाउन्ट — गोदान एबा फिनफैनाय, मोनफानो फर्म।
+acct_email	ईमेल
+acct_name_optional	मुं (गोसो जायोब्ला)
+acct_password	पासवार्ड
+acct_continue	सालाय लां
+acct_forgot	पासवार्ड बावगारबाय?
+acct_reset_hint	जों रिसेट लिंक ईमेल खालामगोन। साइन आप खालामनाय ठिकानाखौनो बाहाय।
+acct_send_reset	रिसेट लिंक दैथाय हो
+acct_cancel	केन्सेल
+acct_or_continue	एबा बेजों सालाय लां
+acct_phone	फोन
+acct_mobile	मबाइल नम्बर
+acct_send_sms	SMS कड दैथाय हो
+acct_sms_code	SMS कड
+acct_confirm_code	कड थार खालाम
+acct_signed_in	साइन इन जाबाय
+acct_signed_in_as	बे बादियै साइन इन
+acct_status	अवस्था
+acct_sign_in_methods	साइन इननि राहाफोर
+acct_cloud_username	क्लाउड युजारनेम
+acct_plan	प्लान
+acct_resend_verify	थार खालामनाय ईमेल फिन दैथाय हो
+acct_sign_out	साइन आउट
+acct_cloud_sandbox	Kumkaj Cloud (स्यान्डबक्स)
+acct_current_password	दानि पासवार्ड
+acct_email_for_password	पासवार्ड साइन इननि थाखाय ईमेल
+acct_new_password	गोदान पासवार्ड
+acct_confirm_new_password	गोदान पासवार्ड थार खालाम
+acct_add_way	साइन इन खालामनो गुबुन राहा मोनसे दाजाब
+acct_link_hint	राहाफोरखौ मोनसेल' एकाउन्टजों फोनांजाब, जाय मोनसे फेल जायोब्लाबो हाबनाय फिन मोननो हायो।
+acct_link_google	Google फोनांजाब
+acct_link_microsoft	Microsoft फोनांजाब
+acct_link_github	GitHub फोनांजाब
+acct_link_phone	फोन फोनांजाब
+acct_send_sms_link	फोनांजाबनो SMS दैथाय हो
+acct_confirm_link_phone	थार खालामनानै फोन फोनांजाब
+shop_page_title	दोकान — Moklanjo
+shop_lede	बोसोर फ्रोमनि क्लाउड प्लान — ट्याक्स चेकआउटआव दाजाबजायो। नोंनि गावनि डिभाइसआव आबुं Moklanjo एप्पआ गासै समाव बेसेन गैयै थायो, बिग्यापन गैयै।
+shop_cart	कार्ट
+shop_cart_empty_hint	नोंनि कार्टआ लांदां। Steady, Swift एबा Priority दाजाब।
+shop_checkout	चेकआउट
+shop_clear	बोखार
+shop_checkout_hint	चेकआउटआ नोंखौ एकाउन्टआव साइन इन खालामहो, अब्ला रां होनाय जागायो (स्यान्डबक्स मक, एबा की सेट दंब्ला Paddle)।
+acct_billing_hint	बोसोर फ्रोमनि प्लान — चेकआउटआव गेटवेआ ट्याक्स दाजाबो। लोकाल बाहायनाया गासै समाव बेसेन गैयै थायो। कास्टम आ मोनसे कोटेसन (Steady निख्राय खम एबा Priority निख्राय बांसिन जानो हायो)।
+shop_cloud_plans	क्लाउड प्लानफोर
+acct_federated	फेडारेटेड साइन इन
+acct_err_invalid_email	थार ईमेल ठिकाना लिर।
+acct_err_weak_password	खमसेयावबो 6 हांखो गोनां पासवार्ड बाहाय।
+acct_err_wrong_password	भुल पासवार्ड।
+acct_err_invalid_credential	ईमेल एबा पासवार्डआ भुल।
+acct_err_popup_closed	साइन इन उइन्ड' बन्द जाबाय।
+acct_err_popup_cancelled	साइन इन केन्सेल जाबाय।
+acct_err_unauthorized_domain	बे ड'मेनआ Firebase Auth नि थाखाय गनायथि मोनाखै।
+acct_err_method_disabled	बे साइन इन राहाया दासिम जागायाखै।
+acct_err_too_many	जोबोद बांसिन नाजानाय। उनाव फिन नाजा।
+acct_err_phone_format	हादरनि कड लोगोसे आबुं फोन नम्बर बाहाय (बिदिन्थि +91…)।
+acct_err_sms_code	बे SMS कडआ भुल एबा सम जोबबाय।
+acct_err_no_account	बे ईमेलजों जेबो एकाउन्ट गैया। गोदान बानायनो सालाय लां, एबा गुबुन राहा बाहाय।
+acct_err_recent_login	रैखानायनि थाखाय फिन साइन इन खालाम, अब्ला बे सोलायनायखौ फिन नाजा।
+acct_err_credential_in_use	बे साइन इन राहाया सिगांनिफ्रायनो गुबुन एकाउन्टआव बाहायजासिनो।
+acct_err_email_in_use	बे ईमेलआ सिगांनिफ्रायनो गुबुन एकाउन्टआव बाहायजासिनो।
+acct_err_already_linked	बे राहाया सिगांनिफ्रायनो बे एकाउन्टजों फोनांजाबनाय दं।
+acct_err_exists_other_method	बे ईमेलजों गुबुन साइन इन राहाजों मोनसे एकाउन्ट सिगांनिफ्रायनो दं। सिगां बे राहाजों साइन इन खालाम, अब्ला नोंनि एकाउन्ट बिलाइनिफ्राय बेखौ फोनांजाब।
+acct_err_generic	माबा भुल जाबाय।
+acct_method_password	ईमेल आरो पासवार्ड
+acct_pw_hint_change	नोंनि पासवार्ड सोलाय। दानि पासवार्डजों थार खालामनांगौ।
+acct_pw_hint_add	ईमेलजोंबो साइन इन खालामनो हानो थाखाय मोनसे पासवार्ड दाजाब (प्रभाइडार मोनाब्ला मावफुंनो हायो)।
+acct_pw_change	पासवार्ड सोलाय
+acct_pw_add	पासवार्ड दाजाब
+acct_billing_off	क्लाउड API आव बिलिं दासिम जागायाखै।
+acct_billing_no_provider	क्लाउड API आव जेबो थार बिलिं प्रभाइडार जागायाखै (मक आ लोकालल')।
+price_quote	कोटेसन
+price_per_year	₹{amount}/बोसोर, ट्याक्स गैयै
+acct_pay_received	रां मोनबाय — नोंनि प्लानखौ गोदान खालामगासिनो…
+acct_pay_declined	रां होनायखौ नेवसिबाय एबा फेल जाबाय
+acct_pay_failed_detail	{detail}। नोंनि प्लान सोलायाखै।
+acct_checkout_closed	चेकआउट बन्द जाबाय — जेबो रां होनाय जोबाखै। नोंनि प्लान मोनफानो दं।
+acct_checkout_failed	चेकआउट फेल जाबाय
+acct_pay_with	{provider} जों रां हो
+acct_plan_until	{plan} · {date} सिम
+acct_unavailable	मोननो हाया
+acct_continue_hint	ईमेल, प्रभाइडार एबा फोनजों सालाय लां।
+acct_signed_in_fallback	(साइन इन जाबाय)
+acct_email_verified	ईमेल थार जाबाय
+acct_email_unverified	ईमेल दासिम थार जायाखै — नोंनि इनबक्स नाय
+acct_signed_in_phone	फोनजों साइन इन जाबाय
+acct_none_listed	दासिम जेबो लिस्टआव गैया
+acct_signed_in_status	नों साइन इन जाबाय।
+acct_created	एकाउन्ट बानायबाय। हाब्ला थार खालामनो नोंनि ईमेल नाय।
+acct_reset_sent	जुदि बे ईमेलनि एकाउन्ट दं, रिसेट लिंकआ फैगासिनो। नोंनि इनबक्स नाय।
+acct_another_method	गुबुन राहा
+acct_exists_via	{email} नि एकाउन्ट {method} जों सिगांनिफ्रायनो दं। सिगां बे राहाजों साइन इन खालाम, अब्ला नोंनि एकाउन्ट बिलाइनिफ्राय बे प्रभाइडारखौ फोनांजाब।
+acct_enter_current_pw	नोंनि दानि पासवार्ड लिर।
+acct_relogin_retry	साइन आउट खालामनानै फिन साइन इन खालाम, अब्ला फिन नाजा।
+acct_pw_mismatch	गोदान पासवार्ड आरो थार खालामनाया मिलाया।
+acct_pw_updated	पासवार्ड आपडेट जाबाय।
+acct_enter_email_pw	पासवार्ड साइन इननि थाखाय मोनसे ईमेल लिर।
+acct_pw_added	पासवार्ड दाजाबबाय। दासो ईमेलजोंबो साइन इन खालामनो हायो।
+acct_method_linked	साइन इन राहा फोनांजाबबाय।
+acct_phone_linked	फोनआ बे एकाउन्टजों फोनांजाबबाय।
+acct_verify_sent	थार खालामनाय ईमेल दैथाय होबाय — नोंनि इनबक्स नाय।
+shop_pricing_soon	बेसेन गोख्रोंै फैगोन
+shop_request_quote	कोटेसन बिनाय हो
+shop_add_to_cart	कार्टआव दाजाब
+shop_notify_later	उनाव आंनो फोरमाय
+shop_included	दाजाबनाय दं
+shop_in_cart	{plan} आ नोंनि कार्टआव दं।
+shop_remove	बोखार
+shop_cart_is_empty	कार्टआ लांदां।
+shop_prices_unpublished	बे प्रडाक्टनि गावनो बायनाय बेसेन दासिम फोसावाखै। कास्टम कोटेसन बिनाय हो एबा उनाव फिन नाय।
+shop_cart_cleared	कार्टखौ बोखारबाय।
+plan_free_title	गासै समाव बेसेन गैयै
+plan_free_blurb	नोंनि डिभाइसआव आबुं लोकाल प्रडाक्ट। क्लाउड चार्ज गैया।
+plan_steady_blurb	लाइभ क्लाउड · 10 GB · खम ब्यान्डविड्थ
+plan_swift_blurb	लाइभ क्लाउड · 25 GB · गेजेरनि ब्यान्डविड्थ
+plan_priority_blurb	लाइभ क्लाउड · 50 GB · गासैनिख्राय गोजौ स्टेन्डार्ड ब्यान्डविड्थ
+plan_custom_title	कास्टम
+plan_custom_blurb	राजि जानाय कोटा आरो ब्यान्डविड्थ। कोटेसनआ Steady निख्राय खम एबा Priority निख्राय बांसिन जानो हायो।
