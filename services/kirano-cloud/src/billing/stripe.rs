@@ -37,7 +37,7 @@ pub async fn create_checkout(
         ("client_reference_id".to_string(), account.account_id.to_string()),
         ("line_items[0][price]".to_string(), price_id.to_string()),
         ("line_items[0][quantity]".to_string(), "1".to_string()),
-        // Stripe Tax is not available for India-based accounts; prices stay tax-exclusive in our catalog.
+        ("automatic_tax[enabled]".to_string(), "true".to_string()),
         (
             "metadata[account_id]".to_string(),
             account.account_id.to_string(),
