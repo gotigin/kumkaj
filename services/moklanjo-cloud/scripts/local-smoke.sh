@@ -13,6 +13,7 @@ export DEV_AUTH_BYPASS=1
 export BILLING_ENABLED=1
 export BILLING_MODE=sandbox
 export BILLING_DEFAULT_PROVIDER=mock
+export BILLING_ALLOW_MOCK=1
 export BILLING_SUCCESS_URL='http://127.0.0.1:8011/account?billing=success'
 export BILLING_CANCEL_URL='http://127.0.0.1:8011/account?billing=cancel'
 export PUBLIC_API_BASE="http://127.0.0.1:${PORT}"
@@ -102,4 +103,4 @@ echo "$SUB2" | python3 -c 'import sys,json; d=json.load(sys.stdin); assert d["pl
 req sandbox_complete_replay 200 "${AUTH[@]}" -d "{\"checkout_id\":\"${CID}\"}" "http://127.0.0.1:${PORT}/v1/billing/sandbox/complete"
 
 if [[ $fail -ne 0 ]]; then echo "SMOKE FAILED"; exit 1; fi
-echo "SMOKE PASSED for moklanjo-cloud (billing mock sandbox)"
+echo "SMOKE PASSED (mock-only local harness) for moklanjo-cloud (billing mock sandbox)"

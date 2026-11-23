@@ -39,6 +39,22 @@ pub async fn create_checkout(
         ("line_items[0][quantity]".to_string(), "1".to_string()),
         ("automatic_tax[enabled]".to_string(), "true".to_string()),
         (
+            "billing_address_collection".to_string(),
+            "required".to_string(),
+        ),
+        (
+            "tax_id_collection[enabled]".to_string(),
+            "true".to_string(),
+        ),
+        (
+            "customer_update[address]".to_string(),
+            "auto".to_string(),
+        ),
+        (
+            "customer_update[name]".to_string(),
+            "auto".to_string(),
+        ),
+        (
             "metadata[account_id]".to_string(),
             account.account_id.to_string(),
         ),

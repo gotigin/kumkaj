@@ -14,4 +14,4 @@ if [[ "$fail" -ne 0 ]]; then
   echo "SMOKE-ALL FAILED"
   exit 1
 fi
-echo "SMOKE-ALL PASSED (4 clouds)"
+echo "SMOKE-ALL PASSED (4 clouds, mock-only local harness)"

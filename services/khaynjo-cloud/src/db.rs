@@ -340,6 +340,24 @@ pub async fn mark_billing_event_processed(
     Ok(())
 }
 
+pub async fn billing_event_processed(
+    pool: &PgPool,
+    provider: &str,
+    event_id: &str,
+) -> Result<bool, sqlx::Error> {
+    let row: Option<(bool,)> = sqlx::query_as(
+        r#"
+        SELECT processed FROM billing_events
+        WHERE provider = $1 AND event_id = $2
+        "#,
+    )
+    .bind(provider)
+    .bind(event_id)
+    .fetch_optional(pool)
+    .await?;
+    Ok(row.map(|r| r.0).unwrap_or(false))
+}
+
 pub async fn upsert_paid_subscription(
     pool: &PgPool,
     account_id: Uuid,

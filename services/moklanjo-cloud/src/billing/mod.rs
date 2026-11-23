@@ -174,6 +174,11 @@ pub async fn complete_mock_checkout(
             "sandbox complete is only available when BILLING_MODE=sandbox".into(),
         ));
     }
+    if !cfg.allow_mock || !cfg.provider_enabled(Provider::Mock) {
+        return Err(BillingError::Unavailable(
+            "mock sandbox complete requires BILLING_ALLOW_MOCK=1 (local only)".into(),
+        ));
+    }
     let checkout = db::checkout_by_id(pool, checkout_id)
         .await?
         .ok_or_else(|| BillingError::BadRequest("unknown checkout_id".into()))?;
@@ -216,10 +221,23 @@ pub async fn activate_subscription(
     event_id: &str,
     payload: serde_json::Value,
 ) -> Result<(), BillingError> {
+    if plan_id == "free" || plan_id == "custom" {
+        return Err(BillingError::BadRequest(
+            "refusing to activate free/custom via billing event".into(),
+        ));
+    }
+    if event_id.is_empty() || event_id.ends_with("_unknown") {
+        return Err(BillingError::BadRequest("missing billing event id".into()));
+    }
     let inserted = db::record_billing_event(pool, provider.as_str(), event_id, &payload).await?;
     if !inserted {
-        // Idempotent replay.
-        return Ok(());
+        // Idempotent replay only after a prior successful process.
+        if db::billing_event_processed(pool, provider.as_str(), event_id).await? {
+            return Ok(());
+        }
+        return Err(BillingError::Upstream(
+            "billing event seen but not processed yet — retry".into(),
+        ));
     }
 
     let now = Utc::now();
@@ -255,16 +273,21 @@ mod tests {
     }
 
     #[test]
-    fn mock_is_default_sandbox_provider_when_gateways_unset() {
+    fn mock_requires_explicit_allow() {
         let cfg = BillingConfig::from_env_map([
             ("BILLING_ENABLED", "1"),
             ("BILLING_MODE", "sandbox"),
         ]);
         assert!(cfg.enabled);
-        assert_eq!(cfg.default_provider, Provider::Mock);
+        assert!(!cfg.provider_enabled(Provider::Mock));
+        let cfg = BillingConfig::from_env_map([
+            ("BILLING_ENABLED", "1"),
+            ("BILLING_MODE", "sandbox"),
+            ("BILLING_ALLOW_MOCK", "1"),
+        ]);
         assert!(cfg.provider_enabled(Provider::Mock));
+        assert_eq!(cfg.default_provider, Provider::Mock);
         assert!(!cfg.provider_enabled(Provider::Stripe));
-        assert!(!cfg.provider_enabled(Provider::Paddle));
     }
 
     #[test]
@@ -282,6 +305,6 @@ mod tests {
         assert_eq!(cfg.default_provider, Provider::Stripe);
         assert!(cfg.provider_enabled(Provider::Stripe));
         assert!(cfg.provider_enabled(Provider::Paddle));
-        assert!(cfg.provider_enabled(Provider::Mock));
+        assert!(!cfg.provider_enabled(Provider::Mock));
     }
 }

@@ -10,8 +10,10 @@ After solo shop/account/billing scaffolding: pick up here.
 - AWS ECS: `BILLING_ENABLED=1`, `BILLING_MODE=sandbox`, Test Stripe keys on all four APIs (healthz reports sandbox).
 - Migration `0003_sandbox_stripe_prices.sql` sets Stripe Test price ids on `plans`.
 - Local mock smoke: `./scripts/smoke-all-clouds.sh` **PASSED** (4/4).
-- Local Stripe Checkout session create **OK** after disabling Stripe Tax (not supported for India accounts).
+- Stripe Checkout keeps `automatic_tax` + address/tax-id collection (CLOUD_PLANS). If Stripe Tax rejects India account setup, that is a **blocker** until Tax is configured or a tax-capable gateway (e.g. Paddle) is used — do not disable tax to green a smoke.
 - Env split: use `.env.development` (Test) vs `.env.production` placeholder; live keys stay out of local files until approved.
+
+- Mock unpaid activate requires `BILLING_ALLOW_MOCK=1` (local smoke only); not set on AWS.
 
 ## Still open
 

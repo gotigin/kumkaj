@@ -222,7 +222,15 @@ async function maybeAutoCheckout(user) {
     showError("Billing is not enabled on the cloud API yet.");
     return;
   }
-  const provider = cfg.default_provider || "mock";
+  const providers = cfg.providers || [];
+  const provider =
+    (cfg.default_provider && providers.includes(cfg.default_provider) && cfg.default_provider) ||
+    providers.find((p) => p !== "mock") ||
+    null;
+  if (!provider) {
+    showError("No real billing provider is enabled on the cloud API (mock-only is local).");
+    return;
+  }
   await startCheckout(user, plan, provider);
 }
 
@@ -249,6 +257,7 @@ async function startCheckout(user, planId, provider) {
     const body = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(body.error || `Checkout HTTP ${res.status}`);
     if (provider === "mock" && body.checkout_id) {
+      // Unpaid mock activate is local-only; API must advertise mock in providers.
       const done = await fetch(`${CLOUD_API_BASE}/v1/billing/sandbox/complete`, {
         method: "POST",
         headers: {
@@ -309,7 +318,16 @@ async function paintBillingPlans(user, idToken) {
         "<p class=\"auth-hint\">No self-serve plans are checkout-ready yet. For Stripe/Paddle, set price ids on the plans table (see BILLING_SANDBOX.md).</p>";
       return;
     }
-    const provider = cfg.default_provider || "mock";
+    const providers = cfg.providers || [];
+    const provider =
+      (cfg.default_provider && providers.includes(cfg.default_provider) && cfg.default_provider) ||
+      providers.find((p) => p !== "mock") ||
+      null;
+    if (!provider) {
+      els.planList.innerHTML =
+        "<p class=\"auth-hint\">No payable provider is enabled (Stripe/Paddle). Mock activate is local-only.</p>";
+      return;
+    }
     for (const plan of sellable) {
       const row = document.createElement("div");
       row.className = "plan-row";

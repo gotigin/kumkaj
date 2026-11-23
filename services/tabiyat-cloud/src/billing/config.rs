@@ -1,5 +1,8 @@
 //! Billing env — sandbox by default. Live keys must never ship in sandbox mode.
 //! Stripe / Paddle Dashboards: Chrome profile **MEARAJ (Gotigin)**.
+//!
+//! Mock unpaid activation requires explicit `BILLING_ALLOW_MOCK=1` (local smoke only).
+//! Never set that on public AWS APIs.
 
 use std::collections::HashMap;
 
@@ -62,6 +65,8 @@ impl Provider {
 pub struct BillingConfig {
     pub enabled: bool,
     pub mode: BillingMode,
+    /// Local unpaid mock only when true (`BILLING_ALLOW_MOCK=1`).
+    pub allow_mock: bool,
     pub default_provider: Provider,
     pub success_url: String,
     pub cancel_url: String,
@@ -105,7 +110,7 @@ impl BillingConfig {
 
     pub fn provider_enabled(&self, provider: Provider) -> bool {
         match provider {
-            Provider::Mock => matches!(self.mode, BillingMode::Sandbox),
+            Provider::Mock => self.allow_mock && matches!(self.mode, BillingMode::Sandbox),
             Provider::Stripe => self.stripe_ready(),
             Provider::Paddle => self.paddle_ready(),
         }
@@ -124,6 +129,10 @@ fn nonempty(v: &Option<String>) -> bool {
     v.as_ref().is_some_and(|s| !s.is_empty())
 }
 
+fn truthy(v: &str) -> bool {
+    matches!(v, "1" | "true" | "yes" | "on")
+}
+
 fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
     let lookup = |key: &str| -> Option<String> {
         match &map {
@@ -132,20 +141,32 @@ fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
         }
     };
 
-    let mode = match lookup("BILLING_MODE")
-        .unwrap_or_else(|| "sandbox".into())
-        .to_ascii_lowercase()
-        .as_str()
-    {
+    let mode_raw = lookup("BILLING_MODE").unwrap_or_else(|| "sandbox".into());
+    let mode = match mode_raw.to_ascii_lowercase().as_str() {
         "live" | "production" => BillingMode::Live,
-        _ => BillingMode::Sandbox,
+        "sandbox" | "test" => BillingMode::Sandbox,
+        other => {
+            tracing::warn!(%other, "unknown BILLING_MODE — refusing; use sandbox or live");
+            // Fail closed to sandbox with billing disabled via enabled=false below if weird?
+            // Keep sandbox but require explicit; treat unknown as sandbox for mode enum only.
+            BillingMode::Sandbox
+        }
     };
+    let mode_ok = matches!(
+        mode_raw.to_ascii_lowercase().as_str(),
+        "sandbox" | "test" | "live" | "production"
+    );
 
-    let enabled = matches!(
-        lookup("BILLING_ENABLED")
-            .unwrap_or_else(|| "0".into())
-            .as_str(),
-        "1" | "true" | "yes" | "on"
+    let enabled = mode_ok
+        && matches!(
+            lookup("BILLING_ENABLED")
+                .unwrap_or_else(|| "0".into())
+                .as_str(),
+            "1" | "true" | "yes" | "on"
+        );
+
+    let allow_mock = truthy(
+        &lookup("BILLING_ALLOW_MOCK").unwrap_or_else(|| "0".into()),
     );
 
     let stripe_secret_key = lookup("STRIPE_SECRET_KEY");
@@ -167,20 +188,22 @@ fn build_config(map: Option<HashMap<String, String>>) -> BillingConfig {
     {
         "stripe" if stripe_ready => Provider::Stripe,
         "paddle" if paddle_ready => Provider::Paddle,
-        "mock" => Provider::Mock,
+        "mock" if allow_mock => Provider::Mock,
         _ if stripe_ready => Provider::Stripe,
         _ if paddle_ready => Provider::Paddle,
-        _ => Provider::Mock,
+        _ if allow_mock => Provider::Mock,
+        _ => Provider::Stripe, // prefer real gateway name even if not ready (checkout will error clearly)
     };
 
     BillingConfig {
         enabled,
         mode,
+        allow_mock,
         default_provider,
         success_url: lookup("BILLING_SUCCESS_URL")
-            .unwrap_or_else(|| "http://127.0.0.1:8014/account?billing=success".into()),
+            .unwrap_or_else(|| "http://127.0.0.1:8012/account?billing=success".into()),
         cancel_url: lookup("BILLING_CANCEL_URL")
-            .unwrap_or_else(|| "http://127.0.0.1:8014/account?billing=cancel".into()),
+            .unwrap_or_else(|| "http://127.0.0.1:8012/account?billing=cancel".into()),
         public_api_base: lookup("PUBLIC_API_BASE")
             .unwrap_or_else(|| "http://127.0.0.1:8080".into()),
         stripe_secret_key,

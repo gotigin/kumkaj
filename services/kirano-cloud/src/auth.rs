@@ -60,8 +60,10 @@ impl FirebaseVerifier {
     }
 
     pub async fn verify(&self, token: &str) -> Result<FirebaseClaims, String> {
-        // Local smoke only. Never set DEV_AUTH_BYPASS on AWS.
-        if std::env::var("DEV_AUTH_BYPASS").ok().as_deref() == Some("1") {
+        // Local debug smoke only. Never set DEV_AUTH_BYPASS on AWS / release builds.
+        if cfg!(debug_assertions)
+            && std::env::var("DEV_AUTH_BYPASS").ok().as_deref() == Some("1")
+        {
             if let Some(rest) = token.strip_prefix("dev:") {
                 let mut parts = rest.splitn(2, ':');
                 let uid = parts.next().unwrap_or("").trim();

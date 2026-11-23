@@ -70,14 +70,11 @@ pub async fn create_checkout(
         .pointer("/checkout/url")
         .and_then(|v| v.as_str())
         .map(str::to_string)
-        .unwrap_or_else(|| {
-            // Overlay checkout can also be opened client-side with Paddle.js;
-            // still return a success deep-link so the API contract stays stable.
-            format!(
-                "{}&paddle_tx={id}&checkout_id={checkout_id}",
-                cfg.success_url
+        .ok_or_else(|| {
+            BillingError::Upstream(
+                "paddle response missing checkout.url — refusing to fabricate a success URL".into(),
             )
-        });
+        })?;
     Ok(CreatedCheckout {
         external_id: id,
         url,
@@ -100,6 +97,16 @@ pub fn verify_signature(secret: &str, signature_header: &str, body: &[u8]) -> Re
     }
     let ts = ts.ok_or("missing ts in Paddle-Signature")?;
     let h1 = h1.ok_or("missing h1 in Paddle-Signature")?;
+    let ts_i: i64 = ts
+        .parse()
+        .map_err(|_| "invalid Paddle-Signature timestamp")?;
+    let now = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map_err(|_| "system clock before epoch")?
+        .as_secs() as i64;
+    if (now - ts_i).abs() > 300 {
+        return Err("Paddle-Signature timestamp outside tolerance".into());
+    }
     let signed = format!("{ts}:{}", String::from_utf8_lossy(body));
     let mut mac =
         HmacSha256::new_from_slice(secret.as_bytes()).map_err(|_| "invalid paddle webhook secret")?;
@@ -130,7 +137,11 @@ mod tests {
     fn paddle_signature_roundtrip() {
         let secret = "pdl_ntfsec_test";
         let body = br#"{"event_id":"evt_1"}"#;
-        let ts = "1700000000";
+        let ts = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_secs()
+            .to_string();
         let signed = format!("{ts}:{}", String::from_utf8_lossy(body));
         let mut mac = HmacSha256::new_from_slice(secret.as_bytes()).unwrap();
         mac.update(signed.as_bytes());
@@ -138,5 +149,7 @@ mod tests {
         let header = format!("ts={ts};h1={h1}");
         assert!(verify_signature(secret, &header, body).is_ok());
         assert!(verify_signature(secret, &header, br#"{"event_id":"x"}"#).is_err());
+        let stale = format!("ts=1700000000;h1={h1}");
+        assert!(verify_signature(secret, &stale, body).is_err());
     }
 }
