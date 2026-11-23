@@ -85,6 +85,21 @@ mkdir -p "$OUT"
 rsync -a --delete --exclude='*.br' "$WASM_PKG/" "$OUT/"
 rsync -a "$SITE/static/" "$OUT/"
 "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
+# §06 WordChips draw Hindi/Gujarati/Tamil/Bengali/Urdu via WorldFont — those
+# Noto files must be in the package or visitors see tofu boxes again.
+for noto in \
+  NotoSansDevanagari-Regular.ttf \
+  NotoSansGujarati-Regular.ttf \
+  NotoSansTamil-Regular.ttf \
+  NotoSansBengali-Regular.ttf \
+  NotoSansArabic-Regular.ttf
+do
+  if [[ ! -f "$SITE/resources/fonts/$noto" ]]; then
+    echo "error: missing $SITE/resources/fonts/$noto (WordChip scripts need WorldFont)" >&2
+    echo "copy from sites/khaynjo/resources/fonts/ or restore — do not strip while WordChips remain" >&2
+    exit 1
+  fi
+done
 # Fonts: only the characters this site draws (the repo keeps them whole).
 "$SITE/scripts/subset-fonts.sh" "$OUT"
 

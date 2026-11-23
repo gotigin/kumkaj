@@ -31,17 +31,28 @@ script_mod! {
     let KhaRed = #x9A0E10
     let KhaGold = #xF69D2C
 
-    // ---- Type: Fraunces display, IBM Plex text, Noto for Indic/Arabic --
+    // ---- Type: Latin chrome first; script faces only on WordChip (WorldFont).
+    // Do NOT put Noto back into StrongFont/TextFont — Makepad downloads every
+    // FontFamily member on first use, and that bloated first paint. Do NOT
+    // remove WorldFont while §06 WordChips still draw Hindi/Gujarati/Tamil/
+    // Bengali/Urdu — that is exactly how tofu boxes return.
     let DisplayFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/Fraunces-Variable.ttf") asc: 0.0 desc: 0.0 weight: 620.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
     }
-    // English chrome only — Indic/Arabic faces stay out of first paint.
     let StrongFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
     }
     let TextFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+    }
+    let WorldFont = FontFamily{
+        latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
+        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
+        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
+        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
+        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
+        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
     }
 
     // The vendored SDF text shader adds `sdf_luma_bias` coverage to the whole
@@ -520,7 +531,7 @@ script_mod! {
 
             width: Fit
             padding: 0.
-            draw_text +: {color: Faint text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
+            draw_text +: {color: Faint text_style: theme.font_regular{font_family: WorldFont font_size: 13.}}
             body: "Language"
         
         }
@@ -532,7 +543,7 @@ script_mod! {
             draw_block +: { selection_color: #x2E5BADFF }
             width: Fit
             padding: 0.
-            draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 24.}}
+            draw_text +: {color: Ink text_style: theme.font_bold{font_family: WorldFont font_size: 24.}}
             body: "Word"
         }
     }

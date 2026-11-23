@@ -291,10 +291,13 @@ change):
   runs each). Leave the `--wasm-opt` flag off.
 - **First-paint fonts are Latin (+ FA icons) only.** English page chrome
   uses `DisplayFont` / `StrongFont` / `TextFont` without Indic/CJK members
-  (2026-11-23). Khaynjo's chapter-8 `WorldFont` (all script faces + CJK
-  subset) loads only when the deferred shelf band is revealed after warmup —
-  a `FontFamily` downloads every member on first use, so putting Noto in
-  Text/Strong used to pull ~10–20 TTFs before the hero painted.
+  (2026-11-23). Script samples must use a **separate** `WorldFont` (or
+  equivalent) that is only referenced by those widgets — Khaynjo's deferred
+  shelf, Kumkaj §06 `WordChip`. A `FontFamily` downloads every member on
+  first use, so putting Noto in Text/Strong pulls those TTFs before the hero
+  paints. **Regression rule:** never delete Noto faces from a site while that
+  site still draws non-Latin copy; never point WordChips at Latin-only
+  families. Doing either returns empty boxes (tofu).
 - **Fonts are cut to the site's own characters when the tree is staged** —
   `sites/<site>/scripts/subset-fonts.sh`, called by `preview-web.sh` and
   `deploy-firebase.sh` (needs `pyftsubset` from fonttools; without it the
@@ -318,8 +321,9 @@ change):
   sat in `resources/media/` and `static/media/` with nothing drawing them —
   originals stay in `apps/khaynjo/assets/` if needed. Cleared again
   2026-11-23 (`static/media/` keeps only link-preview + touch icon + small
-  app-icon.webp). Unused Indic faces removed from the four English-only
-  site crates (kept only on khaynjo `WorldFont`).
+  app-icon.webp). Indic faces stay on **khaynjo** `WorldFont` and **kumkaj**
+  `WorldFont` (languages WordChips). Moklanjo / Kirano / Tabiyat chrome stays
+  Latin-only unless they grow script samples.
 - **Images are not inside the `.wasm`.** The release wasm is almost entirely
   the Makepad runtime (~6.2 MB raw → ~1.3 MB brotli). Fonts and icons are
   separate HTTP fetches; world-shelf photos already use a placeholder
