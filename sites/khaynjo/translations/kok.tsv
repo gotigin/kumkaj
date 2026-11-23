@@ -1,280 +1,280 @@
 # Konkani — कोंकणी (kok). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	उदाहरण
+free	रिकामें
+photo_coming	फोटो बेगीन येता
+get_it_on_google_play	Google Play वयल्यान घेयात
+whatsapp_for_a_demo	डेमो खातीर WhatsApp करात
+menus	मेनू
+how_it_works	हें कशें काम करता
+features	खाशेलपणां
+offline	ऑफलायन
+pricing	किंमत
+faq	प्रस्न आनी जापो
+login	लॉगिन
+get_it_free	फुकट घेयात
+restaurant_pos_free_forever	रेस्टॉरंट POS · सदांच फुकट
+lunch_rush_no_internet_no	दनपारची गर्दी। इंटरनेट ना। कसलीच अडचण ना।
+khaynjo_runs_your_floor_kitchen	Khaynjo तुमचो हॉल, रांदचेकूड आनी गल्लो तुमच्या आदींच आशिल्ल्या उपकरणांचेर चलयता — मेजा सावन रांदचेकुडा मेरेन, रांदचेकुडा सावन बिला मेरेन, इंटरनेट आसूं वा नासूं।
+android_on_google_play_today	Android आयज Google Play चेर · Windows आनी Linux पॅकेजां येतात।
+works_with_no_internet	इंटरनेट बगर काम करता
+your_books_stay_on_your	तुमचीं खातीं तुमच्याच उपकरणांचेर उरतात
+n_115_languages_on_screen	स्क्रीनाचेर 115 भासो
+your_floor_at_a_glance	एका नदरेंत तुमचो हॉल
+tap_a_table_to_walk	खंयच्याय मेजाचेर टॅप करात आनी एक भेट सुरवाती सावन शेवटा मेरेन पळयात। ॲपांतल्या सारकेच रंग आनी उतरां — आनी बील फारीक जातकच मेज रिकामें जाता।
+every_country	दर देश
+every_country_at_your_counter	तुमच्या गल्ल्याचेर दर देश
+one_famous_dish_from_every	दर देशाचो एक नामनेचो पदार्थ — देशाचें इंग्लीश नांव, ताच्या स्वताच्या लिपींतलें नांव, आनी पदार्थाचें इंग्लीश नांव। तीं उतरां तुमच्या मेनूंत बरयात। संवसार फुडें वता; पळोवंक जाय जाल्यार थांबयात वा सोदात।
+find_a_country_or_dish	देश वा पदार्थ सोदात — देखीक India, biryani, Japan
+one_famous_dish_per_country	दर देशाचो एक नामनेचो पदार्थ — ही परेड सगळो संवसार भोंवता।
+how_a_service_runs	सेवा कशी चलता
+one_table_start_to_finish	एक मेज, सुरवाती सावन शेवटा मेरेन।
+watch_a_table_go_from	मेज बसपा सावन फारीक जायसर कशें वता तें पळयात — तुमचे कर्मचारी ॲपांत पळयतात तेच पावल आनी रंग।
+occupied	सुवात घेतल्या
+in_kitchen	रांदचेकुडांत
+food_ready	जेवण तयार
+served	सेवा दिली
+bill_printed	बील छापलें
+paid	फारीक केल्लें
+seat_the_table_take_the	मेजाचेर बसयात, ऑर्डर घेयात
+mark_the_table_occupied_the	सोयरे बसतकच मेजाक “सुवात घेतल्या” करात। पदार्थ जोडात, आकार वेंचात, वाडावें जोडात, आनी रांदचेकुडा खातीर टीप बरयात — मेजाचेरूच।
+sizes_and_add_ons	आकार आनी वाडावें
+pick_one_size_add_optional	एक आकार वेंचात; तुमी थारायल्ल्या मर्यादे मेरेन पर्यायी वाडावें जोडात।
+a_note_per_dish	दर पदार्थाचेर एक टीप
+less_spicy_travels_with_the	“उणें तिखट” ज्या पदार्थाचें आसा ताच्या वांगडाच वता।
+t4_occupied	T4 · सुवात घेतल्या
+note_less_salt	टीप: मीठ उणें
+one_ticket_per_kitchen_station	दर रांदचेकूड स्टेशना खातीर एक तिकेट
+send_the_order_and_each	ऑर्डर धाडात आनी दर स्टेशनाक फकत आपले पदार्थ मेळटात — दिसाच्या क्रमांका वांगडा, मेज, वेटर आनी दर टिपे वांगडा। किंमत केन्नाच ना: रांदचेकूड रांदता, गल्लो बील करता।
+prints_itself	आपसूक छापता
+send_and_the_ticket_prints	धाडात, आनी तिकेट योग्य स्टेशनाचेर छापता — कोणाकूच व्हरूंक नाका।
+example_ticket	उदाहरण तिकेट
+the_kitchen_sees_what_to	आतां कितें रांदचें तें रांदचेकुडाक दिसता
+on_the_kitchen_screen_tickets	रांदचेकुडाच्या स्क्रीनाचेर तिकेटां एका टॅपान नवें → तयारी करप → तयार जातात। पोन्न्या तिकेटांचो रंग गाड जाता, “आतां रांदात” वाट पळोवपी दर पदार्थ मेजता, आनी स्टार्टर वचमेरेन मुखेल पदार्थ थांबूं येतात।
+new	नवें
+preparing	तयारी करप
+ready	तयार
+example_kitchen_screen	उदाहरण रांदचेकूड स्क्रीन
+settle_any_way_the_guest	सोयरो जसो फारीक करता तशें हिशोब करात
+cash_with_change_to_return	परत दिवपाचे सुटे पयशे वांगडा रोख, QR मदीं आदींच रकमे वांगडा UPI, अर्दें फारीक, वा गिरायकाच्या खात्यार बाकी। वस्तू, आसन वा समान वांटात। बील फारीक जातकच मेज रिकामें जाता।
+tips_stay_apart	टीप वेगळी उरता
+a_tip_is_recorded_on	टीप वेगळी नोंद जाता — विक्रींत केन्नाच मिसळना।
+t4_bill_printed	T4 · बील छापलें
+bill	बील
+customer_paid_cash	गिरायकान दिले (रोख)
+return_to_customer	गिरायकाक परत दियात
+close_the_day_you_can	विस्वासाचो दीस बंद
+count_the_drawer_against_the	खण फ्लोट, घेतिल्ली रोख, टीप आनी दिल्ली रोख हांचे वांगडा मेजात — उणें वा चड स्पश्ट सांगतात। शिफ्ट स्लिप छापात, मागीर कर्मचारी, ऑर्डरीचो प्रकार, वर आनी पदार्था प्रमाण दिसाचो अहवाल उगडात — रद्द, फुकट दिल्ले पदार्थ आनी टीप वांगडा।
+shift_close	शिफ्ट बंद
+opening_float	सुरवातीची रोख
+cash_taken	+ घेतिल्ली रोख
+cash_tips	+ रोख टीप
+cash_paid_out	− दिल्ली रोख
+expected_in_the_drawer	खणांत आसूंक जाय
+counted	मेजलें
+short	उणें
+everything_else_the_floor_needs	हॉलाक जाय आशिल्लें हेर सगळें
+built_for_a_real_service	खऱ्या सेवे खातीर तयार केल्लें।
+the_changes_that_happen_every	दर दनपारां जावपी बदल — उक्तेपणान सांबाळटात, कोणें, केन्ना आनी कित्याक, सगळें नोंद।
+move_and_merge_tables	मेज बदलात आनी जोडात
+guests_change_tables_the_order	सोयरे मेज बदलतात — ऑर्डर आनी तिचीं मिनटां वांगडा वतात। दोन मेज, एक बील।
+cancel_after_the_kot	KOT उपरांत रद्द
+with_a_reason_cooked_or	कारणा वांगडा, रांदलां वा ना, आनी कोणें मान्यताय दिली। रांदचेकुडाक रद्दाची स्लिप मेळटा।
+complimentary_dishes	फुकट पदार्थ
+a_comp_stays_on_the	फुकट पदार्थ बिलाचेर ₹ 0 चेर उरता, कारण आनी मान्यताय दिवप्या वांगडा।
+rights_per_person	दर मनशाचे अधिकार
+each_action_is_allowed_allowed	दर कामाक परवानगी आसा, मॅनेजर PIN वांगडा परवानगी आसा, वा परवानगी ना — मनशा प्रमाण।
+your_menu_your_words	तुमचो मेनू, तुमचीं उतरां
+search_by_name_or_short	नांवान वा ल्हान कोडान सोदात, दुसऱ्या भाशेंतल्या पर्यायी नांवां वांगडा — “ptk” दिल्यार Paneer tikka मेळटा।
+area_prices_and_happy_hour	वाठारा प्रमाण किंमत आनी हॅपी अवर
+a_dearer_price_in_the	AC कुडींत चड किंमत; घड्याळा प्रमाण न्याहारीचो मेनू आनी हॅपी अवराची किंमत।
+customer_khata	गिरायकाचें खातें
+part_payments_and_due_go	अर्दें फारीक आनी बाकी पार्टींत गिरायकाच्या खात्यार वतात, उपरांत हिशोब जाता।
+reports_that_answer_questions	प्रस्नांक जाप दिवपी अहवाल
+sales_by_staff_order_type	कर्मचारी, ऑर्डरीचो प्रकार, वर आनी पदार्था प्रमाण विक्री — रद्द, फुकट पदार्थ आनी टिपेच्या वळेरी वांगडा।
+start_with_a_menu	मेनू वांगडा सुरवात करात
+your_menu_ready_in_minutes	तुमचो मेनू, थोड्याच मिनटांनी तयार।
+set_up_your_counter_and	तुमचो गल्लो सेट करात आनी फोटो आशिल्लो एक स्टार्टर मेनू वेंचात — मागीर नांवां, किंमती आनी कोड तुमच्या पद्दतीन बदलात। khaynjo.com वयल्यान फुकट डाउनलोड करात।
+starter_menu	स्टार्टर मेनू
+khaynjo_starter_menu	Khaynjo स्टार्टर मेनू
+world_cuisines_japanese_mexican	संवसारांतलें जेवण — जपानी, मेक्सिकन, इटालियन, भारतीय, थाय आनी हेर — दर पदार्थ आपल्या फोटो वांगडा।
+n_14_dishes_11_categories	14 पदार्थ · 11 वर्ग
+cafe_starter	कॅफे स्टार्टर
+tea_coffee_cold_drinks_bakery	चा, कॉफी, थंड पेयां, बेकरी आनी खाण — गल्लो कॅफे खातीर तयार।
+n_22_dishes_4_categories	22 पदार्थ · 4 वर्ग
+photo_shelf	फोटो कपाट
+khaynjo_dish_photos	Khaynjo पदार्थांचे फोटो
+the_full_public_photo_shelf	पुराय सार्वजनीक फोटो कपाट — तुमी जोडटात त्या खंयच्याय पदार्थाचो फोटो वेंचात।
+n_1_459_dish_photos_25	1,459 पदार्थांचे फोटो · 25 प्रकारचीं रांदचेकुडां
+internet_down	इंटरनेट ना?
+the_internet_went_down_the	इंटरनेट गेलें। गल्लो थांबलो ना।
+orders_kitchen_tickets_bills_and	ऑर्डरी, रांदचेकुडाचीं तिकेटां, बिलां आनी दिसाळी बही तुमच्याच उपकरणांचेर उरतात। दनपारां मदींच इंटरनेट गेल्यार तुमच्या रेस्टॉरंटांत कांयच ताची वाट पळयना — आनी आमचे कडेन साइन इन करपाक खंयचेंच खातें ना।
+right_now_mid_lunch	आतां, दनपारां मदीं
+router_no_internet	राउटर: इंटरनेट ना
+counter_taking_orders_and_settling	गल्लो: ऑर्डरी घेता आनी बिलांचो हिशोब करता
+day_book_every_bill_saved	दिसाळी बही: दर बील ह्याच उपकरणाचेर सांबाळिल्लें
+captains_tablets_and_the_kitchen	कॅप्टनांचे टॅबलेट आनी रांदचेकुडाची स्क्रीन: तुमच्याच Wi-Fi चेर एकठांय काम करतात
+eyebrow_pricing	किंमत
+free_forever_on_your_devices	तुमच्या उपकरणांचेर सदांच फुकट।
+software_capability_is_not_what	आमी सॉफ्टवेअराची तांक विकनात। पुराय Khaynjo तुमच्याच उपकरणांचेर फुकट चलयात — कांयच खंयच्याय प्लानाफाटल्यान बंद ना।
+khaynjo_on_your_devices	तुमच्या उपकरणांचेर Khaynjo
+forever	सदांच
+every_feature	दर खाशेलपण
+floor_kitchen_billing_day_close	हॉल, रांदचेकूड, बिलिंग, दीस बंद, अहवाल — पुराय ॲप।
+no_per_seat_charge	दर आसनाचेर शुल्क ना
+no_charge_per_table_waiter	मेज, वेटर, ऑर्डर वा उपकरणा प्रमाण शुल्क ना।
+no_account_with_us	आमचे कडेन खातें नाका
+day_to_day_service_needs	सदांच्या सेवे खातीर साइन-अप नाका आनी इंटरनेट नाका।
+kumkaj_cloud_optional	Kumkaj Cloud · पर्यायी
+yearly_cloud_if_you_want	जाय जाल्यार वर्सुकी क्लावड
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / वर्स, कर सोडून (कर चेकआउटाक)। कस्टम म्हळ्यार कोटेशन — Steady परस उणें वा Priority परस चड जावंक शकता। कसेंय, स्थानीक Khaynjo सदांच फुकट उरता।
+shop_plans_at_shop_sign	प्लान /shop चेर विकत घेयात · /account चेर साइन इन करात
+open_cloud_shop	क्लावड दुकान उगडात
+questions	प्रस्न
+asked_before_every_first_service	दर पयल्या सेवे आदीं विचारिल्ले।
+do_i_need_the_internet	म्हाका इंटरनेट जाय?
+no_orders_kots_bills_and	ना। ऑर्डरी, KOT, बिलां आनी दिसाळी बही इंटरनेट बगर काम करतात। ॲप डाउनलोड करपाक आनी, जाय जाल्यार, स्टार्टर मेनू घेवपाक फकत एक फावट जाय।
+where_are_my_bills_kept	म्हजीं बिलां खंय दवरतात?
+on_your_own_device_in	तुमच्याच उपकरणाचेर, तुमच्या दुकानांत — आमच्या सर्वराचेर न्हय। सेटिंग सावन बॅकअप प्रती करात आनी जंय जाय थंय दवरात।
+which_devices_does_it_run	हें खंयच्या उपकरणांचेर चलता?
+android_phones_and_tablets_today	आयज Android फोन आनी टॅबलेटांचेर, Google Play वयल्यान। Windows आनी Linux पॅकेजां वाटेर आसात।
+does_it_print_kots_and	हें KOT आनी बिलां छापता?
+yes_on_thermal_printers_you	हय — थर्मल प्रिंटरांचेर, जे तुमी सेटिंग → प्रिंटर हांगा सेट करतात, दर स्टेशना खातीर एक रांदचेकूड तिकेट।
+can_my_staff_use_their	म्हजे कर्मचारी आपली भास वापरूं शकतात?
+yes_the_screens_come_in	हय। स्क्रीनी 115 भासांनी येतात, अरबी आनी उर्दू उजव्यान दाव्यान, आनी पदार्थांच्या नांवां वांगडा दुसऱ्या लिपींत पर्यायी नांवांय दवरूं येतात।
+what_does_it_cost	हाची किंमत कितली?
+nothing_on_your_own_devices	तुमच्याच उपकरणांचेर कांयच ना — दर खाशेलपण, सदांच। पर्यायी Kumkaj Cloud वर्सुकी Steady / Swift / Priority (वा कस्टम कोटेशन); विकत घेवपाक /shop उगडात।
+ready_for_lunch	दनपारा खातीर तयार?
+run_your_next_service_on	तुमची फुडली सेवा Khaynjo चेर चलयात।
+free_on_google_play_want	Google Play चेर फुकट। पयलीं पुराय पळोवंक जाय? आमकां WhatsApp चेर संदेश धाडात।
+privacy	खाजगीपण
+terms	अटी
+cancellation	रद्द करपाचें धोरण
+photo_credits	फोटो श्रेय
+cloud_shop	क्लावड दुकान
+account	खातें
+cta_installers_note	दर इन्स्टॉलर नितळ यंत्राचेर इन्स्टॉल चांचणी पास जातकच हांगा येतलो। तोमेरेन WhatsApp चेर डेमो मागात।
+cta_whatsapp_soon	WhatsApp डेमो लायन बेगीन उगडटली। तुमचो संदेश अशें आसतलो: “{message}”।
+shelf_no_match	ह्या सोदाक कसलोच देश वा पदार्थ जुळना।
+shelf_search_note	सोदल्यार परेड थांबता; परत सुरू करपाक सोद काडात, नाजाल्यार सोडिल्ली तशीच थांबिल्ली उरता।
+floor_meta_min	{min} मिनटां
+floor_meta_min_bill	{min} मिनटां · ₹ {amount}
+floor_meta_paid	₹ {amount} फारीक
+acct_page_title	खातें — Khaynjo
+acct_lede	सायट आनी ॲपां खातीर एकूच खातें — नवे आसात वा परत आयल्यात, तोच फॉर्म।
+acct_email	ईमेल
+acct_name_optional	नांव (पर्यायी)
+acct_password	पासवर्ड
+acct_continue	फुडें व्हरप
+acct_forgot	पासवर्ड विसरल्यात?
+acct_reset_hint	आमी रिसेट लिंक ईमेल करतले। साइन अप केल्लो तोच पत्तो वापरात।
+acct_send_reset	रिसेट लिंक धाडात
+acct_cancel	रद्द
+acct_or_continue	वा हाचे वांगडा फुडें वचात
+acct_phone	फोन
+acct_mobile	मोबायल क्रमांक
+acct_send_sms	SMS कोड धाडात
+acct_sms_code	SMS कोड
+acct_confirm_code	कोड थारावात
+acct_signed_in	साइन इन जालें
+acct_signed_in_as	ह्या रुपान साइन इन
+acct_status	स्थिती
+acct_sign_in_methods	साइन-इनाच्यो पद्दती
+acct_cloud_username	क्लावड वापरपी नांव
+acct_plan	प्लान
+acct_resend_verify	पडताळणी ईमेल परत धाडात
+acct_sign_out	साइन आउट
+acct_cloud_sandbox	Kumkaj Cloud (सँडबॉक्स)
+acct_current_password	सद्याचो पासवर्ड
+acct_email_for_password	पासवर्ड साइन-इना खातीर ईमेल
+acct_new_password	नवो पासवर्ड
+acct_confirm_new_password	नवो पासवर्ड थारावात
+acct_add_way	साइन इन करपाची आनीक एक पद्दत जोडात
+acct_link_hint	पद्दती एकाच खात्याक जोडात, जाका लागून एक अपेशी जाल्यार लेगीत प्रवेश परत मेळोवंक येता।
+acct_link_google	Google जोडात
+acct_link_microsoft	Microsoft जोडात
+acct_link_github	GitHub जोडात
+acct_link_phone	फोन जोडात
+acct_send_sms_link	जोडपा खातीर SMS धाडात
+acct_confirm_link_phone	थारावन फोन जोडात
+shop_page_title	दुकान — Khaynjo
+shop_lede	वर्सुकी क्लावड प्लान — कर चेकआउटाक जोडटात। तुमच्याच उपकरणांचेर पुराय Khaynjo ॲप सदांच फुकट उरता, जायरातीं बगर।
+shop_cart	कार्ट
+shop_cart_empty_hint	तुमची कार्ट रिकामी आसा। Steady, Swift वा Priority जोडात।
+shop_checkout	चेकआउट
+shop_clear	काडात
+shop_checkout_hint	चेकआउट तुमकां खात्यांत साइन इन करता, मागीर फारीक करप सुरू करता (सँडबॉक्स मॉक, वा कीज सेट आसल्यार Paddle)।
+acct_billing_hint	वर्सुकी प्लान — चेकआउटाक गेटवे कर जोडटा। स्थानीक वापर सदांच फुकट उरता। कस्टम म्हळ्यार कोटेशन (Steady परस उणें वा Priority परस चड जावंक शकता)।
+shop_cloud_plans	क्लावड प्लान
+acct_federated	फेडरेटेड साइन-इन
+acct_err_invalid_email	योग्य ईमेल पत्तो बरयात।
+acct_err_weak_password	उणांत उणें 6 अक्षरांचो पासवर्ड वापरात।
+acct_err_wrong_password	चुकीचो पासवर्ड।
+acct_err_invalid_credential	ईमेल वा पासवर्ड चुकीचो आसा।
+acct_err_popup_closed	साइन-इन जनेल बंद जालें।
+acct_err_popup_cancelled	साइन-इन रद्द जालें।
+acct_err_unauthorized_domain	हें डोमेन Firebase Auth खातीर अधिकृत ना।
+acct_err_method_disabled	ही साइन-इन पद्दत अजून सुरू ना।
+acct_err_too_many	खूब यत्न जाले। उपरांत परत यत्न करात।
+acct_err_phone_format	देशाच्या कोडा वांगडा पुराय फोन क्रमांक वापरात (देखीक +91…)।
+acct_err_sms_code	तो SMS कोड चुकीचो वा ताची मुदत सोंपल्या।
+acct_err_no_account	त्या ईमेलाचेर खातें ना। नवें करपाक फुडें वचात, वा दुसरी पद्दत वापरात।
+acct_err_recent_login	सुरक्षे खातीर परत साइन इन करात, मागीर हो बदल परत करात।
+acct_err_credential_in_use	ती साइन-इन पद्दत आदींच दुसरें खातें वापरता।
+acct_err_email_in_use	तो ईमेल आदींच दुसरें खातें वापरता।
+acct_err_already_linked	ती पद्दत आदींच ह्या खात्याक जोडल्या।
+acct_err_exists_other_method	ह्या ईमेलाचें खातें दुसऱ्या साइन-इन पद्दतीन आदींच आसा। पयलीं त्या पद्दतीन साइन इन करात, मागीर तुमच्या खात्याच्या पानार हें जोडात।
+acct_err_generic	कांय तरी चुकलें।
+acct_method_password	ईमेल आनी पासवर्ड
+acct_pw_hint_change	तुमचो पासवर्ड बदलात। सद्याच्या पासवर्डान थारावचें पडटलें।
+acct_pw_hint_add	पासवर्ड जोडात जाका लागून ईमेलान लेगीत साइन इन करूंक येता (एखादो पुरवणदार मेळना जाल्यार उपेगी)।
+acct_pw_change	पासवर्ड बदलात
+acct_pw_add	पासवर्ड जोडात
+acct_billing_off	क्लावड API चेर बिलिंग अजून सुरू ना।
+acct_billing_no_provider	क्लावड API चेर खंयचोच खरो बिलिंग पुरवणदार सुरू ना (मॉक फकत स्थानीक)।
+price_quote	कोटेशन
+price_per_year	₹{amount}/वर्स, कर सोडून
+acct_pay_received	फारीक मेळ्ळें — तुमचो प्लान ताजो जाता…
+acct_pay_declined	फारीक नाकारलें वा अपेशी जालें
+acct_pay_failed_detail	{detail}। तुमचो प्लान बदललो ना।
+acct_checkout_closed	चेकआउट बंद जालें — कसलेंच फारीक पुराय जालें ना। तुमचो प्लान तसोच आसा।
+acct_checkout_failed	चेकआउट अपेशी जालें
+acct_pay_with	{provider} वरवीं फारीक करात
+acct_plan_until	{plan} · {date} मेरेन
+acct_unavailable	उपलब्ध ना
+acct_continue_hint	ईमेल, पुरवणदार वा फोना वरवीं फुडें वचात।
+acct_signed_in_fallback	(साइन इन जालें)
+acct_email_verified	ईमेल पडताळलो
+acct_email_unverified	ईमेल अजून पडताळूंक ना — तुमचो इनबॉक्स पळयात
+acct_signed_in_phone	फोना वरवीं साइन इन
+acct_none_listed	अजून कांयच वळेरेंत ना
+acct_signed_in_status	तुमी साइन इन आसात।
+acct_created	खातें तयार जालें। जमता तेन्ना पडताळणी खातीर तुमचो ईमेल पळयात।
+acct_reset_sent	त्या ईमेलाचें खातें आसल्यार, रिसेट लिंक वाटेर आसा। तुमचो इनबॉक्स पळयात।
+acct_another_method	दुसरी पद्दत
+acct_exists_via	{email} चें खातें {method} वरवीं आदींच आसा। पयलीं त्या पद्दतीन साइन इन करात, मागीर तुमच्या खात्याच्या पानार हो पुरवणदार जोडात।
+acct_enter_current_pw	तुमचो सद्याचो पासवर्ड बरयात।
+acct_relogin_retry	साइन आउट करून परत साइन इन करात, मागीर परत यत्न करात।
+acct_pw_mismatch	नवो पासवर्ड आनी थारावणी जुळनात।
+acct_pw_updated	पासवर्ड अद्ययावत जालो।
+acct_enter_email_pw	पासवर्ड साइन-इना खातीर एक ईमेल बरयात।
+acct_pw_added	पासवर्ड जोडलो। आतां ईमेलान लेगीत साइन इन करूंक येता।
+acct_method_linked	साइन-इन पद्दत जोडली।
+acct_phone_linked	फोन ह्या खात्याक जोडलो।
+acct_verify_sent	पडताळणी ईमेल धाडला — तुमचो इनबॉक्स पळयात।
+shop_pricing_soon	किंमती बेगीन येतात
+shop_request_quote	कोटेशन मागात
+shop_add_to_cart	कार्टींत जोडात
+shop_notify_later	उपरांत म्हाका कळयात
+shop_included	आसपावीत
+shop_in_cart	{plan} तुमच्या कार्टींत आसा।
+shop_remove	काडात
+shop_cart_is_empty	कार्ट रिकामी आसा।
+shop_prices_unpublished	ह्या उत्पादना खातीर स्वता विकत घेवपाच्यो किंमती अजून उजवाडाक आयल्यो नात। कस्टम कोटेशन मागात वा उपरांत परत पळयात।
+shop_cart_cleared	कार्ट रिकामी केली।
+plan_free_title	सदांच फुकट
+plan_free_blurb	तुमच्या उपकरणांचेर पुराय स्थानीक उत्पादन। क्लावड शुल्क ना।
+plan_steady_blurb	लायव क्लावड · 10 GB · उणी बँडविड्थ
+plan_swift_blurb	लायव क्लावड · 25 GB · मध्यम बँडविड्थ
+plan_priority_blurb	लायव क्लावड · 50 GB · सगळ्यांत चड प्रमाणीत बँडविड्थ
+plan_custom_title	कस्टम
+plan_custom_blurb	मान्य कोटा आनी बँडविड्थ। कोटेशन Steady परस उणें वा Priority परस चड जावंक शकता।
