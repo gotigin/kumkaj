@@ -1014,6 +1014,9 @@ script_mod! {
                             go_pricing := NavLink{text: "Pricing"}
                             go_faq := NavLink{text: "FAQ"}
                         }
+                        // Same NavLink chrome as Menus/FAQ — not an HTML overlay.
+                        go_login := NavLink{text: "Login"}
+                        go_lang := NavLink{text: "EN"}
                         bar_cta := BarCta{text: "Get it free"}
                     }
 
@@ -1632,12 +1635,13 @@ script_mod! {
                             footer_wrap := Wrap{
                                 spacing: 18
                                 padding: Inset{left: 64. right: 64. top: 36. bottom: 40.}
+                                // Brand on top, all legal links on the next row — nothing clipped.
                                 footer_row := View{
                                     width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 24
-                                    align: Align{y: 0.5}
-                                    View{
+                                    flow: Down
+                                    spacing: 14
+                                    align: Align{x: 0.0 y: 0.0}
+                                    footer_brand := View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 12
@@ -1648,10 +1652,9 @@ script_mod! {
                                             src: crate_resource("self:resources/media/app-icon.webp")
                                         }
                                         View{
-                                            width: Fill height: Fit
+                                            width: Fit height: Fit
                                             flow: Down
                                             spacing: 2
-                                            // Footer brand mark (cream on red): chrome, not copy.
                                             Markdown{
                                                 selectable: false
                                                 width: Fit height: Fit
@@ -1683,7 +1686,7 @@ script_mod! {
                                         }
                                     }
                                     footer_links := View{
-                                        width: Fit height: Fit
+                                        width: Fill height: Fit
                                         flow: Right
                                         spacing: 4
                                         align: Align{y: 0.5}

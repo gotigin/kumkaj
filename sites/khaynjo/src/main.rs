@@ -164,7 +164,7 @@ const MIN_WIDTH: f64 = 320.0;
 /// Do **not** list shelf PagerBtns here — under ~520 px that turns each
 /// chip into its own row (phone 2026-11-20). `shelf_bar` is one ScrollX
 /// strip of Fit chips (play/pause icons + speed number).
-const ROWS: [(&[LiveId], f64); 23] = [
+const ROWS: [(&[LiveId], f64); 22] = [
     (ids!(hero_row), 900.0),
     // Both labels ("Get it on Google Play" + "WhatsApp for a demo") need
     // about 480 px plus slack; 420 left them overlapping on a narrow phone.
@@ -188,9 +188,8 @@ const ROWS: [(&[LiveId], f64); 23] = [
     (ids!(faq_r1), 720.0),
     (ids!(faq_r2), 720.0),
     (ids!(close_cta), 560.0),
-    (ids!(footer_row), 640.0),
-    // Privacy · Terms · Google Play · kumkaj.com do not fit one row on a phone.
-    (ids!(footer_links), 520.0),
+    // Footer brand+links stack in ui.rs (flow Down). Links stay one row until phone.
+    (ids!(footer_links), 720.0),
 ];
 /// Fixed-width props: (path, desk width, the min width of their row).
 /// When the row stacks, the prop goes full width.
@@ -371,21 +370,84 @@ const FEATURE_ICONS: [(&[LiveId], &str); 8] = [
     ),
 ];
 
+/// Hash segments (`#menus`, `#auth=LO`, `#menus&auth=LO`). `auth=` is the
+/// signed-in chip bridge from firebase-init (Makepad cannot use web-sys).
+fn hash_segments(hash: &str) -> impl Iterator<Item = &str> {
+    hash.trim_start_matches('#')
+        .split('&')
+        .map(str::trim)
+        .filter(|p| !p.is_empty())
+}
+
 /// Section id for a URL hash: a section id, an old chapter id, or an old
 /// chapter number (`#3`). Unknown → None (stay at the top).
 fn section_from_hash(hash: &str) -> Option<&'static str> {
-    let key = hash.trim_start_matches('#').trim().to_ascii_lowercase();
-    if key.is_empty() {
-        return None;
+    for part in hash_segments(hash) {
+        if part.to_ascii_lowercase().starts_with("auth=") {
+            continue;
+        }
+        let key = part.to_ascii_lowercase();
+        if let Some((id, _)) = SECTIONS.iter().find(|(id, _)| *id == key) {
+            return Some(id);
+        }
+        if let Some((_, to)) = OLD_CHAPTERS.iter().find(|(old, _)| *old == key) {
+            return Some(to);
+        }
+        if let Ok(n) = key.parse::<usize>() {
+            if let Some((_, to)) = OLD_CHAPTERS.get(n.checked_sub(1)?) {
+                return Some(to);
+            }
+        }
     }
-    if let Some((id, _)) = SECTIONS.iter().find(|(id, _)| *id == key) {
-        return Some(id);
+    None
+}
+
+/// Initials / label from `#auth=XX` (set by firebase-init.js).
+fn auth_label_from_hash(hash: &str) -> Option<String> {
+    for part in hash_segments(hash) {
+        let Some(raw) = part
+            .strip_prefix("auth=")
+            .or_else(|| part.strip_prefix("AUTH="))
+        else {
+            continue;
+        };
+        let label = percent_decode(raw);
+        let label = label.trim().to_string();
+        if !label.is_empty() {
+            return Some(label);
+        }
     }
-    if let Some((_, to)) = OLD_CHAPTERS.iter().find(|(old, _)| *old == key) {
-        return Some(to);
+    None
+}
+
+fn percent_decode(input: &str) -> String {
+    let bytes = input.as_bytes();
+    let mut out = Vec::with_capacity(bytes.len());
+    let mut i = 0;
+    while i < bytes.len() {
+        if bytes[i] == b'%' && i + 2 < bytes.len() {
+            let h = |c: u8| -> Option<u8> {
+                match c {
+                    b'0'..=b'9' => Some(c - b'0'),
+                    b'a'..=b'f' => Some(c - b'a' + 10),
+                    b'A'..=b'F' => Some(c - b'A' + 10),
+                    _ => None,
+                }
+            };
+            if let (Some(a), Some(b)) = (h(bytes[i + 1]), h(bytes[i + 2])) {
+                out.push((a << 4) | b);
+                i += 3;
+                continue;
+            }
+        }
+        if bytes[i] == b'+' {
+            out.push(b' ');
+        } else {
+            out.push(bytes[i]);
+        }
+        i += 1;
     }
-    let n: usize = key.parse().ok()?;
-    OLD_CHAPTERS.get(n.checked_sub(1)?).map(|(_, to)| *to)
+    String::from_utf8_lossy(&out).into_owned()
 }
 
 #[derive(Clone, Copy, PartialEq, Debug)]
@@ -488,6 +550,12 @@ pub struct App {
     /// Native-only: apply shelf search once the menus section has settled.
     #[rust]
     pending_shelf_query: Option<String>,
+    /// Topbar Login chip label from Firebase session (`khaynjo.auth.chip` in localStorage).
+    #[rust]
+    auth_chip_label: Option<String>,
+    /// Frames left to re-read the auth chip while firebase-init settles.
+    #[rust]
+    auth_chip_poll: u8,
     /// Playing the continuous flow (search always forces pause).
     #[rust]
     shelf_playing: bool,
@@ -795,7 +863,23 @@ impl App {
             scale_labels(&page, tier, &self.desk_font, &mut next);
         }
         self.fit_ticket_lines(cx, layout_w);
+        self.sync_auth_chip(cx);
         self.ui.redraw(cx);
+    }
+
+    /// Login → initials when firebase-init writes `#auth=XX` into the URL hash.
+    fn sync_auth_chip(&mut self, cx: &mut Cx) {
+        let next = read_auth_chip_label(cx);
+        if next != self.auth_chip_label {
+            self.auth_chip_label = next.clone();
+            let text = next.as_deref().unwrap_or("Login");
+            self.ui.button(cx, ids!(go_login)).set_text(cx, text);
+            self.ui.redraw(cx);
+        }
+        if self.auth_chip_poll > 0 {
+            self.auth_chip_poll = self.auth_chip_poll.saturating_sub(1);
+            let _ = cx.new_next_frame();
+        }
     }
 
     #[cfg(not(target_arch = "wasm32"))]
@@ -1536,6 +1620,7 @@ fn url_encode(text: &str) -> String {
 fn open_link(cx: &mut Cx, url: &str) {
     #[cfg(target_arch = "wasm32")]
     {
+        // External destinations (Play, WhatsApp, other brands) → new tab.
         cx.open_url(url, OpenUrlInPlace::No);
     }
     #[cfg(not(target_arch = "wasm32"))]
@@ -1553,6 +1638,61 @@ fn open_link(cx: &mut Cx, url: &str) {
             log!("could not open {url}: {err}");
         }
     }
+}
+
+/// Same-site paths (Login /account, privacy, shop, …) replace this tab.
+fn open_same_site(cx: &mut Cx, url: &str) {
+    #[cfg(target_arch = "wasm32")]
+    {
+        cx.open_url(url, OpenUrlInPlace::Yes);
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        open_link(cx, url);
+    }
+}
+
+/// Makepad EN chip → `#lang` (keep `#auth=` so the Login chip stays signed-in).
+fn open_lang_picker(cx: &mut Cx) {
+    #[cfg(target_arch = "wasm32")]
+    {
+        let url = match read_auth_chip_label(cx) {
+            Some(label) => format!("#lang&auth={}", url_encode(&label)),
+            None => "#lang".to_string(),
+        };
+        cx.open_url(&url, OpenUrlInPlace::Yes);
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let _ = cx;
+        log!("language picker is web-only");
+    }
+}
+
+/// Signed-in chip → `#authmenu` (HTML Logout / Account menu).
+fn open_auth_menu(cx: &mut Cx) {
+    #[cfg(target_arch = "wasm32")]
+    {
+        let url = match read_auth_chip_label(cx) {
+            Some(label) => format!("#authmenu&auth={}", url_encode(&label)),
+            None => "#authmenu".to_string(),
+        };
+        cx.open_url(&url, OpenUrlInPlace::Yes);
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let _ = cx;
+        log!("auth menu is web-only");
+    }
+}
+
+/// Firebase session chip via `#auth=` hash (firebase-init.js). No web-sys —
+/// that pulls wasm-bindgen imports Makepad's bridge does not provide.
+fn read_auth_chip_label(cx: &Cx) -> Option<String> {
+    let OsType::Web(page) = cx.os_type() else {
+        return None;
+    };
+    auth_label_from_hash(&page.hash)
 }
 
 impl MatchEvent for App {
@@ -1582,6 +1722,7 @@ impl MatchEvent for App {
         self.pending_stable = 0;
         // ~0.25s at 60fps — enough for hero RoundedView/text to compile alone.
         self.shelf_warmup_frames = 24;
+        self.auth_chip_poll = 90;
         let _ = cx.new_next_frame();
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
@@ -1644,29 +1785,44 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(to_privacy)).clicked(actions) {
             let url = self.site_url(cx, PRIVACY_PATH);
-            open_link(cx, &url);
+            open_same_site(cx, &url);
         }
         if self.ui.button(cx, ids!(to_terms)).clicked(actions) {
             let url = self.site_url(cx, TERMS_PATH);
-            open_link(cx, &url);
+            open_same_site(cx, &url);
         }
         if self.ui.button(cx, ids!(to_cancellation)).clicked(actions) {
             let url = self.site_url(cx, CANCELLATION_PATH);
-            open_link(cx, &url);
+            open_same_site(cx, &url);
         }
         if self.ui.button(cx, ids!(to_photo_credits)).clicked(actions) {
             let url = self.site_url(cx, PHOTO_CREDITS_PATH);
-            open_link(cx, &url);
+            open_same_site(cx, &url);
         }
         if self.ui.button(cx, ids!(to_shop)).clicked(actions)
             || self.ui.button(cx, ids!(go_cloud_shop)).clicked(actions)
         {
             let url = self.site_url(cx, SHOP_PATH);
-            open_link(cx, &url);
+            open_same_site(cx, &url);
         }
+
+        // Footer "Account" → manage account page (no bounce-back).
         if self.ui.button(cx, ids!(to_account)).clicked(actions) {
             let url = self.site_url(cx, ACCOUNT_PATH);
-            open_link(cx, &url);
+            open_same_site(cx, &url);
+        }
+        // Topbar Login → account; signed-in initials → Logout/Account menu.
+        if self.ui.button(cx, ids!(go_login)).clicked(actions) {
+            if self.auth_chip_label.is_some() {
+                open_auth_menu(cx);
+            } else {
+                let url = self.site_url(cx, "/account?next=/");
+                open_same_site(cx, &url);
+            }
+        }
+        // EN is a real topbar NavLink; opens the HTML 115-lang picker (hash bridge).
+        if self.ui.button(cx, ids!(go_lang)).clicked(actions) {
+            open_lang_picker(cx);
         }
         if self.ui.button(cx, ids!(to_kumkaj)).clicked(actions)
             || self.ui.button(cx, ids!(foot_kumkaj)).clicked(actions)
@@ -1697,7 +1853,15 @@ impl AppMain for App {
         self.match_event(cx, event);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         match event {
-            Event::Startup | Event::WindowGeomChange(_) => self.apply_responsive(cx),
+            Event::Startup | Event::WindowGeomChange(_) => {
+                if matches!(event, Event::Startup) {
+                    self.auth_chip_poll = 90; // ~1.5s at 60fps for Auth restore
+                    let _ = cx.new_next_frame();
+                }
+                self.apply_responsive(cx);
+            }
+            // hashchange (incl. `#auth=`) arrives as Signal on web.
+            Event::Signal => self.sync_auth_chip(cx),
             Event::Scroll(_) => {
                 self.paint_nav_active(cx);
             }
@@ -1705,6 +1869,8 @@ impl AppMain for App {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
+                // firebase-init may write the chip after first paint.
+                self.sync_auth_chip(cx);
                 self.maybe_finish_shelf_warmup(cx);
                 self.paint_nav_active(cx);
                 if ne.set.contains(&self.shelf_anim_frame) {
@@ -1782,6 +1948,11 @@ mod tests {
         assert_eq!(section_from_hash("#10"), Some("start"));
         assert_eq!(section_from_hash("#11"), None);
         assert_eq!(section_from_hash(""), None);
+        assert_eq!(section_from_hash("#auth=LO"), None);
+        assert_eq!(section_from_hash("#menus&auth=LO"), Some("menus"));
+        assert_eq!(auth_label_from_hash("#auth=LO"), Some("LO".into()));
+        assert_eq!(auth_label_from_hash("#menus&auth=AB"), Some("AB".into()));
+        assert_eq!(auth_label_from_hash("#menus"), None);
         // Every old chapter maps to a real section.
         for (_, to) in OLD_CHAPTERS {
             assert!(SECTIONS.iter().any(|(id, _)| *id == to), "{to}");

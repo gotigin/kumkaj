@@ -46,7 +46,9 @@ These are OK **only** when clearly scoped and never mistaken for full product pr
 | Harness | Allowed when | Must |
 | --- | --- | --- |
 | Mock billing / `BILLING_ALLOW_MOCK=1` | Local Docker smoke | Stay off AWS / public Hosting; output must say **mock-only** |
-| `DEV_AUTH_BYPASS` | Debug builds + local smoke | Never on AWS / release; not a substitute for Firebase Auth in product paths |
+| `DEV_AUTH_BYPASS` | Debug builds + API-only local smoke | Never on AWS / release; **not** for account-UI product paths |
+| Firebase **Auth Emulator** | Local isolated site+API E2E | Inject `__KUMKAJ_AUTH_EMULATOR__`; never mix with production Auth / Hosting |
+| Paddle **sandbox** + local tunnel | Local pay→webhook E2E | Use `PADDLE_NTF_LOCAL_ID` only; leave `api.*` deployed destinations alone |
 | UI smoke on Xvfb | Automated desk flows | Fail on real stalls / wrong UI; no “pid alive = pass” |
 | Product cert tiers | Ship gates | See `product-cert.sh` / DEV.md — do not skip store tiers casually |
 

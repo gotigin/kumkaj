@@ -5,6 +5,7 @@
 mod auth;
 mod billing;
 mod db;
+mod mail;
 mod routes;
 
 use std::net::SocketAddr;
@@ -16,6 +17,7 @@ use tower_http::trace::TraceLayer;
 use tracing_subscriber::EnvFilter;
 
 use billing::BillingConfig;
+use mail::MailConfig;
 
 pub struct AppState {
     pub pool: sqlx::PgPool,
@@ -23,6 +25,7 @@ pub struct AppState {
     pub firebase_project_id: String,
     pub verifier: auth::FirebaseVerifier,
     pub billing: Option<BillingConfig>,
+    pub mail: MailConfig,
 }
 
 #[tokio::main]
@@ -55,12 +58,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         tracing::info!("billing disabled (set BILLING_ENABLED=1 for sandbox/live checkout)");
     }
 
+    let mail = MailConfig::from_env();
+    if mail.enabled {
+        tracing::info!(from = %mail.from, "MAIL_ENABLED — SES plan confirmations on");
+    }
+
     let state = Arc::new(AppState {
         pool,
         product_code: "tabiyat",
         firebase_project_id,
         verifier,
         billing: Some(billing_cfg),
+        mail,
     });
 
     let app = Router::new()

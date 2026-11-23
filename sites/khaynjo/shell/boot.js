@@ -21,6 +21,15 @@
   var got = 0;
   var finished = false;
   var failed = false;
+  // After the first successful home boot this session, skip the loading theatre
+  // on return from /account, /shop, etc. (wasm may still compile; user sees home).
+  var warm = false;
+  try {
+    warm = sessionStorage.getItem('khaynjo.boot.warm') === '1';
+  } catch (e) {}
+  if (warm) {
+    boot.classList.add('boot--warm');
+  }
 
   function setProgress(p) {
     if (p < 0) p = 0;
@@ -92,7 +101,7 @@
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lineAt = 0;
   var lineTimer = 0;
-  if (lines.length > 1 && !still) {
+  if (lines.length > 1 && !still && !warm) {
     lineTimer = window.setInterval(function () {
       tag.classList.add('boot-tag--out');
       window.setTimeout(function () {
@@ -152,9 +161,12 @@
     setProgress(1);
     boot.setAttribute('aria-busy', 'false');
     boot.classList.add('boot--done');
+    try {
+      sessionStorage.setItem('khaynjo.boot.warm', '1');
+    } catch (e) {}
     window.setTimeout(function () {
       if (boot.parentNode) boot.parentNode.removeChild(boot);
-    }, 400);
+    }, warm ? 0 : 400);
   }
   function loaderGone() {
     return document.getElementsByClassName('canvas_loader').length === 0;

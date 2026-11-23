@@ -240,24 +240,104 @@ function formatInrPaise(paise) {
   return `₹${(paise / 100).toLocaleString("en-IN")}/yr ex-tax`;
 }
 
+function loadScriptOnce(src) {
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector(`script[src="${src}"]`);
+    if (existing) {
+      if (existing.dataset.loaded === "1") resolve();
+      else existing.addEventListener("load", () => resolve(), { once: true });
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = src;
+    s.async = true;
+    s.onload = () => {
+      s.dataset.loaded = "1";
+      resolve();
+    };
+    s.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.appendChild(s);
+  });
+}
+
+/** Paddle.js overlay — keeps the account page; no full navigation. */
+async function openPaddleOverlay(user, transactionId, billingCfg) {
+  const token = billingCfg?.paddle_client_token;
+  if (!token) throw new Error("Paddle client token missing from billing config");
+  await loadScriptOnce("https://cdn.paddle.com/paddle/v2/paddle.js");
+  const Paddle = window.Paddle;
+  if (!Paddle) throw new Error("Paddle.js failed to initialize");
+  window.__kumkajCheckoutPaid = false;
+  window.__kumkajCheckoutFailed = false;
+  if (!window.__kumkajPaddleReady) {
+    if ((billingCfg.paddle_env || billingCfg.mode) === "sandbox") {
+      Paddle.Environment.set("sandbox");
+    }
+    Paddle.Initialize({
+      token,
+      eventCallback(ev) {
+        const name = ev?.name || ev?.type || "";
+        if (name === "checkout.completed") {
+          window.__kumkajCheckoutPaid = true;
+          void syncCloudAccount(user);
+          showError("");
+          showOk("Payment received — refreshing your plan…");
+        }
+        if (
+          name === "checkout.error" ||
+          name === "checkout.payment.failed" ||
+          name === "checkout.payment.rejected"
+        ) {
+          window.__kumkajCheckoutFailed = true;
+          const detail =
+            ev?.error?.detail ||
+            ev?.data?.error?.detail ||
+            ev?.data?.message ||
+            "Payment was declined or failed";
+          showOk("");
+          showError(`${detail}. Your plan was not changed.`);
+          setBusy(false);
+        }
+        if (name === "checkout.closed") {
+          setBusy(false);
+          if (!window.__kumkajCheckoutPaid && !window.__kumkajCheckoutFailed) {
+            showOk("");
+            showError("Checkout closed — no payment completed. Your plan is unchanged.");
+          }
+        }
+      },
+    });
+    window.__kumkajPaddleReady = true;
+  }
+  Paddle.Checkout.open({
+    transactionId,
+    settings: { displayMode: "overlay", theme: "light" },
+  });
+}
+
 async function startCheckout(user, planId, provider) {
   if (!user) return;
   setBusy(true);
   showError("");
   try {
     const idToken = await user.getIdToken();
-    const res = await fetch(`${CLOUD_API_BASE}/v1/billing/checkout`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${idToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ plan_id: planId, provider }),
-    });
+    const [cfgRes, res] = await Promise.all([
+      fetch(`${CLOUD_API_BASE}/v1/billing/config`, {
+        headers: { Authorization: `Bearer ${idToken}` },
+      }),
+      fetch(`${CLOUD_API_BASE}/v1/billing/checkout`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ plan_id: planId, provider }),
+      }),
+    ]);
+    const billingCfg = await cfgRes.json().catch(() => ({}));
     const body = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(body.error || `Checkout HTTP ${res.status}`);
     if (provider === "mock" && body.checkout_id) {
-      // Unpaid mock activate is local-only; API must advertise mock in providers.
       const done = await fetch(`${CLOUD_API_BASE}/v1/billing/sandbox/complete`, {
         method: "POST",
         headers: {
@@ -272,18 +352,23 @@ async function startCheckout(user, planId, provider) {
       await syncCloudAccount(user);
       return;
     }
-    if (body.url) {
-      window.location.href = body.url;
+    if (provider === "paddle") {
+      const txn =
+        body.transaction_id ||
+        (typeof body.url === "string"
+          ? new URL(body.url, window.location.origin).searchParams.get("_ptxn")
+          : null);
+      if (!txn) throw new Error("Checkout missing Paddle transaction id");
+      await openPaddleOverlay(user, txn, billingCfg);
       return;
     }
-    throw new Error("Checkout did not return a URL");
+    throw new Error("Checkout did not return a usable payment session");
   } catch (err) {
     showError(err?.message || "Checkout failed");
   } finally {
     setBusy(false);
   }
 }
-
 async function paintBillingPlans(user, idToken) {
   if (!els.cardCloudPlans || !els.planList) return;
   try {

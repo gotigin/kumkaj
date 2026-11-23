@@ -65,7 +65,20 @@ if ! command -v firebase >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "1/3 Build Makepad wasm (kumkaj-site, release, --no-threads)"
+echo "1/4 Bundle Firebase Auth → static/js/firebase-init.js"
+(
+  cd "$SITE"
+  if [[ ! -d node_modules/firebase ]]; then
+    npm install
+  fi
+  npm run build
+)
+if [[ ! -f "$SITE/static/js/firebase-init.js" ]]; then
+  echo "error: missing $SITE/static/js/firebase-init.js" >&2
+  exit 1
+fi
+
+echo "2/4 Build Makepad wasm (kumkaj-site, release, --no-threads)"
 (
   cd "$ROOT"
   cargo run -q --manifest-path vendor/makepad-full/tools/cargo_makepad/Cargo.toml -- \
@@ -77,7 +90,7 @@ if [[ ! -f "$WASM_PKG/index.html" || ! -f "$WASM_PKG/kumkaj-site.wasm" ]]; then
   exit 1
 fi
 
-echo "2/3 Stage Firebase public/ = wasm package + static shell"
+echo "3/4 Stage Firebase public/ = wasm package + static shell"
 rm -rf "$OUT"
 mkdir -p "$OUT"
 # cargo-makepad writes a .br twin beside every file; Firebase Hosting
@@ -212,12 +225,11 @@ HEAD_INJECT="$(sed -e "s|__BUILD_ID__|$BUILD_ID|g" -e "s|__PREVIEW_URL__|$PREVIE
 BODY_INJECT='        <noscript><p>Kumkaj — business operating systems by Gotigin. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
 # Optional Analytics bundle if the owner added client/firebase-init.js later.
-ANALYTICS_LINE=""
 if [[ -f "$OUT/js/firebase-init.js" ]]; then
-  ANALYTICS_LINE='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>'
-  BODY_INJECT="$ANALYTICS_LINE
-$BODY_INJECT"
+        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
 fi
+BODY_INJECT="$CHROME_LINES
+$BODY_INJECT"
 awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
   BEGIN { done_title=0; done_body=0 }
   /<title>kumkaj-site<\/title>/ && !done_title {
@@ -244,7 +256,7 @@ mv "$TMP" "$INDEX"
 printf '%s\n' "$BUILD_ID" > "$OUT/build-id.txt"
 echo "Patched $INDEX (title/OG + noscript + cache-bust v=$BUILD_ID)"
 
-echo "3/3 firebase deploy --only hosting → $PROJECT"
+echo "4/4 firebase deploy --only hosting → $PROJECT"
 FB_ARGS=(deploy --only hosting --project "$PROJECT")
 (
   cd "$SITE"

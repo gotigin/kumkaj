@@ -1,0 +1,134 @@
+/* HTML topnav only. Login is a normal .topnav a[data-nav=login]. */
+
+.topnav .site-auth-chrome,
+.topnav .site-lang-chrome,
+.topbar .site-auth-chrome,
+.topbar .site-lang-chrome {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.topnav .site-auth-logout,
+.topnav .site-lang-btn,
+.topbar .site-auth-logout,
+.topbar .site-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.55rem 0.85rem;
+  border: 0;
+  border-radius: 0.45rem;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+/* Match sibling nav chips when the page uses panel-backed links */
+.topnav .site-lang-btn,
+.topnav .site-auth-logout {
+  background: var(--panel, transparent);
+  color: var(--ink, inherit);
+}
+.topnav .site-lang-btn:hover,
+.topnav .site-auth-logout:hover {
+  color: var(--amber, inherit);
+}
+
+.site-auth-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  font-size: 0.75rem;
+  overflow: hidden;
+}
+.site-auth-avatar--photo img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 999px;
+}
+.site-auth-avatar--text,
+.site-auth-avatar--anon {
+  padding: 0 0.45rem;
+  background: rgba(127, 127, 127, 0.18);
+}
+
+.site-lang-chrome { position: relative; }
+.site-lang-pop {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  left: auto;
+  z-index: 40;
+  min-width: 16rem;
+  max-width: min(22rem, 92vw);
+  max-height: min(70vh, 28rem);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-radius: 0.55rem;
+  background: #111018;
+  color: #f7f6fb;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.site-lang-pop[hidden] { display: none !important; }
+.site-lang-search {
+  width: 100%;
+  margin: 0 0 0.4rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+.site-lang-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  flex: 1 1 auto;
+}
+.site-lang-menu li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+.site-lang-native { font-weight: 600; }
+.site-lang-en { font-size: 0.78rem; opacity: 0.72; }
+.site-lang-empty { opacity: 0.65; cursor: default; }
+.site-lang-menu li:hover,
+.site-lang-menu li[aria-selected="true"] { background: rgba(255, 255, 255, 0.1); }
+
+@media (max-width: 720px) {
+  .site-lang-pop {
+    position: fixed;
+    top: auto;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    max-width: none;
+    max-height: 60vh;
+  }
+}

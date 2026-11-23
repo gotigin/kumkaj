@@ -218,10 +218,10 @@ const ROWS: [(&[LiveId], f64); 13] = [
     (ids!(cod.cod_row), 820.0),
     (ids!(offline.offline_row), 640.0),
     (ids!(start.close_cta.buttons), 440.0),
-    (ids!(footer.footer_row), 480.0),
+    (ids!(footer.footer_row), 900.0),
     // Privacy · Terms · Cancellation · Cloud shop · Account · kumkaj.com
     // overflow a phone content column when kept on one row.
-    (ids!(footer.footer_links), 520.0),
+    (ids!(footer.footer_links), 900.0),
 ];
 /// The weigh toy's four steppers: the name sits above − value + when the
 /// card has no room for a label column (under 340 px of content).
@@ -931,6 +931,9 @@ impl App {
                 view.layout.flow = if content_w >= min_w { Flow::right() } else { Flow::Down };
             }
         }
+        self.ui
+            .view(cx, ids!(footer.footer_spacer))
+            .set_visible(cx, content_w >= 900.0);
         for (path, desk_w, row_min_w) in PROPS {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
                 view.walk.width = if content_w >= row_min_w { Size::Fixed(desk_w) } else { Size::fill() };

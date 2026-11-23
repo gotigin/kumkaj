@@ -1327,7 +1327,7 @@ script_mod! {
                                 spacing: 12
                                 align: Align{y: 0.5}
                                 footer_brand := View{
-                                    width: Fill height: Fit
+                                    width: Fit height: Fit
                                     flow: Right
                                     spacing: 10
                                     align: Align{y: 0.5}
@@ -1335,10 +1335,10 @@ script_mod! {
                                         src: crate_resource("self:resources/media/app-icon.webp")
                                     }
                                     View{
-                                        width: Fill height: Fit
+                                        width: Fit height: Fit
                                         flow: Down
                                         spacing: 2
-                                        Small{width: Fill body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
+                                        Small{width: Fit body: "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
                                         View{
                                             width: Fit height: Fit
                                             flow: Right
@@ -1352,6 +1352,7 @@ script_mod! {
                                         }
                                     }
                                 }
+                                footer_spacer := View{ width: Fill height: 1 }
                                 footer_links := View{
                                     width: Fit height: Fit
                                     flow: Right

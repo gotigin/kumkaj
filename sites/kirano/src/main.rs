@@ -112,9 +112,9 @@ const ROWS: [(&[LiveId], f64); 11] = [
     (ids!(lan.lan_row), 700.0),
     (ids!(free.free_row), 700.0),
     (ids!(start.close_cta.buttons), 440.0),
-    (ids!(footer.footer_row), 480.0),
+    (ids!(footer.footer_row), 900.0),
     // Five legal/shop pills overflow a phone content column when kept on one row.
-    (ids!(footer.footer_links), 520.0),
+    (ids!(footer.footer_links), 900.0),
 ];
 const PROPS: [(&[LiveId], f64, f64); 2] = [
     (ids!(brand.bill_card), 420.0, 1024.0),

@@ -40,6 +40,9 @@ pub struct CheckoutResponse {
     pub mode: &'static str,
     pub url: String,
     pub plan_id: String,
+    /// Paddle transaction id (`txn_…`) for Paddle.js overlay — not a page redirect.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub transaction_id: Option<String>,
 }
 
 #[derive(Debug)]
@@ -144,12 +147,18 @@ pub async fn start_checkout(
     )
     .await?;
 
+    let transaction_id = match provider {
+        Provider::Paddle => Some(created.external_id.clone()),
+        Provider::Mock => None,
+    };
+
     Ok(CheckoutResponse {
         checkout_id: checkout_id.to_string(),
         provider: provider.as_str(),
         mode: cfg.mode.as_str(),
         url: created.url,
         plan_id: plan_id.to_string(),
+        transaction_id,
     })
 }
 

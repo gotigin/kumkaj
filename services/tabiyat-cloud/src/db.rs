@@ -33,9 +33,6 @@ pub struct PlanRow {
     pub bandwidth_band: String,
     pub price_inr_paise: Option<i64>,
     pub includes_live_cloud: bool,
-    /// Legacy column; Stripe billing removed. Kept for DB compat; unused.
-    #[allow(dead_code)]
-    pub stripe_price_id: Option<String>,
     pub paddle_price_id: Option<String>,
 }
 
@@ -135,15 +132,34 @@ async fn find_by_firebase_uid(
     .fetch_optional(pool)
     .await?;
 
-    Ok(row.map(|r| Account {
+    Ok(row.map(map_account_row))
+}
+
+pub async fn account_by_id(pool: &PgPool, account_id: Uuid) -> Result<Option<Account>, sqlx::Error> {
+    let row = sqlx::query(
+        r#"
+        SELECT account_id, username, email, phone, display_name
+        FROM accounts WHERE account_id = $1
+        "#,
+    )
+    .bind(account_id)
+    .fetch_optional(pool)
+    .await?;
+    Ok(row.map(map_account_row))
+}
+
+fn map_account_row(r: PgRow) -> Account {
+    Account {
         account_id: r.get("account_id"),
         username: r.get("username"),
         email: r.get("email"),
         phone: r.get("phone"),
         display_name: r.get("display_name"),
         email_verified_hint: false,
-    }))
+    }
 }
+
+
 
 async fn unique_username(pool: &PgPool, claims: &FirebaseClaims) -> Result<String, sqlx::Error> {
     let base = username_base(claims);
@@ -202,7 +218,6 @@ fn plan_from_row(r: &PgRow) -> PlanRow {
         bandwidth_band: r.get("bandwidth_band"),
         price_inr_paise: r.get("price_inr_paise"),
         includes_live_cloud: r.get("includes_live_cloud"),
-        stripe_price_id: r.try_get("stripe_price_id").ok().flatten(),
         paddle_price_id: r.try_get("paddle_price_id").ok().flatten(),
     }
 }
@@ -212,7 +227,7 @@ pub async fn list_plans(pool: &PgPool) -> Result<Vec<PlanRow>, sqlx::Error> {
         r#"
         SELECT plan_id, sort_order, title, quota_gb, bandwidth_band,
                price_inr_paise, includes_live_cloud,
-               stripe_price_id, paddle_price_id
+               paddle_price_id
         FROM plans WHERE active = TRUE
         ORDER BY sort_order
         "#,
@@ -228,7 +243,7 @@ pub async fn plan_by_id(pool: &PgPool, plan_id: &str) -> Result<Option<PlanRow>,
         r#"
         SELECT plan_id, sort_order, title, quota_gb, bandwidth_band,
                price_inr_paise, includes_live_cloud,
-               stripe_price_id, paddle_price_id
+               paddle_price_id
         FROM plans WHERE plan_id = $1 AND active = TRUE
         "#,
     )

@@ -224,6 +224,25 @@ async fn billing_sandbox_complete(
     };
     match billing::complete_mock_checkout(&state.pool, cfg, &account, checkout_id).await {
         Ok(()) => {
+            if let Ok(Some(sub)) = db::subscription_for(&state.pool, account.account_id).await {
+                let title = db::plan_by_id(&state.pool, &sub.plan_id)
+                    .await
+                    .ok()
+                    .flatten()
+                    .map(|p| p.title)
+                    .unwrap_or_else(|| sub.plan_id.clone());
+                let ends = sub
+                    .ends_at
+                    .map(|t| t.to_rfc3339())
+                    .unwrap_or_else(|| chrono::Utc::now().to_rfc3339());
+                if let Some(ref email) = account.email {
+                    if let Err(e) =
+                        crate::mail::send_plan_activated(&state.mail, email, &title, &ends).await
+                    {
+                        tracing::warn!(error = %e, "mock complete: plan confirmation email failed");
+                    }
+                }
+            }
             match db::subscription_for(&state.pool, account.account_id).await {
                 Ok(Some(s)) => Json(serde_json::json!({
                     "ok": true,

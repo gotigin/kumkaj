@@ -7,10 +7,32 @@ use serde_json::Value;
 use std::sync::Arc;
 use uuid::Uuid;
 
+use crate::db;
+use crate::mail;
 use crate::AppState;
 
 use super::config::Provider;
 use super::{activate_subscription, BillingError};
+
+async fn send_activation_mail(
+    state: &AppState,
+    account_id: Uuid,
+    plan_id: &str,
+) -> Result<(), String> {
+    let account = db::account_by_id(&state.pool, account_id)
+        .await
+        .map_err(|e| e.to_string())?
+        .ok_or_else(|| "account not found for mail".to_string())?;
+    let email = account.email.unwrap_or_default();
+    let plan = db::plan_by_id(&state.pool, plan_id)
+        .await
+        .map_err(|e| e.to_string())?;
+    let title = plan
+        .map(|p| p.title)
+        .unwrap_or_else(|| plan_id.to_string());
+    let ends = (chrono::Utc::now() + chrono::Duration::days(365)).to_rfc3339();
+    mail::send_plan_activated(&state.mail, &email, &title, &ends).await
+}
 
 pub async fn handle_paddle_webhook(
     State(state): State<Arc<AppState>>,
@@ -96,6 +118,10 @@ pub async fn handle_paddle_webhook(
             .await
             {
                 return billing_err(e);
+            }
+            // Best-effort kirano confirmation (SES). Do not fail the webhook on mail errors.
+            if let Err(e) = send_activation_mail(state.as_ref(), account_id, &plan_id).await {
+                tracing::warn!(%account_id, error = %e, "plan confirmation email failed");
             }
         }
     }

@@ -1,0 +1,15 @@
+{
+  "name": "kumkaj-site",
+  "private": true,
+  "description": "kumkaj.com — Firebase Auth client for the Makepad site",
+  "scripts": {
+    "build:firebase": "esbuild client/firebase-init.js --bundle --format=iife --outfile=static/js/firebase-init.js --minify",
+    "build": "npm run build:firebase"
+  },
+  "dependencies": {
+    "firebase": "^11.6.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

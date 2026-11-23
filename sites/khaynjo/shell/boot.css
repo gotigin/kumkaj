@@ -26,6 +26,19 @@ html, body { background-color: #F9F4F0; }
   transition: opacity 0.35s ease;
 }
 #boot.boot--done { opacity: 0; pointer-events: none; }
+/* Same-session return to home: keep cream cover until canvas paints, no ceremony. */
+#boot.boot--warm {
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+#boot.boot--warm .boot-mark,
+#boot.boot--warm .boot-name,
+#boot.boot--warm .boot-tag,
+#boot.boot--warm .boot-status,
+#boot.boot--warm .boot-help {
+  visibility: hidden;
+}
 /* The mark keeps its 132-unit drawing and grows a little on large screens. */
 .boot-mark { position: relative; width: 132px; height: 132px; margin: 0 0 22px; }
 @media (min-width: 900px) and (min-height: 700px) {
