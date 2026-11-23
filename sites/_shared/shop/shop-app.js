@@ -1,5 +1,5 @@
 // Kumkaj Cloud shop + cart (product sites). Checkout requires /account sign-in.
-import { CLOUD_CATALOG, formatInrPaise } from "./catalog.js";
+import { CLOUD_CATALOG } from "./catalog.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -9,6 +9,14 @@ const T = (key, english) =>
   typeof window !== "undefined" && typeof window.siteT === "function"
     ? window.siteT(key, english)
     : english;
+
+/** Price words in the visitor's language (catalog.js formatInrPaise keeps the
+ *  English for its tests). */
+function priceText(paise) {
+  if (paise == null) return T("price_quote", "Quote");
+  if (paise === 0) return "₹0";
+  return T("price_per_year", "₹{amount}/yr ex-tax").replace("{amount}", (paise / 100).toLocaleString("en-IN"));
+}
 
 /** Free forever and Custom are words; Steady, Swift and Priority are names. */
 const planTitle = (item) =>
@@ -61,7 +69,7 @@ function paintCatalog() {
     card.dataset.planId = item.id;
     const priceLabel = !PRICES_READY && item.sellable
       ? T("shop_pricing_soon", "Pricing coming soon")
-      : formatInrPaise(item.priceInrPaise);
+      : priceText(item.priceInrPaise);
     const actions = document.createElement("div");
     actions.className = "shop-card-actions";
     if (item.quoteOnly) {
@@ -131,9 +139,7 @@ function paintCart() {
     if (!item) continue;
     const row = document.createElement("div");
     row.className = "shop-cart-row";
-    row.innerHTML = `<strong>${planTitle(item)}</strong><span>${formatInrPaise(
-      item.priceInrPaise
-    )}</span>`;
+    row.innerHTML = `<strong>${planTitle(item)}</strong><span>${priceText(item.priceInrPaise)}</span>`;
     const rm = document.createElement("button");
     rm.type = "button";
     rm.className = "btn btn-ghost";

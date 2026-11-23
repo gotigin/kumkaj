@@ -27,6 +27,11 @@ import {
 
 const $ = (id) => document.getElementById(id);
 
+/** Site copy in the picked language (static/js/site-i18n.js). Keys live in
+ * src/locale.rs EN (the locale tests compare every call here with EN);
+ * English until the pack is here, and `site:i18n` repaints what was written. */
+const T = (key, english) => (window.siteT ? window.siteT(key, english) : english);
+
 /** Override via `window.__KUMKAJ_CLOUD_API__` (no trailing slash). */
 const CLOUD_API_BASE =
   (typeof window !== "undefined" && window.__KUMKAJ_CLOUD_API__) ||
@@ -199,26 +204,26 @@ function setBusy(busy) {
 function friendlyError(err) {
   const code = err?.code || "";
   const map = {
-    "auth/invalid-email": "Enter a valid email address.",
-    "auth/weak-password": "Use a password with at least 6 characters.",
-    "auth/wrong-password": "Wrong password.",
-    "auth/invalid-credential": "Email or password is wrong.",
-    "auth/popup-closed-by-user": "Sign-in window was closed.",
-    "auth/cancelled-popup-request": "Sign-in was cancelled.",
-    "auth/unauthorized-domain": "This domain is not authorized for Firebase Auth.",
-    "auth/operation-not-allowed": "That sign-in method is not enabled yet.",
-    "auth/too-many-requests": "Too many attempts. Try again later.",
-    "auth/invalid-phone-number": "Use a full phone number with country code (e.g. +91…).",
-    "auth/invalid-verification-code": "That SMS code is wrong or expired.",
-    "auth/user-not-found": "No account with that email. Continue to create one, or use another method.",
-    "auth/requires-recent-login": "For security, sign in again, then retry this change.",
-    "auth/credential-already-in-use": "That sign-in method is already used by another account.",
-    "auth/email-already-in-use": "That email is already used by another account.",
-    "auth/provider-already-linked": "That method is already linked to this account.",
+    "auth/invalid-email": T("acct_err_invalid_email", "Enter a valid email address."),
+    "auth/weak-password": T("acct_err_weak_password", "Use a password with at least 6 characters."),
+    "auth/wrong-password": T("acct_err_wrong_password", "Wrong password."),
+    "auth/invalid-credential": T("acct_err_invalid_credential", "Email or password is wrong."),
+    "auth/popup-closed-by-user": T("acct_err_popup_closed", "Sign-in window was closed."),
+    "auth/cancelled-popup-request": T("acct_err_popup_cancelled", "Sign-in was cancelled."),
+    "auth/unauthorized-domain": T("acct_err_unauthorized_domain", "This domain is not authorized for Firebase Auth."),
+    "auth/operation-not-allowed": T("acct_err_method_disabled", "That sign-in method is not enabled yet."),
+    "auth/too-many-requests": T("acct_err_too_many", "Too many attempts. Try again later."),
+    "auth/invalid-phone-number": T("acct_err_phone_format", "Use a full phone number with country code (e.g. +91…)."),
+    "auth/invalid-verification-code": T("acct_err_sms_code", "That SMS code is wrong or expired."),
+    "auth/user-not-found": T("acct_err_no_account", "No account with that email. Continue to create one, or use another method."),
+    "auth/requires-recent-login": T("acct_err_recent_login", "For security, sign in again, then retry this change."),
+    "auth/credential-already-in-use": T("acct_err_credential_in_use", "That sign-in method is already used by another account."),
+    "auth/email-already-in-use": T("acct_err_email_in_use", "That email is already used by another account."),
+    "auth/provider-already-linked": T("acct_err_already_linked", "That method is already linked to this account."),
     "auth/account-exists-with-different-credential":
-      "An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.",
+      T("acct_err_exists_other_method", "An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page."),
   };
-  return map[code] || err?.message || "Something went wrong.";
+  return map[code] || err?.message || T("acct_err_generic", "Something went wrong.");
 }
 
 function providerIds(user) {
@@ -231,11 +236,11 @@ function hasPassword(user) {
 
 function providerLabel(id) {
   const map = {
-    password: "Email & password",
+    password: T("acct_method_password", "Email & password"),
     "google.com": "Google",
     "github.com": "GitHub",
     "microsoft.com": "Microsoft",
-    phone: "Phone",
+    phone: T("acct_phone", "Phone"),
   };
   return map[id] || id;
 }
@@ -268,18 +273,24 @@ function paintLinkButtons(user) {
   }
 }
 
-function paintPasswordCard(user) {
+/** Hint and button words of the password card. */
+function paintPasswordText(user) {
   const withPw = hasPassword(user);
   if (els.passwordHint) {
     els.passwordHint.textContent = withPw
-      ? "Change your password. You’ll confirm with the current one."
-      : "Add a password so you can also sign in with email (useful if a provider is unavailable).";
+      ? T("acct_pw_hint_change", "Change your password. You’ll confirm with the current one.")
+      : T("acct_pw_hint_add", "Add a password so you can also sign in with email (useful if a provider is unavailable).");
   }
+  if (els.btnPasswordSave) {
+    els.btnPasswordSave.textContent = withPw ? T("acct_pw_change", "Change password") : T("acct_pw_add", "Add password");
+  }
+}
+
+function paintPasswordCard(user) {
+  const withPw = hasPassword(user);
+  paintPasswordText(user);
   if (els.passwordCurrentWrap) els.passwordCurrentWrap.hidden = !withPw;
   if (els.passwordEmailWrap) els.passwordEmailWrap.hidden = withPw;
-  if (els.btnPasswordSave) {
-    els.btnPasswordSave.textContent = withPw ? "Change password" : "Add password";
-  }
   if (els.setEmail && user?.email) els.setEmail.value = user.email;
   if (els.currentPassword) els.currentPassword.value = "";
   if (els.newPassword) els.newPassword.value = "";
@@ -319,7 +330,7 @@ async function maybeAutoCheckout(user) {
   if (!cfgRes.ok) return;
   const cfg = await cfgRes.json();
   if (!cfg.enabled) {
-    showError("Billing is not enabled on the cloud API yet.");
+    showError(T("acct_billing_off", "Billing is not enabled on the cloud API yet."));
     return;
   }
   const providers = cfg.providers || [];
@@ -328,16 +339,16 @@ async function maybeAutoCheckout(user) {
     providers.find((p) => p !== "mock") ||
     null;
   if (!provider) {
-    showError("No real billing provider is enabled on the cloud API (mock-only is local).");
+    showError(T("acct_billing_no_provider", "No real billing provider is enabled on the cloud API (mock-only is local)."));
     return;
   }
   await startCheckout(user, plan, provider);
 }
 
 function formatInrPaise(paise) {
-  if (paise == null) return "Quote";
+  if (paise == null) return T("price_quote", "Quote");
   if (paise === 0) return "₹0";
-  return `₹${(paise / 100).toLocaleString("en-IN")}/yr ex-tax`;
+  return T("price_per_year", "₹{amount}/yr ex-tax").replace("{amount}", (paise / 100).toLocaleString("en-IN"));
 }
 
 function loadScriptOnce(src) {
@@ -381,7 +392,7 @@ async function openPaddleOverlay(user, transactionId, billingCfg) {
           window.__kumkajCheckoutPaid = true;
           void syncCloudAccount(user);
           showError("");
-          showOk("Payment received — refreshing your plan…");
+          showOk(T("acct_pay_received", "Payment received — refreshing your plan…"));
         }
         if (
           name === "checkout.error" ||
@@ -393,16 +404,16 @@ async function openPaddleOverlay(user, transactionId, billingCfg) {
             ev?.error?.detail ||
             ev?.data?.error?.detail ||
             ev?.data?.message ||
-            "Payment was declined or failed";
+            T("acct_pay_declined", "Payment was declined or failed");
           showOk("");
-          showError(`${detail}. Your plan was not changed.`);
+          showError(T("acct_pay_failed_detail", "{detail}. Your plan was not changed.").replace("{detail}", detail));
           setBusy(false);
         }
         if (name === "checkout.closed") {
           setBusy(false);
           if (!window.__kumkajCheckoutPaid && !window.__kumkajCheckoutFailed) {
             showOk("");
-            showError("Checkout closed — no payment completed. Your plan is unchanged.");
+            showError(T("acct_checkout_closed", "Checkout closed — no payment completed. Your plan is unchanged."));
           }
         }
       },
@@ -465,7 +476,7 @@ async function startCheckout(user, planId, provider) {
     }
     throw new Error("Checkout did not return a usable payment session");
   } catch (err) {
-    showError(err?.message || "Checkout failed");
+    showError(err?.message || T("acct_checkout_failed", "Checkout failed"));
   } finally {
     setBusy(false);
   }
@@ -523,7 +534,7 @@ async function paintBillingPlans(user, idToken) {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "btn btn-primary";
-      btn.textContent = provider === "mock" ? `Sandbox activate ${plan.title}` : `Pay with ${provider}`;
+      btn.textContent = provider === "mock" ? `Sandbox activate ${plan.title}` : T("acct_pay_with", "Pay with {provider}").replace("{provider}", provider);
       btn.addEventListener("click", () => void startCheckout(user, plan.plan_id, provider));
       row.appendChild(meta);
       row.appendChild(btn);
@@ -554,16 +565,20 @@ async function syncCloudAccount(user) {
     if (subRes.ok) {
       const sub = await subRes.json();
       if (els.cloudPlan) {
-        const until = sub.ends_at ? ` · until ${String(sub.ends_at).slice(0, 10)}` : "";
-        els.cloudPlan.textContent = `${sub.title || sub.plan_id || "—"}${until}`;
+        const planName = sub.title || sub.plan_id || "—";
+        els.cloudPlan.textContent = sub.ends_at
+          ? T("acct_plan_until", "{plan} · until {date}")
+              .replace("{plan}", planName)
+              .replace("{date}", String(sub.ends_at).slice(0, 10))
+          : planName;
       }
     } else if (els.cloudPlan) {
-      els.cloudPlan.textContent = "Free forever";
+      els.cloudPlan.textContent = T("plan_free_title", "Free forever");
     }
     await paintBillingPlans(user, idToken);
     await maybeAutoCheckout(user);
   } catch (err) {
-    if (els.cloudUser) els.cloudUser.textContent = "Unavailable";
+    if (els.cloudUser) els.cloudUser.textContent = T("acct_unavailable", "Unavailable");
     if (els.cloudPlan) els.cloudPlan.textContent = "—";
     if (els.cardCloudPlans) els.cardCloudPlans.hidden = true;
     // Soft-fail: Auth still works if the API host is down or CORS-blocked.
@@ -571,34 +586,44 @@ async function syncCloudAccount(user) {
   }
 }
 
+/** Words of the signed-in / signed-out view; `site:i18n` repaints them. */
+function paintSessionText(user) {
+  if (!user) {
+    els.status.textContent = T("acct_continue_hint", "Continue with email, a provider, or phone.");
+    return;
+  }
+  els.userEmail.textContent =
+    user.email || user.phoneNumber || user.displayName || T("acct_signed_in_fallback", "(signed in)");
+  els.userVerified.textContent = user.email
+    ? user.emailVerified
+      ? T("acct_email_verified", "Email verified")
+      : T("acct_email_unverified", "Email not verified yet — check your inbox")
+    : user.phoneNumber
+      ? T("acct_signed_in_phone", "Signed in with phone")
+      : T("acct_signed_in", "Signed in");
+  if (els.userProviders) {
+    const labels = providerIds(user).map(providerLabel);
+    els.userProviders.textContent = labels.length ? labels.join(" · ") : T("acct_none_listed", "None listed yet");
+  }
+  paintPasswordText(user);
+  els.status.textContent = T("acct_signed_in_status", "You’re signed in.");
+}
+
 function renderSession(user) {
   if (user) {
     els.gate.hidden = true;
     els.session.hidden = false;
-    els.userEmail.textContent =
-      user.email || user.phoneNumber || user.displayName || "(signed in)";
-    els.userVerified.textContent = user.email
-      ? user.emailVerified
-        ? "Email verified"
-        : "Email not verified yet — check your inbox"
-      : user.phoneNumber
-        ? "Signed in with phone"
-        : "Signed in";
-    if (els.userProviders) {
-      const labels = providerIds(user).map(providerLabel);
-      els.userProviders.textContent = labels.length ? labels.join(" · ") : "None listed yet";
-    }
     if (els.btnResendVerify) {
       els.btnResendVerify.hidden = !(user.email && !user.emailVerified);
     }
     paintLinkButtons(user);
     paintPasswordCard(user);
-    els.status.textContent = "You’re signed in.";
+    paintSessionText(user);
     void syncCloudAccount(user);
   } else {
     els.gate.hidden = false;
     els.session.hidden = true;
-    els.status.textContent = "Continue with email, a provider, or phone.";
+    paintSessionText(null);
     paintCloudPlaceholders();
   }
 }
@@ -630,7 +655,7 @@ async function handleEmail(e) {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       if (name) await updateProfile(cred.user, { displayName: name });
       await afterAuth(cred.user, { sendVerify: true });
-      showOk("Account created. Check your email to verify when you can.");
+      showOk(T("acct_created", "Account created. Check your email to verify when you can."));
     } catch (err) {
       if (err?.code !== "auth/email-already-in-use") throw err;
       const cred = await signInWithEmailAndPassword(auth, email, password);
@@ -652,12 +677,12 @@ async function handleForgot(e) {
     const email = (els.forgotEmail?.value || els.email?.value || "").trim();
     if (!email) throw { code: "auth/invalid-email" };
     await sendPasswordResetEmail(auth, email);
-    showOk("If an account exists for that email, a reset link is on its way. Check your inbox.");
+    showOk(T("acct_reset_sent", "If an account exists for that email, a reset link is on its way. Check your inbox."));
     if (els.forgotPanel) els.forgotPanel.hidden = true;
   } catch (err) {
     // Avoid account enumeration: still show soft success for user-not-found.
     if (err?.code === "auth/user-not-found") {
-      showOk("If an account exists for that email, a reset link is on its way. Check your inbox.");
+      showOk(T("acct_reset_sent", "If an account exists for that email, a reset link is on its way. Check your inbox."));
       if (els.forgotPanel) els.forgotPanel.hidden = true;
     } else {
       showError(friendlyError(err));
@@ -678,9 +703,11 @@ async function popupSignIn(provider) {
     if (err?.code === "auth/account-exists-with-different-credential" && err.customData?.email) {
       try {
         const methods = await fetchSignInMethodsForEmail(auth, err.customData.email);
-        const pretty = methods.map(providerLabel).join(", ") || "another method";
+        const pretty = methods.map(providerLabel).join(", ") || T("acct_another_method", "another method");
         showError(
-          `An account for ${err.customData.email} already exists via ${pretty}. Sign in that way first, then link this provider from your account page.`
+          T("acct_exists_via", "An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.")
+            .replace("{email}", err.customData.email)
+            .replace("{method}", pretty)
         );
       } catch {
         showError(friendlyError(err));
@@ -765,7 +792,7 @@ async function reauthForSensitive(user) {
   const ids = providerIds(user);
   if (ids.includes("password")) {
     const current = els.currentPassword?.value || "";
-    if (!current) throw { message: "Enter your current password." };
+    if (!current) throw { message: T("acct_enter_current_pw", "Enter your current password.") };
     const cred = EmailAuthProvider.credential(user.email, current);
     await reauthenticateWithCredential(user, cred);
     return;
@@ -783,7 +810,7 @@ async function reauthForSensitive(user) {
     await reauthenticateWithPopup(user, githubProvider());
     return;
   }
-  throw { message: "Sign out and sign in again, then retry." };
+  throw { message: T("acct_relogin_retry", "Sign out and sign in again, then retry.") };
 }
 
 async function handlePasswordSave(e) {
@@ -795,11 +822,11 @@ async function handlePasswordSave(e) {
   const next = els.newPassword?.value || "";
   const next2 = els.newPassword2?.value || "";
   if (next.length < 6) {
-    showError("Use a password with at least 6 characters.");
+    showError(T("acct_err_weak_password", "Use a password with at least 6 characters."));
     return;
   }
   if (next !== next2) {
-    showError("New password and confirmation do not match.");
+    showError(T("acct_pw_mismatch", "New password and confirmation do not match."));
     return;
   }
   setBusy(true);
@@ -807,11 +834,11 @@ async function handlePasswordSave(e) {
     if (hasPassword(user)) {
       await reauthForSensitive(user);
       await updatePassword(user, next);
-      showOk("Password updated.");
+      showOk(T("acct_pw_updated", "Password updated."));
     } else {
       const email = (els.setEmail?.value || user.email || "").trim();
       if (!email) {
-        showError("Enter an email to use with password sign-in.");
+        showError(T("acct_enter_email_pw", "Enter an email to use with password sign-in."));
         return;
       }
       const cred = EmailAuthProvider.credential(email, next);
@@ -823,7 +850,7 @@ async function handlePasswordSave(e) {
           /* ignore */
         }
       }
-      showOk("Password added. You can also sign in with email now.");
+      showOk(T("acct_pw_added", "Password added. You can also sign in with email now."));
     }
     paintPasswordCard(auth.currentUser);
     paintLinkButtons(auth.currentUser);
@@ -843,7 +870,7 @@ async function linkProvider(provider) {
   setBusy(true);
   try {
     await linkWithPopup(user, provider);
-    showOk("Sign-in method linked.");
+    showOk(T("acct_method_linked", "Sign-in method linked."));
     renderSession(auth.currentUser);
   } catch (err) {
     showError(friendlyError(err));
@@ -887,7 +914,7 @@ async function confirmLinkSms(e) {
   try {
     const code = els.linkSmsCode.value.trim();
     await linkConfirmationResult.confirm(code);
-    showOk("Phone linked to this account.");
+    showOk(T("acct_phone_linked", "Phone linked to this account."));
     $("form-link-phone").hidden = false;
     els.formLinkSms.hidden = true;
     els.linkPhone.value = "";
@@ -940,14 +967,18 @@ function wire() {
     showOk("");
     try {
       await sendEmailVerification(u);
-      showOk("Verification email sent — check your inbox.");
-      els.userVerified.textContent = "Verification email sent — check your inbox";
+      showOk(T("acct_verify_sent", "Verification email sent — check your inbox."));
+      els.userVerified.textContent = T("acct_verify_sent", "Verification email sent — check your inbox.");
     } catch (err) {
       showError(friendlyError(err));
     }
   });
 
   captureReturnTo();
+
+  // Language picked or its pack arrived (site-i18n.js): repaint the words this
+  // script wrote. No network: the cloud / checkout calls are not repeated.
+  window.addEventListener("site:i18n", () => paintSessionText(auth.currentUser));
 
   onAuthStateChanged(auth, (user) => {
     // Already signed in and arrived with ?next= → continue to that page.

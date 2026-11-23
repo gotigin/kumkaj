@@ -180,6 +180,62 @@ shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment 
 acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
 shop_cloud_plans	@@EN@@ Cloud plans
 acct_federated	@@EN@@ Federated sign-in
+key	@@EN@@ English
+acct_err_invalid_email	@@EN@@ Enter a valid email address.
+acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
+acct_err_wrong_password	@@EN@@ Wrong password.
+acct_err_invalid_credential	@@EN@@ Email or password is wrong.
+acct_err_popup_closed	@@EN@@ Sign-in window was closed.
+acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
+acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
+acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
+acct_err_too_many	@@EN@@ Too many attempts. Try again later.
+acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
+acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
+acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
+acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
+acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
+acct_err_email_in_use	@@EN@@ That email is already used by another account.
+acct_err_already_linked	@@EN@@ That method is already linked to this account.
+acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
+acct_err_generic	@@EN@@ Something went wrong.
+acct_method_password	@@EN@@ Email & password
+acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
+acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
+acct_pw_change	@@EN@@ Change password
+acct_pw_add	@@EN@@ Add password
+acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
+acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
+price_quote	@@EN@@ Quote
+price_per_year	@@EN@@ ₹{amount}/yr ex-tax
+acct_pay_received	@@EN@@ Payment received — refreshing your plan…
+acct_pay_declined	@@EN@@ Payment was declined or failed
+acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
+acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
+acct_checkout_failed	@@EN@@ Checkout failed
+acct_pay_with	@@EN@@ Pay with {provider}
+acct_plan_until	@@EN@@ {plan} · until {date}
+acct_unavailable	@@EN@@ Unavailable
+acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
+acct_signed_in_fallback	@@EN@@ (signed in)
+acct_email_verified	@@EN@@ Email verified
+acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
+acct_signed_in_phone	@@EN@@ Signed in with phone
+acct_none_listed	@@EN@@ None listed yet
+acct_signed_in_status	@@EN@@ You’re signed in.
+acct_created	@@EN@@ Account created. Check your email to verify when you can.
+acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
+acct_another_method	@@EN@@ another method
+acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
+acct_enter_current_pw	@@EN@@ Enter your current password.
+acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
+acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
+acct_pw_updated	@@EN@@ Password updated.
+acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
+acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
+acct_method_linked	@@EN@@ Sign-in method linked.
+acct_phone_linked	@@EN@@ Phone linked to this account.
+acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
 shop_pricing_soon	@@EN@@ Pricing coming soon
 shop_request_quote	@@EN@@ Request quote
 shop_add_to_cart	@@EN@@ Add to cart
