@@ -1,0 +1,26 @@
+---
+description: Tests protect product intent — never gut requirements to force a green check
+alwaysApply: true
+---
+
+# Tests serve the product
+
+Canonical: `docs/TESTING.md`.
+
+## Do
+
+- Treat a failing test/smoke as a signal to fix **product**, **environment**, or a **wrong test**
+- Keep requirements that docs demand (tax at gateway, real auth, paid activation, webhooks, etc.) even when a sandbox check is red
+- Label harnesses honestly (`mock-only`, local-only); never report them as gateway/store ready
+- Delete bogus tests that only exist to look green while intent is unmet
+
+## Do not
+
+- Disable, stub, or omit product behavior (e.g. Stripe `automatic_tax`, auth, payment checks) so a smoke/unit test passes
+- Default public sites/APIs to unpaid mock activate to clear E2E
+- Soften assertions, `#[ignore]` requirement tests, or rewrite docs to excuse a bypass
+- Adapt the app to the test; adapt the test to real intent — or remove the test
+
+## Incident reminder
+
+2026-11-23: removing Stripe Tax so Checkout smoke passed was **unacceptable**. Tax was restored. Fail closed until Tax (or an equivalent tax-capable gateway path) actually works.

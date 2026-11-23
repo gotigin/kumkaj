@@ -2,6 +2,10 @@
 
 Commands and paths below are from the **workspace root** (parent of `docs/`).
 
+**Testing:** [TESTING.md](TESTING.md) — tests protect product intent; never gut
+requirements (tax, auth, payments, …) to force a green check. Cursor rule
+`.cursor/rules/tests-serve-product.mdc` always applies.
+
 **Product focus:** [Moklanjo](../apps/moklanjo/docs/MOKLANJO.md) — courier BOS (books +
 booking desk). Package id: production `com.moklanjo` · development
 `com.moklanjo.debug`.
