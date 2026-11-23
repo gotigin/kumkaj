@@ -298,12 +298,8 @@ fn shelf_wrap_index(i: isize, len: usize) -> usize {
     (((i % n) + n) % n) as usize
 }
 
-/// Web path of a world photo inside the Makepad package
-/// (`<base>/khaynjo_site/resources/dishes/world/<file>`), where `<base>` is
-/// the page path without a trailing file name — same rule Makepad uses for
-/// `crate_resource` so a sub-path deploy keeps working.
-#[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
-fn world_photo_web_path(pathname: &str, file: &str) -> String {
+/// Page-path prefix for Makepad package URLs (same rule as `crate_resource`).
+fn package_web_base(pathname: &str) -> String {
     let path = pathname.trim_end_matches('/');
     let last = path.rsplit('/').next().unwrap_or_default();
     let base = if last.contains('.') {
@@ -311,13 +307,69 @@ fn world_photo_web_path(pathname: &str, file: &str) -> String {
     } else {
         path
     };
-    let base = base.trim_matches('/');
+    base.trim_matches('/').to_string()
+}
+
+/// Web path of a world photo inside the Makepad package
+/// (`<base>/khaynjo_site/resources/dishes/world/<file>`), where `<base>` is
+/// the page path without a trailing file name — same rule Makepad uses for
+/// `crate_resource` so a sub-path deploy keeps working.
+#[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
+fn world_photo_web_path(pathname: &str, file: &str) -> String {
+    let base = package_web_base(pathname);
     if base.is_empty() {
         format!("/khaynjo_site/resources/dishes/world/{file}")
     } else {
         format!("/{base}/khaynjo_site/resources/dishes/world/{file}")
     }
 }
+
+/// Feature-card icons (`resources/icons/<file>`) — fetched after first paint.
+#[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
+fn feature_icon_web_path(pathname: &str, file: &str) -> String {
+    let base = package_web_base(pathname);
+    if base.is_empty() {
+        format!("/khaynjo_site/resources/icons/{file}")
+    } else {
+        format!("/{base}/khaynjo_site/resources/icons/{file}")
+    }
+}
+
+/// Feature cards → sidebar icon file (bound over HTTP after shelf warmup).
+const FEATURE_ICONS: [(&[LiveId], &str); 8] = [
+    (
+        ids!(features.features_wrap.feat_grid.feat_r0.feat_floor.icon),
+        "floor.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r0.feat_kitchen.icon),
+        "kitchen.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r1.feat_sales.icon),
+        "sales.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r1.feat_team.icon),
+        "team.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r2.feat_menu.icon),
+        "menu.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r2.feat_rates.icon),
+        "rates.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r3.feat_credit.icon),
+        "credit.webp",
+    ),
+    (
+        ids!(features.features_wrap.feat_grid.feat_r3.feat_reports.icon),
+        "reports.webp",
+    ),
+];
 
 /// Section id for a URL hash: a section id, an old chapter id, or an old
 /// chapter number (`#3`). Unknown → None (stay at the top).
@@ -1202,6 +1254,7 @@ impl App {
         }
         self.paint_floor(cx);
         self.paint_shelf(cx);
+        self.bind_feature_icons(cx);
         if self.shelf_want_playing {
             self.set_shelf_playing(cx, true);
         }
@@ -1306,7 +1359,58 @@ impl App {
         }
     }
 
-    /// Fetched photo bytes land here; bind only slots that still want that file.
+    /// Start HTTP / disk load for a feature-card icon (after first paint).
+    fn ensure_feature_icon_bytes(&mut self, cx: &mut Cx, file: &'static str) {
+        if self.photo_bytes.contains_key(file) {
+            return;
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            let _ = cx;
+            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("resources/icons")
+                .join(file);
+            match std::fs::read(&path) {
+                Ok(bytes) => {
+                    self.photo_bytes
+                        .insert(file.to_string(), std::rc::Rc::new(bytes));
+                }
+                Err(err) => log!("khaynjo-site: {}: {err}", path.display()),
+            }
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            if self.photo_pending.iter().any(|(_, f)| f == file) {
+                return;
+            }
+            let pathname = match cx.os_type() {
+                OsType::Web(page) => page.pathname.clone(),
+                _ => String::new(),
+            };
+            let id = LiveId::unique();
+            cx.http_request(
+                id,
+                HttpRequest::new(feature_icon_web_path(&pathname, file), HttpMethod::GET),
+            );
+            self.photo_pending.push((id, file.to_string()));
+        }
+    }
+
+    /// Decode cached feature icons into the deferred features band.
+    fn bind_feature_icons(&mut self, cx: &mut Cx) {
+        for (path, file) in FEATURE_ICONS {
+            self.ensure_feature_icon_bytes(cx, file);
+            let Some(bytes) = self.photo_bytes.get(file).cloned() else {
+                continue;
+            };
+            let image = self.ui.image(cx, path);
+            if let Err(err) = image.load_webp_from_data(cx, &bytes) {
+                log!("khaynjo-site: feature icon {file}: {err:?}");
+            }
+        }
+    }
+
+    /// Fetched photo/icon bytes land here; rebind shelf slots and feature cards.
     fn handle_photo_responses(&mut self, cx: &mut Cx, responses: &NetworkResponsesEvent) {
         let mut landed: Vec<String> = Vec::new();
         for response in responses {
@@ -1331,11 +1435,17 @@ impl App {
                         .insert(file.clone(), std::rc::Rc::new(bytes));
                     landed.push(file);
                 }
-                None => log!("khaynjo-site: world photo {file} did not load"),
+                None => log!("khaynjo-site: asset {file} did not load"),
             }
         }
         if landed.is_empty() {
             return;
+        }
+        if FEATURE_ICONS
+            .iter()
+            .any(|(_, file)| landed.iter().any(|f| f == *file))
+        {
+            self.bind_feature_icons(cx);
         }
         // Queue every visible slot that needs a just-landed file, then flush one.
         let len = self.shelf_hits.len();
@@ -1815,13 +1925,25 @@ mod tests {
         );
     }
 
-    /// Icons on the page are the app's own sidebar art, shipped with the site.
+    #[test]
+    fn feature_icon_web_path_follows_page_path() {
+        assert_eq!(
+            feature_icon_web_path("/", "floor.webp"),
+            "/khaynjo_site/resources/icons/floor.webp"
+        );
+        assert_eq!(
+            feature_icon_web_path("/preview/", "floor.webp"),
+            "/preview/khaynjo_site/resources/icons/floor.webp"
+        );
+    }
+
+    /// Feature icons are shipped under resources/icons and listed for lazy bind.
     #[test]
     fn feature_icons_are_shipped() {
-        let ui = include_str!("ui.rs");
-        for part in ui.split("self:resources/icons/").skip(1) {
-            let file = part.split('"').next().unwrap();
-            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("resources/icons").join(file);
+        for (_, file) in FEATURE_ICONS {
+            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("resources/icons")
+                .join(file);
             assert!(path.is_file(), "{file}");
         }
     }

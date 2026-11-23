@@ -289,9 +289,12 @@ change):
   (6.40 → 5.76 / 5.46 MB) but 2–3% **larger** once brotli has had it (1.33
   → 1.36 / 1.37 MB), and time to first paint is the same (2.08 s both, four
   runs each). Leave the `--wasm-opt` flag off.
-- **Every font a site declares is fetched before the first frame**, whether
-  or not a chapter that needs it is on screen — khaynjo.com fetches all 22
-  (the chapter-8 `WorldFont` members too).
+- **First-paint fonts are Latin (+ FA icons) only.** English page chrome
+  uses `DisplayFont` / `StrongFont` / `TextFont` without Indic/CJK members
+  (2026-11-23). Khaynjo's chapter-8 `WorldFont` (all script faces + CJK
+  subset) loads only when the deferred shelf band is revealed after warmup —
+  a `FontFamily` downloads every member on first use, so putting Noto in
+  Text/Strong used to pull ~10–20 TTFs before the hero painted.
 - **Fonts are cut to the site's own characters when the tree is staged** —
   `sites/<site>/scripts/subset-fonts.sh`, called by `preview-web.sh` and
   `deploy-firebase.sh` (needs `pyftsubset` from fonttools; without it the
@@ -300,20 +303,12 @@ change):
   every character found in `src/*.rs` plus plain Latin, keeps the shaping
   tables for what stays, and replaces the font names with placeholders
   (IBM Plex and Liberation reserve their names for the unmodified font).
-  Raw sizes: kumkaj.com 2.0 MB → 0.52 MB, khaynjo.com 4.4 → 0.57,
-  moklanjo.com 1.6 → 0.43, kirano.shop and tabiyat.shop 2.2 → 0.34.
-  Checked by capturing every chapter of every site before and after at
-  390×844 and 1280×800: the frames are identical pixel for pixel (only
-  khaynjo.com's moving shelf differs, as it does between any two runs).
-  Two limits: text a visitor *types* in a script the site's copy does not
-  use shows empty boxes (khaynjo.com's shelf search is the one text box).
+  The same script then **drops unused `makepad_widgets` faces** from staging
+  (NewCMMath ~1.2 MB, NotoColorEmoji, JetBrains Mono, unused Plex italics,
+  widget icon SVGs, duplicate `fa-solid` when the site ships its own) — those
+  were copied by cargo-makepad but never declared by the sites.
   Variable display faces are pinned to the `ui.rs` weight before subset
-  (kumkaj Fraunces `wght=620`, khaynjo Baloo 2 `wght=720`; moklanjo/kirano/
-  tabiyat Anek pin is L16). Sprint 2026-11-22 netlog (local, no gzip):
-  Fraunces 269 KB → 49 KB decoded; total first-visit wire ~6830 KB →
-  ~6610 KB. `magick compare` AE ≪ 0.02% at 390×844 / 1280×800 vs
-  glyph-only (residual AA from static vs variable raster). Evidence:
-  `Internal/sprint/shots/L4/fonts/`.
+  (kumkaj Fraunces `wght=620`, khaynjo Baloo 2 `wght=720`; moklanjo Anek).
 - **Versioned and cached:** deploy gives the wasm and its loader
   `?v=<build id>`, and `firebase.json` now serves `*.wasm` `immutable`, so a
   returning visitor downloads it once per release.
@@ -323,13 +318,14 @@ change):
   sat in `resources/media/` and `static/media/` with nothing drawing them —
   originals stay in `apps/khaynjo/assets/` if needed. Cleared again
   2026-11-23 (`static/media/` keeps only link-preview + touch icon + small
-  app-icon.webp).
+  app-icon.webp). Unused Indic faces removed from the four English-only
+  site crates (kept only on khaynjo `WorldFont`).
 - **Images are not inside the `.wasm`.** The release wasm is almost entirely
-  the Makepad runtime (~6.2 MB raw → ~1.3 MB brotli). `crate_resource` icons
-  and fonts are separate HTTP fetches after the wasm; world-shelf photos
-  already use a placeholder (`soon`) until their WebP arrives. Further first‑
-  paint wins are deferring chapter‑8 `WorldFont` members until the shelf is
-  on screen — not embedding PNGs in the binary (they never were).
+  the Makepad runtime (~6.2 MB raw → ~1.3 MB brotli). Fonts and icons are
+  separate HTTP fetches; world-shelf photos already use a placeholder
+  (`soon`) until their WebP arrives; feature-card icons load over HTTP after
+  first-paint warmup (no `crate_resource` on the hot path). Prefer more
+  separate downloads over growing the wasm — PNGs were never inlined.
 - **Product tiles** are 192 px WebP with transparent corners, made from the
   masters in `apps/<app>/assets/` and `assets/images/`. The masters are a
   rounded tile on an opaque white or black square (Kirano's also has a

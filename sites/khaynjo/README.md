@@ -150,7 +150,7 @@ Any `Small` / `Body` / `Lede` that a layout rule hides sits inside a
 | `src/world_shelf.rs` | **Generated** world shelf table (199 countries) — do not edit; run `scripts/build-world-shelf.sh` |
 | `resources/icons/` | The app's own sidebar icons (copied from `apps/khaynjo/resources/nav/`) for the feature cards |
 | `resources/dishes/world/` | Generated 600 × 400 WebP per country with a usable PD / CC0 photo + `SOURCES.md` |
-| `resources/fonts/` | Baloo 2 (display), IBM Plex Sans, Liberation Mono, Noto (Gujarati, Devanagari, Tamil, Bengali, Arabic, Hebrew, Thai; chapter-8 WorldFont: Armenian, Ethiopic, Georgian, Khmer, Lao, Myanmar, Sinhala, Thaana, Tibetan, 12 KB CJK subset) — SIL OFL (`OFL-*.txt`) |
+| `resources/fonts/` | First paint: Baloo 2 + IBM Plex + FA solid. Shelf `WorldFont`: Noto scripts (Gujarati, Devanagari, Tamil, Bengali, Arabic, Hebrew, Thai, Armenian, Ethiopic, Georgian, Khmer, Lao, Myanmar, Sinhala, Thaana, Tibetan) + 12 KB CJK subset — SIL OFL (`OFL-*.txt`). Feature icons load over HTTP after warmup. |
 
 The order card, KOT, kitchen columns, bill and drawer are illustrations
 marked **Example** — not app screens; no client names, menus or staff.

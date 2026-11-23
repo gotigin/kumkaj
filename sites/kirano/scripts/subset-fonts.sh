@@ -81,3 +81,31 @@ if (( count == 0 )); then
   exit 1
 fi
 echo "Subset $count fonts: $(( before / 1024 )) KB → $(( after / 1024 )) KB ($(LC_ALL=C.UTF-8 wc -m < "$WORK/chars.txt") characters in the sources)"
+
+# Drop Makepad widget faces this site never declares (staging copies only).
+WIDGETS="$OUT/makepad_widgets/resources"
+if [[ -d "$WIDGETS" ]]; then
+  dropped=0
+  for junk in \
+      NewCMMath-Regular.otf \
+      NotoColorEmoji.ttf \
+      NotoSans-Regular.ttf \
+      jetbrains_mono_variable.ttf \
+      IBMPlexSans-Italic.ttf \
+      IBMPlexSans-BoldItalic.ttf \
+      LXGWWenKaiBold.ttf \
+      LXGWWenKaiRegular.ttf \
+      fa-solid-900.ttf; do
+    if [[ -f "$WIDGETS/$junk" ]]; then
+      rm -f "$WIDGETS/$junk"
+      dropped=$(( dropped + 1 ))
+    fi
+  done
+  if [[ -d "$WIDGETS/icons" ]]; then
+    rm -rf "$WIDGETS/icons"
+    dropped=$(( dropped + 1 ))
+  fi
+  if (( dropped > 0 )); then
+    echo "Dropped $dropped unused makepad_widgets resource(s) from staging"
+  fi
+fi

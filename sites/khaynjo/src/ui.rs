@@ -44,49 +44,26 @@ script_mod! {
     let PaidFill = #xE3DCD7
     let PaidLine = #x8C7B72
 
-    // ---- Type: Baloo 2 (display Latin), IBM Plex + Noto for scripts
-    // Script members must be listed so the shaper can fall through — Baloo alone
-    // paints .notdef boxes for Devanagari/Thai. Native dish lines use TextFont.
+    // ---- Type: Latin-only on the English page chrome (fast first paint).
+    // Script / CJK faces live only on WorldFont for shelf native lines — a
+    // FontFamily downloads every member when first used, so putting Noto in
+    // Display/Text/Strong pulled ~10 extra TTFs before the hero painted.
     let DisplayFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/Baloo2-Variable.ttf") asc: 0.0 desc: 0.0 weight: 720.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Bold.ttf") asc: 0.0 desc: 0.0}
-        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
-        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
-        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
-        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
-        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
-        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
     }
     let StrongFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Bold.ttf") asc: 0.0 desc: 0.0}
-        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
-        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
-        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
-        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
-        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
-        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
-        // Same pattern as apps WorldFonts: FA fills UI symbols Plex/Noto lack
-        // (play/pause, etc.). Missing fa-solid → empty/tofu icon chips.
+        // FA fills UI symbols Plex lacks (play/pause). Missing → empty chips.
         icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
     }
     let TextFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
-        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
-        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
-        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
-        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
-        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
-        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
         icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
     }
-    // World shelf (chapter 8) native names: TextFont plus every script the
-    // 199-country list needs. Its own family so these fonts load only when
-    // chapter 8 draws (a family loads all members on first use). First paint
-    // defers the parade (main.rs shelf_warmup) so Mali-T830 can compile the
-    // hero before WorldFont + shelf Images join the WebGL wave.
+    // World shelf native names: every script the 199-country list needs.
+    // First paint defers the parade (main.rs shelf_warmup) so Mali-T830 can
+    // compile the hero before WorldFont + shelf Images join the WebGL wave.
     let WorldFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
         gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
@@ -720,13 +697,13 @@ script_mod! {
         head := Strong{body: "Point"}
         line := Body{body: "Detail"}
     }
-    // Feature card: the app's own sidebar icon, a title, two lines.
+    // Feature card: sidebar icon filled later over HTTP (main.rs) so the
+    // first paint does not pull eight WebPs with the hero fonts.
     let FeatureCard = WarmCard{
         spacing: 10
         icon := Image{
             width: 44 height: 44
             fit: ImageFit.Stretch
-            src: crate_resource("self:resources/icons/sell.webp")
         }
         title := CardTitle{body: "Feature"}
         line := Body{body: "Detail"}
@@ -1429,32 +1406,32 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 16
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/floor.webp") title.body: "Move and merge tables" line.body: "Guests change tables — the order and its minutes go with them. Two tables, one bill."}
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/kitchen.webp") title.body: "Cancel after the KOT" line.body: "With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip."}
+                                        feat_floor := FeatureCard{title.body: "Move and merge tables" line.body: "Guests change tables — the order and its minutes go with them. Two tables, one bill."}
+                                        feat_kitchen := FeatureCard{title.body: "Cancel after the KOT" line.body: "With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip."}
                                     }
                                     // nc, rights
                                     feat_r1 := View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 16
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/sales.webp") title.body: "Complimentary dishes" line.body: "A comp stays on the bill at ₹ 0, with the reason and the approver."}
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/team.webp") title.body: "Rights per person" line.body: "Each action is allowed, allowed with a manager PIN, or not allowed — person by person."}
+                                        feat_sales := FeatureCard{title.body: "Complimentary dishes" line.body: "A comp stays on the bill at ₹ 0, with the reason and the approver."}
+                                        feat_team := FeatureCard{title.body: "Rights per person" line.body: "Each action is allowed, allowed with a manager PIN, or not allowed — person by person."}
                                     }
                                     // aliases-short-codes, area-prices, menu-timings
                                     feat_r2 := View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 16
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/menu.webp") title.body: "Your menu, your words" line.body: "Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka."}
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/rates.webp") title.body: "Area prices and happy hour" line.body: "A dearer price in the AC room; breakfast menus and happy-hour prices by the clock."}
+                                        feat_menu := FeatureCard{title.body: "Your menu, your words" line.body: "Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka."}
+                                        feat_rates := FeatureCard{title.body: "Area prices and happy hour" line.body: "A dearer price in the AC room; breakfast menus and happy-hour prices by the clock."}
                                     }
                                     // due-khata, day-report
                                     feat_r3 := View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 16
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/credit.webp") title.body: "Customer khata" line.body: "Part payments and Due go on the customer's account in Parties, settled later."}
-                                        FeatureCard{icon.src: crate_resource("self:resources/icons/reports.webp") title.body: "Reports that answer questions" line.body: "Sales by staff, order type, hour and dish — with cancels, comps and tips listed."}
+                                        feat_credit := FeatureCard{title.body: "Customer khata" line.body: "Part payments and Due go on the customer's account in Parties, settled later."}
+                                        feat_reports := FeatureCard{title.body: "Reports that answer questions" line.body: "Sales by staff, order type, hour and dish — with cancels, comps and tips listed."}
                                     }
                                 }
                             }

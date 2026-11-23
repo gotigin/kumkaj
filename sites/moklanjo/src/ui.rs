@@ -34,16 +34,13 @@ script_mod! {
         latin := FontMember{res: crate_resource("self:resources/fonts/AnekLatin-Variable.ttf") asc: 0.0 desc: 0.0 weight: 760.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
     }
+    // English chrome only — Indic faces stay out of first paint.
     let StrongFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/AnekLatin-Variable.ttf") asc: 0.0 desc: 0.0 weight: 640.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
-        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
     }
     let TextFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
-        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
-        gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
     }
     let MonoFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/LiberationMono-Regular.ttf") asc: 0.0 desc: 0.0}
