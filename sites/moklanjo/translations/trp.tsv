@@ -1,11 +1,11 @@
 # Kokborok — ককবরক (trp). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	নমুনা
 length	কালাং
-download_free	দাম কৗইয়াউই ডাউনলোড খাইদি
+download_free	রাং রৗয়াউই ডাউনলোড খাইদি
 whatsapp_for_a_demo	ডেমো নি বাগৱি WhatsApp খাইদি
-free_on_android_windows_and	Android, Windows আর Linux ও দাম কৗইয়া।
+free_on_android_windows_and	Android, Windows আর Linux ও দাম কৗরৗই।
 courier_operating_system	কুরিয়ার অপারেটিং সিস্টেম
-parcel_journey	পারচেল নি থাংমানি
+parcel_journey	পার্সেল নি থাংমানি
 walk_in	ওয়াক-ইন
 weigh	ওজন
 price	দাম
@@ -13,29 +13,29 @@ label	লেবেল
 hand_over	রৗনাই
 track	ট্র্যাক
 offline	অফলাইন
-start	সিকাংদি
+start	চেংদি
 moklanjo_courier_operating_system	MOKLANJO · কুরিয়ার অপারেটিং সিস্টেম
-book_move_and_settle_every	জত পারচেল বোক খাইদি, রোহোরদি আর হিসাব খাইদি — নৗনি নিজ ডিভাইসও কাইসা কুরিয়ার OS।
-parties_books_cod_labels_awb	বরক, হিসাব বিজাপ, COD, লেবেল, AWB পুল, ট্র্যাকিং, রিদের আর বিলিং — কাউন্টার নি হিসাব সিম জত চক্র, ইন্টারনেট তংখে বা কৗইয়াখে। নৗনি ডিভাইসও দাম কৗইয়া।
+book_move_and_settle_every	জত পার্সেল বুক খাইদি, রোহোরদি আর হিসাব খাইদি — নৗনি নিজ ডিভাইসও কাইসা কুরিয়ার OS।
+parties_books_cod_labels_awb	বরক, হিসাব বিজাপ, COD, লেবেল, AWB পুল, ট্র্যাকিং, রাইডার আর বিলিং — কাউন্টার নি হিসাব সিম জত চক্র, ইন্টারনেট তংখে বা কৗরৗইখে। নৗনি ডিভাইসও দাম কৗরৗই।
 the_walk_in_loop	ওয়াক-ইন নি চক্র
 actual_and_volumetric_side_by	সত্যি আর ভলিউমেট্রিক, কাইসা বাই।
 charge	দাম
 your_rate_card_cash_or	নৗনি রেট কার্ড, রাং বা খাতা।
-next_booking	উলোনি বোকিং
+next_booking	উলোনি বুকিং
 one_tap_clears_the_counter	কাইসা টেপও কাউন্টার উলোনি ওয়াক-ইন নি বাগৱি কুপলাইসা অংও।
-scroll_the_parcel_journey_rail	স্ক্রল খাইদি — সাকাও তংমানি পারচেল নি থাংমানি পাটি কাহিনীও নৗং বুবাগ তংও নাইরুগও।
-n_2_weigh_it_right	2 · মেজাং ওজন খাইদি
+scroll_the_parcel_journey_rail	স্ক্রল খাইদি — সাকাও তংমানি পার্সেল নি থাংমানি পাটি কাহিনীও নৗং বৗরৗ তংও নাইরুগও।
+n_2_weigh_it_right	2 · ঠিক ওজন খাইদি
 actual_or_volumetric_whichever_is	সত্যি বা ভলিউমেট্রিক — বো বেশি, নৗনি নিয়ম বাহাই রাউন্ড খাইমানি।
 try_a_box	কাইসা বাক্স নাইথক খাইদি
 domestic	দেশ নি
 international	আন্তর্জাতিক
-breadth	ফারাক
+breadth	চওড়া
 height	কালাং সাকা
 weight_on_the_scale	দাড়িপাল্লাও ওজন
 chargeable_weight	দাম নি ওজন
 the_box_s_size_sets	বাক্স নি সাইজ দাম ঠিক খাইও।
-higher_of_the_two_rounded	নৗয়ৗ নি তালও বেশি, উলোনি 0.5 kg সিম বেশি খাইমানি।
-in_the_app_the_divisor	এপও ভাগ নম্বর, রাউন্ড খাইনাই খাবাং আর নৗনি ইউনিট (cm বা ইঞ্চি, kg বা lb) দোকান নিজে ঠিক খাইও। আন্তর্জাতিক চিপ সেটিং ছুইয়াউই কাইসা বোকিং নি বাগৱি ÷6000 খাইও।
+higher_of_the_two_rounded	কাইনৗই নি তালও বেশি, উলোনি 0.5 kg সিম বেশি খাইমানি।
+in_the_app_the_divisor	এপও ভাগ নম্বর, রাউন্ড খাইনাই খাবাং আর নৗনি ইউনিট (cm বা ইঞ্চি, kg বা lb) দোকান নিজে ঠিক খাইও। আন্তর্জাতিক চিপ সেটিং ছুইয়াউই কাইসা বুকিং নি বাগৱি ÷6000 খাইও।
 n_3_price_it	3 · দাম ঠিক খাইদি
 your_rate_cards_your_party	নৗনি রেট কার্ড রোক, নৗনি বরক নি রেট — আর জত ডকেটও নৗনি লাভ।
 rate_card	রেট কার্ড
@@ -48,64 +48,64 @@ metro_air	মেট্রো · এয়ার
 zone_service_weight_slab	জোন × সার্ভিস × ওজন স্ল্যাব
 first_slab_and_each_extra	সিকাং স্ল্যাব আর জত বেশি স্ল্যাব, জোন আর সার্ভিস বাহাই।
 a_consignor_s_own_card	রোহোরনাই নি নিজ কার্ড
-regular_senders_get_their_rates	সাল সাল নি রোহোরনাই রোক বিসিনি রেট মানও; গুবুন জত নি বাগৱি ডিফল্ট কার্ড।
+regular_senders_get_their_rates	সাল সাল নি রোহোরনাই রোক নিজ রেট মানও; কুবুন জত নি বাগৱি ডিফল্ট কার্ড।
 margin_at_the_desk	ডেস্কওসে লাভ
 your_sell_price_against_the	তৱলাংনাই নি দাম বাই নৗনি ফালমানি দাম, জত ডকেটও।
 n_4_label_it	4 · লেবেল তাংদি
 awb_from_your_own_number	নৗনি নিজ নম্বর পুল নি AWB। লেবেল, স্ক্যান, নাইসি।
 number_pools_per_carrier	জত তৱলাংনাই নি নম্বর পুল
-enter_each_carrier_s_start	জত তৱলাংনাই নি সিকাং–জগ সিরিজ কাইসা বার সুইদি; জত বোকিং উলোনি নম্বর লাও।
+enter_each_carrier_s_start	জত তৱলাংনাই নি সিকাং–জগ সিরিজ কাইসা বার সুইদি; জত বুকিং উলোনি নম্বর লাও।
 code_128_labels	Code 128 লেবেল
-the_awb_goes_on_the	AWB বাক্সও বারকোড আর সাদা নম্বর নৗয়ৗ বাহাই তংও।
+the_awb_goes_on_the	AWB বাক্সও বারকোড বাহাই আর সাদা নম্বর বাহাই তংও।
 scan_to_find	নাইসিনাই স্ক্যান খাইদি
 scan_a_label_to_open	কাইসা লেবেল স্ক্যান খাইউই বিনি ডকেট ওপেন খাইদি আর সামুং খাইদি।
 n_5_hand_over	5 · রৗনাই
-hand_it_to_a_carrier	তৱলাংনাইনো রৗদি, বা নৗনি নিজ রিদের রোহোরদি। অ সে সিস্টেম।
+hand_it_to_a_carrier	তৱলাংনাইনো রৗদি, বা নৗনি নিজ রাইডার রোহোরদি। অ সে সিস্টেম।
 into_a_carrier_bag	তৱলাংনাই নি থলেও
-the_manifest_holds_exactly_the	ম্যানিফেস্টও নৗং বাছাই খাইমানি পারচেল সে তংও — জত, কৗইয়াখে কাইসা বো কৗইয়া। গুবুন তৱলাংনাই বাই বোক খাইজাক পারচেল অ থলেও হাপয়া।
-onto_your_own_rider_s	নৗনি নিজ রিদের নি থাংমানিও
-pick_the_parcels_print_the	পারচেল বাছাই খাইদি, রান শিট প্রিন্ট খাইদি, আর রিদের অ সে এপ রিদের মোডও মানও — দেলিভেরয় নি প্রমাণ বাই।
+the_manifest_holds_exactly_the	ম্যানিফেস্টও নৗং বাছাই খাইমানি পার্সেল সে তংও — জত, কৗরৗইখে কাইসাবো কৗরৗই। কুবুন তৱলাংনাই বাই বুক খাইজাক পার্সেল অ থলেও হাপয়া।
+onto_your_own_rider_s	নৗনি নিজ রাইডার নি থাংমানিও
+pick_the_parcels_print_the	পার্সেল বাছাই খাইদি, রান শিট প্রিন্ট খাইদি, আর রাইডার অ সে এপ রাইডার মোডও মানও — ডেলিভারি নি প্রমাণ বাই।
 n_6_track_and_prove	6 · ট্র্যাক আর প্রমাণ
-every_move_recorded_and_only	জত থাংমানি সুইমানি — আর মেজাং থাংমানি সে।
-booked	বোক খাইজাক
+every_move_recorded_and_only	জত থাংমানি সুইমানি — আর ঠিক থাংমানি সে।
+booked	বুক খাইজাক
 with_carrier	তৱলাংনাই বাই
-out_for_delivery	দেলিভেরয় নি বাগৱি ফাতার
+out_for_delivery	ডেলিভারি নি বাগৱি ফাতার
 delivered	য়াফারজাক
-booked_with_carrier_out_for	বোক খাইজাক → তৱলাংনাই বাই → দেলিভেরয় নি বাগৱি ফাতার → য়াফারজাক
+booked_with_carrier_out_for	বুক খাইজাক → তৱলাংনাই বাই → ডেলিভারি নি বাগৱি ফাতার → য়াফারজাক
 failed	মেচেনখা
-reason_out_again_or_return	→ কারণ → ফিন ফাতার, বা রোহোরনাই বোরোকনো কিফিলৱি রৱদি।
+reason_out_again_or_return	→ কারণ → ফিন ফাতার, বা রোহোরনাইনো কিফিল।
 impossible_moves_refused	অংয়ানাই থাংমানি নারাজ
-delivered_returned_and_cancelled	য়াফারজাক, কিফিলজাক আর চানচেল — অ রোক জগ নি।
-proof_of_delivery	দেলিভেরয় নি প্রমাণ
+delivered_returned_and_cancelled	য়াফারজাক, কিফিলজাক আর বাতিল খাইজাক — অ রোক জগ নি।
+proof_of_delivery	ডেলিভারি নি প্রমাণ
 a_photo_and_the_receiver	ডকেটও কাইসা ফটো আর মাননাই নি সই।
-failed_deliveries	মেচেনখা দেলিভেরয় রোক
+failed_deliveries	মেচেনখা ডেলিভারি রোক
 reasons_attempts_out_again_or	কারণ রোক, নাইথক রোক, ফিন ফাতার, বা রোহোরনাইনো কিফিল।
 n_7_money_comes_home	7 · রাং নগও ফাইও
 cod_you_can_see_expected	নাইনাই মানমানি COD: সুংমানি, জমা খাইমানি, জত রোহোরনাইনো রৗনাই।
-rider_cash_end_of_run	থাংমানি নি জগও রিদের নি রাং
-rider	রিদের
+rider_cash_end_of_run	থাংমানি নি জগও রাইডার নি রাং
+rider	রাইডার
 expected	সুংমানি
 handed_in	জমা খাইমানি
-a_14_drops	A · 14 দেলিভেরয়
-b_9_drops	B · 9 দেলিভেরয়
-short_200_on_rider_b	রিদের B ও ₹ 200 কম — মুং বাই, জত হিসাবও বাউয়া।
+a_14_drops	A · 14 ডেলিভারি
+b_9_drops	B · 9 ডেলিভারি
+short_200_on_rider_b	রাইডার B ও ₹ 200 কম — মুং বাই, জত হিসাবও বাউয়া।
 cod_register	COD রেজিস্টার
 collected_against_paid_out_per	লামানি আর রৗমানি, জত রোহোরনাই বাহাই, রেমিটেন্স ব্যাচ বাই।
-rider_settlement	রিদের নি হিসাব
+rider_settlement	রাইডার নি হিসাব
 expected_against_handed_in_and	সুংমানি আর জমা খাইমানি, আর কমিশন স্লিপ।
 books_that_close	জগনাই হিসাব বিজাপ
 day_book_month_bill_per	সালনি বিজাপ, জত খাতা নি তাল নি বিল, আর নৗনি হিসাবরক্ষক নি বাগৱি GST সারাংশ CSV।
-n_8_internet_down	8 · ইন্টারনেট কৗইয়া?
-keep_booking	বোকিং তুলাংদি।
-booking_labels_scanning_cod_and	বোকিং, লেবেল, স্ক্যানিং, COD আর হিসাব বিজাপ — জত নৗনি ডিভাইসও চালাইও। ইন্টারনেট থাংখেও কাউন্টারও তামাবো বিনি বাগৱি সুংয়া।
-office_router_no_internet	অফিস নি রাউটার: ইন্টারনেট কৗইয়া
-desk_still_booking	ডেস্ক: বোকিং তুলাংতংও
-second_counter_and_rider_phone	নৗয়ৗ নি কাউন্টার আর রিদের নি ফোন: অফিস নি Wi-Fi ও জোড়াজাক
-free_forever_on_your_devices	নৗনি ডিভাইসও জত সময় দাম কৗইয়া
-nothing_per_rider_user_or	রিদের, ইউজার বা পারচেলও তামাবো কৗইয়া। মন খে Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/বছর, ট্যাক্স কৗইয়াউই — /shop।
-n_9_start	9 · সিকাংদি
-one_courier_os_your_parcels	কাইসা কুরিয়ার OS। নৗনি পারচেল রোক। নৗনি হিসাব বিজাপ।
-moklanjo_is_a_complete_courier	Moklanjo Kumkaj নি সিংও কাইসা জত কুরিয়ার অপারেটিং সিস্টেম — Android, Windows আর Linux। রিদের রোক অ সে এপ রিদের মোডও মানও।
+n_8_internet_down	8 · ইন্টারনেট কৗরৗই?
+keep_booking	বুকিং তুলাংদি।
+booking_labels_scanning_cod_and	বুকিং, লেবেল, স্ক্যানিং, COD আর হিসাব বিজাপ — জত নৗনি ডিভাইসও চালাইও। ইন্টারনেট থাংখেও কাউন্টারও তামাবো বিনি বাগৱি সুংয়া।
+office_router_no_internet	অফিস নি রাউটার: ইন্টারনেট কৗরৗই
+desk_still_booking	ডেস্ক: বুকিং তুলাংতংও
+second_counter_and_rider_phone	নৗই নম্বর কাউন্টার আর রাইডার নি ফোন: অফিস নি Wi-Fi ও জোড়াজাক
+free_forever_on_your_devices	নৗনি ডিভাইসও জত সময় দাম কৗরৗই
+nothing_per_rider_user_or	রাইডার, ইউজার বা পার্সেলও দাম কৗরৗই। মন খে Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/বছর, ট্যাক্স যোগ অংয়াউই — /shop।
+n_9_start	9 · চেংদি
+one_courier_os_your_parcels	কাইসা কুরিয়ার OS। নৗনি পার্সেল রোক। নৗনি হিসাব বিজাপ।
+moklanjo_is_a_complete_courier	Moklanjo Kumkaj নি সিংও কাইসা জত কুরিয়ার অপারেটিং সিস্টেম — Android, Windows আর Linux। রাইডার রোক অ সে এপ রাইডার মোডও মানও।
 trademark	ট্রেডমার্ক
 memon_for_find_it_pronounced	মেমন ককও “নাইসিদি” · সানমানি গো-টি-গিন
 company	কোম্পানি
@@ -115,15 +115,15 @@ product	প্রোডাক্ট
 courier_operating_system_under	Kumkaj নি সিংও কুরিয়ার অপারেটিং সিস্টেম
 privacy	গোপনীয়তা
 terms	শর্ত রোক
-cancellation	চানচেল নি নিয়ম
+cancellation	বাতিল নি নিয়ম
 cloud_shop	ক্লাউড দোকান
 account	খাতা
-weigh_it_right	মেজাং ওজন
+weigh_it_right	ঠিক ওজন
 price_it	দাম ঠিক খাইমানি
 label_it	লেবেল তাংমানি
 track_and_prove	ট্র্যাক আর প্রমাণ
 money_comes_home	রাং নগও ফাইও
-internet_down	ইন্টারনেট কৗইয়া
+internet_down	ইন্টারনেট কৗরৗই
 bead_hand	রৗনাই
 bead_offline_short	অফলাইন
 weight_cm	{n} cm
@@ -131,18 +131,18 @@ weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	দাড়িপাল্লাও: {kg} kg
 weight_scale_wins	দাড়িপাল্লা নি ওজন দাম ঠিক খাইও।
-cta_installers_note	জত ইনস্টলার সাফ মেশিনও ইনস্টল পরীক্ষা পাস অংখে উলো ওবাগ ফাইনাই। অ সিম WhatsApp ও ডেমো সুংদি।
+cta_installers_note	জত ইনস্টলার সাফ মেশিনও ইনস্টল পরীক্ষা পাস অংখে উলো অ পাতাও ফাইনাই। অ সিম WhatsApp ও ডেমো সুংদি।
 cta_whatsapp_soon	WhatsApp ডেমো লাইন তাবুক ওপেন অংনাই। নৗনি মেসেজ অবাহাই অংনাই: “{message}”।
 acct_page_title	খাতা — Moklanjo
 acct_lede	সাইট আর এপ নি বাগৱি কাইসাসে খাতা — কৗতাল বা ফিন ফাইমানি, অ সে ফর্ম।
 acct_email	ইমেইল
 acct_name_optional	মুং (মন খে)
-acct_password	পাসুওরদ
+acct_password	পাসওয়ার্ড
 acct_continue	তুলাংদি
-acct_forgot	পাসুওরদ বাউগাখা?
+acct_forgot	পাসওয়ার্ড বাউগাখা?
 acct_reset_hint	চুং রিসেট লিংক ইমেইল খাইনাই। সাইন আপ খাইমানি অ ঠিকানা মানদি।
 acct_send_reset	রিসেট লিংক রোহোরদি
-acct_cancel	চানচেল খাইদি
+acct_cancel	বাতিল খাইদি
 acct_or_continue	বা বো বাই তুলাংদি
 acct_phone	ফোন
 acct_mobile	মোবাইল নম্বর
@@ -158,11 +158,11 @@ acct_plan	প্ল্যান
 acct_resend_verify	যাচাই ইমেইল ফিন রোহোরদি
 acct_sign_out	সাইন আউট
 acct_cloud_sandbox	Kumkaj Cloud (স্যান্ডবক্স)
-acct_current_password	তাবুক নি পাসুওরদ
-acct_email_for_password	পাসুওরদ সাইন-ইন নি বাগৱি ইমেইল
-acct_new_password	কৗতাল পাসুওরদ
-acct_confirm_new_password	কৗতাল পাসুওরদ পাকা খাইদি
-acct_add_way	সাইন ইন খাইনাই গুবুন কাইসা খাবাং যোগ খাইদি
+acct_current_password	তাবুক নি পাসওয়ার্ড
+acct_email_for_password	পাসওয়ার্ড সাইন-ইন নি বাগৱি ইমেইল
+acct_new_password	কৗতাল পাসওয়ার্ড
+acct_confirm_new_password	কৗতাল পাসওয়ার্ড পাকা খাইদি
+acct_add_way	সাইন ইন খাইনাই কুবুন কাইসা খাবাং যোগ খাইদি
 acct_link_hint	খাবাং রোক কাইসাসে খাতা বাই জোড়াদি, কাইসা মেচেনখেও প্রবেশ ফিন মাননাই।
 acct_link_google	Google জোড়াদি
 acct_link_microsoft	Microsoft জোড়াদি
@@ -171,42 +171,42 @@ acct_link_phone	ফোন জোড়াদি
 acct_send_sms_link	জোড়ানাই SMS রোহোরদি
 acct_confirm_link_phone	পাকা খাইউই ফোন জোড়াদি
 shop_page_title	দোকান — Moklanjo
-shop_lede	বছর বছর নি ক্লাউড প্ল্যান — ট্যাক্স চেকআউটও যোগ অংও। নৗনি নিজ ডিভাইসও জত Moklanjo এপ জত সময় দাম কৗইয়া তংও, বিজ্ঞাপন কৗইয়াউই।
+shop_lede	বছর বছর নি ক্লাউড প্ল্যান — ট্যাক্স চেকআউটও যোগ অংও। নৗনি নিজ ডিভাইসও জত Moklanjo এপ জত সময় দাম কৗরৗই তংও, বিজ্ঞাপন কৗরৗই।
 shop_cart	কার্ট
 shop_cart_empty_hint	নৗনি কার্ট কুপলাইসা। Steady, Swift বা Priority যোগ খাইদি।
 shop_checkout	চেকআউট
 shop_clear	মুসুকদি
-shop_checkout_hint	চেকআউট নৗনো খাতাও সাইন ইন খলাইও, উলো রাং রৗমানি সিকাংও (স্যান্ডবক্স মক, বা কি সেট তংখে Paddle)।
-acct_billing_hint	বছর বছর নি প্ল্যান — চেকআউটও গেটওয়ে ট্যাক্স যোগ খাইও। লোকাল মানমানি জত সময় দাম কৗইয়া তংও। কাস্টম কাইসা কোটেশন (Steady নি কম বা Priority নি বেশি অংনাই মানও)।
+shop_checkout_hint	চেকআউট নৗনো খাতাও সাইন ইন খলাইও, উলো রাং রৗমানি চেংও (স্যান্ডবক্স মক, বা কি সেট তংখে Paddle)।
+acct_billing_hint	বছর বছর নি প্ল্যান — চেকআউটও গেটওয়ে ট্যাক্স যোগ খাইও। লোকাল মানমানি জত সময় দাম কৗরৗই তংও। কাস্টম কাইসা কোটেশন (Steady নি কম বা Priority নি বেশি অংনাই মানও)।
 shop_cloud_plans	ক্লাউড প্ল্যান রোক
 acct_federated	ফেডারেটেড সাইন-ইন
-acct_err_invalid_email	মেজাং ইমেইল ঠিকানা সুইদি।
-acct_err_weak_password	কম উ 6 আখর নি পাসুওরদ মানদি।
-acct_err_wrong_password	ভুল পাসুওরদ।
-acct_err_invalid_credential	ইমেইল বা পাসুওরদ ভুল।
+acct_err_invalid_email	ঠিক ইমেইল ঠিকানা সুইদি।
+acct_err_weak_password	6 আখর বা বেশি নি পাসওয়ার্ড মানদি।
+acct_err_wrong_password	ভুল পাসওয়ার্ড।
+acct_err_invalid_credential	ইমেইল বা পাসওয়ার্ড ভুল।
 acct_err_popup_closed	সাইন-ইন উইন্ডো বন্ধ অংখা।
-acct_err_popup_cancelled	সাইন-ইন চানচেল অংখা।
-acct_err_unauthorized_domain	অ ডোমেইন Firebase Auth নি বাগৱি অনুমতি কৗইয়া।
-acct_err_method_disabled	অ সাইন-ইন খাবাং তাবুক সিম চালু কৗইয়া।
+acct_err_popup_cancelled	সাইন-ইন বাতিল অংখা।
+acct_err_unauthorized_domain	অ ডোমেইন Firebase Auth নি বাগৱি অনুমতি কৗরৗই।
+acct_err_method_disabled	অ সাইন-ইন খাবাং তাবুক সিম চালু অংয়াখা।
 acct_err_too_many	বেশি নাইথক খাইখা। উলো ফিন নাইথক খাইদি।
-acct_err_phone_format	রাজ্য নি কোড বাই জত ফোন নম্বর মানদি (নমুনা +91…)।
+acct_err_phone_format	দেশ নি কোড বাই জত ফোন নম্বর মানদি (নমুনা +91…)।
 acct_err_sms_code	অ SMS কোড ভুল বা বিনি সময় থাংখা।
-acct_err_no_account	অ ইমেইল বাই খাতা কৗইয়া। কৗতাল খলাইনাই তুলাংদি, বা গুবুন খাবাং মানদি।
+acct_err_no_account	অ ইমেইল বাই খাতা কৗরৗই। কৗতাল খলাইনাই তুলাংদি, বা কুবুন খাবাং মানদি।
 acct_err_recent_login	সুরক্ষা নি বাগৱি ফিন সাইন ইন খাইদি, উলো অ বদল ফিন খাইদি।
-acct_err_credential_in_use	অ সাইন-ইন খাবাং সিগনি গুবুন খাতা মানতংও।
-acct_err_email_in_use	অ ইমেইল সিগনি গুবুন খাতা মানতংও।
+acct_err_credential_in_use	অ সাইন-ইন খাবাং সিগনি কুবুন খাতা মানতংও।
+acct_err_email_in_use	অ ইমেইল সিগনি কুবুন খাতা মানতংও।
 acct_err_already_linked	অ খাবাং সিগনি অ খাতা বাই জোড়াজাক তংও।
-acct_err_exists_other_method	অ ইমেইল নি খাতা সিগনি গুবুন সাইন-ইন খাবাং বাই তংও। সিগো অ খাবাং বাই সাইন ইন খাইদি, উলো নৗনি খাতা নি পাতা নি বো জোড়াদি।
+acct_err_exists_other_method	অ ইমেইল নি খাতা সিগনি কুবুন সাইন-ইন খাবাং বাই তংও। সিগো অ খাবাং বাই সাইন ইন খাইদি, উলো নৗনি খাতা নি পাতা নি বো জোড়াদি।
 acct_err_generic	তামাবো ভুল অংখা।
-acct_method_password	ইমেইল আর পাসুওরদ
-acct_pw_hint_change	নৗনি পাসুওরদ বদল খাইদি। তাবুক নি পাসুওরদ বাই পাকা খাইনাই নাংও।
-acct_pw_hint_add	ইমেইল বাই বো সাইন ইন খাইনাই মাননাই কাইসা পাসুওরদ যোগ খাইদি (প্রোভাইডার মানয়াখে কামাং অংনাই)।
-acct_pw_change	পাসুওরদ বদল খাইদি
-acct_pw_add	পাসুওরদ যোগ খাইদি
-acct_billing_off	ক্লাউড API ও বিলিং তাবুক সিম চালু কৗইয়া।
-acct_billing_no_provider	ক্লাউড API ও সত্যি বিলিং প্রোভাইডার চালু কৗইয়া (মক লোকাল সে)।
+acct_method_password	ইমেইল আর পাসওয়ার্ড
+acct_pw_hint_change	নৗনি পাসওয়ার্ড বদল খাইদি। তাবুক নি পাসওয়ার্ড বাই পাকা খাইনাই নাংও।
+acct_pw_hint_add	ইমেইল বাই বো সাইন ইন খাইনাই মাননাই কাইসা পাসওয়ার্ড যোগ খাইদি (প্রোভাইডার মানয়াখে কামাং অংনাই)।
+acct_pw_change	পাসওয়ার্ড বদল খাইদি
+acct_pw_add	পাসওয়ার্ড যোগ খাইদি
+acct_billing_off	ক্লাউড API ও বিলিং তাবুক সিম চালু অংয়াখা।
+acct_billing_no_provider	ক্লাউড API ও সত্যি বিলিং প্রোভাইডার চালু অংয়াখা (মক লোকাল সে)।
 price_quote	কোটেশন
-price_per_year	₹{amount}/বছর, ট্যাক্স কৗইয়াউই
+price_per_year	₹{amount}/বছর, ট্যাক্স যোগ অংয়াউই
 acct_pay_received	রাং মানখা — নৗনি প্ল্যান কৗতাল অংতংও…
 acct_pay_declined	রাং রৗমানি নারাজ অংখা বা মেচেনখা
 acct_pay_failed_detail	{detail}। নৗনি প্ল্যান বদল অংয়াখা।
@@ -220,18 +220,18 @@ acct_signed_in_fallback	(সাইন ইন অংখা)
 acct_email_verified	ইমেইল যাচাই অংখা
 acct_email_unverified	ইমেইল তাবুক সিম যাচাই অংয়াখা — নৗনি ইনবক্স নাইদি
 acct_signed_in_phone	ফোন বাই সাইন ইন অংখা
-acct_none_listed	তাবুক সিম লিস্টও তামাবো কৗইয়া
+acct_none_listed	তাবুক সিম লিস্টও তামাবো কৗরৗই
 acct_signed_in_status	নৗং সাইন ইন অংজাক।
 acct_created	খাতা খলাইজাক। মানখে যাচাই নি বাগৱি নৗনি ইমেইল নাইদি।
 acct_reset_sent	অ ইমেইল নি খাতা তংখে, রিসেট লিংক ফাইতংও। নৗনি ইনবক্স নাইদি।
-acct_another_method	গুবুন খাবাং
+acct_another_method	কুবুন খাবাং
 acct_exists_via	{email} নি খাতা সিগনি {method} বাই তংও। সিগো অবাহাই সাইন ইন খাইদি, উলো নৗনি খাতা নি পাতা নি অ প্রোভাইডার জোড়াদি।
-acct_enter_current_pw	নৗনি তাবুক নি পাসুওরদ সুইদি।
+acct_enter_current_pw	নৗনি তাবুক নি পাসওয়ার্ড সুইদি।
 acct_relogin_retry	সাইন আউট খাইউই ফিন সাইন ইন খাইদি, উলো ফিন নাইথক খাইদি।
-acct_pw_mismatch	কৗতাল পাসুওরদ আর পাকা খাইমানি মিলায়া।
-acct_pw_updated	পাসুওরদ আপডেট অংখা।
-acct_enter_email_pw	পাসুওরদ সাইন-ইন নি বাগৱি কাইসা ইমেইল সুইদি।
-acct_pw_added	পাসুওরদ যোগ অংখা। তাবুক ইমেইল বাই বো সাইন ইন খাইনাই মানও।
+acct_pw_mismatch	কৗতাল পাসওয়ার্ড আর পাকা খাইমানি মিলায়া।
+acct_pw_updated	পাসওয়ার্ড আপডেট অংখা।
+acct_enter_email_pw	পাসওয়ার্ড সাইন-ইন নি বাগৱি কাইসা ইমেইল সুইদি।
+acct_pw_added	পাসওয়ার্ড যোগ অংখা। তাবুক ইমেইল বাই বো সাইন ইন খাইনাই মানও।
 acct_method_linked	সাইন-ইন খাবাং জোড়াজাক।
 acct_phone_linked	ফোন অ খাতা বাই জোড়াজাক।
 acct_verify_sent	যাচাই ইমেইল রোহোরজাক — নৗনি ইনবক্স নাইদি।
@@ -241,12 +241,12 @@ shop_add_to_cart	কার্টও যোগ খাইদি
 shop_notify_later	উলো আনো সিনিদি
 shop_included	যোগ তংও
 shop_in_cart	{plan} নৗনি কার্টও তংও।
-shop_remove	থাংদি
+shop_remove	বাদ খাইদি
 shop_cart_is_empty	কার্ট কুপলাইসা।
 shop_prices_unpublished	অ প্রোডাক্ট নি নিজে পাইনাই দাম তাবুক সিম ফাতারয়াখা। কাস্টম কোটেশন সুংদি বা উলো ফিন নাইদি।
 shop_cart_cleared	কার্ট মুসুকজাক।
-plan_free_title	জত সময় দাম কৗইয়া
-plan_free_blurb	নৗনি ডিভাইসও জত লোকাল প্রোডাক্ট। ক্লাউড নি দাম কৗইয়া।
+plan_free_title	জত সময় দাম কৗরৗই
+plan_free_blurb	নৗনি ডিভাইসও জত লোকাল প্রোডাক্ট। ক্লাউড নি দাম কৗরৗই।
 plan_steady_blurb	লাইভ ক্লাউড · 10 GB · কম ব্যান্ডউইথ
 plan_swift_blurb	লাইভ ক্লাউড · 25 GB · তাল নি ব্যান্ডউইথ
 plan_priority_blurb	লাইভ ক্লাউড · 50 GB · জত নি বেশি মান নি ব্যান্ডউইথ

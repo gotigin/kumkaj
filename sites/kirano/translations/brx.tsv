@@ -34,7 +34,7 @@ settle_later_in_parties_part	उनाव पार्टीआव हिसा�
 due_on_the_bill	बिलआव बाकि
 what_s_left_goes_on	बाकि थानायआ ग्राहकनि खाताआव थांयो — गुबुन लेजार एप्प नांगौ गैया।
 one_party_two_roles	मोनसे पार्टी, मोननै खामानि
-customer_ar_and_supplier_ap	ग्राहकनिफ्राय मोननांगौ (AR) आरो सप्लायारनो होनांगौ (AP) मोनफानो पार्टी बहीआव।
+customer_ar_and_supplier_ap	ग्राहकनिफ्राय मोननांगौ (AR) आरो सप्लायारनो होनांगौ (AP) मोनफानो पार्टी बहीआव थायो।
 who_when_how_much	सोर, माब्ला, बेसेबा
 every_credit_and_settlement_stays	गासै बाकि आरो हिसाब साननि बहीआव थायो।
 n_4_buy_stock	4 · बाय आरो स्टक
@@ -48,7 +48,7 @@ receive_the_goods_the_catalogue	मुवा ला; केटालगनि �
 who_we_owe	जों सोरनो होनांगौ
 supplier_balance_sits_on_the	सप्लायारनि बाकिआ ग्राहकनि खाता थानाय मोनफानो पार्टीआव थायो।
 low_stock_at_a_glance	मोनसे नायनायाव खम स्टक
-inventory_shows_what_is_running	इनभेन्टरिआ उननि भीड़नि सिगां मा जोबगासिनो दिन्थियो।
+inventory_shows_what_is_running	इनभेन्टरिआ उननि भिरनि सिगां मा जोबगासिनो दिन्थियो।
 n_5_day_book	5 · साननि बही
 cash_vs_upi_counted_and	नगद आरो UPI, सानबाय — आरो फारागखौ साफै बुंनाय।
 today_s_drawer	दिनैनि ड्रयार
@@ -60,7 +60,7 @@ expected_cash	आसा खालामनाय नगद
 counted	सानबाय
 short	खम
 tenders_stay_separate	रां होनाय राहाफोर गुबुनै थायो
-cash_and_upi_never_mix	नगद आरो UPI जेब्लाबो मोनसे बुजिनो हायै गासैआव गलायाखै।
+cash_and_upi_never_mix	नगद आरो UPI जेब्लाबो मोनसे बुजिनो हायै गासैआव गलायनाय नङा।
 shift_close	सिफ्ट बन्द
 close_the_shift_print_the	सिफ्ट बन्द खालाम, स्लिप प्रिन्ट खालाम, उननि सिफ्टखौ साफै जागाय।
 gst_facing_bills	GST बिलफोर
@@ -72,9 +72,9 @@ router_no_internet	राउटार: इन्टारनेट गैया
 main_counter_selling_and_settling	गाहाय काउन्टार: फाननाय आरो हिसाब सलायगासिनो
 second_till_joined_on_your	नैथि बिलिं काउन्टार: नोंनि गावनि Wi-Fi आव फोनांजाबनाय
 books_live_on_the_shop	बहीफोरा दोकाननि डिभाइसआव थायो
-when_the_internet_drops_mid	भीड़नि गेजेराव इन्टारनेट थांब्लाबो काउन्टारआव जेबो बिनि थाखाय नेथ'आ।
+when_the_internet_drops_mid	भिरनि गेजेराव इन्टारनेट थांब्लाबो काउन्टारआव जेबो बिनि थाखाय नेथ'आ।
 one_server_lan_clients	मोनसे सर्वर, LAN क्लाइन्ट
-extra_tills_share_the_same	बांसिन बिलिं काउन्टारफोरा दोकाननि नेटवर्कआव मोनफानो बहीफोरखौ राननानै लायो।
+extra_tills_share_the_same	बांसिन बिलिं काउन्टारफोरा दोकाननि नेटवर्कआव मोनफानो बहीफोरखौ लोगोसे बाहायो।
 n_7_free_forever_locally	7 · लोकालआव गासै समाव बेसेन गैयै
 free_forever_on_your_devices	नोंनि डिभाइसआव गासै समाव बेसेन गैयै।
 no_per_bill_charge	बिल फ्रोमबो चार्ज गैया
@@ -108,7 +108,7 @@ bill_paid_line	पैसा होबाय · साननि बही आप�
 lan_eyebrow	6 · बांसिन बिलिं काउन्टार
 lan_title	दोकाननि Wi-Fi आव गुबुन मोनसे बिलिं काउन्टार।
 cta_installers_note	गासै इन्स्टलारआ साफ मेसिनआव इन्स्टल आनजाद पास जानाय उनाव बेयाव फैगोन। बे सिम WhatsApp आव डेमो बिनाय हो।
-cta_whatsapp_soon	WhatsApp डेमो लाइन गोख्रोंै खेवगोन। नोंनि खिन्थाया बेबादि जागोन: “{message}”।
+cta_whatsapp_soon	WhatsApp डेमो लाइन गोख्रोङै खेवगोन। नोंनि खिन्थाया बेबादि जागोन: “{message}”।
 acct_page_title	एकाउन्ट — Kirano
 acct_lede	साइट आरो एप्पनि थाखाय मोनसेल' एकाउन्ट — गोदान एबा फिनफैनाय, मोनफानो फर्म।
 acct_email	ईमेल
@@ -152,8 +152,8 @@ shop_cart	कार्ट
 shop_cart_empty_hint	नोंनि कार्टआ लांदां। Steady, Swift एबा Priority दाजाब।
 shop_checkout	चेकआउट
 shop_clear	बोखार
-shop_checkout_hint	चेकआउटआ नोंखौ एकाउन्टआव साइन इन खालामहो, अब्ला रां होनाय जागायो (स्यान्डबक्स मक, एबा की सेट दंब्ला Paddle)।
-acct_billing_hint	बोसोर फ्रोमनि प्लान — चेकआउटआव गेटवेआ ट्याक्स दाजाबो। लोकाल बाहायनाया गासै समाव बेसेन गैयै थायो। कास्टम आ मोनसे कोटेसन (Steady निख्राय खम एबा Priority निख्राय बांसिन जानो हायो)।
+shop_checkout_hint	चेकआउटआ नोंखौ एकाउन्टआव साइन इन खालामहोयो, अब्ला रां होनाय जागायो (स्यान्डबक्स मक, एबा की सेट दंब्ला Paddle)।
+acct_billing_hint	बोसोर फ्रोमनि प्लान — चेकआउटआव गेटवेआ ट्याक्स दाजाबो। लोकाल बाहायनाया गासै समाव बेसेन गैयै थायो। कास्टमआ मोनसे कोटेसन (Steady निख्राय खम एबा Priority निख्राय बांसिन जानो हायो)।
 shop_cloud_plans	क्लाउड प्लानफोर
 acct_federated	फेडारेटेड साइन इन
 acct_err_invalid_email	थार ईमेल ठिकाना लिर।
@@ -171,8 +171,8 @@ acct_err_no_account	बे ईमेलजों जेबो एकाउन्
 acct_err_recent_login	रैखानायनि थाखाय फिन साइन इन खालाम, अब्ला बे सोलायनायखौ फिन नाजा।
 acct_err_credential_in_use	बे साइन इन राहाया सिगांनिफ्रायनो गुबुन एकाउन्टआव बाहायजासिनो।
 acct_err_email_in_use	बे ईमेलआ सिगांनिफ्रायनो गुबुन एकाउन्टआव बाहायजासिनो।
-acct_err_already_linked	बे राहाया सिगांनिफ्रायनो बे एकाउन्टजों फोनांजाबनाय दं।
-acct_err_exists_other_method	बे ईमेलजों गुबुन साइन इन राहाजों मोनसे एकाउन्ट सिगांनिफ्रायनो दं। सिगां बे राहाजों साइन इन खालाम, अब्ला नोंनि एकाउन्ट बिलाइनिफ्राय बेखौ फोनांजाब।
+acct_err_already_linked	बै राहाया सिगांनिफ्रायनो बे एकाउन्टजों फोनांजाबनाय दं।
+acct_err_exists_other_method	बे ईमेलजों गुबुन साइन इन राहाजों मोनसे एकाउन्ट सिगांनिफ्रायनो दं। सिगां बै राहाजों साइन इन खालाम, अब्ला नोंनि एकाउन्ट बिलाइनिफ्राय बेखौ फोनांजाब।
 acct_err_generic	माबा भुल जाबाय।
 acct_method_password	ईमेल आरो पासवार्ड
 acct_pw_hint_change	नोंनि पासवार्ड सोलाय। दानि पासवार्डजों थार खालामनांगौ।
@@ -180,7 +180,7 @@ acct_pw_hint_add	ईमेलजोंबो साइन इन खालाम
 acct_pw_change	पासवार्ड सोलाय
 acct_pw_add	पासवार्ड दाजाब
 acct_billing_off	क्लाउड API आव बिलिं दासिम जागायाखै।
-acct_billing_no_provider	क्लाउड API आव जेबो थार बिलिं प्रभाइडार जागायाखै (मक आ लोकालल')।
+acct_billing_no_provider	क्लाउड API आव जेबो थार बिलिं प्रभाइडार जागायाखै (मकआ लोकालल')।
 price_quote	कोटेसन
 price_per_year	₹{amount}/बोसोर, ट्याक्स गैयै
 acct_pay_received	रां मोनबाय — नोंनि प्लानखौ गोदान खालामगासिनो…
@@ -201,17 +201,17 @@ acct_signed_in_status	नों साइन इन जाबाय।
 acct_created	एकाउन्ट बानायबाय। हाब्ला थार खालामनो नोंनि ईमेल नाय।
 acct_reset_sent	जुदि बे ईमेलनि एकाउन्ट दं, रिसेट लिंकआ फैगासिनो। नोंनि इनबक्स नाय।
 acct_another_method	गुबुन राहा
-acct_exists_via	{email} नि एकाउन्ट {method} जों सिगांनिफ्रायनो दं। सिगां बे राहाजों साइन इन खालाम, अब्ला नोंनि एकाउन्ट बिलाइनिफ्राय बे प्रभाइडारखौ फोनांजाब।
+acct_exists_via	{email} नि एकाउन्ट {method} जों सिगांनिफ्रायनो दं। सिगां बै राहाजों साइन इन खालाम, अब्ला नोंनि एकाउन्ट बिलाइनिफ्राय बे प्रभाइडारखौ फोनांजाब।
 acct_enter_current_pw	नोंनि दानि पासवार्ड लिर।
 acct_relogin_retry	साइन आउट खालामनानै फिन साइन इन खालाम, अब्ला फिन नाजा।
 acct_pw_mismatch	गोदान पासवार्ड आरो थार खालामनाया मिलाया।
 acct_pw_updated	पासवार्ड आपडेट जाबाय।
 acct_enter_email_pw	पासवार्ड साइन इननि थाखाय मोनसे ईमेल लिर।
-acct_pw_added	पासवार्ड दाजाबबाय। दासो ईमेलजोंबो साइन इन खालामनो हायो।
+acct_pw_added	पासवार्ड दाजाबबाय। दा नों ईमेलजोंबो साइन इन खालामनो हायो।
 acct_method_linked	साइन इन राहा फोनांजाबबाय।
 acct_phone_linked	फोनआ बे एकाउन्टजों फोनांजाबबाय।
 acct_verify_sent	थार खालामनाय ईमेल दैथाय होबाय — नोंनि इनबक्स नाय।
-shop_pricing_soon	बेसेन गोख्रोंै फैगोन
+shop_pricing_soon	बेसेन गोख्रोङै फैगोन
 shop_request_quote	कोटेसन बिनाय हो
 shop_add_to_cart	कार्टआव दाजाब
 shop_notify_later	उनाव आंनो फोरमाय

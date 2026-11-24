@@ -35,7 +35,7 @@ kirana_grocery_neighbourhood_shops	ದಿನಸಿ · ಕಿರಾಣಿ · ಊ�
 sell_khata_stock_day_book	ಮಾರುನು → ಖಾತೆ → ಸ್ಟಾಕ್ → ದಿನ ಪುಸ್ತಕ.
 fast_counter_sell_with_short	ಎಲ್ಯ ಕೋಡ್‌ಡ್ ಬೇಗದ ಕೌಂಟರ್ ಮಾರಾಟ
 customer_credit_and_supplier_dues	ಗ್ರಾಹಕೆರೆನ ಸಾಲ ಬೊಕ್ಕ ಸಪ್ಲೈಯರ್‌ದ ಬಾಕಿ
-buy_into_stock_offline_forever	ಖರೀದಿಡ್ದ್ ಸ್ಟಾಕ್ — ಯಾವಲ ಆಫ್ಲೈನ್
+buy_into_stock_offline_forever	ಖರೀದಿಡ್ದ್ ಸ್ಟಾಕ್ — ಏಪಲಾ ಆಫ್ಲೈನ್
 visit_kirano_shop	kirano.shop ತೂಲೆ  →
 chemists_pharmacy_counters	ಕೆಮಿಸ್ಟ್‌ಲು · ಫಾರ್ಮಸಿ ಕೌಂಟರ್‌ಲು
 medicine_batch_bill_day_close	ಮರ್ದ್ → ಬ್ಯಾಚ್ → ಬಿಲ್ → ದಿನ ಮುಗಿತ.
@@ -48,7 +48,7 @@ your_books_live_in_your	ಇರೆನ ಲೆಕ್ಕ ಪುಸ್ತಕೊಲು
 sales_parties_and_the_day	ಮಾರಾಟ, ಪಾರ್ಟಿ ಬೊಕ್ಕ ದಿನ ಪುಸ್ತಕ ಇರೆನ ಕೌಂಟರ್‌ದ ಡಿವೈಸ್‌ಡ್ ಬರೆಪುನವು — ಬಾಡಿಗೆದ ಸರ್ವರ್‌ಡ್ ಅತ್ತ್.
 on_your_device	ಇರೆನ ಡಿವೈಸ್‌ಡ್
 every_sale_payment_and_docket	ಪ್ರತಿ ಮಾರಾಟ, ಪಾವತಿ ಬೊಕ್ಕ ಡಾಕೆಟ್ ಇರೆನ ಸ್ವಂತ ಕಂಪ್ಯೂಟರ್ ಅತ್ತಂಡ ಟ್ಯಾಬ್ಲೆಟ್‌ಡ್ ಸೇವ್ ಆಪುಂಡು.
-no_account_with_us	ಎಂಕ್ಲೆನಲ್ಪ ಖಾತೆ ಬೋಡಾಂದ್
+no_account_with_us	ಎಂಕ್ಲೆನಲ್ಪ ಖಾತೆ ಬೊಡ್ಚಿ
 install_it_and_start_no	ಇನ್‌ಸ್ಟಾಲ್ ಮಲ್ಪುಲೆ ಬೊಕ್ಕ ಸುರು ಮಲ್ಪುಲೆ. ಸೈನ್-ಅಪ್ ಇಜ್ಜಿ, ಕಾರ್ಡ್ ಇಜ್ಜಿ.
 copies_you_keep	ಈರ್ ದೀಪುನ ಪ್ರತಿಲು
 save_a_backup_copy_whenever	ಬೋಡಾಯಿನಗ ಬ್ಯಾಕಪ್ ಪ್ರತಿ ಸೇವ್ ಮಲ್ಪುಲೆ. ಉಂದು ಒಂಜಿ ಫೈಲ್, ಬೊಕ್ಕ ಉಂದು ಇರೆನವು.
@@ -60,15 +60,15 @@ cut_the_internet	ಇಂಟರ್ನೆಟ್ ಕಡಪುಲೆ
 internet_on	ಇಂಟರ್ನೆಟ್: ಆನ್
 book_a_parcel_or_take	ಒಂಜಿ ಪಾರ್ಸೆಲ್ ಬುಕ್ ಮಲ್ಪುಲೆ ಅತ್ತಂಡ ಆರ್ಡರ್ ದೆತ್ತೊನುಲೆ
 save_the_bill_or_docket	ಬಿಲ್ ಅತ್ತಂಡ ಡಾಕೆಟ್ ಸೇವ್ ಮಲ್ಪುಲೆ
-day_book_totals	ದಿನ ಪುಸ್ತಕದ ಒಟ್ಟು
+day_book_totals	ದಿನ ಪುಸ್ತಕೊದ ಒಟ್ಟು
 find_an_old_sale	ಪರತ್ತ್ ಮಾರಾಟ ನಾಡ್ಲೆ
 the_internet_is_on_and	ಇಂಟರ್ನೆಟ್ ಆನ್ ಉಂಡು — ಬೊಕ್ಕ ಕೌಂಟರ್ ಅವೆನ್ ಬಳಸುಜಿ.
 things_that_leave_the_shop	ಅಂಗಡಿಡ್ದ್ ಪಿದಾಯಿ ಪೋಪುನವು, ಉದಾ. WhatsApp ರಸೀದಿ, ಮುಟ್ಟೆರೆ ಇತ್ತೆಲಾ ಇಂಟರ್ನೆಟ್ ಬೋಡು.
 n_05_price	05 · ಬೆಲೆ
-free_forever_on_your_devices	ಇರೆನ ಡಿವೈಸ್‌ಡ್ ಯಾವಲ ಉಚಿತ.
+free_forever_on_your_devices	ಇರೆನ ಡಿವೈಸ್‌ಡ್ ಏಪಲಾ ಉಚಿತ.
 no_charge_per_seat_user	ಸೀಟ್, ಬಳಕೆದಾರೆ, ಮೇಜಿ, ರೈಡರ್, ಪಾರ್ಸೆಲ್ ಅತ್ತಂಡ ಲೋಕಲ್ ಡಿವೈಸ್‌ಗ್ ಶುಲ್ಕ ಇಜ್ಜಿ. ಉಂದು ಟ್ರಯಲ್ ಅತ್ತ್.
 on_your_own_devices	ಇರೆನ ಸ್ವಂತ ಡಿವೈಸ್‌ಡ್
-n_0_forever	₹0, ಯಾವಲ
+n_0_forever	₹0, ಏಪಲಾ
 pay_only_for_what_you	ಎಚ್ಚ ಬಳಸುವರೋ ಅಚ್ಚಗ್ ಮಾತ್ರ ಪಾವತಿ ಮಲ್ಪುಲೆ — ಮಾತೆರೆಗ್ ಅವೇ ರೇಟ್.
 planned	ಯೋಜನೆಡ್
 cloud_is_planned_and_optional	ಕ್ಲೌಡ್ ಯೋಜನೆಡ್ ಉಂಡು ಬೊಕ್ಕ ಐಚ್ಛಿಕ. ಕೌಂಟರ್ ಉಂದು ಇಜ್ಜಂದೆಲಾ ಬೇಲೆ ಮಲ್ಪುಂಡು.
@@ -104,7 +104,7 @@ toy_bring_back	ಇಂಟರ್ನೆಟ್ ಪಿರ ಕನಲೆ
 toy_internet_off	ಇಂಟರ್ನೆಟ್: ಆಫ್
 toy_verdict_off	ಇಂಟರ್ನೆಟ್ ಆಫ್ — ಬೊಕ್ಕ ಕೌಂಟರ್‌ಡ್ ಒವ್ವೇ ಬದಲ್ ಆಯಿಜಿ.
 acct_page_title	ಖಾತೆ — Kumkaj
-acct_lede	ಪ್ರತಿ Kumkaj ಪ್ರಾಡಕ್ಟ್‌ಗ್ ಸ್ವಂತ ಖಾತೆ (ಬೊಕ್ಕ ಸ್ವಂತ ಕ್ಲೌಡ್) ಉಂಡು. ಈರ್ ನಡಪುನ ವ್ಯಾಪಾರನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ — ಸೈನ್-ಇನ್ ಬೊಕ್ಕ ಚೆಕ್‌ಔಟ್ ಆ ಪ್ರಾಡಕ್ಟ್‌ದ ಸೈಟ್‌ಡೇ ಉಪ್ಪುಂಡು.
+acct_lede	ಪ್ರತಿ Kumkaj ಪ್ರಾಡಕ್ಟ್‌ಗ್ ಸ್ವಂತ ಖಾತೆ (ಬೊಕ್ಕ ಸ್ವಂತ ಕ್ಲೌಡ್) ಉಂಡು. ಈರ್ ನಡಪಾಪುನ ವ್ಯಾಪಾರನ್ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ — ಸೈನ್-ಇನ್ ಬೊಕ್ಕ ಚೆಕ್‌ಔಟ್ ಆ ಪ್ರಾಡಕ್ಟ್‌ದ ಸೈಟ್‌ಡೇ ಉಪ್ಪುಂಡು.
 acct_product_accounts	ಪ್ರಾಡಕ್ಟ್ ಖಾತೆಲು
 acct_moklanjo_blurb	ಕೊರಿಯರ್ OS ಖಾತೆ
 acct_khaynjo_blurb	ರೆಸ್ಟೋರೆಂಟ್ OS ಖಾತೆ
@@ -112,7 +112,7 @@ acct_kirano_blurb	ದಿನಸಿ ಕೌಂಟರ್ ಖಾತೆ
 acct_tabiyat_blurb	ಫಾರ್ಮಸಿ ಕೌಂಟರ್ ಖಾತೆ
 acct_open_account	ಖಾತೆ ಓಪನ್ ಮಲ್ಪುಲೆ
 shop_page_title	ಅಂಗಡಿ — Kumkaj
-shop_lede	ವರ್ಷದ ಕ್ಲೌಡ್ ಪ್ಲಾನ್‌ಲು — ಪ್ರತಿ ವ್ಯಾಪಾರೊಗು ಅವೇ ಐನ್ ರೂಪೊಲು (ಯಾವಲ ಉಚಿತ, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / ವರ್ಷ, ತೆರಿಗೆ ಬುಡ್ದು, ಅತ್ತಂಡ ಕಸ್ಟಮ್ ಕೋಟೇಶನ್). ತೆರಿಗೆ ಚೆಕ್‌ಔಟ್‌ಡ್ ಸೇರುಂಡು. ಪ್ರತಿ ಪ್ರಾಡಕ್ಟ್‌ಗ್ ಸ್ವಂತ ಅಂಗಡಿ ಬೊಕ್ಕ ಖಾತೆ ಉಂಡು.
+shop_lede	ವರ್ಷೊದ ಕ್ಲೌಡ್ ಪ್ಲಾನ್‌ಲು — ಪ್ರತಿ ವ್ಯಾಪಾರೊಗು ಅವೇ ಐನ್ ರೂಪೊಲು (ಏಪಲಾ ಉಚಿತ, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / ವರ್ಷ, ತೆರಿಗೆ ಬುಡ್ದು, ಅತ್ತಂಡ ಕಸ್ಟಮ್ ಕೋಟೇಶನ್). ತೆರಿಗೆ ಚೆಕ್‌ಔಟ್‌ಡ್ ಸೇರುಂಡು. ಪ್ರತಿ ಪ್ರಾಡಕ್ಟ್‌ಗ್ ಸ್ವಂತ ಅಂಗಡಿ ಬೊಕ್ಕ ಖಾತೆ ಉಂಡು.
 shop_product_shops	ಪ್ರಾಡಕ್ಟ್ ಕ್ಲೌಡ್ ಅಂಗಡಿಲು
 shop_moklanjo_blurb	moklanjo.com ಗ್ ಕೊರಿಯರ್ ಡೆಸ್ಕ್ ಕ್ಲೌಡ್
 shop_khaynjo_blurb	khaynjo.com ಗ್ ರೆಸ್ಟೋರೆಂಟ್ ಕ್ಲೌಡ್

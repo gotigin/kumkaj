@@ -1,31 +1,31 @@
 # Kokborok — ককবরক (trp). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	নমুনা
-download_free	দাম কৗইয়াউই ডাউনলোড খাইদি
+download_free	রাং রৗয়াউই ডাউনলোড খাইদি
 whatsapp_for_a_demo	ডেমো নি বাগৱি WhatsApp খাইদি
-free_on_android_windows_and	Android, Windows আর Linux ও দাম কৗইয়া।
+free_on_android_windows_and	Android, Windows আর Linux ও দাম কৗরৗই।
 the_grocery_counter	মুদি দোকান নি কাউন্টার
 busy_counter	ব্যস্ত কাউন্টার
 kirano_the_grocery_counter	KIRANO · মুদি দোকান নি কাউন্টার
-busy_counter_no_internet_still	ব্যস্ত কাউন্টার। ইন্টারনেট কৗইয়া। তাবুকবো বিলিং তুলাংতংও।
-sell_khata_stock_and_the	ফালমানি, খাতা, স্টক আর সালনি বিজাপ — নৗনি নিজ ডিভাইসও। বিজাপ · ফালমানি · পাইদি · মানুই। ফ্লোর কৗইয়া, চানানোক কৗইয়া, মেজা কৗইয়া।
+busy_counter_no_internet_still	ব্যস্ত কাউন্টার। ইন্টারনেট কৗরৗই। তাবুকবো বিলিং তুলাংতংও।
+sell_khata_stock_and_the	ফালমানি, খাতা, স্টক আর সালনি বিজাপ — নৗনি নিজ ডিভাইসও। বিজাপ · ফালমানি · পাইদি · মানুই। ফ্লোর কৗরৗই, চানানোক কৗরৗই, মেজা কৗরৗই।
 tap_the_bill_to_walk	কাউন্টার নি কাইসা ফালমানি নাইনাই বিলও টেপ খাইদি
 cash_memo	ক্যাশ মেমো
 ready	তিয়ারি
 total	জত
 tap_to_add_the_first	সিকাং মানুই যোগ খাইনাই টেপ খাইদি
-example_grocery_lines_not_a	নমুনা মুদি লাইন রোক, সত্যি কাউন্টার কৗইয়া। Kirano অ সে লামা থাংও: ফালমানি → হিসাব → সালনি বিজাপ।
+example_grocery_lines_not_a	নমুনা মুদি লাইন রোক, সত্যি কাউন্টার কৗরৗই। Kirano অ সে লামা থাংও: ফালমানি → হিসাব → সালনি বিজাপ।
 n_2_counter_sell	2 · কাউন্টার ফালমানি
 item_quantity_pay_three_taps	মানুই, কুবাংমা, রাং রৗমানি — কাথাম টেপ।
 upi_qr_ready	UPI QR তিয়ারি
 example_bill	নমুনা বিল
 search_by_name_or_short	মুং বা কিচিং কোড বাই নাইসিদি
-type_atta_at5_or_an	আটা, AT5 বা গুবুন মুং সুইদি — লাইন বিলও ফাইও।
+type_atta_at5_or_an	আটা, AT5 বা কুবুন মুং সুইদি — লাইন বিলও ফাইও।
 kg_g_pc_l_ml	কিলো, গ্রাম, পিস, লিটার, মিলি
 quantity_in_the_unit_the	প্যাকেট নি ইউনিটও কুবাংমা; দাম নিজে ফাইও।
 cash_upi_or_split	রাং, UPI বা খাজাক খাইউই
 settle_on_the_counter_the	কাউন্টারওসে হিসাব খাইদি; সালনি বিজাপ রাং রৗমানি নি খাবাং সুইও।
 n_3_khata	3 · খাতা
-credit_without_a_crm_put	CRM কৗইয়াউই বাকি — বিসিনি খাতাও সুইদি।
+credit_without_a_crm_put	CRM নাংয়াউই বাকি — গ্রাহক নি খাতাও সুইদি।
 ramesh_customer	রমেশ · গ্রাহক
 due_from_earlier	সিগনি বাকি
 today_s_sale_due	+ তিনি নি ফালমানি (বাকি)
@@ -33,20 +33,20 @@ balance	জত বাকি
 settle_later_in_parties_part	উলো বরকও হিসাব খাইদি — খাজাক রাং, খাজাক UPI, খাতা সাফ।
 due_on_the_bill	বিলও বাকি
 what_s_left_goes_on	বাকি তংমানি গ্রাহক নি খাতাও থাংও — ভিন্ন লেজার এপ নাংয়া।
-one_party_two_roles	কাইসা বরক, নৗয়ৗ ভূমিকা
-customer_ar_and_supplier_ap	গ্রাহক নি মাননাই (AR) আর ফাইনাইনো রৗনাই (AP) — কাইসাসে বরক বিজাপও।
-who_when_how_much	সাবো, বুবাগ, বেসেবা
+one_party_two_roles	কাইসা বরক, কাইনৗই ভূমিকা
+customer_ar_and_supplier_ap	গ্রাহক নি মাননাই (AR) আর সাপ্লায়ারনো রৗনাই (AP) — কাইসাসে বরক বিজাপও।
+who_when_how_much	সাবো, তামা সময়, বৗসৗক
 every_credit_and_settlement_stays	জত বাকি আর হিসাব সালনি বিজাপও তংও।
 n_4_buy_stock	4 · পাইমানি আর স্টক
-buy_from_the_wholesaler_stock	পাইকার নি পাইদি — স্টক আর সাবোনো রৗনাই, নৗয়ৗবো কাইসা বাই আপডেট অংও।
+buy_from_the_wholesaler_stock	পাইকার নি পাইদি — স্টক আর সাবোনো রৗনাই, কাইসা বাই আপডেট অংও।
 purchase_sharma_wholesale	পাইমানি · Sharma Wholesale
 stock_50_kg_ap_7	স্টক +50 kg · AP ₹ 7,200
 stock_12_l_ap_1	স্টক +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	ফিন ফালনাই স্টক — চানানোক নি কাঁচা মানুই কৗইয়া। পাইমানিও মন খে ব্যাচ আর মেয়াদ।
+resale_stock_not_kitchen_raw	ফিন ফালনাই স্টক — চানানোক নি কাঁচা মানুই কৗরৗই। পাইমানিও মন খে ব্যাচ আর মেয়াদ।
 buy_creates_stock	পাইমানি স্টক খলাইও
 receive_the_goods_the_catalogue	মানুই লাদি; ক্যাটালগ নি কুবাংমা বেশি অংও।
 who_we_owe	চুং সাবোনো রৗনাই
-supplier_balance_sits_on_the	ফাইনাই নি বাকি গ্রাহক নি খাতা তংমানি অ সে বরকও তংও।
+supplier_balance_sits_on_the	সাপ্লায়ার নি বাকি গ্রাহক নি খাতা তংমানি অ সে বরকও তংও।
 low_stock_at_a_glance	কাইসা নাইমানিও কম স্টক
 inventory_shows_what_is_running	ইনভেন্টরি উলোনি ভিড় নি সিগো তামা জগতংও নাইরুগও।
 n_5_day_book	5 · সালনি বিজাপ
@@ -62,33 +62,33 @@ short	কম
 tenders_stay_separate	রাং রৗমানি নি খাবাং রোক ভিন্ন তংও
 cash_and_upi_never_mix	রাং আর UPI তাংখা কাইসা গোপন জতও মিশায়া।
 shift_close	শিফট উংখা
-close_the_shift_print_the	শিফট উংদি, স্লিপ প্রিন্ট খাইদি, উলোনি শিফট সাফ সিকাংদি।
+close_the_shift_print_the	শিফট উংদি, স্লিপ প্রিন্ট খাইদি, উলোনি শিফট সাফ চেংদি।
 gst_facing_bills	GST বিল রোক
-tax_invoice_or_cash_memo	ট্যাক্স ইনভয়েস বা ক্যাশ মেমো — সাল নি রিপোর্টও নৗয়ৗবো তংও।
-books_sell_buy_items_four	বিজাপ · ফালমানি · পাইদি · মানুই — ব্রৗই স্ক্রিন, আর রেস্টুরেন্ট ফ্লোর কৗইয়া।
-n_6_internet_down	6 · ইন্টারনেট কৗইয়া?
+tax_invoice_or_cash_memo	ট্যাক্স ইনভয়েস বা ক্যাশ মেমো — সাল নি রিপোর্টও কাইনৗইবো তংও।
+books_sell_buy_items_four	বিজাপ · ফালমানি · পাইদি · মানুই — ব্রৗই স্ক্রিন, আর রেস্টুরেন্ট ফ্লোর কৗরৗই।
+n_6_internet_down	6 · ইন্টারনেট কৗরৗই?
 the_internet_drops_the_counter	ইন্টারনেট থাংখা। কাউন্টার ফালতংও।
-router_no_internet	রাউটার: ইন্টারনেট কৗইয়া
+router_no_internet	রাউটার: ইন্টারনেট কৗরৗই
 main_counter_selling_and_settling	মুল কাউন্টার: ফালমানি আর হিসাব তুলাংতংও
-second_till_joined_on_your	নৗয়ৗ নি বিলিং কাউন্টার: নৗনি নিজ Wi-Fi ও জোড়াজাক
+second_till_joined_on_your	নৗই নম্বর বিলিং কাউন্টার: নৗনি নিজ Wi-Fi ও জোড়াজাক
 books_live_on_the_shop	হিসাব বিজাপ দোকান নি ডিভাইসও তংও
-when_the_internet_drops_mid	ভিড় নি তাল উ ইন্টারনেট থাংখেও কাউন্টারও তামাবো বিনি বাগৱি সুংয়া।
+when_the_internet_drops_mid	ভিড় নি তালও ইন্টারনেট থাংখেও কাউন্টারও তামাবো বিনি বাগৱি সুংয়া।
 one_server_lan_clients	কাইসা সার্ভার, LAN ক্লায়েন্ট
 extra_tills_share_the_same	বেশি বিলিং কাউন্টার রোক দোকান নি নেটওয়ার্কও অ সে হিসাব বিজাপ ভাগ খাইও।
-n_7_free_forever_locally	7 · লোকালও জত সময় দাম কৗইয়া
-free_forever_on_your_devices	নৗনি ডিভাইসও জত সময় দাম কৗইয়া।
-no_per_bill_charge	জত বিলও দাম কৗইয়া
-no_fee_per_sale_item	লোকাল ইনস্টলও ফালমানি, মানুই, বিলিং কাউন্টার বা স্টাফ PIN ও দাম কৗইয়া।
+n_7_free_forever_locally	7 · লোকালও জত সময় দাম কৗরৗই
+free_forever_on_your_devices	নৗনি ডিভাইসও জত সময় দাম কৗরৗই।
+no_per_bill_charge	জত বিলও দাম কৗরৗই
+no_fee_per_sale_item	লোকাল ইনস্টলও ফালমানি, মানুই, বিলিং কাউন্টার বা স্টাফ PIN ও দাম কৗরৗই।
 android_windows_linux	Android, Windows, Linux
 the_same_kirano_on_the	কাউন্টার নি উলোও তংমানি ফোন আর ডেস্কটপ বিলিং কাউন্টারও অ সে Kirano।
 optional_kumkaj_cloud	মন খে Kumkaj Cloud
-yearly_steady_6k_swift_12k	বছর বছর নি Steady ₹6k · Swift ₹12k · Priority ₹24k, ট্যাক্স কৗইয়াউই (বা কাস্টম কোটেশন)। /shop ও পাইদি।
-n_8_start	8 · সিকাংদি
+yearly_steady_6k_swift_12k	বছর বছর নি Steady ₹6k · Swift ₹12k · Priority ₹24k, ট্যাক্স যোগ অংয়াউই (বা কাস্টম কোটেশন)। /shop ও পাইদি।
+n_8_start	8 · চেংদি
 put_kirano_on_the_counter	Kirano কাউন্টারও তাংদি।
-download_free_or_whatsapp_for	দাম কৗইয়াউই ডাউনলোড খাইদি, বা নৗনি দোকান নি ক্রম আর শহর সানউই ডেমো নি বাগৱি WhatsApp খাইদি।
+download_free_or_whatsapp_for	রাং রৗয়াউই ডাউনলোড খাইদি, বা নৗনি দোকান নি রকম আর শহর সানউই ডেমো নি বাগৱি WhatsApp খাইদি।
 privacy	গোপনীয়তা
 terms	শর্ত রোক
-cancellation	চানচেল নি নিয়ম
+cancellation	বাতিল নি নিয়ম
 cloud_shop	ক্লাউড দোকান
 account	খাতা
 chapter_counter_sell	কাউন্টার ফালমানি
@@ -97,28 +97,28 @@ chapter_buy_stock	পাইমানি আর স্টক
 chapter_day_book	সালনি বিজাপ
 chapter_extra_till	বেশি বিলিং কাউন্টার
 chapter_offline	অফলাইন
-chapter_start	সিকাংদি
+chapter_start	চেংদি
 bill_selling	ফালতংও
 bill_settle	রাং রৗমানি
-bill_paid	রাং রুজাক
+bill_paid	রাং রৗজাক
 bill_next_item	উলোনি মানুই যোগ খাইনাই টেপ খাইদি
 bill_settle_hint	রাং রৗনাই টেপ খাইদি — রাং বা UPI
 bill_cash_return	রাং ₹ 600 · কিফিল ₹ 15
-bill_paid_line	রাং রুজাক · সালনি বিজাপ আপডেট অংখা
+bill_paid_line	রাং রৗজাক · সালনি বিজাপ আপডেট অংখা
 lan_eyebrow	6 · বেশি বিলিং কাউন্টার
-lan_title	দোকান নি Wi-Fi ও গুবুন কাইসা বিলিং কাউন্টার।
-cta_installers_note	জত ইনস্টলার সাফ মেশিনও ইনস্টল পরীক্ষা পাস অংখে উলো ওবাগ ফাইনাই। অ সিম WhatsApp ও ডেমো সুংদি।
+lan_title	দোকান নি Wi-Fi ও কুবুন কাইসা বিলিং কাউন্টার।
+cta_installers_note	জত ইনস্টলার সাফ মেশিনও ইনস্টল পরীক্ষা পাস অংখে উলো অ পাতাও ফাইনাই। অ সিম WhatsApp ও ডেমো সুংদি।
 cta_whatsapp_soon	WhatsApp ডেমো লাইন তাবুক ওপেন অংনাই। নৗনি মেসেজ অবাহাই অংনাই: “{message}”।
 acct_page_title	খাতা — Kirano
 acct_lede	সাইট আর এপ নি বাগৱি কাইসাসে খাতা — কৗতাল বা ফিন ফাইমানি, অ সে ফর্ম।
 acct_email	ইমেইল
 acct_name_optional	মুং (মন খে)
-acct_password	পাসুওরদ
+acct_password	পাসওয়ার্ড
 acct_continue	তুলাংদি
-acct_forgot	পাসুওরদ বাউগাখা?
+acct_forgot	পাসওয়ার্ড বাউগাখা?
 acct_reset_hint	চুং রিসেট লিংক ইমেইল খাইনাই। সাইন আপ খাইমানি অ ঠিকানা মানদি।
 acct_send_reset	রিসেট লিংক রোহোরদি
-acct_cancel	চানচেল খাইদি
+acct_cancel	বাতিল খাইদি
 acct_or_continue	বা বো বাই তুলাংদি
 acct_phone	ফোন
 acct_mobile	মোবাইল নম্বর
@@ -134,11 +134,11 @@ acct_plan	প্ল্যান
 acct_resend_verify	যাচাই ইমেইল ফিন রোহোরদি
 acct_sign_out	সাইন আউট
 acct_cloud_sandbox	Kumkaj Cloud (স্যান্ডবক্স)
-acct_current_password	তাবুক নি পাসুওরদ
-acct_email_for_password	পাসুওরদ সাইন-ইন নি বাগৱি ইমেইল
-acct_new_password	কৗতাল পাসুওরদ
-acct_confirm_new_password	কৗতাল পাসুওরদ পাকা খাইদি
-acct_add_way	সাইন ইন খাইনাই গুবুন কাইসা খাবাং যোগ খাইদি
+acct_current_password	তাবুক নি পাসওয়ার্ড
+acct_email_for_password	পাসওয়ার্ড সাইন-ইন নি বাগৱি ইমেইল
+acct_new_password	কৗতাল পাসওয়ার্ড
+acct_confirm_new_password	কৗতাল পাসওয়ার্ড পাকা খাইদি
+acct_add_way	সাইন ইন খাইনাই কুবুন কাইসা খাবাং যোগ খাইদি
 acct_link_hint	খাবাং রোক কাইসাসে খাতা বাই জোড়াদি, কাইসা মেচেনখেও প্রবেশ ফিন মাননাই।
 acct_link_google	Google জোড়াদি
 acct_link_microsoft	Microsoft জোড়াদি
@@ -147,42 +147,42 @@ acct_link_phone	ফোন জোড়াদি
 acct_send_sms_link	জোড়ানাই SMS রোহোরদি
 acct_confirm_link_phone	পাকা খাইউই ফোন জোড়াদি
 shop_page_title	দোকান — Kirano
-shop_lede	বছর বছর নি ক্লাউড প্ল্যান — ট্যাক্স চেকআউটও যোগ অংও। নৗনি নিজ ডিভাইসও জত Kirano এপ জত সময় দাম কৗইয়া তংও, বিজ্ঞাপন কৗইয়াউই।
+shop_lede	বছর বছর নি ক্লাউড প্ল্যান — ট্যাক্স চেকআউটও যোগ অংও। নৗনি নিজ ডিভাইসও জত Kirano এপ জত সময় দাম কৗরৗই তংও, বিজ্ঞাপন কৗরৗই।
 shop_cart	কার্ট
 shop_cart_empty_hint	নৗনি কার্ট কুপলাইসা। Steady, Swift বা Priority যোগ খাইদি।
 shop_checkout	চেকআউট
 shop_clear	মুসুকদি
-shop_checkout_hint	চেকআউট নৗনো খাতাও সাইন ইন খলাইও, উলো রাং রৗমানি সিকাংও (স্যান্ডবক্স মক, বা কি সেট তংখে Paddle)।
-acct_billing_hint	বছর বছর নি প্ল্যান — চেকআউটও গেটওয়ে ট্যাক্স যোগ খাইও। লোকাল মানমানি জত সময় দাম কৗইয়া তংও। কাস্টম কাইসা কোটেশন (Steady নি কম বা Priority নি বেশি অংনাই মানও)।
+shop_checkout_hint	চেকআউট নৗনো খাতাও সাইন ইন খলাইও, উলো রাং রৗমানি চেংও (স্যান্ডবক্স মক, বা কি সেট তংখে Paddle)।
+acct_billing_hint	বছর বছর নি প্ল্যান — চেকআউটও গেটওয়ে ট্যাক্স যোগ খাইও। লোকাল মানমানি জত সময় দাম কৗরৗই তংও। কাস্টম কাইসা কোটেশন (Steady নি কম বা Priority নি বেশি অংনাই মানও)।
 shop_cloud_plans	ক্লাউড প্ল্যান রোক
 acct_federated	ফেডারেটেড সাইন-ইন
-acct_err_invalid_email	মেজাং ইমেইল ঠিকানা সুইদি।
-acct_err_weak_password	কম উ 6 আখর নি পাসুওরদ মানদি।
-acct_err_wrong_password	ভুল পাসুওরদ।
-acct_err_invalid_credential	ইমেইল বা পাসুওরদ ভুল।
+acct_err_invalid_email	ঠিক ইমেইল ঠিকানা সুইদি।
+acct_err_weak_password	6 আখর বা বেশি নি পাসওয়ার্ড মানদি।
+acct_err_wrong_password	ভুল পাসওয়ার্ড।
+acct_err_invalid_credential	ইমেইল বা পাসওয়ার্ড ভুল।
 acct_err_popup_closed	সাইন-ইন উইন্ডো বন্ধ অংখা।
-acct_err_popup_cancelled	সাইন-ইন চানচেল অংখা।
-acct_err_unauthorized_domain	অ ডোমেইন Firebase Auth নি বাগৱি অনুমতি কৗইয়া।
-acct_err_method_disabled	অ সাইন-ইন খাবাং তাবুক সিম চালু কৗইয়া।
+acct_err_popup_cancelled	সাইন-ইন বাতিল অংখা।
+acct_err_unauthorized_domain	অ ডোমেইন Firebase Auth নি বাগৱি অনুমতি কৗরৗই।
+acct_err_method_disabled	অ সাইন-ইন খাবাং তাবুক সিম চালু অংয়াখা।
 acct_err_too_many	বেশি নাইথক খাইখা। উলো ফিন নাইথক খাইদি।
-acct_err_phone_format	রাজ্য নি কোড বাই জত ফোন নম্বর মানদি (নমুনা +91…)।
+acct_err_phone_format	দেশ নি কোড বাই জত ফোন নম্বর মানদি (নমুনা +91…)।
 acct_err_sms_code	অ SMS কোড ভুল বা বিনি সময় থাংখা।
-acct_err_no_account	অ ইমেইল বাই খাতা কৗইয়া। কৗতাল খলাইনাই তুলাংদি, বা গুবুন খাবাং মানদি।
+acct_err_no_account	অ ইমেইল বাই খাতা কৗরৗই। কৗতাল খলাইনাই তুলাংদি, বা কুবুন খাবাং মানদি।
 acct_err_recent_login	সুরক্ষা নি বাগৱি ফিন সাইন ইন খাইদি, উলো অ বদল ফিন খাইদি।
-acct_err_credential_in_use	অ সাইন-ইন খাবাং সিগনি গুবুন খাতা মানতংও।
-acct_err_email_in_use	অ ইমেইল সিগনি গুবুন খাতা মানতংও।
+acct_err_credential_in_use	অ সাইন-ইন খাবাং সিগনি কুবুন খাতা মানতংও।
+acct_err_email_in_use	অ ইমেইল সিগনি কুবুন খাতা মানতংও।
 acct_err_already_linked	অ খাবাং সিগনি অ খাতা বাই জোড়াজাক তংও।
-acct_err_exists_other_method	অ ইমেইল নি খাতা সিগনি গুবুন সাইন-ইন খাবাং বাই তংও। সিগো অ খাবাং বাই সাইন ইন খাইদি, উলো নৗনি খাতা নি পাতা নি বো জোড়াদি।
+acct_err_exists_other_method	অ ইমেইল নি খাতা সিগনি কুবুন সাইন-ইন খাবাং বাই তংও। সিগো অ খাবাং বাই সাইন ইন খাইদি, উলো নৗনি খাতা নি পাতা নি বো জোড়াদি।
 acct_err_generic	তামাবো ভুল অংখা।
-acct_method_password	ইমেইল আর পাসুওরদ
-acct_pw_hint_change	নৗনি পাসুওরদ বদল খাইদি। তাবুক নি পাসুওরদ বাই পাকা খাইনাই নাংও।
-acct_pw_hint_add	ইমেইল বাই বো সাইন ইন খাইনাই মাননাই কাইসা পাসুওরদ যোগ খাইদি (প্রোভাইডার মানয়াখে কামাং অংনাই)।
-acct_pw_change	পাসুওরদ বদল খাইদি
-acct_pw_add	পাসুওরদ যোগ খাইদি
-acct_billing_off	ক্লাউড API ও বিলিং তাবুক সিম চালু কৗইয়া।
-acct_billing_no_provider	ক্লাউড API ও সত্যি বিলিং প্রোভাইডার চালু কৗইয়া (মক লোকাল সে)।
+acct_method_password	ইমেইল আর পাসওয়ার্ড
+acct_pw_hint_change	নৗনি পাসওয়ার্ড বদল খাইদি। তাবুক নি পাসওয়ার্ড বাই পাকা খাইনাই নাংও।
+acct_pw_hint_add	ইমেইল বাই বো সাইন ইন খাইনাই মাননাই কাইসা পাসওয়ার্ড যোগ খাইদি (প্রোভাইডার মানয়াখে কামাং অংনাই)।
+acct_pw_change	পাসওয়ার্ড বদল খাইদি
+acct_pw_add	পাসওয়ার্ড যোগ খাইদি
+acct_billing_off	ক্লাউড API ও বিলিং তাবুক সিম চালু অংয়াখা।
+acct_billing_no_provider	ক্লাউড API ও সত্যি বিলিং প্রোভাইডার চালু অংয়াখা (মক লোকাল সে)।
 price_quote	কোটেশন
-price_per_year	₹{amount}/বছর, ট্যাক্স কৗইয়াউই
+price_per_year	₹{amount}/বছর, ট্যাক্স যোগ অংয়াউই
 acct_pay_received	রাং মানখা — নৗনি প্ল্যান কৗতাল অংতংও…
 acct_pay_declined	রাং রৗমানি নারাজ অংখা বা মেচেনখা
 acct_pay_failed_detail	{detail}। নৗনি প্ল্যান বদল অংয়াখা।
@@ -196,18 +196,18 @@ acct_signed_in_fallback	(সাইন ইন অংখা)
 acct_email_verified	ইমেইল যাচাই অংখা
 acct_email_unverified	ইমেইল তাবুক সিম যাচাই অংয়াখা — নৗনি ইনবক্স নাইদি
 acct_signed_in_phone	ফোন বাই সাইন ইন অংখা
-acct_none_listed	তাবুক সিম লিস্টও তামাবো কৗইয়া
+acct_none_listed	তাবুক সিম লিস্টও তামাবো কৗরৗই
 acct_signed_in_status	নৗং সাইন ইন অংজাক।
 acct_created	খাতা খলাইজাক। মানখে যাচাই নি বাগৱি নৗনি ইমেইল নাইদি।
 acct_reset_sent	অ ইমেইল নি খাতা তংখে, রিসেট লিংক ফাইতংও। নৗনি ইনবক্স নাইদি।
-acct_another_method	গুবুন খাবাং
+acct_another_method	কুবুন খাবাং
 acct_exists_via	{email} নি খাতা সিগনি {method} বাই তংও। সিগো অবাহাই সাইন ইন খাইদি, উলো নৗনি খাতা নি পাতা নি অ প্রোভাইডার জোড়াদি।
-acct_enter_current_pw	নৗনি তাবুক নি পাসুওরদ সুইদি।
+acct_enter_current_pw	নৗনি তাবুক নি পাসওয়ার্ড সুইদি।
 acct_relogin_retry	সাইন আউট খাইউই ফিন সাইন ইন খাইদি, উলো ফিন নাইথক খাইদি।
-acct_pw_mismatch	কৗতাল পাসুওরদ আর পাকা খাইমানি মিলায়া।
-acct_pw_updated	পাসুওরদ আপডেট অংখা।
-acct_enter_email_pw	পাসুওরদ সাইন-ইন নি বাগৱি কাইসা ইমেইল সুইদি।
-acct_pw_added	পাসুওরদ যোগ অংখা। তাবুক ইমেইল বাই বো সাইন ইন খাইনাই মানও।
+acct_pw_mismatch	কৗতাল পাসওয়ার্ড আর পাকা খাইমানি মিলায়া।
+acct_pw_updated	পাসওয়ার্ড আপডেট অংখা।
+acct_enter_email_pw	পাসওয়ার্ড সাইন-ইন নি বাগৱি কাইসা ইমেইল সুইদি।
+acct_pw_added	পাসওয়ার্ড যোগ অংখা। তাবুক ইমেইল বাই বো সাইন ইন খাইনাই মানও।
 acct_method_linked	সাইন-ইন খাবাং জোড়াজাক।
 acct_phone_linked	ফোন অ খাতা বাই জোড়াজাক।
 acct_verify_sent	যাচাই ইমেইল রোহোরজাক — নৗনি ইনবক্স নাইদি।
@@ -217,12 +217,12 @@ shop_add_to_cart	কার্টও যোগ খাইদি
 shop_notify_later	উলো আনো সিনিদি
 shop_included	যোগ তংও
 shop_in_cart	{plan} নৗনি কার্টও তংও।
-shop_remove	থাংদি
+shop_remove	বাদ খাইদি
 shop_cart_is_empty	কার্ট কুপলাইসা।
 shop_prices_unpublished	অ প্রোডাক্ট নি নিজে পাইনাই দাম তাবুক সিম ফাতারয়াখা। কাস্টম কোটেশন সুংদি বা উলো ফিন নাইদি।
 shop_cart_cleared	কার্ট মুসুকজাক।
-plan_free_title	জত সময় দাম কৗইয়া
-plan_free_blurb	নৗনি ডিভাইসও জত লোকাল প্রোডাক্ট। ক্লাউড নি দাম কৗইয়া।
+plan_free_title	জত সময় দাম কৗরৗই
+plan_free_blurb	নৗনি ডিভাইসও জত লোকাল প্রোডাক্ট। ক্লাউড নি দাম কৗরৗই।
 plan_steady_blurb	লাইভ ক্লাউড · 10 GB · কম ব্যান্ডউইথ
 plan_swift_blurb	লাইভ ক্লাউড · 25 GB · তাল নি ব্যান্ডউইথ
 plan_priority_blurb	লাইভ ক্লাউড · 50 GB · জত নি বেশি মান নি ব্যান্ডউইথ

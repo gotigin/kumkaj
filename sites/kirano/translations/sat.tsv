@@ -1,5 +1,5 @@
 # Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	ᱫᱮᱠᱷᱟᱣ
+example	ᱫᱟᱹᱭᱠᱟᱹ
 download_free	ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱰᱟᱣᱩᱱᱞᱳᱰ ᱢᱮ
 whatsapp_for_a_demo	ᱰᱮᱢᱚ ᱞᱟᱹᱜᱤᱫ WhatsApp ᱢᱮ
 free_on_android_windows_and	Android, Windows ᱟᱨ Linux ᱨᱮ ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ᱾
@@ -13,11 +13,11 @@ cash_memo	ᱠᱮᱥ ᱢᱮᱢᱚ
 ready	ᱛᱮᱭᱟᱨ
 total	ᱢᱩᱴ
 tap_to_add_the_first	ᱯᱟᱹᱦᱤᱞ ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱴᱤᱯ ᱢᱮ
-example_grocery_lines_not_a	ᱫᱮᱠᱷᱟᱣ ᱠᱤᱨᱟᱱᱟ ᱞᱟᱭᱤᱱ, ᱥᱟᱹᱨᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱫᱚ ᱵᱟᱝ᱾ Kirano ᱚᱱᱟ ᱜᱮ ᱦᱚᱨ ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ: ᱟᱠᱷᱨᱤᱧ → ᱦᱤᱥᱟᱹᱵ → ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ᱾
+example_grocery_lines_not_a	ᱫᱟᱹᱭᱠᱟᱹ ᱠᱤᱨᱟᱱᱟ ᱞᱟᱭᱤᱱ, ᱥᱟᱹᱨᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱫᱚ ᱵᱟᱝ᱾ Kirano ᱚᱱᱟ ᱜᱮ ᱦᱚᱨ ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ: ᱟᱠᱷᱨᱤᱧ → ᱦᱤᱥᱟᱹᱵ → ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ᱾
 n_2_counter_sell	2 · ᱠᱟᱣᱩᱱᱴᱟᱨ ᱟᱠᱷᱨᱤᱧ
 item_quantity_pay_three_taps	ᱡᱤᱱᱤᱥ, ᱯᱚᱨᱤᱢᱟᱱ, ᱴᱟᱠᱟ ᱮᱢ — ᱯᱮ ᱴᱤᱯ᱾
 upi_qr_ready	UPI QR ᱛᱮᱭᱟᱨ
-example_bill	ᱫᱮᱠᱷᱟᱣ ᱵᱤᱞ
+example_bill	ᱫᱟᱹᱭᱠᱟᱹ ᱵᱤᱞ
 search_by_name_or_short	ᱧᱩᱛᱩᱢ ᱥᱮ ᱦᱩᱰᱤᱧ ᱠᱳᱰ ᱛᱮ ᱥᱮᱸᱫᱽᱨᱟ ᱢᱮ
 type_atta_at5_or_an	ᱟᱴᱟ, AT5 ᱥᱮ ᱮᱴᱟᱜ ᱧᱩᱛᱩᱢ ᱚᱞ ᱢᱮ — ᱞᱟᱭᱤᱱ ᱵᱤᱞ ᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ᱾
 kg_g_pc_l_ml	ᱠᱤᱞᱚ, ᱜᱨᱟᱢ, ᱜᱚᱴᱟ, ᱞᱤᱴᱟᱨ, ᱢᱤᱞᱤ
@@ -30,9 +30,9 @@ ramesh_customer	ᱨᱚᱢᱮᱥ · ᱜᱨᱟᱦᱟᱠ
 due_from_earlier	ᱢᱟᱲᱟᱝ ᱨᱮᱭᱟᱜ ᱵᱟᱠᱤ
 today_s_sale_due	+ ᱛᱮᱦᱮᱧ ᱨᱮᱭᱟᱜ ᱟᱠᱷᱨᱤᱧ (ᱵᱟᱠᱤ)
 balance	ᱢᱩᱴ ᱵᱟᱠᱤ
-settle_later_in_parties_part	ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱨᱴᱤ ᱠᱚ ᱨᱮ ᱦᱤᱥᱟᱹᱵ ᱢᱮ — ᱛᱤᱱᱟᱹᱜ ᱴᱟᱠᱟ, ᱛᱤᱱᱟᱹᱜ UPI, ᱠᱷᱟᱛᱟ ᱥᱟᱯᱷᱟ᱾
+settle_later_in_parties_part	ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱨᱴᱤ ᱠᱚ ᱨᱮ ᱦᱤᱥᱟᱹᱵ ᱢᱮ — ᱦᱟᱹᱴᱤᱧ ᱴᱟᱠᱟ, ᱦᱟᱹᱴᱤᱧ UPI, ᱠᱷᱟᱛᱟ ᱥᱟᱯᱷᱟ᱾
 due_on_the_bill	ᱵᱤᱞ ᱨᱮ ᱵᱟᱠᱤ
-what_s_left_goes_on	ᱡᱟᱦᱟᱸ ᱵᱟᱠᱤ ᱛᱟᱦᱮᱸᱱᱟ ᱚᱱᱟ ᱜᱨᱟᱦᱟᱠ ᱨᱮᱭᱟᱜ ᱠᱷᱟᱛᱟ ᱨᱮ ᱥᱮᱱᱚᱜᱼᱟ — ᱟᱞᱜᱟ ᱞᱮᱡᱟᱨ ᱮᱯ ᱵᱟᱝ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾
+what_s_left_goes_on	ᱡᱟᱦᱟᱸ ᱵᱟᱠᱤ ᱛᱟᱦᱮᱸᱱᱟ ᱚᱱᱟ ᱜᱨᱟᱦᱟᱠ ᱨᱮᱭᱟᱜ ᱠᱷᱟᱛᱟ ᱨᱮ ᱥᱮᱱᱚᱜᱼᱟ — ᱡᱩᱫᱟᱹ ᱞᱮᱡᱟᱨ ᱮᱯ ᱵᱟᱝ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾
 one_party_two_roles	ᱢᱤᱫᱴᱟᱹᱝ ᱯᱟᱨᱴᱤ, ᱵᱟᱨᱴᱟᱹᱝ ᱠᱟᱹᱢᱤ
 customer_ar_and_supplier_ap	ᱜᱨᱟᱦᱟᱠ ᱠᱷᱚᱱ ᱧᱟᱢ ᱞᱟᱹᱠᱛᱤ (AR) ᱟᱨ ᱥᱟᱯᱞᱟᱭᱚᱨ ᱴᱷᱮᱱ ᱮᱢ ᱞᱟᱹᱠᱛᱤ (AP) ᱢᱤᱫᱴᱟᱹᱝ ᱜᱮ ᱯᱟᱨᱴᱤ ᱯᱚᱛᱚᱵ ᱨᱮ᱾
 who_when_how_much	ᱚᱠᱚᱭ, ᱪᱤᱞᱤᱵᱮᱞᱟ, ᱛᱤᱱᱟᱹᱜ
@@ -48,7 +48,7 @@ receive_the_goods_the_catalogue	ᱡᱤᱱᱤᱥ ᱦᱟᱛᱟᱣ ᱢᱮ; ᱠᱮ�
 who_we_owe	ᱟᱞᱮ ᱚᱠᱚᱭ ᱴᱷᱮᱱ ᱮᱢ ᱞᱟᱹᱠᱛᱤ
 supplier_balance_sits_on_the	ᱥᱟᱯᱞᱟᱭᱚᱨ ᱨᱮᱭᱟᱜ ᱵᱟᱠᱤ ᱜᱨᱟᱦᱟᱠ ᱠᱷᱟᱛᱟ ᱢᱮᱱᱟᱜ ᱚᱱᱟ ᱜᱮ ᱯᱟᱨᱴᱤ ᱨᱮ ᱛᱟᱦᱮᱸᱱᱟ᱾
 low_stock_at_a_glance	ᱢᱤᱫ ᱧᱮᱞ ᱨᱮ ᱠᱚᱢ ᱥᱴᱚᱠ
-inventory_shows_what_is_running	ᱤᱱᱵᱷᱮᱱᱴᱨᱤ ᱛᱟᱭᱚᱢ ᱵᱷᱤᱲ ᱢᱟᱲᱟᱝ ᱨᱮ ᱪᱮᱫ ᱪᱟᱵᱟᱜ ᱠᱟᱱᱟ ᱩᱫᱩᱜᱟ᱾
+inventory_shows_what_is_running	ᱤᱱᱵᱷᱮᱱᱴᱨᱤ ᱛᱟᱭᱚᱢ ᱵᱷᱤᱲ ᱢᱟᱲᱟᱝ ᱨᱮ ᱪᱮᱫ ᱪᱟᱵᱟᱜ ᱠᱟᱱᱟ ᱩᱫᱩᱜᱼᱟ᱾
 n_5_day_book	5 · ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ
 cash_vs_upi_counted_and	ᱴᱟᱠᱟ ᱟᱨ UPI, ᱞᱮᱠᱷᱟ ᱟᱠᱟᱱ — ᱟᱨ ᱯᱷᱟᱨᱟᱠ ᱥᱟᱯᱷᱟ ᱛᱮ᱾
 today_s_drawer	ᱛᱮᱦᱮᱧ ᱨᱮᱭᱟᱜ ᱰᱨᱚᱣᱟᱨ
@@ -59,7 +59,7 @@ cash_paid_out	− ᱮᱢ ᱴᱟᱠᱟ
 expected_cash	ᱟᱥᱟ ᱴᱟᱠᱟ
 counted	ᱞᱮᱠᱷᱟ ᱮᱱᱟ
 short	ᱠᱚᱢ
-tenders_stay_separate	ᱴᱟᱠᱟ ᱮᱢ ᱦᱚᱨ ᱠᱚ ᱟᱞᱜᱟ ᱛᱟᱦᱮᱸᱱᱟ
+tenders_stay_separate	ᱴᱟᱠᱟ ᱮᱢ ᱦᱚᱨ ᱠᱚ ᱡᱩᱫᱟᱹ ᱡᱩᱫᱟᱹ ᱛᱟᱦᱮᱸᱱᱟ
 cash_and_upi_never_mix	ᱴᱟᱠᱟ ᱟᱨ UPI ᱠᱚᱵᱷᱤ ᱦᱚᱸ ᱢᱤᱫᱴᱟᱹᱝ ᱵᱟᱝ ᱵᱩᱡᱷᱟᱹᱣ ᱢᱩᱴ ᱨᱮ ᱵᱟᱝ ᱢᱮᱥᱟᱜᱼᱟ᱾
 shift_close	ᱥᱤᱯᱷᱴ ᱵᱚᱸᱫᱚ
 close_the_shift_print_the	ᱥᱤᱯᱷᱴ ᱵᱚᱸᱫᱚ ᱢᱮ, ᱥᱞᱤᱯ ᱪᱷᱟᱯᱟ ᱢᱮ, ᱛᱟᱭᱚᱢ ᱥᱤᱯᱷᱴ ᱥᱟᱯᱷᱟ ᱛᱮ ᱮᱦᱚᱵ ᱢᱮ᱾
@@ -100,15 +100,15 @@ chapter_offline	ᱚᱯᱷᱞᱟᱭᱤᱱ
 chapter_start	ᱮᱦᱚᱵ ᱢᱮ
 bill_selling	ᱟᱠᱷᱨᱤᱧ ᱪᱟᱞᱟᱜ ᱠᱟᱱᱟ
 bill_settle	ᱴᱟᱠᱟ ᱮᱢ
-bill_paid	ᱯᱮᱭᱰ
+bill_paid	ᱴᱟᱠᱟ ᱮᱢ ᱮᱱᱟ
 bill_next_item	ᱛᱟᱭᱚᱢ ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱴᱤᱯ ᱢᱮ
 bill_settle_hint	ᱴᱟᱠᱟ ᱮᱢ ᱞᱟᱹᱜᱤᱫ ᱴᱤᱯ ᱢᱮ — ᱴᱟᱠᱟ ᱥᱮ UPI
 bill_cash_return	ᱴᱟᱠᱟ ₹ 600 · ᱨᱩᱣᱟᱹᱲ ₹ 15
-bill_paid_line	ᱯᱮᱭᱰ · ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ ᱱᱟᱶᱟ ᱮᱱᱟ
+bill_paid_line	ᱴᱟᱠᱟ ᱮᱢ ᱮᱱᱟ · ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ ᱱᱟᱶᱟ ᱮᱱᱟ
 lan_eyebrow	6 · ᱵᱟᱹᱲᱛᱤ ᱵᱤᱞᱤᱝ ᱠᱟᱣᱩᱱᱴᱟᱨ
 lan_title	ᱫᱚᱠᱟᱱ Wi-Fi ᱨᱮ ᱮᱴᱟᱜ ᱢᱤᱫᱴᱟᱹᱝ ᱵᱤᱞᱤᱝ ᱠᱟᱣᱩᱱᱴᱟᱨ᱾
 cta_installers_note	ᱡᱚᱛᱚ ᱤᱱᱥᱴᱚᱞᱟᱨ ᱥᱟᱯᱷᱟ ᱢᱮᱥᱤᱱ ᱨᱮ ᱤᱱᱥᱴᱚᱞ ᱡᱟᱹᱸᱪ ᱯᱟᱥ ᱛᱟᱭᱚᱢ ᱱᱚᱸᱰᱮ ᱦᱤᱡᱩᱜᱼᱟ᱾ ᱚᱱᱟ ᱦᱟᱹᱵᱤᱡ WhatsApp ᱨᱮ ᱰᱮᱢᱚ ᱟᱹᱨᱡᱤ ᱢᱮ᱾
-cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱽᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱶᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
+cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱚᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱣᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
 acct_page_title	ᱮᱠᱟᱣᱩᱱᱴ — Kirano
 acct_lede	ᱥᱟᱭᱤᱴ ᱟᱨ ᱮᱯ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱹᱝ ᱜᱮ ᱮᱠᱟᱣᱩᱱᱴ — ᱱᱟᱶᱟ ᱥᱮ ᱨᱩᱣᱟᱹᱲ ᱦᱤᱡᱩᱜ, ᱚᱱᱟ ᱜᱮ ᱯᱷᱚᱨᱢ᱾
 acct_email	ᱤᱢᱮᱞ
@@ -157,7 +157,7 @@ acct_billing_hint	ᱥᱮᱨᱢᱟ ᱥᱮᱨᱢᱟ ᱯᱞᱟᱱ — ᱪᱮᱠᱟ�
 shop_cloud_plans	ᱠᱞᱟᱣᱩᱰ ᱯᱞᱟᱱ ᱠᱚ
 acct_federated	ᱯᱷᱮᱰᱟᱨᱮᱴᱮᱰ ᱥᱟᱭᱤᱱ ᱤᱱ
 acct_err_invalid_email	ᱴᱷᱤᱠ ᱤᱢᱮᱞ ᱴᱷᱤᱠᱟᱹᱱᱟᱹ ᱚᱞ ᱢᱮ᱾
-acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱡᱚᱠᱷᱟ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
+acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱟᱠᱷᱚᱨ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
 acct_err_wrong_password	ᱵᱷᱩᱞ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ᱾
 acct_err_invalid_credential	ᱤᱢᱮᱞ ᱥᱮ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱷᱩᱞ ᱢᱮᱱᱟᱜᱼᱟ᱾
 acct_err_popup_closed	ᱥᱟᱭᱤᱱ ᱤᱱ ᱣᱤᱱᱰᱚ ᱵᱚᱸᱫᱚ ᱮᱱᱟ᱾
@@ -176,7 +176,7 @@ acct_err_exists_other_method	ᱱᱚᱣᱟ ᱤᱢᱮᱞ ᱛᱮ ᱮᱴᱟᱜ ᱥ�
 acct_err_generic	ᱪᱮᱫ ᱦᱚᱸ ᱵᱷᱩᱞ ᱦᱩᱭᱮᱱᱟ᱾
 acct_method_password	ᱤᱢᱮᱞ ᱟᱨ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 acct_pw_hint_change	ᱟᱢᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ᱾ ᱱᱤᱛᱚᱜᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱛᱮ ᱯᱚᱠᱟ ᱦᱩᱭᱩᱜᱼᱟ᱾
-acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
+acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤ ᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
 acct_pw_change	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ
 acct_pw_add	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ
 acct_billing_off	ᱠᱞᱟᱣᱩᱰ API ᱨᱮ ᱵᱤᱞᱤᱝ ᱱᱤᱛᱚᱜ ᱦᱟᱹᱵᱤᱡ ᱵᱟᱝ ᱮᱦᱚᱵ ᱟᱠᱟᱱᱟ᱾

@@ -1,13 +1,13 @@
 # Khasi — Khasi (kha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	Nuksa
 length	Ka jingjrong
-download_free	Ioh laitluid
+download_free	Ioh khlem siew dor
 whatsapp_for_a_demo	WhatsApp na ka bynta ka demo
-free_on_android_windows_and	Laitluid ha Android, Windows bad Linux.
+free_on_android_windows_and	Khlem siew dor ha Android, Windows bad Linux.
 courier_operating_system	ka system jong ka kam courier
 parcel_journey	KA JINGIAID JONG KA PARSEL
 walk_in	Nongwan
-weigh	Khia
+weigh	Thew
 price	Ka dor
 label	Ka label
 hand_over	Aiti
@@ -15,16 +15,16 @@ track	Bud
 offline	Khlem lain
 start	Sdang
 moklanjo_courier_operating_system	MOKLANJO · KA SYSTEM JONG KA KAM COURIER
-book_move_and_settle_every	Buh jaka, phah bad pynkhlain ia man ka parsel — kawei ka OS courier ha ki device jong phi.
-parties_books_cod_labels_awb	Ki party, ki kot, COD, ki label, ki pool AWB, ka jingbud, ki nongniah kali bad ka bill — baroh ka jingkynriah naduh ka kaunta haduh ka jingpynkhlain, lada don lane ym don internet. Laitluid ha ki device jong phi.
-the_walk_in_loop	KA JINGKYNRIAH NONGWAN
+book_move_and_settle_every	Thoh, phah bad pynbeit ia man ka parsel — kawei ka OS courier ha ki device jong phi.
+parties_books_cod_labels_awb	Ki khata, ki kot, COD, ki label, ki pool AWB, ka jingbud, ki nongniah kali bad ka bill — baroh ka lynti naduh ka kaunta haduh ka jingpynbeit, lada don lane ym don internet. Khlem siew dor ha ki device jong phi.
+the_walk_in_loop	KA LYNTI JONG U NONGWAN
 actual_and_volumetric_side_by	Ka jingkhia shisha bad ka jingkhia da ka jingheh, iakhap ia ki.
 charge	Ka dor
 your_rate_card_cash_or	Ka kot dor jong phi, ka pisa lane ka khata.
-next_booking	Ka jingbuh jaka ba bud
+next_booking	Ka parsel ba bud
 one_tap_clears_the_counter	Kawei ka jingnion ka pynthylli ia ka kaunta na ka bynta u nongwan ba bud.
 scroll_the_parcel_journey_rail	Scroll — ka lynti jingiaid parsel haneng ka pyni hangno phi don ha ka khana.
-n_2_weigh_it_right	2 · KHIA BA DEI
+n_2_weigh_it_right	2 · THEW BA DEI
 actual_or_volumetric_whichever_is	Ka jingkhia shisha lane ka jingkhia da ka jingheh — kaba kham jrong, la pynbeit kumba phi kwah.
 try_a_box	Pyrshang ia kawei ka box
 domestic	Hapoh ka ri
@@ -35,9 +35,9 @@ weight_on_the_scale	Ka jingkhia ha ka tarju
 chargeable_weight	KA JINGKHIA BA DONKAM BAN SIEW
 the_box_s_size_sets	Ka jingheh jong ka box ka buh ia ka dor.
 higher_of_the_two_rounded	Kaba kham jrong na kiba ar, la pynkiew sha ka 0.5 kg ba bud.
-in_the_app_the_divisor	Ha ka app ka dukan ka buh ia u nongbynta, ka jingpynbeit bad ki unit jong phi (cm lane inch, kg lane lb). U chip Bar ri u kylla ia ka ÷6000 na ka bynta kawei ka jingbuh jaka khlem da kylla ia Ki jingpynbeit.
+in_the_app_the_divisor	Ha ka app ka dukan ka buh ia u nongbynta, ka jingpynbeit bad ki unit jong phi (cm lane inch, kg lane lb). U chip Bar ri u kylla ia ka ÷6000 na ka bynta kawei ka parsel khlem da kylla ia Ki jingpynbeit.
 n_3_price_it	3 · BUH DOR
-your_rate_cards_your_party	Ki kot dor jong phi, ki dor party jong phi — bad ka jingmyntoi jong phi ha man u docket.
+your_rate_cards_your_party	Ki kot dor jong phi, ki dor khata jong phi — bad ka jingmyntoi jong phi ha man u docket.
 rate_card	Ka kot dor
 zone_service	Ka jaka · ka jingshakri
 first_0_5_kg	Ka 0.5 kg nyngkong
@@ -46,32 +46,32 @@ local_surface	Ha ka jaka · Ha ka khyndew
 within_state_express	Hapoh ka jylla · Ba kloi
 metro_air	Metro · Ha ka lyer
 zone_service_weight_slab	Ka jaka × ka jingshakri × ka slab jingkhia
-first_slab_and_each_extra	Ka slab nyngkong bad man ka slab ba bujli, na man ka jaka bad ka jingshakri.
+first_slab_and_each_extra	Ka slab nyngkong bad man ka slab ba la pyndap, na man ka jaka bad ka jingshakri.
 a_consignor_s_own_card	Ka kot dor jong u nongphah mar hi
-regular_senders_get_their_rates	Ki nongphah ba bud ki ioh ia ki dor jong ki; ka kot ba la buh ka kynthup ia kiwei baroh.
+regular_senders_get_their_rates	Ki nongphah ba ju wan ki ioh ia ki dor jong ki; ka kot ba la buh ka kynthup ia kiwei baroh.
 margin_at_the_desk	Ka jingmyntoi ha ka miej
 your_sell_price_against_the	Ka dor die jong phi pyrshah bad ka dor jong u nongkit, ha man u docket.
 n_4_label_it	4 · BUH LABEL
 awb_from_your_own_number	AWB na ki pool nombar jong phi hi. Label, scan, wad.
 number_pools_per_carrier	Ki pool nombar na man u nongkit
-enter_each_carrier_s_start	Thoh shisien ia ka series sdang–kut jong man u nongkit; man ka jingbuh jaka ka shim ia u nombar ba bud.
+enter_each_carrier_s_start	Thoh shisien ia ka series sdang–kut jong man u nongkit; man ka parsel ka shim ia u nombar ba bud.
 code_128_labels	Ki label Code 128
 the_awb_goes_on_the	U AWB u leit ha ka box kum ka barcode bad kum ki nombar ba paw.
 scan_to_find	Scan ban wad
 scan_a_label_to_open	Scan ia ka label ban plie ia u docket jong ka bad trei ia ka.
 n_5_hand_over	5 · AITI
-hand_it_to_a_carrier	Ai ia ka sha u nongkit, lane phah ia u nongniah kali jong phi hi. Ka system ba syn.
+hand_it_to_a_carrier	Ai ia ka sha u nongkit, lane phah ia u nongniah kali jong phi hi. Kajuh ka system.
 into_a_carrier_bag	Hapoh ka pla jong u nongkit
-the_manifest_holds_exactly_the	Ka manifest ka bat tang ia ki parsel ba phi la jied — baroh lane ym don. Ka parsel ba la buh jaka bad kawei pat u nongkit kam lah ban rung ha kane ka pla.
+the_manifest_holds_exactly_the	Ka manifest ka bat tang ia ki parsel ba phi la jied — baroh lane ym don. Ka parsel ba la thoh na ka bynta uwei pat u nongkit kam lah ban rung ha kane ka pla.
 onto_your_own_rider_s	Ha ka jingleit jong u nongniah kali jong phi
-pick_the_parcels_print_the	Jied ia ki parsel, pynmih ia ka kot jingleit, bad u nongniah kali u trei na ka app ba syn ha ka mode nongniah kali — lang bad ka jingpynshisha jingpynpoi.
+pick_the_parcels_print_the	Jied ia ki parsel, pynmih ia ka kot jingleit, bad u nongniah kali u trei na kajuh ka app ha ka mode nongniah kali — lang bad ka jingpynshisha jingpynpoi.
 n_6_track_and_prove	6 · BUD BAD PYNSHISHA
 every_move_recorded_and_only	Man ka jingiaid la thoh — bad tang ki jingiaid kiba don jingmut.
-booked	La buh
+booked	La thoh
 with_carrier	Ha u nongkit
 out_for_delivery	La mih ban pynpoi
 delivered	La pynpoi
-booked_with_carrier_out_for	La buh → Ha u nongkit → La mih ban pynpoi → La pynpoi
+booked_with_carrier_out_for	La thoh → Ha u nongkit → La mih ban pynpoi → La pynpoi
 failed	Bym longkam
 reason_out_again_or_return	→ ka daw → mih biang, lane pynphai biang sha u nongphah.
 impossible_moves_refused	Ki jingiaid kiba bym lah la len
@@ -81,31 +81,31 @@ a_photo_and_the_receiver	Kawei ka dur bad ka sain jong u nongioh ha u docket.
 failed_deliveries	Ki jingpynpoi kiba bym longkam
 reasons_attempts_out_again_or	Ki daw, ki jingpyrshang, mih biang, lane phai sha u nongphah.
 n_7_money_comes_home	7 · KA PISA KA WAN SHA IING
-cod_you_can_see_expected	Ka COD ba phi lah ban iohi: kaba la kyrmen, kaba la ai, kaba dei ban siew sha man u nongphah mar.
+cod_you_can_see_expected	Ka COD ba phi lah ban iohi: kaba dei ban don, kaba la ai, kaba dei ban siew sha man u nongphah mar.
 rider_cash_end_of_run	Ka pisa jong u nongniah kali, ha ka jingkut ka jingleit
 rider	U nongniah kali
-expected	Ba la kyrmen
+expected	Ba dei ban don
 handed_in	Ba la ai
 a_14_drops	A · 14 ki jingpynpoi
 b_9_drops	B · 9 ki jingpynpoi
 short_200_on_rider_b	Duna ₹ 200 ha u nongniah kali B — la kyrteng, kam jah ha ka baroh.
 cod_register	Ka kot COD
 collected_against_paid_out_per	Kaba la lum pyrshah bad kaba la siew, na man u nongphah mar, bad ki batch jingphah pisa.
-rider_settlement	Ka jingpynkhlain jong u nongniah kali
-expected_against_handed_in_and	Kaba la kyrmen pyrshah bad kaba la ai, bad ka slip commission.
+rider_settlement	Ka jingpynbeit pisa jong u nongniah kali
+expected_against_handed_in_and	Kaba dei ban don pyrshah bad kaba la ai, bad ka slip commission.
 books_that_close	Ki kot kiba khang
 day_book_month_bill_per	Ka kot sngi, ka bill man u bnai na man ka account, bad ka CSV jingkhein GST na ka bynta u nongkhein jong phi.
 n_8_internet_down	8 · YM DON INTERNET?
-keep_booking	Bteng ban buh jaka.
-booking_labels_scanning_cod_and	Ka jingbuh jaka, ki label, ka jingscan, ka COD bad ki kot baroh ki trei ha ki device jong phi. Haba ka internet ka duh, ym don ei ei ha ka kaunta ba ap ia ka.
+keep_booking	Bteng ban thoh ia ki parsel.
+booking_labels_scanning_cod_and	Ka jingthoh parsel, ki label, ka jingscan, ka COD bad ki kot baroh ki trei ha ki device jong phi. Haba ka internet ka duh, ym don ei ei ha ka kaunta ba ap ia ka.
 office_router_no_internet	Router jong ka ophis: ym don internet
-desk_still_booking	Ka miej: dang buh jaka
+desk_still_booking	Ka miej: dang thoh ia ki parsel
 second_counter_and_rider_phone	Ka kaunta ba ar bad ka phone jong u nongniah kali: la iasoh ha ka Wi-Fi jong ka ophis
-free_forever_on_your_devices	Laitluid junom ha ki device jong phi
+free_forever_on_your_devices	Khlem siew dor junom ha ki device jong phi
 nothing_per_rider_user_or	Ym don ei ei na man u nongniah kali, u nongpyndonkam lane ka parsel. Kumkaj Cloud lada phi kwah: Steady ₹6k · Swift ₹12k · Priority ₹24k/snem khlem ka shuiñ — /shop.
 n_9_start	9 · SDANG
 one_courier_os_your_parcels	Kawei ka OS courier. Ki parsel jong phi. Ki kot jong phi.
-moklanjo_is_a_complete_courier	Moklanjo ka dei kawei ka system jong ka kam courier baroh hapoh Kumkaj — Android, Windows bad Linux. Ki nongniah kali ki pyndonkam ia ka app ba syn ha ka mode nongniah kali.
+moklanjo_is_a_complete_courier	Moklanjo ka dei kawei ka system jong ka kam courier baroh hapoh Kumkaj — Android, Windows bad Linux. Ki nongniah kali ki pyndonkam ia kajuh ka app ha ka mode nongniah kali.
 trademark	KA DAK KHAII
 memon_for_find_it_pronounced	Ka ktien Memon na ka bynta “wad ia ka” · la ong go-tee-geen
 company	KA KOMPANI
@@ -118,7 +118,7 @@ terms	Ki kyndon
 cancellation	Ka jingpynsangeh
 cloud_shop	Ka dukan cloud
 account	Ka account
-weigh_it_right	Khia ba dei
+weigh_it_right	Thew ba dei
 price_it	Buh dor
 label_it	Buh label
 track_and_prove	Bud bad pynshisha
@@ -134,13 +134,13 @@ weight_scale_wins	Ka jingkhia ha ka tarju ka buh ia ka dor.
 cta_installers_note	Ki installer kin wan hangne haba man u wei u la jop ia ka jingpule install ha ka mashin ba khuid. Haduh kata, kylli ia ka demo ha WhatsApp.
 cta_whatsapp_soon	Ka lain demo WhatsApp kan plie kloi. Ka message jong phi kan long: “{message}”.
 acct_page_title	Ka account — Moklanjo
-acct_lede	Kawei ka account na ka bynta ka site bad ki app — ka form ka syn lada phi dei thymmai lane phi wan biang.
+acct_lede	Kawei ka account na ka bynta ka site bad ki app — kajuh ka form, lada phi dei thymmai lane phi wan biang.
 acct_email	Ka email
 acct_name_optional	Ka kyrteng (lada phi kwah)
 acct_password	Ka ktien rieh
 acct_continue	Bteng
 acct_forgot	Phi la klet ia ka ktien rieh?
-acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia ka address ba syn ba phi la sign up.
+acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia kajuh ka address ba phi la sign up da ka.
 acct_send_reset	Phah ia ka link reset
 acct_cancel	Pynsangeh
 acct_or_continue	lane bteng da
@@ -162,7 +162,7 @@ acct_current_password	Ka ktien rieh mynta
 acct_email_for_password	Ka email na ka bynta ka jingrung da ka ktien rieh
 acct_new_password	Ka ktien rieh thymmai
 acct_confirm_new_password	Pynshisha ia ka ktien rieh thymmai
-acct_add_way	Bujli kawei pat ka lad ban rung
+acct_add_way	Pyndap kawei pat ka lad ban rung
 acct_link_hint	Pyniasoh ia ki lad sha kawei ka account ba phi lah ban ioh biang ia ka jingrung lada kawei ka bym longkam.
 acct_link_google	Pyniasoh ia Google
 acct_link_microsoft	Pyniasoh ia Microsoft
@@ -171,17 +171,17 @@ acct_link_phone	Pyniasoh ia ka phone
 acct_send_sms_link	Phah SMS ban pyniasoh
 acct_confirm_link_phone	Pynshisha bad pyniasoh ia ka phone
 shop_page_title	Ka dukan — Moklanjo
-shop_lede	Ki plan cloud man ka snem — ka shuiñ la bujli ha ka jingsiew. Baroh ka app Moklanjo ha ki device jong phi ka sah laitluid junom, khlem ki jingpynbna.
+shop_lede	Ki plan cloud man ka snem — ka shuiñ yn pyndap ha ka jingsiew. Baroh ka app Moklanjo ha ki device jong phi ka sah khlem siew dor junom, khlem ki jingpynbna.
 shop_cart	Ka cart
-shop_cart_empty_hint	Ka cart jong phi ka thylli. Bujli ia Steady, Swift, lane Priority.
+shop_cart_empty_hint	Ka cart jong phi ka thylli. Pyndap ia Steady, Swift, lane Priority.
 shop_checkout	Ka jingsiew
 shop_clear	Pynkhuid
 shop_checkout_hint	Ka jingsiew ka pynrung ia phi ha ka Account, nangta ka sdang ia ka jingsiew (ka mock ka jaka pule lane Paddle haba la buh ia ki key).
-acct_billing_hint	Ki plan man ka snem — ka shuiñ la bujli da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah laitluid junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
+acct_billing_hint	Ki plan man ka snem — ka shuiñ yn pyndap da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah khlem siew dor junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
 shop_cloud_plans	Ki plan cloud
 acct_federated	Ka jingrung ba iasoh
 acct_err_invalid_email	Thoh ia ka address email ba dei.
-acct_err_weak_password	Pyndonkam ia ka ktien rieh bad 6 ki dak tang khyndiat.
+acct_err_weak_password	Pyndonkam ia ka ktien rieh ba don 6 ki dak lane kham bun.
 acct_err_wrong_password	Ka ktien rieh ka bakla.
 acct_err_invalid_credential	Ka email lane ka ktien rieh ka bakla.
 acct_err_popup_closed	La khang ia ka window jingrung.
@@ -190,7 +190,7 @@ acct_err_unauthorized_domain	Kane ka domain kam don jingbit na ka bynta Firebase
 acct_err_method_disabled	Kata ka lad ban rung kam pat sdang.
 acct_err_too_many	Bun palat ki jingpyrshang. Pyrshang biang hadien.
 acct_err_phone_format	Pyndonkam ia u nombar phone baroh bad u code ri (kum +91…).
-acct_err_sms_code	Kata u code SMS u bakla lane u la kut ka por.
+acct_err_sms_code	Uta u code SMS u bakla lane u la kut ka por.
 acct_err_no_account	Ym don account bad kata ka email. Bteng ban shna kawei, lane pyndonkam ia kiwei pat ki lad.
 acct_err_recent_login	Na ka bynta ka jingshngain, rung biang, nangta pyrshang biang ia kane ka jingkylla.
 acct_err_credential_in_use	Kata ka lad ban rung la pyndonkam da kawei pat ka account.
@@ -200,16 +200,16 @@ acct_err_exists_other_method	Don lypa ka account bad kane ka email da kawei pat 
 acct_err_generic	Don ei ei kaba la bakla.
 acct_method_password	Ka email bad ka ktien rieh
 acct_pw_hint_change	Kylla ia ka ktien rieh jong phi. Phin pynshisha da ka ktien rieh mynta.
-acct_pw_hint_add	Bujli ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
+acct_pw_hint_add	Pyndap ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
 acct_pw_change	Kylla ia ka ktien rieh
-acct_pw_add	Bujli ia ka ktien rieh
+acct_pw_add	Pyndap ia ka ktien rieh
 acct_billing_off	Ka jingsiew bill kam pat sdang ha ka cloud API.
 acct_billing_no_provider	Ym don u nongai jingsiew bill shisha ha ka cloud API (ka mock tang ha ka jaka).
 price_quote	Ka jingkhein dor
 price_per_year	₹{amount}/snem khlem ka shuiñ
 acct_pay_received	La ioh ia ka jingsiew — dang pynthymmai ia ka plan jong phi…
 acct_pay_declined	La pynsangeh lane bym longkam ka jingsiew
-acct_pay_failed_detail	{detail}. Ka plan jong phi kam la kylla.
+acct_pay_failed_detail	{detail}. Ka plan jong phi kam shym la kylla.
 acct_checkout_closed	La khang ia ka jingsiew — ym don jingsiew ba la dep. Ka plan jong phi kam kylla.
 acct_checkout_failed	Ka jingsiew ka bym longkam
 acct_pay_with	Siew da {provider}
@@ -218,34 +218,34 @@ acct_unavailable	Ym don
 acct_continue_hint	Bteng da ka email, u nongai, lane ka phone.
 acct_signed_in_fallback	(la rung)
 acct_email_verified	La pynshisha ia ka email
-acct_email_unverified	Kam pat pynshisha ia ka email — peit ia ka inbox jong phi
+acct_email_unverified	Ym pat pynshisha ia ka email — peit ia ka inbox jong phi
 acct_signed_in_phone	La rung da ka phone
 acct_none_listed	Ym pat don ei ei
 acct_signed_in_status	Phi la rung.
 acct_created	La shna ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
 acct_reset_sent	Lada don ka account na ka bynta kata ka email, ka link reset ka dang wan. Peit ia ka inbox jong phi.
 acct_another_method	kawei pat ka lad
-acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia kane u nongai na ka sla account jong phi.
+acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia une u nongai na ka sla account jong phi.
 acct_enter_current_pw	Thoh ia ka ktien rieh mynta jong phi.
 acct_relogin_retry	Mih bad rung biang, nangta pyrshang biang.
 acct_pw_mismatch	Ka ktien rieh thymmai bad ka jingpynshisha kim iadei.
 acct_pw_updated	La pynthymmai ia ka ktien rieh.
 acct_enter_email_pw	Thoh ia ka email ban pyndonkam bad ka jingrung da ka ktien rieh.
-acct_pw_added	La bujli ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
+acct_pw_added	La pyndap ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
 acct_method_linked	La pyniasoh ia ka lad ban rung.
 acct_phone_linked	La pyniasoh ia ka phone bad kane ka account.
 acct_verify_sent	La phah ia ka email jingpynshisha — peit ia ka inbox jong phi.
 shop_pricing_soon	Ki dor kin wan kloi
 shop_request_quote	Kylli ia ka jingkhein dor
-shop_add_to_cart	Bujli ha ka cart
+shop_add_to_cart	Pyndap ha ka cart
 shop_notify_later	Ong ia nga hadien
 shop_included	La kynthup
 shop_in_cart	{plan} ka don ha ka cart jong phi.
 shop_remove	Weng
 shop_cart_is_empty	Ka cart ka thylli.
-shop_prices_unpublished	Ki dor ban thied da lade kim pat pynpaw na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
+shop_prices_unpublished	Ym pat pynpaw ia ki dor ban thied da lade na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
 shop_cart_cleared	La pynkhuid ia ka cart.
-plan_free_title	Laitluid junom
+plan_free_title	Khlem siew dor junom
 plan_free_blurb	Baroh ka tiar ha ka jaka ha ki device jong phi. Ym don dor cloud.
 plan_steady_blurb	Ka cloud ba im · 10 GB · bandwidth ba duna
 plan_swift_blurb	Ka cloud ba im · 25 GB · bandwidth pdeng

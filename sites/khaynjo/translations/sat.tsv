@@ -1,5 +1,5 @@
 # Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	ᱫᱮᱠᱷᱟᱣ
+example	ᱫᱟᱹᱭᱠᱟᱹ
 free	ᱠᱷᱟᱹᱞᱤ
 photo_coming	ᱯᱷᱚᱴᱚ ᱞᱚᱜᱚᱱ ᱦᱤᱡᱩᱜᱼᱟ
 get_it_on_google_play	Google Play ᱠᱷᱚᱱ ᱦᱟᱛᱟᱣ ᱢᱮ
@@ -34,8 +34,8 @@ in_kitchen	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮ
 food_ready	ᱡᱚᱢᱟᱜ ᱛᱮᱭᱟᱨ
 served	ᱥᱮᱵᱟ ᱦᱩᱭᱮᱱᱟ
 bill_printed	ᱵᱤᱞ ᱪᱷᱟᱯᱟ ᱮᱱᱟ
-paid	ᱯᱮᱭᱰ
-seat_the_table_take_the	ᱴᱮᱵᱩᱞ ᱨᱮ ᱫᱩᱲᱩᱵ ᱢᱮ, ᱚᱰᱚᱨ ᱦᱟᱛᱟᱣ ᱢᱮ
+paid	ᱴᱟᱠᱟ ᱮᱢ ᱮᱱᱟ
+seat_the_table_take_the	ᱯᱟᱦᱩᱱ ᱠᱚ ᱴᱮᱵᱩᱞ ᱨᱮ ᱫᱩᱲᱩᱵ ᱚᱪᱚᱠᱚ ᱢᱮ, ᱚᱰᱚᱨ ᱦᱟᱛᱟᱣ ᱢᱮ
 mark_the_table_occupied_the	ᱯᱟᱦᱩᱱ ᱠᱚ ᱫᱩᱲᱩᱵ ᱛᱟᱭᱚᱢ ᱜᱮ ᱴᱮᱵᱩᱞ “ᱵᱮᱥᱛ” ᱢᱮ᱾ ᱡᱚᱢᱟᱜ ᱥᱮᱞᱮᱫ ᱢᱮ, ᱥᱟᱭᱤᱡᱽ ᱵᱟᱪᱷᱟᱣ ᱢᱮ, ᱵᱟᱹᱲᱛᱤ ᱥᱮᱞᱮᱫ ᱢᱮ, ᱟᱨ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱱᱳᱴ ᱚᱞ ᱢᱮ — ᱴᱮᱵᱩᱞ ᱨᱮ ᱜᱮ᱾
 sizes_and_add_ons	ᱥᱟᱭᱤᱡᱽ ᱟᱨ ᱵᱟᱹᱲᱛᱤ ᱡᱤᱱᱤᱥ
 pick_one_size_add_optional	ᱢᱤᱫᱴᱟᱹᱝ ᱥᱟᱭᱤᱡᱽ ᱵᱟᱪᱷᱟᱣ ᱢᱮ; ᱟᱢ ᱛᱮ ᱥᱮᱴ ᱠᱟᱱ ᱥᱤᱢᱟᱹ ᱦᱟᱹᱵᱤᱡ ᱵᱟᱹᱲᱛᱤ ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ ᱢᱮ᱾
@@ -47,23 +47,23 @@ one_ticket_per_kitchen_station	ᱡᱚᱛᱚ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱥᱴᱮ�
 send_the_order_and_each	ᱚᱰᱚᱨ ᱠᱩᱞ ᱢᱮ ᱟᱨ ᱡᱚᱛᱚ ᱥᱴᱮᱥᱚᱱ ᱟᱡᱟᱜ ᱡᱚᱢᱟᱜ ᱜᱮ ᱧᱟᱢᱟ — ᱢᱟᱦᱟᱸ ᱨᱮᱭᱟᱜ ᱮᱞ, ᱴᱮᱵᱩᱞ, ᱣᱮᱴᱟᱨ ᱟᱨ ᱡᱚᱛᱚ ᱱᱳᱴ ᱥᱟᱶ᱾ ᱜᱚᱱᱚᱝ ᱫᱚ ᱵᱟᱝ: ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱤᱥᱤᱱᱟ, ᱠᱟᱣᱩᱱᱴᱟᱨ ᱵᱤᱞ ᱵᱮᱱᱟᱣᱟ᱾
 prints_itself	ᱟᱡ ᱛᱮ ᱪᱷᱟᱯᱟᱜᱼᱟ
 send_and_the_ticket_prints	ᱠᱩᱞ ᱢᱮ, ᱴᱤᱠᱮᱴ ᱴᱷᱤᱠ ᱥᱴᱮᱥᱚᱱ ᱨᱮ ᱪᱷᱟᱯᱟᱜᱼᱟ — ᱡᱟᱦᱟᱸᱭ ᱦᱚᱸ ᱦᱟᱛᱟᱣ ᱤᱫᱤ ᱞᱟᱹᱠᱛᱤ ᱵᱟᱹᱱᱩᱜᱼᱟ᱾
-example_ticket	ᱫᱮᱠᱷᱟᱣ ᱴᱤᱠᱮᱴ
+example_ticket	ᱫᱟᱹᱭᱠᱟᱹ ᱴᱤᱠᱮᱴ
 the_kitchen_sees_what_to	ᱱᱤᱛᱚᱜ ᱪᱮᱫ ᱤᱥᱤᱱ ᱦᱩᱭᱩᱜ ᱢᱟ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱧᱮᱞᱟ
-on_the_kitchen_screen_tickets	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱠᱨᱤᱱ ᱨᱮ ᱴᱤᱠᱮᱴ ᱠᱚ ᱢᱤᱫ ᱴᱤᱯ ᱛᱮ ᱱᱟᱶᱟ → ᱥᱟᱯᱲᱟᱣ → ᱛᱮᱭᱟᱨ ᱦᱩᱭᱩᱜᱼᱟ᱾ ᱢᱟᱨᱮ ᱴᱤᱠᱮᱴ ᱨᱮᱭᱟᱜ ᱨᱚᱝ ᱜᱟᱲᱦᱟ ᱦᱩᱭᱩᱜᱼᱟ, “ᱱᱤᱛᱚᱜ ᱤᱥᱤᱱ ᱢᱮ” ᱛᱟᱹᱝᱜᱤ ᱠᱟᱱ ᱡᱚᱛᱚ ᱡᱚᱢᱟᱜ ᱞᱮᱠᱷᱟᱭᱟ, ᱟᱨ ᱥᱴᱟᱨᱴᱟᱨ ᱥᱮᱱ ᱦᱟᱹᱵᱤᱡ ᱢᱮᱱ ᱡᱚᱢᱟᱜ ᱛᱟᱹᱝᱜᱤ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾
+on_the_kitchen_screen_tickets	ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱠᱨᱤᱱ ᱨᱮ ᱴᱤᱠᱮᱴ ᱠᱚ ᱢᱤᱫ ᱴᱤᱯ ᱛᱮ ᱱᱟᱶᱟ → ᱥᱟᱯᱲᱟᱣ → ᱛᱮᱭᱟᱨ ᱦᱩᱭᱩᱜᱼᱟ᱾ ᱢᱟᱨᱮ ᱴᱤᱠᱮᱴ ᱨᱮᱭᱟᱜ ᱨᱚᱝ ᱜᱟᱲᱦᱟ ᱦᱩᱭᱩᱜᱼᱟ, “ᱱᱤᱛᱚᱜ ᱤᱥᱤᱱ ᱢᱮ” ᱛᱟᱹᱝᱜᱤ ᱠᱟᱱ ᱡᱚᱛᱚ ᱡᱚᱢᱟᱜ ᱞᱮᱠᱷᱟᱭᱟ, ᱟᱨ ᱥᱴᱟᱨᱴᱟᱨ ᱥᱮᱱ ᱦᱟᱹᱵᱤᱡ ᱢᱩᱬᱩᱛ ᱡᱚᱢᱟᱜ ᱛᱟᱹᱝᱜᱤ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾
 new	ᱱᱟᱶᱟ
 preparing	ᱥᱟᱯᱲᱟᱣ
 ready	ᱛᱮᱭᱟᱨ
-example_kitchen_screen	ᱫᱮᱠᱷᱟᱣ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱥᱠᱨᱤᱱ
+example_kitchen_screen	ᱫᱟᱹᱭᱠᱟᱹ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱥᱠᱨᱤᱱ
 settle_any_way_the_guest	ᱯᱟᱦᱩᱱ ᱡᱮᱞᱮᱠᱟ ᱴᱟᱠᱟ ᱮᱢᱟ ᱚᱱᱟ ᱞᱮᱠᱟ ᱦᱤᱥᱟᱹᱵ ᱢᱮ
 cash_with_change_to_return	ᱨᱩᱣᱟᱹᱲ ᱴᱟᱠᱟ ᱥᱟᱶ ᱴᱟᱠᱟ, QR ᱨᱮ ᱢᱟᱲᱟᱝ ᱠᱷᱚᱱ ᱜᱮ ᱴᱟᱠᱟ ᱥᱟᱶ UPI, ᱦᱟᱹᱴᱤᱧ ᱴᱟᱠᱟ ᱮᱢ, ᱥᱮ ᱜᱨᱟᱦᱟᱠ ᱨᱮᱭᱟᱜ ᱠᱷᱟᱛᱟ ᱨᱮ ᱵᱟᱠᱤ᱾ ᱡᱤᱱᱤᱥ, ᱥᱤᱴ ᱥᱮ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ ᱢᱮ᱾ ᱵᱤᱞ ᱨᱮᱭᱟᱜ ᱴᱟᱠᱟ ᱮᱢ ᱛᱟᱭᱚᱢ ᱜᱮ ᱴᱮᱵᱩᱞ ᱠᱷᱟᱹᱞᱤ ᱦᱩᱭᱩᱜᱼᱟ᱾
-tips_stay_apart	ᱴᱤᱯ ᱟᱞᱜᱟ ᱛᱟᱦᱮᱸᱱᱟ
-a_tip_is_recorded_on	ᱴᱤᱯ ᱫᱚ ᱟᱞᱜᱟ ᱚᱞ ᱫᱚᱦᱚᱜᱼᱟ — ᱟᱹᱠᱷᱨᱤᱧ ᱨᱮ ᱠᱚᱵᱷᱤ ᱦᱚᱸ ᱵᱟᱝ ᱢᱮᱥᱟᱜᱼᱟ᱾
+tips_stay_apart	ᱴᱤᱯ ᱡᱩᱫᱟᱹ ᱛᱟᱦᱮᱸᱱᱟ
+a_tip_is_recorded_on	ᱴᱤᱯ ᱫᱚ ᱡᱩᱫᱟᱹ ᱚᱞ ᱫᱚᱦᱚᱜᱼᱟ — ᱟᱹᱠᱷᱨᱤᱧ ᱨᱮ ᱠᱚᱵᱷᱤ ᱦᱚᱸ ᱵᱟᱝ ᱢᱮᱥᱟᱜᱼᱟ᱾
 t4_bill_printed	T4 · ᱵᱤᱞ ᱪᱷᱟᱯᱟ ᱮᱱᱟ
 bill	ᱵᱤᱞ
 customer_paid_cash	ᱜᱨᱟᱦᱟᱠ ᱮᱢ ᱠᱮᱫᱟ (ᱴᱟᱠᱟ)
 return_to_customer	ᱜᱨᱟᱦᱟᱠ ᱴᱷᱮᱱ ᱨᱩᱣᱟᱹᱲ ᱢᱮ
-close_the_day_you_can	ᱯᱟᱹᱛᱭᱟᱹᱣ ᱜᱚᱱᱚᱝ ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ
-count_the_drawer_against_the	ᱰᱨᱚᱣᱟᱨ ᱫᱚ ᱯᱷᱞᱳᱴ, ᱦᱟᱛᱟᱣ ᱴᱟᱠᱟ, ᱴᱤᱯ ᱟᱨ ᱮᱢ ᱴᱟᱠᱟ ᱥᱟᱶ ᱞᱮᱠᱷᱟ ᱢᱮ — ᱠᱚᱢ ᱥᱮ ᱵᱟᱹᱲᱛᱤ ᱥᱟᱯᱷᱟ ᱛᱮ ᱩᱫᱩᱜᱼᱟ᱾ ᱥᱤᱯᱷᱴ ᱥᱞᱤᱯ ᱪᱷᱟᱯᱟ ᱢᱮ, ᱛᱟᱭᱚᱢ ᱛᱮ ᱥᱴᱟᱯᱷ, ᱚᱰᱚᱨ ᱞᱮᱠᱟᱱ, ᱴᱟᱲᱟᱝ ᱟᱨ ᱡᱚᱢᱟᱜ ᱞᱮᱠᱟᱛᱮ ᱢᱟᱦᱟᱸ ᱨᱤᱯᱳᱨᱴ ᱡᱷᱤᱡᱽ ᱢᱮ — ᱵᱚᱱᱫᱚ, ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱡᱚᱢᱟᱜ ᱟᱨ ᱴᱤᱯ ᱥᱟᱶ᱾
+close_the_day_you_can	ᱯᱟᱹᱛᱭᱟᱹᱣ ᱜᱚᱱᱚᱝ ᱢᱟᱦᱟᱸ ᱵᱚᱸᱫᱚ
+count_the_drawer_against_the	ᱰᱨᱚᱣᱟᱨ ᱫᱚ ᱮᱦᱚᱵ ᱴᱟᱠᱟ, ᱦᱟᱛᱟᱣ ᱴᱟᱠᱟ, ᱴᱤᱯ ᱟᱨ ᱮᱢ ᱴᱟᱠᱟ ᱥᱟᱶ ᱞᱮᱠᱷᱟ ᱢᱮ — ᱠᱚᱢ ᱥᱮ ᱵᱟᱹᱲᱛᱤ ᱥᱟᱯᱷᱟ ᱛᱮ ᱩᱫᱩᱜᱼᱟ᱾ ᱥᱤᱯᱷᱴ ᱥᱞᱤᱯ ᱪᱷᱟᱯᱟ ᱢᱮ, ᱛᱟᱭᱚᱢ ᱛᱮ ᱥᱴᱟᱯᱷ, ᱚᱰᱚᱨ ᱞᱮᱠᱟᱱ, ᱴᱟᱲᱟᱝ ᱟᱨ ᱡᱚᱢᱟᱜ ᱞᱮᱠᱟᱛᱮ ᱢᱟᱦᱟᱸ ᱨᱤᱯᱳᱨᱴ ᱡᱷᱤᱡᱽ ᱢᱮ — ᱵᱚᱱᱫᱚ, ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱡᱚᱢᱟᱜ ᱟᱨ ᱴᱤᱯ ᱥᱟᱶ᱾
 shift_close	ᱥᱤᱯᱷᱴ ᱵᱚᱸᱫᱚ
 opening_float	ᱮᱦᱚᱵ ᱴᱟᱠᱟ
 cash_taken	+ ᱦᱟᱛᱟᱣ ᱴᱟᱠᱟ
@@ -92,7 +92,7 @@ part_payments_and_due_go	ᱦᱟᱹᱴᱤᱧ ᱴᱟᱠᱟ ᱮᱢ ᱟᱨ ᱵᱟᱠ
 reports_that_answer_questions	ᱠᱩᱠᱞᱤ ᱨᱮᱭᱟᱜ ᱛᱮᱞᱟ ᱮᱢ ᱨᱤᱯᱳᱨᱴ ᱠᱚ
 sales_by_staff_order_type	ᱥᱴᱟᱯᱷ, ᱚᱰᱚᱨ ᱞᱮᱠᱟᱱ, ᱴᱟᱲᱟᱝ ᱟᱨ ᱡᱚᱢᱟᱜ ᱞᱮᱠᱟᱛᱮ ᱟᱹᱠᱷᱨᱤᱧ — ᱵᱚᱱᱫᱚ, ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱡᱚᱢᱟᱜ ᱟᱨ ᱴᱤᱯ ᱨᱮᱭᱟᱜ ᱞᱤᱥᱴ ᱥᱟᱶ᱾
 start_with_a_menu	ᱢᱤᱫᱴᱟᱹᱝ ᱢᱮᱱᱭᱩ ᱥᱟᱶ ᱮᱦᱚᱵ ᱢᱮ
-your_menu_ready_in_minutes	ᱟᱢᱟᱜ ᱢᱮᱱᱭᱩ, ᱛᱤᱱᱟᱹᱜ ᱢᱤᱱᱤᱴ ᱨᱮ ᱛᱮᱭᱟᱨ᱾
+your_menu_ready_in_minutes	ᱟᱢᱟᱜ ᱢᱮᱱᱭᱩ, ᱠᱚᱢ ᱚᱠᱛᱚ ᱨᱮ ᱛᱮᱭᱟᱨ᱾
 set_up_your_counter_and	ᱟᱢᱟᱜ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱥᱮᱴ ᱢᱮ ᱟᱨ ᱯᱷᱚᱴᱚ ᱥᱟᱶ ᱢᱤᱫᱴᱟᱹᱝ ᱥᱴᱟᱨᱴᱟᱨ ᱢᱮᱱᱭᱩ ᱵᱟᱪᱷᱟᱣ ᱢᱮ — ᱛᱟᱭᱚᱢ ᱛᱮ ᱧᱩᱛᱩᱢ, ᱜᱚᱱᱚᱝ ᱟᱨ ᱠᱳᱰ ᱟᱢᱟᱜ ᱞᱮᱠᱟᱛᱮ ᱵᱚᱫᱚᱞ ᱢᱮ᱾ khaynjo.com ᱠᱷᱚᱱ ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱰᱟᱣᱩᱱᱞᱳᱰ ᱢᱮ᱾
 starter_menu	ᱥᱴᱟᱨᱴᱟᱨ ᱢᱮᱱᱭᱩ
 khaynjo_starter_menu	Khaynjo ᱥᱴᱟᱨᱴᱟᱨ ᱢᱮᱱᱭᱩ
@@ -119,7 +119,7 @@ software_capability_is_not_what	ᱟᱞᱮ ᱥᱚᱯᱷᱴᱣᱮᱭᱟᱨ ᱨᱮ�
 khaynjo_on_your_devices	ᱟᱢᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ Khaynjo
 forever	ᱡᱚᱛᱚ ᱚᱠᱛᱚ
 every_feature	ᱡᱚᱛᱚ ᱜᱩᱱ
-floor_kitchen_billing_day_close	ᱯᱷᱞᱳᱨ, ᱫᱟᱠᱟ ᱚᱲᱟᱜ, ᱵᱤᱞᱤᱝ, ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ, ᱨᱤᱯᱳᱨᱴ — ᱯᱩᱨᱟᱹ ᱮᱯ᱾
+floor_kitchen_billing_day_close	ᱯᱷᱞᱳᱨ, ᱫᱟᱠᱟ ᱚᱲᱟᱜ, ᱵᱤᱞᱤᱝ, ᱢᱟᱦᱟᱸ ᱵᱚᱸᱫᱚ, ᱨᱤᱯᱳᱨᱴ — ᱯᱩᱨᱟᱹ ᱮᱯ᱾
 no_per_seat_charge	ᱡᱚᱛᱚ ᱥᱤᱴ ᱨᱮ ᱡᱟᱦᱟᱱ ᱯᱷᱤᱥ ᱵᱟᱹᱱᱩᱜᱼᱟ
 no_charge_per_table_waiter	ᱴᱮᱵᱩᱞ, ᱣᱮᱴᱟᱨ, ᱚᱰᱚᱨ ᱥᱮ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱡᱟᱦᱟᱱ ᱯᱷᱤᱥ ᱵᱟᱹᱱᱩᱜᱼᱟ᱾
 no_account_with_us	ᱟᱞᱮ ᱴᱷᱮᱱ ᱮᱠᱟᱣᱩᱱᱴ ᱵᱟᱝ ᱞᱟᱹᱠᱛᱤᱭᱟ
@@ -153,12 +153,12 @@ photo_credits	ᱯᱷᱚᱴᱚ ᱠᱨᱮᱰᱤᱴ
 cloud_shop	ᱠᱞᱟᱣᱩᱰ ᱫᱚᱠᱟᱱ
 account	ᱮᱠᱟᱣᱩᱱᱴ
 cta_installers_note	ᱡᱚᱛᱚ ᱤᱱᱥᱴᱚᱞᱟᱨ ᱥᱟᱯᱷᱟ ᱢᱮᱥᱤᱱ ᱨᱮ ᱤᱱᱥᱴᱚᱞ ᱡᱟᱹᱸᱪ ᱯᱟᱥ ᱛᱟᱭᱚᱢ ᱱᱚᱸᱰᱮ ᱦᱤᱡᱩᱜᱼᱟ᱾ ᱚᱱᱟ ᱦᱟᱹᱵᱤᱡ WhatsApp ᱨᱮ ᱰᱮᱢᱚ ᱟᱹᱨᱡᱤ ᱢᱮ᱾
-cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱽᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱶᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
-shelf_no_match	ᱱᱚᱶᱟ ᱥᱮᱸᱫᱽᱨᱟ ᱥᱟᱶ ᱡᱟᱦᱟᱱ ᱫᱤᱥᱚᱢ ᱥᱮ ᱡᱚᱢᱟᱜ ᱵᱟᱝ ᱢᱤᱞᱟᱹᱣᱮᱱᱟ᱾
+cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱚᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱣᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
+shelf_no_match	ᱱᱚᱣᱟ ᱥᱮᱸᱫᱽᱨᱟ ᱥᱟᱶ ᱡᱟᱦᱟᱱ ᱫᱤᱥᱚᱢ ᱥᱮ ᱡᱚᱢᱟᱜ ᱵᱟᱝ ᱢᱤᱞᱟᱹᱣᱮᱱᱟ᱾
 shelf_search_note	ᱥᱮᱸᱫᱽᱨᱟ ᱯᱮᱨᱮᱰ ᱛᱷᱮᱢᱟᱭᱟ; ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱞᱟᱹᱜᱤᱫ ᱥᱮᱸᱫᱽᱨᱟ ᱥᱟᱯᱷᱟ ᱢᱮ, ᱵᱟᱝᱠᱷᱟᱱ ᱡᱮᱞᱮᱠᱟ ᱟᱲᱟᱜ ᱠᱟᱫᱟᱢ ᱚᱱᱟ ᱞᱮᱠᱟ ᱛᱷᱮᱢᱟ ᱛᱟᱦᱮᱸᱱᱟ᱾
 floor_meta_min	{min} ᱢᱤᱱᱤᱴ
 floor_meta_min_bill	{min} ᱢᱤᱱᱤᱴ · ₹ {amount}
-floor_meta_paid	₹ {amount} ᱯᱮᱭᱰ
+floor_meta_paid	₹ {amount} ᱮᱢ ᱮᱱᱟ
 acct_page_title	ᱮᱠᱟᱣᱩᱱᱴ — Khaynjo
 acct_lede	ᱥᱟᱭᱤᱴ ᱟᱨ ᱮᱯ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱹᱝ ᱜᱮ ᱮᱠᱟᱣᱩᱱᱴ — ᱱᱟᱶᱟ ᱥᱮ ᱨᱩᱣᱟᱹᱲ ᱦᱤᱡᱩᱜ, ᱚᱱᱟ ᱜᱮ ᱯᱷᱚᱨᱢ᱾
 acct_email	ᱤᱢᱮᱞ
@@ -207,7 +207,7 @@ acct_billing_hint	ᱥᱮᱨᱢᱟ ᱥᱮᱨᱢᱟ ᱯᱞᱟᱱ — ᱪᱮᱠᱟ�
 shop_cloud_plans	ᱠᱞᱟᱣᱩᱰ ᱯᱞᱟᱱ ᱠᱚ
 acct_federated	ᱯᱷᱮᱰᱟᱨᱮᱴᱮᱰ ᱥᱟᱭᱤᱱ ᱤᱱ
 acct_err_invalid_email	ᱴᱷᱤᱠ ᱤᱢᱮᱞ ᱴᱷᱤᱠᱟᱹᱱᱟᱹ ᱚᱞ ᱢᱮ᱾
-acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱡᱚᱠᱷᱟ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
+acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱟᱠᱷᱚᱨ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
 acct_err_wrong_password	ᱵᱷᱩᱞ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ᱾
 acct_err_invalid_credential	ᱤᱢᱮᱞ ᱥᱮ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱷᱩᱞ ᱢᱮᱱᱟᱜᱼᱟ᱾
 acct_err_popup_closed	ᱥᱟᱭᱤᱱ ᱤᱱ ᱣᱤᱱᱰᱚ ᱵᱚᱸᱫᱚ ᱮᱱᱟ᱾
@@ -226,7 +226,7 @@ acct_err_exists_other_method	ᱱᱚᱣᱟ ᱤᱢᱮᱞ ᱛᱮ ᱮᱴᱟᱜ ᱥ�
 acct_err_generic	ᱪᱮᱫ ᱦᱚᱸ ᱵᱷᱩᱞ ᱦᱩᱭᱮᱱᱟ᱾
 acct_method_password	ᱤᱢᱮᱞ ᱟᱨ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 acct_pw_hint_change	ᱟᱢᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ᱾ ᱱᱤᱛᱚᱜᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱛᱮ ᱯᱚᱠᱟ ᱦᱩᱭᱩᱜᱼᱟ᱾
-acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
+acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤ ᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
 acct_pw_change	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ
 acct_pw_add	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ
 acct_billing_off	ᱠᱞᱟᱣᱩᱰ API ᱨᱮ ᱵᱤᱞᱤᱝ ᱱᱤᱛᱚᱜ ᱦᱟᱹᱵᱤᱡ ᱵᱟᱝ ᱮᱦᱚᱵ ᱟᱠᱟᱱᱟ᱾

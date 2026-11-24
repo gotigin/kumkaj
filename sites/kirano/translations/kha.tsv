@@ -1,19 +1,19 @@
 # Khasi — Khasi (kha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	Nuksa
-download_free	Ioh laitluid
+download_free	Ioh khlem siew dor
 whatsapp_for_a_demo	WhatsApp na ka bynta ka demo
-free_on_android_windows_and	Laitluid ha Android, Windows bad Linux.
+free_on_android_windows_and	Khlem siew dor ha Android, Windows bad Linux.
 the_grocery_counter	ka kaunta dukan tiar
-busy_counter	Ka kaunta ba khie
+busy_counter	Ka kaunta ba bunkam
 kirano_the_grocery_counter	KIRANO · KA KAUNTA DUKAN TIAR
-busy_counter_no_internet_still	Ka kaunta ba khie. Ym don internet. Dang pynmih bill.
+busy_counter_no_internet_still	Ka kaunta ba bunkam. Ym don internet. Dang pynmih bill.
 sell_khata_stock_and_the	Die, khata, ki tiar bad ka kot sngi — ha ki device jong phi hi. Ki kot · Die · Thied · Ki tiar. Ym don jaka bam, ym don kamra shet ja, ym don miej bam.
 tap_the_bill_to_walk	Nion ia ka bill ban peit ia ka jingdie kawei ha ka kaunta
 cash_memo	Ka bill pisa
 ready	La khreh
 total	Baroh
-tap_to_add_the_first	Nion ban bujli ia ka tiar nyngkong
-example_grocery_lines_not_a	Nuksa ki lain tiar dukan, kam dei ka kaunta ba im. Kirano ka bud ia ka lynti ba syn: die → pynkhlain → ka kot sngi.
+tap_to_add_the_first	Nion ban pyndap ia ka tiar nyngkong
+example_grocery_lines_not_a	Nuksa ki lain tiar dukan, kam dei ka kaunta ba im. Kirano ka bud ia kajuh ka lynti: die → pynbeit → ka kot sngi.
 n_2_counter_sell	2 · KA JINGDIE HA KA KAUNTA
 item_quantity_pay_three_taps	Ka tiar, ka jingbun, ka jingsiew — lai ki jingnion.
 upi_qr_ready	U QR UPI u la khreh
@@ -22,21 +22,21 @@ search_by_name_or_short	Wad da ka kyrteng lane da u code ba lyngkot
 type_atta_at5_or_an	Thoh atta, AT5 lane kawei pat ka kyrteng — ka lain ka poi ha ka bill.
 kg_g_pc_l_ml	kilo, gram, tylli, lit, mili
 quantity_in_the_unit_the	Ka jingbun ha ka unit ba pyndonkam ka packet; ka dor ka bud.
-cash_upi_or_split	Ka pisa, UPI lane bynta
-settle_on_the_counter_the	Pynkhlain ha ka kaunta; ka kot sngi ka thoh ia ka lad jingsiew.
+cash_upi_or_split	Ka pisa, UPI lane ka jingphiah
+settle_on_the_counter_the	Pynbeit ha ka kaunta; ka kot sngi ka thoh ia ka lad jingsiew.
 n_3_khata	3 · KA KHATA
-credit_without_a_crm_put	Ka bai khlem CRM — buh ha ka khata jong ki.
+credit_without_a_crm_put	Ka ram khlem CRM — buh ha ka khata jong ki.
 ramesh_customer	Ramesh · U nongthied
-due_from_earlier	Ka bai na mynshwa
-today_s_sale_due	+ ka jingdie mynta (Ka bai)
-balance	Ka bai ba sah
-settle_later_in_parties_part	Pynkhlain hadien ha Ki party — bynta ka pisa, bynta UPI, pynkhuid ia ka lain.
-due_on_the_bill	Ka bai ha ka bill
+due_from_earlier	Ka ram na mynshwa
+today_s_sale_due	+ ka jingdie mynta (Ka ram)
+balance	Ka jingsah
+settle_later_in_parties_part	Pynbeit hadien ha Ki khata — bynta ka pisa, bynta UPI, pynkhuid ia ka lain.
+due_on_the_bill	Ka ram ha ka bill
 what_s_left_goes_on	Kaba sah ka leit ha ka khata jong u nongthied — ym donkam ka app kot pat.
-one_party_two_roles	Kawei ka party, ar ki kam
-customer_ar_and_supplier_ap	AR jong u nongthied bad AP jong u nongsam ki ia shim bynta ia ka kot party ba syn.
+one_party_two_roles	Kawei ka khata, ar ki kam
+customer_ar_and_supplier_ap	AR jong u nongthied bad AP jong u nongsam ki ia shim bynta ia kajuh ka kot khata.
 who_when_how_much	Uno, haba, katno
-every_credit_and_settlement_stays	Man ka bai bad ka jingpynkhlain ka sah ha ka kot sngi.
+every_credit_and_settlement_stays	Man ka ram bad ka jingpynbeit ka sah ha ka kot sngi.
 n_4_buy_stock	4 · THIED BAD KI TIAR
 buy_from_the_wholesaler_stock	Thied na u nongdie bun — ki tiar bad uno phi dei ban siew ki pynthymmai lang.
 purchase_sharma_wholesale	Ka jingthied · Sharma Wholesale
@@ -46,18 +46,18 @@ resale_stock_not_kitchen_raw	Ki tiar ban die biang — kam dei ki tiar kamra she
 buy_creates_stock	Ka jingthied ka shna ia ki tiar
 receive_the_goods_the_catalogue	Ioh ia ki tiar; ka jingbun ha ka catalogue ka kiew.
 who_we_owe	Uno ngi dei ban siew
-supplier_balance_sits_on_the	Ka bai jong u nongsam ka sah ha ka party ba syn kum ka khata jong u nongthied.
+supplier_balance_sits_on_the	Ka jingsah jong u nongsam ka don ha kajuh ka khata kum ka ram jong u nongthied.
 low_stock_at_a_glance	Ki tiar kiba duna ha kawei ka jingkhmih
-inventory_shows_what_is_running	Ka inventory ka pyni aiu ba dang kut shwa ia ka jingkynriah ba bud.
+inventory_shows_what_is_running	Ka inventory ka pyni aiu ba dang kut shwa ka jingkyrkieh ba bud.
 n_5_day_book	5 · KA KOT SNGI
-cash_vs_upi_counted_and	Ka pisa pyrshah UPI, la kyrhuh — bad ka jingkylla la pyni.
+cash_vs_upi_counted_and	Ka pisa pyrshah UPI, la khein — bad ka jingiapher la pyni.
 today_s_drawer	Ka drawer mynta
 opening_float	Ka pisa sdang
 cash_sales	+ ka jingdie pisa
 upi_sales	+ ka jingdie UPI
 cash_paid_out	− ka pisa ba la siew
-expected_cash	Ka pisa ba la kyrmen
-counted	La kyrhuh
+expected_cash	Ka pisa ba dei ban don
+counted	La khein
 short	Duna
 tenders_stay_separate	Ki lad jingsiew ki sah pat pat
 cash_and_upi_never_mix	Ka pisa bad UPI kim ju iasnoh ha kawei ka baroh ba bym shai.
@@ -69,23 +69,23 @@ books_sell_buy_items_four	Ki kot · Die · Thied · Ki tiar — saw ki screen, b
 n_6_internet_down	6 · YM DON INTERNET?
 the_internet_drops_the_counter	Ka internet ka duh. Ka kaunta ka dang die.
 router_no_internet	Router: ym don internet
-main_counter_selling_and_settling	Ka kaunta kongsan: dang die bad pynkhlain
+main_counter_selling_and_settling	Ka kaunta kongsan: dang die bad pynbeit
 second_till_joined_on_your	Ka kaunta pisa ba ar: la iasoh ha ka Wi-Fi jong phi hi
 books_live_on_the_shop	Ki kot ki sah ha ki device jong ka dukan
-when_the_internet_drops_mid	Haba ka internet ka duh ha pdeng ka jingkynriah, ym don ei ei ha ka kaunta ba ap ia ka.
+when_the_internet_drops_mid	Haba ka internet ka duh ha pdeng ka jingkyrkieh, ym don ei ei ha ka kaunta ba ap ia ka.
 one_server_lan_clients	Kawei ka Server, ki LAN Client
-extra_tills_share_the_same	Ki kaunta pisa kiba bujli ki ia pyndonkam ia ki kot ba syn ha ka network jong ka dukan.
-n_7_free_forever_locally	7 · LAITLUID JUNOM HA KA JAKA
-free_forever_on_your_devices	Laitluid junom ha ki device jong phi.
+extra_tills_share_the_same	Ki kaunta pisa ba la pyndap ki ia pyndonkam ia kijuh ki kot ha ka network jong ka dukan.
+n_7_free_forever_locally	7 · KHLEM SIEW DOR JUNOM HA KA JAKA
+free_forever_on_your_devices	Khlem siew dor junom ha ki device jong phi.
 no_per_bill_charge	Ym don dor na man ka bill
 no_fee_per_sale_item	Ym don dor na man ka jingdie, ka tiar, ka kaunta pisa lane u PIN nongtrei ha ka install ha ka jaka.
 android_windows_linux	Android, Windows, Linux
-the_same_kirano_on_the	Ka Kirano ba syn ha ka phone hadien ka kaunta bad ha ka kaunta pisa desktop.
+the_same_kirano_on_the	Kajuh ka Kirano ha ka phone hadien ka kaunta bad ha ka kaunta pisa desktop.
 optional_kumkaj_cloud	Kumkaj Cloud lada phi kwah
 yearly_steady_6k_swift_12k	Man ka snem Steady ₹6k · Swift ₹12k · Priority ₹24k khlem ka shuiñ (lane ka jingkhein dor). Thied ha /shop.
 n_8_start	8 · SDANG
 put_kirano_on_the_counter	Buh ia Kirano ha ka kaunta.
-download_free_or_whatsapp_for	Ioh laitluid, lane WhatsApp na ka bynta ka jingpyni lang bad ka jaid dukan bad ka nongbah jong phi.
+download_free_or_whatsapp_for	Ioh khlem siew dor, lane WhatsApp na ka bynta ka jingpyni lang bad ka jaid dukan bad ka nongbah jong phi.
 privacy	Ka jingrieh
 terms	Ki kyndon
 cancellation	Ka jingpynsangeh
@@ -95,28 +95,28 @@ chapter_counter_sell	Ka jingdie ha ka kaunta
 chapter_khata	Ka khata
 chapter_buy_stock	Thied bad ki tiar
 chapter_day_book	Ka kot sngi
-chapter_extra_till	Ka kaunta pisa ba bujli
+chapter_extra_till	Ka kaunta pisa ba la pyndap
 chapter_offline	Khlem lain
 chapter_start	Sdang
 bill_selling	Dang die
 bill_settle	Siew
 bill_paid	La siew
-bill_next_item	Nion ban bujli ia ka tiar ba bud
+bill_next_item	Nion ban pyndap ia ka tiar ba bud
 bill_settle_hint	Nion ban siew — ka pisa lane UPI
 bill_cash_return	Ka pisa ₹ 600 · pynphai ₹ 15
 bill_paid_line	La siew · ka kot sngi la pynthymmai
-lan_eyebrow	6 · KA KAUNTA PISA BA BUJLI
+lan_eyebrow	6 · KA KAUNTA PISA BA LA PYNDAP
 lan_title	Kawei pat ka kaunta pisa ha ka Wi-Fi jong ka dukan.
 cta_installers_note	Ki installer kin wan hangne haba man u wei u la jop ia ka jingpule install ha ka mashin ba khuid. Haduh kata, kylli ia ka demo ha WhatsApp.
 cta_whatsapp_soon	Ka lain demo WhatsApp kan plie kloi. Ka message jong phi kan long: “{message}”.
 acct_page_title	Ka account — Kirano
-acct_lede	Kawei ka account na ka bynta ka site bad ki app — ka form ka syn lada phi dei thymmai lane phi wan biang.
+acct_lede	Kawei ka account na ka bynta ka site bad ki app — kajuh ka form, lada phi dei thymmai lane phi wan biang.
 acct_email	Ka email
 acct_name_optional	Ka kyrteng (lada phi kwah)
 acct_password	Ka ktien rieh
 acct_continue	Bteng
 acct_forgot	Phi la klet ia ka ktien rieh?
-acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia ka address ba syn ba phi la sign up.
+acct_reset_hint	Ngin phah ka link reset ha ka email. Pyndonkam ia kajuh ka address ba phi la sign up da ka.
 acct_send_reset	Phah ia ka link reset
 acct_cancel	Pynsangeh
 acct_or_continue	lane bteng da
@@ -138,7 +138,7 @@ acct_current_password	Ka ktien rieh mynta
 acct_email_for_password	Ka email na ka bynta ka jingrung da ka ktien rieh
 acct_new_password	Ka ktien rieh thymmai
 acct_confirm_new_password	Pynshisha ia ka ktien rieh thymmai
-acct_add_way	Bujli kawei pat ka lad ban rung
+acct_add_way	Pyndap kawei pat ka lad ban rung
 acct_link_hint	Pyniasoh ia ki lad sha kawei ka account ba phi lah ban ioh biang ia ka jingrung lada kawei ka bym longkam.
 acct_link_google	Pyniasoh ia Google
 acct_link_microsoft	Pyniasoh ia Microsoft
@@ -147,17 +147,17 @@ acct_link_phone	Pyniasoh ia ka phone
 acct_send_sms_link	Phah SMS ban pyniasoh
 acct_confirm_link_phone	Pynshisha bad pyniasoh ia ka phone
 shop_page_title	Ka dukan — Kirano
-shop_lede	Ki plan cloud man ka snem — ka shuiñ la bujli ha ka jingsiew. Baroh ka app Kirano ha ki device jong phi ka sah laitluid junom, khlem ki jingpynbna.
+shop_lede	Ki plan cloud man ka snem — ka shuiñ yn pyndap ha ka jingsiew. Baroh ka app Kirano ha ki device jong phi ka sah khlem siew dor junom, khlem ki jingpynbna.
 shop_cart	Ka cart
-shop_cart_empty_hint	Ka cart jong phi ka thylli. Bujli ia Steady, Swift, lane Priority.
+shop_cart_empty_hint	Ka cart jong phi ka thylli. Pyndap ia Steady, Swift, lane Priority.
 shop_checkout	Ka jingsiew
 shop_clear	Pynkhuid
 shop_checkout_hint	Ka jingsiew ka pynrung ia phi ha ka Account, nangta ka sdang ia ka jingsiew (ka mock ka jaka pule lane Paddle haba la buh ia ki key).
-acct_billing_hint	Ki plan man ka snem — ka shuiñ la bujli da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah laitluid junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
+acct_billing_hint	Ki plan man ka snem — ka shuiñ yn pyndap da u gateway ha ka jingsiew. Ka jingpyndonkam ha ka jaka ka sah khlem siew dor junom. Ka jaid ba la pynbeit ka dei ka jingkhein dor (ka lah ban duna ia Steady lane palat ia Priority).
 shop_cloud_plans	Ki plan cloud
 acct_federated	Ka jingrung ba iasoh
 acct_err_invalid_email	Thoh ia ka address email ba dei.
-acct_err_weak_password	Pyndonkam ia ka ktien rieh bad 6 ki dak tang khyndiat.
+acct_err_weak_password	Pyndonkam ia ka ktien rieh ba don 6 ki dak lane kham bun.
 acct_err_wrong_password	Ka ktien rieh ka bakla.
 acct_err_invalid_credential	Ka email lane ka ktien rieh ka bakla.
 acct_err_popup_closed	La khang ia ka window jingrung.
@@ -166,7 +166,7 @@ acct_err_unauthorized_domain	Kane ka domain kam don jingbit na ka bynta Firebase
 acct_err_method_disabled	Kata ka lad ban rung kam pat sdang.
 acct_err_too_many	Bun palat ki jingpyrshang. Pyrshang biang hadien.
 acct_err_phone_format	Pyndonkam ia u nombar phone baroh bad u code ri (kum +91…).
-acct_err_sms_code	Kata u code SMS u bakla lane u la kut ka por.
+acct_err_sms_code	Uta u code SMS u bakla lane u la kut ka por.
 acct_err_no_account	Ym don account bad kata ka email. Bteng ban shna kawei, lane pyndonkam ia kiwei pat ki lad.
 acct_err_recent_login	Na ka bynta ka jingshngain, rung biang, nangta pyrshang biang ia kane ka jingkylla.
 acct_err_credential_in_use	Kata ka lad ban rung la pyndonkam da kawei pat ka account.
@@ -176,16 +176,16 @@ acct_err_exists_other_method	Don lypa ka account bad kane ka email da kawei pat 
 acct_err_generic	Don ei ei kaba la bakla.
 acct_method_password	Ka email bad ka ktien rieh
 acct_pw_hint_change	Kylla ia ka ktien rieh jong phi. Phin pynshisha da ka ktien rieh mynta.
-acct_pw_hint_add	Bujli ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
+acct_pw_hint_add	Pyndap ia ka ktien rieh ba phi lah ruh ban rung da ka email (ka myntoi lada u nongai u bym don).
 acct_pw_change	Kylla ia ka ktien rieh
-acct_pw_add	Bujli ia ka ktien rieh
+acct_pw_add	Pyndap ia ka ktien rieh
 acct_billing_off	Ka jingsiew bill kam pat sdang ha ka cloud API.
 acct_billing_no_provider	Ym don u nongai jingsiew bill shisha ha ka cloud API (ka mock tang ha ka jaka).
 price_quote	Ka jingkhein dor
 price_per_year	₹{amount}/snem khlem ka shuiñ
 acct_pay_received	La ioh ia ka jingsiew — dang pynthymmai ia ka plan jong phi…
 acct_pay_declined	La pynsangeh lane bym longkam ka jingsiew
-acct_pay_failed_detail	{detail}. Ka plan jong phi kam la kylla.
+acct_pay_failed_detail	{detail}. Ka plan jong phi kam shym la kylla.
 acct_checkout_closed	La khang ia ka jingsiew — ym don jingsiew ba la dep. Ka plan jong phi kam kylla.
 acct_checkout_failed	Ka jingsiew ka bym longkam
 acct_pay_with	Siew da {provider}
@@ -194,34 +194,34 @@ acct_unavailable	Ym don
 acct_continue_hint	Bteng da ka email, u nongai, lane ka phone.
 acct_signed_in_fallback	(la rung)
 acct_email_verified	La pynshisha ia ka email
-acct_email_unverified	Kam pat pynshisha ia ka email — peit ia ka inbox jong phi
+acct_email_unverified	Ym pat pynshisha ia ka email — peit ia ka inbox jong phi
 acct_signed_in_phone	La rung da ka phone
 acct_none_listed	Ym pat don ei ei
 acct_signed_in_status	Phi la rung.
 acct_created	La shna ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
 acct_reset_sent	Lada don ka account na ka bynta kata ka email, ka link reset ka dang wan. Peit ia ka inbox jong phi.
 acct_another_method	kawei pat ka lad
-acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia kane u nongai na ka sla account jong phi.
+acct_exists_via	Don lypa ka account na ka bynta {email} da {method}. Rung shwa da kata ka lad, nangta pyniasoh ia une u nongai na ka sla account jong phi.
 acct_enter_current_pw	Thoh ia ka ktien rieh mynta jong phi.
 acct_relogin_retry	Mih bad rung biang, nangta pyrshang biang.
 acct_pw_mismatch	Ka ktien rieh thymmai bad ka jingpynshisha kim iadei.
 acct_pw_updated	La pynthymmai ia ka ktien rieh.
 acct_enter_email_pw	Thoh ia ka email ban pyndonkam bad ka jingrung da ka ktien rieh.
-acct_pw_added	La bujli ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
+acct_pw_added	La pyndap ia ka ktien rieh. Phi lah ruh ban rung da ka email mynta.
 acct_method_linked	La pyniasoh ia ka lad ban rung.
 acct_phone_linked	La pyniasoh ia ka phone bad kane ka account.
 acct_verify_sent	La phah ia ka email jingpynshisha — peit ia ka inbox jong phi.
 shop_pricing_soon	Ki dor kin wan kloi
 shop_request_quote	Kylli ia ka jingkhein dor
-shop_add_to_cart	Bujli ha ka cart
+shop_add_to_cart	Pyndap ha ka cart
 shop_notify_later	Ong ia nga hadien
 shop_included	La kynthup
 shop_in_cart	{plan} ka don ha ka cart jong phi.
 shop_remove	Weng
 shop_cart_is_empty	Ka cart ka thylli.
-shop_prices_unpublished	Ki dor ban thied da lade kim pat pynpaw na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
+shop_prices_unpublished	Ym pat pynpaw ia ki dor ban thied da lade na ka bynta kane ka tiar. Kylli ia ka jingkhein dor ba la pynbeit lane peit biang hadien.
 shop_cart_cleared	La pynkhuid ia ka cart.
-plan_free_title	Laitluid junom
+plan_free_title	Khlem siew dor junom
 plan_free_blurb	Baroh ka tiar ha ka jaka ha ki device jong phi. Ym don dor cloud.
 plan_steady_blurb	Ka cloud ba im · 10 GB · bandwidth ba duna
 plan_swift_blurb	Ka cloud ba im · 25 GB · bandwidth pdeng

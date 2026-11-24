@@ -71,15 +71,15 @@ second_till_joined_on_your	ರಡ್ಡನೇ ಬಿಲ್ಲಿಂಗ್ ಕೌ
 books_live_on_the_shop	ಲೆಕ್ಕ ಪುಸ್ತಕೊಲು ಅಂಗಡಿದ ಡಿವೈಸ್‌ಡ್ ಉಪ್ಪುಂಡು
 when_the_internet_drops_nothing	ಇಂಟರ್ನೆಟ್ ಪೋಂಡಲಾ ಫಾರ್ಮಸಿ ಕೌಂಟರ್‌ಡ್ ಒವ್ವೇ ಅಯಿಕ್ ಕಾಪುಜಿ.
 one_server_lan_clients	ಒಂಜಿ ಸರ್ವರ್, LAN ಕ್ಲೈಂಟ್‌ಲು
-extra_tills_share_the_same	ಜಾಸ್ತಿ ಬಿಲ್ಲಿಂಗ್ ಕೌಂಟರ್‌ಲು ಅಂಗಡಿದ ನೆಟ್‌ವರ್ಕ್‌ಡ್ ಅವೇ ಲೆಕ್ಕ ಪುಸ್ತಕೊಲೆನ್ ಪಾಲ್ ಮಲ್ಪುಂಡು.
-n_7_free_forever_locally	7 · ಲೋಕಲ್‌ಡ್ ಯಾವಲ ಉಚಿತ
-free_forever_on_your_devices	ಇರೆನ ಡಿವೈಸ್‌ಡ್ ಯಾವಲ ಉಚಿತ.
+extra_tills_share_the_same	ಜಾಸ್ತಿ ಬಿಲ್ಲಿಂಗ್ ಕೌಂಟರ್‌ಲು ಅಂಗಡಿದ ನೆಟ್‌ವರ್ಕ್‌ಡ್ ಅವೇ ಲೆಕ್ಕ ಪುಸ್ತಕೊಲೆಡ್ ಒಟ್ಟುಗು ಬೇಲೆ ಮಲ್ಪುಂಡು.
+n_7_free_forever_locally	7 · ಲೋಕಲ್‌ಡ್ ಏಪಲಾ ಉಚಿತ
+free_forever_on_your_devices	ಇರೆನ ಡಿವೈಸ್‌ಡ್ ಏಪಲಾ ಉಚಿತ.
 no_per_bill_charge	ಪ್ರತಿ ಬಿಲ್‌ಗ್ ಶುಲ್ಕ ಇಜ್ಜಿ
 no_fee_per_sale_medicine	ಲೋಕಲ್ ಇನ್‌ಸ್ಟಾಲ್‌ಡ್ ಮಾರಾಟ, ಮರ್ದ್, ಬಿಲ್ಲಿಂಗ್ ಕೌಂಟರ್ ಅತ್ತಂಡ ಸಿಬ್ಬಂದಿ PIN ಗ್ ಶುಲ್ಕ ಇಜ್ಜಿ.
 android_windows_linux	Android, Windows, Linux
 the_same_tabiyat_on_the	ಫೋನ್‌ಡ್ ಬೊಕ್ಕ ಡೆಸ್ಕ್‌ಟಾಪ್ ಬಿಲ್ಲಿಂಗ್ ಕೌಂಟರ್‌ಡ್ ಅವೇ Tabiyat.
 optional_kumkaj_cloud	ಐಚ್ಛಿಕ Kumkaj Cloud
-yearly_steady_6k_swift_12k	ವರ್ಷದ Steady ₹6k · Swift ₹12k · Priority ₹24k, ತೆರಿಗೆ ಬುಡ್ದು (ಅತ್ತಂಡ ಕಸ್ಟಮ್ ಕೋಟೇಶನ್). /shop ಡ್ ಕೊಂಡೊಲೆ.
+yearly_steady_6k_swift_12k	ವರ್ಷೊದ Steady ₹6k · Swift ₹12k · Priority ₹24k, ತೆರಿಗೆ ಬುಡ್ದು (ಅತ್ತಂಡ ಕಸ್ಟಮ್ ಕೋಟೇಶನ್). /shop ಡ್ ಕೊಂಡೊಲೆ.
 n_8_start	8 · ಸುರು ಮಲ್ಪುಲೆ
 put_tabiyat_on_the_counter	Tabiyat ನ್ ಕೌಂಟರ್‌ಡ್ ದೀಲೆ.
 download_free_or_whatsapp_for	ಉಚಿತವಾದ್ ಡೌನ್‌ಲೋಡ್ ಮಲ್ಪುಲೆ, ಅತ್ತಂಡ ಇರೆನ ಫಾರ್ಮಸಿ ಬೊಕ್ಕ ಊರುದ ಪುದರ್ ಪಂಡ್ದ್ ಡೆಮೋಗಾದ್ WhatsApp ಮಲ್ಪುಲೆ.
@@ -112,7 +112,7 @@ acct_email	ಇಮೇಲ್
 acct_name_optional	ಪುದರ್ (ಐಚ್ಛಿಕ)
 acct_password	ಗುಪ್ತಪದ
 acct_continue	ಮುಂದುವರಿಸಲೆ
-acct_forgot	ಗುಪ್ತಪದ ಮದತ್ತಾ?
+acct_forgot	ಗುಪ್ತಪದ ಮದತ್ತರಾ?
 acct_reset_hint	ಎಂಕುಲು ರೀಸೆಟ್ ಲಿಂಕ್ ಇಮೇಲ್ ಮಲ್ಪುವ. ಸೈನ್ ಅಪ್ ಮಲ್ತಿನ ಅವೇ ವಿಳಾಸನ್ ಬಳಸಲೆ.
 acct_send_reset	ರೀಸೆಟ್ ಲಿಂಕ್ ಕಡಪುಡ್ಲೆ
 acct_cancel	ರದ್ದು ಮಲ್ಪುಲೆ
@@ -123,7 +123,7 @@ acct_send_sms	SMS ಕೋಡ್ ಕಡಪುಡ್ಲೆ
 acct_sms_code	SMS ಕೋಡ್
 acct_confirm_code	ಕೋಡ್ ಖಚಿತ ಮಲ್ಪುಲೆ
 acct_signed_in	ಸೈನ್ ಇನ್ ಆಂಡ್
-acct_signed_in_as	ಈ ರೂಪೊಡು ಸೈನ್ ಇನ್
+acct_signed_in_as	ಸೈನ್ ಇನ್ ಆಯಿನ ಖಾತೆ
 acct_status	ಸ್ಥಿತಿ
 acct_sign_in_methods	ಸೈನ್-ಇನ್ ವಿಧಾನೊಲು
 acct_cloud_username	ಕ್ಲೌಡ್ ಯೂಸರ್‌ನೇಮ್
@@ -136,7 +136,7 @@ acct_email_for_password	ಗುಪ್ತಪದ ಸೈನ್-ಇನ್‌ಗ್ �
 acct_new_password	ಪೊಸ ಗುಪ್ತಪದ
 acct_confirm_new_password	ಪೊಸ ಗುಪ್ತಪದ ಖಚಿತ ಮಲ್ಪುಲೆ
 acct_add_way	ಸೈನ್ ಇನ್ ಮಲ್ಪೆರೆ ಬೇತೆ ಒಂಜಿ ವಿಧಾನ ಸೇರಾಲೆ
-acct_link_hint	ವಿಧಾನೊಲೆನ್ ಒಂಜೇ ಖಾತೆಗ್ ಜೋಡಿಸಲೆ, ಒಂಜಿ ಫೈಲ್ ಆಂಡಲಾ ಪ್ರವೇಶ ಪಿರ ಪಡೆಯೊಲಿ.
+acct_link_hint	ವಿಧಾನೊಲೆನ್ ಒಂಜೇ ಖಾತೆಗ್ ಜೋಡಿಸಲೆ, ಒಂಜಿ ಫೇಲ್ ಆಂಡಲಾ ಪ್ರವೇಶ ಪಿರ ಪಡೆಯೊಲಿ.
 acct_link_google	Google ಜೋಡಿಸಲೆ
 acct_link_microsoft	Microsoft ಜೋಡಿಸಲೆ
 acct_link_github	GitHub ಜೋಡಿಸಲೆ
@@ -144,17 +144,17 @@ acct_link_phone	ಫೋನ್ ಜೋಡಿಸಲೆ
 acct_send_sms_link	ಜೋಡಿಸೆರೆ SMS ಕಡಪುಡ್ಲೆ
 acct_confirm_link_phone	ಖಚಿತ ಮಲ್ತ್‌ದ್ ಫೋನ್ ಜೋಡಿಸಲೆ
 shop_page_title	ಅಂಗಡಿ — Tabiyat
-shop_lede	ವರ್ಷದ ಕ್ಲೌಡ್ ಪ್ಲಾನ್‌ಲು — ತೆರಿಗೆ ಚೆಕ್‌ಔಟ್‌ಡ್ ಸೇರುಂಡು. ಇರೆನ ಸ್ವಂತ ಡಿವೈಸ್‌ಡ್ ಮಾತ Tabiyat ಆ್ಯಪ್ ಯಾವಲ ಉಚಿತ, ಜಾಹೀರಾತು ಇಜ್ಜಂದೆ.
+shop_lede	ವರ್ಷೊದ ಕ್ಲೌಡ್ ಪ್ಲಾನ್‌ಲು — ತೆರಿಗೆ ಚೆಕ್‌ಔಟ್‌ಡ್ ಸೇರುಂಡು. ಇರೆನ ಸ್ವಂತ ಡಿವೈಸ್‌ಡ್ ಮಾತ Tabiyat ಆ್ಯಪ್ ಏಪಲಾ ಉಚಿತ, ಜಾಹೀರಾತು ಇಜ್ಜಂದೆ.
 shop_cart	ಕಾರ್ಟ್
 shop_cart_empty_hint	ಇರೆನ ಕಾರ್ಟ್ ಖಾಲಿ ಉಂಡು. Steady, Swift ಅತ್ತಂಡ Priority ಸೇರಾಲೆ.
 shop_checkout	ಚೆಕ್‌ಔಟ್
 shop_clear	ಮಾಜಾಲೆ
 shop_checkout_hint	ಚೆಕ್‌ಔಟ್ ಇರೆನ್ ಖಾತೆಡ್ ಸೈನ್ ಇನ್ ಮಲ್ಪಾಪುಂಡು, ಬುಕ್ಕ ಪಾವತಿ ಸುರು ಮಲ್ಪುಂಡು (ಸ್ಯಾಂಡ್‌ಬಾಕ್ಸ್ ಮಾಕ್, ಅತ್ತಂಡ ಕೀ ಸೆಟ್ ಆದಿತ್ತ್ಂಡ Paddle).
-acct_billing_hint	ವರ್ಷದ ಪ್ಲಾನ್‌ಲು — ಚೆಕ್‌ಔಟ್‌ಡ್ ಗೇಟ್‌ವೇ ತೆರಿಗೆ ಸೇರಾಪುಂಡು. ಲೋಕಲ್ ಬಳಕೆ ಯಾವಲ ಉಚಿತ. ಕಸ್ಟಮ್ ಒಂಜಿ ಕೋಟೇಶನ್ (Steady ಡ್ದ್ ಕಮ್ಮಿ ಅತ್ತಂಡ Priority ಡ್ದ್ ಜಾಸ್ತಿ ಆವೊಲಿ).
+acct_billing_hint	ವರ್ಷೊದ ಪ್ಲಾನ್‌ಲು — ಚೆಕ್‌ಔಟ್‌ಡ್ ಗೇಟ್‌ವೇ ತೆರಿಗೆ ಸೇರಾಪುಂಡು. ಲೋಕಲ್ ಬಳಕೆ ಏಪಲಾ ಉಚಿತ. ಕಸ್ಟಮ್ ಒಂಜಿ ಕೋಟೇಶನ್ (Steady ಡ್ದ್ ಕಮ್ಮಿ ಅತ್ತಂಡ Priority ಡ್ದ್ ಜಾಸ್ತಿ ಆವೊಲಿ).
 shop_cloud_plans	ಕ್ಲೌಡ್ ಪ್ಲಾನ್‌ಲು
 acct_federated	ಫೆಡರೇಟೆಡ್ ಸೈನ್-ಇನ್
 acct_err_invalid_email	ಸರಿಯಾಯಿನ ಇಮೇಲ್ ವಿಳಾಸ ಬರೆಲೆ.
-acct_err_weak_password	ಕನಿಷ್ಠ 6 ಅಕ್ಷರದ ಗುಪ್ತಪದ ಬಳಸಲೆ.
+acct_err_weak_password	ಕನಿಷ್ಠ 6 ಅಕ್ಷರೊದ ಗುಪ್ತಪದ ಬಳಸಲೆ.
 acct_err_wrong_password	ತಪ್ಪು ಗುಪ್ತಪದ.
 acct_err_invalid_credential	ಇಮೇಲ್ ಅತ್ತಂಡ ಗುಪ್ತಪದ ತಪ್ಪು.
 acct_err_popup_closed	ಸೈನ್-ಇನ್ ವಿಂಡೋ ಮುಚ್ಚಿಂಡ್.
@@ -162,7 +162,7 @@ acct_err_popup_cancelled	ಸೈನ್-ಇನ್ ರದ್ದ್ ಆಂಡ್.
 acct_err_unauthorized_domain	ಈ ಡೊಮೇನ್ Firebase Auth ಗ್ ಅಧಿಕೃತ ಅತ್ತ್.
 acct_err_method_disabled	ಈ ಸೈನ್-ಇನ್ ವಿಧಾನ ಇಂಚಿಪ್ಪ ಸಕ್ರಿಯ ಆತಿಜಿ.
 acct_err_too_many	ಮಸ್ತ್ ಪ್ರಯತ್ನ ಆಂಡ್. ಬುಕ್ಕ ಕುಡ ಪ್ರಯತ್ನ ಮಲ್ಪುಲೆ.
-acct_err_phone_format	ದೇಶದ ಕೋಡ್‌ದೊಟ್ಟುಗು ಮಾತ ಫೋನ್ ನಂಬರ್ ಬಳಸಲೆ (ಉದಾ. +91…).
+acct_err_phone_format	ದೇಶೊದ ಕೋಡ್‌ದೊಟ್ಟುಗು ಮಾತ ಫೋನ್ ನಂಬರ್ ಬಳಸಲೆ (ಉದಾ. +91…).
 acct_err_sms_code	ಆ SMS ಕೋಡ್ ತಪ್ಪು ಅತ್ತಂಡ ಅವಧಿ ಮುಗಿಂಡ್.
 acct_err_no_account	ಆ ಇಮೇಲ್‌ಡ್ ಒವ್ವೇ ಖಾತೆ ಇಜ್ಜಿ. ಪೊಸತ್ ಮಲ್ಪೆರೆ ಮುಂದುವರಿಸಲೆ, ಅತ್ತಂಡ ಬೇತೆ ವಿಧಾನ ಬಳಸಲೆ.
 acct_err_recent_login	ಭದ್ರತೆಗಾದ್ ಕುಡ ಸೈನ್ ಇನ್ ಮಲ್ಪುಲೆ, ಬುಕ್ಕ ಈ ಬದಲಾವಣೆನ್ ಕುಡ ಮಲ್ಪುಲೆ.
@@ -170,7 +170,7 @@ acct_err_credential_in_use	ಆ ಸೈನ್-ಇನ್ ವಿಧಾನನ್ ದ�
 acct_err_email_in_use	ಆ ಇಮೇಲ್‌ನ್ ದುಂಬೇ ಬೇತೆ ಖಾತೆ ಬಳಸೊಂದುಂಡು.
 acct_err_already_linked	ಆ ವಿಧಾನ ದುಂಬೇ ಈ ಖಾತೆಗ್ ಜೋಡಿಸಾದ್ ಉಂಡು.
 acct_err_exists_other_method	ಈ ಇಮೇಲ್‌ದ ಖಾತೆ ದುಂಬೇ ಬೇತೆ ಸೈನ್-ಇನ್ ವಿಧಾನೊಡು ಉಂಡು. ಸುರುಕು ಆ ವಿಧಾನೊಡು ಸೈನ್ ಇನ್ ಮಲ್ಪುಲೆ, ಬುಕ್ಕ ಇರೆನ ಖಾತೆ ಪುಟೊಡ್ದ್ ಉಂದೆನ್ ಜೋಡಿಸಲೆ.
-acct_err_generic	ಏತೋ ತಪ್ಪಾಂಡ್.
+acct_err_generic	ದಾದೋ ತಪ್ಪಾಂಡ್.
 acct_method_password	ಇಮೇಲ್ ಬೊಕ್ಕ ಗುಪ್ತಪದ
 acct_pw_hint_change	ಇರೆನ ಗುಪ್ತಪದ ಬದಲ್ ಮಲ್ಪುಲೆ. ಇತ್ತೆದ ಗುಪ್ತಪದೊಡು ಖಚಿತ ಮಲ್ಪೊಡು.
 acct_pw_hint_add	ಇಮೇಲ್‌ಡ್ಲಾ ಸೈನ್ ಇನ್ ಮಲ್ಪೊಲಿಯೆರೆ ಒಂಜಿ ಗುಪ್ತಪದ ಸೇರಾಲೆ (ಒವ್ವೇ ಪ್ರೊವೈಡರ್ ತಿಕ್ಕಂದಿನಗ ಉಪಯೋಗ ಆಪುಂಡು).
@@ -181,10 +181,10 @@ acct_billing_no_provider	ಕ್ಲೌಡ್ API ಡ್ ಒವ್ವೇ ನಿಜ
 price_quote	ಕೋಟೇಶನ್
 price_per_year	₹{amount}/ವರ್ಷ, ತೆರಿಗೆ ಬುಡ್ದು
 acct_pay_received	ಪಾವತಿ ತಿಕ್ಕ್ಂಡ್ — ಇರೆನ ಪ್ಲಾನ್ ಪೊಸ ಆವೊಂದುಂಡು…
-acct_pay_declined	ಪಾವತಿ ನಿರಾಕರಿಸಾಂಡ್ ಅತ್ತಂಡ ಫೈಲ್ ಆಂಡ್
+acct_pay_declined	ಪಾವತಿ ನಿರಾಕರಿಸಾಂಡ್ ಅತ್ತಂಡ ಫೇಲ್ ಆಂಡ್
 acct_pay_failed_detail	{detail}. ಇರೆನ ಪ್ಲಾನ್ ಬದಲ್ ಆಯಿಜಿ.
 acct_checkout_closed	ಚೆಕ್‌ಔಟ್ ಮುಚ್ಚಿಂಡ್ — ಒವ್ವೇ ಪಾವತಿ ಪೂರ್ಣ ಆಯಿಜಿ. ಇರೆನ ಪ್ಲಾನ್ ಅಂಚನೇ ಉಂಡು.
-acct_checkout_failed	ಚೆಕ್‌ಔಟ್ ಫೈಲ್ ಆಂಡ್
+acct_checkout_failed	ಚೆಕ್‌ಔಟ್ ಫೇಲ್ ಆಂಡ್
 acct_pay_with	{provider} ಡ್ ಪಾವತಿ ಮಲ್ಪುಲೆ
 acct_plan_until	{plan} · {date} ಮುಟ್ಟ
 acct_unavailable	ಲಭ್ಯ ಇಜ್ಜಿ
@@ -218,7 +218,7 @@ shop_remove	ದೆಪ್ಪುಲೆ
 shop_cart_is_empty	ಕಾರ್ಟ್ ಖಾಲಿ ಉಂಡು.
 shop_prices_unpublished	ಈ ಪ್ರಾಡಕ್ಟ್‌ಗ್ ತನ್ನಾತೆನೇ ಕೊಂಡೊಪುನ ಬೆಲೆಲು ಇಂಚಿಪ್ಪ ಪ್ರಕಟ ಆತಿಜಿ. ಕಸ್ಟಮ್ ಕೋಟೇಶನ್ ಕೇನುಲೆ ಅತ್ತಂಡ ಬುಕ್ಕ ಕುಡ ತೂಲೆ.
 shop_cart_cleared	ಕಾರ್ಟ್ ಖಾಲಿ ಆಂಡ್.
-plan_free_title	ಯಾವಲ ಉಚಿತ
+plan_free_title	ಏಪಲಾ ಉಚಿತ
 plan_free_blurb	ಇರೆನ ಡಿವೈಸ್‌ಡ್ ಮಾತ ಲೋಕಲ್ ಪ್ರಾಡಕ್ಟ್. ಕ್ಲೌಡ್ ಶುಲ್ಕ ಇಜ್ಜಿ.
 plan_steady_blurb	ಲೈವ್ ಕ್ಲೌಡ್ · 10 GB · ಕಮ್ಮಿ ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್
 plan_swift_blurb	ಲೈವ್ ಕ್ಲೌಡ್ · 25 GB · ನಡುತ ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್

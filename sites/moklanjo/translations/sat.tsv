@@ -1,5 +1,5 @@
 # Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	ᱫᱮᱠᱷᱟᱣ
+example	ᱫᱟᱹᱭᱠᱟᱹ
 length	ᱡᱤᱞᱤᱧ
 download_free	ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱰᱟᱣᱩᱱᱞᱳᱰ ᱢᱮ
 whatsapp_for_a_demo	ᱰᱮᱢᱚ ᱞᱟᱹᱜᱤᱫ WhatsApp ᱢᱮ
@@ -10,7 +10,7 @@ walk_in	ᱣᱟᱠ-ᱤᱱ
 weigh	ᱚᱡᱚᱱ
 price	ᱜᱚᱱᱚᱝ
 label	ᱞᱮᱵᱮᱞ
-hand_over	ᱦᱟᱛᱟᱣ ᱮᱢ
+hand_over	ᱡᱤᱢᱟᱹ ᱮᱢ
 track	ᱴᱨᱮᱠ
 offline	ᱚᱯᱷᱞᱟᱭᱤᱱ
 start	ᱮᱦᱚᱵ ᱢᱮ
@@ -23,7 +23,7 @@ charge	ᱜᱚᱱᱚᱝ
 your_rate_card_cash_or	ᱟᱢᱟᱜ ᱨᱮᱴ ᱠᱟᱨᱰ, ᱴᱟᱠᱟ ᱥᱮ ᱠᱷᱟᱛᱟ᱾
 next_booking	ᱛᱟᱭᱚᱢ ᱵᱩᱠᱤᱝ
 one_tap_clears_the_counter	ᱢᱤᱫ ᱴᱤᱯ ᱛᱮ ᱛᱟᱭᱚᱢ ᱣᱟᱠ-ᱤᱱ ᱞᱟᱹᱜᱤᱫ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱠᱷᱟᱹᱞᱤ ᱦᱩᱭᱩᱜᱼᱟ᱾
-scroll_the_parcel_journey_rail	ᱥᱠᱨᱚᱞ ᱢᱮ — ᱪᱮᱛᱟᱱ ᱨᱮᱭᱟᱜ ᱯᱟᱨᱥᱮᱞ ᱥᱚᱯᱷᱚᱨ ᱯᱟᱴᱤ ᱠᱟᱹᱦᱱᱤ ᱨᱮ ᱟᱢ ᱚᱠᱟᱨᱮ ᱢᱮᱱᱟᱢᱟ ᱩᱫᱩᱜᱟ᱾
+scroll_the_parcel_journey_rail	ᱥᱠᱨᱚᱞ ᱢᱮ — ᱪᱮᱛᱟᱱ ᱨᱮᱭᱟᱜ ᱯᱟᱨᱥᱮᱞ ᱥᱚᱯᱷᱚᱨ ᱯᱟᱴᱤ ᱠᱟᱹᱦᱱᱤ ᱨᱮ ᱟᱢ ᱚᱠᱟᱨᱮ ᱢᱮᱱᱟᱢᱟ ᱩᱫᱩᱜᱼᱟ᱾
 n_2_weigh_it_right	2 · ᱴᱷᱤᱠ ᱚᱡᱚᱱ ᱢᱮ
 actual_or_volumetric_whichever_is	ᱥᱟᱹᱨᱤ ᱥᱮ ᱵᱷᱚᱞᱭᱩᱢᱮᱴᱨᱤᱠ — ᱡᱟᱦᱟᱸ ᱵᱟᱹᱲᱛᱤ, ᱟᱢᱟᱜ ᱦᱚᱨ ᱛᱮ ᱨᱟᱣᱩᱱᱰ ᱟᱠᱟᱱ᱾
 try_a_box	ᱢᱤᱫᱴᱟᱹᱝ ᱵᱟᱠᱥᱚ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱢᱮ
@@ -59,7 +59,7 @@ code_128_labels	Code 128 ᱞᱮᱵᱮᱞ
 the_awb_goes_on_the	AWB ᱫᱚ ᱵᱟᱠᱥᱚ ᱨᱮ ᱵᱟᱨᱠᱳᱰ ᱟᱨ ᱥᱚᱡᱮ ᱮᱞ ᱵᱟᱨᱭᱟ ᱞᱮᱠᱟ ᱛᱮ ᱞᱟᱜᱟᱣᱜᱼᱟ᱾
 scan_to_find	ᱥᱮᱸᱫᱽᱨᱟ ᱞᱟᱹᱜᱤᱫ ᱥᱠᱮᱱ ᱢᱮ
 scan_a_label_to_open	ᱞᱮᱵᱮᱞ ᱥᱠᱮᱱ ᱠᱟᱛᱮ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱰᱚᱠᱮᱴ ᱡᱷᱤᱡᱽ ᱢᱮ ᱟᱨ ᱠᱟᱹᱢᱤ ᱢᱮ᱾
-n_5_hand_over	5 · ᱦᱟᱛᱟᱣ ᱮᱢ
+n_5_hand_over	5 · ᱡᱤᱢᱟᱹ ᱮᱢ
 hand_it_to_a_carrier	ᱵᱟᱦᱚᱠ ᱴᱷᱮᱱ ᱮᱢ ᱢᱮ, ᱥᱮ ᱟᱢᱟᱜ ᱨᱟᱭᱰᱟᱨ ᱠᱩᱞ ᱢᱮ᱾ ᱚᱱᱟ ᱜᱮ ᱥᱤᱥᱴᱮᱢ᱾
 into_a_carrier_bag	ᱵᱟᱦᱚᱠ ᱨᱮᱭᱟᱜ ᱵᱮᱜ ᱨᱮ
 the_manifest_holds_exactly_the	ᱢᱮᱱᱤᱯᱷᱮᱥᱴ ᱨᱮ ᱟᱢ ᱵᱟᱪᱷᱟᱣ ᱠᱟᱫ ᱯᱟᱨᱥᱮᱞ ᱜᱮ ᱛᱟᱦᱮᱸᱱᱟ — ᱡᱚᱛᱚ, ᱥᱮ ᱢᱤᱫᱴᱟᱹᱝ ᱦᱚᱸ ᱵᱟᱝ᱾ ᱮᱴᱟᱜ ᱵᱟᱦᱚᱠ ᱥᱟᱶ ᱵᱩᱠ ᱟᱠᱟᱱ ᱯᱟᱨᱥᱮᱞ ᱱᱚᱣᱟ ᱵᱮᱜ ᱨᱮ ᱵᱟᱝ ᱵᱚᱞᱚ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾
@@ -124,7 +124,7 @@ label_it	ᱞᱮᱵᱮᱞ ᱞᱟᱜᱟᱣ
 track_and_prove	ᱴᱨᱮᱠ ᱟᱨ ᱥᱟᱹᱵᱤᱛ
 money_comes_home	ᱴᱟᱠᱟ ᱚᱲᱟᱜ ᱦᱤᱡᱩᱜᱼᱟ
 internet_down	ᱤᱱᱴᱟᱨᱱᱮᱴ ᱵᱚᱸᱫᱚ
-bead_hand	ᱦᱟᱛᱟᱣ ᱮᱢ
+bead_hand	ᱡᱤᱢᱟᱹ ᱮᱢ
 bead_offline_short	ᱚᱯᱷᱞᱟᱭᱤᱱ
 weight_cm	{n} cm
 weight_kg	{kg} kg
@@ -132,7 +132,7 @@ weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	ᱛᱟᱨᱟᱡᱩ ᱨᱮ: {kg} kg
 weight_scale_wins	ᱛᱟᱨᱟᱡᱩ ᱨᱮᱭᱟᱜ ᱚᱡᱚᱱ ᱜᱚᱱᱚᱝ ᱴᱷᱤᱠᱟᱹᱣᱟ᱾
 cta_installers_note	ᱡᱚᱛᱚ ᱤᱱᱥᱴᱚᱞᱟᱨ ᱥᱟᱯᱷᱟ ᱢᱮᱥᱤᱱ ᱨᱮ ᱤᱱᱥᱴᱚᱞ ᱡᱟᱹᱸᱪ ᱯᱟᱥ ᱛᱟᱭᱚᱢ ᱱᱚᱸᱰᱮ ᱦᱤᱡᱩᱜᱼᱟ᱾ ᱚᱱᱟ ᱦᱟᱹᱵᱤᱡ WhatsApp ᱨᱮ ᱰᱮᱢᱚ ᱟᱹᱨᱡᱤ ᱢᱮ᱾
-cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱽᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱶᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
+cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱚᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱣᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
 acct_page_title	ᱮᱠᱟᱣᱩᱱᱴ — Moklanjo
 acct_lede	ᱥᱟᱭᱤᱴ ᱟᱨ ᱮᱯ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱹᱝ ᱜᱮ ᱮᱠᱟᱣᱩᱱᱴ — ᱱᱟᱶᱟ ᱥᱮ ᱨᱩᱣᱟᱹᱲ ᱦᱤᱡᱩᱜ, ᱚᱱᱟ ᱜᱮ ᱯᱷᱚᱨᱢ᱾
 acct_email	ᱤᱢᱮᱞ
@@ -181,7 +181,7 @@ acct_billing_hint	ᱥᱮᱨᱢᱟ ᱥᱮᱨᱢᱟ ᱯᱞᱟᱱ — ᱪᱮᱠᱟ�
 shop_cloud_plans	ᱠᱞᱟᱣᱩᱰ ᱯᱞᱟᱱ ᱠᱚ
 acct_federated	ᱯᱷᱮᱰᱟᱨᱮᱴᱮᱰ ᱥᱟᱭᱤᱱ ᱤᱱ
 acct_err_invalid_email	ᱴᱷᱤᱠ ᱤᱢᱮᱞ ᱴᱷᱤᱠᱟᱹᱱᱟᱹ ᱚᱞ ᱢᱮ᱾
-acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱡᱚᱠᱷᱟ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
+acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱟᱠᱷᱚᱨ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
 acct_err_wrong_password	ᱵᱷᱩᱞ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ᱾
 acct_err_invalid_credential	ᱤᱢᱮᱞ ᱥᱮ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱷᱩᱞ ᱢᱮᱱᱟᱜᱼᱟ᱾
 acct_err_popup_closed	ᱥᱟᱭᱤᱱ ᱤᱱ ᱣᱤᱱᱰᱚ ᱵᱚᱸᱫᱚ ᱮᱱᱟ᱾
@@ -200,7 +200,7 @@ acct_err_exists_other_method	ᱱᱚᱣᱟ ᱤᱢᱮᱞ ᱛᱮ ᱮᱴᱟᱜ ᱥ�
 acct_err_generic	ᱪᱮᱫ ᱦᱚᱸ ᱵᱷᱩᱞ ᱦᱩᱭᱮᱱᱟ᱾
 acct_method_password	ᱤᱢᱮᱞ ᱟᱨ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 acct_pw_hint_change	ᱟᱢᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ᱾ ᱱᱤᱛᱚᱜᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱛᱮ ᱯᱚᱠᱟ ᱦᱩᱭᱩᱜᱼᱟ᱾
-acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
+acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤ ᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
 acct_pw_change	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ
 acct_pw_add	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ
 acct_billing_off	ᱠᱞᱟᱣᱩᱰ API ᱨᱮ ᱵᱤᱞᱤᱝ ᱱᱤᱛᱚᱜ ᱦᱟᱹᱵᱤᱡ ᱵᱟᱝ ᱮᱦᱚᱵ ᱟᱠᱟᱱᱟ᱾

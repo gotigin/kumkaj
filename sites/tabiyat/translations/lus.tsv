@@ -21,7 +21,7 @@ example_bill	Bil entirna
 fast_counter_billing	Zuar dawhkan bil rang
 add_the_line_set_the	Tlar belh la, zat dah la, inchhiar fel rawh — sum, UPI emaw ṭhenin.
 gst_tax_invoice_or_cash	GST chhiah invoice emaw sum bil
-the_bill_lane_you_need	Hralh atana bil chi i mamawh.
+the_bill_lane_you_need	Hralh atana i mamawh bil chi.
 day_book_follows	Ni lehkha a zui
 every_tender_lands_in_books	Hralh i khar veleh pek tin Lehkha-ah a lut.
 n_3_barcode_salt	3 · BARCODE LEH SALT
@@ -29,14 +29,14 @@ scan_the_barcode_or_find	Barcode scan rawh — emaw salt hmangin zawng rawh.
 search	Zawng rawh
 composition_paracetamol_strip_of_10	A chhunga awm: Paracetamol · 10 awmna strip
 salt_amoxicillin	Damdawi bulpui: amoxicillin
-ranks_barcode_name_and_composition	Barcode, hming leh a chhunga awm a rual in a indawt.
+ranks_barcode_name_and_composition	Barcode, hming leh a chhunga awm a rualin a indawt.
 wedge_scanner_or_type_enter	Wedge scanner emaw Enter hmet rawh — tlar chu bil-ah a lang.
 barcode_first	Barcode hmasa
 scan_or_paste_the_code	Code scan emaw paste rawh; catalogue inmil a lang.
 salt_composition	Salt / a chhunga awm
 type_the_salt_when_the	Khualin brand hming a sawi loh chuan salt ziak rawh.
 owner_rx_schedule_h_flags	Neitu Rx / Schedule H chhinchhiahna
-reminders_you_set_not_a	I siam hriatnawn — dan anga register a ni lo, damdawi thurawn a ni lo.
+reminders_you_set_not_a	I siam hriatnawntirna — dan anga register a ni lo, damdawi thurawn a ni lo.
 n_4_batch_expiry	4 · BATCH LEH A HMAN THEIH HUN
 batch_and_expiry_on_your	I lehkhaah batch leh a hman theih hun — neitu tan hriattirna.
 buy_batch_a12	Lei · batch A12
@@ -53,7 +53,7 @@ fefo_hints_and_rx_notes	FEFO hriattirna leh Rx note zawm chu i mawh a ni — Tab
 n_5_khata	5 · BA LEHKHA
 customer_credit_and_supplier_dues	Khual ba leh pek tu ba chu mi lehkha pakhatah.
 mehta_clinic_customer	Mehta Clinic · Khual
-due_from_earlier	Hmalam ba
+due_from_earlier	Ba hlui
 today_s_sale_due	+ vawiin hralh (ba)
 balance	Ba awm zat
 settle_later_part_cash_part	A hnuah inchhiar fel rawh — ṭhenkhat sum, ṭhenkhat UPI. Pek tu AP chu Mi screen ang chiahah a awm.
@@ -71,7 +71,7 @@ second_till_joined_on_your	Pawisa bawm pahnihna: i Wi-Fi ngeiah inzawm
 books_live_on_the_shop	Lehkha te dawr hmanruaah a awm
 when_the_internet_drops_nothing	Internet a thih pawhin damdawi zuarna dawhkanah engmah a nghak lo.
 one_server_lan_clients	Server pakhat, LAN hmangtu te
-extra_tills_share_the_same	Pawisa bawm belh te'n dawr network-ah lehkha ang chiah an hmang ho.
+extra_tills_share_the_same	Pawisa bawm belh te’n dawr network-ah lehkha ang chiah an hmang ho.
 n_7_free_forever_locally	7 · LOCAL-AH CHATUANIN A MAN LOVIN
 free_forever_on_your_devices	I hmanruaah chatuanin a man lovin.
 no_per_bill_charge	Bil tin man a awm lo
@@ -164,13 +164,13 @@ acct_err_method_disabled	He luh kawng hi tun thleng hian a ṭan lo.
 acct_err_too_many	Tum tam lutuk. A hnuah tum leh rawh.
 acct_err_phone_format	Ram code nen fon number pum hmang rawh (entirnan +91…).
 acct_err_sms_code	SMS code chu a dik lo emaw a hun a tawp tawh.
-acct_err_no_account	He e-mail hian akaunt a nei lo. Thar siam turin chhunzawm la, emaw kawng dang hmang rawh.
+acct_err_no_account	He e-mail hian akaunt a nei lo. Thar siam turin chhunzawm rawh, emaw kawng dang hmang rawh.
 acct_err_recent_login	Himna atan lut leh la, chumi hnuah he danglamna hi ti leh rawh.
 acct_err_credential_in_use	He luh kawng hi akaunt dangin a hmang tawh.
 acct_err_email_in_use	He e-mail hi akaunt dangin a hmang tawh.
 acct_err_already_linked	He kawng hi he akaunt-ah hian zawm a ni tawh.
 acct_err_exists_other_method	He e-mail hian luh kawng dang hmangin akaunt a nei tawh. A hmasain chu kawng chuan lut la, chumi hnuah i akaunt phek aṭangin hei hi zawm rawh.
-acct_err_generic	Engemaw a diklo.
+acct_err_generic	Engemaw a dik lo.
 acct_method_password	E-mail leh thuruk
 acct_pw_hint_change	I thuruk thlak rawh. Tun thuruk hmangin i finfiah ang.
 acct_pw_hint_add	E-mail hmanga i luh theih nan thuruk belh rawh (provider pakhat a awm loh chuan a ṭangkai).
@@ -216,10 +216,10 @@ shop_included	A tel
 shop_in_cart	{plan} chu i leina bawmah a awm.
 shop_remove	Paih rawh
 shop_cart_is_empty	Leina bawm a ruak.
-shop_prices_unpublished	He thil atan hian mahni leina man a la tichhuak lo. Duh ang man chhut dil la emaw a hnuah en leh rawh.
+shop_prices_unpublished	He thil siam atan hian mahni leina man a la tichhuak lo. Duh ang man chhut dil rawh, emaw a hnuah en leh rawh.
 shop_cart_cleared	Leina bawm thai fai a ni.
 plan_free_title	Chatuanin a man lovin
-plan_free_blurb	I hmanruaah local thil pum. Cloud man a awm lo.
+plan_free_blurb	I hmanruaah local thil siam pum. Cloud man a awm lo.
 plan_steady_blurb	Live cloud · 10 GB · bandwidth hniam
 plan_swift_blurb	Live cloud · 25 GB · bandwidth lai
 plan_priority_blurb	Live cloud · 50 GB · bandwidth sang ber

@@ -32,7 +32,7 @@ today_s_sale_due	+ اَزٕچ فروخت (بقایا)
 balance	باقی رقم
 settle_later_in_parties_part	پتہٕ پارٹی منٛز حساب کٔرِو — کینٛہہ نَقَد، کینٛہہ UPI، کھاتہ صاف۔
 due_on_the_bill	بِلس پیٹھ بقایا
-what_s_left_goes_on	یُس باقی روزِ، سُہ چھُ گاہکہٕ سٕنٛدِس کھاتس پیٹھ گژھان — الگ لیجر ایپُک ضرورت چھُنہٕ۔
+what_s_left_goes_on	یُس باقی روزِ، سُہ چھُ گاہکہٕ سٕنٛدِس کھاتس پیٹھ گژھان — الگ لیجر ایپٕچ ضرورت چھےٚ نہٕ۔
 one_party_two_roles	اکھ پارٹی، زٕ کردار
 customer_ar_and_supplier_ap	گاہکہٕ نِش ہیٚنہٕ لایق (AR) تہٕ سپلائرس دِنہٕ لایق (AP) چھِ اَکِسٕے پارٹی کھاتس منٛز۔
 who_when_how_much	کُس، کَر، کوتاہ
@@ -46,7 +46,7 @@ resale_stock_not_kitchen_raw	دوبارٕ کِنہٕ خٲطرٕ سٹاک — ک�
 buy_creates_stock	خٔریٖد چھےٚ سٹاک بناوان
 receive_the_goods_the_catalogue	مال رٹِو؛ کیٹلاگٕچ مقدار چھےٚ ہُران۔
 who_we_owe	اَسہِ کٔمِس دِنہٕ چھُ
-supplier_balance_sits_on_the	سپلائرُک بقایا چھُ تَتھٕے پارٹی پیٹھ روزان یَتہِ گاہکُک کھاتہ۔
+supplier_balance_sits_on_the	سپلائرٕ سُند بقایا چھُ تَتھٕے پارٹی پیٹھ روزان یَتھ پیٹھ گاہکہٕ سُند کھاتہ چھُ۔
 low_stock_at_a_glance	اَکہِ نظرِ منٛز کم سٹاک
 inventory_shows_what_is_running	انوینٹری چھےٚ اگلِس رَشس برونٹھ ہاوان کیاہ چھُ ختم گژھان۔
 n_5_day_book	5 · دۄہُک کھاتہ
@@ -72,7 +72,7 @@ router_no_internet	راؤٹر: انٹرنیٹ چھُنہٕ
 main_counter_selling_and_settling	مین کاؤنٹر: فروخت تہٕ حساب جاری
 second_till_joined_on_your	دوٚیُم بِلنگ کاؤنٹر: تُہٕندِس پنٕنِس Wi-Fi پیٹھ جُڑِتھ
 books_live_on_the_shop	کھاتہٕ چھِ دُکانہِ ہٕندِس ڈیوائسس پیٹھ روزان
-when_the_internet_drops_mid	ییلہِ رَشس منٛز انٹرنیٹ گژھِ، کاؤنٹرس پیٹھ چھُنہٕ کینٛہہ تہِ تٔمِس انتظار کران۔
+when_the_internet_drops_mid	ییلہِ رَشس منٛز انٹرنیٹ گژھِ، کاؤنٹرس پیٹھ چھُنہٕ کینٛہہ تہِ تٔمیُک انتظار کران۔
 one_server_lan_clients	اکھ سرور، LAN کلائنٹ
 extra_tills_share_the_same	اضافی بِلنگ کاؤنٹر چھِ دُکانہِ ہٕندِس نیٹ ورکس پیٹھ سُے کھاتہٕ شیئر کران۔
 n_7_free_forever_locally	7 · مُقٲمی طور ہمیشہ مُفت
@@ -85,7 +85,7 @@ optional_kumkaj_cloud	اختیاری Kumkaj Cloud
 yearly_steady_6k_swift_12k	سالانہ Steady ₹6k · Swift ₹12k · Priority ₹24k، ٹیکس ورٲے (یا کسٹم کوٹیشن)۔ /shop پیٹھ خرید کٔرِو۔
 n_8_start	8 · شروع کٔرِو
 put_kirano_on_the_counter	Kirano کاؤنٹرس پیٹھ لٲگِو۔
-download_free_or_whatsapp_for	مُفت ڈاؤن لوڈ کٔرِو، یا پنٕنِس دُکانہِ ہٕنز قسم تہٕ شہر وَنِتھ ڈیمو خٲطرٕ WhatsApp کٔرِو۔
+download_free_or_whatsapp_for	مُفت ڈاؤن لوڈ کٔرِو، یا پنٕنہِ دُکانہِ ہٕنز قسم تہٕ شہر وَنِتھ ڈیمو خٲطرٕ WhatsApp کٔرِو۔
 privacy	رازداری
 terms	شرٲیط
 cancellation	منسوخی
@@ -114,9 +114,9 @@ acct_lede	سایٹ تہٕ ایپن خٲطرٕ اکھ اکاؤنٹ — نوٚو �
 acct_email	ای میل
 acct_name_optional	ناو (اختیاری)
 acct_password	پاس ورڈ
-acct_continue	جاری
+acct_continue	جاری تھٲوِو
 acct_forgot	پاس ورڈ مَشِتھ گوو؟
-acct_reset_hint	ٲسۍ سوزَو ای میلہِ پیٹھ ری سیٹ لِنک۔ سُے پتہٕ استعمال کٔرِو یَتھ سٟتۍ توٚہۍ سائن اپ کوٚر۔
+acct_reset_hint	ٲسۍ سوزَو ای میلہِ پیٹھ ری سیٹ لِنک۔ سُے پتہٕ استعمال کٔرِو یَتھ سٟتۍ تۄہہِ سائن اپ کوٚر۔
 acct_send_reset	ری سیٹ لِنک سوزِو
 acct_cancel	منسوخ
 acct_or_continue	یا اَتھ سٟتۍ جاری تھٲوِو
@@ -162,17 +162,17 @@ acct_err_wrong_password	غلط پاس ورڈ۔
 acct_err_invalid_credential	ای میل یا پاس ورڈ چھُ غلط۔
 acct_err_popup_closed	سائن اِن وِنڈو گیہِ بند۔
 acct_err_popup_cancelled	سائن اِن گوو منسوخ۔
-acct_err_unauthorized_domain	یہ ڈومین چھُنہٕ Firebase Auth خٲطرٕ مجاز۔
-acct_err_method_disabled	یہ سائن اِن طریقہٕ چھُنہٕ وۄنہِ تام فعال۔
+acct_err_unauthorized_domain	یہِ ڈومین چھُنہٕ Firebase Auth خٲطرٕ مجاز۔
+acct_err_method_disabled	یہِ سائن اِن طریقہٕ چھُنہٕ وۄنہِ تام فعال۔
 acct_err_too_many	واریاہ کوشش۔ پتہٕ دوبارٕ کوشش کٔرِو۔
 acct_err_phone_format	مُلکہٕ کوڈ سٟتۍ پوٗرٕ فون نمبر استعمال کٔرِو (مثلاً +91…)۔
-acct_err_sms_code	یہ SMS کوڈ چھُ غلط یا میعاد ختم۔
+acct_err_sms_code	یہِ SMS کوڈ چھُ غلط یا میعاد ختم۔
 acct_err_no_account	یَتھ ای میلہِ سٟتۍ چھُنہٕ کانٛہہ اکاؤنٹ۔ نوٚو بناونہٕ خٲطرٕ جاری تھٲوِو، یا بیٚیہِ طریقہٕ استعمال کٔرِو۔
-acct_err_recent_login	حفاظتہٕ خٲطرٕ دوبارٕ سائن اِن کٔرِو، پتہٕ یہ تبدیلی دوبارٕ کٔرِو۔
-acct_err_credential_in_use	یہ سائن اِن طریقہٕ چھُ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
-acct_err_email_in_use	یہ ای میل چھےٚ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
-acct_err_already_linked	یہ طریقہٕ چھُ برونٹھٕے یَتھ اکاؤنٹس سٟتۍ جُڑِتھ۔
-acct_err_exists_other_method	یَتھ ای میلہِ سٟتۍ چھُ برونٹھٕے بیٚیِس سائن اِن طریقس سٟتۍ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تَتھ طریقس سٟتۍ سائن اِن، پتہٕ جوڑِو یہ پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
+acct_err_recent_login	حفاظتہٕ خٲطرٕ دوبارٕ سائن اِن کٔرِو، پتہٕ یہِ تبدیلی دوبارٕ کٔرِو۔
+acct_err_credential_in_use	یہِ سائن اِن طریقہٕ چھُ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
+acct_err_email_in_use	یہِ ای میل چھےٚ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
+acct_err_already_linked	یہِ طریقہٕ چھُ برونٹھٕے یَتھ اکاؤنٹس سٟتۍ جُڑِتھ۔
+acct_err_exists_other_method	یَتھ ای میلہِ سٟتۍ چھُ برونٹھٕے بیٚیِس سائن اِن طریقس سٟتۍ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تَتھ طریقس سٟتۍ سائن اِن، پتہٕ جوڑِو یہِ پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
 acct_err_generic	کینٛہہ گوو غلط۔
 acct_method_password	ای میل تہٕ پاس ورڈ
 acct_pw_hint_change	پنُن پاس ورڈ بدلٲوِو۔ تصدیق گژھِ موجودٕ پاس ورڈٕ سٟتۍ۔
@@ -201,7 +201,7 @@ acct_signed_in_status	توٚہۍ چھِو سائن اِن۔
 acct_created	اکاؤنٹ بنیوو۔ ییلہِ ہیٚکِو، تصدیق خٲطرٕ پنٕنۍ ای میل وُچھِو۔
 acct_reset_sent	اگر یَتھ ای میلہِ ہُند اکاؤنٹ چھُ، تیلہِ چھُ ری سیٹ لِنک وَتہِ پیٹھ۔ پنُن اِن باکس وُچھِو۔
 acct_another_method	بیٚیہِ طریقہٕ
-acct_exists_via	{email} خٲطرٕ چھُ برونٹھٕے {method} ذریعہٕ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تِتھہٕ پٲٹھۍ سائن اِن، پتہٕ جوڑِو یہ پرووائیڈر پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
+acct_exists_via	{email} خٲطرٕ چھُ برونٹھٕے {method} ذریعہٕ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تِتھہٕ پٲٹھۍ سائن اِن، پتہٕ جوڑِو یہِ پرووائیڈر پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
 acct_enter_current_pw	پنُن موجودٕ پاس ورڈ دِیِو۔
 acct_relogin_retry	سائن آؤٹ کٔرِتھ دوبارٕ سائن اِن کٔرِو، پتہٕ دوبارٕ کوشش کٔرِو۔
 acct_pw_mismatch	نوٚو پاس ورڈ تہٕ تصدیق چھِ نہٕ میلان۔
@@ -210,7 +210,7 @@ acct_enter_email_pw	پاس ورڈ سائن اِن خٲطرٕ اکھ ای میل 
 acct_pw_added	پاس ورڈ گوو شٲمِل۔ وۄنہٕ ہیٚکِو ای میلہِ سٟتۍ تہِ سائن اِن کٔرِتھ۔
 acct_method_linked	سائن اِن طریقہٕ گوو جُڑِتھ۔
 acct_phone_linked	فون گوو یَتھ اکاؤنٹس سٟتۍ جُڑِتھ۔
-acct_verify_sent	تصدیقی ای میل گیہِ سوزنہٕ — پنُن اِن باکس وُچھِو۔
+acct_verify_sent	تصدیقی ای میل آیہِ سوزنہٕ — پنُن اِن باکس وُچھِو۔
 shop_pricing_soon	قیمت یِیہِ جلدٕے
 shop_request_quote	کوٹیشن مَنٛگِو
 shop_add_to_cart	کارٹس منٛز شٲمِل کٔرِو

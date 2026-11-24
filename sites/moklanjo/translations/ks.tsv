@@ -6,7 +6,7 @@ whatsapp_for_a_demo	ڈیمو خٲطرٕ WhatsApp کٔرِو
 free_on_android_windows_and	Android، Windows تہٕ Linux پیٹھ مُفت۔
 courier_operating_system	کورئیر آپریٹنگ سِسٹم
 parcel_journey	پارسلُک سفر
-walk_in	واک اِن
+walk_in	کاؤنٹرس پیٹھ
 weigh	وزن
 price	قیمت
 label	لیبل
@@ -17,12 +17,12 @@ start	شروع کٔرِو
 moklanjo_courier_operating_system	MOKLANJO · کورئیر آپریٹنگ سِسٹم
 book_move_and_settle_every	پرٛتھ پارسل بُک کٔرِو، سوزِو تہٕ حساب کٔرِو — تُہٕندِس پنٕنِس ڈیوائسس پیٹھ اکھ کورئیر OS۔
 parties_books_cod_labels_awb	پارٹی، کھاتہٕ، COD، لیبل، AWB پول، ٹریکنگ، رائیڈر تہٕ بِلنگ — کاؤنٹرٕ پیٹھٕ حسابس تام پوٗرٕ چکر، انٹرنیٹ آسِ یا نہٕ۔ تُہٕندِس ڈیوائسس پیٹھ مُفت۔
-the_walk_in_loop	واک اِنُک چکر
+the_walk_in_loop	کاؤنٹرُک چکر
 actual_and_volumetric_side_by	اصلی تہٕ والیومیٹرک، سٟتۍ سٟتۍ۔
 charge	چارج
 your_rate_card_cash_or	تُہُند ریٹ کارڈ، نَقَد یا کھاتہ۔
 next_booking	اگلۍ بُکنگ
-one_tap_clears_the_counter	اَکہِ ٹیپہٕ سٟتۍ چھُ کاؤنٹر اگلِس واک اِنس خٲطرٕ خٲلی گژھان۔
+one_tap_clears_the_counter	اَکہِ ٹیپہٕ سٟتۍ چھُ کاؤنٹر اگلِس گاہکَس خٲطرٕ خٲلی گژھان۔
 scroll_the_parcel_journey_rail	سکرول کٔرِو — پیٹھِم پارسل سفرٕچ پٹی چھےٚ ہاوان کہانی منٛز توٚہۍ کَتہِ چھِو۔
 n_2_weigh_it_right	2 · ٹھیک وزن کٔرِو
 actual_or_volumetric_whichever_is	اصلی یا والیومیٹرک — یُس زیادٕ آسِ، تُہٕندِس طریقس مطابق راؤنڈ۔
@@ -33,9 +33,9 @@ breadth	چوڑٲے
 height	اونچٲے
 weight_on_the_scale	ترازِ پیٹھ وزن
 chargeable_weight	چارج لایق وزن
-the_box_s_size_sets	ڈَبس ہُند سایز چھُ چارج طے کران۔
+the_box_s_size_sets	ڈَبُک سایز چھُ چارج طے کران۔
 higher_of_the_two_rounded	دۄن منٛزٕ یُس زیادٕ، اگلِس 0.5 kg تام ہُرٲوِتھ۔
-in_the_app_the_divisor	ایپس منٛز چھُ تقسیم کار، راؤنڈ کرنُک قدم تہٕ تُہٕنٛدۍ یونِٹ (cm یا اِنچ، kg یا lb) دُکان پانے طے کران۔ بین الاقوامی چِپ چھُ سیٹنگ چھیٚنہٕ ورٲے اَکہِ بُکنگہِ خٲطرٕ ÷6000 کران۔
+in_the_app_the_divisor	ایپس منٛز چھےٚ قٲسِم، راؤنڈ کرنُک قدم تہٕ تُہٕنٛدۍ یونِٹ (cm یا اِنچ، kg یا lb) دُکان پانے طے کران۔ بین الاقوامی چِپ چھُ سیٹنگ بدلاونہٕ ورٲے اَکہِ بُکنگہِ خٲطرٕ ÷6000 لاگو کران۔
 n_3_price_it	3 · قیمت طے کٔرِو
 your_rate_cards_your_party	تُہٕنٛدۍ ریٹ کارڈ، تُہٕنٛدۍ پارٹی ریٹ — تہٕ پرٛتھ ڈاکٹس پیٹھ تُہُند مارجن۔
 rate_card	ریٹ کارڈ
@@ -61,7 +61,7 @@ scan_to_find	ژھانڈنہٕ خٲطرٕ سکین کٔرِو
 scan_a_label_to_open	لیبل سکین کٔرِتھ کھولِو تٔمیُک ڈاکٹ تہٕ کٔرِو کارروٲیی۔
 n_5_hand_over	5 · حوالہٕ
 hand_it_to_a_carrier	کیرِیرَس حوالہٕ کٔرِو، یا پنُن رائیڈر سوزِو۔ سُے سِسٹم۔
-into_a_carrier_bag	کیرِیرٕچ بیگس منٛز
+into_a_carrier_bag	کیرِیرٕکِس بیگس منٛز
 the_manifest_holds_exactly_the	مینی فیسٹس منٛز چھِ صِرف تِم پارسل یِم توٚہۍ ژٲرِو — سارٕے، یا کانٛہہ نہٕ۔ بیٚیِس کیرِیرَس سٟتۍ بُک گومُت پارسل ہیٚکہِ نہٕ یَتھ بیگس منٛز اَژِتھ۔
 onto_your_own_rider_s	پنٕنِس رائیڈرٕ سٕنٛدِس چکرس پیٹھ
 pick_the_parcels_print_the	پارسل ژٲرِو، رن شیٹ چھٲپِو، تہٕ رائیڈر چھُ سُے ایپ رائیڈر موڈس منٛز استعمال کران — ڈلیوری ثبوت سمیت۔
@@ -73,7 +73,7 @@ out_for_delivery	ڈلیوری خٲطرٕ نیبر
 delivered	واتنۆو
 booked_with_carrier_out_for	بُک گۆو ← کیرِیرَس نِش ← ڈلیوری خٲطرٕ نیبر ← واتنۆو
 failed	ناکام
-reason_out_again_or_return	← وجہ ← دوبارٕ نیبر، یا سوزَن وولَس واپس کٔرِو۔
+reason_out_again_or_return	← وجہ ← دوبارٕ نیبر، یا سوزَن وٲلِس واپس کٔرِو۔
 impossible_moves_refused	ناممکن قدم نامنظوٗر
 delivered_returned_and_cancelled	واتنۆو، واپس تہٕ منسوخ — یِم چھِ آخری۔
 proof_of_delivery	ڈلیوری ثبوت
@@ -82,7 +82,7 @@ failed_deliveries	ناکام ڈلیوری
 reasons_attempts_out_again_or	وجہ، کوشش، دوبارٕ نیبر، یا سوزَن وٲلِس واپس۔
 n_7_money_comes_home	7 · پٲنسہٕ چھِ گرٕ واپس یِوان
 cod_you_can_see_expected	COD یُس وُچھِتھ ہیٚکِو: متوقع، جمع، پرٛتھ سوزَن وٲلِس دِنہٕ لایق۔
-rider_cash_end_of_run	چکرٕ آخرس پیٹھ رائیڈرٕچ نَقدی
+rider_cash_end_of_run	چکرٕ آخرس پیٹھ رائیڈرٕ سٕنٛز نَقدی
 rider	رائیڈر
 expected	متوقع
 handed_in	جمع
@@ -97,7 +97,7 @@ books_that_close	کھاتہٕ یِم بند گژھان چھِ
 day_book_month_bill_per	دۄہُک کھاتہ، پرٛتھ اکاؤنٹُک ریتہٕ وار بِل، تہٕ تُہٕندِس اکاؤنٹنٹس خٲطرٕ GST خلاصہٕ CSV۔
 n_8_internet_down	8 · انٹرنیٹ بند؟
 keep_booking	بُکنگ جاری تھٲوِو۔
-booking_labels_scanning_cod_and	بُکنگ، لیبل، سکیننگ، COD تہٕ کھاتہٕ — سورُے چھُ تُہٕندِس ڈیوائسس پیٹھ چلان۔ ییلہِ انٹرنیٹ گژھِ، کاؤنٹرس پیٹھ چھُنہٕ کینٛہہ تہِ تٔمِس انتظار کران۔
+booking_labels_scanning_cod_and	بُکنگ، لیبل، سکیننگ، COD تہٕ کھاتہٕ — سورُے چھُ تُہٕندِس ڈیوائسس پیٹھ چلان۔ ییلہِ انٹرنیٹ گژھِ، کاؤنٹرس پیٹھ چھُنہٕ کینٛہہ تہِ تٔمیُک انتظار کران۔
 office_router_no_internet	دفترُک راؤٹر: انٹرنیٹ چھُنہٕ
 desk_still_booking	ڈیسک: بُکنگ جاری
 second_counter_and_rider_phone	دوٚیُم کاؤنٹر تہٕ رائیڈرُن فون: دفترٕکِس Wi-Fi پیٹھ جُڑِتھ
@@ -138,9 +138,9 @@ acct_lede	سایٹ تہٕ ایپن خٲطرٕ اکھ اکاؤنٹ — نوٚو �
 acct_email	ای میل
 acct_name_optional	ناو (اختیاری)
 acct_password	پاس ورڈ
-acct_continue	جاری
+acct_continue	جاری تھٲوِو
 acct_forgot	پاس ورڈ مَشِتھ گوو؟
-acct_reset_hint	ٲسۍ سوزَو ای میلہِ پیٹھ ری سیٹ لِنک۔ سُے پتہٕ استعمال کٔرِو یَتھ سٟتۍ توٚہۍ سائن اپ کوٚر۔
+acct_reset_hint	ٲسۍ سوزَو ای میلہِ پیٹھ ری سیٹ لِنک۔ سُے پتہٕ استعمال کٔرِو یَتھ سٟتۍ تۄہہِ سائن اپ کوٚر۔
 acct_send_reset	ری سیٹ لِنک سوزِو
 acct_cancel	منسوخ
 acct_or_continue	یا اَتھ سٟتۍ جاری تھٲوِو
@@ -186,17 +186,17 @@ acct_err_wrong_password	غلط پاس ورڈ۔
 acct_err_invalid_credential	ای میل یا پاس ورڈ چھُ غلط۔
 acct_err_popup_closed	سائن اِن وِنڈو گیہِ بند۔
 acct_err_popup_cancelled	سائن اِن گوو منسوخ۔
-acct_err_unauthorized_domain	یہ ڈومین چھُنہٕ Firebase Auth خٲطرٕ مجاز۔
-acct_err_method_disabled	یہ سائن اِن طریقہٕ چھُنہٕ وۄنہِ تام فعال۔
+acct_err_unauthorized_domain	یہِ ڈومین چھُنہٕ Firebase Auth خٲطرٕ مجاز۔
+acct_err_method_disabled	یہِ سائن اِن طریقہٕ چھُنہٕ وۄنہِ تام فعال۔
 acct_err_too_many	واریاہ کوشش۔ پتہٕ دوبارٕ کوشش کٔرِو۔
 acct_err_phone_format	مُلکہٕ کوڈ سٟتۍ پوٗرٕ فون نمبر استعمال کٔرِو (مثلاً +91…)۔
-acct_err_sms_code	یہ SMS کوڈ چھُ غلط یا میعاد ختم۔
+acct_err_sms_code	یہِ SMS کوڈ چھُ غلط یا میعاد ختم۔
 acct_err_no_account	یَتھ ای میلہِ سٟتۍ چھُنہٕ کانٛہہ اکاؤنٹ۔ نوٚو بناونہٕ خٲطرٕ جاری تھٲوِو، یا بیٚیہِ طریقہٕ استعمال کٔرِو۔
-acct_err_recent_login	حفاظتہٕ خٲطرٕ دوبارٕ سائن اِن کٔرِو، پتہٕ یہ تبدیلی دوبارٕ کٔرِو۔
-acct_err_credential_in_use	یہ سائن اِن طریقہٕ چھُ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
-acct_err_email_in_use	یہ ای میل چھےٚ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
-acct_err_already_linked	یہ طریقہٕ چھُ برونٹھٕے یَتھ اکاؤنٹس سٟتۍ جُڑِتھ۔
-acct_err_exists_other_method	یَتھ ای میلہِ سٟتۍ چھُ برونٹھٕے بیٚیِس سائن اِن طریقس سٟتۍ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تَتھ طریقس سٟتۍ سائن اِن، پتہٕ جوڑِو یہ پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
+acct_err_recent_login	حفاظتہٕ خٲطرٕ دوبارٕ سائن اِن کٔرِو، پتہٕ یہِ تبدیلی دوبارٕ کٔرِو۔
+acct_err_credential_in_use	یہِ سائن اِن طریقہٕ چھُ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
+acct_err_email_in_use	یہِ ای میل چھےٚ برونٹھٕے بیٚیِس اکاؤنٹس منٛز استعمال گژھان۔
+acct_err_already_linked	یہِ طریقہٕ چھُ برونٹھٕے یَتھ اکاؤنٹس سٟتۍ جُڑِتھ۔
+acct_err_exists_other_method	یَتھ ای میلہِ سٟتۍ چھُ برونٹھٕے بیٚیِس سائن اِن طریقس سٟتۍ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تَتھ طریقس سٟتۍ سائن اِن، پتہٕ جوڑِو یہِ پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
 acct_err_generic	کینٛہہ گوو غلط۔
 acct_method_password	ای میل تہٕ پاس ورڈ
 acct_pw_hint_change	پنُن پاس ورڈ بدلٲوِو۔ تصدیق گژھِ موجودٕ پاس ورڈٕ سٟتۍ۔
@@ -225,7 +225,7 @@ acct_signed_in_status	توٚہۍ چھِو سائن اِن۔
 acct_created	اکاؤنٹ بنیوو۔ ییلہِ ہیٚکِو، تصدیق خٲطرٕ پنٕنۍ ای میل وُچھِو۔
 acct_reset_sent	اگر یَتھ ای میلہِ ہُند اکاؤنٹ چھُ، تیلہِ چھُ ری سیٹ لِنک وَتہِ پیٹھ۔ پنُن اِن باکس وُچھِو۔
 acct_another_method	بیٚیہِ طریقہٕ
-acct_exists_via	{email} خٲطرٕ چھُ برونٹھٕے {method} ذریعہٕ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تِتھہٕ پٲٹھۍ سائن اِن، پتہٕ جوڑِو یہ پرووائیڈر پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
+acct_exists_via	{email} خٲطرٕ چھُ برونٹھٕے {method} ذریعہٕ اکھ اکاؤنٹ۔ گۄڈٕ کٔرِو تِتھہٕ پٲٹھۍ سائن اِن، پتہٕ جوڑِو یہِ پرووائیڈر پنٕنِس اکاؤنٹ صفحس پیٹھٕ۔
 acct_enter_current_pw	پنُن موجودٕ پاس ورڈ دِیِو۔
 acct_relogin_retry	سائن آؤٹ کٔرِتھ دوبارٕ سائن اِن کٔرِو، پتہٕ دوبارٕ کوشش کٔرِو۔
 acct_pw_mismatch	نوٚو پاس ورڈ تہٕ تصدیق چھِ نہٕ میلان۔
@@ -234,7 +234,7 @@ acct_enter_email_pw	پاس ورڈ سائن اِن خٲطرٕ اکھ ای میل 
 acct_pw_added	پاس ورڈ گوو شٲمِل۔ وۄنہٕ ہیٚکِو ای میلہِ سٟتۍ تہِ سائن اِن کٔرِتھ۔
 acct_method_linked	سائن اِن طریقہٕ گوو جُڑِتھ۔
 acct_phone_linked	فون گوو یَتھ اکاؤنٹس سٟتۍ جُڑِتھ۔
-acct_verify_sent	تصدیقی ای میل گیہِ سوزنہٕ — پنُن اِن باکس وُچھِو۔
+acct_verify_sent	تصدیقی ای میل آیہِ سوزنہٕ — پنُن اِن باکس وُچھِو۔
 shop_pricing_soon	قیمت یِیہِ جلدٕے
 shop_request_quote	کوٹیشن مَنٛگِو
 shop_add_to_cart	کارٹس منٛز شٲمِل کٔرِو

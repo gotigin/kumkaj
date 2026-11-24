@@ -1,5 +1,5 @@
 # Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	ᱫᱮᱠᱷᱟᱣ
+example	ᱫᱟᱹᱭᱠᱟᱹ
 download_free	ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ ᱰᱟᱣᱩᱱᱞᱳᱰ ᱢᱮ
 whatsapp_for_a_demo	ᱰᱮᱢᱚ ᱞᱟᱹᱜᱤᱫ WhatsApp ᱢᱮ
 free_on_android_windows_and	Android, Windows ᱟᱨ Linux ᱨᱮ ᱜᱚᱱᱚᱝ ᱵᱮᱜᱚᱨ᱾
@@ -7,17 +7,17 @@ the_pharmacy_counter	ᱯᱷᱟᱨᱢᱮᱥᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ
 pharmacy_counter	ᱯᱷᱟᱨᱢᱮᱥᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ
 tabiyat_the_pharmacy_counter	TABIYAT · ᱯᱷᱟᱨᱢᱮᱥᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ
 pharmacy_counter_offline_your_books	ᱯᱷᱟᱨᱢᱮᱥᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ᱾ ᱚᱯᱷᱞᱟᱭᱤᱱ᱾ ᱟᱢᱟᱜ ᱦᱤᱥᱟᱹᱵ ᱯᱚᱛᱚᱵ᱾
-medicines_barcode_and_salt_search	ᱨᱟᱱ ᱠᱚ, ᱵᱟᱨᱠᱳᱰ ᱟᱨ ᱥᱚᱞᱴ ᱛᱮ ᱥᱮᱸᱫᱽᱨᱟ, ᱟᱢᱟᱜ ᱦᱤᱥᱟᱹᱵ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱪ ᱟᱨ ᱢᱤᱭᱟᱫ — ᱟᱢᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ᱾ ᱢᱟᱞᱤᱠ ᱨᱮᱭᱟᱜ ᱪᱤᱱᱦᱟᱹ ᱜᱮ; ᱰᱨᱟᱜᱥ ᱮᱠᱴ ᱢᱟᱱᱟᱣ ᱨᱮᱭᱟᱜ ᱠᱷᱟᱞᱟᱥ ᱫᱟᱵᱤ ᱠᱚᱵᱷᱤ ᱦᱚᱸ ᱵᱟᱝ᱾
+medicines_barcode_and_salt_search	ᱨᱟᱱ ᱠᱚ, ᱵᱟᱨᱠᱳᱰ ᱟᱨ ᱥᱚᱞᱴ ᱛᱮ ᱥᱮᱸᱫᱽᱨᱟ, ᱟᱢᱟᱜ ᱦᱤᱥᱟᱹᱵ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱪ ᱟᱨ ᱢᱤᱭᱟᱫ — ᱟᱢᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ᱾ ᱢᱟᱞᱤᱠ ᱨᱮᱭᱟᱜ ᱪᱤᱱᱦᱟᱹ ᱜᱮ; ᱰᱨᱟᱜᱥ ᱮᱠᱴ ᱢᱟᱱᱟᱣ ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ ᱫᱟᱵᱤ ᱠᱚᱵᱷᱤ ᱦᱚᱸ ᱵᱟᱝ᱾
 tap_the_bill_to_walk	ᱠᱟᱣᱩᱱᱴᱟᱨ ᱟᱠᱷᱨᱤᱧ ᱧᱮᱞ ᱞᱟᱹᱜᱤᱫ ᱵᱤᱞ ᱨᱮ ᱴᱤᱯ ᱢᱮ
 cash_memo	ᱠᱮᱥ ᱢᱮᱢᱚ
 ready	ᱛᱮᱭᱟᱨ
 total	ᱢᱩᱴ
 tap_to_add_the_first	ᱯᱟᱹᱦᱤᱞ ᱨᱟᱱ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱴᱤᱯ ᱢᱮ
-example_pharmacy_lines_not_a	ᱫᱮᱠᱷᱟᱣ ᱯᱷᱟᱨᱢᱮᱥᱤ ᱞᱟᱭᱤᱱ, ᱥᱟᱹᱨᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱫᱚ ᱵᱟᱝ᱾ Tabiyat ᱚᱱᱟ ᱜᱮ ᱦᱚᱨ ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ: ᱟᱠᱷᱨᱤᱧ → ᱦᱤᱥᱟᱹᱵ → ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ᱾
+example_pharmacy_lines_not_a	ᱫᱟᱹᱭᱠᱟᱹ ᱯᱷᱟᱨᱢᱮᱥᱤ ᱞᱟᱭᱤᱱ, ᱥᱟᱹᱨᱤ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱫᱚ ᱵᱟᱝ᱾ Tabiyat ᱚᱱᱟ ᱜᱮ ᱦᱚᱨ ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ: ᱟᱠᱷᱨᱤᱧ → ᱦᱤᱥᱟᱹᱵ → ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ᱾
 n_2_counter_sell	2 · ᱠᱟᱣᱩᱱᱴᱟᱨ ᱟᱠᱷᱨᱤᱧ
 medicine_quantity_pay_three_taps	ᱨᱟᱱ, ᱯᱚᱨᱤᱢᱟᱱ, ᱴᱟᱠᱟ ᱮᱢ — ᱯᱮ ᱴᱤᱯ᱾
 upi_qr_ready	UPI QR ᱛᱮᱭᱟᱨ
-example_bill	ᱫᱮᱠᱷᱟᱣ ᱵᱤᱞ
+example_bill	ᱫᱟᱹᱭᱠᱟᱹ ᱵᱤᱞ
 fast_counter_billing	ᱞᱚᱜᱚᱱ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱵᱤᱞᱤᱝ
 add_the_line_set_the	ᱞᱟᱭᱤᱱ ᱥᱮᱞᱮᱫ ᱢᱮ, ᱯᱚᱨᱤᱢᱟᱱ ᱚᱞ ᱢᱮ, ᱦᱤᱥᱟᱹᱵ ᱢᱮ — ᱴᱟᱠᱟ, UPI ᱥᱮ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ᱾
 gst_tax_invoice_or_cash	GST ᱴᱮᱠᱥ ᱤᱱᱵᱷᱚᱭᱮᱥ ᱥᱮ ᱠᱮᱥ ᱢᱮᱢᱚ
@@ -56,9 +56,9 @@ mehta_clinic_customer	Mehta Clinic · ᱜᱨᱟᱦᱟᱠ
 due_from_earlier	ᱢᱟᱲᱟᱝ ᱨᱮᱭᱟᱜ ᱵᱟᱠᱤ
 today_s_sale_due	+ ᱛᱮᱦᱮᱧ ᱨᱮᱭᱟᱜ ᱟᱠᱷᱨᱤᱧ (ᱵᱟᱠᱤ)
 balance	ᱢᱩᱴ ᱵᱟᱠᱤ
-settle_later_part_cash_part	ᱛᱟᱭᱚᱢ ᱛᱮ ᱦᱤᱥᱟᱹᱵ ᱢᱮ — ᱛᱤᱱᱟᱹᱜ ᱴᱟᱠᱟ, ᱛᱤᱱᱟᱹᱜ UPI᱾ ᱥᱟᱯᱞᱟᱭᱚᱨ ᱨᱮᱭᱟᱜ AP ᱚᱱᱟ ᱜᱮ ᱯᱟᱨᱴᱤ ᱥᱠᱨᱤᱱ ᱨᱮ ᱛᱟᱦᱮᱸᱱᱟ᱾
+settle_later_part_cash_part	ᱛᱟᱭᱚᱢ ᱛᱮ ᱦᱤᱥᱟᱹᱵ ᱢᱮ — ᱦᱟᱹᱴᱤᱧ ᱴᱟᱠᱟ, ᱦᱟᱹᱴᱤᱧ UPI᱾ ᱥᱟᱯᱞᱟᱭᱚᱨ ᱨᱮᱭᱟᱜ AP ᱚᱱᱟ ᱜᱮ ᱯᱟᱨᱴᱤ ᱥᱠᱨᱤᱱ ᱨᱮ ᱛᱟᱦᱮᱸᱱᱟ᱾
 due_on_the_bill	ᱵᱤᱞ ᱨᱮ ᱵᱟᱠᱤ
-leave_a_balance_on_khata	ᱟᱞᱜᱟ ᱞᱮᱡᱟᱨ ᱮᱯ ᱵᱮᱜᱚᱨ ᱠᱷᱟᱛᱟ ᱨᱮ ᱵᱟᱠᱤ ᱫᱚᱦᱚ ᱢᱮ᱾
+leave_a_balance_on_khata	ᱡᱩᱫᱟᱹ ᱞᱮᱡᱟᱨ ᱮᱯ ᱵᱮᱜᱚᱨ ᱠᱷᱟᱛᱟ ᱨᱮ ᱵᱟᱠᱤ ᱫᱚᱦᱚ ᱢᱮ᱾
 supplier_buys_too	ᱥᱟᱯᱞᱟᱭᱚᱨ ᱴᱷᱮᱱ ᱠᱷᱚᱱ ᱠᱤᱨᱤᱧ ᱦᱚᱸ
 who_you_owe_updates_when	ᱥᱴᱚᱠ ᱦᱤᱡᱩᱜ ᱚᱠᱛᱚ ᱚᱠᱚᱭ ᱴᱷᱮᱱ ᱮᱢ ᱞᱟᱹᱠᱛᱤ ᱚᱱᱟ ᱱᱟᱶᱟ ᱦᱩᱭᱩᱜᱼᱟ᱾
 auditable	ᱡᱟᱹᱸᱪ ᱫᱟᱲᱮᱭᱟᱜ
@@ -97,15 +97,15 @@ chapter_offline	ᱚᱯᱷᱞᱟᱭᱤᱱ
 chapter_start	ᱮᱦᱚᱵ ᱢᱮ
 bill_selling	ᱟᱠᱷᱨᱤᱧ ᱪᱟᱞᱟᱜ ᱠᱟᱱᱟ
 bill_settle	ᱴᱟᱠᱟ ᱮᱢ
-bill_paid	ᱯᱮᱭᱰ
+bill_paid	ᱴᱟᱠᱟ ᱮᱢ ᱮᱱᱟ
 bill_next_line	ᱛᱟᱭᱚᱢ ᱞᱟᱭᱤᱱ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱴᱤᱯ ᱢᱮ
 bill_settle_hint	ᱴᱟᱠᱟ ᱮᱢ ᱞᱟᱹᱜᱤᱫ ᱴᱤᱯ ᱢᱮ — ᱴᱟᱠᱟ ᱥᱮ UPI
-bill_upi_paid	UPI ₹ 162 · ᱯᱮᱭᱰ
-bill_paid_line	ᱯᱮᱭᱰ · ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ ᱱᱟᱶᱟ ᱮᱱᱟ
+bill_upi_paid	UPI ₹ 162 · ᱮᱢ ᱮᱱᱟ
+bill_paid_line	ᱴᱟᱠᱟ ᱮᱢ ᱮᱱᱟ · ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ ᱱᱟᱶᱟ ᱮᱱᱟ
 lan_eyebrow	6 · ᱵᱟᱹᱲᱛᱤ ᱵᱤᱞᱤᱝ ᱠᱟᱣᱩᱱᱴᱟᱨ
 lan_title	ᱫᱚᱠᱟᱱ Wi-Fi ᱨᱮ ᱮᱴᱟᱜ ᱢᱤᱫᱴᱟᱹᱝ ᱵᱤᱞᱤᱝ ᱠᱟᱣᱩᱱᱴᱟᱨ᱾
 cta_installers_note	ᱡᱚᱛᱚ ᱤᱱᱥᱴᱚᱞᱟᱨ ᱥᱟᱯᱷᱟ ᱢᱮᱥᱤᱱ ᱨᱮ ᱤᱱᱥᱴᱚᱞ ᱡᱟᱹᱸᱪ ᱯᱟᱥ ᱛᱟᱭᱚᱢ ᱱᱚᱸᱰᱮ ᱦᱤᱡᱩᱜᱼᱟ᱾ ᱚᱱᱟ ᱦᱟᱹᱵᱤᱡ WhatsApp ᱨᱮ ᱰᱮᱢᱚ ᱟᱹᱨᱡᱤ ᱢᱮ᱾
-cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱽᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱶᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
+cta_whatsapp_soon	WhatsApp ᱰᱮᱢᱚ ᱞᱟᱭᱤᱱ ᱞᱚᱜᱚᱱ ᱡᱷᱤᱡᱚᱜᱼᱟ᱾ ᱟᱢᱟᱜ ᱠᱷᱚᱵᱚᱨ ᱱᱚᱣᱟ ᱞᱮᱠᱟ ᱛᱟᱦᱮᱸᱱᱟ: “{message}”᱾
 acct_page_title	ᱮᱠᱟᱣᱩᱱᱴ — Tabiyat
 acct_lede	ᱥᱟᱭᱤᱴ ᱟᱨ ᱮᱯ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱹᱝ ᱜᱮ ᱮᱠᱟᱣᱩᱱᱴ — ᱱᱟᱶᱟ ᱥᱮ ᱨᱩᱣᱟᱹᱲ ᱦᱤᱡᱩᱜ, ᱚᱱᱟ ᱜᱮ ᱯᱷᱚᱨᱢ᱾
 acct_email	ᱤᱢᱮᱞ
@@ -154,7 +154,7 @@ acct_billing_hint	ᱥᱮᱨᱢᱟ ᱥᱮᱨᱢᱟ ᱯᱞᱟᱱ — ᱪᱮᱠᱟ�
 shop_cloud_plans	ᱠᱞᱟᱣᱩᱰ ᱯᱞᱟᱱ ᱠᱚ
 acct_federated	ᱯᱷᱮᱰᱟᱨᱮᱴᱮᱰ ᱥᱟᱭᱤᱱ ᱤᱱ
 acct_err_invalid_email	ᱴᱷᱤᱠ ᱤᱢᱮᱞ ᱴᱷᱤᱠᱟᱹᱱᱟᱹ ᱚᱞ ᱢᱮ᱾
-acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱡᱚᱠᱷᱟ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
+acct_err_weak_password	ᱠᱚᱢ ᱠᱷᱚᱱ ᱠᱚᱢ 6 ᱟᱠᱷᱚᱨ ᱨᱮᱭᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾
 acct_err_wrong_password	ᱵᱷᱩᱞ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ᱾
 acct_err_invalid_credential	ᱤᱢᱮᱞ ᱥᱮ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱷᱩᱞ ᱢᱮᱱᱟᱜᱼᱟ᱾
 acct_err_popup_closed	ᱥᱟᱭᱤᱱ ᱤᱱ ᱣᱤᱱᱰᱚ ᱵᱚᱸᱫᱚ ᱮᱱᱟ᱾
@@ -173,7 +173,7 @@ acct_err_exists_other_method	ᱱᱚᱣᱟ ᱤᱢᱮᱞ ᱛᱮ ᱮᱴᱟᱜ ᱥ�
 acct_err_generic	ᱪᱮᱫ ᱦᱚᱸ ᱵᱷᱩᱞ ᱦᱩᱭᱮᱱᱟ᱾
 acct_method_password	ᱤᱢᱮᱞ ᱟᱨ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
 acct_pw_hint_change	ᱟᱢᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ᱾ ᱱᱤᱛᱚᱜᱟᱜ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱛᱮ ᱯᱚᱠᱟ ᱦᱩᱭᱩᱜᱼᱟ᱾
-acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
+acct_pw_hint_add	ᱤᱢᱮᱞ ᱛᱮ ᱦᱚᱸ ᱥᱟᱭᱤᱱ ᱤᱱ ᱫᱟᱲᱮ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱡᱩᱫᱤ ᱯᱨᱚᱵᱷᱟᱭᱤᱰᱟᱨ ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱷᱟᱱ ᱠᱟᱹᱢᱤ ᱨᱮ ᱦᱤᱡᱩᱜᱼᱟ)᱾
 acct_pw_change	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱵᱚᱫᱚᱞ ᱢᱮ
 acct_pw_add	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱥᱮᱞᱮᱫ ᱢᱮ
 acct_billing_off	ᱠᱞᱟᱣᱩᱰ API ᱨᱮ ᱵᱤᱞᱤᱝ ᱱᱤᱛᱚᱜ ᱦᱟᱹᱵᱤᱡ ᱵᱟᱝ ᱮᱦᱚᱵ ᱟᱠᱟᱱᱟ᱾

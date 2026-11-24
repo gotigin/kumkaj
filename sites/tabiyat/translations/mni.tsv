@@ -42,14 +42,14 @@ batch_and_expiry_on_your	ꯅꯍꯥꯛꯀꯤ ꯍꯤꯁꯥꯕꯇꯥ ꯕꯦꯆ ꯑ�
 buy_batch_a12	ꯂꯩꯕ · ꯕꯦꯆ A12
 expires_2027_03_alert_in	ꯃꯇꯝ ꯂꯣꯏꯕ 2027-03 · ꯅꯨꯃꯤꯠ 7 ꯗꯥ ꯆꯦꯀꯁꯤꯅꯍꯟꯕ
 ors_sachets_batch_b04	ORS ꯄꯦꯀꯦꯠ · ꯕꯦꯆ B04
-expires_2026_11_near_expiry	ꯃꯇꯝ ꯂꯣꯏꯕ 2026-11 · ꯍꯤꯁꯥꯕꯇꯥ ꯃꯇꯝ ꯂꯣꯏꯔꯛꯂꯤꯕꯒꯤ ꯄꯥꯇꯤ
+expires_2026_11_near_expiry	ꯃꯇꯝ ꯂꯣꯏꯕ 2026-11 · ꯍꯤꯁꯥꯕꯇꯥ ꯃꯇꯝ ꯂꯣꯏꯔꯛꯂꯤꯕꯒꯤ ꯆꯦꯀꯁꯤꯅꯍꯟꯕ
 shop_bookkeeping_only_not_drugs	ꯗꯨꯀꯥꯅꯒꯤ ꯍꯤꯁꯥꯕ ꯊꯝꯕ ꯈꯛꯇꯃꯛ — ꯗ꯭ꯔꯒꯁ ꯑꯦꯛꯇ ꯉꯥꯛꯄ ꯅꯠꯇꯦ꯫
 batch_on_buy	ꯂꯩꯕꯗꯥ ꯕꯦꯆ
 record_batch_and_expiry_when	ꯁ꯭ꯇꯣꯛ ꯂꯥꯀꯄꯥ ꯃꯇꯃꯗꯥ ꯕꯦꯆ ꯑꯃꯁꯨꯡ ꯃꯇꯝ ꯂꯣꯏꯕ ꯏꯊꯝꯕꯤꯌꯨ꯫
 near_expiry_alerts	ꯃꯇꯝ ꯂꯣꯏꯔꯛꯂꯤꯕꯒꯤ ꯆꯦꯀꯁꯤꯅꯍꯟꯕꯁꯤꯡ
 books_and_sell_can_hint	ꯇꯥꯡ ꯂꯣꯏꯗ꯭ꯔꯤꯉꯩꯗꯥ ꯍꯤꯁꯥꯕ ꯑꯃꯁꯨꯡ ꯌꯣꯟꯕꯅꯥ ꯈꯉꯍꯅꯕ ꯌꯥꯏ꯫
 owner_practice	ꯃꯄꯨꯒꯤ ꯃꯑꯣꯡ
-fefo_hints_and_rx_notes	FEFO ꯈꯨꯗꯝ ꯑꯃꯁꯨꯡ Rx ꯅꯣꯠꯁꯤꯡ ꯉꯥꯛꯄ ꯑꯁꯤ ꯅꯍꯥꯛꯀꯤ ꯊꯧꯗꯥꯡꯅꯤ — Tabiyat ꯅꯥ ꯅꯍꯥꯛꯅꯥ ꯏꯕ ꯈꯛꯇꯃꯛ ꯏꯊꯝꯏ꯫
+fefo_hints_and_rx_notes	FEFO ꯈꯉꯍꯅꯕꯁꯤꯡ ꯑꯃꯁꯨꯡ Rx ꯅꯣꯠꯁꯤꯡ ꯉꯥꯛꯄ ꯑꯁꯤ ꯅꯍꯥꯛꯀꯤ ꯊꯧꯗꯥꯡꯅꯤ — Tabiyat ꯅꯥ ꯅꯍꯥꯛꯅꯥ ꯏꯕ ꯈꯛꯇꯃꯛ ꯏꯊꯝꯏ꯫
 n_5_khata	5 · ꯈꯥꯇꯥ
 customer_credit_and_supplier_dues	ꯀꯁ꯭ꯇꯃꯔꯒꯤ ꯄꯤꯗꯔꯤꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕꯗꯥ ꯄꯤꯒꯗꯕ ꯄꯥꯔꯇꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯈꯛꯇꯥ꯫
 mehta_clinic_customer	Mehta Clinic · ꯀꯁ꯭ꯇꯃꯔ
@@ -62,7 +62,7 @@ leave_a_balance_on_khata	ꯇꯣꯉꯥꯟꯅꯥ ꯂꯦꯖꯔ ꯑꯦꯞ ꯂꯩꯇ�
 supplier_buys_too	ꯄꯤꯔꯤꯕꯗꯒꯤ ꯂꯩꯕꯁꯨ
 who_you_owe_updates_when	ꯁ꯭ꯇꯣꯛ ꯂꯥꯀꯄꯥ ꯃꯇꯃꯗꯥ ꯀꯅꯥꯗꯥ ꯄꯤꯒꯗꯒꯦ ꯑꯅꯧꯕ ꯑꯣꯏ꯫
 auditable	ꯌꯦꯡꯁꯤꯅꯕ ꯌꯥꯕ
-who_when_and_how_much	ꯀꯅꯥ, ꯀꯗꯥꯏꯗꯥ ꯑꯃꯁꯨꯡ ꯀꯌꯥ — ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛꯇꯥ ꯂꯩ꯫
+who_when_and_how_much	ꯀꯅꯥ, ꯀꯩꯗꯧꯉꯩ ꯑꯃꯁꯨꯡ ꯀꯌꯥ — ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛꯇꯥ ꯂꯩ꯫
 n_6_internet_down	6 · ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯕꯔꯥ?
 the_internet_drops_the_counter	ꯏꯟꯇꯔꯅꯦꯠ ꯂꯣꯏꯔꯦ꯫ ꯀꯥꯎꯟꯇꯔꯅꯥ ꯌꯣꯟꯕ ꯃꯈꯥ ꯆꯠꯊꯔꯤ꯫
 router_no_internet	ꯔꯥꯎꯇꯔ: ꯏꯟꯇꯔꯅꯦꯠ ꯂꯩꯇꯦ
@@ -123,7 +123,7 @@ acct_send_sms	SMS ꯀꯣꯗ ꯊꯥꯔꯛꯄꯤꯌꯨ
 acct_sms_code	SMS ꯀꯣꯗ
 acct_confirm_code	ꯀꯣꯗ ꯁꯣꯏꯗꯅꯥ ꯇꯧꯕꯤꯌꯨ
 acct_signed_in	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
-acct_signed_in_as	ꯃꯁꯤꯒꯤ ꯃꯑꯣꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯦ
+acct_signed_in_as	ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯔꯕ ꯑꯦꯀꯥꯎꯟꯠ
 acct_status	ꯐꯤꯚꯝ
 acct_sign_in_methods	ꯁꯥꯏꯟ-ꯏꯟꯒꯤ ꯃꯑꯣꯡꯁꯤꯡ
 acct_cloud_username	ꯀ꯭ꯂꯥꯎꯗ ꯌꯨꯖꯔꯅꯦꯝ

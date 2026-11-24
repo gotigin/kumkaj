@@ -39,16 +39,16 @@ in_the_app_the_divisor	App-ah chuan ṭhenna number, siam ṭhat dan leh i tehna
 n_3_price_it	3 · MAN RUAT RAWH
 your_rate_cards_your_party	I man list te, i mi man te — leh docket tinah i hlawkna.
 rate_card	Man list
-zone_service	Zone · rawihna
+zone_service	Zone · thawn dan
 first_0_5_kg	0.5 kg hmasa
 each_0_5_kg	0.5 kg tin
 local_surface	Local · Lei chung
 within_state_express	State chhung · Rang taka
 metro_air	Metro · Thlawhna
-zone_service_weight_slab	Zone × rawihna × rit zawng slab
-first_slab_and_each_extra	Slab hmasa leh slab belh tin, zone leh rawihna a zirin.
+zone_service_weight_slab	Zone × thawn dan × rit zawng slab
+first_slab_and_each_extra	Slab hmasa leh slab belh tin, zone leh thawn dan a zirin.
 a_consignor_s_own_card	Thawntu man list ngei
-regular_senders_get_their_rates	Thawntu ṭhin te'n an man an hmu; mi dang zawng zawng tan man list pangngai.
+regular_senders_get_their_rates	Thawntu ṭhin te’n an man an hmu; mi dang zawng zawng tan man list pangngai.
 margin_at_the_desk	Dawhkanah ngei hlawkna
 your_sell_price_against_the	Phurtu man nen i zuar man, docket tinah.
 n_4_label_it	4 · HMING DAHNA BELH RAWH
@@ -57,12 +57,12 @@ number_pools_per_carrier	Phurtu tin number pool
 enter_each_carrier_s_start	Phurtu tin series ṭanna–tawpna vawi khat ziak rawh; booking tinin number dawt leh a la.
 code_128_labels	Code 128 hming dahna
 the_awb_goes_on_the	AWB chu bawmah barcode leh number pangngaiin a awm.
-scan_to_find	Zawng turin scan rawh
+scan_to_find	Zawn turin scan rawh
 scan_a_label_to_open	Hming dahna scan la a docket hawng la, thil ti rawh.
 n_5_hand_over	5 · HLAN RAWH
 hand_it_to_a_carrier	Phurtu hnenah pe rawh, emaw i hlantu ngei thawn rawh. System ang chiah.
-into_a_carrier_bag	Phurtu kawrah
-the_manifest_holds_exactly_the	Manifest-ah chuan i thlan bawm te chauh an awm — an zavaia emaw pakhat mah lo. Phurtu dang nena book bawm chu he kawrah a lut thei lo.
+into_a_carrier_bag	Phurtu ipah
+the_manifest_holds_exactly_the	Manifest-ah chuan i thlan bawm te chauh an awm — an zavai emaw, pakhat mah lo emaw. Phurtu dang nena book bawm chu he ipah a lut thei lo.
 onto_your_own_rider_s	I hlantu ngei kalnaah
 pick_the_parcels_print_the	Bawm thlang la, kal kawng lehkha print la, hlantu chuan app ang chiah hlantu mode-ah a hmang — hlan finfiahna nen.
 n_6_track_and_prove	6 · ZUI LA FINFIAH RAWH
@@ -94,7 +94,7 @@ collected_against_paid_out_per	Khawn leh pek, thawntu tin a zirin, pawisa thawn 
 rider_settlement	Hlantu inchhiar felna
 expected_against_handed_in_and	Beisei leh pek lut, leh commission lehkha.
 books_that_close	Inchhiar fel thei lehkha
-day_book_month_bill_per	Ni lehkha, account tin thla tin bil, leh i chhiar enkawltu tan GST tawi CSV.
+day_book_month_bill_per	Ni lehkha, akaunt tin thla tin bil, leh i chhiar enkawltu tan GST tawi CSV.
 n_8_internet_down	8 · INTERNET A AWM LO?
 keep_booking	Booking chhunzawm rawh.
 booking_labels_scanning_cod_and	Booking, hming dahna, scan, COD leh lehkha te — an zavaiin i hmanruaah an thawk. Internet a thih pawhin zuar dawhkanah engmah a nghak lo.
@@ -105,7 +105,7 @@ free_forever_on_your_devices	I hmanruaah chatuanin a man lovin
 nothing_per_rider_user_or	Hlantu, hmangtu emaw bawm tin man a awm lo. I duh chuan Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/kum, chhiah tel lovin — /shop.
 n_9_start	9 · ṬAN RAWH
 one_courier_os_your_parcels	Courier OS pakhat. I bawm te. I lehkha te.
-moklanjo_is_a_complete_courier	Moklanjo hi Kumkaj hnuaia courier hna enkawlna system famkim a ni — Android, Windows leh Linux. Hlantu te'n app ang chiah hlantu mode-ah an hmang.
+moklanjo_is_a_complete_courier	Moklanjo hi Kumkaj hnuaia courier hna enkawlna system famkim a ni — Android, Windows leh Linux. Hlantu te’n app ang chiah hlantu mode-ah an hmang.
 trademark	HMING CHHINCHHIAH
 memon_for_find_it_pronounced	Memon ṭawngin “zawng rawh” · lam dan go-tee-geen
 company	KAWMPANI
@@ -191,13 +191,13 @@ acct_err_method_disabled	He luh kawng hi tun thleng hian a ṭan lo.
 acct_err_too_many	Tum tam lutuk. A hnuah tum leh rawh.
 acct_err_phone_format	Ram code nen fon number pum hmang rawh (entirnan +91…).
 acct_err_sms_code	SMS code chu a dik lo emaw a hun a tawp tawh.
-acct_err_no_account	He e-mail hian akaunt a nei lo. Thar siam turin chhunzawm la, emaw kawng dang hmang rawh.
+acct_err_no_account	He e-mail hian akaunt a nei lo. Thar siam turin chhunzawm rawh, emaw kawng dang hmang rawh.
 acct_err_recent_login	Himna atan lut leh la, chumi hnuah he danglamna hi ti leh rawh.
 acct_err_credential_in_use	He luh kawng hi akaunt dangin a hmang tawh.
 acct_err_email_in_use	He e-mail hi akaunt dangin a hmang tawh.
 acct_err_already_linked	He kawng hi he akaunt-ah hian zawm a ni tawh.
 acct_err_exists_other_method	He e-mail hian luh kawng dang hmangin akaunt a nei tawh. A hmasain chu kawng chuan lut la, chumi hnuah i akaunt phek aṭangin hei hi zawm rawh.
-acct_err_generic	Engemaw a diklo.
+acct_err_generic	Engemaw a dik lo.
 acct_method_password	E-mail leh thuruk
 acct_pw_hint_change	I thuruk thlak rawh. Tun thuruk hmangin i finfiah ang.
 acct_pw_hint_add	E-mail hmanga i luh theih nan thuruk belh rawh (provider pakhat a awm loh chuan a ṭangkai).
@@ -243,10 +243,10 @@ shop_included	A tel
 shop_in_cart	{plan} chu i leina bawmah a awm.
 shop_remove	Paih rawh
 shop_cart_is_empty	Leina bawm a ruak.
-shop_prices_unpublished	He thil atan hian mahni leina man a la tichhuak lo. Duh ang man chhut dil la emaw a hnuah en leh rawh.
+shop_prices_unpublished	He thil siam atan hian mahni leina man a la tichhuak lo. Duh ang man chhut dil rawh, emaw a hnuah en leh rawh.
 shop_cart_cleared	Leina bawm thai fai a ni.
 plan_free_title	Chatuanin a man lovin
-plan_free_blurb	I hmanruaah local thil pum. Cloud man a awm lo.
+plan_free_blurb	I hmanruaah local thil siam pum. Cloud man a awm lo.
 plan_steady_blurb	Live cloud · 10 GB · bandwidth hniam
 plan_swift_blurb	Live cloud · 25 GB · bandwidth lai
 plan_priority_blurb	Live cloud · 50 GB · bandwidth sang ber

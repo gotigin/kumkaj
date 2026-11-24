@@ -1,7 +1,7 @@
 # Khasi — Khasi (kha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 the_promise	Ka jingkular
 kumkaj_business_operating_systems	KUMKAJ · KI SYSTEM KAM KHAII
-the_internet_went_down_the	Ka internet ka la duh.\nKa kaunta kam la duh.
+the_internet_went_down_the	Ka internet ka la duh.\nKa kaunta kam shym la duh.
 kumkaj_is_the_brand_for	Kumkaj ka dei ka kyrteng na ka bynta ki app jong ka system kam khaii ba shisha — ka software ban pynbeit ia baroh ka kam khaii ba trei ha ki device jong phi hi. Man ka tiar la shna na ka bynta kawei ka kam: courier, jaka bam, dukan tiar, dukan dawai.
 choose_your_trade	Jied ia ka kam jong phi  ↓
 watch_it_keep_working	Peit ia ka ba ka dang trei
@@ -13,69 +13,69 @@ yes	Haoid
 bills_and_dockets	Ki bill bad ki docket
 saving	Dang pynsah
 day_book	Ka kot sngi
-adding_up	Dang kyrhuh
+adding_up	Dang khein
 nothing_on_this_counter_waits	Ym don ei ei ha kane ka kaunta ba ap ia ka cloud.
 scroll_or_use_the_dots	Scroll lane pyndonkam ia ki dot ban kylla ha ki bynta.
 n_02_built_for_your_trade	02 · LA SHNA NA KA BYNTA KA KAM JONG PHI
 a_desk_for_each_trade	Ka miej na ka bynta man ka kam.\nKam dei kawei ka app bad u switch.
 not_one_app_with_a	Kam dei kawei ka app bad u switch ban kylla kam. Man ka tiar la shna na ka bynta kawei ka jaid kaunta, ha ki kyntien jong kata ka kam hi.
 courier_offices_franchise_counters_own	KI OPHIS COURIER · KI KAUNTA FRANCHISE · KI NONGNIAH KALI JONG PHI
-book_label_hand_over_track	Buh → label → aiti → bud → pynkhlain.
-next_booking_in_one_tap	Ka jingbuh jaka ba bud da kawei ka jingnion
+book_label_hand_over_track	Thoh → label → aiti → bud → pynbeit.
+next_booking_in_one_tap	Ka parsel ba bud da kawei ka jingnion
 actual_or_volumetric_weight_rounded	Ka jingkhia shisha lane ka jingkhia da ka jingheh, la pynbeit kumba phi kwah
-rider_cash_on_delivery_expected	Ka pisa haba pynpoi jong u nongniah kali: kaba la kyrmen pyrshah bad kaba la ai
+rider_cash_on_delivery_expected	Ka pisa haba pynpoi jong u nongniah kali: kaba dei ban don pyrshah bad kaba la ai
 visit_moklanjo_com	Leit sha moklanjo.com  →
 restaurants_caf_s_quick_service	KI JAKA BAM · KI CAFÉ · KA JINGSHAKRI BA KLOI · KI BAKERY
 table_kitchen_bill_day_close	Ka miej bam → ka kamra shet ja → ka bill → ka khang sngi.
 every_table_s_minutes_and	Ki minit bad ka bill jong man ka miej bam ha kawei ka jingkhmih
-one_kot_per_kitchen_station	Kawei u KOT na man ka jaka shet ja — ym ju don dor
-cash_upi_part_payment_due	Ka pisa, UPI, ka jingsiew bynta, Ka bai bad ka tip
+one_kot_per_kitchen_station	Uwei u KOT na man ka jaka shet ja — ym ju don dor
+cash_upi_part_payment_due	Ka pisa, UPI, ka jingsiew bynta, Ka ram bad ka tip
 visit_khaynjo_com	Leit sha khaynjo.com  →
 kirana_grocery_neighbourhood_shops	KIRANA · KI DUKAN TIAR · KI DUKAN SHNONG
 sell_khata_stock_day_book	Die → khata → ki tiar → ka kot sngi.
 fast_counter_sell_with_short	Ka jingdie ba kloi ha ka kaunta da ki code ba lyngkot
-customer_credit_and_supplier_dues	Ka bai jong u nongthied bad ka bai jong u nongsam
+customer_credit_and_supplier_dues	Ka ram jong u nongthied bad ka ram ba phi don ha u nongsam
 buy_into_stock_offline_forever	Thied sha ki tiar — khlem lain junom
 visit_kirano_shop	Leit sha kirano.shop  →
 chemists_pharmacy_counters	KI NONGDIE DAWAI · KI KAUNTA DUKAN DAWAI
 medicine_batch_bill_day_close	Ka dawai → ka batch → ka bill → ka khang sngi.
 barcode_and_salt_composition_search	Ka jingwad da ka barcode bad ka salt / ka jingshna
 batch_and_expiry_alerts_on	Ki jingmaham batch bad por kut ha ki jingthied
-owner_schedule_h_rx_notes	Ki kot Schedule H / Rx jong u trai — kam dei ka jingbud lamlet
+owner_schedule_h_rx_notes	Ki jingthoh Schedule H / Rx jong u trai — kam dei ka jingbud lamlet
 visit_tabiyat_shop	Leit sha tabiyat.shop  →
 n_03_your_books_stay_with	03 · KI KOT JONG PHI KI SAH BAD PHI
 your_books_live_in_your	Ki kot jong phi ki sah ha ka dukan jong phi.
-sales_parties_and_the_day	Ki jingdie, ki party bad ka kot sngi la thoh ha ka device ha ka kaunta jong phi — kam ha ka server ba phi ai ka jingbai.
+sales_parties_and_the_day	Ki jingdie, ki khata bad ka kot sngi la thoh ha ka device ha ka kaunta jong phi — kam ha ka server ba phi ai ka jingbai.
 on_your_device	Ha ka device jong phi
 every_sale_payment_and_docket	Man ka jingdie, ka jingsiew bad u docket la pynsah ha ka computer lane tablet ba phi don.
 no_account_with_us	Ym donkam account bad ngi
 install_it_and_start_no	Pynbeit ia ka bad sdang. Ym donkam sign-up, ym donkam card.
 copies_you_keep	Ki kopi ba phi buh
 save_a_backup_copy_whenever	Pynsah ia ka kopi backup haba phi kwah. Ka dei ka file, bad ka dei jong phi.
-extra_counters_and_tablets_join	Ki kaunta bad ki tablet kiba bujli ki iasoh ha ka Wi-Fi jong phi hi — khlem internet ha pdeng.
+extra_counters_and_tablets_join	Ki kaunta bad ki tablet ba la pyndap ki iasoh ha ka Wi-Fi jong phi hi — khlem internet ha pdeng.
 n_04_try_it	04 · PYRSHANG
 pull_the_plug_on_the	Weng ia ka plug jong ka internet.
 kumkaj_apps_don_t_phone	Ki app Kumkaj kim phone sha ka server ban trei. Pynduh ia ka internet bad peit aiu ba kylla ha ka kaunta.
 cut_the_internet	Pynduh ia ka internet
 internet_on	Ka internet: ka don
-book_a_parcel_or_take	Buh jaka ia ka parsel lane shim ia ka jingbthah
+book_a_parcel_or_take	Thoh ia ka parsel lane shim ia ka jingbthah
 save_the_bill_or_docket	Pynsah ia ka bill lane u docket
 day_book_totals	Ki baroh jong ka kot sngi
 find_an_old_sale	Wad ia ka jingdie ba tymmen
 the_internet_is_on_and	Ka internet ka don — bad ka kaunta kam pyndonkam ia ka.
 things_that_leave_the_shop	Ki tiar kiba mih na ka dukan, kum ka rasid WhatsApp, ki dang donkam ia ka internet ban poi.
 n_05_price	05 · KA DOR
-free_forever_on_your_devices	Laitluid junom ha ki device jong phi.
+free_forever_on_your_devices	Khlem siew dor junom ha ki device jong phi.
 no_charge_per_seat_user	Ym don dor na man ka jaka shong, u nongpyndonkam, ka miej bam, u nongniah kali, ka parsel lane ka device ha ka jaka. Kam dei ka jingpyrshang.
 on_your_own_devices	Ha ki device jong phi hi
 n_0_forever	₹0, junom
-pay_only_for_what_you	Siew tang na ka bynta kaba phi pyndonkam — ki dor ba syn na ka bynta baroh.
+pay_only_for_what_you	Siew tang na ka bynta kaba phi pyndonkam — kijuh ki dor na ka bynta baroh.
 planned	La thaw buh
 cloud_is_planned_and_optional	Ka cloud la thaw buh bad ka dei lada phi kwah. Ka kaunta ka trei khlem ka.
 n_06_languages	06 · KI KTIEN
 speaks_your_staff_s_language	Ka kren ia ka ktien jong ki nongtrei jong phi.
-the_same_115_language_catalogue	Ka list 115 ki ktien ba syn kum man ka app Kumkaj — Arabic bad Urdu na kamon sha kadiang. Ki kyrteng ha ki ktien jong ki hi harum; nuksa “Ka jingbam ka la khreh” na ka bynta Hindi, Gujarati, Tamil, Bengali, Urdu, bad ka ktien phareng:
-same_shaping_engine_as_the	Ka engine jingthoh ba syn kum ki app, te ki dak kiba iasoh bad ki lain na kamon sha kadiang ki mih ba dei.
+the_same_115_language_catalogue	Kajuh ka list 115 ki ktien kum ha man ka app Kumkaj — Arabic bad Urdu na kamon sha kadiang. Ki kyrteng ha ki ktien jong ki hi harum; nuksa “Ka jingbam ka la khreh” na ka bynta Hindi, Gujarati, Tamil, Bengali, Urdu, bad ka ktien phareng:
+same_shaping_engine_as_the	Kajuh ka engine jingthoh kum ki app, te ki dak kiba iasoh bad ki lain na kamon sha kadiang ki mih ba dei.
 n_07_who_makes_it	07 · UNO U SHNA
 made_under_gotigin	La shna hapoh Gotigin.
 trademark	KA DAK KHAII
@@ -85,7 +85,7 @@ brand	KA KYRTENG
 concrete_business_operating_system_apps	Ki app jong ka system kam khaii ba shisha
 products	KI TIAR
 courier_restaurant_grocery_pharmacy	Courier · jaka bam · dukan tiar · dukan dawai
-courier_desk_book_label_hand	Ka miej courier — buh, label, aiti, pynkhlain.
+courier_desk_book_label_hand	Ka miej courier — thoh, label, aiti, pynbeit.
 restaurant_system_table_kitchen_bill	Ka system jaka bam — ka miej bam, ka kamra shet ja, ka bill, ka khang sngi.
 grocery_counter_sell_khata_stock	Ka kaunta dukan tiar — die, khata, ki tiar, ka kot sngi.
 pharmacy_counter_batch_expiry_bill	Ka kaunta dukan dawai — ka batch, ka por kut, ka bill, ka khang sngi.
@@ -112,7 +112,7 @@ acct_kirano_blurb	Ka account kaunta kirana
 acct_tabiyat_blurb	Ka account kaunta dukan dawai
 acct_open_account	Plie ia ka account
 shop_page_title	Ka dukan — Kumkaj
-shop_lede	Ki plan cloud man ka snem — san ki rukom ba syn na ka bynta man ka kam (Laitluid junom, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / snem khlem ka shuiñ, lane ka jingkhein dor). Ka shuiñ la bujli ha ka jingsiew. Man ka tiar ka bat ia ka dukan bad ka account jong ka.
+shop_lede	Ki plan cloud man ka snem — san ki rukom ba kumjuh na ka bynta man ka kam (Khlem siew dor junom, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / snem khlem ka shuiñ, lane ka jingkhein dor). Ka shuiñ yn pyndap ha ka jingsiew. Man ka tiar ka bat ia ka dukan bad ka account jong ka.
 shop_product_shops	Ki dukan cloud jong ki tiar
 shop_moklanjo_blurb	Ka cloud miej courier na ka bynta moklanjo.com
 shop_khaynjo_blurb	Ka cloud jaka bam na ka bynta khaynjo.com
