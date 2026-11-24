@@ -20,7 +20,7 @@ works_with_no_internet	बिना इंटरनेट के काम क�
 your_books_stay_on_your	तुंहर हिसाब-किताब तुंहरे डिवाइस म रहिथे
 n_115_languages_on_screen	स्क्रीन म 115 भाषा
 your_floor_at_a_glance	एक नजर म तुंहर फ्लोर
-tap_a_table_to_walk	कोनो मेज़ म टैप करव अउ एक आवाजाही सुरू ले आखिरी तक देखव। ऐप जइसन उही रंग अउ सब्द — अउ मेज़ तभे खाली होथे जब बिल के भुगतान हो जाथे।
+tap_a_table_to_walk	कोनो मेज़ म टैप करव अउ पहुना मन के आए ले जाए तक के हर कदम देखव। ऐप जइसन उही रंग अउ सब्द — अउ मेज़ तभे खाली होथे जब बिल के भुगतान हो जाथे।
 every_country	हर देस
 every_country_at_your_counter	तुंहर काउंटर म हर देस
 one_famous_dish_from_every	हर देस के एक मसहूर पकवान — देस के अंगरेजी नाँव, ओकर अपन लिपि म नाँव, अउ पकवान के अंगरेजी नाँव। ए सब्द मन ला अपन मेनू म लिखव। दुनिया आगू बढ़त रहिथे; देखे के मन होय त रोकव या खोजव।
@@ -55,15 +55,15 @@ preparing	तैयार होवत हे
 ready	तैयार
 example_kitchen_screen	उदाहरण रसोई स्क्रीन
 settle_any_way_the_guest	पहुना जइसे भुगतान करय, ओइसने हिसाब करव
-cash_with_change_to_return	लहुटाए वाला पइसा संग नकद, QR म पहिली ले रकम संग UPI, थोर-थोर भुगतान, या ग्राहक के खाता म बाकी। सामान, सीट या बरोबर बाँटव। मेज़ तभे खाली होथे जब ओकर बिल भुगतान हो जाथे।
+cash_with_change_to_return	लहुटाए वाला पइसा संग नकद, QR म पहिली ले रकम संग UPI, थोर-थोर भुगतान, या ग्राहक के खाता म बाकी। बिल ला पकवान के हिसाब ले, सीट के हिसाब ले या बरोबर बाँटव। मेज़ तभे खाली होथे जब ओकर बिल भुगतान हो जाथे।
 tips_stay_apart	टिप अलग रहिथे
 a_tip_is_recorded_on	टिप अलग ले दर्ज होथे — बिक्री म कभू नइ मिलय।
 t4_bill_printed	T4 · बिल छपगे
 bill	बिल
 customer_paid_cash	ग्राहक दिस (नकद)
-return_to_customer	ग्राहक ला लौटाव
-close_the_day_you_can	भरोसा लाइक दिन बंद
-count_the_drawer_against_the	दराज ला फ्लोट, लेहे नकद, टिप अउ देहे नकद संग मिला के गिनव — कम या जादा साफ-साफ बताए जाथे। सिफ्ट स्लिप छापव, फेर स्टाफ, ऑर्डर के किसम, घंटा अउ पकवान के हिसाब ले दिन के रिपोर्ट खोलव — रद्द, मुफत पकवान अउ टिप समेत।
+return_to_customer	ग्राहक ला लहुटावव
+close_the_day_you_can	भरोसा करे लाइक दिन बंद
+count_the_drawer_against_the	दराज ला सुरुआती नकद, लेहे नकद, टिप अउ देहे नकद संग मिला के गिनव — कम या जादा साफ-साफ बताए जाथे। सिफ्ट स्लिप छापव, फेर स्टाफ, ऑर्डर के किसम, घंटा अउ पकवान के हिसाब ले दिन के रिपोर्ट खोलव — रद्द, मुफत पकवान अउ टिप समेत।
 shift_close	सिफ्ट बंद
 opening_float	सुरुआती नकद
 cash_taken	+ लेहे नकद
@@ -96,14 +96,14 @@ your_menu_ready_in_minutes	तुंहर मेनू, कुछ मिनट 
 set_up_your_counter_and	अपन काउंटर सेट करव अउ फोटो वाला एक स्टार्टर मेनू चुनव — फेर नाँव, दाम अउ कोड अपन हिसाब ले बदलव। khaynjo.com ले मुफत डाउनलोड करव।
 starter_menu	स्टार्टर मेनू
 khaynjo_starter_menu	Khaynjo स्टार्टर मेनू
-world_cuisines_japanese_mexican	दुनिया के पकवान — जापानी, मैक्सिकन, इटालियन, भारतीय, थाई अउ अउ — हर पकवान अपन फोटो संग।
+world_cuisines_japanese_mexican	दुनिया के पकवान — जापानी, मैक्सिकन, इटालियन, भारतीय, थाई अउ कतको — हर पकवान अपन फोटो संग।
 n_14_dishes_11_categories	14 पकवान · 11 श्रेणी
 cafe_starter	कैफे स्टार्टर
 tea_coffee_cold_drinks_bakery	चाहा, कॉफी, ठंडा पेय, बेकरी अउ नास्ता — काउंटर कैफे बर तैयार।
 n_22_dishes_4_categories	22 पकवान · 4 श्रेणी
-photo_shelf	फोटो सेल्फ
+photo_shelf	फोटो शेल्फ
 khaynjo_dish_photos	Khaynjo पकवान के फोटो
-the_full_public_photo_shelf	पूरा सार्वजनिक फोटो सेल्फ — जउन पकवान जोड़व ओकर फोटो चुनव।
+the_full_public_photo_shelf	पूरा सार्वजनिक फोटो शेल्फ — जउन पकवान जोड़व ओकर फोटो चुनव।
 n_1_459_dish_photos_25	1,459 पकवान के फोटो · 25 किसम के रसोई
 internet_down	इंटरनेट बंद?
 the_internet_went_down_the	इंटरनेट चल दिस। काउंटर नइ रुकिस।
@@ -164,12 +164,12 @@ acct_lede	साइट अउ ऐप बर एके खाता — नवा
 acct_email	ईमेल
 acct_name_optional	नाँव (मरजी के)
 acct_password	पासवर्ड
-acct_continue	आगे बढ़ें
+acct_continue	आगू बढ़व
 acct_forgot	पासवर्ड भुलागेव?
 acct_reset_hint	हमन रीसेट लिंक ईमेल करबो। उही पता इस्तेमाल करव जेकर ले साइन अप करे रेहेव।
 acct_send_reset	रीसेट लिंक भेजव
 acct_cancel	रद्द
-acct_or_continue	या एकर ले आगे बढ़ें
+acct_or_continue	या एकर ले आगू बढ़व
 acct_phone	फ़ोन
 acct_mobile	मोबाइल नंबर
 acct_send_sms	SMS कोड भेजव
@@ -202,7 +202,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तुंहर कार्ट खाली हे। Steady, Swift या Priority जोड़व।
 shop_checkout	चेकआउट
 shop_clear	मिटावव
-shop_checkout_hint	चेकआउट तुमन ला खाता म साइन इन कराथे, फेर भुगतान सुरू करथे (सैंडबॉक्स मॉक, या की सेट रहे म Paddle)।
+shop_checkout_hint	चेकआउट तुमन ला खाता म साइन इन कराथे, फेर भुगतान सुरू करथे (सैंडबॉक्स मॉक, या कुंजी सेट रहे म Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट म गेटवे टैक्स जोड़थे। लोकल इस्तेमाल हमेशा मुफत रहिथे। कस्टम एक कोटेसन हे (Steady ले कम या Priority ले जादा हो सकथे)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -217,10 +217,10 @@ acct_err_method_disabled	ए साइन-इन तरीका अभी च�
 acct_err_too_many	बहुत कोसिस होगे। बाद म फेर कोसिस करव।
 acct_err_phone_format	देस के कोड संग पूरा फ़ोन नंबर लिखव (जइसे +91…)।
 acct_err_sms_code	ए SMS कोड गलत हे या एकर समय खतम होगे।
-acct_err_no_account	ए ईमेल ले कोनो खाता नइ हे। नवा बनाए बर आगे बढ़ें, या दूसर तरीका अपनावव।
+acct_err_no_account	ए ईमेल ले कोनो खाता नइ हे। नवा बनाए बर आगू बढ़व, या दूसर तरीका अपनावव।
 acct_err_recent_login	सुरक्छा बर फेर ले साइन इन करव, फेर ए बदलाव दुबारा करव।
-acct_err_credential_in_use	ए साइन-इन तरीका पहिली ले दूसर खाता इस्तेमाल करत हे।
-acct_err_email_in_use	ए ईमेल पहिली ले दूसर खाता इस्तेमाल करत हे।
+acct_err_credential_in_use	ए साइन-इन तरीका पहिली ले दूसर खाता म इस्तेमाल होवत हे।
+acct_err_email_in_use	ए ईमेल पहिली ले दूसर खाता म इस्तेमाल होवत हे।
 acct_err_already_linked	ए तरीका पहिली ले इही खाता ले जुड़े हे।
 acct_err_exists_other_method	ए ईमेल के खाता पहिली ले दूसर साइन-इन तरीका ले बने हे। पहिली उही तरीका ले साइन इन करव, फेर अपन खाता पेज ले एला जोड़व।
 acct_err_generic	कुछु गड़बड़ होगे।
@@ -241,7 +241,7 @@ acct_checkout_failed	चेकआउट फेल होगे
 acct_pay_with	{provider} ले भुगतान करव
 acct_plan_until	{plan} · {date} तक
 acct_unavailable	उपलब्ध नइ हे
-acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन ले आगे बढ़ें।
+acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन ले आगू बढ़व।
 acct_signed_in_fallback	(साइन इन होगे)
 acct_email_verified	ईमेल पक्का होगे
 acct_email_unverified	ईमेल अभी पक्का नइ हे — अपन इनबॉक्स देखव

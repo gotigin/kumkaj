@@ -20,7 +20,7 @@ works_with_no_internet	बिना इंटरनेट के काम क�
 your_books_stay_on_your	तोहर हिसाब-किताब तोहरे डिवाइस पर रहऽ हे
 n_115_languages_on_screen	स्क्रीन पर 115 भाषा
 your_floor_at_a_glance	एक नजर में तोहर फ्लोर
-tap_a_table_to_walk	कोय मेज़ पर टैप करऽ आउ एगो आवाजाही सुरू से आखिर तक देखऽ। ऐप जइसन ओहे रंग आउ सब्द — आउ मेज़ तभिये खाली होवऽ हे जब बिल के भुगतान हो जा हे।
+tap_a_table_to_walk	कोय मेज़ पर टैप करऽ आउ मेहमान के आवे से जाय तक ओकर हर कदम देखऽ। ऐप जइसन ओहे रंग आउ सब्द — आउ मेज़ तभिये खाली होवऽ हे जब बिल के भुगतान हो जा हे।
 every_country	हर देस
 every_country_at_your_counter	तोहर काउंटर पर हर देस
 one_famous_dish_from_every	हर देस के एगो मशहूर पकवान — देस के अंगरेजी नाम, ओकर अपन लिपि में नाम, आउ पकवान के अंगरेजी नाम। ई सब्द अपन मेनू में लिखऽ। दुनिया आगे बढ़ते रहऽ हे; देखे के मन होवे तऽ रोकऽ या खोजऽ।
@@ -40,11 +40,11 @@ mark_the_table_occupied_the	मेहमान बइठते मेज़ क�
 sizes_and_add_ons	साइज आउ ऐड-ऑन
 pick_one_size_add_optional	एगो साइज चुनऽ; तूँ जे सीमा तय कइलऽ हे ओकरा तक मरजी के एक्स्ट्रा जोड़ऽ।
 a_note_per_dish	हर पकवान पर एगो नोट
-less_spicy_travels_with_the	“कम तीखा” ओहे पकवान के साथे जा हे जेकर ऊ हे।
+less_spicy_travels_with_the	“कम तीखा” ओहे पकवान के साथे जा हे जेकरा खातिर लिखल गेल हे।
 t4_occupied	T4 · व्यस्त
 note_less_salt	नोट: नून कम
 one_ticket_per_kitchen_station	हर रसोई स्टेशन खातिर एगो टिकट
-send_the_order_and_each	ऑर्डर भेजऽ आउ हर स्टेशन के खाली ओकर अपन पकवान मिलऽ हे — दिन के नंबर के साथे, मेज़, वेटर आउ हर नोट के साथे। दर कभियो नञ्: रसोई पकावऽ हे, काउंटर बिल बनावऽ हे।
+send_the_order_and_each	ऑर्डर भेजऽ आउ हर स्टेशन के खाली ओकर अपन पकवान मिलऽ हे — दिन के हिसाब से नंबर, मेज़, वेटर आउ हर नोट के साथे। दर कभियो नञ्: रसोई पकावऽ हे, काउंटर बिल बनावऽ हे।
 prints_itself	अपने आप छपऽ हे
 send_and_the_ticket_prints	भेजऽ, आउ टिकट सही स्टेशन पर छप जा हे — केकरो ले जाय के जरूरत नञ्।
 example_ticket	उदाहरण टिकट
@@ -55,15 +55,15 @@ preparing	बन रहल हे
 ready	तैयार
 example_kitchen_screen	उदाहरण रसोई स्क्रीन
 settle_any_way_the_guest	मेहमान जइसे भुगतान करथ, ओइसहीं हिसाब करऽ
-cash_with_change_to_return	लौटावे वाला पइसा के साथे नकद, QR में पहिले से रकम के साथे UPI, थोड़-थोड़ भुगतान, या ग्राहक के खाता में बाकी। सामान, सीट या बराबर बाँटऽ। मेज़ तभिये खाली होवऽ हे जब ओकर बिल भुगतान हो जा हे।
+cash_with_change_to_return	लौटावे वाला पइसा के साथे नकद, QR में पहिले से रकम के साथे UPI, थोड़-थोड़ भुगतान, या ग्राहक के खाता में बाकी। बिल पकवान के हिसाब से, सीट के हिसाब से या बराबर-बराबर बाँटऽ। मेज़ तभिये खाली होवऽ हे जब ओकर बिल के भुगतान हो जा हे।
 tips_stay_apart	टिप अलगे रहऽ हे
-a_tip_is_recorded_on	टिप अलगे से दर्ज होवऽ हे — बिक्री में कभियो नञ् मिलऽ हे।
+a_tip_is_recorded_on	टिप अलगे से दर्ज होवऽ हे — बिक्री में कभियो नञ् मिलावल जा हे।
 t4_bill_printed	T4 · बिल छपल
 bill	बिल
 customer_paid_cash	ग्राहक देलन (नकद)
-return_to_customer	ग्राहक के लौटाऽ
+return_to_customer	ग्राहक के लौटावऽ
 close_the_day_you_can	भरोसा लायक दिन बंद
-count_the_drawer_against_the	दराज के फ्लोट, लेल नकद, टिप आउ देल नकद से मिला के गिनऽ — कम या जादे साफ-साफ बतावल जा हे। शिफ्ट स्लिप छापऽ, फिन स्टाफ, ऑर्डर के किसिम, घंटा आउ पकवान के हिसाब से दिन के रिपोर्ट खोलऽ — रद्द, मुफ्त पकवान आउ टिप समेत।
+count_the_drawer_against_the	दराज के सुरुआती नकद, लेल नकद, टिप आउ देल नकद से मिला के गिनऽ — कम या जादे साफ-साफ बतावल जा हे। शिफ्ट स्लिप छापऽ, फिन स्टाफ, ऑर्डर के किसिम, घंटा आउ पकवान के हिसाब से दिन के रिपोर्ट खोलऽ — रद्द, मुफ्त पकवान आउ टिप समेत।
 shift_close	शिफ्ट बंद
 opening_float	सुरुआती नकद
 cash_taken	+ लेल नकद
@@ -96,7 +96,7 @@ your_menu_ready_in_minutes	तोहर मेनू, कुछे मिनट 
 set_up_your_counter_and	अपन काउंटर सेट करऽ आउ फोटो वाला एगो स्टार्टर मेनू चुनऽ — फिन नाम, दर आउ कोड अपन हिसाब से बदलऽ। khaynjo.com से मुफ्त डाउनलोड करऽ।
 starter_menu	स्टार्टर मेनू
 khaynjo_starter_menu	Khaynjo स्टार्टर मेनू
-world_cuisines_japanese_mexican	दुनिया के पकवान — जापानी, मैक्सिकन, इटालियन, भारतीय, थाई आउ आउर — हर पकवान अपन फोटो के साथे।
+world_cuisines_japanese_mexican	दुनिया के पकवान — जापानी, मैक्सिकन, इटालियन, भारतीय, थाई आउ बहुत कुछ — हर पकवान अपन फोटो के साथे।
 n_14_dishes_11_categories	14 पकवान · 11 श्रेणी
 cafe_starter	कैफे स्टार्टर
 tea_coffee_cold_drinks_bakery	चाय, कॉफी, ठंढा पेय, बेकरी आउ नाश्ता — काउंटर कैफे खातिर तैयार।
@@ -136,7 +136,7 @@ no_orders_kots_bills_and	नञ्। ऑर्डर, KOT, बिल आउ र
 where_are_my_bills_kept	हम्मर बिल कहाँ रखल जा हे?
 on_your_own_device_in	तोहर अपन डिवाइस पर, तोहर दोकान में — हमनी के सर्वर पर नञ्। सेटिंग से बैकअप कॉपी बनावऽ आउ जहाँ मन होवे ओहाँ रखऽ।
 which_devices_does_it_run	ई कउन डिवाइस पर चलऽ हे?
-android_phones_and_tablets_today	आज Android फोन आउ टैबलेट पर, Google Play से। Windows आउ Linux पैकेज रस्ता में हे।
+android_phones_and_tablets_today	आज Android फ़ोन आउ टैबलेट पर, Google Play से। Windows आउ Linux पैकेज रस्ता में हे।
 does_it_print_kots_and	का ई KOT आउ बिल छापऽ हे?
 yes_on_thermal_printers_you	हाँ — थर्मल प्रिंटर पर जे तूँ सेटिंग → प्रिंटर में सेट करऽ ह, हर स्टेशन खातिर एगो रसोई टिकट।
 can_my_staff_use_their	का हम्मर स्टाफ अपन भाषा इस्तेमाल कर सकऽ हे?
@@ -164,12 +164,12 @@ acct_lede	साइट आउ ऐप खातिर एके खाता — 
 acct_email	ईमेल
 acct_name_optional	नाम (मरजी के)
 acct_password	पासवर्ड
-acct_continue	आगे बढ़ेऽ
+acct_continue	आगे बढ़ऽ
 acct_forgot	पासवर्ड भुला गेलऽ?
 acct_reset_hint	हमनी रीसेट लिंक ईमेल करम। ओहे पता इस्तेमाल करऽ जेकरा से साइन अप कइलऽ हल।
 acct_send_reset	रीसेट लिंक भेजऽ
 acct_cancel	रद्द
-acct_or_continue	या एकरा से आगे बढ़ेऽ
+acct_or_continue	या एकरा से आगे बढ़ऽ
 acct_phone	फ़ोन
 acct_mobile	मोबाइल नंबर
 acct_send_sms	SMS कोड भेजऽ
@@ -202,7 +202,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तोहर कार्ट खाली हे। Steady, Swift या Priority जोड़ऽ।
 shop_checkout	चेकआउट
 shop_clear	मिटावऽ
-shop_checkout_hint	चेकआउट तोहरा खाता में साइन इन करावऽ हे, फिन भुगतान सुरू करऽ हे (सैंडबॉक्स मॉक, या की सेट रहे पर Paddle)।
+shop_checkout_hint	चेकआउट तोहरा खाता में साइन इन करावऽ हे, फिन भुगतान सुरू करऽ हे (सैंडबॉक्स मॉक, या कुंजी सेट रहे पर Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पर गेटवे टैक्स जोड़ऽ हे। लोकल इस्तेमाल हमेशा मुफ्त रहऽ हे। कस्टम एगो कोटेशन हे (Steady से कम या Priority से जादे हो सकऽ हे)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -217,10 +217,10 @@ acct_err_method_disabled	ई साइन-इन तरीका अभी च�
 acct_err_too_many	बहुते कोसिस हो गेल। बाद में फिन कोसिस करऽ।
 acct_err_phone_format	देस के कोड के साथे पूरा फ़ोन नंबर लिखऽ (जइसे +91…)।
 acct_err_sms_code	ई SMS कोड गलत हे या एकर समय खतम हो गेल।
-acct_err_no_account	ई ईमेल से कोय खाता नञ् हे। नया बनावे खातिर आगे बढ़ेऽ, या दोसर तरीका अपनावऽ।
+acct_err_no_account	ई ईमेल से कोय खाता नञ् हे। नया बनावे खातिर आगे बढ़ऽ, या दोसर तरीका अपनावऽ।
 acct_err_recent_login	सुरक्षा खातिर फिन से साइन इन करऽ, फिन ई बदलाव दोबारा करऽ।
-acct_err_credential_in_use	ई साइन-इन तरीका पहिले से दोसर खाता इस्तेमाल कर रहल हे।
-acct_err_email_in_use	ई ईमेल पहिले से दोसर खाता इस्तेमाल कर रहल हे।
+acct_err_credential_in_use	ई साइन-इन तरीका पहिले से दोसर खाता में इस्तेमाल हो रहल हे।
+acct_err_email_in_use	ई ईमेल पहिले से दोसर खाता में इस्तेमाल हो रहल हे।
 acct_err_already_linked	ई तरीका पहिले से एही खाता से जुड़ल हे।
 acct_err_exists_other_method	ई ईमेल के खाता पहिले से दोसर साइन-इन तरीका से बनल हे। पहिले ओहे तरीका से साइन इन करऽ, फिन अपन खाता पेज से ई जोड़ऽ।
 acct_err_generic	कुछ गड़बड़ हो गेल।
@@ -241,7 +241,7 @@ acct_checkout_failed	चेकआउट फेल हो गेल
 acct_pay_with	{provider} से भुगतान करऽ
 acct_plan_until	{plan} · {date} तक
 acct_unavailable	उपलब्ध नञ्
-acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन से आगे बढ़ेऽ।
+acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन से आगे बढ़ऽ।
 acct_signed_in_fallback	(साइन इन हो गेल)
 acct_email_verified	ईमेल पक्का हो गेल
 acct_email_unverified	ईमेल अभी पक्का नञ् — अपन इनबॉक्स देखऽ
@@ -269,7 +269,7 @@ shop_included	शामिल
 shop_in_cart	{plan} तोहर कार्ट में हे।
 shop_remove	हटावऽ
 shop_cart_is_empty	कार्ट खाली हे।
-shop_prices_unpublished	ई प्रोडक्ट के खुद से खरीदे वाला दर अभी तक नञ् छपल। कस्टम कोटेशन माँगऽ या बाद में फिन देखऽ।
+shop_prices_unpublished	ई प्रोडक्ट के खुद से खरीदे वाला दर अभी तक जारी नञ् भेल। कस्टम कोटेशन माँगऽ या बाद में फिन देखऽ।
 shop_cart_cleared	कार्ट खाली हो गेल।
 plan_free_title	हमेशा मुफ्त
 plan_free_blurb	तोहर डिवाइस पर पूरा लोकल प्रोडक्ट। कोय क्लाउड फीस नञ्।

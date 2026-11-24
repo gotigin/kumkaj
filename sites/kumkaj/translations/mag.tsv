@@ -23,7 +23,7 @@ courier_offices_franchise_counters_own	कूरियर दफ्तर · फ
 book_label_hand_over_track	बुक → लेबल → सौंपऽ → ट्रैक → हिसाब।
 next_booking_in_one_tap	एक टैप में अगला बुकिंग
 actual_or_volumetric_weight_rounded	असली या वॉल्यूमेट्रिक वजन, तोहर हिसाब से राउंड कइल
-rider_cash_on_delivery_expected	राइडर के कैश ऑन डिलीवरी: उम्मीद के मुताबिक बनाम जमा कइल
+rider_cash_on_delivery_expected	राइडर के कैश ऑन डिलीवरी: अपेक्षित बनाम जमा कइल
 visit_moklanjo_com	moklanjo.com देखऽ  →
 restaurants_caf_s_quick_service	रेस्टोरेंट · कैफे · क्विक सर्विस · बेकरी
 table_kitchen_bill_day_close	मेज़ → रसोई → बिल → दिन बंद।
@@ -39,9 +39,9 @@ buy_into_stock_offline_forever	खरीद से स्टॉक — हमे
 visit_kirano_shop	kirano.shop देखऽ  →
 chemists_pharmacy_counters	केमिस्ट · फार्मेसी काउंटर
 medicine_batch_bill_day_close	दवाई → बैच → बिल → दिन बंद।
-barcode_and_salt_composition_search	बारकोड आउ सॉल्ट / बनावट से खोज
+barcode_and_salt_composition_search	बारकोड आउ सॉल्ट / कंपोजीशन से खोज
 batch_and_expiry_alerts_on	खरीद पर बैच आउ एक्सपायरी के चेतावनी
-owner_schedule_h_rx_notes	मालिक के Schedule H / Rx नोट — झूठा पालन नञ्
+owner_schedule_h_rx_notes	मालिक के Schedule H / Rx नोट — पालन के झूठा दावा नञ्
 visit_tabiyat_shop	tabiyat.shop देखऽ  →
 n_03_your_books_stay_with	03 · तोहर बही तोहरे पास रहऽ हे
 your_books_live_in_your	तोहर बही तोहर दोकान में रहऽ हे।
@@ -66,7 +66,7 @@ the_internet_is_on_and	इंटरनेट चालू हे — आउ क�
 things_that_leave_the_shop	जे चीज दोकान से बाहर जा हे, जइसे WhatsApp रसीद, ओकरा पहुँचे खातिर अभियो इंटरनेट चाही।
 n_05_price	05 · दर
 free_forever_on_your_devices	तोहर डिवाइस पर हमेशा मुफ्त।
-no_charge_per_seat_user	सीट, यूजर, मेज़, राइडर, पार्सल या लोकल डिवाइस पर कोय खर्च नञ्। ई ट्रायल नञ् हे।
+no_charge_per_seat_user	सीट, यूजर, मेज़, राइडर, पार्सल या लोकल डिवाइस पर कोय फीस नञ्। ई ट्रायल नञ् हे।
 on_your_own_devices	अपन डिवाइस पर
 n_0_forever	₹0, हमेशा
 pay_only_for_what_you	जेतना इस्तेमाल करऽ ओतने के दाम दऽ — सब खातिर एके रेट।
@@ -79,7 +79,7 @@ same_shaping_engine_as_the	ऐप जइसन ओहे शेपिंग इ�
 n_07_who_makes_it	07 · के बनावऽ हे
 made_under_gotigin	Gotigin के तहत बनल।
 trademark	ट्रेडमार्क
-memon_for_find_it_pronounced	मेमन भाषा में “खोजऽ” · उच्चारन गो-टी-गीन
+memon_for_find_it_pronounced	मेमन भाषा में “खोज लऽ” · उच्चारन गो-टी-गीन
 company	कंपनी
 brand	ब्रांड
 concrete_business_operating_system_apps	असली काम के बिजनेस ऑपरेटिंग सिस्टम ऐप

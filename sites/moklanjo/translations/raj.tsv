@@ -19,7 +19,7 @@ book_move_and_settle_every	हर पार्सल बुक करो, भे
 parties_books_cod_labels_awb	पार्टी, बही, COD, लेबल, AWB पूल, ट्रैकिंग, राइडर अर बिलिंग — काउंटर सूं हिसाब तांई पूरो चक्कर, इंटरनेट हो या नीं हो। थांरै डिवाइस माथै मुफत।
 the_walk_in_loop	वॉक-इन रो चक्कर
 actual_and_volumetric_side_by	असली अर वॉल्यूमेट्रिक, आमनै-सामनै।
-charge	खर्चो
+charge	भाड़ो
 your_rate_card_cash_or	थांरो रेट कार्ड, नकद या खातो।
 next_booking	आगली बुकिंग
 one_tap_clears_the_counter	एक टैप में काउंटर आगलै वॉक-इन रै वास्तै खाली हो जावै छै।
@@ -32,8 +32,8 @@ international	अंतरराष्ट्रीय
 breadth	चौड़ाई
 height	ऊंचाई
 weight_on_the_scale	तराजू माथै वजन
-chargeable_weight	खर्चै वाळो वजन
-the_box_s_size_sets	डब्बै रो साइज खर्चो तय करै छै।
+chargeable_weight	भाड़ै वाळो वजन
+the_box_s_size_sets	डब्बै रो साइज भाड़ो तय करै छै।
 higher_of_the_two_rounded	दोनूं में जको बेसी, आगलै 0.5 kg तांई बधायो।
 in_the_app_the_divisor	ऐप में भाजक, राउंड करण रो कदम अर थांरी इकाइयां (cm या इंच, kg या lb) दुकान आपै तय करै छै। अंतरराष्ट्रीय चिप सेटिंग्स नै छुयां बिना एक बुकिंग रै वास्तै ÷6000 कर देवै छै।
 n_3_price_it	3 · कीमत तय करो
@@ -64,9 +64,9 @@ hand_it_to_a_carrier	कैरियर नै सूंपो, या आपर
 into_a_carrier_bag	कैरियर रै थैलै में
 the_manifest_holds_exactly_the	मैनिफेस्ट में फगत वै ई पार्सल रैवै जका थे चुण्या — सगळा, नींतर एक भी कोनी। दूजा कैरियर रै साथै बुक हुयोड़ो पार्सल इण थैलै में कोनी जा सकै।
 onto_your_own_rider_s	आपरै राइडर रै फेरै माथै
-pick_the_parcels_print_the	पार्सल चुणो, रन सीट छापो, अर राइडर उणी ऐप सूं राइडर मोड में काम करै छै — डिलीवरी रै सबूत समेत।
+pick_the_parcels_print_the	पार्सल चुणो, रन शीट छापो, अर राइडर उणी ऐप सूं राइडर मोड में काम करै छै — डिलीवरी रै सबूत समेत।
 n_6_track_and_prove	6 · ट्रैक अर सबूत
-every_move_recorded_and_only	हर हरकत दर्ज — अर फगत मतलब री हरकतां।
+every_move_recorded_and_only	हर कदम दर्ज — अर फगत वै ई कदम जका ठीक बैठै।
 booked	बुक हुयो
 with_carrier	कैरियर कनै
 out_for_delivery	डिलीवरी रै वास्तै बारै
@@ -74,17 +74,17 @@ delivered	पहुँचा दियो
 booked_with_carrier_out_for	बुक हुयो → कैरियर कनै → डिलीवरी रै वास्तै बारै → पहुँचा दियो
 failed	असफल
 reason_out_again_or_return	→ कारण → फेर बारै, या भेजण वाळा नै लौटाओ।
-impossible_moves_refused	नामुमकिन हरकतां नामंजूर
+impossible_moves_refused	नामुमकिन कदम नामंजूर
 delivered_returned_and_cancelled	पहुंचायोड़ा, पाछा आयोड़ा अर रद्द — ऐ आखिरी छै।
 proof_of_delivery	डिलीवरी रो सबूत
 a_photo_and_the_receiver	डॉकेट माथै एक फोटो अर लेवण वाळा रा दस्तखत।
 failed_deliveries	असफल डिलीवरी
 reasons_attempts_out_again_or	कारण, कोसिसां, फेर बारै, या भेजण वाळा नै पाछो।
 n_7_money_comes_home	7 · पईसा घरै आवै छै
-cod_you_can_see_expected	दीखण वाळो COD: उम्मीद रै मुजब, जमा करियो, हर भेजण वाळा नै देवणो।
+cod_you_can_see_expected	दीखण वाळो COD: अपेक्षित, जमा करियो, हर भेजण वाळा नै देवणो।
 rider_cash_end_of_run	फेरै रै आखिर में राइडर रो नकद
 rider	राइडर
-expected	उम्मीद रै मुजब
+expected	अपेक्षित
 handed_in	जमा करियो
 a_14_drops	A · 14 डिलीवरी
 b_9_drops	B · 9 डिलीवरी
@@ -92,7 +92,7 @@ short_200_on_rider_b	राइडर B रा ₹ 200 कम — नांव �
 cod_register	COD रजिस्टर
 collected_against_paid_out_per	वसूली बनाम भुगतान, हर भेजण वाळा रै हिसाब सूं, रेमिटेंस बैच रै साथै।
 rider_settlement	राइडर रो हिसाब
-expected_against_handed_in_and	उम्मीद रै मुजब बनाम जमा करियो, अर कमीसन री स्लिप।
+expected_against_handed_in_and	अपेक्षित बनाम जमा करियो, अर कमीसन री स्लिप।
 books_that_close	मिलण वाळी बही
 day_book_month_bill_per	दिन री बही, हर खातै रो महीना रो बिल, अर थांरै अकाउंटेंट रै वास्तै GST सार CSV।
 n_8_internet_down	8 · इंटरनेट बंद?
@@ -118,7 +118,7 @@ terms	सरतां
 cancellation	रद्द करण रो नियम
 cloud_shop	क्लाउड दुकान
 account	खातो
-weigh_it_right	सही तोल
+weigh_it_right	सही तोलो
 price_it	कीमत तय करो
 label_it	लेबल लगाओ
 track_and_prove	ट्रैक अर सबूत
@@ -130,8 +130,8 @@ weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	तराजू माथै: {kg} kg
-weight_scale_wins	तराजू रो वजन खर्चो तय करै छै।
-cta_installers_note	हर इंस्टॉलर साफ मसीन माथै इंस्टॉल जांच पास करियां पछै अठै आसी। जद तांई WhatsApp माथै डेमो मांगो।
+weight_scale_wins	तराजू रो वजन भाड़ो तय करै छै।
+cta_installers_note	हर इंस्टॉलर साफ मसीन माथै इंस्टॉल जांच पास करियां पछै अठै आसी। तद तांई WhatsApp माथै डेमो मांगो।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दी खुलसी। थांरो मैसेज इयां होसी: “{message}”।
 acct_page_title	खातो — Moklanjo
 acct_lede	साइट अर ऐप रै वास्तै एक ई खातो — नवा हो या पाछा आया हो, वो ई फॉर्म।
@@ -150,7 +150,7 @@ acct_send_sms	SMS कोड भेजो
 acct_sms_code	SMS कोड
 acct_confirm_code	कोड पक्को करो
 acct_signed_in	साइन इन हुयो
-acct_signed_in_as	इण रूप में साइन इन
+acct_signed_in_as	साइन इन करियोड़ो खातो
 acct_status	स्थिति
 acct_sign_in_methods	साइन-इन रा तरीका
 acct_cloud_username	क्लाउड यूजरनेम
@@ -176,7 +176,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	थांरी कार्ट खाली छै। Steady, Swift या Priority जोड़ो।
 shop_checkout	चेकआउट
 shop_clear	मिटाओ
-shop_checkout_hint	चेकआउट थांनै खातै में साइन इन करावै छै, फेर भुगतान सरू करै छै (सैंडबॉक्स मॉक, या की सेट होवण माथै Paddle)।
+shop_checkout_hint	चेकआउट थांनै खातै में साइन इन करावै छै, फेर भुगतान सरू करै छै (सैंडबॉक्स मॉक, या कुंजियां सेट होवण माथै Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट माथै गेटवे टैक्स जोड़ै छै। लोकल बरताव हमेशा मुफत रैवै छै। कस्टम एक कोटेसन छै (Steady सूं कम या Priority सूं बेसी हो सकै छै)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन

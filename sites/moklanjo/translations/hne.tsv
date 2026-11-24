@@ -19,7 +19,7 @@ book_move_and_settle_every	हर पार्सल बुक करव, भे
 parties_books_cod_labels_awb	पार्टी, बही, COD, लेबल, AWB पूल, ट्रैकिंग, राइडर अउ बिलिंग — काउंटर ले हिसाब तक पूरा चक्कर, इंटरनेट रहय या झन रहय। तुंहर डिवाइस म मुफत।
 the_walk_in_loop	वॉक-इन के चक्कर
 actual_and_volumetric_side_by	असली अउ वॉल्यूमेट्रिक, अगल-बगल।
-charge	खर्च
+charge	शुल्क
 your_rate_card_cash_or	तुंहर रेट कार्ड, नकद या खाता।
 next_booking	अगला बुकिंग
 one_tap_clears_the_counter	एक टैप म काउंटर अगला वॉक-इन बर खाली हो जाथे।
@@ -32,8 +32,8 @@ international	अंतरराष्ट्रीय
 breadth	चौड़ाई
 height	ऊँचाई
 weight_on_the_scale	तराजू म वजन
-chargeable_weight	खर्च वाला वजन
-the_box_s_size_sets	डब्बा के साइज खर्च तय करथे।
+chargeable_weight	चार्जेबल वजन
+the_box_s_size_sets	डब्बा के साइज शुल्क तय करथे।
 higher_of_the_two_rounded	दूनो म जउन जादा, अगला 0.5 kg तक बढ़ाए।
 in_the_app_the_divisor	ऐप म भाजक, राउंड करे के कदम अउ तुंहर इकाई (cm या इंच, kg या lb) दुकान खुद तय करथे। अंतरराष्ट्रीय चिप सेटिंग ला छुए बिना एक बुकिंग बर ÷6000 कर देथे।
 n_3_price_it	3 · दाम तय करव
@@ -64,27 +64,27 @@ hand_it_to_a_carrier	कैरियर ला सौंपव, या अपन
 into_a_carrier_bag	कैरियर के झोला म
 the_manifest_holds_exactly_the	मैनिफेस्ट म सिरिफ उही पार्सल रहिथे जउन तुमन चुने हव — सब, नइ त एको नइ। दूसर कैरियर संग बुक होए पार्सल ए झोला म नइ जा सकय।
 onto_your_own_rider_s	अपन राइडर के फेरा म
-pick_the_parcels_print_the	पार्सल चुनव, रन सीट छापव, अउ राइडर उही ऐप ले राइडर मोड म काम करथे — डिलीवरी के सबूत समेत।
+pick_the_parcels_print_the	पार्सल चुनव, रन शीट छापव, अउ राइडर उही ऐप ले राइडर मोड म काम करथे — डिलीवरी के सबूत समेत।
 n_6_track_and_prove	6 · ट्रैक अउ सबूत
-every_move_recorded_and_only	हर हरकत दर्ज — अउ सिरिफ मतलब वाला हरकत।
+every_move_recorded_and_only	हर बदलाव दर्ज — अउ सिरिफ मतलब वाला बदलाव।
 booked	बुक होइस
 with_carrier	कैरियर करा
 out_for_delivery	डिलीवरी बर बाहिर
 delivered	पहुँचा दिस
 booked_with_carrier_out_for	बुक होइस → कैरियर करा → डिलीवरी बर बाहिर → पहुँचा दिस
 failed	असफल
-reason_out_again_or_return	→ कारन → फेर बाहिर, या भेजइया ला लौटाव।
-impossible_moves_refused	नामुमकिन हरकत नामंजूर
-delivered_returned_and_cancelled	पहुँचाए, लौटाए अउ रद्द — ए आखिरी हें।
+reason_out_again_or_return	→ कारन → फेर बाहिर, या भेजइया ला लहुटावव।
+impossible_moves_refused	नामुमकिन बदलाव नामंजूर
+delivered_returned_and_cancelled	पहुँचाए, लहुटाए अउ रद्द — ए आखिरी हें।
 proof_of_delivery	डिलीवरी के सबूत
 a_photo_and_the_receiver	डॉकेट म एक फोटो अउ लेवइया के दस्तखत।
 failed_deliveries	असफल डिलीवरी
 reasons_attempts_out_again_or	कारन, कोसिस, फेर बाहिर, या भेजइया ला वापस।
 n_7_money_comes_home	7 · पइसा घर आथे
-cod_you_can_see_expected	दिखइया COD: उम्मीद के मुताबिक, जमा करे, हर भेजइया ला देना।
+cod_you_can_see_expected	COD साफ दिखथे: कतका मिलना चाही, कतका जमा होइस, हर भेजइया ला कतका देना हे।
 rider_cash_end_of_run	फेरा के आखिरी म राइडर के नकद
 rider	राइडर
-expected	उम्मीद के मुताबिक
+expected	मिलना चाही
 handed_in	जमा करे
 a_14_drops	A · 14 डिलीवरी
 b_9_drops	B · 9 डिलीवरी
@@ -92,7 +92,7 @@ short_200_on_rider_b	राइडर B के ₹ 200 कम — नाँव �
 cod_register	COD रजिस्टर
 collected_against_paid_out_per	वसूली बनाम भुगतान, हर भेजइया के हिसाब ले, रेमिटेंस बैच संग।
 rider_settlement	राइडर के हिसाब
-expected_against_handed_in_and	उम्मीद के मुताबिक बनाम जमा करे, अउ कमीसन के स्लिप।
+expected_against_handed_in_and	मिलना चाही बनाम जमा करे, अउ कमीसन के स्लिप।
 books_that_close	मिलइया बही
 day_book_month_bill_per	दिन बही, हर खाता के महीना के बिल, अउ तुंहर अकाउंटेंट बर GST सार CSV।
 n_8_internet_down	8 · इंटरनेट बंद?
@@ -130,7 +130,7 @@ weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	तराजू म: {kg} kg
-weight_scale_wins	तराजू के वजन खर्च तय करथे।
+weight_scale_wins	तराजू के वजन शुल्क तय करथे।
 cta_installers_note	हर इंस्टॉलर साफ मसीन म इंस्टॉल जाँच पास करे के बाद इहाँ आही। तब तक WhatsApp म डेमो माँगव।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दी खुलही। तुंहर मैसेज अइसन होही: “{message}”।
 acct_page_title	खाता — Moklanjo
@@ -138,12 +138,12 @@ acct_lede	साइट अउ ऐप बर एके खाता — नवा
 acct_email	ईमेल
 acct_name_optional	नाँव (मरजी के)
 acct_password	पासवर्ड
-acct_continue	आगे बढ़ें
+acct_continue	आगू बढ़व
 acct_forgot	पासवर्ड भुलागेव?
 acct_reset_hint	हमन रीसेट लिंक ईमेल करबो। उही पता इस्तेमाल करव जेकर ले साइन अप करे रेहेव।
 acct_send_reset	रीसेट लिंक भेजव
 acct_cancel	रद्द
-acct_or_continue	या एकर ले आगे बढ़ें
+acct_or_continue	या एकर ले आगू बढ़व
 acct_phone	फ़ोन
 acct_mobile	मोबाइल नंबर
 acct_send_sms	SMS कोड भेजव
@@ -176,7 +176,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तुंहर कार्ट खाली हे। Steady, Swift या Priority जोड़व।
 shop_checkout	चेकआउट
 shop_clear	मिटावव
-shop_checkout_hint	चेकआउट तुमन ला खाता म साइन इन कराथे, फेर भुगतान सुरू करथे (सैंडबॉक्स मॉक, या की सेट रहे म Paddle)।
+shop_checkout_hint	चेकआउट तुमन ला खाता म साइन इन कराथे, फेर भुगतान सुरू करथे (सैंडबॉक्स मॉक, या कुंजी सेट रहे म Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट म गेटवे टैक्स जोड़थे। लोकल इस्तेमाल हमेशा मुफत रहिथे। कस्टम एक कोटेसन हे (Steady ले कम या Priority ले जादा हो सकथे)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -191,10 +191,10 @@ acct_err_method_disabled	ए साइन-इन तरीका अभी च�
 acct_err_too_many	बहुत कोसिस होगे। बाद म फेर कोसिस करव।
 acct_err_phone_format	देस के कोड संग पूरा फ़ोन नंबर लिखव (जइसे +91…)।
 acct_err_sms_code	ए SMS कोड गलत हे या एकर समय खतम होगे।
-acct_err_no_account	ए ईमेल ले कोनो खाता नइ हे। नवा बनाए बर आगे बढ़ें, या दूसर तरीका अपनावव।
+acct_err_no_account	ए ईमेल ले कोनो खाता नइ हे। नवा बनाए बर आगू बढ़व, या दूसर तरीका अपनावव।
 acct_err_recent_login	सुरक्छा बर फेर ले साइन इन करव, फेर ए बदलाव दुबारा करव।
-acct_err_credential_in_use	ए साइन-इन तरीका पहिली ले दूसर खाता इस्तेमाल करत हे।
-acct_err_email_in_use	ए ईमेल पहिली ले दूसर खाता इस्तेमाल करत हे।
+acct_err_credential_in_use	ए साइन-इन तरीका पहिली ले दूसर खाता म इस्तेमाल होवत हे।
+acct_err_email_in_use	ए ईमेल पहिली ले दूसर खाता म इस्तेमाल होवत हे।
 acct_err_already_linked	ए तरीका पहिली ले इही खाता ले जुड़े हे।
 acct_err_exists_other_method	ए ईमेल के खाता पहिली ले दूसर साइन-इन तरीका ले बने हे। पहिली उही तरीका ले साइन इन करव, फेर अपन खाता पेज ले एला जोड़व।
 acct_err_generic	कुछु गड़बड़ होगे।
@@ -215,7 +215,7 @@ acct_checkout_failed	चेकआउट फेल होगे
 acct_pay_with	{provider} ले भुगतान करव
 acct_plan_until	{plan} · {date} तक
 acct_unavailable	उपलब्ध नइ हे
-acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन ले आगे बढ़ें।
+acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन ले आगू बढ़व।
 acct_signed_in_fallback	(साइन इन होगे)
 acct_email_verified	ईमेल पक्का होगे
 acct_email_unverified	ईमेल अभी पक्का नइ हे — अपन इनबॉक्स देखव

@@ -18,12 +18,12 @@ nothing_on_this_counter_waits	ए काउंटर म कुछु क्ल�
 scroll_or_use_the_dots	हिस्सा मन के बीच जाए बर स्क्रॉल करव या बिंदी इस्तेमाल करव।
 n_02_built_for_your_trade	02 · तुंहर कारोबार बर बने
 a_desk_for_each_trade	हर कारोबार के अपन डेस्क।\nस्विच वाला एक ऐप नइ।
-not_one_app_with_a	कारोबार बदले वाला स्विच वाला एक ऐप नइ। हर प्रोडक्ट एक किसम के काउंटर के हिसाब ले बने हे, ओ कारोबार के अपन सब्द म।
+not_one_app_with_a	कारोबार बदले के स्विच वाला एक ऐप नइ। हर प्रोडक्ट एक किसम के काउंटर के हिसाब ले बने हे, ओ कारोबार के अपन सब्द म।
 courier_offices_franchise_counters_own	कूरियर दफ्तर · फ्रेंचाइजी काउंटर · अपन राइडर
 book_label_hand_over_track	बुक → लेबल → सौंपव → ट्रैक → हिसाब।
 next_booking_in_one_tap	एक टैप म अगला बुकिंग
 actual_or_volumetric_weight_rounded	असली या वॉल्यूमेट्रिक वजन, तुंहर हिसाब ले राउंड करे
-rider_cash_on_delivery_expected	राइडर के कैस ऑन डिलीवरी: उम्मीद के मुताबिक बनाम जमा करे
+rider_cash_on_delivery_expected	राइडर के कैश ऑन डिलीवरी: मिलना चाही बनाम जमा करे
 visit_moklanjo_com	moklanjo.com देखव  →
 restaurants_caf_s_quick_service	रेस्टोरेंट · कैफे · क्विक सर्विस · बेकरी
 table_kitchen_bill_day_close	मेज़ → रसोई → बिल → दिन बंद।
@@ -32,14 +32,14 @@ one_kot_per_kitchen_station	हर रसोई स्टेसन बर एक
 cash_upi_part_payment_due	नकद, UPI, थोर-थोर भुगतान, बाकी अउ टिप
 visit_khaynjo_com	khaynjo.com देखव  →
 kirana_grocery_neighbourhood_shops	किराना · परचून · मोहल्ला के दुकान
-sell_khata_stock_day_book	बेचव → खाता → स्टॉक → दिन बही।
+sell_khata_stock_day_book	बिक्री → खाता → स्टॉक → दिन बही।
 fast_counter_sell_with_short	छोटे कोड ले तेज काउंटर बिक्री
 customer_credit_and_supplier_dues	ग्राहक के उधार अउ सप्लायर के बकाया
 buy_into_stock_offline_forever	खरीदी ले स्टॉक — हमेशा ऑफ़लाइन
 visit_kirano_shop	kirano.shop देखव  →
 chemists_pharmacy_counters	केमिस्ट · फार्मेसी काउंटर
 medicine_batch_bill_day_close	दवाई → बैच → बिल → दिन बंद।
-barcode_and_salt_composition_search	बारकोड अउ सॉल्ट / बनावट ले खोज
+barcode_and_salt_composition_search	बारकोड अउ सॉल्ट / कंपोजीशन ले खोज
 batch_and_expiry_alerts_on	खरीदी म बैच अउ एक्सपायरी के चेतावनी
 owner_schedule_h_rx_notes	मालिक के Schedule H / Rx नोट — झूठा पालन नइ
 visit_tabiyat_shop	tabiyat.shop देखव  →
@@ -66,7 +66,7 @@ the_internet_is_on_and	इंटरनेट चालू हे — अउ क�
 things_that_leave_the_shop	जउन चीज दुकान ले बाहिर जाथे, जइसे WhatsApp रसीद, ओला पहुँचे बर अभो इंटरनेट चाही।
 n_05_price	05 · दाम
 free_forever_on_your_devices	तुंहर डिवाइस म हमेशा मुफत।
-no_charge_per_seat_user	सीट, यूजर, मेज़, राइडर, पार्सल या लोकल डिवाइस म कोनो खर्च नइ हे। ए ट्रायल नो हे।
+no_charge_per_seat_user	सीट, यूजर, मेज़, राइडर, पार्सल या लोकल डिवाइस म कोनो फीस नइ हे। ए ट्रायल नो हे।
 on_your_own_devices	अपन डिवाइस म
 n_0_forever	₹0, हमेशा
 pay_only_for_what_you	जतका इस्तेमाल करव ओतकेच के दाम देवव — सब बर एके रेट।

@@ -2,7 +2,7 @@
 example	उदाहरणम्
 download_free	निःशुल्कम् अवतारयन्तु
 whatsapp_for_a_demo	प्रदर्शनाय WhatsApp कुर्वन्तु
-free_on_android_windows_and	Android, Windows, Linux च मध्ये निःशुल्कम्।
+free_on_android_windows_and	Android, Windows, Linux इत्येतेषु निःशुल्कम्।
 the_pharmacy_counter	औषधालय-काउण्टर्
 pharmacy_counter	औषधालय-काउण्टर्
 tabiyat_the_pharmacy_counter	TABIYAT · औषधालय-काउण्टर्
@@ -11,9 +11,9 @@ medicines_barcode_and_salt_search	औषधानि, बारकोड्-ल�
 tap_the_bill_to_walk	काउण्टर्-विक्रयं द्रष्टुं देयकं स्पृशन्तु
 cash_memo	नगद-पत्रकम्
 ready	सज्जम्
-total	कुल
+total	योगफलम्
 tap_to_add_the_first	प्रथमम् औषधं योजयितुं स्पृशन्तु
-example_pharmacy_lines_not_a	उदाहरण-औषधपङ्क्तयः, न वास्तविकं काउण्टर्। Tabiyat समानं मार्गम् अनुसरति: विक्रयः → लेखासमाप्तिः → दिवस लेजर।
+example_pharmacy_lines_not_a	उदाहरण-औषधपङ्क्तयः, न वास्तविकं काउण्टर्। Tabiyat समानं मार्गम् अनुसरति: विक्रयः → लेखासमाप्तिः → दैनिकलेखा।
 n_2_counter_sell	2 · काउण्टर्-विक्रयः
 medicine_quantity_pay_three_taps	औषधम्, परिमाणम्, भुगतानम् — त्रयः स्पर्शाः।
 upi_qr_ready	UPI QR सज्जम्
@@ -22,7 +22,7 @@ fast_counter_billing	शीघ्रा काउण्टर्-देयकव
 add_the_line_set_the	पङ्क्तिं योजयन्तु, परिमाणं लिखन्तु, लेखां समापयन्तु — नगदम्, UPI, विभक्तं वा।
 gst_tax_invoice_or_cash	GST कर-बीजकं नगदपत्रकं वा
 the_bill_lane_you_need	विक्रयाय यः देयकप्रकारः आवश्यकः।
-day_book_follows	दिवस लेजर अनुगच्छति
+day_book_follows	दैनिकलेखा अनुगच्छति
 every_tender_lands_in_books	विक्रयं समापयन्ति एव प्रत्येकं भुगतानं लेखासु प्रविशति।
 n_3_barcode_salt	3 · बारकोड् लवणं च
 scan_the_barcode_or_find	बारकोड् स्कैन् कुर्वन्तु — अथवा लवणेन अन्विष्यन्तु।
@@ -32,7 +32,7 @@ salt_amoxicillin	लवणम्: amoxicillin
 ranks_barcode_name_and_composition	बारकोड्, नाम, संरचनां च सह क्रमयति।
 wedge_scanner_or_type_enter	वेज्-स्कैनर् अथवा Enter — पङ्क्तिः देयके आगच्छति।
 barcode_first	प्रथमं बारकोड्
-scan_or_paste_the_code	सङ्केतं स्कैन् कुर्वन्तु लेपयन्तु वा; सूच्यां मिलितम् औषधं दृश्यते।
+scan_or_paste_the_code	सङ्केतं स्कैन् कुर्वन्तु लेपयन्तु वा; सूच्याम् अनुरूपम् औषधं दृश्यते।
 salt_composition	लवणम् / संरचना
 type_the_salt_when_the	ग्राहकः ब्राण्ड्-नाम न वदति चेत् लवणं लिखन्तु।
 owner_rx_schedule_h_flags	स्वामिनः Rx / Schedule H चिह्नानि
@@ -51,8 +51,8 @@ books_and_sell_can_hint	तिथेः अतिक्रमणात् पू
 owner_practice	स्वामिनः अभ्यासः
 fefo_hints_and_rx_notes	FEFO सङ्केताः Rx टिप्पण्यः च भवद्भिः अनुसर्तव्याः — Tabiyat भवद्भिः लिखितम् एव अभिलिखति।
 n_5_khata	5 · खाता
-customer_credit_and_supplier_dues	ग्राहकस्य उधारं आपूर्तिकर्तुः देयं च एकस्यां पार्टी-पुस्तिकायाम्।
-mehta_clinic_customer	Mehta Clinic · ग्राहक
+customer_credit_and_supplier_dues	ग्राहकस्य ऋणम् आपूर्तिकर्तुः देयं च एकस्यां पार्टी-पुस्तिकायाम्।
+mehta_clinic_customer	Mehta Clinic · ग्राहकः
 due_from_earlier	पूर्वतनं देयम्
 today_s_sale_due	+ अद्यतनः विक्रयः (देयम्)
 balance	शेषः
@@ -62,20 +62,20 @@ leave_a_balance_on_khata	पृथक् लेखा-अनुप्रयो�
 supplier_buys_too	आपूर्तिकर्तृतः क्रयः अपि
 who_you_owe_updates_when	भाण्डारः आगच्छति तदा कस्मै देयम् इति नवीक्रियते।
 auditable	परीक्षणीयम्
-who_when_and_how_much	कः, कदा, कियत् च — दिवस लेजर मध्ये तिष्ठति।
+who_when_and_how_much	कः, कदा, कियत् च — दैनिकलेखायां तिष्ठति।
 n_6_internet_down	6 · अन्तर्जालं नास्ति?
 the_internet_drops_the_counter	अन्तर्जालं गतम्। काउण्टर् विक्रयं निरन्तरं करोति।
 router_no_internet	रूटर्: अन्तर्जालं नास्ति
-main_counter_selling_and_settling	मुख्यं काउण्टर्: विक्रयः लेखासमाप्तिः च प्रचलति
+main_counter_selling_and_settling	मुख्यं काउण्टर्: विक्रयः लेखासमाप्तिः च प्रचलतः
 second_till_joined_on_your	द्वितीयं काउण्टर्: भवतः स्व-Wi-Fi मध्ये संयुक्तम्
 books_live_on_the_shop	लेखाः आपणस्य उपकरणेषु तिष्ठन्ति
 when_the_internet_drops_nothing	अन्तर्जालं गच्छति चेदपि औषधालय-काउण्टर् मध्ये किमपि तत् न प्रतीक्षते।
-one_server_lan_clients	एकः सर्वर्, LAN ग्राहकाः
-extra_tills_share_the_same	अतिरिक्तानि काउण्टर् आपणजाले समानाः लेखाः विभजन्ति।
+one_server_lan_clients	एकः सर्वर्, LAN ग्राहकयन्त्राणि
+extra_tills_share_the_same	अतिरिक्तानि काउण्टर् आपणजालेन ताः एव लेखाः सम्भूय उपयुञ्जते।
 n_7_free_forever_locally	7 · स्थानीयरूपेण सर्वदा निःशुल्कम्
 free_forever_on_your_devices	भवतः उपकरणेषु सर्वदा निःशुल्कम्।
 no_per_bill_charge	प्रतिदेयकं शुल्कं नास्ति
-no_fee_per_sale_medicine	स्थानीयसंस्थापने विक्रयः, औषधम्, काउण्टर्, कर्मचारि-PIN वा प्रति शुल्कं नास्ति।
+no_fee_per_sale_medicine	स्थानीयसंस्थापने विक्रयम्, औषधम्, काउण्टर्, कर्मचारि-PIN वा प्रति शुल्कं नास्ति।
 android_windows_linux	Android, Windows, Linux
 the_same_tabiyat_on_the	दूरभाषे डेस्क्टॉप्-काउण्टर् मध्ये च समानं Tabiyat।
 optional_kumkaj_cloud	ऐच्छिकः Kumkaj Cloud
@@ -85,7 +85,7 @@ put_tabiyat_on_the_counter	Tabiyat काउण्टर् मध्ये स�
 download_free_or_whatsapp_for	निःशुल्कम् अवतारयन्तु, अथवा स्वौषधालयं नगरं च उक्त्वा प्रदर्शनाय WhatsApp कुर्वन्तु।
 privacy	गोपनीयता
 terms	नियमाः
-cancellation	रद्दीकरण-नीतिः
+cancellation	निरसन-नीतिः
 cloud_shop	मेघ-आपणम्
 account	खाता
 chapter_counter_sell	काउण्टर्-विक्रयः
@@ -97,14 +97,14 @@ chapter_offline	अन्तर्जालरहितम्
 chapter_start	आरभन्ताम्
 bill_selling	विक्रयः प्रचलति
 bill_settle	भुगतानम्
-bill_paid	भुक्त
+bill_paid	शोधितम्
 bill_next_line	अग्रिमां पङ्क्तिं योजयितुं स्पृशन्तु
 bill_settle_hint	भुगतानाय स्पृशन्तु — नगदं UPI वा
-bill_upi_paid	UPI ₹ 162 · भुक्तम्
-bill_paid_line	भुक्तम् · दिवस लेजर नवीकृतम्
+bill_upi_paid	UPI ₹ 162 · शोधितम्
+bill_paid_line	शोधितम् · दैनिकलेखा नवीकृता
 lan_eyebrow	6 · अतिरिक्तं काउण्टर्
 lan_title	आपणस्य Wi-Fi मध्ये अन्यत् काउण्टर्।
-cta_installers_note	प्रत्येकः संस्थापकः शुद्धयन्त्रे संस्थापनपरीक्षायाम् उत्तीर्णः भवति चेत् अत्र आगमिष्यति। तावत् WhatsApp मध्ये प्रदर्शनं याचन्ताम्।
+cta_installers_note	प्रत्येकं संस्थापनसङ्कुलं शुद्धयन्त्रे संस्थापनपरीक्षायाम् उत्तीर्णं भवति चेत् अत्र आगमिष्यति। तावत् WhatsApp मध्ये प्रदर्शनं याचन्ताम्।
 cta_whatsapp_soon	WhatsApp प्रदर्शनरेखा शीघ्रम् उद्घटिष्यते। भवतः सन्देशः एवं भविष्यति: “{message}”।
 acct_page_title	खाता — Tabiyat
 acct_lede	जालस्थलाय अनुप्रयोगेभ्यः च एका खाता — नूतनाः वा पुनरागताः वा, समानं प्रपत्रम्।
@@ -113,9 +113,9 @@ acct_name_optional	नाम (ऐच्छिकम्)
 acct_password	गुप्तशब्दः
 acct_continue	निरन्तरं कुर्वन्तु
 acct_forgot	गुप्तशब्दं विस्मृतवन्तः?
-acct_reset_hint	वयं पुनर्स्थापन-लिङ्कं ईपत्रेण प्रेषयिष्यामः। येन सङ्केतेन पञ्जीकृतवन्तः तम् एव प्रयुञ्जताम्।
-acct_send_reset	पुनर्स्थापन-लिङ्कं प्रेषयन्तु
-acct_cancel	रद्दं कुर्वन्तु
+acct_reset_hint	वयं पुनःस्थापन-लिङ्कम् ईपत्रेण प्रेषयिष्यामः। येन सङ्केतेन पञ्जीकृतवन्तः तम् एव प्रयुञ्जताम्।
+acct_send_reset	पुनःस्थापन-लिङ्कं प्रेषयन्तु
+acct_cancel	निरस्यन्तु
 acct_or_continue	अथवा अनेन निरन्तरं कुर्वन्तु
 acct_phone	दूरभाषः
 acct_mobile	चलदूरभाष-सङ्ख्या
@@ -153,12 +153,12 @@ shop_checkout_hint	चेकआउट् भवन्तं खाताया�
 acct_billing_hint	वार्षिकाः योजनाः — चेकआउट् समये द्वारमार्गः करं योजयति। स्थानीयः उपयोगः सर्वदा निःशुल्कः। अनुकूलितं मूल्योद्धरणम् (Steady तः न्यूनं Priority तः अधिकं वा भवितुम् अर्हति)।
 shop_cloud_plans	मेघ-योजनाः
 acct_federated	संघीय-प्रवेशः
-acct_err_invalid_email	शुद्धं ईपत्र-सङ्केतं लिखन्तु।
+acct_err_invalid_email	शुद्धम् ईपत्र-सङ्केतं लिखन्तु।
 acct_err_weak_password	न्यूनातिन्यूनं 6 अक्षराणां गुप्तशब्दं प्रयुञ्जताम्।
 acct_err_wrong_password	अशुद्धः गुप्तशब्दः।
 acct_err_invalid_credential	ईपत्रं गुप्तशब्दः वा अशुद्धः।
 acct_err_popup_closed	प्रवेश-गवाक्षः पिहितः।
-acct_err_popup_cancelled	प्रवेशः रद्दः अभवत्।
+acct_err_popup_cancelled	प्रवेशः निरस्तः अभवत्।
 acct_err_unauthorized_domain	एतत् डोमेन् Firebase Auth कृते अधिकृतं नास्ति।
 acct_err_method_disabled	अयं प्रवेशविधिः अद्यापि सक्रियः नास्ति।
 acct_err_too_many	अत्यधिकाः प्रयत्नाः। पश्चात् पुनः प्रयतन्ताम्।
@@ -170,7 +170,7 @@ acct_err_credential_in_use	सः प्रवेशविधिः पूर्
 acct_err_email_in_use	तत् ईपत्रं पूर्वमेव अन्यया खातया प्रयुज्यते।
 acct_err_already_linked	सः विधिः पूर्वमेव अस्यां खातायां संयुक्तः।
 acct_err_exists_other_method	अनेन ईपत्रेण अन्येन प्रवेशविधिना खाता पूर्वमेव अस्ति। प्रथमं तेन विधिना प्रविशन्तु, ततः स्वखातापृष्ठात् इमं संयोजयन्तु।
-acct_err_generic	किञ्चित् दोषः अभवत्।
+acct_err_generic	कश्चित् दोषः अभवत्।
 acct_method_password	ईपत्रं गुप्तशब्दः च
 acct_pw_hint_change	भवतः गुप्तशब्दं परिवर्तयन्तु। वर्तमानेन गुप्तशब्देन पुष्टीकर्तव्यम्।
 acct_pw_hint_add	गुप्तशब्दं योजयन्तु येन ईपत्रेण अपि प्रवेष्टुं शक्नुयुः (कोऽपि प्रदाता अनुपलब्धः चेत् उपयोगी)।
@@ -196,15 +196,15 @@ acct_signed_in_phone	दूरभाषेण प्रविष्टम्
 acct_none_listed	अद्यापि किमपि न सूचीकृतम्
 acct_signed_in_status	भवान् प्रविष्टः अस्ति।
 acct_created	खाता निर्मिता। यदा शक्नुवन्ति तदा सत्यापनाय स्व-ईपत्रं पश्यन्तु।
-acct_reset_sent	तस्य ईपत्रस्य खाता अस्ति चेत्, पुनर्स्थापन-लिङ्कम् आगच्छति। स्व-इनबॉक्स् पश्यन्तु।
+acct_reset_sent	तस्य ईपत्रस्य खाता अस्ति चेत्, पुनःस्थापन-लिङ्कम् आगच्छति। स्व-इनबॉक्स् पश्यन्तु।
 acct_another_method	अन्यः विधिः
 acct_exists_via	{email} कृते खाता {method} द्वारा पूर्वमेव अस्ति। प्रथमं तथा प्रविशन्तु, ततः स्वखातापृष्ठात् इमं प्रदातारं संयोजयन्तु।
 acct_enter_current_pw	भवतः वर्तमानं गुप्तशब्दं लिखन्तु।
 acct_relogin_retry	निर्गम्य पुनः प्रविशन्तु, ततः पुनः प्रयतन्ताम्।
-acct_pw_mismatch	नूतनः गुप्तशब्दः पुष्टिः च न मिलतः।
+acct_pw_mismatch	नूतनः गुप्तशब्दः तस्य पुष्टिः च समानौ न स्तः।
 acct_pw_updated	गुप्तशब्दः नवीकृतः।
-acct_enter_email_pw	गुप्तशब्द-प्रवेशाय एकं ईपत्रं लिखन्तु।
-acct_pw_added	गुप्तशब्दः योजितः। इदानीं ईपत्रेण अपि प्रवेष्टुं शक्नुवन्ति।
+acct_enter_email_pw	गुप्तशब्द-प्रवेशाय एकम् ईपत्रं लिखन्तु।
+acct_pw_added	गुप्तशब्दः योजितः। इदानीम् ईपत्रेण अपि प्रवेष्टुं शक्नुवन्ति।
 acct_method_linked	प्रवेशविधिः संयुक्तः।
 acct_phone_linked	दूरभाषः अस्यां खातायां संयुक्तः।
 acct_verify_sent	सत्यापन-ईपत्रं प्रेषितम् — स्व-इनबॉक्स् पश्यन्तु।
@@ -219,7 +219,7 @@ shop_cart_is_empty	कार्ट् रिक्तम्।
 shop_prices_unpublished	अस्य उत्पादस्य स्वयंक्रय-मूल्यानि अद्यापि न प्रकाशितानि। अनुकूलितं मूल्योद्धरणं याचन्ताम्, अथवा पश्चात् पुनः पश्यन्तु।
 shop_cart_cleared	कार्ट् मार्जितम्।
 plan_free_title	सर्वदा निःशुल्कम्
-plan_free_blurb	भवतः उपकरणेषु सम्पूर्णं स्थानीयम् उत्पादम्। मेघशुल्कं नास्ति।
+plan_free_blurb	भवतः उपकरणेषु सम्पूर्णः स्थानीयः उत्पादः। मेघशुल्कं नास्ति।
 plan_steady_blurb	सजीवः मेघः · 10 GB · न्यून-बैण्ड्विड्थ्
 plan_swift_blurb	सजीवः मेघः · 25 GB · मध्यम-बैण्ड्विड्थ्
 plan_priority_blurb	सजीवः मेघः · 50 GB · उच्चतम-मानक-बैण्ड्विड्थ्

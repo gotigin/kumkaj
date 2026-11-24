@@ -50,31 +50,31 @@ first_slab_and_each_extra	पहिला स्लैब आ हर अति�
 a_consignor_s_own_card	भेजे वाला के आपन कार्ड
 regular_senders_get_their_rates	नियमित भेजे वाला लोग के आपन रेट मिलेला; बाकी सभ खातिर डिफॉल्ट कार्ड।
 margin_at_the_desk	डेस्के पर मुनाफा
-your_sell_price_against_the	ढोवे वाला के दाम के सामने राउर बिक्री दाम, हर डॉकेट पर।
+your_sell_price_against_the	कूरियर कंपनी के दाम के सामने राउर बिक्री दाम, हर डॉकेट पर।
 n_4_label_it	4 · लेबल लगाईं
 awb_from_your_own_number	अपना नंबर पूल से AWB। लेबल, स्कैन, खोज।
-number_pools_per_carrier	हर ढोवे वाला के नंबर पूल
-enter_each_carrier_s_start	हर ढोवे वाला के सुरू–आखिर सीरीज एक बेर लिखीं; हर बुकिंग अगिला नंबर लेला।
+number_pools_per_carrier	हर कूरियर कंपनी के नंबर पूल
+enter_each_carrier_s_start	हर कूरियर कंपनी के सुरू–आखिर सीरीज एक बेर लिखीं; हर बुकिंग अगिला नंबर लेला।
 code_128_labels	Code 128 लेबल
 the_awb_goes_on_the	AWB डिब्बा पर बारकोड आ सादा अंक दूनो रूप में लागेला।
 scan_to_find	खोजे खातिर स्कैन करीं
 scan_a_label_to_open	लेबल स्कैन क के ओकर डॉकेट खोलीं आ काम करीं।
 n_5_hand_over	5 · सौंपीं
-hand_it_to_a_carrier	ढोवे वाला के सौंपीं, भा आपन राइडर भेजीं। ओहिजे सिस्टम।
-into_a_carrier_bag	ढोवे वाला के झोला में
-the_manifest_holds_exactly_the	मैनिफेस्ट में खाली ऊहे पार्सल रहेला जवन रउआ चुननी — सभ, ना त एको ना। दोसर ढोवे वाला के साथे बुक भइल पार्सल एह झोला में ना जा सकेला।
+hand_it_to_a_carrier	कूरियर कंपनी के सौंपीं, भा आपन राइडर भेजीं। उहे सिस्टम।
+into_a_carrier_bag	कूरियर कंपनी के झोला में
+the_manifest_holds_exactly_the	मैनिफेस्ट में खाली उहे पार्सल रहेला जवन रउआ चुननी — सभ, ना त एको ना। दोसर कूरियर कंपनी से बुक भइल पार्सल एह झोला में ना जा सकेला।
 onto_your_own_rider_s	अपना राइडर के फेरा पर
 pick_the_parcels_print_the	पार्सल चुनीं, रन शीट छापीं, आ राइडर ओही ऐप से राइडर मोड में काम करेला — डिलीवरी के सबूत समेत।
 n_6_track_and_prove	6 · ट्रैक आ सबूत
-every_move_recorded_and_only	हर हरकत दर्ज — आ खाली मतलब वाला हरकत।
+every_move_recorded_and_only	हर कदम दर्ज — आ खाली सही कदम।
 booked	बुक भइल
-with_carrier	ढोवे वाला लगे
+with_carrier	कूरियर कंपनी लगे
 out_for_delivery	डिलीवरी खातिर निकलल
 delivered	डिलीवर भइल
-booked_with_carrier_out_for	बुक भइल → ढोवे वाला लगे → डिलीवरी खातिर निकलल → डिलीवर भइल
+booked_with_carrier_out_for	बुक भइल → कूरियर कंपनी लगे → डिलीवरी खातिर निकलल → डिलीवर भइल
 failed	फेल
 reason_out_again_or_return	→ कारन → फेर बाहर, भा भेजे वाला के लौटाईं।
-impossible_moves_refused	नामुमकिन हरकत नामंजूर
+impossible_moves_refused	नामुमकिन कदम नामंजूर
 delivered_returned_and_cancelled	डिलीवर, लौटावल आ रद्द — ई आखिरी बा।
 proof_of_delivery	डिलीवरी के सबूत
 a_photo_and_the_receiver	डॉकेट पर एगो फोटो आ लेवे वाला के दस्तखत।
@@ -134,7 +134,7 @@ weight_scale_wins	तराजू के वजन खरचा तय करे
 cta_installers_note	हर इंस्टॉलर साफ मशीन पर इंस्टॉल जाँच पास कइला के बाद इहाँ आई। तब ले WhatsApp पर डेमो माँगीं।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दिए खुली। राउर मैसेज अइसन होई: “{message}”।
 acct_page_title	खाता — Moklanjo
-acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा लौट के आइल, ओहिजे फॉर्म।
+acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा पुरान, फॉर्म उहे।
 acct_email	ईमेल
 acct_name_optional	नाम (मरजी के)
 acct_password	पासवर्ड
@@ -176,7 +176,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	राउर कार्ट खाली बा। Steady, Swift भा Priority जोड़ीं।
 shop_checkout	चेकआउट
 shop_clear	मिटाईं
-shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा की सेट रहला पर Paddle)।
+shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा कुंजी सेट रहला पर Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पर गेटवे टैक्स जोड़ेला। लोकल इस्तेमाल हमेशा मुफ्त रहेला। कस्टम एगो कोटेशन ह (Steady से कम भा Priority से बेसी हो सकेला)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -210,7 +210,7 @@ price_per_year	₹{amount}/साल, टैक्स छोड़ के
 acct_pay_received	भुगतान मिल गइल — राउर प्लान ताजा होत बा…
 acct_pay_declined	भुगतान ना मानल गइल भा फेल हो गइल
 acct_pay_failed_detail	{detail}। राउर प्लान ना बदलल।
-acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान ओहिजे बा।
+acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान जस के तस बा।
 acct_checkout_failed	चेकआउट फेल हो गइल
 acct_pay_with	{provider} से भुगतान करीं
 acct_plan_until	{plan} · {date} ले

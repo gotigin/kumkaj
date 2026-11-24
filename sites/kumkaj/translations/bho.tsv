@@ -41,7 +41,7 @@ chemists_pharmacy_counters	केमिस्ट · फार्मेसी क
 medicine_batch_bill_day_close	दवाई → बैच → बिल → दिन बंद।
 barcode_and_salt_composition_search	बारकोड आ सॉल्ट / बनावट से खोज
 batch_and_expiry_alerts_on	खरीद पर बैच आ एक्सपायरी के चेतावनी
-owner_schedule_h_rx_notes	मालिक के Schedule H / Rx नोट — झूठा पालन ना
+owner_schedule_h_rx_notes	मालिक के Schedule H / Rx नोट — पालन के झूठा दावा ना
 visit_tabiyat_shop	tabiyat.shop देखीं  →
 n_03_your_books_stay_with	03 · राउर बही रउआ लगे रहेला
 your_books_live_in_your	राउर बही राउर दोकान में रहेला।
@@ -74,8 +74,8 @@ planned	योजना में
 cloud_is_planned_and_optional	क्लाउड योजना में बा आ मरजी के बा। काउंटर एकरा बिना चलेला।
 n_06_languages	06 · भाषा
 speaks_your_staff_s_language	राउर स्टाफ के भाषा बोलेला।
-the_same_115_language_catalogue	हर Kumkaj ऐप जइसन ओहिजे 115 भाषा के लिस्ट — अरबी आ उर्दू दाहिना से बावाँ। नीचे भाषा सभ के आपन नाम; हिंदी, गुजराती, तमिल, बंगाली, उर्दू आ अंगरेजी में “खाना तइयार” के नमूना:
-same_shaping_engine_as_the	ऐप जइसन ओहिजे शेपिंग इंजन, एही से जुड़ल अक्षर आ दाहिना से बावाँ लिखल लाइन सही लउकेला।
+the_same_115_language_catalogue	हर Kumkaj ऐप जइसन ओही 115 भाषा के लिस्ट — अरबी आ उर्दू दाहिना से बावाँ। नीचे भाषा सभ के आपन नाम; हिंदी, गुजराती, तमिल, बंगाली, उर्दू आ अंगरेजी में “खाना तइयार” के नमूना:
+same_shaping_engine_as_the	ऐप जइसन उहे शेपिंग इंजन, एही से जुड़ल अक्षर आ दाहिना से बावाँ लिखल लाइन सही लउकेला।
 n_07_who_makes_it	07 · के बनावेला
 made_under_gotigin	Gotigin के तहत बनल।
 trademark	ट्रेडमार्क
@@ -112,7 +112,7 @@ acct_kirano_blurb	किराना काउंटर खाता
 acct_tabiyat_blurb	फार्मेसी काउंटर खाता
 acct_open_account	खाता खोलीं
 shop_page_title	दोकान — Kumkaj
-shop_lede	सालाना क्लाउड प्लान — हर कारोबार खातिर ओहिजे पाँच रूप (हमेशा मुफ्त, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / साल, टैक्स छोड़ के, भा कस्टम कोटेशन)। टैक्स चेकआउट पर जुड़ेला। हर प्रोडक्ट के आपन दोकान आ खाता बा।
+shop_lede	सालाना क्लाउड प्लान — हर कारोबार खातिर उहे पाँच रूप (हमेशा मुफ्त, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / साल, टैक्स छोड़ के, भा कस्टम कोटेशन)। टैक्स चेकआउट पर जुड़ेला। हर प्रोडक्ट के आपन दोकान आ खाता बा।
 shop_product_shops	प्रोडक्ट क्लाउड दोकान
 shop_moklanjo_blurb	moklanjo.com खातिर कूरियर डेस्क क्लाउड
 shop_khaynjo_blurb	khaynjo.com खातिर रेस्टोरेंट क्लाउड

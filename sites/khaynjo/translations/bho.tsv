@@ -20,7 +20,7 @@ works_with_no_internet	बिना इंटरनेट के काम क�
 your_books_stay_on_your	राउर हिसाब-किताब राउरे डिवाइस पर रहेला
 n_115_languages_on_screen	स्क्रीन पर 115 भाषा
 your_floor_at_a_glance	एक नजर में राउर फ्लोर
-tap_a_table_to_walk	कवनो टेबल पर टैप करीं आ एगो आवाजाही सुरू से आखिर ले देखीं। ऐप जइसन ओहिजे रंग आ सबद — आ टेबल तबे खाली होला जब बिल के भुगतान हो जाला।
+tap_a_table_to_walk	कवनो टेबल पर टैप करीं आ मेहमान के आवे से जाए ले के पूरा सिलसिला देखीं। ऐप जइसन उहे रंग आ सबद — आ टेबल तबे खाली होला जब बिल के भुगतान हो जाला।
 every_country	हर देस
 every_country_at_your_counter	राउर काउंटर पर हर देस
 one_famous_dish_from_every	हर देस के एगो मशहूर पकवान — देस के अंगरेजी नाम, ओकरा आपन लिपि में नाम, आ पकवान के अंगरेजी नाम। ई सबद अपना मेनू में लिखीं। दुनिया आगे बढ़त रहेले; देखे के मन होखे त रोकीं भा खोजीं।
@@ -28,7 +28,7 @@ find_a_country_or_dish	देस भा पकवान खोजीं — ज�
 one_famous_dish_per_country	हर देस के एगो मशहूर पकवान — ई झाँकी पूरा दुनिया घूमेले।
 how_a_service_runs	सर्विस कइसे चलेला
 one_table_start_to_finish	एगो टेबल, सुरू से आखिर ले।
-watch_a_table_go_from	देखीं कि टेबल बइठे से भुगतान ले कइसे पहुँचेला — ओहिजे कदम आ रंग जवन राउर स्टाफ ऐप में देखेला।
+watch_a_table_go_from	देखीं कि टेबल बइठे से भुगतान ले कइसे पहुँचेला — उहे कदम आ रंग जवन राउर स्टाफ ऐप में देखेला।
 occupied	भरल
 in_kitchen	रसोई में
 food_ready	खाना तइयार
@@ -49,7 +49,7 @@ prints_itself	अपने आप छपेला
 send_and_the_ticket_prints	भेजीं, आ टिकट सही स्टेशन पर छप जाला — केहू के ले जाए के जरूरत नइखे।
 example_ticket	उदाहरण टिकट
 the_kitchen_sees_what_to	रसोई देखेले कि अबहीं का पकावे के बा
-on_the_kitchen_screen_tickets	रसोई के स्क्रीन पर टिकट एक टैप में नया → बनत बा → तइयार हो जाला। पुरान टिकट के रंग गाढ़ होत जाला, “अबहीं पकाईं” इंतजार करत हर पकवान गिनेला, आ स्टार्टर जाए ले मेन पकवान रुक सकेला।
+on_the_kitchen_screen_tickets	रसोई के स्क्रीन पर टिकट एक टैप में नया → बनत बा → तइयार हो जाला। पुरान टिकट के रंग गाढ़ होत जाला, “अबहीं पकावे के” इंतजार करत हर पकवान गिनेला, आ स्टार्टर जाए ले मेन पकवान रुक सकेला।
 new	नया
 preparing	बनत बा
 ready	तइयार
@@ -160,7 +160,7 @@ floor_meta_min	{min} मिनट
 floor_meta_min_bill	{min} मिनट · ₹ {amount}
 floor_meta_paid	₹ {amount} भुगतान भइल
 acct_page_title	खाता — Khaynjo
-acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा लौट के आइल, ओहिजे फॉर्म।
+acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा पुरान, फॉर्म उहे।
 acct_email	ईमेल
 acct_name_optional	नाम (मरजी के)
 acct_password	पासवर्ड
@@ -202,7 +202,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	राउर कार्ट खाली बा। Steady, Swift भा Priority जोड़ीं।
 shop_checkout	चेकआउट
 shop_clear	मिटाईं
-shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा की सेट रहला पर Paddle)।
+shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा कुंजी सेट रहला पर Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पर गेटवे टैक्स जोड़ेला। लोकल इस्तेमाल हमेशा मुफ्त रहेला। कस्टम एगो कोटेशन ह (Steady से कम भा Priority से बेसी हो सकेला)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -236,7 +236,7 @@ price_per_year	₹{amount}/साल, टैक्स छोड़ के
 acct_pay_received	भुगतान मिल गइल — राउर प्लान ताजा होत बा…
 acct_pay_declined	भुगतान ना मानल गइल भा फेल हो गइल
 acct_pay_failed_detail	{detail}। राउर प्लान ना बदलल।
-acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान ओहिजे बा।
+acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान जस के तस बा।
 acct_checkout_failed	चेकआउट फेल हो गइल
 acct_pay_with	{provider} से भुगतान करीं
 acct_plan_until	{plan} · {date} ले

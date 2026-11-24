@@ -42,7 +42,7 @@ buy_from_the_wholesaler_stock	थोक बौपारी सूं खरी�
 purchase_sharma_wholesale	खरीद · Sharma Wholesale
 stock_50_kg_ap_7	स्टॉक +50 kg · AP ₹ 7,200
 stock_12_l_ap_1	स्टॉक +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	पाछो बेचण वाळो स्टॉक — रसोई रो काचो माल कोनी। खरीद माथै मरजी रो बैच अर एक्सपायरी।
+resale_stock_not_kitchen_raw	आगै बेचण वाळो स्टॉक — रसोई रो काचो माल कोनी। खरीद माथै मरजी रो बैच अर एक्सपायरी।
 buy_creates_stock	खरीद सूं स्टॉक बणै छै
 receive_the_goods_the_catalogue	माल लो; कैटलॉग री मात्रा बध जावै छै।
 who_we_owe	म्हांनै किणनै देवणो छै
@@ -56,7 +56,7 @@ opening_float	सरुआती नकद
 cash_sales	+ नकद बिक्री
 upi_sales	+ UPI बिक्री
 cash_paid_out	− दियोड़ो नकद
-expected_cash	उम्मीद रै मुजब नकद
+expected_cash	अपेक्षित नकद
 counted	गिण्यो
 short	कम
 tenders_stay_separate	भुगतान रा तरीका न्यारा रैवै छै
@@ -107,7 +107,7 @@ bill_cash_return	नकद ₹ 600 · पाछा ₹ 15
 bill_paid_line	भुगतान हुयो · दिन री बही अपडेट हुई
 lan_eyebrow	6 · बेसी बिलिंग काउंटर
 lan_title	दुकान रै Wi-Fi माथै एक और बिलिंग काउंटर।
-cta_installers_note	हर इंस्टॉलर साफ मसीन माथै इंस्टॉल जांच पास करियां पछै अठै आसी। जद तांई WhatsApp माथै डेमो मांगो।
+cta_installers_note	हर इंस्टॉलर साफ मसीन माथै इंस्टॉल जांच पास करियां पछै अठै आसी। तद तांई WhatsApp माथै डेमो मांगो।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दी खुलसी। थांरो मैसेज इयां होसी: “{message}”।
 acct_page_title	खातो — Kirano
 acct_lede	साइट अर ऐप रै वास्तै एक ई खातो — नवा हो या पाछा आया हो, वो ई फॉर्म।
@@ -126,7 +126,7 @@ acct_send_sms	SMS कोड भेजो
 acct_sms_code	SMS कोड
 acct_confirm_code	कोड पक्को करो
 acct_signed_in	साइन इन हुयो
-acct_signed_in_as	इण रूप में साइन इन
+acct_signed_in_as	साइन इन करियोड़ो खातो
 acct_status	स्थिति
 acct_sign_in_methods	साइन-इन रा तरीका
 acct_cloud_username	क्लाउड यूजरनेम
@@ -152,7 +152,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	थांरी कार्ट खाली छै। Steady, Swift या Priority जोड़ो।
 shop_checkout	चेकआउट
 shop_clear	मिटाओ
-shop_checkout_hint	चेकआउट थांनै खातै में साइन इन करावै छै, फेर भुगतान सरू करै छै (सैंडबॉक्स मॉक, या की सेट होवण माथै Paddle)।
+shop_checkout_hint	चेकआउट थांनै खातै में साइन इन करावै छै, फेर भुगतान सरू करै छै (सैंडबॉक्स मॉक, या कुंजियां सेट होवण माथै Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट माथै गेटवे टैक्स जोड़ै छै। लोकल बरताव हमेशा मुफत रैवै छै। कस्टम एक कोटेसन छै (Steady सूं कम या Priority सूं बेसी हो सकै छै)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन

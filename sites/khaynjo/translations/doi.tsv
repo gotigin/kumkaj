@@ -24,11 +24,11 @@ tap_a_table_to_walk	कुसै टेबल पर टैप करो ते 
 every_country	हर देश
 every_country_at_your_counter	तुंदे काउंटर पर हर देश
 one_famous_dish_from_every	हर देश दा इक मशहूर पकवान — देश दा अंग्रेजी नां, उंदी अपनी लिपि च नां, ते पकवान दा अंग्रेजी नां। एह् शब्द अपने मेनू च लिखो। दुनिया अग्गें बधदी रौंह्दी ऐ; दिक्खना होऐ तां रोको जां खोजो।
-find_a_country_or_dish	देश जां पकवान खोजो — जि'यां India, biryani, Japan
+find_a_country_or_dish	देश जां पकवान खोजो — जि’यां India, biryani, Japan
 one_famous_dish_per_country	हर देश दा इक मशहूर पकवान — एह् झांकी सारी दुनिया घुमदी ऐ।
 how_a_service_runs	सर्विस कियां चलदी ऐ
 one_table_start_to_finish	इक टेबल, शुरू थमां अखीर तक्कर।
-watch_a_table_go_from	दिक्खो टेबल बौह्ने थमां भुगतान तक्कर कियां पुजदा ऐ — ओह्दे गै कदम ते रंग जेह्ड़े तुंदा स्टाफ ऐप्प च दिखदा ऐ।
+watch_a_table_go_from	दिक्खो टेबल बौह्ने थमां भुगतान तक्कर कियां पुजदा ऐ — उऐ कदम ते रंग जेह्ड़े तुंदा स्टाफ ऐप्प च दिखदा ऐ।
 occupied	भरोया
 in_kitchen	रसोई च
 food_ready	खाना तैयार
@@ -47,15 +47,15 @@ one_ticket_per_kitchen_station	हर रसोई स्टेशन आस्�
 send_the_order_and_each	ऑर्डर भेजो ते हर स्टेशन गी सिर्फ अपने पकवान मिलदे न — दिनै दे नंबर कन्नै, टेबल, वेटर ते हर नोट कन्नै। कीमत कदें नेईं: रसोई पकांदी ऐ, काउंटर बिल बनांदा ऐ।
 prints_itself	अपने आप छपदा ऐ
 send_and_the_ticket_prints	भेजो, ते टिकट ठीक स्टेशन पर छपदा ऐ — कुसै गी लेई जाने दी लोड़ नेईं।
-example_ticket	मसाली टिकट
+example_ticket	नमूने दा टिकट
 the_kitchen_sees_what_to	रसोई दिखदी ऐ जे हून के पकाना ऐ
 on_the_kitchen_screen_tickets	रसोई दी स्क्रीन पर टिकट इक टैप कन्नै नमां → तैयारी च → तैयार होंदे न। पराने टिकटें दा रंग गूढ़ा होंदा जंदा ऐ, “हून पकाओ” उडीकदे हर पकवान गी गिनदा ऐ, ते स्टार्टर जाने तक्कर मेन पकवान रुकी सकदे न।
 new	नमां
 preparing	तैयारी च
 ready	तैयार
-example_kitchen_screen	मसाली रसोई स्क्रीन
-settle_any_way_the_guest	पराह्ना जि'यां देऐ, उ'यां गै हिसाब करो
-cash_with_change_to_return	परतोने आह्ले बकाया कन्नै नकद, QR च पैह्लें गै रकम कन्नै UPI, थोड़ा भुगतान, जां ग्राहक दे खाते च बकाया। चीजें, सीटें जां बराबर बंडो। टेबल तां गै खाली होंदा ऐ जिसलै उसदा बिल भुगतान होई जंदा ऐ।
+example_kitchen_screen	नमूने दी रसोई स्क्रीन
+settle_any_way_the_guest	पराह्ना जि’यां देऐ, उ’यां गै हिसाब करो
+cash_with_change_to_return	परताने आह्ले बाकी पैसें कन्नै नकद, QR च पैह्लें गै रकम कन्नै UPI, थोड़ा भुगतान, जां ग्राहक दे खाते च बकाया। चीजें मताबक, सीटें मताबक जां बराबर बंडो। टेबल तां गै खाली होंदा ऐ जिसलै उसदे बिल दा भुगतान होई जंदा ऐ।
 tips_stay_apart	टिप बक्खरी रौंह्दी ऐ
 a_tip_is_recorded_on	टिप बक्खरी दर्ज होंदी ऐ — बिक्री च कदें नेईं रलदी।
 t4_bill_printed	T4 · बिल छपेआ
@@ -74,11 +74,11 @@ counted	गिनेआ
 short	घट्ट
 everything_else_the_floor_needs	हॉल गी होर जे किश लोड़चदा ऐ
 built_for_a_real_service	असली सर्विस आस्तै बनाया।
-the_changes_that_happen_every	ओह् बदलाऽ जेह्ड़े हर दपैह्र होंदे न — खु'ल्लेआम सम्हाले जंदे न, कुन, कदूं ते की, सब दर्ज।
+the_changes_that_happen_every	ओह् बदलाऽ जेह्ड़े हर दपैह्र होंदे न — खु’ल्लेआम सम्हाले जंदे न, कुन, कदूं ते की, सब दर्ज।
 move_and_merge_tables	टेबल बदलो ते जोड़ो
 guests_change_tables_the_order	पराह्ने टेबल बदलदे न — ऑर्डर ते उसदे मिंट कन्नै जंदे न। दो टेबल, इक बिल।
 cancel_after_the_kot	KOT दे बाद रद्द
-with_a_reason_cooked_or	कारण कन्नै, पकेआ होऐ जां नेईं, ते कुन मंजूरी दित्ती। रसोई गी रद्द दी स्लिप मिलदी ऐ।
+with_a_reason_cooked_or	कारण कन्नै, पकेआ होऐ जां नेईं, ते मंजूरी देने आह्ले कन्नै। रसोई गी रद्द दी स्लिप मिलदी ऐ।
 complimentary_dishes	मुफ्त पकवान
 a_comp_stays_on_the	मुफ्त पकवान बिल पर ₹ 0 पर रौंह्दा ऐ, कारण ते मंजूरी देने आह्ले कन्नै।
 rights_per_person	हर माह्नू दे हक्क
@@ -155,7 +155,7 @@ account	खाता
 cta_installers_note	हर इंस्टॉलर साफ मशीन पर इंस्टॉल जांच पास करदे गै इत्थें औग। तद तक्कर WhatsApp पर डेमो मंगो।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दी खुलग। तुंदा सनेहा एह् होग: “{message}”।
 shelf_no_match	इस खोज कन्नै कोई देश जां पकवान नेईं मिलेआ।
-shelf_search_note	खोज झांकी गी रोकी दिंदी ऐ; फ्ही चलाने आस्तै खोज मटाओ, नेईं तां जि'यां छोड़ी ही उ'यां गै रुकी दी रौह्ग।
+shelf_search_note	खोज झांकी गी रोकी दिंदी ऐ; फ्ही चलाने आस्तै खोज मटाओ, नेईं तां जि’यां छोड़ी ही उ’यां गै रुकी दी रौह्ग।
 floor_meta_min	{min} मिंट
 floor_meta_min_bill	{min} मिंट · ₹ {amount}
 floor_meta_paid	₹ {amount} भुगतान कीता
@@ -164,12 +164,12 @@ acct_lede	साइट ते ऐप्पें आस्तै इक्कै
 acct_email	ईमेल
 acct_name_optional	नां (मर्जी दा)
 acct_password	पासवर्ड
-acct_continue	जारी रखो
+acct_continue	जारी रक्खो
 acct_forgot	पासवर्ड भुल्ली गे?
 acct_reset_hint	अस रीसेट लिंक ईमेल करगे। उऐ पता बरतो जिस कन्नै साइन अप कीता हा।
 acct_send_reset	रीसेट लिंक भेजो
 acct_cancel	रद्द करो
-acct_or_continue	जां इस कन्नै जारी रखो
+acct_or_continue	जां इस कन्नै जारी रक्खो
 acct_phone	फोन
 acct_mobile	मोबाइल नंबर
 acct_send_sms	SMS कोड भेजो
@@ -189,7 +189,7 @@ acct_email_for_password	पासवर्ड साइन-इन आस्त�
 acct_new_password	नमां पासवर्ड
 acct_confirm_new_password	नमां पासवर्ड पक्का करो
 acct_add_way	साइन इन करने दा इक होर तरीका जोड़ो
-acct_link_hint	तरीकें गी इक्कै खाते कन्नै जोड़ो, तां जे इक नाकाम होऐ तां बी पहुंच परताई सको।
+acct_link_hint	तरीकें गी इक्कै खाते कन्नै जोड़ो, तां जे इक नाकाम होऐ तां बी तुस खाते तक्कर फ्ही पुज्जी सको।
 acct_link_google	Google जोड़ो
 acct_link_microsoft	Microsoft जोड़ो
 acct_link_github	GitHub जोड़ो
@@ -203,7 +203,7 @@ shop_cart_empty_hint	तुंदी कार्ट खाली ऐ। Steady,
 shop_checkout	चेकआउट
 shop_clear	मटाओ
 shop_checkout_hint	चेकआउट तुसेंगी खाते च साइन इन करांदा ऐ, फ्ही भुगतान शुरू करदा ऐ (सैंडबॉक्स मॉक, जां कीज़ सेट होने पर Paddle)।
-acct_billing_hint	सलाना प्लान — चेकआउट पर गेटवे टैक्स जोड़दा ऐ। लोकल बरतन हमेशा मुफ्त रौंह्दा ऐ। कस्टम इक कोटेशन ऐ (Steady कोला घट्ट जां Priority कोला बद्ध होई सकदा ऐ)।
+acct_billing_hint	सलाना प्लान — चेकआउट पर गेटवे टैक्स जोड़दा ऐ। लोकल तौर पर बरतना हमेशा मुफ्त रौंह्दा ऐ। कस्टम इक कोटेशन ऐ (Steady कोला घट्ट जां Priority कोला बद्ध होई सकदा ऐ)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
 acct_err_invalid_email	ठीक ईमेल पता लिखो।
@@ -215,9 +215,9 @@ acct_err_popup_cancelled	साइन-इन रद्द होई गेआ।
 acct_err_unauthorized_domain	एह् डोमेन Firebase Auth आस्तै मंजूर नेईं ऐ।
 acct_err_method_disabled	एह् साइन-इन तरीका अजें चालू नेईं ऐ।
 acct_err_too_many	मतियां कोशशां होई गेइयां। बाद च फ्ही कोशश करो।
-acct_err_phone_format	देश दे कोड कन्नै पूरा फोन नंबर बरतो (जि'यां +91…)।
+acct_err_phone_format	देश दे कोड कन्नै पूरा फोन नंबर बरतो (जि’यां +91…)।
 acct_err_sms_code	एह् SMS कोड गलत ऐ जां उसदी मियाद मुक्की गेई।
-acct_err_no_account	इस ईमेल कन्नै कोई खाता नेईं। नमां बनाने आस्तै जारी रखो, जां कोई होर तरीका बरतो।
+acct_err_no_account	इस ईमेल कन्नै कोई खाता नेईं। नमां बनाने आस्तै जारी रक्खो, जां कोई होर तरीका बरतो।
 acct_err_recent_login	सुरक्षा आस्तै फ्ही साइन इन करो, फ्ही एह् बदलाऽ दबारा करो।
 acct_err_credential_in_use	एह् साइन-इन तरीका पैह्लें गै कोई होर खाता बरता करदा ऐ।
 acct_err_email_in_use	एह् ईमेल पैह्लें गै कोई होर खाता बरता करदा ऐ।
@@ -241,7 +241,7 @@ acct_checkout_failed	चेकआउट नाकाम होई गेआ
 acct_pay_with	{provider} कन्नै भुगतान करो
 acct_plan_until	{plan} · {date} तक्कर
 acct_unavailable	उपलब्ध नेईं
-acct_continue_hint	ईमेल, प्रोवाइडर जां फोन कन्नै जारी रखो।
+acct_continue_hint	ईमेल, प्रोवाइडर जां फोन कन्नै जारी रक्खो।
 acct_signed_in_fallback	(साइन इन होई गे)
 acct_email_verified	ईमेल पुश्ट होई गेई
 acct_email_unverified	ईमेल अजें पुश्ट नेईं होई — अपना इनबॉक्स दिक्खो

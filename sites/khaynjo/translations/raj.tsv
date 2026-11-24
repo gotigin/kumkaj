@@ -20,7 +20,7 @@ works_with_no_internet	बिना इंटरनेट रै काम क�
 your_books_stay_on_your	थांरो हिसाब-किताब थांरै डिवाइस माथै ई रैवै छै
 n_115_languages_on_screen	स्क्रीन माथै 115 भाषावां
 your_floor_at_a_glance	एक नजर में थांरो फ्लोर
-tap_a_table_to_walk	किणी मेज माथै टैप करो अर एक आवाजाही सरू सूं आखिर तांई देखो। ऐप जैड़ा ई रंग अर सबद — अर मेज तद ई खाली हुवै छै जद बिल रो भुगतान हो जावै।
+tap_a_table_to_walk	किणी मेज माथै टैप करो अर पांवणां रो एक फेरो सरू सूं आखिर तांई देखो। ऐप जैड़ा ई रंग अर सबद — अर मेज तद ई खाली हुवै छै जद बिल रो भुगतान हो जावै।
 every_country	हर देस
 every_country_at_your_counter	थांरै काउंटर माथै हर देस
 one_famous_dish_from_every	हर देस रो एक नामी पकवान — देस रो अंगरेजी नांव, उणरी आपरी लिपि में नांव, अर पकवान रो अंगरेजी नांव। ऐ सबद आपरै मेनू में लिखो। दुनिया आगै बधती रैवै छै; देखणो हो तो रोको या खोजो।
@@ -49,13 +49,13 @@ prints_itself	आपै ई छपै छै
 send_and_the_ticket_prints	भेजो, अर टिकट सही स्टेसन माथै छप जावै छै — किणी नै ले जावण री जरूरत कोनी।
 example_ticket	उदाहरण टिकट
 the_kitchen_sees_what_to	रसोई देखै छै कै अबार कांई पकाणो छै
-on_the_kitchen_screen_tickets	रसोई री स्क्रीन माथै टिकट एक टैप में नवो → बण री छै → तैयार हो जावै छै। जूना टिकटां रो रंग गाढ़ो होतो जावै, “अबार पकाओ” उडीकतां हर पकवान नै गिणै, अर स्टार्टर जावण तांई मेन पकवान रुक सकै छै।
+on_the_kitchen_screen_tickets	रसोई री स्क्रीन माथै टिकट एक टैप में नवो → बण रियो छै → तैयार हो जावै छै। जूना टिकटां रो रंग गाढ़ो होतो जावै, “अबार पकाओ” उडीकतां हर पकवान नै गिणै, अर स्टार्टर जावण तांई मेन पकवान रुक सकै छै।
 new	नवो
-preparing	बण री छै
+preparing	बण रियो छै
 ready	तैयार
 example_kitchen_screen	उदाहरण रसोई स्क्रीन
 settle_any_way_the_guest	पांवणा जियां भुगतान करै, उयां ई हिसाब करो
-cash_with_change_to_return	पाछा देवण वाळा पईसां रै साथै नकद, QR में पैलां सूं रकम रै साथै UPI, थोड़ो-थोड़ो भुगतान, या ग्राहक रै खातै में बाकी। सामान, सीट या बराबर बांटो। मेज तद ई खाली हुवै जद उणरो बिल भुगतान हो जावै।
+cash_with_change_to_return	पाछा देवण वाळा पईसां रै साथै नकद, QR में पैलां सूं रकम रै साथै UPI, थोड़ो-थोड़ो भुगतान, या ग्राहक रै खातै में बाकी। बिल पकवान रै हिसाब सूं, सीट रै हिसाब सूं या बराबर बांटो। मेज तद ई खाली हुवै जद उणरै बिल रो भुगतान हो जावै।
 tips_stay_apart	टिप न्यारी रैवै छै
 a_tip_is_recorded_on	टिप न्यारी दर्ज हुवै छै — बिक्री में कदेई कोनी मिलै।
 t4_bill_printed	T4 · बिल छप्यो
@@ -63,7 +63,7 @@ bill	बिल
 customer_paid_cash	ग्राहक दियो (नकद)
 return_to_customer	ग्राहक नै पाछो देवो
 close_the_day_you_can	भरोसै लायक दिन बंद
-count_the_drawer_against_the	दराज नै फ्लोट, लियोड़ा नकद, टिप अर दियोड़ा नकद सूं मिलाय नै गिणो — कम या बेसी साफ-साफ बताइजै छै। सिफ्ट स्लिप छापो, फेर स्टाफ, ऑर्डर री किसम, घंटा अर पकवान रै हिसाब सूं दिन री रिपोर्ट खोलो — रद्द, मुफत पकवान अर टिप समेत।
+count_the_drawer_against_the	दराज नै सरुआती नकद, लियोड़ा नकद, टिप अर दियोड़ा नकद सूं मिलाय नै गिणो — कम या बेसी साफ-साफ बताइजै छै। सिफ्ट स्लिप छापो, फेर स्टाफ, ऑर्डर री किसम, घंटा अर पकवान रै हिसाब सूं दिन री रिपोर्ट खोलो — रद्द, मुफत पकवान अर टिप समेत।
 shift_close	सिफ्ट बंद
 opening_float	सरुआती नकद
 cash_taken	+ लियोड़ो नकद
@@ -92,7 +92,7 @@ part_payments_and_due_go	थोड़ा-थोड़ा भुगतान अ�
 reports_that_answer_questions	सवालां रा जवाब देवण वाळी रिपोर्ट
 sales_by_staff_order_type	स्टाफ, ऑर्डर री किसम, घंटा अर पकवान रै हिसाब सूं बिक्री — रद्द, मुफत पकवान अर टिप री लिस्ट रै साथै।
 start_with_a_menu	एक मेनू सूं सरू करो
-your_menu_ready_in_minutes	थांरो मेनू, थोड़ी मिनटां में तैयार।
+your_menu_ready_in_minutes	थांरो मेनू, थोड़ा मिनटां में तैयार।
 set_up_your_counter_and	आपरो काउंटर सेट करो अर फोटुवां वाळो एक स्टार्टर मेनू चुणो — फेर नांव, कीमत अर कोड आपरै हिसाब सूं बदलो। khaynjo.com सूं मुफत डाउनलोड करो।
 starter_menu	स्टार्टर मेनू
 khaynjo_starter_menu	Khaynjo स्टार्टर मेनू
@@ -101,9 +101,9 @@ n_14_dishes_11_categories	14 पकवान · 11 श्रेणियां
 cafe_starter	कैफे स्टार्टर
 tea_coffee_cold_drinks_bakery	चाय, कॉफी, ठंडा पेय, बेकरी अर नास्तो — काउंटर कैफे रै वास्तै तैयार।
 n_22_dishes_4_categories	22 पकवान · 4 श्रेणियां
-photo_shelf	फोटो सेल्फ
+photo_shelf	फोटो शेल्फ
 khaynjo_dish_photos	Khaynjo पकवानां री फोटुवां
-the_full_public_photo_shelf	पूरी सार्वजनिक फोटो सेल्फ — जको पकवान जोड़ो उणरी फोटो चुणो।
+the_full_public_photo_shelf	पूरी सार्वजनिक फोटो शेल्फ — जको पकवान जोड़ो उणरी फोटो चुणो।
 n_1_459_dish_photos_25	1,459 पकवानां री फोटुवां · 25 किसम री रसोई
 internet_down	इंटरनेट बंद?
 the_internet_went_down_the	इंटरनेट चल्यो ग्यो। काउंटर कोनी रुक्यो।
@@ -115,7 +115,7 @@ day_book_every_bill_saved	दिन री बही: हर बिल इणी
 captains_tablets_and_the_kitchen	कैप्टनां रा टैबलेट अर रसोई री स्क्रीन: थांरै आपरै Wi-Fi माथै सागै काम कर रिया छै
 eyebrow_pricing	कीमत
 free_forever_on_your_devices	थांरै डिवाइस माथै हमेशा मुफत।
-software_capability_is_not_what	म्हे सॉफ्टवेयर री ताकत कोनी बेचां। पूरो Khaynjo आपरै डिवाइस माथै बिना खर्चै रै चलाओ — कीं भी किणी प्लान रै लारै बंद कोनी।
+software_capability_is_not_what	म्हे सॉफ्टवेयर री ताकत कोनी बेचां। पूरो Khaynjo आपरै डिवाइस माथै बिना खर्चै रै चलाओ — कोई भी खूबी खोलण रै वास्तै प्लान कोनी चाईजै।
 khaynjo_on_your_devices	थांरै डिवाइस माथै Khaynjo
 forever	हमेशा
 every_feature	हर खूबी
@@ -136,7 +136,7 @@ no_orders_kots_bills_and	नीं। ऑर्डर, KOT, बिल अर द
 where_are_my_bills_kept	म्हारा बिल कठै राखीजै छै?
 on_your_own_device_in	थांरै आपरै डिवाइस माथै, थांरी दुकान में — म्हांरै सर्वर माथै कोनी। सेटिंग्स सूं बैकअप कॉपी बणाओ अर जठै मन हो उठै राखो।
 which_devices_does_it_run	ओ किसा डिवाइस माथै चालै छै?
-android_phones_and_tablets_today	आज Android फोन अर टैबलेट माथै, Google Play सूं। Windows अर Linux पैकेज मारग में छै।
+android_phones_and_tablets_today	आज Android फोन अर टैबलेट माथै, Google Play सूं। Windows अर Linux पैकेज आ रिया छै।
 does_it_print_kots_and	कांई ओ KOT अर बिल छापै छै?
 yes_on_thermal_printers_you	हां — थर्मल प्रिंटर माथै जका थे सेटिंग्स → प्रिंटर में सेट करो छो, हर स्टेसन रै वास्तै एक रसोई टिकट।
 can_my_staff_use_their	कांई म्हारो स्टाफ आपरी भाषा बरत सकै छै?
@@ -152,10 +152,10 @@ cancellation	रद्द करण रो नियम
 photo_credits	फोटो रो श्रेय
 cloud_shop	क्लाउड दुकान
 account	खातो
-cta_installers_note	हर इंस्टॉलर साफ मसीन माथै इंस्टॉल जांच पास करियां पछै अठै आसी। जद तांई WhatsApp माथै डेमो मांगो।
+cta_installers_note	हर इंस्टॉलर साफ मसीन माथै इंस्टॉल जांच पास करियां पछै अठै आसी। तद तांई WhatsApp माथै डेमो मांगो।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दी खुलसी। थांरो मैसेज इयां होसी: “{message}”।
 shelf_no_match	इण खोज सूं कोई देस या पकवान कोनी मिल्यो।
-shelf_search_note	खोजण सूं झांकी रुक जावै छै; फेर चलावण रै वास्तै खोज मिटाओ, नींतर जियां छोड़ी उयां ई रुकी रैसी।
+shelf_search_note	खोजण सूं झांकी रुक जावै छै; खोज मिटाओ तो झांकी फेर चालसी, या जे थे पैलां रोकी ही तो रुकी रैसी।
 floor_meta_min	{min} मिनट
 floor_meta_min_bill	{min} मिनट · ₹ {amount}
 floor_meta_paid	₹ {amount} भुगतान हुयो
@@ -176,7 +176,7 @@ acct_send_sms	SMS कोड भेजो
 acct_sms_code	SMS कोड
 acct_confirm_code	कोड पक्को करो
 acct_signed_in	साइन इन हुयो
-acct_signed_in_as	इण रूप में साइन इन
+acct_signed_in_as	साइन इन करियोड़ो खातो
 acct_status	स्थिति
 acct_sign_in_methods	साइन-इन रा तरीका
 acct_cloud_username	क्लाउड यूजरनेम
@@ -202,7 +202,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	थांरी कार्ट खाली छै। Steady, Swift या Priority जोड़ो।
 shop_checkout	चेकआउट
 shop_clear	मिटाओ
-shop_checkout_hint	चेकआउट थांनै खातै में साइन इन करावै छै, फेर भुगतान सरू करै छै (सैंडबॉक्स मॉक, या की सेट होवण माथै Paddle)।
+shop_checkout_hint	चेकआउट थांनै खातै में साइन इन करावै छै, फेर भुगतान सरू करै छै (सैंडबॉक्स मॉक, या कुंजियां सेट होवण माथै Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट माथै गेटवे टैक्स जोड़ै छै। लोकल बरताव हमेशा मुफत रैवै छै। कस्टम एक कोटेसन छै (Steady सूं कम या Priority सूं बेसी हो सकै छै)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन

@@ -13,15 +13,15 @@ cash_memo	कैश मेमो
 ready	तैयार
 total	कुल
 tap_to_add_the_first	पैह्ली दुआई जोड़ने आस्तै टैप करो
-example_pharmacy_lines_not_a	मसाली फार्मेसी लाइनां, असली काउंटर नेईं। Tabiyat उऐ रस्ता फड़दा ऐ: बिक्री → हिसाब → दिन लेजर।
+example_pharmacy_lines_not_a	नमूने दियां फार्मेसी लाइनां, असली काउंटर नेईं। Tabiyat उऐ रस्ता फड़दा ऐ: बिक्री → हिसाब → दिन लेजर।
 n_2_counter_sell	2 · काउंटर बिक्री
 medicine_quantity_pay_three_taps	दुआई, मात्रा, भुगतान — त्रै टैप।
 upi_qr_ready	UPI QR तैयार
-example_bill	मसाली बिल
+example_bill	नमूने दा बिल
 fast_counter_billing	तेज़ काउंटर बिलिंग
 add_the_line_set_the	लाइन जोड़ो, मात्रा लिखो, हिसाब करो — नकद, UPI जां बंडियै।
 gst_tax_invoice_or_cash	GST टैक्स इनवॉइस जां कैश मेमो
-the_bill_lane_you_need	बिक्री आस्तै जेह्ड़ी बिल दी किस्म लोड़चदी ऐ।
+the_bill_lane_you_need	ओह् बिल दी किस्म जेह्ड़ी बिक्री आस्तै लोड़चदी ऐ।
 day_book_follows	दिन लेजर कन्नै-कन्नै चलदा ऐ
 every_tender_lands_in_books	बिक्री बंद करदे गै हर भुगतान खातें च पुज्जी जंदा ऐ।
 n_3_barcode_salt	3 · बारकोड ते सॉल्ट
@@ -111,12 +111,12 @@ acct_lede	साइट ते ऐप्पें आस्तै इक्कै
 acct_email	ईमेल
 acct_name_optional	नां (मर्जी दा)
 acct_password	पासवर्ड
-acct_continue	जारी रखो
+acct_continue	जारी रक्खो
 acct_forgot	पासवर्ड भुल्ली गे?
 acct_reset_hint	अस रीसेट लिंक ईमेल करगे। उऐ पता बरतो जिस कन्नै साइन अप कीता हा।
 acct_send_reset	रीसेट लिंक भेजो
 acct_cancel	रद्द करो
-acct_or_continue	जां इस कन्नै जारी रखो
+acct_or_continue	जां इस कन्नै जारी रक्खो
 acct_phone	फोन
 acct_mobile	मोबाइल नंबर
 acct_send_sms	SMS कोड भेजो
@@ -136,7 +136,7 @@ acct_email_for_password	पासवर्ड साइन-इन आस्त�
 acct_new_password	नमां पासवर्ड
 acct_confirm_new_password	नमां पासवर्ड पक्का करो
 acct_add_way	साइन इन करने दा इक होर तरीका जोड़ो
-acct_link_hint	तरीकें गी इक्कै खाते कन्नै जोड़ो, तां जे इक नाकाम होऐ तां बी पहुंच परताई सको।
+acct_link_hint	तरीकें गी इक्कै खाते कन्नै जोड़ो, तां जे इक नाकाम होऐ तां बी तुस खाते तक्कर फ्ही पुज्जी सको।
 acct_link_google	Google जोड़ो
 acct_link_microsoft	Microsoft जोड़ो
 acct_link_github	GitHub जोड़ो
@@ -150,7 +150,7 @@ shop_cart_empty_hint	तुंदी कार्ट खाली ऐ। Steady,
 shop_checkout	चेकआउट
 shop_clear	मटाओ
 shop_checkout_hint	चेकआउट तुसेंगी खाते च साइन इन करांदा ऐ, फ्ही भुगतान शुरू करदा ऐ (सैंडबॉक्स मॉक, जां कीज़ सेट होने पर Paddle)।
-acct_billing_hint	सलाना प्लान — चेकआउट पर गेटवे टैक्स जोड़दा ऐ। लोकल बरतन हमेशा मुफ्त रौंह्दा ऐ। कस्टम इक कोटेशन ऐ (Steady कोला घट्ट जां Priority कोला बद्ध होई सकदा ऐ)।
+acct_billing_hint	सलाना प्लान — चेकआउट पर गेटवे टैक्स जोड़दा ऐ। लोकल तौर पर बरतना हमेशा मुफ्त रौंह्दा ऐ। कस्टम इक कोटेशन ऐ (Steady कोला घट्ट जां Priority कोला बद्ध होई सकदा ऐ)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
 acct_err_invalid_email	ठीक ईमेल पता लिखो।
@@ -162,9 +162,9 @@ acct_err_popup_cancelled	साइन-इन रद्द होई गेआ।
 acct_err_unauthorized_domain	एह् डोमेन Firebase Auth आस्तै मंजूर नेईं ऐ।
 acct_err_method_disabled	एह् साइन-इन तरीका अजें चालू नेईं ऐ।
 acct_err_too_many	मतियां कोशशां होई गेइयां। बाद च फ्ही कोशश करो।
-acct_err_phone_format	देश दे कोड कन्नै पूरा फोन नंबर बरतो (जि'यां +91…)।
+acct_err_phone_format	देश दे कोड कन्नै पूरा फोन नंबर बरतो (जि’यां +91…)।
 acct_err_sms_code	एह् SMS कोड गलत ऐ जां उसदी मियाद मुक्की गेई।
-acct_err_no_account	इस ईमेल कन्नै कोई खाता नेईं। नमां बनाने आस्तै जारी रखो, जां कोई होर तरीका बरतो।
+acct_err_no_account	इस ईमेल कन्नै कोई खाता नेईं। नमां बनाने आस्तै जारी रक्खो, जां कोई होर तरीका बरतो।
 acct_err_recent_login	सुरक्षा आस्तै फ्ही साइन इन करो, फ्ही एह् बदलाऽ दबारा करो।
 acct_err_credential_in_use	एह् साइन-इन तरीका पैह्लें गै कोई होर खाता बरता करदा ऐ।
 acct_err_email_in_use	एह् ईमेल पैह्लें गै कोई होर खाता बरता करदा ऐ।
@@ -188,7 +188,7 @@ acct_checkout_failed	चेकआउट नाकाम होई गेआ
 acct_pay_with	{provider} कन्नै भुगतान करो
 acct_plan_until	{plan} · {date} तक्कर
 acct_unavailable	उपलब्ध नेईं
-acct_continue_hint	ईमेल, प्रोवाइडर जां फोन कन्नै जारी रखो।
+acct_continue_hint	ईमेल, प्रोवाइडर जां फोन कन्नै जारी रक्खो।
 acct_signed_in_fallback	(साइन इन होई गे)
 acct_email_verified	ईमेल पुश्ट होई गेई
 acct_email_unverified	ईमेल अजें पुश्ट नेईं होई — अपना इनबॉक्स दिक्खो

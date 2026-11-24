@@ -21,7 +21,7 @@ example_bill	उदाहरण बिल
 fast_counter_billing	तेज काउंटर बिलिंग
 add_the_line_set_the	लाइन जोड़ीं, मात्रा लिखीं, हिसाब करीं — नकद, UPI भा बाँट के।
 gst_tax_invoice_or_cash	GST टैक्स इनवॉइस भा कैश मेमो
-the_bill_lane_you_need	बिक्री खातिर जवन बिल के किसिम चाहीं।
+the_bill_lane_you_need	बिक्री खातिर जवन किसिम के बिल चाहीं, उहे।
 day_book_follows	रोज के बही साथे चलेला
 every_tender_lands_in_books	बिक्री बंद करते हर भुगतान बही में पहुँच जाला।
 n_3_barcode_salt	3 · बारकोड आ सॉल्ट
@@ -52,7 +52,7 @@ owner_practice	मालिक के तरीका
 fefo_hints_and_rx_notes	FEFO इशारा आ Rx नोट माने के काम राउर बा — Tabiyat ओतने दर्ज करेला जेतना रउआ लिखीं।
 n_5_khata	5 · खाता
 customer_credit_and_supplier_dues	ग्राहक के उधार आ सप्लायर के बकाया एके पार्टी बही में।
-mehta_clinic_customer	Mehta Clinic · ग्राहक
+mehta_clinic_customer	मेहता क्लिनिक · ग्राहक
 due_from_earlier	पहिले के बाकी
 today_s_sale_due	+ आज के बिक्री (बाकी)
 balance	कुल बाकी
@@ -77,7 +77,7 @@ free_forever_on_your_devices	राउर डिवाइस पर हमेश
 no_per_bill_charge	हर बिल पर कवनो खरचा नइखे
 no_fee_per_sale_medicine	लोकल इंस्टॉल पर बिक्री, दवाई, बिलिंग काउंटर भा स्टाफ PIN पर कवनो फीस नइखे।
 android_windows_linux	Android, Windows, Linux
-the_same_tabiyat_on_the	फोन आ डेस्कटॉप बिलिंग काउंटर पर ओहिजे Tabiyat।
+the_same_tabiyat_on_the	फोन आ डेस्कटॉप बिलिंग काउंटर पर उहे Tabiyat।
 optional_kumkaj_cloud	मरजी के Kumkaj Cloud
 yearly_steady_6k_swift_12k	सालाना Steady ₹6k · Swift ₹12k · Priority ₹24k, टैक्स छोड़ के (भा कस्टम कोटेशन)। /shop पर खरीदीं।
 n_8_start	8 · सुरू करीं
@@ -107,7 +107,7 @@ lan_title	दोकान के Wi-Fi पर एगो अउर बिलि�
 cta_installers_note	हर इंस्टॉलर साफ मशीन पर इंस्टॉल जाँच पास कइला के बाद इहाँ आई। तब ले WhatsApp पर डेमो माँगीं।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दिए खुली। राउर मैसेज अइसन होई: “{message}”।
 acct_page_title	खाता — Tabiyat
-acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा लौट के आइल, ओहिजे फॉर्म।
+acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा पुरान, फॉर्म उहे।
 acct_email	ईमेल
 acct_name_optional	नाम (मरजी के)
 acct_password	पासवर्ड
@@ -149,7 +149,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	राउर कार्ट खाली बा। Steady, Swift भा Priority जोड़ीं।
 shop_checkout	चेकआउट
 shop_clear	मिटाईं
-shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा की सेट रहला पर Paddle)।
+shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा कुंजी सेट रहला पर Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पर गेटवे टैक्स जोड़ेला। लोकल इस्तेमाल हमेशा मुफ्त रहेला। कस्टम एगो कोटेशन ह (Steady से कम भा Priority से बेसी हो सकेला)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -183,7 +183,7 @@ price_per_year	₹{amount}/साल, टैक्स छोड़ के
 acct_pay_received	भुगतान मिल गइल — राउर प्लान ताजा होत बा…
 acct_pay_declined	भुगतान ना मानल गइल भा फेल हो गइल
 acct_pay_failed_detail	{detail}। राउर प्लान ना बदलल।
-acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान ओहिजे बा।
+acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान जस के तस बा।
 acct_checkout_failed	चेकआउट फेल हो गइल
 acct_pay_with	{provider} से भुगतान करीं
 acct_plan_until	{plan} · {date} ले

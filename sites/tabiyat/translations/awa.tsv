@@ -23,17 +23,17 @@ add_the_line_set_the	लाइन जोड़ौ, मात्रा लिख�
 gst_tax_invoice_or_cash	GST टैक्स इनवॉइस या कैस मेमो
 the_bill_lane_you_need	बिक्री खातिर जउन बिल कै किसिम चाही।
 day_book_follows	रोज कै बही साथै चलत है
-every_tender_lands_in_books	बिक्री बंद करतै हर भुगतान बही मा पहुँचि जात है।
+every_tender_lands_in_books	बिक्री पूरी करतै हर भुगतान बही मा पहुँचि जात है।
 n_3_barcode_salt	3 · बारकोड अउर सॉल्ट
 scan_the_barcode_or_find	बारकोड स्कैन करौ — या सॉल्ट से खोजौ।
 search	खोजौ
-composition_paracetamol_strip_of_10	बनावट: Paracetamol · 10 कै पत्ता
+composition_paracetamol_strip_of_10	फार्मूला: Paracetamol · 10 कै पत्ता
 salt_amoxicillin	सॉल्ट: amoxicillin
-ranks_barcode_name_and_composition	बारकोड, नाम अउर बनावट का साथै मिलाय के क्रम देत है।
+ranks_barcode_name_and_composition	बारकोड, नाम अउर फार्मूला का साथै मिलाय के क्रम देत है।
 wedge_scanner_or_type_enter	वेज स्कैनर या Enter दबावौ — लाइन बिल पै आइ जात है।
 barcode_first	पहिले बारकोड
 scan_or_paste_the_code	कोड स्कैन या पेस्ट करौ; कैटलॉग से मिलत दवाई सामने आइ जात है।
-salt_composition	सॉल्ट / बनावट
+salt_composition	सॉल्ट / फार्मूला
 type_the_salt_when_the	गाहक ब्रांड कै नाम न बतावै तौ सॉल्ट लिखौ।
 owner_rx_schedule_h_flags	मालिक कै Rx / Schedule H निसान
 reminders_you_set_not_a	तोहार सेट किहे रिमाइंडर — कउनो कानूनी रजिस्टर नाहीं, कउनो डॉक्टरी सलाह नाहीं।
@@ -47,7 +47,7 @@ shop_bookkeeping_only_not_drugs	बस दुकान कै हिसाब-�
 batch_on_buy	खरीद पै बैच
 record_batch_and_expiry_when	स्टॉक आवतै बैच अउर एक्सपायरी दर्ज करौ।
 near_expiry_alerts	एक्सपायरी नजदीक कै चेतावनी
-books_and_sell_can_hint	तारीख बीतै से पहिले बही अउर बिक्री इसारा दइ सकत हैं।
+books_and_sell_can_hint	तारीख बीतै से पहिले बही अउर बेचौ स्क्रीन इसारा दइ सकत हैं।
 owner_practice	मालिक कै तरीका
 fefo_hints_and_rx_notes	FEFO इसारा अउर Rx नोट मानै कै काम तोहार है — Tabiyat ओतनै दर्ज करत है जेतना तू लिखत हौ।
 n_5_khata	5 · खाता
@@ -74,7 +74,7 @@ one_server_lan_clients	एक सर्वर, LAN क्लाइंट
 extra_tills_share_the_same	अतिरिक्त बिलिंग काउंटर दुकान के नेटवर्क पै वहै बही साझा करत हैं।
 n_7_free_forever_locally	7 · लोकल मा हमेसा मुफ्त
 free_forever_on_your_devices	तोहरे डिवाइस पै हमेसा मुफ्त।
-no_per_bill_charge	हर बिल पै कउनो खरचा नाहीं
+no_per_bill_charge	हर बिल पै कउनो फीस नाहीं
 no_fee_per_sale_medicine	लोकल इंस्टॉल पै बिक्री, दवाई, बिलिंग काउंटर या स्टाफ PIN पै कउनो फीस नाहीं।
 android_windows_linux	Android, Windows, Linux
 the_same_tabiyat_on_the	फोन अउर डेस्कटॉप बिलिंग काउंटर पै वहै Tabiyat।
@@ -149,10 +149,10 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तोहार कार्ट खाली है। Steady, Swift या Priority जोड़ौ।
 shop_checkout	चेकआउट
 shop_clear	मिटावौ
-shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या की सेट रहै पै Paddle)।
+shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या कुंजी सेट होय तौ Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पै गेटवे टैक्स जोड़त है। लोकल इस्तेमाल हमेसा मुफ्त रहत है। कस्टम एक कोटेसन है (Steady से कम या Priority से जादा होइ सकत है)।
 shop_cloud_plans	क्लाउड प्लान
-acct_federated	फेडरेटेड साइन-इन
+acct_federated	बाहरी खाता से साइन-इन
 acct_err_invalid_email	सही ईमेल पता लिखौ।
 acct_err_weak_password	कम से कम 6 अच्छर कै पासवर्ड रखौ।
 acct_err_wrong_password	गलत पासवर्ड।

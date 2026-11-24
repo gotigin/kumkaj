@@ -3,7 +3,7 @@ example	उदाहरणम्
 length	दैर्घ्यम्
 download_free	निःशुल्कम् अवतारयन्तु
 whatsapp_for_a_demo	प्रदर्शनाय WhatsApp कुर्वन्तु
-free_on_android_windows_and	Android, Windows, Linux च मध्ये निःशुल्कम्।
+free_on_android_windows_and	Android, Windows, Linux इत्येतेषु निःशुल्कम्।
 courier_operating_system	कूरियर-सञ्चालन-तन्त्रम्
 parcel_journey	पोटलिकायाः यात्रा
 walk_in	प्रत्यक्षागमनम्
@@ -49,12 +49,12 @@ zone_service_weight_slab	क्षेत्रम् × सेवा × भा�
 first_slab_and_each_extra	प्रथमः स्तरः प्रत्येकः अतिरिक्तस्तरः च, क्षेत्रं सेवां च अनुसृत्य।
 a_consignor_s_own_card	प्रेषकस्य स्वदरपत्रम्
 regular_senders_get_their_rates	नियमितप्रेषकाः स्वदरान् प्राप्नुवन्ति; अन्येभ्यः सर्वेभ्यः पूर्वनिर्धारितं दरपत्रम्।
-margin_at_the_desk	पटले एव लाभांशः
-your_sell_price_against_the	वाहकस्य मूल्यस्य विरुद्धं भवतः विक्रयमूल्यम्, प्रत्येकस्मिन् डॉकेट् मध्ये।
+margin_at_the_desk	काउण्टर् मध्ये एव लाभांशः
+your_sell_price_against_the	वाहकमूल्येन सह तुलितं भवतः विक्रयमूल्यम्, प्रत्येकस्मिन् डॉकेट् मध्ये।
 n_4_label_it	4 · नामपत्रं योजयन्तु
 awb_from_your_own_number	भवतः स्वसङ्ख्यासङ्ग्रहात् AWB। नामपत्रम्, स्कैन्, अन्वेषणम्।
 number_pools_per_carrier	प्रतिवाहकं सङ्ख्यासङ्ग्रहाः
-enter_each_carrier_s_start	प्रत्येकस्य वाहकस्य आरम्भ–अन्त-शृङ्खलां एकवारं लिखन्तु; प्रत्येकं प्रेषणम् अग्रिमां सङ्ख्यां गृह्णाति।
+enter_each_carrier_s_start	प्रत्येकस्य वाहकस्य आरम्भ–अन्त-शृङ्खलाम् एकवारं लिखन्तु; प्रत्येकं प्रेषणम् अग्रिमां सङ्ख्यां गृह्णाति।
 code_128_labels	Code 128 नामपत्राणि
 the_awb_goes_on_the	AWB मञ्जूषायां बारकोड् रूपेण सरलाङ्करूपेण च तिष्ठति।
 scan_to_find	अन्वेषणाय स्कैन् कुर्वन्तु
@@ -73,9 +73,9 @@ out_for_delivery	समर्पणार्थं बहिः
 delivered	समर्पितम्
 booked_with_carrier_out_for	पञ्जीकृतम् → वाहकस्य हस्ते → समर्पणार्थं बहिः → समर्पितम्
 failed	विफलम्
-reason_out_again_or_return	→ कारणम् → पुनः बहिः, अथवा प्रेषकं प्रति प्रत्यावर्तयतु।
+reason_out_again_or_return	→ कारणम् → पुनः बहिः, अथवा प्रेषकं प्रति प्रत्यावर्तनम्।
 impossible_moves_refused	असम्भवाः गतयः निषिद्धाः
-delivered_returned_and_cancelled	समर्पितम्, प्रत्यावर्तितम्, रद्दं च — एतानि अन्तिमानि।
+delivered_returned_and_cancelled	समर्पितम्, प्रत्यावर्तितम्, निरस्तं च — एतानि अन्तिमानि।
 proof_of_delivery	समर्पण-प्रमाणम्
 a_photo_and_the_receiver	डॉकेट् मध्ये एकं चित्रं प्राप्तकर्तुः हस्ताक्षरं च।
 failed_deliveries	विफलानि समर्पणानि
@@ -90,19 +90,19 @@ a_14_drops	A · 14 समर्पणानि
 b_9_drops	B · 9 समर्पणानि
 short_200_on_rider_b	दूते B ₹ 200 न्यूनम् — नाम्ना उक्तम्, योगफले न नष्टम्।
 cod_register	COD पञ्जी
-collected_against_paid_out_per	सङ्गृहीतं प्रदत्तं च, प्रतिप्रेषकम्, प्रेषणसमूहैः सह।
+collected_against_paid_out_per	सङ्गृहीतं प्रदत्तं च, प्रतिप्रेषकम्, धनप्रेषणसमूहैः सह।
 rider_settlement	दूतस्य लेखासमाप्तिः
 expected_against_handed_in_and	अपेक्षितं समर्पितं च, आयोगपत्रं च।
 books_that_close	समाप्यमानाः लेखाः
-day_book_month_bill_per	दिवस लेजर, प्रतिखाता मासिकं देयकम्, भवतः लेखाकाराय GST सारांश-CSV च।
+day_book_month_bill_per	दैनिकलेखा, प्रतिखाता मासिकं देयकम्, भवतः लेखाकाराय GST सारांश-CSV च।
 n_8_internet_down	8 · अन्तर्जालं नास्ति?
 keep_booking	प्रेषणं निरन्तरं कुर्वन्तु।
 booking_labels_scanning_cod_and	प्रेषणम्, नामपत्राणि, स्कैनिङ्ग्, COD, लेखाः च — सर्वं भवतः उपकरणेषु चलति। अन्तर्जालं गच्छति चेत् काउण्टर् मध्ये किमपि तत् न प्रतीक्षते।
 office_router_no_internet	कार्यालय-रूटर्: अन्तर्जालं नास्ति
-desk_still_booking	पटलः: प्रेषणं प्रचलति
+desk_still_booking	काउण्टर्: प्रेषणं प्रचलति
 second_counter_and_rider_phone	द्वितीयं काउण्टर् दूतस्य दूरभाषः च: कार्यालयस्य Wi-Fi मध्ये संयुक्तौ
 free_forever_on_your_devices	भवतः उपकरणेषु सर्वदा निःशुल्कम्
-nothing_per_rider_user_or	दूतः, उपयोक्ता, पोटलिका वा प्रति किमपि न। ऐच्छिकः Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/वर्षम्, करं विना — /shop।
+nothing_per_rider_user_or	दूतम्, उपयोक्तारम्, पोटलिकां वा प्रति किमपि न। ऐच्छिकः Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/वर्षम्, करं विना — /shop।
 n_9_start	9 · आरभन्ताम्
 one_courier_os_your_parcels	एकं कूरियर OS। भवतः पोटलिकाः। भवतः लेखाः।
 moklanjo_is_a_complete_courier	Moklanjo Kumkaj अन्तर्गतं सम्पूर्णं कूरियर-सञ्चालन-तन्त्रम् अस्ति — Android, Windows, Linux च। दूताः तम् एव अनुप्रयोगं दूतविधौ प्रयुञ्जते।
@@ -111,11 +111,11 @@ memon_for_find_it_pronounced	मेमन्-भाषायां “अन्�
 company	संस्था
 brand	ब्राण्ड्
 concrete_business_operating_system	वास्तविककार्याय व्यापार-सञ्चालन-तन्त्र-अनुप्रयोगाः
-product	उत्पादम्
+product	उत्पादः
 courier_operating_system_under	Kumkaj अन्तर्गतं कूरियर-सञ्चालन-तन्त्रम्
 privacy	गोपनीयता
 terms	नियमाः
-cancellation	रद्दीकरण-नीतिः
+cancellation	निरसन-नीतिः
 cloud_shop	मेघ-आपणम्
 account	खाता
 weigh_it_right	सम्यक् तोलनम्
@@ -131,7 +131,7 @@ weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	तुलायाम्: {kg} kg
 weight_scale_wins	तुलायाः भारः शुल्कं निर्धारयति।
-cta_installers_note	प्रत्येकः संस्थापकः शुद्धयन्त्रे संस्थापनपरीक्षायाम् उत्तीर्णः भवति चेत् अत्र आगमिष्यति। तावत् WhatsApp मध्ये प्रदर्शनं याचन्ताम्।
+cta_installers_note	प्रत्येकं संस्थापनसङ्कुलं शुद्धयन्त्रे संस्थापनपरीक्षायाम् उत्तीर्णं भवति चेत् अत्र आगमिष्यति। तावत् WhatsApp मध्ये प्रदर्शनं याचन्ताम्।
 cta_whatsapp_soon	WhatsApp प्रदर्शनरेखा शीघ्रम् उद्घटिष्यते। भवतः सन्देशः एवं भविष्यति: “{message}”।
 acct_page_title	खाता — Moklanjo
 acct_lede	जालस्थलाय अनुप्रयोगेभ्यः च एका खाता — नूतनाः वा पुनरागताः वा, समानं प्रपत्रम्।
@@ -140,9 +140,9 @@ acct_name_optional	नाम (ऐच्छिकम्)
 acct_password	गुप्तशब्दः
 acct_continue	निरन्तरं कुर्वन्तु
 acct_forgot	गुप्तशब्दं विस्मृतवन्तः?
-acct_reset_hint	वयं पुनर्स्थापन-लिङ्कं ईपत्रेण प्रेषयिष्यामः। येन सङ्केतेन पञ्जीकृतवन्तः तम् एव प्रयुञ्जताम्।
-acct_send_reset	पुनर्स्थापन-लिङ्कं प्रेषयन्तु
-acct_cancel	रद्दं कुर्वन्तु
+acct_reset_hint	वयं पुनःस्थापन-लिङ्कम् ईपत्रेण प्रेषयिष्यामः। येन सङ्केतेन पञ्जीकृतवन्तः तम् एव प्रयुञ्जताम्।
+acct_send_reset	पुनःस्थापन-लिङ्कं प्रेषयन्तु
+acct_cancel	निरस्यन्तु
 acct_or_continue	अथवा अनेन निरन्तरं कुर्वन्तु
 acct_phone	दूरभाषः
 acct_mobile	चलदूरभाष-सङ्ख्या
@@ -180,12 +180,12 @@ shop_checkout_hint	चेकआउट् भवन्तं खाताया�
 acct_billing_hint	वार्षिकाः योजनाः — चेकआउट् समये द्वारमार्गः करं योजयति। स्थानीयः उपयोगः सर्वदा निःशुल्कः। अनुकूलितं मूल्योद्धरणम् (Steady तः न्यूनं Priority तः अधिकं वा भवितुम् अर्हति)।
 shop_cloud_plans	मेघ-योजनाः
 acct_federated	संघीय-प्रवेशः
-acct_err_invalid_email	शुद्धं ईपत्र-सङ्केतं लिखन्तु।
+acct_err_invalid_email	शुद्धम् ईपत्र-सङ्केतं लिखन्तु।
 acct_err_weak_password	न्यूनातिन्यूनं 6 अक्षराणां गुप्तशब्दं प्रयुञ्जताम्।
 acct_err_wrong_password	अशुद्धः गुप्तशब्दः।
 acct_err_invalid_credential	ईपत्रं गुप्तशब्दः वा अशुद्धः।
 acct_err_popup_closed	प्रवेश-गवाक्षः पिहितः।
-acct_err_popup_cancelled	प्रवेशः रद्दः अभवत्।
+acct_err_popup_cancelled	प्रवेशः निरस्तः अभवत्।
 acct_err_unauthorized_domain	एतत् डोमेन् Firebase Auth कृते अधिकृतं नास्ति।
 acct_err_method_disabled	अयं प्रवेशविधिः अद्यापि सक्रियः नास्ति।
 acct_err_too_many	अत्यधिकाः प्रयत्नाः। पश्चात् पुनः प्रयतन्ताम्।
@@ -197,7 +197,7 @@ acct_err_credential_in_use	सः प्रवेशविधिः पूर्
 acct_err_email_in_use	तत् ईपत्रं पूर्वमेव अन्यया खातया प्रयुज्यते।
 acct_err_already_linked	सः विधिः पूर्वमेव अस्यां खातायां संयुक्तः।
 acct_err_exists_other_method	अनेन ईपत्रेण अन्येन प्रवेशविधिना खाता पूर्वमेव अस्ति। प्रथमं तेन विधिना प्रविशन्तु, ततः स्वखातापृष्ठात् इमं संयोजयन्तु।
-acct_err_generic	किञ्चित् दोषः अभवत्।
+acct_err_generic	कश्चित् दोषः अभवत्।
 acct_method_password	ईपत्रं गुप्तशब्दः च
 acct_pw_hint_change	भवतः गुप्तशब्दं परिवर्तयन्तु। वर्तमानेन गुप्तशब्देन पुष्टीकर्तव्यम्।
 acct_pw_hint_add	गुप्तशब्दं योजयन्तु येन ईपत्रेण अपि प्रवेष्टुं शक्नुयुः (कोऽपि प्रदाता अनुपलब्धः चेत् उपयोगी)।
@@ -223,15 +223,15 @@ acct_signed_in_phone	दूरभाषेण प्रविष्टम्
 acct_none_listed	अद्यापि किमपि न सूचीकृतम्
 acct_signed_in_status	भवान् प्रविष्टः अस्ति।
 acct_created	खाता निर्मिता। यदा शक्नुवन्ति तदा सत्यापनाय स्व-ईपत्रं पश्यन्तु।
-acct_reset_sent	तस्य ईपत्रस्य खाता अस्ति चेत्, पुनर्स्थापन-लिङ्कम् आगच्छति। स्व-इनबॉक्स् पश्यन्तु।
+acct_reset_sent	तस्य ईपत्रस्य खाता अस्ति चेत्, पुनःस्थापन-लिङ्कम् आगच्छति। स्व-इनबॉक्स् पश्यन्तु।
 acct_another_method	अन्यः विधिः
 acct_exists_via	{email} कृते खाता {method} द्वारा पूर्वमेव अस्ति। प्रथमं तथा प्रविशन्तु, ततः स्वखातापृष्ठात् इमं प्रदातारं संयोजयन्तु।
 acct_enter_current_pw	भवतः वर्तमानं गुप्तशब्दं लिखन्तु।
 acct_relogin_retry	निर्गम्य पुनः प्रविशन्तु, ततः पुनः प्रयतन्ताम्।
-acct_pw_mismatch	नूतनः गुप्तशब्दः पुष्टिः च न मिलतः।
+acct_pw_mismatch	नूतनः गुप्तशब्दः तस्य पुष्टिः च समानौ न स्तः।
 acct_pw_updated	गुप्तशब्दः नवीकृतः।
-acct_enter_email_pw	गुप्तशब्द-प्रवेशाय एकं ईपत्रं लिखन्तु।
-acct_pw_added	गुप्तशब्दः योजितः। इदानीं ईपत्रेण अपि प्रवेष्टुं शक्नुवन्ति।
+acct_enter_email_pw	गुप्तशब्द-प्रवेशाय एकम् ईपत्रं लिखन्तु।
+acct_pw_added	गुप्तशब्दः योजितः। इदानीम् ईपत्रेण अपि प्रवेष्टुं शक्नुवन्ति।
 acct_method_linked	प्रवेशविधिः संयुक्तः।
 acct_phone_linked	दूरभाषः अस्यां खातायां संयुक्तः।
 acct_verify_sent	सत्यापन-ईपत्रं प्रेषितम् — स्व-इनबॉक्स् पश्यन्तु।
@@ -246,7 +246,7 @@ shop_cart_is_empty	कार्ट् रिक्तम्।
 shop_prices_unpublished	अस्य उत्पादस्य स्वयंक्रय-मूल्यानि अद्यापि न प्रकाशितानि। अनुकूलितं मूल्योद्धरणं याचन्ताम्, अथवा पश्चात् पुनः पश्यन्तु।
 shop_cart_cleared	कार्ट् मार्जितम्।
 plan_free_title	सर्वदा निःशुल्कम्
-plan_free_blurb	भवतः उपकरणेषु सम्पूर्णं स्थानीयम् उत्पादम्। मेघशुल्कं नास्ति।
+plan_free_blurb	भवतः उपकरणेषु सम्पूर्णः स्थानीयः उत्पादः। मेघशुल्कं नास्ति।
 plan_steady_blurb	सजीवः मेघः · 10 GB · न्यून-बैण्ड्विड्थ्
 plan_swift_blurb	सजीवः मेघः · 25 GB · मध्यम-बैण्ड्विड्थ्
 plan_priority_blurb	सजीवः मेघः · 50 GB · उच्चतम-मानक-बैण्ड्विड्थ्

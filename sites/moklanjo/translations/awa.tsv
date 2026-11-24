@@ -19,7 +19,7 @@ book_move_and_settle_every	हर पार्सल बुक करौ, भे
 parties_books_cod_labels_awb	पार्टी, बही, COD, लेबल, AWB पूल, ट्रैकिंग, राइडर अउर बिलिंग — काउंटर से हिसाब तक पूरा चक्कर, इंटरनेट रहै या न रहै। तोहरे डिवाइस पै मुफ्त।
 the_walk_in_loop	वॉक-इन कै चक्कर
 actual_and_volumetric_side_by	असली अउर वॉल्यूमेट्रिक, अगल-बगल।
-charge	खरचा
+charge	शुल्क
 your_rate_card_cash_or	तोहार रेट कार्ड, नकद या खाता।
 next_booking	अगली बुकिंग
 one_tap_clears_the_counter	एक टैप मा काउंटर अगले वॉक-इन खातिर खाली होइ जात है।
@@ -32,8 +32,8 @@ international	अंतरराष्ट्रीय
 breadth	चौड़ाई
 height	ऊँचाई
 weight_on_the_scale	तराजू पै वजन
-chargeable_weight	खरचा वाला वजन
-the_box_s_size_sets	डिब्बा कै साइज खरचा तय करत है।
+chargeable_weight	शुल्क लगै वाला वजन
+the_box_s_size_sets	डिब्बा कै साइज शुल्क तय करत है।
 higher_of_the_two_rounded	दूनौ मा जउन जादा, अगले 0.5 kg तक बढ़ावा।
 in_the_app_the_divisor	ऐप मा भाजक, राउंड करै कै कदम अउर तोहार इकाई (cm या इंच, kg या lb) दुकान खुद तय करत है। अंतरराष्ट्रीय चिप सेटिंग छुए बिना एक बुकिंग खातिर ÷6000 कइ देत है।
 n_3_price_it	3 · दाम तय करौ
@@ -66,7 +66,7 @@ the_manifest_holds_exactly_the	मैनिफेस्ट मा बस ऊ प
 onto_your_own_rider_s	आपन राइडर के फेरा पै
 pick_the_parcels_print_the	पार्सल चुनौ, रन सीट छापौ, अउर राइडर वहै ऐप से राइडर मोड मा काम करत है — डिलीवरी कै सबूत समेत।
 n_6_track_and_prove	6 · ट्रैक अउर सबूत
-every_move_recorded_and_only	हर हरकत दर्ज — अउर बस मतलब वाली हरकत।
+every_move_recorded_and_only	हर कदम दर्ज — अउर बस मतलब वाले कदम।
 booked	बुक भवा
 with_carrier	ढोवै वाले के लगे
 out_for_delivery	डिलीवरी खातिर निकला
@@ -74,17 +74,17 @@ delivered	डिलीवर भवा
 booked_with_carrier_out_for	बुक भवा → ढोवै वाले के लगे → डिलीवरी खातिर निकला → डिलीवर भवा
 failed	फेल
 reason_out_again_or_return	→ कारन → फिर बाहर, या भेजै वाले का लौटावौ।
-impossible_moves_refused	नामुमकिन हरकत नामंजूर
+impossible_moves_refused	नामुमकिन कदम नामंजूर
 delivered_returned_and_cancelled	डिलीवर, लौटावा अउर रद्द — ई आखिरी हैं।
 proof_of_delivery	डिलीवरी कै सबूत
 a_photo_and_the_receiver	डॉकेट पै एक फोटो अउर लेवै वाले कै दस्तखत।
 failed_deliveries	फेल डिलीवरी
 reasons_attempts_out_again_or	कारन, कोसिस, फिर बाहर, या भेजै वाले का वापस।
 n_7_money_comes_home	7 · पइसा घरे आवत है
-cod_you_can_see_expected	देखाय वाला COD: उम्मीद के मुताबिक, जमा किहा, हर भेजै वाले का देय का।
+cod_you_can_see_expected	देखाय वाला COD: मिलै का चाही, जमा किहा, हर भेजै वाले का देय का।
 rider_cash_end_of_run	फेरा के आखिर मा राइडर कै नकद
 rider	राइडर
-expected	उम्मीद के मुताबिक
+expected	मिलै का चाही
 handed_in	जमा किहा
 a_14_drops	A · 14 डिलीवरी
 b_9_drops	B · 9 डिलीवरी
@@ -92,7 +92,7 @@ short_200_on_rider_b	राइडर B कै ₹ 200 कम — नाम ल�
 cod_register	COD रजिस्टर
 collected_against_paid_out_per	वसूली बनाम भुगतान, हर भेजै वाले के हिसाब से, रेमिटेंस बैच के साथ।
 rider_settlement	राइडर कै हिसाब
-expected_against_handed_in_and	उम्मीद के मुताबिक बनाम जमा किहा, अउर कमीसन कै स्लिप।
+expected_against_handed_in_and	मिलै का चाही बनाम जमा किहा, अउर कमीसन कै स्लिप।
 books_that_close	मिलै वाली बही
 day_book_month_bill_per	रोज कै बही, हर खाता कै महीना कै बिल, अउर तोहरे अकाउंटेंट खातिर GST सार CSV।
 n_8_internet_down	8 · इंटरनेट बंद?
@@ -130,7 +130,7 @@ weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	तराजू पै: {kg} kg
-weight_scale_wins	तराजू कै वजन खरचा तय करत है।
+weight_scale_wins	तराजू कै वजन शुल्क तय करत है।
 cta_installers_note	हर इंस्टॉलर साफ मसीन पै इंस्टॉल जाँच पास करै के बाद हियाँ आई। तब तक WhatsApp पै डेमो माँगौ।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दी खुली। तोहार मैसेज अइसन होई: “{message}”।
 acct_page_title	खाता — Moklanjo
@@ -176,10 +176,10 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तोहार कार्ट खाली है। Steady, Swift या Priority जोड़ौ।
 shop_checkout	चेकआउट
 shop_clear	मिटावौ
-shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या की सेट रहै पै Paddle)।
+shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या कुंजी सेट होय तौ Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पै गेटवे टैक्स जोड़त है। लोकल इस्तेमाल हमेसा मुफ्त रहत है। कस्टम एक कोटेसन है (Steady से कम या Priority से जादा होइ सकत है)।
 shop_cloud_plans	क्लाउड प्लान
-acct_federated	फेडरेटेड साइन-इन
+acct_federated	बाहरी खाता से साइन-इन
 acct_err_invalid_email	सही ईमेल पता लिखौ।
 acct_err_weak_password	कम से कम 6 अच्छर कै पासवर्ड रखौ।
 acct_err_wrong_password	गलत पासवर्ड।

@@ -39,7 +39,7 @@ who_when_how_much	के, कब, केतना
 every_credit_and_settlement_stays	हर उधार आ हिसाब रोज के बही में रहेला।
 n_4_buy_stock	4 · खरीद आ स्टॉक
 buy_from_the_wholesaler_stock	थोक बेपारी से खरीदीं — स्टॉक आ केकरा के देवे के बा, दूनो साथे अपडेट होला।
-purchase_sharma_wholesale	खरीद · Sharma Wholesale
+purchase_sharma_wholesale	खरीद · शर्मा होलसेल
 stock_50_kg_ap_7	स्टॉक +50 kg · AP ₹ 7,200
 stock_12_l_ap_1	स्टॉक +12 L · AP ₹ 1,560
 resale_stock_not_kitchen_raw	फेर से बेचे वाला स्टॉक — रसोई के कच्चा माल ना। खरीद पर मरजी के बैच आ एक्सपायरी।
@@ -80,7 +80,7 @@ free_forever_on_your_devices	राउर डिवाइस पर हमेश
 no_per_bill_charge	हर बिल पर कवनो खरचा नइखे
 no_fee_per_sale_item	लोकल इंस्टॉल पर बिक्री, सामान, बिलिंग काउंटर भा स्टाफ PIN पर कवनो फीस नइखे।
 android_windows_linux	Android, Windows, Linux
-the_same_kirano_on_the	काउंटर के पाछे वाला फोन आ डेस्कटॉप बिलिंग काउंटर पर ओहिजे Kirano।
+the_same_kirano_on_the	काउंटर के पाछे वाला फोन आ डेस्कटॉप बिलिंग काउंटर पर उहे Kirano।
 optional_kumkaj_cloud	मरजी के Kumkaj Cloud
 yearly_steady_6k_swift_12k	सालाना Steady ₹6k · Swift ₹12k · Priority ₹24k, टैक्स छोड़ के (भा कस्टम कोटेशन)। /shop पर खरीदीं।
 n_8_start	8 · सुरू करीं
@@ -110,7 +110,7 @@ lan_title	दोकान के Wi-Fi पर एगो अउर बिलि�
 cta_installers_note	हर इंस्टॉलर साफ मशीन पर इंस्टॉल जाँच पास कइला के बाद इहाँ आई। तब ले WhatsApp पर डेमो माँगीं।
 cta_whatsapp_soon	WhatsApp डेमो लाइन जल्दिए खुली। राउर मैसेज अइसन होई: “{message}”।
 acct_page_title	खाता — Kirano
-acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा लौट के आइल, ओहिजे फॉर्म।
+acct_lede	साइट आ ऐप खातिर एके खाता — नया होखीं भा पुरान, फॉर्म उहे।
 acct_email	ईमेल
 acct_name_optional	नाम (मरजी के)
 acct_password	पासवर्ड
@@ -152,7 +152,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	राउर कार्ट खाली बा। Steady, Swift भा Priority जोड़ीं।
 shop_checkout	चेकआउट
 shop_clear	मिटाईं
-shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा की सेट रहला पर Paddle)।
+shop_checkout_hint	चेकआउट रउआ के खाता में साइन इन करावेला, फेर भुगतान सुरू करेला (सैंडबॉक्स मॉक, भा कुंजी सेट रहला पर Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पर गेटवे टैक्स जोड़ेला। लोकल इस्तेमाल हमेशा मुफ्त रहेला। कस्टम एगो कोटेशन ह (Steady से कम भा Priority से बेसी हो सकेला)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -186,7 +186,7 @@ price_per_year	₹{amount}/साल, टैक्स छोड़ के
 acct_pay_received	भुगतान मिल गइल — राउर प्लान ताजा होत बा…
 acct_pay_declined	भुगतान ना मानल गइल भा फेल हो गइल
 acct_pay_failed_detail	{detail}। राउर प्लान ना बदलल।
-acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान ओहिजे बा।
+acct_checkout_closed	चेकआउट बंद हो गइल — कवनो भुगतान पूरा ना भइल। राउर प्लान जस के तस बा।
 acct_checkout_failed	चेकआउट फेल हो गइल
 acct_pay_with	{provider} से भुगतान करीं
 acct_plan_until	{plan} · {date} ले

@@ -7,9 +7,9 @@ the_grocery_counter	किराना के काउंटर
 busy_counter	भीड़ वाला काउंटर
 kirano_the_grocery_counter	KIRANO · किराना के काउंटर
 busy_counter_no_internet_still	काउंटर म भीड़। इंटरनेट नइ हे। तभो बिलिंग चालू।
-sell_khata_stock_and_the	बिक्री, खाता, स्टॉक अउ दिन बही — तुंहर अपन डिवाइस म। बही · बेचव · खरीदी · आइटम। न फ्लोर, न रसोई, न मेज़।
+sell_khata_stock_and_the	बिक्री, खाता, स्टॉक अउ दिन बही — तुंहर अपन डिवाइस म। बही · बिक्री · खरीदी · आइटम। न फ्लोर, न रसोई, न मेज़।
 tap_the_bill_to_walk	काउंटर के एक बिक्री देखे बर बिल म टैप करव
-cash_memo	कैस मेमो
+cash_memo	कैश मेमो
 ready	तैयार
 total	जम्मा
 tap_to_add_the_first	पहिली आइटम जोड़े बर टैप करव
@@ -56,7 +56,7 @@ opening_float	सुरुआती नकद
 cash_sales	+ नकद बिक्री
 upi_sales	+ UPI बिक्री
 cash_paid_out	− देहे नकद
-expected_cash	उम्मीद के मुताबिक नकद
+expected_cash	नकद होना चाही
 counted	गिने गिस
 short	कम
 tenders_stay_separate	भुगतान के तरीका अलग रहिथे
@@ -64,8 +64,8 @@ cash_and_upi_never_mix	नकद अउ UPI कभू एक रहस्यम�
 shift_close	सिफ्ट बंद
 close_the_shift_print_the	सिफ्ट बंद करव, स्लिप छापव, अगला साफ-सुथरा सुरू करव।
 gst_facing_bills	GST बिल
-tax_invoice_or_cash_memo	टैक्स इनवॉइस या कैस मेमो — दिन के रिपोर्ट म दूनो रहिथे।
-books_sell_buy_items_four	बही · बेचव · खरीदी · आइटम — चार स्क्रीन, अउ कोनो रेस्टोरेंट फ्लोर नइ।
+tax_invoice_or_cash_memo	टैक्स इनवॉइस या कैश मेमो — दिन के रिपोर्ट म दूनो रहिथे।
+books_sell_buy_items_four	बही · बिक्री · खरीदी · आइटम — चार स्क्रीन, अउ कोनो रेस्टोरेंट फ्लोर नइ।
 n_6_internet_down	6 · इंटरनेट बंद?
 the_internet_drops_the_counter	इंटरनेट चल दिस। काउंटर बेचत रहिथे।
 router_no_internet	राउटर: इंटरनेट नइ हे
@@ -77,7 +77,7 @@ one_server_lan_clients	एक सर्वर, LAN क्लाइंट
 extra_tills_share_the_same	अतिरिक्त बिलिंग काउंटर दुकान के नेटवर्क म उही बही ला साझा करथें।
 n_7_free_forever_locally	7 · लोकल म हमेशा मुफत
 free_forever_on_your_devices	तुंहर डिवाइस म हमेशा मुफत।
-no_per_bill_charge	हर बिल म कोनो खर्च नइ हे
+no_per_bill_charge	हर बिल म कोनो फीस नइ हे
 no_fee_per_sale_item	लोकल इंस्टॉल म बिक्री, आइटम, बिलिंग काउंटर या स्टाफ PIN म कोनो फीस नइ हे।
 android_windows_linux	Android, Windows, Linux
 the_same_kirano_on_the	काउंटर के पाछू वाला फ़ोन अउ डेस्कटॉप बिलिंग काउंटर म उही Kirano।
@@ -103,7 +103,7 @@ bill_settle	भुगतान
 bill_paid	भुगतान होगे
 bill_next_item	अगला आइटम जोड़े बर टैप करव
 bill_settle_hint	भुगतान बर टैप करव — नकद या UPI
-bill_cash_return	नकद ₹ 600 · लौटाव ₹ 15
+bill_cash_return	नकद ₹ 600 · लहुटावव ₹ 15
 bill_paid_line	भुगतान होगे · दिन बही अपडेट होगे
 lan_eyebrow	6 · अतिरिक्त बिलिंग काउंटर
 lan_title	दुकान के Wi-Fi म एक अउ बिलिंग काउंटर।
@@ -114,12 +114,12 @@ acct_lede	साइट अउ ऐप बर एके खाता — नवा
 acct_email	ईमेल
 acct_name_optional	नाँव (मरजी के)
 acct_password	पासवर्ड
-acct_continue	आगे बढ़ें
+acct_continue	आगू बढ़व
 acct_forgot	पासवर्ड भुलागेव?
 acct_reset_hint	हमन रीसेट लिंक ईमेल करबो। उही पता इस्तेमाल करव जेकर ले साइन अप करे रेहेव।
 acct_send_reset	रीसेट लिंक भेजव
 acct_cancel	रद्द
-acct_or_continue	या एकर ले आगे बढ़ें
+acct_or_continue	या एकर ले आगू बढ़व
 acct_phone	फ़ोन
 acct_mobile	मोबाइल नंबर
 acct_send_sms	SMS कोड भेजव
@@ -152,7 +152,7 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तुंहर कार्ट खाली हे। Steady, Swift या Priority जोड़व।
 shop_checkout	चेकआउट
 shop_clear	मिटावव
-shop_checkout_hint	चेकआउट तुमन ला खाता म साइन इन कराथे, फेर भुगतान सुरू करथे (सैंडबॉक्स मॉक, या की सेट रहे म Paddle)।
+shop_checkout_hint	चेकआउट तुमन ला खाता म साइन इन कराथे, फेर भुगतान सुरू करथे (सैंडबॉक्स मॉक, या कुंजी सेट रहे म Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट म गेटवे टैक्स जोड़थे। लोकल इस्तेमाल हमेशा मुफत रहिथे। कस्टम एक कोटेसन हे (Steady ले कम या Priority ले जादा हो सकथे)।
 shop_cloud_plans	क्लाउड प्लान
 acct_federated	फेडरेटेड साइन-इन
@@ -167,10 +167,10 @@ acct_err_method_disabled	ए साइन-इन तरीका अभी च�
 acct_err_too_many	बहुत कोसिस होगे। बाद म फेर कोसिस करव।
 acct_err_phone_format	देस के कोड संग पूरा फ़ोन नंबर लिखव (जइसे +91…)।
 acct_err_sms_code	ए SMS कोड गलत हे या एकर समय खतम होगे।
-acct_err_no_account	ए ईमेल ले कोनो खाता नइ हे। नवा बनाए बर आगे बढ़ें, या दूसर तरीका अपनावव।
+acct_err_no_account	ए ईमेल ले कोनो खाता नइ हे। नवा बनाए बर आगू बढ़व, या दूसर तरीका अपनावव।
 acct_err_recent_login	सुरक्छा बर फेर ले साइन इन करव, फेर ए बदलाव दुबारा करव।
-acct_err_credential_in_use	ए साइन-इन तरीका पहिली ले दूसर खाता इस्तेमाल करत हे।
-acct_err_email_in_use	ए ईमेल पहिली ले दूसर खाता इस्तेमाल करत हे।
+acct_err_credential_in_use	ए साइन-इन तरीका पहिली ले दूसर खाता म इस्तेमाल होवत हे।
+acct_err_email_in_use	ए ईमेल पहिली ले दूसर खाता म इस्तेमाल होवत हे।
 acct_err_already_linked	ए तरीका पहिली ले इही खाता ले जुड़े हे।
 acct_err_exists_other_method	ए ईमेल के खाता पहिली ले दूसर साइन-इन तरीका ले बने हे। पहिली उही तरीका ले साइन इन करव, फेर अपन खाता पेज ले एला जोड़व।
 acct_err_generic	कुछु गड़बड़ होगे।
@@ -191,7 +191,7 @@ acct_checkout_failed	चेकआउट फेल होगे
 acct_pay_with	{provider} ले भुगतान करव
 acct_plan_until	{plan} · {date} तक
 acct_unavailable	उपलब्ध नइ हे
-acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन ले आगे बढ़ें।
+acct_continue_hint	ईमेल, प्रोवाइडर या फ़ोन ले आगू बढ़व।
 acct_signed_in_fallback	(साइन इन होगे)
 acct_email_verified	ईमेल पक्का होगे
 acct_email_unverified	ईमेल अभी पक्का नइ हे — अपन इनबॉक्स देखव

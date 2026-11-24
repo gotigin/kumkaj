@@ -20,7 +20,7 @@ works_with_no_internet	बिना इंटरनेट के काम क�
 your_books_stay_on_your	तोहार हिसाब-किताब तोहरेन डिवाइस पै रहत है
 n_115_languages_on_screen	स्क्रीन पै 115 भासा
 your_floor_at_a_glance	एक नजर मा तोहार फ्लोर
-tap_a_table_to_walk	कउनो मेज पै टैप करौ अउर एक आवाजाही सुरू से आखिर तक देखौ। ऐप जइसन वहै रंग अउर सब्द — अउर मेज तबै खाली होत है जब बिल कै भुगतान होइ जात है।
+tap_a_table_to_walk	कउनो मेज पै टैप करौ अउर मेहमान के आवै से जाय तक सब देखौ। ऐप जइसन वहै रंग अउर सब्द — अउर मेज तबै खाली होत है जब बिल कै भुगतान होइ जात है।
 every_country	हर देस
 every_country_at_your_counter	तोहरे काउंटर पै हर देस
 one_famous_dish_from_every	हर देस कै एक मसहूर पकवान — देस कै अंगरेजी नाम, ओकरी आपन लिपि मा नाम, अउर पकवान कै अंगरेजी नाम। ई सब्द आपन मेनू मा लिखौ। दुनिया आगे बढ़त रहत है; देखै कै मन होय तौ रोकौ या खोजौ।
@@ -40,7 +40,7 @@ mark_the_table_occupied_the	मेहमान बइठतै मेज का 
 sizes_and_add_ons	साइज अउर ऐड-ऑन
 pick_one_size_add_optional	एक साइज चुनौ; तू जउन सीमा तय किहे हौ ओहि तक मरजी कै एक्स्ट्रा जोड़ौ।
 a_note_per_dish	हर पकवान पै एक नोट
-less_spicy_travels_with_the	“कम तीखा” वहै पकवान के साथ जात है जेहिका ऊ है।
+less_spicy_travels_with_the	“कम तीखा” वहै पकवान के साथ जात है जेहि कै ई नोट है।
 t4_occupied	T4 · भरा
 note_less_salt	नोट: नमक कम
 one_ticket_per_kitchen_station	हर रसोई स्टेसन खातिर एक टिकट
@@ -55,7 +55,7 @@ preparing	बनत है
 ready	तैयार
 example_kitchen_screen	उदाहरण रसोई स्क्रीन
 settle_any_way_the_guest	मेहमान जइसे भुगतान करैं, वइसेन हिसाब करौ
-cash_with_change_to_return	लौटावै वाले पइसा के साथ नकद, QR मा पहिलेन से रकम के साथ UPI, थोड़-थोड़ भुगतान, या गाहक के खाता मा बाकी। सामान, सीट या बराबर बाँटौ। मेज तबै खाली होत है जब ओकर बिल भुगतान होइ जात है।
+cash_with_change_to_return	लौटावै वाले पइसा के साथ नकद, QR मा पहिलेन से रकम के साथ UPI, थोड़-थोड़ भुगतान, या गाहक के खाता मा बाकी। सामान के हिसाब से, सीट के हिसाब से या बराबर बाँटौ। मेज तबै खाली होत है जब ओकरे बिल कै भुगतान होइ जात है।
 tips_stay_apart	टिप अलग रहत है
 a_tip_is_recorded_on	टिप अलग से दर्ज होत है — बिक्री मा कबहूँ नाहीं मिलत।
 t4_bill_printed	T4 · बिल छपा
@@ -101,9 +101,9 @@ n_14_dishes_11_categories	14 पकवान · 11 श्रेणी
 cafe_starter	कैफे स्टार्टर
 tea_coffee_cold_drinks_bakery	चाय, कॉफी, ठंढा पेय, बेकरी अउर नास्ता — काउंटर कैफे खातिर तैयार।
 n_22_dishes_4_categories	22 पकवान · 4 श्रेणी
-photo_shelf	फोटो सेल्फ
+photo_shelf	फोटो शेल्फ
 khaynjo_dish_photos	Khaynjo पकवान कै फोटो
-the_full_public_photo_shelf	पूरा सार्वजनिक फोटो सेल्फ — जउन पकवान जोड़ौ ओकर फोटो चुनौ।
+the_full_public_photo_shelf	पूरा सार्वजनिक फोटो शेल्फ — जउन पकवान जोड़ौ ओकर फोटो चुनौ।
 n_1_459_dish_photos_25	1,459 पकवान कै फोटो · 25 किसिम कै रसोई
 internet_down	इंटरनेट बंद?
 the_internet_went_down_the	इंटरनेट चला गवा। काउंटर नाहीं रुका।
@@ -202,10 +202,10 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तोहार कार्ट खाली है। Steady, Swift या Priority जोड़ौ।
 shop_checkout	चेकआउट
 shop_clear	मिटावौ
-shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या की सेट रहै पै Paddle)।
+shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या कुंजी सेट होय तौ Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पै गेटवे टैक्स जोड़त है। लोकल इस्तेमाल हमेसा मुफ्त रहत है। कस्टम एक कोटेसन है (Steady से कम या Priority से जादा होइ सकत है)।
 shop_cloud_plans	क्लाउड प्लान
-acct_federated	फेडरेटेड साइन-इन
+acct_federated	बाहरी खाता से साइन-इन
 acct_err_invalid_email	सही ईमेल पता लिखौ।
 acct_err_weak_password	कम से कम 6 अच्छर कै पासवर्ड रखौ।
 acct_err_wrong_password	गलत पासवर्ड।

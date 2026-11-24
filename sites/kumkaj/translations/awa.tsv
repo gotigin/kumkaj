@@ -23,7 +23,7 @@ courier_offices_franchise_counters_own	कूरियर दफ्तर · फ
 book_label_hand_over_track	बुक → लेबल → सौंपौ → ट्रैक → हिसाब।
 next_booking_in_one_tap	एक टैप मा अगली बुकिंग
 actual_or_volumetric_weight_rounded	असली या वॉल्यूमेट्रिक वजन, तोहरे हिसाब से राउंड किहा
-rider_cash_on_delivery_expected	राइडर कै कैस ऑन डिलीवरी: उम्मीद के मुताबिक बनाम जमा किहा
+rider_cash_on_delivery_expected	राइडर कै कैस ऑन डिलीवरी: मिलै का चाही बनाम जमा किहा
 visit_moklanjo_com	moklanjo.com देखौ  →
 restaurants_caf_s_quick_service	रेस्टोरेंट · कैफे · क्विक सर्विस · बेकरी
 table_kitchen_bill_day_close	मेज → रसोई → बिल → दिन बंद।
@@ -39,9 +39,9 @@ buy_into_stock_offline_forever	खरीद से स्टॉक — हमे
 visit_kirano_shop	kirano.shop देखौ  →
 chemists_pharmacy_counters	केमिस्ट · फार्मेसी काउंटर
 medicine_batch_bill_day_close	दवाई → बैच → बिल → दिन बंद।
-barcode_and_salt_composition_search	बारकोड अउर सॉल्ट / बनावट से खोज
+barcode_and_salt_composition_search	बारकोड अउर सॉल्ट / फार्मूला से खोज
 batch_and_expiry_alerts_on	खरीद पै बैच अउर एक्सपायरी कै चेतावनी
-owner_schedule_h_rx_notes	मालिक कै Schedule H / Rx नोट — झूठा पालन नाहीं
+owner_schedule_h_rx_notes	मालिक कै Schedule H / Rx नोट — पालन कै झूठा दावा नाहीं
 visit_tabiyat_shop	tabiyat.shop देखौ  →
 n_03_your_books_stay_with	03 · तोहार बही तोहरे लगे रहत है
 your_books_live_in_your	तोहार बही तोहरी दुकान मा रहत है।
@@ -66,7 +66,7 @@ the_internet_is_on_and	इंटरनेट चालू है — अउर �
 things_that_leave_the_shop	जउन चीज दुकान से बाहर जात है, जइसे WhatsApp रसीद, ओका पहुँचै खातिर अबहिनौ इंटरनेट चाही।
 n_05_price	05 · दाम
 free_forever_on_your_devices	तोहरे डिवाइस पै हमेसा मुफ्त।
-no_charge_per_seat_user	सीट, यूजर, मेज, राइडर, पार्सल या लोकल डिवाइस पै कउनो खरचा नाहीं। ई ट्रायल नाहीं है।
+no_charge_per_seat_user	सीट, यूजर, मेज, राइडर, पार्सल या लोकल डिवाइस पै कउनो फीस नाहीं। ई ट्रायल नाहीं है।
 on_your_own_devices	आपन डिवाइस पै
 n_0_forever	₹0, हमेसा
 pay_only_for_what_you	जेतना इस्तेमाल करौ ओतनै कै दाम देव — सबके खातिर एकै रेट।

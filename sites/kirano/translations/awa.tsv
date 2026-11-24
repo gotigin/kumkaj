@@ -56,7 +56,7 @@ opening_float	सुरुआती नकद
 cash_sales	+ नकद बिक्री
 upi_sales	+ UPI बिक्री
 cash_paid_out	− दिहा नकद
-expected_cash	उम्मीद के मुताबिक नकद
+expected_cash	जेतना नकद होय का चाही
 counted	गिना
 short	कम
 tenders_stay_separate	भुगतान कै तरीका अलग रहत हैं
@@ -77,7 +77,7 @@ one_server_lan_clients	एक सर्वर, LAN क्लाइंट
 extra_tills_share_the_same	अतिरिक्त बिलिंग काउंटर दुकान के नेटवर्क पै वहै बही साझा करत हैं।
 n_7_free_forever_locally	7 · लोकल मा हमेसा मुफ्त
 free_forever_on_your_devices	तोहरे डिवाइस पै हमेसा मुफ्त।
-no_per_bill_charge	हर बिल पै कउनो खरचा नाहीं
+no_per_bill_charge	हर बिल पै कउनो फीस नाहीं
 no_fee_per_sale_item	लोकल इंस्टॉल पै बिक्री, सामान, बिलिंग काउंटर या स्टाफ PIN पै कउनो फीस नाहीं।
 android_windows_linux	Android, Windows, Linux
 the_same_kirano_on_the	काउंटर के पाछे वाले फोन अउर डेस्कटॉप बिलिंग काउंटर पै वहै Kirano।
@@ -152,10 +152,10 @@ shop_cart	कार्ट
 shop_cart_empty_hint	तोहार कार्ट खाली है। Steady, Swift या Priority जोड़ौ।
 shop_checkout	चेकआउट
 shop_clear	मिटावौ
-shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या की सेट रहै पै Paddle)।
+shop_checkout_hint	चेकआउट तोहका खाता मा साइन इन करावत है, फिर भुगतान सुरू करत है (सैंडबॉक्स मॉक, या कुंजी सेट होय तौ Paddle)।
 acct_billing_hint	सालाना प्लान — चेकआउट पै गेटवे टैक्स जोड़त है। लोकल इस्तेमाल हमेसा मुफ्त रहत है। कस्टम एक कोटेसन है (Steady से कम या Priority से जादा होइ सकत है)।
 shop_cloud_plans	क्लाउड प्लान
-acct_federated	फेडरेटेड साइन-इन
+acct_federated	बाहरी खाता से साइन-इन
 acct_err_invalid_email	सही ईमेल पता लिखौ।
 acct_err_weak_password	कम से कम 6 अच्छर कै पासवर्ड रखौ।
 acct_err_wrong_password	गलत पासवर्ड।
