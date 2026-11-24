@@ -272,6 +272,69 @@ pub fn is_rtl(lang: &str) -> bool {
     )
 }
 
+const RLM: char = '\u{200F}';
+
+/// Copy for a right-to-left language, marked for Makepad's text layout.
+///
+/// A RIGHT-TO-LEFT MARK starts every paragraph, so Makepad lays it out right
+/// to left on every row (vendor patch `rtl_paragraph_direction`). Same rules as
+/// `sites/_shared/i18n/site_i18n.rs` `rtl_marks` — block markers stay first.
+pub fn rtl_marks(text: &str) -> String {
+    let mut out = String::with_capacity(text.len() + 3 * (1 + text.matches('\n').count()));
+    for (i, line) in text.split('\n').enumerate() {
+        if i > 0 {
+            out.push('\n');
+        }
+        let at = block_marker_len(line);
+        out.push_str(&line[..at]);
+        if !line.trim().is_empty() && !line[at..].starts_with(RLM) {
+            out.push(RLM);
+        }
+        out.push_str(&line[at..]);
+    }
+    out
+}
+
+/// Bytes of `line` taken by Markdown block markers (`# `, `> `, `- `, `+ `,
+/// `* `, `1. `, `1) `) with their indentation, nested ones included; 0 when
+/// the line starts with none.
+fn block_marker_len(line: &str) -> usize {
+    let bytes = line.as_bytes();
+    let (mut at, mut end) = (0, 0);
+    loop {
+        while bytes.get(at) == Some(&b' ') {
+            at += 1;
+        }
+        let rest = &line[at..];
+        let marker = match rest.bytes().next() {
+            Some(b'#') => rest.bytes().take_while(|&b| b == b'#').count(),
+            Some(b'>' | b'-' | b'+' | b'*') => 1,
+            Some(b'0'..=b'9') => {
+                let digits = rest.bytes().take_while(u8::is_ascii_digit).count();
+                if rest[digits..].starts_with(['.', ')']) {
+                    digits + 1
+                } else {
+                    0
+                }
+            }
+            _ => 0,
+        };
+        if marker == 0 || !rest[marker..].starts_with(' ') {
+            return end;
+        }
+        at += marker + 1;
+        end = at;
+    }
+}
+
+fn rtl_locale_text(lang: &str, text: String) -> String {
+    if is_rtl(lang) {
+        rtl_marks(&text)
+    } else {
+        text
+    }
+}
+
 pub fn language_by_code(code: &str) -> Option<&'static LanguageInfo> {
     LANGUAGES.iter().find(|l| l.code == code)
 }
@@ -1477,7 +1540,7 @@ fn en(key: &str) -> String {
 /// Locale string with optional template overlays (concrete feel without forks).
 pub fn t_overlay(lang: &str, key: &str, overlays: &[(&str, &str)]) -> String {
     if let Some((_, value)) = overlays.iter().find(|(k, _)| *k == key) {
-        return (*value).into();
+        return rtl_locale_text(lang, (*value).into());
     }
     t(lang, key)
 }
@@ -1501,10 +1564,12 @@ pub fn table_language(lang: &str) -> &str {
 /// kept exactly. `every_catalogue_language_translates_every_key` fails on
 /// any gap, so a new `en` key lands with all of its translations.
 pub fn t(lang: &str, key: &str) -> String {
-    if let Some(hit) = translated(lang, key) {
-        return hit.to_string();
-    }
-    en(key)
+    let text = if let Some(hit) = translated(lang, key) {
+        hit.to_string()
+    } else {
+        en(key)
+    };
+    rtl_locale_text(lang, text)
 }
 
 fn translated(lang: &str, key: &str) -> Option<&'static str> {
@@ -1587,6 +1652,24 @@ mod tests {
         for code in ["en", "hi", "ta", "zh", "zh-Hant", "pt-BR", "es-MX", "sw", ""] {
             assert!(!is_rtl(code), "{code} should be LTR");
         }
+    }
+
+    #[test]
+    fn rtl_marks_prefixes_paragraphs_idempotently() {
+        const R: char = RLM;
+        for s in [
+            "Kumkaj OS ایک",
+            "انٹرنیٹ بند ہو گیا۔\nکاؤنٹر نہیں رکا۔",
+            "+ نقد فروخت",
+        ] {
+            let marked = rtl_marks(s);
+            assert_eq!(marked.replace(R, ""), s);
+            assert_eq!(rtl_marks(&marked), marked);
+        }
+        assert_eq!(rtl_marks("שלום עולם."), format!("{R}שלום עולם."));
+        assert_eq!(rtl_marks("1. پہلا"), format!("1. {R}پہلا"));
+        assert!(t("ur", "locked_word").starts_with(RLM));
+        assert!(!t("en", "locked_word").contains(RLM));
     }
 
     /// `en`'s keys, read from this file: the list every table must match.
