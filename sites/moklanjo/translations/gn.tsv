@@ -17,21 +17,21 @@ start	Ñepyrũ
 moklanjo_courier_operating_system	MOKLANJO · MBA’E MONDOHA ÑEMBOGUATA
 book_move_and_settle_every	Emboheraguapy, emongu’e ha embopaha peteĩteĩ pakete hepy — peteĩ mba’e mondoha ñemboguata nde rembiporúpe.
 parties_books_cod_labels_awb	Ñemu irũnguéra, aranduka, COD, techaukaha, AWB papapy aty, jehapykueho, pakete me’ẽhárakuéra ha kuatia — opaite jere ñemuha mesa guive jehepyme’ẽ opa peve, ñanduti reheve térã ñanduti’ỹre. Reiete nde rembiporúpe.
-the_walk_in_loop	OUVA JERE
+the_walk_in_loop	OÚVA JERE
 actual_and_volumetric_side_by	Pohyikue añetegua ha tuichakue pohyikue, ojoykére.
 charge	Embohepyme’ẽ
 your_rate_card_cash_or	Nde hepy kuatia, pirapire térã kuénta.
 next_booking	Ñemboheraguapy oúva
-one_tap_clears_the_counter	Peteĩ jopy omopotĩ ñemuha mesa ouvarã g̃uarã.
+one_tap_clears_the_counter	Peteĩ jopy omopotĩ ñemuha mesa ambue oúvape g̃uarã.
 scroll_the_parcel_journey_rail	Emongu’e yvy gotyo — pakete jeguata rape yvate gotyo ohechauka moõpa reĩ mombe’úpe.
 n_2_weigh_it_right	2 · EHECHA IPOHYIKUE HEKOPETE
-actual_or_volumetric_whichever_is	Pohyikue añetegua térã tuichakue pohyikue — ituichavéva, ojeapo nde reipotaháicha.
+actual_or_volumetric_whichever_is	Pohyikue añetegua térã tuichakue pohyikue — ituichavéva, oñemboapu’a nde reipotaháicha.
 try_a_box	Eha’ã peteĩ karameg̃ua
 domestic	Tetã ryepýpe
 international	Tetã ambuépe
 breadth	Pyekue
 height	Yvatekue
-weight_on_the_scale	Pohyikue ra’ãhápe pohyikue
+weight_on_the_scale	Pohyikue pohyi ra’ãhápe
 chargeable_weight	POHYIKUE OJEHEPYME’ẼVA
 the_box_s_size_sets	Karameg̃ua tuichakue omoĩ hepy.
 higher_of_the_two_rounded	Mokõívagui ituichavéva, ojupi 0,5 kg oúva peve.
@@ -58,14 +58,14 @@ enter_each_carrier_s_start	Emoinge peteĩ jey peteĩteĩ rerahahára papapy ñep
 code_128_labels	Techaukaha Code 128
 the_awb_goes_on_the	AWB oñemoĩ karameg̃uápe barra papapy ramo ha papapy hesakãvape.
 scan_to_find	Emoñe’ẽ rejuhu hag̃ua
-scan_a_label_to_open	Emoñe’ẽ peteĩ techaukaha eipe’a hag̃ua ipakete kuatia ha ejapo hekopete.
+scan_a_label_to_open	Emoñe’ẽ peteĩ techaukaha reipe’a hag̃ua ipakete kuatia ha remba’apo hag̃ua hese.
 n_5_hand_over	5 · ÑEME’Ẽ
 hand_it_to_a_carrier	Eme’ẽ rerahahárape, térã emondo nde pakete me’ẽhára. Ñemboguata peteĩchagua.
 into_a_carrier_bag	Rerahahára vosápe
-the_manifest_holds_exactly_the	Pakete rysýi oguereko umi pakete reiporavo va’ekue añoite — opavave térã mavave. Pakete oñemboheraguapýva ambue rerahahára ndive ndaikatúi oike ko vosápe.
+the_manifest_holds_exactly_the	Pakete rysýi oguereko umi pakete reiporavo va’ekue añoite — opaite térã mba’eve. Pakete oñemboheraguapýva ambue rerahahára ndive ndaikatúi oike ko vosápe.
 onto_your_own_rider_s	Nde pakete me’ẽhára jeguatápe
 pick_the_parcels_print_the	Eiporavo paketekuéra, emoĩ kuatiápe jeguata kuatia, ha pakete me’ẽhára omba’apo aplikasión peteĩchaguápe me’ẽhára rekópe — ñeme’ẽ techaukaha ndive.
-n_6_track_and_prove	6 · JEHAPYKUEHO HA TECHAUKAHA
+n_6_track_and_prove	6 · EHAPYKUEHO HA EMOAÑETE
 every_move_recorded_and_only	Opaite jeku’e ojehai — ha jeku’e hekopetéva añoite.
 booked	Oñemboheraguapýma
 with_carrier	Rerahahára pópe
@@ -81,7 +81,7 @@ a_photo_and_the_receiver	Peteĩ ta’ãnga ha ohupytýva téra jehai pakete kuat
 failed_deliveries	Ñeme’ẽ ndoikóiva
 reasons_attempts_out_again_or	Mba’ére, ñeha’ã, osẽ jey, térã ojevy omondóvape.
 n_7_money_comes_home	7 · PIRAPIRE OJEVY ÓGAPE
-cod_you_can_see_expected	COD rehecháva: oñeha’arõva, oñeme’ẽva, oñedeveva peteĩteĩ omondóvape.
+cod_you_can_see_expected	COD rehecháva: oñeha’arõva, oñeme’ẽva, ojedevéva peteĩteĩ omondóvape.
 rider_cash_end_of_run	Pakete me’ẽhára pirapire, jeguata pahápe
 rider	Pakete me’ẽhára
 expected	Oñeha’arõva
@@ -99,7 +99,7 @@ n_8_internet_down	8 · ÑANDUTI OPA?
 keep_booking	Emboheraguapy jey jey.
 booking_labels_scanning_cod_and	Ñemboheraguapy, techaukaha, ñemoñe’ẽ, COD ha arandukakuéra omba’apo nde rembiporúpe. Ñanduti opa jave, mba’eve ñemuha mesápe noha’arõi.
 office_router_no_internet	Mba’apoha router: ndaipóri ñanduti
-desk_still_booking	Mesa: oñemboheraguapy gueteri
+desk_still_booking	Mesa: omboheraguapy gueteri
 second_counter_and_rider_phone	Ñemuha mesa mokõiha ha pakete me’ẽhára pumbyry: ojoaju mba’apoha Wi-Fi rupive
 free_forever_on_your_devices	Reiete opa ára peve nde rembiporúpe
 nothing_per_rider_user_or	Ndaipóri hepy peteĩteĩ pakete me’ẽhára, jeporuhára térã paketépe. Kumkaj Cloud reiporavóramo: Steady ₹6k · Swift ₹12k · Priority ₹24k/ary impuesto’ỹre — /shop.
@@ -121,7 +121,7 @@ account	Kuénta
 weigh_it_right	Ehecha ipohyikue hekopete
 price_it	Emoĩ hepy
 label_it	Emoĩ techaukaha
-track_and_prove	Jehapykueho ha techaukaha
+track_and_prove	Ehapykueho ha emoañete
 money_comes_home	Pirapire ojevy ógape
 internet_down	Ñanduti opa
 bead_hand	Ñeme’ẽ
@@ -129,8 +129,8 @@ bead_offline_short	Ñanduti’ỹ
 weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	Pohyikue ra’ãhápe: {kg} kg
-weight_scale_wins	Pohyikue ra’ãhápe oĩva omoĩ hepy.
+weight_on_scale	Pohyi ra’ãhápe: {kg} kg
+weight_scale_wins	Pohyikue pohyi ra’ãhápe omoĩ hepy.
 cta_installers_note	Umi moĩhára oñemoĩta ko’ápe peteĩteĩ ohasa porã rire jemoĩ peteĩ tembiporu pyahúpe. Upe peve, ejerure jehechauka WhatsApp-pe.
 cta_whatsapp_soon	WhatsApp jehechauka rape ojeipe’áta pya’e. Nde marandu he’íta: “{message}”.
 acct_page_title	Kuénta — Moklanjo
@@ -138,11 +138,11 @@ acct_lede	Peteĩ kuénta ñanduti rendápe ha aplikasiónpe g̃uarã — formula
 acct_email	Ñandutiveve
 acct_name_optional	Téra (reiporavóramo)
 acct_password	Ñe’ẽñemi
-acct_continue	Esegíkena
+acct_continue	Eho tenonde
 acct_forgot	Nde resaraipa ñe’ẽñemígui?
-acct_reset_hint	Romondóta ndéve ñanduti rape emoĩ jey hag̃ua ñandutivevépe. Eiporu pe ñandutiveve reñemboheraguapy haguépe.
-acct_send_reset	Emondo rape emoĩ jey hag̃ua
-acct_cancel	Ombogue
+acct_reset_hint	Romondóta ndéve ñandutivevépe peteĩ ñanduti rape remoĩ jey hag̃ua nde ñe’ẽñemi. Eiporu pe ñandutiveve reñemboheraguapy haguépe.
+acct_send_reset	Emondo rape remoĩ jey hag̃ua
+acct_cancel	Eheja rei
 acct_or_continue	térã eho tenonde ko’ãva ndive
 acct_phone	Pumbyry
 acct_mobile	Pumbyry popegua papapy
@@ -150,7 +150,7 @@ acct_send_sms	Emondo SMS papapy
 acct_sms_code	SMS papapy
 acct_confirm_code	Emoneĩ papapy
 acct_signed_in	Reike
-acct_signed_in_as	Reike ko’ãichagua
+acct_signed_in_as	Reikéma ko kuénta rupive
 acct_status	Mba’éichapa oĩ
 acct_sign_in_methods	Jeike rapekuéra
 acct_cloud_username	Arai jeporuhára réra
@@ -168,7 +168,7 @@ acct_link_google	Embojoaju Google
 acct_link_microsoft	Embojoaju Microsoft
 acct_link_github	Embojoaju GitHub
 acct_link_phone	Embojoaju pumbyry
-acct_send_sms_link	Emondo SMS embojoaju hag̃ua
+acct_send_sms_link	Emondo SMS rembojoaju hag̃ua
 acct_confirm_link_phone	Emoneĩ ha embojoaju pumbyry
 shop_page_title	Ñemuha — Moklanjo
 shop_lede	Arai ñembohape ary ha ary — impuesto oñembojoapy jehepyme’ẽ jave. Moklanjo aplikasión henyhẽva nde rembiporúpe opyta reiete opa ára peve, ñemomarandu’ỹre.
@@ -181,17 +181,17 @@ acct_billing_hint	Ary ñembohape — jehepyme’ẽ rokẽ ombojoapy impuesto je
 shop_cloud_plans	Arai ñembohape
 acct_federated	Jeike ambue kuénta rupive
 acct_err_invalid_email	Emoinge ñandutiveve oikóva.
-acct_err_weak_password	Eiporu ñe’ẽñemi orekóva 6 tai michĩvéramo.
+acct_err_weak_password	Eiporu ñe’ẽñemi orekóva 6 tai sa’ivéramo.
 acct_err_wrong_password	Ñe’ẽñemi ndaha’éi hekopete.
 acct_err_invalid_credential	Ñandutiveve térã ñe’ẽñemi ndaha’éi hekopete.
 acct_err_popup_closed	Jeike ovetã oñembotýma.
 acct_err_popup_cancelled	Jeike ojeheja rei.
-acct_err_unauthorized_domain	Ko dominio ndojeheja’ýi Firebase Auth-pe g̃uarã.
+acct_err_unauthorized_domain	Ko dominio noñemoneĩri Firebase Auth-pe g̃uarã.
 acct_err_method_disabled	Upe jeike rape noñemyendýi gueteri.
 acct_err_too_many	Heta ñeha’ã. Eha’ã jey upéi.
 acct_err_phone_format	Eiporu pumbyry papapy henyhẽva tetã papapy ndive (techapyrã +91…).
 acct_err_sms_code	Upe SMS papapy ndaha’éi hekopete térã opáma.
-acct_err_no_account	Ndaipóri kuénta upe ñandutivevépe. Eho tenonde ejapo hag̃ua peteĩ, térã eiporu ambue tape.
+acct_err_no_account	Ndaipóri kuénta upe ñandutivevépe. Eho tenonde rejapo hag̃ua peteĩ, térã eiporu ambue tape.
 acct_err_recent_login	Tekorosã rehehápe, eike jey, upéi eha’ã jey ko ñemoambue.
 acct_err_credential_in_use	Upe jeike rape oiporúma ambue kuénta.
 acct_err_email_in_use	Upe ñandutiveve oiporúma ambue kuénta.
@@ -222,8 +222,8 @@ acct_email_unverified	Ñandutiveve noñemoneĩri gueteri — ehecha nde marandu 
 acct_signed_in_phone	Reike pumbyry rupive
 acct_none_listed	Ndaipóri mba’eve ojehaíva gueteri
 acct_signed_in_status	Reikéma.
-acct_created	Kuénta ojejapóma. Ehecha nde ñandutiveve emoneĩ hag̃ua ikatu vove.
-acct_reset_sent	Oĩramo kuénta upe ñandutivevépe g̃uarã, rape emoĩ jey hag̃ua oĩma tapére. Ehecha nde marandu ryru.
+acct_created	Kuénta ojejapóma. Ehecha nde ñandutiveve remoneĩ hag̃ua ikatu vove.
+acct_reset_sent	Oĩramo kuénta upe ñandutivevépe g̃uarã, ñanduti rape remoĩ jey hag̃ua nde ñe’ẽñemi oĩma tapére. Ehecha nde marandu ryru.
 acct_another_method	ambue tape
 acct_exists_via	{email} kuénta oĩma {method} rupive. Eike raẽ upe tape rupive, upéi embojoaju ko me’ẽhára nde kuénta kuatiarogue guive.
 acct_enter_current_pw	Emoinge nde ñe’ẽñemi ko’ág̃agua.

@@ -1,14 +1,14 @@
 # Somali — Soomaali (so). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	Tusaale
 download_free	Ku soo deji bilaash
-whatsapp_for_a_demo	Bandhig WhatsApp
-free_on_android_windows_and	Bilaash Android, Windows iyo Linux.
+whatsapp_for_a_demo	Bandhig ka codso WhatsApp
+free_on_android_windows_and	Bilaash ku ah Android, Windows iyo Linux.
 the_grocery_counter	miiska iibka dukaanka raashinka
 busy_counter	Miis iib oo mashquul ah
 kirano_the_grocery_counter	KIRANO · MIISKA IIBKA DUKAANKA RAASHINKA
 busy_counter_no_internet_still	Miis iib oo mashquul ah. Internet ma jiro. Weli waa la iibinayaa.
 sell_khata_stock_and_the	Iib, buugga deynta, kaydka iyo buugga maalinta — qalabkaaga. Buugaag · Iib · Iibso · Alaabta. Hool ma jiro, jiko ma jirto, miisas ma jiraan.
-tap_the_bill_to_walk	Taabo biilka si aad u marto iib miiska ah
+tap_the_bill_to_walk	Taabo biilka si aad tallaabo-tallaabo ugu marto iib miiska ah
 cash_memo	Rasiidka lacagta caddaanka ah
 ready	Diyaar
 total	Wadarta
@@ -21,7 +21,7 @@ example_bill	Tusaale biil
 search_by_name_or_short	Ku raadi magac ama kood gaaban
 type_atta_at5_or_an	Qor atta, AT5 ama magac kale — sadarku wuxuu ku dhacaa biilka.
 kg_g_pc_l_ml	kg, g, xabbo, l, ml
-quantity_in_the_unit_the	Tirada cabbirka baakadda; qiimuhu wuu raacaa.
+quantity_in_the_unit_the	Tirada ku qor halbeegga baakaddu isticmaasho; qiimuhu wuu raacaa.
 cash_upi_or_split	Lacag caddaan, UPI ama la qaybiyay
 settle_on_the_counter_the	Ku xisaabi miiska iibka; buugga maalintu wuxuu diiwaangeliyaa habka lacag-bixinta.
 n_3_khata	3 · BUUGGA DEYNTA
@@ -42,10 +42,10 @@ buy_from_the_wholesaler_stock	Ka iibso jumladlaha — kaydka iyo waxa lagugu lee
 purchase_sharma_wholesale	Iibsasho · Sharma Wholesale
 stock_50_kg_ap_7	Kayd +50 kg · Deyn ₹ 7,200
 stock_12_l_ap_1	Kayd +12 L · Deyn ₹ 1,560
-resale_stock_not_kitchen_raw	Kayd dib loo iibinayo — ma aha alaab ceeriin jiko. Dufcad iyo taariikh dhicitaan ikhtiyaari ah iibsashada.
+resale_stock_not_kitchen_raw	Kayd dib loo iibinayo — ma aha alaab ceeriin oo jikada ah. Dufcad iyo taariikh dhicitaan ikhtiyaari ah marka la iibsanayo.
 buy_creates_stock	Iibsashadu waxay abuurtaa kayd
 receive_the_goods_the_catalogue	Qaado alaabta; tirada katalogga ayaa kordhaysa.
-who_we_owe	Cidda aan ku leenahay deyn
+who_we_owe	Cidda deynta nagu leh
 supplier_balance_sits_on_the	Haraaga alaab-qeybiyaha wuxuu ku jiraa isla Dhinacyada ay ku jirto buugga deynta macaamiisha.
 low_stock_at_a_glance	Kayd yar hal jaleeco
 inventory_shows_what_is_running	Kaydku wuxuu muujiyaa waxa dhammaanaya ka hor buuqa xiga.
@@ -62,7 +62,7 @@ short	Yaraan
 tenders_stay_separate	Hababka lacag-bixintu way kala gooni yihiin
 cash_and_upi_never_mix	Lacag caddaanka iyo UPI weligood iskuma qasmaan hal wadar oo qarsoon.
 shift_close	Xiritaanka wareegga
-close_the_shift_print_the	Xir wareegga, daabac warqadda, bilow kan xiga adigoo nadiif ah.
+close_the_shift_print_the	Xir wareegga, daabac warqadda, bilow kan xiga si nadiif ah.
 gst_facing_bills	Biilal GST leh
 tax_invoice_or_cash_memo	Qaansheegad canshuur ama rasiid lacag caddaan — warbixinta maalintu labadaba way xambaartaa.
 books_sell_buy_items_four	Buugaag · Iib · Iibso · Alaabta — afar shaashadood, hool makhaayadeedna ma jiro.
@@ -73,7 +73,7 @@ main_counter_selling_and_settling	Miiska iibka ugu weyn: wuu iibinayaa oo xisaab
 second_till_joined_on_your	Khasnadda labaad: ku xiran Wi-Fi-gaaga
 books_live_on_the_shop	Buugaagtu waxay ku jiraan qalabka dukaanka
 when_the_internet_drops_mid	Marka internetku go’o buuqa dhexdiisa, waxba miiska iibka kuma sugaan.
-one_server_lan_clients	Hal server, macaamiil LAN
+one_server_lan_clients	Hal server, qalabka LAN-ka ku xiran
 extra_tills_share_the_same	Khasnado dheeri ahi waxay wadaagaan isla buugaagta shabakadda dukaanka.
 n_7_free_forever_locally	7 · BILAASH WELIGIIS MAXALLI AHAAN
 free_forever_on_your_devices	Bilaash weligiis qalabkaaga.
@@ -126,15 +126,15 @@ acct_send_sms	Dir koodhka SMS
 acct_sms_code	Koodhka SMS
 acct_confirm_code	Xaqiiji koodhka
 acct_signed_in	Waad gashay
-acct_signed_in_as	Waxaad u gashay sidii
+acct_signed_in_as	Waxaad ku soo gashay
 acct_status	Xaaladda
 acct_sign_in_methods	Hababka soo galitaanka
 acct_cloud_username	Magaca isticmaalaha daruurta
 acct_plan	Qorshe
 acct_resend_verify	Dib u dir iimaylka xaqiijinta
 acct_sign_out	Ka bax
-acct_cloud_sandbox	Kumkaj Cloud (deegaan tijaabo)
-acct_current_password	Furaha sirta hadda
+acct_cloud_sandbox	Kumkaj Cloud (deegaan tijaabo ah)
+acct_current_password	Furaha sirta ee hadda
 acct_email_for_password	Iimayl loogu talagalay galitaanka furaha sirta
 acct_new_password	Furaha sirta cusub
 acct_confirm_new_password	Xaqiiji furaha sirta cusub
@@ -164,8 +164,8 @@ acct_err_popup_closed	Daaqadda soo galitaanka waa la xiray.
 acct_err_popup_cancelled	Soo galitaanka waa la joojiyay.
 acct_err_unauthorized_domain	Domain-kan looma oggolaan Firebase Auth.
 acct_err_method_disabled	Habkaas soo galitaanku weli lama shidin.
-acct_err_too_many	Isku day aad u badan. Mar kale isku day hadhow.
-acct_err_phone_format	Isticmaal lambarka taleefanka oo dhammaystiran oo leh koodhka wadanka (tusaale +91…).
+acct_err_too_many	Isku dayo aad u badan. Mar kale isku day hadhow.
+acct_err_phone_format	Isticmaal lambarka taleefanka oo dhammaystiran oo leh koodhka waddanka (tusaale +91…).
 acct_err_sms_code	Koodhkaas SMS waa khalad ama wuu dhacay.
 acct_err_no_account	Akoon iimaylkaas leh ma jiro. Sii wad si aad u abuurto mid, ama isticmaal hab kale.
 acct_err_recent_login	Ammaan darteed, mar kale soo gal, kadib isku day isbeddelkan mar kale.
@@ -175,9 +175,9 @@ acct_err_already_linked	Habkaas hore ayaa loogu xiray akoonkan.
 acct_err_exists_other_method	Akoon iimaylkan leh ayaa hore u jira, laakiin hab kale oo soo galitaan ah. Marka hore ku soo gal habkaas, kadib ku xir kan bogga akoonkaaga.
 acct_err_generic	Wax baa khaldamay.
 acct_method_password	Iimayl iyo furaha sirta
-acct_pw_hint_change	Bedel furaha sirtaada. Waxaad ku xaqiijin doontaa kan hadda.
+acct_pw_hint_change	Beddel furaha sirtaada. Waxaad ku xaqiijin doontaa kan hadda.
 acct_pw_hint_add	Ku dar furaha sirta si aad sidoo kale ugu soo gasho iimayl (waxtar leh haddii bixiye la heli waayo).
-acct_pw_change	Bedel furaha sirta
+acct_pw_change	Beddel furaha sirta
 acct_pw_add	Ku dar furaha sirta
 acct_billing_off	Biil-bixinta weli lagama shidin API-ga daruurta.
 acct_billing_no_provider	Ma jiro bixiye lacag-bixin dhab ah oo laga shiday API-ga daruurta (ku-dayashadu waa maxalli oo kaliya).
@@ -185,8 +185,8 @@ price_quote	Qiimayn
 price_per_year	₹{amount}/sannadkii canshuur la’aan
 acct_pay_received	Lacagta waa la helay — qorshahaaga ayaa la cusboonaysiinayaa…
 acct_pay_declined	Lacag-bixinta waa la diiday ama way fashilantay
-acct_pay_failed_detail	{detail}. Qorshahaaga lama bedelin.
-acct_checkout_closed	Lacag-bixinta waa la xiray — lacag lama bixin. Qorshahaagu isma bedelin.
+acct_pay_failed_detail	{detail}. Qorshahaaga lama beddelin.
+acct_checkout_closed	Lacag-bixinta waa la xiray — lacag lama bixin. Qorshahaagu isma beddelin.
 acct_checkout_failed	Lacag-bixintu way fashilantay
 acct_pay_with	Ku bixi {provider}
 acct_plan_until	{plan} · ilaa {date}
@@ -201,17 +201,17 @@ acct_signed_in_status	Waad soo gashay.
 acct_created	Akoonka waa la abuuray. Eeg iimaylkaaga si aad u xaqiijiso markaad awoodo.
 acct_reset_sent	Haddii akoon iimaylkaas leh jiro, xiriiriyaha dib-u-dejintu wuu soo socdaa. Eeg sanduuqa fariimahaaga.
 acct_another_method	hab kale
-acct_exists_via	Akoon loogu talagalay {email} ayaa hore ugu jira {method}. Marka hore sidaas ku soo gal, kadib ku xir bixiyahan bogga akoonkaaga.
-acct_enter_current_pw	Geli furaha sirtaada hadda.
+acct_exists_via	Akoon {email} leh ayaa hore u jira, oo lagu sameeyay {method}. Marka hore sidaas ku soo gal, kadib ku xir bixiyahan bogga akoonkaaga.
+acct_enter_current_pw	Geli furaha sirtaada ee hadda.
 acct_relogin_retry	Ka bax oo mar kale soo gal, kadib isku day mar kale.
-acct_pw_mismatch	Furaha sirta cusub iyo xaqiijintu isma laha.
+acct_pw_mismatch	Furaha sirta cusub iyo xaqiijintu isku mid ma aha.
 acct_pw_updated	Furaha sirta waa la cusboonaysiiyay.
 acct_enter_email_pw	Geli iimayl loogu talagalay galitaanka furaha sirta.
 acct_pw_added	Furaha sirta waa lagu daray. Hadda sidoo kale waxaad ku soo geli kartaa iimayl.
 acct_method_linked	Habka soo galitaanka waa la xiray.
 acct_phone_linked	Taleefanka waa lagu xiray akoonkan.
 acct_verify_sent	Iimaylka xaqiijinta waa la diray — eeg sanduuqa fariimahaaga.
-shop_pricing_soon	Qiimaha dhawaan
+shop_pricing_soon	Qiimaha dhawaan ayuu soo baxayaa
 shop_request_quote	Codso qiimayn
 shop_add_to_cart	Ku dar dambiisha
 shop_notify_later	Hadhow i ogeysii
@@ -222,7 +222,7 @@ shop_cart_is_empty	Dambiishu way madhan tahay.
 shop_prices_unpublished	Qiimaha is-adeegga ee alaabtan weli lama daabicin. Codso qiimayn gaar ah ama dib u eeg hadhow.
 shop_cart_cleared	Dambiisha waa la nadiifiyay.
 plan_free_title	Bilaash weligiis
-plan_free_blurb	Alaabta maxalliga ah oo dhan qalabkaaga. Kharash daruur ma jiro.
+plan_free_blurb	App-ka oo dhammaystiran oo ku shaqeeya qalabkaaga. Kharash daruur ma jiro.
 plan_steady_blurb	Daruur toos ah · 10 GB · xawaare hooseeya
 plan_swift_blurb	Daruur toos ah · 25 GB · xawaare dhexdhexaad ah
 plan_priority_blurb	Daruur toos ah · 50 GB · xawaaraha caadiga ah ee ugu sarreeya

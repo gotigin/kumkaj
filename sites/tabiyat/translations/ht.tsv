@@ -8,7 +8,7 @@ pharmacy_counter	Kontwa famasi
 tabiyat_the_pharmacy_counter	TABIYAT · KONTWA FAMASI A
 pharmacy_counter_offline_your_books	Kontwa famasi. San entènèt. Liv ou yo.
 medicines_barcode_and_salt_search	Medikaman, rechèch pa kòd ba ak pa eleman aktif, lo ak dat ekspirasyon pou pwòp liv ou — sou aparèy ou. Se mak mèt la sèlman; pa janm fè sanblan respekte Lwa sou Medikaman.
-tap_the_bill_to_walk	Tape sou resi a pou pase yon vant devan kontwa
+tap_the_bill_to_walk	Tape sou resi a pou swiv yon vant devan kontwa etap pa etap
 cash_memo	Resi kach
 ready	Pare
 total	Total pou peye
@@ -59,8 +59,8 @@ balance	Balans
 settle_later_part_cash_part	Regle pita — yon pati kach, yon pati UPI. Sa ou dwe founisè yo nan menm ekran Patnè a.
 due_on_the_bill	Dèt sou resi a
 leave_a_balance_on_khata	Kite yon balans nan kaye dèt la san yon lòt aplikasyon kontablite.
-supplier_buys_too	Acha bò kote founisè yo tou
-who_you_owe_updates_when	Sa ou dwe mete ajou lè stòk rive.
+supplier_buys_too	Acha nan men founisè yo tou
+who_you_owe_updates_when	Dèt ou yo mete ajou lè stòk la rive.
 auditable	Ka verifye
 who_when_and_how_much	Kiyès, kilè ak konbyen rete nan liv jounen an.
 n_6_internet_down	6 · ENTÈNÈT LA TONBE?
@@ -155,7 +155,7 @@ shop_cloud_plans	Fòfè nyaj
 acct_federated	Koneksyon federe
 acct_err_invalid_email	Antre yon adrès imèl ki valab.
 acct_err_weak_password	Sèvi ak yon modpas ki gen omwen 6 karaktè.
-acct_err_wrong_password	Move modpas.
+acct_err_wrong_password	Modpas la pa bon.
 acct_err_invalid_credential	Imèl la oswa modpas la pa bon.
 acct_err_popup_closed	Fenèt koneksyon an fèmen.
 acct_err_popup_cancelled	Koneksyon an anile.

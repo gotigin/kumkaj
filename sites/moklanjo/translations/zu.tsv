@@ -15,7 +15,7 @@ track	Ukulandelela
 offline	Ngaphandle kwe-inthanethi
 start	Qala
 moklanjo_courier_operating_system	MOKLANJO · UHLELO LOKUPHATHA AMAPHASELA
-book_move_and_settle_every	Bhukha, hambisa futhi uqedele imali yephasela ngalinye — uhlelo olulodwa lwamaphasela kumadivayisi akho.
+book_move_and_settle_every	Bhuka, hambisa futhi uqedele imali yephasela ngalinye — uhlelo olulodwa lwamaphasela kumadivayisi akho.
 parties_books_cod_labels_awb	Izinhlangothi, izincwadi, i-COD, amalebula, amaqoqo ezinombolo ze-AWB, ukulandelela, abalethi namabhili — wonke umjikelezo kusukela ekhawunteni kuze kuqedwe imali, kungaba ne-inthanethi noma ngaphandle kwayo. Mahhala kumadivayisi akho.
 the_walk_in_loop	UMJIKELEZO WOFIKAYO
 actual_and_volumetric_side_by	Isisindo sangempela nesisindo sevolumu, eceleni komunye nomunye.
@@ -62,20 +62,20 @@ scan_a_label_to_open	Skena ilebula ukuze uvule idokhethi yayo futhi wenze okudin
 n_5_hand_over	5 · NIKELA
 hand_it_to_a_carrier	Nikela kumthwali, noma uthumele umlethi wakho. Uhlelo olufanayo.
 into_a_carrier_bag	Esikhwameni somthwali
-the_manifest_holds_exactly_the	Uhlu lwamaphasela luqukethe kanye lawo maphasela owakhethile — wonke noma lutho. Iphasela elibhukhwe komunye umthwali alikwazi ukungena kulesi sikhwama.
+the_manifest_holds_exactly_the	Uhlu lwamaphasela luqukethe kanye lawo maphasela owakhethile — wonke noma lutho. Iphasela elibhukwe komunye umthwali alikwazi ukungena kulesi sikhwama.
 onto_your_own_rider_s	Ohambweni lomlethi wakho
-pick_the_parcels_print_the	Khetha amaphasela, phrinta ishidi lohambo, futhi umlethi usebenza ku-app efanayo ngemodi yomlethi — kanye nobufakazi bokulethwa.
+pick_the_parcels_print_the	Khetha amaphasela, phrinta ishidi lohambo, bese umlethi esebenza ku-app efanayo ngemodi yomlethi — kanye nobufakazi bokulethwa.
 n_6_track_and_prove	6 · LANDELELA FUTHI UFAKAZELE
 every_move_recorded_and_only	Konke ukunyakaza kuyabhalwa — futhi ukunyakaza okunengqondo kuphela.
-booked	Kubhukhiwe
+booked	Kubhukiwe
 with_carrier	Kumthwali
 out_for_delivery	Isendleleni iyolethwa
 delivered	Kulethiwe
-booked_with_carrier_out_for	Kubhukhiwe → Kumthwali → Isendleleni iyolethwa → Kulethiwe
+booked_with_carrier_out_for	Kubhukiwe → Kumthwali → Isendleleni iyolethwa → Kulethiwe
 failed	Kwehlulekile
 reason_out_again_or_return	→ isizathu → iphinde iphume, noma ibuyiselwe kumthumeli.
 impossible_moves_refused	Ukunyakaza okungenakwenzeka kuyenqatshwa
-delivered_returned_and_cancelled	Kulethiwe, kubuyisiwe futhi kukhanseliwe kuyisiphetho.
+delivered_returned_and_cancelled	Okulethiwe, okubuyisiwe nokukhanseliwe akusashintshwa.
 proof_of_delivery	Ubufakazi bokulethwa
 a_photo_and_the_receiver	Isithombe nesiginesha yomamukeli kudokhethi.
 failed_deliveries	Ukulethwa okwehlulekile
@@ -88,7 +88,7 @@ expected	Okulindelekile
 handed_in	Kunikelwe
 a_14_drops	A · ukulethwa oku-14
 b_9_drops	B · ukulethwa oku-9
-short_200_on_rider_b	Kushode ₹ 200 ku-Umlethi B — kushiwo, akulahlekanga engqikithini.
+short_200_on_rider_b	Kushode ₹ 200 kumlethi B — kuyashiwo, akulahleki engqikithini.
 cod_register	Irejista ye-COD
 collected_against_paid_out_per	Okuqoqiwe kuqhathaniswa nokukhokhiwe, ngomthumeli ngamunye, namaqoqo okuthunyelwa kwemali.
 rider_settlement	Ukuqedela imali yomlethi
@@ -140,7 +140,7 @@ acct_name_optional	Igama (ngokuzikhethela)
 acct_password	Iphasiwedi
 acct_continue	Qhubeka
 acct_forgot	Ukhohlwe iphasiwedi?
-acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli olifanayo obhalise ngalo.
+acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli elifanayo obhalise ngalo.
 acct_send_reset	Thumela isixhumanisi sokusetha kabusha
 acct_cancel	Khansela
 acct_or_continue	noma qhubeka usebenzisa
@@ -192,11 +192,11 @@ acct_err_too_many	Imizamo eminingi kakhulu. Zama futhi emuva kwesikhathi.
 acct_err_phone_format	Sebenzisa inombolo yocingo ephelele enekhodi yezwe (isib. +91…).
 acct_err_sms_code	Leyo khodi ye-SMS ayilungile noma iphelelwe yisikhathi.
 acct_err_no_account	Ayikho i-akhawunti ene-imeyili leyo. Qhubeka ukuze uyidale, noma usebenzise enye indlela.
-acct_err_recent_login	Ngokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
+acct_err_recent_login	Ngenxa yokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
 acct_err_credential_in_use	Leyo ndlela yokungena isisetshenziswa enye i-akhawunti.
 acct_err_email_in_use	Leyo imeyili isisetshenziswa enye i-akhawunti.
 acct_err_already_linked	Leyo ndlela isixhunyaniswe nale akhawunti.
-acct_err_exists_other_method	Kukhona i-akhawunti esivele ikhona ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
+acct_err_exists_other_method	Sekuvele kukhona i-akhawunti ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
 acct_err_generic	Kukhona okungahambanga kahle.
 acct_method_password	I-imeyili nephasiwedi
 acct_pw_hint_change	Shintsha iphasiwedi yakho. Uzoqinisekisa ngeyamanje.

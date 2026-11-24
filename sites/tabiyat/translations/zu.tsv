@@ -7,7 +7,7 @@ the_pharmacy_counter	ikhawunta yekhemisi
 pharmacy_counter	Ikhawunta yekhemisi
 tabiyat_the_pharmacy_counter	TABIYAT · IKHAWUNTA YEKHEMISI
 pharmacy_counter_offline_your_books	Ikhawunta yekhemisi. Ngaphandle kwe-inthanethi. Izincwadi zakho.
-medicines_barcode_and_salt_search	Imithi, ukusesha ngebhakhodi nangesithako esisebenzayo, iqoqo nosuku lokuphelelwa yisikhathi ezincwadini zakho — kumadivayisi akho. Izimpawu zomnikazi kuphela; akukaze kube nokuzenzisa ukuthobela uMthetho Wemithi.
+medicines_barcode_and_salt_search	Imithi, ukusesha ngebhakhodi nangesithako esisebenzayo, iqoqo nosuku lokuphelelwa yisikhathi ezincwadini zakho — kumadivayisi akho. Izimpawu zomnikazi kuphela; i-Tabiyat ayilokothi izenze sengathi ithobela uMthetho Wemithi.
 tap_the_bill_to_walk	Thepha ibhili ukuze ulandele ukuthengisa ekhawunteni
 cash_memo	Irisidi likakheshi
 ready	Sekulungile
@@ -113,7 +113,7 @@ acct_name_optional	Igama (ngokuzikhethela)
 acct_password	Iphasiwedi
 acct_continue	Qhubeka
 acct_forgot	Ukhohlwe iphasiwedi?
-acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli olifanayo obhalise ngalo.
+acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli elifanayo obhalise ngalo.
 acct_send_reset	Thumela isixhumanisi sokusetha kabusha
 acct_cancel	Khansela
 acct_or_continue	noma qhubeka usebenzisa
@@ -165,11 +165,11 @@ acct_err_too_many	Imizamo eminingi kakhulu. Zama futhi emuva kwesikhathi.
 acct_err_phone_format	Sebenzisa inombolo yocingo ephelele enekhodi yezwe (isib. +91…).
 acct_err_sms_code	Leyo khodi ye-SMS ayilungile noma iphelelwe yisikhathi.
 acct_err_no_account	Ayikho i-akhawunti ene-imeyili leyo. Qhubeka ukuze uyidale, noma usebenzise enye indlela.
-acct_err_recent_login	Ngokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
+acct_err_recent_login	Ngenxa yokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
 acct_err_credential_in_use	Leyo ndlela yokungena isisetshenziswa enye i-akhawunti.
 acct_err_email_in_use	Leyo imeyili isisetshenziswa enye i-akhawunti.
 acct_err_already_linked	Leyo ndlela isixhunyaniswe nale akhawunti.
-acct_err_exists_other_method	Kukhona i-akhawunti esivele ikhona ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
+acct_err_exists_other_method	Sekuvele kukhona i-akhawunti ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
 acct_err_generic	Kukhona okungahambanga kahle.
 acct_method_password	I-imeyili nephasiwedi
 acct_pw_hint_change	Shintsha iphasiwedi yakho. Uzoqinisekisa ngeyamanje.

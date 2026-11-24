@@ -12,7 +12,7 @@ tap_the_bill_to_walk	Ejopy kuatia rehapykueho hag̃ua peteĩ ñemu ñemuha mesá
 cash_memo	Pirapire kuatia
 ready	Oĩma
 total	Mboaty
-tap_to_add_the_first	Ejopy embojoapy hag̃ua mba’e peteĩha
+tap_to_add_the_first	Ejopy rembojoapy hag̃ua mba’e peteĩha
 example_grocery_lines_not_a	Ñemuha’i rysýi techapyrã, ndaha’éi pirapire ryru añetegua. Kirano osegi tape peteĩchagua: ñemu → jehepyme’ẽ → ára aranduka.
 n_2_counter_sell	2 · ÑEMU ÑEMUHA MESÁPE
 item_quantity_pay_three_taps	Mba’e, mboy, jehepyme’ẽ — mbohapy jopy.
@@ -33,7 +33,7 @@ balance	Hembýva
 settle_later_in_parties_part	Ehepyme’ẽ upéi Ñemu irũnguéra-pe — pehẽ pirapirépe, pehẽ UPI-pe, emopotĩ rysýi.
 due_on_the_bill	Deve kuatiápe
 what_s_left_goes_on	Hembýva oho ojoguáva deve arandukápe — ndaipóri ambue aplikasión arandukarã.
-one_party_two_roles	Peteĩ ñemu irũ, mokõi rembiapo
+one_party_two_roles	Peteĩ ñemu irũ, mokõi tembiapo
 customer_ar_and_supplier_ap	Ojoguávakuéra ideve ndéve ha nde redeve mba’e me’ẽhárakuérape oĩ peteĩ ñemu irũ arandukápe.
 who_when_how_much	Máva, araka’e, mboy
 every_credit_and_settlement_stays	Opaite deve ha jehepyme’ẽ opyta ára arandukápe.
@@ -101,8 +101,8 @@ chapter_start	Ñepyrũ
 bill_selling	Oñemu hína
 bill_settle	Embohepyme’ẽ
 bill_paid	Ojehepyme’ẽma
-bill_next_item	Ejopy embojoapy hag̃ua mba’e oúva
-bill_settle_hint	Ejopy embohepyme’ẽ hag̃ua — pirapire térã UPI
+bill_next_item	Ejopy rembojoapy hag̃ua mba’e oúva
+bill_settle_hint	Ejopy rembohepyme’ẽ hag̃ua — pirapire térã UPI
 bill_cash_return	Pirapire ₹ 600 · hembýva ₹ 15
 bill_paid_line	Ojehepyme’ẽma · ára aranduka oñembopyahúma
 lan_eyebrow	6 · PIRAPIRE RYRU MBOJOAPY
@@ -114,11 +114,11 @@ acct_lede	Peteĩ kuénta ñanduti rendápe ha aplikasiónpe g̃uarã — formula
 acct_email	Ñandutiveve
 acct_name_optional	Téra (reiporavóramo)
 acct_password	Ñe’ẽñemi
-acct_continue	Esegíkena
+acct_continue	Eho tenonde
 acct_forgot	Nde resaraipa ñe’ẽñemígui?
-acct_reset_hint	Romondóta ndéve ñanduti rape emoĩ jey hag̃ua ñandutivevépe. Eiporu pe ñandutiveve reñemboheraguapy haguépe.
-acct_send_reset	Emondo rape emoĩ jey hag̃ua
-acct_cancel	Ombogue
+acct_reset_hint	Romondóta ndéve ñandutivevépe peteĩ ñanduti rape remoĩ jey hag̃ua nde ñe’ẽñemi. Eiporu pe ñandutiveve reñemboheraguapy haguépe.
+acct_send_reset	Emondo rape remoĩ jey hag̃ua
+acct_cancel	Eheja rei
 acct_or_continue	térã eho tenonde ko’ãva ndive
 acct_phone	Pumbyry
 acct_mobile	Pumbyry popegua papapy
@@ -126,7 +126,7 @@ acct_send_sms	Emondo SMS papapy
 acct_sms_code	SMS papapy
 acct_confirm_code	Emoneĩ papapy
 acct_signed_in	Reike
-acct_signed_in_as	Reike ko’ãichagua
+acct_signed_in_as	Reikéma ko kuénta rupive
 acct_status	Mba’éichapa oĩ
 acct_sign_in_methods	Jeike rapekuéra
 acct_cloud_username	Arai jeporuhára réra
@@ -144,7 +144,7 @@ acct_link_google	Embojoaju Google
 acct_link_microsoft	Embojoaju Microsoft
 acct_link_github	Embojoaju GitHub
 acct_link_phone	Embojoaju pumbyry
-acct_send_sms_link	Emondo SMS embojoaju hag̃ua
+acct_send_sms_link	Emondo SMS rembojoaju hag̃ua
 acct_confirm_link_phone	Emoneĩ ha embojoaju pumbyry
 shop_page_title	Ñemuha — Kirano
 shop_lede	Arai ñembohape ary ha ary — impuesto oñembojoapy jehepyme’ẽ jave. Kirano aplikasión henyhẽva nde rembiporúpe opyta reiete opa ára peve, ñemomarandu’ỹre.
@@ -157,17 +157,17 @@ acct_billing_hint	Ary ñembohape — jehepyme’ẽ rokẽ ombojoapy impuesto je
 shop_cloud_plans	Arai ñembohape
 acct_federated	Jeike ambue kuénta rupive
 acct_err_invalid_email	Emoinge ñandutiveve oikóva.
-acct_err_weak_password	Eiporu ñe’ẽñemi orekóva 6 tai michĩvéramo.
+acct_err_weak_password	Eiporu ñe’ẽñemi orekóva 6 tai sa’ivéramo.
 acct_err_wrong_password	Ñe’ẽñemi ndaha’éi hekopete.
 acct_err_invalid_credential	Ñandutiveve térã ñe’ẽñemi ndaha’éi hekopete.
 acct_err_popup_closed	Jeike ovetã oñembotýma.
 acct_err_popup_cancelled	Jeike ojeheja rei.
-acct_err_unauthorized_domain	Ko dominio ndojeheja’ýi Firebase Auth-pe g̃uarã.
+acct_err_unauthorized_domain	Ko dominio noñemoneĩri Firebase Auth-pe g̃uarã.
 acct_err_method_disabled	Upe jeike rape noñemyendýi gueteri.
 acct_err_too_many	Heta ñeha’ã. Eha’ã jey upéi.
 acct_err_phone_format	Eiporu pumbyry papapy henyhẽva tetã papapy ndive (techapyrã +91…).
 acct_err_sms_code	Upe SMS papapy ndaha’éi hekopete térã opáma.
-acct_err_no_account	Ndaipóri kuénta upe ñandutivevépe. Eho tenonde ejapo hag̃ua peteĩ, térã eiporu ambue tape.
+acct_err_no_account	Ndaipóri kuénta upe ñandutivevépe. Eho tenonde rejapo hag̃ua peteĩ, térã eiporu ambue tape.
 acct_err_recent_login	Tekorosã rehehápe, eike jey, upéi eha’ã jey ko ñemoambue.
 acct_err_credential_in_use	Upe jeike rape oiporúma ambue kuénta.
 acct_err_email_in_use	Upe ñandutiveve oiporúma ambue kuénta.
@@ -198,8 +198,8 @@ acct_email_unverified	Ñandutiveve noñemoneĩri gueteri — ehecha nde marandu 
 acct_signed_in_phone	Reike pumbyry rupive
 acct_none_listed	Ndaipóri mba’eve ojehaíva gueteri
 acct_signed_in_status	Reikéma.
-acct_created	Kuénta ojejapóma. Ehecha nde ñandutiveve emoneĩ hag̃ua ikatu vove.
-acct_reset_sent	Oĩramo kuénta upe ñandutivevépe g̃uarã, rape emoĩ jey hag̃ua oĩma tapére. Ehecha nde marandu ryru.
+acct_created	Kuénta ojejapóma. Ehecha nde ñandutiveve remoneĩ hag̃ua ikatu vove.
+acct_reset_sent	Oĩramo kuénta upe ñandutivevépe g̃uarã, ñanduti rape remoĩ jey hag̃ua nde ñe’ẽñemi oĩma tapére. Ehecha nde marandu ryru.
 acct_another_method	ambue tape
 acct_exists_via	{email} kuénta oĩma {method} rupive. Eike raẽ upe tape rupive, upéi embojoaju ko me’ẽhára nde kuénta kuatiarogue guive.
 acct_enter_current_pw	Emoinge nde ñe’ẽñemi ko’ág̃agua.

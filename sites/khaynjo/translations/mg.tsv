@@ -13,20 +13,20 @@ faq	Fanontaniana matetika
 login	Hiditra
 get_it_free	Alaivo maimaim-poana
 restaurant_pos_free_forever	Rafitra fivarotana ho an’ny trano fisakafoanana · maimaim-poana mandrakizay
-lunch_rush_no_internet_no	Fitokonan’ny atoandro. Tsy misy internet. Tsy olana.
+lunch_rush_no_internet_no	Fitangoronan’ny mpanjifa amin’ny atoandro. Tsy misy internet. Tsy olana.
 khaynjo_runs_your_floor_kitchen	Mitantana ny efitrano fisakafoanana, ny lakozia ary ny kaontera amin’ny fitaovana efa anananao i Khaynjo — avy amin’ny latabatra mankany amin’ny lakozia ka hatramin’ny faktiora, misy internet na tsy misy.
 android_on_google_play_today	Android ao amin’ny Google Play anio · ho avy ny fonosana Windows sy Linux.
 works_with_no_internet	Mandeha na tsy misy internet aza
 your_books_stay_on_your	Mijanona eo amin’ny fitaovanao ny bokinao
 n_115_languages_on_screen	Fiteny 115 eo amin’ny efijery
 your_floor_at_a_glance	Ny efitrano fisakafoananao amin’ny indray mijery
-tap_a_table_to_walk	Tsindrio ny latabatra iray hampandalovana azy amin’ny fitsidihana. Loko sy teny mitovy amin’ny fampiharana — ary tsy afaka ny latabatra raha tsy efa voaloa.
+tap_a_table_to_walk	Tsindrio ny latabatra iray hanarahanao ny dingana rehetra amin’ny fitsidihana iray. Loko sy teny mitovy amin’ny fampiharana — ary tsy afaka ny latabatra raha tsy efa voaloa.
 every_country	FIRENENA REHETRA
 every_country_at_your_counter	Firenena rehetra eo amin’ny kaonteranao
 one_famous_dish_from_every	Sakafo malaza iray avy amin’ny firenena tsirairay — ny anarana anglisy, ny anarana amin’ny soratr’izy ireo, ary ny sakafo amin’ny teny anglisy. Apetraho amin’ny lisitry ny sakafonao ireo teny ireo. Mandalo hatrany izao tontolo izao; ajanony na karohy rehefa te hijery ianao.
 find_a_country_or_dish	Karohy firenena na sakafo — ohatra India, biryani, Japan
-one_famous_dish_per_country	Sakafo malaza iray isaky ny firenena — mandehandeha manerana izao tontolo izao ny matso.
-how_a_service_runs	ANDEHANAN’NY SERVISY IRAY
+one_famous_dish_per_country	Sakafo malaza iray isaky ny firenena — mihodina manerana izao tontolo izao ny diabe.
+how_a_service_runs	FANDEHAN’NY SERVISY IRAY
 one_table_start_to_finish	Latabatra iray, hatramin’ny fiandohana ka hatramin’ny farany.
 watch_a_table_go_from	Jereo ny latabatra iray mandeha avy amin’ny «Nipetraka» ho «Voaloa» — dingana sy loko mitovy amin’izay hitan’ny mpiasanao ao amin’ny fampiharana.
 occupied	Misy olona
@@ -40,21 +40,21 @@ mark_the_table_occupied_the	Mariho ho «Misy olona» ny latabatra raha vao mipet
 sizes_and_add_ons	Habe sy fanampiny
 pick_one_size_add_optional	Misafidiana habe iray; ampio fanampiny raha tianao hatramin’ny fetra apetrakao.
 a_note_per_dish	Fanamarihana isaky ny sakafo
-less_spicy_travels_with_the	Miaraka amin’ny sakafo voakasika ny hoe «Tsy dia masiaka loatra».
+less_spicy_travels_with_the	Miaraka amin’ny sakafo voakasika ny hoe «Tsy dia be sakay».
 t4_occupied	T4 · Misy olona
 note_less_salt	Fanamarihana: sira kely
 one_ticket_per_kitchen_station	Tapakila iray isaky ny toerana ao an-dakozia
-send_the_order_and_each	Alefaso ny baiko ka ny sakafony ihany no azon’ny toerana tsirairay — voaisa isan’andro, miaraka amin’ny latabatra, ny mpiserivy ary ny fanamarihana rehetra. Tsy misy vidiny mihitsy: mahandro ny lakozia, manao faktiora ny kaontera.
+send_the_order_and_each	Alefaso ny baiko ka ny sakafony ihany no azon’ny toerana tsirairay — misy laharana isan’andro, miaraka amin’ny latabatra, ny mpiserivy ary ny fanamarihana rehetra. Tsy misy vidiny mihitsy: mahandro ny lakozia, manao faktiora ny kaontera.
 prints_itself	Manonta ho azy
 send_and_the_ticket_prints	Alefaso, dia hivoaka ao amin’ny toerana mety ny tapakila — tsy mila mitondra azy ny olona.
 example_ticket	Ohatra tapakila
-the_kitchen_sees_what_to	Hitan’ny lakozia izay hahandroana izao
-on_the_kitchen_screen_tickets	Eo amin’ny efijerin’ny lakozia dia mifindra amin’ny tsindry iray ny tapakila Vaovao → Miomana → Vonona. Lasa mafana kokoa ny lokon’ny tapakila taloha, manisa ny sakafo miandry rehetra ny «Andrahoina izao», ary afaka miandry ny sakafo fototra mandra-pivoakan’ny fanombohana.
+the_kitchen_sees_what_to	Hitan’ny lakozia izay tokony ho andrahoina izao
+on_the_kitchen_screen_tickets	Eo amin’ny efijerin’ny lakozia dia mifindra amin’ny tsindry iray ny tapakila Vaovao → Miomana → Vonona. Lasa mafana kokoa ny lokon’ny tapakila taloha, manisa ny sakafo miandry rehetra ny «Andrahoina izao», ary afaka miandry ny sakafo fototra mandra-pivoakan’ny sakafo fidirana.
 new	Vaovao
 preparing	Miomana
 ready	Vonona
 example_kitchen_screen	Ohatra efijerin’ny lakozia
-settle_any_way_the_guest	Andoavy araka izay fomba andoavan’ny vahiny
+settle_any_way_the_guest	Raiso ny vola araka izay fomba handoavan’ny vahiny
 cash_with_change_to_return	Vola mitsanga miaraka amin’ny famerenam-bola, UPI efa misy ny vola ao amin’ny QR, fandoavana ampahany, na trosa ao amin’ny bokin-trosan’ny mpanjifa. Zarao isaky ny sakafo, isaky ny seza na mitovy. Tsy afaka ny latabatra raha tsy efa voaloa ny faktiorany.
 tips_stay_apart	Misaraka ny tamby
 a_tip_is_recorded_on	Raketina manokana ny tamby — tsy afangaro amin’ny varotra mihitsy.
@@ -63,8 +63,8 @@ bill	Faktiora
 customer_paid_cash	Nandoa ny mpanjifa (vola mitsanga)
 return_to_customer	Famerenam-bola ho an’ny mpanjifa
 close_the_day_you_can	Fanakatonana ny andro azonao itokisana
-count_the_drawer_against_the	Isao ny vatasarihana raha oharina amin’ny vola madinika fanombohana, ny vola voaray, ny tamby ary ny vola navoaka — voalaza mazava ny tsy ampy na ny tafahoatra. Atontà ny tatitry ny fiovana, dia sokafy ny tatitry ny andro araka ny mpiasa, ny karazana baiko, ny ora ary ny sakafo, miaraka amin’ny fanafoanana, ny atolotry ny trano ary ny tamby.
-shift_close	Fanakatonana fiovana
+count_the_drawer_against_the	Isao ny vatasarihana raha oharina amin’ny vola madinika fanombohana, ny vola voaray, ny tamby ary ny vola navoaka — voalaza mazava ny tsy ampy na ny tafahoatra. Atontà ny taratasin’ny fifandimbiasana, dia sokafy ny tatitry ny andro araka ny mpiasa, ny karazana baiko, ny ora ary ny sakafo, miaraka amin’ny fanafoanana, ny atolotry ny trano ary ny tamby.
+shift_close	Fanakatonana ny fifandimbiasana
 opening_float	Vola madinika fanombohana
 cash_taken	+ vola voaray
 cash_tips	+ tamby vola mitsanga
@@ -98,7 +98,7 @@ starter_menu	Lisitry ny sakafo fanombohana
 khaynjo_starter_menu	Lisitry ny sakafo fanombohana Khaynjo
 world_cuisines_japanese_mexican	Fandrahoan’izao tontolo izao — japoney, meksikana, italiana, indiana, thai sy ny sisa — samy manana ny sariny ny sakafo tsirairay.
 n_14_dishes_11_categories	Sakafo 14 · sokajy 11
-cafe_starter	Fanombohana ho an’ny kafe
+cafe_starter	Lisitry ny sakafo fanombohana ho an’ny kafe
 tea_coffee_cold_drinks_bakery	Dite, kafe, zava-pisotro mangatsiaka, mofomamy ary tsakitsaky — vonona ho an’ny kafe misy kaontera.
 n_22_dishes_4_categories	Sakafo 22 · sokajy 4
 photo_shelf	Talantalana sary
@@ -110,7 +110,7 @@ the_internet_went_down_the	Tapaka ny internet. Tsy tapaka ny kaontera.
 orders_kitchen_tickets_bills_and	Mipetraka ao amin’ny fitaovanao manokana ny baiko, ny tapakila lakozia, ny faktiora ary ny bokin’ny andro. Rehefa tapaka ny internet afovoan’ny atoandro, tsy misy na inona na inona ao amin’ny trano fisakafoananao miandry azy — ary tsy misy kaonty aminay tokony hidiranao.
 right_now_mid_lunch	Izao ankehitriny izao, afovoan’ny atoandro
 router_no_internet	Router: tsy misy internet
-counter_taking_orders_and_settling	Kaontera: mandray baiko sy mandoa faktiora
+counter_taking_orders_and_settling	Kaontera: mandray baiko sy mampandoa faktiora
 day_book_every_bill_saved	Bokin’ny andro: voatahiry amin’ity fitaovana ity ny faktiora rehetra
 captains_tablets_and_the_kitchen	Ny takelaka elektronikan’ny lehiben’ny mpiserivy sy ny efijerin’ny lakozia: miara-miasa amin’ny Wi-Fi anao manokana
 eyebrow_pricing	VIDINY
@@ -138,7 +138,7 @@ on_your_own_device_in	Ao amin’ny fitaovanao manokana, ao amin’ny toeram-piva
 which_devices_does_it_run	Amin’ny fitaovana inona no mandeha izy?
 android_phones_and_tablets_today	Amin’ny finday sy takelaka elektronika Android ankehitriny, avy ao amin’ny Google Play. Eny an-dalana ny fonosana Windows sy Linux.
 does_it_print_kots_and	Manonta tapakila lakozia sy faktiora ve izy?
-yes_on_thermal_printers_you	Eny — amin’ny mpanonta mafana amboarinao ao amin’ny Fikirana → Mpanonta, tapakila lakozia iray isaky ny toerana.
+yes_on_thermal_printers_you	Eny — amin’ny mpanonta mampiasa hafanana amboarinao ao amin’ny Fikirana → Mpanonta, tapakila lakozia iray isaky ny toerana.
 can_my_staff_use_their	Afaka mampiasa ny fiteniny ve ny mpiasako?
 yes_the_screens_come_in	Eny. Misy amin’ny fiteny 115 ny efijery, avy ankavanana mankavia ny arabo sy ny ordo, ary afaka manana anarana hafa amin’ny soratra hafa ny anaran’ny sakafo.
 what_does_it_cost	Ohatrinona ny vidiny?
@@ -153,9 +153,9 @@ photo_credits	Tompon’ny sary
 cloud_shop	Fivarotana rahona
 account	Kaonty
 cta_installers_note	Hiseho eto ny fametrahana rehefa nahomby tamin’ny fametrahana amin’ny milina madio ny tsirairay. Mandra-pahatongan’izany, angataho fampisehoana amin’ny WhatsApp.
-cta_whatsapp_soon	Hisokatra tsy ho ela ny tsipika fampisehoana WhatsApp. Izao no ho lazain’ny hafatrao: «{message}».
+cta_whatsapp_soon	Hisokatra tsy ho ela ny laharana WhatsApp ho an’ny fampisehoana. Izao no ho lazain’ny hafatrao: «{message}».
 shelf_no_match	Tsy misy firenena na sakafo mifanaraka amin’izany fikarohana izany.
-shelf_search_note	Mampiato ny matso ny fikarohana; fafao izy mba hanohizana, raha tsy izany dia hijanona miato araka ny namelanao azy.
+shelf_search_note	Mampiato ny diabe ny fikarohana; rehefa fafanao izy dia mitohy ny diabe, na mijanona miato raha toy izany no namelanao azy.
 floor_meta_min	{min} minitra
 floor_meta_min_bill	{min} minitra · ₹ {amount}
 floor_meta_paid	₹ {amount} voaloa
@@ -197,17 +197,17 @@ acct_link_phone	Ampifandraiso ny finday
 acct_send_sms_link	Alefaso SMS hampifandraisana
 acct_confirm_link_phone	Hamafiso ary ampifandraiso ny finday
 shop_page_title	Fivarotana — Khaynjo
-shop_lede	Tolotra rahona isan-taona — ampiana rehefa mandoa ny hetra. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Khaynjo manontolo amin’ny fitaovanao manokana.
+shop_lede	Tolotra rahona isan-taona — ampiana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Khaynjo manontolo amin’ny fitaovanao manokana.
 shop_cart	Harona
 shop_cart_empty_hint	Foana ny haronao. Ampio Steady, Swift na Priority.
-shop_checkout	Andoavy
+shop_checkout	Handoa
 shop_clear	Fafao
 shop_checkout_hint	Ampidirina ao amin’ny Kaonty aloha ianao rehefa mandoa, avy eo manomboka ny fandoavana (fakana tahaka ao amin’ny tontolo fitsapana na Paddle rehefa voapetraka ny lakile).
 acct_billing_hint	Tolotra isan-taona — ampian’ny vavahady fandoavana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay ny fampiasana eo an-toerana. Araka ny tolo-bidy ny tolotra manokana (mety ho ambanin’ny Steady na ambonin’ny Priority).
 shop_cloud_plans	Tolotra rahona
 acct_federated	Fidirana mitambatra
 acct_err_invalid_email	Ampidiro adiresy mailaka manan-kery.
-acct_err_weak_password	Ampiasao tenimiafina misy litera 6 farafahakeliny.
+acct_err_weak_password	Ampiasao tenimiafina misy tarehin-tsoratra 6 farafahakeliny.
 acct_err_wrong_password	Diso ny tenimiafina.
 acct_err_invalid_credential	Diso ny mailaka na ny tenimiafina.
 acct_err_popup_closed	Nakatona ny varavarankelin’ny fidirana.
@@ -238,7 +238,7 @@ acct_pay_declined	Nolavina na tsy nahomby ny fandoavana
 acct_pay_failed_detail	{detail}. Tsy niova ny tolotrao.
 acct_checkout_closed	Nakatona ny fandoavana — tsy nisy fandoavana vita. Tsy niova ny tolotrao.
 acct_checkout_failed	Tsy nahomby ny fandoavana
-acct_pay_with	Andoavy amin’ny {provider}
+acct_pay_with	Mandoava amin’ny {provider}
 acct_plan_until	{plan} · hatramin’ny {date}
 acct_unavailable	Tsy misy
 acct_continue_hint	Tohizo amin’ny mailaka, mpamatsy na finday.

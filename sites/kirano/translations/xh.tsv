@@ -30,11 +30,11 @@ ramesh_customer	Ramesh · Umthengi
 due_from_earlier	Ityala langaphambili
 today_s_sale_due	+ intengiso yanamhlanje (ityala)
 balance	Intsalela
-settle_later_in_parties_part	Hlawula kamva kwi-Amaqabane — inxalenye ngemali ephathekayo, inxalenye nge-UPI, ucime umgca.
+settle_later_in_parties_part	Hlawula kamva kuluhlu lwabathengi nababoneleli — inxalenye ngemali ephathekayo, inxalenye nge-UPI, ucime umgca.
 due_on_the_bill	Ityala kwibhili
 what_s_left_goes_on	Intsalela ingena kwincwadi yamatyala yomthengi — akukho enye i-app yeencwadi.
-one_party_two_roles	Iqabane elinye, iindima ezimbini
-customer_ar_and_supplier_ap	Amatyala abathengi kuwe namatyala akho kubaboneleli asencwadini enye yamaqabane.
+one_party_two_roles	Umntu omnye, iindima ezimbini
+customer_ar_and_supplier_ap	Amatyala abathengi kuwe namatyala akho kubaboneleli asencwadini enye yabathengi nababoneleli.
 who_when_how_much	Ngubani, nini, malini
 every_credit_and_settlement_stays	Lonke ityala nayo yonke intlawulo kuhlala kwincwadi yosuku.
 n_4_buy_stock	4 · THENGA UZE UGCINE ISITOKHWE
@@ -46,7 +46,7 @@ resale_stock_not_kitchen_raw	Isitokhwe sokuthengisa kwakhona — hayi izithako z
 buy_creates_stock	Ukuthenga kwenza isitokhwe
 receive_the_goods_the_catalogue	Yamkela iimpahla; inani kwikhathalogu liyanyuka.
 who_we_owe	Abo sibatyalayo
-supplier_balance_sits_on_the	Intsalela yomboneleli ikwiqabane elinye nencwadi yamatyala yomthengi.
+supplier_balance_sits_on_the	Intsalela yomboneleli ikwi-akhawunti efanayo nencwadi yamatyala yomthengi.
 low_stock_at_a_glance	Isitokhwe esiphantsi ngokukhangela kanye
 inventory_shows_what_is_running	Uluhlu lwesitokhwe lubonisa okuphelayo phambi kwesiphithiphithi esilandelayo.
 n_5_day_book	5 · INCWADI YOSUKU

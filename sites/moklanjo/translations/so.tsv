@@ -2,16 +2,16 @@
 example	Tusaale
 length	Dherer
 download_free	Ku soo deji bilaash
-whatsapp_for_a_demo	Bandhig WhatsApp
-free_on_android_windows_and	Bilaash Android, Windows iyo Linux.
+whatsapp_for_a_demo	Bandhig ka codso WhatsApp
+free_on_android_windows_and	Bilaash ku ah Android, Windows iyo Linux.
 courier_operating_system	nidaamka hawlgalka adeegga xamuulka
 parcel_journey	SAFARKA BAAKADDA
 walk_in	Macmiil miiska iibka
 weigh	Miisaan
 price	Qiime
 label	Calaamad
-hand_over	Gacan-gelin
-track	Raac
+hand_over	Dhiibid
+track	Raadraac
 offline	Internet la’aan
 start	Bilow
 moklanjo_courier_operating_system	MOKLANJO · NIDAAMKA HAWLGALKA ADEEGGA XAMUULKA
@@ -31,11 +31,11 @@ domestic	Gudaha
 international	Caalami
 breadth	Ballac
 height	Joog
-weight_on_the_scale	Miisaanka miisaamaha
-chargeable_weight	MIISAANKA LA BIXINAYO
+weight_on_the_scale	Miisaanka qalabka miisaanka
+chargeable_weight	MIISAANKA LACAGTA LAGU QAADAYO
 the_box_s_size_sets	Cabbirka sanduuqa ayaa go’aamiya kharashka.
 higher_of_the_two_rounded	Kan sare ee labada, kor loogu soo koobay 0.5 kg ka xiga.
-in_the_app_the_divisor	App-ka gudihiisa, qaybiyaha, tallaabada soo koobidda iyo cabbirradaada (cm ama inji, kg ama lb) waxaa dejiya ganacsiga. Badhanka Caalamiga ah wuxuu u bedelaa ÷6000 hal diiwaangelin oo aan la taaban Dejinta.
+in_the_app_the_divisor	App-ka gudihiisa, qaybiyaha, tallaabada soo koobidda iyo halbeegyadaada (cm ama inji, kg ama lb) waxaa dejiya ganacsiga. Badhanka Caalamiga ah wuxuu hal diiwaangelin u beddelaa ÷6000, iyadoo aan la taaban Dejinta.
 n_3_price_it	3 · QIIME U YEEL
 your_rate_cards_your_party	Liisaska qiimahaaga, qiimaha dhinacyadaada — iyo faa’iidadaada warqad dirista kasta.
 rate_card	Liiska qiimaha
@@ -47,7 +47,7 @@ within_state_express	Gobolka gudihiisa · Degdeg
 metro_air	Magaalo weyn · Hawo
 zone_service_weight_slab	Aag × adeeg × heerka miisaanka
 first_slab_and_each_extra	Heerka koowaad iyo heer kasta oo dheeri ah, aag iyo adeeg kasta.
-a_consignor_s_own_card	Liiska qiimaha soodiraha gaarka ah
+a_consignor_s_own_card	Liiska qiimaha gaarka ah ee soodiraha
 regular_senders_get_their_rates	Soodirayaasha joogtada ahi waxay helaan qiimahooda; liiska caadiga ahi wuxuu daboolaa dhammaan kuwa kale.
 margin_at_the_desk	Faa’iidada miiska
 your_sell_price_against_the	Qiimahaaga iibka marka loo eego qiimaha qaadaha, warqad dirista kasta.
@@ -59,13 +59,13 @@ code_128_labels	Calaamadaha Code 128
 the_awb_goes_on_the	AWB-ka wuxuu sanduuqa ku dhegaa sidii barcode iyo lambarro caadi ah.
 scan_to_find	Sawir si aad u hesho
 scan_a_label_to_open	Sawir calaamad si aad u furto warqadda dirista oo aad wax uga qabato.
-n_5_hand_over	5 · GACAN-GELI
+n_5_hand_over	5 · U DHIIB
 hand_it_to_a_carrier	U dhiib qaade, ama dir gaarsiiyahaaga. Isla nidaamka.
-into_a_carrier_bag	Kiishka qaadaha
+into_a_carrier_bag	Ku rid kiishka qaadaha
 the_manifest_holds_exactly_the	Liiska xamuulku wuxuu ka kooban yahay baakadaha aad dooratay oo kaliya — dhammaantood ama midna. Baakad lagu diiwaangeliyay qaade kale ma geli karto kiishkan.
-onto_your_own_rider_s	Socdaalka gaarsiiyahaaga
+onto_your_own_rider_s	Ku dar socdaalka gaarsiiyahaaga
 pick_the_parcels_print_the	Dooro baakadaha, daabac warqadda socdaalka, gaarsiiyahana wuxuu ka shaqeeyaa isla app-ka qaabka gaarsiiyaha — oo ay ku jirto caddeynta gaarsiinta.
-n_6_track_and_prove	6 · RAAC OO CADDEE
+n_6_track_and_prove	6 · RAADRAAC OO CADDEE
 every_move_recorded_and_only	Dhaqdhaqaaq kasta waa la diiwaangeliyay — oo kaliya dhaqdhaqaaqa macnaha leh.
 booked	La diiwaangeliyay
 with_carrier	Qaadaha gacantiisa
@@ -73,14 +73,14 @@ out_for_delivery	Waa la gaarsiinayaa
 delivered	La gaarsiiyay
 booked_with_carrier_out_for	La diiwaangeliyay → Qaadaha gacantiisa → Waa la gaarsiinayaa → La gaarsiiyay
 failed	Fashilmay
-reason_out_again_or_return	→ sabab → mar kale bax, ama loo celiyay soodiraha.
-impossible_moves_refused	Dhaqdhaqaaqyada aan suurtagalka ahayn waa la diiday
+reason_out_again_or_return	→ sabab → mar kale bax, ama dib ugu celi soodiraha.
+impossible_moves_refused	Dhaqdhaqaaqyada aan suurtagalka ahayn waa la diidaa
 delivered_returned_and_cancelled	La gaarsiiyay, la celiyay iyo la joojiyay waa kama dambays.
 proof_of_delivery	Caddeynta gaarsiinta
 a_photo_and_the_receiver	Sawir iyo saxiixa qaataha oo ku yaal warqadda dirista.
 failed_deliveries	Gaarsiino fashilmay
 reasons_attempts_out_again_or	Sababo, isku dayo, mar kale bax, ama dib ugu celi soodiraha.
-n_7_money_comes_home	7 · LACAGTU GURIGA WAY SOO NOQOTAA
+n_7_money_comes_home	7 · LACAGTU WAY KUU SOO NOQOTAA
 cod_you_can_see_expected	Lacag-bixin marka la helo oo aad arki karto: la filayo, la dhiibay, lagu leeyahay soodire kasta.
 rider_cash_end_of_run	Lacagta gaarsiiyaha, dhammaadka socdaalka
 rider	Gaarsiiye
@@ -102,12 +102,12 @@ office_router_no_internet	Router-ka xafiiska: internet ma jiro
 desk_still_booking	Miiska: weli wuu diiwaangelinayaa
 second_counter_and_rider_phone	Miiska labaad iyo taleefanka gaarsiiyaha: waxay ku xiran yihiin Wi-Fi-ga xafiiska
 free_forever_on_your_devices	Bilaash weligiis qalabkaaga
-nothing_per_rider_user_or	Waxba gaarsiiye, isticmaale ama baakad kasta. Kumkaj Cloud ikhtiyaari ah: Steady ₹6k · Swift ₹12k · Priority ₹24k/sannadkii canshuur la’aan — /shop.
+nothing_per_rider_user_or	Kharash looma qaado gaarsiiye, isticmaale ama baakad kasta. Kumkaj Cloud ikhtiyaari ah: Steady ₹6k · Swift ₹12k · Priority ₹24k/sannadkii canshuur la’aan — /shop.
 n_9_start	9 · BILOW
 one_courier_os_your_parcels	Hal nidaam xamuul. Baakadahaaga. Buugaagtaada.
 moklanjo_is_a_complete_courier	Moklanjo waa nidaam hawlgal oo dhammaystiran oo adeegga xamuulka ah, Kumkaj hoostiisa — Android, Windows iyo Linux. Gaarsiiyayaashu waxay isticmaalaan isla app-ka qaabka gaarsiiyaha.
 trademark	SUMADDA GANACSIGA
-memon_for_find_it_pronounced	Luqadda Memon “hel” · loogu dhawaaqo go-tee-geen
+memon_for_find_it_pronounced	Af-Memon ahaan waa “hel” · loogu dhawaaqo go-tee-geen
 company	SHIRKADDA
 brand	MAGACA GANACSIGA
 concrete_business_operating_system	App-yada nidaamyada hawlgalka ganacsiga ee la taaban karo
@@ -121,16 +121,16 @@ account	Akoon
 weigh_it_right	Si sax ah u miisaan
 price_it	Qiime u yeel
 label_it	Calaamadee
-track_and_prove	Raac oo caddee
-money_comes_home	Lacagtu guriga way soo noqotaa
+track_and_prove	Raadraac oo caddee
+money_comes_home	Lacagtu way kuu soo noqotaa
 internet_down	Internetku wuu go’ay
-bead_hand	Gacan-gelin
+bead_hand	Dhiib
 bead_offline_short	Net la’aan
 weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	Miisaamaha: {kg} kg
-weight_scale_wins	Miisaanka miisaamuhu wuxuu go’aamiyaa kharashka.
+weight_on_scale	Qalabka miisaanka: {kg} kg
+weight_scale_wins	Miisaanka qalabka miisaanku wuxuu go’aamiyaa kharashka.
 cta_installers_note	Rakibayaashu halkan ayay ka muuqan doonaan marka mid kastaa uu ku guuleysto rakibid mashiin nadiif ah. Ilaa iyo markaas, ka codso bandhig WhatsApp.
 cta_whatsapp_soon	Khadka bandhigga WhatsApp dhawaan ayuu furmayaa. Fariintaadu waxay odhan doontaa: “{message}”.
 acct_page_title	Akoon — Moklanjo
@@ -150,15 +150,15 @@ acct_send_sms	Dir koodhka SMS
 acct_sms_code	Koodhka SMS
 acct_confirm_code	Xaqiiji koodhka
 acct_signed_in	Waad gashay
-acct_signed_in_as	Waxaad u gashay sidii
+acct_signed_in_as	Waxaad ku soo gashay
 acct_status	Xaaladda
 acct_sign_in_methods	Hababka soo galitaanka
 acct_cloud_username	Magaca isticmaalaha daruurta
 acct_plan	Qorshe
 acct_resend_verify	Dib u dir iimaylka xaqiijinta
 acct_sign_out	Ka bax
-acct_cloud_sandbox	Kumkaj Cloud (deegaan tijaabo)
-acct_current_password	Furaha sirta hadda
+acct_cloud_sandbox	Kumkaj Cloud (deegaan tijaabo ah)
+acct_current_password	Furaha sirta ee hadda
 acct_email_for_password	Iimayl loogu talagalay galitaanka furaha sirta
 acct_new_password	Furaha sirta cusub
 acct_confirm_new_password	Xaqiiji furaha sirta cusub
@@ -188,8 +188,8 @@ acct_err_popup_closed	Daaqadda soo galitaanka waa la xiray.
 acct_err_popup_cancelled	Soo galitaanka waa la joojiyay.
 acct_err_unauthorized_domain	Domain-kan looma oggolaan Firebase Auth.
 acct_err_method_disabled	Habkaas soo galitaanku weli lama shidin.
-acct_err_too_many	Isku day aad u badan. Mar kale isku day hadhow.
-acct_err_phone_format	Isticmaal lambarka taleefanka oo dhammaystiran oo leh koodhka wadanka (tusaale +91…).
+acct_err_too_many	Isku dayo aad u badan. Mar kale isku day hadhow.
+acct_err_phone_format	Isticmaal lambarka taleefanka oo dhammaystiran oo leh koodhka waddanka (tusaale +91…).
 acct_err_sms_code	Koodhkaas SMS waa khalad ama wuu dhacay.
 acct_err_no_account	Akoon iimaylkaas leh ma jiro. Sii wad si aad u abuurto mid, ama isticmaal hab kale.
 acct_err_recent_login	Ammaan darteed, mar kale soo gal, kadib isku day isbeddelkan mar kale.
@@ -199,9 +199,9 @@ acct_err_already_linked	Habkaas hore ayaa loogu xiray akoonkan.
 acct_err_exists_other_method	Akoon iimaylkan leh ayaa hore u jira, laakiin hab kale oo soo galitaan ah. Marka hore ku soo gal habkaas, kadib ku xir kan bogga akoonkaaga.
 acct_err_generic	Wax baa khaldamay.
 acct_method_password	Iimayl iyo furaha sirta
-acct_pw_hint_change	Bedel furaha sirtaada. Waxaad ku xaqiijin doontaa kan hadda.
+acct_pw_hint_change	Beddel furaha sirtaada. Waxaad ku xaqiijin doontaa kan hadda.
 acct_pw_hint_add	Ku dar furaha sirta si aad sidoo kale ugu soo gasho iimayl (waxtar leh haddii bixiye la heli waayo).
-acct_pw_change	Bedel furaha sirta
+acct_pw_change	Beddel furaha sirta
 acct_pw_add	Ku dar furaha sirta
 acct_billing_off	Biil-bixinta weli lagama shidin API-ga daruurta.
 acct_billing_no_provider	Ma jiro bixiye lacag-bixin dhab ah oo laga shiday API-ga daruurta (ku-dayashadu waa maxalli oo kaliya).
@@ -209,8 +209,8 @@ price_quote	Qiimayn
 price_per_year	₹{amount}/sannadkii canshuur la’aan
 acct_pay_received	Lacagta waa la helay — qorshahaaga ayaa la cusboonaysiinayaa…
 acct_pay_declined	Lacag-bixinta waa la diiday ama way fashilantay
-acct_pay_failed_detail	{detail}. Qorshahaaga lama bedelin.
-acct_checkout_closed	Lacag-bixinta waa la xiray — lacag lama bixin. Qorshahaagu isma bedelin.
+acct_pay_failed_detail	{detail}. Qorshahaaga lama beddelin.
+acct_checkout_closed	Lacag-bixinta waa la xiray — lacag lama bixin. Qorshahaagu isma beddelin.
 acct_checkout_failed	Lacag-bixintu way fashilantay
 acct_pay_with	Ku bixi {provider}
 acct_plan_until	{plan} · ilaa {date}
@@ -225,17 +225,17 @@ acct_signed_in_status	Waad soo gashay.
 acct_created	Akoonka waa la abuuray. Eeg iimaylkaaga si aad u xaqiijiso markaad awoodo.
 acct_reset_sent	Haddii akoon iimaylkaas leh jiro, xiriiriyaha dib-u-dejintu wuu soo socdaa. Eeg sanduuqa fariimahaaga.
 acct_another_method	hab kale
-acct_exists_via	Akoon loogu talagalay {email} ayaa hore ugu jira {method}. Marka hore sidaas ku soo gal, kadib ku xir bixiyahan bogga akoonkaaga.
-acct_enter_current_pw	Geli furaha sirtaada hadda.
+acct_exists_via	Akoon {email} leh ayaa hore u jira, oo lagu sameeyay {method}. Marka hore sidaas ku soo gal, kadib ku xir bixiyahan bogga akoonkaaga.
+acct_enter_current_pw	Geli furaha sirtaada ee hadda.
 acct_relogin_retry	Ka bax oo mar kale soo gal, kadib isku day mar kale.
-acct_pw_mismatch	Furaha sirta cusub iyo xaqiijintu isma laha.
+acct_pw_mismatch	Furaha sirta cusub iyo xaqiijintu isku mid ma aha.
 acct_pw_updated	Furaha sirta waa la cusboonaysiiyay.
 acct_enter_email_pw	Geli iimayl loogu talagalay galitaanka furaha sirta.
 acct_pw_added	Furaha sirta waa lagu daray. Hadda sidoo kale waxaad ku soo geli kartaa iimayl.
 acct_method_linked	Habka soo galitaanka waa la xiray.
 acct_phone_linked	Taleefanka waa lagu xiray akoonkan.
 acct_verify_sent	Iimaylka xaqiijinta waa la diray — eeg sanduuqa fariimahaaga.
-shop_pricing_soon	Qiimaha dhawaan
+shop_pricing_soon	Qiimaha dhawaan ayuu soo baxayaa
 shop_request_quote	Codso qiimayn
 shop_add_to_cart	Ku dar dambiisha
 shop_notify_later	Hadhow i ogeysii
@@ -246,7 +246,7 @@ shop_cart_is_empty	Dambiishu way madhan tahay.
 shop_prices_unpublished	Qiimaha is-adeegga ee alaabtan weli lama daabicin. Codso qiimayn gaar ah ama dib u eeg hadhow.
 shop_cart_cleared	Dambiisha waa la nadiifiyay.
 plan_free_title	Bilaash weligiis
-plan_free_blurb	Alaabta maxalliga ah oo dhan qalabkaaga. Kharash daruur ma jiro.
+plan_free_blurb	App-ka oo dhammaystiran oo ku shaqeeya qalabkaaga. Kharash daruur ma jiro.
 plan_steady_blurb	Daruur toos ah · 10 GB · xawaare hooseeya
 plan_swift_blurb	Daruur toos ah · 25 GB · xawaare dhexdhexaad ah
 plan_priority_blurb	Daruur toos ah · 50 GB · xawaaraha caadiga ah ee ugu sarreeya

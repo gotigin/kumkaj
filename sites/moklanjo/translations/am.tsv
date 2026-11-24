@@ -6,7 +6,7 @@ whatsapp_for_a_demo	ለማሳያ በWhatsApp
 free_on_android_windows_and	በAndroid፣ Windows እና Linux ላይ ነፃ።
 courier_operating_system	የእሽግ ማድረሻ ሥርዓት
 parcel_journey	የእሽግ ጉዞ
-walk_in	መምጣት
+walk_in	የደንበኛ መምጣት
 weigh	መመዘን
 price	ዋጋ
 label	ተለጣፊ
@@ -17,15 +17,15 @@ start	ጀምር
 moklanjo_courier_operating_system	MOKLANJO · የእሽግ ማድረሻ ሥርዓት
 book_move_and_settle_every	እያንዳንዱን እሽግ ይመዝግቡ፣ ያንቀሳቅሱ እና ሂሳቡን ይዝጉ — በራስዎ መሣሪያዎች ላይ አንድ የእሽግ ሥርዓት።
 parties_books_cod_labels_awb	ተዋዋዮች፣ መዝገቦች፣ COD፣ ተለጣፊዎች፣ የAWB የቁጥር ክምችቶች፣ ክትትል፣ አድራሾች እና ሂሳብ — ከካውንተር እስከ ሂሳብ መዝጊያ ሙሉው ዑደት፣ ኢንተርኔት ቢኖርም ባይኖርም። በመሣሪያዎችዎ ላይ ነፃ።
-the_walk_in_loop	የገቢ ደንበኛ ዑደት
+the_walk_in_loop	የካውንተር ደንበኛ ዑደት
 actual_and_volumetric_side_by	ትክክለኛ ክብደት እና የመጠን ክብደት፣ ጎን ለጎን።
 charge	ክፍያ ይቀበሉ
-your_rate_card_cash_or	የዋጋ ሰንጠረዥዎ፣ ጥሬ ገንዘብ ወይም መለያ።
+your_rate_card_cash_or	የዋጋ ሰንጠረዥዎ፣ በጥሬ ገንዘብ ወይም በዱቤ ሂሳብ።
 next_booking	ቀጣይ ምዝገባ
 one_tap_clears_the_counter	አንድ ንክኪ ካውንተሩን ለቀጣዩ ደንበኛ ያጸዳል።
 scroll_the_parcel_journey_rail	ወደ ታች ይሸብልሉ — ከላይ ያለው የእሽግ ጉዞ መስመር በታሪኩ ውስጥ የት እንዳሉ ያሳያል።
 n_2_weigh_it_right	2 · በትክክል ይመዝኑ
-actual_or_volumetric_whichever_is	ትክክለኛ ወይም የመጠን ክብደት — የትኛውም የሚበልጥ፣ በፈለጉት መንገድ የተጠጋጋ።
+actual_or_volumetric_whichever_is	ትክክለኛ ወይም የመጠን ክብደት — ከሁለቱ የሚበልጠው፣ በፈለጉት መንገድ ተጠጋግቶ።
 try_a_box	ሳጥን ይሞክሩ
 domestic	የሀገር ውስጥ
 international	ዓለም አቀፍ
@@ -51,8 +51,8 @@ a_consignor_s_own_card	የላኪው የራሱ ሰንጠረዥ
 regular_senders_get_their_rates	መደበኛ ላኪዎች የራሳቸውን ዋጋ ያገኛሉ፤ ነባሪው ሰንጠረዥ ሌሎቹን ሁሉ ይሸፍናል።
 margin_at_the_desk	በካውንተሩ ላይ ትርፍ
 your_sell_price_against_the	የመሸጫ ዋጋዎ ከአጓጓዡ ዋጋ ጋር ሲነጻጸር፣ በእያንዳንዱ የእሽግ ሰነድ ላይ።
-n_4_label_it	4 · ተለጣፊ ያድርጉ
-awb_from_your_own_number	AWB ከራስዎ የቁጥር ክምችቶች። ተለጣፊ ያድርጉ፣ ይቃኙ፣ ያግኙ።
+n_4_label_it	4 · ተለጣፊ ይለጥፉ
+awb_from_your_own_number	AWB ከራስዎ የቁጥር ክምችቶች። ተለጣፊ ይለጥፉ፣ ይቃኙ፣ ያግኙ።
 number_pools_per_carrier	ለእያንዳንዱ አጓጓዥ የቁጥር ክምችቶች
 enter_each_carrier_s_start	የእያንዳንዱን አጓጓዥ የመጀመሪያ–የመጨረሻ ተከታታይ ቁጥር አንድ ጊዜ ያስገቡ፤ እያንዳንዱ ምዝገባ ቀጣዩን ቁጥር ይወስዳል።
 code_128_labels	Code 128 ተለጣፊዎች
@@ -62,9 +62,9 @@ scan_a_label_to_open	የእሽግ ሰነዱን ለመክፈት እና እርም�
 n_5_hand_over	5 · ያስረክቡ
 hand_it_to_a_carrier	ለአጓጓዥ ያስረክቡ፣ ወይም የራስዎን አድራሽ ይላኩ። ያው ሥርዓት።
 into_a_carrier_bag	ወደ አጓጓዥ ከረጢት
-the_manifest_holds_exactly_the	የእሽግ ዝርዝሩ የመረጧቸውን እሽጎች ብቻ ይይዛል — ሁሉንም ወይም አንዱንም። ከሌላ አጓጓዥ ጋር የተመዘገበ እሽግ ወደዚህ ከረጢት ሊገባ አይችልም።
+the_manifest_holds_exactly_the	የእሽግ ዝርዝሩ የመረጧቸውን እሽጎች ብቻ ይይዛል — ወይ ሁሉም ይገባሉ ወይ አንዱም አይገባም። ከሌላ አጓጓዥ ጋር የተመዘገበ እሽግ ወደዚህ ከረጢት ሊገባ አይችልም።
 onto_your_own_rider_s	ወደ ራስዎ አድራሽ ጉዞ
-pick_the_parcels_print_the	እሽጎቹን ይምረጡ፣ የጉዞ ወረቀቱን ያትሙ፣ አድራሹም በአድራሽ ሁነታ ከያው መተግበሪያ ይሰራል — የማድረስ ማረጋገጫን ጨምሮ።
+pick_the_parcels_print_the	እሽጎቹን ይምረጡ፣ የጉዞ ወረቀቱን ያትሙ፣ አድራሹም በአድራሽ ሁነታ በዚያው መተግበሪያ ይሰራል — የማድረስ ማረጋገጫን ጨምሮ።
 n_6_track_and_prove	6 · ይከታተሉ እና ያረጋግጡ
 every_move_recorded_and_only	እያንዳንዱ እንቅስቃሴ ይመዘገባል — ትርጉም ያላቸው እንቅስቃሴዎች ብቻ።
 booked	ተመዝግቧል
@@ -94,7 +94,7 @@ collected_against_paid_out_per	የተሰበሰበው ከተከፈለው ጋር �
 rider_settlement	የአድራሽ ሂሳብ መዝጊያ
 expected_against_handed_in_and	የሚጠበቀው ከተረከበው ጋር ሲነጻጸር፣ እና የኮሚሽን ወረቀቱ።
 books_that_close	የሚዘጉ መዝገቦች
-day_book_month_bill_per	የቀን መዝገብ፣ በእያንዳንዱ መለያ የወር ሂሳብ፣ እና ለሂሳብ ባለሙያዎ የGST ማጠቃለያ CSV።
+day_book_month_bill_per	የቀን መዝገብ፣ ለእያንዳንዱ ተዋዋይ የወር ሂሳብ፣ እና ለሂሳብ ባለሙያዎ የGST ማጠቃለያ CSV።
 n_8_internet_down	8 · ኢንተርኔት ተቋርጧል?
 keep_booking	መመዝገብዎን ይቀጥሉ።
 booking_labels_scanning_cod_and	ምዝገባ፣ ተለጣፊዎች፣ ቅኝት፣ COD እና መዝገቦቹ ሁሉም በመሣሪያዎችዎ ላይ ይሰራሉ። ኢንተርኔት ሲቋረጥ በካውንተሩ ላይ ምንም ነገር አይጠብቀውም።
@@ -105,7 +105,7 @@ free_forever_on_your_devices	በመሣሪያዎችዎ ላይ ለዘላለም ነ
 nothing_per_rider_user_or	በአድራሽ፣ በተጠቃሚ ወይም በእሽግ ክፍያ የለም። አማራጭ Kumkaj Cloud፦ Steady ₹6k · Swift ₹12k · Priority ₹24k/በዓመት ግብርን ሳይጨምር — /shop።
 n_9_start	9 · ይጀምሩ
 one_courier_os_your_parcels	አንድ የእሽግ ሥርዓት። የእርስዎ እሽጎች። የእርስዎ መዝገቦች።
-moklanjo_is_a_complete_courier	Moklanjo በKumkaj ስር የሚገኝ ሙሉ የእሽግ ማድረሻ ሥርዓት ነው — Android፣ Windows እና Linux። አድራሾች ያውን መተግበሪያ በአድራሽ ሁነታ ይጠቀማሉ።
+moklanjo_is_a_complete_courier	Moklanjo በKumkaj ስር የሚገኝ ሙሉ የእሽግ ማድረሻ ሥርዓት ነው — Android፣ Windows እና Linux። አድራሾችም ያንኑ መተግበሪያ በአድራሽ ሁነታ ይጠቀማሉ።
 trademark	የንግድ ምልክት
 memon_for_find_it_pronounced	በሜሞን ቋንቋ «ፈልገው ያግኙት» ማለት ነው · አጠራሩ go-tee-geen
 company	ኩባንያ
@@ -120,7 +120,7 @@ cloud_shop	የደመና ሱቅ
 account	መለያ
 weigh_it_right	በትክክል ይመዝኑ
 price_it	ዋጋ ይስጡ
-label_it	ተለጣፊ ያድርጉ
+label_it	ተለጣፊ ይለጥፉ
 track_and_prove	ይከታተሉ እና ያረጋግጡ
 money_comes_home	ገንዘብ ወደ ቤት ይመለሳል
 internet_down	ኢንተርኔት ተቋርጧል
@@ -150,7 +150,7 @@ acct_send_sms	የSMS ኮድ ላክ
 acct_sms_code	የSMS ኮድ
 acct_confirm_code	ኮዱን አረጋግጥ
 acct_signed_in	ገብተዋል
-acct_signed_in_as	እንደዚህ ገብተዋል፦
+acct_signed_in_as	በዚህ መለያ ገብተዋል፦
 acct_status	ሁኔታ
 acct_sign_in_methods	የመግቢያ ዘዴዎች
 acct_cloud_username	የደመና ተጠቃሚ ስም

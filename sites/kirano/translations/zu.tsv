@@ -60,7 +60,7 @@ expected_cash	Ukheshi olindelekile
 counted	Kubaliwe
 short	Kushodile
 tenders_stay_separate	Izindlela zokukhokha zihlala zihlukene
-cash_and_upi_never_mix	Ukheshi ne-UPI akukaze kuxutshwe kube yingqikithi eyodwa engaqondakali.
+cash_and_upi_never_mix	Ukheshi ne-UPI akuxutshwa neze kube yingqikithi eyodwa engaqondakali.
 shift_close	Ukuvalwa kweshifu
 close_the_shift_print_the	Vala ishifu, phrinta isiliphu, uqale elandelayo ihlanzekile.
 gst_facing_bills	Amabhili ane-GST
@@ -116,7 +116,7 @@ acct_name_optional	Igama (ngokuzikhethela)
 acct_password	Iphasiwedi
 acct_continue	Qhubeka
 acct_forgot	Ukhohlwe iphasiwedi?
-acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli olifanayo obhalise ngalo.
+acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli elifanayo obhalise ngalo.
 acct_send_reset	Thumela isixhumanisi sokusetha kabusha
 acct_cancel	Khansela
 acct_or_continue	noma qhubeka usebenzisa
@@ -168,11 +168,11 @@ acct_err_too_many	Imizamo eminingi kakhulu. Zama futhi emuva kwesikhathi.
 acct_err_phone_format	Sebenzisa inombolo yocingo ephelele enekhodi yezwe (isib. +91…).
 acct_err_sms_code	Leyo khodi ye-SMS ayilungile noma iphelelwe yisikhathi.
 acct_err_no_account	Ayikho i-akhawunti ene-imeyili leyo. Qhubeka ukuze uyidale, noma usebenzise enye indlela.
-acct_err_recent_login	Ngokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
+acct_err_recent_login	Ngenxa yokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
 acct_err_credential_in_use	Leyo ndlela yokungena isisetshenziswa enye i-akhawunti.
 acct_err_email_in_use	Leyo imeyili isisetshenziswa enye i-akhawunti.
 acct_err_already_linked	Leyo ndlela isixhunyaniswe nale akhawunti.
-acct_err_exists_other_method	Kukhona i-akhawunti esivele ikhona ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
+acct_err_exists_other_method	Sekuvele kukhona i-akhawunti ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
 acct_err_generic	Kukhona okungahambanga kahle.
 acct_method_password	I-imeyili nephasiwedi
 acct_pw_hint_change	Shintsha iphasiwedi yakho. Uzoqinisekisa ngeyamanje.

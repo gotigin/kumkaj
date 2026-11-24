@@ -8,7 +8,7 @@ busy_counter	Kaontera be olona
 kirano_the_grocery_counter	KIRANO · NY KAONTERAN’NY FIVAROTANA SAKAFO
 busy_counter_no_internet_still	Kaontera be olona. Tsy misy internet. Mbola mivarotra.
 sell_khata_stock_and_the	Fivarotana, bokin-trosa, tahiry ary bokin’ny andro — amin’ny fitaovanao manokana. Boky · Mivarotra · Mividy · Entana. Tsy misy efitrano, tsy misy lakozia, tsy misy latabatra.
-tap_the_bill_to_walk	Tsindrio ny faktiora hampandalovana fivarotana eo amin’ny kaontera
+tap_the_bill_to_walk	Tsindrio ny faktiora hanarahanao ny dingana amin’ny fivarotana iray eo amin’ny kaontera
 cash_memo	Rosia vola mitsanga
 ready	Vonona
 total	Fitambarany
@@ -48,7 +48,7 @@ receive_the_goods_the_catalogue	Raiso ny entana; miakatra ny habetsahana ao amin
 who_we_owe	Iza no ananantsika trosa
 supplier_balance_sits_on_the	Ao amin’ny Mpifandray iray ihany ny ambin’ny mpamatsy sy ny bokin-trosan’ny mpanjifa.
 low_stock_at_a_glance	Tahiry ambany amin’ny indray mijery
-inventory_shows_what_is_running	Asehon’ny lisitry ny tahiry izay ho lany alohan’ny fitokonana manaraka.
+inventory_shows_what_is_running	Asehon’ny lisitry ny tahiry izay ho lany alohan’ny fitangoronan’ny mpanjifa manaraka.
 n_5_day_book	5 · BOKIN’NY ANDRO
 cash_vs_upi_counted_and	Vola mitsanga sy UPI, voaisa misaraka — ary voalaza ny elanelany.
 today_s_drawer	Vatasarihana androany
@@ -61,19 +61,19 @@ counted	Voaisa
 short	Tsy ampy
 tenders_stay_separate	Misaraka foana ny fomba fandoavana
 cash_and_upi_never_mix	Tsy mifangaro ho fitambarany mistery iray mihitsy ny vola mitsanga sy ny UPI.
-shift_close	Fanakatonana fiovana
-close_the_shift_print_the	Akatony ny fiovana, atontà ny taratasy, ary manomboha madio ny manaraka.
+shift_close	Fanakatonana ny fifandimbiasana
+close_the_shift_print_the	Akatony ny fifandimbiasana, atontà ny taratasy, ary manomboha madio ny manaraka.
 gst_facing_bills	Faktiora misy GST
 tax_invoice_or_cash_memo	Faktioran’ny hetra na rosia vola mitsanga — samy ao amin’ny tatitry ny andro.
 books_sell_buy_items_four	Boky · Mivarotra · Mividy · Entana — efijery efatra, ary tsy misy efitrano fisakafoanana.
 n_6_internet_down	6 · TAPAKA NY INTERNET?
 the_internet_drops_the_counter	Tapaka ny internet. Mbola mivarotra ny kaontera.
 router_no_internet	Router: tsy misy internet
-main_counter_selling_and_settling	Kaontera fototra: mivarotra sy mandoa
+main_counter_selling_and_settling	Kaontera fototra: mivarotra sy mampandoa
 second_till_joined_on_your	Kaontera faharoa: mifandray amin’ny Wi-Fi anao manokana
 books_live_on_the_shop	Ao amin’ny fitaovan’ny fivarotana ny boky
-when_the_internet_drops_mid	Rehefa tapaka ny internet afovoan’ny fitokonana, tsy misy na inona na inona eo amin’ny kaontera miandry azy.
-one_server_lan_clients	Mpizara iray, mpanjifa LAN
+when_the_internet_drops_mid	Rehefa tapaka ny internet afovoan’ny fitangoronan’ny mpanjifa, tsy misy na inona na inona eo amin’ny kaontera miandry azy.
+one_server_lan_clients	Mpizara iray, fitaovana mpanjifa amin’ny LAN
 extra_tills_share_the_same	Mizara boky mitovy amin’ny tambajotran’ny fivarotana ny kaontera fanampiny.
 n_7_free_forever_locally	7 · MAIMAIM-POANA MANDRAKIZAY EO AN-TOERANA
 free_forever_on_your_devices	Maimaim-poana mandrakizay amin’ny fitaovanao.
@@ -108,7 +108,7 @@ bill_paid_line	Voaloa · nohavaozina ny bokin’ny andro
 lan_eyebrow	6 · KAONTERA FANAMPINY
 lan_title	Kaontera hafa amin’ny Wi-Fi-n’ny fivarotana.
 cta_installers_note	Hiseho eto ny fametrahana rehefa nahomby tamin’ny fametrahana amin’ny milina madio ny tsirairay. Mandra-pahatongan’izany, angataho fampisehoana amin’ny WhatsApp.
-cta_whatsapp_soon	Hisokatra tsy ho ela ny tsipika fampisehoana WhatsApp. Izao no ho lazain’ny hafatrao: «{message}».
+cta_whatsapp_soon	Hisokatra tsy ho ela ny laharana WhatsApp ho an’ny fampisehoana. Izao no ho lazain’ny hafatrao: «{message}».
 acct_page_title	Kaonty — Kirano
 acct_lede	Kaonty iray ho an’ny tranonkala sy ny fampiharana — taratasy fenoina mitovy na vaovao ianao na miverina.
 acct_email	Mailaka
@@ -147,17 +147,17 @@ acct_link_phone	Ampifandraiso ny finday
 acct_send_sms_link	Alefaso SMS hampifandraisana
 acct_confirm_link_phone	Hamafiso ary ampifandraiso ny finday
 shop_page_title	Fivarotana — Kirano
-shop_lede	Tolotra rahona isan-taona — ampiana rehefa mandoa ny hetra. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Kirano manontolo amin’ny fitaovanao manokana.
+shop_lede	Tolotra rahona isan-taona — ampiana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Kirano manontolo amin’ny fitaovanao manokana.
 shop_cart	Harona
 shop_cart_empty_hint	Foana ny haronao. Ampio Steady, Swift na Priority.
-shop_checkout	Andoavy
+shop_checkout	Handoa
 shop_clear	Fafao
 shop_checkout_hint	Ampidirina ao amin’ny Kaonty aloha ianao rehefa mandoa, avy eo manomboka ny fandoavana (fakana tahaka ao amin’ny tontolo fitsapana na Paddle rehefa voapetraka ny lakile).
 acct_billing_hint	Tolotra isan-taona — ampian’ny vavahady fandoavana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay ny fampiasana eo an-toerana. Araka ny tolo-bidy ny tolotra manokana (mety ho ambanin’ny Steady na ambonin’ny Priority).
 shop_cloud_plans	Tolotra rahona
 acct_federated	Fidirana mitambatra
 acct_err_invalid_email	Ampidiro adiresy mailaka manan-kery.
-acct_err_weak_password	Ampiasao tenimiafina misy litera 6 farafahakeliny.
+acct_err_weak_password	Ampiasao tenimiafina misy tarehin-tsoratra 6 farafahakeliny.
 acct_err_wrong_password	Diso ny tenimiafina.
 acct_err_invalid_credential	Diso ny mailaka na ny tenimiafina.
 acct_err_popup_closed	Nakatona ny varavarankelin’ny fidirana.
@@ -188,7 +188,7 @@ acct_pay_declined	Nolavina na tsy nahomby ny fandoavana
 acct_pay_failed_detail	{detail}. Tsy niova ny tolotrao.
 acct_checkout_closed	Nakatona ny fandoavana — tsy nisy fandoavana vita. Tsy niova ny tolotrao.
 acct_checkout_failed	Tsy nahomby ny fandoavana
-acct_pay_with	Andoavy amin’ny {provider}
+acct_pay_with	Mandoava amin’ny {provider}
 acct_plan_until	{plan} · hatramin’ny {date}
 acct_unavailable	Tsy misy
 acct_continue_hint	Tohizo amin’ny mailaka, mpamatsy na finday.

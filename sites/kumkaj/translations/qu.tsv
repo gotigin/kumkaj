@@ -6,9 +6,9 @@ kumkaj_is_the_brand_for	Kumkaj-qa chiqap qhatu llamk’ay kamachina app-kunap su
 choose_your_trade	Llamk’ayniykita akllay  ↓
 watch_it_keep_working	Llamk’ashallaqta qhaway
 this_counter_right_now	KAY QHATUNA MESA, KUNALLAN
-internet	Internet t’inkiy
+internet	Internet t’inkiynin
 down	Chinkasqa
-taking_orders	Kamachiykunata chaskishan
+taking_orders	Mañakuykunata chaskishan
 yes	Arí
 bills_and_dockets	Pagana qillqakuna q’ipi qillqakunapas
 saving	Waqaychashan
@@ -19,7 +19,7 @@ scroll_or_use_the_dots	Uraman kuyuchiy utaq ch’iqchikunata llamk’achiy t’a
 n_02_built_for_your_trade	02 · LLAMK’AYNIYKIPAQ RUWASQA
 a_desk_for_each_trade	Sapa llamk’aypaq huk mesa.\nManan huk app t’ikrachinayuqllachu.
 not_one_app_with_a	Manan llamk’ay t’ikrachina ñit’inayuq huk appllachu. Sapa ruruyqa huk laya qhatuna mesapaq ruwasqa, chay llamk’aypa kikin simikunanwan.
-courier_offices_franchise_counters_own	CHASKI OFICINAKUNA · RANTIQ MESAKUNA · KIKIYKIP CHASKIKUNA
+courier_offices_franchise_counters_own	CHASKI OFICINAKUNA · FRANQUICIA QHATUNA MESAKUNA · KIKIYKIP CHASKIKUNA
 book_label_hand_over_track	Qillqay → unanchay → haywariy → qatipay → pagayta tukuchiy.
 next_booking_in_one_tap	Hamuq qillqay huk ñit’iylla
 actual_or_volumetric_weight_rounded	Chiqap llasa utaq hatun-kay llasa, munasqayki hina muyuchisqa
@@ -43,7 +43,7 @@ barcode_and_salt_composition_search	Siq’i unanchawan hampip sunqunwan / ima uk
 batch_and_expiry_alerts_on	Rantiykunapi huñu tukukuy willakuykuna
 owner_schedule_h_rx_notes	Dueñop Schedule H / hampiq qillqa willakuyninkuna — manan yanqa hunt’aychu
 visit_tabiyat_shop	tabiyat.shop-ta watukuy  →
-n_03_your_books_stay_with	03 · YUPAY QILLQAYKIKUNAQA QAMWANMI QHEPANKU
+n_03_your_books_stay_with	03 · YUPAY QILLQAYKIKUNAQA QAMWANMI QHIPANKU
 your_books_live_in_your	Yupay qillqaykikunaqa qhatuykipim kawsanku.
 sales_parties_and_the_day	Qhatuykuna, rantinakuqkuna, p’unchaw hatun qillqapas qhatuna mesaykipi kaq llamk’anapim qillqakun — manan alquilasqayki servidorpichu.
 on_your_device	Llamk’anaykipi
@@ -58,7 +58,7 @@ pull_the_plug_on_the	Internetpa q’aytunta hurquy.
 kumkaj_apps_don_t_phone	Kumkaj app-kunaqa manan llamk’anankupaq servidorniykuta waqyanchu. Internetta kuchuy, qhatuna mesapi ima t’ikrakusqantataq qhaway.
 cut_the_internet	Internetta kuchuy
 internet_on	Internet: kicharisqa
-book_a_parcel_or_take	Q’ipita qillqay utaq kamachiyta chaskiy
+book_a_parcel_or_take	Q’ipita qillqay utaq mañakuyta chaskiy
 save_the_bill_or_docket	Pagana qillqata utaq q’ipi qillqata waqaychay
 day_book_totals	P’unchaw hatun qillqap llapanninkuna
 find_an_old_sale	Ñawpa qhatuyta tariy
@@ -70,8 +70,8 @@ no_charge_per_seat_user	Sapa tiyanapaq, llamk’achiqpaq, mesapaq, chaskipaq, q�
 on_your_own_devices	Llamk’anaykikunapi
 n_0_forever	₹0, wiñaypaq
 pay_only_for_what_you	Llamk’achisqaykillamanta pagay — llapanpaq kikin chaninkuna.
-planned	Yuyaychasqa
-cloud_is_planned_and_optional	Phuyuqa yuyaychasqa akllanallataq. Qhatuna mesaqa mana chaywanpas llamk’anmi.
+planned	Yuyaykusqa
+cloud_is_planned_and_optional	Phuyuqa yuyaykusqa akllanallataq. Qhatuna mesaqa mana chaywanpas llamk’anmi.
 n_06_languages	06 · SIMIKUNA
 speaks_your_staff_s_language	Llamk’aqniykikunap siminpi rimanmi.
 the_same_115_language_catalogue	Sapa Kumkaj app hina kikin 115 simi siq’i — árabe, urdu simikunaqa paña ladomanta lluq’i ladoman. Uraypi kikin sutinkuna; “Mikhuna wakichisqa” rikch’anachiykuna hindi, gujarati, tamil, bengalí, urdu, inglés simikunapi:
@@ -79,7 +79,7 @@ same_shaping_engine_as_the	App-kuna hina kikin qillqa ruwana motor, t’inkisqa 
 n_07_who_makes_it	07 · PIM RUWAN
 made_under_gotigin	Gotigin ukhupi ruwasqa.
 trademark	RANTIKUY UNANCHA
-memon_for_find_it_pronounced	Memon simipi “tariy” · go-tee-geen nispa nisqa
+memon_for_find_it_pronounced	Memon simipi “tariy” · go-tee-geen hina rimakun
 company	LLAMK’AY WASI
 brand	SUTI UNANCHA
 concrete_business_operating_system_apps	Chiqap qhatu llamk’ay kamachina app-kuna
@@ -104,7 +104,7 @@ toy_bring_back	Internetta kutichiy
 toy_internet_off	Internet: wichq’asqa
 toy_verdict_off	Internet wichq’asqa — qhatuna mesapitaq manan imapas t’ikrakurqanchu.
 acct_page_title	Cuenta — Kumkaj
-acct_lede	Sapa Kumkaj ruruyqa kikin cuentayuqmi (kikin phuyuyuqpas). Ruwasqayki llamk’ayta akllay — yaykuy pagaypas chay ruruyp web-ninpim qhepan.
+acct_lede	Sapa Kumkaj ruruyqa kikin cuentayuqmi (kikin phuyuyuqpas). Ruwasqayki llamk’ayta akllay — yaykuy pagaypas chay ruruyp web-ninpim qhipan.
 acct_product_accounts	Ruruykunap cuentankuna
 acct_moklanjo_blurb	Chaski kamachinap cuentan
 acct_khaynjo_blurb	Mikhuna wasi kamachinap cuentan
@@ -112,7 +112,7 @@ acct_kirano_blurb	Mikhuna qhatu mesap cuentan
 acct_tabiyat_blurb	Hampi qhatu mesap cuentan
 acct_open_account	Cuentata kichay
 shop_page_title	Qhatu — Kumkaj
-shop_lede	Sapa wata phuyu yuyaychaykuna — sapa llamk’aypaq kikin pichqa laya (Wiñaypaq qasilla, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / wata mana impuestoyuq, utaq sapaq chanin yuyay). Impuestoqa pagay pachapi yapakun. Sapa ruruyqa kikin qhatuntam cuentantam waqaychan.
+shop_lede	Sapa wata phuyu plankuna — sapa llamk’aypaq kikin pichqa laya (Wiñaypaq qasilla, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / wata mana impuestoyuq, utaq sapaq chanin yuyay). Impuestoqa pagay pachapi yapakun. Sapa ruruyqa kikin qhatuntam cuentantam waqaychan.
 shop_product_shops	Ruruykunap phuyu qhatunkuna
 shop_moklanjo_blurb	moklanjo.com-paq chaski mesa phuyu
 shop_khaynjo_blurb	khaynjo.com-paq mikhuna wasi phuyu

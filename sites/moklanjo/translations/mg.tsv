@@ -27,7 +27,7 @@ scroll_the_parcel_journey_rail	Ahodino — asehon’ny tsipikan’ny dian’ny f
 n_2_weigh_it_right	2 · LANJAO TSARA
 actual_or_volumetric_whichever_is	Tena izy na araka ny habeny — izay ambony kokoa, boribory araka ny fombanao.
 try_a_box	Andramo boaty iray
-domestic	Ao an-toerana
+domestic	Ao anatin’ny firenena
 international	Iraisam-pirenena
 breadth	Sakany
 height	Haavony
@@ -52,18 +52,18 @@ regular_senders_get_their_rates	Mahazo ny vidiny manokana ny mpandefa mahazatra;
 margin_at_the_desk	Tombombarotra eo amin’ny kaontera
 your_sell_price_against_the	Ny vidinao fivarotana raha oharina amin’ny vidin’ny mpitatitra, amin’ny taratasy fandefasana tsirairay.
 n_4_label_it	4 · ASIO MARIKA
-awb_from_your_own_number	AWB avy amin’ny andian’isanao manokana. Marika, scanne, fitadiavana.
+awb_from_your_own_number	AWB avy amin’ny andian’isanao manokana. Marika, fanaovana scan, fitadiavana.
 number_pools_per_carrier	Andian’isa isaky ny mpitatitra
 enter_each_carrier_s_start	Ampidiro indray mandeha ny andian’isa fanombohana–farany an’ny mpitatitra tsirairay; mandray ny isa manaraka ny fanoratana tsirairay.
 code_128_labels	Marika Code 128
 the_awb_goes_on_the	Mipetraka eo amin’ny boaty ho kaody bara sy isa tsotra ny AWB.
 scan_to_find	Scanneo mba hahitana
-scan_a_label_to_open	Scanneo ny marika iray hanokafana ny taratasy fandefasana azy ary hanaovana zavatra.
+scan_a_label_to_open	Scanneo ny marika iray hanokafana ny taratasy fandefasana azy ary hikarakarana azy.
 n_5_hand_over	5 · ATOLORY
 hand_it_to_a_carrier	Atolory mpitatitra izy, na alefaso ny mpitondra entanao manokana. Rafitra iray ihany.
 into_a_carrier_bag	Ao anaty kitapon’ny mpitatitra
 the_manifest_holds_exactly_the	Ireo fonosana nofidinao ihany no ao amin’ny lisitry ny entana — izy rehetra na tsy misy. Tsy afaka miditra ao anatin’ity kitapo ity ny fonosana voasoratra tamin’ny mpitatitra hafa.
-onto_your_own_rider_s	Amin’ny lalan’ny mpitondra entanao
+onto_your_own_rider_s	Amin’ny fitetezan’ny mpitondra entanao manokana
 pick_the_parcels_print_the	Safidio ny fonosana, atontà ny taratasy fitetezana, ary miasa amin’ny fampiharana iray ihany amin’ny fomba mpitondra entana ny mpitondra entana — misy ny porofon’ny fanaterana.
 n_6_track_and_prove	6 · ARAHO ARY HAMARINO
 every_move_recorded_and_only	Voaray an-tsoratra ny hetsika rehetra — ary ireo hetsika misy dikany ihany.
@@ -82,7 +82,7 @@ failed_deliveries	Fanaterana tsy nahomby
 reasons_attempts_out_again_or	Antony, andrana, mivoaka indray, na miverina any amin’ny mpandefa.
 n_7_money_comes_home	7 · MODY ANY AN-TRANO NY VOLA
 cod_you_can_see_expected	Fandoavana rehefa voaray hitanao: andrasana, natolotra, trosa amin’ny mpandefa tsirairay.
-rider_cash_end_of_run	Volan’ny mpitondra entana, amin’ny faran’ny lalana
+rider_cash_end_of_run	Volan’ny mpitondra entana, amin’ny faran’ny fitetezana
 rider	Mpitondra entana
 expected	Andrasana
 handed_in	Natolotra
@@ -92,12 +92,12 @@ short_200_on_rider_b	Tsy ampy ₹ 200 amin’ny mpitondra entana B — voalaza, 
 cod_register	Rejisitry ny fandoavana rehefa voaray
 collected_against_paid_out_per	Voangona raha oharina amin’ny naloa, isaky ny mpandefa, miaraka amin’ny andiana famindram-bola.
 rider_settlement	Fandoavana ny mpitondra entana
-expected_against_handed_in_and	Andrasana raha oharina amin’ny natolotra, ary ny taratasy kômisiôna.
+expected_against_handed_in_and	Andrasana raha oharina amin’ny natolotra, ary ny taratasy kaomisiona.
 books_that_close	Boky mifandanja
 day_book_month_bill_per	Bokin’ny andro, faktiora isam-bolana isaky ny kaonty, ary famintinana GST amin’ny CSV ho an’ny mpitan-kaontinao.
 n_8_internet_down	8 · TAPAKA NY INTERNET?
 keep_booking	Tohizo ny fanoratana.
-booking_labels_scanning_cod_and	Mandeha amin’ny fitaovanao avokoa ny fanoratana, ny marika, ny scanne, ny fandoavana rehefa voaray ary ny boky. Rehefa tapaka ny internet, tsy misy na inona na inona eo amin’ny kaontera miandry azy.
+booking_labels_scanning_cod_and	Mandeha amin’ny fitaovanao avokoa ny fanoratana, ny marika, ny fanaovana scan, ny fandoavana rehefa voaray ary ny boky. Rehefa tapaka ny internet, tsy misy na inona na inona eo amin’ny kaontera miandry azy.
 office_router_no_internet	Router-n’ny birao: tsy misy internet
 desk_still_booking	Kaontera: mbola manoratra
 second_counter_and_rider_phone	Kaontera faharoa sy findain’ny mpitondra entana: mifandray amin’ny Wi-Fi-n’ny birao
@@ -132,7 +132,7 @@ weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	Eo amin’ny mizana: {kg} kg
 weight_scale_wins	Ny lanja eo amin’ny mizana no mamaritra ny sarany.
 cta_installers_note	Hiseho eto ny fametrahana rehefa nahomby tamin’ny fametrahana amin’ny milina madio ny tsirairay. Mandra-pahatongan’izany, angataho fampisehoana amin’ny WhatsApp.
-cta_whatsapp_soon	Hisokatra tsy ho ela ny tsipika fampisehoana WhatsApp. Izao no ho lazain’ny hafatrao: «{message}».
+cta_whatsapp_soon	Hisokatra tsy ho ela ny laharana WhatsApp ho an’ny fampisehoana. Izao no ho lazain’ny hafatrao: «{message}».
 acct_page_title	Kaonty — Moklanjo
 acct_lede	Kaonty iray ho an’ny tranonkala sy ny fampiharana — taratasy fenoina mitovy na vaovao ianao na miverina.
 acct_email	Mailaka
@@ -171,17 +171,17 @@ acct_link_phone	Ampifandraiso ny finday
 acct_send_sms_link	Alefaso SMS hampifandraisana
 acct_confirm_link_phone	Hamafiso ary ampifandraiso ny finday
 shop_page_title	Fivarotana — Moklanjo
-shop_lede	Tolotra rahona isan-taona — ampiana rehefa mandoa ny hetra. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Moklanjo manontolo amin’ny fitaovanao manokana.
+shop_lede	Tolotra rahona isan-taona — ampiana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Moklanjo manontolo amin’ny fitaovanao manokana.
 shop_cart	Harona
 shop_cart_empty_hint	Foana ny haronao. Ampio Steady, Swift na Priority.
-shop_checkout	Andoavy
+shop_checkout	Handoa
 shop_clear	Fafao
 shop_checkout_hint	Ampidirina ao amin’ny Kaonty aloha ianao rehefa mandoa, avy eo manomboka ny fandoavana (fakana tahaka ao amin’ny tontolo fitsapana na Paddle rehefa voapetraka ny lakile).
 acct_billing_hint	Tolotra isan-taona — ampian’ny vavahady fandoavana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay ny fampiasana eo an-toerana. Araka ny tolo-bidy ny tolotra manokana (mety ho ambanin’ny Steady na ambonin’ny Priority).
 shop_cloud_plans	Tolotra rahona
 acct_federated	Fidirana mitambatra
 acct_err_invalid_email	Ampidiro adiresy mailaka manan-kery.
-acct_err_weak_password	Ampiasao tenimiafina misy litera 6 farafahakeliny.
+acct_err_weak_password	Ampiasao tenimiafina misy tarehin-tsoratra 6 farafahakeliny.
 acct_err_wrong_password	Diso ny tenimiafina.
 acct_err_invalid_credential	Diso ny mailaka na ny tenimiafina.
 acct_err_popup_closed	Nakatona ny varavarankelin’ny fidirana.
@@ -212,7 +212,7 @@ acct_pay_declined	Nolavina na tsy nahomby ny fandoavana
 acct_pay_failed_detail	{detail}. Tsy niova ny tolotrao.
 acct_checkout_closed	Nakatona ny fandoavana — tsy nisy fandoavana vita. Tsy niova ny tolotrao.
 acct_checkout_failed	Tsy nahomby ny fandoavana
-acct_pay_with	Andoavy amin’ny {provider}
+acct_pay_with	Mandoava amin’ny {provider}
 acct_plan_until	{plan} · hatramin’ny {date}
 acct_unavailable	Tsy misy
 acct_continue_hint	Tohizo amin’ny mailaka, mpamatsy na finday.

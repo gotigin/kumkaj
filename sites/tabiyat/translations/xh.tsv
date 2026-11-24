@@ -23,7 +23,7 @@ add_the_line_set_the	Yongeza umgca, seta inani, hlawulisa — imali ephathekayo,
 gst_tax_invoice_or_cash	I-invoyisi yerhafu ye-GST okanye irisithi yemali ephathekayo
 the_bill_lane_you_need	Uhlobo lwebhili olufunayo kwintengiso.
 day_book_follows	Incwadi yosuku iyalandela
-every_tender_lands_in_books	Yonke indlela yokuhlawula ingena kwi-Incwadi yosuku xa uvala intengiso.
+every_tender_lands_in_books	Yonke indlela yokuhlawula ingena kwincwadi yosuku xa uvala intengiso.
 n_3_barcode_salt	3 · IBHAKHOWUDI NESITHAKO ESISEBENZAYO
 scan_the_barcode_or_find	Skena ibhakhowudi — okanye uyifumane ngesithako esisebenzayo.
 search	Khangela
@@ -32,7 +32,7 @@ salt_amoxicillin	Isithako esisebenzayo: amoxicillin
 ranks_barcode_name_and_composition	Icwangcisa ibhakhowudi, igama nokwakheka kunye.
 wedge_scanner_or_type_enter	Iskena sekhibhodi okanye cinezela u-Enter — umgca uwela kwibhili.
 barcode_first	Ibhakhowudi kuqala
-scan_or_paste_the_code	Skena okanye uncamathisele ikhowudi; efanayo kwikhathalogu iyavela.
+scan_or_paste_the_code	Skena okanye uncamathisele ikhowudi; into ehambelanayo kwikhathalogu iyavela.
 salt_composition	Isithako esisebenzayo / ukwakheka
 type_the_salt_when_the	Chwetheza isithako esisebenzayo xa igama lemveliso lingelilo elithethwe ngumthengi.
 owner_rx_schedule_h_flags	Iimpawu zomnini zemiyalelo kagqirha / Schedule H
@@ -42,21 +42,21 @@ batch_and_expiry_on_your	Ibhetshi nomhla wokuphelelwa kwiincwadi zakho — izilu
 buy_batch_a12	Ukuthenga · ibhetshi A12
 expires_2027_03_alert_in	Iphelelwa ngo-2027-03 · isilumkiso kwiintsuku ezi-7
 ors_sachets_batch_b04	Iipakethe ze-ORS · ibhetshi B04
-expires_2026_11_near_expiry	Iphelelwa ngo-2026-11 · umgca othi “kufutshane nokuphelelwa” kwi-Incwadi yosuku
+expires_2026_11_near_expiry	Iphelelwa ngo-2026-11 · umgca othi “kufutshane nokuphelelwa” kwincwadi yosuku
 shop_bookkeeping_only_not_drugs	Ukugcinwa kweencwadi zevenkile kuphela — hayi ukuthobela uMthetho waMayeza.
 batch_on_buy	Ibhetshi xa uthenga
 record_batch_and_expiry_when	Bhala ibhetshi nomhla wokuphelelwa xa isitokhwe singena.
 near_expiry_alerts	Izilumkiso zokuphelelwa okukufutshane
-books_and_sell_can_hint	I-Incwadi yosuku ne-Thengisa zinokukhumbuza phambi kokuba umhla udlule.
+books_and_sell_can_hint	Incwadi yosuku nesikrini sokuthengisa zinokukhumbuza phambi kokuba umhla udlule.
 owner_practice	Isiqhelo somnini
 fefo_hints_and_rx_notes	Iingcebiso ze-FEFO namanqaku emiyalelo kagqirha ngawakho ukuwalandela — i-Tabiyat ibhala oko ukufakayo.
 n_5_khata	5 · INCWADI YAMATYALA
-customer_credit_and_supplier_dues	Amatyala abathengi namatyala ababoneleli kwincwadi enye yamaqabane.
+customer_credit_and_supplier_dues	Amatyala abathengi namatyala ababoneleli kwincwadi enye yabathengi nababoneleli.
 mehta_clinic_customer	Ikliniki kaMehta · Umthengi
 due_from_earlier	Ityala langaphambili
 today_s_sale_due	+ intengiso yanamhlanje (ityala)
 balance	Intsalela
-settle_later_part_cash_part	Hlawula kamva — inxalenye ngemali ephathekayo, inxalenye nge-UPI. Amatyala ababoneleli akwisikrini esifanayo se-Amaqabane.
+settle_later_part_cash_part	Hlawula kamva — inxalenye ngemali ephathekayo, inxalenye nge-UPI. Amatyala ababoneleli akwisikrini esifanayo sabathengi nababoneleli.
 due_on_the_bill	Ityala kwibhili
 leave_a_balance_on_khata	Shiya intsalela kwincwadi yamatyala ngaphandle kwenye i-app yeencwadi.
 supplier_buys_too	Ukuthenga kubaboneleli nako

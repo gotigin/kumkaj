@@ -17,15 +17,15 @@ adding_up	Mifandanja
 nothing_on_this_counter_waits	Tsy misy na inona na inona eo amin’ity kaontera ity miandry ny rahona.
 scroll_or_use_the_dots	Ahodino na ampiasao ireo teboka hitsambikina eo anelanelan’ny fizarana.
 n_02_built_for_your_trade	02 · NATAO HO AN’NY ASANAO
-a_desk_for_each_trade	Kaontera iray isaky ny asa.\nTsy fampiharana iray misy fanovana.
-not_one_app_with_a	Tsy fampiharana iray misy bokotra fanovana asa. Natao manodidina karazana kaontera iray ny vokatra tsirairay, amin’ny tenin’izany asa izany.
+a_desk_for_each_trade	Kaontera iray isaky ny asa.\nTsy fampiharana iray misy bokotra fanovana.
+not_one_app_with_a	Tsy fampiharana iray misy bokotra fanovana asa. Natao ho an’ny karazana kaontera iray ny vokatra tsirairay, amin’ny tenin’izany asa izany.
 courier_offices_franchise_counters_own	BIRAON’NY FANDEFASANA · KAONTERA FRANCHISE · MPITONDRA ENTANAO MANOKANA
 book_label_hand_over_track	Fanoratana → marika → fanolorana → fanarahana → fandoavana.
 next_booking_in_one_tap	Fanoratana manaraka amin’ny tsindry iray
 actual_or_volumetric_weight_rounded	Lanja tena izy na araka ny habeny, boribory araka ny fombanao
-rider_cash_on_delivery_expected	Fandoavana rehefa voaray an’ny mpitondra entana: andrasana raha oharina amin’ny natolotra
+rider_cash_on_delivery_expected	Fandoavana rehefa voaray eny am-pelatanan’ny mpitondra entana: andrasana raha oharina amin’ny natolotra
 visit_moklanjo_com	Tsidiho ny moklanjo.com  →
-restaurants_caf_s_quick_service	TRANO FISAKAFOANANA · KAFE · SAKAFO HAINGANA · MPANAO MOFO
+restaurants_caf_s_quick_service	TRANO FISAKAFOANANA · KAFE · SAKAFO HAINGANA · FIVAROTANA MOFO
 table_kitchen_bill_day_close	Latabatra → lakozia → faktiora → fanakatonana ny andro.
 every_table_s_minutes_and	Ny minitra sy ny faktioran’ny latabatra tsirairay amin’ny indray mijery
 one_kot_per_kitchen_station	Tapakila lakozia iray isaky ny toerana — tsy misy vidiny mihitsy
@@ -35,7 +35,7 @@ kirana_grocery_neighbourhood_shops	KIRANA · FIVAROTANA SAKAFO · FIVAROTANA AN-
 sell_khata_stock_day_book	Mivarotra → bokin-trosa → tahiry → bokin’ny andro.
 fast_counter_sell_with_short	Fivarotana haingana eo amin’ny kaontera amin’ny kaody fohy
 customer_credit_and_supplier_dues	Trosan’ny mpanjifa sy trosa amin’ny mpamatsy
-buy_into_stock_offline_forever	Fividianana ho tahiry — tsy misy internet mandrakizay
+buy_into_stock_offline_forever	Fividianana ho tahiry — mandeha tsy misy internet mandrakizay
 visit_kirano_shop	Tsidiho ny kirano.shop  →
 chemists_pharmacy_counters	MPIVAROTRA FANAFODY · KAONTERAN’NY FIVAROTAM-PANAFODY
 medicine_batch_bill_day_close	Fanafody → andiany → faktiora → fanakatonana ny andro.
@@ -70,8 +70,8 @@ no_charge_per_seat_user	Tsy misy sarany isaky ny seza, mpampiasa, latabatra, mpi
 on_your_own_devices	Amin’ny fitaovanao manokana
 n_0_forever	₹0, mandrakizay
 pay_only_for_what_you	Aloavy ihany izay ampiasainao — vidiny mitovy ho an’ny rehetra.
-planned	Voalamina
-cloud_is_planned_and_optional	Voalamina ary tsy voatery ny rahona. Mandeha tsy misy azy ny kaontera.
+planned	Kasaina
+cloud_is_planned_and_optional	Kasaina ary tsy voatery ny rahona. Mandeha tsy misy azy ny kaontera.
 n_06_languages	06 · FITENY
 speaks_your_staff_s_language	Miteny ny fitenin’ny mpiasanao.
 the_same_115_language_catalogue	Ny katalaogy fiteny 115 mitovy amin’ny fampiharana Kumkaj rehetra — avy ankavanana mankavia ny arabo sy ny ordo. Etsy ambany ny anarana amin’ny fiteny tsirairay; ohatra «Vonona ny sakafo» amin’ny hindi, gojarati, tamily, bengaly, ordo ary anglisy:
@@ -112,7 +112,7 @@ acct_kirano_blurb	Kaontin’ny kaonteran’ny fivarotana sakafo
 acct_tabiyat_blurb	Kaontin’ny kaonteran’ny fivarotam-panafody
 acct_open_account	Sokafy ny kaonty
 shop_page_title	Fivarotana — Kumkaj
-shop_lede	Tolotra rahona isan-taona — endrika dimy mitovy ho an’ny asa rehetra (Maimaim-poana mandrakizay, Steady ₹6 000, Swift ₹12 000, Priority ₹24 000 / taona tsy misy hetra, na tolo-bidy manokana). Ampiana rehefa mandoa ny hetra. Samy manana ny fivarotany sy ny kaontiny ny vokatra tsirairay.
+shop_lede	Tolotra rahona isan-taona — endrika dimy mitovy ho an’ny asa rehetra (Maimaim-poana mandrakizay, Steady ₹6 000, Swift ₹12 000, Priority ₹24 000 / taona tsy misy hetra, na tolo-bidy manokana). Ampiana ny hetra rehefa mandoa. Samy manana ny fivarotany sy ny kaontiny ny vokatra tsirairay.
 shop_product_shops	Fivarotana rahona an’ny vokatra
 shop_moklanjo_blurb	Rahona ho an’ny kaonteran’ny fandefasana ao amin’ny moklanjo.com
 shop_khaynjo_blurb	Rahona ho an’ny trano fisakafoanana ao amin’ny khaynjo.com

@@ -20,7 +20,7 @@ works_with_no_internet	Inafanya kazi bila intaneti
 your_books_stay_on_your	Vitabu vyako vinabaki kwenye vifaa vyako
 n_115_languages_on_screen	Lugha 115 kwenye skrini
 your_floor_at_a_glance	Ukumbi wako kwa mtazamo mmoja
-tap_a_table_to_walk	Gusa meza ili uipitishe kwenye ziara. Rangi na maneno yale yale ya programu — na meza inakuwa wazi tu ikishalipiwa.
+tap_a_table_to_walk	Gusa meza ili uipitishe katika hatua zote, tangu wageni wanapoketi hadi wanapolipa. Rangi na maneno yale yale ya programu — na meza inakuwa wazi tu ikishalipiwa.
 every_country	KILA NCHI
 every_country_at_your_counter	Kila nchi kwenye kaunta yako
 one_famous_dish_from_every	Chakula kimoja maarufu kutoka kila nchi — jina la Kiingereza, jina katika maandishi yao, na chakula kwa Kiingereza. Weka maneno hayo kwenye menyu yako. Dunia inaendelea kupita; simamisha au tafuta unapotaka kuangalia.
@@ -36,7 +36,7 @@ served	Imehudumiwa
 bill_printed	Bili imechapishwa
 paid	Imelipwa
 seat_the_table_take_the	Waketishe wageni, chukua agizo
-mark_the_table_occupied_the	Weka alama meza “Imechukuliwa” mara wageni wanapoketi. Ongeza vyakula, chagua ukubwa na nyongeza, na uandike ujumbe kwa jiko — hapo hapo mezani.
+mark_the_table_occupied_the	Weka alama ya “Imechukuliwa” kwenye meza mara tu wageni wanapoketi. Ongeza vyakula, chagua ukubwa na nyongeza, na uandike ujumbe kwa jiko — hapo hapo mezani.
 sizes_and_add_ons	Ukubwa na nyongeza
 pick_one_size_add_optional	Chagua ukubwa mmoja; ongeza nyongeza za hiari hadi kikomo unachoweka.
 a_note_per_dish	Ujumbe kwa kila chakula
@@ -44,7 +44,7 @@ less_spicy_travels_with_the	“Pilipili kidogo” husafiri na chakula kinachohus
 t4_occupied	T4 · Imechukuliwa
 note_less_salt	Ujumbe: chumvi kidogo
 one_ticket_per_kitchen_station	Tiketi moja kwa kila kituo cha jiko
-send_the_order_and_each	Tuma agizo na kila kituo kinapata vyakula vyake tu — vimehesabiwa kwa siku, pamoja na meza, mhudumu na kila ujumbe. Bila bei kamwe: jiko linapika, kaunta inatoza.
+send_the_order_and_each	Tuma agizo na kila kituo kinapata vyakula vyake tu — kwenye tiketi yenye nambari ya mfuatano ya siku, pamoja na meza, mhudumu na kila ujumbe. Bila bei kamwe: jiko linapika, kaunta inatoza.
 prints_itself	Inajichapisha yenyewe
 send_and_the_ticket_prints	Tuma, na tiketi inachapishwa kwenye kituo sahihi — hakuna anayehitaji kuibeba.
 example_ticket	Tiketi ya mfano
@@ -54,7 +54,7 @@ new	Mpya
 preparing	Inatayarishwa
 ready	Tayari
 example_kitchen_screen	Skrini ya jiko ya mfano
-settle_any_way_the_guest	Lipisha kwa njia yoyote mgeni anayolipa
+settle_any_way_the_guest	Pokea malipo kwa njia yoyote anayotumia mgeni
 cash_with_change_to_return	Taslimu na chenji, UPI yenye kiasi tayari kwenye QR, malipo ya sehemu, au deni kwenye daftari la madeni la mteja. Gawanya kwa bidhaa, kwa kiti au sawasawa. Meza inakuwa wazi tu bili yake ikishalipwa.
 tips_stay_apart	Bakshishi zinabaki kando
 a_tip_is_recorded_on	Bakshishi hurekodiwa peke yake — kamwe haichanganywi na mauzo.
@@ -98,15 +98,15 @@ starter_menu	Menyu ya kuanzia
 khaynjo_starter_menu	Menyu ya kuanzia ya Khaynjo
 world_cuisines_japanese_mexican	Vyakula vya dunia — vya Kijapani, Kimeksiko, Kiitaliano, Kihindi, Kithai na zaidi — kila chakula na picha yake.
 n_14_dishes_11_categories	Vyakula 14 · makundi 11
-cafe_starter	Kifurushi cha kuanzia cha mkahawa
+cafe_starter	Menyu ya kuanzia ya mkahawa
 tea_coffee_cold_drinks_bakery	Chai, kahawa, vinywaji baridi, mikate na vitafunio — tayari kwa mkahawa wenye kaunta.
 n_22_dishes_4_categories	Vyakula 22 · makundi 4
 photo_shelf	Rafu ya picha
 khaynjo_dish_photos	Picha za vyakula vya Khaynjo
 the_full_public_photo_shelf	Rafu nzima ya picha za umma — chagua picha ya chakula chochote unachoongeza.
-n_1_459_dish_photos_25	Picha 1,459 za vyakula · aina 25 za jiko
+n_1_459_dish_photos_25	Picha 1,459 za vyakula · aina 25 za mapishi
 internet_down	INTANETI IMEKATIKA?
-the_internet_went_down_the	Intaneti imekatika. Kaunta haijakatika.
+the_internet_went_down_the	Intaneti imekatika. Kaunta haijasimama.
 orders_kitchen_tickets_bills_and	Maagizo, tiketi za jiko, bili na kitabu cha siku viko kwenye vifaa vyako mwenyewe. Intaneti inapokatika katikati ya mchana, hakuna kitu kwenye mgahawa wako kinachoisubiri — na hakuna akaunti kwetu ya kuingia.
 right_now_mid_lunch	Sasa hivi, katikati ya mchana
 router_no_internet	Ruta: hakuna intaneti
@@ -115,7 +115,7 @@ day_book_every_bill_saved	Kitabu cha siku: kila bili imehifadhiwa kwenye kifaa h
 captains_tablets_and_the_kitchen	Tableti za wakuu wa wahudumu na skrini ya jiko: zinafanya kazi pamoja kwenye Wi-Fi yako mwenyewe
 eyebrow_pricing	BEI
 free_forever_on_your_devices	Bure milele kwenye vifaa vyako.
-software_capability_is_not_what	Hatuuzi uwezo wa programu. Endesha Khaynjo yote kwenye vifaa vyako mwenyewe bila gharama — hakuna kilichofungwa nyuma ya mpango.
+software_capability_is_not_what	Hatuuzi uwezo wa programu. Endesha Khaynjo yote kwenye vifaa vyako mwenyewe bila gharama — hakuna kipengele kinachohitaji mpango wa kulipia.
 khaynjo_on_your_devices	Khaynjo kwenye vifaa vyako
 forever	milele
 every_feature	Kila kipengele
@@ -142,14 +142,14 @@ yes_on_thermal_printers_you	Ndiyo — kwenye printa za joto unazoziweka katika M
 can_my_staff_use_their	Je, wafanyakazi wangu wanaweza kutumia lugha yao?
 yes_the_screens_come_in	Ndiyo. Skrini zinakuja kwa lugha 115, Kiarabu na Kiurdu kutoka kulia kwenda kushoto, na majina ya vyakula yanaweza kuwa na majina mbadala kwa maandishi mengine.
 what_does_it_cost	Inagharimu kiasi gani?
-nothing_on_your_own_devices	Hakuna kitu kwenye vifaa vyako — kila kipengele, milele. Kumkaj Cloud ya hiari ni Steady / Swift / Priority ya kila mwaka (au nukuu maalum); fungua /shop kununua.
-ready_for_lunch	TAYARI KWA MCHANA?
+nothing_on_your_own_devices	Hakuna gharama kwenye vifaa vyako mwenyewe — kila kipengele, milele. Kumkaj Cloud ya hiari ni Steady / Swift / Priority ya kila mwaka (au nukuu maalum); fungua /shop kununua.
+ready_for_lunch	TAYARI KWA CHAKULA CHA MCHANA?
 run_your_next_service_on	Endesha huduma yako ijayo kwa Khaynjo.
 free_on_google_play_want	Bure kwenye Google Play. Unataka onyesho kwanza? Tutumie ujumbe kwenye WhatsApp.
 privacy	Faragha
 terms	Masharti
 cancellation	Ughairi
-photo_credits	Haki za picha
+photo_credits	Vyanzo vya picha
 cloud_shop	Duka la wingu
 account	Akaunti
 cta_installers_note	Visakinishi vitawekwa hapa kila kimoja kikipita usakinishaji kwenye mashine safi. Hadi wakati huo, omba onyesho kwenye WhatsApp.
@@ -202,7 +202,7 @@ shop_cart	Kikapu
 shop_cart_empty_hint	Kikapu chako ni tupu. Ongeza Steady, Swift au Priority.
 shop_checkout	Lipa
 shop_clear	Futa
-shop_checkout_hint	Malipo yanakuingiza kwenye Akaunti kwanza, kisha yanaanza malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
+shop_checkout_hint	Kubofya “Lipa” kunakuingiza kwenye Akaunti kwanza, kisha kunaanzisha malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
 acct_billing_hint	Mipango ya kila mwaka — kodi huongezwa na lango la malipo wakati wa kulipa. Matumizi ya ndani yanabaki bure milele. Mpango maalum ni kwa nukuu (unaweza kuwa chini ya Steady au juu ya Priority).
 shop_cloud_plans	Mipango ya wingu
 acct_federated	Kuingia kwa shirikisho
@@ -223,7 +223,7 @@ acct_err_credential_in_use	Njia hiyo ya kuingia tayari inatumiwa na akaunti nyin
 acct_err_email_in_use	Barua pepe hiyo tayari inatumiwa na akaunti nyingine.
 acct_err_already_linked	Njia hiyo tayari imeunganishwa na akaunti hii.
 acct_err_exists_other_method	Akaunti yenye barua pepe hii tayari ipo kwa njia nyingine ya kuingia. Ingia kwanza kwa njia hiyo, kisha uunganishe hii kutoka ukurasa wa akaunti yako.
-acct_err_generic	Kuna kitu kimeharibika.
+acct_err_generic	Hitilafu imetokea.
 acct_method_password	Barua pepe na nenosiri
 acct_pw_hint_change	Badilisha nenosiri lako. Utathibitisha kwa lile la sasa.
 acct_pw_hint_add	Ongeza nenosiri ili uweze pia kuingia kwa barua pepe (inafaa ikiwa mtoa huduma hapatikani).
@@ -236,7 +236,7 @@ price_per_year	₹{amount}/mwaka bila kodi
 acct_pay_received	Malipo yamepokelewa — tunasasisha mpango wako…
 acct_pay_declined	Malipo yamekataliwa au yameshindwa
 acct_pay_failed_detail	{detail}. Mpango wako haukubadilishwa.
-acct_checkout_closed	Malipo yamefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
+acct_checkout_closed	Dirisha la malipo limefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
 acct_checkout_failed	Malipo yameshindwa
 acct_pay_with	Lipa kwa {provider}
 acct_plan_until	{plan} · hadi {date}

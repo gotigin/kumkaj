@@ -13,14 +13,14 @@ faq	Kesyon yo poze souvan
 login	Konekte
 get_it_free	Jwenn li gratis
 restaurant_pos_free_forever	Kès pou restoran · gratis pou tout tan
-lunch_rush_no_internet_no	Kouri lè midi. Pa gen entènèt. Pa gen pwoblèm.
+lunch_rush_no_internet_no	Gwo foul lè midi. Pa gen entènèt. Pa gen pwoblèm.
 khaynjo_runs_your_floor_kitchen	Khaynjo jere sal ou, kwizin ou ak kontwa ou sou aparèy ou genyen deja — depi tab la rive nan kwizin nan rive nan kont lan, avèk oswa san entènèt.
 android_on_google_play_today	Android sou Google Play jodi a · pakè pou Windows ak Linux ap vini.
 works_with_no_internet	Mache san entènèt
 your_books_stay_on_your	Liv ou yo rete sou aparèy ou yo
 n_115_languages_on_screen	115 lang sou ekran an
 your_floor_at_a_glance	Sal ou nan yon sèl koutje
-tap_a_table_to_walk	Tape sou yon tab pou fè l pase yon vizit. Menm koulè ak menm mo ak aplikasyon an — epi yon tab libere sèlman lè yo fin peye.
+tap_a_table_to_walk	Tape sou yon tab pou fè l pase nan tout etap yon vizit. Menm koulè ak menm mo ak aplikasyon an — epi yon tab libere sèlman lè yo fin peye.
 every_country	CHAK PEYI
 every_country_at_your_counter	Chak peyi devan kontwa ou
 one_famous_dish_from_every	Yon plat selèb pou chak peyi — non an angle, non an nan pwòp ekriti yo, ak plat la an angle. Mete mo sa yo sou meni ou. Mond lan ap kontinye pase; kanpe oswa chèche lè ou vle gade.
@@ -40,12 +40,12 @@ mark_the_table_occupied_the	Make tab la «Okipe» depi envite yo chita. Ajoute p
 sizes_and_add_ons	Gwosè ak siplemantè
 pick_one_size_add_optional	Chwazi yon gwosè; ajoute siplemantè ou vle jiska limit ou fikse.
 a_note_per_dish	Yon nòt pou chak plat
-less_spicy_travels_with_the	«Mwens pike» vwayaje ak plat li konsène a.
+less_spicy_travels_with_the	«Mwens pike» swiv plat li a.
 t4_occupied	T4 · Okipe
 note_less_salt	Nòt: mwens sèl
 one_ticket_per_kitchen_station	Yon tikè pou chak pòs kwizin
 send_the_order_and_each	Voye kòmand lan epi chak pòs resevwa sèlman pwòp plat li — nimewote pa jou, ak tab la, sèvitè a ak chak nòt. Pa janm gen pri: kwizin nan kwit, kontwa a fè kont.
-prints_itself	Li enprime tèt li
+prints_itself	Li enprime poukont li
 send_and_the_ticket_prints	Voye, epi tikè a enprime nan bon pòs la — pèsonn pa bezwen pote l.
 example_ticket	Egzanp tikè
 the_kitchen_sees_what_to	Kwizin nan wè sa pou l kwit kounye a
@@ -96,9 +96,9 @@ your_menu_ready_in_minutes	Meni ou, pare nan kèk minit.
 set_up_your_counter_and	Konfigire kontwa ou epi chwazi yon meni kòmansman ak foto — apre sa chanje non, pri ak kòd yo jan ou vle. Gratis pou telechaje sou khaynjo.com.
 starter_menu	Meni kòmansman
 khaynjo_starter_menu	Meni kòmansman Khaynjo
-world_cuisines_japanese_mexican	Kwizin mond lan — japonè, meksiken, italyen, endyen, tay ak plis ankò — chak plat ak foto li.
+world_cuisines_japanese_mexican	Kwizin mond lan — japonè, meksiken, italyen, endyen, tayilandè ak plis ankò — chak plat ak foto li.
 n_14_dishes_11_categories	14 plat · 11 kategori
-cafe_starter	Pakè kòmansman pou kafe
+cafe_starter	Meni kòmansman pou kafe
 tea_coffee_cold_drinks_bakery	Te, kafe, bwason frèt, patisri ak ti goute — pare pou yon kafe ki gen kontwa.
 n_22_dishes_4_categories	22 plat · 4 kategori
 photo_shelf	Etajè foto
@@ -208,7 +208,7 @@ shop_cloud_plans	Fòfè nyaj
 acct_federated	Koneksyon federe
 acct_err_invalid_email	Antre yon adrès imèl ki valab.
 acct_err_weak_password	Sèvi ak yon modpas ki gen omwen 6 karaktè.
-acct_err_wrong_password	Move modpas.
+acct_err_wrong_password	Modpas la pa bon.
 acct_err_invalid_credential	Imèl la oswa modpas la pa bon.
 acct_err_popup_closed	Fenèt koneksyon an fèmen.
 acct_err_popup_cancelled	Koneksyon an anile.

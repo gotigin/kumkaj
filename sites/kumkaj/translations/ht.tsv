@@ -23,7 +23,7 @@ courier_offices_franchise_counters_own	BIWO LIVREZON · KONTWA FRANCHIZ · PWÒP
 book_label_hand_over_track	Anrejistre → etikèt → remèt → swiv → regle.
 next_booking_in_one_tap	Pwochen anrejistreman an ak yon sèl tap
 actual_or_volumetric_weight_rounded	Pwa reyèl oswa pwa volim, awondi jan ou vle
-rider_cash_on_delivery_expected	Peye lè w resevwa livrè a: sa yo tann konpare ak sa yo remèt
+rider_cash_on_delivery_expected	Kach livrè a pou peye lè w resevwa: sa yo tann konpare ak sa yo remèt
 visit_moklanjo_com	Vizite moklanjo.com  →
 restaurants_caf_s_quick_service	RESTORAN · KAFE · MANJE RAPID · BOULANJRI
 table_kitchen_bill_day_close	Tab → kwizin → kont → fèmti jounen.
@@ -35,7 +35,7 @@ kirana_grocery_neighbourhood_shops	KIRANA · BOUTIK MANJE · BOUTIK KATYE
 sell_khata_stock_day_book	Vann → kaye dèt → stòk → liv jounen.
 fast_counter_sell_with_short	Vant rapid devan kontwa ak kòd kout
 customer_credit_and_supplier_dues	Kredi kliyan ak dèt founisè
-buy_into_stock_offline_forever	Acha nan stòk — san entènèt pou tout tan
+buy_into_stock_offline_forever	Acha ki antre nan stòk — san entènèt pou tout tan
 visit_kirano_shop	Vizite kirano.shop  →
 chemists_pharmacy_counters	FAMASYEN · KONTWA FAMASI
 medicine_batch_bill_day_close	Medikaman → lo → kont → fèmti jounen.
@@ -44,7 +44,7 @@ batch_and_expiry_alerts_on	Avètisman lo ak ekspirasyon sou acha yo
 owner_schedule_h_rx_notes	Nòt mèt la sou Schedule H / preskripsyon — pa fè sanblan respekte lalwa
 visit_tabiyat_shop	Vizite tabiyat.shop  →
 n_03_your_books_stay_with	03 · LIV OU YO RETE AVÈ OU
-your_books_live_in_your	Liv ou yo viv nan boutik ou.
+your_books_live_in_your	Liv ou yo rete nan boutik ou.
 sales_parties_and_the_day	Vant, patnè ak liv jounen an ekri sou aparèy ki devan kontwa ou — pa sou yon sèvè ou lwe.
 on_your_device	Sou aparèy ou
 every_sale_payment_and_docket	Chak vant, peman ak fich ekspedisyon anrejistre sou òdinatè oswa tablèt ki pou ou a.
@@ -66,7 +66,7 @@ the_internet_is_on_and	Entènèt la limen — epi kontwa a pa sèvi avè l.
 things_that_leave_the_shop	Bagay ki soti nan boutik la, tankou yon resi sou WhatsApp, toujou bezwen entènèt pou yo rive.
 n_05_price	05 · PRI
 free_forever_on_your_devices	Gratis pou tout tan sou aparèy ou yo.
-no_charge_per_seat_user	Pa gen frè pou chak plas, itilizatè, tab, livrè, pasèl oswa aparèy lokal. Se pa yon esè.
+no_charge_per_seat_user	Pa gen frè pou chak plas, itilizatè, tab, livrè, pasèl oswa aparèy lokal. Se pa yon peryòd esè.
 on_your_own_devices	Sou pwòp aparèy ou
 n_0_forever	₹0, pou tout tan
 pay_only_for_what_you	Peye sèlman pou sa ou itilize — menm pri pou tout moun.

@@ -44,20 +44,20 @@ less_spicy_travels_with_the	“Upelepele omncane” uhamba nesidlo okungesaso.
 t4_occupied	T4 · Kumatasatasa
 note_less_salt	Inothi: usawoti omncane
 one_ticket_per_kitchen_station	Ithikithi elilodwa esiteshini ngasinye sekhishi
-send_the_order_and_each	Thumela i-oda futhi isiteshi ngasinye sithola izidlo zaso kuphela — zinezinombolo zosuku ngalunye, netafula, uweta nawo wonke amanothi. Akukaze kube nentengo: ikhishi liyapheka, ikhawunta iyakhokhisa.
+send_the_order_and_each	Thumela i-oda, bese isiteshi ngasinye sithola izidlo zaso kuphela — zinezinombolo zosuku ngalunye, netafula, uweta nawo wonke amanothi. Intengo ayiveli neze: ikhishi liyapheka, ikhawunta iyakhokhisa.
 prints_itself	Iziphrintela yona
-send_and_the_ticket_prints	Thumela, futhi ithikithi liphrintwa esiteshini esifanele — akekho olithwalayo.
+send_and_the_ticket_prints	Thumela, bese ithikithi liphrintwa esiteshini esifanele — akekho olithwalayo.
 example_ticket	Isibonelo sethikithi
 the_kitchen_sees_what_to	Ikhishi libona okufanele kuphekwe manje
-on_the_kitchen_screen_tickets	Esikrinini sekhishi amathikithi ahamba Okusha → Iyalungisa → Sekulungile ngokuthepha kanye. Amathikithi amadala ashintsha umbala abe fudumele, “Okuphekwa manje” kubala zonke izidlo ezilindile, futhi izidlo ezinkulu zingalinda kuze kuphume izidlo zokuqala.
+on_the_kitchen_screen_tickets	Esikrinini sekhishi amathikithi ahamba Okusha → Kuyalungiswa → Sekulungile ngokuthepha kanye. Amathikithi amadala ashintsha umbala abe fudumele, “Okuphekwa manje” kubala zonke izidlo ezilindile, futhi izidlo ezinkulu zingalinda kuze kuphume izidlo zokuqala.
 new	Okusha
-preparing	Iyalungisa
+preparing	Kuyalungiswa
 ready	Sekulungile
 example_kitchen_screen	Isibonelo sesikrini sekhishi
 settle_any_way_the_guest	Khokhisa nganoma iyiphi indlela isivakashi esikhokha ngayo
 cash_with_change_to_return	Ukheshi noshintshi wokubuyisa, i-UPI enenani eselisekhodini ye-QR, inkokhelo yengxenye, noma isikweletu encwadini yezikweletu yekhasimende. Hlukanisa ngento, ngesihlalo noma ngokulinganayo. Itafula liba ngelingenamuntu kuphela uma ibhili lalo selikhokhiwe.
 tips_stay_apart	Amathiphu ahlala ehlukile
-a_tip_is_recorded_on	Ithiphu libhalwa lodwa — alikaze lixutshwe nokuthengisa.
+a_tip_is_recorded_on	Ithiphu libhalwa lodwa — alixutshwa neze nokuthengisa.
 t4_bill_printed	T4 · Ibhili liphrintiwe
 bill	Ibhili
 customer_paid_cash	Ikhasimende likhokhile (ukheshi)
@@ -96,9 +96,9 @@ your_menu_ready_in_minutes	Imenyu yakho, ilungile emizuzwini embalwa.
 set_up_your_counter_and	Setha ikhawunta yakho bese ukhetha imenyu yokuqala enezithombe — bese ushintsha amagama, amanani namakhodi abe ngawakho. Mahhala ukuyidawuniloda ku-khaynjo.com.
 starter_menu	Imenyu yokuqala
 khaynjo_starter_menu	Imenyu yokuqala ye-Khaynjo
-world_cuisines_japanese_mexican	Ukudla komhlaba — kwaseJapane, eMexico, e-Italy, eNdiya, eThailand nokunye — isidlo ngasinye nesithombe saso.
+world_cuisines_japanese_mexican	Ukudla kwamazwe omhlaba — okwaseJapane, okwaseMexico, okwase-Italy, okwaseNdiya, okwaseThailand nokunye — isidlo ngasinye nesithombe saso.
 n_14_dishes_11_categories	Izidlo eziyi-14 · izigaba eziyi-11
-cafe_starter	Eyokuqala yekhefi
+cafe_starter	Imenyu yokuqala yekhefi
 tea_coffee_cold_drinks_bakery	Itiye, ikhofi, iziphuzo ezibandayo, okubhakiwe nokudla okulula — kulungele ikhefi elinekhawunta.
 n_22_dishes_4_categories	Izidlo eziyi-22 · izigaba ezi-4
 photo_shelf	Ishalofu lezithombe
@@ -115,7 +115,7 @@ day_book_every_bill_saved	Incwadi yosuku: wonke amabhili agcinwe kule divayisi
 captains_tablets_and_the_kitchen	Amathebhulethi ezinduna zamaweta nesikrini sekhishi: kusebenza ndawonye ku-Wi-Fi yakho
 eyebrow_pricing	AMANANI
 free_forever_on_your_devices	Mahhala unomphela kumadivayisi akho.
-software_capability_is_not_what	Amandla esofthiwe akusikho esikuthengisayo. Sebenzisa yonke i-Khaynjo kumadivayisi akho ngaphandle kwenkokhelo — akukho okukhiywe ngemuva kohlelo.
+software_capability_is_not_what	Amandla esofthiwe akusiwo esiwathengisayo. Sebenzisa yonke i-Khaynjo kumadivayisi akho ngaphandle kwenkokhelo — akukho okukhiywe ngemuva kohlelo.
 khaynjo_on_your_devices	I-Khaynjo kumadivayisi akho
 forever	unomphela
 every_feature	Zonke izici
@@ -166,7 +166,7 @@ acct_name_optional	Igama (ngokuzikhethela)
 acct_password	Iphasiwedi
 acct_continue	Qhubeka
 acct_forgot	Ukhohlwe iphasiwedi?
-acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli olifanayo obhalise ngalo.
+acct_reset_hint	Sizokuthumelela isixhumanisi sokusetha kabusha nge-imeyili. Sebenzisa ikheli elifanayo obhalise ngalo.
 acct_send_reset	Thumela isixhumanisi sokusetha kabusha
 acct_cancel	Khansela
 acct_or_continue	noma qhubeka usebenzisa
@@ -218,11 +218,11 @@ acct_err_too_many	Imizamo eminingi kakhulu. Zama futhi emuva kwesikhathi.
 acct_err_phone_format	Sebenzisa inombolo yocingo ephelele enekhodi yezwe (isib. +91…).
 acct_err_sms_code	Leyo khodi ye-SMS ayilungile noma iphelelwe yisikhathi.
 acct_err_no_account	Ayikho i-akhawunti ene-imeyili leyo. Qhubeka ukuze uyidale, noma usebenzise enye indlela.
-acct_err_recent_login	Ngokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
+acct_err_recent_login	Ngenxa yokuphepha, ngena futhi, bese uzama lolu shintsho futhi.
 acct_err_credential_in_use	Leyo ndlela yokungena isisetshenziswa enye i-akhawunti.
 acct_err_email_in_use	Leyo imeyili isisetshenziswa enye i-akhawunti.
 acct_err_already_linked	Leyo ndlela isixhunyaniswe nale akhawunti.
-acct_err_exists_other_method	Kukhona i-akhawunti esivele ikhona ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
+acct_err_exists_other_method	Sekuvele kukhona i-akhawunti ene-imeyili le esebenzisa enye indlela yokungena. Ngena ngaleyo ndlela kuqala, bese uxhumanisa le ndlela ekhasini le-akhawunti yakho.
 acct_err_generic	Kukhona okungahambanga kahle.
 acct_method_password	I-imeyili nephasiwedi
 acct_pw_hint_change	Shintsha iphasiwedi yakho. Uzoqinisekisa ngeyamanje.

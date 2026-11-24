@@ -8,7 +8,7 @@ busy_counter	Kontwa ki chaje
 kirano_the_grocery_counter	KIRANO · KONTWA BOUTIK MANJE A
 busy_counter_no_internet_still	Kontwa ki chaje. Pa gen entènèt. N ap toujou vann.
 sell_khata_stock_and_the	Vann, kaye dèt, stòk ak liv jounen — sou pwòp aparèy ou. Liv · Vann · Acha · Atik. Pa gen sal, pa gen kwizin, pa gen tab.
-tap_the_bill_to_walk	Tape sou resi a pou pase yon vant devan kontwa
+tap_the_bill_to_walk	Tape sou resi a pou swiv yon vant devan kontwa etap pa etap
 cash_memo	Resi kach
 ready	Pare
 total	Total pou peye
@@ -38,7 +38,7 @@ customer_ar_and_supplier_ap	Sa kliyan dwe ak sa ou dwe founisè yo pataje menm l
 who_when_how_much	Kiyès, kilè, konbyen
 every_credit_and_settlement_stays	Chak kredi ak chak règleman rete nan liv jounen an.
 n_4_buy_stock	4 · ACHA AK STÒK
-buy_from_the_wholesaler_stock	Achte nan men grosis la — stòk la ak sa ou dwe mete ajou ansanm.
+buy_from_the_wholesaler_stock	Achte nan men grosis la — stòk la ak dèt ou yo mete ajou ansanm.
 purchase_sharma_wholesale	Acha · Sharma Wholesale
 stock_50_kg_ap_7	Stòk +50 kg · Dèt ₹ 7 200
 stock_12_l_ap_1	Stòk +12 L · Dèt ₹ 1 560
@@ -46,9 +46,9 @@ resale_stock_not_kitchen_raw	Stòk pou revann — pa materyèl kwizin. Lo ak dat
 buy_creates_stock	Acha kreye stòk
 receive_the_goods_the_catalogue	Resevwa machandiz yo; kantite nan katalòg la monte.
 who_we_owe	Kiyès nou dwe
-supplier_balance_sits_on_the	Balans founisè a nan menm Patnè yo ak kaye dèt kliyan yo.
+supplier_balance_sits_on_the	Balans founisè a rete sou menm patnè a ak kaye dèt kliyan an.
 low_stock_at_a_glance	Stòk ki ba nan yon sèl koutje
-inventory_shows_what_is_running	Envantè a montre sa k ap fini anvan pwochen kouri a.
+inventory_shows_what_is_running	Envantè a montre sa k ap fini anvan pwochen gwo foul la.
 n_5_day_book	5 · LIV JOUNEN
 cash_vs_upi_counted_and	Kach kont UPI, konte — epi diferans lan nonmen.
 today_s_drawer	Tiwa jodi a
@@ -72,7 +72,7 @@ router_no_internet	Routè: pa gen entènèt
 main_counter_selling_and_settling	Kontwa prensipal: ap vann epi ap regle
 second_till_joined_on_your	Dezyèm kès: konekte sou pwòp Wi-Fi ou
 books_live_on_the_shop	Liv yo rete sou aparèy boutik la
-when_the_internet_drops_mid	Lè entènèt la tonbe nan mitan kouri a, anyen devan kontwa a pa tann li.
+when_the_internet_drops_mid	Lè entènèt la tonbe nan mitan gwo foul la, anyen devan kontwa a pa tann li.
 one_server_lan_clients	Yon sèvè, kliyan LAN
 extra_tills_share_the_same	Kès anplis yo pataje menm liv yo sou rezo boutik la.
 n_7_free_forever_locally	7 · GRATIS POU TOUT TAN AN LOKAL
@@ -158,7 +158,7 @@ shop_cloud_plans	Fòfè nyaj
 acct_federated	Koneksyon federe
 acct_err_invalid_email	Antre yon adrès imèl ki valab.
 acct_err_weak_password	Sèvi ak yon modpas ki gen omwen 6 karaktè.
-acct_err_wrong_password	Move modpas.
+acct_err_wrong_password	Modpas la pa bon.
 acct_err_invalid_credential	Imèl la oswa modpas la pa bon.
 acct_err_popup_closed	Fenèt koneksyon an fèmen.
 acct_err_popup_cancelled	Koneksyon an anile.

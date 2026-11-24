@@ -7,13 +7,13 @@ the_grocery_counter	የሸቀጣሸቀጥ ካውንተር
 busy_counter	የተጨናነቀ ካውንተር
 kirano_the_grocery_counter	KIRANO · የሸቀጣሸቀጥ ካውንተር
 busy_counter_no_internet_still	የተጨናነቀ ካውንተር። ኢንተርኔት የለም። አሁንም ሂሳብ ይሰራል።
-sell_khata_stock_and_the	ሽያጭ፣ የዱቤ መዝገብ፣ ክምችት እና የቀን መዝገብ — በራስዎ መሣሪያዎች ላይ። የቀን መዝገብ · ይሽጡ · ግዢ · እቃዎች። አዳራሽ የለም፣ ኩሽና የለም፣ ጠረጴዛ የለም።
+sell_khata_stock_and_the	ሽያጭ፣ የዱቤ መዝገብ፣ ክምችት እና የቀን መዝገብ — በራስዎ መሣሪያዎች ላይ። የቀን መዝገብ · ሽያጭ · ግዢ · እቃዎች። አዳራሽ የለም፣ ኩሽና የለም፣ ጠረጴዛ የለም።
 tap_the_bill_to_walk	የካውንተር ሽያጭን ለመከተል ሂሳቡን ይንኩ
 cash_memo	የጥሬ ገንዘብ ደረሰኝ
 ready	ዝግጁ
 total	ድምር
 tap_to_add_the_first	የመጀመሪያውን እቃ ለማከል ይንኩ
-example_grocery_lines_not_a	የሸቀጣሸቀጥ ምሳሌ መስመሮች እንጂ ቀጥታ የገንዘብ መሳቢያ አይደሉም። Kirano ያውን መንገድ ይከተላል፦ ሽያጭ → ክፍያ → የቀን መዝገብ።
+example_grocery_lines_not_a	የሸቀጣሸቀጥ ምሳሌ መስመሮች እንጂ እውነተኛ ገንዘብ መቀበያ አይደሉም። Kirano ያንኑ መንገድ ይከተላል፦ ሽያጭ → ክፍያ → የቀን መዝገብ።
 n_2_counter_sell	2 · የካውንተር ሽያጭ
 item_quantity_pay_three_taps	እቃ፣ ብዛት፣ ክፍያ — ሦስት ንክኪዎች።
 upi_qr_ready	UPI QR ዝግጁ ነው
@@ -30,7 +30,7 @@ ramesh_customer	Ramesh · ደንበኛ
 due_from_earlier	የቀድሞ ዱቤ
 today_s_sale_due	+ የዛሬ ሽያጭ (ዱቤ)
 balance	ቀሪ ሂሳብ
-settle_later_in_parties_part	በኋላ በተዋዋዮች ውስጥ ይክፈሉ — ከፊሉ በጥሬ ገንዘብ፣ ከፊሉ በUPI፣ መስመሩን ያጽዱ።
+settle_later_in_parties_part	በኋላ በተዋዋዮች ውስጥ ሂሳቡን ይዝጉ — ከፊሉ በጥሬ ገንዘብ፣ ከፊሉ በUPI፣ መስመሩን ያጽዱ።
 due_on_the_bill	በሂሳቡ ላይ ዱቤ
 what_s_left_goes_on	የቀረው ወደ ደንበኛው የዱቤ መዝገብ ይሄዳል — የተለየ የሂሳብ መተግበሪያ አያስፈልግም።
 one_party_two_roles	አንድ ተዋዋይ፣ ሁለት ሚና
@@ -38,7 +38,7 @@ customer_ar_and_supplier_ap	ደንበኞች ያለባቸው ዕዳ እና ለአ
 who_when_how_much	ማን፣ መቼ፣ ስንት
 every_credit_and_settlement_stays	እያንዳንዱ ዱቤ እና ክፍያ በቀን መዝገቡ ውስጥ ይቆያል።
 n_4_buy_stock	4 · ግዢ እና ክምችት
-buy_from_the_wholesaler_stock	ከጅምላ ሻጭ ይግዙ — ክምችት እና ዕዳ ያለብዎት ሰዎች አብረው ይዘምናሉ።
+buy_from_the_wholesaler_stock	ከጅምላ ሻጭ ይግዙ — ክምችቱ እና ለማን ዕዳ እንዳለብዎት አብረው ይዘምናሉ።
 purchase_sharma_wholesale	ግዢ · Sharma Wholesale
 stock_50_kg_ap_7	ክምችት +50 kg · ዕዳ ₹ 7,200
 stock_12_l_ap_1	ክምችት +12 L · ዕዳ ₹ 1,560
@@ -46,7 +46,7 @@ resale_stock_not_kitchen_raw	ለዳግም ሽያጭ የሚውል ክምችት �
 buy_creates_stock	ግዢ ክምችት ይፈጥራል
 receive_the_goods_the_catalogue	እቃዎቹን ይረከቡ፤ በካታሎጉ ውስጥ ያለው ብዛት ይጨምራል።
 who_we_owe	ዕዳ ያለብን ለማን ነው
-supplier_balance_sits_on_the	የአቅራቢው ቀሪ ሂሳብ ከደንበኛው የዱቤ መዝገብ ጋር በአንድ ተዋዋዮች ውስጥ ይቀመጣል።
+supplier_balance_sits_on_the	የአቅራቢው ቀሪ ሂሳብ ከደንበኛው የዱቤ መዝገብ ጋር በዚያው ተዋዋይ ላይ ይቀመጣል።
 low_stock_at_a_glance	ዝቅተኛ ክምችት በአንድ እይታ
 inventory_shows_what_is_running	የክምችት ዝርዝሩ ከቀጣዩ ግርግር በፊት እያለቀ ያለውን ያሳያል።
 n_5_day_book	5 · የቀን መዝገብ
@@ -65,22 +65,22 @@ shift_close	የፈረቃ መዝጊያ
 close_the_shift_print_the	ፈረቃውን ይዝጉ፣ ወረቀቱን ያትሙ፣ ቀጣዩን ንጹህ አድርገው ይጀምሩ።
 gst_facing_bills	GST ያላቸው ሂሳቦች
 tax_invoice_or_cash_memo	የግብር ደረሰኝ ወይም የጥሬ ገንዘብ ደረሰኝ — የቀኑ ሪፖርት ሁለቱንም ይይዛል።
-books_sell_buy_items_four	የቀን መዝገብ · ይሽጡ · ግዢ · እቃዎች — አራት ስክሪኖች፣ የምግብ ቤት አዳራሽም የለም።
+books_sell_buy_items_four	የቀን መዝገብ · ሽያጭ · ግዢ · እቃዎች — አራት ስክሪኖች፣ የምግብ ቤት አዳራሽም የለም።
 n_6_internet_down	6 · ኢንተርኔት ተቋርጧል?
 the_internet_drops_the_counter	ኢንተርኔቱ ይቋረጣል። ካውንተሩ መሸጡን ይቀጥላል።
 router_no_internet	ራውተር፦ ኢንተርኔት የለም
 main_counter_selling_and_settling	ዋናው ካውንተር፦ እየሸጠ ሂሳብ እየዘጋ
-second_till_joined_on_your	ሁለተኛው መሳቢያ፦ በራስዎ Wi-Fi ተገናኝቷል
+second_till_joined_on_your	ሁለተኛው ገንዘብ መቀበያ፦ በራስዎ Wi-Fi ተገናኝቷል
 books_live_on_the_shop	መዝገቦች በሱቁ መሣሪያዎች ላይ ይኖራሉ
 when_the_internet_drops_mid	በግርግሩ መሃል ኢንተርኔት ሲቋረጥ በካውንተሩ ላይ ምንም ነገር አይጠብቀውም።
-one_server_lan_clients	አንድ ሰርቨር፣ የLAN ደንበኞች
-extra_tills_share_the_same	ተጨማሪ መሳቢያዎች በሱቁ አውታረ መረብ ላይ ያውን መዝገብ ይጋራሉ።
+one_server_lan_clients	አንድ ሰርቨር፣ በLAN የተገናኙ መሣሪያዎች
+extra_tills_share_the_same	ተጨማሪ ገንዘብ መቀበያዎች በሱቁ አውታረ መረብ ላይ ያንኑ መዝገብ ይጋራሉ።
 n_7_free_forever_locally	7 · በመሣሪያዎ ላይ ለዘላለም ነፃ
 free_forever_on_your_devices	በመሣሪያዎችዎ ላይ ለዘላለም ነፃ።
 no_per_bill_charge	በሂሳብ ክፍያ የለም
-no_fee_per_sale_item	በአካባቢያዊ ጭነቱ ላይ በሽያጭ፣ በእቃ፣ በመሳቢያ ወይም በሰራተኛ PIN ክፍያ የለም።
+no_fee_per_sale_item	በመሣሪያዎ ላይ በተጫነው ሥሪት በሽያጭ፣ በእቃ፣ በገንዘብ መቀበያ ወይም በሰራተኛ PIN ክፍያ የለም።
 android_windows_linux	Android, Windows, Linux
-the_same_kirano_on_the	ከካውንተሩ ጀርባ ባለው ስልክ እና በዴስክቶፕ መሳቢያው ላይ ያው Kirano።
+the_same_kirano_on_the	ከካውንተሩ ጀርባ ባለው ስልክ እና በዴስክቶፕ ገንዘብ መቀበያው ላይ ያው Kirano።
 optional_kumkaj_cloud	አማራጭ Kumkaj Cloud
 yearly_steady_6k_swift_12k	ዓመታዊ Steady ₹6k · Swift ₹12k · Priority ₹24k ግብርን ሳይጨምር (ወይም ብጁ የዋጋ ግምት)። በ/shop ይግዙ።
 n_8_start	8 · ይጀምሩ
@@ -95,7 +95,7 @@ chapter_counter_sell	የካውንተር ሽያጭ
 chapter_khata	የዱቤ መዝገብ
 chapter_buy_stock	ግዢ እና ክምችት
 chapter_day_book	የቀን መዝገብ
-chapter_extra_till	ተጨማሪ መሳቢያ
+chapter_extra_till	ተጨማሪ ገንዘብ መቀበያ
 chapter_offline	ከመስመር ውጭ
 chapter_start	ጀምር
 bill_selling	በመሸጥ ላይ
@@ -105,8 +105,8 @@ bill_next_item	ቀጣዩን እቃ ለማከል ይንኩ
 bill_settle_hint	ሂሳብ ለመዝጋት ይንኩ — ጥሬ ገንዘብ ወይም UPI
 bill_cash_return	ጥሬ ገንዘብ ₹ 600 · መልስ ₹ 15
 bill_paid_line	ተከፍሏል · የቀን መዝገብ ተዘምኗል
-lan_eyebrow	6 · ተጨማሪ መሳቢያ
-lan_title	በሱቁ Wi-Fi ላይ ሌላ መሳቢያ።
+lan_eyebrow	6 · ተጨማሪ ገንዘብ መቀበያ
+lan_title	በሱቁ Wi-Fi ላይ ሌላ ገንዘብ መቀበያ።
 cta_installers_note	እያንዳንዱ ጫኚ በንጹህ ማሽን ላይ የመጫን ሙከራን ሲያልፍ እዚህ ይቀመጣል። እስከዚያው ድረስ በWhatsApp ማሳያ ይጠይቁ።
 cta_whatsapp_soon	የWhatsApp ማሳያ መስመሩ በቅርቡ ይከፈታል። መልእክትዎ እንዲህ ይላል፦ «{message}»።
 acct_page_title	መለያ — Kirano
@@ -126,7 +126,7 @@ acct_send_sms	የSMS ኮድ ላክ
 acct_sms_code	የSMS ኮድ
 acct_confirm_code	ኮዱን አረጋግጥ
 acct_signed_in	ገብተዋል
-acct_signed_in_as	እንደዚህ ገብተዋል፦
+acct_signed_in_as	በዚህ መለያ ገብተዋል፦
 acct_status	ሁኔታ
 acct_sign_in_methods	የመግቢያ ዘዴዎች
 acct_cloud_username	የደመና ተጠቃሚ ስም

@@ -2,7 +2,7 @@
 example	Urugero
 length	Uburebure
 download_free	Kura ku buntu
-whatsapp_for_a_demo	Kwerekwa kuri WhatsApp
+whatsapp_for_a_demo	Saba kwerekwa kuri WhatsApp
 free_on_android_windows_and	Ku buntu kuri Android, Windows na Linux.
 courier_operating_system	sisitemu yo gucunga amapaki
 parcel_journey	URUGENDO RW’IPAKI
@@ -18,14 +18,14 @@ moklanjo_courier_operating_system	MOKLANJO · SISITEMU YO GUCUNGA AMAPAKI
 book_move_and_settle_every	Andika, ohereza kandi urangize kwishyura buri paki — sisitemu imwe y’amapaki ku bikoresho byawe.
 parties_books_cod_labels_awb	Abafatanyabikorwa, ibitabo, COD, ibirango, amatsinda ya nimero za AWB, gukurikirana, abamotari n’inyemezabuguzi — uruziga rwose kuva kuri kontwari kugeza kwishyurwa, hari interineti cyangwa idahari. Ku buntu ku bikoresho byawe.
 the_walk_in_loop	URUZIGA RW’UHAGEZE
-actual_and_volumetric_side_by	Uburemere nyabwo n’uburemere bw’ingano, iruhande rumwe.
-charge	Yishyuza
+actual_and_volumetric_side_by	Uburemere nyabwo n’uburemere bw’ingano, bumwe iruhande rw’ubundi.
+charge	Kwishyuza
 your_rate_card_cash_or	Urutonde rwawe rw’ibiciro, amafaranga mu ntoki cyangwa konti.
 next_booking	Iyandikwa rikurikira
-one_tap_clears_the_counter	Gukanda rimwe bisukura kontwari ku wundi uhageze.
+one_tap_clears_the_counter	Gukanda rimwe bitegura kontwari ngo yakire undi mukiriya uhageze.
 scroll_the_parcel_journey_rail	Manura — umurongo w’urugendo rw’ipaki uri hejuru werekana aho ugeze mu nkuru.
 n_2_weigh_it_right	2 · PIMA NEZA
-actual_or_volumetric_whichever_is	Uburemere nyabwo cyangwa ubw’ingano — ubunini kurusha ubundi, buzengurutswe uko ubishaka.
+actual_or_volumetric_whichever_is	Uburemere nyabwo cyangwa ubw’ingano — uburuta ubundi, buzengurutswe uko ubishaka.
 try_a_box	Gerageza agasanduku
 domestic	Imbere mu gihugu
 international	Mu mahanga
@@ -34,8 +34,8 @@ height	Ubuhagarike
 weight_on_the_scale	Uburemere ku munzani
 chargeable_weight	UBUREMERE BWISHYURWA
 the_box_s_size_sets	Ingano y’agasanduku ni yo igena amafaranga.
-higher_of_the_two_rounded	Ubunini muri bibiri, buzamurwa kugeza kuri 0,5 kg ikurikira.
-in_the_app_the_divisor	Muri porogaramu, iduka ni ryo rishyiraho igabanya, intambwe yo kuzengurutsa n’ibipimo byawe (cm cyangwa inci, kg cyangwa lb). Buto ya Mu mahanga ikoresha ÷6000 ku iyandikwa rimwe utakoze kuri Igenamiterere.
+higher_of_the_two_rounded	Uburuta ubundi muri bubiri, buzamurwa kugeza kuri 0,5 kg ikurikira.
+in_the_app_the_divisor	Muri porogaramu, iduka ni ryo rishyiraho umubare ugabanya, intambwe yo kuzengurutsa n’ibipimo byawe (cm cyangwa inci, kg cyangwa lb). Buto ya Mu mahanga ikoresha ÷6000 ku iyandikwa rimwe utakoze kuri Igenamiterere.
 n_3_price_it	3 · SHYIRAHO IGICIRO
 your_rate_cards_your_party	Intonde zawe z’ibiciro, ibiciro by’abafatanyabikorwa bawe — n’inyungu yawe kuri buri rupapuro rw’ipaki.
 rate_card	Urutonde rw’ibiciro
@@ -66,7 +66,7 @@ the_manifest_holds_exactly_the	Urutonde rw’amapaki rurimo neza amapaki wahisem
 onto_your_own_rider_s	Mu rugendo rw’umumotari wawe
 pick_the_parcels_print_the	Hitamo amapaki, capa urupapuro rw’urugendo, maze umumotari akorere muri porogaramu imwe mu buryo bw’umumotari — hamwe n’ikimenyetso cyo kugeza.
 n_6_track_and_prove	6 · KURIKIRANA KANDI UGARAGAZE GIHAMYA
-every_move_recorded_and_only	Buri cyimuka kirandikwa — kandi ibyimuka bifite ishingiro gusa.
+every_move_recorded_and_only	Buri ntambwe irandikwa — kandi intambwe zumvikana gusa.
 booked	Byanditswe
 with_carrier	Biri ku mwikorezi
 out_for_delivery	Biri mu nzira yo kugezwa
@@ -74,21 +74,21 @@ delivered	Byagejejwe
 booked_with_carrier_out_for	Byanditswe → Biri ku mwikorezi → Biri mu nzira yo kugezwa → Byagejejwe
 failed	Byananiranye
 reason_out_again_or_return	→ impamvu → byongera gusohoka, cyangwa bigasubizwa uwohereje.
-impossible_moves_refused	Ibyimuka bidashoboka biranzwe
+impossible_moves_refused	Intambwe zidashoboka ziranzwe
 delivered_returned_and_cancelled	Byagejejwe, byasubijwe na byahagaritswe ni iherezo.
 proof_of_delivery	Ikimenyetso cyo kugeza
 a_photo_and_the_receiver	Ifoto n’umukono w’uwakiriye ku rupapuro rw’ipaki.
 failed_deliveries	Kugeza byananiranye
 reasons_attempts_out_again_or	Impamvu, inshuro zageragejwe, byongera gusohoka, cyangwa gusubira ku wohereje.
 n_7_money_comes_home	7 · AMAFARANGA AGARUKA MU RUGO
-cod_you_can_see_expected	COD ushobora kubona: ateganyijwe, yatanzwe, abereyemo buri wohereza.
+cod_you_can_see_expected	COD ushobora kubona: ateganyijwe, yatanzwe, n’ayo ubereyemo buri wohereza.
 rider_cash_end_of_run	Amafaranga mu ntoki y’umumotari, iherezo ry’urugendo
 rider	Umumotari
 expected	Ateganyijwe
 handed_in	Yatanzwe
-a_14_drops	A · kugeza 14
-b_9_drops	B · kugeza 9
-short_200_on_rider_b	Ibura rya ₹ 200 kuri Umumotari B — ryagaragajwe, ntiryazimiriye mu giteranyo.
+a_14_drops	A · amapaki 14 yo kugeza
+b_9_drops	B · amapaki 9 yo kugeza
+short_200_on_rider_b	Ibura rya ₹ 200 ku mumotari B — ryagaragajwe, ntiryazimiriye mu giteranyo.
 cod_register	Igitabo cya COD
 collected_against_paid_out_per	Ayakiriwe ugereranyije n’ayishyuwe, kuri buri wohereza, hamwe n’amatsinda y’amafaranga yoherejwe.
 rider_settlement	Kurangiza kwishyurana n’umumotari
@@ -107,7 +107,7 @@ n_9_start	9 · TANGIRA
 one_courier_os_your_parcels	Sisitemu imwe y’amapaki. Amapaki yawe. Ibitabo byawe.
 moklanjo_is_a_complete_courier	Moklanjo ni sisitemu yuzuye yo gucunga amapaki iri munsi ya Kumkaj — Android, Windows na Linux. Abamotari bakoresha porogaramu imwe mu buryo bw’umumotari.
 trademark	IKIRANGO CY’UBUCURUZI
-memon_for_find_it_pronounced	Ijambo ry’ururimi rwa Memon risobanura “ribone” · rivugwa go-tee-geen
+memon_for_find_it_pronounced	Ijambo ry’ururimi rwa Memon risobanura “bibone” · rivugwa go-tee-geen
 company	SOSIYETE
 brand	IKIRANGO
 concrete_business_operating_system	Porogaramu za sisitemu zo gucunga ubucuruzi zifatika

@@ -1,7 +1,7 @@
 # Kinyarwanda — Ikinyarwanda (rw). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	Urugero
 download_free	Kura ku buntu
-whatsapp_for_a_demo	Kwerekwa kuri WhatsApp
+whatsapp_for_a_demo	Saba kwerekwa kuri WhatsApp
 free_on_android_windows_and	Ku buntu kuri Android, Windows na Linux.
 the_pharmacy_counter	kontwari ya farumasi
 pharmacy_counter	Kontwari ya farumasi
@@ -19,7 +19,7 @@ medicine_quantity_pay_three_taps	Umuti, umubare, kwishyura — gukanda gatatu.
 upi_qr_ready	UPI QR yiteguye
 example_bill	Urugero rw’inyemezabuguzi
 fast_counter_billing	Gukora inyemezabuguzi vuba kuri kontwari
-add_the_line_set_the	Ongeraho umurongo, shyiraho umubare, yishyuza — amafaranga mu ntoki, UPI cyangwa kugabanya.
+add_the_line_set_the	Ongeraho umurongo, shyiraho umubare, wishyuze — amafaranga mu ntoki, UPI cyangwa kugabanya.
 gst_tax_invoice_or_cash	Inyemezabuguzi y’umusoro ya GST cyangwa inyemezabwishyu
 the_bill_lane_you_need	Ubwoko bw’inyemezabuguzi ukeneye ku igurisha.
 day_book_follows	Igitabo cy’umunsi kirakurikira
@@ -46,7 +46,7 @@ expires_2026_11_near_expiry	Izarangira 2026-11 · umurongo “hafi kurangira” 
 shop_bookkeeping_only_not_drugs	Gucunga ibitabo by’iduka gusa — si ugukurikiza Itegeko ry’Imiti.
 batch_on_buy	Icyiciro igihe ugura
 record_batch_and_expiry_when	Andika icyiciro n’itariki yo kurangira igihe ububiko bugeze.
-near_expiry_alerts	Imiburo y’itariki yegereje
+near_expiry_alerts	Imiburo y’itariki yo kurangira yegereje
 books_and_sell_can_hint	Igitabo cy’umunsi na Kugurisha bishobora kuburira mbere y’uko itariki irenga.
 owner_practice	Imikorere ya nyir’iduka
 fefo_hints_and_rx_notes	Inama za FEFO n’ibyitonderwa by’impapuro za muganga ni wowe ubikurikiza — Tabiyat yandika ibyo winjije.
@@ -56,22 +56,22 @@ mehta_clinic_customer	Ivuriro rya Mehta · Umukiriya
 due_from_earlier	Ideni rya mbere
 today_s_sale_due	+ ibyagurishijwe uyu munsi (ideni)
 balance	Asigaye
-settle_later_part_cash_part	Ishyurwa nyuma — igice mu mafaranga mu ntoki, ikindi muri UPI. Amadeni y’abatanga ibicuruzwa ari kuri ekarani imwe ya Abafatanyabikorwa.
+settle_later_part_cash_part	Ishyuza nyuma — igice mu mafaranga mu ntoki, ikindi muri UPI. Amadeni y’abatanga ibicuruzwa ari kuri ekarani imwe y’Abafatanyabikorwa.
 due_on_the_bill	Ideni ku nyemezabuguzi
 leave_a_balance_on_khata	Siga asigaye mu gitabo cy’amadeni nta yindi porogaramu y’ibitabo.
 supplier_buys_too	Kugura ku batanga ibicuruzwa na byo
-who_you_owe_updates_when	Abo ubereyemo amadeni bavugururwa igihe ububiko bugeze.
+who_you_owe_updates_when	Urutonde rw’abo ubereyemo amadeni ruvugururwa igihe ububiko bugeze.
 auditable	Bishobora kugenzurwa
 who_when_and_how_much	Nde, ryari n’angahe biguma mu gitabo cy’umunsi.
 n_6_internet_down	6 · INTERINETI YAVUYEHO?
 the_internet_drops_the_counter	Interineti iravaho. Kontwari ikomeza kugurisha.
 router_no_internet	Rawuteri: nta interineti
-main_counter_selling_and_settling	Kontwari nkuru: iragurisha kandi iryishyuza
+main_counter_selling_and_settling	Kontwari nkuru: iragurisha kandi irishyuza
 second_till_joined_on_your	Isanduku ya kabiri: ihujwe kuri Wi-Fi yawe
 books_live_on_the_shop	Ibitabo biba ku bikoresho by’iduka
 when_the_internet_drops_nothing	Iyo interineti ivuyeho, nta kintu kuri kontwari ya farumasi kiyitegereza.
 one_server_lan_clients	Seriveri imwe, ibikoresho bya LAN
-extra_tills_share_the_same	Andi masanduku asangira ibitabo bimwe binyuze ku murandasi w’iduka.
+extra_tills_share_the_same	Andi masanduku asangira ibitabo bimwe binyuze ku rusobe rw’iduka.
 n_7_free_forever_locally	7 · KU BUNTU ITEKA RYOSE KU BIKORESHO BYAWE
 free_forever_on_your_devices	Ku buntu iteka ryose ku bikoresho byawe.
 no_per_bill_charge	Nta kwishyuza kuri buri nyemezabuguzi
@@ -96,7 +96,7 @@ chapter_extra_till	Isanduku y’inyongera
 chapter_offline	Nta interineti
 chapter_start	Tangira
 bill_selling	Biragurishwa
-bill_settle	Yishyuza
+bill_settle	Kwishyuza
 bill_paid	Byishyuwe
 bill_next_line	Kanda kugira ngo wongereho umurongo ukurikira
 bill_settle_hint	Kanda kugira ngo wishyuze — amafaranga mu ntoki cyangwa UPI

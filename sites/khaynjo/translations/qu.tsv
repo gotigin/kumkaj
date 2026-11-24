@@ -14,10 +14,10 @@ login	Yaykuy
 get_it_free	Qasilla tariy
 restaurant_pos_free_forever	Mikhuna wasip POS-nin · wiñaypaq qasilla
 lunch_rush_no_internet_no	Chawpi p’unchawpi askha runa. Mana internet kanchu. Mana sasachakuy kanchu.
-khaynjo_runs_your_floor_kitchen	Khaynjo mikhuna wasiykita, yanuna wasiykita, qhatuna mesaykitapas kamachin ñan kapusunki llamk’anakunapi — mesamanta yanuna wasiman, pagana qillqakama, internetwanpas mana internetwanpas.
+khaynjo_runs_your_floor_kitchen	Khaynjo mikhuna wasiykita, yanuna wasiykita, qhatuna mesaykitapas kamachin ña kapusqayki llamk’anakunapi — mesamanta yanuna wasiman, pagana qillqakama, internetwanpas mana internetwanpas.
 android_on_google_play_today	Android Google Play-pi kunan · Windows, Linux ima hamushanmi.
-works_with_no_internet	Mana internetwan llamk’an
-your_books_stay_on_your	Yupay qillqaykikuna llamk’anaykikunapi qhepanku
+works_with_no_internet	Internet mana kaqtinpas llamk’an
+your_books_stay_on_your	Yupay qillqaykikuna llamk’anaykikunapi qhipanku
 n_115_languages_on_screen	115 simikuna rikunapi
 your_floor_at_a_glance	Mikhuna wasiyki huk qhawariyllapi
 tap_a_table_to_walk	Huk mesata ñit’iy huk watukuypi qatinaykipaq. Kikin llimphikuna, simikuna app hina — mesaqa pagasqa kaptinllan ch’usaqyan.
@@ -35,7 +35,7 @@ food_ready	Mikhuna wakichisqa
 served	Haywasqa
 bill_printed	Pagana qillqa hurqusqa
 paid	Pagasqa
-seat_the_table_take_the	Watukuqkunata tiyachiy, kamachiyta chaskiy
+seat_the_table_take_the	Watukuqkunata tiyachiy, mañakuyta chaskiy
 mark_the_table_occupied_the	Watukuqkuna tiyakuqtinkama mesata Tiyasqa nispa unanchay. Mikhunakunata yapay, hatun-kayninta akllay, yapakunata yapay, yanuna wasipaq willakuyta qillqay — mesallapitaq.
 sizes_and_add_ons	Hatun-kayninkuna yapakunapas
 pick_one_size_add_optional	Huk hatun-kayta akllay; munasqayki yapakunata churasqayki tupukama yapay.
@@ -44,18 +44,18 @@ less_spicy_travels_with_the	“Pisi uchu” mikhunanwan kuska rin.
 t4_occupied	T4 · Tiyasqa
 note_less_salt	Willakuy: pisi kachi
 one_ticket_per_kitchen_station	Sapa yanuna k’uchupaq huk qillqacha
-send_the_order_and_each	Kamachiyta kachay, sapa k’uchutaq mikhunankunallata chaskin — sapa p’unchaw yupasqa, mesantin, haywaqnintin, llapan willakuyninkunantin. Mana hayk’aqpas chanin: yanuna wasiqa yanun, qhatuna mesataq pagachin.
+send_the_order_and_each	Mañakuyta kachay, sapa k’uchutaq mikhunankunallata chaskin — sapa p’unchaw yupasqa, mesantin, haywaqnintin, llapan willakuyninkunantin. Mana hayk’aqpas chanin: yanuna wasiqa yanun, qhatuna mesataq pagachin.
 prints_itself	Kikillanmanta qillqaman hurqun
 send_and_the_ticket_prints	Kachay, qillqachataq allin k’uchupi hurqukun — mana pipas apanchu.
 example_ticket	Qillqacha rikch’anachiy
 the_kitchen_sees_what_to	Yanuna wasiqa kunan yanunanta rikun
-on_the_kitchen_screen_tickets	Yanuna wasip rikunanpi qillqachakuna Musuq → Wakichiy → Wakichisqa nisqaman huk ñit’iyllawan purinku. Machu qillqachakunaqa q’uñi llimphiman tukunku, “Kunan yanunapaq” suyashaq llapan mikhunata yupan, hatun mikhunakunataq qallariy mikhunakuna rinankama suyankuman.
+on_the_kitchen_screen_tickets	Yanuna wasip rikunanpi qillqachakuna Musuq → Wakichikushan → Wakichisqa nisqaman huk ñit’iyllawan purinku. Ñawpaq qillqachakunaqa q’uñi llimphiman tukunku, “Kunan yanunapaq” suyashaq llapan mikhunata yupan, hatun mikhunakunataq qallariy mikhunakuna rinankama suyankuman.
 new	Musuq
-preparing	Wakichiy
+preparing	Wakichikushan
 ready	Wakichisqa
 example_kitchen_screen	Yanuna wasip rikunan rikch’anachiy
 settle_any_way_the_guest	Watukuq imaynatachus pagan, chaynata chaskiy
-cash_with_change_to_return	Makipi qullqi kutichina qullqintin, UPI QR-pi ñan kaq qullqiwan, huk kuchunta pagay, utaq rantiqpa manu qillqanpi manu. Sapa imamanta, sapa tiyanamanta utaq kikinmanta rakiy. Mesaqa pagana qillqan pagasqa kaptinllan ch’usaqyan.
+cash_with_change_to_return	Makipi qullqi kutichina qullqintin, UPI QR-pi ñan kaq qullqiwan, huk kuchunta pagay, utaq rantiqpa manu qillqanpi manu. Sapa imamanta, sapa tiyanamanta utaq kaqlla kaqlla rakiy. Mesaqa pagana qillqan pagasqa kaptinllan ch’usaqyan.
 tips_stay_apart	Añay qullqikuna sapallanku kanku
 a_tip_is_recorded_on	Añay qullqiqa sapallan qillqakun — mana hayk’aqpas qhatuywan chaqrukunchu.
 t4_bill_printed	T4 · Pagana qillqa hurqusqa
@@ -63,7 +63,7 @@ bill	Pagana qillqa
 customer_paid_cash	Rantiq pagarqan (makipi qullqi)
 return_to_customer	Rantiqman kutichiy
 close_the_day_you_can	Iñinayki p’unchaw wichq’ay
-count_the_drawer_against_the	Qullqi waqaychanata yupay qallariy qullqiwan, chaskisqa makipi qullqiwan, añay qullqikunawan, hurqusqa makipi qullqiwan tupachispa — pisi kaqtapas aswan kaqtapas sutichanmi. Mit’ap qillqanta hurquy, chaymanta p’unchaw willakuyta kichay llamk’aqmanta, kamachiy layamanta, horamanta, mikhunamantawan, chinkachisqakunantin, qasi mikhunakunantin, añay qullqikunantin.
+count_the_drawer_against_the	Qullqi waqaychanata yupay qallariy qullqiwan, chaskisqa makipi qullqiwan, añay qullqikunawan, hurqusqa makipi qullqiwan tupachispa — pisi kaqtapas aswan kaqtapas sutichanmi. Mit’ap qillqanta hurquy, chaymanta p’unchaw willakuyta kichay llamk’aqmanta, mañakuy layamanta, horamanta, mikhunamantawan, chinkachisqakunantin, qasi mikhunakunantin, añay qullqikunantin.
 shift_close	Mit’a wichq’ay
 opening_float	Qallariy qullqi
 cash_taken	+ chaskisqa makipi qullqi
@@ -76,11 +76,11 @@ everything_else_the_floor_needs	WAKIN TUKUY IMAKUNA MIKHUNA WASIPAQ
 built_for_a_real_service	Chiqap hayway llamk’aypaq ruwasqa.
 the_changes_that_happen_every	Sapa chawpi p’unchaw tukuq t’ikrakuykuna — sut’ipi ruwakun, pi, hayk’aq, imarayku waqaychasqa.
 move_and_merge_tables	Mesakunata kuyuchiy hukllachaypas
-guests_change_tables_the_order	Watukuqkuna mesata t’ikranku — kamachiyninku minutonkunapas paykunawan rinku. Iskay mesa, huk pagana qillqa.
+guests_change_tables_the_order	Watukuqkuna mesata t’ikranku — mañakuyninku minutonkunapas paykunawan rinku. Iskay mesa, huk pagana qillqa.
 cancel_after_the_kot	KOT qhipaman chinkachiy
 with_a_reason_cooked_or	Imarayku kasqanwan, yanusqa kaqtinpas mana kaqtinpas, pi arí nisqanwan. Yanuna wasiqa chinkachiy qillqachata chaskin.
 complimentary_dishes	Qasi mikhunakuna
-a_comp_stays_on_the	Qasi mikhunaqa pagana qillqapi ₹ 0-pi qhepan, imaraykunwan arí niqninwan.
+a_comp_stays_on_the	Qasi mikhunaqa pagana qillqapi ₹ 0-pi qhipan, imaraykunwan arí niqninwan.
 rights_per_person	Sapa runapaq atiykuna
 each_action_is_allowed_allowed	Sapa ruwayqa saqisqa, kamachiqpa PIN-ninwan saqisqa, utaq mana saqisqa — sapa runamanta.
 your_menu_your_words	Mikhuna qillqayki, simiykikuna
@@ -90,15 +90,15 @@ a_dearer_price_in_the	AC wasichapi aswan chaninniyuq; tutamanta mikhuna qillqaku
 customer_khata	Rantiqpa manu qillqan
 part_payments_and_due_go	Huk kuchunta pagaykuna, manukunapas rantiqpa cuentanman Rantinakuqkuna nisqapi rinku, qhipaman pagakunanpaq.
 reports_that_answer_questions	Tapukuykunata kutichiq willakuykuna
-sales_by_staff_order_type	Qhatuykuna llamk’aqmanta, kamachiy layamanta, horamanta, mikhunamantawan — chinkachisqakuna, qasi mikhunakuna, añay qullqikunapas qillqasqa.
+sales_by_staff_order_type	Qhatuykuna llamk’aqmanta, mañakuy layamanta, horamanta, mikhunamantawan — chinkachisqakuna, qasi mikhunakuna, añay qullqikunapas qillqasqa.
 start_with_a_menu	MIKHUNA QILLQAWAN QALLARIY
 your_menu_ready_in_minutes	Mikhuna qillqayki, as minutokunallapi wakichisqa.
 set_up_your_counter_and	Qhatuna mesaykita allichay, rikch’ayniyuq qallariy mikhuna qillqatataq akllay — chaymanta sutikunata, chaninkunata, unanchakunatapas qampa kananpaq t’ikray. khaynjo.com-manta qasilla urachiy.
 starter_menu	Qallariy mikhuna qillqa
 khaynjo_starter_menu	Khaynjo-p qallariy mikhuna qillqan
-world_cuisines_japanese_mexican	Pachap mikhunankuna — Japón, México, Italia, India, Thailand, aswanpas — sapa mikhuna rikch’ayninwan.
+world_cuisines_japanese_mexican	Pachap mikhunankuna — Japón, México, Italia, India, Tailandia, aswanpas — sapa mikhuna rikch’ayninwan.
 n_14_dishes_11_categories	14 mikhuna · 11 laya
-cafe_starter	Café wasip qallariynin
+cafe_starter	Café wasipaq qallariy mikhuna qillqa
 tea_coffee_cold_drinks_bakery	Té, café, chiri ukyanakuna, t’anta, pisi mikhunakunapas — qhatuna mesayuq café wasipaq wakichisqa.
 n_22_dishes_4_categories	22 mikhuna · 4 laya
 photo_shelf	Rikch’ay waqaychana
@@ -107,32 +107,32 @@ the_full_public_photo_shelf	Llapanpaq hunt’asqa rikch’ay waqaychana — yapa
 n_1_459_dish_photos_25	1,459 mikhuna rikch’ay · 25 yanuy laya
 internet_down	INTERNET CHINKARQANCHU?
 the_internet_went_down_the	Internet chinkarqan. Qhatuna mesaqa manan sayarqanchu.
-orders_kitchen_tickets_bills_and	Kamachiykuna, yanuna wasip qillqachankuna, pagana qillqakuna, p’unchaw hatun qillqapas llamk’anaykikunapi kanku. Chawpi p’unchaw internet chinkaqtinqa, mikhuna wasiykipi manan imapas suyanchu — nitaq ñuqaykupa cuentayku kanchu yaykunaykipaq.
+orders_kitchen_tickets_bills_and	Mañakuykuna, yanuna wasip qillqachankuna, pagana qillqakuna, p’unchaw hatun qillqapas llamk’anaykikunapi kanku. Chawpi p’unchaw internet chinkaqtinqa, mikhuna wasiykipi manan imapas suyanchu — nitaq ñuqaykuwan cuentayki kanchu yaykunaykipaq.
 right_now_mid_lunch	Kunallan, chawpi p’unchaw mikhuypi
 router_no_internet	Router: mana internet
-counter_taking_orders_and_settling	Qhatuna mesa: kamachiykunata chaskishan, pagana qillqakunatapas pagachishan
+counter_taking_orders_and_settling	Qhatuna mesa: mañakuykunata chaskishan, pagana qillqakunatapas pagachishan
 day_book_every_bill_saved	P’unchaw hatun qillqa: llapan pagana qillqakuna kay llamk’anapi waqaychasqa
 captains_tablets_and_the_kitchen	Umalliq haywaqkunap tabletninkuna, yanuna wasip rikunanpas: Wi-Fi-ykipi kuska llamk’ashanku
 eyebrow_pricing	CHANINKUNA
 free_forever_on_your_devices	Llamk’anaykikunapi wiñaypaq qasilla.
-software_capability_is_not_what	Software atiyninqa manan rantikusqaykuchu. Llapan Khaynjo-ta llamk’anaykikunapi mana qullqiwan purichiy — manan imapas yuyaychay qhipapi wichq’asqachu.
+software_capability_is_not_what	Software atiyninqa manan rantikusqaykuchu. Llapan Khaynjo-ta llamk’anaykikunapi mana qullqiwan purichiy — manan imapas plan qhipapi wichq’asqachu.
 khaynjo_on_your_devices	Khaynjo llamk’anaykikunapi
 forever	wiñaypaq
 every_feature	Llapan imaynin
 floor_kitchen_billing_day_close	Mikhuna wasi, yanuna wasi, pagana qillqakuna, p’unchaw wichq’ay, willakuykuna — hunt’asqa app.
 no_per_seat_charge	Sapa tiyanapaq mana pagay
-no_charge_per_table_waiter	Sapa mesapaq, haywaqpaq, kamachiypaq utaq llamk’anapaq mana pagay.
+no_charge_per_table_waiter	Sapa mesapaq, haywaqpaq, mañakuypaq utaq llamk’anapaq mana pagay.
 no_account_with_us	Ñuqaykuwan mana cuenta
 day_to_day_service_needs	Sapa p’unchaw llamk’ayqa manan sutiyki qillqachiyta nitaq internetta munanchu.
 kumkaj_cloud_optional	Kumkaj Cloud · akllana
 yearly_cloud_if_you_want	Munaspaqa sapa wata phuyu
-steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / wata mana impuestoyuq (impuesto pagay pachapi). Sapaq ruwasqaqa chanin yuyaymi — Steady-manta urapi utaq Priority-manta hanaqpi kanman. Llamk’anaykikunapi Khaynjo-qa wiñaypaq qasillam qhepan ima kaqtinpas.
-shop_plans_at_shop_sign	Yuyaychaykunata /shop-pi rantiy · /account-pi yaykuy
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / wata mana impuestoyuq (impuesto pagay pachapi). Sapaq ruwasqaqa chanin yuyaymi — Steady-manta urapi utaq Priority-manta hanaqpi kanman. Llamk’anaykikunapi Khaynjo-qa wiñaypaq qasillam qhipan ima kaqtinpas.
+shop_plans_at_shop_sign	Plankunata /shop-pi rantiy · /account-pi yaykuy
 open_cloud_shop	Phuyu qhatuta kichay
 questions	TAPUKUYKUNA
 asked_before_every_first_service	Sapa ñawpaq hayway llamk’ay ñawpaqninpi tapukun.
 do_i_need_the_internet	Internetta munanichu?
-no_orders_kots_bills_and	Manan. Kamachiykuna, KOT-kuna, pagana qillqakuna, p’unchaw hatun qillqapas mana internetwan llamk’anku. Huk kutillata munanki app-ta urachinaykipaq, munaspaqa qallariy mikhuna qillqatapas.
+no_orders_kots_bills_and	Manan. Mañakuykuna, KOT-kuna, pagana qillqakuna, p’unchaw hatun qillqapas internet mana kaqtinpas llamk’anku. Huk kutillata munanki app-ta urachinaykipaq, munaspaqa qallariy mikhuna qillqatapas.
 where_are_my_bills_kept	Maypitaq pagana qillqaykuna waqaychakun?
 on_your_own_device_in	Llamk’anaykipi, qhatuykipi — manan servidorniykupichu. Ajustes nisqamanta waqaychana copiakunata ruway, munasqayki maypipas waqaychay.
 which_devices_does_it_run	Mayqin llamk’anakunapitaq llamk’an?
@@ -153,9 +153,9 @@ photo_credits	Rikch’aykunap kamaqninkuna
 cloud_shop	Phuyu qhatu
 account	Cuenta
 cta_installers_note	Churanakunaqa kaypi churakunqa sapankanku musuq llamk’anapi allinta churakuqtin. Chaykama, WhatsApp-pi qhawachiyta mañakuy.
-cta_whatsapp_soon	WhatsApp qhawachiy siqiqa pisi pachallamanta kicharikunqa. Willakuyniyki kayhina kanqa: “{message}”.
+cta_whatsapp_soon	WhatsApp-pi qhawachiyqa pisi pachallamanta qallarinqa. Willakuyniyki kayhina kanqa: “{message}”.
 shelf_no_match	Manan mayqin suyupas mikhunapas chay maskaywan tupanchu.
-shelf_search_note	Maskayqa puriyta sayachin; pichay qatinanpaq, utaq saqisqayki hina sayasqa qhepanqa.
+shelf_search_note	Maskayqa puriyta sayachin; pichay qatinanpaq, utaq saqisqayki hina sayasqa qhipanqa.
 floor_meta_min	{min} minuto
 floor_meta_min_bill	{min} minuto · ₹ {amount}
 floor_meta_paid	₹ {amount} pagasqa
@@ -166,7 +166,7 @@ acct_name_optional	Suti (akllana)
 acct_password	Yaykuna rimay
 acct_continue	Hinallayá ruway
 acct_forgot	Yaykuna rimayta qunqarqankichu?
-acct_reset_hint	Musuqmanta churana t’inkita correoman kachasqayku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
+acct_reset_hint	Musuqmanta churana t’inkita correoykiman kachasaqku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
 acct_send_reset	Musuqmanta churana t’inkita kachay
 acct_cancel	Chinkachiy
 acct_or_continue	utaq kaywan qatiy
@@ -176,11 +176,11 @@ acct_send_sms	SMS unanchata kachay
 acct_sms_code	SMS unancha
 acct_confirm_code	Unanchata takyachiy
 acct_signed_in	Yaykusqaña
-acct_signed_in_as	Kayhina yaykusqa
+acct_signed_in_as	Kay cuentawan yaykusqa
 acct_status	Imayna kasqan
 acct_sign_in_methods	Yaykuna ñankuna
 acct_cloud_username	Phuyupi llamk’achiqpa sutin
-acct_plan	Yuyaychay
+acct_plan	Plan
 acct_resend_verify	Takyachina correota yapamanta kachay
 acct_sign_out	Lluqsiy
 acct_cloud_sandbox	Kumkaj Cloud (malliy)
@@ -189,7 +189,7 @@ acct_email_for_password	Yaykuna rimaywan yaykunapaq correo
 acct_new_password	Musuq yaykuna rimay
 acct_confirm_new_password	Musuq yaykuna rimayta takyachiy
 acct_add_way	Huk yaykuna ñanta yapay
-acct_link_hint	Ñankunata kikin cuentaman t’inkiy, hukkaq pantaqtin yaykuyta kutichinaykipaq.
+acct_link_hint	Ñankunata kikin cuentaman t’inkiy, huknin mana llamk’aqtin yaykuyta kutichinaykipaq.
 acct_link_google	Google-ta t’inkiy
 acct_link_microsoft	Microsoft-ta t’inkiy
 acct_link_github	GitHub-ta t’inkiy
@@ -197,14 +197,14 @@ acct_link_phone	Teléfonota t’inkiy
 acct_send_sms_link	T’inkinapaq SMS-ta kachay
 acct_confirm_link_phone	Takyachiy, teléfonotataq t’inkiy
 shop_page_title	Qhatu — Khaynjo
-shop_lede	Sapa wata phuyu yuyaychaykuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Khaynjo app-qa wiñaypaq qasillam qhepan, mana rantichiy willakuykunayuq.
+shop_lede	Sapa wata phuyu plankuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Khaynjo app-qa wiñaypaq qasillam qhipan, mana rantichiy willakuykunayuq.
 shop_cart	Rantina wayaqa
 shop_cart_empty_hint	Rantina wayaqayki ch’usaqmi. Steady, Swift utaq Priority-ta yapay.
 shop_checkout	Pagay
 shop_clear	Pichay
 shop_checkout_hint	Pagayqa Cuenta nisqapi yaykuchisunki, chaymanta pagayta qallarin (malliy yanqa ruway utaq Paddle kichanakuna churasqa kaqtin).
-acct_billing_hint	Sapa wata yuyaychaykuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhepan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
-shop_cloud_plans	Phuyu yuyaychaykuna
+acct_billing_hint	Sapa wata plankuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhipan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
+shop_cloud_plans	Phuyu plankuna
 acct_federated	Huk cuentawan yaykuy
 acct_err_invalid_email	Allin correota qillqay.
 acct_err_weak_password	Aswan pisimanta 6 sananchayuq yaykuna rimayta llamk’achiy.
@@ -233,10 +233,10 @@ acct_billing_off	Pagayqa manaraq phuyu API-pi kicharisqachu.
 acct_billing_no_provider	Manan chiqap pagay yanapaqqa phuyu API-pi kicharisqachu (yanqa ruwayllam llamk’anaykipi kan).
 price_quote	Chanin yuyay
 price_per_year	₹{amount}/wata mana impuestoyuq
-acct_pay_received	Pagayqa chaskisqañam — yuyaychayniyki musuqyachikushan…
+acct_pay_received	Pagayqa chaskisqañam — planniyki musuqyachikushan…
 acct_pay_declined	Pagayqa mana chaskisqachu utaq mana atikurqanchu
-acct_pay_failed_detail	{detail}. Yuyaychayniykiqa manan t’ikrasqachu.
-acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Yuyaychayniykiqa kikillanmi.
+acct_pay_failed_detail	{detail}. Planniykiqa manan t’ikrasqachu.
+acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Planniykiqa kikillanmi.
 acct_checkout_failed	Pagay mana atikurqanchu
 acct_pay_with	{provider}-wan pagay
 acct_plan_until	{plan} · {date}-kama

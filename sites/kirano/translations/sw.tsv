@@ -7,7 +7,7 @@ the_grocery_counter	kaunta ya duka la vyakula
 busy_counter	Kaunta yenye shughuli
 kirano_the_grocery_counter	KIRANO · KAUNTA YA DUKA LA VYAKULA
 busy_counter_no_internet_still	Kaunta yenye shughuli. Hakuna intaneti. Bado tunatoza.
-sell_khata_stock_and_the	Uza, daftari la madeni, hisa na kitabu cha siku — kwenye vifaa vyako mwenyewe. Vitabu · Uza · Nunua · Bidhaa. Hakuna ukumbi, hakuna jiko, hakuna meza.
+sell_khata_stock_and_the	Uza, daftari la madeni, stoku na kitabu cha siku — kwenye vifaa vyako mwenyewe. Vitabu · Uza · Nunua · Bidhaa. Hakuna ukumbi, hakuna jiko, hakuna meza.
 tap_the_bill_to_walk	Gusa bili ili kupitia mauzo ya kaunta
 cash_memo	Risiti ya taslimu
 ready	Tayari
@@ -37,18 +37,18 @@ one_party_two_roles	Mhusika mmoja, majukumu mawili
 customer_ar_and_supplier_ap	Madeni ya wateja na madeni kwa wasambazaji yanashiriki kitabu kimoja cha wahusika.
 who_when_how_much	Nani, lini, kiasi gani
 every_credit_and_settlement_stays	Kila mkopo na malipo yanabaki kwenye kitabu cha siku.
-n_4_buy_stock	4 · NUNUA NA HISA
-buy_from_the_wholesaler_stock	Nunua kutoka kwa muuzaji wa jumla — hisa na deni lako vinasasishwa pamoja.
+n_4_buy_stock	4 · NUNUA NA STOKU
+buy_from_the_wholesaler_stock	Nunua kutoka kwa muuzaji wa jumla — stoku na deni lako vinasasishwa pamoja.
 purchase_sharma_wholesale	Ununuzi · Sharma Wholesale
-stock_50_kg_ap_7	Hisa +50 kg · Deni ₹ 7,200
-stock_12_l_ap_1	Hisa +12 L · Deni ₹ 1,560
-resale_stock_not_kitchen_raw	Hisa ya kuuza tena — si malighafi ya jikoni. Kundi na tarehe ya mwisho ya matumizi ni hiari wakati wa kununua.
-buy_creates_stock	Kununua kunaongeza hisa
+stock_50_kg_ap_7	Stoku +50 kg · Deni ₹ 7,200
+stock_12_l_ap_1	Stoku +12 L · Deni ₹ 1,560
+resale_stock_not_kitchen_raw	Stoku ya kuuza tena — si malighafi ya jikoni. Kundi na tarehe ya mwisho ya matumizi ni hiari wakati wa kununua.
+buy_creates_stock	Kununua kunaongeza stoku
 receive_the_goods_the_catalogue	Pokea bidhaa; kiasi kwenye katalogi kinaongezeka.
 who_we_owe	Tunadaiwa na nani
 supplier_balance_sits_on_the	Salio la msambazaji liko kwenye Wahusika wale wale kama daftari la madeni la wateja.
-low_stock_at_a_glance	Hisa iliyopungua kwa mtazamo mmoja
-inventory_shows_what_is_running	Orodha ya hisa inaonyesha kinachoisha kabla ya msongamano ujao.
+low_stock_at_a_glance	Stoku iliyopungua kwa mtazamo mmoja
+inventory_shows_what_is_running	Orodha ya stoku inaonyesha kinachoisha kabla ya msongamano ujao.
 n_5_day_book	5 · KITABU CHA SIKU
 cash_vs_upi_counted_and	Taslimu dhidi ya UPI, zimehesabiwa — na tofauti imetajwa.
 today_s_drawer	Droo ya leo
@@ -60,7 +60,7 @@ expected_cash	Taslimu inayotarajiwa
 counted	Imehesabiwa
 short	Upungufu
 tenders_stay_separate	Njia za malipo zinabaki tofauti
-cash_and_upi_never_mix	Taslimu na UPI kamwe haziingiliani kuwa jumla moja ya kutatanisha.
+cash_and_upi_never_mix	Taslimu na UPI hazichanganywi kamwe kuwa jumla moja isiyoeleweka.
 shift_close	Kufunga zamu
 close_the_shift_print_the	Funga zamu, chapisha karatasi, anza inayofuata ukiwa safi.
 gst_facing_bills	Bili zenye GST
@@ -72,8 +72,8 @@ router_no_internet	Ruta: hakuna intaneti
 main_counter_selling_and_settling	Kaunta kuu: inauza na kulipisha
 second_till_joined_on_your	Kaunta ya pili: imeunganishwa kwenye Wi-Fi yako mwenyewe
 books_live_on_the_shop	Vitabu viko kwenye vifaa vya duka
-when_the_internet_drops_mid	Intaneti inapokatika katikati ya msongamano, hakuna kitu kaunta kinachoisubiri.
-one_server_lan_clients	Seva moja, wateja wa LAN
+when_the_internet_drops_mid	Intaneti inapokatika katikati ya msongamano, hakuna kitu kwenye kaunta kinachoisubiri.
+one_server_lan_clients	Seva moja, vifaa vya LAN
 extra_tills_share_the_same	Kaunta za ziada zinashiriki vitabu vile vile kupitia mtandao wa duka.
 n_7_free_forever_locally	7 · BURE MILELE NDANI
 free_forever_on_your_devices	Bure milele kwenye vifaa vyako.
@@ -93,7 +93,7 @@ cloud_shop	Duka la wingu
 account	Akaunti
 chapter_counter_sell	Mauzo ya kaunta
 chapter_khata	Daftari la madeni
-chapter_buy_stock	Nunua na hisa
+chapter_buy_stock	Nunua na stoku
 chapter_day_book	Kitabu cha siku
 chapter_extra_till	Kaunta ya ziada
 chapter_offline	Nje ya mtandao
@@ -152,7 +152,7 @@ shop_cart	Kikapu
 shop_cart_empty_hint	Kikapu chako ni tupu. Ongeza Steady, Swift au Priority.
 shop_checkout	Lipa
 shop_clear	Futa
-shop_checkout_hint	Malipo yanakuingiza kwenye Akaunti kwanza, kisha yanaanza malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
+shop_checkout_hint	Kubofya “Lipa” kunakuingiza kwenye Akaunti kwanza, kisha kunaanzisha malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
 acct_billing_hint	Mipango ya kila mwaka — kodi huongezwa na lango la malipo wakati wa kulipa. Matumizi ya ndani yanabaki bure milele. Mpango maalum ni kwa nukuu (unaweza kuwa chini ya Steady au juu ya Priority).
 shop_cloud_plans	Mipango ya wingu
 acct_federated	Kuingia kwa shirikisho
@@ -173,7 +173,7 @@ acct_err_credential_in_use	Njia hiyo ya kuingia tayari inatumiwa na akaunti nyin
 acct_err_email_in_use	Barua pepe hiyo tayari inatumiwa na akaunti nyingine.
 acct_err_already_linked	Njia hiyo tayari imeunganishwa na akaunti hii.
 acct_err_exists_other_method	Akaunti yenye barua pepe hii tayari ipo kwa njia nyingine ya kuingia. Ingia kwanza kwa njia hiyo, kisha uunganishe hii kutoka ukurasa wa akaunti yako.
-acct_err_generic	Kuna kitu kimeharibika.
+acct_err_generic	Hitilafu imetokea.
 acct_method_password	Barua pepe na nenosiri
 acct_pw_hint_change	Badilisha nenosiri lako. Utathibitisha kwa lile la sasa.
 acct_pw_hint_add	Ongeza nenosiri ili uweze pia kuingia kwa barua pepe (inafaa ikiwa mtoa huduma hapatikani).
@@ -186,7 +186,7 @@ price_per_year	₹{amount}/mwaka bila kodi
 acct_pay_received	Malipo yamepokelewa — tunasasisha mpango wako…
 acct_pay_declined	Malipo yamekataliwa au yameshindwa
 acct_pay_failed_detail	{detail}. Mpango wako haukubadilishwa.
-acct_checkout_closed	Malipo yamefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
+acct_checkout_closed	Dirisha la malipo limefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
 acct_checkout_failed	Malipo yameshindwa
 acct_pay_with	Lipa kwa {provider}
 acct_plan_until	{plan} · hadi {date}

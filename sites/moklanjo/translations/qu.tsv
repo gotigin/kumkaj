@@ -23,7 +23,7 @@ charge	Pagachiy
 your_rate_card_cash_or	Chanin qillqayki, makipi qullqi utaq cuenta.
 next_booking	Hamuq qillqay
 one_tap_clears_the_counter	Huk ñit’iylla qhatuna mesata pichan hamuq chayamuqpaq.
-scroll_the_parcel_journey_rail	Uraman kuyuchiy — hanaqpi q’ipip puriynin siqiqa willakuypi maypi kasqaykita rikuchin.
+scroll_the_parcel_journey_rail	Uraman kuyuchiy — hanaqpi q’ipip puriynin siq’iqa willakuypi maypi kasqaykita rikuchin.
 n_2_weigh_it_right	2 · ALLINTA TUPUY
 actual_or_volumetric_whichever_is	Chiqap llasa utaq hatun-kay llasa — aswan hatun kaqmi, munasqayki hina muyuchisqa.
 try_a_box	Huk cajata malliy
@@ -43,7 +43,7 @@ zone_service	K’iti · llamk’ay
 first_0_5_kg	Ñawpaq 0.5 kg
 each_0_5_kg	Sapa 0.5 kg
 local_surface	Llaqta ukhupi · Ñanninta
-within_state_express	Suyu ukhupi · Utqaylla
+within_state_express	Estado ukhupi · Utqaylla
 metro_air	Hatun llaqta · Wayra ñanninta
 zone_service_weight_slab	K’iti × llamk’ay × llasa pata
 first_slab_and_each_extra	Ñawpaq pata, sapa yapa patapas, sapa k’itipaq llamk’aypaqpas.
@@ -56,7 +56,7 @@ awb_from_your_own_number	Yupay huñuykikunamanta AWB. Unanchay, ñawinchay, tari
 number_pools_per_carrier	Sapa apaqpaq yupay huñukuna
 enter_each_carrier_s_start	Sapa apaqpa qallariy–tukukuy yupay siq’inta huk kutilla qillqay; sapa qillqayqa hamuq yupayta hap’in.
 code_128_labels	Code 128 unanchakuna
-the_awb_goes_on_the	AWB-qa cajaman siqi unancha hina, sut’i yupaykuna hinapas churakun.
+the_awb_goes_on_the	AWB-qa cajaman siq’i unancha hina, sut’i yupaykuna hinapas churakun.
 scan_to_find	Tarinapaq ñawinchay
 scan_a_label_to_open	Huk unanchata ñawinchay q’ipi qillqanta kichanaykipaq, allin kaqtataq ruwanaykipaq.
 n_5_hand_over	5 · HAYWARIY
@@ -107,7 +107,7 @@ n_9_start	9 · QALLARIY
 one_courier_os_your_parcels	Huk chaski kamachinalla. Q’ipiykikuna. Yupay qillqaykikuna.
 moklanjo_is_a_complete_courier	Moklanjo-qa Kumkaj ukhupi hunt’asqa chaski llamk’ay kamachinam — Android, Windows, Linux. Chaskikunaqa kikin app-ta chaski ruwaypi llamk’achinku.
 trademark	RANTIKUY UNANCHA
-memon_for_find_it_pronounced	Memon simipi “tariy” · go-tee-geen nispa nisqa
+memon_for_find_it_pronounced	Memon simipi “tariy” · go-tee-geen hina rimakun
 company	LLAMK’AY WASI
 brand	SUTI UNANCHA
 concrete_business_operating_system	Chiqap qhatu llamk’ay kamachina app-kuna
@@ -132,7 +132,7 @@ weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
 weight_on_scale	Llasa tupunapi: {kg} kg
 weight_scale_wins	Llasa tupunapi kaq llasam pagayta churan.
 cta_installers_note	Churanakunaqa kaypi churakunqa sapankanku musuq llamk’anapi allinta churakuqtin. Chaykama, WhatsApp-pi qhawachiyta mañakuy.
-cta_whatsapp_soon	WhatsApp qhawachiy siqiqa pisi pachallamanta kicharikunqa. Willakuyniyki kayhina kanqa: “{message}”.
+cta_whatsapp_soon	WhatsApp-pi qhawachiyqa pisi pachallamanta qallarinqa. Willakuyniyki kayhina kanqa: “{message}”.
 acct_page_title	Cuenta — Moklanjo
 acct_lede	Huk cuentalla web-paq app-kunapaqpas — kikin formulario musuq kaqtiykipas kutimuqtiykipas.
 acct_email	Correo
@@ -140,7 +140,7 @@ acct_name_optional	Suti (akllana)
 acct_password	Yaykuna rimay
 acct_continue	Hinallayá ruway
 acct_forgot	Yaykuna rimayta qunqarqankichu?
-acct_reset_hint	Musuqmanta churana t’inkita correoman kachasqayku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
+acct_reset_hint	Musuqmanta churana t’inkita correoykiman kachasaqku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
 acct_send_reset	Musuqmanta churana t’inkita kachay
 acct_cancel	Chinkachiy
 acct_or_continue	utaq kaywan qatiy
@@ -150,11 +150,11 @@ acct_send_sms	SMS unanchata kachay
 acct_sms_code	SMS unancha
 acct_confirm_code	Unanchata takyachiy
 acct_signed_in	Yaykusqaña
-acct_signed_in_as	Kayhina yaykusqa
+acct_signed_in_as	Kay cuentawan yaykusqa
 acct_status	Imayna kasqan
 acct_sign_in_methods	Yaykuna ñankuna
 acct_cloud_username	Phuyupi llamk’achiqpa sutin
-acct_plan	Yuyaychay
+acct_plan	Plan
 acct_resend_verify	Takyachina correota yapamanta kachay
 acct_sign_out	Lluqsiy
 acct_cloud_sandbox	Kumkaj Cloud (malliy)
@@ -163,7 +163,7 @@ acct_email_for_password	Yaykuna rimaywan yaykunapaq correo
 acct_new_password	Musuq yaykuna rimay
 acct_confirm_new_password	Musuq yaykuna rimayta takyachiy
 acct_add_way	Huk yaykuna ñanta yapay
-acct_link_hint	Ñankunata kikin cuentaman t’inkiy, hukkaq pantaqtin yaykuyta kutichinaykipaq.
+acct_link_hint	Ñankunata kikin cuentaman t’inkiy, huknin mana llamk’aqtin yaykuyta kutichinaykipaq.
 acct_link_google	Google-ta t’inkiy
 acct_link_microsoft	Microsoft-ta t’inkiy
 acct_link_github	GitHub-ta t’inkiy
@@ -171,14 +171,14 @@ acct_link_phone	Teléfonota t’inkiy
 acct_send_sms_link	T’inkinapaq SMS-ta kachay
 acct_confirm_link_phone	Takyachiy, teléfonotataq t’inkiy
 shop_page_title	Qhatu — Moklanjo
-shop_lede	Sapa wata phuyu yuyaychaykuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Moklanjo app-qa wiñaypaq qasillam qhepan, mana rantichiy willakuykunayuq.
+shop_lede	Sapa wata phuyu plankuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Moklanjo app-qa wiñaypaq qasillam qhipan, mana rantichiy willakuykunayuq.
 shop_cart	Rantina wayaqa
 shop_cart_empty_hint	Rantina wayaqayki ch’usaqmi. Steady, Swift utaq Priority-ta yapay.
 shop_checkout	Pagay
 shop_clear	Pichay
 shop_checkout_hint	Pagayqa Cuenta nisqapi yaykuchisunki, chaymanta pagayta qallarin (malliy yanqa ruway utaq Paddle kichanakuna churasqa kaqtin).
-acct_billing_hint	Sapa wata yuyaychaykuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhepan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
-shop_cloud_plans	Phuyu yuyaychaykuna
+acct_billing_hint	Sapa wata plankuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhipan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
+shop_cloud_plans	Phuyu plankuna
 acct_federated	Huk cuentawan yaykuy
 acct_err_invalid_email	Allin correota qillqay.
 acct_err_weak_password	Aswan pisimanta 6 sananchayuq yaykuna rimayta llamk’achiy.
@@ -207,10 +207,10 @@ acct_billing_off	Pagayqa manaraq phuyu API-pi kicharisqachu.
 acct_billing_no_provider	Manan chiqap pagay yanapaqqa phuyu API-pi kicharisqachu (yanqa ruwayllam llamk’anaykipi kan).
 price_quote	Chanin yuyay
 price_per_year	₹{amount}/wata mana impuestoyuq
-acct_pay_received	Pagayqa chaskisqañam — yuyaychayniyki musuqyachikushan…
+acct_pay_received	Pagayqa chaskisqañam — planniyki musuqyachikushan…
 acct_pay_declined	Pagayqa mana chaskisqachu utaq mana atikurqanchu
-acct_pay_failed_detail	{detail}. Yuyaychayniykiqa manan t’ikrasqachu.
-acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Yuyaychayniykiqa kikillanmi.
+acct_pay_failed_detail	{detail}. Planniykiqa manan t’ikrasqachu.
+acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Planniykiqa kikillanmi.
 acct_checkout_failed	Pagay mana atikurqanchu
 acct_pay_with	{provider}-wan pagay
 acct_plan_until	{plan} · {date}-kama

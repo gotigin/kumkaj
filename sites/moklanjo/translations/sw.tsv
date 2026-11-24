@@ -4,9 +4,9 @@ length	Urefu
 download_free	Pakua bure
 whatsapp_for_a_demo	Onyesho kupitia WhatsApp
 free_on_android_windows_and	Bure kwenye Android, Windows na Linux.
-courier_operating_system	mfumo wa uendeshaji wa usafirishaji vifurushi
+courier_operating_system	mfumo wa uendeshaji wa usafirishaji wa vifurushi
 parcel_journey	SAFARI YA KIFURUSHI
-walk_in	Mteja kaunta
+walk_in	Mteja wa kaunta
 weigh	Pima uzito
 price	Bei
 label	Lebo
@@ -14,8 +14,8 @@ hand_over	Kabidhi
 track	Fuatilia
 offline	Nje ya mtandao
 start	Anza
-moklanjo_courier_operating_system	MOKLANJO · MFUMO WA UENDESHAJI WA USAFIRISHAJI VIFURUSHI
-book_move_and_settle_every	Sajili, safirisha na lipa kila kifurushi — mfumo mmoja wa usafirishaji kwenye vifaa vyako mwenyewe.
+moklanjo_courier_operating_system	MOKLANJO · MFUMO WA UENDESHAJI WA USAFIRISHAJI WA VIFURUSHI
+book_move_and_settle_every	Sajili, safirisha na kamilisha malipo ya kila kifurushi — mfumo mmoja wa usafirishaji kwenye vifaa vyako mwenyewe.
 parties_books_cod_labels_awb	Wahusika, vitabu, malipo wakati wa kupokea, lebo, mfululizo wa AWB, ufuatiliaji, wapelekaji na utozaji — mzunguko kamili kutoka kaunta hadi malipo, ukiwa na intaneti au bila. Bure kwenye vifaa vyako.
 the_walk_in_loop	MZUNGUKO WA KAUNTA
 actual_and_volumetric_side_by	Uzito halisi na wa ujazo, kando kwa kando.
@@ -35,7 +35,7 @@ weight_on_the_scale	Uzito kwenye mizani
 chargeable_weight	UZITO WA KUTOZWA
 the_box_s_size_sets	Ukubwa wa sanduku unaamua ada.
 higher_of_the_two_rounded	Kikubwa kati ya viwili, kimezungushwa juu hadi 0.5 kg inayofuata.
-in_the_app_the_divisor	Kwenye programu, kigawanyo, hatua ya kuzungusha na vipimo vyako (cm au inchi, kg au lb) vinawekwa na duka. Kitufe cha Kimataifa kinabadilisha ÷6000 kwa usajili mmoja bila kugusa Mipangilio.
+in_the_app_the_divisor	Kwenye programu, kigawanyo, hatua ya kuzungusha na vipimo vyako (cm au inchi, kg au lb) vinawekwa na duka. Kitufe cha Kimataifa kinaweka ÷6000 kwa usajili mmoja bila kugusa Mipangilio.
 n_3_price_it	3 · WEKA BEI
 your_rate_cards_your_party	Orodha zako za viwango, viwango vya wahusika wako — na faida yako kwenye kila hati ya usafirishaji.
 rate_card	Orodha ya viwango
@@ -73,15 +73,15 @@ out_for_delivery	Njiani kupelekwa
 delivered	Imefikishwa
 booked_with_carrier_out_for	Imesajiliwa → Kwa msafirishaji → Njiani kupelekwa → Imefikishwa
 failed	Imeshindwa
-reason_out_again_or_return	→ sababu → nje tena, au rudisha kwa mtumaji.
+reason_out_again_or_return	→ sababu → njiani tena, au rudisha kwa mtumaji.
 impossible_moves_refused	Hatua zisizowezekana zinakataliwa
 delivered_returned_and_cancelled	Imefikishwa, imerudishwa na imeghairiwa ni za mwisho.
 proof_of_delivery	Uthibitisho wa kufikishwa
 a_photo_and_the_receiver	Picha na sahihi ya mpokeaji kwenye hati ya usafirishaji.
 failed_deliveries	Ufikishaji ulioshindwa
-reasons_attempts_out_again_or	Sababu, majaribio, nje tena, au kurudi kwa mtumaji.
+reasons_attempts_out_again_or	Sababu, majaribio, njiani tena, au kurudi kwa mtumaji.
 n_7_money_comes_home	7 · PESA ZINARUDI NYUMBANI
-cod_you_can_see_expected	Malipo wakati wa kupokea unayoweza kuona: yanayotarajiwa, yaliyowasilishwa, yanayodaiwa na kila mtumaji.
+cod_you_can_see_expected	Malipo wakati wa kupokea unayoweza kuyaona: yanayotarajiwa, yaliyowasilishwa, yanayodaiwa na kila mtumaji.
 rider_cash_end_of_run	Taslimu ya mpelekaji, mwisho wa safari
 rider	Mpelekaji
 expected	Inatarajiwa
@@ -97,7 +97,7 @@ books_that_close	Vitabu vinavyofungika
 day_book_month_bill_per	Kitabu cha siku, bili ya mwezi kwa kila akaunti, na muhtasari wa GST katika CSV kwa mhasibu wako.
 n_8_internet_down	8 · INTANETI IMEKATIKA?
 keep_booking	Endelea kusajili.
-booking_labels_scanning_cod_and	Usajili, lebo, kuchanganua, malipo wakati wa kupokea na vitabu vyote vinaendeshwa kwenye vifaa vyako. Intaneti inapokatika, hakuna kitu kaunta kinachoisubiri.
+booking_labels_scanning_cod_and	Usajili, lebo, kuchanganua, malipo wakati wa kupokea na vitabu vyote vinaendeshwa kwenye vifaa vyako. Intaneti inapokatika, hakuna kitu kwenye kaunta kinachoisubiri.
 office_router_no_internet	Ruta ya ofisi: hakuna intaneti
 desk_still_booking	Dawati: bado linasajili
 second_counter_and_rider_phone	Kaunta ya pili na simu ya mpelekaji: zimeunganishwa kupitia Wi-Fi ya ofisi
@@ -105,14 +105,14 @@ free_forever_on_your_devices	Bure milele kwenye vifaa vyako
 nothing_per_rider_user_or	Hakuna ada kwa kila mpelekaji, mtumiaji au kifurushi. Kumkaj Cloud ya hiari: Steady ₹6k · Swift ₹12k · Priority ₹24k/mwaka bila kodi — /shop.
 n_9_start	9 · ANZA
 one_courier_os_your_parcels	Mfumo mmoja wa usafirishaji. Vifurushi vyako. Vitabu vyako.
-moklanjo_is_a_complete_courier	Moklanjo ni mfumo kamili wa uendeshaji wa usafirishaji vifurushi chini ya Kumkaj — Android, Windows na Linux. Wapelekaji wanatumia programu ile ile katika hali ya mpelekaji.
+moklanjo_is_a_complete_courier	Moklanjo ni mfumo kamili wa uendeshaji wa usafirishaji wa vifurushi chini ya Kumkaj — Android, Windows na Linux. Wapelekaji wanatumia programu ile ile katika hali ya mpelekaji.
 trademark	ALAMA YA BIASHARA
 memon_for_find_it_pronounced	Kwa Kimemon “litafute” · hutamkwa go-tee-geen
 company	KAMPUNI
 brand	CHAPA
 concrete_business_operating_system	Programu halisi za mifumo ya uendeshaji wa biashara
 product	BIDHAA
-courier_operating_system_under	Mfumo wa uendeshaji wa usafirishaji vifurushi chini ya Kumkaj
+courier_operating_system_under	Mfumo wa uendeshaji wa usafirishaji wa vifurushi chini ya Kumkaj
 privacy	Faragha
 terms	Masharti
 cancellation	Ughairi
@@ -176,7 +176,7 @@ shop_cart	Kikapu
 shop_cart_empty_hint	Kikapu chako ni tupu. Ongeza Steady, Swift au Priority.
 shop_checkout	Lipa
 shop_clear	Futa
-shop_checkout_hint	Malipo yanakuingiza kwenye Akaunti kwanza, kisha yanaanza malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
+shop_checkout_hint	Kubofya “Lipa” kunakuingiza kwenye Akaunti kwanza, kisha kunaanzisha malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
 acct_billing_hint	Mipango ya kila mwaka — kodi huongezwa na lango la malipo wakati wa kulipa. Matumizi ya ndani yanabaki bure milele. Mpango maalum ni kwa nukuu (unaweza kuwa chini ya Steady au juu ya Priority).
 shop_cloud_plans	Mipango ya wingu
 acct_federated	Kuingia kwa shirikisho
@@ -197,7 +197,7 @@ acct_err_credential_in_use	Njia hiyo ya kuingia tayari inatumiwa na akaunti nyin
 acct_err_email_in_use	Barua pepe hiyo tayari inatumiwa na akaunti nyingine.
 acct_err_already_linked	Njia hiyo tayari imeunganishwa na akaunti hii.
 acct_err_exists_other_method	Akaunti yenye barua pepe hii tayari ipo kwa njia nyingine ya kuingia. Ingia kwanza kwa njia hiyo, kisha uunganishe hii kutoka ukurasa wa akaunti yako.
-acct_err_generic	Kuna kitu kimeharibika.
+acct_err_generic	Hitilafu imetokea.
 acct_method_password	Barua pepe na nenosiri
 acct_pw_hint_change	Badilisha nenosiri lako. Utathibitisha kwa lile la sasa.
 acct_pw_hint_add	Ongeza nenosiri ili uweze pia kuingia kwa barua pepe (inafaa ikiwa mtoa huduma hapatikani).
@@ -210,7 +210,7 @@ price_per_year	₹{amount}/mwaka bila kodi
 acct_pay_received	Malipo yamepokelewa — tunasasisha mpango wako…
 acct_pay_declined	Malipo yamekataliwa au yameshindwa
 acct_pay_failed_detail	{detail}. Mpango wako haukubadilishwa.
-acct_checkout_closed	Malipo yamefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
+acct_checkout_closed	Dirisha la malipo limefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
 acct_checkout_failed	Malipo yameshindwa
 acct_pay_with	Lipa kwa {provider}
 acct_plan_until	{plan} · hadi {date}

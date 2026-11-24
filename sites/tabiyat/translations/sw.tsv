@@ -7,7 +7,7 @@ the_pharmacy_counter	kaunta ya duka la dawa
 pharmacy_counter	Kaunta ya duka la dawa
 tabiyat_the_pharmacy_counter	TABIYAT · KAUNTA YA DUKA LA DAWA
 pharmacy_counter_offline_your_books	Kaunta ya duka la dawa. Nje ya mtandao. Vitabu vyako.
-medicines_barcode_and_salt_search	Dawa, utafutaji kwa msimbopau na kiambato hai, kundi na tarehe ya mwisho kwa vitabu vyako mwenyewe — kwenye vifaa vyako. Alama za mmiliki tu; kamwe kujifanya kutii Sheria ya Dawa.
+medicines_barcode_and_salt_search	Dawa, utafutaji kwa msimbopau na kiambato hai, kundi na tarehe ya mwisho kwa vitabu vyako mwenyewe — kwenye vifaa vyako. Alama za mmiliki tu; haijifanyi kamwe kutii Sheria ya Dawa.
 tap_the_bill_to_walk	Gusa bili ili kupitia mauzo ya kaunta
 cash_memo	Risiti ya taslimu
 ready	Tayari
@@ -18,7 +18,7 @@ n_2_counter_sell	2 · MAUZO YA KAUNTA
 medicine_quantity_pay_three_taps	Dawa, kiasi, lipa — miguso mitatu.
 upi_qr_ready	QR ya UPI iko tayari
 example_bill	Bili ya mfano
-fast_counter_billing	Utozaji wa haraka kaunta
+fast_counter_billing	Utozaji wa haraka kwenye kaunta
 add_the_line_set_the	Ongeza mstari, weka kiasi, lipa — taslimu, UPI au kugawanywa.
 gst_tax_invoice_or_cash	Ankara ya kodi ya GST au risiti ya taslimu
 the_bill_lane_you_need	Aina ya bili unayohitaji kwa mauzo.
@@ -45,7 +45,7 @@ ors_sachets_batch_b04	Paketi za ORS · kundi B04
 expires_2026_11_near_expiry	Inaisha 2026-11 · utepe wa “karibu kuisha” kwenye Vitabu
 shop_bookkeeping_only_not_drugs	Uwekaji wa vitabu vya duka tu — si kutii Sheria ya Dawa.
 batch_on_buy	Kundi wakati wa kununua
-record_batch_and_expiry_when	Rekodi kundi na tarehe ya mwisho hisa inapoingia.
+record_batch_and_expiry_when	Rekodi kundi na tarehe ya mwisho stoku inapoingia.
 near_expiry_alerts	Tahadhari za karibu kuisha
 books_and_sell_can_hint	Vitabu na Uza vinaweza kudokeza kabla tarehe haijapita.
 owner_practice	Utaratibu wa mmiliki
@@ -60,8 +60,8 @@ settle_later_part_cash_part	Lipa baadaye — sehemu taslimu, sehemu UPI. Madeni 
 due_on_the_bill	Deni kwenye bili
 leave_a_balance_on_khata	Acha salio kwenye daftari la madeni bila programu tofauti ya leja.
 supplier_buys_too	Ununuzi kutoka kwa wasambazaji pia
-who_you_owe_updates_when	Deni lako linasasishwa hisa inapofika.
-auditable	Inakaguliwa
+who_you_owe_updates_when	Deni lako linasasishwa stoku inapofika.
+auditable	Inakagulika
 who_when_and_how_much	Nani, lini na kiasi gani vinabaki kwenye kitabu cha siku.
 n_6_internet_down	6 · INTANETI IMEKATIKA?
 the_internet_drops_the_counter	Intaneti inakatika. Kaunta inaendelea kuuza.
@@ -70,7 +70,7 @@ main_counter_selling_and_settling	Kaunta kuu: inauza na kulipisha
 second_till_joined_on_your	Kaunta ya pili: imeunganishwa kwenye Wi-Fi yako mwenyewe
 books_live_on_the_shop	Vitabu viko kwenye vifaa vya duka
 when_the_internet_drops_nothing	Intaneti inapokatika, hakuna kitu kwenye kaunta ya duka la dawa kinachoisubiri.
-one_server_lan_clients	Seva moja, wateja wa LAN
+one_server_lan_clients	Seva moja, vifaa vya LAN
 extra_tills_share_the_same	Kaunta za ziada zinashiriki vitabu vile vile kupitia mtandao wa duka.
 n_7_free_forever_locally	7 · BURE MILELE NDANI
 free_forever_on_your_devices	Bure milele kwenye vifaa vyako.
@@ -149,7 +149,7 @@ shop_cart	Kikapu
 shop_cart_empty_hint	Kikapu chako ni tupu. Ongeza Steady, Swift au Priority.
 shop_checkout	Lipa
 shop_clear	Futa
-shop_checkout_hint	Malipo yanakuingiza kwenye Akaunti kwanza, kisha yanaanza malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
+shop_checkout_hint	Kubofya “Lipa” kunakuingiza kwenye Akaunti kwanza, kisha kunaanzisha malipo (majaribio ya kuiga au Paddle funguo zikiwekwa).
 acct_billing_hint	Mipango ya kila mwaka — kodi huongezwa na lango la malipo wakati wa kulipa. Matumizi ya ndani yanabaki bure milele. Mpango maalum ni kwa nukuu (unaweza kuwa chini ya Steady au juu ya Priority).
 shop_cloud_plans	Mipango ya wingu
 acct_federated	Kuingia kwa shirikisho
@@ -170,7 +170,7 @@ acct_err_credential_in_use	Njia hiyo ya kuingia tayari inatumiwa na akaunti nyin
 acct_err_email_in_use	Barua pepe hiyo tayari inatumiwa na akaunti nyingine.
 acct_err_already_linked	Njia hiyo tayari imeunganishwa na akaunti hii.
 acct_err_exists_other_method	Akaunti yenye barua pepe hii tayari ipo kwa njia nyingine ya kuingia. Ingia kwanza kwa njia hiyo, kisha uunganishe hii kutoka ukurasa wa akaunti yako.
-acct_err_generic	Kuna kitu kimeharibika.
+acct_err_generic	Hitilafu imetokea.
 acct_method_password	Barua pepe na nenosiri
 acct_pw_hint_change	Badilisha nenosiri lako. Utathibitisha kwa lile la sasa.
 acct_pw_hint_add	Ongeza nenosiri ili uweze pia kuingia kwa barua pepe (inafaa ikiwa mtoa huduma hapatikani).
@@ -183,7 +183,7 @@ price_per_year	₹{amount}/mwaka bila kodi
 acct_pay_received	Malipo yamepokelewa — tunasasisha mpango wako…
 acct_pay_declined	Malipo yamekataliwa au yameshindwa
 acct_pay_failed_detail	{detail}. Mpango wako haukubadilishwa.
-acct_checkout_closed	Malipo yamefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
+acct_checkout_closed	Dirisha la malipo limefungwa — hakuna malipo yaliyokamilika. Mpango wako haujabadilika.
 acct_checkout_failed	Malipo yameshindwa
 acct_pay_with	Lipa kwa {provider}
 acct_plan_until	{plan} · hadi {date}

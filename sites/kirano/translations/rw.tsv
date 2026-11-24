@@ -1,13 +1,13 @@
 # Kinyarwanda — Ikinyarwanda (rw). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	Urugero
 download_free	Kura ku buntu
-whatsapp_for_a_demo	Kwerekwa kuri WhatsApp
+whatsapp_for_a_demo	Saba kwerekwa kuri WhatsApp
 free_on_android_windows_and	Ku buntu kuri Android, Windows na Linux.
 the_grocery_counter	kontwari ya butike
 busy_counter	Kontwari ihuze
 kirano_the_grocery_counter	KIRANO · KONTWARI YA BUTIKE
 busy_counter_no_internet_still	Kontwari ihuze. Nta interineti. Iracyakora inyemezabuguzi.
-sell_khata_stock_and_the	Kugurisha, igitabo cy’amadeni, ububiko n’igitabo cy’umunsi — ku bikoresho byawe. Igitabo cy’umunsi · Kugurisha · Gura · Ibintu. Nta cyumba cyo kuriramo, nta gikoni, nta meza.
+sell_khata_stock_and_the	Kugurisha, igitabo cy’amadeni, ububiko n’igitabo cy’umunsi — ku bikoresho byawe. Igitabo cy’umunsi · Kugurisha · Kugura · Ibintu. Nta cyumba cyo kuriramo, nta gikoni, nta meza.
 tap_the_bill_to_walk	Kanda ku nyemezabuguzi kugira ngo ukurikire igurisha kuri kontwari
 cash_memo	Inyemezabwishyu
 ready	Byateguwe
@@ -23,14 +23,14 @@ type_atta_at5_or_an	Andika atta, AT5 cyangwa irindi zina — umurongo ugwa ku ny
 kg_g_pc_l_ml	kg, g, igice, l, ml
 quantity_in_the_unit_the	Umubare mu gipimo agapaki gakoresha; igiciro kirakurikira.
 cash_upi_or_split	Amafaranga mu ntoki, UPI cyangwa kugabanya
-settle_on_the_counter_the	Yishyuza kuri kontwari; igitabo cy’umunsi kandika uburyo bwo kwishyura.
+settle_on_the_counter_the	Ishyuza kuri kontwari; igitabo cy’umunsi cyandika uburyo bwo kwishyura.
 n_3_khata	3 · IGITABO CY’AMADENI
 credit_without_a_crm_put	Ideni nta CRM — rishyire mu gitabo cyabo cy’amadeni.
 ramesh_customer	Ramesh · Umukiriya
 due_from_earlier	Ideni rya mbere
 today_s_sale_due	+ ibyagurishijwe uyu munsi (ideni)
 balance	Asigaye
-settle_later_in_parties_part	Ishyurwa nyuma muri Abafatanyabikorwa — igice mu mafaranga mu ntoki, ikindi muri UPI, usibe umurongo.
+settle_later_in_parties_part	Ishyuza nyuma mu Bafatanyabikorwa — igice mu mafaranga mu ntoki, ikindi muri UPI, usibe umurongo.
 due_on_the_bill	Ideni ku nyemezabuguzi
 what_s_left_goes_on	Asigaye ajya mu gitabo cy’amadeni cy’umukiriya — nta yindi porogaramu y’ibitabo.
 one_party_two_roles	Umufatanyabikorwa umwe, inshingano ebyiri
@@ -62,19 +62,19 @@ short	Ibura
 tenders_stay_separate	Uburyo bwo kwishyura buguma butandukanye
 cash_and_upi_never_mix	Amafaranga mu ntoki na UPI ntibivangwa ngo bibe igiteranyo kimwe kitumvikana.
 shift_close	Gufunga igihe cy’akazi
-close_the_shift_print_the	Funga igihe cy’akazi, capa urupapuro, utangire igikurikira gifite isuku.
+close_the_shift_print_the	Funga igihe cy’akazi, capa urupapuro, utangire igikurikira bundi bushya.
 gst_facing_bills	Inyemezabuguzi zifite GST
 tax_invoice_or_cash_memo	Inyemezabuguzi y’umusoro cyangwa inyemezabwishyu — raporo y’umunsi irimo zombi.
-books_sell_buy_items_four	Igitabo cy’umunsi · Kugurisha · Gura · Ibintu — ekarani enye, kandi nta cyumba cyo kuriramo.
+books_sell_buy_items_four	Igitabo cy’umunsi · Kugurisha · Kugura · Ibintu — ekarani enye, kandi nta cyumba cyo kuriramo.
 n_6_internet_down	6 · INTERINETI YAVUYEHO?
 the_internet_drops_the_counter	Interineti iravaho. Kontwari ikomeza kugurisha.
 router_no_internet	Rawuteri: nta interineti
-main_counter_selling_and_settling	Kontwari nkuru: iragurisha kandi iryishyuza
+main_counter_selling_and_settling	Kontwari nkuru: iragurisha kandi irishyuza
 second_till_joined_on_your	Isanduku ya kabiri: ihujwe kuri Wi-Fi yawe
 books_live_on_the_shop	Ibitabo biba ku bikoresho by’iduka
 when_the_internet_drops_mid	Iyo interineti ivuyeho hagati y’abakiriya benshi, nta kintu kuri kontwari kiyitegereza.
 one_server_lan_clients	Seriveri imwe, ibikoresho bya LAN
-extra_tills_share_the_same	Andi masanduku asangira ibitabo bimwe binyuze ku murandasi w’iduka.
+extra_tills_share_the_same	Andi masanduku asangira ibitabo bimwe binyuze ku rusobe rw’iduka.
 n_7_free_forever_locally	7 · KU BUNTU ITEKA RYOSE KU BIKORESHO BYAWE
 free_forever_on_your_devices	Ku buntu iteka ryose ku bikoresho byawe.
 no_per_bill_charge	Nta kwishyuza kuri buri nyemezabuguzi
@@ -99,7 +99,7 @@ chapter_extra_till	Isanduku y’inyongera
 chapter_offline	Nta interineti
 chapter_start	Tangira
 bill_selling	Biragurishwa
-bill_settle	Yishyuza
+bill_settle	Kwishyuza
 bill_paid	Byishyuwe
 bill_next_item	Kanda kugira ngo wongereho ikintu gikurikira
 bill_settle_hint	Kanda kugira ngo wishyuze — amafaranga mu ntoki cyangwa UPI

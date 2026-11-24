@@ -3,7 +3,7 @@ example	Urugero
 free	Ubusa
 photo_coming	Ifoto iraje
 get_it_on_google_play	Yibone kuri Google Play
-whatsapp_for_a_demo	Kwerekwa kuri WhatsApp
+whatsapp_for_a_demo	Saba kwerekwa kuri WhatsApp
 menus	Intonde z’ibiryo
 how_it_works	Uko ikora
 features	Ibiyiranga
@@ -20,7 +20,7 @@ works_with_no_internet	Ikora nta interineti
 your_books_stay_on_your	Ibitabo byawe biguma ku bikoresho byawe
 n_115_languages_on_screen	Indimi 115 kuri ekarani
 your_floor_at_a_glance	Icyumba cyawe cyo kuriramo mu kureba rimwe
-tap_a_table_to_walk	Kanda ku meza kugira ngo uyikurikire mu gusura kumwe. Amabara n’amagambo bimwe n’ibyo muri porogaramu — kandi imeza ihinduka ubusa ari uko yishyuwe gusa.
+tap_a_table_to_walk	Kanda ku meza kugira ngo ukurikire intambwe zayo zose kuva abashyitsi bicaye kugeza bishyuye. Amabara n’amagambo ni bimwe n’ibyo muri porogaramu — kandi imeza yongera kuboneka ari uko yishyuwe gusa.
 every_country	BURI GIHUGU
 every_country_at_your_counter	Buri gihugu kuri kontwari yawe
 one_famous_dish_from_every	Ifunguro rimwe ryamamaye rya buri gihugu — izina mu Cyongereza, izina mu nyandiko yabo, n’ifunguro mu Cyongereza. Shyira ayo magambo ku rutonde rwawe rw’ibiryo. Isi ikomeza kwigendera; hagarika cyangwa ushakishe igihe ushaka kureba.
@@ -28,7 +28,7 @@ find_a_country_or_dish	Shakisha igihugu cyangwa ifunguro — urugero India, biry
 one_famous_dish_per_country	Ifunguro rimwe ryamamaye kuri buri gihugu — urugendo ruzenguruka isi yose.
 how_a_service_runs	UKO SERIVISI IGENDA
 one_table_start_to_finish	Imeza imwe, kuva mu ntangiriro kugeza ku iherezo.
-watch_a_table_go_from	Reba imeza iva igihe abashyitsi bicaye kugeza Byishyuwe — intambwe n’amabara bimwe abakozi bawe babona muri porogaramu.
+watch_a_table_go_from	Reba imeza kuva abashyitsi bicaye kugeza Byishyuwe — intambwe n’amabara bimwe n’ibyo abakozi bawe babona muri porogaramu.
 occupied	Yafashwe
 in_kitchen	Mu gikoni
 food_ready	Ibiryo byateguwe
@@ -54,8 +54,8 @@ new	Nshya
 preparing	Birategurwa
 ready	Byateguwe
 example_kitchen_screen	Urugero rwa ekarani y’igikoni
-settle_any_way_the_guest	Yishyuza uko umushyitsi yishyura kose
-cash_with_change_to_return	Amafaranga mu ntoki n’amafaranga yo gusubiza, UPI ifite amafaranga asanzwe ari muri QR, kwishyura igice, cyangwa ideni mu gitabo cy’amadeni cy’umukiriya. Gabanya ukurikije ikintu, intebe cyangwa kimwe kimwe. Imeza ihinduka ubusa ari uko inyemezabuguzi yayo yishyuwe gusa.
+settle_any_way_the_guest	Ishyuza uko umushyitsi yishyura kose
+cash_with_change_to_return	Amafaranga mu ntoki n’amafaranga yo gusubiza, UPI ifite amafaranga asanzwe ari muri QR, kwishyura igice, cyangwa ideni mu gitabo cy’amadeni cy’umukiriya. Gabanya ukurikije ikintu, intebe cyangwa mu buryo bungana. Imeza yongera kuboneka ari uko inyemezabuguzi yayo yishyuwe gusa.
 tips_stay_apart	Udushimwe tuguma ukwatwo
 a_tip_is_recorded_on	Agashimwe kandikwa ukwako — ntigavangwa n’ibyagurishijwe.
 t4_bill_printed	T4 · Inyemezabuguzi yacapwe
@@ -88,7 +88,7 @@ search_by_name_or_short	Shakisha ukoresheje izina cyangwa kode ngufi, hamwe n’
 area_prices_and_happy_hour	Ibiciro by’ahantu n’isaha y’igabanywa
 a_dearer_price_in_the	Igiciro kiri hejuru mu cyumba cya AC; intonde z’ibiryo bya mu gitondo n’ibiciro by’isaha y’igabanywa bikurikije isaha.
 customer_khata	Igitabo cy’amadeni cy’umukiriya
-part_payments_and_due_go	Kwishyura igice n’ideni bijya kuri konti y’umukiriya muri Abafatanyabikorwa, bikishyurwa nyuma.
+part_payments_and_due_go	Kwishyura igice n’ideni bijya kuri konti y’umukiriya mu Bafatanyabikorwa, bikishyurwa nyuma.
 reports_that_answer_questions	Raporo zisubiza ibibazo
 sales_by_staff_order_type	Ibyagurishijwe ukurikije umukozi, ubwoko bwa komande, isaha n’ifunguro — hamwe n’urutonde rw’ibyahagaritswe, amafunguro y’ubuntu n’udushimwe.
 start_with_a_menu	TANGIRA N’URUTONDE RW’IBIRYO
@@ -98,7 +98,7 @@ starter_menu	Urutonde rw’ibiryo rwo gutangiriraho
 khaynjo_starter_menu	Urutonde rw’ibiryo rwo gutangiriraho rwa Khaynjo
 world_cuisines_japanese_mexican	Ibiryo byo ku isi — ibyo mu Buyapani, Megizike, Ubutaliyani, Ubuhinde, Tayilande n’ibindi — buri funguro n’ifoto yaryo.
 n_14_dishes_11_categories	Amafunguro 14 · ibyiciro 11
-cafe_starter	Urwo gutangiriraho rwa kafe
+cafe_starter	Urutonde rw’ibiryo rwo gutangiriraho rwa kafe
 tea_coffee_cold_drinks_bakery	Icyayi, ikawa, ibinyobwa bikonje, imigati n’utundi turyo — byiteguye kafe ifite kontwari.
 n_22_dishes_4_categories	Amafunguro 22 · ibyiciro 4
 photo_shelf	Ububiko bw’amafoto
@@ -115,7 +115,7 @@ day_book_every_bill_saved	Igitabo cy’umunsi: buri nyemezabuguzi ibitswe kuri i
 captains_tablets_and_the_kitchen	Tabuleti z’abayobozi b’abakozi b’ameza na ekarani y’igikoni: bikorana kuri Wi-Fi yawe
 eyebrow_pricing	IBICIRO
 free_forever_on_your_devices	Ku buntu iteka ryose ku bikoresho byawe.
-software_capability_is_not_what	Ubushobozi bwa porogaramu si cyo tugurisha. Koresha Khaynjo yose ku bikoresho byawe nta kiguzi — nta kintu gifungiwe inyuma y’ifatabuguzi.
+software_capability_is_not_what	Ubushobozi bwa porogaramu si cyo tugurisha. Koresha Khaynjo yose ku bikoresho byawe nta kiguzi — nta kintu na kimwe gisaba ifatabuguzi kugira ngo gikoreshwe.
 khaynjo_on_your_devices	Khaynjo ku bikoresho byawe
 forever	iteka ryose
 every_feature	Buri kiranga
@@ -154,8 +154,8 @@ cloud_shop	Iduka ry’igicu
 account	Konti
 cta_installers_note	Porogaramu zo kwinjiza zizashyirwa hano buri imwe imaze gutsinda igerageza ryo kwinjizwa kuri mudasobwa nshya. Kugeza icyo gihe, saba kwerekwa kuri WhatsApp.
 cta_whatsapp_soon	Umurongo wo kwerekwa wa WhatsApp uzafungura vuba. Ubutumwa bwawe buzaba: “{message}”.
-shelf_no_match	Nta gihugu cyangwa ifunguro bihuye n’ubwo bushakashatsi.
-shelf_search_note	Gushakisha bihagarika urugendo; bisibe kugira ngo rukomeze, cyangwa rugume ruhagaze uko warusize.
+shelf_no_match	Nta gihugu cyangwa ifunguro bihuye n’ibyo washakishije.
+shelf_search_note	Gushakisha bihagarika urugendo; siba ibyo washakishije kugira ngo rukomeze, cyangwa rugume ruhagaze uko warusize.
 floor_meta_min	iminota {min}
 floor_meta_min_bill	iminota {min} · ₹ {amount}
 floor_meta_paid	Hishyuwe ₹ {amount}

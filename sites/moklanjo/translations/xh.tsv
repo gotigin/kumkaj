@@ -16,9 +16,9 @@ offline	Ngaphandle kwe-intanethi
 start	Qalisa
 moklanjo_courier_operating_system	MOKLANJO · INKQUBO YOLAWULO LWEEPASILE
 book_move_and_settle_every	Bhukisha, hambisa uze ugqibezele imali yepasile nganye — inkqubo enye yeepasile kwizixhobo zakho.
-parties_books_cod_labels_awb	Amaqabane, iincwadi, i-COD, iilebheli, amaqoqo eenombolo ze-AWB, ukulandelela, abahambisi neebhili — wonke umjikelo ukusuka kwikhawuntara ukuya ekugqityweni kwemali, nokuba ikhona i-intanethi okanye akukho. Simahla kwizixhobo zakho.
+parties_books_cod_labels_awb	Abathengi nababoneleli, iincwadi, i-COD, iilebheli, amaqoqo eenombolo ze-AWB, ukulandelela, abahambisi neebhili — wonke umjikelo ukusuka kwikhawuntara ukuya ekugqityweni kwemali, nokuba ikhona i-intanethi okanye akukho. Simahla kwizixhobo zakho.
 the_walk_in_loop	UMJIKELO WOFIKAYO
-actual_and_volumetric_side_by	Ubunzima bokwenyani nobunzima bevolumu, ecaleni komnye nomnye.
+actual_and_volumetric_side_by	Ubunzima bokwenyani nobunzima bevolumu, ecaleni kobunye nobunye.
 charge	Hlawulisa
 your_rate_card_cash_or	Ikhadi lakho lamaxabiso, imali ephathekayo okanye i-akhawunti.
 next_booking	Ukubhukisha okulandelayo
@@ -35,66 +35,66 @@ weight_on_the_scale	Ubunzima kwisikali
 chargeable_weight	UBUNZIMA OBUHLAWULELWAYO
 the_box_s_size_sets	Ubukhulu bebhokisi bumisela imali.
 higher_of_the_two_rounded	Obukhulu kwezi zimbini, bujikelezwe bunyukele ku-0,5 kg olandelayo.
-in_the_app_the_divisor	Kwi-app, ivenkile iseta isahluli, inyathelo lokujikeleza neeyunithi zakho (cm okanye ii-intshi, kg okanye i-lb). Iqhosha elithi Kumazwe angaphandle lisebenzisa ÷6000 kubhukisho olunye ngaphandle kokuchukumisa i-Useto.
-n_3_price_it	3 · YIBEKE IXABISO
-your_rate_cards_your_party	Amakhadi akho amaxabiso, amaxabiso amaqabane akho — nengeniso yakho kwidokethi nganye.
+in_the_app_the_divisor	Kwi-app, ivenkile iseta isahluli, inyathelo lokujikeleza neeyunithi zakho (cm okanye ii-intshi, kg okanye i-lb). Iqhosha elithi Kumazwe angaphandle lisebenzisa ÷6000 kubhukisho olunye ngaphandle kokuchukumisa uSeto.
+n_3_price_it	3 · YIBEKELE IXABISO
+your_rate_cards_your_party	Amakhadi akho amaxabiso, amaxabiso abathengi bakho abaqhelekileyo — nenzuzo yakho kwidokethi nganye.
 rate_card	Ikhadi lamaxabiso
 zone_service	Izowuni · inkonzo
 first_0_5_kg	0,5 kg yokuqala
 each_0_5_kg	0,5 kg nganye
-local_surface	Ekuhlaleni · Ngendlela
+local_surface	Ekuhlaleni · Ngomhlaba
 within_state_express	Ngaphakathi kwephondo · Ngokukhawuleza
 metro_air	Isixeko esikhulu · Ngenqwelomoya
 zone_service_weight_slab	Izowuni × inkonzo × inqanaba lobunzima
 first_slab_and_each_extra	Inqanaba lokuqala nenqanaba ngalinye elongezelelweyo, ngezowuni nangenkonzo.
 a_consignor_s_own_card	Ikhadi lomthumeli uqobo
 regular_senders_get_their_rates	Abathumeli abaqhelekileyo bafumana amaxabiso abo; ikhadi elisisiseko ligubungela bonke abanye.
-margin_at_the_desk	Ingeniso kwikhawuntara
-your_sell_price_against_the	Ixabiso lakho lokuthengisa xa lithelekiswa nexabiso lomthwali, kwidokethi nganye.
-n_4_label_it	4 · YIFAKE ILEBHELI
+margin_at_the_desk	Inzuzo kwikhawuntara
+your_sell_price_against_the	Ixabiso lakho lokuthengisa xa lithelekiswa nexabiso lenkampani yekhuriya, kwidokethi nganye.
+n_4_label_it	4 · YIFAKELE ILEBHELI
 awb_from_your_own_number	I-AWB evela kumaqoqo akho eenombolo. Faka ilebheli, skena, fumana.
-number_pools_per_carrier	Amaqoqo eenombolo ngomthwali ngamnye
-enter_each_carrier_s_start	Faka uthotho lokuqala–lokugqibela lomthwali ngamnye kanye; ukubhukisha ngakunye kuthatha inombolo elandelayo.
+number_pools_per_carrier	Amaqoqo eenombolo ngenkampani yekhuriya nganye
+enter_each_carrier_s_start	Faka uthotho lokuqala–lokugqibela lwenkampani yekhuriya nganye kanye; ukubhukisha ngakunye kuthatha inombolo elandelayo.
 code_128_labels	Iilebheli ze-Code 128
 the_awb_goes_on_the	I-AWB ibekwa ebhokisini njengebhakhowudi nangamanani acacileyo.
 scan_to_find	Skena ukuze ufumane
 scan_a_label_to_open	Skena ilebheli ukuze uvule idokethi yayo kwaye wenze okufanelekileyo.
 n_5_hand_over	5 · NIKEZELA
-hand_it_to_a_carrier	Yinikezele kumthwali, okanye uthumele umhambisi wakho. Inkqubo efanayo.
-into_a_carrier_bag	Engxoweni yomthwali
-the_manifest_holds_exactly_the	Uluhlu lweepasile luqulethe kanye ezo pasile uzikhethileyo — zonke okanye akukho nanye. Ipasile ebhukishwe komnye umthwali ayinakungena kule ngxowa.
+hand_it_to_a_carrier	Yinikezele kwinkampani yekhuriya, okanye uthumele umhambisi wakho. Inkqubo efanayo.
+into_a_carrier_bag	Engxoweni yenkampani yekhuriya
+the_manifest_holds_exactly_the	Uluhlu lweepasile luqulethe kanye ezo pasile uzikhethileyo — zonke okanye akukho nanye. Ipasile ebhukishwe kwenye inkampani yekhuriya ayinakungena kule ngxowa.
 onto_your_own_rider_s	Kuhambo lomhambisi wakho
 pick_the_parcels_print_the	Khetha iipasile, shicilela iphepha lohambo, kwaye umhambisi usebenza kwi-app efanayo kwimowudi yomhambisi — kunye nobungqina bokunikezelwa.
 n_6_track_and_prove	6 · LANDELELA UZE UNGQINE
 every_move_recorded_and_only	Konke ukuhamba kuyabhalwa — kwaye ukuhamba okunengqiqo kuphela.
 booked	Ibhukishiwe
-with_carrier	Ikumthwali
+with_carrier	Ikwinkampani yekhuriya
 out_for_delivery	Isendleleni iyahanjiswa
 delivered	Inikezelwe
-booked_with_carrier_out_for	Ibhukishiwe → Ikumthwali → Isendleleni iyahanjiswa → Inikezelwe
+booked_with_carrier_out_for	Ibhukishiwe → Ikwinkampani yekhuriya → Isendleleni iyahanjiswa → Inikezelwe
 failed	Ayiphumelelanga
 reason_out_again_or_return	→ isizathu → iphinda iphume, okanye ibuyiselwe kumthumeli.
 impossible_moves_refused	Ukuhamba okungenakwenzeka kuyaliwa
-delivered_returned_and_cancelled	Inikezelwe, ibuyisiwe kwaye irhoxisiwe ziziphelo.
+delivered_returned_and_cancelled	Inikezelwe, ibuyisiwe kwaye irhoxisiwe zizimo zokugqibela.
 proof_of_delivery	Ubungqina bokunikezelwa
 a_photo_and_the_receiver	Umfanekiso nomsayino womamkeli kwidokethi.
 failed_deliveries	Ukunikezelwa okungaphumelelanga
 reasons_attempts_out_again_or	Izizathu, iinzame, ukuphinda kuphume, okanye ukubuyela kumthumeli.
 n_7_money_comes_home	7 · IMALI IBUYELA EKHAYA
-cod_you_can_see_expected	I-COD onokuyibona: elindelekileyo, enikezelweyo, etyalwa umthumeli ngamnye.
+cod_you_can_see_expected	I-COD onokuyibona: elindelekileyo, enikezelweyo, nefanele ihlawulwe kumthumeli ngamnye.
 rider_cash_end_of_run	Imali ephathekayo yomhambisi, ekupheleni kohambo
 rider	Umhambisi
 expected	Okulindelekileyo
 handed_in	Kunikezelwe
 a_14_drops	A · ukuhambisa oku-14
 b_9_drops	B · ukuhambisa oku-9
-short_200_on_rider_b	Kusilele ₹ 200 ku-Umhambisi B — kuchaziwe, akulahlekanga kwisixa.
+short_200_on_rider_b	Kusilele ₹ 200 kuMhambisi B — kuchaziwe, akulahlekanga kwisixa.
 cod_register	Irejista ye-COD
 collected_against_paid_out_per	Okuqokelelweyo kuthelekiswa nokuhlawulweyo, ngomthumeli ngamnye, namaqoqo okuthunyelwa kwemali.
 rider_settlement	Ukugqibezela imali yomhambisi
 expected_against_handed_in_and	Okulindelekileyo kuthelekiswa nokunikezelweyo, nesiliphu sekhomishini.
 books_that_close	Iincwadi ezivalekayo
-day_book_month_bill_per	Incwadi yosuku, ibhili yenyanga nge-akhawunti nganye, kunye nesishwankathelo se-GST nge-CSV somgcini-zincwadi wakho.
+day_book_month_bill_per	Incwadi yosuku, ibhili yenyanga nge-akhawunti nganye, kunye nesishwankathelo se-GST nge-CSV esiya kumgcini-zincwadi wakho.
 n_8_internet_down	8 · I-INTANETHI INQAMUKILE?
 keep_booking	Qhubeka ubhukisha.
 booking_labels_scanning_cod_and	Ukubhukisha, iilebheli, ukuskena, i-COD neencwadi konke kusebenza kwizixhobo zakho. Xa i-intanethi inqamuka, akukho nto kwikhawuntara eyilindileyo.
@@ -119,8 +119,8 @@ cancellation	Ukurhoxisa
 cloud_shop	Ivenkile yelifu
 account	I-akhawunti
 weigh_it_right	Yilinganise kakuhle
-price_it	Yibeke ixabiso
-label_it	Yifake ilebheli
+price_it	Yibekele ixabiso
+label_it	Yifakele ilebheli
 track_and_prove	Landelela uze ungqine
 money_comes_home	Imali ibuyela ekhaya
 internet_down	I-intanethi inqamukile

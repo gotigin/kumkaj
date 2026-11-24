@@ -20,7 +20,7 @@ works_with_no_internet	Isebenza ngaphandle kwe-intanethi
 your_books_stay_on_your	Iincwadi zakho zihlala kwizixhobo zakho
 n_115_languages_on_screen	Iilwimi ezili-115 esikrinini
 your_floor_at_a_glance	Igumbi lakho lokutyela ngokukhangela kanye
-tap_a_table_to_walk	Cofa itafile ukuze uyilandele kutyelelo olunye. Imibala namagama afanayo nala akwi-app — kwaye itafile iba ngenamntu kuphela xa sele ihlawulwe.
+tap_a_table_to_walk	Cofa itafile ukuze uyilandele kutyelelo olunye. Imibala namagama afanayo nala akwi-app — kwaye itafile ikhululeka kuphela xa sele ihlawulwe.
 every_country	ILIZWE NGALINYE
 every_country_at_your_counter	Amazwe onke kwikhawuntara yakho
 one_famous_dish_from_every	Isitya esinye esidumileyo esivela kwilizwe ngalinye — igama lesiNgesi, igama ngombhalo wabo, nesitya ngesiNgesi. Faka loo magama kuluhlu lwakho lokutya. Umhlaba uqhubeka udlula; misa okanye khangela xa ufuna ukujonga.
@@ -45,7 +45,7 @@ t4_occupied	T4 · Ihlaliwe
 note_less_salt	Inqaku: ityuwa encinci
 one_ticket_per_kitchen_station	Itikiti elinye kwisikhululo ngasinye sekhitshi
 send_the_order_and_each	Thumela i-odolo kwaye isikhululo ngasinye sifumana izitya zaso kuphela — zinamanani osuku ngalunye, netafile, umphakeli nawo onke amanqaku. Akukho xabiso: ikhitshi liyapheka, ikhawuntara iyahlawulisa.
-prints_itself	Iyazishicilelela
+prints_itself	Iyazishicilela
 send_and_the_ticket_prints	Thumela, kwaye itikiti lishicilelwa kwisikhululo esifanelekileyo — akukho mntu ulithwalayo.
 example_ticket	Isimzekelo setikiti
 the_kitchen_sees_what_to	Ikhitshi libona into ekufuneka iphekwe ngoku
@@ -55,9 +55,9 @@ preparing	Iyalungiswa
 ready	Ilungile
 example_kitchen_screen	Isimzekelo sesikrini sekhitshi
 settle_any_way_the_guest	Hlawulisa nangayiphi na indlela undwendwe oluhlawula ngayo
-cash_with_change_to_return	Imali ephathekayo enetshintshi lokubuyisa, i-UPI enexabiso esele likwi-QR, intlawulo yenxalenye, okanye ityala kwincwadi yamatyala yomthengi. Yahlula ngento, ngesihlalo okanye ngokulinganayo. Itafile iba ngenamntu kuphela xa ibhili yayo sele ihlawulwe.
+cash_with_change_to_return	Imali ephathekayo enetshintshi lokubuyisa, i-UPI enexabiso esele likwi-QR, intlawulo yenxalenye, okanye ityala kwincwadi yamatyala yomthengi. Yahlula ngento, ngesihlalo okanye ngokulinganayo. Itafile ikhululeka kuphela xa ibhili yayo sele ihlawulwe.
 tips_stay_apart	Iithiphu zihlala zodwa
-a_tip_is_recorded_on	Ithiphu ibhalwa yodwa — ayizange ixutywe nentengiso.
+a_tip_is_recorded_on	Ithiphu ibhalwa yodwa — ayinakuze ixutywe neentengiso.
 t4_bill_printed	T4 · Ibhili ishicilelwe
 bill	Ibhili
 customer_paid_cash	Umthengi uhlawule (imali ephathekayo)
@@ -88,7 +88,7 @@ search_by_name_or_short	Khangela ngegama okanye ngekhowudi emfutshane, namanye a
 area_prices_and_happy_hour	Amaxabiso endawo neyure yesaphulelo
 a_dearer_price_in_the	Ixabiso eliphezulu kwigumbi le-AC; izintlu zokutya kwakusasa namaxabiso eyure yesaphulelo ngokwewotshi.
 customer_khata	Incwadi yamatyala yomthengi
-part_payments_and_due_go	Iintlawulo zenxalenye netyala zingena kwi-akhawunti yomthengi kwi-Amaqabane, zihlawulwe kamva.
+part_payments_and_due_go	Iintlawulo zenxalenye netyala zingena kwi-akhawunti yomthengi kuluhlu lwabathengi nababoneleli, zihlawulwe kamva.
 reports_that_answer_questions	Iingxelo eziphendula imibuzo
 sales_by_staff_order_type	Iintengiso ngabasebenzi, uhlobo lwe-odolo, iyure nesitya — kudweliswe nokurhoxisiweyo, izitya zasimahla neethiphu.
 start_with_a_menu	QALA NGOLUHLU LOKUTYA
@@ -98,7 +98,7 @@ starter_menu	Uluhlu lokutya lokuqala
 khaynjo_starter_menu	Uluhlu lokutya lokuqala lwe-Khaynjo
 world_cuisines_japanese_mexican	Ukutya kwehlabathi — kwaseJapan, eMexico, e-Italy, eIndiya, eThailand nokunye — isitya ngasinye nomfanekiso waso.
 n_14_dishes_11_categories	Izitya ezili-14 · iindidi ezili-11
-cafe_starter	Olokuqala lwekhefi
+cafe_starter	Uluhlu lokutya lokuqala lwekhefi
 tea_coffee_cold_drinks_bakery	Iti, ikofu, iziselo ezibandayo, izinto ezibhakiweyo neeshwamshwam — kulungele ikhefi enekhawuntara.
 n_22_dishes_4_categories	Izitya ezingama-22 · iindidi ezi-4
 photo_shelf	Ishelufu lemifanekiso
@@ -115,7 +115,7 @@ day_book_every_bill_saved	Incwadi yosuku: zonke iibhili zigcinwe kwesi sixhobo
 captains_tablets_and_the_kitchen	Iitablethi zeentloko zabaphakeli nesikrini sekhitshi: zisebenza kunye kwi-Wi-Fi yakho
 eyebrow_pricing	AMAXABISO
 free_forever_on_your_devices	Simahla ngonaphakade kwizixhobo zakho.
-software_capability_is_not_what	Amandla esoftware asiyiyo into esiyithengisayo. Sebenzisa yonke i-Khaynjo kwizixhobo zakho ngaphandle kwentlawulo — akukho nto itshixiweyo emva kwesicwangciso.
+software_capability_is_not_what	Asithengisi amandla esoftware. Sebenzisa yonke i-Khaynjo kwizixhobo zakho ngaphandle kwentlawulo — akukho nto itshixiweyo emva kwesicwangciso.
 khaynjo_on_your_devices	I-Khaynjo kwizixhobo zakho
 forever	ngonaphakade
 every_feature	Zonke iimpawu
@@ -134,15 +134,15 @@ asked_before_every_first_service	Kubuzwa phambi kwenkonzo yokuqala.
 do_i_need_the_internet	Ndiyayidinga i-intanethi?
 no_orders_kots_bills_and	Hayi. Ii-odolo, ii-KOT, iibhili nencwadi yosuku zisebenza ngaphandle kwe-intanethi. Uyayidinga kanye ukuze ukhuphele i-app kwaye, ukuba uyafuna, uluhlu lokutya lokuqala.
 where_are_my_bills_kept	Iibhili zam zigcinwa phi?
-on_your_own_device_in	Kwisixhobo sakho, kwivenkile yakho — hayi kwiiseva zethu. Yenza iikopi zogcino kwi-Useto uze uzigcine naphi na apho uthanda khona.
+on_your_own_device_in	Kwisixhobo sakho, kwivenkile yakho — hayi kwiiseva zethu. Yenza iikopi zogcino kuSeto uze uzigcine naphi na apho uthanda khona.
 which_devices_does_it_run	Isebenza kweziphi izixhobo?
 android_phones_and_tablets_today	Iifowuni neetablethi ze-Android namhlanje, kwi-Google Play. Iinguqulelo ze-Windows ne-Linux zisendleleni.
 does_it_print_kots_and	Iyazishicilela ii-KOT neebhili?
-yes_on_thermal_printers_you	Ewe — kwiiprinta zobushushu ozisete kwi-Useto → Abashicileli, itikiti lekhitshi elinye kwisikhululo ngasinye.
+yes_on_thermal_printers_you	Ewe — kwiiprinta zobushushu ozisete kuSeto → Iiprinta, itikiti lekhitshi elinye kwisikhululo ngasinye.
 can_my_staff_use_their	Abasebenzi bam banokusebenzisa ulwimi lwabo?
 yes_the_screens_come_in	Ewe. Izikrini zifumaneka ngeelwimi ezili-115, isiArabhu nesiUrdu ukusuka ekunene ukuya ekhohlo, kwaye amagama ezitya anokuba namanye amagama ngomnye umbhalo.
 what_does_it_cost	Ixabisa malini?
-nothing_on_your_own_devices	Akukho nto kwizixhobo zakho — zonke iimpawu, ngonaphakade. I-Kumkaj Cloud ozikhethelayo yeyonyaka: Steady / Swift / Priority (okanye uqikelelo lwexabiso olwenziwe ngokwezifiso); vula i-/shop ukuze uthenge.
+nothing_on_your_own_devices	Ayixabisi nto kwizixhobo zakho — zonke iimpawu, ngonaphakade. I-Kumkaj Cloud ozikhethelayo yeyonyaka: Steady / Swift / Priority (okanye uqikelelo lwexabiso olwenziwe ngokwezifiso); vula i-/shop ukuze uthenge.
 ready_for_lunch	ULUNGELE IXESHA LASEMINI?
 run_your_next_service_on	Qhuba inkonzo yakho elandelayo nge-Khaynjo.
 free_on_google_play_want	Simahla kwi-Google Play. Ufuna ukuboniswa kuqala? Sithumelele umyalezo kwi-WhatsApp.

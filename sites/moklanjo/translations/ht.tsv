@@ -27,7 +27,7 @@ scroll_the_parcel_journey_rail	Desann — ba vwayaj pasèl la anlè a montre ki 
 n_2_weigh_it_right	2 · PEZE L BYEN
 actual_or_volumetric_whichever_is	Reyèl oswa volim — sa ki pi wo a, awondi jan ou vle.
 try_a_box	Eseye yon bwat
-domestic	Lokal
+domestic	Nasyonal
 international	Entènasyonal
 breadth	Lajè
 height	Wotè
@@ -35,7 +35,7 @@ weight_on_the_scale	Pwa sou balans lan
 chargeable_weight	PWA POU PEYE
 the_box_s_size_sets	Gwosè bwat la fikse frè a.
 higher_of_the_two_rounded	Pi wo nan de a, awondi monte rive nan pwochen 0,5 kg la.
-in_the_app_the_divisor	Nan aplikasyon an, se biznis la ki fikse divizè a, etap awondi a ak inite ou yo (cm oswa pous, kg oswa lb). Bouton Entènasyonal la chanje ÷6000 pou yon sèl anrejistreman san manyen Paramèt yo.
+in_the_app_the_divisor	Nan aplikasyon an, se biznis la ki fikse divizè a, etap awondi a ak inite ou yo (cm oswa pous, kg oswa lb). Bouton Entènasyonal la mete ÷6000 pou yon sèl anrejistreman san manyen Paramèt yo.
 n_3_price_it	3 · METE PRI L
 your_rate_cards_your_party	Lis pri ou yo, pri patnè ou yo — ak maj ou sou chak fich ekspedisyon.
 rate_card	Lis pri
@@ -75,13 +75,13 @@ booked_with_carrier_out_for	Anrejistre → Lakay transpòtè a → An wout pou l
 failed	Echwe
 reason_out_again_or_return	→ rezon → soti ankò, oswa retounen bay ekspeditè a.
 impossible_moves_refused	Mouvman enposib refize
-delivered_returned_and_cancelled	Livre, retounen ak anile se final.
+delivered_returned_and_cancelled	Livre, retounen ak anile se etap final.
 proof_of_delivery	Prèv livrezon
 a_photo_and_the_receiver	Yon foto ak siyati moun ki resevwa a sou fich ekspedisyon an.
 failed_deliveries	Livrezon ki echwe
 reasons_attempts_out_again_or	Rezon, esè, soti ankò, oswa retounen bay ekspeditè a.
 n_7_money_comes_home	7 · LAJAN AN RETOUNEN LAKAY
-cod_you_can_see_expected	Peye lè w resevwa ou ka wè: sa yo tann, sa yo remèt, sa yo dwe chak ekspeditè.
+cod_you_can_see_expected	Peye lè w resevwa, aklè devan je ou: sa yo tann, sa yo remèt, sa yo dwe chak ekspeditè.
 rider_cash_end_of_run	Kach livrè a, nan fen wout la
 rider	Livrè
 expected	Sa yo tann
@@ -97,7 +97,7 @@ books_that_close	Liv ki fèmen byen
 day_book_month_bill_per	Liv jounen, fakti mwa a pa kont, ak yon rezime GST an CSV pou kontab ou.
 n_8_internet_down	8 · ENTÈNÈT LA TONBE?
 keep_booking	Kontinye anrejistre.
-booking_labels_scanning_cod_and	Anrejistreman, etikèt, eskanè, peye lè w resevwa ak liv yo tout mache sou aparèy ou. Lè entènèt la tonbe, anyen devan kontwa a pa tann li.
+booking_labels_scanning_cod_and	Anrejistreman, etikèt, eskanaj, peye lè w resevwa ak liv yo tout mache sou aparèy ou. Lè entènèt la tonbe, anyen devan kontwa a pa tann li.
 office_router_no_internet	Routè biwo a: pa gen entènèt
 desk_still_booking	Kontwa: toujou ap anrejistre
 second_counter_and_rider_phone	Dezyèm kontwa ak telefòn livrè a: konekte sou Wi-Fi biwo a
@@ -182,7 +182,7 @@ shop_cloud_plans	Fòfè nyaj
 acct_federated	Koneksyon federe
 acct_err_invalid_email	Antre yon adrès imèl ki valab.
 acct_err_weak_password	Sèvi ak yon modpas ki gen omwen 6 karaktè.
-acct_err_wrong_password	Move modpas.
+acct_err_wrong_password	Modpas la pa bon.
 acct_err_invalid_credential	Imèl la oswa modpas la pa bon.
 acct_err_popup_closed	Fenèt koneksyon an fèmen.
 acct_err_popup_cancelled	Koneksyon an anile.

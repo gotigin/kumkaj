@@ -20,7 +20,7 @@ works_with_no_internet	ያለ ኢንተርኔት ይሰራል
 your_books_stay_on_your	መዝገቦችዎ በመሣሪያዎችዎ ላይ ይቆያሉ
 n_115_languages_on_screen	በስክሪን ላይ 115 ቋንቋዎች
 your_floor_at_a_glance	አዳራሽዎ በአንድ እይታ
-tap_a_table_to_walk	አንድ ጠረጴዛ ይንኩና በአንድ ጉብኝት ውስጥ ይከተሉት። ከመተግበሪያው ጋር ተመሳሳይ ቀለሞች እና ቃላት — ጠረጴዛም ባዶ የሚሆነው ሂሳቡ ሲከፈል ብቻ ነው።
+tap_a_table_to_walk	አንድ ጠረጴዛ ይንኩና የእንግዶቹን ቆይታ ከመጀመሪያ እስከ መጨረሻ ይከተሉ። ከመተግበሪያው ጋር ተመሳሳይ ቀለሞች እና ቃላት — ጠረጴዛም ባዶ የሚሆነው ሂሳቡ ሲከፈል ብቻ ነው።
 every_country	እያንዳንዱ ሀገር
 every_country_at_your_counter	እያንዳንዱ ሀገር በካውንተርዎ ላይ
 one_famous_dish_from_every	ከእያንዳንዱ ሀገር አንድ ታዋቂ ምግብ — የእንግሊዝኛ ስሙ፣ በራሳቸው ፊደል ያለው ስም፣ እና ምግቡ በእንግሊዝኛ። እነዚያን ቃላት በሜኑዎ ላይ ያስቀምጡ። ዓለም ማለፏን ትቀጥላለች፤ ማየት ሲፈልጉ ያቁሙ ወይም ይፈልጉ።
@@ -28,7 +28,7 @@ find_a_country_or_dish	ሀገር ወይም ምግብ ይፈልጉ — ለምሳ�
 one_famous_dish_per_country	ለእያንዳንዱ ሀገር አንድ ታዋቂ ምግብ — ሰልፉ መላውን ዓለም ይዞራል።
 how_a_service_runs	መስተንግዶ እንዴት እንደሚሄድ
 one_table_start_to_finish	አንድ ጠረጴዛ፣ ከመጀመሪያ እስከ መጨረሻ።
-watch_a_table_go_from	አንድ ጠረጴዛ እንግዶች ከተቀመጡበት እስከ ተከፍሏል ድረስ ሲሄድ ይመልከቱ — ሰራተኞችዎ በመተግበሪያው ውስጥ የሚያዩአቸው ተመሳሳይ ደረጃዎች እና ቀለሞች።
+watch_a_table_go_from	አንድ ጠረጴዛ እንግዶች ከተቀመጡበት እስከ ተከፍሏል ድረስ ሲሄድ ይመልከቱ — ሰራተኞችዎ በመተግበሪያው ውስጥ የሚያዩዋቸው ተመሳሳይ ደረጃዎች እና ቀለሞች።
 occupied	ተይዟል
 in_kitchen	ኩሽና ውስጥ
 food_ready	ምግብ ዝግጁ ነው
@@ -45,11 +45,11 @@ t4_occupied	T4 · ተይዟል
 note_less_salt	ማስታወሻ፦ ጨው ይቀነስ
 one_ticket_per_kitchen_station	ለእያንዳንዱ የኩሽና ክፍል አንድ ትኬት
 send_the_order_and_each	ትዕዛዙን ይላኩ፣ እያንዳንዱ ክፍልም የራሱን ምግቦች ብቻ ይቀበላል — በየቀኑ ቁጥር ተሰጥቶት፣ ከጠረጴዛው፣ ከአስተናጋጁ እና ከሁሉም ማስታወሻዎች ጋር። ዋጋ በጭራሽ የለም፦ ኩሽናው ያበስላል፣ ካውንተሩ ሂሳብ ይቀበላል።
-prints_itself	ራሱ ይታተማል
+prints_itself	በራሱ ይታተማል
 send_and_the_ticket_prints	ይላኩ፣ ትኬቱም በትክክለኛው ክፍል ይታተማል — ማንም አይሸከመውም።
 example_ticket	የትኬት ምሳሌ
 the_kitchen_sees_what_to	ኩሽናው አሁን ምን እንደሚበስል ያያል
-on_the_kitchen_screen_tickets	በኩሽናው ስክሪን ላይ ትኬቶች በአንድ ንክኪ አዲስ → በዝግጅት ላይ → ዝግጁ ይሄዳሉ። የቆዩ ትኬቶች ቀለማቸው ይሞቃል፣ «አሁን የሚበስል» የሚጠብቁትን ምግቦች ሁሉ ይቆጥራል፣ ዋና ምግቦችም መግቢያዎቹ እስኪሄዱ ድረስ ሊቆዩ ይችላሉ።
+on_the_kitchen_screen_tickets	በኩሽናው ስክሪን ላይ ትኬቶች በአንድ ንክኪ አዲስ → በዝግጅት ላይ → ዝግጁ ይሄዳሉ። የቆዩ ትኬቶች ቀለማቸው ይሞቃል፣ «አሁን የሚበስል» የሚጠብቁትን ምግቦች ሁሉ ይቆጥራል፣ ዋና ምግቦችም የመግቢያ ምግቦቹ እስኪወጡ ድረስ ሊቆዩ ይችላሉ።
 new	አዲስ
 preparing	በዝግጅት ላይ
 ready	ዝግጁ
@@ -78,7 +78,7 @@ the_changes_that_happen_every	በየምሳ ሰዓቱ የሚከሰቱ ለውጦ�
 move_and_merge_tables	ጠረጴዛዎችን ያዛውሩ እና ያዋህዱ
 guests_change_tables_the_order	እንግዶች ጠረጴዛ ይቀይራሉ — ትዕዛዙ እና ደቂቃዎቹ አብረዋቸው ይሄዳሉ። ሁለት ጠረጴዛዎች፣ አንድ ሂሳብ።
 cancel_after_the_kot	ከKOT በኋላ መሰረዝ
-with_a_reason_cooked_or	ከምክንያት ጋር፣ ተበስሎም ይሁን አልተበሰለ፣ እና ማን እንዳጸደቀው። ኩሽናው የስረዛ ወረቀት ይደርሰዋል።
+with_a_reason_cooked_or	ከምክንያት ጋር፣ ቢበስልም ባይበስልም፣ እና ማን እንዳጸደቀው። ኩሽናው የስረዛ ወረቀት ይደርሰዋል።
 complimentary_dishes	ነፃ ምግቦች
 a_comp_stays_on_the	ነፃ ምግብ በሂሳቡ ላይ በ₹ 0 ይቆያል፣ ከምክንያቱ እና ካጸደቀው ሰው ጋር።
 rights_per_person	ለእያንዳንዱ ሰው ፈቃዶች
@@ -88,7 +88,7 @@ search_by_name_or_short	በስም ወይም በአጭር ኮድ ይፈልጉ፣ 
 area_prices_and_happy_hour	የቦታ ዋጋዎች እና የቅናሽ ሰዓት
 a_dearer_price_in_the	በAC ክፍል ውስጥ ከፍ ያለ ዋጋ፤ የቁርስ ሜኑዎች እና የቅናሽ ሰዓት ዋጋዎች በሰዓቱ መሠረት።
 customer_khata	የደንበኛ የዱቤ መዝገብ
-part_payments_and_due_go	ከፊል ክፍያዎች እና ዱቤ በተዋዋዮች ውስጥ ባለው የደንበኛው መለያ ላይ ይመዘገባሉ፣ በኋላም ይከፈላሉ።
+part_payments_and_due_go	ከፊል ክፍያዎች እና ዱቤ በተዋዋዮች ውስጥ ባለው የደንበኛው ሂሳብ ላይ ይመዘገባሉ፣ በኋላም ይከፈላሉ።
 reports_that_answer_questions	ጥያቄዎችን የሚመልሱ ሪፖርቶች
 sales_by_staff_order_type	ሽያጭ በሰራተኛ፣ በትዕዛዝ አይነት፣ በሰዓት እና በምግብ — ስረዛዎች፣ ነፃ ምግቦች እና ጉርሻ ተዘርዝረው።
 start_with_a_menu	በሜኑ ይጀምሩ
@@ -176,7 +176,7 @@ acct_send_sms	የSMS ኮድ ላክ
 acct_sms_code	የSMS ኮድ
 acct_confirm_code	ኮዱን አረጋግጥ
 acct_signed_in	ገብተዋል
-acct_signed_in_as	እንደዚህ ገብተዋል፦
+acct_signed_in_as	በዚህ መለያ ገብተዋል፦
 acct_status	ሁኔታ
 acct_sign_in_methods	የመግቢያ ዘዴዎች
 acct_cloud_username	የደመና ተጠቃሚ ስም

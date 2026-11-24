@@ -13,7 +13,7 @@ cash_memo	የጥሬ ገንዘብ ደረሰኝ
 ready	ዝግጁ
 total	ድምር
 tap_to_add_the_first	የመጀመሪያውን መድኃኒት ለማከል ይንኩ
-example_pharmacy_lines_not_a	የፋርማሲ ምሳሌ መስመሮች እንጂ ቀጥታ የገንዘብ መሳቢያ አይደሉም። Tabiyat ያውን መንገድ ይከተላል፦ ሽያጭ → ክፍያ → የቀን መዝገብ።
+example_pharmacy_lines_not_a	የፋርማሲ ምሳሌ መስመሮች እንጂ እውነተኛ ገንዘብ መቀበያ አይደሉም። Tabiyat ያንኑ መንገድ ይከተላል፦ ሽያጭ → ክፍያ → የቀን መዝገብ።
 n_2_counter_sell	2 · የካውንተር ሽያጭ
 medicine_quantity_pay_three_taps	መድኃኒት፣ ብዛት፣ ክፍያ — ሦስት ንክኪዎች።
 upi_qr_ready	UPI QR ዝግጁ ነው
@@ -23,13 +23,13 @@ add_the_line_set_the	መስመሩን ያክሉ፣ ብዛቱን ያዘጋጁ፣ �
 gst_tax_invoice_or_cash	የGST የግብር ደረሰኝ ወይም የጥሬ ገንዘብ ደረሰኝ
 the_bill_lane_you_need	ለሽያጩ የሚያስፈልግዎ የሂሳብ አይነት።
 day_book_follows	የቀን መዝገቡ ይከተላል
-every_tender_lands_in_books	ሽያጩን ሲዘጉ እያንዳንዱ የክፍያ ዘዴ ወደ የቀን መዝገብ ይገባል።
+every_tender_lands_in_books	ሽያጩን ሲዘጉ እያንዳንዱ የክፍያ ዘዴ በ«የቀን መዝገብ» ውስጥ ይመዘገባል።
 n_3_barcode_salt	3 · ባርኮድ እና ንቁ ንጥረ ነገር
 scan_the_barcode_or_find	ባርኮዱን ይቃኙ — ወይም በንቁ ንጥረ ነገሩ ያግኙት።
 search	ፈልግ
 composition_paracetamol_strip_of_10	ይዘት፦ Paracetamol · 10 ኪኒን ያለው ፍሬ
 salt_amoxicillin	ንቁ ንጥረ ነገር፦ amoxicillin
-ranks_barcode_name_and_composition	ባርኮድን፣ ስምን እና ይዘትን በአንድ ላይ ያደራጃል።
+ranks_barcode_name_and_composition	ባርኮድን፣ ስምን እና ይዘትን በአንድ ላይ አገናዝቦ ውጤቶቹን በቅደም ተከተል ያሳያል።
 wedge_scanner_or_type_enter	የቁልፍ ሰሌዳ ስካነር ወይም Enter ይጫኑ — መስመሩ በሂሳቡ ላይ ይሰፍራል።
 barcode_first	መጀመሪያ ባርኮድ
 scan_or_paste_the_code	ኮዱን ይቃኙ ወይም ይለጥፉ፤ በካታሎጉ ውስጥ ተዛማጁ ይወጣል።
@@ -46,8 +46,8 @@ expires_2026_11_near_expiry	የሚያበቃው 2026-11 · በ«የቀን መዝ�
 shop_bookkeeping_only_not_drugs	የሱቅ ሂሳብ አያያዝ ብቻ — የመድኃኒት ሕግ ተገዢነት አይደለም።
 batch_on_buy	በግዢ ላይ ባች
 record_batch_and_expiry_when	ክምችት ሲገባ ባቹን እና የሚያበቃበትን ቀን ይመዝግቡ።
-near_expiry_alerts	ሊያበቃ የተቃረበ ማንቂያዎች
-books_and_sell_can_hint	«የቀን መዝገብ» እና «ይሽጡ» ቀኑ ከማለፉ በፊት ፍንጭ ሊሰጡ ይችላሉ።
+near_expiry_alerts	ሊያበቃ ለተቃረበ መድኃኒት ማንቂያዎች
+books_and_sell_can_hint	«የቀን መዝገብ» እና «ሽያጭ» ቀኑ ከማለፉ በፊት ፍንጭ ሊሰጡ ይችላሉ።
 owner_practice	የባለቤቱ አሠራር
 fefo_hints_and_rx_notes	የFEFO ፍንጮች እና የሐኪም ማዘዣ ማስታወሻዎች እርስዎ የሚከተሏቸው ናቸው — Tabiyat ያስገቡትን ይመዘግባል።
 n_5_khata	5 · የዱቤ መዝገብ
@@ -56,28 +56,28 @@ mehta_clinic_customer	Mehta ክሊኒክ · ደንበኛ
 due_from_earlier	የቀድሞ ዱቤ
 today_s_sale_due	+ የዛሬ ሽያጭ (ዱቤ)
 balance	ቀሪ ሂሳብ
-settle_later_part_cash_part	በኋላ ይክፈሉ — ከፊሉ በጥሬ ገንዘብ፣ ከፊሉ በUPI። የአቅራቢ ዕዳ በያው የተዋዋዮች ስክሪን ላይ ነው።
+settle_later_part_cash_part	በኋላ ሂሳቡን ይዝጉ — ከፊሉ በጥሬ ገንዘብ፣ ከፊሉ በUPI። የአቅራቢ ዕዳ በዚያው የተዋዋዮች ስክሪን ላይ ነው።
 due_on_the_bill	በሂሳቡ ላይ ዱቤ
 leave_a_balance_on_khata	የተለየ የሂሳብ መተግበሪያ ሳያስፈልግ ቀሪ ሂሳብን በዱቤ መዝገብ ላይ ይተዉ።
 supplier_buys_too	ከአቅራቢዎችም ግዢ
-who_you_owe_updates_when	ክምችት ሲደርስ ዕዳ ያለብዎት ሰዎች ይዘምናሉ።
+who_you_owe_updates_when	ክምችት ሲደርስ ለማን ዕዳ እንዳለብዎት ይዘምናል።
 auditable	ሊመረመር የሚችል
 who_when_and_how_much	ማን፣ መቼ እና ስንት በቀን መዝገቡ ውስጥ ይቆያል።
 n_6_internet_down	6 · ኢንተርኔት ተቋርጧል?
 the_internet_drops_the_counter	ኢንተርኔቱ ይቋረጣል። ካውንተሩ መሸጡን ይቀጥላል።
 router_no_internet	ራውተር፦ ኢንተርኔት የለም
 main_counter_selling_and_settling	ዋናው ካውንተር፦ እየሸጠ ሂሳብ እየዘጋ
-second_till_joined_on_your	ሁለተኛው መሳቢያ፦ በራስዎ Wi-Fi ተገናኝቷል
+second_till_joined_on_your	ሁለተኛው ገንዘብ መቀበያ፦ በራስዎ Wi-Fi ተገናኝቷል
 books_live_on_the_shop	መዝገቦች በሱቁ መሣሪያዎች ላይ ይኖራሉ
 when_the_internet_drops_nothing	ኢንተርኔት ሲቋረጥ በፋርማሲው ካውንተር ላይ ምንም ነገር አይጠብቀውም።
-one_server_lan_clients	አንድ ሰርቨር፣ የLAN ደንበኞች
-extra_tills_share_the_same	ተጨማሪ መሳቢያዎች በሱቁ አውታረ መረብ ላይ ያውን መዝገብ ይጋራሉ።
+one_server_lan_clients	አንድ ሰርቨር፣ በLAN የተገናኙ መሣሪያዎች
+extra_tills_share_the_same	ተጨማሪ ገንዘብ መቀበያዎች በሱቁ አውታረ መረብ ላይ ያንኑ መዝገብ ይጋራሉ።
 n_7_free_forever_locally	7 · በመሣሪያዎ ላይ ለዘላለም ነፃ
 free_forever_on_your_devices	በመሣሪያዎችዎ ላይ ለዘላለም ነፃ።
 no_per_bill_charge	በሂሳብ ክፍያ የለም
-no_fee_per_sale_medicine	በአካባቢያዊ ጭነቱ ላይ በሽያጭ፣ በመድኃኒት፣ በመሳቢያ ወይም በሰራተኛ PIN ክፍያ የለም።
+no_fee_per_sale_medicine	በመሣሪያዎ ላይ በተጫነው ሥሪት በሽያጭ፣ በመድኃኒት፣ በገንዘብ መቀበያ ወይም በሰራተኛ PIN ክፍያ የለም።
 android_windows_linux	Android, Windows, Linux
-the_same_tabiyat_on_the	በስልክ እና በዴስክቶፕ መሳቢያው ላይ ያው Tabiyat።
+the_same_tabiyat_on_the	በስልክ እና በዴስክቶፕ ገንዘብ መቀበያው ላይ ያው Tabiyat።
 optional_kumkaj_cloud	አማራጭ Kumkaj Cloud
 yearly_steady_6k_swift_12k	ዓመታዊ Steady ₹6k · Swift ₹12k · Priority ₹24k ግብርን ሳይጨምር (ወይም ብጁ የዋጋ ግምት)። በ/shop ይግዙ።
 n_8_start	8 · ይጀምሩ
@@ -92,7 +92,7 @@ chapter_counter_sell	የካውንተር ሽያጭ
 chapter_barcode_salt	ባርኮድ እና ንቁ ንጥረ ነገር
 chapter_batch_expiry	ባች እና የሚያበቃበት ቀን
 chapter_khata	የዱቤ መዝገብ
-chapter_extra_till	ተጨማሪ መሳቢያ
+chapter_extra_till	ተጨማሪ ገንዘብ መቀበያ
 chapter_offline	ከመስመር ውጭ
 chapter_start	ጀምር
 bill_selling	በመሸጥ ላይ
@@ -102,8 +102,8 @@ bill_next_line	ቀጣዩን መስመር ለማከል ይንኩ
 bill_settle_hint	ሂሳብ ለመዝጋት ይንኩ — ጥሬ ገንዘብ ወይም UPI
 bill_upi_paid	UPI ₹ 162 · ተከፍሏል
 bill_paid_line	ተከፍሏል · የቀን መዝገብ ተዘምኗል
-lan_eyebrow	6 · ተጨማሪ መሳቢያ
-lan_title	በሱቁ Wi-Fi ላይ ሌላ መሳቢያ።
+lan_eyebrow	6 · ተጨማሪ ገንዘብ መቀበያ
+lan_title	በሱቁ Wi-Fi ላይ ሌላ ገንዘብ መቀበያ።
 cta_installers_note	እያንዳንዱ ጫኚ በንጹህ ማሽን ላይ የመጫን ሙከራን ሲያልፍ እዚህ ይቀመጣል። እስከዚያው ድረስ በWhatsApp ማሳያ ይጠይቁ።
 cta_whatsapp_soon	የWhatsApp ማሳያ መስመሩ በቅርቡ ይከፈታል። መልእክትዎ እንዲህ ይላል፦ «{message}»።
 acct_page_title	መለያ — Tabiyat
@@ -123,7 +123,7 @@ acct_send_sms	የSMS ኮድ ላክ
 acct_sms_code	የSMS ኮድ
 acct_confirm_code	ኮዱን አረጋግጥ
 acct_signed_in	ገብተዋል
-acct_signed_in_as	እንደዚህ ገብተዋል፦
+acct_signed_in_as	በዚህ መለያ ገብተዋል፦
 acct_status	ሁኔታ
 acct_sign_in_methods	የመግቢያ ዘዴዎች
 acct_cloud_username	የደመና ተጠቃሚ ስም

@@ -1,8 +1,8 @@
 # Swahili — Kiswahili (sw). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 the_promise	Ahadi
 kumkaj_business_operating_systems	KUMKAJ · MIFUMO YA UENDESHAJI WA BIASHARA
-the_internet_went_down_the	Intaneti imekatika.\nKaunta haijakatika.
-kumkaj_is_the_brand_for	Kumkaj ni chapa ya programu halisi za mifumo ya uendeshaji wa biashara — programu kamili za kusimamia biashara zinazofanya kazi kwenye vifaa vyako mwenyewe. Kila bidhaa imejengwa kwa biashara moja: usafirishaji vifurushi, mgahawa, duka la vyakula, duka la dawa.
+the_internet_went_down_the	Intaneti imekatika.\nKaunta haijasimama.
+kumkaj_is_the_brand_for	Kumkaj ni chapa ya programu halisi za mifumo ya uendeshaji wa biashara — programu kamili za kusimamia biashara zinazofanya kazi kwenye vifaa vyako mwenyewe. Kila bidhaa imejengwa kwa biashara moja: usafirishaji wa vifurushi, mgahawa, duka la vyakula, duka la dawa.
 choose_your_trade	Chagua biashara yako  ↓
 watch_it_keep_working	Itazame ikiendelea kufanya kazi
 this_counter_right_now	KAUNTA HII, SASA HIVI
@@ -32,10 +32,10 @@ one_kot_per_kitchen_station	Tiketi moja ya jiko kwa kila kituo — bila bei kamw
 cash_upi_part_payment_due	Taslimu, UPI, malipo ya sehemu, deni na bakshishi
 visit_khaynjo_com	Tembelea khaynjo.com  →
 kirana_grocery_neighbourhood_shops	KIRANA · MADUKA YA VYAKULA · MADUKA YA MTAANI
-sell_khata_stock_day_book	Uza → daftari la madeni → hisa → kitabu cha siku.
-fast_counter_sell_with_short	Mauzo ya haraka kaunta kwa misimbo mifupi
+sell_khata_stock_day_book	Uza → daftari la madeni → stoku → kitabu cha siku.
+fast_counter_sell_with_short	Mauzo ya haraka kwenye kaunta kwa misimbo mifupi
 customer_credit_and_supplier_dues	Mkopo wa wateja na madeni kwa wasambazaji
-buy_into_stock_offline_forever	Nunua kwenye hisa — nje ya mtandao milele
+buy_into_stock_offline_forever	Nunua bidhaa ziingie kwenye stoku — nje ya mtandao milele
 visit_kirano_shop	Tembelea kirano.shop  →
 chemists_pharmacy_counters	MADUKA YA DAWA · KAUNTA ZA DAWA
 medicine_batch_bill_day_close	Dawa → kundi → bili → kufunga siku.
@@ -44,7 +44,7 @@ batch_and_expiry_alerts_on	Tahadhari za kundi na tarehe ya mwisho kwenye ununuzi
 owner_schedule_h_rx_notes	Maelezo ya mmiliki ya Schedule H / vyeti vya dawa — si kujifanya kutii
 visit_tabiyat_shop	Tembelea tabiyat.shop  →
 n_03_your_books_stay_with	03 · VITABU VYAKO VINABAKI NAWE
-your_books_live_in_your	Vitabu vyako vinaishi dukani kwako.
+your_books_live_in_your	Vitabu vyako viko dukani kwako.
 sales_parties_and_the_day	Mauzo, wahusika na kitabu cha siku vinaandikwa kwenye kifaa kilicho kwenye kaunta yako — si kwenye seva unayokodi.
 on_your_device	Kwenye kifaa chako
 every_sale_payment_and_docket	Kila mauzo, malipo na hati ya usafirishaji vinahifadhiwa kwenye kompyuta au tableti unayomiliki.
@@ -55,7 +55,7 @@ save_a_backup_copy_whenever	Hifadhi nakala rudufu wakati wowote unapotaka. Ni fa
 extra_counters_and_tablets_join	Kaunta na tableti za ziada zinaungana kupitia Wi-Fi yako mwenyewe — bila intaneti katikati.
 n_04_try_it	04 · JARIBU
 pull_the_plug_on_the	Chomoa intaneti.
-kumkaj_apps_don_t_phone	Programu za Kumkaj hazihitaji kuwasiliana na seva ili kufanya kazi. Kata intaneti na uone kinachobadilika kaunta.
+kumkaj_apps_don_t_phone	Programu za Kumkaj hazihitaji kuwasiliana na seva ili kufanya kazi. Kata intaneti na uone kinachobadilika kwenye kaunta.
 cut_the_internet	Kata intaneti
 internet_on	Intaneti: imewashwa
 book_a_parcel_or_take	Sajili kifurushi au pokea agizo
@@ -84,10 +84,10 @@ company	KAMPUNI
 brand	CHAPA
 concrete_business_operating_system_apps	Programu halisi za mifumo ya uendeshaji wa biashara
 products	BIDHAA
-courier_restaurant_grocery_pharmacy	Usafirishaji vifurushi · mgahawa · duka la vyakula · duka la dawa
+courier_restaurant_grocery_pharmacy	Usafirishaji wa vifurushi · mgahawa · duka la vyakula · duka la dawa
 courier_desk_book_label_hand	Dawati la usafirishaji — sajili, lebo, kabidhi, lipa.
 restaurant_system_table_kitchen_bill	Mfumo wa mgahawa — meza, jiko, bili, kufunga siku.
-grocery_counter_sell_khata_stock	Kaunta ya duka la vyakula — uza, daftari la madeni, hisa, kitabu cha siku.
+grocery_counter_sell_khata_stock	Kaunta ya duka la vyakula — uza, daftari la madeni, stoku, kitabu cha siku.
 pharmacy_counter_batch_expiry_bill	Kaunta ya duka la dawa — kundi, tarehe ya mwisho, bili, kufunga siku.
 privacy	Faragha
 terms	Masharti
@@ -102,7 +102,7 @@ chapter_languages	Lugha
 chapter_who_makes_it	Nani anaitengeneza
 toy_bring_back	Rudisha intaneti
 toy_internet_off	Intaneti: imezimwa
-toy_verdict_off	Intaneti imezimwa — na hakuna kilichobadilika kaunta.
+toy_verdict_off	Intaneti imezimwa — na hakuna kilichobadilika kwenye kaunta.
 acct_page_title	Akaunti — Kumkaj
 acct_lede	Kila bidhaa ya Kumkaj ina akaunti yake (na wingu lake). Chagua biashara unayoendesha — kuingia na kulipa kunabaki kwenye tovuti ya bidhaa hiyo.
 acct_product_accounts	Akaunti za bidhaa
@@ -112,7 +112,7 @@ acct_kirano_blurb	Akaunti ya kaunta ya duka la vyakula
 acct_tabiyat_blurb	Akaunti ya kaunta ya duka la dawa
 acct_open_account	Fungua akaunti
 shop_page_title	Duka — Kumkaj
-shop_lede	Mipango ya wingu ya kila mwaka — maumbo matano yale yale kwa kila biashara (Bure milele, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / mwaka bila kodi, au nukuu maalum). Kodi huongezwa wakati wa malipo. Kila bidhaa ina duka na akaunti yake.
+shop_lede	Mipango ya wingu ya kila mwaka — aina tano zile zile kwa kila biashara (Bure milele, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / mwaka bila kodi, au nukuu maalum). Kodi huongezwa wakati wa malipo. Kila bidhaa ina duka na akaunti yake.
 shop_product_shops	Maduka ya wingu ya bidhaa
 shop_moklanjo_blurb	Wingu la dawati la usafirishaji kwa moklanjo.com
 shop_khaynjo_blurb	Wingu la mgahawa kwa khaynjo.com

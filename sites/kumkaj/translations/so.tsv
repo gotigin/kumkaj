@@ -17,10 +17,10 @@ adding_up	Way is dheelitiran yihiin
 nothing_on_this_counter_waits	Waxba miiskan kuma sugaan daruurta.
 scroll_or_use_the_dots	Hoos u dhaqaaji ama isticmaal dhibcaha si aad qaybaha ugu boodo.
 n_02_built_for_your_trade	02 · LOOGU TALAGALAY XIRFADDAADA
-a_desk_for_each_trade	Miis xirfad kasta.\nMa aha hal app oo leh furaha bedelka.
-not_one_app_with_a	Ma aha hal app oo leh badhan xirfad-bedel. Alaab kasta waxaa loo naqshadeeyay hal nooc oo miis ah, oo ku hadla ereyada xirfaddaas.
+a_desk_for_each_trade	Miis xirfad kasta.\nMa aha hal app oo leh badhan beddel.
+not_one_app_with_a	Ma aha hal app oo leh badhan xirfad-beddel. Alaab kasta waxaa loo naqshadeeyay hal nooc oo miis ah, oo ku hadla ereyada xirfaddaas.
 courier_offices_franchise_counters_own	XAFIISYADA XAMUULKA · MIISASKA WAKIILLADA · GAARSIIYAYAASHAADA
-book_label_hand_over_track	Diiwaangeli → calaamad → gacan-geli → raac → xisaabi.
+book_label_hand_over_track	Diiwaangeli → calaamadee → u dhiib → raadraac → xisaabi.
 next_booking_in_one_tap	Diiwaangelinta xigta hal taabasho
 actual_or_volumetric_weight_rounded	Miisaanka dhabta ah ama mugga, sida aad rabto loo soo koobay
 rider_cash_on_delivery_expected	Lacag-bixinta marka la helo ee gaarsiiyaha: la filayo marka loo eego la dhiibay
@@ -35,7 +35,7 @@ kirana_grocery_neighbourhood_shops	KIRANA · RAASHIN · DUKAAMADA XAAFADDA
 sell_khata_stock_day_book	Iib → buugga deynta → kayd → buugga maalinta.
 fast_counter_sell_with_short	Iib degdeg ah oo miiska ah oo leh koodh gaagaaban
 customer_credit_and_supplier_dues	Deynta macaamiisha iyo deymaha alaab-qeybiyayaasha
-buy_into_stock_offline_forever	Iibso kaydka — internet la’aan weligiis
+buy_into_stock_offline_forever	Iibsashadu waxay gashaa kaydka — internet la’aan weligiis
 visit_kirano_shop	Booqo kirano.shop  →
 chemists_pharmacy_counters	FARMASHIYAYAAL · MIISASKA FARMASHIYAHA
 medicine_batch_bill_day_close	Daawo → dufcad → biil → xiritaanka maalinta.
@@ -44,7 +44,7 @@ batch_and_expiry_alerts_on	Digniinnada dufcadda iyo dhicitaanka iibsashada
 owner_schedule_h_rx_notes	Qoraallada milkiilaha ee Schedule H / warqadaha dhakhtarka — ma aha is-ka-dhigid u hoggaansanaan
 visit_tabiyat_shop	Booqo tabiyat.shop  →
 n_03_your_books_stay_with	03 · BUUGAAGTAADU WAY KULA JOOGAAN
-your_books_live_in_your	Buugaagtaadu waxay ku nool yihiin dukaankaaga.
+your_books_live_in_your	Buugaagtaadu waxay ku jiraan dukaankaaga.
 sales_parties_and_the_day	Iibka, dhinacyada iyo buugga maalinta waxaa lagu qoraa qalabka miiska iibkaaga — ma aha server aad kiraysatay.
 on_your_device	Qalabkaaga
 every_sale_payment_and_docket	Iib kasta, lacag-bixin kasta iyo warqad dirid kasta waxaa lagu kaydiyaa kombiyuutarka ama tablet-ka aad leedahay.
@@ -54,8 +54,8 @@ copies_you_keep	Nuqullo aad haysato
 save_a_backup_copy_whenever	Kaydi nuqul kayd ah markaad doonto. Waa fayl, waana adiga leh.
 extra_counters_and_tablets_join	Miisas iyo tablet-yo dheeri ah waxay ku xirmaan Wi-Fi-gaaga — internet dhexda kuma jiro.
 n_04_try_it	04 · ISKU DAY
-pull_the_plug_on_the	Ka saar internetka fiilada.
-kumkaj_apps_don_t_phone	App-yada Kumkaj uma baahna inay server la xiriiraan si ay u shaqeeyaan. Jar internetka oo daawo waxa isbedela miiska iibka.
+pull_the_plug_on_the	Fiilada internetka ka saar.
+kumkaj_apps_don_t_phone	App-yada Kumkaj uma baahna inay server la xiriiraan si ay u shaqeeyaan. Jar internetka oo daawo waxa isbeddela miiska iibka.
 cut_the_internet	Jar internetka
 internet_on	Internet: shidan
 book_a_parcel_or_take	Diiwaangeli baakad ama qaado dalab
@@ -79,13 +79,13 @@ same_shaping_engine_as_the	Isla mishiinka qaabeynta qoraalka ee app-yada, si xar
 n_07_who_makes_it	07 · CIDDA SAMEYSA
 made_under_gotigin	Waxaa lagu sameeyay Gotigin hoostiisa.
 trademark	SUMADDA GANACSIGA
-memon_for_find_it_pronounced	Luqadda Memon “hel” · loogu dhawaaqo go-tee-geen
+memon_for_find_it_pronounced	Af-Memon ahaan waa “hel” · loogu dhawaaqo go-tee-geen
 company	SHIRKADDA
 brand	MAGACA GANACSIGA
 concrete_business_operating_system_apps	App-yada nidaamyada hawlgalka ganacsiga ee la taaban karo
 products	ALAABOOYINKA
 courier_restaurant_grocery_pharmacy	Xamuul · makhaayad · dukaan raashin · farmashiye
-courier_desk_book_label_hand	Miiska xamuulka — diiwaangeli, calaamad, gacan-geli, xisaabi.
+courier_desk_book_label_hand	Miiska xamuulka — diiwaangeli, calaamadee, u dhiib, xisaabi.
 restaurant_system_table_kitchen_bill	Nidaamka makhaayadda — miis, jiko, biil, xiritaanka maalinta.
 grocery_counter_sell_khata_stock	Miiska dukaanka raashinka — iib, buugga deynta, kayd, buugga maalinta.
 pharmacy_counter_batch_expiry_bill	Miiska farmashiyaha — dufcad, dhicitaan, biil, xiritaanka maalinta.
@@ -102,7 +102,7 @@ chapter_languages	Luqadaha
 chapter_who_makes_it	Cidda sameysa
 toy_bring_back	Soo celi internetka
 toy_internet_off	Internet: dansan
-toy_verdict_off	Internetku waa dansan yahay — waxna iskuma bedelin miiska iibka.
+toy_verdict_off	Internetku waa dansan yahay — waxba iskuma beddelin miiska iibka.
 acct_page_title	Akoon — Kumkaj
 acct_lede	Alaab kasta oo Kumkaj ah waxay leedahay akoonkeeda (iyo daruurteeda). Dooro xirfadda aad wado — galitaanka iyo lacag-bixintu waxay ku hadhaan goobta alaabtaas.
 acct_product_accounts	Akoonnada alaabooyinka

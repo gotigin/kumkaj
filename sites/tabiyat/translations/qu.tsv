@@ -62,7 +62,7 @@ leave_a_balance_on_khata	Manu qillqapi puchuqta saqiy, mana huk yupay qillqa app
 supplier_buys_too	Apamuqkunamanta rantiypas
 who_you_owe_updates_when	Waqaychasqa chayamuqtin manuyki kaqkunaqa musuqyan.
 auditable	Qhawarinalla
-who_when_and_how_much	Pi, hayk’aq, hayk’apas p’unchaw hatun qillqapim qhepan.
+who_when_and_how_much	Pi, hayk’aq, hayk’apas p’unchaw hatun qillqapim qhipan.
 n_6_internet_down	6 · INTERNET CHINKARQANCHU?
 the_internet_drops_the_counter	Internet chinkan. Qhatuna mesaqa rantikushallanmi.
 router_no_internet	Router: mana internet
@@ -105,7 +105,7 @@ bill_paid_line	Pagasqa · p’unchaw hatun qillqa musuqyachisqa
 lan_eyebrow	6 · YAPA QULLQI WAQAYCHANA
 lan_title	Qhatup Wi-Fi-ninpi huk qullqi waqaychana.
 cta_installers_note	Churanakunaqa kaypi churakunqa sapankanku musuq llamk’anapi allinta churakuqtin. Chaykama, WhatsApp-pi qhawachiyta mañakuy.
-cta_whatsapp_soon	WhatsApp qhawachiy siqiqa pisi pachallamanta kicharikunqa. Willakuyniyki kayhina kanqa: “{message}”.
+cta_whatsapp_soon	WhatsApp-pi qhawachiyqa pisi pachallamanta qallarinqa. Willakuyniyki kayhina kanqa: “{message}”.
 acct_page_title	Cuenta — Tabiyat
 acct_lede	Huk cuentalla web-paq app-kunapaqpas — kikin formulario musuq kaqtiykipas kutimuqtiykipas.
 acct_email	Correo
@@ -113,7 +113,7 @@ acct_name_optional	Suti (akllana)
 acct_password	Yaykuna rimay
 acct_continue	Hinallayá ruway
 acct_forgot	Yaykuna rimayta qunqarqankichu?
-acct_reset_hint	Musuqmanta churana t’inkita correoman kachasqayku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
+acct_reset_hint	Musuqmanta churana t’inkita correoykiman kachasaqku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
 acct_send_reset	Musuqmanta churana t’inkita kachay
 acct_cancel	Chinkachiy
 acct_or_continue	utaq kaywan qatiy
@@ -123,11 +123,11 @@ acct_send_sms	SMS unanchata kachay
 acct_sms_code	SMS unancha
 acct_confirm_code	Unanchata takyachiy
 acct_signed_in	Yaykusqaña
-acct_signed_in_as	Kayhina yaykusqa
+acct_signed_in_as	Kay cuentawan yaykusqa
 acct_status	Imayna kasqan
 acct_sign_in_methods	Yaykuna ñankuna
 acct_cloud_username	Phuyupi llamk’achiqpa sutin
-acct_plan	Yuyaychay
+acct_plan	Plan
 acct_resend_verify	Takyachina correota yapamanta kachay
 acct_sign_out	Lluqsiy
 acct_cloud_sandbox	Kumkaj Cloud (malliy)
@@ -136,7 +136,7 @@ acct_email_for_password	Yaykuna rimaywan yaykunapaq correo
 acct_new_password	Musuq yaykuna rimay
 acct_confirm_new_password	Musuq yaykuna rimayta takyachiy
 acct_add_way	Huk yaykuna ñanta yapay
-acct_link_hint	Ñankunata kikin cuentaman t’inkiy, hukkaq pantaqtin yaykuyta kutichinaykipaq.
+acct_link_hint	Ñankunata kikin cuentaman t’inkiy, huknin mana llamk’aqtin yaykuyta kutichinaykipaq.
 acct_link_google	Google-ta t’inkiy
 acct_link_microsoft	Microsoft-ta t’inkiy
 acct_link_github	GitHub-ta t’inkiy
@@ -144,14 +144,14 @@ acct_link_phone	Teléfonota t’inkiy
 acct_send_sms_link	T’inkinapaq SMS-ta kachay
 acct_confirm_link_phone	Takyachiy, teléfonotataq t’inkiy
 shop_page_title	Qhatu — Tabiyat
-shop_lede	Sapa wata phuyu yuyaychaykuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Tabiyat app-qa wiñaypaq qasillam qhepan, mana rantichiy willakuykunayuq.
+shop_lede	Sapa wata phuyu plankuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Tabiyat app-qa wiñaypaq qasillam qhipan, mana rantichiy willakuykunayuq.
 shop_cart	Rantina wayaqa
 shop_cart_empty_hint	Rantina wayaqayki ch’usaqmi. Steady, Swift utaq Priority-ta yapay.
 shop_checkout	Pagay
 shop_clear	Pichay
 shop_checkout_hint	Pagayqa Cuenta nisqapi yaykuchisunki, chaymanta pagayta qallarin (malliy yanqa ruway utaq Paddle kichanakuna churasqa kaqtin).
-acct_billing_hint	Sapa wata yuyaychaykuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhepan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
-shop_cloud_plans	Phuyu yuyaychaykuna
+acct_billing_hint	Sapa wata plankuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhipan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
+shop_cloud_plans	Phuyu plankuna
 acct_federated	Huk cuentawan yaykuy
 acct_err_invalid_email	Allin correota qillqay.
 acct_err_weak_password	Aswan pisimanta 6 sananchayuq yaykuna rimayta llamk’achiy.
@@ -180,10 +180,10 @@ acct_billing_off	Pagayqa manaraq phuyu API-pi kicharisqachu.
 acct_billing_no_provider	Manan chiqap pagay yanapaqqa phuyu API-pi kicharisqachu (yanqa ruwayllam llamk’anaykipi kan).
 price_quote	Chanin yuyay
 price_per_year	₹{amount}/wata mana impuestoyuq
-acct_pay_received	Pagayqa chaskisqañam — yuyaychayniyki musuqyachikushan…
+acct_pay_received	Pagayqa chaskisqañam — planniyki musuqyachikushan…
 acct_pay_declined	Pagayqa mana chaskisqachu utaq mana atikurqanchu
-acct_pay_failed_detail	{detail}. Yuyaychayniykiqa manan t’ikrasqachu.
-acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Yuyaychayniykiqa kikillanmi.
+acct_pay_failed_detail	{detail}. Planniykiqa manan t’ikrasqachu.
+acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Planniykiqa kikillanmi.
 acct_checkout_failed	Pagay mana atikurqanchu
 acct_pay_with	{provider}-wan pagay
 acct_plan_until	{plan} · {date}-kama
