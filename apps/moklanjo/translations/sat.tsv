@@ -90,7 +90,7 @@ rounded	ᱜᱚᱞ
 split	ᱦᱟᱹᱴᱤᱧ
 counter	ᱠᱟᱣᱩᱱᱴᱟᱨ
 parcel	ᱯᱟᱨᱥᱮᱞ
-order	ᱚᱰᱚᱨ ᱢᱮ
+order	ᱚᱰᱚᱨ
 sales	ᱵᱩᱠᱤᱝ
 sales_refunds	ᱵᱩᱠᱤᱝ ᱟᱨ ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
 day_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ
@@ -157,7 +157,7 @@ breadth_cm_ph	ᱵᱤ ᱥᱤ ᱮᱢ
 height_cm_ph	ᱮᱪ ᱥᱤ ᱮᱢ
 chargeable_kg	ᱪᱟᱨᱡᱽ ᱞᱮᱠᱟᱱ ᱠᱮᱡᱤ
 awb_label	AWB
-booking_help	आजा़र + आ़तोर (खाली OK) → ठांव → तोल → रेट बाछाव → खाता/नकद → भुगतान। माझरे: «ᱰᱨᱟᱯᱷᱴ ᱞᱮᱠᱟ ᱫᱚᱦᱚ ᱢᱮ» (ᱵᱚᱨᱰ रे सेव, पोथी रे बाङ) तेकार आगाम ग्राहक सेवाय मे; लाहातारे ᱵᱚᱨᱰ रे ड्राफ्ट टैप मे। रसीद रे AWB छापाक्आ। आगाम बुकिंग डेस्क साफआक्आ।
+booking_help	ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ + ᱠᱚᱱᱥᱟᱭᱤᱱᱤ (ᱠᱷᱟᱹᱞᱤ ᱪᱚᱞᱚᱜᱼᱟ) → ᱡᱟᱭᱜᱟ → ᱡᱚᱠᱷᱟ → ᱨᱮᱴ ᱵᱟᱪᱷᱟᱣ → ᱠᱷᱟᱛᱟ/ᱱᱚᱜᱚᱫ → ᱯᱮᱢᱮᱱᱴ᱾ ᱛᱟᱞᱟ ᱨᱮ: «ᱰᱨᱟᱯᱷᱴ ᱞᱮᱠᱟ ᱫᱚᱦᱚ ᱢᱮ» (ᱵᱚᱰ ᱨᱮ ᱥᱟᱺᱪᱟᱣ, ᱯᱚᱛᱚᱵ ᱨᱮ ᱵᱟᱝ) ᱛᱟᱭᱚᱢ ᱞᱟᱦᱟ ᱜᱨᱟᱦᱚᱠ ᱥᱮᱵᱟ ᱢᱮ; ᱵᱚᱰ ᱨᱮ ᱰᱨᱟᱯᱷᱴ ᱴᱮᱯ ᱢᱮ᱾ ᱨᱥᱤᱫ ᱨᱮ AWB ᱪᱷᱟᱯᱟᱜᱼᱟ᱾ ᱞᱟᱦᱟ ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠ ᱥᱟᱯᱷᱟ ᱟᱭ᱾
 cart_empty_hint	ᱰᱮᱥᱠ ᱠᱷᱟᱹᱞᱤ ᱜᱮᱭᱟ — ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ/ᱠᱚᱱᱥᱟᱭᱤᱱᱤ ᱚᱯᱥᱚᱱᱟᱞ, ᱥᱮᱴ ᱴᱷᱟᱶ ᱟᱨ ᱚᱡᱚᱱ, ᱢᱤᱫ ᱫᱚᱨ ᱨᱮ ᱮᱰᱤ ᱴᱮᱯ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱮᱢᱚᱜ ᱢᱮ ᱾
 team	ᱫᱚᱞ
 team_pins	ᱫᱚᱞ ᱟᱨ ᱯᱤᱱ ᱠᱚ
@@ -168,7 +168,7 @@ backup_settings	ᱵᱮᱠᱟᱯ ᱟᱨ ᱥᱮᱴᱤᱝ
 lock_app	ᱞᱚᱠ ᱮᱯ
 pick	ᱵᱟᱪᱷᱟᱣ ᱢᱮ
 select	ᱵᱟᱪᱷᱟᱣ ᱢᱮ
-advance	अग्रिम
+advance	ᱞᱟᱦᱟ
 owner	ᱢᱟᱞᱤᱠ
 staff	ᱠᱟᱹᱢᱤᱭᱟᱹ
 photo	ᱪᱤᱛᱟᱹᱨ
@@ -200,7 +200,7 @@ new_server_name_ph	ᱱᱟᱶᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱧᱩᱛᱩᱢ (ᱚᱯᱥ
 server_remove_pin_ph	ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ
 only_owner_remove_server	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ
 owner_pin_remove_server	ᱱᱚᱣᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ
-device_setup_help	ᱥᱮᱨᱵᱷᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱱᱚᱸᱰᱮ ᱫᱚᱦᱚ ᱟᱠᱟᱫᱟᱭ ᱾ ᱠᱞᱟᱭᱮᱱᱴ ᱫᱚ ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱶ ᱡᱚᱲ ᱮᱫᱟᱭ ᱾ एनेम Server बाङ खान «ᱵᱮᱠᱟᱯ ᱫᱚᱦᱲᱟᱭ ᱢᱮ» आम बाछाव फाइल खोन पोथी को हा़टाक्आ (settings रे रिस्टोर लेका जाँच)।
+device_setup_help	Server ᱯᱚᱛᱚᱵ ᱠᱚ ᱱᱚᱸᱰᱮ ᱫᱚᱦᱚ ᱟᱠᱟᱫᱟᱭ᱾ Client ᱫᱚ Server ᱥᱟᱶ ᱡᱚᱲᱟᱣᱜᱼᱟᱭ᱾ Server ᱵᱟᱹᱱᱩᱜ ᱠᱷᱟᱱ «ᱵᱮᱠᱟᱯ ᱫᱚᱦᱲᱟᱭ ᱢᱮ» ᱛᱮ ᱟᱢ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱫ ᱨᱮᱫ ᱠᱷᱚᱱ ᱯᱚᱛᱚᱵ ᱡᱷᱤᱡᱽᱜᱼᱟ (Settings ᱨᱤᱥᱴᱚᱨ ᱞᱮᱠᱟ ᱜᱮ ᱧᱮᱞ)᱾
 currency	ᱠᱟᱨᱟᱱᱥᱤ
 backup	ᱵᱮᱠᱚᱯ
 settings_sec_diag	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠᱥ
@@ -219,7 +219,7 @@ snack_secs_ph	ᱥᱮᱠᱮᱱᱰ (3–60, ᱰᱤᱯᱷᱚᱞᱴ 10)
 snack_secs_save	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
 snack_secs_saved	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱮᱱᱟ — {n} ᱥᱮᱠᱮᱱᱰ
 snack_secs_bad	ᱥᱮᱠᱮᱱᱰ ᱠᱚ ᱢᱤᱫ ᱮᱞ ᱞᱮᱠᱟᱛᱮ ᱮᱢ ᱢᱮ (᱓-᱖᱐)
-cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+cancelled	ᱨᱚᱫᱽ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
 cancelling	ᱵᱟᱹᱛᱤᱞᱚᱜ ᱠᱟᱱᱟ…
 cancel	ᱵᱚᱱᱫᱚ
 press_back_again_exit	ᱚᱰᱚᱜ ᱞᱟᱹᱜᱤᱫ «ᱨᱩᱣᱟᱹᱲ ᱢᱮ» ᱫᱚᱦᱲᱟ ᱞᱤᱱ ᱢᱮ
@@ -625,7 +625,7 @@ unlock_with_login	ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢ�
 update_my_password	ᱤᱧᱟᱜ ᱯᱟᱥᱣᱟᱨᱰ ᱟᱯᱰᱮᱴ ᱢᱮ
 update_my_pin	ᱤᱧᱟᱜ ᱯᱤᱱ ᱟᱯᱰᱮᱴ ᱢᱮ
 duress_heading	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱩᱱᱞᱚᱠ (ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ)
-duress_help	Offline Server/Client LAN हिं — cloud बाङ। Default बन्द: Owner नोवा PIN सेव कاتے मितान चालुआ (Team, Client till रे हो)। Unlock रे आ़सली staff PIN जायगा रे नोवा PIN लिखाय ते Server रे पोथी entry को गोमाक्आ आर डेस्क Owner लेका साधारण नुम हा़टाक्आ — रेट, पार्टी, जोन, स्टाफ आर सेटिंग को थाक्आ। schema आर config गोमा बाङ। जाहाँय PIN लेका आलो। Clear बटन ते बन्द मे।
+duress_help	Offline Server/Client LAN ᱜᱮ — cloud ᱵᱟᱝ᱾ Default ᱵᱚᱸᱫᱽ: Owner ᱱᱚᱣᱟ PIN ᱥᱟᱺᱪᱟᱣ ᱠᱟᱛᱮ ᱢᱤᱫ ᱫᱷᱟᱣ ᱪᱟᱹᱞᱩ ᱟ (Team, Client till ᱨᱮ ᱦᱚᱸ)᱾ Unlock ᱨᱮ ᱥᱟᱹᱨᱤ staff PIN ᱵᱚᱫᱚᱞ ᱛᱮ ᱱᱚᱣᱟ PIN ᱚᱞ ᱞᱮᱠᱷᱟᱱ Server ᱨᱮᱱᱟᱜ ᱯᱚᱛᱚᱵ ᱮᱱᱴᱨᱤ ᱢᱮᱴᱟᱣᱜᱼᱟ ᱟᱨ ᱰᱮᱥᱠ Owner ᱞᱮᱠᱟ ᱡᱷᱤᱡᱽᱜᱼᱟ — ᱨᱮᱴ, ᱯᱟᱨᱴᱤ, ᱡᱚᱱ, staff ᱟᱨ settings ᱛᱟᱦᱮᱸᱱᱟ᱾ Schema ᱟᱨ config ᱵᱟᱝ ᱢᱮᱴᱟᱣᱜᱼᱟ᱾ ᱚᱠᱚᱭᱟᱜ PIN ᱥᱟᱶ ᱢᱤᱫ ᱵᱟᱝ᱾ Clear ᱵᱚᱛᱟᱢ ᱛᱮ ᱵᱚᱸᱫᱽ᱾
 duress_pin_ph	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ (4-12 ᱮᱞ)
 duress_confirm_ph	ᱴᱷᱟᱹᱣᱠᱟᱹ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱴᱟᱭᱤᱯ ᱢᱮ
 save_duress_pin	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
@@ -801,7 +801,7 @@ app_template_blurb	ᱮᱛᱚᱦᱚᱵ ᱰᱮᱥᱠ ᱵᱟᱪᱷᱟᱣ ᱢᱮ। 
 app_template_skip	ᱱᱤᱛᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
 app_template_status	ᱥᱟᱨᱵᱷᱟᱨ ᱛᱭᱟᱨ — ᱢᱤᱫᱴᱟᱹᱝ ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱲᱟᱜ ᱢᱮ
 app_template_importing	ᱟᱯᱞᱟᱭᱚᱜ ᱠᱟᱱᱟ {title}...
-app_template_public_hdr	टेम्पलेट
+app_template_public_hdr	ᱴᱮᱢᱯᱞᱮᱴ
 app_template_import_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱟᱹᱜᱩ ᱢᱮ
 app_template_wipe_warn	ᱱᱚᱣᱟ ᱛᱮ ᱠᱷᱟᱛᱟ ᱨᱮᱭᱟᱜ ᱵᱮᱯᱟᱨ ᱰᱟᱴᱟ (ᱵᱩᱠᱤᱝ, ᱠᱷᱟᱛᱟ) ᱥᱟᱯᱷᱟᱜᱼᱟ ᱟᱨ ᱴᱮᱢᱯᱞᱮᱴ ᱫᱩᱠᱟᱱ ᱥᱮᱴᱤᱝ ᱞᱟᱹᱜᱤᱫ ᱦᱩᱭᱩᱜᱼᱟ। ᱞᱟᱦᱟᱜ ᱢᱮ?
 app_template_wipe_continue	ᱞᱟᱦᱟᱜ ᱢᱮ
@@ -822,8 +822,8 @@ trk_in_transit	ᱴᱨᱟᱱᱡᱤᱴ ᱨᱮ
 trk_delivered	ᱦᱟᱛᱟᱣ ᱟᱠᱟᱱᱟ
 trk_rto	ᱵᱷᱮᱡᱟᱭᱤᱡ ᱴᱷᱮᱱ ᱨᱩᱣᱟᱹᱲᱚᱜ ᱠᱟᱱᱟ
 lane_to_dispatch	ᱵᱷᱮᱡᱟ ᱞᱟᱹᱜᱤᱫ
-lane_with_carrier	ᱠᱮᱨᱤᱭᱟᱨ ᱥᱟᱶᱛᱮ
-lane_failed	ᱵᱟᱝᱹᱫᱟᱲᱮ
+lane_with_carrier	ᱵᱟᱦᱚᱠ ᱴᱷᱮᱱ
+lane_failed	ᱵᱤᱯᱷᱚᱞ
 lane_done_today	ᱛᱮᱦᱮᱧ ᱥᱟᱹᱛ ᱮᱱᱟ
 ops_board_help	ᱯᱟᱨᱥᱟᱞ ᱚᱠᱟ ᱛᱮ ᱩᱱᱠᱩ ᱛᱮᱦᱮᱧᱟᱜ ᱠᱟᱹᱢᱤ ᱨᱮ ᱢᱮᱱᱟᱜ ᱠᱚᱣᱟ ᱾ ᱯᱟᱨᱥᱟᱞ ᱴᱮᱯ (ᱵᱟᱝᱠᱷᱟᱱ ᱥᱠᱮᱱ) ᱚᱱᱟ ᱵᱟᱪᱷᱟᱣ ᱞᱟᱹᱜᱤᱫ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱢᱤᱫ ᱫᱷᱟᱣ ᱛᱮ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱡᱚᱛᱚ ᱨᱮ ᱠᱟᱹᱢᱤ ᱢᱮ — ᱥᱟᱱᱟᱢ ᱞᱮᱱ ᱫᱚ ᱮᱠᱮᱱ ᱚᱱᱟ ᱯᱷᱤᱴ ᱞᱟᱹᱜᱤᱫ ᱜᱮ ᱮᱢᱚᱜ ᱠᱟᱱᱟ᱾
 lane_empty	ᱱᱤᱛᱚᱜ ᱱᱚᱸᱰᱮ ᱪᱮᱫ ᱦᱚᱸ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾

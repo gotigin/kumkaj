@@ -11,10 +11,10 @@ board_empty	Ym pat don kard.
 board_park_nothing	Ym don ei ei ban buh kum ka draft — pyndap ia ki jingsiew lane ki jingtip ba bniah shaphang ka jingpynrung kyrteng
 board_parked	La buh ha ka «Ka jingpein» — ka miej ka thylli mynta
 board_draft	Ka jingthoh
-board_booked	La buh
+board_booked	La thoh
 board_filter_all	Baroh
 board_filter_draft	Ka jingthoh
-board_filter_booked	La buh
+board_filter_booked	La thoh
 board_cols_fmt	{n} ki tnum
 board_summary_fmt	{total} ki karta · {drafts} ki jingthoh · {booked} la buh
 board_card_no_charges	Ym pat pyndap bai lutksan
@@ -26,10 +26,10 @@ board_discard	Pynduh noh
 board_discarded	La weng noh ia ka draft
 buy	Siew noh
 books	Ka kot sngi
-books_help	Ka jinglong jong kane ka sngi. Ka jingpynrung = ki parcel kiba rung. Ka jingsiew = ki bill & ki jinglut jong ki nongkit. Ki Party = ki nongphah & ki nongkit.
+books_help	Ka jinglong jong kane ka sngi. Ka jingpynrung = ki parcel kiba rung. Ka jingsiew = ki bill & ki jingsep jong ki nongkit. Ki Party = ki nongphah & ki nongkit.
 buy_help	Ki kot pynlut bad ki bill jong ki nongkit (ka pisa mih). Ka jingkhein jingdiah ka sah ha ka kot jingkhein jong ka party.
 sell_money_in	Bok ia ka parsal
-buy_money_out	Ka jinglut / ka bill jong u nongkit
+buy_money_out	Ka jingsep / ka bill jong u nongkit
 record_purchase	Ka jingthied rekod
 add_expense	Ka kot jingpynlut
 bank_book	Ka kot bank
@@ -66,7 +66,7 @@ total	Baroh
 cash	Ka pisa
 upi	UPI
 card	Kad
-credit	Ki nongthied bad ki nongsam
+credit	Ki party
 clear	Pynkhuid
 ready_to_sell	La pynkhreh ban book
 today_prefix	Mynta ka sngi
@@ -88,9 +88,9 @@ applied	La pyndonkam
 note_ph	Jingpynkynmaw (jied)
 rounded	BA PYLLI
 split	Jingphiah
-counter	Ka shuki
-parcel	Kaba phah ia kino kino ki tiar sha kawei pat ka jaka kum ka jaka ba jngai
-order	Jingbthah
+counter	Ka kaunta
+parcel	Ka jingphah
+order	Jingpan
 sales	Ki jingbuh jaka
 sales_refunds	Ki jingpynrung kyrteng bad jingpynphai pisa
 day_close	Ka sngi kaba khang
@@ -157,7 +157,7 @@ breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kg ba lah ban siew
 awb_label	AWB
-booking_help	U nongphah + u nongshim (thylli OK) → ka jaka ba leit → ka jingkhia → ka dor → Ka jingkhein/Ka pisa → jingsiew. Hapoh ka kam: «Pynsah kum ka draft» (buh ha Board, ym ha ki kot) nangta shakri ia u nongthoh ba bud; tap ia ka draft ha Board ban bun. AWB ka shon ha ka resit. Ka jingbook kaba bud ka pynkhuid ia ka shuki.
+booking_help	U nongphah + u nongshim (thylli OK) → ka jaka ba leit → ka jingkhia → ka dor → Ka jingkhein/Ka pisa → jingsiew. Hapoh ka kam: «Pynsah kum ka draft» (buh ha Board, ym ha ki kot) nangta shakri ia u nongthoh ba bud; tap ia ka draft ha Board ban bun. AWB ka shon ha ka resit. Ka jingbook kaba bud ka pynkhuid ia ka kaunta.
 cart_empty_hint	Ka miej kaba thylli — u nongphah/nongpdiang u lah ban jied, buh ia ka jaka leit & ka jingkhia, tap Pynrung ha ka dor, nangta siew.
 team	Ka kynhun
 team_pins	Ka tim bad ki PIN
@@ -219,7 +219,7 @@ snack_secs_ph	Ki sekhon (3-60, ka jingpynkylla 10)
 snack_secs_save	Pynsah ia ka por jingpynbna
 snack_secs_saved	Ka por pyntip ba la pynduna — {n} sekhon .
 snack_secs_bad	Pynrung ia ki sekhon kum u nombar (3–60) .
-cancelled	La weng noh
+cancelled	La pynsangeh
 cancelling	Ka jingpynsangeh…
 cancel	Pynsangeh
 press_back_again_exit	Nion biang ia ka “Badien” ban mih na ka app
@@ -271,7 +271,7 @@ apply_country_pack	Pyndonkam ia ka ri pack
 datetime_appearance	Ka tarik & ka por jingmih
 datetime_appearance_help	Ki kot ki buh ia ka RFC3339 kaba nyngkong eh hapoh. Kine ki pynkylla tang kumno ki tarik bad ki kynja por ki paw ha ki resit, ki jingthoh, ki kaiphod, bad ka screen.
 datetime_example	Nuksa mynta: {ex} .
-date_order	Ka jingbthah ia ka tarik
+date_order	Ka jingpynbeit tarik
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
@@ -372,7 +372,7 @@ print_route_label	Ka lynti print
 new_party_kind_label	Ka jait party kaba thymmai
 done_open_books	La dep — plie ia ki kot .
 export_day	Ka sngi shalan
-extra_note_expense_ph	Ka jingthoh ba la pyndap halor ka jinglut kaba khatduh
+extra_note_expense_ph	Ka jingthoh ba la pyndap halor ka jingsep kaba khatduh
 extra_note_awb_ph	Ka jingthoh ba kham bniah halor kane ka AWB / jingdie
 failed_delivery	Ka jingpynpoi kaba bakla
 find_scan_awb	Ka jingwad / Skan ia ka AWB
@@ -401,7 +401,7 @@ ndr_customer_unavailable	Ym lah ban ioh
 ndr_door_locked	La khang ia ka jingkhang
 ndr_other	Kawei
 ndr_refused	Len
-out_for_delivery	Ka jingpynpoi
+out_for_delivery	La mih ban pynpoi
 print_drs	Pynmih ia ka DRS
 print_run_sheet	Pynmih ia ka sla
 reattempt	Pyrshang biang
@@ -649,10 +649,10 @@ second_way	Ka lynti kaba ar
 weight_in	Ka jingkhia ha
 size_in	Ka jingheh ha
 goods_received	Ki mar ba la ioh
-expense_heading	Jinglut
+expense_heading	Jingsep
 notes_attach_sale	Ki jingthoh bad ki jingpynrung (jied ban die)
 notes_attach_party	Ki jingthoh bad ki jingpyndait (nongthied ne nongsam ba la jied)
-attachments_last_expense	Ki jingpynrung (jinglut ba khatduh)
+attachments_last_expense	Ki jingpynrung (jingsep ba khatduh)
 credit_limit_heading	Ka jingthew jong ka ram (u nongthied ne nongsam ba la jied)
 pay_selected_heading	Siew ba la jied (pynbeit ia ka ram / shim lypa)
 write_off_heading	Thoh noh (pynkhuid khlem da siew)
@@ -702,7 +702,7 @@ counter_locked	Ka jingkhein 01 · La khang
 country_pack_help	Ka pack jong ka ri ka buh ia ka kyrteng khajna bad ki jingkhein, ka rel ba siew kloi, bad ka id jong ka kam ba la thoh ha ki bill. Kumkaj ym ju file khajna lane pynmih e-invoice sorkar hangno hangno ruh.
 currency_use_help	Scroll bad tap Pyndonkam na ka bynta kano kano ka pisa ba kyrshan.
 day_close_help	Ka jingthoh ia ka sngi ba khang ka buh ia kane ka jingpynkylla (bad ka jingpher jong ka drawer lada khein) ha ka kot jingpeit bniah. Kam sangeh ban die.
-expenses_word	Ki jinglut jingsep
+expenses_word	Ki jingsep
 feature_access_help	Ka jingrung ia ki jingdonkam na ka bynta ki nongtrei ba la jied (tap hadien ba la pynrung)
 footer_local	Local SQLite · Laitluid junom · Zero Lyer
 fresh_book_moklanjo	Fresh = katalog kaba thylli (pynrung ia ki tiar hadien). Ka kot = thoh ia ka stock kaba plie bad mano ba donkam ia phi harum.
@@ -816,14 +816,14 @@ report_day_lens	Pyni «Mynta ka sngi» kum
 report_day_lens_help	Kane ka pynkylla tang ia ka jingpeit — kam pynkylla haba ka «Ka sngi kaba khang» ka pynkylla ia ka «Mynta ka sngi». «Katkum ka Ka sngi kaba khang» bud ia ka sngi kaba khatduh; «Katkum ka shiteng miet» ka jingkut ha ka por 00:00 baje ha ka por jong ka ri.
 report_lens_day_close	Katkum ka Ka sngi kaba khang
 report_lens_midnight	Katkum ka shiteng miet
-trk_booked	La buh
+trk_booked	La thoh
 trk_picked_up	La shim
 trk_in_transit	Ha ka jingleit jingwan
 trk_delivered	La pynpoi
 trk_rto	Ka jingphah biang sha u nongphah
 lane_to_dispatch	Ban phah
-lane_with_carrier	Da u nongkit
-lane_failed	Bym longkam
+lane_with_carrier	Ha u nongkit
+lane_failed	Bym lah
 lane_done_today	La dep mynta ka sngi
 ops_board_help	Parcels by where they are in today's work. Tap ia ki parcel (lane scan ia ki) ban shim ia ki, nangta leh ia baroh ba la shim ha ka shisien shim — kawei pa kawei ka lane ka ai tang ia ki jingkhih kiba iadei bad ka.
 lane_empty	Ym don ei ei hangne ​​mynta.

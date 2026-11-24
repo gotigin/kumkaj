@@ -1,9 +1,9 @@
 # Kashmiri — كٲشُر (ks). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	ان لاک کٔرِو
 sell	فروخت
-buy	خٔریٖدٲری کٔرِو
+buy	خٔریٖد
 books	دۄہُک کھاتہ
-books_help	اَزُک حال۔ فروخت = اندر آمت پونٛسہ۔ خٔریٖدٲری = خرید تہٕ خرچہٕ۔ پارٹی = قرضِ گاہَک تہٕ سپلائر۔
+books_help	اَزُک حال۔ فروخت = اندر آمت پونٛسہ۔ خٔریٖد = خٔریٖدٲری تہٕ خرچہٕ۔ پارٹی = قرضِ گاہَک تہٕ سپلائر۔
 buy_help	اخراجاتُک واؤچر تہٕ سپلائر بِل (پٲنسہٕ آوُٹ)۔ آن اکاؤنٹ چھُ پارٹی لیجرَس پیٹھ روزان۔
 sell_money_in	چیٖز کٕنِو
 buy_money_out	خرچہٕ / سپلائر بِل
@@ -40,7 +40,7 @@ total	کُل
 cash	نَقَد
 upi	UPI
 card	کارڈ
-credit	گاہَک
+credit	پارٹی
 clear	صاف
 today_prefix	اَز
 owed	شاندار

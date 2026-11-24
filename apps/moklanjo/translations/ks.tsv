@@ -66,7 +66,7 @@ total	کُل
 cash	نَقَد
 upi	UPI
 card	کارڈ
-credit	گاہَک
+credit	پارٹی
 clear	صاف
 ready_to_sell	بُک کرنہٕ خٲطرٕ تیار
 today_prefix	اَز
@@ -822,7 +822,7 @@ trk_in_transit	رستَس پؠٹھ
 trk_delivered	واتنۆو
 trk_rto	سوزَن وولَس واپس گژھان
 lane_to_dispatch	سوزُن باقٕی
-lane_with_carrier	کیرِیَرَس نِش
+lane_with_carrier	کیرِیرَس نِش
 lane_failed	ناکام
 lane_done_today	اَز مُکمل
 ops_board_help	اَز کٮ۪ن کامَس منٛز پارسل کَتہِ چھِ، تَتھ حسابہٕ۔ پارسل دبٲیِو (یا سکین کٔرِو) تاکہ ژارنہٕ یِن، پتہٕ تمام ژارنہٕ آمٕتین پؠٹھ اَکہِ لَٹہِ کام کٔرِو — پرٮ۪تھ لین چھُ صرف تِم قدم ہاوان یِم تَتھ منٛز ٹھیک چھِ۔

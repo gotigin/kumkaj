@@ -2,8 +2,8 @@
 app_tagline	ᱨᱮᱥᱴᱩᱨᱮᱱᱴ ᱚᱰᱚᱨ, ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱾ ᱯᱷᱨᱤ ᱚᱯᱷᱞᱟᱭᱤᱱ᱾
 unlock	ᱡᱷᱤᱡᱽ
 pin_hint	ᱢᱟᱞᱤᱠ ᱯᱤᱱ 0000 ᱠᱷᱚᱱ ᱮᱦᱚᱵᱚᱜᱼᱟ
-sell	ᱚᱰᱚᱨ ᱢᱮ
-buy	ᱠᱤᱨᱤᱧ ᱢᱮ
+sell	ᱚᱰᱚᱨ
+buy	ᱠᱤᱨᱤᱧ
 books	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ
 books_help	ᱛᱮᱦᱮᱧᱟᱜ ᱯᱚᱡᱤᱥᱚᱱ᱾ ᱚᱰᱚᱨ = ᱚᱰᱚᱨ ᱤᱱ᱾ ᱠᱤᱨᱤᱧ = ᱠᱤᱨᱤᱧ ᱟᱨ ᱠᱷᱚᱨᱪᱟ᱾ ᱯᱟᱨᱴᱤ ᱠᱚ = ᱠᱨᱮᱰᱤᱴ ᱜᱚᱨᱦᱟᱠ ᱠᱚ ᱟᱨ ᱥᱟᱨᱵᱦᱟᱨᱤᱡ ᱠᱚ ᱾
 buy_help	ᱠᱷᱚᱨᱪᱟ ᱵᱷᱟᱩᱪᱟᱨ ᱟᱨ ᱥᱚᱯᱞᱟᱭᱚᱨ ᱵᱤᱞ (ᱯᱩᱭᱥᱟᱹ ᱵᱟᱦᱨᱮ)᱾ ᱚᱱ-ᱮᱠᱟᱣᱩᱱᱴ ᱯᱟᱨᱴᱤ ᱞᱮᱡᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾
@@ -255,7 +255,7 @@ amounts_show	ᱩᱫᱩᱜ ᱢᱮ
 counter	ᱠᱟᱣᱩᱱᱴᱟᱨ
 dine_in	ᱰᱟᱭᱤᱱ-ᱤᱱ
 takeaway	ᱤᱫᱤ ᱚᱣᱮ
-order	ᱚᱰᱚᱨ ᱢᱮ
+order	ᱚᱰᱚᱨ
 tables	ᱴᱮᱵᱩᱞ ᱠᱚ
 kitchen	ᱫᱟᱠᱟ ᱚᱲᱟᱜ
 sales	ᱟᱹᱠᱷᱨᱤᱧ
@@ -368,7 +368,7 @@ only_owner_remove_server	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱥᱮᱨᱵᱷ�
 owner_pin_remove_server	ᱱᱚᱣᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ
 device_setup_help	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱫᱚ ᱫᱚᱠᱟᱱ (ᱥᱮᱨᱵᱷᱟᱨ) ᱟᱨᱵᱟᱝ ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ (ᱠᱞᱟᱭᱮᱱᱴ) ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱢᱤᱫ ᱡᱷᱤᱡᱽ ᱞᱮᱠᱷᱟᱱ ᱫᱚᱥᱟᱨ ᱵᱟᱝ ᱢᱮᱴᱟᱣᱜᱼᱟ ᱾ ᱡᱚᱲᱟᱣ ᱠᱞᱟᱭᱮᱱᱴ ᱫᱚᱠᱟᱱ ᱩᱭᱦᱟᱹᱨ ᱫᱚᱦᱚᱭᱟ — ᱡᱚᱛᱚ ᱨᱤᱥᱴᱟᱨᱴ ᱨᱮ ᱡᱚᱲᱟᱣ ᱠᱳᱰ ᱵᱟᱝ ᱞᱟᱹᱠᱛᱤ ᱾ ᱱᱤᱛᱚᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱹᱱᱩᱜ ᱠᱷᱟᱱ «ᱵᱮᱠᱟᱯ ᱫᱚᱦᱲᱟᱭ ᱢᱮ» ᱟᱢᱟᱜ ᱵᱟᱪᱷᱟᱣ ᱯᱷᱟᱭᱤᱞ ᱠᱷᱚᱱ ᱯᱚᱛᱚᱵ ᱡᱷᱤᱡᱽᱟ (ᱧᱮᱞ ᱥᱮᱴᱤᱝ ᱫᱚᱦᱲᱟ ᱞᱮᱠᱟ) ᱾
 app_template_heading	ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ
-app_template_blurb	मित् सुरुवाती मेनू साब। छाड़ रे दोकान फाका ताहेंआ।
+app_template_blurb	ᱮᱛᱚᱦᱚᱵ ᱢᱮᱱᱩ ᱵᱟᱪᱷᱟᱣ ᱢᱮ᱾ ᱵᱟᱹᱜᱤ ᱞᱮᱠᱷᱟᱱ ᱫᱩᱠᱟᱱ ᱠᱷᱟᱹᱞᱤ ᱛᱟᱦᱮᱸᱱᱟ᱾
 app_template_apply	ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ
 app_template_skip	ᱱᱤᱛᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
 app_template_status	ᱥᱟᱨᱵᱷᱟᱨ ᱛᱭᱟᱨ — ᱢᱤᱫᱴᱟᱹᱝ ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱲᱟᱜ ᱢᱮ
@@ -376,10 +376,10 @@ app_template_importing	ᱟᱯᱞᱟᱭᱚᱜ ᱠᱟᱱᱟ {title}...
 app_template_downloading	ᱴᱮᱢᱯᱞᱮᱴ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…
 app_template_download_progress	ᱰᱟᱣᱩᱱᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ… {p}% ({d} / {t})
 app_template_download_paused	ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱟᱹᱜᱩ ᱢᱮ — ᱯᱩᱨᱟᱹ ᱦᱩᱭ ᱟᱠᱟᱱ ᱯᱷᱟᱭᱤᱞ ᱫᱚ ᱫᱚᱦᱚ ᱜᱮᱭᱟ
-app_template_public_hdr	टेम्पलेट
+app_template_public_hdr	ᱴᱮᱢᱯᱞᱮᱴ
 app_template_private_hdr	ᱱᱤᱡᱮᱨᱟᱜ ᱴᱮᱢᱯᱞᱮᱴ
-app_template_public_hint	सूची लोड लागित् नोवा भाग झिज (मित् दाव इंटरनेट लाकती)।
-app_template_code_not_found	टेम्पलेट बाङ नामोक् आ
+app_template_public_hint	ᱞᱤᱥᱴ ᱞᱟᱫᱮ ᱞᱟᱹᱜᱤᱫ ᱱᱚᱣᱟ ᱦᱟᱹᱴᱤᱧ ᱡᱷᱤᱡᱽ ᱢᱮ (ᱢᱤᱫ ᱫᱷᱟᱣ ᱤᱱᱴᱚᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤ)᱾
+app_template_code_not_found	ᱴᱮᱢᱯᱞᱮᱴ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ
 app_template_need_internet	ᱴᱮᱢᱯᱞᱮᱴ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱞᱟᱹᱜᱤᱫ ᱤᱱᱴᱟᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤ
 app_template_import_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱟᱹᱜᱩ ᱢᱮ
 app_template_check_code	ᱠᱳᱰ ᱧᱮᱞ ᱢᱮ
@@ -863,7 +863,7 @@ printer_already_saved	ᱞᱟᱦᱟ ᱨᱮᱜᱮ ᱵᱟᱧᱪᱟᱣ ᱟᱠᱟᱱ�
 find_printers	ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
 printers_looking	ᱠᱚᱭᱚᱜ...
 saving_printer	ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱞᱮᱫᱚᱜ ᱠᱟᱱᱟ...
-cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+cancelled	ᱨᱚᱫᱽ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
 press_back_again_exit	ᱚᱰᱚᱜ ᱞᱟᱹᱜᱤᱫ «ᱨᱩᱣᱟᱹᱲ ᱢᱮ» ᱫᱚᱦᱲᱟ ᱞᱤᱱ ᱢᱮ
 cancelling	ᱵᱟᱹᱛᱤᱞᱚᱜ ᱠᱟᱱᱟ…
 removing	ᱚᱪᱚᱜ ᱠᱟᱱᱟ…
@@ -1121,7 +1121,7 @@ add_station_heading	ᱢᱤᱫ ᱫᱟᱠᱟ ᱚᱲᱟᱜ ᱨᱮᱭᱟᱜ ᱥᱴ�
 categories_help	ᱚᱱᱟ ᱛᱷᱚᱠ ᱞᱟᱛᱟᱨ ᱨᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱢᱮᱱᱟᱜ ᱡᱤᱱᱤᱥ ᱨᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨ ᱨᱮ ᱴᱮᱯ ᱢᱮ ᱾ ᱯᱷᱳᱴᱳ ᱫᱚ ᱛᱷᱚᱠ ᱢᱤᱫ ᱪᱤᱛᱟᱹᱨ ᱮᱢᱚᱜ ᱠᱟᱱᱟ; ᱢᱤᱫ ᱵᱮᱜᱚᱨ ᱱᱚᱣᱟ ᱟᱡᱟᱜ ᱮᱛᱚᱦᱚᱵ ᱟᱹᱲᱟᱹ ᱩᱫᱩᱜ ᱟ᱾
 dish_search_ph	ᱡᱤᱱᱤᱥ ᱧᱩᱛᱩᱢ — ᱟᱞᱮᱭᱟᱜ ᱰᱤᱥ ᱥᱮᱸᱫᱽᱨᱟ ᱢᱮ ᱟᱨᱵᱟᱝ ᱟᱢᱟᱜ ᱴᱟᱭᱤᱯ ᱢᱮ
 tile_free	ᱠᱷᱟᱹᱞᱤ
-tile_occupied	ᱠᱷᱟᱹᱞᱤ
+tile_occupied	ᱵᱮᱥᱛ
 tile_food_ready	ᱡᱚᱢᱟᱜ ᱥᱟᱯᱲᱟᱣ ᱮᱱᱟ
 tile_bill_printed	ᱵᱤᱞ ᱪᱷᱟᱯᱟ ᱮᱱᱟ
 tile_paid	ᱯᱮᱭᱰ
@@ -1244,7 +1244,7 @@ kot_kind_heading	KOT ᱫᱟᱭᱟ
 kot_kind_original	ᱟᱥᱚᱞ
 kot_kind_duplicate	ᱰᱩᱯᱞᱤᱠᱮᱴ
 kot_kind_modified	ᱥᱚᱫᱚᱨ ᱟᱠᱟᱱ
-kot_kind_cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+kot_kind_cancelled	ᱨᱚᱫᱽ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
 kot_style_heading	ᱯᱷᱤᱞᱰ ᱞᱮᱠᱟᱱ ᱜᱚᱲᱦᱚᱱ ᱟᱨ ᱚᱡᱚᱱ
 kot_style_title	ᱥᱟᱛᱟᱢ
 kot_style_field_pick	ᱯᱟᱦᱴᱟ ᱵᱟᱪᱷᱟᱣ ᱢᱮ

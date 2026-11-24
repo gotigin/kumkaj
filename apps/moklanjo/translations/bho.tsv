@@ -26,7 +26,7 @@ board_discard	हटाईं
 board_discarded	ड्राफ्ट हटा दिहल गइल
 buy	भुगतान
 books	रोज के बही
-books_help	आज के हालत। बुकिंग = आइल पार्सल। भुगतान = ढोवे वाला के बिल आ खरचा। पार्टी = भेजे वाला आ ढोवे वाला।
+books_help	आज के हालत। बुकिंग = आइल पार्सल। भुगतान = कूरियर के बिल आ खरचा। पार्टी = भेजे वाला आ कूरियर।
 buy_help	खरचा वाउचर आ ढोवे वाला के बिल (बाहर गइल पइसा)। खाता पर राखल पार्टी खाता में रहेला।
 sell_money_in	पार्सल बुक करीं
 buy_money_out	खरचा / ढोवे वाला के बिल
@@ -289,7 +289,7 @@ till_to_bank	टिल → बैंक
 mark_cleared	मिलल चिन्हीं
 unmark	चिन्ह हटाईं
 role_both	दुनो
-role_carrier	ढोवे वाला
+role_carrier	कूरियर
 role_cashier	कैशियर
 role_consignor	भेजे वाला
 role_manager	मैनेजर
@@ -734,7 +734,7 @@ cloud_sending_reset	रीसेट लिंक भेजल जा रहल �
 cloud_forgot_sent	अगर ओह ईमेल के खाता बा त रीसेट लिंक रास्ता में बा.
 cloud_welcome	{user} · {plan} के रूप में साइन इन कइल गइल बा
 cloud_created	खाता बनावल गइल बा. कब हो सकेला एकर सत्यापन करे खातिर आपन ईमेल देख लीं.
-cloud_cancel	मना कइ दीं
+cloud_cancel	रद्द
 permission_preset	काम
 preset_help_moklanjo	कैशियर: बेचल। मैनेजर: बेचल + सामान + रद्द/सुधार।
 product_locked_moklanjo	Moklanjo
@@ -822,7 +822,7 @@ trk_in_transit	रास्ता में
 trk_delivered	डिलीवर भइल
 trk_rto	भेजे वाला के ओर लौटत बा
 lane_to_dispatch	भेजे के बाकी
-lane_with_carrier	ढोवे वाला लगे
+lane_with_carrier	कूरियर कंपनी लगे
 lane_failed	फेल
 lane_done_today	आज पूरा भइल
 ops_board_help	आज के काम में कहाँ बा ओह हिसाब से पार्सल। चुने खातिर पार्सल दबाईं (भा स्कैन करीं), फेर सब चुनल पर एके संगे काम करीं — हर लेन खाली मिले वाला चाल देला।

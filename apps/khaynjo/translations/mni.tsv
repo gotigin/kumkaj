@@ -2,10 +2,10 @@
 app_tagline	ꯔꯦꯁ꯭ꯇꯨꯔꯦꯟꯇꯀꯤ ꯌꯥꯕ, ꯆꯥꯛꯍꯣꯡ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ. ꯃꯈꯥ ꯉꯥꯏꯗꯕ, ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ.
 unlock	ꯍꯥꯡꯗꯣꯛꯎ
 pin_hint	ꯃꯄꯨꯒꯤ PIN ꯑꯁꯤ 0000 ꯗꯒꯤ ꯍꯧꯏ
-sell	ꯌꯥꯕ
-buy	ꯂꯩꯕ
+sell	ꯑꯣꯔꯗꯔ
+buy	ꯂꯩꯊꯣꯛꯕ
 books	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
-books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯚꯝ. ꯌꯥꯕ = ꯆꯪꯂꯛꯄ ꯌꯥꯕ. ꯂꯩꯕ = ꯂꯩꯕ ꯑꯃꯁꯨꯡ ꯆꯥꯟꯕ. ꯃꯤ = ꯂꯦꯟꯕ ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ.
+books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯚꯝ. ꯑꯣꯔꯗꯔ = ꯆꯪꯂꯛꯄ ꯑꯣꯔꯗꯔ. ꯂꯩꯊꯣꯛꯕ = ꯂꯩꯊꯣꯛꯕ ꯑꯃꯁꯨꯡ ꯆꯥꯟꯕ. ꯄꯥꯔꯇꯤ = ꯈꯥꯇꯥ ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ.
 buy_help	ꯆꯥꯟꯕꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕꯒꯤ ꯕꯤꯜ (ꯁꯦꯟ ꯊꯣꯔꯛꯄ). ꯌꯥꯎꯅꯕ ꯑꯁꯤ ꯃꯤꯒꯤ ꯂꯥꯏꯔꯤꯛꯇ ꯂꯩ.
 sell_money_in	ꯌꯥꯕ ꯂꯧꯕꯤꯌꯨ
 buy_money_out	ꯆꯥꯟꯕ / ꯄꯤꯔꯤꯕꯒꯤ ꯕꯤꯜ
@@ -46,7 +46,7 @@ total	ꯑꯄꯨꯟꯕ
 cash	ꯁꯦꯟ
 upi	UPI
 card	ꯀꯥꯔꯗ
-credit	ꯃꯤ
+credit	ꯄꯥꯔꯇꯤ
 clear	ꯁꯦꯡꯗꯣꯛꯎ
 ready_to_sell	ꯏꯅꯕ ꯁꯦꯝꯃꯤ
 today_prefix	ꯉꯁꯤ
@@ -255,9 +255,9 @@ amounts_show	ꯎꯠꯂꯨ
 counter	ꯌꯣꯟꯕꯒꯤ ꯐꯝ
 dine_in	ꯃꯐꯝ ꯑꯁꯤꯗ ꯆꯥꯕꯤꯌꯨ
 takeaway	ꯄꯨꯔꯛꯄꯤꯌꯨ
-order	ꯌꯥꯕ
+order	ꯑꯣꯔꯗꯔ
 tables	ꯐꯝ
-kitchen	ꯆꯥꯛꯍꯣꯡ
+kitchen	ꯆꯥꯛꯈꯨꯃ
 sales	ꯌꯣꯟꯕ
 sales_refunds	ꯌꯣꯟꯕ ꯑꯃꯁꯨꯡ ꯁꯦꯟ ꯍꯟꯕꯤꯔꯛꯄ
 day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ
@@ -303,7 +303,7 @@ kot_new_waiting	ꯑꯅꯧ — ꯉꯥꯏꯔꯤ
 kot_preparing	ꯁꯦꯝꯂꯤ
 kot_ready_serve	ꯁꯦꯝꯃꯤ — ꯄꯨꯕꯤꯌꯨ
 kot_done_cap	ꯂꯣꯏꯔꯦ
-kot_cancelled	ꯇꯣꯛꯈꯤ
+kot_cancelled	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯈ꯭ꯔꯦ
 kot_start_btn	ꯍꯧꯕꯤꯌꯨ
 kot_mark_ready	ꯁꯦꯝꯃꯤ ꯍꯥꯌꯅ ꯃꯥꯏꯊꯤꯜ ꯄꯤꯕꯤꯌꯨ
 kot_done_btn	ꯂꯣꯏꯔꯦ
@@ -368,7 +368,7 @@ only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
 device_setup_help	ꯃꯁꯤꯒꯤ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤ ꯀꯦꯟꯐꯝ (Server) ꯅꯠꯇ꯭ꯔꯒ ꯍꯦꯟꯒꯠꯄ ꯇꯤꯜ (ꯈꯣꯡꯖꯦꯜ) ꯑꯣꯏꯕ ꯌꯥꯏ। ꯑꯃ ꯍꯥꯡꯗꯣꯛꯂꯕꯗ ꯑꯇꯣꯞꯄ ꯃꯥꯡꯗꯦ। ꯆꯨꯞꯄ ꯈꯣꯡꯖꯦꯜꯅ ꯀꯦꯟꯐꯝ ꯅꯤꯡꯁꯤꯡꯏ — ꯔꯤꯁ꯭ꯇꯥꯔꯠ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯆꯨꯞꯄ ꯀꯣꯗ ꯃꯊꯧ ꯇꯥꯗꯦ। ꯍꯧꯖꯤꯛ Server ꯂꯩꯇ꯭ꯔꯕꯗ «ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ»ꯅ ꯅꯍꯥꯛꯅ ꯈꯟꯈꯤꯕ ꯐꯥꯏꯜꯗꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯍꯥꯡꯗꯣꯛꯏ (ꯌꯦꯡꯕ Settings ꯍꯟꯕꯤꯔꯛꯄ ꯃꯥꯟꯅꯕ)।
 app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
-app_template_blurb	অহানগী মেনু খাইবিয়ু। স্কিপ তৌবদা দুকান অহাংবা ওইরগে।
+app_template_blurb	ꯍꯧꯔꯛꯄ ꯃꯦꯅꯨ ꯑꯃ ꯈꯜꯂꯨ꯫ ꯀꯣꯏꯗꯣꯛꯄꯗ ꯗꯨꯀꯥꯟ ꯑꯍꯥꯡꯕ ꯑꯣꯏꯔꯦ.
 app_template_apply	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
 app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
@@ -376,10 +376,10 @@ app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
 app_template_downloading	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ…
 app_template_download_progress	ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ… {p}% ({d} / {t})
 app_template_download_paused	ꯃꯈꯥ ꯆꯥꯡꯅꯕꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ — ꯂꯣꯏꯔꯕꯥ ꯐꯥꯏꯜꯁꯤꯡ ꯊꯝꯂꯤ
-app_template_public_hdr	টেমপ্লেট
+app_template_public_hdr	ꯇꯦꯃꯄ꯭ꯂꯦꯇ
 app_template_private_hdr	ꯃꯁꯥꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
-app_template_public_hint	লিস্ট লোড তৌনবা অসি খন্দো হাংবিয়ু (ইন্টারনেট অমুক হন্না দরকার)।
-app_template_code_not_found	টেমপ্লেট ফংদ্রি
+app_template_public_hint	ꯂꯤꯁ꯭ꯇ ꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯑꯁꯤ ꯈꯅ꯭ꯗꯣ ꯍꯥꯪꯕꯤꯌꯨ (ꯏꯅ꯭ꯇꯥꯔꯅꯦꯇ ꯑꯃꯨꯀ ꯍꯅ꯭ꯅꯥ ꯗꯔꯀꯥꯔ)꯫
+app_template_code_not_found	ꯇꯦꯃꯄ꯭ꯂꯦꯇ ꯐꯪꯗ꯭ꯔꯤ
 app_template_need_internet	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ
 app_template_import_selected	ꯈꯅꯕꯥ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_check_code	ꯀꯣꯗ ꯌꯦꯡꯕꯤꯌꯨ
@@ -863,7 +863,7 @@ printer_already_saved	ꯊꯝꯈ꯭ꯔꯦ: {name}
 find_printers	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ
 printers_looking	ꯊꯤꯔꯤ…
 saving_printer	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯥꯞꯆꯤꯟꯂꯤ…
-cancelled	ꯇꯣꯛꯈꯤ
+cancelled	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯈ꯭ꯔꯦ
 press_back_again_exit	ꯊꯣꯛꯅꯕ ꯍꯟꯅ “ꯍꯟꯖꯤꯜꯂꯨ” ꯅꯝꯃꯨ
 cancelling	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯔꯤ…
 removing	ꯂꯧꯊꯣꯛꯂꯤ…
@@ -972,7 +972,7 @@ local_badge	ꯃꯅꯨꯡ
 mix_type_hint_khaynjo	ꯃꯊꯧ ꯇꯥꯔꯕꯗꯤ ꯁꯦꯟ / UPI / ꯀꯥꯔꯗ / ꯂꯦꯟꯕꯗ ꯈꯥꯏꯗꯣꯛꯎ. ꯂꯦꯟꯕꯅ ꯃꯊꯛꯇ ꯀꯦꯟꯅꯕ ꯃꯊꯧ ꯇꯥꯏ.
 money_in_sales	ꯁꯦꯟ ꯆꯪꯕ (ꯌꯣꯟꯕ)
 net_word	ꯁꯦꯟꯊꯣꯛ
-offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
+offline_badge	ꯑꯣꯐꯂꯥꯏꯟ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
@@ -1113,15 +1113,15 @@ book_kind_month	ꯊꯥ ꯑꯁꯤꯒꯤ ꯂꯥꯏꯔꯤꯛ
 book_kind_aging	ꯂꯩꯔꯤꯕ / ꯂꯦꯟ-ꯂꯦꯟ
 book_kind_balance	ꯕꯦꯂꯦꯟꯁ ꯁꯤꯠ
 order_help	ꯄꯣꯠ ꯅꯝꯃꯨ, ꯍꯥꯞꯆꯤꯟꯅꯕ.
-floor_help	ꯐꯝ ꯅꯝꯃꯨ, ꯌꯥꯕ ꯂꯧꯅꯕ ꯅꯠꯇ꯭ꯔꯒ ꯍꯣꯡꯗꯣꯛꯅꯕ. ꯃꯆꯨꯅ ꯍꯥꯏꯗꯕ → ꯐꯝ ꯂꯩꯕ → ꯆꯥꯛꯍꯣꯡ → ꯁꯦꯝꯃꯤ → ꯆꯥꯔꯤ → ꯕꯤꯜ → ꯄꯤꯔꯦ ꯎꯠꯏ. ꯉꯥꯏꯕ ꯂꯤꯁ꯭ꯇ, ꯕꯨꯛ ꯑꯃꯁꯨꯡ ꯐꯝ ꯍꯥꯞꯆꯤꯟꯕ ꯃꯈꯥꯒꯤ ꯁꯔꯨꯛꯇ ꯂꯩ.
+floor_help	ꯐꯝ ꯅꯝꯃꯨ, ꯑꯣꯔꯗꯔ ꯂꯧꯅꯕ ꯅꯠꯇ꯭ꯔꯒ ꯍꯣꯡꯗꯣꯛꯅꯕ. ꯃꯆꯨꯅ ꯑꯍꯥꯡꯕ → ꯃꯤ ꯐꯝꯂꯦ → ꯆꯥꯛꯈꯨꯃ → ꯁꯦꯝꯃꯤ → ꯆꯥꯛ ꯄꯤꯔꯦ → ꯕꯤꯜ → ꯄꯤꯔꯦ ꯎꯠꯏ. ꯉꯥꯏꯕ ꯂꯤꯁ꯭ꯇ, ꯕꯨꯛ ꯑꯃꯁꯨꯡ ꯐꯝ ꯍꯥꯞꯆꯤꯟꯕ ꯃꯈꯥꯒꯤ ꯁꯔꯨꯛꯇ ꯂꯩ.
 kitchen_help	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯂꯥꯏꯔꯤꯛ (KOT), ꯑꯅꯧꯕ ꯑꯔꯣꯏꯕꯗ. ꯍꯧꯕꯤꯌꯨ → ꯁꯦꯝꯃꯤ → ꯂꯣꯏꯔꯦ ꯂꯥꯏꯔꯤꯛ ꯃꯈꯥ ꯆꯠꯍꯟꯏ. ꯂꯥꯏꯔꯤꯛꯅ ꯃꯃꯜ ꯎꯠꯇꯦ.
 kitchen_empty	ꯍꯥꯡꯗꯣꯛꯂꯤꯕ ꯂꯥꯏꯔꯤꯛ ꯂꯩꯇꯦ.
 add_a_table	ꯐꯝ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 add_station_heading	ꯆꯥꯛꯍꯣꯡꯒꯤ ꯐꯝꯂꯝ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ
 categories_help	ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ ꯅꯝꯃꯨ, ꯃꯊꯛꯀꯤ ꯄꯣꯠ ꯐꯨꯡ ꯑꯗꯨꯒꯤ ꯃꯈꯥꯗ ꯊꯝꯅꯕ. ꯁꯛꯇꯝꯅ ꯐꯨꯡꯗ ꯁꯛꯇꯝ ꯄꯤ; ꯂꯩꯇꯕꯗꯤ ꯃꯌꯦꯛ ꯑꯍꯥꯟꯕ ꯎꯠꯏ.
 dish_search_ph	ꯄꯣꯠꯀꯤ ꯃꯤꯡ — ꯑꯩꯈꯣꯌꯒꯤ ꯆꯥꯛ ꯊꯤꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯒ ꯅꯍꯥꯛꯀꯤ ꯏꯕꯤꯌꯨ
-tile_free	ꯍꯥꯏꯗꯕ
-tile_occupied	ꯐꯝ ꯂꯩꯔꯦ
+tile_free	ꯑꯍꯥꯡꯕ
+tile_occupied	ꯃꯤ ꯐꯝꯂꯦ
 tile_food_ready	ꯆꯥꯛ ꯁꯦꯝꯃꯤ
 tile_bill_printed	ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯔꯦ
 tile_paid	ꯄꯤꯔꯦ
@@ -1133,7 +1133,7 @@ tile_undo_bill	ꯕꯤꯜ ꯇꯧꯗꯕ ꯍꯟꯕꯤꯔꯛꯎ
 summary_busy	ꯐꯝ ꯁꯤꯖꯤꯟꯅꯔꯤ
 summary_to_collect	ꯂꯧꯅꯕ
 summary_on_floor	ꯂꯝꯗ
-floor	ꯂꯝ
+floor	ꯐ꯭ꯂꯣꯔ
 sizes_as_items_ph	ꯆꯥꯎꯕ ꯄꯣꯠ ꯇꯣꯈꯥꯏ ꯑꯣꯏꯅ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ) — ꯁꯔꯨꯛ=120, ꯄꯨꯝ=200
 dish_group_ph	ꯆꯥꯛꯀꯤ ꯐꯨꯡ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ) — ꯈꯨꯗꯝ Paneer Tikka
 discount	ꯍꯟꯊꯕ
@@ -1151,8 +1151,8 @@ shift_handover	ꯁꯤꯐꯠ ꯄꯤꯕ
 shift_since	ꯁꯤꯐꯠ ꯑꯁꯤ
 expected_in_drawer	ꯕꯣꯛꯁꯇ ꯉꯥꯏꯕ
 right_discount	ꯍꯟꯊꯕ ꯄꯤꯕꯤꯌꯨ
-floor_in_kitchen	ꯆꯥꯛꯍꯣꯡꯗ
-floor_eating	ꯄꯤꯔꯦ
+floor_in_kitchen	ꯆꯥꯛꯈꯨꯃꯗꯥ
+floor_eating	ꯆꯥꯛ ꯄꯤꯔꯦ
 pick_category	ꯐꯨꯡ ꯈꯟꯕꯤꯌꯨ
 close_category_list	ꯐꯨꯡ ꯂꯤꯁ꯭ꯇ ꯊꯤꯡꯕꯤꯌꯨ
 new_category_row	ꯐꯨꯡ ꯑꯅꯧꯕ — ꯄꯣꯠ ꯊꯝꯔꯕ ꯃꯇꯝꯗ ꯁꯥꯏ
@@ -1229,7 +1229,7 @@ kot_show_shop	ꯀꯦꯟꯐꯝꯒꯤ ꯃꯤꯡ
 kot_hide_shop	ꯀꯦꯟꯐꯝ ꯂꯥꯞꯄꯤꯌꯨ
 kot_show_time	ꯃꯇꯝ
 kot_hide_time	ꯃꯇꯝ ꯂꯥꯞꯄꯤꯌꯨ
-kot_show_waiter	ꯁꯔꯕꯤꯁ
+kot_show_waiter	ꯋꯦꯇꯔ
 kot_hide_waiter	ꯁꯔꯕꯤꯁ ꯂꯥꯞꯄꯤꯌꯨ
 kot_show_station	ꯐꯝꯂꯝ
 kot_hide_station	ꯐꯝꯂꯝ ꯂꯥꯞꯄꯤꯌꯨ
@@ -1244,7 +1244,7 @@ kot_kind_heading	KOT ꯃꯈꯜ
 kot_kind_original	ꯑꯍꯨꯝꯕ
 kot_kind_duplicate	ꯀꯣꯄꯤ
 kot_kind_modified	ꯁꯦꯝꯈꯤ
-kot_kind_cancelled	ꯇꯣꯛꯈꯤ
+kot_kind_cancelled	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯈ꯭ꯔꯦ
 kot_style_heading	ꯃꯐꯝꯒꯤ ꯆꯥꯎꯕ ꯑꯃꯁꯨꯡ ꯋꯦꯠ
 kot_style_title	ꯃꯤꯡꯃꯛ
 kot_style_field_pick	ꯃꯐꯝ ꯈꯟꯕꯤꯌꯨ
@@ -1407,7 +1407,7 @@ low_stock_alert	ꯀꯝꯂꯤ — ꯊꯨꯅ ꯂꯩꯕꯤꯌꯨ: {items}
 unpriced_note	ꯅꯍꯥꯛꯀꯤ ꯃꯦꯅꯨꯗ ꯆꯥꯛ {n} ꯍꯧꯖꯤꯛ ꯃꯃꯜ ꯂꯩꯇꯦ — ꯅꯍꯥꯛꯅ ꯊꯝꯐꯥꯎꯕ ꯕꯤꯜ 0 ꯗ ꯂꯩ.
 show_unpriced	ꯃꯃꯜ ꯂꯩꯇꯕ ꯆꯥꯛꯈꯛꯇ ꯎꯠꯂꯨ
 show_all_dishes	ꯆꯥꯛ ꯄꯨꯝꯅꯃꯛ ꯎꯠꯂꯨ
-role_waiter	ꯁꯔꯕꯤꯁ
+role_waiter	ꯋꯦꯇꯔ
 role_kitchen	ꯆꯥꯛꯍꯣꯡ
 role_title_rest_ph	ꯊꯕꯛꯀꯤ ꯃꯤꯡ (ꯈꯨꯗꯝ Captain, ꯆꯥꯛ ꯍꯧꯕ)
 preset_help_rest	ꯁꯔꯕꯤꯁ: ꯌꯥꯕ ꯂꯧꯏ, ꯐꯝ ꯆꯠꯍꯟꯏ. ꯁꯦꯟ ꯂꯧꯕ: ꯄꯤꯕꯁꯨ ꯂꯧꯏ. ꯆꯥꯛꯍꯣꯡ: ꯆꯥꯛꯍꯣꯡ ꯁ꯭ꯛꯔꯤꯟ. ꯃꯄꯨꯔꯣꯏ: ꯃꯦꯅꯨꯁꯨ, ꯇꯣꯛꯄ ꯑꯃꯁꯨꯡ ꯍꯟꯊꯕ.
@@ -1439,7 +1439,7 @@ printers_screen_tip	ꯊꯤꯕꯅꯥ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯅꯥ ꯁꯤꯖ
 printers_found_none	ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ꯫
 nav_loading	ꯂꯣꯗ ꯇꯧꯔꯤ…
 kot_copy_from	ꯃꯁꯤꯗꯒꯤ ꯀꯣꯄꯤ ꯇꯧ
-kot_copy_from_help	মখল অদুগী লাইন খুদিংমগী চাউরবা, অচাউবা অমসুং লৈতেংনবা মসিদা কোপি তৌই। মখল অসিনা মশাগী বেনর, আইতেম প্রিফিক্স অমসুং স্ত্রাইক থম্লি। থম্নবা KOT ফোর্মেত সেভ তৌ।
+kot_copy_from_help	ꯃꯈꯂ ꯑꯗꯨꯒꯤ ꯂꯥꯏꯅ ꯈꯨꯗꯤꯪꯃꯒꯤ ꯆꯥꯎꯔꯕꯥ, ꯑꯆꯥꯎꯕꯥ ꯑꯃꯁꯨꯪ ꯂꯩꯇꯦꯪꯅꯕꯥ ꯃꯁꯤꯗꯥ ꯀꯣꯄꯤ ꯇꯧꯏ। ꯃꯈꯂ ꯑꯁꯤꯅꯥ ꯃꯁꯥꯒꯤ ꯕꯦꯅꯔ, ꯑꯥꯏꯇꯦꯃ ꯄ꯭ꯔꯤꯐꯤꯀ꯭ꯁ ꯑꯃꯁꯨꯪ ꯁ꯭ꯇ꯭ꯔꯥꯏꯀ ꯊꯃ꯭ꯂꯤ। ꯊꯃ꯭ꯅꯕꯥ KOT ꯐꯣꯔ꯭ꯃꯦꯇ ꯁꯦꯚ ꯇꯧ।
 items_tmpl_heading	ꯑꯥꯏꯇꯦꯝ ꯇꯦꯝꯞꯂꯦꯠ
 items_tmpl_help	ꯅꯍꯥꯛꯀꯤ ꯃꯦꯅꯨꯒꯤꯗꯃꯛ ꯆꯥꯛꯆꯥ, ꯃꯈꯜ ꯑꯃꯁꯨꯡ ꯐꯣꯇꯣ। ꯗꯣꯀꯥꯅꯒꯤ ꯁꯦꯇꯤꯡ ꯑꯃꯁꯨꯡ ꯁ꯭ꯇꯥꯐ ꯂꯩꯔꯤꯕꯒꯨꯝꯅꯥ ꯂꯩꯒꯅꯤ।
 public_tmpl_help	ꯀꯅꯥꯒꯨꯝꯕꯥ ꯑꯃꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯍꯧꯔꯛꯐꯝ ꯃꯦꯅꯨ। ꯑꯃꯨꯛ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯩ।

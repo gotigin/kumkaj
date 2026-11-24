@@ -900,7 +900,7 @@ till_to_bank	टिल → बैंक
 units_heading	इकाइयाँ
 unlock_after_pairing	पिन दर्ज करऽ
 unlock_with_login	लॉगिन से अनलॉक
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करऽ
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	खैंजो खाता
 cloud_account_help	khaynjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
@@ -915,7 +915,7 @@ cloud_sending_reset	रीसेट लिंक भेजा जा रहा �
 cloud_forgot_sent	यदि उस ईमेल में कोई खाता है, तो एक रीसेट लिंक रास्ते में है।
 cloud_welcome	{user} · {plan} के रूप में साइन इन किया गया
 cloud_created	खाता बनाया गया. जब आप कर सकें तो सत्यापित करने के लिए अपना ईमेल जांचें।
-cloud_cancel	रद्द करऽ
+cloud_cancel	रद्द
 unmark	चिह्न हटावऽ
 update_my_password	हमर पासवर्ड बदलेऽ
 update_my_pin	हमर PIN बदलेऽ
@@ -930,7 +930,7 @@ duress_off	आपातकालीन अनलॉक PIN बंद हई
 duress_saved	आपातकालीन अनलॉक PIN सहेजा गेल
 duress_cleared	आपातकालीन अनलॉक PIN बंद कर दिया
 upi_amount_ph	UPI राशि
-void	रद्द करऽ
+void	रद्द
 write_off_ap	AP माफ़ करऽ
 write_off_heading	माफ़ करऽ (बिना भुगतान के साफ़)
 write_off_nil	माफ़ करऽ / शेष शून्य
@@ -1152,7 +1152,7 @@ shift_since	ई शिफ्ट कब से
 expected_in_drawer	दराज़ में होना चाही
 right_discount	छूट देना
 floor_in_kitchen	रसोई में
-floor_eating	भोजन कर रहल हथ
+floor_eating	परोसल गेल
 pick_category	श्रेणी चुनऽ
 close_category_list	श्रेणी सूची बंद करऽ
 new_category_row	नई श्रेणी — आइटम सहेजने पर बनेगी
@@ -1373,7 +1373,7 @@ kitchen_tab_recall	वापस लाऽ
 kitchen_tab_stations	स्टेशन
 split_bill	बिल बाँटेऽ
 split_go	अलग बिल बनावऽ
-cancel	रद्द करऽ
+cancel	रद्द
 opening_client	क्लाइंट खुल रहल हई…
 preparing_desk	डेस्क तैयार हो रहल हई…
 opening_server	सर्वर खुल रहल हई…

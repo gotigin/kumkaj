@@ -26,7 +26,7 @@ board_discard	हटावौ
 board_discarded	ड्राफ्ट हटाय दीन गवा
 buy	भुगतान
 books	रोज कै बही
-books_help	आज कै हाल। बुकिंग = आए पार्सल। भुगतान = ढोवै वाले कै बिल अउर खरचा। पार्टी = भेजै वाले अउर ढोवै वाले।
+books_help	आज कै हाल। बुकिंग = आए पार्सल। भुगतान = कूरियर कै बिल अउर खरचा। पार्टी = भेजै वाले अउर कूरियर।
 buy_help	खरचा वाउचर अउर ढोवै वाले कै बिल (बाहर गवा पइसा)। खाता पै रखी पार्टी खाता मा रहत है।
 sell_money_in	पार्सल बुक करौ
 buy_money_out	खरचा / ढोवै वाले कै बिल
@@ -289,7 +289,7 @@ till_to_bank	टिल → बैंक
 mark_cleared	मिला चिन्हौ
 unmark	चिन्ह हटावौ
 role_both	दूनौ
-role_carrier	ढोवै वाला
+role_carrier	कूरियर
 role_cashier	कैसियर
 role_consignor	भेजै वाला
 role_manager	मैनेजर
@@ -719,7 +719,7 @@ net_word	सुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	मर्जी कै लॉगिन (id + पासवर्ड)। मालिक एक बार रखत हैं; बाद मा बस उपयोगकर्ता पासवर्ड बदल सकत है।
 or_unlock_login	या लॉगिन id + पासवर्ड से अनलॉक करौ
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करौ
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	मोक्लांजो खाता
 cloud_account_help	moklanjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
@@ -822,7 +822,7 @@ trk_in_transit	रस्ता मा
 trk_delivered	डिलीवर भवा
 trk_rto	भेजै वाले के ओर लौटत है
 lane_to_dispatch	भेजै कै बाकी
-lane_with_carrier	ढोवै वाले के पास
+lane_with_carrier	ढोवै वाले के लगे
 lane_failed	फेल
 lane_done_today	आज पूरा भवा
 ops_board_help	आज के काम मा कहाँ हैं ओह हिसाब से पार्सल। चुनै खातिर पार्सल दबावौ (या स्कैन करौ), फिर सब चुने पै एक संग काम करौ — हर लेन बस मिलै वाली चाल देत है।

@@ -11,10 +11,10 @@ board_empty	अजें कोई कार्ड नेईं।
 board_park_nothing	रक्खने लेई किश नेईं — शुल्क जां बुकिंग दा ब्यौरा जोड़ो
 board_parked	«बोर्ड» पर रक्खी दित्ता — डेस्क खाली ऐ
 board_draft	ड्राफ्ट
-board_booked	बुक होया
+board_booked	बुक होआ
 board_filter_all	सब्भ
 board_filter_draft	ड्राफ्ट
-board_filter_booked	बुक होया
+board_filter_booked	बुक होआ
 board_cols_fmt	{n} स्तंभ
 board_summary_fmt	{total} कार्ड · {drafts} ड्राफ्ट · {booked} बुक होए
 board_card_no_charges	अजें कोई शुल्क नेईं
@@ -40,7 +40,7 @@ reports_help	दिन लेजर, कर्जदार ते लेनद�
 reports_today	दिन लेजर (आज)
 reports_month	मुनाफा ते हानि (महीना)
 reports_aging	बकाया / डेबिट-क्रेडिट ऐ
-reports_balance_sheet	बैलेंस शीट दा
+reports_balance_sheet	बैलेंस शीट
 reports	बैंक बही ते लाभ-हानि
 refresh	ताज़ा करो
 undo	पूर्ववत करो
@@ -66,7 +66,7 @@ total	कुल
 cash	नकद
 upi	UPI
 card	कार्ड
-credit	ग्राहक ते आपूर्तिकर्ता
+credit	पार्टी
 clear	साफ कर दे
 ready_to_sell	लेजर करने के लिए तैयार
 today_prefix	आज
@@ -90,7 +90,7 @@ rounded	गोल कीता
 split	बंटवारा हो जाओ
 counter	काउंटर
 parcel	पार्सल
-order	रेस्टोरेंट दा ऑर्डर
+order	ऑर्डर
 sales	बुकिंग
 sales_refunds	बुकिंग ते वापसी
 day_close	दिन बंद करो
@@ -401,7 +401,7 @@ ndr_customer_unavailable	अनुपलब्ध ऐ
 ndr_door_locked	दरवाजा बंद
 ndr_other	होर
 ndr_refused	मना कीता
-out_for_delivery	डिलीवरी आस्तै बार
+out_for_delivery	डिलीवरी आस्तै बाह्र
 print_drs	DRS छापो
 print_run_sheet	रन शीट छापो
 reattempt	फेर कोशिश
@@ -702,7 +702,7 @@ counter_locked	काउंटर 01 · ताला लगाया
 country_pack_help	इक कंट्री पैक टैक्स दा नांऽ ते गणित, इंस्टेंट-पे रेल, ते बिलें पर छपी दी बिजनेस आईडी सेट करदा ऐ। Kumkaj कुतै बी टैक्स दायर नेईं करदा ते सरकारी ई-चालान जारी नेईं करदा।
 currency_use_help	स्क्रॉल करो ते टैप करो कुसै बी समर्थत मुद्रा आस्तै इस्तेमाल करो।
 day_close_help	इक दिन बंद रिकार्ड करने कन्नै इस सारांश (ते दराज विचरण जेकर गिनती कीती गेई ऐ तां) आडिट लॉग च बचाई जंदी ऐ। बेचना बंद नहीं करदा।
-expenses_word	खर्चा करना
+expenses_word	खर्चे
 feature_access_help	चुणे कर्मचारी दी सुविधा पहुँच (जोड़ने बाद दबाओ)
 footer_local	स्थानीय SQLite · मुफ्त हमेशा लेई · शून्य बादल
 fresh_book_moklanjo	ताजा = खाली सूची (चीज बाद च जोड़ो)। बही = थल्लै खुलदा स्टॉक ते कुस दा बकाया ऐ, ऊ लिखो।
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	हर इक च किन्ना ऐ लिखो (�
 money_in_sales	(बिक्री) च पैसे
 more_help_moklanjo	सूची, बिक्री, उधार, टीम, बैकअप — ते जरूरत पए तां स्टॉक ते अतिरिक्त टिल।
 net_word	नेट
-offline_badge	OFFLINE दा
+offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक इक बारी सेट करदा ऐ; सिर्फ बरतूनी गै बाद च पासवर्ड बदली सकदा ऐ।
 or_unlock_login	या लॉगिन आईडी + पासवर्ड कन्नै अनलॉक करो
 or_unlock_shop_login	या दुकान लॉगिन कन्नै अनलॉक करो
@@ -734,7 +734,7 @@ cloud_sending_reset	रीसेट लिंक भेजना...
 cloud_forgot_sent	जेकर उस ईमेल दा खाता ऐ तां रीसेट लिंक रस्ते च ऐ।
 cloud_welcome	{user} · {plan} दे रूप च साइन इन कीता गेदा ऐ
 cloud_created	खाता बनाया गया। कदूं करी सकदे ओ इस गल्लै गी सत्यापन करने लेई अपने ईमेल दी जांच करो।
-cloud_cancel	रद्द
+cloud_cancel	रद्द करो
 permission_preset	कम्म
 preset_help_moklanjo	कैशियर : बेच दे। प्रबंधक: बेचना + मेनू आइटम + शून्य / संशोधन करना।
 product_locked_moklanjo	Moklanjo
@@ -816,7 +816,7 @@ report_day_lens	«आज» गी इ'यां दिक्खो
 report_day_lens_help	सिर्फ दिक्खने लेई — इस कन्नै एह् नेईं बदलदा जे «दिन बंद करो» कदूं «आज» गी नमें सिरेआ शुरू करदा ऐ। «दिन बंद करो दे मताबक» पिछले दिन बंद थमां गिनदा ऐ; «अद्धी रातीं दे मताबक» स्थानी समें मताबक रातीं 00:00 बजे कटदा ऐ।
 report_lens_day_close	दिन बंद करो दे मताबक
 report_lens_midnight	अद्धी रातीं दे मताबक
-trk_booked	बुक होया
+trk_booked	बुक होआ
 trk_picked_up	पिकअप होया
 trk_in_transit	रस्ते च
 trk_delivered	पुजाया

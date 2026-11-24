@@ -2,10 +2,10 @@
 app_tagline	Rawt order, buh chhumna leh lehkha. Free, internet tel lo.
 unlock	Hawng
 pin_hint	Neitu PIN chu 0000 atangin a tan
-sell	Order
+sell	Dilna
 buy	Lei
 books	Ni lehkha
-books_help	Vawiin dinhmun. Order = order lut. Lei = lei leh sum sen. Mi = ba nei customer leh thil pek tu.
+books_help	Vawiin dinhmun. Dilna = dilna lut. Lei = lei leh sum hman. Lehkha mi = ba nei dawngtu leh thil pek tu.
 buy_help	Sum sen lehkha leh pek tu bill (sum chhuak). Inkhaihbuak chu mi lekhapui-ah a awm reng.
 sell_money_in	Order la
 buy_money_out	Sum sen / pek tu bill
@@ -18,7 +18,7 @@ reports_help	Ni lehkha, ba nei te leh kan ba te, bank lehkha, sum sen lehkha, hm
 reports_today	Ni lehkha (vawiin)
 reports_month	Hmuh leh hloh (thla)
 reports_aging	La awm / ba-ba
-reports_balance_sheet	Balance sheet
+reports_balance_sheet	In-chhuah zawhna
 reports	Bank lehkha leh H&H
 refresh	Thar leh
 undo	Ti lo leh
@@ -46,7 +46,7 @@ total	A zawng
 cash	Sum
 upi	UPI
 card	Card
-credit	Mi
+credit	Lehkha mi
 clear	Thianghlim
 ready_to_sell	Ziak turin a inpe
 today_prefix	Vawiin
@@ -255,7 +255,7 @@ amounts_show	Lantir
 counter	Zuar dawhkan
 dine_in	Hetah ei
 takeaway	La chhuak
-order	Order
+order	Dilna
 tables	Dawhkan
 kitchen	Buh chhumna
 sales	Zuar
@@ -527,7 +527,7 @@ create_backup	Backup siam
 credit_limit_heading	Ba tiam (mi thlan / hming dah)
 day_close_summary	Ni khar tlangpui
 delete_party	Mi thlan paih bo
-delivery	Thlen
+delivery	Pek chhuah
 done_open_books	Zo — lehkha hawng
 drawer_count	Bawm chhiar (duh chuan)
 expense_heading	Sum sen
@@ -900,7 +900,7 @@ till_to_bank	Dawhkan → bank
 units_heading	Unit
 unlock_after_pairing	PIN ziak
 unlock_with_login	Lutna in hawng
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+or_unlock_shop_login	A nih loh leh shop login hmangin unlock rawh
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	खैंजो खाता
 cloud_account_help	khaynjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
@@ -972,7 +972,7 @@ local_badge	CHHUNG
 mix_type_hint_khaynjo	A ngai chuan sum / UPI / card / ba then. Ba hian a chunga customer a ngai.
 money_in_sales	Sum lut (zuar)
 net_word	Chhiar zawng
-offline_badge	NET TEL LO
+offline_badge	Net tel lo
 optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a dah; hmangtu chauhvin password a thlak thei nakinah.
 or_unlock_login	Emaw lut hmingchhiar + password in hawng
 permission_preset	Hna
@@ -1151,7 +1151,7 @@ shift_handover	Duty sem
 shift_since	He duty atanga
 expected_in_drawer	Bawm-ah beisei
 right_discount	Tlem pe
-floor_in_kitchen	Buh chhumna-ah
+floor_in_kitchen	Buh chhumnaah
 floor_eating	Rawih tawh
 pick_category	Pawl thlang
 close_category_list	Pawl list khar

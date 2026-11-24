@@ -3,9 +3,9 @@ app_tagline	रेस्टोरेंट आदेश, किचन & ले�
 unlock	अनलॉक
 pin_hint	स्वामिः PIN 0000 इति आरभ्यते
 sell	आदेशः
-buy	क्रीणातु
+buy	क्रयः
 books	दिवस लेजर
-books_help	अद्यतनं लेखासारांशः। आदेशाः = आगच्छन्तः आदेशाः क्रयणं = क्रयणं व्ययः च। ग्राहकाः आपूर्तिकर्ताश्च = ऋणग्राहकाः आपूर्तिकर्ताश्च।
+books_help	अद्यतनं लेखासारांशः। आदेशाः = आगच्छन्तः आदेशाः। क्रयः = क्रयाः व्ययाः च। पार्टी = ऋणग्राहकाः आपूर्तिकर्ताः च।
 buy_help	व्ययस्य रसीदाः आपूर्तिकर्तानां बिलानि च (धनं बहिः)। खातेः ग्राहकस्य अथवा आपूर्तिकर्तायाः लेजरस्य उपरि तिष्ठति।
 sell_money_in	आदेशं गृहाण
 buy_money_out	व्यय / आपूर्तिकर्ता बिल
@@ -303,7 +303,7 @@ kot_new_waiting	NEW — प्रतीक्षमाणः
 kot_preparing	सज्जता
 kot_ready_serve	READY — तस्य सेवां कुर्वन्तु
 kot_done_cap	DONE इति
-kot_cancelled	CANCELED इति
+kot_cancelled	निरस्तम्
 kot_start_btn	आरभत
 kot_mark_ready	मार्क सज्जः
 kot_done_btn	कृतम्
@@ -389,7 +389,7 @@ app_template_from_device_help	यस्मिन् फोल्डर्-मध
 settings_app_tmpl_note	पुनः आयाते कृते विक्रयः, KOT, लेखाः च रिक्ताः भवन्ति, ततः पैक्-इत्यस्य दुकानस्य सेटिंग्स् प्रवर्तन्ते। केवलं मेनू-युक्ताः टेम्पलेट्: «मेनू» → «वस्तु-प्रतिरूपाणि»।
 app_template_wipe_warn	अनेन लेखापुस्तकस्य व्यापारदत्तांशः (विक्रयः, KOT, लेखाः) रिक्तः भविष्यति, टेम्पलेट्-इत्यस्य दुकानस्य सेटिंग्स् च प्रवर्तिष्यन्ते। मेनू सेटअप् च परिवर्तेताम्। किं निरन्तरं करणीयम्?
 app_template_wipe_continue	निरन्तरं कुर्वन्तु
-app_template_wipe_cancel	रद्दं कुर्वन्तु
+app_template_wipe_cancel	निरस्यन्तु
 currency	मुद्रा
 backup	बैकअप
 use	प्रयोगः
@@ -527,7 +527,7 @@ create_backup	बैकअप रचयन्तु
 credit_limit_heading	ऋणसीमा (चयनितः ग्राहकः अथवा आपूर्तिकर्ता) २.
 day_close_summary	दिवस निकट सारांश
 delete_party	चयनितं ग्राहकं वा आपूर्तिकर्तारं वा विलोपयन्तु
-delivery	प्रसवः
+delivery	समर्पणम्
 done_open_books	कृत — उद्घाटितलेजर्स
 drawer_count	दराज गणना (वैकल्पिक) 1.1.
 expense_heading	व्ययः
@@ -707,8 +707,8 @@ printers_routes_help	प्रचालनतन्त्रं पूर्व�
 printer_assign_dd	वास्तविक मुद्रक: {place}
 printer_assign_pick	वास्तविकं मुद्रकं चिनोतु
 printer_profile_heading	विन्यासः
-printer_send_heading	प्रसवः
-vp_delivery_heading	प्रसवः
+printer_send_heading	समर्पणम्
+vp_delivery_heading	समर्पणम्
 vp_delivery_help	एषः आभासीमुद्रकः कथं कार्याणि प्रेषयति — OS दस्तावेजः, कच्चा बाइट्, अथवा ESC/POS । स्लिप् सामग्री (प्रकारस्य आकारः, रैप्, मार्जिन्स्) बिल / KOT प्रारूपेण निर्णयः भवति, अत्र न ।
 vp_type_size_heading	आकारः प्रकारः
 vp_wrap_heading	लपेट चौड़ाई
@@ -863,7 +863,7 @@ printer_already_saved	पूर्वमेव रक्षितम् : {name}
 find_printers	मुद्रकान् अन्वेष्टुम्
 printers_looking	पश्यन्...
 saving_printer	मुद्रकं योजयित्वा...
-cancelled	रद्दं कृतम्
+cancelled	निरस्तम्
 press_back_again_exit	निर्गन्तुं पुनः «पृष्ठतः» नुदन्तु
 cancelling	रद्दं क्रियते…
 removing	अपाक्रियते…
@@ -915,7 +915,7 @@ cloud_sending_reset	पुनर्स्थापन-सम्पर्कत�
 cloud_forgot_sent	यदि तस्मिन् ईपत्रे खाता अस्ति तर्हि पुनर्स्थापन-सम्पर्कतन्तुः प्रेषितः।
 cloud_welcome	{user} · {plan} रूपेण प्रविष्टः
 cloud_created	खाता निर्मितम्। यदा शक्यं स्यात् प्रमाणीकर्तुं ईपत्रं पश्यन्तु।
-cloud_cancel	रद्दं कुर्वन्तु
+cloud_cancel	निरस्यन्तु
 unmark	अनमार्क
 update_my_password	मम गुप्तशब्दं अद्यतनं कुर्वन्तु
 update_my_pin	मम प्रवेशं अद्यतनं कुर्वन्तु
@@ -972,7 +972,7 @@ local_badge	स्थानीय
 mix_type_hint_khaynjo	आवश्यकतानुसारं नकदं / UPI / कार्डं / क्रेडिट् मध्ये विभक्तम्। ऋणस्य उपरि ग्राहकस्य आवश्यकता भवति।
 money_in_sales	(विक्रये) धनम् २.
 net_word	नेट्
-offline_badge	OFFLINE इति
+offline_badge	अन्तर्जालरहितम्
 optional_login_help	वैकल्पिकं प्रवेशः (id + password)। स्वामिना एकवारं सेट् भवति; केवलं उपयोक्ता एव पश्चात् गुप्तशब्दं परिवर्तयितुं शक्नोति।
 or_unlock_login	अथवा login id + password इत्यनेन अनलॉक् कुर्वन्तु
 permission_preset	कार्यम्
@@ -1024,7 +1024,7 @@ team_rights_changed	अधिकाराः परिवर्तिताः �
 they_owe_us	ते अस्माकं ऋणी भवन्ति
 unit_at_cap	इकाई @ .
 units_help	मेनू-वस्तु-लेबल् (किलो, खण्डः, बैग्) कृते कोडाः । प्रत्येकं एककं — प्रत्यक्षतया अन्यैः एककैः वा — मानकेन (kg · cm · ml · pc) सह सम्बद्धं भवितुमर्हति, उदा. १ टोकरी = २ पेटी १ पेटी = २० से.मी. परिवर्तनम् : १ तः = कारकं यावत् । मुद्राः कदापि एककाः न भवन्ति।
-units_picker_help	«क्रीणातु» तथा «मेनू» चयनकेषु एकं यूनिटं दर्शयितुं चालू/बन्दं ट्याप् कुर्वन्तु। बन्द यूनिट् अद्यापि परिवर्तयन्ति।
+units_picker_help	«क्रयः» तथा «मेनू» चयनकेषु एकं यूनिटं दर्शयितुं चालू/बन्दं ट्याप् कुर्वन्तु। बन्द यूनिट् अद्यापि परिवर्तयन्ति।
 unit_picker_on	पर
 unit_picker_off	अफ
 we_owe_them	वयं तान् ऋणीमः
@@ -1120,7 +1120,7 @@ add_a_table	भोजनमेजं योजयन्तु
 add_station_heading	पाकशालास्थानकं योजयन्तु
 categories_help	तस्य वर्गस्य अधः उपरि मेनू-वस्तुं सञ्चिकां कर्तुं Use इति ट्याप् कुर्वन्तु । फोटो श्रेणीं चित्रं ददाति; एकं विना तस्य आद्याक्षराणि दर्शयति।
 dish_search_ph	मेनू-वस्तुनाम — अस्माकं व्यञ्जनानि अन्वेष्टुम् अथवा स्वकीयं टङ्कयन्तु
-tile_free	रिक्त
+tile_free	रिक्तः
 tile_occupied	व्याप्तः
 tile_food_ready	भोजनं सज्जम्
 tile_bill_printed	देयकं मुद्रितम्
@@ -1151,8 +1151,8 @@ shift_handover	हस्तान्तरणं शिफ्टं कुर्
 shift_since	ततः परं एतत् परिवर्तनम्
 expected_in_drawer	दराजमध्ये अपेक्षितम्
 right_discount	छूटं ददातु
-floor_in_kitchen	पाकशालायां
-floor_eating	सेवित
+floor_in_kitchen	पाकशालायाम्
+floor_eating	परिवेषितम्
 pick_category	एकं वर्गं चिनुत
 close_category_list	श्रेणीसूचीं बन्दं कुर्वन्तु
 new_category_row	नूतनः वर्गः — यदा भवान् मेनू-वस्तु रक्षति तदा निर्मितः
@@ -1161,7 +1161,7 @@ suggested_category	सुझावः — अस्माकं व्यञ्�
 category_search_ph	श्रेणी — भवतः अन्वेषणं कुर्वन्तु अथवा नूतनं टङ्कयन्तु
 line_sent_state	पाकशालायाः कृते प्रेषितः
 line_nc_state	प्रशंसात्मक (NC) — न आरोपितम्
-cancel_item_short	रद्दं कुर्वन्तु
+cancel_item_short	निरस्यन्तु
 nc_short	न शुल्कम्
 charge_again_short	शुल्कः
 move_short	चाल
@@ -1173,7 +1173,7 @@ already_cooked	पूर्वमेव पक्त्वा (अपव्य�
 not_cooked_yet	अद्यापि न पक्त्वा
 return_to_customer	ग्राहकं प्रति प्रत्यागच्छन्तु
 short_by	संक्षेपेण
-tip_not_sale	टिप् (कर्मचारिणां, न तु विक्रयः) २.
+tip_not_sale	टिप्-धनम् (कर्मचारिणां, न विक्रयः)
 right_settle	भुगतानं गृहाण
 right_cancel_sent	प्रेषितं मेनू-वस्तु रद्दं कुर्वन्तु
 right_complimentary	प्रशंसनीय (एन.सी.) ९.
@@ -1201,7 +1201,7 @@ line_target_ph	भोजनमेजं प्रति गच्छन्तु
 confirm	पुष्टिं कुर्वन्तु
 menu_search_ph	मेनू मदं वा लघुसङ्केतं वा अन्वेष्टुम्
 customer_paid_ph	ग्राहकः भुक्तवान्
-tip_ph	टिप्
+tip_ph	टिप्-धनम्
 table_area_ph	क्षेत्रफलम् (उदा. Dine In, Parcel, AC) २.
 table_range_ph	एकदा एव बहवः : D1-D20
 add_these_tables	एतानि भोजनमेजाः योजयन्तु
@@ -1244,7 +1244,7 @@ kot_kind_heading	KOT-प्रकारः
 kot_kind_original	मूल
 kot_kind_duplicate	डुप्लिकेट्
 kot_kind_modified	परिवर्तित
-kot_kind_cancelled	रद्दं कृतम्
+kot_kind_cancelled	निरस्तम्
 kot_style_heading	क्षेत्र प्रकार आकार & वजन
 kot_style_title	शीर्षकम्
 kot_style_field_pick	क्षेत्रं चिनोतु
@@ -1327,7 +1327,7 @@ dine_in_pick_table	भोजनम् — «भोजनालयः» इत्
 choose_table	भोजनमेजं चिनुत
 change_table	भोजनमेजं परिवर्तयन्तु
 pick_table_banner	अस्य आदेशस्य कृते भोजनमेजं चिनुत
-items_word	मेनू-वस्तूनाम्
+items_word	वस्तूनि
 items_section	वस्तूनि
 back_to_order	क्रमं प्रति पुनः
 new_items_head	अद्यापि न प्रेषितम्
@@ -1373,7 +1373,7 @@ kitchen_tab_recall	स्मरणं कुरुत
 kitchen_tab_stations	स्टेशनाः
 split_bill	विभक्तं देयकम्
 split_go	पृथक् बिलं कुरुत
-cancel	रद्दम्
+cancel	निरस्यन्तु
 opening_client	क्लायन्ट् उद्घाटयन्...
 preparing_desk	मेजस्य सज्जीकरणम्...
 opening_server	सर्वरं उद्घाटयन्...

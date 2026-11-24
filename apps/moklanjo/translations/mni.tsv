@@ -11,10 +11,10 @@ board_empty	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯀꯥꯔꯗ ꯑꯃꯠꯇꯥ ꯂ�
 board_park_nothing	ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯀꯔꯤꯁꯨ ꯂꯩꯇꯦ — ꯆꯥꯔꯖꯁꯤꯡ ꯅꯠꯠꯔꯒꯥ ꯕꯨꯀꯤꯡꯒꯤ ꯑꯀꯨꯞꯄꯥ ꯃꯔꯣꯂꯁꯤꯡ ꯍꯥꯄꯆꯤꯅꯕꯥ
 board_parked	«ꯕꯣꯔꯗ»ꯗꯥ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ — ꯗꯦꯁ꯭ꯛ ꯑꯗꯨ ꯍꯧꯖꯤꯛ ꯏꯪꯔꯦ
 board_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ
-board_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
+board_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ
 board_filter_all	ꯑꯄꯨꯟꯕ
 board_filter_draft	ꯗ꯭ꯔꯥꯐ꯭ꯠ
-board_filter_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
+board_filter_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ
 board_cols_fmt	{n} ꯀꯂꯃꯁꯤꯡ
 board_summary_fmt	{total} ꯀꯥꯔꯗꯁꯤꯡ · {drafts} ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯇꯧꯕꯥ · {booked} ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ
 board_card_no_charges	ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯐꯤ ꯑꯃꯠꯇꯥ ꯍꯥꯄꯆꯤꯜꯂꯦ
@@ -66,7 +66,7 @@ total	ꯑꯄꯨꯟꯕ
 cash	ꯁꯦꯟ
 upi	UPI
 card	ꯀꯥꯔꯗ
-credit	ꯃꯤ
+credit	ꯄꯥꯔꯇꯤ
 clear	ꯁꯦꯡꯗꯣꯛꯎ
 ready_to_sell	ꯏꯅꯕ ꯁꯦꯝꯃꯤ
 today_prefix	ꯉꯁꯤ
@@ -89,8 +89,8 @@ note_ph	ꯋꯥꯍꯩ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 rounded	ꯃꯨꯟꯗꯣꯛꯂꯦ
 split	ꯈꯥꯏꯗꯣꯛꯎ
 counter	ꯌꯣꯟꯕꯒꯤ ꯐꯝ
-parcel	ꯄꯥꯔꯁꯦꯜ꯫
-order	ꯌꯥꯕ
+parcel	ꯄꯥꯔꯁꯦꯜ
+order	ꯑꯣꯔꯗꯔ
 sales	ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ꯫
 sales_refunds	ꯕꯨꯀꯤꯡ & ꯔꯤꯐꯟꯗ ꯇꯧꯕꯥ꯫
 day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ
@@ -157,8 +157,8 @@ breadth_cm_ph	ꯕꯤ ꯁꯦ.ꯃꯤ
 height_cm_ph	ꯑꯩꯆ ꯁꯦ.ꯃꯤ
 chargeable_kg	ꯆꯥꯔꯖ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯀꯦ.ꯖꯤ
 awb_label	ꯑꯦ.ꯗꯕ꯭ꯜꯌꯨ.ꯕꯤ
-booking_help	থাবা + পাউবা (অমত্তা OK) → লমদাম → অরূম → রেট খাংউ → একাউন্ট/কেশ → পাই। মরক্তা: «ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ» (ꯕꯣꯔꯗদা সেভ তৌই, লাইরিকতা নত্তে) অদুমগী ঐহাকপু সেবা তৌ; মখা তৌনবগীদমক ꯕꯣꯔꯗদা ড্রাফ্ট তাপ তৌ। রসিদতা AWB প্রিন্ট তৌই। অদুমগী বুকিংনা ডেস্ক শেংদোকই।
-cart_empty_hint	ꯗꯦꯁ꯭ꯛ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯥ — ꯀꯟꯁꯥꯏꯅꯔ/ ꯀꯟꯁꯥꯏꯅꯔ ꯑꯣꯄꯁꯅꯦꯜ, ꯗꯦꯁ꯭ꯇꯤꯅꯦꯁꯟ & ꯑꯣꯖꯟ ꯁꯦꯠ ꯇꯧꯕꯥ, ꯔꯦꯠ ꯑꯃꯗꯥ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ ꯇꯦꯞ ꯇꯧꯕꯥ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯄꯦꯃꯦꯟꯇ ꯇꯧꯕꯥ꯫
+booking_help	ꯊꯥꯕꯥ + ꯄꯥꯎꯕꯥ (ꯑꯃꯇ꯭ꯇꯥ OK) → ꯂꯃꯗꯥꯃ → ꯑꯔꯨꯃ → ꯔꯦꯇ ꯈꯥꯪꯎ → ꯑꯦꯀꯥꯎꯅ꯭ꯇ/ꯀꯦꯁ → ꯄꯥꯏ। ꯃꯔꯀ꯭ꯇꯥ: «ꯗ꯭ꯔꯥꯐ꯭ꯠ ꯑꯣꯏꯅꯥ ꯁꯦꯚ ꯇꯧ» (ꯕꯣꯔꯗꯗꯥ ꯁꯦꯚ ꯇꯧꯏ, ꯂꯥꯏꯔꯤꯀꯇꯥ ꯅꯇ꯭ꯇꯦ) ꯑꯗꯨꯃꯒꯤ ꯑꯩꯍꯥꯀꯄꯨ ꯁꯦꯕꯥ ꯇꯧ; ꯃꯈꯥ ꯇꯧꯅꯕꯒꯤꯗꯃꯀ ꯕꯣꯔꯗꯗꯥ ꯗ꯭ꯔꯥꯐ꯭ꯇ ꯇꯥꯄ ꯇꯧ। ꯔꯁꯤꯗꯇꯥ AWB ꯄ꯭ꯔꯤꯅ꯭ꯇ ꯇꯧꯏ। ꯑꯗꯨꯃꯒꯤ ꯕꯨꯀꯤꯪꯅꯥ ꯗꯦꯁ꯭ꯀ ꯁꯦꯪꯗꯣꯀꯏ।
+cart_empty_hint	ꯗꯦꯁ꯭ꯛ ꯑꯍꯥꯡꯏ — ꯀꯟꯁꯥꯏꯅꯔ/ꯀꯟꯁꯥꯏꯅꯤ ꯌꯥꯎꯗꯕꯁꯨ ꯌꯥꯏ, ꯂꯝ ꯑꯃꯁꯨꯡ ꯑꯔꯨꯝ ꯊꯝꯃꯨ, ꯔꯦꯠ ꯑꯃꯗ ADD ꯅꯝꯃꯨ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯄꯦ ꯇꯧ.
 team	ꯂꯨꯞ
 team_pins	ꯂꯨꯞ ꯑꯃꯁꯨꯡ PIN
 my_pin_settings	ꯑꯩꯒꯤ PIN
@@ -168,7 +168,7 @@ backup_settings	ꯀꯣꯄꯤ ꯑꯃꯁꯨꯡ ꯁꯦꯝꯐꯝ
 lock_app	ꯑꯦꯞ ꯊꯤꯡꯕꯤꯌꯨ
 pick	ꯂꯧꯕꯤꯌꯨ
 select	ꯈꯟꯕꯤꯌꯨ
-advance	অগ্রিম
+advance	ꯃꯃꯥꯡ ꯁꯦꯟ
 owner	ꯃꯄꯨ
 staff	ꯊꯕꯛꯇꯧꯕ
 photo	ꯁꯛꯇꯝ
@@ -200,7 +200,7 @@ new_server_name_ph	server ꯑꯅꯧꯕꯒꯤ ꯃꯤꯡ (ꯌꯥꯕ ꯑꯣꯏꯔ�
 server_remove_pin_ph	ꯃꯄꯨꯒꯤ PIN, server ꯂꯣꯠꯅꯕ
 only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
-device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ. হায়না Server লৈতবা মতমদা «ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ» না খল্লবা ফাইলদগি লাইরিক হাংলকই (settings দা রিস্টোর গুম্না চেক)।
+device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ. ꯍꯥꯌꯅꯥ Server ꯂꯩꯇꯕꯥ ꯃꯇꯃꯗꯥ «ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ» ꯅꯥ ꯈꯂ꯭ꯂꯕꯥ ꯐꯥꯏꯂꯗꯒꯤ ꯂꯥꯏꯔꯤꯀ ꯍꯥꯪꯂꯀꯏ (settings ꯗꯥ ꯔꯤꯁ꯭ꯇꯣꯔ ꯒꯨꯃ꯭ꯅꯥ ꯆꯦꯀ)।
 currency	ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 backup	ꯀꯣꯄꯤ
 settings_sec_diag	ꯑꯔꯥꯟꯕ ꯌꯦꯡꯕ
@@ -219,7 +219,7 @@ snack_secs_ph	ꯁꯦꯀꯦꯟ (3–60, ꯃꯔꯨ 10)
 snack_secs_save	ꯄꯥꯎꯖꯦꯜꯒꯤ ꯃꯇꯝ ꯊꯝꯕꯤꯌꯨ
 snack_secs_saved	ꯄꯥꯎꯖꯦꯜꯒꯤ ꯃꯇꯝ ꯊꯝꯂꯦ — ꯁꯦꯀꯦꯟ {n}
 snack_secs_bad	ꯁꯦꯀꯦꯟꯗꯁꯤꯡ ꯑꯁꯤ ꯅꯝꯕꯔ ꯑꯃꯥ ꯑꯣꯏꯅꯥ ꯑꯦꯟꯇꯔ ꯇꯧꯔꯣ (꯳–꯶꯰)
-cancelled	ꯇꯣꯛꯈꯤ
+cancelled	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯈ꯭ꯔꯦ
 cancelling	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯔꯤ…
 cancel	ꯇꯣꯛꯎ
 press_back_again_exit	ꯊꯣꯛꯅꯕ ꯍꯟꯅ “ꯍꯟꯖꯤꯜꯂꯨ” ꯅꯝꯃꯨ
@@ -289,9 +289,9 @@ till_to_bank	ꯐꯝ → ꯕꯦꯡꯛ
 mark_cleared	ꯁꯦꯡꯗꯣꯛꯈꯤ ꯍꯥꯌꯅ ꯃꯥꯏꯊꯤꯜ ꯄꯤꯕꯤꯌꯨ
 unmark	ꯃꯥꯏꯊꯤꯜ ꯂꯣꯠꯎ
 role_both	ꯑꯅꯤꯃꯛ
-role_carrier	ꯀꯦꯔꯤꯌꯔ ꯑꯣꯏꯕꯥ꯫
+role_carrier	ꯀꯦꯔꯤꯌꯔ
 role_cashier	ꯁꯦꯟ ꯌꯦꯡꯕ
-role_consignor	ꯀꯟꯁꯥꯏꯅꯔ ꯑꯣꯏꯅꯥ ꯊꯕꯛ ꯇꯧꯕꯥ꯫
+role_consignor	ꯀꯟꯁꯥꯏꯅꯔ
 role_manager	ꯃꯄꯨꯔꯣꯏ
 role_supplier	ꯄꯤꯔꯤꯕ
 branch_name_sell_ph	ꯌꯣꯟꯕ ꯁꯥꯈꯥꯒꯤ ꯃꯤꯡ
@@ -401,14 +401,14 @@ ndr_customer_unavailable	ꯂꯣꯏꯔꯦ
 ndr_door_locked	ꯊꯣꯡ ꯂꯣꯜꯂꯦ꯫
 ndr_other	ꯑꯇꯣꯞꯄ
 ndr_refused	ꯑꯌꯥꯕ ꯄꯤꯗꯕ
-out_for_delivery	ꯗꯦꯂꯤꯕꯔꯤꯒꯤꯗꯃꯛ ꯊꯣꯀꯈꯤ꯫
+out_for_delivery	ꯗꯦꯂꯤꯕꯔꯤꯒꯤꯗꯃꯛ ꯊꯣꯀꯈꯤ
 print_drs	ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯥ ꯗꯤ.ꯑꯥꯔ.ꯑꯦꯁ
 print_run_sheet	ꯄ꯭ꯔꯤꯟꯇ ꯔꯟ ꯁꯤꯠ꯫
 reattempt	ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯥ꯫
 rider_cod_handed_ph	ꯁꯤ.ꯑꯣ.ꯗꯤ.ꯅꯥ ꯁꯤꯟꯅꯈꯤ꯫
 settle_rider_cod	ꯁꯦꯇꯜ ꯔꯥꯏꯗꯔ ꯁꯤ.ꯑꯣ.ꯗꯤ
 mode_desk	ꯐꯥꯂ
-mode_rider	ꯔꯥꯏꯗꯔ꯫
+mode_rider	ꯔꯥꯏꯗꯔ
 waiting_office	ꯑꯣꯐꯤꯁꯇꯥ ꯌꯧꯅꯕꯥ ꯉꯥꯏꯗꯨꯅꯥ ꯂꯩꯔꯤ꯫
 capture_signature	ꯁꯤꯒꯅꯦꯆꯔ ꯀꯦꯄꯆꯔ ꯇꯧꯕꯥ꯫
 incoming_manifest	ꯏꯅꯀꯝ ꯃꯦꯅꯤꯐꯦꯁ꯭ꯠ ꯇꯧꯕꯥ꯫
@@ -461,7 +461,7 @@ remove_selected	ꯈꯟꯈꯤꯕ ꯂꯣꯠꯎ
 restore_backup	ꯀꯣꯄꯤ ꯍꯟꯕꯤꯔꯛꯎ
 rider_name_ph	ꯔꯥꯏꯗꯔꯒꯤ ꯃꯃꯤꯡ꯫
 rider_phone_ph	ꯔꯥꯏꯗꯔ ꯐꯣꯟ ꯇꯧꯕꯥ꯫
-riders	ꯔꯥꯏꯗꯔꯁꯤꯡ꯫
+riders	ꯔꯥꯏꯗꯔꯁꯤꯡ
 riders_own_fleet	ꯔꯥꯏꯗꯔꯁꯤꯡ (ꯃꯁꯥꯒꯤ ꯐ꯭ꯂꯤꯠ)
 rollup	ꯈꯣꯝꯖꯤꯟꯕ
 save_booking_measures	ꯕꯨꯀꯤꯡꯒꯤ ꯊꯧꯔꯥꯡꯁꯤꯡ ꯁꯦꯚ ꯇꯧꯕꯥ꯫
@@ -625,7 +625,7 @@ unlock_with_login	ꯆꯪꯕꯅ ꯍꯥꯡꯗꯣꯛꯎ
 update_my_password	ꯑꯩꯒꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ
 update_my_pin	ꯑꯩꯒꯤ PIN ꯑꯗꯨ ꯑꯄꯗꯦꯠ ꯇꯧ꯫
 duress_heading	ꯑꯔꯥꯟꯕ ꯍꯥꯡꯗꯣꯛꯄ PIN (ꯃꯄꯨꯈꯛꯇ)
-duress_help	Offline Server/Client LAN খক্তা — cloud ফীচার নত্তে। Default অফ: ওনারনা মসি PIN সেভ তৌদুনা অমুক তৌন ওন তৌই (টিম, Client till দাসু)। আনলকতা অচৌবা স্টাফ PIN গী মহুত্তা মসি PIN ইবা ওইরবদি Server দা লাইরিক এন্ট্রিশিং মুথৎকই অদুগা ডেস্ক ওনার ওইনা নোর্মল ফওবা হাংলকই — রেট, পার্টি, জোন, স্টাফ অমসুং সেটিংস লৈরকই। schema অমসুং config মুথৎতবা নত্তে। কনাগী PIN গা মান্নহনগনু। Clear বটননা অফ তৌ।
+duress_help	Offline Server/Client LAN ꯈꯀ꯭ꯇꯥ — cloud ꯐꯤꯆꯥꯔ ꯅꯇ꯭ꯇꯦ। Default ꯑꯐ: ꯑꯣꯅꯥꯔꯅꯥ ꯃꯁꯤ PIN ꯁꯦꯚ ꯇꯧꯗꯨꯅꯥ ꯑꯃꯨꯀ ꯇꯧꯅ ꯑꯣꯅ ꯇꯧꯏ (ꯇꯤꯃ, Client till ꯗꯥꯁꯨ)। ꯑꯥꯅꯂꯀꯇꯥ ꯑꯆꯧꯕꯥ ꯁ꯭ꯇꯥꯐ PIN ꯒꯤ ꯃꯍꯨꯇ꯭ꯇꯥ ꯃꯁꯤ PIN ꯏꯕꯥ ꯑꯣꯏꯔꯕꯗꯤ Server ꯗꯥ ꯂꯥꯏꯔꯤꯀ ꯑꯦꯅ꯭ꯇ꯭ꯔꯤꯁꯤꯪ ꯃꯨꯊꯠꯀꯏ ꯑꯗꯨꯒꯥ ꯗꯦꯁ꯭ꯀ ꯑꯣꯅꯥꯔ ꯑꯣꯏꯅꯥ ꯅꯣꯔ꯭ꯃꯂ ꯐꯑꯣꯕꯥ ꯍꯥꯪꯂꯀꯏ — ꯔꯦꯇ, ꯄꯥꯔ꯭ꯇꯤ, ꯖꯣꯅ, ꯁ꯭ꯇꯥꯐ ꯑꯃꯁꯨꯪ ꯁꯦꯇꯤꯪꯁ ꯂꯩꯔꯀꯏ। schema ꯑꯃꯁꯨꯪ config ꯃꯨꯊꯠꯇꯕꯥ ꯅꯇ꯭ꯇꯦ। ꯀꯅꯥꯒꯤ PIN ꯒꯥ ꯃꯥꯅ꯭ꯅꯍꯅꯒꯅꯨ। Clear ꯕꯇꯅꯅꯥ ꯑꯐ ꯇꯧ।
 duress_pin_ph	ꯑꯔꯥꯟꯕ PIN (ꯗꯤꯖꯤꯠ 4–12)
 duress_confirm_ph	ꯍꯟꯅ ꯏꯕꯤꯌꯨ, ꯅꯦꯝꯅꯕ
 save_duress_pin	ꯑꯔꯥꯟꯕ PIN ꯊꯝꯕꯤꯌꯨ
@@ -705,7 +705,7 @@ day_close_help	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ ꯏꯕꯅ ꯋꯥꯔꯣꯜ ꯑꯁꯤ 
 expenses_word	ꯆꯥꯟꯕ
 feature_access_help	ꯈꯅꯒꯠꯂꯕꯥ ꯁ꯭ꯇꯥꯐꯁꯤꯡꯒꯤꯗꯃꯛꯇꯥ ꯐꯤꯆꯔ ꯑꯦꯛꯁꯦꯁ (ꯍꯥꯌꯔꯤꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯇꯦꯞ ꯇꯧꯕꯥ)
 footer_local	SQLite ꯃꯅꯨꯡ · ꯃꯈꯥ ꯉꯥꯏꯗꯕ ꯂꯩꯔꯣꯝ · ꯀ꯭ꯂꯥꯎꯗ ꯂꯩꯇꯕ
-fresh_book_moklanjo	ꯐ꯭ꯔꯦꯁ = ꯏꯝꯄꯣꯔꯠ ꯀꯦꯇꯥꯂꯣꯒ (ꯃꯇꯨꯡꯗꯥ ꯑꯥꯏꯇꯦꯃꯁꯤꯡ ꯍꯥꯄꯆꯤꯅꯕꯥ)꯫ ꯂꯥꯏꯔꯤꯛ = ꯇꯥꯏꯞ ꯑꯣꯄꯅꯤꯡ ꯁ꯭ꯇꯣꯛ ꯑꯃꯁꯨꯡ ꯃꯈꯥꯗꯥ ꯄꯤꯔꯤꯕꯥ ꯑꯗꯣꯃꯗꯥ ꯀꯅꯥꯅꯥ ꯔ꯭ꯏꯟ ꯂꯩꯕꯒꯦ꯫
+fresh_book_moklanjo	ꯐ꯭ꯔꯦꯁ = ꯑꯍꯥꯡꯕ ꯀꯦꯇꯥꯂꯣꯒ (ꯃꯇꯨꯡꯗ ꯑꯥꯏꯇꯦꯝ ꯍꯥꯄꯆꯤꯟꯕꯤꯌꯨ)꯫ ꯂꯥꯏꯔꯤꯛ = ꯍꯧꯔꯛꯐꯝ ꯁ꯭ꯇꯣꯛ ꯏꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯃꯈꯥꯗ ꯀꯅꯥ ꯔꯤꯟ ꯂꯩꯕꯒꯦ.
 fresh_selected	ꯑꯅꯧ ꯈꯟꯈꯤ — ꯂꯤꯁ꯭ꯇ ꯍꯥꯏꯗꯕ ꯂꯩꯔꯣꯝꯃꯤ. ꯁꯦꯝꯃꯤꯕ ꯃꯇꯝꯗ ꯂꯣꯏꯔꯦ ꯅꯝꯃꯨ.
 gross_word	ꯑꯄꯨꯟꯕ ꯑꯔꯥꯟꯕ
 how_start	ꯀꯔꯝꯅ ꯍꯧꯕ ꯄꯥꯝꯕꯤꯕꯅꯣ?
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	ꯑꯃꯃꯃꯗꯥ ꯀꯌꯥ ꯌꯥꯝꯅꯥ ꯂꯩꯕꯒ
 money_in_sales	ꯁꯦꯟ ꯆꯪꯕ (ꯌꯣꯟꯕ)
 more_help_moklanjo	ꯀꯦꯇꯥꯂꯣꯒ, ꯁꯦꯂꯁ, ꯀ꯭ꯔꯦꯗꯤꯠ, ꯇꯤꯝ, ꯕꯦꯀꯑꯞ — ꯄ꯭ꯂꯥꯁ ꯁ꯭ꯇꯣꯛ ꯑꯃꯁꯨꯡ ꯃꯊꯧ ꯇꯥꯕꯥ ꯃꯇꯃꯗꯥ ꯑꯍꯦꯅꯕꯥ ꯇꯤꯂꯁꯤꯡ꯫
 net_word	ꯁꯦꯟꯊꯣꯛ
-offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
+offline_badge	ꯑꯣꯐꯂꯥꯏꯟ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
 or_unlock_shop_login	ꯅꯠꯇ꯭ꯔꯒ ꯁꯣꯞ ꯂꯣꯒꯤꯟꯅ ꯍꯥꯡꯗꯣꯛꯎ
@@ -797,11 +797,11 @@ onboard_template_tmpl	ꯄꯥꯝꯕꯗꯤ ꯐꯝꯒꯤ ꯃꯤꯡ ꯊꯝꯕꯤꯌ�
 tmpl_blurb	ꯀꯨꯔꯤꯌꯔ ꯕꯨꯛ ꯑꯃꯁꯨꯡ ꯕꯨꯀꯤꯡ ꯗꯦꯁ꯭ꯛ: ꯀꯟꯁꯥꯏꯅꯔꯁꯤꯡ, ꯀꯦꯔꯤꯌꯔꯁꯤꯡ, ꯗꯦ ꯕꯨꯛ, ꯑꯦ.ꯗꯕ꯭ꯜꯌꯨ.ꯕꯤ.
 tmpl_how	ꯗꯦꯁ꯭ꯀꯇꯥ ꯄꯥꯔꯁꯦꯂꯁꯤꯡ ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ; ꯉꯁꯤꯒꯤꯗꯃꯛ ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ; ꯔꯦꯠꯁꯤꯡ, ꯄꯥꯔꯇꯤꯁꯤꯡ, ꯔꯤꯄꯣꯔꯇꯁꯤꯡꯒꯤꯗꯃꯛꯇꯥ ꯇꯦꯕꯁꯤꯡ꯫
 app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
-app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯁꯦꯇꯑꯞ ꯑꯃꯥ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅꯥ ꯀꯁ꯭ꯇꯃꯔ ꯂꯤꯁ꯭ꯠ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯏ꯫
+app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯁꯦꯇꯑꯞ ꯑꯃ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅ ꯄꯥꯔꯇꯤ ꯂꯤꯁ꯭ꯠ ꯑꯍꯥꯡꯕ ꯑꯣꯏ.
 app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
 app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
 app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
-app_template_public_hdr	টেমপ্লেট
+app_template_public_hdr	ꯇꯦꯃꯄ꯭ꯂꯦꯇ
 app_template_import_selected	ꯈꯅꯕꯥ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_wipe_warn	ꯃꯁꯤꯅꯥ ꯑꯦꯀꯥꯎꯟꯇꯁꯤꯡꯗꯥ ꯂꯩꯕꯥ ꯇ꯭ꯔꯦꯗꯤꯡ ꯗꯦꯇꯥ (ꯕꯨꯀꯤꯡ, ꯂꯦꯖꯔ) ꯀ꯭ꯂꯤꯌꯔ ꯇꯧꯏ ꯑꯃꯁꯨꯡ ꯇꯦꯃꯞꯂꯦꯠꯀꯤ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯦꯞꯂꯥꯏ ꯇꯧꯏ꯫ ꯃꯈꯥ ꯆꯠꯊꯕꯥ ꯄꯥꯝꯕꯤꯕ꯭ꯔꯥ?
 app_template_wipe_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
@@ -816,13 +816,13 @@ report_day_lens	«ꯉꯁꯤ» ꯑꯁꯤꯒꯨꯝꯅꯥ ꯎꯠꯀꯅꯤ
 report_day_lens_help	ꯃꯁꯤꯅꯥ ꯚꯤꯎ ꯑꯗꯨ ꯈꯛꯇꯃꯛ ꯍꯣꯡꯗꯣꯀꯏ — «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕ»ꯅꯥ «ꯉꯁꯤ» ꯔꯤꯁꯦꯠ ꯇꯧꯕꯥ ꯃꯇꯃꯗꯥ ꯍꯣꯡꯗꯦ꯫ «ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ»ꯅꯥ ꯑꯔꯣꯏꯕꯥ ꯅꯨꯃꯤꯠ ꯂꯣꯏꯔꯕꯥ ꯃꯇꯨꯡꯗꯥ ꯆꯠꯂꯤ; «ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯑꯦꯟ.ꯗꯤ.ꯑꯦ» ꯂꯣꯀꯦꯜ ꯇꯥꯏꯃꯒꯤ ꯄꯨꯡ ꯰꯰:꯰꯰ꯗꯥ ꯀꯀꯊꯠꯂꯤ꯫
 report_lens_day_close	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ
 report_lens_midnight	ꯅꯨꯃꯤꯗꯥꯡꯋꯥꯏꯔꯃꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯑꯦꯟ.ꯗꯤ.ꯑꯦ
-trk_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ꯫
+trk_booked	ꯕꯨꯀꯤꯡ ꯇꯧꯈ꯭ꯔꯦ
 trk_picked_up	ꯂꯧꯈꯠꯈꯤ꯫
 trk_in_transit	ꯇ꯭ꯔꯥꯟꯁꯤꯠꯇꯥ ꯂꯩꯕꯥ꯫
 trk_delivered	ꯄꯤꯈ꯭ꯔꯕ
 trk_rto	ꯊꯥꯔꯀꯄꯥ ꯃꯤꯑꯣꯏ ꯑꯗꯨꯗꯥ ꯍꯜꯂꯀꯄꯥ꯫
 lane_to_dispatch	ꯊꯥꯗꯣꯛꯅꯕꯥ꯫
-lane_with_carrier	ꯀꯦꯔꯤꯌꯔꯒꯥ ꯂꯣꯌꯅꯅꯥ꯫
+lane_with_carrier	ꯀꯦꯔꯤꯌꯔꯗꯥ ꯂꯩ
 lane_failed	ꯃꯥꯏꯊꯤꯔꯕ
 lane_done_today	ꯉꯁꯤ ꯄꯥꯡꯊꯣꯀꯈ꯭ꯔꯦ꯫
 ops_board_help	ꯉꯁꯤꯒꯤ ꯊꯕꯛꯇꯥ ꯃꯈꯣꯌꯅꯥ ꯂꯩꯔꯤꯕꯥ ꯃꯐꯝ ꯑꯗꯨꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯄꯥꯔꯁꯦꯂꯁꯤꯡ꯫ ꯄꯥꯔꯁꯦꯂꯁꯤꯡ ꯑꯗꯨ ꯂꯧꯁꯤꯟꯅꯕꯥ ꯇꯦꯞ ꯇꯧ (ꯅꯠꯠꯔꯒꯥ ꯃꯈꯣꯌꯗꯨ ꯁ꯭ꯀꯦꯟ ꯇꯧ), ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯂꯧꯈꯠꯈꯤꯕꯥ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯕꯛ ꯇꯧ — ꯂꯦꯟ ꯈꯨꯗꯤꯡꯃꯛꯅꯥ ꯃꯗꯨꯒꯥ ꯆꯨꯅꯕꯥ ꯈꯣꯡꯊꯥꯡ ꯈꯛꯇꯃꯛ ꯄꯤꯔꯤ꯫
@@ -832,7 +832,7 @@ pick_all	ꯄꯨꯝꯅꯃꯛ ꯂꯧꯈꯠꯂꯨ꯫
 bag_for_carrier	ꯍꯦꯟꯗ ꯇꯨ ꯀꯦꯔꯤꯌꯔ꯫
 send_with_rider	ꯔꯥꯏꯗꯔꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯊꯥꯕꯤꯌꯨ꯫
 out_again	ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯣꯀꯈꯤ꯫
-return_to_sender	ꯊꯥꯔꯀꯄꯥ ꯃꯤꯑꯣꯏ ꯑꯗꯨꯗꯥ ꯍꯜꯂꯀꯎ꯫
+return_to_sender	ꯊꯥꯕ ꯃꯤꯗ ꯍꯜꯂꯨꯛꯎ
 runs_bags_heading	ꯍꯟꯗꯛꯀꯤ ꯔꯅꯁꯤꯡ & ꯕꯦꯒꯁꯤꯡ꯫
 print_word	ꯄ꯭ꯔꯤꯟꯇ ꯇꯧꯕꯥ꯫
 bag_word	ꯀꯦꯔꯤꯌꯔ ꯕꯦꯒ ꯑꯃꯥ꯫

@@ -900,7 +900,7 @@ till_to_bank	टिल → बैंक
 units_heading	इकाई
 unlock_after_pairing	PIN लिखौ
 unlock_with_login	लॉगिन से अनलॉक करौ
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करौ
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	खैंजो खाता
 cloud_account_help	khaynjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।

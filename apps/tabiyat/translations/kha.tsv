@@ -15,10 +15,10 @@ unlock	Plie ia ka jingkhang
 sell	Die
 buy	Thied
 books	Ka kot sngi
-books_help	Ka jinglong jong kane ka sngi. Die = pisa ha. Thied = jingthied & jinglut. Ki party = ki nongthied & ki nongsam mar.
+books_help	Ka jinglong jong kane ka sngi. Die = pisa ha. Thied = jingthied & jingsep. Ki party = ki nongthied & ki nongsam mar.
 buy_help	Ki kot pynlut bad ki bill jong ki nongsam mar (ka pisa mih). Ka on-account ka sah ha ka kot jingkhein jong u nongthied ne u nongsam mar.
 sell_money_in	Die dawai .
-buy_money_out	Ka jinglut / bill nongsam
+buy_money_out	Ka jingsep / bill nongsam
 record_purchase	Ka jingthied rekod
 add_expense	Ka kot jingpynlut
 bank_book	Ka kot bank
@@ -252,7 +252,7 @@ apply_country_pack	Pyndonkam ia ka ri pack
 datetime_appearance	Ka tarik & ka por jingmih
 datetime_appearance_help	Ki kot ki buh ia ka RFC3339 kaba nyngkong eh hapoh. Kine ki pynkylla tang kumno ki tarik bad ki kynja kynja ki paw ha ki bill, ki kaiphod, bad ka screen.
 datetime_example	Nuksa mynta: {ex} .
-date_order	Ka jingbthah ia ka tarik
+date_order	Ka jingpynbeit tarik
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
@@ -262,7 +262,7 @@ time_format_12h	12-kynta
 attach_bill_photo	Pyndait ia ka dur jong ka bill
 attach_pdf	Pyndait PDF
 attach_photo	Pyndait ia ka dur
-attachments_last_expense	Ki jingpynrung (jinglut ba khatduh)
+attachments_last_expense	Ki jingpynrung (jingsep ba khatduh)
 bank	Ka bank
 bank_in	Bank ha
 bank_out	Ka bank
@@ -328,7 +328,7 @@ credit_limit_heading	Ka jingthew jong ka ram (u nongthied ne nongsam ba la jied)
 delete_party	Pyndam noh ia u nongthied ne nongsam ba la jied
 done_open_books	La dep — plie ia ki kot .
 drawer_count	Ka jingkhein ia ki drawer (da jied)
-expense_heading	Jinglut
+expense_heading	Jingsep
 export_day	Ka sngi shalan
 extra_note_bill_ph	Ka jingthoh ba kham bniah halor kane ka bill / jingdie
 extra_tills_heading	Ki till ba la pyndap
@@ -344,7 +344,7 @@ login_id_ph	Kyrteng nongpyndonkam
 mark_cleared	U Mark u la pynkhuid
 new_party_clear	U nongthied ne nongsam ba thymmai (ka phorm kaba shai)
 new_party_kind_supplier_ph	U nongthied ba thymmai ne u nongsam (Nongsam)
-next_order	Ka jingbthah kaba bud (ka miej kaba khuid)
+next_order	Ka jingpan kaba bud (ka miej kaba khuid)
 note_gstin_ph	Jingpynkynmaw / GSTIN / jingpynkynmaw ia ka jingiateh
 notes_attach_party	Ki jingthoh bad ki jingpyndait (nongthied ne nongsam ba la jied)
 notes_attach_sale	Ki jingthoh bad ki jingpynrung (jied ban die)
@@ -518,7 +518,7 @@ printer_already_saved	La dep pynsah: {name} .
 find_printers	Wad ia ki nongpynmih kot
 printers_looking	Ka jingpeit...
 saving_printer	Ka jingpynrung ia ka kor shon...
-cancelled	La weng noh
+cancelled	La pynsangeh
 press_back_again_exit	Nion biang ia ka “Badien” ban mih na ka app
 printers_tap_find	Nion Find ban list ia ki printer kiba kane ka tiar ka lah ban pyndonkam.
 printers_none_found	Ym shym la lap — thoh ia ka kyrteng jong ka system printer lane ia ka IP (e.g. 192.168.1.50).
@@ -587,7 +587,7 @@ counter_locked	Ka jingkhein 01 · La khang
 country_pack_help	Ka pack jong ka ri ka buh ia ka kyrteng khajna bad ki jingkhein, ka rel ba siew kloi, bad ka id jong ka kam ba la thoh ha ki bill. Kumkaj ym ju file khajna lane pynmih e-invoice sorkar hangno hangno ruh.
 currency_use_help	Scroll bad tap Pyndonkam na ka bynta kano kano ka pisa ba kyrshan.
 day_close_help	Ka jingthoh ia ka sngi ba khang ka buh ia kane ka jingpynkylla (bad ka jingpher jong ka drawer lada khein) ha ka kot jingpeit bniah. Kam sangeh ban die.
-expenses_word	Ki jinglut jingsep
+expenses_word	Ki jingsep
 feature_access_help	Kaei kaba ki lah ban plie — ka jingjied; Ka kam haneng ka la dep buh ia ka jinglong ba la buh lypa
 fresh_book_tabiyat	Thymmai = katalog kaba thylli (pynrung ia ki tiar hadien). Ka kot = thoh ia ka stock kaba plie bad mano ba donkam ia phi harum.
 fresh_selected	Ka jingjied kaba thymmai — ka katalog ka sah thylli. Kyntip La dep ynda la dep.
@@ -616,7 +616,7 @@ cloud_sending_reset	Phah ia ka jingjingkit ban pynthymmai…
 cloud_forgot_sent	Lada ka email ka don ka account, ka jingjingkit ban pynthymmai ka leit.
 cloud_welcome	La sign in kum {user} · {plan}
 cloud_created	La thaw ia ka account. Peit ia ka email jong phi ban pynshisha haba phi lah.
-cloud_cancel	Cancel
+cloud_cancel	Pynsangeh
 permission_preset	Ka kam
 product_only_tabiyat	Ka Tabiyat ka dei ka rukom treikam jong ka dukan dawai: ka jingdie dawai, ka jingbuh kot ba la buh/ba la kut por, ka ram bad ki kot — khlem da don ha ki tiar jong phi. Ki lama jong ka por H / Rx ki dei ki jingthoh jong u trai, ym ka jingbud ryntih.
 purchases_cogs	Ki jingthied (COGS)
@@ -756,7 +756,7 @@ category_search_ph	Ka kyrdan — wad ia la ka jong lane thoh ia kaba thymmai .
 cancel_item_short	Pynsangeh
 return_to_customer	Ka jingphai biang sha u nongthied
 short_by	Lyngkot da
-tip_not_sale	Tip (ki nongtrei, ym ka jingdie)
+tip_not_sale	Ka jingaisbun pisa (ki nongtrei, ym ka jingdie)
 right_settle	Shim ia ka jingsiew
 right_allowed	La shah
 right_with_approval	Da ka jingmynjur
@@ -908,7 +908,7 @@ kind_dish	Ban khein stock .
 buy_unit_ph	Ka jingthew (kg, litar, pcs)
 add_another_way	+ Pyndap da kawei pat ka rukom .
 parts_status	La pynrung {a} na {b} · {c} sah
-save_expense	Pynduna ia ka jinglut
+save_expense	Pynduna ia ka jingsep
 rest_ph	Jingjahthait
 low_badge	Kaba rit
 stock_empty	Ym pat don ei ei ha ka stock — kaei kaba phi buh ha ka Buy ka paw hangne.

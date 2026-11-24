@@ -1,6 +1,6 @@
 # Rajasthani — राजस्थानी (raj). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	ताळो खोलो
-sell	बेचणो
+sell	बेचो
 buy	खरीदो
 books	दिन री किताब
 books_help	आज री स्थिति। बेचो = धन मांय। खरीदो = खरीदी अर खर्चा। पार्टियां = क्रेडिट ग्राहक अर आपूर्तिकर्ता।
@@ -589,7 +589,7 @@ net_word	शुद्ध
 offline_badge	ऑफलाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार सेट कर देवै है; फगत उपयोगकर्ता ही बाद मांय पासवर्ड बदल सकै है।
 or_unlock_login	या फेर लॉगिन आईडी + पासवर्ड सूं अनलॉक करो
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+or_unlock_shop_login	या दुकान लॉगिन सूं अनलॉक करो
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	किरानो खाता
 cloud_account_help	kirano.shop/account के समान खाते से रजिस्टर या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।

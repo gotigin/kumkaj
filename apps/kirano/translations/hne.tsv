@@ -546,7 +546,7 @@ duress_off	आपातकालीन अनलॉक PIN बंद हे
 duress_saved	आपातकालीन अनलॉक PIN सहेजा गे
 duress_cleared	आपातकालीन अनलॉक PIN बंद कर देहे
 upi_amount_ph	UPI राशि
-void	रद्द करव
+void	रद्द
 write_off_ap	AP माफ़ करव
 write_off_heading	माफ़ करव (बिना भुगतान के साफ़)
 write_off_nil	माफ़ करव / शेष शून्य
@@ -589,7 +589,7 @@ net_word	नेट
 offline_badge	ऑफ़लाइन
 optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार लगाता हे; बाद म केवल उपयोगकर्ता ही पासवर्ड बदल सकता हे।
 or_unlock_login	या लॉगिन आईडी + पासवर्ड से अनलॉक करव
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
+or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करव
 shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
 cloud_account_title	किरानो खाता
 cloud_account_help	kirano.shop/account के समान खाते से रजिस्टर या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।

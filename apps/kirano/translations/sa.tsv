@@ -1,9 +1,9 @@
 # Sanskrit — संस्कृतम् (sa). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	अनलॉक
-sell	विक्रयिन्
-buy	क्रीणातु
+sell	विक्रयः
+buy	क्रयः
 books	दिवस लेजर
-books_help	अद्यतनं स्थितिः । विक्रयणं = धनं क्रयणं = क्रयणं & व्ययः। पक्षाः = ऋणग्राहकाः & आपूर्तिकर्ताः।
+books_help	अद्य स्थितिः। विक्रयः = धनम् आगच्छति। क्रयः = क्रयाः व्ययाः च। पार्टी = ऋणग्राहकाः आपूर्तिकर्ताः च।
 buy_help	व्ययस्य रसीदाः आपूर्तिकर्तानां बिलानि च (धनं बहिः)। खातेः ग्राहकस्य अथवा आपूर्तिकर्तायाः लेजरस्य उपरि तिष्ठति।
 sell_money_in	वस्तूनि विक्रयन्तु
 buy_money_out	व्यय / आपूर्तिकर्ता बिल
@@ -452,7 +452,7 @@ printers_pool_empty	(अद्यापि कोऽपि नास्ति �
 printer_assign_dd	वास्तविक मुद्रक: {place}
 printer_assign_pick	वास्तविकं मुद्रकं चिनोतु
 printer_profile_heading	विन्यासः
-vp_delivery_heading	प्रसवः
+vp_delivery_heading	समर्पणम्
 vp_delivery_help	एषः आभासीमुद्रकः कथं कार्याणि प्रेषयति — OS दस्तावेजः, कच्चा बाइट्, अथवा ESC/POS । स्लिप् सामग्री (प्रकारस्य आकारः, रैप्, मार्जिन्स्) बिल / स्लिप् प्रारूपेण निर्णयः भवति, अत्र न ।
 vp_delivery_spooler	ओएस दस्तावेजः (सिस्टम् स्पूलरः) २.
 vp_delivery_escpos	ESC/POS तापीय आदेश
@@ -506,7 +506,7 @@ printer_already_saved	पूर्वमेव रक्षितम् : {name}
 find_printers	मुद्रकान् अन्वेष्टुम्
 printers_looking	पश्यन्...
 saving_printer	मुद्रकं योजयित्वा...
-cancelled	रद्दं कृतम्
+cancelled	निरस्तम्
 press_back_again_exit	निर्गन्तुं पुनः «पृष्ठतः» नुदन्तु
 printers_tap_find	एतत् यन्त्रं उपयोक्तुं शक्नोति इति मुद्रकान् सूचीतुं अन्वेष्टुं ट्याप् कुर्वन्तु ।
 printers_none_found	कोऽपि न लब्धः — प्रणालीमुद्रकस्य नाम अथवा IP (उदा. 192.168.1.50) टङ्कयन्तु ।
@@ -586,7 +586,7 @@ local_badge	स्थानीय
 mix_type_hint_kirano	आवश्यकतानुसारं नकदं / UPI / कार्डं / क्रेडिट् मध्ये विभक्तम्। ऋणस्य उपरि ग्राहकस्य आवश्यकता भवति।
 money_in_sales	(विक्रये) धनम् २.
 net_word	नेट्
-offline_badge	OFFLINE इति
+offline_badge	अन्तर्जालरहितम्
 optional_login_help	वैकल्पिकं प्रवेशः (id + password)। स्वामिना एकवारं सेट् भवति; केवलं उपयोक्ता एव पश्चात् गुप्तशब्दं परिवर्तयितुं शक्नोति।
 or_unlock_login	अथवा login id + password इत्यनेन अनलॉक् कुर्वन्तु
 or_unlock_shop_login	अथवा आपणस्य प्रवेशेन उद्घाटयन्तु
@@ -604,7 +604,7 @@ cloud_sending_reset	पुनर्स्थापन-सम्पर्कत�
 cloud_forgot_sent	यदि तस्मिन् ईपत्रे खाता अस्ति तर्हि पुनर्स्थापन-सम्पर्कतन्तुः प्रेषितः।
 cloud_welcome	{user} · {plan} रूपेण प्रविष्टः
 cloud_created	खाता निर्मितम्। यदा शक्यं स्यात् प्रमाणीकर्तुं ईपत्रं पश्यन्तु।
-cloud_cancel	रद्दं कुर्वन्तु
+cloud_cancel	निरस्यन्तु
 permission_preset	कार्यम्
 product_only_kirano	किरानो किराणां / किराना ऑपरेटिंग् सिस्टम् अस्ति: काउण्टर सेल्, स्टॉक्, क्रेडिट् तथा पुस्तकानि — भवतः उपकरणेषु अफलाइन।
 purchases_cogs	क्रयम् (COGS) २.
@@ -741,10 +741,10 @@ new_category_row	नूतनः वर्गः — यदा भवान् �
 your_category	भवतः वर्गः
 suggested_category	सुझावः — अस्माकं वस्तूनि
 category_search_ph	श्रेणी — भवतः अन्वेषणं कुर्वन्तु अथवा नूतनं टङ्कयन्तु
-cancel_item_short	रद्दं कुर्वन्तु
+cancel_item_short	निरस्यन्तु
 return_to_customer	ग्राहकं प्रति प्रत्यागच्छन्तु
 short_by	संक्षेपेण
-tip_not_sale	टिप् (कर्मचारिणां, न तु विक्रयः) २.
+tip_not_sale	टिप्-धनम् (कर्मचारिणां, न विक्रयः)
 right_settle	भुगतानं गृहाण
 right_allowed	अनुमतम्
 right_with_approval	अनुमोदनेन सह
@@ -757,7 +757,7 @@ server_host_selected	{host} इत्यस्य उपयोगेन — य�
 approval_pin_ph	प्रबन्धकः PIN (पृष्टे एव) २.
 menu_search_ph	वस्तुं वा लघुसङ्केतं वा अन्वेष्टुम्
 customer_paid_ph	ग्राहकः भुक्तवान्
-tip_ph	टिप्
+tip_ph	टिप्-धनम्
 find_server	दुकानस्य सर्वरं अन्वेष्टुम्
 bill_format	देयक प्रारूप
 bill_header_ph	पता | phone
@@ -862,12 +862,12 @@ app_template_importing	आवेदन करते हुए {title}...
 app_template_import_selected	चितम् आयातयतु
 app_template_wipe_warn	अनेन लेखापुस्तकस्य व्यापारदत्तांशः (विक्रयः, लेखाः) रिक्तः भविष्यति, टेम्पलेट्-इत्यस्य दुकानस्य सेटिंग्स् च प्रवर्तिष्यन्ते। किं निरन्तरं करणीयम्?
 app_template_wipe_continue	निरन्तरं कुर्वन्तु
-app_template_wipe_cancel	रद्दं कुर्वन्तु
+app_template_wipe_cancel	निरस्यन्तु
 app_template_from_device	अस्मात् उपकरणात् आयातयन्तु
 app_template_from_device_help	यस्मिन् फोल्डर्-मध्ये template.json अस्ति तं चिन्वन्तु (shop_defaults.json अस्ति चेत् तदपि)।
 settings_app_tmpl_note	पूर्णाः दुकान-पैक्: वस्तुसूची दुकानस्य सेटिंग्स् च। कस्यचित् पैक्-इत्यस्य पुनः आयाते कृते विक्रयः लेखाः च रिक्ताः भवन्ति, ततः पैक्-इत्यस्य दुकानस्य सेटिंग्स् प्रवर्तन्ते।
 app_tmpl_named	{name} दुकान-टेम्पलेट्
-cancel	रद्दं कुर्वन्तु
+cancel	निरस्यन्तु
 removing	अपाक्रियते…
 removed	अपाकृतम्
 updating_order	नवीक्रियते…

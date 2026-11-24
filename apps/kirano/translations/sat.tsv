@@ -1,7 +1,7 @@
 # Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
 sell	ᱟᱠᱷᱨᱤᱧ
-buy	ᱠᱤᱨᱤᱧ ᱢᱮ
+buy	ᱠᱤᱨᱤᱧ
 books	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ
 books_help	ᱛᱮᱦᱮᱧᱟᱜ ᱯᱚᱡᱤᱥᱚᱱ᱾ ᱟᱠᱨᱤᱧ = ᱴᱟᱠᱟ ᱵᱷᱤᱛᱨᱤ ᱾ ᱠᱤᱨᱤᱧ = ᱠᱤᱨᱤᱧ ᱟᱨ ᱠᱷᱚᱨᱪᱟ ᱾ ᱯᱟᱨᱴᱤ ᱠᱚ = ᱠᱨᱮᱰᱤᱴ ᱜᱚᱨᱦᱟᱠ ᱠᱚ ᱟᱨ ᱥᱟᱨᱵᱦᱟᱨᱤᱡ ᱠᱚ ᱾
 buy_help	ᱠᱷᱚᱨᱪᱟ ᱵᱷᱟᱩᱪᱟᱨ ᱟᱨ ᱥᱚᱯᱞᱟᱭᱚᱨ ᱵᱤᱞ (ᱯᱩᱭᱥᱟᱹ ᱵᱟᱦᱨᱮ)᱾ ᱚᱱ-ᱮᱠᱟᱣᱩᱱᱴ ᱯᱟᱨᱴᱤ ᱞᱮᱡᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾
@@ -193,7 +193,7 @@ my_pin_settings	ᱤᱧᱟᱜ ᱯᱤᱱ
 settings_hub_help_my_pin	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱥᱟᱭᱤᱱ ᱟᱠᱟᱱ ᱦᱚᱲ ᱞᱟᱹᱜᱤᱫ ᱟᱱᱞᱚᱠ ᱯᱤᱱ ᱵᱚᱫᱚᱞ ᱢᱮ᱾
 team_self_help	ᱢᱤᱫ ᱥᱟᱭᱤᱱ-ᱤᱱ: ᱢᱤᱫ ᱱᱟᱶᱟ ᱯᱤᱱ, ᱢᱤᱫ ᱱᱟᱶᱟ ᱯᱟᱥᱣᱟᱨᱰ, ᱵᱟᱝᱠᱷᱟᱱ ᱵᱟᱱᱟᱨ ᱜᱮ ᱾ ᱟᱢ ᱴᱷᱮᱱ ᱡᱟᱦᱟᱸ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱟ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱵᱟᱠᱥᱚ ᱠᱷᱟᱹᱞᱤ ᱟᱲᱟᱜ ᱢᱮ᱾ ᱢᱟᱞᱤᱠ ᱠᱩᱞᱤᱭᱮᱢ ᱡᱩᱫᱤ ᱟᱢ ᱮᱴᱟᱜ ᱮᱴᱟᱜ ᱥᱠᱨᱤᱱ ᱥᱮ ᱟᱹᱭᱫᱟᱹᱨ ᱠᱚ ᱞᱟᱹᱠᱛᱤᱭᱟᱢ ᱠᱟᱱᱟ ᱾
 pick	ᱵᱟᱪᱷᱟᱣ ᱢᱮ
-advance	अग्रिम
+advance	ᱞᱟᱦᱟ
 owner	ᱢᱟᱞᱤᱠ
 staff	ᱠᱟᱹᱢᱤᱭᱟᱹ
 photo	ᱪᱤᱛᱟᱹᱨ
@@ -506,7 +506,7 @@ printer_already_saved	ᱞᱟᱦᱟ ᱨᱮᱜᱮ ᱵᱟᱧᱪᱟᱣ ᱟᱠᱟᱱ�
 find_printers	ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
 printers_looking	ᱠᱚᱭᱚᱜ...
 saving_printer	ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱞᱮᱫᱚᱜ ᱠᱟᱱᱟ...
-cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+cancelled	ᱨᱚᱫᱽ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
 press_back_again_exit	ᱚᱰᱚᱜ ᱞᱟᱹᱜᱤᱫ «ᱨᱩᱣᱟᱹᱲ ᱢᱮ» ᱫᱚᱦᱲᱟ ᱞᱤᱱ ᱢᱮ
 printers_tap_find	ᱱᱚᱶᱟ ᱥᱟᱫᱷᱚᱱ ᱵᱮᱵᱷᱟᱨ ᱫᱟᱲᱮᱭᱟᱜ ᱯᱨᱤᱱᱴᱟᱨ ᱛᱟᱞᱠᱟ ᱞᱟᱹᱜᱤᱫ ᱯᱟᱱᱛᱮ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾
 printers_none_found	ᱚᱠᱚᱭ ᱦᱚᱸ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ — ᱥᱤᱥᱴᱚᱢ ᱯᱨᱤᱱᱴᱟᱨ ᱧᱩᱛᱩᱢ ᱥᱮ ᱟᱭᱤ ᱯᱤ ᱴᱟᱭᱤᱯ ᱢᱮ (ᱡᱮᱞᱠᱟ 192.168.1.50)᱾
@@ -536,7 +536,7 @@ unmark	ᱪᱤᱱᱦᱟᱹ ᱵᱟᱝ ᱢᱮ
 update_my_password	ᱤᱧᱟᱜ ᱯᱟᱥᱣᱟᱨᱰ ᱟᱯᱰᱮᱴ ᱢᱮ
 update_my_pin	ᱤᱧᱟᱜ ᱥᱟᱭᱤᱱ-ᱤᱱ ᱟᱯᱰᱮᱴ ᱢᱮ
 duress_heading	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱩᱱᱞᱚᱠ (ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ)
-duress_help	Offline Server/Client LAN हिं — cloud बाङ। Default बन्द: Owner नोवा PIN सेव कاتے मितान चालुआ (Team, Client till रे हो)। Unlock रे आ़सली staff PIN जायगा रे नोवा PIN लिखाय ते Server रे पोथी entry को गोमाक्आ आर डेस्क Owner लेका साधारण नुम हा़टाक्आ — रेट, पार्टी, जोन, स्टाफ आर सेटिंग को थाक्आ। schema आर config गोमा बाङ। जाहाँय PIN लेका आलो। Clear बटन ते बन्द मे।
+duress_help	Offline Server/Client LAN ᱜᱮ — cloud ᱵᱟᱝ᱾ Default ᱵᱚᱸᱫᱽ: Owner ᱱᱚᱣᱟ PIN ᱥᱟᱺᱪᱟᱣ ᱠᱟᱛᱮ ᱢᱤᱫ ᱫᱷᱟᱣ ᱪᱟᱹᱞᱩ ᱟ (Team, Client till ᱨᱮ ᱦᱚᱸ)᱾ Unlock ᱨᱮ ᱥᱟᱹᱨᱤ staff PIN ᱵᱚᱫᱚᱞ ᱛᱮ ᱱᱚᱣᱟ PIN ᱚᱞ ᱞᱮᱠᱷᱟᱱ Server ᱨᱮᱱᱟᱜ ᱯᱚᱛᱚᱵ ᱮᱱᱴᱨᱤ ᱢᱮᱴᱟᱣᱜᱼᱟ ᱟᱨ ᱰᱮᱥᱠ Owner ᱞᱮᱠᱟ ᱡᱷᱤᱡᱽᱜᱼᱟ — ᱨᱮᱴ, ᱯᱟᱨᱴᱤ, ᱡᱚᱱ, staff ᱟᱨ settings ᱛᱟᱦᱮᱸᱱᱟ᱾ Schema ᱟᱨ config ᱵᱟᱝ ᱢᱮᱴᱟᱣᱜᱼᱟ᱾ ᱚᱠᱚᱭᱟᱜ PIN ᱥᱟᱶ ᱢᱤᱫ ᱵᱟᱝ᱾ Clear ᱵᱚᱛᱟᱢ ᱛᱮ ᱵᱚᱸᱫᱽ᱾
 duress_pin_ph	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ (4-12 ᱮᱞ)
 duress_confirm_ph	ᱴᱷᱟᱹᱣᱠᱟᱹ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱴᱟᱭᱤᱯ ᱢᱮ
 save_duress_pin	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
@@ -589,10 +589,10 @@ net_word	ᱱᱮᱴ
 offline_badge	ᱚᱯᱷᱞᱟᱭᱤᱱ
 optional_login_help	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ (ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱢᱤᱫ ᱫᱷᱟᱣ ᱥᱮᱴ ᱮᱫᱟᱭ; ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱜᱮ ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱥᱣᱟᱨᱰ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
 or_unlock_login	ᱟᱨ ᱵᱟᱝ ᱞᱚᱜᱤᱱ ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱚᱱᱞᱚᱠ
-or_unlock_shop_login	বা দোকান লগিন তে খোলা
-shop_login_help	ইচ্ছা: PIN বদল তে নোৱা দোকান কর্মী ইউজারনেম আর পাসৱার্ড তে খোলা (অফলাইন কাজোক)।
+or_unlock_shop_login	ᱟᱨ ᱵᱟᱝ ᱫᱚᱠᱟᱱ ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+shop_login_help	ᱮᱴᱟᱜ: PIN ᱵᱚᱫᱚᱞ ᱛᱮ ᱱᱚᱣᱟ ᱫᱩᱠᱟᱱ ᱨᱮᱱ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ ᱟᱨ ᱯᱟᱥᱣᱟᱨᱰ ᱛᱮ ᱠᱷᱩᱞᱟᱹᱭ ᱢᱮ (ᱚᱯᱷᱞᱟᱭᱤᱱ ᱠᱟᱹᱢᱤᱭᱟ)᱾
 cloud_account_title	Kirano একাউন্ট
-cloud_account_help	kirano.shop/account সঙ্গে সেমান একাউন্ট তে রেজিস্টার বা সাইন ইন মে। আমাক ক্লাউদ id আর ফ্রি প্লান বানাৱা।
+cloud_account_help	kirano.shop/account ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱮᱠᱟᱣᱩᱱᱴ ᱛᱮ ᱧᱩᱛᱩᱢ ᱚᱞ ᱢᱮ ᱟᱨᱵᱟᱝ ᱥᱟᱭᱤᱱ ᱤᱱ ᱢᱮ᱾ ᱟᱢᱟᱜ ᱠᱞᱟᱣᱩᱰ id ᱟᱨ ᱯᱷᱨᱤ ᱯᱞᱟᱱ ᱵᱮᱱᱟᱣᱜᱼᱟ᱾
 cloud_name_ph	ঞুতুম (ইচ্ছা)
 cloud_email_ph	ইমেইল
 cloud_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ

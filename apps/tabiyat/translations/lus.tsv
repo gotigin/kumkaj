@@ -15,7 +15,7 @@ unlock	Hawng
 sell	Hralh
 buy	Lei
 books	Ni lehkha
-books_help	Vawiin dinhmun hi. Sell ​​= pawisa in. Buy = thil lei & hmanral. Party hrang hrang = credit customer & supplier te.
+books_help	Vawiin dinhmun. Hralh = pawisa lut. Lei = lei leh sum hman. Lehkha mi = ba nei dawngtu leh thil pek tu.
 buy_help	Sum sen lehkha leh pek tu bill (sum chhuak). Inkhaihbuak chu mi lekhapui-ah a awm reng.
 sell_money_in	Damdawi zawrh
 buy_money_out	Sum sen / pek tu bill
@@ -28,7 +28,7 @@ reports_help	Ni lehkha, ba nei te leh kan ba te, bank lehkha, sum sen lehkha, hm
 reports_today	Ni lehkha (vawiin)
 reports_month	Hmuh leh hloh (thla)
 reports_aging	La awm / ba-ba
-reports_balance_sheet	Balance sheet
+reports_balance_sheet	In-chhuah zawhna
 reports	Bank lehkha leh H&H
 undo	Ti lo leh
 stock_minus	− Stock
@@ -52,7 +52,7 @@ total	A zawng
 cash	Sum
 upi	UPI
 card	Card
-credit	Mi
+credit	Lehkha mi
 clear	Thianghlim
 today_prefix	Vawiin
 owed	la awm
@@ -464,7 +464,7 @@ printers_pool_empty	(a la awm lo — Zawng khawih)
 printer_assign_dd	Print na tak: {place}
 printer_assign_pick	Print na tak thlang
 printer_profile_heading	Rem dan
-vp_delivery_heading	Thlen
+vp_delivery_heading	Pek chhuah
 vp_delivery_help	He virtual printer hian hna a thawn dan — OS document, raw byte, emaw ESC/POS emaw. Slip content (type size, wrap, margins) hi bill / Slip format hmanga tihfel a ni a, hetah hian a innghat lo.
 vp_delivery_spooler	System lehkha (system spooler)
 vp_delivery_escpos	ESC/POS lum thupe
@@ -598,7 +598,7 @@ local_badge	CHHUNG
 mix_type_hint_tabiyat	A ngai chuan sum / UPI / card / ba then. Ba hian a chunga customer a ngai.
 money_in_sales	Sum lut (zuar)
 net_word	Chhiar zawng
-offline_badge	NET TEL LO
+offline_badge	Net tel lo
 optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a dah; hmangtu chauhvin password a thlak thei nakinah.
 or_unlock_login	Emaw lut hmingchhiar + password in hawng
 or_unlock_shop_login	A nih loh leh shop login hmangin unlock rawh
@@ -616,7 +616,7 @@ cloud_sending_reset	Reset link thawn mek…
 cloud_forgot_sent	Chu email-ah account a awm chuan reset link a kal mek.
 cloud_welcome	{user} · {plan} angin sign in a ni
 cloud_created	Account siam a ni. I email en la, verify theih hunah.
-cloud_cancel	Cancel
+cloud_cancel	Tihbo
 permission_preset	Hna
 product_only_tabiyat	Tabiyat hi damdawi dawr operating system a ni a: damdawi hralh, batch/expiry bookkeeping, credit leh lehkhabu — i device-a offline-a dah. Schedule H / Rx flag te hi owner note a ni a, compliance a ni lo.
 purchases_cogs	Lei (COGS)

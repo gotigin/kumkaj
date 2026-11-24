@@ -26,7 +26,7 @@ board_discard	Paih
 board_discarded	Draft chu paih a ni
 buy	Pay out rawh
 books	Ni lehkha
-books_help	Vawiin dinhmun hi. Booking = parcel lut. Pawisa pek chhuah = carrier bill leh senso. Party hrang hrang = consignor leh carrier te.
+books_help	Vawiin dinhmun. Booking = parcel lut. Pawisa chhuah = phurtu bill leh sum hman. Lehkha mi = kuat tu leh phurtu.
 buy_help	Expense voucher leh carrier bill (pawisa chhuak) te. On-account chu party ledger-ah a awm reng a ni.
 sell_money_in	Parcel pakhat book rawh
 buy_money_out	Hman senso / carrier bill a ni
@@ -49,8 +49,8 @@ stock_minus	− Stock
 stock_plus	+ Thil dah
 settle_cash	Sum in pe
 settle_card	Card in pe
-items	Rate & services te pawh a awm bawk
-nav_items	Rates a awm bawk
+items	Rate leh service
+nav_items	Rate
 more	A dang
 your_items	I rates te chu
 items_help	Row tin hi rate (e.g. Surface Zone A) a ni. Unit hi a tlangpuiin kg. Edit turin tap rawh.
@@ -66,7 +66,7 @@ total	A zawng
 cash	Sum
 upi	UPI
 card	Card
-credit	Mi
+credit	Lehkha mi
 clear	Thianghlim
 ready_to_sell	Ziak turin a inpe
 today_prefix	Vawiin
@@ -90,7 +90,7 @@ rounded	KIL
 split	Then
 counter	Zuar dawhkan
 parcel	Bawm
-order	Order
+order	Dilna
 sales	Booking te
 sales_refunds	Booking leh refund te
 day_close	Ni khar
@@ -107,7 +107,7 @@ sidebar_hidden	Thup
 sidebar_always_on	Bar-ah awm reng
 sidebar_shown_hint	Sir bar / hnuai tab-ah lantir
 sidebar_hidden_hint	Bar atanga thup
-sidebar_menu_items	Rates a awm bawk
+sidebar_menu_items	Rate
 sidebar_enable_all	Zawng zawng hawng
 sidebar_disable_all	Zawng zawng tih
 sidebar_order_saved	Sir indawr dan dah tha a ni
@@ -289,9 +289,9 @@ till_to_bank	Dawhkan → bank
 mark_cleared	Thianghlim tih chhinchhiah
 unmark	Chhinchhiah paih
 role_both	A pahnih
-role_carrier	Carrier a ni
+role_carrier	Phurtu
 role_cashier	Sum khawmtu
-role_consignor	Consignor a ni
+role_consignor	Kuat tu
 role_manager	Hotu
 role_supplier	Pek tu
 branch_name_sell_ph	Zuarna branch hming
@@ -408,7 +408,7 @@ reattempt	Tih leh rawh
 rider_cod_handed_ph	COD chuan a rawn hlan ta a ni
 settle_rider_cod	Rider COD chu settle rawh
 mode_desk	Dawhkan
-mode_rider	Rider a ni
+mode_rider	Hlantu
 waiting_office	office thlen hun nghak a ni
 capture_signature	Signature chu man rawh
 incoming_manifest	Incoming manifest a ni
@@ -461,7 +461,7 @@ remove_selected	Thlan sa paih
 restore_backup	Backup kir leh
 rider_name_ph	Rider hming
 rider_phone_ph	Rider phone a ni
-riders	Rider te an ni
+riders	Hlantute
 riders_own_fleet	Rider (mahni fleet) te chuan .
 rollup	Khawm
 save_booking_measures	Booking tih dan save rawh
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	Engzat nge pakhatah (cash / UPI / card / credit) tih type
 money_in_sales	Sum lut (zuar)
 more_help_moklanjo	Thil list, zuar, credit, team, backup — a tul hunah stock leh till belh te pawh a awm bawk.
 net_word	Chhiar zawng
-offline_badge	NET TEL LO
+offline_badge	Net tel lo
 optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a dah; hmangtu chauhvin password a thlak thei nakinah.
 or_unlock_login	Emaw lut hmingchhiar + password in hawng
 or_unlock_shop_login	A nih loh leh shop login-in hawn rawh
@@ -822,7 +822,7 @@ trk_in_transit	In transit lai a ni
 trk_delivered	Bungrua hlan
 trk_rto	Sender hnenah kir leh
 lane_to_dispatch	Dispatch tur chuan
-lane_with_carrier	Carrier nen
+lane_with_carrier	Phurtu hnenah
 lane_failed	Hlawhchham
 lane_done_today	Vawiin khan tihfel a ni
 ops_board_help	Vawiin hnathawhna hmuna an awmna hmuna parcel te. Parcel-te chu tap la, pick la, chutah chuan picked zawng zawng chu vawi khatah act rawh — lane tin hian a inmil tur move chauh a pe a ni.
@@ -832,7 +832,7 @@ pick_all	Pick vek rawh
 bag_for_carrier	Kut atanga carrier thleng
 send_with_rider	Rider nen thawn rawh
 out_again	Out leh ta
-return_to_sender	Sender hnenah kir leh rawh
+return_to_sender	Sender hnenah thawn leh rawh
 runs_bags_heading	Tun hnaia run & bags te
 print_word	Print rawh
 bag_word	Carrier bag a ni

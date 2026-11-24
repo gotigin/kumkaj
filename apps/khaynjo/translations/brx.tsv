@@ -900,10 +900,10 @@ till_to_bank	टिल → ब्यांक
 units_heading	एकक
 unlock_after_pairing	PIN लिर
 unlock_with_login	लगइनजों खुलि हो
-or_unlock_shop_login	या दुकान लॉगिन से अनलॉक करें
-shop_login_help	वैकल्पिक: पिन के बजाय इस दुकान के स्टाफ उपयोगकर्ता नाम और पासवर्ड से अनलॉक करें (ऑफ़लाइन काम करता है)।
+or_unlock_shop_login	नाथाय दुकान लगिन जों अनलक खालाम
+shop_login_help	नांगौब्ला: PIN नि सोलायाव बे दोकाननि मावुरनि मुं आरो पासवार्डजों खुलि हो (अफलाइनआव खामानि खालामो)।
 cloud_account_title	खैंजो खाता
-cloud_account_help	khaynjo.com/account वाले ही खाते से रजिस्टर करें या साइन इन करें। आपकी क्लाउड आईडी और निःशुल्क योजना बनाता है।
+cloud_account_help	khaynjo.com/account निमोनै एकाउन्ट जों रेजिस्टार नाथाय साइन इन खालाम। नोंथांनि क्लाउड id आरो फ्रि प्लान दां।
 cloud_name_ph	नाम: (वैकल्पिक)
 cloud_email_ph	ईमेल
 cloud_password_ph	पासवर्ड
@@ -972,7 +972,7 @@ local_badge	LOCAL
 mix_type_hint_khaynjo	नांगौब्ला नगद / UPI / कार्ड / उधारिआव बाय। उधारिनि थाखाय गोजौआव ग्राहक नांगौ।
 money_in_sales	हांखो रां (बिक्री)
 net_word	नेट
-offline_badge	OFFLINE
+offline_badge	अफलाइन
 optional_login_help	नांगौब्ला लगइन (id + पासवार्ड)। गिबिया मोनसे साजो; उन पासवार्ड खालि बाहायग्रा सोलायनो हायो।
 or_unlock_login	एबा लगइन id + पासवार्डजों खुलि हो
 permission_preset	खामानि
@@ -1113,7 +1113,7 @@ book_kind_month	बे दाननि बही
 book_kind_aging	बाकी / डेबिट-क्रेडिट
 book_kind_balance	बैलेन्स सिट
 order_help	दाजाबनो आइटम सुदुं।
-floor_help	अर्डर लानो एबा सोलायनो टेबुल सुदुं। गाब आ उदां → बाय → नुथां → गनांथि → जागासिनो → बिल → पैसा दिन्थियो। वेटलिस्ट, रिजार्भ, आरो टेबुल दाजाब गाहायनि सेक्सनआव।
+floor_help	अर्डर लानो एबा सोलायनो टेबुल सुदुं। गाब आ उदां → उदां नङा → नुथां → गनांथि → जागासिनो → बिल → पैसा दिन्थियो। वेटलिस्ट, रिजार्भ, आरो टेबुल दाजाब गाहायनि सेक्सनआव।
 kitchen_help	नुथांनि टिकेट (KOT), गोदान जोबथा। जागाय → गनांथि → जाबाय आ टिकेट दाङो। टिकेटआव बेसेन जेब्लाबो दिन्थिया।
 kitchen_empty	खेवजानाय टिकेट गैया।
 add_a_table	टेबुल दाजाब
@@ -1121,7 +1121,7 @@ add_station_heading	नुथांनि स्टेसन दाजाब
 categories_help	गोजौनि आइटम बे थाखोआव दोननो बाहाय सुदुं। सावगारि आ थाखोखौ सावगारि होयो; गैयाब्ला गिबि आखु दिन्थियो।
 dish_search_ph	आइटमनि मुं — जोंनि जामु नागिर एबा नोंनि लिर
 tile_free	उदां
-tile_occupied	बाय
+tile_occupied	उदां नङा
 tile_food_ready	जागासि गनांथि
 tile_bill_printed	बिल प्रिन्ट जाबाय
 tile_paid	पैसा होबाय

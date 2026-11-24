@@ -1,9 +1,9 @@
 # Manipuri — ꯃꯤꯇꯩꯂꯣꯟ (mni). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	ꯍꯥꯡꯗꯣꯛꯎ
 sell	ꯌꯣꯟꯕ
-buy	ꯂꯩꯕ
+buy	ꯂꯩꯊꯣꯛꯕ
 books	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
-books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯚꯝ. ꯌꯣꯟꯕ = ꯁꯦꯟ ꯆꯪꯕ. ꯂꯧꯕ = ꯂꯧꯕ ꯑꯃꯁꯨꯡ ꯆꯠꯈꯤꯕ. ꯃꯤ = ꯁꯦꯜ ꯂꯧꯕ ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ.
+books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯚꯝ. ꯌꯣꯟꯕ = ꯁꯦꯟ ꯆꯪꯕ. ꯂꯩꯊꯣꯛꯕ = ꯂꯩꯊꯣꯛꯕ ꯑꯃꯁꯨꯡ ꯆꯥꯟꯕ. ꯄꯥꯔꯇꯤ = ꯈꯥꯇꯥ ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ.
 buy_help	ꯆꯥꯟꯕꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕꯒꯤ ꯕꯤꯜ (ꯁꯦꯟ ꯊꯣꯔꯛꯄ). ꯌꯥꯎꯅꯕ ꯑꯁꯤ ꯃꯤꯒꯤ ꯂꯥꯏꯔꯤꯛꯇ ꯂꯩ.
 sell_money_in	ꯄꯣꯠ ꯌꯣꯟꯕꯤꯌꯨ
 buy_money_out	ꯆꯥꯟꯕ / ꯄꯤꯔꯤꯕꯒꯤ ꯕꯤꯜ
@@ -40,7 +40,7 @@ total	ꯑꯄꯨꯟꯕ
 cash	ꯁꯦꯟ
 upi	UPI
 card	ꯀꯥꯔꯗ
-credit	ꯃꯤ
+credit	ꯄꯥꯔꯇꯤ
 clear	ꯁꯦꯡꯗꯣꯛꯎ
 today_prefix	ꯉꯁꯤ
 owed	ꯂꯩꯔꯤꯕ
@@ -193,7 +193,7 @@ my_pin_settings	ꯑꯩꯒꯤ PIN
 settings_hub_help_my_pin	ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯆꯪꯂꯛꯄ ꯃꯤꯑꯣꯏꯒꯤ ꯍꯥꯡꯗꯣꯛꯄ PIN ꯍꯣꯡꯗꯣꯛꯎ.
 team_self_help	ꯆꯪꯕ ꯑꯃ: PIN ꯑꯅꯧꯕ, ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧꯕ, ꯅꯠꯇ꯭ꯔꯒ ꯑꯅꯤꯃꯛ. ꯕꯣꯛꯁ ꯍꯥꯏꯗꯕ ꯊꯝꯕꯤꯌꯨ, ꯍꯧꯖꯤꯛ ꯂꯩꯕ ꯊꯝꯅꯕ. ꯁ꯭ꯛꯔꯤꯟ ꯅꯠꯇ꯭ꯔꯒ ꯍꯛ ꯑꯇꯣꯞꯄ ꯃꯊꯧ ꯇꯥꯔꯕꯗꯤ ꯃꯄꯨꯗ ꯍꯪꯕꯤꯌꯨ.
 pick	ꯂꯧꯕꯤꯌꯨ
-advance	অগ্রিম
+advance	ꯃꯃꯥꯡ ꯁꯦꯟ
 owner	ꯃꯄꯨ
 staff	ꯊꯕꯛꯇꯧꯕ
 photo	ꯁꯛꯇꯝ
@@ -506,7 +506,7 @@ printer_already_saved	ꯊꯝꯈ꯭ꯔꯦ: {name}
 find_printers	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ
 printers_looking	ꯊꯤꯔꯤ…
 saving_printer	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯥꯞꯆꯤꯟꯂꯤ…
-cancelled	ꯇꯣꯛꯈꯤ
+cancelled	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯈ꯭ꯔꯦ
 press_back_again_exit	ꯊꯣꯛꯅꯕ ꯍꯟꯅ “ꯍꯟꯖꯤꯜꯂꯨ” ꯅꯝꯃꯨ
 printers_tap_find	ꯊꯤꯕꯤꯌꯨ ꯅꯝꯃꯨ, ꯃꯁꯤꯟ ꯑꯁꯤꯅ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯤꯁ꯭ꯇ ꯎꯠꯅꯕ.
 printers_none_found	ꯐꯪꯗꯦ — ꯁꯤꯁ꯭ꯇꯦꯝ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯤꯡ ꯅꯠꯇ꯭ꯔꯒ IP ꯏꯕꯤꯌꯨ (ꯈꯨꯗꯝ 192.168.1.50).
@@ -536,7 +536,7 @@ unmark	ꯃꯥꯏꯊꯤꯜ ꯂꯣꯠꯎ
 update_my_password	ꯑꯩꯒꯤ ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ
 update_my_pin	ꯑꯩꯒꯤ ꯆꯪꯕ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ
 duress_heading	ꯑꯔꯥꯟꯕ ꯍꯥꯡꯗꯣꯛꯄ PIN (ꯃꯄꯨꯈꯛꯇ)
-duress_help	Offline Server/Client LAN খক্তা — cloud ফীচার নত্তে। Default অফ: ওনারনা মসি PIN সেভ তৌদুনা অমুক তৌন ওন তৌই (টিম, Client till দাসু)। আনলকতা অচৌবা স্টাফ PIN গী মহুত্তা মসি PIN ইবা ওইরবদি Server দা লাইরিক এন্ট্রিশিং মুথৎকই অদুগা ডেস্ক ওনার ওইনা নোর্মল ফওবা হাংলকই — রেট, পার্টি, জোন, স্টাফ অমসুং সেটিংস লৈরকই। schema অমসুং config মুথৎতবা নত্তে। কনাগী PIN গা মান্নহনগনু। Clear বটননা অফ তৌ।
+duress_help	Offline Server/Client LAN ꯈꯀ꯭ꯇꯥ — cloud ꯐꯤꯆꯥꯔ ꯅꯇ꯭ꯇꯦ। Default ꯑꯐ: ꯑꯣꯅꯥꯔꯅꯥ ꯃꯁꯤ PIN ꯁꯦꯚ ꯇꯧꯗꯨꯅꯥ ꯑꯃꯨꯀ ꯇꯧꯅ ꯑꯣꯅ ꯇꯧꯏ (ꯇꯤꯃ, Client till ꯗꯥꯁꯨ)। ꯑꯥꯅꯂꯀꯇꯥ ꯑꯆꯧꯕꯥ ꯁ꯭ꯇꯥꯐ PIN ꯒꯤ ꯃꯍꯨꯇ꯭ꯇꯥ ꯃꯁꯤ PIN ꯏꯕꯥ ꯑꯣꯏꯔꯕꯗꯤ Server ꯗꯥ ꯂꯥꯏꯔꯤꯀ ꯑꯦꯅ꯭ꯇ꯭ꯔꯤꯁꯤꯪ ꯃꯨꯊꯠꯀꯏ ꯑꯗꯨꯒꯥ ꯗꯦꯁ꯭ꯀ ꯑꯣꯅꯥꯔ ꯑꯣꯏꯅꯥ ꯅꯣꯔ꯭ꯃꯂ ꯐꯑꯣꯕꯥ ꯍꯥꯪꯂꯀꯏ — ꯔꯦꯇ, ꯄꯥꯔ꯭ꯇꯤ, ꯖꯣꯅ, ꯁ꯭ꯇꯥꯐ ꯑꯃꯁꯨꯪ ꯁꯦꯇꯤꯪꯁ ꯂꯩꯔꯀꯏ। schema ꯑꯃꯁꯨꯪ config ꯃꯨꯊꯠꯇꯕꯥ ꯅꯇ꯭ꯇꯦ। ꯀꯅꯥꯒꯤ PIN ꯒꯥ ꯃꯥꯅ꯭ꯅꯍꯅꯒꯅꯨ। Clear ꯕꯇꯅꯅꯥ ꯑꯐ ꯇꯧ।
 duress_pin_ph	ꯑꯔꯥꯟꯕ PIN (ꯗꯤꯖꯤꯠ 4–12)
 duress_confirm_ph	ꯍꯟꯅ ꯏꯕꯤꯌꯨ, ꯅꯦꯝꯅꯕ
 save_duress_pin	ꯑꯔꯥꯟꯕ PIN ꯊꯝꯕꯤꯌꯨ
@@ -586,24 +586,24 @@ local_badge	ꯃꯅꯨꯡ
 mix_type_hint_kirano	ꯃꯊꯧ ꯇꯥꯔꯕꯗꯤ ꯁꯦꯟ / UPI / ꯀꯥꯔꯗ / ꯂꯦꯟꯕꯗ ꯈꯥꯏꯗꯣꯛꯎ. ꯂꯦꯟꯕꯅ ꯃꯊꯛꯇ ꯀꯦꯟꯅꯕ ꯃꯊꯧ ꯇꯥꯏ.
 money_in_sales	ꯁꯦꯟ ꯆꯪꯕ (ꯌꯣꯟꯕ)
 net_word	ꯁꯦꯟꯊꯣꯛ
-offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
+offline_badge	ꯑꯣꯐꯂꯥꯏꯟ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
-or_unlock_shop_login	নত্ত্রগা শপ লোগিননা অনলক তৌ
-shop_login_help	ঐচ্ছিক: PINগী মহুত্তা শপ অসিগী স্টাফ ইউজারনেম অমসুং পাসৱর্দনা অনলক তৌ (অফলাইনদা থবক তৌই)।
-cloud_account_title	Kirano একাউন্ট
-cloud_account_help	kirano.shop/accountগী মতো একাউন্ট অদুমনা রেজিস্টর তৌবা নত্ত্রগা সাইন ইন তৌ। নহাক্কী ক্লাউদ id অমসুং ফ্রি প্লান শেম্মি।
-cloud_name_ph	মিং (ঐচ্ছিক)
-cloud_email_ph	ইমেইল
+or_unlock_shop_login	ꯅꯠꯇ꯭ꯔꯒ ꯀꯦꯟꯐꯝ ꯆꯪꯕꯅ ꯍꯥꯡꯗꯣꯛꯎ
+shop_login_help	ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ: PINꯒꯤ ꯃꯍꯨꯠꯇ ꯀꯦꯟꯐꯝ ꯑꯁꯤꯒꯤ ꯁ꯭ꯇꯥꯐ ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ (ꯑꯣꯐꯂꯥꯏꯟꯗ ꯊꯕꯛ ꯇꯧꯏ)꯫
+cloud_account_title	Kirano ꯑꯦꯀꯥꯎꯟꯇ
+cloud_account_help	kirano.shop/accountꯒꯤ ꯃꯇꯣ ꯑꯦꯀꯥꯎꯅ꯭ꯇ ꯑꯗꯨꯃꯅꯥ ꯔꯦꯖꯤꯁ꯭ꯇꯔ ꯇꯧꯕꯥ ꯅꯇ꯭ꯇ꯭ꯔꯒꯥ ꯁꯥꯏꯅ ꯏꯅ ꯇꯧ। ꯅꯍꯥꯀ꯭ꯀꯤ ꯀ꯭ꯂꯥꯎꯗ id ꯑꯃꯁꯨꯪ ꯐ꯭ꯔꯤ ꯄ꯭ꯂꯥꯅ ꯁꯦꯃ꯭ꯃꯤ।
+cloud_name_ph	ꯃꯤꯡ (ꯑꯣꯄꯁꯟꯅꯦꯜ)
+cloud_email_ph	ꯏꯃꯦꯏꯜ
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
-cloud_forgot	পাসৱর্দ কাওখ্রব্রা?
-cloud_web_methods	ৱেবসাইটতা Google অমসুং অতোপ্পা মথোংশিং
-cloud_signing_in	সাইন ইন তৌরি…
-cloud_sending_reset	রিসেট লিংক থাদোকলি…
-cloud_forgot_sent	ইমেইল অদুদা একাউন্ট লৈরবদি রিসেট লিংক তা রৈ।
-cloud_welcome	{user} · {plan} ওইনা সাইন ইন তৌরে
-cloud_created	একাউন্ট শেমখ্রে। ভেরিফাই তৌনবগীদমক ইমেইল যেংউ।
+cloud_forgot	ꯄꯥꯁꯋꯥꯔꯗ ꯀꯥꯎꯔꯤꯕꯔꯥ?
+cloud_web_methods	ꯋꯦꯕꯁꯥꯏꯇꯇ Google ꯑꯃꯁꯨꯡ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡꯁꯤꯡ
+cloud_signing_in	ꯆꯪꯂꯤ…
+cloud_sending_reset	ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯊꯥꯔꯤ…
+cloud_forgot_sent	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯗ ꯑꯦꯀꯥꯎꯟꯇ ꯂꯩꯔꯕꯗꯤ, ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯂꯥꯛꯂꯤ꯫
+cloud_welcome	{user} · {plan} ꯑꯣꯏꯅ ꯆꯪꯂꯦ
+cloud_created	ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯝꯈ꯭ꯔꯦ꯫ ꯌꯥꯔꯕꯗ ꯏꯃꯦꯏꯜ ꯌꯦꯡꯁꯤꯟꯕꯤꯌꯨ, ꯆꯥꯡꯗꯝꯅꯕ꯫
 cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 product_only_kirano	Kirano ꯍꯥꯏꯕ ꯀꯤꯔꯥꯅꯥ ꯑꯣꯄꯔꯦꯇꯤꯡ ꯁꯤꯁ꯭ꯇꯦꯝꯅꯤ: ꯌꯣꯟꯕꯒꯤ ꯐꯝꯗ ꯌꯣꯟꯕ, ꯁ꯭ꯇꯣꯛ, ꯁꯦꯜ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯃꯁꯤꯟꯗ ꯑꯣꯐꯂꯥꯏꯟ.
@@ -855,7 +855,7 @@ client_template_importing	{title} ꯆꯪꯍꯟꯂꯤ…
 client_template_done	{title}ꯒꯤ ꯄꯣꯠ ꯈꯨꯗꯤꯡꯃꯛ ꯅꯍꯥꯛꯀꯤ ꯄꯣꯠꯇ ꯂꯩꯔꯦ.
 client_template_imported	{title}ꯗꯒꯤ ꯄꯣꯠ {d} ꯑꯃꯁꯨꯡ ꯐꯨꯡ {c} ꯍꯥꯞꯆꯤꯟꯈ꯭ꯔꯦ
 app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
-app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯀꯦꯇꯥꯂꯣꯒ ꯑꯃꯥ ꯑꯃꯁꯨꯡ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅꯥ ꯄ꯭ꯔꯗꯛꯇ ꯂꯤꯁ꯭ꯠ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯏ꯫
+app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯀꯦꯇꯥꯂꯣꯒ ꯑꯃꯁꯨꯡ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅ ꯐꯝ ꯂꯤꯁ꯭ꯠ ꯑꯍꯥꯡꯕ ꯑꯣꯏ.
 app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
 app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
 app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…

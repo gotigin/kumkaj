@@ -3,7 +3,7 @@ unlock	লচক খুলকদি
 sell	ফালমানি
 buy	পাইদি
 books	সালনি বিজাপ
-books_help	তিনিনি থানি. সেলল ​​= রাং ইন. বুয় = পাইমানি & রাং খারমানি. পারতয় রোক = রাং রৱনাই রোক & রাং রৱনাই রোক.
+books_help	তিনিনি থানি। ফালমানি = রাং হাবজা। পাইদি = পাইদি বাই খারজা। পার্টি = উধার গ্রাহক বাই সাপ্লায়ার।
 buy_help	খারচা খারমানি ভউচের তেই তুবুনাইরকনি বিল (রাং উংখা). ওন-খাতাও তংনাই পারতয় নি লেদগের ও.
 sell_money_in	মানৱি ফালদি
 buy_money_out	খারচা/ফাইনাই বিল
@@ -23,8 +23,8 @@ stock_minus	- সতক
 stock_plus	+ সতক
 settle_cash	রাং সেতলে
 settle_card	কারদ সুনামদি
-items	মানুই
-nav_items	মানুই
+items	আইটেম
+nav_items	আইটেম
 items_help	এদিত খাইনা বাগৱি কাইসা মানৱি নো তাপ খাই দি. কৱতাল মানৱি ফোরম নো চলেআর খলাইও. মুচুংতৱি এবা চোদে বাই সেআরচ খাইদি, পরিচে সেত খাইদি (0 ৱংখা কাহাম), আবোনি উলো আদদ খাইদি. সালেস সৱকাংনি সিমিনো রেচোরদ খলাইজাক মুংনো বোহরোক চারগে খলাইজাকমানি.
 add_item	মানুই চাপদি
 new_item	কুতাল মানুই
@@ -40,7 +40,7 @@ total	জত
 cash	রাং
 upi	UPI
 card	কারদ
-credit	বরক
+credit	পার্টি
 clear	কুথার
 today_prefix	তিনি
 owed	কতর
@@ -145,7 +145,7 @@ diag_cleared	বেমার নাইমানি লগস সুকাকজ�
 sidebar_settings	সিদে বার
 sidebar_settings_help	সিদে নি রাইল নি হাই খেন ইচন রক. ওরদের খুলাইনা বাগুই কাইসা রউ দরাগ খাইদি. সুইতচ ন ফলিপ খাইউই ফুনুকদি এবা রুদি. সেতিং তেই লচক জত জরা বার ও তংনাই.
 sidebar_always_on_short	জরা জরা
-sidebar_menu_items	মানুই
+sidebar_menu_items	আইটেম
 sidebar_enable_all	জতন সুনামদি
 sidebar_disable_all	জত ন সুকাক দি
 sidebar_order_saved	সিদেবার নি দাগিমুং মুথাংজাক খা
@@ -589,7 +589,7 @@ net_word	নেত
 offline_badge	ওফলিনে
 optional_login_help	ওপতিওনাল লগিন (ইদ + পাসুওরদ). ওউনের কাইসা সেত খলাইও; ওনলয় থে উসের চান চাঙে পাসুওরদ লাতের.
 or_unlock_login	এবা লগিন ইদ + ককতুমা বাই লচক ফিয়গুই দি
-or_unlock_shop_login	অথবা দোকান লগইন সঙ্গে আনলক
+or_unlock_shop_login	নতবা দোকান লগইন বাগুই খুলি খাইদি
 shop_login_help	ঐচ্ছিক: PIN এর পরিবর্তে এই দোকানের কর্মীদের ব্যবহারকারীর নাম এবং পাসওয়ার্ড দিয়ে আনলক করুন (অফলাইনে কাজ করে)।
 cloud_account_title	কিরানো খাতা
 cloud_account_help	kirano.shop/account হিসাবে একই অ্যাকাউন্ট দিয়ে নিবন্ধন করুন বা সাইন ইন করুন। আপনার ক্লাউড আইডি এবং বিনামূল্যের পরিকল্পনা তৈরি করে।
@@ -604,7 +604,7 @@ cloud_sending_reset	রিসেট লিঙ্ক পাঠানো হচ্
 cloud_forgot_sent	যদি সেই ইমেলের একটি অ্যাকাউন্ট থাকে, একটি রিসেট লিঙ্ক পথে রয়েছে৷
 cloud_welcome	{user} · {plan} হিসাবে সাইন ইন করেছেন৷
 cloud_created	অ্যাকাউন্ট তৈরি করা হয়েছে। আপনি কখন পারেন তা যাচাই করতে আপনার ইমেল চেক করুন।
-cloud_cancel	বাতিল করুন
+cloud_cancel	বাতিল খাইদি
 permission_preset	সামুং
 product_only_kirano	কিরানো ৱংখা মানৱি মানৱি / কিরানা সামুং তাংমানি সয়সতেম: চৌনতের ফালমানি, সতোক, রাং রৱমানি তেই বিজাপ — নিনি মানৱিরোকনি সাকাও কৱরৱি.
 purchases_cogs	কিরিমানি (COGS)
@@ -741,7 +741,7 @@ new_category_row	কুতাল খে — নুং মানুই ন মু
 your_category	নিনি উংখা
 suggested_category	সুগগেসত ৱংখা — চিনি মানৱিরোকনি
 category_search_ph	চাতেগরয় — নিনি উঙুই নাই দি এবা কুতাল তয়পে খাই দি .
-cancel_item_short	চানচেল খাইদি
+cancel_item_short	বাতিল খাইদি
 return_to_customer	গরাহকনি থানি কিফিলুই ফাইদি
 short_by	কুচাক খে
 tip_not_sale	তিপ (সামুং তাংনাইরকনি, ফালজাক য়া)
@@ -775,7 +775,7 @@ bill_line_customer	গ্রাহক
 bill_line_bill_no	বিল নং
 bill_line_time	জরা
 bill_line_cashier	রাং থুমনাই
-bill_line_items	মানুই
+bill_line_items	আইটেম
 bill_line_total	জত
 bill_line_footer	য়াফাঙ
 bill_line_upi	UPI
@@ -862,12 +862,12 @@ app_template_importing	সামুং খলাইও {title}...
 app_template_import_selected	বাসাগনাই তুবুই
 app_template_wipe_warn	অব বিজাপনি বেপার ডাটা (ফালমানি, খাতারগ) কুথার খলাইনাই তেই টেম্পলেটনি দোকানি সেটিং লাগু খলাইনাই। তুলাংনাই দে?
 app_template_wipe_continue	তুলাংদি
-app_template_wipe_cancel	চানচেল খাইদি
+app_template_wipe_cancel	বাতিল খাইদি
 app_template_from_device	অ ডিভাইসনি তুবুদি
 app_template_from_device_help	template.json তংনাই ফোল্ডার বাসাগদি (shop_defaults.json তংখে আবনো)।
 settings_app_tmpl_note	জত দোকানি পেকরগ: ক্যাটালগ তেই দোকানি সেটিং। পেক তেই তুবুইখে ফালমানি তেই খাতারগ কুথার উঙো, আবনি উল পেকনি দোকানি সেটিং লাগু উঙো।
 app_tmpl_named	{name} দোকানি টেম্পলেট
-cancel	চানচেল খাইদি
+cancel	বাতিল খাইদি
 removing	সিং তঙ…
 removed	সিংখা
 updating_order	আপডেট তঙ…

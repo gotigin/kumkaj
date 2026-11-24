@@ -13,9 +13,9 @@ expiry_none	ꯃꯇꯨꯡꯒꯤ ꯅꯨꯃꯤꯠ ꯷ꯗ ꯕꯦꯆ ꯑꯃꯠꯇ ꯑ
 rx_nudge	ꯃꯄꯨꯅ Rx / ꯁꯦꯗ꯭ꯌꯨꯜ H ꯃꯈꯨꯠ ꯊꯝꯂꯦ — ꯃꯊꯧ ꯂꯩꯔꯕꯗꯤ ꯅꯣꯠ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ.
 unlock	ꯍꯥꯡꯗꯣꯛꯎ
 sell	ꯌꯣꯟꯕ
-buy	ꯂꯩꯕ
+buy	ꯂꯩꯊꯣꯛꯕ
 books	ꯅꯨꯃꯤꯠꯀꯤ ꯂꯥꯏꯔꯤꯛ
-books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯕꯝ. ꯌꯣꯟꯕ = ꯁꯦꯟ ꯂꯨꯛꯄ. ꯂꯩꯕ = ꯂꯩꯕ ꯑꯃꯁꯨꯡ ꯆꯥꯟꯕ. ꯄꯥꯔꯇꯤ = ꯈꯥꯇꯥ ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ.
+books_help	ꯉꯁꯤꯒꯤ ꯐꯤꯕꯝ. ꯌꯣꯟꯕ = ꯁꯦꯟ ꯂꯨꯛꯄ. ꯂꯩꯊꯣꯛꯕ = ꯂꯩꯊꯣꯛꯕ ꯑꯃꯁꯨꯡ ꯆꯥꯟꯕ. ꯄꯥꯔꯇꯤ = ꯈꯥꯇꯥ ꯀꯦꯟꯅꯕ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕ.
 buy_help	ꯆꯥꯟꯕꯒꯤ ꯂꯥꯏꯔꯤꯛ ꯑꯃꯁꯨꯡ ꯄꯤꯔꯤꯕꯒꯤ ꯕꯤꯜ (ꯁꯦꯟ ꯊꯣꯔꯛꯄ). ꯌꯥꯎꯅꯕ ꯑꯁꯤ ꯃꯤꯒꯤ ꯂꯥꯏꯔꯤꯛꯇ ꯂꯩ.
 sell_money_in	ꯍꯤꯗꯥꯛ ꯌꯣꯟꯕꯤꯌꯨ
 buy_money_out	ꯆꯥꯟꯕ / ꯄꯤꯔꯤꯕꯒꯤ ꯕꯤꯜ
@@ -52,7 +52,7 @@ total	ꯑꯄꯨꯟꯕ
 cash	ꯁꯦꯟ
 upi	UPI
 card	ꯀꯥꯔꯗ
-credit	ꯃꯤ
+credit	ꯄꯥꯔꯇꯤ
 clear	ꯁꯦꯡꯗꯣꯛꯎ
 today_prefix	ꯉꯁꯤ
 owed	ꯂꯩꯔꯤꯕ
@@ -205,7 +205,7 @@ my_pin_settings	ꯑꯩꯒꯤ PIN
 settings_hub_help_my_pin	ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯆꯪꯂꯛꯄ ꯃꯤꯑꯣꯏꯒꯤ ꯍꯥꯡꯗꯣꯛꯄ PIN ꯍꯣꯡꯗꯣꯛꯎ.
 team_self_help	ꯆꯪꯕ ꯑꯃ: PIN ꯑꯅꯧꯕ, ꯄꯥꯁꯋꯥꯔꯗ ꯑꯅꯧꯕ, ꯅꯠꯇ꯭ꯔꯒ ꯑꯅꯤꯃꯛ. ꯕꯣꯛꯁ ꯍꯥꯏꯗꯕ ꯊꯝꯕꯤꯌꯨ, ꯍꯧꯖꯤꯛ ꯂꯩꯕ ꯊꯝꯅꯕ. ꯁ꯭ꯛꯔꯤꯟ ꯅꯠꯇ꯭ꯔꯒ ꯍꯛ ꯑꯇꯣꯞꯄ ꯃꯊꯧ ꯇꯥꯔꯕꯗꯤ ꯃꯄꯨꯗ ꯍꯪꯕꯤꯌꯨ.
 pick	ꯂꯧꯕꯤꯌꯨ
-advance	অগ্রিম
+advance	ꯃꯃꯥꯡ ꯁꯦꯟ
 owner	ꯃꯄꯨ
 staff	ꯊꯕꯛꯇꯧꯕ
 photo	ꯁꯛꯇꯝ
@@ -518,7 +518,7 @@ printer_already_saved	ꯊꯝꯈ꯭ꯔꯦ: {name}
 find_printers	ꯄ꯭ꯔꯤꯟꯇꯔ ꯊꯤꯕꯤꯌꯨ
 printers_looking	ꯊꯤꯔꯤ…
 saving_printer	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯥꯞꯆꯤꯟꯂꯤ…
-cancelled	ꯇꯣꯛꯈꯤ
+cancelled	ꯀꯦꯟꯁꯦꯜ ꯇꯧꯈ꯭ꯔꯦ
 press_back_again_exit	ꯊꯣꯛꯅꯕ ꯍꯟꯅ “ꯍꯟꯖꯤꯜꯂꯨ” ꯅꯝꯃꯨ
 printers_tap_find	ꯊꯤꯕꯤꯌꯨ ꯅꯝꯃꯨ, ꯃꯁꯤꯟ ꯑꯁꯤꯅ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯤꯁ꯭ꯇ ꯎꯠꯅꯕ.
 printers_none_found	ꯐꯪꯗꯦ — ꯁꯤꯁ꯭ꯇꯦꯝ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯤꯡ ꯅꯠꯇ꯭ꯔꯒ IP ꯏꯕꯤꯌꯨ (ꯈꯨꯗꯝ 192.168.1.50).
@@ -598,24 +598,24 @@ local_badge	ꯃꯅꯨꯡ
 mix_type_hint_tabiyat	ꯃꯊꯧ ꯇꯥꯔꯕꯗꯤ ꯁꯦꯟ / UPI / ꯀꯥꯔꯗ / ꯂꯦꯟꯕꯗ ꯈꯥꯏꯗꯣꯛꯎ. ꯂꯦꯟꯕꯅ ꯃꯊꯛꯇ ꯀꯦꯟꯅꯕ ꯃꯊꯧ ꯇꯥꯏ.
 money_in_sales	ꯁꯦꯟ ꯆꯪꯕ (ꯌꯣꯟꯕ)
 net_word	ꯁꯦꯟꯊꯣꯛ
-offline_badge	ꯑꯣꯟꯂꯥꯏꯟ ꯌꯥꯎꯗꯕ
+offline_badge	ꯑꯣꯐꯂꯥꯏꯟ
 optional_login_help	ꯆꯪꯕ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ (ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗ). ꯃꯄꯨꯅ ꯃꯇꯝ ꯑꯃ ꯊꯝꯏ; ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯅꯈꯛꯇ ꯃꯇꯨꯡꯗ ꯄꯥꯁꯋꯥꯔꯗ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ.
 or_unlock_login	ꯅꯠꯇ꯭ꯔꯒ ꯆꯪꯕꯒꯤ ꯃꯁꯛ + ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ
 or_unlock_shop_login	ꯅꯠꯔꯒꯥ ꯗꯨꯀꯥꯟ ꯂꯣꯒꯏꯅꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯑꯅꯂꯣꯛ ꯇꯧꯕꯥ꯫
-shop_login_help	ঐচ্ছিক: PIN গী মহুত্তা মশিগী শপকী ষ্টাফ য়ুজরনেম অমসুং পাসৱর্দনা অনলক তৌবিয়ু (অফলাইন থবক তৌই)।
-cloud_account_title	Tabiyat অ্যাকাউন্ট
-cloud_account_help	tabiyat.shop/account গী মরম্না অ্যাকাউন্ট অদুনা রেজিস্টর তৌবিয়ু নত্ত্রগা সাইন ইন তৌবিয়ু। নহাক্কী cloud id অমসুং ফ্রী প্ল্যান শেম্মী।
-cloud_name_ph	মিং (ঐচ্ছিক)
-cloud_email_ph	ইমেইল
+shop_login_help	ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ: PINꯒꯤ ꯃꯍꯨꯠꯇ ꯀꯦꯟꯐꯝ ꯑꯁꯤꯒꯤ ꯁ꯭ꯇꯥꯐ ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗꯅ ꯍꯥꯡꯗꯣꯛꯎ (ꯑꯣꯐꯂꯥꯏꯟꯗ ꯊꯕꯛ ꯇꯧꯏ)꯫
+cloud_account_title	Tabiyat ꯑꯦꯀꯥꯎꯟꯇ
+cloud_account_help	tabiyat.shop/account ꯒꯤ ꯃꯔꯃ꯭ꯅꯥ ꯑꯌꯥꯀꯥꯎꯅ꯭ꯇ ꯑꯗꯨꯅꯥ ꯔꯦꯖꯤꯁ꯭ꯇꯔ ꯇꯧꯕꯤꯌꯨ ꯅꯇ꯭ꯇ꯭ꯔꯒꯥ ꯁꯥꯏꯅ ꯏꯅ ꯇꯧꯕꯤꯌꯨ। ꯅꯍꯥꯀ꯭ꯀꯤ cloud id ꯑꯃꯁꯨꯪ ꯐ꯭ꯔꯤ ꯄ꯭ꯂ꯭ꯌꯥꯅ ꯁꯦꯃ꯭ꯃꯤ।
+cloud_name_ph	ꯃꯤꯡ (ꯑꯣꯄꯁꯟꯅꯦꯜ)
+cloud_email_ph	ꯏꯃꯦꯏꯜ
 cloud_password_ph	ꯄꯥꯁꯋꯥꯔꯗ
 cloud_continue	ꯃꯈꯥ ꯆꯠꯂꯨ
-cloud_forgot	পাসৱর্দ কাওরব্রা?
-cloud_web_methods	ৱেবসাইত্তা Google অমসুং অতোপ্পা মথৌ
-cloud_signing_in	সাইন ইন তৌরি…
-cloud_sending_reset	রিসেট লিংক থাদোক্লি…
-cloud_forgot_sent	অদুগী ইমেইলদা একাউন্ট লৈরবদি রিসেট লিংক লমদা লৈরি।
-cloud_welcome	{user} · {plan} ওইনা সাইন ইন তৌরে
-cloud_created	একাউন্ট শেম্লে। অহল্লক্পগীদমক ইমেইল য়েংবিয়ু।
+cloud_forgot	ꯄꯥꯁꯋꯥꯔꯗ ꯀꯥꯎꯔꯤꯕꯔꯥ?
+cloud_web_methods	ꯋꯦꯕꯁꯥꯏꯇꯇ Google ꯑꯃꯁꯨꯡ ꯑꯇꯣꯞꯄ ꯃꯑꯣꯡꯁꯤꯡ
+cloud_signing_in	ꯆꯪꯂꯤ…
+cloud_sending_reset	ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯊꯥꯔꯤ…
+cloud_forgot_sent	ꯏꯃꯦꯏꯜ ꯑꯗꯨꯗ ꯑꯦꯀꯥꯎꯟꯇ ꯂꯩꯔꯕꯗꯤ, ꯔꯤꯁꯦꯠ ꯂꯤꯡꯛ ꯂꯥꯛꯂꯤ꯫
+cloud_welcome	{user} · {plan} ꯑꯣꯏꯅ ꯆꯪꯂꯦ
+cloud_created	ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯝꯈ꯭ꯔꯦ꯫ ꯌꯥꯔꯕꯗ ꯏꯃꯦꯏꯜ ꯌꯦꯡꯁꯤꯟꯕꯤꯌꯨ, ꯆꯥꯡꯗꯝꯅꯕ꯫
 cloud_cancel	ꯇꯣꯛꯎ
 permission_preset	ꯊꯕꯛ
 product_only_tabiyat	Tabiyat ꯑꯁꯤ ꯍꯤꯗꯥꯛ ꯀꯦꯟꯐꯝ ꯆꯠꯍꯟꯕ ꯁꯤꯁ꯭ꯇꯦꯝꯅꯤ: ꯍꯤꯗꯥꯛ ꯌꯣꯟꯕ, ꯕꯦꯆ/ꯑꯦꯛꯁꯄꯥꯌꯔꯤ ꯂꯥꯏꯔꯤꯛ, ꯈꯥꯇꯥ ꯑꯃꯁꯨꯡ ꯂꯥꯏꯔꯤꯛ — ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯇ ꯑꯣꯐꯂꯥꯏꯟ. ꯁꯦꯗ꯭ꯌꯨꯜ H / Rx ꯃꯈꯨꯠ ꯑꯁꯤ ꯃꯄꯨꯒꯤ ꯅꯣꯠꯅꯤ, ꯆꯠꯅꯕꯤ ꯅꯠꯇꯦ.
@@ -867,7 +867,7 @@ client_template_importing	{title} ꯆꯪꯍꯟꯂꯤ…
 client_template_done	{title}ꯗꯒꯤ ꯄꯣꯠ ꯈꯨꯗꯤꯡꯃꯛ ꯅꯍꯥꯛꯀꯤ ꯄꯣꯠꯇ ꯂꯩ.
 client_template_imported	{title}ꯗꯒꯤ ꯄꯣꯠ {d} ꯑꯃꯁꯨꯡ ꯐꯨꯡ {c} ꯍꯥꯞꯆꯤꯟꯈꯤ
 app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
-app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯀꯦꯇꯥꯂꯣꯒ ꯑꯃꯥ ꯑꯃꯁꯨꯡ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅꯥ ꯄ꯭ꯔꯗꯛꯇ ꯂꯤꯁ꯭ꯠ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯏ꯫
+app_template_blurb	ꯁ꯭ꯇꯥꯔꯇꯑꯞ ꯀꯦꯇꯥꯂꯣꯒ ꯑꯃꯁꯨꯡ ꯗꯨꯀꯥꯟ ꯁꯦꯇꯤꯡ ꯈꯜꯂꯨ꯫ «ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ»ꯅ ꯐꯝ ꯂꯤꯁ꯭ꯠ ꯑꯍꯥꯡꯕ ꯑꯣꯏ.
 app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
 app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
 app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
