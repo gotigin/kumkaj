@@ -1,6 +1,6 @@
---- a/platform/src/os/linux/android/android_jni.rs	2026-11-24 02:23:25.376656564 +0530
-+++ b/platform/src/os/linux/android/android_jni.rs	2026-11-24 02:23:25.376757932 +0530
-@@ -1486,6 +1486,11 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1443,6 +1443,12 @@
      );
  }
  
@@ -9,15 +9,20 @@
 +    let env = attach_jni_env();
 +    ndk_utils::call_void_method!(env, get_activity(), "showShaderCompileScreen", "()V");
 +}
- 
++
  pub unsafe fn to_java_request_surface_snapshot_refresh() {
      let env = attach_jni_env();
---- a/platform/src/os/linux/android/android.rs	2026-11-24 02:23:25.376923600 +0530
-+++ b/platform/src/os/linux/android/android.rs	2026-11-24 02:23:25.377114558 +0530
-@@ -382,6 +382,14 @@
-                             self.os.post_layout_redraws_left = 12;
-                             self.os.hide_surface_cover_after_first_present = true;
-                             self.os.presents_before_hiding_cover = 6;
+     ndk_utils::call_void_method!(env, get_activity(), "requestSurfaceSnapshotRefresh", "()V");
+--- a/platform/src/os/linux/android/android.rs
++++ b/platform/src/os/linux/android/android.rs
+@@ -379,7 +379,17 @@
+                             // First layout often settles on the frame *after*
+                             // this one (body size 0→real). Extra redraws avoid a
+                             // stuck clear-color present on API 26.
+-                            self.os.post_layout_redraws_left = 8;
++                            self.os.post_layout_redraws_left = 12;
++                            self.os.hide_surface_cover_after_first_present = true;
++                            self.os.presents_before_hiding_cover = 6;
 +                            // Makepad PR #1432 / #1459: only claim "Compiling
 +                            // shaders" when this launch's GL program cache is
 +                            // empty (fresh install / fingerprint change).
@@ -29,11 +34,65 @@
                              self.redraw_all();
                          } else if self.os.post_layout_redraws_left > 0 {
                              self.os.post_layout_redraws_left -= 1;
-@@ -3841,4 +3849,23 @@
-     let OsType::Android(params) = os_type else {
-         return false;
-     };
--    let cache_dir = s
+@@ -464,7 +474,15 @@
+         if !self.os.hide_surface_cover_after_first_present || self.os.in_xr_mode {
+             return;
+         }
++        // First successful present after the surface is drawable (Makepad PR
++        // #1432). Do not wait for post_layout to drain — idle vsync can pause
++        // before that and leave the cream / compile cover up forever.
++        if self.os.needs_first_draw {
++            return;
++        }
+         self.os.hide_surface_cover_after_first_present = false;
++        self.os.presents_before_hiding_cover = 0;
++        crate::log!("Android: hiding surface cover after first present");
+         unsafe {
+             android_jni::to_java_set_surface_cover_visible(false);
+         }
+@@ -548,6 +566,11 @@
+                 }
+ 
+                 if !self.os.in_xr_mode {
++                    // Cold start also shows the cream cover (Java). Arm hide so
++                    // the first successful presents remove it — previously only
++                    // SurfaceDestroyed armed this, so cold start stayed cream forever.
++                    self.os.hide_surface_cover_after_first_present = true;
++                    self.os.presents_before_hiding_cover = 6;
+                     self.sync_android_surface_alive_from_backend();
+                     if self.os.surface_alive {
+                         self.request_android_surface_redraw();
+@@ -3415,6 +3438,7 @@
+             first_after_resize: true,
+             needs_first_draw: true,
+             post_layout_redraws_left: 0,
++            presents_before_hiding_cover: 0,
+             hide_surface_cover_after_first_present: false,
+             refresh_surface_snapshot_after_first_present: true,
+             frame_time: 0,
+@@ -3542,6 +3566,8 @@
+     /// Follow-up redraws after the first drawable frame so layout that settles
+     /// a frame later (common on API 26) is painted, not just clear_color.
+     pub post_layout_redraws_left: u8,
++    /// Extra presents after layout settles before the cream cover is removed.
++    pub presents_before_hiding_cover: u8,
+     /// Tracks whether the Java-side surface cover overlay should remain visible
+     /// until the next successful present reaches the rebuilt Android surface.
+     pub hide_surface_cover_after_first_present: bool,
+@@ -3783,3 +3809,33 @@
+         assert!(res != 0);
+     }
+ }
++
++/// True when the on-disk GL program binary cache has no entries for this
++/// device fingerprint — same idea as Makepad `info_flags::PIPELINE_CACHE_COLD`
++/// (#1459) on our pre-HAL pin. Used only to decide whether to show the
++/// "Compiling shaders" cover (#1432); a backend without a cache must not
++/// claim a one-time wait on every launch.
++fn android_gl_program_cache_is_cold(os_type: &OsType) -> bool {
++    let OsType::Android(params) = os_type else {
++        return false;
++    };
 +    let cache_dir = std::path::Path::new(&params.cache_path);
 +    let Ok(entries) = std::fs::read_dir(cache_dir) else {
 +        // No cache dir yet → first launch.
