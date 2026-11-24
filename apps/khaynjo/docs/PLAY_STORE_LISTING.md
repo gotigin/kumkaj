@@ -75,7 +75,7 @@ Install → choose Server on the main till (or Client to join an existing shop) 
 Website: https://khaynjo.com
 Privacy: see the Privacy policy URL on this listing
 
-Gotigin is the trademark of GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED. Kumkaj is its brand for business apps, and Khaynjo is the Kumkaj product for restaurants. Local-first, free on your devices.
+Gotigin is a trademark. GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED is authorized to use, operate under, and represent it. Kumkaj is its brand for business apps, and Khaynjo is the Kumkaj product for restaurants. Local-first, free on your devices.
 ```
 
 ---
