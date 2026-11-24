@@ -1,30 +1,30 @@
 # Guarani — Avañe'ẽ (gn). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Eipe'a
-sell	Hepyme'ẽ
+sell	Ñemu
 buy	Jogua
-books	Aranduka ára rehegua
-books_help	Ko árapegua posición. Ovende = pirapire oike.Ojogua = jogua & gasto. Partido-kuéra = cliente & proveedor crédito rehegua.
+books	Ára aranduka
+books_help	Ko árapegua posición. Ovende = pirapire oike.Ojogua = jogua & gasto. Ñemu irũ kuéra = cliente & proveedor crédito rehegua.
 buy_help	Vale gasto rehegua ha factura proveedor rehegua (pirapire osêva). Opytáva cuenta-pe libro mayor cliente térã proveedor-pe.
 sell_money_in	Ovende umi mba’e
 buy_money_out	Gasto / factura proveedor rehegua
 record_purchase	Disco joguaha
 add_expense	Vale de gasto rehegua
 bank_book	Aranduka banco-pegua
-credit_help	Id cliente térã proveedor ha’e peteĩchagua (umi téra ikatu oje’e jey). Peteĩ Cliente omotenonde peteĩ libro mayor de crédito (odevéva ñandéve); peteĩ Proveedor ovende ñandéve stock (rodeve chupekuéra); mokõivéva oĩ porã. Umi libro mayor opyta separado; umi marandu ohechauka red.
+credit_help	Id cliente térã proveedor ha’e peteĩchagua (umi téra ikatu oje’e jey). Peteĩ Cliente omotenonde peteĩ libro mayor de crédito (odevéva ñandéve); peteĩ Proveedor ovende ñandéve stock (rodeve chupekuéra); mokõivéva oĩ porã. Umi libro mayor opyta separado; umi marandu ohechauka hembýva.
 party_kind_ph	Rols: Cliente, Proveedor, mokõivéva...
 reports_help	Aranduka ára rehegua, odevéva & acreedor-kuéra, aranduka bancario, vale gasto rehegua, ganancia & pérdida.
 reports_today	Aranduka ára (ko árape) .
 reports_month	Ganancia & pérdida (mes) rehegua .
 reports_aging	Pendiente / débito-crédito rehegua
-reports_balance_sheet	Balance rehegua
+reports_balance_sheet	Ñembojoja kuatia
 reports	Banco kuatiahaingue ha P&G
 undo	Deshacer
-stock_minus	− Stock rehegua
+stock_minus	− Ñembyaty
 stock_plus	+ Ñembyaty
 settle_cash	Omohenda efectivo
 settle_card	Tarjeta de arreglo rehegua
-items	Umi mba’e
-nav_items	Umi mba’e
+items	Mba’ekuéra
+nav_items	Mba’ekuéra
 items_help	Epoko peteĩ mba’ére emohenda hag̃ua. Artículo pyahu omopotî formulario. Eheka téra térã código mbykymíre, emohenda peteĩ precio (0 oĩ porã), upéi Emoĩve. Umi venta ojeregistráma va’ekue omantene pe téra oñecargáva chupekuéra.
 add_item	Oñemoĩve mba’e
 new_item	Mba’e pyahu
@@ -40,7 +40,7 @@ total	Total rehegua
 cash	Efectivo rehegua
 upi	UPI
 card	Tarjeta
-credit	Partíkuera
+credit	Ñemu irũnguéra
 clear	Hesakã porã
 today_prefix	Ko árape
 owed	ojehecharamovéva
@@ -145,7 +145,7 @@ diag_cleared	Umi registro diagnóstico oñembogue
 sidebar_settings	Barra lateral rehegua
 sidebar_settings_help	Umi icono peteĩchagua pe riel lateral ndive. Emoinge peteĩ fila emohenda jey hag̃ua. Embojere pe interruptor ehechauka térã emokañy hag̃ua. Ñemboheko ha Bloqueo akóinte opyta barra-pe.
 sidebar_always_on_short	Akóinte ojepyso
-sidebar_menu_items	Umi mba’e
+sidebar_menu_items	Mba’ekuéra
 sidebar_enable_all	Emboguata Opavave
 sidebar_disable_all	Embogue Opavave
 sidebar_order_saved	Orden de barra lateral oñeñongatu
@@ -273,7 +273,7 @@ choose_icon	Eiporavo icono
 choose_logo	Eiporavo logotipo
 clear_icon	Icono hesakãva
 clear_photo	Ta'anga hesakãva
-copy_day_book_csv	Aranduka ára rehegua CSV .
+copy_day_book_csv	Ára aranduka CSV
 copy_day_close	Kopia ára oñemboty
 copy_items_csv	Ojekopia umi mba'e CSV .
 copy_outstanding_csv	Copia pendiente CSV .
@@ -316,7 +316,7 @@ credit_limit_heading	Límite de crédito (cliente térã proveedor ojeporavóva)
 delete_party	Ombogue cliente térã proveedor ojeporavóva
 done_open_books	Ojejapo — aranduka ojepe’áva
 drawer_count	Cajón jepapa (opcional) .
-expense_heading	Gasto rehegua
+expense_heading	Pirapire osẽva
 export_day	Exportación ára
 extra_note_bill_ph	Nota extra ko factura / venta rehe
 extra_tills_heading	Tills extra rehegua
@@ -575,7 +575,7 @@ counter_locked	Contador 01 · Oñemboty
 country_pack_help	Peteĩ paquete tetãmegua omoĩ pe impuesto réra ha matemática, pe ferrocarril de pago instantáneo ha pe id de negocio oñeimprimíva umi factura-pe. Kumkaj ndopresentái impuesto ni nome’ẽi factura electrónica gubernamental moõve.
 currency_use_help	Emoinge ha epoko Eipuru oimeraẽ viru oipytyvõvape g̃uarã.
 day_close_help	Ojehai peteĩ ára ñemboty oñongatu ko resumen (ha varianza cajón rehegua ojeipapa ramo) registro auditoría-pe. Ndopytái ovende.
-expenses_word	Umi gasto ojejapóva
+expenses_word	Pirapire osẽva
 feature_access_help	Mba’épa ikatu oipe’a hikuái — opcional; tembiapo yvategua omoĩma peteĩ mba’e’oka
 fresh_book_kirano	Pyahu = catálogo vacío (emoĩve umi mba’e upe rire). Kuatiañe’ẽ = hai apertura stock ha mávapa odeve ndéve iguýpe.
 fresh_selected	Ojeporavo pyahu — catálogo opyta nandi. Epoko Hecho rehe oĩma jave preparádo.
@@ -586,7 +586,7 @@ local_badge	LOCAL rehegua
 mix_type_hint_kirano	Oñemboja’o efectivo / UPI / tarjeta / crédito rupive oñeikotevẽramo. Crédito oikotevê peteî cliente yvate gotyo.
 money_in_sales	Viru en (venta) .
 net_word	Net rehegua
-offline_badge	OFFLINE rehegua
+offline_badge	Ñanduti’ỹre
 optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; puruhára añoite ikatu omoambue ñe’ẽñemi upe rire.
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
 or_unlock_shop_login	Térã ojedesblokea tenda jeike rupive
@@ -604,7 +604,7 @@ cloud_sending_reset	Omondo enlace reset...
 cloud_forgot_sent	Upe correo electrónico oguerekóramo peteĩ cuenta, peteĩ enlace reset oĩ tape rehe.
 cloud_welcome	Oike {user} · {plan} ramo
 cloud_created	Cuenta ojejapóva. Ehecháke ne correo electrónico ehechauka hag̃ua araka’épa ikatu.
-cloud_cancel	Heja
+cloud_cancel	Eheja rei
 permission_preset	Tembiapo
 product_only_kirano	Kirano haꞌehína pe sistema operativo tembi’u / kirana: mostrador ñemu, stock, crédito ha aranduka — offline nde tembipurukuérape.
 purchases_cogs	Ojejoguáva (COGS) .
@@ -717,7 +717,7 @@ pay_credit	Pe cuenta rehe
 book_kind_today	Ko árape aranduka
 book_kind_month	Ko jasýpe aranduka
 book_kind_aging	Pendiente / débito-crédito rehegua
-book_kind_balance	Balance rehegua
+book_kind_balance	Ñembojoja kuatia
 order_help	Epoko peteĩ mbaʼére remoĩ hag̃ua.
 categories_help	Epoko Eipuru emoĩ hag̃ua pe mbaʼe oĩva yvate upe categoría guýpe. Ta’anga ome’ẽ pe categoría-pe peteĩ ta’anga; peteĩ’ỹre ohechauka iñepyrũrã.
 dish_search_ph	Eheka umi mba'e térã código mbyky...
@@ -741,10 +741,10 @@ new_category_row	Categoría pyahu — ojejapóva eñongatu jave pe mba’e
 your_category	Nde categoría
 suggested_category	Oñesugeríva — ore mba’ekuéragui
 category_search_ph	Categoría — eheka nde mba’éva térã ehai peteĩ pyahu
-cancel_item_short	Ombogue
+cancel_item_short	Eheja rei
 return_to_customer	Ojevy cliente-pe
 short_by	Mbykymi
-tip_not_sale	Consejo (personal mba'e, ndaha'éi peteĩ venta) .
+tip_not_sale	Aguyje pirapire (personal mba'e, ndaha'éi peteĩ venta) .
 right_settle	Ogueraha pago
 right_allowed	Ojeheja
 right_with_approval	Aprobación reheve
@@ -757,7 +757,7 @@ server_host_selected	Eipurúvo {host} — emoinge pe código de emparejamiento, 
 approval_pin_ph	Motenondehára PIN (oñeporandúramo añoite) .
 menu_search_ph	Eheka mba’e térã código mbykymi
 customer_paid_ph	Cliente opaga
-tip_ph	Propina
+tip_ph	Aguyje pirapire
 find_server	Eheka pe tenda servidor
 bill_format	Formato de factura rehegua
 bill_header_ph	Dirección | teléfono rupive
@@ -775,7 +775,7 @@ bill_line_customer	Cliente rehegua
 bill_line_bill_no	Factura N.º
 bill_line_time	Aravo
 bill_line_cashier	Cajero rehegua
-bill_line_items	Umi mba’e
+bill_line_items	Mba’ekuéra
 bill_line_total	Total rehegua
 bill_line_footer	Footer
 bill_line_upi	UPI
@@ -862,12 +862,12 @@ app_template_importing	Ojeporu {title}...
 app_template_import_selected	Egueru pe eiporavóva
 app_template_wipe_warn	Kóva omopotĩ umi dato comercial rehegua umi cuenta-pe (venta, libro mayor) ha omoĩ umi plantilla tenda ñemboheko. ¿Resegisépa?
 app_template_wipe_continue	Esegíkena
-app_template_wipe_cancel	Ombogue
+app_template_wipe_cancel	Eheja rei
 app_template_from_device	Egueru ko tembipuru’ígui
 app_template_from_device_help	Eiporavo peteĩ kundaha oguerekóva template.json (ha, ikatuháicha, shop_defaults.json).
 settings_app_tmpl_note	Plantilla tenda rehegua hekopete: catálogo ha tenda ñemboheko. Ojegueru jeývo peteĩ omopotĩ venta ha libro mayor, upéi ojeporu plantilla tenda ñemboheko.
 app_tmpl_named	{name} tenda rehegua plantilla
-cancel	Ombogue
+cancel	Eheja rei
 removing	Oñembogue hína…
 removed	Oñembogue
 updating_order	Oñembopyahu hína…

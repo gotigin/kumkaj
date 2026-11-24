@@ -12,7 +12,7 @@ expiry_alerts	Fampandrenesana lany daty (7 andro manaraka)
 expiry_none	Tsy misy andiany lany daty ao anatin'ny 7 andro manaraka.
 rx_nudge	Rx / Fandaharam-potoana H - ampio fanamarihana raha ilaina.
 unlock	Manokatra
-sell	mivarotra
+sell	Mivarotra
 buy	Mividy
 books	Bokin'ny andro
 books_help	Ny toerana anio. Amidy = vola miditra. Mividiana = fividianana & fandaniana. Mpifandray = mpanjifa sy mpamatsy vola.
@@ -22,7 +22,7 @@ buy_money_out	Fandaniana / faktiora mpamatsy
 record_purchase	Rakikira fividianana
 add_expense	Tapakila fandaniana
 bank_book	Bokin'ny banky
-credit_help	Tokony ho tokana ny laharan'ny mpifandray (mety miverina ny anarana). Mpitantana ny mpanjifa amin'ny tabilao khata (manana trosa amintsika izy); mpamatsy mivarotra tahiry amintsika (manana trosa aminy isika); samy mety izany. Mijanona misaraka ny boky fandoavana; mampiseho ny nety ny tatitra.
+credit_help	Tokony ho tokana ny laharan'ny mpifandray (mety miverina ny anarana). Mpitantana ny mpanjifa amin'ny tabilao khata (manana trosa amintsika izy); mpamatsy mivarotra tahiry amintsika (manana trosa aminy isika); samy mety izany. Mijanona misaraka ny boky fandoavana; mampiseho ny ambiny ny tatitra.
 party_kind_ph	Anjara asa: Mpividy, Mpamatsy, samy izy roa…
 reports_help	Bokin'andro, mpampindrana sy mpampindram-bola, bokin'ny banky, taratasy fandaniana, tombony sy fatiantoka.
 reports_today	Boky andro (androany)
@@ -598,7 +598,7 @@ local_badge	EO AN-TOERANA
 mix_type_hint_tabiyat	Zarao eo amin'ny vola / UPI / karatra / crédit raha ilaina. Ny crédit dia mila mpanjifa ambony.
 money_in_sales	Vola miditra (varotra)
 net_word	Neto
-offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
+offline_badge	TSY MISY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
 or_unlock_shop_login	Na sokafy amin'ny fidirana amin'ny fivarotana
@@ -616,7 +616,7 @@ cloud_sending_reset	Mandefa rohy famerenana…
 cloud_forgot_sent	Raha manana kaonty io mailaka io, dia misy rohy hamerenana an-dalana.
 cloud_welcome	Niditra ho {user} · {plan}
 cloud_created	Kaonty noforonina. Hamarino ny mailakao mba hanamarina raha azonao atao.
-cloud_cancel	hanafoana
+cloud_cancel	Ajanony
 permission_preset	Asa
 product_only_tabiyat	Tabiyat no rafitra miasa amin'ny fivarotam-panafody: fivarotana fanafody, fitahirizam-boky andiany / lany daty, trosa ary boky - ivelan'ny aterineto amin'ny fitaovanao. Ny saina H / Rx dia naotin'ny tompony fa tsy fanarahan-dalàna.
 purchases_cogs	Fividianana (COGS)
@@ -756,7 +756,7 @@ category_search_ph	Sokajy — tadiavo ny anao na manorata vaovao
 cancel_item_short	Ajanony
 return_to_customer	Avereno amin'ny mpanjifa
 short_by	Fohy amin'ny
-tip_not_sale	Tolotra (ho an'ny mpiasa, tsy varotra)
+tip_not_sale	Tamby (ho an'ny mpiasa, tsy varotra)
 right_settle	Manaova fandoavam-bola
 right_allowed	Avela
 right_with_approval	Amin'ny fankatoavana
@@ -769,7 +769,7 @@ server_host_selected	Mampiasa {host} — ampidiro ny kaody fanamboarana, avy eo 
 approval_pin_ph	Mpitantana PIN (raha angatahina ihany)
 menu_search_ph	Mitadiava zavatra na kaody fohy
 customer_paid_ph	Nandoa ny mpanjifa
-tip_ph	Torohevitra
+tip_ph	Tamby
 find_server	Mitadiava ny serveur an'ny fivarotana
 bill_format	Endrika faktiora
 bill_header_ph	Adiresy | finday
@@ -844,7 +844,7 @@ show_upi_qr	Asehoy UPI QR
 close_upi_qr	Hidio
 upi_qr_help	Ny mpanjifa dia mijery sy mandoa. Tsindrio Raiso ny fandoavam-bola rehefa avy nandoa izy ireo. Efijery faharoa: sokafy ny URL Server / fampisehoana amin'ny LAN.
 role_help_customer	Anjara: Mpividy — khata (mitaky antsika izy ireo). Ny mpifandray iray ihany koa dia afaka manome tahiry.
-role_help_both	Anjara: Mpividy + Mpamatsy — mpifandray iray, khata sy trosa azo aloa amin'ny boky, net amin'ny Tatitra.
+role_help_both	Anjara: Mpividy + Mpamatsy — mpifandray iray, khata sy trosa azo aloa amin'ny boky, ambiny amin’ny Tatitra.
 role_help_supplier	Anjara: Mpamatsy — mitaky antsika amin'ny fividianana.
 price_ph	Vidiny
 price_ph_gst_inside	Vidiny ({tax} tafiditra)

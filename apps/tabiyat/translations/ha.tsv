@@ -523,7 +523,7 @@ press_back_again_exit	Sake danna Baya don fita
 printers_tap_find	Taɓa Nemo don jera firintocin da wannan na'ura za ta iya amfani da su.
 printers_none_found	Ba a sami kowa ba — rubuta sunan firinta na tsarin ko IP (misali 192.168.1.50).
 printer_from_find	An ƙara {name}
-queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a tebur ciniki:
+queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a teburin ciniki:
 clear_not_accepted	An duba — share wannan jeri
 device_name_ph	Sunan wannan na'ura
 lan_last_update	sabuntawa ta ƙarshe {time}
@@ -583,7 +583,7 @@ payment_qr_image_help	QR na tsaye akan takardar kudi da nunin abokin ciniki; in 
 cash_in_hand	Tsabar kuɗi a akwati
 change_my_pin_heading	Shigata
 connect_to_server	Haɗa da Server
-counter_locked	Tebur ciniki 01 · An kulle
+counter_locked	Teburin ciniki 01 · An kulle
 country_pack_help	Fakiti na ƙasa yana sa sunan haraji da lissafi, hanyar biya nan take, da lambar kasuwanci da ake buga a lissafi. Kumkaj ba ya bayar da haraji ko ba da lissafin gwamnati a ko'ina.
 currency_use_help	Gungura ka taɓa Yi amfani ga kowane kuɗin da ake goyan baya.
 day_close_help	Rubuta rufe yini yana ajiye wannan taƙaitaccen (da bambancin akwati idan an ƙidaya) a rajistan bincike. Ba ya tsayar da sayarwa.
@@ -756,7 +756,7 @@ category_search_ph	Rukuni — nemo naka ko rubuta sabo
 cancel_item_short	Soke
 return_to_customer	Mayar wa abokin ciniki
 short_by	Ya rage
-tip_not_sale	Kyauta ga ma'aikaci (ba sayarwa ba)
+tip_not_sale	Tukuici (ba sayarwa ba)
 right_settle	Karɓi biya
 right_allowed	An yarda
 right_with_approval	Tare da yarda
@@ -769,7 +769,7 @@ server_host_selected	Ana amfani da {host} — shigar da lambar haɗi, sai ka Ha�
 approval_pin_ph	PIN na Manaja (kawai idan an tambaya)
 menu_search_ph	Nemo kaya ko gajeren lamba
 customer_paid_ph	Abokin ciniki ya biya
-tip_ph	Kyauta ga ma'aikaci
+tip_ph	Tukuici
 find_server	Nemo server na shago
 bill_format	Tsarin lissafi
 bill_header_ph	Adireshi | waya

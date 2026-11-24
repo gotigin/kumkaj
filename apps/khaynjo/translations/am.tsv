@@ -555,7 +555,7 @@ park_draft	እንደ ረቂቅ አስቀምጥ
 drafts_help	እነዚህ እርስዎ በጎን ያስቀመጡት ቆጣሪ ያልተጠናቀቁ ትዕዛዞች ናቸው። «ክፍያ ውሰድ»ን እስኪነኩ ድረስ በመለያዎቹ ውስጥ አይገቡም። በ«ትዕዛዝ» ላይ ለመቀጠል አንድ ካርድ መታ ያድርጉ; «ረቂቅ ሰርዝ» ረቂቁን ይሰርዛል። «የቀን መዝጊያ» አያጸዳቸውም።
 drafts_park_nothing	እንደ ረቂቅ የሚቀመጥ ምንም ነገር የለም - እቃዎችን ወደ ጋሪው ያክሉ
 drafts_park_counter_only	«እንደ ረቂቅ አስቀምጥ» ቆጣሪ ላይ ለሚወሰዱ ትዕዛዞች ብቻ ነው - የጠረጴዛውን ቅደም ተከተል ይተው ወይም «አዳራሽ» ይጠቀሙ
-drafts_parked	በ«ረቂቆች» ተቀምጧል — ባንኮኒው አሁን ባዶ ነው
+drafts_parked	በ«ረቂቆች» ተቀምጧል — ካውንተሩ አሁን ባዶ ነው
 drafts_discard	ረቂቅ ሰርዝ
 drafts_discarded	ረቂቅ ተሰርዟል
 drafts_gone	ያ ረቂቅ ከአሁን በኋላ በዝርዝሩ ውስጥ የለም
@@ -1151,7 +1151,7 @@ shift_handover	የፈረቃ መረከቢያ
 shift_since	ይህ ፈረቃ ከ
 expected_in_drawer	በመሳቢያው ውስጥ የሚጠበቅ
 right_discount	ቅናሽ ስጥ
-floor_in_kitchen	በኩሽና
+floor_in_kitchen	ኩሽና ውስጥ
 floor_eating	ቀርቧል
 pick_category	ምድብ ይምረጡ
 close_category_list	የምድብ ዝርዝር ዝጋ

@@ -15,14 +15,14 @@ unlock	Debloke
 sell	Vann
 buy	Acha
 books	Liv jounen
-books_help	Pozisyon jodi a. Vann = lajan pous. Achte = acha ak depans. Pati yo = kredi kliyan & founisè.
-buy_help	Bòdwo depans ak bòdwo founisè (lajan ki soti). Sa ki sou kont rete nan liv pati a.
+books_help	Pozisyon jodi a. Vann = lajan pous. Achte = acha ak depans. Patnè yo = kredi kliyan & founisè.
+buy_help	Bòdwo depans ak bòdwo founisè (lajan ki soti). Sa ki sou kont rete nan liv patnè a.
 sell_money_in	Vann medikaman
 buy_money_out	Depans / bòdwo founisè
 record_purchase	Anrejistre acha
 add_expense	Bòdwo depans
 bank_book	Liv labank
-credit_help	Id pati a inik (non yo ka repete). Yon Kliyan gen yon khata (yo dwe nou); yon Founisè vann nou stòk (nou dwe yo); tou de posib. Liv yo rete apa; rapò yo montre nèt.
+credit_help	Id patnè a inik (non yo ka repete). Yon Kliyan gen yon khata (yo dwe nou); yon Founisè vann nou stòk (nou dwe yo); tou de posib. Liv yo rete apa; rapò yo montre nèt.
 party_kind_ph	Wòl: Kliyan, Founisè, tou de…
 reports_help	Liv jounen, debitè ak kreditè, liv labank, bòdwo depans, pwofi ak pèt.
 reports_today	Liv jounen (jodi a)
@@ -52,7 +52,7 @@ total	Total
 cash	Kach
 upi	UPI
 card	Kat
-credit	Pati
+credit	Patnè
 clear	Efase
 today_prefix	Jodi a
 owed	ki rete
@@ -194,9 +194,9 @@ credit_summary_fmt	{} kliyan · kredi ouvè {} · avans kenbe {}
 recent_label	Resan:
 inventory	Envantè
 branches	Siksinal
-credit_customers	Pati (khata ak founisè)
-customer_name_ph	Non pati
-new_customer_ph	Non nouvo pati
+credit_customers	Patnè (khata ak founisè)
+customer_name_ph	Non patnè
+new_customer_ph	Non nouvo patnè
 item_price_ph	Pri
 start_template	Pwodwi
 team	Ekip
@@ -289,8 +289,8 @@ copy_day_book_csv	Kopye liv jounen CSV
 copy_day_close	Kopye fèmti jounen
 copy_items_csv	Kopye atik CSV
 copy_outstanding_csv	Kopye sa ki rete CSV
-copy_parties_csv	Kopye pati CSV
-copy_party_ledger_csv	Kopye liv pati CSV
+copy_parties_csv	Kopye patnè CSV
+copy_party_ledger_csv	Kopye liv patnè CSV
 copy_receipt	Kopye resi
 share_whatsapp	Pataje sou WhatsApp
 lan_pages_heading	Paj kliyan sou Wi-Fi
@@ -324,8 +324,8 @@ copy_report	Kopye rapò
 counted_cash_ph	Kach konte nan tiro a
 country_tax	Peyi ak taks
 create_backup	Kreye sovgad
-credit_limit_heading	Limit kredi (pati chwazi / nonmen)
-delete_party	Efase pati chwazi a
+credit_limit_heading	Limit kredi (patnè chwazi / nonmen)
+delete_party	Efase patnè chwazi a
 done_open_books	Fini — louvri liv yo
 drawer_count	Konte tiro (opsyonèl)
 expense_heading	Depans
@@ -338,15 +338,15 @@ forget_shop	Bliye boutik sa a
 goods_received	Machandiz resevwa
 import_day	Enpòte jounen
 import_items_csv_plain	Enpòte atik CSV…
-import_parties_csv	Enpòte pati CSV…
+import_parties_csv	Enpòte patnè CSV…
 item_name	Non atik
 login_id_ph	Non itilizatè
 mark_cleared	Make regle
-new_party_clear	Nouvo pati (efase fòm)
-new_party_kind_supplier_ph	Kalite nouvo pati (Founisè)
+new_party_clear	Nouvo patnè (efase fòm)
+new_party_kind_supplier_ph	Kalite nouvo patnè (Founisè)
 next_order	Pwochen kòmand (efase biwo)
 note_gstin_ph	Nòt / GSTIN / rapèl akò
-notes_attach_party	Nòt ak atachman (pati chwazi)
+notes_attach_party	Nòt ak atachman (patnè chwazi)
 notes_attach_sale	Nòt ak atachman (vant chwazi)
 on_account_ap	Sou kont (AP)
 org_optional_ph	Òganizasyon (opsyonèl)
@@ -354,7 +354,7 @@ paid_by	Peye pa
 paid_now	Peye kounye a
 pair_now	Makonnen kounye a
 pairing_code_ph	Kòd makonnen
-party_name_selected_ph	Non pati (oswa sèvi ak sa ki chwazi)
+party_name_selected_ph	Non patnè (oswa sèvi ak sa ki chwazi)
 password_ph	Modpas
 pay_ap_card	Peye AP ak kat
 pay_ap_cash	Peye AP ak kach
@@ -403,7 +403,7 @@ save_features_ok	Paramèt anrejistre pou {name}
 save_names	Anrejistre non
 second_way	Dezyèm fason
 server_ip_ph	IP sèvè (pa egzanp 192.168.1.10)
-set_credit_limit	Aplike limit sou pati
+set_credit_limit	Aplike limit sou patnè
 set_login_selected	Aplike antre sou sa ki chwazi
 set_login_named	Aplike antre sou {name}
 shop	Boutik
@@ -533,7 +533,7 @@ backup_failed	Dènye sovgad otomatik la echwe: {e}
 backup_overdue	Pa gen sovgad depi {n} jou — kite aplikasyon an ouvè sou aparèy sa a pou li ka fè sovgad.
 disk_low	Sèlman {mb} MB lib sou aparèy sa a — sovgad yo ap echwe byento. Libere kèk espas.
 connection_to_shop	Koneksyon ak boutik la
-supplier_name_ph	Non founisè (oswa pati)
+supplier_name_ph	Non founisè (oswa patnè)
 supplier_ph	Founisè
 switch_device	Chanje aparèy sa a
 take_payment	Pran peman
@@ -598,7 +598,7 @@ local_badge	LOKAL
 mix_type_hint_tabiyat	Separe ant kach / UPI / kat / kredi si bezwen. Kredi bezwen yon kliyan anwo.
 money_in_sales	Lajan ki antre (vant)
 net_word	Nèt
-offline_badge	OFLAYN
+offline_badge	SAN ENTÈNÈT
 optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa; se sèl itilizatè a ki ka chanje modpas pita.
 or_unlock_login	Oswa debloke ak id antre + modpas
 or_unlock_shop_login	Oswa debloke ak login nan magazen an
@@ -687,7 +687,7 @@ onboard_fresh_tmpl	De zewo · {} — katalòg la kòmanse vid; ajoute atik nan M
 onboard_book_tmpl	Liv · {} — ajoute atik ak kredi ouvèti, epi Fini.
 tmpl_blurb	Kontwa famasi: medikaman, pakèt / ekspirasyon, khata, liv.
 reports_facet_title	Rapò
-reports_facet_help	Liv jounen, laj pati, ekriti labank, ak P&P peryòd.
+reports_facet_help	Liv jounen, laj patnè, ekriti labank, ak P&P peryòd.
 against_bill_ph	Kont # anwo a (opsyonèl)
 aliases_ph	Alyas, non kout - vigil separe
 amount_blank_full_ph	Montan (vid = tout sold)
@@ -843,8 +843,8 @@ upi_payee_ph	Non benefisyè UPI (opsyonèl)
 show_upi_qr	Montre QR UPI
 close_upi_qr	Fèmen
 upi_qr_help	Kliyan analize epi peye. Tape Pran peman apre yo fin peye. Dezyèm ekran: louvri URL sèvè / ekspozisyon sou LAN.
-role_help_customer	Wòl: Kliyan — khata (yo dwe nou). Menm pati a ka bay stòk tou.
-role_help_both	Wòl: Kliyan + Founisè — yon pati, liv khata ak pou peye, nèt nan Rapò.
+role_help_customer	Wòl: Kliyan — khata (yo dwe nou). Menm patnè a ka bay stòk tou.
+role_help_both	Wòl: Kliyan + Founisè — yon patnè, liv khata ak pou peye, nèt nan Rapò.
 role_help_supplier	Wòl: Founisè — nou dwe yo pou acha.
 price_ph	Pri
 price_ph_gst_inside	Pri ({tax} ladan pri)

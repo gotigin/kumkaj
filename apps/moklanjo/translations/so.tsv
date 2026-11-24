@@ -11,10 +11,10 @@ board_empty	Weli kaarar ma jiraan.
 board_park_nothing	Wax la dhigo ma jiro — ku dar khidmado ama faahfaahinta boos dhigashada
 board_parked	Waxaa la dhigay «Loox» — miisku waa bannaan yahay
 board_draft	Qabyo
-board_booked	Boossaday
+board_booked	La diiwaangeliyay
 board_filter_all	Dhammaan
 board_filter_draft	Qabyo
-board_filter_booked	Boossaday
+board_filter_booked	La diiwaangeliyay
 board_cols_fmt	{n} tiir
 board_summary_fmt	{total} kaar · {drafts} qabyo · {booked} la boosay
 board_card_no_charges	Weli khidmad ma jirto
@@ -26,14 +26,14 @@ board_discard	Tuur
 board_discarded	Qabyo-qoraalka waa la tuuray
 buy	Bixi
 books	Buugga maalinta
-books_help	Mawqifka maanta. Buuxinta = baakado gudaha ah. Bixi = biilasha iyo kharashyada sidaha. Xisbiyo = shixnado & sidayaal.
-buy_help	Foojarrada kharashka iyo biilasha sidaha (lacag la baxay). On-account waxay ku sii jiraysaa warqada xisbiga.
+books_help	Mawqifka maanta. Buuxinta = baakado gudaha ah. Bixi = biilasha iyo kharashyada sidaha. Dhinacyada = shixnado & sidayaal.
+buy_help	Foojarrada kharashka iyo biilasha sidaha (lacag la baxay). On-account waxay ku sii jiraysaa warqada dhinaca.
 sell_money_in	Booqo baakidh
 buy_money_out	Kharashka/biilka sidaha
 record_purchase	Diiwaan geli iibka
 add_expense	Warqadda kharashka
 bank_book	Buugga bangiga
-credit_help	Aqoonsiga xisbigu waa mid gaar ah (magacyada ayaa soo noqnoqon kara). Doorarka: Qaade (AR), Qaade (AP), ama labadaba aqoonsigaas. Ledgers ayaa kala gooni ah; wararka ayaa muujinaya net.
+credit_help	Aqoonsiga dhinaca waa mid gaar ah (magacyada ayaa soo noqnoqon kara). Doorarka: Diraha (AR), Qaade (AP), ama labadaba aqoonsigaas. Ledgers ayaa kala gooni ah; wararka ayaa muujinaya saafiga.
 party_kind_ph	Doorka gaarka ah (ikhtiyaar) - ama ku dhufo jajabka sare
 parties_list_heading	Dhinacyada la badbaadiyay
 reports_help	Buugga maalinta, deynleeyayaasha iyo kuwa la leeyahay, buugga bangiga, warqadaha kharashka, faa'iidada iyo khasaaraha.
@@ -147,9 +147,9 @@ consignee_address_ph	Cinwaanka gaarsiinta
 origin_name_ph	Magaca diraha
 origin_phone_ph	Taleefanka soo diraha
 origin_address_ph	Cinwaanka soo qaadida/ asalka ah
-booking_consignor_heading	Soo-qaade (macmiil / soo diri)
+booking_consignor_heading	Diraha (macmiil / soo diraha)
 booking_consignee_heading	Qaataha (qaataha)
-booking_consignor_hint	Dooro xaflad aad ku buuxiso, ama bann uga tag galitaanka. Loo baahan yahay soo qaadis guri iyo RTO.
+booking_consignor_hint	Dooro dhinac aad ku buuxiso, ama bann uga tag galitaanka. Loo baahan yahay soo qaadis guri iyo RTO.
 booking_consignee_hint	Qaataha xirmada. Ku daa meel bannaan oo soo-dejinta miiska lagala soo galo.
 weight_kg_ph	kg dhabta ah
 length_cm_ph	L cm
@@ -291,7 +291,7 @@ unmark	Ka saar calaamadda
 role_both	Labadaba
 role_carrier	Qaade
 role_cashier	Khasnaji
-role_consignor	Qaade
+role_consignor	Diraha
 role_manager	Maamule
 role_supplier	Alaab-qeybiye
 branch_name_sell_ph	Magaca laanta laga iibinayo
@@ -301,7 +301,7 @@ card_amount_ph	Qaddarka kaarka
 cash_amount_ph	Qaddarka lacagta caddaanka
 upi_amount_ph	Qaddarka UPI
 carrier_cost_ph	Qiimaha qaadaha
-carrier_party_ph	Xisbiga side
+carrier_party_ph	Dhinaca qaade
 choose_icon	Dooro calaamad
 choose_logo	Dooro astaanta
 choose_receipt_stamp	Dooro shaambada rasiidka
@@ -315,7 +315,7 @@ print_faces	Daabacaadda wejiyada (biilka rasiidka / muddada)
 print_faces_help	Shaabada Ikhtiyaarka ah iyo bixinta QR ee ku xigta sumaddaada rasiidhada iyo biilasha xilliga.
 awb_pools_heading	Side AWB barkadaha
 add_awb_pool	Ku dar barkada AWB
-awb_pool_carrier_ph	Magaca xisbiga side
+awb_pool_carrier_ph	Magaca dhinaca qaade
 awb_pool_start_ph	Bilow maya.
 awb_pool_end_ph	Dhammaad maya.
 awb_pool_prefix_ph	Horgale (ikhtiyaar)
@@ -336,7 +336,7 @@ booking_scope_hint_intl	Volumetric ÷6000 (hawada caalamiga ah) - ku dhufo gudah
 cod_register	Diiwaanka COD
 collect_cod	Ururi COD (AWB)
 consignments_dispatch	Shixnadaha & diritaanka
-consignor_party_ph	Magaca ilaaliyaha / xisbiga
+consignor_party_ph	Magaca diraha / dhinaca
 copy_day_book_csv	Nuqul ka qaad buugga maalinta CSV
 copy_day_close	Nuqul ka qaad xiritaanka maalinta
 copy_items_csv	Nuqul ka qaad alaabta CSV
@@ -369,7 +369,7 @@ insurance_label	Caymiska
 yes_label	Haa
 no_label	Maya
 print_route_label	Dariiqa daabac
-new_party_kind_label	Nooca xisbiga cusub
+new_party_kind_label	Nooca dhinaca cusub
 done_open_books	Dhamaaday — fur buugaagta
 export_day	Soo saar maalinta
 extra_note_expense_ph	Qoraal dheeraad ah kharashkii u dambeeyay
@@ -387,12 +387,12 @@ import_carrier_bill_csv	Soo dejinta biilasha CSV…
 copy_carrier_bill_report	Nuqul ka samee warbixinta biilka side ugu dambeeya
 use_carrier_cost	Isticmaal kharashka side
 rate_carrier_ph	Qaade (madhan = heerka iibkayaga)
-rate_party_ph	Xaflad (madhan = dhammaan macaamiisha)
+rate_party_ph	Dhinac (madhan = dhammaan macaamiisha)
 carrier_pick_ph	Qaadaha qiimaha (marka la barbardhigo)
 item_name	Magaca alaabta
 load_bulk_row	Raad safka badan → miiska
 login_id_ph	Magaca isticmaalaha
-mark_delivered	Mark la keenay
+mark_delivered	Calaamadee la gaarsiiyay
 manifest_cod_total	COD wadarta
 manifest_received_by	Waxaa helay
 manifest_sign	Saxeex
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Lama heli karo
 ndr_door_locked	Albaabka ayaa xidhan
 ndr_other	Mid kale
 ndr_refused	diiday
-out_for_delivery	Gaarsiin ku jira
+out_for_delivery	Waa la gaarsiinayaa
 print_drs	Daabac DRS
 print_run_sheet	Daabac xaashi orod
 reattempt	Isku day
 rider_cod_handed_ph	COD gacanta loo galiyay
 settle_rider_cod	Deji darawalka COD
 mode_desk	Miiska
-mode_rider	Rakaab
+mode_rider	Gaarsiiye
 waiting_office	sugaya in la gaaro xafiiska
 capture_signature	Saxiixa qabso
 incoming_manifest	Muujinta soo socota
@@ -428,7 +428,7 @@ share_receipt_whatsapp	La wadaag rasiidka WhatsApp
 delivery_feedback	Jawaab celinta gudbinta
 lan_self_book	LAN is-booqsi
 new_party_clear	Dhinac cusub (nadiifi foomka)
-new_party_kind_ph	Nooca xafladaha cusub (Alaab-qeybiye/qaade)
+new_party_kind_ph	Nooca dhinaca cusub (Alaab-qeybiye / qaade)
 next_country	Dalka xiga
 prev_country	Dalkii hore
 note_gstin_ph	Qoraal / GSTIN / xusuusin heshiis
@@ -444,7 +444,7 @@ pay_ap_card	Bixi AP kaar
 pay_ap_cash	Bixi AP lacag caddaan
 pay_ap_upi	Bixi AP UPI
 period_bill	Biilka muddada
-period_bill_party	Biilka muddada (xisbiga)
+period_bill_party	Biilka muddada (dhinaca)
 period_bill_generate	Samee qaansheeg
 period_bill_generate_print	Samee oo daabac
 booking_bulk_preview	{ok} diyaar · {bad} khalad leh
@@ -456,13 +456,13 @@ reason_note_ph	Sabab / qoraal (khasaare, tirin, …)
 record_day_close	Diiwaan geli xiritaanka maalinta
 refresh_from_shop	Ka cusbooneysii dukaanka
 refund	Celi lacag
-remit_cod	Xawilaadda COD (xisbiga)
+remit_cod	Xawilaadda COD (dhinaca)
 remove_selected	Ka saar kan la doortay
 restore_backup	Soo celi kaydka
 rider_name_ph	Magaca fuusha
 rider_phone_ph	Taleefanka fardaha
-riders	Rakaab
-riders_own_fleet	Rakaab (raxan raxan ah)
+riders	Gaarsiiyayaal
+riders_own_fleet	Gaarsiiyayaasha (annaga)
 rollup	Isku soo ururi
 save_booking_measures	Kaydi tallaabooyinka ballansashada
 save_brand	Kaydi calaamadda
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	Ku qor inta ku jirta mid kasta (lacag caddaan ah / UPI / 
 money_in_sales	Lacag soo gashay (iib)
 more_help_moklanjo	Buug-yaraha, iibka, credit, kooxda, kaabta - oo lagu daray kayd iyo tills dheeraad ah marka loo baahdo.
 net_word	Saafiga
-offline_badge	LA'AAN NET
+offline_badge	INTERNET LA’AAN
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
 or_unlock_shop_login	Ama fur gelitaanka dukaanka
@@ -795,7 +795,7 @@ onboard_fresh_tmpl	Nadiif · {} — liisku wuxuu ka bilaabmaa madhan; ku dar ala
 onboard_book_tmpl	Buug · {} — ku dar alaab iyo deynta bilowga, ka dibna Dhamaaday.
 onboard_template_tmpl	Magac goobta haddii aad rabto, ka dibna dooro sida loo bilaabo.
 tmpl_blurb	Buugaag-qaadista iyo miiska ballansashada: alaab-qaadayaasha, sidayaal, buug-maalmeed, AWB.
-tmpl_how	Baakadaha buug ee miiska; Buuga maalinta ee maanta; tabs ee qiimaha, xisbiyada, warbixinnada.
+tmpl_how	Baakadaha buug ee miiska; Buuga maalinta ee maanta; tabs ee qiimaha, dhinacyada, warbixinnada.
 app_template_heading	Qaababka dukaanka
 app_template_blurb	Dooro miis bilow ah. «Hadda ka bood» wuxuu liiska dhinacyada ka tagayaa isagoo madhan.
 app_template_skip	Hadda ka bood
@@ -816,13 +816,13 @@ report_day_lens	U muuji «Maanta» sida
 report_day_lens_help	Muuqaal keliya — ma beddelo goorta «Xiritaanka maalinta» uu dib u bilaabo «Maanta». «Sida xiritaanka maalinta» wuxuu ka xisaabiyaa xiritaankii maalinta ee ugu dambeeyay; «Sida saqda dhexe» wuxuu gooyaa 00:00 waqtiga deegaanka.
 report_lens_day_close	Sida xiritaanka maalinta
 report_lens_midnight	Sida saqda dhexe
-trk_booked	Boossaday
+trk_booked	La diiwaangeliyay
 trk_picked_up	La soo qaaday
 trk_in_transit	Gaadiidka
-trk_delivered	la keenay
+trk_delivered	La gaarsiiyay
 trk_rto	Loo celinayo diraha
 lane_to_dispatch	In la diro
-lane_with_carrier	Qaade
+lane_with_carrier	Qaadaha gacantiisa
 lane_failed	Fashilmay
 lane_done_today	Maanta la sameeyay
 ops_board_help	Baakadaha halka ay kaga jiraan shaqada maanta. Taabo xirmooyinka (ama sawir iyaga) si aad u soo qaado, ka dibna ku dhaqaaq dhammaan la doortay hal mar - haad kastaa waxay bixisaa oo kaliya dhaqaaqa ku habboon.
@@ -843,7 +843,7 @@ attempt_fmt	Isku day {n}
 pieces_short_fmt	{n} kumbiyuutaro
 note_reason_ph	Ogow ama sabab
 ops_pick_first	Marka hore soo qaado baakadaha - taabo ama sawir iyaga
-cod_to_collect	La keenay - COD si loo ururiyo
+cod_to_collect	la gaarsiiyay - COD si loo ururiyo
 cod_on_road	COD weli wadada
 cod_owed_consignors	La soo ururiyey - si ay u bixiyaan shixnado
 cod_rto_fees	Khidmadaha RTO ee la ururinayo
@@ -852,10 +852,10 @@ parcel_one_fmt	Xirmada {n}
 facet_bank_title	Warbixinno
 facet_bank_help	Buugaagta maalinta, da'da dhinacyada, gelinta bangiga, iyo F&K muddada.
 facet_ops_title	Shixnadaha & diritaanka
-facet_ops_help	Baadh ama ku qor AWB → Hel, ka dibna hore u sii daabac / daabac calaamadda / COD. U dir raacaha ama qaade.
+facet_ops_help	Baadh ama ku qor AWB → Hel, ka dibna hore u sii daabac / daabac calaamadda / COD. U dir gaarsiiye ama qaade.
 facet_cod_title	Diiwaanka COD
 facet_cod_help	Soo ururi marka la keenayo, ka dibna u sii dhiibaha soo saaraha.
-facet_riders_title	Rakaab (raxan raxan ah)
+facet_riders_title	Gaarsiiyayaasha (annaga)
 facet_riders_help	Ku dar wadayaasha, ka dib AWB-yada la ballansan ka soo dir Ops.
 against_bill_ph	Ka soo horjeed biil # kor (ikhtiyaari)
 aliases_ph	Magacyo kale — magacyo kale, koma lagu kala saaray
@@ -895,13 +895,13 @@ part_second_way_ph	Qayb hab labaad (ikhtiyaari)
 phone_ph	Taleefan
 address_ph	Cinwaanka
 party_custom_fields_heading	Goobaha gaarka ah (koox la doortay)
-party_custom_help	Ku dar calaamad kasta iyo qiime xisbigan - WhatsApp, GSTIN, koodka jidka,…
+party_custom_help	Ku dar calaamad kasta iyo qiime dhinacan - WhatsApp, GSTIN, koodka jidka,…
 party_custom_key_ph	Magaca goobta (tusaale WhatsApp)
 party_custom_value_ph	Qiimaha
 party_custom_add	Ku dar beer
 party_custom_remove	Ka saar garoonka
 party_custom_empty	Weli ma jiraan goobo gaar ah
-party_custom_pick_first	Dooro xaflad aad ku darto garoommada gaarka ah
+party_custom_pick_first	Dooro dhinac aad ku darto garoommada gaarka ah
 place_name_ph	Magaca goobtan
 price_ph	Qiimaha
 qty_example_ph	Tirada (tusaale 1.5 kg)
@@ -928,9 +928,9 @@ book_kind_month	Buugaagta bishan
 book_kind_aging	Haraaga / deyn-deyn
 book_kind_balance	Xaashida dheelitirka
 ops_desk_help	Ku sawir AWB iskaanka barcode USB ah (ama ku qor) → Raadi. Ka dib hore u sii, daabac calaamadda, ama ururi COD. Calaamadaha daabacaadda Code 128.
-role_help_consignor	Doorka: Qaade - AR (ay nagu leeyihiin). Shirkad la mid ah waxay sidoo kale noqon kartaa Qaade.
-role_help_carrier	Doorka: Qaade — AP (waanu ku leenahay iyaga). Shirkad isku mid ah ayaa sidoo kale noqon karta Consignor.
-role_help_both	Doorarka: Gaadhi-qaade + Qaade - hal xisbi, AR iyo AP leged, shabaq ah oo ku jira Warbixinnada.
+role_help_consignor	Doorka: Diraha - AR (ay nagu leeyihiin). Shirkad la mid ah waxay sidoo kale noqon kartaa Qaade.
+role_help_carrier	Doorka: Qaade — AP (waanu ku leenahay iyaga). Shirkad isku mid ah ayaa sidoo kale noqon karta Diraha.
+role_help_both	Doorarka: Diraha + Qaade - hal dhinac, AR iyo AP leged, saafiga ku jira Warbixinnada.
 role_help_supplier	Doorka: Alaab-qeybiye — AP wax iibsiga.
 lane_declared_label	Xisaabinta xisaabaadka
 lane_owner_label	Boos lacag caddaan ah

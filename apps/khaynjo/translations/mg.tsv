@@ -12,7 +12,7 @@ buy_money_out	Fandaniana / faktiora mpamatsy
 record_purchase	Rakikira fividianana
 add_expense	Tapakila fandaniana
 bank_book	Bokin'ny banky
-credit_help	Tokony ho tokana ny laharan'ny mpifandray (mety miverina ny anarana). Mpitantana ny mpanjifa amin'ny tabilao khata (manana trosa amintsika izy); mpamatsy mivarotra tahiry amintsika (manana trosa aminy isika); samy mety izany. Mijanona misaraka ny boky fandoavana; mampiseho ny nety ny tatitra.
+credit_help	Tokony ho tokana ny laharan'ny mpifandray (mety miverina ny anarana). Mpitantana ny mpanjifa amin'ny tabilao khata (manana trosa amintsika izy); mpamatsy mivarotra tahiry amintsika (manana trosa aminy isika); samy mety izany. Mijanona misaraka ny boky fandoavana; mampiseho ny ambiny ny tatitra.
 party_kind_ph	Anjara asa: Mpividy, Mpamatsy, samy izy roa…
 reports_help	Bokin'andro, mpampindrana sy mpampindram-bola, bokin'ny banky, taratasy fandaniana, tombony sy fatiantoka.
 reports_today	Boky andro (androany)
@@ -972,7 +972,7 @@ local_badge	EO AN-TOERANA
 mix_type_hint_khaynjo	Zarao eo amin'ny vola / UPI / karatra / crédit raha ilaina. Ny crédit dia mila mpanjifa ambony.
 money_in_sales	Vola miditra (varotra)
 net_word	Neto
-offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
+offline_badge	TSY MISY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
 permission_preset	Asa
@@ -1121,7 +1121,7 @@ add_station_heading	Manampia toby lakozia
 categories_help	Tsindrio ny Mampiasa mba hanasokajiana ny entana etsy ambony eo amin'io sokajy io. Ny Sary dia manome sary ny sokajy; raha tsy misy dia asehony ny fanafohezana.
 dish_search_ph	Anaran'ny entana — tadiavo ny sakafo ato aminay na soraty ny anao manokana
 tile_free	Malalaka
-tile_occupied	Voafandrika
+tile_occupied	Misy olona
 tile_food_ready	Vonona ny sakafo
 tile_bill_printed	Noprinta ny kaonty
 tile_paid	Voaloa
@@ -1152,7 +1152,7 @@ shift_since	Ity fandriana ity nanomboka tamin'ny
 expected_in_drawer	Andrasana ao anaty vata
 right_discount	Omeo fihenam-bidy
 floor_in_kitchen	Ao an-dakozia
-floor_eating	Nofehezina
+floor_eating	Natolotra
 pick_category	Mifidiana sokajy
 close_category_list	Akatona ny lisitry ny sokajy
 new_category_row	Sokajy vaovao — noforonina rehefa vononao ny zavatra
@@ -1173,7 +1173,7 @@ already_cooked	Efa mahandro (fako)
 not_cooked_yet	Tsy masaka mbola
 return_to_customer	Avereno amin'ny mpanjifa
 short_by	Fohy amin'ny
-tip_not_sale	Tolotra (ho an'ny mpiasa, tsy varotra)
+tip_not_sale	Tamby (ho an'ny mpiasa, tsy varotra)
 right_settle	Manaova fandoavam-bola
 right_cancel_sent	Fafao ny entana nalefa
 right_complimentary	Maimaim-poana (NC)
@@ -1201,7 +1201,7 @@ line_target_ph	Afindra any amin'ny latabatra (ohatra D5)
 confirm	Hamafiso
 menu_search_ph	Mitadiava zavatra na kaody fohy
 customer_paid_ph	Nandoa ny mpanjifa
-tip_ph	Tip
+tip_ph	Tamby
 table_area_ph	Faritra (ohatra Dine In, Parcel, AC)
 table_range_ph	Maromaro indray mandeha: D1-D20
 add_these_tables	Ampio ireto latabatra ireto
@@ -1321,7 +1321,7 @@ kot_recall	Tsarovy
 recently_done	Vao haingana no natao
 recall_kot_ph	KOT # tsarovy
 role_help_customer	Anjara: Mpividy — khata (mitaky antsika izy ireo). Ny mpifandray iray ihany koa dia afaka manome tahiry.
-role_help_both	Anjara: Mpividy + Mpamatsy — mpifandray iray, khata sy trosa azo aloa amin'ny boky, net amin'ny Tatitra.
+role_help_both	Anjara: Mpividy + Mpamatsy — mpifandray iray, khata sy trosa azo aloa amin'ny boky, ambiny amin’ny Tatitra.
 role_help_supplier	Anjara: Mpamatsy — mitaky antsika amin'ny fividianana.
 dine_in_pick_table	Mihinana eo amin'ny toerana — mifidiana latabatra eo amin'ny Rihana
 choose_table	Misafidiana latabatra

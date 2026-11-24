@@ -11,10 +11,10 @@ board_empty	Awakabi khona amakhadi.
 board_park_nothing	Akukho okungabekwa eceleni — engeza izindleko noma imininingwane yokubhuka
 board_parked	Kubekwe ku-«Ibhodi» — ideski alinalutho
 board_draft	Okusalungiswa
-board_booked	Ibhukhiwe
+board_booked	Kubhukiwe
 board_filter_all	Konke
 board_filter_draft	Okusalungiswa
-board_filter_booked	Ibhukhiwe
+board_filter_booked	Kubhukiwe
 board_cols_fmt	Amakholomu angu-{n}
 board_summary_fmt	Amakhadi angu-{total} · okusalungiswa okungu-{drafts} · okubhukiwe okungu-{booked}
 board_card_no_charges	Azikabi khona izindleko
@@ -26,14 +26,14 @@ board_discard	Lahla
 board_discarded	Okusalungiswa kulahliwe
 buy	Khokha
 books	Incwadi yosuku
-books_help	Isikhundla sanamuhla. Ukubhuka = ​​amaphasela angenile. Khokha = izikweletu zenkampani yenethiwekhi nezindleko. Amaqembu = abathumeli nabathwali.
-buy_help	Amavawusha ezindleko kanye nezikweletu zenkampani yenethiwekhi (imali ekhishiwe). I-akhawunti ihlala encwadini yephathi.
+books_help	Isikhundla sanamuhla. Ukubhuka = ​​amaphasela angenile. Khokha = izikweletu zomthwali nezindleko. Amaqembu = abathumeli nabathwali.
+buy_help	Amavawusha ezindleko kanye nezikweletu zomthwali (imali ekhishiwe). I-akhawunti ihlala encwadini yephathi.
 sell_money_in	Bhukha iphasela
-buy_money_out	Izindleko / inkokhiso yenkampani yenethiwekhi
+buy_money_out	Izindleko / inkokhiso yomthwali
 record_purchase	Londoloza ukuthenga
 add_expense	Irisidi yezindleko
 bank_book	Incwadi yebhange
-credit_help	Umazisi wephathi uhlukile (amagama angaphinda). Izindima: Umthumeli (AR), Inkampani Yenethiwekhi (AP), noma kokubili kuleyo ID. Ama-ledger ahlala ehlukene; imibiko ikhombisa inethi.
+credit_help	Umazisi wephathi uhlukile (amagama angaphinda). Izindima: Umthumeli (AR), Umthwali (AP), noma kokubili kuleyo ID. Ama-ledger ahlala ehlukene; imibiko ibonisa okusele.
 party_kind_ph	Indima yangokwezifiso (ongakukhetha) — noma thepha i-chip ngenhla
 parties_list_heading	Amaphathi alondoloziwe
 reports_help	Ibhuku losuku, abakweletwayo nabakweletwayo, ileja yasebhange, amarisidi ezindleko, inzuzo nokulahlekelwa.
@@ -66,7 +66,7 @@ total	Ingqikithi
 cash	Imali
 upi	UPI
 card	Ikhadi
-credit	Amakhasimende nabahlinzeki
+credit	Izinhlangothi
 clear	Kucace
 ready_to_sell	Ilungele incwadi
 today_prefix	Namuhla
@@ -116,10 +116,10 @@ amounts_hide	Fihla
 amounts_show	Bonisa
 no_sale_yet	Ayikathengiswa okwamanje
 favorites	Izintandokazi
-favorites_help	Izinto zemenyu ozithengisa njalo, zilondolozelwe ukungena kwakho ngemvume. Engeza eyodwa kubhili yesivakashi, noma yakha uhlu lwakho kuzo zonke izinto zemenyu ezingezansi.
+favorites_help	Izimpahla ozithengisa njalo, zilondolozelwe ukungena kwakho ngemvume. Engeza eyodwa kubhili yesivakashi, noma yakha uhlu lwakho kuzo zonke izimpahla ezingezansi.
 your_favorites	Izintandokazi zakho
-all_items	Zonke izinto zemenyu
-no_favorites	Azikho izintandokazi okwamanje — engeza izinto zemenyu ohlwini olungezansi.
+all_items	Zonke izimpahla
+no_favorites	Azikho izintandokazi okwamanje — engeza izimpahla ohlwini olungezansi.
 add_to_bill	Engeza kubhili yesivakashi
 added	Kwengeziwe
 owes_word	ukweleta
@@ -133,7 +133,7 @@ inventory	Impahla
 inventory_stock	Impahla nesitoko
 branches	Amagatsha
 branches_org	Amagatsha & org
-credit_customers	Amaqembu (abakweletayo nabakweletwayo)
+credit_customers	Izinhlangothi (abakweletayo nabakweletwayo)
 customer_name_ph	Igama lekhasimende noma lomphakeli
 new_customer_ph	Ikhasimende elisha noma igama lomhlinzeki
 item_name_ph	Linganisa igama (isb. I-Surface Zone A)
@@ -261,7 +261,7 @@ add_conversion	Engeza ukuguqulwa
 add_item_plain	Engeza into yemenyu
 add_note	Engeza inothi
 add_opening_balance	Engeza ibhalansi yokuvula
-add_rider	Engeza umgibeli
+add_rider	Engeza umlethi
 add_staff	Engeza abasebenzi
 add_unit	Engeza iyunithi
 add_use_name	Faka / sebenzisa leli gama
@@ -289,7 +289,7 @@ till_to_bank	Irejista yemali → ibhange
 mark_cleared	Umaka usuliwe
 unmark	Susa ukumaka
 role_both	Kokubili
-role_carrier	Inkampani yenethiwekhi
+role_carrier	Umthwali
 role_cashier	Ukheshi
 role_consignor	Umthumeli
 role_manager	Umphathi
@@ -300,8 +300,8 @@ business_tax_id_ph	I-id yentela yebhizinisi
 card_amount_ph	Inani lekhadi
 cash_amount_ph	Inani lemali
 upi_amount_ph	UPI inani
-carrier_cost_ph	Izindleko zenkampani yenethiwekhi
-carrier_party_ph	Iphathi yenkampani yenethiwekhi
+carrier_cost_ph	Izindleko zomthwali
+carrier_party_ph	Iphathi yomthwali
 choose_icon	Khetha isithonjana
 choose_logo	Khetha ilogo
 choose_receipt_stamp	Khetha isitembu serisidi
@@ -313,9 +313,9 @@ clear_stamp	Sula isitembu
 clear_payment_qr	Sula i-QR yokukhokha
 print_faces	Ubuso bokuphrinta (iresidi / inkokhiso yesikhathi)
 print_faces_help	Isitembu sokuzithandela kanye ne-QR yokukhokha eduze kwelogo yakho kumarisidi okubhuka kanye nezikweletu zenkathi.
-awb_pools_heading	Amachibi ezinombolo zenkampani yenethiwekhi ye-AWB
+awb_pools_heading	Amachibi ezinombolo zomthwali ye-AWB
 add_awb_pool	Engeza iphuli ye-AWB
-awb_pool_carrier_ph	Igama lenkampani yenethiwekhi
+awb_pool_carrier_ph	Igama lomthwali
 awb_pool_start_ph	Qala inombolo.
 awb_pool_end_ph	Inombolo yokugcina.
 awb_pool_prefix_ph	Isiqalo (ongakukhetha)
@@ -339,7 +339,7 @@ consignments_dispatch	Izimpahla nokuthunyelwa
 consignor_party_ph	Igama lomthumeli / lephathi
 copy_day_book_csv	Kopisha ileja yosuku CSV
 copy_day_close	Kopisha usuku lokuvala
-copy_items_csv	Kopisha izinto zemenyu CSV
+copy_items_csv	Kopisha izimpahla CSV
 copy_outstanding_csv	Kopisha okuvelele CSV
 copy_parties_csv	Kopisha amakhasimende nabahlinzeki CSV
 copy_party_ledger_csv	Kopisha incwadi yekhasimende CSV
@@ -360,7 +360,7 @@ counter_agency_ph	Ikhawunta / igama le-ejensi (ongakukhetha)
 create_backup	Dala ikhophi yasenqolobaneni
 day_close_summary	Isifinyezo sokuvala usuku
 delete_party	Susa ikhasimende elikhethiwe noma umphakeli
-dispatch_to_rider	Ukuthumela kubhukhiwe → umgibeli
+dispatch_to_rider	Ukuthumela kubhukhiwe → umlethi
 docket_charge_ph	Ukushaja idokodo
 declared_value_ph	Inani elimenyezelwe
 contents_ph	Okuqukethwe
@@ -378,17 +378,17 @@ failed_delivery	Yehlulekile ukulethwa
 find_scan_awb	Thola / Skena i-AWB
 forget_shop	Khohlwa lesi sitolo
 fuel_ph	Okokhelekayo
-handover_carrier	Ibhukwe ngesandla → inkampani yenethiwekhi
+handover_carrier	Ibhukwe ngesandla → umthwali
 import_day	Ngenisa usuku
 import_items_csv	Ngenisa izinto / amanani e-CSV...
 import_parties_csv	Ngenisa amakhasimende nabahlinzeki CSV…
 import_pincodes_csv	Ngenisa amaphinikhodi e-CSV...
-import_carrier_bill_csv	Ngenisa ibhili yenkampani yenethiwekhi ye-CSV...
-copy_carrier_bill_report	Kopisha umbiko webhili yenkampani yenethiwekhi yokugcina
-use_carrier_cost	Sebenzisa izindleko zenkampani yenethiwekhi
-rate_carrier_ph	Inkampani yenethiwekhi (akunalutho = isilinganiso sethu sokuthengisa)
+import_carrier_bill_csv	Ngenisa ibhili yomthwali ye-CSV...
+copy_carrier_bill_report	Kopisha umbiko webhili yomthwali yokugcina
+use_carrier_cost	Sebenzisa izindleko zomthwali
+rate_carrier_ph	Umthwali (akunalutho = isilinganiso sethu sokuthengisa)
 rate_party_ph	Iphathi (akunalutho = wonke amakhasimende)
-carrier_pick_ph	Inkampani yenethiwekhi yezindleko (kusuka ekuqhathaniseni)
+carrier_pick_ph	Umthwali yezindleko (kusuka ekuqhathaniseni)
 item_name	Igama lento yemenyu
 load_bulk_row	Layisha inqwaba yomugqa → ideski
 login_id_ph	Igama lomsebenzisi
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Ayitholakali
 ndr_door_locked	Umnyango ukhiyiwe
 ndr_other	Okunye
 ndr_refused	Wenqabile
-out_for_delivery	Iphumile ukuyodiliva
+out_for_delivery	Isendleleni iyolethwa
 print_drs	Phrinta i-DRS
 print_run_sheet	Phrinta ishidi lokugijima
 reattempt	Phinda uzame
 rider_cod_handed_ph	I-COD ingenisiwe
-settle_rider_cod	Khonza umgibeli we-COD
+settle_rider_cod	Lungisa i-COD yomlethi
 mode_desk	Ideski
-mode_rider	Umgibeli
+mode_rider	Umlethi
 waiting_office	elinde ukufinyelela ehhovisi
 capture_signature	Thatha isiginesha
 incoming_manifest	I-manifest engenayo
@@ -416,7 +416,7 @@ pickup_request	Isicelo sokulanda
 pickup_run	Ukugijima kokulanda
 auto_assign_area	Yabela ngokuzenzakalelayo indawo
 reorder_stops	Hlela kabusha izitobhi
-settle_rider_pay	Khonza inkokhelo yomgibeli
+settle_rider_pay	Lungisa inkokhelo yomlethi
 vehicle_inspect	Ukuhlolwa kwemoto
 print_docket	Phrinta idokodo
 franchise_statement	Isitatimende seFranchise
@@ -428,7 +428,7 @@ share_receipt_whatsapp	Yabelana ngesiliphu ku-WhatsApp
 delivery_feedback	Impendulo yokulethwa
 lan_self_book	Ukuzibhukha nge-LAN
 new_party_clear	Ikhasimende elisha noma umphakeli (ifomu elicacile)
-new_party_kind_ph	Uhlobo lwephathi entsha (Umhlinzeki / Inkampani Yenethiwekhi)
+new_party_kind_ph	Uhlobo lwephathi entsha (Umhlinzeki / Umthwali)
 next_country	Izwe elilandelayo
 prev_country	Izwe langaphambilini
 note_gstin_ph	Qaphela / GSTIN / isikhumbuzi sesivumelwano
@@ -459,10 +459,10 @@ refund	Imbuyiselo
 remit_cod	Thumela i-COD (iphathi)
 remove_selected	Susa okukhethiwe
 restore_backup	Buyisela isipele
-rider_name_ph	Igama lomgibeli
-rider_phone_ph	Ifoni yomgibeli
-riders	Abagibeli
-riders_own_fleet	Abagibeli (imikhumbi yabo)
+rider_name_ph	Igama lomlethi
+rider_phone_ph	Ifoni yomlethi
+riders	Abalethi
+riders_own_fleet	Abalethi (abakithi)
 rollup	Ukugoqa isifinyezo
 save_booking_measures	Londoloza izinyathelo zokubhuka
 save_brand	Londoloza umkhiqizo
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	Thayipha ukuthi yimalini kunto ngayinye (ukheshi / i-UPI 
 money_in_sales	Imali etholakalayo (yokuthengisa)
 more_help_moklanjo	Ikhathalogu, ukuthengisa, isikweletu, iqembu, ikhophi yasenqolobaneni - kanye nesitoko namathili engeziwe lapho kudingeka.
 net_word	Okusele
-offline_badge	OKUNGAxhumekile ku-inthanethi
+offline_badge	NGAPHANDLE KWE-INTHANETHI
 optional_login_help	Ukungena ngemvume ngokuzithandela (id + iphasiwedi). Umnikazi usetha kanye; umsebenzisi kuphela ongashintsha iphasiwedi kamuva.
 or_unlock_login	Noma vula nge-id yokungena + nephasiwedi
 or_unlock_shop_login	Noma vula ngokungena kwesitolo
@@ -736,7 +736,7 @@ cloud_welcome	Ungene njengo-{user} · {plan}
 cloud_created	I-akhawunti yenziwe. Hlola i-imeyili yakho ukuze uqinisekise lapho ungakwazi.
 cloud_cancel	Khansela
 permission_preset	Umsebenzi
-preset_help_moklanjo	Umthengisi: thengisa. Umphathi: thengisa + izinto zemenyu + ukuqeda/ukulungisa.
+preset_help_moklanjo	Umthengisi: thengisa. Umphathi: thengisa + izimpahla + ukuqeda/ukulungisa.
 product_locked_moklanjo	I-Moklanjo
 product_only_moklanjo	Lolu hlelo lokusebenza yi-Moklanjo kuphela - izincwadi + nedeski lokubhuka. Obunye ubuso bezohwebo buthunyelwa njengemikhiqizo ehlukene kamuva.
 purchases_cogs	Ukuthenga (COGS)
@@ -758,7 +758,7 @@ wipe_schema_done	Ukusethwa kwesitolo kusuliwe — khetha Iseva noma Iklayenti uk
 rounded_total	Ingqikithi Eyindilinga
 setup_app_moklanjo	Setha i-Moklanjo
 shop_logo_optional	Ilogo yesitolo (uyazikhethela)
-stock_type_help	Thayipha igama lento yemenyu (ingxenye yayo yanele), inani, bese ulungisa. Izinto zemenyu ezingabaliwe okwamanje zidinga Qala ukulandelela kanye.
+stock_type_help	Thayipha igama lento yemenyu (ingxenye yayo yanele), inani, bese ulungisa. Izimpahla ezingabaliwe okwamanje zidinga Qala ukulandelela kanye.
 team_owner_help	Qasha: khetha umsebenzi (I-Cashier / Manager), igama + i-PIN yokuqala, bese Ungeza. Kuphela uma lo muntu ehluka: vula izikrini namalungelo ngezansi, bese Londoloza ukusethwa komsebenzi. Wonke umuntu ushintsha i-PIN yakhe ngezansi — Umnikazi akakwazi ukushintsha eyomunye umuntu.
 they_owe_us	Bayasikweleta
 unit_at_cap	Iyunithi @
@@ -791,8 +791,8 @@ logo_default	Ilogo: Kumkaj maka (okuzenzakalelayo) — khetha eyakho uma unayo
 tmpl_current	Okwamanje: {} — {}
 tmpl_selected	Okukhethiwe: {} — {}
 setup_complete	Ukusetha kuqedile
-onboard_fresh_tmpl	Okusha · {} — ikhathalogi iqala ingenalutho; engeza izinto zemenyu Ezintweni zemenyu, bese Kwenziw.
-onboard_book_tmpl	Ileja · {} — engeza izinto zemenyu bese uvula ikhredithi, bese Kwenziwe.
+onboard_fresh_tmpl	Okusha · {} — ikhathalogi iqala ingenalutho; engeza izimpahla Ezimpahleni, bese Kwenziw.
+onboard_book_tmpl	Ileja · {} — engeza izimpahla bese uvula ikhredithi, bese Kwenziwe.
 onboard_template_tmpl	Yisho indawo uma ufuna, bese ukhetha ukuthi ungaqala kanjani.
 tmpl_blurb	Izincwadi ze-courier nedeski lokubhuka: abathumeli, abathwali, incwadi yosuku, i-AWB.
 tmpl_how	Bhukha amaphasela etafuleni; Incwadi yosuku yanamuhla; amathebhu for rates, amaqembu, imibiko.
@@ -816,27 +816,27 @@ report_day_lens	Bonisa «Namuhla» ngoku
 report_day_lens_help	Ukubuka kuphela — akushintshi ukuthi «Ukuvalwa kosuku» iyiqala nini kabusha «Namuhla». «Ngokuvalwa kosuku» ilandela ukuvalwa kosuku kokugcina; «Ngaphakathi kwamabili» inquma ngo-00:00 ngesikhathi sendawo.
 report_lens_day_close	Ngokuvalwa kosuku
 report_lens_midnight	Ngaphakathi kwamabili
-trk_booked	Ibhukhiwe
+trk_booked	Kubhukiwe
 trk_picked_up	Thathiwe
 trk_in_transit	Iyathutha
 trk_delivered	Kulethiwe
 trk_rto	Ibuyela kumthumeli
 lane_to_dispatch	Ukuthumela
-lane_with_carrier	Nenkampani yenethiwekhi
-lane_failed	Yehlulekile
+lane_with_carrier	Kumthwali
+lane_failed	Kwehlulekile
 lane_done_today	Kwenziwe namuhla
 ops_board_help	Amaphasela ngokuthi akuphi emsebenzini wanamuhla. Thepha amaphasela (noma uwaskene) ukuze uwakhethe, bese wenza konke okukhethiwe ngesikhathi esisodwa - umzila ngamunye unikeza kuphela iminyakazo elingana nawo.
 lane_empty	Akukho lutho lapha njengamanje.
 picked_fmt	I-{n} ikhethiwe
 pick_all	Khetha konke
 bag_for_carrier	Isandla esiphathini
-send_with_rider	Thumela nomgibeli
+send_with_rider	Thumela nomlethi
 out_again	Phuma futhi
-return_to_sender	Buyela kumthumeli
+return_to_sender	Buyisela kumthumeli
 runs_bags_heading	Imigijimo nezikhwama zakamuva
 print_word	Phrinta
-bag_word	Isikhwama senkampani yenethiwekhi
-run_word	Ukugijima komgibeli
+bag_word	Isikhwama somthwali
+run_word	Ukugijima komlethi
 parcels_fmt	Amaphasela we-{n}
 parcel_history	Umlando
 attempt_fmt	Umzamo we-{n}
@@ -852,11 +852,11 @@ parcel_one_fmt	Ingxenye ye-{n}
 facet_bank_title	Imibiko
 facet_bank_help	Amaleja osuku, ukuguga kwekhasimende noma umphakeli, amaposi ebhange, kanye nesikhathi P&L.
 facet_ops_title	Izimpahla nokuthunyelwa
-facet_ops_help	Skena noma thayipha i-AWB → Thola, bese uthuthukela phambili / phrinta ilebula / COD. Thumela kumgibeli noma inkampani yenethiwekhi.
+facet_ops_help	Skena noma thayipha i-AWB → Thola, bese uthuthukela phambili / phrinta ilebula / COD. Thumela kumlethi noma umthwali.
 facet_cod_title	Irejista ye-COD
 facet_cod_help	Qoqa ngesikhathi sokulethwa, bese uthumela kumthumeli.
-facet_riders_title	Abagibeli (imikhumbi yabo)
-facet_riders_help	Engeza abagibeli, bese uthumela ama-AWB abhukhiwe ukusuka ku-Ops.
+facet_riders_title	Abalethi (abakithi)
+facet_riders_help	Engeza abalethi, bese uthumela ama-AWB abhukhiwe ukusuka ku-Ops.
 against_bill_ph	Imelene nebhili yesivakashi # ngenhla (ongakukhetha)
 aliases_ph	Iziteketiso — amanye amagama, ahlukaniswe ngokhefana
 amount_blank_full_ph	Inani (elingenalutho = ibhalansi egcwele)
@@ -928,9 +928,9 @@ book_kind_month	Amaleja enyanga
 book_kind_aging	Okusasele / debit-credit
 book_kind_balance	Ibhalansi
 ops_desk_help	Skena i-AWB ngesithwebuli sebhakhodi ye-USB (noma uyibhale) → Thola. Bese uthuthukela, phrinta ilebula, noma uqoqe i-COD. Amalebula aphrinte Ikhodi 128.
-role_help_consignor	Iqhaza: Umthumeli - AR (bayasikweleta). Inkampani efanayo ingaba inkampani yenethiwekhi.
+role_help_consignor	Iqhaza: Umthumeli - AR (bayasikweleta). Inkampani efanayo ingaba umthwali.
 role_help_carrier	Iqhaza: Umthwali - AP (siyabakweleta). Ifemu efanayo nayo ingaba Consignor.
-role_help_both	Izindima: Umthumeli + Isithwali - iqembu elilodwa, amaleja e-AR kanye ne-AP, ingqikithi Yemibiko.
+role_help_both	Izindima: Umthumeli + Umthwali - iqembu elilodwa, amaleja e-AR kanye ne-AP, ingqikithi Yemibiko.
 role_help_supplier	Iqhaza: Umhlinzeki - AP yokuthenga.
 lane_declared_label	Ukubhukha i-akhawunti
 lane_owner_label	Ukubhukha imali

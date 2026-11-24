@@ -11,10 +11,10 @@ board_empty	እስካሁን ምንም ካርዶች የሉም።
 board_park_nothing	እንደ ረቂቅ የሚቀመጥ ምንም ነገር የለም - ክፍያዎችን ወይም የቦታ ማስያዣ ዝርዝሮችን ያክሉ
 board_parked	በ«ቦርድ» ተቀምጧል — ጠረጴዛው አሁን ባዶ ነው
 board_draft	ረቂቅ
-board_booked	የተያዙ
+board_booked	ተመዝግቧል
 board_filter_all	ሁሉም
 board_filter_draft	ረቂቅ
-board_filter_booked	የተያዙ
+board_filter_booked	ተመዝግቧል
 board_cols_fmt	{n} አምዶች
 board_summary_fmt	{total} ካርዶች · {drafts} ረቂቆች · {booked} ተይዟል
 board_card_no_charges	እስካሁን ምንም ክፍያዎች አልተጨመሩም
@@ -88,7 +88,7 @@ applied	የተተገበረ
 note_ph	ማስታወሻ (አማራጭ)
 rounded	የተጠጋጋ
 split	ክፈል
-counter	ባንኮኒ
+counter	ካውንተር
 parcel	እሽግ
 order	ትዕዛዝ
 sales	ምዝገባዎች
@@ -816,13 +816,13 @@ report_day_lens	እንደ «ዛሬ» አሳይ
 report_day_lens_help	ይሄ እይታውን ብቻ ነው የሚቀይረው — «የቀን መዝጊያ» ዳግም ሲያቀናብር «ዛሬ» አይቀየርም። «በየቀን መዝጊያ መሰረት» የመጨረሻውን ቀን መዝጊያ ይከተላል; «እንደ እኩለ ሌሊት» እኩለ ሌሊት (00:00) ላይ ይቆርጣል።
 report_lens_day_close	በየቀን መዝጊያ መሰረት
 report_lens_midnight	እንደ እኩለ ሌሊት
-trk_booked	የተያዙ
+trk_booked	ተመዝግቧል
 trk_picked_up	ተወስዷል
 trk_in_transit	በመጓጓዣ ላይ
-trk_delivered	የቀረበ
+trk_delivered	ደርሷል
 trk_rto	ወደ ላኪ እየተመለሰ ነው
 lane_to_dispatch	ለመላክ
-lane_with_carrier	ከአጓጓዥ ጋር
+lane_with_carrier	በአጓጓዥ እጅ
 lane_failed	አልተሳካም
 lane_done_today	ዛሬ ተከናውኗል
 ops_board_help	እሽጎች በዛሬው ሥራ ውስጥ ባሉበት ቦታ። ለመምረጥ እሽጎችን ይንኩ (ወይም ስካን ያድርጉ)፣ ከዚያ በተመረጡት ሁሉ ላይ በአንድ ጊዜ ይሥሩ — እያንዳንዱ መስመር የሚስማሙትን እርምጃዎች ብቻ ያቀርባል።

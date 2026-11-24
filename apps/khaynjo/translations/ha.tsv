@@ -252,7 +252,7 @@ sidebar_order_saved	An ajiye tsarin gefen allo
 sidebar_visibility_saved	An ajiye ganin gefen allo
 amounts_hide	Ɓoye
 amounts_show	Nuna
-counter	Tebur ciniki
+counter	Teburin ciniki
 dine_in	Ci a nan
 takeaway	Ɗauka
 order	Oda
@@ -313,7 +313,7 @@ open_bill	Buɗe lissafi
 collect_payment	Karɓi biya
 table_running	Yana gudana
 payment_pending	Biya yana jira
-collect_at_counter	karɓa a tebur ciniki
+collect_at_counter	karɓa a teburin ciniki
 inventory	Ajiyar kaya
 inventory_stock	Ajiya da kaya
 branches	Reshe
@@ -453,7 +453,7 @@ copy_party_ledger_csv	Kwafi CSV na littafin abokin hulɗa
 copy_receipt	Kwafi rasit
 share_whatsapp	Raba WhatsApp
 lan_pages_heading	Shafukan baƙi a Wi‑Fi
-lan_pages_help	A Wi‑Fi na wannan shago, shafukan baƙi suna aiki ga allon nuni, lambobi, mika kaya, kiosk, QR na tebur, da ra'ayi. Baƙi a datar waya suna buƙatar Cloud daga baya. Na'urar kati / hanyar biya zaɓi ce idan intanet yana aiki — ba ta tare tebur ciniki ba.
+lan_pages_help	A Wi‑Fi na wannan shago, shafukan baƙi suna aiki ga allon nuni, lambobi, mika kaya, kiosk, QR na tebur, da ra'ayi. Baƙi a datar waya suna buƙatar Cloud daga baya. Na'urar kati / hanyar biya zaɓi ce idan intanet yana aiki — ba ta tare teburin ciniki ba.
 diag_send_heading	Fitar da daga wannan na'ura
 kot_dest_heading	Tashar kicin
 optional_login_heading	Shiga na zaɓi
@@ -560,7 +560,7 @@ drafts_discard	Share daftarin aiki
 drafts_discarded	An goge daftarin aiki
 drafts_gone	Wannan daftarin baya cikin jerin
 drafts_closed	An riga an biya ko share wannan daftarin
-drafts_empty	Babu daftarin aiki tukuna. A kan «Tebur ciniki», ƙara jita-jita kuma danna «Ajiye azaman daftarin aiki».
+drafts_empty	Babu daftarin aiki tukuna. A kan «Teburin ciniki», ƙara jita-jita kuma danna «Ajiye azaman daftarin aiki».
 drafts_card_kind	Daftari
 drafts_card_no_lines	Babu abubuwa
 drafts_card_lines	abubuwa
@@ -877,7 +877,7 @@ kot_printer_ph	Firinta na KOT
 bill_printer_ph	Firinta na lissafi
 kot_print_on	Buga takardun kicin da kansu: Kunna
 kot_print_off	Buga takardun kicin da kansu: Kashe
-queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a tebur ciniki:
+queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a teburin ciniki:
 clear_not_accepted	An duba — share wannan jeri
 device_name_ph	Sunan wannan na'ura
 lan_last_update	sabuntawa ta ƙarshe {time}
@@ -955,7 +955,7 @@ payment_qr_image_help	QR mai tsaye a lissafi da allon baƙi; in ba haka ba biya 
 cash_in_hand	Tsabar kuɗi a akwati
 change_my_pin_heading	Shigata
 connect_to_server	Haɗa da Server
-counter_locked	Tebur ciniki 01 · An kulle
+counter_locked	Teburin ciniki 01 · An kulle
 country_pack_help	Fakiti na ƙasa yana sa sunan haraji da lissafi, hanyar biya nan take, da lambar kasuwanci da ake buga a lissafi. Kumkaj ba ya bayar da haraji ko ba da lissafin gwamnati a ko'ina.
 currency_use_help	Gungura ka taɓa Yi amfani ga kowane kuɗin da ake goyan baya.
 day_close_help	Rubuta rufe yini yana ajiye wannan taƙaitaccen (da bambancin akwati idan an ƙidaya) a rajistan bincike. Ba ya tsayar da sayarwa.
@@ -1059,7 +1059,7 @@ onboard_fresh_tmpl	Sabo · {} — jeri yana farawa fanko; ƙara kayayyaki a Kaya
 onboard_book_tmpl	Littafi · {} — ƙara kayayyaki da bashi na farawa, sai ka An gama.
 onboard_template_tmpl	Sanya sunan wurin idan kana so, sai ka zaɓi yadda za a fara.
 tmpl_blurb	Teburori, oda, takardun kicin, lissafi, da littattafai.
-tmpl_how	Sayar a tebur ciniki; Falo don teburori da KOT; Littattafai don littafin yini.
+tmpl_how	Sayar a teburin ciniki; Falo don teburori da KOT; Littattafai don littafin yini.
 reports_facet_title	Rahotanni
 reports_facet_help	Littattafan yini, shekarun bashi na abokan hulɗa, rubutun banki, da R&H na lokaci.
 against_bill_ph	A kan lambar lissafi a sama (ba dole ba)
@@ -1100,7 +1100,7 @@ starting_password_ph	Kalmar sirri ta farawa (ba dole ba)
 starting_pin_ph	PIN na farawa (lambobi 4–12)
 station_name_ph	Sunan tasha (misali Tandoor, Soyayya, Sanyi)
 station_new_ph	Tashar kicin (ba dole ba, misali Tandoor — ana ƙirƙira idan sabo ne)
-table_name_ph	Sunan tebur (misali Falo 1, Tebur ciniki 2)
+table_name_ph	Sunan tebur (misali Falo 1, Teburin ciniki 2)
 tax_rate_ph	Suna ko % na farashin haraji — Na al'ada, Rage, 0, 5, 12, 18, 20
 to_code_ph	Zuwa lamba (kg)
 uncleared_no_ph	Lambar da ba a daidaita a sama
@@ -1173,7 +1173,7 @@ already_cooked	An riga an girka (ɓarna)
 not_cooked_yet	Ba a girka tukuna
 return_to_customer	Mayar wa abokin ciniki
 short_by	Ya rage
-tip_not_sale	Kyauta ga ma'aikaci (ba sayarwa ba)
+tip_not_sale	Tukuici (ba sayarwa ba)
 right_settle	Karɓi biya
 right_cancel_sent	Soke kaya da aka aika
 right_complimentary	Kyauta (NC)
@@ -1201,7 +1201,7 @@ line_target_ph	Matsar zuwa tebur (misali D5)
 confirm	Tabbatar
 menu_search_ph	Nemo kaya ko gajeren lamba
 customer_paid_ph	Abokin ciniki ya biya
-tip_ph	Kyauta ga ma'aikaci
+tip_ph	Tukuici
 table_area_ph	Wuri (misali Ci a nan, Ɗauka, AC)
 table_range_ph	Da yawa a lokaci ɗaya: D1-D20
 add_these_tables	Ƙara waɗannan teburori
@@ -1298,7 +1298,7 @@ clear_payment_qr	Share QR na biya
 payment_qr_set	QR na biya: a fayil — ana nuna a allon baƙi (yana maye gurbin QR na adadin UPI a can)
 payment_qr_none	QR na biya: babu — QR na adadi daga lambar UPI a lokacin biya
 aggregator_import	Odar tattara (fayil)
-aggregator_import_help	Shigar da gida na zaɓi: sa import_aggregator_orders.json a babban fayil na ajiyar madadin (jeri ko {"orders":[…]}), sai ka taɓa Shigar. Ba ya tare tebur ciniki; Zomato/Swiggy kai tsaye Cloud ne.
+aggregator_import_help	Shigar da gida na zaɓi: sa import_aggregator_orders.json a babban fayil na ajiyar madadin (jeri ko {"orders":[…]}), sai ka taɓa Shigar. Ba ya tare teburin ciniki; Zomato/Swiggy kai tsaye Cloud ne.
 import_aggregator_file	Shigar da fayil na tattara
 team_pick_ph	Ma'aikacin da za a gyara — suna, sunan mai amfani, ko zaɓa
 select_staff	Zaɓi wannan ma'aikaci
@@ -1333,7 +1333,7 @@ back_to_order	Komawa oda
 new_items_head	Ba a aika tukuna
 price_ph	Farashi
 price_ph_gst_inside	Farashi ({tax} a ciki)
-cancel_needs_table	Buɗe wannan oda daga Falo (tebur) don soke bayan kicin ya samu — KOT na tebur ciniki yana kan takarda har ka karɓi biya
+cancel_needs_table	Buɗe wannan oda daga Falo (tebur) don soke bayan kicin ya samu — KOT na teburin ciniki yana kan takarda har ka karɓi biya
 taxable_value	Adadin da ake caje haraji
 gst_inside_price_note	({tax} a ciki)
 start_with_template	Fara da samfurin menu namu
@@ -1365,7 +1365,7 @@ resv_add	Yi ajiyar tebur
 resv_seat	An zaunar
 resv_none	Babu ajiyar wuri da ke zuwa.
 guests_word	baƙi
-delivery_by_ph	Wanda zai kai (sunan ɗan isarwa ko ma'aikaci)
+delivery_by_ph	Wanda zai kai (sunan mai kai kaya ko ma'aikaci)
 kitchen_all_day	Za a girka yanzu: {items}
 kitchen_all_day_head	Za a girka yanzu
 kitchen_tab_live	Kai tsaye

@@ -6,13 +6,13 @@ sell	Kòmand
 buy	Acha
 books	Liv jounen
 books_help	Pozisyon jodi a. Kòmand = kòmand ki antre. Acha = acha ak depans. Patnè = kliyan kredi ak founisè.
-buy_help	Bòdwo depans ak bòdwo founisè (lajan ki soti). Sa ki sou kont rete nan liv pati a.
+buy_help	Bòdwo depans ak bòdwo founisè (lajan ki soti). Sa ki sou kont rete nan liv patnè a.
 sell_money_in	Pran yon kòmand
 buy_money_out	Depans / bòdwo founisè
 record_purchase	Anrejistre acha
 add_expense	Bòdwo depans
 bank_book	Liv labank
-credit_help	Id pati a inik (non yo ka repete). Yon Kliyan gen yon khata (yo dwe nou); yon Founisè vann nou stòk (nou dwe yo); tou de posib. Liv yo rete apa; rapò yo montre nèt.
+credit_help	Id patnè a inik (non yo ka repete). Yon Kliyan gen yon khata (yo dwe nou); yon Founisè vann nou stòk (nou dwe yo); tou de posib. Liv yo rete apa; rapò yo montre nèt.
 party_kind_ph	Wòl: Kliyan, Founisè, tou de…
 reports_help	Liv jounen, debitè ak kreditè, liv labank, bòdwo depans, pwofi ak pèt.
 reports_today	Liv jounen (jodi a)
@@ -319,8 +319,8 @@ inventory_stock	Envantè ak stòk
 branches	Siksinal
 branches_org	Siksinal ak òganizasyon
 credit_customers	Patnè (khata ak founisè)
-customer_name_ph	Non pati
-new_customer_ph	Non nouvo pati
+customer_name_ph	Non patnè
+new_customer_ph	Non nouvo patnè
 item_name_ph	Non atik (pa egzanp Masala Dosa)
 item_price_ph	Pri
 start_template	Pwodwi
@@ -448,8 +448,8 @@ copy_day_book_csv	Kopye liv jounen CSV
 copy_day_close	Kopye fèmti jounen
 copy_items_csv	Kopye atik CSV
 copy_outstanding_csv	Kopye sa ki rete CSV
-copy_parties_csv	Kopye pati CSV
-copy_party_ledger_csv	Kopye liv pati CSV
+copy_parties_csv	Kopye patnè CSV
+copy_party_ledger_csv	Kopye liv patnè CSV
 copy_receipt	Kopye resi
 share_whatsapp	Pataje sou WhatsApp
 lan_pages_heading	Paj envite sou Wi‑Fi
@@ -524,9 +524,9 @@ tax_invoice_saved_off	Fakti taks kache — Nòt kach sèlman
 pay_methods	Metòd peman
 pay_methods_help	Ki bouton ki parèt sou Pran peman. Kach toujou rete. Kèk modèl boutik kòmanse ak Kach sèlman — limen UPI / Kat / Kredi / Separe ankò isit la.
 create_backup	Kreye sovgad
-credit_limit_heading	Limit kredi (pati chwazi / nonmen)
+credit_limit_heading	Limit kredi (patnè chwazi / nonmen)
 day_close_summary	Rezime fèmti jounen
-delete_party	Efase pati chwazi a
+delete_party	Efase patnè chwazi a
 delivery	Livrezon
 done_open_books	Fini — louvri liv yo
 drawer_count	Konte tiro (opsyonèl)
@@ -541,13 +541,13 @@ forget_shop	Bliye boutik sa a
 goods_received	Machandiz resevwa
 import_day	Enpòte jounen
 import_items_csv_plain	Enpòte atik CSV…
-import_parties_csv	Enpòte pati CSV…
+import_parties_csv	Enpòte patnè CSV…
 item_name	Non atik
 kitchen_printing	Enprimant
 login_id_ph	Non itilizatè
 mark_cleared	Make regle
-new_party_clear	Nouvo pati (efase fòm)
-new_party_kind_supplier_ph	Kalite nouvo pati (Founisè)
+new_party_clear	Nouvo patnè (efase fòm)
+new_party_kind_supplier_ph	Kalite nouvo patnè (Founisè)
 next_country	Pwochen peyi
 next_order	Pwochen kòmand (efase biwo)
 nav_drafts	Bouyon
@@ -567,7 +567,7 @@ drafts_card_lines	liy
 drafts_summary_fmt	{n} bouyon ouvè
 drafts_cols_fmt	{n} kolòn
 note_gstin_ph	Nòt / GSTIN / rapèl akò
-notes_attach_party	Nòt ak atachman (pati chwazi)
+notes_attach_party	Nòt ak atachman (patnè chwazi)
 notes_attach_sale	Nòt ak atachman (vant chwazi)
 on_account_ap	Sou kont (AP)
 org_optional_ph	Òganizasyon (opsyonèl)
@@ -575,7 +575,7 @@ paid_by	Peye pa
 paid_now	Peye kounye a
 pair_now	Makonnen kounye a
 pairing_code_ph	Kòd makonnen
-party_name_selected_ph	Non pati (oswa sèvi ak sa ki chwazi)
+party_name_selected_ph	Non patnè (oswa sèvi ak sa ki chwazi)
 password_ph	Modpas
 pay_ap_card	Peye AP ak kat
 pay_ap_cash	Peye AP ak kach
@@ -630,7 +630,7 @@ save_features_ok	Paramèt anrejistre pou {name}
 save_names	Anrejistre non
 second_way	Dezyèm fason
 server_ip_ph	IP sèvè (pa egzanp 192.168.1.10)
-set_credit_limit	Aplike limit sou pati
+set_credit_limit	Aplike limit sou patnè
 set_login_selected	Aplike antre sou sa ki chwazi
 set_login_named	Aplike antre sou {name}
 shop	Boutik
@@ -889,7 +889,7 @@ disk_low	Sèlman {mb} MB lib sou aparèy sa a — sovgad yo ap echwe byento. Lib
 last_seen_devices	Dènye fwa wè: {time}
 sync_interval	Senkwonize chak {secs}s
 connection_to_shop	Koneksyon ak boutik la
-supplier_name_ph	Non founisè (oswa pati)
+supplier_name_ph	Non founisè (oswa patnè)
 supplier_ph	Founisè
 switch_device	Chanje aparèy sa a
 take_payment	Pran peman
@@ -972,7 +972,7 @@ local_badge	LOKAL
 mix_type_hint_khaynjo	Separe ant kach / UPI / kat / kredi si bezwen. Kredi bezwen yon kliyan anwo.
 money_in_sales	Lajan ki antre (vant)
 net_word	Nèt
-offline_badge	OFLAYN
+offline_badge	SAN ENTÈNÈT
 optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa; se sèl itilizatè a ki ka chanje modpas pita.
 or_unlock_login	Oswa debloke ak id antre + modpas
 permission_preset	Travay
@@ -1061,7 +1061,7 @@ onboard_template_tmpl	Bay kote a yon non si ou vle, epi chwazi kijan pou kòmans
 tmpl_blurb	Tab, kòmand, fich kwizin, kont, ak liv.
 tmpl_how	Vann nan kontwa; Sal pou tab ak KOT; Liv jounen pou liv la.
 reports_facet_title	Rapò
-reports_facet_help	Liv jounen, laj pati, ekriti labank, ak P&P peryòd.
+reports_facet_help	Liv jounen, laj patnè, ekriti labank, ak P&P peryòd.
 against_bill_ph	Kont # anwo a (opsyonèl)
 aliases_ph	Alyas — lòt non, separe ak vigil
 amount_blank_full_ph	Montan (vid = tout sold)
@@ -1320,8 +1320,8 @@ upi_qr_help	Envite a eskane epi peye. Peze Pran peman apre yo fin peye. Dezyèm 
 kot_recall	Raple
 recently_done	Fini dènyèman
 recall_kot_ph	Nimewo KOT pou raple
-role_help_customer	Wòl: Kliyan — khata (yo dwe nou). Menm pati a ka bay stòk tou.
-role_help_both	Wòl: Kliyan + Founisè — yon pati, liv khata ak pou peye, nèt nan Rapò.
+role_help_customer	Wòl: Kliyan — khata (yo dwe nou). Menm patnè a ka bay stòk tou.
+role_help_both	Wòl: Kliyan + Founisè — yon patnè, liv khata ak pou peye, nèt nan Rapò.
 role_help_supplier	Wòl: Founisè — nou dwe yo pou acha.
 dine_in_pick_table	Nan sal — chwazi yon tab nan Sal
 choose_table	Chwazi yon tab
@@ -1365,7 +1365,7 @@ resv_add	Rezève
 resv_seat	Chita
 resv_none	Pa gen rezèvasyon k ap vini.
 guests_word	envite
-delivery_by_ph	Livrezon pa (non kourye oswa anplwaye)
+delivery_by_ph	Livrezon pa (non livrè oswa anplwaye)
 kitchen_all_day	Pou kwit kounye a: {items}
 kitchen_all_day_head	Pou kwit kounye a
 kitchen_tab_live	An dirèk

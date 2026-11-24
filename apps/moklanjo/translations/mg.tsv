@@ -6,17 +6,17 @@ sell	Famandrihana
 nav_board	Tabilao
 board	Tabilao
 park_draft	Tehirizo ho drafitra
-board_help	Drafitra tsy vita (tehirizina mandra-panindry «Ario» na «Manaova fandoavam-bola») sy ny varotra voafandrika androany. Amin'ny «Famandrihana», kitiho ny «Tehirizo ho drafitra» eo afovoan'ny asanao (voatahiry eto fa tsy ao amin'ny kaonty); tsindrio ny drafitra hanohizana izany.
+board_help	Drafitra tsy vita (tehirizina mandra-panindry «Ario» na «Manaova fandoavam-bola») sy ny varotra voasoratra androany. Amin'ny «Famandrihana», kitiho ny «Tehirizo ho drafitra» eo afovoan'ny asanao (voatahiry eto fa tsy ao amin'ny kaonty); tsindrio ny drafitra hanohizana izany.
 board_empty	Tsy mbola misy karatra.
 board_park_nothing	Tsy misy hotehirizina ho drafitra — ampio sarany na antsipirian'ny famandrihana
 board_parked	Voatahiry amin'ny «Tabilao» — foana ny birao
 board_draft	Drafitra
-board_booked	namandrika
+board_booked	Voasoratra
 board_filter_all	Rehetra
 board_filter_draft	Drafitra
-board_filter_booked	namandrika
+board_filter_booked	Voasoratra
 board_cols_fmt	{n} tsanganana
-board_summary_fmt	{total} karatra · {drafts} drafitra · {booked} namandrika
+board_summary_fmt	{total} karatra · {drafts} drafitra · {booked} voasoratra
 board_card_no_charges	Mbola tsy misy sarany fanampiny
 board_card_charges	sarany
 board_card_booked	Famandrihana
@@ -33,7 +33,7 @@ buy_money_out	Fandaniam-bola / faktioran'ny mpitatitra
 record_purchase	Rakikira fividianana
 add_expense	Tapakila fandaniana
 bank_book	Bokin'ny banky
-credit_help	Tokana ny ID an’ny mpifandray (mety miverina ny anarana). Andraikitra: Mpandefa (AR), Mpitatitra (AP), na izy roa amin’io ID io. Misaraka ny boky; ny tatitra mampiseho ny net.
+credit_help	Tokana ny ID an’ny mpifandray (mety miverina ny anarana). Andraikitra: Mpandefa (AR), Mpitatitra (AP), na izy roa amin’io ID io. Misaraka ny boky; ny tatitra mampiseho ny ambiny.
 party_kind_ph	Anjara manokana (tsy voatery) — na kitiho ny puce etsy ambony
 parties_list_heading	Mpifandray voatahiry
 reports_help	Bokin'andro, mpampindrana sy mpampindram-bola, bokin'ny banky, taratasy fandaniana, tombony sy fatiantoka.
@@ -89,7 +89,7 @@ note_ph	Fanamarihana (tsy voatery)
 rounded	BORIBORY
 split	Zarao
 counter	Kauntera
-parcel	fonosana
+parcel	Fonosana
 order	Baiko
 sales	Famandrihana
 sales_refunds	Famandrihana & famerenana
@@ -147,7 +147,7 @@ consignee_address_ph	Adiresy fanaterana
 origin_name_ph	Anaran'ny mpandefa
 origin_phone_ph	Telefaonina mpandefa
 origin_address_ph	Adiresy alaina / fiaviana
-booking_consignor_heading	Consignor (mpanjifa / mpandefa)
+booking_consignor_heading	Mpandefa (mpanjifa / mpandefa)
 booking_consignee_heading	Mpandray
 booking_consignor_hint	Mifidiana mpifandray hamenoana ny antsipiriany, na avelao ho banga ho an’ny mpanjifa mandalo. Ilaina amin’ny fakana an-trano sy RTO.
 booking_consignee_hint	Mpandray ny entana. Avelao ho banga ho an'ny fidirana amin'ny kaontinanta.
@@ -261,7 +261,7 @@ add_conversion	Ampio fanovana
 add_item_plain	Ampio zavatra
 add_note	Ampio fanamarihana
 add_opening_balance	Ampio fetra fanombohana
-add_rider	Ampio mpitaingina
+add_rider	Ampio mpitondra entana
 add_staff	Ampio mpiasa
 add_unit	Ampio singa
 add_use_name	Ampio / ampiasao ity anarana ity
@@ -289,7 +289,7 @@ till_to_bank	Vola → banky
 mark_cleared	Marika voadio
 unmark	Esory ny marika
 role_both	Samy
-role_carrier	mpitatitra
+role_carrier	Mpitatitra
 role_cashier	Mpahangy vola
 role_consignor	Mpandefa
 role_manager	Mpitantana
@@ -360,7 +360,7 @@ counter_agency_ph	Anaran'ny kaontera / masoivoho (tsy voatery)
 create_backup	Mametraha backup
 day_close_summary	Famintinana ny andro rehefa mifarana
 delete_party	Fafao ny mpifandray voafidy
-dispatch_to_rider	Dispatch namandrika → mpitaingina
+dispatch_to_rider	Alefaso voasoratra → mpitondra entana
 docket_charge_ph	Fanomezana docket
 declared_value_ph	Nambara ny sanda
 contents_ph	Hevitra ato Anatiny
@@ -378,7 +378,7 @@ failed_delivery	Tsy nahomby ny fandefasana
 find_scan_awb	Mitadiava / Scan AWB
 forget_shop	Adino ity fivarotana ity
 fuel_ph	Solika
-handover_carrier	Voafandrika tanana → mpitatitra
+handover_carrier	Voasoratra tanana → mpitatitra
 import_day	Andro fanafarana
 import_items_csv	Manafatra entana / sarany CSV…
 import_parties_csv	Ampidiro ny CSV-n’ny mpifandray…
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Tsy misy
 ndr_door_locked	Voahidy ny varavarana
 ndr_other	hafa
 ndr_refused	Tsy nety
-out_for_delivery	Mivoaka ho livraison
+out_for_delivery	Eny an-dalana ho aterina
 print_drs	Atontay ny DRS
 print_run_sheet	Soraty ny taratasy fandefasana
 reattempt	Andrana indray
 rider_cod_handed_ph	COD natolotra
-settle_rider_cod	Alefaso COD ny mpitaingina
+settle_rider_cod	Alefaso COD ny mpitondra entana
 mode_desk	Birao
-mode_rider	Mpitaingina
+mode_rider	Mpitondra entana
 waiting_office	miandry ny fahatongavan'ny birao
 capture_signature	Makà sonia
 incoming_manifest	Fampisehoana miditra
@@ -416,7 +416,7 @@ pickup_request	Fangatahana fandraisana
 pickup_run	Hazakazaka pickup
 auto_assign_area	Manendry faritra mandeha ho azy
 reorder_stops	Miato ny famandrihana indray
-settle_rider_pay	Alefaso ny karaman'ny mpitaingina
+settle_rider_pay	Alefaso ny karaman'ny mpitondra entana
 vehicle_inspect	Fijerena fiara
 print_docket	Manonta docket
 franchise_statement	Fanambarana momba ny franchise
@@ -459,10 +459,10 @@ refund	Famerenam-bola
 remit_cod	Alefaso ny COD (mpifandray)
 remove_selected	Esory voafantina
 restore_backup	Avereno ny backup
-rider_name_ph	Anaran'ny mpitaingina
-rider_phone_ph	Telefaonina mpitaingina
-riders	mpitaingina
-riders_own_fleet	Mpitaingina (fiara manokana)
+rider_name_ph	Anaran'ny mpitondra entana
+rider_phone_ph	Telefaonina mpitondra entana
+riders	Mpitondra entana
+riders_own_fleet	Mpitondra entana (fiara manokana)
 rollup	Ampirimo ho iray
 save_booking_measures	Tehirizo ny fepetra famandrihana
 save_brand	Tehirizo ny marika
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	Soraty hoe ohatrinona ny tsirairay (vola / UPI / karatra 
 money_in_sales	Vola miditra (varotra)
 more_help_moklanjo	Katalaogy, varotra, crédit, ekipa, backup - miampy tahiry sy karama fanampiny rehefa ilaina.
 net_word	Neto
-offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
+offline_badge	TSY MISY INTERNET
 optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
 or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
 or_unlock_shop_login	Na sokafy amin'ny fidirana amin'ny fivarotana
@@ -734,7 +734,7 @@ cloud_sending_reset	Mandefa rohy famerenana…
 cloud_forgot_sent	Raha manana kaonty io mailaka io dia eny an-dalana ny rohy famerenana.
 cloud_welcome	Miditra ho {user} · {plan}
 cloud_created	Noforonina ny kaonty. Jereo ny mailakao mba hanamarina rehefa afaka ianao.
-cloud_cancel	Aoka
+cloud_cancel	Ajanony
 permission_preset	Asa
 preset_help_moklanjo	Mpivarotra: mivarotra. Tale: mivarotra + entana + manafoana/manitsy.
 product_locked_moklanjo	Moklanjo
@@ -816,27 +816,27 @@ report_day_lens	Asehoy ny «Androany» ho
 report_day_lens_help	Fijery fotsiny — tsy manova ny fotoana anombohan'ny «Fanakatonana ny andro» indray ny «Androany». «Araka ny Fanakatonana ny andro» dia manaraka ny fanakatonana andro farany; «Araka ny mamatonalina» dia manapaka amin'ny 00:00 (misasakalina), ora eo an-toerana.
 report_lens_day_close	Araka ny Fanakatonana ny andro
 report_lens_midnight	Araka ny mamatonalina
-trk_booked	namandrika
+trk_booked	Voasoratra
 trk_picked_up	Noraisina
 trk_in_transit	Eny an-dàlana
-trk_delivered	Nafahana
-trk_rto	Hiverina any amin'ny sender
+trk_delivered	Tonga
+trk_rto	Hiverina any amin’ny mpandefa
 lane_to_dispatch	Mandefa
-lane_with_carrier	Miaraka amin'ny mpitatitra
-lane_failed	tsy nahomby
+lane_with_carrier	Eo amin’ny mpitatitra
+lane_failed	Tsy nahomby
 lane_done_today	Vita androany
 ops_board_help	Parcels amin'ny toerana misy azy amin'ny asa ankehitriny. Tsindrio ny parcels (na asio scan azy) hifidianana azy ireo, dia asao izay rehetra nofantenana indray mandeha - ny lalana tsirairay dia tsy manome afa-tsy ny hetsika mifanaraka aminy.
 lane_empty	Tsy misy na inona na inona eto amin'izao fotoana izao.
 picked_fmt	{n} nofidina
 pick_all	Fidio daholo
 bag_for_carrier	Tanana ho mpitatitra
-send_with_rider	Alefaso miaraka amin'ny mpitaingina
+send_with_rider	Alefaso miaraka amin'ny mpitondra entana
 out_again	Hivoaka indray
-return_to_sender	Hiverina any amin'ny sender
+return_to_sender	Avereno any amin’ny mpandefa
 runs_bags_heading	Hazakazaka & kitapo vao haingana
 print_word	PIRINTY
 bag_word	Kitapo mitondra
-run_word	Mpitaingina mihazakazaka
+run_word	Fandehanan’ny mpitondra entana
 parcels_fmt	Ireo singa mifandraika amin'ny {n}
 parcel_history	FIAINANY TALOHA
 attempt_fmt	Andrana {n}
@@ -852,11 +852,11 @@ parcel_one_fmt	Ampahany {n}
 facet_bank_title	Tatitra
 facet_bank_help	Bokin'ny andro, fahanteran'ny mpifandray, lahatsoratra banky, ary P&L vanim-potoana.
 facet_ops_title	Fandefasana & fandefasana
-facet_ops_help	Scan na soraty ny AWB → Mitadiava, avy eo mandroso / manonta marika / COD. Alefaso any amin'ny mpitaingina na mpitatitra.
+facet_ops_help	Scan na soraty ny AWB → Mitadiava, avy eo mandroso / manonta marika / COD. Alefaso any amin'ny mpitondra entana na mpitatitra.
 facet_cod_title	Rejistra COD
 facet_cod_help	Angony amin'ny fanaterana, dia alefa any amin'ny consignor.
-facet_riders_title	Mpitaingina (fiara manokana)
-facet_riders_help	Ampio mpitaingina, dia mandefasa AWB voafandrika avy amin'ny Ops.
+facet_riders_title	Mpitondra entana (fiara manokana)
+facet_riders_help	Ampio mpitondra entana, dia mandefasa AWB voasoratra avy amin'ny Ops.
 against_bill_ph	Manohitra ny faktiora # etsy ambony (tsy voatery)
 aliases_ph	Aliases — anarana hafa, misarahana amin'ny koma
 amount_blank_full_ph	Vola (banga = vola feno)
@@ -928,9 +928,9 @@ book_kind_month	Bokin'ity volana ity
 book_kind_aging	Tsy voaloa / debit-kredit
 book_kind_balance	Taratasy fanamarinam-bola
 ops_desk_help	Scan AWB amin'ny USB scanner barcode (na soraty izany) → Tadiavo. Avy eo mandroso, manonta marika, na manangona COD. Kaody fanontana etikety 128.
-role_help_consignor	Andraikitra: Consignor - AR (trosa taminay izy ireo). Ny orinasa iray ihany koa dia mety ho Carrier.
-role_help_carrier	Anjara: mpitatitra - AP (azo antoka azy ireo). Ny orinasa iray ihany koa dia mety ho Consignor.
-role_help_both	Andraikitra: Consignor + Carrier - mpifandray iray, AR ary AP ledgers, net in Reports.
+role_help_consignor	Andraikitra: Mpandefa - AR (trosa taminay izy ireo). Ny orinasa iray ihany koa dia mety ho Mpitatitra.
+role_help_carrier	Anjara: mpitatitra - AP (azo antoka azy ireo). Ny orinasa iray ihany koa dia mety ho Mpandefa.
+role_help_both	Andraikitra: Mpandefa + Mpitatitra - mpifandray iray, AR ary AP ledgers, ambiny ao amin’ny Tatitra.
 role_help_supplier	Anjara: Mpamatsy - AP amin'ny fividianana.
 lane_declared_label	Famandrihana kaonty
 lane_owner_label	Famandrihana vola

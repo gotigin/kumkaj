@@ -11,10 +11,10 @@ board_empty	Poko gen kat.
 board_park_nothing	Pa gen anyen pou mete sou kote — ajoute frè oswa detay rezèvasyon
 board_parked	Sove sou «Tablo» — biwo a lib
 board_draft	Bouyon
-board_booked	Anrezève
+board_booked	Anrejistre
 board_filter_all	Tout
 board_filter_draft	Bouyon
-board_filter_booked	Anrezève
+board_filter_booked	Anrejistre
 board_cols_fmt	{n} kolòn
 board_summary_fmt	{total} kat · {drafts} bouyon · {booked} anrejistre
 board_card_no_charges	Poko gen frè
@@ -26,16 +26,16 @@ board_discard	Jete
 board_discarded	Bouyon efase
 buy	Peye
 books	Liv jounen
-books_help	Pozisyon jodi a. Anrjistreman = pasèl pous. Peye = bòdwo konpayi asirans ak depans. Pati yo = expéditeurs & transporteurs.
-buy_help	Bon depans ak bòdwo konpayi asirans (lajan soti). Sou-kont rete sou Ledger pati a.
+books_help	Pozisyon jodi a. Anrjistreman = pasèl pous. Peye = bòdwo transpòtè ak depans. Patnè yo = moun k ap voye yo & transpòtès.
+buy_help	Bon depans ak bòdwo transpòtè (lajan soti). Sou-kont rete sou Ledger patnè a.
 sell_money_in	Liv yon pasèl
-buy_money_out	Depans / bòdwo konpayi asirans
+buy_money_out	Depans / bòdwo transpòtè
 record_purchase	Anrejistre acha
 add_expense	Bòdwo depans
 bank_book	Liv labank
-credit_help	Id pati a inik (non yo ka repete). Wòl: Expéditeur (AR), Transporteur (AP), oswa toude sou idantifikasyon sa a. Ledgers rete separe; rapò montre nèt.
+credit_help	Id patnè a inik (non yo ka repete). Wòl: Moun k ap voye (AR), transpòtè (AP), oswa toude sou idantifikasyon sa a. Ledgers rete separe; rapò montre nèt.
 party_kind_ph	Wòl Custom (si ou vle) - oswa tape yon chip pi wo a
-parties_list_heading	Sove pati yo
+parties_list_heading	Sove patnè yo
 reports_help	Liv jounen, debitè ak kreditè, liv labank, bòdwo depans, pwofi ak pèt.
 reports_today	Liv jounen (jodi a)
 reports_month	Pwofi ak pèt (mwa)
@@ -66,7 +66,7 @@ total	Total
 cash	Kach
 upi	UPI
 card	Kat
-credit	Pati
+credit	Patnè
 clear	Efase
 ready_to_sell	Pare pou anrejistre
 today_prefix	Jodi a
@@ -133,9 +133,9 @@ inventory	Envantè
 inventory_stock	Envantè ak stòk
 branches	Siksinal
 branches_org	Siksinal ak òganizasyon
-credit_customers	Pati (dèt ak kreditè)
-customer_name_ph	Non pati
-new_customer_ph	Non nouvo pati
+credit_customers	Patnè (dèt ak kreditè)
+customer_name_ph	Non patnè
+new_customer_ph	Non nouvo patnè
 item_name_ph	Non pousantaj (egzanp Zòn Sifas A)
 item_price_ph	Pou chak kg / premye dal
 start_template	Pwodwi
@@ -147,9 +147,9 @@ consignee_address_ph	Adrès livrezon
 origin_name_ph	Non moun k ap voye a
 origin_phone_ph	Telefòn moun k ap voye a
 origin_address_ph	Ranmase / adrès orijin
-booking_consignor_heading	Expéditeur (kliyan / moun k ap voye)
+booking_consignor_heading	Moun k ap voye (kliyan / moun k ap voye)
 booking_consignee_heading	Destinataire (destinataire)
-booking_consignor_hint	Chwazi yon pati pou ranpli, oswa kite vid pou mache nan. Bezwen pou pickup lakay ou ak RTO.
+booking_consignor_hint	Chwazi yon patnè pou ranpli, oswa kite vid pou mache nan. Bezwen pou pickup lakay ou ak RTO.
 booking_consignee_hint	Reseptè pasèl la. Kite vid pou depoze kontwa.
 weight_kg_ph	kg aktyèl
 length_cm_ph	L cm
@@ -261,7 +261,7 @@ add_conversion	Ajoute konvèsyon
 add_item_plain	Ajoute atik
 add_note	Ajoute nòt
 add_opening_balance	Ajoute sold ouvèti
-add_rider	Ajoute kourye
+add_rider	Ajoute livrè
 add_staff	Ajoute anplwaye
 add_unit	Ajoute inite
 add_use_name	Ajoute / sèvi ak non sa a
@@ -289,9 +289,9 @@ till_to_bank	Kes → labank
 mark_cleared	Make regle
 unmark	Retire mak
 role_both	Tou de
-role_carrier	Carrier
+role_carrier	Transpòtè
 role_cashier	Kesye
-role_consignor	Expéditeur
+role_consignor	Moun k ap voye
 role_manager	Manadjè
 role_supplier	Founisè
 branch_name_sell_ph	Non siksinal pou vann ladan l
@@ -300,8 +300,8 @@ business_tax_id_ph	Id taks biznis
 card_amount_ph	Montan kat
 cash_amount_ph	Montan kach
 upi_amount_ph	Montan UPI
-carrier_cost_ph	Pri konpayi asirans
-carrier_party_ph	Carrier pati
+carrier_cost_ph	Pri transpòtè
+carrier_party_ph	Patnè transpòtè
 choose_icon	Chwazi ikòn
 choose_logo	Chwazi logo
 choose_receipt_stamp	Chwazi koupon pou resi
@@ -313,9 +313,9 @@ clear_stamp	Retire tenm
 clear_payment_qr	Retire QR peman
 print_faces	Enprime figi (resi / bòdwo peryòd)
 print_faces_help	Koupon pou achte ak peman QR akote logo ou sou resi anrjistreman ak bòdwo peryòd.
-awb_pools_heading	Carrier AWB nimewo pisin
+awb_pools_heading	Transpòtè AWB nimewo pisin
 add_awb_pool	Ajoute pisin AWB
-awb_pool_carrier_ph	Non pati konpayi asirans lan
+awb_pool_carrier_ph	Non patnè transpòtè a
 awb_pool_start_ph	Kòmanse non.
 awb_pool_end_ph	Fen non.
 awb_pool_prefix_ph	Prefiks (opsyonèl)
@@ -336,13 +336,13 @@ booking_scope_hint_intl	Volumetric ÷6000 (entènasyonal lè) — tape Domestik 
 cod_register	COD anrejistre
 collect_cod	Kolekte COD (AWB)
 consignments_dispatch	Anvwaye ak dispatch
-consignor_party_ph	Non moun ki expéditeur / pati
+consignor_party_ph	Non moun ki moun k ap voye / patnè
 copy_day_book_csv	Kopye liv jounen CSV
 copy_day_close	Kopye fèmti jounen
 copy_items_csv	Kopye atik CSV
 copy_outstanding_csv	Kopye sa ki rete CSV
-copy_parties_csv	Kopye pati CSV
-copy_party_ledger_csv	Kopye liv pati CSV
+copy_parties_csv	Kopye patnè CSV
+copy_party_ledger_csv	Kopye liv patnè CSV
 copy_receipt	Kopye resi
 copy_report	Kopye rapò
 counted_cash_ph	Kach konte nan tiro a
@@ -359,8 +359,8 @@ books_locked_through	Bloke jiska
 counter_agency_ph	Non kontwa / ajans (si ou vle)
 create_backup	Kreye sovgad
 day_close_summary	Rezime fèmti jounen
-delete_party	Efase pati chwazi a
-dispatch_to_rider	Voye sa ki rezève yo → kourye
+delete_party	Efase patnè chwazi a
+dispatch_to_rider	Voye sa ki rezève yo → livrè
 docket_charge_ph	Dosye chaj
 declared_value_ph	Valè deklare
 contents_ph	Kontni
@@ -369,7 +369,7 @@ insurance_label	Asirans
 yes_label	Wi
 no_label	Non
 print_route_label	Enprime wout
-new_party_kind_label	Nouvo kalite pati
+new_party_kind_label	Nouvo kalite patnè
 done_open_books	Fini — louvri liv yo
 export_day	Ekspòte jounen
 extra_note_expense_ph	Nòt siplemantè sou dènye depans
@@ -378,17 +378,17 @@ failed_delivery	Livrezon echwe
 find_scan_awb	Jwenn / Eskane AWB
 forget_shop	Bliye boutik sa a
 fuel_ph	Gaz
-handover_carrier	Men rezerve → konpayi asirans
+handover_carrier	Men anrejistre → transpòtè
 import_day	Enpòte jounen
 import_items_csv	Enpòte atik / pousantaj CSV...
-import_parties_csv	Enpòte pati CSV…
+import_parties_csv	Enpòte patnè CSV…
 import_pincodes_csv	Enpòte kòd PIN CSV...
-import_carrier_bill_csv	Enpòte bòdwo konpayi asirans CSV...
-copy_carrier_bill_report	Kopi dènye rapò bòdwo konpayi asirans lan
-use_carrier_cost	Sèvi ak pri konpayi asirans
-rate_carrier_ph	Konpayi asirans (vid = to vann nou an)
-rate_party_ph	Pati (vid = tout kliyan)
-carrier_pick_ph	Konpayi asirans pou pri (soti nan konpare)
+import_carrier_bill_csv	Enpòte bòdwo transpòtè CSV...
+copy_carrier_bill_report	Kopi dènye rapò bòdwo transpòtè lan
+use_carrier_cost	Sèvi ak pri transpòtè
+rate_carrier_ph	Transpòtè (vid = to vann nou an)
+rate_party_ph	Patnè (vid = tout kliyan)
+carrier_pick_ph	Transpòtè pou pri (soti nan konpare)
 item_name	Non atik
 load_bulk_row	Chaje en ranje → biwo
 login_id_ph	Non itilizatè
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Pa disponib
 ndr_door_locked	Pòt fèmen
 ndr_other	Lòt
 ndr_refused	Refize
-out_for_delivery	Ap livre
+out_for_delivery	An wout pou livrezon
 print_drs	Enprime DRS
 print_run_sheet	Enprime fèy kouri
 reattempt	Retantativ
 rider_cod_handed_ph	COD remèt
-settle_rider_cod	Regle COD kourye a
+settle_rider_cod	Regle COD livrè a
 mode_desk	Biwo
-mode_rider	Kourye
+mode_rider	Livrè
 waiting_office	ap tann yo rive nan biwo
 capture_signature	Capture siyati
 incoming_manifest	Fèk ap rantre manifest
@@ -416,7 +416,7 @@ pickup_request	demann pickup
 pickup_run	Ranmase kouri
 auto_assign_area	Zòn oto-asiyen
 reorder_stops	Reorder sispann
-settle_rider_pay	Regle salè kourye a
+settle_rider_pay	Regle salè livrè a
 vehicle_inspect	Enspeksyon machin
 print_docket	Enprime dosye
 franchise_statement	Deklarasyon franchiz
@@ -427,8 +427,8 @@ pick_barcode_image	Chwazi imaj pou eskane
 share_receipt_whatsapp	Pataje resi sou WhatsApp
 delivery_feedback	Feedback livrezon
 lan_self_book	LAN pwòp tèt ou anrjistreman
-new_party_clear	Nouvo pati (efase fòm)
-new_party_kind_ph	Nouvo kalite pati (founisè / konpayi asirans)
+new_party_clear	Nouvo patnè (efase fòm)
+new_party_kind_ph	Nouvo kalite patnè (founisè / transpòtè)
 next_country	Pwochen peyi
 prev_country	Peyi anvan
 note_gstin_ph	Nòt / GSTIN / rapèl akò
@@ -438,13 +438,13 @@ org_optional_ph	Òganizasyon (opsyonèl)
 paid_now	Peye kounye a
 pairing_code_ph	Kòd makonnen
 pair_now	Makonnen kounye a
-party_name_selected_ph	Non pati (oswa sèvi ak sa ki chwazi)
+party_name_selected_ph	Non patnè (oswa sèvi ak sa ki chwazi)
 password_ph	Modpas
 pay_ap_card	Peye AP ak kat
 pay_ap_cash	Peye AP ak kach
 pay_ap_upi	Peye AP ak UPI
 period_bill	Peryòd bòdwo
-period_bill_party	Peryòd bòdwo (pati)
+period_bill_party	Peryòd bòdwo (patnè)
 period_bill_generate	Kreye fakti
 period_bill_generate_print	Kreye epi enprime
 booking_bulk_preview	{ok} pare · {bad} ak erè
@@ -456,13 +456,13 @@ reason_note_ph	Rezon / nòt (pèt, konte, …)
 record_day_close	Anrejistre fèmti jounen
 refresh_from_shop	Rafrechi depi boutik
 refund	Ranbousman
-remit_cod	Remèt COD (pati)
+remit_cod	Remèt COD (patnè)
 remove_selected	Retire sa ki chwazi
 restore_backup	Retabli sovgad
-rider_name_ph	Non kourye a
-rider_phone_ph	Telefòn kourye a
-riders	Kourye yo
-riders_own_fleet	Kourye yo (pa nou)
+rider_name_ph	Non livrè a
+rider_phone_ph	Telefòn livrè a
+riders	Livrè yo
+riders_own_fleet	Livrè yo (pa nou)
 rollup	Rezime
 save_booking_measures	Sove mezi anrjistreman
 save_brand	Anrejistre mak
@@ -471,7 +471,7 @@ save_business_name	Anrejistre non biznis
 save_features	Sove konfigirasyon travay
 save_names	Anrejistre non
 server_ip_ph	IP sèvè (pa egzanp 192.168.1.10)
-set_credit_limit	Aplike limit sou pati
+set_credit_limit	Aplike limit sou patnè
 set_login_selected	Aplike antre sou sa ki chwazi
 set_login_named	Aplike antre sou {name}
 shop	Boutik
@@ -613,7 +613,7 @@ disk_low	Sèlman {mb} MB lib sou aparèy sa a — sovgad yo ap echwe byento. Lib
 last_seen_devices	Dènye fwa wè: {time}
 sync_interval	Senkwonize chak {secs}s
 connection_to_shop	Koneksyon ak boutik la
-supplier_name_ph	Non founisè (oswa pati)
+supplier_name_ph	Non founisè (oswa patnè)
 supplier_ph	Founisè
 switch_device	Chanje aparèy sa a
 take_payment	Pran peman
@@ -625,7 +625,7 @@ unlock_with_login	Debloke ak antre
 update_my_password	Mete modpas mwen ajou
 update_my_pin	Mete PIN mwen an ajou
 duress_heading	PIN debloke ijans (Pwopriyetè sèlman)
-duress_help	Offline Server/Client LAN sèlman — se pa cloud. Etenn pa defo: Pwopriyetè a limen yon fwa lè li sove PIN sa a (Ekip, menm sou Client till). Si yo tape PIN sa a nan debloke olye de yon PIN anplwaye reyèl, antre liv yo efase sou Server epi biwo a louvri kòm Pwopriyetè ki sanble nòmal — pri, pati, zòn, anplwaye ak paramet yo rete. Schema ak config pa efase. Pa janm menm ak PIN okenn moun. Etenn ak bouton netwaye a.
+duress_help	Offline Server/Client LAN sèlman — se pa cloud. Etenn pa defo: Pwopriyetè a limen yon fwa lè li sove PIN sa a (Ekip, menm sou Client till). Si yo tape PIN sa a nan debloke olye de yon PIN anplwaye reyèl, antre liv yo efase sou Server epi biwo a louvri kòm Pwopriyetè ki sanble nòmal — pri, patnè, zòn, anplwaye ak paramet yo rete. Schema ak config pa efase. Pa janm menm ak PIN okenn moun. Etenn ak bouton netwaye a.
 duress_pin_ph	PIN ijans (4–12 chif)
 duress_confirm_ph	Tape ankò pou konfime
 save_duress_pin	Anrejistre PIN ijans
@@ -651,9 +651,9 @@ size_in	Gwosè nan
 goods_received	Machandiz resevwa
 expense_heading	Depans
 notes_attach_sale	Nòt ak atachman (vant chwazi)
-notes_attach_party	Nòt ak atachman (pati chwazi)
+notes_attach_party	Nòt ak atachman (patnè chwazi)
 attachments_last_expense	Atachman (dènye depans)
-credit_limit_heading	Limit kredi (pati chwazi / nonmen)
+credit_limit_heading	Limit kredi (patnè chwazi / nonmen)
 pay_selected_heading	Peye sa ki chwazi (regle dèt / pran avans)
 write_off_heading	Pase pèt (efase san peman)
 adjustment_notes_heading	Nòt ajisteman
@@ -716,7 +716,7 @@ mix_type_hint_moklanjo	Tape konbyen lajan nan chak (lajan kach / UPI / kat / kre
 money_in_sales	Lajan ki antre (vant)
 more_help_moklanjo	Katalòg, lavant, kredi, ekip, backup - plis stock ak kask siplemantè lè sa nesesè.
 net_word	Nèt
-offline_badge	OFLAYN
+offline_badge	SAN ENTÈNÈT
 optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa; se sèl itilizatè a ki ka chanje modpas pita.
 or_unlock_login	Oswa debloke ak id antre + modpas
 or_unlock_shop_login	Oswa debloke ak login nan magazen an
@@ -794,8 +794,8 @@ setup_complete	Paramèt fini
 onboard_fresh_tmpl	De zewo · {} — katalòg la kòmanse vid; ajoute atik nan Meni, epi Fini.
 onboard_book_tmpl	Liv · {} — ajoute atik ak kredi ouvèti, epi Fini.
 onboard_template_tmpl	Bay kote a yon non si ou vle, epi chwazi kijan pou kòmanse.
-tmpl_blurb	Liv courrier ak biwo anrjistreman: expéditeur, transpòtè, liv jou, AWB.
-tmpl_how	Liv pasèl nan biwo a; Jounen liv pou jodi a; onglè pou pousantaj, pati yo, rapò.
+tmpl_blurb	Liv courrier ak biwo anrjistreman: moun k ap voye, transpòtè, liv jou, AWB.
+tmpl_how	Liv pasèl nan biwo a; Jounen liv pou jodi a; onglè pou pousantaj, patnè yo, rapò.
 app_template_heading	Modèl boutik
 app_template_blurb	Chwazi yon biwo pou kòmanse. «Sote pou kounye a» kite lis kliyan an vid.
 app_template_skip	Sote pou kounye a
@@ -816,27 +816,27 @@ report_day_lens	Montre «Jodi a» kòm
 report_day_lens_help	Afichaj sèlman — li pa chanje ki lè «Fèmti jounen» rekòmanse «Jodi a». «Dapre fèmti jounen» swiv dènye fèmti jounen an; «Dapre minwi» koupe a 00:00 (minwi), lè lokal.
 report_lens_day_close	Dapre fèmti jounen
 report_lens_midnight	Dapre minwi
-trk_booked	Anrezève
+trk_booked	Anrejistre
 trk_picked_up	Ranmase
 trk_in_transit	Nan transpò piblik
 trk_delivered	Livre
 trk_rto	Ap retounen bay moun ki voye l la
 lane_to_dispatch	Pou voye
-lane_with_carrier	Avèk konpayi asirans
+lane_with_carrier	Lakay transpòtè a
 lane_failed	Echwe
 lane_done_today	Fè jodi a
 ops_board_help	Pasèl pa kote yo ye nan travay jodi a. Tape pasèl yo (oswa eskane yo) pou w chwazi yo, answit aji sou tout sa yo chwazi an yon fwa - chak liy ofri sèlman mouvman ki anfòm li.
 lane_empty	Pa gen anyen isit la kounye a.
 picked_fmt	{n} te chwazi
 pick_all	Chwazi tout
-bag_for_carrier	Men bay konpayi asirans
-send_with_rider	Voye ak kourye
+bag_for_carrier	Remèt bay transpòtè
+send_with_rider	Voye ak livrè
 out_again	Soti ankò
 return_to_sender	Retounen l bay moun ki voye l la
 runs_bags_heading	Dènye kouri ak sak
 print_word	Enprime
 bag_word	Sak transpòtè
-run_word	Wout kourye a
+run_word	Wout livrè a
 parcels_fmt	{n} pasèl
 parcel_history	Istwa
 attempt_fmt	Eseye {n}
@@ -845,18 +845,18 @@ note_reason_ph	Remak oswa rezon
 ops_pick_first	Chwazi pasèl yo an premye - tape yo oswa eskane yo
 cod_to_collect	Delivre - COD pou kolekte
 cod_on_road	COD toujou sou wout la
-cod_owed_consignors	Kolekte - pou peye expéditeurs
+cod_owed_consignors	Kolekte - pou peye moun k ap voye yo
 cod_rto_fees	Frè RTO pou kolekte
 cod_to_hand_in	COD pou remèt
 parcel_one_fmt	{n} pasèl
 facet_bank_title	Rapò
-facet_bank_help	Liv jounen, laj pati, ekriti labank, ak P&P peryòd.
+facet_bank_help	Liv jounen, laj patnè, ekriti labank, ak P&P peryòd.
 facet_ops_title	Anvwaye ak dispatch
-facet_ops_help	Eskane oswa tape AWB → Jwenn, apre sa avanse / enprime etikèt / COD. Remèt bay kourye oswa transpòtè.
+facet_ops_help	Eskane oswa tape AWB → Jwenn, apre sa avanse / enprime etikèt / COD. Remèt bay livrè oswa transpòtè.
 facet_cod_title	COD anrejistre
-facet_cod_help	Ranmase sou livrezon, Lè sa a, remèt bay expéditeur la.
-facet_riders_title	Kourye yo (pa nou)
-facet_riders_help	Ajoute kourye yo, epi voye AWB ki rezève yo soti nan Ops.
+facet_cod_help	Ranmase sou livrezon, Lè sa a, remèt bay moun k ap voye la.
+facet_riders_title	Livrè yo (pa nou)
+facet_riders_help	Ajoute livrè yo, epi voye AWB ki rezève yo soti nan Ops.
 against_bill_ph	Kont # anwo a (opsyonèl)
 aliases_ph	Alyas — lòt non, separe ak vigil
 amount_blank_full_ph	Montan (vid = tout sold)
@@ -894,14 +894,14 @@ options_moklanjo_ph	Opsyon (opsyonèl) - Gwo = 20, Pakèt kado = 10
 part_second_way_ph	Yon pati yon dezyèm fason (opsyonèl)
 phone_ph	Telefòn
 address_ph	Adrès
-party_custom_fields_heading	Jaden koutim (pati chwazi)
-party_custom_help	Ajoute nenpòt etikèt ak valè sou pati sa a - WhatsApp, GSTIN, kòd wout, ...
+party_custom_fields_heading	Jaden koutim (patnè chwazi)
+party_custom_help	Ajoute nenpòt etikèt ak valè sou patnè sa a - WhatsApp, GSTIN, kòd wout, ...
 party_custom_key_ph	Non jaden (egzanp WhatsApp)
 party_custom_value_ph	Valè
 party_custom_add	Ajoute jaden
 party_custom_remove	Retire jaden
 party_custom_empty	Pa gen okenn jaden koutim ankò
-party_custom_pick_first	Chwazi yon pati pou ajoute jaden koutim
+party_custom_pick_first	Chwazi yon patnè pou ajoute jaden koutim
 place_name_ph	Non kote sa a
 price_ph	Pri
 qty_example_ph	Kant. (pa egzanp 1.5 pou kg)
@@ -928,9 +928,9 @@ book_kind_month	Liv mwa sa a
 book_kind_aging	Ki rete / debi-kredi
 book_kind_balance	Bilan
 ops_desk_help	Eskane AWB ak yon scanner kòd bar USB (oswa tape li) → Jwenn. Lè sa a, avanse, enprime etikèt, oswa kolekte COD. Etikèt enprime Kòd 128.
-role_help_consignor	Wòl: Expéditeur — AR (yo dwe nou). Menm konpayi kapab tou Carrier.
-role_help_carrier	Wòl: Carrier - AP (nou dwe yo). Menm konpayi kapab tou se Expéditeur.
-role_help_both	Wòl: Expéditeur + Transporteur - yon sèl pati, AR ak AP Ledgers, nèt nan Rapò.
+role_help_consignor	Wòl: Moun k ap voye — AR (yo dwe nou). Menm konpayi kapab tou Transpòtè.
+role_help_carrier	Wòl: Transpòtè - AP (nou dwe yo). Menm konpayi kapab tou se Moun k ap voye.
+role_help_both	Wòl: Moun k ap voye + transpòtè - yon sèl patnè, AR ak AP Ledgers, nèt nan Rapò.
 role_help_supplier	Wòl: Founisè - AP pou acha.
 lane_declared_label	Kont anrjistreman
 lane_owner_label	Anrjistreman lajan kach

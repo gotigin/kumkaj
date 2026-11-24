@@ -972,7 +972,7 @@ local_badge	GUDHA
 mix_type_hint_khaynjo	U qaybi lacag caddaan / UPI / kaar / deyn haddii loo baahdo. Deyntu waxay u baahan tahay macmiil kor.
 money_in_sales	Lacag soo gashay (iib)
 net_word	Saafiga
-offline_badge	LA'AAN NET
+offline_badge	INTERNET LA’AAN
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
 permission_preset	Shaqo
@@ -1151,7 +1151,7 @@ shift_handover	Wareejinta wareegga
 shift_since	Wareeggan ilaa
 expected_in_drawer	Waxa la filayo khaanadda
 right_discount	Sii dhimis
-floor_in_kitchen	Jikada
+floor_in_kitchen	Jikada ku jira
 floor_eating	La geeyay
 pick_category	Dooro qayb
 close_category_list	Xir liiska qaybaha

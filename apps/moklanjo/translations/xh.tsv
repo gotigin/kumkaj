@@ -33,7 +33,7 @@ buy_money_out	Iindleko / ityala lomthwali
 record_purchase	Bhala okuthengiweyo
 add_expense	Ixwebhu lenkcitho
 bank_book	Incwadi yebhanki
-credit_help	I-id yeqabane yodwa (amagama angaphinda). Iindima: Umthumeli (AR), Umthwali (AP), okanye zombini kweso sazisi. Iileja zihlala zodwa; iingxelo zibonisa umnatha.
+credit_help	I-id yeqabane yodwa (amagama angaphinda). Iindima: Umthumeli (AR), Inkampani yekhuriya (AP), okanye zombini kweso sazisi. Iileja zihlala zodwa; iingxelo zibonisa umnatha.
 party_kind_ph	Indima eqhelekileyo (uyazikhethela) — okanye ucofe itshiphu engentla
 parties_list_heading	Amaqabane agciniweyo
 reports_help	Incwadi yosuku, abanamatyala nabanikwe, incwadi yebhanki, amaxwebhu eenkcitho, inzuzo nelahleko.
@@ -66,7 +66,7 @@ total	Isixa
 cash	Imali ephathekayo
 upi	UPI
 card	Ikhadi
-credit	Amaqabane
+credit	Abathengi nababoneleli
 clear	Cima
 ready_to_sell	Ulungele ukubhala
 today_prefix	Namhlanje
@@ -90,7 +90,7 @@ rounded	KUJIKELEZIWE
 split	Yahlula
 counter	Ikhawuntara
 parcel	Ipasile
-order	Iodolo
+order	I-odolo
 sales	Ukubhukisha
 sales_refunds	Ukubhukisha kunye nokubuyiselwa imali
 day_close	Ukuvala usuku
@@ -261,7 +261,7 @@ add_conversion	Yongeza uguqulo
 add_item_plain	Yongeza into
 add_note	Yongeza inqaku
 add_opening_balance	Yongeza ibhalansi yokuqala
-add_rider	Yongeza umkhweli
+add_rider	Yongeza umhambisi
 add_staff	Yongeza umsebenzi
 add_unit	Yongeza iyunithi
 add_use_name	Yongeza / sebenzisa eli gama
@@ -289,7 +289,7 @@ till_to_bank	Ikhawuntara → ibhanki
 mark_cleared	Phawula kucacisiwe
 unmark	Susa uphawu
 role_both	Bobabini
-role_carrier	Umthwali
+role_carrier	Inkampani yekhuriya
 role_cashier	Umcangci
 role_consignor	Umthumeli
 role_manager	Umphathi
@@ -360,7 +360,7 @@ counter_agency_ph	Ikhawuntala / igama lomenzeli (uyazikhethela)
 create_backup	Yenza ugcino lwasemva
 day_close_summary	Isishwankathelo sokuvala usuku
 delete_party	Cima iqabane elikhethiweyo
-dispatch_to_rider	Ukuthunyelwa kubhukishiwe → umkhweli
+dispatch_to_rider	Ukuthunyelwa kubhukishiwe → umhambisi
 docket_charge_ph	Intlawulo yedokethi
 declared_value_ph	Ixabiso elichaziweyo
 contents_ph	Imixholo
@@ -386,9 +386,9 @@ import_pincodes_csv	Thatha ngaphandle iikhowudi ze-CSV...
 import_carrier_bill_csv	Ityala lokuthatha ngaphandle kwe-CSV...
 copy_carrier_bill_report	Khuphela ingxelo yetyala lokugqibela
 use_carrier_cost	Sebenzisa iindleko zenkampani
-rate_carrier_ph	Umthwali (ingenanto = ireyithi yethu yokuthengisa)
+rate_carrier_ph	Inkampani yekhuriya (ingenanto = ireyithi yethu yokuthengisa)
 rate_party_ph	Iqabane (ingenanto = bonke abathengi)
-carrier_pick_ph	Umthwali weendleko (ukusuka kuthelekiso)
+carrier_pick_ph	Inkampani yekhuriya yeendleko (ukusuka kuthelekiso)
 item_name	Igama lento
 load_bulk_row	Layisha umqolo omninzi → idesika
 login_id_ph	Igama lomsebenzisi
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Akukho
 ndr_door_locked	Ucango lutshixiwe
 ndr_other	Okunye
 ndr_refused	Waliwe
-out_for_delivery	uphumile uyahambisa izinto
+out_for_delivery	Isendleleni iyahanjiswa
 print_drs	Shicilela iDRS
 print_run_sheet	Shicilela iphepha lokuqhuba
 reattempt	Ukuzama kwakhona
 rider_cod_handed_ph	I-COD ingenisiwe
-settle_rider_cod	Lungisa umkhweli COD
+settle_rider_cod	Lungisa umhambisi COD
 mode_desk	Idesika
-mode_rider	Umkhweli
+mode_rider	Umhambisi
 waiting_office	ndilinde ukufikelela kwiofisi
 capture_signature	Thatha umsayino
 incoming_manifest	Umboniso ongenayo
@@ -416,7 +416,7 @@ pickup_request	Isicelo sokuthatha
 pickup_run	Ukubaleka
 auto_assign_area	Ukwabela indawo ngokuzenzekela
 reorder_stops	Hlela kwakhona iindawo zokumisa
-settle_rider_pay	Uhlawule umkhweli
+settle_rider_pay	Uhlawule umhambisi
 vehicle_inspect	Ukuhlolwa kwemoto
 print_docket	Shicilela idokethi
 franchise_statement	Ingxelo yeFranchise
@@ -428,7 +428,7 @@ share_receipt_whatsapp	Yabelana ngerisithi kuWhatsApp
 delivery_feedback	Ingxelo yonikezelo
 lan_self_book	Ukubhukisha ngokwakho kwi-LAN
 new_party_clear	Iqabane elitsha (cima ifom)
-new_party_kind_ph	Uhlobo olutsha lweqabane (uMboneleli / uMthwali)
+new_party_kind_ph	Uhlobo olutsha lweqabane (uMboneleli / Inkampani yekhuriya)
 next_country	Ilizwe elilandelayo
 prev_country	Ilizwe elidlulileyo
 note_gstin_ph	Inqaku / i-GSTIN / isikhumbuzi sesivumelwano
@@ -459,10 +459,10 @@ refund	Buyisa
 remit_cod	Thumela i-COD (iqabane)
 remove_selected	Susa okukhethiweyo
 restore_backup	Buyisela ugcino lwasemva
-rider_name_ph	Igama lomkhweli
-rider_phone_ph	Umkhweli wefowuni
-riders	Abakhweli
-riders_own_fleet	Abakhweli (iinqanawa zabo)
+rider_name_ph	Igama lomhambisi
+rider_phone_ph	Umhambisi wefowuni
+riders	Abahambisi
+riders_own_fleet	Abahambisi (abakithi)
 rollup	Isishwankathelo
 save_booking_measures	Gcina amanyathelo okubhukisha
 save_brand	Gcina uphawu
@@ -673,7 +673,7 @@ pay_ap_heading	Hlawula esibatyala kona (i-AP)
 country_tax	Ilizwe nerhafu
 extra_tills_heading	Ezinye iikhawuntara
 other_devices_help_heading	Seta ezinye izixhobo
-other_devices_help	Kwesi sixhobo (Iseva): Ezinye izixhobo → Vumela iipelisi ezongezelelweyo. Qaphela ikhowudi yokumatanisa kunye nedilesi ye-Wi-Fi. Cofa Vumela ezinye izixhobo ukuba ziqhagamshelane xa zivela. Kwikhompyuter, cofa Qala ngale khompyutha. Kwisixhobo esinye nesinye: faka i-app, khetha Imo yoMthengi, Fumana iseva yevenkile (okanye uchwetheze idilesi), faka ikhowudi yokubhanqa, Ibhangqa ngoku. Iiodolo zilinda kwisixhobo ukuba iWi-Fi iyawa kwaye ihambe xa iSeva iphendula kwakhona.
+other_devices_help	Kwesi sixhobo (Iseva): Ezinye izixhobo → Vumela iipelisi ezongezelelweyo. Qaphela ikhowudi yokumatanisa kunye nedilesi ye-Wi-Fi. Cofa Vumela ezinye izixhobo ukuba ziqhagamshelane xa zivela. Kwikhompyuter, cofa Qala ngale khompyutha. Kwisixhobo esinye nesinye: faka i-app, khetha Imo yoMthengi, Fumana iseva yevenkile (okanye uchwetheze idilesi), faka ikhowudi yokubhanqa, Ibhangqa ngoku. Ii-odolo zilinda kwisixhobo ukuba iWi-Fi iyawa kwaye ihambe xa iSeva iphendula kwakhona.
 your_brand	Uphawu lwakho (kwi-app)
 units_heading	Iiyunithi
 booking_measures	Amanyathelo okubhukisha
@@ -822,7 +822,7 @@ trk_in_transit	Iyaqhubeka
 trk_delivered	Inikezelwe
 trk_rto	Ukubuyela kumthumeli
 lane_to_dispatch	Ukuthumela
-lane_with_carrier	Kunye nomthwali
+lane_with_carrier	Ikwinkampani yekhuriya
 lane_failed	Ayiphumelelanga
 lane_done_today	Kwenziwe namhlanje
 ops_board_help	Iipasile ngendawo ezikuyo kumsebenzi wanamhlanje. Cofa iipasile (okanye uziskene) ukuze uzikhethe, emva koko wenze zonke ezichongiweyo ngaxeshanye - indlela nganye ibonelela ngeentshukumo eziyifaneleyo.
@@ -830,13 +830,13 @@ lane_empty	Akukho nto apha ngoku.
 picked_fmt	{n} ikhethiwe
 pick_all	Khetha konke
 bag_for_carrier	Isandla kumphathi
-send_with_rider	Thumela kunye nomkhweli
+send_with_rider	Thumela kunye nomhambisi
 out_again	Phuma kwakhona
-return_to_sender	Buyela kumthumeli
+return_to_sender	Buyisela kumthumeli
 runs_bags_heading	Imitsi kunye neebhegi zakutsha nje
 print_word	Shicilela
 bag_word	Ibhegi yokuthwala
-run_word	Ukubaleka komkhweli
+run_word	Ukubaleka komhambisi
 parcels_fmt	{n} iipasile
 parcel_history	Imbali
 attempt_fmt	Umzamo {n}
@@ -852,11 +852,11 @@ parcel_one_fmt	Inxalenye ye-{n}
 facet_bank_title	Iingxelo
 facet_bank_help	Iincwadi zosuku, ubudala bamaqabane, iiposi zebhanki, nenzuzo nelahleko yexesha.
 facet_ops_title	Imithwalo kunye nokuthunyelwa
-facet_ops_help	Skena okanye uchwetheze i-AWB → Fumana, uze uqhubele phambili / uprinte ileyibhile / COD. Thumela kumkhweli okanye umthwali.
+facet_ops_help	Skena okanye uchwetheze i-AWB → Fumana, uze uqhubele phambili / uprinte ileyibhile / COD. Thumela kumhambisi okanye inkampani yekhuriya.
 facet_cod_title	Irejista yeCOD
 facet_cod_help	Qokelela xa uziswa, emva koko uthumele kumthumeli.
-facet_riders_title	Abakhweli (iinqanawa zabo)
-facet_riders_help	Yongeza abakhweli, emva koko uthumele ii-AWB ezibhukisiweyo ukusuka kwi-Ops.
+facet_riders_title	Abahambisi (abakithi)
+facet_riders_help	Yongeza abahambisi, emva koko uthumele ii-AWB ezibhukisiweyo ukusuka kwi-Ops.
 against_bill_ph	Ngokuchasene netyala # elingentla (akuyomfuneko)
 aliases_ph	Amanye amagama — amagama amanye, ahlulwe ngekoma
 amount_blank_full_ph	Imali (ungenanto = ibhalansi epheleleyo)
@@ -928,9 +928,9 @@ book_kind_month	Iincwadi zale nyanga
 book_kind_aging	Okungahlawulwanga / i-debit-khredithi
 book_kind_balance	Iphepha lobalanso
 ops_desk_help	Skena i-AWB ngeskena sebhakhowudi ye-USB (okanye uyichwetheze) → Fumana. Emva koko, printa ilebhile, okanye uqokelele i-COD. Ilebhile ziprinte iKhowudi ye-128.
-role_help_consignor	Indima: Umthumeli - AR (banetyala kuthi). Ifemu efanayo inokuba nguMthwali.
-role_help_carrier	Indima: Umthwali - AP (sibatyala). Ifemu efanayo inokuba nguMthumeli.
-role_help_both	Iindima: Umthumeli + Umthwali - iqabane elinye, iileja ze-AR kunye ne-AP, inetha kwiiNgxelo.
+role_help_consignor	Indima: Umthumeli - AR (banetyala kuthi). Ifemu efanayo inokuba ngInkampani yekhuriya.
+role_help_carrier	Indima: Inkampani yekhuriya - AP (sibatyala). Ifemu efanayo inokuba nguMthumeli.
+role_help_both	Iindima: Umthumeli + Inkampani yekhuriya - iqabane elinye, iileja ze-AR kunye ne-AP, isixa kwiiNgxelo.
 role_help_supplier	Indima: Umthengisi - AP yokuthenga.
 lane_declared_label	Ukubhukisha iakhawunti
 lane_owner_label	Ukubhukisha imali

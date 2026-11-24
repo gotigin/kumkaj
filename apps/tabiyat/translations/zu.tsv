@@ -22,7 +22,7 @@ buy_money_out	Izindleko / ibhili yesivakashi somphakeli
 record_purchase	Londoloza ukuthenga
 add_expense	Irisidi yezindleko
 bank_book	Incwadi yebhange
-credit_help	I-id yekhasimende noma yomhlinzeki ihlukile (amagama angaphinda). IKhasimende liphethe incwadi yezikweletu (elisikweletayo); Umphakeli usithengisela isitoko (sibakweleta); kokubili kuhle. Ama-ledger ahlala ehlukene; imibiko ikhombisa inethi.
+credit_help	I-id yekhasimende noma yomhlinzeki ihlukile (amagama angaphinda). IKhasimende liphethe incwadi yezikweletu (elisikweletayo); Umphakeli usithengisela isitoko (sibakweleta); kokubili kuhle. Ama-ledger ahlala ehlukene; imibiko ibonisa okusele.
 party_kind_ph	Izindima: Ikhasimende, Umphakeli, kokubili...
 reports_help	Ibhuku losuku, abakweletwayo nabakweletwayo, ileja yasebhange, amarisidi ezindleko, inzuzo nokulahlekelwa.
 reports_today	Ileja yosuku (namuhla)
@@ -157,7 +157,7 @@ diag_cleared	Amalogi okuxilonga asuliwe
 sidebar_settings	Ibha eseceleni
 sidebar_settings_help	Izithonjana ezifanayo njengesitimela esiseceleni. Hudula umugqa ukuze uhlele kabusha. Phenya iswishi ukuze ubonise noma ufihle. Izilungiselelo kanye Nokhiye kuhlala kubha.
 sidebar_always_on_short	Ihlala ivuliwe
-sidebar_menu_items	Izinto
+sidebar_menu_items	Izimpahla
 sidebar_enable_all	Vumela Konke
 sidebar_disable_all	Khubaza Konke
 sidebar_order_saved	I-oda lebha eseceleni lilondoloziwe
@@ -194,7 +194,7 @@ credit_summary_fmt	{} amakhasimende · ikhredithi evulekile {} · intuthuko eban
 recent_label	Kwakamuva:
 inventory	Impahla
 branches	Amagatsha
-credit_customers	Amakhasimende nabaphakeli (ama-akhawunti wezikweletu)
+credit_customers	Izinhlangothi (ama-akhawunti wezikweletu)
 customer_name_ph	Igama lekhasimende noma lomphakeli
 new_customer_ph	Ikhasimende elisha noma igama lomhlinzeki
 item_price_ph	Inani
@@ -598,7 +598,7 @@ local_badge	INDAWO
 mix_type_hint_tabiyat	Hlukanisa ukheshi / UPI / ikhadi / isikweletu uma kudingeka. Ikhredithi idinga ikhasimende ngenhla.
 money_in_sales	Imali etholakalayo (yokuthengisa)
 net_word	Okusele
-offline_badge	OKUNGAxhumekile ku-inthanethi
+offline_badge	NGAPHANDLE KWE-INTHANETHI
 optional_login_help	Ukungena ngemvume ngokuzithandela (id + iphasiwedi). Umnikazi usetha kanye; umsebenzisi kuphela ongashintsha iphasiwedi kamuva.
 or_unlock_login	Noma vula nge-id yokungena + nephasiwedi
 or_unlock_shop_login	Noma vula ngokungena kwesitolo
@@ -787,7 +787,7 @@ bill_line_customer	Ikhasimende
 bill_line_bill_no	Inombolo yebhili
 bill_line_time	Isikhathi
 bill_line_cashier	Ukheshi
-bill_line_items	Izinto
+bill_line_items	Izimpahla
 bill_line_total	Ingqikithi
 bill_line_footer	Unyaweni
 bill_line_upi	UPI

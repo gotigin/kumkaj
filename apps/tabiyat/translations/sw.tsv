@@ -333,7 +333,7 @@ export_day	Hamisha siku
 extra_note_bill_ph	Kumbuka ya ziada kwenye bili / mauzo haya
 extra_tills_heading	Kaunta za ziada
 other_devices_help_heading	Sanidi vifaa vingine
-other_devices_help	Kwenye kifaa hiki (Seva): Vifaa vingine → Ruhusu madawati ya malipo ya ziada. Kumbuka msimbo wa kuoanisha na anwani ya Wi-Fi. Gusa Ruhusu vifaa vingine kuunganishwa ikiwa inaonekana. Kwenye kompyuta, gusa Anza na kompyuta hii. Kwenye kifaa kingine: sakinisha programu, chagua Hali ya Mteja, Tafuta seva ya duka (au charaza anwani), weka msimbo wa kuoanisha, Oanisha sasa. Maagizo husubiri kwenye kifaa ikiwa Wi-Fi itashuka na kwenda Seva itakapojibu tena. Printa za ziada zimewekwa kwenye Seva (Mipangilio → Vichapishaji) - madawati ya ziada yatatuma bili huko.
+other_devices_help	Kwenye kifaa hiki (Seva): Vifaa vingine → Ruhusu madawati ya malipo ya ziada. Kumbuka msimbo wa kuoanisha na anwani ya Wi-Fi. Gusa Ruhusu vifaa vingine kuunganishwa ikiwa inaonekana. Kwenye kompyuta, gusa Anza na kompyuta hii. Kwenye kifaa kingine: sakinisha programu, chagua Hali ya Mteja, Tafuta seva ya duka (au charaza anwani), weka msimbo wa kuoanisha, Oanisha sasa. Oda husubiri kwenye kifaa ikiwa Wi-Fi itashuka na kwenda Seva itakapojibu tena. Printa za ziada zimewekwa kwenye Seva (Mipangilio → Vichapishaji) - madawati ya ziada yatatuma bili huko.
 forget_shop	Sahau duka hili
 goods_received	Bidhaa zimepokelewa
 import_day	Ingiza siku
@@ -844,7 +844,7 @@ show_upi_qr	Onyesha QR ya UPI
 close_upi_qr	Funga
 upi_qr_help	Mteja huchanganua na kulipa. Gusa Chukua malipo baada ya wao kulipa. Skrini ya pili: fungua URL ya Seva/onyesho kwenye LAN.
 role_help_customer	Jukumu: Mteja — AR (wanatudaiwa). Kampuni hiyo hiyo inaweza kuwa msambazaji pia.
-role_help_both	Majukumu: Mtumaji + Mbebaji — mhusika mmoja, vitabu vya AR na AP, halisi katika Ripoti.
+role_help_both	Majukumu: Mteja + Msambazaji — mhusika mmoja, vitabu vya khata na vya kulipa, halisi katika Ripoti.
 role_help_supplier	Jukumu: Msambazaji — AP kwa manunuzi.
 price_ph	Bei
 price_ph_gst_inside	Bei ({tax} imejumuishwa)

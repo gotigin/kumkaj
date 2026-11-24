@@ -3,7 +3,7 @@ unlock	Fur
 sell	Iibi
 buy	Iibso
 books	Buugga maalinta
-books_help	Mawqifka maanta. Iibi = lacag gudaha ah. Iibso = wax iibsiga & kharashyada. Xisbiyada = macaamiisha amaahda & alaab-qeybiyeyaasha.
+books_help	Mawqifka maanta. Iibi = lacag gudaha ah. Iibso = wax iibsiga & kharashyada. Dhinacyada = macaamiisha amaahda & alaab-qeybiyeyaasha.
 buy_help	Warqadaha kharashka iyo biilasha alaab-qeybiyaha (lacag baxda). Ku xisaabtan waxay ku sii jirtaa buugga dhinaca.
 sell_money_in	Iibiya alaabta
 buy_money_out	Kharash / biilka alaab-qeybiyaha
@@ -586,7 +586,7 @@ local_badge	GUDHA
 mix_type_hint_kirano	U qaybi lacag caddaan / UPI / kaar / deyn haddii loo baahdo. Deyntu waxay u baahan tahay macmiil kor.
 money_in_sales	Lacag soo gashay (iib)
 net_word	Saafiga
-offline_badge	LA'AAN NET
+offline_badge	INTERNET LA’AAN
 optional_login_help	Gelitaan ikhtiyaari ah (aqoonsi + furaha sirta). Milkiiluhu hal mar ayuu dejiyaa; isticmaaluhu kaliya ayaa hadhow beddeli kara furaha sirta.
 or_unlock_login	Ama ku fur aqoonsiga gelitaanka + furaha sirta
 or_unlock_shop_login	Ama ku fur gelitaanka dukaanka

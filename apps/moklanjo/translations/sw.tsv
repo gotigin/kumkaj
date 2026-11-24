@@ -401,11 +401,11 @@ ndr_customer_unavailable	Mteja hayupo
 ndr_door_locked	Mlango umefungwa
 ndr_other	Nyingine
 ndr_refused	Imekataliwa
-out_for_delivery	Iko njiani kufikishwa
+out_for_delivery	Njiani kupelekwa
 print_drs	Chapisha DRS
 print_run_sheet	Chapisha karatasi ya safari
 reattempt	Jaribu tena
-rider_cod_handed_ph	COD aliyokabidhi mpanda
+rider_cod_handed_ph	COD aliyokabidhi mpelekaji
 settle_rider_cod	Sulisha COD ya mpelekaji
 mode_desk	Dawati
 mode_rider	Mpelekaji
@@ -673,7 +673,7 @@ pay_ap_heading	Lipa tunachodaiwa nao (AP)
 country_tax	Nchi na kodi
 extra_tills_heading	Kaunta za ziada
 other_devices_help_heading	Sanidi vifaa vingine
-other_devices_help	Kwenye kifaa hiki (Seva): Vifaa vingine → Ruhusu milisho ya ziada. Kumbuka msimbo wa kuoanisha na anwani ya Wi-Fi. Gusa Ruhusu vifaa vingine kuunganishwa ikiwa inaonekana. Kwenye kompyuta, gusa Anza na kompyuta hii. Kwenye kifaa kingine: sakinisha programu, chagua Hali ya Mteja, Tafuta seva ya duka (au charaza anwani), weka msimbo wa kuoanisha, Oanisha sasa. Maagizo husubiri kwenye kifaa ikiwa Wi-Fi itashuka na kwenda Seva itakapojibu tena.
+other_devices_help	Kwenye kifaa hiki (Seva): Vifaa vingine → Ruhusu milisho ya ziada. Kumbuka msimbo wa kuoanisha na anwani ya Wi-Fi. Gusa Ruhusu vifaa vingine kuunganishwa ikiwa inaonekana. Kwenye kompyuta, gusa Anza na kompyuta hii. Kwenye kifaa kingine: sakinisha programu, chagua Hali ya Mteja, Tafuta seva ya duka (au charaza anwani), weka msimbo wa kuoanisha, Oanisha sasa. Oda husubiri kwenye kifaa ikiwa Wi-Fi itashuka na kwenda Seva itakapojibu tena.
 your_brand	Chapa yako (kwenye app)
 units_heading	Vitengo
 booking_measures	Vipimo vya uhifadhi
@@ -928,10 +928,10 @@ book_kind_month	Kitabu cha mwezi huu
 book_kind_aging	Inayodaiwa / debiti-krediti
 book_kind_balance	Karatasi ya mizania
 ops_desk_help	Changanua AWB kwa kichanganuzi cha USB (au andika) → Tafuta. Kisha endeleza, chapisha lebo au kusanya COD. Lebo huchapishwa kwa Code 128.
-role_help_consignor	Jukumu: Mtumaji — AR (wanatudaiwa). Kampuni hiyo hiyo inaweza kuwa mbebaji pia.
-role_help_carrier	Jukumu: Mbebaji — AP (tunawadaiwa). Kampuni hiyo hiyo inaweza kuwa mtumaji pia.
-role_help_both	Majukumu: Mpokeaji + Mtoa huduma - mhusika mmoja, vitabu vya AR na AP, wavu katika Ripoti.
-role_help_supplier	Jukumu: Mtoa huduma - AP kwa ununuzi.
+role_help_consignor	Jukumu: Mtumaji — AR (wanatudaiwa). Kampuni hiyo hiyo inaweza kuwa msafirishaji pia.
+role_help_carrier	Jukumu: Msafirishaji — AP (tunawadaiwa). Kampuni hiyo hiyo inaweza kuwa mtumaji pia.
+role_help_both	Majukumu: Mtumaji + Msafirishaji — mhusika mmoja, vitabu vya AR na AP, halisi katika Ripoti.
+role_help_supplier	Jukumu: Msambazaji — AP kwa manunuzi.
 lane_declared_label	Kuhifadhi akaunti
 lane_owner_label	Uhifadhi wa pesa
 money_lane_bill	Bilio: {lane}

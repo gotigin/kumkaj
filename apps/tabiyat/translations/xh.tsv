@@ -52,7 +52,7 @@ total	Isixa
 cash	Imali ephathekayo
 upi	UPI
 card	Ikhadi
-credit	Amaqabane
+credit	Abathengi nababoneleli
 clear	Cima
 today_prefix	Namhlanje
 owed	okungahlawulwanga
@@ -333,7 +333,7 @@ export_day	Khupha usuku
 extra_note_bill_ph	Inqaku elongezelelweyo kweli tyala / intengiso
 extra_tills_heading	Ezinye iikhawuntara
 other_devices_help_heading	Seta ezinye izixhobo
-other_devices_help	Kwesi sixhobo (Iseva): Ezinye izixhobo → Vumela iipelisi ezongezelelweyo. Qaphela ikhowudi yokumatanisa kunye nedilesi ye-Wi-Fi. Cofa Vumela ezinye izixhobo ukuba ziqhagamshelane xa zivela. Kwikhompyuter, cofa Qala ngale khompyutha. Kwisixhobo esinye nesinye: faka i-app, khetha Imo yoMthengi, Fumana iseva yevenkile (okanye uchwetheze idilesi), faka ikhowudi yokubhanqa, Ibhangqa ngoku. Iiodolo zilinda kwisixhobo ukuba iWi-Fi iyawa kwaye ihambe xa iSeva iphendula kwakhona. Abashicileli abongezelelweyo bacwangciswe kwiSeva (Izicwangciso → Iiprinta) — iitill ezongezelelweyo zithumela amatyala apho.
+other_devices_help	Kwesi sixhobo (Iseva): Ezinye izixhobo → Vumela iipelisi ezongezelelweyo. Qaphela ikhowudi yokumatanisa kunye nedilesi ye-Wi-Fi. Cofa Vumela ezinye izixhobo ukuba ziqhagamshelane xa zivela. Kwikhompyuter, cofa Qala ngale khompyutha. Kwisixhobo esinye nesinye: faka i-app, khetha Imo yoMthengi, Fumana iseva yevenkile (okanye uchwetheze idilesi), faka ikhowudi yokubhanqa, Ibhangqa ngoku. Ii-odolo zilinda kwisixhobo ukuba iWi-Fi iyawa kwaye ihambe xa iSeva iphendula kwakhona. Abashicileli abongezelelweyo bacwangciswe kwiSeva (Izicwangciso → Iiprinta) — iitill ezongezelelweyo zithumela amatyala apho.
 forget_shop	Libala le venkile
 goods_received	Iimpahla ezifunyenweyo
 import_day	Ngenisa usuku
@@ -344,7 +344,7 @@ login_id_ph	Igama lomsebenzisi
 mark_cleared	Phawula kucacisiwe
 new_party_clear	Iqabane elitsha (cima ifom)
 new_party_kind_supplier_ph	Uhlobo olutsha lweqabane (Umboneleli)
-next_order	Iodolo elandelayo (cima ideski)
+next_order	I-odolo elandelayo (cima ideski)
 note_gstin_ph	Inqaku / i-GSTIN / isikhumbuzi sesivumelwano
 notes_attach_party	Amanqaku nokuqhotyoshelweyo (iqabane elikhethiweyo)
 notes_attach_sale	Amanqaku nokuqhotyoshelweyo (intengiso ekhethiweyo)
@@ -883,7 +883,7 @@ cancel	Rhoxisa
 removing	Iyasuswa…
 removed	Isusiwe
 updating_order	Iyahlaziywa…
-order_updated	Iodolo ihlaziyiwe
+order_updated	I-odolo ihlaziyiwe
 opening_client	Ivula iklayenti…
 preparing_desk	Ilungisa ideski…
 opening_server	Ivula iseva…

@@ -1,11 +1,11 @@
 # Swahili — Kiswahili (sw). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Maagizo ya mgahawa, jikoni na vitabu. Bure nje ya mtandao.
+app_tagline	Oda za mgahawa, jikoni na vitabu. Bure nje ya mtandao.
 unlock	Fungua
 pin_hint	PIN ya mmiliki huanza 0000
-sell	Maagizo
+sell	Oda
 buy	Nunua
 books	Kitabu cha siku
-books_help	Hali ya leo. Agizo = maagizo yanayoingia. Nunua = ununuzi na gharama. Wahusika = wateja wa mkopo na wasambazaji.
+books_help	Hali ya leo. Oda = oda zinazoingia. Nunua = ununuzi na gharama. Wahusika = wateja wa mkopo na wasambazaji.
 buy_help	Vocha za gharama na bili za wasambazaji (pesa inayotoka). Ya akaunti hubaki kwenye daftari la mhusika.
 sell_money_in	Chukua agizo
 buy_money_out	Gharama / bili ya msambazaji
@@ -1152,7 +1152,7 @@ shift_since	Zamu hii tangu
 expected_in_drawer	Inatarajiwa droo
 right_discount	Kutoa punguzo
 floor_in_kitchen	Jikoni
-floor_eating	Wanakula
+floor_eating	Imehudumiwa
 pick_category	Chagua kundi
 close_category_list	Funga orodha ya makundi
 new_category_row	Kundi jipya — linaundwa ukihifadhi bidhaa
@@ -1321,7 +1321,7 @@ kot_recall	Rudisha
 recently_done	Yamekamilika hivi karibuni
 recall_kot_ph	KOT # ya kurudisha
 role_help_customer	Jukumu: Mteja — AR (wanatudaiwa). Kampuni hiyo hiyo inaweza kuwa msambazaji pia.
-role_help_both	Majukumu: Mtumaji + Mbebaji — mhusika mmoja, vitabu vya AR na AP, halisi katika Ripoti.
+role_help_both	Majukumu: Mteja + Msambazaji — mhusika mmoja, vitabu vya khata na vya kulipa, halisi katika Ripoti.
 role_help_supplier	Jukumu: Msambazaji — AP kwa manunuzi.
 dine_in_pick_table	Chagua meza ya kula hapo…
 choose_table	Chagua meza
@@ -1408,7 +1408,7 @@ unpriced_note	Vyakula {n} kwenye menyu yako bado havina bei — vinatozwa 0 hadi
 show_unpriced	Onyesha vyakula visivyo na bei tu
 show_all_dishes	Onyesha vyakula vyote
 role_waiter	Mhudumu
-role_kitchen	Jikoni
+role_kitchen	Jiko
 role_title_rest_ph	Cheo (mf. kapteni, mpishi mkuu)
 preset_help_rest	Mhudumu: anapokea oda na kuhudumia meza. Keshia: anapokea malipo pia. Jikoni: skrini ya jikoni. Meneja: pia menyu, kufuta na punguzo.
 kind_raw	Malighafi

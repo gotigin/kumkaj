@@ -2,9 +2,9 @@
 app_tagline	Restaurante pedido, cocina & aranduka. Gratis offline-pe.
 unlock	Eipe'a
 pin_hint	Ijára PIN oñepyrũ 0000 ramo
-sell	Pedido
+sell	Jerure
 buy	Jogua
-books	Aranduka ára rehegua
+books	Ára aranduka
 books_help	Ko árapegua. Pedido = pedido oúva. Jogua = mba’e ojejoguáva ha gasto. Cliente kuéra = crédito rehegua.
 buy_help	Vale gasto rehegua ha factura proveedor rehegua (pirapire osêva). Opytáva cuenta-pe libro mayor cliente térã proveedor-pe.
 sell_money_in	Ejagarra peteĩ pedido
@@ -12,18 +12,18 @@ buy_money_out	Gasto / factura proveedor rehegua
 record_purchase	Disco joguaha
 add_expense	Vale de gasto rehegua
 bank_book	Aranduka banco-pegua
-credit_help	Id cliente térã proveedor ha’e peteĩchagua (umi téra ikatu oje’e jey). Peteĩ Cliente omotenonde peteĩ libro mayor de crédito (odevéva ñandéve); peteĩ Proveedor ovende ñandéve stock (rodeve chupekuéra); mokõivéva oĩ porã. Umi libro mayor opyta separado; umi marandu ohechauka red.
+credit_help	Id cliente térã proveedor ha’e peteĩchagua (umi téra ikatu oje’e jey). Peteĩ Cliente omotenonde peteĩ libro mayor de crédito (odevéva ñandéve); peteĩ Proveedor ovende ñandéve stock (rodeve chupekuéra); mokõivéva oĩ porã. Umi libro mayor opyta separado; umi marandu ohechauka hembýva.
 party_kind_ph	Rols: Cliente, Proveedor, mokõivéva...
 reports_help	Aranduka ára rehegua, odevéva & acreedor-kuéra, aranduka bancario, vale gasto rehegua, ganancia & pérdida.
 reports_today	Aranduka ára (ko árape) .
 reports_month	Ganancia & pérdida (mes) rehegua .
 reports_aging	Pendiente / débito-crédito rehegua
-reports_balance_sheet	Balance rehegua
+reports_balance_sheet	Ñembojoja kuatia
 reports	Aranduka banco rehegua & P&L
 refresh	Embopyahu
 undo	Deshacer
 start_tracking	Eñepyrũ ejapo seguimiento
-stock_minus	− Stock rehegua
+stock_minus	− Ñembyaty
 stock_plus	+ Ñembyaty
 settle_cash	Omohenda efectivo
 settle_card	Tarjeta de arreglo rehegua
@@ -46,7 +46,7 @@ total	Total rehegua
 cash	Efectivo rehegua
 upi	UPI
 card	Tarjeta
-credit	Cliente kuéra
+credit	Ñemu irũnguéra
 clear	Embogue
 ready_to_sell	Oĩma preparádo Aranduka-pe
 today_prefix	Ko árape
@@ -109,8 +109,8 @@ bill_line_customer	Cliente rehegua
 bill_line_bill_no	Factura N.º
 bill_line_time	Aravo
 bill_line_cashier	Cajero rehegua
-bill_line_table	Mesa ojekaru haguã
-bill_line_items	Umi mba’e
+bill_line_table	Mesa
+bill_line_items	Mba’ekuéra
 bill_line_total	Total rehegua
 bill_line_footer	Footer
 bill_line_upi	UPI
@@ -252,11 +252,11 @@ sidebar_order_saved	Orden de barra lateral oñeñongatu
 sidebar_visibility_saved	Ojeñongatu barra lateral jehechauka
 amounts_hide	Oñomi
 amounts_show	Ohechauka
-counter	Mostrador
+counter	Ñemuha mesa
 dine_in	Okaru-pype
 takeaway	Ojegueraha haguã
-order	Pedido
-tables	Mesa ojekaru haguã
+order	Jerure
+tables	Mesa
 kitchen	Kosina
 sales	Ñemuha rehegua
 sales_refunds	Venta & reembolso rehegua
@@ -307,7 +307,7 @@ kot_cancelled	OÑEMBOGUATA
 kot_start_btn	Eñepyrũ
 kot_mark_ready	Marcos oĩma preparádo
 kot_done_btn	Ojejapo
-table_free	Vacante — epoko eñepyrũ hag̃ua peteĩ pedido
+table_free	Nandi — epoko eñepyrũ hag̃ua peteĩ jerure
 start_order	Oñepyrũ orden
 open_bill	Factura abierto
 collect_payment	Ombyaty pago
@@ -389,7 +389,7 @@ app_template_from_device_help	Eiporavo peteĩ kundaha oguerekóva template.json 
 settings_app_tmpl_note	Ojegueru jeývo omopotĩ ñemuha, KOT ha libro mayor, upéi ojeporu plantilla tenda ñemboheko. Umi plantilla oguerekóva peteĩ menú añoite: «Menú rehegua» → «Mba'e techaukaha».
 app_template_wipe_warn	Kóva omopotĩ umi dato ñemurã umi cuenta-pe (venta, KOT, libro mayor) ha omoĩ plantilla tenda ñemboheko. Ikatu oñemoambue pe menú ha pe ñembosako’i. ¿Resegisépa?
 app_template_wipe_continue	Esegíkena
-app_template_wipe_cancel	Ombogue
+app_template_wipe_cancel	Eheja rei
 currency	Viru rehegua
 backup	Copia de seguridad rehegua
 use	Eipuru
@@ -444,7 +444,7 @@ choose_icon	Eiporavo icono
 choose_logo	Eiporavo logotipo
 clear_icon	Icono hesakãva
 clear_photo	Ta'anga hesakãva
-copy_day_book_csv	Aranduka ára rehegua CSV .
+copy_day_book_csv	Ára aranduka CSV
 copy_day_close	Kopia ára oñemboty
 copy_items_csv	Ojekopia umi mba'e CSV .
 copy_outstanding_csv	Copia pendiente CSV .
@@ -530,7 +530,7 @@ delete_party	Ombogue cliente térã proveedor ojeporavóva
 delivery	Ñeme’ẽ
 done_open_books	Ojejapo — aranduka ojepe’áva
 drawer_count	Cajón jepapa (opcional) .
-expense_heading	Gasto rehegua
+expense_heading	Pirapire osẽva
 export_day	Exportación ára
 extra_note_bill_ph	Nota extra ko factura / venta rehe
 extra_note_expense_ph	Nota extra gasto paha rehegua
@@ -915,7 +915,7 @@ cloud_sending_reset	Omondo enlace reset...
 cloud_forgot_sent	Upe correo electrónico oguerekóramo peteĩ cuenta, peteĩ enlace reset oĩ tape rehe.
 cloud_welcome	Oike {user} · {plan} ramo
 cloud_created	Cuenta ojejapóva. Ehecháke ne correo electrónico ehechauka hag̃ua araka’épa ikatu.
-cloud_cancel	Heja
+cloud_cancel	Eheja rei
 unmark	Desmarka
 update_my_password	Embopyahu che ñe’ẽñemi
 update_my_pin	Embopyahu che jeike
@@ -959,7 +959,7 @@ counter_locked	Contador 01 · Oñemboty
 country_pack_help	Peteĩ paquete tetãmegua omoĩ pe impuesto réra ha matemática, pe ferrocarril de pago instantáneo ha pe id de negocio oñeimprimíva umi factura-pe. Kumkaj ndopresentái impuesto ni nome’ẽi factura electrónica gubernamental moõve.
 currency_use_help	Emoinge ha epoko Eipuru oimeraẽ viru oipytyvõvape g̃uarã.
 day_close_help	Ojehai peteĩ ára ñemboty oñongatu ko resumen (ha varianza cajón rehegua ojeipapa ramo) registro auditoría-pe. Ndopytái ovende.
-expenses_word	Umi gasto ojejapóva
+expenses_word	Pirapire osẽva
 feature_access_help	Mba’épa ikatu oipe’a hikuái — opcional; tembiapo yvategua omoĩma peteĩ mba’e’oka
 footer_local	Local SQLite · Gratis Tapiaite g̃uarã · Arai Cero
 fresh_book_khaynjo	Pyahu = menú vacío (emoĩ tembi’u upe rire Menú-pe). Aranduka = ​​ehai umi mba’e ojepe’áva ha mávapa odeve ndéve ko’ápe.
@@ -972,7 +972,7 @@ local_badge	LOCAL rehegua
 mix_type_hint_khaynjo	Oñemboja’o efectivo / UPI / tarjeta / crédito rupive oñeikotevẽramo. Crédito oikotevê peteî cliente yvate gotyo.
 money_in_sales	Viru en (venta) .
 net_word	Net rehegua
-offline_badge	OFFLINE rehegua
+offline_badge	Ñanduti’ỹre
 optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; puruhára añoite ikatu omoambue ñe’ẽñemi upe rire.
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
 permission_preset	Tembiapo
@@ -1111,7 +1111,7 @@ pay_credit	Pe cuenta rehe
 book_kind_today	Ko árape aranduka
 book_kind_month	Ko jasýpe aranduka
 book_kind_aging	Pendiente / débito-crédito rehegua
-book_kind_balance	Balance rehegua
+book_kind_balance	Ñembojoja kuatia
 order_help	Epoko peteĩ mbaʼére remoĩ hag̃ua.
 floor_help	Epoko peteĩ mesa de comedor rehe regueraha térã remoambue hag̃ua pe pedido. Umi sa’y ohechauka vacante → oguapy → cocina → oĩmbáma → oikaru → cuenta → ojehepyme’ẽ. Lista espera, reserva ha mesa joapy oĩ umi sección yvy gotyo.
 kitchen_help	Boletos de cocina (KOT), ipyahuvéva ipahaitépe. Ñepyrũ → Oĩma → Ojejapo omomýi peteĩ boleto. Umi boleto araka'eve ndohechaukái precio.
@@ -1120,8 +1120,8 @@ add_a_table	Oñemoĩ pype peteĩ mesa ojekaru haguã
 add_station_heading	Oñemoĩve peteĩ estación de cocina
 categories_help	Epoko Eipuru emoĩ hag̃ua pe mbaʼe oĩva yvate upe categoría guýpe. Ta’anga ome’ẽ pe categoría-pe peteĩ ta’anga; peteĩ’ỹre ohechauka iñepyrũrã.
 dish_search_ph	Mba’e réra — eheka ore tembi’u térã ehai nde mba’e
-tile_free	Vacante
-tile_occupied	Ocupado
+tile_free	Nandi
+tile_occupied	Oguapýma
 tile_food_ready	Tembi’u oĩmava
 tile_bill_printed	Factura oñeimprimi
 tile_paid	Ojepagáva
@@ -1133,7 +1133,7 @@ tile_undo_bill	Deshacer factura rehegua
 summary_busy	umi mesa ojekaru haguã hembiapo heta
 summary_to_collect	ombyaty haguã
 summary_on_floor	pe comedor-pe
-floor	Comedor rehegua
+floor	Karuha
 sizes_as_items_ph	Umi tuichakue mba’e’oka añónte ramo (ojeporavóva) — Media=120, Completo=200
 dish_group_ph	Plato aty (opcional) — p.e. Paneer Tikka rehegua
 discount	Descuento rehegua
@@ -1151,8 +1151,8 @@ shift_handover	Turno ñembohasa
 shift_since	Kóva cambio upe guive
 expected_in_drawer	Oñeha'ãrõ cajón-pe
 right_discount	Ome'ê peteî descuento
-floor_in_kitchen	Kosina-pe
-floor_eating	Ojeservi
+floor_in_kitchen	Kosinápe
+floor_eating	Oñeme’ẽma
 pick_category	Eiporavo peteĩ categoría
 close_category_list	Omboty lista categoría rehegua
 new_category_row	Categoría pyahu — ojejapóva eñongatu jave pe mba’e
@@ -1161,7 +1161,7 @@ suggested_category	Oñesugeríva — ñande tembi’ukuéragui
 category_search_ph	Categoría — eheka nde mba’éva térã ehai peteĩ pyahu
 line_sent_state	Oñemondóva cocina-pe
 line_nc_state	Complimentario (NC) — ndojehepyme'ẽi
-cancel_item_short	Ombogue
+cancel_item_short	Eheja rei
 nc_short	Ndaipóri cargo
 charge_again_short	Cobrar
 move_short	Oñemongu’e
@@ -1173,7 +1173,7 @@ already_cooked	Oñembojyma (desperdicio) .
 not_cooked_yet	Ne’ĩra gueteri oñembojy
 return_to_customer	Ojevy cliente-pe
 short_by	Mbykymi
-tip_not_sale	Propina (personal mba'e, ndaha'éi peteĩ venta).
+tip_not_sale	Aguyje pirapire (personal mba'e, ndaha'éi peteĩ venta).
 right_settle	Ogueraha pago
 right_cancel_sent	Embogue peteĩ mba’e oñemondova’ekue
 right_complimentary	Ojeguerohory (NC) .
@@ -1201,7 +1201,7 @@ line_target_ph	Ojegueraha mesa ojekaruhápe (e.g. D5) .
 confirm	Omoañete
 menu_search_ph	Eheka mba’e térã código mbykymi
 customer_paid_ph	Cliente opaga
-tip_ph	Propina
+tip_ph	Aguyje pirapire
 table_area_ph	Área (e.g. Dine In, Paquete, AC) .
 table_range_ph	Heta peteĩ jeýpe: D1-D20
 add_these_tables	Oñemoĩve ko’ã mesa ojekaru haguã
@@ -1229,11 +1229,11 @@ kot_show_shop	Tenda réra
 kot_hide_shop	Oñomi tenda
 kot_show_time	Aravo
 kot_hide_time	Oñomi tiempo
-kot_show_waiter	Mesero
+kot_show_waiter	Tembi’u me’ẽhára
 kot_hide_waiter	Oñomi mesero
 kot_show_station	Estación
 kot_hide_station	Oñomi estación
-kot_show_table	Mesa ojekaru haguã
+kot_show_table	Mesa
 kot_hide_table	Oñomi mesa ojekaru haguã
 kot_show_kot_no	KOT N.º
 kot_hide_kot_no	Oñomi KOT Nahániri
@@ -1328,7 +1328,7 @@ choose_table	Eiporavo peteĩ mesa ojekaru haguã
 change_table	Omoambue mesa ojekaru haguã
 pick_table_banner	Eiporavo peteĩ mesa ojekaru hag̃ua ko pedido-pe g̃uarã
 items_word	umi mba’e
-items_section	Umi mba’e
+items_section	Mba’ekuéra
 back_to_order	Ojevy jey orden-pe
 new_items_head	Noñemondói gueteri
 price_ph	Precio
@@ -1373,7 +1373,7 @@ kitchen_tab_recall	Penemandu’áke
 kitchen_tab_stations	Estaciones-kuéra rehegua
 split_bill	Factura oñemboja’óva
 split_go	Ojapo factura aparte
-cancel	Ombogue
+cancel	Eheja rei
 opening_client	Oipe'ávo cliente...
 preparing_desk	Oñembosako'ívo escritorio...
 opening_server	Oipe'ávo servidor...
@@ -1407,7 +1407,7 @@ low_stock_alert	Oguejy ohóvo — ojogua pya'e: {items}
 unpriced_note	{n} tembi’u oĩva nde menúpe ndorekói gueteri hepykue — ofactura hikuái 0-pe remoĩ peve peteĩ.
 show_unpriced	Ehechauka tembi’u añoite hepykue’ỹre
 show_all_dishes	Ohechauka opaite tembi’u
-role_waiter	Mesero
+role_waiter	Tembi’u me’ẽhára
 role_kitchen	Kosina
 role_title_rest_ph	Rol título (e.g. Capitán, Cocinero akã) .
 preset_help_rest	Mesero: ogueraha pedido ha omotenonde mesa comedor. Cajero: avei ogueraha pago. Kosina: pe cocina pantalla. Gerente: avei pe menú, cancela ha descuento.

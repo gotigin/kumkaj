@@ -11,10 +11,10 @@ board_empty	Ndaipóri gueteri tarjeta.
 board_park_nothing	Mba’eve oñeñongatu haĝua borrador ramo — omoĩve cargo térã detalle reserva rehegua
 board_parked	Oñongatu «Tablero»-pe — pe mesa oĩ nandi ko’áĝa
 board_draft	Borrador
-board_booked	Ojerreserva
+board_booked	Oñemboheraguapýma
 board_filter_all	Opavave
 board_filter_draft	Borrador
-board_filter_booked	Ojerreserva
+board_filter_booked	Oñemboheraguapýma
 board_cols_fmt	{n} columna-kuéra rehegua
 board_summary_fmt	{total} tarjeta rehegua · {drafts} borrador-kuéra rehegua · {booked} ojerreserva
 board_card_no_charges	Ndaipóri gueteri honorario oñembojoapýva
@@ -25,27 +25,27 @@ board_draft_closed	Upe borrador oñemohu’ãma térã oñembogue
 board_discard	Emboyke
 board_discarded	Borrador oñembogue
 buy	Opagapaite
-books	Aranduka ára rehegua
-books_help	Ko árapegua posición. Reserva = paquetes en. Ojepaga = facturas & gastos transportista rehegua. Partido-kuéra = consignador & transportista-kuéra.
+books	Ára aranduka
+books_help	Ko árapegua posición. Reserva = pakete kuéra en. Ojepaga = facturas & gastos transportista rehegua. Ñemu irũ kuéra = mondohára & transportista-kuéra.
 buy_help	Vale de gasto ha factura transportista (pirapire osêva). Opytáva cuenta-pe libro mayor partido-pe.
-sell_money_in	Reserva peteĩ paquete
+sell_money_in	Reserva peteĩ pakete
 buy_money_out	Gasto / factura transportista rehegua
 record_purchase	Disco joguaha
 add_expense	Vale de gasto rehegua
 bank_book	Aranduka banco-pegua
-credit_help	Partido id ha’e peteĩchagua (umi téra ikatu oje’e jey). Rols: Consignador (AR), Portador (AP), térã mokõivéva upe id-pe. Umi libro mayor opyta separado; umi marandu ohechauka red.
+credit_help	Partido id ha’e peteĩchagua (umi téra ikatu oje’e jey). Rols: mondohára (AR), Portador (AP), térã mokõivéva upe id-pe. Umi libro mayor opyta separado; umi marandu ohechauka hembýva.
 party_kind_ph	Rol personalizado (opcional) — térã epoko peteĩ chip yvate gotyo
 parties_list_heading	Umi partido ojesalváva
 reports_help	Aranduka ára rehegua, odevéva & acreedor-kuéra, aranduka bancario, vale gasto rehegua, ganancia & pérdida.
 reports_today	Aranduka ára (ko árape) .
 reports_month	Ganancia & pérdida (mes) rehegua .
 reports_aging	Pendiente / débito-crédito rehegua
-reports_balance_sheet	Balance rehegua
+reports_balance_sheet	Ñembojoja kuatia
 reports	Banco kuatiahaingue ha P&G
 refresh	Embopyahu
 undo	Deshacer
 start_tracking	Eñepyrũ ejapo seguimiento
-stock_minus	− Stock rehegua
+stock_minus	− Ñembyaty
 stock_plus	+ Ñembyaty
 settle_cash	Omohenda efectivo
 settle_card	Tarjeta de arreglo rehegua
@@ -66,7 +66,7 @@ total	Total rehegua
 cash	Efectivo rehegua
 upi	UPI
 card	Tarjeta
-credit	Cliente ha proveedor-kuéra
+credit	Ñemu irũnguéra
 clear	Hesakã porã
 ready_to_sell	Oĩma preparádo ojerreserva hag̃ua
 today_prefix	Ko árape
@@ -88,9 +88,9 @@ applied	Ojeaplikava’ekue
 note_ph	Ñe’ẽñemi (ojeporavóva) .
 rounded	REDODO ÑE’ẼTEKUAA
 split	Oñemboja’o
-counter	Mostrador
-parcel	Mba'yrupehẽ
-order	Pedido
+counter	Ñemuha mesa
+parcel	Pakete
+order	Jerure
 sales	Reservas rehegua
 sales_refunds	Reservas & reembolso rehegua
 day_close	Ára oñemboty
@@ -133,7 +133,7 @@ inventory	Inventario rehegua
 inventory_stock	Inventario & stock rehegua
 branches	Ramakuéra
 branches_org	Sucursal-kuéra & org
-credit_customers	Partido-kuéra (odevéva & acreedor-kuéra) .
+credit_customers	Ñemu irũ kuéra (odevéva & acreedor-kuéra) .
 customer_name_ph	Cliente térã proveedor réra
 new_customer_ph	Cliente térã proveedor pyahu réra
 item_name_ph	Tasa réra (e.g. Zona Superficial A) .
@@ -147,10 +147,10 @@ consignee_address_ph	Dirección de entrega rehegua
 origin_name_ph	Omondova’ekue réra
 origin_phone_ph	Teléfono omondova’ekue
 origin_address_ph	Dirección de recogida / origen rehegua
-booking_consignor_heading	Consignador (cliente / omondova’ekue) .
-booking_consignee_heading	Consignador (ohupytyva’ekue) .
+booking_consignor_heading	Mondohára (ñemuha / omondova’ekue)
+booking_consignee_heading	Ohupytyhára
 booking_consignor_hint	Eiporavo peteĩ parte remyenyhẽ hag̃ua, térã eheja nandi cliente oúva guarã. Oñeikotevê pickup óga ha RTO-pe guarã.
-booking_consignee_hint	Recibidor pe paquete rehegua. Ojeheja en blanco umi walk-in counter drop-off-pe guarã.
+booking_consignee_hint	Recibidor pe pakete rehegua. Ojeheja en blanco umi walk-in counter drop-off-pe guarã.
 weight_kg_ph	Añetehápe kg
 length_cm_ph	L cm
 breadth_cm_ph	B cm
@@ -221,7 +221,7 @@ snack_secs_saved	Tiempo de alerta oñeñongatúva — {n} segundos
 snack_secs_bad	Emoinge segundo papapy ramo (3–60) .
 cancelled	Oñembogue
 cancelling	Omboykévo…
-cancel	Ombogue
+cancel	Eheja rei
 press_back_again_exit	Ejopy jey «Ojevy jey» resẽ hag̃ua
 opening_client	Oipe'ávo cliente...
 preparing_desk	Oñembosako'ívo escritorio...
@@ -289,9 +289,9 @@ till_to_bank	Till → banco rehegua
 mark_cleared	Marcos omopotĩ
 unmark	Desmarka
 role_both	Mokõivéva
-role_carrier	Mba’e’apoha
+role_carrier	Rerahahára
 role_cashier	Cajero rehegua
-role_consignor	Consignador rehegua
+role_consignor	Mondohára
 role_manager	Gerente
 role_supplier	Proveedor rehegua
 branch_name_sell_ph	Sucursal réra oñevende haguã chugui
@@ -336,8 +336,8 @@ booking_scope_hint_intl	Volumétrico ÷6000 (aire internacional) — eity Domest
 cod_register	registro COD rehegua
 collect_cod	Ombyaty COD (AWB) .
 consignments_dispatch	Envíos & despacho rehegua
-consignor_party_ph	Consignador / partido réra
-copy_day_book_csv	Aranduka ára rehegua CSV .
+consignor_party_ph	mondohára / partido réra
+copy_day_book_csv	Ára aranduka CSV
 copy_day_close	Kopia ára oñemboty
 copy_items_csv	Ojekopia umi mba'e CSV .
 copy_outstanding_csv	Copia pendiente CSV .
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Ndojeguerekói
 ndr_door_locked	Okẽ oñemboty
 ndr_other	Ambue
 ndr_refused	Mbotove
-out_for_delivery	Osẽ oñeme'ê haguã
+out_for_delivery	Tapére oñeme’ẽ hag̃ua
 print_drs	Imprimir DRS
 print_run_sheet	Imprimi kuatia ejecución rehegua
 reattempt	Oñeha’ã jey
 rider_cod_handed_ph	COD oñeme'ê
 settle_rider_cod	Emohenda repartidor COD
 mode_desk	Mesa mba'apoha
-mode_rider	Repartidor
+mode_rider	Pakete me’ẽhára
 waiting_office	oha'ãrõva oguahë haguã oficina-pe
 capture_signature	Ojejagarra firma rehegua
 incoming_manifest	Manifiesto oúva
@@ -459,10 +459,10 @@ refund	Reembolso rehegua
 remit_cod	Remit COD (partido) rehegua .
 remove_selected	Ojepe’a ojeporavóva
 restore_backup	Emoĩjey jekopytyjoja
-rider_name_ph	Repartidor réra
-rider_phone_ph	Repartidor pumbyry
-riders	Repartidor-kuéra
-riders_own_fleet	Repartidor-kuéra (ñande mba’e)
+rider_name_ph	Pakete me’ẽhára réra
+rider_phone_ph	Pakete me’ẽhára pumbyry
+riders	Pakete me’ẽhára kuéra
+riders_own_fleet	Pakete me’ẽhára kuéra (ñande mba’e)
 rollup	Rollo-pe ojejapóva
 save_booking_measures	Oñongatu umi medida de reserva
 save_brand	Oñongatu marca
@@ -649,7 +649,7 @@ second_way	Mokõiha tape
 weight_in	Peso en
 size_in	Tamaño en
 goods_received	Mba’erepy ohupytýva
-expense_heading	Gasto rehegua
+expense_heading	Pirapire osẽva
 notes_attach_sale	Notas & adjuntos (vende ojeporavóva) .
 notes_attach_party	Nota ha adjunto (cliente térã proveedor ojeporavóva) .
 attachments_last_expense	Umi adjunto (gasto paha) .
@@ -702,7 +702,7 @@ counter_locked	Contador 01 · Oñemboty
 country_pack_help	Peteĩ paquete tetãmegua omoĩ pe impuesto réra ha matemática, pe ferrocarril de pago instantáneo ha pe id de negocio oñeimprimíva umi factura-pe. Kumkaj ndopresentái impuesto ni nome’ẽi factura electrónica gubernamental moõve.
 currency_use_help	Emoinge ha epoko Eipuru oimeraẽ viru oipytyvõvape g̃uarã.
 day_close_help	Ojehai peteĩ ára ñemboty oñongatu ko resumen (ha varianza cajón rehegua ojeipapa ramo) registro auditoría-pe. Ndopytái ovende.
-expenses_word	Umi gasto ojejapóva
+expenses_word	Pirapire osẽva
 feature_access_help	Mba’ekuaarã jeike mba’apoharakuéra ojeporavóvape g̃uarã (epoko oñembojoapy rire) .
 footer_local	Local SQLite · Gratis Tapiaite g̃uarã · Arai Cero
 fresh_book_moklanjo	Fresh = catálogo vacío (emoĩve umi mba’e upe rire). Aranduka = ​​tipo apertura stock ha mávapa odevéva ndéve iguýpe.
@@ -711,12 +711,12 @@ gross_word	Bruto rehegua
 how_start	Mbaʼéichapa reñepyrũse?
 later_country_pack	Upe rire: Ñemboheko → emoĩ nde paquete tetãmegua etiqueta impuesto ha pago rehegua.
 local_badge	LOCAL rehegua
-measures_help_moklanjo	Mba'éichapa oñemedi umi paquete mesa de reserva-pe. Ehai dimensión ha peso umi unidad reiporúvape — estándar (cm, m, in, ft · kg, g, lb, oz) térã nde unidad tee ojoajúva cm / kg yvate gotyo (directamente térã ambue unidad rupive). Arandukakuéra akóinte ohai kg. Jaheja nandi peteĩ kokue ñañongatu haguã.
+measures_help_moklanjo	Mba'éichapa oñemedi umi pakete mesa de reserva-pe. Ehai dimensión ha peso umi unidad reiporúvape — estándar (cm, m, in, ft · kg, g, lb, oz) térã nde unidad tee ojoajúva cm / kg yvate gotyo (directamente térã ambue unidad rupive). Arandukakuéra akóinte ohai kg. Jaheja nandi peteĩ kokue ñañongatu haguã.
 mix_type_hint_moklanjo	Ehai mboýpa oĩ peteĩteĩme (efectivo / UPI / tarjeta / crédito). Oñesumava'erã factura-pe. Crédito oikotevê peteî cliente yvate gotyo.
 money_in_sales	Viru en (venta) .
 more_help_moklanjo	Catálogo, venta, crédito, equipo, copia de seguridad — ha avei stock ha tills extra oñeikotevẽ jave.
 net_word	Net rehegua
-offline_badge	OFFLINE rehegua
+offline_badge	Ñanduti’ỹre
 optional_login_help	Oike opcional (id + contraseña). Ijára omoĩ peteĩ jey; puruhára añoite ikatu omoambue ñe’ẽñemi upe rire.
 or_unlock_login	Térã ojedesblokea id de ingreso + contraseña reheve
 or_unlock_shop_login	Térã ojedesblokea tenda jeike rupive
@@ -734,7 +734,7 @@ cloud_sending_reset	Omondo enlace reset...
 cloud_forgot_sent	Upe correo electrónico oguerekóramo peteĩ cuenta, peteĩ enlace reset oĩ tape rehe.
 cloud_welcome	Oike {user} · {plan} ramo
 cloud_created	Cuenta ojejapóva. Ehecháke ne correo electrónico ehechauka hag̃ua araka’épa ikatu.
-cloud_cancel	Heja
+cloud_cancel	Eheja rei
 permission_preset	Tembiapo
 preset_help_moklanjo	Cajero: ovende. Moakãhára: ovende + mba’e + omboyke/omoambue.
 product_locked_moklanjo	Moklanjo rehegua
@@ -794,8 +794,8 @@ setup_complete	Configuración oñembotýma
 onboard_fresh_tmpl	Ipyahu · {} — catálogo oñepyrũ nandi; emoĩ umi mbaꞌe oĩva Items-pe, upéi Ojejapo.
 onboard_book_tmpl	Aranduka · {} — emoĩ umi mba’e ha crédito de apertura, upéi Ojejapo.
 onboard_template_tmpl	Emombe’u pe tenda reipotáramo, upéi eiporavo mba’éichapa reñepyrũta.
-tmpl_blurb	Aranduka de mensajería ha mesa de reserva: consignador, transportista, aranduka ára rehegua, AWB.
-tmpl_how	Eñeanota paquete mostrador-pe; Ára aranduka ko árape guarã; ficha-kuéra tasa, parte, marandu rehegua.
+tmpl_blurb	Aranduka de mensajería ha mesa de reserva: mondohára, transportista, aranduka ára rehegua, AWB.
+tmpl_how	Eñeanota pakete mostrador-pe; Ára aranduka ko árape guarã; ficha-kuéra tasa, parte, marandu rehegua.
 app_template_heading	Ñemuha ñemboguatarã
 app_template_blurb	Eiporavo peteĩ ñepyrũrã ñembosako’i. «Ojesalta ko’áĝa ĝuarã» oheja nandi pe cliente lista.
 app_template_skip	Ojesalta ko’áĝa ĝuarã
@@ -805,7 +805,7 @@ app_template_public_hdr	Plantilla
 app_template_import_selected	Egueru pe eiporavóva
 app_template_wipe_warn	Kóva omopotĩ umi dato comercial rehegua umi cuenta-pe (reserva, libro mayor) ha omoĩ umi plantilla tenda ñemboheko. ¿Resegisépa?
 app_template_wipe_continue	Esegíkena
-app_template_wipe_cancel	Ombogue
+app_template_wipe_cancel	Eheja rei
 public_tmpl_help	Umi plantilla agencia rehegua ojejapóva listo oúva app ndive. Natekotevẽi ojegueru.
 business_day	Araka’épa «Ko árape» oñemohenda jey?
 business_day_help	«Ára oñemboty peve» omantene «Aranduka ára rehegua» oñani pyharepyte rire, rehai peve ára ñemboty. «Pyharepyte jave» oikytï 00:00 aravo jave hora local.
@@ -816,46 +816,46 @@ report_day_lens	Ohechauka «Ko árape» ha'eháicha
 report_day_lens_help	Kóva omoambue jehechauka añoite — noñemoambuéi «Ára oñemboty» omohendajeývo «Ko árape». «He'iháicha Ára oñemboty» osegi ára paha oñembotývo; «Péicha he'i pyharepyte» oikytï 00:00 aravo jave hora local.
 report_lens_day_close	He'iháicha Ára oñemboty
 report_lens_midnight	Péicha he'i pyharepyte
-trk_booked	Ojerreserva
+trk_booked	Oñemboheraguapýma
 trk_picked_up	Ojegueraha
 trk_in_transit	Tránsito-pe
-trk_delivered	Ñeme'ẽmbyre
+trk_delivered	Oñeme’ẽma
 trk_rto	Ojevývo pe omondova’ekuépe
 lane_to_dispatch	Omondo haguã
-lane_with_carrier	Ogueraháva ndive
-lane_failed	Ñesẽvai
+lane_with_carrier	Rerahahára pópe
+lane_failed	Ndoikói
 lane_done_today	Ojejapo ko árape
-ops_board_help	Paquete por moõpa oime hikuái tembiapo ko'ã árape. Epoko umi paquete rehe (térã eescanea) eiporavo hag̃ua, upéi eactua opaite ojeporavóvare peteĩ jeýpe — peteĩteĩva carril oikuaveꞌe umi movimiento ohóva hese añoite.
+ops_board_help	Paquete por moõpa oime hikuái tembiapo ko'ã árape. Epoko umi pakete rehe (térã eescanea) eiporavo hag̃ua, upéi eactua opaite ojeporavóvare peteĩ jeýpe — peteĩteĩva carril oikuaveꞌe umi movimiento ohóva hese añoite.
 lane_empty	Mba’eve ko’ápe ko’áĝaite.
 picked_fmt	{n} oiporavo
 pick_all	Eiporavo opaite
 bag_for_carrier	Po ha ogueraháva
 send_with_rider	Emondo repartidor ndive
 out_again	Osẽ jey
-return_to_sender	Ojevy pe omondova’ekuépe
+return_to_sender	Embojevy pe mondohárape
 runs_bags_heading	Umi carrera & vosa nda’aréi ojejapóva
 print_word	Impresión rehegua
 bag_word	Bolsa ogueraháva
-run_word	Repartidor jeho
-parcels_fmt	{n} paquete-kuéra rehegua
+run_word	Pakete me’ẽhára jeho
+parcels_fmt	{n} pakete kuéra rehegua
 parcel_history	Tembiasakue
 attempt_fmt	Oñeha’ã {n}
 pieces_short_fmt	{n} umi pcs
 note_reason_ph	Ñañatendéke térã ñamoĩ mbaʼérepa
-ops_pick_first	Eiporavo raẽ umi paquete — epoko térã eescanea
+ops_pick_first	Eiporavo raẽ umi pakete — epoko térã eescanea
 cod_to_collect	Oñeme’ẽ — COD oñembyaty haguã
 cod_on_road	COD oî gueteri tape rehe
-cod_owed_consignors	Oñembyaty — ojepaga haguã umi consignador-kuérape
+cod_owed_consignors	Oñembyaty — ojepaga haguã umi mondohára-kuérape
 cod_rto_fees	RTO honorario ombyaty haguã
 cod_to_hand_in	COD ombohasa haguã
-parcel_one_fmt	{n} paquete rehegua
+parcel_one_fmt	{n} pakete rehegua
 facet_bank_title	Marandukuéra
 facet_bank_help	Aranduka ára rehegua, cliente térã proveedor envejecimiento, umi puesto bancario, ha periodo P&L.
 facet_ops_title	Envíos & despacho rehegua
 facet_ops_help	Escaneá térã ehai AWB → Eheka, upéi emotenonde / eimprimi etiqueta / COD. Eme’ẽ repartidor térã transportista-pe.
 facet_cod_title	registro COD rehegua
-facet_cod_help	Ombyaty entrega jave, upéi omondo consignador-pe.
-facet_riders_title	Repartidor-kuéra (ñande mba’e)
+facet_cod_help	Ombyaty entrega jave, upéi omondo mondohára-pe.
+facet_riders_title	Pakete me’ẽhára kuéra (ñande mba’e)
 facet_riders_help	Embojoapy repartidor-kuéra, upéi emondo AWB reservado Ops-gui.
 against_bill_ph	Contra factura # yvategua (opcional) .
 aliases_ph	Alias — ambue téra, coma ojeipe’áva
@@ -926,11 +926,11 @@ pay_credit	Pe cuenta rehe
 book_kind_today	Ko árape aranduka
 book_kind_month	Ko jasýpe aranduka
 book_kind_aging	Pendiente / débito-crédito rehegua
-book_kind_balance	Balance rehegua
+book_kind_balance	Ñembojoja kuatia
 ops_desk_help	Ejesareko AWB peteĩ escáner código de barras USB rupive (térã ehai) → Eheka. Upéi eñemotenonde, eimprimi etiqueta térã embyaty COD. Umi etiqueta oimprimi Código 128.
-role_help_consignor	Papel: Consignador — AR (ondeve hikuái oréve). Peteĩchagua firma ikatu avei ha’e Carrier.
-role_help_carrier	Papel: Portador — AP (rodeve chupekuéra). Peteĩchagua firma ikatu avei ha’e Consignador.
-role_help_both	Rols: Consignador + Portador — peteĩ parte, libro mayor AR ha AP, neto Informe-kuérape.
+role_help_consignor	Papel: mondohára — AR (ondeve hikuái oréve). Peteĩchagua firma ikatu avei ha’e Carrier.
+role_help_carrier	Papel: Portador — AP (rodeve chupekuéra). Peteĩchagua firma ikatu avei ha’e mondohára.
+role_help_both	Rols: mondohára + Portador — peteĩ parte, libro mayor AR ha AP, neto Informe-kuérape.
 role_help_supplier	Papel: Proveedor — AP ojejogua hag̃ua.
 lane_declared_label	Reserva cuenta rehegua
 lane_owner_label	Reserva efectivo rehegua

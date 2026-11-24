@@ -33,7 +33,7 @@ buy_money_out	Kudi / lissafin dillali
 record_purchase	Rubuta saya
 add_expense	Takardar kuɗin fita
 bank_book	Littafin banki
-credit_help	Lambar abokin hulɗa ta musamman ce (sunaye na iya maimaituwa). Matsayi: Mai aikawa (AR), Mai ɗauka (AP), ko duka a wannan lamba. Littattafai sun rabu; rahotanni suna nuna tsantsa.
+credit_help	Lambar abokin hulɗa ta musamman ce (sunaye na iya maimaituwa). Matsayi: Mai aikawa (AR), Mai ɗaukar kaya (AP), ko duka a wannan lamba. Littattafai sun rabu; rahotanni suna nuna tsantsa.
 party_kind_ph	Matsayin al'ada (na zaɓi) - ko matsa guntu a sama
 parties_list_heading	Abokan hulɗar da aka ajiye
 reports_help	Littafin yini, masu bashi da waɗanda ake bin bashi, littafin banki, takardun kuɗin fita, riba da hasara.
@@ -88,7 +88,7 @@ applied	An yi amfani
 note_ph	Bayanin kula (ba dole ba)
 rounded	AN KEWAYE
 split	Raba
-counter	Tebur ciniki
+counter	Teburin ciniki
 parcel	Fakiti
 order	Oda
 sales	Ajiye
@@ -261,7 +261,7 @@ add_conversion	Ƙara canzawa
 add_item_plain	Ƙara kaya
 add_note	Ƙara bayani
 add_opening_balance	Ƙara ma'aunin farawa
-add_rider	Ƙara ɗan isarwa
+add_rider	Ƙara mai kai kaya
 add_staff	Ƙara ma'aikaci
 add_unit	Ƙara raka'a
 add_use_name	Ƙara / yi amfani da wannan suna
@@ -320,7 +320,7 @@ awb_pool_start_ph	Fara no.
 awb_pool_end_ph	Karshen no.
 awb_pool_prefix_ph	Prefix (na zaɓi)
 awb_pool_label_ph	Label (na zaɓi)
-pieces_ph	Pieces (blank = 1) - faɗaɗa don kaya / yanki da yawa
+pieces_ph	Pieces (fanko = 1) - faɗaɗa don kaya / yanki da yawa
 bulk_awbs_ph	Babban AWBs - liƙa da yawa (sabon layi ko waƙafi) don ci gaban matsayi ɗaya
 tds_cut_ph	Yanke TDS (na zaɓi)
 discount_ph	Rangwame (na zaɓi)
@@ -360,7 +360,7 @@ counter_agency_ph	Sunan mai ƙima / hukumar (na zaɓi)
 create_backup	Ƙirƙiri ajiyar madadin
 day_close_summary	Taƙaitaccen rufe yini
 delete_party	Goge abokin hulɗar da aka zaɓa
-dispatch_to_rider	Aika waɗanda aka yi rajista → ɗan isarwa
+dispatch_to_rider	Aika waɗanda aka yi rajista → mai kai kaya
 docket_charge_ph	Cajin dokiti
 declared_value_ph	Ƙimar da aka bayyana
 contents_ph	Abubuwan da ke ciki
@@ -385,8 +385,8 @@ import_parties_csv	Shigo da CSV na abokan hulɗa…
 import_pincodes_csv	Shigo da lambobin CSV…
 import_carrier_bill_csv	Shigo da lissafin dillali CSV…
 copy_carrier_bill_report	Kwafi rahoton lissafin dillali na ƙarshe
-use_carrier_cost	Yi amfani da farashin mai ɗauka
-rate_carrier_ph	Mai ɗaukar kaya (blank = ƙimar siyar mu)
+use_carrier_cost	Yi amfani da farashin mai ɗaukar kaya
+rate_carrier_ph	Mai ɗaukar kaya (fanko = ƙimar siyar mu)
 rate_party_ph	Abokin hulɗa (babu komai = duk abokan ciniki)
 carrier_pick_ph	Mai ɗaukar kaya don farashi (daga kwatanta)
 item_name	Sunan kaya
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Babu
 ndr_door_locked	Kofa a kulle
 ndr_other	Sauran
 ndr_refused	An ƙi
-out_for_delivery	Fita don bayarwa
+out_for_delivery	Ana kan hanyar isarwa
 print_drs	Buga DRS
 print_run_sheet	Buga takardar gudu
 reattempt	Sake gwadawa
 rider_cod_handed_ph	COD da aka mika
-settle_rider_cod	Daidaita COD na ɗan isarwa
+settle_rider_cod	Daidaita COD na mai kai kaya
 mode_desk	Tebur
-mode_rider	Ɗan isarwa
+mode_rider	Mai kai kaya
 waiting_office	jira ya isa ofis
 capture_signature	Sa hannu na ɗauka
 incoming_manifest	Bayani mai shigowa
@@ -416,7 +416,7 @@ pickup_request	Bukatar karba
 pickup_run	Gudun ɗauka
 auto_assign_area	Wurin sanyawa ta atomatik
 reorder_stops	Sake yin oda yana tsayawa
-settle_rider_pay	Daidaita albashin ɗan isarwa
+settle_rider_pay	Daidaita albashin mai kai kaya
 vehicle_inspect	Duban abin hawa
 print_docket	Buga dokiti
 franchise_statement	Bayanin Franchise
@@ -428,7 +428,7 @@ share_receipt_whatsapp	Raba rasit akan WhatsApp
 delivery_feedback	Ra'ayin isarwa
 lan_self_book	LAN booking kai
 new_party_clear	Sabon abokin hulɗa (share fom)
-new_party_kind_ph	Nau'in sabon abokin hulɗa (Mai kawowa / Mai ɗauka)
+new_party_kind_ph	Nau'in sabon abokin hulɗa (Mai kawowa / Mai ɗaukar kaya)
 next_country	Ƙasa ta gaba
 prev_country	Ƙasar baya
 note_gstin_ph	Bayani / GSTIN / tunatar da yarjejeniya
@@ -459,10 +459,10 @@ refund	Mayar da kuɗi
 remit_cod	Tura COD (abokin hulɗa)
 remove_selected	Cire wanda aka zaɓa
 restore_backup	Mayar da ajiyar madadin
-rider_name_ph	Sunan ɗan isarwa
-rider_phone_ph	Wayar ɗan isarwa
-riders	'Yan isarwa
-riders_own_fleet	'Yan isarwa (namu)
+rider_name_ph	Sunan mai kai kaya
+rider_phone_ph	Wayar mai kai kaya
+riders	Masu kai kaya
+riders_own_fleet	Masu kai kaya (namu)
 rollup	Tattara
 save_booking_measures	Ajiye matakan yin rajista
 save_brand	Ajiye alama
@@ -601,7 +601,7 @@ printers_looking	Neman firinta akan wannan na'urar da Wi-Fi…
 printers_tap_find	Matsa Nemo firintocin don layukan da ke karɓar ayyukan yi da firintocin karɓar cibiyar sadarwa akan wannan Wi-Fi (ba a cire su ko na layi ba).
 printers_none_found	Ba a sami firinta ba - rubuta sunan firinta na tsarin, ko adireshin cibiyar sadarwa (misali 192.168.1.50).
 receipt_printer_ph	Printer don rasit
-queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a tebur ciniki:
+queue_refused	Shago bai karɓa ba ({n}) — duba kowanne a teburin ciniki:
 clear_not_accepted	An duba — share wannan jeri
 device_name_ph	Sunan wannan na'ura
 lan_last_update	sabuntawa ta ƙarshe {time}
@@ -698,7 +698,7 @@ item_photo_help	Ba dole ba. Idan babu hoto muna nuna haruffan farko na sunan kay
 cash_in_hand	Tsabar kuɗi a akwati
 change_my_pin_heading	Canza PIN na (naka kawai)
 connect_to_server	Haɗa da Server
-counter_locked	Tebur ciniki 01 · An kulle
+counter_locked	Teburin ciniki 01 · An kulle
 country_pack_help	Fakiti na ƙasa yana sa sunan haraji da lissafi, hanyar biya nan take, da lambar kasuwanci da ake buga a lissafi. Kumkaj ba ya bayar da haraji ko ba da lissafin gwamnati a ko'ina.
 currency_use_help	Gungura ka taɓa Yi amfani ga kowane kuɗin da ake goyan baya.
 day_close_help	Rubuta rufe yini yana ajiye wannan taƙaitaccen (da bambancin akwati idan an ƙidaya) a rajistan bincike. Ba ya tsayar da sayarwa.
@@ -819,24 +819,24 @@ report_lens_midnight	Cewar tsakar dare
 trk_booked	An yi rajista
 trk_picked_up	An dauka
 trk_in_transit	Na hanya
-trk_delivered	Isar da
+trk_delivered	An isar
 trk_rto	Komawa ga mai aikawa
 lane_to_dispatch	Don aikawa
-lane_with_carrier	Tare da mai ɗauka
+lane_with_carrier	Hannun mai ɗaukar kaya
 lane_failed	Ba a yi nasara ba
 lane_done_today	Anyi yau
 ops_board_help	Fakiti ta inda suke cikin aikin yau. Matsa fakiti (ko duba su) don ɗaukar su, sannan aiwatar da duk abin da aka zaɓa lokaci ɗaya - kowane layi yana ba da motsin da ya dace da shi kawai.
 lane_empty	Babu komai a nan yanzu.
 picked_fmt	{n} ya karɓa
 pick_all	Zaɓi duka
-bag_for_carrier	Hannu zuwa mai ɗauka
-send_with_rider	Aika ta hannun ɗan isarwa
+bag_for_carrier	Miƙa ga mai ɗaukar kaya
+send_with_rider	Aika ta hannun mai kai kaya
 out_again	Fita kuma
-return_to_sender	Komawa ga mai aikawa
+return_to_sender	Mayar wa mai aikawa
 runs_bags_heading	Gudun kwanan nan & jakunkuna
 print_word	Buga
 bag_word	Jakar jigilar kaya
-run_word	Zagayen ɗan isarwa
+run_word	Zagayen mai kai kaya
 parcels_fmt	Farashin {n}
 parcel_history	Tarihi
 attempt_fmt	Ƙoƙarin {n}
@@ -852,11 +852,11 @@ parcel_one_fmt	Farashin {n}
 facet_bank_title	Rahotanni
 facet_bank_help	Littattafan yini, shekarun bashi na abokan hulɗa, rubutun banki, da R&H na lokaci.
 facet_ops_title	Kayayyaki & aikawa
-facet_ops_help	Duba ko buga AWB → Nemo, sannan ci gaba / buga lakabi / COD. Mika wa ɗan isarwa ko mai ɗauka.
+facet_ops_help	Duba ko buga AWB → Nemo, sannan ci gaba / buga lakabi / COD. Mika wa mai kai kaya ko mai ɗaukar kaya.
 facet_cod_title	Rahoton da aka ƙayyade na COOD
 facet_cod_help	Tattara lokacin isarwa, sannan a mika wa mai aikawa.
-facet_riders_title	'Yan isarwa (namu)
-facet_riders_help	Ƙara 'yan isarwa, sannan aika AWB da aka yi rajista daga Ops.
+facet_riders_title	Masu kai kaya (namu)
+facet_riders_help	Ƙara masu kai kaya, sannan aika AWB da aka yi rajista daga Ops.
 against_bill_ph	A kan lambar lissafi a sama (ba dole ba)
 aliases_ph	Sauran sunaye — raba da waƙafi
 amount_blank_full_ph	Adadi (fanko = duka ma'auni)
@@ -928,9 +928,9 @@ book_kind_month	Littattafan wannan wata
 book_kind_aging	Ragowa / bashi-bashi
 book_kind_balance	Takardar daidaito
 ops_desk_help	Duba AWB tare da na'urar daukar hotan takardu ta USB (ko buga shi) → Nemo. Sannan gaba, buga lakabin, ko tattara COD. Lambobin buga lambar 128.
-role_help_consignor	Matsayi: Consignor - AR (suna bin mu). Wannan kamfani kuma na iya zama Mai ɗaukar kaya.
-role_help_carrier	Matsayi: Mai ɗauka - AP (muna bin su). Wannan kamfani kuma na iya zama Consignor.
-role_help_both	Matsayi: Mai aikawa + Mai ɗauka — abokin hulɗa ɗaya, littattafan AR da AP, tsantsa a Rahotanni.
+role_help_consignor	Matsayi: Mai aikawa - AR (suna bin mu). Wannan kamfani kuma na iya zama Mai ɗaukar kaya.
+role_help_carrier	Matsayi: Mai ɗaukar kaya - AP (muna bin su). Wannan kamfani kuma na iya zama Mai aikawa.
+role_help_both	Matsayi: Mai aikawa + Mai ɗaukar kaya — abokin hulɗa ɗaya, littattafan AR da AP, tsantsa a Rahotanni.
 role_help_supplier	Matsayi: Mai bayarwa - AP don sayayya.
 lane_declared_label	Yin ajiyar asusu
 lane_owner_label	Yin ajiyar kuɗi
