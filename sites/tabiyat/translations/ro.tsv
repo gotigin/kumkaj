@@ -1,227 +1,227 @@
 # Romanian — Română (ro). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Exemplu
+download_free	Descarcă gratuit
+whatsapp_for_a_demo	Demo pe WhatsApp
+free_on_android_windows_and	Gratuit pe Android, Windows și Linux.
+the_pharmacy_counter	ghișeul farmaciei
+pharmacy_counter	Ghișeul farmaciei
+tabiyat_the_pharmacy_counter	TABIYAT · GHIȘEUL FARMACIEI
+pharmacy_counter_offline_your_books	Ghișeul farmaciei. Fără internet. Registrele tale.
+medicines_barcode_and_salt_search	Medicamente, căutare după cod de bare și substanță activă, lot și dată de expirare pentru propriile registre — pe dispozitivele tale. Doar marcaje ale proprietarului; niciodată o falsă conformitate cu legea medicamentului.
+tap_the_bill_to_walk	Atinge bonul ca să parcurgi o vânzare la casă
+cash_memo	Bon de casă
+ready	Gata
+total	Total de plată
+tap_to_add_the_first	Atinge ca să adaugi primul medicament
+example_pharmacy_lines_not_a	Rânduri de exemplu dintr-o farmacie, nu o casă reală. Tabiyat urmează același drum: vânzare → încasare → jurnalul zilei.
+n_2_counter_sell	2 · VÂNZARE LA CASĂ
+medicine_quantity_pay_three_taps	Medicament, cantitate, plată — trei atingeri.
+upi_qr_ready	Cod QR UPI gata
+example_bill	Bon de exemplu
+fast_counter_billing	Încasare rapidă la ghișeu
+add_the_line_set_the	Adaugă rândul, setează cantitatea, încasează — numerar, UPI sau mixt.
+gst_tax_invoice_or_cash	Factură fiscală GST sau bon de casă
+the_bill_lane_you_need	Tipul de document de care ai nevoie pentru vânzare.
+day_book_follows	Jurnalul zilei urmează
+every_tender_lands_in_books	Fiecare plată ajunge în Registre când închizi vânzarea.
+n_3_barcode_salt	3 · COD DE BARE ȘI SUBSTANȚĂ ACTIVĂ
+scan_the_barcode_or_find	Scanează codul de bare — sau găsește-l după substanța activă.
+search	Căutare
+composition_paracetamol_strip_of_10	Compoziție: paracetamol · folie de 10
+salt_amoxicillin	Substanță activă: amoxicilină
+ranks_barcode_name_and_composition	Ordonează rezultatele după cod de bare, nume și compoziție, laolaltă.
+wedge_scanner_or_type_enter	Scaner tip tastatură sau tasta Enter — rândul ajunge pe bon.
+barcode_first	Mai întâi codul de bare
+scan_or_paste_the_code	Scanează sau lipește codul; apare potrivirea din catalog.
+salt_composition	Substanță activă / compoziție
+type_the_salt_when_the	Scrie substanța activă când clientul n-a spus numele comercial.
+owner_rx_schedule_h_flags	Marcaje ale proprietarului pentru rețetă / Schedule H
+reminders_you_set_not_a	Mementouri pe care le setezi tu — nu un registru legal și nici sfat medical.
+n_4_batch_expiry	4 · LOT ȘI EXPIRARE
+batch_and_expiry_on_your	Lot și dată de expirare în registrele tale — alerte pentru proprietar.
+buy_batch_a12	Cumpărare · lot A12
+expires_2027_03_alert_in	Expiră 2027-03 · alertă în 7 zile
+ors_sachets_batch_b04	Plicuri ORS · lot B04
+expires_2026_11_near_expiry	Expiră 2026-11 · bandă „aproape de expirare” în Registre
+shop_bookkeeping_only_not_drugs	Doar evidența magazinului — nu conformitate cu legea medicamentului.
+batch_on_buy	Lot la cumpărare
+record_batch_and_expiry_when	Înregistrează lotul și data de expirare când intră marfa.
+near_expiry_alerts	Alerte de expirare apropiată
+books_and_sell_can_hint	Registre și Vinde te pot avertiza înainte să treacă data.
+owner_practice	Practica proprietarului
+fefo_hints_and_rx_notes	Sugestiile FEFO și notele despre rețete sunt ale tale de urmat — Tabiyat înregistrează ce introduci.
+n_5_khata	5 · CAIETUL DE DATORII
+customer_credit_and_supplier_dues	Creditul clienților și datoriile către furnizori într-un singur registru de parteneri.
+mehta_clinic_customer	Clinica Mehta · Client
+due_from_earlier	Datorie mai veche
+today_s_sale_due	+ vânzarea de azi (pe datorie)
+balance	Sold
+settle_later_part_cash_part	Achită mai târziu — o parte numerar, o parte UPI. Datoriile către furnizori stau pe același ecran Parteneri.
+due_on_the_bill	Datorie pe bon
+leave_a_balance_on_khata	Lasă un sold în caietul de datorii, fără o aplicație separată de evidență.
+supplier_buys_too	Și cumpărările de la furnizori
+who_you_owe_updates_when	Datoriile tale se actualizează când sosește marfa.
+auditable	Verificabil
+who_when_and_how_much	Cine, când și cât rămân în jurnalul zilei.
+n_6_internet_down	6 · A CĂZUT INTERNETUL?
+the_internet_drops_the_counter	Internetul cade. Casa vinde mai departe.
+router_no_internet	Router: fără internet
+main_counter_selling_and_settling	Casa principală: vinde și încasează
+second_till_joined_on_your	A doua casă: conectată la propria ta rețea Wi-Fi
+books_live_on_the_shop	Registrele stau pe dispozitivele magazinului
+when_the_internet_drops_nothing	Când cade internetul, nimic de la ghișeul farmaciei nu-l așteaptă.
+one_server_lan_clients	Un server, clienți în LAN
+extra_tills_share_the_same	Casele suplimentare folosesc aceleași registre prin rețeaua magazinului.
+n_7_free_forever_locally	7 · GRATUIT PENTRU TOTDEAUNA, LOCAL
+free_forever_on_your_devices	Gratuit pentru totdeauna pe dispozitivele tale.
+no_per_bill_charge	Fără taxă pe bon
+no_fee_per_sale_medicine	Fără taxă pe vânzare, medicament, casă sau PIN de angajat în instalarea locală.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Același Tabiyat pe telefon și pe casa de pe calculator.
+optional_kumkaj_cloud	Kumkaj Cloud opțional
+yearly_steady_6k_swift_12k	Anual: Steady ₹6k · Swift ₹12k · Priority ₹24k fără taxe (sau ofertă personalizată). Cumpără în /shop.
+n_8_start	8 · ÎNCEPE
+put_tabiyat_on_the_counter	Pune Tabiyat pe ghișeu.
+download_free_or_whatsapp_for	Descarcă gratuit sau scrie-ne pe WhatsApp pentru o demonstrație potrivită farmaciei și orașului tău.
+privacy	Confidențialitate
+terms	Termeni
+cancellation	Anulare
+cloud_shop	Magazin cloud
+account	Cont
+chapter_counter_sell	Vânzare la casă
+chapter_barcode_salt	Cod de bare și substanță activă
+chapter_batch_expiry	Lot și expirare
+chapter_khata	Caietul de datorii
+chapter_extra_till	Casă suplimentară
+chapter_offline	Fără internet
+chapter_start	Început
+bill_selling	Vânzare în curs
+bill_settle	Încasare
+bill_paid	Plătită
+bill_next_line	Atinge ca să adaugi următorul rând
+bill_settle_hint	Atinge ca să încasezi — numerar sau UPI
+bill_upi_paid	UPI ₹ 162 · plătit
+bill_paid_line	Plătit · jurnalul zilei actualizat
+lan_eyebrow	6 · CASĂ SUPLIMENTARĂ
+lan_title	Încă o casă în rețeaua Wi-Fi a magazinului.
+cta_installers_note	Instalatoarele apar aici după ce fiecare trece testul de instalare pe un sistem curat. Până atunci, cere o demonstrație pe WhatsApp.
+cta_whatsapp_soon	Linia de demo pe WhatsApp se deschide în curând. Mesajul tău va fi: „{message}”.
+acct_page_title	Cont — Tabiyat
+acct_lede	Un singur cont pentru site și aplicații — același formular, fie că ești nou, fie că revii.
+acct_email	E-mail
+acct_name_optional	Nume (opțional)
+acct_password	Parolă
+acct_continue	Continuă
+acct_forgot	Ai uitat parola?
+acct_reset_hint	Îți trimitem pe e-mail un link de resetare. Folosește aceeași adresă cu care te-ai înregistrat.
+acct_send_reset	Trimite linkul de resetare
+acct_cancel	Anulează
+acct_or_continue	sau continuă cu
+acct_phone	Telefon
+acct_mobile	Număr de mobil
+acct_send_sms	Trimite codul prin SMS
+acct_sms_code	Cod SMS
+acct_confirm_code	Confirmă codul
+acct_signed_in	Autentificat
+acct_signed_in_as	Autentificat ca
+acct_status	Stare
+acct_sign_in_methods	Metode de autentificare
+acct_cloud_username	Nume de utilizator în cloud
+acct_plan	Abonament
+acct_resend_verify	Retrimite e-mailul de verificare
+acct_sign_out	Deconectare
+acct_cloud_sandbox	Kumkaj Cloud (mediu de test)
+acct_current_password	Parola actuală
+acct_email_for_password	E-mail pentru autentificarea cu parolă
+acct_new_password	Parola nouă
+acct_confirm_new_password	Confirmă parola nouă
+acct_add_way	Adaugă o altă metodă de autentificare
+acct_link_hint	Leagă mai multe metode de același cont ca să-ți poți recupera accesul dacă una nu funcționează.
+acct_link_google	Leagă Google
+acct_link_microsoft	Leagă Microsoft
+acct_link_github	Leagă GitHub
+acct_link_phone	Leagă telefonul
+acct_send_sms_link	Trimite SMS pentru legare
+acct_confirm_link_phone	Confirmă și leagă telefonul
+shop_page_title	Magazin — Tabiyat
+shop_lede	Abonamente cloud anuale — taxele se adaugă la plată. Aplicația Tabiyat completă pe propriile dispozitive rămâne gratuită pentru totdeauna, fără reclame.
+shop_cart	Coș
+shop_cart_empty_hint	Coșul tău e gol. Adaugă Steady, Swift sau Priority.
+shop_checkout	Finalizează comanda
+shop_clear	Golește
+shop_checkout_hint	La finalizare te autentifici în Cont, apoi pornește plata (simulare în mediul de test sau Paddle, când cheile sunt setate).
+acct_billing_hint	Abonamente anuale — taxele le adaugă procesatorul de plăți la finalizare. Utilizarea locală rămâne gratuită pentru totdeauna. Abonamentul personalizat e pe bază de ofertă (poate fi sub Steady sau peste Priority).
+shop_cloud_plans	Abonamente cloud
+acct_federated	Autentificare federată
+acct_err_invalid_email	Introdu o adresă de e-mail validă.
+acct_err_weak_password	Folosește o parolă de cel puțin 6 caractere.
+acct_err_wrong_password	Parolă greșită.
+acct_err_invalid_credential	E-mailul sau parola sunt greșite.
+acct_err_popup_closed	Fereastra de autentificare a fost închisă.
+acct_err_popup_cancelled	Autentificarea a fost anulată.
+acct_err_unauthorized_domain	Acest domeniu nu este autorizat pentru Firebase Auth.
+acct_err_method_disabled	Această metodă de autentificare nu este încă activată.
+acct_err_too_many	Prea multe încercări. Încearcă din nou mai târziu.
+acct_err_phone_format	Folosește numărul de telefon complet, cu prefixul țării (de ex. +91…).
+acct_err_sms_code	Codul SMS e greșit sau a expirat.
+acct_err_no_account	Nu există niciun cont cu acest e-mail. Continuă ca să creezi unul sau folosește altă metodă.
+acct_err_recent_login	Din motive de securitate, autentifică-te din nou, apoi reîncearcă această modificare.
+acct_err_credential_in_use	Această metodă de autentificare este deja folosită de alt cont.
+acct_err_email_in_use	Acest e-mail este deja folosit de alt cont.
+acct_err_already_linked	Această metodă este deja legată de acest cont.
+acct_err_exists_other_method	Există deja un cont cu acest e-mail, dar cu altă metodă de autentificare. Autentifică-te mai întâi cu metoda aceea, apoi leag-o pe aceasta din pagina contului.
+acct_err_generic	Ceva n-a mers bine.
+acct_method_password	E-mail și parolă
+acct_pw_hint_change	Schimbă-ți parola. Vei confirma cu parola actuală.
+acct_pw_hint_add	Adaugă o parolă ca să te poți autentifica și cu e-mailul (util dacă un furnizor nu e disponibil).
+acct_pw_change	Schimbă parola
+acct_pw_add	Adaugă parolă
+acct_billing_off	Facturarea nu este încă activată în API-ul cloud.
+acct_billing_no_provider	În API-ul cloud nu este activat niciun furnizor real de plăți (simularea există doar local).
+price_quote	Ofertă
+price_per_year	₹{amount}/an fără taxe
+acct_pay_received	Plată primită — îți actualizăm abonamentul…
+acct_pay_declined	Plata a fost refuzată sau a eșuat
+acct_pay_failed_detail	{detail}. Abonamentul tău nu a fost modificat.
+acct_checkout_closed	Finalizarea a fost închisă — nicio plată efectuată. Abonamentul tău rămâne neschimbat.
+acct_checkout_failed	Finalizarea a eșuat
+acct_pay_with	Plătește cu {provider}
+acct_plan_until	{plan} · până la {date}
+acct_unavailable	Indisponibil
+acct_continue_hint	Continuă cu e-mailul, un furnizor sau telefonul.
+acct_signed_in_fallback	(autentificat)
+acct_email_verified	E-mail verificat
+acct_email_unverified	E-mailul nu e încă verificat — verifică-ți căsuța de e-mail
+acct_signed_in_phone	Autentificat cu telefonul
+acct_none_listed	Deocamdată nimic
+acct_signed_in_status	Ești autentificat.
+acct_created	Cont creat. Verifică-ți e-mailul ca să-l confirmi când poți.
+acct_reset_sent	Dacă există un cont pentru acest e-mail, linkul de resetare e pe drum. Verifică-ți căsuța de e-mail.
+acct_another_method	altă metodă
+acct_exists_via	Există deja un cont pentru {email} prin {method}. Autentifică-te mai întâi așa, apoi leagă acest furnizor din pagina contului.
+acct_enter_current_pw	Introdu parola actuală.
+acct_relogin_retry	Deconectează-te și autentifică-te din nou, apoi reîncearcă.
+acct_pw_mismatch	Parola nouă și confirmarea nu se potrivesc.
+acct_pw_updated	Parola a fost actualizată.
+acct_enter_email_pw	Introdu un e-mail pentru autentificarea cu parolă.
+acct_pw_added	Parola a fost adăugată. Acum te poți autentifica și cu e-mailul.
+acct_method_linked	Metoda de autentificare a fost legată.
+acct_phone_linked	Telefonul a fost legat de acest cont.
+acct_verify_sent	E-mailul de verificare a fost trimis — verifică-ți căsuța de e-mail.
+shop_pricing_soon	Prețurile vin în curând
+shop_request_quote	Cere o ofertă
+shop_add_to_cart	Adaugă în coș
+shop_notify_later	Anunță-mă mai târziu
+shop_included	Inclus
+shop_in_cart	{plan} este în coșul tău.
+shop_remove	Elimină
+shop_cart_is_empty	Coșul e gol.
+shop_prices_unpublished	Prețurile pentru cumpărare directă nu sunt încă publicate pentru acest produs. Cere o ofertă personalizată sau revino mai târziu.
+shop_cart_cleared	Coșul a fost golit.
+plan_free_title	Gratuit pentru totdeauna
+plan_free_blurb	Produsul local complet pe dispozitivele tale. Fără taxă de cloud.
+plan_steady_blurb	Cloud activ · 10 GB · lățime de bandă mai mică
+plan_swift_blurb	Cloud activ · 25 GB · lățime de bandă medie
+plan_priority_blurb	Cloud activ · 50 GB · cea mai mare lățime de bandă standard
+plan_custom_title	Personalizat
+plan_custom_blurb	Cotă și lățime de bandă convenite. Oferta poate fi sub Steady sau peste Priority.

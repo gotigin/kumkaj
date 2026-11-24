@@ -1,230 +1,230 @@
 # Romanian — Română (ro). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Exemplu
+download_free	Descarcă gratuit
+whatsapp_for_a_demo	Demo pe WhatsApp
+free_on_android_windows_and	Gratuit pe Android, Windows și Linux.
+the_grocery_counter	casa magazinului alimentar
+busy_counter	Aglomerație la casă
+kirano_the_grocery_counter	KIRANO · CASA MAGAZINULUI ALIMENTAR
+busy_counter_no_internet_still	Aglomerație la casă. Fără internet. Se vinde în continuare.
+sell_khata_stock_and_the	Vânzare, caietul de datorii, stoc și jurnalul zilei — pe propriile dispozitive. Registre · Vinde · Cumpărare · Articole. Fără sală, fără bucătărie, fără mese.
+tap_the_bill_to_walk	Atinge bonul ca să parcurgi o vânzare la casă
+cash_memo	Bon de casă
+ready	Gata
+total	Total de plată
+tap_to_add_the_first	Atinge ca să adaugi primul articol
+example_grocery_lines_not_a	Rânduri de exemplu dintr-un magazin alimentar, nu o casă reală. Kirano urmează același drum: vânzare → încasare → jurnalul zilei.
+n_2_counter_sell	2 · VÂNZARE LA CASĂ
+item_quantity_pay_three_taps	Articol, cantitate, plată — trei atingeri.
+upi_qr_ready	Cod QR UPI gata
+example_bill	Bon de exemplu
+search_by_name_or_short	Caută după nume sau cod scurt
+type_atta_at5_or_an	Scrie atta, AT5 sau un alias — rândul ajunge pe bon.
+kg_g_pc_l_ml	kg, g, buc., l, ml
+quantity_in_the_unit_the	Cantitatea în unitatea de pe ambalaj; prețul se calculează singur.
+cash_upi_or_split	Numerar, UPI sau mixt
+settle_on_the_counter_the	Încasează la casă; jurnalul zilei înregistrează modul de plată.
+n_3_khata	3 · CAIETUL DE DATORII
+credit_without_a_crm_put	Credit fără CRM — trece-l în caietul lor de datorii.
+ramesh_customer	Ramesh · Client
+due_from_earlier	Datorie mai veche
+today_s_sale_due	+ vânzarea de azi (pe datorie)
+balance	Sold
+settle_later_in_parties_part	Achită mai târziu în Parteneri — o parte numerar, o parte UPI, și rândul e stins.
+due_on_the_bill	Datorie pe bon
+what_s_left_goes_on	Ce rămâne trece în caietul de datorii al clientului — fără o aplicație separată de evidență.
+one_party_two_roles	Un partener, două roluri
+customer_ar_and_supplier_ap	Creanțele de la clienți și datoriile către furnizori stau în același registru de parteneri.
+who_when_how_much	Cine, când, cât
+every_credit_and_settlement_stays	Fiecare credit și fiecare achitare rămân în jurnalul zilei.
+n_4_buy_stock	4 · CUMPĂRARE ȘI STOC
+buy_from_the_wholesaler_stock	Cumpără de la angrosist — stocul și datoriile tale se actualizează împreună.
+purchase_sharma_wholesale	Achiziție · Sharma Wholesale
+stock_50_kg_ap_7	Stoc +50 kg · De plătit ₹ 7.200
+stock_12_l_ap_1	Stoc +12 L · De plătit ₹ 1.560
+resale_stock_not_kitchen_raw	Marfă pentru revânzare — nu materie primă de bucătărie. Lot și dată de expirare opționale la cumpărare.
+buy_creates_stock	Cumpărarea creează stoc
+receive_the_goods_the_catalogue	Recepționează marfa; cantitatea din catalog crește.
+who_we_owe	Cui îi datorăm
+supplier_balance_sits_on_the	Soldul furnizorului stă în aceeași secțiune Parteneri ca și caietul de datorii al clienților.
+low_stock_at_a_glance	Stoc redus dintr-o privire
+inventory_shows_what_is_running	Inventarul arată ce se termină înainte de următoarea aglomerație.
+n_5_day_book	5 · JURNALUL ZILEI
+cash_vs_upi_counted_and	Numerar și UPI, numărate separat — iar diferența e numită.
+today_s_drawer	Sertarul de azi
+opening_float	Fond de schimb inițial
+cash_sales	+ vânzări în numerar
+upi_sales	+ vânzări prin UPI
+cash_paid_out	− numerar plătit
+expected_cash	Numerar așteptat
+counted	Numărat
+short	Lipsă
+tenders_stay_separate	Modurile de plată rămân separate
+cash_and_upi_never_mix	Numerarul și UPI nu se amestecă niciodată într-un total misterios.
+shift_close	Închidere de tură
+close_the_shift_print_the	Închide tura, tipărește raportul și începe următoarea de la zero.
+gst_facing_bills	Bonuri cu GST
+tax_invoice_or_cash_memo	Factură fiscală sau bon de casă — raportul zilei le cuprinde pe amândouă.
+books_sell_buy_items_four	Registre · Vinde · Cumpărare · Articole — patru ecrane și nicio sală de restaurant.
+n_6_internet_down	6 · A CĂZUT INTERNETUL?
+the_internet_drops_the_counter	Internetul cade. Casa vinde mai departe.
+router_no_internet	Router: fără internet
+main_counter_selling_and_settling	Casa principală: vinde și încasează
+second_till_joined_on_your	A doua casă: conectată la propria ta rețea Wi-Fi
+books_live_on_the_shop	Registrele stau pe dispozitivele magazinului
+when_the_internet_drops_mid	Când internetul cade în plină aglomerație, nimic de la casă nu-l așteaptă.
+one_server_lan_clients	Un server, clienți în LAN
+extra_tills_share_the_same	Casele suplimentare folosesc aceleași registre prin rețeaua magazinului.
+n_7_free_forever_locally	7 · GRATUIT PENTRU TOTDEAUNA, LOCAL
+free_forever_on_your_devices	Gratuit pentru totdeauna pe dispozitivele tale.
+no_per_bill_charge	Fără taxă pe bon
+no_fee_per_sale_item	Fără taxă pe vânzare, articol, casă sau PIN de angajat în instalarea locală.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Același Kirano pe telefonul din spatele tejghelei și pe casa de pe calculator.
+optional_kumkaj_cloud	Kumkaj Cloud opțional
+yearly_steady_6k_swift_12k	Anual: Steady ₹6k · Swift ₹12k · Priority ₹24k fără taxe (sau ofertă personalizată). Cumpără în /shop.
+n_8_start	8 · ÎNCEPE
+put_kirano_on_the_counter	Pune Kirano pe tejghea.
+download_free_or_whatsapp_for	Descarcă gratuit sau scrie-ne pe WhatsApp pentru o demonstrație potrivită tipului de magazin și orașului tău.
+privacy	Confidențialitate
+terms	Termeni
+cancellation	Anulare
+cloud_shop	Magazin cloud
+account	Cont
+chapter_counter_sell	Vânzare la casă
+chapter_khata	Caietul de datorii
+chapter_buy_stock	Cumpărare și stoc
+chapter_day_book	Jurnalul zilei
+chapter_extra_till	Casă suplimentară
+chapter_offline	Fără internet
+chapter_start	Început
+bill_selling	Vânzare în curs
+bill_settle	Încasare
+bill_paid	Plătită
+bill_next_item	Atinge ca să adaugi următorul articol
+bill_settle_hint	Atinge ca să încasezi — numerar sau UPI
+bill_cash_return	Numerar ₹ 600 · rest ₹ 15
+bill_paid_line	Plătit · jurnalul zilei actualizat
+lan_eyebrow	6 · CASĂ SUPLIMENTARĂ
+lan_title	Încă o casă în rețeaua Wi-Fi a magazinului.
+cta_installers_note	Instalatoarele apar aici după ce fiecare trece testul de instalare pe un sistem curat. Până atunci, cere o demonstrație pe WhatsApp.
+cta_whatsapp_soon	Linia de demo pe WhatsApp se deschide în curând. Mesajul tău va fi: „{message}”.
+acct_page_title	Cont — Kirano
+acct_lede	Un singur cont pentru site și aplicații — același formular, fie că ești nou, fie că revii.
+acct_email	E-mail
+acct_name_optional	Nume (opțional)
+acct_password	Parolă
+acct_continue	Continuă
+acct_forgot	Ai uitat parola?
+acct_reset_hint	Îți trimitem pe e-mail un link de resetare. Folosește aceeași adresă cu care te-ai înregistrat.
+acct_send_reset	Trimite linkul de resetare
+acct_cancel	Anulează
+acct_or_continue	sau continuă cu
+acct_phone	Telefon
+acct_mobile	Număr de mobil
+acct_send_sms	Trimite codul prin SMS
+acct_sms_code	Cod SMS
+acct_confirm_code	Confirmă codul
+acct_signed_in	Autentificat
+acct_signed_in_as	Autentificat ca
+acct_status	Stare
+acct_sign_in_methods	Metode de autentificare
+acct_cloud_username	Nume de utilizator în cloud
+acct_plan	Abonament
+acct_resend_verify	Retrimite e-mailul de verificare
+acct_sign_out	Deconectare
+acct_cloud_sandbox	Kumkaj Cloud (mediu de test)
+acct_current_password	Parola actuală
+acct_email_for_password	E-mail pentru autentificarea cu parolă
+acct_new_password	Parola nouă
+acct_confirm_new_password	Confirmă parola nouă
+acct_add_way	Adaugă o altă metodă de autentificare
+acct_link_hint	Leagă mai multe metode de același cont ca să-ți poți recupera accesul dacă una nu funcționează.
+acct_link_google	Leagă Google
+acct_link_microsoft	Leagă Microsoft
+acct_link_github	Leagă GitHub
+acct_link_phone	Leagă telefonul
+acct_send_sms_link	Trimite SMS pentru legare
+acct_confirm_link_phone	Confirmă și leagă telefonul
+shop_page_title	Magazin — Kirano
+shop_lede	Abonamente cloud anuale — taxele se adaugă la plată. Aplicația Kirano completă pe propriile dispozitive rămâne gratuită pentru totdeauna, fără reclame.
+shop_cart	Coș
+shop_cart_empty_hint	Coșul tău e gol. Adaugă Steady, Swift sau Priority.
+shop_checkout	Finalizează comanda
+shop_clear	Golește
+shop_checkout_hint	La finalizare te autentifici în Cont, apoi pornește plata (simulare în mediul de test sau Paddle, când cheile sunt setate).
+acct_billing_hint	Abonamente anuale — taxele le adaugă procesatorul de plăți la finalizare. Utilizarea locală rămâne gratuită pentru totdeauna. Abonamentul personalizat e pe bază de ofertă (poate fi sub Steady sau peste Priority).
+shop_cloud_plans	Abonamente cloud
+acct_federated	Autentificare federată
+acct_err_invalid_email	Introdu o adresă de e-mail validă.
+acct_err_weak_password	Folosește o parolă de cel puțin 6 caractere.
+acct_err_wrong_password	Parolă greșită.
+acct_err_invalid_credential	E-mailul sau parola sunt greșite.
+acct_err_popup_closed	Fereastra de autentificare a fost închisă.
+acct_err_popup_cancelled	Autentificarea a fost anulată.
+acct_err_unauthorized_domain	Acest domeniu nu este autorizat pentru Firebase Auth.
+acct_err_method_disabled	Această metodă de autentificare nu este încă activată.
+acct_err_too_many	Prea multe încercări. Încearcă din nou mai târziu.
+acct_err_phone_format	Folosește numărul de telefon complet, cu prefixul țării (de ex. +91…).
+acct_err_sms_code	Codul SMS e greșit sau a expirat.
+acct_err_no_account	Nu există niciun cont cu acest e-mail. Continuă ca să creezi unul sau folosește altă metodă.
+acct_err_recent_login	Din motive de securitate, autentifică-te din nou, apoi reîncearcă această modificare.
+acct_err_credential_in_use	Această metodă de autentificare este deja folosită de alt cont.
+acct_err_email_in_use	Acest e-mail este deja folosit de alt cont.
+acct_err_already_linked	Această metodă este deja legată de acest cont.
+acct_err_exists_other_method	Există deja un cont cu acest e-mail, dar cu altă metodă de autentificare. Autentifică-te mai întâi cu metoda aceea, apoi leag-o pe aceasta din pagina contului.
+acct_err_generic	Ceva n-a mers bine.
+acct_method_password	E-mail și parolă
+acct_pw_hint_change	Schimbă-ți parola. Vei confirma cu parola actuală.
+acct_pw_hint_add	Adaugă o parolă ca să te poți autentifica și cu e-mailul (util dacă un furnizor nu e disponibil).
+acct_pw_change	Schimbă parola
+acct_pw_add	Adaugă parolă
+acct_billing_off	Facturarea nu este încă activată în API-ul cloud.
+acct_billing_no_provider	În API-ul cloud nu este activat niciun furnizor real de plăți (simularea există doar local).
+price_quote	Ofertă
+price_per_year	₹{amount}/an fără taxe
+acct_pay_received	Plată primită — îți actualizăm abonamentul…
+acct_pay_declined	Plata a fost refuzată sau a eșuat
+acct_pay_failed_detail	{detail}. Abonamentul tău nu a fost modificat.
+acct_checkout_closed	Finalizarea a fost închisă — nicio plată efectuată. Abonamentul tău rămâne neschimbat.
+acct_checkout_failed	Finalizarea a eșuat
+acct_pay_with	Plătește cu {provider}
+acct_plan_until	{plan} · până la {date}
+acct_unavailable	Indisponibil
+acct_continue_hint	Continuă cu e-mailul, un furnizor sau telefonul.
+acct_signed_in_fallback	(autentificat)
+acct_email_verified	E-mail verificat
+acct_email_unverified	E-mailul nu e încă verificat — verifică-ți căsuța de e-mail
+acct_signed_in_phone	Autentificat cu telefonul
+acct_none_listed	Deocamdată nimic
+acct_signed_in_status	Ești autentificat.
+acct_created	Cont creat. Verifică-ți e-mailul ca să-l confirmi când poți.
+acct_reset_sent	Dacă există un cont pentru acest e-mail, linkul de resetare e pe drum. Verifică-ți căsuța de e-mail.
+acct_another_method	altă metodă
+acct_exists_via	Există deja un cont pentru {email} prin {method}. Autentifică-te mai întâi așa, apoi leagă acest furnizor din pagina contului.
+acct_enter_current_pw	Introdu parola actuală.
+acct_relogin_retry	Deconectează-te și autentifică-te din nou, apoi reîncearcă.
+acct_pw_mismatch	Parola nouă și confirmarea nu se potrivesc.
+acct_pw_updated	Parola a fost actualizată.
+acct_enter_email_pw	Introdu un e-mail pentru autentificarea cu parolă.
+acct_pw_added	Parola a fost adăugată. Acum te poți autentifica și cu e-mailul.
+acct_method_linked	Metoda de autentificare a fost legată.
+acct_phone_linked	Telefonul a fost legat de acest cont.
+acct_verify_sent	E-mailul de verificare a fost trimis — verifică-ți căsuța de e-mail.
+shop_pricing_soon	Prețurile vin în curând
+shop_request_quote	Cere o ofertă
+shop_add_to_cart	Adaugă în coș
+shop_notify_later	Anunță-mă mai târziu
+shop_included	Inclus
+shop_in_cart	{plan} este în coșul tău.
+shop_remove	Elimină
+shop_cart_is_empty	Coșul e gol.
+shop_prices_unpublished	Prețurile pentru cumpărare directă nu sunt încă publicate pentru acest produs. Cere o ofertă personalizată sau revino mai târziu.
+shop_cart_cleared	Coșul a fost golit.
+plan_free_title	Gratuit pentru totdeauna
+plan_free_blurb	Produsul local complet pe dispozitivele tale. Fără taxă de cloud.
+plan_steady_blurb	Cloud activ · 10 GB · lățime de bandă mai mică
+plan_swift_blurb	Cloud activ · 25 GB · lățime de bandă medie
+plan_priority_blurb	Cloud activ · 50 GB · cea mai mare lățime de bandă standard
+plan_custom_title	Personalizat
+plan_custom_blurb	Cotă și lățime de bandă convenite. Oferta poate fi sub Steady sau peste Priority.
