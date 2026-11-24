@@ -1,6 +1,6 @@
 --- a/platform/src/os/web/web.js
 +++ b/platform/src/os/web/web.js
-@@ -1296,11 +1296,30 @@
+@@ -1296,13 +1296,36 @@
          this.detect.is_add_to_homescreen_safari = this.is_mobile_safari && navigator.standalone
      }
  
@@ -28,14 +28,17 @@
          var h;
          var canvas = this.canvas;
 +        var is_touch = !!(this.detect && (this.detect.is_touch_device || this.detect.is_android));
-+        // Sites use <canvas class="full_canvas">; also accept fullpage attr.
+ 
++        // Sites use <canvas class="full_canvas">; older Makepad also accepted
++        // a fullpage attribute. Treat either as a full-page canvas.
 +        var is_fullpage = !!(canvas.getAttribute("fullpage")
 +            || (canvas.classList && canvas.classList.contains("full_canvas")));
- 
 -        if (canvas.getAttribute("fullpage")) {
 +        if (is_fullpage) {
              if (this.detect.is_add_to_homescreen_safari) { // extremely ugly. but whatever.
-@@ -1314,22 +1335,53 @@
+                 if (window.orientation == 90 || window.orientation == -90) {
+                     h = screen.width;
+@@ -1314,22 +1337,57 @@
                  }
              }
              else {
@@ -101,7 +104,7 @@
          this.window_info.is_fullscreen = is_fullscreen();
          this.window_info.can_fullscreen = can_fullscreen();
      }
-@@ -1340,7 +1390,19 @@
+@@ -1340,7 +1398,19 @@
  
      bind_screen_resize() {
          this.handlers.on_screen_resize = () => {
@@ -121,7 +124,7 @@
              if (this.to_wasm !== undefined) {
                  this.to_wasm.ToWasmResizeWindow({ window_info: this.window_info });
                  this.FromWasmRequestAnimationFrame();
-@@ -1358,8 +1420,29 @@
+@@ -1358,8 +1428,29 @@
              this.do_wasm_pump();
          }
  
