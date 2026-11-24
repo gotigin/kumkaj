@@ -1,254 +1,254 @@
 # Guarani — Avañe'ẽ (gn). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Techapyrã
+length	Pukukue
+download_free	Emboguejy reiete
+whatsapp_for_a_demo	Jehechauka WhatsApp rupive
+free_on_android_windows_and	Reiete Android, Windows ha Linux-pe.
+courier_operating_system	mba’e mondoha ñemboguata
+parcel_journey	PAKETE JEGUATA
+walk_in	Jeguahẽ
+weigh	Pohyikue
+price	Hepy
+label	Techaukaha
+hand_over	Ñeme’ẽ
+track	Jehapykueho
+offline	Ñanduti’ỹre
+start	Ñepyrũ
+moklanjo_courier_operating_system	MOKLANJO · MBA’E MONDOHA ÑEMBOGUATA
+book_move_and_settle_every	Emboheraguapy, emongu’e ha embopaha peteĩteĩ pakete hepy — peteĩ mba’e mondoha ñemboguata nde rembiporúpe.
+parties_books_cod_labels_awb	Ñemu irũnguéra, aranduka, COD, techaukaha, AWB papapy aty, jehapykueho, pakete me’ẽhárakuéra ha kuatia — opaite jere ñemuha mesa guive jehepyme’ẽ opa peve, ñanduti reheve térã ñanduti’ỹre. Reiete nde rembiporúpe.
+the_walk_in_loop	OUVA JERE
+actual_and_volumetric_side_by	Pohyikue añetegua ha tuichakue pohyikue, ojoykére.
+charge	Embohepyme’ẽ
+your_rate_card_cash_or	Nde hepy kuatia, pirapire térã kuénta.
+next_booking	Ñemboheraguapy oúva
+one_tap_clears_the_counter	Peteĩ jopy omopotĩ ñemuha mesa ouvarã g̃uarã.
+scroll_the_parcel_journey_rail	Emongu’e yvy gotyo — pakete jeguata rape yvate gotyo ohechauka moõpa reĩ mombe’úpe.
+n_2_weigh_it_right	2 · EHECHA IPOHYIKUE HEKOPETE
+actual_or_volumetric_whichever_is	Pohyikue añetegua térã tuichakue pohyikue — ituichavéva, ojeapo nde reipotaháicha.
+try_a_box	Eha’ã peteĩ karameg̃ua
+domestic	Tetã ryepýpe
+international	Tetã ambuépe
+breadth	Pyekue
+height	Yvatekue
+weight_on_the_scale	Pohyikue ra’ãhápe pohyikue
+chargeable_weight	POHYIKUE OJEHEPYME’ẼVA
+the_box_s_size_sets	Karameg̃ua tuichakue omoĩ hepy.
+higher_of_the_two_rounded	Mokõívagui ituichavéva, ojupi 0,5 kg oúva peve.
+in_the_app_the_divisor	Aplikasiónpe, ñemuha omoĩ ñemboja’oha, jupi jeku’e ha nde ra’ãha (cm térã pulgada, kg térã lb). Tetã ambuépe jopyha oiporu ÷6000 peteĩ ñemboheraguapýpe Ñemboheko rehe opoko’ỹre.
+n_3_price_it	3 · EMOĨ HEPY
+your_rate_cards_your_party	Nde hepy kuatiakuéra, nde ñemu irũnguéra hepy — ha nde jehupyty peteĩteĩ pakete kuatiápe.
+rate_card	Hepy kuatia
+zone_service	Tenda · tembiapo
+first_0_5_kg	0,5 kg peteĩha
+each_0_5_kg	Peteĩteĩ 0,5 kg
+local_surface	Tenda’i · Yvy rupi
+within_state_express	Tetãvore ryepýpe · Pya’e
+metro_air	Táva guasu · Yvága rupi
+zone_service_weight_slab	Tenda × tembiapo × pohyikue pehẽ
+first_slab_and_each_extra	Pehẽ peteĩha ha peteĩteĩ pehẽ mbojoapy, peteĩteĩ tenda ha tembiapópe g̃uarã.
+a_consignor_s_own_card	Omondóva hepy kuatia ha’eño
+regular_senders_get_their_rates	Omondóva jepiguáva ohupyty ihepykuéra; hepy kuatia jepiguáva oñangareko ambuekuérare.
+margin_at_the_desk	Jehupyty ñemuha mesápe
+your_sell_price_against_the	Nde hepy ñemu rerahahára hepy ndive oñembojojáva, peteĩteĩ pakete kuatiápe.
+n_4_label_it	4 · EMOĨ TECHAUKAHA
+awb_from_your_own_number	AWB nde papapy atygui. Emoĩ techaukaha, emoñe’ẽ, ejuhu.
+number_pools_per_carrier	Papapy aty peteĩteĩ rerahahárape
+enter_each_carrier_s_start	Emoinge peteĩ jey peteĩteĩ rerahahára papapy ñepyrũ–paha; peteĩteĩ ñemboheraguapy ojapyhy papapy oúva.
+code_128_labels	Techaukaha Code 128
+the_awb_goes_on_the	AWB oñemoĩ karameg̃uápe barra papapy ramo ha papapy hesakãvape.
+scan_to_find	Emoñe’ẽ rejuhu hag̃ua
+scan_a_label_to_open	Emoñe’ẽ peteĩ techaukaha eipe’a hag̃ua ipakete kuatia ha ejapo hekopete.
+n_5_hand_over	5 · ÑEME’Ẽ
+hand_it_to_a_carrier	Eme’ẽ rerahahárape, térã emondo nde pakete me’ẽhára. Ñemboguata peteĩchagua.
+into_a_carrier_bag	Rerahahára vosápe
+the_manifest_holds_exactly_the	Pakete rysýi oguereko umi pakete reiporavo va’ekue añoite — opavave térã mavave. Pakete oñemboheraguapýva ambue rerahahára ndive ndaikatúi oike ko vosápe.
+onto_your_own_rider_s	Nde pakete me’ẽhára jeguatápe
+pick_the_parcels_print_the	Eiporavo paketekuéra, emoĩ kuatiápe jeguata kuatia, ha pakete me’ẽhára omba’apo aplikasión peteĩchaguápe me’ẽhára rekópe — ñeme’ẽ techaukaha ndive.
+n_6_track_and_prove	6 · JEHAPYKUEHO HA TECHAUKAHA
+every_move_recorded_and_only	Opaite jeku’e ojehai — ha jeku’e hekopetéva añoite.
+booked	Oñemboheraguapýma
+with_carrier	Rerahahára pópe
+out_for_delivery	Tapére oñeme’ẽ hag̃ua
+delivered	Oñeme’ẽma
+booked_with_carrier_out_for	Oñemboheraguapýma → Rerahahára pópe → Tapére oñeme’ẽ hag̃ua → Oñeme’ẽma
+failed	Ndoikói
+reason_out_again_or_return	→ mba’ére → osẽ jey, térã ojevy omondóvape.
+impossible_moves_refused	Jeku’e ikatu’ỹva noñemoneĩri
+delivered_returned_and_cancelled	Oñeme’ẽma, ojevýma ha ojeheja reíma ha’e paha.
+proof_of_delivery	Ñeme’ẽ techaukaha
+a_photo_and_the_receiver	Peteĩ ta’ãnga ha ohupytýva téra jehai pakete kuatiápe.
+failed_deliveries	Ñeme’ẽ ndoikóiva
+reasons_attempts_out_again_or	Mba’ére, ñeha’ã, osẽ jey, térã ojevy omondóvape.
+n_7_money_comes_home	7 · PIRAPIRE OJEVY ÓGAPE
+cod_you_can_see_expected	COD rehecháva: oñeha’arõva, oñeme’ẽva, oñedeveva peteĩteĩ omondóvape.
+rider_cash_end_of_run	Pakete me’ẽhára pirapire, jeguata pahápe
+rider	Pakete me’ẽhára
+expected	Oñeha’arõva
+handed_in	Oñeme’ẽma
+a_14_drops	A · 14 ñeme’ẽ
+b_9_drops	B · 9 ñeme’ẽ
+short_200_on_rider_b	Pakete me’ẽhára B-pe michĩve ₹ 200 — oñembohéra, nokañýi mboatýpe.
+cod_register	COD aranduka
+collected_against_paid_out_per	Oñembyatýva ojehepyme’ẽva ndive oñembojojáva, peteĩteĩ omondóvape, pirapire mondopy aty ndive.
+rider_settlement	Pakete me’ẽhára jehepyme’ẽ paha
+expected_against_handed_in_and	Oñeha’arõva oñeme’ẽva ndive oñembojojáva, ha pehẽ pirapire kuatia.
+books_that_close	Aranduka oñembotýva
+day_book_month_bill_per	Ára aranduka, jasy kuatia peteĩteĩ kuéntape, ha GST ñembohysýi CSV-pe nde papapyhárape g̃uarã.
+n_8_internet_down	8 · ÑANDUTI OPA?
+keep_booking	Emboheraguapy jey jey.
+booking_labels_scanning_cod_and	Ñemboheraguapy, techaukaha, ñemoñe’ẽ, COD ha arandukakuéra omba’apo nde rembiporúpe. Ñanduti opa jave, mba’eve ñemuha mesápe noha’arõi.
+office_router_no_internet	Mba’apoha router: ndaipóri ñanduti
+desk_still_booking	Mesa: oñemboheraguapy gueteri
+second_counter_and_rider_phone	Ñemuha mesa mokõiha ha pakete me’ẽhára pumbyry: ojoaju mba’apoha Wi-Fi rupive
+free_forever_on_your_devices	Reiete opa ára peve nde rembiporúpe
+nothing_per_rider_user_or	Ndaipóri hepy peteĩteĩ pakete me’ẽhára, jeporuhára térã paketépe. Kumkaj Cloud reiporavóramo: Steady ₹6k · Swift ₹12k · Priority ₹24k/ary impuesto’ỹre — /shop.
+n_9_start	9 · ÑEPYRŨ
+one_courier_os_your_parcels	Peteĩ mba’e mondoha ñemboguata. Nde paketekuéra. Nde arandukakuéra.
+moklanjo_is_a_complete_courier	Moklanjo ha’e mba’e mondoha ñemboguata henyhẽva Kumkaj poguýpe — Android, Windows ha Linux. Pakete me’ẽhárakuéra oiporu aplikasión peteĩchagua me’ẽhára rekópe.
+trademark	TECHAUKAHA ÑEMU REHEGUA
+memon_for_find_it_pronounced	Memon ñe’ẽme he’ise “ejuhu” · oñeñe’ẽ go-tee-geen
+company	MBA’APOHA
+brand	TÉRA TECHAUKAHA
+concrete_business_operating_system	Ñemu ñemboguata añetegua aplikasión
+product	MBA’E
+courier_operating_system_under	Mba’e mondoha ñemboguata Kumkaj poguýpe
+privacy	Ñemigua
+terms	Ñemboguata rape
+cancellation	Jeheja rei
+cloud_shop	Arai ñemuha
+account	Kuénta
+weigh_it_right	Ehecha ipohyikue hekopete
+price_it	Emoĩ hepy
+label_it	Emoĩ techaukaha
+track_and_prove	Jehapykueho ha techaukaha
+money_comes_home	Pirapire ojevy ógape
+internet_down	Ñanduti opa
+bead_hand	Ñeme’ẽ
+bead_offline_short	Ñanduti’ỹ
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Pohyikue ra’ãhápe: {kg} kg
+weight_scale_wins	Pohyikue ra’ãhápe oĩva omoĩ hepy.
+cta_installers_note	Umi moĩhára oñemoĩta ko’ápe peteĩteĩ ohasa porã rire jemoĩ peteĩ tembiporu pyahúpe. Upe peve, ejerure jehechauka WhatsApp-pe.
+cta_whatsapp_soon	WhatsApp jehechauka rape ojeipe’áta pya’e. Nde marandu he’íta: “{message}”.
+acct_page_title	Kuénta — Moklanjo
+acct_lede	Peteĩ kuénta ñanduti rendápe ha aplikasiónpe g̃uarã — formulario peteĩchagua nde pyahu térã rejevy jave.
+acct_email	Ñandutiveve
+acct_name_optional	Téra (reiporavóramo)
+acct_password	Ñe’ẽñemi
+acct_continue	Esegíkena
+acct_forgot	Nde resaraipa ñe’ẽñemígui?
+acct_reset_hint	Romondóta ndéve ñanduti rape emoĩ jey hag̃ua ñandutivevépe. Eiporu pe ñandutiveve reñemboheraguapy haguépe.
+acct_send_reset	Emondo rape emoĩ jey hag̃ua
+acct_cancel	Ombogue
+acct_or_continue	térã eho tenonde ko’ãva ndive
+acct_phone	Pumbyry
+acct_mobile	Pumbyry popegua papapy
+acct_send_sms	Emondo SMS papapy
+acct_sms_code	SMS papapy
+acct_confirm_code	Emoneĩ papapy
+acct_signed_in	Reike
+acct_signed_in_as	Reike ko’ãichagua
+acct_status	Mba’éichapa oĩ
+acct_sign_in_methods	Jeike rapekuéra
+acct_cloud_username	Arai jeporuhára réra
+acct_plan	Ñembohape
+acct_resend_verify	Emondo jey ñandutiveve ñemoneĩrã
+acct_sign_out	Esẽ
+acct_cloud_sandbox	Kumkaj Cloud (ñeha’ã)
+acct_current_password	Ñe’ẽñemi ko’ág̃agua
+acct_email_for_password	Ñandutiveve jeike ñe’ẽñemi rupi g̃uarã
+acct_new_password	Ñe’ẽñemi pyahu
+acct_confirm_new_password	Emoneĩ ñe’ẽñemi pyahu
+acct_add_way	Embojoapy ambue tape reike hag̃ua
+acct_link_hint	Embojoaju tapekuéra peteĩ kuéntare ikatu hag̃uáicha rehupyty jey jeike peteĩ ndoikóiramo.
+acct_link_google	Embojoaju Google
+acct_link_microsoft	Embojoaju Microsoft
+acct_link_github	Embojoaju GitHub
+acct_link_phone	Embojoaju pumbyry
+acct_send_sms_link	Emondo SMS embojoaju hag̃ua
+acct_confirm_link_phone	Emoneĩ ha embojoaju pumbyry
+shop_page_title	Ñemuha — Moklanjo
+shop_lede	Arai ñembohape ary ha ary — impuesto oñembojoapy jehepyme’ẽ jave. Moklanjo aplikasión henyhẽva nde rembiporúpe opyta reiete opa ára peve, ñemomarandu’ỹre.
+shop_cart	Jogua ryru
+shop_cart_empty_hint	Nde jogua ryru nandi. Embojoapy Steady, Swift térã Priority.
+shop_checkout	Ehepyme’ẽ
+shop_clear	Emopotĩ
+shop_checkout_hint	Jehepyme’ẽ nemoinge Kuénta-pe, upéi oñepyrũ jehepyme’ẽ (ñeha’ã jejapo térã Paddle oñemoĩ rire ñe’ẽñemi).
+acct_billing_hint	Ary ñembohape — jehepyme’ẽ rokẽ ombojoapy impuesto jehepyme’ẽ jave. Jeporu nde rembiporúpe opyta reiete opa ára peve. Ñemohenda ha’eñoguáva ha’e hepy ñemombe’u (ikatu michĩve Steady-gui térã tuichave Priority-gui).
+shop_cloud_plans	Arai ñembohape
+acct_federated	Jeike ambue kuénta rupive
+acct_err_invalid_email	Emoinge ñandutiveve oikóva.
+acct_err_weak_password	Eiporu ñe’ẽñemi orekóva 6 tai michĩvéramo.
+acct_err_wrong_password	Ñe’ẽñemi ndaha’éi hekopete.
+acct_err_invalid_credential	Ñandutiveve térã ñe’ẽñemi ndaha’éi hekopete.
+acct_err_popup_closed	Jeike ovetã oñembotýma.
+acct_err_popup_cancelled	Jeike ojeheja rei.
+acct_err_unauthorized_domain	Ko dominio ndojeheja’ýi Firebase Auth-pe g̃uarã.
+acct_err_method_disabled	Upe jeike rape noñemyendýi gueteri.
+acct_err_too_many	Heta ñeha’ã. Eha’ã jey upéi.
+acct_err_phone_format	Eiporu pumbyry papapy henyhẽva tetã papapy ndive (techapyrã +91…).
+acct_err_sms_code	Upe SMS papapy ndaha’éi hekopete térã opáma.
+acct_err_no_account	Ndaipóri kuénta upe ñandutivevépe. Eho tenonde ejapo hag̃ua peteĩ, térã eiporu ambue tape.
+acct_err_recent_login	Tekorosã rehehápe, eike jey, upéi eha’ã jey ko ñemoambue.
+acct_err_credential_in_use	Upe jeike rape oiporúma ambue kuénta.
+acct_err_email_in_use	Upe ñandutiveve oiporúma ambue kuénta.
+acct_err_already_linked	Upe tape ojoajúma ko kuénta ndive.
+acct_err_exists_other_method	Oĩma peteĩ kuénta ko ñandutiveve reheve oiporúva ambue jeike rape. Eike raẽ upe tape rupive, upéi embojoaju kóva nde kuénta kuatiarogue guive.
+acct_err_generic	Oiko peteĩ mba’e vai.
+acct_method_password	Ñandutiveve ha ñe’ẽñemi
+acct_pw_hint_change	Emoambue nde ñe’ẽñemi. Remoneĩta ko’ág̃agua ndive.
+acct_pw_hint_add	Embojoapy ñe’ẽñemi ikatu hag̃uáicha reike avei ñandutiveve rupive (oipytyvõ peteĩ me’ẽhára ndaipóriramo).
+acct_pw_change	Emoambue ñe’ẽñemi
+acct_pw_add	Embojoapy ñe’ẽñemi
+acct_billing_off	Jehepyme’ẽ noñemyendýi gueteri arai API-pe.
+acct_billing_no_provider	Ndaipóri jehepyme’ẽ me’ẽhára añetegua oñemyendýva arai API-pe (jejapo añoite oĩ nde rembiporúpe).
+price_quote	Hepy ñemombe’u
+price_per_year	₹{amount}/ary impuesto’ỹre
+acct_pay_received	Jehepyme’ẽ oñemog̃uahẽma — oñembopyahu nde ñembohape…
+acct_pay_declined	Jehepyme’ẽ noñemoneĩri térã ndoikói
+acct_pay_failed_detail	{detail}. Nde ñembohape noñemoambuéi.
+acct_checkout_closed	Jehepyme’ẽ oñembotýma — ndaipóri jehepyme’ẽ opáva. Nde ñembohape opyta ha’eháicha.
+acct_checkout_failed	Jehepyme’ẽ ndoikói
+acct_pay_with	Ehepyme’ẽ {provider} rupive
+acct_plan_until	{plan} · {date} peve
+acct_unavailable	Ndaipóri
+acct_continue_hint	Eho tenonde ñandutiveve, me’ẽhára térã pumbyry rupive.
+acct_signed_in_fallback	(reikéma)
+acct_email_verified	Ñandutiveve oñemoneĩma
+acct_email_unverified	Ñandutiveve noñemoneĩri gueteri — ehecha nde marandu ryru
+acct_signed_in_phone	Reike pumbyry rupive
+acct_none_listed	Ndaipóri mba’eve ojehaíva gueteri
+acct_signed_in_status	Reikéma.
+acct_created	Kuénta ojejapóma. Ehecha nde ñandutiveve emoneĩ hag̃ua ikatu vove.
+acct_reset_sent	Oĩramo kuénta upe ñandutivevépe g̃uarã, rape emoĩ jey hag̃ua oĩma tapére. Ehecha nde marandu ryru.
+acct_another_method	ambue tape
+acct_exists_via	{email} kuénta oĩma {method} rupive. Eike raẽ upe tape rupive, upéi embojoaju ko me’ẽhára nde kuénta kuatiarogue guive.
+acct_enter_current_pw	Emoinge nde ñe’ẽñemi ko’ág̃agua.
+acct_relogin_retry	Esẽ ha eike jey, upéi eha’ã jey.
+acct_pw_mismatch	Ñe’ẽñemi pyahu ha ñemoneĩ nojojoguái.
+acct_pw_updated	Ñe’ẽñemi oñembopyahúma.
+acct_enter_email_pw	Emoinge ñandutiveve reiporútava jeike ñe’ẽñemi rupive g̃uarã.
+acct_pw_added	Ñe’ẽñemi oñembojoapýma. Ko’ág̃a ikatu reike avei ñandutiveve rupive.
+acct_method_linked	Jeike rape ojoajúma.
+acct_phone_linked	Pumbyry ojoajúma ko kuénta ndive.
+acct_verify_sent	Ñandutiveve ñemoneĩrã oñemondóma — ehecha nde marandu ryru.
+shop_pricing_soon	Hepykuéra oúta pya’e
+shop_request_quote	Ejerure hepy ñemombe’u
+shop_add_to_cart	Emoĩ jogua ryrúpe
+shop_notify_later	Emomarandu chéve upéi
+shop_included	Oĩma ipype
+shop_in_cart	{plan} oĩ nde jogua ryrúpe.
+shop_remove	Emboguete
+shop_cart_is_empty	Jogua ryru nandi.
+shop_prices_unpublished	Ko mba’e hepy jejogua ijehegui noñemoherakuãi gueteri. Ejerure hepy ñemombe’u ha’eñoguáva térã ejevy upéi.
+shop_cart_cleared	Jogua ryru oñemopotĩma.
+plan_free_title	Reiete opa ára peve
+plan_free_blurb	Mba’e henyhẽva nde rembiporúpe. Ndaipóri arai hepy.
+plan_steady_blurb	Arai oikovéva · 10 GB · mondo pya’ekue michĩva
+plan_swift_blurb	Arai oikovéva · 25 GB · mondo pya’ekue mbytegua
+plan_priority_blurb	Arai oikovéva · 50 GB · mondo pya’ekue yvatevéva
+plan_custom_title	Ha’eñoguáva
+plan_custom_blurb	Mba’e retakue ha mondo pya’ekue oñemoneĩva. Hepy ñemombe’u ikatu michĩve Steady-gui térã tuichave Priority-gui.

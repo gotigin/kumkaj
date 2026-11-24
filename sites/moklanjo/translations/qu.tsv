@@ -1,254 +1,254 @@
 # Quechua — Runa Simi (qu). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Rikch’anachiy
+length	Suni kay
+download_free	Qasilla urachiy
+whatsapp_for_a_demo	WhatsApp-pi qhawachiy
+free_on_android_windows_and	Android, Windows, Linux-pi qasilla.
+courier_operating_system	chaski llamk’ay kamachina
+parcel_journey	Q’IPIP PURIYNIN
+walk_in	Chayamuy
+weigh	Tupuy
+price	Chanin
+label	Unancha
+hand_over	Haywariy
+track	Qatipay
+offline	Mana internetniyuq
+start	Qallariy
+moklanjo_courier_operating_system	MOKLANJO · CHASKI LLAMK’AY KAMACHINA
+book_move_and_settle_every	Sapa q’ipita qillqay, kuyuchiy, pagayninta tukuchiy — huk chaski kamachinalla llamk’anaykikunapi.
+parties_books_cod_labels_awb	Rantinakuqkuna, yupay qillqakuna, COD, unanchakuna, AWB yupay huñukuna, qatipay, chaskikuna, pagana qillqakunapas — qhatuna mesamanta pagay tukukunankama llapan muyuy, internetwanpas mana internetwanpas. Llamk’anaykikunapi qasilla.
+the_walk_in_loop	CHAYAMUQPA MUYUYNIN
+actual_and_volumetric_side_by	Chiqap llasa, hatun-kay llasapas, kuskalla.
+charge	Pagachiy
+your_rate_card_cash_or	Chanin qillqayki, makipi qullqi utaq cuenta.
+next_booking	Hamuq qillqay
+one_tap_clears_the_counter	Huk ñit’iylla qhatuna mesata pichan hamuq chayamuqpaq.
+scroll_the_parcel_journey_rail	Uraman kuyuchiy — hanaqpi q’ipip puriynin siqiqa willakuypi maypi kasqaykita rikuchin.
+n_2_weigh_it_right	2 · ALLINTA TUPUY
+actual_or_volumetric_whichever_is	Chiqap llasa utaq hatun-kay llasa — aswan hatun kaqmi, munasqayki hina muyuchisqa.
+try_a_box	Huk cajata malliy
+domestic	Suyu ukhupi
+international	Hawa suyukunaman
+breadth	Kinray kay
+height	Hanaq kay
+weight_on_the_scale	Llasa tupunapi llasa
+chargeable_weight	PAGANA LLASA
+the_box_s_size_sets	Cajap hatun-kaynin pagayta churan.
+higher_of_the_two_rounded	Iskaymanta aswan hatun kaq, hamuq 0.5 kg-kama wichachisqa.
+in_the_app_the_divisor	App-pi, qhatum rakiqta, muyuchiy thatkita, tupunaykikunatapas churan (cm utaq pulgada, kg utaq lb). Hawa suyukunaman nisqa ñit’inaqa ÷6000-ta huk qillqaypaq llamk’achin, mana Ajustes nisqata llamiykuspa.
+n_3_price_it	3 · CHANINTA CHURAY
+your_rate_cards_your_party	Chanin qillqaykikuna, rantinakuqniykikunap chaninninkuna — sapa q’ipi qillqapi mirachiyniykipas.
+rate_card	Chanin qillqa
+zone_service	K’iti · llamk’ay
+first_0_5_kg	Ñawpaq 0.5 kg
+each_0_5_kg	Sapa 0.5 kg
+local_surface	Llaqta ukhupi · Ñanninta
+within_state_express	Suyu ukhupi · Utqaylla
+metro_air	Hatun llaqta · Wayra ñanninta
+zone_service_weight_slab	K’iti × llamk’ay × llasa pata
+first_slab_and_each_extra	Ñawpaq pata, sapa yapa patapas, sapa k’itipaq llamk’aypaqpas.
+a_consignor_s_own_card	Kachaqpa kikin chanin qillqan
+regular_senders_get_their_rates	Sapa kuti kachaqkunaqa chaninninkuta chaskinku; qallariy chanin qillqaqa wakin llapankunatam qhawan.
+margin_at_the_desk	Qhatuna mesapi mirachiy
+your_sell_price_against_the	Rantikusqayki chaninqa apaqpa chaninninwan tupachisqa, sapa q’ipi qillqapi.
+n_4_label_it	4 · UNANCHATA CHURAY
+awb_from_your_own_number	Yupay huñuykikunamanta AWB. Unanchay, ñawinchay, tariy.
+number_pools_per_carrier	Sapa apaqpaq yupay huñukuna
+enter_each_carrier_s_start	Sapa apaqpa qallariy–tukukuy yupay siq’inta huk kutilla qillqay; sapa qillqayqa hamuq yupayta hap’in.
+code_128_labels	Code 128 unanchakuna
+the_awb_goes_on_the	AWB-qa cajaman siqi unancha hina, sut’i yupaykuna hinapas churakun.
+scan_to_find	Tarinapaq ñawinchay
+scan_a_label_to_open	Huk unanchata ñawinchay q’ipi qillqanta kichanaykipaq, allin kaqtataq ruwanaykipaq.
+n_5_hand_over	5 · HAYWARIY
+hand_it_to_a_carrier	Apaqman haywariy, utaq kikiyki chaskiykita kachay. Kikin kamachina.
+into_a_carrier_bag	Apaqpa wayaqanman
+the_manifest_holds_exactly_the	Q’ipikunap siq’inqa akllasqayki q’ipikunallata hap’in — llapanta utaq ni hukta. Huk apaqwan qillqasqa q’ipiqa manan kay wayaqaman yaykuyta atinchu.
+onto_your_own_rider_s	Chaskiykip puriyninman
+pick_the_parcels_print_the	Q’ipikunata akllay, puriy qillqata hurquy, chaskitaq kikin app-pi chaski ruwaypi llamk’an — chayachisqa kasqanpa rikuchiynintin.
+n_6_track_and_prove	6 · QATIPAY RIKUCHIYPAS
+every_move_recorded_and_only	Sapa kuyuy qillqakun — allin yuyayniyuq kuyuykunallataq.
+booked	Qillqasqa
+with_carrier	Apaqpa makinpi
+out_for_delivery	Ñanpi, chayachinapaq
+delivered	Chayachisqa
+booked_with_carrier_out_for	Qillqasqa → Apaqpa makinpi → Ñanpi, chayachinapaq → Chayachisqa
+failed	Mana atisqa
+reason_out_again_or_return	→ imarayku → yapamanta lluqsin, utaq kachaqman kutichisqa.
+impossible_moves_refused	Mana atikuq kuyuykunaqa mana chaskisqa
+delivered_returned_and_cancelled	Chayachisqa, kutichisqa, chinkachisqapas tukukuymi.
+proof_of_delivery	Chayachisqa kasqanpa rikuchiynin
+a_photo_and_the_receiver	Huk rikch’ay chaskiqpa sutin qillqasqapas q’ipi qillqapi.
+failed_deliveries	Mana atisqa chayachiykuna
+reasons_attempts_out_again_or	Imaraykukuna, malliykuna, yapamanta lluqsiy, utaq kachaqman kutiy.
+n_7_money_comes_home	7 · QULLQI WASIMAN KUTIMUN
+cod_you_can_see_expected	Rikunayki COD: suyasqa, haywasqa, sapa kachaqman manusqa.
+rider_cash_end_of_run	Chaskip makipi qullqin, puriy tukukuypi
+rider	Chaski
+expected	Suyasqa
+handed_in	Haywasqa
+a_14_drops	A · 14 chayachiy
+b_9_drops	B · 9 chayachiy
+short_200_on_rider_b	Chaski B-pi ₹ 200 pisi — sutichasqa, manan llapanpi chinkasqachu.
+cod_register	COD qillqa
+collected_against_paid_out_per	Huñusqa pagasqawan tupachisqa, sapa kachaqpaq, kachasqa qullqi huñukunantin.
+rider_settlement	Chaskiwan pagay tukuchiy
+expected_against_handed_in_and	Suyasqa haywasqawan tupachisqa, rakiy qullqi qillqapas.
+books_that_close	Wichq’akuq yupay qillqakuna
+day_book_month_bill_per	P’unchaw hatun qillqa, sapa cuentapaq killa pagana qillqa, yupaqniykipaq GST pisichasqa CSV-pipas.
+n_8_internet_down	8 · INTERNET CHINKARQANCHU?
+keep_booking	Qillqashallay.
+booking_labels_scanning_cod_and	Qillqay, unanchakuna, ñawinchay, COD, yupay qillqakunapas llamk’anaykikunapi llamk’anku. Internet chinkaqtinqa, qhatuna mesapi manan imapas suyanchu.
+office_router_no_internet	Oficinap routernin: mana internet
+desk_still_booking	Llamk’ana mesa: qillqashallanmi
+second_counter_and_rider_phone	Iskay kaq qhatuna mesa, chaskip teléfononpas: oficinap Wi-Fi-ninwan t’inkisqa
+free_forever_on_your_devices	Llamk’anaykikunapi wiñaypaq qasilla
+nothing_per_rider_user_or	Sapa chaskipaq, llamk’achiqpaq utaq q’ipipaq mana pagay. Akllana Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/wata mana impuestoyuq — /shop.
+n_9_start	9 · QALLARIY
+one_courier_os_your_parcels	Huk chaski kamachinalla. Q’ipiykikuna. Yupay qillqaykikuna.
+moklanjo_is_a_complete_courier	Moklanjo-qa Kumkaj ukhupi hunt’asqa chaski llamk’ay kamachinam — Android, Windows, Linux. Chaskikunaqa kikin app-ta chaski ruwaypi llamk’achinku.
+trademark	RANTIKUY UNANCHA
+memon_for_find_it_pronounced	Memon simipi “tariy” · go-tee-geen nispa nisqa
+company	LLAMK’AY WASI
+brand	SUTI UNANCHA
+concrete_business_operating_system	Chiqap qhatu llamk’ay kamachina app-kuna
+product	RURUY
+courier_operating_system_under	Kumkaj ukhupi chaski llamk’ay kamachina
+privacy	Pakasqa kay
+terms	Kamachikuykuna
+cancellation	Chinkachiy
+cloud_shop	Phuyu qhatu
+account	Cuenta
+weigh_it_right	Allinta tupuy
+price_it	Chaninta churay
+label_it	Unanchata churay
+track_and_prove	Qatipay rikuchiypas
+money_comes_home	Qullqi wasiman kutimun
+internet_down	Internet chinkan
+bead_hand	Haywariy
+bead_offline_short	Mana net
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Llasa tupunapi: {kg} kg
+weight_scale_wins	Llasa tupunapi kaq llasam pagayta churan.
+cta_installers_note	Churanakunaqa kaypi churakunqa sapankanku musuq llamk’anapi allinta churakuqtin. Chaykama, WhatsApp-pi qhawachiyta mañakuy.
+cta_whatsapp_soon	WhatsApp qhawachiy siqiqa pisi pachallamanta kicharikunqa. Willakuyniyki kayhina kanqa: “{message}”.
+acct_page_title	Cuenta — Moklanjo
+acct_lede	Huk cuentalla web-paq app-kunapaqpas — kikin formulario musuq kaqtiykipas kutimuqtiykipas.
+acct_email	Correo
+acct_name_optional	Suti (akllana)
+acct_password	Yaykuna rimay
+acct_continue	Hinallayá ruway
+acct_forgot	Yaykuna rimayta qunqarqankichu?
+acct_reset_hint	Musuqmanta churana t’inkita correoman kachasqayku. Sutiyki qillqachisqayki kikin correota llamk’achiy.
+acct_send_reset	Musuqmanta churana t’inkita kachay
+acct_cancel	Chinkachiy
+acct_or_continue	utaq kaywan qatiy
+acct_phone	Teléfono
+acct_mobile	Celular yupay
+acct_send_sms	SMS unanchata kachay
+acct_sms_code	SMS unancha
+acct_confirm_code	Unanchata takyachiy
+acct_signed_in	Yaykusqaña
+acct_signed_in_as	Kayhina yaykusqa
+acct_status	Imayna kasqan
+acct_sign_in_methods	Yaykuna ñankuna
+acct_cloud_username	Phuyupi llamk’achiqpa sutin
+acct_plan	Yuyaychay
+acct_resend_verify	Takyachina correota yapamanta kachay
+acct_sign_out	Lluqsiy
+acct_cloud_sandbox	Kumkaj Cloud (malliy)
+acct_current_password	Kunan yaykuna rimay
+acct_email_for_password	Yaykuna rimaywan yaykunapaq correo
+acct_new_password	Musuq yaykuna rimay
+acct_confirm_new_password	Musuq yaykuna rimayta takyachiy
+acct_add_way	Huk yaykuna ñanta yapay
+acct_link_hint	Ñankunata kikin cuentaman t’inkiy, hukkaq pantaqtin yaykuyta kutichinaykipaq.
+acct_link_google	Google-ta t’inkiy
+acct_link_microsoft	Microsoft-ta t’inkiy
+acct_link_github	GitHub-ta t’inkiy
+acct_link_phone	Teléfonota t’inkiy
+acct_send_sms_link	T’inkinapaq SMS-ta kachay
+acct_confirm_link_phone	Takyachiy, teléfonotataq t’inkiy
+shop_page_title	Qhatu — Moklanjo
+shop_lede	Sapa wata phuyu yuyaychaykuna — impuestoqa pagay pachapi yapakun. Llamk’anaykikunapi hunt’asqa Moklanjo app-qa wiñaypaq qasillam qhepan, mana rantichiy willakuykunayuq.
+shop_cart	Rantina wayaqa
+shop_cart_empty_hint	Rantina wayaqayki ch’usaqmi. Steady, Swift utaq Priority-ta yapay.
+shop_checkout	Pagay
+shop_clear	Pichay
+shop_checkout_hint	Pagayqa Cuenta nisqapi yaykuchisunki, chaymanta pagayta qallarin (malliy yanqa ruway utaq Paddle kichanakuna churasqa kaqtin).
+acct_billing_hint	Sapa wata yuyaychaykuna — pagana punkuqa pagay pachapi impuestota yapan. Llamk’anaykipi llamk’achiyqa wiñaypaq qasillam qhepan. Sapaq ruwasqaqa chanin yuyaymi (Steady-manta urapi utaq Priority-manta hanaqpi kanman).
+shop_cloud_plans	Phuyu yuyaychaykuna
+acct_federated	Huk cuentawan yaykuy
+acct_err_invalid_email	Allin correota qillqay.
+acct_err_weak_password	Aswan pisimanta 6 sananchayuq yaykuna rimayta llamk’achiy.
+acct_err_wrong_password	Yaykuna rimayqa pantasqam.
+acct_err_invalid_credential	Correo utaq yaykuna rimayqa pantasqam.
+acct_err_popup_closed	Yaykuna t’uqu wichq’asqa.
+acct_err_popup_cancelled	Yaykuyqa chinkachisqa.
+acct_err_unauthorized_domain	Kay dominioqa manan Firebase Auth-paq saqisqachu.
+acct_err_method_disabled	Chay yaykuna ñanqa manaraq kicharisqachu.
+acct_err_too_many	Ancha askha kuti malliykuna. Qhipaman yapamanta malliy.
+acct_err_phone_format	Suyup unanchanwan hunt’asqa teléfono yupayta llamk’achiy (kayhina +91…).
+acct_err_sms_code	Chay SMS unanchaqa pantasqam utaq tukukapunña.
+acct_err_no_account	Chay correowan manan cuenta kanchu. Hukta ruwanaykipaq qatiy, utaq huk ñanta llamk’achiy.
+acct_err_recent_login	Allin waqaychasqa kananpaq, yapamanta yaykuy, chaymanta kay t’ikrayta yapamanta malliy.
+acct_err_credential_in_use	Chay yaykuna ñantaqa huk cuentañam llamk’achin.
+acct_err_email_in_use	Chay correotaqa huk cuentañam llamk’achin.
+acct_err_already_linked	Chay ñanqa kay cuentawanña t’inkisqa.
+acct_err_exists_other_method	Kay correowan huk cuenta kanña, huk yaykuna ñanta llamk’achispa. Ñawpaqta chay ñanwan yaykuy, chaymanta kayta cuentayki p’anqamanta t’inkiy.
+acct_err_generic	Imapas mana allinchu karqan.
+acct_method_password	Correo yaykuna rimaypas
+acct_pw_hint_change	Yaykuna rimayniykita t’ikray. Kunan kaqwan takyachinki.
+acct_pw_hint_add	Yaykuna rimayta yapay correowanpas yaykunaykipaq (yanapan huk yaykuchiq mana kaqtin).
+acct_pw_change	Yaykuna rimayta t’ikray
+acct_pw_add	Yaykuna rimayta yapay
+acct_billing_off	Pagayqa manaraq phuyu API-pi kicharisqachu.
+acct_billing_no_provider	Manan chiqap pagay yanapaqqa phuyu API-pi kicharisqachu (yanqa ruwayllam llamk’anaykipi kan).
+price_quote	Chanin yuyay
+price_per_year	₹{amount}/wata mana impuestoyuq
+acct_pay_received	Pagayqa chaskisqañam — yuyaychayniyki musuqyachikushan…
+acct_pay_declined	Pagayqa mana chaskisqachu utaq mana atikurqanchu
+acct_pay_failed_detail	{detail}. Yuyaychayniykiqa manan t’ikrasqachu.
+acct_checkout_closed	Pagayqa wichq’asqa — manan ima pagaypas tukurqanchu. Yuyaychayniykiqa kikillanmi.
+acct_checkout_failed	Pagay mana atikurqanchu
+acct_pay_with	{provider}-wan pagay
+acct_plan_until	{plan} · {date}-kama
+acct_unavailable	Mana kanchu
+acct_continue_hint	Correowan, yaykuchiqwan, utaq teléfonowan qatiy.
+acct_signed_in_fallback	(yaykusqa)
+acct_email_verified	Correo takyachisqa
+acct_email_unverified	Correoqa manaraq takyachisqachu — willakuy waqaychanaykita qhaway
+acct_signed_in_phone	Teléfonowan yaykusqa
+acct_none_listed	Manaraq imapas qillqasqachu
+acct_signed_in_status	Yaykusqañam kanki.
+acct_created	Cuenta ruwasqa. Atispaqa correoykita qhaway takyachinaykipaq.
+acct_reset_sent	Chay correopaq cuenta kaqtinqa, musuqmanta churana t’inkiqa ñanpiñam. Willakuy waqaychanaykita qhaway.
+acct_another_method	huk ñan
+acct_exists_via	{email}-paq cuentaqa {method}-wan kanña. Ñawpaqta chay ñanwan yaykuy, chaymanta kay yaykuchiqta cuentayki p’anqamanta t’inkiy.
+acct_enter_current_pw	Kunan yaykuna rimayniykita qillqay.
+acct_relogin_retry	Lluqsiy, yapamanta yaykuy, chaymanta yapamanta malliy.
+acct_pw_mismatch	Musuq yaykuna rimayqa takyachiywan manan tupanchu.
+acct_pw_updated	Yaykuna rimayqa musuqyachisqa.
+acct_enter_email_pw	Yaykuna rimaywan yaykunapaq llamk’achinayki correota qillqay.
+acct_pw_added	Yaykuna rimayqa yapasqa. Kunanqa correowanpas yaykuyta atinkiñam.
+acct_method_linked	Yaykuna ñanqa t’inkisqa.
+acct_phone_linked	Teléfonoqa kay cuentaman t’inkisqa.
+acct_verify_sent	Takyachina correoqa kachasqa — willakuy waqaychanaykita qhaway.
+shop_pricing_soon	Chaninkunaqa pisi pachallamanta hamunqa
+shop_request_quote	Chanin yuyayta mañakuy
+shop_add_to_cart	Rantina wayaqaman churay
+shop_notify_later	Qhipaman willaway
+shop_included	Ukhupi kan
+shop_in_cart	{plan}-qa rantina wayaqaykipim kashan.
+shop_remove	Hurquy
+shop_cart_is_empty	Rantina wayaqaqa ch’usaqmi.
+shop_prices_unpublished	Kikillan rantinapaq chaninkunaqa manaraq kay ruruypaq rikuchisqachu. Sapaq chanin yuyayta mañakuy utaq qhipaman kutimuy.
+shop_cart_cleared	Rantina wayaqaqa pichasqa.
+plan_free_title	Wiñaypaq qasilla
+plan_free_blurb	Llamk’anaykikunapi hunt’asqa ruruy. Mana phuyu pagayniyuq.
+plan_steady_blurb	Kawsaq phuyu · 10 GB · pisi apachiy utqay
+plan_swift_blurb	Kawsaq phuyu · 25 GB · chawpi apachiy utqay
+plan_priority_blurb	Kawsaq phuyu · 50 GB · aswan hatun apachiy utqay
+plan_custom_title	Sapaq ruwasqa
+plan_custom_blurb	Rimanakusqa hunt’ay apachiy utqaypas. Chanin yuyayqa Steady-manta urapi utaq Priority-manta hanaqpi kanman.

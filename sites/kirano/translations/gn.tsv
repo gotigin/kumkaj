@@ -1,230 +1,230 @@
 # Guarani — Avañe'ẽ (gn). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Techapyrã
+download_free	Emboguejy reiete
+whatsapp_for_a_demo	Jehechauka WhatsApp rupive
+free_on_android_windows_and	Reiete Android, Windows ha Linux-pe.
+the_grocery_counter	ñemuha’i mesa
+busy_counter	Ñemuha mesa tapicha hetáva
+kirano_the_grocery_counter	KIRANO · ÑEMUHA’I MESA
+busy_counter_no_internet_still	Ñemuha mesa tapicha hetáva. Ndaipóri ñanduti. Ojapo gueteri kuatia.
+sell_khata_stock_and_the	Ñemu, deve aranduka, mba’e ñembyaty ha ára aranduka — nde rembiporúpe. Ára aranduka · Ñemu · Jogua · Mba’ekuéra. Ndaipóri karuha, ndaipóri kosina, ndaipóri mesa.
+tap_the_bill_to_walk	Ejopy kuatia rehapykueho hag̃ua peteĩ ñemu ñemuha mesápe
+cash_memo	Pirapire kuatia
+ready	Oĩma
+total	Mboaty
+tap_to_add_the_first	Ejopy embojoapy hag̃ua mba’e peteĩha
+example_grocery_lines_not_a	Ñemuha’i rysýi techapyrã, ndaha’éi pirapire ryru añetegua. Kirano osegi tape peteĩchagua: ñemu → jehepyme’ẽ → ára aranduka.
+n_2_counter_sell	2 · ÑEMU ÑEMUHA MESÁPE
+item_quantity_pay_three_taps	Mba’e, mboy, jehepyme’ẽ — mbohapy jopy.
+upi_qr_ready	UPI QR oĩma
+example_bill	Kuatia techapyrã
+search_by_name_or_short	Eheka téra térã papapy mbykýpe
+type_atta_at5_or_an	Ehai atta, AT5 térã ambue téra — rysýi ho’a kuatiápe.
+kg_g_pc_l_ml	kg, g, pehẽ, l, ml
+quantity_in_the_unit_the	Mboy pakete ra’ãha rupi; hepy osegi.
+cash_upi_or_split	Pirapire, UPI térã ñemboja’o
+settle_on_the_counter_the	Embohepyme’ẽ ñemuha mesápe; ára aranduka ohai jehepyme’ẽ rape.
+n_3_khata	3 · DEVE ARANDUKA
+credit_without_a_crm_put	Deve CRM’ỹre — ehai ideve arandukápe.
+ramesh_customer	Ramesh · Ojoguáva
+due_from_earlier	Deve tenondegua
+today_s_sale_due	+ ko árape ñemu (deve)
+balance	Hembýva
+settle_later_in_parties_part	Ehepyme’ẽ upéi Ñemu irũnguéra-pe — pehẽ pirapirépe, pehẽ UPI-pe, emopotĩ rysýi.
+due_on_the_bill	Deve kuatiápe
+what_s_left_goes_on	Hembýva oho ojoguáva deve arandukápe — ndaipóri ambue aplikasión arandukarã.
+one_party_two_roles	Peteĩ ñemu irũ, mokõi rembiapo
+customer_ar_and_supplier_ap	Ojoguávakuéra ideve ndéve ha nde redeve mba’e me’ẽhárakuérape oĩ peteĩ ñemu irũ arandukápe.
+who_when_how_much	Máva, araka’e, mboy
+every_credit_and_settlement_stays	Opaite deve ha jehepyme’ẽ opyta ára arandukápe.
+n_4_buy_stock	4 · JOGUA HA ÑEMBYATY
+buy_from_the_wholesaler_stock	Ejogua ñemuhára guasúgui — mba’e ñembyaty ha umi rehedevéva oñembopyahu oñondive.
+purchase_sharma_wholesale	Jejogua · Sharma Wholesale
+stock_50_kg_ap_7	Ñembyaty +50 kg · deve ₹ 7.200
+stock_12_l_ap_1	Ñembyaty +12 L · deve ₹ 1.560
+resale_stock_not_kitchen_raw	Mba’e ñembyaty oñemu jey hag̃ua — ndaha’éi kosina mba’e. Aty ha opaha ára reiporavóramo jejoguápe.
+buy_creates_stock	Jejogua ojapo ñembyaty
+receive_the_goods_the_catalogue	Ejapyhy mba’ekuéra; mba’e rysýipe mboy ojupi.
+who_we_owe	Umi rodevéva
+supplier_balance_sits_on_the	Mba’e me’ẽhára hembýva oĩ Ñemu irũnguéra-pe, ojoguáva deve aranduka ha’eháicha.
+low_stock_at_a_glance	Ñembyaty michĩva peteĩ ma’ẽmbápe
+inventory_shows_what_is_running	Ñembyaty ohechauka mba’épa opa ohóvo tapicha heta ou jey mboyve.
+n_5_day_book	5 · ÁRA ARANDUKA
+cash_vs_upi_counted_and	Pirapire ha UPI, ojepapa ha’eñoñoite — ha ojoavyha oñembohéra.
+today_s_drawer	Ko ára pirapire ryru
+opening_float	Pirapire ñepyrũrã
+cash_sales	+ ñemu pirapirépe
+upi_sales	+ ñemu UPI-pe
+cash_paid_out	− pirapire osẽva
+expected_cash	Pirapire oñeha’arõva
+counted	Ojepapáma
+short	Michĩve
+tenders_stay_separate	Jehepyme’ẽ rapekuéra opyta ha’eñoñoite
+cash_and_upi_never_mix	Pirapire ha UPI araka’eve ndojehe’ái peteĩ mboaty ojekuaa’ỹvape.
+shift_close	Mba’apo pa’ũ mboty
+close_the_shift_print_the	Emboty mba’apo pa’ũ, emoĩ kuatiápe kuatia, eñepyrũ upéi ambue ipotĩmeme.
+gst_facing_bills	Kuatia GST reheve
+tax_invoice_or_cash_memo	Impuesto kuatia térã pirapire kuatia — ára marandu oguereko mokõivéva.
+books_sell_buy_items_four	Ára aranduka · Ñemu · Jogua · Mba’ekuéra — irundy ha’ãngarupá, ha ndaipóri karuha.
+n_6_internet_down	6 · ÑANDUTI OPA?
+the_internet_drops_the_counter	Ñanduti opa. Ñemuha mesa oñemu meme.
+router_no_internet	Router: ndaipóri ñanduti
+main_counter_selling_and_settling	Ñemuha mesa guasu: oñemu ha ombohepyme’ẽ
+second_till_joined_on_your	Pirapire ryru mokõiha: ojoaju nde Wi-Fi-pe
+books_live_on_the_shop	Arandukakuéra oĩ ñemuha tembiporúpe
+when_the_internet_drops_mid	Ñanduti opa jave tapicha heta mbytépe, mba’eve ñemuha mesápe noha’arõi.
+one_server_lan_clients	Peteĩ servidor, LAN tembiporu
+extra_tills_share_the_same	Pirapire ryru mbojoapy oiporu oñondive umi aranduka ñemuha ñanduti rupive.
+n_7_free_forever_locally	7 · REIETE OPA ÁRA PEVE NDE REMBIPORÚPE
+free_forever_on_your_devices	Reiete opa ára peve nde rembiporúpe.
+no_per_bill_charge	Ndaipóri hepy peteĩteĩ kuatiápe
+no_fee_per_sale_item	Ndaipóri hepy peteĩteĩ ñemu, mba’e, pirapire ryru térã mba’apohára PIN-pe nde rembiporúpe jemoĩme.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Kirano peteĩchagua pumbyrýpe ñemuha mesa rapykuéri ha computadora pirapire ryrúpe.
+optional_kumkaj_cloud	Kumkaj Cloud reiporavóramo
+yearly_steady_6k_swift_12k	Ary ha ary: Steady ₹6k · Swift ₹12k · Priority ₹24k impuesto’ỹre (térã hepy ñemombe’u ha’eñoguáva). Ejogua /shop-pe.
+n_8_start	8 · ÑEPYRŨ
+put_kirano_on_the_counter	Emoĩ Kirano ñemuha mesápe.
+download_free_or_whatsapp_for	Emboguejy reiete, térã emondo marandu WhatsApp-pe jehechauka nde ñemuha reko ha nde táva rupi.
+privacy	Ñemigua
+terms	Ñemboguata rape
+cancellation	Jeheja rei
+cloud_shop	Arai ñemuha
+account	Kuénta
+chapter_counter_sell	Ñemu ñemuha mesápe
+chapter_khata	Deve aranduka
+chapter_buy_stock	Jogua ha ñembyaty
+chapter_day_book	Ára aranduka
+chapter_extra_till	Pirapire ryru mbojoapy
+chapter_offline	Ñanduti’ỹre
+chapter_start	Ñepyrũ
+bill_selling	Oñemu hína
+bill_settle	Embohepyme’ẽ
+bill_paid	Ojehepyme’ẽma
+bill_next_item	Ejopy embojoapy hag̃ua mba’e oúva
+bill_settle_hint	Ejopy embohepyme’ẽ hag̃ua — pirapire térã UPI
+bill_cash_return	Pirapire ₹ 600 · hembýva ₹ 15
+bill_paid_line	Ojehepyme’ẽma · ára aranduka oñembopyahúma
+lan_eyebrow	6 · PIRAPIRE RYRU MBOJOAPY
+lan_title	Ambue pirapire ryru ñemuha Wi-Fi-pe.
+cta_installers_note	Umi moĩhára oñemoĩta ko’ápe peteĩteĩ ohasa porã rire jemoĩ peteĩ tembiporu pyahúpe. Upe peve, ejerure jehechauka WhatsApp-pe.
+cta_whatsapp_soon	WhatsApp jehechauka rape ojeipe’áta pya’e. Nde marandu he’íta: “{message}”.
+acct_page_title	Kuénta — Kirano
+acct_lede	Peteĩ kuénta ñanduti rendápe ha aplikasiónpe g̃uarã — formulario peteĩchagua nde pyahu térã rejevy jave.
+acct_email	Ñandutiveve
+acct_name_optional	Téra (reiporavóramo)
+acct_password	Ñe’ẽñemi
+acct_continue	Esegíkena
+acct_forgot	Nde resaraipa ñe’ẽñemígui?
+acct_reset_hint	Romondóta ndéve ñanduti rape emoĩ jey hag̃ua ñandutivevépe. Eiporu pe ñandutiveve reñemboheraguapy haguépe.
+acct_send_reset	Emondo rape emoĩ jey hag̃ua
+acct_cancel	Ombogue
+acct_or_continue	térã eho tenonde ko’ãva ndive
+acct_phone	Pumbyry
+acct_mobile	Pumbyry popegua papapy
+acct_send_sms	Emondo SMS papapy
+acct_sms_code	SMS papapy
+acct_confirm_code	Emoneĩ papapy
+acct_signed_in	Reike
+acct_signed_in_as	Reike ko’ãichagua
+acct_status	Mba’éichapa oĩ
+acct_sign_in_methods	Jeike rapekuéra
+acct_cloud_username	Arai jeporuhára réra
+acct_plan	Ñembohape
+acct_resend_verify	Emondo jey ñandutiveve ñemoneĩrã
+acct_sign_out	Esẽ
+acct_cloud_sandbox	Kumkaj Cloud (ñeha’ã)
+acct_current_password	Ñe’ẽñemi ko’ág̃agua
+acct_email_for_password	Ñandutiveve jeike ñe’ẽñemi rupi g̃uarã
+acct_new_password	Ñe’ẽñemi pyahu
+acct_confirm_new_password	Emoneĩ ñe’ẽñemi pyahu
+acct_add_way	Embojoapy ambue tape reike hag̃ua
+acct_link_hint	Embojoaju tapekuéra peteĩ kuéntare ikatu hag̃uáicha rehupyty jey jeike peteĩ ndoikóiramo.
+acct_link_google	Embojoaju Google
+acct_link_microsoft	Embojoaju Microsoft
+acct_link_github	Embojoaju GitHub
+acct_link_phone	Embojoaju pumbyry
+acct_send_sms_link	Emondo SMS embojoaju hag̃ua
+acct_confirm_link_phone	Emoneĩ ha embojoaju pumbyry
+shop_page_title	Ñemuha — Kirano
+shop_lede	Arai ñembohape ary ha ary — impuesto oñembojoapy jehepyme’ẽ jave. Kirano aplikasión henyhẽva nde rembiporúpe opyta reiete opa ára peve, ñemomarandu’ỹre.
+shop_cart	Jogua ryru
+shop_cart_empty_hint	Nde jogua ryru nandi. Embojoapy Steady, Swift térã Priority.
+shop_checkout	Ehepyme’ẽ
+shop_clear	Emopotĩ
+shop_checkout_hint	Jehepyme’ẽ nemoinge Kuénta-pe, upéi oñepyrũ jehepyme’ẽ (ñeha’ã jejapo térã Paddle oñemoĩ rire ñe’ẽñemi).
+acct_billing_hint	Ary ñembohape — jehepyme’ẽ rokẽ ombojoapy impuesto jehepyme’ẽ jave. Jeporu nde rembiporúpe opyta reiete opa ára peve. Ñemohenda ha’eñoguáva ha’e hepy ñemombe’u (ikatu michĩve Steady-gui térã tuichave Priority-gui).
+shop_cloud_plans	Arai ñembohape
+acct_federated	Jeike ambue kuénta rupive
+acct_err_invalid_email	Emoinge ñandutiveve oikóva.
+acct_err_weak_password	Eiporu ñe’ẽñemi orekóva 6 tai michĩvéramo.
+acct_err_wrong_password	Ñe’ẽñemi ndaha’éi hekopete.
+acct_err_invalid_credential	Ñandutiveve térã ñe’ẽñemi ndaha’éi hekopete.
+acct_err_popup_closed	Jeike ovetã oñembotýma.
+acct_err_popup_cancelled	Jeike ojeheja rei.
+acct_err_unauthorized_domain	Ko dominio ndojeheja’ýi Firebase Auth-pe g̃uarã.
+acct_err_method_disabled	Upe jeike rape noñemyendýi gueteri.
+acct_err_too_many	Heta ñeha’ã. Eha’ã jey upéi.
+acct_err_phone_format	Eiporu pumbyry papapy henyhẽva tetã papapy ndive (techapyrã +91…).
+acct_err_sms_code	Upe SMS papapy ndaha’éi hekopete térã opáma.
+acct_err_no_account	Ndaipóri kuénta upe ñandutivevépe. Eho tenonde ejapo hag̃ua peteĩ, térã eiporu ambue tape.
+acct_err_recent_login	Tekorosã rehehápe, eike jey, upéi eha’ã jey ko ñemoambue.
+acct_err_credential_in_use	Upe jeike rape oiporúma ambue kuénta.
+acct_err_email_in_use	Upe ñandutiveve oiporúma ambue kuénta.
+acct_err_already_linked	Upe tape ojoajúma ko kuénta ndive.
+acct_err_exists_other_method	Oĩma peteĩ kuénta ko ñandutiveve reheve oiporúva ambue jeike rape. Eike raẽ upe tape rupive, upéi embojoaju kóva nde kuénta kuatiarogue guive.
+acct_err_generic	Oiko peteĩ mba’e vai.
+acct_method_password	Ñandutiveve ha ñe’ẽñemi
+acct_pw_hint_change	Emoambue nde ñe’ẽñemi. Remoneĩta ko’ág̃agua ndive.
+acct_pw_hint_add	Embojoapy ñe’ẽñemi ikatu hag̃uáicha reike avei ñandutiveve rupive (oipytyvõ peteĩ me’ẽhára ndaipóriramo).
+acct_pw_change	Emoambue ñe’ẽñemi
+acct_pw_add	Embojoapy ñe’ẽñemi
+acct_billing_off	Jehepyme’ẽ noñemyendýi gueteri arai API-pe.
+acct_billing_no_provider	Ndaipóri jehepyme’ẽ me’ẽhára añetegua oñemyendýva arai API-pe (jejapo añoite oĩ nde rembiporúpe).
+price_quote	Hepy ñemombe’u
+price_per_year	₹{amount}/ary impuesto’ỹre
+acct_pay_received	Jehepyme’ẽ oñemog̃uahẽma — oñembopyahu nde ñembohape…
+acct_pay_declined	Jehepyme’ẽ noñemoneĩri térã ndoikói
+acct_pay_failed_detail	{detail}. Nde ñembohape noñemoambuéi.
+acct_checkout_closed	Jehepyme’ẽ oñembotýma — ndaipóri jehepyme’ẽ opáva. Nde ñembohape opyta ha’eháicha.
+acct_checkout_failed	Jehepyme’ẽ ndoikói
+acct_pay_with	Ehepyme’ẽ {provider} rupive
+acct_plan_until	{plan} · {date} peve
+acct_unavailable	Ndaipóri
+acct_continue_hint	Eho tenonde ñandutiveve, me’ẽhára térã pumbyry rupive.
+acct_signed_in_fallback	(reikéma)
+acct_email_verified	Ñandutiveve oñemoneĩma
+acct_email_unverified	Ñandutiveve noñemoneĩri gueteri — ehecha nde marandu ryru
+acct_signed_in_phone	Reike pumbyry rupive
+acct_none_listed	Ndaipóri mba’eve ojehaíva gueteri
+acct_signed_in_status	Reikéma.
+acct_created	Kuénta ojejapóma. Ehecha nde ñandutiveve emoneĩ hag̃ua ikatu vove.
+acct_reset_sent	Oĩramo kuénta upe ñandutivevépe g̃uarã, rape emoĩ jey hag̃ua oĩma tapére. Ehecha nde marandu ryru.
+acct_another_method	ambue tape
+acct_exists_via	{email} kuénta oĩma {method} rupive. Eike raẽ upe tape rupive, upéi embojoaju ko me’ẽhára nde kuénta kuatiarogue guive.
+acct_enter_current_pw	Emoinge nde ñe’ẽñemi ko’ág̃agua.
+acct_relogin_retry	Esẽ ha eike jey, upéi eha’ã jey.
+acct_pw_mismatch	Ñe’ẽñemi pyahu ha ñemoneĩ nojojoguái.
+acct_pw_updated	Ñe’ẽñemi oñembopyahúma.
+acct_enter_email_pw	Emoinge ñandutiveve reiporútava jeike ñe’ẽñemi rupive g̃uarã.
+acct_pw_added	Ñe’ẽñemi oñembojoapýma. Ko’ág̃a ikatu reike avei ñandutiveve rupive.
+acct_method_linked	Jeike rape ojoajúma.
+acct_phone_linked	Pumbyry ojoajúma ko kuénta ndive.
+acct_verify_sent	Ñandutiveve ñemoneĩrã oñemondóma — ehecha nde marandu ryru.
+shop_pricing_soon	Hepykuéra oúta pya’e
+shop_request_quote	Ejerure hepy ñemombe’u
+shop_add_to_cart	Emoĩ jogua ryrúpe
+shop_notify_later	Emomarandu chéve upéi
+shop_included	Oĩma ipype
+shop_in_cart	{plan} oĩ nde jogua ryrúpe.
+shop_remove	Emboguete
+shop_cart_is_empty	Jogua ryru nandi.
+shop_prices_unpublished	Ko mba’e hepy jejogua ijehegui noñemoherakuãi gueteri. Ejerure hepy ñemombe’u ha’eñoguáva térã ejevy upéi.
+shop_cart_cleared	Jogua ryru oñemopotĩma.
+plan_free_title	Reiete opa ára peve
+plan_free_blurb	Mba’e henyhẽva nde rembiporúpe. Ndaipóri arai hepy.
+plan_steady_blurb	Arai oikovéva · 10 GB · mondo pya’ekue michĩva
+plan_swift_blurb	Arai oikovéva · 25 GB · mondo pya’ekue mbytegua
+plan_priority_blurb	Arai oikovéva · 50 GB · mondo pya’ekue yvatevéva
+plan_custom_title	Ha’eñoguáva
+plan_custom_blurb	Mba’e retakue ha mondo pya’ekue oñemoneĩva. Hepy ñemombe’u ikatu michĩve Steady-gui térã tuichave Priority-gui.
