@@ -1,227 +1,227 @@
 # Hausa — Hausa (ha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Misali
+download_free	Sauke kyauta
+whatsapp_for_a_demo	Nuni ta WhatsApp
+free_on_android_windows_and	Kyauta a Android, Windows da Linux.
+the_pharmacy_counter	teburin kantin magani
+pharmacy_counter	Teburin kantin magani
+tabiyat_the_pharmacy_counter	TABIYAT · TEBURIN KANTIN MAGANI
+pharmacy_counter_offline_your_books	Teburin kantin magani. Ba intanet. Littattafanku.
+medicines_barcode_and_salt_search	Magunguna, binciken barcode da sinadari, rukuni da ranar ƙarewa don littattafanku — a na’urorinku. Alamomin mai shago kawai; ba a taɓa nuna bin Dokar Magunguna na ƙarya ba.
+tap_the_bill_to_walk	Taɓa lissafin don bin sayarwar teburin ciniki
+cash_memo	Rasiɗin tsabar kuɗi
+ready	Ya shirya
+total	Jimla
+tap_to_add_the_first	Taɓa don ƙara magani na farko
+example_pharmacy_lines_not_a	Misalin layukan kantin magani, ba ainihin akwatin kuɗi ba. Tabiyat yana bin hanya ɗaya: sayar → karɓi biya → littafin yini.
+n_2_counter_sell	2 · SAYARWA A TEBURIN CINIKI
+medicine_quantity_pay_three_taps	Magani, yawa, biya — taɓawa uku.
+upi_qr_ready	UPI QR a shirye
+example_bill	Misalin lissafi
+fast_counter_billing	Lissafi cikin sauri a teburin ciniki
+add_the_line_set_the	Ƙara layi, saita yawa, karɓi biya — tsabar kuɗi, UPI ko raba.
+gst_tax_invoice_or_cash	Takardar harajin GST ko rasiɗin tsabar kuɗi
+the_bill_lane_you_need	Irin lissafin da kuke buƙata don sayarwar.
+day_book_follows	Littafin yini yana biyo baya
+every_tender_lands_in_books	Kowace hanyar biya tana shiga Littafin yini idan kun rufe sayarwar.
+n_3_barcode_salt	3 · BARCODE DA SINADARI
+scan_the_barcode_or_find	Karanta barcode — ko nemo shi ta sinadari.
+search	Bincika
+composition_paracetamol_strip_of_10	Haɗin sinadarai: Paracetamol · kati mai ƙwaya 10
+salt_amoxicillin	Sinadari: amoxicillin
+ranks_barcode_name_and_composition	Yana jera barcode, suna da haɗin sinadarai tare.
+wedge_scanner_or_type_enter	Na’urar karanta barcode ko danna Enter — layin yana sauka a lissafi.
+barcode_first	Barcode tukuna
+scan_or_paste_the_code	Karanta ko liƙa lambar; abin da ya dace a kundin kaya yana bayyana.
+salt_composition	Sinadari / haɗin sinadarai
+type_the_salt_when_the	Rubuta sinadarin idan sunan kamfanin ba shi ne abin da abokin ciniki ya faɗa ba.
+owner_rx_schedule_h_flags	Alamomin mai shago na takardar likita / Schedule H
+reminders_you_set_not_a	Tunatarwar da kuka saita — ba rajistar doka ba, ba shawarar likita ba.
+n_4_batch_expiry	4 · RUKUNI DA ƘAREWA
+batch_and_expiry_on_your	Rukuni da ranar ƙarewa a littattafanku — faɗakarwa ga mai shago.
+buy_batch_a12	Sayayya · rukuni A12
+expires_2027_03_alert_in	Zai ƙare 2027-03 · faɗakarwa nan da kwana 7
+ors_sachets_batch_b04	Kunshin ORS · rukuni B04
+expires_2026_11_near_expiry	Zai ƙare 2026-11 · layin “kusa da ƙarewa” a Littafin yini
+shop_bookkeeping_only_not_drugs	Lissafin shago kawai — ba bin Dokar Magunguna ba.
+batch_on_buy	Rukuni a sayayya
+record_batch_and_expiry_when	Rubuta rukuni da ranar ƙarewa idan haja ta shigo.
+near_expiry_alerts	Faɗakarwar kusa da ƙarewa
+books_and_sell_can_hint	Littafin yini da Sayarwa za su iya nuna alama kafin ranar ta wuce.
+owner_practice	Al’adar mai shago
+fefo_hints_and_rx_notes	Shawarwarin FEFO da bayanan takardar likita naku ne ku bi — Tabiyat yana rubuta abin da kuka shigar.
+n_5_khata	5 · LITTAFIN BASHI
+customer_credit_and_supplier_dues	Bashin abokan ciniki da bashin masu samar da kaya a littafin abokan hulɗa ɗaya.
+mehta_clinic_customer	Asibitin Mehta · Abokin ciniki
+due_from_earlier	Bashin baya
+today_s_sale_due	+ sayarwar yau (bashi)
+balance	Saura
+settle_later_part_cash_part	Biya daga baya — wani ɓangare tsabar kuɗi, wani UPI. Bashin masu samar da kaya yana kan allon Abokan hulɗa ɗaya.
+due_on_the_bill	Bashi a lissafi
+leave_a_balance_on_khata	Bar saura a littafin bashi ba tare da wata manhajar lissafi daban ba.
+supplier_buys_too	Sayayya daga masu samar da kaya ma
+who_you_owe_updates_when	Waɗanda ke bin ku bashi suna sabuntawa idan haja ta iso.
+auditable	Ana iya bincikawa
+who_when_and_how_much	Wane, yaushe da nawa suna zama a littafin yini.
+n_6_internet_down	6 · INTANET YA KATSE?
+the_internet_drops_the_counter	Intanet ya katse. Teburin ciniki yana ci gaba da sayarwa.
+router_no_internet	Rauta: babu intanet
+main_counter_selling_and_settling	Babban teburin ciniki: yana sayarwa da karɓar biya
+second_till_joined_on_your	Akwatin kuɗi na biyu: an haɗa shi a Wi-Fi naku
+books_live_on_the_shop	Littattafai suna zaune a na’urorin shago
+when_the_internet_drops_nothing	Idan intanet ya katse, babu abin da ke jiran sa a teburin kantin magani.
+one_server_lan_clients	Sabar ɗaya, na’urorin LAN
+extra_tills_share_the_same	Ƙarin akwatunan kuɗi suna raba littattafai iri ɗaya ta hanyar sadarwar shago.
+n_7_free_forever_locally	7 · KYAUTA HAR ABADA A GIDA
+free_forever_on_your_devices	Kyauta har abada a na’urorinku.
+no_per_bill_charge	Babu kuɗi kowane lissafi
+no_fee_per_sale_medicine	Babu kuɗi kowace sayarwa, magani, akwatin kuɗi ko PIN na ma’aikaci a shigarwar gida.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Tabiyat ɗaya a waya da akwatin kuɗi na kwamfuta.
+optional_kumkaj_cloud	Kumkaj Cloud na zaɓi
+yearly_steady_6k_swift_12k	Na shekara: Steady ₹6k · Swift ₹12k · Priority ₹24k ba haraji (ko ƙiyasin farashi na musamman). Saya a /shop.
+n_8_start	8 · FARA
+put_tabiyat_on_the_counter	Sanya Tabiyat a teburin ciniki.
+download_free_or_whatsapp_for	Sauke kyauta, ko tura saƙon WhatsApp don a nuna muku daidai da kantin maganinku da garinku.
+privacy	Sirri
+terms	Sharuɗɗa
+cancellation	Sokewa
+cloud_shop	Shagon gajimare
+account	Asusu
+chapter_counter_sell	Sayarwa a teburin ciniki
+chapter_barcode_salt	Barcode da sinadari
+chapter_batch_expiry	Rukuni da ƙarewa
+chapter_khata	Littafin bashi
+chapter_extra_till	Ƙarin akwatin kuɗi
+chapter_offline	Ba intanet
+chapter_start	Fara
+bill_selling	Ana sayarwa
+bill_settle	Karɓi biya
+bill_paid	An biya
+bill_next_line	Taɓa don ƙara layi na gaba
+bill_settle_hint	Taɓa don karɓar biya — tsabar kuɗi ko UPI
+bill_upi_paid	UPI ₹ 162 · an biya
+bill_paid_line	An biya · an sabunta littafin yini
+lan_eyebrow	6 · ƘARIN AKWATIN KUƊI
+lan_title	Wani akwatin kuɗi a Wi-Fi na shago.
+cta_installers_note	Za a sanya manhajojin shigarwa a nan da zarar kowanne ya wuce gwajin shigarwa a sabuwar na’ura. Kafin nan, nemi nuni a WhatsApp.
+cta_whatsapp_soon	Layin nunin WhatsApp zai buɗe nan ba da jimawa ba. Saƙonku zai kasance: “{message}”.
+acct_page_title	Asusu — Tabiyat
+acct_lede	Asusu ɗaya don shafin da manhajoji — fom iri ɗaya ko sababbi ne ku ko kun dawo.
+acct_email	Imel
+acct_name_optional	Suna (zaɓi ne)
+acct_password	Kalmar sirri
+acct_continue	Ci gaba
+acct_forgot	Kun manta kalmar sirri?
+acct_reset_hint	Za mu aiko da hanyar sake saitawa ta imel. Yi amfani da adireshin da kuka yi rajista da shi.
+acct_send_reset	Aika hanyar sake saitawa
+acct_cancel	Soke
+acct_or_continue	ko ci gaba da
+acct_phone	Waya
+acct_mobile	Lambar waya
+acct_send_sms	Aika lambar SMS
+acct_sms_code	Lambar SMS
+acct_confirm_code	Tabbatar da lamba
+acct_signed_in	An shiga
+acct_signed_in_as	An shiga a matsayin
+acct_status	Matsayi
+acct_sign_in_methods	Hanyoyin shiga
+acct_cloud_username	Sunan mai amfani na gajimare
+acct_plan	Tsari
+acct_resend_verify	Sake aika imel na tabbatarwa
+acct_sign_out	Fita
+acct_cloud_sandbox	Kumkaj Cloud (gwaji)
+acct_current_password	Kalmar sirri ta yanzu
+acct_email_for_password	Imel don shiga da kalmar sirri
+acct_new_password	Sabuwar kalmar sirri
+acct_confirm_new_password	Tabbatar da sabuwar kalmar sirri
+acct_add_way	Ƙara wata hanyar shiga
+acct_link_hint	Haɗa hanyoyi da asusu ɗaya domin ku iya dawo da shiga idan ɗaya ta kasa.
+acct_link_google	Haɗa Google
+acct_link_microsoft	Haɗa Microsoft
+acct_link_github	Haɗa GitHub
+acct_link_phone	Haɗa waya
+acct_send_sms_link	Aika SMS don haɗawa
+acct_confirm_link_phone	Tabbatar da haɗa waya
+shop_page_title	Shago — Tabiyat
+shop_lede	Tsare-tsaren gajimare na shekara — ana ƙara haraji wajen biya. Cikakkiyar manhajar Tabiyat a na’urorinku tana zama kyauta har abada, babu talla.
+shop_cart	Kwando
+shop_cart_empty_hint	Kwandonku babu komai. Ƙara Steady, Swift ko Priority.
+shop_checkout	Biya
+shop_clear	Share
+shop_checkout_hint	Biya yana shigar da ku a Asusu, sannan ya fara biyan kuɗi (kwaikwayon gwaji ko Paddle idan an saita makullai).
+acct_billing_hint	Tsare-tsaren shekara — ƙofar biya tana ƙara haraji wajen biya. Amfani na gida yana zama kyauta har abada. Na musamman ƙiyasin farashi ne (zai iya zama ƙasa da Steady ko sama da Priority).
+shop_cloud_plans	Tsare-tsaren gajimare
+acct_federated	Shiga ta wani asusu
+acct_err_invalid_email	Shigar da ingantaccen adireshin imel.
+acct_err_weak_password	Yi amfani da kalmar sirri mai haruffa 6 aƙalla.
+acct_err_wrong_password	Kalmar sirri ba daidai ba ce.
+acct_err_invalid_credential	Imel ko kalmar sirri ba daidai ba ne.
+acct_err_popup_closed	An rufe tagar shiga.
+acct_err_popup_cancelled	An soke shiga.
+acct_err_unauthorized_domain	Ba a ba wannan yanki izini don Firebase Auth ba.
+acct_err_method_disabled	Ba a kunna wannan hanyar shiga ba tukuna.
+acct_err_too_many	Ƙoƙari ya yi yawa. Sake gwadawa daga baya.
+acct_err_phone_format	Yi amfani da cikakkiyar lambar waya tare da lambar ƙasa (misali +91…).
+acct_err_sms_code	Lambar SMS ɗin ba daidai ba ce ko ta ƙare.
+acct_err_no_account	Babu asusu da wannan imel. Ci gaba don ƙirƙirar ɗaya, ko yi amfani da wata hanya.
+acct_err_recent_login	Don tsaro, sake shiga, sannan sake gwada wannan canjin.
+acct_err_credential_in_use	Wani asusu yana amfani da wannan hanyar shiga tuni.
+acct_err_email_in_use	Wani asusu yana amfani da wannan imel tuni.
+acct_err_already_linked	An riga an haɗa wannan hanya da wannan asusu.
+acct_err_exists_other_method	Akwai asusu tuni da wannan imel mai amfani da wata hanyar shiga daban. Shiga da waccan hanyar tukuna, sannan ku haɗa wannan daga shafin asusunku.
+acct_err_generic	An samu matsala.
+acct_method_password	Imel da kalmar sirri
+acct_pw_hint_change	Canza kalmar sirrinku. Za ku tabbatar da ta yanzu.
+acct_pw_hint_add	Ƙara kalmar sirri domin ku iya shiga da imel ma (yana da amfani idan wani mai samar da sabis ba ya samuwa).
+acct_pw_change	Canza kalmar sirri
+acct_pw_add	Ƙara kalmar sirri
+acct_billing_off	Ba a kunna biyan kuɗi a API na gajimare ba tukuna.
+acct_billing_no_provider	Ba a kunna ainihin mai karɓar biyan kuɗi a API na gajimare ba (kwaikwayo kawai na gida ne).
+price_quote	Ƙiyasin farashi
+price_per_year	₹{amount}/shekara ba haraji
+acct_pay_received	An karɓi biya — ana sabunta tsarinku…
+acct_pay_declined	An ƙi biyan kuɗi ko bai yi nasara ba
+acct_pay_failed_detail	{detail}. Ba a canza tsarinku ba.
+acct_checkout_closed	An rufe biya — ba a kammala biyan kuɗi ba. Tsarinku bai canza ba.
+acct_checkout_failed	Biya bai yi nasara ba
+acct_pay_with	Biya da {provider}
+acct_plan_until	{plan} · har zuwa {date}
+acct_unavailable	Ba ya samuwa
+acct_continue_hint	Ci gaba da imel, mai samar da sabis, ko waya.
+acct_signed_in_fallback	(an shiga)
+acct_email_verified	An tabbatar da imel
+acct_email_unverified	Ba a tabbatar da imel ba tukuna — duba akwatin saƙonku
+acct_signed_in_phone	An shiga da waya
+acct_none_listed	Babu wanda aka jera tukuna
+acct_signed_in_status	Kun shiga.
+acct_created	An ƙirƙiri asusu. Duba imel ɗinku don tabbatarwa idan kun samu dama.
+acct_reset_sent	Idan akwai asusu na wannan imel, hanyar sake saitawa tana kan hanya. Duba akwatin saƙonku.
+acct_another_method	wata hanya
+acct_exists_via	Akwai asusu na {email} tuni ta {method}. Shiga ta waccan hanyar tukuna, sannan ku haɗa wannan mai samar da sabis daga shafin asusunku.
+acct_enter_current_pw	Shigar da kalmar sirrinku ta yanzu.
+acct_relogin_retry	Fita ku sake shiga, sannan ku sake gwadawa.
+acct_pw_mismatch	Sabuwar kalmar sirri da tabbatarwa ba su yi daidai ba.
+acct_pw_updated	An sabunta kalmar sirri.
+acct_enter_email_pw	Shigar da imel da za ku yi amfani da shi wajen shiga da kalmar sirri.
+acct_pw_added	An ƙara kalmar sirri. Yanzu kuna iya shiga da imel ma.
+acct_method_linked	An haɗa hanyar shiga.
+acct_phone_linked	An haɗa waya da wannan asusu.
+acct_verify_sent	An aika imel na tabbatarwa — duba akwatin saƙonku.
+shop_pricing_soon	Farashi na nan tafe
+shop_request_quote	Nemi ƙiyasin farashi
+shop_add_to_cart	Saka a kwando
+shop_notify_later	Sanar da ni daga baya
+shop_included	An haɗa
+shop_in_cart	{plan} yana cikin kwandonku.
+shop_remove	Cire
+shop_cart_is_empty	Kwando babu komai.
+shop_prices_unpublished	Ba a wallafa farashin saye-da-kanka na wannan samfuri ba tukuna. Nemi ƙiyasin farashi na musamman ko ku dawo daga baya.
+shop_cart_cleared	An share kwando.
+plan_free_title	Kyauta har abada
+plan_free_blurb	Cikakken samfuri na gida a na’urorinku. Babu kuɗin gajimare.
+plan_steady_blurb	Gajimare kai tsaye · 10 GB · ƙaramin saurin watsawa
+plan_swift_blurb	Gajimare kai tsaye · 25 GB · matsakaicin saurin watsawa
+plan_priority_blurb	Gajimare kai tsaye · 50 GB · mafi girman saurin watsawa na yau da kullum
+plan_custom_title	Na musamman
+plan_custom_blurb	Adadi da saurin watsawa da aka amince. Ƙiyasin farashi zai iya zama ƙasa da Steady ko sama da Priority.

@@ -1,254 +1,254 @@
 # Hausa — Hausa (ha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Misali
+length	Tsawo
+download_free	Sauke kyauta
+whatsapp_for_a_demo	Nuni ta WhatsApp
+free_on_android_windows_and	Kyauta a Android, Windows da Linux.
+courier_operating_system	tsarin gudanar da aika kaya
+parcel_journey	TAFIYAR FAKITI
+walk_in	Shigowa
+weigh	Auna
+price	Farashi
+label	Lakabi
+hand_over	Miƙa
+track	Bibiya
+offline	Ba intanet
+start	Fara
+moklanjo_courier_operating_system	MOKLANJO · TSARIN GUDANAR DA AIKA KAYA
+book_move_and_settle_every	Yi rajista, tura kuma ku kammala lissafin kowane fakiti — tsarin aika kaya ɗaya a na’urorinku.
+parties_books_cod_labels_awb	Abokan hulɗa, littattafai, COD, lakabi, rukunin lambobin AWB, bibiya, masu kai kaya da lissafi — cikakken zagaye daga teburin ciniki zuwa kammala lissafi, da intanet ko babu. Kyauta a na’urorinku.
+the_walk_in_loop	ZAGAYEN MAI SHIGOWA
+actual_and_volumetric_side_by	Ainihin nauyi da nauyin girma, gefe da gefe.
+charge	Karɓi kuɗi
+your_rate_card_cash_or	Jadawalin farashinku, tsabar kuɗi ko asusu.
+next_booking	Rajista ta gaba
+one_tap_clears_the_counter	Taɓawa ɗaya tana share teburin ciniki don mai shigowa na gaba.
+scroll_the_parcel_journey_rail	Gungura — layin tafiyar fakiti a sama yana nuna inda kuke a cikin labarin.
+n_2_weigh_it_right	2 · AUNA DAIDAI
+actual_or_volumetric_whichever_is	Ainihin nauyi ko nauyin girma — duk wanda ya fi girma, a tara shi yadda kuke so.
+try_a_box	Gwada akwati
+domestic	Cikin gida
+international	Ƙasashen waje
+breadth	Faɗi
+height	Tsayi
+weight_on_the_scale	Nauyi a kan ma’auni
+chargeable_weight	NAUYIN DA ZA A BIYA
+the_box_s_size_sets	Girman akwatin ne ke ƙayyade kuɗin.
+higher_of_the_two_rounded	Mafi girma cikin biyun, a tara shi zuwa 0.5 kg na gaba.
+in_the_app_the_divisor	A cikin manhajar, mai raba, matakin tarawa da ma’aunanku (cm ko inci, kg ko lb) shago ne ke saita su. Maɓallin Ƙasashen waje yana sauya ÷6000 don rajista ɗaya ba tare da taɓa Saituna ba.
+n_3_price_it	3 · SA FARASHI
+your_rate_cards_your_party	Jadawalin farashinku, farashin abokan hulɗarku — da ribarku a kowace takardar aikawa.
+rate_card	Jadawalin farashi
+zone_service	Yanki · sabis
+first_0_5_kg	0.5 kg na farko
+each_0_5_kg	Kowane 0.5 kg
+local_surface	Gida · Ta ƙasa
+within_state_express	Cikin jiha · Gaggawa
+metro_air	Babban birni · Jirgin sama
+zone_service_weight_slab	Yanki × sabis × matakin nauyi
+first_slab_and_each_extra	Matakin farko da kowane ƙarin mataki, ga kowane yanki da sabis.
+a_consignor_s_own_card	Jadawalin mai aikawa na kansa
+regular_senders_get_their_rates	Masu aikawa na yau da kullum suna samun farashinsu; jadawalin asali yana rufe kowa da kowa.
+margin_at_the_desk	Riba a teburin ciniki
+your_sell_price_against_the	Farashin sayarwarku idan aka kwatanta da farashin mai ɗaukar kaya, a kowace takardar aikawa.
+n_4_label_it	4 · SA LAKABI
+awb_from_your_own_number	AWB daga rukunin lambobinku. Sa lakabi, karanta, nemo.
+number_pools_per_carrier	Rukunin lambobi ga kowane mai ɗaukar kaya
+enter_each_carrier_s_start	Shigar da jerin farko–ƙarshe na kowane mai ɗaukar kaya sau ɗaya; kowace rajista tana ɗaukar lamba ta gaba.
+code_128_labels	Lakabin Code 128
+the_awb_goes_on_the	AWB yana shiga akwati a matsayin barcode da kuma lambobi bayyanannu.
+scan_to_find	Karanta don nemo
+scan_a_label_to_open	Karanta lakabi don buɗe takardar aikawarsa kuma ku yi aiki a kai.
+n_5_hand_over	5 · MIƘA
+hand_it_to_a_carrier	Miƙa shi ga mai ɗaukar kaya, ko aika mai kai kayanku. Tsari ɗaya.
+into_a_carrier_bag	Cikin jakar mai ɗaukar kaya
+the_manifest_holds_exactly_the	Jerin kayan yana ɗauke da fakitin da kuka zaɓa daidai — dukansu ko babu ko ɗaya. Fakitin da aka yi wa rajista da wani mai ɗaukar kaya ba zai iya shiga wannan jakar ba.
+onto_your_own_rider_s	Cikin zagayen mai kai kayanku
+pick_the_parcels_print_the	Zaɓi fakitin, buga takardar zagaye, kuma mai kai kaya yana aiki daga manhajar ɗaya a yanayin mai kai kaya — tare da shaidar isarwa.
+n_6_track_and_prove	6 · BIBIYA DA TABBATARWA
+every_move_recorded_and_only	Ana rubuta kowane motsi — kuma motsin da ke da ma’ana kawai.
+booked	An yi rajista
+with_carrier	Hannun mai ɗaukar kaya
+out_for_delivery	Ana kan hanyar isarwa
+delivered	An isar
+booked_with_carrier_out_for	An yi rajista → Hannun mai ɗaukar kaya → Ana kan hanyar isarwa → An isar
+failed	Ba a yi nasara ba
+reason_out_again_or_return	→ dalili → sake fita, ko mayarwa ga mai aikawa.
+impossible_moves_refused	Ana ƙin motsin da ba zai yiwu ba
+delivered_returned_and_cancelled	An isar, an mayar da an soke na ƙarshe ne.
+proof_of_delivery	Shaidar isarwa
+a_photo_and_the_receiver	Hoto da sa hannun mai karɓa a takardar aikawa.
+failed_deliveries	Isarwar da ba ta yi nasara ba
+reasons_attempts_out_again_or	Dalilai, ƙoƙari, sake fita, ko komawa ga mai aikawa.
+n_7_money_comes_home	7 · KUƊI SUN DAWO GIDA
+cod_you_can_see_expected	COD da kuke iya gani: wanda ake tsammani, wanda aka miƙa, wanda kowane mai aikawa ke bin ku.
+rider_cash_end_of_run	Tsabar kuɗin mai kai kaya, ƙarshen zagaye
+rider	Mai kai kaya
+expected	Ana tsammani
+handed_in	An miƙa
+a_14_drops	A · isarwa 14
+b_9_drops	B · isarwa 9
+short_200_on_rider_b	Gibin ₹ 200 a Mai kai kaya B — an bayyana shi, bai ɓace a cikin jimla ba.
+cod_register	Rajistar COD
+collected_against_paid_out_per	Abin da aka karɓa idan aka kwatanta da abin da aka biya, ga kowane mai aikawa, tare da rukunin tura kuɗi.
+rider_settlement	Daidaita lissafin mai kai kaya
+expected_against_handed_in_and	Abin da ake tsammani da abin da aka miƙa, da takardar la’ada.
+books_that_close	Littattafan da ke rufewa
+day_book_month_bill_per	Littafin yini, lissafin wata na kowane asusu, da taƙaitaccen GST a CSV don akantanku.
+n_8_internet_down	8 · INTANET YA KATSE?
+keep_booking	Ci gaba da rajista.
+booking_labels_scanning_cod_and	Rajista, lakabi, karanta barcode, COD da littattafai duk suna aiki a na’urorinku. Idan intanet ya katse, babu abin da ke jiran sa a teburin ciniki.
+office_router_no_internet	Rautar ofis: babu intanet
+desk_still_booking	Tebur: ana ci gaba da rajista
+second_counter_and_rider_phone	Teburin ciniki na biyu da wayar mai kai kaya: an haɗa su ta Wi-Fi na ofis
+free_forever_on_your_devices	Kyauta har abada a na’urorinku
+nothing_per_rider_user_or	Babu kuɗi kowane mai kai kaya, mai amfani ko fakiti. Kumkaj Cloud na zaɓi: Steady ₹6k · Swift ₹12k · Priority ₹24k/shekara ba haraji — /shop.
+n_9_start	9 · FARA
+one_courier_os_your_parcels	Tsarin aika kaya ɗaya. Fakitinku. Littattafanku.
+moklanjo_is_a_complete_courier	Moklanjo cikakken tsarin gudanar da aika kaya ne ƙarƙashin Kumkaj — Android, Windows da Linux. Masu kai kaya suna amfani da manhajar ɗaya a yanayin mai kai kaya.
+trademark	ALAMAR KASUWANCI
+memon_for_find_it_pronounced	Kalmar Memon mai ma’anar “nemo shi” · ana furta ta go-tee-geen
+company	KAMFANI
+brand	TAMBARI
+concrete_business_operating_system	Manhajojin tsarin gudanar da kasuwanci na zahiri
+product	SAMFURI
+courier_operating_system_under	Tsarin gudanar da aika kaya ƙarƙashin Kumkaj
+privacy	Sirri
+terms	Sharuɗɗa
+cancellation	Sokewa
+cloud_shop	Shagon gajimare
+account	Asusu
+weigh_it_right	Auna daidai
+price_it	Sa farashi
+label_it	Sa lakabi
+track_and_prove	Bibiya da tabbatarwa
+money_comes_home	Kuɗi sun dawo gida
+internet_down	Intanet ya katse
+bead_hand	Miƙa
+bead_offline_short	Babu net
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	A kan ma’auni: {kg} kg
+weight_scale_wins	Nauyin da ke kan ma’auni ne ke ƙayyade kuɗin.
+cta_installers_note	Za a sanya manhajojin shigarwa a nan da zarar kowanne ya wuce gwajin shigarwa a sabuwar na’ura. Kafin nan, nemi nuni a WhatsApp.
+cta_whatsapp_soon	Layin nunin WhatsApp zai buɗe nan ba da jimawa ba. Saƙonku zai kasance: “{message}”.
+acct_page_title	Asusu — Moklanjo
+acct_lede	Asusu ɗaya don shafin da manhajoji — fom iri ɗaya ko sababbi ne ku ko kun dawo.
+acct_email	Imel
+acct_name_optional	Suna (zaɓi ne)
+acct_password	Kalmar sirri
+acct_continue	Ci gaba
+acct_forgot	Kun manta kalmar sirri?
+acct_reset_hint	Za mu aiko da hanyar sake saitawa ta imel. Yi amfani da adireshin da kuka yi rajista da shi.
+acct_send_reset	Aika hanyar sake saitawa
+acct_cancel	Soke
+acct_or_continue	ko ci gaba da
+acct_phone	Waya
+acct_mobile	Lambar waya
+acct_send_sms	Aika lambar SMS
+acct_sms_code	Lambar SMS
+acct_confirm_code	Tabbatar da lamba
+acct_signed_in	An shiga
+acct_signed_in_as	An shiga a matsayin
+acct_status	Matsayi
+acct_sign_in_methods	Hanyoyin shiga
+acct_cloud_username	Sunan mai amfani na gajimare
+acct_plan	Tsari
+acct_resend_verify	Sake aika imel na tabbatarwa
+acct_sign_out	Fita
+acct_cloud_sandbox	Kumkaj Cloud (gwaji)
+acct_current_password	Kalmar sirri ta yanzu
+acct_email_for_password	Imel don shiga da kalmar sirri
+acct_new_password	Sabuwar kalmar sirri
+acct_confirm_new_password	Tabbatar da sabuwar kalmar sirri
+acct_add_way	Ƙara wata hanyar shiga
+acct_link_hint	Haɗa hanyoyi da asusu ɗaya domin ku iya dawo da shiga idan ɗaya ta kasa.
+acct_link_google	Haɗa Google
+acct_link_microsoft	Haɗa Microsoft
+acct_link_github	Haɗa GitHub
+acct_link_phone	Haɗa waya
+acct_send_sms_link	Aika SMS don haɗawa
+acct_confirm_link_phone	Tabbatar da haɗa waya
+shop_page_title	Shago — Moklanjo
+shop_lede	Tsare-tsaren gajimare na shekara — ana ƙara haraji wajen biya. Cikakkiyar manhajar Moklanjo a na’urorinku tana zama kyauta har abada, babu talla.
+shop_cart	Kwando
+shop_cart_empty_hint	Kwandonku babu komai. Ƙara Steady, Swift ko Priority.
+shop_checkout	Biya
+shop_clear	Share
+shop_checkout_hint	Biya yana shigar da ku a Asusu, sannan ya fara biyan kuɗi (kwaikwayon gwaji ko Paddle idan an saita makullai).
+acct_billing_hint	Tsare-tsaren shekara — ƙofar biya tana ƙara haraji wajen biya. Amfani na gida yana zama kyauta har abada. Na musamman ƙiyasin farashi ne (zai iya zama ƙasa da Steady ko sama da Priority).
+shop_cloud_plans	Tsare-tsaren gajimare
+acct_federated	Shiga ta wani asusu
+acct_err_invalid_email	Shigar da ingantaccen adireshin imel.
+acct_err_weak_password	Yi amfani da kalmar sirri mai haruffa 6 aƙalla.
+acct_err_wrong_password	Kalmar sirri ba daidai ba ce.
+acct_err_invalid_credential	Imel ko kalmar sirri ba daidai ba ne.
+acct_err_popup_closed	An rufe tagar shiga.
+acct_err_popup_cancelled	An soke shiga.
+acct_err_unauthorized_domain	Ba a ba wannan yanki izini don Firebase Auth ba.
+acct_err_method_disabled	Ba a kunna wannan hanyar shiga ba tukuna.
+acct_err_too_many	Ƙoƙari ya yi yawa. Sake gwadawa daga baya.
+acct_err_phone_format	Yi amfani da cikakkiyar lambar waya tare da lambar ƙasa (misali +91…).
+acct_err_sms_code	Lambar SMS ɗin ba daidai ba ce ko ta ƙare.
+acct_err_no_account	Babu asusu da wannan imel. Ci gaba don ƙirƙirar ɗaya, ko yi amfani da wata hanya.
+acct_err_recent_login	Don tsaro, sake shiga, sannan sake gwada wannan canjin.
+acct_err_credential_in_use	Wani asusu yana amfani da wannan hanyar shiga tuni.
+acct_err_email_in_use	Wani asusu yana amfani da wannan imel tuni.
+acct_err_already_linked	An riga an haɗa wannan hanya da wannan asusu.
+acct_err_exists_other_method	Akwai asusu tuni da wannan imel mai amfani da wata hanyar shiga daban. Shiga da waccan hanyar tukuna, sannan ku haɗa wannan daga shafin asusunku.
+acct_err_generic	An samu matsala.
+acct_method_password	Imel da kalmar sirri
+acct_pw_hint_change	Canza kalmar sirrinku. Za ku tabbatar da ta yanzu.
+acct_pw_hint_add	Ƙara kalmar sirri domin ku iya shiga da imel ma (yana da amfani idan wani mai samar da sabis ba ya samuwa).
+acct_pw_change	Canza kalmar sirri
+acct_pw_add	Ƙara kalmar sirri
+acct_billing_off	Ba a kunna biyan kuɗi a API na gajimare ba tukuna.
+acct_billing_no_provider	Ba a kunna ainihin mai karɓar biyan kuɗi a API na gajimare ba (kwaikwayo kawai na gida ne).
+price_quote	Ƙiyasin farashi
+price_per_year	₹{amount}/shekara ba haraji
+acct_pay_received	An karɓi biya — ana sabunta tsarinku…
+acct_pay_declined	An ƙi biyan kuɗi ko bai yi nasara ba
+acct_pay_failed_detail	{detail}. Ba a canza tsarinku ba.
+acct_checkout_closed	An rufe biya — ba a kammala biyan kuɗi ba. Tsarinku bai canza ba.
+acct_checkout_failed	Biya bai yi nasara ba
+acct_pay_with	Biya da {provider}
+acct_plan_until	{plan} · har zuwa {date}
+acct_unavailable	Ba ya samuwa
+acct_continue_hint	Ci gaba da imel, mai samar da sabis, ko waya.
+acct_signed_in_fallback	(an shiga)
+acct_email_verified	An tabbatar da imel
+acct_email_unverified	Ba a tabbatar da imel ba tukuna — duba akwatin saƙonku
+acct_signed_in_phone	An shiga da waya
+acct_none_listed	Babu wanda aka jera tukuna
+acct_signed_in_status	Kun shiga.
+acct_created	An ƙirƙiri asusu. Duba imel ɗinku don tabbatarwa idan kun samu dama.
+acct_reset_sent	Idan akwai asusu na wannan imel, hanyar sake saitawa tana kan hanya. Duba akwatin saƙonku.
+acct_another_method	wata hanya
+acct_exists_via	Akwai asusu na {email} tuni ta {method}. Shiga ta waccan hanyar tukuna, sannan ku haɗa wannan mai samar da sabis daga shafin asusunku.
+acct_enter_current_pw	Shigar da kalmar sirrinku ta yanzu.
+acct_relogin_retry	Fita ku sake shiga, sannan ku sake gwadawa.
+acct_pw_mismatch	Sabuwar kalmar sirri da tabbatarwa ba su yi daidai ba.
+acct_pw_updated	An sabunta kalmar sirri.
+acct_enter_email_pw	Shigar da imel da za ku yi amfani da shi wajen shiga da kalmar sirri.
+acct_pw_added	An ƙara kalmar sirri. Yanzu kuna iya shiga da imel ma.
+acct_method_linked	An haɗa hanyar shiga.
+acct_phone_linked	An haɗa waya da wannan asusu.
+acct_verify_sent	An aika imel na tabbatarwa — duba akwatin saƙonku.
+shop_pricing_soon	Farashi na nan tafe
+shop_request_quote	Nemi ƙiyasin farashi
+shop_add_to_cart	Saka a kwando
+shop_notify_later	Sanar da ni daga baya
+shop_included	An haɗa
+shop_in_cart	{plan} yana cikin kwandonku.
+shop_remove	Cire
+shop_cart_is_empty	Kwando babu komai.
+shop_prices_unpublished	Ba a wallafa farashin saye-da-kanka na wannan samfuri ba tukuna. Nemi ƙiyasin farashi na musamman ko ku dawo daga baya.
+shop_cart_cleared	An share kwando.
+plan_free_title	Kyauta har abada
+plan_free_blurb	Cikakken samfuri na gida a na’urorinku. Babu kuɗin gajimare.
+plan_steady_blurb	Gajimare kai tsaye · 10 GB · ƙaramin saurin watsawa
+plan_swift_blurb	Gajimare kai tsaye · 25 GB · matsakaicin saurin watsawa
+plan_priority_blurb	Gajimare kai tsaye · 50 GB · mafi girman saurin watsawa na yau da kullum
+plan_custom_title	Na musamman
+plan_custom_blurb	Adadi da saurin watsawa da aka amince. Ƙiyasin farashi zai iya zama ƙasa da Steady ko sama da Priority.

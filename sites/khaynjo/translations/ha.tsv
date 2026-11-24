@@ -1,280 +1,280 @@
 # Hausa — Hausa (ha). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Misali
+free	Babu kowa
+photo_coming	Hoto na zuwa
+get_it_on_google_play	Samu a Google Play
+whatsapp_for_a_demo	Nuni ta WhatsApp
+menus	Jerin abinci
+how_it_works	Yadda yake aiki
+features	Fasaloli
+offline	Ba intanet
+pricing	Farashi
+faq	Tambayoyi
+login	Shiga
+get_it_free	Samu kyauta
+restaurant_pos_free_forever	POS na gidan abinci · kyauta har abada
+lunch_rush_no_internet_no	Cinkoson abincin rana. Babu intanet. Babu matsala.
+khaynjo_runs_your_floor_kitchen	Khaynjo yana gudanar da falonku, kicin da teburin ciniki a kan na’urorin da kuke da su tuni — daga tebur zuwa kicin zuwa lissafi, da intanet ko babu.
+android_on_google_play_today	Android a Google Play yanzu · manhajojin Windows da Linux suna nan tafe.
+works_with_no_internet	Yana aiki ba tare da intanet ba
+your_books_stay_on_your	Lissafinku yana zama a na’urorinku
+n_115_languages_on_screen	Harsuna 115 a kan allo
+your_floor_at_a_glance	Falonku a kallo ɗaya
+tap_a_table_to_walk	Taɓa tebur don bin sa cikin ziyara ɗaya. Launuka da kalmomi iri ɗaya da na manhajar — kuma tebur ba ya zama babu kowa sai an biya.
+every_country	KOWACE ƘASA
+every_country_at_your_counter	Kowace ƙasa a teburin cinikinku
+one_famous_dish_from_every	Shahararren abinci ɗaya daga kowace ƙasa — sunan Turanci, sunan a rubutunsu, da abincin a Turanci. Sanya waɗannan kalmomi a jerin abincinku. Duniya na ci gaba da wucewa; dakata ko bincika idan kuna son dubawa.
+find_a_country_or_dish	Nemo ƙasa ko abinci — misali India, biryani, Japan
+one_famous_dish_per_country	Shahararren abinci ɗaya kowace ƙasa — jerin gwanon yana zagaye duk duniya.
+how_a_service_runs	YADDA HIDIMA KE GUDANA
+one_table_start_to_finish	Tebur ɗaya, daga farko har ƙarshe.
+watch_a_table_go_from	Ku kalli tebur tun daga zama har zuwa An biya — matakai da launuka iri ɗaya da ma’aikatanku ke gani a manhajar.
+occupied	Akwai mutum
+in_kitchen	A kicin
+food_ready	Abinci ya shirya
+served	An kai
+bill_printed	An buga lissafi
+paid	An biya
+seat_the_table_take_the	Zaunar da baƙi, karɓi oda
+mark_the_table_occupied_the	Sanya tebur a Akwai mutum da zarar baƙi sun zauna. Ƙara abinci, zaɓi girma, ƙara abubuwan ƙari, kuma rubuta bayani ga kicin — a nan kan tebur.
+sizes_and_add_ons	Girma da ƙari
+pick_one_size_add_optional	Zaɓi girma ɗaya; ƙara ƙarin zaɓi har zuwa iyakar da kuka saita.
+a_note_per_dish	Bayani ga kowane abinci
+less_spicy_travels_with_the	“Rage yaji” yana tafiya tare da abincin da ya shafa.
+t4_occupied	T4 · Akwai mutum
+note_less_salt	Bayani: rage gishiri
+one_ticket_per_kitchen_station	Tikiti ɗaya ga kowane sashen kicin
+send_the_order_and_each	Tura oda kuma kowane sashe yana samun abincinsa kawai — da lamba ta kowace rana, da tebur, mai sabis da kowane bayani. Ba farashi ko kaɗan: kicin yana dafawa, teburin ciniki yana karɓar kuɗi.
+prints_itself	Yana bugawa da kansa
+send_and_the_ticket_prints	Tura, kuma tikitin yana bugawa a sashen da ya dace — babu wanda zai ɗauka.
+example_ticket	Misalin tikiti
+the_kitchen_sees_what_to	Kicin yana ganin abin da za a dafa yanzu
+on_the_kitchen_screen_tickets	A allon kicin tikiti suna tafiya Sabo → Ana girkawa → Ya shirya da taɓawa ɗaya. Tsofaffin tikiti suna ƙara zafin launi, “A dafa yanzu” yana ƙirga kowane abinci da ke jira, kuma babban abinci zai iya jira har sai an tura na farko.
+new	Sabo
+preparing	Ana girkawa
+ready	Ya shirya
+example_kitchen_screen	Misalin allon kicin
+settle_any_way_the_guest	Karɓi biya ta kowace hanya da baƙo ya biya
+cash_with_change_to_return	Tsabar kuɗi da canjin da za a mayar, UPI da adadin kuɗi tuni a cikin QR, biyan wani ɓangare, ko bashi a littafin bashin abokin ciniki. Raba ta abu, ta kujera ko daidai. Tebur ba ya zama babu kowa sai an biya lissafinsa.
+tips_stay_apart	Tukuici yana zama daban
+a_tip_is_recorded_on	Ana rubuta tukuici shi kaɗai — ba a taɓa haɗa shi da sayarwa ba.
+t4_bill_printed	T4 · An buga lissafi
+bill	Lissafi
+customer_paid_cash	Abokin ciniki ya biya (tsabar kuɗi)
+return_to_customer	Mayar wa abokin ciniki
+close_the_day_you_can	Rufe yini da za ku amince da shi
+count_the_drawer_against_the	Ƙirga aljihun kuɗi bisa kuɗin farawa, tsabar kuɗin da aka karɓa, tukuici da tsabar kuɗin da aka fitar — ana bayyana gibi ko rara. Buga takardar canjin aiki, sannan buɗe rahoton yini ta ma’aikaci, nau’in oda, sa’a da abinci, tare da sokewa, abincin kyauta da tukuici.
+shift_close	Rufe canjin aiki
+opening_float	Kuɗin farawa
+cash_taken	+ tsabar kuɗin da aka karɓa
+cash_tips	+ tukuicin tsabar kuɗi
+cash_paid_out	− tsabar kuɗin da aka fitar
+expected_in_the_drawer	Abin da ake tsammani a aljihun kuɗi
+counted	An ƙirga
+short	Gibi
+everything_else_the_floor_needs	DUK SAURAN ABIN DA FALO KE BUƘATA
+built_for_a_real_service	An gina shi don hidima ta gaske.
+the_changes_that_happen_every	Sauye-sauyen da ke faruwa a kowane abincin rana — ana gudanar da su a fili, tare da adana wane, yaushe da dalili.
+move_and_merge_tables	Matsar da haɗa teburori
+guests_change_tables_the_order	Baƙi suna canza tebur — oda da mintocinta suna tafiya tare da su. Teburori biyu, lissafi ɗaya.
+cancel_after_the_kot	Soke bayan KOT
+with_a_reason_cooked_or	Da dalili, an dafa ko ba a dafa ba, da wanda ya amince. Kicin yana samun takardar sokewa.
+complimentary_dishes	Abincin kyauta
+a_comp_stays_on_the	Abincin kyauta yana zama a lissafi a ₹ 0, da dalili da wanda ya amince.
+rights_per_person	Izini ga kowane mutum
+each_action_is_allowed_allowed	Kowane aiki an yarda, an yarda da PIN na manaja, ko ba a yarda ba — mutum da mutum.
+your_menu_your_words	Jerin abincinku, kalmominku
+search_by_name_or_short	Bincika da suna ko gajeren lamba, tare da wasu sunaye a wani harshe — “ptk” yana nemo Paneer tikka.
+area_prices_and_happy_hour	Farashin wuri da lokacin rangwame
+a_dearer_price_in_the	Farashi mafi tsada a ɗakin AC; jerin abincin karin kumallo da farashin lokacin rangwame bisa agogo.
+customer_khata	Littafin bashin abokin ciniki
+part_payments_and_due_go	Biyan wani ɓangare da bashi suna shiga asusun abokin ciniki a Abokan hulɗa, a biya daga baya.
+reports_that_answer_questions	Rahotanni masu amsa tambayoyi
+sales_by_staff_order_type	Sayarwa ta ma’aikaci, nau’in oda, sa’a da abinci — tare da jerin sokewa, abincin kyauta da tukuici.
+start_with_a_menu	FARA DA JERIN ABINCI
+your_menu_ready_in_minutes	Jerin abincinku, a shirye cikin mintoci.
+set_up_your_counter_and	Saita teburin cinikinku kuma zaɓi jerin abinci na farawa mai hotuna — sannan canza sunaye, farashi da lambobi zuwa naku. Kyauta don saukewa daga khaynjo.com.
+starter_menu	Jerin abinci na farawa
+khaynjo_starter_menu	Jerin abinci na farawa na Khaynjo
+world_cuisines_japanese_mexican	Abincin duniya — na Japan, Mexico, Italiya, Indiya, Thailand da ƙari — kowane abinci da hotonsa.
+n_14_dishes_11_categories	Abinci 14 · rukuni 11
+cafe_starter	Jerin farawa na gidan shayi
+tea_coffee_cold_drinks_bakery	Shayi, kofi, abubuwan sha masu sanyi, kayan burodi da abun ciye-ciye — a shirye don gidan shayi mai teburin ciniki.
+n_22_dishes_4_categories	Abinci 22 · rukuni 4
+photo_shelf	Ma’ajiyar hotuna
+khaynjo_dish_photos	Hotunan abincin Khaynjo
+the_full_public_photo_shelf	Cikakkiyar ma’ajiyar hotuna ta jama’a — zaɓi hoto don kowane abinci da kuka ƙara.
+n_1_459_dish_photos_25	Hotunan abinci 1,459 · nau’in girki 25
+internet_down	INTANET YA KATSE?
+the_internet_went_down_the	Intanet ya katse. Teburin ciniki bai tsaya ba.
+orders_kitchen_tickets_bills_and	Oda, tikitin kicin, lissafi da littafin yini suna zaune a na’urorinku. Idan intanet ya katse a tsakiyar abincin rana, babu abin da ke jiran sa a gidan abincinku — kuma babu asusu a wurinmu da za ku shiga.
+right_now_mid_lunch	Yanzu haka, tsakiyar abincin rana
+router_no_internet	Rauta: babu intanet
+counter_taking_orders_and_settling	Teburin ciniki: yana karɓar oda da biyan lissafi
+day_book_every_bill_saved	Littafin yini: an adana kowane lissafi a wannan na’ura
+captains_tablets_and_the_kitchen	Kwamfutocin hannu na shugabannin masu sabis da allon kicin: suna aiki tare a Wi-Fi naku
+eyebrow_pricing	FARASHI
+free_forever_on_your_devices	Kyauta har abada a na’urorinku.
+software_capability_is_not_what	Ƙarfin manhaja ba shi ne abin da muke sayarwa ba. Gudanar da duk Khaynjo a na’urorinku ba tare da kuɗi ba — babu abin da aka kulle a bayan tsari.
+khaynjo_on_your_devices	Khaynjo a na’urorinku
+forever	har abada
+every_feature	Kowane fasali
+floor_kitchen_billing_day_close	Falo, kicin, lissafi, rufe yini, rahotanni — cikakkiyar manhaja.
+no_per_seat_charge	Babu kuɗi kowace kujera
+no_charge_per_table_waiter	Babu kuɗi kowane tebur, mai sabis, oda ko na’ura.
+no_account_with_us	Babu asusu a wurinmu
+day_to_day_service_needs	Hidimar yau da kullum ba ta buƙatar rajista ko intanet.
+kumkaj_cloud_optional	Kumkaj Cloud · zaɓi ne
+yearly_cloud_if_you_want	Gajimare na shekara idan kuna so
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / shekara ba tare da haraji ba (haraji wajen biya). Na musamman ƙiyasin farashi ne — zai iya zama ƙasa da Steady ko sama da Priority. Khaynjo na gida yana zama kyauta har abada ko ta yaya.
+shop_plans_at_shop_sign	Sayi tsare-tsare a /shop · shiga a /account
+open_cloud_shop	Buɗe shagon gajimare
+questions	TAMBAYOYI
+asked_before_every_first_service	Ana tambaya kafin kowace hidima ta farko.
+do_i_need_the_internet	Ina buƙatar intanet?
+no_orders_kots_bills_and	A’a. Oda, KOT, lissafi da littafin yini suna aiki ba tare da intanet ba. Kuna buƙatar sa sau ɗaya don sauke manhajar kuma, idan kuna so, jerin abinci na farawa.
+where_are_my_bills_kept	Ina ake adana lissafina?
+on_your_own_device_in	A na’urarku, a shagonku — ba a sabobinmu ba. Yi kwafin ajiya daga Saituna kuma ajiye su duk inda kuke so.
+which_devices_does_it_run	A kan waɗanne na’urori yake aiki?
+android_phones_and_tablets_today	Wayoyin Android da kwamfutocin hannu a yanzu, daga Google Play. Manhajojin Windows da Linux suna kan hanya.
+does_it_print_kots_and	Yana buga KOT da lissafi?
+yes_on_thermal_printers_you	I — a firintocin zafi da kuka saita a Saituna → Firintoci, tikitin kicin ɗaya kowane sashe.
+can_my_staff_use_their	Ma’aikatana za su iya amfani da harshensu?
+yes_the_screens_come_in	I. Allunan suna zuwa a harsuna 115, Larabci da Urdu daga dama zuwa hagu, kuma sunayen abinci za su iya ɗaukar wasu sunaye a wani rubutu.
+what_does_it_cost	Nawa ne kuɗinsa?
+nothing_on_your_own_devices	Babu komai a na’urorinku — kowane fasali, har abada. Kumkaj Cloud na zaɓi na shekara ne: Steady / Swift / Priority (ko ƙiyasin farashi na musamman); buɗe /shop don saya.
+ready_for_lunch	KUN SHIRYA DON ABINCIN RANA?
+run_your_next_service_on	Gudanar da hidimarku ta gaba a Khaynjo.
+free_on_google_play_want	Kyauta a Google Play. Kuna son a nuna muku tukuna? Aiko mana saƙo a WhatsApp.
+privacy	Sirri
+terms	Sharuɗɗa
+cancellation	Sokewa
+photo_credits	Haƙƙin hotuna
+cloud_shop	Shagon gajimare
+account	Asusu
+cta_installers_note	Za a sanya manhajojin shigarwa a nan da zarar kowanne ya wuce gwajin shigarwa a sabuwar na’ura. Kafin nan, nemi nuni a WhatsApp.
+cta_whatsapp_soon	Layin nunin WhatsApp zai buɗe nan ba da jimawa ba. Saƙonku zai kasance: “{message}”.
+shelf_no_match	Babu ƙasa ko abinci da ya dace da wannan binciken.
+shelf_search_note	Bincike yana dakatar da jerin gwano; share shi don ci gaba, ko ya zauna a dakace kamar yadda kuka bar shi.
+floor_meta_min	minti {min}
+floor_meta_min_bill	minti {min} · ₹ {amount}
+floor_meta_paid	An biya ₹ {amount}
+acct_page_title	Asusu — Khaynjo
+acct_lede	Asusu ɗaya don shafin da manhajoji — fom iri ɗaya ko sababbi ne ku ko kun dawo.
+acct_email	Imel
+acct_name_optional	Suna (zaɓi ne)
+acct_password	Kalmar sirri
+acct_continue	Ci gaba
+acct_forgot	Kun manta kalmar sirri?
+acct_reset_hint	Za mu aiko da hanyar sake saitawa ta imel. Yi amfani da adireshin da kuka yi rajista da shi.
+acct_send_reset	Aika hanyar sake saitawa
+acct_cancel	Soke
+acct_or_continue	ko ci gaba da
+acct_phone	Waya
+acct_mobile	Lambar waya
+acct_send_sms	Aika lambar SMS
+acct_sms_code	Lambar SMS
+acct_confirm_code	Tabbatar da lamba
+acct_signed_in	An shiga
+acct_signed_in_as	An shiga a matsayin
+acct_status	Matsayi
+acct_sign_in_methods	Hanyoyin shiga
+acct_cloud_username	Sunan mai amfani na gajimare
+acct_plan	Tsari
+acct_resend_verify	Sake aika imel na tabbatarwa
+acct_sign_out	Fita
+acct_cloud_sandbox	Kumkaj Cloud (gwaji)
+acct_current_password	Kalmar sirri ta yanzu
+acct_email_for_password	Imel don shiga da kalmar sirri
+acct_new_password	Sabuwar kalmar sirri
+acct_confirm_new_password	Tabbatar da sabuwar kalmar sirri
+acct_add_way	Ƙara wata hanyar shiga
+acct_link_hint	Haɗa hanyoyi da asusu ɗaya domin ku iya dawo da shiga idan ɗaya ta kasa.
+acct_link_google	Haɗa Google
+acct_link_microsoft	Haɗa Microsoft
+acct_link_github	Haɗa GitHub
+acct_link_phone	Haɗa waya
+acct_send_sms_link	Aika SMS don haɗawa
+acct_confirm_link_phone	Tabbatar da haɗa waya
+shop_page_title	Shago — Khaynjo
+shop_lede	Tsare-tsaren gajimare na shekara — ana ƙara haraji wajen biya. Cikakkiyar manhajar Khaynjo a na’urorinku tana zama kyauta har abada, babu talla.
+shop_cart	Kwando
+shop_cart_empty_hint	Kwandonku babu komai. Ƙara Steady, Swift ko Priority.
+shop_checkout	Biya
+shop_clear	Share
+shop_checkout_hint	Biya yana shigar da ku a Asusu, sannan ya fara biyan kuɗi (kwaikwayon gwaji ko Paddle idan an saita makullai).
+acct_billing_hint	Tsare-tsaren shekara — ƙofar biya tana ƙara haraji wajen biya. Amfani na gida yana zama kyauta har abada. Na musamman ƙiyasin farashi ne (zai iya zama ƙasa da Steady ko sama da Priority).
+shop_cloud_plans	Tsare-tsaren gajimare
+acct_federated	Shiga ta wani asusu
+acct_err_invalid_email	Shigar da ingantaccen adireshin imel.
+acct_err_weak_password	Yi amfani da kalmar sirri mai haruffa 6 aƙalla.
+acct_err_wrong_password	Kalmar sirri ba daidai ba ce.
+acct_err_invalid_credential	Imel ko kalmar sirri ba daidai ba ne.
+acct_err_popup_closed	An rufe tagar shiga.
+acct_err_popup_cancelled	An soke shiga.
+acct_err_unauthorized_domain	Ba a ba wannan yanki izini don Firebase Auth ba.
+acct_err_method_disabled	Ba a kunna wannan hanyar shiga ba tukuna.
+acct_err_too_many	Ƙoƙari ya yi yawa. Sake gwadawa daga baya.
+acct_err_phone_format	Yi amfani da cikakkiyar lambar waya tare da lambar ƙasa (misali +91…).
+acct_err_sms_code	Lambar SMS ɗin ba daidai ba ce ko ta ƙare.
+acct_err_no_account	Babu asusu da wannan imel. Ci gaba don ƙirƙirar ɗaya, ko yi amfani da wata hanya.
+acct_err_recent_login	Don tsaro, sake shiga, sannan sake gwada wannan canjin.
+acct_err_credential_in_use	Wani asusu yana amfani da wannan hanyar shiga tuni.
+acct_err_email_in_use	Wani asusu yana amfani da wannan imel tuni.
+acct_err_already_linked	An riga an haɗa wannan hanya da wannan asusu.
+acct_err_exists_other_method	Akwai asusu tuni da wannan imel mai amfani da wata hanyar shiga daban. Shiga da waccan hanyar tukuna, sannan ku haɗa wannan daga shafin asusunku.
+acct_err_generic	An samu matsala.
+acct_method_password	Imel da kalmar sirri
+acct_pw_hint_change	Canza kalmar sirrinku. Za ku tabbatar da ta yanzu.
+acct_pw_hint_add	Ƙara kalmar sirri domin ku iya shiga da imel ma (yana da amfani idan wani mai samar da sabis ba ya samuwa).
+acct_pw_change	Canza kalmar sirri
+acct_pw_add	Ƙara kalmar sirri
+acct_billing_off	Ba a kunna biyan kuɗi a API na gajimare ba tukuna.
+acct_billing_no_provider	Ba a kunna ainihin mai karɓar biyan kuɗi a API na gajimare ba (kwaikwayo kawai na gida ne).
+price_quote	Ƙiyasin farashi
+price_per_year	₹{amount}/shekara ba haraji
+acct_pay_received	An karɓi biya — ana sabunta tsarinku…
+acct_pay_declined	An ƙi biyan kuɗi ko bai yi nasara ba
+acct_pay_failed_detail	{detail}. Ba a canza tsarinku ba.
+acct_checkout_closed	An rufe biya — ba a kammala biyan kuɗi ba. Tsarinku bai canza ba.
+acct_checkout_failed	Biya bai yi nasara ba
+acct_pay_with	Biya da {provider}
+acct_plan_until	{plan} · har zuwa {date}
+acct_unavailable	Ba ya samuwa
+acct_continue_hint	Ci gaba da imel, mai samar da sabis, ko waya.
+acct_signed_in_fallback	(an shiga)
+acct_email_verified	An tabbatar da imel
+acct_email_unverified	Ba a tabbatar da imel ba tukuna — duba akwatin saƙonku
+acct_signed_in_phone	An shiga da waya
+acct_none_listed	Babu wanda aka jera tukuna
+acct_signed_in_status	Kun shiga.
+acct_created	An ƙirƙiri asusu. Duba imel ɗinku don tabbatarwa idan kun samu dama.
+acct_reset_sent	Idan akwai asusu na wannan imel, hanyar sake saitawa tana kan hanya. Duba akwatin saƙonku.
+acct_another_method	wata hanya
+acct_exists_via	Akwai asusu na {email} tuni ta {method}. Shiga ta waccan hanyar tukuna, sannan ku haɗa wannan mai samar da sabis daga shafin asusunku.
+acct_enter_current_pw	Shigar da kalmar sirrinku ta yanzu.
+acct_relogin_retry	Fita ku sake shiga, sannan ku sake gwadawa.
+acct_pw_mismatch	Sabuwar kalmar sirri da tabbatarwa ba su yi daidai ba.
+acct_pw_updated	An sabunta kalmar sirri.
+acct_enter_email_pw	Shigar da imel da za ku yi amfani da shi wajen shiga da kalmar sirri.
+acct_pw_added	An ƙara kalmar sirri. Yanzu kuna iya shiga da imel ma.
+acct_method_linked	An haɗa hanyar shiga.
+acct_phone_linked	An haɗa waya da wannan asusu.
+acct_verify_sent	An aika imel na tabbatarwa — duba akwatin saƙonku.
+shop_pricing_soon	Farashi na nan tafe
+shop_request_quote	Nemi ƙiyasin farashi
+shop_add_to_cart	Saka a kwando
+shop_notify_later	Sanar da ni daga baya
+shop_included	An haɗa
+shop_in_cart	{plan} yana cikin kwandonku.
+shop_remove	Cire
+shop_cart_is_empty	Kwando babu komai.
+shop_prices_unpublished	Ba a wallafa farashin saye-da-kanka na wannan samfuri ba tukuna. Nemi ƙiyasin farashi na musamman ko ku dawo daga baya.
+shop_cart_cleared	An share kwando.
+plan_free_title	Kyauta har abada
+plan_free_blurb	Cikakken samfuri na gida a na’urorinku. Babu kuɗin gajimare.
+plan_steady_blurb	Gajimare kai tsaye · 10 GB · ƙaramin saurin watsawa
+plan_swift_blurb	Gajimare kai tsaye · 25 GB · matsakaicin saurin watsawa
+plan_priority_blurb	Gajimare kai tsaye · 50 GB · mafi girman saurin watsawa na yau da kullum
+plan_custom_title	Na musamman
+plan_custom_blurb	Adadi da saurin watsawa da aka amince. Ƙiyasin farashi zai iya zama ƙasa da Steady ko sama da Priority.

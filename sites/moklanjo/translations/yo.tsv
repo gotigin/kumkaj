@@ -1,254 +1,254 @@
 # Yoruba — Yorùbá (yo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Àpẹẹrẹ
+length	Gígùn
+download_free	Gbà á sílẹ̀ lọ́fẹ̀ẹ́
+whatsapp_for_a_demo	Àfihàn lórí WhatsApp
+free_on_android_windows_and	Ọ̀fẹ́ lórí Android, Windows àti Linux.
+courier_operating_system	ètò ìṣàkóso iṣẹ́ ìfiránṣẹ́ ẹrù
+parcel_journey	ÌRÌN-ÀJÒ ẸRÙ
+walk_in	Ìbẹ̀wò
+weigh	Ìwọ̀n
+price	Iye owó
+label	Àmì
+hand_over	Ìfilélọ́wọ́
+track	Ìtọpinpin
+offline	Láìsí íntánẹ́ẹ̀tì
+start	Bẹ̀rẹ̀
+moklanjo_courier_operating_system	MOKLANJO · ÈTÒ ÌṢÀKÓSO IṢẸ́ ÌFIRÁNṢẸ́ ẸRÙ
+book_move_and_settle_every	Forúkọ sílẹ̀, gbé e lọ, kí ẹ sì parí ìṣirò ẹrù kọ̀ọ̀kan — ètò ìfiránṣẹ́ ẹrù kan lórí ẹ̀rọ yín.
+parties_books_cod_labels_awb	Àwọn alájọṣòwò, ìwé ìṣirò, COD, àmì, àkójọ nọ́ńbà AWB, ìtọpinpin, àwọn olùfijíṣẹ́ àti ìwé-owó — gbogbo ìyípo láti kántà títí dé ìparí ìṣirò, pẹ̀lú íntánẹ́ẹ̀tì tàbí láìsí. Ọ̀fẹ́ lórí ẹ̀rọ yín.
+the_walk_in_loop	ÌYÍPO OLÙBẸ̀WÒ
+actual_and_volumetric_side_by	Ìwúwo gidi àti ìwúwo ìtóbi, ẹ̀gbẹ́ sí ẹ̀gbẹ́.
+charge	Gba owó
+your_rate_card_cash_or	Káàdì iye owó yín, owó ọwọ́ tàbí àkáǹtì.
+next_booking	Ìforúkọsílẹ̀ tó kàn
+one_tap_clears_the_counter	Ìtẹ̀ kan ń pa kántà mọ́ fún olùbẹ̀wò tó kàn.
+scroll_the_parcel_journey_rail	Ẹ yí i lọ sísàlẹ̀ — ọ̀pá ìrìn-àjò ẹrù lókè ń fi ibi tí ẹ dé nínú ìtàn hàn.
+n_2_weigh_it_right	2 · Ẹ WỌN Ọ́N DÁADÁA
+actual_or_volumetric_whichever_is	Ìwúwo gidi tàbí ìwúwo ìtóbi — èyí tí ó bá pọ̀ jù, tí a yí sókè bí ẹ ṣe fẹ́.
+try_a_box	Gbìyànjú àpótí kan
+domestic	Nínú orílẹ̀-èdè
+international	Ilẹ̀ òkèèrè
+breadth	Fífẹ̀
+height	Gíga
+weight_on_the_scale	Ìwúwo lórí ìwọ̀n
+chargeable_weight	ÌWÚWO TÍ A Ó GBA OWÓ LÉ
+the_box_s_size_sets	Ìtóbi àpótí ló ń pinnu owó.
+higher_of_the_two_rounded	Èyí tí ó pọ̀ jù nínú méjèèjì, tí a yí sókè sí 0.5 kg tó kàn.
+in_the_app_the_divisor	Nínú áàpù, ṣọ́ọ̀bù ló ń ṣètò olùpín, ìgbésẹ̀ ìyísókè àti àwọn ìwọ̀n yín (cm tàbí ínṣì, kg tàbí lb). Bọ́tìnnì Ilẹ̀ òkèèrè ń lo ÷6000 fún ìforúkọsílẹ̀ kan láìfọwọ́kan Ètò.
+n_3_price_it	3 · Ẹ FI IYE OWÓ SÍ I
+your_rate_cards_your_party	Káàdì iye owó yín, iye owó àwọn alájọṣòwò yín — àti èrè yín lórí ìwé ẹrù kọ̀ọ̀kan.
+rate_card	Káàdì iye owó
+zone_service	Agbègbè · iṣẹ́
+first_0_5_kg	0.5 kg àkọ́kọ́
+each_0_5_kg	0.5 kg kọ̀ọ̀kan
+local_surface	Àdúgbò · Ojú ọ̀nà
+within_state_express	Nínú ìpínlẹ̀ · Kíákíá
+metro_air	Ìlú ńlá · Ojú òfuurufú
+zone_service_weight_slab	Agbègbè × iṣẹ́ × ìpele ìwúwo
+first_slab_and_each_extra	Ìpele àkọ́kọ́ àti ìpele àfikún kọ̀ọ̀kan, fún agbègbè àti iṣẹ́ kọ̀ọ̀kan.
+a_consignor_s_own_card	Káàdì olùfiránṣẹ́ fúnra rẹ̀
+regular_senders_get_their_rates	Àwọn olùfiránṣẹ́ déédéé ń rí iye owó tiwọn; káàdì àkọ́kọ́ ń bo gbogbo àwọn yòókù.
+margin_at_the_desk	Èrè ní kántà
+your_sell_price_against_the	Iye owó tí ẹ ń tà ní ìfiwéra pẹ̀lú iye owó akẹ́rù, lórí ìwé ẹrù kọ̀ọ̀kan.
+n_4_label_it	4 · Ẹ FI ÀMÌ SÍ I
+awb_from_your_own_number	AWB láti inú àkójọ nọ́ńbà yín. Fi àmì sí i, ka á, wá a rí.
+number_pools_per_carrier	Àkójọ nọ́ńbà fún akẹ́rù kọ̀ọ̀kan
+enter_each_carrier_s_start	Tẹ ìtẹ̀léra ìbẹ̀rẹ̀–òpin akẹ́rù kọ̀ọ̀kan lẹ́ẹ̀kan; ìforúkọsílẹ̀ kọ̀ọ̀kan ń mú nọ́ńbà tó kàn.
+code_128_labels	Àmì Code 128
+the_awb_goes_on_the	AWB ń lọ sórí àpótí gẹ́gẹ́ bí bákóòdù àti ní nọ́ńbà lásán.
+scan_to_find	Ka á láti wá a
+scan_a_label_to_open	Ka àmì kan láti ṣí ìwé ẹrù rẹ̀ kí ẹ sì ṣe ohun tí ó yẹ.
+n_5_hand_over	5 · ÌFILÉLỌ́WỌ́
+hand_it_to_a_carrier	Ẹ fi lé akẹ́rù lọ́wọ́, tàbí kí ẹ rán olùfijíṣẹ́ yín. Ètò kan náà.
+into_a_carrier_bag	Sínú àpò akẹ́rù
+the_manifest_holds_exactly_the	Àkọsílẹ̀ ẹrù ní àwọn ẹrù tí ẹ yàn gan-an nínú — gbogbo wọn tàbí kò sí ọ̀kan. Ẹrù tí a forúkọ rẹ̀ sílẹ̀ pẹ̀lú akẹ́rù mìíràn kò lè wọ inú àpò yìí.
+onto_your_own_rider_s	Sínú ìrìn olùfijíṣẹ́ yín
+pick_the_parcels_print_the	Ẹ yan àwọn ẹrù, ẹ tẹ ìwé ìrìn jáde, olùfijíṣẹ́ yóò sì ṣiṣẹ́ láti inú áàpù kan náà ní ipò olùfijíṣẹ́ — pẹ̀lú ẹ̀rí ìfijíṣẹ́.
+n_6_track_and_prove	6 · ÌTỌPINPIN ÀTI Ẹ̀RÍ
+every_move_recorded_and_only	A ń kọ gbogbo ìgbésẹ̀ sílẹ̀ — àti àwọn ìgbésẹ̀ tí ó bọ́gbọ́n mu nìkan.
+booked	A ti forúkọ sílẹ̀
+with_carrier	Lọ́wọ́ akẹ́rù
+out_for_delivery	Ó wà lọ́nà ìfijíṣẹ́
+delivered	A ti fi jíṣẹ́
+booked_with_carrier_out_for	A ti forúkọ sílẹ̀ → Lọ́wọ́ akẹ́rù → Ó wà lọ́nà ìfijíṣẹ́ → A ti fi jíṣẹ́
+failed	Ó kùnà
+reason_out_again_or_return	→ ìdí → ó tún jáde, tàbí ó padà sọ́dọ̀ olùfiránṣẹ́.
+impossible_moves_refused	A kọ àwọn ìgbésẹ̀ tí kò ṣeé ṣe
+delivered_returned_and_cancelled	A ti fi jíṣẹ́, a ti dá a padà àti a ti fagilé jẹ́ òpin.
+proof_of_delivery	Ẹ̀rí ìfijíṣẹ́
+a_photo_and_the_receiver	Àwòrán àti ìbuwọ́lù olùgbà lórí ìwé ẹrù.
+failed_deliveries	Ìfijíṣẹ́ tí ó kùnà
+reasons_attempts_out_again_or	Àwọn ìdí, ìgbìyànjú, ó tún jáde, tàbí ó padà sọ́dọ̀ olùfiránṣẹ́.
+n_7_money_comes_home	7 · OWÓ Ń BỌ̀ WÁLÉ
+cod_you_can_see_expected	COD tí ẹ lè rí: èyí tí a retí, èyí tí a ti kó wá, èyí tí a jẹ olùfiránṣẹ́ kọ̀ọ̀kan.
+rider_cash_end_of_run	Owó ọwọ́ olùfijíṣẹ́, òpin ìrìn
+rider	Olùfijíṣẹ́
+expected	Èyí tí a retí
+handed_in	A ti kó o wá
+a_14_drops	A · ìfijíṣẹ́ 14
+b_9_drops	B · ìfijíṣẹ́ 9
+short_200_on_rider_b	Àìtó ₹ 200 lọ́dọ̀ Olùfijíṣẹ́ B — a dárúkọ rẹ̀, kò sọnù sínú àpapọ̀.
+cod_register	Ìwé àkọsílẹ̀ COD
+collected_against_paid_out_per	Èyí tí a gbà ní ìfiwéra pẹ̀lú èyí tí a san, fún olùfiránṣẹ́ kọ̀ọ̀kan, pẹ̀lú ìdìpọ̀ owó tí a fi ránṣẹ́.
+rider_settlement	Ìṣirò olùfijíṣẹ́
+expected_against_handed_in_and	Èyí tí a retí ní ìfiwéra pẹ̀lú èyí tí a kó wá, àti ìwé kọ́míṣọ̀n.
+books_that_close	Ìwé ìṣirò tí ó ń parí
+day_book_month_bill_per	Ìwé àkọọ́lẹ̀ ọjọ́, ìwé-owó oṣù fún àkáǹtì kọ̀ọ̀kan, àti àkópọ̀ GST ní CSV fún oníṣirò owó yín.
+n_8_internet_down	8 · ÍNTÁNẸ́Ẹ̀TÌ LỌ?
+keep_booking	Ẹ máa forúkọ sílẹ̀ lọ.
+booking_labels_scanning_cod_and	Ìforúkọsílẹ̀, àmì, kíka bákóòdù, COD àti ìwé ìṣirò ń ṣiṣẹ́ lórí ẹ̀rọ yín. Nígbà tí íntánẹ́ẹ̀tì bá lọ, kò sí ohun tí ó ń dúró dè é ní kántà.
+office_router_no_internet	Rọ́útà ọ́fíìsì: kò sí íntánẹ́ẹ̀tì
+desk_still_booking	Tábìlì iṣẹ́: ó ń forúkọ sílẹ̀ síbẹ̀
+second_counter_and_rider_phone	Kántà kejì àti fóònù olùfijíṣẹ́: wọ́n so pọ̀ lórí Wi-Fi ọ́fíìsì
+free_forever_on_your_devices	Ọ̀fẹ́ títí láé lórí ẹ̀rọ yín
+nothing_per_rider_user_or	Kò sí owó fún olùfijíṣẹ́, olùmúlò tàbí ẹrù kọ̀ọ̀kan. Kumkaj Cloud àṣàyàn: Steady ₹6k · Swift ₹12k · Priority ₹24k/ọdún láìsí owó orí — /shop.
+n_9_start	9 · BẸ̀RẸ̀
+one_courier_os_your_parcels	Ètò ìfiránṣẹ́ ẹrù kan. Ẹrù yín. Ìwé ìṣirò yín.
+moklanjo_is_a_complete_courier	Moklanjo jẹ́ ètò ìṣàkóso iṣẹ́ ìfiránṣẹ́ ẹrù pípé lábẹ́ Kumkaj — Android, Windows àti Linux. Àwọn olùfijíṣẹ́ ń lo áàpù kan náà ní ipò olùfijíṣẹ́.
+trademark	ÀMÌ-ÌDÁNIMỌ̀ ÒWÒ
+memon_for_find_it_pronounced	Ọ̀rọ̀ Memon fún “wá a rí” · a ń pè é ní go-tee-geen
+company	ILÉ-IṢẸ́
+brand	ORÚKỌ ỌJÀ
+concrete_business_operating_system	Àwọn áàpù ètò ìṣàkóso òwò tí ó ṣe kókó
+product	ỌJÀ
+courier_operating_system_under	Ètò ìṣàkóso iṣẹ́ ìfiránṣẹ́ ẹrù lábẹ́ Kumkaj
+privacy	Àṣírí
+terms	Àwọn òfin
+cancellation	Ìfagilé
+cloud_shop	Ṣọ́ọ̀bù ìkùukùu
+account	Àkáǹtì
+weigh_it_right	Ẹ wọn ọ́n dáadáa
+price_it	Ẹ fi iye owó sí i
+label_it	Ẹ fi àmì sí i
+track_and_prove	Ìtọpinpin àti ẹ̀rí
+money_comes_home	Owó ń bọ̀ wálé
+internet_down	Íntánẹ́ẹ̀tì lọ
+bead_hand	Ìfilé
+bead_offline_short	Kò sí net
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Lórí ìwọ̀n: {kg} kg
+weight_scale_wins	Ìwúwo lórí ìwọ̀n ló ń pinnu owó.
+cta_installers_note	A ó gbé àwọn fáìlì ìfisílẹ̀ sí ibí ní kété tí ọ̀kọ̀ọ̀kan bá yege ìfisílẹ̀ lórí ẹ̀rọ tuntun. Títí di ìgbà náà, béèrè àfihàn lórí WhatsApp.
+cta_whatsapp_soon	Ìlà àfihàn WhatsApp yóò ṣí láìpẹ́. Ọ̀rọ̀ yín yóò kà pé: “{message}”.
+acct_page_title	Àkáǹtì — Moklanjo
+acct_lede	Àkáǹtì kan fún ojú òpó àti àwọn áàpù — fọ́ọ̀mù kan náà bóyá ẹ jẹ́ tuntun tàbí ẹ ń padà bọ̀.
+acct_email	Ímeèlì
+acct_name_optional	Orúkọ (àṣàyàn)
+acct_password	Ọ̀rọ̀ ìgbaniwọlé
+acct_continue	Tẹ̀síwájú
+acct_forgot	Ẹ gbàgbé ọ̀rọ̀ ìgbaniwọlé?
+acct_reset_hint	A ó fi ìjápọ̀ àtúntò ránṣẹ́ sí ímeèlì yín. Lo àdírẹ́sì kan náà tí ẹ fi forúkọsílẹ̀.
+acct_send_reset	Fi ìjápọ̀ àtúntò ránṣẹ́
+acct_cancel	Fagilé
+acct_or_continue	tàbí tẹ̀síwájú pẹ̀lú
+acct_phone	Fóònù
+acct_mobile	Nọ́ńbà fóònù
+acct_send_sms	Fi kóòdù SMS ránṣẹ́
+acct_sms_code	Kóòdù SMS
+acct_confirm_code	Jẹ́rìí kóòdù
+acct_signed_in	Ẹ ti wọlé
+acct_signed_in_as	Ẹ wọlé gẹ́gẹ́ bí
+acct_status	Ipò
+acct_sign_in_methods	Àwọn ọ̀nà ìwọlé
+acct_cloud_username	Orúkọ olùmúlò ìkùukùu
+acct_plan	Ètò
+acct_resend_verify	Tún fi ímeèlì ìjẹ́rìísí ránṣẹ́
+acct_sign_out	Jáde
+acct_cloud_sandbox	Kumkaj Cloud (ìdánwò)
+acct_current_password	Ọ̀rọ̀ ìgbaniwọlé lọ́wọ́lọ́wọ́
+acct_email_for_password	Ímeèlì fún ìwọlé pẹ̀lú ọ̀rọ̀ ìgbaniwọlé
+acct_new_password	Ọ̀rọ̀ ìgbaniwọlé tuntun
+acct_confirm_new_password	Jẹ́rìí ọ̀rọ̀ ìgbaniwọlé tuntun
+acct_add_way	Fi ọ̀nà ìwọlé mìíràn kún un
+acct_link_hint	So àwọn ọ̀nà pọ̀ mọ́ àkáǹtì kan náà kí ẹ lè rí ìwọlé gbà padà bí ọ̀kan bá kùnà.
+acct_link_google	So Google pọ̀
+acct_link_microsoft	So Microsoft pọ̀
+acct_link_github	So GitHub pọ̀
+acct_link_phone	So fóònù pọ̀
+acct_send_sms_link	Fi SMS ránṣẹ́ láti so pọ̀
+acct_confirm_link_phone	Jẹ́rìí kí ẹ sì so fóònù pọ̀
+shop_page_title	Ṣọ́ọ̀bù — Moklanjo
+shop_lede	Àwọn ètò ìkùukùu ọdọọdún — a ń fi owó orí kún un nígbà ìsanwó. Áàpù Moklanjo pípé lórí ẹ̀rọ yín wà ní ọ̀fẹ́ títí láé, láìsí ìpolówó.
+shop_cart	Agbọ̀n
+shop_cart_empty_hint	Agbọ̀n yín ṣófo. Fi Steady, Swift tàbí Priority kún un.
+shop_checkout	Sanwó
+shop_clear	Pa rẹ́
+shop_checkout_hint	Ìsanwó ń mú yín wọlé ní Àkáǹtì, lẹ́yìn náà ó bẹ̀rẹ̀ ìsanwó (àfarawé ìdánwò tàbí Paddle nígbà tí a bá ṣètò kọ́kọ́rọ́).
+acct_billing_hint	Àwọn ètò ọdọọdún — ẹnu-ọ̀nà ìsanwó ń fi owó orí kún un nígbà ìsanwó. Lílò lórí ẹ̀rọ yín wà ní ọ̀fẹ́ títí láé. Àdáni jẹ́ ìdíyelé (ó lè kéré sí Steady tàbí ju Priority lọ).
+shop_cloud_plans	Àwọn ètò ìkùukùu
+acct_federated	Ìwọlé pẹ̀lú àkáǹtì mìíràn
+acct_err_invalid_email	Tẹ àdírẹ́sì ímeèlì tí ó tọ́.
+acct_err_weak_password	Lo ọ̀rọ̀ ìgbaniwọlé tí ó ní ó kéré tán lẹ́tà 6.
+acct_err_wrong_password	Ọ̀rọ̀ ìgbaniwọlé kò tọ́.
+acct_err_invalid_credential	Ímeèlì tàbí ọ̀rọ̀ ìgbaniwọlé kò tọ́.
+acct_err_popup_closed	A ti pa fèrèsé ìwọlé.
+acct_err_popup_cancelled	A ti fagilé ìwọlé.
+acct_err_unauthorized_domain	Orúkọ ààyè yìí kò ní àṣẹ fún Firebase Auth.
+acct_err_method_disabled	A kò tí ì mú ọ̀nà ìwọlé yẹn ṣiṣẹ́.
+acct_err_too_many	Ìgbìyànjú ti pọ̀ jù. Gbìyànjú lẹ́ẹ̀kan sí i nígbà mìíràn.
+acct_err_phone_format	Lo nọ́ńbà fóònù kíkún pẹ̀lú kóòdù orílẹ̀-èdè (fún àpẹẹrẹ +91…).
+acct_err_sms_code	Kóòdù SMS yẹn kò tọ́ tàbí ó ti parí.
+acct_err_no_account	Kò sí àkáǹtì pẹ̀lú ímeèlì yẹn. Tẹ̀síwájú láti ṣẹ̀dá ọ̀kan, tàbí lo ọ̀nà mìíràn.
+acct_err_recent_login	Fún ààbò, wọlé lẹ́ẹ̀kan sí i, lẹ́yìn náà gbìyànjú àyípadà yìí lẹ́ẹ̀kan sí i.
+acct_err_credential_in_use	Àkáǹtì mìíràn ti ń lo ọ̀nà ìwọlé yẹn.
+acct_err_email_in_use	Àkáǹtì mìíràn ti ń lo ímeèlì yẹn.
+acct_err_already_linked	A ti so ọ̀nà yẹn pọ̀ mọ́ àkáǹtì yìí tẹ́lẹ̀.
+acct_err_exists_other_method	Àkáǹtì kan ti wà pẹ̀lú ímeèlì yìí tí ó ń lo ọ̀nà ìwọlé mìíràn. Ẹ wọlé pẹ̀lú ọ̀nà yẹn ná, lẹ́yìn náà ẹ so èyí pọ̀ láti ojú-ìwé àkáǹtì yín.
+acct_err_generic	Nǹkan kan ṣàṣìṣe.
+acct_method_password	Ímeèlì àti ọ̀rọ̀ ìgbaniwọlé
+acct_pw_hint_change	Ẹ yí ọ̀rọ̀ ìgbaniwọlé yín padà. Ẹ ó fi èyí tí ẹ ń lò báyìí jẹ́rìí sí i.
+acct_pw_hint_add	Ẹ fi ọ̀rọ̀ ìgbaniwọlé kún un kí ẹ lè wọlé pẹ̀lú ímeèlì pẹ̀lú (ó wúlò bí olùpèsè ìwọlé kan kò bá sí).
+acct_pw_change	Yí ọ̀rọ̀ ìgbaniwọlé padà
+acct_pw_add	Fi ọ̀rọ̀ ìgbaniwọlé kún un
+acct_billing_off	A kò tí ì mú ìsanwó ṣiṣẹ́ lórí API ìkùukùu.
+acct_billing_no_provider	A kò mú olùpèsè ìsanwó gidi kankan ṣiṣẹ́ lórí API ìkùukùu (àfarawé nìkan ló wà lórí ẹ̀rọ yín).
+price_quote	Ìdíyelé
+price_per_year	₹{amount}/ọdún láìsí owó orí
+acct_pay_received	A ti gba owó — à ń ṣe àtúnṣe ètò yín…
+acct_pay_declined	A kọ ìsanwó náà tàbí ó kùnà
+acct_pay_failed_detail	{detail}. A kò yí ètò yín padà.
+acct_checkout_closed	A ti pa ìsanwó — kò sí ìsanwó tí ó parí. Ètò yín kò yí padà.
+acct_checkout_failed	Ìsanwó kùnà
+acct_pay_with	San pẹ̀lú {provider}
+acct_plan_until	{plan} · títí di {date}
+acct_unavailable	Kò sí
+acct_continue_hint	Ẹ tẹ̀síwájú pẹ̀lú ímeèlì, olùpèsè ìwọlé, tàbí fóònù.
+acct_signed_in_fallback	(ẹ ti wọlé)
+acct_email_verified	A ti jẹ́rìí ímeèlì
+acct_email_unverified	A kò tí ì jẹ́rìí ímeèlì — ẹ wo àpótí ímeèlì yín
+acct_signed_in_phone	Ẹ wọlé pẹ̀lú fóònù
+acct_none_listed	Kò sí èyí tí a kọ sílẹ̀ síbẹ̀
+acct_signed_in_status	Ẹ ti wọlé.
+acct_created	A ti ṣẹ̀dá àkáǹtì. Ẹ wo ímeèlì yín láti jẹ́rìí sí i nígbà tí ẹ bá ráyè.
+acct_reset_sent	Bí àkáǹtì kan bá wà fún ímeèlì yẹn, ìjápọ̀ àtúntò ti ń bọ̀. Ẹ wo àpótí ímeèlì yín.
+acct_another_method	ọ̀nà mìíràn
+acct_exists_via	Àkáǹtì fún {email} ti wà nípasẹ̀ {method}. Ẹ wọlé ní ọ̀nà yẹn ná, lẹ́yìn náà ẹ so olùpèsè yìí pọ̀ láti ojú-ìwé àkáǹtì yín.
+acct_enter_current_pw	Tẹ ọ̀rọ̀ ìgbaniwọlé yín lọ́wọ́lọ́wọ́.
+acct_relogin_retry	Ẹ jáde kí ẹ sì wọlé lẹ́ẹ̀kan sí i, lẹ́yìn náà ẹ gbìyànjú lẹ́ẹ̀kan sí i.
+acct_pw_mismatch	Ọ̀rọ̀ ìgbaniwọlé tuntun àti ìjẹ́rìísí kò bá ara wọn mu.
+acct_pw_updated	A ti ṣe àtúnṣe ọ̀rọ̀ ìgbaniwọlé.
+acct_enter_email_pw	Tẹ ímeèlì tí ẹ ó lò fún ìwọlé pẹ̀lú ọ̀rọ̀ ìgbaniwọlé.
+acct_pw_added	A ti fi ọ̀rọ̀ ìgbaniwọlé kún un. Ẹ lè wọlé pẹ̀lú ímeèlì báyìí pẹ̀lú.
+acct_method_linked	A ti so ọ̀nà ìwọlé pọ̀.
+acct_phone_linked	A ti so fóònù pọ̀ mọ́ àkáǹtì yìí.
+acct_verify_sent	A ti fi ímeèlì ìjẹ́rìísí ránṣẹ́ — ẹ wo àpótí ímeèlì yín.
+shop_pricing_soon	Iye owó ń bọ̀ láìpẹ́
+shop_request_quote	Béèrè ìdíyelé
+shop_add_to_cart	Fi sínú agbọ̀n
+shop_notify_later	Sọ fún mi nígbà mìíràn
+shop_included	Ó wà nínú rẹ̀
+shop_in_cart	{plan} wà nínú agbọ̀n yín.
+shop_remove	Yọ kúrò
+shop_cart_is_empty	Agbọ̀n ṣófo.
+shop_prices_unpublished	A kò tí ì gbé iye owó ìrara-ẹni jáde fún ọjà yìí. Ẹ béèrè ìdíyelé àdáni tàbí kí ẹ padà wá nígbà mìíràn.
+shop_cart_cleared	A ti pa agbọ̀n rẹ́.
+plan_free_title	Ọ̀fẹ́ títí láé
+plan_free_blurb	Ọjà pípé lórí ẹ̀rọ yín. Kò sí owó ìkùukùu.
+plan_steady_blurb	Ìkùukùu alààyè · 10 GB · ìyára gbígbé dátà tí ó kéré
+plan_swift_blurb	Ìkùukùu alààyè · 25 GB · ìyára gbígbé dátà àárín
+plan_priority_blurb	Ìkùukùu alààyè · 50 GB · ìyára gbígbé dátà tí ó ga jùlọ
+plan_custom_title	Àdáni
+plan_custom_blurb	Ìpín àti ìyára gbígbé dátà tí a jọ fohùn ṣọ̀kan lé. Ìdíyelé lè kéré sí Steady tàbí ju Priority lọ.
