@@ -1,280 +1,280 @@
 # Slovenian — Slovenščina (sl). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Primer
+free	Prosta
+photo_coming	Fotografija kmalu
+get_it_on_google_play	Prenesite iz Google Play
+whatsapp_for_a_demo	Predstavitev prek WhatsAppa
+menus	Meniji
+how_it_works	Kako deluje
+features	Funkcije
+offline	Brez interneta
+pricing	Cene
+faq	Pogosta vprašanja
+login	Prijava
+get_it_free	Prenesite brezplačno
+restaurant_pos_free_forever	Blagajna za restavracije · za vedno brezplačno
+lunch_rush_no_internet_no	Opoldanska gneča. Brez interneta. Brez težav.
+khaynjo_runs_your_floor_kitchen	Khaynjo vodi vašo jedilnico, kuhinjo in pult na napravah, ki jih že imate — od mize do kuhinje in računa, z internetom ali brez njega.
+android_on_google_play_today	Android že danes v Google Play · paketi za Windows in Linux prihajajo.
+works_with_no_internet	Deluje brez interneta
+your_books_stay_on_your	Vaše knjige ostanejo na vaših napravah
+n_115_languages_on_screen	115 jezikov na zaslonu
+your_floor_at_a_glance	Vaša jedilnica na prvi pogled
+tap_a_table_to_walk	Tapnite mizo in jo popeljite skozi cel obisk. Iste barve in besede kot v aplikaciji — miza se sprosti šele, ko je račun plačan.
+every_country	VSAKA DRŽAVA
+every_country_at_your_counter	Vsaka država za vašim pultom
+one_famous_dish_from_every	Ena znana jed iz vsake države — angleško ime, ime v njeni pisavi in jed v angleščini. Te besede dajte na svoj meni. Svet teče naprej; ustavite ali poiščite, ko želite pogledati.
+find_a_country_or_dish	Poiščite državo ali jed — npr. India, biryani, Japan
+one_famous_dish_per_country	Ena znana jed na državo — parada obkroži ves svet.
+how_a_service_runs	KAKO POTEKA STREŽBA
+one_table_start_to_finish	Ena miza, od začetka do konca.
+watch_a_table_go_from	Poglejte, kako miza pride od »Sedli« do »Plačano« — isti koraki in barve, kot jih vaše osebje vidi v aplikaciji.
+occupied	Zasedena
+in_kitchen	V kuhinji
+food_ready	Jed pripravljena
+served	Postreženo
+bill_printed	Račun natisnjen
+paid	Plačano
+seat_the_table_take_the	Posedite goste, sprejmite naročilo
+mark_the_table_occupied_the	Mizo označite kot Zasedena, takoj ko gostje sedejo. Dodajte jedi, izberite velikost, dodajte priloge in vpišite opombo za kuhinjo — kar pri mizi.
+sizes_and_add_ons	Velikosti in dodatki
+pick_one_size_add_optional	Izberite eno velikost; dodajte neobvezne dodatke do meje, ki jo nastavite.
+a_note_per_dish	Opomba pri vsaki jedi
+less_spicy_travels_with_the	»Manj pekoče« potuje z jedjo, h kateri spada.
+t4_occupied	T4 · Zasedena
+note_less_salt	Opomba: manj soli
+one_ticket_per_kitchen_station	En bon na kuhinjsko postajo
+send_the_order_and_each	Pošljite naročilo in vsaka postaja dobi le svoje jedi — oštevilčene po dnevu, z mizo, natakarjem in vsako opombo. Nikoli cena: kuhinja kuha, pult zaračunava.
+prints_itself	Natisne se sam
+send_and_the_ticket_prints	Pošljite in bon se natisne na pravi postaji — nihče ga ne nosi.
+example_ticket	Primer bona
+the_kitchen_sees_what_to	Kuhinja vidi, kaj kuhati zdaj
+on_the_kitchen_screen_tickets	Na kuhinjskem zaslonu bone z enim dotikom premikate Novo → V pripravi → Pripravljeno. Starejši boni dobijo toplejšo barvo, »Kuhaj zdaj« šteje vsako čakajočo jed, glavne jedi pa lahko počakajo, da gredo predjedi.
+new	Novo
+preparing	V pripravi
+ready	Pripravljeno
+example_kitchen_screen	Primer kuhinjskega zaslona
+settle_any_way_the_guest	Zaračunajte, kakorkoli gost plača
+cash_with_change_to_return	Gotovina z vračilom, UPI z zneskom že v kodi QR, delno plačilo ali dolg v knjigi dolžnikov. Razdelite po postavki, po sedežu ali enakomerno. Miza se sprosti šele, ko je račun plačan.
+tips_stay_apart	Napitnine posebej
+a_tip_is_recorded_on	Napitnina se beleži posebej — nikoli se ne meša s prometom.
+t4_bill_printed	T4 · Račun natisnjen
+bill	Račun
+customer_paid_cash	Kupec je plačal (gotovina)
+return_to_customer	Vrniti kupcu
+close_the_day_you_can	Zaključek dneva, ki mu lahko zaupate
+count_the_drawer_against_the	Preštejte predal glede na začetni polog, prejeto gotovino, napitnine in izplačano gotovino — primanjkljaj ali presežek je jasno naveden. Natisnite poročilo izmene, nato odprite dnevno poročilo po zaposlenem, vrsti naročila, uri in jedi — s storni, brezplačnimi jedmi in napitninami.
+shift_close	Zaključek izmene
+opening_float	Začetni polog
+cash_taken	+ prejeta gotovina
+cash_tips	+ napitnine v gotovini
+cash_paid_out	− izplačana gotovina
+expected_in_the_drawer	Mora biti v predalu
+counted	Prešteto
+short	Primanjkljaj
+everything_else_the_floor_needs	VSE DRUGO, KAR POTREBUJE JEDILNICA
+built_for_a_real_service	Narejeno za pravo strežbo.
+the_changes_that_happen_every	Spremembe, ki se zgodijo vsako kosilo — urejene odkrito, z zapisom kdo, kdaj in zakaj.
+move_and_merge_tables	Premik in združevanje miz
+guests_change_tables_the_order	Gostje zamenjajo mizo — naročilo in njegove minute gredo z njimi. Dve mizi, en račun.
+cancel_after_the_kot	Stornacija po kuhinjskem bonu
+with_a_reason_cooked_or	Z razlogom, skuhano ali ne, in kdo je odobril. Kuhinja dobi bon za storno.
+complimentary_dishes	Brezplačne jedi
+a_comp_stays_on_the	Brezplačna jed ostane na računu za ₹ 0, z razlogom in odobriteljem.
+rights_per_person	Pravice po osebi
+each_action_is_allowed_allowed	Vsako dejanje je dovoljeno, dovoljeno s PIN-om vodje ali ni dovoljeno — oseba za osebo.
+your_menu_your_words	Vaš meni, vaše besede
+search_by_name_or_short	Iščite po imenu ali kratki kodi, z vzdevki v drugem jeziku — »ptk« najde Paneer tikka.
+area_prices_and_happy_hour	Cene po območjih in happy hour
+a_dearer_price_in_the	Višja cena v klimatizirani sobi; zajtrkovalni meniji in cene happy hour glede na uro.
+customer_khata	Knjiga dolžnikov
+part_payments_and_due_go	Delna plačila in dolgovi gredo na račun kupca v Partnerjih in se poravnajo pozneje.
+reports_that_answer_questions	Poročila, ki odgovarjajo na vprašanja
+sales_by_staff_order_type	Prodaja po zaposlenem, vrsti naročila, uri in jedi — s seznamom stornov, brezplačnih jedi in napitnin.
+start_with_a_menu	ZAČNITE Z MENIJEM
+your_menu_ready_in_minutes	Vaš meni, pripravljen v nekaj minutah.
+set_up_your_counter_and	Nastavite pult in izberite začetni meni s fotografijami — nato imena, cene in kode spremenite po svoje. Brezplačen prenos s khaynjo.com.
+starter_menu	Začetni meni
+khaynjo_starter_menu	Khaynjo začetni meni
+world_cuisines_japanese_mexican	Kuhinje sveta — japonska, mehiška, italijanska, indijska, tajska in druge — vsaka jed s svojo fotografijo.
+n_14_dishes_11_categories	14 jedi · 11 kategorij
+cafe_starter	Začetek za kavarno
+tea_coffee_cold_drinks_bakery	Čaj, kava, hladne pijače, pekovsko pecivo in prigrizki — pripravljeno za kavarno s pultom.
+n_22_dishes_4_categories	22 jedi · 4 kategorije
+photo_shelf	Polica s fotografijami
+khaynjo_dish_photos	Khaynjo fotografije jedi
+the_full_public_photo_shelf	Celotna javna polica s fotografijami — izberite sliko za vsako jed, ki jo dodate.
+n_1_459_dish_photos_25	1.459 fotografij jedi · 25 vrst kuhinje
+internet_down	NI INTERNETA?
+the_internet_went_down_the	Internet je izpadel. Pult ni.
+orders_kitchen_tickets_bills_and	Naročila, kuhinjski boni, računi in dnevnik so na vaših lastnih napravah. Ko internet sredi kosila izpade, nič v vaši restavraciji ne čaka nanj — in pri nas ni računa, v katerega bi se morali prijaviti.
+right_now_mid_lunch	Prav zdaj, sredi kosila
+router_no_internet	Usmerjevalnik: ni interneta
+counter_taking_orders_and_settling	Pult: sprejema naročila in zapira račune
+day_book_every_bill_saved	Dnevnik: vsak račun shranjen na tej napravi
+captains_tablets_and_the_kitchen	Tablice vodij strežbe in kuhinjski zaslon: delujejo skupaj v vašem lastnem omrežju Wi-Fi
+eyebrow_pricing	CENE
+free_forever_on_your_devices	Za vedno brezplačno na vaših napravah.
+software_capability_is_not_what	Ne prodajamo zmožnosti programske opreme. Celoten Khaynjo uporabljajte na svojih napravah brez stroškov — nič ni zaklenjeno za paketom.
+khaynjo_on_your_devices	Khaynjo na vaših napravah
+forever	za vedno
+every_feature	Vse funkcije
+floor_kitchen_billing_day_close	Jedilnica, kuhinja, zaračunavanje, zaključek dneva, poročila — celotna aplikacija.
+no_per_seat_charge	Brez plačila na mesto
+no_charge_per_table_waiter	Brez plačila na mizo, natakarja, naročilo ali napravo.
+no_account_with_us	Brez računa pri nas
+day_to_day_service_needs	Vsakodnevno delo ne potrebuje ne registracije ne interneta.
+kumkaj_cloud_optional	Kumkaj Cloud · po želji
+yearly_cloud_if_you_want	Letni oblak, če želite
+steady_6_000_swift_12	Steady ₹6.000 · Swift ₹12.000 · Priority ₹24.000 / leto brez davka (davek ob plačilu). Po meri je ponudba — lahko je pod Steady ali nad Priority. Lokalni Khaynjo v vsakem primeru ostane za vedno brezplačen.
+shop_plans_at_shop_sign	Paketi na /shop · prijava na /account
+open_cloud_shop	Odprite trgovino v oblaku
+questions	VPRAŠANJA
+asked_before_every_first_service	Postavljena pred vsako prvo strežbo.
+do_i_need_the_internet	Ali potrebujem internet?
+no_orders_kots_bills_and	Ne. Naročila, kuhinjski boni, računi in dnevnik delujejo brez interneta. Potrebujete ga enkrat za prenos aplikacije in, če želite, začetnega menija.
+where_are_my_bills_kept	Kje so shranjeni moji računi?
+on_your_own_device_in	Na vaši lastni napravi, v vašem lokalu — ne na naših strežnikih. Varnostne kopije naredite v Nastavitvah in jih hranite, kjer želite.
+which_devices_does_it_run	Na katerih napravah deluje?
+android_phones_and_tablets_today	Danes na telefonih in tablicah Android iz Google Play. Paketi za Windows in Linux so na poti.
+does_it_print_kots_and	Ali tiska kuhinjske bone in račune?
+yes_on_thermal_printers_you	Da — na termalnih tiskalnikih, ki jih nastavite v Nastavitve → Tiskalniki, en kuhinjski bon na postajo.
+can_my_staff_use_their	Ali lahko moje osebje uporablja svoj jezik?
+yes_the_screens_come_in	Da. Zasloni so v 115 jezikih, arabščina in urdujščina od desne proti levi, imena jedi pa imajo lahko vzdevke v drugi pisavi.
+what_does_it_cost	Koliko stane?
+nothing_on_your_own_devices	Na vaših napravah nič — vse funkcije, za vedno. Neobvezni Kumkaj Cloud je letni Steady / Swift / Priority (ali ponudba po meri); za nakup odprite /shop.
+ready_for_lunch	PRIPRAVLJENI NA KOSILO?
+run_your_next_service_on	Naslednjo izmeno opravite s Khaynjo.
+free_on_google_play_want	Brezplačno v Google Play. Najprej predstavitev? Pišite nam na WhatsApp.
+privacy	Zasebnost
+terms	Pogoji
+cancellation	Odpoved
+photo_credits	Avtorji fotografij
+cloud_shop	Trgovina v oblaku
+account	Moj račun
+cta_installers_note	Namestitveni paketi bodo tukaj, ko vsak opravi namestitev na čistem računalniku. Do takrat prosite za predstavitev na WhatsAppu.
+cta_whatsapp_soon	Linija za predstavitve na WhatsAppu se kmalu odpre. Vaše sporočilo se bo glasilo: »{message}«.
+shelf_no_match	Iskanju ne ustreza nobena država ali jed.
+shelf_search_note	Iskanje ustavi parado; izbrišite ga za nadaljevanje, sicer ostane ustavljena, kot ste jo pustili.
+floor_meta_min	{min} min.
+floor_meta_min_bill	{min} min. · ₹ {amount}
+floor_meta_paid	Plačano ₹ {amount}
+acct_page_title	Račun — Khaynjo
+acct_lede	En račun za spletno mesto in aplikacije — isti obrazec za nove in tiste, ki se vračajo.
+acct_email	E-pošta
+acct_name_optional	Ime (neobvezno)
+acct_password	Geslo
+acct_continue	Nadaljuj
+acct_forgot	Ste pozabili geslo?
+acct_reset_hint	Po e-pošti vam bomo poslali povezavo za ponastavitev. Uporabite naslov, s katerim ste se registrirali.
+acct_send_reset	Pošlji povezavo za ponastavitev
+acct_cancel	Prekliči
+acct_or_continue	ali nadaljujte prek
+acct_phone	Telefon
+acct_mobile	Mobilna številka
+acct_send_sms	Pošlji kodo SMS
+acct_sms_code	Koda SMS
+acct_confirm_code	Potrdi kodo
+acct_signed_in	Prijavljeni ste
+acct_signed_in_as	Prijavljeni račun
+acct_status	Stanje
+acct_sign_in_methods	Načini prijave
+acct_cloud_username	Uporabniško ime v oblaku
+acct_plan	Paket
+acct_resend_verify	Znova pošlji potrditveno e-pošto
+acct_sign_out	Odjava
+acct_cloud_sandbox	Kumkaj Cloud (testno okolje)
+acct_current_password	Trenutno geslo
+acct_email_for_password	E-pošta za prijavo z geslom
+acct_new_password	Novo geslo
+acct_confirm_new_password	Potrdite novo geslo
+acct_add_way	Dodajte drug način prijave
+acct_link_hint	Povežite načine z istim računom, da lahko obnovite dostop, če eden odpove.
+acct_link_google	Poveži Google
+acct_link_microsoft	Poveži Microsoft
+acct_link_github	Poveži GitHub
+acct_link_phone	Poveži telefon
+acct_send_sms_link	Pošlji SMS za povezavo
+acct_confirm_link_phone	Potrdi in poveži telefon
+shop_page_title	Trgovina — Khaynjo
+shop_lede	Letni paketi v oblaku — davek se doda ob plačilu. Celotna aplikacija Khaynjo na vaših lastnih napravah ostane za vedno brezplačna in brez oglasov.
+shop_cart	Košarica
+shop_cart_empty_hint	Košarica je prazna. Dodajte Steady, Swift ali Priority.
+shop_checkout	Na blagajno
+shop_clear	Izprazni
+shop_checkout_hint	Blagajna vas najprej prijavi v račun, nato začne plačilo (testna simulacija ali Paddle, ko so ključi nastavljeni).
+acct_billing_hint	Letni paketi — davek doda plačilni prehod ob plačilu. Lokalna uporaba ostane za vedno brezplačna. Po meri je ponudba (lahko je pod Steady ali nad Priority).
+shop_cloud_plans	Paketi v oblaku
+acct_federated	Federirana prijava
+acct_err_invalid_email	Vnesite veljaven e-poštni naslov.
+acct_err_weak_password	Uporabite geslo z vsaj 6 znaki.
+acct_err_wrong_password	Napačno geslo.
+acct_err_invalid_credential	Napačna e-pošta ali geslo.
+acct_err_popup_closed	Okno za prijavo je bilo zaprto.
+acct_err_popup_cancelled	Prijava je bila preklicana.
+acct_err_unauthorized_domain	Ta domena ni pooblaščena za Firebase Auth.
+acct_err_method_disabled	Ta način prijave še ni vklopljen.
+acct_err_too_many	Preveč poskusov. Poskusite pozneje.
+acct_err_phone_format	Uporabite celotno telefonsko številko s kodo države (npr. +91…).
+acct_err_sms_code	Ta koda SMS je napačna ali je potekla.
+acct_err_no_account	Računa s to e-pošto ni. Nadaljujte, da ga ustvarite, ali uporabite drug način.
+acct_err_recent_login	Zaradi varnosti se znova prijavite, nato ponovite to spremembo.
+acct_err_credential_in_use	Ta način prijave že uporablja drug račun.
+acct_err_email_in_use	To e-pošto že uporablja drug račun.
+acct_err_already_linked	Ta način je že povezan s tem računom.
+acct_err_exists_other_method	S to e-pošto že obstaja račun z drugim načinom prijave. Najprej se prijavite s tem načinom, nato povežite tega na strani računa.
+acct_err_generic	Nekaj je šlo narobe.
+acct_method_password	E-pošta in geslo
+acct_pw_hint_change	Spremenite geslo. Potrdili ga boste s trenutnim.
+acct_pw_hint_add	Dodajte geslo, da se boste lahko prijavili tudi z e-pošto (koristno, če ponudnik ni na voljo).
+acct_pw_change	Spremeni geslo
+acct_pw_add	Dodaj geslo
+acct_billing_off	Obračun v API-ju oblaka še ni vklopljen.
+acct_billing_no_provider	V API-ju oblaka ni vklopljen noben pravi ponudnik plačil (simulacija je samo lokalna).
+price_quote	Ponudba
+price_per_year	₹{amount}/leto brez davka
+acct_pay_received	Plačilo prejeto — osvežujemo vaš paket…
+acct_pay_declined	Plačilo je bilo zavrnjeno ali ni uspelo
+acct_pay_failed_detail	{detail}. Vaš paket se ni spremenil.
+acct_checkout_closed	Blagajna zaprta — plačilo ni bilo dokončano. Paket je nespremenjen.
+acct_checkout_failed	Plačilo ni uspelo
+acct_pay_with	Plačaj prek {provider}
+acct_plan_until	{plan} · do {date}
+acct_unavailable	Ni na voljo
+acct_continue_hint	Nadaljujte z e-pošto, prek ponudnika ali s telefonom.
+acct_signed_in_fallback	(prijavljeni)
+acct_email_verified	E-pošta potrjena
+acct_email_unverified	E-pošta še ni potrjena — preverite prejeto pošto
+acct_signed_in_phone	Prijavljeni s telefonom
+acct_none_listed	Zaenkrat nič
+acct_signed_in_status	Prijavljeni ste.
+acct_created	Račun je ustvarjen. Ko utegnete, ga potrdite prek e-pošte.
+acct_reset_sent	Če za to e-pošto obstaja račun, je povezava za ponastavitev na poti. Preverite prejeto pošto.
+acct_another_method	drug način
+acct_exists_via	Račun za {email} že obstaja prek {method}. Najprej se prijavite na ta način, nato povežite tega ponudnika na strani računa.
+acct_enter_current_pw	Vnesite trenutno geslo.
+acct_relogin_retry	Odjavite se in znova prijavite, nato poskusite ponovno.
+acct_pw_mismatch	Novo geslo in potrditev se ne ujemata.
+acct_pw_updated	Geslo je posodobljeno.
+acct_enter_email_pw	Vnesite e-pošto za prijavo z geslom.
+acct_pw_added	Geslo je dodano. Zdaj se lahko prijavite tudi z e-pošto.
+acct_method_linked	Način prijave je povezan.
+acct_phone_linked	Telefon je povezan s tem računom.
+acct_verify_sent	Potrditvena e-pošta poslana — preverite prejeto pošto.
+shop_pricing_soon	Cene kmalu
+shop_request_quote	Zahtevaj ponudbo
+shop_add_to_cart	Dodaj v košarico
+shop_notify_later	Obvesti me pozneje
+shop_included	Vključeno
+shop_in_cart	{plan} je v vaši košarici.
+shop_remove	Odstrani
+shop_cart_is_empty	Košarica je prazna.
+shop_prices_unpublished	Cene za samostojni nakup tega izdelka še niso objavljene. Zahtevajte ponudbo po meri ali se vrnite pozneje.
+shop_cart_cleared	Košarica je izpraznjena.
+plan_free_title	Za vedno brezplačno
+plan_free_blurb	Celoten lokalni izdelek na vaših napravah. Brez plačila za oblak.
+plan_steady_blurb	Živi oblak · 10 GB · nižja pasovna širina
+plan_swift_blurb	Živi oblak · 25 GB · srednja pasovna širina
+plan_priority_blurb	Živi oblak · 50 GB · najvišja standardna pasovna širina
+plan_custom_title	Po meri
+plan_custom_blurb	Dogovorjena kvota in pasovna širina. Ponudba je lahko pod Steady ali nad Priority.
