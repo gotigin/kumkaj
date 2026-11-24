@@ -12,10 +12,10 @@ expiry_alerts	Aegumishoiatused (järgmised 7 päeva)
 expiry_none	Järgmise 7 päeva jooksul ei aegu ükski partii.
 rx_nudge	Omanik märgistas Rx / Ajakava H – vajadusel lisage märge.
 unlock	Avage lukustus
-sell	müüa
-buy	Osta
+sell	Müük
+buy	Ost
 books	Päevaraamat
-books_help	Tänane positsioon. Müü = raha sisse Osta = ostud ja kulud. Osapooled = krediidikliendid ja -tarnijad.
+books_help	Tänane seis. Müük = raha sisse. Ost = ostud ja kulud. Osapooled = krediidikliendid ja tarnijad.
 buy_help	Kulutšekid ja tarnijaarved (raha välja). Kontol jääb kliendi või tarnija pearaamatusse.
 sell_money_in	Müüa ravimeid
 buy_money_out	Kulu / tarnija arve

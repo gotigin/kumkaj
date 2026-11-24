@@ -12,10 +12,10 @@ expiry_alerts	Įspėjimai apie galiojimo pabaigą (per kitas 7 dienas)
 expiry_none	Per kitas 7 dienas partijos nesibaigs.
 rx_nudge	Savininkas pažymėjo Rx / H tvarkaraštį – pridėkite pastabą, jei reikia.
 unlock	Atrakinti
-sell	Parduodu
+sell	Pardavimas
 buy	Pirkimas
 books	Dienos knyga
-books_help	Šios dienos pozicija. Parduoti = pinigai. Pirkti = pirkimai ir išlaidos. Šalys = kredito klientai ir tiekėjai.
+books_help	Šios dienos padėtis. Pardavimas = pinigai į kasą. Pirkimas = pirkimai ir išlaidos. Šalys = kredito klientai ir tiekėjai.
 buy_help	Išlaidų orderiai ir tiekėjų sąskaitos (pinigai iš). Į sąskaitą lieka šalies knygoje.
 sell_money_in	Parduok vaistus
 buy_money_out	Išlaida / tiekėjo sąskaita

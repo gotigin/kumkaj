@@ -1,9 +1,9 @@
 # Amharic — አማርኛ (am). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	ክፈት
-sell	ይሽጡ
+sell	ሽያጭ
 buy	ግዢ
 books	የቀን መዝገብ
-books_help	የዛሬው አቋም. መሸጥ = ገንዘብ ግዢ = ግዢዎች እና ወጪዎች. ፓርቲዎች = ብድር ደንበኞች እና አቅራቢዎች.
+books_help	የዛሬው ሁኔታ። ሽያጭ = የገባ ገንዘብ። ግዢ = ግዢዎችና ወጪዎች። ተዋዋዮች = በዱቤ የሚገዙ ደንበኞችና አቅራቢዎች።
 buy_help	የወጪ ደረሰኞች እና የአቅራቢ ሂሳቦች (የወጣ ገንዘብ)። በሂሳብ ላይ የቆየ በተዋዋይ መዝገብ ይቆያል።
 sell_money_in	እቃዎችን ሽጥ
 buy_money_out	ወጪ / የአቅራቢ ሂሳብ

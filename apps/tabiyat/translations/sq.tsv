@@ -12,10 +12,10 @@ expiry_alerts	Sinjalizimet e skadimit (7 ditët e ardhshme)
 expiry_none	Asnjë grup që skadon në 7 ditët e ardhshme.
 rx_nudge	Pronari i shënuar Rx / Orari H — shtoni një shënim nëse është e nevojshme.
 unlock	Zhblloko
-sell	Shitet
+sell	Shitje
 buy	Blerje
 books	Libri i ditës
-books_help	Qëndrimi i sotëm. Shitet = para. Blej = blerje dhe shpenzime. Palët = klientët dhe furnitorët e kredisë.
+books_help	Gjendja e sotme. Shitje = para që hyjnë. Blerje = blerje dhe shpenzime. Palët = klientë me kredi dhe furnitorë.
 buy_help	Fatura shpenzimesh dhe fatura furnitorësh (para jashtë). Ajo që mbetet në llogari qëndron në librin e palës.
 sell_money_in	Shitet ilaçe
 buy_money_out	Shpenzim / faturë furnitori

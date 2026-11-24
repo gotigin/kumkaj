@@ -12,10 +12,10 @@ expiry_alerts	Foláirimh éaga (7 lá eile)
 expiry_none	Ní rachaidh aon bhaisceanna in éag sna 7 lá atá romhainn.
 rx_nudge	Úinéir faoi bhratach Rx / Sceideal H — cuir nóta leis más gá.
 unlock	Díghlasáil
-sell	Dhíol
-buy	Ceannaigh
+sell	Díolachán
+buy	Ceannach
 books	Leabhar lae
-books_help	Staid an lae inniu. Díol = airgead isteach. Ceannaigh = ceannacháin & costais. Páirtithe = custaiméirí creidmheasa & soláthraithe.
+books_help	Staid an lae inniu. Díolachán = airgead isteach. Ceannach = ceannacháin agus costais. Páirtithe = custaiméirí creidmheasa agus soláthraithe.
 buy_help	Dearbháin chostais agus billí soláthróirí (airgead amach). Fanacht ar an gcuntas ar mhórleabhar an pháirtí.
 sell_money_in	Cógais a dhíol
 buy_money_out	Bille Speansais /Soláthair

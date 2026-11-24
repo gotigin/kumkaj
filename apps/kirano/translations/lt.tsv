@@ -1,9 +1,9 @@
 # Lithuanian — Lietuvių (lt). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Atrakinti
-sell	Parduodu
+sell	Pardavimas
 buy	Pirkimas
 books	Dienos knyga
-books_help	Šios dienos pozicija. Parduoti = pinigai. Pirkti = pirkimai ir išlaidos. Šalys = kredito klientai ir tiekėjai.
+books_help	Šios dienos padėtis. Pardavimas = pinigai į kasą. Pirkimas = pirkimai ir išlaidos. Šalys = kredito klientai ir tiekėjai.
 buy_help	Išlaidų orderiai ir tiekėjų sąskaitos (pinigai iš). Į sąskaitą lieka šalies knygoje.
 sell_money_in	Parduok daiktus
 buy_money_out	Išlaida / tiekėjo sąskaita

@@ -1,9 +1,9 @@
 # Catalan — Català (ca). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Desbloqueja
-sell	Vendre
+sell	Vendes
 buy	Compres
 books	Llibre del dia
-books_help	La posició d'avui. Venda = diners. Compra = compres i despeses. Parts = crèdit clients i proveïdors.
+books_help	La situació d'avui. Vendes = diners que entren. Compres = compres i despeses. Parts = clients a crèdit i proveïdors.
 buy_help	Vals de despesa i factures de proveïdor (diners que surten). El que queda a compte resta al llibre de la part.
 sell_money_in	Vendre articles
 buy_money_out	Despesa / factura de proveïdor

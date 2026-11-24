@@ -12,10 +12,10 @@ expiry_alerts	Alertes de caducitat (proper 7 dies)
 expiry_none	Cap lot caduca en els pròxims 7 dies.
 rx_nudge	El propietari ha marcat Rx / Schedule H: afegiu una nota si cal.
 unlock	Desbloqueja
-sell	Vendre
+sell	Vendes
 buy	Compres
 books	Llibre del dia
-books_help	La posició d'avui. Venda = diners. Compra = compres i despeses. Parts = crèdit clients i proveïdors.
+books_help	La situació d'avui. Vendes = diners que entren. Compres = compres i despeses. Parts = clients a crèdit i proveïdors.
 buy_help	Vals de despesa i factures de proveïdor (diners que surten). El que queda a compte resta al llibre de la part.
 sell_money_in	Vendre medicaments
 buy_money_out	Despesa / factura de proveïdor

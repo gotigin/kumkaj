@@ -1,9 +1,9 @@
 # Estonian — Eesti (et). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Avage lukustus
-sell	müüa
-buy	Osta
+sell	Müük
+buy	Ost
 books	Päevaraamat
-books_help	Tänane positsioon. Müü = raha sisse Osta = ostud ja kulud. Osapooled = krediidikliendid ja -tarnijad.
+books_help	Tänane seis. Müük = raha sisse. Ost = ostud ja kulud. Osapooled = krediidikliendid ja tarnijad.
 buy_help	Kulutšekid ja tarnijaarved (raha välja). Kontol jääb kliendi või tarnija pearaamatusse.
 sell_money_in	Müüa esemeid
 buy_money_out	Kulu / tarnija arve

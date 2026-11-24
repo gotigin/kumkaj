@@ -12,10 +12,10 @@ expiry_alerts	Brīdinājumi par derīguma termiņu (nākamās 7 dienas)
 expiry_none	Nākamo 7 dienu laikā nav beigusies neviena partija.
 rx_nudge	Īpašnieks atzīmēja Rx / H grafiku — pievienojiet piezīmi, ja nepieciešams.
 unlock	Atbloķēt
-sell	Pārdod
+sell	Pārdošana
 buy	Pirkums
 books	Dienas grāmata
-books_help	Šodienas pozīcija. Pārdod = nauda. Pirkt = pirkumi un izdevumi. Puses = kredītu klienti un piegādātāji.
+books_help	Šodienas stāvoklis. Pārdošana = ienākošā nauda. Pirkums = pirkumi un izdevumi. Puses = kredītklienti un piegādātāji.
 buy_help	Izdevumu kvītis un piegādātāju rēķini (nauda ārā). Uz konta palikušais paliek puses virsgrāmatā.
 sell_money_in	Pārdod zāles
 buy_money_out	Izdevums / piegādātāja rēķins

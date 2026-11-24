@@ -13,9 +13,9 @@ expiry_none	Nta cyiciro kirangira muminsi 7 iri imbere.
 rx_nudge	Nyirubwite yashyize ahagaragara Rx / Gahunda H - ongeraho inyandiko niba bikenewe.
 unlock	Fungura
 sell	Kugurisha
-buy	Gura
+buy	Kugura
 books	Igitabo cy'umunsi
-books_help	Umwanya w'uyu munsi. Kugurisha = amafaranga muri. Kugura = kugura & amafaranga. Amashyaka = abakiriya b'inguzanyo & abatanga isoko.
+books_help	Uko umunsi uhagaze. Kugurisha = amafaranga yinjira. Kugura = ibyaguzwe n'amafaranga yasohotse. Abafatanyabikorwa = abakiriya bafata ideni n'abatanga ibicuruzwa.
 buy_help	Inyemezabwishyu n'inyemezabuguzi z'abatanga (amafaranga asohoka). Ibyo ku konte biguma ku gitabo cy'uwafatanyabikorwa.
 sell_money_in	Kugurisha imiti
 buy_money_out	Inyemezabwishyu / inyemezabuguzi y'utanga

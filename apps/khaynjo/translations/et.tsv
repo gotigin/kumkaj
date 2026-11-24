@@ -3,7 +3,7 @@ app_tagline	Restorani tellimused, köök ja raamatud. Tasuta võrguühenduseta.
 unlock	Avage lukustus
 pin_hint	Omanik PIN algab 0000-st
 sell	Tellimus
-buy	Osta
+buy	Ost
 books	Päevaraamat
 books_help	Tänane konto kokkuvõte. Tellimused = tellimused saabuvad. Ost = ostud ja kulud. Osapooled = krediidikliendid ja -tarnijad.
 buy_help	Kulutšekid ja tarnijaarved (raha välja). Kontol jääb kliendi või tarnija pearaamatusse.
