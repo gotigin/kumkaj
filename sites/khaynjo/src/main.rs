@@ -32,7 +32,7 @@ mod locale;
 
 #[path = "../../_shared/i18n/site_i18n.rs"]
 mod site_i18n;
-use site_i18n::{ScriptGroup, SiteLang};
+use site_i18n::{FitSizes, ScriptGroup, SiteLang};
 
 app_main!(App);
 
@@ -210,6 +210,9 @@ const PROPS: [(&[LiveId], f64, f64); 6] = [
 /// Top-bar section links (six labels + brand + Get it free) need this width
 /// or the CTA is cropped on the right (desk evidence 2026-11-22 at ~1100–1200).
 const NAV_LINKS_FROM: f64 = 1280.0;
+/// Draws `fit_copy` keeps measuring after the language, the window or the
+/// floor words change (script faces load a few frames after the switch).
+const FIT_FRAMES: u16 = 120;
 
 const MAX_CONTENT: f64 = 1160.0;
 const MAX_CONTENT_WIDE: f64 = 1280.0;
@@ -254,89 +257,6 @@ const SHELF_CARDS: [&[LiveId]; 10] = [
 ];
 const SHELF_SLOT_COUNT: usize = 10;
 const SHELF_TRACK: f64 = SHELF_PITCH * SHELF_SLOT_COUNT as f64;
-
-/// Width of one line of `text` in `draw_text`'s font and size (logical px).
-fn text_width(cx: &mut Cx, draw_text: &DrawText, text: &str) -> f64 {
-    draw_text
-        .layout(cx, 0.0, 0.0, None, false, Align::default(), text)
-        .size_in_lpxs
-        .width as f64
-}
-
-/// Per widget: the font size the page asked for and the one a fit pass set.
-/// A current size that is neither means `scale_labels` set a new base.
-type FitSizes = std::collections::HashMap<WidgetUid, (f32, f32)>;
-
-/// Smallest a fit pass shrinks text, as a share of the size asked for.
-const FIT_MIN_SCALE: f32 = 0.7;
-
-fn fit_base(sizes: &FitSizes, uid: WidgetUid, current: f32) -> f32 {
-    match sizes.get(&uid) {
-        Some(&(base, applied)) if (applied - current).abs() < 0.01 => base,
-        _ => current,
-    }
-}
-
-fn fit_size(base: f32, need: f64, avail: f64) -> f32 {
-    if need <= avail || need <= 0.0 || avail <= 0.0 {
-        base
-    } else {
-        (base * (avail / need) as f32).max(base * FIT_MIN_SCALE)
-    }
-}
-
-/// Shrink a Markdown until its text — or, `by_word`, its widest word — fits
-/// `avail` px on one line. True when the size changed.
-fn fit_markdown(cx: &mut Cx, w: &WidgetRef, avail: f64, by_word: bool, sizes: &mut FitSizes) -> bool {
-    let text = w.text();
-    let uid = w.widget_uid();
-    let Some(mut md) = w.borrow_mut::<Markdown>() else {
-        return false;
-    };
-    let current = md.text_style_normal.font_size;
-    let base = fit_base(sizes, uid, current);
-    // Plain body text draws with the normal style; measure in that face.
-    let saved = md.draw_text.text_style.clone();
-    md.draw_text.text_style = md.text_style_normal.clone();
-    md.draw_text.text_style.font_size = base;
-    let need = if by_word {
-        text.split_whitespace()
-            .map(|word| text_width(cx, &md.draw_text, word))
-            .fold(0.0, f64::max)
-    } else {
-        text_width(cx, &md.draw_text, &text)
-    };
-    md.draw_text.text_style = saved;
-    let size = fit_size(base, need, avail);
-    sizes.insert(uid, (base, size));
-    if (size - current).abs() < 0.01 {
-        return false;
-    }
-    md.font_size = size;
-    md.draw_text.text_style.font_size = size;
-    md.text_style_normal.font_size = size;
-    md.text_style_bold.font_size = size;
-    md.text_style_italic.font_size = size;
-    md.text_style_bold_italic.font_size = size;
-    true
-}
-
-/// Shrink a Button's label until it fits `avail` px. True when it changed.
-fn fit_button(cx: &mut Cx, w: &WidgetRef, avail: f64, sizes: &mut FitSizes) -> bool {
-    let text = w.text();
-    let uid = w.widget_uid();
-    let Some(mut b) = w.borrow_mut::<Button>() else {
-        return false;
-    };
-    let current = b.draw_text.text_style.font_size;
-    let base = fit_base(sizes, uid, current);
-    b.draw_text.text_style.font_size = base;
-    let need = text_width(cx, &b.draw_text, &text);
-    let size = fit_size(base, need, avail);
-    b.draw_text.text_style.font_size = size;
-    sizes.insert(uid, (base, size));
-    (size - current).abs() >= 0.01
-}
 
 /// Countries on the shelf that have a photo.
 #[cfg(test)]
@@ -649,9 +569,13 @@ pub struct App {
     /// Top-bar parts shown by `fit_top_bar` (links, wordmark, CTA, Login).
     #[rust]
     bar_fit: Option<[bool; 4]>,
-    /// Font sizes `fit_hero_lines` works from and set (see `FitSizes`).
+    /// Font sizes `fit_copy` works from and set (see `site_i18n::FitSizes`).
     #[rust]
     fit_sizes: FitSizes,
+    /// Draws left in which `fit_copy` measures again (language, window size or
+    /// tile words changed; script faces arrive a few frames late).
+    #[rust]
+    fit_frames: u16,
     /// Playing the continuous flow (search always forces pause).
     #[rust]
     shelf_playing: bool,
@@ -895,6 +819,7 @@ impl App {
         self.ui.button(cx, ids!(go_login)).set_text(cx, &label);
         self.paint_lang_chip(cx);
         self.fit_top_bar(cx);
+        self.fit_frames = FIT_FRAMES;
         self.ui.redraw(cx);
     }
 
@@ -972,6 +897,8 @@ impl App {
     /// Paint each floor tile from its visit: one colour layer, the app's word,
     /// minutes and running bill.
     fn paint_floor(&mut self, cx: &mut Cx) {
+        // New tile words: measure them on the next draws.
+        self.fit_frames = self.fit_frames.max(FIT_FRAMES / 4);
         let tables = self.tables.unwrap_or(OPENING_FLOOR);
         for (i, ((path, amount), visit)) in TABLES.iter().zip(tables).enumerate() {
             let tile = self.ui.widget(cx, path);
@@ -1143,7 +1070,7 @@ impl App {
         let button_w = |cx: &mut Cx, ui: &WidgetRef, path: &[LiveId], side_pad: f64| -> f64 {
             let text = ui.widget(cx, path).text();
             match ui.button(cx, path).borrow() {
-                Some(b) => text_width(cx, &b.draw_text, &text) + side_pad,
+                Some(b) => site_i18n::text_width(cx, &b.draw_text, &text) + side_pad,
                 None => 0.0,
             }
         };
@@ -1151,7 +1078,7 @@ impl App {
         let name_w = {
             let text = ui.widget(cx, ids!(brand_name)).text();
             match ui.label(cx, ids!(brand_name)).borrow() {
-                Some(l) => text_width(cx, &l.draw_text, &text),
+                Some(l) => site_i18n::text_width(cx, &l.draw_text, &text),
                 None => 0.0,
             }
         };
@@ -1203,38 +1130,36 @@ impl App {
         self.ui.redraw(cx);
     }
 
-    /// Shrink one-line hero copy that is wider than the hero column in the
-    /// language in use: the pill, the title's widest word (German and Finnish
-    /// compounds broke inside the word at 320 px) and the two CTA buttons
-    /// (Tibetan, Khmer, Lao and Burmese ran off the screen). Never below
-    /// `FIT_MIN_SCALE` of the size the page asked for. Titles in languages
-    /// written without spaces are left alone: their "widest word" is the line.
-    /// Runs after draws, when the column has its width.
-    fn fit_hero_lines(&mut self, cx: &mut Cx) {
-        let col_w = self.ui.view(cx, ids!(hero_copy)).area().rect(cx).size.x;
-        if col_w < 1.0 {
+    /// Shrink translated copy that is wider than its place in the language in
+    /// use (`site_i18n` § fitting): every headline by its widest word (German
+    /// and Finnish compounds broke inside the word at 320 px), the hero pill,
+    /// the hero CTA buttons (Tibetan, Khmer, Lao and Burmese ran off the
+    /// screen) and the floor-tile words (Khmer "Bill printed" was cut at the
+    /// tile edge). Runs on draws while `fit_frames` lasts: widths are known
+    /// after a draw and script faces arrive a few frames late.
+    fn fit_copy(&mut self, cx: &mut Cx) {
+        if self.fit_frames == 0 {
             return;
         }
-        let spaced = !matches!(
-            self.lang.wanted.as_str(),
-            "th" | "lo" | "km" | "my" | "bo" | "dz" | "zh" | "zh-Hant" | "ja"
-        );
+        self.fit_frames -= 1;
         let mut sizes = std::mem::take(&mut self.fit_sizes);
         let mut changed = false;
-        // Pill padding 12 + 12 and its 1 px border.
-        let pill = self.ui.widget(cx, ids!(hero_pill.label));
-        changed |= fit_markdown(cx, &pill, col_w - 26.0, false, &mut sizes);
-        if spaced {
-            let title = self.ui.widget(cx, ids!(hero_title));
-            changed |= fit_markdown(cx, &title, col_w, true, &mut sizes);
+        let fit = if site_i18n::writes_without_spaces(&self.lang.wanted) {
+            site_i18n::Fit::Restore
+        } else {
+            site_i18n::Fit::Words
+        };
+        let page = self.ui.widget(cx, ids!(page));
+        changed |= site_i18n::fit_headlines(cx, &page, fit, &mut sizes);
+        let col_w = self.ui.view(cx, ids!(hero_copy)).area().rect(cx).size.x;
+        if col_w > 1.0 {
+            // Pill padding 12 + 12 and its 1 px border.
+            let pill = self.ui.widget(cx, ids!(hero_pill.label));
+            changed |= site_i18n::fit_markdown(cx, &pill, col_w - 26.0, site_i18n::Fit::Line, &mut sizes);
         }
-        // PrimaryBtn 22 + 22, SecondaryBtn 20 + 20, label margins 2 + 2.
-        for (path, chrome) in [(ids!(hero_cta.download), 48.0), (ids!(hero_cta.whatsapp), 44.0)] {
-            let button = self.ui.widget(cx, path);
-            changed |= fit_button(cx, &button, col_w - chrome, &mut sizes);
-        }
-        // Floor tiles (Khmer "Bill printed" was cut at the tile edge): each
-        // tile's own width, less its 12 + 8 px inner padding.
+        let ctas = self.ui.widget(cx, ids!(hero_cta));
+        changed |= site_i18n::fit_buttons_in(cx, &ctas, &mut sizes);
+        // Floor tiles: each tile's own width less its 12 + 8 px inner padding.
         for (path, _) in TABLES {
             let tile = self.ui.widget(cx, path);
             let tile_w = tile.area().rect(cx).size.x;
@@ -1243,7 +1168,7 @@ impl App {
             }
             for part in [ids!(word), ids!(meta)] {
                 let line = tile.widget(cx, part);
-                changed |= fit_markdown(cx, &line, tile_w - 20.0, false, &mut sizes);
+                changed |= site_i18n::fit_markdown(cx, &line, tile_w - 20.0, site_i18n::Fit::Line, &mut sizes);
             }
         }
         self.fit_sizes = sizes;
@@ -1267,6 +1192,7 @@ impl App {
         }
         let tier_changed = self.laid_out.map(|(t, _, _)| t) != Some(tier);
         self.laid_out = Some(key);
+        self.fit_frames = FIT_FRAMES;
 
         let (min_side, pad_v) = tier.spacing();
         let side = min_side.max((layout_w - tier.max_content()) / 2.0);
@@ -2375,7 +2301,7 @@ impl AppMain for App {
                 }
                 // Script faces load after the first draw; measure again.
                 self.fit_top_bar(cx);
-                self.fit_hero_lines(cx);
+                self.fit_copy(cx);
                 self.paint_nav_active(cx);
                 if let Some(section) = self.pending_section {
                     let page_h = self.ui.view(cx, ids!(page)).area().rect(cx).size.y;

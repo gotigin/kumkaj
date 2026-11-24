@@ -924,7 +924,20 @@ languages × 5 sites, no `@@EN@@` row left); `cargo test -p <site>-site` and
   rerun `./scripts/site-cjk-font.sh <site>` after those packs change.
   `every_translation_draws_with_the_site_fonts` fails on a character the
   site's faces cannot draw (U+2011, the non-breaking hyphen, is not in IBM
-  Plex — write `-`).
+  Plex — write `-`). That test checks the repo's whole faces; the staged
+  subsets keep `SHAPER_PARTS` too (in every `subset-fonts.sh`): characters a
+  shaper splits others into (Thai / Lao SARA AM → ํ + า, the two-part vowels
+  of Indic scripts, Sinhala, Khmer, Tibetan; nuktas). Cut to the packs'
+  characters alone, Thai drew □ for ำ.
+- **Long words:** a language's words can be much longer than the English
+  the page was laid out for. `site_i18n` § fitting measures text in the
+  font it draws with and shrinks — never below 70 % (`FIT_MIN_SCALE`) —
+  every headline by its widest word (Makepad breaks a too-wide word inside
+  it), the CTA buttons and other one-line copy that does not fit its place.
+  Each site's `fit_copy` runs for a few frames after the language or the
+  window changes. khaynjo's `fit_top_bar` hides top-bar parts, least needed
+  first (section links, wordmark, CTA, Login), until the bar fits; the
+  language chip never hides.
 - **Right to left:** keyed text right-aligns. The vendored text stack shapes
   each wrapped line left-to-right and appends a space that does not fit to
   the line anyway, so `site_i18n::rtl_marks` adds invisible marks (RLM /

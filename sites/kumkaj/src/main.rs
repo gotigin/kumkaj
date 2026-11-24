@@ -23,7 +23,7 @@ mod locale;
 
 #[path = "../../_shared/i18n/site_i18n.rs"]
 mod site_i18n;
-use site_i18n::{ScriptGroup, SiteLang};
+use site_i18n::{FitSizes, ScriptGroup, SiteLang};
 
 app_main!(App);
 
@@ -256,6 +256,12 @@ type PendingSection = Option<&'static str>;
 pub struct App {
     #[live]
     ui: WidgetRef,
+    /// Font sizes `fit_copy` works from and set (see `site_i18n::FitSizes`).
+    #[rust]
+    fit_sizes: FitSizes,
+    /// Frames left in which `fit_copy` measures again.
+    #[rust]
+    fit_frames: u16,
     /// Last laid-out (tier, width, height); re-layout only when it changes.
     #[rust]
     laid_out: Option<(Tier, i64, i64)>,
@@ -502,11 +508,51 @@ impl App {
         self.paint_chrome(cx, chapter);
         self.paint_toy(cx);
         self.paint_lang_chip(cx);
+        self.fit_frames = FIT_FRAMES;
+        let _ = cx.new_next_frame();
         self.ui.redraw(cx);
     }
 }
 
+/// Frames `fit_copy` keeps measuring after the language or the window changes
+/// (script faces load a few frames after the switch).
+const FIT_FRAMES: u16 = 120;
+/// Rows of CTA buttons `fit_copy` fits to their width.
+const CTA_ROWS: [&[LiveId]; 1] = [ids!(hero_ctas)];
+
 impl App {
+    /// Shrink translated copy that is wider than its place in the language in
+    /// use (`site_i18n` § fitting): every headline by its widest word (German
+    /// and Finnish compounds broke inside the word at 320 px) and the CTA
+    /// buttons (Tibetan and Khmer labels ran off the screen). Measures on the
+    /// frames after the language or the window changes: widths are known
+    /// after a draw, and script faces arrive a few frames late.
+    fn fit_copy(&mut self, cx: &mut Cx) {
+        if self.fit_frames == 0 {
+            return;
+        }
+        self.fit_frames -= 1;
+        let mut sizes = std::mem::take(&mut self.fit_sizes);
+        let fit = if site_i18n::writes_without_spaces(&self.lang.wanted) {
+            site_i18n::Fit::Restore
+        } else {
+            site_i18n::Fit::Words
+        };
+        let page = self.ui.widget(cx, ids!(page));
+        let mut changed = site_i18n::fit_headlines(cx, &page, fit, &mut sizes);
+        for row in CTA_ROWS {
+            let row = self.ui.widget(cx, row);
+            changed |= site_i18n::fit_buttons_in(cx, &row, &mut sizes);
+        }
+        self.fit_sizes = sizes;
+        if changed {
+            self.ui.redraw(cx);
+        }
+        if self.fit_frames > 0 {
+            let _ = cx.new_next_frame();
+        }
+    }
+
     fn page(&self, cx: &mut Cx) -> ViewRef {
         self.ui.view(cx, ids!(page))
     }
@@ -699,6 +745,8 @@ impl App {
         }
         let tier_changed = self.laid_out.map(|(t, _, _)| t) != Some(tier);
         self.laid_out = Some(key);
+        self.fit_frames = FIT_FRAMES;
+        let _ = cx.new_next_frame();
 
         let (min_side, pad_v, spacing) = tier.spacing();
         let side = min_side.max((layout_w - tier.max_content()) / 2.0);
@@ -1002,6 +1050,7 @@ impl AppMain for App {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
+                self.fit_copy(cx);
                 self.paint_scroll_chrome(cx);
                 if let Some(section) = self.pending_section {
                     let page_h = self.page(cx).area().rect(cx).size.y;

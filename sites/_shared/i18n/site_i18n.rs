@@ -688,6 +688,209 @@ pub fn script_family(cx: &mut Cx, ui: &WidgetRef, group: ScriptGroup) -> Option<
     Some(label.draw_text.text_style.font_family.clone())
 }
 
+// ---- Fitting translated copy to its width ------------------------------------
+//
+// A language's words can be far longer than the English the page was laid out
+// for: a German or Finnish compound wider than a phone (Makepad then breaks it
+// inside the word), a Tibetan or Khmer button label wider than the screen.
+// These passes measure the text in the font it draws with and shrink it —
+// never below `FIT_MIN_SCALE` of the size the page asked for — until it fits
+// its own width. Call them after a draw (widths are known then); they return
+// whether a size changed, so the caller redraws only then.
+
+/// Smallest a fit pass shrinks text, as a share of the size asked for.
+pub const FIT_MIN_SCALE: f32 = 0.7;
+
+/// Markdown at least this size (as the page sets it for the screen) is a
+/// headline: `fit_headlines` fits its widest word.
+pub const HEADLINE_MIN_PT: f32 = 22.0;
+
+/// Per widget: the font size the page asked for and the one a fit pass set.
+/// A current size that is neither means the page set a new base (a tier
+/// change rescaled it), which then becomes the base.
+pub type FitSizes = HashMap<WidgetUid, (f32, f32)>;
+
+/// What `fit_markdown` makes fit.
+#[derive(Clone, Copy, PartialEq, Debug)]
+pub enum Fit {
+    /// The whole text on one line (pills, tile words).
+    Line,
+    /// The widest space-separated word (headlines: they wrap between words).
+    Words,
+    /// Nothing: put the size the page asked for back.
+    Restore,
+}
+
+/// Languages written without spaces between words. Their headlines wrap
+/// anywhere, so there is no widest word to fit (`Fit::Restore` for them).
+pub fn writes_without_spaces(code: &str) -> bool {
+    matches!(code, "th" | "lo" | "km" | "my" | "bo" | "zh" | "zh-Hant" | "ja")
+}
+
+/// Width of one line of `text` in `draw_text`'s font and size (logical px).
+pub fn text_width(cx: &mut Cx, draw_text: &DrawText, text: &str) -> f64 {
+    draw_text
+        .layout(cx, 0.0, 0.0, None, false, Align::default(), text)
+        .size_in_lpxs
+        .width as f64
+}
+
+fn fit_base(sizes: &FitSizes, uid: WidgetUid, current: f32) -> f32 {
+    match sizes.get(&uid) {
+        Some(&(base, applied)) if (applied - current).abs() < 0.01 => base,
+        _ => current,
+    }
+}
+
+/// The size that makes text `need` px wide at `base` fit `avail` px.
+pub fn fit_size(base: f32, need: f64, avail: f64) -> f32 {
+    if need <= avail || need <= 0.0 || avail <= 0.0 {
+        base
+    } else {
+        (base * (avail / need) as f32).max(base * FIT_MIN_SCALE)
+    }
+}
+
+/// Fit a Markdown into `avail` px as `fit` says. True when its size changed.
+pub fn fit_markdown(cx: &mut Cx, w: &WidgetRef, avail: f64, fit: Fit, sizes: &mut FitSizes) -> bool {
+    let text = w.text();
+    let uid = w.widget_uid();
+    let Some(mut md) = w.borrow_mut::<Markdown>() else {
+        return false;
+    };
+    let current = md.text_style_normal.font_size;
+    let base = fit_base(sizes, uid, current);
+    // Plain body text draws with the normal style: measure in that face.
+    let saved = md.draw_text.text_style.clone();
+    md.draw_text.text_style = md.text_style_normal.clone();
+    md.draw_text.text_style.font_size = base;
+    let need = match fit {
+        Fit::Line => text_width(cx, &md.draw_text, &text),
+        Fit::Words => text
+            .split_whitespace()
+            .map(|word| text_width(cx, &md.draw_text, word))
+            .fold(0.0, f64::max),
+        Fit::Restore => 0.0,
+    };
+    md.draw_text.text_style = saved;
+    let size = fit_size(base, need, avail);
+    sizes.insert(uid, (base, size));
+    if (size - current).abs() < 0.01 {
+        return false;
+    }
+    md.font_size = size;
+    md.draw_text.text_style.font_size = size;
+    md.text_style_normal.font_size = size;
+    md.text_style_bold.font_size = size;
+    md.text_style_italic.font_size = size;
+    md.text_style_bold_italic.font_size = size;
+    true
+}
+
+/// Fit a Button so its whole width fits `avail` px; its padding is what it
+/// drew beyond its text. True when its size changed.
+pub fn fit_button(cx: &mut Cx, w: &WidgetRef, avail: f64, sizes: &mut FitSizes) -> bool {
+    let drawn_w = w.area().rect(cx).size.x;
+    let text = w.text();
+    let uid = w.widget_uid();
+    let Some(mut b) = w.borrow_mut::<Button>() else {
+        return false;
+    };
+    let current = b.draw_text.text_style.font_size;
+    let chrome = if drawn_w > 0.0 {
+        (drawn_w - text_width(cx, &b.draw_text, &text)).max(0.0)
+    } else {
+        0.0
+    };
+    let base = fit_base(sizes, uid, current);
+    b.draw_text.text_style.font_size = base;
+    let need = text_width(cx, &b.draw_text, &text);
+    let size = fit_size(base, need, avail - chrome);
+    b.draw_text.text_style.font_size = size;
+    sizes.insert(uid, (base, size));
+    (size - current).abs() >= 0.01
+}
+
+/// Fit every Button inside `row` to the row's width — each on its own, as
+/// rows stack on phones.
+pub fn fit_buttons_in(cx: &mut Cx, row: &WidgetRef, sizes: &mut FitSizes) -> bool {
+    let row_w = row.area().rect(cx).size.x;
+    if row_w < 1.0 {
+        return false;
+    }
+    let mut buttons = Vec::new();
+    collect_buttons(row, &mut buttons);
+    let mut changed = false;
+    for b in &buttons {
+        changed |= fit_button(cx, b, row_w, sizes);
+    }
+    changed
+}
+
+fn collect_buttons(w: &WidgetRef, out: &mut Vec<WidgetRef>) {
+    w.children(&mut |_, child| {
+        if child.borrow::<Button>().is_some() {
+            out.push(child.clone());
+        } else {
+            collect_buttons(&child, out);
+        }
+    });
+}
+
+/// Fit every headline-sized Markdown under `root` (`HEADLINE_MIN_PT`) to its
+/// own width by its widest word — or put its size back (`Fit::Restore`) for a
+/// language written without spaces.
+pub fn fit_headlines(cx: &mut Cx, root: &WidgetRef, fit: Fit, sizes: &mut FitSizes) -> bool {
+    let mut found = Vec::new();
+    collect_headlines(root, sizes, &mut found);
+    let mut changed = false;
+    for md in &found {
+        let w = md.area().rect(cx).size.x;
+        if w > 1.0 {
+            changed |= fit_markdown(cx, md, w, fit, sizes);
+        }
+    }
+    changed
+}
+
+fn collect_headlines(w: &WidgetRef, sizes: &FitSizes, out: &mut Vec<WidgetRef>) {
+    w.children(&mut |_, child| {
+        let big = child
+            .borrow::<Markdown>()
+            .map(|md| fit_base(sizes, child.widget_uid(), md.text_style_normal.font_size));
+        match big {
+            Some(base) if base >= HEADLINE_MIN_PT => out.push(child.clone()),
+            Some(_) => {}
+            None => collect_headlines(&child, sizes, out),
+        }
+    });
+}
+
+#[cfg(test)]
+mod fit_tests {
+    use super::*;
+
+    #[test]
+    fn fits_shrink_only_as_far_as_needed_and_never_below_the_floor() {
+        assert_eq!(fit_size(20.0, 100.0, 200.0), 20.0);
+        assert!((fit_size(20.0, 200.0, 180.0) - 18.0).abs() < 1e-4);
+        assert!((fit_size(20.0, 400.0, 100.0) - 20.0 * FIT_MIN_SCALE).abs() < 1e-4);
+        assert_eq!(fit_size(20.0, 0.0, 100.0), 20.0);
+        assert_eq!(fit_size(20.0, 100.0, 0.0), 20.0);
+    }
+
+    #[test]
+    fn languages_without_spaces_are_the_catalogue_codes() {
+        for code in ["th", "lo", "km", "my", "bo", "zh", "zh-Hant", "ja"] {
+            assert!(writes_without_spaces(code), "{code}");
+            assert!(table_languages().any(|c| c == code), "{code} is not a pack");
+        }
+        for code in ["en", "hi", "de", "fi", "ko", "ar"] {
+            assert!(!writes_without_spaces(code), "{code}");
+        }
+    }
+}
+
 #[cfg(test)]
 mod rtl_mark_tests {
     use super::*;
