@@ -27,15 +27,15 @@ board_discarded	پیش‌نویس حذف شد
 buy	پرداخت کنید
 books	دفتر روز
 books_help	موقعیت امروز رزرو = بسته ها. پرداخت = قبوض و هزینه های حامل. احزاب = فرستنده و حامل.
-buy_help	کوپن هزینه و قبوض حامل (پول خارج شده). در حساب در دفتر حزب باقی می ماند.
+buy_help	سند هزینه و صورت‌حساب حامل‌ها (پول خارج‌شده). مانده‌ی نسیه در دفتر طرف حساب می‌ماند.
 sell_money_in	بسته رزرو کنید
 buy_money_out	هزینه / قبض حامل
 record_purchase	ثبت خرید
 add_expense	برگه هزینه
 bank_book	دفتر بانک
-credit_help	شناسه حزب منحصر به فرد است (اسامی ممکن است تکرار شوند). نقش ها: فرستنده (AR)، حامل (AP)، یا هر دو در آن شناسه. دفتر کل جدا می ماند. گزارش ها نت را نشان می دهند.
+credit_help	شناسه‌ی طرف حساب یکتاست (نام‌ها ممکن است تکرار شوند). نقش‌ها: فرستنده (AR)، حامل (AP)، یا هر دو با همان شناسه. دفترها جدا می‌مانند؛ گزارش‌ها خالص را نشان می‌دهند.
 party_kind_ph	نقش سفارشی (اختیاری) - یا روی یک تراشه در بالا ضربه بزنید
-parties_list_heading	مهمانی های ذخیره شده
+parties_list_heading	طرف‌های حساب ذخیره‌شده
 reports_help	دفتر روز، بدهکاران و بستانکاران، دفتر بانک، برگه‌های هزینه، سود و زیان.
 reports_today	دفتر روز (امروز)
 reports_month	سود و زیان (ماه)
@@ -149,7 +149,7 @@ origin_phone_ph	تلفن فرستنده
 origin_address_ph	آدرس وانت / مبدا
 booking_consignor_heading	فرستنده (مشتری / فرستنده)
 booking_consignee_heading	گیرنده (گیرنده)
-booking_consignor_hint	یک مهمانی را برای پر کردن انتخاب کنید، یا آن را خالی بگذارید. برای پیکاپ خانگی و RTO مورد نیاز است.
+booking_consignor_hint	یک طرف حساب را برای پر کردن انتخاب کنید، یا برای مشتری حضوری خالی بگذارید. برای تحویل‌گیری از منزل و RTO لازم است.
 booking_consignee_hint	گیرنده بسته. خالی بگذارید.
 weight_kg_ph	کیلوگرم واقعی
 length_cm_ph	L سانتی متر
@@ -300,7 +300,7 @@ card_amount_ph	مبلغ کارت
 cash_amount_ph	مبلغ نقد
 upi_amount_ph	مبلغ UPI
 carrier_cost_ph	هزینه حامل
-carrier_party_ph	مهمانی حامل
+carrier_party_ph	طرف حساب حامل
 choose_icon	انتخاب نماد
 choose_logo	انتخاب نشان
 choose_receipt_stamp	مهر رسید را انتخاب کنید
@@ -314,7 +314,7 @@ print_faces	چاپ چهره (رسید / قبض دوره)
 print_faces_help	مهر اختیاری و QR پرداخت در کنار لوگوی شما در رسیدهای رزرو و قبوض دوره.
 awb_pools_heading	استخرهای شماره حامل AWB
 add_awb_pool	اضافه کردن استخر AWB
-awb_pool_carrier_ph	نام حزب حامل
+awb_pool_carrier_ph	نام طرف حساب حامل
 awb_pool_start_ph	نه شروع
 awb_pool_end_ph	انتهای شماره
 awb_pool_prefix_ph	پیشوند (اختیاری)
@@ -368,7 +368,7 @@ insurance_label	بیمه
 yes_label	بله
 no_label	خیر
 print_route_label	مسیر چاپ
-new_party_kind_label	نوع حزب جدید
+new_party_kind_label	نوع طرف حساب جدید
 done_open_books	انجام شد — باز کردن دفترها
 export_day	برون‌برد روز
 extra_note_expense_ph	یادداشت اضافه روی آخرین هزینه
@@ -386,7 +386,7 @@ import_carrier_bill_csv	وارد کردن قبض شرکت مخابراتی CSV�
 copy_carrier_bill_report	آخرین گزارش قبض شرکت مخابراتی را کپی کنید
 use_carrier_cost	استفاده از هزینه حامل
 rate_carrier_ph	حامل (خالی = نرخ فروش ما)
-rate_party_ph	مهمانی (خالی = همه مشتریان)
+rate_party_ph	طرف حساب (خالی = همه‌ی مشتریان)
 carrier_pick_ph	حامل برای هزینه (از مقایسه)
 item_name	نام کالا
 load_bulk_row	بارگذاری ردیف عمده → میز
@@ -427,7 +427,7 @@ share_receipt_whatsapp	رسید را در واتس اپ به اشتراک بگذ
 delivery_feedback	بازخورد تحویل
 lan_self_book	LAN خود رزرو
 new_party_clear	طرف تازه (پاک کردن فرم)
-new_party_kind_ph	نوع مهمانی جدید (تامین کننده / حامل)
+new_party_kind_ph	نوع طرف حساب جدید (تأمین‌کننده / حامل)
 next_country	کشور بعد
 prev_country	کشور قبل
 note_gstin_ph	یادداشت / GSTIN / یادآور توافق
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	از نو · {} — فهرست خالی شروع می‌شو�
 onboard_book_tmpl	دفتر · {} — کالا و نسیه آغازین را بیفزایید، سپس انجام شد.
 onboard_template_tmpl	اگر خواستید به محل نام بدهید، سپس نحوه شروع را انتخاب کنید.
 tmpl_blurb	کتاب پیک و میز رزرو: فرستنده، حامل، کتاب روز، AWB.
-tmpl_how	بسته ها را روی میز رزرو کنید. کتاب روز برای امروز؛ زبانه ها برای نرخ ها، مهمانی ها، گزارش ها.
+tmpl_how	بسته‌ها را پشت باجه ثبت کنید؛ دفتر روزانه برای امروز؛ زبانه‌ها برای نرخ‌ها، طرف‌های حساب، گزارش‌ها.
 app_template_heading	قالب‌های فروشگاه
 app_template_blurb	یک میز کار آغازین انتخاب کنید. «فعلاً رد شو» فهرست طرف‌ها را خالی می‌گذارد.
 app_template_skip	فعلاً رد شو
@@ -894,7 +894,7 @@ part_second_way_ph	بخش با راه دوم (اختیاری)
 phone_ph	تلفن
 address_ph	آدرس
 party_custom_fields_heading	فیلدهای سفارشی (طرف انتخابی)
-party_custom_help	هر برچسب و ارزشی را به این مهمانی اضافه کنید - WhatsApp، GSTIN، کد مسیر، …
+party_custom_help	هر برچسب و مقداری را به این طرف حساب اضافه کنید — WhatsApp، GSTIN، کد مسیر، …
 party_custom_key_ph	نام فیلد (به عنوان مثال WhatsApp)
 party_custom_value_ph	ارزش
 party_custom_add	فیلد اضافه کنید

@@ -1364,7 +1364,7 @@ resv_add	Rezervovat
 resv_seat	Sedící
 resv_none	Žádné rezervace nepřicházejí.
 guests_word	hosté
-delivery_by_ph	Doručení (jméno jezdce nebo zaměstnance)
+delivery_by_ph	Doručuje (kurýr / personál)
 kitchen_all_day	Vařit nyní: {items}
 kitchen_all_day_head	Vařit hned
 kitchen_tab_live	Živě

@@ -285,7 +285,7 @@ zero_sales_on	Povoliť 0 INR
 zero_sales_off	Vyžadovať cenu
 zero_sales_saved_on	Povolený predaj s nulovou hodnotou
 zero_sales_saved_off	Predaj musí mať cenu vyššiu ako 0 INR
-floor_areas_help	Priestory sú miestnosti alebo zóny v jedálni (Dine In, Parcel, AC …). Najprv pridajte oblasť a potom do nej vložte jedálenské stoly – každá oblasť je samostatná skupina v jedálni.
+floor_areas_help	Priestory sú miestnosti alebo zóny v prevádzke (V reštaurácii, So sebou, AC …). Najprv pridajte priestor a potom doň vložte stoly – každý priestor je samostatná skupina na ploche.
 area_new_ph	Nová oblasť / miestnosť (napr. klimatizácia, záhrada)
 add_area	Pridať oblasť
 area_added	Plocha „{name}“ pripravená – pridajte do nej jedálenské stoly
@@ -1201,7 +1201,7 @@ confirm	Potvrďte
 menu_search_ph	Vyhľadajte položku alebo krátky kód
 customer_paid_ph	Zákazník zaplatil
 tip_ph	Prepitné
-table_area_ph	Oblasť (napr. Dine In, Parcel, AC)
+table_area_ph	Priestor (V reštaurácii, So sebou…)
 table_range_ph	Veľa naraz: D1-D20
 add_these_tables	Pridajte tieto jedálenské stoly
 remove_these_tables	Odstráňte tieto jedálenské stoly
@@ -1364,7 +1364,7 @@ resv_add	Rezervovať
 resv_seat	Sediaci
 resv_none	Neprichádzajú žiadne rezervácie.
 guests_word	hostia
-delivery_by_ph	Doručenie (meno jazdca alebo personálu)
+delivery_by_ph	Doručuje (kuriér / personál)
 kitchen_all_day	Na varenie teraz: {items}
 kitchen_all_day_head	Teraz variť
 kitchen_tab_live	Naživo

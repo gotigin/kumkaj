@@ -28,7 +28,7 @@ buy	Исплати
 books	Дневна книга
 books_help	Денешниот став. Резервација = пакети. Исплати = сметки и трошоци на превозникот. Страни = испраќачи и превозници.
 buy_help	Ваучери за трошоци и сметки на превозникот (пари надвор). На сметката останува на партиската книга.
-sell_money_in	Резервирајте парцела
+sell_money_in	Резервирајте пратка
 buy_money_out	Трошоци / сметка на превозникот
 record_purchase	Зачувајте го купувањето
 add_expense	Потврда за трошоци
@@ -89,7 +89,7 @@ note_ph	Забелешка (изборно)
 rounded	ЗАКЛУЖЕНИ
 split	Сплит
 counter	Шанк
-parcel	Парцела
+parcel	Пратка
 order	Ресторан нарачка
 sales	Резервации
 sales_refunds	Резервации и рефундирање
@@ -150,7 +150,7 @@ origin_address_ph	Адреса на подигање / потекло
 booking_consignor_heading	Испраќач (клиент / испраќач)
 booking_consignee_heading	Примач (примач)
 booking_consignor_hint	Изберете забава за пополнување или оставете празно за прошетка. Потребно е за домашен пикап и RTO.
-booking_consignee_hint	Примач на парцелата. Оставете празно за отпуштањата на шалтерот.
+booking_consignee_hint	Примач на пратката. Оставете празно за пратки предадени на шалтерот.
 weight_kg_ph	Вистински кг
 length_cm_ph	L cm
 breadth_cm_ph	Б см
@@ -260,7 +260,7 @@ add_conversion	Додадете конверзија
 add_item_plain	Додадете ставка од менито
 add_note	Додадете белешка
 add_opening_balance	Додадете салдо за отворање
-add_rider	Додадете јавач
+add_rider	Додадете курир
 add_staff	Додадете персонал
 add_unit	Додадете единица
 add_use_name	Додадете / користете го ова име
@@ -359,7 +359,7 @@ counter_agency_ph	Бројач / име на агенција (изборно)
 create_backup	Направете резервна копија
 day_close_summary	Краток преглед на денот
 delete_party	Избришете го избраниот клиент или добавувач
-dispatch_to_rider	Испраќање резервирано → возач
+dispatch_to_rider	Испрати ги резервираните → курир
 docket_charge_ph	Docket полнење
 declared_value_ph	Декларирана вредност
 contents_ph	Содржини
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Недостапно
 ndr_door_locked	Вратата е заклучена
 ndr_other	Друго
 ndr_refused	Одби
-out_for_delivery	Излезете за испорака
+out_for_delivery	Во испорака
 print_drs	Печати DRS
 print_run_sheet	Печатете го листот
 reattempt	Повторен обид
 rider_cod_handed_ph	КОД предаден
-settle_rider_cod	Порамнете јавач COD
+settle_rider_cod	Порамнете го COD на курирот
 mode_desk	Биро
-mode_rider	Јавач
+mode_rider	Курир
 waiting_office	чекаат да стигнат до канцеларијата
 capture_signature	Снимајте потпис
 incoming_manifest	Дојдовен манифест
@@ -415,7 +415,7 @@ pickup_request	Барање за подигање
 pickup_run	Работа на пикап
 auto_assign_area	Автоматско доделување област
 reorder_stops	Повторното нарачка престанува
-settle_rider_pay	Подмирете ја платата на возачот
+settle_rider_pay	Подмирете ја платата на курирот
 vehicle_inspect	Преглед на возилото
 print_docket	Испечати доктрина
 franchise_statement	Изјава за франшиза
@@ -458,10 +458,10 @@ refund	Рефундирање
 remit_cod	Испрати КОД (партија)
 remove_selected	Отстранете го избраното
 restore_backup	Врати резервна копија
-rider_name_ph	Име на возачот
-rider_phone_ph	Рајдер телефон
-riders	Јавачи
-riders_own_fleet	Јавачи (сопствена флота)
+rider_name_ph	Име на курирот
+rider_phone_ph	Телефон на курирот
+riders	Курири
+riders_own_fleet	Курири (сопствена флота)
 rollup	Збирен преглед
 save_booking_measures	Зачувајте мерки за резервација
 save_brand	Зачувај бренд
@@ -824,19 +824,19 @@ lane_to_dispatch	За испраќање
 lane_with_carrier	Со носач
 lane_failed	Не успеа
 lane_done_today	Готово денес
-ops_board_help	Парцели до каде се во денешното работење. Допрете ги пакетите (или скенирајте ги) за да ги соберете, а потоа дејствувајте на сите избрани одеднаш - секоја лента нуди само потези што одговараат на неа.
+ops_board_help	Пратки според тоа каде се во денешната работа. Допрете ги пратките (или скенирајте ги) за да ги изберете, а потоа дејствувајте на сите избрани одеднаш — секоја лента нуди само потези што ѝ одговараат.
 lane_empty	Ништо овде во моментов.
 picked_fmt	Избран е {n}
 pick_all	Изберете ги сите
 bag_for_carrier	Рака до носач
-send_with_rider	Испрати со возач
+send_with_rider	Испрати со курир
 out_again	Повторно надвор
-return_to_sender	Врати се на испраќачот
+return_to_sender	Врати на испраќачот
 runs_bags_heading	Неодамнешни трки и торби
 print_word	Печати
 bag_word	Торба за носач
-run_word	Јавач трча
-parcels_fmt	{n} парцели
+run_word	Курирска тура
+parcels_fmt	{n} пратки
 parcel_history	Историја
 attempt_fmt	Обидете се {n}
 pieces_short_fmt	{n} ЕЕЗ
@@ -847,15 +847,15 @@ cod_on_road	COD се уште е на пат
 cod_owed_consignors	Собрано - да им плати на испраќачите
 cod_rto_fees	Да се ​​соберат надоместоци за RTO
 cod_to_hand_in	КОД за предавање
-parcel_one_fmt	{n} парцела
+parcel_one_fmt	{n} пратка
 facet_bank_title	Извештаи
 facet_bank_help	Дневни книги, стареење на клиентите или добавувачите, банкарските постови и периодот на P&L.
 facet_ops_title	Пратки и испраќање
-facet_ops_help	Скенирајте или напишете AWB → Најдете, потоа напред / отпечатете етикета / COD. Испраќање до возач или превозник.
+facet_ops_help	Скенирајте или напишете AWB → Најди, потоа напред / отпечатете етикета / COD. Предавање на курир или превозник.
 facet_cod_title	КОД регистар
 facet_cod_help	Соберете при испорака, а потоа испратете го на испраќачот.
-facet_riders_title	Јавачи (сопствена флота)
-facet_riders_help	Додајте возачи, а потоа испратете резервирани AWB од Ops.
+facet_riders_title	Курири (сопствена флота)
+facet_riders_help	Додајте курири, а потоа испратете ги резервираните AWB од Ops.
 against_bill_ph	Против сметката за гости # погоре (незадолжително)
 aliases_ph	Алијаси - други имиња, одвоени со запирки
 amount_blank_full_ph	Износ (празно = целосно салдо)

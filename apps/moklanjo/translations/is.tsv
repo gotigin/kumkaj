@@ -260,7 +260,7 @@ add_conversion	Bæta við umbreytingu
 add_item_plain	Bæta við valmyndaratriði
 add_note	Bæta við athugasemd
 add_opening_balance	Bættu við opnunarjöfnuði
-add_rider	Bæta við knapa
+add_rider	Bæta við sendli
 add_staff	Bæta við starfsfólki
 add_unit	Bæta við einingu
 add_use_name	Bættu við / notaðu þetta nafn
@@ -359,7 +359,7 @@ counter_agency_ph	Nafn teljara / stofnunar (valfrjálst)
 create_backup	Búðu til öryggisafrit
 day_close_summary	Dagsloka samantekt
 delete_party	Eyða völdum viðskiptavini eða birgi
-dispatch_to_rider	Sending bókuð → knapi
+dispatch_to_rider	Senda bókaðar → sendill
 docket_charge_ph	Hlaðagjald
 declared_value_ph	Uppgefið verðmæti
 contents_ph	Innihald
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Ekki tiltækt
 ndr_door_locked	Hurð læst
 ndr_other	Annað
 ndr_refused	Neitaði
-out_for_delivery	Út til afhendingar
+out_for_delivery	Í útkeyrslu
 print_drs	Prentaðu DRS
 print_run_sheet	Prentunarblað
 reattempt	Reyndu aftur
 rider_cod_handed_ph	COD skilað inn
-settle_rider_cod	Settu knapa COD
+settle_rider_cod	Gera upp COD sendils
 mode_desk	Skrifborð
-mode_rider	Knapi
+mode_rider	Sendill
 waiting_office	bíða eftir að komast á skrifstofuna
 capture_signature	Handtaka undirskrift
 incoming_manifest	Innkomin upplýsingaskrá
@@ -415,7 +415,7 @@ pickup_request	Afhendingarbeiðni
 pickup_run	Pickup keyrsla
 auto_assign_area	Sjálfvirkt úthluta svæði
 reorder_stops	Endurröðun hættir
-settle_rider_pay	Gera upp laun knapa
+settle_rider_pay	Gera upp laun sendils
 vehicle_inspect	Bifreiðaskoðun
 print_docket	Prenta skjal
 franchise_statement	Sérleyfisyfirlýsing
@@ -458,10 +458,10 @@ refund	Endurgreiðsla
 remit_cod	Skilaskil (flokkur)
 remove_selected	Fjarlægja valið
 restore_backup	Endurheimta öryggisafrit
-rider_name_ph	Nafn knapa
-rider_phone_ph	Rider sími
-riders	Reiðmenn
-riders_own_fleet	Reiðmenn (eigin floti)
+rider_name_ph	Nafn sendils
+rider_phone_ph	Sími sendils
+riders	Sendlar
+riders_own_fleet	Sendlar (eigin floti)
 rollup	Samantekt
 save_booking_measures	Vistaðu bókunarráðstafanir
 save_brand	Vista vörumerki
@@ -819,7 +819,7 @@ trk_booked	Bókað
 trk_picked_up	Tekið upp
 trk_in_transit	Í flutningi
 trk_delivered	Afhent
-trk_rto	Aftur til sendanda
+trk_rto	Á leið aftur til sendanda
 lane_to_dispatch	Til að senda
 lane_with_carrier	Með burðarefni
 lane_failed	Mistókst
@@ -829,13 +829,13 @@ lane_empty	Ekkert hérna núna.
 picked_fmt	{n} valinn
 pick_all	Veldu allt
 bag_for_carrier	Hand til burðarmanns
-send_with_rider	Senda með knapa
+send_with_rider	Senda með sendli
 out_again	Út aftur
-return_to_sender	Fara aftur til sendanda
+return_to_sender	Endursenda til sendanda
 runs_bags_heading	Nýleg keyrsla og töskur
 print_word	Prenta
 bag_word	Burðarpoka
-run_word	Knapahlaup
+run_word	Sendlaferð
 parcels_fmt	{n} bögglar
 parcel_history	Saga
 attempt_fmt	Tilraun {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} pakki
 facet_bank_title	Skýrslur
 facet_bank_help	Dagbækur, öldrun viðskiptavina eða birgja, bankafærslur og tímabilsreikningur.
 facet_ops_title	Sendingar & sendingar
-facet_ops_help	Skannaðu eða sláðu inn AWB → Finndu, farðu síðan fram / prentaðu merkimiða / COD. Sending til knapa eða flytjanda.
+facet_ops_help	Skannaðu eða sláðu inn AWB → Finna, færðu síðan áfram / prentaðu miða / COD. Afhending til sendils eða flytjanda.
 facet_cod_title	COD skrá
 facet_cod_help	Sæktu við afhendingu, sendu síðan til sendanda.
-facet_riders_title	Reiðmenn (eigin floti)
-facet_riders_help	Bættu við reiðmönnum og sendu síðan bókaða AWB frá Ops.
+facet_riders_title	Sendlar (eigin floti)
+facet_riders_help	Bættu við sendlum og sendu síðan bókaðar AWB frá Ops.
 against_bill_ph	Gegn reikningi # hér að ofan (valfrjálst)
 aliases_ph	Samheiti — önnur nöfn, aðskilin með kommu
 amount_blank_full_ph	Upphæð (autt = heildarstaða)

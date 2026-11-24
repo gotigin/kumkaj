@@ -33,7 +33,7 @@ buy_money_out	Δαπάνες / λογαριασμός μεταφορέα
 record_purchase	Καταχώριση αγοράς
 add_expense	Δελτίο εξόδου
 bank_book	Βιβλίο τράπεζας
-credit_help	Το αναγνωριστικό κόμματος είναι μοναδικό (τα ονόματα μπορεί να επαναληφθούν). Ρόλοι: Αποστολέας (AR), Μεταφορέας (AP) ή και τα δύο σε αυτό το αναγνωριστικό. Τα καθολικά παραμένουν χωριστά. οι αναφορές δείχνουν καθαρά.
+credit_help	Το αναγνωριστικό συναλλασσόμενου είναι μοναδικό (τα ονόματα μπορεί να επαναλαμβάνονται). Ρόλοι: Αποστολέας (AR), Μεταφορέας (AP) ή και τα δύο στο ίδιο αναγνωριστικό. Τα καθολικά μένουν χωριστά· οι αναφορές δείχνουν το καθαρό.
 party_kind_ph	Προσαρμοσμένος ρόλος (προαιρετικός) — ή πατήστε ένα τσιπ παραπάνω
 parties_list_heading	Αποθηκευμένοι συναλλασσόμενοι
 reports_help	Ημερολόγιο ημέρας, χρεώστες και πιστωτές, βιβλίο τράπεζας, δελτία εξόδων, αποτελέσματα.
@@ -260,7 +260,7 @@ add_conversion	Προσθήκη μετατροπής
 add_item_plain	Προσθήκη είδους
 add_note	Προσθήκη σημείωσης
 add_opening_balance	Προσθήκη αρχικού υπολοίπου
-add_rider	Προσθήκη αναβάτη
+add_rider	Προσθήκη διανομέα
 add_staff	Προσθήκη προσωπικού
 add_unit	Προσθήκη μονάδας
 add_use_name	Προσθήκη / χρήση αυτού του ονόματος
@@ -359,7 +359,7 @@ counter_agency_ph	Όνομα μετρητή/πρακτορείου (προαιρ
 create_backup	Δημιουργία αντιγράφου ασφαλείας
 day_close_summary	Σύνοψη κλεισίματος ημέρας
 delete_party	Διαγραφή επιλεγμένου συναλλασσόμενου
-dispatch_to_rider	Η αποστολή έγινε κράτηση → αναβάτης
+dispatch_to_rider	Αποστολή κρατήσεων → διανομέας
 docket_charge_ph	Docket χρέωση
 declared_value_ph	Δηλωμένη αξία
 contents_ph	Περιεχόμενα
@@ -368,7 +368,7 @@ insurance_label	Ασφάλιση
 yes_label	Ναί
 no_label	Οχι
 print_route_label	Εκτύπωση διαδρομής
-new_party_kind_label	Νέο είδος κόμματος
+new_party_kind_label	Νέο είδος συναλλασσόμενου
 done_open_books	Έτοιμο — άνοιγμα βιβλίων
 export_day	Εξαγωγή ημέρας
 extra_note_expense_ph	Επιπλέον σημείωση στο τελευταίο έξοδο
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Μη διαθέσιμο
 ndr_door_locked	Πόρτα κλειδωμένη
 ndr_other	Αλλος
 ndr_refused	Αρνήθηκε
-out_for_delivery	Έξω για παράδοση
+out_for_delivery	Σε διανομή
 print_drs	Εκτύπωση DRS
 print_run_sheet	Εκτύπωση φύλλου εκτέλεσης
 reattempt	Επιχειρώ πάλιν
 rider_cod_handed_ph	Παράδοση αντικαταβολής
-settle_rider_cod	Τακτοποίηση αναβάτη COD
+settle_rider_cod	Εκκαθάριση COD διανομέα
 mode_desk	Γραφείο
-mode_rider	Καβαλάρης
+mode_rider	Διανομέας
 waiting_office	περιμένει να φτάσει στο γραφείο
 capture_signature	Λήψη υπογραφής
 incoming_manifest	Εισερχόμενη δήλωση
@@ -415,7 +415,7 @@ pickup_request	Αίτημα παραλαβής
 pickup_run	Εκτέλεση παραλαβής
 auto_assign_area	Αυτόματη εκχώρηση περιοχής
 reorder_stops	Η αναδιάταξη σταματά
-settle_rider_pay	Διακανονισμός αμοιβής αναβάτη
+settle_rider_pay	Εξόφληση αμοιβής διανομέα
 vehicle_inspect	Έλεγχος οχήματος
 print_docket	Εκτύπωση θήκης
 franchise_statement	Δήλωση Franchise
@@ -458,10 +458,10 @@ refund	Επιστροφή
 remit_cod	Απόδοση αντικαταβολής (συναλλασσόμενος)
 remove_selected	Αφαίρεση επιλεγμένου
 restore_backup	Επαναφορά αντιγράφου
-rider_name_ph	Όνομα αναβάτη
-rider_phone_ph	Τηλέφωνο αναβάτη
-riders	Αναβάτες
-riders_own_fleet	Αναβάτες (ιδικός στόλος)
+rider_name_ph	Όνομα διανομέα
+rider_phone_ph	Τηλέφωνο διανομέα
+riders	Διανομείς
+riders_own_fleet	Διανομείς (δικός μας στόλος)
 rollup	Σύνοψη
 save_booking_measures	Αποθήκευση μέτρων κράτησης
 save_brand	Αποθήκευση επωνυμίας
@@ -819,7 +819,7 @@ trk_booked	Κράτηση
 trk_picked_up	Σήκωσε
 trk_in_transit	Κατά τη μεταφορά
 trk_delivered	Παραδόθηκε
-trk_rto	Επιστροφή στον αποστολέα
+trk_rto	Επιστρέφεται στον αποστολέα
 lane_to_dispatch	Για αποστολή
 lane_with_carrier	Με μεταφορέα
 lane_failed	Αποτυχημένος
@@ -829,13 +829,13 @@ lane_empty	Τίποτα εδώ αυτή τη στιγμή.
 picked_fmt	Επιλέχθηκε το {n}
 pick_all	Διάλεξε όλα
 bag_for_carrier	Χέρι σε μεταφορέα
-send_with_rider	Αποστολή με αναβάτη
+send_with_rider	Αποστολή με διανομέα
 out_again	Ξανά έξω
 return_to_sender	Επιστροφή στον αποστολέα
 runs_bags_heading	Πρόσφατες διαδρομές και τσάντες
 print_word	Αποτύπωμα
 bag_word	Τσάντα μεταφοράς
-run_word	Τρέξιμο αναβάτη
+run_word	Δρομολόγιο διανομέα
 parcels_fmt	Δέματα {n}
 parcel_history	Ιστορία
 attempt_fmt	Προσπάθεια {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	δέμα {n}
 facet_bank_title	Αναφορές
 facet_bank_help	Ημερολόγια, παλαιότητα χρεών, κινήσεις τράπεζας και Α/Ζ περιόδου.
 facet_ops_title	Αποστολές & αποστολή
-facet_ops_help	Σάρωση ή πληκτρολόγηση AWB → Εύρεση και μετά προώθηση / εκτύπωση ετικέτας / COD. Αποστολή σε αναβάτη ή μεταφορέα.
+facet_ops_help	Σαρώστε ή πληκτρολογήστε AWB → Εύρεση, μετά προώθηση / εκτύπωση ετικέτας / COD. Παράδοση σε διανομέα ή μεταφορέα.
 facet_cod_title	Μητρώο αντικαταβολής
 facet_cod_help	Παραλαβή κατά την παράδοση και, στη συνέχεια, παράδοση στον αποστολέα.
-facet_riders_title	Αναβάτες (ιδικός στόλος)
-facet_riders_help	Προσθέστε αναβάτες και, στη συνέχεια, στείλτε τα κρατημένα AWB από το Ops.
+facet_riders_title	Διανομείς (δικός μας στόλος)
+facet_riders_help	Προσθέστε διανομείς και μετά στείλτε τα κρατημένα AWB από το Ops.
 against_bill_ph	Έναντι λογαριασμού # πάνω (προαιρετικό)
 aliases_ph	Άλλα ονόματα — χωρισμένα με κόμμα
 amount_blank_full_ph	Ποσό (κενό = όλο το υπόλοιπο)

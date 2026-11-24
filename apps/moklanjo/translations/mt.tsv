@@ -260,7 +260,7 @@ add_conversion	Żid il-konverżjoni
 add_item_plain	Żid oġġett
 add_note	Żid nota
 add_opening_balance	Żid il-bilanċ tal-ftuħ
-add_rider	Żid rikkieb
+add_rider	Żid kurrier
 add_staff	Żid persunal
 add_unit	Żid l-unità
 add_use_name	Żid / uża dan l-isem
@@ -359,7 +359,7 @@ counter_agency_ph	Isem tal-bank/aġenzija (mhux obbligatorju)
 create_backup	Oħloq backup
 day_close_summary	Sommarju tal-għeluq tal-ġurnata
 delete_party	Ħassar il-parti magħżula
-dispatch_to_rider	Dispaċċ ibbukkjat → rikkieb
+dispatch_to_rider	Ibgħat il-bukkjati → kurrier
 docket_charge_ph	Ħlas tad-docket
 declared_value_ph	Valur iddikjarat
 contents_ph	Kontenut
@@ -405,9 +405,9 @@ print_drs	Stampa DRS
 print_run_sheet	Ipprintja l-folja tal-ġirja
 reattempt	Ipprova mill-ġdid
 rider_cod_handed_ph	COD mgħoddi
-settle_rider_cod	Issolvi rikkieb COD
+settle_rider_cod	Issolvi l-COD tal-kurrier
 mode_desk	Skrivanija
-mode_rider	Rikkieb
+mode_rider	Kurrier
 waiting_office	stennija biex tasal fl-uffiċċju
 capture_signature	Qbid firma
 incoming_manifest	Manifest deħlin
@@ -415,7 +415,7 @@ pickup_request	Talba għall-ġbir
 pickup_run	Ġirja tal-ġbir
 auto_assign_area	Awto-assenja żona
 reorder_stops	Ordna mill-ġdid waqfiet
-settle_rider_pay	Issolvi l-paga tar-rikkieb
+settle_rider_pay	Issolvi l-paga tal-kurrier
 vehicle_inspect	Spezzjoni tal-vettura
 print_docket	Stampa dokument
 franchise_statement	Dikjarazzjoni ta' franchise
@@ -458,10 +458,10 @@ refund	Rifużjoni
 remit_cod	Remit COD (parti)
 remove_selected	Neħħi magħżula
 restore_backup	Irrestawra l-backup
-rider_name_ph	Isem ir-rikkieb
-rider_phone_ph	Telefon rikkieb
-riders	Kurjeri
-riders_own_fleet	Riders (flotta proprja)
+rider_name_ph	Isem il-kurrier
+rider_phone_ph	Telefon tal-kurrier
+riders	Kurriera
+riders_own_fleet	Kurriera (flotta proprja)
 rollup	Arja mtellgħa
 save_booking_measures	Ħlief miżuri ta 'prenotazzjoni
 save_brand	Salva marka
@@ -829,13 +829,13 @@ lane_empty	Xejn hawn bħalissa.
 picked_fmt	{n} qabad
 pick_all	Agħżel kollha
 bag_for_carrier	Idejn għat-trasportatur
-send_with_rider	Ibgħat mar-rikkieb
+send_with_rider	Ibgħat mal-kurrier
 out_again	Mill-ġdid
 return_to_sender	Ritorn lill-mittent
 runs_bags_heading	Runs reċenti u basktijiet
 print_word	Stampa
 bag_word	Borża tal-ġarr
-run_word	Ġirja tal-kurjer
+run_word	Dawra tal-kurrier
 parcels_fmt	Pakketti {n}
 parcel_history	Storja
 attempt_fmt	Ipprova {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	pakkett {n}
 facet_bank_title	Rapporti
 facet_bank_help	Kotba ta' jum, anzjanità tal-partiti, karigi bankarji, u P&L tal-perjodu.
 facet_ops_title	Kunsinni u dispaċċ
-facet_ops_help	Skennja jew ittajpja AWB → Sib, imbagħad avvanza / ipprintja tikketta / COD. Dispaċċ lil rikkieb jew trasportatur.
+facet_ops_help	Skennja jew ittajpja AWB → Sib, imbagħad avvanza / ipprintja tikketta / COD. Għaddi lill-kurrier jew lit-trasportatur.
 facet_cod_title	Reġistru COD
 facet_cod_help	Iġbor mal-kunsinna, imbagħad ibgħat lill-konsenjatur.
-facet_riders_title	Riders (flotta proprja)
-facet_riders_help	Żid rikkieba, imbagħad ibgħat AWBs ibbukkjati minn Ops.
+facet_riders_title	Kurriera (flotta proprja)
+facet_riders_help	Żid kurriera, imbagħad ibgħat l-AWBs ibbukkjati minn Ops.
 against_bill_ph	Kontra l-kont # ta' fuq (mhux obbligatorju)
 aliases_ph	Aliases — ismijiet oħra, separati bil-virgola
 amount_blank_full_ph	Ammont (vojt = bilanċ sħiħ)

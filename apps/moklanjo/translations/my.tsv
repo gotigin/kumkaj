@@ -260,7 +260,7 @@ add_conversion	ပြောင်းလဲ​မှု​ထည့်​ပါ
 add_item_plain	အချက်အလက်​ထည့်​မယ်
 add_note	မှတ်စု​ထည့်​ပါ
 add_opening_balance	အစ​ရှိ​သော​ငွေစာရင်း​ထည့်​ပါ
-add_rider	မြင်းစီး​သူ​ထည့်​ပါ။
+add_rider	ပို့ဆောင်​သူ ထည့်​ပါ
 add_staff	ဝန်ထမ်း​ထည့်​ပါ
 add_unit	ယူနစ်​ထည့်​ရန်
 add_use_name	ဤ​နာမည်​ကို​ထည့်​ရန် / အသုံးပြု​ရန်
@@ -359,7 +359,7 @@ counter_agency_ph	ကောင်တာ/အေဂျင်စီ​အမည် 
 create_backup	မိတ္တူ တည်ဆောက်​ရန်
 day_close_summary	နေ့​အဆုံး အကျဉ်းချုပ်
 delete_party	ရွေးချယ်​ထား​သော ပါတီ​ကို ဖျက်​ရန်
-dispatch_to_rider	Dispatch booked → မြင်းစီး​သူ
+dispatch_to_rider	ဘွတ်​ကင်​ထားသည်​များ → ပို့ဆောင်​သူ
 docket_charge_ph	အခကြေးငွေ ဘောက်ချာ
 declared_value_ph	တန်ဖိုး​ကို​ကြေငြာ​ခဲ့​သည်။
 contents_ph	မာတိကာ
@@ -407,7 +407,7 @@ reattempt	ပြန်​ကြိုးစား​ပါ။
 rider_cod_handed_ph	COD ပေးအပ်​ခဲ့​သည်။
 settle_rider_cod	စီးနင်း​သူ COD ကို အခြေချ​ပါ။
 mode_desk	စားပွဲ​ခုံ
-mode_rider	မြင်းစီး​သူ
+mode_rider	ပို့ဆောင်​သူ
 waiting_office	ရုံး​ရောက်​ဖို့ စောင့်​နေ​တယ်။
 capture_signature	လက်မှတ်​ရိုက်​ပါ။
 incoming_manifest	အဝင် ထင်ရှား​သည်။
@@ -415,7 +415,7 @@ pickup_request	ထုတ်ယူ​ရန် တောင်းဆိုချ�
 pickup_run	ပြေး​ကောက်
 auto_assign_area	အလိုအလျောက် သတ်မှတ်​ဧရိယာ
 reorder_stops	ပြန်​စီ​ရန် မှတ်တိုင်​များ
-settle_rider_pay	အခြေချ မြင်းစီး​ခ
+settle_rider_pay	ပို့ဆောင်​သူ လုပ်ခ ရှင်း​ပါ
 vehicle_inspect	ယာဉ်​စစ်ဆေး​ခြင်း။
 print_docket	ပ​ရင့်​ထုတ်​သည့် စာရွက်
 franchise_statement	Franchise ကြေညာချက်
@@ -458,9 +458,9 @@ refund	ပြန်​အမ်း
 remit_cod	COD (ပါတီ) လွှဲ​ပေး​ရန်၊
 remove_selected	ရွေး​ထား​ကို​ဖယ်ရှား​မည်
 restore_backup	မူလ​ဘက်ထရီ​ကို​ပြန်လည်​ထည့်​မည်
-rider_name_ph	မြင်းစီး​သူ​အမည်
-rider_phone_ph	မြင်းစီး​သူ​ဖုန်း
-riders	မြင်းစီး​သူ
+rider_name_ph	ပို့ဆောင်​သူ အမည်
+rider_phone_ph	ပို့ဆောင်​သူ ဖုန်း
+riders	ပို့ဆောင်​သူများ
 riders_own_fleet	Riders (ကိုယ်ပိုင်​ရေတပ်)
 rollup	စုစုပေါင်း
 save_booking_measures	ဘွတ်​ကင်​သိမ်း​မှု​တွေ
@@ -829,13 +829,13 @@ lane_empty	အခု ဒီမှာ ဘာ​မှ မ​ရှိ​ဘူး
 picked_fmt	{n} ကို ရွေးချယ်​ခဲ့​သည်။
 pick_all	အားလုံး​ကို ရွေး​ပါ။
 bag_for_carrier	သယ်ဆောင်​သူ​ထံသို့ လက်​ဆွဲ​ပါ။
-send_with_rider	မြင်းစီး​သူ​နှင့်​အတူ ပို့​ပါ။
+send_with_rider	ပို့ဆောင်​သူ​ဖြင့် ပို့​ပါ
 out_again	ထွက်​လာ​ပြန်​တယ်။
 return_to_sender	ပေး​ပို့​သူ​ထံ ပြန်သွား​ရန်
 runs_bags_heading	လတ်တလော​ပြေး​ခြင်း​နှင့် အိတ်​များ
 print_word	ညောင်ပင်
 bag_word	သယ်ဆောင်​အိတ်
-run_word	မြင်းစီး​သူ​ပြေး
+run_word	ပို့ဆောင်​ခရီးစဉ်
 parcels_fmt	{n} ပါဆယ်​ထုပ်​များ
 parcel_history	သမိုင်း
 attempt_fmt	{n} ကို ကြိုးစား​ပါ။

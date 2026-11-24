@@ -1364,7 +1364,7 @@ resv_add	Irriżerva
 resv_seat	Mdawwar
 resv_none	L-ebda prenotazzjonijiet ma qegħdin jiġu.
 guests_word	mistiedna
-delivery_by_ph	Kunsinna minn (iben il-merħla jew l-isem tal-persunal)
+delivery_by_ph	Kunsinna minn (kurrier jew persunal)
 kitchen_all_day	Biex issajjar issa: {items}
 kitchen_all_day_head	Biex issajjar issa
 kitchen_tab_live	Ħaj

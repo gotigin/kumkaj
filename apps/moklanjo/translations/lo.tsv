@@ -90,7 +90,7 @@ rounded	ຮອບ
 split	ແຍກ
 counter	ເຄົາ​ເຕີ
 parcel	ພັດສະດຸ
-order	ຄຳສັ່ງ
+order	ການ​ສັ່ງ​ຊື້
 sales	ການ​ຈອງ
 sales_refunds	ການ​ຈອງ & ການ​ຄືນ​ເງິນ
 day_close	ປິດ​ມື້
@@ -110,7 +110,7 @@ sidebar_hidden_hint	ເຊື່ອງ​ໄວ້​ຈາກ​ແຖບ
 sidebar_menu_items	ອັດຕາ
 sidebar_enable_all	ເປີດ​ໃຊ້​ທັງໝົດ
 sidebar_disable_all	ປິດ​ໃຊ້ງານ​ທັງໝົດ
-sidebar_order_saved	ບັນທຶກ​ຄຳສັ່ງ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
+sidebar_order_saved	ບັນທຶກ​ລຳດັບ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
 sidebar_visibility_saved	ບັນທຶກ​ການ​ເບິ່ງເຫັນ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
 amounts_hide	ເຊື່ອງ
 amounts_show	ສະແດງ

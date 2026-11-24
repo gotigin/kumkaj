@@ -260,7 +260,7 @@ add_conversion	Иловаи табдил
 add_item_plain	Иловаи мол
 add_note	Иловаи ёддошт
 add_opening_balance	Иловаи боқимондаи оғоз
-add_rider	Савора илова кунед
+add_rider	Илова кардани расонанда
 add_staff	Иловаи корманд
 add_unit	Иловаи воҳид
 add_use_name	Илова / истифодаи ин ном
@@ -359,7 +359,7 @@ counter_agency_ph	Номи ҳисобкунак / агентӣ (ихтиёрӣ)
 create_backup	Сохтани нусха
 day_close_summary	Хулосаи пӯшидани рӯз
 delete_party	Нест кардани тарафи интихобшуда
-dispatch_to_rider	Интиқол фармоиш дода шуд → савора
+dispatch_to_rider	Фиристодани фармоишҳо → расонанда
 docket_charge_ph	Пардохти док
 declared_value_ph	Арзиши эълоншуда
 contents_ph	Мундариҷа
@@ -405,9 +405,9 @@ print_drs	DRS чоп кунед
 print_run_sheet	Варақаи иҷроро чоп кунед
 reattempt	Кӯшиши такрорӣ
 rider_cod_handed_ph	COD супурда шуд
-settle_rider_cod	Савораи COD-ро ҳал кунед
+settle_rider_cod	Ҳисоби COD-и расонанда
 mode_desk	Мизи миз
-mode_rider	Савор
+mode_rider	Расонанда
 waiting_office	мунтазири расидан ба идора
 capture_signature	Гирифтани имзо
 incoming_manifest	Манифести воридотӣ
@@ -415,7 +415,7 @@ pickup_request	Дархости гирифтан
 pickup_run	Давраи гирифтани
 auto_assign_area	Минтақаи таъини худкор
 reorder_stops	Тартиби дубора қатъ мешавад
-settle_rider_pay	Музди савораро ҳал кунед
+settle_rider_pay	Пардохти музди расонанда
 vehicle_inspect	Санҷиши воситаҳои нақлиёт
 print_docket	Ҳуҷҷати чоп
 franchise_statement	Изҳороти франшиза
@@ -458,10 +458,10 @@ refund	Баргашт
 remit_cod	Интиқоли COD (ҳизб)
 remove_selected	Хориҷи интихобшуда
 restore_backup	Барқарор кардани нусха
-rider_name_ph	Номи ронанда
-rider_phone_ph	Телефони ронанда
-riders	Саворон
-riders_own_fleet	Савораҳо (парки худӣ)
+rider_name_ph	Номи расонанда
+rider_phone_ph	Телефони расонанда
+riders	Расонандагон
+riders_own_fleet	Расонандагон (парки худӣ)
 rollup	Ҷамъбаст
 save_booking_measures	Тадбирҳои фармоишро сарфа кунед
 save_brand	Захираи нишон
@@ -829,13 +829,13 @@ lane_empty	Дар ин ҷо ҳоло ҳеҷ чиз нест.
 picked_fmt	{n} интихоб шуд
 pick_all	Ҳамаро интихоб кунед
 bag_for_carrier	Даст ба интиқолдиҳанда
-send_with_rider	Бо савора фиристед
+send_with_rider	Бо расонанда фиристодан
 out_again	Боз берун
 return_to_sender	Бозгашт ба ирсолкунанда
 runs_bags_heading	Давраи охирин ва сумкаҳо
 print_word	Чоп кардан
 bag_word	Халтаи интиқолдиҳанда
-run_word	Давидани савора
+run_word	Рейси расонанда
 parcels_fmt	бастаҳои {n}
 parcel_history	Таърих
 attempt_fmt	Кӯшиш {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	бастаи {n}
 facet_bank_title	Ҳисобот
 facet_bank_help	Дафтарҳои рӯз, синну соли тарафҳо, сабтҳои бонк ва Ф&З-и давра.
 facet_ops_title	Интиқол ва интиқол
-facet_ops_help	Скан кунед ё нависед AWB → Ҷустуҷӯ, сипас пешравӣ / чопи тамға / COD. Ба ронанда ё интиқолдиҳанда ирсол кунед.
+facet_ops_help	AWB-ро скан кунед ё нависед → Ҷустуҷӯ, сипас пеш баред / тамғаро чоп кунед / COD. Ба расонанда ё интиқолдиҳанда супоред.
 facet_cod_title	Феҳристи COD
 facet_cod_help	Ҳангоми интиқол ҷамъоварӣ кунед ва сипас ба борфиристед.
-facet_riders_title	Савораҳо (парки худӣ)
-facet_riders_help	Савораҳо илова кунед ва сипас AWB-ҳои фармоишшударо аз Ops фиристед.
+facet_riders_title	Расонандагон (парки худӣ)
+facet_riders_help	Расонандагонро илова кунед ва сипас AWB-ҳои фармоишшударо аз Ops фиристед.
 against_bill_ph	Муқобили ҳисоби # боло (ихтиёрӣ)
 aliases_ph	Номҳои дигар — номҳои дигар, бо вергул ҷудо
 amount_blank_full_ph	Маблағ (холӣ = тамоми боқимонда)

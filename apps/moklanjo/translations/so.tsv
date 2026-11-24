@@ -400,7 +400,7 @@ ndr_customer_unavailable	Lama heli karo
 ndr_door_locked	Albaabka ayaa xidhan
 ndr_other	Mid kale
 ndr_refused	diiday
-out_for_delivery	U soo baxay dhalmada
+out_for_delivery	Gaarsiin ku jira
 print_drs	Daabac DRS
 print_run_sheet	Daabac xaashi orod
 reattempt	Isku day
@@ -819,7 +819,7 @@ trk_booked	Boossaday
 trk_picked_up	La soo qaaday
 trk_in_transit	Gaadiidka
 trk_delivered	la keenay
-trk_rto	Ku noqoshada soo-diraha
+trk_rto	Loo celinayo diraha
 lane_to_dispatch	In la diro
 lane_with_carrier	Qaade
 lane_failed	Fashilmay
@@ -831,7 +831,7 @@ pick_all	Dhammaan dooro
 bag_for_carrier	Gacanta loo qaado
 send_with_rider	La dir fuushan
 out_again	Dib u bax
-return_to_sender	Ku noqo soodiraha
+return_to_sender	U celi diraha
 runs_bags_heading	Orodkii ugu dambeeyay & boorsooyinka
 print_word	Daabac
 bag_word	Shandad qaade

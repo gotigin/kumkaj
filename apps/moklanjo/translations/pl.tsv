@@ -33,7 +33,7 @@ buy_money_out	Rachunek wydatkowy / przewoźnika
 record_purchase	Zapisz zakup
 add_expense	Dowód wydatku
 bank_book	Księga bankowa
-credit_help	Identyfikator imprezy jest unikalny (nazwy mogą się powtarzać). Role: Nadawca (AR), Przewoźnik (AP) lub oboje na tym identyfikatorze. Księgi pozostają oddzielne; raporty pokazują netto.
+credit_help	Identyfikator kontrahenta jest unikalny (nazwy mogą się powtarzać). Role: Nadawca (AR), Przewoźnik (AP) lub obie pod tym identyfikatorem. Księgi pozostają osobne; raporty pokazują saldo netto.
 party_kind_ph	Rola niestandardowa (opcjonalnie) — lub dotknij elementu powyżej
 parties_list_heading	Zapisani kontrahenci
 reports_help	Księga dzienna, dłużnicy i wierzyciele, księga bankowa, bony wydatków, zyski i straty.
@@ -149,7 +149,7 @@ origin_phone_ph	Telefon nadawcy
 origin_address_ph	Adres odbioru / pochodzenia
 booking_consignor_heading	Nadawca (klient / nadawca)
 booking_consignee_heading	Odbiorca (odbiorca)
-booking_consignor_hint	Wybierz imprezę do obsadzenia lub pozostaw pustą, aby wejść. Potrzebne do odbioru w domu i RTO.
+booking_consignor_hint	Wybierz kontrahenta, aby uzupełnić dane, lub zostaw puste dla klienta z ulicy. Potrzebne do odbioru z domu i RTO.
 booking_consignee_hint	Odbiorca przesyłki. Pozostaw puste dla przyjęć przy kasach.
 weight_kg_ph	Rzeczywiste kg
 length_cm_ph	L cm
@@ -260,7 +260,7 @@ add_conversion	Dodaj konwersję
 add_item_plain	Dodaj pozycję
 add_note	Dodaj notatkę
 add_opening_balance	Dodaj saldo otwarcia
-add_rider	Dodaj jeźdźca
+add_rider	Dodaj kuriera
 add_staff	Dodaj personel
 add_unit	Dodaj jednostkę
 add_use_name	Dodaj/użyj tej nazwy
@@ -359,7 +359,7 @@ counter_agency_ph	Nazwa licznika/agencji (opcjonalnie)
 create_backup	Utwórz kopię zapasową
 day_close_summary	Podsumowanie dnia
 delete_party	Usuń wybranego klienta lub dostawcę
-dispatch_to_rider	Wysyłka zarezerwowana → jeździec
+dispatch_to_rider	Wyślij zarezerwowane → kurier
 docket_charge_ph	Opłata za kwit
 declared_value_ph	Deklarowana wartość
 contents_ph	Zawartość
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Niedostępne
 ndr_door_locked	Drzwi zamknięte
 ndr_other	Inny
 ndr_refused	Odrzucony
-out_for_delivery	Wyszło do dostawy
+out_for_delivery	W doręczeniu
 print_drs	Wydrukuj DRS
 print_run_sheet	Wydrukuj arkusz roboczy
 reattempt	Ponów próbę
 rider_cod_handed_ph	COD oddany
-settle_rider_cod	Rozlicz się z pasażerem COD
+settle_rider_cod	Rozlicz COD kuriera
 mode_desk	Biurko
-mode_rider	Jeździec
+mode_rider	Kurier
 waiting_office	czekam na dotarcie do biura
 capture_signature	Przechwytywanie podpisu
 incoming_manifest	Przychodzący manifest
@@ -415,7 +415,7 @@ pickup_request	Prośba o odbiór
 pickup_run	Bieg na odbiór
 auto_assign_area	Automatyczne przydzielanie obszaru
 reorder_stops	Zmiana kolejności zatrzymuje się
-settle_rider_pay	Ureguluj wynagrodzenie pasażera
+settle_rider_pay	Rozlicz wynagrodzenie kuriera
 vehicle_inspect	Kontrola pojazdu
 print_docket	Wydrukuj kwit
 franchise_statement	Oświadczenie franczyzy
@@ -458,10 +458,10 @@ refund	Zwrot
 remit_cod	Przekaż COD (kontrahent)
 remove_selected	Usuń wybrane
 restore_backup	Przywróć kopię zapasową
-rider_name_ph	Imię jeźdźca
-rider_phone_ph	Telefon jeźdźca
-riders	Jeźdźcy
-riders_own_fleet	Jeźdźcy (własna flota)
+rider_name_ph	Imię kuriera
+rider_phone_ph	Telefon kuriera
+riders	Kurierzy
+riders_own_fleet	Kurierzy (własna flota)
 rollup	Zestawienie
 save_booking_measures	Zapisz środki rezerwacji
 save_brand	Zapisz markę
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Świeże · {} – katalog zaczyna się pusty; dodaj pozycje 
 onboard_book_tmpl	Zarezerwuj · {} — dodaj pozycje i napisy początkowe, a następnie Gotowe.
 onboard_template_tmpl	Jeśli chcesz, nazwij miejsce i wybierz, od czego zacząć.
 tmpl_blurb	Księgi kurierskie i rezerwacja: nadawcy, przewoźnicy, księga dzienna, AWB.
-tmpl_how	Rezerwuj przesyłki przy biurku; Książka dzienna na dzisiaj; zakładki stawek, imprez, raportów.
+tmpl_how	Rejestruj przesyłki przy okienku; Księga dzienna na dziś; zakładki stawek, kontrahentów, raportów.
 app_template_heading	Szablony sklepu
 app_template_blurb	Wybierz startowe stanowisko. «Pomiń na razie» zostawia listę kontrahentów pustą.
 app_template_skip	Pomiń na razie
@@ -819,7 +819,7 @@ trk_booked	Zarezerwowane
 trk_picked_up	Podniesione
 trk_in_transit	W transporcie
 trk_delivered	Dostarczony
-trk_rto	Wracając do nadawcy
+trk_rto	Zwrot do nadawcy
 lane_to_dispatch	Do wysłania
 lane_with_carrier	Z przewoźnikiem
 lane_failed	Przegrany
@@ -829,13 +829,13 @@ lane_empty	Nic tu teraz nie jest.
 picked_fmt	Wybrano {n}
 pick_all	Wybierz wszystko
 bag_for_carrier	Ręka do przewoźnika
-send_with_rider	Wyślij z jeźdźcem
+send_with_rider	Wyślij z kurierem
 out_again	Znowu na zewnątrz
-return_to_sender	Wróć do nadawcy
+return_to_sender	Zwróć do nadawcy
 runs_bags_heading	Ostatnie biegi i torby
 print_word	Wydrukować
 bag_word	Torba transportowa
-run_word	Bieg jeźdźca
+run_word	Kurs kuriera
 parcels_fmt	Paczki {n}
 parcel_history	Historia
 attempt_fmt	Spróbuj {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	Paczka {n}
 facet_bank_title	Raporty
 facet_bank_help	Księgi dzienne, wiek klientów lub dostawców, wpisy bankowe i okresowe zyski i straty.
 facet_ops_title	Przesyłki i wysyłka
-facet_ops_help	Zeskanuj lub wpisz AWB → Znajdź, a następnie przewiń / wydrukuj etykietę / COD. Wysyłka do kierowcy lub przewoźnika.
+facet_ops_help	Zeskanuj lub wpisz AWB → Znajdź, potem przesuń dalej / drukuj etykietę / COD. Wysyłka do kuriera lub przewoźnika.
 facet_cod_title	Rejestr COD
 facet_cod_help	Odbierz przy odbiorze i przekaż nadawcy.
-facet_riders_title	Jeźdźcy (własna flota)
-facet_riders_help	Dodaj pasażerów, a następnie wyślij zarezerwowane AWB z Ops.
+facet_riders_title	Kurierzy (własna flota)
+facet_riders_help	Dodaj kurierów, a potem wysyłaj zarezerwowane AWB z Ops.
 against_bill_ph	Na podstawie rachunku nr powyżej (opcjonalnie)
 aliases_ph	Aliasy — inne nazwy oddzielone przecinkami
 amount_blank_full_ph	Kwota (puste = pełne saldo)
@@ -894,7 +894,7 @@ part_second_way_ph	Część drugim sposobem (opcjonalnie)
 phone_ph	Telefon
 address_ph	Adres
 party_custom_fields_heading	Pola niestandardowe (wybrana strona)
-party_custom_help	Dodaj dowolną etykietę i wartość na tej imprezie — WhatsApp, GSTIN, kod trasy,…
+party_custom_help	Dodaj dowolną etykietę i wartość dla tego kontrahenta — WhatsApp, GSTIN, kod trasy, …
 party_custom_key_ph	Nazwa pola (np. WhatsApp)
 party_custom_value_ph	Wartość
 party_custom_add	Dodaj pole

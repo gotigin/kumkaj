@@ -400,7 +400,7 @@ ndr_customer_unavailable	Pole saadaval
 ndr_door_locked	Uks lukus
 ndr_other	muud
 ndr_refused	Keeldus
-out_for_delivery	Kohaletoimetamiseks väljas
+out_for_delivery	Kättetoimetamisel
 print_drs	Prindi DRS
 print_run_sheet	Trükiarv leht
 reattempt	Proovi uuesti
@@ -819,7 +819,7 @@ trk_booked	Broneeritud
 trk_picked_up	Korjatud
 trk_in_transit	Transiidil
 trk_delivered	Tarnitud
-trk_rto	Saatja juurde tagasi
+trk_rto	Saatjale tagastamisel
 lane_to_dispatch	Saatmiseks
 lane_with_carrier	Koos kandjaga
 lane_failed	Ebaõnnestunud
@@ -831,7 +831,7 @@ pick_all	Vali kõik
 bag_for_carrier	Käsi kandjale
 send_with_rider	Saada koos ratturiga
 out_again	Jälle välja
-return_to_sender	Tagasi saatjale
+return_to_sender	Tagasta saatjale
 runs_bags_heading	Viimased jooksud ja kotid
 print_word	Prindi
 bag_word	Kandekott

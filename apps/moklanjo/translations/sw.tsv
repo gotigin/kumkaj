@@ -260,7 +260,7 @@ add_conversion	Ongeza ubadilishaji
 add_item_plain	Ongeza bidhaa
 add_note	Ongeza kumbuka
 add_opening_balance	Ongeza salio la kuanzia
-add_rider	Ongeza mpanda baiskeli
+add_rider	Ongeza mpelekaji
 add_staff	Ongeza mfanyakazi
 add_unit	Ongeza kitengo
 add_use_name	Ongeza / tumia jina hili
@@ -359,7 +359,7 @@ counter_agency_ph	Jina la kaunta / wakala (si lazima)
 create_backup	Tengeneza hifadhi
 day_close_summary	Muhtasari wa kufunga siku
 delete_party	Futa mhusika aliyechaguliwa
-dispatch_to_rider	Aliyehifadhi → kwa mpanda
+dispatch_to_rider	Zilizohifadhiwa → kwa mpelekaji
 docket_charge_ph	Ada ya dokezo
 declared_value_ph	Thamani iliyotangazwa
 contents_ph	Yaliyomo
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Mteja hayupo
 ndr_door_locked	Mlango umefungwa
 ndr_other	Nyingine
 ndr_refused	Imekataliwa
-out_for_delivery	Iko nje kwa utoaji
+out_for_delivery	Iko njiani kufikishwa
 print_drs	Chapisha DRS
 print_run_sheet	Chapisha karatasi ya safari
 reattempt	Jaribu tena
 rider_cod_handed_ph	COD aliyokabidhi mpanda
-settle_rider_cod	Sulisha COD ya mpanda
+settle_rider_cod	Sulisha COD ya mpelekaji
 mode_desk	Dawati
-mode_rider	Mpanda
+mode_rider	Mpelekaji
 waiting_office	inasubiri ofisi
 capture_signature	Chukua saini
 incoming_manifest	Manifesti inayoingia
@@ -415,7 +415,7 @@ pickup_request	Ombi la kuchukua
 pickup_run	Safari ya kuchukua
 auto_assign_area	Weka eneo otomatiki
 reorder_stops	Panga upya vituo
-settle_rider_pay	Sulisha malipo ya mpanda
+settle_rider_pay	Sulisha malipo ya mpelekaji
 vehicle_inspect	Ukaguzi wa gari
 print_docket	Chapisha docket
 franchise_statement	Taarifa ya franchise
@@ -458,10 +458,10 @@ refund	Kurejesha
 remit_cod	Wasilisha COD (mhusika)
 remove_selected	Ondoa aliyechaguliwa
 restore_backup	Rejesha hifadhi
-rider_name_ph	Jina la mpanda
-rider_phone_ph	Simu ya mpanda
-riders	Waendeshaji
-riders_own_fleet	Waendeshaji (kikosi chetu)
+rider_name_ph	Jina la mpelekaji
+rider_phone_ph	Simu ya mpelekaji
+riders	Wapelekaji
+riders_own_fleet	Wapelekaji (wetu wenyewe)
 rollup	Muhtasari
 save_booking_measures	Hifadhi vipimo vya uhifadhi
 save_brand	Hifadhi chapa
@@ -819,7 +819,7 @@ trk_booked	Imesajiliwa
 trk_picked_up	Imechukuliwa
 trk_in_transit	Njiani
 trk_delivered	Imefikishwa
-trk_rto	Inarudi kwa mtumaji
+trk_rto	Inarudishwa kwa mtumaji
 lane_to_dispatch	Za kutuma
 lane_with_carrier	Kwa msafirishaji
 lane_failed	Imeshindwa
@@ -829,13 +829,13 @@ lane_empty	Hakuna kitu hapa kwa sasa.
 picked_fmt	{n} vimechaguliwa
 pick_all	Chagua vyote
 bag_for_carrier	Kabidhi kwa msafirishaji
-send_with_rider	Tuma na mpanda
+send_with_rider	Tuma kupitia mpelekaji
 out_again	Toa tena
 return_to_sender	Rudisha kwa mtumaji
 runs_bags_heading	Safari na mifuko ya karibuni
 print_word	Chapisha
 bag_word	Mfuko wa msafirishaji
-run_word	Safari ya mpanda
+run_word	Safari ya mpelekaji
 parcels_fmt	Vifurushi {n}
 parcel_history	Historia
 attempt_fmt	Jaribio {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	Kifurushi {n}
 facet_bank_title	Ripoti
 facet_bank_help	Vitabu vya siku, umri wa madeni ya wahusika, machapisho ya benki na Faida Hasara ya kipindi.
 facet_ops_title	Mzigo na usafirishaji
-facet_ops_help	Changanua au andika AWB → Tafuta, kisha endeleza / chapisha lebo / COD. Tuma kwa mpanda farasi au mbebaji.
+facet_ops_help	Changanua au andika AWB → Tafuta, kisha endeleza / chapisha lebo / COD. Kabidhi kwa mpelekaji au msafirishaji.
 facet_cod_title	Rejista ya COD
 facet_cod_help	Kusanya wakati wa kuwasilisha, kisha wasilisha kwa mtumaji.
-facet_riders_title	Waendeshaji (kikosi chako)
-facet_riders_help	Ongeza waendeshaji, kisha tuma AWB zilizohifadhiwa kutoka Ops.
+facet_riders_title	Wapelekaji (wetu wenyewe)
+facet_riders_help	Ongeza wapelekaji, kisha tuma AWB zilizohifadhiwa kutoka Ops.
 against_bill_ph	Dhidi ya bili # hapo juu (hiari)
 aliases_ph	Majina mbadala — majina mengine, tengwa kwa koma
 amount_blank_full_ph	Kiasi (tupu = salio kamili)

@@ -26,16 +26,16 @@ board_discard	Tufuo
 board_discarded	ehichapụrụ akwụkwọ
 buy	kwụọ ụgwọ
 books	Akwụkwọ ụbọchị
-books_help	Ọnọdụ taa. Ịdenye akwụkwọ = ngwugwu dị n'ime. Kwụọ = ụgwọ ndị ebu na mmefu. Parties = consignors & ebu.
+books_help	Ọnọdụ taa. Ịdenye akwụkwọ = ngwugwu batara. Kwụọ = ụgwọ ndị na-ebu ngwugwu na mmefu. Ndị mmekọ = ndị na-eziga na ndị na-ebu ngwugwu.
 buy_help	Mpempe akwụkwọ na-akwụ ụgwọ na ụgwọ ebu (ego pụta). On-akaụntụ na-anọ na leta otu.
 sell_money_in	Debe ngwugwu
 buy_money_out	Ụgwọ mmefu / ebu
 record_purchase	Dee ịzụta
 add_expense	Akwụkwọ mmefu
 bank_book	Akwụkwọ ụlọ akụ
-credit_help	Id party pụrụ iche (aha nwere ike ikwugharị). Ọrụ: Consignor (AR), Carrier (AP), ma ọ bụ ha abụọ na id ahụ. Ledgers na-anọpụ iche; akụkọ na-egosi net.
+credit_help	Njirimara onye mmekọ pụrụ iche (aha nwere ike ikwugharị). Ọrụ: Onye na-eziga (AR), Onye na-ebu (AP), ma ọ bụ ha abụọ n'otu njirimara. Akwụkwọ ndekọ na-anọ iche; akụkọ na-egosi net.
 party_kind_ph	Ọrụ omenala (nhọrọ) - ma ọ bụ kpatụ mgbawa n'elu
-parties_list_heading	Ndị otu echekwara
+parties_list_heading	Ndị mmekọ echekwara
 reports_help	Akwụkwọ ụbọchị, ndị ji ụgwọ na ndị a ji ụgwọ, akwụkwọ ụlọ akụ, akwụkwọ mmefu, uru na mfu.
 reports_today	Akwụkwọ ụbọchị (taa)
 reports_month	Uru na mfu (ọnwa)
@@ -66,7 +66,7 @@ total	Ngụkọta
 cash	Ego aka
 upi	UPI
 card	Kaadị
-credit	Ndị otu
+credit	Ndị mmekọ
 clear	Hichapụ
 ready_to_sell	Dị njikere ide
 today_prefix	Taa
@@ -133,9 +133,9 @@ inventory	Ngwaahịa
 inventory_stock	Ngwaahịa na nchekwa
 branches	Alaka
 branches_org	Alaka na nzukọ
-credit_customers	Ndị otu (ndị ji ụgwọ na ndị ji ụgwọ)
-customer_name_ph	Aha onye otu
-new_customer_ph	Aha onye otu ọhụrụ
+credit_customers	Ndị mmekọ (ndị ji ụgwọ na ndị ji ụgwọ)
+customer_name_ph	Aha onye mmekọ
+new_customer_ph	Aha onye mmekọ ọhụrụ
 item_name_ph	Aha ọnụego (dịka Mpaghara A)
 item_price_ph	Kwa kilogram / nke mbụ slab
 start_template	Ngwaahịa
@@ -149,7 +149,7 @@ origin_phone_ph	Ekwentị izipu
 origin_address_ph	Adreesị mbubata / ebe obibi
 booking_consignor_heading	Onye na-ebufe (onye ahịa / onye na-ezipụ)
 booking_consignee_heading	Onye nnabata (onye nnata)
-booking_consignor_hint	Họrọ oriri iji mejupụta, ma ọ bụ hapụ oghere maka ịbanye. Achọrọ maka mbuli ụlọ na RTO.
+booking_consignor_hint	Họrọ onye mmekọ iji mejupụta, ma ọ bụ hapụ ya efu maka onye bịara n'onwe ya. Achọrọ maka ịnara n'ụlọ na RTO.
 booking_consignee_hint	Onye nnata ngwugwu. Hapụ oghere maka mwepu nbanye.
 weight_kg_ph	N'ezie n'arọ
 length_cm_ph	L cm
@@ -300,7 +300,7 @@ card_amount_ph	Ego kaadị
 cash_amount_ph	Ego aka
 upi_amount_ph	Ego UPI
 carrier_cost_ph	Ọnụ ego ebu
-carrier_party_ph	Ndị otu ụgbọelu
+carrier_party_ph	Ndị mmekọ ụgbọelu
 choose_icon	Họrọ akara
 choose_logo	Họrọ logo
 choose_receipt_stamp	Họrọ stampụ nnata
@@ -340,8 +340,8 @@ copy_day_book_csv	Detuo CSV akwụkwọ ụbọchị
 copy_day_close	Detuo mmechi ụbọchị
 copy_items_csv	Detuo CSV ihe
 copy_outstanding_csv	Detuo CSV nke na-eche
-copy_parties_csv	Detuo CSV ndị otu
-copy_party_ledger_csv	Detuo CSV akwụkwọ onye otu
+copy_parties_csv	Detuo CSV ndị mmekọ
+copy_party_ledger_csv	Detuo CSV akwụkwọ onye mmekọ
 copy_receipt	Detuo akwụkwọ nnata
 copy_report	Detuo akụkọ
 counted_cash_ph	Ego aka agụrụ n'ime drawer
@@ -358,7 +358,7 @@ books_locked_through	Akpọchiela akaụntụ ruo
 counter_agency_ph	Aha counter / ụlọ ọrụ (nhọrọ)
 create_backup	Mepụta nchekwa
 day_close_summary	Nchịkọta mmechi ụbọchị
-delete_party	Hichapụ onye otu ahọpụtara
+delete_party	Hichapụ onye mmekọ ahọpụtara
 dispatch_to_rider	Etinyere akwụkwọ ikike izipu → onye na-agba
 docket_charge_ph	Ụgwọ akwụkwọ
 declared_value_ph	Uru ekwuputara
@@ -368,7 +368,7 @@ insurance_label	Insurance
 yes_label	Ee
 no_label	Mba
 print_route_label	Bipụta ụzọ
-new_party_kind_label	Ụdị oriri ọhụrụ
+new_party_kind_label	Ụdị onye mmekọ ọhụrụ
 done_open_books	Emeela — mepee akwụkwọ
 export_day	Bupụta ụbọchị
 extra_note_expense_ph	Ndetu ọzọ na mmefu ikpeazụ
@@ -380,13 +380,13 @@ fuel_ph	Mmanụ ụgbọala
 handover_carrier	Edebere aka → onye na-ebu
 import_day	Bubata ụbọchị
 import_items_csv	Bubata ihe / ọnụego CSV…
-import_parties_csv	Bubata CSV ndị otu…
+import_parties_csv	Bubata CSV ndị mmekọ…
 import_pincodes_csv	Bubata pincode CSV…
 import_carrier_bill_csv	Ụgwọ mbubata CSV…
 copy_carrier_bill_report	Detuo akụkọ ụgwọ ndị ebubu ikpeazụ
 use_carrier_cost	Jiri ọnụ ahịa ebu
 rate_carrier_ph	Onye na-ebu (oghere = ọnụ ahịa ire anyị)
-rate_party_ph	Party (oghere = ndị ahịa niile)
+rate_party_ph	Onye mmekọ (efu = ndị ahịa niile)
 carrier_pick_ph	Onye na-ebu maka ọnụ ahịa (site na ntụnyere)
 item_name	Aha ihe
 load_bulk_row	Ibu nnukwu ahịrị → oche
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Adịghị
 ndr_door_locked	Akpọchiri ụzọ
 ndr_other	Ndị ọzọ
 ndr_refused	jụrụ
-out_for_delivery	Apụ maka nnyefe
+out_for_delivery	N'ụzọ nnyefe
 print_drs	Bipụta DRS
 print_run_sheet	Bipụta akwụkwọ ịgba ọsọ
 reattempt	Mgbalị ọzọ
 rider_cod_handed_ph	COD anabatara
 settle_rider_cod	Tọọ onye na-agba COD
 mode_desk	Oche
-mode_rider	Onye na-agba ịnyịnya
+mode_rider	Onye na-ebuga ngwugwu
 waiting_office	na-eche iru ụlọ ọrụ
 capture_signature	Weghara mbinye aka
 incoming_manifest	Ngosipụta na-abata
@@ -426,8 +426,8 @@ pick_barcode_image	Họrọ onyonyo ka iṅomi
 share_receipt_whatsapp	Kekọrịta nnata na WhatsApp
 delivery_feedback	Nzaghachi nnyefe
 lan_self_book	LAN ntinye akwụkwọ onwe
-new_party_clear	Onye otu ọhụrụ (hichapụ fọm)
-new_party_kind_ph	Ụdị oriri ọhụrụ (onye na-ebubata / ebu)
+new_party_clear	Onye mmekọ ọhụrụ (hichapụ fọm)
+new_party_kind_ph	Ụdị onye mmekọ ọhụrụ (Onye na-ebunye / Onye na-ebu)
 next_country	Mba ọzọ
 prev_country	Mba gara aga
 note_gstin_ph	Ndetu / GSTIN / ncheta nkwekọrịta
@@ -437,7 +437,7 @@ org_optional_ph	Nzukọ (ọ bụghị iwu)
 paid_now	Akwụrụ ugbu a
 pairing_code_ph	Koodu njikọ
 pair_now	Jikọọ ugbu a
-party_name_selected_ph	Aha onye otu (ma ọ bụ jiri nke ahọpụtara)
+party_name_selected_ph	Aha onye mmekọ (ma ọ bụ jiri nke ahọpụtara)
 password_ph	Okwuntughe
 pay_ap_card	Kwụọ AP na kaadị
 pay_ap_cash	Kwụọ AP na ego aka
@@ -460,8 +460,8 @@ remove_selected	Wepụ nke ahọpụtara
 restore_backup	Weghachi nchekwa
 rider_name_ph	Aha onye na-agba ya
 rider_phone_ph	Ekwentị onye na-agba ya
-riders	Ndị na-agba ịnyịnya
-riders_own_fleet	Ndị na-agba ịnyịnya (ụgbọ mmiri nke aka ha)
+riders	Ndị na-ebuga ngwugwu
+riders_own_fleet	Ndị na-ebuga ngwugwu (nke anyị)
 rollup	Nchịkọta
 save_booking_measures	Chekwaa usoro ntinye akwụkwọ
 save_brand	Chekwaa akara
@@ -470,7 +470,7 @@ save_business_name	Chekwaa aha azụmahịa
 save_features	Chekwaa nhazi ọrụ
 save_names	Chekwaa aha
 server_ip_ph	IP sava (dịka 192.168.1.10)
-set_credit_limit	Tinye oke na onye otu
+set_credit_limit	Tinye oke na onye mmekọ
 set_login_selected	Tinye nbanye na nke ahọpụtara
 set_login_named	Tinye nbanye na {name}
 shop	Ụlọ ahịa
@@ -612,7 +612,7 @@ disk_low	Naanị {mb} MB fọdụrụ na ngwaọrụ a — nchekwa ga-ada n'oge 
 last_seen_devices	Hụrụ ikpeazụ: {time}
 sync_interval	Mekọrịta kwa {secs}s
 connection_to_shop	Njikọ na ụlọ ahịa
-supplier_name_ph	Aha onye na-ebunye (ma ọ bụ onye otu)
+supplier_name_ph	Aha onye na-ebunye (ma ọ bụ onye mmekọ)
 supplier_ph	Onye na-ebunye
 switch_device	Gbanwee ngwaọrụ a
 take_payment	Nakọta ụgwọ
@@ -624,7 +624,7 @@ unlock_with_login	Mepee site na nbanye
 update_my_password	Melite okwuntughe m
 update_my_pin	Melite PIN m
 duress_heading	PIN mmepe mberede (naanị Onye nwe)
-duress_help	Offline Server/Client LAN naanị — ọ bụghị cloud. Gbanyụrụ site na ndabara: Onye nwe na-agbanye otu ugboro site na ịchekwa PIN a (Otu, ọbụna na Client till). Ọ bụrụ na PIN a ka edepụtara na mgbape kama PIN ọrụ n'ezie, ndenye akwụkwọ na Server ka ehichapụrụ ma tebụl meghee dị ka Onye nwe na-ele anya nkịtị — ọnụego, ndị otu, mpaghara, ndị ọrụ na ntọala na-anọ. Schema na config anaghị ehichapụ. Ekwela ka ọ bụrụ otu ihe na PIN onye ọ bụla. Gbanyụọ site na bọtịnụ ihicha.
+duress_help	Offline Server/Client LAN naanị — ọ bụghị cloud. Gbanyụrụ site na ndabara: Onye nwe na-agbanye otu ugboro site na ịchekwa PIN a (Otu, ọbụna na Client till). Ọ bụrụ na PIN a ka edepụtara na mgbape kama PIN ọrụ n'ezie, ndenye akwụkwọ na Server ka ehichapụrụ ma tebụl meghee dị ka Onye nwe na-ele anya nkịtị — ọnụego, ndị mmekọ, mpaghara, ndị ọrụ na ntọala na-anọ. Schema na config anaghị ehichapụ. Ekwela ka ọ bụrụ otu ihe na PIN onye ọ bụla. Gbanyụọ site na bọtịnụ ihicha.
 duress_pin_ph	PIN mberede (ọnụọgụ 4–12)
 duress_confirm_ph	Dee ọzọ ka ị kwado
 save_duress_pin	Chekwaa PIN mberede
@@ -650,9 +650,9 @@ size_in	Nha na
 goods_received	Ngwaahịa natara
 expense_heading	Mmefu
 notes_attach_sale	Ndetu na ihe etinyere (ahịa ahọpụtara)
-notes_attach_party	Ndetu na ihe etinyere (onye otu ahọpụtara)
+notes_attach_party	Ndetu na ihe etinyere (onye mmekọ ahọpụtara)
 attachments_last_expense	Ihe etinyere (mmefu ikpeazụ)
-credit_limit_heading	Oke kredit (onye otu ahọpụtara / a kpọrọ aha)
+credit_limit_heading	Oke kredit (onye mmekọ ahọpụtara / a kpọrọ aha)
 pay_selected_heading	Kwụọ nke ahọpụtara (mechie ụgwọ / were ego n'ihu)
 write_off_heading	Kpochapụ (hichapụ na-akwụghị ụgwọ)
 adjustment_notes_heading	ndetu mmezi
@@ -663,7 +663,7 @@ credit_note_btn	Akwụkwọ kredit
 debit_note_btn	Debit ndetu
 bill_later_heading	Nara ụgwọ ma emechaa (ụgwọ mgbakwunye mgbe ịdochara akwụkwọ)
 bill_later_amount_ph	Ego mgbakwunye
-bill_later_party_ph	Onye ahịa (naanị ma ọ bụrụ na ntinye akwụkwọ enweghị nke ọ bụla)
+bill_later_party_ph	Onye mmekọ (naanị ma ọ bụrụ na ndebanye enweghị nke ọ bụla)
 bill_later_btn	Nara ụgwọ ma emechaa
 bill_later_extra_oda	ODA
 bill_later_extra_packing	Nkwakọ ngwaahịa
@@ -794,9 +794,9 @@ onboard_fresh_tmpl	Ọhụrụ · {} — katalọgụ na-amalite efu; tinye ihe 
 onboard_book_tmpl	Akwụkwọ · {} — tinye ihe na kredit mmalite, wee Emeela.
 onboard_template_tmpl	Kpọọ ebe ahụ aha ma ịchọrọ, wee họrọ otu ị ga-esi malite.
 tmpl_blurb	Akwụkwọ ozi na oche ntinye akwụkwọ: ndị na-ebuga, ndị na-ebu, akwụkwọ ụbọchị, AWB.
-tmpl_how	Akwụkwọ ngwugwu na tebụl; Akwụkwọ ụbọchị maka taa; taabụ maka ọnụego, nnọkọ, akụkọ.
+tmpl_how	Debanye ngwugwu na kaụnta; Akwụkwọ ụbọchị maka taa; taabụ maka ọnụego, ndị mmekọ, akụkọ.
 app_template_heading	Ụdị ụlọ ahịa
-app_template_blurb	Họrọ ntọala mmalite. «Gafee ugbu a» na-ahapụ ndepụta ndị ahịa ihe efu.
+app_template_blurb	Họrọ kaụnta mmalite. «Gafee ugbu a» na-ahapụ ndepụta ndị mmekọ efu.
 app_template_skip	Gafee ugbu a
 app_template_status	Sava dị njikere — bubata ụdị, ma ọ bụ wụfee
 app_template_importing	Na-etinye {title}…
@@ -819,10 +819,10 @@ trk_booked	Edere akwụkwọ
 trk_picked_up	Atụtụtara
 trk_in_transit	N'ụzọ
 trk_delivered	Enyere ya
-trk_rto	Na-alaghachi na onye zitere ya
+trk_rto	A na-eweghachi ya n'aka onye zitere ya
 lane_to_dispatch	Iji zipu
 lane_with_carrier	Ya na ebu
-lane_failed	Okpu
+lane_failed	Emezughị
 lane_done_today	Emeela taa
 ops_board_help	Ngwunye n'akụkụ ebe ha nọ n'ọrụ taa. Kpatụ ngwugwu (ma ọ bụ nyochaa ha) ka ịhọrọ ha, wee mee ihe niile ahọpụtara otu mgbe - uzo ọ bụla na-enye naanị mmegharị dabara na ya.
 lane_empty	Ọ nweghị ihe ebe a ugbu a.
@@ -831,7 +831,7 @@ pick_all	Họrọ ihe niile
 bag_for_carrier	Aka na-ebu
 send_with_rider	Soro onye na-agba ya ziga
 out_again	pụta ọzọ
-return_to_sender	Laghachi na onye zitere ya
+return_to_sender	Weghachi ya n'aka onye zitere ya
 runs_bags_heading	Ọsọ na akpa nso nso a
 print_word	Bipụta
 bag_word	Akpa ebu
@@ -849,13 +849,13 @@ cod_rto_fees	Ụgwọ RTO ịnakọta
 cod_to_hand_in	COD iji nyefee
 parcel_one_fmt	ngwugwu {n}
 facet_bank_title	Akụkọ
-facet_bank_help	Akwụkwọ ụbọchị, ịka onye otu, ndenye ụlọ akụ, na uru na mfu oge.
+facet_bank_help	Akwụkwọ ụbọchị, ịka onye mmekọ, ndenye ụlọ akụ, na uru na mfu oge.
 facet_ops_title	Nbunye & mbupu
 facet_ops_help	Nyochaa ma ọ bụ pịnye AWB → Chọta, wee gaba / bipụta akara / COD. Ziga onye na-agba ma ọ bụ ebu.
 facet_cod_title	COD ndekọ
 facet_cod_help	Chịkọta mgbe a na-ebuga ya, wee nyefee onye mbupụ ya.
-facet_riders_title	Ndị na-agba ịnyịnya (ụgbọ mmiri nke aka ha)
-facet_riders_help	Tinye ndị na-agba ịnyịnya, wee zipụ AWB ndị edobere n'aka site na Ops.
+facet_riders_title	Ndị na-ebuga ngwugwu (nke anyị)
+facet_riders_help	Tinye ndị na-ebuga ngwugwu, wee zipụ AWB ndị edebanyere site na Ops.
 against_bill_ph	Megide ụgwọ # dị n'elu (nhọrọ)
 aliases_ph	Aha ndị ọzọ — aha ndị ọzọ, kewara site na kọma
 amount_blank_full_ph	Ego (efu = nguzozi zuru ezu)
@@ -894,7 +894,7 @@ part_second_way_ph	Akụkụ site n'ụzọ nke abụọ (nhọrọ)
 phone_ph	Ekwentị
 address_ph	Adreesị
 party_custom_fields_heading	Ogige omenala (otu ahọpụtara)
-party_custom_help	Tinye akara na uru ọ bụla na nnọkọ a - WhatsApp, GSTIN, koodu ụzọ,…
+party_custom_help	Tinye akara na uru ọ bụla n'onye mmekọ a — WhatsApp, GSTIN, koodu ụzọ, …
 party_custom_key_ph	Aha mpaghara (dịka WhatsApp)
 party_custom_value_ph	Uru
 party_custom_add	Tinye ubi
@@ -929,7 +929,7 @@ book_kind_balance	Akwụkwọ nguzozi
 ops_desk_help	Jiri ihe nyocha USB barcode jiri nyocha AWB (ma ọ bụ pịnye ya) → Chọta. Mgbe ahụ gaa n'ihu, bipụta akara, ma ọ bụ nakọta COD. Koodu mbipụta 128.
 role_help_consignor	Ọrụ: Consignor — AR (ha ji anyị ụgwọ). Otu ụlọ ọrụ nwekwara ike ịbụ ụgbọelu.
 role_help_carrier	Ọrụ: Onye na-ebu - AP (anyị ji ha ụgwọ). Otu ụlọ ọrụ nwekwara ike ịbụ Consignor.
-role_help_both	Ọrụ: Consignor + Carrier — otu oriri, AR na AP legers, net in Reports.
+role_help_both	Ọrụ: Onye na-eziga + Onye na-ebu — otu onye mmekọ, akwụkwọ AR na AP, net na Akụkọ.
 role_help_supplier	Ọrụ: Onye na-ebubata ihe - AP maka ịzụrụ ihe.
 lane_declared_label	Ndokwa akaụntụ
 lane_owner_label	Ndokwa ego

@@ -260,7 +260,7 @@ add_conversion	Aylantirish qoʻshish
 add_item_plain	Mahsulot qoʻshish
 add_note	Izoh qoʻshish
 add_opening_balance	Boshlangʻich qoldiq qoʻshish
-add_rider	Chavandoz qo'shing
+add_rider	Kuryer qo'shish
 add_staff	Xodim qoʻshish
 add_unit	Birlik qoʻshish
 add_use_name	Bu nomni qoʻshish / ishlatish
@@ -359,7 +359,7 @@ counter_agency_ph	Hisoblagich / agentlik nomi (ixtiyoriy)
 create_backup	Zaxira nusxa yaratish
 day_close_summary	Kun yopish xulosasi
 delete_party	Tanlangan kontragentni oʻchirish
-dispatch_to_rider	Yuborilgan → chavandoz
+dispatch_to_rider	Bron qilinganlarni yuborish → kuryer
 docket_charge_ph	Doket zaryadi
 declared_value_ph	E'lon qilingan qiymat
 contents_ph	Tarkib
@@ -405,9 +405,9 @@ print_drs	DRS ni chop eting
 print_run_sheet	Ishlash varag'ini chop etish
 reattempt	Qayta urinish
 rider_cod_handed_ph	COD topshirildi
-settle_rider_cod	Chavandoz CODni hal qiling
+settle_rider_cod	Kuryerning COD hisob-kitobi
 mode_desk	Stol
-mode_rider	Chavandoz
+mode_rider	Kuryer
 waiting_office	ofisga borishni kutish
 capture_signature	Imzoni suratga olish
 incoming_manifest	Kiruvchi manifest
@@ -415,7 +415,7 @@ pickup_request	Olib ketish talabi
 pickup_run	Yugurish
 auto_assign_area	Hududni avtomatik belgilash
 reorder_stops	Qayta tartiblash to'xtaydi
-settle_rider_pay	Chavandozning ish haqini to'lash
+settle_rider_pay	Kuryerning ish haqini to'lash
 vehicle_inspect	Avtomobilni tekshirish
 print_docket	Chop etish hujjati
 franchise_statement	Franchayzing bayonoti
@@ -458,10 +458,10 @@ refund	Qaytarish
 remit_cod	COD yuborish (partiya)
 remove_selected	Tanlanganni olib tashlash
 restore_backup	Zaxira nusxadan tiklash
-rider_name_ph	Chavandoz ismi
-rider_phone_ph	Chavandoz telefon
-riders	Chavandozlar
-riders_own_fleet	Chavandozlar (o'z floti)
+rider_name_ph	Kuryer ismi
+rider_phone_ph	Kuryer telefoni
+riders	Kuryerlar
+riders_own_fleet	Kuryerlar (o'z parkimiz)
 rollup	Jamlama
 save_booking_measures	Rezervasyon choralarini saqlang
 save_brand	Brendni saqlash
@@ -829,13 +829,13 @@ lane_empty	Bu yerda hozir hech narsa.
 picked_fmt	{n} tanlandi
 pick_all	Hammasini tanlang
 bag_for_carrier	Tashuvchiga qo'l
-send_with_rider	Chavandoz bilan yuboring
+send_with_rider	Kuryer bilan yuborish
 out_again	Yana tashqariga
 return_to_sender	Yuboruvchiga qaytish
 runs_bags_heading	Oxirgi yugurishlar va sumkalar
 print_word	Chop etish
 bag_word	Tashish sumkasi
-run_word	Chavandoz yugurish
+run_word	Kuryer reysi
 parcels_fmt	{n} posilkalari
 parcel_history	Tarix
 attempt_fmt	Urinish {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} posilkasi
 facet_bank_title	Hisobotlar
 facet_bank_help	Kunlik daftarlar, kontragent eskirishi, bank yozuvlari va davr foyda-zarari.
 facet_ops_title	Yuk tashish va jo'natish
-facet_ops_help	Skanerlang yoki AWB → Top ni kiriting, so‘ng oldinga siljiting / yorliqni / COD ni chop eting. Chavandoz yoki tashuvchiga jo'natish.
+facet_ops_help	AWB ni skanerlang yoki kiriting → Topish, so'ng oldinga suring / yorliqni chop eting / COD. Kuryer yoki tashuvchiga topshirish.
 facet_cod_title	COD registri
 facet_cod_help	Yetkazib berishda yig'ing, so'ngra jo'natuvchiga yuboring.
-facet_riders_title	Chavandozlar (o'z floti)
-facet_riders_help	Chavandozlarni qo'shing, so'ngra Opsdan bron qilingan AWBlarni yuboring.
+facet_riders_title	Kuryerlar (o'z parkimiz)
+facet_riders_help	Kuryerlarni qo'shing, so'ng Ops dan bron qilingan AWB larni yuboring.
 against_bill_ph	Yuqoridagi hisob № ga (ixtiyoriy)
 aliases_ph	Taxalluslar — boshqa nomlar, vergul bilan
 amount_blank_full_ph	Summa (boʻsh = toʻliq qoldiq)

@@ -12,17 +12,17 @@ expiry_alerts	Mkpesa ga-agwụ (ụbọchị 7 na-abịa)
 expiry_none	Ọ nweghị batches na-ekubi ume n'ime ụbọchị 7 na-abịa.
 rx_nudge	Onye nwe akara Rx / Usoro H - tinye ndetu ma ọ bụrụ na achọrọ ya.
 unlock	Mepee
-sell	rere
+sell	Ree
 buy	Zụta
 books	Akwụkwọ ụbọchị
-books_help	Ọnọdụ taa. Ree = ego n'ime. Zụrụ = ịzụrụ & mmefu. Parties = ndị ahịa kredit & ndị na-ebubata ya.
-buy_help	Akwụkwọ mmefu na ụgwọ ndị na-ebunye (ego na-apụ). Ihe fọdụrụ n'aka na-anọ n'akwụkwọ onye otu.
+books_help	Ọnọdụ taa. Ree = ego na-abata. Zụta = ịzụta na mmefu. Ndị mmekọ = ndị ahịa kredit na ndị na-ebunye.
+buy_help	Akwụkwọ mmefu na ụgwọ ndị na-ebunye (ego na-apụ). Ihe fọdụrụ n'aka na-anọ n'akwụkwọ onye mmekọ.
 sell_money_in	Na-ere ọgwụ
 buy_money_out	Mmefu / ụgwọ onye na-ebunye
 record_purchase	Dee ịzụta
 add_expense	Akwụkwọ mmefu
 bank_book	Akwụkwọ ụlọ akụ
-credit_help	Njirimara onye otu pụrụ iche (aha nwere ike ịmegharị). Onye ahịa na-edobe kaadị khata (ọ ji anyị ụgwọ); onye na-ebunye na-ere anyị ngwaahịa (anyị ji ya ụgwọ); ha abụọ dị mma. Akwụkwọ na-anọ iche; akụkọ na-egosi net.
+credit_help	Njirimara onye mmekọ pụrụ iche (aha nwere ike ịmegharị). Onye ahịa na-edobe kaadị khata (ọ ji anyị ụgwọ); onye na-ebunye na-ere anyị ngwaahịa (anyị ji ya ụgwọ); ha abụọ dị mma. Akwụkwọ na-anọ iche; akụkọ na-egosi net.
 party_kind_ph	Ọrụ: onye ahịa, onye na-ebunye, ha abụọ…
 reports_help	Akwụkwọ ụbọchị, ndị ji ụgwọ na ndị a ji ụgwọ, akwụkwọ ụlọ akụ, akwụkwọ mmefu, uru na mfu.
 reports_today	Akwụkwọ ụbọchị (taa)
@@ -52,7 +52,7 @@ total	Ngụkọta
 cash	Ego aka
 upi	UPI
 card	Kaadị
-credit	Ndị otu
+credit	Ndị mmekọ
 clear	Hichapụ
 today_prefix	Taa
 owed	na-echere
@@ -194,9 +194,9 @@ credit_summary_fmt	{} ndị ahịa · kredit mepere {} · ego n'ihu ejidere {}
 recent_label	N'oge na-adịbeghị:
 inventory	Ngwaahịa
 branches	Alaka
-credit_customers	Ndị otu (khata na ndị na-ebunye)
-customer_name_ph	Aha onye otu
-new_customer_ph	Aha onye otu ọhụrụ
+credit_customers	Ndị mmekọ (khata na ndị na-ebunye)
+customer_name_ph	Aha onye mmekọ
+new_customer_ph	Aha onye mmekọ ọhụrụ
 item_price_ph	Ọnụahịa
 start_template	Ngwaahịa
 team	Otu
@@ -289,8 +289,8 @@ copy_day_book_csv	Detuo CSV akwụkwọ ụbọchị
 copy_day_close	Detuo mmechi ụbọchị
 copy_items_csv	Detuo CSV ihe
 copy_outstanding_csv	Detuo CSV nke na-eche
-copy_parties_csv	Detuo CSV ndị otu
-copy_party_ledger_csv	Detuo CSV akwụkwọ onye otu
+copy_parties_csv	Detuo CSV ndị mmekọ
+copy_party_ledger_csv	Detuo CSV akwụkwọ onye mmekọ
 copy_receipt	Detuo akwụkwọ nnata
 share_whatsapp	Kekọrịta na WhatsApp
 lan_pages_heading	Ibe ndị ahịa na Wi-Fi
@@ -324,8 +324,8 @@ copy_report	Detuo akụkọ
 counted_cash_ph	Ego aka agụrụ n'ime drawer
 country_tax	Mba na ụtụ
 create_backup	Mepụta nchekwa
-credit_limit_heading	Oke kredit (onye otu ahọpụtara / a kpọrọ aha)
-delete_party	Hichapụ onye otu ahọpụtara
+credit_limit_heading	Oke kredit (onye mmekọ ahọpụtara / a kpọrọ aha)
+delete_party	Hichapụ onye mmekọ ahọpụtara
 done_open_books	Emeela — mepee akwụkwọ
 drawer_count	Ọnụọgụ drawer (ọ bụghị iwu)
 expense_heading	Mmefu
@@ -338,15 +338,15 @@ forget_shop	Chefuo ụlọ ahịa a
 goods_received	Ngwaahịa natara
 import_day	Bubata ụbọchị
 import_items_csv_plain	Bubata CSV ihe…
-import_parties_csv	Bubata CSV ndị otu…
+import_parties_csv	Bubata CSV ndị mmekọ…
 item_name	Aha ihe
 login_id_ph	Aha njirimara
 mark_cleared	Kaa ka e doziri
-new_party_clear	Onye otu ọhụrụ (hichapụ fọm)
-new_party_kind_supplier_ph	Ụdị onye otu ọhụrụ (Onye na-ebunye)
+new_party_clear	Onye mmekọ ọhụrụ (hichapụ fọm)
+new_party_kind_supplier_ph	Ụdị onye mmekọ ọhụrụ (Onye na-ebunye)
 next_order	Iwu ọzọ (hichapụ tebụl)
 note_gstin_ph	Ndetu / GSTIN / ncheta nkwekọrịta
-notes_attach_party	Ndetu na ihe etinyere (onye otu ahọpụtara)
+notes_attach_party	Ndetu na ihe etinyere (onye mmekọ ahọpụtara)
 notes_attach_sale	Ndetu na ihe etinyere (ahịa ahọpụtara)
 on_account_ap	N'aka (AP)
 org_optional_ph	Nzukọ (ọ bụghị iwu)
@@ -354,7 +354,7 @@ paid_by	Onye kwụrụ
 paid_now	Akwụrụ ugbu a
 pair_now	Jikọọ ugbu a
 pairing_code_ph	Koodu njikọ
-party_name_selected_ph	Aha onye otu (ma ọ bụ jiri nke ahọpụtara)
+party_name_selected_ph	Aha onye mmekọ (ma ọ bụ jiri nke ahọpụtara)
 password_ph	Okwuntughe
 pay_ap_card	Kwụọ AP na kaadị
 pay_ap_cash	Kwụọ AP na ego aka
@@ -403,7 +403,7 @@ save_features_ok	Echekwara nhazi maka {name}
 save_names	Chekwaa aha
 second_way	Ụzọ nke abụọ
 server_ip_ph	IP sava (dịka 192.168.1.10)
-set_credit_limit	Tinye oke na onye otu
+set_credit_limit	Tinye oke na onye mmekọ
 set_login_selected	Tinye nbanye na nke ahọpụtara
 set_login_named	Tinye nbanye na {name}
 shop	Ụlọ ahịa
@@ -532,7 +532,7 @@ backup_failed	Nchekwa n'onwe ikpeazụ dara: {e}
 backup_overdue	Enweghị nchekwa ruo ụbọchị {n} — hapụ ngwa mepere na ngwaọrụ a ka o wee nwee ike ichekwa.
 disk_low	Naanị {mb} MB fọdụrụ na ngwaọrụ a — nchekwa ga-ada n'oge na-adịghị anya. Mee ebe ohere.
 connection_to_shop	Njikọ na ụlọ ahịa
-supplier_name_ph	Aha onye na-ebunye (ma ọ bụ onye otu)
+supplier_name_ph	Aha onye na-ebunye (ma ọ bụ onye mmekọ)
 supplier_ph	Onye na-ebunye
 switch_device	Gbanwee ngwaọrụ a
 take_payment	Nakọta ụgwọ
@@ -686,7 +686,7 @@ onboard_fresh_tmpl	Ọhụrụ · {} — katalọgụ na-amalite efu; tinye ihe 
 onboard_book_tmpl	Akwụkwọ · {} — tinye ihe na kredit mmalite, wee Emeela.
 tmpl_blurb	Ọnụ ahịa ọgwụ: ọgwụ, ogbe/ expiry, khata, akwụkwọ.
 reports_facet_title	Akụkọ
-reports_facet_help	Akwụkwọ ụbọchị, ịka onye otu, ndenye ụlọ akụ, na uru na mfu oge.
+reports_facet_help	Akwụkwọ ụbọchị, ịka onye mmekọ, ndenye ụlọ akụ, na uru na mfu oge.
 against_bill_ph	Megide ụgwọ # dị n'elu (nhọrọ)
 aliases_ph	Utu aha, mkpirisi aha — rikoma kewapụrụ
 amount_blank_full_ph	Ego (efu = nguzozi zuru ezu)
@@ -842,7 +842,7 @@ upi_payee_ph	Aha onye na-anata UPI (nhọrọ)
 show_upi_qr	Gosi UPI QR
 close_upi_qr	Mechie
 upi_qr_help	Ndị ahịa na-enyocha ma kwụọ ụgwọ. Pịa nara ugwo mgbe ha kwuchara. Ihuenyo nke abụọ: mepee URL / ngosipụta na LAN.
-role_help_customer	Ọrụ: Onye ahịa — khata (ha ji anyị). Otu onye otu nwekwara ike ibunye ngwaahịa.
+role_help_customer	Ọrụ: Onye ahịa — khata (ha ji anyị). Otu onye mmekọ nwekwara ike ibunye ngwaahịa.
 role_help_both	Ọrụ: Onye ahịa + Onye na-ebunye — otu onye, akwụkwọ khata na ihe a ga-akwụ, net na Akụkọ.
 role_help_supplier	Ọrụ: Onye na-ebunye — anyị ji ha maka ihe anyị zụtara.
 price_ph	Ọnụahịa

@@ -547,7 +547,7 @@ kitchen_printing	Skrivare
 login_id_ph	Användarnamn
 mark_cleared	Mark rensat
 new_party_clear	Nytt parti (tydlig form)
-new_party_kind_supplier_ph	Ny festtyp (leverantör)
+new_party_kind_supplier_ph	Ny parttyp (leverantör)
 next_country	Nästa land
 next_order	Nästa beställning (clear desk)
 nav_drafts	Utkast
@@ -1060,7 +1060,7 @@ onboard_template_tmpl	Namnge platsen om du vill och välj sedan hur du ska börj
 tmpl_blurb	Bord, beställning, köksbiljetter, fakturering och böcker.
 tmpl_how	Sälj vid disken; Sal för bord & KOT; Böcker för dagen bok.
 reports_facet_title	Rapporter
-reports_facet_help	Dagböcker, feståldring, bankinlägg och periodisk P&L.
+reports_facet_help	Dagböcker, åldersanalys per part, bankposter och resultat per period.
 against_bill_ph	Mot räkning # ovan (valfritt)
 aliases_ph	Alias — andra namn, kommaseparerade
 amount_blank_full_ph	Belopp (tomt = fullt saldo)
@@ -1364,7 +1364,7 @@ resv_add	Boka
 resv_seat	Sittande
 resv_none	Inga bokningar kommer.
 guests_word	gäster
-delivery_by_ph	Leverans av (ryttare eller personalnamn)
+delivery_by_ph	Levereras av (bud / personal)
 kitchen_all_day	Att laga mat nu: {items}
 kitchen_all_day_head	Ska laga mat nu
 kitchen_tab_live	Live

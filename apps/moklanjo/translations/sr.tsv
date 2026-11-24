@@ -63,7 +63,7 @@ remove	Уклони
 empty_catalog	Још нема тарифа.
 counter_sale	Резервација на шалтеру
 total	Укупно
-cash	Цасх
+cash	Готовина
 upi	UPI
 card	Цард
 credit	Купци и добављачи
@@ -260,7 +260,7 @@ add_conversion	Додајте конверзију
 add_item_plain	Додајте ставку менија
 add_note	Додај напомену
 add_opening_balance	Додајте почетни биланс
-add_rider	Додај јахача
+add_rider	Додај курира
 add_staff	Додајте особље
 add_unit	Додајте јединицу
 add_use_name	Додајте / користите ово име
@@ -288,7 +288,7 @@ till_to_bank	Каса → банка
 mark_cleared	Ознака је избрисана
 unmark	Уклони ознаку
 role_both	И једно и друго
-role_carrier	Царриер
+role_carrier	Превозник
 role_cashier	благајник
 role_consignor	пошиљалац
 role_manager	Менаџер
@@ -359,7 +359,7 @@ counter_agency_ph	Назив шалтера/агенције (опционо)
 create_backup	Направите резервну копију
 day_close_summary	Закључак дана
 delete_party	Обриши изабрану странку
-dispatch_to_rider	Отпрема резервисано → јахач
+dispatch_to_rider	Отпреми резервисане → курир
 docket_charge_ph	Доцкет цхарге
 declared_value_ph	Декларисана вредност
 contents_ph	Садржај
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Недоступно
 ndr_door_locked	Врата закључана
 ndr_other	Остало
 ndr_refused	Одбио
-out_for_delivery	За испоруку
+out_for_delivery	У достави
 print_drs	Штампај ДРС
 print_run_sheet	Штампање листа
 reattempt	Поновни покушај
 rider_cod_handed_ph	ЦОД предао
-settle_rider_cod	Подмири ридер ЦОД
+settle_rider_cod	Обрачунај поузеће курира
 mode_desk	Деск
-mode_rider	Ридер
+mode_rider	Курир
 waiting_office	чека да стигне у канцеларију
 capture_signature	Сними потпис
 incoming_manifest	Долазни манифест
@@ -415,7 +415,7 @@ pickup_request	Захтев за преузимање
 pickup_run	Пицкуп рун
 auto_assign_area	Аутоматско додељивање области
 reorder_stops	Промена редоследа се зауставља
-settle_rider_pay	Измирите плату јахача
+settle_rider_pay	Измири плату курира
 vehicle_inspect	Преглед возила
 print_docket	Принт доцкет
 franchise_statement	Изјава о франшизи
@@ -458,10 +458,10 @@ refund	Рефунд
 remit_cod	Уплати поузеће (странка)
 remove_selected	Уклони изабрано
 restore_backup	Вратите резервну копију
-rider_name_ph	Име јахача
-rider_phone_ph	Јахачев телефон
-riders	Јахачи
-riders_own_fleet	Јахачи (сопствена флота)
+rider_name_ph	Име курира
+rider_phone_ph	Телефон курира
+riders	Курири
+riders_own_fleet	Курири (сопствена флота)
 rollup	Сажетак
 save_booking_measures	Сачувајте мере резервације
 save_brand	Сачувај бренд
@@ -829,13 +829,13 @@ lane_empty	Ништа овде тренутно.
 picked_fmt	{n} изабрано
 pick_all	Изабери све
 bag_for_carrier	Рука носачу
-send_with_rider	Пошаљите са јахачем
+send_with_rider	Пошаљи по куриру
 out_again	Опет напоље
-return_to_sender	Вратите се пошиљаоцу
+return_to_sender	Врати пошиљаоцу
 runs_bags_heading	Недавне вожње и торбе
 print_word	Принт
 bag_word	Торба за ношење
-run_word	Ридер рун
+run_word	Курирска тура
 parcels_fmt	{n} пакети
 parcel_history	Историја
 attempt_fmt	Покушај {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} пакет
 facet_bank_title	Извештаји
 facet_bank_help	Дневне књиге, старење купаца или добављача, банковни постови и П&Л периода.
 facet_ops_title	Пошиљке и отпрема
-facet_ops_help	Скенирајте или откуцајте АВБ → Финд, а затим унапред / одштампајте етикету / ЦОД. Отпремање јахачу или превознику.
+facet_ops_help	Скенирајте или откуцајте AWB → Пронађи, затим даље / одштампај етикету / поузеће. Предаја куриру или превознику.
 facet_cod_title	ЦОД регистар
 facet_cod_help	Преузмите приликом испоруке, а затим пошаљите пошиљаоцу.
-facet_riders_title	Јахачи (сопствена флота)
-facet_riders_help	Додајте возаче, а затим пошаљите резервисане АВБ-ове из Опс.
+facet_riders_title	Курири (сопствена флота)
+facet_riders_help	Додајте курире, а затим пошаљите резервисане AWB из Ops.
 against_bill_ph	Против рачуна # изнад (опционо)
 aliases_ph	Алиаси — друга имена, одвојена зарезом
 amount_blank_full_ph	Износ (празно = пуно стање)

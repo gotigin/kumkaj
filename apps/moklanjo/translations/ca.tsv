@@ -149,7 +149,7 @@ origin_phone_ph	Telèfon remitent
 origin_address_ph	Adreça de recollida/origen
 booking_consignor_heading	Remitent (client / expedidor)
 booking_consignee_heading	Consigna (receptor)
-booking_consignor_hint	Tria una festa per omplir o deixa en blanc per entrar. Necessari per a la recollida a domicili i RTO.
+booking_consignor_hint	Tria una part per emplenar-ho, o deixa-ho en blanc per a un client de pas. Cal per a la recollida a domicili i RTO.
 booking_consignee_hint	Receptor del paquet. Deixeu-lo en blanc per a les baixades del taulell.
 weight_kg_ph	Kg real
 length_cm_ph	L cm
@@ -359,7 +359,7 @@ counter_agency_ph	Nom del taulell / agència (opcional)
 create_backup	Crea una còpia
 day_close_summary	Resum del tancament del dia
 delete_party	Elimina la part seleccionada
-dispatch_to_rider	Enviament reservat → repartidor
+dispatch_to_rider	Envia els reservats → repartidor
 docket_charge_ph	Càrrec de registre
 declared_value_ph	Valor declarat
 contents_ph	Continguts
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Importa la factura de l'operador CSV...
 copy_carrier_bill_report	Copiar últim informe de factura del transportista
 use_carrier_cost	Utilitzeu el cost del transportista
 rate_carrier_ph	Transportista (blanc = la nostra tarifa de venda)
-rate_party_ph	Festa (en blanc = tots els clients)
+rate_party_ph	Part (en blanc = tots els clients)
 carrier_pick_ph	Transportista per cost (des de comparar)
 item_name	Nom de l'article
 load_bulk_row	Carrega la fila a granel → escriptori
@@ -400,14 +400,14 @@ ndr_customer_unavailable	No disponible
 ndr_door_locked	Parella tancada
 ndr_other	Altres
 ndr_refused	Negat
-out_for_delivery	Sortida per lliurament
+out_for_delivery	En repartiment
 print_drs	Imprimeix DRS
 print_run_sheet	Imprimeix el full de tirada
 reattempt	Tornar a intentar
 rider_cod_handed_ph	COD lliurat
 settle_rider_cod	Liquida el COD del repartidor
 mode_desk	Escriptori
-mode_rider	Genet
+mode_rider	Repartidor
 waiting_office	esperant arribar a l'oficina
 capture_signature	Capturar signatura
 incoming_manifest	Manifest entrant
@@ -415,7 +415,7 @@ pickup_request	Sol·licitud de recollida
 pickup_run	Carrera de recollida
 auto_assign_area	Assigna automàticament l'àrea
 reorder_stops	Reordena les parades
-settle_rider_pay	Liquidar la paga del genet
+settle_rider_pay	Liquida la paga del repartidor
 vehicle_inspect	Inspecció de vehicles
 print_docket	Imprimeix expedient
 franchise_statement	Declaració de franquícia
@@ -458,10 +458,10 @@ refund	Devolució
 remit_cod	Remetre COD (part)
 remove_selected	Treu la selecció
 restore_backup	Restaura la còpia
-rider_name_ph	Nom del genet
-rider_phone_ph	Telèfon del genet
-riders	Genets
-riders_own_fleet	Genets (flota pròpia)
+rider_name_ph	Nom del repartidor
+rider_phone_ph	Telèfon del repartidor
+riders	Repartidors
+riders_own_fleet	Repartidors (flota pròpia)
 rollup	Acumulat
 save_booking_measures	Estalviï les mesures de reserva
 save_brand	Desa la marca
@@ -819,7 +819,7 @@ trk_booked	Reservat
 trk_picked_up	Recollit
 trk_in_transit	En trànsit
 trk_delivered	Lliurat
-trk_rto	Tornant al remitent
+trk_rto	En retorn al remitent
 lane_to_dispatch	Per enviar
 lane_with_carrier	Amb portador
 lane_failed	Fallat
@@ -829,13 +829,13 @@ lane_empty	No hi ha res aquí ara mateix.
 picked_fmt	{n} escollit
 pick_all	Tria-ho tot
 bag_for_carrier	Donar a transportista
-send_with_rider	Enviar amb genet
+send_with_rider	Envia amb repartidor
 out_again	De nou fora
-return_to_sender	Torna al remitent
+return_to_sender	Retorna al remitent
 runs_bags_heading	Carreres i bosses recents
 print_word	Imprimeix
 bag_word	Bossa del transportista
-run_word	Rider corre
+run_word	Ruta del repartidor
 parcels_fmt	paquets {n}
 parcel_history	Història
 attempt_fmt	Intent {n}
@@ -851,10 +851,10 @@ parcel_one_fmt	Paquet {n}
 facet_bank_title	Informes
 facet_bank_help	Llibres del dia, antiguitat de parts, assentaments bancaris i PiG del període.
 facet_ops_title	Consignacions i enviaments
-facet_ops_help	Escaneja o escriviu AWB → Cerca i, a continuació, avança / imprimeix etiqueta / COD. Enviament al motorista o transportista.
+facet_ops_help	Escaneja o escriu l'AWB → Cerca, i després avança / imprimeix l'etiqueta / COD. Lliurament al repartidor o al transportista.
 facet_cod_title	Registre COD
 facet_cod_help	Recollir al lliurament, després remetre al remitent.
-facet_riders_title	Genets (flota pròpia)
+facet_riders_title	Repartidors (flota pròpia)
 facet_riders_help	Afegir repartidors, després enviar els AWB reservats des d'Operacions.
 against_bill_ph	Contra el compte núm. de dalt (opcional)
 aliases_ph	Àlies — altres noms, separats per comes

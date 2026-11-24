@@ -260,7 +260,7 @@ add_conversion	Legg til omregning
 add_item_plain	Legg til vare
 add_note	Legg til merknad
 add_opening_balance	Legg til inngående saldo
-add_rider	Legg til rytter
+add_rider	Legg til bud
 add_staff	Legg til personale
 add_unit	Legg til enhet
 add_use_name	Legg til / bruk dette navnet
@@ -359,7 +359,7 @@ counter_agency_ph	Skranke / byrånavn (valgfritt)
 create_backup	Opprett sikkerhetskopi
 day_close_summary	Sammendrag av dagsavslutning
 delete_party	Slett valgt part
-dispatch_to_rider	Utsendelse bestilt → rytter
+dispatch_to_rider	Send bestilte → bud
 docket_charge_ph	Docket lading
 declared_value_ph	Oppgitt verdi
 contents_ph	Innhold
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Utilgjengelig
 ndr_door_locked	Dør låst
 ndr_other	Annen
 ndr_refused	Nektet
-out_for_delivery	Ute for levering
+out_for_delivery	Under levering
 print_drs	Skriv ut DRS
 print_run_sheet	Skriv ut ark
 reattempt	Forsøk på nytt
 rider_cod_handed_ph	COD levert inn
-settle_rider_cod	Avgjør rytter COD
+settle_rider_cod	Gjør opp budets COD
 mode_desk	Skrivebord
-mode_rider	Rytter
+mode_rider	Bud
 waiting_office	venter på å komme til kontoret
 capture_signature	Ta opp signatur
 incoming_manifest	Innkommende manifest
@@ -415,7 +415,7 @@ pickup_request	Hentingsforespørsel
 pickup_run	Hentekjøring
 auto_assign_area	Automatisk tilordningsområde
 reorder_stops	Ombestilling stopper
-settle_rider_pay	Avgjør rytterlønn
+settle_rider_pay	Gjør opp budets lønn
 vehicle_inspect	Kjøretøykontroll
 print_docket	Skriv ut dokumentasjon
 franchise_statement	Franchiseerklæring
@@ -427,7 +427,7 @@ share_receipt_whatsapp	Del kvittering på WhatsApp
 delivery_feedback	Tilbakemelding om levering
 lan_self_book	LAN selvbestilling
 new_party_clear	Ny part (tøm skjema)
-new_party_kind_ph	Ny festtype (leverandør / transportør)
+new_party_kind_ph	Ny parttype (leverandør / transportør)
 next_country	Neste land
 prev_country	Forrige land
 note_gstin_ph	Merknad / GSTIN / avtale-påminnelse
@@ -443,7 +443,7 @@ pay_ap_card	Betal AP med kort
 pay_ap_cash	Betal AP kontant
 pay_ap_upi	Betal AP med UPI
 period_bill	Perioderegning
-period_bill_party	Perioderegning (fest)
+period_bill_party	Periodefaktura (part)
 period_bill_generate	Lag regning
 period_bill_generate_print	Lag og skriv ut
 booking_bulk_preview	{ok} klare · {bad} med feil
@@ -458,10 +458,10 @@ refund	Refusjon
 remit_cod	Send etterkrav (part)
 remove_selected	Fjern valgt
 restore_backup	Gjenopprett sikkerhetskopi
-rider_name_ph	Rytterens navn
-rider_phone_ph	Ryttertelefon
-riders	Ryttere
-riders_own_fleet	Ryttere (egen flåte)
+rider_name_ph	Budets navn
+rider_phone_ph	Budets telefon
+riders	Bud
+riders_own_fleet	Bud (egen flåte)
 rollup	Sammendrag
 save_booking_measures	Lagre bookingtiltak
 save_brand	Lagre merkevaren
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Fresh · {} — katalogen starter tom; legg til varer i Varer
 onboard_book_tmpl	Book · {} — legg til varer og åpningskreditt, deretter Ferdig.
 onboard_template_tmpl	Gi stedet et navn om du vil, og velg hvordan du vil starte.
 tmpl_blurb	Budbøker og bookingskranke: avsendere, transportører, dagbok, AWB.
-tmpl_how	Bestill pakker ved pulten; Dagbok for i dag; faner for priser, fester, rapporter.
+tmpl_how	Registrer pakker ved skranken; Dagbok for i dag; faner for priser, parter, rapporter.
 app_template_heading	Butikkmaler
 app_template_blurb	Velg et startoppsett. «Hopp over nå» lar partene stå tomme.
 app_template_skip	Hopp over nå
@@ -819,7 +819,7 @@ trk_booked	Bestilt
 trk_picked_up	Plukket opp
 trk_in_transit	I transitt
 trk_delivered	Levert
-trk_rto	Går tilbake til avsender
+trk_rto	Returneres til avsender
 lane_to_dispatch	Å sende
 lane_with_carrier	Med bærer
 lane_failed	Mislyktes
@@ -829,13 +829,13 @@ lane_empty	Ingenting her akkurat nå.
 picked_fmt	{n} valgt
 pick_all	Velg alle
 bag_for_carrier	Hånd til bærer
-send_with_rider	Send med rytter
+send_with_rider	Send med bud
 out_again	Ut igjen
-return_to_sender	Gå tilbake til avsender
+return_to_sender	Returner til avsender
 runs_bags_heading	Nylige kjører og vesker
 print_word	Trykk
 bag_word	Bæreveske
-run_word	Rytterløp
+run_word	Budrunde
 parcels_fmt	{n} pakker
 parcel_history	Historie
 attempt_fmt	Forsøk {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} pakke
 facet_bank_title	Rapporter
 facet_bank_help	Dagbøker, aldring av parter, bankposter og periode-resultat.
 facet_ops_title	Forsendelser og forsendelse
-facet_ops_help	Skann eller skriv AWB → Finn, forover deretter / skriv ut etikett / COD. Sendes til rytter eller transportør.
+facet_ops_help	Skann eller skriv AWB → Finn, deretter videre / skriv ut etikett / COD. Lever til bud eller transportør.
 facet_cod_title	COD-register
 facet_cod_help	Hent ved levering, send deretter til avsender.
-facet_riders_title	Ryttere (egen flåte)
-facet_riders_help	Legg til ryttere, og send deretter bestilte AWB-er fra Ops.
+facet_riders_title	Bud (egen flåte)
+facet_riders_help	Legg til bud, og send deretter bestilte AWB-er fra Ops.
 against_bill_ph	Mot regning # over (valgfritt)
 aliases_ph	Aliaser — andre navn, kommaseparert
 amount_blank_full_ph	Beløp (tomt = hele saldoen)
@@ -894,7 +894,7 @@ part_second_way_ph	Del på en annen måte (valgfritt)
 phone_ph	Telefon
 address_ph	Adresse
 party_custom_fields_heading	Egendefinerte felt (valgt part)
-party_custom_help	Legg til hvilken som helst etikett og verdi på denne festen - WhatsApp, GSTIN, rutekode, ...
+party_custom_help	Legg til hvilken som helst etikett og verdi på denne parten – WhatsApp, GSTIN, rutekode, …
 party_custom_key_ph	Feltnavn (f.eks. WhatsApp)
 party_custom_value_ph	Verdi
 party_custom_add	Legg til felt

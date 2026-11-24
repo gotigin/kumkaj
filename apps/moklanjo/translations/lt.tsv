@@ -260,7 +260,7 @@ add_conversion	Pridėti perskaičiavimą
 add_item_plain	Pridėti prekę
 add_note	Pridėti pastabą
 add_opening_balance	Pridėti pradinį likutį
-add_rider	Pridėti motociklininką
+add_rider	Pridėti kurjerį
 add_staff	Pridėti personalą
 add_unit	Pridėti vienetą
 add_use_name	Pridėti / naudoti šį vardą
@@ -359,7 +359,7 @@ counter_agency_ph	Prekystalio / agentūros pavadinimas (neprivaloma)
 create_backup	Sukurti atsarginę kopiją
 day_close_summary	Dienos uždarymo suvestinė
 delete_party	Ištrinti pasirinktą šalį
-dispatch_to_rider	Siuntimas užsakytas → raitelis
+dispatch_to_rider	Išsiųsti užsakytus → kurjeris
 docket_charge_ph	Docket mokestis
 declared_value_ph	Deklaruojama vertė
 contents_ph	Turinys
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Nėra
 ndr_door_locked	Durys užrakintos
 ndr_other	Kita
 ndr_refused	Atsisakė
-out_for_delivery	Išvesta pristatymui
+out_for_delivery	Pristatoma
 print_drs	Spausdinti DRS
 print_run_sheet	Spausdinimo lapas
 reattempt	Bandymas iš naujo
 rider_cod_handed_ph	COD įteiktas
-settle_rider_cod	Atsiskaityti motociklininko COD
+settle_rider_cod	Atsiskaityti už kurjerio COD
 mode_desk	Rašomasis stalas
-mode_rider	Raitelis
+mode_rider	Kurjeris
 waiting_office	laukia, kol pasieks biurą
 capture_signature	Užfiksuoti parašą
 incoming_manifest	Gaunamas manifestas
@@ -415,7 +415,7 @@ pickup_request	Prašymas pasiimti
 pickup_run	Paėmimo bėgimas
 auto_assign_area	Automatiškai priskirti sritį
 reorder_stops	Pertvarkymas sustoja
-settle_rider_pay	Sureguliuokite motociklininko atlyginimą
+settle_rider_pay	Atsiskaityti su kurjeriu už darbą
 vehicle_inspect	Transporto priemonės apžiūra
 print_docket	Spausdinti dokumentą
 franchise_statement	Franšizės pareiškimas
@@ -458,10 +458,10 @@ refund	Grąžinimas
 remit_cod	Pervesti COD (šalis)
 remove_selected	Pašalinti pasirinktą
 restore_backup	Atkurti iš atsarginės kopijos
-rider_name_ph	Raitelio vardas
-rider_phone_ph	Raitelio telefonas
-riders	Raiteliai
-riders_own_fleet	Raiteliai (nuosavas laivynas)
+rider_name_ph	Kurjerio vardas
+rider_phone_ph	Kurjerio telefonas
+riders	Kurjeriai
+riders_own_fleet	Kurjeriai (nuosavas parkas)
 rollup	Suvestinė
 save_booking_measures	Išsaugokite rezervavimo priemones
 save_brand	Išsaugoti prekės ženklą
@@ -829,13 +829,13 @@ lane_empty	Šiuo metu čia nieko.
 picked_fmt	Pasirinktas {n}
 pick_all	Rinkis visus
 bag_for_carrier	Ranka nešikliui
-send_with_rider	Siųsti su raiteliu
+send_with_rider	Siųsti su kurjeriu
 out_again	Vėl lauke
 return_to_sender	Grąžinti siuntėjui
 runs_bags_heading	Naujausi bėgimai ir krepšiai
 print_word	Spausdinti
 bag_word	Nešiojamas krepšys
-run_word	Raitelio bėgimas
+run_word	Kurjerio maršrutas
 parcels_fmt	{n} siuntiniai
 parcel_history	Istorija
 attempt_fmt	Bandymas {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} siuntinys
 facet_bank_title	Ataskaitos
 facet_bank_help	Dienos knygos, šalių senėjimas, banko įrašai ir laikotarpio pelnas bei nuostolis.
 facet_ops_title	Siuntos ir išsiuntimas
-facet_ops_help	Nuskaitykite arba įveskite AWB → Rasti, tada pirmyn / spausdinkite etiketę / COD. Siuntimas motociklininkui arba vežėjui.
+facet_ops_help	Nuskaitykite arba įveskite AWB → Rasti, tada pirmyn / spausdinti etiketę / COD. Perdavimas kurjeriui arba vežėjui.
 facet_cod_title	COD registras
 facet_cod_help	Paimkite pristatymo metu, tada perduokite siuntėjui.
-facet_riders_title	Raiteliai (nuosavas laivynas)
-facet_riders_help	Pridėkite vairuotojus, tada išsiųskite užsakytus AWB iš „Ops“.
+facet_riders_title	Kurjeriai (nuosavas parkas)
+facet_riders_help	Pridėkite kurjerius, tada išsiųskite užsakytus AWB iš „Ops“.
 against_bill_ph	Prie sąskaitos Nr. aukščiau (nebūtina)
 aliases_ph	Slapyvardžiai — kiti vardai, atskirti kableliu
 amount_blank_full_ph	Suma (tuščia = visas likutis)

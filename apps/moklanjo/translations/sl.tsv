@@ -89,7 +89,7 @@ note_ph	Opomba (neobvezno)
 rounded	ZAOKROŽENO
 split	Razdeli
 counter	Pult
-parcel	Parcela
+parcel	Pošiljka
 order	Naročilo
 sales	rezervacije
 sales_refunds	Rezervacije in vračila
@@ -260,7 +260,7 @@ add_conversion	Dodaj pretvorbo
 add_item_plain	Dodaj artikel
 add_note	Dodaj opombo
 add_opening_balance	Dodaj začetno stanje
-add_rider	Dodaj kolesarja
+add_rider	Dodaj kurirja
 add_staff	Dodaj osebje
 add_unit	Dodaj enoto
 add_use_name	Dodaj / uporabi to ime
@@ -359,7 +359,7 @@ counter_agency_ph	Ime okenca/agencije (neobvezno)
 create_backup	Ustvari varnostno kopijo
 day_close_summary	Povzetek zaključka dneva
 delete_party	Izbriši izbranega partnerja
-dispatch_to_rider	Odprema rezervirana → kolesar
+dispatch_to_rider	Odpremi rezervirane → kurir
 docket_charge_ph	Docket dajatev
 declared_value_ph	Deklarirana vrednost
 contents_ph	Vsebina
@@ -407,7 +407,7 @@ reattempt	Ponovni poskus
 rider_cod_handed_ph	COD oddan
 settle_rider_cod	Poravnaj COD kurirja
 mode_desk	Pisalna miza
-mode_rider	Jezdec
+mode_rider	Kurir
 waiting_office	čakajo, da pridejo v pisarno
 capture_signature	Zajem podpisa
 incoming_manifest	Dohodni manifest
@@ -415,7 +415,7 @@ pickup_request	Zahteva za prevzem
 pickup_run	Pobiranje
 auto_assign_area	Samodejno dodeli območje
 reorder_stops	Ponovno naročanje se ustavi
-settle_rider_pay	Poravnajte plačilo voznika
+settle_rider_pay	Poravnaj plačilo kurirja
 vehicle_inspect	Pregled vozila
 print_docket	Natisni potrdilo
 franchise_statement	Izjava o franšizi
@@ -458,10 +458,10 @@ refund	Vračilo
 remit_cod	Nakazilo COD (zabava)
 remove_selected	Odstrani izbrano
 restore_backup	Obnovi varnostno kopijo
-rider_name_ph	Ime voznika
-rider_phone_ph	Voznikov telefon
-riders	Jezdeci
-riders_own_fleet	Vozniki (lastna flota)
+rider_name_ph	Ime kurirja
+rider_phone_ph	Telefon kurirja
+riders	Kurirji
+riders_own_fleet	Kurirji (lastna flota)
 rollup	Zbir
 save_booking_measures	Shranite ukrepe za rezervacije
 save_brand	Shrani blagovno znamko
@@ -824,12 +824,12 @@ lane_to_dispatch	Za odpremo
 lane_with_carrier	Z nosilcem
 lane_failed	Ni uspelo
 lane_done_today	Končano danes
-ops_board_help	Parcele po tem, kje so v današnjem delu. Dotaknite se paketov (ali jih optično preberite), da jih izberete, nato pa ukrepajte na vseh izbranih hkrati — vsaka steza ponuja le poteze, ki ji ustrezajo.
+ops_board_help	Pošiljke po tem, kje so v današnjem delu. Dotaknite se pošiljk (ali jih optično preberite), da jih izberete, nato pa ukrepajte na vseh izbranih hkrati — vsaka steza ponuja le poteze, ki ji ustrezajo.
 lane_empty	Trenutno tukaj ni ničesar.
 picked_fmt	{n} izbrano
 pick_all	Izberi vse
 bag_for_carrier	Roka nosilcu
-send_with_rider	Pošlji z voznikom
+send_with_rider	Pošlji s kurirjem
 out_again	Spet ven
 return_to_sender	Vrni pošiljatelju
 runs_bags_heading	Nedavne vožnje in torbe
@@ -851,11 +851,11 @@ parcel_one_fmt	Paket {n}
 facet_bank_title	Poročila
 facet_bank_help	Dnevniki, staranje partnerjev, bančne knjižbe in obdobni dobiček in izguba.
 facet_ops_title	Pošiljke in odprema
-facet_ops_help	Skenirajte ali vtipkajte AWB → Najdi, nato naprej / tiskanje etikete / COD. Pošiljanje kolesarju ali prevozniku.
+facet_ops_help	Skenirajte ali vtipkajte AWB → Najdi, nato naprej / natisni etiketo / COD. Predaja kurirju ali prevozniku.
 facet_cod_title	register COD
 facet_cod_help	Prevzem ob dostavi in ​​nakazilo pošiljatelju.
-facet_riders_title	Vozniki (lastna flota)
-facet_riders_help	Dodajte kolesarje, nato pa pošljite rezervirane AWB iz Ops.
+facet_riders_title	Kurirji (lastna flota)
+facet_riders_help	Dodajte kurirje, nato pošljite rezervirane AWB iz Ops.
 against_bill_ph	Proti računu št. zgoraj (neobvezno)
 aliases_ph	Vzdevki — druga imena, ločena z vejico
 amount_blank_full_ph	Znesek (prazno = celotno stanje)

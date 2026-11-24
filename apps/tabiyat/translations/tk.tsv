@@ -752,7 +752,7 @@ new_category_row	Täze kategoriýa - harytini ýatda saklanyňyzda döredildi
 your_category	Siziň kategoriýaňyz
 suggested_category	Teklip - önümlerimizden
 category_search_ph	Kategoriýa - özüňizi gözläň ýa-da täzesini ýazyň
-cancel_item_short	Elatyr
+cancel_item_short	Ýatyr
 return_to_customer	Müşderä gaýdyp geliň
 short_by	Gysgaça
 tip_not_sale	Maslahat (işgärler, satuw däl)
@@ -873,12 +873,12 @@ app_template_importing	{title}…
 app_template_import_selected	Saýlananyny import et
 app_template_wipe_warn	Bu depderlerdäki söwda maglumatlaryny (satyşlar, hasap depderleri) arassalaýar we şablonyň dükan sazlamalaryny ulanýar. Dowam etmelimi?
 app_template_wipe_continue	Dowam et
-app_template_wipe_cancel	Elatyr
+app_template_wipe_cancel	Ýatyr
 app_template_from_device	Şu enjamdan import et
 app_template_from_device_help	template.json bar bolan bukjany saýlaň (shop_defaults.json bar bolsa, ony hem).
 settings_app_tmpl_note	Doly dükan paketleri: katalog we dükan sazlamalary. Paketi gaýtadan import etmek satyşlary we hasap depderlerini arassalaýar, soňra paketiň dükan sazlamalaryny ulanýar.
 app_tmpl_named	{name} dükan şablony
-cancel	Elatyr
+cancel	Ýatyr
 removing	Aýrylýar…
 removed	Aýryldy
 updating_order	Täzelenýär…

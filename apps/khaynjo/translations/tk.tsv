@@ -109,7 +109,7 @@ bill_line_customer	Müşderi
 bill_line_bill_no	Hasap №
 bill_line_time	Wagt
 bill_line_cashier	Kassir
-bill_line_table	Nahar saçagy
+bill_line_table	Stol
 bill_line_items	Harytlar
 bill_line_total	Jemi
 bill_line_footer	Aşakdaky ýazgy
@@ -252,7 +252,7 @@ sidebar_order_saved	Gapdal paneli tertibi saklandy
 sidebar_visibility_saved	Gapdal paneli görünýär
 amounts_hide	Gizle
 amounts_show	Görkez
-counter	Kassir
+counter	Kassa
 dine_in	Nahar
 takeaway	Alma
 order	Zakaz
@@ -389,7 +389,7 @@ app_template_from_device_help	template.json bar bolan bukjany saýlaň (shop_def
 settings_app_tmpl_note	Gaýtadan import satyşlary, KOT-lary we hasap depderlerini arassalaýar, soňra paketiň dükan sazlamalaryny ulanýar. Diňe menýuly şablonlar: «Menýu» → «Haryt şablonlary».
 app_template_wipe_warn	Bu depderlerdäki söwda maglumatlaryny (satyşlar, KOT, hasap depderleri) arassalaýar we şablonyň dükan sazlamalaryny ulanýar. Menýu we sazlama üýtgäp biler. Dowam etmelimi?
 app_template_wipe_continue	Dowam et
-app_template_wipe_cancel	Elatyr
+app_template_wipe_cancel	Ýatyr
 currency	Walýuta
 backup	Uptiýaçlyk
 use	Ulany
@@ -402,7 +402,7 @@ add_note	Bellik goşuň
 add_opening_balance	Açylyş balansyny goşuň
 add_staff	Işgär goşuň
 add_station	Wokzal goşuň
-add_table	Nahar saçagyny goşuň
+add_table	Stol goşuň
 add_unit	Bölüm goşuň
 add_use_name	Bu ady goşuň / ulanyň
 allow_extra_tills	Goşmaça töleglere rugsat beriň
@@ -453,7 +453,7 @@ copy_party_ledger_csv	Müşderi ýazgysyny CSV göçüriň
 copy_receipt	Kwitansiýany göçüriň
 share_whatsapp	WhatsApp paýlaş
 lan_pages_heading	Myhman sahypalary Wi‑Fi
-lan_pages_help	Bu dükanyň Wi‑Fi-da myhman sahypalary displeý tagtasy, bellikler, sergi, kiosk, nahar saçagy QR we seslenme üçin işleýär. Jübi maglumatlaryndaky myhmanlara soň “Cloud” gerek. Kart terminaly / töleg baglanyşygy internet açylanda islege bagly - hiç haçan hasaplaýjyny bloklamaýar.
+lan_pages_help	Bu dükanyň Wi‑Fi-da myhman sahypalary displeý tagtasy, bellikler, sergi, kiosk, stol QR we seslenme üçin işleýär. Jübi maglumatlaryndaky myhmanlara soň “Cloud” gerek. Kart terminaly / töleg baglanyşygy internet açylanda islege bagly - hiç haçan hasaplaýjyny bloklamaýar.
 diag_send_heading	Bu enjamy paýlaşyň
 kot_dest_heading	Aşhana bekedi
 optional_login_heading	Goşmaça giriş
@@ -495,7 +495,7 @@ floor_layout_y	Y
 floor_layout_w	W
 floor_layout_h	H
 floor_layout_save	Tertibi ýazdyryň
-floor_layout_open	Nahar saçagyny açyň
+floor_layout_open	Stoly açyň
 floor_layout_edit	Tertibi redaktirläň
 floor_layout_pick	Onuň ýerleşişini redaktirlemek üçin nahar stoluna basyň
 floor_layout_saved	Nahar stolunyň tertibi saklandy
@@ -560,7 +560,7 @@ drafts_discard	Garalamany poz
 drafts_discarded	Garalama pozuldy
 drafts_gone	Ol garalama indi sanawda ýok
 drafts_closed	Ol garalama eýýäm tölenen ýa-da pozulan
-drafts_empty	Entek garalama ýok. «Kassir» bölüminde nahar goşuň we «Garalama goý» basyň.
+drafts_empty	Entek garalama ýok. «Kassa» bölüminde nahar goşuň we «Garalama goý» basyň.
 drafts_card_kind	Garalama
 drafts_card_no_lines	Setir ýok
 drafts_card_lines	setir
@@ -844,7 +844,7 @@ test_kot_pick_first	Synag KOT üçin printerleri saýlaň - soň KOT synagy
 test_kot_sent_n	Synag KOT {n} printerlere iberildi
 cancel_pick	Bellik
 cancel_pick_on	Bellenen
-cancel_pick_meta	Cancelatyrmak üçin bellendi
+cancel_pick_meta	Ýatyrmak üçin bellendi
 batch_cancel	Bellenen ýatyr
 batch_cancel_n	Bellenen ýatyr ({n})
 batch_cancel_none	Ilki bilen bir ýa-da birnäçe iberilen tagamlary belläň - soň bellikleri ýatyryň
@@ -1058,7 +1058,7 @@ onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu elementlerine me
 onboard_book_tmpl	Ledger · {} - menýu elementlerini goşuň we karz açyň, soňra ýerine ýetirildi.
 onboard_template_tmpl	Isleseňiz ýeriň adyny aýdyň, soň nädip başlamalydygyny saýlaň.
 tmpl_blurb	Nahar saçaklary, sargyt, aşhana biletleri, töleg we ýazgylar.
-tmpl_how	Hasapda sat; Nahar saçagy üçin naharhana & KOT; Gün ýazgysy üçin ýazgylar.
+tmpl_how	Kassada satyň; Naharhana — stollar we KOT üçin; Ýazgylar — gün ýazgysy üçin.
 reports_facet_title	Hasabat
 reports_facet_help	Gündelik ýazgylar, müşderi ýa-da üpjün edijiniň garramagy, bank ýazgylary we döwür P&L.
 against_bill_ph	Aboveokardaky # kanun taslamasyna garşy (islege görä)
@@ -1115,7 +1115,7 @@ order_help	Goşmak üçin menýu elementine basyň.
 floor_help	Sargydy almak ýa-da üýtgetmek üçin nahar stoluna basyň. Reňkler mugt → oturgyç → aşhana → taýýar → iýmek → töleg → tölegli görkezilýär. Garaşmak sanawy, bellikler we goşmaça nahar tablisalary aşakdaky bölümlerde.
 kitchen_help	Aşhana biletleri (KOT), iň täze. Başlamak → Taýýar → oneerine ýetirildi bilet. Biletler hiç wagt bahany görkezmeýär.
 kitchen_empty	Açyk petek ýok.
-add_a_table	Nahar saçagy goşuň
+add_a_table	Stol goşuň
 add_station_heading	Aşhana bekedini goşuň
 categories_help	Şol kategoriýa boýunça ýokardaky menýu elementini faýl etmek üçin ulanyň. Surat kategoriýa surat berýär; birinjisinden baş harplaryny görkezýär.
 dish_search_ph	Menýu menýusynyň ady - gap-gaçlarymyzy gözläň ýa-da özüňiz ýazyň
@@ -1126,8 +1126,8 @@ tile_bill_printed	Hasap çap edildi
 tile_paid	Tölegli
 tile_bill_btn	Hasap
 tile_occupy_btn	Oturýan myhmanlar
-tile_free_btn	Boş nahar saçagy
-tile_ready_btn	Boş nahar saçagy
+tile_free_btn	Boş stol
+tile_ready_btn	Boş stol
 tile_undo_bill	Hasaby yzyna al
 summary_busy	nahar saçaklary meşgul
 summary_to_collect	ýygnamak
@@ -1160,7 +1160,7 @@ suggested_category	Teklip - gap-gaçlarymyzdan
 category_search_ph	Kategoriýa - özüňizi gözläň ýa-da täzesini ýazyň
 line_sent_state	Aşhana iberildi
 line_nc_state	Tölegli (NC) - töleg alynmaýar
-cancel_item_short	Elatyr
+cancel_item_short	Ýatyr
 nc_short	Mugt
 charge_again_short	Hasapla
 move_short	Göçüriň
@@ -1232,8 +1232,8 @@ kot_show_waiter	Ofisiant
 kot_hide_waiter	Ofisiant gizläň
 kot_show_station	Wokzal
 kot_hide_station	Stansiýany gizläň
-kot_show_table	Nahar saçagy
-kot_hide_table	Nahar saçagyny gizläň
+kot_show_table	Stol
+kot_hide_table	Stoly gizläň
 kot_show_kot_no	KOT №
 kot_hide_kot_no	KOT Nook
 kot_width	Gaplamany öňünden görüň (KOT goýmasynda mazmunyň giňligini düzüň)
@@ -1323,7 +1323,7 @@ role_help_customer	Rol: Müşderi - karz ýazgysy (olar bize bergidir). Birmeňz
 role_help_both	Rollar: Müşderi + üpjün ediji - bir müşderi ýa-da üpjün ediji, karz ýazgysy we tölenmeli ýazgylar, Hasabatdaky net.
 role_help_supplier	Rol: Üpjün ediji - satyn almak üçin olara bergimiz bar.
 dine_in_pick_table	Nahar iýmek - Nahar zalynyň ekranynda nahar stoluny saýlaň
-choose_table	Nahar saçagyny saýlaň
+choose_table	Stol saýlaň
 change_table	Nahar stoluny çalyşyň
 pick_table_banner	Bu sargyt üçin nahar stoluny saýlaň
 items_word	menýu elementleri
@@ -1332,7 +1332,7 @@ back_to_order	Sargyt
 new_items_head	Entek iberilmedi
 price_ph	Bahasy
 price_ph_gst_inside	Bahasy ({tax} öz içine alýar)
-cancel_needs_table	Bu sargydy naharhana ekranyndan (nahar saçagy) açyň, aşhana bolansoň ýatyrmak üçin - töleg alýançaňyz biletde galyň
+cancel_needs_table	Aşhana alandan soň ýatyrmak üçin bu sargydy naharhana ekranyndan (stoldan) açyň — kassadaky KOT-lar töleg alýançaňyz biletde galýar
 taxable_value	Salgyt salynýan baha
 gst_inside_price_note	({tax} öz içine alýar)
 start_with_template	Menýu şablonymyzdan başlaň
@@ -1359,12 +1359,12 @@ resv_name_ph	Myhman ady
 resv_phone_ph	Telefon (islege görä)
 resv_guests_ph	Myhmanlar
 resv_when_ph	Haçan - 20:30, ertir 13:00
-resv_table_ph	Nahar saçagy (islege görä)
+resv_table_ph	Stol (islege görä)
 resv_add	Nahar stoluny ätiýaçda saklaň
 resv_seat	Oturan
 resv_none	Hiç hili bron etmez.
 guests_word	myhmanlar
-delivery_by_ph	Eltip bermek (çapyksuwar ýa-da işgärleriň ady)
+delivery_by_ph	Eltip berýän (kurýer ýa-da işgär)
 kitchen_all_day	Indi bişirmek üçin: {items}
 kitchen_all_day_head	Häzir bişirmek üçin
 kitchen_tab_live	Göni
@@ -1372,7 +1372,7 @@ kitchen_tab_recall	.Atlaň
 kitchen_tab_stations	Stansiýalar
 split_bill	Bölün
 split_go	Aýry-aýry hasaplaşyk ediň
-cancel	Elatyr
+cancel	Ýatyr
 opening_client	Müşderi açmak…
 preparing_desk	Stol taýýarlamak…
 opening_server	Serweriň açylmagy…
@@ -1409,7 +1409,7 @@ show_all_dishes	Naharlaryň hemmesini görkeziň
 role_waiter	Ofisiant
 role_kitchen	Aşhana
 role_title_rest_ph	Rol ady (meselem, kapitan, baş aşpez)
-preset_help_rest	Ofisiant: sargyt alýar we nahar saçaklaryny işledýär. Kassir: töleg hem alýar. Aşhana: aşhananyň ekrany. Dolandyryjy: menýu, ýatyrmalar we arzanladyşlar.
+preset_help_rest	Ofisiant: sargyt alýar we stollara hyzmat edýär. Kassir: töleg hem alýar. Aşhana: aşhananyň ekrany. Dolandyryjy: menýu, ýatyrmalar we arzanladyşlar.
 kind_raw	Çig mal
 kind_resale	Satyn alyň we gaýtadan satyň
 kind_dish	Nahar taýýarlaýarys

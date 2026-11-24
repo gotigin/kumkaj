@@ -27,15 +27,15 @@ board_discarded	草稿已捨棄
 buy	付出
 books	日記帳
 books_help	今天的位置。預訂 = 包裹進來。付款 = 承運人帳單和費用。當事人 = 發貨人和承運人。
-buy_help	費用憑證和運營商帳單（錢出）。記帳保留在派對帳本上。
+buy_help	費用憑證與承運商帳單（支出）。掛帳留在往來方帳本上。
 sell_money_in	預訂包裹
 buy_money_out	費用/承運人帳單
 record_purchase	記錄採購
 add_expense	費用憑證
 bank_book	銀行帳本
-credit_help	派对 ID 是唯一的（名称可能重复）。角色：该 ID 上的发货人 (AR)、承运人 (AP) 或两者。帳本保持獨立；報告顯示網。
+credit_help	往來方 ID 唯一（名稱可以重複）。角色：寄件人 (AR)、承運商 (AP)，或同一 ID 兩者皆是。帳本分開；報表顯示淨額。
 party_kind_ph	自訂角色（可選）- 或點擊上面的晶片
-parties_list_heading	已儲存的派對
+parties_list_heading	已儲存的往來方
 reports_help	日記帳、應收應付、銀行帳本、費用憑證、損益。
 reports_today	日記帳（今天）
 reports_month	損益（月）
@@ -288,7 +288,7 @@ till_to_bank	櫃檯 → 銀行
 mark_cleared	標記為已清算
 unmark	取消標記
 role_both	兩者
-role_carrier	載體
+role_carrier	承運商
 role_cashier	收銀員
 role_consignor	托運人
 role_manager	經理
@@ -368,7 +368,7 @@ insurance_label	保險
 yes_label	是的
 no_label	不
 print_route_label	列印路線
-new_party_kind_label	新派對類型
+new_party_kind_label	新往來方類型
 done_open_books	完成 — 打開帳本
 export_day	導出當天
 extra_note_expense_ph	上一筆費用的附加備註
@@ -400,7 +400,7 @@ ndr_customer_unavailable	售罄
 ndr_door_locked	門鎖了
 ndr_other	其他
 ndr_refused	拒絕
-out_for_delivery	已出貨
+out_for_delivery	配送中
 print_drs	列印 DRS
 print_run_sheet	列印運行表
 reattempt	重新嘗試
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	全新 · {} — 目錄從空開始；在物品中添加，�
 onboard_book_tmpl	帳本 · {} — 添加物品和期初賒帳，然後點完成。
 onboard_template_tmpl	可先為店鋪命名，然後選擇開始方式。
 tmpl_blurb	快遞簿和訂艙台：發貨人、承運人、日簿、航空運單。
-tmpl_how	在櫃檯預訂包裹；今天的日簿；費率、派對、報告選項卡。
+tmpl_how	在櫃檯登記包裹；今天的日記帳；費率、往來方、報表分頁。
 app_template_heading	店舖範本
 app_template_blurb	選擇一個起始工作檯。「暫時跳過」則往來方清單為空。
 app_template_skip	暫時跳過
@@ -821,7 +821,7 @@ trk_in_transit	在途中
 trk_delivered	發表
 trk_rto	傳件人
 lane_to_dispatch	派送
-lane_with_carrier	有載體
+lane_with_carrier	在承運商處
 lane_failed	失敗的
 lane_done_today	今天完成
 ops_board_help	包裹按其在今天工作中的位置排列。點擊包裹（或掃描它們）來拾取它們，然後立即對所有拾取的物體進行操作 - 每個通道僅提供適合它的移動。

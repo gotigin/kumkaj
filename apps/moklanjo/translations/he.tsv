@@ -26,14 +26,14 @@ board_discard	השלך
 board_discarded	הטיוטה הושלכה
 buy	לשלם
 books	ספר היום
-books_help	העמדה של היום. הזמנה = פנימה חבילות. תשלום = חשבונות והוצאות של המוביל. צדדים = שולחים ומובילים.
-buy_help	שוברי הוצאות וחשבונות מוביל (כסף בחוץ). על חשבון נשאר בפנקס המפלגה.
+books_help	המצב היום. הזמנה = חבילות שנכנסו. תשלום = חשבונות מובילים והוצאות. צדדים = שולחים ומובילים.
+buy_help	שוברי הוצאה וחשבונות מובילים (כסף יוצא). יתרה בהקפה נשארת בכרטסת הצד.
 sell_money_in	הזמינו חבילה
 buy_money_out	הוצאה / חשבון המוביל
 record_purchase	רשום רכישה
 add_expense	שובר הוצאה
 bank_book	ספר הבנק
-credit_help	מזהה המפלגה הוא ייחודי (שמות עשויים לחזור). תפקידים: Consignor (AR), Carrier (AP) או שניהם במזהה זה. ספרי חשבונות נשארים נפרדים; דוחות מראים נטו.
+credit_help	מזהה הצד ייחודי (שמות יכולים לחזור). תפקידים: שולח (AR), מוביל (AP), או שניהם באותו מזהה. הכרטסות נשארות נפרדות; הדוחות מציגים נטו.
 party_kind_ph	תפקיד מותאם אישית (אופציונלי) - או הקש על שבב למעלה
 parties_list_heading	נשמר מסיבות
 reports_help	ספר היום, חייבים וזכאים, ספר הבנק, שוברים להוצאות, רווח והפסד.
@@ -147,7 +147,7 @@ consignee_address_ph	כתובת למשלוח
 origin_name_ph	שם השולח
 origin_phone_ph	טלפון השולח
 origin_address_ph	כתובת איסוף/מקור
-booking_consignor_heading	שולח (לקוח / שולח)
+booking_consignor_heading	שולח (לקוח)
 booking_consignee_heading	מקבל (מקבל)
 booking_consignor_hint	בחר מסיבה למלא, או השאר ריק לכניסה. דרוש לאיסוף ביתי ו-RTO.
 booking_consignee_hint	מקבל החבילה. השאר ריק להורדת דלפק כניסה.
@@ -158,7 +158,7 @@ height_cm_ph	H ס"מ
 chargeable_kg	ק"ג ניתן לטעינה
 awb_label	AWB
 booking_help	שולח + נמען (ריק OK) ← יעד ← שקל ← בחר תעריף ← חשבון/מזומן ← שלם. באמצע: «שמור כטיוטה» (שומר ב-לוח, לא בספרים) ואז שרת את הלקוח הבא; גע בטיוטה ב-לוח כדי להמשיך. AWB מודפס על הקבלה. ההזמנה הבאה מנקה את השולחן.
-cart_empty_hint	השולחן ריק - השוגר/הנמען אופציונלי, הגדר יעד ומשקל, הקש על הוסף בתעריף ולאחר מכן שלם.
+cart_empty_hint	הדלפק ריק — שולח/נמען אופציונליים, הגדירו יעד ומשקל, הקישו הוסף בתעריף ואז שלמו.
 team	צוות
 team_pins	צוות וקודי PIN
 my_pin_settings	ה־PIN שלי
@@ -290,7 +290,7 @@ unmark	בטל סימון
 role_both	שניהם
 role_carrier	מוֹבִיל
 role_cashier	קופאי
-role_consignor	שליח
+role_consignor	שולח
 role_manager	מנהל משמרת
 role_supplier	ספק
 branch_name_sell_ph	שם הסניף שממנו מוכרים
@@ -335,7 +335,7 @@ booking_scope_hint_intl	נפח ÷6000 (אוויר בינלאומי) - הקש ע�
 cod_register	רישום COD
 collect_cod	איסוף COD (AWB)
 consignments_dispatch	משלוחים ושיגור
-consignor_party_ph	שם המשלח/המפלגה
+consignor_party_ph	שם השולח / הצד
 copy_day_book_csv	העתק CSV של ספר היום
 copy_day_close	העתק סגירת יום
 copy_items_csv	העתק CSV של פריטים
@@ -844,7 +844,7 @@ note_reason_ph	הערה או סיבה
 ops_pick_first	תחילה בחר חבילות - הקש עליהן או סרוק אותן
 cod_to_collect	נמסר - COD לאיסוף
 cod_on_road	COD עדיין על הכביש
-cod_owed_consignors	נאסף - לשלם לשלוחים
+cod_owed_consignors	נגבה — לתשלום לשולחים
 cod_rto_fees	עמלות RTO לגבות
 cod_to_hand_in	COD למסור
 parcel_one_fmt	חבילת {n}
@@ -853,7 +853,7 @@ facet_bank_help	ספרי יום, גיול צדדים, תנועות בנק, ור�
 facet_ops_title	משלוחים ושיגור
 facet_ops_help	סרוק או הקלד AWB ← מצא, ולאחר מכן הקדם / הדפס תווית / COD. שיגור לרוכב או למוביל.
 facet_cod_title	רישום COD
-facet_cod_help	איסוף במשלוח ולאחר מכן שלח למשלוח.
+facet_cod_help	גבייה במסירה, ואז העברה לשולח.
 facet_riders_title	רוכבים (צי משלו)
 facet_riders_help	הוסף רוכבים, ואז שלח AWB מוזמן מ-Ops.
 against_bill_ph	מול חשבון # למעלה (לא חובה)
@@ -927,9 +927,9 @@ book_kind_month	ספרי החודש
 book_kind_aging	פתוח / חובה-זכות
 book_kind_balance	מאזן
 ops_desk_help	סרוק AWB עם סורק ברקוד USB (או הקלד אותו) ← מצא. לאחר מכן הקדם, הדפס תווית או אסוף COD. תוויות מודפסות קוד 128.
-role_help_consignor	תפקיד: Consignor - AR (הם חייבים לנו). אותה חברה יכולה להיות גם Carrier.
-role_help_carrier	תפקיד: ספק - AP (אנחנו חייבים להם). אותה חברה יכולה להיות גם Consignor.
-role_help_both	תפקידים: Consignor + Carrier - צד אחד, פנקסי AR ו-AP, נטו בדוחות.
+role_help_consignor	תפקיד: שולח — AR (הם חייבים לנו). אותה חברה יכולה להיות גם מוביל.
+role_help_carrier	תפקיד: מוביל — AP (אנחנו חייבים להם). אותה חברה יכולה להיות גם שולח.
+role_help_both	תפקידים: שולח + מוביל — צד אחד, כרטסות AR ו-AP, נטו בדוחות.
 role_help_supplier	תפקיד: ספק - AP לרכישות.
 lane_declared_label	הזמנת חשבון
 lane_owner_label	הזמנה במזומן

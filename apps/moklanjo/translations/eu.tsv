@@ -26,16 +26,16 @@ board_discard	Baztertu
 board_discarded	Zirriborroa ezabatu da
 buy	Ordaindu
 books	Eguneko liburua
-books_help	Gaurko jarrera. Erreserba = paketeak sartu. Ordaindu = garraiolariaren fakturak eta gastuak. Alderdiak = bidaltzaileak eta garraiolariak.
-buy_help	Gastuen bonoak eta garraiolariaren fakturak (dirua ateratzea). Konturako egonaldiak alderdien liburuan.
+books_help	Gaurko jarrera. Erreserba = paketeak sartu. Ordaindu = garraiolariaren fakturak eta gastuak. Aldeak = bidaltzaileak eta garraiolariak.
+buy_help	Gastuen bonoak eta garraiolariaren fakturak (dirua ateratzea). Konturako egonaldiak aldeen liburuan.
 sell_money_in	Erreserbatu pakete bat
 buy_money_out	Gastua / garraiolariaren faktura
 record_purchase	Erosketa erregistratu
 add_expense	Gastu-ordaina
 bank_book	Banku-liburua
-credit_help	Alderdiaren ID bakarra da (izenak errepika daitezke). Rolak: bidaltzailea (AR), garraiolaria (AP) edo biak id horretan. Liburuak bereizita geratzen dira; txostenek garbi erakusten dute.
+credit_help	Aldearen ID bakarra da (izenak errepika daitezke). Rolak: bidaltzailea (AR), garraiolaria (AP) edo biak id horretan. Liburuak bereizita geratzen dira; txostenek garbi erakusten dute.
 party_kind_ph	Rol pertsonalizatua (aukerakoa) edo sakatu goiko txip bat
-parties_list_heading	Alderdi gordeak
+parties_list_heading	Alde gordeak
 reports_help	Eguneko liburua, zordunak eta hartzekodunak, banku-liburua, gastu-ordeinak, irabazi-galera.
 reports_today	Eguneko liburua (gaur)
 reports_month	Irabazi-galera (hilabetea)
@@ -66,7 +66,7 @@ total	Guztira
 cash	Eskudirua
 upi	UPI
 card	Txartela
-credit	Alderdiak
+credit	Aldeak
 clear	Garbitu
 ready_to_sell	Libururatzeko prest
 today_prefix	Gaur
@@ -89,7 +89,7 @@ note_ph	Oharra (aukerakoa)
 rounded	BIRIBILDUTA
 split	Zatitu
 counter	Kutxatila
-parcel	Partzela
+parcel	Paketea
 order	Eskaera
 sales	Erreserbak
 sales_refunds	Erreserbak eta itzulketak
@@ -133,9 +133,9 @@ inventory	Inbentarioa
 inventory_stock	Inbentarioa eta stocka
 branches	Sukurtsalak
 branches_org	Sukurtsalak eta erakundea
-credit_customers	Alderdiak (zordunak eta hartzekodunak)
-customer_name_ph	Alderdiaren izena
-new_customer_ph	Alderdi-izen berria
+credit_customers	Aldeak (zordunak eta hartzekodunak)
+customer_name_ph	Aldearen izena
+new_customer_ph	Alde-izen berria
 item_name_ph	Tarifaren izena (adibidez, Azaleko eremua)
 item_price_ph	Kg bakoitzeko / lehen lauza
 start_template	Produktua
@@ -149,7 +149,7 @@ origin_phone_ph	Igorlearen telefonoa
 origin_address_ph	Jatorrizko helbidea
 booking_consignor_heading	Bidaltzailea (bezeroa / bidaltzailea)
 booking_consignee_heading	Hartzailea (hartzailea)
-booking_consignor_hint	Aukeratu festa bat betetzeko, edo utzi hutsik ibiltzeko. Etxean jasotzeko eta RTO behar da.
+booking_consignor_hint	Aukeratu alde bat datuak betetzeko, edo utzi hutsik bezero iragankorrentzat. Etxean jasotzeko eta RTOrako behar da.
 booking_consignee_hint	Fardelaren hartzailea. Utzi hutsik mostradoreak uzteko.
 weight_kg_ph	Benetako kg
 length_cm_ph	L cm
@@ -260,7 +260,7 @@ add_conversion	Gehitu bihurketa
 add_item_plain	Gehitu artikulua
 add_note	Gehitu oharra
 add_opening_balance	Gehitu hasierako saldoa
-add_rider	Gehitu txirrindularia
+add_rider	Gehitu banatzailea
 add_staff	Gehitu langilea
 add_unit	Gehitu unitatea
 add_use_name	Gehitu / erabili izen hau
@@ -300,7 +300,7 @@ card_amount_ph	Txartel-zenbatekoa
 cash_amount_ph	Eskudiru-zenbatekoa
 upi_amount_ph	UPI zenbatekoa
 carrier_cost_ph	Garraiolari kostua
-carrier_party_ph	Garraiolari festa
+carrier_party_ph	Garraiolari aldea
 choose_icon	Aukeratu ikonoa
 choose_logo	Aukeratu logotipoa
 choose_receipt_stamp	Aukeratu ordainagiria zigilua
@@ -314,7 +314,7 @@ print_faces	Aurpegiak inprimatu (ordainagiria / epearen faktura)
 print_faces_help	Aukerako zigilua eta ordainketa QR zure logotipoaren ondoan erreserba-ordainagirietan eta aldiko fakturan.
 awb_pools_heading	Eramailearen AWB zenbaki multzoak
 add_awb_pool	Gehitu AWB igerilekua
-awb_pool_carrier_ph	Garraiolariaren alderdiaren izena
+awb_pool_carrier_ph	Garraiolariaren aldearen izena
 awb_pool_start_ph	Hasi zk.
 awb_pool_end_ph	Amaiera ez.
 awb_pool_prefix_ph	Aurrizkia (aukerakoa)
@@ -335,13 +335,13 @@ booking_scope_hint_intl	Bolumetrikoa ÷6000 (nazioarteko airea) — sakatu Etxek
 cod_register	COD erregistroa
 collect_cod	Bildu COD (AWB)
 consignments_dispatch	Bidalketak eta bidalketak
-consignor_party_ph	Bidaltzailea / alderdiaren izena
+consignor_party_ph	Bidaltzailea / aldearen izena
 copy_day_book_csv	Kopiatu eguneko liburua CSV
 copy_day_close	Kopiatu egunaren itxiera
 copy_items_csv	Kopiatu artikuluak CSV
 copy_outstanding_csv	Kopiatu ordaindu gabea CSV
-copy_parties_csv	Kopiatu alderdiak CSV
-copy_party_ledger_csv	Kopiatu alderdiaren liburua CSV
+copy_parties_csv	Kopiatu aldeak CSV
+copy_party_ledger_csv	Kopiatu aldearen liburua CSV
 copy_receipt	Kopiatu ordainagiria
 copy_report	Kopiatu txostena
 counted_cash_ph	Kutxan zenbatutako eskudirua
@@ -358,8 +358,8 @@ books_locked_through	Noiz arte blokeatuta
 counter_agency_ph	Kontratagailua / agentziaren izena (aukerakoa)
 create_backup	Sortu babeskopia
 day_close_summary	Egun-itxieraren laburpena
-delete_party	Ezabatu hautatutako alderdia
-dispatch_to_rider	Bidalketa erreserbatua → txirrindularia
+delete_party	Ezabatu hautatutako aldea
+dispatch_to_rider	Bidali erreserbatuak → banatzailea
 docket_charge_ph	Espedientea kobratzea
 declared_value_ph	Adierazitako balioa
 contents_ph	Edukiak
@@ -368,7 +368,7 @@ insurance_label	Aseguruak
 yes_label	Bai
 no_label	Ez
 print_route_label	Inprimatu ibilbidea
-new_party_kind_label	Festa mota berria
+new_party_kind_label	Alde mota berria
 done_open_books	Egina — ireki liburuak
 export_day	Esportatu eguna
 extra_note_expense_ph	Ohar gehigarria azken gastuan
@@ -380,13 +380,13 @@ fuel_ph	Erregaia
 handover_carrier	Eskuz erreserbatu → garraiolaria
 import_day	Inportatu eguna
 import_items_csv	Inportatu elementuak/tasak CSV…
-import_parties_csv	Inportatu alderdiak CSV…
+import_parties_csv	Inportatu aldeak CSV…
 import_pincodes_csv	Inportatu pinkodeak CSV...
 import_carrier_bill_csv	Inportatu operadorearen faktura CSV...
 copy_carrier_bill_report	Kopiatu garraiolariaren azken fakturaren txostena
 use_carrier_cost	Erabili garraiolariaren kostua
 rate_carrier_ph	Garraiolaria (hutsik = gure salmenta-tasa)
-rate_party_ph	Festa (hutsik = bezero guztiak)
+rate_party_ph	Aldea (hutsik = bezero guztiak)
 carrier_pick_ph	Garraiolari kostua (konparaziotik)
 item_name	Artikuluaren izena
 load_bulk_row	Kargatu multzoko errenkada → mahaia
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Ez dago
 ndr_door_locked	Atea itxita
 ndr_other	Bestela
 ndr_refused	Ezezkoa
-out_for_delivery	Irteera entregatzeko
+out_for_delivery	Banaketan
 print_drs	DRS inprimatu
 print_run_sheet	Inprimatu exekuzio orria
 reattempt	Berriro saiatu
 rider_cod_handed_ph	COD entregatu
-settle_rider_cod	Kitatu pilotua COD
+settle_rider_cod	Kitatu banatzailearen COD-a
 mode_desk	Mahaia
-mode_rider	Txirrindularia
+mode_rider	Banatzailea
 waiting_office	bulegora iristeko zain
 capture_signature	Harrapatu sinadura
 incoming_manifest	Sarrerako manifestua
@@ -415,7 +415,7 @@ pickup_request	Bilketa eskaera
 pickup_run	Bilketa korrika
 auto_assign_area	Automatikoki esleitu eremua
 reorder_stops	Berrantolatu geldialdiak
-settle_rider_pay	Kitatu txirrindularien soldata
+settle_rider_pay	Kitatu banatzailearen soldata
 vehicle_inspect	Ibilgailuen ikuskapena
 print_docket	Inprimatu espedientea
 franchise_statement	Frankizia-adierazpena
@@ -426,8 +426,8 @@ pick_barcode_image	Aukeratu irudia eskaneatzeko
 share_receipt_whatsapp	Partekatu ordainagiria WhatsApp-en
 delivery_feedback	Bidalketaren iritzia
 lan_self_book	LAN autoerreserba
-new_party_clear	Alderdi berria (garbitu formularioa)
-new_party_kind_ph	Alderdi mota berria (hornitzailea / garraiolaria)
+new_party_clear	Alde berria (garbitu formularioa)
+new_party_kind_ph	Alde mota berria (hornitzailea / garraiolaria)
 next_country	Hurrengo herrialdea
 prev_country	Aurreko herrialdea
 note_gstin_ph	Oharra / GSTIN / hitzarmen-oroigarria
@@ -437,13 +437,13 @@ org_optional_ph	Erakundea (aukerakoa)
 paid_now	Orain ordainduta
 pairing_code_ph	Parekatze-kodea
 pair_now	Parekatu orain
-party_name_selected_ph	Alderdiaren izena (edo erabili hautatua)
+party_name_selected_ph	Aldearen izena (edo erabili hautatua)
 password_ph	Pasahitza
 pay_ap_card	Ordaindu AP txartelaz
 pay_ap_cash	Ordaindu AP eskudiruz
 pay_ap_upi	Ordaindu AP UPI
 period_bill	Aldiko faktura
-period_bill_party	Aldiko faktura (festa)
+period_bill_party	Aldiko faktura (aldea)
 period_bill_generate	Sortu faktura
 period_bill_generate_print	Sortu eta inprimatu
 booking_bulk_preview	{ok} prest · {bad} akatsekin
@@ -455,13 +455,13 @@ reason_note_ph	Arrazoia / oharra (galera, zenbaketa, …)
 record_day_close	Erregistratu egunaren itxiera
 refresh_from_shop	Freskatu dendatik
 refund	Itzuli
-remit_cod	Bidali COD (festa)
+remit_cod	Bidali COD-a (aldea)
 remove_selected	Kendu hautatua
 restore_backup	Leheneratu babeskopiatik
-rider_name_ph	Txirrindulariaren izena
-rider_phone_ph	Rider telefonoa
-riders	Txirrindulariak
-riders_own_fleet	Txirrindulariak (flota propioa)
+rider_name_ph	Banatzailearen izena
+rider_phone_ph	Banatzailearen telefonoa
+riders	Banatzaileak
+riders_own_fleet	Banatzaileak (flota propioa)
 rollup	Laburpena
 save_booking_measures	Gorde erreserba neurriak
 save_brand	Gorde marka
@@ -470,7 +470,7 @@ save_business_name	Gorde negozioaren izena
 save_features	Gorde lanaren konfigurazioa
 save_names	Gorde izenak
 server_ip_ph	Zerbitzariaren IPa (adib. 192.168.1.10)
-set_credit_limit	Aplikatu muga alderdiari
+set_credit_limit	Aplikatu muga aldeari
 set_login_selected	Aplikatu saio-hasiera hautatuari
 set_login_named	Aplikatu saio-hasiera {name}-(r)i
 shop	Denda
@@ -612,7 +612,7 @@ disk_low	{mb} MB soilik libre gailu honetan — babeskopiek laster huts egingo d
 last_seen_devices	Azkenekoz ikusita: {time}
 sync_interval	Sinkronizatu {secs} s-tik behin
 connection_to_shop	Dendarekiko konexioa
-supplier_name_ph	Hornitzailearen izena (edo alderdia)
+supplier_name_ph	Hornitzailearen izena (edo aldea)
 supplier_ph	Hornitzailea
 switch_device	Aldatu gailu hau
 take_payment	Kobratu
@@ -650,9 +650,9 @@ size_in	Tamaina barruan
 goods_received	Jasotako salgaiak
 expense_heading	Gastua
 notes_attach_sale	Oharrak eta eranskinak (hautatutako salmenta)
-notes_attach_party	Oharrak eta eranskinak (hautatutako alderdia)
+notes_attach_party	Oharrak eta eranskinak (hautatutako aldea)
 attachments_last_expense	Eranskinak (azken gastua)
-credit_limit_heading	Kreditu-muga (hautatutako / izendatutako alderdia)
+credit_limit_heading	Kreditu-muga (hautatutako / izendatutako aldea)
 pay_selected_heading	Ordaindu hautatua (zorrea kitatu / aurrerakina hartu)
 write_off_heading	Ezabatzea (ordaindu gabe garbitzea)
 adjustment_notes_heading	Doikuntza-oharrak
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Fresh · {} — katalogoa hutsik hasten da; gehitu artikuluak
 onboard_book_tmpl	Book · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
 onboard_template_tmpl	Izena eman lekuari nahi baduzu, gero aukeratu nola hasi.
 tmpl_blurb	Mezularitza liburuak eta erreserba mahaia: bidaltzaileak, garraiolariak, eguneko liburua, AWB.
-tmpl_how	Erreserbatu paketeak mahaian; Gaurko eguneko liburua; tasak, festak, txostenak egiteko fitxak.
+tmpl_how	Erregistratu paketeak leihatilan; Gaurko eguneko liburua; tasa, alde eta txostenetarako fitxak.
 app_template_heading	Dendako txantiloiak
 app_template_blurb	Aukeratu hasierako mahaia. Hau sakatuz gero, bezeroen zerrenda hutsik geratzen da: «Saltatu oraingoz».
 app_template_skip	Saltatu oraingoz
@@ -819,23 +819,23 @@ trk_booked	Erreserbatua
 trk_picked_up	Jasotakoa
 trk_in_transit	Garraioan
 trk_delivered	Entregatua
-trk_rto	Igorlearengana itzultzen
+trk_rto	Igorleari itzultzen
 lane_to_dispatch	Bidaltzeko
 lane_with_carrier	Garraiolariarekin
 lane_failed	Huts egin du
 lane_done_today	Gaur eginda
-ops_board_help	Partzelak non dauden gaurko lanean. Ukitu lursailak (edo eskaneatu) haiek hautatzeko, eta jardun aldi berean jasotako guztiak: errei bakoitzak hari egokitzen zaizkion mugimenduak baino ez ditu eskaintzen.
+ops_board_help	Paketeak, gaurko lanean non dauden arabera. Ukitu paketeak (edo eskaneatu) haiek hautatzeko, eta jardun hautatutako guztien gainean batera: errei bakoitzak hari dagozkion urratsak baino ez ditu eskaintzen.
 lane_empty	Hemen ez dago ezer.
 picked_fmt	{n} hautatua
 pick_all	Aukeratu guztiak
 bag_for_carrier	Eskua eramaileari
-send_with_rider	Bidali txirrindulariarekin
+send_with_rider	Bidali banatzailearekin
 out_again	Berriro atera
 return_to_sender	Itzuli igorleari
 runs_bags_heading	Azken lasterketak eta poltsak
 print_word	Inprimatu
 bag_word	Garraio-poltsa
-run_word	Txirrindulari korrika
+run_word	Banatzailearen ibilbidea
 parcels_fmt	{n} paketeak
 parcel_history	Historia
 attempt_fmt	Saiatu {n}
@@ -849,13 +849,13 @@ cod_rto_fees	Kobratzeko RTO tasak
 cod_to_hand_in	COD entregatzeko
 parcel_one_fmt	{n} paketea
 facet_bank_title	Txostenak
-facet_bank_help	Eguneko liburuak, alderdien zahartzea, banku-idazpenak eta aldiaren irabazi-galera.
+facet_bank_help	Eguneko liburuak, aldeen zahartzea, banku-idazpenak eta aldiaren irabazi-galera.
 facet_ops_title	Bidalketak eta bidalketak
-facet_ops_help	Eskaneatu edo idatzi AWB → Bilatu, gero aurreratu / inprimatu etiketa / COD. Bidal ezazu txirrindulariari edo garraiolariari.
+facet_ops_help	Eskaneatu edo idatzi AWB → Bilatu, gero aurreratu / inprimatu etiketa / COD. Eman banatzaileari edo garraiolariari.
 facet_cod_title	COD erregistroa
 facet_cod_help	Bidaltzean jaso, gero bidaltzaileari bidali.
-facet_riders_title	Txirrindulariak (flota propioa)
-facet_riders_help	Gehitu txirrindulariak, eta bidali Ops-etik erreserbatutako AWBak.
+facet_riders_title	Banatzaileak (flota propioa)
+facet_riders_help	Gehitu banatzaileak, eta bidali Ops-etik erreserbatutako AWBak.
 against_bill_ph	Goiko kontu #aren aurka (aukerakoa)
 aliases_ph	Aliasak — beste izenak, komaz bereizita
 amount_blank_full_ph	Zenbatekoa (hutsa = saldo osoa)
@@ -893,14 +893,14 @@ options_moklanjo_ph	Aukerak (aukerakoa) — Handia=20, Opari-papera=10
 part_second_way_ph	Zatia bigarren modu batean (aukerakoa)
 phone_ph	Telefonoa
 address_ph	Helbidea
-party_custom_fields_heading	Eremu pertsonalizatuak (hautatutako alderdia)
-party_custom_help	Gehitu edozein etiketa eta balio festa honetan: WhatsApp, GSTIN, ibilbide-kodea,...
+party_custom_fields_heading	Eremu pertsonalizatuak (hautatutako aldea)
+party_custom_help	Gehitu edozein etiketa eta balio alde honi: WhatsApp, GSTIN, ibilbide-kodea, …
 party_custom_key_ph	Eremuaren izena (adibidez, WhatsApp)
 party_custom_value_ph	Balioa
 party_custom_add	Gehitu eremua
 party_custom_remove	Kendu eremua
 party_custom_empty	Oraindik ez dago eremu pertsonalizaturik
-party_custom_pick_first	Aukeratu alderdi bat eremu pertsonalizatuak gehitzeko
+party_custom_pick_first	Aukeratu alde bat eremu pertsonalizatuak gehitzeko
 place_name_ph	Leku honen izena
 price_ph	Prezioa
 qty_example_ph	Kopurua (adib. 1.5 kg-rako)
@@ -929,7 +929,7 @@ book_kind_balance	Balantzea
 ops_desk_help	Eskaneatu AWB USB barra-kode eskaner batekin (edo idatzi) → Bilatu. Ondoren, aurreratu, inprimatu etiketa edo bildu COD. Etiketak inprimatu 128 kodea.
 role_help_consignor	Rola: Bidaltzailea — AR (zor gaituzte). Enpresa bera Carrier ere izan daiteke.
 role_help_carrier	Rola: Carrier — AP (zor diegu). Enpresa bera Bidaltzailea ere izan daiteke.
-role_help_both	Rolak: Bidaltzailea + Garraiolaria — alderdi bakarra, AR eta AP liburuak, Txostenetan garbia.
+role_help_both	Rolak: Bidaltzailea + Garraiolaria — alde bakarra, AR eta AP liburuak, Txostenetan garbia.
 role_help_supplier	Rola: hornitzailea — erosketetarako AP.
 lane_declared_label	Kontuaren erreserba
 lane_owner_label	Eskudirutan erreserba

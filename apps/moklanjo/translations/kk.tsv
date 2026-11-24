@@ -260,7 +260,7 @@ add_conversion	Түрлендіру қосу
 add_item_plain	Тауар қосу
 add_note	Ескертпе қосу
 add_opening_balance	Бастапқы қалдық қосу
-add_rider	Шабандозды қосыңыз
+add_rider	Курьер қосу
 add_staff	Қызметкер қосу
 add_unit	Өлшем бірлік қосу
 add_use_name	Осы атты қосу / қолдану
@@ -359,7 +359,7 @@ counter_agency_ph	Есептегіш/агенттік атауы (міндетт
 create_backup	Сақтық көшірме жасау
 day_close_summary	Күнді жабу қорытындысы
 delete_party	Таңдалған контрагентті жою
-dispatch_to_rider	Жіберу брондалған → шабандоз
+dispatch_to_rider	Брондалғандарды жіберу → курьер
 docket_charge_ph	Докет ақысы
 declared_value_ph	Мәлімделген мән
 contents_ph	Мазмұны
@@ -405,9 +405,9 @@ print_drs	DRS басып шығару
 print_run_sheet	Жұмыс парағын басып шығару
 reattempt	Қайта әрекет ету
 rider_cod_handed_ph	COD тапсырылды
-settle_rider_cod	Шабуылдаушы COD
+settle_rider_cod	Курьердің COD-ын есептеу
 mode_desk	Жұмыс үстелі
-mode_rider	Шабандоз
+mode_rider	Курьер
 waiting_office	кеңсеге жетуді күтуде
 capture_signature	Қолтаңбаны түсіру
 incoming_manifest	Кіріс манифест
@@ -415,7 +415,7 @@ pickup_request	Алып кету туралы өтініш
 pickup_run	Алып алу жүгірісі
 auto_assign_area	Аймақты автоматты түрде тағайындау
 reorder_stops	Қайта реттеу тоқтайды
-settle_rider_pay	Шабандоздың ақысын есептеңіз
+settle_rider_pay	Курьердің ақысын есептеу
 vehicle_inspect	Көлік құралын тексеру
 print_docket	Басып шығару құжаты
 franchise_statement	Франчайзинг туралы мәлімдеме
@@ -458,10 +458,10 @@ refund	Қайтару
 remit_cod	COD жіберу (тарап)
 remove_selected	Таңдалғанды алып тастау
 restore_backup	Сақтық көшірмеден қалпына келтіру
-rider_name_ph	Шабандоз аты
-rider_phone_ph	Шабандоз телефоны
-riders	Шабандоздар
-riders_own_fleet	Шабандоздар (жеке флот)
+rider_name_ph	Курьер аты
+rider_phone_ph	Курьер телефоны
+riders	Курьерлер
+riders_own_fleet	Курьерлер (өз көлігіміз)
 rollup	Жиынтық
 save_booking_measures	Брондау шараларын сақтаңыз
 save_brand	Брендті сақтау
@@ -829,13 +829,13 @@ lane_empty	Мұнда қазір ештеңе жоқ.
 picked_fmt	{n} таңдалды
 pick_all	Барлығын таңдаңыз
 bag_for_carrier	Тасымалдаушыға қол
-send_with_rider	Шабандозмен жіберіңіз
+send_with_rider	Курьермен жіберу
 out_again	Қайтадан шықты
 return_to_sender	Жіберушіге оралу
 runs_bags_heading	Соңғы жүгірулер мен сөмкелер
 print_word	Басып шығару
 bag_word	Тасымалдаушы сөмке
-run_word	Шабандоз жүгіру
+run_word	Курьер рейсі
 parcels_fmt	{n} сәлемдеме
 parcel_history	Тарих
 attempt_fmt	Әрекет {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} сәлемдеме
 facet_bank_title	Есептер
 facet_bank_help	Күнделік кітаптар, контрагент ескіруі, банк жазбалары және кезең пайда-залалы.
 facet_ops_title	Тасымалдау және жөнелту
-facet_ops_help	Сканерлеу немесе теру AWB → Find, содан кейін алға жылжыту / басып шығару жапсырмасын / COD. Шабандозға немесе тасымалдаушыға жіберіңіз.
+facet_ops_help	AWB сканерлеңіз немесе теріңіз → Табу, содан кейін алға жылжыту / жапсырма басып шығару / COD. Курьерге немесе тасымалдаушыға беру.
 facet_cod_title	COD тіркелімі
 facet_cod_help	Жеткізу кезінде жинаңыз, содан кейін жүк жөнелтушіге жіберіңіз.
-facet_riders_title	Шабандоздар (жеке флот)
-facet_riders_help	Шабандоздарды қосыңыз, содан кейін Ops-тен тапсырыс берілген AWB жіберіңіз.
+facet_riders_title	Курьерлер (өз көлігіміз)
+facet_riders_help	Курьерлерді қосыңыз, содан кейін Ops-тан брондалған AWB-лерді жіберіңіз.
 against_bill_ph	Жоғарыдағы шот № бойынша (міндетті емес)
 aliases_ph	Басқа атаулар — үтірмен бөлінген
 amount_blank_full_ph	Сома (бос = толық қалдық)

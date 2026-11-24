@@ -26,9 +26,9 @@ board_discard	Hidhe
 board_discarded	Drafti u hodh
 buy	Paguaj
 books	Libri i ditës
-books_help	Qëndrimi i sotëm. Rezervimi = hyrja e parcelave. Pagesa = faturat dhe shpenzimet e operatorit. Palët = dërguesit dhe transportuesit.
+books_help	Gjendja e sotme. Rezervimi = paketat që hyjnë. Pagesa = faturat e transportuesve dhe shpenzimet. Palët = dërguesit dhe transportuesit.
 buy_help	Kuponat e shpenzimeve dhe faturat e operatorit (paratë jashtë). Në llogari qëndron në librin e partisë.
-sell_money_in	Rezervoni një parcelë
+sell_money_in	Rezervoni një paketë
 buy_money_out	Shpenzimet / fatura e transportuesit
 record_purchase	Regjistro blerjen
 add_expense	Faturë shpenzimi
@@ -89,7 +89,7 @@ note_ph	Shënim (opsional)
 rounded	E RRUMBULLAKUAR
 split	Ndaj
 counter	Banaku
-parcel	Parcela
+parcel	Paketë
 order	Porosi
 sales	Rezervimet
 sales_refunds	Rezervimet dhe rimbursimet
@@ -149,8 +149,8 @@ origin_phone_ph	Telefoni i dërguesit
 origin_address_ph	Adresa e marrjes / origjinës
 booking_consignor_heading	Dërguesi (klienti / dërguesi)
 booking_consignee_heading	Marrësi (marrësi)
-booking_consignor_hint	Zgjidh një festë për të mbushur, ose lëre bosh për të hyrë. Nevojitet për marrjen në shtëpi dhe RTO.
-booking_consignee_hint	Marrësi i parcelës. Lëreni bosh për lëshimet e banakut në këmbë.
+booking_consignor_hint	Zgjidhni një palë për ta plotësuar, ose lëreni bosh për klientë kalimtarë. Nevojitet për marrjen në shtëpi dhe RTO.
+booking_consignee_hint	Marrësi i paketës. Lëreni bosh për paketat që sillen drejtpërdrejt në sportel.
 weight_kg_ph	kg reale
 length_cm_ph	L cm
 breadth_cm_ph	B cm
@@ -260,7 +260,7 @@ add_conversion	Shto shndërrim
 add_item_plain	Shto artikull
 add_note	Shto shënim
 add_opening_balance	Shto gjendjen fillestare
-add_rider	Shto kalorës
+add_rider	Shto korrier
 add_staff	Shto staf
 add_unit	Shto njësi
 add_use_name	Shto / përdor këtë emër
@@ -359,7 +359,7 @@ counter_agency_ph	Sporteli / emri i agjencisë (opsionale)
 create_backup	Krijo kopje rezervë
 day_close_summary	Përmbledhja e mbylljes së ditës
 delete_party	Fshi palën e zgjedhur
-dispatch_to_rider	Dërgimi i rezervuar → kalorës
+dispatch_to_rider	Dërgo të rezervuarat → korrier
 docket_charge_ph	Ngarkesa doke
 declared_value_ph	Vlera e deklaruar
 contents_ph	Përmbajtja
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Nuk ka
 ndr_door_locked	Dera e mbyllur
 ndr_other	Të tjera
 ndr_refused	Refuzoi
-out_for_delivery	Jashtë për dorëzim
+out_for_delivery	Në shpërndarje
 print_drs	Printo DRS
 print_run_sheet	Printoni fletën e ekzekutimit
 reattempt	Ripërpjekje
 rider_cod_handed_ph	COD dorëzuar
-settle_rider_cod	Vendosni COD-in e kalorës
+settle_rider_cod	Shlyej COD-in e korrierit
 mode_desk	Tavolinë
-mode_rider	Kalorës
+mode_rider	Korrier
 waiting_office	në pritje për të arritur në zyrë
 capture_signature	Kapni nënshkrimin
 incoming_manifest	Manifesti në hyrje
@@ -415,7 +415,7 @@ pickup_request	Kërkesa për marrje
 pickup_run	Vrapimi i marrjes
 auto_assign_area	Zona e caktimit automatik
 reorder_stops	Riporositja ndalon
-settle_rider_pay	Rregulloni pagesën e kalorësve
+settle_rider_pay	Shlyej pagesën e korrierit
 vehicle_inspect	Kontrolli i automjetit
 print_docket	Dokumenti i printimit
 franchise_statement	Deklarata e ekskluzivitetit
@@ -458,10 +458,10 @@ refund	Rimbursim
 remit_cod	Dërgo COD (partia)
 remove_selected	Hiq të zgjedhurën
 restore_backup	Rikthe kopjen rezervë
-rider_name_ph	Emri kalorës
-rider_phone_ph	Telefon kalorës
-riders	Kalorës
-riders_own_fleet	Kalorës (flota e vet)
+rider_name_ph	Emri i korrierit
+rider_phone_ph	Telefoni i korrierit
+riders	Korrierë
+riders_own_fleet	Korrierë (flota jonë)
 rollup	Përmbledhje
 save_booking_measures	Ruaj masat e rezervimit
 save_brand	Ruaj markën
@@ -710,7 +710,7 @@ gross_word	Bruto
 how_start	Si doni të filloni?
 later_country_pack	Më vonë: Cilësimet → zbato paketën e vendit tuaj për etiketat e tatimit dhe pagesës.
 local_badge	LOKALE
-measures_help_moklanjo	Si maten parcelat në tavolinën e rezervimit. Shkruani dimensionet dhe peshën në njësitë që përdorni — standarde (cm, m, in, ft · kg, g, lb, oz) ose njësinë tuaj të lidhur me cm/kg më sipër (drejtpërsëdrejti ose përmes njësive të tjera). Librat regjistrojnë gjithmonë kg. Lëreni një fushë bosh për ta mbajtur atë.
+measures_help_moklanjo	Si maten paketat në sportelin e rezervimit. Shkruani dimensionet dhe peshën në njësitë që përdorni — standarde (cm, m, in, ft · kg, g, lb, oz) ose njësinë tuaj të lidhur me cm/kg më sipër (drejtpërsëdrejti ose përmes njësive të tjera). Librat regjistrojnë gjithmonë kg. Lëreni një fushë bosh për ta mbajtur atë.
 mix_type_hint_moklanjo	Shkruani sa në secilin (para / UPI / kartë / kredit). Duhet të shtohet në faturë. Kredia ka nevojë për një klient më lart.
 money_in_sales	Para hyrëse (shitje)
 more_help_moklanjo	Katalog, shitje, kredi, ekip, rezervë — plus aksione dhe tarifa shtesë kur nevojitet.
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	E re · {} — katalogu fillon bosh; shtoni artikuj te Artiku
 onboard_book_tmpl	Libër · {} — shtoni artikuj dhe kredinë fillestare, pastaj U krye.
 onboard_template_tmpl	Emërtoni vendin nëse doni, pastaj zgjidhni si të filloni.
 tmpl_blurb	Librat e korrierëve dhe tavolina e rezervimit: dërguesit, transportuesit, libri i ditës, AWB.
-tmpl_how	Rezervoni parcelat në tavolinë; Libri i ditës për sot; skedat për tarifat, partitë, raportet.
+tmpl_how	Rezervoni paketat në sportel; Libri i ditës për sot; skedat për tarifat, palët, raportet.
 app_template_heading	Shabllone dyqani
 app_template_blurb	Zgjidhni një tavolinë pune fillestare. «Anashkalo për tani» e lë bosh listën e palëve.
 app_template_skip	Anashkalo për tani
@@ -819,43 +819,43 @@ trk_booked	Rezervuar
 trk_picked_up	E kapur
 trk_in_transit	Në tranzit
 trk_delivered	Dorëzuar
-trk_rto	Duke u kthyer te dërguesi
+trk_rto	Po i kthehet dërguesit
 lane_to_dispatch	Për të dërguar
 lane_with_carrier	Me transportues
 lane_failed	Dështoi
 lane_done_today	Bërë sot
-ops_board_help	Parcelat sipas vendit ku janë në punën e sotme. Prekni paketat (ose skanoni ato) për t'i zgjedhur, më pas veproni në të gjitha të zgjedhura menjëherë - çdo korsi ofron vetëm lëvizjet që i përshtaten.
+ops_board_help	Paketat sipas vendit ku janë në punën e sotme. Prekni paketat (ose skanojini) për t’i zgjedhur, pastaj veproni mbi të gjitha të zgjedhurat njëherësh — çdo korsi ofron vetëm hapat që i përshtaten.
 lane_empty	Asgjë këtu për momentin.
 picked_fmt	{n} u zgjodh
 pick_all	Zgjidh të gjitha
 bag_for_carrier	Dorë për transportues
-send_with_rider	Dërgo me kalorës
+send_with_rider	Dërgo me korrier
 out_again	Përsëri jashtë
-return_to_sender	Kthehu te dërguesi
+return_to_sender	Ktheje te dërguesi
 runs_bags_heading	Vrapimet dhe çantat e fundit
 print_word	Printo
 bag_word	Çanta transportuese
-run_word	Kalorës vrap
-parcels_fmt	Parcelat {n}
+run_word	Xhiro e korrierit
+parcels_fmt	{n} paketa
 parcel_history	Historia
 attempt_fmt	Përpjekje {n}
 pieces_short_fmt	{n} copë
 note_reason_ph	Shënim ose arsye
-ops_pick_first	Zgjidhni parcelat në fillim - prekni ato ose skanoni ato
+ops_pick_first	Zgjidhni fillimisht paketat — prekini ose skanojini
 cod_to_collect	Dorëzuar - COD për t'u mbledhur
 cod_on_road	COD ende në rrugë
 cod_owed_consignors	Mbledhur - për të paguar dërguesit
 cod_rto_fees	Tarifat e RTO për të mbledhur
 cod_to_hand_in	COD për t'u dorëzuar
-parcel_one_fmt	Parcela {n}
+parcel_one_fmt	{n} paketë
 facet_bank_title	Raportet
 facet_bank_help	Librat e ditës, plakja e palëve, postimet e bankës dhe fitim-humbja e periudhës.
 facet_ops_title	Dërgesat dhe dërgesat
-facet_ops_help	Skanoni ose shkruani AWB → Gjeni, më pas avanconi / printoni etiketën / COD. Dërgo tek kalorësi ose transportuesi.
+facet_ops_help	Skanoni ose shkruani AWB → Gjej, pastaj avanconi / printoni etiketën / COD. Dorëzim te korrieri ose transportuesi.
 facet_cod_title	Regjistri COD
 facet_cod_help	Mblidhni në dorëzim, më pas dërgojini dërguesit.
-facet_riders_title	Kalorës (flota e vet)
-facet_riders_help	Shto kalorës, më pas dërgo AWB-të e rezervuara nga Ops.
+facet_riders_title	Korrierë (flota jonë)
+facet_riders_help	Shtoni korrierë, pastaj dërgoni AWB-të e rezervuara nga Ops.
 against_bill_ph	Kundrejt faturës # sipër (opsionale)
 aliases_ph	Alias — emra të tjerë, të ndarë me presje
 amount_blank_full_ph	Shuma (bosh = gjendja e plotë)

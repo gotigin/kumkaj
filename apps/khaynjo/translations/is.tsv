@@ -1364,7 +1364,7 @@ resv_add	Pantaðu borðstofuborð
 resv_seat	Sitjandi
 resv_none	Engar bókanir að koma.
 guests_word	gestir
-delivery_by_ph	Afhending með (nafni knapa eða starfsfólks)
+delivery_by_ph	Afhent af (sendli / starfsfólki)
 kitchen_all_day	Að elda núna: {items}
 kitchen_all_day_head	Að elda núna
 kitchen_tab_live	Lifandi

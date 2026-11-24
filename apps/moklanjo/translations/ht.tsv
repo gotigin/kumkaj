@@ -260,7 +260,7 @@ add_conversion	Ajoute konvèsyon
 add_item_plain	Ajoute atik
 add_note	Ajoute nòt
 add_opening_balance	Ajoute sold ouvèti
-add_rider	Ajoute kavalye
+add_rider	Ajoute kourye
 add_staff	Ajoute anplwaye
 add_unit	Ajoute inite
 add_use_name	Ajoute / sèvi ak non sa a
@@ -359,7 +359,7 @@ counter_agency_ph	Non kontwa / ajans (si ou vle)
 create_backup	Kreye sovgad
 day_close_summary	Rezime fèmti jounen
 delete_party	Efase pati chwazi a
-dispatch_to_rider	Dispatch rezerve → kavalye
+dispatch_to_rider	Voye sa ki rezève yo → kourye
 docket_charge_ph	Dosye chaj
 declared_value_ph	Valè deklare
 contents_ph	Kontni
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Pa disponib
 ndr_door_locked	Pòt fèmen
 ndr_other	Lòt
 ndr_refused	Refize
-out_for_delivery	Soti pou livrezon
+out_for_delivery	Ap livre
 print_drs	Enprime DRS
 print_run_sheet	Enprime fèy kouri
 reattempt	Retantativ
 rider_cod_handed_ph	COD remèt
-settle_rider_cod	Règ kavalye COD
+settle_rider_cod	Regle COD kourye a
 mode_desk	Biwo
-mode_rider	Kavalye
+mode_rider	Kourye
 waiting_office	ap tann yo rive nan biwo
 capture_signature	Capture siyati
 incoming_manifest	Fèk ap rantre manifest
@@ -415,7 +415,7 @@ pickup_request	demann pickup
 pickup_run	Ranmase kouri
 auto_assign_area	Zòn oto-asiyen
 reorder_stops	Reorder sispann
-settle_rider_pay	Régler salè kavalye
+settle_rider_pay	Regle salè kourye a
 vehicle_inspect	Enspeksyon machin
 print_docket	Enprime dosye
 franchise_statement	Deklarasyon franchiz
@@ -458,10 +458,10 @@ refund	Ranbousman
 remit_cod	Remèt COD (pati)
 remove_selected	Retire sa ki chwazi
 restore_backup	Retabli sovgad
-rider_name_ph	Non kavalye
-rider_phone_ph	Telefòn kavalye
-riders	Pasaje yo
-riders_own_fleet	Pasaje (pwòp flòt)
+rider_name_ph	Non kourye a
+rider_phone_ph	Telefòn kourye a
+riders	Kourye yo
+riders_own_fleet	Kourye yo (pa nou)
 rollup	Rezime
 save_booking_measures	Sove mezi anrjistreman
 save_brand	Anrejistre mak
@@ -819,7 +819,7 @@ trk_booked	Anrezève
 trk_picked_up	Ranmase
 trk_in_transit	Nan transpò piblik
 trk_delivered	Livre
-trk_rto	Retounen bay moun k la
+trk_rto	Ap retounen bay moun ki voye l la
 lane_to_dispatch	Pou voye
 lane_with_carrier	Avèk konpayi asirans
 lane_failed	Echwe
@@ -829,13 +829,13 @@ lane_empty	Pa gen anyen isit la kounye a.
 picked_fmt	{n} te chwazi
 pick_all	Chwazi tout
 bag_for_carrier	Men bay konpayi asirans
-send_with_rider	Voye ak kavalye
+send_with_rider	Voye ak kourye
 out_again	Soti ankò
-return_to_sender	Retounen bay moun k la
+return_to_sender	Retounen l bay moun ki voye l la
 runs_bags_heading	Dènye kouri ak sak
 print_word	Enprime
 bag_word	Sak transpòtè
-run_word	Kavalye kouri
+run_word	Wout kourye a
 parcels_fmt	{n} pasèl
 parcel_history	Istwa
 attempt_fmt	Eseye {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} pasèl
 facet_bank_title	Rapò
 facet_bank_help	Liv jounen, laj pati, ekriti labank, ak P&P peryòd.
 facet_ops_title	Anvwaye ak dispatch
-facet_ops_help	Eskane oswa tape AWB → Jwenn, Lè sa a, avanse / enprime etikèt / COD. Ekspedisyon bay kavalye oswa konpayi asirans.
+facet_ops_help	Eskane oswa tape AWB → Jwenn, apre sa avanse / enprime etikèt / COD. Remèt bay kourye oswa transpòtè.
 facet_cod_title	COD anrejistre
 facet_cod_help	Ranmase sou livrezon, Lè sa a, remèt bay expéditeur la.
-facet_riders_title	Pasaje (pwòp flòt)
-facet_riders_help	Ajoute pasaje yo, epi voye AWB ki te rezève yo nan Ops.
+facet_riders_title	Kourye yo (pa nou)
+facet_riders_help	Ajoute kourye yo, epi voye AWB ki rezève yo soti nan Ops.
 against_bill_ph	Kont # anwo a (opsyonèl)
 aliases_ph	Alyas — lòt non, separe ak vigil
 amount_blank_full_ph	Montan (vid = tout sold)

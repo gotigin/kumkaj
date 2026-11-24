@@ -1364,7 +1364,7 @@ resv_add	Cuir in áirithe
 resv_seat	Ina shuí
 resv_none	Níl aon áirithintí ag teacht suas.
 guests_word	aíonna
-delivery_by_ph	Seachadadh ag (ainm an marcaigh nó an fhoirne)
+delivery_by_ph	Seachadadh ag (cúiréir / foireann)
 kitchen_all_day	Chun cócaireacht anois: {items}
 kitchen_all_day_head	Chun cócaireacht anois
 kitchen_tab_live	Beo

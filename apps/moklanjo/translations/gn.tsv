@@ -149,7 +149,7 @@ origin_phone_ph	Teléfono omondova’ekue
 origin_address_ph	Dirección de recogida / origen rehegua
 booking_consignor_heading	Consignador (cliente / omondova’ekue) .
 booking_consignee_heading	Consignador (ohupytyva’ekue) .
-booking_consignor_hint	Eiporavo peteĩ fiesta remyenyhẽ hag̃ua, térã eheja en blanco reike hag̃ua. Oñeikotevê pickup hogar ha RTO-pe guarã.
+booking_consignor_hint	Eiporavo peteĩ parte remyenyhẽ hag̃ua, térã eheja nandi cliente oúva guarã. Oñeikotevê pickup óga ha RTO-pe guarã.
 booking_consignee_hint	Recibidor pe paquete rehegua. Ojeheja en blanco umi walk-in counter drop-off-pe guarã.
 weight_kg_ph	Añetehápe kg
 length_cm_ph	L cm
@@ -260,7 +260,7 @@ add_conversion	Oñemoĩve conversión
 add_item_plain	Oñemoĩve mba’e
 add_note	Oñemoĩve nota
 add_opening_balance	Oñemoĩve saldo apertura rehegua
-add_rider	Ombojoapy jinete
+add_rider	Embojoapy repartidor
 add_staff	Oñemoĩve personal
 add_unit	Oñemoĩve unidad
 add_use_name	Emoĩ / eipuru ko téra
@@ -359,7 +359,7 @@ counter_agency_ph	Contador / agencia réra (opcional) .
 create_backup	Ojapo peteĩ jekopytyjoja
 day_close_summary	Ára ñemboty resumen
 delete_party	Ombogue cliente térã proveedor ojeporavóva
-dispatch_to_rider	Despacho reservado → jinete
+dispatch_to_rider	Emondo reservado-kuéra → repartidor
 docket_charge_ph	Cargo expediente rehegua
 declared_value_ph	Valor ojedeclaráva
 contents_ph	Umi mba’e oĩva ipype
@@ -368,7 +368,7 @@ insurance_label	Kyhyje'ỹha
 yes_label	heẽ
 no_label	nahániri
 print_route_label	Ruta impresión rehegua
-new_party_kind_label	Fiesta pyahu tipo
+new_party_kind_label	Parte pyahu tipo
 done_open_books	Ojejapo — aranduka ojepe’áva
 export_day	Exportación ára
 extra_note_expense_ph	Nota extra gasto paha rehegua
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Factura transportista importación rehegua CSV...
 copy_carrier_bill_report	Ekopia informe factura transportista paha rehegua
 use_carrier_cost	Oipuru carrier costo
 rate_carrier_ph	Transportista (en blanco = ñande tasa de venta) .
-rate_party_ph	Fiesta (blanco = opavave cliente) .
+rate_party_ph	Parte (nandi = opavave cliente)
 carrier_pick_ph	Transportista costo rehegua (ombojoja guive) .
 item_name	Mba’e réra
 load_bulk_row	Carga a granel fila → escritorio
@@ -405,9 +405,9 @@ print_drs	Imprimir DRS
 print_run_sheet	Imprimi kuatia ejecución rehegua
 reattempt	Oñeha’ã jey
 rider_cod_handed_ph	COD oñeme'ê
-settle_rider_cod	Oñemohenda jinete COD
+settle_rider_cod	Emohenda repartidor COD
 mode_desk	Mesa mba'apoha
-mode_rider	Jinete
+mode_rider	Repartidor
 waiting_office	oha'ãrõva oguahë haguã oficina-pe
 capture_signature	Ojejagarra firma rehegua
 incoming_manifest	Manifiesto oúva
@@ -415,7 +415,7 @@ pickup_request	Pe recogida ojejeruréva
 pickup_run	Pickup jeguata
 auto_assign_area	Área autoasignación rehegua
 reorder_stops	Ojejoko pe orden jey
-settle_rider_pay	Omohenda jinete opaga
+settle_rider_pay	Emohenda repartidor opaga
 vehicle_inspect	Mba’yrumýi jesareko
 print_docket	Imprimir expediente rehegua
 franchise_statement	Declaración de franquicia rehegua
@@ -427,7 +427,7 @@ share_receipt_whatsapp	Compartir recibo WhatsApp-pe
 delivery_feedback	Ñe’ẽñemi ñeme’ẽ rehegua
 lan_self_book	LAN autoreservación rehegua
 new_party_clear	Cliente térã proveedor pyahu (forma hesakãva) .
-new_party_kind_ph	Fiesta pyahu tipo (Proveedor / Transportista) .
+new_party_kind_ph	Parte pyahu tipo (Proveedor / Transportista)
 next_country	Tetã oúva
 prev_country	Tetã yma guare
 note_gstin_ph	Nota / GSTIN / ñe’ẽme’ẽ mandu’arã
@@ -458,10 +458,10 @@ refund	Reembolso rehegua
 remit_cod	Remit COD (partido) rehegua .
 remove_selected	Ojepe’a ojeporavóva
 restore_backup	Emoĩjey jekopytyjoja
-rider_name_ph	Jinete réra
-rider_phone_ph	Teléfono jinete rehegua
-riders	Umi jinete-kuéra
-riders_own_fleet	Umi jinete (flota propia) .
+rider_name_ph	Repartidor réra
+rider_phone_ph	Repartidor pumbyry
+riders	Repartidor-kuéra
+riders_own_fleet	Repartidor-kuéra (ñande mba’e)
 rollup	Rollo-pe ojejapóva
 save_booking_measures	Oñongatu umi medida de reserva
 save_brand	Oñongatu marca
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Ipyahu · {} — catálogo oñepyrũ nandi; emoĩ umi mbaꞌe
 onboard_book_tmpl	Aranduka · {} — emoĩ umi mba’e ha crédito de apertura, upéi Ojejapo.
 onboard_template_tmpl	Emombe’u pe tenda reipotáramo, upéi eiporavo mba’éichapa reñepyrũta.
 tmpl_blurb	Aranduka de mensajería ha mesa de reserva: consignador, transportista, aranduka ára rehegua, AWB.
-tmpl_how	Reserva paquete escritorio-pe; Aranduka ára rehegua ko árape guarã; umi ficha tasa, fiesta, marandu rehegua.
+tmpl_how	Eñeanota paquete mostrador-pe; Ára aranduka ko árape guarã; ficha-kuéra tasa, parte, marandu rehegua.
 app_template_heading	Ñemuha ñemboguatarã
 app_template_blurb	Eiporavo peteĩ ñepyrũrã ñembosako’i. «Ojesalta ko’áĝa ĝuarã» oheja nandi pe cliente lista.
 app_template_skip	Ojesalta ko’áĝa ĝuarã
@@ -829,13 +829,13 @@ lane_empty	Mba’eve ko’ápe ko’áĝaite.
 picked_fmt	{n} oiporavo
 pick_all	Eiporavo opaite
 bag_for_carrier	Po ha ogueraháva
-send_with_rider	Omondo jinete ndive
+send_with_rider	Emondo repartidor ndive
 out_again	Osẽ jey
 return_to_sender	Ojevy pe omondova’ekuépe
 runs_bags_heading	Umi carrera & vosa nda’aréi ojejapóva
 print_word	Impresión rehegua
 bag_word	Bolsa ogueraháva
-run_word	Jinete oñani
+run_word	Repartidor jeho
 parcels_fmt	{n} paquete-kuéra rehegua
 parcel_history	Tembiasakue
 attempt_fmt	Oñeha’ã {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} paquete rehegua
 facet_bank_title	Marandukuéra
 facet_bank_help	Aranduka ára rehegua, cliente térã proveedor envejecimiento, umi puesto bancario, ha periodo P&L.
 facet_ops_title	Envíos & despacho rehegua
-facet_ops_help	Escaneá térã ehai AWB → Eheka, upéi emotenonde / eimprimi etiqueta / COD. Despacho jinete térã transportista-pe.
+facet_ops_help	Escaneá térã ehai AWB → Eheka, upéi emotenonde / eimprimi etiqueta / COD. Eme’ẽ repartidor térã transportista-pe.
 facet_cod_title	registro COD rehegua
 facet_cod_help	Ombyaty entrega jave, upéi omondo consignador-pe.
-facet_riders_title	Umi jinete (flota propia) .
-facet_riders_help	Ombojoapy jinete, upéi odespacha AWB reservado Ops-gui.
+facet_riders_title	Repartidor-kuéra (ñande mba’e)
+facet_riders_help	Embojoapy repartidor-kuéra, upéi emondo AWB reservado Ops-gui.
 against_bill_ph	Contra factura # yvategua (opcional) .
 aliases_ph	Alias — ambue téra, coma ojeipe’áva
 amount_blank_full_ph	Monto (blanco = saldo completo) rehegua .
@@ -894,13 +894,13 @@ part_second_way_ph	Peteĩ parte mokõiha tape rupive (opcional) .
 phone_ph	Teléfono rehegua
 address_ph	Oñe'ẽ chupe
 party_custom_fields_heading	Umi ñanduti renda jeporupyre (partido ojeporavóva) .
-party_custom_help	Emoĩ oimeraẽ etiqueta ha valor ko fiesta-pe — WhatsApp, GSTIN, código de ruta, ...
+party_custom_help	Emoĩ oimeraẽ etiqueta ha valor ko parte-pe — WhatsApp, GSTIN, código de ruta, …
 party_custom_key_ph	Campo réra (e.g. WhatsApp) .
 party_custom_value_ph	Hepykue
 party_custom_add	Oñemoĩve campo
 party_custom_remove	Oipe’a campo
 party_custom_empty	Ndaipóri gueteri campo personalizado
-party_custom_pick_first	Eiporavo peteĩ fiesta emoĩ hag̃ua umi campo personalizado
+party_custom_pick_first	Eiporavo peteĩ parte emoĩ hag̃ua campo personalizado
 place_name_ph	Ko tenda réra
 price_ph	Precio
 qty_example_ph	Cantidad (e.g. 1,5 kg-pe g̃uarã) .

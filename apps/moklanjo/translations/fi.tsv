@@ -35,7 +35,7 @@ add_expense	Kulutosite
 bank_book	Pankkikirja
 credit_help	Osapuolen tunnus on yksilöllinen (nimet voivat toistua). Roolit: Lähettäjä (AR), Kuljettaja (AP) tai molemmat kyseisessä tunnuksessa. Kirjastot pysyvät erillään; raportit näyttävät net.
 party_kind_ph	Mukautettu rooli (valinnainen) – tai napauta yllä olevaa sirua
-parties_list_heading	Tallennetut juhlat
+parties_list_heading	Tallennetut osapuolet
 reports_help	Päiväkirja, velalliset ja velkojat, pankkikirja, kulutositteet, tulos.
 reports_today	Päiväkirja (tänään)
 reports_month	Tulos (kuukausi)
@@ -149,7 +149,7 @@ origin_phone_ph	Lähettäjän puhelin
 origin_address_ph	Nouto / lähtöosoite
 booking_consignor_heading	Lähettäjä (asiakas / lähettäjä)
 booking_consignee_heading	Vastaanottaja (vastaanottaja)
-booking_consignor_hint	Valitse täytettävä juhla tai jätä tyhjäksi sisäänkäyntiä varten. Tarvitaan kotiin noutoon ja RTO:hon.
+booking_consignor_hint	Valitse osapuoli täyttääksesi tiedot tai jätä tyhjäksi satunnaiselle asiakkaalle. Tarvitaan kotinoutoon ja RTO:hon.
 booking_consignee_hint	Paketin vastaanottaja. Jätä tyhjäksi sisäänkäyntitiskille.
 weight_kg_ph	Todellinen kg
 length_cm_ph	L cm
@@ -260,7 +260,7 @@ add_conversion	Lisää muunnos
 add_item_plain	Lisää tuote
 add_note	Lisää huomautus
 add_opening_balance	Lisää alkusaldo
-add_rider	Lisää ratsastaja
+add_rider	Lisää lähetti
 add_staff	Lisää työntekijä
 add_unit	Lisää yksikkö
 add_use_name	Lisää / käytä tätä nimeä
@@ -300,7 +300,7 @@ card_amount_ph	Kortin summa
 cash_amount_ph	Käteisen summa
 upi_amount_ph	UPI-summa
 carrier_cost_ph	Kuljettajan hinta
-carrier_party_ph	Kuljettajan juhla
+carrier_party_ph	Kuljetusliike (osapuoli)
 choose_icon	Valitse kuvake
 choose_logo	Valitse logo
 choose_receipt_stamp	Valitse kuitin leima
@@ -359,7 +359,7 @@ counter_agency_ph	Myyjän/toimiston nimi (valinnainen)
 create_backup	Luo varmuuskopio
 day_close_summary	Päivän sulun yhteenveto
 delete_party	Poista valittu osapuoli
-dispatch_to_rider	Lähetys varattu → ratsastaja
+dispatch_to_rider	Lähetä varatut → lähetti
 docket_charge_ph	Docket maksu
 declared_value_ph	Ilmoitettu arvo
 contents_ph	Sisällys
@@ -368,7 +368,7 @@ insurance_label	Vakuutus
 yes_label	Kyllä
 no_label	Ei
 print_route_label	Tulosta reitti
-new_party_kind_label	Uusi juhlatyyppi
+new_party_kind_label	Uuden osapuolen tyyppi
 done_open_books	Valmis — avaa kirjat
 export_day	Vie päivä
 extra_note_expense_ph	Lisähuomautus viimeiselle kululle
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Tuo operaattorilasku CSV…
 copy_carrier_bill_report	Kopioi viimeinen operaattorin laskuraportti
 use_carrier_cost	Käytä operaattorin kustannuksia
 rate_carrier_ph	Operaattori (tyhjä = myyntihintamme)
-rate_party_ph	Juhla (tyhjä = kaikki asiakkaat)
+rate_party_ph	Osapuoli (tyhjä = kaikki asiakkaat)
 carrier_pick_ph	Kuljettaja kustannusten mukaan (vertailusta)
 item_name	Tuotteen nimi
 load_bulk_row	Lataa bulkkirivi → pöytä
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Ei saatavilla
 ndr_door_locked	Ovi lukossa
 ndr_other	muu
 ndr_refused	Kieltäytyi
-out_for_delivery	Toimitettavaksi
+out_for_delivery	Jakelussa
 print_drs	Tulosta DRS
 print_run_sheet	Tulostusarkki
 reattempt	Yritä uudelleen
 rider_cod_handed_ph	COD luovutettu
-settle_rider_cod	Selvitä ratsastaja COD
+settle_rider_cod	Tilitä lähetin COD
 mode_desk	Vastaanotto
-mode_rider	Ratsastaja
+mode_rider	Lähetti
 waiting_office	odottaa toimistolle pääsyä
 capture_signature	Kaappaa allekirjoitus
 incoming_manifest	Saapuva manifesti
@@ -415,7 +415,7 @@ pickup_request	Noutopyyntö
 pickup_run	Noutoajo
 auto_assign_area	Määritä alue automaattisesti
 reorder_stops	Uudelleenjärjestys pysähtyy
-settle_rider_pay	Selvitä ratsastajan palkka
+settle_rider_pay	Maksa lähetin palkka
 vehicle_inspect	Ajoneuvon tarkastus
 print_docket	Tulosta asiakirja
 franchise_statement	Franchise-ilmoitus
@@ -427,7 +427,7 @@ share_receipt_whatsapp	Jaa kuitti WhatsAppissa
 delivery_feedback	Palaute toimituksesta
 lan_self_book	LAN itsevaraus
 new_party_clear	Uusi osapuoli (tyhjennä lomake)
-new_party_kind_ph	Uusi juhlatyyppi (toimittaja / kuljetusliike)
+new_party_kind_ph	Uuden osapuolen tyyppi (toimittaja / kuljetusliike)
 next_country	Seuraava maa
 prev_country	Edellinen maa
 note_gstin_ph	Huomautus / GSTIN / sopimusmuistutus
@@ -443,7 +443,7 @@ pay_ap_card	Maksa AP kortilla
 pay_ap_cash	Maksa AP käteisellä
 pay_ap_upi	Maksa AP UPI:lla
 period_bill	Kauden lasku
-period_bill_party	Kausilasku (juhla)
+period_bill_party	Kausilasku (osapuoli)
 period_bill_generate	Luo lasku
 period_bill_generate_print	Luo ja tulosta
 booking_bulk_preview	{ok} valmista · {bad} virheellistä
@@ -458,10 +458,10 @@ refund	Hyvitä
 remit_cod	Lähetä COD (osapuoli)
 remove_selected	Poista valittu
 restore_backup	Palauta varmuuskopio
-rider_name_ph	Ratsastajan nimi
-rider_phone_ph	Ratsastajan puhelin
-riders	Ratsastajat
-riders_own_fleet	Ratsastajat (oma laivasto)
+rider_name_ph	Lähetin nimi
+rider_phone_ph	Lähetin puhelin
+riders	Lähetit
+riders_own_fleet	Lähetit (oma kalusto)
 rollup	Yhteenveto
 save_booking_measures	Tallenna varaustoimenpiteet
 save_brand	Tallenna merkki
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Tyhjä · {} — luettelo alkaa tyhjänä; lisää tuotteet k
 onboard_book_tmpl	Kirja · {} — lisää tuotteet ja alkuluotto, sitten Valmis.
 onboard_template_tmpl	Nimeä paikka jos haluat, ja valitse sitten miten aloitat.
 tmpl_blurb	Kuriirikirjat ja varauspöytä: lähettäjät, kuljettajat, päiväkirja, AWB.
-tmpl_how	Varaa paketit pöydän ääressä; Päiväkirja tälle päivälle; välilehdet hintoja, juhlia ja raportteja varten.
+tmpl_how	Kirjaa paketit tiskillä; Päiväkirja tälle päivälle; välilehdet hinnoille, osapuolille ja raporteille.
 app_template_heading	Myymäläpohjat
 app_template_blurb	Valitse aloituspohja. «Ohita toistaiseksi» jättää osapuolet tyhjiksi.
 app_template_skip	Ohita toistaiseksi
@@ -819,7 +819,7 @@ trk_booked	Varattu
 trk_picked_up	Poimittu
 trk_in_transit	Kuljetuksessa
 trk_delivered	Toimitettu
-trk_rto	Palataan lähettäjälle
+trk_rto	Palautumassa lähettäjälle
 lane_to_dispatch	Lähetettäväksi
 lane_with_carrier	Kantajan kanssa
 lane_failed	Epäonnistui
@@ -829,13 +829,13 @@ lane_empty	Ei täällä juuri nyt mitään.
 picked_fmt	{n} valittu
 pick_all	Valitse kaikki
 bag_for_carrier	Käsi kantajalle
-send_with_rider	Lähetä ratsastajan kanssa
+send_with_rider	Lähetä lähetin mukana
 out_again	Taas ulos
-return_to_sender	Palaa lähettäjälle
+return_to_sender	Palauta lähettäjälle
 runs_bags_heading	Viimeaikaiset lenkit ja laukut
 print_word	Painaa
 bag_word	Muovikassi
-run_word	Ratsastajan juoksu
+run_word	Lähetin kierros
 parcels_fmt	{n} paketit
 parcel_history	Historia
 attempt_fmt	Yritä {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} paketti
 facet_bank_title	Raportit
 facet_bank_help	Päiväkirjat, osapuolten ikä, pankkiviennit ja kauden tulos.
 facet_ops_title	Lähetykset ja lähetys
-facet_ops_help	Skannaa tai kirjoita AWB → Etsi ja siirry eteenpäin / tulosta tarra / COD. Lähetys kuljettajalle tai kuljettajalle.
+facet_ops_help	Skannaa tai kirjoita AWB → Etsi, sitten eteenpäin / tulosta tarra / COD. Luovutus lähetille tai kuljetusliikkeelle.
 facet_cod_title	COD-rekisteri
 facet_cod_help	Nouda toimituksen yhteydessä ja lähetä sitten lähettäjälle.
-facet_riders_title	Ratsastajat (oma laivasto)
-facet_riders_help	Lisää ajajia ja lähetä sitten varatut AWB:t Opsilta.
+facet_riders_title	Lähetit (oma kalusto)
+facet_riders_help	Lisää lähettejä ja lähetä sitten varatut AWB:t Opsista.
 against_bill_ph	Yllä olevaa laskua nro vastaan (valinnainen)
 aliases_ph	Aliakset — muut nimet, pilkulla erotettuna
 amount_blank_full_ph	Summa (tyhjä = koko saldo)

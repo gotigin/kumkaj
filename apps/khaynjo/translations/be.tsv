@@ -256,7 +256,7 @@ counter	Стойка
 dine_in	Прыём ежы
 takeaway	На вынас
 order	Заказ
-tables	Табліцы
+tables	Сталы
 kitchen	кухня
 sales	Продажы
 sales_refunds	Продажы і вяртанне сродкаў
@@ -971,7 +971,7 @@ local_badge	МЯСЦОВЫЯ
 mix_type_hint_khaynjo	Пры неабходнасці падзяліце на наяўныя / UPI / карту / крэдыт. Крэдыт патрэбен кліент вышэй.
 money_in_sales	Грошы ў (продаж)
 net_word	Сетка
-offline_badge	ПА-ЗА СЯБОЙ
+offline_badge	ПА-ЗА СЕТКАЙ
 optional_login_help	Дадатковы лагін (id + пароль). Уладальнік усталёўвае адзін раз; толькі карыстальнік можа змяніць пароль пазней.
 or_unlock_login	Або разблакіраваць з дапамогай лагіна + пароля
 permission_preset	Праца
@@ -1120,7 +1120,7 @@ add_station_heading	Дадайце кухонную станцыю
 categories_help	Націсніце "Выкарыстоўваць", каб падаць элемент вышэй у гэтую катэгорыю. Фота дае катэгорыю выяву; без аднаго ён паказвае свае ініцыялы.
 dish_search_ph	Назва тавару — знайдзіце нашы стравы або ўвядзіце сваю
 tile_free	Вакантны
-tile_occupied	Акупаваны
+tile_occupied	Заняты
 tile_food_ready	Ежа гатовая
 tile_bill_printed	Біл надрукаваны
 tile_paid	Платна

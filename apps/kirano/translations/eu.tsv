@@ -3,14 +3,14 @@ unlock	Desblokeatu
 sell	Saldu
 buy	Erosketa
 books	Eguneko liburua
-books_help	Gaurko jarrera. Saldu = dirua sartu. Erosi = erosketak eta gastuak. Alderdiak = kreditu bezeroak eta hornitzaileak.
-buy_help	Gastu-ordeinak eta hornitzaileen fakturak (dirua irten). Kontuan geratzen da alderdiaren liburuan.
+books_help	Gaurko jarrera. Saldu = dirua sartu. Erosi = erosketak eta gastuak. Aldeak = kreditu bezeroak eta hornitzaileak.
+buy_help	Gastu-ordeinak eta hornitzaileen fakturak (dirua irten). Kontuan geratzen da aldearen liburuan.
 sell_money_in	Elementuak saldu
 buy_money_out	Gastua / hornitzailearen faktura
 record_purchase	Erosketa erregistratu
 add_expense	Gastu-ordaina
 bank_book	Banku-liburua
-credit_help	Alderdiaren identifikatzailea bakarra da (izenak errepika daitezke). Bezeroak kreditu-kontu bat darama (guri zor); Hornitzaileak stocka saltzen digu (guk hari zor); biak ondo daude. Liburuak bereizita geratzen dira; txostenek garbia erakusten dute.
+credit_help	Aldearen identifikatzailea bakarra da (izenak errepika daitezke). Bezeroak kreditu-kontu bat darama (guri zor); Hornitzaileak stocka saltzen digu (guk hari zor); biak ondo daude. Liburuak bereizita geratzen dira; txostenek garbia erakusten dute.
 party_kind_ph	Rolak: Bezeroa, Hornitzailea, biak…
 reports_help	Eguneko liburua, zordunak eta hartzekodunak, banku-liburua, gastu-ordeinak, irabazi-galera.
 reports_today	Eguneko liburua (gaur)
@@ -40,7 +40,7 @@ total	Guztira
 cash	Eskudirua
 upi	UPI
 card	Txartela
-credit	Alderdiak
+credit	Aldeak
 clear	Garbitu
 today_prefix	Gaur
 owed	ordaindu gabe
@@ -182,9 +182,9 @@ credit_summary_fmt	{} bezero · kreditu irekia {} · eutsitako aurrerakinak {}
 recent_label	Azkenak:
 inventory	Inbentarioa
 branches	Sukurtsalak
-credit_customers	Alderdiak (kreditua eta hornitzaileak)
-customer_name_ph	Alderdiaren izena
-new_customer_ph	Alderdi-izen berria
+credit_customers	Aldeak (kreditua eta hornitzaileak)
+customer_name_ph	Aldearen izena
+new_customer_ph	Alde-izen berria
 item_price_ph	Prezioa
 start_template	Produktua
 team	Taldea
@@ -277,8 +277,8 @@ copy_day_book_csv	Kopiatu eguneko liburua CSV
 copy_day_close	Kopiatu egunaren itxiera
 copy_items_csv	Kopiatu artikuluak CSV
 copy_outstanding_csv	Kopiatu ordaindu gabea CSV
-copy_parties_csv	Kopiatu alderdiak CSV
-copy_party_ledger_csv	Kopiatu alderdiaren liburua CSV
+copy_parties_csv	Kopiatu aldeak CSV
+copy_party_ledger_csv	Kopiatu aldearen liburua CSV
 copy_receipt	Kopiatu ordainagiria
 share_whatsapp	Partekatu WhatsApp
 lan_pages_heading	Bezeroen orriak Wi-Fi-n
@@ -312,8 +312,8 @@ copy_report	Kopiatu txostena
 counted_cash_ph	Kutxan zenbatutako eskudirua
 country_tax	Herrialdea eta zerga
 create_backup	Sortu babeskopia
-credit_limit_heading	Kreditu-muga (hautatutako / izendatutako alderdia)
-delete_party	Ezabatu hautatutako alderdia
+credit_limit_heading	Kreditu-muga (hautatutako / izendatutako aldea)
+delete_party	Ezabatu hautatutako aldea
 done_open_books	Egina — ireki liburuak
 drawer_count	Kutxa-zenbaketa (aukerakoa)
 expense_heading	Gastua
@@ -326,15 +326,15 @@ forget_shop	Ahaztu denda hau
 goods_received	Jasotako salgaiak
 import_day	Inportatu eguna
 import_items_csv_plain	Inportatu artikuluak CSV…
-import_parties_csv	Inportatu alderdiak CSV…
+import_parties_csv	Inportatu aldeak CSV…
 item_name	Artikuluaren izena
 login_id_ph	Erabiltzaile-izena
 mark_cleared	Markatu garbituta
-new_party_clear	Alderdi berria (garbitu formularioa)
-new_party_kind_supplier_ph	Alderdi berriaren mota (Hornitzailea)
+new_party_clear	Alde berria (garbitu formularioa)
+new_party_kind_supplier_ph	Alde berriaren mota (Hornitzailea)
 next_order	Hurrengo eskaera (garbitu mahaia)
 note_gstin_ph	Oharra / GSTIN / hitzarmen-oroigarria
-notes_attach_party	Oharrak eta eranskinak (hautatutako alderdia)
+notes_attach_party	Oharrak eta eranskinak (hautatutako aldea)
 notes_attach_sale	Oharrak eta eranskinak (hautatutako salmenta)
 on_account_ap	Kontuan (AP)
 org_optional_ph	Erakundea (aukerakoa)
@@ -342,7 +342,7 @@ paid_by	Ordainduta
 paid_now	Orain ordainduta
 pair_now	Parekatu orain
 pairing_code_ph	Parekatze-kodea
-party_name_selected_ph	Alderdiaren izena (edo erabili hautatua)
+party_name_selected_ph	Aldearen izena (edo erabili hautatua)
 password_ph	Pasahitza
 pay_ap_card	Ordaindu AP txartelaz
 pay_ap_cash	Ordaindu AP eskudiruz
@@ -391,7 +391,7 @@ save_features_ok	{name} konfigurazioa gordeta
 save_names	Gorde izenak
 second_way	Bigarren modua
 server_ip_ph	Zerbitzariaren IPa (adib. 192.168.1.10)
-set_credit_limit	Aplikatu muga alderdiari
+set_credit_limit	Aplikatu muga aldeari
 set_login_selected	Aplikatu saio-hasiera hautatuari
 set_login_named	Aplikatu saio-hasiera {name}-(r)i
 shop	Denda
@@ -520,7 +520,7 @@ backup_failed	Azken babeskopia automatikoak huts egin du: {e}
 backup_overdue	{n} egunez babeskopiarik ez — eduki aplikazioa irekita gailu honetan babeskopia egin ahal izateko.
 disk_low	{mb} MB soilik libre gailu honetan — babeskopiek laster huts egingo dute. Egin toki pixka bat.
 connection_to_shop	Dendarekiko konexioa
-supplier_name_ph	Hornitzailearen izena (edo alderdia)
+supplier_name_ph	Hornitzailearen izena (edo aldea)
 supplier_ph	Hornitzailea
 switch_device	Aldatu gailu hau
 take_payment	Kobratu
@@ -674,7 +674,7 @@ onboard_fresh_tmpl	Fresh · {} — katalogoa hutsik hasten da; gehitu artikuluak
 onboard_book_tmpl	Book · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
 tmpl_blurb	Kirana kontagailua: saldu, stock, khata, hornitzaileen erosketak, liburuak.
 reports_facet_title	Txostenak
-reports_facet_help	Eguneko liburuak, alderdien zahartzea, banku-idazpenak eta aldiaren irabazi-galera.
+reports_facet_help	Eguneko liburuak, aldeen zahartzea, banku-idazpenak eta aldiaren irabazi-galera.
 against_bill_ph	Goiko kontu #aren aurka (aukerakoa)
 aliases_ph	Kode laburrak eta aliasak — komaz bereizita (adibidez, MG02, atta)
 amount_blank_full_ph	Zenbatekoa (hutsa = saldo osoa)
@@ -830,8 +830,8 @@ upi_payee_ph	UPI hartzailearen izena (aukerakoa)
 show_upi_qr	Erakutsi UPI QR
 close_upi_qr	Itxi
 upi_qr_help	Bezeroak eskaneatu eta ordaintzen du. Sakatu Hartu ordainketa ordaindu ondoren. Bigarren pantaila: ireki Zerbitzariaren URLa / bistaratzea LANean.
-role_help_customer	Rola: Bezeroa — kontua (haiek zor digute). Alderdi berak stocka hornitu dezake.
-role_help_both	Rolak: Bezeroa + Hornitzailea — alderdi bat, kontua eta ordaintzeko liburuak, garbia Txostenetan.
+role_help_customer	Rola: Bezeroa — kontua (haiek zor digute). Alde berak stocka hornitu dezake.
+role_help_both	Rolak: Bezeroa + Hornitzailea — alde bat, kontua eta ordaintzeko liburuak, garbia Txostenetan.
 role_help_supplier	Rola: Hornitzailea — erosketengatik zor diegu.
 price_ph	Prezioa
 price_ph_gst_inside	Prezioa ({tax} barne)

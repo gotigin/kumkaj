@@ -260,7 +260,7 @@ add_conversion	Додати перерахунок
 add_item_plain	Додати позицію
 add_note	Додати нотатку
 add_opening_balance	Додати початковий залишок
-add_rider	Додати вершника
+add_rider	Додати кур'єра
 add_staff	Додати персонал
 add_unit	Додати одиницю
 add_use_name	Додати / використати це ім'я
@@ -359,7 +359,7 @@ counter_agency_ph	Назва лічильника/агенції (необов�
 create_backup	Створити резервну копію
 day_close_summary	Підсумок закриття дня
 delete_party	Видалити вибрану сторону
-dispatch_to_rider	Відправлення замовлено → вершник
+dispatch_to_rider	Відправити заброньовані → кур'єр
 docket_charge_ph	Плата за докнет
 declared_value_ph	Оголошена цінність
 contents_ph	Зміст
@@ -405,9 +405,9 @@ print_drs	Друк DRS
 print_run_sheet	Аркуш друку
 reattempt	Повторна спроба
 rider_cod_handed_ph	COD здано
-settle_rider_cod	Розрахунок вершника COD
+settle_rider_cod	Розрахувати COD кур'єра
 mode_desk	Письмовий стіл
-mode_rider	Вершник
+mode_rider	Кур'єр
 waiting_office	чекає до офісу
 capture_signature	Захопити підпис
 incoming_manifest	Вхідний маніфест
@@ -415,7 +415,7 @@ pickup_request	Запит на самовивіз
 pickup_run	Пікап-біг
 auto_assign_area	Автопризначення області
 reorder_stops	Повторне замовлення зупиняється
-settle_rider_pay	Врегулювати оплату водія
+settle_rider_pay	Розрахувати оплату кур'єра
 vehicle_inspect	Огляд автомобіля
 print_docket	Роздрукувати док
 franchise_statement	Заява про франшизу
@@ -458,10 +458,10 @@ refund	Повернення
 remit_cod	Перерахувати COD (партія)
 remove_selected	Прибрати вибране
 restore_backup	Відновити резервну копію
-rider_name_ph	Ім'я вершника
-rider_phone_ph	Райдер телефон
-riders	Вершники
-riders_own_fleet	Райдери (власний автопарк)
+rider_name_ph	Ім'я кур'єра
+rider_phone_ph	Телефон кур'єра
+riders	Кур'єри
+riders_own_fleet	Кур'єри (власний автопарк)
 rollup	Зведення
 save_booking_measures	Зберегти заходи бронювання
 save_brand	Зберегти бренд
@@ -829,13 +829,13 @@ lane_empty	Зараз тут нічого немає.
 picked_fmt	{n} вибрано
 pick_all	Вибрати все
 bag_for_carrier	Рука до носія
-send_with_rider	Відправити з вершником
+send_with_rider	Відправити з кур'єром
 out_again	Знову
 return_to_sender	Повернути відправнику
 runs_bags_heading	Останні пробіги та сумки
 print_word	Роздрукувати
 bag_word	Сумка-переноска
-run_word	Вершник біг
+run_word	Рейс кур'єра
 parcels_fmt	посилки {n}
 parcel_history	історія
 attempt_fmt	Спроба {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	посилка {n}
 facet_bank_title	Звіти
 facet_bank_help	Книги дня, старіння сторін, банківські проведення й П/З за період.
 facet_ops_title	Консигнації та відправка
-facet_ops_help	Скануйте або введіть AWB → Знайти, потім перейдіть / надрукуйте етикетку / COD. Відправка водієві або перевізнику.
+facet_ops_help	Скануйте або введіть AWB → Знайти, потім просуньте далі / надрукуйте етикетку / COD. Передача кур'єру або перевізнику.
 facet_cod_title	Реєстр COD
 facet_cod_help	Отримати при доставці, а потім переказати вантажовідправнику.
-facet_riders_title	Райдери (власний автопарк)
-facet_riders_help	Додайте водіїв, а потім надішліть заброньовані AWB з Ops.
+facet_riders_title	Кур'єри (власний автопарк)
+facet_riders_help	Додайте кур'єрів, а потім відправляйте заброньовані AWB з Ops.
 against_bill_ph	Проти рахунку № вище (необов'язково)
 aliases_ph	Псевдоніми — інші назви через кому
 amount_blank_full_ph	Сума (порожньо = повний залишок)

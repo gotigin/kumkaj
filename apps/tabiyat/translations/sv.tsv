@@ -194,7 +194,7 @@ credit_summary_fmt	{} kunder · öppen kredit {} · hållna förskott {}
 recent_label	Senaste:
 inventory	Inventering
 branches	Grenar
-credit_customers	Fester (khata och leverantörer)
+credit_customers	Parter (khata och leverantörer)
 customer_name_ph	Partiets namn
 new_customer_ph	Nytt partinamn
 item_price_ph	Pris
@@ -343,7 +343,7 @@ item_name	Objektets namn
 login_id_ph	Användarnamn
 mark_cleared	Mark rensat
 new_party_clear	Nytt parti (tydlig form)
-new_party_kind_supplier_ph	Ny festtyp (leverantör)
+new_party_kind_supplier_ph	Ny parttyp (leverantör)
 next_order	Nästa beställning (clear desk)
 note_gstin_ph	Anmärkning / GSTIN / avtalspåminnelse
 notes_attach_party	Anteckningar och bilagor (vald part)
@@ -686,7 +686,7 @@ onboard_fresh_tmpl	Färsk · {} — katalogen börjar tom; lägg till objekt i O
 onboard_book_tmpl	Boka · {} — lägg till föremål och öppningskredit och sedan Klar.
 tmpl_blurb	Apoteksräknare: mediciner, batch/utgångsdatum, khata, böcker.
 reports_facet_title	Rapporter
-reports_facet_help	Dagböcker, feståldring, bankinlägg och periodisk P&L.
+reports_facet_help	Dagböcker, åldersanalys per part, bankposter och resultat per period.
 against_bill_ph	Mot räkning # ovan (valfritt)
 aliases_ph	Alias, korta namn — kommaseparerade
 amount_blank_full_ph	Belopp (tomt = fullt saldo)

@@ -260,7 +260,7 @@ add_conversion	Хөрвүүлэлт нэмэх
 add_item_plain	Бараа нэмэх
 add_note	Тэмдэглэл нэмэх
 add_opening_balance	Эхний үлдэгдэл нэмэх
-add_rider	Морьтон нэмнэ үү
+add_rider	Хүргэгч нэмэх
 add_staff	Ажилтан нэмэх
 add_unit	Нэгж нэмэх
 add_use_name	Энэ нэрийг нэмэх / ашиглах
@@ -359,7 +359,7 @@ counter_agency_ph	Тоолуур / агентлагийн нэр (заавал �
 create_backup	Нөөц хуулбар үүсгэх
 day_close_summary	Өдөр хаалтын хураангуй
 delete_party	Сонгосон харилцагчийг устгах
-dispatch_to_rider	Илгээлт захиалсан → морьтон
+dispatch_to_rider	Захиалсныг илгээх → хүргэгч
 docket_charge_ph	Докетийн төлбөр
 declared_value_ph	Зарлагдсан үнэ цэнэ
 contents_ph	Агуулга
@@ -405,9 +405,9 @@ print_drs	DRS хэвлэх
 print_run_sheet	Ажиллах хуудас хэвлэх
 reattempt	Дахин оролдох
 rider_cod_handed_ph	COD хүлээлгэн өгсөн
-settle_rider_cod	Морьтон COD-ийг шийдвэрлэх
+settle_rider_cod	Хүргэгчийн COD тооцоо хийх
 mode_desk	Ширээ
-mode_rider	Морьтон
+mode_rider	Хүргэгч
 waiting_office	оффист ирэхийг хүлээж байна
 capture_signature	Гарын үсэг зурах
 incoming_manifest	Ирж буй манифест
@@ -415,7 +415,7 @@ pickup_request	Татаж авах хүсэлт
 pickup_run	Татаж авах гүйлт
 auto_assign_area	Автоматаар хуваарилах талбай
 reorder_stops	Дахин захиалга зогсдог
-settle_rider_pay	Унаачийн цалинг шийд
+settle_rider_pay	Хүргэгчийн цалин тооцох
 vehicle_inspect	Тээврийн хэрэгслийн үзлэг
 print_docket	Докет хэвлэх
 franchise_statement	Франчайзын мэдэгдэл
@@ -458,10 +458,10 @@ refund	Буцаалт
 remit_cod	COD шилжүүлэх (тал)
 remove_selected	Сонгосныг хасах
 restore_backup	Нөөц хуулбараас сэргээх
-rider_name_ph	Морьтон нэр
-rider_phone_ph	Морьтон гар утас
-riders	Морьтон
-riders_own_fleet	Морьтон (өөрийн флот)
+rider_name_ph	Хүргэгчийн нэр
+rider_phone_ph	Хүргэгчийн утас
+riders	Хүргэгчид
+riders_own_fleet	Хүргэгчид (өөрийн парк)
 rollup	Нэгтгэл
 save_booking_measures	Захиалгын арга хэмжээг хэмнээрэй
 save_brand	Брэндийг хадгалах
@@ -829,13 +829,13 @@ lane_empty	Яг одоо энд юу ч алга.
 picked_fmt	{n} сонгосон
 pick_all	Бүгдийг нь сонго
 bag_for_carrier	Тээвэрлэгч рүү шилжүүл
-send_with_rider	Морьтонтой хамт явуулах
+send_with_rider	Хүргэгчээр илгээх
 out_again	Дахин гарлаа
 return_to_sender	Илгээгч рүү буцах
 runs_bags_heading	Сүүлийн үеийн гүйлт, цүнх
 print_word	Хэвлэх
 bag_word	Тээвэрлэгч цүнх
-run_word	Морьтон гүйлт
+run_word	Хүргэлтийн рейс
 parcels_fmt	{n} илгээмж
 parcel_history	Түүх
 attempt_fmt	{n} оролдлого
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} илгээмж
 facet_bank_title	Тайлан
 facet_bank_help	Өдрийн дэвтэр, харилцагчийн насжилт, банкны бичилт ба хугацааны ашиг ба алдагдал.
 facet_ops_title	Ачаа, хүргэлт
-facet_ops_help	Сканнердах буюу AWB → Хайх гэж бичээд урагшлуулах / шошго / COD хэвлэх. Морьтон эсвэл тээвэрлэгч рүү илгээнэ үү.
+facet_ops_help	AWB-г сканнердах эсвэл бичих → Хайх, дараа нь урагшлуулах / шошго хэвлэх / COD. Хүргэгч эсвэл тээвэрлэгчид хүлээлгэх.
 facet_cod_title	COD бүртгэл
 facet_cod_help	Хүргэлтийн үеэр цуглуулж, дараа нь илгээгч рүү шилжүүлнэ.
-facet_riders_title	Морьтон (өөрийн флот)
-facet_riders_help	Унаагчдыг нэмж, дараа нь Ops-аас захиалсан AWB-г илгээнэ үү.
+facet_riders_title	Хүргэгчид (өөрийн парк)
+facet_riders_help	Хүргэгчдийг нэмж, дараа нь Ops-оос захиалсан AWB-г илгээнэ үү.
 against_bill_ph	Дээрх тооцооны №-д (заавал биш)
 aliases_ph	Өөр нэр — таслалаар тусгаарлана
 amount_blank_full_ph	Дүн (хоосон = бүтэн үлдэгдэл)

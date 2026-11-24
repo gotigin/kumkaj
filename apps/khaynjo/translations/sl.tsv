@@ -1364,7 +1364,7 @@ resv_add	Rezerviraj
 resv_seat	Usajen
 resv_none	Ni prihajajočih rezervacij.
 guests_word	gostje
-delivery_by_ph	Dostavi (ime dostavljavca ali osebja)
+delivery_by_ph	Dostava (kurir / osebje)
 kitchen_all_day	Za kuhati zdaj: {items}
 kitchen_all_day_head	Za kuhati zdaj
 kitchen_tab_live	V živo

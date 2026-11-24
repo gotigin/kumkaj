@@ -43,7 +43,7 @@ removed_help	Ресторе враћа ставку менија у мени т�
 restore_item	Врати
 empty_catalog	Још нема посуђа.
 total	Укупно
-cash	Цасх
+cash	Готовина
 upi	UPI
 card	Цард
 credit	Стране
@@ -1151,7 +1151,7 @@ shift_since	Ова смена од
 expected_in_drawer	Очекује се у фиоци
 right_discount	Дајте попуст
 floor_in_kitchen	У кухињи
-floor_eating	Служио
+floor_eating	Послужено
 pick_category	Изаберите категорију
 close_category_list	Затворите листу категорија
 new_category_row	Нова категорија — креира се када сачувате ставку менија
@@ -1364,7 +1364,7 @@ resv_add	Резервишите трпезаријски сто
 resv_seat	Сеатед
 resv_none	Нема резервација.
 guests_word	гости
-delivery_by_ph	Достава до (име возача или особља)
+delivery_by_ph	Доставља (курир / особље)
 kitchen_all_day	Сада за кување: {items}
 kitchen_all_day_head	Да кувам сада
 kitchen_tab_live	Уживо

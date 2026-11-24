@@ -2,7 +2,7 @@
 app_tagline	ຮ້ານ​ອາຫານ​ຕາມ​ສັ່ງ, ເຮືອນຄົວ ແລະ​ປຶ້ມ. ອອຟ​ລາຍ​ຟຣີ.
 unlock	ປົດ​ລັອກ
 pin_hint	ເຈົ້າຂອງPINເລີ່ມຕົ້ນ0000
-sell	ຄຳສັ່ງ
+sell	ສັ່ງ​ອາຫານ
 buy	ຊື້
 books	ປຶ້ມ​ມື້
 books_help	ສະຫຼຸບ​ບັນຊີ​ຂອງ​ມື້ນີ້. ຄໍາ​ສັ່ງ = ຄໍາ​ສັ່ງ​ເຂົ້າມາ. ຊື້ = ການຊື້​ແລະ​ຄ່າໃຊ້ຈ່າຍ. ຝ່າຍ = ລູກຄ້າ​ສິນເຊື່ອ​ແລະ​ຜູ້​ສະຫນອງ.
@@ -248,7 +248,7 @@ sidebar_hidden_hint	ເຊື່ອງ​ໄວ້​ຈາກ​ແຖບ
 sidebar_menu_items	ເມນູ & ລາຍການ
 sidebar_enable_all	ເປີດ​ໃຊ້​ທັງໝົດ
 sidebar_disable_all	ປິດ​ໃຊ້ງານ​ທັງໝົດ
-sidebar_order_saved	ບັນທຶກ​ຄຳສັ່ງ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
+sidebar_order_saved	ບັນທຶກ​ລຳດັບ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
 sidebar_visibility_saved	ບັນທຶກ​ການ​ເບິ່ງເຫັນ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
 amounts_hide	ເຊື່ອງ
 amounts_show	ສະແດງ

@@ -149,7 +149,7 @@ origin_phone_ph	Teléfono remitente
 origin_address_ph	Enderezo de recollida / orixe
 booking_consignor_heading	Remitente (cliente/remitente)
 booking_consignee_heading	Destinatario (destinatario)
-booking_consignor_hint	Escolle unha festa para encher ou deixa en branco para entrar. Necesario para a recollida a domicilio e RTO.
+booking_consignor_hint	Escolle unha parte para encher os datos, ou déixao en branco para un cliente de paso. Necesario para a recollida a domicilio e RTO.
 booking_consignee_hint	Receptor do paquete. Deixar en branco para entregas no mostrador.
 weight_kg_ph	kg reais
 length_cm_ph	L cm
@@ -260,7 +260,7 @@ add_conversion	Engadir conversión
 add_item_plain	Engadir artigo
 add_note	Engadir nota
 add_opening_balance	Engadir saldo de apertura
-add_rider	Engadir piloto
+add_rider	Engadir repartidor
 add_staff	Engadir persoal
 add_unit	Engadir unidade
 add_use_name	Engadir / usar este nome
@@ -300,7 +300,7 @@ card_amount_ph	Importe de tarxeta
 cash_amount_ph	Importe en efectivo
 upi_amount_ph	Importe UPI
 carrier_cost_ph	Custo do transportista
-carrier_party_ph	Festa do transportista
+carrier_party_ph	Parte transportista
 choose_icon	Escoller icona
 choose_logo	Escoller logotipo
 choose_receipt_stamp	Escolla o selo de recibo
@@ -359,7 +359,7 @@ counter_agency_ph	Nome do mostrador/axencia (opcional)
 create_backup	Crear unha copia
 day_close_summary	Resumo do peche do día
 delete_party	Eliminar a parte seleccionada
-dispatch_to_rider	Despacho reservado → piloto
+dispatch_to_rider	Enviar as reservas → repartidor
 docket_charge_ph	Cargo do expediente
 declared_value_ph	Valor declarado
 contents_ph	Contidos
@@ -368,7 +368,7 @@ insurance_label	Seguros
 yes_label	Si
 no_label	Non
 print_route_label	Ruta de impresión
-new_party_kind_label	Novo tipo de festa
+new_party_kind_label	Novo tipo de parte
 done_open_books	Feito — abrir os libros
 export_day	Exportar o día
 extra_note_expense_ph	Nota extra no último gasto
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Importar factura do operador CSV...
 copy_carrier_bill_report	Copiar o último informe de factura do transportista
 use_carrier_cost	Use o custo do transportista
 rate_carrier_ph	Transportista (en branco = a nosa taxa de venda)
-rate_party_ph	Festa (en branco = todos os clientes)
+rate_party_ph	Parte (en branco = todos os clientes)
 carrier_pick_ph	Transportista por custo (de comparación)
 item_name	Nome do artigo
 load_bulk_row	Cargar fila masiva → escritorio
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Non dispoñible
 ndr_door_locked	Porta pechada
 ndr_other	Outros
 ndr_refused	Rexeitou
-out_for_delivery	Saída para entrega
+out_for_delivery	En reparto
 print_drs	Imprimir DRS
 print_run_sheet	Imprimir folla de tirada
 reattempt	Reintento
 rider_cod_handed_ph	COD entregado
 settle_rider_cod	Liquidar o COD do repartidor
 mode_desk	Escritorio
-mode_rider	Xinete
+mode_rider	Repartidor
 waiting_office	esperando chegar á oficina
 capture_signature	Capturar a sinatura
 incoming_manifest	Manifesto entrante
@@ -415,7 +415,7 @@ pickup_request	Solicitude de recollida
 pickup_run	Carreira de recollida
 auto_assign_area	Área de asignación automática
 reorder_stops	Reordena as paradas
-settle_rider_pay	Liquidar a paga do piloto
+settle_rider_pay	Liquidar a paga do repartidor
 vehicle_inspect	Inspección de vehículos
 print_docket	Imprimir expediente
 franchise_statement	Declaración de franquía
@@ -427,7 +427,7 @@ share_receipt_whatsapp	Comparte o recibo no WhatsApp
 delivery_feedback	Comentarios de entrega
 lan_self_book	Auto-reserva LAN
 new_party_clear	Parte nova (baleirar o formulario)
-new_party_kind_ph	Novo tipo de festa (proveedor/transportista)
+new_party_kind_ph	Novo tipo de parte (provedor / transportista)
 next_country	País seguinte
 prev_country	País anterior
 note_gstin_ph	Nota / GSTIN / lembrete de acordo
@@ -458,10 +458,10 @@ refund	Devolución
 remit_cod	Remitir COD (partido)
 remove_selected	Quitar a selección
 restore_backup	Restaurar a copia
-rider_name_ph	Nome do piloto
-rider_phone_ph	Teléfono do piloto
-riders	Xinetes
-riders_own_fleet	Riders (flota propia)
+rider_name_ph	Nome do repartidor
+rider_phone_ph	Teléfono do repartidor
+riders	Repartidores
+riders_own_fleet	Repartidores (frota propia)
 rollup	Acumulado
 save_booking_measures	Gardar medidas de reserva
 save_brand	Gardar a marca
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Novo · {} — o catálogo comeza baleiro; engada artigos en 
 onboard_book_tmpl	Libro · {} — engada artigos e crédito de apertura, logo Feito.
 onboard_template_tmpl	Poña nome ao local se quere e escolla como comezar.
 tmpl_blurb	Libros de correo e mostrador de reservas: expedidores, transportistas, diario, AWB.
-tmpl_how	Reserva paquetes na mesa; Libro de día para hoxe; fichas para tarifas, festas, informes.
+tmpl_how	Rexistra paquetes no mostrador; Libro do día para hoxe; lapelas para tarifas, partes, informes.
 app_template_heading	Modelos da tenda
 app_template_blurb	Escolla un escritorio inicial. «Omitir de momento» deixa as partes baleiras.
 app_template_skip	Omitir de momento
@@ -819,7 +819,7 @@ trk_booked	Reservado
 trk_picked_up	Recollido
 trk_in_transit	En tránsito
 trk_delivered	Entregado
-trk_rto	Volvendo ao remitente
+trk_rto	En devolución ao remitente
 lane_to_dispatch	Para despachar
 lane_with_carrier	Con portador
 lane_failed	Fallou
@@ -829,13 +829,13 @@ lane_empty	Non hai nada aquí agora.
 picked_fmt	{n} escollido
 pick_all	Escolle todo
 bag_for_carrier	Man ao portador
-send_with_rider	Enviar con piloto
+send_with_rider	Enviar con repartidor
 out_again	De novo fóra
 return_to_sender	Volver ao remitente
 runs_bags_heading	Carreiras e bolsas recentes
 print_word	Imprimir
 bag_word	Bolsa de transporte
-run_word	Rider corre
+run_word	Ruta do repartidor
 parcels_fmt	Paquetes {n}
 parcel_history	Historia
 attempt_fmt	Tenta {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	Paquete {n}
 facet_bank_title	Informes
 facet_bank_help	Libros do día, antigüidade de partes, asentos bancarios e PyG do período.
 facet_ops_title	Envíos e despacho
-facet_ops_help	Escanee ou escriba AWB → Buscar e, a continuación, avance / imprima etiquetas / COD. Envío a piloto ou transportista.
+facet_ops_help	Escanea ou escribe o AWB → Buscar e despois avanza / imprime a etiqueta / COD. Entrega ao repartidor ou ao transportista.
 facet_cod_title	Rexistro COD
 facet_cod_help	Recollida na entrega e despois remitir ao remitente.
-facet_riders_title	Riders (flota propia)
-facet_riders_help	Engade pilotos e, a continuación, envía os AWB reservados desde Ops.
+facet_riders_title	Repartidores (frota propia)
+facet_riders_help	Engade repartidores e despois envía os AWB reservados desde Ops.
 against_bill_ph	Contra a conta núm. de arriba (opcional)
 aliases_ph	Alcumes — outros nomes, separados por comas
 amount_blank_full_ph	Importe (baleiro = saldo enteiro)
@@ -894,13 +894,13 @@ part_second_way_ph	Parte por unha segunda vía (opcional)
 phone_ph	Teléfono
 address_ph	Enderezo
 party_custom_fields_heading	Campos personalizados (partido seleccionado)
-party_custom_help	Engade calquera etiqueta e valor a esta festa: WhatsApp, GSTIN, código de ruta,...
+party_custom_help	Engade calquera etiqueta e valor a esta parte: WhatsApp, GSTIN, código de ruta, …
 party_custom_key_ph	Nome do campo (por exemplo, WhatsApp)
 party_custom_value_ph	Valor
 party_custom_add	Engadir campo
 party_custom_remove	Eliminar campo
 party_custom_empty	Aínda non hai campos personalizados
-party_custom_pick_first	Escolle unha festa para engadir campos personalizados
+party_custom_pick_first	Escolle unha parte para engadir campos personalizados
 place_name_ph	Nome deste local
 price_ph	Prezo
 qty_example_ph	Cant. (p. ex. 1,5 para kg)

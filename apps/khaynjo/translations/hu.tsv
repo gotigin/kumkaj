@@ -1364,7 +1364,7 @@ resv_add	Foglalás
 resv_seat	Ülve
 resv_none	Nem jön foglalás.
 guests_word	vendégek
-delivery_by_ph	Szállítás: (lovas vagy személyzet neve)
+delivery_by_ph	Kiszállítja (futár / személyzet)
 kitchen_all_day	Főzni most: {items}
 kitchen_all_day_head	Most főzni
 kitchen_tab_live	Élőben

@@ -260,7 +260,7 @@ add_conversion	Ավելացնել փոխարկում
 add_item_plain	Ավելացնել ապրանք
 add_note	Ավելացնել նշում
 add_opening_balance	Ավելացնել սկզբնական մնացորդ
-add_rider	Ավելացնել հեծանվորդ
+add_rider	Ավելացնել առաքիչ
 add_staff	Ավելացնել անձնակազմ
 add_unit	Ավելացնել միավոր
 add_use_name	Ավելացնել / օգտագործել այս անունը
@@ -359,7 +359,7 @@ counter_agency_ph	Հաշվիչ / գործակալության անվանումը
 create_backup	Ստեղծել պահուստ
 day_close_summary	Օրվա փակման ամփոփում
 delete_party	Ջնջել ընտրված գործընկերոջը
-dispatch_to_rider	Առաքում ամրագրված → հեծյալ
+dispatch_to_rider	Ուղարկել ամրագրվածները → առաքիչ
 docket_charge_ph	Docket վճար
 declared_value_ph	Հայտարարված արժեքը
 contents_ph	Բովանդակություն
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Առկա չէ
 ndr_door_locked	Դուռը կողպված է
 ndr_other	Այլ
 ndr_refused	Հրաժարվել է
-out_for_delivery	Դուրս է առաքման
+out_for_delivery	Առաքվում է
 print_drs	Տպել DRS
 print_run_sheet	Տպել գործարկման թերթիկը
 reattempt	Կրկին փորձ
 rider_cod_handed_ph	COD հանձնվեց
-settle_rider_cod	Կարգավորել հեծանվորդ COD
+settle_rider_cod	Հաշվարկել առաքիչի COD-ը
 mode_desk	Գրասեղան
-mode_rider	Հեծյալ
+mode_rider	Առաքիչ
 waiting_office	սպասում է գրասենյակ հասնելուն
 capture_signature	Գրավել ստորագրությունը
 incoming_manifest	Մուտքային մանիֆեստ
@@ -415,7 +415,7 @@ pickup_request	Վերցնելու հարցում
 pickup_run	Պիկապ վազք
 auto_assign_area	Ավտոմատ նշանակման տարածք
 reorder_stops	Վերադասավորումը դադարում է
-settle_rider_pay	Կարգավորեք հեծանվորդի վճարը
+settle_rider_pay	Վճարել առաքիչի աշխատավարձը
 vehicle_inspect	Տրանսպորտային միջոցների զննում
 print_docket	Տպել դոկտ
 franchise_statement	Ֆրանշայզի հայտարարություն
@@ -458,10 +458,10 @@ refund	Վերադարձ
 remit_cod	Փոխանցել COD (կուսակցություն)
 remove_selected	Հեռացնել ընտրվածը
 restore_backup	Վերականգնել պահուստից
-rider_name_ph	Հեծյալի անունը
-rider_phone_ph	Rider հեռախոս
-riders	Հեծյալներ
-riders_own_fleet	Հեծյալներ (սեփական նավատորմ)
+rider_name_ph	Առաքիչի անունը
+rider_phone_ph	Առաքիչի հեռախոսը
+riders	Առաքիչներ
+riders_own_fleet	Առաքիչներ (սեփական տրանսպորտ)
 rollup	Ամփոփում
 save_booking_measures	Պահպանեք ամրագրման միջոցառումները
 save_brand	Պահել ապրանքանիշը
@@ -819,7 +819,7 @@ trk_booked	Ամրագրված
 trk_picked_up	Վերցրեց
 trk_in_transit	Տրանզիտում
 trk_delivered	Հանձնվել է
-trk_rto	Վերադառնալով ուղարկողին
+trk_rto	Վերադարձվում է ուղարկողին
 lane_to_dispatch	Ուղարկելու համար
 lane_with_carrier	Փոխադրողի հետ
 lane_failed	Չհաջողվեց
@@ -829,13 +829,13 @@ lane_empty	Այս պահին այստեղ ոչինչ չկա:
 picked_fmt	Ընտրվել է {n}
 pick_all	Ընտրեք բոլորը
 bag_for_carrier	Ձեռք կրողին
-send_with_rider	Ուղարկեք հեծյալի հետ
+send_with_rider	Ուղարկել առաքիչով
 out_again	Նորից դուրս
-return_to_sender	Վերադարձ դեպի ուղարկող
+return_to_sender	Վերադարձնել ուղարկողին
 runs_bags_heading	Վերջին վազքերը և պայուսակները
 print_word	Տպել
 bag_word	Փոխադրող պայուսակ
-run_word	Rider վազում
+run_word	Առաքիչի երթուղի
 parcels_fmt	{n} ծանրոցներ
 parcel_history	Պատմություն
 attempt_fmt	Փորձ {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} ծանրոց
 facet_bank_title	Հաշվետվություններ
 facet_bank_help	Օրվա մատյաններ, գործընկերների ծերացում, բանկային գրառումներ և ժամանակաշրջանի շահույթ ու վնաս։
 facet_ops_title	Բեռներ և առաքում
-facet_ops_help	Սկանավորեք կամ մուտքագրեք AWB → Գտեք, ապա առաջ քաշեք / տպեք պիտակը / COD: Ուղարկել հեծանվորդին կամ փոխադրողին:
+facet_ops_help	Սկանավորեք կամ մուտքագրեք AWB → Գտնել, ապա առաջ տանել / տպել պիտակը / COD։ Հանձնել առաքիչին կամ փոխադրողին։
 facet_cod_title	COD գրանցամատյան
 facet_cod_help	Հավաքեք առաքման ժամանակ, այնուհետև փոխանցեք առաքողին:
-facet_riders_title	Հեծյալներ (սեփական նավատորմ)
-facet_riders_help	Ավելացրեք հեծանվորդներ, ապա ուղարկեք ամրագրված AWB-ներ Ops-ից:
+facet_riders_title	Առաքիչներ (սեփական տրանսպորտ)
+facet_riders_help	Ավելացրեք առաքիչներ, ապա ուղարկեք ամրագրված AWB-ները Ops-ից։
 against_bill_ph	Վերևի հաշիվ №-ի դիմաց (ըստ ցանկության)
 aliases_ph	Այլանուններ — այլ անուններ, ստորակետով
 amount_blank_full_ph	Գումար (դատարկ = ամբողջ մնացորդը)

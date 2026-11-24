@@ -89,7 +89,7 @@ note_ph	Megjegyzés (nem kötelező)
 rounded	KEREKÍTETT
 split	Hasított
 counter	Pult
-parcel	Parcella
+parcel	Csomag
 order	Rendelés
 sales	Foglalások
 sales_refunds	Foglalás és visszatérítés
@@ -260,7 +260,7 @@ add_conversion	Konverzió hozzáadása
 add_item_plain	Elem hozzáadása
 add_note	Megjegyzés hozzáadása
 add_opening_balance	Nyitóegyenleg hozzáadása
-add_rider	Lovas hozzáadása
+add_rider	Futár hozzáadása
 add_staff	Adjon hozzá személyzetet
 add_unit	Adjon hozzá egységet
 add_use_name	Adja hozzá / használja ezt a nevet
@@ -359,7 +359,7 @@ counter_agency_ph	Pult/ügynökség neve (nem kötelező)
 create_backup	Készítsen biztonsági másolatot
 day_close_summary	A nap záró összefoglalója
 delete_party	A kiválasztott vevő vagy szállító törlése
-dispatch_to_rider	Kiszállítás lefoglalva → lovas
+dispatch_to_rider	Foglaltak kiadása → futár
 docket_charge_ph	Docket töltés
 declared_value_ph	Bevallott érték
 contents_ph	Tartalom
@@ -405,9 +405,9 @@ print_drs	Nyomtassa ki a DRS-t
 print_run_sheet	Nyomtatási lap
 reattempt	Újrakísérlet
 rider_cod_handed_ph	COD leadva
-settle_rider_cod	Rendezze lovas COD-ot
+settle_rider_cod	Futár COD-jának elszámolása
 mode_desk	Íróasztal
-mode_rider	Lovas
+mode_rider	Futár
 waiting_office	várja, hogy elérje az irodát
 capture_signature	Az aláírás rögzítése
 incoming_manifest	Bejövő jegyzék
@@ -415,7 +415,7 @@ pickup_request	Átvételi kérés
 pickup_run	Felszedési futás
 auto_assign_area	Terület automatikus hozzárendelése
 reorder_stops	Az újrarendelés leáll
-settle_rider_pay	Rendezze a lovas fizetését
+settle_rider_pay	Futár bérének elszámolása
 vehicle_inspect	Gépjármű átvizsgálás
 print_docket	Dokumentum nyomtatása
 franchise_statement	Franchise nyilatkozat
@@ -458,10 +458,10 @@ refund	Visszatérítés
 remit_cod	Utánvét átutalása (fél)
 remove_selected	A kiválasztott eltávolítása
 restore_backup	Biztonsági másolat visszaállítása
-rider_name_ph	Lovas neve
-rider_phone_ph	Rider telefon
-riders	Lovasok
-riders_own_fleet	Lovasok (saját flotta)
+rider_name_ph	Futár neve
+rider_phone_ph	Futár telefonszáma
+riders	Futárok
+riders_own_fleet	Futárok (saját flotta)
 rollup	Összesítés
 save_booking_measures	Mentse el a foglalási intézkedéseket
 save_brand	Mentse a márkát
@@ -829,13 +829,13 @@ lane_empty	Itt most semmi.
 picked_fmt	{n} kiválasztva
 pick_all	Válassza ki az összeset
 bag_for_carrier	Kéz a hordozóhoz
-send_with_rider	Küldje lovassal
+send_with_rider	Küldés futárral
 out_again	Megint kint
 return_to_sender	Vissza a feladóhoz
 runs_bags_heading	Legutóbbi futások és táskák
 print_word	Nyomtatás
 bag_word	Bevásárlószatyor
-run_word	Lovas futás
+run_word	Futárkör
 parcels_fmt	{n} csomagok
 parcel_history	Történelem
 attempt_fmt	Kísérlet {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} csomag
 facet_bank_title	Jelentések
 facet_bank_help	Napi könyvek, vásárlók vagy szállítók öregedése, banki bejegyzések és időszaki P&L.
 facet_ops_title	Szállítmányok és kiszállítás
-facet_ops_help	Szkennelje be vagy írja be az AWB → Keresés, majd előre / nyomtasson címkét / COD-t. Kiszállítás lovasnak vagy szállítónak.
+facet_ops_help	Szkennelje be vagy írja be az AWB-t → Keresés, majd tovább / címke nyomtatása / COD. Átadás futárnak vagy szállítónak.
 facet_cod_title	COD regiszter
 facet_cod_help	Szállításkor vegye át, majd utalja át a feladónak.
-facet_riders_title	Lovasok (saját flotta)
-facet_riders_help	Adjon hozzá versenyzőket, majd küldje el a lefoglalt AWB-ket az Opstól.
+facet_riders_title	Futárok (saját flotta)
+facet_riders_help	Adjon hozzá futárokat, majd adja ki a lefoglalt AWB-ket az Ops-ból.
 against_bill_ph	A fenti számla ellenében (nem kötelező)
 aliases_ph	Álnevek – egyéb nevek, vesszővel elválasztva
 amount_blank_full_ph	Összeg (üres = teljes egyenleg)

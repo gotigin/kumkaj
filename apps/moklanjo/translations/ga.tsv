@@ -260,7 +260,7 @@ add_conversion	Cuir tiontú leis
 add_item_plain	Suimigh Comhad
 add_note	Cuir nóta leis
 add_opening_balance	Cuir i gcrích an t-aiseolas tosaigh
-add_rider	Cuir marcach
+add_rider	Cuir cúiréir leis
 add_staff	Cuir daoine léi
 add_unit	Cuir aonaid leis
 add_use_name	Cuir leis / bain úsáid as an ainm seo
@@ -359,7 +359,7 @@ counter_agency_ph	Ainm an chuntair / gníomhaireachta (roghnach)
 create_backup	Cruthaigh cúltaca
 day_close_summary	Achoimre scoir lae
 delete_party	Scrios an páirtí roghnaithe
-dispatch_to_rider	Seolta curtha in áirithe → marcach
+dispatch_to_rider	Seol na cinn curtha in áirithe → cúiréir
 docket_charge_ph	Muirear duillín
 declared_value_ph	Luach dearbhaithe
 contents_ph	Clár ábhair
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Ar Fáil:
 ndr_door_locked	Doras faoi ghlas
 ndr_other	Eile
 ndr_refused	Diúltaithe
-out_for_delivery	Amach le seachadadh
+out_for_delivery	Á sheachadadh
 print_drs	Priontáil DRS
 print_run_sheet	Priontáil bileog rith
 reattempt	Iarracht
 rider_cod_handed_ph	COD tugtha isteach
-settle_rider_cod	Socraigh marcach COD
+settle_rider_cod	Socraigh COD an chúiréara
 mode_desk	Deasc
-mode_rider	Marcach
+mode_rider	Cúiréir
 waiting_office	ag fanacht le oifig a bhaint amach
 capture_signature	Gabháil síniú
 incoming_manifest	Léiriú ag teacht isteach
@@ -415,7 +415,7 @@ pickup_request	Iarratas piocadh
 pickup_run	Rith piocadh
 auto_assign_area	Auto-shannadh limistéar
 reorder_stops	Stopann an t-athordú
-settle_rider_pay	Socrú pá marcach
+settle_rider_pay	Socraigh pá an chúiréara
 vehicle_inspect	Cigireacht feithicle
 print_docket	Duillín priontála
 franchise_statement	Ráiteas saincheadúnais
@@ -458,10 +458,10 @@ refund	Aisíocaíocht
 remit_cod	Sainchúram COD (páirtí)
 remove_selected	Bain an roghnaithe
 restore_backup	Athbhunú cúltaca
-rider_name_ph	Ainm marcach
-rider_phone_ph	Fón rothaí
-riders	Marcaigh
-riders_own_fleet	marcaigh (a chabhlach féin)
+rider_name_ph	Ainm an chúiréara
+rider_phone_ph	Fón an chúiréara
+riders	Cúiréirí
+riders_own_fleet	Cúiréirí (ár bhflít féin)
 rollup	Preabadh suas
 save_booking_measures	Sábháil bearta áirithinte
 save_brand	Sábháil branda
@@ -819,7 +819,7 @@ trk_booked	Curtha in áirithe
 trk_picked_up	Phioc suas
 trk_in_transit	Ar bhealach
 trk_delivered	Seachadadh
-trk_rto	Ag filleadh ar an seoltóir
+trk_rto	Á sheoladh ar ais chuig an seoltóir
 lane_to_dispatch	A sheoladh
 lane_with_carrier	Le hiompróir
 lane_failed	Theip
@@ -829,13 +829,13 @@ lane_empty	Ní dhéanfaidh aon ní anseo faoi láthair.
 picked_fmt	{n} roghnaithe
 pick_all	Pioc go léir
 bag_for_carrier	Lámh leis an iompróir
-send_with_rider	Seol le marcach
+send_with_rider	Seol le cúiréir
 out_again	Amach arís
-return_to_sender	Fill ar ais chuig an seoltóir
+return_to_sender	Seol ar ais chuig an seoltóir
 runs_bags_heading	Ritheann & málaí le déanaí
 print_word	Priontáil
 bag_word	Mála iompróra
-run_word	Rith marcach
+run_word	Babhta an chúiréara
 parcels_fmt	Dáileachtaí {n}
 parcel_history	Stair
 attempt_fmt	Déan iarracht {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	Dáileacht {n}
 facet_bank_title	Tuairiscí
 facet_bank_help	Leabhair lae, aois pháirtí, postálacha bainc, agus P&L tréimhse.
 facet_ops_title	Coinsíneachtaí & seolta
-facet_ops_help	Scan nó clóscríobh AWB → Faigh, ansin roimh ré / priontáil lipéad / COD. Seol chuig marcach nó iompróir.
+facet_ops_help	Scan nó clóscríobh AWB → Aimsigh, ansin ar aghaidh / priontáil lipéad / COD. Tabhair do chúiréir nó d’iompróir.
 facet_cod_title	Clár COD
 facet_cod_help	Bailigh ar sheachadadh, ansin cuir ar ais chuig an gcoinsíneoir.
-facet_riders_title	marcaigh (a chabhlach féin)
-facet_riders_help	Cuir marcaigh leis, ansin seol AWBanna áirithinte ó Ops.
+facet_riders_title	Cúiréirí (ár bhflít féin)
+facet_riders_help	Cuir cúiréirí leis, ansin seol AWBanna curtha in áirithe ó Ops.
 against_bill_ph	I gcoinne bille # thuas (roghnach)
 aliases_ph	Ainmneacha eile — ainmneacha eile, scartha le camóg
 amount_blank_full_ph	Méid (folamh = iomlán cothrom)

@@ -260,7 +260,7 @@ add_conversion	Pievienot pārrēķinu
 add_item_plain	Pievienot pozīciju
 add_note	Pievienot piezīmi
 add_opening_balance	Pievienot sākuma atlikumu
-add_rider	Pievienot braucēju
+add_rider	Pievienot kurjeru
 add_staff	Pievienot darbinieku
 add_unit	Pievienot vienību
 add_use_name	Pievienot / lietot šo nosaukumu
@@ -359,7 +359,7 @@ counter_agency_ph	Klienta/aģentūras nosaukums (neobligāti)
 create_backup	Izveidot dublējumu
 day_close_summary	Dienas slēgšanas kopsavilkums
 delete_party	Dzēst atlasīto pusi
-dispatch_to_rider	Izsūtīšana rezervēta → braucējs
+dispatch_to_rider	Nosūtīt rezervētos → kurjers
 docket_charge_ph	Docket maksa
 declared_value_ph	Deklarētā vērtība
 contents_ph	Saturs
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Nav pieejams
 ndr_door_locked	Durvis aizslēgtas
 ndr_other	Cits
 ndr_refused	Atteicās
-out_for_delivery	Iziet piegādei
+out_for_delivery	Piegādē
 print_drs	Drukāt DRS
 print_run_sheet	Drukāšanas lapa
 reattempt	Atkārtots mēģinājums
 rider_cod_handed_ph	COD nodots
-settle_rider_cod	Nokārtot braucēju COD
+settle_rider_cod	Nokārtot kurjera COD
 mode_desk	Rakstāmgalds
-mode_rider	Jātnieks
+mode_rider	Kurjers
 waiting_office	gaida, kad nonāks birojā
 capture_signature	Uzņemt parakstu
 incoming_manifest	Ienākošais manifests
@@ -415,7 +415,7 @@ pickup_request	Paņemšanas pieprasījums
 pickup_run	Savākšanas skrējiens
 auto_assign_area	Automātiski piešķirt apgabalu
 reorder_stops	Pārkārtot apstājas
-settle_rider_pay	Nokārtot braucēju atalgojumu
+settle_rider_pay	Nokārtot kurjera atalgojumu
 vehicle_inspect	Transportlīdzekļa apskate
 print_docket	Drukāt dokketu
 franchise_statement	Franšīzes paziņojums
@@ -458,10 +458,10 @@ refund	Atmaksa
 remit_cod	Pārsūtīt COD (puse)
 remove_selected	Noņemt atlasīto
 restore_backup	Atjaunot dublējumu
-rider_name_ph	Braucēja vārds
-rider_phone_ph	Braucēja tālrunis
-riders	Jātnieki
-riders_own_fleet	Braucēji (paša flote)
+rider_name_ph	Kurjera vārds
+rider_phone_ph	Kurjera tālrunis
+riders	Kurjeri
+riders_own_fleet	Kurjeri (pašu autoparks)
 rollup	Kopsavilkums
 save_booking_measures	Saglabājiet rezervācijas pasākumus
 save_brand	Saglabāt zīmolu
@@ -819,7 +819,7 @@ trk_booked	Rezervēts
 trk_picked_up	Pacēla
 trk_in_transit	Tranzītā
 trk_delivered	Piegādāts
-trk_rto	Notiek atgriešanās pie sūtītāja
+trk_rto	Tiek atgriezts sūtītājam
 lane_to_dispatch	Lai nosūtītu
 lane_with_carrier	Ar nesēju
 lane_failed	Neizdevās
@@ -829,13 +829,13 @@ lane_empty	Šobrīd šeit nav nekā.
 picked_fmt	Izvēlēts {n}
 pick_all	Izvēlieties visus
 bag_for_carrier	Roka uz nesēju
-send_with_rider	Sūtu ar braucēju
+send_with_rider	Sūtīt ar kurjeru
 out_again	Atkal ārā
-return_to_sender	Atgriezties pie sūtītāja
+return_to_sender	Atgriezt sūtītājam
 runs_bags_heading	Nesenie skrējieni un somas
 print_word	Drukāt
 bag_word	Pārnēsāšanas soma
-run_word	Jātnieku skrējiens
+run_word	Kurjera maršruts
 parcels_fmt	{n} pakas
 parcel_history	Vēsture
 attempt_fmt	Mēģiniet {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} paka
 facet_bank_title	Pārskati
 facet_bank_help	Dienas grāmatas, pušu novecošana, bankas ieraksti un perioda peļņa.
 facet_ops_title	Sūtījumi un nosūtīšana
-facet_ops_help	Skenējiet vai ierakstiet AWB → Atrast, pēc tam virzīt uz priekšu / drukāt etiķeti / COD. Nosūtīšana braucējam vai pārvadātājam.
+facet_ops_help	Skenējiet vai ierakstiet AWB → Atrast, pēc tam virzīt tālāk / drukāt etiķeti / COD. Nodošana kurjeram vai pārvadātājam.
 facet_cod_title	COD reģistrs
 facet_cod_help	Saņemiet piegādes brīdī, pēc tam nosūtiet nosūtītājam.
-facet_riders_title	Braucēji (paša flote)
-facet_riders_help	Pievienojiet braucējus, pēc tam nosūtiet rezervētos AWB no Ops.
+facet_riders_title	Kurjeri (pašu autoparks)
+facet_riders_help	Pievienojiet kurjerus, pēc tam nosūtiet rezervētos AWB no Ops.
 against_bill_ph	Pret rēķina nr. augšā (nav obligāti)
 aliases_ph	Aliasi — citi nosaukumi, atdalīti ar komatu
 amount_blank_full_ph	Summa (tukšs = pilns atlikums)

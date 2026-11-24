@@ -89,7 +89,7 @@ note_ph	Poznámka (voliteľné)
 rounded	ZAokrúhlený
 split	Rozdeliť
 counter	Pult
-parcel	Parcela
+parcel	Zásielka
 order	Objednávka
 sales	Rezervácie
 sales_refunds	Rezervácie a refundácie
@@ -260,7 +260,7 @@ add_conversion	Pridať konverziu
 add_item_plain	Pridať položku
 add_note	Pridať poznámku
 add_opening_balance	Pridajte počiatočný zostatok
-add_rider	Pridať jazdca
+add_rider	Pridať kuriéra
 add_staff	Pridajte personál
 add_unit	Pridať jednotku
 add_use_name	Pridajte / použite tento názov
@@ -359,7 +359,7 @@ counter_agency_ph	Názov pultu / agentúry (voliteľné)
 create_backup	Vytvorte zálohu
 day_close_summary	Zhrnutie dňa
 delete_party	Vymazať vybraného odberateľa alebo dodávateľa
-dispatch_to_rider	Expedícia rezervovaná → jazdec
+dispatch_to_rider	Odoslať rezervované → kuriér
 docket_charge_ph	Docket poplatok
 declared_value_ph	Deklarovaná hodnota
 contents_ph	Obsah
@@ -405,9 +405,9 @@ print_drs	Tlač DRS
 print_run_sheet	Vytlačte pracovný hárok
 reattempt	Opakujte pokus
 rider_cod_handed_ph	DOBIERKA odovzdaná
-settle_rider_cod	Vyrovnať jazdec COD
+settle_rider_cod	Vyúčtovať COD kuriéra
 mode_desk	Stôl
-mode_rider	Jazdec
+mode_rider	Kuriér
 waiting_office	čaká na príchod do kancelárie
 capture_signature	Zaznamenať podpis
 incoming_manifest	Prichádzajúci manifest
@@ -415,7 +415,7 @@ pickup_request	Žiadosť o vyzdvihnutie
 pickup_run	Vyzdvihnutie
 auto_assign_area	Automaticky priradiť oblasť
 reorder_stops	Zastaví sa opätovné poradie
-settle_rider_pay	Vyrovnať plat jazdca
+settle_rider_pay	Vyrovnať výplatu kuriéra
 vehicle_inspect	Kontrola vozidla
 print_docket	Tlačová príloha
 franchise_statement	Vyhlásenie o franšíze
@@ -458,10 +458,10 @@ refund	Vrátenie peňazí
 remit_cod	Poukázať COD (partner)
 remove_selected	Odstrániť vybraté
 restore_backup	Obnoviť zálohu
-rider_name_ph	Meno jazdca
-rider_phone_ph	Telefón jazdca
-riders	Jazdci
-riders_own_fleet	Jazdci (vlastná flotila)
+rider_name_ph	Meno kuriéra
+rider_phone_ph	Telefón kuriéra
+riders	Kuriéri
+riders_own_fleet	Kuriéri (vlastná flotila)
 rollup	Súhrn
 save_booking_measures	Uložiť rezervačné opatrenia
 save_brand	Uložiť značku
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Fresh · {} — katalóg začína prázdny; pridať položky 
 onboard_book_tmpl	Rezervovať · {} — pridajte položky a otvorenie kreditu a potom Hotovo.
 onboard_template_tmpl	Ak chcete, pomenujte miesto a potom vyberte, ako začať.
 tmpl_blurb	Kuriérske knihy a rezervačný pult: odosielatelia, dopravcovia, denná kniha, AWB.
-tmpl_how	Zarezervujte si balíky pri stole; Denná kniha na dnes; karty pre sadzby, večierky, prehľady.
+tmpl_how	Zapisujte zásielky pri okienku; Denník na dnes; karty pre sadzby, strany, prehľady.
 app_template_heading	Šablóny obchodu
 app_template_blurb	Vyberte úvodný pult. «Zatiaľ preskočiť» nechá zoznam partnerov prázdny.
 app_template_skip	Zatiaľ preskočiť
@@ -829,13 +829,13 @@ lane_empty	Momentálne tu nič nie je.
 picked_fmt	Vybraté {n}
 pick_all	Vybrať všetky
 bag_for_carrier	Ruka na nosič
-send_with_rider	Pošlite s jazdcom
+send_with_rider	Poslať s kuriérom
 out_again	Znova von
 return_to_sender	Návrat k odosielateľovi
 runs_bags_heading	Nedávne behy a tašky
 print_word	Tlačiť
 bag_word	Nosná taška
-run_word	Jazdecký beh
+run_word	Rozvoz kuriéra
 parcels_fmt	balíky {n}
 parcel_history	História
 attempt_fmt	Pokus o {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	Balík {n}
 facet_bank_title	Správy
 facet_bank_help	Denné knihy, starnutie zákazníkov alebo dodávateľov, bankové pošty a dobové zisky a straty.
 facet_ops_title	Zásielky a expedície
-facet_ops_help	Naskenujte alebo napíšte AWB → Nájsť a potom posunúť dopredu / vytlačiť štítok / COD. Odoslanie jazdcovi alebo prepravcovi.
+facet_ops_help	Naskenujte alebo zadajte AWB → Nájsť, potom posunúť ďalej / vytlačiť štítok / COD. Odovzdanie kuriérovi alebo prepravcovi.
 facet_cod_title	registra COD
 facet_cod_help	Vyzdvihnúť na dobierku a potom poslať odosielateľovi.
-facet_riders_title	Jazdci (vlastná flotila)
-facet_riders_help	Pridajte jazdcov a potom odošlite rezervované AWB z Ops.
+facet_riders_title	Kuriéri (vlastná flotila)
+facet_riders_help	Pridajte kuriérov a potom odosielajte rezervované AWB z Ops.
 against_bill_ph	Proti účtu # vyššie (voliteľné)
 aliases_ph	Aliasy — iné mená, oddelené čiarkou
 amount_blank_full_ph	Čiastka (prázdne = úplný zostatok)

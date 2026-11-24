@@ -1364,7 +1364,7 @@ resv_add	Varaa
 resv_seat	Istutettu
 resv_none	Ei tulevia varauksia.
 guests_word	vierasta
-delivery_by_ph	Toimittaja (kuskin tai työntekijän nimi)
+delivery_by_ph	Toimittaja (lähetti / henkilökunta)
 kitchen_all_day	Kypsennettävä nyt: {items}
 kitchen_all_day_head	Kypsennettävä nyt
 kitchen_tab_live	Suora

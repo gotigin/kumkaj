@@ -149,7 +149,7 @@ origin_phone_ph	Kachaq telefono
 origin_address_ph	Pickup / origen nisqa direccion
 booking_consignor_heading	Kachaq (rantiq / kachaq) .
 booking_consignee_heading	Consignado (chaskiq) .
-booking_consignor_hint	Huk fiestata akllay hunt’anaykipaq, otaq ch’usaqta saqey purinaykipaq. Wasipi pickuppaq, RTOpaqpas necesitakun.
+booking_consignor_hint	Huk partita akllay hunt’anaykipaq, utaq ch’usaqta saqey hamuq rantiqpaq. Wasipi pickuppaq, RTOpaqpas necesitakun.
 booking_consignee_hint	Parcela chaskiq. Walk-in counter drop-offs nisqapaq ch’usaq saqiy.
 weight_kg_ph	Chiqap kg
 length_cm_ph	L cm
@@ -260,7 +260,7 @@ add_conversion	Tikrayta yapay
 add_item_plain	Menú nisqapi kaq elementota yapay
 add_note	Nota yapay
 add_opening_balance	Kicharina balanzata yapay
-add_rider	Yanapay sillakuq
+add_rider	Chaskita yapay
 add_staff	Llamk’aqkunata yapay
 add_unit	Unidadta yapay
 add_use_name	Kay sutita yapay / llamk'achiy
@@ -300,7 +300,7 @@ card_amount_ph	Tarjetapa chanin
 cash_amount_ph	Qullqipa chanin
 upi_amount_ph	UPI qullqi
 carrier_cost_ph	Carrierpa chanin
-carrier_party_ph	Carrier fiesta
+carrier_party_ph	Apaykachaq parti
 choose_icon	Icono nisqa akllay
 choose_logo	Logotipo nisqa akllay
 choose_receipt_stamp	Recibo sello nisqa akllay
@@ -359,7 +359,7 @@ counter_agency_ph	Yupa / agencia suti (munasqa) .
 create_backup	Copia de seguridad nisqa ruway
 day_close_summary	P’unchaw wichq’ana resumen
 delete_party	Akllasqa rantiq utaq suministradorta qulluy
-dispatch_to_rider	Despacho reservado → jinete
+dispatch_to_rider	Reservasqakunata kachay → chaski
 docket_charge_ph	Expediente nisqamanta cargo
 declared_value_ph	Willasqa chaninchasqa
 contents_ph	Contenido nisqa
@@ -368,7 +368,7 @@ insurance_label	Harkay
 yes_label	Arí
 no_label	Manam
 print_route_label	Imprimiy ñan
-new_party_kind_label	Musuq fiesta clase
+new_party_kind_label	Musuq parti laya
 done_open_books	Rurasqa — kichasqa hatun qillqakuna
 export_day	Hawa llaqtakunaman apachiy p’unchaw
 extra_note_expense_ph	Qhipa gastomanta extra nota
@@ -386,7 +386,7 @@ import_carrier_bill_csv	Importación carrier factura CSV...
 copy_carrier_bill_report	Qhipa apaykachana qullqi willayta copiay
 use_carrier_cost	Carrier costo nisqawan yanapachikuy
 rate_carrier_ph	Carrier (ch'usaq = rantiyniyku tarifa) .
-rate_party_ph	Fiesta (ch'usaq = llapan rantiqkuna) .
+rate_party_ph	Parti (ch'usaq = llapan rantiqkuna)
 carrier_pick_ph	Carrierpaq qullqipaq (tupanachiymanta) .
 item_name	Menú nisqapi elemento suti
 load_bulk_row	Carga a granel fila → escritorio
@@ -405,9 +405,9 @@ print_drs	Imprimiy DRS
 print_run_sheet	Imprimiy run raphi
 reattempt	Wakmanta kallpachakuy
 rider_cod_handed_ph	COD entregasqa
-settle_rider_cod	Asentamiento jinete COD
+settle_rider_cod	Chaskipa COD-nin tupachiy
 mode_desk	Escritorio
-mode_rider	Sillakuq
+mode_rider	Chaski
 waiting_office	oficinaman chayayta suyaspa
 capture_signature	Firmata hap’iy
 incoming_manifest	Yaykumuq manifiesto
@@ -415,7 +415,7 @@ pickup_request	Pickup nisqa mañakuy
 pickup_run	Pickup kallpay
 auto_assign_area	Auto-asignación nisqa área
 reorder_stops	Reorder nisqa sayan
-settle_rider_pay	Arreglo sillakuqpa pagayninta
+settle_rider_pay	Chaskipa pagayninta tupachiy
 vehicle_inspect	Antawakuna qhaway
 print_docket	Imprimiy expediente nisqa
 franchise_statement	Franquicia nisqamanta willakuy
@@ -427,7 +427,7 @@ share_receipt_whatsapp	WhatsApp nisqapi recibota rakina
 delivery_feedback	Willakuykunata apachiy
 lan_self_book	LAN kikinmanta reservacion
 new_party_clear	Musuq rantiq utaq suministrador (ch'uya formulario) .
-new_party_kind_ph	Musuq fiesta laya (Proveedor / Portador) .
+new_party_kind_ph	Musuq parti laya (Proveedor / Portador)
 next_country	Qatiqnin suyu
 prev_country	Ñawpaq suyu
 note_gstin_ph	Nota / GSTIN / rimanakuy yuyarichiy
@@ -458,10 +458,10 @@ refund	Kutichiy
 remit_cod	Remit COD (partido) nisqa.
 remove_selected	Akllasqata hurquy
 restore_backup	Waqaychasqa waqaychasqata kutichiy
-rider_name_ph	Sillakuqpa sutin
-rider_phone_ph	Rider telefono
-riders	Sillakuq runakuna
-riders_own_fleet	Sillakuq runakuna (kikin flota) .
+rider_name_ph	Chaskipa sutin
+rider_phone_ph	Chaskipa telefonon
+riders	Chaskikuna
+riders_own_fleet	Chaskikuna (ñuqanchikpa)
 rollup	Resumen rollo nisqa
 save_booking_measures	Reserva ruwanapaq medidakunata waqaychay
 save_brand	Marka waqaychay
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Musuq · {} — catálogo ch’usaq qallarikun; menú element
 onboard_book_tmpl	Libro mayor · {} — menú elementokunata yapay chaymanta kichay crédito, chaymanta Ruwasqa.
 onboard_template_tmpl	Munaspaqa chay sitiota sutichay, chaymanta akllay imaynata qallarinaykipaq.
 tmpl_blurb	Mensajero librokuna hinaspa reservakuna ruwana wasi: apachiqkuna, apaykachaqkuna, punchaw qillqa, AWB.
-tmpl_how	Escritoriopi paquetekunata reservay; Kunan punchawpaq punchaw qillqa; tarifakuna, fiestakuna, willakuykunapaq tablakuna.
+tmpl_how	Mostradorpi paquetekunata qillqay; Kunan punchawpaq punchaw qillqa; tarifakuna, partikuna, willakuykunapaq tablakuna.
 app_template_heading	Tiendap plantillankuna
 app_template_blurb	Qallariy mesata akllay. «Kunankamaqa saltay» ñit'iptinqa runakuna lista ch'usaqmi kanqa.
 app_template_skip	Kunankamaqa saltay
@@ -829,13 +829,13 @@ lane_empty	Mana imapas kaypi kunanpacha.
 picked_fmt	{n} akllasqa
 pick_all	Llapanta akllay
 bag_for_carrier	Makimanta apaykachanaman
-send_with_rider	Sillakuqwan kachay
+send_with_rider	Chaskiwan kachay
 out_again	Hukmanta lluqsiy
 return_to_sender	Kachaqman kutiy
 runs_bags_heading	Kunan pacha kallpaykuna & bolsas
 print_word	Imprimir
 bag_word	Bolsa de carga
-run_word	Sillakuq kallpay
+run_word	Chaskipa puriynin
 parcels_fmt	{n} paquetes nisqakuna
 parcel_history	Willarina
 attempt_fmt	{n} nisqamanta kallpachakuy
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} paquete
 facet_bank_title	Willakuykuna
 facet_bank_help	P'unchaw hatun qillqakuna, rantiq utaq suministrador machuyay, bancopi qillqakuna, chaymanta pacha P&L.
 facet_ops_title	Envíos & despachos nisqa
-facet_ops_help	Escanear utaq qillqay AWB → Tariy, chaymanta ñawpaqman / imprimiy etiqueta / COD. Sillakuqman utaq apaykachaqman apachiy.
+facet_ops_help	AWB-ta escaneay utaq qillqay → Tariy, chaymanta ñawpaqman / etiquetata imprimiy / COD. Chaskiman utaq apaykachaqman quy.
 facet_cod_title	COD registro nisqa
 facet_cod_help	Huñuy apachisqapi, chaymanta apachiqman apachiy.
-facet_riders_title	Sillakuq runakuna (kikin flota) .
-facet_riders_help	Yanapay sillakuqkunata, chaymanta kachay reservasqa AWBkunata Ops.
+facet_riders_title	Chaskikuna (ñuqanchikpa)
+facet_riders_help	Chaskikunata yapay, chaymanta reservasqa AWB-kunata Ops-manta kachay.
 against_bill_ph	Contra invitado factura # hawapi (munasqa) .
 aliases_ph	Alias — huk sutikuna, chikuwan t'aqasqa
 amount_blank_full_ph	Qullqi (ch'usaq = hunt'asqa saldo) .
@@ -894,13 +894,13 @@ part_second_way_ph	Iskay kaq ñanwan raki (munasqa) .
 phone_ph	Teléfono nisqawan
 address_ph	Tarikuynin
 party_custom_fields_heading	Sapanchasqa pampakuna (akllasqa partidu) .
-party_custom_help	Kay fiestapi ima etiquetatapas valortapas yapay — WhatsApp, GSTIN, ruta código, ...
+party_custom_help	Kay partipi ima etiquetatapas valortapas yapay — WhatsApp, GSTIN, ruta código, …
 party_custom_key_ph	Chakra suti (e.g. WhatsApp) .
 party_custom_value_ph	Chanin
 party_custom_add	Chakra yapay
 party_custom_remove	Chakrata hurquy
 party_custom_empty	Manaraqmi costumbre chakrakuna kanchu
-party_custom_pick_first	Huk fiestata akllay sapanchasqa chakrakunata yapanaykipaq
+party_custom_pick_first	Huk partita akllay sapanchasqa chakrakunata yapanaykipaq
 place_name_ph	Kay kitipa sutin
 price_ph	Precio
 qty_example_ph	Yupay (ahinataq 1,5 kgpaq)

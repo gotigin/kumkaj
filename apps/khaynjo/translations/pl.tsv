@@ -1364,7 +1364,7 @@ resv_add	Rezerwuj
 resv_seat	Siedzący
 resv_none	Nie nadchodzą żadne rezerwacje.
 guests_word	goście
-delivery_by_ph	Dostawa przez (nazwisko pasażera lub pracownika)
+delivery_by_ph	Dostawa przez (kurier / personel)
 kitchen_all_day	Gotować teraz: {items}
 kitchen_all_day_head	Gotować teraz
 kitchen_tab_live	Na żywo

@@ -88,7 +88,7 @@ applied	Ulanylýar
 note_ph	Bellik (islege görä)
 rounded	TERJIME EDILDI
 split	Bölün
-counter	Kassir
+counter	Kassa
 parcel	Bölüm
 order	Sargyt
 sales	Zakazlar
@@ -221,7 +221,7 @@ snack_secs_saved	Duýduryş wagty tygşytlandy - {n} sekunt
 snack_secs_bad	San hökmünde sanlary giriziň (3–60)
 cancelled	Atyryldy
 cancelling	Ýatyrylýar…
-cancel	Elatyr
+cancel	Ýatyr
 opening_client	Müşderi açmak…
 preparing_desk	Stol taýýarlamak…
 opening_server	Serweriň açylmagy…
@@ -260,7 +260,7 @@ add_conversion	Öwürmek goşuň
 add_item_plain	Menýu elementini goşuň
 add_note	Bellik goşuň
 add_opening_balance	Açylyş balansyny goşuň
-add_rider	At mün
+add_rider	Kurýer goş
 add_staff	Işgär goşuň
 add_unit	Bölüm goşuň
 add_use_name	Bu ady goşuň / ulanyň
@@ -359,7 +359,7 @@ counter_agency_ph	Hasapçy / edara ady (islege görä)
 create_backup	Uptiýaçlyk dörediň
 day_close_summary	Günüň gysgaça mazmuny
 delete_party	Saýlanan müşderini ýa-da üpjün edijini pozuň
-dispatch_to_rider	Dispetçer bron edilen → çapyksuwar
+dispatch_to_rider	Bron edilenleri iber → kurýer
 docket_charge_ph	Nokat zarýady
 declared_value_ph	Deklarasiýa edilen baha
 contents_ph	Mazmuny
@@ -405,9 +405,9 @@ print_drs	DRS çap et
 print_run_sheet	Iş sahypasyny çap et
 reattempt	Gaýtadan synanyşmak
 rider_cod_handed_ph	Kod gowşuryldy
-settle_rider_cod	At çapýan COD
+settle_rider_cod	Kurýeriň COD hasaby
 mode_desk	Stol
-mode_rider	Atly
+mode_rider	Kurýer
 waiting_office	ofisine ýetmek üçin garaşýarlar
 capture_signature	Gol çekmek
 incoming_manifest	Gelýän aç-açan
@@ -415,7 +415,7 @@ pickup_request	Almak haýyşy
 pickup_run	Upüklemek
 auto_assign_area	Awto-bellemek meýdany
 reorder_stops	Düzediş saklanýar
-settle_rider_pay	At çapýanlaryň tölegini kesgitläň
+settle_rider_pay	Kurýeriň tölegini hasapla
 vehicle_inspect	Ulag barlagy
 print_docket	Çap et
 franchise_statement	Franşiza beýany
@@ -458,10 +458,10 @@ refund	Yzyna gaýtaryp bermek
 remit_cod	Kody öçüriň
 remove_selected	Saýlananlary aýyryň
 restore_backup	Uptiýaçlyk nusgasyny dikelt
-rider_name_ph	Atyň ady
-rider_phone_ph	Atly telefon
-riders	Atlylar
-riders_own_fleet	Atlylar (öz floty)
+rider_name_ph	Kurýeriň ady
+rider_phone_ph	Kurýeriň telefony
+riders	Kurýerler
+riders_own_fleet	Kurýerler (öz ulaglarymyz)
 rollup	Gysgaça mazmun
 save_booking_measures	Sargyt çärelerini ýazdyryň
 save_brand	Markany ýazdyryň
@@ -804,7 +804,7 @@ app_template_public_hdr	Şablonlar
 app_template_import_selected	Saýlananyny import et
 app_template_wipe_warn	Bu depderlerdäki söwda maglumatlaryny (zakazlar, hasap depderleri) arassalaýar we şablonyň dükan sazlamalaryny ulanýar. Dowam etmelimi?
 app_template_wipe_continue	Dowam et
-app_template_wipe_cancel	Elatyr
+app_template_wipe_cancel	Ýatyr
 public_tmpl_help	Şu dükan üçin programma bilen gelýän agentlik paketleri. Ýüklemek gerek däl.
 business_day	«Bu gün» haçan täzeden başlaýar?
 business_day_help	«Gün ýapylýança» saýlansa, siz gün ýapylyşyny ýazýançaňyz «Gün ýazgysy» ýary gijeden soň hem dowam edýär. «Senenama boýunça ýary gije» saýlansa, gün ýerli wagt bilen 00:00-da kesilýär.
@@ -829,13 +829,13 @@ lane_empty	Häzirki wagtda hiç zat ýok.
 picked_fmt	{n} saýlandy
 pick_all	Hemmesini saýlaň
 bag_for_carrier	Daşaýja el
-send_with_rider	Atly bilen iber
+send_with_rider	Kurýer bilen iber
 out_again	Againene çyk
 return_to_sender	Iberijä gaýdyp geliň
 runs_bags_heading	Soňky ylgawlar we sumkalar
 print_word	Çap et
 bag_word	Daşaýjy sumka
-run_word	Atly ylga
+run_word	Kurýer reýsi
 parcels_fmt	{n} posylkalary
 parcel_history	Taryh
 attempt_fmt	{n} synanyşyň
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} bukjasy
 facet_bank_title	Hasabat
 facet_bank_help	Gündelik ýazgylar, müşderi ýa-da üpjün edijiniň garramagy, bank ýazgylary we döwür P&L.
 facet_ops_title	Iberişler we iberiş
-facet_ops_help	AWB skanirläň ýa-da ýazyň → Tapyň, soňra belligi / COD-ny öňe sürüň / çap ediň. At münmäge ýa-da daşaýja iber.
+facet_ops_help	AWB skanirläň ýa-da ýazyň → Tap, soňra öňe sür / belligi çap et / COD. Kurýere ýa-da daşaýja tabşyr.
 facet_cod_title	Kod sanawy
 facet_cod_help	Getirmekde ýygnaň, soňra iberijä iberiň.
-facet_riders_title	Atlylar (öz floty)
-facet_riders_help	Atlylary goşuň, soňra Ops-dan bron edilen AWB-leri iberiň.
+facet_riders_title	Kurýerler (öz ulaglarymyz)
+facet_riders_help	Kurýerleri goşuň, soňra Ops-dan bron edilen AWB-leri iberiň.
 against_bill_ph	Aboveokardaky # kanun taslamasyna garşy (islege görä)
 aliases_ph	Lakamlar - beýleki atlar, vergul aýrylýar
 amount_blank_full_ph	Mukdary (boş = doly balans)

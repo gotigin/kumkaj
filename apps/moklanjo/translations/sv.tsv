@@ -260,7 +260,7 @@ add_conversion	Lägg till konvertering
 add_item_plain	Lägg till artikel
 add_note	Lägg till anteckning
 add_opening_balance	Lägg till ingående saldo
-add_rider	Lägg till ryttare
+add_rider	Lägg till bud
 add_staff	Lägg till personal
 add_unit	Lägg till enhet
 add_use_name	Lägg till / använd detta namn
@@ -359,7 +359,7 @@ counter_agency_ph	Räknare/byrånamn (valfritt)
 create_backup	Skapa backup
 day_close_summary	Dagens stängning sammanfattning
 delete_party	Ta bort vald part
-dispatch_to_rider	Utskick bokad → ryttare
+dispatch_to_rider	Skicka bokade → bud
 docket_charge_ph	Docket avgift
 declared_value_ph	Deklarerat värde
 contents_ph	Innehåll
@@ -405,9 +405,9 @@ print_drs	Skriv ut DRS
 print_run_sheet	Skriv ut ark
 reattempt	Försök igen
 rider_cod_handed_ph	COD inlämnad
-settle_rider_cod	Avgör ryttare COD
+settle_rider_cod	Stäm av budets COD
 mode_desk	Skrivbord
-mode_rider	Ryttare
+mode_rider	Bud
 waiting_office	väntar på att nå kontoret
 capture_signature	Fånga signatur
 incoming_manifest	Inkommande manifest
@@ -415,7 +415,7 @@ pickup_request	Begäran om hämtning
 pickup_run	Upphämtningskörning
 auto_assign_area	Autotilldela område
 reorder_stops	Omordning stoppar
-settle_rider_pay	Avgör förarens lön
+settle_rider_pay	Reglera budets ersättning
 vehicle_inspect	Fordonsbesiktning
 print_docket	Skriv ut dokument
 franchise_statement	Franchise uttalande
@@ -458,10 +458,10 @@ refund	Återbetalning
 remit_cod	Remittera COD (part)
 remove_selected	Ta bort markerade
 restore_backup	Återställ säkerhetskopia
-rider_name_ph	Ryttarens namn
-rider_phone_ph	Ryttare telefon
-riders	Ryttare
-riders_own_fleet	Ryttare (egen flotta)
+rider_name_ph	Budets namn
+rider_phone_ph	Budets telefon
+riders	Bud
+riders_own_fleet	Bud (egen flotta)
 rollup	Sammanställning
 save_booking_measures	Spara bokningsåtgärder
 save_brand	Spara varumärke
@@ -794,7 +794,7 @@ onboard_fresh_tmpl	Färsk · {} — katalogen börjar tom; lägg till objekt i O
 onboard_book_tmpl	Boka · {} — lägg till föremål och öppningskredit och sedan Klar.
 onboard_template_tmpl	Namnge platsen om du vill och välj sedan hur du ska börja.
 tmpl_blurb	Budböcker och bokningsdisk: avsändare, transportörer, dagbok, AWB.
-tmpl_how	Boka paket vid skrivbordet; Dagbok för idag; flikar för priser, fester, rapporter.
+tmpl_how	Boka paket vid disken; Dagbok för idag; flikar för priser, parter, rapporter.
 app_template_heading	Butiksmallar
 app_template_blurb	Välj en startdisk. «Hoppa över nu» lämnar partlistan tom.
 app_template_skip	Hoppa över nu
@@ -829,13 +829,13 @@ lane_empty	Inget här just nu.
 picked_fmt	{n} valdes
 pick_all	Välj alla
 bag_for_carrier	Hand till bärare
-send_with_rider	Skicka med ryttare
+send_with_rider	Skicka med bud
 out_again	Ut igen
 return_to_sender	Återgå till avsändaren
 runs_bags_heading	Senaste körningar & väskor
 print_word	Skriva ut
 bag_word	Bärkasse
-run_word	Ryttare springa
+run_word	Budrunda
 parcels_fmt	{n} paket
 parcel_history	Historia
 attempt_fmt	Försök {n}
@@ -849,13 +849,13 @@ cod_rto_fees	RTO-avgifter att samla in
 cod_to_hand_in	COD att lämna in
 parcel_one_fmt	{n} paket
 facet_bank_title	Rapporter
-facet_bank_help	Dagböcker, feståldring, bankinlägg och periodisk P&L.
+facet_bank_help	Dagböcker, åldersanalys per part, bankposter och resultat per period.
 facet_ops_title	Försändelser & utskick
-facet_ops_help	Skanna eller skriv AWB → Hitta och sedan framåt / skriv ut etikett / COD. Skickas till ryttare eller transportör.
+facet_ops_help	Skanna eller skriv AWB → Hitta, sedan framåt / skriv ut etikett / COD. Lämna till bud eller transportör.
 facet_cod_title	COD-register
 facet_cod_help	Hämtas vid leverans, skicka sedan till avsändaren.
-facet_riders_title	Ryttare (egen flotta)
-facet_riders_help	Lägg till ryttare och skicka sedan bokade AWB från Ops.
+facet_riders_title	Bud (egen flotta)
+facet_riders_help	Lägg till bud och skicka sedan bokade AWB från Ops.
 against_bill_ph	Mot räkning # ovan (valfritt)
 aliases_ph	Alias — andra namn, kommaseparerade
 amount_blank_full_ph	Belopp (tomt = fullt saldo)
@@ -894,7 +894,7 @@ part_second_way_ph	Dela på ett annat sätt (valfritt)
 phone_ph	Telefon
 address_ph	Adress
 party_custom_fields_heading	Anpassade fält (vald part)
-party_custom_help	Lägg till valfri etikett och värde på den här festen - WhatsApp, GSTIN, ruttkod, ...
+party_custom_help	Lägg till valfri etikett och värde för den här parten – WhatsApp, GSTIN, ruttkod, …
 party_custom_key_ph	Fältnamn (t.ex. WhatsApp)
 party_custom_value_ph	Värde
 party_custom_add	Lägg till fält

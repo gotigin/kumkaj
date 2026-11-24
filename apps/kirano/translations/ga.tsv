@@ -743,7 +743,7 @@ category_search_ph	Catagóir — cuardaigh d’chatagóir féin nó clóscríobh
 cancel_item_short	Cealaigh
 return_to_customer	Fill ar ais chuig custaiméir
 short_by	Gearr ar
-tip_not_sale	Leide (na foirne, ní díolachán)
+tip_not_sale	Síneadh láimhe (don fhoireann, ní díolachán)
 right_settle	Glac íocaíocht
 right_allowed	Ceadaithe
 right_with_approval	Le cead
@@ -756,7 +756,7 @@ server_host_selected	Ag úsáid {host} — cuir isteach an cód péireála, ansi
 approval_pin_ph	Bainisteoir PIN (má iarrtar amháin)
 menu_search_ph	Cuardaigh mír nó cód gearr
 customer_paid_ph	Íoc an custaiméir
-tip_ph	Leid
+tip_ph	Síneadh láimhe
 find_server	Faigh freastalaí an tsiopa
 bill_format	Formáid bhille
 bill_header_ph	Seoladh | fón

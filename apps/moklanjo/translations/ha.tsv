@@ -260,7 +260,7 @@ add_conversion	Ƙara canzawa
 add_item_plain	Ƙara kaya
 add_note	Ƙara bayani
 add_opening_balance	Ƙara ma'aunin farawa
-add_rider	Ƙara mahayi
+add_rider	Ƙara ɗan isarwa
 add_staff	Ƙara ma'aikaci
 add_unit	Ƙara raka'a
 add_use_name	Ƙara / yi amfani da wannan suna
@@ -359,7 +359,7 @@ counter_agency_ph	Sunan mai ƙima / hukumar (na zaɓi)
 create_backup	Ƙirƙiri ajiyar madadin
 day_close_summary	Taƙaitaccen rufe yini
 delete_party	Goge jam'in da aka zaɓa
-dispatch_to_rider	An yi ajiyar ajiya → mahayi
+dispatch_to_rider	Aika waɗanda aka yi rajista → ɗan isarwa
 docket_charge_ph	Cajin dokiti
 declared_value_ph	Ƙimar da aka bayyana
 contents_ph	Abubuwan da ke ciki
@@ -405,9 +405,9 @@ print_drs	Buga DRS
 print_run_sheet	Buga takardar gudu
 reattempt	Sake gwadawa
 rider_cod_handed_ph	COD da aka mika
-settle_rider_cod	Sanya mahayin COD
+settle_rider_cod	Daidaita COD na ɗan isarwa
 mode_desk	Tebur
-mode_rider	Mahayi
+mode_rider	Ɗan isarwa
 waiting_office	jira ya isa ofis
 capture_signature	Sa hannu na ɗauka
 incoming_manifest	Bayani mai shigowa
@@ -415,7 +415,7 @@ pickup_request	Bukatar karba
 pickup_run	Gudun ɗauka
 auto_assign_area	Wurin sanyawa ta atomatik
 reorder_stops	Sake yin oda yana tsayawa
-settle_rider_pay	A daidaita biyan mahaya
+settle_rider_pay	Daidaita albashin ɗan isarwa
 vehicle_inspect	Duban abin hawa
 print_docket	Buga dokiti
 franchise_statement	Bayanin Franchise
@@ -458,10 +458,10 @@ refund	Mayar da kuɗi
 remit_cod	Remit COD (jam'iyya)
 remove_selected	Cire wanda aka zaɓa
 restore_backup	Mayar da ajiyar madadin
-rider_name_ph	Sunan mahayi
-rider_phone_ph	Wayar mahayi
-riders	Mahaya
-riders_own_fleet	Mahaya (masu jirgin ruwa)
+rider_name_ph	Sunan ɗan isarwa
+rider_phone_ph	Wayar ɗan isarwa
+riders	'Yan isarwa
+riders_own_fleet	'Yan isarwa (namu)
 rollup	Tattara
 save_booking_measures	Ajiye matakan yin rajista
 save_brand	Ajiye alama
@@ -829,13 +829,13 @@ lane_empty	Babu komai a nan yanzu.
 picked_fmt	{n} ya karɓa
 pick_all	Zaɓi duka
 bag_for_carrier	Hannu zuwa mai ɗauka
-send_with_rider	Aika tare da mahayi
+send_with_rider	Aika ta hannun ɗan isarwa
 out_again	Fita kuma
 return_to_sender	Komawa ga mai aikawa
 runs_bags_heading	Gudun kwanan nan & jakunkuna
 print_word	Buga
 bag_word	Jakar jigilar kaya
-run_word	Gudu mahayi
+run_word	Zagayen ɗan isarwa
 parcels_fmt	Farashin {n}
 parcel_history	Tarihi
 attempt_fmt	Ƙoƙarin {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	Farashin {n}
 facet_bank_title	Rahotanni
 facet_bank_help	Littattafan yini, shekarun bashi na jam'i, rubutun banki, da R&H na lokaci.
 facet_ops_title	Kayayyaki & aikawa
-facet_ops_help	Duba ko buga AWB → Nemo, sannan gaba / buga lakabin / COD. Aika zuwa mahayi ko mai ɗauka.
+facet_ops_help	Duba ko buga AWB → Nemo, sannan ci gaba / buga lakabi / COD. Mika wa ɗan isarwa ko mai ɗauka.
 facet_cod_title	Rahoton da aka ƙayyade na COOD
 facet_cod_help	Tattara lokacin isarwa, sannan a mika wa mai aikawa.
-facet_riders_title	Mahaya (masu jirgin ruwa)
-facet_riders_help	Ƙara mahaya, sannan aika da AWBs daga Ops.
+facet_riders_title	'Yan isarwa (namu)
+facet_riders_help	Ƙara 'yan isarwa, sannan aika AWB da aka yi rajista daga Ops.
 against_bill_ph	A kan lambar lissafi a sama (ba dole ba)
 aliases_ph	Sauran sunaye — raba da waƙafi
 amount_blank_full_ph	Adadi (fanko = duka ma'auni)
