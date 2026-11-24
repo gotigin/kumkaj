@@ -1,280 +1,280 @@
 # Maltese — Malti (mt). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Eżempju
+free	Vojta
+photo_coming	Ritratt dalwaqt
+get_it_on_google_play	Niżżlu minn Google Play
+whatsapp_for_a_demo	Dimostrazzjoni fuq WhatsApp
+menus	Menujiet
+how_it_works	Kif jaħdem
+features	Karatteristiċi
+offline	Mhux konness
+pricing	Prezzijiet
+faq	Mistoqsijiet frekwenti
+login	Idħol
+get_it_free	Niżżlu b’xejn
+restaurant_pos_free_forever	POS għar-ristoranti · b’xejn għal dejjem
+lunch_rush_no_internet_no	Għaġla tal-ikla ta’ nofsinhar. L-ebda internet. L-ebda problema.
+khaynjo_runs_your_floor_kitchen	Khaynjo jmexxi s-sala, il-kċina u l-kawnter tiegħek fuq apparat li diġà għandek — mill-mejda għall-kċina u għall-kont, bl-internet jew mingħajru.
+android_on_google_play_today	Android fuq Google Play illum · pakketti għal Windows u Linux ġejjin.
+works_with_no_internet	Jaħdem mingħajr internet
+your_books_stay_on_your	Il-kotba tiegħek jibqgħu fuq l-apparat tiegħek
+n_115_languages_on_screen	115-il lingwa fuq l-iskrin
+your_floor_at_a_glance	Is-sala tiegħek f’daqqa t’għajn
+tap_a_table_to_walk	Agħfas fuq mejda biex tgħaddiha minn żjara. L-istess kuluri u kliem tal-app — u l-mejda tinħeles biss meta jitħallas il-kont.
+every_country	KULL PAJJIŻ
+every_country_at_your_counter	Kull pajjiż fuq il-kawnter tiegħek
+one_famous_dish_from_every	Platt famuż minn kull pajjiż — l-isem bl-Ingliż, l-isem bil-kitba tagħhom stess, u l-platt bl-Ingliż. Poġġi dawk il-kliem fil-menù tiegħek. Id-dinja tibqa’ għaddejja; waqqaf jew fittex meta trid tħares.
+find_a_country_or_dish	Sib pajjiż jew platt — eż. India, biryani, Japan
+one_famous_dish_per_country	Platt famuż għal kull pajjiż — il-parata ddur id-dinja kollha.
+how_a_service_runs	KIF JIMXI SERVIZZ
+one_table_start_to_finish	Mejda waħda, mill-bidu sal-aħħar.
+watch_a_table_go_from	Ara mejda tgħaddi minn “Bilqiegħda” għal “Imħallsa” — l-istess passi u kuluri li jara l-istaff tiegħek fl-app.
+occupied	Okkupata
+in_kitchen	Fil-kċina
+food_ready	Ikel lest
+served	Moqdija
+bill_printed	Kont stampat
+paid	Imħallsa
+seat_the_table_take_the	Poġġi l-mistednin bilqiegħda, ħu l-ordni
+mark_the_table_occupied_the	Immarka l-mejda bħala “Okkupata” hekk kif joqogħdu l-mistednin. Żid il-platti, agħżel id-daqs u l-ekstras, u ikteb nota għall-kċina — hemmhekk fil-mejda.
+sizes_and_add_ons	Daqsijiet u ekstras
+pick_one_size_add_optional	Agħżel daqs wieħed; żid ekstras mhux obbligatorji sal-limitu li tissettja.
+a_note_per_dish	Nota għal kull platt
+less_spicy_travels_with_the	“Inqas pikkanti” jimxi mal-platt li jappartjeni għalih.
+t4_occupied	T4 · Okkupata
+note_less_salt	Nota: inqas melħ
+one_ticket_per_kitchen_station	Biljett wieħed għal kull stazzjon tal-kċina
+send_the_order_and_each	Ibgħat l-ordni u kull stazzjon jirċievi l-platti tiegħu biss — innumerati kuljum, bil-mejda, il-wejter u kull nota. Qatt prezz: il-kċina ssajjar, il-kawnter jiġbor il-ħlas.
+prints_itself	Jistampa waħdu
+send_and_the_ticket_prints	Ibgħat, u l-biljett jiġi stampat fl-istazzjon it-tajjeb — ħadd ma jrid iġorru.
+example_ticket	Biljett ta’ eżempju
+the_kitchen_sees_what_to	Il-kċina tara x’għandha ssajjar issa
+on_the_kitchen_screen_tickets	Fuq l-iskrin tal-kċina l-biljetti jgħaddu minn Ġdid → Qed jitħejja → Lest b’daqqa waħda. Il-biljetti eqdem jieħdu kulur iktar sħun, “Issajjar issa” jgħodd kull platt li qed jistenna, u l-platti ewlenin jistgħu jistennew sakemm joħorġu l-antipasti.
+new	Ġdid
+preparing	Qed jitħejja
+ready	Lest
+example_kitchen_screen	Eżempju ta’ skrin tal-kċina
+settle_any_way_the_guest	Iġbor il-ħlas kif iħallas il-klijent
+cash_with_change_to_return	Kontanti bil-bqija, UPI bl-ammont diġà fil-QR, ħlas parzjali, jew dejn fil-ktieb tad-djun tal-klijent. Aqsam skont il-platt, il-post jew indaqs. Il-mejda tinħeles biss meta jitħallas il-kont tagħha.
+tips_stay_apart	Il-baqxix jibqa’ separat
+a_tip_is_recorded_on	Il-baqxix jiġi rreġistrat waħdu — qatt ma jitħallat mal-bejgħ.
+t4_bill_printed	T4 · Kont stampat
+bill	Kont
+customer_paid_cash	Il-klijent ħallas (kontanti)
+return_to_customer	Bqija lill-klijent
+close_the_day_you_can	Għeluq tal-ġurnata li tista’ tafdah
+count_the_drawer_against_the	Għodd il-kexxun kontra l-flus tal-bidla, il-kontanti miġbura, il-baqxix u l-kontanti mħallsa — in-nuqqas jew iż-żejjed jissemma. Ipprintja r-rapport tax-xift, imbagħad iftaħ ir-rapport tal-ġurnata skont l-istaff, it-tip ta’ ordni, is-siegħa u l-platt, bil-kanċellazzjonijiet, l-offerti mid-dar u l-baqxix.
+shift_close	Għeluq tax-xift
+opening_float	Flus tal-bidla tal-bidu
+cash_taken	+ kontanti miġbura
+cash_tips	+ baqxix fi flus
+cash_paid_out	− kontanti mħallsa
+expected_in_the_drawer	Mistenni fil-kexxun
+counted	Magħdud
+short	Nuqqas
+everything_else_the_floor_needs	KULL MA JEĦTIEĠ IS-SALA
+built_for_a_real_service	Mibni għal servizz veru.
+the_changes_that_happen_every	Il-bidliet li jiġru f’kull ikla — imħaddma fil-miftuħ, b’min, meta u għaliex miżmuma.
+move_and_merge_tables	Ċaqlaq u għaqqad il-mwejjed
+guests_change_tables_the_order	Il-mistednin ibiddlu l-mejda — l-ordni u l-minuti tagħha jmorru magħhom. Żewġ imwejjed, kont wieħed.
+cancel_after_the_kot	Kanċella wara l-biljett tal-kċina
+with_a_reason_cooked_or	B’raġuni, jekk issajjarx jew le, u min approvah. Il-kċina tirċievi biljett ta’ kanċellazzjoni.
+complimentary_dishes	Platti offruti mid-dar
+a_comp_stays_on_the	Platt offrut jibqa’ fuq il-kont b’₹ 0, bir-raġuni u b’min approvah.
+rights_per_person	Drittijiet għal kull persuna
+each_action_is_allowed_allowed	Kull azzjoni hija permessa, permessa bil-PIN tal-maniġer, jew mhux permessa — persuna b’persuna.
+your_menu_your_words	Il-menù tiegħek, kliemek
+search_by_name_or_short	Fittex bl-isem jew b’kodiċi qasir, b’ismijiet alternattivi f’lingwa oħra — “ptk” isib Paneer tikka.
+area_prices_and_happy_hour	Prezzijiet skont iż-żona u siegħat bi skont
+a_dearer_price_in_the	Prezz ogħla fil-kamra bl-arja kkundizzjonata; menujiet tal-kolazzjon u prezzijiet bi skont skont il-ħin.
+customer_khata	Ktieb tad-djun tal-klijent
+part_payments_and_due_go	Il-ħlasijiet parzjali u d-djun imorru fuq il-kont tal-klijent f’Partijiet, u jitħallsu aktar tard.
+reports_that_answer_questions	Rapporti li jwieġbu mistoqsijiet
+sales_by_staff_order_type	Bejgħ skont l-istaff, it-tip ta’ ordni, is-siegħa u l-platt — bil-kanċellazzjonijiet, l-offerti mid-dar u l-baqxix imniżżla.
+start_with_a_menu	IBDA B’MENÙ
+your_menu_ready_in_minutes	Il-menù tiegħek, lest f’minuti.
+set_up_your_counter_and	Issettja l-kawnter u agħżel menù tal-bidu b’ritratti — imbagħad biddel l-ismijiet, il-prezzijiet u l-kodiċijiet għal tiegħek. B’xejn biex tniżżel minn khaynjo.com.
+starter_menu	Menù tal-bidu
+khaynjo_starter_menu	Menù tal-bidu ta’ Khaynjo
+world_cuisines_japanese_mexican	Kċejjen tad-dinja — Ġappuniża, Messikana, Taljana, Indjana, Tajlandiża u aktar — kull platt bir-ritratt tiegħu.
+n_14_dishes_11_categories	14-il platt · 11-il kategorija
+cafe_starter	Pakkett tal-bidu għall-kafetterija
+tea_coffee_cold_drinks_bakery	Te, kafè, xorb kiesaħ, ħelu u ikliet ħfief — lest għal kafetterija bil-kawnter.
+n_22_dishes_4_categories	22 platt · 4 kategoriji
+photo_shelf	Xkaffa tar-ritratti
+khaynjo_dish_photos	Ritratti tal-platti ta’ Khaynjo
+the_full_public_photo_shelf	Ix-xkaffa pubblika kollha tar-ritratti — agħżel l-istampa għal kull platt li żżid.
+n_1_459_dish_photos_25	1,459 ritratt tal-platti · 25 tip ta’ kċina
+internet_down	L-INTERNET WAQA’?
+the_internet_went_down_the	L-internet waqa’. Il-kawnter le.
+orders_kitchen_tickets_bills_and	L-ordnijiet, il-biljetti tal-kċina, il-kontijiet u l-ktieb tal-ġurnata jinsabu fuq l-apparat tiegħek stess. Meta l-internet jaqa’ f’nofs l-ikla, xejn fir-ristorant tiegħek ma jistennieh — u m’hemm l-ebda kont magħna biex tidħol fih.
+right_now_mid_lunch	Issa stess, f’nofs l-ikla
+router_no_internet	Router: l-ebda internet
+counter_taking_orders_and_settling	Kawnter: jieħu ordnijiet u jagħlaq kontijiet
+day_book_every_bill_saved	Ktieb tal-ġurnata: kull kont issejvjat fuq dan l-apparat
+captains_tablets_and_the_kitchen	It-tablets tal-kaptani u l-iskrin tal-kċina: jaħdmu flimkien fuq il-Wi-Fi tiegħek stess
+eyebrow_pricing	PREZZIJIET
+free_forever_on_your_devices	B’xejn għal dejjem fuq l-apparat tiegħek.
+software_capability_is_not_what	Mhux il-ħila tas-software li nbigħu. Ħaddem Khaynjo kollu fuq l-apparat tiegħek mingħajr ħlas — xejn mhu msakkar wara pjan.
+khaynjo_on_your_devices	Khaynjo fuq l-apparat tiegħek
+forever	għal dejjem
+every_feature	Kull karatteristika
+floor_kitchen_billing_day_close	Sala, kċina, kontijiet, għeluq tal-ġurnata, rapporti — l-app kollha.
+no_per_seat_charge	L-ebda ħlas għal kull post
+no_charge_per_table_waiter	L-ebda ħlas għal kull mejda, wejter, ordni jew apparat.
+no_account_with_us	L-ebda kont magħna
+day_to_day_service_needs	Is-servizz ta’ kuljum ma jeħtieġ la reġistrazzjoni u lanqas internet.
+kumkaj_cloud_optional	Kumkaj Cloud · mhux obbligatorju
+yearly_cloud_if_you_want	Cloud annwali jekk tridu
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / sena mingħajr taxxa (it-taxxa mal-ħlas). Il-pjan personalizzat huwa b’kwotazzjoni — jista’ jkun inqas minn Steady jew aktar minn Priority. Khaynjo lokali jibqa’ b’xejn għal dejjem xorta waħda.
+shop_plans_at_shop_sign	Pjanijiet f’/shop · idħol f’/account
+open_cloud_shop	Iftaħ il-ħanut tal-cloud
+questions	MISTOQSIJIET
+asked_before_every_first_service	Isiru qabel kull l-ewwel servizz.
+do_i_need_the_internet	Għandi bżonn l-internet?
+no_orders_kots_bills_and	Le. L-ordnijiet, il-biljetti tal-kċina, il-kontijiet u l-ktieb tal-ġurnata jaħdmu mingħajr internet. Għandek bżonnu darba biss biex tniżżel l-app u, jekk trid, menù tal-bidu.
+where_are_my_bills_kept	Fejn jinżammu l-kontijiet tiegħi?
+on_your_own_device_in	Fuq l-apparat tiegħek stess, fil-ħanut tiegħek — mhux fuq is-servers tagħna. Agħmel kopji ta’ riżerva minn Għażliet u żommhom fejn trid.
+which_devices_does_it_run	Fuq liema apparat jaħdem?
+android_phones_and_tablets_today	Illum fuq mowbajls u tablets Android, minn Google Play. Il-pakketti għal Windows u Linux qed jaslu.
+does_it_print_kots_and	Jistampa biljetti tal-kċina u kontijiet?
+yes_on_thermal_printers_you	Iva — fuq printers termali li tissettja f’Għażliet → Stampaturi, biljett tal-kċina wieħed għal kull stazzjon.
+can_my_staff_use_their	L-istaff tiegħi jista’ juża l-lingwa tiegħu?
+yes_the_screens_come_in	Iva. L-iskrins huma disponibbli f’115-il lingwa, l-Għarbi u l-Urdu mil-lemin għax-xellug, u l-ismijiet tal-platti jista’ jkollhom ismijiet alternattivi b’kitba oħra.
+what_does_it_cost	Kemm jiswa?
+nothing_on_your_own_devices	Xejn fuq l-apparat tiegħek — kull karatteristika, għal dejjem. Kumkaj Cloud mhux obbligatorju huwa annwali Steady / Swift / Priority (jew kwotazzjoni personalizzata); iftaħ /shop biex tixtri.
+ready_for_lunch	LESTI GĦALL-IKLA?
+run_your_next_service_on	Mexxi s-servizz li jmiss tiegħek fuq Khaynjo.
+free_on_google_play_want	B’xejn fuq Google Play. Trid dimostrazzjoni l-ewwel? Ibgħatilna messaġġ fuq WhatsApp.
+privacy	Privatezza
+terms	Termini
+cancellation	Kanċellazzjoni
+photo_credits	Krediti tar-ritratti
+cloud_shop	Ħanut tal-cloud
+account	Kont
+cta_installers_note	L-installaturi jitpoġġew hawn hekk kif kull wieħed jgħaddi minn installazzjoni fuq magna nadifa. Sa dakinhar, itlob dimostrazzjoni fuq WhatsApp.
+cta_whatsapp_soon	Il-linja tad-dimostrazzjoni fuq WhatsApp tiftaħ dalwaqt. Il-messaġġ tiegħek se jgħid: “{message}”.
+shelf_no_match	L-ebda pajjiż jew platt ma jaqbel ma’ dik it-tfittxija.
+shelf_search_note	It-tfittxija twaqqaf il-parata; neħħiha biex tkompli, inkella tibqa’ wieqfa kif ħallejtha.
+floor_meta_min	{min} min.
+floor_meta_min_bill	{min} min. · ₹ {amount}
+floor_meta_paid	₹ {amount} imħallsa
+acct_page_title	Kont — Khaynjo
+acct_lede	Kont wieħed għas-sit u l-apps — l-istess formola kemm jekk int ġdid kif ukoll jekk qed terġa’ lura.
+acct_email	Imejl
+acct_name_optional	Isem (mhux obbligatorju)
+acct_password	Kelma tal-passaġġ
+acct_continue	Kompli
+acct_forgot	Insejt il-kelma tal-passaġġ?
+acct_reset_hint	Nibagħtulek link għar-reset bl-imejl. Uża l-istess indirizz li rreġistrajt bih.
+acct_send_reset	Ibgħat link għar-reset
+acct_cancel	Ikkanċella
+acct_or_continue	jew kompli permezz ta’
+acct_phone	Telefon
+acct_mobile	Numru tal-mowbajl
+acct_send_sms	Ibgħat kodiċi SMS
+acct_sms_code	Kodiċi SMS
+acct_confirm_code	Ikkonferma l-kodiċi
+acct_signed_in	Dħalt
+acct_signed_in_as	Dħalt bħala
+acct_status	Stat
+acct_sign_in_methods	Metodi ta’ dħul
+acct_cloud_username	Isem tal-utent fil-cloud
+acct_plan	Pjan
+acct_resend_verify	Erġa’ ibgħat l-imejl tal-verifika
+acct_sign_out	Oħroġ
+acct_cloud_sandbox	Kumkaj Cloud (ambjent tal-provi)
+acct_current_password	Kelma tal-passaġġ attwali
+acct_email_for_password	Imejl għad-dħul bil-kelma tal-passaġġ
+acct_new_password	Kelma tal-passaġġ ġdida
+acct_confirm_new_password	Ikkonferma l-kelma tal-passaġġ il-ġdida
+acct_add_way	Żid mod ieħor biex tidħol
+acct_link_hint	Orbot diversi metodi mal-istess kont biex tkun tista’ terġa’ tidħol jekk wieħed ifalli.
+acct_link_google	Orbot Google
+acct_link_microsoft	Orbot Microsoft
+acct_link_github	Orbot GitHub
+acct_link_phone	Orbot it-telefon
+acct_send_sms_link	Ibgħat SMS biex torbot
+acct_confirm_link_phone	Ikkonferma u orbot it-telefon
+shop_page_title	Ħanut — Khaynjo
+shop_lede	Pjanijiet annwali tal-cloud — it-taxxa tiżdied mal-ħlas. L-app sħiħa ta’ Khaynjo fuq l-apparat tiegħek tibqa’ b’xejn għal dejjem, mingħajr reklami.
+shop_cart	Karrettun
+shop_cart_empty_hint	Il-karrettun tiegħek huwa vojt. Żid Steady, Swift jew Priority.
+shop_checkout	Ħallas
+shop_clear	Battal
+shop_checkout_hint	Il-ħlas l-ewwel jdaħħlek fil-Kont, imbagħad jibda l-pagament (simulazzjoni fl-ambjent tal-provi jew Paddle meta ċ-ċwievet ikunu ssettjati).
+acct_billing_hint	Pjanijiet annwali — it-taxxa jżidha l-gateway mal-ħlas. L-użu lokali jibqa’ b’xejn għal dejjem. Il-pjan personalizzat huwa b’kwotazzjoni (jista’ jkun inqas minn Steady jew aktar minn Priority).
+shop_cloud_plans	Pjanijiet tal-cloud
+acct_federated	Dħul federat
+acct_err_invalid_email	Daħħal indirizz tal-imejl validu.
+acct_err_weak_password	Uża kelma tal-passaġġ ta’ mill-inqas 6 karattri.
+acct_err_wrong_password	Kelma tal-passaġġ ħażina.
+acct_err_invalid_credential	L-imejl jew il-kelma tal-passaġġ huma ħżiena.
+acct_err_popup_closed	It-tieqa tad-dħul ingħalqet.
+acct_err_popup_cancelled	Id-dħul ġie kkanċellat.
+acct_err_unauthorized_domain	Dan id-dominju mhuwiex awtorizzat għal Firebase Auth.
+acct_err_method_disabled	Dak il-metodu ta’ dħul għadu mhux attivat.
+acct_err_too_many	Wisq tentattivi. Erġa’ pprova aktar tard.
+acct_err_phone_format	Uża n-numru tat-telefon sħiħ bil-kodiċi tal-pajjiż (eż. +91…).
+acct_err_sms_code	Dak il-kodiċi SMS huwa ħażin jew skada.
+acct_err_no_account	M’hemm l-ebda kont b’dak l-imejl. Kompli biex toħloq wieħed, jew uża metodu ieħor.
+acct_err_recent_login	Għal raġunijiet ta’ sigurtà, erġa’ idħol, imbagħad erġa’ pprova din il-bidla.
+acct_err_credential_in_use	Dak il-metodu ta’ dħul diġà qed jintuża minn kont ieħor.
+acct_err_email_in_use	Dak l-imejl diġà qed jintuża minn kont ieħor.
+acct_err_already_linked	Dak il-metodu diġà marbut ma’ dan il-kont.
+acct_err_exists_other_method	Diġà jeżisti kont b’dan l-imejl b’metodu ta’ dħul differenti. L-ewwel idħol b’dak il-metodu, imbagħad orbot dan mill-paġna tal-kont tiegħek.
+acct_err_generic	Xi ħaġa marret ħażin.
+acct_method_password	Imejl u kelma tal-passaġġ
+acct_pw_hint_change	Biddel il-kelma tal-passaġġ tiegħek. Se tikkonferma bil-kelma attwali.
+acct_pw_hint_add	Żid kelma tal-passaġġ biex tkun tista’ tidħol ukoll bl-imejl (utli jekk fornitur ma jkunx disponibbli).
+acct_pw_change	Biddel il-kelma tal-passaġġ
+acct_pw_add	Żid kelma tal-passaġġ
+acct_billing_off	Il-ħlas għadu mhux attivat fuq l-API tal-cloud.
+acct_billing_no_provider	L-ebda fornitur reali tal-ħlas mhu attivat fuq l-API tal-cloud (is-simulazzjoni hija lokali biss).
+price_quote	Kwotazzjoni
+price_per_year	₹{amount}/sena mingħajr taxxa
+acct_pay_received	Il-ħlas wasal — qed naġġornaw il-pjan tiegħek…
+acct_pay_declined	Il-ħlas ġie miċħud jew falla
+acct_pay_failed_detail	{detail}. Il-pjan tiegħek ma nbidilx.
+acct_checkout_closed	Il-ħlas ingħalaq — l-ebda pagament ma tlesta. Il-pjan tiegħek baqa’ l-istess.
+acct_checkout_failed	Il-ħlas falla
+acct_pay_with	Ħallas permezz ta’ {provider}
+acct_plan_until	{plan} · sa {date}
+acct_unavailable	Mhux disponibbli
+acct_continue_hint	Kompli bl-imejl, b’fornitur jew bit-telefon.
+acct_signed_in_fallback	(dħalt)
+acct_email_verified	Imejl ivverifikat
+acct_email_unverified	L-imejl għadu mhux ivverifikat — iċċekkja l-kaxxa tal-posta
+acct_signed_in_phone	Dħalt bit-telefon
+acct_none_listed	Għad m’hemm xejn
+acct_signed_in_status	Dħalt.
+acct_created	Il-kont inħoloq. Iċċekkja l-imejl biex tivverifikah meta tista’.
+acct_reset_sent	Jekk hemm kont għal dak l-imejl, link għar-reset qiegħed fi triqtu. Iċċekkja l-kaxxa tal-posta.
+acct_another_method	metodu ieħor
+acct_exists_via	Kont għal {email} diġà jeżisti permezz ta’ {method}. L-ewwel idħol b’dak il-mod, imbagħad orbot dan il-fornitur mill-paġna tal-kont tiegħek.
+acct_enter_current_pw	Daħħal il-kelma tal-passaġġ attwali.
+acct_relogin_retry	Oħroġ u erġa’ idħol, imbagħad erġa’ pprova.
+acct_pw_mismatch	Il-kelma tal-passaġġ il-ġdida u l-konferma ma jaqblux.
+acct_pw_updated	Il-kelma tal-passaġġ ġiet aġġornata.
+acct_enter_email_pw	Daħħal imejl biex tużah għad-dħul bil-kelma tal-passaġġ.
+acct_pw_added	Il-kelma tal-passaġġ ġiet miżjuda. Issa tista’ tidħol ukoll bl-imejl.
+acct_method_linked	Il-metodu ta’ dħul ġie marbut.
+acct_phone_linked	It-telefon ġie marbut ma’ dan il-kont.
+acct_verify_sent	L-imejl tal-verifika ntbagħat — iċċekkja l-kaxxa tal-posta.
+shop_pricing_soon	Il-prezzijiet dalwaqt
+shop_request_quote	Itlob kwotazzjoni
+shop_add_to_cart	Żid mal-karrettun
+shop_notify_later	Avżani aktar tard
+shop_included	Inkluż
+shop_in_cart	{plan} jinsab fil-karrettun tiegħek.
+shop_remove	Neħħi
+shop_cart_is_empty	Il-karrettun huwa vojt.
+shop_prices_unpublished	Il-prezzijiet għax-xiri dirett għal dan il-prodott għadhom mhux ippubblikati. Itlob kwotazzjoni personalizzata jew erġa’ ara aktar tard.
+shop_cart_cleared	Il-karrettun ġie żvojtat.
+plan_free_title	B’xejn għal dejjem
+plan_free_blurb	Il-prodott lokali sħiħ fuq l-apparat tiegħek. L-ebda tariffa tal-cloud.
+plan_steady_blurb	Cloud attiv · 10 GB · wisa’ tal-banda iżgħar
+plan_swift_blurb	Cloud attiv · 25 GB · wisa’ tal-banda medju
+plan_priority_blurb	Cloud attiv · 50 GB · l-ogħla wisa’ tal-banda standard
+plan_custom_title	Personalizzat
+plan_custom_blurb	Kwota u wisa’ tal-banda miftiehma. Il-kwotazzjoni tista’ tkun inqas minn Steady jew aktar minn Priority.
