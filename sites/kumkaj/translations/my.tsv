@@ -1,121 +1,121 @@
 # Burmese — မြန်မာ (my). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 the_promise	ကတိ
-kumkaj_business_operating_systems	KUMKAJ · လုပ်ငန်းသုံး စနစ်များ
-the_internet_went_down_the	အင်တာနက် ပြတ်သွားသည်။\nကောင်တာ မပြတ်ပါ။
-kumkaj_is_the_brand_for	Kumkaj သည် တကယ့် လုပ်ငန်းသုံး စနစ် အက်ပ်များ၏ အမှတ်တံဆိပ် ဖြစ်သည် — သင့်ကိုယ်ပိုင် စက်များပေါ်တွင် လည်ပတ်သော ပြည့်စုံသည့် လုပ်ငန်းစီမံခန့်ခွဲမှု ဆော့ဖ်ဝဲ။ ထုတ်ကုန်တစ်ခုစီကို လုပ်ငန်းတစ်မျိုးအတွက် တည်ဆောက်ထားသည် — ပါဆယ်ပို့ဆောင်ရေး၊ စားသောက်ဆိုင်၊ ကုန်စုံဆိုင်၊ ဆေးဆိုင်။
-choose_your_trade	သင့်လုပ်ငန်းကို ရွေးပါ  ↓
-watch_it_keep_working	ဆက်လက် အလုပ်လုပ်နေပုံကို ကြည့်ပါ
-this_counter_right_now	ဤကောင်တာ၊ ယခုပင်
-internet	အင်တာနက်
-down	ပြတ်နေသည်
-taking_orders	အော်ဒါ ယူနေသည်
+kumkaj_business_operating_systems	KUMKAJ · လုပ်ငန်း​သုံး စနစ်​များ
+the_internet_went_down_the	အင်​တာ​နက် ပြတ်​သွား​သည်။\nကောင်တာ မပြတ်​ပါ။
+kumkaj_is_the_brand_for	Kumkaj သည် တ​က​ယ့် လုပ်ငန်း​သုံး စနစ် အ​က်​ပ်​များ၏ အမှတ်​တံဆိပ် ဖြစ်သည် — သင့်​ကိုယ်ပိုင် စက်​များ​ပေါ်​တွင် လည်ပတ်​သော ပြည့်စုံ​သည့် လုပ်ငန်း​စီမံ​ခန့်ခွဲ​မှု ဆော့​ဖ်​ဝဲ။ ထုတ်ကုန်​တစ်ခုစီ​ကို လုပ်ငန်း​တစ်​မျိုး​အတွက် တည်ဆောက်​ထားသည် — ပါဆယ်​ပို့ဆောင်​ရေး၊ စားသောက်ဆိုင်၊ ကုန်စုံဆိုင်၊ ဆေးဆိုင်။
+choose_your_trade	သင့်​လုပ်ငန်း​ကို ရွေး​ပါ  ↓
+watch_it_keep_working	ဆက်လက် အလုပ်​လုပ်​နေ​ပုံ​ကို ကြည့်ပါ
+this_counter_right_now	ဤ​ကောင်တာ၊ ယခု​ပင်
+internet	အင်​တာ​နက်
+down	ပြတ်​နေသည်
+taking_orders	အော်ဒါ ယူ​နေသည်
 yes	ဟုတ်ကဲ့
-bills_and_dockets	ဘေလ်များနှင့် စာရွက်များ
-saving	သိမ်းနေသည်
-day_book	နေ့စဉ်စာရင်း
-adding_up	ပေါင်းနေသည်
-nothing_on_this_counter_waits	ဤကောင်တာပေါ်ရှိ မည်သည့်အရာမျှ Cloud ကို စောင့်ရန် မလိုပါ။
-scroll_or_use_the_dots	အပိုင်းများကြား ခုန်ရန် ဆွဲပါ သို့မဟုတ် အစက်များကို သုံးပါ။
-n_02_built_for_your_trade	02 · သင့်လုပ်ငန်းအတွက် တည်ဆောက်ထားသည်
-a_desk_for_each_trade	လုပ်ငန်းတစ်ခုစီအတွက် ကောင်တာတစ်ခု။\nခလုတ်ပါသော အက်ပ်တစ်ခု မဟုတ်ပါ။
-not_one_app_with_a	လုပ်ငန်းပြောင်းခလုတ်ပါသော အက်ပ်တစ်ခု မဟုတ်ပါ။ ထုတ်ကုန်တစ်ခုစီကို ကောင်တာ အမျိုးအစားတစ်မျိုးကို အခြေခံ၍ ထိုလုပ်ငန်း၏ ကိုယ်ပိုင်စကားလုံးများဖြင့် ဒီဇိုင်းထုတ်ထားသည်။
-courier_offices_franchise_counters_own	ပါဆယ်ရုံးများ · ကိုယ်စားလှယ် ကောင်တာများ · ကိုယ်ပိုင် ပို့ဆောင်သူများ
-book_label_hand_over_track	လက်ခံ → တံဆိပ်ကပ် → လွှဲပေး → ခြေရာခံ → ရှင်း။
-next_booking_in_one_tap	တစ်ချက်နှိပ်ရုံဖြင့် နောက်ထပ် လက်ခံမှု
-actual_or_volumetric_weight_rounded	တကယ့် သို့မဟုတ် ထုထည် အလေးချိန်၊ သင့်နည်းအတိုင်း ပိုင်းဖြတ်
-rider_cash_on_delivery_expected	ပို့ဆောင်သူ၏ COD — ရသင့်ငွေနှင့် အပ်ပြီးငွေ နှိုင်းယှဉ်
-visit_moklanjo_com	moklanjo.com သို့ သွားပါ  →
-restaurants_caf_s_quick_service	စားသောက်ဆိုင်များ · ကော်ဖီဆိုင်များ · အမြန်စားဆိုင်များ · မုန့်ဆိုင်များ
-table_kitchen_bill_day_close	စားပွဲ → မီးဖိုချောင် → ဘေလ် → နေ့စာရင်းပိတ်။
-every_table_s_minutes_and	စားပွဲတိုင်း၏ မိနစ်နှင့် ဘေလ်ကို တစ်ချက်ကြည့်ရုံဖြင့်
-one_kot_per_kitchen_station	မီးဖိုချောင်ဌာနတစ်ခုလျှင် KOT တစ်စောင် — ဈေးနှုန်း လုံးဝမပါ
-cash_upi_part_payment_due	ငွေသား၊ UPI၊ တစ်စိတ်တစ်ပိုင်း ပေးချေမှု၊ အကြွေးနှင့် ဘောက်ဆူး
-visit_khaynjo_com	khaynjo.com သို့ သွားပါ  →
-kirana_grocery_neighbourhood_shops	လမ်းထိပ်ဆိုင် · ကုန်စုံ · ရပ်ကွက်ဆိုင်များ
-sell_khata_stock_day_book	ရောင်း → အကြွေးစာအုပ် → ကုန်လက်ကျန် → နေ့စဉ်စာရင်း။
-fast_counter_sell_with_short	ကုဒ်တိုဖြင့် ကောင်တာတွင် မြန်မြန် ရောင်းပါ
-customer_credit_and_supplier_dues	ဖောက်သည် အကြွေးနှင့် ပေးသွင်းသူထံ ပေးရန်ငွေ
-buy_into_stock_offline_forever	ကုန်လက်ကျန်ထဲသို့ ဝယ်ပါ — အမြဲတမ်း အော့ဖ်လိုင်း
-visit_kirano_shop	kirano.shop သို့ သွားပါ  →
-chemists_pharmacy_counters	ဆေးဝါးရောင်းသူများ · ဆေးဆိုင် ကောင်တာများ
-medicine_batch_bill_day_close	ဆေး → အသုတ် → ဘေလ် → နေ့စာရင်းပိတ်။
-barcode_and_salt_composition_search	ဘားကုဒ်နှင့် ပါဝင်ဆေးဝါး / ပါဝင်မှုဖြင့် ရှာခြင်း
-batch_and_expiry_alerts_on	ဝယ်ယူမှုများတွင် အသုတ်နှင့် သက်တမ်းကုန်ရက် သတိပေးချက်
-owner_schedule_h_rx_notes	ဆိုင်ပိုင်ရှင်၏ Schedule H / Rx မှတ်ချက်များ — အတုအယောင် ကိုက်ညီမှု မဟုတ်ပါ
-visit_tabiyat_shop	tabiyat.shop သို့ သွားပါ  →
-n_03_your_books_stay_with	03 · သင့်စာရင်းများ သင့်ထံတွင်သာ
-your_books_live_in_your	သင့်စာရင်းများ သင့်ဆိုင်ထဲတွင် ရှိသည်။
-sales_parties_and_the_day	အရောင်း၊ ဖောက်သည်များနှင့် နေ့စဉ်စာရင်းကို သင့်ကောင်တာရှိ စက်ပေါ်တွင် ရေးသည် — သင်ငှားသော ဆာဗာပေါ်တွင် မဟုတ်ပါ။
-on_your_device	သင့်စက်ပေါ်တွင်
-every_sale_payment_and_docket	အရောင်း၊ ပေးချေမှုနှင့် စာရွက်တိုင်းကို သင်ပိုင်သော ကွန်ပျူတာ သို့မဟုတ် တက်ဘလက်ပေါ်တွင် သိမ်းသည်။
-no_account_with_us	ကျွန်ုပ်တို့ထံ အကောင့် မလို
-install_it_and_start_no	ထည့်သွင်းပြီး စတင်ပါ။ စာရင်းသွင်းရန် မလို၊ ကတ်မှတ်ရန် မလို။
-copies_you_keep	သင်သိမ်းထားသော မိတ္တူများ
-save_a_backup_copy_whenever	သင်ကြိုက်သည့်အချိန်တွင် အရန်မိတ္တူကို သိမ်းပါ။ ၎င်းသည် ဖိုင်တစ်ခုဖြစ်ပြီး သင့်ပိုင်ဖြစ်သည်။
-extra_counters_and_tablets_join	အပို ကောင်တာများနှင့် တက်ဘလက်များသည် သင့်ကိုယ်ပိုင် Wi-Fi ဖြင့် ချိတ်သည် — ကြားတွင် အင်တာနက် မလိုပါ။
-n_04_try_it	04 · စမ်းကြည့်ပါ
-pull_the_plug_on_the	အင်တာနက်ကို ဖြုတ်ကြည့်ပါ။
-kumkaj_apps_don_t_phone	Kumkaj အက်ပ်များသည် အလုပ်လုပ်ရန် ဆာဗာသို့ ဆက်သွယ်စရာ မလိုပါ။ အင်တာနက်ကို ဖြတ်ပြီး ကောင်တာတွင် ဘာပြောင်းသလဲ ကြည့်ပါ။
-cut_the_internet	အင်တာနက် ဖြတ်ရန်
-internet_on	အင်တာနက်: ဖွင့်
-book_a_parcel_or_take	ပါဆယ် လက်ခံပါ သို့မဟုတ် အော်ဒါယူပါ
-save_the_bill_or_docket	ဘေလ် သို့မဟုတ် စာရွက်ကို သိမ်းပါ
-day_book_totals	နေ့စဉ်စာရင်း စုစုပေါင်းများ
-find_an_old_sale	ယခင် အရောင်းကို ရှာပါ
-the_internet_is_on_and	အင်တာနက် ဖွင့်ထားသည် — သို့သော် ကောင်တာက မသုံးပါ။
-things_that_leave_the_shop	WhatsApp ပြေစာကဲ့သို့ ဆိုင်မှ ထွက်သွားသော အရာများ ရောက်ရန် အင်တာနက် လိုသေးသည်။
+bills_and_dockets	ဘေ​လ်​များ​နှင့် စာရွက်​များ
+saving	သိမ်း​နေသည်
+day_book	နေ့စဉ်​စာရင်း
+adding_up	ပေါင်း​နေသည်
+nothing_on_this_counter_waits	ဤ​ကောင်တာ​ပေါ်​ရှိ မည်​သည့်​အရာ​မျှ Cloud ကို စောင့်​ရန် မ​လို​ပါ။
+scroll_or_use_the_dots	အပိုင်း​များ​ကြား ခုန်​ရန် ဆွဲ​ပါ သို့မဟုတ် အစက်​များ​ကို သုံး​ပါ။
+n_02_built_for_your_trade	02 · သင့်​လုပ်ငန်း​အတွက် တည်ဆောက်​ထားသည်
+a_desk_for_each_trade	လုပ်ငန်း​တစ်ခုစီ​အတွက် ကောင်တာ​တစ်​ခု။\nခလုတ်​ပါ​သော အ​က်​ပ်​တစ်​ခု မဟုတ်​ပါ။
+not_one_app_with_a	လုပ်ငန်း​ပြောင်း​ခလုတ်​ပါ​သော အ​က်​ပ်​တစ်​ခု မဟုတ်​ပါ။ ထုတ်ကုန်​တစ်ခုစီ​ကို ကောင်တာ အမျိုး​အစား​တစ်​မျိုး​ကို အခြေခံ၍ ထို​လုပ်ငန်း၏ ကိုယ်ပိုင်​စကားလုံး​များ​ဖြင့် ဒီဇိုင်း​ထုတ်ထား​သည်။
+courier_offices_franchise_counters_own	ပါဆယ်​ရုံး​များ · ကိုယ်စားလှယ် ကောင်တာ​များ · ကိုယ်ပိုင် ပို့ဆောင်​သူများ
+book_label_hand_over_track	လက်ခံ → တံဆိပ်​ကပ် → လွှဲ​ပေး → ခြေရာ​ခံ → ရှင်း။
+next_booking_in_one_tap	တစ်​ချက်​နှိပ်​ရုံ​ဖြင့် နောက်ထပ် လက်ခံ​မှု
+actual_or_volumetric_weight_rounded	တ​က​ယ့် သို့မဟုတ် ထုထည် အလေးချိန်၊ သင့်​နည်း​အတိုင်း ပိုင်းဖြတ်
+rider_cash_on_delivery_expected	ပို့ဆောင်​သူ၏ COD — ရ​သင့်ငွေ​နှင့် အပ်​ပြီး​ငွေ နှိုင်းယှဉ်
+visit_moklanjo_com	moklanjo.com သို့ သွား​ပါ  →
+restaurants_caf_s_quick_service	စားသောက်ဆိုင်​များ · ကော်ဖီ​ဆိုင်​များ · အ​မြန်​စား​ဆိုင်​များ · မုန့်​ဆိုင်​များ
+table_kitchen_bill_day_close	စားပွဲ → မီးဖိုချောင် → ဘေ​လ် → နေ့​စာရင်းပိတ်။
+every_table_s_minutes_and	စားပွဲ​တိုင်း၏ မိနစ်​နှင့် ဘေ​လ်​ကို တစ်​ချက်​ကြည့်​ရုံ​ဖြင့်
+one_kot_per_kitchen_station	မီးဖိုချောင်​ဌာန​တစ်​ခု​လျှင် KOT တစ်​စောင် — ဈေးနှုန်း လုံး​ဝ​မ​ပါ
+cash_upi_part_payment_due	ငွေသား၊ UPI၊ တစ်​စိတ်​တစ်ပိုင်း ပေးချေ​မှု၊ အကြွေး​နှင့် ဘောက်​ဆူး
+visit_khaynjo_com	khaynjo.com သို့ သွား​ပါ  →
+kirana_grocery_neighbourhood_shops	လမ်း​ထိပ်​ဆိုင် · ကုန်​စုံ · ရပ်ကွက်​ဆိုင်​များ
+sell_khata_stock_day_book	ရောင်း → အကြွေး​စာအုပ် → ကုန်​လက်ကျန် → နေ့စဉ်​စာရင်း။
+fast_counter_sell_with_short	ကုဒ်​တို​ဖြင့် ကောင်တာ​တွင် မြန်​မြန် ရောင်း​ပါ
+customer_credit_and_supplier_dues	ဖောက်သည် အကြွေး​နှင့် ပေး​သွင်း​သူ​ထံ ပေး​ရန်​ငွေ
+buy_into_stock_offline_forever	ကုန်​လက်ကျန်​ထဲ​သို့ ဝယ်​ပါ — အမြဲတမ်း အော့​ဖ်​လိုင်း
+visit_kirano_shop	kirano.shop သို့ သွား​ပါ  →
+chemists_pharmacy_counters	ဆေးဝါး​ရောင်း​သူများ · ဆေးဆိုင် ကောင်တာ​များ
+medicine_batch_bill_day_close	ဆေး → အသုတ် → ဘေ​လ် → နေ့​စာရင်းပိတ်။
+barcode_and_salt_composition_search	ဘား​ကုဒ်​နှင့် ပါဝင်​ဆေးဝါး / ပါဝင်​မှု​ဖြင့် ရှာ​ခြင်း
+batch_and_expiry_alerts_on	ဝယ်ယူ​မှု​များ​တွင် အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက် သတိပေးချက်
+owner_schedule_h_rx_notes	ဆိုင်​ပိုင်ရှင်၏ Schedule H / Rx မှတ်ချက်​များ — အတုအယောင် ကိုက်​ညီ​မှု မဟုတ်​ပါ
+visit_tabiyat_shop	tabiyat.shop သို့ သွား​ပါ  →
+n_03_your_books_stay_with	03 · သင့်​စာရင်း​များ သင့်​ထံ​တွင်​သာ
+your_books_live_in_your	သင့်​စာရင်း​များ သင့်​ဆိုင်​ထဲ​တွင် ရှိ​သည်။
+sales_parties_and_the_day	အ​ရောင်း၊ ဖောက်သည်​များ​နှင့် နေ့စဉ်​စာရင်း​ကို သင့်​ကောင်တာ​ရှိ စက်​ပေါ်​တွင် ရေး​သည် — သင်​ငှား​သော ဆာ​ဗာ​ပေါ်​တွင် မဟုတ်​ပါ။
+on_your_device	သင့်​စက်​ပေါ်​တွင်
+every_sale_payment_and_docket	အ​ရောင်း၊ ပေးချေ​မှု​နှင့် စာရွက်​တိုင်း​ကို သင်​ပိုင်​သော ကွန်ပျူတာ သို့မဟုတ် တက်​ဘ​လက်​ပေါ်​တွင် သိမ်း​သည်။
+no_account_with_us	ကျွန်ုပ်​တို့​ထံ အ​ကော​င့် မ​လို
+install_it_and_start_no	ထည့်သွင်း​ပြီး စတင်​ပါ။ စာရင်း​သွင်း​ရန် မ​လို၊ ကတ်​မှတ်​ရန် မ​လို။
+copies_you_keep	သင်​သိမ်းထား​သော မိတ္တူ​များ
+save_a_backup_copy_whenever	သင်​ကြိုက်​သည့်​အချိန်​တွင် အရန်​မိတ္တူ​ကို သိမ်း​ပါ။ ၎င်း​သည် ဖိုင်​တစ်​ခု​ဖြစ်​ပြီး သင့်​ပိုင်​ဖြစ်သည်။
+extra_counters_and_tablets_join	အပို ကောင်တာ​များ​နှင့် တက်​ဘ​လက်​များသည် သင့်​ကိုယ်ပိုင် Wi-Fi ဖြင့် ချိတ်​သည် — ကြား​တွင် အင်​တာ​နက် မ​လို​ပါ။
+n_04_try_it	04 · စမ်း​ကြည့်ပါ
+pull_the_plug_on_the	အင်​တာ​နက်​ကို ဖြုတ်​ကြည့်ပါ။
+kumkaj_apps_don_t_phone	Kumkaj အ​က်​ပ်​များသည် အလုပ်​လုပ်​ရန် ဆာ​ဗာ​သို့ ဆက်​သွယ်​စရာ မ​လို​ပါ။ အင်​တာ​နက်​ကို ဖြတ်​ပြီး ကောင်တာ​တွင် ဘာ​ပြောင်း​သလဲ ကြည့်ပါ။
+cut_the_internet	အင်​တာ​နက် ဖြတ်​ရန်
+internet_on	အင်​တာ​နက်: ဖွင့်
+book_a_parcel_or_take	ပါဆယ် လက်ခံ​ပါ သို့မဟုတ် အော်ဒါ​ယူ​ပါ
+save_the_bill_or_docket	ဘေ​လ် သို့မဟုတ် စာရွက်​ကို သိမ်း​ပါ
+day_book_totals	နေ့စဉ်​စာရင်း စုစုပေါင်း​များ
+find_an_old_sale	ယခင် အ​ရောင်း​ကို ရှာ​ပါ
+the_internet_is_on_and	အင်​တာ​နက် ဖွင့်​ထားသည် — သို့သော် ကောင်တာ​က မ​သုံး​ပါ။
+things_that_leave_the_shop	WhatsApp ပြေစာ​ကဲ့သို့ ဆိုင်​မှ ထွက်​သွား​သော အရာ​များ ရောက်​ရန် အင်​တာ​နက် လို​သေး​သည်။
 n_05_price	05 · ဈေးနှုန်း
-free_forever_on_your_devices	သင့်စက်ပစ္စည်းများပေါ်တွင် အမြဲတမ်း အခမဲ့။
-no_charge_per_seat_user	ထိုင်ခုံ၊ အသုံးပြုသူ၊ စားပွဲ၊ ပို့ဆောင်သူ၊ ပါဆယ် သို့မဟုတ် စက်ပေါ်စက်အလိုက် အခ မရှိပါ။ အစမ်းသုံး မဟုတ်ပါ။
-on_your_own_devices	သင့်ကိုယ်ပိုင် စက်များပေါ်တွင်
+free_forever_on_your_devices	သင့်​စက်ပစ္စည်း​များ​ပေါ်​တွင် အမြဲတမ်း အခမဲ့။
+no_charge_per_seat_user	ထိုင်ခုံ၊ အသုံးပြု​သူ၊ စားပွဲ၊ ပို့ဆောင်​သူ၊ ပါဆယ် သို့မဟုတ် စက်​ပေါ်​စက်​အလိုက် အခ မ​ရှိ​ပါ။ အစမ်း​သုံး မဟုတ်​ပါ။
+on_your_own_devices	သင့်​ကိုယ်ပိုင် စက်​များ​ပေါ်​တွင်
 n_0_forever	₹0၊ အမြဲတမ်း
-pay_only_for_what_you	သုံးသလောက်သာ ပေးပါ — လူတိုင်းအတွက် ဈေးနှုန်း တူညီသည်။
-planned	စီစဉ်ထားသည်
-cloud_is_planned_and_optional	Cloud ကို စီစဉ်ထားပြီး ရွေးချယ်နိုင်သည်။ ၎င်းမပါဘဲ ကောင်တာ အလုပ်လုပ်သည်။
-n_06_languages	06 · ဘာသာစကားများ
-speaks_your_staff_s_language	သင့်ဝန်ထမ်းများ၏ ဘာသာစကားကို ပြောသည်။
-the_same_115_language_catalogue	Kumkaj အက်ပ်တိုင်းကဲ့သို့ ဘာသာစကား 115 မျိုးပါ စာရင်းတစ်ခုတည်း — အာရပ်နှင့် အူရဒူကို ညာမှဘယ်သို့။ အောက်တွင် မူရင်းအမည်များ၊ ဟိန္ဒီ၊ ဂူဂျာရတီ၊ တမီးလ်၊ ဘင်္ဂါလီ၊ အူရဒူနှင့် အင်္ဂလိပ်ဖြင့် “အစားအစာ အဆင်သင့်” နမူနာများ:
-same_shaping_engine_as_the	အက်ပ်များနှင့် စာလုံးပုံဖော်စက် တစ်ခုတည်း ဖြစ်သောကြောင့် ဆက်စပ်စာလုံးများနှင့် ညာမှဘယ်စာကြောင်းများ မှန်ကန်စွာ ပေါ်သည်။
-n_07_who_makes_it	07 · မည်သူ ပြုလုပ်သနည်း
-made_under_gotigin	Gotigin အောက်တွင် ပြုလုပ်ထားသည်။
-trademark	ကုန်အမှတ်တံဆိပ်
-memon_for_find_it_pronounced	Memon ဘာသာဖြင့် “ရှာပါ” · အသံထွက် go-tee-geen
+pay_only_for_what_you	သုံး​သလောက်​သာ ပေး​ပါ — လူ​တိုင်း​အတွက် ဈေးနှုန်း တူညီ​သည်။
+planned	စီစဉ်​ထားသည်
+cloud_is_planned_and_optional	Cloud ကို စီစဉ်​ထား​ပြီး ရွေးချယ်​နိုင်သည်။ ၎င်း​မ​ပါ​ဘဲ ကောင်တာ အလုပ်​လုပ်​သည်။
+n_06_languages	06 · ဘာသာစကား​များ
+speaks_your_staff_s_language	သင့်​ဝန်ထမ်း​များ၏ ဘာသာစကား​ကို ပြောသည်။
+the_same_115_language_catalogue	Kumkaj အ​က်​ပ်​တိုင်း​ကဲ့သို့ ဘာသာစကား 115 မျိုး​ပါ စာရင်း​တစ်​ခု​တည်း — အာ​ရပ်​နှင့် အူရဒူ​ကို ညာ​မှ​ဘယ်​သို့။ အောက်​တွင် မူရင်း​အမည်​များ၊ ဟိ​န္ဒီ၊ ဂူ​ဂျာ​ရတီ၊ တ​မီး​လ်၊ ဘင်္ဂါလီ၊ အူရဒူ​နှင့် အင်္ဂလိပ်​ဖြင့် “အစားအစာ အဆင်သင့်” န​မူ​နာ​များ:
+same_shaping_engine_as_the	အ​က်​ပ်​များ​နှင့် စာလုံး​ပုံ​ဖော်​စက် တစ်​ခု​တည်း ဖြစ်​သောကြောင့် ဆက်စပ်​စာလုံး​များ​နှင့် ညာ​မှ​ဘယ်စာ​ကြောင်း​များ မှန်ကန်စွာ ပေါ်သည်။
+n_07_who_makes_it	07 · မည်သူ ပြုလုပ်​သနည်း
+made_under_gotigin	Gotigin အောက်​တွင် ပြုလုပ်​ထားသည်။
+trademark	ကုန်​အမှတ်​တံဆိပ်
+memon_for_find_it_pronounced	Memon ဘာသာ​ဖြင့် “ရှာ​ပါ” · အသံထွက် go-tee-geen
 company	ကုမ္ပဏီ
-brand	အမှတ်တံဆိပ်
-concrete_business_operating_system_apps	တကယ့် လုပ်ငန်းသုံး စနစ် အက်ပ်များ
-products	ထုတ်ကုန်များ
-courier_restaurant_grocery_pharmacy	ပါဆယ်ပို့ဆောင်ရေး · စားသောက်ဆိုင် · ကုန်စုံ · ဆေးဆိုင်
-courier_desk_book_label_hand	ပါဆယ် ကောင်တာ — လက်ခံ၊ တံဆိပ်ကပ်၊ လွှဲပေး၊ ရှင်း။
-restaurant_system_table_kitchen_bill	စားသောက်ဆိုင် စနစ် — စားပွဲ၊ မီးဖိုချောင်၊ ဘေလ်၊ နေ့စာရင်းပိတ်။
-grocery_counter_sell_khata_stock	ကုန်စုံ ကောင်တာ — ရောင်း၊ အကြွေးစာအုပ်၊ ကုန်လက်ကျန်၊ နေ့စဉ်စာရင်း။
-pharmacy_counter_batch_expiry_bill	ဆေးဆိုင် ကောင်တာ — အသုတ်၊ သက်တမ်းကုန်ရက်၊ ဘေလ်၊ နေ့စာရင်းပိတ်။
+brand	အမှတ်​တံဆိပ်
+concrete_business_operating_system_apps	တ​က​ယ့် လုပ်ငန်း​သုံး စနစ် အ​က်​ပ်​များ
+products	ထုတ်ကုန်​များ
+courier_restaurant_grocery_pharmacy	ပါဆယ်​ပို့ဆောင်​ရေး · စားသောက်ဆိုင် · ကုန်​စုံ · ဆေးဆိုင်
+courier_desk_book_label_hand	ပါဆယ် ကောင်တာ — လက်ခံ၊ တံဆိပ်​ကပ်၊ လွှဲ​ပေး၊ ရှင်း။
+restaurant_system_table_kitchen_bill	စားသောက်ဆိုင် စနစ် — စားပွဲ၊ မီးဖိုချောင်၊ ဘေ​လ်၊ နေ့​စာရင်းပိတ်။
+grocery_counter_sell_khata_stock	ကုန်​စုံ ကောင်တာ — ရောင်း၊ အကြွေး​စာအုပ်၊ ကုန်​လက်ကျန်၊ နေ့စဉ်​စာရင်း။
+pharmacy_counter_batch_expiry_bill	ဆေးဆိုင် ကောင်တာ — အသုတ်၊ သက်တမ်း​ကုန်​ရက်၊ ဘေ​လ်၊ နေ့​စာရင်းပိတ်။
 privacy	ကိုယ်ရေးကိုယ်တာ
-terms	စည်းကမ်းချက်များ
-cancellation	ပယ်ဖျက်ခြင်း
+terms	စည်းကမ်း​ချက်​များ
+cancellation	ပယ်ဖျက်​ခြင်း
 cloud_shop	Cloud ဆိုင်
-account	အကောင့်
-chapter_built_for_your_trade	သင့်လုပ်ငန်းအတွက် တည်ဆောက်ထားသည်
-chapter_your_books	သင့်စာရင်းများ
-chapter_try_it_offline	အော့ဖ်လိုင်း စမ်းကြည့်ပါ
+account	အ​ကော​င့်
+chapter_built_for_your_trade	သင့်​လုပ်ငန်း​အတွက် တည်ဆောက်​ထားသည်
+chapter_your_books	သင့်​စာရင်း​များ
+chapter_try_it_offline	အော့​ဖ်​လိုင်း စမ်း​ကြည့်ပါ
 chapter_price	ဈေးနှုန်း
-chapter_languages	ဘာသာစကားများ
-chapter_who_makes_it	မည်သူ ပြုလုပ်သနည်း
-toy_bring_back	အင်တာနက် ပြန်ဖွင့်ပါ
-toy_internet_off	အင်တာနက်: ပိတ်
-toy_verdict_off	အင်တာနက် ပိတ်ထားသည် — ကောင်တာပေါ်တွင် ဘာမှ မပြောင်းပါ။
-acct_page_title	အကောင့် — Kumkaj
-acct_lede	Kumkaj ထုတ်ကုန်တစ်ခုစီတွင် ကိုယ်ပိုင်အကောင့် (နှင့် ကိုယ်ပိုင် Cloud) ရှိသည်။ သင်လုပ်ကိုင်သော လုပ်ငန်းကို ရွေးပါ — ဝင်ရောက်ခြင်းနှင့် ငွေချေခြင်းသည် ထိုထုတ်ကုန်၏ ဆိုက်ပေါ်တွင် ရှိသည်။
-acct_product_accounts	ထုတ်ကုန် အကောင့်များ
-acct_moklanjo_blurb	ပါဆယ် OS အကောင့်
-acct_khaynjo_blurb	စားသောက်ဆိုင် OS အကောင့်
-acct_kirano_blurb	ကုန်စုံ ကောင်တာ အကောင့်
-acct_tabiyat_blurb	ဆေးဆိုင် ကောင်တာ အကောင့်
-acct_open_account	အကောင့် ဖွင့်ရန်
+chapter_languages	ဘာသာစကား​များ
+chapter_who_makes_it	မည်သူ ပြုလုပ်​သနည်း
+toy_bring_back	အင်​တာ​နက် ပြန်ဖွင့်​ပါ
+toy_internet_off	အင်​တာ​နက်: ပိတ်
+toy_verdict_off	အင်​တာ​နက် ပိတ်​ထားသည် — ကောင်တာ​ပေါ်​တွင် ဘာ​မှ မ​ပြောင်း​ပါ။
+acct_page_title	အ​ကော​င့် — Kumkaj
+acct_lede	Kumkaj ထုတ်ကုန်​တစ်ခုစီ​တွင် ကိုယ်ပိုင်​အ​ကော​င့် (နှင့် ကိုယ်ပိုင် Cloud) ရှိ​သည်။ သင်​လုပ်ကိုင်​သော လုပ်ငန်း​ကို ရွေး​ပါ — ဝင်​ရောက်​ခြင်း​နှင့် ငွေချေ​ခြင်း​သည် ထို​ထုတ်ကုန်၏ ဆိုက်​ပေါ်​တွင် ရှိ​သည်။
+acct_product_accounts	ထုတ်ကုန် အ​ကော​င့်​များ
+acct_moklanjo_blurb	ပါဆယ် OS အ​ကော​င့်
+acct_khaynjo_blurb	စားသောက်ဆိုင် OS အ​ကော​င့်
+acct_kirano_blurb	ကုန်​စုံ ကောင်တာ အ​ကော​င့်
+acct_tabiyat_blurb	ဆေးဆိုင် ကောင်တာ အ​ကော​င့်
+acct_open_account	အ​ကော​င့် ဖွင့်​ရန်
 shop_page_title	ဆိုင် — Kumkaj
-shop_lede	နှစ်စဉ် Cloud အစီအစဉ်များ — လုပ်ငန်းတိုင်းအတွက် ပုံစံငါးမျိုး တူညီသည် (အမြဲတမ်း အခမဲ့၊ Steady ₹6,000၊ Swift ₹12,000၊ Priority ₹24,000 / နှစ်၊ အခွန်မပါ၊ သို့မဟုတ် စိတ်ကြိုက် ဈေးနှုန်းအဆို)။ ငွေချေချိန်တွင် အခွန်ထည့်သည်။ ထုတ်ကုန်တစ်ခုစီတွင် ကိုယ်ပိုင်ဆိုင်နှင့် အကောင့် ရှိသည်။
-shop_product_shops	ထုတ်ကုန် Cloud ဆိုင်များ
+shop_lede	နှစ်စဉ် Cloud အစီအစဉ်​များ — လုပ်ငန်း​တိုင်း​အတွက် ပုံစံ​ငါး​မျိုး တူညီ​သည် (အမြဲတမ်း အခမဲ့၊ Steady ₹6,000၊ Swift ₹12,000၊ Priority ₹24,000 / နှစ်၊ အခွန်​မ​ပါ၊ သို့မဟုတ် စိတ်ကြိုက် ဈေးနှုန်း​အဆို)။ ငွေချေ​ချိန်​တွင် အခွန်​ထည့်သည်။ ထုတ်ကုန်​တစ်ခုစီ​တွင် ကိုယ်ပိုင်​ဆိုင်​နှင့် အ​ကော​င့် ရှိ​သည်။
+shop_product_shops	ထုတ်ကုန် Cloud ဆိုင်​များ
 shop_moklanjo_blurb	moklanjo.com အတွက် ပါဆယ် ကောင်တာ Cloud
 shop_khaynjo_blurb	khaynjo.com အတွက် စားသောက်ဆိုင် Cloud
-shop_kirano_blurb	kirano.shop အတွက် ကုန်စုံ ကောင်တာ Cloud
+shop_kirano_blurb	kirano.shop အတွက် ကုန်​စုံ ကောင်တာ Cloud
 shop_tabiyat_blurb	tabiyat.shop အတွက် ဆေးဆိုင် ကောင်တာ Cloud
-shop_open_shop	ဆိုင် ဖွင့်ရန်
+shop_open_shop	ဆိုင် ဖွင့်​ရန်

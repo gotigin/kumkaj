@@ -886,6 +886,14 @@ bulk fill is still running, `KUMKAJ_ALLOW_TRANSLATION_GAPS=1` skips the
 stop — never for a Store / AUR release. Aliases `pt-BR`→`pt`,
 `es-MX`→`es`, `yue`→`zh-Hant`, `gom`→`kok` need no TSV of their own.
 
+### Line breaking and direction (Makepad text, apps and sites)
+
+- `line_break_uax14` — rows wrap at Unicode line break opportunities (UAX #14, the vendored `unicode-linebreak` crate) instead of UAX #29 word boundaries. Punctuation of every script stays with its word (`،` `۔` `।` `。` `、` `»` …; before, only ASCII marks did), a no-break space (U+00A0 / U+202F) really holds, a hyphen or a Tibetan tsheg is a break, and **U+200B (zero-width space) is a break** — the word marker Thai, Lao, Khmer and Burmese copy needs, since UAX #14 has no word dictionary. Tailorings: no row starts with a dash that follows a space (`word —`), « mot » / “quote” keep their spaces and words (UAX #14 15.1 LB15a/b), `₹ 240` / `50 %` stay together, Korean keeps its words whole, and text in those four scripts **without** any U+200B still breaks between grapheme clusters, as before. A space that does not fit still hangs past the row end (it is its own segment).
+- `rtl_paragraph_direction` — a paragraph (text up to a `\n`) that **starts with U+200F RIGHT-TO-LEFT MARK** (or U+061C) is laid out right to left on every row: Latin words and numbers keep their place in the sentence, punctuation stays at the end it belongs to, and the trailing space of a wrapped row hangs on the left. Everything else keeps the left-to-right base (opt-in, so an Arabic customer name in an English list is not reordered). The websites mark their RTL copy this way (`site_i18n::rtl_marks`); the apps do not yet — prefixing each RTL-language string with U+200F in `locale::t` would give them the same order.
+- Word marks: `node scripts/mark-words.mjs <th|lo|km|my> <pack.tsv>…` puts U+200B between words (ICU's dictionary word segmenter, as browsers use; never next to spaces, punctuation, numbers, placeholders, a Khmer coeng or a lone consonant). App and site packs for th / lo / km / my carry them; `check-ui-translations.sh` (apps and `--site`) and the site tests fail on a run of more than 24 letters of those scripts without a mark. Re-run the script after writing new copy in those languages.
+
+Both patches are last in `PATCHES` (2026-11-24); `vendor/makepad/draw/src/text/layouter.rs` has their tests.
+
 ### Websites (khaynjo, moklanjo, kirano, tabiyat, kumkaj.com)
 
 Since 2026-11-23 the sites translate their own copy into the same catalogue —
@@ -940,22 +948,26 @@ languages × 5 sites, no `@@EN@@` row left); `cargo test -p <site>-site` and
   window changes. khaynjo's `fit_top_bar` hides top-bar parts, least needed
   first (section links, wordmark, CTA, Login), until the bar fits; the
   language chip never hides.
-- **Right to left:** keyed text right-aligns. The vendored text stack shapes
-  each wrapped line left-to-right and appends a space that does not fit to
-  the line anyway, so `site_i18n::rtl_marks` adds invisible marks (RLM /
-  word joiner) to RTL copy: line-final punctuation stays with its words,
-  lines meet the right edge, nothing spills past the left edge. Still a
-  vendor limit: Latin words inside an RTL sentence keep left-to-right order
-  between them, and a line can start with ، ۔ or — .
-- **Wrapping limit (vendor):** the layouter breaks lines at UAX #29 word
-  boundaries (`split_word_bounds` in
-  `vendor/makepad/draw/src/text/layouter.rs`). Thai, Lao, Khmer and Burmese
-  do not separate words with spaces, and every character there is such a
-  boundary, so a line can break inside a word. A fix needs both halves:
-  break at UAX #14 opportunities instead (`unicode-linebreak` is already a
-  dependency of makepad-draw, unused) **and** put U+200B (zero-width space)
-  between words in those four packs, since UAX #14 does not segment these
-  scripts either. Not done — vendor/ is not edited from this repo.
+- **Right to left:** keyed text right-aligns, and `site_i18n::rtl_marks`
+  starts every paragraph of RTL copy with U+200F (after a Markdown block
+  marker such as `+ `, which must stay first), so Makepad lays it out right
+  to left (vendor patch `rtl_paragraph_direction`, § Line breaking and
+  direction): Latin words and numbers keep their place in the sentence,
+  ، ۔ . stay at the end of their sentence, rows meet the right edge.
+- **Line breaks:** Makepad wraps at UAX #14 break opportunities (vendor patch
+  `line_break_uax14`): no row starts with ، ۔ । 。 or a dash, no-break
+  spaces hold. Thai, Lao, Khmer and Burmese packs carry U+200B between
+  words (`node scripts/mark-words.mjs <code> sites/<site>/translations/<code>.tsv`),
+  so their rows break between words; the site tests refuse unmarked copy.
+- **Hebrew font:** `resources/fonts/NotoSansHebrew-Regular.ttf` is the static
+  Regular from the notofonts build (overlaps merged). The file it replaced
+  (2026-11-24) was the *variable* font, whose default instance is Thin:
+  Hebrew drew as hairlines, and the letters built from overlapping contours
+  (א ב ו י ש ת …) drew as filled boxes — Makepad's small-text atlas (MSDF)
+  cannot draw overlapping contours. Any new script font: static instance,
+  overlaps removed (`fc-query` / fontTools show `fvar` on a variable font).
+  The apps' `apps/*/resources/fonts/NotoSansHebrew-Regular.ttf` is still the
+  variable file (same fix pending).
 - **Not translated:** legal pages (terms / privacy / cancellation) stay
   English; mock-up receipts / tickets and product names are `UI_SKIP`. The
   account / shop pages' script messages (status, errors, prices) are keys
@@ -1009,7 +1021,9 @@ when you add copy)
    <code>` prints the apps' words for that language, `status` counts what
    is left per language.
    Changed zh / zh-Hant / ja / ko rows: `./scripts/site-cjk-font.sh <site>`
-   (the CJK faces are cut to the packs' characters).
+   (the CJK faces are cut to the packs' characters). Changed th / lo / km /
+   my rows: `node scripts/mark-words.mjs <code> sites/*/translations/<code>.tsv`
+   (word marks; the tests fail without them).
 4. Look at it: `PORT=… ./sites/<site>/scripts/preview-web.sh`, open
    `http://127.0.0.1:<port>/#l=hi` and an RTL language (`#l=ur`), phone
    width included.

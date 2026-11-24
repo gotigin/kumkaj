@@ -1,254 +1,254 @@
 # Lao — ລາວ (lo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ຕົວຢ່າງ
 length	ຍາວ
-download_free	ດາວໂຫຼດຟຣີ
-whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອຂໍເບິ່ງຕົວຢ່າງ
-free_on_android_windows_and	ຟຣີເທິງ Android, Windows ແລະ Linux
-courier_operating_system	ລະບົບຈັດການງານຂົນສົ່ງພັດສະດຸ
-parcel_journey	ເສັ້ນທາງພັດສະດຸ
-walk_in	ລູກຄ້າໜ້າຮ້ານ
+download_free	ດາວ​ໂຫຼ​ດຟຣີ
+whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ
+free_on_android_windows_and	ຟຣີ​ເທິງ Android, Windows ແລະ Linux
+courier_operating_system	ລະບົບ​ຈັດການ​ງານ​ຂົນສົ່ງ​ພັດສະດຸ
+parcel_journey	ເສັ້ນທາງ​ພັດສະດຸ
+walk_in	ລູກຄ້າ​ໜ້າ​ຮ້ານ
 weigh	ຊັ່ງ
 price	ລາຄາ
 label	ປ້າຍ
 hand_over	ມອບ
 track	ຕິດຕາມ
-offline	ອອບລາຍ
+offline	ອອບ​ລາຍ
 start	ເລີ່ມ
-moklanjo_courier_operating_system	MOKLANJO · ລະບົບຈັດການງານຂົນສົ່ງພັດສະດຸ
-book_move_and_settle_every	ຮັບຝາກ ຂົນສົ່ງ ແລະ ສະສາງທຸກພັດສະດຸ — ລະບົບຂົນສົ່ງພັດສະດຸດຽວເທິງອຸປະກອນຂອງທ່ານເອງ
-parties_books_cod_labels_awb	ຝ່າຍ ບັນຊີ COD ປ້າຍ ຄັງເລກ AWB ການຕິດຕາມ ຜູ້ສົ່ງເຄື່ອງ ແລະ ການວາງບິນ — ວົງຈອນຄົບຈາກເຄົາເຕີຈົນສະສາງ ຈະມີອິນເຕີເນັດ ຫຼື ບໍ່ກໍຕາມ ຟຣີເທິງອຸປະກອນຂອງທ່ານ
-the_walk_in_loop	ວົງຈອນລູກຄ້າໜ້າຮ້ານ
-actual_and_volumetric_side_by	ນ້ຳໜັກຈິງ ແລະ ນ້ຳໜັກຕາມປະລິມາດ ວາງທຽບກັນ
-charge	ຄ່າສົ່ງ
-your_rate_card_cash_or	ຕາມຕາຕະລາງລາຄາຂອງທ່ານ ເງິນສົດ ຫຼື ລົງບັນຊີ
-next_booking	ຮັບຝາກລາຍການຕໍ່ໄປ
-one_tap_clears_the_counter	ແຕະເທື່ອດຽວ ເຄົາເຕີກໍພ້ອມຮັບລູກຄ້າຄົນຕໍ່ໄປ
-scroll_the_parcel_journey_rail	ເລື່ອນລົງ — ແຖບເສັ້ນທາງພັດສະດຸດ້ານເທິງບອກວ່າທ່ານຢູ່ບ່ອນໃດຂອງເລື່ອງ
-n_2_weigh_it_right	2 · ຊັ່ງໃຫ້ຖືກ
-actual_or_volumetric_whichever_is	ນ້ຳໜັກຈິງ ຫຼື ຕາມປະລິມາດ — ໃຊ້ຄ່າທີ່ຫຼາຍກວ່າ ປັດຕາມແບບຂອງທ່ານ
-try_a_box	ລອງກ່ອງ
-domestic	ພາຍໃນປະເທດ
+moklanjo_courier_operating_system	MOKLANJO · ລະບົບ​ຈັດການ​ງານ​ຂົນສົ່ງ​ພັດສະດຸ
+book_move_and_settle_every	ຮັບ​ຝາກ ຂົນສົ່ງ ແລະ ສະສາງ​ທຸກ​ພັດສະດຸ — ລະບົບ​ຂົນສົ່ງ​ພັດສະດຸ​ດຽວ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ
+parties_books_cod_labels_awb	ຝ່າຍ ບັນຊີ COD ປ້າຍ ຄັງ​ເລກ AWB ການຕິດຕາມ ຜູ້​ສົ່ງ​ເຄື່ອງ ແລະ ການວາງ​ບິນ — ວົງຈອນ​ຄົບ​ຈາກ​ເຄົາ​ເຕີ​ຈົນ​ສະສາງ ຈະ​ມີ​ອິນ​ເຕີ​ເນັດ ຫຼື ບໍ່​ກໍຕາມ ຟຣີ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+the_walk_in_loop	ວົງຈອນ​ລູກຄ້າ​ໜ້າ​ຮ້ານ
+actual_and_volumetric_side_by	ນ້ຳ​ໜັກ​ຈິງ ແລະ ນ້ຳ​ໜັກ​ຕາມ​ປະລິ​ມາດ ວາງ​ທຽບ​ກັນ
+charge	ຄ່າ​ສົ່ງ
+your_rate_card_cash_or	ຕາມ​ຕາຕະລາງ​ລາຄາ​ຂອງ​ທ່ານ ເງິນສົດ ຫຼື ລົງ​ບັນຊີ
+next_booking	ຮັບ​ຝາກ​ລາຍການ​ຕໍ່ໄປ
+one_tap_clears_the_counter	ແຕະ​ເທື່ອ​ດຽວ ເຄົາ​ເຕີ​ກໍ​ພ້ອມ​ຮັບ​ລູກຄ້າ​ຄົນ​ຕໍ່ໄປ
+scroll_the_parcel_journey_rail	ເລື່ອນ​ລົງ — ແຖບ​ເສັ້ນທາງ​ພັດສະດຸ​ດ້ານເທິງ​ບອກວ່າ​ທ່ານ​ຢູ່​ບ່ອນໃດ​ຂອງ​ເລື່ອງ
+n_2_weigh_it_right	2 · ຊັ່ງ​ໃຫ້​ຖືກ
+actual_or_volumetric_whichever_is	ນ້ຳ​ໜັກ​ຈິງ ຫຼື ຕາມ​ປະລິ​ມາດ — ໃຊ້​ຄ່າ​ທີ່​ຫຼາຍກວ່າ ປັດ​ຕາມ​ແບບ​ຂອງ​ທ່ານ
+try_a_box	ລອງ​ກ່ອງ
+domestic	ພາຍໃນ​ປະເທດ
 international	ຕ່າງປະເທດ
 breadth	ກວ້າງ
 height	ສູງ
-weight_on_the_scale	ນ້ຳໜັກເທິງຊິງ
-chargeable_weight	ນ້ຳໜັກທີ່ຄິດຄ່າສົ່ງ
-the_box_s_size_sets	ຂະໜາດກ່ອງເປັນຕົວກຳນົດຄ່າສົ່ງ
-higher_of_the_two_rounded	ໃຊ້ຄ່າທີ່ຫຼາຍກວ່າ ແລ້ວປັດຂຶ້ນເປັນ 0.5 kg ຕໍ່ໄປ
-in_the_app_the_divisor	ໃນແອັບ ຮ້ານກຳນົດຕົວຫານ ຂັ້ນການປັດ ແລະ ຫົວໜ່ວຍ (cm ຫຼື ນິ້ວ kg ຫຼື ປອນ) ໄດ້ເອງ ປຸ່ມຕ່າງປະເທດສະຫຼັບເປັນ ÷6000 ສຳລັບລາຍການດຽວໂດຍບໍ່ຕ້ອງແຕະການຕັ້ງຄ່າ
-n_3_price_it	3 · ຕັ້ງລາຄາ
-your_rate_cards_your_party	ຕາຕະລາງລາຄາຂອງທ່ານ ລາຄາສະເພາະຝ່າຍ — ແລະ ກຳໄລຂອງທ່ານໃນທຸກໃບຮັບຝາກ
-rate_card	ຕາຕະລາງລາຄາ
+weight_on_the_scale	ນ້ຳ​ໜັກ​ເທິງ​ຊິງ
+chargeable_weight	ນ້ຳ​ໜັກ​ທີ່​ຄິດ​ຄ່າ​ສົ່ງ
+the_box_s_size_sets	ຂະໜາດ​ກ່ອງ​ເປັນ​ຕົວ​ກຳນົດ​ຄ່າ​ສົ່ງ
+higher_of_the_two_rounded	ໃຊ້​ຄ່າ​ທີ່​ຫຼາຍກວ່າ ແລ້ວ​ປັດ​ຂຶ້ນ​ເປັນ 0.5 kg ຕໍ່ໄປ
+in_the_app_the_divisor	ໃນ​ແອັບ ຮ້ານ​ກຳນົດ​ຕົວຫານ ຂັ້ນ​ການ​ປັດ ແລະ ຫົວໜ່ວຍ (cm ຫຼື ນິ້ວ kg ຫຼື ປອນ) ໄດ້​ເອງ ປຸ່ມ​ຕ່າງປະເທດ​ສະຫຼັບ​ເປັນ ÷6000 ສຳລັບ​ລາຍການ​ດຽວ​ໂດຍ​ບໍ່​ຕ້ອງ​ແຕະ​ການຕັ້ງ​ຄ່າ
+n_3_price_it	3 · ຕັ້ງ​ລາຄາ
+your_rate_cards_your_party	ຕາຕະລາງ​ລາຄາ​ຂອງ​ທ່ານ ລາຄາ​ສະເພາະ​ຝ່າຍ — ແລະ ກຳໄລ​ຂອງ​ທ່ານ​ໃນ​ທຸກ​ໃບຮັບ​ຝາກ
+rate_card	ຕາຕະລາງ​ລາຄາ
 zone_service	ໂຊນ · ບໍລິການ
 first_0_5_kg	0.5 kg ທຳອິດ
 each_0_5_kg	ທຸກ 0.5 kg
-local_surface	ໃນເມືອງ · ທາງບົກ
-within_state_express	ໃນແຂວງ · ດ່ວນ
-metro_air	ເມືອງໃຫຍ່ · ທາງອາກາດ
-zone_service_weight_slab	ໂຊນ × ບໍລິການ × ຂັ້ນນ້ຳໜັກ
-first_slab_and_each_extra	ຂັ້ນທຳອິດ ແລະ ຂັ້ນເພີ່ມແຕ່ລະຂັ້ນ ຕາມໂຊນ ແລະ ບໍລິການ
-a_consignor_s_own_card	ຕາຕະລາງລາຄາສະເພາະຂອງຜູ້ສົ່ງ
-regular_senders_get_their_rates	ຜູ້ສົ່ງປະຈຳໄດ້ລາຄາຂອງຕົນເອງ ຕາຕະລາງລາຄາເລີ່ມຕົ້ນໃຊ້ກັບຄົນອື່ນທັງໝົດ
-margin_at_the_desk	ເຫັນກຳໄລທີ່ເຄົາເຕີ
-your_sell_price_against_the	ລາຄາຂາຍຂອງທ່ານທຽບກັບລາຄາຂອງບໍລິສັດຂົນສົ່ງ ໃນທຸກໃບຮັບຝາກ
-n_4_label_it	4 · ຕິດປ້າຍ
-awb_from_your_own_number	ເລກ AWB ຈາກຄັງເລກຂອງທ່ານເອງ ຕິດປ້າຍ ສະແກນ ຄົ້ນຫາ
-number_pools_per_carrier	ຄັງເລກແຍກຕາມບໍລິສັດຂົນສົ່ງ
-enter_each_carrier_s_start	ປ້ອນຊ່ວງເລກເລີ່ມ–ສິ້ນສຸດຂອງບໍລິສັດຂົນສົ່ງແຕ່ລະແຫ່ງເທື່ອດຽວ ທຸກການຮັບຝາກຈະໃຊ້ເລກຕໍ່ໄປ
+local_surface	ໃນ​ເມືອງ · ທາງ​ບົກ
+within_state_express	ໃນ​ແຂວງ · ດ່ວນ
+metro_air	ເມືອງ​ໃຫຍ່ · ທາງ​ອາກາດ
+zone_service_weight_slab	ໂຊນ × ບໍລິການ × ຂັ້ນ​ນ້ຳ​ໜັກ
+first_slab_and_each_extra	ຂັ້ນ​ທຳອິດ ແລະ ຂັ້ນ​ເພີ່ມ​ແຕ່ລະ​ຂັ້ນ ຕາມ​ໂຊນ ແລະ ບໍລິການ
+a_consignor_s_own_card	ຕາຕະລາງ​ລາຄາ​ສະເພາະ​ຂອງ​ຜູ້​ສົ່ງ
+regular_senders_get_their_rates	ຜູ້​ສົ່ງ​ປະຈຳ​ໄດ້​ລາຄາ​ຂອງ​ຕົນເອງ ຕາຕະລາງ​ລາຄາ​ເລີ່ມຕົ້ນ​ໃຊ້​ກັບ​ຄົນອື່ນ​ທັງໝົດ
+margin_at_the_desk	ເຫັນ​ກຳໄລ​ທີ່​ເຄົາ​ເຕີ
+your_sell_price_against_the	ລາຄາ​ຂາຍ​ຂອງ​ທ່ານ​ທຽບ​ກັບ​ລາຄາ​ຂອງ​ບໍລິສັດ​ຂົນສົ່ງ ໃນ​ທຸກ​ໃບຮັບ​ຝາກ
+n_4_label_it	4 · ຕິດ​ປ້າຍ
+awb_from_your_own_number	ເລກ AWB ຈາກ​ຄັງ​ເລກ​ຂອງ​ທ່ານ​ເອງ ຕິດ​ປ້າຍ ສະ​ແກນ ຄົ້ນຫາ
+number_pools_per_carrier	ຄັງ​ເລກ​ແຍກ​ຕາມ​ບໍລິສັດ​ຂົນສົ່ງ
+enter_each_carrier_s_start	ປ້ອນ​ຊ່ວງ​ເລກ​ເລີ່ມ–ສິ້ນສຸດ​ຂອງ​ບໍລິສັດ​ຂົນສົ່ງ​ແຕ່ລະ​ແຫ່ງ​ເທື່ອ​ດຽວ ທຸກ​ການຮັບ​ຝາກ​ຈະ​ໃຊ້​ເລກ​ຕໍ່ໄປ
 code_128_labels	ປ້າຍ Code 128
-the_awb_goes_on_the	ເລກ AWB ພິມເທິງກ່ອງເປັນບາໂຄດ ແລະ ຕົວເລກທຳມະດາ
-scan_to_find	ສະແກນເພື່ອຄົ້ນຫາ
-scan_a_label_to_open	ສະແກນປ້າຍເພື່ອເປີດໃບຮັບຝາກແລ້ວດຳເນີນການຕໍ່
+the_awb_goes_on_the	ເລກ AWB ພິມ​ເທິງ​ກ່ອງ​ເປັນ​ບາ​ໂຄດ ແລະ ຕົວ​ເລກ​ທຳມະດາ
+scan_to_find	ສະ​ແກນ​ເພື່ອ​ຄົ້ນຫາ
+scan_a_label_to_open	ສະ​ແກນ​ປ້າຍ​ເພື່ອ​ເປີດ​ໃບຮັບ​ຝາກ​ແລ້ວ​ດຳເນີນ​ການ​ຕໍ່
 n_5_hand_over	5 · ມອບ
-hand_it_to_a_carrier	ມອບໃຫ້ບໍລິສັດຂົນສົ່ງ ຫຼື ສົ່ງຜູ້ສົ່ງເຄື່ອງຂອງທ່ານເອງ ລະບົບດຽວກັນ
-into_a_carrier_bag	ໃສ່ຖົງຂອງບໍລິສັດຂົນສົ່ງ
-the_manifest_holds_exactly_the	ໃບລາຍການມີສະເພາະພັດສະດຸທີ່ທ່ານເລືອກເທົ່ານັ້ນ — ທັງໝົດ ຫຼື ບໍ່ມີເລີຍ ພັດສະດຸທີ່ຮັບຝາກກັບບໍລິສັດຂົນສົ່ງອື່ນຫຼຸດເຂົ້າຖົງນີ້ບໍ່ໄດ້
-onto_your_own_rider_s	ເຂົ້າຮອບສົ່ງຂອງຜູ້ສົ່ງເຄື່ອງຂອງທ່ານ
-pick_the_parcels_print_the	ເລືອກພັດສະດຸ ພິມໃບຮອບສົ່ງ ແລ້ວຜູ້ສົ່ງເຄື່ອງເຮັດວຽກຈາກແອັບດຽວກັນໃນໂໝດຜູ້ສົ່ງເຄື່ອງ — ມີຫຼັກຖານການສົ່ງນຳ
+hand_it_to_a_carrier	ມອບໃຫ້​ບໍລິສັດ​ຂົນສົ່ງ ຫຼື ສົ່ງ​ຜູ້​ສົ່ງ​ເຄື່ອງຂອງ​ທ່ານ​ເອງ ລະບົບ​ດຽວກັນ
+into_a_carrier_bag	ໃສ່​ຖົງ​ຂອງ​ບໍລິສັດ​ຂົນສົ່ງ
+the_manifest_holds_exactly_the	ໃບ​ລາຍການ​ມີ​ສະເພາະ​ພັດສະດຸ​ທີ່​ທ່ານ​ເລືອກ​ເທົ່ານັ້ນ — ທັງໝົດ ຫຼື ບໍ່ມີ​ເລີຍ ພັດສະດຸ​ທີ່​ຮັບ​ຝາກ​ກັບ​ບໍລິສັດ​ຂົນສົ່ງ​ອື່ນ​ຫຼຸດ​ເຂົ້າຖົງ​ນີ້​ບໍ່ໄດ້
+onto_your_own_rider_s	ເຂົ້າ​ຮອບ​ສົ່ງ​ຂອງ​ຜູ້​ສົ່ງ​ເຄື່ອງຂອງ​ທ່ານ
+pick_the_parcels_print_the	ເລືອກ​ພັດສະດຸ ພິມ​ໃບ​ຮອບ​ສົ່ງ ແລ້ວ​ຜູ້​ສົ່ງ​ເຄື່ອງ​ເຮັດວຽກ​ຈາກ​ແອັບ​ດຽວ​ກັນ​ໃນ​ໂໝດ​ຜູ້​ສົ່ງ​ເຄື່ອງ — ມີ​ຫຼັກຖານ​ການ​ສົ່ງ​ນຳ
 n_6_track_and_prove	6 · ຕິດຕາມ ແລະ ພິສູດ
-every_move_recorded_and_only	ທຸກການເຄື່ອນໄຫວຖືກບັນທຶກ — ແລະ ສະເພາະທີ່ສົມເຫດສົມຜົນເທົ່ານັ້ນ
-booked	ຮັບຝາກແລ້ວ
-with_carrier	ຢູ່ກັບບໍລິສັດຂົນສົ່ງ
-out_for_delivery	ອອກສົ່ງແລ້ວ
-delivered	ສົ່ງເຖິງແລ້ວ
-booked_with_carrier_out_for	ຮັບຝາກແລ້ວ → ຢູ່ກັບບໍລິສັດຂົນສົ່ງ → ອອກສົ່ງແລ້ວ → ສົ່ງເຖິງແລ້ວ
-failed	ສົ່ງບໍ່ສຳເລັດ
-reason_out_again_or_return	→ ເຫດຜົນ → ອອກສົ່ງອີກຄັ້ງ ຫຼື ສົ່ງຄືນຜູ້ສົ່ງ
-impossible_moves_refused	ປະຕິເສດການເຄື່ອນໄຫວທີ່ເປັນໄປບໍ່ໄດ້
-delivered_returned_and_cancelled	ສົ່ງເຖິງແລ້ວ ສົ່ງຄືນ ແລະ ຍົກເລີກ ເປັນສະຖານະສຸດທ້າຍ
-proof_of_delivery	ຫຼັກຖານການສົ່ງ
-a_photo_and_the_receiver	ຮູບຖ່າຍ ແລະ ລາຍເຊັນຜູ້ຮັບໃນໃບຮັບຝາກ
-failed_deliveries	ການສົ່ງທີ່ບໍ່ສຳເລັດ
-reasons_attempts_out_again_or	ເຫດຜົນ ຈຳນວນເທື່ອທີ່ສົ່ງ ອອກສົ່ງອີກຄັ້ງ ຫຼື ສົ່ງຄືນຜູ້ສົ່ງ
-n_7_money_comes_home	7 · ເງິນກັບບ້ານ
-cod_you_can_see_expected	COD ທີ່ເບິ່ງເຫັນໄດ້: ຍອດທີ່ຄວນໄດ້ ຍອດທີ່ສົ່ງແລ້ວ ຍອດຄ້າງຈ່າຍໃຫ້ຜູ້ສົ່ງແຕ່ລະຄົນ
-rider_cash_end_of_run	ເງິນສົດຂອງຜູ້ສົ່ງເຄື່ອງ ເມື່ອຈົບຮອບ
-rider	ຜູ້ສົ່ງເຄື່ອງ
-expected	ຍອດທີ່ຄວນໄດ້
-handed_in	ຍອດທີ່ສົ່ງແລ້ວ
+every_move_recorded_and_only	ທຸກ​ການເຄື່ອນໄຫວ​ຖືກ​ບັນທຶກ — ແລະ ສະເພາະ​ທີ່​ສົມເຫດສົມຜົນ​ເທົ່ານັ້ນ
+booked	ຮັບ​ຝາກ​ແລ້ວ
+with_carrier	ຢູ່​ກັບ​ບໍລິສັດ​ຂົນສົ່ງ
+out_for_delivery	ອອກ​ສົ່ງ​ແລ້ວ
+delivered	ສົ່ງ​ເຖິງ​ແລ້ວ
+booked_with_carrier_out_for	ຮັບ​ຝາກ​ແລ້ວ → ຢູ່​ກັບ​ບໍລິສັດ​ຂົນສົ່ງ → ອອກ​ສົ່ງ​ແລ້ວ → ສົ່ງ​ເຖິງ​ແລ້ວ
+failed	ສົ່ງ​ບໍ່​ສຳເລັດ
+reason_out_again_or_return	→ ເຫດຜົນ → ອອກ​ສົ່ງ​ອີກ​ຄັ້ງ ຫຼື ສົ່ງ​ຄືນ​ຜູ້​ສົ່ງ
+impossible_moves_refused	ປະຕິເສດ​ການເຄື່ອນໄຫວ​ທີ່​ເປັນ​ໄປ​ບໍ່ໄດ້
+delivered_returned_and_cancelled	ສົ່ງ​ເຖິງ​ແລ້ວ ສົ່ງ​ຄືນ ແລະ ຍົກເລີກ ເປັນ​ສະຖານະ​ສຸດທ້າຍ
+proof_of_delivery	ຫຼັກຖານ​ການ​ສົ່ງ
+a_photo_and_the_receiver	ຮູບ​ຖ່າຍ ແລະ ລາຍ​ເຊັນ​ຜູ້ຮັບ​ໃນ​ໃບຮັບ​ຝາກ
+failed_deliveries	ການ​ສົ່ງ​ທີ່​ບໍ່​ສຳເລັດ
+reasons_attempts_out_again_or	ເຫດຜົນ ຈຳນວນ​ເທື່ອ​ທີ່​ສົ່ງ ອອກ​ສົ່ງ​ອີກ​ຄັ້ງ ຫຼື ສົ່ງ​ຄືນ​ຜູ້​ສົ່ງ
+n_7_money_comes_home	7 · ເງິນ​ກັບບ້ານ
+cod_you_can_see_expected	COD ທີ່​ເບິ່ງເຫັນ​ໄດ້: ຍອດ​ທີ່​ຄວນ​ໄດ້ ຍອດ​ທີ່​ສົ່ງ​ແລ້ວ ຍອດ​ຄ້າງ​ຈ່າຍ​ໃຫ້​ຜູ້​ສົ່ງ​ແຕ່ລະ​ຄົນ
+rider_cash_end_of_run	ເງິນສົດ​ຂອງ​ຜູ້​ສົ່ງ​ເຄື່ອງ ເມື່ອ​ຈົບ​ຮອບ
+rider	ຜູ້​ສົ່ງ​ເຄື່ອງ
+expected	ຍອດ​ທີ່​ຄວນ​ໄດ້
+handed_in	ຍອດ​ທີ່​ສົ່ງ​ແລ້ວ
 a_14_drops	A · ສົ່ງ 14 ຈຸດ
 b_9_drops	B · ສົ່ງ 9 ຈຸດ
-short_200_on_rider_b	ຜູ້ສົ່ງເຄື່ອງ B ຂາດ ₹ 200 — ລະບຸຊື່ຊັດເຈນ ບໍ່ຫາຍໄປໃນຍອດລວມ
+short_200_on_rider_b	ຜູ້​ສົ່ງ​ເຄື່ອງ B ຂາດ ₹ 200 — ລະບຸຊື່​ຊັດເຈນ ບໍ່​ຫາຍໄປ​ໃນ​ຍອດ​ລວມ
 cod_register	ທະບຽນ COD
-collected_against_paid_out_per	ຍອດທີ່ເກັບໄດ້ທຽບກັບຍອດທີ່ຈ່າຍອອກ ແຍກຕາມຜູ້ສົ່ງ ພ້ອມຮອບການໂອນເງິນ
-rider_settlement	ສະສາງຍອດຜູ້ສົ່ງເຄື່ອງ
-expected_against_handed_in_and	ຍອດທີ່ຄວນໄດ້ທຽບກັບຍອດທີ່ສົ່ງແລ້ວ ພ້ອມໃບຄ່ານາຍໜ້າ
-books_that_close	ບັນຊີທີ່ປິດໄດ້ແທ້
-day_book_month_bill_per	ປຶ້ມມື້ ໃບບິນລາຍເດືອນແຍກຕາມບັນຊີ ແລະ ໄຟລ໌ CSV ສະຫຼຸບ GST ສຳລັບນັກບັນຊີຂອງທ່ານ
-n_8_internet_down	8 · ອິນເຕີເນັດລົ້ມ?
-keep_booking	ຮັບຝາກຕໍ່ໄປໄດ້ເລີຍ
-booking_labels_scanning_cod_and	ການຮັບຝາກ ປ້າຍ ການສະແກນ COD ແລະ ບັນຊີ ເຮັດວຽກເທິງອຸປະກອນຂອງທ່ານທັງໝົດ ເມື່ອອິນເຕີເນັດຫຼຸດ ບໍ່ມີຫຍັງທີ່ເຄົາເຕີຕ້ອງລໍຖ້າ
-office_router_no_internet	ເຣົາເຕີໃນຫ້ອງການ: ບໍ່ມີອິນເຕີເນັດ
-desk_still_booking	ເຄົາເຕີ: ຍັງຮັບຝາກຢູ່
-second_counter_and_rider_phone	ເຄົາເຕີທີສອງ ແລະ ໂທລະສັບຜູ້ສົ່ງເຄື່ອງ: ເຊື່ອມຜ່ານ Wi-Fi ຂອງຫ້ອງການ
-free_forever_on_your_devices	ຟຣີຕະຫຼອດໄປເທິງອຸປະກອນຂອງທ່ານ
-nothing_per_rider_user_or	ບໍ່ຄິດເງິນຕາມຜູ້ສົ່ງເຄື່ອງ ຜູ້ໃຊ້ ຫຼື ພັດສະດຸ Kumkaj Cloud ທີ່ເລືອກໃຊ້ໄດ້: Steady ₹6k · Swift ₹12k · Priority ₹24k/ປີ ບໍ່ລວມພາສີ — /shop
+collected_against_paid_out_per	ຍອດ​ທີ່​ເກັບ​ໄດ້​ທຽບ​ກັບ​ຍອດ​ທີ່​ຈ່າຍ​ອອກ ແຍກ​ຕາມ​ຜູ້​ສົ່ງ ພ້ອມ​ຮອບ​ການ​ໂອນ​ເງິນ
+rider_settlement	ສະສາງ​ຍອດ​ຜູ້​ສົ່ງ​ເຄື່ອງ
+expected_against_handed_in_and	ຍອດ​ທີ່​ຄວນ​ໄດ້​ທຽບ​ກັບ​ຍອດ​ທີ່​ສົ່ງ​ແລ້ວ ພ້ອມ​ໃບ​ຄ່າ​ນາຍໜ້າ
+books_that_close	ບັນຊີ​ທີ່​ປິດ​ໄດ້​ແທ້
+day_book_month_bill_per	ປຶ້ມ​ມື້ ໃບ​ບິນ​ລາຍເດືອນ​ແຍກ​ຕາມ​ບັນຊີ ແລະ ໄຟລ໌ CSV ສະຫຼຸບ GST ສຳລັບ​ນັກ​ບັນຊີ​ຂອງ​ທ່ານ
+n_8_internet_down	8 · ອິນ​ເຕີ​ເນັດ​ລົ້ມ?
+keep_booking	ຮັບ​ຝາກ​ຕໍ່ໄປ​ໄດ້​ເລີຍ
+booking_labels_scanning_cod_and	ການຮັບ​ຝາກ ປ້າຍ ການ​ສະ​ແກນ COD ແລະ ບັນຊີ ເຮັດວຽກ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ທັງໝົດ ເມື່ອ​ອິນ​ເຕີ​ເນັດ​ຫຼຸດ ບໍ່ມີ​ຫຍັງ​ທີ່​ເຄົາ​ເຕີ​ຕ້ອງ​ລໍຖ້າ
+office_router_no_internet	ເຣົາ​ເຕີ​ໃນ​ຫ້ອງການ: ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ
+desk_still_booking	ເຄົາ​ເຕີ: ຍັງ​ຮັບ​ຝາກ​ຢູ່
+second_counter_and_rider_phone	ເຄົາ​ເຕີ​ທີ​ສອງ ແລະ ໂທລະສັບ​ຜູ້​ສົ່ງ​ເຄື່ອງ: ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ຫ້ອງການ
+free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+nothing_per_rider_user_or	ບໍ່​ຄິດ​ເງິນ​ຕາມ​ຜູ້​ສົ່ງ​ເຄື່ອງ ຜູ້​ໃຊ້ ຫຼື ພັດສະດຸ Kumkaj Cloud ທີ່​ເລືອກ​ໃຊ້​ໄດ້: Steady ₹6k · Swift ₹12k · Priority ₹24k/ປີ ບໍ່​ລວມ​ພາສີ — /shop
 n_9_start	9 · ເລີ່ມ
-one_courier_os_your_parcels	ລະບົບຂົນສົ່ງພັດສະດຸດຽວ ພັດສະດຸຂອງທ່ານ ບັນຊີຂອງທ່ານ
-moklanjo_is_a_complete_courier	Moklanjo ແມ່ນລະບົບຈັດການງານຂົນສົ່ງພັດສະດຸຄົບວົງຈອນພາຍໃຕ້ Kumkaj — Android, Windows ແລະ Linux ຜູ້ສົ່ງເຄື່ອງໃຊ້ແອັບດຽວກັນໃນໂໝດຜູ້ສົ່ງເຄື່ອງ
+one_courier_os_your_parcels	ລະບົບ​ຂົນສົ່ງ​ພັດສະດຸ​ດຽວ ພັດສະດຸ​ຂອງ​ທ່ານ ບັນຊີ​ຂອງ​ທ່ານ
+moklanjo_is_a_complete_courier	Moklanjo ແມ່ນ​ລະບົບ​ຈັດການ​ງານ​ຂົນສົ່ງ​ພັດສະດຸ​ຄົບວົງຈອນ​ພາຍໃຕ້ Kumkaj — Android, Windows ແລະ Linux ຜູ້​ສົ່ງ​ເຄື່ອງ​ໃຊ້​ແອັບ​ດຽວ​ກັນ​ໃນ​ໂໝດ​ຜູ້​ສົ່ງ​ເຄື່ອງ
 trademark	ເຄື່ອງໝາຍການຄ້າ
-memon_for_find_it_pronounced	ພາສາ Memon ແປວ່າ “ຊອກຫາມັນ” · ອ່ານວ່າ go-tee-geen
+memon_for_find_it_pronounced	ພາສາ Memon ແປ​ວ່າ “ຊອກຫາ​ມັນ” · ອ່ານ​ວ່າ go-tee-geen
 company	ບໍລິສັດ
 brand	ແບຣນ
-concrete_business_operating_system	ແອັບລະບົບປະຕິບັດການທຸລະກິດທີ່ໃຊ້ງານໄດ້ແທ້
+concrete_business_operating_system	ແອັບ​ລະບົບ​ປະຕິບັດການ​ທຸລະກິດ​ທີ່​ໃຊ້ງານ​ໄດ້​ແທ້
 product	ຜະລິດຕະພັນ
-courier_operating_system_under	ລະບົບຈັດການງານຂົນສົ່ງພັດສະດຸພາຍໃຕ້ Kumkaj
-privacy	ຄວາມເປັນສ່ວນຕົວ
-terms	ຂໍ້ກຳນົດ
-cancellation	ການຍົກເລີກ
-cloud_shop	ຮ້ານຄ້າຄລາວ
+courier_operating_system_under	ລະບົບ​ຈັດການ​ງານ​ຂົນສົ່ງ​ພັດສະດຸ​ພາຍໃຕ້ Kumkaj
+privacy	ຄວາມເປັນ​ສ່ວນຕົວ
+terms	ຂໍ້​ກຳນົດ
+cancellation	ການຍົກ​ເລີກ
+cloud_shop	ຮ້ານ​ຄ້າຄລາວ
 account	ບັນຊີ
-weigh_it_right	ຊັ່ງໃຫ້ຖືກ
-price_it	ຕັ້ງລາຄາ
-label_it	ຕິດປ້າຍ
+weigh_it_right	ຊັ່ງ​ໃຫ້​ຖືກ
+price_it	ຕັ້ງ​ລາຄາ
+label_it	ຕິດ​ປ້າຍ
 track_and_prove	ຕິດຕາມ ແລະ ພິສູດ
-money_comes_home	ເງິນກັບບ້ານ
-internet_down	ອິນເຕີເນັດລົ້ມ
+money_comes_home	ເງິນ​ກັບບ້ານ
+internet_down	ອິນ​ເຕີ​ເນັດ​ລົ້ມ
 bead_hand	ມອບ
-bead_offline_short	ອອບລາຍ
+bead_offline_short	ອອບ​ລາຍ
 weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	ເທິງຊິງ: {kg} kg
-weight_scale_wins	ນ້ຳໜັກເທິງຊິງເປັນຕົວກຳນົດຄ່າສົ່ງ
-cta_installers_note	ຕົວຕິດຕັ້ງຈະຂຶ້ນທີ່ນີ້ເມື່ອແຕ່ລະຕົວຜ່ານການທົດສອບຕິດຕັ້ງເທິງເຄື່ອງໃໝ່ ລະຫວ່າງນີ້ຂໍເບິ່ງຕົວຢ່າງໄດ້ທາງ WhatsApp
-cta_whatsapp_soon	ຊ່ອງທາງເບິ່ງຕົວຢ່າງທາງ WhatsApp ຈະເປີດໃນໄວໆນີ້ ຂໍ້ຄວາມຂອງທ່ານຈະເປັນ: “{message}”
+weight_on_scale	ເທິງ​ຊິງ: {kg} kg
+weight_scale_wins	ນ້ຳ​ໜັກ​ເທິງ​ຊິງ​ເປັນ​ຕົວ​ກຳນົດ​ຄ່າ​ສົ່ງ
+cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ​ໄດ້​ທາງ WhatsApp
+cta_whatsapp_soon	ຊ່ອງທາງ​ເບິ່ງ​ຕົວຢ່າງ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
 acct_page_title	ບັນຊີ — Moklanjo
-acct_lede	ບັນຊີດຽວສຳລັບເວັບໄຊ ແລະ ແອັບ — ຟອມດຽວກັນບໍ່ວ່າທ່ານຈະເປັນຜູ້ໃຊ້ໃໝ່ ຫຼື ກັບມາໃຊ້
-acct_email	ອີເມວ
-acct_name_optional	ຊື່ (ບໍ່ບັງຄັບ)
-acct_password	ລະຫັດຜ່ານ
+acct_lede	ບັນຊີ​ດຽວ​ສຳ​ລັບ​ເວັບ​ໄຊ ແລະ ແອັບ — ຟອມ​ດຽວກັນ​ບໍ່ວ່າ​ທ່ານ​ຈະ​ເປັນ​ຜູ້​ໃຊ້​ໃໝ່ ຫຼື ກັບມາ​ໃຊ້
+acct_email	ອີ​ເມວ
+acct_name_optional	ຊື່ (ບໍ່​ບັງຄັບ)
+acct_password	ລະຫັດ​ຜ່ານ
 acct_continue	ສືບຕໍ່
-acct_forgot	ລືມລະຫັດຜ່ານ?
-acct_reset_hint	ພວກເຮົາຈະສົ່ງລິ້ງຕັ້ງໃໝ່ທາງອີເມວ ໃຊ້ທີ່ຢູ່ດຽວກັບທີ່ທ່ານສະໝັກໄວ້
-acct_send_reset	ສົ່ງລິ້ງຕັ້ງໃໝ່
+acct_forgot	ລືມ​ລະຫັດ​ຜ່ານ?
+acct_reset_hint	ພວກ​ເຮົາ​ຈະ​ສົ່ງ​ລິ້ງ​ຕັ້ງ​ໃໝ່​ທາງ​ອີ​ເມວ ໃຊ້​ທີ່ຢູ່​ດຽວ​ກັບ​ທີ່​ທ່ານ​ສະໝັກ​ໄວ້
+acct_send_reset	ສົ່ງ​ລິ້ງ​ຕັ້ງ​ໃໝ່
 acct_cancel	ຍົກເລີກ
-acct_or_continue	ຫຼື ສືບຕໍ່ດ້ວຍ
+acct_or_continue	ຫຼື ສືບຕໍ່​ດ້ວຍ
 acct_phone	ໂທລະສັບ
-acct_mobile	ເບີມືຖື
-acct_send_sms	ສົ່ງລະຫັດ SMS
+acct_mobile	ເບີ​ມື​ຖື
+acct_send_sms	ສົ່ງ​ລະຫັດ SMS
 acct_sms_code	ລະຫັດ SMS
-acct_confirm_code	ຢືນຢັນລະຫັດ
-acct_signed_in	ເຂົ້າສູ່ລະບົບແລ້ວ
-acct_signed_in_as	ເຂົ້າສູ່ລະບົບໃນນາມ
+acct_confirm_code	ຢືນຢັນ​ລະຫັດ
+acct_signed_in	ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_signed_in_as	ເຂົ້າສູ່​ລະບົບ​ໃນນາມ
 acct_status	ສະຖານະ
-acct_sign_in_methods	ວິທີເຂົ້າສູ່ລະບົບ
-acct_cloud_username	ຊື່ຜູ້ໃຊ້ຄລາວ
-acct_plan	ແພັກເກດ
-acct_resend_verify	ສົ່ງອີເມວຢືນຢັນອີກຄັ້ງ
-acct_sign_out	ອອກຈາກລະບົບ
-acct_cloud_sandbox	Kumkaj Cloud (ສະພາບແວດລ້ອມທົດສອບ)
-acct_current_password	ລະຫັດຜ່ານປັດຈຸບັນ
-acct_email_for_password	ອີເມວສຳລັບເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານ
-acct_new_password	ລະຫັດຜ່ານໃໝ່
-acct_confirm_new_password	ຢືນຢັນລະຫັດຜ່ານໃໝ່
-acct_add_way	ເພີ່ມວິທີເຂົ້າສູ່ລະບົບອື່ນ
-acct_link_hint	ເຊື່ອມຫຼາຍວິທີໄວ້ກັບບັນຊີດຽວ ເພື່ອໃຫ້ກູ້ຄືນການເຂົ້າເຖິງໄດ້ຖ້າວິທີໃດວິທີໜຶ່ງໃຊ້ບໍ່ໄດ້
+acct_sign_in_methods	ວິທີ​ເຂົ້າສູ່​ລະບົບ
+acct_cloud_username	ຊື່​ຜູ້​ໃຊ້ຄລາວ
+acct_plan	ແພັກ​ເກດ
+acct_resend_verify	ສົ່ງ​ອີ​ເມວ​ຢືນຢັນ​ອີກ​ຄັ້ງ
+acct_sign_out	ອອກຈາກ​ລະບົບ
+acct_cloud_sandbox	Kumkaj Cloud (ສະພາບ​ແວດລ້ອມ​ທົດສອບ)
+acct_current_password	ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_email_for_password	ອີ​ເມວ​ສຳລັບ​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ລະຫັດ​ຜ່ານ
+acct_new_password	ລະຫັດ​ຜ່ານ​ໃໝ່
+acct_confirm_new_password	ຢືນຢັນ​ລະຫັດ​ຜ່ານ​ໃໝ່
+acct_add_way	ເພີ່ມ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ອື່ນ
+acct_link_hint	ເຊື່ອມ​ຫຼາຍ​ວິທີ​ໄວ້​ກັບ​ບັນຊີ​ດຽວ ເພື່ອ​ໃຫ້​ກູ້​ຄືນ​ການເຂົ້າ​ເຖິງ​ໄດ້​ຖ້າ​ວິທີໃດວິທີໜຶ່ງ​ໃຊ້​ບໍ່ໄດ້
 acct_link_google	ເຊື່ອມ Google
 acct_link_microsoft	ເຊື່ອມ Microsoft
 acct_link_github	ເຊື່ອມ GitHub
-acct_link_phone	ເຊື່ອມໂທລະສັບ
-acct_send_sms_link	ສົ່ງ SMS ເພື່ອເຊື່ອມ
-acct_confirm_link_phone	ຢືນຢັນ ແລະ ເຊື່ອມໂທລະສັບ
-shop_page_title	ຮ້ານຄ້າ — Moklanjo
-shop_lede	ແພັກເກດຄລາວລາຍປີ — ຄິດພາສີຕອນຊຳລະເງິນ ແອັບ Moklanjo ຄົບຊຸດເທິງອຸປະກອນຂອງທ່ານຟຣີຕະຫຼອດໄປ ບໍ່ມີໂຄສະນາ
+acct_link_phone	ເຊື່ອມ​ໂທລະສັບ
+acct_send_sms_link	ສົ່ງ SMS ເພື່ອ​ເຊື່ອມ
+acct_confirm_link_phone	ຢືນຢັນ ແລະ ເຊື່ອມ​ໂທລະສັບ
+shop_page_title	ຮ້ານ​ຄ້າ — Moklanjo
+shop_lede	ແພັກ​ເກດຄລາວ​ລາຍ​ປີ — ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ແອັບ Moklanjo ຄົບ​ຊຸດ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ຟຣີ​ຕະຫຼອດໄປ ບໍ່ມີ​ໂຄສະນາ
 shop_cart	ກະຕ່າ
-shop_cart_empty_hint	ກະຕ່າຂອງທ່ານຫວ່າງຢູ່ ເພີ່ມ Steady, Swift ຫຼື Priority
-shop_checkout	ຊຳລະເງິນ
+shop_cart_empty_hint	ກະຕ່າ​ຂອງ​ທ່ານ​ຫວ່າງ​ຢູ່ ເພີ່ມ Steady, Swift ຫຼື Priority
+shop_checkout	ຊຳລະ​ເງິນ
 shop_clear	ລ້າງ
-shop_checkout_hint	ການຊຳລະເງິນຈະພາທ່ານເຂົ້າສູ່ລະບົບໃນໜ້າບັນຊີກ່ອນ ແລ້ວຈຶ່ງເລີ່ມຈ່າຍເງິນ (ຈຳລອງໃນສະພາບແວດລ້ອມທົດສອບ ຫຼື Paddle ເມື່ອຕັ້ງຄ່າຄີແລ້ວ)
-acct_billing_hint	ແພັກເກດລາຍປີ — ເກດເວຄິດພາສີຕອນຊຳລະເງິນ ການໃຊ້ງານເທິງເຄື່ອງຟຣີຕະຫຼອດໄປ ແບບກຳນົດເອງຕ້ອງຂໍໃບສະເໜີລາຄາ (ອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority)
-shop_cloud_plans	ແພັກເກດຄລາວ
-acct_federated	ການເຂົ້າສູ່ລະບົບແບບລວມສູນ
-acct_err_invalid_email	ປ້ອນອີເມວທີ່ຖືກຕ້ອງ
-acct_err_weak_password	ໃຊ້ລະຫັດຜ່ານຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ
-acct_err_wrong_password	ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
-acct_err_invalid_credential	ອີເມວ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
-acct_err_popup_closed	ໜ້າຕ່າງເຂົ້າສູ່ລະບົບຖືກປິດ
-acct_err_popup_cancelled	ການເຂົ້າສູ່ລະບົບຖືກຍົກເລີກ
-acct_err_unauthorized_domain	ໂດເມນນີ້ບໍ່ໄດ້ຮັບອະນຸຍາດສຳລັບ Firebase Auth
-acct_err_method_disabled	ວິທີເຂົ້າສູ່ລະບົບນັ້ນຍັງບໍ່ເປີດໃຊ້
-acct_err_too_many	ລອງຫຼາຍເທື່ອເກີນໄປ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ
-acct_err_phone_format	ໃຊ້ເບີໂທລະສັບເຕັມພ້ອມລະຫັດປະເທດ (ເຊັ່ນ +91…)
-acct_err_sms_code	ລະຫັດ SMS ບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸແລ້ວ
-acct_err_no_account	ບໍ່ມີບັນຊີທີ່ໃຊ້ອີເມວນີ້ ສືບຕໍ່ເພື່ອສ້າງບັນຊີ ຫຼື ໃຊ້ວິທີອື່ນ
-acct_err_recent_login	ເພື່ອຄວາມປອດໄພ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ ແລ້ວລອງປ່ຽນແປງນີ້ໃໝ່
-acct_err_credential_in_use	ວິທີເຂົ້າສູ່ລະບົບນັ້ນຖືກໃຊ້ກັບບັນຊີອື່ນແລ້ວ
-acct_err_email_in_use	ອີເມວນັ້ນຖືກໃຊ້ກັບບັນຊີອື່ນແລ້ວ
-acct_err_already_linked	ວິທີນັ້ນເຊື່ອມກັບບັນຊີນີ້ແລ້ວ
-acct_err_exists_other_method	ມີບັນຊີທີ່ໃຊ້ອີເມວນີ້ກັບວິທີເຂົ້າສູ່ລະບົບອື່ນຢູ່ແລ້ວ ເຂົ້າສູ່ລະບົບດ້ວຍວິທີນັ້ນກ່ອນ ແລ້ວເຊື່ອມວິທີນີ້ຈາກໜ້າບັນຊີຂອງທ່ານ
-acct_err_generic	ເກີດຂໍ້ຜິດພາດ
-acct_method_password	ອີເມວ ແລະ ລະຫັດຜ່ານ
-acct_pw_hint_change	ປ່ຽນລະຫັດຜ່ານ ທ່ານຈະຕ້ອງຢືນຢັນດ້ວຍລະຫັດຜ່ານປັດຈຸບັນ
-acct_pw_hint_add	ເພີ່ມລະຫັດຜ່ານເພື່ອໃຫ້ເຂົ້າສູ່ລະບົບດ້ວຍອີເມວໄດ້ນຳ (ມີປະໂຫຍດເມື່ອຜູ້ໃຫ້ບໍລິການໃຊ້ງານບໍ່ໄດ້)
-acct_pw_change	ປ່ຽນລະຫັດຜ່ານ
-acct_pw_add	ເພີ່ມລະຫັດຜ່ານ
-acct_billing_off	ຍັງບໍ່ໄດ້ເປີດການເກັບເງິນເທິງ API ຄລາວ
-acct_billing_no_provider	ຍັງບໍ່ມີຜູ້ໃຫ້ບໍລິການເກັບເງິນແທ້ເປີດໃຊ້ເທິງ API ຄລາວ (ມີແຕ່ລະບົບຈຳລອງເທິງເຄື່ອງ)
-price_quote	ໃບສະເໜີລາຄາ
-price_per_year	₹{amount}/ປີ ບໍ່ລວມພາສີ
-acct_pay_received	ໄດ້ຮັບເງິນແລ້ວ — ກຳລັງອັບເດດແພັກເກດຂອງທ່ານ…
-acct_pay_declined	ການຊຳລະເງິນຖືກປະຕິເສດ ຫຼື ບໍ່ສຳເລັດ
-acct_pay_failed_detail	{detail} ແພັກເກດຂອງທ່ານບໍ່ໄດ້ປ່ຽນ
-acct_checkout_closed	ປິດໜ້າຊຳລະເງິນແລ້ວ — ບໍ່ມີການຊຳລະເງິນເກີດຂຶ້ນ ແພັກເກດຂອງທ່ານຄືເກົ່າ
-acct_checkout_failed	ຊຳລະເງິນບໍ່ສຳເລັດ
-acct_pay_with	ຈ່າຍດ້ວຍ {provider}
+shop_checkout_hint	ການ​ຊຳລະ​ເງິນ​ຈະ​ພາ​ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ໃນ​ໜ້າ​ບັນຊີ​ກ່ອນ ແລ້ວ​ຈຶ່ງ​ເລີ່ມ​ຈ່າຍເງິນ (ຈຳລອງ​ໃນ​ສະພາບ​ແວດລ້ອມ​ທົດສອບ ຫຼື Paddle ເມື່ອ​ຕັ້ງ​ຄ່າ​ຄີ​ແລ້ວ)
+acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ເກດ​ເວ​ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
+shop_cloud_plans	ແພັກ​ເກດຄລາວ
+acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ແບບ​ລວມ​ສູນ
+acct_err_invalid_email	ປ້ອນ​ອີ​ເມວ​ທີ່​ຖືກຕ້ອງ
+acct_err_weak_password	ໃຊ້​ລະຫັດ​ຜ່ານ​ຢ່າງ​ໜ້ອຍ 6 ຕົວ​ອັກສອນ
+acct_err_wrong_password	ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
+acct_err_invalid_credential	ອີ​ເມວ ຫຼື ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
+acct_err_popup_closed	ໜ້າຕ່າງ​ເຂົ້າສູ່​ລະບົບ​ຖືກ​ປິດ
+acct_err_popup_cancelled	ການເຂົ້າ​ສູ່​ລະບົບ​ຖືກ​ຍົກເລີກ
+acct_err_unauthorized_domain	ໂດ​ເມນ​ນີ້​ບໍ່ໄດ້​ຮັບ​ອະນຸຍາດ​ສຳລັບ Firebase Auth
+acct_err_method_disabled	ວິທີ​ເຂົ້າສູ່​ລະບົບ​ນັ້ນ​ຍັງ​ບໍ່​ເປີດ​ໃຊ້
+acct_err_too_many	ລອງ​ຫຼາຍເທື່ອ​ເກີນໄປ ກະລຸນາ​ລອງ​ໃໝ່​ພາຍຫຼັງ
+acct_err_phone_format	ໃຊ້​ເບີ​ໂທລະສັບ​ເຕັມ​ພ້ອມ​ລະຫັດ​ປະເທດ (ເຊັ່ນ +91…)
+acct_err_sms_code	ລະຫັດ SMS ບໍ່​ຖືກຕ້ອງ ຫຼື ໝົດ​ອາຍຸ​ແລ້ວ
+acct_err_no_account	ບໍ່ມີ​ບັນຊີ​ທີ່​ໃຊ້​ອີ​ເມວ​ນີ້ ສືບຕໍ່​ເພື່ອ​ສ້າງ​ບັນຊີ ຫຼື ໃຊ້​ວິທີ​ອື່ນ
+acct_err_recent_login	ເພື່ອ​ຄວາມປອດໄພ ກະລຸນາ​ເຂົ້າສູ່​ລະບົບ​ອີກ​ຄັ້ງ ແລ້ວ​ລອງ​ປ່ຽນແປງ​ນີ້​ໃໝ່
+acct_err_credential_in_use	ວິທີ​ເຂົ້າສູ່​ລະບົບ​ນັ້ນ​ຖືກ​ໃຊ້​ກັບ​ບັນຊີ​ອື່ນ​ແລ້ວ
+acct_err_email_in_use	ອີ​ເມວ​ນັ້ນ​ຖືກ​ໃຊ້​ກັບ​ບັນຊີ​ອື່ນ​ແລ້ວ
+acct_err_already_linked	ວິທີ​ນັ້ນ​ເຊື່ອມ​ກັບ​ບັນຊີ​ນີ້​ແລ້ວ
+acct_err_exists_other_method	ມີ​ບັນຊີ​ທີ່​ໃຊ້​ອີ​ເມວ​ນີ້​ກັບ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ອື່ນ​ຢູ່ແລ້ວ ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ວິທີ​ນັ້ນ​ກ່ອນ ແລ້ວ​ເຊື່ອມ​ວິທີ​ນີ້​ຈາກ​ໜ້າ​ບັນຊີ​ຂອງ​ທ່ານ
+acct_err_generic	ເກີດ​ຂໍ້​ຜິດພາດ
+acct_method_password	ອີ​ເມວ ແລະ ລະຫັດ​ຜ່ານ
+acct_pw_hint_change	ປ່ຽນ​ລະຫັດ​ຜ່ານ ທ່ານ​ຈະ​ຕ້ອງ​ຢືນຢັນ​ດ້ວຍ​ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_pw_hint_add	ເພີ່ມ​ລະຫັດ​ຜ່ານ​ເພື່ອ​ໃຫ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ອີ​ເມວ​ໄດ້​ນຳ (ມີ​ປະໂຫຍດ​ເມື່ອ​ຜູ້​ໃຫ້​ບໍລິການ​ໃຊ້ງານ​ບໍ່ໄດ້)
+acct_pw_change	ປ່ຽນ​ລະຫັດ​ຜ່ານ
+acct_pw_add	ເພີ່ມ​ລະຫັດ​ຜ່ານ
+acct_billing_off	ຍັງ​ບໍ່ໄດ້​ເປີດ​ການເກັບ​ເງິນ​ເທິງ API ຄລາວ
+acct_billing_no_provider	ຍັງ​ບໍ່ມີ​ຜູ້​ໃຫ້​ບໍລິການ​ເກັບ​ເງິນ​ແທ້​ເປີດ​ໃຊ້​ເທິງ API ຄລາວ (ມີ​ແຕ່​ລະບົບ​ຈຳລອງ​ເທິງ​ເຄື່ອງ)
+price_quote	ໃບສະເໜີ​ລາຄາ
+price_per_year	₹{amount}/ປີ ບໍ່​ລວມ​ພາສີ
+acct_pay_received	ໄດ້ຮັບ​ເງິນ​ແລ້ວ — ກຳລັງ​ອັບ​ເດດ​ແພັກ​ເກດ​ຂອງ​ທ່ານ…
+acct_pay_declined	ການ​ຊຳລະ​ເງິນ​ຖືກ​ປະຕິເສດ ຫຼື ບໍ່​ສຳເລັດ
+acct_pay_failed_detail	{detail} ແພັກ​ເກດ​ຂອງ​ທ່ານ​ບໍ່ໄດ້​ປ່ຽນ
+acct_checkout_closed	ປິດ​ໜ້າ​ຊຳລະ​ເງິນ​ແລ້ວ — ບໍ່ມີ​ການ​ຊຳລະ​ເງິນ​ເກີດຂຶ້ນ ແພັກ​ເກດ​ຂອງ​ທ່ານ​ຄື​ເກົ່າ
+acct_checkout_failed	ຊຳລະ​ເງິນ​ບໍ່​ສຳເລັດ
+acct_pay_with	ຈ່າຍ​ດ້ວຍ {provider}
 acct_plan_until	{plan} · ເຖິງ {date}
-acct_unavailable	ບໍ່ພ້ອມໃຊ້ງານ
-acct_continue_hint	ສືບຕໍ່ດ້ວຍອີເມວ ຜູ້ໃຫ້ບໍລິການ ຫຼື ໂທລະສັບ
-acct_signed_in_fallback	(ເຂົ້າສູ່ລະບົບແລ້ວ)
-acct_email_verified	ຢືນຢັນອີເມວແລ້ວ
-acct_email_unverified	ຍັງບໍ່ໄດ້ຢືນຢັນອີເມວ — ກວດເບິ່ງກ່ອງຈົດໝາຍ
-acct_signed_in_phone	ເຂົ້າສູ່ລະບົບດ້ວຍໂທລະສັບແລ້ວ
-acct_none_listed	ຍັງບໍ່ມີ
-acct_signed_in_status	ທ່ານເຂົ້າສູ່ລະບົບແລ້ວ
-acct_created	ສ້າງບັນຊີແລ້ວ ກວດເບິ່ງອີເມວເພື່ອຢືນຢັນເມື່ອສະດວກ
-acct_reset_sent	ຖ້າມີບັນຊີຂອງອີເມວນັ້ນ ລິ້ງຕັ້ງໃໝ່ກຳລັງສົ່ງໄປ ກວດເບິ່ງກ່ອງຈົດໝາຍ
-acct_another_method	ວິທີອື່ນ
-acct_exists_via	ມີບັນຊີຂອງ {email} ຜ່ານ {method} ຢູ່ແລ້ວ ເຂົ້າສູ່ລະບົບດ້ວຍວິທີນັ້ນກ່ອນ ແລ້ວເຊື່ອມຜູ້ໃຫ້ບໍລິການນີ້ຈາກໜ້າບັນຊີຂອງທ່ານ
-acct_enter_current_pw	ປ້ອນລະຫັດຜ່ານປັດຈຸບັນ
-acct_relogin_retry	ອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບໃໝ່ ຈາກນັ້ນລອງອີກຄັ້ງ
-acct_pw_mismatch	ລະຫັດຜ່ານໃໝ່ກັບການຢືນຢັນບໍ່ກົງກັນ
-acct_pw_updated	ອັບເດດລະຫັດຜ່ານແລ້ວ
-acct_enter_email_pw	ປ້ອນອີເມວທີ່ຈະໃຊ້ເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານ
-acct_pw_added	ເພີ່ມລະຫັດຜ່ານແລ້ວ ຕອນນີ້ເຂົ້າສູ່ລະບົບດ້ວຍອີເມວໄດ້ນຳ
-acct_method_linked	ເຊື່ອມວິທີເຂົ້າສູ່ລະບົບແລ້ວ
-acct_phone_linked	ເຊື່ອມໂທລະສັບກັບບັນຊີນີ້ແລ້ວ
-acct_verify_sent	ສົ່ງອີເມວຢືນຢັນແລ້ວ — ກວດເບິ່ງກ່ອງຈົດໝາຍ
-shop_pricing_soon	ລາຄາຈະມາໃນໄວໆນີ້
-shop_request_quote	ຂໍໃບສະເໜີລາຄາ
-shop_add_to_cart	ໃສ່ກະຕ່າ
-shop_notify_later	ແຈ້ງຂ້ອຍພາຍຫຼັງ
-shop_included	ລວມຢູ່ແລ້ວ
-shop_in_cart	{plan} ຢູ່ໃນກະຕ່າຂອງທ່ານ
-shop_remove	ເອົາອອກ
-shop_cart_is_empty	ກະຕ່າຫວ່າງ
-shop_prices_unpublished	ຍັງບໍ່ໄດ້ເຜີຍແຜ່ລາຄາສຳລັບຊື້ເອງຂອງຜະລິດຕະພັນນີ້ ຂໍໃບສະເໜີລາຄາແບບກຳນົດເອງ ຫຼື ກັບມາເບິ່ງພາຍຫຼັງ
-shop_cart_cleared	ລ້າງກະຕ່າແລ້ວ
-plan_free_title	ຟຣີຕະຫຼອດໄປ
-plan_free_blurb	ຜະລິດຕະພັນຄົບຊຸດເທິງອຸປະກອນຂອງທ່ານ ບໍ່ມີຄ່າຄລາວ
-plan_steady_blurb	ຄລາວແບບສົດ · 10 GB · ແບນວິດຕ່ຳ
-plan_swift_blurb	ຄລາວແບບສົດ · 25 GB · ແບນວິດປານກາງ
-plan_priority_blurb	ຄລາວແບບສົດ · 50 GB · ແບນວິດມາດຕະຖານສູງສຸດ
-plan_custom_title	ກຳນົດເອງ
-plan_custom_blurb	ໂຄຕາ ແລະ ແບນວິດຕາມທີ່ຕົກລົງກັນ ໃບສະເໜີລາຄາອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority
+acct_unavailable	ບໍ່​ພ້ອມ​ໃຊ້ງານ
+acct_continue_hint	ສືບຕໍ່​ດ້ວຍ​ອີ​ເມວ ຜູ້​ໃຫ້​ບໍລິການ ຫຼື ໂທລະສັບ
+acct_signed_in_fallback	(ເຂົ້າສູ່​ລະບົບ​ແລ້ວ)
+acct_email_verified	ຢືນຢັນ​ອີ​ເມວ​ແລ້ວ
+acct_email_unverified	ຍັງ​ບໍ່ໄດ້​ຢືນຢັນ​ອີ​ເມວ — ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+acct_signed_in_phone	ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ໂທລະສັບ​ແລ້ວ
+acct_none_listed	ຍັງ​ບໍ່ມີ
+acct_signed_in_status	ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_created	ສ້າງ​ບັນຊີ​ແລ້ວ ກວດເບິ່ງ​ອີ​ເມວ​ເພື່ອ​ຢືນຢັນ​ເມື່ອ​ສະດວກ
+acct_reset_sent	ຖ້າ​ມີ​ບັນຊີ​ຂອງ​ອີ​ເມວ​ນັ້ນ ລິ້ງ​ຕັ້ງ​ໃໝ່​ກຳລັງ​ສົ່ງໄປ ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+acct_another_method	ວິທີ​ອື່ນ
+acct_exists_via	ມີ​ບັນຊີ​ຂອງ {email} ຜ່ານ {method} ຢູ່ແລ້ວ ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ວິທີ​ນັ້ນ​ກ່ອນ ແລ້ວ​ເຊື່ອມ​ຜູ້​ໃຫ້​ບໍລິການ​ນີ້​ຈາກ​ໜ້າ​ບັນຊີ​ຂອງ​ທ່ານ
+acct_enter_current_pw	ປ້ອນ​ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_relogin_retry	ອອກຈາກ​ລະບົບ​ແລ້ວ​ເຂົ້າສູ່​ລະບົບ​ໃໝ່ ຈາກນັ້ນ​ລອງ​ອີກ​ຄັ້ງ
+acct_pw_mismatch	ລະຫັດ​ຜ່ານ​ໃໝ່​ກັບ​ການ​ຢືນຢັນ​ບໍ່​ກົງກັນ
+acct_pw_updated	ອັບ​ເດດ​ລະຫັດ​ຜ່ານ​ແລ້ວ
+acct_enter_email_pw	ປ້ອນ​ອີ​ເມວ​ທີ່​ຈະ​ໃຊ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ລະຫັດ​ຜ່ານ
+acct_pw_added	ເພີ່ມ​ລະຫັດ​ຜ່ານ​ແລ້ວ ຕອນນີ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ອີ​ເມວ​ໄດ້​ນຳ
+acct_method_linked	ເຊື່ອມ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_phone_linked	ເຊື່ອມ​ໂທລະສັບ​ກັບ​ບັນຊີ​ນີ້​ແລ້ວ
+acct_verify_sent	ສົ່ງ​ອີ​ເມວ​ຢືນຢັນ​ແລ້ວ — ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+shop_pricing_soon	ລາຄາ​ຈະ​ມາ​ໃນ​ໄວໆ​ນີ້
+shop_request_quote	ຂໍ​ໃບສະເໜີ​ລາຄາ
+shop_add_to_cart	ໃສ່​ກະຕ່າ
+shop_notify_later	ແຈ້ງ​ຂ້ອຍ​ພາຍຫຼັງ
+shop_included	ລວມ​ຢູ່ແລ້ວ
+shop_in_cart	{plan} ຢູ່ໃນ​ກະຕ່າ​ຂອງ​ທ່ານ
+shop_remove	ເອົາ​ອອກ
+shop_cart_is_empty	ກະຕ່າ​ຫວ່າງ
+shop_prices_unpublished	ຍັງ​ບໍ່ໄດ້​ເຜີຍແຜ່​ລາຄາ​ສຳລັບ​ຊື້​ເອງ​ຂອງ​ຜະລິດຕະພັນ​ນີ້ ຂໍ​ໃບສະເໜີ​ລາຄາ​ແບບ​ກຳນົດ​ເອງ ຫຼື ກັບມາ​ເບິ່ງ​ພາຍຫຼັງ
+shop_cart_cleared	ລ້າງ​ກະຕ່າ​ແລ້ວ
+plan_free_title	ຟຣີ​ຕະຫຼອດໄປ
+plan_free_blurb	ຜະລິດຕະພັນ​ຄົບ​ຊຸດ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ ບໍ່ມີ​ຄ່າຄລາວ
+plan_steady_blurb	ຄລາວ​ແບບ​ສົດ · 10 GB · ແບນ​ວິດ​ຕ່ຳ
+plan_swift_blurb	ຄລາວ​ແບບ​ສົດ · 25 GB · ແບນ​ວິດ​ປານກາງ
+plan_priority_blurb	ຄລາວ​ແບບ​ສົດ · 50 GB · ແບນ​ວິດ​ມາດຕະຖານ​ສູງສຸດ
+plan_custom_title	ກຳນົດ​ເອງ
+plan_custom_blurb	ໂຄ​ຕາ ແລະ ແບນ​ວິດ​ຕາມ​ທີ່​ຕົກລົງ​ກັນ ໃບສະເໜີ​ລາຄາ​ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority

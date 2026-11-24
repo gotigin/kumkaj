@@ -134,6 +134,9 @@ PATCHES=(
   # TextInput ink over its band, UTF-8 safe ranges, X11 UTF8_STRING atom.
   text_selection
   keyboard_view_android_willshow    # Android: WillShow snaps (DidShow reconciles); small target change snaps
+  # Text (docs/DEV.md § Line breaking and direction).
+  line_break_uax14                  # wrap at UAX #14 break opportunities (+ tailorings) instead of word bounds
+  rtl_paragraph_direction           # a paragraph starting with U+200F (or U+061C) is laid out right to left
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

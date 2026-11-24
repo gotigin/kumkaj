@@ -1,121 +1,121 @@
 # Thai — ไทย (th). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-the_promise	คำสัญญา
-kumkaj_business_operating_systems	KUMKAJ · ระบบปฏิบัติการธุรกิจ
-the_internet_went_down_the	อินเทอร์เน็ตล่ม\nเคาน์เตอร์ไม่ล่ม
-kumkaj_is_the_brand_for	Kumkaj คือแบรนด์ของแอประบบปฏิบัติการธุรกิจที่ใช้งานได้จริง — ซอฟต์แวร์บริหารธุรกิจครบวงจรที่ทำงานบนอุปกรณ์ของคุณเอง แต่ละผลิตภัณฑ์สร้างมาเพื่อธุรกิจเดียว: ขนส่งพัสดุ ร้านอาหาร ร้านขายของชำ ร้านขายยา
-choose_your_trade	เลือกธุรกิจของคุณ  ↓
-watch_it_keep_working	ดูว่ายังทำงานต่อได้
-this_counter_right_now	เคาน์เตอร์นี้ ตอนนี้
+the_promise	คำ​สัญญา
+kumkaj_business_operating_systems	KUMKAJ · ระบบ​ปฏิบัติ​การ​ธุรกิจ
+the_internet_went_down_the	อินเทอร์เน็ต​ล่ม\nเคาน์เตอร์​ไม่​ล่ม
+kumkaj_is_the_brand_for	Kumkaj คือ​แบรนด์​ของ​แอป​ระบบ​ปฏิบัติ​การ​ธุรกิจ​ที่​ใช้​งาน​ได้​จริง — ซอฟต์แวร์​บริหารธุรกิจ​ครบ​วงจร​ที่​ทำงาน​บน​อุปกรณ์​ของ​คุณ​เอง แต่ละ​ผลิตภัณฑ์​สร้าง​มา​เพื่อ​ธุรกิจ​เดียว: ขนส่ง​พัสดุ ร้าน​อาหาร ร้าน​ขาย​ของชำ ร้าน​ขาย​ยา
+choose_your_trade	เลือก​ธุรกิจ​ของ​คุณ  ↓
+watch_it_keep_working	ดู​ว่า​ยัง​ทำงาน​ต่อ​ได้
+this_counter_right_now	เคาน์เตอร์​นี้ ตอน​นี้
 internet	อินเทอร์เน็ต
 down	ล่ม
-taking_orders	รับออเดอร์
+taking_orders	รับ​ออ​เด​อร์
 yes	ได้
-bills_and_dockets	บิลและใบรับฝาก
-saving	กำลังบันทึก
-day_book	สมุดรายวัน
-adding_up	กำลังรวมยอด
-nothing_on_this_counter_waits	ไม่มีอะไรบนเคาน์เตอร์นี้ที่ต้องรอคลาวด์
-scroll_or_use_the_dots	เลื่อนหรือใช้จุดเพื่อข้ามไปแต่ละส่วน
-n_02_built_for_your_trade	02 · สร้างมาเพื่อธุรกิจของคุณ
-a_desk_for_each_trade	เคาน์เตอร์เฉพาะสำหรับแต่ละธุรกิจ\nไม่ใช่แอปเดียวที่มีสวิตช์
-not_one_app_with_a	ไม่ใช่แอปเดียวที่มีสวิตช์เปลี่ยนธุรกิจ แต่ละผลิตภัณฑ์ออกแบบรอบเคาน์เตอร์แบบเดียว ด้วยคำของธุรกิจนั้นเอง
-courier_offices_franchise_counters_own	สำนักงานขนส่ง · เคาน์เตอร์แฟรนไชส์ · ไรเดอร์ของร้านเอง
-book_label_hand_over_track	รับฝาก → ติดฉลาก → ส่งมอบ → ติดตาม → เคลียร์ยอด
-next_booking_in_one_tap	รับฝากรายการถัดไปด้วยการแตะครั้งเดียว
-actual_or_volumetric_weight_rounded	น้ำหนักจริงหรือตามปริมาตร ปัดตามแบบของคุณ
-rider_cash_on_delivery_expected	COD ของไรเดอร์: ยอดที่ควรได้เทียบกับยอดที่ส่งแล้ว
-visit_moklanjo_com	ไปที่ moklanjo.com  →
-restaurants_caf_s_quick_service	ร้านอาหาร · คาเฟ่ · ร้านอาหารจานด่วน · ร้านเบเกอรี่
-table_kitchen_bill_day_close	โต๊ะ → ครัว → บิล → ปิดวัน
-every_table_s_minutes_and	เวลาและบิลของทุกโต๊ะในพริบตา
-one_kot_per_kitchen_station	หนึ่งใบสั่งครัวต่อสถานี — ไม่มีราคาเด็ดขาด
-cash_upi_part_payment_due	เงินสด UPI จ่ายบางส่วน ค้างจ่าย และทิป
-visit_khaynjo_com	ไปที่ khaynjo.com  →
-kirana_grocery_neighbourhood_shops	ร้านโชห่วย · ร้านขายของชำ · ร้านค้าในชุมชน
-sell_khata_stock_day_book	ขาย → สมุดเงินเชื่อ → สต็อก → สมุดรายวัน
-fast_counter_sell_with_short	ขายหน้าเคาน์เตอร์ได้เร็วด้วยรหัสสั้น
-customer_credit_and_supplier_dues	เงินเชื่อลูกค้าและยอดค้างจ่ายผู้จัดหา
-buy_into_stock_offline_forever	ซื้อเข้าสต็อก — ออฟไลน์ได้ตลอดไป
-visit_kirano_shop	ไปที่ kirano.shop  →
-chemists_pharmacy_counters	ร้านขายยา · เคาน์เตอร์ร้านยา
-medicine_batch_bill_day_close	ยา → ล็อต → บิล → ปิดวัน
-barcode_and_salt_composition_search	ค้นหาด้วยบาร์โค้ดและตัวยาสำคัญ / ส่วนประกอบ
-batch_and_expiry_alerts_on	แจ้งเตือนล็อตและวันหมดอายุเมื่อซื้อ
-owner_schedule_h_rx_notes	โน้ต Schedule H / Rx ของเจ้าของร้าน — ไม่ใช่การปฏิบัติตามกฎแบบปลอม ๆ
-visit_tabiyat_shop	ไปที่ tabiyat.shop  →
-n_03_your_books_stay_with	03 · บัญชีอยู่กับคุณ
-your_books_live_in_your	บัญชีของคุณอยู่ในร้านของคุณ
-sales_parties_and_the_day	ยอดขาย คู่ค้า และสมุดรายวันเขียนลงอุปกรณ์ที่เคาน์เตอร์ของคุณ — ไม่ใช่บนเซิร์ฟเวอร์ที่คุณเช่า
-on_your_device	บนอุปกรณ์ของคุณ
-every_sale_payment_and_docket	ทุกการขาย การชำระ และใบรับฝาก บันทึกบนคอมพิวเตอร์หรือแท็บเล็ตที่คุณเป็นเจ้าของ
-no_account_with_us	ไม่ต้องมีบัญชีกับเรา
-install_it_and_start_no	ติดตั้งแล้วเริ่มได้เลย ไม่ต้องสมัคร ไม่ต้องผูกบัตร
-copies_you_keep	สำเนาที่คุณเก็บไว้
-save_a_backup_copy_whenever	บันทึกสำเนาสำรองได้ทุกเมื่อ มันคือไฟล์ และเป็นของคุณ
-extra_counters_and_tablets_join	เคาน์เตอร์และแท็บเล็ตเพิ่มเติมเชื่อมผ่าน Wi-Fi ของคุณเอง — ไม่ต้องมีอินเทอร์เน็ตคั่นกลาง
-n_04_try_it	04 · ลองดู
-pull_the_plug_on_the	ถอดปลั๊กอินเทอร์เน็ตดู
-kumkaj_apps_don_t_phone	แอป Kumkaj ไม่ต้องติดต่อเซิร์ฟเวอร์เพื่อทำงาน ตัดอินเทอร์เน็ตแล้วดูว่าอะไรเปลี่ยนไปที่เคาน์เตอร์
-cut_the_internet	ตัดอินเทอร์เน็ต
+bills_and_dockets	บิล​และ​ใบรับ​ฝาก
+saving	กำลัง​บันทึก
+day_book	สมุด​ราย​วัน
+adding_up	กำลัง​รวม​ยอด
+nothing_on_this_counter_waits	ไม่มี​อะไร​บน​เคาน์เตอร์​นี้​ที่​ต้อง​รอ​คลา​วด์
+scroll_or_use_the_dots	เลื่อน​หรือ​ใช้​จุด​เพื่อ​ข้าม​ไป​แต่ละ​ส่วน
+n_02_built_for_your_trade	02 · สร้าง​มา​เพื่อ​ธุรกิจ​ของ​คุณ
+a_desk_for_each_trade	เคาน์เตอร์​เฉพาะ​สำหรับ​แต่ละ​ธุรกิจ\nไม่ใช่​แอป​เดียว​ที่​มี​สวิตช์
+not_one_app_with_a	ไม่ใช่​แอป​เดียว​ที่​มี​สวิตช์​เปลี่ยน​ธุรกิจ แต่ละ​ผลิตภัณฑ์​ออกแบบ​รอบ​เคาน์เตอร์​แบบ​เดียว ด้วย​คำ​ของ​ธุรกิจ​นั้น​เอง
+courier_offices_franchise_counters_own	สำนักงาน​ขนส่ง · เคาน์เตอร์​แฟ​รน​ไชส์ · ไร​เด​อร์​ของ​ร้าน​เอง
+book_label_hand_over_track	รับ​ฝาก → ติด​ฉลาก → ส่ง​มอบ → ติดตาม → เคลียร์​ยอด
+next_booking_in_one_tap	รับ​ฝาก​รายการ​ถัด​ไป​ด้วย​การ​แตะ​ครั้ง​เดียว
+actual_or_volumetric_weight_rounded	น้ำ​หนัก​จริง​หรือ​ตาม​ปริมาตร ปัด​ตาม​แบบ​ของ​คุณ
+rider_cash_on_delivery_expected	COD ของ​ไร​เด​อร์: ยอด​ที่​ควร​ได้​เทียบ​กับ​ยอด​ที่​ส่ง​แล้ว
+visit_moklanjo_com	ไป​ที่ moklanjo.com  →
+restaurants_caf_s_quick_service	ร้าน​อาหาร · คาเฟ่ · ร้าน​อาหาร​จาน​ด่วน · ร้าน​เบ​เก​อรี่
+table_kitchen_bill_day_close	โต๊ะ → ครัว → บิล → ปิด​วัน
+every_table_s_minutes_and	เวลา​และ​บิล​ของ​ทุก​โต๊ะ​ใน​พริบ​ตา
+one_kot_per_kitchen_station	หนึ่ง​ใบสั่ง​ครัว​ต่อ​สถานี — ไม่มี​ราคา​เด็ด​ขาด
+cash_upi_part_payment_due	เงินสด UPI จ่าย​บาง​ส่วน ค้าง​จ่าย และ​ทิป
+visit_khaynjo_com	ไป​ที่ khaynjo.com  →
+kirana_grocery_neighbourhood_shops	ร้าน​โช​ห่วย · ร้าน​ขาย​ของชำ · ร้าน​ค้า​ใน​ชุมชน
+sell_khata_stock_day_book	ขาย → สมุด​เงิน​เชื่อ → สต็​อก → สมุด​ราย​วัน
+fast_counter_sell_with_short	ขาย​หน้า​เคาน์เตอร์​ได้​เร็ว​ด้วย​รหัส​สั้น
+customer_credit_and_supplier_dues	เงิน​เชื่อ​ลูกค้า​และ​ยอด​ค้าง​จ่าย​ผู้​จัดหา
+buy_into_stock_offline_forever	ซื้อ​เข้า​สต็​อก — ออฟ​ไลน์​ได้​ตลอด​ไป
+visit_kirano_shop	ไป​ที่ kirano.shop  →
+chemists_pharmacy_counters	ร้าน​ขาย​ยา · เคาน์เตอร์​ร้าน​ยา
+medicine_batch_bill_day_close	ยา → ล็อต → บิล → ปิด​วัน
+barcode_and_salt_composition_search	ค้นหา​ด้วย​บาร์​โค้ด​และ​ตัว​ยา​สำคัญ / ส่วน​ประกอบ
+batch_and_expiry_alerts_on	แจ้ง​เตือน​ล็อต​และ​วัน​หมด​อายุ​เมื่อ​ซื้อ
+owner_schedule_h_rx_notes	โน้ต Schedule H / Rx ของ​เจ้าของ​ร้าน — ไม่ใช่​การ​ปฏิบัติ​ตาม​กฎ​แบบ​ปลอม ๆ
+visit_tabiyat_shop	ไป​ที่ tabiyat.shop  →
+n_03_your_books_stay_with	03 · บัญชี​อยู่​กับ​คุณ
+your_books_live_in_your	บัญชี​ของ​คุณ​อยู่​ใน​ร้าน​ของ​คุณ
+sales_parties_and_the_day	ยอด​ขาย คู่​ค้า และ​สมุด​ราย​วัน​เขียน​ลง​อุปกรณ์​ที่​เคาน์เตอร์​ของ​คุณ — ไม่ใช่​บน​เซิร์ฟเวอร์​ที่​คุณ​เช่า
+on_your_device	บน​อุปกรณ์​ของ​คุณ
+every_sale_payment_and_docket	ทุก​การ​ขาย การ​ชำระ และ​ใบรับ​ฝาก บันทึก​บน​คอมพิวเตอร์​หรือ​แท็บเล็ต​ที่​คุณ​เป็น​เจ้าของ
+no_account_with_us	ไม่​ต้อง​มี​บัญชี​กับ​เรา
+install_it_and_start_no	ติด​ตั้ง​แล้ว​เริ่ม​ได้​เลย ไม่​ต้อง​สมัคร ไม่​ต้อง​ผูก​บัตร
+copies_you_keep	สำเนา​ที่​คุณ​เก็บ​ไว้
+save_a_backup_copy_whenever	บันทึก​สำเนา​สำรอง​ได้​ทุก​เมื่อ มัน​คือ​ไฟล์ และ​เป็น​ของ​คุณ
+extra_counters_and_tablets_join	เคาน์เตอร์​และ​แท็บเล็ต​เพิ่ม​เติม​เชื่อม​ผ่าน Wi-Fi ของ​คุณ​เอง — ไม่​ต้อง​มี​อินเทอร์เน็ต​คั่น​กลาง
+n_04_try_it	04 · ลอง​ดู
+pull_the_plug_on_the	ถอด​ปลั๊กอิน​เท​อร์​เน็ต​ดู
+kumkaj_apps_don_t_phone	แอป Kumkaj ไม่​ต้อง​ติดต่อ​เซิร์ฟเวอร์​เพื่อ​ทำงาน ตัด​อินเทอร์เน็ต​แล้ว​ดู​ว่า​อะไร​เปลี่ยน​ไป​ที่​เคาน์เตอร์
+cut_the_internet	ตัด​อินเทอร์เน็ต
 internet_on	อินเทอร์เน็ต: เปิด
-book_a_parcel_or_take	รับฝากพัสดุหรือรับออเดอร์
-save_the_bill_or_docket	บันทึกบิลหรือใบรับฝาก
-day_book_totals	ยอดรวมสมุดรายวัน
-find_an_old_sale	ค้นหาการขายเก่า
-the_internet_is_on_and	อินเทอร์เน็ตเปิดอยู่ — แต่เคาน์เตอร์ไม่ได้ใช้
-things_that_leave_the_shop	สิ่งที่ออกนอกร้าน เช่น ใบเสร็จทาง WhatsApp ยังต้องใช้อินเทอร์เน็ตจึงจะไปถึง
+book_a_parcel_or_take	รับ​ฝาก​พัสดุ​หรือ​รับ​ออ​เด​อร์
+save_the_bill_or_docket	บันทึก​บิล​หรือ​ใบรับ​ฝาก
+day_book_totals	ยอด​รวม​สมุด​ราย​วัน
+find_an_old_sale	ค้นหา​การ​ขาย​เก่า
+the_internet_is_on_and	อินเทอร์เน็ต​เปิด​อยู่ — แต่​เคาน์เตอร์​ไม่​ได้​ใช้
+things_that_leave_the_shop	สิ่ง​ที่​ออก​นอก​ร้าน เช่น ใบ​เสร็จ​ทาง WhatsApp ยัง​ต้อง​ใช้​อินเทอร์เน็ต​จึง​จะ​ไป​ถึง
 n_05_price	05 · ราคา
-free_forever_on_your_devices	ฟรีตลอดไปบนอุปกรณ์ของคุณ
-no_charge_per_seat_user	ไม่คิดเงินตามที่นั่ง ผู้ใช้ โต๊ะ ไรเดอร์ พัสดุ หรืออุปกรณ์บนเครื่อง ไม่ใช่รุ่นทดลอง
-on_your_own_devices	บนอุปกรณ์ของคุณเอง
-n_0_forever	₹0 ตลอดไป
-pay_only_for_what_you	จ่ายเฉพาะสิ่งที่ใช้ — ราคาเดียวกันสำหรับทุกคน
-planned	อยู่ในแผน
-cloud_is_planned_and_optional	คลาวด์อยู่ในแผนและเป็นทางเลือก เคาน์เตอร์ทำงานได้โดยไม่ต้องมี
+free_forever_on_your_devices	ฟรี​ตลอด​ไป​บน​อุปกรณ์​ของ​คุณ
+no_charge_per_seat_user	ไม่​คิด​เงิน​ตาม​ที่​นั่ง ผู้​ใช้ โต๊ะ ไร​เด​อร์ พัสดุ หรือ​อุปกรณ์​บน​เครื่อง ไม่ใช่​รุ่น​ทดลอง
+on_your_own_devices	บน​อุปกรณ์​ของ​คุณ​เอง
+n_0_forever	₹0 ตลอด​ไป
+pay_only_for_what_you	จ่าย​เฉพาะ​สิ่ง​ที่​ใช้ — ราคา​เดียวกัน​สำหรับ​ทุก​คน
+planned	อยู่​ใน​แผน
+cloud_is_planned_and_optional	คลา​วด์​อยู่​ใน​แผน​และ​เป็น​ทาง​เลือก เคาน์เตอร์​ทำงาน​ได้​โดย​ไม่​ต้อง​มี
 n_06_languages	06 · ภาษา
-speaks_your_staff_s_language	พูดภาษาเดียวกับพนักงานของคุณ
-the_same_115_language_catalogue	รายการ 115 ภาษาชุดเดียวกับทุกแอปของ Kumkaj — ภาษาอาหรับและอูรดูจากขวาไปซ้าย ด้านล่างคือชื่อในภาษาของตัวเอง และตัวอย่าง “อาหารพร้อม” ในภาษาฮินดี คุชราต ทมิฬ เบงกาลี อูรดู และอังกฤษ:
-same_shaping_engine_as_the	ใช้เอนจินจัดรูปอักษรเดียวกับแอป ตัวอักษรที่ต่อกันและบรรทัดจากขวาไปซ้ายจึงแสดงผลถูกต้อง
-n_07_who_makes_it	07 · ผู้สร้าง
-made_under_gotigin	สร้างภายใต้ Gotigin
+speaks_your_staff_s_language	พูด​ภาษา​เดียว​กับ​พนักงาน​ของ​คุณ
+the_same_115_language_catalogue	รายการ 115 ภาษา​ชุด​เดียว​กับ​ทุก​แอป​ของ Kumkaj — ภาษา​อาหรับ​และ​อู​รดู​จาก​ขวา​ไป​ซ้าย ด้าน​ล่าง​คือ​ชื่อ​ใน​ภาษา​ของ​ตัว​เอง และ​ตัวอย่าง “อาหาร​พร้อม” ใน​ภาษา​ฮิน​ดี คุ​ชราต ทมิฬ เบ​งกา​ลี อู​รดู และ​อังกฤษ:
+same_shaping_engine_as_the	ใช้​เอน​จิน​จัด​รูป​อักษร​เดียว​กับ​แอป ตัว​อักษร​ที่​ต่อ​กัน​และ​บรรทัด​จาก​ขวา​ไป​ซ้าย​จึง​แสดง​ผล​ถูก​ต้อง
+n_07_who_makes_it	07 · ผู้​สร้าง
+made_under_gotigin	สร้าง​ภาย​ใต้ Gotigin
 trademark	เครื่องหมายการค้า
-memon_for_find_it_pronounced	ภาษา Memon แปลว่า “หามันให้เจอ” · อ่านว่า go-tee-geen
+memon_for_find_it_pronounced	ภาษา Memon แปล​ว่า “หา​มัน​ให้​เจอ” · อ่าน​ว่า go-tee-geen
 company	บริษัท
 brand	แบรนด์
-concrete_business_operating_system_apps	แอประบบปฏิบัติการธุรกิจที่ใช้งานได้จริง
+concrete_business_operating_system_apps	แอป​ระบบ​ปฏิบัติ​การ​ธุรกิจ​ที่​ใช้​งาน​ได้​จริง
 products	ผลิตภัณฑ์
-courier_restaurant_grocery_pharmacy	ขนส่งพัสดุ · ร้านอาหาร · ร้านขายของชำ · ร้านขายยา
-courier_desk_book_label_hand	เคาน์เตอร์ขนส่ง — รับฝาก ติดฉลาก ส่งมอบ เคลียร์ยอด
-restaurant_system_table_kitchen_bill	ระบบร้านอาหาร — โต๊ะ ครัว บิล ปิดวัน
-grocery_counter_sell_khata_stock	เคาน์เตอร์ร้านขายของชำ — ขาย สมุดเงินเชื่อ สต็อก สมุดรายวัน
-pharmacy_counter_batch_expiry_bill	เคาน์เตอร์ร้านยา — ล็อต วันหมดอายุ บิล ปิดวัน
-privacy	ความเป็นส่วนตัว
-terms	ข้อกำหนด
-cancellation	การยกเลิก
-cloud_shop	ร้านค้าคลาวด์
+courier_restaurant_grocery_pharmacy	ขนส่ง​พัสดุ · ร้าน​อาหาร · ร้าน​ขาย​ของชำ · ร้าน​ขาย​ยา
+courier_desk_book_label_hand	เคาน์เตอร์​ขนส่ง — รับ​ฝาก ติด​ฉลาก ส่ง​มอบ เคลียร์​ยอด
+restaurant_system_table_kitchen_bill	ระบบ​ร้าน​อาหาร — โต๊ะ ครัว บิล ปิด​วัน
+grocery_counter_sell_khata_stock	เคาน์เตอร์​ร้าน​ขาย​ของชำ — ขาย สมุด​เงิน​เชื่อ สต็​อก สมุด​ราย​วัน
+pharmacy_counter_batch_expiry_bill	เคาน์เตอร์​ร้าน​ยา — ล็อต วัน​หมด​อายุ บิล ปิด​วัน
+privacy	ความ​เป็น​ส่วน​ตัว
+terms	ข้อ​กำหนด
+cancellation	การ​ยกเลิก
+cloud_shop	ร้าน​ค้า​คลา​วด์
 account	บัญชี
-chapter_built_for_your_trade	สร้างมาเพื่อธุรกิจของคุณ
-chapter_your_books	บัญชีของคุณ
-chapter_try_it_offline	ลองแบบออฟไลน์
+chapter_built_for_your_trade	สร้าง​มา​เพื่อ​ธุรกิจ​ของ​คุณ
+chapter_your_books	บัญชี​ของ​คุณ
+chapter_try_it_offline	ลอง​แบบ​ออฟ​ไลน์
 chapter_price	ราคา
 chapter_languages	ภาษา
-chapter_who_makes_it	ผู้สร้าง
-toy_bring_back	เปิดอินเทอร์เน็ตกลับมา
+chapter_who_makes_it	ผู้​สร้าง
+toy_bring_back	เปิด​อินเทอร์เน็ต​กลับ​มา
 toy_internet_off	อินเทอร์เน็ต: ปิด
-toy_verdict_off	อินเทอร์เน็ตปิด — และไม่มีอะไรบนเคาน์เตอร์เปลี่ยนไป
+toy_verdict_off	อินเทอร์เน็ต​ปิด — และ​ไม่มี​อะไร​บน​เคาน์เตอร์​เปลี่ยน​ไป
 acct_page_title	บัญชี — Kumkaj
-acct_lede	ผลิตภัณฑ์ Kumkaj แต่ละตัวมีบัญชีของตัวเอง (และคลาวด์ของตัวเอง) เลือกธุรกิจที่คุณทำ — การเข้าสู่ระบบและการชำระเงินอยู่บนเว็บไซต์ของผลิตภัณฑ์นั้น
-acct_product_accounts	บัญชีผลิตภัณฑ์
-acct_moklanjo_blurb	บัญชีระบบขนส่งพัสดุ
-acct_khaynjo_blurb	บัญชีระบบร้านอาหาร
-acct_kirano_blurb	บัญชีเคาน์เตอร์ร้านขายของชำ
-acct_tabiyat_blurb	บัญชีเคาน์เตอร์ร้านยา
-acct_open_account	เปิดบัญชี
-shop_page_title	ร้านค้า — Kumkaj
-shop_lede	แพ็กเกจคลาวด์รายปี — ห้ารูปแบบเดียวกันสำหรับทุกธุรกิจ (ฟรีตลอดไป, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / ปี ไม่รวมภาษี หรือใบเสนอราคาแบบกำหนดเอง) คิดภาษีตอนชำระเงิน แต่ละผลิตภัณฑ์มีร้านค้าและบัญชีของตัวเอง
-shop_product_shops	ร้านค้าคลาวด์ของผลิตภัณฑ์
-shop_moklanjo_blurb	คลาวด์เคาน์เตอร์ขนส่งสำหรับ moklanjo.com
-shop_khaynjo_blurb	คลาวด์ร้านอาหารสำหรับ khaynjo.com
-shop_kirano_blurb	คลาวด์เคาน์เตอร์ร้านขายของชำสำหรับ kirano.shop
-shop_tabiyat_blurb	คลาวด์เคาน์เตอร์ร้านยาสำหรับ tabiyat.shop
-shop_open_shop	เปิดร้านค้า
+acct_lede	ผลิตภัณฑ์ Kumkaj แต่ละ​ตัว​มี​บัญชี​ของ​ตัว​เอง (และ​คลา​วด์​ของ​ตัว​เอง) เลือก​ธุรกิจ​ที่​คุณ​ทำ — การ​เข้า​สู่​ระบบ​และ​การ​ชำระ​เงิน​อยู่​บน​เว็บไซต์​ของ​ผลิตภัณฑ์​นั้น
+acct_product_accounts	บัญชี​ผลิตภัณฑ์
+acct_moklanjo_blurb	บัญชี​ระบบ​ขนส่ง​พัสดุ
+acct_khaynjo_blurb	บัญชี​ระบบ​ร้าน​อาหาร
+acct_kirano_blurb	บัญชี​เคาน์เตอร์​ร้าน​ขาย​ของชำ
+acct_tabiyat_blurb	บัญชี​เคาน์เตอร์​ร้าน​ยา
+acct_open_account	เปิด​บัญชี
+shop_page_title	ร้าน​ค้า — Kumkaj
+shop_lede	แพ็ก​เกจ​คลา​วด์​ราย​ปี — ห้า​รูป​แบบ​เดียวกัน​สำหรับ​ทุก​ธุรกิจ (ฟรี​ตลอด​ไป, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / ปี ไม่​รวม​ภาษี หรือ​ใบ​เสนอ​ราคา​แบบ​กำหนด​เอง) คิด​ภาษี​ตอน​ชำระ​เงิน แต่ละ​ผลิตภัณฑ์​มี​ร้าน​ค้า​และ​บัญชี​ของ​ตัว​เอง
+shop_product_shops	ร้าน​ค้า​คลา​วด์​ของ​ผลิตภัณฑ์
+shop_moklanjo_blurb	คลา​วด์​เคาน์เตอร์​ขนส่ง​สำหรับ moklanjo.com
+shop_khaynjo_blurb	คลา​วด์​ร้าน​อาหาร​สำหรับ khaynjo.com
+shop_kirano_blurb	คลา​วด์​เคาน์เตอร์​ร้าน​ขาย​ของชำ​สำหรับ kirano.shop
+shop_tabiyat_blurb	คลา​วด์​เคาน์เตอร์​ร้าน​ยา​สำหรับ tabiyat.shop
+shop_open_shop	เปิด​ร้าน​ค้า

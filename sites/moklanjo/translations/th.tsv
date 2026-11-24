@@ -1,254 +1,254 @@
 # Thai — ไทย (th). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ตัวอย่าง
 length	ยาว
-download_free	ดาวน์โหลดฟรี
-whatsapp_for_a_demo	ทัก WhatsApp เพื่อขอเดโม
-free_on_android_windows_and	ฟรีบน Android, Windows และ Linux
-courier_operating_system	ระบบจัดการงานขนส่งพัสดุ
-parcel_journey	เส้นทางพัสดุ
-walk_in	ลูกค้าหน้าร้าน
+download_free	ดาวน์โหลด​ฟรี
+whatsapp_for_a_demo	ทัก WhatsApp เพื่อ​ขอ​เด​โม
+free_on_android_windows_and	ฟรี​บน Android, Windows และ Linux
+courier_operating_system	ระบบ​จัดการ​งาน​ขนส่ง​พัสดุ
+parcel_journey	เส้น​ทาง​พัสดุ
+walk_in	ลูกค้า​หน้า​ร้าน
 weigh	ชั่ง
 price	ราคา
 label	ฉลาก
-hand_over	ส่งมอบ
+hand_over	ส่ง​มอบ
 track	ติดตาม
-offline	ออฟไลน์
+offline	ออฟ​ไลน์
 start	เริ่ม
-moklanjo_courier_operating_system	MOKLANJO · ระบบจัดการงานขนส่งพัสดุ
-book_move_and_settle_every	รับฝาก ขนส่ง และเคลียร์ยอดทุกพัสดุ — ระบบขนส่งพัสดุเดียวบนอุปกรณ์ของคุณเอง
-parties_books_cod_labels_awb	คู่ค้า บัญชี COD ฉลาก คลังเลข AWB การติดตาม ไรเดอร์ และการวางบิล — วงจรครบจากเคาน์เตอร์จนเคลียร์ยอด จะมีอินเทอร์เน็ตหรือไม่ก็ตาม ฟรีบนอุปกรณ์ของคุณ
-the_walk_in_loop	วงจรลูกค้าหน้าร้าน
-actual_and_volumetric_side_by	น้ำหนักจริงและน้ำหนักตามปริมาตร วางเทียบกัน
-charge	ค่าส่ง
-your_rate_card_cash_or	ตามตารางราคาของคุณ เงินสดหรือลงบัญชี
-next_booking	รับฝากรายการถัดไป
-one_tap_clears_the_counter	แตะครั้งเดียว เคาน์เตอร์ก็พร้อมรับลูกค้าคนถัดไป
-scroll_the_parcel_journey_rail	เลื่อนลง — แถบเส้นทางพัสดุด้านบนบอกว่าคุณอยู่ตรงไหนของเรื่อง
-n_2_weigh_it_right	2 · ชั่งให้ถูก
-actual_or_volumetric_whichever_is	น้ำหนักจริงหรือตามปริมาตร — ใช้ค่าที่มากกว่า ปัดตามแบบของคุณ
-try_a_box	ลองกล่อง
-domestic	ในประเทศ
-international	ต่างประเทศ
+moklanjo_courier_operating_system	MOKLANJO · ระบบ​จัดการ​งาน​ขนส่ง​พัสดุ
+book_move_and_settle_every	รับ​ฝาก ขนส่ง และ​เคลียร์​ยอด​ทุก​พัสดุ — ระบบ​ขนส่ง​พัสดุ​เดียว​บน​อุปกรณ์​ของ​คุณ​เอง
+parties_books_cod_labels_awb	คู่​ค้า บัญชี COD ฉลาก คลัง​เลข AWB การ​ติดตาม ไร​เด​อร์ และ​การ​วาง​บิล — วงจร​ครบ​จาก​เคาน์เตอร์​จน​เคลียร์​ยอด จะ​มี​อินเทอร์เน็ต​หรือ​ไม่​ก็ตาม ฟรี​บน​อุปกรณ์​ของ​คุณ
+the_walk_in_loop	วงจร​ลูกค้า​หน้า​ร้าน
+actual_and_volumetric_side_by	น้ำ​หนัก​จริง​และ​น้ำ​หนัก​ตาม​ปริมาตร วาง​เทียบ​กัน
+charge	ค่า​ส่ง
+your_rate_card_cash_or	ตาม​ตาราง​ราคา​ของ​คุณ เงินสด​หรือ​ลง​บัญชี
+next_booking	รับ​ฝาก​รายการ​ถัด​ไป
+one_tap_clears_the_counter	แตะ​ครั้ง​เดียว เคาน์เตอร์​ก็​พร้อม​รับ​ลูกค้า​คน​ถัด​ไป
+scroll_the_parcel_journey_rail	เลื่อน​ลง — แถบ​เส้น​ทาง​พัสดุ​ด้าน​บน​บอก​ว่า​คุณ​อยู่​ตรง​ไหน​ของ​เรื่อง
+n_2_weigh_it_right	2 · ชั่ง​ให้​ถูก
+actual_or_volumetric_whichever_is	น้ำ​หนัก​จริง​หรือ​ตาม​ปริมาตร — ใช้​ค่าที่​มากกว่า ปัด​ตาม​แบบ​ของ​คุณ
+try_a_box	ลอง​กล่อง
+domestic	ใน​ประเทศ
+international	ต่าง​ประเทศ
 breadth	กว้าง
 height	สูง
-weight_on_the_scale	น้ำหนักบนตาชั่ง
-chargeable_weight	น้ำหนักที่คิดค่าส่ง
-the_box_s_size_sets	ขนาดกล่องเป็นตัวกำหนดค่าส่ง
-higher_of_the_two_rounded	ใช้ค่าที่มากกว่า แล้วปัดขึ้นเป็น 0.5 kg ถัดไป
-in_the_app_the_divisor	ในแอป ร้านกำหนดตัวหาร ขั้นการปัด และหน่วย (cm หรือนิ้ว kg หรือปอนด์) ได้เอง ปุ่มต่างประเทศสลับเป็น ÷6000 สำหรับรายการเดียวโดยไม่ต้องแตะการตั้งค่า
-n_3_price_it	3 · ตั้งราคา
-your_rate_cards_your_party	ตารางราคาของคุณ ราคาเฉพาะคู่ค้า — และกำไรของคุณในทุกใบรับฝาก
-rate_card	ตารางราคา
+weight_on_the_scale	น้ำ​หนัก​บน​ตาชั่ง
+chargeable_weight	น้ำ​หนัก​ที่​คิด​ค่า​ส่ง
+the_box_s_size_sets	ขนาด​กล่อง​เป็น​ตัว​กำหนด​ค่า​ส่ง
+higher_of_the_two_rounded	ใช้​ค่าที่​มากกว่า แล้ว​ปัด​ขึ้น​เป็น 0.5 kg ถัด​ไป
+in_the_app_the_divisor	ใน​แอป ร้าน​กำหนด​ตัว​หาร ขั้น​การ​ปัด และ​หน่วย (cm หรือ​นิ้ว kg หรือ​ปอนด์) ได้​เอง ปุ่ม​ต่าง​ประเทศ​สลับ​เป็น ÷6000 สำหรับ​รายการ​เดียว​โดย​ไม่​ต้อง​แตะ​การ​ตั้ง​ค่า
+n_3_price_it	3 · ตั้ง​ราคา
+your_rate_cards_your_party	ตาราง​ราคา​ของ​คุณ ราคา​เฉพาะ​คู่​ค้า — และ​กำไร​ของ​คุณ​ใน​ทุก​ใบรับ​ฝาก
+rate_card	ตาราง​ราคา
 zone_service	โซน · บริการ
 first_0_5_kg	0.5 kg แรก
 each_0_5_kg	ทุก 0.5 kg
-local_surface	ในเมือง · ทางบก
-within_state_express	ในรัฐ · ด่วน
-metro_air	เมืองใหญ่ · ทางอากาศ
-zone_service_weight_slab	โซน × บริการ × ขั้นน้ำหนัก
-first_slab_and_each_extra	ขั้นแรกและขั้นเพิ่มแต่ละขั้น ตามโซนและบริการ
-a_consignor_s_own_card	ตารางราคาเฉพาะของผู้ส่ง
-regular_senders_get_their_rates	ผู้ส่งประจำได้ราคาของตัวเอง ตารางราคาเริ่มต้นใช้กับคนอื่นทั้งหมด
-margin_at_the_desk	เห็นกำไรที่เคาน์เตอร์
-your_sell_price_against_the	ราคาขายของคุณเทียบกับราคาของผู้ขนส่ง ในทุกใบรับฝาก
-n_4_label_it	4 · ติดฉลาก
-awb_from_your_own_number	เลข AWB จากคลังเลขของคุณเอง ติดฉลาก สแกน ค้นหา
-number_pools_per_carrier	คลังเลขแยกตามผู้ขนส่ง
-enter_each_carrier_s_start	กรอกช่วงเลขเริ่มต้น–สิ้นสุดของผู้ขนส่งแต่ละรายครั้งเดียว ทุกการรับฝากจะใช้เลขถัดไป
+local_surface	ใน​เมือง · ทาง​บก
+within_state_express	ใน​รัฐ · ด่วน
+metro_air	เมือง​ใหญ่ · ทาง​อากาศ
+zone_service_weight_slab	โซน × บริการ × ขั้น​น้ำ​หนัก
+first_slab_and_each_extra	ขั้น​แรก​และ​ขั้น​เพิ่ม​แต่ละ​ขั้น ตาม​โซน​และ​บริการ
+a_consignor_s_own_card	ตาราง​ราคา​เฉพาะ​ของ​ผู้​ส่ง
+regular_senders_get_their_rates	ผู้​ส่ง​ประจำ​ได้​ราคา​ของ​ตัว​เอง ตาราง​ราคา​เริ่ม​ต้น​ใช้​กับ​คน​อื่น​ทั้งหมด
+margin_at_the_desk	เห็น​กำไร​ที่​เคาน์เตอร์
+your_sell_price_against_the	ราคา​ขาย​ของ​คุณ​เทียบ​กับ​ราคา​ของ​ผู้​ขนส่ง ใน​ทุก​ใบรับ​ฝาก
+n_4_label_it	4 · ติด​ฉลาก
+awb_from_your_own_number	เลข AWB จาก​คลัง​เลข​ของ​คุณ​เอง ติด​ฉลาก สแกน ค้นหา
+number_pools_per_carrier	คลัง​เลข​แยก​ตาม​ผู้​ขนส่ง
+enter_each_carrier_s_start	กรอก​ช่วง​เลข​เริ่ม​ต้น–สิ้น​สุด​ของ​ผู้​ขนส่ง​แต่ละ​ราย​ครั้ง​เดียว ทุก​การ​รับ​ฝาก​จะ​ใช้​เลข​ถัด​ไป
 code_128_labels	ฉลาก Code 128
-the_awb_goes_on_the	เลข AWB พิมพ์บนกล่องเป็นบาร์โค้ดและตัวเลขธรรมดา
-scan_to_find	สแกนเพื่อค้นหา
-scan_a_label_to_open	สแกนฉลากเพื่อเปิดใบรับฝากแล้วดำเนินการต่อ
-n_5_hand_over	5 · ส่งมอบ
-hand_it_to_a_carrier	ส่งให้ผู้ขนส่ง หรือส่งไรเดอร์ของคุณเอง ระบบเดียวกัน
-into_a_carrier_bag	ใส่ถุงของผู้ขนส่ง
-the_manifest_holds_exactly_the	ใบรายการมีเฉพาะพัสดุที่คุณเลือกเท่านั้น — ทั้งหมดหรือไม่มีเลย พัสดุที่รับฝากกับผู้ขนส่งรายอื่นหลุดเข้าถุงนี้ไม่ได้
-onto_your_own_rider_s	เข้ารอบส่งของไรเดอร์ของคุณ
-pick_the_parcels_print_the	เลือกพัสดุ พิมพ์ใบรอบส่ง แล้วไรเดอร์ทำงานจากแอปเดียวกันในโหมดไรเดอร์ — มีหลักฐานการส่งด้วย
-n_6_track_and_prove	6 · ติดตามและพิสูจน์
-every_move_recorded_and_only	ทุกการเคลื่อนไหวถูกบันทึก — และเฉพาะที่สมเหตุสมผลเท่านั้น
-booked	รับฝากแล้ว
-with_carrier	อยู่กับผู้ขนส่ง
-out_for_delivery	ออกส่งแล้ว
-delivered	ส่งถึงแล้ว
-booked_with_carrier_out_for	รับฝากแล้ว → อยู่กับผู้ขนส่ง → ออกส่งแล้ว → ส่งถึงแล้ว
-failed	ส่งไม่สำเร็จ
-reason_out_again_or_return	→ เหตุผล → ออกส่งอีกครั้ง หรือตีกลับผู้ส่ง
-impossible_moves_refused	ปฏิเสธการเคลื่อนไหวที่เป็นไปไม่ได้
-delivered_returned_and_cancelled	ส่งถึงแล้ว ตีกลับ และยกเลิก เป็นสถานะสุดท้าย
-proof_of_delivery	หลักฐานการส่ง
-a_photo_and_the_receiver	รูปถ่ายและลายเซ็นผู้รับในใบรับฝาก
-failed_deliveries	การส่งที่ไม่สำเร็จ
-reasons_attempts_out_again_or	เหตุผล จำนวนครั้งที่ส่ง ออกส่งอีกครั้ง หรือตีกลับผู้ส่ง
-n_7_money_comes_home	7 · เงินกลับบ้าน
-cod_you_can_see_expected	COD ที่มองเห็นได้: ยอดที่ควรได้ ยอดที่ส่งแล้ว ยอดค้างจ่ายให้ผู้ส่งแต่ละราย
-rider_cash_end_of_run	เงินสดของไรเดอร์ เมื่อจบรอบ
-rider	ไรเดอร์
-expected	ยอดที่ควรได้
-handed_in	ยอดที่ส่งแล้ว
+the_awb_goes_on_the	เลข AWB พิมพ์​บน​กล่อง​เป็น​บาร์​โค้ด​และ​ตัวเลข​ธรรมดา
+scan_to_find	สแกน​เพื่อ​ค้นหา
+scan_a_label_to_open	สแกน​ฉลาก​เพื่อ​เปิด​ใบรับ​ฝาก​แล้ว​ดำเนิน​การ​ต่อ
+n_5_hand_over	5 · ส่ง​มอบ
+hand_it_to_a_carrier	ส่ง​ให้​ผู้​ขนส่ง หรือ​ส่ง​ไร​เด​อร์​ของ​คุณ​เอง ระบบ​เดียวกัน
+into_a_carrier_bag	ใส่​ถุง​ของ​ผู้​ขนส่ง
+the_manifest_holds_exactly_the	ใบ​รายการ​มี​เฉพาะ​พัสดุ​ที่​คุณ​เลือก​เท่านั้น — ทั้งหมด​หรือ​ไม่มี​เลย พัสดุ​ที่​รับ​ฝาก​กับ​ผู้​ขนส่ง​ราย​อื่น​หลุด​เข้า​ถุง​นี้​ไม่​ได้
+onto_your_own_rider_s	เข้า​รอบ​ส่ง​ของ​ไร​เด​อร์​ของ​คุณ
+pick_the_parcels_print_the	เลือก​พัสดุ พิมพ์​ใบ​รอบ​ส่ง แล้ว​ไร​เด​อร์​ทำงาน​จาก​แอป​เดียวกัน​ใน​โหมด​ไร​เด​อร์ — มี​หลัก​ฐาน​การ​ส่ง​ด้วย
+n_6_track_and_prove	6 · ติดตาม​และ​พิสูจน์
+every_move_recorded_and_only	ทุก​การ​เคลื่อนไหว​ถูก​บันทึก — และ​เฉพาะ​ที่​สม​เหตุ​สม​ผล​เท่านั้น
+booked	รับ​ฝาก​แล้ว
+with_carrier	อยู่​กับ​ผู้​ขนส่ง
+out_for_delivery	ออก​ส่ง​แล้ว
+delivered	ส่ง​ถึง​แล้ว
+booked_with_carrier_out_for	รับ​ฝาก​แล้ว → อยู่​กับ​ผู้​ขนส่ง → ออก​ส่ง​แล้ว → ส่ง​ถึง​แล้ว
+failed	ส่ง​ไม่​สำเร็จ
+reason_out_again_or_return	→ เหตุผล → ออก​ส่ง​อีก​ครั้ง หรือ​ตี​กลับ​ผู้​ส่ง
+impossible_moves_refused	ปฏิเสธ​การ​เคลื่อนไหว​ที่​เป็น​ไป​ไม่​ได้
+delivered_returned_and_cancelled	ส่ง​ถึง​แล้ว ตี​กลับ และ​ยกเลิก เป็น​สถานะ​สุดท้าย
+proof_of_delivery	หลัก​ฐาน​การ​ส่ง
+a_photo_and_the_receiver	รูป​ถ่าย​และ​ลาย​เซ็น​ผู้รับ​ใน​ใบรับ​ฝาก
+failed_deliveries	การ​ส่ง​ที่​ไม่​สำเร็จ
+reasons_attempts_out_again_or	เหตุผล จำนวน​ครั้ง​ที่​ส่ง ออก​ส่ง​อีก​ครั้ง หรือ​ตี​กลับ​ผู้​ส่ง
+n_7_money_comes_home	7 · เงิน​กลับ​บ้าน
+cod_you_can_see_expected	COD ที่​มอง​เห็น​ได้: ยอด​ที่​ควร​ได้ ยอด​ที่​ส่ง​แล้ว ยอด​ค้าง​จ่าย​ให้​ผู้​ส่ง​แต่ละ​ราย
+rider_cash_end_of_run	เงินสด​ของ​ไร​เด​อร์ เมื่อ​จบ​รอบ
+rider	ไร​เด​อร์
+expected	ยอด​ที่​ควร​ได้
+handed_in	ยอด​ที่​ส่ง​แล้ว
 a_14_drops	A · ส่ง 14 จุด
 b_9_drops	B · ส่ง 9 จุด
-short_200_on_rider_b	ไรเดอร์ B ขาด ₹ 200 — ระบุชื่อชัดเจน ไม่หายไปในยอดรวม
+short_200_on_rider_b	ไร​เด​อร์ B ขาด ₹ 200 — ระบุ​ชื่อ​ชัดเจน ไม่​หาย​ไป​ใน​ยอด​รวม
 cod_register	ทะเบียน COD
-collected_against_paid_out_per	ยอดที่เก็บได้เทียบกับยอดที่จ่ายออก แยกตามผู้ส่ง พร้อมรอบการโอนเงิน
-rider_settlement	เคลียร์ยอดไรเดอร์
-expected_against_handed_in_and	ยอดที่ควรได้เทียบกับยอดที่ส่งแล้ว พร้อมใบค่าคอมมิชชัน
-books_that_close	บัญชีที่ปิดได้จริง
-day_book_month_bill_per	สมุดรายวัน บิลรายเดือนแยกตามบัญชี และไฟล์ CSV สรุป GST สำหรับนักบัญชีของคุณ
-n_8_internet_down	8 · อินเทอร์เน็ตล่ม?
-keep_booking	รับฝากต่อไปได้เลย
-booking_labels_scanning_cod_and	การรับฝาก ฉลาก การสแกน COD และบัญชี ทำงานบนอุปกรณ์ของคุณทั้งหมด เมื่ออินเทอร์เน็ตหลุด ไม่มีอะไรที่เคาน์เตอร์ต้องรอ
-office_router_no_internet	เราเตอร์ในสำนักงาน: ไม่มีอินเทอร์เน็ต
-desk_still_booking	เคาน์เตอร์: ยังรับฝากอยู่
-second_counter_and_rider_phone	เคาน์เตอร์ที่สองและโทรศัพท์ไรเดอร์: เชื่อมผ่าน Wi-Fi ของสำนักงาน
-free_forever_on_your_devices	ฟรีตลอดไปบนอุปกรณ์ของคุณ
-nothing_per_rider_user_or	ไม่คิดเงินตามไรเดอร์ ผู้ใช้ หรือพัสดุ Kumkaj Cloud ที่เลือกใช้ได้: Steady ₹6k · Swift ₹12k · Priority ₹24k/ปี ไม่รวมภาษี — /shop
+collected_against_paid_out_per	ยอด​ที่​เก็บ​ได้​เทียบ​กับ​ยอด​ที่​จ่าย​ออก แยก​ตาม​ผู้​ส่ง พร้อม​รอบ​การ​โอน​เงิน
+rider_settlement	เคลียร์​ยอด​ไร​เด​อร์
+expected_against_handed_in_and	ยอด​ที่​ควร​ได้​เทียบ​กับ​ยอด​ที่​ส่ง​แล้ว พร้อม​ใบ​ค่า​คอม​มิช​ชัน
+books_that_close	บัญชี​ที่​ปิด​ได้​จริง
+day_book_month_bill_per	สมุด​ราย​วัน บิล​ราย​เดือน​แยก​ตาม​บัญชี และ​ไฟล์ CSV สรุป GST สำหรับ​นัก​บัญชี​ของ​คุณ
+n_8_internet_down	8 · อินเทอร์เน็ต​ล่ม?
+keep_booking	รับ​ฝาก​ต่อ​ไป​ได้​เลย
+booking_labels_scanning_cod_and	การ​รับ​ฝาก ฉลาก การ​สแกน COD และ​บัญชี ทำงาน​บน​อุปกรณ์​ของ​คุณ​ทั้งหมด เมื่อ​อินเทอร์เน็ต​หลุด ไม่มี​อะไร​ที่​เคาน์เตอร์​ต้อง​รอ
+office_router_no_internet	เรา​เตอร์​ใน​สำนักงาน: ไม่มี​อินเทอร์เน็ต
+desk_still_booking	เคาน์เตอร์: ยัง​รับ​ฝาก​อยู่
+second_counter_and_rider_phone	เคาน์เตอร์​ที่​สอง​และ​โทร​ศัพท์​ไร​เด​อร์: เชื่อม​ผ่าน Wi-Fi ของ​สำนักงาน
+free_forever_on_your_devices	ฟรี​ตลอด​ไป​บน​อุปกรณ์​ของ​คุณ
+nothing_per_rider_user_or	ไม่​คิด​เงิน​ตาม​ไร​เด​อร์ ผู้​ใช้ หรือ​พัสดุ Kumkaj Cloud ที่​เลือก​ใช้ได้: Steady ₹6k · Swift ₹12k · Priority ₹24k/ปี ไม่​รวม​ภาษี — /shop
 n_9_start	9 · เริ่ม
-one_courier_os_your_parcels	ระบบขนส่งพัสดุเดียว พัสดุของคุณ บัญชีของคุณ
-moklanjo_is_a_complete_courier	Moklanjo คือระบบจัดการงานขนส่งพัสดุครบวงจรภายใต้ Kumkaj — Android, Windows และ Linux ไรเดอร์ใช้แอปเดียวกันในโหมดไรเดอร์
+one_courier_os_your_parcels	ระบบ​ขนส่ง​พัสดุ​เดียว พัสดุ​ของ​คุณ บัญชี​ของ​คุณ
+moklanjo_is_a_complete_courier	Moklanjo คือ​ระบบ​จัดการ​งาน​ขนส่ง​พัสดุ​ครบ​วงจร​ภาย​ใต้ Kumkaj — Android, Windows และ Linux ไร​เด​อร์​ใช้​แอป​เดียวกัน​ใน​โหมด​ไร​เด​อร์
 trademark	เครื่องหมายการค้า
-memon_for_find_it_pronounced	ภาษา Memon แปลว่า “หามันให้เจอ” · อ่านว่า go-tee-geen
+memon_for_find_it_pronounced	ภาษา Memon แปล​ว่า “หา​มัน​ให้​เจอ” · อ่าน​ว่า go-tee-geen
 company	บริษัท
 brand	แบรนด์
-concrete_business_operating_system	แอประบบปฏิบัติการธุรกิจที่ใช้งานได้จริง
+concrete_business_operating_system	แอป​ระบบ​ปฏิบัติ​การ​ธุรกิจ​ที่​ใช้​งาน​ได้​จริง
 product	ผลิตภัณฑ์
-courier_operating_system_under	ระบบจัดการงานขนส่งพัสดุภายใต้ Kumkaj
-privacy	ความเป็นส่วนตัว
-terms	ข้อกำหนด
-cancellation	การยกเลิก
-cloud_shop	ร้านค้าคลาวด์
+courier_operating_system_under	ระบบ​จัดการ​งาน​ขนส่ง​พัสดุ​ภาย​ใต้ Kumkaj
+privacy	ความ​เป็น​ส่วน​ตัว
+terms	ข้อ​กำหนด
+cancellation	การ​ยกเลิก
+cloud_shop	ร้าน​ค้า​คลา​วด์
 account	บัญชี
-weigh_it_right	ชั่งให้ถูก
-price_it	ตั้งราคา
-label_it	ติดฉลาก
-track_and_prove	ติดตามและพิสูจน์
-money_comes_home	เงินกลับบ้าน
-internet_down	อินเทอร์เน็ตล่ม
-bead_hand	ส่งมอบ
-bead_offline_short	ออฟไลน์
+weigh_it_right	ชั่ง​ให้​ถูก
+price_it	ตั้ง​ราคา
+label_it	ติด​ฉลาก
+track_and_prove	ติดตาม​และ​พิสูจน์
+money_comes_home	เงิน​กลับ​บ้าน
+internet_down	อินเทอร์เน็ต​ล่ม
+bead_hand	ส่ง​มอบ
+bead_offline_short	ออฟ​ไลน์
 weight_cm	{n} cm
 weight_kg	{kg} kg
 weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	บนตาชั่ง: {kg} kg
-weight_scale_wins	น้ำหนักบนตาชั่งเป็นตัวกำหนดค่าส่ง
-cta_installers_note	ตัวติดตั้งจะขึ้นที่นี่เมื่อแต่ละตัวผ่านการทดสอบติดตั้งบนเครื่องใหม่ ระหว่างนี้ขอเดโมได้ทาง WhatsApp
-cta_whatsapp_soon	ช่องทางเดโมทาง WhatsApp จะเปิดเร็ว ๆ นี้ ข้อความของคุณจะเป็น: “{message}”
+weight_on_scale	บน​ตาชั่ง: {kg} kg
+weight_scale_wins	น้ำ​หนัก​บน​ตาชั่ง​เป็น​ตัว​กำหนด​ค่า​ส่ง
+cta_installers_note	ตัว​ติด​ตั้ง​จะ​ขึ้น​ที่​นี่​เมื่อ​แต่ละ​ตัว​ผ่าน​การ​ทดสอบ​ติด​ตั้ง​บน​เครื่อง​ใหม่ ระหว่าง​นี้​ขอ​เด​โม​ได้​ทาง WhatsApp
+cta_whatsapp_soon	ช่อง​ทาง​เด​โม​ทาง WhatsApp จะ​เปิด​เร็ว ๆ นี้ ข้อความ​ของ​คุณ​จะ​เป็น: “{message}”
 acct_page_title	บัญชี — Moklanjo
-acct_lede	บัญชีเดียวสำหรับเว็บไซต์และแอป — ฟอร์มเดียวกันไม่ว่าคุณจะเป็นผู้ใช้ใหม่หรือกลับมาใช้
+acct_lede	บัญชี​เดียว​สำหรับ​เว็บไซต์​และ​แอป — ฟอร์ม​เดียวกัน​ไม่​ว่า​คุณ​จะ​เป็น​ผู้​ใช้​ใหม่​หรือ​กลับ​มา​ใช้
 acct_email	อีเมล
-acct_name_optional	ชื่อ (ไม่บังคับ)
-acct_password	รหัสผ่าน
-acct_continue	ดำเนินการต่อ
-acct_forgot	ลืมรหัสผ่าน?
-acct_reset_hint	เราจะส่งลิงก์รีเซ็ตทางอีเมล ใช้ที่อยู่เดียวกับที่คุณสมัครไว้
-acct_send_reset	ส่งลิงก์รีเซ็ต
+acct_name_optional	ชื่อ (ไม่​บังคับ)
+acct_password	รหัส​ผ่าน
+acct_continue	ดำเนิน​การ​ต่อ
+acct_forgot	ลืม​รหัส​ผ่าน?
+acct_reset_hint	เรา​จะ​ส่ง​ลิงก์​รีเซ็ต​ทาง​อีเมล ใช้​ที่​อยู่​เดียว​กับ​ที่​คุณ​สมัคร​ไว้
+acct_send_reset	ส่ง​ลิงก์​รีเซ็ต
 acct_cancel	ยกเลิก
-acct_or_continue	หรือดำเนินการต่อด้วย
+acct_or_continue	หรือ​ดำเนิน​การ​ต่อ​ด้วย
 acct_phone	โทรศัพท์
-acct_mobile	เบอร์มือถือ
-acct_send_sms	ส่งรหัส SMS
+acct_mobile	เบอร์​มือ​ถือ
+acct_send_sms	ส่ง​รหัส SMS
 acct_sms_code	รหัส SMS
-acct_confirm_code	ยืนยันรหัส
-acct_signed_in	เข้าสู่ระบบแล้ว
-acct_signed_in_as	เข้าสู่ระบบในชื่อ
+acct_confirm_code	ยืนยัน​รหัส
+acct_signed_in	เข้า​สู่​ระบบ​แล้ว
+acct_signed_in_as	เข้า​สู่​ระบบ​ใน​ชื่อ
 acct_status	สถานะ
-acct_sign_in_methods	วิธีเข้าสู่ระบบ
-acct_cloud_username	ชื่อผู้ใช้คลาวด์
-acct_plan	แพ็กเกจ
-acct_resend_verify	ส่งอีเมลยืนยันอีกครั้ง
-acct_sign_out	ออกจากระบบ
-acct_cloud_sandbox	Kumkaj Cloud (แซนด์บ็อกซ์)
-acct_current_password	รหัสผ่านปัจจุบัน
-acct_email_for_password	อีเมลสำหรับเข้าสู่ระบบด้วยรหัสผ่าน
-acct_new_password	รหัสผ่านใหม่
-acct_confirm_new_password	ยืนยันรหัสผ่านใหม่
-acct_add_way	เพิ่มวิธีเข้าสู่ระบบอื่น
-acct_link_hint	เชื่อมหลายวิธีไว้กับบัญชีเดียว เพื่อให้กู้คืนการเข้าถึงได้หากวิธีใดวิธีหนึ่งใช้ไม่ได้
+acct_sign_in_methods	วิธี​เข้า​สู่​ระบบ
+acct_cloud_username	ชื่อ​ผู้​ใช้​คลา​วด์
+acct_plan	แพ็ก​เกจ
+acct_resend_verify	ส่ง​อีเมล​ยืนยัน​อีก​ครั้ง
+acct_sign_out	ออก​จาก​ระบบ
+acct_cloud_sandbox	Kumkaj Cloud (แซนด์บ็​อกซ์)
+acct_current_password	รหัส​ผ่าน​ปัจจุบัน
+acct_email_for_password	อีเมล​สำหรับ​เข้า​สู่​ระบบ​ด้วย​รหัส​ผ่าน
+acct_new_password	รหัส​ผ่าน​ใหม่
+acct_confirm_new_password	ยืนยัน​รหัส​ผ่าน​ใหม่
+acct_add_way	เพิ่ม​วิธี​เข้า​สู่​ระบบ​อื่น
+acct_link_hint	เชื่อม​หลาย​วิธี​ไว้​กับ​บัญชี​เดียว เพื่อ​ให้​กู้​คืน​การ​เข้า​ถึง​ได้​หาก​วิธี​ใด​วิธี​หนึ่ง​ใช้​ไม่​ได้
 acct_link_google	เชื่อม Google
 acct_link_microsoft	เชื่อม Microsoft
 acct_link_github	เชื่อม GitHub
-acct_link_phone	เชื่อมโทรศัพท์
-acct_send_sms_link	ส่ง SMS เพื่อเชื่อม
-acct_confirm_link_phone	ยืนยันและเชื่อมโทรศัพท์
-shop_page_title	ร้านค้า — Moklanjo
-shop_lede	แพ็กเกจคลาวด์รายปี — คิดภาษีตอนชำระเงิน แอป Moklanjo ครบชุดบนอุปกรณ์ของคุณฟรีตลอดไป ไม่มีโฆษณา
+acct_link_phone	เชื่อม​โทรศัพท์
+acct_send_sms_link	ส่ง SMS เพื่อ​เชื่อม
+acct_confirm_link_phone	ยืนยัน​และ​เชื่อม​โทรศัพท์
+shop_page_title	ร้าน​ค้า — Moklanjo
+shop_lede	แพ็ก​เกจ​คลา​วด์​ราย​ปี — คิด​ภาษี​ตอน​ชำระ​เงิน แอป Moklanjo ครบ​ชุด​บน​อุปกรณ์​ของ​คุณ​ฟรี​ตลอด​ไป ไม่มี​โฆษณา
 shop_cart	ตะกร้า
-shop_cart_empty_hint	ตะกร้าของคุณว่างอยู่ เพิ่ม Steady, Swift หรือ Priority
-shop_checkout	ชำระเงิน
+shop_cart_empty_hint	ตะกร้า​ของ​คุณ​ว่าง​อยู่ เพิ่ม Steady, Swift หรือ Priority
+shop_checkout	ชำระ​เงิน
 shop_clear	ล้าง
-shop_checkout_hint	การชำระเงินจะพาคุณเข้าสู่ระบบในหน้าบัญชีก่อน แล้วจึงเริ่มจ่ายเงิน (จำลองในแซนด์บ็อกซ์ หรือ Paddle เมื่อตั้งค่าคีย์แล้ว)
-acct_billing_hint	แพ็กเกจรายปี — เกตเวย์คิดภาษีตอนชำระเงิน การใช้งานบนเครื่องฟรีตลอดไป แบบกำหนดเองต้องขอใบเสนอราคา (อาจต่ำกว่า Steady หรือสูงกว่า Priority)
-shop_cloud_plans	แพ็กเกจคลาวด์
-acct_federated	การเข้าสู่ระบบแบบรวมศูนย์
-acct_err_invalid_email	กรอกอีเมลที่ถูกต้อง
-acct_err_weak_password	ใช้รหัสผ่านอย่างน้อย 6 ตัวอักษร
-acct_err_wrong_password	รหัสผ่านไม่ถูกต้อง
-acct_err_invalid_credential	อีเมลหรือรหัสผ่านไม่ถูกต้อง
-acct_err_popup_closed	หน้าต่างเข้าสู่ระบบถูกปิด
-acct_err_popup_cancelled	การเข้าสู่ระบบถูกยกเลิก
-acct_err_unauthorized_domain	โดเมนนี้ไม่ได้รับอนุญาตสำหรับ Firebase Auth
-acct_err_method_disabled	วิธีเข้าสู่ระบบนั้นยังไม่เปิดใช้
-acct_err_too_many	ลองหลายครั้งเกินไป โปรดลองใหม่ภายหลัง
-acct_err_phone_format	ใช้เบอร์โทรศัพท์เต็มพร้อมรหัสประเทศ (เช่น +91…)
-acct_err_sms_code	รหัส SMS ไม่ถูกต้องหรือหมดอายุแล้ว
-acct_err_no_account	ไม่มีบัญชีที่ใช้อีเมลนี้ ดำเนินการต่อเพื่อสร้างบัญชี หรือใช้วิธีอื่น
-acct_err_recent_login	เพื่อความปลอดภัย โปรดเข้าสู่ระบบอีกครั้ง แล้วลองเปลี่ยนแปลงนี้ใหม่
-acct_err_credential_in_use	วิธีเข้าสู่ระบบนั้นถูกใช้กับบัญชีอื่นแล้ว
-acct_err_email_in_use	อีเมลนั้นถูกใช้กับบัญชีอื่นแล้ว
-acct_err_already_linked	วิธีนั้นเชื่อมกับบัญชีนี้แล้ว
-acct_err_exists_other_method	มีบัญชีที่ใช้อีเมลนี้กับวิธีเข้าสู่ระบบอื่นอยู่แล้ว เข้าสู่ระบบด้วยวิธีนั้นก่อน แล้วเชื่อมวิธีนี้จากหน้าบัญชีของคุณ
-acct_err_generic	เกิดข้อผิดพลาด
-acct_method_password	อีเมลและรหัสผ่าน
-acct_pw_hint_change	เปลี่ยนรหัสผ่าน คุณจะต้องยืนยันด้วยรหัสผ่านปัจจุบัน
-acct_pw_hint_add	เพิ่มรหัสผ่านเพื่อให้เข้าสู่ระบบด้วยอีเมลได้ด้วย (มีประโยชน์เมื่อผู้ให้บริการใช้งานไม่ได้)
-acct_pw_change	เปลี่ยนรหัสผ่าน
-acct_pw_add	เพิ่มรหัสผ่าน
-acct_billing_off	ยังไม่ได้เปิดการเรียกเก็บเงินบน API คลาวด์
-acct_billing_no_provider	ยังไม่มีผู้ให้บริการเรียกเก็บเงินจริงเปิดใช้บน API คลาวด์ (มีแค่ระบบจำลองบนเครื่อง)
-price_quote	ใบเสนอราคา
-price_per_year	₹{amount}/ปี ไม่รวมภาษี
-acct_pay_received	ได้รับเงินแล้ว — กำลังอัปเดตแพ็กเกจของคุณ…
-acct_pay_declined	การชำระเงินถูกปฏิเสธหรือไม่สำเร็จ
-acct_pay_failed_detail	{detail} แพ็กเกจของคุณไม่ได้เปลี่ยน
-acct_checkout_closed	ปิดหน้าชำระเงินแล้ว — ไม่มีการชำระเงินเกิดขึ้น แพ็กเกจของคุณเหมือนเดิม
-acct_checkout_failed	ชำระเงินไม่สำเร็จ
-acct_pay_with	จ่ายด้วย {provider}
+shop_checkout_hint	การ​ชำระ​เงิน​จะ​พา​คุณ​เข้า​สู่​ระบบ​ใน​หน้า​บัญชี​ก่อน แล้ว​จึง​เริ่ม​จ่าย​เงิน (จำลอง​ใน​แซนด์บ็​อกซ์ หรือ Paddle เมื่อ​ตั้ง​ค่า​คีย์​แล้ว)
+acct_billing_hint	แพ็ก​เก​จราย​ปี — เกตเวย์​คิด​ภาษี​ตอน​ชำระ​เงิน การ​ใช้​งาน​บน​เครื่อง​ฟรี​ตลอด​ไป แบบ​กำหนด​เอง​ต้อง​ขอ​ใบ​เสนอ​ราคา (อาจ​ต่ำ​กว่า Steady หรือ​สูง​กว่า Priority)
+shop_cloud_plans	แพ็ก​เกจ​คลา​วด์
+acct_federated	การ​เข้า​สู่​ระบบ​แบบ​รวม​ศูนย์
+acct_err_invalid_email	กรอก​อีเมล​ที่​ถูก​ต้อง
+acct_err_weak_password	ใช้​รหัส​ผ่าน​อย่าง​น้อย 6 ตัว​อักษร
+acct_err_wrong_password	รหัส​ผ่าน​ไม่​ถูก​ต้อง
+acct_err_invalid_credential	อีเมล​หรือ​รหัส​ผ่าน​ไม่​ถูก​ต้อง
+acct_err_popup_closed	หน้าต่าง​เข้า​สู่​ระบบ​ถูก​ปิด
+acct_err_popup_cancelled	การ​เข้า​สู่​ระบบ​ถูก​ยกเลิก
+acct_err_unauthorized_domain	โดเมน​นี้​ไม่​ได้​รับ​อนุญาต​สำหรับ Firebase Auth
+acct_err_method_disabled	วิธี​เข้า​สู่​ระบบ​นั้น​ยัง​ไม่​เปิด​ใช้
+acct_err_too_many	ลอง​หลาย​ครั้ง​เกิน​ไป โปรด​ลอง​ใหม่​ภาย​หลัง
+acct_err_phone_format	ใช้​เบอร์​โทรศัพท์​เต็ม​พร้อม​รหัส​ประเทศ (เช่น +91…)
+acct_err_sms_code	รหัส SMS ไม่​ถูก​ต้อง​หรือ​หมด​อายุ​แล้ว
+acct_err_no_account	ไม่มี​บัญชี​ที่​ใช้​อีเมล​นี้ ดำเนิน​การ​ต่อ​เพื่อ​สร้าง​บัญชี หรือ​ใช้​วิธี​อื่น
+acct_err_recent_login	เพื่อ​ความ​ปลอดภัย โปรด​เข้า​สู่​ระบบ​อีก​ครั้ง แล้ว​ลอง​เปลี่ยนแปลง​นี้​ใหม่
+acct_err_credential_in_use	วิธี​เข้า​สู่​ระบบ​นั้น​ถูก​ใช้​กับ​บัญชี​อื่น​แล้ว
+acct_err_email_in_use	อีเมล​นั้น​ถูก​ใช้​กับ​บัญชี​อื่น​แล้ว
+acct_err_already_linked	วิธี​นั้น​เชื่อม​กับ​บัญชี​นี้​แล้ว
+acct_err_exists_other_method	มี​บัญชี​ที่​ใช้​อีเมล​นี้​กับ​วิธี​เข้า​สู่​ระบบ​อื่น​อยู่​แล้ว เข้า​สู่​ระบบ​ด้วย​วิธี​นั้น​ก่อน แล้ว​เชื่อม​วิธี​นี้​จาก​หน้า​บัญชี​ของ​คุณ
+acct_err_generic	เกิด​ข้อ​ผิด​พลาด
+acct_method_password	อีเมล​และ​รหัส​ผ่าน
+acct_pw_hint_change	เปลี่ยน​รหัส​ผ่าน คุณ​จะ​ต้อง​ยืนยัน​ด้วย​รหัส​ผ่าน​ปัจจุบัน
+acct_pw_hint_add	เพิ่ม​รหัส​ผ่าน​เพื่อ​ให้​เข้า​สู่​ระบบ​ด้วย​อีเมล​ได้​ด้วย (มี​ประโยชน์​เมื่อ​ผู้​ให้​บริการ​ใช้​งาน​ไม่​ได้)
+acct_pw_change	เปลี่ยน​รหัส​ผ่าน
+acct_pw_add	เพิ่ม​รหัส​ผ่าน
+acct_billing_off	ยัง​ไม่​ได้​เปิด​การ​เรียก​เก็บ​เงิน​บน API คลา​วด์
+acct_billing_no_provider	ยัง​ไม่มี​ผู้​ให้​บริการ​เรียก​เก็บ​เงิน​จริง​เปิด​ใช้บน API คลา​วด์ (มี​แค่​ระบบ​จำลอง​บน​เครื่อง)
+price_quote	ใบ​เสนอ​ราคา
+price_per_year	₹{amount}/ปี ไม่​รวม​ภาษี
+acct_pay_received	ได้​รับ​เงิน​แล้ว — กำลัง​อัปเดต​แพ็ก​เกจ​ของ​คุณ…
+acct_pay_declined	การ​ชำระ​เงิน​ถูก​ปฏิเสธ​หรือ​ไม่​สำเร็จ
+acct_pay_failed_detail	{detail} แพ็ก​เกจ​ของ​คุณ​ไม่​ได้​เปลี่ยน
+acct_checkout_closed	ปิด​หน้า​ชำระ​เงิน​แล้ว — ไม่มี​การ​ชำระ​เงิน​เกิด​ขึ้น แพ็ก​เกจ​ของ​คุณ​เหมือน​เดิม
+acct_checkout_failed	ชำระ​เงิน​ไม่​สำเร็จ
+acct_pay_with	จ่าย​ด้วย {provider}
 acct_plan_until	{plan} · ถึง {date}
-acct_unavailable	ไม่พร้อมใช้งาน
-acct_continue_hint	ดำเนินการต่อด้วยอีเมล ผู้ให้บริการ หรือโทรศัพท์
-acct_signed_in_fallback	(เข้าสู่ระบบแล้ว)
-acct_email_verified	ยืนยันอีเมลแล้ว
-acct_email_unverified	ยังไม่ได้ยืนยันอีเมล — ตรวจสอบกล่องจดหมาย
-acct_signed_in_phone	เข้าสู่ระบบด้วยโทรศัพท์แล้ว
-acct_none_listed	ยังไม่มี
-acct_signed_in_status	คุณเข้าสู่ระบบแล้ว
-acct_created	สร้างบัญชีแล้ว ตรวจสอบอีเมลเพื่อยืนยันเมื่อสะดวก
-acct_reset_sent	หากมีบัญชีของอีเมลนั้น ลิงก์รีเซ็ตกำลังส่งไป ตรวจสอบกล่องจดหมาย
-acct_another_method	วิธีอื่น
-acct_exists_via	มีบัญชีของ {email} ผ่าน {method} อยู่แล้ว เข้าสู่ระบบด้วยวิธีนั้นก่อน แล้วเชื่อมผู้ให้บริการนี้จากหน้าบัญชีของคุณ
-acct_enter_current_pw	กรอกรหัสผ่านปัจจุบัน
-acct_relogin_retry	ออกจากระบบแล้วเข้าสู่ระบบใหม่ จากนั้นลองอีกครั้ง
-acct_pw_mismatch	รหัสผ่านใหม่กับการยืนยันไม่ตรงกัน
-acct_pw_updated	อัปเดตรหัสผ่านแล้ว
-acct_enter_email_pw	กรอกอีเมลที่จะใช้เข้าสู่ระบบด้วยรหัสผ่าน
-acct_pw_added	เพิ่มรหัสผ่านแล้ว ตอนนี้เข้าสู่ระบบด้วยอีเมลได้ด้วย
-acct_method_linked	เชื่อมวิธีเข้าสู่ระบบแล้ว
-acct_phone_linked	เชื่อมโทรศัพท์กับบัญชีนี้แล้ว
-acct_verify_sent	ส่งอีเมลยืนยันแล้ว — ตรวจสอบกล่องจดหมาย
-shop_pricing_soon	ราคาเร็ว ๆ นี้
-shop_request_quote	ขอใบเสนอราคา
-shop_add_to_cart	ใส่ตะกร้า
-shop_notify_later	แจ้งฉันภายหลัง
-shop_included	รวมอยู่แล้ว
-shop_in_cart	{plan} อยู่ในตะกร้าของคุณ
-shop_remove	นำออก
-shop_cart_is_empty	ตะกร้าว่าง
-shop_prices_unpublished	ยังไม่ได้เผยแพร่ราคาสำหรับซื้อเองของผลิตภัณฑ์นี้ ขอใบเสนอราคาแบบกำหนดเองหรือกลับมาดูภายหลัง
-shop_cart_cleared	ล้างตะกร้าแล้ว
-plan_free_title	ฟรีตลอดไป
-plan_free_blurb	ผลิตภัณฑ์ครบชุดบนอุปกรณ์ของคุณ ไม่มีค่าคลาวด์
-plan_steady_blurb	คลาวด์แบบเรียลไทม์ · 10 GB · แบนด์วิดท์ต่ำ
-plan_swift_blurb	คลาวด์แบบเรียลไทม์ · 25 GB · แบนด์วิดท์ปานกลาง
-plan_priority_blurb	คลาวด์แบบเรียลไทม์ · 50 GB · แบนด์วิดท์มาตรฐานสูงสุด
-plan_custom_title	กำหนดเอง
-plan_custom_blurb	โควตาและแบนด์วิดท์ตามที่ตกลงกัน ใบเสนอราคาอาจต่ำกว่า Steady หรือสูงกว่า Priority
+acct_unavailable	ไม่​พร้อม​ใช้​งาน
+acct_continue_hint	ดำเนิน​การ​ต่อ​ด้วย​อีเมล ผู้​ให้​บริการ หรือ​โทรศัพท์
+acct_signed_in_fallback	(เข้า​สู่​ระบบ​แล้ว)
+acct_email_verified	ยืนยัน​อีเมล​แล้ว
+acct_email_unverified	ยัง​ไม่​ได้​ยืนยัน​อีเมล — ตรวจ​สอบ​กล่อง​จดหมาย
+acct_signed_in_phone	เข้า​สู่​ระบบ​ด้วย​โทรศัพท์​แล้ว
+acct_none_listed	ยัง​ไม่มี
+acct_signed_in_status	คุณ​เข้า​สู่​ระบบ​แล้ว
+acct_created	สร้าง​บัญชี​แล้ว ตรวจ​สอบ​อีเมล​เพื่อ​ยืนยัน​เมื่อ​สะดวก
+acct_reset_sent	หาก​มี​บัญชี​ของ​อีเมล​นั้น ลิงก์​รีเซ็ต​กำลัง​ส่ง​ไป ตรวจ​สอบ​กล่อง​จดหมาย
+acct_another_method	วิธี​อื่น
+acct_exists_via	มี​บัญชี​ของ {email} ผ่าน {method} อยู่​แล้ว เข้า​สู่​ระบบ​ด้วย​วิธี​นั้น​ก่อน แล้ว​เชื่อม​ผู้​ให้​บริการ​นี้​จาก​หน้า​บัญชี​ของ​คุณ
+acct_enter_current_pw	กรอก​รหัส​ผ่าน​ปัจจุบัน
+acct_relogin_retry	ออก​จาก​ระบบ​แล้ว​เข้า​สู่​ระบบ​ใหม่ จาก​นั้น​ลอง​อีก​ครั้ง
+acct_pw_mismatch	รหัส​ผ่าน​ใหม่​กับ​การ​ยืนยัน​ไม่​ตรง​กัน
+acct_pw_updated	อัปเดต​รหัส​ผ่าน​แล้ว
+acct_enter_email_pw	กรอก​อีเมล​ที่​จะ​ใช้​เข้า​สู่​ระบบ​ด้วย​รหัส​ผ่าน
+acct_pw_added	เพิ่ม​รหัส​ผ่าน​แล้ว ตอน​นี้​เข้า​สู่​ระบบ​ด้วย​อีเมล​ได้​ด้วย
+acct_method_linked	เชื่อม​วิธี​เข้า​สู่​ระบบ​แล้ว
+acct_phone_linked	เชื่อม​โทรศัพท์​กับ​บัญชี​นี้​แล้ว
+acct_verify_sent	ส่ง​อีเมล​ยืนยัน​แล้ว — ตรวจ​สอบ​กล่อง​จดหมาย
+shop_pricing_soon	ราคา​เร็ว ๆ นี้
+shop_request_quote	ขอ​ใบ​เสนอ​ราคา
+shop_add_to_cart	ใส่​ตะกร้า
+shop_notify_later	แจ้ง​ฉัน​ภาย​หลัง
+shop_included	รวม​อยู่​แล้ว
+shop_in_cart	{plan} อยู่​ใน​ตะกร้า​ของ​คุณ
+shop_remove	นำ​ออก
+shop_cart_is_empty	ตะกร้า​ว่าง
+shop_prices_unpublished	ยัง​ไม่​ได้​เผย​แพร่​ราคา​สำหรับ​ซื้อ​เอง​ของ​ผลิตภัณฑ์​นี้ ขอ​ใบ​เสนอ​ราคา​แบบ​กำหนด​เอง​หรือ​กลับ​มา​ดู​ภาย​หลัง
+shop_cart_cleared	ล้าง​ตะกร้า​แล้ว
+plan_free_title	ฟรี​ตลอด​ไป
+plan_free_blurb	ผลิตภัณฑ์​ครบ​ชุด​บน​อุปกรณ์​ของ​คุณ ไม่มี​ค่า​คลา​วด์
+plan_steady_blurb	คลา​วด์​แบบ​เรี​ยล​ไทม์ · 10 GB · แบน​ด์​วิด​ท์​ต่ำ
+plan_swift_blurb	คลา​วด์​แบบ​เรี​ยล​ไทม์ · 25 GB · แบน​ด์​วิด​ท์​ปาน​กลาง
+plan_priority_blurb	คลา​วด์​แบบ​เรี​ยล​ไทม์ · 50 GB · แบน​ด์​วิด​ท์​มาตรฐาน​สูงสุด
+plan_custom_title	กำหนด​เอง
+plan_custom_blurb	โควตา​และ​แบน​ด์​วิด​ท์​ตาม​ที่​ตกลง​กัน ใบ​เสนอ​ราคา​อาจ​ต่ำ​กว่า Steady หรือ​สูง​กว่า Priority

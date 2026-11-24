@@ -41,10 +41,13 @@ preference-only picker: a language whose words are not in the site's packs
 does not ship (site tests). Packs are fetched per language
 (`/i18n/<code>.tsv`), not baked into the wasm. Since 2026-11-24 all 110
 table languages are written for every site (aliases such as pt-BR / es-MX
-fold to their parent). Thai, Lao, Khmer and Burmese can still break a line
-inside a word (Makepad wraps at UAX #29 word bounds — DEV.md has the fix it
-needs). How it works and how to add copy: [`DEV.md`](DEV.md) § Languages →
-Websites.
+fold to their parent). Since the same day lines wrap at Unicode line break
+opportunities (Makepad patch `line_break_uax14`): Thai, Lao, Khmer and
+Burmese break between words (their packs mark words with U+200B,
+`scripts/mark-words.mjs`), no line starts with ، ۔ । or a dash, and RTL
+paragraphs are laid out right to left (`rtl_paragraph_direction`), so Latin
+names keep their place in an Urdu or Hebrew sentence. How it works and how
+to add copy: [`DEV.md`](DEV.md) § Languages → Websites.
 
 ------------------------------------------------------------------------
 

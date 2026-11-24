@@ -1,280 +1,280 @@
 # Lao — ລາວ (lo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ຕົວຢ່າງ
 free	ຫວ່າງ
-photo_coming	ຮູບພາບຈະມາໃນໄວໆນີ້
-get_it_on_google_play	ດາວໂຫຼດຢູ່ Google Play
-whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອຂໍເບິ່ງຕົວຢ່າງ
+photo_coming	ຮູບພາບ​ຈະ​ມາ​ໃນ​ໄວໆ​ນີ້
+get_it_on_google_play	ດາວ​ໂຫຼດຢູ່ Google Play
+whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ
 menus	ເມນູ
-how_it_works	ວິທີການເຮັດວຽກ
+how_it_works	ວິທີການ​ເຮັດວຽກ
 features	ຄຸນສົມບັດ
-offline	ອອບລາຍ
+offline	ອອບ​ລາຍ
 pricing	ລາຄາ
-faq	ຄຳຖາມທີ່ພົບເລື້ອຍ
-login	ເຂົ້າສູ່ລະບົບ
-get_it_free	ຮັບຟຣີ
-restaurant_pos_free_forever	POS ຮ້ານອາຫານ · ຟຣີຕະຫຼອດໄປ
-lunch_rush_no_internet_no	ຊ່ວງອາຫານທ່ຽງຄົນຫຼາຍ ບໍ່ມີອິນເຕີເນັດ ບໍ່ມີບັນຫາ
-khaynjo_runs_your_floor_kitchen	Khaynjo ຊ່ວຍບໍລິຫານຫ້ອງອາຫານ ເຮືອນຄົວ ແລະ ເຄົາເຕີຂອງທ່ານ ເທິງອຸປະກອນທີ່ທ່ານມີຢູ່ແລ້ວ — ຈາກໂຕະສູ່ເຮືອນຄົວ ຈາກເຮືອນຄົວສູ່ໃບບິນ ຈະມີອິນເຕີເນັດ ຫຼື ບໍ່ກໍຕາມ
-android_on_google_play_today	Android ມີໃຫ້ໃນ Google Play ມື້ນີ້ · ແພັກເກດ Windows ແລະ Linux ກຳລັງຈະມາ
-works_with_no_internet	ໃຊ້ງານໄດ້ໂດຍບໍ່ຕ້ອງມີອິນເຕີເນັດ
-your_books_stay_on_your	ບັນຊີຂອງທ່ານຢູ່ເທິງອຸປະກອນຂອງທ່ານ
-n_115_languages_on_screen	ໜ້າຈໍຮອງຮັບ 115 ພາສາ
-your_floor_at_a_glance	ເຫັນຫ້ອງອາຫານທັງໝົດໃນພິບຕາ
-tap_a_table_to_walk	ແຕະໂຕະເພື່ອເບິ່ງການມາໃຊ້ບໍລິການຕັ້ງແຕ່ຕົ້ນຈົນຈົບ ສີ ແລະ ຄຳເວົ້າຄືກັບໃນແອັບທຸກຢ່າງ — ແລະ ໂຕະຈະຫວ່າງກໍຕໍ່ເມື່ອຊຳລະເງິນແລ້ວເທົ່ານັ້ນ
-every_country	ທຸກປະເທດ
-every_country_at_your_counter	ທຸກປະເທດຢູ່ເຄົາເຕີຂອງທ່ານ
-one_famous_dish_from_every	ອາຫານຂຶ້ນຊື່ໜຶ່ງຈານຈາກທຸກປະເທດ — ຊື່ພາສາອັງກິດ ຊື່ໃນຕົວອັກສອນຂອງປະເທດນັ້ນ ແລະ ຊື່ອາຫານເປັນພາສາອັງກິດ ນຳຄຳເຫຼົ່ານີ້ໄປໃສ່ໃນເມນູຂອງທ່ານໄດ້ ໂລກຈະເຄື່ອນຜ່ານໄປເລື້ອຍໆ ຢຸດຊົ່ວຄາວ ຫຼື ຄົ້ນຫາເມື່ອຢາກເບິ່ງໃຫ້ຊັດ
-find_a_country_or_dish	ຄົ້ນຫາປະເທດ ຫຼື ອາຫານ — ເຊັ່ນ India, biryani, Japan
-one_famous_dish_per_country	ອາຫານຂຶ້ນຊື່ປະເທດລະໜຶ່ງຈານ — ຂະບວນແຫ່ວົນອ້ອມທົ່ວໂລກ
-how_a_service_runs	ການບໍລິການດຳເນີນໄປແນວໃດ
-one_table_start_to_finish	ໂຕະດຽວ ຕັ້ງແຕ່ຕົ້ນຈົນຈົບ
-watch_a_table_go_from	ເບິ່ງໂຕະໜຶ່ງຕັ້ງແຕ່ລູກຄ້ານັ່ງຈົນຈ່າຍເງິນແລ້ວ — ຂັ້ນຕອນ ແລະ ສີດຽວກັບທີ່ພະນັກງານເຫັນໃນແອັບ
-occupied	ມີລູກຄ້າ
-in_kitchen	ຢູ່ໃນເຮືອນຄົວ
-food_ready	ອາຫານພ້ອມ
-served	ເສີບແລ້ວ
-bill_printed	ພິມໃບບິນແລ້ວ
-paid	ຈ່າຍແລ້ວ
-seat_the_table_take_the	ພາລູກຄ້ານັ່ງ ຮັບອໍເດີ
-mark_the_table_occupied_the	ໝາຍໂຕະເປັນ “ມີລູກຄ້າ” ທັນທີທີ່ລູກຄ້ານັ່ງ ເພີ່ມອາຫານ ເລືອກຂະໜາດ ເພີ່ມເຄື່ອງເສີມ ແລະ ພິມບັນທຶກເຖິງເຮືອນຄົວ — ໄດ້ທີ່ໂຕະເລີຍ
-sizes_and_add_ons	ຂະໜາດ ແລະ ເຄື່ອງເສີມ
-pick_one_size_add_optional	ເລືອກໜຶ່ງຂະໜາດ ແລ້ວເພີ່ມເຄື່ອງເສີມໄດ້ຕາມຈຳນວນສູງສຸດທີ່ທ່ານຕັ້ງໄວ້
-a_note_per_dish	ບັນທຶກຕໍ່ໜຶ່ງຈານ
-less_spicy_travels_with_the	“ເຜັດໜ້ອຍ” ຈະໄປພ້ອມກັບຈານທີ່ເປັນຂອງມັນ
-t4_occupied	T4 · ມີລູກຄ້າ
-note_less_salt	ບັນທຶກ: ເຄັມໜ້ອຍ
-one_ticket_per_kitchen_station	ໜຶ່ງໃບສັ່ງຕໍ່ສະຖານີເຮືອນຄົວ
-send_the_order_and_each	ສົ່ງອໍເດີແລ້ວແຕ່ລະສະຖານີຈະໄດ້ສະເພາະຈານຂອງຕົນເອງ — ມີເລກລຳດັບປະຈຳວັນ ພ້ອມໂຕະ ພະນັກງານເສີບ ແລະ ບັນທຶກທຸກຂໍ້ ບໍ່ມີລາຄາເດັດຂາດ: ເຮືອນຄົວເຮັດອາຫານ ເຄົາເຕີອອກໃບບິນ
-prints_itself	ພິມເອງ
-send_and_the_ticket_prints	ກົດສົ່ງ ໃບສັ່ງຈະພິມທີ່ສະຖານີທີ່ຖືກຕ້ອງ — ບໍ່ຕ້ອງມີໃຜຍ່າງໄປສົ່ງ
-example_ticket	ຕົວຢ່າງໃບສັ່ງ
-the_kitchen_sees_what_to	ເຮືອນຄົວເຫັນວ່າຕ້ອງເຮັດຫຍັງຕອນນີ້
-on_the_kitchen_screen_tickets	ເທິງຈໍເຮືອນຄົວ ໃບສັ່ງເລື່ອນຈາກ ໃໝ່ → ກຳລັງກະກຽມ → ພ້ອມ ດ້ວຍການແຕະເທື່ອດຽວ ໃບສັ່ງທີ່ລໍຖ້າດົນສີຈະອຸ່ນຂຶ້ນ “ຕ້ອງເຮັດຕອນນີ້” ນັບທຸກຈານທີ່ລໍຖ້າຢູ່ ແລະ ພັກຈານຫຼັກໄວ້ໄດ້ຈົນກວ່າອາຫານເລີ່ມຕົ້ນຈະອອກໄປ
+faq	ຄຳ​ຖາມ​ທີ່​ພົບ​ເລື້ອຍ
+login	ເຂົ້າສູ່​ລະບົບ
+get_it_free	ຮັບ​ຟຣີ
+restaurant_pos_free_forever	POS ຮ້ານ​ອາຫານ · ຟຣີ​ຕະຫຼອດໄປ
+lunch_rush_no_internet_no	ຊ່ວງ​ອາຫານ​ທ່ຽງ​ຄົນ​ຫຼາຍ ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ ບໍ່ມີ​ບັນຫາ
+khaynjo_runs_your_floor_kitchen	Khaynjo ຊ່ວຍ​ບໍລິຫານ​ຫ້ອງ​ອາຫານ ເຮືອນຄົວ ແລະ ເຄົາ​ເຕີ​ຂອງ​ທ່ານ ເທິງ​ອຸປະກອນ​ທີ່​ທ່ານ​ມີຢູ່​ແລ້ວ — ຈາກ​ໂຕະ​ສູ່​ເຮືອນຄົວ ຈາກ​ເຮືອນຄົວ​ສູ່​ໃບ​ບິນ ຈະ​ມີ​ອິນ​ເຕີ​ເນັດ ຫຼື ບໍ່​ກໍຕາມ
+android_on_google_play_today	Android ມີ​ໃຫ້​ໃນ Google Play ມື້ນີ້ · ແພັກ​ເກດ Windows ແລະ Linux ກຳລັງຈະ​ມາ
+works_with_no_internet	ໃຊ້ງານ​ໄດ້​ໂດຍ​ບໍ່​ຕ້ອງ​ມີ​ອິນ​ເຕີ​ເນັດ
+your_books_stay_on_your	ບັນຊີ​ຂອງ​ທ່ານ​ຢູ່​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+n_115_languages_on_screen	ໜ້າຈໍ​ຮອງຮັບ 115 ພາສາ
+your_floor_at_a_glance	ເຫັນ​ຫ້ອງ​ອາຫານ​ທັງໝົດ​ໃນ​ພິບຕາ
+tap_a_table_to_walk	ແຕະ​ໂຕະ​ເພື່ອ​ເບິ່ງ​ການມາ​ໃຊ້​ບໍລິການ​ຕັ້ງແຕ່​ຕົ້ນ​ຈົນ​ຈົບ ສີ ແລະ ຄຳເວົ້າ​ຄືກັບ​ໃນ​ແອັບ​ທຸກ​ຢ່າງ — ແລະ ໂຕະ​ຈະ​ຫວ່າງ​ກໍ​ຕໍ່ເມື່ອ​ຊຳລະ​ເງິນ​ແລ້ວ​ເທົ່ານັ້ນ
+every_country	ທຸກ​ປະເທດ
+every_country_at_your_counter	ທຸກ​ປະເທດ​ຢູ່​ເຄົາ​ເຕີ​ຂອງ​ທ່ານ
+one_famous_dish_from_every	ອາຫານ​ຂຶ້ນ​ຊື່​ໜຶ່ງ​ຈານ​ຈາກ​ທຸກ​ປະເທດ — ຊື່​ພາສາ​ອັງກິດ ຊື່​ໃນ​ຕົວ​ອັກສອນ​ຂອງ​ປະເທດ​ນັ້ນ ແລະ ຊື່​ອາຫານ​ເປັນ​ພາສາ​ອັງກິດ ນຳ​ຄຳ​ເຫຼົ່ານີ້​ໄປ​ໃສ່​ໃນ​ເມ​ນູ​ຂອງ​ທ່ານ​ໄດ້ ໂລກ​ຈະ​ເຄື່ອນ​ຜ່ານ​ໄປ​ເລື້ອຍໆ ຢຸດ​ຊົ່ວຄາວ ຫຼື ຄົ້ນຫາ​ເມື່ອ​ຢາກ​ເບິ່ງ​ໃຫ້​ຊັດ
+find_a_country_or_dish	ຄົ້ນຫາ​ປະເທດ ຫຼື ອາຫານ — ເຊັ່ນ India, biryani, Japan
+one_famous_dish_per_country	ອາຫານ​ຂຶ້ນ​ຊື່​ປະເທດ​ລະ​ໜຶ່ງ​ຈານ — ຂະບວນແຫ່​ວົນ​ອ້ອມ​ທົ່ວໂລກ
+how_a_service_runs	ການ​ບໍລິການ​ດຳເນີນ​ໄປ​ແນວ​ໃດ
+one_table_start_to_finish	ໂຕະ​ດຽວ ຕັ້ງແຕ່​ຕົ້ນ​ຈົນ​ຈົບ
+watch_a_table_go_from	ເບິ່ງ​ໂຕະ​ໜຶ່ງ​ຕັ້ງແຕ່​ລູກຄ້າ​ນັ່ງ​ຈົນ​ຈ່າຍເງິນ​ແລ້ວ — ຂັ້ນ​ຕອນ ແລະ ສີ​ດຽວ​ກັບ​ທີ່​ພະນັກງານ​ເຫັນ​ໃນ​ແອັບ
+occupied	ມີ​ລູກຄ້າ
+in_kitchen	ຢູ່ໃນ​ເຮືອນຄົວ
+food_ready	ອາຫານ​ພ້ອມ
+served	ເສີບ​ແລ້ວ
+bill_printed	ພິມ​ໃບ​ບິນ​ແລ້ວ
+paid	ຈ່າຍ​ແລ້ວ
+seat_the_table_take_the	ພາ​ລູກຄ້າ​ນັ່ງ ຮັບ​ອໍ​ເດີ
+mark_the_table_occupied_the	ໝາຍ​ໂຕະ​ເປັນ “ມີ​ລູກຄ້າ” ທັນທີ​ທີ່​ລູກຄ້າ​ນັ່ງ ເພີ່ມ​ອາຫານ ເລືອກ​ຂະໜາດ ເພີ່ມ​ເຄື່ອງ​ເສີມ ແລະ ພິມ​ບັນທຶກ​ເຖິງ​ເຮືອນຄົວ — ໄດ້​ທີ່​ໂຕະ​ເລີຍ
+sizes_and_add_ons	ຂະໜາດ ແລະ ເຄື່ອງ​ເສີມ
+pick_one_size_add_optional	ເລືອກ​ໜຶ່ງ​ຂະໜາດ ແລ້ວ​ເພີ່ມ​ເຄື່ອງ​ເສີມ​ໄດ້​ຕາມ​ຈຳນວນ​ສູງສຸດ​ທີ່​ທ່ານ​ຕັ້ງ​ໄວ້
+a_note_per_dish	ບັນທຶກ​ຕໍ່​ໜຶ່ງ​ຈານ
+less_spicy_travels_with_the	“ເຜັດ​ໜ້ອຍ” ຈະ​ໄປ​ພ້ອມກັບ​ຈານ​ທີ່​ເປັນ​ຂອງ​ມັນ
+t4_occupied	T4 · ມີ​ລູກຄ້າ
+note_less_salt	ບັນທຶກ: ເຄັມ​ໜ້ອຍ
+one_ticket_per_kitchen_station	ໜຶ່ງ​ໃບສັ່ງ​ຕໍ່​ສະຖານີ​ເຮືອນຄົວ
+send_the_order_and_each	ສົ່ງ​ອໍ​ເດີ​ແລ້ວແຕ່​ລະ​ສະຖານີ​ຈະ​ໄດ້​ສະເພາະ​ຈານ​ຂອງ​ຕົນເອງ — ມີ​ເລກລຳດັບ​ປະຈຳວັນ ພ້ອມ​ໂຕະ ພະນັກງານ​ເສີບ ແລະ ບັນທຶກ​ທຸກ​ຂໍ້ ບໍ່ມີ​ລາຄາ​ເດັດຂາດ: ເຮືອນຄົວ​ເຮັດ​ອາຫານ ເຄົາ​ເຕີ​ອອກ​ໃບ​ບິນ
+prints_itself	ພິມ​ເອງ
+send_and_the_ticket_prints	ກົດ​ສົ່ງ ໃບສັ່ງ​ຈະ​ພິມ​ທີ່​ສະຖານີ​ທີ່​ຖືກຕ້ອງ — ບໍ່​ຕ້ອງ​ມີ​ໃຜ​ຍ່າງໄປ​ສົ່ງ
+example_ticket	ຕົວຢ່າງ​ໃບສັ່ງ
+the_kitchen_sees_what_to	ເຮືອນຄົວ​ເຫັນ​ວ່າ​ຕ້ອງ​ເຮັດຫຍັງ​ຕອນນີ້
+on_the_kitchen_screen_tickets	ເທິງ​ຈໍ​ເຮືອນຄົວ ໃບສັ່ງ​ເລື່ອນ​ຈາກ ໃໝ່ → ກຳລັງ​ກະກຽມ → ພ້ອມ ດ້ວຍ​ການ​ແຕະ​ເທື່ອ​ດຽວ ໃບສັ່ງ​ທີ່​ລໍຖ້າ​ດົນ​ສີ​ຈະ​ອຸ່ນ​ຂຶ້ນ “ຕ້ອງ​ເຮັດ​ຕອນນີ້” ນັບ​ທຸກ​ຈານ​ທີ່​ລໍຖ້າ​ຢູ່ ແລະ ພັກ​ຈານ​ຫຼັກ​ໄວ້​ໄດ້​ຈົນກວ່າ​ອາຫານ​ເລີ່ມຕົ້ນ​ຈະ​ອອກໄປ
 new	ໃໝ່
-preparing	ກຳລັງກະກຽມ
+preparing	ກຳລັງ​ກະກຽມ
 ready	ພ້ອມ
-example_kitchen_screen	ຕົວຢ່າງຈໍເຮືອນຄົວ
-settle_any_way_the_guest	ຮັບຊຳລະໄດ້ທຸກແບບທີ່ລູກຄ້າຈ່າຍ
-cash_with_change_to_return	ເງິນສົດພ້ອມເງິນທອນ UPI ທີ່ມີຍອດເງິນໃນ QR ຢູ່ແລ້ວ ຈ່າຍບາງສ່ວນ ຫຼື ຕິດໜີ້ໄວ້ໃນປຶ້ມໜີ້ຂອງລູກຄ້າ ແຍກຈ່າຍຕາມລາຍການ ຕາມບ່ອນນັ່ງ ຫຼື ຫານເທົ່າກັນ ໂຕະຈະຫວ່າງກໍຕໍ່ເມື່ອຊຳລະໃບບິນແລ້ວເທົ່ານັ້ນ
-tips_stay_apart	ທິບແຍກໄວ້ຕ່າງຫາກ
-a_tip_is_recorded_on	ທິບບັນທຶກແຍກ — ບໍ່ປົນກັບຍອດຂາຍເລີຍ
-t4_bill_printed	T4 · ພິມໃບບິນແລ້ວ
-bill	ໃບບິນ
-customer_paid_cash	ລູກຄ້າຈ່າຍ (ເງິນສົດ)
+example_kitchen_screen	ຕົວຢ່າງ​ຈໍ​ເຮືອນຄົວ
+settle_any_way_the_guest	ຮັບ​ຊຳລະ​ໄດ້​ທຸກ​ແບບ​ທີ່​ລູກຄ້າ​ຈ່າຍ
+cash_with_change_to_return	ເງິນສົດ​ພ້ອມ​ເງິນທອນ UPI ທີ່ມີ​ຍອດ​ເງິນ​ໃນ QR ຢູ່ແລ້ວ ຈ່າຍ​ບາງ​ສ່ວນ ຫຼື ຕິດ​ໜີ້​ໄວ້​ໃນ​ປຶ້ມ​ໜີ້​ຂອງ​ລູກຄ້າ ແຍກ​ຈ່າຍ​ຕາມ​ລາຍການ ຕາມ​ບ່ອນນັ່ງ ຫຼື ຫານ​ເທົ່າກັນ ໂຕະ​ຈະ​ຫວ່າງ​ກໍ​ຕໍ່ເມື່ອ​ຊຳລະ​ໃບ​ບິນ​ແລ້ວ​ເທົ່ານັ້ນ
+tips_stay_apart	ທິບ​ແຍກ​ໄວ້​ຕ່າງຫາກ
+a_tip_is_recorded_on	ທິບ​ບັນທຶກ​ແຍກ — ບໍ່​ປົນ​ກັບ​ຍອດ​ຂາຍ​ເລີຍ
+t4_bill_printed	T4 · ພິມ​ໃບ​ບິນ​ແລ້ວ
+bill	ໃບ​ບິນ
+customer_paid_cash	ລູກຄ້າ​ຈ່າຍ (ເງິນສົດ)
 return_to_customer	ເງິນທອນ
-close_the_day_you_can	ປິດມື້ທີ່ເຊື່ອຖືໄດ້
-count_the_drawer_against_the	ນັບລິ້ນຊັກທຽບກັບເງິນທອນຕັ້ງຕົ້ນ ເງິນສົດທີ່ຮັບ ທິບ ແລະ ເງິນສົດທີ່ຈ່າຍອອກ — ຂາດ ຫຼື ເກີນສະແດງຊັດເຈນ ພິມໃບປິດກະ ແລ້ວເປີດບົດລາຍງານປະຈຳວັນຕາມພະນັກງານ ປະເພດອໍເດີ ຊົ່ວໂມງ ແລະ ຈານ ພ້ອມລາຍການຍົກເລີກ ຂອງແຖມ ແລະ ທິບ
-shift_close	ປິດກະ
-opening_float	ເງິນທອນຕັ້ງຕົ້ນ
-cash_taken	+ ເງິນສົດທີ່ຮັບ
-cash_tips	+ ທິບເງິນສົດ
-cash_paid_out	− ເງິນສົດທີ່ຈ່າຍອອກ
-expected_in_the_drawer	ຍອດທີ່ຄວນມີໃນລິ້ນຊັກ
-counted	ຍອດທີ່ນັບໄດ້
+close_the_day_you_can	ປິດ​ມື້​ທີ່​ເຊື່ອຖື​ໄດ້
+count_the_drawer_against_the	ນັບ​ລິ້ນ​ຊັກ​ທຽບ​ກັບ​ເງິນທອນ​ຕັ້ງຕົ້ນ ເງິນສົດ​ທີ່​ຮັບ ທິບ ແລະ ເງິນສົດ​ທີ່​ຈ່າຍ​ອອກ — ຂາດ ຫຼື ເກີນ​ສະແດງ​ຊັດເຈນ ພິມ​ໃບ​ປິດ​ກະ ແລ້ວ​ເປີດ​ບົດ​ລາຍງານ​ປະຈຳວັນ​ຕາມ​ພະນັກງານ ປະເພດ​ອໍ​ເດີ ຊົ່ວໂມງ ແລະ ຈານ ພ້ອມ​ລາຍການ​ຍົກເລີກ ຂອງ​ແຖມ ແລະ ທິບ
+shift_close	ປິດ​ກະ
+opening_float	ເງິນທອນ​ຕັ້ງຕົ້ນ
+cash_taken	+ ເງິນສົດ​ທີ່​ຮັບ
+cash_tips	+ ທິບ​ເງິນສົດ
+cash_paid_out	− ເງິນສົດ​ທີ່​ຈ່າຍ​ອອກ
+expected_in_the_drawer	ຍອດ​ທີ່​ຄວນ​ມີ​ໃນ​ລິ້ນ​ຊັກ
+counted	ຍອດ​ທີ່​ນັບ​ໄດ້
 short	ຂາດ
-everything_else_the_floor_needs	ທຸກຢ່າງທີ່ຫ້ອງອາຫານຕ້ອງການ
-built_for_a_real_service	ສ້າງມາເພື່ອການບໍລິການແທ້
-the_changes_that_happen_every	ການປ່ຽນແປງທີ່ເກີດຂຶ້ນທຸກຄາບທ່ຽງ — ຈັດການຢ່າງໂປ່ງໃສ ເກັບໄວ້ວ່າໃຜ ເມື່ອໃດ ແລະ ເປັນຫຍັງ
-move_and_merge_tables	ຍ້າຍ ແລະ ລວມໂຕະ
-guests_change_tables_the_order	ລູກຄ້າຍ້າຍໂຕະ — ອໍເດີ ແລະ ເວລາທີ່ນັ່ງຍ້າຍຕາມໄປນຳ ສອງໂຕະ ໜຶ່ງໃບບິນ
-cancel_after_the_kot	ຍົກເລີກຫຼັງສົ່ງໃບສັ່ງເຮືອນຄົວ
-with_a_reason_cooked_or	ພ້ອມເຫດຜົນ ເຮັດໄປແລ້ວ ຫຼື ຍັງ ແລະ ໃຜອະນຸມັດ ເຮືອນຄົວຈະໄດ້ຮັບໃບຍົກເລີກ
-complimentary_dishes	ອາຫານແຖມຟຣີ
-a_comp_stays_on_the	ອາຫານແຖມຢູ່ໃນໃບບິນທີ່ ₹ 0 ພ້ອມເຫດຜົນ ແລະ ຜູ້ອະນຸມັດ
-rights_per_person	ສິດທິລາຍບຸກຄົນ
-each_action_is_allowed_allowed	ແຕ່ລະການກະທຳ ອະນຸຍາດ ອະນຸຍາດເມື່ອໃຊ້ PIN ຜູ້ຈັດການ ຫຼື ບໍ່ອະນຸຍາດ — ກຳນົດເທື່ອລະຄົນ
-your_menu_your_words	ເມນູຂອງທ່ານ ຄຳຂອງທ່ານ
-search_by_name_or_short	ຄົ້ນຫາດ້ວຍຊື່ ຫຼື ລະຫັດສັ້ນ ພ້ອມຊື່ເອີ້ນອື່ນໃນພາສາອື່ນ — ພິມ “ptk” ກໍພົບ Paneer tikka
-area_prices_and_happy_hour	ລາຄາຕາມໂຊນ ແລະ ຊົ່ວໂມງຫຼຸດລາຄາ
-a_dearer_price_in_the	ລາຄາສູງກວ່າໃນຫ້ອງແອ ເມນູອາຫານເຊົ້າ ແລະ ລາຄາຊົ່ວໂມງຫຼຸດລາຄາຕາມເວລາ
-customer_khata	ປຶ້ມໜີ້ລູກຄ້າ
-part_payments_and_due_go	ການຈ່າຍບາງສ່ວນ ແລະ ຍອດຄ້າງຈະລົງບັນຊີລູກຄ້າໃນຝ່າຍ ແລ້ວຄ່ອຍຊຳລະພາຍຫຼັງ
-reports_that_answer_questions	ບົດລາຍງານທີ່ຕອບຄຳຖາມໄດ້
-sales_by_staff_order_type	ຍອດຂາຍຕາມພະນັກງານ ປະເພດອໍເດີ ຊົ່ວໂມງ ແລະ ຈານ — ພ້ອມລາຍການຍົກເລີກ ຂອງແຖມ ແລະ ທິບ
-start_with_a_menu	ເລີ່ມຈາກເມນູ
-your_menu_ready_in_minutes	ເມນູຂອງທ່ານພ້ອມໃນບໍ່ເທົ່າໃດນາທີ
-set_up_your_counter_and	ຕັ້ງຄ່າເຄົາເຕີແລ້ວເລືອກເມນູເລີ່ມຕົ້ນທີ່ມີຮູບພາບ — ຈາກນັ້ນປ່ຽນຊື່ ລາຄາ ແລະ ລະຫັດເປັນຂອງທ່ານເອງ ດາວໂຫຼດຟຣີທີ່ khaynjo.com
-starter_menu	ເມນູເລີ່ມຕົ້ນ
-khaynjo_starter_menu	ເມນູເລີ່ມຕົ້ນ Khaynjo
-world_cuisines_japanese_mexican	ອາຫານນານາຊາດ — ຍີ່ປຸ່ນ ເມັກຊິໂກ ອີຕາລີ ອິນເດຍ ໄທ ແລະ ອື່ນໆ — ທຸກຈານມີຮູບພາບ
+everything_else_the_floor_needs	ທຸກ​ຢ່າງ​ທີ່​ຫ້ອງ​ອາຫານ​ຕ້ອງການ
+built_for_a_real_service	ສ້າງ​ມາ​ເພື່ອ​ການ​ບໍລິການ​ແທ້
+the_changes_that_happen_every	ການປ່ຽນແປງ​ທີ່​ເກີດຂຶ້ນ​ທຸກ​ຄາບ​ທ່ຽງ — ຈັດການ​ຢ່າງ​ໂປ່ງໃສ ເກັບໄວ້​ວ່າ​ໃຜ ເມື່ອໃດ ແລະ ເປັນຫຍັງ
+move_and_merge_tables	ຍ້າຍ ແລະ ລວມ​ໂຕະ
+guests_change_tables_the_order	ລູກຄ້າ​ຍ້າຍ​ໂຕະ — ອໍ​ເດີ ແລະ ເວລາ​ທີ່​ນັ່ງ​ຍ້າຍ​ຕາມ​ໄປ​ນຳ ສອງ​ໂຕະ ໜຶ່ງ​ໃບ​ບິນ
+cancel_after_the_kot	ຍົກເລີກ​ຫຼັງ​ສົ່ງ​ໃບສັ່ງ​ເຮືອນຄົວ
+with_a_reason_cooked_or	ພ້ອມ​ເຫດຜົນ ເຮັດ​ໄປ​ແລ້ວ ຫຼື ຍັງ ແລະ ໃຜ​ອະນຸມັດ ເຮືອນຄົວ​ຈະ​ໄດ້ຮັບ​ໃບ​ຍົກເລີກ
+complimentary_dishes	ອາ​ຫານ​ແຖມ​ຟຣີ
+a_comp_stays_on_the	ອາຫານ​ແຖມ​ຢູ່ໃນ​ໃບ​ບິນ​ທີ່ ₹ 0 ພ້ອມ​ເຫດຜົນ ແລະ ຜູ້​ອະນຸມັດ
+rights_per_person	ສິດທິ​ລາຍບຸກຄົນ
+each_action_is_allowed_allowed	ແຕ່ລະ​ການ​ກະທຳ ອະນຸຍາດ ອະນຸຍາດ​ເມື່ອ​ໃຊ້ PIN ຜູ້ຈັດການ ຫຼື ບໍ່​ອະນຸຍາດ — ກຳນົດ​ເທື່ອລະ​ຄົນ
+your_menu_your_words	ເມ​ນູ​ຂອງ​ທ່ານ ຄຳ​ຂອງ​ທ່ານ
+search_by_name_or_short	ຄົ້ນຫາ​ດ້ວຍ​ຊື່ ຫຼື ລະຫັດ​ສັ້ນ ພ້ອມ​ຊື່​ເອີ້ນ​ອື່ນ​ໃນ​ພາສາ​ອື່ນ — ພິມ “ptk” ກໍ​ພົບ Paneer tikka
+area_prices_and_happy_hour	ລາຄາ​ຕາມ​ໂຊນ ແລະ ຊົ່ວໂມງ​ຫຼຸດລາຄາ
+a_dearer_price_in_the	ລາຄາ​ສູງ​ກວ່າ​ໃນ​ຫ້ອງ​ແອ ເມ​ນູ​ອາຫານ​ເຊົ້າ ແລະ ລາຄາ​ຊົ່ວໂມງ​ຫຼຸດລາຄາ​ຕາມ​ເວລາ
+customer_khata	ປຶ້ມ​ໜີ້​ລູກຄ້າ
+part_payments_and_due_go	ການ​ຈ່າຍ​ບາງ​ສ່ວນ ແລະ ຍອດ​ຄ້າງ​ຈະ​ລົງ​ບັນຊີ​ລູກຄ້າ​ໃນ​ຝ່າຍ ແລ້ວ​ຄ່ອຍ​ຊຳລະ​ພາຍຫຼັງ
+reports_that_answer_questions	ບົດ​ລາຍງານ​ທີ່​ຕອບ​ຄຳ​ຖາມ​ໄດ້
+sales_by_staff_order_type	ຍອດ​ຂາຍ​ຕາມ​ພະນັກງານ ປະເພດ​ອໍ​ເດີ ຊົ່ວໂມງ ແລະ ຈານ — ພ້ອມ​ລາຍການ​ຍົກເລີກ ຂອງ​ແຖມ ແລະ ທິບ
+start_with_a_menu	ເລີ່ມ​ຈາກ​ເມນູ
+your_menu_ready_in_minutes	ເມ​ນູ​ຂອງ​ທ່ານ​ພ້ອມ​ໃນ​ບໍ່​ເທົ່າໃດ​ນາທີ
+set_up_your_counter_and	ຕັ້ງ​ຄ່າ​ເຄົາ​ເຕີ​ແລ້ວ​ເລືອກ​ເມ​ນູ​ເລີ່ມຕົ້ນ​ທີ່ມີ​ຮູບພາບ — ຈາກນັ້ນ​ປ່ຽນ​ຊື່ ລາຄາ ແລະ ລະຫັດ​ເປັນ​ຂອງ​ທ່ານ​ເອງ ດາວ​ໂຫຼ​ດຟຣີ​ທີ່ khaynjo.com
+starter_menu	ເມ​ນູ​ເລີ່ມຕົ້ນ
+khaynjo_starter_menu	ເມ​ນູ​ເລີ່ມຕົ້ນ Khaynjo
+world_cuisines_japanese_mexican	ອາຫານ​ນານາ​ຊາດ — ຍີ່ປຸ່ນ ເມັກ​ຊິ​ໂກ ອີຕາລີ ອິນເດຍ ໄທ ແລະ ອື່ນໆ — ທຸກ​ຈານ​ມີ​ຮູບພາບ
 n_14_dishes_11_categories	14 ຈານ · 11 ໝວດ
-cafe_starter	ຊຸດເລີ່ມຕົ້ນຮ້ານກາເຟ
-tea_coffee_cold_drinks_bakery	ຊາ ກາເຟ ເຄື່ອງດື່ມເຢັນ ເບເກີຣີ ແລະ ອາຫານຫວ່າງ — ພ້ອມສຳລັບຮ້ານກາເຟແບບເຄົາເຕີ
+cafe_starter	ຊຸດ​ເລີ່ມຕົ້ນ​ຮ້ານ​ກາເຟ
+tea_coffee_cold_drinks_bakery	ຊາ ກາເຟ ເຄື່ອງດື່ມ​ເຢັນ ເບ​ເກີ​ຣີ ແລະ ອາຫານ​ຫວ່າງ — ພ້ອມ​ສຳລັບ​ຮ້ານ​ກາເຟ​ແບບ​ເຄົາ​ເຕີ
 n_22_dishes_4_categories	22 ຈານ · 4 ໝວດ
-photo_shelf	ຄັງຮູບພາບ
-khaynjo_dish_photos	ຮູບອາຫານ Khaynjo
-the_full_public_photo_shelf	ຄັງຮູບພາບສາທາລະນະທັງໝົດ — ເລືອກຮູບໃຫ້ທຸກຈານທີ່ທ່ານເພີ່ມ
-n_1_459_dish_photos_25	ຮູບອາຫານ 1,459 ຮູບ · ເຮືອນຄົວ 25 ປະເພດ
-internet_down	ອິນເຕີເນັດລົ້ມ?
-the_internet_went_down_the	ອິນເຕີເນັດລົ້ມ ແຕ່ເຄົາເຕີບໍ່ລົ້ມ
-orders_kitchen_tickets_bills_and	ອໍເດີ ໃບສັ່ງເຮືອນຄົວ ໃບບິນ ແລະ ປຶ້ມມື້ ຢູ່ເທິງອຸປະກອນຂອງທ່ານເອງ ເມື່ອອິນເຕີເນັດຫຼຸດກາງຄາບທ່ຽງ ບໍ່ມີຫຍັງໃນຮ້ານຕ້ອງລໍຖ້າ — ແລະ ບໍ່ມີບັນຊີກັບພວກເຮົາທີ່ຕ້ອງເຂົ້າສູ່ລະບົບ
-right_now_mid_lunch	ຕອນນີ້ ກາງຄາບທ່ຽງ
-router_no_internet	ເຣົາເຕີ: ບໍ່ມີອິນເຕີເນັດ
-counter_taking_orders_and_settling	ເຄົາເຕີ: ຮັບອໍເດີ ແລະ ເກັບເງິນຕາມປົກກະຕິ
-day_book_every_bill_saved	ປຶ້ມມື້: ທຸກໃບບິນບັນທຶກໄວ້ໃນອຸປະກອນນີ້
-captains_tablets_and_the_kitchen	ແທັບເລັດຂອງຫົວໜ້າພະນັກງານ ແລະ ຈໍເຮືອນຄົວ: ເຮັດວຽກຮ່ວມກັນຜ່ານ Wi-Fi ຂອງຮ້ານ
+photo_shelf	ຄັງ​ຮູບພາບ
+khaynjo_dish_photos	ຮູບ​ອາຫານ Khaynjo
+the_full_public_photo_shelf	ຄັງ​ຮູບພາບ​ສາທາລະນະ​ທັງໝົດ — ເລືອກ​ຮູບ​ໃຫ້​ທຸກ​ຈານ​ທີ່​ທ່ານ​ເພີ່ມ
+n_1_459_dish_photos_25	ຮູບ​ອາຫານ 1,459 ຮູບ · ເຮືອນຄົວ 25 ປະເພດ
+internet_down	ອິນ​ເຕີ​ເນັດ​ລົ້ມ?
+the_internet_went_down_the	ອິນ​ເຕີ​ເນັດ​ລົ້ມ ແຕ່​ເຄົາ​ເຕີ​ບໍ່​ລົ້ມ
+orders_kitchen_tickets_bills_and	ອໍ​ເດີ ໃບສັ່ງ​ເຮືອນຄົວ ໃບ​ບິນ ແລະ ປຶ້ມ​ມື້ ຢູ່​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ ເມື່ອ​ອິນ​ເຕີ​ເນັດ​ຫຼຸດ​ກາງ​ຄາບ​ທ່ຽງ ບໍ່ມີ​ຫຍັງ​ໃນ​ຮ້ານ​ຕ້ອງ​ລໍຖ້າ — ແລະ ບໍ່ມີ​ບັນຊີ​ກັບ​ພວກ​ເຮົາ​ທີ່​ຕ້ອງ​ເຂົ້າສູ່​ລະບົບ
+right_now_mid_lunch	ຕອນນີ້ ກາງ​ຄາບ​ທ່ຽງ
+router_no_internet	ເຣົາ​ເຕີ: ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ
+counter_taking_orders_and_settling	ເຄົາ​ເຕີ: ຮັບ​ອໍ​ເດີ ແລະ ເກັບ​ເງິນ​ຕາມ​ປົກກະຕິ
+day_book_every_bill_saved	ປຶ້ມ​ມື້: ທຸກ​ໃບ​ບິນ​ບັນທຶກ​ໄວ້​ໃນ​ອຸປະກອນ​ນີ້
+captains_tablets_and_the_kitchen	ແທັບ​ເລັດ​ຂອງ​ຫົວໜ້າ​ພະນັກງານ ແລະ ຈໍ​ເຮືອນຄົວ: ເຮັດວຽກ​ຮ່ວມກັນ​ຜ່ານ Wi-Fi ຂອງ​ຮ້ານ
 eyebrow_pricing	ລາຄາ
-free_forever_on_your_devices	ຟຣີຕະຫຼອດໄປເທິງອຸປະກອນຂອງທ່ານ
-software_capability_is_not_what	ພວກເຮົາບໍ່ໄດ້ຂາຍຄວາມສາມາດຂອງຊອບແວ ໃຊ້ Khaynjo ໄດ້ຄົບທຸກຢ່າງເທິງອຸປະກອນຂອງທ່ານໂດຍບໍ່ມີຄ່າໃຊ້ຈ່າຍ — ບໍ່ມີຫຍັງຖືກລັອກໄວ້ຫຼັງແພັກເກດ
-khaynjo_on_your_devices	Khaynjo ເທິງອຸປະກອນຂອງທ່ານ
+free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+software_capability_is_not_what	ພວກ​ເຮົາ​ບໍ່ໄດ້​ຂາຍ​ຄວາມສາມາດ​ຂອງ​ຊອບ​ແວ ໃຊ້ Khaynjo ໄດ້​ຄົບ​ທຸກ​ຢ່າງ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ໂດຍ​ບໍ່ມີ​ຄ່າໃຊ້ຈ່າຍ — ບໍ່ມີ​ຫຍັງ​ຖືກ​ລັອກ​ໄວ້​ຫຼັງ​ແພັກ​ເກດ
+khaynjo_on_your_devices	Khaynjo ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
 forever	ຕະຫຼອດໄປ
-every_feature	ທຸກຄຸນສົມບັດ
-floor_kitchen_billing_day_close	ຫ້ອງອາຫານ ເຮືອນຄົວ ອອກໃບບິນ ປິດມື້ ບົດລາຍງານ — ແອັບຄົບທຸກສ່ວນ
-no_per_seat_charge	ບໍ່ຄິດເງິນຕາມບ່ອນນັ່ງ
-no_charge_per_table_waiter	ບໍ່ຄິດເງິນຕາມໂຕະ ພະນັກງານເສີບ ອໍເດີ ຫຼື ອຸປະກອນ
-no_account_with_us	ບໍ່ຕ້ອງມີບັນຊີກັບພວກເຮົາ
-day_to_day_service_needs	ການບໍລິການປະຈຳວັນບໍ່ຕ້ອງສະໝັກ ແລະ ບໍ່ຕ້ອງໃຊ້ອິນເຕີເນັດ
-kumkaj_cloud_optional	Kumkaj Cloud · ບໍ່ບັງຄັບ
-yearly_cloud_if_you_want	ຄລາວລາຍປີຖ້າທ່ານຕ້ອງການ
-steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / ປີ ບໍ່ລວມພາສີ (ຄິດພາສີຕອນຊຳລະເງິນ) ແບບກຳນົດເອງຕ້ອງຂໍໃບສະເໜີລາຄາ — ອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority ກໍໄດ້ ບໍ່ວ່າແບບໃດ Khaynjo ເທິງເຄື່ອງກໍຟຣີຕະຫຼອດໄປ
-shop_plans_at_shop_sign	ຊື້ແພັກເກດທີ່ /shop · ເຂົ້າສູ່ລະບົບທີ່ /account
-open_cloud_shop	ເປີດຮ້ານຄ້າຄລາວ
-questions	ຄຳຖາມ
-asked_before_every_first_service	ຄຳຖາມທີ່ຖືກຖາມກ່ອນເປີດບໍລິການຄັ້ງທຳອິດທຸກເທື່ອ
-do_i_need_the_internet	ຕ້ອງໃຊ້ອິນເຕີເນັດບໍ?
-no_orders_kots_bills_and	ບໍ່ຕ້ອງ ອໍເດີ ໃບສັ່ງເຮືອນຄົວ ໃບບິນ ແລະ ປຶ້ມມື້ ເຮັດວຽກໄດ້ໂດຍບໍ່ມີອິນເຕີເນັດ ໃຊ້ພຽງເທື່ອດຽວເພື່ອດາວໂຫຼດແອັບ ແລະ ເມນູເລີ່ມຕົ້ນຖ້າຕ້ອງການ
-where_are_my_bills_kept	ໃບບິນຂອງຂ້ອຍເກັບໄວ້ໃສ?
-on_your_own_device_in	ເທິງອຸປະກອນຂອງທ່ານເອງໃນຮ້ານຂອງທ່ານ — ບໍ່ແມ່ນເທິງເຊີບເວີຂອງພວກເຮົາ ສ້າງສຳເນົາສຳຮອງໄດ້ຈາກການຕັ້ງຄ່າ ແລ້ວເກັບໄວ້ບ່ອນໃດກໍໄດ້
-which_devices_does_it_run	ໃຊ້ງານເທິງອຸປະກອນໃດໄດ້ແດ່?
-android_phones_and_tablets_today	ຕອນນີ້ໃຊ້ໄດ້ເທິງໂທລະສັບ ແລະ ແທັບເລັດ Android ຈາກ Google Play ແພັກເກດ Windows ແລະ Linux ກຳລັງຈະມາ
-does_it_print_kots_and	ພິມໃບສັ່ງເຮືອນຄົວ ແລະ ໃບບິນໄດ້ບໍ?
-yes_on_thermal_printers_you	ໄດ້ — ດ້ວຍເຄື່ອງພິມຄວາມຮ້ອນທີ່ທ່ານຕັ້ງຄ່າໃນ ການຕັ້ງຄ່າ → ເຄື່ອງພິມ ໜຶ່ງໃບສັ່ງເຮືອນຄົວຕໍ່ສະຖານີ
-can_my_staff_use_their	ພະນັກງານໃຊ້ພາສາຂອງຕົນເອງໄດ້ບໍ?
-yes_the_screens_come_in	ໄດ້ ໜ້າຈໍມີໃຫ້ 115 ພາສາ ພາສາອາຣັບ ແລະ ພາສາອູຣດູ ສະແດງຈາກຂວາໄປຊ້າຍ ແລະ ຊື່ອາຫານມີຊື່ເອີ້ນອື່ນເປັນຕົວອັກສອນອື່ນໄດ້
-what_does_it_cost	ລາຄາເທົ່າໃດ?
-nothing_on_your_own_devices	ບໍ່ມີຄ່າໃຊ້ຈ່າຍເທິງອຸປະກອນຂອງທ່ານເອງ — ທຸກຄຸນສົມບັດ ຕະຫຼອດໄປ Kumkaj Cloud ທີ່ເລືອກໃຊ້ໄດ້ມີແບບລາຍປີ Steady / Swift / Priority (ຫຼື ໃບສະເໜີລາຄາແບບກຳນົດເອງ) ເປີດ /shop ເພື່ອຊື້
-ready_for_lunch	ພ້ອມສຳລັບຄາບທ່ຽງແລ້ວບໍ?
-run_your_next_service_on	ໃຊ້ Khaynjo ໃນການບໍລິການຄັ້ງຕໍ່ໄປ
-free_on_google_play_want	ຟຣີໃນ Google Play ຢາກໃຫ້ແນະນຳການໃຊ້ງານກ່ອນບໍ? ສົ່ງຂໍ້ຄວາມຫາພວກເຮົາທາງ WhatsApp
-privacy	ຄວາມເປັນສ່ວນຕົວ
-terms	ຂໍ້ກຳນົດ
-cancellation	ການຍົກເລີກ
-photo_credits	ແຫຼ່ງທີ່ມາຂອງຮູບພາບ
-cloud_shop	ຮ້ານຄ້າຄລາວ
+every_feature	ທຸກ​ຄຸນສົມບັດ
+floor_kitchen_billing_day_close	ຫ້ອງ​ອາຫານ ເຮືອນຄົວ ອອກ​ໃບ​ບິນ ປິດ​ມື້ ບົດ​ລາຍງານ — ແອັບ​ຄົບ​ທຸກ​ສ່ວນ
+no_per_seat_charge	ບໍ່​ຄິດ​ເງິນ​ຕາມ​ບ່ອນນັ່ງ
+no_charge_per_table_waiter	ບໍ່​ຄິດ​ເງິນ​ຕາມ​ໂຕະ ພະນັກງານ​ເສີບ ອໍ​ເດີ ຫຼື ອຸປະກອນ
+no_account_with_us	ບໍ່​ຕ້ອງ​ມີ​ບັນຊີ​ກັບ​ພວກ​ເຮົາ
+day_to_day_service_needs	ການ​ບໍລິການ​ປະຈຳວັນ​ບໍ່​ຕ້ອງ​ສະໝັກ ແລະ ບໍ່​ຕ້ອງ​ໃຊ້​ອິນ​ເຕີ​ເນັດ
+kumkaj_cloud_optional	Kumkaj Cloud · ບໍ່​ບັງຄັບ
+yearly_cloud_if_you_want	ຄລາວ​ລາຍ​ປີ​ຖ້າ​ທ່ານ​ຕ້ອງການ
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / ປີ ບໍ່​ລວມ​ພາສີ (ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ) ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ — ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority ກໍ​ໄດ້ ບໍ່ວ່າ​ແບບໃດ Khaynjo ເທິງ​ເຄື່ອງ​ກໍ​ຟຣີ​ຕະຫຼອດໄປ
+shop_plans_at_shop_sign	ຊື້​ແພັກ​ເກດ​ທີ່ /shop · ເຂົ້າສູ່​ລະບົບ​ທີ່ /account
+open_cloud_shop	ເປີດ​ຮ້ານ​ຄ້າຄລາວ
+questions	ຄຳ​ຖາມ
+asked_before_every_first_service	ຄຳ​ຖາມ​ທີ່​ຖືກ​ຖາມ​ກ່ອນ​ເປີດ​ບໍລິການ​ຄັ້ງ​ທຳອິດ​ທຸກເທື່ອ
+do_i_need_the_internet	ຕ້ອງ​ໃຊ້​ອິນ​ເຕີ​ເນັດ​ບໍ?
+no_orders_kots_bills_and	ບໍ່​ຕ້ອງ ອໍ​ເດີ ໃບສັ່ງ​ເຮືອນຄົວ ໃບ​ບິນ ແລະ ປຶ້ມ​ມື້ ເຮັດວຽກ​ໄດ້​ໂດຍ​ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ ໃຊ້​ພຽງ​ເທື່ອ​ດຽວ​ເພື່ອ​ດາວ​ໂຫຼດແອັບ ແລະ ເມ​ນູ​ເລີ່ມຕົ້ນ​ຖ້າ​ຕ້ອງການ
+where_are_my_bills_kept	ໃບ​ບິນ​ຂອງ​ຂ້ອຍ​ເກັບໄວ້​ໃສ?
+on_your_own_device_in	ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ​ໃນ​ຮ້ານ​ຂອງ​ທ່ານ — ບໍ່​ແມ່ນ​ເທິງ​ເຊີບເວີ​ຂອງ​ພວກ​ເຮົາ ສ້າງ​ສຳເນົາ​ສຳຮອງ​ໄດ້​ຈາກ​ການຕັ້ງ​ຄ່າ ແລ້ວ​ເກັບໄວ້​ບ່ອນໃດ​ກໍ​ໄດ້
+which_devices_does_it_run	ໃຊ້ງານ​ເທິງ​ອຸປະກອນ​ໃດ​ໄດ້​ແດ່?
+android_phones_and_tablets_today	ຕອນນີ້​ໃຊ້​ໄດ້​ເທິງ​ໂທລະສັບ ແລະ ແທັບ​ເລັດ Android ຈາກ Google Play ແພັກ​ເກດ Windows ແລະ Linux ກຳລັງຈະ​ມາ
+does_it_print_kots_and	ພິມ​ໃບສັ່ງ​ເຮືອນຄົວ ແລະ ໃບ​ບິນ​ໄດ້​ບໍ?
+yes_on_thermal_printers_you	ໄດ້ — ດ້ວຍ​ເຄື່ອງ​ພິມ​ຄວາມຮ້ອນ​ທີ່​ທ່ານ​ຕັ້ງ​ຄ່າ​ໃນ ການຕັ້ງ​ຄ່າ → ເຄື່ອງ​ພິມ ໜຶ່ງ​ໃບສັ່ງ​ເຮືອນຄົວ​ຕໍ່​ສະຖານີ
+can_my_staff_use_their	ພະນັກງານ​ໃຊ້​ພາສາ​ຂອງ​ຕົນເອງ​ໄດ້​ບໍ?
+yes_the_screens_come_in	ໄດ້ ໜ້າຈໍ​ມີ​ໃຫ້ 115 ພາສາ ພາສາ​ອາຣັບ ແລະ ພາ​ສາ​ອູຣ​ດູ ສະແດງ​ຈາກ​ຂວາ​ໄປ​ຊ້າຍ ແລະ ຊື່​ອາຫານ​ມີຊື່​ເອີ້ນ​ອື່ນ​ເປັນ​ຕົວ​ອັກສອນ​ອື່ນ​ໄດ້
+what_does_it_cost	ລາຄາ​ເທົ່າໃດ?
+nothing_on_your_own_devices	ບໍ່ມີ​ຄ່າໃຊ້ຈ່າຍ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ — ທຸກ​ຄຸນສົມບັດ ຕະຫຼອດໄປ Kumkaj Cloud ທີ່​ເລືອກ​ໃຊ້​ໄດ້​ມີ​ແບບ​ລາຍ​ປີ Steady / Swift / Priority (ຫຼື ໃບສະເໜີ​ລາຄາ​ແບບ​ກຳນົດ​ເອງ) ເປີດ /shop ເພື່ອ​ຊື້
+ready_for_lunch	ພ້ອມ​ສຳລັບ​ຄາບ​ທ່ຽງ​ແລ້ວ​ບໍ?
+run_your_next_service_on	ໃຊ້ Khaynjo ໃນ​ການ​ບໍລິການ​ຄັ້ງ​ຕໍ່ໄປ
+free_on_google_play_want	ຟຣີ​ໃນ Google Play ຢາກ​ໃຫ້​ແນະນຳ​ການ​ໃຊ້ງານ​ກ່ອນ​ບໍ? ສົ່ງ​ຂໍ້ຄວາມ​ຫາ​ພວກ​ເຮົາ​ທາງ WhatsApp
+privacy	ຄວາມເປັນ​ສ່ວນຕົວ
+terms	ຂໍ້​ກຳນົດ
+cancellation	ການຍົກ​ເລີກ
+photo_credits	ແຫຼ່ງ​ທີ່​ມາ​ຂອງ​ຮູບພາບ
+cloud_shop	ຮ້ານ​ຄ້າຄລາວ
 account	ບັນຊີ
-cta_installers_note	ຕົວຕິດຕັ້ງຈະຂຶ້ນທີ່ນີ້ເມື່ອແຕ່ລະຕົວຜ່ານການທົດສອບຕິດຕັ້ງເທິງເຄື່ອງໃໝ່ ລະຫວ່າງນີ້ຂໍເບິ່ງຕົວຢ່າງໄດ້ທາງ WhatsApp
-cta_whatsapp_soon	ຊ່ອງທາງເບິ່ງຕົວຢ່າງທາງ WhatsApp ຈະເປີດໃນໄວໆນີ້ ຂໍ້ຄວາມຂອງທ່ານຈະເປັນ: “{message}”
-shelf_no_match	ບໍ່ມີປະເທດ ຫຼື ອາຫານທີ່ກົງກັບການຄົ້ນຫານີ້
-shelf_search_note	ການຄົ້ນຫາຈະຢຸດຂະບວນແຫ່ ລ້າງການຄົ້ນຫາເພື່ອຫຼິ້ນຕໍ່ ຫຼື ປ່ອຍໄວ້ໃຫ້ຢຸດຢູ່ຄືທີ່ທ່ານປະໄວ້
+cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ​ໄດ້​ທາງ WhatsApp
+cta_whatsapp_soon	ຊ່ອງທາງ​ເບິ່ງ​ຕົວຢ່າງ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
+shelf_no_match	ບໍ່ມີ​ປະເທດ ຫຼື ອາຫານ​ທີ່​ກົງ​ກັບ​ການຄົ້ນ​ຫາ​ນີ້
+shelf_search_note	ການຄົ້ນ​ຫາ​ຈະ​ຢຸດ​ຂະບວນແຫ່ ລ້າງ​ການຄົ້ນ​ຫາ​ເພື່ອ​ຫຼິ້ນ​ຕໍ່ ຫຼື ປ່ອຍ​ໄວ້​ໃຫ້​ຢຸດ​ຢູ່​ຄື​ທີ່​ທ່ານ​ປະໄວ້
 floor_meta_min	{min} ນາທີ
 floor_meta_min_bill	{min} ນາທີ · ₹ {amount}
-floor_meta_paid	ຈ່າຍແລ້ວ ₹ {amount}
+floor_meta_paid	ຈ່າຍ​ແລ້ວ ₹ {amount}
 acct_page_title	ບັນຊີ — Khaynjo
-acct_lede	ບັນຊີດຽວສຳລັບເວັບໄຊ ແລະ ແອັບ — ຟອມດຽວກັນບໍ່ວ່າທ່ານຈະເປັນຜູ້ໃຊ້ໃໝ່ ຫຼື ກັບມາໃຊ້
-acct_email	ອີເມວ
-acct_name_optional	ຊື່ (ບໍ່ບັງຄັບ)
-acct_password	ລະຫັດຜ່ານ
+acct_lede	ບັນຊີ​ດຽວ​ສຳ​ລັບ​ເວັບ​ໄຊ ແລະ ແອັບ — ຟອມ​ດຽວກັນ​ບໍ່ວ່າ​ທ່ານ​ຈະ​ເປັນ​ຜູ້​ໃຊ້​ໃໝ່ ຫຼື ກັບມາ​ໃຊ້
+acct_email	ອີ​ເມວ
+acct_name_optional	ຊື່ (ບໍ່​ບັງຄັບ)
+acct_password	ລະຫັດ​ຜ່ານ
 acct_continue	ສືບຕໍ່
-acct_forgot	ລືມລະຫັດຜ່ານ?
-acct_reset_hint	ພວກເຮົາຈະສົ່ງລິ້ງຕັ້ງໃໝ່ທາງອີເມວ ໃຊ້ທີ່ຢູ່ດຽວກັບທີ່ທ່ານສະໝັກໄວ້
-acct_send_reset	ສົ່ງລິ້ງຕັ້ງໃໝ່
+acct_forgot	ລືມ​ລະຫັດ​ຜ່ານ?
+acct_reset_hint	ພວກ​ເຮົາ​ຈະ​ສົ່ງ​ລິ້ງ​ຕັ້ງ​ໃໝ່​ທາງ​ອີ​ເມວ ໃຊ້​ທີ່ຢູ່​ດຽວ​ກັບ​ທີ່​ທ່ານ​ສະໝັກ​ໄວ້
+acct_send_reset	ສົ່ງ​ລິ້ງ​ຕັ້ງ​ໃໝ່
 acct_cancel	ຍົກເລີກ
-acct_or_continue	ຫຼື ສືບຕໍ່ດ້ວຍ
+acct_or_continue	ຫຼື ສືບຕໍ່​ດ້ວຍ
 acct_phone	ໂທລະສັບ
-acct_mobile	ເບີມືຖື
-acct_send_sms	ສົ່ງລະຫັດ SMS
+acct_mobile	ເບີ​ມື​ຖື
+acct_send_sms	ສົ່ງ​ລະຫັດ SMS
 acct_sms_code	ລະຫັດ SMS
-acct_confirm_code	ຢືນຢັນລະຫັດ
-acct_signed_in	ເຂົ້າສູ່ລະບົບແລ້ວ
-acct_signed_in_as	ເຂົ້າສູ່ລະບົບໃນນາມ
+acct_confirm_code	ຢືນຢັນ​ລະຫັດ
+acct_signed_in	ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_signed_in_as	ເຂົ້າສູ່​ລະບົບ​ໃນນາມ
 acct_status	ສະຖານະ
-acct_sign_in_methods	ວິທີເຂົ້າສູ່ລະບົບ
-acct_cloud_username	ຊື່ຜູ້ໃຊ້ຄລາວ
-acct_plan	ແພັກເກດ
-acct_resend_verify	ສົ່ງອີເມວຢືນຢັນອີກຄັ້ງ
-acct_sign_out	ອອກຈາກລະບົບ
-acct_cloud_sandbox	Kumkaj Cloud (ສະພາບແວດລ້ອມທົດສອບ)
-acct_current_password	ລະຫັດຜ່ານປັດຈຸບັນ
-acct_email_for_password	ອີເມວສຳລັບເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານ
-acct_new_password	ລະຫັດຜ່ານໃໝ່
-acct_confirm_new_password	ຢືນຢັນລະຫັດຜ່ານໃໝ່
-acct_add_way	ເພີ່ມວິທີເຂົ້າສູ່ລະບົບອື່ນ
-acct_link_hint	ເຊື່ອມຫຼາຍວິທີໄວ້ກັບບັນຊີດຽວ ເພື່ອໃຫ້ກູ້ຄືນການເຂົ້າເຖິງໄດ້ຖ້າວິທີໃດວິທີໜຶ່ງໃຊ້ບໍ່ໄດ້
+acct_sign_in_methods	ວິທີ​ເຂົ້າສູ່​ລະບົບ
+acct_cloud_username	ຊື່​ຜູ້​ໃຊ້ຄລາວ
+acct_plan	ແພັກ​ເກດ
+acct_resend_verify	ສົ່ງ​ອີ​ເມວ​ຢືນຢັນ​ອີກ​ຄັ້ງ
+acct_sign_out	ອອກຈາກ​ລະບົບ
+acct_cloud_sandbox	Kumkaj Cloud (ສະພາບ​ແວດລ້ອມ​ທົດສອບ)
+acct_current_password	ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_email_for_password	ອີ​ເມວ​ສຳລັບ​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ລະຫັດ​ຜ່ານ
+acct_new_password	ລະຫັດ​ຜ່ານ​ໃໝ່
+acct_confirm_new_password	ຢືນຢັນ​ລະຫັດ​ຜ່ານ​ໃໝ່
+acct_add_way	ເພີ່ມ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ອື່ນ
+acct_link_hint	ເຊື່ອມ​ຫຼາຍ​ວິທີ​ໄວ້​ກັບ​ບັນຊີ​ດຽວ ເພື່ອ​ໃຫ້​ກູ້​ຄືນ​ການເຂົ້າ​ເຖິງ​ໄດ້​ຖ້າ​ວິທີໃດວິທີໜຶ່ງ​ໃຊ້​ບໍ່ໄດ້
 acct_link_google	ເຊື່ອມ Google
 acct_link_microsoft	ເຊື່ອມ Microsoft
 acct_link_github	ເຊື່ອມ GitHub
-acct_link_phone	ເຊື່ອມໂທລະສັບ
-acct_send_sms_link	ສົ່ງ SMS ເພື່ອເຊື່ອມ
-acct_confirm_link_phone	ຢືນຢັນ ແລະ ເຊື່ອມໂທລະສັບ
-shop_page_title	ຮ້ານຄ້າ — Khaynjo
-shop_lede	ແພັກເກດຄລາວລາຍປີ — ຄິດພາສີຕອນຊຳລະເງິນ ແອັບ Khaynjo ຄົບຊຸດເທິງອຸປະກອນຂອງທ່ານຟຣີຕະຫຼອດໄປ ບໍ່ມີໂຄສະນາ
+acct_link_phone	ເຊື່ອມ​ໂທລະສັບ
+acct_send_sms_link	ສົ່ງ SMS ເພື່ອ​ເຊື່ອມ
+acct_confirm_link_phone	ຢືນຢັນ ແລະ ເຊື່ອມ​ໂທລະສັບ
+shop_page_title	ຮ້ານ​ຄ້າ — Khaynjo
+shop_lede	ແພັກ​ເກດຄລາວ​ລາຍ​ປີ — ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ແອັບ Khaynjo ຄົບ​ຊຸດ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ຟຣີ​ຕະຫຼອດໄປ ບໍ່ມີ​ໂຄສະນາ
 shop_cart	ກະຕ່າ
-shop_cart_empty_hint	ກະຕ່າຂອງທ່ານຫວ່າງຢູ່ ເພີ່ມ Steady, Swift ຫຼື Priority
-shop_checkout	ຊຳລະເງິນ
+shop_cart_empty_hint	ກະຕ່າ​ຂອງ​ທ່ານ​ຫວ່າງ​ຢູ່ ເພີ່ມ Steady, Swift ຫຼື Priority
+shop_checkout	ຊຳລະ​ເງິນ
 shop_clear	ລ້າງ
-shop_checkout_hint	ການຊຳລະເງິນຈະພາທ່ານເຂົ້າສູ່ລະບົບໃນໜ້າບັນຊີກ່ອນ ແລ້ວຈຶ່ງເລີ່ມຈ່າຍເງິນ (ຈຳລອງໃນສະພາບແວດລ້ອມທົດສອບ ຫຼື Paddle ເມື່ອຕັ້ງຄ່າຄີແລ້ວ)
-acct_billing_hint	ແພັກເກດລາຍປີ — ເກດເວຄິດພາສີຕອນຊຳລະເງິນ ການໃຊ້ງານເທິງເຄື່ອງຟຣີຕະຫຼອດໄປ ແບບກຳນົດເອງຕ້ອງຂໍໃບສະເໜີລາຄາ (ອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority)
-shop_cloud_plans	ແພັກເກດຄລາວ
-acct_federated	ການເຂົ້າສູ່ລະບົບແບບລວມສູນ
-acct_err_invalid_email	ປ້ອນອີເມວທີ່ຖືກຕ້ອງ
-acct_err_weak_password	ໃຊ້ລະຫັດຜ່ານຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ
-acct_err_wrong_password	ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
-acct_err_invalid_credential	ອີເມວ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
-acct_err_popup_closed	ໜ້າຕ່າງເຂົ້າສູ່ລະບົບຖືກປິດ
-acct_err_popup_cancelled	ການເຂົ້າສູ່ລະບົບຖືກຍົກເລີກ
-acct_err_unauthorized_domain	ໂດເມນນີ້ບໍ່ໄດ້ຮັບອະນຸຍາດສຳລັບ Firebase Auth
-acct_err_method_disabled	ວິທີເຂົ້າສູ່ລະບົບນັ້ນຍັງບໍ່ເປີດໃຊ້
-acct_err_too_many	ລອງຫຼາຍເທື່ອເກີນໄປ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ
-acct_err_phone_format	ໃຊ້ເບີໂທລະສັບເຕັມພ້ອມລະຫັດປະເທດ (ເຊັ່ນ +91…)
-acct_err_sms_code	ລະຫັດ SMS ບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸແລ້ວ
-acct_err_no_account	ບໍ່ມີບັນຊີທີ່ໃຊ້ອີເມວນີ້ ສືບຕໍ່ເພື່ອສ້າງບັນຊີ ຫຼື ໃຊ້ວິທີອື່ນ
-acct_err_recent_login	ເພື່ອຄວາມປອດໄພ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ ແລ້ວລອງປ່ຽນແປງນີ້ໃໝ່
-acct_err_credential_in_use	ວິທີເຂົ້າສູ່ລະບົບນັ້ນຖືກໃຊ້ກັບບັນຊີອື່ນແລ້ວ
-acct_err_email_in_use	ອີເມວນັ້ນຖືກໃຊ້ກັບບັນຊີອື່ນແລ້ວ
-acct_err_already_linked	ວິທີນັ້ນເຊື່ອມກັບບັນຊີນີ້ແລ້ວ
-acct_err_exists_other_method	ມີບັນຊີທີ່ໃຊ້ອີເມວນີ້ກັບວິທີເຂົ້າສູ່ລະບົບອື່ນຢູ່ແລ້ວ ເຂົ້າສູ່ລະບົບດ້ວຍວິທີນັ້ນກ່ອນ ແລ້ວເຊື່ອມວິທີນີ້ຈາກໜ້າບັນຊີຂອງທ່ານ
-acct_err_generic	ເກີດຂໍ້ຜິດພາດ
-acct_method_password	ອີເມວ ແລະ ລະຫັດຜ່ານ
-acct_pw_hint_change	ປ່ຽນລະຫັດຜ່ານ ທ່ານຈະຕ້ອງຢືນຢັນດ້ວຍລະຫັດຜ່ານປັດຈຸບັນ
-acct_pw_hint_add	ເພີ່ມລະຫັດຜ່ານເພື່ອໃຫ້ເຂົ້າສູ່ລະບົບດ້ວຍອີເມວໄດ້ນຳ (ມີປະໂຫຍດເມື່ອຜູ້ໃຫ້ບໍລິການໃຊ້ງານບໍ່ໄດ້)
-acct_pw_change	ປ່ຽນລະຫັດຜ່ານ
-acct_pw_add	ເພີ່ມລະຫັດຜ່ານ
-acct_billing_off	ຍັງບໍ່ໄດ້ເປີດການເກັບເງິນເທິງ API ຄລາວ
-acct_billing_no_provider	ຍັງບໍ່ມີຜູ້ໃຫ້ບໍລິການເກັບເງິນແທ້ເປີດໃຊ້ເທິງ API ຄລາວ (ມີແຕ່ລະບົບຈຳລອງເທິງເຄື່ອງ)
-price_quote	ໃບສະເໜີລາຄາ
-price_per_year	₹{amount}/ປີ ບໍ່ລວມພາສີ
-acct_pay_received	ໄດ້ຮັບເງິນແລ້ວ — ກຳລັງອັບເດດແພັກເກດຂອງທ່ານ…
-acct_pay_declined	ການຊຳລະເງິນຖືກປະຕິເສດ ຫຼື ບໍ່ສຳເລັດ
-acct_pay_failed_detail	{detail} ແພັກເກດຂອງທ່ານບໍ່ໄດ້ປ່ຽນ
-acct_checkout_closed	ປິດໜ້າຊຳລະເງິນແລ້ວ — ບໍ່ມີການຊຳລະເງິນເກີດຂຶ້ນ ແພັກເກດຂອງທ່ານຄືເກົ່າ
-acct_checkout_failed	ຊຳລະເງິນບໍ່ສຳເລັດ
-acct_pay_with	ຈ່າຍດ້ວຍ {provider}
+shop_checkout_hint	ການ​ຊຳລະ​ເງິນ​ຈະ​ພາ​ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ໃນ​ໜ້າ​ບັນຊີ​ກ່ອນ ແລ້ວ​ຈຶ່ງ​ເລີ່ມ​ຈ່າຍເງິນ (ຈຳລອງ​ໃນ​ສະພາບ​ແວດລ້ອມ​ທົດສອບ ຫຼື Paddle ເມື່ອ​ຕັ້ງ​ຄ່າ​ຄີ​ແລ້ວ)
+acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ເກດ​ເວ​ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
+shop_cloud_plans	ແພັກ​ເກດຄລາວ
+acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ແບບ​ລວມ​ສູນ
+acct_err_invalid_email	ປ້ອນ​ອີ​ເມວ​ທີ່​ຖືກຕ້ອງ
+acct_err_weak_password	ໃຊ້​ລະຫັດ​ຜ່ານ​ຢ່າງ​ໜ້ອຍ 6 ຕົວ​ອັກສອນ
+acct_err_wrong_password	ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
+acct_err_invalid_credential	ອີ​ເມວ ຫຼື ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
+acct_err_popup_closed	ໜ້າຕ່າງ​ເຂົ້າສູ່​ລະບົບ​ຖືກ​ປິດ
+acct_err_popup_cancelled	ການເຂົ້າ​ສູ່​ລະບົບ​ຖືກ​ຍົກເລີກ
+acct_err_unauthorized_domain	ໂດ​ເມນ​ນີ້​ບໍ່ໄດ້​ຮັບ​ອະນຸຍາດ​ສຳລັບ Firebase Auth
+acct_err_method_disabled	ວິທີ​ເຂົ້າສູ່​ລະບົບ​ນັ້ນ​ຍັງ​ບໍ່​ເປີດ​ໃຊ້
+acct_err_too_many	ລອງ​ຫຼາຍເທື່ອ​ເກີນໄປ ກະລຸນາ​ລອງ​ໃໝ່​ພາຍຫຼັງ
+acct_err_phone_format	ໃຊ້​ເບີ​ໂທລະສັບ​ເຕັມ​ພ້ອມ​ລະຫັດ​ປະເທດ (ເຊັ່ນ +91…)
+acct_err_sms_code	ລະຫັດ SMS ບໍ່​ຖືກຕ້ອງ ຫຼື ໝົດ​ອາຍຸ​ແລ້ວ
+acct_err_no_account	ບໍ່ມີ​ບັນຊີ​ທີ່​ໃຊ້​ອີ​ເມວ​ນີ້ ສືບຕໍ່​ເພື່ອ​ສ້າງ​ບັນຊີ ຫຼື ໃຊ້​ວິທີ​ອື່ນ
+acct_err_recent_login	ເພື່ອ​ຄວາມປອດໄພ ກະລຸນາ​ເຂົ້າສູ່​ລະບົບ​ອີກ​ຄັ້ງ ແລ້ວ​ລອງ​ປ່ຽນແປງ​ນີ້​ໃໝ່
+acct_err_credential_in_use	ວິທີ​ເຂົ້າສູ່​ລະບົບ​ນັ້ນ​ຖືກ​ໃຊ້​ກັບ​ບັນຊີ​ອື່ນ​ແລ້ວ
+acct_err_email_in_use	ອີ​ເມວ​ນັ້ນ​ຖືກ​ໃຊ້​ກັບ​ບັນຊີ​ອື່ນ​ແລ້ວ
+acct_err_already_linked	ວິທີ​ນັ້ນ​ເຊື່ອມ​ກັບ​ບັນຊີ​ນີ້​ແລ້ວ
+acct_err_exists_other_method	ມີ​ບັນຊີ​ທີ່​ໃຊ້​ອີ​ເມວ​ນີ້​ກັບ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ອື່ນ​ຢູ່ແລ້ວ ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ວິທີ​ນັ້ນ​ກ່ອນ ແລ້ວ​ເຊື່ອມ​ວິທີ​ນີ້​ຈາກ​ໜ້າ​ບັນຊີ​ຂອງ​ທ່ານ
+acct_err_generic	ເກີດ​ຂໍ້​ຜິດພາດ
+acct_method_password	ອີ​ເມວ ແລະ ລະຫັດ​ຜ່ານ
+acct_pw_hint_change	ປ່ຽນ​ລະຫັດ​ຜ່ານ ທ່ານ​ຈະ​ຕ້ອງ​ຢືນຢັນ​ດ້ວຍ​ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_pw_hint_add	ເພີ່ມ​ລະຫັດ​ຜ່ານ​ເພື່ອ​ໃຫ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ອີ​ເມວ​ໄດ້​ນຳ (ມີ​ປະໂຫຍດ​ເມື່ອ​ຜູ້​ໃຫ້​ບໍລິການ​ໃຊ້ງານ​ບໍ່ໄດ້)
+acct_pw_change	ປ່ຽນ​ລະຫັດ​ຜ່ານ
+acct_pw_add	ເພີ່ມ​ລະຫັດ​ຜ່ານ
+acct_billing_off	ຍັງ​ບໍ່ໄດ້​ເປີດ​ການເກັບ​ເງິນ​ເທິງ API ຄລາວ
+acct_billing_no_provider	ຍັງ​ບໍ່ມີ​ຜູ້​ໃຫ້​ບໍລິການ​ເກັບ​ເງິນ​ແທ້​ເປີດ​ໃຊ້​ເທິງ API ຄລາວ (ມີ​ແຕ່​ລະບົບ​ຈຳລອງ​ເທິງ​ເຄື່ອງ)
+price_quote	ໃບສະເໜີ​ລາຄາ
+price_per_year	₹{amount}/ປີ ບໍ່​ລວມ​ພາສີ
+acct_pay_received	ໄດ້ຮັບ​ເງິນ​ແລ້ວ — ກຳລັງ​ອັບ​ເດດ​ແພັກ​ເກດ​ຂອງ​ທ່ານ…
+acct_pay_declined	ການ​ຊຳລະ​ເງິນ​ຖືກ​ປະຕິເສດ ຫຼື ບໍ່​ສຳເລັດ
+acct_pay_failed_detail	{detail} ແພັກ​ເກດ​ຂອງ​ທ່ານ​ບໍ່ໄດ້​ປ່ຽນ
+acct_checkout_closed	ປິດ​ໜ້າ​ຊຳລະ​ເງິນ​ແລ້ວ — ບໍ່ມີ​ການ​ຊຳລະ​ເງິນ​ເກີດຂຶ້ນ ແພັກ​ເກດ​ຂອງ​ທ່ານ​ຄື​ເກົ່າ
+acct_checkout_failed	ຊຳລະ​ເງິນ​ບໍ່​ສຳເລັດ
+acct_pay_with	ຈ່າຍ​ດ້ວຍ {provider}
 acct_plan_until	{plan} · ເຖິງ {date}
-acct_unavailable	ບໍ່ພ້ອມໃຊ້ງານ
-acct_continue_hint	ສືບຕໍ່ດ້ວຍອີເມວ ຜູ້ໃຫ້ບໍລິການ ຫຼື ໂທລະສັບ
-acct_signed_in_fallback	(ເຂົ້າສູ່ລະບົບແລ້ວ)
-acct_email_verified	ຢືນຢັນອີເມວແລ້ວ
-acct_email_unverified	ຍັງບໍ່ໄດ້ຢືນຢັນອີເມວ — ກວດເບິ່ງກ່ອງຈົດໝາຍ
-acct_signed_in_phone	ເຂົ້າສູ່ລະບົບດ້ວຍໂທລະສັບແລ້ວ
-acct_none_listed	ຍັງບໍ່ມີ
-acct_signed_in_status	ທ່ານເຂົ້າສູ່ລະບົບແລ້ວ
-acct_created	ສ້າງບັນຊີແລ້ວ ກວດເບິ່ງອີເມວເພື່ອຢືນຢັນເມື່ອສະດວກ
-acct_reset_sent	ຖ້າມີບັນຊີຂອງອີເມວນັ້ນ ລິ້ງຕັ້ງໃໝ່ກຳລັງສົ່ງໄປ ກວດເບິ່ງກ່ອງຈົດໝາຍ
-acct_another_method	ວິທີອື່ນ
-acct_exists_via	ມີບັນຊີຂອງ {email} ຜ່ານ {method} ຢູ່ແລ້ວ ເຂົ້າສູ່ລະບົບດ້ວຍວິທີນັ້ນກ່ອນ ແລ້ວເຊື່ອມຜູ້ໃຫ້ບໍລິການນີ້ຈາກໜ້າບັນຊີຂອງທ່ານ
-acct_enter_current_pw	ປ້ອນລະຫັດຜ່ານປັດຈຸບັນ
-acct_relogin_retry	ອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບໃໝ່ ຈາກນັ້ນລອງອີກຄັ້ງ
-acct_pw_mismatch	ລະຫັດຜ່ານໃໝ່ກັບການຢືນຢັນບໍ່ກົງກັນ
-acct_pw_updated	ອັບເດດລະຫັດຜ່ານແລ້ວ
-acct_enter_email_pw	ປ້ອນອີເມວທີ່ຈະໃຊ້ເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານ
-acct_pw_added	ເພີ່ມລະຫັດຜ່ານແລ້ວ ຕອນນີ້ເຂົ້າສູ່ລະບົບດ້ວຍອີເມວໄດ້ນຳ
-acct_method_linked	ເຊື່ອມວິທີເຂົ້າສູ່ລະບົບແລ້ວ
-acct_phone_linked	ເຊື່ອມໂທລະສັບກັບບັນຊີນີ້ແລ້ວ
-acct_verify_sent	ສົ່ງອີເມວຢືນຢັນແລ້ວ — ກວດເບິ່ງກ່ອງຈົດໝາຍ
-shop_pricing_soon	ລາຄາຈະມາໃນໄວໆນີ້
-shop_request_quote	ຂໍໃບສະເໜີລາຄາ
-shop_add_to_cart	ໃສ່ກະຕ່າ
-shop_notify_later	ແຈ້ງຂ້ອຍພາຍຫຼັງ
-shop_included	ລວມຢູ່ແລ້ວ
-shop_in_cart	{plan} ຢູ່ໃນກະຕ່າຂອງທ່ານ
-shop_remove	ເອົາອອກ
-shop_cart_is_empty	ກະຕ່າຫວ່າງ
-shop_prices_unpublished	ຍັງບໍ່ໄດ້ເຜີຍແຜ່ລາຄາສຳລັບຊື້ເອງຂອງຜະລິດຕະພັນນີ້ ຂໍໃບສະເໜີລາຄາແບບກຳນົດເອງ ຫຼື ກັບມາເບິ່ງພາຍຫຼັງ
-shop_cart_cleared	ລ້າງກະຕ່າແລ້ວ
-plan_free_title	ຟຣີຕະຫຼອດໄປ
-plan_free_blurb	ຜະລິດຕະພັນຄົບຊຸດເທິງອຸປະກອນຂອງທ່ານ ບໍ່ມີຄ່າຄລາວ
-plan_steady_blurb	ຄລາວແບບສົດ · 10 GB · ແບນວິດຕ່ຳ
-plan_swift_blurb	ຄລາວແບບສົດ · 25 GB · ແບນວິດປານກາງ
-plan_priority_blurb	ຄລາວແບບສົດ · 50 GB · ແບນວິດມາດຕະຖານສູງສຸດ
-plan_custom_title	ກຳນົດເອງ
-plan_custom_blurb	ໂຄຕາ ແລະ ແບນວິດຕາມທີ່ຕົກລົງກັນ ໃບສະເໜີລາຄາອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority
+acct_unavailable	ບໍ່​ພ້ອມ​ໃຊ້ງານ
+acct_continue_hint	ສືບຕໍ່​ດ້ວຍ​ອີ​ເມວ ຜູ້​ໃຫ້​ບໍລິການ ຫຼື ໂທລະສັບ
+acct_signed_in_fallback	(ເຂົ້າສູ່​ລະບົບ​ແລ້ວ)
+acct_email_verified	ຢືນຢັນ​ອີ​ເມວ​ແລ້ວ
+acct_email_unverified	ຍັງ​ບໍ່ໄດ້​ຢືນຢັນ​ອີ​ເມວ — ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+acct_signed_in_phone	ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ໂທລະສັບ​ແລ້ວ
+acct_none_listed	ຍັງ​ບໍ່ມີ
+acct_signed_in_status	ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_created	ສ້າງ​ບັນຊີ​ແລ້ວ ກວດເບິ່ງ​ອີ​ເມວ​ເພື່ອ​ຢືນຢັນ​ເມື່ອ​ສະດວກ
+acct_reset_sent	ຖ້າ​ມີ​ບັນຊີ​ຂອງ​ອີ​ເມວ​ນັ້ນ ລິ້ງ​ຕັ້ງ​ໃໝ່​ກຳລັງ​ສົ່ງໄປ ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+acct_another_method	ວິທີ​ອື່ນ
+acct_exists_via	ມີ​ບັນຊີ​ຂອງ {email} ຜ່ານ {method} ຢູ່ແລ້ວ ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ວິທີ​ນັ້ນ​ກ່ອນ ແລ້ວ​ເຊື່ອມ​ຜູ້​ໃຫ້​ບໍລິການ​ນີ້​ຈາກ​ໜ້າ​ບັນຊີ​ຂອງ​ທ່ານ
+acct_enter_current_pw	ປ້ອນ​ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_relogin_retry	ອອກຈາກ​ລະບົບ​ແລ້ວ​ເຂົ້າສູ່​ລະບົບ​ໃໝ່ ຈາກນັ້ນ​ລອງ​ອີກ​ຄັ້ງ
+acct_pw_mismatch	ລະຫັດ​ຜ່ານ​ໃໝ່​ກັບ​ການ​ຢືນຢັນ​ບໍ່​ກົງກັນ
+acct_pw_updated	ອັບ​ເດດ​ລະຫັດ​ຜ່ານ​ແລ້ວ
+acct_enter_email_pw	ປ້ອນ​ອີ​ເມວ​ທີ່​ຈະ​ໃຊ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ລະຫັດ​ຜ່ານ
+acct_pw_added	ເພີ່ມ​ລະຫັດ​ຜ່ານ​ແລ້ວ ຕອນນີ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ອີ​ເມວ​ໄດ້​ນຳ
+acct_method_linked	ເຊື່ອມ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_phone_linked	ເຊື່ອມ​ໂທລະສັບ​ກັບ​ບັນຊີ​ນີ້​ແລ້ວ
+acct_verify_sent	ສົ່ງ​ອີ​ເມວ​ຢືນຢັນ​ແລ້ວ — ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+shop_pricing_soon	ລາຄາ​ຈະ​ມາ​ໃນ​ໄວໆ​ນີ້
+shop_request_quote	ຂໍ​ໃບສະເໜີ​ລາຄາ
+shop_add_to_cart	ໃສ່​ກະຕ່າ
+shop_notify_later	ແຈ້ງ​ຂ້ອຍ​ພາຍຫຼັງ
+shop_included	ລວມ​ຢູ່ແລ້ວ
+shop_in_cart	{plan} ຢູ່ໃນ​ກະຕ່າ​ຂອງ​ທ່ານ
+shop_remove	ເອົາ​ອອກ
+shop_cart_is_empty	ກະຕ່າ​ຫວ່າງ
+shop_prices_unpublished	ຍັງ​ບໍ່ໄດ້​ເຜີຍແຜ່​ລາຄາ​ສຳລັບ​ຊື້​ເອງ​ຂອງ​ຜະລິດຕະພັນ​ນີ້ ຂໍ​ໃບສະເໜີ​ລາຄາ​ແບບ​ກຳນົດ​ເອງ ຫຼື ກັບມາ​ເບິ່ງ​ພາຍຫຼັງ
+shop_cart_cleared	ລ້າງ​ກະຕ່າ​ແລ້ວ
+plan_free_title	ຟຣີ​ຕະຫຼອດໄປ
+plan_free_blurb	ຜະລິດຕະພັນ​ຄົບ​ຊຸດ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ ບໍ່ມີ​ຄ່າຄລາວ
+plan_steady_blurb	ຄລາວ​ແບບ​ສົດ · 10 GB · ແບນ​ວິດ​ຕ່ຳ
+plan_swift_blurb	ຄລາວ​ແບບ​ສົດ · 25 GB · ແບນ​ວິດ​ປານກາງ
+plan_priority_blurb	ຄລາວ​ແບບ​ສົດ · 50 GB · ແບນ​ວິດ​ມາດຕະຖານ​ສູງສຸດ
+plan_custom_title	ກຳນົດ​ເອງ
+plan_custom_blurb	ໂຄ​ຕາ ແລະ ແບນ​ວິດ​ຕາມ​ທີ່​ຕົກລົງ​ກັນ ໃບສະເໜີ​ລາຄາ​ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority

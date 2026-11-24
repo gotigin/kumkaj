@@ -1,121 +1,121 @@
 # Lao — ລາວ (lo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-the_promise	ຄຳສັນຍາ
-kumkaj_business_operating_systems	KUMKAJ · ລະບົບປະຕິບັດການທຸລະກິດ
-the_internet_went_down_the	ອິນເຕີເນັດລົ້ມ\nເຄົາເຕີບໍ່ລົ້ມ
-kumkaj_is_the_brand_for	Kumkaj ແມ່ນແບຣນຂອງແອັບລະບົບປະຕິບັດການທຸລະກິດທີ່ໃຊ້ງານໄດ້ແທ້ — ຊອບແວບໍລິຫານທຸລະກິດຄົບວົງຈອນທີ່ເຮັດວຽກເທິງອຸປະກອນຂອງທ່ານເອງ ແຕ່ລະຜະລິດຕະພັນສ້າງມາເພື່ອທຸລະກິດດຽວ: ຂົນສົ່ງພັດສະດຸ ຮ້ານອາຫານ ຮ້ານຂາຍເຄື່ອງຍ່ອຍ ຮ້ານຂາຍຢາ
-choose_your_trade	ເລືອກທຸລະກິດຂອງທ່ານ  ↓
-watch_it_keep_working	ເບິ່ງວ່າຍັງເຮັດວຽກຕໍ່ໄດ້
-this_counter_right_now	ເຄົາເຕີນີ້ ຕອນນີ້
-internet	ອິນເຕີເນັດ
+the_promise	ຄຳ​ສັນຍາ
+kumkaj_business_operating_systems	KUMKAJ · ລະບົບ​ປະຕິບັດການ​ທຸລະກິດ
+the_internet_went_down_the	ອິນ​ເຕີ​ເນັດ​ລົ້ມ\nເຄົາ​ເຕີ​ບໍ່​ລົ້ມ
+kumkaj_is_the_brand_for	Kumkaj ແມ່ນ​ແບຣນ​ຂອງ​ແອັບ​ລະບົບ​ປະຕິບັດການ​ທຸລະກິດ​ທີ່​ໃຊ້ງານ​ໄດ້​ແທ້ — ຊອບ​ແວ​ບໍລິຫານ​ທຸລະກິດ​ຄົບວົງຈອນ​ທີ່​ເຮັດວຽກ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ ແຕ່ລະ​ຜະລິດຕະພັນ​ສ້າງ​ມາ​ເພື່ອ​ທຸລະກິດ​ດຽວ: ຂົນສົ່ງ​ພັດສະດຸ ຮ້ານ​ອາຫານ ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ ຮ້ານ​ຂາຍ​ຢາ
+choose_your_trade	ເລືອກ​ທຸລະກິດ​ຂອງ​ທ່ານ  ↓
+watch_it_keep_working	ເບິ່ງ​ວ່າ​ຍັງ​ເຮັດວຽກ​ຕໍ່​ໄດ້
+this_counter_right_now	ເຄົາ​ເຕີ​ນີ້ ຕອນນີ້
+internet	ອິນ​ເຕີ​ເນັດ
 down	ລົ້ມ
-taking_orders	ຮັບອໍເດີ
+taking_orders	ຮັບ​ອໍ​ເດີ
 yes	ໄດ້
-bills_and_dockets	ໃບບິນ ແລະ ໃບຮັບຝາກ
-saving	ກຳລັງບັນທຶກ
-day_book	ປຶ້ມມື້
-adding_up	ກຳລັງລວມຍອດ
-nothing_on_this_counter_waits	ບໍ່ມີຫຍັງເທິງເຄົາເຕີນີ້ທີ່ຕ້ອງລໍຖ້າຄລາວ
-scroll_or_use_the_dots	ເລື່ອນ ຫຼື ໃຊ້ຈຸດເພື່ອຂ້າມໄປແຕ່ລະສ່ວນ
-n_02_built_for_your_trade	02 · ສ້າງມາເພື່ອທຸລະກິດຂອງທ່ານ
-a_desk_for_each_trade	ເຄົາເຕີສະເພາະສຳລັບແຕ່ລະທຸລະກິດ\nບໍ່ແມ່ນແອັບດຽວທີ່ມີສະວິດ
-not_one_app_with_a	ບໍ່ແມ່ນແອັບດຽວທີ່ມີສະວິດປ່ຽນທຸລະກິດ ແຕ່ລະຜະລິດຕະພັນອອກແບບອ້ອມເຄົາເຕີແບບດຽວ ດ້ວຍຄຳຂອງທຸລະກິດນັ້ນເອງ
-courier_offices_franchise_counters_own	ຫ້ອງການຂົນສົ່ງ · ເຄົາເຕີແຟຣນໄຊ · ຜູ້ສົ່ງເຄື່ອງຂອງຮ້ານເອງ
-book_label_hand_over_track	ຮັບຝາກ → ຕິດປ້າຍ → ມອບ → ຕິດຕາມ → ສະສາງ
-next_booking_in_one_tap	ຮັບຝາກລາຍການຕໍ່ໄປດ້ວຍການແຕະເທື່ອດຽວ
-actual_or_volumetric_weight_rounded	ນ້ຳໜັກຈິງ ຫຼື ຕາມປະລິມາດ ປັດຕາມແບບຂອງທ່ານ
-rider_cash_on_delivery_expected	COD ຂອງຜູ້ສົ່ງເຄື່ອງ: ຍອດທີ່ຄວນໄດ້ທຽບກັບຍອດທີ່ສົ່ງແລ້ວ
-visit_moklanjo_com	ໄປທີ່ moklanjo.com  →
-restaurants_caf_s_quick_service	ຮ້ານອາຫານ · ຄາເຟ່ · ຮ້ານອາຫານດ່ວນ · ຮ້ານເບເກີຣີ
-table_kitchen_bill_day_close	ໂຕະ → ເຮືອນຄົວ → ໃບບິນ → ປິດມື້
-every_table_s_minutes_and	ເວລາ ແລະ ໃບບິນຂອງທຸກໂຕະໃນພິບຕາ
-one_kot_per_kitchen_station	ໜຶ່ງໃບສັ່ງເຮືອນຄົວຕໍ່ສະຖານີ — ບໍ່ມີລາຄາເດັດຂາດ
-cash_upi_part_payment_due	ເງິນສົດ UPI ຈ່າຍບາງສ່ວນ ຕິດໜີ້ ແລະ ທິບ
-visit_khaynjo_com	ໄປທີ່ khaynjo.com  →
-kirana_grocery_neighbourhood_shops	ຮ້ານຂາຍເຄື່ອງ · ຮ້ານເຄື່ອງຍ່ອຍ · ຮ້ານຄ້າໃນບ້ານ
-sell_khata_stock_day_book	ຂາຍ → ປຶ້ມໜີ້ → ສະຕັອກ → ປຶ້ມມື້
-fast_counter_sell_with_short	ຂາຍໜ້າເຄົາເຕີໄດ້ໄວດ້ວຍລະຫັດສັ້ນ
-customer_credit_and_supplier_dues	ໜີ້ລູກຄ້າ ແລະ ຍອດຄ້າງຈ່າຍຜູ້ສະໜອງ
-buy_into_stock_offline_forever	ຊື້ເຂົ້າສະຕັອກ — ອອບລາຍໄດ້ຕະຫຼອດໄປ
-visit_kirano_shop	ໄປທີ່ kirano.shop  →
-chemists_pharmacy_counters	ຮ້ານຂາຍຢາ · ເຄົາເຕີຮ້ານຢາ
-medicine_batch_bill_day_close	ຢາ → ລັອດ → ໃບບິນ → ປິດມື້
-barcode_and_salt_composition_search	ຄົ້ນຫາດ້ວຍບາໂຄດ ແລະ ສານອອກລິດ / ສ່ວນປະກອບ
-batch_and_expiry_alerts_on	ແຈ້ງເຕືອນລັອດ ແລະ ວັນໝົດອາຍຸເມື່ອຊື້
-owner_schedule_h_rx_notes	ບັນທຶກ Schedule H / Rx ຂອງເຈົ້າຂອງຮ້ານ — ບໍ່ແມ່ນການປະຕິບັດຕາມກົດແບບປອມ
-visit_tabiyat_shop	ໄປທີ່ tabiyat.shop  →
-n_03_your_books_stay_with	03 · ບັນຊີຢູ່ກັບທ່ານ
-your_books_live_in_your	ບັນຊີຂອງທ່ານຢູ່ໃນຮ້ານຂອງທ່ານ
-sales_parties_and_the_day	ຍອດຂາຍ ຝ່າຍ ແລະ ປຶ້ມມື້ ຂຽນລົງອຸປະກອນທີ່ເຄົາເຕີຂອງທ່ານ — ບໍ່ແມ່ນເທິງເຊີບເວີທີ່ທ່ານເຊົ່າ
-on_your_device	ເທິງອຸປະກອນຂອງທ່ານ
-every_sale_payment_and_docket	ທຸກການຂາຍ ການຊຳລະ ແລະ ໃບຮັບຝາກ ບັນທຶກເທິງຄອມພິວເຕີ ຫຼື ແທັບເລັດທີ່ທ່ານເປັນເຈົ້າຂອງ
-no_account_with_us	ບໍ່ຕ້ອງມີບັນຊີກັບພວກເຮົາ
-install_it_and_start_no	ຕິດຕັ້ງແລ້ວເລີ່ມໄດ້ເລີຍ ບໍ່ຕ້ອງສະໝັກ ບໍ່ຕ້ອງຜູກບັດ
-copies_you_keep	ສຳເນົາທີ່ທ່ານເກັບໄວ້
-save_a_backup_copy_whenever	ບັນທຶກສຳເນົາສຳຮອງໄດ້ທຸກເວລາ ມັນແມ່ນໄຟລ໌ ແລະ ເປັນຂອງທ່ານ
-extra_counters_and_tablets_join	ເຄົາເຕີ ແລະ ແທັບເລັດເພີ່ມເຕີມເຊື່ອມຜ່ານ Wi-Fi ຂອງທ່ານເອງ — ບໍ່ຕ້ອງມີອິນເຕີເນັດຄັ່ນກາງ
+bills_and_dockets	ໃບ​ບິນ ແລະ ໃບຮັບ​ຝາກ
+saving	ກຳລັງ​ບັນທຶກ
+day_book	ປຶ້ມ​ມື້
+adding_up	ກຳລັງ​ລວມ​ຍອດ
+nothing_on_this_counter_waits	ບໍ່ມີ​ຫຍັງ​ເທິງ​ເຄົາ​ເຕີ​ນີ້​ທີ່​ຕ້ອງ​ລໍຖ້າຄລາວ
+scroll_or_use_the_dots	ເລື່ອນ ຫຼື ໃຊ້​ຈຸດ​ເພື່ອ​ຂ້າມ​ໄປ​ແຕ່ລະ​ສ່ວນ
+n_02_built_for_your_trade	02 · ສ້າງ​ມາ​ເພື່ອ​ທຸລະກິດ​ຂອງ​ທ່ານ
+a_desk_for_each_trade	ເຄົາ​ເຕີ​ສະເພາະ​ສຳລັບ​ແຕ່ລະ​ທຸລະກິດ\nບໍ່​ແມ່ນ​ແອັບ​ດຽວ​ທີ່ມີ​ສະວິດ
+not_one_app_with_a	ບໍ່​ແມ່ນ​ແອັບ​ດຽວ​ທີ່ມີ​ສະວິດ​ປ່ຽນ​ທຸລະກິດ ແຕ່ລະ​ຜະລິດຕະພັນ​ອອກແບບ​ອ້ອມ​ເຄົາ​ເຕີ​ແບບ​ດຽວ ດ້ວຍ​ຄຳ​ຂອງ​ທຸລະກິດ​ນັ້ນເອງ
+courier_offices_franchise_counters_own	ຫ້ອງການ​ຂົນສົ່ງ · ເຄົາ​ເຕີ​ແຟຣນ​ໄຊ · ຜູ້​ສົ່ງ​ເຄື່ອງຂອງ​ຮ້ານ​ເອງ
+book_label_hand_over_track	ຮັບ​ຝາກ → ຕິດ​ປ້າຍ → ມອບ → ຕິດຕາມ → ສະສາງ
+next_booking_in_one_tap	ຮັບ​ຝາກ​ລາຍການ​ຕໍ່ໄປ​ດ້ວຍ​ການ​ແຕະ​ເທື່ອ​ດຽວ
+actual_or_volumetric_weight_rounded	ນ້ຳ​ໜັກ​ຈິງ ຫຼື ຕາມ​ປະລິ​ມາດ ປັດ​ຕາມ​ແບບ​ຂອງ​ທ່ານ
+rider_cash_on_delivery_expected	COD ຂອງ​ຜູ້​ສົ່ງ​ເຄື່ອງ: ຍອດ​ທີ່​ຄວນ​ໄດ້​ທຽບ​ກັບ​ຍອດ​ທີ່​ສົ່ງ​ແລ້ວ
+visit_moklanjo_com	ໄປ​ທີ່ moklanjo.com  →
+restaurants_caf_s_quick_service	ຮ້ານ​ອາຫານ · ຄາ​ເຟ່ · ຮ້ານ​ອາຫານ​ດ່ວນ · ຮ້ານ​ເບ​ເກີ​ຣີ
+table_kitchen_bill_day_close	ໂຕະ → ເຮືອນຄົວ → ໃບ​ບິນ → ປິດ​ມື້
+every_table_s_minutes_and	ເວລາ ແລະ ໃບ​ບິນ​ຂອງ​ທຸກ​ໂຕະ​ໃນ​ພິບຕາ
+one_kot_per_kitchen_station	ໜຶ່ງ​ໃບສັ່ງ​ເຮືອນຄົວ​ຕໍ່​ສະຖານີ — ບໍ່ມີ​ລາຄາ​ເດັດຂາດ
+cash_upi_part_payment_due	ເງິນສົດ UPI ຈ່າຍ​ບາງ​ສ່ວນ ຕິດ​ໜີ້ ແລະ ທິບ
+visit_khaynjo_com	ໄປ​ທີ່ khaynjo.com  →
+kirana_grocery_neighbourhood_shops	ຮ້ານ​ຂາຍ​ເຄື່ອງ · ຮ້ານ​ເຄື່ອງຍ່ອຍ · ຮ້ານ​ຄ້າ​ໃນ​ບ້ານ
+sell_khata_stock_day_book	ຂາຍ → ປຶ້ມ​ໜີ້ → ສະ​ຕັອກ → ປຶ້ມ​ມື້
+fast_counter_sell_with_short	ຂາຍໜ້າ​ເຄົາ​ເຕີ​ໄດ້​ໄວ​ດ້ວຍ​ລະຫັດ​ສັ້ນ
+customer_credit_and_supplier_dues	ໜີ້​ລູກຄ້າ ແລະ ຍອດ​ຄ້າງ​ຈ່າຍ​ຜູ້​ສະໜອງ
+buy_into_stock_offline_forever	ຊື້​ເຂົ້າ​ສະ​ຕັອກ — ອອບ​ລາຍໄດ້​ຕະຫຼອດໄປ
+visit_kirano_shop	ໄປ​ທີ່ kirano.shop  →
+chemists_pharmacy_counters	ຮ້ານ​ຂາຍ​ຢາ · ເຄົາ​ເຕີ​ຮ້ານ​ຢາ
+medicine_batch_bill_day_close	ຢາ → ລັອດ → ໃບ​ບິນ → ປິດ​ມື້
+barcode_and_salt_composition_search	ຄົ້ນຫາ​ດ້ວຍ​ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ / ສ່ວນປະກອບ
+batch_and_expiry_alerts_on	ແຈ້ງ​ເຕືອນ​ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ​ເມື່ອ​ຊື້
+owner_schedule_h_rx_notes	ບັນທຶກ Schedule H / Rx ຂອງ​ເຈົ້າຂອງ​ຮ້ານ — ບໍ່​ແມ່ນ​ການປະຕິບັດຕາມ​ກົດ​ແບບ​ປອມ
+visit_tabiyat_shop	ໄປ​ທີ່ tabiyat.shop  →
+n_03_your_books_stay_with	03 · ບັນຊີ​ຢູ່​ກັບ​ທ່ານ
+your_books_live_in_your	ບັນຊີ​ຂອງ​ທ່ານ​ຢູ່ໃນ​ຮ້ານ​ຂອງ​ທ່ານ
+sales_parties_and_the_day	ຍອດ​ຂາຍ ຝ່າຍ ແລະ ປຶ້ມ​ມື້ ຂຽນ​ລົງ​ອຸປະກອນ​ທີ່​ເຄົາ​ເຕີ​ຂອງ​ທ່ານ — ບໍ່​ແມ່ນ​ເທິງ​ເຊີບເວີ​ທີ່​ທ່ານ​ເຊົ່າ
+on_your_device	ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+every_sale_payment_and_docket	ທຸກ​ການຂາຍ ການ​ຊຳລະ ແລະ ໃບຮັບ​ຝາກ ບັນທຶກ​ເທິງ​ຄອມພິວເຕີ ຫຼື ແທັບ​ເລັດ​ທີ່​ທ່ານ​ເປັນ​ເຈົ້າຂອງ
+no_account_with_us	ບໍ່​ຕ້ອງ​ມີ​ບັນຊີ​ກັບ​ພວກ​ເຮົາ
+install_it_and_start_no	ຕິດຕັ້ງ​ແລ້ວ​ເລີ່ມ​ໄດ້​ເລີຍ ບໍ່​ຕ້ອງ​ສະໝັກ ບໍ່​ຕ້ອງ​ຜູກ​ບັດ
+copies_you_keep	ສຳເນົາ​ທີ່​ທ່ານ​ເກັບໄວ້
+save_a_backup_copy_whenever	ບັນທຶກ​ສຳເນົາ​ສຳຮອງ​ໄດ້​ທຸກ​ເວລາ ມັນ​ແມ່ນ​ໄຟລ໌ ແລະ ເປັນ​ຂອງ​ທ່ານ
+extra_counters_and_tablets_join	ເຄົາ​ເຕີ ແລະ ແທັບ​ເລັດ​ເພີ່ມເຕີມ​ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ທ່ານ​ເອງ — ບໍ່​ຕ້ອງ​ມີ​ອິນ​ເຕີ​ເນັດ​ຄັ່ນ​ກາງ
 n_04_try_it	04 · ລອງເບິ່ງ
-pull_the_plug_on_the	ຖອດປລັກອິນເຕີເນັດເບິ່ງ
-kumkaj_apps_don_t_phone	ແອັບ Kumkaj ບໍ່ຕ້ອງຕິດຕໍ່ເຊີບເວີເພື່ອເຮັດວຽກ ຕັດອິນເຕີເນັດແລ້ວເບິ່ງວ່າຫຍັງປ່ຽນໄປທີ່ເຄົາເຕີ
-cut_the_internet	ຕັດອິນເຕີເນັດ
-internet_on	ອິນເຕີເນັດ: ເປີດ
-book_a_parcel_or_take	ຮັບຝາກພັດສະດຸ ຫຼື ຮັບອໍເດີ
-save_the_bill_or_docket	ບັນທຶກໃບບິນ ຫຼື ໃບຮັບຝາກ
-day_book_totals	ຍອດລວມປຶ້ມມື້
-find_an_old_sale	ຄົ້ນຫາການຂາຍເກົ່າ
-the_internet_is_on_and	ອິນເຕີເນັດເປີດຢູ່ — ແຕ່ເຄົາເຕີບໍ່ໄດ້ໃຊ້
-things_that_leave_the_shop	ສິ່ງທີ່ອອກນອກຮ້ານ ເຊັ່ນ ໃບຮັບເງິນທາງ WhatsApp ຍັງຕ້ອງໃຊ້ອິນເຕີເນັດຈຶ່ງຈະໄປເຖິງ
+pull_the_plug_on_the	ຖອດປລັກ​ອິນ​ເຕີ​ເນັດ​ເບິ່ງ
+kumkaj_apps_don_t_phone	ແອັບ Kumkaj ບໍ່​ຕ້ອງ​ຕິດ​ຕໍ່​ເຊີບເວີ​ເພື່ອ​ເຮັດວຽກ ຕັດ​ອິນ​ເຕີ​ເນັດ​ແລ້ວ​ເບິ່ງ​ວ່າ​ຫຍັງ​ປ່ຽນ​ໄປ​ທີ່​ເຄົາ​ເຕີ
+cut_the_internet	ຕັດ​ອິນ​ເຕີ​ເນັດ
+internet_on	ອິນ​ເຕີ​ເນັດ: ເປີດ
+book_a_parcel_or_take	ຮັບ​ຝາກ​ພັດສະດຸ ຫຼື ຮັບ​ອໍ​ເດີ
+save_the_bill_or_docket	ບັນທຶກ​ໃບ​ບິນ ຫຼື ໃບຮັບ​ຝາກ
+day_book_totals	ຍອດ​ລວມ​ປຶ້ມ​ມື້
+find_an_old_sale	ຄົ້ນຫາ​ການຂາຍ​ເກົ່າ
+the_internet_is_on_and	ອິນ​ເຕີ​ເນັດ​ເປີດ​ຢູ່ — ແຕ່​ເຄົາ​ເຕີ​ບໍ່ໄດ້​ໃຊ້
+things_that_leave_the_shop	ສິ່ງ​ທີ່​ອອກ​ນອກ​ຮ້ານ ເຊັ່ນ ໃບຮັບ​ເງິນ​ທາງ WhatsApp ຍັງ​ຕ້ອງ​ໃຊ້​ອິນ​ເຕີ​ເນັດ​ຈຶ່ງ​ຈະ​ໄປ​ເຖິງ
 n_05_price	05 · ລາຄາ
-free_forever_on_your_devices	ຟຣີຕະຫຼອດໄປເທິງອຸປະກອນຂອງທ່ານ
-no_charge_per_seat_user	ບໍ່ຄິດເງິນຕາມບ່ອນນັ່ງ ຜູ້ໃຊ້ ໂຕະ ຜູ້ສົ່ງເຄື່ອງ ພັດສະດຸ ຫຼື ອຸປະກອນເທິງເຄື່ອງ ບໍ່ແມ່ນລຸ້ນທົດລອງ
-on_your_own_devices	ເທິງອຸປະກອນຂອງທ່ານເອງ
+free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+no_charge_per_seat_user	ບໍ່​ຄິດ​ເງິນ​ຕາມ​ບ່ອນນັ່ງ ຜູ້​ໃຊ້ ໂຕະ ຜູ້​ສົ່ງ​ເຄື່ອງ ພັດສະດຸ ຫຼື ອຸປະກອນ​ເທິງ​ເຄື່ອງ ບໍ່​ແມ່ນ​ລຸ້ນ​ທົດລອງ
+on_your_own_devices	ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ
 n_0_forever	₹0 ຕະຫຼອດໄປ
-pay_only_for_what_you	ຈ່າຍສະເພາະສິ່ງທີ່ໃຊ້ — ລາຄາດຽວກັນສຳລັບທຸກຄົນ
-planned	ຢູ່ໃນແຜນ
-cloud_is_planned_and_optional	ຄລາວຢູ່ໃນແຜນ ແລະ ເປັນທາງເລືອກ ເຄົາເຕີເຮັດວຽກໄດ້ໂດຍບໍ່ຕ້ອງມີ
+pay_only_for_what_you	ຈ່າຍ​ສະເພາະ​ສິ່ງ​ທີ່​ໃຊ້ — ລາຄາ​ດຽວກັນ​ສຳລັບ​ທຸກຄົນ
+planned	ຢູ່ໃນ​ແຜນ
+cloud_is_planned_and_optional	ຄລາວ​ຢູ່ໃນ​ແຜນ ແລະ ເປັນ​ທາງ​ເລືອກ ເຄົາ​ເຕີ​ເຮັດວຽກ​ໄດ້​ໂດຍ​ບໍ່​ຕ້ອງ​ມີ
 n_06_languages	06 · ພາສາ
-speaks_your_staff_s_language	ເວົ້າພາສາດຽວກັບພະນັກງານຂອງທ່ານ
-the_same_115_language_catalogue	ລາຍການ 115 ພາສາຊຸດດຽວກັບທຸກແອັບຂອງ Kumkaj — ພາສາອາຣັບ ແລະ ອູຣດູ ຈາກຂວາໄປຊ້າຍ ດ້ານລຸ່ມແມ່ນຊື່ໃນພາສາຂອງຕົນເອງ ແລະ ຕົວຢ່າງ “ອາຫານພ້ອມ” ໃນພາສາຮິນດີ ກູຈາຣາດ ທະມິນ ເບັງກາລີ ອູຣດູ ແລະ ອັງກິດ:
-same_shaping_engine_as_the	ໃຊ້ເອັນຈິນຈັດຮູບອັກສອນດຽວກັບແອັບ ຕົວອັກສອນທີ່ຕໍ່ກັນ ແລະ ແຖວຈາກຂວາໄປຊ້າຍຈຶ່ງສະແດງຜົນຖືກຕ້ອງ
+speaks_your_staff_s_language	ເວົ້າ​ພາສາ​ດຽວ​ກັບ​ພະນັກງານ​ຂອງ​ທ່ານ
+the_same_115_language_catalogue	ລາຍການ 115 ພາສາ​ຊຸດ​ດຽວ​ກັບ​ທຸກ​ແອັບ​ຂອງ Kumkaj — ພາສາ​ອາຣັບ ແລະ ອູຣ​ດູ ຈາກ​ຂວາ​ໄປ​ຊ້າຍ ດ້ານລຸ່ມ​ແມ່ນ​ຊື່​ໃນ​ພາສາ​ຂອງ​ຕົນເອງ ແລະ ຕົວຢ່າງ “ອາຫານ​ພ້ອມ” ໃນ​ພາສາ​ຮິນ​ດີ ກູ​ຈາ​ຣາດ ທະມິນ ເບັງ​ກາລີ ອູຣ​ດູ ແລະ ອັງກິດ:
+same_shaping_engine_as_the	ໃຊ້​ເອັນ​ຈິນ​ຈັດ​ຮູບ​ອັກສອນ​ດຽວ​ກັບ​ແອັບ ຕົວ​ອັກສອນ​ທີ່​ຕໍ່​ກັນ ແລະ ແຖວ​ຈາກ​ຂວາ​ໄປ​ຊ້າຍ​ຈຶ່ງ​ສະແດງ​ຜົນ​ຖືກຕ້ອງ
 n_07_who_makes_it	07 · ຜູ້ສ້າງ
-made_under_gotigin	ສ້າງພາຍໃຕ້ Gotigin
+made_under_gotigin	ສ້າງ​ພາຍໃຕ້ Gotigin
 trademark	ເຄື່ອງໝາຍການຄ້າ
-memon_for_find_it_pronounced	ພາສາ Memon ແປວ່າ “ຊອກຫາມັນ” · ອ່ານວ່າ go-tee-geen
+memon_for_find_it_pronounced	ພາສາ Memon ແປ​ວ່າ “ຊອກຫາ​ມັນ” · ອ່ານ​ວ່າ go-tee-geen
 company	ບໍລິສັດ
 brand	ແບຣນ
-concrete_business_operating_system_apps	ແອັບລະບົບປະຕິບັດການທຸລະກິດທີ່ໃຊ້ງານໄດ້ແທ້
+concrete_business_operating_system_apps	ແອັບ​ລະບົບ​ປະຕິບັດການ​ທຸລະກິດ​ທີ່​ໃຊ້ງານ​ໄດ້​ແທ້
 products	ຜະລິດຕະພັນ
-courier_restaurant_grocery_pharmacy	ຂົນສົ່ງພັດສະດຸ · ຮ້ານອາຫານ · ຮ້ານຂາຍເຄື່ອງຍ່ອຍ · ຮ້ານຂາຍຢາ
-courier_desk_book_label_hand	ເຄົາເຕີຂົນສົ່ງ — ຮັບຝາກ ຕິດປ້າຍ ມອບ ສະສາງ
-restaurant_system_table_kitchen_bill	ລະບົບຮ້ານອາຫານ — ໂຕະ ເຮືອນຄົວ ໃບບິນ ປິດມື້
-grocery_counter_sell_khata_stock	ເຄົາເຕີຮ້ານຂາຍເຄື່ອງຍ່ອຍ — ຂາຍ ປຶ້ມໜີ້ ສະຕັອກ ປຶ້ມມື້
-pharmacy_counter_batch_expiry_bill	ເຄົາເຕີຮ້ານຢາ — ລັອດ ວັນໝົດອາຍຸ ໃບບິນ ປິດມື້
-privacy	ຄວາມເປັນສ່ວນຕົວ
-terms	ຂໍ້ກຳນົດ
-cancellation	ການຍົກເລີກ
-cloud_shop	ຮ້ານຄ້າຄລາວ
+courier_restaurant_grocery_pharmacy	ຂົນສົ່ງ​ພັດສະດຸ · ຮ້ານ​ອາຫານ · ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ · ຮ້ານ​ຂາຍ​ຢາ
+courier_desk_book_label_hand	ເຄົາ​ເຕີ​ຂົນສົ່ງ — ຮັບ​ຝາກ ຕິດ​ປ້າຍ ມອບ ສະສາງ
+restaurant_system_table_kitchen_bill	ລະບົບ​ຮ້ານ​ອາຫານ — ໂຕະ ເຮືອນຄົວ ໃບ​ບິນ ປິດ​ມື້
+grocery_counter_sell_khata_stock	ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ — ຂາຍ ປຶ້ມ​ໜີ້ ສະ​ຕັອກ ປຶ້ມ​ມື້
+pharmacy_counter_batch_expiry_bill	ເຄົາ​ເຕີ​ຮ້ານ​ຢາ — ລັອດ ວັນ​ໝົດ​ອາຍຸ ໃບ​ບິນ ປິດ​ມື້
+privacy	ຄວາມເປັນ​ສ່ວນຕົວ
+terms	ຂໍ້​ກຳນົດ
+cancellation	ການຍົກ​ເລີກ
+cloud_shop	ຮ້ານ​ຄ້າຄລາວ
 account	ບັນຊີ
-chapter_built_for_your_trade	ສ້າງມາເພື່ອທຸລະກິດຂອງທ່ານ
-chapter_your_books	ບັນຊີຂອງທ່ານ
-chapter_try_it_offline	ລອງແບບອອບລາຍ
+chapter_built_for_your_trade	ສ້າງ​ມາ​ເພື່ອ​ທຸລະກິດ​ຂອງ​ທ່ານ
+chapter_your_books	ບັນຊີ​ຂອງ​ທ່ານ
+chapter_try_it_offline	ລອງ​ແບ​ບອອບ​ລາຍ
 chapter_price	ລາຄາ
 chapter_languages	ພາສາ
 chapter_who_makes_it	ຜູ້ສ້າງ
-toy_bring_back	ເປີດອິນເຕີເນັດຄືນ
-toy_internet_off	ອິນເຕີເນັດ: ປິດ
-toy_verdict_off	ອິນເຕີເນັດປິດ — ແລະ ບໍ່ມີຫຍັງເທິງເຄົາເຕີປ່ຽນໄປ
+toy_bring_back	ເປີດ​ອິນ​ເຕີ​ເນັດ​ຄືນ
+toy_internet_off	ອິນ​ເຕີ​ເນັດ: ປິດ
+toy_verdict_off	ອິນ​ເຕີ​ເນັດ​ປິດ — ແລະ ບໍ່ມີ​ຫຍັງ​ເທິງ​ເຄົາ​ເຕີ​ປ່ຽນ​ໄປ
 acct_page_title	ບັນຊີ — Kumkaj
-acct_lede	ຜະລິດຕະພັນ Kumkaj ແຕ່ລະໂຕມີບັນຊີຂອງຕົນເອງ (ແລະ ຄລາວຂອງຕົນເອງ) ເລືອກທຸລະກິດທີ່ທ່ານເຮັດ — ການເຂົ້າສູ່ລະບົບ ແລະ ການຊຳລະເງິນຢູ່ເທິງເວັບໄຊຂອງຜະລິດຕະພັນນັ້ນ
-acct_product_accounts	ບັນຊີຜະລິດຕະພັນ
-acct_moklanjo_blurb	ບັນຊີລະບົບຂົນສົ່ງພັດສະດຸ
-acct_khaynjo_blurb	ບັນຊີລະບົບຮ້ານອາຫານ
-acct_kirano_blurb	ບັນຊີເຄົາເຕີຮ້ານຂາຍເຄື່ອງຍ່ອຍ
-acct_tabiyat_blurb	ບັນຊີເຄົາເຕີຮ້ານຢາ
+acct_lede	ຜະລິດຕະພັນ Kumkaj ແຕ່ລະ​ໂຕ​ມີ​ບັນຊີ​ຂອງ​ຕົນເອງ (ແລະ ຄລາວ​ຂອງ​ຕົນເອງ) ເລືອກ​ທຸລະກິດ​ທີ່​ທ່ານ​ເຮັດ — ການເຂົ້າ​ສູ່​ລະບົບ ແລະ ການ​ຊຳລະ​ເງິນ​ຢູ່​ເທິງ​ເວັບ​ໄຊ​ຂອງ​ຜະລິດຕະພັນ​ນັ້ນ
+acct_product_accounts	ບັນຊີ​ຜະລິດຕະພັນ
+acct_moklanjo_blurb	ບັນຊີ​ລະບົບ​ຂົນສົ່ງ​ພັດສະດຸ
+acct_khaynjo_blurb	ບັນຊີ​ລະບົບ​ຮ້ານ​ອາຫານ
+acct_kirano_blurb	ບັນຊີ​ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ
+acct_tabiyat_blurb	ບັນຊີ​ເຄົາ​ເຕີ​ຮ້ານ​ຢາ
 acct_open_account	ເປີດບັນຊີ
-shop_page_title	ຮ້ານຄ້າ — Kumkaj
-shop_lede	ແພັກເກດຄລາວລາຍປີ — ຫ້າຮູບແບບດຽວກັນສຳລັບທຸກທຸລະກິດ (ຟຣີຕະຫຼອດໄປ, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / ປີ ບໍ່ລວມພາສີ ຫຼື ໃບສະເໜີລາຄາແບບກຳນົດເອງ) ຄິດພາສີຕອນຊຳລະເງິນ ແຕ່ລະຜະລິດຕະພັນມີຮ້ານຄ້າ ແລະ ບັນຊີຂອງຕົນເອງ
-shop_product_shops	ຮ້ານຄ້າຄລາວຂອງຜະລິດຕະພັນ
-shop_moklanjo_blurb	ຄລາວເຄົາເຕີຂົນສົ່ງສຳລັບ moklanjo.com
-shop_khaynjo_blurb	ຄລາວຮ້ານອາຫານສຳລັບ khaynjo.com
-shop_kirano_blurb	ຄລາວເຄົາເຕີຮ້ານຂາຍເຄື່ອງຍ່ອຍສຳລັບ kirano.shop
-shop_tabiyat_blurb	ຄລາວເຄົາເຕີຮ້ານຢາສຳລັບ tabiyat.shop
-shop_open_shop	ເປີດຮ້ານຄ້າ
+shop_page_title	ຮ້ານ​ຄ້າ — Kumkaj
+shop_lede	ແພັກ​ເກດຄລາວ​ລາຍ​ປີ — ຫ້າ​ຮູບແບບ​ດຽວກັນ​ສຳລັບ​ທຸກ​ທຸລະກິດ (ຟຣີ​ຕະຫຼອດໄປ, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / ປີ ບໍ່​ລວມ​ພາສີ ຫຼື ໃບສະເໜີ​ລາຄາ​ແບບ​ກຳນົດ​ເອງ) ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ແຕ່ລະ​ຜະລິດຕະພັນ​ມີ​ຮ້ານ​ຄ້າ ແລະ ບັນຊີ​ຂອງ​ຕົນເອງ
+shop_product_shops	ຮ້ານ​ຄ້າຄລາວ​ຂອງ​ຜະລິດຕະພັນ
+shop_moklanjo_blurb	ຄລາວ​ເຄົາ​ເຕີ​ຂົນສົ່ງ​ສຳລັບ moklanjo.com
+shop_khaynjo_blurb	ຄລາວ​ຮ້ານ​ອາຫານ​ສຳລັບ khaynjo.com
+shop_kirano_blurb	ຄລາວ​ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ​ສຳລັບ kirano.shop
+shop_tabiyat_blurb	ຄລາວ​ເຄົາ​ເຕີ​ຮ້ານ​ຢາ​ສຳລັບ tabiyat.shop
+shop_open_shop	ເປີດ​ຮ້ານ​ຄ້າ

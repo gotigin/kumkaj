@@ -37,8 +37,15 @@
 //!
 //! **Right to left.** Makepad shapes and bidi-orders the glyphs; keyed
 //! labels and paragraphs are right-aligned while an RTL language is shown
-//! (the apps do the same, `align_static_texts`), and lang-nav.js flips
-//! `dir` on the HTML pages.
+//! (the apps do the same, `align_static_texts`), every paragraph starts
+//! with a RIGHT-TO-LEFT MARK so Makepad lays it out right to left
+//! (`rtl_marks`), and lang-nav.js flips `dir` on the HTML pages.
+//!
+//! **Line breaks.** Makepad wraps at Unicode (UAX #14) break opportunities
+//! (vendor patch `line_break_uax14`): punctuation of every script stays with
+//! its word and no-break spaces hold. Thai, Lao, Khmer and Burmese packs
+//! carry a ZERO WIDTH SPACE between words, where their rows may break
+//! (`checks::words_are_marked_in_scripts_without_spaces`).
 
 #![allow(dead_code)]
 
@@ -90,68 +97,65 @@ pub fn is_rtl(lang: &str) -> bool {
 }
 
 const RLM: char = '\u{200F}';
-const WORD_JOINER: char = '\u{2060}';
 
-/// A strongly right-to-left letter (Hebrew, Arabic, Syriac, Thaana, N'Ko and
-/// the Arabic presentation forms).
-fn is_rtl_letter(c: char) -> bool {
-    c.is_alphabetic() && matches!(c as u32, 0x0590..=0x08FF | 0xFB1D..=0xFDFF | 0xFE70..=0xFEFF)
-}
-
-/// Copy for a right-to-left language, with invisible marks for Makepad's
-/// line breaker and bidi pass.
+/// Copy for a right-to-left language, marked for Makepad's text layout.
 ///
-/// The vendored text stack shapes every wrapped line with a left-to-right
-/// base direction (`draw/src/text/shaper.rs`) and appends a space that no
-/// longer fits to the line anyway (`layouter.rs`). Right-aligned RTL copy
-/// then puts punctuation that ends a line (، ۔ .) beside the line's *first*
-/// word, sits a space-width short of the right edge, and a nearly full line
-/// spills past the left edge, where it is clipped. Without touching vendor
-/// code:
-/// - RIGHT-TO-LEFT MARK before a space that follows right-to-left text (the
-///   punctuation there stays with its words) and after it when right-to-left
-///   text follows too (the space stays in the run, at the line's left end);
-/// - otherwise a WORD JOINER after the space, so the space is no longer a
-///   blank segment: one that does not fit starts the next line instead of
-///   spilling;
-/// - RIGHT-TO-LEFT MARK at the end when the copy ends in punctuation after
-///   right-to-left words.
+/// A RIGHT-TO-LEFT MARK starts every paragraph, so Makepad lays it out right
+/// to left on every row (vendor patch `rtl_paragraph_direction`): Latin words
+/// and numbers keep their place in the sentence, punctuation at either end of
+/// a row stays with its words, and the space that ends a wrapped row hangs at
+/// its left end, past the right-aligned text. Without the mark Makepad keeps
+/// a left-to-right base, as it does for the apps' user data.
 ///
-/// Spaces after numbers or Latin words get no RLM, so `₹ 1,240` or
-/// `{min} منٹ` keep their order. Latin words inside an RTL sentence still
-/// keep left-to-right order between them (base direction; vendor limit).
+/// The mark goes after a Markdown block marker (`+ `, `- `, `# `, `> `,
+/// `1. `), which must stay first to keep its meaning; blank lines stay blank
+/// (they separate Markdown paragraphs).
 pub fn rtl_marks(text: &str) -> String {
-    let chars: Vec<char> = text.chars().collect();
-    let mut out = String::with_capacity(text.len() + text.len() / 2);
-    // Direction of the nearest strong letter so far: Some(true) = RTL.
-    let mut last_strong: Option<bool> = None;
-    for (i, &c) in chars.iter().enumerate() {
-        if c == ' ' {
-            let prev = chars[..i].iter().rev().find(|c| !c.is_whitespace());
-            let next = chars[i + 1..].iter().find(|c| !c.is_whitespace());
-            let after_rtl = last_strong == Some(true) && prev.is_some_and(|p| !p.is_numeric());
-            let before_rtl = next.is_some_and(|n| is_rtl_letter(*n));
-            if after_rtl {
-                out.push(RLM);
-            }
-            out.push(' ');
-            out.push(if after_rtl && before_rtl { RLM } else { WORD_JOINER });
-            continue;
+    let mut out = String::with_capacity(text.len() + 3 * (1 + text.matches('\n').count()));
+    for (i, line) in text.split('\n').enumerate() {
+        if i > 0 {
+            out.push('\n');
         }
-        if c.is_alphabetic() {
-            last_strong = Some(is_rtl_letter(c));
+        let at = block_marker_len(line);
+        out.push_str(&line[..at]);
+        if !line.trim().is_empty() && !line[at..].starts_with(RLM) {
+            out.push(RLM);
         }
-        out.push(c);
-    }
-    let ends_in_mark = chars
-        .iter()
-        .rev()
-        .find(|c| !c.is_whitespace())
-        .is_some_and(|c| !c.is_alphanumeric());
-    if ends_in_mark && last_strong == Some(true) {
-        out.push(RLM);
+        out.push_str(&line[at..]);
     }
     out
+}
+
+/// Bytes of `line` taken by Markdown block markers (`# `, `> `, `- `, `+ `,
+/// `* `, `1. `, `1) `) with their indentation, nested ones included; 0 when
+/// the line starts with none.
+fn block_marker_len(line: &str) -> usize {
+    let bytes = line.as_bytes();
+    let (mut at, mut end) = (0, 0);
+    loop {
+        while bytes.get(at) == Some(&b' ') {
+            at += 1;
+        }
+        let rest = &line[at..];
+        let marker = match rest.bytes().next() {
+            Some(b'#') => rest.bytes().take_while(|&b| b == b'#').count(),
+            Some(b'>' | b'-' | b'+' | b'*') => 1,
+            Some(b'0'..=b'9') => {
+                let digits = rest.bytes().take_while(u8::is_ascii_digit).count();
+                if rest[digits..].starts_with(['.', ')']) {
+                    digits + 1
+                } else {
+                    0
+                }
+            }
+            _ => 0,
+        };
+        if marker == 0 || !rest[marker..].starts_with(' ') {
+            return end;
+        }
+        at += marker + 1;
+        end = at;
+    }
 }
 
 /// The writing system a language's site copy is drawn in — picks the
@@ -721,10 +725,13 @@ pub enum Fit {
     Restore,
 }
 
-/// Languages written without spaces between words. Their headlines wrap
-/// anywhere, so there is no widest word to fit (`Fit::Restore` for them).
+/// Languages whose rows break between syllables or characters, not words:
+/// Chinese, Japanese (and the languages that read their tables) and Tibetan
+/// (after each tsheg). There is no widest word to fit (`Fit::Restore`).
+/// Thai, Lao, Khmer and Burmese are not among them: their packs mark words
+/// with U+200B, which `Fit::Words` splits at.
 pub fn writes_without_spaces(code: &str) -> bool {
-    matches!(code, "th" | "lo" | "km" | "my" | "bo" | "zh" | "zh-Hant" | "ja")
+    matches!(table_language(code), "bo" | "zh" | "zh-Hant" | "ja")
 }
 
 /// Width of one line of `text` in `draw_text`'s font and size (logical px).
@@ -767,7 +774,8 @@ pub fn fit_markdown(cx: &mut Cx, w: &WidgetRef, avail: f64, fit: Fit, sizes: &mu
     let need = match fit {
         Fit::Line => text_width(cx, &md.draw_text, &text),
         Fit::Words => text
-            .split_whitespace()
+            .split(|c: char| c.is_whitespace() || c == '\u{200B}')
+            .filter(|word| !word.is_empty())
             .map(|word| text_width(cx, &md.draw_text, word))
             .fold(0.0, f64::max),
         Fit::Restore => 0.0,
@@ -881,11 +889,14 @@ mod fit_tests {
 
     #[test]
     fn languages_without_spaces_are_the_catalogue_codes() {
-        for code in ["th", "lo", "km", "my", "bo", "zh", "zh-Hant", "ja"] {
+        for code in ["bo", "zh", "zh-Hant", "ja"] {
             assert!(writes_without_spaces(code), "{code}");
             assert!(table_languages().any(|c| c == code), "{code} is not a pack");
         }
-        for code in ["en", "hi", "de", "fi", "ko", "ar"] {
+        // Cantonese reads the Traditional Chinese table.
+        assert!(writes_without_spaces("yue"));
+        // Spaced or word-marked (U+200B): their widest word is fitted.
+        for code in ["en", "hi", "de", "fi", "ko", "ar", "th", "lo", "km", "my"] {
             assert!(!writes_without_spaces(code), "{code}");
         }
     }
@@ -896,7 +907,6 @@ mod rtl_mark_tests {
     use super::*;
 
     const R: char = RLM;
-    const J: char = WORD_JOINER;
 
     #[test]
     fn marks_never_change_the_visible_text() {
@@ -905,39 +915,42 @@ mod rtl_mark_tests {
             "₹ {amount} ادا ہو گئے",
             "Android، Windows اور Linux پر مفت۔",
             "שלום עולם.",
-            "Free on Android, Windows and Linux.",
+            "انٹرنیٹ بند ہو گیا۔\nکاؤنٹر نہیں رکا۔",
+            "+ نقد فروخت",
         ] {
             let marked = rtl_marks(s);
-            assert_eq!(marked.replace([R, J], ""), s);
-            // Every space carries a mark: no blank segment the line breaker
-            // would append past the line's width.
-            for (i, _) in marked.match_indices(' ') {
-                let next = marked[i + 1..].chars().next();
-                assert!(matches!(next, Some(R) | Some(J)), "bare space in {marked:?}");
-            }
+            assert_eq!(marked.replace(R, ""), s);
+            // One mark per paragraph, nothing between the words.
+            assert_eq!(marked.matches(R).count(), s.split('\n').count(), "{marked:?}");
+            assert_eq!(rtl_marks(&marked), marked, "marking twice changes nothing");
         }
     }
 
     #[test]
-    fn punctuation_and_spaces_stay_inside_rtl_runs() {
+    fn every_paragraph_starts_with_the_mark() {
+        assert_eq!(rtl_marks("שלום עולם."), format!("{R}שלום עולם."));
+        // Latin or a placeholder first: the mark still makes the line RTL.
+        assert_eq!(rtl_marks("Kumkaj OS ایک"), format!("{R}Kumkaj OS ایک"));
+        assert_eq!(rtl_marks("{min} منٹ"), format!("{R}{{min}} منٹ"));
         assert_eq!(
-            rtl_marks("بک کریں، روانہ"),
-            format!("بک{R} {R}کریں،{R} {R}روانہ")
+            rtl_marks("انٹرنیٹ بند ہو گیا۔\nکاؤنٹر نہیں رکا۔"),
+            format!("{R}انٹرنیٹ بند ہو گیا۔\n{R}کاؤنٹر نہیں رکا۔")
         );
-        assert_eq!(rtl_marks("שלום עולם."), format!("שלום{R} {R}עולם.{R}"));
+        // Blank lines separate Markdown paragraphs: they stay blank.
+        assert_eq!(rtl_marks("ایک\n\nدو"), format!("{R}ایک\n\n{R}دو"));
+        assert_eq!(rtl_marks(""), "");
     }
 
     #[test]
-    fn numbers_and_latin_keep_their_order() {
-        // No RLM next to a number or after a Latin word: only word joiners.
-        assert_eq!(
-            rtl_marks("₹ 1,240 ادا ہو گئے"),
-            format!("₹ {J}1,240 {J}ادا{R} {R}ہو{R} {R}گئے")
-        );
-        assert_eq!(rtl_marks("{min} منٹ"), format!("{{min}} {J}منٹ"));
-        assert_eq!(rtl_marks("Free on Android."), format!("Free {J}on {J}Android."));
-        // Placeholders survive for the caller's replace().
-        assert!(rtl_marks("₹ {amount} ادا").contains("{amount}"));
+    fn markdown_block_markers_stay_first() {
+        assert_eq!(rtl_marks("+ نقد فروخت"), format!("+ {R}نقد فروخت"));
+        assert_eq!(rtl_marks("## عنوان"), format!("## {R}عنوان"));
+        assert_eq!(rtl_marks("> - اقتباس"), format!("> - {R}اقتباس"));
+        assert_eq!(rtl_marks("1. پہلا"), format!("1. {R}پہلا"));
+        // Not markers: a signed number, emphasis, a price.
+        assert_eq!(rtl_marks("-5 °C"), format!("{R}-5 °C"));
+        assert_eq!(rtl_marks("*نیا* مینو"), format!("{R}*نیا* مینو"));
+        assert_eq!(rtl_marks("1,240 ₹"), format!("{R}1,240 ₹"));
     }
 }
 
@@ -1082,6 +1095,46 @@ pub mod checks {
             }
         }
         assert!(missing.is_empty(), "characters the site fonts cannot draw: {missing:?}");
+    }
+
+    /// Thai, Lao, Khmer and Burmese copy carries U+200B between words, where
+    /// Makepad breaks its rows (vendor patch `line_break_uax14`; the marks
+    /// come from `node scripts/mark-words.mjs <code> translations/<code>.tsv`).
+    /// A run of more than 24 letters of the script with no mark is copy
+    /// written without them.
+    pub fn words_are_marked_in_scripts_without_spaces(manifest_dir: &str) {
+        let scripts: [(&str, fn(char) -> bool); 4] = [
+            ("th", |c| ('\u{0E00}'..='\u{0E7F}').contains(&c)),
+            ("lo", |c| ('\u{0E80}'..='\u{0EFF}').contains(&c)),
+            ("km", |c| matches!(c, '\u{1780}'..='\u{17FF}' | '\u{19E0}'..='\u{19FF}')),
+            ("my", |c| {
+                matches!(c, '\u{1000}'..='\u{109F}' | '\u{A9E0}'..='\u{A9FF}' | '\u{AA60}'..='\u{AA7F}')
+            }),
+        ];
+        let mut problems = Vec::new();
+        for (code, letter) in scripts {
+            let Some(pack) = read_pack(manifest_dir, code) else { continue };
+            for (key, value) in &pack {
+                let mut run = 0;
+                let longest = value
+                    .chars()
+                    .map(|c| {
+                        run = if letter(c) { run + 1 } else { 0 };
+                        run
+                    })
+                    .max()
+                    .unwrap_or(0);
+                if longest > 24 {
+                    problems.push(format!("{code} {key}: {longest} letters without a word mark"));
+                }
+            }
+        }
+        problems.sort();
+        assert!(
+            problems.is_empty(),
+            "mark them with `node scripts/mark-words.mjs <code> translations/<code>.tsv`:\n{}",
+            problems.join("\n")
+        );
     }
 
     /// Quoted strings after `body:`, `text:` and `empty_text:` in a `ui.rs`

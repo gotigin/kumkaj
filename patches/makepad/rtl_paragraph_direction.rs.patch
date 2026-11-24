@@ -1,0 +1,235 @@
+--- a/draw/src/text/font_family.rs
++++ b/draw/src/text/font_family.rs
+@@ -44,10 +44,16 @@
+     }
+ 
+     pub fn get_or_shape(&self, text: Substr) -> Rc<ShapedText> {
++        self.get_or_shape_in(text, Direction::default())
++    }
++
++    /// `get_or_shape` for text in a paragraph with base `direction` (the
++    /// bidi pass orders its runs right to left for `Direction::Rtl`).
++    pub fn get_or_shape_in(&self, text: Substr, direction: Direction) -> Rc<ShapedText> {
+         self.shaper.borrow_mut().get_or_shape(ShapeParams {
+             text,
+             fonts: self.fonts.clone(),
+-            direction: Direction::default(),
++            direction,
+             letter_spacing: Ems(0.0),
+             word_spacing: Ems(0.0),
+             features: Rc::new(Vec::new()),
+--- a/draw/src/text/shaper.rs
++++ b/draw/src/text/shaper.rs
+@@ -168,8 +168,10 @@
+             // characters, skip the Unicode Bidirectional Algorithm entirely
+             // and shape as a single LTR run. This avoids BiDi's classification
+             // pass and vec allocations for the common case of ASCII / Latin /
+-            // Greek / Cyrillic / CJK / emoji text.
+-            if is_definitely_ltr(text) {
++            // Greek / Cyrillic / CJK / emoji text. A right-to-left base
++            // still needs the bidi pass: it moves the neutrals at the ends
++            // of left-to-right text (`Android.` reads `.Android`).
++            if params.direction == Direction::Ltr && is_definitely_ltr(text) {
+                 self.shape_recursive(
+                     text,
+                     &params.fonts[0],
+--- a/draw/src/text/layouter.rs
++++ b/draw/src/text/layouter.rs
+@@ -309,6 +309,8 @@
+     text: Substr,
+     style: Style,
+     options: LayoutOptions,
++    /// Base direction of the paragraph being laid out (`paragraph_direction`).
++    direction: shaper::Direction,
+     current_point_in_lpxs: Point<f32>,
+     current_row_start: usize,
+     current_row_end: usize,
+@@ -328,6 +330,7 @@
+             text,
+             style,
+             options,
++            direction: shaper::Direction::Ltr,
+             current_point_in_lpxs: Point::new(options.first_row_indent_in_lpxs, 0.0),
+             current_row_start: 0,
+             current_row_end: 0,
+@@ -370,20 +373,15 @@
+     fn layout_multiline(mut self) -> LaidoutText {
+         let has_ellipsis_config = self.options.max_rows.is_some() || self.options.ellipsis;
+ 
+-        for (line_index, len) in self
+-            .text
+-            .clone()
+-            .split('\n')
+-            .map(|line| line.len())
+-            .enumerate()
+-        {
++        for (line_index, line) in self.text.clone().split('\n').enumerate() {
+             if line_index != 0 {
+                 self.finish_current_row(true);
+             }
+             if self.is_past_max_rows() {
+                 break;
+             }
+-            self.layout(len);
++            self.direction = paragraph_direction(line);
++            self.layout(line.len());
+         }
+ 
+         if has_ellipsis_config {
+@@ -421,6 +419,7 @@
+             self.span_text(len),
+             self.font_family.clone(),
+             self.style.font_size_in_lpxs(),
++            self.direction,
+             SegmentKind::Word,
+         );
+         while !fitter.is_empty() {
+@@ -463,6 +462,7 @@
+             self.span_text(len),
+             self.font_family.clone(),
+             self.style.font_size_in_lpxs(),
++            self.direction,
+             SegmentKind::Grapheme,
+         );
+         while !fitter.is_empty() {
+@@ -484,9 +484,10 @@
+ 
+     fn layout_directly(&mut self, len: usize) {
+         self.append_text(
+-            &self.font_family.get_or_shape(
++            &self.font_family.get_or_shape_in(
+                 self.text
+                     .substr(self.current_row_end..self.current_row_end + len),
++                self.direction,
+             ),
+         );
+     }
+@@ -710,6 +711,7 @@
+     text: Substr,
+     font_family: Rc<FontFamily>,
+     font_size_in_lpxs: f32,
++    direction: shaper::Direction,
+     lens: Vec<usize>,
+     widths_in_lpxs: Vec<f32>,
+ }
+@@ -719,6 +721,7 @@
+         text: Substr,
+         font_family: Rc<FontFamily>,
+         font_size_in_lpxs: f32,
++        direction: shaper::Direction,
+         segment_kind: SegmentKind,
+     ) -> Self {
+         let lens: Vec<_> = match segment_kind {
+@@ -731,7 +734,7 @@
+             .scan(0, |state, len| {
+                 let start = *state;
+                 let end = start + len;
+-                let segment = font_family.get_or_shape(text.substr(start..end));
++                let segment = font_family.get_or_shape_in(text.substr(start..end), direction);
+                 let width_in_lpxs = segment.width_in_ems * font_size_in_lpxs;
+                 *state = end;
+                 Some(width_in_lpxs)
+@@ -741,6 +744,7 @@
+             text,
+             font_family,
+             font_size_in_lpxs,
++            direction,
+             lens,
+             widths_in_lpxs,
+         }
+@@ -770,7 +774,9 @@
+         if let Some(mut best_count) = best_count {
+             while best_count > 0 {
+                 let best_len = self.lens[..best_count].iter().sum();
+-                let best_text = self.font_family.get_or_shape(self.text.substr(0..best_len));
++                let best_text = self
++                    .font_family
++                    .get_or_shape_in(self.text.substr(0..best_len), self.direction);
+                 if best_text.width_in_ems * self.font_size_in_lpxs <= wrap_width_in_lpxs {
+                     self.lens.drain(..best_count);
+                     self.widths_in_lpxs.drain(..best_count);
+@@ -810,6 +816,26 @@
+     Grapheme,
+ }
+ 
++/// The base direction of one paragraph: right to left when it begins with a
++/// RIGHT-TO-LEFT MARK (U+200F) or ARABIC LETTER MARK (U+061C), left to right
++/// otherwise.
++///
++/// The bidi pass then orders a right-to-left paragraph's runs from the right:
++/// a Latin word or a number inside Arabic, Urdu or Hebrew copy keeps its place
++/// in the sentence, punctuation at either end stays with the words it belongs
++/// to, and the space that ends a wrapped row hangs at the row's left end.
++/// Every row of the paragraph keeps the direction, also a row that starts
++/// with a Latin word. Text without the mark keeps the left-to-right base it
++/// always had, so user data in a left-to-right interface (an Arabic name in an
++/// English list) is not reordered; copy in a right-to-left language opts in
++/// by starting each paragraph with the mark.
++fn paragraph_direction(paragraph: &str) -> shaper::Direction {
++    match paragraph.chars().next() {
++        Some('\u{200F}' | '\u{061C}') => shaper::Direction::Rtl,
++        _ => shaper::Direction::Ltr,
++    }
++}
++
+ /// Splits one paragraph into the segments `layout_by_word` fits: the runs
+ /// between the line break opportunities of the Unicode line breaking
+ /// algorithm (UAX #14), with the spaces that end a run as a segment of their
+@@ -2033,4 +2059,57 @@
+         assert!(capped.is_truncated, "a discarded third line is a truncation");
+         assert!(ends_with_ellipsis(&capped));
+     }
++
++    // -----------------------------------------------------------------------
++    // Paragraph direction: a paragraph that starts with a right-to-left mark
++    // is laid out right to left, on every one of its rows. The Latin test
++    // font has no Hebrew glyphs; the .notdef boxes it draws instead still
++    // carry their clusters, which is all the visual order needs.
++    // -----------------------------------------------------------------------
++
++    #[test]
++    fn a_leading_rtl_mark_lays_the_paragraph_out_right_to_left() {
++        use super::paragraph_direction;
++        use crate::text::shaper::Direction;
++        assert_eq!(paragraph_direction("\u{200F}abc"), Direction::Rtl);
++        assert_eq!(paragraph_direction("\u{061C}abc"), Direction::Rtl);
++        assert_eq!(paragraph_direction("אבג abc"), Direction::Ltr, "opt-in only");
++        assert_eq!(paragraph_direction(""), Direction::Ltr);
++
++        let mut layouter = real_font_layouter();
++        // Left-to-right base: the Latin word, read first, is on the left.
++        let ltr = wrapped_layout(&mut layouter, LATIN_FAMILY, "abc אבג", 500.0, None, false);
++        assert_eq!(ltr.rows[0].glyphs[0].cluster, 0);
++        // Right-to-left base: the Latin word, read first, is on the right, so
++        // the leftmost glyph is the Hebrew word's last letter.
++        let text = "\u{200F}abc אבג";
++        let rtl = wrapped_layout(&mut layouter, LATIN_FAMILY, text, 500.0, None, false);
++        assert_eq!(&text[rtl.rows[0].glyphs[0].cluster..], "ג");
++    }
++
++    #[test]
++    fn every_row_of_an_rtl_paragraph_keeps_its_direction() {
++        let mut layouter = real_font_layouter();
++        // Row 1 holds the long Hebrew word; row 2 starts with a Latin word.
++        let first_row = "\u{200F}אבגדהוזחטיכלמנ";
++        let row_width = layouter
++            .get_or_layout(BorrowedLayoutParams {
++                text: first_row,
++                style: super::Style {
++                    font_family_id: LATIN_FAMILY.into(),
++                    font_size_in_pts: 12.0,
++                    color: None,
++                },
++                options: LayoutOptions::default(),
++            })
++            .size_in_lpxs
++            .width;
++        let text = format!("{first_row} abc דה");
++        let laidout =
++            wrapped_layout(&mut layouter, LATIN_FAMILY, &text, row_width + 1.0, None, false);
++        assert_eq!(laidout.rows.len(), 2);
++        let row = &laidout.rows[1];
++        assert!(row.text.starts_with("abc"), "row 2 is {:?}", &*row.text);
++        assert_eq!(&row.text[row.glyphs[0].cluster..], "ה", "row 2 runs right to left");
++    }
+ }

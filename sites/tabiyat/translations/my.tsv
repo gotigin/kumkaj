@@ -1,227 +1,227 @@
 # Burmese — မြန်မာ (my). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ဥပမာ
-download_free	အခမဲ့ ဒေါင်းလုဒ်
-whatsapp_for_a_demo	သရုပ်ပြရန် WhatsApp ပို့ပါ
-free_on_android_windows_and	Android, Windows နှင့် Linux ပေါ်တွင် အခမဲ့။
+download_free	အခမဲ့ ဒေါင်း​လု​ဒ်
+whatsapp_for_a_demo	သရုပ်ပြ​ရန် WhatsApp ပို့​ပါ
+free_on_android_windows_and	Android, Windows နှင့် Linux ပေါ်​တွင် အခမဲ့။
 the_pharmacy_counter	ဆေးဆိုင် ကောင်တာ
 pharmacy_counter	ဆေးဆိုင် ကောင်တာ
 tabiyat_the_pharmacy_counter	TABIYAT · ဆေးဆိုင် ကောင်တာ
-pharmacy_counter_offline_your_books	ဆေးဆိုင် ကောင်တာ။ အော့ဖ်လိုင်း။ သင့်စာရင်းများ။
-medicines_barcode_and_salt_search	ဆေးဝါးများ၊ ဘားကုဒ်နှင့် ပါဝင်ဆေးဝါးဖြင့် ရှာခြင်း၊ သင့်ကိုယ်ပိုင် စာရင်းအတွက် အသုတ်နှင့် သက်တမ်းကုန်ရက် — သင့်စက်များပေါ်တွင်။ ဆိုင်ပိုင်ရှင်၏ အမှတ်အသားများသာ ဖြစ်သည်၊ ဆေးဝါးဥပဒေနှင့် ကိုက်ညီကြောင်း ဘယ်တော့မှ အယောင်မဆောင်ပါ။
-tap_the_bill_to_walk	ကောင်တာ အရောင်းတစ်ခုကို ကြည့်ရန် ဘေလ်ကို နှိပ်ပါ
-cash_memo	ငွေသားပြေစာ
+pharmacy_counter_offline_your_books	ဆေးဆိုင် ကောင်တာ။ အော့​ဖ်​လိုင်း။ သင့်​စာရင်း​များ။
+medicines_barcode_and_salt_search	ဆေးဝါး​များ၊ ဘား​ကုဒ်​နှင့် ပါဝင်​ဆေးဝါး​ဖြင့် ရှာ​ခြင်း၊ သင့်​ကိုယ်ပိုင် စာရင်း​အတွက် အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက် — သင့်​စက်​များ​ပေါ်​တွင်။ ဆိုင်​ပိုင်ရှင်၏ အမှတ်အသား​များ​သာ ဖြစ်သည်၊ ဆေးဝါး​ဥပဒေ​နှင့် ကိုက်​ညီ​ကြောင်း ဘယ်တော့​မှ အ​ယောင်​မ​ဆောင်​ပါ။
+tap_the_bill_to_walk	ကောင်တာ အ​ရောင်း​တစ်​ခု​ကို ကြည့်​ရန် ဘေ​လ်​ကို နှိပ်​ပါ
+cash_memo	ငွေသား​ပြေစာ
 ready	အဆင်သင့်
 total	စုစုပေါင်း
-tap_to_add_the_first	ပထမ ဆေး ထည့်ရန် နှိပ်ပါ
-example_pharmacy_lines_not_a	နမူနာ ဆေးဆိုင် စာကြောင်းများ၊ တကယ့် ငွေတိုက် မဟုတ်ပါ။ Tabiyat သည် လမ်းကြောင်းတစ်ခုတည်းကို လိုက်သည် — ရောင်း → ရှင်း → နေ့စဉ်စာရင်း။
-n_2_counter_sell	2 · ကောင်တာ အရောင်း
-medicine_quantity_pay_three_taps	ဆေး၊ အရေအတွက်၊ ပေးချေ — သုံးချက်နှိပ်ရုံ။
+tap_to_add_the_first	ပထမ ဆေး ထည့်​ရန် နှိပ်​ပါ
+example_pharmacy_lines_not_a	န​မူ​နာ ဆေးဆိုင် စာကြောင်း​များ၊ တ​က​ယ့် ငွေတိုက် မဟုတ်​ပါ။ Tabiyat သည် လမ်းကြောင်း​တစ်​ခု​တည်း​ကို လိုက်​သည် — ရောင်း → ရှင်း → နေ့စဉ်​စာရင်း။
+n_2_counter_sell	2 · ကောင်တာ အ​ရောင်း
+medicine_quantity_pay_three_taps	ဆေး၊ အရေအတွက်၊ ပေးချေ — သုံး​ချက်​နှိပ်​ရုံ။
 upi_qr_ready	UPI QR အဆင်သင့်
-example_bill	နမူနာ ဘေလ်
-fast_counter_billing	မြန်ဆန်သော ကောင်တာ ဘေလ်ဖွင့်ခြင်း
-add_the_line_set_the	စာကြောင်း ထည့်၊ အရေအတွက် သတ်မှတ်၊ ရှင်း — ငွေသား၊ UPI သို့မဟုတ် ခွဲပေး။
-gst_tax_invoice_or_cash	GST အခွန်ပြေစာ သို့မဟုတ် ငွေသားပြေစာ
-the_bill_lane_you_need	အရောင်းအတွက် သင်လိုအပ်သော ဘေလ်အမျိုးအစား။
-day_book_follows	နေ့စဉ်စာရင်း လိုက်ပါသည်
-every_tender_lands_in_books	အရောင်းကို ပိတ်လိုက်သည့်အခါ ပေးချေမှုတိုင်း စာရင်းထဲ ရောက်သည်။
-n_3_barcode_salt	3 · ဘားကုဒ်နှင့် ပါဝင်ဆေးဝါး
-scan_the_barcode_or_find	ဘားကုဒ်ကို စကင်ဖတ်ပါ — သို့မဟုတ် ပါဝင်ဆေးဝါးဖြင့် ရှာပါ။
-search	ရှာရန်
-composition_paracetamol_strip_of_10	ပါဝင်မှု: ပါရာစီတမော · 10 လုံးပါ ကတ်
-salt_amoxicillin	ပါဝင်ဆေးဝါး: အမောက်ဆီဆလင်
-ranks_barcode_name_and_composition	ဘားကုဒ်၊ အမည်နှင့် ပါဝင်မှုကို အတူတကွ အဆင့်သတ်မှတ်သည်။
-wedge_scanner_or_type_enter	စကင်နာ သို့မဟုတ် ရိုက်ပြီး Enter — စာကြောင်းသည် ဘေလ်ပေါ် ရောက်သည်။
-barcode_first	ဘားကုဒ် အရင်
-scan_or_paste_the_code	ကုဒ်ကို စကင်ဖတ်ပါ သို့မဟုတ် ကူးထည့်ပါ၊ ကတ်တလောက်တွင် ကိုက်ညီသည့်အရာ ပေါ်လာသည်။
-salt_composition	ပါဝင်ဆေးဝါး / ပါဝင်မှု
-type_the_salt_when_the	ဖောက်သည် ပြောသည့်အမည်က ကုန်အမှတ်တံဆိပ်အမည် မဟုတ်ပါက ပါဝင်ဆေးဝါးကို ရိုက်ပါ။
-owner_rx_schedule_h_flags	ဆိုင်ပိုင်ရှင်၏ Rx / Schedule H အမှတ်အသားများ
-reminders_you_set_not_a	သင်သတ်မှတ်သော သတိပေးချက်များ — ဥပဒေအရ မှတ်ပုံတင်စာအုပ် မဟုတ်၊ ဆေးဘက်ဆိုင်ရာ အကြံပြုချက် မဟုတ်ပါ။
-n_4_batch_expiry	4 · အသုတ်နှင့် သက်တမ်းကုန်ရက်
-batch_and_expiry_on_your	သင့်စာရင်းပေါ်တွင် အသုတ်နှင့် သက်တမ်းကုန်ရက် — ဆိုင်ပိုင်ရှင်အတွက် သတိပေးချက်များ။
-buy_batch_a12	ဝယ်ယူမှု · အသုတ် A12
-expires_2027_03_alert_in	2027-03 တွင် သက်တမ်းကုန် · 7 ရက်အတွင်း သတိပေး
-ors_sachets_batch_b04	ORS ဓာတ်ဆားထုပ် · အသုတ် B04
-expires_2026_11_near_expiry	2026-11 တွင် သက်တမ်းကုန် · စာရင်းပေါ်တွင် သက်တမ်းကုန်ခါနီး အစင်း
-shop_bookkeeping_only_not_drugs	ဆိုင်၏ စာရင်းကိုင်ခြင်းသာ — ဆေးဝါးဥပဒေနှင့် ကိုက်ညီမှု မဟုတ်ပါ။
-batch_on_buy	ဝယ်ချိန်တွင် အသုတ်
-record_batch_and_expiry_when	ကုန်ရောက်လာသည့်အခါ အသုတ်နှင့် သက်တမ်းကုန်ရက်ကို မှတ်ပါ။
-near_expiry_alerts	သက်တမ်းကုန်ခါနီး သတိပေးချက်များ
-books_and_sell_can_hint	ရက်စွဲ မကျော်မီ စာရင်းနှင့် ရောင်းမျက်နှာပြင်က အရိပ်အမြွက် ပြနိုင်သည်။
-owner_practice	ဆိုင်ပိုင်ရှင်၏ အလေ့အကျင့်
-fefo_hints_and_rx_notes	FEFO အရိပ်အမြွက်နှင့် Rx မှတ်ချက်များကို လိုက်နာမလား သင်ဆုံးဖြတ်ပါ — Tabiyat သည် သင်ထည့်သည့်အရာကို မှတ်တမ်းတင်သည်။
-n_5_khata	5 · အကြွေးစာအုပ်
-customer_credit_and_supplier_dues	ဖောက်သည်၏ အကြွေးနှင့် ပေးသွင်းသူထံ ပေးရန်ငွေကို စာအုပ်တစ်အုပ်တည်းတွင်။
-mehta_clinic_customer	မေထာ ဆေးခန်း · ဖောက်သည်
-due_from_earlier	ယခင်က ကျန်ငွေ
-today_s_sale_due	+ ယနေ့ အရောင်း (အကြွေး)
+example_bill	န​မူ​နာ ဘေ​လ်
+fast_counter_billing	မြန်ဆန်​သော ကောင်တာ ဘေ​လ်​ဖွင့်​ခြင်း
+add_the_line_set_the	စာကြောင်း ထည့်၊ အရေအတွက် သတ်မှတ်၊ ရှင်း — ငွေသား၊ UPI သို့မဟုတ် ခွဲ​ပေး။
+gst_tax_invoice_or_cash	GST အခွန်ပြေစာ သို့မဟုတ် ငွေသား​ပြေစာ
+the_bill_lane_you_need	အ​ရောင်း​အတွက် သင်​လိုအပ်​သော ဘေ​လ်​အမျိုး​အစား။
+day_book_follows	နေ့စဉ်​စာရင်း လိုက်ပါ​သည်
+every_tender_lands_in_books	အ​ရောင်း​ကို ပိတ်​လိုက်​သည့်​အခါ ပေးချေ​မှု​တိုင်း စာရင်း​ထဲ ရောက်​သည်။
+n_3_barcode_salt	3 · ဘား​ကုဒ်​နှင့် ပါဝင်​ဆေးဝါး
+scan_the_barcode_or_find	ဘား​ကုဒ်​ကို စ​ကင်​ဖတ်​ပါ — သို့မဟုတ် ပါဝင်​ဆေးဝါး​ဖြင့် ရှာ​ပါ။
+search	ရှာ​ရန်
+composition_paracetamol_strip_of_10	ပါဝင်​မှု: ပါ​ရာ​စီ​တ​မော · 10 လုံး​ပါ ကတ်
+salt_amoxicillin	ပါဝင်​ဆေးဝါး: အမောက်​ဆီ​ဆလင်
+ranks_barcode_name_and_composition	ဘား​ကုဒ်၊ အမည်​နှင့် ပါဝင်​မှု​ကို အတူတကွ အဆင့်​သတ်မှတ်​သည်။
+wedge_scanner_or_type_enter	စ​ကင်​နာ သို့မဟုတ် ရိုက်​ပြီး Enter — စာကြောင်း​သည် ဘေ​လ်​ပေါ် ရောက်​သည်။
+barcode_first	ဘား​ကုဒ် အ​ရင်
+scan_or_paste_the_code	ကုဒ်​ကို စ​ကင်​ဖတ်​ပါ သို့မဟုတ် ကူး​ထည့်​ပါ၊ ကတ်​တ​လောက်​တွင် ကိုက်​ညီ​သည့်​အရာ ပေါ်လာ​သည်။
+salt_composition	ပါဝင်​ဆေးဝါး / ပါဝင်​မှု
+type_the_salt_when_the	ဖောက်သည် ပြော​သည့်​အမည်​က ကုန်​အမှတ်​တံဆိပ်​အမည် မဟုတ်​ပါ​က ပါဝင်​ဆေးဝါး​ကို ရိုက်​ပါ။
+owner_rx_schedule_h_flags	ဆိုင်​ပိုင်ရှင်၏ Rx / Schedule H အမှတ်အသား​များ
+reminders_you_set_not_a	သင်​သတ်မှတ်​သော သတိပေးချက်​များ — ဥပဒေ​အရ မှတ်ပုံတင်​စာအုပ် မဟုတ်၊ ဆေး​ဘက်​ဆိုင်ရာ အကြံပြု​ချက် မဟုတ်​ပါ။
+n_4_batch_expiry	4 · အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက်
+batch_and_expiry_on_your	သင့်​စာရင်း​ပေါ်​တွင် အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက် — ဆိုင်​ပိုင်ရှင်​အတွက် သတိပေးချက်​များ။
+buy_batch_a12	ဝယ်ယူ​မှု · အသုတ် A12
+expires_2027_03_alert_in	2027-03 တွင် သက်တမ်း​ကုန် · 7 ရက်​အတွင်း သတိပေး
+ors_sachets_batch_b04	ORS ဓာတ်ဆား​ထုပ် · အသုတ် B04
+expires_2026_11_near_expiry	2026-11 တွင် သက်တမ်း​ကုန် · စာရင်း​ပေါ်​တွင် သက်တမ်း​ကုန်​ခါ​နီး အစင်း
+shop_bookkeeping_only_not_drugs	ဆိုင်၏ စာရင်းကိုင်​ခြင်း​သာ — ဆေးဝါး​ဥပဒေ​နှင့် ကိုက်​ညီ​မှု မဟုတ်​ပါ။
+batch_on_buy	ဝယ်​ချိန်​တွင် အသုတ်
+record_batch_and_expiry_when	ကုန်​ရောက်လာ​သည့်​အခါ အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက်​ကို မှတ်​ပါ။
+near_expiry_alerts	သက်တမ်း​ကုန်​ခါ​နီး သတိပေးချက်​များ
+books_and_sell_can_hint	ရက်စွဲ မ​ကျော်​မီ စာရင်း​နှင့် ရောင်း​မျက်နှာပြင်​က အရိပ်အမြွက် ပြ​နိုင်သည်။
+owner_practice	ဆိုင်​ပိုင်ရှင်၏ အလေ့အကျင့်
+fefo_hints_and_rx_notes	FEFO အရိပ်အမြွက်​နှင့် Rx မှတ်ချက်​များ​ကို လိုက်နာ​မ​လား သင်​ဆုံးဖြတ်​ပါ — Tabiyat သည် သင်​ထည့်​သည့်​အရာ​ကို မှတ်တမ်းတင်သည်။
+n_5_khata	5 · အကြွေး​စာအုပ်
+customer_credit_and_supplier_dues	ဖောက်သည်၏ အကြွေး​နှင့် ပေး​သွင်း​သူ​ထံ ပေး​ရန်​ငွေ​ကို စာအုပ်​တစ်​အုပ်​တည်း​တွင်။
+mehta_clinic_customer	မေ​ထာ ဆေးခန်း · ဖောက်သည်
+due_from_earlier	ယခင်​က ကျန်​ငွေ
+today_s_sale_due	+ ယနေ့ အ​ရောင်း (အကြွေး)
 balance	လက်ကျန်
-settle_later_part_cash_part	နောက်မှ ရှင်းပါ — တစ်ပိုင်း ငွေသား၊ တစ်ပိုင်း UPI။ ပေးသွင်းသူထံ ပေးရန်ငွေသည် ဖောက်သည်များ မျက်နှာပြင်တစ်ခုတည်းကို မျှသုံးသည်။
-due_on_the_bill	ဘေလ်ပေါ်ရှိ ကျန်ငွေ
-leave_a_balance_on_khata	သီးခြား စာရင်းအက်ပ် မပါဘဲ အကြွေးစာအုပ်တွင် လက်ကျန် ထားခဲ့ပါ။
-supplier_buys_too	ပေးသွင်းသူထံမှ ဝယ်ယူမှုလည်း
-who_you_owe_updates_when	ကုန်ရောက်လာသည့်အခါ ပေးရန်ရှိသူ အပ်ဒိတ်ဖြစ်သည်။
-auditable	စစ်ဆေးနိုင်သည်
-who_when_and_how_much	မည်သူ၊ မည်သည့်အချိန်၊ မည်မျှကို နေ့စဉ်စာရင်းတွင် မှတ်ထားသည်။
-n_6_internet_down	6 · အင်တာနက် ပြတ်သွားပြီလား။
-the_internet_drops_the_counter	အင်တာနက် ပြတ်သွားသည်။ ကောင်တာက ဆက်ရောင်းနေသည်။
-router_no_internet	ရောက်တာ: အင်တာနက်မရှိ
-main_counter_selling_and_settling	ပင်မ ကောင်တာ: ရောင်းပြီး ရှင်းနေသည်
-second_till_joined_on_your	ဒုတိယ ငွေတိုက်: သင့်ကိုယ်ပိုင် Wi-Fi ဖြင့် ချိတ်ထားသည်
-books_live_on_the_shop	စာရင်းများသည် ဆိုင်၏ စက်များပေါ်တွင် ရှိသည်
-when_the_internet_drops_nothing	အင်တာနက် ပြတ်သွားလည်း ဆေးဆိုင် ကောင်တာတွင် မည်သည့်အရာမျှ စောင့်ရန် မလိုပါ။
-one_server_lan_clients	ဆာဗာတစ်ခု၊ LAN client များ
-extra_tills_share_the_same	အပို ငွေတိုက်များသည် ဆိုင်၏ ကွန်ရက်မှတစ်ဆင့် စာရင်းတစ်ခုတည်းကို မျှသုံးသည်။
-n_7_free_forever_locally	7 · စက်ပေါ်တွင် အမြဲတမ်း အခမဲ့
-free_forever_on_your_devices	သင့်စက်ပစ္စည်းများပေါ်တွင် အမြဲတမ်း အခမဲ့။
-no_per_bill_charge	ဘေလ်အလိုက် အခ မရှိ
-no_fee_per_sale_medicine	စက်ပေါ် ထည့်သွင်းမှုတွင် အရောင်း၊ ဆေး၊ ငွေတိုက် သို့မဟုတ် ဝန်ထမ်း PIN အလိုက် အခကြေးငွေ မရှိပါ။
+settle_later_part_cash_part	နောက်မှ ရှင်း​ပါ — တစ်ပိုင်း ငွေသား၊ တစ်ပိုင်း UPI။ ပေး​သွင်း​သူ​ထံ ပေး​ရန်​ငွေ​သည် ဖောက်သည်​များ မျက်နှာပြင်​တစ်​ခု​တည်း​ကို မျှ​သုံး​သည်။
+due_on_the_bill	ဘေ​လ်​ပေါ်​ရှိ ကျန်​ငွေ
+leave_a_balance_on_khata	သီးခြား စာရင်း​အ​က်​ပ် မ​ပါ​ဘဲ အကြွေး​စာအုပ်​တွင် လက်ကျန် ထားခဲ့​ပါ။
+supplier_buys_too	ပေး​သွင်း​သူ​ထံမှ ဝယ်ယူ​မှု​လည်း
+who_you_owe_updates_when	ကုန်​ရောက်လာ​သည့်​အခါ ပေး​ရန်ရှိ​သူ အပ်​ဒိတ်​ဖြစ်သည်။
+auditable	စစ်ဆေး​နိုင်သည်
+who_when_and_how_much	မည်သူ၊ မည်​သည့်​အချိန်၊ မည်​မျှ​ကို နေ့စဉ်​စာရင်း​တွင် မှတ်ထားသည်။
+n_6_internet_down	6 · အင်​တာ​နက် ပြတ်​သွား​ပြီ​လား။
+the_internet_drops_the_counter	အင်​တာ​နက် ပြတ်​သွား​သည်။ ကောင်တာ​က ဆက်​ရောင်း​နေသည်။
+router_no_internet	ရောက်​တာ: အင်​တာ​နက်​မ​ရှိ
+main_counter_selling_and_settling	ပင်မ ကောင်တာ: ရောင်း​ပြီး ရှင်း​နေသည်
+second_till_joined_on_your	ဒုတိယ ငွေတိုက်: သင့်​ကိုယ်ပိုင် Wi-Fi ဖြင့် ချိတ်​ထားသည်
+books_live_on_the_shop	စာရင်း​များသည် ဆိုင်၏ စက်​များ​ပေါ်​တွင် ရှိ​သည်
+when_the_internet_drops_nothing	အင်​တာ​နက် ပြတ်​သွား​လည်း ဆေးဆိုင် ကောင်တာ​တွင် မည်​သည့်​အရာ​မျှ စောင့်​ရန် မ​လို​ပါ။
+one_server_lan_clients	ဆာ​ဗာ​တစ်​ခု၊ LAN client များ
+extra_tills_share_the_same	အပို ငွေတိုက်​များသည် ဆိုင်၏ ကွန်ရက်​မှ​တစ်ဆင့် စာရင်း​တစ်​ခု​တည်း​ကို မျှ​သုံး​သည်။
+n_7_free_forever_locally	7 · စက်​ပေါ်​တွင် အမြဲတမ်း အခမဲ့
+free_forever_on_your_devices	သင့်​စက်ပစ္စည်း​များ​ပေါ်​တွင် အမြဲတမ်း အခမဲ့။
+no_per_bill_charge	ဘေ​လ်​အလိုက် အခ မ​ရှိ
+no_fee_per_sale_medicine	စက်​ပေါ် ထည့်သွင်း​မှု​တွင် အ​ရောင်း၊ ဆေး၊ ငွေတိုက် သို့မဟုတ် ဝန်ထမ်း PIN အလိုက် အခကြေးငွေ မ​ရှိ​ပါ။
 android_windows_linux	Android, Windows, Linux
-the_same_tabiyat_on_the	ဖုန်းနှင့် ဒက်စ်တော့ ငွေတိုက်ပေါ်တွင် Tabiyat တစ်ခုတည်း။
-optional_kumkaj_cloud	ရွေးချယ်နိုင်သော Kumkaj Cloud
-yearly_steady_6k_swift_12k	နှစ်စဉ် Steady ₹6k · Swift ₹12k · Priority ₹24k အခွန်မပါ (သို့မဟုတ် စိတ်ကြိုက် ဈေးနှုန်းအဆို)။ /shop တွင် ဝယ်ပါ။
-n_8_start	8 · စတင်ရန်
-put_tabiyat_on_the_counter	Tabiyat ကို ကောင်တာပေါ် တင်ပါ။
-download_free_or_whatsapp_for	အခမဲ့ ဒေါင်းလုဒ်လုပ်ပါ သို့မဟုတ် သင့်ဆေးဆိုင်နှင့် မြို့အလိုက် ရှင်းပြရန် WhatsApp ပို့ပါ။
+the_same_tabiyat_on_the	ဖုန်း​နှင့် ဒ​က်​စ်​တော့ ငွေတိုက်​ပေါ်​တွင် Tabiyat တစ်​ခု​တည်း။
+optional_kumkaj_cloud	ရွေးချယ်​နိုင်​သော Kumkaj Cloud
+yearly_steady_6k_swift_12k	နှစ်စဉ် Steady ₹6k · Swift ₹12k · Priority ₹24k အခွန်​မ​ပါ (သို့မဟုတ် စိတ်ကြိုက် ဈေးနှုန်း​အဆို)။ /shop တွင် ဝယ်​ပါ။
+n_8_start	8 · စတင်​ရန်
+put_tabiyat_on_the_counter	Tabiyat ကို ကောင်တာ​ပေါ် တင်​ပါ။
+download_free_or_whatsapp_for	အခမဲ့ ဒေါင်း​လု​ဒ်​လုပ်​ပါ သို့မဟုတ် သင့်​ဆေးဆိုင်​နှင့် မြို့​အလိုက် ရှင်း​ပြ​ရန် WhatsApp ပို့​ပါ။
 privacy	ကိုယ်ရေးကိုယ်တာ
-terms	စည်းကမ်းချက်များ
-cancellation	ပယ်ဖျက်ခြင်း
+terms	စည်းကမ်း​ချက်​များ
+cancellation	ပယ်ဖျက်​ခြင်း
 cloud_shop	Cloud ဆိုင်
-account	အကောင့်
-chapter_counter_sell	ကောင်တာ အရောင်း
-chapter_barcode_salt	ဘားကုဒ်နှင့် ပါဝင်ဆေးဝါး
-chapter_batch_expiry	အသုတ်နှင့် သက်တမ်းကုန်ရက်
-chapter_khata	အကြွေးစာအုပ်
+account	အ​ကော​င့်
+chapter_counter_sell	ကောင်တာ အ​ရောင်း
+chapter_barcode_salt	ဘား​ကုဒ်​နှင့် ပါဝင်​ဆေးဝါး
+chapter_batch_expiry	အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက်
+chapter_khata	အကြွေး​စာအုပ်
 chapter_extra_till	အပို ငွေတိုက်
-chapter_offline	အော့ဖ်လိုင်း
-chapter_start	စတင်ရန်
-bill_selling	ရောင်းနေသည်
-bill_settle	ရှင်းရန်
-bill_paid	ရှင်းပြီး
-bill_next_line	နောက်စာကြောင်း ထည့်ရန် နှိပ်ပါ
-bill_settle_hint	ရှင်းရန် နှိပ်ပါ — ငွေသား သို့မဟုတ် UPI
-bill_upi_paid	UPI ₹ 162 · ပေးပြီး
-bill_paid_line	ရှင်းပြီး · နေ့စဉ်စာရင်း အပ်ဒိတ်ဖြစ်ပြီ
+chapter_offline	အော့​ဖ်​လိုင်း
+chapter_start	စတင်​ရန်
+bill_selling	ရောင်း​နေသည်
+bill_settle	ရှင်း​ရန်
+bill_paid	ရှင်း​ပြီး
+bill_next_line	နောက်​စာကြောင်း ထည့်​ရန် နှိပ်​ပါ
+bill_settle_hint	ရှင်း​ရန် နှိပ်​ပါ — ငွေသား သို့မဟုတ် UPI
+bill_upi_paid	UPI ₹ 162 · ပေး​ပြီး
+bill_paid_line	ရှင်း​ပြီး · နေ့စဉ်​စာရင်း အပ်​ဒိတ်​ဖြစ်​ပြီ
 lan_eyebrow	6 · အပို ငွေတိုက်
-lan_title	ဆိုင်၏ Wi-Fi ပေါ်တွင် နောက်ထပ် ငွေတိုက်တစ်ခု။
-cta_installers_note	ထည့်သွင်းဖိုင်တစ်ခုစီ သန့်ရှင်းသော စက်ပေါ်တွင် ထည့်သွင်းစမ်းသပ်မှု အောင်မြင်သည်နှင့် ဤနေရာတွင် တင်ပါမည်။ ထိုအချိန်အထိ WhatsApp တွင် သရုပ်ပြရန် တောင်းဆိုပါ။
-cta_whatsapp_soon	WhatsApp သရုပ်ပြလိုင်း မကြာမီ ဖွင့်ပါမည်။ သင့်စာသည် ဤသို့ ဖြစ်မည်: “{message}”။
-acct_page_title	အကောင့် — Tabiyat
-acct_lede	ဝဘ်ဆိုက်နှင့် အက်ပ်များအတွက် အကောင့်တစ်ခု — အသစ်ဖြစ်စေ ပြန်လာသူဖြစ်စေ ဖောင်တစ်ခုတည်း။
-acct_email	အီးမေးလ်
-acct_name_optional	အမည် (မဖြစ်မနေ မဟုတ်)
+lan_title	ဆိုင်၏ Wi-Fi ပေါ်​တွင် နောက်ထပ် ငွေတိုက်​တစ်​ခု။
+cta_installers_note	ထည့်သွင်း​ဖိုင်​တစ်ခုစီ သန့်ရှင်း​သော စက်​ပေါ်​တွင် ထည့်သွင်း​စမ်းသပ်မှု အောင်မြင်​သည်နှင့် ဤ​နေရာ​တွင် တင်​ပါ​မည်။ ထို​အချိန်​အထိ WhatsApp တွင် သရုပ်ပြ​ရန် တောင်း​ဆို​ပါ။
+cta_whatsapp_soon	WhatsApp သရုပ်ပြ​လိုင်း မ​ကြာ​မီ ဖွင့်​ပါ​မည်။ သင့်​စာ​သည် ဤသို့ ဖြစ်​မည်: “{message}”။
+acct_page_title	အ​ကော​င့် — Tabiyat
+acct_lede	ဝ​ဘ်​ဆိုက်​နှင့် အ​က်​ပ်​များ​အတွက် အ​ကော​င့်​တစ်​ခု — အသစ်​ဖြစ်​စေ ပြန်လာ​သူ​ဖြစ်​စေ ဖောင်​တစ်​ခု​တည်း။
+acct_email	အီး​မေး​လ်
+acct_name_optional	အမည် (မ​ဖြစ်​မ​နေ မဟုတ်)
 acct_password	စကားဝှက်
-acct_continue	ဆက်လုပ်
-acct_forgot	စကားဝှက် မေ့သွားပြီလား။
-acct_reset_hint	ပြန်လည်သတ်မှတ်ရန် လင့်ခ်ကို အီးမေးလ်ဖြင့် ပို့ပေးပါမည်။ စာရင်းသွင်းစဉ်က လိပ်စာကိုသာ သုံးပါ။
-acct_send_reset	ပြန်လည်သတ်မှတ်ရန် လင့်ခ် ပို့ပါ
+acct_continue	ဆက်​လုပ်
+acct_forgot	စကားဝှက် မေ့​သွား​ပြီ​လား။
+acct_reset_hint	ပြန်လည်​သတ်မှတ်​ရန် လ​င့်​ခ်​ကို အီး​မေး​လ်​ဖြင့် ပို့​ပေး​ပါ​မည်။ စာရင်း​သွင်း​စဉ်​က လိပ်စာ​ကို​သာ သုံး​ပါ။
+acct_send_reset	ပြန်လည်​သတ်မှတ်​ရန် လ​င့်​ခ် ပို့​ပါ
 acct_cancel	ပယ်ဖျက်
-acct_or_continue	သို့မဟုတ် ဤနည်းဖြင့် ဆက်လုပ်ပါ
+acct_or_continue	သို့မဟုတ် ဤ​နည်း​ဖြင့် ဆက်​လုပ်​ပါ
 acct_phone	ဖုန်း
-acct_mobile	မိုဘိုင်းဖုန်းနံပါတ်
-acct_send_sms	SMS ကုဒ် ပို့ပါ
+acct_mobile	မိုဘိုင်းဖုန်း​နံပါတ်
+acct_send_sms	SMS ကုဒ် ပို့​ပါ
 acct_sms_code	SMS ကုဒ်
-acct_confirm_code	ကုဒ်ကို အတည်ပြုပါ
-acct_signed_in	ဝင်ရောက်ပြီး
-acct_signed_in_as	ဝင်ရောက်ထားသည့် အကောင့်
+acct_confirm_code	ကုဒ်​ကို အတည်ပြု​ပါ
+acct_signed_in	ဝင်​ရောက်​ပြီး
+acct_signed_in_as	ဝင်​ရောက်​ထား​သည့် အ​ကော​င့်
 acct_status	အခြေအနေ
-acct_sign_in_methods	ဝင်ရောက်နည်းများ
-acct_cloud_username	Cloud အသုံးပြုသူအမည်
+acct_sign_in_methods	ဝင်​ရောက်​နည်း​များ
+acct_cloud_username	Cloud အသုံးပြု​သူ​အမည်
 acct_plan	အစီအစဉ်
-acct_resend_verify	အတည်ပြု အီးမေးလ် ပြန်ပို့ပါ
-acct_sign_out	ထွက်ရန်
-acct_cloud_sandbox	Kumkaj Cloud (စမ်းသပ်ပတ်ဝန်းကျင်)
+acct_resend_verify	အတည်ပြု အီး​မေး​လ် ပြန်​ပို့​ပါ
+acct_sign_out	ထွက်​ရန်
+acct_cloud_sandbox	Kumkaj Cloud (စမ်းသပ်​ပတ်ဝန်းကျင်)
 acct_current_password	လက်ရှိ စကားဝှက်
-acct_email_for_password	စကားဝှက်ဖြင့် ဝင်ရောက်ရန် အီးမေးလ်
-acct_new_password	စကားဝှက်အသစ်
-acct_confirm_new_password	စကားဝှက်အသစ်ကို အတည်ပြုပါ
-acct_add_way	အခြား ဝင်ရောက်နည်း ထည့်ပါ
-acct_link_hint	နည်းလမ်းတစ်ခု မအောင်မြင်ပါက ဝင်ရောက်ခွင့် ပြန်ရနိုင်ရန် နည်းလမ်းများကို အကောင့်တစ်ခုတည်းနှင့် ချိတ်ပါ။
-acct_link_google	Google ချိတ်ပါ
-acct_link_microsoft	Microsoft ချိတ်ပါ
-acct_link_github	GitHub ချိတ်ပါ
-acct_link_phone	ဖုန်း ချိတ်ပါ
-acct_send_sms_link	ချိတ်ရန် SMS ပို့ပါ
-acct_confirm_link_phone	အတည်ပြုပြီး ဖုန်း ချိတ်ပါ
+acct_email_for_password	စကားဝှက်​ဖြင့် ဝင်​ရောက်​ရန် အီး​မေး​လ်
+acct_new_password	စကားဝှက်​အသစ်
+acct_confirm_new_password	စကားဝှက်​အသစ်​ကို အတည်ပြု​ပါ
+acct_add_way	အခြား ဝင်​ရောက်​နည်း ထည့်​ပါ
+acct_link_hint	နည်း​လမ်း​တစ်​ခု မ​အောင်မြင်​ပါ​က ဝင်​ရောက်​ခွင့် ပြန်​ရ​နိုင်​ရန် နည်း​လမ်းများ​ကို အ​ကော​င့်​တစ်​ခု​တည်း​နှင့် ချိတ်​ပါ။
+acct_link_google	Google ချိတ်​ပါ
+acct_link_microsoft	Microsoft ချိတ်​ပါ
+acct_link_github	GitHub ချိတ်​ပါ
+acct_link_phone	ဖုန်း ချိတ်​ပါ
+acct_send_sms_link	ချိတ်​ရန် SMS ပို့​ပါ
+acct_confirm_link_phone	အတည်ပြု​ပြီး ဖုန်း ချိတ်​ပါ
 shop_page_title	ဆိုင် — Tabiyat
-shop_lede	နှစ်စဉ် Cloud အစီအစဉ်များ — ငွေချေချိန်တွင် အခွန်ထည့်သည်။ သင့်ကိုယ်ပိုင် စက်များပေါ်ရှိ Tabiyat အက်ပ် အပြည့်အစုံသည် ကြော်ငြာမပါဘဲ အမြဲတမ်း အခမဲ့ ဖြစ်သည်။
-shop_cart	ဈေးခြင်း
-shop_cart_empty_hint	သင့်ဈေးခြင်း ဗလာဖြစ်နေသည်။ Steady, Swift သို့မဟုတ် Priority ထည့်ပါ။
-shop_checkout	ငွေချေရန်
-shop_clear	ရှင်းရန်
-shop_checkout_hint	ငွေချေခြင်းသည် သင့်ကို အကောင့်တွင် ဝင်ရောက်စေပြီးနောက် ငွေပေးချေမှု စတင်သည် (စမ်းသပ် အတုအယောင်၊ သို့မဟုတ် ကီးများ သတ်မှတ်ထားလျှင် Paddle)။
-acct_billing_hint	နှစ်စဉ် အစီအစဉ်များ — ငွေချေချိန်တွင် ငွေပေးချေမှုဂိတ်က အခွန်ထည့်သည်။ စက်ပေါ်တွင် သုံးခြင်းသည် အမြဲတမ်း အခမဲ့ ဖြစ်သည်။ စိတ်ကြိုက်သည် ဈေးနှုန်းအဆိုပြုချက် ဖြစ်သည် (Steady ထက် နည်းနိုင်သလို Priority ထက်လည်း များနိုင်သည်)။
-shop_cloud_plans	Cloud အစီအစဉ်များ
-acct_federated	ပူးပေါင်း ဝင်ရောက်မှု
-acct_err_invalid_email	မှန်ကန်သော အီးမေးလ်လိပ်စာ ထည့်ပါ။
-acct_err_weak_password	အနည်းဆုံး စာလုံး 6 လုံးပါသော စကားဝှက် သုံးပါ။
-acct_err_wrong_password	စကားဝှက် မှားနေသည်။
-acct_err_invalid_credential	အီးမေးလ် သို့မဟုတ် စကားဝှက် မှားနေသည်။
-acct_err_popup_closed	ဝင်ရောက်ရန် ဝင်းဒိုး ပိတ်သွားသည်။
-acct_err_popup_cancelled	ဝင်ရောက်မှုကို ပယ်ဖျက်လိုက်သည်။
-acct_err_unauthorized_domain	ဤဒိုမိန်းကို Firebase Auth အတွက် ခွင့်မပြုထားပါ။
-acct_err_method_disabled	ထိုဝင်ရောက်နည်းကို မဖွင့်ရသေးပါ။
-acct_err_too_many	ကြိုးစားမှု များလွန်းသည်။ နောက်မှ ထပ်ကြိုးစားပါ။
-acct_err_phone_format	နိုင်ငံကုဒ်ပါသော ဖုန်းနံပါတ် အပြည့်အစုံ သုံးပါ (ဥပမာ +91…)။
-acct_err_sms_code	ထို SMS ကုဒ် မှားနေသည် သို့မဟုတ် သက်တမ်းကုန်သွားပြီ။
-acct_err_no_account	ထိုအီးမေးလ်ဖြင့် အကောင့်မရှိပါ။ အသစ်ပြုလုပ်ရန် ဆက်လုပ်ပါ သို့မဟုတ် အခြားနည်း သုံးပါ။
-acct_err_recent_login	လုံခြုံရေးအတွက် ပြန်ဝင်ရောက်ပြီးမှ ဤပြောင်းလဲမှုကို ထပ်လုပ်ပါ။
-acct_err_credential_in_use	ထိုဝင်ရောက်နည်းကို အခြားအကောင့်တစ်ခုက သုံးနေပြီ။
-acct_err_email_in_use	ထိုအီးမေးလ်ကို အခြားအကောင့်တစ်ခုက သုံးနေပြီ။
-acct_err_already_linked	ထိုနည်းလမ်းကို ဤအကောင့်နှင့် ချိတ်ပြီးသား ဖြစ်သည်။
-acct_err_exists_other_method	ဤအီးမေးလ်ဖြင့် အခြားဝင်ရောက်နည်း သုံးထားသော အကောင့်တစ်ခု ရှိပြီးသား ဖြစ်သည်။ ထိုနည်းဖြင့် အရင်ဝင်ရောက်ပြီး သင့်အကောင့်စာမျက်နှာမှ ဤနည်းကို ချိတ်ပါ။
-acct_err_generic	တစ်ခုခု မှားယွင်းသွားသည်။
-acct_method_password	အီးမေးလ်နှင့် စကားဝှက်
-acct_pw_hint_change	သင့်စကားဝှက်ကို ပြောင်းပါ။ လက်ရှိ စကားဝှက်ဖြင့် အတည်ပြုရမည်။
-acct_pw_hint_add	အီးမေးလ်ဖြင့်လည်း ဝင်ရောက်နိုင်ရန် စကားဝှက်တစ်ခု ထည့်ပါ (ဝန်ဆောင်မှုပေးသူ မရနိုင်ချိန်တွင် အသုံးဝင်သည်)။
-acct_pw_change	စကားဝှက် ပြောင်းရန်
-acct_pw_add	စကားဝှက် ထည့်ရန်
-acct_billing_off	Cloud API တွင် ငွေတောင်းခံမှုကို မဖွင့်ရသေးပါ။
-acct_billing_no_provider	Cloud API တွင် တကယ့် ငွေတောင်းခံဝန်ဆောင်မှုပေးသူ မဖွင့်ထားပါ (အတုအယောင်ကို စက်ပေါ်တွင်သာ)။
-price_quote	ဈေးနှုန်းအဆို
-price_per_year	₹{amount}/နှစ်၊ အခွန်မပါ
-acct_pay_received	ငွေလက်ခံရရှိပြီ — သင့်အစီအစဉ်ကို ပြန်လည်ဆန်းသစ်နေသည်…
-acct_pay_declined	ငွေပေးချေမှု ငြင်းပယ်ခံရသည် သို့မဟုတ် မအောင်မြင်ပါ
-acct_pay_failed_detail	{detail}။ သင့်အစီအစဉ် မပြောင်းလဲပါ။
-acct_checkout_closed	ငွေချေခြင်း ပိတ်လိုက်သည် — ငွေပေးချေမှု မပြီးပါ။ သင့်အစီအစဉ် မပြောင်းလဲပါ။
-acct_checkout_failed	ငွေချေခြင်း မအောင်မြင်ပါ
-acct_pay_with	{provider} ဖြင့် ပေးချေပါ
+shop_lede	နှစ်စဉ် Cloud အစီအစဉ်​များ — ငွေချေ​ချိန်​တွင် အခွန်​ထည့်သည်။ သင့်​ကိုယ်ပိုင် စက်​များ​ပေါ်​ရှိ Tabiyat အ​က်​ပ် အပြည့်အစုံ​သည် ကြော်ငြာ​မ​ပါ​ဘဲ အမြဲတမ်း အခမဲ့ ဖြစ်သည်။
+shop_cart	ဈေး​ခြင်း
+shop_cart_empty_hint	သင့်​ဈေး​ခြင်း ဗလာ​ဖြစ်​နေသည်။ Steady, Swift သို့မဟုတ် Priority ထည့်​ပါ။
+shop_checkout	ငွေချေ​ရန်
+shop_clear	ရှင်း​ရန်
+shop_checkout_hint	ငွေချေ​ခြင်း​သည် သင့်​ကို အ​ကော​င့်​တွင် ဝင်​ရောက်​စေ​ပြီး​နောက် ငွေ​ပေးချေ​မှု စတင်သည် (စမ်းသပ် အတုအယောင်၊ သို့မဟုတ် ကီး​များ သတ်မှတ်​ထား​လျှင် Paddle)။
+acct_billing_hint	နှစ်စဉ် အစီအစဉ်​များ — ငွေချေ​ချိန်​တွင် ငွေ​ပေးချေ​မှု​ဂိတ်​က အခွန်​ထည့်သည်။ စက်​ပေါ်​တွင် သုံး​ခြင်း​သည် အမြဲတမ်း အခမဲ့ ဖြစ်သည်။ စိတ်ကြိုက်​သည် ဈေးနှုန်း​အဆိုပြု​ချက် ဖြစ်သည် (Steady ထက် နည်း​နိုင်​သလို Priority ထက်​လည်း များ​နိုင်သည်)။
+shop_cloud_plans	Cloud အစီအစဉ်​များ
+acct_federated	ပူးပေါင်း ဝင်​ရောက်​မှု
+acct_err_invalid_email	မှန်ကန်​သော အီး​မေး​လ်​လိပ်စာ ထည့်​ပါ။
+acct_err_weak_password	အနည်းဆုံး စာလုံး 6 လုံး​ပါ​သော စကားဝှက် သုံး​ပါ။
+acct_err_wrong_password	စကားဝှက် မှား​နေသည်။
+acct_err_invalid_credential	အီး​မေး​လ် သို့မဟုတ် စကားဝှက် မှား​နေသည်။
+acct_err_popup_closed	ဝင်​ရောက်​ရန် ဝင်း​ဒိုး ပိတ်​သွား​သည်။
+acct_err_popup_cancelled	ဝင်​ရောက်​မှု​ကို ပယ်ဖျက်​လိုက်​သည်။
+acct_err_unauthorized_domain	ဤ​ဒို​မိန်း​ကို Firebase Auth အတွက် ခွင့်​မ​ပြု​ထား​ပါ။
+acct_err_method_disabled	ထို​ဝင်​ရောက်​နည်း​ကို မ​ဖွင့်​ရ​သေးပါ။
+acct_err_too_many	ကြိုးစား​မှု များ​လွန်း​သည်။ နောက်မှ ထပ်​ကြိုးစား​ပါ။
+acct_err_phone_format	နိုင်ငံ​ကုဒ်​ပါ​သော ဖုန်း​နံပါတ် အပြည့်အစုံ သုံး​ပါ (ဥပမာ +91…)။
+acct_err_sms_code	ထို SMS ကုဒ် မှား​နေသည် သို့မဟုတ် သက်တမ်း​ကုန်​သွား​ပြီ။
+acct_err_no_account	ထို​အီး​မေး​လ်​ဖြင့် အ​ကော​င့်​မ​ရှိ​ပါ။ အသစ်​ပြုလုပ်​ရန် ဆက်​လုပ်​ပါ သို့မဟုတ် အခြား​နည်း သုံး​ပါ။
+acct_err_recent_login	လုံခြုံရေး​အတွက် ပြန်​ဝင်​ရောက်​ပြီး​မှ ဤ​ပြောင်းလဲ​မှု​ကို ထပ်​လုပ်​ပါ။
+acct_err_credential_in_use	ထို​ဝင်​ရောက်​နည်း​ကို အခြား​အ​ကော​င့်​တစ်​ခု​က သုံး​နေ​ပြီ။
+acct_err_email_in_use	ထို​အီး​မေး​လ်​ကို အခြား​အ​ကော​င့်​တစ်​ခု​က သုံး​နေ​ပြီ။
+acct_err_already_linked	ထို​နည်း​လမ်း​ကို ဤ​အ​ကော​င့်​နှင့် ချိတ်​ပြီး​သား ဖြစ်သည်။
+acct_err_exists_other_method	ဤ​အီး​မေး​လ်​ဖြင့် အခြား​ဝင်​ရောက်​နည်း သုံး​ထား​သော အ​ကော​င့်​တစ်​ခု ရှိ​ပြီး​သား ဖြစ်သည်။ ထို​နည်း​ဖြင့် အ​ရင်​ဝင်​ရောက်​ပြီး သင့်​အ​ကော​င့်​စာမျက်နှာ​မှ ဤ​နည်း​ကို ချိတ်​ပါ။
+acct_err_generic	တစ်ခုခု မှားယွင်း​သွား​သည်။
+acct_method_password	အီး​မေး​လ်​နှင့် စကားဝှက်
+acct_pw_hint_change	သင့်​စကားဝှက်​ကို ပြောင်း​ပါ။ လက်ရှိ စကားဝှက်​ဖြင့် အတည်ပြု​ရ​မည်။
+acct_pw_hint_add	အီး​မေး​လ်​ဖြင့်​လည်း ဝင်​ရောက်​နိုင်​ရန် စကားဝှက်​တစ်​ခု ထည့်​ပါ (ဝန်ဆောင်မှု​ပေး​သူ မ​ရ​နိုင်​ချိန်​တွင် အသုံးဝင်​သည်)။
+acct_pw_change	စကားဝှက် ပြောင်း​ရန်
+acct_pw_add	စကားဝှက် ထည့်​ရန်
+acct_billing_off	Cloud API တွင် ငွေ​တောင်းခံ​မှု​ကို မ​ဖွင့်​ရ​သေးပါ။
+acct_billing_no_provider	Cloud API တွင် တ​က​ယ့် ငွေ​တောင်းခံ​ဝန်ဆောင်မှု​ပေး​သူ မ​ဖွင့်​ထား​ပါ (အတုအယောင်​ကို စက်​ပေါ်​တွင်​သာ)။
+price_quote	ဈေးနှုန်း​အဆို
+price_per_year	₹{amount}/နှစ်၊ အခွန်​မ​ပါ
+acct_pay_received	ငွေ​လက်ခံ​ရရှိ​ပြီ — သင့်​အစီအစဉ်​ကို ပြန်လည်​ဆန်း​သစ်​နေသည်…
+acct_pay_declined	ငွေ​ပေးချေ​မှု ငြင်းပယ်​ခံ​ရ​သည် သို့မဟုတ် မ​အောင်မြင်​ပါ
+acct_pay_failed_detail	{detail}။ သင့်​အစီအစဉ် မ​ပြောင်းလဲ​ပါ။
+acct_checkout_closed	ငွေချေ​ခြင်း ပိတ်​လိုက်​သည် — ငွေ​ပေးချေ​မှု မ​ပြီး​ပါ။ သင့်​အစီအစဉ် မ​ပြောင်းလဲ​ပါ။
+acct_checkout_failed	ငွေချေ​ခြင်း မ​အောင်မြင်​ပါ
+acct_pay_with	{provider} ဖြင့် ပေးချေ​ပါ
 acct_plan_until	{plan} · {date} အထိ
-acct_unavailable	မရနိုင်ပါ
-acct_continue_hint	အီးမေးလ်၊ ဝန်ဆောင်မှုပေးသူ သို့မဟုတ် ဖုန်းဖြင့် ဆက်လုပ်ပါ။
-acct_signed_in_fallback	(ဝင်ရောက်ပြီး)
-acct_email_verified	အီးမေးလ် အတည်ပြုပြီး
-acct_email_unverified	အီးမေးလ် အတည်မပြုရသေးပါ — သင့်စာဝင်ပုံးကို စစ်ပါ
-acct_signed_in_phone	ဖုန်းဖြင့် ဝင်ရောက်ပြီး
-acct_none_listed	စာရင်းမရှိသေးပါ
-acct_signed_in_status	သင် ဝင်ရောက်ပြီးပါပြီ။
-acct_created	အကောင့် ဖန်တီးပြီးပါပြီ။ အဆင်ပြေသည့်အခါ အတည်ပြုရန် သင့်အီးမေးလ်ကို စစ်ပါ။
-acct_reset_sent	ထိုအီးမေးလ်အတွက် အကောင့်ရှိပါက ပြန်လည်သတ်မှတ်ရန် လင့်ခ် ပို့နေပြီ။ သင့်စာဝင်ပုံးကို စစ်ပါ။
-acct_another_method	အခြားနည်းလမ်း
-acct_exists_via	{email} အတွက် အကောင့်တစ်ခုကို {method} ဖြင့် ဖန်တီးပြီးသား ဖြစ်သည်။ ထိုနည်းဖြင့် အရင်ဝင်ရောက်ပြီး သင့်အကောင့်စာမျက်နှာမှ ဤဝန်ဆောင်မှုပေးသူကို ချိတ်ပါ။
-acct_enter_current_pw	သင့်လက်ရှိ စကားဝှက်ကို ထည့်ပါ။
-acct_relogin_retry	ထွက်ပြီး ပြန်ဝင်ရောက်ကာ ထပ်ကြိုးစားပါ။
-acct_pw_mismatch	စကားဝှက်အသစ်နှင့် အတည်ပြုချက် မကိုက်ညီပါ။
-acct_pw_updated	စကားဝှက် အပ်ဒိတ်လုပ်ပြီး။
-acct_enter_email_pw	စကားဝှက်ဖြင့် ဝင်ရောက်ရန် သုံးမည့် အီးမေးလ်ကို ထည့်ပါ။
-acct_pw_added	စကားဝှက် ထည့်ပြီးပါပြီ။ ယခု အီးမေးလ်ဖြင့်လည်း ဝင်ရောက်နိုင်သည်။
-acct_method_linked	ဝင်ရောက်နည်း ချိတ်ပြီး။
-acct_phone_linked	ဖုန်းကို ဤအကောင့်နှင့် ချိတ်ပြီး။
-acct_verify_sent	အတည်ပြု အီးမေးလ် ပို့ပြီး — သင့်စာဝင်ပုံးကို စစ်ပါ။
-shop_pricing_soon	ဈေးနှုန်း မကြာမီ
-shop_request_quote	ဈေးနှုန်းအဆို တောင်းရန်
-shop_add_to_cart	ဈေးခြင်းထဲ ထည့်ရန်
-shop_notify_later	နောက်မှ အသိပေးပါ
-shop_included	ပါဝင်သည်
-shop_in_cart	{plan} သည် သင့်ဈေးခြင်းထဲတွင် ရှိသည်။
-shop_remove	ဖယ်ရှားရန်
-shop_cart_is_empty	ဈေးခြင်း ဗလာဖြစ်နေသည်။
-shop_prices_unpublished	ဤထုတ်ကုန်အတွက် ကိုယ်တိုင်ဝယ်ယူမှု ဈေးနှုန်းများ မထုတ်ပြန်ရသေးပါ။ စိတ်ကြိုက် ဈေးနှုန်းအဆို တောင်းပါ သို့မဟုတ် နောက်မှ ပြန်ကြည့်ပါ။
-shop_cart_cleared	ဈေးခြင်း ရှင်းပြီး။
+acct_unavailable	မ​ရ​နိုင်​ပါ
+acct_continue_hint	အီး​မေး​လ်၊ ဝန်ဆောင်မှု​ပေး​သူ သို့မဟုတ် ဖုန်း​ဖြင့် ဆက်​လုပ်​ပါ။
+acct_signed_in_fallback	(ဝင်​ရောက်​ပြီး)
+acct_email_verified	အီး​မေး​လ် အတည်ပြု​ပြီး
+acct_email_unverified	အီး​မေး​လ် အတည်​မ​ပြု​ရ​သေးပါ — သင့်​စာ​ဝင်​ပုံး​ကို စစ်​ပါ
+acct_signed_in_phone	ဖုန်း​ဖြင့် ဝင်​ရောက်​ပြီး
+acct_none_listed	စာရင်း​မ​ရှိ​သေးပါ
+acct_signed_in_status	သင် ဝင်​ရောက်​ပြီး​ပါ​ပြီ။
+acct_created	အ​ကော​င့် ဖန်တီး​ပြီး​ပါ​ပြီ။ အဆင်ပြေ​သည့်​အခါ အတည်ပြု​ရန် သင့်​အီး​မေး​လ်​ကို စစ်​ပါ။
+acct_reset_sent	ထို​အီး​မေး​လ်​အတွက် အ​ကော​င့်​ရှိ​ပါ​က ပြန်လည်​သတ်မှတ်​ရန် လ​င့်​ခ် ပို့​နေ​ပြီ။ သင့်​စာ​ဝင်​ပုံး​ကို စစ်​ပါ။
+acct_another_method	အခြား​နည်း​လမ်း
+acct_exists_via	{email} အတွက် အ​ကော​င့်​တစ်​ခု​ကို {method} ဖြင့် ဖန်တီး​ပြီး​သား ဖြစ်သည်။ ထို​နည်း​ဖြင့် အ​ရင်​ဝင်​ရောက်​ပြီး သင့်​အ​ကော​င့်​စာမျက်နှာ​မှ ဤ​ဝန်ဆောင်မှု​ပေး​သူ​ကို ချိတ်​ပါ။
+acct_enter_current_pw	သင့်​လက်ရှိ စကားဝှက်​ကို ထည့်​ပါ။
+acct_relogin_retry	ထွက်​ပြီး ပြန်​ဝင်​ရောက်​ကာ ထပ်​ကြိုးစား​ပါ။
+acct_pw_mismatch	စကားဝှက်​အသစ်​နှင့် အတည်ပြု​ချက် မ​ကိုက်​ညီ​ပါ။
+acct_pw_updated	စကားဝှက် အပ်​ဒိတ်​လုပ်​ပြီး။
+acct_enter_email_pw	စကားဝှက်​ဖြင့် ဝင်​ရောက်​ရန် သုံး​မည့် အီး​မေး​လ်​ကို ထည့်​ပါ။
+acct_pw_added	စကားဝှက် ထည့်​ပြီး​ပါ​ပြီ။ ယခု အီး​မေး​လ်​ဖြင့်​လည်း ဝင်​ရောက်​နိုင်သည်။
+acct_method_linked	ဝင်​ရောက်​နည်း ချိတ်​ပြီး။
+acct_phone_linked	ဖုန်း​ကို ဤ​အ​ကော​င့်​နှင့် ချိတ်​ပြီး။
+acct_verify_sent	အတည်ပြု အီး​မေး​လ် ပို့​ပြီး — သင့်​စာ​ဝင်​ပုံး​ကို စစ်​ပါ။
+shop_pricing_soon	ဈေးနှုန်း မ​ကြာ​မီ
+shop_request_quote	ဈေးနှုန်း​အဆို တောင်း​ရန်
+shop_add_to_cart	ဈေး​ခြင်း​ထဲ ထည့်​ရန်
+shop_notify_later	နောက်မှ အသိပေး​ပါ
+shop_included	ပါဝင်​သည်
+shop_in_cart	{plan} သည် သင့်​ဈေး​ခြင်း​ထဲ​တွင် ရှိ​သည်။
+shop_remove	ဖယ်ရှား​ရန်
+shop_cart_is_empty	ဈေး​ခြင်း ဗလာ​ဖြစ်​နေသည်။
+shop_prices_unpublished	ဤ​ထုတ်ကုန်​အတွက် ကိုယ်တိုင်​ဝယ်ယူ​မှု ဈေးနှုန်း​များ မ​ထုတ်​ပြန်​ရ​သေးပါ။ စိတ်ကြိုက် ဈေးနှုန်း​အဆို တောင်း​ပါ သို့မဟုတ် နောက်မှ ပြန်​ကြည့်ပါ။
+shop_cart_cleared	ဈေး​ခြင်း ရှင်း​ပြီး။
 plan_free_title	အမြဲတမ်း အခမဲ့
-plan_free_blurb	သင့်စက်များပေါ်ရှိ စက်ပေါ်ထုတ်ကုန် အပြည့်အစုံ။ Cloud အခကြေးငွေ မရှိ။
+plan_free_blurb	သင့်​စက်​များ​ပေါ်​ရှိ စက်​ပေါ်​ထုတ်ကုန် အပြည့်အစုံ။ Cloud အခကြေးငွေ မ​ရှိ။
 plan_steady_blurb	တိုက်ရိုက် Cloud · 10 GB · bandwidth နိမ့်
 plan_swift_blurb	တိုက်ရိုက် Cloud · 25 GB · bandwidth အလယ်အလတ်
-plan_priority_blurb	တိုက်ရိုက် Cloud · 50 GB · အမြင့်ဆုံး စံ bandwidth
+plan_priority_blurb	တိုက်ရိုက် Cloud · 50 GB · အမြင့်​ဆုံး စံ bandwidth
 plan_custom_title	စိတ်ကြိုက်
-plan_custom_blurb	သဘောတူထားသော ပမာဏနှင့် bandwidth။ ဈေးနှုန်းအဆိုသည် Steady ထက် နည်းနိုင်သလို Priority ထက်လည်း များနိုင်သည်။
+plan_custom_blurb	သဘောတူ​ထား​သော ပမာဏ​နှင့် bandwidth။ ဈေးနှုန်း​အဆို​သည် Steady ထက် နည်း​နိုင်​သလို Priority ထက်​လည်း များ​နိုင်သည်။

@@ -1,227 +1,227 @@
 # Lao — ລາວ (lo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ຕົວຢ່າງ
-download_free	ດາວໂຫຼດຟຣີ
-whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອຂໍເບິ່ງຕົວຢ່າງ
-free_on_android_windows_and	ຟຣີເທິງ Android, Windows ແລະ Linux
-the_pharmacy_counter	ເຄົາເຕີຮ້ານຂາຍຢາ
-pharmacy_counter	ເຄົາເຕີຮ້ານຢາ
-tabiyat_the_pharmacy_counter	TABIYAT · ເຄົາເຕີຮ້ານຂາຍຢາ
-pharmacy_counter_offline_your_books	ເຄົາເຕີຮ້ານຢາ ອອບລາຍ ບັນຊີຂອງທ່ານ
-medicines_barcode_and_salt_search	ຢາ ການຄົ້ນຫາດ້ວຍບາໂຄດ ແລະ ສານອອກລິດ ລັອດ ແລະ ວັນໝົດອາຍຸສຳລັບບັນຊີຂອງທ່ານເອງ — ເທິງອຸປະກອນຂອງທ່ານ ເປັນພຽງເຄື່ອງໝາຍຂອງເຈົ້າຂອງຮ້ານ ບໍ່ເຄີຍທຳທ່າວ່າເປັນໄປຕາມກົດໝາຍຢາ
-tap_the_bill_to_walk	ແຕະໃບບິນເພື່ອເບິ່ງການຂາຍໜ້າເຄົາເຕີ
-cash_memo	ໃບຮັບເງິນສົດ
+download_free	ດາວ​ໂຫຼ​ດຟຣີ
+whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ
+free_on_android_windows_and	ຟຣີ​ເທິງ Android, Windows ແລະ Linux
+the_pharmacy_counter	ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ຢາ
+pharmacy_counter	ເຄົາ​ເຕີ​ຮ້ານ​ຢາ
+tabiyat_the_pharmacy_counter	TABIYAT · ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ຢາ
+pharmacy_counter_offline_your_books	ເຄົາ​ເຕີ​ຮ້ານ​ຢາ ອອບ​ລາຍ ບັນຊີ​ຂອງ​ທ່ານ
+medicines_barcode_and_salt_search	ຢາ ການຄົ້ນ​ຫາ​ດ້ວຍ​ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ​ສຳລັບ​ບັນຊີ​ຂອງ​ທ່ານ​ເອງ — ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ ເປັນພຽງ​ເຄື່ອງໝາຍ​ຂອງ​ເຈົ້າຂອງ​ຮ້ານ ບໍ່ເຄີຍ​ທຳທ່າ​ວ່າເປັນ​ໄປ​ຕາມ​ກົດໝາຍ​ຢາ
+tap_the_bill_to_walk	ແຕະ​ໃບ​ບິນ​ເພື່ອ​ເບິ່ງ​ການຂາຍໜ້າ​ເຄົາ​ເຕີ
+cash_memo	ໃບຮັບ​ເງິນສົດ
 ready	ພ້ອມ
 total	ທັງໝົດ
-tap_to_add_the_first	ແຕະເພື່ອເພີ່ມຢາໂຕທຳອິດ
-example_pharmacy_lines_not_a	ລາຍການຮ້ານຢາຕົວຢ່າງ ບໍ່ແມ່ນລິ້ນຊັກເງິນແທ້ Tabiyat ໃຊ້ເສັ້ນທາງດຽວກັນ: ຂາຍ → ຊຳລະ → ປຶ້ມມື້
-n_2_counter_sell	2 · ຂາຍໜ້າເຄົາເຕີ
-medicine_quantity_pay_three_taps	ຢາ ຈຳນວນ ຈ່າຍເງິນ — ແຕະສາມເທື່ອ
+tap_to_add_the_first	ແຕະ​ເພື່ອ​ເພີ່ມ​ຢາ​ໂຕ​ທຳອິດ
+example_pharmacy_lines_not_a	ລາຍການ​ຮ້ານ​ຢາ​ຕົວຢ່າງ ບໍ່​ແມ່ນ​ລິ້ນ​ຊັກ​ເງິນ​ແທ້ Tabiyat ໃຊ້​ເສັ້ນທາງ​ດຽວກັນ: ຂາຍ → ຊຳລະ → ປຶ້ມ​ມື້
+n_2_counter_sell	2 · ຂາຍໜ້າ​ເຄົາ​ເຕີ
+medicine_quantity_pay_three_taps	ຢາ ຈຳນວນ ຈ່າຍເງິນ — ແຕະ​ສາມ​ເທື່ອ
 upi_qr_ready	UPI QR ພ້ອມ
-example_bill	ຕົວຢ່າງໃບບິນ
-fast_counter_billing	ອອກໃບບິນໜ້າເຄົາເຕີໄດ້ໄວ
-add_the_line_set_the	ເພີ່ມລາຍການ ຕັ້ງຈຳນວນ ຊຳລະ — ເງິນສົດ UPI ຫຼື ແບ່ງຈ່າຍ
-gst_tax_invoice_or_cash	ໃບກຳກັບພາສີ GST ຫຼື ໃບຮັບເງິນສົດ
-the_bill_lane_you_need	ປະເພດໃບບິນທີ່ທ່ານຕ້ອງໃຊ້ສຳລັບການຂາຍ
-day_book_follows	ປຶ້ມມື້ຕາມມາ
-every_tender_lands_in_books	ທຸກການຊຳລະເຂົ້າສູ່ບັນຊີເມື່ອທ່ານປິດການຂາຍ
-n_3_barcode_salt	3 · ບາໂຄດ ແລະ ສານອອກລິດ
-scan_the_barcode_or_find	ສະແກນບາໂຄດ — ຫຼື ຄົ້ນຫາດ້ວຍສານອອກລິດ
+example_bill	ຕົວຢ່າງ​ໃບ​ບິນ
+fast_counter_billing	ອອກ​ໃບ​ບິນ​ໜ້າ​ເຄົາ​ເຕີ​ໄດ້​ໄວ
+add_the_line_set_the	ເພີ່ມ​ລາຍການ ຕັ້ງ​ຈຳນວນ ຊຳລະ — ເງິນສົດ UPI ຫຼື ແບ່ງ​ຈ່າຍ
+gst_tax_invoice_or_cash	ໃບ​ກຳກັບ​ພາສີ GST ຫຼື ໃບຮັບ​ເງິນສົດ
+the_bill_lane_you_need	ປະເພດ​ໃບ​ບິນ​ທີ່​ທ່ານ​ຕ້ອງ​ໃຊ້​ສຳລັບ​ການຂາຍ
+day_book_follows	ປຶ້ມ​ມື້​ຕາມ​ມາ
+every_tender_lands_in_books	ທຸກ​ການ​ຊຳລະ​ເຂົ້າສູ່​ບັນຊີ​ເມື່ອ​ທ່ານ​ປິດ​ການຂາຍ
+n_3_barcode_salt	3 · ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ
+scan_the_barcode_or_find	ສະ​ແກນ​ບາ​ໂຄດ — ຫຼື ຄົ້ນຫາ​ດ້ວຍ​ສານ​ອອກລິດ
 search	ຄົ້ນຫາ
-composition_paracetamol_strip_of_10	ສ່ວນປະກອບ: ພາຣາເຊຕາມອນ · ແຜງລະ 10 ເມັດ
-salt_amoxicillin	ສານອອກລິດ: ອາມັອກຊີຊີລິນ
-ranks_barcode_name_and_composition	ຈັດອັນດັບບາໂຄດ ຊື່ ແລະ ສ່ວນປະກອບໄປພ້ອມກັນ
-wedge_scanner_or_type_enter	ໃຊ້ເຄື່ອງສະແກນ ຫຼື ພິມແລ້ວກົດ Enter — ລາຍການຈະລົງໃບບິນທັນທີ
-barcode_first	ບາໂຄດກ່ອນ
-scan_or_paste_the_code	ສະແກນ ຫຼື ວາງລະຫັດ ລາຍການທີ່ກົງໃນແຄັດຕາລັອກຈະຂຶ້ນມາ
-salt_composition	ສານອອກລິດ / ສ່ວນປະກອບ
-type_the_salt_when_the	ພິມສານອອກລິດເມື່ອລູກຄ້າບໍ່ໄດ້ບອກຊື່ການຄ້າ
-owner_rx_schedule_h_flags	ເຄື່ອງໝາຍ Rx / Schedule H ຂອງເຈົ້າຂອງຮ້ານ
-reminders_you_set_not_a	ການແຈ້ງເຕືອນທີ່ທ່ານຕັ້ງເອງ — ບໍ່ແມ່ນທະບຽນຕາມກົດໝາຍ ແລະ ບໍ່ແມ່ນຄຳແນະນຳທາງການແພດ
-n_4_batch_expiry	4 · ລັອດ ແລະ ວັນໝົດອາຍຸ
-batch_and_expiry_on_your	ລັອດ ແລະ ວັນໝົດອາຍຸໃນບັນຊີຂອງທ່ານ — ແຈ້ງເຕືອນເຈົ້າຂອງຮ້ານ
+composition_paracetamol_strip_of_10	ສ່ວນປະກອບ: ພາ​ຣາ​ເຊ​ຕາ​ມອນ · ແຜງ​ລະ 10 ເມັດ
+salt_amoxicillin	ສານ​ອອກລິດ: ອາ​ມັອກ​ຊີ​ຊີ​ລິນ
+ranks_barcode_name_and_composition	ຈັດອັນດັບ​ບາ​ໂຄດ ຊື່ ແລະ ສ່ວນປະກອບ​ໄປ​ພ້ອມກັນ
+wedge_scanner_or_type_enter	ໃຊ້​ເຄື່ອງ​ສະ​ແກນ ຫຼື ພິມ​ແລ້ວ​ກົດ Enter — ລາຍການ​ຈະ​ລົງ​ໃບ​ບິນ​ທັນທີ
+barcode_first	ບາ​ໂຄດ​ກ່ອນ
+scan_or_paste_the_code	ສະ​ແກນ ຫຼື ວາງ​ລະຫັດ ລາຍການ​ທີ່​ກົງ​ໃນ​ແຄັດ​ຕາ​ລັອກ​ຈະ​ຂຶ້ນມາ
+salt_composition	ສານ​ອອກລິດ / ສ່ວນປະກອບ
+type_the_salt_when_the	ພິມ​ສານ​ອອກລິດ​ເມື່ອ​ລູກຄ້າ​ບໍ່ໄດ້​ບອກ​ຊື່​ການຄ້າ
+owner_rx_schedule_h_flags	ເຄື່ອງໝາຍ Rx / Schedule H ຂອງ​ເຈົ້າຂອງ​ຮ້ານ
+reminders_you_set_not_a	ການ​ແຈ້ງ​ເຕືອນ​ທີ່​ທ່ານ​ຕັ້ງ​ເອງ — ບໍ່​ແມ່ນ​ທະບຽນ​ຕາມ​ກົດໝາຍ ແລະ ບໍ່​ແມ່ນ​ຄຳແນະນຳ​ທາງການ​ແພດ
+n_4_batch_expiry	4 · ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ
+batch_and_expiry_on_your	ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ​ໃນ​ບັນຊີ​ຂອງ​ທ່ານ — ແຈ້ງ​ເຕືອນ​ເຈົ້າຂອງ​ຮ້ານ
 buy_batch_a12	ຊື້ · ລັອດ A12
-expires_2027_03_alert_in	ໝົດອາຍຸ 2027-03 · ແຈ້ງເຕືອນໃນ 7 ວັນ
-ors_sachets_batch_b04	ຜົງເກືອແຮ່ ORS · ລັອດ B04
-expires_2026_11_near_expiry	ໝົດອາຍຸ 2026-11 · ແຖບໃກ້ໝົດອາຍຸໃນບັນຊີ
-shop_bookkeeping_only_not_drugs	ເປັນພຽງການເຮັດບັນຊີຂອງຮ້ານ — ບໍ່ແມ່ນການປະຕິບັດຕາມກົດໝາຍຢາ
-batch_on_buy	ລັອດຕອນຊື້
-record_batch_and_expiry_when	ບັນທຶກລັອດ ແລະ ວັນໝົດອາຍຸເມື່ອສິນຄ້າເຂົ້າ
-near_expiry_alerts	ແຈ້ງເຕືອນໃກ້ໝົດອາຍຸ
-books_and_sell_can_hint	ບັນຊີ ແລະ ໜ້າຂາຍເຕືອນໄດ້ກ່ອນເຖິງວັນ
-owner_practice	ແນວທາງຂອງເຈົ້າຂອງຮ້ານ
-fefo_hints_and_rx_notes	ຄຳແນະນຳ FEFO ແລະ ບັນທຶກ Rx ເປັນສິ່ງທີ່ທ່ານເລືອກເຮັດຕາມເອງ — Tabiyat ບັນທຶກສິ່ງທີ່ທ່ານປ້ອນ
-n_5_khata	5 · ປຶ້ມໜີ້
-customer_credit_and_supplier_dues	ໜີ້ລູກຄ້າ ແລະ ຍອດຄ້າງຈ່າຍຜູ້ສະໜອງ ໃນປຶ້ມຝ່າຍເຫຼັ້ມດຽວ
-mehta_clinic_customer	ຄລີນິກເມຕາ · ລູກຄ້າ
-due_from_earlier	ຍອດຄ້າງເດີມ
-today_s_sale_due	+ ຍອດຂາຍມື້ນີ້ (ຕິດໜີ້)
-balance	ຍອດຄົງເຫຼືອ
-settle_later_part_cash_part	ຊຳລະພາຍຫຼັງ — ເງິນສົດບາງສ່ວນ UPI ບາງສ່ວນ ເຈົ້າໜີ້ຜູ້ສະໜອງໃຊ້ໜ້າຝ່າຍດຽວກັນ
-due_on_the_bill	ຍອດຄ້າງໃນໃບບິນ
-leave_a_balance_on_khata	ເກັບຍອດຄົງເຫຼືອໄວ້ໃນປຶ້ມໜີ້ໂດຍບໍ່ຕ້ອງໃຊ້ແອັບບັນຊີແຍກ
-supplier_buys_too	ການຊື້ຈາກຜູ້ສະໜອງນຳ
-who_you_owe_updates_when	ຍອດທີ່ທ່ານຄ້າງຈ່າຍອັບເດດເມື່ອສິນຄ້າເຂົ້າ
-auditable	ກວດສອບໄດ້
-who_when_and_how_much	ໃຜ ເມື່ອໃດ ແລະ ເທົ່າໃດ ຢູ່ໃນປຶ້ມມື້
-n_6_internet_down	6 · ອິນເຕີເນັດລົ້ມ?
-the_internet_drops_the_counter	ອິນເຕີເນັດຫຼຸດ ເຄົາເຕີຍັງຂາຍຕໍ່
-router_no_internet	ເຣົາເຕີ: ບໍ່ມີອິນເຕີເນັດ
-main_counter_selling_and_settling	ເຄົາເຕີຫຼັກ: ຂາຍ ແລະ ຮັບຊຳລະຢູ່
-second_till_joined_on_your	ລິ້ນຊັກເງິນທີສອງ: ເຊື່ອມຜ່ານ Wi-Fi ຂອງຮ້ານ
-books_live_on_the_shop	ບັນຊີຢູ່ເທິງອຸປະກອນຂອງຮ້ານ
-when_the_internet_drops_nothing	ເມື່ອອິນເຕີເນັດຫຼຸດ ບໍ່ມີຫຍັງທີ່ເຄົາເຕີຮ້ານຢາຕ້ອງລໍຖ້າ
-one_server_lan_clients	ເຊີບເວີດຽວ ໄຄລເອັນ LAN
-extra_tills_share_the_same	ລິ້ນຊັກເງິນເພີ່ມເຕີມໃຊ້ບັນຊີຊຸດດຽວກັນຜ່ານເຄືອຂ່າຍຂອງຮ້ານ
-n_7_free_forever_locally	7 · ຟຣີຕະຫຼອດໄປເທິງເຄື່ອງ
-free_forever_on_your_devices	ຟຣີຕະຫຼອດໄປເທິງອຸປະກອນຂອງທ່ານ
-no_per_bill_charge	ບໍ່ຄິດເງິນຕໍ່ໃບບິນ
-no_fee_per_sale_medicine	ການຕິດຕັ້ງເທິງເຄື່ອງບໍ່ຄິດຄ່າທຳນຽມຕໍ່ການຂາຍ ຢາ ລິ້ນຊັກເງິນ ຫຼື PIN ພະນັກງານ
+expires_2027_03_alert_in	ໝົດ​ອາຍຸ 2027-03 · ແຈ້ງ​ເຕືອນ​ໃນ 7 ວັນ
+ors_sachets_batch_b04	ຜົງ​ເກືອ​ແຮ່ ORS · ລັອດ B04
+expires_2026_11_near_expiry	ໝົດ​ອາຍຸ 2026-11 · ແຖບ​ໃກ້​ໝົດ​ອາຍຸ​ໃນ​ບັນຊີ
+shop_bookkeeping_only_not_drugs	ເປັນພຽງ​ການເຮັດ​ບັນຊີ​ຂອງ​ຮ້ານ — ບໍ່​ແມ່ນ​ການປະຕິບັດຕາມ​ກົດໝາຍ​ຢາ
+batch_on_buy	ລັອດ​ຕອນ​ຊື້
+record_batch_and_expiry_when	ບັນ​ທຶກ​ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ​ເມື່ອ​ສິນຄ້າເຂົ້າ
+near_expiry_alerts	ແຈ້ງ​ເຕືອນ​ໃກ້​ໝົດ​ອາຍຸ
+books_and_sell_can_hint	ບັນຊີ ແລະ ໜ້າ​ຂາຍ​ເຕືອນ​ໄດ້​ກ່ອນ​ເຖິງ​ວັນ
+owner_practice	ແນວທາງ​ຂອງ​ເຈົ້າຂອງ​ຮ້ານ
+fefo_hints_and_rx_notes	ຄຳແນະນຳ FEFO ແລະ ບັນທຶກ Rx ເປັນ​ສິ່ງ​ທີ່​ທ່ານ​ເລືອກ​ເຮັດຕາມ​ເອງ — Tabiyat ບັນທຶກ​ສິ່ງ​ທີ່​ທ່ານ​ປ້ອນ
+n_5_khata	5 · ປຶ້ມ​ໜີ້
+customer_credit_and_supplier_dues	ໜີ້​ລູກຄ້າ ແລະ ຍອດ​ຄ້າງ​ຈ່າຍ​ຜູ້​ສະໜອງ ໃນ​ປຶ້ມ​ຝ່າຍ​ເຫຼັ້ມ​ດຽວ
+mehta_clinic_customer	ຄລີ​ນິກ​ເມ​ຕາ · ລູກຄ້າ
+due_from_earlier	ຍອດ​ຄ້າງ​ເດີມ
+today_s_sale_due	+ ຍອດ​ຂາຍ​ມື້ນີ້ (ຕິດ​ໜີ້)
+balance	ຍອດ​ຄົງເຫຼືອ
+settle_later_part_cash_part	ຊຳລະ​ພາຍຫຼັງ — ເງິນສົດ​ບາງ​ສ່ວນ UPI ບາງ​ສ່ວນ ເຈົ້າໜີ້​ຜູ້​ສະໜອງ​ໃຊ້​ໜ້າ​ຝ່າຍ​ດຽວກັນ
+due_on_the_bill	ຍອດ​ຄ້າງ​ໃນ​ໃບ​ບິນ
+leave_a_balance_on_khata	ເກັບ​ຍອດ​ຄົງເຫຼືອ​ໄວ້​ໃນ​ປຶ້ມ​ໜີ້​ໂດຍ​ບໍ່​ຕ້ອງ​ໃຊ້​ແອັບ​ບັນຊີ​ແຍກ
+supplier_buys_too	ການຊື້​ຈາກ​ຜູ້​ສະໜອງ​ນຳ
+who_you_owe_updates_when	ຍອດ​ທີ່​ທ່ານ​ຄ້າງ​ຈ່າຍ​ອັບ​ເດດ​ເມື່ອ​ສິນຄ້າເຂົ້າ
+auditable	ກວດສອບ​ໄດ້
+who_when_and_how_much	ໃຜ ເມື່ອໃດ ແລະ ເທົ່າໃດ ຢູ່ໃນ​ປຶ້ມ​ມື້
+n_6_internet_down	6 · ອິນ​ເຕີ​ເນັດ​ລົ້ມ?
+the_internet_drops_the_counter	ອິນ​ເຕີ​ເນັດ​ຫຼຸດ ເຄົາ​ເຕີ​ຍັງ​ຂາຍ​ຕໍ່
+router_no_internet	ເຣົາ​ເຕີ: ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ
+main_counter_selling_and_settling	ເຄົາ​ເຕີ​ຫຼັກ: ຂາຍ ແລະ ຮັບ​ຊຳລະ​ຢູ່
+second_till_joined_on_your	ລິ້ນ​ຊັກ​ເງິນ​ທີ​ສອງ: ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ຮ້ານ
+books_live_on_the_shop	ບັນຊີ​ຢູ່​ເທິງ​ອຸປະກອນ​ຂອງ​ຮ້ານ
+when_the_internet_drops_nothing	ເມື່ອ​ອິນ​ເຕີ​ເນັດ​ຫຼຸດ ບໍ່ມີ​ຫຍັງ​ທີ່​ເຄົາ​ເຕີ​ຮ້ານ​ຢາ​ຕ້ອງ​ລໍຖ້າ
+one_server_lan_clients	ເຊີບເວີ​ດຽວ ໄຄລ​ເອັນ LAN
+extra_tills_share_the_same	ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມເຕີມ​ໃຊ້​ບັນຊີ​ຊຸດ​ດຽວກັນ​ຜ່ານ​ເຄືອ​ຂ່າຍ​ຂອງ​ຮ້ານ
+n_7_free_forever_locally	7 · ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ເຄື່ອງ
+free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
+no_per_bill_charge	ບໍ່​ຄິດ​ເງິນ​ຕໍ່​ໃບ​ບິນ
+no_fee_per_sale_medicine	ການ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ບໍ່​ຄິດ​ຄ່າ​ທຳນຽມ​ຕໍ່​ການຂາຍ ຢາ ລິ້ນ​ຊັກ​ເງິນ ຫຼື PIN ພະນັກງານ
 android_windows_linux	Android, Windows, Linux
-the_same_tabiyat_on_the	Tabiyat ຕົວດຽວກັນເທິງໂທລະສັບ ແລະ ເຄື່ອງຄິດເງິນຕັ້ງໂຕະ
-optional_kumkaj_cloud	Kumkaj Cloud ແບບເລືອກໃຊ້
-yearly_steady_6k_swift_12k	ລາຍປີ Steady ₹6k · Swift ₹12k · Priority ₹24k ບໍ່ລວມພາສີ (ຫຼື ໃບສະເໜີລາຄາແບບກຳນົດເອງ) ຊື້ທີ່ /shop
+the_same_tabiyat_on_the	Tabiyat ຕົວ​ດຽວກັນ​ເທິງ​ໂທລະສັບ ແລະ ເຄື່ອງ​ຄິດ​ເງິນ​ຕັ້ງ​ໂຕະ
+optional_kumkaj_cloud	Kumkaj Cloud ແບບ​ເລືອກ​ໃຊ້
+yearly_steady_6k_swift_12k	ລາຍ​ປີ Steady ₹6k · Swift ₹12k · Priority ₹24k ບໍ່​ລວມ​ພາສີ (ຫຼື ໃບສະເໜີ​ລາຄາ​ແບບ​ກຳນົດ​ເອງ) ຊື້​ທີ່ /shop
 n_8_start	8 · ເລີ່ມ
-put_tabiyat_on_the_counter	ວາງ Tabiyat ໄວ້ທີ່ເຄົາເຕີ
-download_free_or_whatsapp_for	ດາວໂຫຼດຟຣີ ຫຼື ສົ່ງ WhatsApp ເພື່ອໃຫ້ແນະນຳຕາມຮ້ານຢາ ແລະ ເມືອງຂອງທ່ານ
-privacy	ຄວາມເປັນສ່ວນຕົວ
-terms	ຂໍ້ກຳນົດ
-cancellation	ການຍົກເລີກ
-cloud_shop	ຮ້ານຄ້າຄລາວ
+put_tabiyat_on_the_counter	ວາງ Tabiyat ໄວ້​ທີ່​ເຄົາ​ເຕີ
+download_free_or_whatsapp_for	ດາວ​ໂຫຼ​ດຟຣີ ຫຼື ສົ່ງ WhatsApp ເພື່ອ​ໃຫ້​ແນະນຳ​ຕາມ​ຮ້ານ​ຢາ ແລະ ເມືອງ​ຂອງ​ທ່ານ
+privacy	ຄວາມເປັນ​ສ່ວນຕົວ
+terms	ຂໍ້​ກຳນົດ
+cancellation	ການຍົກ​ເລີກ
+cloud_shop	ຮ້ານ​ຄ້າຄລາວ
 account	ບັນຊີ
-chapter_counter_sell	ຂາຍໜ້າເຄົາເຕີ
-chapter_barcode_salt	ບາໂຄດ ແລະ ສານອອກລິດ
-chapter_batch_expiry	ລັອດ ແລະ ວັນໝົດອາຍຸ
-chapter_khata	ປຶ້ມໜີ້
-chapter_extra_till	ລິ້ນຊັກເງິນເພີ່ມ
-chapter_offline	ອອບລາຍ
+chapter_counter_sell	ຂາຍໜ້າ​ເຄົາ​ເຕີ
+chapter_barcode_salt	ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ
+chapter_batch_expiry	ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ
+chapter_khata	ປຶ້ມ​ໜີ້
+chapter_extra_till	ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມ
+chapter_offline	ອອບ​ລາຍ
 chapter_start	ເລີ່ມ
-bill_selling	ກຳລັງຂາຍ
+bill_selling	ກຳລັງ​ຂາຍ
 bill_settle	ຊຳລະ
-bill_paid	ຈ່າຍແລ້ວ
-bill_next_line	ແຕະເພື່ອເພີ່ມລາຍການຕໍ່ໄປ
-bill_settle_hint	ແຕະເພື່ອຊຳລະ — ເງິນສົດ ຫຼື UPI
-bill_upi_paid	UPI ₹ 162 · ຈ່າຍແລ້ວ
-bill_paid_line	ຈ່າຍແລ້ວ · ອັບເດດປຶ້ມມື້ແລ້ວ
-lan_eyebrow	6 · ລິ້ນຊັກເງິນເພີ່ມ
-lan_title	ອີກໜຶ່ງລິ້ນຊັກເງິນເທິງ Wi-Fi ຂອງຮ້ານ
-cta_installers_note	ຕົວຕິດຕັ້ງຈະຂຶ້ນທີ່ນີ້ເມື່ອແຕ່ລະຕົວຜ່ານການທົດສອບຕິດຕັ້ງເທິງເຄື່ອງໃໝ່ ລະຫວ່າງນີ້ຂໍເບິ່ງຕົວຢ່າງໄດ້ທາງ WhatsApp
-cta_whatsapp_soon	ຊ່ອງທາງເບິ່ງຕົວຢ່າງທາງ WhatsApp ຈະເປີດໃນໄວໆນີ້ ຂໍ້ຄວາມຂອງທ່ານຈະເປັນ: “{message}”
+bill_paid	ຈ່າຍ​ແລ້ວ
+bill_next_line	ແຕະ​ເພື່ອ​ເພີ່ມ​ລາຍການ​ຕໍ່ໄປ
+bill_settle_hint	ແຕະ​ເພື່ອ​ຊຳລະ — ເງິນສົດ ຫຼື UPI
+bill_upi_paid	UPI ₹ 162 · ຈ່າຍ​ແລ້ວ
+bill_paid_line	ຈ່າຍ​ແລ້ວ · ອັບ​ເດດ​ປຶ້ມ​ມື້​ແລ້ວ
+lan_eyebrow	6 · ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມ
+lan_title	ອີກ​ໜຶ່ງ​ລິ້ນ​ຊັກ​ເງິນ​ເທິງ Wi-Fi ຂອງ​ຮ້ານ
+cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ​ໄດ້​ທາງ WhatsApp
+cta_whatsapp_soon	ຊ່ອງທາງ​ເບິ່ງ​ຕົວຢ່າງ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
 acct_page_title	ບັນຊີ — Tabiyat
-acct_lede	ບັນຊີດຽວສຳລັບເວັບໄຊ ແລະ ແອັບ — ຟອມດຽວກັນບໍ່ວ່າທ່ານຈະເປັນຜູ້ໃຊ້ໃໝ່ ຫຼື ກັບມາໃຊ້
-acct_email	ອີເມວ
-acct_name_optional	ຊື່ (ບໍ່ບັງຄັບ)
-acct_password	ລະຫັດຜ່ານ
+acct_lede	ບັນຊີ​ດຽວ​ສຳ​ລັບ​ເວັບ​ໄຊ ແລະ ແອັບ — ຟອມ​ດຽວກັນ​ບໍ່ວ່າ​ທ່ານ​ຈະ​ເປັນ​ຜູ້​ໃຊ້​ໃໝ່ ຫຼື ກັບມາ​ໃຊ້
+acct_email	ອີ​ເມວ
+acct_name_optional	ຊື່ (ບໍ່​ບັງຄັບ)
+acct_password	ລະຫັດ​ຜ່ານ
 acct_continue	ສືບຕໍ່
-acct_forgot	ລືມລະຫັດຜ່ານ?
-acct_reset_hint	ພວກເຮົາຈະສົ່ງລິ້ງຕັ້ງໃໝ່ທາງອີເມວ ໃຊ້ທີ່ຢູ່ດຽວກັບທີ່ທ່ານສະໝັກໄວ້
-acct_send_reset	ສົ່ງລິ້ງຕັ້ງໃໝ່
+acct_forgot	ລືມ​ລະຫັດ​ຜ່ານ?
+acct_reset_hint	ພວກ​ເຮົາ​ຈະ​ສົ່ງ​ລິ້ງ​ຕັ້ງ​ໃໝ່​ທາງ​ອີ​ເມວ ໃຊ້​ທີ່ຢູ່​ດຽວ​ກັບ​ທີ່​ທ່ານ​ສະໝັກ​ໄວ້
+acct_send_reset	ສົ່ງ​ລິ້ງ​ຕັ້ງ​ໃໝ່
 acct_cancel	ຍົກເລີກ
-acct_or_continue	ຫຼື ສືບຕໍ່ດ້ວຍ
+acct_or_continue	ຫຼື ສືບຕໍ່​ດ້ວຍ
 acct_phone	ໂທລະສັບ
-acct_mobile	ເບີມືຖື
-acct_send_sms	ສົ່ງລະຫັດ SMS
+acct_mobile	ເບີ​ມື​ຖື
+acct_send_sms	ສົ່ງ​ລະຫັດ SMS
 acct_sms_code	ລະຫັດ SMS
-acct_confirm_code	ຢືນຢັນລະຫັດ
-acct_signed_in	ເຂົ້າສູ່ລະບົບແລ້ວ
-acct_signed_in_as	ເຂົ້າສູ່ລະບົບໃນນາມ
+acct_confirm_code	ຢືນຢັນ​ລະຫັດ
+acct_signed_in	ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_signed_in_as	ເຂົ້າສູ່​ລະບົບ​ໃນນາມ
 acct_status	ສະຖານະ
-acct_sign_in_methods	ວິທີເຂົ້າສູ່ລະບົບ
-acct_cloud_username	ຊື່ຜູ້ໃຊ້ຄລາວ
-acct_plan	ແພັກເກດ
-acct_resend_verify	ສົ່ງອີເມວຢືນຢັນອີກຄັ້ງ
-acct_sign_out	ອອກຈາກລະບົບ
-acct_cloud_sandbox	Kumkaj Cloud (ສະພາບແວດລ້ອມທົດສອບ)
-acct_current_password	ລະຫັດຜ່ານປັດຈຸບັນ
-acct_email_for_password	ອີເມວສຳລັບເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານ
-acct_new_password	ລະຫັດຜ່ານໃໝ່
-acct_confirm_new_password	ຢືນຢັນລະຫັດຜ່ານໃໝ່
-acct_add_way	ເພີ່ມວິທີເຂົ້າສູ່ລະບົບອື່ນ
-acct_link_hint	ເຊື່ອມຫຼາຍວິທີໄວ້ກັບບັນຊີດຽວ ເພື່ອໃຫ້ກູ້ຄືນການເຂົ້າເຖິງໄດ້ຖ້າວິທີໃດວິທີໜຶ່ງໃຊ້ບໍ່ໄດ້
+acct_sign_in_methods	ວິທີ​ເຂົ້າສູ່​ລະບົບ
+acct_cloud_username	ຊື່​ຜູ້​ໃຊ້ຄລາວ
+acct_plan	ແພັກ​ເກດ
+acct_resend_verify	ສົ່ງ​ອີ​ເມວ​ຢືນຢັນ​ອີກ​ຄັ້ງ
+acct_sign_out	ອອກຈາກ​ລະບົບ
+acct_cloud_sandbox	Kumkaj Cloud (ສະພາບ​ແວດລ້ອມ​ທົດສອບ)
+acct_current_password	ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_email_for_password	ອີ​ເມວ​ສຳລັບ​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ລະຫັດ​ຜ່ານ
+acct_new_password	ລະຫັດ​ຜ່ານ​ໃໝ່
+acct_confirm_new_password	ຢືນຢັນ​ລະຫັດ​ຜ່ານ​ໃໝ່
+acct_add_way	ເພີ່ມ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ອື່ນ
+acct_link_hint	ເຊື່ອມ​ຫຼາຍ​ວິທີ​ໄວ້​ກັບ​ບັນຊີ​ດຽວ ເພື່ອ​ໃຫ້​ກູ້​ຄືນ​ການເຂົ້າ​ເຖິງ​ໄດ້​ຖ້າ​ວິທີໃດວິທີໜຶ່ງ​ໃຊ້​ບໍ່ໄດ້
 acct_link_google	ເຊື່ອມ Google
 acct_link_microsoft	ເຊື່ອມ Microsoft
 acct_link_github	ເຊື່ອມ GitHub
-acct_link_phone	ເຊື່ອມໂທລະສັບ
-acct_send_sms_link	ສົ່ງ SMS ເພື່ອເຊື່ອມ
-acct_confirm_link_phone	ຢືນຢັນ ແລະ ເຊື່ອມໂທລະສັບ
-shop_page_title	ຮ້ານຄ້າ — Tabiyat
-shop_lede	ແພັກເກດຄລາວລາຍປີ — ຄິດພາສີຕອນຊຳລະເງິນ ແອັບ Tabiyat ຄົບຊຸດເທິງອຸປະກອນຂອງທ່ານຟຣີຕະຫຼອດໄປ ບໍ່ມີໂຄສະນາ
+acct_link_phone	ເຊື່ອມ​ໂທລະສັບ
+acct_send_sms_link	ສົ່ງ SMS ເພື່ອ​ເຊື່ອມ
+acct_confirm_link_phone	ຢືນຢັນ ແລະ ເຊື່ອມ​ໂທລະສັບ
+shop_page_title	ຮ້ານ​ຄ້າ — Tabiyat
+shop_lede	ແພັກ​ເກດຄລາວ​ລາຍ​ປີ — ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ແອັບ Tabiyat ຄົບ​ຊຸດ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ຟຣີ​ຕະຫຼອດໄປ ບໍ່ມີ​ໂຄສະນາ
 shop_cart	ກະຕ່າ
-shop_cart_empty_hint	ກະຕ່າຂອງທ່ານຫວ່າງຢູ່ ເພີ່ມ Steady, Swift ຫຼື Priority
-shop_checkout	ຊຳລະເງິນ
+shop_cart_empty_hint	ກະຕ່າ​ຂອງ​ທ່ານ​ຫວ່າງ​ຢູ່ ເພີ່ມ Steady, Swift ຫຼື Priority
+shop_checkout	ຊຳລະ​ເງິນ
 shop_clear	ລ້າງ
-shop_checkout_hint	ການຊຳລະເງິນຈະພາທ່ານເຂົ້າສູ່ລະບົບໃນໜ້າບັນຊີກ່ອນ ແລ້ວຈຶ່ງເລີ່ມຈ່າຍເງິນ (ຈຳລອງໃນສະພາບແວດລ້ອມທົດສອບ ຫຼື Paddle ເມື່ອຕັ້ງຄ່າຄີແລ້ວ)
-acct_billing_hint	ແພັກເກດລາຍປີ — ເກດເວຄິດພາສີຕອນຊຳລະເງິນ ການໃຊ້ງານເທິງເຄື່ອງຟຣີຕະຫຼອດໄປ ແບບກຳນົດເອງຕ້ອງຂໍໃບສະເໜີລາຄາ (ອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority)
-shop_cloud_plans	ແພັກເກດຄລາວ
-acct_federated	ການເຂົ້າສູ່ລະບົບແບບລວມສູນ
-acct_err_invalid_email	ປ້ອນອີເມວທີ່ຖືກຕ້ອງ
-acct_err_weak_password	ໃຊ້ລະຫັດຜ່ານຢ່າງໜ້ອຍ 6 ຕົວອັກສອນ
-acct_err_wrong_password	ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
-acct_err_invalid_credential	ອີເມວ ຫຼື ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ
-acct_err_popup_closed	ໜ້າຕ່າງເຂົ້າສູ່ລະບົບຖືກປິດ
-acct_err_popup_cancelled	ການເຂົ້າສູ່ລະບົບຖືກຍົກເລີກ
-acct_err_unauthorized_domain	ໂດເມນນີ້ບໍ່ໄດ້ຮັບອະນຸຍາດສຳລັບ Firebase Auth
-acct_err_method_disabled	ວິທີເຂົ້າສູ່ລະບົບນັ້ນຍັງບໍ່ເປີດໃຊ້
-acct_err_too_many	ລອງຫຼາຍເທື່ອເກີນໄປ ກະລຸນາລອງໃໝ່ພາຍຫຼັງ
-acct_err_phone_format	ໃຊ້ເບີໂທລະສັບເຕັມພ້ອມລະຫັດປະເທດ (ເຊັ່ນ +91…)
-acct_err_sms_code	ລະຫັດ SMS ບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸແລ້ວ
-acct_err_no_account	ບໍ່ມີບັນຊີທີ່ໃຊ້ອີເມວນີ້ ສືບຕໍ່ເພື່ອສ້າງບັນຊີ ຫຼື ໃຊ້ວິທີອື່ນ
-acct_err_recent_login	ເພື່ອຄວາມປອດໄພ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ ແລ້ວລອງປ່ຽນແປງນີ້ໃໝ່
-acct_err_credential_in_use	ວິທີເຂົ້າສູ່ລະບົບນັ້ນຖືກໃຊ້ກັບບັນຊີອື່ນແລ້ວ
-acct_err_email_in_use	ອີເມວນັ້ນຖືກໃຊ້ກັບບັນຊີອື່ນແລ້ວ
-acct_err_already_linked	ວິທີນັ້ນເຊື່ອມກັບບັນຊີນີ້ແລ້ວ
-acct_err_exists_other_method	ມີບັນຊີທີ່ໃຊ້ອີເມວນີ້ກັບວິທີເຂົ້າສູ່ລະບົບອື່ນຢູ່ແລ້ວ ເຂົ້າສູ່ລະບົບດ້ວຍວິທີນັ້ນກ່ອນ ແລ້ວເຊື່ອມວິທີນີ້ຈາກໜ້າບັນຊີຂອງທ່ານ
-acct_err_generic	ເກີດຂໍ້ຜິດພາດ
-acct_method_password	ອີເມວ ແລະ ລະຫັດຜ່ານ
-acct_pw_hint_change	ປ່ຽນລະຫັດຜ່ານ ທ່ານຈະຕ້ອງຢືນຢັນດ້ວຍລະຫັດຜ່ານປັດຈຸບັນ
-acct_pw_hint_add	ເພີ່ມລະຫັດຜ່ານເພື່ອໃຫ້ເຂົ້າສູ່ລະບົບດ້ວຍອີເມວໄດ້ນຳ (ມີປະໂຫຍດເມື່ອຜູ້ໃຫ້ບໍລິການໃຊ້ງານບໍ່ໄດ້)
-acct_pw_change	ປ່ຽນລະຫັດຜ່ານ
-acct_pw_add	ເພີ່ມລະຫັດຜ່ານ
-acct_billing_off	ຍັງບໍ່ໄດ້ເປີດການເກັບເງິນເທິງ API ຄລາວ
-acct_billing_no_provider	ຍັງບໍ່ມີຜູ້ໃຫ້ບໍລິການເກັບເງິນແທ້ເປີດໃຊ້ເທິງ API ຄລາວ (ມີແຕ່ລະບົບຈຳລອງເທິງເຄື່ອງ)
-price_quote	ໃບສະເໜີລາຄາ
-price_per_year	₹{amount}/ປີ ບໍ່ລວມພາສີ
-acct_pay_received	ໄດ້ຮັບເງິນແລ້ວ — ກຳລັງອັບເດດແພັກເກດຂອງທ່ານ…
-acct_pay_declined	ການຊຳລະເງິນຖືກປະຕິເສດ ຫຼື ບໍ່ສຳເລັດ
-acct_pay_failed_detail	{detail} ແພັກເກດຂອງທ່ານບໍ່ໄດ້ປ່ຽນ
-acct_checkout_closed	ປິດໜ້າຊຳລະເງິນແລ້ວ — ບໍ່ມີການຊຳລະເງິນເກີດຂຶ້ນ ແພັກເກດຂອງທ່ານຄືເກົ່າ
-acct_checkout_failed	ຊຳລະເງິນບໍ່ສຳເລັດ
-acct_pay_with	ຈ່າຍດ້ວຍ {provider}
+shop_checkout_hint	ການ​ຊຳລະ​ເງິນ​ຈະ​ພາ​ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ໃນ​ໜ້າ​ບັນຊີ​ກ່ອນ ແລ້ວ​ຈຶ່ງ​ເລີ່ມ​ຈ່າຍເງິນ (ຈຳລອງ​ໃນ​ສະພາບ​ແວດລ້ອມ​ທົດສອບ ຫຼື Paddle ເມື່ອ​ຕັ້ງ​ຄ່າ​ຄີ​ແລ້ວ)
+acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ເກດ​ເວ​ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
+shop_cloud_plans	ແພັກ​ເກດຄລາວ
+acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ແບບ​ລວມ​ສູນ
+acct_err_invalid_email	ປ້ອນ​ອີ​ເມວ​ທີ່​ຖືກຕ້ອງ
+acct_err_weak_password	ໃຊ້​ລະຫັດ​ຜ່ານ​ຢ່າງ​ໜ້ອຍ 6 ຕົວ​ອັກສອນ
+acct_err_wrong_password	ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
+acct_err_invalid_credential	ອີ​ເມວ ຫຼື ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
+acct_err_popup_closed	ໜ້າຕ່າງ​ເຂົ້າສູ່​ລະບົບ​ຖືກ​ປິດ
+acct_err_popup_cancelled	ການເຂົ້າ​ສູ່​ລະບົບ​ຖືກ​ຍົກເລີກ
+acct_err_unauthorized_domain	ໂດ​ເມນ​ນີ້​ບໍ່ໄດ້​ຮັບ​ອະນຸຍາດ​ສຳລັບ Firebase Auth
+acct_err_method_disabled	ວິທີ​ເຂົ້າສູ່​ລະບົບ​ນັ້ນ​ຍັງ​ບໍ່​ເປີດ​ໃຊ້
+acct_err_too_many	ລອງ​ຫຼາຍເທື່ອ​ເກີນໄປ ກະລຸນາ​ລອງ​ໃໝ່​ພາຍຫຼັງ
+acct_err_phone_format	ໃຊ້​ເບີ​ໂທລະສັບ​ເຕັມ​ພ້ອມ​ລະຫັດ​ປະເທດ (ເຊັ່ນ +91…)
+acct_err_sms_code	ລະຫັດ SMS ບໍ່​ຖືກຕ້ອງ ຫຼື ໝົດ​ອາຍຸ​ແລ້ວ
+acct_err_no_account	ບໍ່ມີ​ບັນຊີ​ທີ່​ໃຊ້​ອີ​ເມວ​ນີ້ ສືບຕໍ່​ເພື່ອ​ສ້າງ​ບັນຊີ ຫຼື ໃຊ້​ວິທີ​ອື່ນ
+acct_err_recent_login	ເພື່ອ​ຄວາມປອດໄພ ກະລຸນາ​ເຂົ້າສູ່​ລະບົບ​ອີກ​ຄັ້ງ ແລ້ວ​ລອງ​ປ່ຽນແປງ​ນີ້​ໃໝ່
+acct_err_credential_in_use	ວິທີ​ເຂົ້າສູ່​ລະບົບ​ນັ້ນ​ຖືກ​ໃຊ້​ກັບ​ບັນຊີ​ອື່ນ​ແລ້ວ
+acct_err_email_in_use	ອີ​ເມວ​ນັ້ນ​ຖືກ​ໃຊ້​ກັບ​ບັນຊີ​ອື່ນ​ແລ້ວ
+acct_err_already_linked	ວິທີ​ນັ້ນ​ເຊື່ອມ​ກັບ​ບັນຊີ​ນີ້​ແລ້ວ
+acct_err_exists_other_method	ມີ​ບັນຊີ​ທີ່​ໃຊ້​ອີ​ເມວ​ນີ້​ກັບ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ອື່ນ​ຢູ່ແລ້ວ ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ວິທີ​ນັ້ນ​ກ່ອນ ແລ້ວ​ເຊື່ອມ​ວິທີ​ນີ້​ຈາກ​ໜ້າ​ບັນຊີ​ຂອງ​ທ່ານ
+acct_err_generic	ເກີດ​ຂໍ້​ຜິດພາດ
+acct_method_password	ອີ​ເມວ ແລະ ລະຫັດ​ຜ່ານ
+acct_pw_hint_change	ປ່ຽນ​ລະຫັດ​ຜ່ານ ທ່ານ​ຈະ​ຕ້ອງ​ຢືນຢັນ​ດ້ວຍ​ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_pw_hint_add	ເພີ່ມ​ລະຫັດ​ຜ່ານ​ເພື່ອ​ໃຫ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ອີ​ເມວ​ໄດ້​ນຳ (ມີ​ປະໂຫຍດ​ເມື່ອ​ຜູ້​ໃຫ້​ບໍລິການ​ໃຊ້ງານ​ບໍ່ໄດ້)
+acct_pw_change	ປ່ຽນ​ລະຫັດ​ຜ່ານ
+acct_pw_add	ເພີ່ມ​ລະຫັດ​ຜ່ານ
+acct_billing_off	ຍັງ​ບໍ່ໄດ້​ເປີດ​ການເກັບ​ເງິນ​ເທິງ API ຄລາວ
+acct_billing_no_provider	ຍັງ​ບໍ່ມີ​ຜູ້​ໃຫ້​ບໍລິການ​ເກັບ​ເງິນ​ແທ້​ເປີດ​ໃຊ້​ເທິງ API ຄລາວ (ມີ​ແຕ່​ລະບົບ​ຈຳລອງ​ເທິງ​ເຄື່ອງ)
+price_quote	ໃບສະເໜີ​ລາຄາ
+price_per_year	₹{amount}/ປີ ບໍ່​ລວມ​ພາສີ
+acct_pay_received	ໄດ້ຮັບ​ເງິນ​ແລ້ວ — ກຳລັງ​ອັບ​ເດດ​ແພັກ​ເກດ​ຂອງ​ທ່ານ…
+acct_pay_declined	ການ​ຊຳລະ​ເງິນ​ຖືກ​ປະຕິເສດ ຫຼື ບໍ່​ສຳເລັດ
+acct_pay_failed_detail	{detail} ແພັກ​ເກດ​ຂອງ​ທ່ານ​ບໍ່ໄດ້​ປ່ຽນ
+acct_checkout_closed	ປິດ​ໜ້າ​ຊຳລະ​ເງິນ​ແລ້ວ — ບໍ່ມີ​ການ​ຊຳລະ​ເງິນ​ເກີດຂຶ້ນ ແພັກ​ເກດ​ຂອງ​ທ່ານ​ຄື​ເກົ່າ
+acct_checkout_failed	ຊຳລະ​ເງິນ​ບໍ່​ສຳເລັດ
+acct_pay_with	ຈ່າຍ​ດ້ວຍ {provider}
 acct_plan_until	{plan} · ເຖິງ {date}
-acct_unavailable	ບໍ່ພ້ອມໃຊ້ງານ
-acct_continue_hint	ສືບຕໍ່ດ້ວຍອີເມວ ຜູ້ໃຫ້ບໍລິການ ຫຼື ໂທລະສັບ
-acct_signed_in_fallback	(ເຂົ້າສູ່ລະບົບແລ້ວ)
-acct_email_verified	ຢືນຢັນອີເມວແລ້ວ
-acct_email_unverified	ຍັງບໍ່ໄດ້ຢືນຢັນອີເມວ — ກວດເບິ່ງກ່ອງຈົດໝາຍ
-acct_signed_in_phone	ເຂົ້າສູ່ລະບົບດ້ວຍໂທລະສັບແລ້ວ
-acct_none_listed	ຍັງບໍ່ມີ
-acct_signed_in_status	ທ່ານເຂົ້າສູ່ລະບົບແລ້ວ
-acct_created	ສ້າງບັນຊີແລ້ວ ກວດເບິ່ງອີເມວເພື່ອຢືນຢັນເມື່ອສະດວກ
-acct_reset_sent	ຖ້າມີບັນຊີຂອງອີເມວນັ້ນ ລິ້ງຕັ້ງໃໝ່ກຳລັງສົ່ງໄປ ກວດເບິ່ງກ່ອງຈົດໝາຍ
-acct_another_method	ວິທີອື່ນ
-acct_exists_via	ມີບັນຊີຂອງ {email} ຜ່ານ {method} ຢູ່ແລ້ວ ເຂົ້າສູ່ລະບົບດ້ວຍວິທີນັ້ນກ່ອນ ແລ້ວເຊື່ອມຜູ້ໃຫ້ບໍລິການນີ້ຈາກໜ້າບັນຊີຂອງທ່ານ
-acct_enter_current_pw	ປ້ອນລະຫັດຜ່ານປັດຈຸບັນ
-acct_relogin_retry	ອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບໃໝ່ ຈາກນັ້ນລອງອີກຄັ້ງ
-acct_pw_mismatch	ລະຫັດຜ່ານໃໝ່ກັບການຢືນຢັນບໍ່ກົງກັນ
-acct_pw_updated	ອັບເດດລະຫັດຜ່ານແລ້ວ
-acct_enter_email_pw	ປ້ອນອີເມວທີ່ຈະໃຊ້ເຂົ້າສູ່ລະບົບດ້ວຍລະຫັດຜ່ານ
-acct_pw_added	ເພີ່ມລະຫັດຜ່ານແລ້ວ ຕອນນີ້ເຂົ້າສູ່ລະບົບດ້ວຍອີເມວໄດ້ນຳ
-acct_method_linked	ເຊື່ອມວິທີເຂົ້າສູ່ລະບົບແລ້ວ
-acct_phone_linked	ເຊື່ອມໂທລະສັບກັບບັນຊີນີ້ແລ້ວ
-acct_verify_sent	ສົ່ງອີເມວຢືນຢັນແລ້ວ — ກວດເບິ່ງກ່ອງຈົດໝາຍ
-shop_pricing_soon	ລາຄາຈະມາໃນໄວໆນີ້
-shop_request_quote	ຂໍໃບສະເໜີລາຄາ
-shop_add_to_cart	ໃສ່ກະຕ່າ
-shop_notify_later	ແຈ້ງຂ້ອຍພາຍຫຼັງ
-shop_included	ລວມຢູ່ແລ້ວ
-shop_in_cart	{plan} ຢູ່ໃນກະຕ່າຂອງທ່ານ
-shop_remove	ເອົາອອກ
-shop_cart_is_empty	ກະຕ່າຫວ່າງ
-shop_prices_unpublished	ຍັງບໍ່ໄດ້ເຜີຍແຜ່ລາຄາສຳລັບຊື້ເອງຂອງຜະລິດຕະພັນນີ້ ຂໍໃບສະເໜີລາຄາແບບກຳນົດເອງ ຫຼື ກັບມາເບິ່ງພາຍຫຼັງ
-shop_cart_cleared	ລ້າງກະຕ່າແລ້ວ
-plan_free_title	ຟຣີຕະຫຼອດໄປ
-plan_free_blurb	ຜະລິດຕະພັນຄົບຊຸດເທິງອຸປະກອນຂອງທ່ານ ບໍ່ມີຄ່າຄລາວ
-plan_steady_blurb	ຄລາວແບບສົດ · 10 GB · ແບນວິດຕ່ຳ
-plan_swift_blurb	ຄລາວແບບສົດ · 25 GB · ແບນວິດປານກາງ
-plan_priority_blurb	ຄລາວແບບສົດ · 50 GB · ແບນວິດມາດຕະຖານສູງສຸດ
-plan_custom_title	ກຳນົດເອງ
-plan_custom_blurb	ໂຄຕາ ແລະ ແບນວິດຕາມທີ່ຕົກລົງກັນ ໃບສະເໜີລາຄາອາດຕ່ຳກວ່າ Steady ຫຼື ສູງກວ່າ Priority
+acct_unavailable	ບໍ່​ພ້ອມ​ໃຊ້ງານ
+acct_continue_hint	ສືບຕໍ່​ດ້ວຍ​ອີ​ເມວ ຜູ້​ໃຫ້​ບໍລິການ ຫຼື ໂທລະສັບ
+acct_signed_in_fallback	(ເຂົ້າສູ່​ລະບົບ​ແລ້ວ)
+acct_email_verified	ຢືນຢັນ​ອີ​ເມວ​ແລ້ວ
+acct_email_unverified	ຍັງ​ບໍ່ໄດ້​ຢືນຢັນ​ອີ​ເມວ — ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+acct_signed_in_phone	ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ໂທລະສັບ​ແລ້ວ
+acct_none_listed	ຍັງ​ບໍ່ມີ
+acct_signed_in_status	ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_created	ສ້າງ​ບັນຊີ​ແລ້ວ ກວດເບິ່ງ​ອີ​ເມວ​ເພື່ອ​ຢືນຢັນ​ເມື່ອ​ສະດວກ
+acct_reset_sent	ຖ້າ​ມີ​ບັນຊີ​ຂອງ​ອີ​ເມວ​ນັ້ນ ລິ້ງ​ຕັ້ງ​ໃໝ່​ກຳລັງ​ສົ່ງໄປ ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+acct_another_method	ວິທີ​ອື່ນ
+acct_exists_via	ມີ​ບັນຊີ​ຂອງ {email} ຜ່ານ {method} ຢູ່ແລ້ວ ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ວິທີ​ນັ້ນ​ກ່ອນ ແລ້ວ​ເຊື່ອມ​ຜູ້​ໃຫ້​ບໍລິການ​ນີ້​ຈາກ​ໜ້າ​ບັນຊີ​ຂອງ​ທ່ານ
+acct_enter_current_pw	ປ້ອນ​ລະຫັດ​ຜ່ານ​ປັດຈຸບັນ
+acct_relogin_retry	ອອກຈາກ​ລະບົບ​ແລ້ວ​ເຂົ້າສູ່​ລະບົບ​ໃໝ່ ຈາກນັ້ນ​ລອງ​ອີກ​ຄັ້ງ
+acct_pw_mismatch	ລະຫັດ​ຜ່ານ​ໃໝ່​ກັບ​ການ​ຢືນຢັນ​ບໍ່​ກົງກັນ
+acct_pw_updated	ອັບ​ເດດ​ລະຫັດ​ຜ່ານ​ແລ້ວ
+acct_enter_email_pw	ປ້ອນ​ອີ​ເມວ​ທີ່​ຈະ​ໃຊ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ລະຫັດ​ຜ່ານ
+acct_pw_added	ເພີ່ມ​ລະຫັດ​ຜ່ານ​ແລ້ວ ຕອນນີ້​ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ອີ​ເມວ​ໄດ້​ນຳ
+acct_method_linked	ເຊື່ອມ​ວິທີ​ເຂົ້າສູ່​ລະບົບ​ແລ້ວ
+acct_phone_linked	ເຊື່ອມ​ໂທລະສັບ​ກັບ​ບັນຊີ​ນີ້​ແລ້ວ
+acct_verify_sent	ສົ່ງ​ອີ​ເມວ​ຢືນຢັນ​ແລ້ວ — ກວດເບິ່ງ​ກ່ອງ​ຈົດໝາຍ
+shop_pricing_soon	ລາຄາ​ຈະ​ມາ​ໃນ​ໄວໆ​ນີ້
+shop_request_quote	ຂໍ​ໃບສະເໜີ​ລາຄາ
+shop_add_to_cart	ໃສ່​ກະຕ່າ
+shop_notify_later	ແຈ້ງ​ຂ້ອຍ​ພາຍຫຼັງ
+shop_included	ລວມ​ຢູ່ແລ້ວ
+shop_in_cart	{plan} ຢູ່ໃນ​ກະຕ່າ​ຂອງ​ທ່ານ
+shop_remove	ເອົາ​ອອກ
+shop_cart_is_empty	ກະຕ່າ​ຫວ່າງ
+shop_prices_unpublished	ຍັງ​ບໍ່ໄດ້​ເຜີຍແຜ່​ລາຄາ​ສຳລັບ​ຊື້​ເອງ​ຂອງ​ຜະລິດຕະພັນ​ນີ້ ຂໍ​ໃບສະເໜີ​ລາຄາ​ແບບ​ກຳນົດ​ເອງ ຫຼື ກັບມາ​ເບິ່ງ​ພາຍຫຼັງ
+shop_cart_cleared	ລ້າງ​ກະຕ່າ​ແລ້ວ
+plan_free_title	ຟຣີ​ຕະຫຼອດໄປ
+plan_free_blurb	ຜະລິດຕະພັນ​ຄົບ​ຊຸດ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ ບໍ່ມີ​ຄ່າຄລາວ
+plan_steady_blurb	ຄລາວ​ແບບ​ສົດ · 10 GB · ແບນ​ວິດ​ຕ່ຳ
+plan_swift_blurb	ຄລາວ​ແບບ​ສົດ · 25 GB · ແບນ​ວິດ​ປານກາງ
+plan_priority_blurb	ຄລາວ​ແບບ​ສົດ · 50 GB · ແບນ​ວິດ​ມາດຕະຖານ​ສູງສຸດ
+plan_custom_title	ກຳນົດ​ເອງ
+plan_custom_blurb	ໂຄ​ຕາ ແລະ ແບນ​ວິດ​ຕາມ​ທີ່​ຕົກລົງ​ກັນ ໃບສະເໜີ​ລາຄາ​ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority

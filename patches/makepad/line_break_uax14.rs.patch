@@ -1,0 +1,425 @@
+--- a/draw/src/text/layouter.rs
++++ b/draw/src/text/layouter.rs
+@@ -721,16 +721,10 @@
+         font_size_in_lpxs: f32,
+         segment_kind: SegmentKind,
+     ) -> Self {
+-        let mut lens: Vec<_> = match segment_kind {
+-            SegmentKind::Word => text
+-                .split_word_bounds()
+-                .map(|segment| segment.len())
+-                .collect(),
++        let lens: Vec<_> = match segment_kind {
++            SegmentKind::Word => line_break_segments(&text),
+             SegmentKind::Grapheme => text.graphemes(true).map(|segment| segment.len()).collect(),
+         };
+-        if matches!(segment_kind, SegmentKind::Word) {
+-            merge_segments_for_line_breaking(&text, &mut lens);
+-        }
+         let widths_in_lpxs: Vec<_> = lens
+             .iter()
+             .copied()
+@@ -816,86 +810,181 @@
+     Grapheme,
+ }
+ 
+-/// Merges word-boundary segments to prevent line breaks at typographically
+-/// incorrect positions, following standard line-breaking conventions
+-/// (UAX#14 / CSS Text Module Level 3).
++/// Splits one paragraph into the segments `layout_by_word` fits: the runs
++/// between the line break opportunities of the Unicode line breaking
++/// algorithm (UAX #14), with the spaces that end a run as a segment of their
++/// own, so a space that no longer fits can hang past the wrap width instead
++/// of starting the next row.
+ ///
+-/// Trailing/closing punctuation (`.` `,` `;` `)` etc.) is merged into the
+-/// preceding segment so it won't wrap to a new line by itself. Opening
+-/// punctuation (`(` `[` etc.) is merged into the following segment so it
+-/// won't be stranded at the end of a line.
+-fn merge_segments_for_line_breaking(text: &str, lens: &mut Vec<usize>) {
+-    // Pass 1: Merge "no-break-before" segments (trailing/closing punctuation)
+-    // into the preceding segment.
+-    if lens.len() >= 2 {
+-        let mut i = 1;
+-        let mut byte_offset = lens[0];
+-        while i < lens.len() {
+-            let seg_end = byte_offset + lens[i];
+-            let seg_text = &text[byte_offset..seg_end];
+-            if seg_text.chars().all(is_no_break_before_char) {
+-                lens[i - 1] += lens[i];
+-                lens.remove(i);
+-            } else {
+-                i += 1;
+-            }
+-            byte_offset = seg_end;
++/// UAX #14 keeps punctuation with its word in every script (`,` `)` `…`
++/// `،` `۔` `।` `。` `、` …) and opening brackets with the word after them,
++/// never breaks at a no-break space (U+00A0, U+202F) or word joiner, breaks
++/// after a hyphen or a Tibetan tsheg, and breaks at a zero-width space
++/// (U+200B) — the word marker of Thai, Lao, Khmer and Burmese copy.
++/// Tailorings on top of the default algorithm:
++/// - a dash after a space stays on the row of the word before it
++///   (`word —`, `word –`), so no row starts with a dash;
++/// - an opening quote keeps the spaces and word after it (`« mot`), and a
++///   closing quote the spaces and word before it (`mot »`), as UAX #14 15.1
++///   (LB15a/b) does — the vendored tables are 15.0;
++/// - a currency or percent sign stays with its number across spaces
++///   (`₹ 240`, `50 %`);
++/// - Korean keeps its words whole and breaks at spaces only (as with word
++///   boundaries before), also where Hangul touches Latin letters or digits;
++/// - text in a script written without spaces between words (Thai, Lao,
++///   Khmer, Burmese) that carries no zero-width space breaks between its
++///   grapheme clusters, as it did before: UAX #14 has no word dictionary,
++///   so such a run would otherwise be one unbreakable word.
++fn line_break_segments(text: &str) -> Vec<usize> {
++    use unicode_linebreak::{break_property, linebreaks, BreakClass};
++
++    let class = |c: char| break_property(c as u32);
++    let mut breaks: Vec<usize> = linebreaks(text)
++        .map(|(index, _)| index)
++        .filter(|&index| index < text.len() && keeps_break(text, index))
++        .collect();
++    if !text.contains('\u{200B}') {
++        let mut previous_is_complex = false;
++        for (index, grapheme) in text.grapheme_indices(true) {
++            let is_complex = grapheme
++                .chars()
++                .next()
++                .is_some_and(|c| class(c) == BreakClass::ComplexContext);
++            if is_complex && previous_is_complex {
++                breaks.push(index);
++            }
++            previous_is_complex = is_complex;
++        }
++        breaks.sort_unstable();
++        breaks.dedup();
++    }
++    let mut lens = Vec::with_capacity(breaks.len() * 2 + 1);
++    let mut start = 0;
++    for end in breaks.into_iter().chain(std::iter::once(text.len())) {
++        if end <= start {
++            continue;
++        }
++        let segment = &text[start..end];
++        let word_len = segment.trim_end_matches(is_hanging_space).len();
++        if word_len > 0 && word_len < segment.len() {
++            lens.push(word_len);
++            lens.push(segment.len() - word_len);
++        } else {
++            lens.push(segment.len());
+         }
++        start = end;
+     }
++    lens
++}
+ 
+-    // Pass 2: Merge "no-break-after" segments (opening punctuation)
+-    // into the following segment.
+-    if lens.len() >= 2 {
+-        let mut i = 0;
+-        let mut byte_offset = 0;
+-        while i + 1 < lens.len() {
+-            let seg_end = byte_offset + lens[i];
+-            let seg_text = &text[byte_offset..seg_end];
+-            if seg_text.chars().all(is_no_break_after_char) {
+-                lens[i + 1] = lens[i] + lens[i + 1];
+-                lens.remove(i);
+-            } else {
+-                byte_offset = seg_end;
+-                i += 1;
+-            }
++/// Whitespace that may hang past the end of a row: every space except the
++/// no-break ones.
++fn is_hanging_space(c: char) -> bool {
++    c.is_whitespace() && !matches!(c, '\u{00A0}' | '\u{2007}' | '\u{202F}')
++}
++
++/// Whether the UAX #14 break opportunity before byte `index` of `text`
++/// survives the tailorings listed on `line_break_segments`.
++fn keeps_break(text: &str, index: usize) -> bool {
++    use unicode_linebreak::{break_property, BreakClass};
++
++    let class = |c: char| break_property(c as u32);
++    let is_hangul = |c: char| {
++        matches!(
++            class(c),
++            BreakClass::HangulLvSyllable
++                | BreakClass::HangulLvtSyllable
++                | BreakClass::HangulLJamo
++                | BreakClass::HangulVJamo
++                | BreakClass::HangulTJamo
++        )
++    };
++    let is_letter_or_digit = |c: char| {
++        is_hangul(c)
++            || matches!(
++                class(c),
++                BreakClass::Alphabetic | BreakClass::HebrewLetter | BreakClass::Numeric
++            )
++    };
++    let (before, after) = text.split_at(index);
++    let (Some(previous), Some(next)) = (before.chars().next_back(), after.chars().next()) else {
++        return true;
++    };
++    if (is_hangul(previous) && is_letter_or_digit(next))
++        || (is_letter_or_digit(previous) && is_hangul(next))
++    {
++        return false;
++    }
++    if !is_hanging_space(previous) {
++        return true;
++    }
++    // From here on the break follows one or more spaces.
++    let words_before = before.trim_end_matches(is_hanging_space);
++    let Some(solid) = words_before.chars().next_back() else {
++        return true;
++    };
++    if matches!(next, '\u{2013}' | '\u{2014}') {
++        return false;
++    }
++    if is_closing_quote(next) {
++        let after_quote = after[next.len_utf8()..].chars().next();
++        if after_quote.map_or(true, |c| {
++            c.is_whitespace()
++                || matches!(
++                    class(c),
++                    BreakClass::NonBreakingGlue
++                        | BreakClass::WordJoiner
++                        | BreakClass::ClosePunctuation
++                        | BreakClass::CloseParenthesis
++                        | BreakClass::Quotation
++                        | BreakClass::Exclamation
++                        | BreakClass::InfixSeparator
++                        | BreakClass::Symbol
++                        | BreakClass::ZeroWidthSpace
++                )
++        }) {
++            return false;
+         }
+     }
++    if is_opening_quote(solid) {
++        let before_quote = words_before[..words_before.len() - solid.len_utf8()]
++            .chars()
++            .next_back();
++        if before_quote.map_or(true, |c| {
++            c.is_whitespace()
++                || matches!(
++                    class(c),
++                    BreakClass::OpenPunctuation
++                        | BreakClass::Quotation
++                        | BreakClass::NonBreakingGlue
++                        | BreakClass::ZeroWidthSpace
++                )
++        }) {
++            return false;
++        }
++    }
++    let solid_class = class(solid);
++    let next_class = class(next);
++    if (solid_class == BreakClass::Prefix && next_class == BreakClass::Numeric)
++        || (solid_class == BreakClass::Numeric
++            && matches!(next_class, BreakClass::Prefix | BreakClass::Postfix))
++    {
++        return false;
++    }
++    true
+ }
+ 
+-/// Characters before which a line break should not occur (UAX#14 classes
+-/// CL, CP, EX, IS and common typographic conventions).
+-fn is_no_break_before_char(c: char) -> bool {
++/// Opening (initial) quotation marks, General Category Pi.
++fn is_opening_quote(c: char) -> bool {
+     matches!(
+         c,
+-        // IS: Infix Numeric Separator
+-        '.' | ',' | ':' | ';'
+-        // EX: Exclamation / Interrogation
+-        | '!' | '?'
+-        // CP: Close Parenthesis, CL: Close Punctuation
+-        | ')' | ']' | '}'
+-        // CL: Closing quotation marks
+-        | '\u{2019}' // '
+-        | '\u{201D}' // \u{201d}
+-        | '\u{203A}' // ›
+-        | '\u{00BB}' // »
+-        // Other common no-break-before characters
+-        | '\u{2026}' // …
+-        | '%'
+-        | '\u{00B0}' // °
++        '\u{00AB}' | '\u{2018}' | '\u{201B}' | '\u{201C}' | '\u{201F}' | '\u{2039}'
+     )
+ }
+ 
+-/// Characters after which a line break should not occur (UAX#14 class OP).
+-fn is_no_break_after_char(c: char) -> bool {
+-    matches!(
+-        c,
+-        '(' | '[' | '{'
+-        // Opening quotation marks
+-        | '\u{2018}' // '
+-        | '\u{201C}' // \u{201c}
+-        | '\u{2039}' // ‹
+-        | '\u{00AB}' // «
+-    )
++/// Closing (final) quotation marks, General Category Pf.
++fn is_closing_quote(c: char) -> bool {
++    matches!(c, '\u{00BB}' | '\u{2019}' | '\u{201D}' | '\u{203A}')
+ }
+ 
+ pub trait LayoutParams {
+@@ -1432,11 +1521,10 @@
+ #[cfg(test)]
+ mod tests {
+     use super::{
+-        merge_segments_for_line_breaking, parse_text_atlas_size_value, LaidoutText, LayoutOptions,
+-        Layouter, OwnedLayoutParams, Settings, Size, Style, LAYOUT_CACHE_MAX_BYTES,
++        line_break_segments, parse_text_atlas_size_value, LaidoutText, LayoutOptions, Layouter,
++        OwnedLayoutParams, Settings, Size, Style, LAYOUT_CACHE_MAX_BYTES,
+     };
+     use std::rc::Rc;
+-    use unicode_segmentation::UnicodeSegmentation;
+ 
+     #[test]
+     fn parses_text_atlas_size_from_env_value() {
+@@ -1457,74 +1545,102 @@
+         assert_eq!(parse_text_atlas_size_value("bogus"), None);
+     }
+ 
+-    /// Helper: split text by word bounds and return segment lengths,
+-    /// then apply merging, then reconstruct the segment strings.
+-    fn merged_segments(text: &str) -> Vec<String> {
+-        let mut lens: Vec<usize> = text.split_word_bounds().map(|s| s.len()).collect();
+-        merge_segments_for_line_breaking(text, &mut lens);
++    /// The segments `layout_by_word` fits, as strings.
++    fn segments(text: &str) -> Vec<String> {
+         let mut result = Vec::new();
+         let mut offset = 0;
+-        for len in &lens {
++        for len in line_break_segments(text) {
+             result.push(text[offset..offset + len].to_string());
+             offset += len;
+         }
++        assert_eq!(offset, text.len(), "segments must cover the text");
+         result
+     }
+ 
+     #[test]
+-    fn trailing_punctuation_merges_into_preceding_word() {
+-        assert_eq!(merged_segments("Hello."), vec!["Hello."]);
+-        assert_eq!(merged_segments("Hello,"), vec!["Hello,"]);
+-        assert_eq!(merged_segments("Hello;"), vec!["Hello;"]);
+-        assert_eq!(merged_segments("Hello!"), vec!["Hello!"]);
+-        assert_eq!(merged_segments("Hello?"), vec!["Hello?"]);
++    fn trailing_punctuation_stays_with_its_word() {
++        assert_eq!(segments("Hello."), vec!["Hello."]);
++        assert_eq!(segments("Hello, world."), vec!["Hello,", " ", "world."]);
++        assert_eq!(segments("end...)"), vec!["end...)"]);
++        assert_eq!(segments("Wait…"), vec!["Wait…"]);
++        assert_eq!(
++            segments("(News Hello): world"),
++            vec!["(News", " ", "Hello):", " ", "world"]
++        );
+     }
+ 
+     #[test]
+-    fn multiple_trailing_punctuation_marks_merge() {
+-        assert_eq!(merged_segments("end.)"), vec!["end.)"]);
+-        assert_eq!(merged_segments("end...)"), vec!["end...)"]);
++    fn opening_punctuation_stays_with_the_next_word() {
++        assert_eq!(
++            segments("say (hello) now"),
++            vec!["say", " ", "(hello)", " ", "now"]
++        );
++        assert_eq!(segments("{min} منٹ"), vec!["{min}", " ", "منٹ"]);
+     }
+ 
+     #[test]
+-    fn punctuation_between_words_merges_correctly() {
+-        assert_eq!(
+-            merged_segments("Hello, world."),
+-            vec!["Hello,", " ", "world."]
+-        );
++    fn plain_words_and_empty_text() {
++        assert_eq!(segments("hello world"), vec!["hello", " ", "world"]);
++        assert_eq!(segments("hello"), vec!["hello"]);
++        assert_eq!(segments(""), Vec::<String>::new());
++        assert_eq!(segments("  hello"), vec!["  ", "hello"]);
+     }
+ 
+     #[test]
+-    fn opening_punctuation_merges_into_following_word() {
+-        assert_eq!(
+-            merged_segments("say (hello) now"),
+-            vec!["say", " ", "(hello)", " ", "now"]
+-        );
++    fn punctuation_of_other_scripts_never_starts_a_row() {
++        // Arabic comma and question mark, Urdu full stop, Devanagari danda,
++        // CJK full-width punctuation, Armenian full stop, Ethiopic full stop.
++        assert_eq!(segments("مرحبا، عالم؟"), vec!["مرحبا،", " ", "عالم؟"]);
++        assert_eq!(segments("بک کریں۔"), vec!["بک", " ", "کریں۔"]);
++        assert_eq!(segments("भेजें। अब"), vec!["भेजें।", " ", "अब"]);
++        assert_eq!(segments("你好，世界。"), vec!["你", "好，", "世", "界。"]);
++        assert_eq!(segments("Բարև։ Այո"), vec!["Բարև։", " ", "Այո"]);
++        assert_eq!(segments("ሰላም። አዎ"), vec!["ሰላም።", " ", "አዎ"]);
++        // Small kana never start a row.
++        assert!(segments("ちょっと").iter().all(|s| !s.starts_with(['ょ', 'っ'])));
+     }
+ 
+     #[test]
+-    fn consecutive_trailing_punctuation_chains_merge() {
+-        // ")" and ":" are both no-break-before, so they chain-merge
+-        // into the preceding word.
+-        assert_eq!(
+-            merged_segments("(News Hello): world"),
+-            vec!["(News", " ", "Hello):", " ", "world"]
+-        );
++    fn no_break_spaces_and_hyphens() {
++        assert_eq!(segments("₹\u{A0}1,240 ادا"), vec!["₹\u{A0}1,240", " ", "ادا"]);
++        assert_eq!(segments("12\u{202F}%"), vec!["12\u{202F}%"]);
++        assert_eq!(segments("well-known"), vec!["well-", "known"]);
++        assert_eq!(segments("kumkaj.com/khaynjo"), vec!["kumkaj.com/", "khaynjo"]);
++        // Tibetan breaks after the tsheg.
++        assert_eq!(segments("བཀྲ་ཤིས་"), vec!["བཀྲ་", "ཤིས་"]);
+     }
+ 
+     #[test]
+-    fn no_merge_for_plain_words() {
+-        assert_eq!(merged_segments("hello world"), vec!["hello", " ", "world"]);
++    fn dashes_quotes_and_signs_keep_their_neighbours() {
++        assert_eq!(segments("word — word"), vec!["word —", " ", "word"]);
++        assert_eq!(segments("Mo – Fr"), vec!["Mo –", " ", "Fr"]);
++        assert_eq!(segments("dit « mot » ici"), vec!["dit", " ", "« mot »", " ", "ici"]);
++        // German quotes point the other way: »Wort« breaks as usual.
++        assert_eq!(segments("»Wort« und"), vec!["»Wort«", " ", "und"]);
++        assert_eq!(segments("rock ’n’ roll"), vec!["rock", " ", "’n’", " ", "roll"]);
++        assert_eq!(segments("Pay ₹ 240 now"), vec!["Pay", " ", "₹ 240", " ", "now"]);
++        assert_eq!(segments("50 % off"), vec!["50 %", " ", "off"]);
+     }
+ 
+     #[test]
+-    fn single_word_no_change() {
+-        assert_eq!(merged_segments("hello"), vec!["hello"]);
++    fn korean_keeps_its_words() {
++        assert_eq!(segments("안녕하세요 세계"), vec!["안녕하세요", " ", "세계"]);
++        assert_eq!(segments("Android에서 2개"), vec!["Android에서", " ", "2개"]);
+     }
+ 
+     #[test]
+-    fn empty_text() {
+-        assert_eq!(merged_segments(""), Vec::<String>::new());
++    fn scripts_without_spaces_break_at_zero_width_spaces() {
++        // Marked: rows break between words only.
++        assert_eq!(
++            segments("สวัสดี\u{200B}ครับ"),
++            vec!["สวัสดี\u{200B}", "ครับ"]
++        );
++        assert_eq!(
++            segments("ສະບາຍດີ\u{200B}ເຈົ້າ"),
++            vec!["ສະບາຍດີ\u{200B}", "ເຈົ້າ"]
++        );
++        // Unmarked: between grapheme clusters, as before.
++        assert_eq!(segments("สวัสดี"), vec!["ส", "วั", "ส", "ดี"]);
+     }
+ 
+     fn cache_test_params(text: &str) -> OwnedLayoutParams {

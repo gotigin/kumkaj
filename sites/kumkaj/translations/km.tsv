@@ -1,121 +1,121 @@
 # Khmer — ខ្មែរ (km). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 the_promise	ការសន្យា
-kumkaj_business_operating_systems	KUMKAJ · ប្រព័ន្ធប្រតិបត្តិការអាជីវកម្ម
-the_internet_went_down_the	អ៊ីនធឺណិតដាច់។\nតុលក់មិនដាច់ទេ។
-kumkaj_is_the_brand_for	Kumkaj គឺជាម៉ាកសម្រាប់កម្មវិធីប្រព័ន្ធប្រតិបត្តិការអាជីវកម្មជាក់ស្ដែង — កម្មវិធីគ្រប់គ្រងអាជីវកម្មពេញលេញដែលដំណើរការលើឧបករណ៍របស់អ្នកផ្ទាល់។ ផលិតផលនីមួយៗបង្កើតសម្រាប់មុខរបរមួយ៖ ដឹកជញ្ជូនកញ្ចប់ ភោជនីយដ្ឋាន ហាងលក់ទំនិញ ឱសថស្ថាន។
-choose_your_trade	ជ្រើសមុខរបររបស់អ្នក  ↓
-watch_it_keep_working	មើលវាបន្តដំណើរការ
-this_counter_right_now	តុលក់នេះ ឥឡូវនេះ
+kumkaj_business_operating_systems	KUMKAJ · ប្រព័ន្ធ​ប្រតិបត្តិ​ការ​អាជីវកម្ម
+the_internet_went_down_the	អ៊ីនធឺណិត​ដាច់។\nតុ​លក់​មិន​ដាច់​ទេ។
+kumkaj_is_the_brand_for	Kumkaj គឺជា​ម៉ាក​សម្រាប់​កម្មវិធី​ប្រព័ន្ធ​ប្រតិបត្តិ​ការ​អាជីវកម្ម​ជាក់ស្ដែង — កម្មវិធី​គ្រប់គ្រង​អាជីវកម្ម​ពេញលេញ​ដែល​ដំណើរការ​លើ​ឧបករណ៍​របស់​អ្នក​ផ្ទាល់។ ផលិតផល​នី​មួយៗ​បង្កើត​សម្រាប់​មុខរបរ​មួយ៖ ដឹកជញ្ជូន​កញ្ចប់ ភោជនីយដ្ឋាន ហាង​លក់ទំនិញ ឱសថស្ថាន។
+choose_your_trade	ជ្រើស​មុខរបរ​របស់​អ្នក  ↓
+watch_it_keep_working	មើល​វា​បន្តដំណើរ​ការ
+this_counter_right_now	តុ​លក់​នេះ ឥឡូវនេះ
 internet	អ៊ីនធឺណិត
 down	ដាច់
-taking_orders	កំពុងទទួលការកុម្ម៉ង់
+taking_orders	កំពុង​ទទួលការ​កុម្ម៉ង់
 yes	បាទ/ចាស
-bills_and_dockets	វិក្កយបត្រ និងបណ្ណ
-saving	កំពុងរក្សាទុក
-day_book	សៀវភៅប្រចាំថ្ងៃ
-adding_up	កំពុងបូក
-nothing_on_this_counter_waits	គ្មានអ្វីនៅតុលក់នេះរង់ចាំក្លោដទេ។
-scroll_or_use_the_dots	រំកិល ឬប្រើចំណុចដើម្បីលោតរវាងផ្នែកនានា។
-n_02_built_for_your_trade	02 · បង្កើតសម្រាប់មុខរបររបស់អ្នក
-a_desk_for_each_trade	តុមួយសម្រាប់មុខរបរនីមួយៗ។\nមិនមែនកម្មវិធីមួយដែលមានកុងតាក់ទេ។
-not_one_app_with_a	មិនមែនកម្មវិធីមួយដែលមានកុងតាក់ប្ដូរមុខរបរទេ។ ផលិតផលនីមួយៗរចនាជុំវិញតុលក់មួយប្រភេទ ដោយប្រើពាក្យរបស់មុខរបរនោះផ្ទាល់។
-courier_offices_franchise_counters_own	ការិយាល័យដឹកជញ្ជូន · តុលក់សិទ្ធិអាជីវកម្ម · អ្នកដឹកផ្ទាល់ខ្លួន
-book_label_hand_over_track	ទទួល → បិទស្លាក → ប្រគល់ → តាមដាន → ទូទាត់។
-next_booking_in_one_tap	ការទទួលបន្ទាប់ក្នុងការចុចតែម្ដង
-actual_or_volumetric_weight_rounded	ទម្ងន់ពិត ឬតាមមាឌ បង្គត់តាមរបៀបរបស់អ្នក
-rider_cash_on_delivery_expected	COD របស់អ្នកដឹក៖ ត្រូវទទួល ធៀបនឹងបានប្រគល់
-visit_moklanjo_com	ចូលមើល moklanjo.com  →
-restaurants_caf_s_quick_service	ភោជនីយដ្ឋាន · ហាងកាហ្វេ · អាហាររហ័ស · ហាងនំ
-table_kitchen_bill_day_close	តុ → ផ្ទះបាយ → វិក្កយបត្រ → បិទថ្ងៃ។
-every_table_s_minutes_and	នាទី និងវិក្កយបត្ររបស់តុនីមួយៗក្នុងមួយភ្លែត
-one_kot_per_kitchen_station	KOT មួយក្នុងមួយផ្នែកផ្ទះបាយ — គ្មានតម្លៃទាល់តែសោះ
-cash_upi_part_payment_due	សាច់ប្រាក់ UPI ការបង់មួយផ្នែក ជំពាក់ និងប្រាក់ធីប
-visit_khaynjo_com	ចូលមើល khaynjo.com  →
-kirana_grocery_neighbourhood_shops	ហាងចាប់ហួយ · ហាងលក់ទំនិញ · ហាងក្នុងសង្កាត់
-sell_khata_stock_day_book	លក់ → សៀវភៅជំពាក់ → ស្តុក → សៀវភៅប្រចាំថ្ងៃ។
-fast_counter_sell_with_short	លក់រហ័សនៅតុលក់ជាមួយលេខកូដខ្លី
-customer_credit_and_supplier_dues	ការជំពាក់របស់អតិថិជន និងប្រាក់ត្រូវបង់អ្នកផ្គត់ផ្គង់
-buy_into_stock_offline_forever	ទិញចូលស្តុក — ក្រៅបណ្ដាញជារៀងរហូត
-visit_kirano_shop	ចូលមើល kirano.shop  →
-chemists_pharmacy_counters	ឱសថការី · តុលក់ឱសថស្ថាន
-medicine_batch_bill_day_close	ថ្នាំ → ឡូត៍ → វិក្កយបត្រ → បិទថ្ងៃ។
-barcode_and_salt_composition_search	ការស្វែងរកតាមបាកូដ និងសារធាតុសកម្ម / សមាសធាតុ
-batch_and_expiry_alerts_on	ការជូនដំណឹងឡូត៍ និងថ្ងៃផុតកំណត់លើការទិញ
-owner_schedule_h_rx_notes	កំណត់ចំណាំ Schedule H / Rx របស់ម្ចាស់ហាង — មិនមែនការអនុលោមក្លែងក្លាយទេ
-visit_tabiyat_shop	ចូលមើល tabiyat.shop  →
-n_03_your_books_stay_with	03 · សៀវភៅគណនីនៅជាមួយអ្នក
-your_books_live_in_your	សៀវភៅគណនីរបស់អ្នកនៅក្នុងហាងរបស់អ្នក។
-sales_parties_and_the_day	ការលក់ ភាគី និងសៀវភៅប្រចាំថ្ងៃ ត្រូវបានសរសេរលើឧបករណ៍នៅតុលក់របស់អ្នក — មិនមែនលើម៉ាស៊ីនមេដែលអ្នកជួលទេ។
-on_your_device	លើឧបករណ៍របស់អ្នក
-every_sale_payment_and_docket	ការលក់ ការបង់ និងបណ្ណនីមួយៗ ត្រូវបានរក្សាទុកលើកុំព្យូទ័រ ឬថេប្លេតដែលអ្នកជាម្ចាស់។
-no_account_with_us	គ្មានគណនីជាមួយយើង
-install_it_and_start_no	ដំឡើង ហើយចាប់ផ្ដើម។ គ្មានការចុះឈ្មោះ គ្មានកាតរក្សាទុក។
-copies_you_keep	ច្បាប់ចម្លងដែលអ្នករក្សាទុក
-save_a_backup_copy_whenever	រក្សាទុកច្បាប់ចម្លងបម្រុងនៅពេលណាក៏បានតាមចិត្ត។ វាជាឯកសារ ហើយវាជារបស់អ្នក។
-extra_counters_and_tablets_join	តុលក់ និងថេប្លេតបន្ថែមភ្ជាប់តាម Wi-Fi របស់អ្នកផ្ទាល់ — គ្មានអ៊ីនធឺណិតនៅចន្លោះ។
-n_04_try_it	04 · សាកល្បងវា
-pull_the_plug_on_the	ដកឌុយអ៊ីនធឺណិតចេញ។
-kumkaj_apps_don_t_phone	កម្មវិធី Kumkaj មិនចាំបាច់ទាក់ទងម៉ាស៊ីនមេដើម្បីដំណើរការទេ។ កាត់អ៊ីនធឺណិត ហើយមើលថាមានអ្វីផ្លាស់ប្ដូរនៅតុលក់។
-cut_the_internet	កាត់អ៊ីនធឺណិត
+bills_and_dockets	វិក្កយបត្រ និង​បណ្ណ
+saving	កំពុង​រក្សាទុក
+day_book	សៀវភៅ​ប្រចាំថ្ងៃ
+adding_up	កំពុង​បូក
+nothing_on_this_counter_waits	គ្មានអ្វី​នៅ​តុ​លក់​នេះ​រង់​ចាំ​ក្លោដ​ទេ។
+scroll_or_use_the_dots	រំកិល ឬ​ប្រើ​ចំណុច​ដើម្បី​លោត​រវាង​ផ្នែក​នានា។
+n_02_built_for_your_trade	02 · បង្កើត​សម្រាប់​មុខរបរ​របស់​អ្នក
+a_desk_for_each_trade	តុ​មួយ​សម្រាប់​មុខរបរ​នី​មួយៗ។\nមិនមែន​កម្មវិធី​មួយ​ដែល​មាន​កុងតាក់​ទេ។
+not_one_app_with_a	មិនមែន​កម្មវិធី​មួយ​ដែល​មាន​កុងតាក់​ប្ដូរ​មុខរបរ​ទេ។ ផលិតផល​នី​មួយៗ​រចនា​ជុំវិញ​តុ​លក់​មួយ​ប្រភេទ ដោយ​ប្រើពាក្យ​របស់​មុខរបរ​នោះ​ផ្ទាល់។
+courier_offices_franchise_counters_own	ការិយាល័យ​ដឹកជញ្ជូន · តុ​លក់​សិទ្ធិ​អាជីវកម្ម · អ្នក​ដឹក​ផ្ទាល់ខ្លួន
+book_label_hand_over_track	ទទួល → បិទ​ស្លាក → ប្រគល់ → តាមដាន → ទូទាត់។
+next_booking_in_one_tap	ការ​ទទួល​បន្ទាប់​ក្នុង​ការ​ចុច​តែម្ដង
+actual_or_volumetric_weight_rounded	ទម្ងន់​ពិត ឬ​តាម​មាឌ បង្គត់​តាមរបៀប​របស់​អ្នក
+rider_cash_on_delivery_expected	COD របស់​អ្នក​ដឹក៖ ត្រូវ​ទទួល ធៀប​នឹង​បាន​ប្រគល់
+visit_moklanjo_com	ចូល​មើល moklanjo.com  →
+restaurants_caf_s_quick_service	ភោជនីយដ្ឋាន · ហាង​កាហ្វេ · អាហារ​រហ័ស · ហាង​នំ
+table_kitchen_bill_day_close	តុ → ផ្ទះបាយ → វិក្កយបត្រ → បិទ​ថ្ងៃ។
+every_table_s_minutes_and	នាទី និង​វិក្កយបត្រ​របស់​តុ​នី​មួយៗ​ក្នុង​មួយភ្លែត
+one_kot_per_kitchen_station	KOT មួយ​ក្នុង​មួយ​ផ្នែក​ផ្ទះបាយ — គ្មាន​តម្លៃ​ទាល់តែសោះ
+cash_upi_part_payment_due	សាច់ប្រាក់ UPI ការ​បង់​មួយ​ផ្នែក ជំពាក់ និង​ប្រាក់​ធីប
+visit_khaynjo_com	ចូល​មើល khaynjo.com  →
+kirana_grocery_neighbourhood_shops	ហាង​ចាប់ហួយ · ហាង​លក់ទំនិញ · ហាង​ក្នុង​សង្កាត់
+sell_khata_stock_day_book	លក់ → សៀវភៅ​ជំពាក់ → ស្តុក → សៀវភៅ​ប្រចាំថ្ងៃ។
+fast_counter_sell_with_short	លក់​រហ័ស​នៅ​តុ​លក់​ជាមួយ​លេខ​កូដ​ខ្លី
+customer_credit_and_supplier_dues	ការ​ជំពាក់​របស់​អតិថិជន និង​ប្រាក់​ត្រូវ​បង់​អ្នកផ្គត់ផ្គង់
+buy_into_stock_offline_forever	ទិញ​ចូល​ស្តុក — ក្រៅ​បណ្ដាញ​ជា​រៀង​រហូត
+visit_kirano_shop	ចូល​មើល kirano.shop  →
+chemists_pharmacy_counters	ឱសថការី · តុ​លក់​ឱសថស្ថាន
+medicine_batch_bill_day_close	ថ្នាំ → ឡូត៍ → វិក្កយបត្រ → បិទ​ថ្ងៃ។
+barcode_and_salt_composition_search	ការស្វែងរក​តាម​បា​កូដ និង​សារធាតុ​សកម្ម / សមាសធាតុ
+batch_and_expiry_alerts_on	ការ​ជូនដំណឹង​ឡូត៍ និង​ថ្ងៃ​ផុតកំណត់​លើ​ការទិញ
+owner_schedule_h_rx_notes	កំណត់ចំណាំ Schedule H / Rx របស់​ម្ចាស់ហាង — មិនមែន​ការ​អនុលោម​ក្លែងក្លាយ​ទេ
+visit_tabiyat_shop	ចូល​មើល tabiyat.shop  →
+n_03_your_books_stay_with	03 · សៀវភៅ​គណនី​នៅជា​មួយ​អ្នក
+your_books_live_in_your	សៀវភៅ​គណនី​របស់​អ្នក​នៅក្នុង​ហាង​របស់​អ្នក។
+sales_parties_and_the_day	ការ​លក់ ភាគី និង​សៀវភៅ​ប្រចាំថ្ងៃ ត្រូវ​បាន​សរសេរ​លើ​ឧបករណ៍​នៅ​តុ​លក់​របស់​អ្នក — មិនមែន​លើ​ម៉ាស៊ីន​មេ​ដែល​អ្នកជួល​ទេ។
+on_your_device	លើ​ឧបករណ៍​របស់​អ្នក
+every_sale_payment_and_docket	ការ​លក់ ការ​បង់ និង​បណ្ណ​នី​មួយៗ ត្រូវ​បាន​រក្សាទុក​លើ​កុំព្យូទ័រ ឬ​ថេប្លេតដែល​អ្នកជា​ម្ចាស់។
+no_account_with_us	គ្មាន​គណនី​ជាមួយ​យើង
+install_it_and_start_no	ដំឡើង ហើយ​ចាប់ផ្ដើម។ គ្មាន​ការ​ចុះឈ្មោះ គ្មាន​កាត​រក្សាទុក។
+copies_you_keep	ច្បាប់​ចម្លង​ដែល​អ្នករក្សា​ទុក
+save_a_backup_copy_whenever	រក្សាទុក​ច្បាប់​ចម្លង​បម្រុង​នៅពេល​ណា​ក៏បាន​តាមចិត្ត។ វា​ជាឯក​សារ ហើយ​វា​ជា​របស់​អ្នក។
+extra_counters_and_tablets_join	តុ​លក់ និង​ថេប្លេតបន្ថែម​ភ្ជាប់​តាម Wi-Fi របស់​អ្នក​ផ្ទាល់ — គ្មាន​អ៊ីនធឺណិត​នៅចន្លោះ។
+n_04_try_it	04 · សាកល្បង​វា
+pull_the_plug_on_the	ដក​ឌុយ​អ៊ីនធឺណិត​ចេញ។
+kumkaj_apps_don_t_phone	កម្មវិធី Kumkaj មិន​ចាំបាច់​ទាក់ទង​ម៉ាស៊ីន​មេ​ដើម្បី​ដំណើរការ​ទេ។ កាត់​អ៊ីនធឺណិត ហើយ​មើល​ថា​មាន​អ្វី​ផ្លាស់ប្ដូរ​នៅ​តុ​លក់។
+cut_the_internet	កាត់​អ៊ីនធឺណិត
 internet_on	អ៊ីនធឺណិត៖ បើក
-book_a_parcel_or_take	ទទួលកញ្ចប់ ឬទទួលការកុម្ម៉ង់
-save_the_bill_or_docket	រក្សាទុកវិក្កយបត្រ ឬបណ្ណ
-day_book_totals	សរុបសៀវភៅប្រចាំថ្ងៃ
-find_an_old_sale	ស្វែងរកការលក់ចាស់
-the_internet_is_on_and	អ៊ីនធឺណិតបើក — ហើយតុលក់មិនប្រើវាទេ។
-things_that_leave_the_shop	អ្វីៗដែលចេញពីហាង ដូចជាបង្កាន់ដៃ WhatsApp នៅតែត្រូវការអ៊ីនធឺណិតដើម្បីទៅដល់។
+book_a_parcel_or_take	ទទួល​កញ្ចប់ ឬ​ទទួលការ​កុម្ម៉ង់
+save_the_bill_or_docket	រក្សាទុក​វិក្កយបត្រ ឬបណ្ណ
+day_book_totals	សរុប​សៀវភៅ​ប្រចាំថ្ងៃ
+find_an_old_sale	ស្វែងរក​ការ​លក់​ចាស់
+the_internet_is_on_and	អ៊ីនធឺណិត​បើក — ហើយ​តុ​លក់​មិន​ប្រើ​វា​ទេ។
+things_that_leave_the_shop	អ្វីៗ​ដែល​ចេញពី​ហាង ដូចជា​បង្កាន់ដៃ WhatsApp នៅតែ​ត្រូវការ​អ៊ីនធឺណិត​ដើម្បី​ទៅដល់។
 n_05_price	05 · តម្លៃ
-free_forever_on_your_devices	ឥតគិតថ្លៃជារៀងរហូតនៅលើឧបករណ៍របស់អ្នក។
-no_charge_per_seat_user	គ្មានថ្លៃតាមកៅអី អ្នកប្រើ តុ អ្នកដឹក កញ្ចប់ ឬឧបករណ៍លើម៉ាស៊ីនទេ។ មិនមែនការសាកល្បងទេ។
-on_your_own_devices	លើឧបករណ៍របស់អ្នកផ្ទាល់
-n_0_forever	₹0 ជារៀងរហូត
-pay_only_for_what_you	បង់តែអ្វីដែលអ្នកប្រើ — តម្លៃដូចគ្នាសម្រាប់គ្រប់គ្នា។
-planned	បានគ្រោងទុក
-cloud_is_planned_and_optional	ក្លោដបានគ្រោងទុក ហើយជាជម្រើស។ តុលក់ដំណើរការដោយគ្មានវា។
+free_forever_on_your_devices	ឥតគិតថ្លៃ​ជា​រៀង​រហូត​នៅ​លើ​ឧបករណ៍​របស់​អ្នក។
+no_charge_per_seat_user	គ្មាន​ថ្លៃ​តាម​កៅអី អ្នកប្រើ តុ អ្នក​ដឹក កញ្ចប់ ឬ​ឧបករណ៍​លើ​ម៉ាស៊ីន​ទេ។ មិនមែន​ការសាកល្បង​ទេ។
+on_your_own_devices	លើ​ឧបករណ៍​របស់​អ្នក​ផ្ទាល់
+n_0_forever	₹0 ជា​រៀង​រហូត
+pay_only_for_what_you	បង់​តែ​អ្វី​ដែល​អ្នកប្រើ — តម្លៃ​ដូចគ្នា​សម្រាប់​គ្រប់គ្នា។
+planned	បាន​គ្រោងទុក
+cloud_is_planned_and_optional	ក្លោ​ដបាន​គ្រោងទុក ហើយ​ជា​ជម្រើស។ តុ​លក់​ដំណើរការ​ដោយ​គ្មាន​វា។
 n_06_languages	06 · ភាសា
-speaks_your_staff_s_language	និយាយភាសារបស់បុគ្គលិកអ្នក។
-the_same_115_language_catalogue	បញ្ជី 115 ភាសាដូចគ្រប់កម្មវិធី Kumkaj — អារ៉ាប់ និងអ៊ូរឌូពីស្ដាំទៅឆ្វេង។ ឈ្មោះដើមនៅខាងក្រោម គំរូ “អាហាររួចរាល់” សម្រាប់ហិណ្ឌី គុជរ៉ាត តាមីល បង់ក្លាដែស អ៊ូរឌូ និងអង់គ្លេស៖
-same_shaping_engine_as_the	ម៉ាស៊ីនរៀបរាងអក្សរដូចគ្នានឹងកម្មវិធី ដូច្នេះអក្សរតភ្ជាប់ និងជួរពីស្ដាំទៅឆ្វេងបង្ហាញត្រឹមត្រូវ។
+speaks_your_staff_s_language	និយាយ​ភាសា​របស់​បុគ្គលិក​អ្នក។
+the_same_115_language_catalogue	បញ្ជី 115 ភាសា​ដូច​គ្រប់​កម្មវិធី Kumkaj — អារ៉ាប់ និង​អ៊ូរឌូ​ពីស្ដាំ​ទៅ​ឆ្វេង។ ឈ្មោះ​ដើម​នៅ​ខាងក្រោម គំរូ “អាហារ​រួចរាល់” សម្រាប់​ហិណ្ឌី គុជរ៉ាត តា​មីល បង់​ក្លា​ដែស អ៊ូរឌូ និង​អង់គ្លេស៖
+same_shaping_engine_as_the	ម៉ាស៊ីន​រៀប​រាង​អក្សរ​ដូចគ្នានឹង​កម្មវិធី ដូច្នេះ​អក្សរ​តភ្ជាប់ និង​ជួរ​ពីស្ដាំ​ទៅ​ឆ្វេង​បង្ហាញ​ត្រឹមត្រូវ។
 n_07_who_makes_it	07 · អ្នកបង្កើត
-made_under_gotigin	បង្កើតក្រោម Gotigin។
+made_under_gotigin	បង្កើត​ក្រោម Gotigin។
 trademark	ពាណិជ្ជសញ្ញា
-memon_for_find_it_pronounced	ភាសា Memon មានន័យថា “រកវា” · អានថា go-tee-geen
+memon_for_find_it_pronounced	ភាសា Memon មានន័យថា “រក​វា” · អានថា go-tee-geen
 company	ក្រុមហ៊ុន
 brand	ម៉ាក
-concrete_business_operating_system_apps	កម្មវិធីប្រព័ន្ធប្រតិបត្តិការអាជីវកម្មជាក់ស្ដែង
+concrete_business_operating_system_apps	កម្មវិធី​ប្រព័ន្ធ​ប្រតិបត្តិ​ការ​អាជីវកម្ម​ជាក់ស្ដែង
 products	ផលិតផល
-courier_restaurant_grocery_pharmacy	ដឹកជញ្ជូនកញ្ចប់ · ភោជនីយដ្ឋាន · ហាងលក់ទំនិញ · ឱសថស្ថាន
-courier_desk_book_label_hand	តុដឹកជញ្ជូន — ទទួល បិទស្លាក ប្រគល់ ទូទាត់។
-restaurant_system_table_kitchen_bill	ប្រព័ន្ធភោជនីយដ្ឋាន — តុ ផ្ទះបាយ វិក្កយបត្រ បិទថ្ងៃ។
-grocery_counter_sell_khata_stock	តុលក់ហាងលក់ទំនិញ — លក់ សៀវភៅជំពាក់ ស្តុក សៀវភៅប្រចាំថ្ងៃ។
-pharmacy_counter_batch_expiry_bill	តុលក់ឱសថស្ថាន — ឡូត៍ ថ្ងៃផុតកំណត់ វិក្កយបត្រ បិទថ្ងៃ។
-privacy	ឯកជនភាព
+courier_restaurant_grocery_pharmacy	ដឹកជញ្ជូន​កញ្ចប់ · ភោជនីយដ្ឋាន · ហាង​លក់ទំនិញ · ឱសថស្ថាន
+courier_desk_book_label_hand	តុ​ដឹកជញ្ជូន — ទទួល បិទ​ស្លាក ប្រគល់ ទូទាត់។
+restaurant_system_table_kitchen_bill	ប្រព័ន្ធ​ភោជនីយដ្ឋាន — តុ ផ្ទះបាយ វិក្កយបត្រ បិទ​ថ្ងៃ។
+grocery_counter_sell_khata_stock	តុ​លក់​ហាង​លក់ទំនិញ — លក់ សៀវភៅ​ជំពាក់ ស្តុក សៀវភៅ​ប្រចាំថ្ងៃ។
+pharmacy_counter_batch_expiry_bill	តុ​លក់​ឱសថស្ថាន — ឡូត៍ ថ្ងៃ​ផុតកំណត់ វិក្កយបត្រ បិទ​ថ្ងៃ។
+privacy	ឯកជន​ភាព
 terms	លក្ខខណ្ឌ
 cancellation	ការលុបចោល
-cloud_shop	ហាងក្លោដ
+cloud_shop	ហាង​ក្លោដ
 account	គណនី
-chapter_built_for_your_trade	បង្កើតសម្រាប់មុខរបររបស់អ្នក
-chapter_your_books	សៀវភៅគណនីរបស់អ្នក
-chapter_try_it_offline	សាកល្បងក្រៅបណ្ដាញ
+chapter_built_for_your_trade	បង្កើត​សម្រាប់​មុខរបរ​របស់​អ្នក
+chapter_your_books	សៀវភៅ​គណនី​របស់​អ្នក
+chapter_try_it_offline	សាកល្បង​ក្រៅ​បណ្ដាញ
 chapter_price	តម្លៃ
 chapter_languages	ភាសា
 chapter_who_makes_it	អ្នកបង្កើត
-toy_bring_back	បើកអ៊ីនធឺណិតវិញ
+toy_bring_back	បើក​អ៊ីនធឺណិត​វិញ
 toy_internet_off	អ៊ីនធឺណិត៖ បិទ
-toy_verdict_off	អ៊ីនធឺណិតបិទ — ហើយគ្មានអ្វីនៅតុលក់ផ្លាស់ប្ដូរទេ។
+toy_verdict_off	អ៊ីនធឺណិត​បិទ — ហើយ​គ្មានអ្វី​នៅ​តុ​លក់​ផ្លាស់ប្ដូរ​ទេ។
 acct_page_title	គណនី — Kumkaj
-acct_lede	ផលិតផល Kumkaj នីមួយៗមានគណនីផ្ទាល់ខ្លួន (និងក្លោដផ្ទាល់ខ្លួន)។ ជ្រើសមុខរបរដែលអ្នកដំណើរការ — ការចូល និងការទូទាត់នៅលើគេហទំព័រផលិតផលនោះ។
-acct_product_accounts	គណនីផលិតផល
-acct_moklanjo_blurb	គណនីប្រព័ន្ធដឹកជញ្ជូន
-acct_khaynjo_blurb	គណនីប្រព័ន្ធភោជនីយដ្ឋាន
-acct_kirano_blurb	គណនីតុលក់ហាងលក់ទំនិញ
-acct_tabiyat_blurb	គណនីតុលក់ឱសថស្ថាន
-acct_open_account	បើកគណនី
+acct_lede	ផលិតផល Kumkaj នី​មួយៗ​មាន​គណនី​ផ្ទាល់ខ្លួន (និង​ក្លោដ​ផ្ទាល់ខ្លួន)។ ជ្រើស​មុខរបរ​ដែល​អ្នកដំណើរ​ការ — ការ​ចូល និង​ការ​ទូទាត់​នៅ​លើ​គេហទំព័រ​ផលិតផល​នោះ។
+acct_product_accounts	គណនី​ផលិតផល
+acct_moklanjo_blurb	គណនី​ប្រព័ន្ធ​ដឹកជញ្ជូន
+acct_khaynjo_blurb	គណនី​ប្រព័ន្ធ​ភោជនីយដ្ឋាន
+acct_kirano_blurb	គណនី​តុ​លក់​ហាង​លក់ទំនិញ
+acct_tabiyat_blurb	គណនី​តុ​លក់​ឱសថស្ថាន
+acct_open_account	បើក​គណនី
 shop_page_title	ហាង — Kumkaj
-shop_lede	គម្រោងក្លោដប្រចាំឆ្នាំ — ទម្រង់ប្រាំដូចគ្នាសម្រាប់គ្រប់មុខរបរ (ឥតគិតថ្លៃជារៀងរហូត Steady ₹6,000 Swift ₹12,000 Priority ₹24,000 / ឆ្នាំ មិនរួមពន្ធ ឬសម្រង់តម្លៃតាមតម្រូវការ)។ ពន្ធបន្ថែមពេលទូទាត់។ ផលិតផលនីមួយៗមានហាង និងគណនីផ្ទាល់ខ្លួន។
-shop_product_shops	ហាងក្លោដផលិតផល
-shop_moklanjo_blurb	ក្លោដតុដឹកជញ្ជូនសម្រាប់ moklanjo.com
-shop_khaynjo_blurb	ក្លោដភោជនីយដ្ឋានសម្រាប់ khaynjo.com
-shop_kirano_blurb	ក្លោដតុលក់ហាងលក់ទំនិញសម្រាប់ kirano.shop
-shop_tabiyat_blurb	ក្លោដតុលក់ឱសថស្ថានសម្រាប់ tabiyat.shop
+shop_lede	គម្រោងក្លោ​ដប្រ​ចាំ​ឆ្នាំ — ទម្រង់​ប្រាំ​ដូចគ្នា​សម្រាប់​គ្រប់មុខ​របរ (ឥតគិតថ្លៃ​ជា​រៀង​រហូត Steady ₹6,000 Swift ₹12,000 Priority ₹24,000 / ឆ្នាំ មិន​រួម​ពន្ធ ឬ​សម្រង់​តម្លៃ​តាម​តម្រូវការ)។ ពន្ធ​បន្ថែម​ពេល​ទូទាត់។ ផលិតផល​នី​មួយៗ​មាន​ហាង និង​គណនី​ផ្ទាល់ខ្លួន។
+shop_product_shops	ហាង​ក្លោដ​ផលិតផល
+shop_moklanjo_blurb	ក្លោដ​តុ​ដឹកជញ្ជូន​សម្រាប់ moklanjo.com
+shop_khaynjo_blurb	ក្លោដ​ភោជនីយដ្ឋាន​សម្រាប់ khaynjo.com
+shop_kirano_blurb	ក្លោដ​តុ​លក់​ហាង​លក់ទំនិញ​សម្រាប់ kirano.shop
+shop_tabiyat_blurb	ក្លោដ​តុ​លក់​ឱសថស្ថាន​សម្រាប់ tabiyat.shop
 shop_open_shop	បើកហាង

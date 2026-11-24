@@ -191,6 +191,37 @@ check_site() {
   ' "$locale"
 }
 
+# Thai, Lao, Khmer and Burmese packs carry U+200B between words: Makepad
+# breaks their rows there (vendor patch line_break_uax14). A run of more
+# than 24 letters of the script with no mark is copy written without them.
+check_word_marks() {
+  local dir="$1" label="$2" code
+  for code in th lo km my; do
+    [[ -f "$dir/$code.tsv" ]] || continue
+    LC_ALL=C.UTF-8 gawk -F'\t' -v who="$label/$code" -v code="$code" -v pack="$dir/$code.tsv" '
+      BEGIN {
+        if (code == "th") run = "[฀-๿]+"
+        else if (code == "lo") run = "[຀-໿]+"
+        else if (code == "km") run = "[ក-៿᧠-᧿]+"
+        else run = "[က-႟ꧠ-꧿ꩠ-ꩿ]+"
+      }
+      /^#/ || NF < 2 { next }
+      {
+        s = $2
+        while (match(s, run)) {
+          if (RLENGTH > 24) {
+            print who " " $1 ": " RLENGTH " letters without a word mark (node scripts/mark-words.mjs " code " " pack ")"
+            bad = 1
+            break
+          }
+          s = substr(s, RSTART + RLENGTH)
+        }
+      }
+      END { exit bad }
+    ' "$dir/$code.tsv" || return 1
+  done
+}
+
 if [[ -n "$SITE" ]]; then
   sites=()
   if [[ "$SITE" == "all" ]]; then
@@ -203,6 +234,7 @@ if [[ -n "$SITE" ]]; then
   ok=1
   for site in "${sites[@]}"; do
     check_site "$site" >>"$site_gaps" || ok=0
+    check_word_marks "$ROOT/sites/$site/translations" "$site" >>"$site_gaps" || ok=0
   done
   n="$(wc -l <"$site_gaps" | tr -d ' ')"
   if [[ "$ok" -ne 0 && "$n" -eq 0 ]]; then
@@ -230,6 +262,7 @@ for app in "${apps[@]}"; do
   if ! check_app "$app" >>"$all_gaps"; then
     ok=0
   fi
+  check_word_marks "$ROOT/apps/$app/translations" "$app" >>"$all_gaps" || ok=0
 done
 
 n="$(wc -l <"$all_gaps" | tr -d ' ')"

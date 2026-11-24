@@ -344,6 +344,11 @@ mod tests {
         checks::every_pack_draws_with_its_fonts(DIR, &crate::script_font_files);
     }
 
+    #[test]
+    fn words_are_marked_where_the_script_has_no_spaces() {
+        checks::words_are_marked_in_scripts_without_spaces(DIR);
+    }
+
     /// Every quoted `body:` / `text:` / `empty_text:` string in `ui.rs` is an
     /// `EN` value or listed in `UI_SKIP` (or is blank / numbers / an icon).
     #[test]
