@@ -578,6 +578,11 @@ impl App {
 
     fn go_to(&mut self, cx: &mut Cx, chapter: usize) {
         let chapter = chapter.min(CHAPTERS.len() - 1);
+        // Pin chrome to the clicked chapter until scroll settles — otherwise
+        // paint_scroll_chrome's spy overwrites the highlight mid-scroll.
+        self.pending_section = Some(CHAPTERS[chapter].0);
+        self.pending_frames = 120;
+        self.pending_stable = 0;
         let _ = self.scroll_to(cx, CHAPTERS[chapter].0);
     }
 
@@ -646,6 +651,9 @@ impl App {
     }
 
     fn paint_scroll_chrome(&mut self, cx: &mut Cx) {
+        if self.pending_section.is_some() {
+            return;
+        }
         let active = self.active_chapter(cx);
         if active != self.chapter {
             self.paint_chrome(cx, active);
@@ -1028,6 +1036,9 @@ impl MatchEvent for App {
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         if self.ui.button(cx, ids!(go_lang)).clicked(actions) {
             open_lang_picker(cx);
+        }
+        if self.ui.button(cx, ids!(brand_mark.brand_hit)).clicked(actions) {
+            self.go_to(cx, 0);
         }
         for (i, [hit, _, _]) in NAV.iter().enumerate() {
             if self.ui.button(cx, hit).clicked(actions) {

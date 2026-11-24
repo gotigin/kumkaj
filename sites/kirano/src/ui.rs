@@ -653,10 +653,26 @@ script_mod! {
                         align: Align{y: 0.5}
                         padding: Inset{left: 24. right: 20. top: 0. bottom: 0.}
                         draw_bg +: {color: Orange border_radius: 0.}
-                        brand_name := Label{
-                            width: Fit
-                            text: "Kirano"
-                            draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 25.}}
+                        brand_mark := View{
+                            width: Fit height: Fit
+                            flow: Overlay
+                            View{
+                                width: Fit height: Fit
+                                flow: Right
+                                spacing: 10
+                                align: Align{y: 0.5}
+                                Image{
+                                    width: 36 height: 36
+                                    fit: ImageFit.Stretch
+                                    src: crate_resource("self:resources/media/app-icon.webp")
+                                }
+                                brand_name := Label{
+                                    width: Fit
+                                    text: "Kirano"
+                                    draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 25.}}
+                                }
+                            }
+                            brand_hit := HitBtn{}
                         }
                         tagline := Label{
                             width: Fit
@@ -675,10 +691,10 @@ script_mod! {
                             spacing: 2
                             align: Align{y: 0.5}
                             n0 := NavTile{}
-                            n1 := NavTile{idle.draw_bg.color: WellWarm here.draw_bg.color: WellWarm}
-                            n2 := NavTile{idle.draw_bg.color: BillFill here.draw_bg.color: BillFill}
-                            n3 := NavTile{idle.draw_bg.color: #xD4E8B8 here.draw_bg.color: #xD4E8B8}
-                            n4 := NavTile{idle.draw_bg.color: LeafSoft here.draw_bg.color: LeafSoft}
+                            n1 := NavTile{here.draw_bg.color: WellWarm}
+                            n2 := NavTile{here.draw_bg.color: BillFill}
+                            n3 := NavTile{here.draw_bg.color: #xD4E8B8}
+                            n4 := NavTile{here.draw_bg.color: LeafSoft}
                             n5 := NavTile{}
                             n6 := NavTile{}
                             n7 := NavTile{}

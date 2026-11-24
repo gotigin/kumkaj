@@ -350,6 +350,36 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 16.}
         }
     }
+    // Footer legal / shop links on the navy band (Khaynjo NavLink weight).
+    let FootLink = Button{
+        width: Fit height: Fit
+        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+        align: Align{x: 0.5 y: 0.5}
+        grab_key_focus: false
+        reset_hover_on_click: true
+        label_walk: Walk{width: Fit height: Fit}
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #x00000000
+            color_hover: #xFFFFFF1F
+            color_down: #xFFFFFF33
+            color_focus: #x00000000
+            color_2: #x00000000
+            color_2_hover: #xFFFFFF1F
+            color_2_down: #xFFFFFF33
+            color_2_focus: #x00000000
+            border_color: #x00000000
+            border_radius: 10.
+            border_size: 0.
+        }
+        draw_text +: {
+            color: #xC8D6F0
+            color_hover: #xFFFFFF
+            color_down: #xFFFFFF
+            color_focus: #xC8D6F0
+            text_style: theme.font_regular{font_family: StrongFont font_size: 14.}
+        }
+    }
     // Footer brand/product names: same face as Small on the navy band.
     let FooterBrandMark = Button{
         width: Fit height: Fit
@@ -1426,50 +1456,11 @@ script_mod! {
                             }
                         }
 
-                        // 9 — Start (free-local) + who makes it
+                        // 9 — Start (free-local). Company/trademark dump lives on kumkaj.com, not here.
                         start := Chapter{
                             Eyebrow{body: "9 · START"}
                             Headline{body: "One courier OS. Your parcels. Your books."}
                             Lede{body: "Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode."}
-                            names := View{
-                                width: Fill height: Fit
-                                flow: Down
-                                spacing: 16
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 4
-                                    Eyebrow{body: "TRADEMARK"}
-                                    Strong{body: "Gotigin"}
-                                    Small{body: "Memon for “find it” · pronounced go-tee-geen"}
-                                    Small{body: "Where Technology Meets Discovery"}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 4
-                                    Eyebrow{body: "COMPANY"}
-                                    Strong{body: "GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED"}
-                                    Small{body: "support@gotigin.com"}
-                                    Small{body: "Director · mearaj@gmail.com"}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 4
-                                    Eyebrow{body: "BRAND"}
-                                    Strong{body: "Kumkaj"}
-                                    Small{body: "Concrete business operating system apps"}
-                                }
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Down
-                                    spacing: 4
-                                    Eyebrow{body: "PRODUCT"}
-                                    Strong{body: "Moklanjo"}
-                                    Small{body: "Courier operating system under Kumkaj"}
-                                }
-                            }
                             close_cta := CtaPair{}
                         }
 
@@ -1516,13 +1507,13 @@ script_mod! {
                                 footer_links := View{
                                     width: Fit height: Fit
                                     flow: Right
-                                    spacing: 10
-                                    to_privacy := SecondaryBtn{text: "Privacy"}
-                                    to_terms := SecondaryBtn{text: "Terms"}
-                                    to_cancellation := SecondaryBtn{text: "Cancellation"}
-to_shop := SecondaryBtn{text: "Cloud shop"}
-to_account := SecondaryBtn{text: "Account"}
-                                    to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
+                                    spacing: 4
+                                    to_privacy := FootLink{text: "Privacy"}
+                                    to_terms := FootLink{text: "Terms"}
+                                    to_cancellation := FootLink{text: "Cancellation"}
+                                    to_shop := FootLink{text: "Cloud shop"}
+                                    to_account := FootLink{text: "Account"}
+                                    to_kumkaj := FootLink{text: "kumkaj.com"}
                                 }
                                 // Hidden font prototypes for translated copy (never drawn; see Ui* families).
                                 i18n_fonts := View{
