@@ -15,18 +15,18 @@ track	සොයා බලන්න
 offline	නොබැඳි
 start	ආරම්භය
 moklanjo_courier_operating_system	MOKLANJO · කුරියර් මෙහෙයුම් පද්ධතිය
-book_move_and_settle_every	සෑම පාර්සලයක්ම වෙන්කර, යවා, පියවන්න — ඔබේම උපාංගවල එක් කුරියර් පද්ධතියක්.
-parties_books_cod_labels_awb	පාර්ශව, ගිණුම් පොත්, COD, ලේබල, AWB අංක සංචිත, සොයා බැලීම, බෙදාහරින්නන් සහ බිල්කරණය — කවුන්ටරයේ සිට පියවීම දක්වා සම්පූර්ණ චක්‍රය, අන්තර්ජාලය සමඟ හෝ නැතිව. ඔබේ උපාංගවල නොමිලේ.
+book_move_and_settle_every	සෑම පාර්සලයක්ම ලියාපදිංචි කර, යවා, පියවන්න — ඔබේම උපාංගවල එක් කුරියර් පද්ධතියක්.
+parties_books_cod_labels_awb	පාර්ශ්ව, ගිණුම් පොත්, COD, ලේබල, AWB අංක සංචිත, සොයා බැලීම, බෙදාහරින්නන් සහ බිල්කරණය — කවුන්ටරයේ සිට පියවීම දක්වා සම්පූර්ණ චක්‍රය, අන්තර්ජාලය සමඟ හෝ නැතිව. ඔබේ උපාංගවල නොමිලේ.
 the_walk_in_loop	පැමිණෙන පාරිභෝගික චක්‍රය
-actual_and_volumetric_side_by	සැබෑ බර සහ පරිමා බර, පැත්තෙන් පැත්තට.
+actual_and_volumetric_side_by	සැබෑ බර සහ පරිමා බර, එක ළඟ.
 charge	ගාස්තුව
 your_rate_card_cash_or	ඔබේ මිල කාඩ්පත, මුදල් හෝ ගිණුම.
-next_booking	ඊළඟ වෙන්කිරීම
+next_booking	ඊළඟ ලියාපදිංචිය
 one_tap_clears_the_counter	එක් තට්ටුවකින් ඊළඟ පාරිභෝගිකයා සඳහා කවුන්ටරය හිස් වේ.
 scroll_the_parcel_journey_rail	අනුචලනය කරන්න — ඉහත පාර්සල් ගමන් රේඛාව ඔබ කතාවේ කොතැනදැයි පෙන්වයි.
 n_2_weigh_it_right	2 · නිවැරදිව කිරන්න
 actual_or_volumetric_whichever_is	සැබෑ හෝ පරිමා බර — කුමක් වැඩිද එය, ඔබ කැමති ලෙස වටයනු ලැබේ.
-try_a_box	පෙට්ටියක් උත්සාහ කරන්න
+try_a_box	පෙට්ටියකින් අත්හදා බලන්න
 domestic	දේශීය
 international	ජාත්‍යන්තර
 breadth	පළල
@@ -35,9 +35,9 @@ weight_on_the_scale	තරාදියේ බර
 chargeable_weight	ගාස්තු අය කෙරෙන බර
 the_box_s_size_sets	පෙට්ටියේ ප්‍රමාණය ගාස්තුව තීරණය කරයි.
 higher_of_the_two_rounded	දෙකෙන් වැඩි එක, ඊළඟ 0.5 kg දක්වා වටයනු ලැබේ.
-in_the_app_the_divisor	යෙදුම තුළ බෙදීමේ අංකය, වටයීමේ පියවර සහ ඔබේ ඒකක (cm හෝ අඟල්, kg හෝ රාත්තල්) සාප්පුව විසින් සකසයි. ජාත්‍යන්තර බොත්තම සැකසීම් ස්පර්ශ නොකර එක් වෙන්කිරීමක් සඳහා ÷6000 වෙත මාරු කරයි.
+in_the_app_the_divisor	යෙදුම තුළ බෙදීමේ අංකය, වටයීමේ පියවර සහ ඔබේ ඒකක (cm හෝ අඟල්, kg හෝ රාත්තල්) සාප්පුව විසින් සකසයි. ජාත්‍යන්තර බොත්තම සැකසීම් ස්පර්ශ නොකර එක් ලියාපදිංචියක් සඳහා ÷6000 වෙත මාරු කරයි.
 n_3_price_it	3 · මිල නියම කරන්න
-your_rate_cards_your_party	ඔබේ මිල කාඩ්පත්, ඔබේ පාර්ශව මිල — සහ සෑම ලේඛනයකම ඔබේ ලාභ ආන්තිකය.
+your_rate_cards_your_party	ඔබේ මිල කාඩ්පත්, ඔබේ පාර්ශ්ව මිල — සහ සෑම ලේඛනයකම ඔබේ ලාභ ආන්තිකය.
 rate_card	මිල කාඩ්පත
 zone_service	කලාපය · සේවාව
 first_0_5_kg	පළමු 0.5 kg
@@ -50,28 +50,28 @@ first_slab_and_each_extra	කලාපයක් සහ සේවාවක් අ
 a_consignor_s_own_card	යවන්නාගේම කාඩ්පත
 regular_senders_get_their_rates	නිතිපතා යවන්නන්ට ඔවුන්ගේ මිල ලැබේ; පෙරනිමි කාඩ්පත අනෙක් සියල්ලන්ටම අදාළ වේ.
 margin_at_the_desk	කවුන්ටරයේදීම ලාභ ආන්තිකය
-your_sell_price_against_the	සෑම ලේඛනයකම වාහකයාගේ මිලට එරෙහිව ඔබේ විකුණුම් මිල.
+your_sell_price_against_the	සෑම ලේඛනයකම කුරියර් සමාගමේ මිලට සාපේක්ෂව ඔබේ විකුණුම් මිල.
 n_4_label_it	4 · ලේබල් කරන්න
 awb_from_your_own_number	ඔබේම අංක සංචිතවලින් AWB. ලේබල් කරන්න, ස්කෑන් කරන්න, සොයා ගන්න.
-number_pools_per_carrier	වාහකයකුට අංක සංචිත
-enter_each_carrier_s_start	සෑම වාහකයකුගේම ආරම්භක–අවසාන අංක මාලාව එක් වරක් ඇතුළත් කරන්න; සෑම වෙන්කිරීමක්ම ඊළඟ අංකය ගනී.
+number_pools_per_carrier	කුරියර් සමාගමකට අංක සංචිත
+enter_each_carrier_s_start	සෑම කුරියර් සමාගමකම ආරම්භක–අවසාන අංක මාලාව එක් වරක් ඇතුළත් කරන්න; සෑම ලියාපදිංචියක්ම ඊළඟ අංකය ගනී.
 code_128_labels	Code 128 ලේබල
 the_awb_goes_on_the	AWB අංකය පෙට්ටිය මත තීරු කේතයක් ලෙසත් සරල ඉලක්කම් ලෙසත් යයි.
 scan_to_find	සොයා ගැනීමට ස්කෑන් කරන්න
 scan_a_label_to_open	ලේබලයක් ස්කෑන් කර එහි ලේඛනය විවෘත කර ක්‍රියා කරන්න.
 n_5_hand_over	5 · භාර දෙන්න
-hand_it_to_a_carrier	වාහකයකුට භාර දෙන්න, නැතහොත් ඔබේම බෙදාහරින්නා යවන්න. එකම පද්ධතිය.
-into_a_carrier_bag	වාහක බෑගයකට
-the_manifest_holds_exactly_the	ප්‍රකාශනයේ ඇත්තේ ඔබ තෝරාගත් පාර්සල හරියටම — සියල්ලම හෝ කිසිවක් නැත. වෙනත් වාහකයකු සමඟ වෙන්කළ පාර්සලයකට මෙම බෑගයට රිංගිය නොහැක.
+hand_it_to_a_carrier	කුරියර් සමාගමකට භාර දෙන්න, නැතහොත් ඔබේම බෙදාහරින්නා යවන්න. එකම පද්ධතිය.
+into_a_carrier_bag	කුරියර් සමාගමේ බෑගයකට
+the_manifest_holds_exactly_the	යැවුම් ලැයිස්තුවේ ඇත්තේ හරියටම ඔබ තෝරාගත් පාර්සල — සියල්ලම, නැතහොත් එකක්වත් නැත. වෙනත් කුරියර් සමාගමක් සඳහා ලියාපදිංචි කළ පාර්සලයක් මෙම බෑගයට රිංගිය නොහැක.
 onto_your_own_rider_s	ඔබේම බෙදාහරින්නාගේ ගමනට
 pick_the_parcels_print_the	පාර්සල තෝරා, ගමන් පත්‍රය මුද්‍රණය කරන්න, බෙදාහරින්නා එකම යෙදුමේ බෙදාහරින්නා ප්‍රකාරයෙන් වැඩ කරයි — භාර දීමේ සාක්ෂිය ඇතුළුව.
 n_6_track_and_prove	6 · සොයා බලා සනාථ කරන්න
 every_move_recorded_and_only	සෑම චලනයක්ම සටහන් වේ — තේරුමක් ඇති චලනයන් පමණි.
-booked	වෙන්කර ඇත
-with_carrier	වාහකයා සතුව
+booked	ලියාපදිංචි කර ඇත
+with_carrier	කුරියර් සමාගම සතුව
 out_for_delivery	බෙදාහැරීමට පිටත්ව ඇත
 delivered	භාර දී ඇත
-booked_with_carrier_out_for	වෙන්කර ඇත → වාහකයා සතුව → බෙදාහැරීමට පිටත්ව ඇත → භාර දී ඇත
+booked_with_carrier_out_for	ලියාපදිංචි කර ඇත → කුරියර් සමාගම සතුව → බෙදාහැරීමට පිටත්ව ඇත → භාර දී ඇත
 failed	අසාර්ථකයි
 reason_out_again_or_return	→ හේතුව → නැවත පිටත්ව, හෝ යවන්නාට ආපසු.
 impossible_moves_refused	කළ නොහැකි චලනයන් ප්‍රතික්ෂේප වේ
@@ -80,7 +80,7 @@ proof_of_delivery	භාර දීමේ සාක්ෂිය
 a_photo_and_the_receiver	ලේඛනයේ ඡායාරූපයක් සහ ලබන්නාගේ අත්සන.
 failed_deliveries	අසාර්ථක බෙදාහැරීම්
 reasons_attempts_out_again_or	හේතු, උත්සාහයන්, නැවත පිටත්ව, හෝ යවන්නාට ආපසු.
-n_7_money_comes_home	7 · මුදල් ගෙදර එයි
+n_7_money_comes_home	7 · මුදල් නැවත ඔබ අතට
 cod_you_can_see_expected	ඔබට පෙනෙන COD: අපේක්ෂිත, භාර දුන්, සහ සෑම යවන්නෙකුටම ගෙවිය යුතු මුදල.
 rider_cash_end_of_run	බෙදාහරින්නාගේ මුදල්, ගමන අවසානයේ
 rider	බෙදාහරින්නා
@@ -96,10 +96,10 @@ expected_against_handed_in_and	අපේක්ෂිත සහ භාර දු�
 books_that_close	වැසෙන ගිණුම් පොත්
 day_book_month_bill_per	දින ලෙජරය, ගිණුමකට මාසික බිල්පත, සහ ඔබේ ගණකාධිකාරී සඳහා GST සාරාංශ CSV.
 n_8_internet_down	8 · අන්තර්ජාලය නැද්ද?
-keep_booking	දිගටම වෙන්කරන්න.
-booking_labels_scanning_cod_and	වෙන්කිරීම, ලේබල, ස්කෑන් කිරීම, COD සහ ගිණුම් පොත් සියල්ල ඔබේ උපාංගවල ක්‍රියා කරයි. අන්තර්ජාලය නැති වූ විට, කවුන්ටරයේ කිසිවක් ඒ සඳහා බලා නොසිටියි.
+keep_booking	දිගටම පාර්සල ලියාපදිංචි කරන්න.
+booking_labels_scanning_cod_and	පාර්සල් ලියාපදිංචිය, ලේබල, ස්කෑන් කිරීම, COD සහ ගිණුම් පොත් සියල්ල ඔබේ උපාංගවල ක්‍රියා කරයි. අන්තර්ජාලය නැති වූ විට, කවුන්ටරයේ කිසිවක් ඒ සඳහා බලා නොසිටියි.
 office_router_no_internet	කාර්යාල රවුටරය: අන්තර්ජාලය නැත
-desk_still_booking	කවුන්ටරය: තවමත් වෙන්කරමින්
+desk_still_booking	කවුන්ටරය: තවමත් ලියාපදිංචි කරමින්
 second_counter_and_rider_phone	දෙවන කවුන්ටරය සහ බෙදාහරින්නාගේ දුරකථනය: කාර්යාල Wi-Fi හරහා සම්බන්ධයි
 free_forever_on_your_devices	ඔබේ උපාංගවල සදහටම නොමිලේ
 nothing_per_rider_user_or	බෙදාහරින්නෙකුට, පරිශීලකයෙකුට හෝ පාර්සලයකට කිසිවක් නැත. විකල්ප Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/වසරට බදු රහිතව — /shop.
@@ -110,11 +110,11 @@ trademark	වෙළඳ ලකුණ
 memon_for_find_it_pronounced	Memon භාෂාවෙන් “එය සොයා ගන්න” · උච්චාරණය go-tee-geen
 company	සමාගම
 brand	සන්නාමය
-concrete_business_operating_system	ස්ථිර ව්‍යාපාර මෙහෙයුම් පද්ධති යෙදුම්
+concrete_business_operating_system	ප්‍රායෝගික ව්‍යාපාර මෙහෙයුම් පද්ධති යෙදුම්
 product	නිෂ්පාදනය
 courier_operating_system_under	Kumkaj යටතේ කුරියර් මෙහෙයුම් පද්ධතිය
 privacy	පෞද්ගලිකත්වය
-terms	නියම
+terms	නියමයන්
 cancellation	අවලංගු කිරීම
 cloud_shop	වලාකුළු සාප්පුව
 account	ගිණුම
@@ -122,7 +122,7 @@ weigh_it_right	නිවැරදිව කිරන්න
 price_it	මිල නියම කරන්න
 label_it	ලේබල් කරන්න
 track_and_prove	සොයා බලා සනාථ කරන්න
-money_comes_home	මුදල් ගෙදර එයි
+money_comes_home	මුදල් නැවත ඔබ අතට
 internet_down	අන්තර්ජාලය නැත
 bead_hand	භාරදීම
 bead_offline_short	නොබැඳි
@@ -138,7 +138,7 @@ acct_lede	වෙබ් අඩවිය සහ යෙදුම් සඳහා �
 acct_email	ඊමේල්
 acct_name_optional	නම (විකල්ප)
 acct_password	මුරපදය
-acct_continue	දිගටම කරගෙන යන්න
+acct_continue	ඉදිරියට යන්න
 acct_forgot	මුරපදය අමතකද?
 acct_reset_hint	අපි යළි සැකසීමේ සබැඳියක් ඊමේල් කරන්නෙමු. ඔබ ලියාපදිංචි වූ එම ලිපිනයම භාවිත කරන්න.
 acct_send_reset	යළි සැකසීමේ සබැඳිය යවන්න
@@ -177,7 +177,7 @@ shop_cart_empty_hint	ඔබේ කූඩය හිස්ය. Steady, Swift හ�
 shop_checkout	ගෙවීම
 shop_clear	හිස් කරන්න
 shop_checkout_hint	ගෙවීම ඔබව ගිණුමට පිවිසවා, පසුව ගෙවීම ආරම්භ කරයි (පරීක්ෂණ අනුකරණය, හෝ යතුරු සකසා ඇති විට Paddle).
-acct_billing_hint	වාර්ෂික සැලසුම් — ගෙවීමේදී ගෙවීම් දොරටුව මඟින් බදු එකතු කෙරේ. දේශීය භාවිතය සදහටම නොමිලේ. අභිරුචි යනු මිල ගණන් කිරීමකි (Steady ට වඩා අඩු හෝ Priority ට වඩා වැඩි විය හැක).
+acct_billing_hint	වාර්ෂික සැලසුම් — ගෙවීමේදී ගෙවීම් දොරටුව මඟින් බදු එකතු කෙරේ. දේශීය භාවිතය සදහටම නොමිලේ. අභිරුචි සැලසුම සඳහා වෙනම මිල ගණනක් ලබා දෙනු ලැබේ (Steady ට වඩා අඩු හෝ Priority ට වඩා වැඩි විය හැක).
 shop_cloud_plans	වලාකුළු සැලසුම්
 acct_federated	ඒකාබද්ධ පිවිසුම
 acct_err_invalid_email	වලංගු ඊමේල් ලිපිනයක් ඇතුළත් කරන්න.

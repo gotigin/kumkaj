@@ -2,7 +2,7 @@
 example	ဥပမာ
 download_free	အခမဲ့ ဒေါင်း​လု​ဒ်
 whatsapp_for_a_demo	သရုပ်ပြ​ရန် WhatsApp ပို့​ပါ
-free_on_android_windows_and	Android, Windows နှင့် Linux ပေါ်​တွင် အခမဲ့။
+free_on_android_windows_and	Android၊ Windows နှင့် Linux ပေါ်​တွင် အခမဲ့။
 the_pharmacy_counter	ဆေးဆိုင် ကောင်တာ
 pharmacy_counter	ဆေးဆိုင် ကောင်တာ
 tabiyat_the_pharmacy_counter	TABIYAT · ဆေးဆိုင် ကောင်တာ
@@ -13,7 +13,7 @@ cash_memo	ငွေသား​ပြေစာ
 ready	အဆင်သင့်
 total	စုစုပေါင်း
 tap_to_add_the_first	ပထမ ဆေး ထည့်​ရန် နှိပ်​ပါ
-example_pharmacy_lines_not_a	န​မူ​နာ ဆေးဆိုင် စာကြောင်း​များ၊ တ​က​ယ့် ငွေတိုက် မဟုတ်​ပါ။ Tabiyat သည် လမ်းကြောင်း​တစ်​ခု​တည်း​ကို လိုက်​သည် — ရောင်း → ရှင်း → နေ့စဉ်​စာရင်း။
+example_pharmacy_lines_not_a	န​မူ​နာ ဆေးဆိုင် စာကြောင်း​များ၊ တ​က​ယ့် ငွေ​ကောင်တာ မဟုတ်​ပါ။ Tabiyat သည် လမ်းကြောင်း​တစ်​ခု​တည်း​ကို လိုက်​သည် — ရောင်း → ရှင်း → နေ့စဉ်​စာရင်း။
 n_2_counter_sell	2 · ကောင်တာ အ​ရောင်း
 medicine_quantity_pay_three_taps	ဆေး၊ အရေအတွက်၊ ပေးချေ — သုံး​ချက်​နှိပ်​ရုံ။
 upi_qr_ready	UPI QR အဆင်သင့်
@@ -22,7 +22,7 @@ fast_counter_billing	မြန်ဆန်​သော ကောင်တာ ဘ
 add_the_line_set_the	စာကြောင်း ထည့်၊ အရေအတွက် သတ်မှတ်၊ ရှင်း — ငွေသား၊ UPI သို့မဟုတ် ခွဲ​ပေး။
 gst_tax_invoice_or_cash	GST အခွန်ပြေစာ သို့မဟုတ် ငွေသား​ပြေစာ
 the_bill_lane_you_need	အ​ရောင်း​အတွက် သင်​လိုအပ်​သော ဘေ​လ်​အမျိုး​အစား။
-day_book_follows	နေ့စဉ်​စာရင်း လိုက်ပါ​သည်
+day_book_follows	နေ့စဉ်​စာရင်း​က လိုက်​မှတ်​သည်
 every_tender_lands_in_books	အ​ရောင်း​ကို ပိတ်​လိုက်​သည့်​အခါ ပေးချေ​မှု​တိုင်း စာရင်း​ထဲ ရောက်​သည်။
 n_3_barcode_salt	3 · ဘား​ကုဒ်​နှင့် ပါဝင်​ဆေးဝါး
 scan_the_barcode_or_find	ဘား​ကုဒ်​ကို စ​ကင်​ဖတ်​ပါ — သို့မဟုတ် ပါဝင်​ဆေးဝါး​ဖြင့် ရှာ​ပါ။
@@ -67,17 +67,17 @@ n_6_internet_down	6 · အင်​တာ​နက် ပြတ်​သွာ�
 the_internet_drops_the_counter	အင်​တာ​နက် ပြတ်​သွား​သည်။ ကောင်တာ​က ဆက်​ရောင်း​နေသည်။
 router_no_internet	ရောက်​တာ: အင်​တာ​နက်​မ​ရှိ
 main_counter_selling_and_settling	ပင်မ ကောင်တာ: ရောင်း​ပြီး ရှင်း​နေသည်
-second_till_joined_on_your	ဒုတိယ ငွေတိုက်: သင့်​ကိုယ်ပိုင် Wi-Fi ဖြင့် ချိတ်​ထားသည်
+second_till_joined_on_your	ဒုတိယ ငွေ​ကောင်တာ: သင့်​ကိုယ်ပိုင် Wi-Fi ဖြင့် ချိတ်​ထားသည်
 books_live_on_the_shop	စာရင်း​များသည် ဆိုင်၏ စက်​များ​ပေါ်​တွင် ရှိ​သည်
 when_the_internet_drops_nothing	အင်​တာ​နက် ပြတ်​သွား​လည်း ဆေးဆိုင် ကောင်တာ​တွင် မည်​သည့်​အရာ​မျှ စောင့်​ရန် မ​လို​ပါ။
-one_server_lan_clients	ဆာ​ဗာ​တစ်​ခု၊ LAN client များ
-extra_tills_share_the_same	အပို ငွေတိုက်​များသည် ဆိုင်၏ ကွန်ရက်​မှ​တစ်ဆင့် စာရင်း​တစ်​ခု​တည်း​ကို မျှ​သုံး​သည်။
+one_server_lan_clients	ဆာ​ဗာ​တစ်​ခု၊ LAN က​လိုင်း​ယ​င့်​များ
+extra_tills_share_the_same	အပို ငွေ​ကောင်တာ​များသည် ဆိုင်၏ ကွန်ရက်​မှ​တစ်ဆင့် စာရင်း​တစ်​ခု​တည်း​ကို မျှ​သုံး​သည်။
 n_7_free_forever_locally	7 · စက်​ပေါ်​တွင် အမြဲတမ်း အခမဲ့
 free_forever_on_your_devices	သင့်​စက်ပစ္စည်း​များ​ပေါ်​တွင် အမြဲတမ်း အခမဲ့။
 no_per_bill_charge	ဘေ​လ်​အလိုက် အခ မ​ရှိ
-no_fee_per_sale_medicine	စက်​ပေါ် ထည့်သွင်း​မှု​တွင် အ​ရောင်း၊ ဆေး၊ ငွေတိုက် သို့မဟုတ် ဝန်ထမ်း PIN အလိုက် အခကြေးငွေ မ​ရှိ​ပါ။
+no_fee_per_sale_medicine	စက်​ပေါ် ထည့်သွင်း​မှု​တွင် အ​ရောင်း၊ ဆေး၊ ငွေ​ကောင်တာ သို့မဟုတ် ဝန်ထမ်း PIN အလိုက် အခကြေးငွေ မ​ရှိ​ပါ။
 android_windows_linux	Android, Windows, Linux
-the_same_tabiyat_on_the	ဖုန်း​နှင့် ဒ​က်​စ်​တော့ ငွေတိုက်​ပေါ်​တွင် Tabiyat တစ်​ခု​တည်း။
+the_same_tabiyat_on_the	ဖုန်း​နှင့် ဒ​က်​စ်​တော့ ငွေ​ကောင်တာ​ပေါ်​တွင် Tabiyat တစ်​ခု​တည်း။
 optional_kumkaj_cloud	ရွေးချယ်​နိုင်​သော Kumkaj Cloud
 yearly_steady_6k_swift_12k	နှစ်စဉ် Steady ₹6k · Swift ₹12k · Priority ₹24k အခွန်​မ​ပါ (သို့မဟုတ် စိတ်ကြိုက် ဈေးနှုန်း​အဆို)။ /shop တွင် ဝယ်​ပါ။
 n_8_start	8 · စတင်​ရန်
@@ -92,7 +92,7 @@ chapter_counter_sell	ကောင်တာ အ​ရောင်း
 chapter_barcode_salt	ဘား​ကုဒ်​နှင့် ပါဝင်​ဆေးဝါး
 chapter_batch_expiry	အသုတ်​နှင့် သက်တမ်း​ကုန်​ရက်
 chapter_khata	အကြွေး​စာအုပ်
-chapter_extra_till	အပို ငွေတိုက်
+chapter_extra_till	အပို ငွေ​ကောင်တာ
 chapter_offline	အော့​ဖ်​လိုင်း
 chapter_start	စတင်​ရန်
 bill_selling	ရောင်း​နေသည်
@@ -102,8 +102,8 @@ bill_next_line	နောက်​စာကြောင်း ထည့်​ရ�
 bill_settle_hint	ရှင်း​ရန် နှိပ်​ပါ — ငွေသား သို့မဟုတ် UPI
 bill_upi_paid	UPI ₹ 162 · ပေး​ပြီး
 bill_paid_line	ရှင်း​ပြီး · နေ့စဉ်​စာရင်း အပ်​ဒိတ်​ဖြစ်​ပြီ
-lan_eyebrow	6 · အပို ငွေတိုက်
-lan_title	ဆိုင်၏ Wi-Fi ပေါ်​တွင် နောက်ထပ် ငွေတိုက်​တစ်​ခု။
+lan_eyebrow	6 · အပို ငွေ​ကောင်တာ
+lan_title	ဆိုင်၏ Wi-Fi ပေါ်​တွင် နောက်ထပ် ငွေ​ကောင်တာ​တစ်​ခု။
 cta_installers_note	ထည့်သွင်း​ဖိုင်​တစ်ခုစီ သန့်ရှင်း​သော စက်​ပေါ်​တွင် ထည့်သွင်း​စမ်းသပ်မှု အောင်မြင်​သည်နှင့် ဤ​နေရာ​တွင် တင်​ပါ​မည်။ ထို​အချိန်​အထိ WhatsApp တွင် သရုပ်ပြ​ရန် တောင်း​ဆို​ပါ။
 cta_whatsapp_soon	WhatsApp သရုပ်ပြ​လိုင်း မ​ကြာ​မီ ဖွင့်​ပါ​မည်။ သင့်​စာ​သည် ဤသို့ ဖြစ်​မည်: “{message}”။
 acct_page_title	အ​ကော​င့် — Tabiyat
@@ -146,11 +146,11 @@ acct_confirm_link_phone	အတည်ပြု​ပြီး ဖုန်း ခ
 shop_page_title	ဆိုင် — Tabiyat
 shop_lede	နှစ်စဉ် Cloud အစီအစဉ်​များ — ငွေချေ​ချိန်​တွင် အခွန်​ထည့်သည်။ သင့်​ကိုယ်ပိုင် စက်​များ​ပေါ်​ရှိ Tabiyat အ​က်​ပ် အပြည့်အစုံ​သည် ကြော်ငြာ​မ​ပါ​ဘဲ အမြဲတမ်း အခမဲ့ ဖြစ်သည်။
 shop_cart	ဈေး​ခြင်း
-shop_cart_empty_hint	သင့်​ဈေး​ခြင်း ဗလာ​ဖြစ်​နေသည်။ Steady, Swift သို့မဟုတ် Priority ထည့်​ပါ။
+shop_cart_empty_hint	သင့်​ဈေး​ခြင်း ဗလာ​ဖြစ်​နေသည်။ Steady၊ Swift သို့မဟုတ် Priority ထည့်​ပါ။
 shop_checkout	ငွေချေ​ရန်
 shop_clear	ရှင်း​ရန်
 shop_checkout_hint	ငွေချေ​ခြင်း​သည် သင့်​ကို အ​ကော​င့်​တွင် ဝင်​ရောက်​စေ​ပြီး​နောက် ငွေ​ပေးချေ​မှု စတင်သည် (စမ်းသပ် အတုအယောင်၊ သို့မဟုတ် ကီး​များ သတ်မှတ်​ထား​လျှင် Paddle)။
-acct_billing_hint	နှစ်စဉ် အစီအစဉ်​များ — ငွေချေ​ချိန်​တွင် ငွေ​ပေးချေ​မှု​ဂိတ်​က အခွန်​ထည့်သည်။ စက်​ပေါ်​တွင် သုံး​ခြင်း​သည် အမြဲတမ်း အခမဲ့ ဖြစ်သည်။ စိတ်ကြိုက်​သည် ဈေးနှုန်း​အဆိုပြု​ချက် ဖြစ်သည် (Steady ထက် နည်း​နိုင်​သလို Priority ထက်​လည်း များ​နိုင်သည်)။
+acct_billing_hint	နှစ်စဉ် အစီအစဉ်​များ — ငွေချေ​ချိန်​တွင် ငွေ​ပေးချေ​မှု​ဂိတ်​က အခွန်​ထည့်သည်။ စက်​ပေါ်​တွင် သုံး​ခြင်း​သည် အမြဲတမ်း အခမဲ့ ဖြစ်သည်။ စိတ်ကြိုက် အစီအစဉ်​သည် ဈေးနှုန်း​အဆိုပြု​ချက် ဖြစ်သည် (Steady ထက် နည်း​နိုင်​သလို Priority ထက်​လည်း များ​နိုင်သည်)။
 shop_cloud_plans	Cloud အစီအစဉ်​များ
 acct_federated	ပူးပေါင်း ဝင်​ရောက်​မှု
 acct_err_invalid_email	မှန်ကန်​သော အီး​မေး​လ်​လိပ်စာ ထည့်​ပါ။
@@ -180,7 +180,7 @@ acct_billing_off	Cloud API တွင် ငွေ​တောင်းခံ​�
 acct_billing_no_provider	Cloud API တွင် တ​က​ယ့် ငွေ​တောင်းခံ​ဝန်ဆောင်မှု​ပေး​သူ မ​ဖွင့်​ထား​ပါ (အတုအယောင်​ကို စက်​ပေါ်​တွင်​သာ)။
 price_quote	ဈေးနှုန်း​အဆို
 price_per_year	₹{amount}/နှစ်၊ အခွန်​မ​ပါ
-acct_pay_received	ငွေ​လက်ခံ​ရရှိ​ပြီ — သင့်​အစီအစဉ်​ကို ပြန်လည်​ဆန်း​သစ်​နေသည်…
+acct_pay_received	ငွေ​လက်ခံ​ရရှိ​ပြီ — သင့်​အစီအစဉ်​ကို အပ်​ဒိတ်​လုပ်​နေသည်…
 acct_pay_declined	ငွေ​ပေးချေ​မှု ငြင်းပယ်​ခံ​ရ​သည် သို့မဟုတ် မ​အောင်မြင်​ပါ
 acct_pay_failed_detail	{detail}။ သင့်​အစီအစဉ် မ​ပြောင်းလဲ​ပါ။
 acct_checkout_closed	ငွေချေ​ခြင်း ပိတ်​လိုက်​သည် — ငွေ​ပေးချေ​မှု မ​ပြီး​ပါ။ သင့်​အစီအစဉ် မ​ပြောင်းလဲ​ပါ။
@@ -208,7 +208,7 @@ acct_pw_added	စကားဝှက် ထည့်​ပြီး​ပါ​�
 acct_method_linked	ဝင်​ရောက်​နည်း ချိတ်​ပြီး။
 acct_phone_linked	ဖုန်း​ကို ဤ​အ​ကော​င့်​နှင့် ချိတ်​ပြီး။
 acct_verify_sent	အတည်ပြု အီး​မေး​လ် ပို့​ပြီး — သင့်​စာ​ဝင်​ပုံး​ကို စစ်​ပါ။
-shop_pricing_soon	ဈေးနှုန်း မ​ကြာ​မီ
+shop_pricing_soon	ဈေးနှုန်း မ​ကြာ​မီ ထုတ်​ပြန်​ပါ​မည်
 shop_request_quote	ဈေးနှုန်း​အဆို တောင်း​ရန်
 shop_add_to_cart	ဈေး​ခြင်း​ထဲ ထည့်​ရန်
 shop_notify_later	နောက်မှ အသိပေး​ပါ
@@ -219,7 +219,7 @@ shop_cart_is_empty	ဈေး​ခြင်း ဗလာ​ဖြစ်​နေ
 shop_prices_unpublished	ဤ​ထုတ်ကုန်​အတွက် ကိုယ်တိုင်​ဝယ်ယူ​မှု ဈေးနှုန်း​များ မ​ထုတ်​ပြန်​ရ​သေးပါ။ စိတ်ကြိုက် ဈေးနှုန်း​အဆို တောင်း​ပါ သို့မဟုတ် နောက်မှ ပြန်​ကြည့်ပါ။
 shop_cart_cleared	ဈေး​ခြင်း ရှင်း​ပြီး။
 plan_free_title	အမြဲတမ်း အခမဲ့
-plan_free_blurb	သင့်​စက်​များ​ပေါ်​ရှိ စက်​ပေါ်​ထုတ်ကုန် အပြည့်အစုံ။ Cloud အခကြေးငွေ မ​ရှိ။
+plan_free_blurb	သင့်​စက်​များ​ပေါ်​တွင် ထုတ်ကုန် အပြည့်အစုံ။ Cloud အခကြေးငွေ မ​ရှိ။
 plan_steady_blurb	တိုက်ရိုက် Cloud · 10 GB · bandwidth နိမ့်
 plan_swift_blurb	တိုက်ရိုက် Cloud · 25 GB · bandwidth အလယ်အလတ်
 plan_priority_blurb	တိုက်ရိုက် Cloud · 50 GB · အမြင့်​ဆုံး စံ bandwidth

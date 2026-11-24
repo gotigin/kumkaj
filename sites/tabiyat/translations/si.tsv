@@ -11,9 +11,9 @@ medicines_barcode_and_salt_search	ඖෂධ, තීරු කේත සහ ස�
 tap_the_bill_to_walk	කවුන්ටර විකුණුමක් බැලීමට බිල්පත තට්ටු කරන්න
 cash_memo	මුදල් බිල්පත
 ready	සූදානම්
-total	මුළු
+total	එකතුව
 tap_to_add_the_first	පළමු ඖෂධය එක් කිරීමට තට්ටු කරන්න
-example_pharmacy_lines_not_a	උදාහරණ ඖෂධ පේළි, සජීවී මුදල් ලාච්චුවක් නොවේ. Tabiyat එකම මාර්ගය අනුගමනය කරයි: විකිණීම → පියවීම → දින ලෙජරය.
+example_pharmacy_lines_not_a	උදාහරණ ඖෂධ පේළි, සජීවී බිල් කවුන්ටරයක් නොවේ. Tabiyat එකම මාර්ගය අනුගමනය කරයි: විකිණීම → පියවීම → දින ලෙජරය.
 n_2_counter_sell	2 · කවුන්ටර විකිණීම
 medicine_quantity_pay_three_taps	ඖෂධය, ප්‍රමාණය, ගෙවීම — තට්ටු තුනක්.
 upi_qr_ready	UPI QR සූදානම්
@@ -21,7 +21,7 @@ example_bill	උදාහරණ බිල්පත
 fast_counter_billing	වේගවත් කවුන්ටර බිල්කරණය
 add_the_line_set_the	පේළිය එක් කර, ප්‍රමාණය සකසා, පියවන්න — මුදල්, UPI හෝ බෙදූ ගෙවීම.
 gst_tax_invoice_or_cash	GST බදු ඉන්වොයිසිය හෝ මුදල් බිල්පත
-the_bill_lane_you_need	විකුණුම සඳහා ඔබට අවශ්‍ය බිල්පත් මාර්ගය.
+the_bill_lane_you_need	විකුණුම සඳහා ඔබට අවශ්‍ය බිල්පත් වර්ගය.
 day_book_follows	දින ලෙජරය අනුගමනය කරයි
 every_tender_lands_in_books	ඔබ විකුණුම වසන විට සෑම ගෙවීමක්ම ගිණුම් වෙත යයි.
 n_3_barcode_salt	3 · තීරු කේතය සහ සංයුතිය
@@ -51,12 +51,12 @@ books_and_sell_can_hint	දිනය පසු වීමට පෙර ගිණ�
 owner_practice	හිමිකරුගේ පිළිවෙත
 fefo_hints_and_rx_notes	FEFO ඉඟි සහ Rx සටහන් අනුගමනය කිරීම ඔබේ තීරණයයි — ඔබ ඇතුළත් කරන දේ Tabiyat සටහන් කරයි.
 n_5_khata	5 · ණය පොත
-customer_credit_and_supplier_dues	පාරිභෝගික ණය සහ සැපයුම්කරු හිඟ මුදල් එක් පාර්ශව පොතක.
+customer_credit_and_supplier_dues	පාරිභෝගික ණය සහ සැපයුම්කරු හිඟ මුදල් එක් පාර්ශ්ව පොතක.
 mehta_clinic_customer	මේතා සායනය · පාරිභෝගිකයා
 due_from_earlier	පෙර හිඟ මුදල
 today_s_sale_due	+ අද විකුණුම (හිඟ)
 balance	ශේෂය
-settle_later_part_cash_part	පසුව පියවන්න — කොටසක් මුදල්, කොටසක් UPI. සැපයුම්කරු ගෙවිය යුතු මුදල්ද එකම පාර්ශව තිරය බෙදා ගනී.
+settle_later_part_cash_part	පසුව පියවන්න — කොටසක් මුදල්, කොටසක් UPI. සැපයුම්කරු ගෙවිය යුතු මුදල්ද එකම පාර්ශ්ව තිරය බෙදා ගනී.
 due_on_the_bill	බිල්පතේ හිඟ මුදල
 leave_a_balance_on_khata	වෙනම ලෙජර යෙදුමක් නැතිව ණය පොතේ ශේෂයක් තබන්න.
 supplier_buys_too	සැපයුම්කරුගෙන් මිලදී ගැනීමද
@@ -67,24 +67,24 @@ n_6_internet_down	6 · අන්තර්ජාලය නැද්ද?
 the_internet_drops_the_counter	අන්තර්ජාලය නැති වේ. කවුන්ටරය දිගටම විකුණයි.
 router_no_internet	රවුටරය: අන්තර්ජාලය නැත
 main_counter_selling_and_settling	ප්‍රධාන කවුන්ටරය: විකුණමින් සහ පියවමින්
-second_till_joined_on_your	දෙවන මුදල් ලාච්චුව: ඔබේම Wi-Fi මත සම්බන්ධයි
+second_till_joined_on_your	දෙවන බිල් කවුන්ටරය: ඔබේම Wi-Fi මත සම්බන්ධයි
 books_live_on_the_shop	ගිණුම් පොත් සාප්පුවේ උපාංගවල ඇත
 when_the_internet_drops_nothing	අන්තර්ජාලය නැති වූ විට, ඖෂධ කවුන්ටරයේ කිසිවක් ඒ සඳහා බලා නොසිටියි.
-one_server_lan_clients	එක් සේවාදායකයක්, LAN සේවාලාභීන්
-extra_tills_share_the_same	අමතර මුදල් ලාච්චු සාප්පු ජාලය හරහා එකම ගිණුම් පොත් බෙදා ගනී.
+one_server_lan_clients	එක් සේවාදායකයක්, LAN සේවාලාභී උපාංග
+extra_tills_share_the_same	අමතර බිල් කවුන්ටර සාප්පු ජාලය හරහා එකම ගිණුම් පොත් බෙදා ගනී.
 n_7_free_forever_locally	7 · දේශීයව සදහටම නොමිලේ
 free_forever_on_your_devices	ඔබේ උපාංගවල සදහටම නොමිලේ.
 no_per_bill_charge	බිල්පතකට ගාස්තුවක් නැත
-no_fee_per_sale_medicine	දේශීය ස්ථාපනයේ විකුණුමකට, ඖෂධයකට, ලාච්චුවකට හෝ සේවක PIN එකකට ගාස්තුවක් නැත.
+no_fee_per_sale_medicine	දේශීය ස්ථාපනයේ විකුණුමකට, ඖෂධයකට, බිල් කවුන්ටරයකට හෝ සේවක PIN එකකට ගාස්තුවක් නැත.
 android_windows_linux	Android, Windows, Linux
-the_same_tabiyat_on_the	දුරකථනයේත් ඩෙස්ක්ටොප් ලාච්චුවේත් එකම Tabiyat.
+the_same_tabiyat_on_the	දුරකථනයේත් ඩෙස්ක්ටොප් බිල් කවුන්ටරයේත් එකම Tabiyat.
 optional_kumkaj_cloud	විකල්ප Kumkaj Cloud
 yearly_steady_6k_swift_12k	වාර්ෂිකව Steady ₹6k · Swift ₹12k · Priority ₹24k බදු රහිතව (හෝ අභිරුචි මිල ගණනක්). /shop හි මිලදී ගන්න.
 n_8_start	8 · ආරම්භය
 put_tabiyat_on_the_counter	Tabiyat කවුන්ටරයට දමන්න.
 download_free_or_whatsapp_for	නොමිලේ බාගත කරන්න, නැතහොත් ඔබේ ඖෂධ හල සහ නගරය සමඟ පෙන්වීමක් සඳහා WhatsApp කරන්න.
 privacy	පෞද්ගලිකත්වය
-terms	නියම
+terms	නියමයන්
 cancellation	අවලංගු කිරීම
 cloud_shop	වලාකුළු සාප්පුව
 account	ගිණුම
@@ -92,7 +92,7 @@ chapter_counter_sell	කවුන්ටර විකිණීම
 chapter_barcode_salt	තීරු කේතය සහ සංයුතිය
 chapter_batch_expiry	කාණ්ඩය සහ කල් ඉකුත් වීම
 chapter_khata	ණය පොත
-chapter_extra_till	අමතර ලාච්චුව
+chapter_extra_till	අමතර බිල් කවුන්ටරය
 chapter_offline	නොබැඳි
 chapter_start	ආරම්භය
 bill_selling	විකුණමින්
@@ -102,8 +102,8 @@ bill_next_line	ඊළඟ පේළිය එක් කිරීමට තට්�
 bill_settle_hint	පියවීමට තට්ටු කරන්න — මුදල් හෝ UPI
 bill_upi_paid	UPI ₹ 162 · ගෙවා ඇත
 bill_paid_line	ගෙවා ඇත · දින ලෙජරය යාවත්කාලීනයි
-lan_eyebrow	6 · අමතර ලාච්චුව
-lan_title	සාප්පු Wi-Fi මත තවත් ලාච්චුවක්.
+lan_eyebrow	6 · අමතර බිල් කවුන්ටරය
+lan_title	සාප්පු Wi-Fi මත තවත් බිල් කවුන්ටරයක්.
 cta_installers_note	සෑම ස්ථාපකයක්ම පිරිසිදු යන්ත්‍රයක ස්ථාපනය සාර්ථක වූ පසු මෙහි පළ කෙරේ. එතෙක් WhatsApp හරහා ආදර්ශනයක් ඉල්ලන්න.
 cta_whatsapp_soon	WhatsApp ආදර්ශන මාර්ගය ළඟදීම විවෘත වේ. ඔබේ පණිවිඩය මෙසේ වනු ඇත: “{message}”.
 acct_page_title	ගිණුම — Tabiyat
@@ -111,7 +111,7 @@ acct_lede	වෙබ් අඩවිය සහ යෙදුම් සඳහා �
 acct_email	ඊමේල්
 acct_name_optional	නම (විකල්ප)
 acct_password	මුරපදය
-acct_continue	දිගටම කරගෙන යන්න
+acct_continue	ඉදිරියට යන්න
 acct_forgot	මුරපදය අමතකද?
 acct_reset_hint	අපි යළි සැකසීමේ සබැඳියක් ඊමේල් කරන්නෙමු. ඔබ ලියාපදිංචි වූ එම ලිපිනයම භාවිත කරන්න.
 acct_send_reset	යළි සැකසීමේ සබැඳිය යවන්න
@@ -150,7 +150,7 @@ shop_cart_empty_hint	ඔබේ කූඩය හිස්ය. Steady, Swift හ�
 shop_checkout	ගෙවීම
 shop_clear	හිස් කරන්න
 shop_checkout_hint	ගෙවීම ඔබව ගිණුමට පිවිසවා, පසුව ගෙවීම ආරම්භ කරයි (පරීක්ෂණ අනුකරණය, හෝ යතුරු සකසා ඇති විට Paddle).
-acct_billing_hint	වාර්ෂික සැලසුම් — ගෙවීමේදී ගෙවීම් දොරටුව මඟින් බදු එකතු කෙරේ. දේශීය භාවිතය සදහටම නොමිලේ. අභිරුචි යනු මිල ගණන් කිරීමකි (Steady ට වඩා අඩු හෝ Priority ට වඩා වැඩි විය හැක).
+acct_billing_hint	වාර්ෂික සැලසුම් — ගෙවීමේදී ගෙවීම් දොරටුව මඟින් බදු එකතු කෙරේ. දේශීය භාවිතය සදහටම නොමිලේ. අභිරුචි සැලසුම සඳහා වෙනම මිල ගණනක් ලබා දෙනු ලැබේ (Steady ට වඩා අඩු හෝ Priority ට වඩා වැඩි විය හැක).
 shop_cloud_plans	වලාකුළු සැලසුම්
 acct_federated	ඒකාබද්ධ පිවිසුම
 acct_err_invalid_email	වලංගු ඊමේල් ලිපිනයක් ඇතුළත් කරන්න.

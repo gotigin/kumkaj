@@ -2,7 +2,7 @@
 the_promise	පොරොන්දුව
 kumkaj_business_operating_systems	KUMKAJ · ව්‍යාපාර මෙහෙයුම් පද්ධති
 the_internet_went_down_the	අන්තර්ජාලය නැවතුණා.\nකවුන්ටරය නැවතුණේ නැහැ.
-kumkaj_is_the_brand_for	Kumkaj යනු ස්ථිර ව්‍යාපාර මෙහෙයුම් පද්ධති යෙදුම් සඳහා වන සන්නාමයයි — ඔබේම උපාංගවල ක්‍රියා කරන සම්පූර්ණ ව්‍යාපාර කළමනාකරණ මෘදුකාංග. සෑම නිෂ්පාදනයක්ම එක් වෙළඳාමක් සඳහා නිර්මාණය කර ඇත: කුරියර්, අවන්හල, සිල්ලර බඩු, ඖෂධ හල.
+kumkaj_is_the_brand_for	Kumkaj යනු ප්‍රායෝගික ව්‍යාපාර මෙහෙයුම් පද්ධති යෙදුම් සඳහා වන සන්නාමයයි — ඔබේම උපාංගවල ක්‍රියා කරන සම්පූර්ණ ව්‍යාපාර කළමනාකරණ මෘදුකාංග. සෑම නිෂ්පාදනයක්ම එක් වෙළඳාමක් සඳහා නිර්මාණය කර ඇත: කුරියර්, අවන්හල, සිල්ලර බඩු, ඖෂධ හල.
 choose_your_trade	ඔබේ වෙළඳාම තෝරන්න  ↓
 watch_it_keep_working	එය දිගටම ක්‍රියා කරන හැටි බලන්න
 this_counter_right_now	මෙම කවුන්ටරය, දැන්ම
@@ -20,8 +20,8 @@ n_02_built_for_your_trade	02 · ඔබේ වෙළඳාම සඳහා නි
 a_desk_for_each_trade	සෑම වෙළඳාමකටම කවුන්ටරයක්.\nස්විචයක් සහිත එක් යෙදුමක් නොවේ.
 not_one_app_with_a	වෙළඳාම් ස්විචයක් සහිත එක් යෙදුමක් නොවේ. සෑම නිෂ්පාදනයක්ම එක් ආකාරයක කවුන්ටරයක් වටා, එම වෙළඳාමේම වචනවලින් නිර්මාණය කර ඇත.
 courier_offices_franchise_counters_own	කුරියර් කාර්යාල · ෆ්‍රැන්චයිස් කවුන්ටර · ඔබේම බෙදාහරින්නන්
-book_label_hand_over_track	වෙන්කරන්න → ලේබල් කරන්න → භාර දෙන්න → සොයා බලන්න → පියවන්න.
-next_booking_in_one_tap	එක් තට්ටුවකින් ඊළඟ වෙන්කිරීම
+book_label_hand_over_track	ලියාපදිංචි කරන්න → ලේබල් කරන්න → භාර දෙන්න → සොයා බලන්න → පියවන්න.
+next_booking_in_one_tap	එක් තට්ටුවකින් ඊළඟ ලියාපදිංචිය
 actual_or_volumetric_weight_rounded	සැබෑ හෝ පරිමා බර, ඔබ කැමති ලෙස වටයනු ලැබේ
 rider_cash_on_delivery_expected	බෙදාහරින්නාගේ COD: අපේක්ෂිත සහ භාර දුන් මුදල
 visit_moklanjo_com	moklanjo.com වෙත යන්න  →
@@ -31,13 +31,13 @@ every_table_s_minutes_and	සෑම මේසයකම මිනිත්තු 
 one_kot_per_kitchen_station	කුස්සි ස්ථානයකට එක් KOT — කිසිදා මිල නැත
 cash_upi_part_payment_due	මුදල්, UPI, කොටස් ගෙවීම, හිඟ සහ ඉනාම
 visit_khaynjo_com	khaynjo.com වෙත යන්න  →
-kirana_grocery_neighbourhood_shops	සිල්ලර කඩ · කරියාබඩු · අසල්වැසි සාප්පු
+kirana_grocery_neighbourhood_shops	සිල්ලර කඩ · ග්‍රොසරි · අසල්වැසි සාප්පු
 sell_khata_stock_day_book	විකිණීම → ණය පොත → තොගය → දින ලෙජරය.
 fast_counter_sell_with_short	කෙටි කේත සමඟ වේගවත් කවුන්ටර විකිණීම
 customer_credit_and_supplier_dues	පාරිභෝගික ණය සහ සැපයුම්කරු හිඟ මුදල්
 buy_into_stock_offline_forever	තොගයට මිලදී ගන්න — සදහටම නොබැඳිව
 visit_kirano_shop	kirano.shop වෙත යන්න  →
-chemists_pharmacy_counters	ඖෂධවේදීන් · ඖෂධ කවුන්ටර
+chemists_pharmacy_counters	ඖෂධ හල් · ඖෂධ කවුන්ටර
 medicine_batch_bill_day_close	ඖෂධය → කාණ්ඩය → බිල්පත → දවස වැසීම.
 barcode_and_salt_composition_search	තීරු කේතය සහ සංයුතිය / සංඝටක අනුව සෙවීම
 batch_and_expiry_alerts_on	මිලදී ගැනීම්වල කාණ්ඩය සහ කල් ඉකුත් අනතුරු ඇඟවීම්
@@ -45,20 +45,20 @@ owner_schedule_h_rx_notes	හිමිකරුගේ Schedule H / Rx සටහ�
 visit_tabiyat_shop	tabiyat.shop වෙත යන්න  →
 n_03_your_books_stay_with	03 · ඔබේ ගිණුම් පොත් ඔබ සමඟම රැඳේ
 your_books_live_in_your	ඔබේ ගිණුම් පොත් ඔබේ සාප්පුවේ ඇත.
-sales_parties_and_the_day	විකුණුම්, පාර්ශව සහ දින ලෙජරය ඔබේ කවුන්ටරයේ උපාංගයේ ලියැවේ — ඔබ කුලියට ගන්නා සේවාදායකයක නොවේ.
+sales_parties_and_the_day	විකුණුම්, පාර්ශ්ව සහ දින ලෙජරය ඔබේ කවුන්ටරයේ උපාංගයේ ලියැවේ — ඔබ කුලියට ගන්නා සේවාදායකයක නොවේ.
 on_your_device	ඔබේ උපාංගයේ
 every_sale_payment_and_docket	සෑම විකුණුමක්ම, ගෙවීමක්ම සහ ලේඛනයක්ම ඔබ සතු පරිගණකයේ හෝ ටැබ්ලටයේ සුරැකේ.
 no_account_with_us	අප සමඟ ගිණුමක් අවශ්‍ය නැත
-install_it_and_start_no	ස්ථාපනය කර ආරම්භ කරන්න. ලියාපදිංචියක් නැත, කාඩ්පතක් නැත.
+install_it_and_start_no	ස්ථාපනය කර ආරම්භ කරන්න. ලියාපදිංචියක් නැත, කාඩ්පත් විස්තර අවශ්‍ය නැත.
 copies_you_keep	ඔබ තබා ගන්නා පිටපත්
 save_a_backup_copy_whenever	ඔබ කැමති ඕනෑම වේලාවක උපස්ථ පිටපතක් සුරකින්න. එය ගොනුවකි, එය ඔබේය.
 extra_counters_and_tablets_join	අමතර කවුන්ටර සහ ටැබ්ලට් ඔබේම Wi-Fi හරහා සම්බන්ධ වේ — අතරමැදි අන්තර්ජාලයක් නැතිව.
-n_04_try_it	04 · උත්සාහ කරන්න
+n_04_try_it	04 · අත්හදා බලන්න
 pull_the_plug_on_the	අන්තර්ජාලය විසන්ධි කරන්න.
-kumkaj_apps_don_t_phone	Kumkaj යෙදුම් ක්‍රියා කිරීමට සේවාදායකය අමතන්නේ නැත. අන්තර්ජාලය කපා කවුන්ටරයේ වෙනස් වන්නේ කුමක්දැයි බලන්න.
-cut_the_internet	අන්තර්ජාලය කපන්න
+kumkaj_apps_don_t_phone	Kumkaj යෙදුම් ක්‍රියා කිරීමට සේවාදායකය අමතන්නේ නැත. අන්තර්ජාලය විසන්ධි කර කවුන්ටරයේ වෙනස් වන්නේ කුමක්දැයි බලන්න.
+cut_the_internet	අන්තර්ජාලය විසන්ධි කරන්න
 internet_on	අන්තර්ජාලය: ඇත
-book_a_parcel_or_take	පාර්සලයක් වෙන්කරන්න හෝ ඇණවුමක් ගන්න
+book_a_parcel_or_take	පාර්සලයක් ලියාපදිංචි කරන්න හෝ ඇණවුමක් ගන්න
 save_the_bill_or_docket	බිල්පත හෝ ලේඛනය සුරකින්න
 day_book_totals	දින ලෙජරයේ එකතු
 find_an_old_sale	පැරණි විකුණුමක් සොයන්න
@@ -82,21 +82,21 @@ trademark	වෙළඳ ලකුණ
 memon_for_find_it_pronounced	Memon භාෂාවෙන් “එය සොයා ගන්න” · උච්චාරණය go-tee-geen
 company	සමාගම
 brand	සන්නාමය
-concrete_business_operating_system_apps	ස්ථිර ව්‍යාපාර මෙහෙයුම් පද්ධති යෙදුම්
+concrete_business_operating_system_apps	ප්‍රායෝගික ව්‍යාපාර මෙහෙයුම් පද්ධති යෙදුම්
 products	නිෂ්පාදන
 courier_restaurant_grocery_pharmacy	කුරියර් · අවන්හල · සිල්ලර බඩු · ඖෂධ හල
-courier_desk_book_label_hand	කුරියර් කවුන්ටරය — වෙන්කිරීම, ලේබල් කිරීම, භාර දීම, පියවීම.
+courier_desk_book_label_hand	කුරියර් කවුන්ටරය — ලියාපදිංචි කිරීම, ලේබල් කිරීම, භාර දීම, පියවීම.
 restaurant_system_table_kitchen_bill	අවන්හල් පද්ධතිය — මේසය, කුස්සිය, බිල්පත, දවස වැසීම.
 grocery_counter_sell_khata_stock	සිල්ලර කවුන්ටරය — විකිණීම, ණය පොත, තොගය, දින ලෙජරය.
 pharmacy_counter_batch_expiry_bill	ඖෂධ කවුන්ටරය — කාණ්ඩය, කල් ඉකුත් වීම, බිල්පත, දවස වැසීම.
 privacy	පෞද්ගලිකත්වය
-terms	නියම
+terms	නියමයන්
 cancellation	අවලංගු කිරීම
 cloud_shop	වලාකුළු සාප්පුව
 account	ගිණුම
 chapter_built_for_your_trade	ඔබේ වෙළඳාම සඳහා නිර්මාණය කර ඇත
 chapter_your_books	ඔබේ ගිණුම් පොත්
-chapter_try_it_offline	නොබැඳිව උත්සාහ කරන්න
+chapter_try_it_offline	නොබැඳිව අත්හදා බලන්න
 chapter_price	මිල
 chapter_languages	භාෂා
 chapter_who_makes_it	එය සාදන්නේ කවුද

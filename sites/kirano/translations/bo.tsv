@@ -61,8 +61,8 @@ counted	གྲངས་རྩིས་ཟིན།
 short	ཆད།
 tenders_stay_separate	རིན་སྤྲོད་ཐབས་ལམ་ལོགས་སུ་གནས།
 cash_and_upi_never_mix	དངུལ་ལྷོད་དང་ UPI གཉིས་ནམ་ཡང་གསང་བའི་བསྡོམས་གྲངས་གཅིག་ཏུ་མི་འདྲེས།
-shift_close	ལས་ཚན་སྒོ་རྒྱག
-close_the_shift_print_the	ལས་ཚན་སྒོ་རྒྱག ཤོག་བུ་པར་སྐྲུན། རྗེས་མ་གཙང་མར་འགོ་འཛུགས།
+shift_close	ལས་རེས་སྒོ་རྒྱག
+close_the_shift_print_the	ལས་རེས་སྒོ་རྒྱག ཤོག་བུ་པར་སྐྲུན། རྗེས་མ་གཙང་མར་འགོ་འཛུགས།
 gst_facing_bills	GST དང་འབྲེལ་བའི་འཛིན་བྱང་།
 tax_invoice_or_cash_memo	ཁྲལ་འཛིན་ནམ་དངུལ་ལྷོད་འཛིན་བྱང་། — ཉིན་མོའི་སྙན་ཞུར་གཉིས་ཀ་ཚུད།
 books_sell_buy_items_four	རྩིས་དེབ། · བཙོང་བ། · ཉོ། · དངོས་རྫས། — བརྙན་ཡོལ་བཞི། ཟ་ཁང་གི་ས་ཁུལ་མེད།
@@ -163,7 +163,7 @@ acct_err_invalid_credential	གློག་འཕྲིན་ནམ་གསང�
 acct_err_popup_closed	ནང་འཛུལ་སྒེའུ་ཁུང་ཁ་བརྒྱབ་སོང་།
 acct_err_popup_cancelled	ནང་འཛུལ་ཆ་མེད་བཏང་སོང་།
 acct_err_unauthorized_domain	ཁྱབ་ཁོངས་འདི་ Firebase Auth ཆེད་ཆོག་མཆན་མེད།
-acct_err_method_disabled	ནང་འཛུལ་ཐབས་ལམ་དེ་ད་དུང་སྤྱོད་མེད།
+acct_err_method_disabled	ནང་འཛུལ་ཐབས་ལམ་དེ་ད་དུང་ཁ་ཕྱེ་མེད།
 acct_err_too_many	ཚོད་ལྟ་མང་དྲགས་སོང་། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།
 acct_err_phone_format	རྒྱལ་ཁབ་ཀྱི་ཨང་རྟགས་དང་བཅས་པའི་ཁ་པར་ཨང་གྲངས་ཆ་ཚང་བེད་སྤྱོད་རོགས། (དཔེར་ན། +91…)
 acct_err_sms_code	SMS ཨང་རྟགས་དེ་ནོར་བའམ་དུས་ཡོལ་སོང་།

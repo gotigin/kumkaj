@@ -23,7 +23,7 @@ add_the_line_set_the	ཐོ་གྲལ་སྣོན། གྲངས་ཚད�
 gst_tax_invoice_or_cash	GST ཁྲལ་འཛིན་ནམ་དངུལ་ལྷོད་འཛིན་བྱང་།
 the_bill_lane_you_need	ཚོང་འགྲེམས་ཆེད་ཁྱེད་ལ་དགོས་པའི་འཛིན་བྱང་གི་ལམ།
 day_book_follows	ཉིན་རྩིས་རྗེས་སུ་འབྲང་།
-every_tender_lands_in_books	ཚོང་འགྲེམས་སྒོ་རྒྱག་སྐབས་རིན་སྤྲོད་རེ་རེ་རྩིས་དེབ་ནང་འབབ།
+every_tender_lands_in_books	ཚོང་འགྲེམས་མཇུག་སྒྲིལ་སྐབས་རིན་སྤྲོད་རེ་རེ་རྩིས་དེབ་ནང་འབབ།
 n_3_barcode_salt	3 · ཐིག་རིས་ཨང་རྟགས་དང་སྨན་རྫས།
 scan_the_barcode_or_find	ཐིག་རིས་ཨང་རྟགས་ཞིབ་འབེབས་བྱེད། — ཡང་ན་སྨན་རྫས་ཀྱིས་འཚོལ།
 search	འཚོལ།
@@ -160,7 +160,7 @@ acct_err_invalid_credential	གློག་འཕྲིན་ནམ་གསང�
 acct_err_popup_closed	ནང་འཛུལ་སྒེའུ་ཁུང་ཁ་བརྒྱབ་སོང་།
 acct_err_popup_cancelled	ནང་འཛུལ་ཆ་མེད་བཏང་སོང་།
 acct_err_unauthorized_domain	ཁྱབ་ཁོངས་འདི་ Firebase Auth ཆེད་ཆོག་མཆན་མེད།
-acct_err_method_disabled	ནང་འཛུལ་ཐབས་ལམ་དེ་ད་དུང་སྤྱོད་མེད།
+acct_err_method_disabled	ནང་འཛུལ་ཐབས་ལམ་དེ་ད་དུང་ཁ་ཕྱེ་མེད།
 acct_err_too_many	ཚོད་ལྟ་མང་དྲགས་སོང་། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།
 acct_err_phone_format	རྒྱལ་ཁབ་ཀྱི་ཨང་རྟགས་དང་བཅས་པའི་ཁ་པར་ཨང་གྲངས་ཆ་ཚང་བེད་སྤྱོད་རོགས། (དཔེར་ན། +91…)
 acct_err_sms_code	SMS ཨང་རྟགས་དེ་ནོར་བའམ་དུས་ཡོལ་སོང་།

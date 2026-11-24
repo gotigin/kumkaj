@@ -12,27 +12,27 @@ taking_orders	ຮັບ​ອໍ​ເດີ
 yes	ໄດ້
 bills_and_dockets	ໃບ​ບິນ ແລະ ໃບຮັບ​ຝາກ
 saving	ກຳລັງ​ບັນທຶກ
-day_book	ປຶ້ມ​ມື້
+day_book	ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 adding_up	ກຳລັງ​ລວມ​ຍອດ
 nothing_on_this_counter_waits	ບໍ່ມີ​ຫຍັງ​ເທິງ​ເຄົາ​ເຕີ​ນີ້​ທີ່​ຕ້ອງ​ລໍຖ້າຄລາວ
 scroll_or_use_the_dots	ເລື່ອນ ຫຼື ໃຊ້​ຈຸດ​ເພື່ອ​ຂ້າມ​ໄປ​ແຕ່ລະ​ສ່ວນ
 n_02_built_for_your_trade	02 · ສ້າງ​ມາ​ເພື່ອ​ທຸລະກິດ​ຂອງ​ທ່ານ
 a_desk_for_each_trade	ເຄົາ​ເຕີ​ສະເພາະ​ສຳລັບ​ແຕ່ລະ​ທຸລະກິດ\nບໍ່​ແມ່ນ​ແອັບ​ດຽວ​ທີ່ມີ​ສະວິດ
-not_one_app_with_a	ບໍ່​ແມ່ນ​ແອັບ​ດຽວ​ທີ່ມີ​ສະວິດ​ປ່ຽນ​ທຸລະກິດ ແຕ່ລະ​ຜະລິດຕະພັນ​ອອກແບບ​ອ້ອມ​ເຄົາ​ເຕີ​ແບບ​ດຽວ ດ້ວຍ​ຄຳ​ຂອງ​ທຸລະກິດ​ນັ້ນເອງ
-courier_offices_franchise_counters_own	ຫ້ອງການ​ຂົນສົ່ງ · ເຄົາ​ເຕີ​ແຟຣນ​ໄຊ · ຜູ້​ສົ່ງ​ເຄື່ອງຂອງ​ຮ້ານ​ເອງ
-book_label_hand_over_track	ຮັບ​ຝາກ → ຕິດ​ປ້າຍ → ມອບ → ຕິດຕາມ → ສະສາງ
+not_one_app_with_a	ບໍ່​ແມ່ນ​ແອັບ​ດຽວ​ທີ່ມີ​ສະວິດ​ປ່ຽນ​ທຸລະກິດ ແຕ່ລະ​ຜະລິດຕະພັນ​ອອກແບບ​ມາ​ສຳລັບ​ເຄົາ​ເຕີ​ປະເພດ​ດຽວ ດ້ວຍ​ຄຳສັບ​ຂອງ​ທຸລະກິດ​ນັ້ນເອງ
+courier_offices_franchise_counters_own	ຫ້ອງການ​ຂົນສົ່ງ · ເຄົາ​ເຕີ​ແຟຣນ​ໄຊ · ພະນັກງານ​ສົ່ງ​ເຄື່ອງຂອງ​ຮ້ານ​ເອງ
+book_label_hand_over_track	ຮັບ​ຝາກ → ຕິດ​ປ້າຍ → ສົ່ງ​ມອບ → ຕິດຕາມ → ສະສາງ
 next_booking_in_one_tap	ຮັບ​ຝາກ​ລາຍການ​ຕໍ່ໄປ​ດ້ວຍ​ການ​ແຕະ​ເທື່ອ​ດຽວ
 actual_or_volumetric_weight_rounded	ນ້ຳ​ໜັກ​ຈິງ ຫຼື ຕາມ​ປະລິ​ມາດ ປັດ​ຕາມ​ແບບ​ຂອງ​ທ່ານ
-rider_cash_on_delivery_expected	COD ຂອງ​ຜູ້​ສົ່ງ​ເຄື່ອງ: ຍອດ​ທີ່​ຄວນ​ໄດ້​ທຽບ​ກັບ​ຍອດ​ທີ່​ສົ່ງ​ແລ້ວ
+rider_cash_on_delivery_expected	COD ຂອງ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ: ຍອດ​ທີ່​ຄວນ​ໄດ້​ທຽບ​ກັບ​ຍອດ​ທີ່​ສົ່ງ​ແລ້ວ
 visit_moklanjo_com	ໄປ​ທີ່ moklanjo.com  →
-restaurants_caf_s_quick_service	ຮ້ານ​ອາຫານ · ຄາ​ເຟ່ · ຮ້ານ​ອາຫານ​ດ່ວນ · ຮ້ານ​ເບ​ເກີ​ຣີ
+restaurants_caf_s_quick_service	ຮ້ານ​ອາຫານ · ຮ້ານ​ກາເຟ · ຮ້ານ​ອາຫານ​ດ່ວນ · ຮ້ານ​ເບ​ເກີ​ຣີ
 table_kitchen_bill_day_close	ໂຕະ → ເຮືອນຄົວ → ໃບ​ບິນ → ປິດ​ມື້
 every_table_s_minutes_and	ເວລາ ແລະ ໃບ​ບິນ​ຂອງ​ທຸກ​ໂຕະ​ໃນ​ພິບຕາ
 one_kot_per_kitchen_station	ໜຶ່ງ​ໃບສັ່ງ​ເຮືອນຄົວ​ຕໍ່​ສະຖານີ — ບໍ່ມີ​ລາຄາ​ເດັດຂາດ
 cash_upi_part_payment_due	ເງິນສົດ UPI ຈ່າຍ​ບາງ​ສ່ວນ ຕິດ​ໜີ້ ແລະ ທິບ
 visit_khaynjo_com	ໄປ​ທີ່ khaynjo.com  →
 kirana_grocery_neighbourhood_shops	ຮ້ານ​ຂາຍ​ເຄື່ອງ · ຮ້ານ​ເຄື່ອງຍ່ອຍ · ຮ້ານ​ຄ້າ​ໃນ​ບ້ານ
-sell_khata_stock_day_book	ຂາຍ → ປຶ້ມ​ໜີ້ → ສະ​ຕັອກ → ປຶ້ມ​ມື້
+sell_khata_stock_day_book	ຂາຍ → ປຶ້ມ​ໜີ້ → ສະ​ຕັອກ → ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 fast_counter_sell_with_short	ຂາຍໜ້າ​ເຄົາ​ເຕີ​ໄດ້​ໄວ​ດ້ວຍ​ລະຫັດ​ສັ້ນ
 customer_credit_and_supplier_dues	ໜີ້​ລູກຄ້າ ແລະ ຍອດ​ຄ້າງ​ຈ່າຍ​ຜູ້​ສະໜອງ
 buy_into_stock_offline_forever	ຊື້​ເຂົ້າ​ສະ​ຕັອກ — ອອບ​ລາຍໄດ້​ຕະຫຼອດໄປ
@@ -41,11 +41,11 @@ chemists_pharmacy_counters	ຮ້ານ​ຂາຍ​ຢາ · ເຄົາ​�
 medicine_batch_bill_day_close	ຢາ → ລັອດ → ໃບ​ບິນ → ປິດ​ມື້
 barcode_and_salt_composition_search	ຄົ້ນຫາ​ດ້ວຍ​ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ / ສ່ວນປະກອບ
 batch_and_expiry_alerts_on	ແຈ້ງ​ເຕືອນ​ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ​ເມື່ອ​ຊື້
-owner_schedule_h_rx_notes	ບັນທຶກ Schedule H / Rx ຂອງ​ເຈົ້າຂອງ​ຮ້ານ — ບໍ່​ແມ່ນ​ການປະຕິບັດຕາມ​ກົດ​ແບບ​ປອມ
+owner_schedule_h_rx_notes	ບັນທຶກ Schedule H / Rx ຂອງ​ເຈົ້າຂອງ​ຮ້ານ — ບໍ່​ແອບອ້າງ​ວ່າ​ປະຕິບັດຕາມ​ກົດໝາຍ
 visit_tabiyat_shop	ໄປ​ທີ່ tabiyat.shop  →
 n_03_your_books_stay_with	03 · ບັນຊີ​ຢູ່​ກັບ​ທ່ານ
 your_books_live_in_your	ບັນຊີ​ຂອງ​ທ່ານ​ຢູ່ໃນ​ຮ້ານ​ຂອງ​ທ່ານ
-sales_parties_and_the_day	ຍອດ​ຂາຍ ຝ່າຍ ແລະ ປຶ້ມ​ມື້ ຂຽນ​ລົງ​ອຸປະກອນ​ທີ່​ເຄົາ​ເຕີ​ຂອງ​ທ່ານ — ບໍ່​ແມ່ນ​ເທິງ​ເຊີບເວີ​ທີ່​ທ່ານ​ເຊົ່າ
+sales_parties_and_the_day	ຍອດ​ຂາຍ ຄູ່​ຄ້າ ແລະ ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ ຂຽນ​ລົງ​ອຸປະກອນ​ທີ່​ເຄົາ​ເຕີ​ຂອງ​ທ່ານ — ບໍ່​ແມ່ນ​ເທິງ​ເຊີບເວີ​ທີ່​ທ່ານ​ເຊົ່າ
 on_your_device	ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
 every_sale_payment_and_docket	ທຸກ​ການຂາຍ ການ​ຊຳລະ ແລະ ໃບຮັບ​ຝາກ ບັນທຶກ​ເທິງ​ຄອມພິວເຕີ ຫຼື ແທັບ​ເລັດ​ທີ່​ທ່ານ​ເປັນ​ເຈົ້າຂອງ
 no_account_with_us	ບໍ່​ຕ້ອງ​ມີ​ບັນຊີ​ກັບ​ພວກ​ເຮົາ
@@ -60,13 +60,13 @@ cut_the_internet	ຕັດ​ອິນ​ເຕີ​ເນັດ
 internet_on	ອິນ​ເຕີ​ເນັດ: ເປີດ
 book_a_parcel_or_take	ຮັບ​ຝາກ​ພັດສະດຸ ຫຼື ຮັບ​ອໍ​ເດີ
 save_the_bill_or_docket	ບັນທຶກ​ໃບ​ບິນ ຫຼື ໃບຮັບ​ຝາກ
-day_book_totals	ຍອດ​ລວມ​ປຶ້ມ​ມື້
+day_book_totals	ຍອດ​ລວມ​ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 find_an_old_sale	ຄົ້ນຫາ​ການຂາຍ​ເກົ່າ
 the_internet_is_on_and	ອິນ​ເຕີ​ເນັດ​ເປີດ​ຢູ່ — ແຕ່​ເຄົາ​ເຕີ​ບໍ່ໄດ້​ໃຊ້
 things_that_leave_the_shop	ສິ່ງ​ທີ່​ອອກ​ນອກ​ຮ້ານ ເຊັ່ນ ໃບຮັບ​ເງິນ​ທາງ WhatsApp ຍັງ​ຕ້ອງ​ໃຊ້​ອິນ​ເຕີ​ເນັດ​ຈຶ່ງ​ຈະ​ໄປ​ເຖິງ
 n_05_price	05 · ລາຄາ
 free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
-no_charge_per_seat_user	ບໍ່​ຄິດ​ເງິນ​ຕາມ​ບ່ອນນັ່ງ ຜູ້​ໃຊ້ ໂຕະ ຜູ້​ສົ່ງ​ເຄື່ອງ ພັດສະດຸ ຫຼື ອຸປະກອນ​ເທິງ​ເຄື່ອງ ບໍ່​ແມ່ນ​ລຸ້ນ​ທົດລອງ
+no_charge_per_seat_user	ບໍ່​ຄິດ​ເງິນ​ຕາມ​ບ່ອນນັ່ງ ຜູ້​ໃຊ້ ໂຕະ ພະນັກງານ​ສົ່ງ​ເຄື່ອງ ພັດສະດຸ ຫຼື ອຸປະກອນ​ໃນ​ຮ້ານ ບໍ່​ແມ່ນ​ລຸ້ນ​ທົດລອງ
 on_your_own_devices	ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ
 n_0_forever	₹0 ຕະຫຼອດໄປ
 pay_only_for_what_you	ຈ່າຍ​ສະເພາະ​ສິ່ງ​ທີ່​ໃຊ້ — ລາຄາ​ດຽວກັນ​ສຳລັບ​ທຸກຄົນ
@@ -85,9 +85,9 @@ brand	ແບຣນ
 concrete_business_operating_system_apps	ແອັບ​ລະບົບ​ປະຕິບັດການ​ທຸລະກິດ​ທີ່​ໃຊ້ງານ​ໄດ້​ແທ້
 products	ຜະລິດຕະພັນ
 courier_restaurant_grocery_pharmacy	ຂົນສົ່ງ​ພັດສະດຸ · ຮ້ານ​ອາຫານ · ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ · ຮ້ານ​ຂາຍ​ຢາ
-courier_desk_book_label_hand	ເຄົາ​ເຕີ​ຂົນສົ່ງ — ຮັບ​ຝາກ ຕິດ​ປ້າຍ ມອບ ສະສາງ
+courier_desk_book_label_hand	ເຄົາ​ເຕີ​ຂົນສົ່ງ — ຮັບ​ຝາກ ຕິດ​ປ້າຍ ສົ່ງ​ມອບ ສະສາງ
 restaurant_system_table_kitchen_bill	ລະບົບ​ຮ້ານ​ອາຫານ — ໂຕະ ເຮືອນຄົວ ໃບ​ບິນ ປິດ​ມື້
-grocery_counter_sell_khata_stock	ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ — ຂາຍ ປຶ້ມ​ໜີ້ ສະ​ຕັອກ ປຶ້ມ​ມື້
+grocery_counter_sell_khata_stock	ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ — ຂາຍ ປຶ້ມ​ໜີ້ ສະ​ຕັອກ ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 pharmacy_counter_batch_expiry_bill	ເຄົາ​ເຕີ​ຮ້ານ​ຢາ — ລັອດ ວັນ​ໝົດ​ອາຍຸ ໃບ​ບິນ ປິດ​ມື້
 privacy	ຄວາມເປັນ​ສ່ວນຕົວ
 terms	ຂໍ້​ກຳນົດ

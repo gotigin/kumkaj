@@ -34,7 +34,7 @@ wedge_scanner_or_type_enter	Ẹ̀rọ ìkà bákóòdù tàbí tẹ Enter — ì
 barcode_first	Bákóòdù lákọ̀ọ́kọ́
 scan_or_paste_the_code	Ka kóòdù náà tàbí lẹ̀ ẹ́; èyí tí ó bá a mu nínú kátálọ́ọ̀gì yóò yọ.
 salt_composition	Èròjà / àkópọ̀ èròjà
-type_the_salt_when_the	Tẹ èròjà náà nígbà tí orúkọ ilé-iṣẹ́ kì í ṣe ohun tí oníbàárà sọ.
+type_the_salt_when_the	Tẹ èròjà náà nígbà tí orúkọ ọjà kò bá jẹ́ èyí tí oníbàárà sọ.
 owner_rx_schedule_h_flags	Àmì olóhun fún ìwé dókítà / Schedule H
 reminders_you_set_not_a	Ìránnilétí tí ẹ ṣètò — kì í ṣe ìwé àkọsílẹ̀ òfin, kì í ṣe ìmọ̀ràn ìṣègùn.
 n_4_batch_expiry	4 · NỌ́ŃBÀ ÌDÌPỌ̀ ÀTI ỌJỌ́ ÌPARÍ
@@ -105,7 +105,7 @@ bill_paid_line	A ti sanwó · a ti ṣe àtúnṣe ìwé àkọọ́lẹ̀ ọj�
 lan_eyebrow	6 · ÀPÓTÍ OWÓ ÀFIKÚN
 lan_title	Àpótí owó mìíràn lórí Wi-Fi ṣọ́ọ̀bù.
 cta_installers_note	A ó gbé àwọn fáìlì ìfisílẹ̀ sí ibí ní kété tí ọ̀kọ̀ọ̀kan bá yege ìfisílẹ̀ lórí ẹ̀rọ tuntun. Títí di ìgbà náà, béèrè àfihàn lórí WhatsApp.
-cta_whatsapp_soon	Ìlà àfihàn WhatsApp yóò ṣí láìpẹ́. Ọ̀rọ̀ yín yóò kà pé: “{message}”.
+cta_whatsapp_soon	Nọ́ńbà WhatsApp fún àfihàn yóò bẹ̀rẹ̀ iṣẹ́ láìpẹ́. Ọ̀rọ̀ yín yóò jẹ́: “{message}”.
 acct_page_title	Àkáǹtì — Tabiyat
 acct_lede	Àkáǹtì kan fún ojú òpó àti àwọn áàpù — fọ́ọ̀mù kan náà bóyá ẹ jẹ́ tuntun tàbí ẹ ń padà bọ̀.
 acct_email	Ímeèlì
@@ -216,7 +216,7 @@ shop_included	Ó wà nínú rẹ̀
 shop_in_cart	{plan} wà nínú agbọ̀n yín.
 shop_remove	Yọ kúrò
 shop_cart_is_empty	Agbọ̀n ṣófo.
-shop_prices_unpublished	A kò tí ì gbé iye owó ìrara-ẹni jáde fún ọjà yìí. Ẹ béèrè ìdíyelé àdáni tàbí kí ẹ padà wá nígbà mìíràn.
+shop_prices_unpublished	A kò tí ì gbé iye owó tí ẹ lè fi rà á fúnra yín jáde fún ọjà yìí. Ẹ béèrè ìdíyelé àdáni tàbí kí ẹ padà wá nígbà mìíràn.
 shop_cart_cleared	A ti pa agbọ̀n rẹ́.
 plan_free_title	Ọ̀fẹ́ títí láé
 plan_free_blurb	Ọjà pípé lórí ẹ̀rọ yín. Kò sí owó ìkùukùu.

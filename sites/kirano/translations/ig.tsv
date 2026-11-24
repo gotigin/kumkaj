@@ -7,7 +7,7 @@ the_grocery_counter	kaụnta ụlọ ahịa nri
 busy_counter	Kaụnta jupụtara n’ọrụ
 kirano_the_grocery_counter	KIRANO · KAỤNTA ỤLỌ AHỊA NRI
 busy_counter_no_internet_still	Kaụnta jupụtara n’ọrụ. Enweghị ịntanetị. Ka na-ede ụgwọ.
-sell_khata_stock_and_the	Ire, akwụkwọ mbinye, ngwaahịa na akwụkwọ ụbọchị — n’ngwaọrụ gị. Akwụkwọ ụbọchị · Ree · Zụta · Ihe. Enweghị ụlọ oriri, enweghị kichin, enweghị tebụl.
+sell_khata_stock_and_the	Ire, akwụkwọ mbinye, ngwaahịa na akwụkwọ ụbọchị — na ngwaọrụ gị. Akwụkwọ ụbọchị · Ree · Zụta · Ihe. Enweghị ụlọ oriri, enweghị kichin, enweghị tebụl.
 tap_the_bill_to_walk	Pịa ụgwọ ahụ ka i soro otu ire na kaụnta
 cash_memo	Rịsịt ego aka
 ready	Adịla njikere
@@ -47,7 +47,7 @@ buy_creates_stock	Ịzụ na-emepụta ngwaahịa
 receive_the_goods_the_catalogue	Nara ngwaahịa ahụ; ọnụọgụ dị na katalọgụ na-arị elu.
 who_we_owe	Ndị anyị ji ego
 supplier_balance_sits_on_the	Ego fọdụrụ nke onye na-ebunye na-anọ na Ndị mmekọ, dịka akwụkwọ mbinye onye ahịa.
-low_stock_at_a_glance	Ngwaahịa na-agwụ n’otu ilele
+low_stock_at_a_glance	Ngwaahịa na-agwụ n’otu nlele
 inventory_shows_what_is_running	Ndepụta ngwaahịa na-egosi ihe na-agwụ tupu igwe mmadụ ọzọ abịa.
 n_5_day_book	5 · AKWỤKWỌ ỤBỌCHỊ
 cash_vs_upi_counted_and	Ego aka na UPI, a gụrụ ha iche — a kpọkwara ọdịiche ahụ aha.
@@ -71,14 +71,14 @@ the_internet_drops_the_counter	Ịntanetị kwụsịrị. Kaụnta na-aga n’i
 router_no_internet	Rawụta: enweghị ịntanetị
 main_counter_selling_and_settling	Kaụnta isi: na-ere ma na-anata ụgwọ
 second_till_joined_on_your	Igbe ego nke abụọ: jikọrọ na Wi-Fi gị
-books_live_on_the_shop	Akwụkwọ ego na-anọ n’ngwaọrụ ụlọ ahịa
+books_live_on_the_shop	Akwụkwọ ego na-anọ na ngwaọrụ ụlọ ahịa
 when_the_internet_drops_mid	Mgbe ịntanetị kwụsịrị n’etiti igwe mmadụ, ọ dịghị ihe dị na kaụnta na-eche ya.
 one_server_lan_clients	Otu sava, ngwaọrụ LAN
 extra_tills_share_the_same	Igbe ego ndị ọzọ na-ekerịta otu akwụkwọ ego site na netwọk ụlọ ahịa.
-n_7_free_forever_locally	7 · N’EFU RUO MGBE EBIGHỊ EBI N’NGWAỌRỤ GỊ
-free_forever_on_your_devices	N’efu ruo mgbe ebighị ebi n’ngwaọrụ gị.
+n_7_free_forever_locally	7 · N’EFU RUO MGBE EBIGHỊ EBI NA NGWAỌRỤ GỊ
+free_forever_on_your_devices	N’efu ruo mgbe ebighị ebi na ngwaọrụ gị.
 no_per_bill_charge	Enweghị ụgwọ kwa akwụkwọ ụgwọ
-no_fee_per_sale_item	Enweghị ụgwọ kwa ire, ihe, igbe ego ma ọ bụ PIN onye ọrụ na nrụnye n’ngwaọrụ gị.
+no_fee_per_sale_item	Enweghị ụgwọ kwa ire, ihe, igbe ego ma ọ bụ PIN onye ọrụ na nrụnye na ngwaọrụ gị.
 android_windows_linux	Android, Windows, Linux
 the_same_kirano_on_the	Otu Kirano ahụ n’ekwentị dị n’azụ kaụnta na n’igbe ego kọmputa.
 optional_kumkaj_cloud	Kumkaj Cloud nhọrọ
@@ -108,14 +108,14 @@ bill_paid_line	Akwụrụ · e melitere akwụkwọ ụbọchị
 lan_eyebrow	6 · IGBE EGO ỌZỌ
 lan_title	Igbe ego ọzọ na Wi-Fi ụlọ ahịa.
 cta_installers_note	A ga-etinye ihe nrụnye ebe a ozugbo nke ọ bụla gafere nrụnye na igwe ọhụrụ. Ruo mgbe ahụ, rịọ maka ngosi na WhatsApp.
-cta_whatsapp_soon	Ahịrị ngosi WhatsApp ga-emeghe n’oge na-adịghị anya. Ozi gị ga-agụ: “{message}”.
+cta_whatsapp_soon	Ahịrị ngosi WhatsApp ga-emeghe n’oge na-adịghị anya. Ozi gị ga-abụ: “{message}”.
 acct_page_title	Akaụntụ — Kirano
 acct_lede	Otu akaụntụ maka saịtị na ngwa — otu fọm ahụ ma ị bụ onye ọhụrụ ma ọ bụ onye na-alọghachi.
 acct_email	Ozi-e
 acct_name_optional	Aha (nhọrọ)
 acct_password	Okwuntughe
 acct_continue	Gaa n’ihu
-acct_forgot	Chefuru okwuntughe?
+acct_forgot	I chefuru okwuntughe?
 acct_reset_hint	Anyị ga-ezitere gị njikọ ntọgharị site n’ozi-e. Jiri otu adreesị ahụ i ji debanye aha.
 acct_send_reset	Ziga njikọ ntọgharị
 acct_cancel	Kagbuo
@@ -147,46 +147,46 @@ acct_link_phone	Jikọọ ekwentị
 acct_send_sms_link	Ziga SMS iji jikọọ
 acct_confirm_link_phone	Kwado ma jikọọ ekwentị
 shop_page_title	Ụlọ ahịa — Kirano
-shop_lede	Atụmatụ igwe ojii kwa afọ — a na-agbakwunye ụtụ isi n’oge ịkwụ ụgwọ. Ngwa Kirano zuru oke n’ngwaọrụ gị na-anọgide n’efu ruo mgbe ebighị ebi, na-enweghị mgbasa ozi.
+shop_lede	Atụmatụ igwe ojii kwa afọ — a na-agbakwunye ụtụ isi n’oge ịkwụ ụgwọ. Ngwa Kirano zuru oke na ngwaọrụ gị na-anọgide n’efu ruo mgbe ebighị ebi, na-enweghị mgbasa ozi.
 shop_cart	Nkata
 shop_cart_empty_hint	Nkata gị tọgbọ chakoo. Tinye Steady, Swift ma ọ bụ Priority.
 shop_checkout	Kwụọ ụgwọ
 shop_clear	Hichapụ
-shop_checkout_hint	Ịkwụ ụgwọ na-abanye gị na Akaụntụ, wee bido ịkwụ ụgwọ (nṅomi ule ma ọ bụ Paddle mgbe e setịrị igodo).
-acct_billing_hint	Atụmatụ kwa afọ — ọnụ ụzọ ịkwụ ụgwọ na-agbakwunye ụtụ isi n’oge ịkwụ ụgwọ. Iji ya n’ngwaọrụ gị na-anọgide n’efu ruo mgbe ebighị ebi. Nke ahaziri iche bụ atụmatụ ọnụahịa (ọ nwere ike ịdị ala karịa Steady ma ọ bụ karịa Priority).
+shop_checkout_hint	Ịkwụ ụgwọ na-abanye gị na Akaụntụ, wee bido ịkwụ ụgwọ (nṅomi ule ma ọ bụ Paddle mgbe e tinyere igodo).
+acct_billing_hint	Atụmatụ kwa afọ — ọnụ ụzọ ịkwụ ụgwọ na-agbakwunye ụtụ isi n’oge ịkwụ ụgwọ. Iji ya na ngwaọrụ gị na-anọgide n’efu ruo mgbe ebighị ebi. Nke ahaziri iche bụ atụmatụ ọnụahịa (ọ nwere ike ịdị ala karịa Steady ma ọ bụ ịdị elu karịa Priority).
 shop_cloud_plans	Atụmatụ igwe ojii
 acct_federated	Ịbanye site n’akaụntụ ọzọ
 acct_err_invalid_email	Tinye adreesị ozi-e ziri ezi.
 acct_err_weak_password	Jiri okwuntughe nwere opekata mpe mkpụrụedemede 6.
-acct_err_wrong_password	Okwuntughe ezighi ezi.
-acct_err_invalid_credential	Ozi-e ma ọ bụ okwuntughe ezighi ezi.
+acct_err_wrong_password	Okwuntughe ezighị ezi.
+acct_err_invalid_credential	Ozi-e ma ọ bụ okwuntughe ezighị ezi.
 acct_err_popup_closed	E mechiri windo ịbanye.
 acct_err_popup_cancelled	A kagburu ịbanye.
 acct_err_unauthorized_domain	A kwadoghị ngalaba a maka Firebase Auth.
-acct_err_method_disabled	A gbanyeghị ụzọ ịbanye ahụ ugbu a.
-acct_err_too_many	Mgbalị adịla ọtụtụ. Nwaa ọzọ emechaa.
+acct_err_method_disabled	A gbanyebeghị ụzọ ịbanye ahụ.
+acct_err_too_many	Ị nwaala ọtụtụ ugboro. Nwaa ọzọ emechaa.
 acct_err_phone_format	Jiri nọmba ekwentị zuru oke ya na koodu mba (dịka +91…).
-acct_err_sms_code	Koodu SMS ahụ ezighi ezi ma ọ bụ agwụla.
+acct_err_sms_code	Koodu SMS ahụ ezighị ezi ma ọ bụ agwụla.
 acct_err_no_account	Ọ dịghị akaụntụ nwere ozi-e ahụ. Gaa n’ihu ka i mepụta otu, ma ọ bụ jiri ụzọ ọzọ.
 acct_err_recent_login	Maka nchekwa, banye ọzọ, wee nwaa mgbanwe a ọzọ.
 acct_err_credential_in_use	Akaụntụ ọzọ na-eji ụzọ ịbanye ahụ ugbu a.
 acct_err_email_in_use	Akaụntụ ọzọ na-eji ozi-e ahụ ugbu a.
 acct_err_already_linked	E jikọlarị ụzọ ahụ na akaụntụ a.
 acct_err_exists_other_method	Akaụntụ dị ugbu a nwere ozi-e a nke na-eji ụzọ ịbanye ọzọ. Jiri ụzọ ahụ banye mbụ, wee jikọọ nke a site na peeji akaụntụ gị.
-acct_err_generic	Ihe mebiri emebi.
+acct_err_generic	Ihe ezighị ezi mere.
 acct_method_password	Ozi-e na okwuntughe
-acct_pw_hint_change	Gbanwee okwuntughe gị. I ji nke dị ugbu a kwado ya.
+acct_pw_hint_change	Gbanwee okwuntughe gị. Ị ga-eji nke dị ugbu a kwado ya.
 acct_pw_hint_add	Tinye okwuntughe ka i nwekwa ike iji ozi-e banye (ọ bara uru ma ọ bụrụ na onye na-enye ọrụ ịbanye adịghị).
 acct_pw_change	Gbanwee okwuntughe
 acct_pw_add	Tinye okwuntughe
 acct_billing_off	A gbanyebeghị ịkwụ ụgwọ na API igwe ojii.
-acct_billing_no_provider	A gbanyeghị ezigbo onye na-enye ọrụ ịkwụ ụgwọ na API igwe ojii (nṅomi naanị dị n’ngwaọrụ gị).
+acct_billing_no_provider	A gbanyeghị ezigbo onye na-enye ọrụ ịkwụ ụgwọ na API igwe ojii (nṅomi naanị dị na ngwaọrụ gị).
 price_quote	Atụmatụ ọnụahịa
 price_per_year	₹{amount}/afọ na-agụnyeghị ụtụ isi
 acct_pay_received	A natara ụgwọ — a na-emelite atụmatụ gị…
 acct_pay_declined	A jụrụ ịkwụ ụgwọ ahụ ma ọ bụ ọ dara
 acct_pay_failed_detail	{detail}. A gbanweghị atụmatụ gị.
-acct_checkout_closed	E mechiri ịkwụ ụgwọ — o nweghị ịkwụ ụgwọ zuru oke. Atụmatụ gị agbanweghị.
+acct_checkout_closed	E mechiri ịkwụ ụgwọ — a kwụghị ụgwọ ọ bụla. Atụmatụ gị agbanweghị.
 acct_checkout_failed	Ịkwụ ụgwọ dara
 acct_pay_with	Kwụọ ụgwọ site na {provider}
 acct_plan_until	{plan} · ruo {date}
@@ -207,7 +207,7 @@ acct_relogin_retry	Pụọ ma banye ọzọ, wee nwaa ọzọ.
 acct_pw_mismatch	Okwuntughe ọhụrụ na nkwenye adabaghị.
 acct_pw_updated	E melitere okwuntughe.
 acct_enter_email_pw	Tinye ozi-e ị ga-eji maka ịbanye na okwuntughe.
-acct_pw_added	Etinyere okwuntughe. Ị nwekwara ike iji ozi-e banye ugbu a.
+acct_pw_added	E tinyere okwuntughe. Ị nwekwara ike iji ozi-e banye ugbu a.
 acct_method_linked	E jikọrọ ụzọ ịbanye.
 acct_phone_linked	E jikọrọ ekwentị na akaụntụ a.
 acct_verify_sent	E zigara ozi-e nkwenye — lee igbe ozi gị.
@@ -219,12 +219,12 @@ shop_included	Agụnyere
 shop_in_cart	{plan} dị na nkata gị.
 shop_remove	Wepụ
 shop_cart_is_empty	Nkata tọgbọ chakoo.
-shop_prices_unpublished	E bipụtabeghị ọnụahịa ịzụ-n’onwe maka ngwaahịa a. Rịọ maka atụmatụ ọnụahịa ahaziri iche ma ọ bụ lọghachi emechaa.
+shop_prices_unpublished	E bipụtabeghị ọnụahịa maka ịzụta ngwaahịa a n’onwe gị. Rịọ maka atụmatụ ọnụahịa ahaziri iche ma ọ bụ lọghachi emechaa.
 shop_cart_cleared	E hichapụrụ nkata.
 plan_free_title	N’efu ruo mgbe ebighị ebi
-plan_free_blurb	Ngwaahịa zuru oke n’ngwaọrụ gị. Enweghị ụgwọ igwe ojii.
+plan_free_blurb	Ngwaahịa zuru oke na ngwaọrụ gị. Enweghị ụgwọ igwe ojii.
 plan_steady_blurb	Igwe ojii dị ndụ · 10 GB · ọsọ nnyefe data dị ala
 plan_swift_blurb	Igwe ojii dị ndụ · 25 GB · ọsọ nnyefe data etiti
-plan_priority_blurb	Igwe ojii dị ndụ · 50 GB · ọsọ nnyefe data kachasị elu
+plan_priority_blurb	Igwe ojii dị ndụ · 50 GB · ọsọ nnyefe data nkịtị kachasị elu
 plan_custom_title	Ahaziri iche
-plan_custom_blurb	Oke na ọsọ nnyefe data e kwekọrịtara. Atụmatụ ọnụahịa nwere ike ịdị ala karịa Steady ma ọ bụ karịa Priority.
+plan_custom_blurb	Oke na ọsọ nnyefe data e kwekọrịtara. Atụmatụ ọnụahịa nwere ike ịdị ala karịa Steady ma ọ bụ ịdị elu karịa Priority.

@@ -1,19 +1,19 @@
 # Lao — ລາວ (lo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ຕົວຢ່າງ
 download_free	ດາວ​ໂຫຼ​ດຟຣີ
-whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ
+whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ການ​ສາທິດ
 free_on_android_windows_and	ຟຣີ​ເທິງ Android, Windows ແລະ Linux
 the_grocery_counter	ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ
-busy_counter	ເຄົາ​ເຕີ​ທີ່​ວຸ້ນວາຍ
+busy_counter	ເຄົາ​ເຕີ​ທີ່​ລູກຄ້າ​ແໜ້ນ
 kirano_the_grocery_counter	KIRANO · ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ເຄື່ອງຍ່ອຍ
-busy_counter_no_internet_still	ເຄົາ​ເຕີ​ວຸ້ນວາຍ ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ ຍັງ​ອອກ​ໃບ​ບິນ​ໄດ້
-sell_khata_stock_and_the	ຂາຍ ປຶ້ມ​ໜີ້ ສະ​ຕັອກ ແລະ ປຶ້ມ​ມື້ — ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ ບັນຊີ · ຂາຍ · ຊື້ · ລາຍການ ບໍ່ມີ​ຫ້ອງ​ອາຫານ ບໍ່ມີ​ເຮືອນຄົວ ບໍ່ມີ​ໂຕະ
+busy_counter_no_internet_still	ລູກຄ້າ​ແໜ້ນ​ເຄົາ​ເຕີ ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ ຍັງ​ອອກ​ໃບ​ບິນ​ໄດ້
+sell_khata_stock_and_the	ຂາຍ ປຶ້ມ​ໜີ້ ສະ​ຕັອກ ແລະ ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ — ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ​ເອງ ບັນຊີ · ຂາຍ · ຊື້ · ລາຍການ ບໍ່ມີ​ຫ້ອງ​ອາຫານ ບໍ່ມີ​ເຮືອນຄົວ ບໍ່ມີ​ໂຕະ
 tap_the_bill_to_walk	ແຕະ​ໃບ​ບິນ​ເພື່ອ​ເບິ່ງ​ການຂາຍໜ້າ​ເຄົາ​ເຕີ
 cash_memo	ໃບຮັບ​ເງິນສົດ
 ready	ພ້ອມ
-total	ທັງໝົດ
+total	ຍອດ​ລວມ
 tap_to_add_the_first	ແຕະ​ເພື່ອ​ເພີ່ມ​ສິນຄ້າ​ຊິ້ນ​ທຳອິດ
-example_grocery_lines_not_a	ລາຍການ​ເຄື່ອງຍ່ອຍ​ຕົວຢ່າງ ບໍ່​ແມ່ນ​ລິ້ນ​ຊັກ​ເງິນ​ແທ້ Kirano ໃຊ້​ເສັ້ນທາງ​ດຽວກັນ: ຂາຍ → ຊຳລະ → ປຶ້ມ​ມື້
+example_grocery_lines_not_a	ລາຍການ​ເຄື່ອງຍ່ອຍ​ຕົວຢ່າງ ບໍ່​ແມ່ນ​ເຄື່ອງ​ຄິດ​ເງິນ​ຈິງ Kirano ໃຊ້​ເສັ້ນທາງ​ດຽວກັນ: ຂາຍ → ຊຳລະ → ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 n_2_counter_sell	2 · ຂາຍໜ້າ​ເຄົາ​ເຕີ
 item_quantity_pay_three_taps	ສິນຄ້າ ຈຳນວນ ຈ່າຍເງິນ — ແຕະ​ສາມ​ເທື່ອ
 upi_qr_ready	UPI QR ພ້ອມ
@@ -23,20 +23,20 @@ type_atta_at5_or_an	ພິມ atta, AT5 ຫຼື ຊື່​ເອີ້ນ​
 kg_g_pc_l_ml	ກິໂລ ກຣາມ ອັນ ລິດ ມລ.
 quantity_in_the_unit_the	ຈຳນວນ​ຕາມ​ຫົວໜ່ວຍ​ທີ່​ຫໍ່​ໃຊ້ ລາຄາ​ຄິດ​ຕາມ
 cash_upi_or_split	ເງິນສົດ UPI ຫຼື ແບ່ງ​ຈ່າຍ
-settle_on_the_counter_the	ຊຳລະ​ທີ່​ເຄົາ​ເຕີ ປຶ້ມ​ມື້​ບັນທຶກ​ວິທີ​ຈ່າຍ
+settle_on_the_counter_the	ຊຳລະ​ທີ່​ເຄົາ​ເຕີ ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ​ບັນທຶກ​ວິທີ​ຈ່າຍ
 n_3_khata	3 · ປຶ້ມ​ໜີ້
 credit_without_a_crm_put	ຂາຍ​ຕິດ​ໜີ້​ໂດຍ​ບໍ່​ຕ້ອງ​ມີ CRM — ລົງ​ໄວ້​ໃນ​ປຶ້ມ​ໜີ້​ຂອງ​ລູກຄ້າ
 ramesh_customer	ຣາ​ເມັດ · ລູກຄ້າ
 due_from_earlier	ຍອດ​ຄ້າງ​ເດີມ
 today_s_sale_due	+ ຍອດ​ຂາຍ​ມື້ນີ້ (ຕິດ​ໜີ້)
 balance	ຍອດ​ຄົງເຫຼືອ
-settle_later_in_parties_part	ຊຳລະ​ພາຍຫຼັງ​ໃນ​ຝ່າຍ — ຈ່າຍເງິນ​ສົດ​ບາງ​ສ່ວນ UPI ບາງ​ສ່ວນ ແລ້ວ​ສະສາງ​ລາຍການ
+settle_later_in_parties_part	ຊຳລະ​ພາຍຫຼັງ​ໃນ​ໜ້າ​ຄູ່​ຄ້າ — ຈ່າຍເງິນ​ສົດ​ບາງ​ສ່ວນ UPI ບາງ​ສ່ວນ ແລ້ວ​ສະສາງ​ລາຍການ
 due_on_the_bill	ຍອດ​ຄ້າງ​ໃນ​ໃບ​ບິນ
 what_s_left_goes_on	ສ່ວນ​ທີ່​ເຫຼືອ​ໄປ​ຢູ່ໃນ​ປຶ້ມ​ໜີ້​ຂອງ​ລູກຄ້າ — ບໍ່​ຕ້ອງ​ໃຊ້​ແອັບ​ບັນຊີ​ແຍກ
-one_party_two_roles	ຝ່າຍ​ດຽວ ສອງ​ບົດບາດ
-customer_ar_and_supplier_ap	ລູກໜີ້​ລູກຄ້າ ແລະ ເຈົ້າໜີ້​ຜູ້​ສະໜອງ ໃຊ້​ປຶ້ມ​ຝ່າຍ​ເຫຼັ້ມ​ດຽວກັນ
+one_party_two_roles	ຄູ່​ຄ້າ​ດຽວ ສອງ​ບົດບາດ
+customer_ar_and_supplier_ap	ລູກໜີ້​ລູກຄ້າ ແລະ ເຈົ້າໜີ້​ຜູ້​ສະໜອງ ໃຊ້​ປຶ້ມ​ຄູ່​ຄ້າ​ເຫຼັ້ມ​ດຽວກັນ
 who_when_how_much	ໃຜ ເມື່ອໃດ ເທົ່າໃດ
-every_credit_and_settlement_stays	ທຸກ​ລາຍການ​ໜີ້ ແລະ ການ​ຊຳລະ​ຢູ່ໃນ​ປຶ້ມ​ມື້
+every_credit_and_settlement_stays	ທຸກ​ລາຍການ​ໜີ້ ແລະ ການ​ຊຳລະ​ຢູ່ໃນ​ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 n_4_buy_stock	4 · ຊື້ ແລະ ສະ​ຕັອກ
 buy_from_the_wholesaler_stock	ຊື້​ຈາກ​ຮ້ານ​ຂາຍສົ່ງ — ສະ​ຕັອກ ແລະ ຍອດ​ທີ່​ຕ້ອງ​ຈ່າຍ​ອັບ​ເດດ​ໄປ​ພ້ອມກັນ
 purchase_sharma_wholesale	ຊື້ · ຊາມາ​ຂາຍສົ່ງ
@@ -46,10 +46,10 @@ resale_stock_not_kitchen_raw	ສະ​ຕັອກ​ສຳລັບ​ຂາຍ
 buy_creates_stock	ການຊື້​ສ້າງ​ສະ​ຕັອກ
 receive_the_goods_the_catalogue	ຮັບ​ສິນຄ້າເຂົ້າ ຈຳນວນ​ໃນ​ແຄັດ​ຕາ​ລັອກ​ກໍ​ເພີ່ມຂຶ້ນ
 who_we_owe	ພວກ​ເຮົາ​ຄ້າງ​ຈ່າຍ​ໃຜ
-supplier_balance_sits_on_the	ຍອດ​ຂອງ​ຜູ້​ສະໜອງ​ຢູ່ໃນ​ຝ່າຍ​ດຽວ​ກັບ​ປຶ້ມ​ໜີ້​ລູກຄ້າ
+supplier_balance_sits_on_the	ຍອດ​ຂອງ​ຜູ້​ສະໜອງ​ຢູ່ໃນ​ບັນຊີ​ຄູ່​ຄ້າ​ດຽວກັນ​ກັບ​ປຶ້ມ​ໜີ້​ລູກຄ້າ
 low_stock_at_a_glance	ເຫັນ​ສະ​ຕັອກ​ໃກ້​ໝົດ​ໃນ​ພິບຕາ
 inventory_shows_what_is_running	ສະ​ຕັອກ​ບອກວ່າ​ຫຍັງ​ກຳລັງຈະ​ໝົດ​ກ່ອນ​ຊ່ວງ​ຄົນ​ຫຼາຍ​ຮອບ​ໜ້າ
-n_5_day_book	5 · ປຶ້ມ​ມື້
+n_5_day_book	5 · ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 cash_vs_upi_counted_and	ເງິນສົດ​ກັບ UPI ນັບ​ແຍກ​ກັນ — ແລະ ລະບຸ​ສ່ວນ​ຕ່າງ​ຊັດເຈນ
 today_s_drawer	ລິ້ນ​ຊັກ​ມື້ນີ້
 opening_float	ເງິນທອນ​ຕັ້ງຕົ້ນ
@@ -70,15 +70,15 @@ n_6_internet_down	6 · ອິນ​ເຕີ​ເນັດ​ລົ້ມ?
 the_internet_drops_the_counter	ອິນ​ເຕີ​ເນັດ​ຫຼຸດ ເຄົາ​ເຕີ​ຍັງ​ຂາຍ​ຕໍ່
 router_no_internet	ເຣົາ​ເຕີ: ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ
 main_counter_selling_and_settling	ເຄົາ​ເຕີ​ຫຼັກ: ຂາຍ ແລະ ຮັບ​ຊຳລະ​ຢູ່
-second_till_joined_on_your	ລິ້ນ​ຊັກ​ເງິນ​ທີ​ສອງ: ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ຮ້ານ
+second_till_joined_on_your	ເຄື່ອງ​ຄິດ​ເງິນ​ເຄື່ອງ​ທີ​ສອງ: ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ຮ້ານ
 books_live_on_the_shop	ບັນຊີ​ຢູ່​ເທິງ​ອຸປະກອນ​ຂອງ​ຮ້ານ
 when_the_internet_drops_mid	ເມື່ອ​ອິນ​ເຕີ​ເນັດ​ຫຼຸດ​ກາງ​ຊ່ວງ​ຄົນ​ຫຼາຍ ບໍ່ມີ​ຫຍັງ​ທີ່​ເຄົາ​ເຕີ​ຕ້ອງ​ລໍຖ້າ
 one_server_lan_clients	ເຊີບເວີ​ດຽວ ໄຄລ​ເອັນ LAN
-extra_tills_share_the_same	ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມເຕີມ​ໃຊ້​ບັນຊີ​ຊຸດ​ດຽວກັນ​ຜ່ານ​ເຄືອ​ຂ່າຍ​ຂອງ​ຮ້ານ
+extra_tills_share_the_same	ເຄື່ອງ​ຄິດ​ເງິນ​ເພີ່ມເຕີມ​ໃຊ້​ບັນຊີ​ຊຸດ​ດຽວກັນ​ຜ່ານ​ເຄືອ​ຂ່າຍ​ຂອງ​ຮ້ານ
 n_7_free_forever_locally	7 · ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ເຄື່ອງ
 free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
 no_per_bill_charge	ບໍ່​ຄິດ​ເງິນ​ຕໍ່​ໃບ​ບິນ
-no_fee_per_sale_item	ການ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ບໍ່​ຄິດ​ຄ່າ​ທຳນຽມ​ຕໍ່​ການຂາຍ ສິນຄ້າ ລິ້ນ​ຊັກ​ເງິນ ຫຼື PIN ພະນັກງານ
+no_fee_per_sale_item	ການ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ບໍ່​ຄິດ​ຄ່າ​ທຳນຽມ​ຕໍ່​ການຂາຍ ສິນຄ້າ ເຄື່ອງ​ຄິດ​ເງິນ ຫຼື PIN ພະນັກງານ
 android_windows_linux	Android, Windows, Linux
 the_same_kirano_on_the	Kirano ຕົວ​ດຽວກັນ​ເທິງ​ໂທລະສັບ​ຫຼັງ​ເຄົາ​ເຕີ ແລະ ເຄື່ອງ​ຄິດ​ເງິນ​ຕັ້ງ​ໂຕະ
 optional_kumkaj_cloud	Kumkaj Cloud ແບບ​ເລືອກ​ໃຊ້
@@ -94,8 +94,8 @@ account	ບັນຊີ
 chapter_counter_sell	ຂາຍໜ້າ​ເຄົາ​ເຕີ
 chapter_khata	ປຶ້ມ​ໜີ້
 chapter_buy_stock	ຊື້ ແລະ ສະ​ຕັອກ
-chapter_day_book	ປຶ້ມ​ມື້
-chapter_extra_till	ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມ
+chapter_day_book	ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
+chapter_extra_till	ເຄື່ອງ​ຄິດ​ເງິນ​ເພີ່ມ
 chapter_offline	ອອບ​ລາຍ
 chapter_start	ເລີ່ມ
 bill_selling	ກຳລັງ​ຂາຍ
@@ -104,11 +104,11 @@ bill_paid	ຈ່າຍ​ແລ້ວ
 bill_next_item	ແຕະ​ເພື່ອ​ເພີ່ມ​ສິນຄ້າ​ຊິ້ນ​ຕໍ່ໄປ
 bill_settle_hint	ແຕະ​ເພື່ອ​ຊຳລະ — ເງິນສົດ ຫຼື UPI
 bill_cash_return	ເງິນສົດ ₹ 600 · ທອນ ₹ 15
-bill_paid_line	ຈ່າຍ​ແລ້ວ · ອັບ​ເດດ​ປຶ້ມ​ມື້​ແລ້ວ
-lan_eyebrow	6 · ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມ
-lan_title	ອີກ​ໜຶ່ງ​ລິ້ນ​ຊັກ​ເງິນ​ເທິງ Wi-Fi ຂອງ​ຮ້ານ
-cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ​ໄດ້​ທາງ WhatsApp
-cta_whatsapp_soon	ຊ່ອງທາງ​ເບິ່ງ​ຕົວຢ່າງ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
+bill_paid_line	ຈ່າຍ​ແລ້ວ · ອັບ​ເດດ​ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ​ແລ້ວ
+lan_eyebrow	6 · ເຄື່ອງ​ຄິດ​ເງິນ​ເພີ່ມ
+lan_title	ເຄື່ອງ​ຄິດ​ເງິນ​ອີກ​ເຄື່ອງເທິງ Wi-Fi ຂອງ​ຮ້ານ
+cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ການ​ສາທິດ​ໄດ້​ທາງ WhatsApp
+cta_whatsapp_soon	ຊ່ອງທາງ​ຂໍ​ເບິ່ງ​ການ​ສາທິດ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
 acct_page_title	ບັນຊີ — Kirano
 acct_lede	ບັນຊີ​ດຽວ​ສຳ​ລັບ​ເວັບ​ໄຊ ແລະ ແອັບ — ຟອມ​ດຽວກັນ​ບໍ່ວ່າ​ທ່ານ​ຈະ​ເປັນ​ຜູ້​ໃຊ້​ໃໝ່ ຫຼື ກັບມາ​ໃຊ້
 acct_email	ອີ​ເມວ
@@ -153,9 +153,9 @@ shop_cart_empty_hint	ກະຕ່າ​ຂອງ​ທ່ານ​ຫວ່າ�
 shop_checkout	ຊຳລະ​ເງິນ
 shop_clear	ລ້າງ
 shop_checkout_hint	ການ​ຊຳລະ​ເງິນ​ຈະ​ພາ​ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ໃນ​ໜ້າ​ບັນຊີ​ກ່ອນ ແລ້ວ​ຈຶ່ງ​ເລີ່ມ​ຈ່າຍເງິນ (ຈຳລອງ​ໃນ​ສະພາບ​ແວດລ້ອມ​ທົດສອບ ຫຼື Paddle ເມື່ອ​ຕັ້ງ​ຄ່າ​ຄີ​ແລ້ວ)
-acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ເກດ​ເວ​ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
+acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ລະບົບ​ຊຳລະ​ເງິນ​ຈະ​ຄິດ​ພາສີ​ຕອນ​ຈ່າຍເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
 shop_cloud_plans	ແພັກ​ເກດຄລາວ
-acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ແບບ​ລວມ​ສູນ
+acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ຜ່ານ​ຜູ້​ໃຫ້​ບໍລິການ​ພາຍນອກ
 acct_err_invalid_email	ປ້ອນ​ອີ​ເມວ​ທີ່​ຖືກຕ້ອງ
 acct_err_weak_password	ໃຊ້​ລະຫັດ​ຜ່ານ​ຢ່າງ​ໜ້ອຍ 6 ຕົວ​ອັກສອນ
 acct_err_wrong_password	ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ

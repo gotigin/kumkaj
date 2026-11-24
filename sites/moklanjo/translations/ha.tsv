@@ -35,7 +35,7 @@ weight_on_the_scale	Nauyi a kan ma’auni
 chargeable_weight	NAUYIN DA ZA A BIYA
 the_box_s_size_sets	Girman akwatin ne ke ƙayyade kuɗin.
 higher_of_the_two_rounded	Mafi girma cikin biyun, a tara shi zuwa 0.5 kg na gaba.
-in_the_app_the_divisor	A cikin manhajar, mai raba, matakin tarawa da ma’aunanku (cm ko inci, kg ko lb) shago ne ke saita su. Maɓallin Ƙasashen waje yana sauya ÷6000 don rajista ɗaya ba tare da taɓa Saituna ba.
+in_the_app_the_divisor	A cikin manhajar, mai raba, matakin tarawa da ma’aunanku (cm ko inci, kg ko lb) shago ne ke saita su. Maɓallin Ƙasashen waje yana sauyawa zuwa ÷6000 don rajista ɗaya ba tare da taɓa Saituna ba.
 n_3_price_it	3 · SA FARASHI
 your_rate_cards_your_party	Jadawalin farashinku, farashin abokan hulɗarku — da ribarku a kowace takardar aikawa.
 rate_card	Jadawalin farashi
@@ -48,7 +48,7 @@ metro_air	Babban birni · Jirgin sama
 zone_service_weight_slab	Yanki × sabis × matakin nauyi
 first_slab_and_each_extra	Matakin farko da kowane ƙarin mataki, ga kowane yanki da sabis.
 a_consignor_s_own_card	Jadawalin mai aikawa na kansa
-regular_senders_get_their_rates	Masu aikawa na yau da kullum suna samun farashinsu; jadawalin asali yana rufe kowa da kowa.
+regular_senders_get_their_rates	Masu aikawa na yau da kullum suna samun farashinsu; jadawalin asali yana aiki ga sauran masu aikawa.
 margin_at_the_desk	Riba a teburin ciniki
 your_sell_price_against_the	Farashin sayarwarku idan aka kwatanta da farashin mai ɗaukar kaya, a kowace takardar aikawa.
 n_4_label_it	4 · SA LAKABI
@@ -75,7 +75,7 @@ booked_with_carrier_out_for	An yi rajista → Hannun mai ɗaukar kaya → Ana ka
 failed	Ba a yi nasara ba
 reason_out_again_or_return	→ dalili → sake fita, ko mayarwa ga mai aikawa.
 impossible_moves_refused	Ana ƙin motsin da ba zai yiwu ba
-delivered_returned_and_cancelled	An isar, an mayar da an soke na ƙarshe ne.
+delivered_returned_and_cancelled	“An isar”, “An mayar” da “An soke” matsayai ne na ƙarshe.
 proof_of_delivery	Shaidar isarwa
 a_photo_and_the_receiver	Hoto da sa hannun mai karɓa a takardar aikawa.
 failed_deliveries	Isarwar da ba ta yi nasara ba

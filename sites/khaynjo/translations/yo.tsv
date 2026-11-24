@@ -45,7 +45,7 @@ t4_occupied	T4 · Wọ́n jókòó
 note_less_salt	Àkíyèsí: iyọ̀ díẹ̀
 one_ticket_per_kitchen_station	Tíkẹ́ẹ̀tì kan fún ẹ̀ka ilé ìdáná kọ̀ọ̀kan
 send_the_order_and_each	Fi ìbéèrè oúnjẹ ránṣẹ́, ẹ̀ka kọ̀ọ̀kan yóò sì gba oúnjẹ tirẹ̀ nìkan — pẹ̀lú nọ́ńbà ojoojúmọ́, tábìlì, olùdúró àti gbogbo àkíyèsí. Kò sí iye owó rárá: ilé ìdáná ń se oúnjẹ, kántà ń gba owó.
-prints_itself	Ó ń tẹ ara rẹ̀ jáde
+prints_itself	Ó ń tẹ̀ jáde fúnra rẹ̀
 send_and_the_ticket_prints	Fi ránṣẹ́, tíkẹ́ẹ̀tì náà yóò sì jáde ní ẹ̀ka tí ó tọ́ — kò sí ẹni tí yóò gbé e lọ.
 example_ticket	Àpẹẹrẹ tíkẹ́ẹ̀tì
 the_kitchen_sees_what_to	Ilé ìdáná ń rí ohun tí wọ́n máa sè báyìí
@@ -73,7 +73,7 @@ expected_in_the_drawer	Èyí tí a retí nínú àpótí owó
 counted	A ti kà á
 short	Àìtó
 everything_else_the_floor_needs	GBOGBO OHUN MÌÍRÀN TÍ ILÉ ÌJẸUN NÍLÒ
-built_for_a_real_service	A kọ́ ọ fún iṣẹ́ gidi.
+built_for_a_real_service	A ṣe é fún iṣẹ́ gidi.
 the_changes_that_happen_every	Àwọn àyípadà tí ń ṣẹlẹ̀ ní gbogbo oúnjẹ ọ̀sán — a ń ṣe wọ́n ní gbangba, pẹ̀lú ẹni, ìgbà àti ìdí tí a pa mọ́.
 move_and_merge_tables	Gbígbé àti ìsopọ̀ tábìlì
 guests_change_tables_the_order	Àwọn àlejò ń yí tábìlì padà — ìbéèrè oúnjẹ àti ìṣẹ́jú rẹ̀ ń bá wọn lọ. Tábìlì méjì, ìwé-owó kan.
@@ -82,7 +82,7 @@ with_a_reason_cooked_or	Pẹ̀lú ìdí, bóyá a ti sè é tàbí a kò tí ì 
 complimentary_dishes	Oúnjẹ ọ̀fẹ́
 a_comp_stays_on_the	Oúnjẹ ọ̀fẹ́ wà lórí ìwé-owó ní ₹ 0, pẹ̀lú ìdí àti ẹni tí ó fọwọ́ sí i.
 rights_per_person	Ẹ̀tọ́ fún ẹnìkọ̀ọ̀kan
-each_action_is_allowed_allowed	A gba ìgbésẹ̀ kọ̀ọ̀kan láàyè, a gbà á láàyè pẹ̀lú PIN alákòóso, tàbí a kò gbà á láàyè — ẹnì kọ̀ọ̀kan.
+each_action_is_allowed_allowed	A gba ìgbésẹ̀ kọ̀ọ̀kan láàyè, a gbà á láàyè pẹ̀lú PIN alákòóso, tàbí a kò gbà á láàyè — fún ẹnìkọ̀ọ̀kan.
 your_menu_your_words	Àkójọ oúnjẹ yín, ọ̀rọ̀ yín
 search_by_name_or_short	Ṣàwárí nípa orúkọ tàbí kóòdù kúkúrú, pẹ̀lú orúkọ mìíràn ní èdè mìíràn — “ptk” ń rí Paneer tikka.
 area_prices_and_happy_hour	Iye owó agbègbè àti wákàtí ẹ̀dínwó
@@ -98,7 +98,7 @@ starter_menu	Àkójọ oúnjẹ ìbẹ̀rẹ̀
 khaynjo_starter_menu	Àkójọ oúnjẹ ìbẹ̀rẹ̀ Khaynjo
 world_cuisines_japanese_mexican	Oúnjẹ àgbáyé — ti Japan, Mexico, Italy, India, Thailand àti àwọn mìíràn — oúnjẹ kọ̀ọ̀kan pẹ̀lú àwòrán rẹ̀.
 n_14_dishes_11_categories	Oúnjẹ 14 · ẹ̀ka 11
-cafe_starter	Ìbẹ̀rẹ̀ ilé kọfí
+cafe_starter	Àkójọ oúnjẹ ìbẹ̀rẹ̀ ilé kọfí
 tea_coffee_cold_drinks_bakery	Tíì, kọfí, ohun mímu tútù, búrẹ́dì àti ìpanu — ó ṣetán fún ilé kọfí oní kántà.
 n_22_dishes_4_categories	Oúnjẹ 22 · ẹ̀ka 4
 photo_shelf	Àkójọ àwòrán
@@ -149,11 +149,11 @@ free_on_google_play_want	Ọ̀fẹ́ lórí Google Play. Ṣé ẹ fẹ́ ká fi
 privacy	Àṣírí
 terms	Àwọn òfin
 cancellation	Ìfagilé
-photo_credits	Ẹ̀tọ́ àwòrán
+photo_credits	Orísun àwọn àwòrán
 cloud_shop	Ṣọ́ọ̀bù ìkùukùu
 account	Àkáǹtì
 cta_installers_note	A ó gbé àwọn fáìlì ìfisílẹ̀ sí ibí ní kété tí ọ̀kọ̀ọ̀kan bá yege ìfisílẹ̀ lórí ẹ̀rọ tuntun. Títí di ìgbà náà, béèrè àfihàn lórí WhatsApp.
-cta_whatsapp_soon	Ìlà àfihàn WhatsApp yóò ṣí láìpẹ́. Ọ̀rọ̀ yín yóò kà pé: “{message}”.
+cta_whatsapp_soon	Nọ́ńbà WhatsApp fún àfihàn yóò bẹ̀rẹ̀ iṣẹ́ láìpẹ́. Ọ̀rọ̀ yín yóò jẹ́: “{message}”.
 shelf_no_match	Kò sí orílẹ̀-èdè tàbí oúnjẹ tí ó bá ìwádìí yẹn mu.
 shelf_search_note	Ìwádìí ń dá ìwọ́de dúró; pa á rẹ́ láti tẹ̀síwájú, tàbí kí ó wà ní ìdádúró bí ẹ ṣe fi sílẹ̀.
 floor_meta_min	ìṣẹ́jú {min}
@@ -269,7 +269,7 @@ shop_included	Ó wà nínú rẹ̀
 shop_in_cart	{plan} wà nínú agbọ̀n yín.
 shop_remove	Yọ kúrò
 shop_cart_is_empty	Agbọ̀n ṣófo.
-shop_prices_unpublished	A kò tí ì gbé iye owó ìrara-ẹni jáde fún ọjà yìí. Ẹ béèrè ìdíyelé àdáni tàbí kí ẹ padà wá nígbà mìíràn.
+shop_prices_unpublished	A kò tí ì gbé iye owó tí ẹ lè fi rà á fúnra yín jáde fún ọjà yìí. Ẹ béèrè ìdíyelé àdáni tàbí kí ẹ padà wá nígbà mìíràn.
 shop_cart_cleared	A ti pa agbọ̀n rẹ́.
 plan_free_title	Ọ̀fẹ́ títí láé
 plan_free_blurb	Ọjà pípé lórí ẹ̀rọ yín. Kò sí owó ìkùukùu.

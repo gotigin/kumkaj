@@ -11,9 +11,9 @@ sell_khata_stock_and_the	විකිණීම, ණය පොත, තොගය �
 tap_the_bill_to_walk	කවුන්ටර විකුණුමක් බැලීමට බිල්පත තට්ටු කරන්න
 cash_memo	මුදල් බිල්පත
 ready	සූදානම්
-total	මුළු
+total	එකතුව
 tap_to_add_the_first	පළමු අයිතමය එක් කිරීමට තට්ටු කරන්න
-example_grocery_lines_not_a	උදාහරණ සිල්ලර පේළි, සජීවී මුදල් ලාච්චුවක් නොවේ. Kirano එකම මාර්ගය අනුගමනය කරයි: විකිණීම → පියවීම → දින ලෙජරය.
+example_grocery_lines_not_a	උදාහරණ සිල්ලර පේළි, සජීවී බිල් කවුන්ටරයක් නොවේ. Kirano එකම මාර්ගය අනුගමනය කරයි: විකිණීම → පියවීම → දින ලෙජරය.
 n_2_counter_sell	2 · කවුන්ටර විකිණීම
 item_quantity_pay_three_taps	අයිතමය, ප්‍රමාණය, ගෙවීම — තට්ටු තුනක්.
 upi_qr_ready	UPI QR සූදානම්
@@ -30,11 +30,11 @@ ramesh_customer	රමේෂ් · පාරිභෝගිකයා
 due_from_earlier	පෙර හිඟ මුදල
 today_s_sale_due	+ අද විකුණුම (හිඟ)
 balance	ශේෂය
-settle_later_in_parties_part	පසුව පාර්ශව තුළ පියවන්න — කොටසක් මුදල්, කොටසක් UPI, පේළිය නිරවුල් කරන්න.
+settle_later_in_parties_part	පසුව පාර්ශ්ව තුළ පියවන්න — කොටසක් මුදල්, කොටසක් UPI, පේළිය නිරවුල් කරන්න.
 due_on_the_bill	බිල්පතේ හිඟ මුදල
 what_s_left_goes_on	ඉතිරි මුදල පාරිභෝගිකයාගේ ණය පොතට යයි — වෙනම ලෙජර යෙදුමක් අවශ්‍ය නැත.
-one_party_two_roles	එක් පාර්ශවයක්, භූමිකා දෙකක්
-customer_ar_and_supplier_ap	පාරිභෝගික ලැබිය යුතු මුදල් සහ සැපයුම්කරු ගෙවිය යුතු මුදල් එකම පාර්ශව පොත බෙදා ගනී.
+one_party_two_roles	එක් පාර්ශ්වයක්, භූමිකා දෙකක්
+customer_ar_and_supplier_ap	පාරිභෝගික ලැබිය යුතු මුදල් සහ සැපයුම්කරු ගෙවිය යුතු මුදල් එකම පාර්ශ්ව පොත බෙදා ගනී.
 who_when_how_much	කවුද, කවදාද, කීයද
 every_credit_and_settlement_stays	සෑම ණයක්ම සහ පියවීමක්ම දින ලෙජරයේ රැඳේ.
 n_4_buy_stock	4 · මිලදී ගැනීම සහ තොගය
@@ -46,7 +46,7 @@ resale_stock_not_kitchen_raw	නැවත විකිණීමේ තොගය 
 buy_creates_stock	මිලදී ගැනීම තොගය සාදයි
 receive_the_goods_the_catalogue	භාණ්ඩ ලබා ගන්න; නාමාවලියේ ප්‍රමාණය ඉහළ යයි.
 who_we_owe	අප ණය වී සිටින්නේ කාටද
-supplier_balance_sits_on_the	සැපයුම්කරුගේ ශේෂය පාරිභෝගික ණය පොත ඇති එකම පාර්ශවයේ රැඳේ.
+supplier_balance_sits_on_the	සැපයුම්කරුගේ ශේෂය පාරිභෝගික ණය පොත ඇති එකම පාර්ශ්වයේ රැඳේ.
 low_stock_at_a_glance	අඩු තොගය එක බැල්මකින්
 inventory_shows_what_is_running	ඊළඟ තදබදයට පෙර අවසන් වෙමින් පවතින්නේ කුමක්දැයි තොග ලැයිස්තුව පෙන්වයි.
 n_5_day_book	5 · දින ලෙජරය
@@ -70,24 +70,24 @@ n_6_internet_down	6 · අන්තර්ජාලය නැද්ද?
 the_internet_drops_the_counter	අන්තර්ජාලය නැති වේ. කවුන්ටරය දිගටම විකුණයි.
 router_no_internet	රවුටරය: අන්තර්ජාලය නැත
 main_counter_selling_and_settling	ප්‍රධාන කවුන්ටරය: විකුණමින් සහ පියවමින්
-second_till_joined_on_your	දෙවන මුදල් ලාච්චුව: ඔබේම Wi-Fi මත සම්බන්ධයි
+second_till_joined_on_your	දෙවන බිල් කවුන්ටරය: ඔබේම Wi-Fi මත සම්බන්ධයි
 books_live_on_the_shop	ගිණුම් පොත් සාප්පුවේ උපාංගවල ඇත
 when_the_internet_drops_mid	තදබදය මැද අන්තර්ජාලය නැති වූ විට, කවුන්ටරයේ කිසිවක් ඒ සඳහා බලා නොසිටියි.
-one_server_lan_clients	එක් සේවාදායකයක්, LAN සේවාලාභීන්
-extra_tills_share_the_same	අමතර මුදල් ලාච්චු සාප්පු ජාලය හරහා එකම ගිණුම් පොත් බෙදා ගනී.
+one_server_lan_clients	එක් සේවාදායකයක්, LAN සේවාලාභී උපාංග
+extra_tills_share_the_same	අමතර බිල් කවුන්ටර සාප්පු ජාලය හරහා එකම ගිණුම් පොත් බෙදා ගනී.
 n_7_free_forever_locally	7 · දේශීයව සදහටම නොමිලේ
 free_forever_on_your_devices	ඔබේ උපාංගවල සදහටම නොමිලේ.
 no_per_bill_charge	බිල්පතකට ගාස්තුවක් නැත
-no_fee_per_sale_item	දේශීය ස්ථාපනයේ විකුණුමකට, අයිතමයකට, ලාච්චුවකට හෝ සේවක PIN එකකට ගාස්තුවක් නැත.
+no_fee_per_sale_item	දේශීය ස්ථාපනයේ විකුණුමකට, අයිතමයකට, බිල් කවුන්ටරයකට හෝ සේවක PIN එකකට ගාස්තුවක් නැත.
 android_windows_linux	Android, Windows, Linux
-the_same_kirano_on_the	කවුන්ටරය පිටුපස දුරකථනයේත් ඩෙස්ක්ටොප් ලාච්චුවේත් එකම Kirano.
+the_same_kirano_on_the	කවුන්ටරය පිටුපස දුරකථනයේත් ඩෙස්ක්ටොප් බිල් කවුන්ටරයේත් එකම Kirano.
 optional_kumkaj_cloud	විකල්ප Kumkaj Cloud
 yearly_steady_6k_swift_12k	වාර්ෂිකව Steady ₹6k · Swift ₹12k · Priority ₹24k බදු රහිතව (හෝ අභිරුචි මිල ගණනක්). /shop හි මිලදී ගන්න.
 n_8_start	8 · ආරම්භය
 put_kirano_on_the_counter	Kirano කවුන්ටරයට දමන්න.
 download_free_or_whatsapp_for	නොමිලේ බාගත කරන්න, නැතහොත් ඔබේ සාප්පු වර්ගය සහ නගරය සමඟ පෙන්වීමක් සඳහා WhatsApp කරන්න.
 privacy	පෞද්ගලිකත්වය
-terms	නියම
+terms	නියමයන්
 cancellation	අවලංගු කිරීම
 cloud_shop	වලාකුළු සාප්පුව
 account	ගිණුම
@@ -95,7 +95,7 @@ chapter_counter_sell	කවුන්ටර විකිණීම
 chapter_khata	ණය පොත
 chapter_buy_stock	මිලදී ගැනීම සහ තොගය
 chapter_day_book	දින ලෙජරය
-chapter_extra_till	අමතර ලාච්චුව
+chapter_extra_till	අමතර බිල් කවුන්ටරය
 chapter_offline	නොබැඳි
 chapter_start	ආරම්භය
 bill_selling	විකුණමින්
@@ -105,8 +105,8 @@ bill_next_item	ඊළඟ අයිතමය එක් කිරීමට තට�
 bill_settle_hint	පියවීමට තට්ටු කරන්න — මුදල් හෝ UPI
 bill_cash_return	මුදල් ₹ 600 · ඉතිරිය ₹ 15
 bill_paid_line	ගෙවා ඇත · දින ලෙජරය යාවත්කාලීනයි
-lan_eyebrow	6 · අමතර ලාච්චුව
-lan_title	සාප්පු Wi-Fi මත තවත් ලාච්චුවක්.
+lan_eyebrow	6 · අමතර බිල් කවුන්ටරය
+lan_title	සාප්පු Wi-Fi මත තවත් බිල් කවුන්ටරයක්.
 cta_installers_note	සෑම ස්ථාපකයක්ම පිරිසිදු යන්ත්‍රයක ස්ථාපනය සාර්ථක වූ පසු මෙහි පළ කෙරේ. එතෙක් WhatsApp හරහා ආදර්ශනයක් ඉල්ලන්න.
 cta_whatsapp_soon	WhatsApp ආදර්ශන මාර්ගය ළඟදීම විවෘත වේ. ඔබේ පණිවිඩය මෙසේ වනු ඇත: “{message}”.
 acct_page_title	ගිණුම — Kirano
@@ -114,7 +114,7 @@ acct_lede	වෙබ් අඩවිය සහ යෙදුම් සඳහා �
 acct_email	ඊමේල්
 acct_name_optional	නම (විකල්ප)
 acct_password	මුරපදය
-acct_continue	දිගටම කරගෙන යන්න
+acct_continue	ඉදිරියට යන්න
 acct_forgot	මුරපදය අමතකද?
 acct_reset_hint	අපි යළි සැකසීමේ සබැඳියක් ඊමේල් කරන්නෙමු. ඔබ ලියාපදිංචි වූ එම ලිපිනයම භාවිත කරන්න.
 acct_send_reset	යළි සැකසීමේ සබැඳිය යවන්න
@@ -153,7 +153,7 @@ shop_cart_empty_hint	ඔබේ කූඩය හිස්ය. Steady, Swift හ�
 shop_checkout	ගෙවීම
 shop_clear	හිස් කරන්න
 shop_checkout_hint	ගෙවීම ඔබව ගිණුමට පිවිසවා, පසුව ගෙවීම ආරම්භ කරයි (පරීක්ෂණ අනුකරණය, හෝ යතුරු සකසා ඇති විට Paddle).
-acct_billing_hint	වාර්ෂික සැලසුම් — ගෙවීමේදී ගෙවීම් දොරටුව මඟින් බදු එකතු කෙරේ. දේශීය භාවිතය සදහටම නොමිලේ. අභිරුචි යනු මිල ගණන් කිරීමකි (Steady ට වඩා අඩු හෝ Priority ට වඩා වැඩි විය හැක).
+acct_billing_hint	වාර්ෂික සැලසුම් — ගෙවීමේදී ගෙවීම් දොරටුව මඟින් බදු එකතු කෙරේ. දේශීය භාවිතය සදහටම නොමිලේ. අභිරුචි සැලසුම සඳහා වෙනම මිල ගණනක් ලබා දෙනු ලැබේ (Steady ට වඩා අඩු හෝ Priority ට වඩා වැඩි විය හැක).
 shop_cloud_plans	වලාකුළු සැලසුම්
 acct_federated	ඒකාබද්ධ පිවිසුම
 acct_err_invalid_email	වලංගු ඊමේල් ලිපිනයක් ඇතුළත් කරන්න.

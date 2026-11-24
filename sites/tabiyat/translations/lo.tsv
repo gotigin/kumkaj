@@ -1,7 +1,7 @@
 # Lao — ລາວ (lo). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
 example	ຕົວຢ່າງ
 download_free	ດາວ​ໂຫຼ​ດຟຣີ
-whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ
+whatsapp_for_a_demo	ສົ່ງ WhatsApp ເພື່ອ​ຂໍ​ເບິ່ງ​ການ​ສາທິດ
 free_on_android_windows_and	ຟຣີ​ເທິງ Android, Windows ແລະ Linux
 the_pharmacy_counter	ເຄົາ​ເຕີ​ຮ້ານ​ຂາຍ​ຢາ
 pharmacy_counter	ເຄົາ​ເຕີ​ຮ້ານ​ຢາ
@@ -11,9 +11,9 @@ medicines_barcode_and_salt_search	ຢາ ການຄົ້ນ​ຫາ​ດ້
 tap_the_bill_to_walk	ແຕະ​ໃບ​ບິນ​ເພື່ອ​ເບິ່ງ​ການຂາຍໜ້າ​ເຄົາ​ເຕີ
 cash_memo	ໃບຮັບ​ເງິນສົດ
 ready	ພ້ອມ
-total	ທັງໝົດ
+total	ຍອດ​ລວມ
 tap_to_add_the_first	ແຕະ​ເພື່ອ​ເພີ່ມ​ຢາ​ໂຕ​ທຳອິດ
-example_pharmacy_lines_not_a	ລາຍການ​ຮ້ານ​ຢາ​ຕົວຢ່າງ ບໍ່​ແມ່ນ​ລິ້ນ​ຊັກ​ເງິນ​ແທ້ Tabiyat ໃຊ້​ເສັ້ນທາງ​ດຽວກັນ: ຂາຍ → ຊຳລະ → ປຶ້ມ​ມື້
+example_pharmacy_lines_not_a	ລາຍການ​ຮ້ານ​ຢາ​ຕົວຢ່າງ ບໍ່​ແມ່ນ​ເຄື່ອງ​ຄິດ​ເງິນ​ຈິງ Tabiyat ໃຊ້​ເສັ້ນທາງ​ດຽວກັນ: ຂາຍ → ຊຳລະ → ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 n_2_counter_sell	2 · ຂາຍໜ້າ​ເຄົາ​ເຕີ
 medicine_quantity_pay_three_taps	ຢາ ຈຳນວນ ຈ່າຍເງິນ — ແຕະ​ສາມ​ເທື່ອ
 upi_qr_ready	UPI QR ພ້ອມ
@@ -22,7 +22,7 @@ fast_counter_billing	ອອກ​ໃບ​ບິນ​ໜ້າ​ເຄົາ�
 add_the_line_set_the	ເພີ່ມ​ລາຍການ ຕັ້ງ​ຈຳນວນ ຊຳລະ — ເງິນສົດ UPI ຫຼື ແບ່ງ​ຈ່າຍ
 gst_tax_invoice_or_cash	ໃບ​ກຳກັບ​ພາສີ GST ຫຼື ໃບຮັບ​ເງິນສົດ
 the_bill_lane_you_need	ປະເພດ​ໃບ​ບິນ​ທີ່​ທ່ານ​ຕ້ອງ​ໃຊ້​ສຳລັບ​ການຂາຍ
-day_book_follows	ປຶ້ມ​ມື້​ຕາມ​ມາ
+day_book_follows	ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ​ຕາມ​ມາ
 every_tender_lands_in_books	ທຸກ​ການ​ຊຳລະ​ເຂົ້າສູ່​ບັນຊີ​ເມື່ອ​ທ່ານ​ປິດ​ການຂາຍ
 n_3_barcode_salt	3 · ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ
 scan_the_barcode_or_find	ສະ​ແກນ​ບາ​ໂຄດ — ຫຼື ຄົ້ນຫາ​ດ້ວຍ​ສານ​ອອກລິດ
@@ -51,31 +51,31 @@ books_and_sell_can_hint	ບັນຊີ ແລະ ໜ້າ​ຂາຍ​ເຕ
 owner_practice	ແນວທາງ​ຂອງ​ເຈົ້າຂອງ​ຮ້ານ
 fefo_hints_and_rx_notes	ຄຳແນະນຳ FEFO ແລະ ບັນທຶກ Rx ເປັນ​ສິ່ງ​ທີ່​ທ່ານ​ເລືອກ​ເຮັດຕາມ​ເອງ — Tabiyat ບັນທຶກ​ສິ່ງ​ທີ່​ທ່ານ​ປ້ອນ
 n_5_khata	5 · ປຶ້ມ​ໜີ້
-customer_credit_and_supplier_dues	ໜີ້​ລູກຄ້າ ແລະ ຍອດ​ຄ້າງ​ຈ່າຍ​ຜູ້​ສະໜອງ ໃນ​ປຶ້ມ​ຝ່າຍ​ເຫຼັ້ມ​ດຽວ
+customer_credit_and_supplier_dues	ໜີ້​ລູກຄ້າ ແລະ ຍອດ​ຄ້າງ​ຈ່າຍ​ຜູ້​ສະໜອງ ໃນ​ປຶ້ມ​ຄູ່​ຄ້າ​ເຫຼັ້ມ​ດຽວ
 mehta_clinic_customer	ຄລີ​ນິກ​ເມ​ຕາ · ລູກຄ້າ
 due_from_earlier	ຍອດ​ຄ້າງ​ເດີມ
 today_s_sale_due	+ ຍອດ​ຂາຍ​ມື້ນີ້ (ຕິດ​ໜີ້)
 balance	ຍອດ​ຄົງເຫຼືອ
-settle_later_part_cash_part	ຊຳລະ​ພາຍຫຼັງ — ເງິນສົດ​ບາງ​ສ່ວນ UPI ບາງ​ສ່ວນ ເຈົ້າໜີ້​ຜູ້​ສະໜອງ​ໃຊ້​ໜ້າ​ຝ່າຍ​ດຽວກັນ
+settle_later_part_cash_part	ຊຳລະ​ພາຍຫຼັງ — ເງິນສົດ​ບາງ​ສ່ວນ UPI ບາງ​ສ່ວນ ເຈົ້າໜີ້​ຜູ້​ສະໜອງ​ໃຊ້​ໜ້າ​ຄູ່​ຄ້າ​ດຽວກັນ
 due_on_the_bill	ຍອດ​ຄ້າງ​ໃນ​ໃບ​ບິນ
 leave_a_balance_on_khata	ເກັບ​ຍອດ​ຄົງເຫຼືອ​ໄວ້​ໃນ​ປຶ້ມ​ໜີ້​ໂດຍ​ບໍ່​ຕ້ອງ​ໃຊ້​ແອັບ​ບັນຊີ​ແຍກ
 supplier_buys_too	ການຊື້​ຈາກ​ຜູ້​ສະໜອງ​ນຳ
 who_you_owe_updates_when	ຍອດ​ທີ່​ທ່ານ​ຄ້າງ​ຈ່າຍ​ອັບ​ເດດ​ເມື່ອ​ສິນຄ້າເຂົ້າ
 auditable	ກວດສອບ​ໄດ້
-who_when_and_how_much	ໃຜ ເມື່ອໃດ ແລະ ເທົ່າໃດ ຢູ່ໃນ​ປຶ້ມ​ມື້
+who_when_and_how_much	ໃຜ ເມື່ອໃດ ແລະ ເທົ່າໃດ ຢູ່ໃນ​ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ
 n_6_internet_down	6 · ອິນ​ເຕີ​ເນັດ​ລົ້ມ?
 the_internet_drops_the_counter	ອິນ​ເຕີ​ເນັດ​ຫຼຸດ ເຄົາ​ເຕີ​ຍັງ​ຂາຍ​ຕໍ່
 router_no_internet	ເຣົາ​ເຕີ: ບໍ່ມີ​ອິນ​ເຕີ​ເນັດ
 main_counter_selling_and_settling	ເຄົາ​ເຕີ​ຫຼັກ: ຂາຍ ແລະ ຮັບ​ຊຳລະ​ຢູ່
-second_till_joined_on_your	ລິ້ນ​ຊັກ​ເງິນ​ທີ​ສອງ: ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ຮ້ານ
+second_till_joined_on_your	ເຄື່ອງ​ຄິດ​ເງິນ​ເຄື່ອງ​ທີ​ສອງ: ເຊື່ອມ​ຜ່ານ Wi-Fi ຂອງ​ຮ້ານ
 books_live_on_the_shop	ບັນຊີ​ຢູ່​ເທິງ​ອຸປະກອນ​ຂອງ​ຮ້ານ
 when_the_internet_drops_nothing	ເມື່ອ​ອິນ​ເຕີ​ເນັດ​ຫຼຸດ ບໍ່ມີ​ຫຍັງ​ທີ່​ເຄົາ​ເຕີ​ຮ້ານ​ຢາ​ຕ້ອງ​ລໍຖ້າ
 one_server_lan_clients	ເຊີບເວີ​ດຽວ ໄຄລ​ເອັນ LAN
-extra_tills_share_the_same	ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມເຕີມ​ໃຊ້​ບັນຊີ​ຊຸດ​ດຽວກັນ​ຜ່ານ​ເຄືອ​ຂ່າຍ​ຂອງ​ຮ້ານ
+extra_tills_share_the_same	ເຄື່ອງ​ຄິດ​ເງິນ​ເພີ່ມເຕີມ​ໃຊ້​ບັນຊີ​ຊຸດ​ດຽວກັນ​ຜ່ານ​ເຄືອ​ຂ່າຍ​ຂອງ​ຮ້ານ
 n_7_free_forever_locally	7 · ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ເຄື່ອງ
 free_forever_on_your_devices	ຟຣີ​ຕະຫຼອດໄປ​ເທິງ​ອຸປະກອນ​ຂອງ​ທ່ານ
 no_per_bill_charge	ບໍ່​ຄິດ​ເງິນ​ຕໍ່​ໃບ​ບິນ
-no_fee_per_sale_medicine	ການ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ບໍ່​ຄິດ​ຄ່າ​ທຳນຽມ​ຕໍ່​ການຂາຍ ຢາ ລິ້ນ​ຊັກ​ເງິນ ຫຼື PIN ພະນັກງານ
+no_fee_per_sale_medicine	ການ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ບໍ່​ຄິດ​ຄ່າ​ທຳນຽມ​ຕໍ່​ການຂາຍ ຢາ ເຄື່ອງ​ຄິດ​ເງິນ ຫຼື PIN ພະນັກງານ
 android_windows_linux	Android, Windows, Linux
 the_same_tabiyat_on_the	Tabiyat ຕົວ​ດຽວກັນ​ເທິງ​ໂທລະສັບ ແລະ ເຄື່ອງ​ຄິດ​ເງິນ​ຕັ້ງ​ໂຕະ
 optional_kumkaj_cloud	Kumkaj Cloud ແບບ​ເລືອກ​ໃຊ້
@@ -92,7 +92,7 @@ chapter_counter_sell	ຂາຍໜ້າ​ເຄົາ​ເຕີ
 chapter_barcode_salt	ບາ​ໂຄດ ແລະ ສານ​ອອກລິດ
 chapter_batch_expiry	ລັອດ ແລະ ວັນ​ໝົດ​ອາຍຸ
 chapter_khata	ປຶ້ມ​ໜີ້
-chapter_extra_till	ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມ
+chapter_extra_till	ເຄື່ອງ​ຄິດ​ເງິນ​ເພີ່ມ
 chapter_offline	ອອບ​ລາຍ
 chapter_start	ເລີ່ມ
 bill_selling	ກຳລັງ​ຂາຍ
@@ -101,11 +101,11 @@ bill_paid	ຈ່າຍ​ແລ້ວ
 bill_next_line	ແຕະ​ເພື່ອ​ເພີ່ມ​ລາຍການ​ຕໍ່ໄປ
 bill_settle_hint	ແຕະ​ເພື່ອ​ຊຳລະ — ເງິນສົດ ຫຼື UPI
 bill_upi_paid	UPI ₹ 162 · ຈ່າຍ​ແລ້ວ
-bill_paid_line	ຈ່າຍ​ແລ້ວ · ອັບ​ເດດ​ປຶ້ມ​ມື້​ແລ້ວ
-lan_eyebrow	6 · ລິ້ນ​ຊັກ​ເງິນ​ເພີ່ມ
-lan_title	ອີກ​ໜຶ່ງ​ລິ້ນ​ຊັກ​ເງິນ​ເທິງ Wi-Fi ຂອງ​ຮ້ານ
-cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ຕົວຢ່າງ​ໄດ້​ທາງ WhatsApp
-cta_whatsapp_soon	ຊ່ອງທາງ​ເບິ່ງ​ຕົວຢ່າງ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
+bill_paid_line	ຈ່າຍ​ແລ້ວ · ອັບ​ເດດ​ປຶ້ມ​ບັນຊີ​ປະຈຳວັນ​ແລ້ວ
+lan_eyebrow	6 · ເຄື່ອງ​ຄິດ​ເງິນ​ເພີ່ມ
+lan_title	ເຄື່ອງ​ຄິດ​ເງິນ​ອີກ​ເຄື່ອງເທິງ Wi-Fi ຂອງ​ຮ້ານ
+cta_installers_note	ຕົວ​ຕິດຕັ້ງ​ຈະ​ຂຶ້ນ​ທີ່​ນີ້​ເມື່ອ​ແຕ່ລະ​ຕົວ​ຜ່ານ​ການທົດສອບ​ຕິດຕັ້ງ​ເທິງ​ເຄື່ອງ​ໃໝ່ ລະຫວ່າງ​ນີ້​ຂໍ​ເບິ່ງ​ການ​ສາທິດ​ໄດ້​ທາງ WhatsApp
+cta_whatsapp_soon	ຊ່ອງທາງ​ຂໍ​ເບິ່ງ​ການ​ສາທິດ​ທາງ WhatsApp ຈະ​ເປີດ​ໃນ​ໄວໆ​ນີ້ ຂໍ້ຄວາມ​ຂອງ​ທ່ານ​ຈະ​ເປັນ: “{message}”
 acct_page_title	ບັນຊີ — Tabiyat
 acct_lede	ບັນຊີ​ດຽວ​ສຳ​ລັບ​ເວັບ​ໄຊ ແລະ ແອັບ — ຟອມ​ດຽວກັນ​ບໍ່ວ່າ​ທ່ານ​ຈະ​ເປັນ​ຜູ້​ໃຊ້​ໃໝ່ ຫຼື ກັບມາ​ໃຊ້
 acct_email	ອີ​ເມວ
@@ -150,9 +150,9 @@ shop_cart_empty_hint	ກະຕ່າ​ຂອງ​ທ່ານ​ຫວ່າ�
 shop_checkout	ຊຳລະ​ເງິນ
 shop_clear	ລ້າງ
 shop_checkout_hint	ການ​ຊຳລະ​ເງິນ​ຈະ​ພາ​ທ່ານ​ເຂົ້າສູ່​ລະບົບ​ໃນ​ໜ້າ​ບັນຊີ​ກ່ອນ ແລ້ວ​ຈຶ່ງ​ເລີ່ມ​ຈ່າຍເງິນ (ຈຳລອງ​ໃນ​ສະພາບ​ແວດລ້ອມ​ທົດສອບ ຫຼື Paddle ເມື່ອ​ຕັ້ງ​ຄ່າ​ຄີ​ແລ້ວ)
-acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ເກດ​ເວ​ຄິດ​ພາສີ​ຕອນ​ຊຳລະ​ເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
+acct_billing_hint	ແພັກ​ເກດ​ລາຍ​ປີ — ລະບົບ​ຊຳລະ​ເງິນ​ຈະ​ຄິດ​ພາສີ​ຕອນ​ຈ່າຍເງິນ ການ​ໃຊ້ງານ​ເທິງ​ເຄື່ອງ​ຟຣີ​ຕະຫຼອດໄປ ແບບ​ກຳນົດ​ເອງ​ຕ້ອງ​ຂໍ​ໃບສະເໜີ​ລາຄາ (ອາດ​ຕ່ຳ​ກວ່າ Steady ຫຼື ສູງ​ກວ່າ Priority)
 shop_cloud_plans	ແພັກ​ເກດຄລາວ
-acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ແບບ​ລວມ​ສູນ
+acct_federated	ການເຂົ້າ​ສູ່​ລະບົບ​ຜ່ານ​ຜູ້​ໃຫ້​ບໍລິການ​ພາຍນອກ
 acct_err_invalid_email	ປ້ອນ​ອີ​ເມວ​ທີ່​ຖືກຕ້ອງ
 acct_err_weak_password	ໃຊ້​ລະຫັດ​ຜ່ານ​ຢ່າງ​ໜ້ອຍ 6 ຕົວ​ອັກສອນ
 acct_err_wrong_password	ລະຫັດ​ຜ່ານ​ບໍ່​ຖືກຕ້ອງ
