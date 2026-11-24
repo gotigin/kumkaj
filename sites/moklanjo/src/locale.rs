@@ -298,7 +298,7 @@ pub const UI_SKIP: &[&str] = &[
     "Director · mearaj@gmail.com",
     "Kumkaj",
     "© 2026 GOTIGIN SOFTWARE & HARDWARE PRIVATE LIMITED",
-    "kumkaj.com  →",
+    "kumkaj.com",
     "AWB",
     "COD",
     "EN",
