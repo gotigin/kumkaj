@@ -507,6 +507,7 @@ find_printers	Printerləri tap
 printers_looking	Axtarılır…
 saving_printer	Printer əlavə olunur…
 cancelled	Ləğv olundu
+press_back_again_exit	Çıxmaq üçün yenidən Geri düyməsinə basın
 printers_tap_find	Bu cihazın istifadə edə biləcəyi printerləri göstərmək üçün Tap düyməsinə toxunun.
 printers_none_found	Heç nə tapılmadı — sistem printerinin adını və ya IP yazın (məs. 192.168.1.50).
 printer_from_find	{name} əlavə olundu

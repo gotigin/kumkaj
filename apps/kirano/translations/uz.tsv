@@ -507,6 +507,7 @@ find_printers	Printerlarni topish
 printers_looking	Qidirilmoqda…
 saving_printer	Printer qoʻshilmoqda…
 cancelled	Bekor qilindi
+press_back_again_exit	Chiqish uchun Orqaga tugmasini yana bosing
 printers_tap_find	Bu qurilma ishlata oladigan printerlar roʻyxati uchun Qidiruvni bosing.
 printers_none_found	Hech narsa topilmadi — tizim printeri nomi yoki IP yozing (mas. 192.168.1.50).
 printer_from_find	{name} qoʻshildi

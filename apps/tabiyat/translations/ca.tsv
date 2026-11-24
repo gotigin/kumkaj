@@ -519,6 +519,7 @@ find_printers	Troba impressores
 printers_looking	S'està cercant…
 saving_printer	S'afegeix la impressora…
 cancelled	Anul·lat
+press_back_again_exit	Torneu a prémer Enrere per sortir
 printers_tap_find	Toqueu Troba per llistar les impressores que aquest dispositiu pot fer servir.
 printers_none_found	No se n'ha trobat cap — escriviu un nom d'impressora del sistema o una IP (p. ex. 192.168.1.50).
 printer_from_find	Afegida {name}

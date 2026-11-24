@@ -519,6 +519,7 @@ find_printers	Најдете печатачи
 printers_looking	Се бара…
 saving_printer	Се додава печатач…
 cancelled	Откажано
+press_back_again_exit	Притиснете „Назад“ повторно за да излезете
 printers_tap_find	Допрете Најдете за да ги наведете печатачите што може да ги користи овој уред.
 printers_none_found	Никој не е пронајден - напишете име на системски печатач или IP (на пр. 192.168.1.50).
 printer_from_find	Додадено {name}

@@ -222,6 +222,7 @@ snack_secs_bad	སྐར་ཆ་གྲངས་སུ་བཙུགས (3–60
 cancelled	ཕྱིར་འཐེན་བྱས།
 cancelling	ཆ་མེད་གཏོང་བ།
 cancel	ཆ་མེད་གཏོང་བ།
+press_back_again_exit	ཕྱིར་ཐོན་པར་«ཕྱིར་ལོག»ཡང་བསྐྱར་མནན་རོགས།
 opening_client	ཚོང་ཤག་ཁ་ཕྱེ་བ།
 preparing_desk	ཡིག་ཅོག་གྲ་སྒྲིག་བྱེད་བཞིན་ཡོད།
 opening_server	སར་བར་ཁ་ཕྱེ་བཞིན་ཡོད།

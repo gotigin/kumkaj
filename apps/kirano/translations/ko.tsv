@@ -507,6 +507,7 @@ find_printers	프린터 찾기
 printers_looking	이 기기와 Wi‑Fi에서 프린터를 찾는 중…
 saving_printer	프린터 추가 중…
 cancelled	취소됨
+press_back_again_exit	“뒤로” 버튼을 한 번 더 누르면 종료됩니다
 printers_tap_find	프린터 찾기 누르기 — 시스템 프린터와 이 Wi‑Fi의 네트워크 영수증 프린터가 나열됩니다.
 printers_none_found	프린터를 찾지 못함 — 시스템 이름 또는 네트워크 주소를 입력하세요(예: 192.168.1.50).
 printer_from_find	{name} 추가됨

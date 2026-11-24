@@ -507,6 +507,7 @@ find_printers	Najděte tiskárny
 printers_looking	Při pohledu…
 saving_printer	Přidávání tiskárny…
 cancelled	Zrušeno
+press_back_again_exit	Pro ukončení stiskněte znovu tlačítko Zpět
 printers_tap_find	Klepnutím na Najít zobrazíte seznam tiskáren, které toto zařízení může používat.
 printers_none_found	Nebylo nalezeno – zadejte název systémové tiskárny nebo IP (např. 192.168.1.50).
 printer_from_find	Přidáno {name}

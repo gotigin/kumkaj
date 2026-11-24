@@ -507,6 +507,7 @@ find_printers	මුද්‍රණ යන්ත්‍ර සොයන්න
 printers_looking	බලමින්…
 saving_printer	මුද්‍රණ යන්ත්‍රය එක් කරමින්...
 cancelled	අවලංගු කළා
+press_back_again_exit	පිටවීමට ආපසු බොත්තම නැවත ඔබන්න
 printers_tap_find	මෙම උපාංගය භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර ලැයිස්තුගත කිරීමට සොයන්න තට්ටු කරන්න.
 printers_none_found	කිසිවක් හමු නොවීය - පද්ධති මුද්‍රණ යන්ත්‍රයේ නමක් හෝ IP එකක් ටයිප් කරන්න (උදා. 192.168.1.50).
 printer_from_find	{name} එකතු කරන ලදී

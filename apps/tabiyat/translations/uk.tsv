@@ -519,6 +519,7 @@ find_printers	Знайти принтери
 printers_looking	Пошук…
 saving_printer	Додавання принтера…
 cancelled	Скасовано
+press_back_again_exit	Натисніть «Назад» ще раз, щоб вийти
 printers_tap_find	Торкніться Знайти, щоб показати принтери, які може використовувати цей пристрій.
 printers_none_found	Нічого не знайдено — впишіть назву системного принтера або IP (напр. 192.168.1.50).
 printer_from_find	Додано {name}

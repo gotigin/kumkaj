@@ -519,6 +519,7 @@ find_printers	प्रिंटर खोजू
 printers_looking	खोजि रहल छी…
 saving_printer	प्रिंटर जोड़ि रहल छी…
 cancelled	रद्द भेल
+press_back_again_exit	बाहर निकलबाक लेल फेर “पाछाँ” दबाउ
 printers_tap_find	एहि डिवाइसपर चलएवला प्रिंटरक सूची लेल प्रिंटर खोजू दबाउ।
 printers_none_found	किछु नहि भेटल — सिस्टम प्रिंटरक नाम वा IP लिखू (जेना 192.168.1.50)।
 printer_from_find	{name} जोड़ल

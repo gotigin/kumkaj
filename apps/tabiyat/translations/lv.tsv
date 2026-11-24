@@ -519,6 +519,7 @@ find_printers	Atrast printerus
 printers_looking	Meklē…
 saving_printer	Pievieno printeri…
 cancelled	Atcelts
+press_back_again_exit	Lai izietu, vēlreiz nospiediet “Atpakaļ”
 printers_tap_find	Pieskarieties Atrast, lai uzskaitītu printerus, ko šī ierīce var lietot.
 printers_none_found	Nekas nav atrasts — ierakstiet sistēmas printera nosaukumu vai IP (piem. 192.168.1.50).
 printer_from_find	Pievienots {name}

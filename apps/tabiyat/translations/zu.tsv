@@ -519,6 +519,7 @@ find_printers	Thola amaphrinta
 printers_looking	Iyabheka...
 saving_printer	Yengeza iphrinta...
 cancelled	Kukhanseliwe
+press_back_again_exit	Cindezela Emuva futhi ukuze uphume
 printers_tap_find	Thepha okuthi Thola ukuze ufake kuhlu amaphrinta le divayisi engawasebenzisa.
 printers_none_found	Akukho okutholakele — thayipha igama lephrinta yesistimu noma i-IP (isb. 192.168.1.50).
 printer_from_find	Kwengezwe {name}

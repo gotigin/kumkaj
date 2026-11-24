@@ -519,6 +519,7 @@ find_printers	Etsi tulostimet
 printers_looking	Etsitään…
 saving_printer	Lisätään tulostinta…
 cancelled	Peruttu
+press_back_again_exit	Paina Takaisin uudelleen poistuaksesi
 printers_tap_find	Napauta Etsi listataksesi tulostimet, joita tämä laite voi käyttää.
 printers_none_found	Ei löytynyt — kirjoita järjestelmätulostimen nimi tai IP (esim. 192.168.1.50).
 printer_from_find	Lisätty {name}

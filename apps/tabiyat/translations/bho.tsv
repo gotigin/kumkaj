@@ -519,6 +519,7 @@ find_printers	प्रिंटर खोजीं
 printers_looking	खोजत बानी…
 saving_printer	प्रिंटर जोड़त बानी…
 cancelled	रद्द भइल
+press_back_again_exit	बाहर निकले खातिर फेर से «पीछे» दबाईं
 printers_tap_find	खोज दबाईं, तब ई डिवाइस जे प्रिंटर चला सकेला ओकर सूची देखाई।
 printers_none_found	कुछ ना मिलल — सिस्टम प्रिंटर के नाम भा IP लिखीं (जइसे 192.168.1.50)।
 printer_from_find	{name} जोड़ल

@@ -507,6 +507,7 @@ find_printers	Намери принтери
 printers_looking	Търсене…
 saving_printer	Добавяне на принтер…
 cancelled	Отказано
+press_back_again_exit	Натиснете отново „Назад“ за изход
 printers_tap_find	Докоснете Търсене, за да видите принтерите, които това устройство може да ползва.
 printers_none_found	Нищо не е намерено — въведете име на системен принтер или IP (напр. 192.168.1.50).
 printer_from_find	Добавен {name}

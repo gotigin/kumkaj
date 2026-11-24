@@ -519,6 +519,7 @@ find_printers	Sib stampaturi
 printers_looking	Tfittex...
 saving_printer	Inżid l-istampatur...
 cancelled	Ikkanċellat
+press_back_again_exit	Erġa' agħfas Lura biex toħroġ
 printers_tap_find	Tektek Sib biex telenka l-stampaturi li dan it-tagħmir jista' juża.
 printers_none_found	Xejn misjub — ittajpja isem tal-stampatur tas-sistema jew IP (eż. 192.168.1.50).
 printer_from_find	Miżjud {name}

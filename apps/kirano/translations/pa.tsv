@@ -507,6 +507,7 @@ find_printers	ਪ੍ਰਿੰਟਰ ਲੱਭੋ
 printers_looking	ਇਸ ਡਿਵਾਈਸ ਅਤੇ Wi‑Fi ’ਤੇ ਪ੍ਰਿੰਟਰ ਲੱਭ ਰਿਹਾ ਹੈ…
 saving_printer	ਪ੍ਰਿੰਟਰ ਜੋੜ ਰਹੇ ਹਾਂ…
 cancelled	ਰੱਦ
+press_back_again_exit	ਬਾਹਰ ਨਿਕਲਣ ਲਈ ਦੁਬਾਰਾ ਪਿੱਛੇ ਦਬਾਓ
 printers_tap_find	ਪ੍ਰਿੰਟਰ ਲੱਭੋ ਦਬਾਓ — ਸਿਸਟਮ ਪ੍ਰਿੰਟਰ ਅਤੇ ਇਸ Wi‑Fi ਦੇ ਨੈੱਟਵਰਕ ਰਸੀਦ ਪ੍ਰਿੰਟਰ ਸੂਚੀ ਵਿੱਚ ਆਉਣਗੇ।
 printers_none_found	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ — ਸਿਸਟਮ ਪ੍ਰਿੰਟਰ ਨਾਂ ਜਾਂ ਨੈੱਟਵਰਕ ਪਤਾ ਲਿਖੋ (ਜਿਵੇਂ 192.168.1.50)।
 printer_from_find	{name} ਜੋੜਿਆ

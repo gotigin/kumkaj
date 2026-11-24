@@ -507,6 +507,7 @@ find_printers	प्रिन्टर खोज्नुहोस्
 printers_looking	खोज्दै…
 saving_printer	प्रिन्टर थप्दै…
 cancelled	रद्द भयो
+press_back_again_exit	बाहिर निस्कन फेरि फिर्ता थिच्नुहोस्
 printers_tap_find	यो उपकरणले चलाउन सक्ने प्रिन्टरको सूची हेर्न खोज्नुहोस् थिच्नुहोस्।
 printers_none_found	केही भेटिएन — सिस्टम प्रिन्टरको नाम वा IP लेख्नुहोस् (जस्तै 192.168.1.50)।
 printer_from_find	{name} थपियो

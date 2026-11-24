@@ -519,6 +519,7 @@ find_printers	Cari pencetak
 printers_looking	mencari…
 saving_printer	Menambah pencetak…
 cancelled	Dibatalkan
+press_back_again_exit	Tekan butang belakang sekali lagi untuk keluar
 printers_tap_find	Ketik Cari untuk menyenaraikan pencetak yang boleh digunakan oleh peranti ini.
 printers_none_found	Tiada ditemui — taip nama pencetak sistem atau IP (cth. 192.168.1.50).
 printer_from_find	Ditambah {name}

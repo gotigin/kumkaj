@@ -519,6 +519,7 @@ find_printers	प्रिंटर शोधा
 printers_looking	या डिव्हाइस आणि Wi‑Fi वर प्रिंटर शोधत आहे…
 saving_printer	प्रिंटर जोडत आहे…
 cancelled	रद्द
+press_back_again_exit	बाहेर पडण्यासाठी पुन्हा “मागे” दाबा
 printers_tap_find	हे डिव्हाइस वापरू शकणारे प्रिंटर पाहण्यासाठी शोधा वर टॅप करा.
 printers_none_found	प्रिंटर सापडले नाहीत — सिस्टम प्रिंटरचे नाव किंवा नेटवर्क पत्ता लिहा (उदा. 192.168.1.50).
 printer_from_find	{name} जोडला

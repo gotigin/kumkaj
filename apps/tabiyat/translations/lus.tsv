@@ -519,6 +519,7 @@ find_printers	Print na zawng
 printers_looking	Zawng mek…
 saving_printer	Print na telh mek…
 cancelled	Tihbo
+press_back_again_exit	Chhuak turin “Kir” hmet leh rawh
 printers_tap_find	Zawng khawih la, he device hman theih print na list turin.
 printers_none_found	Hmuh lo — system print na hming emaw IP ziak (entir 192.168.1.50).
 printer_from_find	{name} telh a ni

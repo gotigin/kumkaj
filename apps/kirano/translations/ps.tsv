@@ -507,6 +507,7 @@ find_printers	چاپګر ومومئ
 printers_looking	په لټه...
 saving_printer	پرنټر اضافه کول...
 cancelled	لغوه شو
+press_back_again_exit	د وتلو لپاره شاته تڼۍ بیا کېکاږئ
 printers_tap_find	د پرنټرونو لیست کولو لپاره ومومئ ټایپ کړئ چې دا وسیله یې کارولی شي.
 printers_none_found	ونه موندل شو - د سیسټم پرنټر نوم یا IP ټایپ کړئ (د مثال په توګه 50.1.168.192).
 printer_from_find	اضافه شوی {name}

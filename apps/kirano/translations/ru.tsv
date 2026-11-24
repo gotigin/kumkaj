@@ -507,6 +507,7 @@ find_printers	Найти принтеры
 printers_looking	Поиск принтеров на этом устройстве и в Wi‑Fi…
 saving_printer	Добавление принтера…
 cancelled	Отменён
+press_back_again_exit	Нажмите «Назад» ещё раз, чтобы выйти
 printers_tap_find	Нажмите «Найти принтеры» — появятся системные и сетевые принтеры чеков в этом Wi‑Fi.
 printers_none_found	Принтеры не найдены — введите имя в системе или сетевой адрес (напр. 192.168.1.50).
 printer_from_find	Добавлено {name}

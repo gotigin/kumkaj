@@ -507,6 +507,7 @@ find_printers	Hitta skrivare
 printers_looking	Letar...
 saving_printer	Lägger till skrivare...
 cancelled	Avbruten
+press_back_again_exit	Tryck på Tillbaka igen för att avsluta
 printers_tap_find	Tryck på Hitta för att lista skrivare som den här enheten kan använda.
 printers_none_found	Ingen hittades – skriv ett systemskrivarnamn eller en IP (t.ex. 192.168.1.50).
 printer_from_find	Lade till {name}

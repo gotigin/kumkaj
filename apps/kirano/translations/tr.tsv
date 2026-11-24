@@ -507,6 +507,7 @@ find_printers	Yazıcıları bul
 printers_looking	Bu cihaz ve Wi‑Fi'de yazıcılar aranıyor…
 saving_printer	Yazıcı ekleniyor…
 cancelled	İptal
+press_back_again_exit	Çıkmak için tekrar Geri tuşuna basın
 printers_tap_find	Yazıcıları bul'a dokunun — sistem yazıcıları ve bu Wi‑Fi'deki ağ fiş yazıcıları listelenir.
 printers_none_found	Yazıcı bulunamadı — sistem adı veya ağ adresi yazın (örn. 192.168.1.50).
 printer_from_find	{name} eklendi

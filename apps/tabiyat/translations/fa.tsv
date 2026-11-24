@@ -519,6 +519,7 @@ find_printers	پیدا کردن چاپگرها
 printers_looking	در حال جستجو…
 saving_printer	در حال افزودن چاپگر…
 cancelled	لغو شد
+press_back_again_exit	برای خروج دوباره دکمه بازگشت را بزنید
 printers_tap_find	پیدا کردن را بزنید تا چاپگرهایی که این دستگاه می‌تواند استفاده کند فهرست شوند.
 printers_none_found	چیزی پیدا نشد — نام چاپگر سیستم یا یک IP بنویسید (مثلاً 192.168.1.50).
 printer_from_find	{name} افزوده شد

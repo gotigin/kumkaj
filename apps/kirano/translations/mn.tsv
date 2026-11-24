@@ -507,6 +507,7 @@ find_printers	Принтер олох
 printers_looking	Хайж байна…
 saving_printer	Принтер нэмж байна…
 cancelled	Цуцлагдсан
+press_back_again_exit	Гарахын тулд «Буцах» товчийг дахин дарна уу
 printers_tap_find	Энэ төхөөрөмж ашиглах принтерийн жагсаалтад Хайлт дээр товшино.
 printers_none_found	Юу ч олдсонгүй — системийн принтерийн нэр эсвэл IP бичнэ (ж. 192.168.1.50).
 printer_from_find	{name} нэмэгдлээ

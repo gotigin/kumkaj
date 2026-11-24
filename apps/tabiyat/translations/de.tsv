@@ -519,6 +519,7 @@ find_printers	Drucker suchen
 printers_looking	Suche Drucker auf diesem Gerät und im Wi‑Fi…
 saving_printer	Druckgerät hinzufügen…
 cancelled	Storniert
+press_back_again_exit	Zum Beenden erneut „Zurück“ drücken
 printers_tap_find	Tippen Sie auf Suchen, um die Drucker aufzulisten, die dieses Gerät nutzen kann.
 printers_none_found	Keine Drucker gefunden — geben Sie einen Systemnamen oder eine Netzwerkadresse ein (z. B. 192.168.1.50).
 printer_from_find	{name} hinzugefügt

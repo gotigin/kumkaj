@@ -507,6 +507,7 @@ find_printers	מצא מדפסות
 printers_looking	מחפש…
 saving_printer	מוסיף מדפסת…
 cancelled	בוטל
+press_back_again_exit	לחצו שוב על חזרה כדי לצאת
 printers_tap_find	הקישו מצא כדי לרשום מדפסות שהמכשיר הזה יכול להשתמש בהן.
 printers_none_found	לא נמצא כלום — הקלידו שם מדפסת מערכת או IP (למשל 192.168.1.50).
 printer_from_find	נוסף {name}

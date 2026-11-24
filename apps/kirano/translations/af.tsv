@@ -507,6 +507,7 @@ find_printers	Soek drukkers
 printers_looking	Soek…
 saving_printer	Voeg drukker by…
 cancelled	Gekanselleer
+press_back_again_exit	Druk weer Terug om uit te gaan
 printers_tap_find	Tik Soek om drukkers te lys wat hierdie toestel kan gebruik.
 printers_none_found	Geen gevind – tik 'n stelseldrukker naam of 'n IP (bv. 192.168.1.50).
 printer_from_find	Bygevoeg {name}

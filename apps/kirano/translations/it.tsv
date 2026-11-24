@@ -507,6 +507,7 @@ find_printers	Trova stampanti
 printers_looking	Ricerca stampanti su questo dispositivo e Wi‑Fi…
 saving_printer	Aggiunta stampante…
 cancelled	Annullato
+press_back_again_exit	Premi di nuovo Indietro per uscire
 printers_tap_find	Tocca Trova stampanti: elenca quelle di sistema e le stampanti di ricevute di rete su questo Wi‑Fi.
 printers_none_found	Nessuna stampante trovata — digita un nome di sistema o un indirizzo di rete (es. 192.168.1.50).
 printer_from_find	Aggiunto {name}

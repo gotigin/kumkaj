@@ -507,6 +507,7 @@ find_printers	प्रिंटर सोदून काडात
 printers_looking	पळयता...
 saving_printer	प्रिंटर जोडप...
 cancelled	रद्द केलां
+press_back_again_exit	भायर सरपाक परतून “फाटीं” दामात
 printers_tap_find	हें डिव्हायस वापरूं येता अशा मुद्रकांची वळेरी करपाक सोद टॅप करात.
 printers_none_found	कोणूच मेळूंक ना — प्रणाली मुद्रक नांव वा IP टाइप करात (देखीक 192.168.1.50).
 printer_from_find	जोडले {name}

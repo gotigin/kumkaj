@@ -519,6 +519,7 @@ find_printers	იპოვნეთ პრინტერები
 printers_looking	ეძებს…
 saving_printer	პრინტერის დამატება…
 cancelled	გაუქმდა
+press_back_again_exit	გამოსასვლელად კიდევ ერთხელ დააჭირეთ „უკან“ ღილაკს
 printers_tap_find	შეეხეთ პოვნას პრინტერების სიაში, რომელთა გამოყენებაც ამ მოწყობილობამ შეიძლება.
 printers_none_found	ვერ მოიძებნა — ჩაწერეთ სისტემის პრინტერის სახელი ან IP (მაგ. 192.168.1.50).
 printer_from_find	დამატებულია {name}

@@ -519,6 +519,7 @@ find_printers	プリンターを探す
 printers_looking	この端末とWi‑Fiでプリンターを検索中…
 saving_printer	プリンターの追加中…
 cancelled	取消
+press_back_again_exit	もう一度「戻る」を押すと終了します
 printers_tap_find	この端末で使えるプリンターを表示するには「探す」をタップします。
 printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
 printer_from_find	{name} を追加しました

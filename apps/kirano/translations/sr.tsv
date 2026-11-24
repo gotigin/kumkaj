@@ -507,6 +507,7 @@ find_printers	Пронађите штампаче
 printers_looking	Тражи се…
 saving_printer	Додавање штампача…
 cancelled	Отказано
+press_back_again_exit	Притисните поново Назад за излаз
 printers_tap_find	Додирните Пронађи да бисте навели штампаче које овај уређај може да користи.
 printers_none_found	Није пронађено — унесите назив системског штампача или ИП (нпр. 192.168.1.50).
 printer_from_find	Додато {name}

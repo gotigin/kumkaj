@@ -507,6 +507,7 @@ find_printers	ማተሚያዎችን ፈልግ
 printers_looking	በመፈለግ ላይ…
 saving_printer	ማተሚያ በመጨመር ላይ…
 cancelled	ተሰርዟል
+press_back_again_exit	ለመውጣት «ተመለስ»ን እንደገና ይጫኑ
 printers_tap_find	ይህ መሣሪያ ሊጠቀምባቸው የሚችላቸውን ማተሚያዎች ለመዘርዘር ፈልግን ይንኩ።
 printers_none_found	ምንም አልተገኘም — የስርዓት ማተሚያ ስም ወይም IP ይጻፉ (ለምሳሌ 192.168.1.50)።
 printer_from_find	{name} ተጨምሯል

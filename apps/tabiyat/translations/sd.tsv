@@ -519,6 +519,7 @@ find_printers	پرنٽر ڳوليو
 printers_looking	ڳولي رهيو آهيان...
 saving_printer	پرنٽر شامل ڪري رهيو آهيان...
 cancelled	منسوخ ٿي ويو
+press_back_again_exit	ٻاهر نڪرڻ لاءِ ٻيهر پوئتي دٻايو
 printers_tap_find	ٽپ ڪريو ڳوليو ته هن ڊوائيس ڪهڙن پرنٽرز کي استعمال ڪري سگھي ٿو.
 printers_none_found	ڪوبه نه لڌو ويو — سسٽم پرنٽر جو نالو يا IP لکڻ (مثال طور 192.168.1.50).
 printer_from_find	شامل ڪيو {name}

@@ -507,6 +507,7 @@ find_printers	Maghanap ng mga printer
 printers_looking	naghahanap…
 saving_printer	Nagdaragdag ng printer…
 cancelled	Kinansela
+press_back_again_exit	Pindutin muli ang Bumalik para lumabas
 printers_tap_find	I-tap ang Hanapin upang ilista ang mga printer na magagamit ng device na ito.
 printers_none_found	Walang nahanap — mag-type ng pangalan ng system printer o isang IP (hal. 192.168.1.50).
 printer_from_find	Idinagdag {name}

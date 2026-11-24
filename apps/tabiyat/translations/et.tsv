@@ -519,6 +519,7 @@ find_printers	Otsige printereid
 printers_looking	Vaadates…
 saving_printer	Printeri lisamine…
 cancelled	Tühistatud
+press_back_again_exit	Väljumiseks vajutage uuesti nuppu Tagasi
 printers_tap_find	Puudutage Otsi, et loetleda printerid, mida see seade saab kasutada.
 printers_none_found	Ühtegi ei leitud – sisestage süsteemiprinteri nimi või IP (nt 192.168.1.50).
 printer_from_find	Lisatud {name}

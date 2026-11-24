@@ -507,6 +507,7 @@ find_printers	Ҷустуҷӯи чопгарҳо
 printers_looking	Ҷустуҷӯ…
 saving_printer	Чопгар илова мешавад…
 cancelled	Бекор шуд
+press_back_again_exit	Барои баромадан Бозгаштро бори дигар зер кунед
 printers_tap_find	Ҷустуҷӯро зер кунед, то чопгарҳое, ки ин дастгоҳ истифода мебарад, рӯйхат шаванд.
 printers_none_found	Ҳеҷ ёфт нашуд — номи чопгари система ё IP нависед (мисол 192.168.1.50).
 printer_from_find	{name} илова шуд

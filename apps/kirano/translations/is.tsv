@@ -507,6 +507,7 @@ find_printers	Finndu prentara
 printers_looking	Er að skoða…
 saving_printer	Bætir prentara við...
 cancelled	Hætt við
+press_back_again_exit	Ýttu aftur á Til baka til að hætta
 printers_tap_find	Pikkaðu á Finna til að skrá prentara sem þetta tæki getur notað.
 printers_none_found	Ekkert fannst — sláðu inn heiti kerfisprentara eða IP (t.d. 192.168.1.50).
 printer_from_find	Bætt við {name}

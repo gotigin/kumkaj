@@ -507,6 +507,7 @@ find_printers	Принтерлерді табу
 printers_looking	Іздеуде…
 saving_printer	Принтер қосылуда…
 cancelled	Бас тартылды
+press_back_again_exit	Шығу үшін «Артқа» түймесін қайта басыңыз
 printers_tap_find	Осы құрылғы қолдана алатын принтерлер тізімі үшін Іздеуді түртіңіз.
 printers_none_found	Ештеңе табылмады — жүйелік принтер атын немесе IP жазыңыз (мыс. 192.168.1.50).
 printer_from_find	{name} қосылды

@@ -507,6 +507,7 @@ find_printers	Chọta igwe mbipụta
 printers_looking	Na-achọ…
 saving_printer	Na-etinye igwe mbipụta…
 cancelled	Akagbuola
+press_back_again_exit	Pịa Azụ ọzọ ka ị pụọ
 printers_tap_find	Kpatụ Chọta ka ị hụ igwe mbipụta ngwaọrụ a nwere ike iji.
 printers_none_found	Ọ dịghị achọtara — dee aha igwe mbipụta sistemụ ma ọ bụ IP (dịka 192.168.1.50).
 printer_from_find	E tinyere {name}

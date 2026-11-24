@@ -507,6 +507,7 @@ find_printers	Faigh priontálaithe
 printers_looking	Ag féachaint…
 saving_printer	Ag cur priontálaí leis…
 cancelled	Cealaithe
+press_back_again_exit	Brúigh Ar ais arís chun scoir
 printers_tap_find	Tapaigh Faigh chun liosta a fháil de na printéirí is féidir leis an bhfeiste seo a úsáid.
 printers_none_found	Níor aimsíodh aon cheann — clóscríbhneoir córais nó IP a chlóscríobh (m.sh. 192.168.1.50).
 printer_from_find	Cuirtear {name}

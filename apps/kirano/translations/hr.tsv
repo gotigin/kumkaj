@@ -507,6 +507,7 @@ find_printers	Pronađi pisače
 printers_looking	Tražim…
 saving_printer	Dodajem pisač…
 cancelled	Otkazano
+press_back_again_exit	Ponovno pritisnite Natrag za izlaz
 printers_tap_find	Dodirnite Pronađi da vidite pisače koje ovaj uređaj može koristiti.
 printers_none_found	Ništa nije pronađeno — upišite ime sustavnog pisača ili IP (npr. 192.168.1.50).
 printer_from_find	Dodano {name}

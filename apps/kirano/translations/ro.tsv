@@ -507,6 +507,7 @@ find_printers	Găsește imprimante
 printers_looking	Se caută…
 saving_printer	Se adaugă imprimanta…
 cancelled	Anulat
+press_back_again_exit	Apasă din nou pe Înapoi pentru a ieși
 printers_tap_find	Atinge Căutare ca să listezi imprimantele pe care le poate folosi acest dispozitiv.
 printers_none_found	Nimic găsit — tastează un nume de imprimantă de sistem sau un IP (ex. 192.168.1.50).
 printer_from_find	Adăugat {name}

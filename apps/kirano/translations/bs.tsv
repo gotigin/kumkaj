@@ -507,6 +507,7 @@ find_printers	Pronađi štampače
 printers_looking	Tražim…
 saving_printer	Dodajem štampač…
 cancelled	Otkazano
+press_back_again_exit	Pritisnite ponovo Nazad za izlaz
 printers_tap_find	Dodirnite Pronađi da vidite štampače koje ovaj uređaj može koristiti.
 printers_none_found	Ništa nije pronađeno — upišite ime sistemskog štampača ili IP (npr. 192.168.1.50).
 printer_from_find	Dodato {name}

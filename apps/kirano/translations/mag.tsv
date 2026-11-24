@@ -507,6 +507,7 @@ find_printers	प्रिंटर खोजऽ
 printers_looking	ई डिवाइस आउर वाई‑फ़ाई पर प्रिंटर खोज रहल हथ…
 saving_printer	प्रिंटर जोड़ रहल हथ…
 cancelled	रद्द
+press_back_again_exit	बाहर निकले खातिर फिर से “वापस” दबावऽ
 printers_tap_find	ई डिवाइस के प्रिंटर देखने खातिर खोजऽ दबाऽ।
 printers_none_found	कोई प्रिंटर नइखे मिला — सिस्टम प्रिंटर के नाम लिखऽ, भा नेटवर्क पता (जैसे 192.168.1.50)।
 printer_from_find	{name} जोड़ा

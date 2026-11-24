@@ -507,6 +507,7 @@ find_printers	Знайдзіце прынтэры
 printers_looking	Шукаю...
 saving_printer	Даданне прынтара…
 cancelled	Адменена
+press_back_again_exit	Націсніце «Назад» яшчэ раз, каб выйсці
 printers_tap_find	Націсніце «Знайсці», каб пералічыць прынтары, якія можа выкарыстоўваць гэта прылада.
 printers_none_found	Нічога не знойдзена — увядзіце імя сістэмнага прынтара або IP (напрыклад, 192.168.1.50).
 printer_from_find	Дададзена {name}

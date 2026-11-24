@@ -519,6 +519,7 @@ find_printers	Dewch o hyd i argraffwyr
 printers_looking	Yn chwilio…
 saving_printer	Yn ychwanegu argraffydd…
 cancelled	Wedi'i ganslo
+press_back_again_exit	Pwyswch Nôl eto i adael
 printers_tap_find	Tapiwch Chwilio i restru argraffwyr y gall y ddyfais hon eu defnyddio.
 printers_none_found	Dim wedi'u canfod — teipiwch enw argraffydd system neu IP (e.e. 192.168.1.50).
 printer_from_find	Wedi ychwanegu {name}

@@ -507,6 +507,7 @@ find_printers	मुद्रकान् अन्वेष्टुम्
 printers_looking	पश्यन्...
 saving_printer	मुद्रकं योजयित्वा...
 cancelled	रद्दं कृतम्
+press_back_again_exit	निर्गन्तुं पुनः «पृष्ठतः» नुदन्तु
 printers_tap_find	एतत् यन्त्रं उपयोक्तुं शक्नोति इति मुद्रकान् सूचीतुं अन्वेष्टुं ट्याप् कुर्वन्तु ।
 printers_none_found	कोऽपि न लब्धः — प्रणालीमुद्रकस्य नाम अथवा IP (उदा. 192.168.1.50) टङ्कयन्तु ।
 printer_from_find	योजितम् {name} .

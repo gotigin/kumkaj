@@ -507,6 +507,7 @@ find_printers	Znajdź drukarki
 printers_looking	Szukam…
 saving_printer	Dodawanie drukarki…
 cancelled	Anulowano
+press_back_again_exit	Naciśnij ponownie Powrót, aby wyjść
 printers_tap_find	Kliknij Znajdź, aby wyświetlić listę drukarek, z których może korzystać to urządzenie.
 printers_none_found	Nie znaleziono żadnej — wpisz nazwę drukarki systemowej lub adres IP (np. 192.168.1.50).
 printer_from_find	Dodano {name}

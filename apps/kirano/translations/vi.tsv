@@ -507,6 +507,7 @@ find_printers	Tìm máy in
 printers_looking	Đang tìm máy in trên thiết bị này và Wi‑Fi…
 saving_printer	Đang thêm máy in…
 cancelled	Đã hủy
+press_back_again_exit	Nhấn Quay lại lần nữa để thoát
 printers_tap_find	Nhấn Tìm máy in — liệt kê máy in hệ thống và máy in biên nhận mạng trên Wi‑Fi này.
 printers_none_found	Không tìm thấy máy in — nhập tên hệ thống hoặc địa chỉ mạng (vd. 192.168.1.50).
 printer_from_find	Đã thêm {name}

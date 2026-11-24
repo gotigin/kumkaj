@@ -519,6 +519,7 @@ find_printers	ស្វែងរក​ម៉ាស៊ីនបោះពុម្
 printers_looking	កំពុង​ស្វែងរក…
 saving_printer	កំពុង​បន្ថែម​ម៉ាស៊ីន…
 cancelled	បាន​លុបចោល
+press_back_again_exit	ចុច “ថយក្រោយ” ម្ដងទៀត​ដើម្បី​ចាកចេញ
 printers_tap_find	ប៉ះ​ស្វែងរក​ដើម្បី​រាយ​ម៉ាស៊ីន​ដែល​ឧបករណ៍​នេះ​ប្រើ​បាន។
 printers_none_found	រក​មិនឃើញ — វាយ​ឈ្មោះ​ម៉ាស៊ីន​ប្រព័ន្ធ ឬ IP (ឧ. 192.168.1.50)។
 printer_from_find	បាន​បន្ថែម {name}

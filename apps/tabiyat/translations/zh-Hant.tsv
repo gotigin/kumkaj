@@ -520,6 +520,7 @@ find_printers	查找打印機
 printers_looking	正在本設備和 Wi‑Fi 上查找打印機…
 saving_printer	正在添加打印機…
 cancelled	已取消
+press_back_again_exit	再按一次返回鍵退出
 printers_tap_find	點按「查找」，列出此設備可用的打印機。
 printers_none_found	未找到打印機——請輸入系統打印機名稱或網絡地址（如 192.168.1.50）。
 printer_from_find	已添加 {name}

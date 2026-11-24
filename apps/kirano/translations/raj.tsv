@@ -507,6 +507,7 @@ find_printers	प्रिंटर ढूंढो
 printers_looking	देख रिया हूँ...
 saving_printer	प्रिंटर जोड़ रिया हां...
 cancelled	रद्द कर दियो गयो
+press_back_again_exit	बारै निकळण सारू फेरूं पाछो दबाओ
 printers_tap_find	प्रिंटर री सूची बणाबा रै वास्तै ढूंढो माथै टैप करो जिणनै ओ डिवाइस इस्तेमाल कर सकै है।
 printers_none_found	कोई भी कोनी मिल्यो — सिस्टम प्रिंटर रो नाम या आईपी (जियां 192.168.1.50) टाइप करो।
 printer_from_find	जोड़ दियो गयो {name}

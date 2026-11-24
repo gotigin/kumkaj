@@ -507,6 +507,7 @@ find_printers	Nemo firintoci
 printers_looking	Ana nema…
 saving_printer	Ana ƙara firinta…
 cancelled	An soke
+press_back_again_exit	Sake danna Baya don fita
 printers_tap_find	Taɓa Nemo don jera firintocin da wannan na'ura za ta iya amfani da su.
 printers_none_found	Ba a sami kowa ba — rubuta sunan firinta na tsarin ko IP (misali 192.168.1.50).
 printer_from_find	An ƙara {name}

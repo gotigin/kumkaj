@@ -507,6 +507,7 @@ find_printers	Εύρεση εκτυπωτών
 printers_looking	Αναζήτηση…
 saving_printer	Προσθήκη εκτυπωτή…
 cancelled	Ακυρώθηκε
+press_back_again_exit	Πατήστε ξανά «Πίσω» για έξοδο
 printers_tap_find	Πατήστε Εύρεση για να δείτε τους εκτυπωτές που μπορεί να χρησιμοποιήσει αυτή η συσκευή.
 printers_none_found	Δεν βρέθηκε τίποτα — γράψτε όνομα εκτυπωτή συστήματος ή IP (π.χ. 192.168.1.50).
 printer_from_find	Προστέθηκε {name}

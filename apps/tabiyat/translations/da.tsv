@@ -519,6 +519,7 @@ find_printers	Find printere
 printers_looking	Leder…
 saving_printer	Tilføjer printer…
 cancelled	Annulleret
+press_back_again_exit	Tryk på Tilbage igen for at afslutte
 printers_tap_find	Tryk Find for at vise printere som denne enhed kan bruge.
 printers_none_found	Ingen fundet — skriv et systemprinternavn eller en IP (f.eks. 192.168.1.50).
 printer_from_find	Tilføjede {name}

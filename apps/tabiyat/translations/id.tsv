@@ -519,6 +519,7 @@ find_printers	Cari printer
 printers_looking	Mencari printer di perangkat ini dan Wi‑Fi…
 saving_printer	Menambahkan printer…
 cancelled	Dibatalkan
+press_back_again_exit	Tekan Kembali sekali lagi untuk keluar
 printers_tap_find	Ketuk Cari untuk menampilkan printer yang dapat dipakai perangkat ini.
 printers_none_found	Tidak ada printer — ketik nama sistem atau alamat jaringan (mis. 192.168.1.50).
 printer_from_find	Ditambahkan {name}

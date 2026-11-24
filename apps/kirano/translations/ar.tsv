@@ -507,6 +507,7 @@ find_printers	ابحث عن الطابعات
 printers_looking	جارٍ البحث عن الطابعات على هذا الجهاز وWi‑Fi…
 saving_printer	إضافة الطابعة…
 cancelled	ملغى
+press_back_again_exit	اضغط «رجوع» مرة أخرى للخروج
 printers_tap_find	اضغط ابحث عن الطابعات — تُدرج طابعات النظام وطابعات الإيصالات الشبكية على هذا Wi‑Fi.
 printers_none_found	لم يُعثر على طابعات — اكتب اسم طابعة النظام أو عنوان شبكة (مثل 192.168.1.50)。
 printer_from_find	تمت إضافة {name}

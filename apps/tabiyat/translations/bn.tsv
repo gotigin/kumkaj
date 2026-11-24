@@ -519,6 +519,7 @@ find_printers	প্রিন্টার খুঁজুন
 printers_looking	এই ডিভাইস ও Wi‑Fi-এ প্রিন্টার খুঁজছে…
 saving_printer	প্রিন্টার যোগ হচ্ছে…
 cancelled	বাতিল
+press_back_again_exit	বের হতে আবার «ফিরে» চাপুন
 printers_tap_find	এই ডিভাইস যে প্রিন্টার ব্যবহার করতে পারে তা দেখতে খুঁজুন-এ ট্যাপ করুন।
 printers_none_found	কোনো প্রিন্টার পাওয়া যায়নি — সিস্টেম প্রিন্টারের নাম বা নেটওয়ার্ক ঠিকানা লিখুন (যেমন 192.168.1.50)।
 printer_from_find	{name} যোগ হলো

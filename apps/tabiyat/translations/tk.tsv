@@ -519,6 +519,7 @@ find_printers	Printerleri tapyň
 printers_looking	Seredýän…
 saving_printer	Printer goşmak…
 cancelled	Atyryldy
+press_back_again_exit	Çykmak üçin Yzyna ýene bir gezek basyň
 printers_tap_find	Bu enjamyň ulanyp boljak printerlerini sanawlamak üçin tapyň.
 printers_none_found	Hiç kim tapylmady - ulgam printeriniň adyny ýa-da IP ýazyň (mes. 192.168.1.50).
 printer_from_find	{name} goşuldy

@@ -507,6 +507,7 @@ find_printers	Atopar impresoras
 printers_looking	Buscando…
 saving_printer	Engadindo a impresora…
 cancelled	Anulado
+press_back_again_exit	Prema Atrás de novo para saír
 printers_tap_find	Prema Atopar para listar as impresoras que este dispositivo pode usar.
 printers_none_found	Non se atopou ningunha — escriba un nome de impresora do sistema ou unha IP (p. ex. 192.168.1.50).
 printer_from_find	Engadida {name}

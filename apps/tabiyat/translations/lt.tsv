@@ -519,6 +519,7 @@ find_printers	Rasti spausdintuvus
 printers_looking	Ieškoma…
 saving_printer	Pridedamas spausdintuvas…
 cancelled	Atšaukta
+press_back_again_exit	Norėdami išeiti, dar kartą paspauskite „Atgal“
 printers_tap_find	Bakstelėkite Paieška, kad pamatytumėte spausdintuvus, kuriuos šis įrenginys gali naudoti.
 printers_none_found	Nieko nerasta — įveskite sistemos spausdintuvo pavadinimą arba IP (pvz. 192.168.1.50).
 printer_from_find	Pridėta {name}

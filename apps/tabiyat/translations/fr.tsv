@@ -519,6 +519,7 @@ find_printers	Rechercher des imprimantes
 printers_looking	Recherche d'imprimantes sur cet appareil et le Wi‑Fi…
 saving_printer	Ajout de l'imprimante…
 cancelled	Annulé
+press_back_again_exit	Appuyez à nouveau sur Retour pour quitter
 printers_tap_find	Touchez Rechercher des imprimantes pour lister celles que cet appareil peut utiliser.
 printers_none_found	Aucune imprimante trouvée — saisissez un nom système ou une adresse réseau (ex. 192.168.1.50).
 printer_from_find	Ajout de {name}

@@ -507,6 +507,7 @@ find_printers	Gjej printerët
 printers_looking	Po kërkon…
 saving_printer	Po shtohet printeri…
 cancelled	E anuluar
+press_back_again_exit	Shtypni përsëri Prapa për të dalë
 printers_tap_find	Prekni Gjej për të listuar printerët që kjo pajisje mund të përdorë.
 printers_none_found	Nuk u gjet asnjë — shkruani emrin e printerit të sistemit ose një IP (p.sh. 192.168.1.50).
 printer_from_find	U shtua {name}

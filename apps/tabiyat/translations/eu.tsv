@@ -519,6 +519,7 @@ find_printers	Aurkitu inprimagailuak
 printers_looking	Bilatzen…
 saving_printer	Inprimagailua gehitzen…
 cancelled	Ezeztatuta
+press_back_again_exit	Sakatu berriro Atzera irteteko
 printers_tap_find	Sakatu Bilatu gailu honek erabil ditzakeen inprimagailuak zerrendatzeko.
 printers_none_found	Ez da ezer aurkitu — idatzi sistema-inprimagailuaren izena edo IP bat (adib. 192.168.1.50).
 printer_from_find	{name} gehituta

@@ -519,6 +519,7 @@ find_printers	Wad ia ki nongpynmih kot
 printers_looking	Ka jingpeit...
 saving_printer	Ka jingpynrung ia ka kor shon...
 cancelled	La weng noh
+press_back_again_exit	Nion biang ia ka “Badien” ban mih na ka app
 printers_tap_find	Nion Find ban list ia ki printer kiba kane ka tiar ka lah ban pyndonkam.
 printers_none_found	Ym shym la lap — thoh ia ka kyrteng jong ka system printer lane ia ka IP (e.g. 192.168.1.50).
 printer_from_find	La pyndap {name}

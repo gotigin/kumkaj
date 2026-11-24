@@ -507,6 +507,7 @@ find_printers	Chèche enprimant
 printers_looking	Ap chèche…
 saving_printer	Ap ajoute enprimant…
 cancelled	Anile
+press_back_again_exit	Peze Retou ankò pou soti
 printers_tap_find	Peze Chèche pou montre enprimant aparèy sa a ka sèvi.
 printers_none_found	Pa jwenn anyen — ekri non yon enprimant sistèm oswa yon IP (pa egzanp 192.168.1.50).
 printer_from_find	Ajoute {name}

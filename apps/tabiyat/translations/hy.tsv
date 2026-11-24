@@ -519,6 +519,7 @@ find_printers	Գտնել տպիչներ
 printers_looking	Որոնում…
 saving_printer	Տպիչի ավելացում…
 cancelled	Չեղարկված
+press_back_again_exit	Կրկին սեղմեք «Հետ»՝ դուրս գալու համար
 printers_tap_find	Հպեք Որոնում՝ այս սարքի օգտագործելի տպիչների ցանկի համար։
 printers_none_found	Ոչինչ չի գտնվել — մուտքագրեք համակարգային տպիչի անուն կամ IP (օր. 192.168.1.50)։
 printer_from_find	Ավելացվել է {name}

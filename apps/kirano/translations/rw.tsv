@@ -507,6 +507,7 @@ find_printers	Shaka amacapyi
 printers_looking	Irimo gushaka…
 saving_printer	Irimo kongeraho mucapyi…
 cancelled	Byahagaritswe
+press_back_again_exit	Ongera ukande «Subira inyuma» kugira ngo usohoke
 printers_tap_find	Kanda Shaka kugira ngo ubone amacapyi iki gikoresho gishobora gukoresha.
 printers_none_found	Nta na kimwe cyabonetse — andika izina rya mucapyi wa sisitemu cyangwa IP (urugero 192.168.1.50).
 printer_from_find	Wongeyeho {name}

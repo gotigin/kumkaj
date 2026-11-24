@@ -519,6 +519,7 @@ find_printers	Poišči tiskalnike
 printers_looking	Iskanje…
 saving_printer	Dodajanje tiskalnika…
 cancelled	Preklicano
+press_back_again_exit	Za izhod znova pritisnite Nazaj
 printers_tap_find	Tapnite Iskanje za seznam tiskalnikov, ki jih ta naprava lahko uporablja.
 printers_none_found	Nič najdenega — vnesite ime sistemskega tiskalnika ali IP (npr. 192.168.1.50).
 printer_from_find	Dodan {name}

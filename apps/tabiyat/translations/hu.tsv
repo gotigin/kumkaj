@@ -519,6 +519,7 @@ find_printers	Keressen nyomtatókat
 printers_looking	Keresi…
 saving_printer	Nyomtató hozzáadása…
 cancelled	Törölve
+press_back_again_exit	A kilépéshez nyomja meg újra a Vissza gombot
 printers_tap_find	Érintse meg a Keresés lehetőséget az eszköz által használható nyomtatók listájához.
 printers_none_found	Nem található – írja be a rendszernyomtató nevét vagy IP-címét (pl. 192.168.1.50).
 printer_from_find	Hozzáadva {name}

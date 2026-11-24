@@ -519,6 +519,7 @@ find_printers	Printers zoeken
 printers_looking	Printers zoeken op dit apparaat en Wi‑Fi…
 saving_printer	Voeg printer toe…
 cancelled	Geannuleerd
+press_back_again_exit	Druk nogmaals op Terug om af te sluiten
 printers_tap_find	Tik op Zoeken om de printers te tonen die dit apparaat kan gebruiken.
 printers_none_found	Geen printers gevonden — typ een systeemnaam of netwerkadres (bijv. 192.168.1.50).
 printer_from_find	Toegevoegd {name}

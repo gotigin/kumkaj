@@ -507,6 +507,7 @@ find_printers	ຊອກຫາ​ເຄື່ອງ​ພິມ
 printers_looking	ກຳລັງ​ຊອກຫາ...
 saving_printer	ກຳລັງ​ເພີ່ມ​ເຄື່ອງ​ພິມ...
 cancelled	ຍົກເລີກ
+press_back_again_exit	ກົດ “ກັບຄືນ” ອີກ​ຄັ້ງ​ເພື່ອ​ອອກ
 printers_tap_find	ແຕະ​ຊອກຫາ​ເພື່ອ​ເຮັດ​ລາຍການ​ເຄື່ອງ​ພິມ​ທີ່​ອຸປະກອນ​ນີ້​ສາມາດ​ໃຊ້.
 printers_none_found	ບໍ່​ພົບ - ພິມ​ຊື່​ເຄື່ອງ​ພິມ​ລະບົບ ຫຼື IP (ເຊັ່ນ: 192.168.1.50).
 printer_from_find	ເພີ່ມ​ແລ້ວ {name}

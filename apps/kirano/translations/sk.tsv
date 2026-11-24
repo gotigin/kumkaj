@@ -507,6 +507,7 @@ find_printers	Nájdite tlačiarne
 printers_looking	Hľadáte…
 saving_printer	Pridáva sa tlačiareň…
 cancelled	Zrušené
+press_back_again_exit	Opätovným stlačením tlačidla Späť ukončíte aplikáciu
 printers_tap_find	Klepnutím na Nájsť zobrazíte zoznam tlačiarní, ktoré môže toto zariadenie používať.
 printers_none_found	Nenašlo sa žiadne – zadajte názov systémovej tlačiarne alebo IP (napr. 192.168.1.50).
 printer_from_find	Pridané {name}
