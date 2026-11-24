@@ -322,7 +322,9 @@ mod tests {
 
     #[test]
     fn no_text_is_left_in_english_in_most_packs() {
-        checks::no_text_is_left_in_english(DIR, &keys(), &en, &[]);
+        // Three product names: they stay as written in every script; only
+        // the list punctuation changes (、 in zh/ja, و in ar/ur).
+        checks::no_text_is_left_in_english(DIR, &keys(), &en, &["android_windows_linux"]);
     }
 
     #[test]
