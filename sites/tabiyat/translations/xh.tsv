@@ -1,227 +1,227 @@
 # Xhosa — isiXhosa (xh). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Isimzekelo
+download_free	Khuphela simahla
+whatsapp_for_a_demo	Umboniso nge-WhatsApp
+free_on_android_windows_and	Simahla kwi-Android, Windows ne-Linux.
+the_pharmacy_counter	ikhawuntara yekhemesti
+pharmacy_counter	Ikhawuntara yekhemesti
+tabiyat_the_pharmacy_counter	TABIYAT · IKHAWUNTARA YEKHEMESTI
+pharmacy_counter_offline_your_books	Ikhawuntara yekhemesti. Ngaphandle kwe-intanethi. Iincwadi zakho.
+medicines_barcode_and_salt_search	Amayeza, ukukhangela ngebhakhowudi nangesithako esisebenzayo, ibhetshi nomhla wokuphelelwa kwiincwadi zakho — kwizixhobo zakho. Iimpawu zomnini kuphela; akukho kuzenzisa ukuthobela uMthetho waMayeza.
+tap_the_bill_to_walk	Cofa ibhili ukuze ulandele intengiso kwikhawuntara
+cash_memo	Irisithi yemali ephathekayo
+ready	Ilungile
+total	Isixa
+tap_to_add_the_first	Cofa ukuze wongeze iyeza lokuqala
+example_pharmacy_lines_not_a	Imigca engumzekelo yekhemesti, hayi ikhawuntara yemali yokwenyani. I-Tabiyat ilandela indlela efanayo: thengisa → hlawulisa → incwadi yosuku.
+n_2_counter_sell	2 · UKUTHENGISA KWIKHAWUNTARA
+medicine_quantity_pay_three_taps	Iyeza, inani, hlawula — ukucofa kathathu.
+upi_qr_ready	I-UPI QR ilungile
+example_bill	Umzekelo webhili
+fast_counter_billing	Ukukhupha iibhili ngokukhawuleza kwikhawuntara
+add_the_line_set_the	Yongeza umgca, seta inani, hlawulisa — imali ephathekayo, i-UPI okanye ukwahlula.
+gst_tax_invoice_or_cash	I-invoyisi yerhafu ye-GST okanye irisithi yemali ephathekayo
+the_bill_lane_you_need	Uhlobo lwebhili olufunayo kwintengiso.
+day_book_follows	Incwadi yosuku iyalandela
+every_tender_lands_in_books	Yonke indlela yokuhlawula ingena kwi-Incwadi yosuku xa uvala intengiso.
+n_3_barcode_salt	3 · IBHAKHOWUDI NESITHAKO ESISEBENZAYO
+scan_the_barcode_or_find	Skena ibhakhowudi — okanye uyifumane ngesithako esisebenzayo.
+search	Khangela
+composition_paracetamol_strip_of_10	Ukwakheka: Paracetamol · ipakethe yeepilisi ezili-10
+salt_amoxicillin	Isithako esisebenzayo: amoxicillin
+ranks_barcode_name_and_composition	Icwangcisa ibhakhowudi, igama nokwakheka kunye.
+wedge_scanner_or_type_enter	Iskena sekhibhodi okanye cinezela u-Enter — umgca uwela kwibhili.
+barcode_first	Ibhakhowudi kuqala
+scan_or_paste_the_code	Skena okanye uncamathisele ikhowudi; efanayo kwikhathalogu iyavela.
+salt_composition	Isithako esisebenzayo / ukwakheka
+type_the_salt_when_the	Chwetheza isithako esisebenzayo xa igama lemveliso lingelilo elithethwe ngumthengi.
+owner_rx_schedule_h_flags	Iimpawu zomnini zemiyalelo kagqirha / Schedule H
+reminders_you_set_not_a	Izikhumbuzo ozisetileyo — hayi irejista esemthethweni, hayi icebiso lezempilo.
+n_4_batch_expiry	4 · IBHETSHI NOKUPHELELWA
+batch_and_expiry_on_your	Ibhetshi nomhla wokuphelelwa kwiincwadi zakho — izilumkiso zomnini.
+buy_batch_a12	Ukuthenga · ibhetshi A12
+expires_2027_03_alert_in	Iphelelwa ngo-2027-03 · isilumkiso kwiintsuku ezi-7
+ors_sachets_batch_b04	Iipakethe ze-ORS · ibhetshi B04
+expires_2026_11_near_expiry	Iphelelwa ngo-2026-11 · umgca othi “kufutshane nokuphelelwa” kwi-Incwadi yosuku
+shop_bookkeeping_only_not_drugs	Ukugcinwa kweencwadi zevenkile kuphela — hayi ukuthobela uMthetho waMayeza.
+batch_on_buy	Ibhetshi xa uthenga
+record_batch_and_expiry_when	Bhala ibhetshi nomhla wokuphelelwa xa isitokhwe singena.
+near_expiry_alerts	Izilumkiso zokuphelelwa okukufutshane
+books_and_sell_can_hint	I-Incwadi yosuku ne-Thengisa zinokukhumbuza phambi kokuba umhla udlule.
+owner_practice	Isiqhelo somnini
+fefo_hints_and_rx_notes	Iingcebiso ze-FEFO namanqaku emiyalelo kagqirha ngawakho ukuwalandela — i-Tabiyat ibhala oko ukufakayo.
+n_5_khata	5 · INCWADI YAMATYALA
+customer_credit_and_supplier_dues	Amatyala abathengi namatyala ababoneleli kwincwadi enye yamaqabane.
+mehta_clinic_customer	Ikliniki kaMehta · Umthengi
+due_from_earlier	Ityala langaphambili
+today_s_sale_due	+ intengiso yanamhlanje (ityala)
+balance	Intsalela
+settle_later_part_cash_part	Hlawula kamva — inxalenye ngemali ephathekayo, inxalenye nge-UPI. Amatyala ababoneleli akwisikrini esifanayo se-Amaqabane.
+due_on_the_bill	Ityala kwibhili
+leave_a_balance_on_khata	Shiya intsalela kwincwadi yamatyala ngaphandle kwenye i-app yeencwadi.
+supplier_buys_too	Ukuthenga kubaboneleli nako
+who_you_owe_updates_when	Abo ubatyalayo bayahlaziywa xa isitokhwe sifika.
+auditable	Kunokuphicothwa
+who_when_and_how_much	Ngubani, nini kwaye malini kuhlala kwincwadi yosuku.
+n_6_internet_down	6 · I-INTANETHI INQAMUKILE?
+the_internet_drops_the_counter	I-intanethi iyanqamuka. Ikhawuntara iqhubeka ithengisa.
+router_no_internet	I-router: akukho intanethi
+main_counter_selling_and_settling	Ikhawuntara enkulu: iyathengisa kwaye iyahlawulisa
+second_till_joined_on_your	Ikhawuntara yemali yesibini: iqhagamshelwe kwi-Wi-Fi yakho
+books_live_on_the_shop	Iincwadi zihlala kwizixhobo zevenkile
+when_the_internet_drops_nothing	Xa i-intanethi inqamuka, akukho nto kwikhawuntara yekhemesti eyilindileyo.
+one_server_lan_clients	Iseva enye, izixhobo ze-LAN
+extra_tills_share_the_same	Iikhawuntara zemali ezongezelelweyo zabelana ngeencwadi ezifanayo kuthungelwano lwevenkile.
+n_7_free_forever_locally	7 · SIMAHLA NGONAPHAKADE KWIZIXHOBO ZAKHO
+free_forever_on_your_devices	Simahla ngonaphakade kwizixhobo zakho.
+no_per_bill_charge	Akukho ntlawulo ngebhili
+no_fee_per_sale_medicine	Akukho mali ngentengiso, iyeza, ikhawuntara yemali okanye i-PIN yomsebenzi ekufakweni kwisixhobo sakho.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	I-Tabiyat efanayo kwifowuni nakwikhawuntara yemali yekhompyutha.
+optional_kumkaj_cloud	I-Kumkaj Cloud ozikhethelayo
+yearly_steady_6k_swift_12k	Ngonyaka: Steady ₹6k · Swift ₹12k · Priority ₹24k ngaphandle kwerhafu (okanye uqikelelo lwexabiso olwenziwe ngokwezifiso). Thenga kwi-/shop.
+n_8_start	8 · QALISA
+put_tabiyat_on_the_counter	Beka i-Tabiyat kwikhawuntara.
+download_free_or_whatsapp_for	Khuphela simahla, okanye usithumelele kwi-WhatsApp ukuze uboniswe ngokwekhemesti yakho nedolophu yakho.
+privacy	Ubumfihlo
+terms	Imiqathango
+cancellation	Ukurhoxisa
+cloud_shop	Ivenkile yelifu
+account	I-akhawunti
+chapter_counter_sell	Ukuthengisa kwikhawuntara
+chapter_barcode_salt	Ibhakhowudi nesithako esisebenzayo
+chapter_batch_expiry	Ibhetshi nokuphelelwa
+chapter_khata	Incwadi yamatyala
+chapter_extra_till	Ikhawuntara yemali eyongezelelweyo
+chapter_offline	Ngaphandle kwe-intanethi
+chapter_start	Qalisa
+bill_selling	Kuyathengiswa
+bill_settle	Hlawulisa
+bill_paid	Ihlawulwe
+bill_next_line	Cofa ukuze wongeze umgca olandelayo
+bill_settle_hint	Cofa ukuze uhlawulise — imali ephathekayo okanye i-UPI
+bill_upi_paid	I-UPI ₹ 162 · kuhlawulwe
+bill_paid_line	Kuhlawulwe · incwadi yosuku ihlaziyiwe
+lan_eyebrow	6 · IKHAWUNTARA YEMALI EYONGEZELELWEYO
+lan_title	Enye ikhawuntara yemali kwi-Wi-Fi yevenkile.
+cta_installers_note	Izifaki ziya kubekwa apha xa nganye iphumelele ukufakwa kumatshini omtsha. Okwangoku, cela umboniso kwi-WhatsApp.
+cta_whatsapp_soon	Umgca womboniso we-WhatsApp uza kuvuleka kungekudala. Umyalezo wakho uza kufundeka ngolu hlobo: “{message}”.
+acct_page_title	I-akhawunti — Tabiyat
+acct_lede	I-akhawunti enye yesayithi nee-app — ifomu efanayo nokuba umtsha okanye uyabuya.
+acct_email	I-imeyile
+acct_name_optional	Igama (ngokuzikhethela)
+acct_password	Igama lokugqitha
+acct_continue	Qhubeka
+acct_forgot	Ulilibele igama lokugqitha?
+acct_reset_hint	Siza kukuthumelela ikhonkco lokuseta kwakhona nge-imeyile. Sebenzisa idilesi efanayo obhalise ngayo.
+acct_send_reset	Thumela ikhonkco lokuseta kwakhona
+acct_cancel	Rhoxisa
+acct_or_continue	okanye qhubeka usebenzisa
+acct_phone	Ifowuni
+acct_mobile	Inombolo yeselula
+acct_send_sms	Thumela ikhowudi ye-SMS
+acct_sms_code	Ikhowudi ye-SMS
+acct_confirm_code	Qinisekisa ikhowudi
+acct_signed_in	Ungenile
+acct_signed_in_as	Ungene njengo
+acct_status	Isimo
+acct_sign_in_methods	Iindlela zokungena
+acct_cloud_username	Igama lomsebenzisi lelifu
+acct_plan	Isicwangciso
+acct_resend_verify	Phinda uthumele i-imeyile yokuqinisekisa
+acct_sign_out	Phuma
+acct_cloud_sandbox	Kumkaj Cloud (uvavanyo)
+acct_current_password	Igama lokugqitha langoku
+acct_email_for_password	I-imeyile yokungena ngegama lokugqitha
+acct_new_password	Igama lokugqitha elitsha
+acct_confirm_new_password	Qinisekisa igama lokugqitha elitsha
+acct_add_way	Yongeza enye indlela yokungena
+acct_link_hint	Qhagamshela iindlela kwi-akhawunti enye ukuze ukwazi ukubuyisela ukufikelela ukuba enye iyasilela.
+acct_link_google	Qhagamshela i-Google
+acct_link_microsoft	Qhagamshela i-Microsoft
+acct_link_github	Qhagamshela i-GitHub
+acct_link_phone	Qhagamshela ifowuni
+acct_send_sms_link	Thumela i-SMS ukuze uqhagamshele
+acct_confirm_link_phone	Qinisekisa uze uqhagamshele ifowuni
+shop_page_title	Ivenkile — Tabiyat
+shop_lede	Izicwangciso zelifu zonyaka — irhafu yongezwa xa uhlawula. I-app epheleleyo ye-Tabiyat kwizixhobo zakho ihlala isimahla ngonaphakade, ngaphandle kwezibhengezo.
+shop_cart	Inqwelo
+shop_cart_empty_hint	Inqwelo yakho ayinanto. Yongeza i-Steady, i-Swift okanye i-Priority.
+shop_checkout	Hlawula
+shop_clear	Cima
+shop_checkout_hint	Ukuhlawula kukungenisa kwiphepha le-akhawunti, emva koko kuqalise intlawulo (ukulinganisa kovavanyo okanye i-Paddle xa izitshixo zisetiwe).
+acct_billing_hint	Izicwangciso zonyaka — isango lokuhlawula longeza irhafu xa uhlawula. Ukusebenzisa kwisixhobo sakho kuhlala kusimahla ngonaphakade. Okwenziwe ngokwezifiso luqikelelo lwexabiso (lunokuba ngaphantsi kwe-Steady okanye ngaphezu kwe-Priority).
+shop_cloud_plans	Izicwangciso zelifu
+acct_federated	Ukungena ngenye i-akhawunti
+acct_err_invalid_email	Faka idilesi ye-imeyile esebenzayo.
+acct_err_weak_password	Sebenzisa igama lokugqitha elinoonobumba aba-6 ubuncinane.
+acct_err_wrong_password	Igama lokugqitha elingachanekanga.
+acct_err_invalid_credential	I-imeyile okanye igama lokugqitha alichanekanga.
+acct_err_popup_closed	Ifestile yokungena ivaliwe.
+acct_err_popup_cancelled	Ukungena kurhoxisiwe.
+acct_err_unauthorized_domain	Le domeyini ayigunyaziswanga kwi-Firebase Auth.
+acct_err_method_disabled	Loo ndlela yokungena ayikavulwa okwangoku.
+acct_err_too_many	Iinzame ezininzi kakhulu. Zama kwakhona kamva.
+acct_err_phone_format	Sebenzisa inombolo yefowuni epheleleyo enekhowudi yelizwe (umz. +91…).
+acct_err_sms_code	Loo khowudi ye-SMS ayichanekanga okanye iphelelwe lixesha.
+acct_err_no_account	Akukho akhawunti ine-imeyile leyo. Qhubeka ukuze uyenze, okanye usebenzise enye indlela.
+acct_err_recent_login	Ngenxa yokhuseleko, ngena kwakhona, emva koko uzame olu tshintsho kwakhona.
+acct_err_credential_in_use	Loo ndlela yokungena sele isetyenziswa yenye i-akhawunti.
+acct_err_email_in_use	Loo imeyile sele isetyenziswa yenye i-akhawunti.
+acct_err_already_linked	Loo ndlela sele iqhagamshelwe kule akhawunti.
+acct_err_exists_other_method	Sele ikho i-akhawunti ene-imeyile le esebenzisa enye indlela yokungena. Ngena ngaloo ndlela kuqala, uze uqhagamshele le kwiphepha le-akhawunti yakho.
+acct_err_generic	Kukho into engahambanga kakuhle.
+acct_method_password	I-imeyile negama lokugqitha
+acct_pw_hint_change	Tshintsha igama lakho lokugqitha. Uza kuqinisekisa ngelangoku.
+acct_pw_hint_add	Yongeza igama lokugqitha ukuze ukwazi ukungena nange-imeyile (kuluncedo ukuba umboneleli akafumaneki).
+acct_pw_change	Tshintsha igama lokugqitha
+acct_pw_add	Yongeza igama lokugqitha
+acct_billing_off	Ukuhlawula akukavulwa kwi-API yelifu okwangoku.
+acct_billing_no_provider	Akukho mboneleli wokwenyani wokuhlawula ovuliweyo kwi-API yelifu (ukulinganisa kuphela okukwisixhobo sakho).
+price_quote	Uqikelelo lwexabiso
+price_per_year	₹{amount}/ngonyaka ngaphandle kwerhafu
+acct_pay_received	Intlawulo ifunyenwe — kuhlaziywa isicwangciso sakho…
+acct_pay_declined	Intlawulo yaliwe okanye ayiphumelelanga
+acct_pay_failed_detail	{detail}. Isicwangciso sakho asitshintshwanga.
+acct_checkout_closed	Ukuhlawula kuvaliwe — akukho ntlawulo igqityiweyo. Isicwangciso sakho asitshintshanga.
+acct_checkout_failed	Ukuhlawula akuphumelelanga
+acct_pay_with	Hlawula nge-{provider}
+acct_plan_until	{plan} · kude kube ngu-{date}
+acct_unavailable	Akufumaneki
+acct_continue_hint	Qhubeka nge-imeyile, umboneleli, okanye ifowuni.
+acct_signed_in_fallback	(ungenile)
+acct_email_verified	I-imeyile iqinisekisiwe
+acct_email_unverified	I-imeyile ayikaqinisekiswa — jonga ibhokisi lakho lemiyalezo
+acct_signed_in_phone	Ungene ngefowuni
+acct_none_listed	Akukho nto idwelisiweyo okwangoku
+acct_signed_in_status	Ungenile.
+acct_created	I-akhawunti yenziwe. Jonga i-imeyile yakho ukuze uqinisekise xa ufumana ithuba.
+acct_reset_sent	Ukuba ikho i-akhawunti yaloo imeyile, ikhonkco lokuseta kwakhona lisendleleni. Jonga ibhokisi lakho lemiyalezo.
+acct_another_method	enye indlela
+acct_exists_via	I-akhawunti ka-{email} sele ikho nge-{method}. Ngena ngaloo ndlela kuqala, uze uqhagamshele lo mboneleli kwiphepha le-akhawunti yakho.
+acct_enter_current_pw	Faka igama lakho lokugqitha langoku.
+acct_relogin_retry	Phuma uze ungene kwakhona, emva koko uzame kwakhona.
+acct_pw_mismatch	Igama lokugqitha elitsha nesiqinisekiso azihambelani.
+acct_pw_updated	Igama lokugqitha lihlaziyiwe.
+acct_enter_email_pw	Faka i-imeyile oza kuyisebenzisa ukungena ngegama lokugqitha.
+acct_pw_added	Igama lokugqitha longeziwe. Ngoku unokungena nange-imeyile.
+acct_method_linked	Indlela yokungena iqhagamshelwe.
+acct_phone_linked	Ifowuni iqhagamshelwe kule akhawunti.
+acct_verify_sent	I-imeyile yokuqinisekisa ithunyelwe — jonga ibhokisi lakho lemiyalezo.
+shop_pricing_soon	Amaxabiso aza kufika kungekudala
+shop_request_quote	Cela uqikelelo lwexabiso
+shop_add_to_cart	Faka enqwelweni
+shop_notify_later	Ndazise kamva
+shop_included	Kuqukiwe
+shop_in_cart	I-{plan} isenqwelweni yakho.
+shop_remove	Susa
+shop_cart_is_empty	Inqwelo ayinanto.
+shop_prices_unpublished	Amaxabiso okuzithengela akakapapashwa kule mveliso. Cela uqikelelo lwexabiso olwenziwe ngokwezifiso okanye ubuye kamva.
+shop_cart_cleared	Inqwelo icinyiwe.
+plan_free_title	Simahla ngonaphakade
+plan_free_blurb	Imveliso epheleleyo kwizixhobo zakho. Akukho mali yelifu.
+plan_steady_blurb	Ilifu eliphilayo · 10 GB · isantya sokudlulisa esiphantsi
+plan_swift_blurb	Ilifu eliphilayo · 25 GB · isantya sokudlulisa esiphakathi
+plan_priority_blurb	Ilifu eliphilayo · 50 GB · isantya sokudlulisa esiphezulu kakhulu
+plan_custom_title	Okwenziwe ngokwezifiso
+plan_custom_blurb	Isabelo nesantya sokudlulisa ekuvunyelwene ngaso. Uqikelelo lwexabiso lunokuba ngaphantsi kwe-Steady okanye ngaphezu kwe-Priority.

@@ -1,254 +1,254 @@
 # Kinyarwanda — Ikinyarwanda (rw). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Urugero
+length	Uburebure
+download_free	Kura ku buntu
+whatsapp_for_a_demo	Kwerekwa kuri WhatsApp
+free_on_android_windows_and	Ku buntu kuri Android, Windows na Linux.
+courier_operating_system	sisitemu yo gucunga amapaki
+parcel_journey	URUGENDO RW’IPAKI
+walk_in	Kuhagera
+weigh	Gupima
+price	Igiciro
+label	Ikirango
+hand_over	Gushyikiriza
+track	Gukurikirana
+offline	Nta interineti
+start	Tangira
+moklanjo_courier_operating_system	MOKLANJO · SISITEMU YO GUCUNGA AMAPAKI
+book_move_and_settle_every	Andika, ohereza kandi urangize kwishyura buri paki — sisitemu imwe y’amapaki ku bikoresho byawe.
+parties_books_cod_labels_awb	Abafatanyabikorwa, ibitabo, COD, ibirango, amatsinda ya nimero za AWB, gukurikirana, abamotari n’inyemezabuguzi — uruziga rwose kuva kuri kontwari kugeza kwishyurwa, hari interineti cyangwa idahari. Ku buntu ku bikoresho byawe.
+the_walk_in_loop	URUZIGA RW’UHAGEZE
+actual_and_volumetric_side_by	Uburemere nyabwo n’uburemere bw’ingano, iruhande rumwe.
+charge	Yishyuza
+your_rate_card_cash_or	Urutonde rwawe rw’ibiciro, amafaranga mu ntoki cyangwa konti.
+next_booking	Iyandikwa rikurikira
+one_tap_clears_the_counter	Gukanda rimwe bisukura kontwari ku wundi uhageze.
+scroll_the_parcel_journey_rail	Manura — umurongo w’urugendo rw’ipaki uri hejuru werekana aho ugeze mu nkuru.
+n_2_weigh_it_right	2 · PIMA NEZA
+actual_or_volumetric_whichever_is	Uburemere nyabwo cyangwa ubw’ingano — ubunini kurusha ubundi, buzengurutswe uko ubishaka.
+try_a_box	Gerageza agasanduku
+domestic	Imbere mu gihugu
+international	Mu mahanga
+breadth	Ubugari
+height	Ubuhagarike
+weight_on_the_scale	Uburemere ku munzani
+chargeable_weight	UBUREMERE BWISHYURWA
+the_box_s_size_sets	Ingano y’agasanduku ni yo igena amafaranga.
+higher_of_the_two_rounded	Ubunini muri bibiri, buzamurwa kugeza kuri 0,5 kg ikurikira.
+in_the_app_the_divisor	Muri porogaramu, iduka ni ryo rishyiraho igabanya, intambwe yo kuzengurutsa n’ibipimo byawe (cm cyangwa inci, kg cyangwa lb). Buto ya Mu mahanga ikoresha ÷6000 ku iyandikwa rimwe utakoze kuri Igenamiterere.
+n_3_price_it	3 · SHYIRAHO IGICIRO
+your_rate_cards_your_party	Intonde zawe z’ibiciro, ibiciro by’abafatanyabikorwa bawe — n’inyungu yawe kuri buri rupapuro rw’ipaki.
+rate_card	Urutonde rw’ibiciro
+zone_service	Akarere · serivisi
+first_0_5_kg	0,5 kg ya mbere
+each_0_5_kg	Buri 0,5 kg
+local_surface	Mu karere · Mu nzira y’ubutaka
+within_state_express	Mu ntara · Byihuse
+metro_air	Umujyi munini · Indege
+zone_service_weight_slab	Akarere × serivisi × urwego rw’uburemere
+first_slab_and_each_extra	Urwego rwa mbere na buri rwego rwiyongeraho, kuri buri karere na serivisi.
+a_consignor_s_own_card	Urutonde rw’uwohereza ubwe
+regular_senders_get_their_rates	Abohereza kenshi babona ibiciro byabo; urutonde rusanzwe rureba abandi bose.
+margin_at_the_desk	Inyungu kuri kontwari
+your_sell_price_against_the	Igiciro cyawe cyo kugurisha ugereranyije n’igiciro cy’umwikorezi, kuri buri rupapuro rw’ipaki.
+n_4_label_it	4 · SHYIRAHO IKIRANGO
+awb_from_your_own_number	AWB ivuye mu matsinda yawe ya nimero. Shyiraho ikirango, sikana, ubone.
+number_pools_per_carrier	Amatsinda ya nimero kuri buri mwikorezi
+enter_each_carrier_s_start	Andika urukurikirane rwa mbere–rwa nyuma rwa buri mwikorezi rimwe; buri yandikwa rifata nimero ikurikira.
+code_128_labels	Ibirango bya Code 128
+the_awb_goes_on_the	AWB ishyirwa ku gasanduku nka barcode no mu mibare isanzwe.
+scan_to_find	Sikana kugira ngo ubone
+scan_a_label_to_open	Sikana ikirango kugira ngo ufungure urupapuro rwacyo kandi ukore igikwiye.
+n_5_hand_over	5 · SHYIKIRIZA
+hand_it_to_a_carrier	Bishyikirize umwikorezi, cyangwa wohereze umumotari wawe. Sisitemu imwe.
+into_a_carrier_bag	Mu mufuka w’umwikorezi
+the_manifest_holds_exactly_the	Urutonde rw’amapaki rurimo neza amapaki wahisemo — yose cyangwa nta na rimwe. Ipaki yanditswe ku wundi mwikorezi ntishobora kwinjira muri uyu mufuka.
+onto_your_own_rider_s	Mu rugendo rw’umumotari wawe
+pick_the_parcels_print_the	Hitamo amapaki, capa urupapuro rw’urugendo, maze umumotari akorere muri porogaramu imwe mu buryo bw’umumotari — hamwe n’ikimenyetso cyo kugeza.
+n_6_track_and_prove	6 · KURIKIRANA KANDI UGARAGAZE GIHAMYA
+every_move_recorded_and_only	Buri cyimuka kirandikwa — kandi ibyimuka bifite ishingiro gusa.
+booked	Byanditswe
+with_carrier	Biri ku mwikorezi
+out_for_delivery	Biri mu nzira yo kugezwa
+delivered	Byagejejwe
+booked_with_carrier_out_for	Byanditswe → Biri ku mwikorezi → Biri mu nzira yo kugezwa → Byagejejwe
+failed	Byananiranye
+reason_out_again_or_return	→ impamvu → byongera gusohoka, cyangwa bigasubizwa uwohereje.
+impossible_moves_refused	Ibyimuka bidashoboka biranzwe
+delivered_returned_and_cancelled	Byagejejwe, byasubijwe na byahagaritswe ni iherezo.
+proof_of_delivery	Ikimenyetso cyo kugeza
+a_photo_and_the_receiver	Ifoto n’umukono w’uwakiriye ku rupapuro rw’ipaki.
+failed_deliveries	Kugeza byananiranye
+reasons_attempts_out_again_or	Impamvu, inshuro zageragejwe, byongera gusohoka, cyangwa gusubira ku wohereje.
+n_7_money_comes_home	7 · AMAFARANGA AGARUKA MU RUGO
+cod_you_can_see_expected	COD ushobora kubona: ateganyijwe, yatanzwe, abereyemo buri wohereza.
+rider_cash_end_of_run	Amafaranga mu ntoki y’umumotari, iherezo ry’urugendo
+rider	Umumotari
+expected	Ateganyijwe
+handed_in	Yatanzwe
+a_14_drops	A · kugeza 14
+b_9_drops	B · kugeza 9
+short_200_on_rider_b	Ibura rya ₹ 200 kuri Umumotari B — ryagaragajwe, ntiryazimiriye mu giteranyo.
+cod_register	Igitabo cya COD
+collected_against_paid_out_per	Ayakiriwe ugereranyije n’ayishyuwe, kuri buri wohereza, hamwe n’amatsinda y’amafaranga yoherejwe.
+rider_settlement	Kurangiza kwishyurana n’umumotari
+expected_against_handed_in_and	Ateganyijwe ugereranyije n’ayatanzwe, n’urupapuro rwa komisiyo.
+books_that_close	Ibitabo bifunga
+day_book_month_bill_per	Igitabo cy’umunsi, inyemezabuguzi y’ukwezi kuri buri konti, n’incamake ya GST muri CSV ku mucungamari wawe.
+n_8_internet_down	8 · INTERINETI YAVUYEHO?
+keep_booking	Komeza kwandika.
+booking_labels_scanning_cod_and	Kwandika, ibirango, gusikana, COD n’ibitabo byose bikora ku bikoresho byawe. Iyo interineti ivuyeho, nta kintu kuri kontwari kiyitegereza.
+office_router_no_internet	Rawuteri y’ibiro: nta interineti
+desk_still_booking	Ameza y’akazi: aracyandika
+second_counter_and_rider_phone	Kontwari ya kabiri na telefone y’umumotari: bihujwe na Wi-Fi y’ibiro
+free_forever_on_your_devices	Ku buntu iteka ryose ku bikoresho byawe
+nothing_per_rider_user_or	Nta kwishyuza kuri buri mumotari, ukoresha cyangwa ipaki. Kumkaj Cloud y’ubushake: Steady ₹6k · Swift ₹12k · Priority ₹24k/umwaka hatarimo umusoro — /shop.
+n_9_start	9 · TANGIRA
+one_courier_os_your_parcels	Sisitemu imwe y’amapaki. Amapaki yawe. Ibitabo byawe.
+moklanjo_is_a_complete_courier	Moklanjo ni sisitemu yuzuye yo gucunga amapaki iri munsi ya Kumkaj — Android, Windows na Linux. Abamotari bakoresha porogaramu imwe mu buryo bw’umumotari.
+trademark	IKIRANGO CY’UBUCURUZI
+memon_for_find_it_pronounced	Ijambo ry’ururimi rwa Memon risobanura “ribone” · rivugwa go-tee-geen
+company	SOSIYETE
+brand	IKIRANGO
+concrete_business_operating_system	Porogaramu za sisitemu zo gucunga ubucuruzi zifatika
+product	IGICURUZWA
+courier_operating_system_under	Sisitemu yo gucunga amapaki iri munsi ya Kumkaj
+privacy	Ibanga
+terms	Amabwiriza
+cancellation	Guhagarika
+cloud_shop	Iduka ry’igicu
+account	Konti
+weigh_it_right	Pima neza
+price_it	Shyiraho igiciro
+label_it	Shyiraho ikirango
+track_and_prove	Kurikirana kandi ugaragaze gihamya
+money_comes_home	Amafaranga agaruka mu rugo
+internet_down	Interineti yavuyeho
+bead_hand	Shyikiriza
+bead_offline_short	Nta net
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Ku munzani: {kg} kg
+weight_scale_wins	Uburemere buri ku munzani ni bwo bugena amafaranga.
+cta_installers_note	Porogaramu zo kwinjiza zizashyirwa hano buri imwe imaze gutsinda igerageza ryo kwinjizwa kuri mudasobwa nshya. Kugeza icyo gihe, saba kwerekwa kuri WhatsApp.
+cta_whatsapp_soon	Umurongo wo kwerekwa wa WhatsApp uzafungura vuba. Ubutumwa bwawe buzaba: “{message}”.
+acct_page_title	Konti — Moklanjo
+acct_lede	Konti imwe y’urubuga na porogaramu — ifishi imwe waba uri mushya cyangwa ugarutse.
+acct_email	Imeri
+acct_name_optional	Izina (ku bushake)
+acct_password	Ijambo ry’ibanga
+acct_continue	Komeza
+acct_forgot	Wibagiwe ijambo ry’ibanga?
+acct_reset_hint	Tuzakoherereza umuyoboro wo kongera gushyiraho kuri imeri. Koresha aderesi imwe wiyandikishijeho.
+acct_send_reset	Ohereza umuyoboro wo kongera gushyiraho
+acct_cancel	Hagarika
+acct_or_continue	cyangwa ukomeze ukoresheje
+acct_phone	Telefone
+acct_mobile	Nimero ya telefone igendanwa
+acct_send_sms	Ohereza kode ya SMS
+acct_sms_code	Kode ya SMS
+acct_confirm_code	Emeza kode
+acct_signed_in	Winjiye
+acct_signed_in_as	Winjiye nka
+acct_status	Imiterere
+acct_sign_in_methods	Uburyo bwo kwinjira
+acct_cloud_username	Izina ukoresha ku gicu
+acct_plan	Ifatabuguzi
+acct_resend_verify	Ongera wohereze imeri yo kwemeza
+acct_sign_out	Sohoka
+acct_cloud_sandbox	Kumkaj Cloud (igerageza)
+acct_current_password	Ijambo ry’ibanga ririho
+acct_email_for_password	Imeri yo kwinjira ukoresheje ijambo ry’ibanga
+acct_new_password	Ijambo ry’ibanga rishya
+acct_confirm_new_password	Emeza ijambo ry’ibanga rishya
+acct_add_way	Ongeraho ubundi buryo bwo kwinjira
+acct_link_hint	Huza uburyo butandukanye na konti imwe kugira ngo ushobore kugarura uburenganzira bwo kwinjira niba bumwe bunaniwe.
+acct_link_google	Huza Google
+acct_link_microsoft	Huza Microsoft
+acct_link_github	Huza GitHub
+acct_link_phone	Huza telefone
+acct_send_sms_link	Ohereza SMS kugira ngo uhuze
+acct_confirm_link_phone	Emeza kandi uhuze telefone
+shop_page_title	Iduka — Moklanjo
+shop_lede	Amafatabuguzi y’igicu ya buri mwaka — umusoro wongerwaho mu gihe cyo kwishyura. Porogaramu yuzuye ya Moklanjo ku bikoresho byawe iguma ku buntu iteka ryose, nta matangazo.
+shop_cart	Igitebo
+shop_cart_empty_hint	Igitebo cyawe kirimo ubusa. Ongeramo Steady, Swift cyangwa Priority.
+shop_checkout	Ishyura
+shop_clear	Siba
+shop_checkout_hint	Kwishyura bikwinjiza muri Konti, hanyuma bigatangira kwishyura (igerageza ryigana cyangwa Paddle iyo imfunguzo zashyizweho).
+acct_billing_hint	Amafatabuguzi ya buri mwaka — irembo ryo kwishyura ryongeraho umusoro mu gihe cyo kwishyura. Gukoresha ku gikoresho cyawe biguma ku buntu iteka ryose. Iyihariye ni igereranyagiciro (ishobora kuba munsi ya Steady cyangwa hejuru ya Priority).
+shop_cloud_plans	Amafatabuguzi y’igicu
+acct_federated	Kwinjira ukoresheje indi konti
+acct_err_invalid_email	Andika aderesi ya imeri yemewe.
+acct_err_weak_password	Koresha ijambo ry’ibanga rifite nibura inyuguti 6.
+acct_err_wrong_password	Ijambo ry’ibanga si ryo.
+acct_err_invalid_credential	Imeri cyangwa ijambo ry’ibanga si byo.
+acct_err_popup_closed	Idirishya ryo kwinjira ryafunzwe.
+acct_err_popup_cancelled	Kwinjira byahagaritswe.
+acct_err_unauthorized_domain	Iyi domeni ntiyemerewe kuri Firebase Auth.
+acct_err_method_disabled	Ubwo buryo bwo kwinjira ntiburafungurwa.
+acct_err_too_many	Wagerageje inshuro nyinshi cyane. Ongera ugerageze nyuma.
+acct_err_phone_format	Koresha nimero ya telefone yuzuye ifite kode y’igihugu (urugero +91…).
+acct_err_sms_code	Iyo kode ya SMS si yo cyangwa yararengeje igihe.
+acct_err_no_account	Nta konti ifite iyo imeri. Komeza kugira ngo uyifungure, cyangwa ukoreshe ubundi buryo.
+acct_err_recent_login	Kubw’umutekano, ongera winjire, hanyuma wongere ugerageze iri hinduka.
+acct_err_credential_in_use	Ubwo buryo bwo kwinjira busanzwe bukoreshwa n’indi konti.
+acct_err_email_in_use	Iyo imeri isanzwe ikoreshwa n’indi konti.
+acct_err_already_linked	Ubwo buryo busanzwe buhujwe n’iyi konti.
+acct_err_exists_other_method	Hasanzwe hariho konti ifite iyi imeri ikoresha ubundi buryo bwo kwinjira. Banza winjire ukoresheje ubwo buryo, hanyuma uhuze ubu buryo uhereye ku ipaji ya konti yawe.
+acct_err_generic	Hari ikitagenze neza.
+acct_method_password	Imeri n’ijambo ry’ibanga
+acct_pw_hint_change	Hindura ijambo ry’ibanga ryawe. Uzemeza ukoresheje irisanzwe.
+acct_pw_hint_add	Ongeraho ijambo ry’ibanga kugira ngo ushobore no kwinjira ukoresheje imeri (bifasha iyo utanga serivisi atabonetse).
+acct_pw_change	Hindura ijambo ry’ibanga
+acct_pw_add	Ongeraho ijambo ry’ibanga
+acct_billing_off	Kwishyura ntikurafungurwa kuri API y’igicu.
+acct_billing_no_provider	Nta utanga serivisi yo kwishyura nyayo wafunguwe kuri API y’igicu (igerageza ryigana riri ku gikoresho cyawe gusa).
+price_quote	Igereranyagiciro
+price_per_year	₹{amount}/umwaka hatarimo umusoro
+acct_pay_received	Ubwishyu bwakiriwe — ifatabuguzi ryawe ririmo kuvugururwa…
+acct_pay_declined	Ubwishyu bwanzwe cyangwa bwananiranye
+acct_pay_failed_detail	{detail}. Ifatabuguzi ryawe ntiryahinduwe.
+acct_checkout_closed	Kwishyura byafunzwe — nta bwishyu bwarangiye. Ifatabuguzi ryawe ntiryahindutse.
+acct_checkout_failed	Kwishyura byananiranye
+acct_pay_with	Ishyura ukoresheje {provider}
+acct_plan_until	{plan} · kugeza {date}
+acct_unavailable	Ntibiboneka
+acct_continue_hint	Komeza ukoresheje imeri, utanga serivisi, cyangwa telefone.
+acct_signed_in_fallback	(winjiye)
+acct_email_verified	Imeri yemejwe
+acct_email_unverified	Imeri ntiraremezwa — reba agasanduku k’ubutumwa bwawe
+acct_signed_in_phone	Winjiye ukoresheje telefone
+acct_none_listed	Nta na kimwe cyanditswe kugeza ubu
+acct_signed_in_status	Winjiye.
+acct_created	Konti yafunguwe. Reba imeri yawe kugira ngo uyemeze igihe ubonye umwanya.
+acct_reset_sent	Niba hari konti y’iyo imeri, umuyoboro wo kongera gushyiraho uri mu nzira. Reba agasanduku k’ubutumwa bwawe.
+acct_another_method	ubundi buryo
+acct_exists_via	Konti ya {email} isanzwe ihari binyuze kuri {method}. Banza winjire muri ubwo buryo, hanyuma uhuze uyu utanga serivisi uhereye ku ipaji ya konti yawe.
+acct_enter_current_pw	Andika ijambo ry’ibanga ryawe ririho.
+acct_relogin_retry	Sohoka wongere winjire, hanyuma wongere ugerageze.
+acct_pw_mismatch	Ijambo ry’ibanga rishya n’iryemeza ntibihuye.
+acct_pw_updated	Ijambo ry’ibanga ryavuguruwe.
+acct_enter_email_pw	Andika imeri uzakoresha winjira ukoresheje ijambo ry’ibanga.
+acct_pw_added	Ijambo ry’ibanga ryongeweho. Ubu ushobora no kwinjira ukoresheje imeri.
+acct_method_linked	Uburyo bwo kwinjira bwahujwe.
+acct_phone_linked	Telefone yahujwe n’iyi konti.
+acct_verify_sent	Imeri yo kwemeza yoherejwe — reba agasanduku k’ubutumwa bwawe.
+shop_pricing_soon	Ibiciro biraza vuba
+shop_request_quote	Saba igereranyagiciro
+shop_add_to_cart	Shyira mu gitebo
+shop_notify_later	Uzambwire nyuma
+shop_included	Birimo
+shop_in_cart	{plan} iri mu gitebo cyawe.
+shop_remove	Kuramo
+shop_cart_is_empty	Igitebo kirimo ubusa.
+shop_prices_unpublished	Ibiciro byo kwigurira ntibiratangazwa kuri iki gicuruzwa. Saba igereranyagiciro ryihariye cyangwa ugaruke nyuma.
+shop_cart_cleared	Igitebo cyasibwe.
+plan_free_title	Ku buntu iteka ryose
+plan_free_blurb	Igicuruzwa cyuzuye ku bikoresho byawe. Nta mafaranga y’igicu.
+plan_steady_blurb	Igicu gikora · 10 GB · umuvuduko wo kohereza muto
+plan_swift_blurb	Igicu gikora · 25 GB · umuvuduko wo kohereza uringaniye
+plan_priority_blurb	Igicu gikora · 50 GB · umuvuduko wo kohereza wo hejuru cyane
+plan_custom_title	Iyihariye
+plan_custom_blurb	Ingano n’umuvuduko wo kohereza byumvikanyweho. Igereranyagiciro rishobora kuba munsi ya Steady cyangwa hejuru ya Priority.

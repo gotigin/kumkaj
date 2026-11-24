@@ -1,230 +1,230 @@
 # Kinyarwanda — Ikinyarwanda (rw). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Urugero
+download_free	Kura ku buntu
+whatsapp_for_a_demo	Kwerekwa kuri WhatsApp
+free_on_android_windows_and	Ku buntu kuri Android, Windows na Linux.
+the_grocery_counter	kontwari ya butike
+busy_counter	Kontwari ihuze
+kirano_the_grocery_counter	KIRANO · KONTWARI YA BUTIKE
+busy_counter_no_internet_still	Kontwari ihuze. Nta interineti. Iracyakora inyemezabuguzi.
+sell_khata_stock_and_the	Kugurisha, igitabo cy’amadeni, ububiko n’igitabo cy’umunsi — ku bikoresho byawe. Igitabo cy’umunsi · Kugurisha · Gura · Ibintu. Nta cyumba cyo kuriramo, nta gikoni, nta meza.
+tap_the_bill_to_walk	Kanda ku nyemezabuguzi kugira ngo ukurikire igurisha kuri kontwari
+cash_memo	Inyemezabwishyu
+ready	Byateguwe
+total	Igiteranyo
+tap_to_add_the_first	Kanda kugira ngo wongereho ikintu cya mbere
+example_grocery_lines_not_a	Imirongo y’urugero ya butike, si isanduku y’amafaranga nyayo. Kirano ikurikira inzira imwe: kugurisha → kwishyuza → igitabo cy’umunsi.
+n_2_counter_sell	2 · KUGURISHA KURI KONTWARI
+item_quantity_pay_three_taps	Ikintu, umubare, kwishyura — gukanda gatatu.
+upi_qr_ready	UPI QR yiteguye
+example_bill	Urugero rw’inyemezabuguzi
+search_by_name_or_short	Shakisha ukoresheje izina cyangwa kode ngufi
+type_atta_at5_or_an	Andika atta, AT5 cyangwa irindi zina — umurongo ugwa ku nyemezabuguzi.
+kg_g_pc_l_ml	kg, g, igice, l, ml
+quantity_in_the_unit_the	Umubare mu gipimo agapaki gakoresha; igiciro kirakurikira.
+cash_upi_or_split	Amafaranga mu ntoki, UPI cyangwa kugabanya
+settle_on_the_counter_the	Yishyuza kuri kontwari; igitabo cy’umunsi kandika uburyo bwo kwishyura.
+n_3_khata	3 · IGITABO CY’AMADENI
+credit_without_a_crm_put	Ideni nta CRM — rishyire mu gitabo cyabo cy’amadeni.
+ramesh_customer	Ramesh · Umukiriya
+due_from_earlier	Ideni rya mbere
+today_s_sale_due	+ ibyagurishijwe uyu munsi (ideni)
+balance	Asigaye
+settle_later_in_parties_part	Ishyurwa nyuma muri Abafatanyabikorwa — igice mu mafaranga mu ntoki, ikindi muri UPI, usibe umurongo.
+due_on_the_bill	Ideni ku nyemezabuguzi
+what_s_left_goes_on	Asigaye ajya mu gitabo cy’amadeni cy’umukiriya — nta yindi porogaramu y’ibitabo.
+one_party_two_roles	Umufatanyabikorwa umwe, inshingano ebyiri
+customer_ar_and_supplier_ap	Amadeni abakiriya bakurimo n’amadeni ubereyemo abatanga ibicuruzwa biri mu gitabo kimwe cy’abafatanyabikorwa.
+who_when_how_much	Nde, ryari, angahe
+every_credit_and_settlement_stays	Buri deni na buri bwishyu biguma mu gitabo cy’umunsi.
+n_4_buy_stock	4 · GURA KANDI UBIKE
+buy_from_the_wholesaler_stock	Gura ku mucuruzi uranguza — ububiko n’abo ubereyemo amadeni bivugururwa icyarimwe.
+purchase_sharma_wholesale	Kugura · Sharma Wholesale
+stock_50_kg_ap_7	Ububiko +50 kg · ideni ₹ 7 200
+stock_12_l_ap_1	Ububiko +12 L · ideni ₹ 1 560
+resale_stock_not_kitchen_raw	Ububiko bwo kongera kugurisha — si ibikoresho byo mu gikoni. Icyiciro n’itariki yo kurangira ku bushake igihe ugura.
+buy_creates_stock	Kugura birema ububiko
+receive_the_goods_the_catalogue	Akira ibicuruzwa; umubare uri mu rutonde rw’ibicuruzwa uriyongera.
+who_we_owe	Abo tubereyemo amadeni
+supplier_balance_sits_on_the	Amafaranga asigaye y’utanga ibicuruzwa ari mu Bafatanyabikorwa kimwe n’igitabo cy’amadeni cy’umukiriya.
+low_stock_at_a_glance	Ububiko buke mu kureba rimwe
+inventory_shows_what_is_running	Ububiko bwerekana ibirimo gushira mbere y’uko abakiriya benshi bagaruka.
+n_5_day_book	5 · IGITABO CY’UMUNSI
+cash_vs_upi_counted_and	Amafaranga mu ntoki na UPI, byabaruwe ukwabyo — kandi itandukaniro rirerekanwa.
+today_s_drawer	Isanduku y’uyu munsi
+opening_float	Amafaranga yo gutangiza
+cash_sales	+ ibyagurishijwe mu mafaranga mu ntoki
+upi_sales	+ ibyagurishijwe muri UPI
+cash_paid_out	− amafaranga mu ntoki yasohotse
+expected_cash	Amafaranga mu ntoki ateganyijwe
+counted	Byabaruwe
+short	Ibura
+tenders_stay_separate	Uburyo bwo kwishyura buguma butandukanye
+cash_and_upi_never_mix	Amafaranga mu ntoki na UPI ntibivangwa ngo bibe igiteranyo kimwe kitumvikana.
+shift_close	Gufunga igihe cy’akazi
+close_the_shift_print_the	Funga igihe cy’akazi, capa urupapuro, utangire igikurikira gifite isuku.
+gst_facing_bills	Inyemezabuguzi zifite GST
+tax_invoice_or_cash_memo	Inyemezabuguzi y’umusoro cyangwa inyemezabwishyu — raporo y’umunsi irimo zombi.
+books_sell_buy_items_four	Igitabo cy’umunsi · Kugurisha · Gura · Ibintu — ekarani enye, kandi nta cyumba cyo kuriramo.
+n_6_internet_down	6 · INTERINETI YAVUYEHO?
+the_internet_drops_the_counter	Interineti iravaho. Kontwari ikomeza kugurisha.
+router_no_internet	Rawuteri: nta interineti
+main_counter_selling_and_settling	Kontwari nkuru: iragurisha kandi iryishyuza
+second_till_joined_on_your	Isanduku ya kabiri: ihujwe kuri Wi-Fi yawe
+books_live_on_the_shop	Ibitabo biba ku bikoresho by’iduka
+when_the_internet_drops_mid	Iyo interineti ivuyeho hagati y’abakiriya benshi, nta kintu kuri kontwari kiyitegereza.
+one_server_lan_clients	Seriveri imwe, ibikoresho bya LAN
+extra_tills_share_the_same	Andi masanduku asangira ibitabo bimwe binyuze ku murandasi w’iduka.
+n_7_free_forever_locally	7 · KU BUNTU ITEKA RYOSE KU BIKORESHO BYAWE
+free_forever_on_your_devices	Ku buntu iteka ryose ku bikoresho byawe.
+no_per_bill_charge	Nta kwishyuza kuri buri nyemezabuguzi
+no_fee_per_sale_item	Nta mafaranga kuri buri gurisha, ikintu, isanduku cyangwa PIN y’umukozi mu kwinjiza ku gikoresho cyawe.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Kirano imwe kuri telefone iri inyuma ya kontwari no ku isanduku ya mudasobwa.
+optional_kumkaj_cloud	Kumkaj Cloud y’ubushake
+yearly_steady_6k_swift_12k	Buri mwaka: Steady ₹6k · Swift ₹12k · Priority ₹24k hatarimo umusoro (cyangwa igereranyagiciro ryihariye). Gura kuri /shop.
+n_8_start	8 · TANGIRA
+put_kirano_on_the_counter	Shyira Kirano kuri kontwari.
+download_free_or_whatsapp_for	Kura ku buntu, cyangwa utwandikire kuri WhatsApp kugira ngo werekwe bijyanye n’ubwoko bw’iduka ryawe n’umujyi wawe.
+privacy	Ibanga
+terms	Amabwiriza
+cancellation	Guhagarika
+cloud_shop	Iduka ry’igicu
+account	Konti
+chapter_counter_sell	Kugurisha kuri kontwari
+chapter_khata	Igitabo cy’amadeni
+chapter_buy_stock	Kugura n’ububiko
+chapter_day_book	Igitabo cy’umunsi
+chapter_extra_till	Isanduku y’inyongera
+chapter_offline	Nta interineti
+chapter_start	Tangira
+bill_selling	Biragurishwa
+bill_settle	Yishyuza
+bill_paid	Byishyuwe
+bill_next_item	Kanda kugira ngo wongereho ikintu gikurikira
+bill_settle_hint	Kanda kugira ngo wishyuze — amafaranga mu ntoki cyangwa UPI
+bill_cash_return	Amafaranga mu ntoki ₹ 600 · gusubiza ₹ 15
+bill_paid_line	Byishyuwe · igitabo cy’umunsi cyavuguruwe
+lan_eyebrow	6 · ISANDUKU Y’INYONGERA
+lan_title	Indi sanduku kuri Wi-Fi y’iduka.
+cta_installers_note	Porogaramu zo kwinjiza zizashyirwa hano buri imwe imaze gutsinda igerageza ryo kwinjizwa kuri mudasobwa nshya. Kugeza icyo gihe, saba kwerekwa kuri WhatsApp.
+cta_whatsapp_soon	Umurongo wo kwerekwa wa WhatsApp uzafungura vuba. Ubutumwa bwawe buzaba: “{message}”.
+acct_page_title	Konti — Kirano
+acct_lede	Konti imwe y’urubuga na porogaramu — ifishi imwe waba uri mushya cyangwa ugarutse.
+acct_email	Imeri
+acct_name_optional	Izina (ku bushake)
+acct_password	Ijambo ry’ibanga
+acct_continue	Komeza
+acct_forgot	Wibagiwe ijambo ry’ibanga?
+acct_reset_hint	Tuzakoherereza umuyoboro wo kongera gushyiraho kuri imeri. Koresha aderesi imwe wiyandikishijeho.
+acct_send_reset	Ohereza umuyoboro wo kongera gushyiraho
+acct_cancel	Hagarika
+acct_or_continue	cyangwa ukomeze ukoresheje
+acct_phone	Telefone
+acct_mobile	Nimero ya telefone igendanwa
+acct_send_sms	Ohereza kode ya SMS
+acct_sms_code	Kode ya SMS
+acct_confirm_code	Emeza kode
+acct_signed_in	Winjiye
+acct_signed_in_as	Winjiye nka
+acct_status	Imiterere
+acct_sign_in_methods	Uburyo bwo kwinjira
+acct_cloud_username	Izina ukoresha ku gicu
+acct_plan	Ifatabuguzi
+acct_resend_verify	Ongera wohereze imeri yo kwemeza
+acct_sign_out	Sohoka
+acct_cloud_sandbox	Kumkaj Cloud (igerageza)
+acct_current_password	Ijambo ry’ibanga ririho
+acct_email_for_password	Imeri yo kwinjira ukoresheje ijambo ry’ibanga
+acct_new_password	Ijambo ry’ibanga rishya
+acct_confirm_new_password	Emeza ijambo ry’ibanga rishya
+acct_add_way	Ongeraho ubundi buryo bwo kwinjira
+acct_link_hint	Huza uburyo butandukanye na konti imwe kugira ngo ushobore kugarura uburenganzira bwo kwinjira niba bumwe bunaniwe.
+acct_link_google	Huza Google
+acct_link_microsoft	Huza Microsoft
+acct_link_github	Huza GitHub
+acct_link_phone	Huza telefone
+acct_send_sms_link	Ohereza SMS kugira ngo uhuze
+acct_confirm_link_phone	Emeza kandi uhuze telefone
+shop_page_title	Iduka — Kirano
+shop_lede	Amafatabuguzi y’igicu ya buri mwaka — umusoro wongerwaho mu gihe cyo kwishyura. Porogaramu yuzuye ya Kirano ku bikoresho byawe iguma ku buntu iteka ryose, nta matangazo.
+shop_cart	Igitebo
+shop_cart_empty_hint	Igitebo cyawe kirimo ubusa. Ongeramo Steady, Swift cyangwa Priority.
+shop_checkout	Ishyura
+shop_clear	Siba
+shop_checkout_hint	Kwishyura bikwinjiza muri Konti, hanyuma bigatangira kwishyura (igerageza ryigana cyangwa Paddle iyo imfunguzo zashyizweho).
+acct_billing_hint	Amafatabuguzi ya buri mwaka — irembo ryo kwishyura ryongeraho umusoro mu gihe cyo kwishyura. Gukoresha ku gikoresho cyawe biguma ku buntu iteka ryose. Iyihariye ni igereranyagiciro (ishobora kuba munsi ya Steady cyangwa hejuru ya Priority).
+shop_cloud_plans	Amafatabuguzi y’igicu
+acct_federated	Kwinjira ukoresheje indi konti
+acct_err_invalid_email	Andika aderesi ya imeri yemewe.
+acct_err_weak_password	Koresha ijambo ry’ibanga rifite nibura inyuguti 6.
+acct_err_wrong_password	Ijambo ry’ibanga si ryo.
+acct_err_invalid_credential	Imeri cyangwa ijambo ry’ibanga si byo.
+acct_err_popup_closed	Idirishya ryo kwinjira ryafunzwe.
+acct_err_popup_cancelled	Kwinjira byahagaritswe.
+acct_err_unauthorized_domain	Iyi domeni ntiyemerewe kuri Firebase Auth.
+acct_err_method_disabled	Ubwo buryo bwo kwinjira ntiburafungurwa.
+acct_err_too_many	Wagerageje inshuro nyinshi cyane. Ongera ugerageze nyuma.
+acct_err_phone_format	Koresha nimero ya telefone yuzuye ifite kode y’igihugu (urugero +91…).
+acct_err_sms_code	Iyo kode ya SMS si yo cyangwa yararengeje igihe.
+acct_err_no_account	Nta konti ifite iyo imeri. Komeza kugira ngo uyifungure, cyangwa ukoreshe ubundi buryo.
+acct_err_recent_login	Kubw’umutekano, ongera winjire, hanyuma wongere ugerageze iri hinduka.
+acct_err_credential_in_use	Ubwo buryo bwo kwinjira busanzwe bukoreshwa n’indi konti.
+acct_err_email_in_use	Iyo imeri isanzwe ikoreshwa n’indi konti.
+acct_err_already_linked	Ubwo buryo busanzwe buhujwe n’iyi konti.
+acct_err_exists_other_method	Hasanzwe hariho konti ifite iyi imeri ikoresha ubundi buryo bwo kwinjira. Banza winjire ukoresheje ubwo buryo, hanyuma uhuze ubu buryo uhereye ku ipaji ya konti yawe.
+acct_err_generic	Hari ikitagenze neza.
+acct_method_password	Imeri n’ijambo ry’ibanga
+acct_pw_hint_change	Hindura ijambo ry’ibanga ryawe. Uzemeza ukoresheje irisanzwe.
+acct_pw_hint_add	Ongeraho ijambo ry’ibanga kugira ngo ushobore no kwinjira ukoresheje imeri (bifasha iyo utanga serivisi atabonetse).
+acct_pw_change	Hindura ijambo ry’ibanga
+acct_pw_add	Ongeraho ijambo ry’ibanga
+acct_billing_off	Kwishyura ntikurafungurwa kuri API y’igicu.
+acct_billing_no_provider	Nta utanga serivisi yo kwishyura nyayo wafunguwe kuri API y’igicu (igerageza ryigana riri ku gikoresho cyawe gusa).
+price_quote	Igereranyagiciro
+price_per_year	₹{amount}/umwaka hatarimo umusoro
+acct_pay_received	Ubwishyu bwakiriwe — ifatabuguzi ryawe ririmo kuvugururwa…
+acct_pay_declined	Ubwishyu bwanzwe cyangwa bwananiranye
+acct_pay_failed_detail	{detail}. Ifatabuguzi ryawe ntiryahinduwe.
+acct_checkout_closed	Kwishyura byafunzwe — nta bwishyu bwarangiye. Ifatabuguzi ryawe ntiryahindutse.
+acct_checkout_failed	Kwishyura byananiranye
+acct_pay_with	Ishyura ukoresheje {provider}
+acct_plan_until	{plan} · kugeza {date}
+acct_unavailable	Ntibiboneka
+acct_continue_hint	Komeza ukoresheje imeri, utanga serivisi, cyangwa telefone.
+acct_signed_in_fallback	(winjiye)
+acct_email_verified	Imeri yemejwe
+acct_email_unverified	Imeri ntiraremezwa — reba agasanduku k’ubutumwa bwawe
+acct_signed_in_phone	Winjiye ukoresheje telefone
+acct_none_listed	Nta na kimwe cyanditswe kugeza ubu
+acct_signed_in_status	Winjiye.
+acct_created	Konti yafunguwe. Reba imeri yawe kugira ngo uyemeze igihe ubonye umwanya.
+acct_reset_sent	Niba hari konti y’iyo imeri, umuyoboro wo kongera gushyiraho uri mu nzira. Reba agasanduku k’ubutumwa bwawe.
+acct_another_method	ubundi buryo
+acct_exists_via	Konti ya {email} isanzwe ihari binyuze kuri {method}. Banza winjire muri ubwo buryo, hanyuma uhuze uyu utanga serivisi uhereye ku ipaji ya konti yawe.
+acct_enter_current_pw	Andika ijambo ry’ibanga ryawe ririho.
+acct_relogin_retry	Sohoka wongere winjire, hanyuma wongere ugerageze.
+acct_pw_mismatch	Ijambo ry’ibanga rishya n’iryemeza ntibihuye.
+acct_pw_updated	Ijambo ry’ibanga ryavuguruwe.
+acct_enter_email_pw	Andika imeri uzakoresha winjira ukoresheje ijambo ry’ibanga.
+acct_pw_added	Ijambo ry’ibanga ryongeweho. Ubu ushobora no kwinjira ukoresheje imeri.
+acct_method_linked	Uburyo bwo kwinjira bwahujwe.
+acct_phone_linked	Telefone yahujwe n’iyi konti.
+acct_verify_sent	Imeri yo kwemeza yoherejwe — reba agasanduku k’ubutumwa bwawe.
+shop_pricing_soon	Ibiciro biraza vuba
+shop_request_quote	Saba igereranyagiciro
+shop_add_to_cart	Shyira mu gitebo
+shop_notify_later	Uzambwire nyuma
+shop_included	Birimo
+shop_in_cart	{plan} iri mu gitebo cyawe.
+shop_remove	Kuramo
+shop_cart_is_empty	Igitebo kirimo ubusa.
+shop_prices_unpublished	Ibiciro byo kwigurira ntibiratangazwa kuri iki gicuruzwa. Saba igereranyagiciro ryihariye cyangwa ugaruke nyuma.
+shop_cart_cleared	Igitebo cyasibwe.
+plan_free_title	Ku buntu iteka ryose
+plan_free_blurb	Igicuruzwa cyuzuye ku bikoresho byawe. Nta mafaranga y’igicu.
+plan_steady_blurb	Igicu gikora · 10 GB · umuvuduko wo kohereza muto
+plan_swift_blurb	Igicu gikora · 25 GB · umuvuduko wo kohereza uringaniye
+plan_priority_blurb	Igicu gikora · 50 GB · umuvuduko wo kohereza wo hejuru cyane
+plan_custom_title	Iyihariye
+plan_custom_blurb	Ingano n’umuvuduko wo kohereza byumvikanyweho. Igereranyagiciro rishobora kuba munsi ya Steady cyangwa hejuru ya Priority.
