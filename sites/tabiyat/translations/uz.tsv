@@ -1,227 +1,227 @@
 # Uzbek — Oʻzbekcha (uz). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Namuna
+download_free	Bepul yuklab olish
+whatsapp_for_a_demo	Namoyish uchun WhatsApp’ga yozing
+free_on_android_windows_and	Android, Windows va Linux’da bepul.
+the_pharmacy_counter	dorixona kassasi
+pharmacy_counter	Dorixona kassasi
+tabiyat_the_pharmacy_counter	TABIYAT · DORIXONA KASSASI
+pharmacy_counter_offline_your_books	Dorixona kassasi. Oflayn. Daftarlaringiz.
+medicines_barcode_and_salt_search	Dorilar, shtrix-kod va taʼsir etuvchi modda boʻyicha qidiruv, oʻz daftarlaringiz uchun partiya va yaroqlilik muddati — qurilmalaringizda. Faqat egasining belgilari; dori vositalari qonuniga soxta muvofiqlik hech qachon yoʻq.
+tap_the_bill_to_walk	Kassa savdosini kuzatish uchun chekka teging
+cash_memo	Naqd chek
+ready	Tayyor
+total	Jami
+tap_to_add_the_first	Birinchi dorini qoʻshish uchun teging
+example_pharmacy_lines_not_a	Dorixona qatorlari namunasi, haqiqiy kassa emas. Tabiyat oʻsha yoʻldan boradi: sotish → hisob-kitob → kunlik daftar.
+n_2_counter_sell	2 · KASSADA SOTISH
+medicine_quantity_pay_three_taps	Dori, miqdor, toʻlov — uchta teginish.
+upi_qr_ready	UPI QR tayyor
+example_bill	Namuna chek
+fast_counter_billing	Kassada tezkor hisob
+add_the_line_set_the	Qator qoʻshing, miqdorni belgilang, hisob-kitob qiling — naqd, UPI yoki boʻlib.
+gst_tax_invoice_or_cash	GST soliq hisob-fakturasi yoki naqd chek
+the_bill_lane_you_need	Savdo uchun kerakli hisob turi.
+day_book_follows	Kunlik daftar ortidan
+every_tender_lands_in_books	Savdoni yopganingizda har bir toʻlov Daftarlarga tushadi.
+n_3_barcode_salt	3 · SHTRIX-KOD VA TAʼSIR ETUVCHI MODDA
+scan_the_barcode_or_find	Shtrix-kodni skanerlang — yoki taʼsir etuvchi modda boʻyicha toping.
+search	Qidirish
+composition_paracetamol_strip_of_10	Tarkibi: Paratsetamol · 10 talik blister
+salt_amoxicillin	Taʼsir etuvchi modda: amoksitsillin
+ranks_barcode_name_and_composition	Shtrix-kod, nom va tarkibni birga saralaydi.
+wedge_scanner_or_type_enter	Skaner yoki yozib Enter — qator chekka tushadi.
+barcode_first	Avval shtrix-kod
+scan_or_paste_the_code	Kodni skanerlang yoki joylang; katalogdagi moslik chiqadi.
+salt_composition	Taʼsir etuvchi modda / tarkib
+type_the_salt_when_the	Mijoz aytgan nom brend nomi boʻlmasa, taʼsir etuvchi moddani yozing.
+owner_rx_schedule_h_flags	Egasining retsept / Schedule H belgilari
+reminders_you_set_not_a	Oʻzingiz qoʻygan eslatmalar — qonuniy reyestr emas, tibbiy maslahat emas.
+n_4_batch_expiry	4 · PARTIYA VA YAROQLILIK MUDDATI
+batch_and_expiry_on_your	Daftarlaringizda partiya va yaroqlilik muddati — egasi uchun ogohlantirishlar.
+buy_batch_a12	Xarid · partiya A12
+expires_2027_03_alert_in	Muddati 2027-03 · 7 kundan keyin ogohlantirish
+ors_sachets_batch_b04	ORS paketlari · partiya B04
+expires_2026_11_near_expiry	Muddati 2026-11 · Daftarlarda muddati yaqinlashgan chiziq
+shop_bookkeeping_only_not_drugs	Faqat doʻkon hisobi — dori vositalari qonuniga muvofiqlik emas.
+batch_on_buy	Xaridda partiya
+record_batch_and_expiry_when	Zaxira kelganda partiya va yaroqlilik muddatini yozing.
+near_expiry_alerts	Muddati yaqinlashish ogohlantirishlari
+books_and_sell_can_hint	Daftarlar va Sotish sana oʻtmasdan oldin eslatishi mumkin.
+owner_practice	Egasining amaliyoti
+fefo_hints_and_rx_notes	FEFO maslahatlari va retsept izohlariga amal qilish sizga bogʻliq — Tabiyat kiritganingizni yozib boradi.
+n_5_khata	5 · QARZ DAFTARI
+customer_credit_and_supplier_dues	Mijoz nasiyasi va yetkazib beruvchi qarzi bitta kontragent daftarida.
+mehta_clinic_customer	Mehta klinikasi · Mijoz
+due_from_earlier	Avvalgi qarz
+today_s_sale_due	+ bugungi savdo (qarz)
+balance	Qoldiq
+settle_later_part_cash_part	Keyin uzing — bir qismi naqd, bir qismi UPI. Yetkazib beruvchi qarzlari ham oʻsha Kontragentlar ekranida.
+due_on_the_bill	Chekdagi qarz
+leave_a_balance_on_khata	Alohida buxgalteriya ilovasisiz qarz daftarida qoldiq qoldiring.
+supplier_buys_too	Yetkazib beruvchidan xaridlar ham
+who_you_owe_updates_when	Zaxira kelganda kimga qarzdorligingiz yangilanadi.
+auditable	Tekshirib boʻladigan
+who_when_and_how_much	Kim, qachon va qancha — kunlik daftarda qoladi.
+n_6_internet_down	6 · INTERNET UZILDIMI?
+the_internet_drops_the_counter	Internet uziladi. Kassa sotishda davom etadi.
+router_no_internet	Router: internet yoʻq
+main_counter_selling_and_settling	Asosiy kassa: sotmoqda va hisob-kitob qilmoqda
+second_till_joined_on_your	Ikkinchi kassa: oʻz Wi-Fi tarmogʻingizga ulangan
+books_live_on_the_shop	Daftarlar doʻkon qurilmalarida
+when_the_internet_drops_nothing	Internet uzilganda dorixona kassasida hech narsa uni kutmaydi.
+one_server_lan_clients	Bitta server, LAN mijozlari
+extra_tills_share_the_same	Qoʻshimcha kassalar doʻkon tarmogʻi orqali bir xil daftarlarni baham koʻradi.
+n_7_free_forever_locally	7 · MAHALLIY ABADIY BEPUL
+free_forever_on_your_devices	Qurilmalaringizda abadiy bepul.
+no_per_bill_charge	Chek uchun toʻlov yoʻq
+no_fee_per_sale_medicine	Mahalliy oʻrnatishda savdo, dori, kassa yoki xodim PIN’i uchun toʻlov yoʻq.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Telefonda ham, stol kassasida ham oʻsha Tabiyat.
+optional_kumkaj_cloud	Ixtiyoriy Kumkaj Cloud
+yearly_steady_6k_swift_12k	Yillik Steady ₹6k · Swift ₹12k · Priority ₹24k, soliqsiz (yoki maxsus taklif). /shop’dan xarid qiling.
+n_8_start	8 · BOSHLANG
+put_tabiyat_on_the_counter	Tabiyat’ni kassaga qoʻying.
+download_free_or_whatsapp_for	Bepul yuklab oling yoki dorixonangiz va shahringiz bilan tanishtirish uchun WhatsApp’ga yozing.
+privacy	Maxfiylik
+terms	Shartlar
+cancellation	Bekor qilish
+cloud_shop	Bulut doʻkoni
+account	Hisob
+chapter_counter_sell	Kassada sotish
+chapter_barcode_salt	Shtrix-kod va taʼsir etuvchi modda
+chapter_batch_expiry	Partiya va yaroqlilik muddati
+chapter_khata	Qarz daftari
+chapter_extra_till	Qoʻshimcha kassa
+chapter_offline	Oflayn
+chapter_start	Boshlash
+bill_selling	Sotilmoqda
+bill_settle	Hisob-kitob
+bill_paid	Toʻlangan
+bill_next_line	Keyingi qatorni qoʻshish uchun teging
+bill_settle_hint	Hisob-kitob uchun teging — naqd yoki UPI
+bill_upi_paid	UPI ₹ 162 · toʻlandi
+bill_paid_line	Toʻlandi · kunlik daftar yangilandi
+lan_eyebrow	6 · QOʻSHIMCHA KASSA
+lan_title	Doʻkon Wi-Fi tarmogʻida yana bir kassa.
+cta_installers_note	Oʻrnatuvchilar har biri toza kompyuterda oʻrnatish sinovidan oʻtgach, shu yerga joylanadi. Ungacha WhatsApp’da namoyish soʻrang.
+cta_whatsapp_soon	WhatsApp namoyish liniyasi tez orada ochiladi. Xabaringiz shunday boʻladi: «{message}».
+acct_page_title	Hisob — Tabiyat
+acct_lede	Sayt va ilovalar uchun bitta hisob — yangi boʻlsangiz ham, qaytgan boʻlsangiz ham bir xil shakl.
+acct_email	Elektron pochta
+acct_name_optional	Ism (ixtiyoriy)
+acct_password	Parol
+acct_continue	Davom etish
+acct_forgot	Parolni unutdingizmi?
+acct_reset_hint	Tiklash havolasini elektron pochtaga yuboramiz. Roʻyxatdan oʻtgan manzilingizdan foydalaning.
+acct_send_reset	Tiklash havolasini yuborish
+acct_cancel	Bekor qilish
+acct_or_continue	yoki shu bilan davom eting
+acct_phone	Telefon
+acct_mobile	Mobil raqam
+acct_send_sms	SMS kodni yuborish
+acct_sms_code	SMS kod
+acct_confirm_code	Kodni tasdiqlash
+acct_signed_in	Kirildi
+acct_signed_in_as	Kirgan hisob
+acct_status	Holat
+acct_sign_in_methods	Kirish usullari
+acct_cloud_username	Bulutdagi foydalanuvchi nomi
+acct_plan	Tarif
+acct_resend_verify	Tasdiqlash xatini qayta yuborish
+acct_sign_out	Chiqish
+acct_cloud_sandbox	Kumkaj Cloud (sinov muhiti)
+acct_current_password	Joriy parol
+acct_email_for_password	Parol bilan kirish uchun pochta
+acct_new_password	Yangi parol
+acct_confirm_new_password	Yangi parolni tasdiqlang
+acct_add_way	Boshqa kirish usulini qoʻshish
+acct_link_hint	Biri ishlamay qolsa, kirishni tiklash uchun usullarni bitta hisobga bogʻlang.
+acct_link_google	Google’ni bogʻlash
+acct_link_microsoft	Microsoft’ni bogʻlash
+acct_link_github	GitHub’ni bogʻlash
+acct_link_phone	Telefonni bogʻlash
+acct_send_sms_link	Bogʻlash uchun SMS yuborish
+acct_confirm_link_phone	Tasdiqlab, telefonni bogʻlash
+shop_page_title	Doʻkon — Tabiyat
+shop_lede	Yillik bulut tariflari — soliq toʻlovda qoʻshiladi. Oʻz qurilmalaringizdagi toʻliq Tabiyat ilovasi abadiy bepul va reklamasiz.
+shop_cart	Savat
+shop_cart_empty_hint	Savatingiz boʻsh. Steady, Swift yoki Priority qoʻshing.
+shop_checkout	Toʻlov
+shop_clear	Tozalash
+shop_checkout_hint	Toʻlov avval sizni Hisob boʻlimiga kiritadi, soʻng toʻlovni boshlaydi (sinov muhitidagi taqlid yoki kalitlar sozlangan boʻlsa Paddle).
+acct_billing_hint	Yillik tariflar — soliqni toʻlovda toʻlov shlyuzi qoʻshadi. Mahalliy foydalanish abadiy bepul. Maxsus tarif — narx taklifi (Steady’dan past yoki Priority’dan yuqori boʻlishi mumkin).
+shop_cloud_plans	Bulut tariflari
+acct_federated	Birlashgan kirish
+acct_err_invalid_email	Toʻgʻri elektron pochta manzilini kiriting.
+acct_err_weak_password	Kamida 6 belgili parol ishlating.
+acct_err_wrong_password	Parol notoʻgʻri.
+acct_err_invalid_credential	Elektron pochta yoki parol notoʻgʻri.
+acct_err_popup_closed	Kirish oynasi yopildi.
+acct_err_popup_cancelled	Kirish bekor qilindi.
+acct_err_unauthorized_domain	Bu domenga Firebase Auth ruxsat bermagan.
+acct_err_method_disabled	Bu kirish usuli hali yoqilmagan.
+acct_err_too_many	Urinishlar juda koʻp. Keyinroq qayta urinib koʻring.
+acct_err_phone_format	Davlat kodi bilan toʻliq telefon raqamini ishlating (masalan, +91…).
+acct_err_sms_code	Bu SMS kod notoʻgʻri yoki muddati oʻtgan.
+acct_err_no_account	Bu pochta bilan hisob yoʻq. Yaratish uchun davom eting yoki boshqa usuldan foydalaning.
+acct_err_recent_login	Xavfsizlik uchun qayta kiring, soʻng bu oʻzgarishni takrorlang.
+acct_err_credential_in_use	Bu kirish usuli allaqachon boshqa hisobda ishlatilmoqda.
+acct_err_email_in_use	Bu elektron pochta allaqachon boshqa hisobda ishlatilmoqda.
+acct_err_already_linked	Bu usul allaqachon shu hisobga bogʻlangan.
+acct_err_exists_other_method	Bu pochta bilan boshqa kirish usulidan foydalanadigan hisob allaqachon mavjud. Avval oʻsha usul bilan kiring, soʻng buni hisob sahifangizdan bogʻlang.
+acct_err_generic	Nimadir xato ketdi.
+acct_method_password	Elektron pochta va parol
+acct_pw_hint_change	Parolingizni oʻzgartiring. Joriy parol bilan tasdiqlaysiz.
+acct_pw_hint_add	Elektron pochta bilan ham kira olish uchun parol qoʻshing (provayder mavjud boʻlmaganda foydali).
+acct_pw_change	Parolni oʻzgartirish
+acct_pw_add	Parol qoʻshish
+acct_billing_off	Bulut API’da toʻlov tizimi hali yoqilmagan.
+acct_billing_no_provider	Bulut API’da haqiqiy toʻlov provayderi yoqilmagan (taqlid faqat mahalliy).
+price_quote	Narx taklifi
+price_per_year	₹{amount}/yil, soliqsiz
+acct_pay_received	Toʻlov qabul qilindi — tarifingiz yangilanmoqda…
+acct_pay_declined	Toʻlov rad etildi yoki amalga oshmadi
+acct_pay_failed_detail	{detail}. Tarifingiz oʻzgarmadi.
+acct_checkout_closed	Toʻlov oynasi yopildi — toʻlov yakunlanmadi. Tarifingiz oʻzgarmagan.
+acct_checkout_failed	Toʻlov amalga oshmadi
+acct_pay_with	{provider} orqali toʻlash
+acct_plan_until	{plan} · {date} gacha
+acct_unavailable	Mavjud emas
+acct_continue_hint	Elektron pochta, provayder yoki telefon bilan davom eting.
+acct_signed_in_fallback	(kirildi)
+acct_email_verified	Pochta tasdiqlangan
+acct_email_unverified	Pochta hali tasdiqlanmagan — kiruvchi qutini tekshiring
+acct_signed_in_phone	Telefon bilan kirildi
+acct_none_listed	Hozircha hech narsa yoʻq
+acct_signed_in_status	Siz kirdingiz.
+acct_created	Hisob yaratildi. Imkoningiz boʻlganda tasdiqlash uchun pochtangizni tekshiring.
+acct_reset_sent	Bu pochta uchun hisob boʻlsa, tiklash havolasi yoʻlda. Kiruvchi qutini tekshiring.
+acct_another_method	boshqa usul
+acct_exists_via	{email} uchun hisob allaqachon {method} orqali mavjud. Avval oʻsha yoʻl bilan kiring, soʻng bu provayderni hisob sahifangizdan bogʻlang.
+acct_enter_current_pw	Joriy parolingizni kiriting.
+acct_relogin_retry	Chiqib, qayta kiring, soʻng yana urinib koʻring.
+acct_pw_mismatch	Yangi parol va tasdiq mos kelmaydi.
+acct_pw_updated	Parol yangilandi.
+acct_enter_email_pw	Parol bilan kirishda ishlatiladigan pochtani kiriting.
+acct_pw_added	Parol qoʻshildi. Endi pochta bilan ham kira olasiz.
+acct_method_linked	Kirish usuli bogʻlandi.
+acct_phone_linked	Telefon shu hisobga bogʻlandi.
+acct_verify_sent	Tasdiqlash xati yuborildi — kiruvchi qutini tekshiring.
+shop_pricing_soon	Narxlar tez orada
+shop_request_quote	Narx taklifini soʻrash
+shop_add_to_cart	Savatga qoʻshish
+shop_notify_later	Keyinroq xabar bering
+shop_included	Kiritilgan
+shop_in_cart	{plan} savatingizda.
+shop_remove	Olib tashlash
+shop_cart_is_empty	Savat boʻsh.
+shop_prices_unpublished	Bu mahsulot uchun oʻz-oʻziga xizmat narxlari hali eʼlon qilinmagan. Maxsus narx taklifini soʻrang yoki keyinroq qayta qarang.
+shop_cart_cleared	Savat tozalandi.
+plan_free_title	Abadiy bepul
+plan_free_blurb	Qurilmalaringizda toʻliq mahalliy mahsulot. Bulut toʻlovi yoʻq.
+plan_steady_blurb	Jonli bulut · 10 GB · past oʻtkazuvchanlik
+plan_swift_blurb	Jonli bulut · 25 GB · oʻrtacha oʻtkazuvchanlik
+plan_priority_blurb	Jonli bulut · 50 GB · eng yuqori standart oʻtkazuvchanlik
+plan_custom_title	Maxsus
+plan_custom_blurb	Kelishilgan kvota va oʻtkazuvchanlik. Taklif Steady’dan past yoki Priority’dan yuqori boʻlishi mumkin.

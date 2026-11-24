@@ -1,227 +1,227 @@
 # Tajik — Тоҷикӣ (tg). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Намуна
+download_free	Ройгон боргирӣ кунед
+whatsapp_for_a_demo	Барои намоиш ба WhatsApp нависед
+free_on_android_windows_and	Дар Android, Windows ва Linux ройгон.
+the_pharmacy_counter	кассаи дорухона
+pharmacy_counter	Кассаи дорухона
+tabiyat_the_pharmacy_counter	TABIYAT · КАССАИ ДОРУХОНА
+pharmacy_counter_offline_your_books	Кассаи дорухона. Офлайн. Дафтарҳои шумо.
+medicines_barcode_and_salt_search	Доруҳо, ҷустуҷӯ аз рӯи штрих-код ва моддаи таъсирбахш, партия ва мӯҳлати истифода барои дафтарҳои худи шумо — дар дастгоҳҳои шумо. Танҳо қайдҳои соҳиб; ҳеҷ гоҳ мувофиқати қалбакӣ ба қонуни доруворӣ нест.
+tap_the_bill_to_walk	Барои дидани фурӯши касса ҳисобро пахш кунед
+cash_memo	Чеки нақд
+ready	Тайёр
+total	Ҷамъ
+tap_to_add_the_first	Барои илова кардани доруи аввал пахш кунед
+example_pharmacy_lines_not_a	Сатрҳои намунавии дорухона, на кассаи воқеӣ. Tabiyat ҳамон роҳро меравад: фурӯш → ҳисоббаробарӣ → дафтари рӯз.
+n_2_counter_sell	2 · ФУРӮШ ДАР КАССА
+medicine_quantity_pay_three_taps	Дору, миқдор, пардохт — се пахш.
+upi_qr_ready	UPI QR тайёр
+example_bill	Ҳисоби намунавӣ
+fast_counter_billing	Ҳисобдиҳии зуд дар касса
+add_the_line_set_the	Сатр илова кунед, миқдорро гузоред, ҳисоббаробарӣ кунед — нақд, UPI ё тақсимшуда.
+gst_tax_invoice_or_cash	Ҳисобнома-фактураи андози GST ё чеки нақд
+the_bill_lane_you_need	Навъи ҳисобе, ки барои фурӯш лозим аст.
+day_book_follows	Дафтари рӯз аз пай меояд
+every_tender_lands_in_books	Ҳангоми бастани фурӯш ҳар пардохт ба Дафтарҳо меафтад.
+n_3_barcode_salt	3 · ШТРИХ-КОД ВА МОДДАИ ТАЪСИРБАХШ
+scan_the_barcode_or_find	Штрих-кодро скан кунед — ё онро аз рӯи моддаи таъсирбахш ёбед.
+search	Ҷустуҷӯ
+composition_paracetamol_strip_of_10	Таркиб: Парасетамол · варақаи 10-дона
+salt_amoxicillin	Моддаи таъсирбахш: амоксициллин
+ranks_barcode_name_and_composition	Штрих-код, ном ва таркибро якҷоя тартиб медиҳад.
+wedge_scanner_or_type_enter	Сканер ё навиштан ва Enter — сатр ба ҳисоб меафтад.
+barcode_first	Аввал штрих-код
+scan_or_paste_the_code	Рамзро скан ё ворид кунед; мувофиқат аз феҳрист пайдо мешавад.
+salt_composition	Моддаи таъсирбахш / таркиб
+type_the_salt_when_the	Вақте ки номи бренд он чизе нест, ки муштарӣ гуфт, моддаи таъсирбахшро нависед.
+owner_rx_schedule_h_flags	Қайдҳои соҳиб оид ба ретсепт / Schedule H
+reminders_you_set_not_a	Ёддоштҳое, ки худатон мегузоред — на феҳристи қонунӣ, на маслиҳати тиббӣ.
+n_4_batch_expiry	4 · ПАРТИЯ ВА МӮҲЛАТИ ИСТИФОДА
+batch_and_expiry_on_your	Партия ва мӯҳлати истифода дар дафтарҳои шумо — огоҳиҳо барои соҳиб.
+buy_batch_a12	Харид · партияи A12
+expires_2027_03_alert_in	Мӯҳлат 2027-03 · огоҳӣ баъд аз 7 рӯз
+ors_sachets_batch_b04	Халтачаҳои ORS · партияи B04
+expires_2026_11_near_expiry	Мӯҳлат 2026-11 · навори мӯҳлати наздик дар Дафтарҳо
+shop_bookkeeping_only_not_drugs	Танҳо ҳисобдории мағоза — на мувофиқат ба қонуни доруворӣ.
+batch_on_buy	Партия ҳангоми харид
+record_batch_and_expiry_when	Ҳангоми омадани мол партия ва мӯҳлати истифодаро сабт кунед.
+near_expiry_alerts	Огоҳиҳо дар бораи мӯҳлати наздик
+books_and_sell_can_hint	Дафтарҳо ва Фурӯш метавонанд пеш аз гузаштани сана огоҳ кунанд.
+owner_practice	Таҷрибаи соҳиб
+fefo_hints_and_rx_notes	Риояи маслиҳатҳои FEFO ва қайдҳои ретсепт ба ӯҳдаи шумост — Tabiyat он чиро, ки ворид мекунед, сабт мекунад.
+n_5_khata	5 · ДАФТАРИ ҚАРЗ
+customer_credit_and_supplier_dues	Қарзи муштарӣ ва қарзи таъминкунанда дар як дафтари тарафҳо.
+mehta_clinic_customer	Клиникаи Mehta · Муштарӣ
+due_from_earlier	Қарзи пешина
+today_s_sale_due	+ фурӯши имрӯза (қарз)
+balance	Бақия
+settle_later_part_cash_part	Баъдтар пардохт кунед — қисман нақд, қисман UPI. Қарзи таъминкунанда ҳам дар ҳамон экрани Тарафҳо.
+due_on_the_bill	Қарз дар ҳисоб
+leave_a_balance_on_khata	Бақияро дар дафтари қарз бе барномаи алоҳидаи ҳисобдорӣ гузоред.
+supplier_buys_too	Харид аз таъминкунанда низ
+who_you_owe_updates_when	Ҳангоми омадани мол қарзи шумо нав мешавад.
+auditable	Қобили санҷиш
+who_when_and_how_much	Кӣ, кай ва чӣ қадар — дар дафтари рӯз мемонад.
+n_6_internet_down	6 · ИНТЕРНЕТ ҚАТЪ ШУД?
+the_internet_drops_the_counter	Интернет қатъ мешавад. Касса фурӯшро идома медиҳад.
+router_no_internet	Роутер: интернет нест
+main_counter_selling_and_settling	Кассаи асосӣ: мефурӯшад ва ҳисоббаробарӣ мекунад
+second_till_joined_on_your	Кассаи дуюм: ба Wi-Fi-и худи шумо пайваст
+books_live_on_the_shop	Дафтарҳо дар дастгоҳҳои мағоза нигоҳ дошта мешаванд
+when_the_internet_drops_nothing	Вақте ки интернет қатъ мешавад, дар кассаи дорухона ҳеҷ чиз онро интизор намешавад.
+one_server_lan_clients	Як сервер, мизоҷони LAN
+extra_tills_share_the_same	Кассаҳои иловагӣ тавассути шабакаи мағоза ҳамон дафтарҳоро истифода мебаранд.
+n_7_free_forever_locally	7 · ДАР МАҲАЛ ҲАМЕША РОЙГОН
+free_forever_on_your_devices	Дар дастгоҳҳои шумо ҳамеша ройгон.
+no_per_bill_charge	Пардохт барои ҳисоб нест
+no_fee_per_sale_medicine	Дар насби маҳаллӣ барои фурӯш, дору, касса ё PIN-и корманд пардохт нест.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Ҳамон Tabiyat дар телефон ва дар кассаи мизӣ.
+optional_kumkaj_cloud	Kumkaj Cloud-и ихтиёрӣ
+yearly_steady_6k_swift_12k	Солона Steady ₹6k · Swift ₹12k · Priority ₹24k бе андоз (ё пешниҳоди фардӣ). Дар /shop харед.
+n_8_start	8 · ОҒОЗ
+put_tabiyat_on_the_counter	Tabiyat-ро дар касса гузоред.
+download_free_or_whatsapp_for	Ройгон боргирӣ кунед ё барои шиносоӣ бо дорухона ва шаҳри худ ба WhatsApp нависед.
+privacy	Махфият
+terms	Шартҳо
+cancellation	Бекоркунӣ
+cloud_shop	Мағозаи абрӣ
+account	Аккаунт
+chapter_counter_sell	Фурӯш дар касса
+chapter_barcode_salt	Штрих-код ва моддаи таъсирбахш
+chapter_batch_expiry	Партия ва мӯҳлати истифода
+chapter_khata	Дафтари қарз
+chapter_extra_till	Кассаи иловагӣ
+chapter_offline	Офлайн
+chapter_start	Оғоз
+bill_selling	Фурӯш меравад
+bill_settle	Ҳисоббаробарӣ
+bill_paid	Пардохт шуд
+bill_next_line	Барои илова кардани сатри навбатӣ пахш кунед
+bill_settle_hint	Барои ҳисоббаробарӣ пахш кунед — нақд ё UPI
+bill_upi_paid	UPI ₹ 162 · пардохт шуд
+bill_paid_line	Пардохт шуд · дафтари рӯз нав шуд
+lan_eyebrow	6 · КАССАИ ИЛОВАГӢ
+lan_title	Кассаи дигар дар Wi-Fi-и мағоза.
+cta_installers_note	Насбкунандаҳо ҳар кадом пас аз гузаштани санҷиши насб дар компютери тоза дар ин ҷо гузошта мешаванд. То он вақт дар WhatsApp намоиш дархост кунед.
+cta_whatsapp_soon	Хатти намоиши WhatsApp ба зудӣ кушода мешавад. Паёми шумо чунин хоҳад буд: «{message}».
+acct_page_title	Аккаунт — Tabiyat
+acct_lede	Як аккаунт барои сайт ва барномаҳо — ҳамон шакл, хоҳ нав бошед, хоҳ баргашта.
+acct_email	Почтаи электронӣ
+acct_name_optional	Ном (ихтиёрӣ)
+acct_password	Парол
+acct_continue	Давом додан
+acct_forgot	Паролро фаромӯш кардед?
+acct_reset_hint	Мо пайванди барқароркуниро ба почтаи электронӣ мефиристем. Ҳамон суроғаеро истифода баред, ки бо он ба қайд гирифта шудаед.
+acct_send_reset	Фиристодани пайванди барқароркунӣ
+acct_cancel	Бекор кардан
+acct_or_continue	ё бо ин давом диҳед
+acct_phone	Телефон
+acct_mobile	Рақами мобилӣ
+acct_send_sms	Фиристодани рамзи SMS
+acct_sms_code	Рамзи SMS
+acct_confirm_code	Тасдиқи рамз
+acct_signed_in	Ворид шудед
+acct_signed_in_as	Ворид шуда ҳамчун
+acct_status	Ҳолат
+acct_sign_in_methods	Усулҳои воридшавӣ
+acct_cloud_username	Номи корбар дар абр
+acct_plan	Тариф
+acct_resend_verify	Номаи тасдиқро бори дигар фиристед
+acct_sign_out	Баромадан
+acct_cloud_sandbox	Kumkaj Cloud (муҳити озмоишӣ)
+acct_current_password	Пароли ҷорӣ
+acct_email_for_password	Почта барои воридшавӣ бо парол
+acct_new_password	Пароли нав
+acct_confirm_new_password	Пароли навро тасдиқ кунед
+acct_add_way	Роҳи дигари воридшавиро илова кунед
+acct_link_hint	Усулҳоро ба як аккаунт пайваст кунед, то агар яке кор накунад, дастрасиро барқарор карда тавонед.
+acct_link_google	Пайваст кардани Google
+acct_link_microsoft	Пайваст кардани Microsoft
+acct_link_github	Пайваст кардани GitHub
+acct_link_phone	Пайваст кардани телефон
+acct_send_sms_link	Барои пайваст SMS фиристед
+acct_confirm_link_phone	Тасдиқ ва пайваст кардани телефон
+shop_page_title	Мағоза — Tabiyat
+shop_lede	Тарифҳои солонаи абрӣ — андоз ҳангоми пардохт илова мешавад. Барномаи пурраи Tabiyat дар дастгоҳҳои худи шумо ҳамеша ройгон ва бе реклама мемонад.
+shop_cart	Сабад
+shop_cart_empty_hint	Сабади шумо холӣ аст. Steady, Swift ё Priority илова кунед.
+shop_checkout	Пардохт
+shop_clear	Тоза кардан
+shop_checkout_hint	Пардохт аввал шуморо ба Аккаунт ворид мекунад, баъд пардохтро оғоз мекунад (тақлиди муҳити озмоишӣ ё Paddle, агар калидҳо танзим шуда бошанд).
+acct_billing_hint	Тарифҳои солона — андозро шлюзи пардохт ҳангоми пардохт илова мекунад. Истифодаи маҳаллӣ ҳамеша ройгон мемонад. Тарифи фардӣ — пешниҳоди нарх (метавонад аз Steady пасттар ё аз Priority баландтар бошад).
+shop_cloud_plans	Тарифҳои абрӣ
+acct_federated	Воридшавии муттаҳид
+acct_err_invalid_email	Суроғаи дурусти почтаи электрониро ворид кунед.
+acct_err_weak_password	Паролеро истифода баред, ки на камтар аз 6 аломат дошта бошад.
+acct_err_wrong_password	Парол нодуруст аст.
+acct_err_invalid_credential	Почта ё парол нодуруст аст.
+acct_err_popup_closed	Равзанаи воридшавӣ баста шуд.
+acct_err_popup_cancelled	Воридшавӣ бекор карда шуд.
+acct_err_unauthorized_domain	Ин домен барои Firebase Auth иҷозат надорад.
+acct_err_method_disabled	Ин усули воридшавӣ ҳоло фаъол нашудааст.
+acct_err_too_many	Кӯшишҳо аз ҳад зиёданд. Баъдтар боз кӯшиш кунед.
+acct_err_phone_format	Рақами пурраи телефонро бо рамзи кишвар истифода баред (масалан +91…).
+acct_err_sms_code	Ин рамзи SMS нодуруст аст ё мӯҳлаташ гузаштааст.
+acct_err_no_account	Бо ин почта аккаунт нест. Барои сохтани он давом диҳед ё усули дигарро истифода баред.
+acct_err_recent_login	Барои амният бори дигар ворид шавед, баъд ин тағйиротро такрор кунед.
+acct_err_credential_in_use	Ин усули воридшавиро аккаунти дигар истифода мебарад.
+acct_err_email_in_use	Ин почтаи электрониро аккаунти дигар истифода мебарад.
+acct_err_already_linked	Ин усул аллакай ба ин аккаунт пайваст аст.
+acct_err_exists_other_method	Бо ин почта аккаунте бо усули дигари воридшавӣ аллакай вуҷуд дорад. Аввал бо ҳамон усул ворид шавед, баъд инро аз саҳифаи аккаунти худ пайваст кунед.
+acct_err_generic	Хатое рух дод.
+acct_method_password	Почтаи электронӣ ва парол
+acct_pw_hint_change	Пароли худро иваз кунед. Бо пароли ҷорӣ тасдиқ мекунед.
+acct_pw_hint_add	Парол илова кунед, то бо почтаи электронӣ низ ворид шавед (агар провайдер дастрас набошад, муфид аст).
+acct_pw_change	Иваз кардани парол
+acct_pw_add	Илова кардани парол
+acct_billing_off	Системаи пардохт дар API-и абрӣ ҳоло фаъол нашудааст.
+acct_billing_no_provider	Дар API-и абрӣ ягон провайдери воқеии пардохт фаъол нест (тақлид танҳо маҳаллӣ аст).
+price_quote	Пешниҳоди нарх
+price_per_year	₹{amount}/сол бе андоз
+acct_pay_received	Пардохт гирифта шуд — тарифи шумо нав мешавад…
+acct_pay_declined	Пардохт рад шуд ё анҷом наёфт
+acct_pay_failed_detail	{detail}. Тарифи шумо тағйир наёфт.
+acct_checkout_closed	Равзанаи пардохт баста шуд — пардохт анҷом наёфт. Тарифи шумо бетағйир аст.
+acct_checkout_failed	Пардохт анҷом наёфт
+acct_pay_with	Пардохт бо {provider}
+acct_plan_until	{plan} · то {date}
+acct_unavailable	Дастнорас
+acct_continue_hint	Бо почтаи электронӣ, провайдер ё телефон давом диҳед.
+acct_signed_in_fallback	(ворид шудааст)
+acct_email_verified	Почта тасдиқ шуд
+acct_email_unverified	Почта ҳанӯз тасдиқ нашудааст — қуттии воридотиро санҷед
+acct_signed_in_phone	Бо телефон ворид шуд
+acct_none_listed	Ҳоло ҳеҷ чиз нест
+acct_signed_in_status	Шумо ворид шудед.
+acct_created	Аккаунт сохта шуд. Вақте имкон доред, барои тасдиқ почтаи худро санҷед.
+acct_reset_sent	Агар барои ин почта аккаунт бошад, пайванди барқароркунӣ дар роҳ аст. Қуттии воридотиро санҷед.
+acct_another_method	усули дигар
+acct_exists_via	Аккаунт барои {email} тавассути {method} аллакай вуҷуд дорад. Аввал бо ҳамон роҳ ворид шавед, баъд ин провайдерро аз саҳифаи аккаунти худ пайваст кунед.
+acct_enter_current_pw	Пароли ҷории худро ворид кунед.
+acct_relogin_retry	Бароед ва бори дигар ворид шавед, баъд такрор кунед.
+acct_pw_mismatch	Пароли нав ва тасдиқи он мувофиқат намекунанд.
+acct_pw_updated	Парол нав карда шуд.
+acct_enter_email_pw	Почтаеро ворид кунед, ки бо воридшавии паролӣ истифода мешавад.
+acct_pw_added	Парол илова шуд. Акнун бо почтаи электронӣ низ ворид шуда метавонед.
+acct_method_linked	Усули воридшавӣ пайваст шуд.
+acct_phone_linked	Телефон ба ин аккаунт пайваст шуд.
+acct_verify_sent	Номаи тасдиқ фиристода шуд — қуттии воридотиро санҷед.
+shop_pricing_soon	Нархҳо ба зудӣ
+shop_request_quote	Дархости пешниҳоди нарх
+shop_add_to_cart	Ба сабад илова кардан
+shop_notify_later	Баъдтар хабар диҳед
+shop_included	Дохил аст
+shop_in_cart	{plan} дар сабади шумост.
+shop_remove	Хориҷ кардан
+shop_cart_is_empty	Сабад холӣ аст.
+shop_prices_unpublished	Нархҳои харидани мустақил барои ин маҳсулот ҳоло нашр нашудаанд. Пешниҳоди нархи фардӣ дархост кунед ё баъдтар баргардед.
+shop_cart_cleared	Сабад тоза шуд.
+plan_free_title	Ҳамеша ройгон
+plan_free_blurb	Маҳсулоти пурраи маҳаллӣ дар дастгоҳҳои шумо. Пардохти абрӣ нест.
+plan_steady_blurb	Абри фаъол · 10 GB · суръати интиқоли пасттар
+plan_swift_blurb	Абри фаъол · 25 GB · суръати интиқоли миёна
+plan_priority_blurb	Абри фаъол · 50 GB · баландтарин суръати стандартии интиқол
+plan_custom_title	Фардӣ
+plan_custom_blurb	Квота ва суръати интиқоли мувофиқашуда. Пешниҳод метавонад аз Steady пасттар ё аз Priority баландтар бошад.

@@ -1,254 +1,254 @@
 # Turkmen — Türkmençe (tk). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Mysal
+length	Uzynlygy
+download_free	Mugt göçürip alyň
+whatsapp_for_a_demo	Görkeziş üçin WhatsApp-a ýazyň
+free_on_android_windows_and	Android, Windows we Linux-da mugt.
+courier_operating_system	kurýer operasion ulgamy
+parcel_journey	POSYLKANYŇ ÝOLY
+walk_in	Gelen müşderi
+weigh	Çekmek
+price	Baha
+label	Ýarlyk
+hand_over	Tabşyrmak
+track	Yzarlamak
+offline	Oflaýn
+start	Başlamak
+moklanjo_courier_operating_system	MOKLANJO · KURÝER OPERASION ULGAMY
+book_move_and_settle_every	Her posylkany kabul ediň, eltiň we hasaplaşyň — öz enjamlaryňyzda bir kurýer ulgamy.
+parties_books_cod_labels_awb	Taraplar, hasap kitaplary, eltip berlende töleg, ýarlyklar, AWB belgi toplumlary, yzarlama, kurýerler we hasaplaşyk — kassadan hasaplaşyga çenli doly aýlaw, internet bilen ýa-da internetsiz. Enjamlaryňyzda mugt.
+the_walk_in_loop	GELEN MÜŞDERI AÝLAWY
+actual_and_volumetric_side_by	Hakyky we göwrüm agramy, ýanaşyk.
+charge	Töleg
+your_rate_card_cash_or	Nyrh kartaňyz, nagt ýa-da hasaba.
+next_booking	Indiki kabul ediş
+one_tap_clears_the_counter	Bir basyş kassany indiki müşderi üçin boşadýar.
+scroll_the_parcel_journey_rail	Aşak süýşüriň — ýokardaky posylka ýoly zolagy wakanyň haýsy ýerindedigiňizi görkezýär.
+n_2_weigh_it_right	2 · DOGRY ÇEKIŇ
+actual_or_volumetric_whichever_is	Hakyky ýa-da göwrüm — haýsysy uly bolsa, siziň usulyňyz bilen tegeleklenýär.
+try_a_box	Gutyny synap görüň
+domestic	Ýurt içi
+international	Halkara
+breadth	Ini
+height	Beýikligi
+weight_on_the_scale	Terezidäki agram
+chargeable_weight	TÖLEGLI AGRAM
+the_box_s_size_sets	Gutynyň ölçegi tölegi kesgitleýär.
+higher_of_the_two_rounded	Ikisiniň ulusy, indiki 0,5 kg çenli ýokaryk tegeleklenýär.
+in_the_app_the_divisor	Programmada bölüjini, tegeleklemek ädimini we birlikleriňizi (cm ýa-da dýuým, kg ýa-da funt) dükan özi kesgitleýär. Halkara düwmesi Sazlamalara degmezden bir kabul ediş üçin ÷6000-i çalyşýar.
+n_3_price_it	3 · BAHA KESGITLÄŇ
+your_rate_cards_your_party	Nyrh kartalaryňyz, taraplaryňyzyň bahalary — we her ýük resminamasyndaky goşmaça girdejiňiz.
+rate_card	Nyrh kartasy
+zone_service	Zolak · hyzmat
+first_0_5_kg	Ilkinji 0,5 kg
+each_0_5_kg	Her 0,5 kg
+local_surface	Ýerli · Ýerüsti
+within_state_express	Welaýat içi · Tiz
+metro_air	Uly şäher · Howa
+zone_service_weight_slab	Zolak × hyzmat × agram basgançagy
+first_slab_and_each_extra	Zolak we hyzmat boýunça ilkinji basgançak we her goşmaça basgançak.
+a_consignor_s_own_card	Iberijiniň öz kartasy
+regular_senders_get_their_rates	Hemişelik iberijiler öz bahalaryny alýarlar; adaty karta beýlekileriň hemmesini öz içine alýar.
+margin_at_the_desk	Kassadaky girdeji
+your_sell_price_against_the	Her ýük resminamasynda satyş bahaňyz daşaýjynyň bahasy bilen deňeşdirilýär.
+n_4_label_it	4 · ÝARLYK ÝELMÄŇ
+awb_from_your_own_number	Öz belgi toplumlaryňyzdan AWB. Ýarlyk, skanirlemek, tapmak.
+number_pools_per_carrier	Her daşaýjy üçin belgi toplumy
+enter_each_carrier_s_start	Her daşaýjynyň başlangyç–soňky seriýasyny bir gezek giriziň; her kabul ediş indiki belgini alýar.
+code_128_labels	Code 128 ýarlyklary
+the_awb_goes_on_the	AWB guta ştrih-kod we ýönekeý sanlar bilen çap edilýär.
+scan_to_find	Tapmak üçin skanirläň
+scan_a_label_to_open	Ýarlygy skanirläp, onuň ýük resminamasyny açyň we hereket ediň.
+n_5_hand_over	5 · TABŞYRMAK
+hand_it_to_a_carrier	Ony daşaýja tabşyryň ýa-da öz kurýeriňizi iberiň. Şol bir ulgam.
+into_a_carrier_bag	Daşaýjynyň haltasyna
+the_manifest_holds_exactly_the	Manifestde edil siziň saýlan posylkalaryňyz bolýar — ýa hemmesi, ýa-da hiç biri. Başga daşaýjyda kabul edilen posylka bu halta düşüp bilmeýär.
+onto_your_own_rider_s	Öz kurýeriňiziň ugruna
+pick_the_parcels_print_the	Posylkalary saýlaň, ugur sanawyny çap ediň, kurýer bolsa şol bir programmada kurýer režiminde işleýär — eltip bermegiň subutnamasy bilen.
+n_6_track_and_prove	6 · YZARLAŇ WE SUBUT EDIŇ
+every_move_recorded_and_only	Her hereket ýazylýar — diňe manyly hereketler.
+booked	Kabul edildi
+with_carrier	Daşaýjyda
+out_for_delivery	Eltip bermäge çykdy
+delivered	Gowşuryldy
+booked_with_carrier_out_for	Kabul edildi → Daşaýjyda → Eltip bermäge çykdy → Gowşuryldy
+failed	Şowsuz
+reason_out_again_or_return	→ sebäp → gaýtadan çykyş ýa-da iberijä gaýtarmak.
+impossible_moves_refused	Mümkin däl hereketler ret edilýär
+delivered_returned_and_cancelled	Gowşuryldy, gaýtaryldy we ýatyryldy — soňky ýagdaýlar.
+proof_of_delivery	Eltip bermegiň subutnamasy
+a_photo_and_the_receiver	Ýük resminamasynda surat we alyjynyň goly.
+failed_deliveries	Şowsuz eltip bermeler
+reasons_attempts_out_again_or	Sebäpler, synanyşyklar, gaýtadan çykyş ýa-da iberijä gaýtarmak.
+n_7_money_comes_home	7 · PUL ÖÝE GAÝDÝAR
+cod_you_can_see_expected	Görünýän eltip berlende töleg: garaşylýan, tabşyrylan, her iberijä bergi.
+rider_cash_end_of_run	Kurýeriň nagt puly, ugruň soňy
+rider	Kurýer
+expected	Garaşylýan
+handed_in	Tabşyrylan
+a_14_drops	A · 14 eltip berme
+b_9_drops	B · 9 eltip berme
+short_200_on_rider_b	B kurýerde ₹ 200 kemlik — ady bilen, umumy jemde ýitmeýär.
+cod_register	Eltip berlende töleg reýestri
+collected_against_paid_out_per	Iberiji boýunça ýygnalan we tölenen, geçirim toplumlary bilen.
+rider_settlement	Kurýer bilen hasaplaşyk
+expected_against_handed_in_and	Garaşylýan bilen tabşyrylanyň deňeşdirmesi we komissiýa çeki.
+books_that_close	Ýapylýan hasap kitaplary
+day_book_month_bill_per	Gündelik kitap, her hasap boýunça aýlyk hasap-faktura we buhgalteriňiz üçin GST jemi CSV.
+n_8_internet_down	8 · INTERNET ÖÇDÜMI?
+keep_booking	Kabul etmegi dowam ediň.
+booking_labels_scanning_cod_and	Kabul ediş, ýarlyklar, skanirlemek, eltip berlende töleg we hasap kitaplary — hemmesi enjamlaryňyzda işleýär. Internet kesilende kassada hiç zat oňa garaşmaýar.
+office_router_no_internet	Ofis routeri: internet ýok
+desk_still_booking	Kassa: kabul etmegi dowam edýär
+second_counter_and_rider_phone	Ikinji kassa we kurýeriň telefony: ofisiň Wi-Fi-y arkaly birleşdi
+free_forever_on_your_devices	Enjamlaryňyzda hemişe mugt
+nothing_per_rider_user_or	Kurýer, ulanyjy ýa-da posylka üçin hiç zat ýok. Hökmany däl Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/ýyl, salgytsyz — /shop.
+n_9_start	9 · BAŞLAŇ
+one_courier_os_your_parcels	Bir kurýer ulgamy. Siziň posylkalaryňyz. Siziň hasap kitaplaryňyz.
+moklanjo_is_a_complete_courier	Moklanjo — Kumkaj astyndaky doly kurýer operasion ulgamy — Android, Windows we Linux. Kurýerler şol bir programmany kurýer režiminde ulanýarlar.
+trademark	SÖWDA BELGISI
+memon_for_find_it_pronounced	Memon dilinde «ony tap» · aýdylyşy go-tee-geen
+company	KOMPANIÝA
+brand	BREND
+concrete_business_operating_system	Anyk biznes operasion ulgamynyň programmalary
+product	ÖNÜM
+courier_operating_system_under	Kumkaj astyndaky kurýer operasion ulgamy
+privacy	Gizlinlik
+terms	Şertler
+cancellation	Ýatyrmak
+cloud_shop	Bulut dükany
+account	Akkaunt
+weigh_it_right	Dogry çekiň
+price_it	Baha kesgitläň
+label_it	Ýarlyk ýelmäň
+track_and_prove	Yzarlaň we subut ediň
+money_comes_home	Pul öýe gaýdýar
+internet_down	Internet ýok
+bead_hand	Tabşyrmak
+bead_offline_short	Oflaýn
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Terezide: {kg} kg
+weight_scale_wins	Terezidäki agram tölegi kesgitleýär.
+cta_installers_note	Gurnaýjylar her biri arassa kompýuterde gurnama barlagyndan geçenden soň şu ýere ýerleşdirilýär. Oňa çenli WhatsApp-da görkeziş soraň.
+cta_whatsapp_soon	WhatsApp görkeziş liniýasy ýakynda açylýar. Hatyňyz şeýle bolar: «{message}».
+acct_page_title	Akkaunt — Moklanjo
+acct_lede	Saýt we programmalar üçin bir akkaunt — täze bolsaňyz-da, gaýdyp gelseňiz-de şol bir forma.
+acct_email	E-poçta
+acct_name_optional	Ady (hökmany däl)
+acct_password	Parol
+acct_continue	Dowam et
+acct_forgot	Paroly ýatdan çykardyňyzmy?
+acct_reset_hint	Dikeldiş baglanyşygyny e-poçta iberýäris. Hasaba alnan şol bir salgyňyzy ulanyň.
+acct_send_reset	Dikeldiş baglanyşygyny iber
+acct_cancel	Ýatyr
+acct_or_continue	ýa-da şunuň bilen dowam ediň
+acct_phone	Telefon
+acct_mobile	Mobil belgi
+acct_send_sms	SMS koduny iber
+acct_sms_code	SMS kody
+acct_confirm_code	Kody tassykla
+acct_signed_in	Girildi
+acct_signed_in_as	Giren akkaunt
+acct_status	Ýagdaýy
+acct_sign_in_methods	Giriş usullary
+acct_cloud_username	Bulutdaky ulanyjy ady
+acct_plan	Tarif
+acct_resend_verify	Tassyklama hatyny gaýtadan iber
+acct_sign_out	Çykmak
+acct_cloud_sandbox	Kumkaj Cloud (synag gurşawy)
+acct_current_password	Häzirki parol
+acct_email_for_password	Parol bilen giriş üçin e-poçta
+acct_new_password	Täze parol
+acct_confirm_new_password	Täze paroly tassyklaň
+acct_add_way	Girişiň başga usulyny goşuň
+acct_link_hint	Biri işlemese, girişi dikeldip bilmek üçin usullary şol bir akkaunta baglaň.
+acct_link_google	Google-y baglamak
+acct_link_microsoft	Microsoft-y baglamak
+acct_link_github	GitHub-y baglamak
+acct_link_phone	Telefony baglamak
+acct_send_sms_link	Baglamak üçin SMS iber
+acct_confirm_link_phone	Tassykla we telefony bagla
+shop_page_title	Dükan — Moklanjo
+shop_lede	Ýyllyk bulut tarifleri — salgyt tölegde goşulýar. Öz enjamlaryňyzdaky doly Moklanjo programmasy hemişe mugt we mahabatsyz galýar.
+shop_cart	Sebet
+shop_cart_empty_hint	Sebediňiz boş. Steady, Swift ýa-da Priority goşuň.
+shop_checkout	Tölemek
+shop_clear	Arassala
+shop_checkout_hint	Tölemek ilki sizi Akkaunta girizýär, soňra tölegi başlaýar (synag gurşawyndaky meňzetme ýa-da açarlar sazlanan bolsa Paddle).
+acct_billing_hint	Ýyllyk tarifler — salgydy tölegde töleg şlýuzy goşýar. Ýerli ulanyş hemişe mugt galýar. Ýörite tarif — baha teklibi (Steady-den pes ýa-da Priority-den ýokary bolup biler).
+shop_cloud_plans	Bulut tarifleri
+acct_federated	Bilelikdäki giriş
+acct_err_invalid_email	Dogry e-poçta salgysyny giriziň.
+acct_err_weak_password	Azyndan 6 nyşanly parol ulanyň.
+acct_err_wrong_password	Parol nädogry.
+acct_err_invalid_credential	E-poçta ýa-da parol nädogry.
+acct_err_popup_closed	Giriş penjiresi ýapyldy.
+acct_err_popup_cancelled	Giriş ýatyryldy.
+acct_err_unauthorized_domain	Bu domene Firebase Auth üçin rugsat berilmedik.
+acct_err_method_disabled	Bu giriş usuly entek açylmadyk.
+acct_err_too_many	Synanyşyklar gaty köp. Soňrak gaýtadan synanyşyň.
+acct_err_phone_format	Ýurt kody bilen doly telefon belgisini ulanyň (meselem +91…).
+acct_err_sms_code	Bu SMS kody nädogry ýa-da möhleti geçen.
+acct_err_no_account	Bu e-poçta bilen akkaunt ýok. Döretmek üçin dowam ediň ýa-da başga usuly ulanyň.
+acct_err_recent_login	Howpsuzlyk üçin gaýtadan giriň, soňra bu üýtgetmäni gaýtalaň.
+acct_err_credential_in_use	Bu giriş usulyny başga akkaunt ulanýar.
+acct_err_email_in_use	Bu e-poçtany başga akkaunt ulanýar.
+acct_err_already_linked	Bu usul eýýäm şu akkaunta baglanan.
+acct_err_exists_other_method	Bu e-poçta bilen başga giriş usulyny ulanýan akkaunt eýýäm bar. Ilki şol usul bilen giriň, soňra muny akkaunt sahypaňyzdan baglaň.
+acct_err_generic	Bir zat ýalňyş boldy.
+acct_method_password	E-poçta we parol
+acct_pw_hint_change	Parolyňyzy üýtgediň. Häzirki parol bilen tassyklarsyňyz.
+acct_pw_hint_add	E-poçta bilen hem girip bilmek üçin parol goşuň (prowaýder elýeterli bolmasa peýdaly).
+acct_pw_change	Paroly üýtget
+acct_pw_add	Parol goş
+acct_billing_off	Bulut API-sinde töleg ulgamy entek açylmadyk.
+acct_billing_no_provider	Bulut API-sinde hakyky töleg prowaýderi açylmadyk (meňzetme diňe ýerli).
+price_quote	Baha teklibi
+price_per_year	₹{amount}/ýyl, salgytsyz
+acct_pay_received	Töleg alyndy — tarifiňiz täzelenýär…
+acct_pay_declined	Töleg ret edildi ýa-da şowsuz boldy
+acct_pay_failed_detail	{detail}. Tarifiňiz üýtgemedi.
+acct_checkout_closed	Töleg penjiresi ýapyldy — töleg tamamlanmady. Tarifiňiz üýtgemedi.
+acct_checkout_failed	Töleg şowsuz boldy
+acct_pay_with	{provider} bilen tölemek
+acct_plan_until	{plan} · {date} çenli
+acct_unavailable	Elýeterli däl
+acct_continue_hint	E-poçta, prowaýder ýa-da telefon bilen dowam ediň.
+acct_signed_in_fallback	(girildi)
+acct_email_verified	E-poçta tassyklandy
+acct_email_unverified	E-poçta entek tassyklanmady — gelen hatlaryňyzy barlaň
+acct_signed_in_phone	Telefon bilen girildi
+acct_none_listed	Entek hiç zat ýok
+acct_signed_in_status	Siz girdiňiz.
+acct_created	Akkaunt döredildi. Mümkinçiligiňiz bolanda tassyklamak üçin e-poçtaňyzy barlaň.
+acct_reset_sent	Bu e-poçta üçin akkaunt bar bolsa, dikeldiş baglanyşygy ýolda. Gelen hatlaryňyzy barlaň.
+acct_another_method	başga usul
+acct_exists_via	{email} üçin akkaunt {method} arkaly eýýäm bar. Ilki şol ýol bilen giriň, soňra bu prowaýderi akkaunt sahypaňyzdan baglaň.
+acct_enter_current_pw	Häzirki parolyňyzy giriziň.
+acct_relogin_retry	Çykyň we gaýtadan giriň, soňra gaýtalaň.
+acct_pw_mismatch	Täze parol bilen tassyklama gabat gelmeýär.
+acct_pw_updated	Parol täzelendi.
+acct_enter_email_pw	Parol bilen girişde ulanyljak e-poçtany giriziň.
+acct_pw_added	Parol goşuldy. Indi e-poçta bilen hem girip bilersiňiz.
+acct_method_linked	Giriş usuly baglandy.
+acct_phone_linked	Telefon şu akkaunta baglandy.
+acct_verify_sent	Tassyklama haty iberildi — gelen hatlaryňyzy barlaň.
+shop_pricing_soon	Bahalar ýakynda
+shop_request_quote	Baha teklibini soramak
+shop_add_to_cart	Sebede goşmak
+shop_notify_later	Soňrak habar beriň
+shop_included	Goşulan
+shop_in_cart	{plan} sebediňizde.
+shop_remove	Aýyrmak
+shop_cart_is_empty	Sebet boş.
+shop_prices_unpublished	Bu önüm üçin özbaşdak satyn alyş bahalary entek çap edilmedik. Ýörite baha teklibini soraň ýa-da soňrak gaýdyp geliň.
+shop_cart_cleared	Sebet arassalandy.
+plan_free_title	Hemişe mugt
+plan_free_blurb	Enjamlaryňyzdaky doly ýerli önüm. Bulut tölegi ýok.
+plan_steady_blurb	Işjeň bulut · 10 GB · pes geçirijilik
+plan_swift_blurb	Işjeň bulut · 25 GB · orta geçirijilik
+plan_priority_blurb	Işjeň bulut · 50 GB · iň ýokary standart geçirijilik
+plan_custom_title	Ýörite
+plan_custom_blurb	Ylalaşylan kwota we geçirijilik. Teklip Steady-den pes ýa-da Priority-den ýokary bolup biler.

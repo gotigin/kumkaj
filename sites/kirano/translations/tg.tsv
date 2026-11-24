@@ -1,230 +1,230 @@
 # Tajik — Тоҷикӣ (tg). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Намуна
+download_free	Ройгон боргирӣ кунед
+whatsapp_for_a_demo	Барои намоиш ба WhatsApp нависед
+free_on_android_windows_and	Дар Android, Windows ва Linux ройгон.
+the_grocery_counter	кассаи хӯрокворӣ
+busy_counter	Кассаи серкор
+kirano_the_grocery_counter	KIRANO · КАССАИ ХӮРОКВОРӢ
+busy_counter_no_internet_still	Кассаи серкор. Интернет нест. Фурӯш идома дорад.
+sell_khata_stock_and_the	Фурӯш, дафтари қарз, захира ва дафтари рӯз — дар дастгоҳҳои худи шумо. Дафтарҳо · Фурӯш · Харид · Молҳо. На толор, на ошхона, на миз.
+tap_the_bill_to_walk	Барои дидани фурӯши касса ҳисобро пахш кунед
+cash_memo	Чеки нақд
+ready	Тайёр
+total	Ҷамъ
+tap_to_add_the_first	Барои илова кардани моли аввал пахш кунед
+example_grocery_lines_not_a	Сатрҳои намунавии хӯрокворӣ, на кассаи воқеӣ. Kirano ҳамон роҳро меравад: фурӯш → ҳисоббаробарӣ → дафтари рӯз.
+n_2_counter_sell	2 · ФУРӮШ ДАР КАССА
+item_quantity_pay_three_taps	Мол, миқдор, пардохт — се пахш.
+upi_qr_ready	UPI QR тайёр
+example_bill	Ҳисоби намунавӣ
+search_by_name_or_short	Ҷустуҷӯ аз рӯи ном ё рамзи кӯтоҳ
+type_atta_at5_or_an	atta, AT5 ё номи дигарро нависед — сатр ба ҳисоб меафтад.
+kg_g_pc_l_ml	кг, г, дона, л, мл
+quantity_in_the_unit_the	Миқдор бо воҳиде, ки баста истифода мебарад; нарх мувофиқи он.
+cash_upi_or_split	Нақд, UPI ё тақсимшуда
+settle_on_the_counter_the	Дар касса ҳисоббаробарӣ кунед; дафтари рӯз усули пардохтро сабт мекунад.
+n_3_khata	3 · ДАФТАРИ ҚАРЗ
+credit_without_a_crm_put	Қарз бе CRM — онро ба дафтари қарзи онҳо нависед.
+ramesh_customer	Рамеш · Муштарӣ
+due_from_earlier	Қарзи пешина
+today_s_sale_due	+ фурӯши имрӯза (қарз)
+balance	Бақия
+settle_later_in_parties_part	Баъдтар дар Тарафҳо пардохт кунед — қисман нақд, қисман UPI, сатрро тоза кунед.
+due_on_the_bill	Қарз дар ҳисоб
+what_s_left_goes_on	Боқимонда ба дафтари қарзи муштарӣ меравад — барномаи алоҳидаи ҳисобдорӣ лозим нест.
+one_party_two_roles	Як тараф, ду нақш
+customer_ar_and_supplier_ap	Қарзи муштариён ва қарз ба таъминкунандагон як дафтари тарафҳоро истифода мебаранд.
+who_when_how_much	Кӣ, кай, чӣ қадар
+every_credit_and_settlement_stays	Ҳар қарз ва пардохт дар дафтари рӯз мемонад.
+n_4_buy_stock	4 · ХАРИД ВА ЗАХИРА
+buy_from_the_wholesaler_stock	Аз яклухтфурӯш харед — захира ва қарзи шумо якҷоя нав мешаванд.
+purchase_sharma_wholesale	Харид · Sharma Яклухтфурӯшӣ
+stock_50_kg_ap_7	Захира +50 kg · Қарз ₹ 7,200
+stock_12_l_ap_1	Захира +12 L · Қарз ₹ 1,560
+resale_stock_not_kitchen_raw	Захира барои фурӯш — на ашёи хоми ошхона. Партия ва мӯҳлати истифода дар харид ихтиёрӣ.
+buy_creates_stock	Харид захира месозад
+receive_the_goods_the_catalogue	Молро қабул кунед; миқдор дар феҳрист зиёд мешавад.
+who_we_owe	Ба кӣ қарздорем
+supplier_balance_sits_on_the	Бақияи таъминкунанда дар ҳамон тараф бо дафтари қарзи муштарӣ меистад.
+low_stock_at_a_glance	Захираи кам дар як нигоҳ
+inventory_shows_what_is_running	Анбор нишон медиҳад, ки чӣ пеш аз издиҳоми навбатӣ тамом мешавад.
+n_5_day_book	5 · ДАФТАРИ РӮЗ
+cash_vs_upi_counted_and	Нақд ва UPI алоҳида ҳисоб мешаванд — ва фарқ бо ном нишон дода мешавад.
+today_s_drawer	Қуттии пули имрӯза
+opening_float	Пули ибтидоӣ
+cash_sales	+ фурӯши нақд
+upi_sales	+ фурӯши UPI
+cash_paid_out	− нақди додашуда
+expected_cash	Нақди интизоршуда
+counted	Ҳисоб шуд
+short	Камбуд
+tenders_stay_separate	Усулҳои пардохт алоҳида мемонанд
+cash_and_upi_never_mix	Нақд ва UPI ҳеҷ гоҳ ба як маблағи пурасрор омехта намешаванд.
+shift_close	Пӯшидани смена
+close_the_shift_print_the	Сменаро пӯшед, чекро чоп кунед, сменаи навбатиро тоза оғоз кунед.
+gst_facing_bills	Ҳисобҳои мувофиқ ба GST
+tax_invoice_or_cash_memo	Ҳисобнома-фактураи андоз ё чеки нақд — ҳисоботи рӯз ҳардуро дар бар мегирад.
+books_sell_buy_items_four	Дафтарҳо · Фурӯш · Харид · Молҳо — чор экран ва бе толори тарабхона.
+n_6_internet_down	6 · ИНТЕРНЕТ ҚАТЪ ШУД?
+the_internet_drops_the_counter	Интернет қатъ мешавад. Касса фурӯшро идома медиҳад.
+router_no_internet	Роутер: интернет нест
+main_counter_selling_and_settling	Кассаи асосӣ: мефурӯшад ва ҳисоббаробарӣ мекунад
+second_till_joined_on_your	Кассаи дуюм: ба Wi-Fi-и худи шумо пайваст
+books_live_on_the_shop	Дафтарҳо дар дастгоҳҳои мағоза нигоҳ дошта мешаванд
+when_the_internet_drops_mid	Вақте ки интернет дар миёнаи издиҳом қатъ мешавад, дар касса ҳеҷ чиз онро интизор намешавад.
+one_server_lan_clients	Як сервер, мизоҷони LAN
+extra_tills_share_the_same	Кассаҳои иловагӣ тавассути шабакаи мағоза ҳамон дафтарҳоро истифода мебаранд.
+n_7_free_forever_locally	7 · ДАР МАҲАЛ ҲАМЕША РОЙГОН
+free_forever_on_your_devices	Дар дастгоҳҳои шумо ҳамеша ройгон.
+no_per_bill_charge	Пардохт барои ҳисоб нест
+no_fee_per_sale_item	Дар насби маҳаллӣ барои фурӯш, мол, касса ё PIN-и корманд пардохт нест.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Ҳамон Kirano дар телефони паси касса ва дар кассаи мизӣ.
+optional_kumkaj_cloud	Kumkaj Cloud-и ихтиёрӣ
+yearly_steady_6k_swift_12k	Солона Steady ₹6k · Swift ₹12k · Priority ₹24k бе андоз (ё пешниҳоди фардӣ). Дар /shop харед.
+n_8_start	8 · ОҒОЗ
+put_kirano_on_the_counter	Kirano-ро дар касса гузоред.
+download_free_or_whatsapp_for	Ройгон боргирӣ кунед ё барои шиносоӣ бо навъи мағоза ва шаҳри худ ба WhatsApp нависед.
+privacy	Махфият
+terms	Шартҳо
+cancellation	Бекоркунӣ
+cloud_shop	Мағозаи абрӣ
+account	Аккаунт
+chapter_counter_sell	Фурӯш дар касса
+chapter_khata	Дафтари қарз
+chapter_buy_stock	Харид ва захира
+chapter_day_book	Дафтари рӯз
+chapter_extra_till	Кассаи иловагӣ
+chapter_offline	Офлайн
+chapter_start	Оғоз
+bill_selling	Фурӯш меравад
+bill_settle	Ҳисоббаробарӣ
+bill_paid	Пардохт шуд
+bill_next_item	Барои илова кардани моли навбатӣ пахш кунед
+bill_settle_hint	Барои ҳисоббаробарӣ пахш кунед — нақд ё UPI
+bill_cash_return	Нақд ₹ 600 · бақия ₹ 15
+bill_paid_line	Пардохт шуд · дафтари рӯз нав шуд
+lan_eyebrow	6 · КАССАИ ИЛОВАГӢ
+lan_title	Кассаи дигар дар Wi-Fi-и мағоза.
+cta_installers_note	Насбкунандаҳо ҳар кадом пас аз гузаштани санҷиши насб дар компютери тоза дар ин ҷо гузошта мешаванд. То он вақт дар WhatsApp намоиш дархост кунед.
+cta_whatsapp_soon	Хатти намоиши WhatsApp ба зудӣ кушода мешавад. Паёми шумо чунин хоҳад буд: «{message}».
+acct_page_title	Аккаунт — Kirano
+acct_lede	Як аккаунт барои сайт ва барномаҳо — ҳамон шакл, хоҳ нав бошед, хоҳ баргашта.
+acct_email	Почтаи электронӣ
+acct_name_optional	Ном (ихтиёрӣ)
+acct_password	Парол
+acct_continue	Давом додан
+acct_forgot	Паролро фаромӯш кардед?
+acct_reset_hint	Мо пайванди барқароркуниро ба почтаи электронӣ мефиристем. Ҳамон суроғаеро истифода баред, ки бо он ба қайд гирифта шудаед.
+acct_send_reset	Фиристодани пайванди барқароркунӣ
+acct_cancel	Бекор кардан
+acct_or_continue	ё бо ин давом диҳед
+acct_phone	Телефон
+acct_mobile	Рақами мобилӣ
+acct_send_sms	Фиристодани рамзи SMS
+acct_sms_code	Рамзи SMS
+acct_confirm_code	Тасдиқи рамз
+acct_signed_in	Ворид шудед
+acct_signed_in_as	Ворид шуда ҳамчун
+acct_status	Ҳолат
+acct_sign_in_methods	Усулҳои воридшавӣ
+acct_cloud_username	Номи корбар дар абр
+acct_plan	Тариф
+acct_resend_verify	Номаи тасдиқро бори дигар фиристед
+acct_sign_out	Баромадан
+acct_cloud_sandbox	Kumkaj Cloud (муҳити озмоишӣ)
+acct_current_password	Пароли ҷорӣ
+acct_email_for_password	Почта барои воридшавӣ бо парол
+acct_new_password	Пароли нав
+acct_confirm_new_password	Пароли навро тасдиқ кунед
+acct_add_way	Роҳи дигари воридшавиро илова кунед
+acct_link_hint	Усулҳоро ба як аккаунт пайваст кунед, то агар яке кор накунад, дастрасиро барқарор карда тавонед.
+acct_link_google	Пайваст кардани Google
+acct_link_microsoft	Пайваст кардани Microsoft
+acct_link_github	Пайваст кардани GitHub
+acct_link_phone	Пайваст кардани телефон
+acct_send_sms_link	Барои пайваст SMS фиристед
+acct_confirm_link_phone	Тасдиқ ва пайваст кардани телефон
+shop_page_title	Мағоза — Kirano
+shop_lede	Тарифҳои солонаи абрӣ — андоз ҳангоми пардохт илова мешавад. Барномаи пурраи Kirano дар дастгоҳҳои худи шумо ҳамеша ройгон ва бе реклама мемонад.
+shop_cart	Сабад
+shop_cart_empty_hint	Сабади шумо холӣ аст. Steady, Swift ё Priority илова кунед.
+shop_checkout	Пардохт
+shop_clear	Тоза кардан
+shop_checkout_hint	Пардохт аввал шуморо ба Аккаунт ворид мекунад, баъд пардохтро оғоз мекунад (тақлиди муҳити озмоишӣ ё Paddle, агар калидҳо танзим шуда бошанд).
+acct_billing_hint	Тарифҳои солона — андозро шлюзи пардохт ҳангоми пардохт илова мекунад. Истифодаи маҳаллӣ ҳамеша ройгон мемонад. Тарифи фардӣ — пешниҳоди нарх (метавонад аз Steady пасттар ё аз Priority баландтар бошад).
+shop_cloud_plans	Тарифҳои абрӣ
+acct_federated	Воридшавии муттаҳид
+acct_err_invalid_email	Суроғаи дурусти почтаи электрониро ворид кунед.
+acct_err_weak_password	Паролеро истифода баред, ки на камтар аз 6 аломат дошта бошад.
+acct_err_wrong_password	Парол нодуруст аст.
+acct_err_invalid_credential	Почта ё парол нодуруст аст.
+acct_err_popup_closed	Равзанаи воридшавӣ баста шуд.
+acct_err_popup_cancelled	Воридшавӣ бекор карда шуд.
+acct_err_unauthorized_domain	Ин домен барои Firebase Auth иҷозат надорад.
+acct_err_method_disabled	Ин усули воридшавӣ ҳоло фаъол нашудааст.
+acct_err_too_many	Кӯшишҳо аз ҳад зиёданд. Баъдтар боз кӯшиш кунед.
+acct_err_phone_format	Рақами пурраи телефонро бо рамзи кишвар истифода баред (масалан +91…).
+acct_err_sms_code	Ин рамзи SMS нодуруст аст ё мӯҳлаташ гузаштааст.
+acct_err_no_account	Бо ин почта аккаунт нест. Барои сохтани он давом диҳед ё усули дигарро истифода баред.
+acct_err_recent_login	Барои амният бори дигар ворид шавед, баъд ин тағйиротро такрор кунед.
+acct_err_credential_in_use	Ин усули воридшавиро аккаунти дигар истифода мебарад.
+acct_err_email_in_use	Ин почтаи электрониро аккаунти дигар истифода мебарад.
+acct_err_already_linked	Ин усул аллакай ба ин аккаунт пайваст аст.
+acct_err_exists_other_method	Бо ин почта аккаунте бо усули дигари воридшавӣ аллакай вуҷуд дорад. Аввал бо ҳамон усул ворид шавед, баъд инро аз саҳифаи аккаунти худ пайваст кунед.
+acct_err_generic	Хатое рух дод.
+acct_method_password	Почтаи электронӣ ва парол
+acct_pw_hint_change	Пароли худро иваз кунед. Бо пароли ҷорӣ тасдиқ мекунед.
+acct_pw_hint_add	Парол илова кунед, то бо почтаи электронӣ низ ворид шавед (агар провайдер дастрас набошад, муфид аст).
+acct_pw_change	Иваз кардани парол
+acct_pw_add	Илова кардани парол
+acct_billing_off	Системаи пардохт дар API-и абрӣ ҳоло фаъол нашудааст.
+acct_billing_no_provider	Дар API-и абрӣ ягон провайдери воқеии пардохт фаъол нест (тақлид танҳо маҳаллӣ аст).
+price_quote	Пешниҳоди нарх
+price_per_year	₹{amount}/сол бе андоз
+acct_pay_received	Пардохт гирифта шуд — тарифи шумо нав мешавад…
+acct_pay_declined	Пардохт рад шуд ё анҷом наёфт
+acct_pay_failed_detail	{detail}. Тарифи шумо тағйир наёфт.
+acct_checkout_closed	Равзанаи пардохт баста шуд — пардохт анҷом наёфт. Тарифи шумо бетағйир аст.
+acct_checkout_failed	Пардохт анҷом наёфт
+acct_pay_with	Пардохт бо {provider}
+acct_plan_until	{plan} · то {date}
+acct_unavailable	Дастнорас
+acct_continue_hint	Бо почтаи электронӣ, провайдер ё телефон давом диҳед.
+acct_signed_in_fallback	(ворид шудааст)
+acct_email_verified	Почта тасдиқ шуд
+acct_email_unverified	Почта ҳанӯз тасдиқ нашудааст — қуттии воридотиро санҷед
+acct_signed_in_phone	Бо телефон ворид шуд
+acct_none_listed	Ҳоло ҳеҷ чиз нест
+acct_signed_in_status	Шумо ворид шудед.
+acct_created	Аккаунт сохта шуд. Вақте имкон доред, барои тасдиқ почтаи худро санҷед.
+acct_reset_sent	Агар барои ин почта аккаунт бошад, пайванди барқароркунӣ дар роҳ аст. Қуттии воридотиро санҷед.
+acct_another_method	усули дигар
+acct_exists_via	Аккаунт барои {email} тавассути {method} аллакай вуҷуд дорад. Аввал бо ҳамон роҳ ворид шавед, баъд ин провайдерро аз саҳифаи аккаунти худ пайваст кунед.
+acct_enter_current_pw	Пароли ҷории худро ворид кунед.
+acct_relogin_retry	Бароед ва бори дигар ворид шавед, баъд такрор кунед.
+acct_pw_mismatch	Пароли нав ва тасдиқи он мувофиқат намекунанд.
+acct_pw_updated	Парол нав карда шуд.
+acct_enter_email_pw	Почтаеро ворид кунед, ки бо воридшавии паролӣ истифода мешавад.
+acct_pw_added	Парол илова шуд. Акнун бо почтаи электронӣ низ ворид шуда метавонед.
+acct_method_linked	Усули воридшавӣ пайваст шуд.
+acct_phone_linked	Телефон ба ин аккаунт пайваст шуд.
+acct_verify_sent	Номаи тасдиқ фиристода шуд — қуттии воридотиро санҷед.
+shop_pricing_soon	Нархҳо ба зудӣ
+shop_request_quote	Дархости пешниҳоди нарх
+shop_add_to_cart	Ба сабад илова кардан
+shop_notify_later	Баъдтар хабар диҳед
+shop_included	Дохил аст
+shop_in_cart	{plan} дар сабади шумост.
+shop_remove	Хориҷ кардан
+shop_cart_is_empty	Сабад холӣ аст.
+shop_prices_unpublished	Нархҳои харидани мустақил барои ин маҳсулот ҳоло нашр нашудаанд. Пешниҳоди нархи фардӣ дархост кунед ё баъдтар баргардед.
+shop_cart_cleared	Сабад тоза шуд.
+plan_free_title	Ҳамеша ройгон
+plan_free_blurb	Маҳсулоти пурраи маҳаллӣ дар дастгоҳҳои шумо. Пардохти абрӣ нест.
+plan_steady_blurb	Абри фаъол · 10 GB · суръати интиқоли пасттар
+plan_swift_blurb	Абри фаъол · 25 GB · суръати интиқоли миёна
+plan_priority_blurb	Абри фаъол · 50 GB · баландтарин суръати стандартии интиқол
+plan_custom_title	Фардӣ
+plan_custom_blurb	Квота ва суръати интиқоли мувофиқашуда. Пешниҳод метавонад аз Steady пасттар ё аз Priority баландтар бошад.

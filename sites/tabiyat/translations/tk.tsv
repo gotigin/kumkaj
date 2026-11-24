@@ -1,227 +1,227 @@
 # Turkmen — Türkmençe (tk). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Mysal
+download_free	Mugt göçürip alyň
+whatsapp_for_a_demo	Görkeziş üçin WhatsApp-a ýazyň
+free_on_android_windows_and	Android, Windows we Linux-da mugt.
+the_pharmacy_counter	dermanhana kassasy
+pharmacy_counter	Dermanhana kassasy
+tabiyat_the_pharmacy_counter	TABIYAT · DERMANHANA KASSASY
+pharmacy_counter_offline_your_books	Dermanhana kassasy. Oflaýn. Siziň hasap kitaplaryňyz.
+medicines_barcode_and_salt_search	Dermanlar, ştrih-kod we täsir ediji madda boýunça gözleg, öz hasap kitaplaryňyz üçin partiýa we ulanyş möhleti — enjamlaryňyzda. Diňe eýesiniň bellikleri; derman serişdeleri baradaky kanuna hiç haçan ýalan laýyklyk ýok.
+tap_the_bill_to_walk	Kassa satyşyny görkezmek üçin çeke basyň
+cash_memo	Nagt çek
+ready	Taýýar
+total	Jemi
+tap_to_add_the_first	Ilkinji dermany goşmak üçin basyň
+example_pharmacy_lines_not_a	Dermanhana setirleriniň mysaly, hakyky kassa däl. Tabiyat şol bir ýoly yzarlaýar: satyş → hasaplaşyk → gündelik kitap.
+n_2_counter_sell	2 · KASSADA SATYŞ
+medicine_quantity_pay_three_taps	Derman, mukdar, töleg — üç basyş.
+upi_qr_ready	UPI QR taýýar
+example_bill	Mysal hasap
+fast_counter_billing	Kassada çalt hasap
+add_the_line_set_the	Setiri goşuň, mukdaryny goýuň, hasaplaşyň — nagt, UPI ýa-da bölünen.
+gst_tax_invoice_or_cash	GST salgyt hasap-fakturasy ýa-da nagt çek
+the_bill_lane_you_need	Satyş üçin gerek bolan hasap görnüşi.
+day_book_follows	Gündelik kitap yzyndan
+every_tender_lands_in_books	Satyşy ýapanyňyzda her töleg Hasap kitaplaryna düşýär.
+n_3_barcode_salt	3 · ŞTRIH-KOD WE TÄSIR EDIJI MADDA
+scan_the_barcode_or_find	Ştrih-kody skanirläň — ýa-da täsir ediji madda boýunça tapyň.
+search	Gözleg
+composition_paracetamol_strip_of_10	Düzümi: Parasetamol · 10 tabletkaly plastinka
+salt_amoxicillin	Täsir ediji madda: amoksisillin
+ranks_barcode_name_and_composition	Ştrih-kody, ady we düzümi bile tertipleýär.
+wedge_scanner_or_type_enter	Skaner ýa-da ýazyp Enter — setir hasaba düşýär.
+barcode_first	Ilki ştrih-kod
+scan_or_paste_the_code	Kody skanirläň ýa-da goýuň; katalogdaky gabat gelýän çykýar.
+salt_composition	Täsir ediji madda / düzümi
+type_the_salt_when_the	Müşderiniň aýdan ady brendiň ady bolmasa, täsir ediji maddany ýazyň.
+owner_rx_schedule_h_flags	Eýesiniň resept / Schedule H bellikleri
+reminders_you_set_not_a	Özüňiziň goýan ýatlatmalaryňyz — kanuny reýestr däl, lukmançylyk maslahaty däl.
+n_4_batch_expiry	4 · PARTIÝA WE ULANYŞ MÖHLETI
+batch_and_expiry_on_your	Hasap kitaplaryňyzdaky partiýa we ulanyş möhleti — eýesi üçin duýduryşlar.
+buy_batch_a12	Satyn alyş · partiýa A12
+expires_2027_03_alert_in	Möhleti 2027-03 · 7 günden duýduryş
+ors_sachets_batch_b04	ORS paketleri · partiýa B04
+expires_2026_11_near_expiry	Möhleti 2026-11 · Hasap kitaplarynda möhleti ýakynlaşýan zolak
+shop_bookkeeping_only_not_drugs	Diňe dükanyň hasaby — derman serişdeleri baradaky kanuna laýyklyk däl.
+batch_on_buy	Satyn alyşda partiýa
+record_batch_and_expiry_when	Gor gelende partiýany we ulanyş möhletini ýazyň.
+near_expiry_alerts	Möhleti ýakynlaşýan duýduryşlar
+books_and_sell_can_hint	Hasap kitaplary we Satyş senesi geçmezden öň duýdurup bilýär.
+owner_practice	Eýesiniň tejribesi
+fefo_hints_and_rx_notes	FEFO maslahatlaryny we resept belliklerini ýerine ýetirmek size bagly — Tabiyat girizeniňizi ýazýar.
+n_5_khata	5 · BERGI DEPDERI
+customer_credit_and_supplier_dues	Müşderiniň karzy we üpjün edijiniň bergisi bir taraplar kitabynda.
+mehta_clinic_customer	Mehta klinikasy · Müşderi
+due_from_earlier	Öňki bergi
+today_s_sale_due	+ şu günki satyş (bergi)
+balance	Galyndy
+settle_later_part_cash_part	Soňra ýapyň — bir bölegini nagt, bir bölegini UPI bilen. Üpjün edijiniň bergisi hem şol bir Taraplar ekranynda.
+due_on_the_bill	Hasapdaky bergi
+leave_a_balance_on_khata	Aýratyn buhgalteriýa programmasy bolmazdan bergi depderinde galyndy goýuň.
+supplier_buys_too	Üpjün edijiden satyn alyşlar hem
+who_you_owe_updates_when	Gor gelende kime bergidardygyňyz täzelenýär.
+auditable	Barlanyp bilinýän
+who_when_and_how_much	Kim, haçan we näçe — gündelik kitapda galýar.
+n_6_internet_down	6 · INTERNET ÖÇDÜMI?
+the_internet_drops_the_counter	Internet kesilýär. Kassa satmagy dowam edýär.
+router_no_internet	Router: internet ýok
+main_counter_selling_and_settling	Esasy kassa: satýar we hasaplaşýar
+second_till_joined_on_your	Ikinji kassa: öz Wi-Fi-ňyza birleşdi
+books_live_on_the_shop	Hasap kitaplary dükanyň enjamlarynda
+when_the_internet_drops_nothing	Internet kesilende dermanhana kassasynda hiç zat oňa garaşmaýar.
+one_server_lan_clients	Bir serwer, LAN kliýentleri
+extra_tills_share_the_same	Goşmaça kassalar dükan tory arkaly şol bir hasap kitaplaryny paýlaşýar.
+n_7_free_forever_locally	7 · ÝERLI HEMIŞE MUGT
+free_forever_on_your_devices	Enjamlaryňyzda hemişe mugt.
+no_per_bill_charge	Hasap üçin töleg ýok
+no_fee_per_sale_medicine	Ýerli gurnamada satyş, derman, kassa ýa-da işgär PIN-i üçin töleg ýok.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Telefonda-da, stol kassasynda-da şol bir Tabiyat.
+optional_kumkaj_cloud	Hökmany däl Kumkaj Cloud
+yearly_steady_6k_swift_12k	Ýyllyk Steady ₹6k · Swift ₹12k · Priority ₹24k, salgytsyz (ýa-da ýörite teklip). /shop-dan satyn alyň.
+n_8_start	8 · BAŞLAŇ
+put_tabiyat_on_the_counter	Tabiyat-y kassa goýuň.
+download_free_or_whatsapp_for	Mugt göçürip alyň ýa-da dermanhanaňyz we şäheriňiz bilen tanyşmak üçin WhatsApp-a ýazyň.
+privacy	Gizlinlik
+terms	Şertler
+cancellation	Ýatyrmak
+cloud_shop	Bulut dükany
+account	Akkaunt
+chapter_counter_sell	Kassada satyş
+chapter_barcode_salt	Ştrih-kod we täsir ediji madda
+chapter_batch_expiry	Partiýa we ulanyş möhleti
+chapter_khata	Bergi depderi
+chapter_extra_till	Goşmaça kassa
+chapter_offline	Oflaýn
+chapter_start	Başlamak
+bill_selling	Satylýar
+bill_settle	Hasaplaşmak
+bill_paid	Tölendi
+bill_next_line	Indiki setiri goşmak üçin basyň
+bill_settle_hint	Hasaplaşmak üçin basyň — nagt ýa-da UPI
+bill_upi_paid	UPI ₹ 162 · tölendi
+bill_paid_line	Tölendi · gündelik kitap täzelendi
+lan_eyebrow	6 · GOŞMAÇA KASSA
+lan_title	Dükanyň Wi-Fi-ndaky ýene bir kassa.
+cta_installers_note	Gurnaýjylar her biri arassa kompýuterde gurnama barlagyndan geçenden soň şu ýere ýerleşdirilýär. Oňa çenli WhatsApp-da görkeziş soraň.
+cta_whatsapp_soon	WhatsApp görkeziş liniýasy ýakynda açylýar. Hatyňyz şeýle bolar: «{message}».
+acct_page_title	Akkaunt — Tabiyat
+acct_lede	Saýt we programmalar üçin bir akkaunt — täze bolsaňyz-da, gaýdyp gelseňiz-de şol bir forma.
+acct_email	E-poçta
+acct_name_optional	Ady (hökmany däl)
+acct_password	Parol
+acct_continue	Dowam et
+acct_forgot	Paroly ýatdan çykardyňyzmy?
+acct_reset_hint	Dikeldiş baglanyşygyny e-poçta iberýäris. Hasaba alnan şol bir salgyňyzy ulanyň.
+acct_send_reset	Dikeldiş baglanyşygyny iber
+acct_cancel	Ýatyr
+acct_or_continue	ýa-da şunuň bilen dowam ediň
+acct_phone	Telefon
+acct_mobile	Mobil belgi
+acct_send_sms	SMS koduny iber
+acct_sms_code	SMS kody
+acct_confirm_code	Kody tassykla
+acct_signed_in	Girildi
+acct_signed_in_as	Giren akkaunt
+acct_status	Ýagdaýy
+acct_sign_in_methods	Giriş usullary
+acct_cloud_username	Bulutdaky ulanyjy ady
+acct_plan	Tarif
+acct_resend_verify	Tassyklama hatyny gaýtadan iber
+acct_sign_out	Çykmak
+acct_cloud_sandbox	Kumkaj Cloud (synag gurşawy)
+acct_current_password	Häzirki parol
+acct_email_for_password	Parol bilen giriş üçin e-poçta
+acct_new_password	Täze parol
+acct_confirm_new_password	Täze paroly tassyklaň
+acct_add_way	Girişiň başga usulyny goşuň
+acct_link_hint	Biri işlemese, girişi dikeldip bilmek üçin usullary şol bir akkaunta baglaň.
+acct_link_google	Google-y baglamak
+acct_link_microsoft	Microsoft-y baglamak
+acct_link_github	GitHub-y baglamak
+acct_link_phone	Telefony baglamak
+acct_send_sms_link	Baglamak üçin SMS iber
+acct_confirm_link_phone	Tassykla we telefony bagla
+shop_page_title	Dükan — Tabiyat
+shop_lede	Ýyllyk bulut tarifleri — salgyt tölegde goşulýar. Öz enjamlaryňyzdaky doly Tabiyat programmasy hemişe mugt we mahabatsyz galýar.
+shop_cart	Sebet
+shop_cart_empty_hint	Sebediňiz boş. Steady, Swift ýa-da Priority goşuň.
+shop_checkout	Tölemek
+shop_clear	Arassala
+shop_checkout_hint	Tölemek ilki sizi Akkaunta girizýär, soňra tölegi başlaýar (synag gurşawyndaky meňzetme ýa-da açarlar sazlanan bolsa Paddle).
+acct_billing_hint	Ýyllyk tarifler — salgydy tölegde töleg şlýuzy goşýar. Ýerli ulanyş hemişe mugt galýar. Ýörite tarif — baha teklibi (Steady-den pes ýa-da Priority-den ýokary bolup biler).
+shop_cloud_plans	Bulut tarifleri
+acct_federated	Bilelikdäki giriş
+acct_err_invalid_email	Dogry e-poçta salgysyny giriziň.
+acct_err_weak_password	Azyndan 6 nyşanly parol ulanyň.
+acct_err_wrong_password	Parol nädogry.
+acct_err_invalid_credential	E-poçta ýa-da parol nädogry.
+acct_err_popup_closed	Giriş penjiresi ýapyldy.
+acct_err_popup_cancelled	Giriş ýatyryldy.
+acct_err_unauthorized_domain	Bu domene Firebase Auth üçin rugsat berilmedik.
+acct_err_method_disabled	Bu giriş usuly entek açylmadyk.
+acct_err_too_many	Synanyşyklar gaty köp. Soňrak gaýtadan synanyşyň.
+acct_err_phone_format	Ýurt kody bilen doly telefon belgisini ulanyň (meselem +91…).
+acct_err_sms_code	Bu SMS kody nädogry ýa-da möhleti geçen.
+acct_err_no_account	Bu e-poçta bilen akkaunt ýok. Döretmek üçin dowam ediň ýa-da başga usuly ulanyň.
+acct_err_recent_login	Howpsuzlyk üçin gaýtadan giriň, soňra bu üýtgetmäni gaýtalaň.
+acct_err_credential_in_use	Bu giriş usulyny başga akkaunt ulanýar.
+acct_err_email_in_use	Bu e-poçtany başga akkaunt ulanýar.
+acct_err_already_linked	Bu usul eýýäm şu akkaunta baglanan.
+acct_err_exists_other_method	Bu e-poçta bilen başga giriş usulyny ulanýan akkaunt eýýäm bar. Ilki şol usul bilen giriň, soňra muny akkaunt sahypaňyzdan baglaň.
+acct_err_generic	Bir zat ýalňyş boldy.
+acct_method_password	E-poçta we parol
+acct_pw_hint_change	Parolyňyzy üýtgediň. Häzirki parol bilen tassyklarsyňyz.
+acct_pw_hint_add	E-poçta bilen hem girip bilmek üçin parol goşuň (prowaýder elýeterli bolmasa peýdaly).
+acct_pw_change	Paroly üýtget
+acct_pw_add	Parol goş
+acct_billing_off	Bulut API-sinde töleg ulgamy entek açylmadyk.
+acct_billing_no_provider	Bulut API-sinde hakyky töleg prowaýderi açylmadyk (meňzetme diňe ýerli).
+price_quote	Baha teklibi
+price_per_year	₹{amount}/ýyl, salgytsyz
+acct_pay_received	Töleg alyndy — tarifiňiz täzelenýär…
+acct_pay_declined	Töleg ret edildi ýa-da şowsuz boldy
+acct_pay_failed_detail	{detail}. Tarifiňiz üýtgemedi.
+acct_checkout_closed	Töleg penjiresi ýapyldy — töleg tamamlanmady. Tarifiňiz üýtgemedi.
+acct_checkout_failed	Töleg şowsuz boldy
+acct_pay_with	{provider} bilen tölemek
+acct_plan_until	{plan} · {date} çenli
+acct_unavailable	Elýeterli däl
+acct_continue_hint	E-poçta, prowaýder ýa-da telefon bilen dowam ediň.
+acct_signed_in_fallback	(girildi)
+acct_email_verified	E-poçta tassyklandy
+acct_email_unverified	E-poçta entek tassyklanmady — gelen hatlaryňyzy barlaň
+acct_signed_in_phone	Telefon bilen girildi
+acct_none_listed	Entek hiç zat ýok
+acct_signed_in_status	Siz girdiňiz.
+acct_created	Akkaunt döredildi. Mümkinçiligiňiz bolanda tassyklamak üçin e-poçtaňyzy barlaň.
+acct_reset_sent	Bu e-poçta üçin akkaunt bar bolsa, dikeldiş baglanyşygy ýolda. Gelen hatlaryňyzy barlaň.
+acct_another_method	başga usul
+acct_exists_via	{email} üçin akkaunt {method} arkaly eýýäm bar. Ilki şol ýol bilen giriň, soňra bu prowaýderi akkaunt sahypaňyzdan baglaň.
+acct_enter_current_pw	Häzirki parolyňyzy giriziň.
+acct_relogin_retry	Çykyň we gaýtadan giriň, soňra gaýtalaň.
+acct_pw_mismatch	Täze parol bilen tassyklama gabat gelmeýär.
+acct_pw_updated	Parol täzelendi.
+acct_enter_email_pw	Parol bilen girişde ulanyljak e-poçtany giriziň.
+acct_pw_added	Parol goşuldy. Indi e-poçta bilen hem girip bilersiňiz.
+acct_method_linked	Giriş usuly baglandy.
+acct_phone_linked	Telefon şu akkaunta baglandy.
+acct_verify_sent	Tassyklama haty iberildi — gelen hatlaryňyzy barlaň.
+shop_pricing_soon	Bahalar ýakynda
+shop_request_quote	Baha teklibini soramak
+shop_add_to_cart	Sebede goşmak
+shop_notify_later	Soňrak habar beriň
+shop_included	Goşulan
+shop_in_cart	{plan} sebediňizde.
+shop_remove	Aýyrmak
+shop_cart_is_empty	Sebet boş.
+shop_prices_unpublished	Bu önüm üçin özbaşdak satyn alyş bahalary entek çap edilmedik. Ýörite baha teklibini soraň ýa-da soňrak gaýdyp geliň.
+shop_cart_cleared	Sebet arassalandy.
+plan_free_title	Hemişe mugt
+plan_free_blurb	Enjamlaryňyzdaky doly ýerli önüm. Bulut tölegi ýok.
+plan_steady_blurb	Işjeň bulut · 10 GB · pes geçirijilik
+plan_swift_blurb	Işjeň bulut · 25 GB · orta geçirijilik
+plan_priority_blurb	Işjeň bulut · 50 GB · iň ýokary standart geçirijilik
+plan_custom_title	Ýörite
+plan_custom_blurb	Ylalaşylan kwota we geçirijilik. Teklip Steady-den pes ýa-da Priority-den ýokary bolup biler.
