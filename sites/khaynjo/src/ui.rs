@@ -1170,8 +1170,8 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 20
-                                        Pill{label.body: "Restaurant POS · free forever"}
-                                        HeroTitle{body: "Lunch rush. No internet. No problem."}
+                                        hero_pill := Pill{label.body: "Restaurant POS · free forever"}
+                                        hero_title := HeroTitle{body: "Lunch rush. No internet. No problem."}
                                         Lede{body: "Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet."}
                                         hero_cta := CtaRow{}
                                         cta_note := View{width: Fill height: Fit cta_note_text := Small{body: "Android on Google Play today · Windows and Linux packages coming."}}

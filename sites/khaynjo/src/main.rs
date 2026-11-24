@@ -255,6 +255,89 @@ const SHELF_CARDS: [&[LiveId]; 10] = [
 const SHELF_SLOT_COUNT: usize = 10;
 const SHELF_TRACK: f64 = SHELF_PITCH * SHELF_SLOT_COUNT as f64;
 
+/// Width of one line of `text` in `draw_text`'s font and size (logical px).
+fn text_width(cx: &mut Cx, draw_text: &DrawText, text: &str) -> f64 {
+    draw_text
+        .layout(cx, 0.0, 0.0, None, false, Align::default(), text)
+        .size_in_lpxs
+        .width as f64
+}
+
+/// Per widget: the font size the page asked for and the one a fit pass set.
+/// A current size that is neither means `scale_labels` set a new base.
+type FitSizes = std::collections::HashMap<WidgetUid, (f32, f32)>;
+
+/// Smallest a fit pass shrinks text, as a share of the size asked for.
+const FIT_MIN_SCALE: f32 = 0.7;
+
+fn fit_base(sizes: &FitSizes, uid: WidgetUid, current: f32) -> f32 {
+    match sizes.get(&uid) {
+        Some(&(base, applied)) if (applied - current).abs() < 0.01 => base,
+        _ => current,
+    }
+}
+
+fn fit_size(base: f32, need: f64, avail: f64) -> f32 {
+    if need <= avail || need <= 0.0 || avail <= 0.0 {
+        base
+    } else {
+        (base * (avail / need) as f32).max(base * FIT_MIN_SCALE)
+    }
+}
+
+/// Shrink a Markdown until its text — or, `by_word`, its widest word — fits
+/// `avail` px on one line. True when the size changed.
+fn fit_markdown(cx: &mut Cx, w: &WidgetRef, avail: f64, by_word: bool, sizes: &mut FitSizes) -> bool {
+    let text = w.text();
+    let uid = w.widget_uid();
+    let Some(mut md) = w.borrow_mut::<Markdown>() else {
+        return false;
+    };
+    let current = md.text_style_normal.font_size;
+    let base = fit_base(sizes, uid, current);
+    // Plain body text draws with the normal style; measure in that face.
+    let saved = md.draw_text.text_style.clone();
+    md.draw_text.text_style = md.text_style_normal.clone();
+    md.draw_text.text_style.font_size = base;
+    let need = if by_word {
+        text.split_whitespace()
+            .map(|word| text_width(cx, &md.draw_text, word))
+            .fold(0.0, f64::max)
+    } else {
+        text_width(cx, &md.draw_text, &text)
+    };
+    md.draw_text.text_style = saved;
+    let size = fit_size(base, need, avail);
+    sizes.insert(uid, (base, size));
+    if (size - current).abs() < 0.01 {
+        return false;
+    }
+    md.font_size = size;
+    md.draw_text.text_style.font_size = size;
+    md.text_style_normal.font_size = size;
+    md.text_style_bold.font_size = size;
+    md.text_style_italic.font_size = size;
+    md.text_style_bold_italic.font_size = size;
+    true
+}
+
+/// Shrink a Button's label until it fits `avail` px. True when it changed.
+fn fit_button(cx: &mut Cx, w: &WidgetRef, avail: f64, sizes: &mut FitSizes) -> bool {
+    let text = w.text();
+    let uid = w.widget_uid();
+    let Some(mut b) = w.borrow_mut::<Button>() else {
+        return false;
+    };
+    let current = b.draw_text.text_style.font_size;
+    let base = fit_base(sizes, uid, current);
+    b.draw_text.text_style.font_size = base;
+    let need = text_width(cx, &b.draw_text, &text);
+    let size = fit_size(base, need, avail);
+    b.draw_text.text_style.font_size = size;
+    sizes.insert(uid, (base, size));
+    (size - current).abs() >= 0.01
+}
+
 /// Countries on the shelf that have a photo.
 #[cfg(test)]
 fn world_photo_count() -> usize {
@@ -563,6 +646,12 @@ pub struct App {
     /// Frames left to re-read the auth chip while firebase-init settles.
     #[rust]
     auth_chip_poll: u8,
+    /// Top-bar parts shown by `fit_top_bar` (links, wordmark, CTA, Login).
+    #[rust]
+    bar_fit: Option<[bool; 4]>,
+    /// Font sizes `fit_hero_lines` works from and set (see `FitSizes`).
+    #[rust]
+    fit_sizes: FitSizes,
     /// Playing the continuous flow (search always forces pause).
     #[rust]
     shelf_playing: bool,
@@ -805,6 +894,7 @@ impl App {
             .unwrap_or_else(|| self.tr("login"));
         self.ui.button(cx, ids!(go_login)).set_text(cx, &label);
         self.paint_lang_chip(cx);
+        self.fit_top_bar(cx);
         self.ui.redraw(cx);
     }
 
@@ -1027,6 +1117,141 @@ impl App {
         });
     }
 
+    /// Hide top-bar parts, least needed first, until the words of the language
+    /// in use fit the width: the section links, the wordmark (the icon stays
+    /// the home link), "Get it free" (the hero has its own download button),
+    /// Login (the footer has Account). The language chip always stays, so a
+    /// visitor can switch back. Widths are measured in the font each part
+    /// draws with, so this holds for every pack and script (Burmese "Login"
+    /// pushed the chip off a 320 px screen). Redraws only when the choice
+    /// changes; runs again on draws so late-loading script faces count.
+    fn fit_top_bar(&mut self, cx: &mut Cx) {
+        let size = self.ui.window(cx, ids!(main_window)).get_inner_size(cx);
+        if size.x < 1.0 || size.y < 1.0 {
+            return;
+        }
+        let layout_w = size.x.max(MIN_WIDTH);
+        let compact = layout_w < 360.0;
+        let pad = if compact {
+            12.0
+        } else if Tier::from_size(layout_w, size.y) == Tier::Phone {
+            16.0
+        } else {
+            20.0
+        };
+        let gap = if compact { 6.0 } else { 10.0 };
+        let button_w = |cx: &mut Cx, ui: &WidgetRef, path: &[LiveId], side_pad: f64| -> f64 {
+            let text = ui.widget(cx, path).text();
+            match ui.button(cx, path).borrow() {
+                Some(b) => text_width(cx, &b.draw_text, &text) + side_pad,
+                None => 0.0,
+            }
+        };
+        let ui = self.ui.clone();
+        let name_w = {
+            let text = ui.widget(cx, ids!(brand_name)).text();
+            match ui.label(cx, ids!(brand_name)).borrow() {
+                Some(l) => text_width(cx, &l.draw_text, &text),
+                None => 0.0,
+            }
+        };
+        let login_w = button_w(cx, &ui, ids!(go_login), 20.0);
+        let lang_w = button_w(cx, &ui, ids!(go_lang), 20.0);
+        let cta_w = button_w(cx, &ui, ids!(bar_cta), 32.0);
+        let mut links_w = 0.0;
+        for path in [
+            ids!(go_menus),
+            ids!(go_how),
+            ids!(go_features),
+            ids!(go_offline),
+            ids!(go_pricing),
+            ids!(go_faq),
+        ] {
+            links_w += button_w(cx, &ui, path, 20.0) + 2.0;
+        }
+        // [links, wordmark, CTA, Login]
+        let need = |show: [bool; 4]| -> f64 {
+            // brand (icon + its own 10 px gap + name) and the Fill spacer.
+            let mut parts = vec![36.0 + if show[1] { 10.0 + name_w } else { 0.0 }, 0.0];
+            if show[0] {
+                parts.push(links_w);
+            }
+            if show[3] {
+                parts.push(login_w);
+            }
+            parts.push(lang_w);
+            if show[2] {
+                parts.push(cta_w);
+            }
+            2.0 * pad + parts.iter().sum::<f64>() + gap * (parts.len() as f64 - 1.0) + 4.0
+        };
+        let mut show = [layout_w >= NAV_LINKS_FROM, true, true, true];
+        for part in 0..4 {
+            if need(show) <= layout_w {
+                break;
+            }
+            show[part] = false;
+        }
+        if self.bar_fit == Some(show) {
+            return;
+        }
+        self.bar_fit = Some(show);
+        self.ui.widget(cx, ids!(nav_links)).set_visible(cx, show[0]);
+        self.ui.widget(cx, ids!(brand_name)).set_visible(cx, show[1]);
+        self.ui.widget(cx, ids!(bar_cta)).set_visible(cx, show[2]);
+        self.ui.widget(cx, ids!(go_login)).set_visible(cx, show[3]);
+        self.ui.redraw(cx);
+    }
+
+    /// Shrink one-line hero copy that is wider than the hero column in the
+    /// language in use: the pill, the title's widest word (German and Finnish
+    /// compounds broke inside the word at 320 px) and the two CTA buttons
+    /// (Tibetan, Khmer, Lao and Burmese ran off the screen). Never below
+    /// `FIT_MIN_SCALE` of the size the page asked for. Titles in languages
+    /// written without spaces are left alone: their "widest word" is the line.
+    /// Runs after draws, when the column has its width.
+    fn fit_hero_lines(&mut self, cx: &mut Cx) {
+        let col_w = self.ui.view(cx, ids!(hero_copy)).area().rect(cx).size.x;
+        if col_w < 1.0 {
+            return;
+        }
+        let spaced = !matches!(
+            self.lang.wanted.as_str(),
+            "th" | "lo" | "km" | "my" | "bo" | "dz" | "zh" | "zh-Hant" | "ja"
+        );
+        let mut sizes = std::mem::take(&mut self.fit_sizes);
+        let mut changed = false;
+        // Pill padding 12 + 12 and its 1 px border.
+        let pill = self.ui.widget(cx, ids!(hero_pill.label));
+        changed |= fit_markdown(cx, &pill, col_w - 26.0, false, &mut sizes);
+        if spaced {
+            let title = self.ui.widget(cx, ids!(hero_title));
+            changed |= fit_markdown(cx, &title, col_w, true, &mut sizes);
+        }
+        // PrimaryBtn 22 + 22, SecondaryBtn 20 + 20, label margins 2 + 2.
+        for (path, chrome) in [(ids!(hero_cta.download), 48.0), (ids!(hero_cta.whatsapp), 44.0)] {
+            let button = self.ui.widget(cx, path);
+            changed |= fit_button(cx, &button, col_w - chrome, &mut sizes);
+        }
+        // Floor tiles (Khmer "Bill printed" was cut at the tile edge): each
+        // tile's own width, less its 12 + 8 px inner padding.
+        for (path, _) in TABLES {
+            let tile = self.ui.widget(cx, path);
+            let tile_w = tile.area().rect(cx).size.x;
+            if tile_w < 1.0 {
+                continue;
+            }
+            for part in [ids!(word), ids!(meta)] {
+                let line = tile.widget(cx, part);
+                changed |= fit_markdown(cx, &line, tile_w - 20.0, false, &mut sizes);
+            }
+        }
+        self.fit_sizes = sizes;
+        if changed {
+            self.ui.redraw(cx);
+        }
+    }
+
     fn apply_responsive(&mut self, cx: &mut Cx) {
         let size = self.ui.window(cx, ids!(main_window)).get_inner_size(cx);
         if size.x < 1.0 || size.y < 1.0 {
@@ -1068,10 +1293,8 @@ impl App {
             }
         }
         self.layout_floor(cx, content_w);
-        // Top bar: section links on wide windows; tighter padding on phones.
-        self.ui
-            .widget(cx, ids!(nav_links))
-            .set_visible(cx, layout_w >= NAV_LINKS_FROM);
+        // Top bar: section links on wide windows (when they fit — see
+        // fit_top_bar); tighter padding on phones.
         // Under 360 px the brand and "Get it free" do not both fit at desk
         // size: the button ran off the right edge at 320.
         let compact_bar = layout_w < 360.0;
@@ -1089,6 +1312,7 @@ impl App {
         if let Some(mut name) = self.ui.label(cx, ids!(brand_name)).borrow_mut() {
             name.draw_text.text_style.font_size = if compact_bar { 21.0 } else { 25.0 };
         }
+        self.fit_top_bar(cx);
         // Parade keeps its own width; restart the NextFrame pump after layout.
         if self.shelf_playing {
             self.shelf_arm_anim(cx);
@@ -1113,6 +1337,7 @@ impl App {
             self.auth_chip_label = next.clone();
             let text = next.clone().unwrap_or_else(|| self.tr("login"));
             self.ui.button(cx, ids!(go_login)).set_text(cx, &text);
+            self.fit_top_bar(cx);
             self.ui.redraw(cx);
         }
         if self.auth_chip_poll > 0 {
@@ -2148,6 +2373,9 @@ impl AppMain for App {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
+                // Script faces load after the first draw; measure again.
+                self.fit_top_bar(cx);
+                self.fit_hero_lines(cx);
                 self.paint_nav_active(cx);
                 if let Some(section) = self.pending_section {
                     let page_h = self.ui.view(cx, ids!(page)).area().rect(cx).size.y;

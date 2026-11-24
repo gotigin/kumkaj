@@ -26,6 +26,14 @@ OUT="${1:?usage: subset-fonts.sh <staged public dir>}"
 SITE="$(cd "$(dirname "$0")/.." && pwd)"
 FONT_DIR="$OUT/kirano_site/resources/fonts"
 LATIN_MORE='U+00A0-00FF,U+0100-017F,U+2010-2027,U+2030-203A,U+20A0-20BF,U+2190-2193'
+# Glyphs the shaper splits a character into before it looks the glyphs up:
+# Thai / Lao SARA AM (ำ → ํ + า, ຳ → ໍ + າ), the two-part vowels of Bengali,
+# Oriya, Tamil, Telugu, Kannada, Malayalam, Sinhala, Khmer and Tibetan, and
+# the nuktas of decomposed letters. The packs rarely use these on their own,
+# so a subset cut to the packs' characters drops them and draws □ in their
+# place (seen 2026-11-24: Thai ทำ, คำ). Kept in every face; a face without
+# the script ignores them.
+SHAPER_PARTS='U+0E32,U+0E4D,U+0EB2,U+0ECD,U+093C,U+09BC,U+09BE,U+09C7,U+09D7,U+0A3C,U+0B3C,U+0B3E,U+0B47,U+0B56,U+0B57,U+0BBE,U+0BC6,U+0BC7,U+0BD7,U+0C46,U+0C56,U+0CBF,U+0CC2,U+0CC6,U+0CCA,U+0CD5,U+0CD6,U+0D3E,U+0D46,U+0D47,U+0D57,U+0DCA,U+0DCF,U+0DD9,U+0DDC,U+0DDF,U+0F71,U+0F72,U+0F74,U+0F80,U+1025,U+102E,U+1031,U+17C1'
 
 if [[ ! -d "$FONT_DIR" ]]; then
   echo "error: no fonts at $FONT_DIR" >&2
@@ -53,7 +61,7 @@ count=0
 for font in "$FONT_DIR"/*.ttf "$FONT_DIR"/*.otf "$OUT"/makepad_widgets/resources/LiberationMono-Regular.ttf "$OUT"/makepad_widgets/resources/IBMPlexSans-Text.ttf "$OUT"/makepad_widgets/resources/IBMPlexSans-SemiBold.ttf; do
   [[ -f "$font" ]] || continue
   name="$(basename "$font")"
-  ranges='U+0020-007E'
+  ranges="U+0020-007E,$SHAPER_PARTS"
   case "$name" in
     Noto*) ;;                       # a script face: its Latin is never drawn
     *) ranges="$ranges,$LATIN_MORE" ;;
