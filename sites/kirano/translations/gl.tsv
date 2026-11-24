@@ -1,230 +1,230 @@
 # Galician — Galego (gl). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Exemplo
+download_free	Descargar de balde
+whatsapp_for_a_demo	Demostración por WhatsApp
+free_on_android_windows_and	De balde para Android, Windows e Linux.
+the_grocery_counter	a caixa da tenda de alimentación
+busy_counter	Cola na caixa
+kirano_the_grocery_counter	KIRANO · A CAIXA DA TENDA DE ALIMENTACIÓN
+busy_counter_no_internet_still	Cola na caixa. Sen internet. Séguese vendendo.
+sell_khata_stock_and_the	Venda, caderno de débedas, existencias e libro do día — nos teus propios dispositivos. Libros · Venda · Compras · Artigos. Sen sala, sen cociña, sen mesas.
+tap_the_bill_to_walk	Toca o tique para percorrer unha venda na caixa
+cash_memo	Tique de caixa
+ready	Lista
+total	Total a pagar
+tap_to_add_the_first	Toca para engadir o primeiro artigo
+example_grocery_lines_not_a	Liñas de exemplo dunha tenda de alimentación, non unha caixa real. Kirano segue o mesmo camiño: venda → cobro → libro do día.
+n_2_counter_sell	2 · VENDA NA CAIXA
+item_quantity_pay_three_taps	Artigo, cantidade, pagamento — tres toques.
+upi_qr_ready	QR de UPI listo
+example_bill	Tique de exemplo
+search_by_name_or_short	Busca por nome ou código curto
+type_atta_at5_or_an	Escribe atta, AT5 ou un alcume — a liña vai ao tique.
+kg_g_pc_l_ml	kg, g, ud., l, ml
+quantity_in_the_unit_the	Cantidade na unidade do paquete; o prezo axústase.
+cash_upi_or_split	Efectivo, UPI ou mixto
+settle_on_the_counter_the	Cobra na caixa; o libro do día rexistra a forma de pagamento.
+n_3_khata	3 · CADERNO DE DÉBEDAS
+credit_without_a_crm_put	Crédito sen CRM — apúntao no seu caderno.
+ramesh_customer	Ramesh · Cliente
+due_from_earlier	Débeda anterior
+today_s_sale_due	+ venda de hoxe (fiado)
+balance	Saldo
+settle_later_in_parties_part	Liquida máis tarde en Partes — unha parte en efectivo, outra por UPI, e a liña queda a cero.
+due_on_the_bill	Pendente do tique
+what_s_left_goes_on	O que queda vai ao caderno do cliente — sen unha aplicación de contabilidade á parte.
+one_party_two_roles	Unha parte, dous papeis
+customer_ar_and_supplier_ap	Os cobros de clientes e os pagamentos a provedores comparten o mesmo libro de partes.
+who_when_how_much	Quen, cando, canto
+every_credit_and_settlement_stays	Cada crédito e cada liquidación quedan no libro do día.
+n_4_buy_stock	4 · COMPRAS E EXISTENCIAS
+buy_from_the_wholesaler_stock	Compra ao maiorista — as existencias e o que debes actualízanse á vez.
+purchase_sharma_wholesale	Compra · Sharma Wholesale
+stock_50_kg_ap_7	Existencias +50 kg · A pagar ₹ 7.200
+stock_12_l_ap_1	Existencias +12 L · A pagar ₹ 1.560
+resale_stock_not_kitchen_raw	Existencias para revender — non materia prima de cociña. Lote e caducidade opcionais na compra.
+buy_creates_stock	A compra crea existencias
+receive_the_goods_the_catalogue	Recibe a mercadoría; a cantidade do catálogo sobe.
+who_we_owe	A quen lle debemos
+supplier_balance_sits_on_the	O saldo do provedor está en Partes, igual que o caderno dos clientes.
+low_stock_at_a_glance	Existencias baixas dunha ollada
+inventory_shows_what_is_running	O inventario amosa que se esgota antes da seguinte hora punta.
+n_5_day_book	5 · LIBRO DO DÍA
+cash_vs_upi_counted_and	Efectivo e UPI, contados por separado — e a diferenza, indicada.
+today_s_drawer	A caixa de hoxe
+opening_float	Fondo de cambio inicial
+cash_sales	+ vendas en efectivo
+upi_sales	+ vendas por UPI
+cash_paid_out	− efectivo pagado
+expected_cash	Efectivo previsto
+counted	Contado
+short	Falta
+tenders_stay_separate	As formas de pagamento van por separado
+cash_and_upi_never_mix	O efectivo e o UPI nunca se mesturan nun total misterioso.
+shift_close	Peche de quenda
+close_the_shift_print_the	Pecha a quenda, imprime o resumo e comeza a seguinte desde cero.
+gst_facing_bills	Tiques con GST
+tax_invoice_or_cash_memo	Factura con impostos ou tique de caixa — o informe do día inclúe os dous.
+books_sell_buy_items_four	Libros · Venda · Compras · Artigos — catro pantallas e ningunha sala de restaurante.
+n_6_internet_down	6 · CAEU INTERNET?
+the_internet_drops_the_counter	Internet cae. A caixa segue vendendo.
+router_no_internet	Enrutador: sen internet
+main_counter_selling_and_settling	Caixa principal: vende e cobra
+second_till_joined_on_your	Segunda caixa: conectada á túa propia wifi
+books_live_on_the_shop	Os libros están nos dispositivos da tenda
+when_the_internet_drops_mid	Cando internet cae en plena hora punta, nada na caixa o agarda.
+one_server_lan_clients	Un servidor, clientes LAN
+extra_tills_share_the_same	As caixas adicionais comparten os mesmos libros pola rede da tenda.
+n_7_free_forever_locally	7 · DE BALDE PARA SEMPRE EN LOCAL
+free_forever_on_your_devices	De balde para sempre nos teus dispositivos.
+no_per_bill_charge	Sen custo por tique
+no_fee_per_sale_item	Sen custo por venda, artigo, caixa ou PIN de persoal na instalación local.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	O mesmo Kirano no teléfono detrás do mostrador e na caixa do ordenador.
+optional_kumkaj_cloud	Kumkaj Cloud opcional
+yearly_steady_6k_swift_12k	Anual: Steady ₹6k · Swift ₹12k · Priority ₹24k sen impostos (ou orzamento personalizado). Compra en /shop.
+n_8_start	8 · COMEZA
+put_kirano_on_the_counter	Pon Kirano na caixa.
+download_free_or_whatsapp_for	Descárgao de balde ou escríbenos por WhatsApp para unha demostración adaptada ao tipo de tenda e á túa cidade.
+privacy	Privacidade
+terms	Condicións
+cancellation	Cancelación
+cloud_shop	Tenda da nube
+account	Conta
+chapter_counter_sell	Venda na caixa
+chapter_khata	Caderno de débedas
+chapter_buy_stock	Compras e existencias
+chapter_day_book	Libro do día
+chapter_extra_till	Caixa adicional
+chapter_offline	Sen conexión
+chapter_start	Inicio
+bill_selling	Vendendo
+bill_settle	Cobro
+bill_paid	Pagada
+bill_next_item	Toca para engadir o seguinte artigo
+bill_settle_hint	Toca para cobrar — efectivo ou UPI
+bill_cash_return	Efectivo ₹ 600 · cambio ₹ 15
+bill_paid_line	Pagado · libro do día actualizado
+lan_eyebrow	6 · CAIXA ADICIONAL
+lan_title	Outra caixa na wifi da tenda.
+cta_installers_note	Os instaladores aparecerán aquí cando cada un supere a proba de instalación nunha máquina limpa. Mentres, pide unha demostración por WhatsApp.
+cta_whatsapp_soon	A liña de demostración de WhatsApp abrirá pronto. A túa mensaxe dirá: «{message}».
+acct_page_title	Conta — Kirano
+acct_lede	Unha soa conta para o sitio web e as aplicacións — o mesmo formulario tanto se es novo como se volves.
+acct_email	Correo electrónico
+acct_name_optional	Nome (opcional)
+acct_password	Contrasinal
+acct_continue	Continuar
+acct_forgot	Esqueciches o contrasinal?
+acct_reset_hint	Enviarémosche unha ligazón de restablecemento por correo. Usa o mesmo enderezo co que te rexistraches.
+acct_send_reset	Enviar ligazón de restablecemento
+acct_cancel	Anular
+acct_or_continue	ou continúa con
+acct_phone	Teléfono
+acct_mobile	Número de móbil
+acct_send_sms	Enviar código por SMS
+acct_sms_code	Código SMS
+acct_confirm_code	Confirmar código
+acct_signed_in	Sesión iniciada
+acct_signed_in_as	Sesión iniciada como
+acct_status	Estado
+acct_sign_in_methods	Métodos de inicio de sesión
+acct_cloud_username	Nome de usuario na nube
+acct_plan	Plan contratado
+acct_resend_verify	Reenviar o correo de verificación
+acct_sign_out	Pechar sesión
+acct_cloud_sandbox	Kumkaj Cloud (contorno de probas)
+acct_current_password	Contrasinal actual
+acct_email_for_password	Correo para iniciar sesión con contrasinal
+acct_new_password	Contrasinal novo
+acct_confirm_new_password	Confirma o contrasinal novo
+acct_add_way	Engadir outro xeito de iniciar sesión
+acct_link_hint	Vincula varios métodos á mesma conta para poder recuperar o acceso se un falla.
+acct_link_google	Vincular Google
+acct_link_microsoft	Vincular Microsoft
+acct_link_github	Vincular GitHub
+acct_link_phone	Vincular teléfono
+acct_send_sms_link	Enviar SMS para vincular
+acct_confirm_link_phone	Confirmar e vincular o teléfono
+shop_page_title	Tenda — Kirano
+shop_lede	Plans anuais na nube — os impostos engádense ao pagar. A aplicación Kirano completa nos teus propios dispositivos segue de balde para sempre, sen anuncios.
+shop_cart	Cesta
+shop_cart_empty_hint	A túa cesta está baleira. Engade Steady, Swift ou Priority.
+shop_checkout	Finalizar a compra
+shop_clear	Baleirar
+shop_checkout_hint	Ao finalizar a compra, primeiro inicias sesión en Conta e logo comeza o pagamento (simulación no contorno de probas ou Paddle cando hai chaves).
+acct_billing_hint	Plans anuais — a pasarela de pagamento engade os impostos ao pagar. O uso local segue de balde para sempre. O plan personalizado é por orzamento (pode ser inferior a Steady ou superior a Priority).
+shop_cloud_plans	Plans da nube
+acct_federated	Inicio de sesión federado
+acct_err_invalid_email	Introduce un enderezo de correo válido.
+acct_err_weak_password	Usa un contrasinal de polo menos 6 caracteres.
+acct_err_wrong_password	Contrasinal incorrecto.
+acct_err_invalid_credential	O correo ou o contrasinal son incorrectos.
+acct_err_popup_closed	Pechouse a xanela de inicio de sesión.
+acct_err_popup_cancelled	Cancelouse o inicio de sesión.
+acct_err_unauthorized_domain	Este dominio non está autorizado para Firebase Auth.
+acct_err_method_disabled	Este método de inicio de sesión aínda non está activado.
+acct_err_too_many	Demasiados intentos. Téntao de novo máis tarde.
+acct_err_phone_format	Usa o número de teléfono completo co prefixo do país (p. ex. +91…).
+acct_err_sms_code	Ese código SMS é incorrecto ou caducou.
+acct_err_no_account	Non hai ningunha conta con ese correo. Continúa para crear unha ou usa outro método.
+acct_err_recent_login	Por seguridade, inicia sesión de novo e despois repite este cambio.
+acct_err_credential_in_use	Ese método de inicio de sesión xa o usa outra conta.
+acct_err_email_in_use	Ese correo xa o usa outra conta.
+acct_err_already_linked	Ese método xa está vinculado a esta conta.
+acct_err_exists_other_method	Xa existe unha conta con este correo que usa outro método de inicio de sesión. Inicia sesión primeiro con ese método e despois vincula este desde a páxina da túa conta.
+acct_err_generic	Algo saíu mal.
+acct_method_password	Correo e contrasinal
+acct_pw_hint_change	Cambia o teu contrasinal. Confirmarás co actual.
+acct_pw_hint_add	Engade un contrasinal para poder iniciar sesión tamén co correo (útil se un provedor non está dispoñible).
+acct_pw_change	Cambiar o contrasinal
+acct_pw_add	Engadir contrasinal
+acct_billing_off	A facturación aínda non está activada na API da nube.
+acct_billing_no_provider	Non hai ningún provedor de pagamento real activado na API da nube (a simulación só é local).
+price_quote	Orzamento
+price_per_year	₹{amount}/ano sen impostos
+acct_pay_received	Pagamento recibido — actualizando o teu plan…
+acct_pay_declined	O pagamento foi rexeitado ou fallou
+acct_pay_failed_detail	{detail}. O teu plan non cambiou.
+acct_checkout_closed	Pechouse a compra — non se completou ningún pagamento. O teu plan non cambiou.
+acct_checkout_failed	A compra fallou
+acct_pay_with	Pagar con {provider}
+acct_plan_until	{plan} · ata o {date}
+acct_unavailable	Non dispoñible
+acct_continue_hint	Continúa co correo, un provedor ou o teléfono.
+acct_signed_in_fallback	(sesión iniciada)
+acct_email_verified	Correo verificado
+acct_email_unverified	O correo aínda non está verificado — revisa a caixa de entrada
+acct_signed_in_phone	Sesión iniciada co teléfono
+acct_none_listed	Aínda non hai ningún
+acct_signed_in_status	Iniciaches sesión.
+acct_created	Conta creada. Revisa o correo para verificala cando poidas.
+acct_reset_sent	Se hai unha conta con ese correo, a ligazón de restablecemento está en camiño. Revisa a caixa de entrada.
+acct_another_method	outro método
+acct_exists_via	Xa existe unha conta para {email} mediante {method}. Inicia sesión primeiro dese xeito e despois vincula este provedor desde a páxina da túa conta.
+acct_enter_current_pw	Introduce o teu contrasinal actual.
+acct_relogin_retry	Pecha sesión, volve iniciala e téntao de novo.
+acct_pw_mismatch	O contrasinal novo e a confirmación non coinciden.
+acct_pw_updated	Contrasinal actualizado.
+acct_enter_email_pw	Introduce un correo para iniciar sesión con contrasinal.
+acct_pw_added	Contrasinal engadido. Agora tamén podes iniciar sesión co correo.
+acct_method_linked	Método de inicio de sesión vinculado.
+acct_phone_linked	Teléfono vinculado a esta conta.
+acct_verify_sent	Correo de verificación enviado — revisa a caixa de entrada.
+shop_pricing_soon	Prezos en breve
+shop_request_quote	Pedir orzamento
+shop_add_to_cart	Engadir á cesta
+shop_notify_later	Avisarme máis tarde
+shop_included	Incluído
+shop_in_cart	{plan} está na túa cesta.
+shop_remove	Quitar
+shop_cart_is_empty	A cesta está baleira.
+shop_prices_unpublished	Os prezos de autoservizo deste produto aínda non se publicaron. Pide un orzamento personalizado ou volve máis tarde.
+shop_cart_cleared	Cesta baleirada.
+plan_free_title	De balde para sempre
+plan_free_blurb	O produto local completo nos teus dispositivos. Sen cota de nube.
+plan_steady_blurb	Nube activa · 10 GB · menor largura de banda
+plan_swift_blurb	Nube activa · 25 GB · largura de banda media
+plan_priority_blurb	Nube activa · 50 GB · a maior largura de banda estándar
+plan_custom_title	Personalizado
+plan_custom_blurb	Cota e largura de banda acordadas. O orzamento pode ser inferior a Steady ou superior a Priority.
