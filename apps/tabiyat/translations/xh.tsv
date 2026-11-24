@@ -15,14 +15,14 @@ unlock	Vula
 sell	Thengisa
 buy	Thenga
 books	Incwadi yosuku
-books_help	Isikhundla sanamhlanje. Thengisa = imali ngaphakathi. Thenga = ukuthenga kunye neendleko. Amaqela = abathengi betyala & nababoneleli.
-buy_help	Amaxwebhu eenkcitho nee-akhawunti zababoneleli (imali ephumayo). Okwis-akhawunti kuhlala kwincwadi yeqela.
+books_help	Isikhundla sanamhlanje. Thengisa = imali ngaphakathi. Thenga = ukuthenga kunye neendleko. Amaqabane = abathengi betyala & nababoneleli.
+buy_help	Amaxwebhu eenkcitho nee-akhawunti zababoneleli (imali ephumayo). Okwis-akhawunti kuhlala kwincwadi yeqabane.
 sell_money_in	Thengisa amayeza
 buy_money_out	Ixwebhu lenkcitho / i-akhawunti yomboneleli
 record_purchase	Bhala okuthengiweyo
 add_expense	Ixwebhu lenkcitho
 bank_book	Incwadi yebhanki
-credit_help	Inombolo yeqela yodwa (amagama anokuphinda). Umthengi unencwadi yekhredithi (usityala); Umboneleli usithengisa isitokhwe (simtyala); bobabini kulungile. Iincwadi zihlala zihlukene; iingxelo zibonisa isixa.
+credit_help	Inombolo yeqabane yodwa (amagama anokuphinda). Umthengi unencwadi yekhredithi (usityala); Umboneleli usithengisa isitokhwe (simtyala); bobabini kulungile. Iincwadi zihlala zihlukene; iingxelo zibonisa isixa.
 party_kind_ph	Iindima: Umthengi, Umboneleli, bobabini…
 reports_help	Incwadi yosuku, abanamatyala nabanikwe, incwadi yebhanki, amaxwebhu eenkcitho, inzuzo nelahleko.
 reports_today	Incwadi yosuku (namhlanje)
@@ -52,7 +52,7 @@ total	Isixa
 cash	Imali ephathekayo
 upi	UPI
 card	Ikhadi
-credit	Amaqela
+credit	Amaqabane
 clear	Cima
 today_prefix	Namhlanje
 owed	okungahlawulwanga
@@ -194,9 +194,9 @@ credit_summary_fmt	{} abathengi · ikhredithi evulekileyo {} · imali yangaphamb
 recent_label	Kutshanje:
 inventory	Isitokhwe
 branches	Amasebe
-credit_customers	Amaqela (ikhata nababoneleli)
-customer_name_ph	Igama leqela
-new_customer_ph	Igama elitsha leqela
+credit_customers	Amaqabane (ikhata nababoneleli)
+customer_name_ph	Igama leqabane
+new_customer_ph	Igama elitsha leqabane
 item_price_ph	Ixabiso
 start_template	Imveliso
 team	Iqela
@@ -289,8 +289,8 @@ copy_day_book_csv	Kopisha i-CSV yencwadi yosuku
 copy_day_close	Kopisha ukuvala usuku
 copy_items_csv	Kopisha i-CSV yezinto
 copy_outstanding_csv	Kopisha i-CSV yokungahlawulwanga
-copy_parties_csv	Kopisha i-CSV yamaqela
-copy_party_ledger_csv	Kopisha i-CSV yencwadi yeqela
+copy_parties_csv	Kopisha i-CSV yamaqabane
+copy_party_ledger_csv	Kopisha i-CSV yencwadi yeqabane
 copy_receipt	Kopisha irisithi
 share_whatsapp	Yabelana kwiWhatsApp
 lan_pages_heading	Amaphepha abathengi kwi-Wi-Fi
@@ -324,8 +324,8 @@ copy_report	Kopisha ingxelo
 counted_cash_ph	Imali ephathekayo ebalwe kwidrowa
 country_tax	Ilizwe nerhafu
 create_backup	Yenza ugcino lwasemva
-credit_limit_heading	Umda wekhredithi (iqela elikhethiweyo / elinegama)
-delete_party	Cima iqela elikhethiweyo
+credit_limit_heading	Umda wekhredithi (iqabane elikhethiweyo / elinegama)
+delete_party	Cima iqabane elikhethiweyo
 done_open_books	Igqityiwe — vula iincwadi
 drawer_count	Ubali lwedrowa (akuyomfuneko)
 expense_heading	Inkcitho
@@ -338,15 +338,15 @@ forget_shop	Libala le venkile
 goods_received	Iimpahla ezifunyenweyo
 import_day	Ngenisa usuku
 import_items_csv_plain	Ngenisa i-CSV yezinto…
-import_parties_csv	Ngenisa i-CSV yamaqela…
+import_parties_csv	Ngenisa i-CSV yamaqabane…
 item_name	Igama lento
 login_id_ph	Igama lomsebenzisi
 mark_cleared	Phawula kucacisiwe
-new_party_clear	Iqela elitsha (cima ifom)
-new_party_kind_supplier_ph	Uhlobo olutsha lweqela (Umboneleli)
+new_party_clear	Iqabane elitsha (cima ifom)
+new_party_kind_supplier_ph	Uhlobo olutsha lweqabane (Umboneleli)
 next_order	Iodolo elandelayo (cima ideski)
 note_gstin_ph	Inqaku / i-GSTIN / isikhumbuzi sesivumelwano
-notes_attach_party	Amanqaku nokuqhotyoshelweyo (iqela elikhethiweyo)
+notes_attach_party	Amanqaku nokuqhotyoshelweyo (iqabane elikhethiweyo)
 notes_attach_sale	Amanqaku nokuqhotyoshelweyo (intengiso ekhethiweyo)
 on_account_ap	Kwi-akhawunti (i-AP)
 org_optional_ph	Umbutho (akuyomfuneko)
@@ -354,7 +354,7 @@ paid_by	Ihlawulwe ngu
 paid_now	Ihlawulwe ngoku
 pair_now	Dibanisa ngoku
 pairing_code_ph	Ikhowudi yokudibanisa
-party_name_selected_ph	Igama leqela (okanye sebenzisa elikhethiweyo)
+party_name_selected_ph	Igama leqabane (okanye sebenzisa elikhethiweyo)
 password_ph	Igama lokugqitha
 pay_ap_card	Hlawula i-AP ngekhadi
 pay_ap_cash	Hlawula i-AP ngemali ephathekayo
@@ -403,7 +403,7 @@ save_features_ok	Useto lugciniwe ku-{name}
 save_names	Gcina amagama
 second_way	Indlela yesibini
 server_ip_ph	I-IP yeseva (umz. 192.168.1.10)
-set_credit_limit	Faka umda kwiqela
+set_credit_limit	Faka umda kwiqabane
 set_login_selected	Faka ungeno kokukhethiweyo
 set_login_named	Faka ungeno ku-{name}
 shop	Ivenkile
@@ -532,7 +532,7 @@ backup_failed	Ugcino lwasemva oluzenzekelayo lokugqibela aluphumelelanga: {e}
 backup_overdue	Akukho gcino lwasemva iintsuku ezingama-{n} — gcina i-app ivuliwe kwesi sixhobo ukuze ikwazi ukugcina.
 disk_low	Ziyi-{mb} MB kuphela eziseleyo kwesi sixhobo — ugcino lwasemva luya kusilela ngokukhawuleza. Vula indawo.
 connection_to_shop	Uqhagamshelo evenkileni
-supplier_name_ph	Igama lomboneleli (okanye iqela)
+supplier_name_ph	Igama lomboneleli (okanye iqabane)
 supplier_ph	Umboneleli
 switch_device	Tshintsha esi sixhobo
 take_payment	Qokelela intlawulo
@@ -686,7 +686,7 @@ onboard_fresh_tmpl	Entsha · {} — ikhathalogu iqala ingenanto; yongeza izinto 
 onboard_book_tmpl	Incwadi · {} — yongeza izinto nekhredithi yokuqala, emva koko Igqityiwe.
 tmpl_blurb	Ikhawunta yekhemesti: amayeza, ibhetshi/ukuphelelwa kwexesha, ikhata, iincwadi.
 reports_facet_title	Iingxelo
-reports_facet_help	Iincwadi zosuku, ubudala bamaqela, iiposi zebhanki, nenzuzo nelahleko yexesha.
+reports_facet_help	Iincwadi zosuku, ubudala bamaqabane, iiposi zebhanki, nenzuzo nelahleko yexesha.
 against_bill_ph	Ngokuchasene netyala # elingentla (akuyomfuneko)
 aliases_ph	Iziteketiso, amagama amafutshane — isiphumlisi sahluliwe
 amount_blank_full_ph	Imali (ungenanto = ibhalansi epheleleyo)
@@ -842,8 +842,8 @@ upi_payee_ph	Igama lomntu ofumana i-UPI (akuyomfuneko)
 show_upi_qr	Bonisa i-UPI QR
 close_upi_qr	Vala
 upi_qr_help	Umthengi uyahlola kwaye ahlawule. Thepha Thatha intlawulo emva kokuba behlawule. Isikrini sesibini: vula i-URL yeseva / bonisa kwi-LAN.
-role_help_customer	Indima: Umthengi — ikhata (basityala). Iqela elinye linokubonelela ngesitokhwe.
-role_help_both	Iindima: Umthengi + Umboneleli — iqela elinye, iincwadi zekhata nezokuhlawulwa, i-neto kwiingxelo.
+role_help_customer	Indima: Umthengi — ikhata (basityala). Iqabane elinye linokubonelela ngesitokhwe.
+role_help_both	Iindima: Umthengi + Umboneleli — iqabane elinye, iincwadi zekhata nezokuhlawulwa, i-neto kwiingxelo.
 role_help_supplier	Indima: Umboneleli — sibatyala ngokuthengiweyo.
 price_ph	Ixabiso
 price_ph_gst_inside	Ixabiso ({tax} ngaphakathi)

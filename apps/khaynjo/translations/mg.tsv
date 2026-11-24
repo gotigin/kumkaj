@@ -5,14 +5,14 @@ pin_hint	Ny PIN an'ny tompony dia manomboka amin'ny 0000
 sell	Baiko
 buy	Mividy
 books	Bokin'ny andro
-books_help	Toerana anio. Baiko = baiko voaray. Mividy = fividianana sy fandaniana. Mpanjifa = mpanjifa mampindrana sy mpamatsy.
-buy_help	Taratasim-bola lany sy faktioran'ny mpamatsy (vola mivoaka). Ny kaonty amin'ny antoko dia mitoetra ao amin'ny bokin'ny antoko.
+books_help	Toerana anio. Baiko = baiko voaray. Mividy = fividianana sy fandaniana. Mpifandray = mpanjifa mampindrana sy mpamatsy.
+buy_help	Taratasim-bola lany sy faktioran'ny mpamatsy (vola mivoaka). Ny kaonty amin'ny mpifandray dia mitoetra ao amin'ny bokin'ny mpifandray.
 sell_money_in	Mandray baiko
 buy_money_out	Fandaniana / faktiora mpamatsy
 record_purchase	Rakikira fividianana
 add_expense	Tapakila fandaniana
 bank_book	Bokin'ny banky
-credit_help	Tokony ho tokana ny laharan'ny antoko (mety miverina ny anarana). Mpitantana ny mpanjifa amin'ny tabilao khata (manana trosa amintsika izy); mpamatsy mivarotra tahiry amintsika (manana trosa aminy isika); samy mety izany. Mijanona misaraka ny boky fandoavana; mampiseho ny nety ny tatitra.
+credit_help	Tokony ho tokana ny laharan'ny mpifandray (mety miverina ny anarana). Mpitantana ny mpanjifa amin'ny tabilao khata (manana trosa amintsika izy); mpamatsy mivarotra tahiry amintsika (manana trosa aminy isika); samy mety izany. Mijanona misaraka ny boky fandoavana; mampiseho ny nety ny tatitra.
 party_kind_ph	Anjara asa: Mpividy, Mpamatsy, samy izy roa…
 reports_help	Bokin'andro, mpampindrana sy mpampindram-bola, bokin'ny banky, taratasy fandaniana, tombony sy fatiantoka.
 reports_today	Boky andro (androany)
@@ -46,7 +46,7 @@ total	Fitambarany
 cash	Vola
 upi	UPI
 card	Karatra
-credit	Mpanjifa
+credit	Mpifandray
 clear	Fafao
 ready_to_sell	Vonona ny hanao famandrihana
 today_prefix	Androany
@@ -318,9 +318,9 @@ inventory	Tahiry
 inventory_stock	Tahiry & tahiry entana
 branches	Sampana
 branches_org	Sampana & fikambanana
-credit_customers	Antoko (khata & mpamatsy)
-customer_name_ph	Anaran'ny antoko
-new_customer_ph	Anarana vaovao ho an'ny antoko
+credit_customers	Mpifandray (khata sy mpamatsy)
+customer_name_ph	Anaran'ny mpifandray
+new_customer_ph	Anarana vaovao ho an'ny mpifandray
 item_name_ph	Anaran'ny entana (ohatra Masala Dosa)
 item_price_ph	Vidiny
 start_template	Vokatra
@@ -448,7 +448,7 @@ copy_day_book_csv	Adikao ny bokin'ny andro CSV
 copy_day_close	Adikao ny fanakatonana andro
 copy_items_csv	Adikao ireo zavatra CSV
 copy_outstanding_csv	Adikao ny mbola tsy vita CSV
-copy_parties_csv	Adika ny antoko CSV
+copy_parties_csv	Adikao ny CSV-n’ny mpifandray
 copy_party_ledger_csv	Adika ny boky fitantanam-bola CSV
 copy_receipt	Adika ny fandraisana
 share_whatsapp	Zarao amin'ny WhatsApp
@@ -524,9 +524,9 @@ tax_invoice_saved_off	Faktiora hetra miafina — Memo vola fotsiny
 pay_methods	Fomba fandoavana
 pay_methods_help	Inona avy ireo bokotra miseho amin'ny Handray fandoavana. Mijanona foana ny Vola. Misy modely fivarotana manomboka amin'ny Vola fotsiny — velomy indray eto ny UPI / Karatra / Trosa / Mizara.
 create_backup	Mametraha backup
-credit_limit_heading	Fetra amin'ny kredita (partie voafidy / voatonona)
+credit_limit_heading	Fetra amin'ny kredita (mpifandray voafidy / voatonona)
 day_close_summary	Famintinana ny andro rehefa mifarana
-delete_party	Fafao ny partie voafidy
+delete_party	Fafao ny mpifandray voafidy
 delivery	Fanaterana
 done_open_books	Vita — sokafy ny boky
 drawer_count	Fandaharana ny boaty (tsy voatery)
@@ -541,13 +541,13 @@ forget_shop	Adino ity fivarotana ity
 goods_received	Entana voaray
 import_day	Andro fanafarana
 import_items_csv_plain	Entana fanafarana CSV…
-import_parties_csv	Antoko fanafarana CSV…
+import_parties_csv	Ampidiro ny CSV-n’ny mpifandray…
 item_name	Anaran'ny entana
 kitchen_printing	Mpanonta
 login_id_ph	Anaran'ny mpampiasa
 mark_cleared	Marika voadio
-new_party_clear	Antoko vaovao (diovy ny endrika)
-new_party_kind_supplier_ph	Karazana antoko vaovao (Mpamatsy)
+new_party_clear	Mpifandray vaovao (diovy ny endrika)
+new_party_kind_supplier_ph	Karazana mpifandray vaovao (Mpamatsy)
 next_country	Firenena manaraka
 next_order	Filaharana manaraka (latabatra madio)
 nav_drafts	Drafitra
@@ -567,7 +567,7 @@ drafts_card_lines	entana
 drafts_summary_fmt	{n} drafitra misokatra
 drafts_cols_fmt	{n} tsanganana
 note_gstin_ph	Fanamarihana / GSTIN / fampahatsiahivana fifanarahana
-notes_attach_party	Fanamarihana & rakitra mifamatotra (antoko voafantina)
+notes_attach_party	Fanamarihana & rakitra mifamatotra (mpifandray voafantina)
 notes_attach_sale	Fanamarihana & rakitra mifamatotra (varotra voafantina)
 on_account_ap	Amin'ny kaonty (AP)
 org_optional_ph	Fikambanana (tsy voatery)
@@ -575,7 +575,7 @@ paid_by	Vita ny fandoavana
 paid_now	Voadiovina izao
 pair_now	Mifandray izao
 pairing_code_ph	Kaody fampifandraisana
-party_name_selected_ph	Anaran'ny antoko (na mampiasa ny voafantina)
+party_name_selected_ph	Anaran'ny mpifandray (na mampiasa ny voafantina)
 password_ph	Tenimiafina
 pay_ap_card	Aloavy karatra AP
 pay_ap_cash	Aloavy vola AP
@@ -630,7 +630,7 @@ save_features_ok	Voatahiry ny fanomanana ho an'i {name}
 save_names	Tehirizo ny anarana
 second_way	Fomba faharoa
 server_ip_ph	Server IP (ohatra 192.168.1.10)
-set_credit_limit	Ampiharo fetra amin'ny antoko
+set_credit_limit	Ampiharo fetra amin'ny mpifandray
 set_login_selected	Ampiharo fidirana amin'ny voafantina
 set_login_named	Ampiharo fidirana amin'ny {name}
 shop	Fivarotana
@@ -888,7 +888,7 @@ disk_low	MB {mb} sisa malalaka amin'ity fitaovana ity — tsy ho ela dia tsy hah
 last_seen_devices	Farany hita: {time}
 sync_interval	Mifandray isaky ny {secs}s
 connection_to_shop	Fifandraisana amin'ny fivarotana
-supplier_name_ph	Anaran'ny mpamatsy (na antoko)
+supplier_name_ph	Anaran'ny mpamatsy (na mpifandray)
 supplier_ph	Mpamatsy
 switch_device	Omano ity fitaovana ity
 take_payment	Manaova fandoavam-bola
@@ -1060,7 +1060,7 @@ onboard_template_tmpl	Anarano ny toerana raha tianao, avy eo safidio ny fomba ha
 tmpl_blurb	Latabatra, filaharana, tapakila lakozia, faktiora, ary boky.
 tmpl_how	Mivarotra eo amin'ny kaunter; Tafika amin'ny latabatra & KOT; Boky ho an'ny bokin'ny andro.
 reports_facet_title	Tatitra
-reports_facet_help	Bokin'ny andro, fahanteran'ny antoko, lahatsoratra banky, ary P&L vanim-potoana.
+reports_facet_help	Bokin'ny andro, fahanteran'ny mpifandray, lahatsoratra banky, ary P&L vanim-potoana.
 against_bill_ph	Manohitra ny faktiora # etsy ambony (tsy voatery)
 aliases_ph	Aliases — anarana hafa, misarahana amin'ny koma
 amount_blank_full_ph	Vola (banga = vola feno)
@@ -1319,8 +1319,8 @@ upi_qr_help	Maka sary sy mandoa ny vahiny. Tsindrio Alao ny fandoavana rehefa ma
 kot_recall	Tsarovy
 recently_done	Vao haingana no natao
 recall_kot_ph	KOT # tsarovy
-role_help_customer	Anjara: Mpividy — khata (mitaky antsika izy ireo). Ny antoko iray ihany koa dia afaka manome tahiry.
-role_help_both	Anjara: Mpividy + Mpamatsy — antoko iray, khata sy trosa azo aloa amin'ny boky, net amin'ny Tatitra.
+role_help_customer	Anjara: Mpividy — khata (mitaky antsika izy ireo). Ny mpifandray iray ihany koa dia afaka manome tahiry.
+role_help_both	Anjara: Mpividy + Mpamatsy — mpifandray iray, khata sy trosa azo aloa amin'ny boky, net amin'ny Tatitra.
 role_help_supplier	Anjara: Mpamatsy — mitaky antsika amin'ny fividianana.
 dine_in_pick_table	Mihinana eo amin'ny toerana — mifidiana latabatra eo amin'ny Rihana
 choose_table	Misafidiana latabatra

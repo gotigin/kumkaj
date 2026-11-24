@@ -5,7 +5,7 @@ pin_hint	Eienaar PIN begin as 0000
 sell	Bestelling
 buy	Koop
 books	Dagboek
-books_help	Vandag se posisie. Bestelling = bestellings ingeneem. Koop = aankope en uitgawes. Rekeninge = kredietklante en verskaffers.
+books_help	Vandag se posisie. Bestelling = bestellings ingeneem. Koop = aankope en uitgawes. Partye = kredietklante en verskaffers.
 buy_help	Uitgaande bonne en verskaffer-fakture (geld uit). Op rekening bly op die rekening-grootboek.
 sell_money_in	Neem 'n bestelling
 buy_money_out	Uitgawe / verskaffer-faktuur
@@ -46,7 +46,7 @@ total	Totaal
 cash	Kontant
 upi	UPI
 card	Kaart
-credit	Rekeninge
+credit	Partye
 clear	Maak skoon
 ready_to_sell	Gereed om te boek
 today_prefix	Vandag
@@ -318,7 +318,7 @@ inventory	Voorraad
 inventory_stock	Voorraad en voorraathouers
 branches	Filiale
 branches_org	Filiale en organisasies
-credit_customers	Rekeninge (krediet & leweransiers)
+credit_customers	Partye (krediet & leweransiers)
 customer_name_ph	Party naam
 new_customer_ph	Nuwe party naam
 item_name_ph	Item naam (bv. Masala Dosa)

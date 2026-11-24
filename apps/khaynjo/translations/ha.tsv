@@ -5,14 +5,14 @@ pin_hint	PIN na mamallaki yana farawa da 0000
 sell	Oda
 buy	Saya
 books	Littafin yini
-books_help	Matsayin yau. Oda = odar da suka shigo. Saya = sayayya da kuɗin fita. Abokan ciniki = abokan ciniki na bashi da masu kaya.
-buy_help	Takardun kuɗin fita da lissafin mai kaya (kuɗi ya fita). Abin da ke kan asusu yana kan littafin abokan ciniki.
+books_help	Matsayin yau. Oda = odar da suka shigo. Saya = sayayya da kuɗin fita. Abokan hulɗa = abokan ciniki na bashi da masu kaya.
+buy_help	Takardun kuɗin fita da lissafin mai kaya (kuɗi ya fita). Abin da ke kan asusu yana kan littafin abokin hulɗa.
 sell_money_in	Ɗauki oda
 buy_money_out	Kuɗin fita / lissafin mai kaya
 record_purchase	Rubuta saya
 add_expense	Takardar kuɗin fita
 bank_book	Littafin banki
-credit_help	Lambar jam'i guda ɗaya ce (sunaye na iya maimaituwa). Abokin ciniki yana da asusun khata (yana binmu bashi); mai kaya yana sayar mana da kaya (mu ne muke binshi bashi); duka biyu lafiya. Littattafai sun rabu; rahotanni suna nuna tsantsa.
+credit_help	Lambar abokin hulɗa guda ɗaya ce (sunaye na iya maimaituwa). Abokin ciniki yana da asusun khata (yana binmu bashi); mai kaya yana sayar mana da kaya (mu ne muke binshi bashi); duka biyu lafiya. Littattafai sun rabu; rahotanni suna nuna tsantsa.
 party_kind_ph	Matsayi: Abokin ciniki, Mai kaya, duka…
 reports_help	Littafin yini, masu bashi da waɗanda ake bin bashi, littafin banki, takardun kuɗin fita, riba da hasara.
 reports_today	Littafin yini (yau)
@@ -46,7 +46,7 @@ total	Jimla
 cash	Tsabar kuɗi
 upi	UPI
 card	Kati
-credit	Abokan ciniki
+credit	Abokan hulɗa
 clear	Share
 ready_to_sell	A shirye don rubutu
 today_prefix	Yau
@@ -318,9 +318,9 @@ inventory	Ajiyar kaya
 inventory_stock	Ajiya da kaya
 branches	Reshe
 branches_org	Reshe da ƙungiya
-credit_customers	Abokan ciniki (khata da masu kaya)
-customer_name_ph	Sunan jam'i
-new_customer_ph	Sunan sabon jam'i
+credit_customers	Abokan hulɗa (khata da masu kaya)
+customer_name_ph	Sunan abokin hulɗa
+new_customer_ph	Sunan sabon abokin hulɗa
 item_name_ph	Sunan kaya (misali Masala Dosa)
 item_price_ph	Farashi
 start_template	Samfur
@@ -448,8 +448,8 @@ copy_day_book_csv	Kwafi littafin yini CSV
 copy_day_close	Kwafi rufe yini
 copy_items_csv	Kwafi kayayyaki CSV
 copy_outstanding_csv	Kwafi ragowa CSV
-copy_parties_csv	Kwafi jam'i CSV
-copy_party_ledger_csv	Kwafi littafin jam'i CSV
+copy_parties_csv	Kwafi CSV na abokan hulɗa
+copy_party_ledger_csv	Kwafi CSV na littafin abokin hulɗa
 copy_receipt	Kwafi rasit
 share_whatsapp	Raba WhatsApp
 lan_pages_heading	Shafukan baƙi a Wi‑Fi
@@ -524,9 +524,9 @@ tax_invoice_saved_off	An ɓoye lissafin haraji — Takardar tsabar kuɗi kawai
 pay_methods	Hanyoyin biya
 pay_methods_help	Waɗanne maɓallai ke bayyana a Karɓi biya. Tsabar kuɗi tana nan koyaushe. Wasu samfuran shago suna farawa da Tsabar kuɗi kaɗai — kunna UPI / Kati / Bashi / Raba anan kuma.
 create_backup	Ƙirƙiri ajiyar madadin
-credit_limit_heading	Iyakar bashi (jam'in da aka zaɓa / mai suna)
+credit_limit_heading	Iyakar bashi (abokin hulɗar da aka zaɓa / mai suna)
 day_close_summary	Taƙaitaccen rufe yini
-delete_party	Goge jam'in da aka zaɓa
+delete_party	Goge abokin hulɗar da aka zaɓa
 delivery	Isarwa
 done_open_books	An gama — buɗe littattafai
 drawer_count	Ƙidaya akwati (ba dole ba)
@@ -541,13 +541,13 @@ forget_shop	Manta da wannan shago
 goods_received	An karɓi kaya
 import_day	Shigar da yini
 import_items_csv_plain	Shigar da kayayyaki CSV…
-import_parties_csv	Shigar da jam'i CSV…
+import_parties_csv	Shigo da CSV na abokan hulɗa…
 item_name	Sunan kaya
 kitchen_printing	Firintoci
 login_id_ph	Sunan mai amfani
 mark_cleared	Yi alama an daidaita
-new_party_clear	Sabon jam'i (share fom)
-new_party_kind_supplier_ph	Nau'in sabon jam'i (Mai kaya)
+new_party_clear	Sabon abokin hulɗa (share fom)
+new_party_kind_supplier_ph	Nau'in sabon abokin hulɗa (Mai kaya)
 next_country	Ƙasa ta gaba
 next_order	Oda ta gaba (share tebur)
 nav_drafts	Daftarori
@@ -567,7 +567,7 @@ drafts_card_lines	abubuwa
 drafts_summary_fmt	{n} buɗaɗɗen zane
 drafts_cols_fmt	{n} ginshiƙai
 note_gstin_ph	Bayani / GSTIN / tunatar da yarjejeniya
-notes_attach_party	Bayani da haɗe-haɗe (jam'in da aka zaɓa)
+notes_attach_party	Bayani da haɗe-haɗe (abokin hulɗar da aka zaɓa)
 notes_attach_sale	Bayani da haɗe-haɗe (sayarwar da aka zaɓa)
 on_account_ap	A kan asusu (AP)
 org_optional_ph	Ƙungiya (ba dole ba)
@@ -575,7 +575,7 @@ paid_by	Wanda ya biya
 paid_now	An biya yanzu
 pair_now	Haɗa yanzu
 pairing_code_ph	Lambar haɗi
-party_name_selected_ph	Sunan jam'i (ko yi amfani da wanda aka zaɓa)
+party_name_selected_ph	Sunan abokin hulɗa (ko yi amfani da wanda aka zaɓa)
 password_ph	Kalmar sirri
 pay_ap_card	Biya AP da kati
 pay_ap_cash	Biya AP da tsabar kuɗi
@@ -630,7 +630,7 @@ save_features_ok	An ajiye saitin {name}
 save_names	Ajiye sunaye
 second_way	Hanya ta biyu
 server_ip_ph	IP na Server (misali 192.168.1.10)
-set_credit_limit	Yi amfani da iyaka a jam'i
+set_credit_limit	Sanya iyaka ga abokin hulɗa
 set_login_selected	Yi amfani da shiga a wanda aka zaɓa
 set_login_named	Yi amfani da shiga a {name}
 shop	Shago
@@ -888,7 +888,7 @@ disk_low	MB {mb} kaɗai ne suka rage a wannan na'ura — ajiyar madadin za ta ga
 last_seen_devices	An gani ƙarshe: {time}
 sync_interval	Daidaita kowane daƙiƙa {secs}
 connection_to_shop	Haɗi da shago
-supplier_name_ph	Sunan mai kaya (ko jam'i)
+supplier_name_ph	Sunan mai kaya (ko abokin hulɗa)
 supplier_ph	Mai kaya
 switch_device	Canza wannan na'ura
 take_payment	Karɓi biya
@@ -1060,7 +1060,7 @@ onboard_template_tmpl	Sanya sunan wurin idan kana so, sai ka zaɓi yadda za a fa
 tmpl_blurb	Teburori, oda, takardun kicin, lissafi, da littattafai.
 tmpl_how	Sayar a tebur ciniki; Falo don teburori da KOT; Littattafai don littafin yini.
 reports_facet_title	Rahotanni
-reports_facet_help	Littattafan yini, shekarun bashi na jam'i, rubutun banki, da R&H na lokaci.
+reports_facet_help	Littattafan yini, shekarun bashi na abokan hulɗa, rubutun banki, da R&H na lokaci.
 against_bill_ph	A kan lambar lissafi a sama (ba dole ba)
 aliases_ph	Sauran sunaye — raba da waƙafi
 amount_blank_full_ph	Adadi (fanko = duka ma'auni)
@@ -1319,8 +1319,8 @@ upi_qr_help	Baƙo yana duba ya biya. Taɓa Karɓi biya bayan sun biya. Allo na b
 kot_recall	Dawo
 recently_done	Kwanan nan an gama
 recall_kot_ph	Lambar KOT da za a dawo
-role_help_customer	Matsayi: Abokin ciniki — khata (suna binmu bashi). Jam'i ɗaya kuma na iya kawo kaya.
-role_help_both	Matsayi: Abokin ciniki + Mai kaya — jam'i ɗaya, littattafan khata da bashi, tsantsa a Rahotanni.
+role_help_customer	Matsayi: Abokin ciniki — khata (suna binmu bashi). Abokin hulɗa ɗaya kuma na iya kawo kaya.
+role_help_both	Matsayi: Abokin ciniki + Mai kaya — abokin hulɗa ɗaya, littattafan khata da bashi, tsantsa a Rahotanni.
 role_help_supplier	Matsayi: Mai kaya — muna binsu bashi don sayayya.
 dine_in_pick_table	Ci a nan — zaɓi tebur a Falo
 choose_table	Zaɓi tebur

@@ -26,16 +26,16 @@ board_discard	Yi watsi da
 board_discarded	An goge daftarin aiki
 buy	Biya
 books	Littafin yini
-books_help	Matsayin yau. Yin ajiya = fakiti a ciki. Biya = lissafin dillalai & kashe kuɗi. Ƙungiyoyi = masu aikawa & masu ɗaukar kaya.
-buy_help	Takaddun baucan kashe kuɗi da lissafin dillalai (fitar kuɗi). On-account yana tsayawa a kan kundin jam'iyyar.
+books_help	Matsayin yau. Yin ajiya = fakiti a ciki. Biya = lissafin dillalai da kashe kuɗi. Abokan hulɗa = masu aikawa da masu ɗaukar kaya.
+buy_help	Takardun kuɗin fita da lissafin dillalai (kuɗi ya fita). Abin da ke kan asusu yana kan littafin abokin hulɗa.
 sell_money_in	Yi ajiyar wuri
 buy_money_out	Kudi / lissafin dillali
 record_purchase	Rubuta saya
 add_expense	Takardar kuɗin fita
 bank_book	Littafin banki
-credit_help	ID na jam'iyya na musamman ne (suna iya maimaita suna). Matsayi: Consignor (AR), Mai ɗauka (AP), ko duka akan wannan id. Ledges zama dabam; rahotanni sun nuna net.
+credit_help	Lambar abokin hulɗa ta musamman ce (sunaye na iya maimaituwa). Matsayi: Mai aikawa (AR), Mai ɗauka (AP), ko duka a wannan lamba. Littattafai sun rabu; rahotanni suna nuna tsantsa.
 party_kind_ph	Matsayin al'ada (na zaɓi) - ko matsa guntu a sama
-parties_list_heading	Jam'iyyun da aka ajiye
+parties_list_heading	Abokan hulɗar da aka ajiye
 reports_help	Littafin yini, masu bashi da waɗanda ake bin bashi, littafin banki, takardun kuɗin fita, riba da hasara.
 reports_today	Littafin yini (yau)
 reports_month	Riba da hasara (wata)
@@ -66,7 +66,7 @@ total	Jimla
 cash	Tsabar kuɗi
 upi	UPI
 card	Kati
-credit	Jam'i
+credit	Abokan hulɗa
 clear	Share
 ready_to_sell	A shirye don rubutu
 today_prefix	Yau
@@ -133,9 +133,9 @@ inventory	Ajiyar kaya
 inventory_stock	Ajiya da kaya
 branches	Reshe
 branches_org	Reshe da ƙungiya
-credit_customers	Ƙungiyoyi (masu bashi da masu bashi)
-customer_name_ph	Sunan jam'i
-new_customer_ph	Sunan sabon jam'i
+credit_customers	Abokan hulɗa (masu bashi da masu ba da bashi)
+customer_name_ph	Sunan abokin hulɗa
+new_customer_ph	Sunan sabon abokin hulɗa
 item_name_ph	Sunan ƙima (misali yankin saman A)
 item_price_ph	per kg/bangaren farko
 start_template	Samfur
@@ -149,7 +149,7 @@ origin_phone_ph	Wayar mai aikawa
 origin_address_ph	Adireshin karba / asalin
 booking_consignor_heading	Mai aikawa (abokin ciniki / mai aikawa)
 booking_consignee_heading	Mai karɓa (mai karɓa)
-booking_consignor_hint	Zaɓi liyafa don cika, ko barin babu kowa don shiga. Ana buƙatar ɗaukar gida da RTO.
+booking_consignor_hint	Zaɓi abokin hulɗa don cikawa, ko bar shi babu komai ga abokin ciniki mai shigowa. Ana buƙata don ɗauka daga gida da RTO.
 booking_consignee_hint	Mai karɓar kunshin. Bar fanko don faɗuwar farashin shiga.
 weight_kg_ph	Ainihin kg
 length_cm_ph	L cm
@@ -300,7 +300,7 @@ card_amount_ph	Adadin kati
 cash_amount_ph	Adadin tsabar kuɗi
 upi_amount_ph	Adadin UPI
 carrier_cost_ph	Farashin mai ɗaukar kaya
-carrier_party_ph	Jam'iyyar dako
+carrier_party_ph	Abokin hulɗa mai ɗaukar kaya
 choose_icon	Zaɓi alama
 choose_logo	Zaɓi tambari
 choose_receipt_stamp	Zaɓi tambarin karɓa
@@ -314,7 +314,7 @@ print_faces	Buga fuskoki (bididdigar lissafin lokaci)
 print_faces_help	Tambari na zaɓi da biyan QR kusa da tambarin ku akan rasidu da lissafin lokaci.
 awb_pools_heading	Tafkunan ruwa mai lamba AWB
 add_awb_pool	Ƙara tafkin AWB
-awb_pool_carrier_ph	Sunan jam'iyyar dako
+awb_pool_carrier_ph	Sunan abokin hulɗa mai ɗaukar kaya
 awb_pool_start_ph	Fara no.
 awb_pool_end_ph	Karshen no.
 awb_pool_prefix_ph	Prefix (na zaɓi)
@@ -335,13 +335,13 @@ booking_scope_hint_intl	Volumetric ÷6000 (iska na duniya) - taɓa gida don shag
 cod_register	Rahoton da aka ƙayyade na COOD
 collect_cod	Tattara COD (AWB)
 consignments_dispatch	Kayayyaki & aikawa
-consignor_party_ph	Sunan mai aikawa / jam'iyya
+consignor_party_ph	Sunan mai aikawa / abokin hulɗa
 copy_day_book_csv	Kwafi littafin yini CSV
 copy_day_close	Kwafi rufe yini
 copy_items_csv	Kwafi kayayyaki CSV
 copy_outstanding_csv	Kwafi ragowa CSV
-copy_parties_csv	Kwafi jam'i CSV
-copy_party_ledger_csv	Kwafi littafin jam'i CSV
+copy_parties_csv	Kwafi CSV na abokan hulɗa
+copy_party_ledger_csv	Kwafi CSV na littafin abokin hulɗa
 copy_receipt	Kwafi rasit
 copy_report	Kwafi rahoto
 counted_cash_ph	Tsabar kuɗin da aka ƙidaya a cikin akwati
@@ -358,7 +358,7 @@ books_locked_through	An kulle asusun har sai
 counter_agency_ph	Sunan mai ƙima / hukumar (na zaɓi)
 create_backup	Ƙirƙiri ajiyar madadin
 day_close_summary	Taƙaitaccen rufe yini
-delete_party	Goge jam'in da aka zaɓa
+delete_party	Goge abokin hulɗar da aka zaɓa
 dispatch_to_rider	Aika waɗanda aka yi rajista → ɗan isarwa
 docket_charge_ph	Cajin dokiti
 declared_value_ph	Ƙimar da aka bayyana
@@ -368,7 +368,7 @@ insurance_label	Inshora
 yes_label	Ee
 no_label	A'a
 print_route_label	Buga hanya
-new_party_kind_label	Sabon party irin
+new_party_kind_label	Nau'in sabon abokin hulɗa
 done_open_books	An gama — buɗe littattafai
 export_day	Fitar da yini
 extra_note_expense_ph	Ƙarin bayani a kuɗin fita na ƙarshe
@@ -380,13 +380,13 @@ fuel_ph	Mai
 handover_carrier	An yi ajiyar hannu → mai ɗaukar kaya
 import_day	Shigar da yini
 import_items_csv	Shigo da abubuwa / ƙimar CSV…
-import_parties_csv	Shigar da jam'i CSV…
+import_parties_csv	Shigo da CSV na abokan hulɗa…
 import_pincodes_csv	Shigo da lambobin CSV…
 import_carrier_bill_csv	Shigo da lissafin dillali CSV…
 copy_carrier_bill_report	Kwafi rahoton lissafin dillali na ƙarshe
 use_carrier_cost	Yi amfani da farashin mai ɗauka
 rate_carrier_ph	Mai ɗaukar kaya (blank = ƙimar siyar mu)
-rate_party_ph	Jam'iyya (blank = duk abokan ciniki)
+rate_party_ph	Abokin hulɗa (babu komai = duk abokan ciniki)
 carrier_pick_ph	Mai ɗaukar kaya don farashi (daga kwatanta)
 item_name	Sunan kaya
 load_bulk_row	Load da babban jere → tebur
@@ -426,8 +426,8 @@ pick_barcode_image	Zaɓi hoto don dubawa
 share_receipt_whatsapp	Raba rasit akan WhatsApp
 delivery_feedback	Ra'ayin isarwa
 lan_self_book	LAN booking kai
-new_party_clear	Sabon jam'i (share fom)
-new_party_kind_ph	Sabon nau'in jam'iyya (Mai kawowa / Mai ɗauka)
+new_party_clear	Sabon abokin hulɗa (share fom)
+new_party_kind_ph	Nau'in sabon abokin hulɗa (Mai kawowa / Mai ɗauka)
 next_country	Ƙasa ta gaba
 prev_country	Ƙasar baya
 note_gstin_ph	Bayani / GSTIN / tunatar da yarjejeniya
@@ -437,13 +437,13 @@ org_optional_ph	Ƙungiya (ba dole ba)
 paid_now	An biya yanzu
 pairing_code_ph	Lambar haɗi
 pair_now	Haɗa yanzu
-party_name_selected_ph	Sunan jam'i (ko yi amfani da wanda aka zaɓa)
+party_name_selected_ph	Sunan abokin hulɗa (ko yi amfani da wanda aka zaɓa)
 password_ph	Kalmar sirri
 pay_ap_card	Biya AP da kati
 pay_ap_cash	Biya AP da tsabar kuɗi
 pay_ap_upi	Biya AP da UPI
 period_bill	lissafin lokaci
-period_bill_party	lissafin lokaci (jam'iyya)
+period_bill_party	Lissafin lokaci (abokin hulɗa)
 period_bill_generate	Ƙirƙiri daftari
 period_bill_generate_print	Ƙirƙiri kuma buga
 booking_bulk_preview	{ok} shirye · {bad} tare da kurakurai
@@ -455,7 +455,7 @@ reason_note_ph	Dalili / bayani (ɓarna, ƙidaya, …)
 record_day_close	Rubuta rufe yini
 refresh_from_shop	Sabunta daga shago
 refund	Mayar da kuɗi
-remit_cod	Remit COD (jam'iyya)
+remit_cod	Tura COD (abokin hulɗa)
 remove_selected	Cire wanda aka zaɓa
 restore_backup	Mayar da ajiyar madadin
 rider_name_ph	Sunan ɗan isarwa
@@ -470,7 +470,7 @@ save_business_name	Ajiye sunan kasuwanci
 save_features	Ajiye saitin aiki
 save_names	Ajiye sunaye
 server_ip_ph	IP na Server (misali 192.168.1.10)
-set_credit_limit	Yi amfani da iyaka a jam'i
+set_credit_limit	Sanya iyaka ga abokin hulɗa
 set_login_selected	Yi amfani da shiga a wanda aka zaɓa
 set_login_named	Yi amfani da shiga a {name}
 shop	Shago
@@ -612,7 +612,7 @@ disk_low	MB {mb} kaɗai ne suka rage a wannan na'ura — ajiyar madadin za ta ga
 last_seen_devices	An gani ƙarshe: {time}
 sync_interval	Daidaita kowane daƙiƙa {secs}
 connection_to_shop	Haɗi da shago
-supplier_name_ph	Sunan mai kaya (ko jam'i)
+supplier_name_ph	Sunan mai kaya (ko abokin hulɗa)
 supplier_ph	Mai kaya
 switch_device	Canza wannan na'ura
 take_payment	Karɓi biya
@@ -650,9 +650,9 @@ size_in	Girman ciki
 goods_received	An karɓi kaya
 expense_heading	Kuɗin fita
 notes_attach_sale	Bayani da haɗe-haɗe (sayarwar da aka zaɓa)
-notes_attach_party	Bayani da haɗe-haɗe (jam'in da aka zaɓa)
+notes_attach_party	Bayani da haɗe-haɗe (abokin hulɗar da aka zaɓa)
 attachments_last_expense	Haɗe-haɗe (kuɗin fita na ƙarshe)
-credit_limit_heading	Iyakar bashi (jam'in da aka zaɓa / mai suna)
+credit_limit_heading	Iyakar bashi (abokin hulɗar da aka zaɓa / mai suna)
 pay_selected_heading	Biya wanda aka zaɓa (biya bashi / ɗauki ci gaba)
 write_off_heading	Soke (share ba tare da biya ba)
 adjustment_notes_heading	Bayanan daidaitawa
@@ -663,7 +663,7 @@ credit_note_btn	Bayanan kula
 debit_note_btn	Bayanin zare kudi
 bill_later_heading	Caji daga baya (ƙarin cajin bayan yin ajiya)
 bill_later_amount_ph	Karin adadin
-bill_later_party_ph	Abokin ciniki (kawai idan ajiyar ba shi da kowa)
+bill_later_party_ph	Abokin hulɗa (sai idan ajiyar ba ta da shi)
 bill_later_btn	Caji daga baya
 bill_later_extra_oda	ODA
 bill_later_extra_packing	Marufi
@@ -794,9 +794,9 @@ onboard_fresh_tmpl	Sabo · {} — jeri yana farawa fanko; ƙara kayayyaki a Kaya
 onboard_book_tmpl	Littafi · {} — ƙara kayayyaki da bashi na farawa, sai ka An gama.
 onboard_template_tmpl	Sanya sunan wurin idan kana so, sai ka zaɓi yadda za a fara.
 tmpl_blurb	Littattafai na Courier da tebur na ajiya: dillalai, masu ɗaukar kaya, littafin rana, AWB.
-tmpl_how	Rubutun littattafai a tebur; Littafin rana na yau; shafuka don rates, jam'iyyun, rahotanni.
+tmpl_how	Yi ajiyar fakiti a tebur; Littafin rana na yau; shafuka don farashi, abokan hulɗa, rahotanni.
 app_template_heading	Samfuran shago
-app_template_blurb	Zaɓi saitin farawa. «Tsallake yanzu» yana barin lissafin abokin ciniki fanko.
+app_template_blurb	Zaɓi saitin farawa. «Tsallake yanzu» yana barin jerin abokan hulɗa fanko.
 app_template_skip	Tsallake yanzu
 app_template_status	Sabar a shirye — shigo da samfuri, ko tsallake
 app_template_importing	Ana amfani da {title}…
@@ -849,7 +849,7 @@ cod_rto_fees	Kudin RTO don tarawa
 cod_to_hand_in	COD don shiga
 parcel_one_fmt	Farashin {n}
 facet_bank_title	Rahotanni
-facet_bank_help	Littattafan yini, shekarun bashi na jam'i, rubutun banki, da R&H na lokaci.
+facet_bank_help	Littattafan yini, shekarun bashi na abokan hulɗa, rubutun banki, da R&H na lokaci.
 facet_ops_title	Kayayyaki & aikawa
 facet_ops_help	Duba ko buga AWB → Nemo, sannan ci gaba / buga lakabi / COD. Mika wa ɗan isarwa ko mai ɗauka.
 facet_cod_title	Rahoton da aka ƙayyade na COOD
@@ -893,14 +893,14 @@ options_moklanjo_ph	Zaɓuɓɓuka (na zaɓi) - Babba = 20, Gift wrap=10
 part_second_way_ph	Raba da hanya ta biyu (ba dole ba)
 phone_ph	Waya
 address_ph	Adireshi
-party_custom_fields_heading	Filayen al'ada (wanda aka zaɓa)
-party_custom_help	Ƙara kowane lakabi da ƙima akan wannan ƙungiya - WhatsApp, GSTIN, lambar hanya,…
+party_custom_fields_heading	Filayen al'ada (abokin hulɗar da aka zaɓa)
+party_custom_help	Ƙara kowane lakabi da ƙima ga wannan abokin hulɗa — WhatsApp, GSTIN, lambar hanya, …
 party_custom_key_ph	Sunan filin (misali WhatsApp)
 party_custom_value_ph	Daraja
 party_custom_add	Ƙara filin
 party_custom_remove	Cire filin
 party_custom_empty	Babu filayen al'ada tukuna
-party_custom_pick_first	Zaɓi ƙungiya don ƙara filayen al'ada
+party_custom_pick_first	Zaɓi abokin hulɗa don ƙara filayen al'ada
 place_name_ph	Sunan wannan wuri
 price_ph	Farashi
 qty_example_ph	Adadi (misali 1.5 na kg)
@@ -929,7 +929,7 @@ book_kind_balance	Takardar daidaito
 ops_desk_help	Duba AWB tare da na'urar daukar hotan takardu ta USB (ko buga shi) → Nemo. Sannan gaba, buga lakabin, ko tattara COD. Lambobin buga lambar 128.
 role_help_consignor	Matsayi: Consignor - AR (suna bin mu). Wannan kamfani kuma na iya zama Mai ɗaukar kaya.
 role_help_carrier	Matsayi: Mai ɗauka - AP (muna bin su). Wannan kamfani kuma na iya zama Consignor.
-role_help_both	Matsayi: Consignor + Mai ɗaukar kaya - ƙungiya ɗaya, AR da littafan AP, net a cikin Rahotanni.
+role_help_both	Matsayi: Mai aikawa + Mai ɗauka — abokin hulɗa ɗaya, littattafan AR da AP, tsantsa a Rahotanni.
 role_help_supplier	Matsayi: Mai bayarwa - AP don sayayya.
 lane_declared_label	Yin ajiyar asusu
 lane_owner_label	Yin ajiyar kuɗi
