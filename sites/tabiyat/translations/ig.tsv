@@ -1,227 +1,227 @@
 # Igbo — Igbo (ig). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Ọmụmaatụ
+download_free	Budata n’efu
+whatsapp_for_a_demo	Ngosi site na WhatsApp
+free_on_android_windows_and	N’efu na Android, Windows na Linux.
+the_pharmacy_counter	kaụnta ụlọ ahịa ọgwụ
+pharmacy_counter	Kaụnta ụlọ ahịa ọgwụ
+tabiyat_the_pharmacy_counter	TABIYAT · KAỤNTA ỤLỌ AHỊA ỌGWỤ
+pharmacy_counter_offline_your_books	Kaụnta ụlọ ahịa ọgwụ. Na-enweghị ịntanetị. Akwụkwọ ego gị.
+medicines_barcode_and_salt_search	Ọgwụ, nchọ barcode na ihe mejupụtara ọgwụ, nọmba otu na ụbọchị ngwụcha maka akwụkwọ ego gị — n’ngwaọrụ gị. Akara onye nwe ya naanị; ọ dịghị mgbe a na-eme ka à ga-asị na a na-erube isi n’Iwu Ọgwụ.
+tap_the_bill_to_walk	Pịa ụgwọ ahụ ka i soro otu ire na kaụnta
+cash_memo	Rịsịt ego aka
+ready	Adịla njikere
+total	Ngụkọta
+tap_to_add_the_first	Pịa ka i tinye ọgwụ mbụ
+example_pharmacy_lines_not_a	Ọmụmaatụ ahịrị ụlọ ahịa ọgwụ, ọ bụghị ezigbo igbe ego. Tabiyat na-agbaso otu ụzọ ahụ: ree → nara ụgwọ → akwụkwọ ụbọchị.
+n_2_counter_sell	2 · IRE NA KAỤNTA
+medicine_quantity_pay_three_taps	Ọgwụ, ọnụọgụ, kwụọ — mpị atọ.
+upi_qr_ready	UPI QR dị njikere
+example_bill	Ọmụmaatụ ụgwọ
+fast_counter_billing	Ụgwọ ngwa ngwa na kaụnta
+add_the_line_set_the	Tinye ahịrị, setịpụ ọnụọgụ, nara ụgwọ — ego aka, UPI ma ọ bụ nkewa.
+gst_tax_invoice_or_cash	Akwụkwọ ụtụ isi GST ma ọ bụ rịsịt ego aka
+the_bill_lane_you_need	Ụdị ụgwọ ị chọrọ maka ire ahụ.
+day_book_follows	Akwụkwọ ụbọchị na-eso ya
+every_tender_lands_in_books	Ụzọ ịkwụ ụgwọ ọ bụla na-abanye n’Akwụkwọ ụbọchị mgbe i mechiri ire ahụ.
+n_3_barcode_salt	3 · BARCODE NA IHE MEJUPỤTARA YA
+scan_the_barcode_or_find	Nyochaa barcode — ma ọ bụ chọta ya site n’ihe mejupụtara ya.
+search	Chọọ
+composition_paracetamol_strip_of_10	Ihe mejupụtara ya: Paracetamol · mpempe nwere mkpụrụ 10
+salt_amoxicillin	Ihe dị n’ime ya: amoxicillin
+ranks_barcode_name_and_composition	Ọ na-ahazi barcode, aha na ihe mejupụtara ya ọnụ.
+wedge_scanner_or_type_enter	Igwe nnyocha barcode ma ọ bụ pịa Enter — ahịrị ahụ na-adaba n’ụgwọ.
+barcode_first	Barcode mbụ
+scan_or_paste_the_code	Nyochaa ma ọ bụ mado koodu ahụ; nke dabara na katalọgụ na-apụta.
+salt_composition	Ihe dị n’ime ya / ihe mejupụtara ya
+type_the_salt_when_the	Pịnye ihe dị n’ime ọgwụ mgbe aha ụlọ ọrụ abụghị ihe onye ahịa kwuru.
+owner_rx_schedule_h_flags	Akara onye nwe ya maka akwụkwọ dọkịta / Schedule H
+reminders_you_set_not_a	Ihe ncheta i setịrị — ọ bụghị ndekọ iwu, ọ bụghị ndụmọdụ ahụike.
+n_4_batch_expiry	4 · NỌMBA OTU NA ỤBỌCHỊ NGWỤCHA
+batch_and_expiry_on_your	Nọmba otu na ụbọchị ngwụcha n’akwụkwọ ego gị — ọkwa maka onye nwe ya.
+buy_batch_a12	Ịzụ · otu A12
+expires_2027_03_alert_in	Ọ ga-agwụ 2027-03 · ọkwa n’ime ụbọchị 7
+ors_sachets_batch_b04	Mkpọ ORS · otu B04
+expires_2026_11_near_expiry	Ọ ga-agwụ 2026-11 · ahịrị “ọ fọrọ obere ka ọ gwụ” n’Akwụkwọ ụbọchị
+shop_bookkeeping_only_not_drugs	Ndekọ ego ụlọ ahịa naanị — ọ bụghị nrubeisi n’Iwu Ọgwụ.
+batch_on_buy	Nọmba otu n’oge ịzụ
+record_batch_and_expiry_when	Dee nọmba otu na ụbọchị ngwụcha mgbe ngwaahịa bịarutere.
+near_expiry_alerts	Ọkwa ụbọchị ngwụcha dị nso
+books_and_sell_can_hint	Akwụkwọ ụbọchị na Ree nwere ike ịdọ aka na ntị tupu ụbọchị ahụ agafee.
+owner_practice	Omume onye nwe ya
+fefo_hints_and_rx_notes	Ndụmọdụ FEFO na ndetu akwụkwọ dọkịta bụ nke gị ịgbaso — Tabiyat na-edekọ ihe i tinyere.
+n_5_khata	5 · AKWỤKWỌ MBINYE
+customer_credit_and_supplier_dues	Mbinye ndị ahịa na ego i ji ndị na-ebunye n’otu akwụkwọ ndị mmekọ.
+mehta_clinic_customer	Ụlọ ọgwụ Mehta · Onye ahịa
+due_from_earlier	Ego a na-eji na mbụ
+today_s_sale_due	+ ahịa taa (ego a na-eji)
+balance	Ego fọdụrụ
+settle_later_part_cash_part	Kwụọ ya emechaa — ụfọdụ ego aka, ụfọdụ UPI. Ego i ji ndị na-ebunye na-anọ n’otu ihuenyo Ndị mmekọ ahụ.
+due_on_the_bill	Ego a na-eji n’ụgwọ
+leave_a_balance_on_khata	Hapụ ego fọdụrụ n’akwụkwọ mbinye n’enweghị ngwa akwụkwọ ego ọzọ.
+supplier_buys_too	Ịzụ n’aka ndị na-ebunye kwa
+who_you_owe_updates_when	Ndị i ji ego na-emelite mgbe ngwaahịa bịarutere.
+auditable	A pụrụ inyocha ya
+who_when_and_how_much	Onye, mgbe na ole na-anọ n’akwụkwọ ụbọchị.
+n_6_internet_down	6 · ỊNTANETỊ ANỌGHỊ?
+the_internet_drops_the_counter	Ịntanetị kwụsịrị. Kaụnta na-aga n’ihu na-ere.
+router_no_internet	Rawụta: enweghị ịntanetị
+main_counter_selling_and_settling	Kaụnta isi: na-ere ma na-anata ụgwọ
+second_till_joined_on_your	Igbe ego nke abụọ: jikọrọ na Wi-Fi gị
+books_live_on_the_shop	Akwụkwọ ego na-anọ n’ngwaọrụ ụlọ ahịa
+when_the_internet_drops_nothing	Mgbe ịntanetị kwụsịrị, ọ dịghị ihe dị na kaụnta ụlọ ahịa ọgwụ na-eche ya.
+one_server_lan_clients	Otu sava, ngwaọrụ LAN
+extra_tills_share_the_same	Igbe ego ndị ọzọ na-ekerịta otu akwụkwọ ego site na netwọk ụlọ ahịa.
+n_7_free_forever_locally	7 · N’EFU RUO MGBE EBIGHỊ EBI N’NGWAỌRỤ GỊ
+free_forever_on_your_devices	N’efu ruo mgbe ebighị ebi n’ngwaọrụ gị.
+no_per_bill_charge	Enweghị ụgwọ kwa akwụkwọ ụgwọ
+no_fee_per_sale_medicine	Enweghị ụgwọ kwa ire, ọgwụ, igbe ego ma ọ bụ PIN onye ọrụ na nrụnye n’ngwaọrụ gị.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Otu Tabiyat ahụ n’ekwentị na n’igbe ego kọmputa.
+optional_kumkaj_cloud	Kumkaj Cloud nhọrọ
+yearly_steady_6k_swift_12k	Kwa afọ: Steady ₹6k · Swift ₹12k · Priority ₹24k na-agụnyeghị ụtụ isi (ma ọ bụ atụmatụ ọnụahịa ahaziri iche). Zụta na /shop.
+n_8_start	8 · MALITE
+put_tabiyat_on_the_counter	Tinye Tabiyat na kaụnta.
+download_free_or_whatsapp_for	Budata n’efu, ma ọ bụ zitere anyị ozi na WhatsApp maka ngosi dabara n’ụlọ ahịa ọgwụ gị na obodo gị.
+privacy	Nzuzo
+terms	Usoro
+cancellation	Nkagbu
+cloud_shop	Ụlọ ahịa igwe ojii
+account	Akaụntụ
+chapter_counter_sell	Ire na kaụnta
+chapter_barcode_salt	Barcode na ihe mejupụtara ya
+chapter_batch_expiry	Nọmba otu na ngwụcha
+chapter_khata	Akwụkwọ mbinye
+chapter_extra_till	Igbe ego ọzọ
+chapter_offline	Na-enweghị ịntanetị
+chapter_start	Malite
+bill_selling	Na-ere
+bill_settle	Nara ụgwọ
+bill_paid	Akwụrụ
+bill_next_line	Pịa ka i tinye ahịrị na-esote
+bill_settle_hint	Pịa ka i nara ụgwọ — ego aka ma ọ bụ UPI
+bill_upi_paid	UPI ₹ 162 · akwụrụ
+bill_paid_line	Akwụrụ · e melitere akwụkwọ ụbọchị
+lan_eyebrow	6 · IGBE EGO ỌZỌ
+lan_title	Igbe ego ọzọ na Wi-Fi ụlọ ahịa.
+cta_installers_note	A ga-etinye ihe nrụnye ebe a ozugbo nke ọ bụla gafere nrụnye na igwe ọhụrụ. Ruo mgbe ahụ, rịọ maka ngosi na WhatsApp.
+cta_whatsapp_soon	Ahịrị ngosi WhatsApp ga-emeghe n’oge na-adịghị anya. Ozi gị ga-agụ: “{message}”.
+acct_page_title	Akaụntụ — Tabiyat
+acct_lede	Otu akaụntụ maka saịtị na ngwa — otu fọm ahụ ma ị bụ onye ọhụrụ ma ọ bụ onye na-alọghachi.
+acct_email	Ozi-e
+acct_name_optional	Aha (nhọrọ)
+acct_password	Okwuntughe
+acct_continue	Gaa n’ihu
+acct_forgot	Chefuru okwuntughe?
+acct_reset_hint	Anyị ga-ezitere gị njikọ ntọgharị site n’ozi-e. Jiri otu adreesị ahụ i ji debanye aha.
+acct_send_reset	Ziga njikọ ntọgharị
+acct_cancel	Kagbuo
+acct_or_continue	ma ọ bụ gaa n’ihu na
+acct_phone	Ekwentị
+acct_mobile	Nọmba ekwentị
+acct_send_sms	Ziga koodu SMS
+acct_sms_code	Koodu SMS
+acct_confirm_code	Kwado koodu
+acct_signed_in	Ị banyela
+acct_signed_in_as	Ị banyere dịka
+acct_status	Ọnọdụ
+acct_sign_in_methods	Ụzọ ịbanye
+acct_cloud_username	Aha njirimara igwe ojii
+acct_plan	Atụmatụ
+acct_resend_verify	Ziga ozi-e nkwenye ọzọ
+acct_sign_out	Pụọ
+acct_cloud_sandbox	Kumkaj Cloud (ule)
+acct_current_password	Okwuntughe dị ugbu a
+acct_email_for_password	Ozi-e maka ịbanye na okwuntughe
+acct_new_password	Okwuntughe ọhụrụ
+acct_confirm_new_password	Kwado okwuntughe ọhụrụ
+acct_add_way	Tinye ụzọ ọzọ isi banye
+acct_link_hint	Jikọọ ụzọ dị iche iche n’otu akaụntụ ka i nwee ike inweghachi ohere ma ọ bụrụ na otu adaa.
+acct_link_google	Jikọọ Google
+acct_link_microsoft	Jikọọ Microsoft
+acct_link_github	Jikọọ GitHub
+acct_link_phone	Jikọọ ekwentị
+acct_send_sms_link	Ziga SMS iji jikọọ
+acct_confirm_link_phone	Kwado ma jikọọ ekwentị
+shop_page_title	Ụlọ ahịa — Tabiyat
+shop_lede	Atụmatụ igwe ojii kwa afọ — a na-agbakwunye ụtụ isi n’oge ịkwụ ụgwọ. Ngwa Tabiyat zuru oke n’ngwaọrụ gị na-anọgide n’efu ruo mgbe ebighị ebi, na-enweghị mgbasa ozi.
+shop_cart	Nkata
+shop_cart_empty_hint	Nkata gị tọgbọ chakoo. Tinye Steady, Swift ma ọ bụ Priority.
+shop_checkout	Kwụọ ụgwọ
+shop_clear	Hichapụ
+shop_checkout_hint	Ịkwụ ụgwọ na-abanye gị na Akaụntụ, wee bido ịkwụ ụgwọ (nṅomi ule ma ọ bụ Paddle mgbe e setịrị igodo).
+acct_billing_hint	Atụmatụ kwa afọ — ọnụ ụzọ ịkwụ ụgwọ na-agbakwunye ụtụ isi n’oge ịkwụ ụgwọ. Iji ya n’ngwaọrụ gị na-anọgide n’efu ruo mgbe ebighị ebi. Nke ahaziri iche bụ atụmatụ ọnụahịa (ọ nwere ike ịdị ala karịa Steady ma ọ bụ karịa Priority).
+shop_cloud_plans	Atụmatụ igwe ojii
+acct_federated	Ịbanye site n’akaụntụ ọzọ
+acct_err_invalid_email	Tinye adreesị ozi-e ziri ezi.
+acct_err_weak_password	Jiri okwuntughe nwere opekata mpe mkpụrụedemede 6.
+acct_err_wrong_password	Okwuntughe ezighi ezi.
+acct_err_invalid_credential	Ozi-e ma ọ bụ okwuntughe ezighi ezi.
+acct_err_popup_closed	E mechiri windo ịbanye.
+acct_err_popup_cancelled	A kagburu ịbanye.
+acct_err_unauthorized_domain	A kwadoghị ngalaba a maka Firebase Auth.
+acct_err_method_disabled	A gbanyeghị ụzọ ịbanye ahụ ugbu a.
+acct_err_too_many	Mgbalị adịla ọtụtụ. Nwaa ọzọ emechaa.
+acct_err_phone_format	Jiri nọmba ekwentị zuru oke ya na koodu mba (dịka +91…).
+acct_err_sms_code	Koodu SMS ahụ ezighi ezi ma ọ bụ agwụla.
+acct_err_no_account	Ọ dịghị akaụntụ nwere ozi-e ahụ. Gaa n’ihu ka i mepụta otu, ma ọ bụ jiri ụzọ ọzọ.
+acct_err_recent_login	Maka nchekwa, banye ọzọ, wee nwaa mgbanwe a ọzọ.
+acct_err_credential_in_use	Akaụntụ ọzọ na-eji ụzọ ịbanye ahụ ugbu a.
+acct_err_email_in_use	Akaụntụ ọzọ na-eji ozi-e ahụ ugbu a.
+acct_err_already_linked	E jikọlarị ụzọ ahụ na akaụntụ a.
+acct_err_exists_other_method	Akaụntụ dị ugbu a nwere ozi-e a nke na-eji ụzọ ịbanye ọzọ. Jiri ụzọ ahụ banye mbụ, wee jikọọ nke a site na peeji akaụntụ gị.
+acct_err_generic	Ihe mebiri emebi.
+acct_method_password	Ozi-e na okwuntughe
+acct_pw_hint_change	Gbanwee okwuntughe gị. I ji nke dị ugbu a kwado ya.
+acct_pw_hint_add	Tinye okwuntughe ka i nwekwa ike iji ozi-e banye (ọ bara uru ma ọ bụrụ na onye na-enye ọrụ ịbanye adịghị).
+acct_pw_change	Gbanwee okwuntughe
+acct_pw_add	Tinye okwuntughe
+acct_billing_off	A gbanyebeghị ịkwụ ụgwọ na API igwe ojii.
+acct_billing_no_provider	A gbanyeghị ezigbo onye na-enye ọrụ ịkwụ ụgwọ na API igwe ojii (nṅomi naanị dị n’ngwaọrụ gị).
+price_quote	Atụmatụ ọnụahịa
+price_per_year	₹{amount}/afọ na-agụnyeghị ụtụ isi
+acct_pay_received	A natara ụgwọ — a na-emelite atụmatụ gị…
+acct_pay_declined	A jụrụ ịkwụ ụgwọ ahụ ma ọ bụ ọ dara
+acct_pay_failed_detail	{detail}. A gbanweghị atụmatụ gị.
+acct_checkout_closed	E mechiri ịkwụ ụgwọ — o nweghị ịkwụ ụgwọ zuru oke. Atụmatụ gị agbanweghị.
+acct_checkout_failed	Ịkwụ ụgwọ dara
+acct_pay_with	Kwụọ ụgwọ site na {provider}
+acct_plan_until	{plan} · ruo {date}
+acct_unavailable	Adịghị
+acct_continue_hint	Gaa n’ihu site n’ozi-e, onye na-enye ọrụ ịbanye, ma ọ bụ ekwentị.
+acct_signed_in_fallback	(ị banyela)
+acct_email_verified	E kwadoro ozi-e
+acct_email_unverified	A kwadobeghị ozi-e — lee igbe ozi gị
+acct_signed_in_phone	Ị banyere site n’ekwentị
+acct_none_listed	Ọ dịbeghị nke e depụtara
+acct_signed_in_status	Ị banyela.
+acct_created	E mepụtala akaụntụ. Lee ozi-e gị ka i kwado ya mgbe i nwere ohere.
+acct_reset_sent	Ọ bụrụ na akaụntụ dị maka ozi-e ahụ, njikọ ntọgharị nọ n’ụzọ. Lee igbe ozi gị.
+acct_another_method	ụzọ ọzọ
+acct_exists_via	Akaụntụ maka {email} dịlarị site na {method}. Jiri ụzọ ahụ banye mbụ, wee jikọọ onye na-enye ọrụ a site na peeji akaụntụ gị.
+acct_enter_current_pw	Tinye okwuntughe gị dị ugbu a.
+acct_relogin_retry	Pụọ ma banye ọzọ, wee nwaa ọzọ.
+acct_pw_mismatch	Okwuntughe ọhụrụ na nkwenye adabaghị.
+acct_pw_updated	E melitere okwuntughe.
+acct_enter_email_pw	Tinye ozi-e ị ga-eji maka ịbanye na okwuntughe.
+acct_pw_added	Etinyere okwuntughe. Ị nwekwara ike iji ozi-e banye ugbu a.
+acct_method_linked	E jikọrọ ụzọ ịbanye.
+acct_phone_linked	E jikọrọ ekwentị na akaụntụ a.
+acct_verify_sent	E zigara ozi-e nkwenye — lee igbe ozi gị.
+shop_pricing_soon	Ọnụahịa na-abịa n’oge na-adịghị anya
+shop_request_quote	Rịọ maka atụmatụ ọnụahịa
+shop_add_to_cart	Tinye na nkata
+shop_notify_later	Gwa m emechaa
+shop_included	Agụnyere
+shop_in_cart	{plan} dị na nkata gị.
+shop_remove	Wepụ
+shop_cart_is_empty	Nkata tọgbọ chakoo.
+shop_prices_unpublished	E bipụtabeghị ọnụahịa ịzụ-n’onwe maka ngwaahịa a. Rịọ maka atụmatụ ọnụahịa ahaziri iche ma ọ bụ lọghachi emechaa.
+shop_cart_cleared	E hichapụrụ nkata.
+plan_free_title	N’efu ruo mgbe ebighị ebi
+plan_free_blurb	Ngwaahịa zuru oke n’ngwaọrụ gị. Enweghị ụgwọ igwe ojii.
+plan_steady_blurb	Igwe ojii dị ndụ · 10 GB · ọsọ nnyefe data dị ala
+plan_swift_blurb	Igwe ojii dị ndụ · 25 GB · ọsọ nnyefe data etiti
+plan_priority_blurb	Igwe ojii dị ndụ · 50 GB · ọsọ nnyefe data kachasị elu
+plan_custom_title	Ahaziri iche
+plan_custom_blurb	Oke na ọsọ nnyefe data e kwekọrịtara. Atụmatụ ọnụahịa nwere ike ịdị ala karịa Steady ma ọ bụ karịa Priority.
