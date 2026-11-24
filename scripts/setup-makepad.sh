@@ -137,6 +137,7 @@ PATCHES=(
   # Text (docs/DEV.md § Line breaking and direction).
   line_break_uax14                  # wrap at UAX #14 break opportunities (+ tailorings) instead of word bounds
   rtl_paragraph_direction           # a paragraph starting with U+200F (or U+061C) is laid out right to left
+  widget_tree_lookup_exact          # name-index lookups return exactly what the walk would (no detached / out-of-order answers), cached
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \
