@@ -214,7 +214,24 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                 Self::prewarm_menu_assets(st.data_base.clone());
                 st.status = String::new();
                 st.store = Some(store);
-                let _ = st.reload_all();
+                // Route from meta only — full reload_all (products, N+1
+                // customers, …) stays off this call on Android so the first
+                // GL frames can paint instead of a black SurfaceView.
+                let (role_meta, locale_meta) = {
+                    let store = st.store.as_ref().unwrap();
+                    (
+                        store.device_role().ok().flatten(),
+                        store.locale_settings().ok(),
+                    )
+                };
+                st.device_role = DeviceRole::from_meta(role_meta.as_deref());
+                if let Some(locale) = locale_meta {
+                    st.locale = locale;
+                }
+                #[cfg(not(target_os = "android"))]
+                {
+                    let _ = st.reload_all();
+                }
                 // Shelf keys → custom files off the UI thread (webp encode of
                 // many dishes freezes the window). Clients fetch over LAN;
                 // Android Server extracts the same assets/items pack from the APK.
@@ -271,6 +288,30 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                     firewall_job(|| Ok(net::firewall_allows_phones()));
                 }
                 start_auto_backups(path);
+            }
+        }
+        #[cfg(target_os = "android")]
+        {
+            // Paint Lock / DeviceSetup from routed meta first; books fill next
+            // frame so reload_all SQL cannot own the SurfaceView for minutes.
+            let screen = app_state().lock().unwrap().screen;
+            self.show_screen(cx, screen);
+            self.paint_header_back_chrome(cx);
+            self.ui.redraw(cx);
+            *deferred_android_reload_frame().lock().unwrap() = Some(cx.new_next_frame());
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            self.sync_chrome(cx);
+        }
+    }
+
+    /// Android: finish books load after the first shell paint.
+    fn finish_android_deferred_reload(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            if st.store.is_some() {
+                let _ = st.reload_all();
             }
         }
         self.sync_chrome(cx);

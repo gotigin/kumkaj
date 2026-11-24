@@ -1065,6 +1065,7 @@ fn en(key: &str) -> String {
         "printers_looking" => "Looking…",
         "saving_printer" => "Adding printer…",
         "cancelled" => "Cancelled",
+        "press_back_again_exit" => "Press back again to exit",
         "printers_tap_find" => "Tap Find to list printers this device can use.",
         "printers_none_found" => "None found — type a system printer name or an IP (e.g. 192.168.1.50).",
         "printer_from_find" => "Added {name}",

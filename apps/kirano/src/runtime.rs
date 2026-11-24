@@ -797,6 +797,15 @@ fn role_open_cancel() -> &'static std::sync::atomic::AtomicBool {
     &CANCEL
 }
 
+fn role_open_interrupt() -> &'static Mutex<Option<rusqlite::InterruptHandle>> {
+    static SLOT: OnceLock<Mutex<Option<rusqlite::InterruptHandle>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn set_role_open_interrupt(handle: Option<rusqlite::InterruptHandle>) {
+    *role_open_interrupt().lock().unwrap() = handle;
+}
+
 /// Every role open, and every Cancel, starts a new generation. A worker's
 /// result lands only while its generation is still current, so Cancel hands
 /// the Server / Client choice back at once — the worker may still be inside a
@@ -812,6 +821,9 @@ fn role_open_stale(open_gen: u64) -> bool {
 
 fn request_role_open_cancel() {
     role_open_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    if let Some(handle) = role_open_interrupt().lock().unwrap().as_ref() {
+        handle.interrupt();
+    }
     role_open_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst);
     // A result that landed but was not shown yet is the cancelled one too.
     if let Some(Ok(ready)) = role_open_once().lock().unwrap().take() {
@@ -899,6 +911,7 @@ fn role_open_start(status: &str) -> bool {
     };
     role_open_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
     role_open_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    set_role_open_interrupt(None);
     set_books_work_status(status);
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
     true
@@ -911,6 +924,7 @@ fn role_open_finish(open_gen: u64, result: Result<RoleOpenReady, String>) {
         drop(result);
         return;
     }
+    set_role_open_interrupt(None);
     role_open_times().lock().unwrap().worker_done = Some(std::time::Instant::now());
     let ok = result.is_ok();
     *role_open_once().lock().unwrap() = Some(result);
@@ -959,11 +973,29 @@ fn client_mode_job(base: PathBuf) {
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
-                let store = local_servers::open_client_store(&base)?;
+                if role_open_stale(open_gen) {
+                    return Err("Cancelled".into());
+                }
+                let store = local_servers::open_client_store_cancellable(&base, |handle| {
+                    set_role_open_interrupt(Some(handle))
+                })
+                .map_err(|e| {
+                    if role_open_stale(open_gen) {
+                        "Cancelled".into()
+                    } else {
+                        e
+                    }
+                })?;
+                set_role_open_interrupt(None);
+                std::thread::yield_now();
                 if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 store.prepare_as_client_terminal()?;
+                std::thread::yield_now();
+                if role_open_stale(open_gen) {
+                    return Err("Cancelled".into());
+                }
                 store.set_device_role("client")?;
                 if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
@@ -1483,6 +1515,46 @@ fn nav_gesture_ok() -> bool {
     }
     *guard = Some(now);
     true
+}
+
+/// Visit-root double-Back-to-exit window (onboarding DeviceSetup + main till).
+const EXIT_BACK_SECS: u64 = 10;
+
+fn exit_back_armed_at() -> &'static Mutex<Option<std::time::Instant>> {
+    static SLOT: OnceLock<Mutex<Option<std::time::Instant>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn clear_exit_back_arm() {
+    *exit_back_armed_at().lock().unwrap() = None;
+}
+
+/// First Back at visit root → snack; second within [`EXIT_BACK_SECS`] → leave.
+/// Returns `Ok(true)` if the Back was consumed (snack shown).
+/// Returns `Ok(false)` on Android second press so `BackPressed` → moveTaskToBack.
+/// Returns `Err(())` on desktop second press after `cx.quit()` was requested.
+fn note_exit_back_press(cx: &mut Cx) -> Result<bool, ()> {
+    let now = std::time::Instant::now();
+    let mut armed = exit_back_armed_at().lock().unwrap();
+    if let Some(prev) = *armed
+        && now.duration_since(prev) < Duration::from_secs(EXIT_BACK_SECS)
+    {
+        *armed = None;
+        drop(armed);
+        #[cfg(target_os = "android")]
+        {
+            let _ = cx;
+            return Ok(false);
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            cx.quit();
+            return Err(());
+        }
+    }
+    *armed = Some(now);
+    drop(armed);
+    Ok(true)
 }
 
 /// Void and refund are Owner/Manager work. A cashier alone at

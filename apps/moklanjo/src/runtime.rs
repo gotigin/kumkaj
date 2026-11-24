@@ -961,10 +961,16 @@ fn client_mode_job(base: PathBuf) {
                     }
                 })?;
                 set_role_open_interrupt(None);
+                // Yield so the UI thread can paint Cancel / scroll on weak CPUs.
+                std::thread::yield_now();
                 if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 store.prepare_as_client_terminal()?;
+                std::thread::yield_now();
+                if role_open_stale(open_gen) {
+                    return Err("Cancelled".into());
+                }
                 store.set_device_role("client")?;
                 if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
@@ -1331,6 +1337,46 @@ fn nav_gesture_ok() -> bool {
     }
     *guard = Some(now);
     true
+}
+
+/// Visit-root double-Back-to-exit window (onboarding DeviceSetup + main till).
+const EXIT_BACK_SECS: u64 = 10;
+
+fn exit_back_armed_at() -> &'static Mutex<Option<std::time::Instant>> {
+    static SLOT: OnceLock<Mutex<Option<std::time::Instant>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn clear_exit_back_arm() {
+    *exit_back_armed_at().lock().unwrap() = None;
+}
+
+/// First Back at visit root → snack; second within [`EXIT_BACK_SECS`] → leave.
+/// Returns `Ok(true)` if the Back was consumed (snack shown).
+/// Returns `Ok(false)` on Android second press so `BackPressed` → moveTaskToBack.
+/// Returns `Err(())` on desktop second press after `cx.quit()` was requested.
+fn note_exit_back_press(cx: &mut Cx) -> Result<bool, ()> {
+    let now = std::time::Instant::now();
+    let mut armed = exit_back_armed_at().lock().unwrap();
+    if let Some(prev) = *armed
+        && now.duration_since(prev) < Duration::from_secs(EXIT_BACK_SECS)
+    {
+        *armed = None;
+        drop(armed);
+        #[cfg(target_os = "android")]
+        {
+            let _ = cx;
+            return Ok(false);
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            cx.quit();
+            return Err(());
+        }
+    }
+    *armed = Some(now);
+    drop(armed);
+    Ok(true)
 }
 
 /// Void, refund and amend follow each person's rights (Team → Rights). A

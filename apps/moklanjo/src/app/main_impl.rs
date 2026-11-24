@@ -62,33 +62,166 @@ impl AppMain for App {
 }
 
 impl App {
-    fn handle_event_unguarded(&mut self, cx: &mut Cx, event: &Event) {
-        // Opening the office books or finishing DeviceSetup role open holds
-        // app_state for a long time — Cancel must keep working.
-        if app_state().try_lock().is_err() {
-            if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                if let Event::Actions(actions) = event {
-                    if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions) {
-                        self.abandon_client_pair(cx);
+    /// While Opening client/server or Pairing: Cancel, scroll, and Back/Forward
+    /// stay live on every OS (bug 7b). Skip the full Signal/match_event SQL path
+    /// so the UI does not freeze until the worker finishes.
+    /// Returns true when the event was fully handled here.
+    fn drive_books_busy_shell(&mut self, cx: &mut Cx, event: &Event) -> bool {
+        let role_busy = role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let pair_busy = client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if !role_busy && !pair_busy {
+            // Mid-finish can hold app_state — still deliver pointer events.
+            if app_state().try_lock().is_err() {
+                self.ui.handle_event(cx, event, &mut Scope::empty());
+                return true;
+            }
+            return false;
+        }
+
+        if matches!(event, Event::Signal) {
+            if thumbs::take_ready() | lan_images::take_ready() {
+                self.ui.redraw(cx);
+            }
+            let found = discovery_result().lock().unwrap().take();
+            if let Some(found) = found {
+                self.show_found_servers(cx, found);
+            }
+            // Pair results land through LAN once.
+            self.take_lan_answers(cx);
+            if let Some(result) = role_open_once().lock().unwrap().take() {
+                note_role_open_ui_took();
+                match result {
+                    Ok(RoleOpenReady::Client(store)) => {
+                        if role_cancelled() {
+                            drop_store_off_ui(Some(store));
+                            end_role_open_busy();
+                            self.set_status(cx, app_t("cancelled"));
+                            self.paint_role_open_busy_chrome(cx);
+                        } else {
+                            self.finish_client_mode_opened(cx, store);
+                        }
+                    }
+                    Ok(RoleOpenReady::ServerNew(store)) => {
+                        self.finish_server_new_opened(cx, store)
+                    }
+                    Ok(RoleOpenReady::ServerExisting {
+                        store,
+                        switching_in,
+                    }) => self.finish_server_existing_opened(cx, store, switching_in),
+                    Ok(RoleOpenReady::ServerRestored(store)) => {
+                        self.finish_server_restored_opened(cx, store)
+                    }
+                    Err(e) if e == "Cancelled" => {
+                        self.set_status(cx, app_t("cancelled"));
+                        self.paint_role_open_busy_chrome(cx);
+                    }
+                    Err(e) => {
+                        self.set_status(cx, e);
+                        self.paint_role_open_busy_chrome(cx);
+                        *deferred_role_open_sync_frame().lock().unwrap() =
+                            Some(cx.new_next_frame());
                     }
                 }
-                self.ui.handle_event(cx, event, &mut Scope::empty());
+            } else if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_role_open_busy_chrome(cx);
+            }
+            if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 self.paint_pair_busy_chrome(cx);
-                return;
+            }
+            return true;
+        }
+
+        if let Event::Actions(actions) = event {
+            if role_busy {
+                if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions)
+                    || self.ui.button(cx, ids!(header_back)).clicked(actions)
+                {
+                    request_role_open_cancel();
+                    self.set_status(cx, app_t("cancelled"));
+                    self.paint_role_open_busy_chrome(cx);
+                }
+            }
+            if pair_busy {
+                if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions)
+                    || self.ui.button(cx, ids!(header_back)).clicked(actions)
+                {
+                    self.abandon_client_pair(cx);
+                }
+            }
+            // Widget hit-testing for the Cancel face (no full handle_actions).
+            self.ui.handle_event(cx, event, &mut Scope::empty());
+            if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_role_open_busy_chrome(cx);
+            }
+            if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_pair_busy_chrome(cx);
+            }
+            return true;
+        }
+
+        // Draw / keys / Android BackPressed need MatchEvent; skip Actions storm.
+        if matches!(
+            event,
+            Event::Draw(_) | Event::KeyDown(_) | Event::KeyUp(_) | Event::BackPressed { .. }
+        ) {
+            self.match_event(cx, event);
+            if let Event::Draw(_) = event {
+                note_nav_draw();
             }
             if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                if let Event::Actions(actions) = event {
-                    if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
-                        // Back to the Server / Client choice now — the worker's
-                        // late result is dropped (`role_open_gen`).
-                        request_role_open_cancel();
-                        self.set_status(cx, app_t("cancelled"));
-                    }
-                }
-                self.ui.handle_event(cx, event, &mut Scope::empty());
                 self.paint_role_open_busy_chrome(cx);
-                return;
             }
+            if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_pair_busy_chrome(cx);
+            }
+            return true;
+        }
+
+        if let Event::NextFrame(e) = event {
+            self.finish_nav_veil(cx, e);
+            let role_sync_ours = deferred_role_open_sync_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if role_sync_ours {
+                *deferred_role_open_sync_frame().lock().unwrap() = None;
+                // Light chrome only — full sync_chrome waits until not busy.
+                if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                    self.paint_role_open_busy_chrome(cx);
+                } else {
+                    self.sync_chrome(cx);
+                }
+            }
+            return true;
+        }
+
+        // Mouse Back/Forward + edge swipe (Android / desktop).
+        if self.pointer_navigates(cx, event) {
+            if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_role_open_busy_chrome(cx);
+            }
+            if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                self.paint_pair_busy_chrome(cx);
+            }
+            return true;
+        }
+
+        // Scroll, Cancel hit-test, accordion — no SQL.
+        self.ui.handle_event(cx, event, &mut Scope::empty());
+        self.disarm_edge_swipe_if_claimed(cx, event);
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.paint_role_open_busy_chrome(cx);
+        }
+        if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.paint_pair_busy_chrome(cx);
+        }
+        true
+    }
+
+    fn handle_event_unguarded(&mut self, cx: &mut Cx, event: &Event) {
+        if self.drive_books_busy_shell(cx, event) {
+            return;
         }
         self.sync_tab_chevrons(cx);
         if matches!(event, Event::Startup) {

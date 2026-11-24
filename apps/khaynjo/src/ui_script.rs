@@ -32,11 +32,13 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        // CJK / icons / emoji live under this app's resources/fonts (desktop
-        // packages ship only that tree — not makepad_widgets/resources).
-        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiRegular.ttf") asc: 0.0 desc: 0.0}
+        // Icons only here. Do NOT attach LXGW (~19 MB) or NotoColorEmoji
+        // (~11 MB): Makepad loads every FontFamily member on first use, and
+        // those two alone left Android (Mali-T830 / AGS2) on a black
+        // SurfaceView for tens of seconds. CJK/emoji stay on disk for a
+        // later language-scoped family if needed. Desktop packages still
+        // ship them under resources/fonts.
         icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     // Card names/prices: Bold (one step under Black) + Gujarati Bold.
     let WorldFontsBold = FontFamily{
@@ -64,9 +66,9 @@ script_mod! {
         armenian := FontMember{res: crate_resource("self:resources/fonts/NotoSansArmenian-Regular.ttf") asc: 0.0 desc: 0.0}
         meetei := FontMember{res: crate_resource("self:resources/fonts/NotoSansMeeteiMayek-Regular.ttf") asc: 0.0 desc: 0.0}
         olchiki := FontMember{res: crate_resource("self:resources/fonts/NotoSansOlChiki-Regular.ttf") asc: 0.0 desc: 0.0}
-        chinese := FontMember{res: crate_resource("self:resources/fonts/LXGWWenKaiBold.ttf") asc: 0.0 desc: 0.0}
+        // Same rule as WorldFonts: no LXGW / emoji in the family used by
+        // every Label on first paint (Android black-screen / first-run).
         icons := FontMember{res: crate_resource("self:resources/fonts/fa-solid-900.ttf") asc: 0.0 desc: 0.0}
-        emoji := FontMember{res: crate_resource("self:resources/fonts/NotoColorEmoji.ttf") asc: 0.0 desc: 0.0}
     }
     mod.theme.font_regular.font_family = WorldFonts
     mod.theme.font_label.font_family = WorldFonts
@@ -6331,9 +6333,14 @@ script_mod! {
                                                         public_tmpl_import := NavBtn{text: "Import selected" visible: false}
                                                     }
                                                 }
-                                                app_template_from_device := NavBtn{text: "Import from this device"}
-                                                app_template_from_device_help := InfoHelp{
-                                                    tip: "Pick a folder that contains template.json (and optional shop_defaults.json)."
+                                                View{
+                                                    width: Fill height: Fit
+                                                    flow: Right spacing: 0
+                                                    align: Align{y: 0.5}
+                                                    app_template_from_device := NavBtn{width: Fit text: "Import from this device"}
+                                                    app_template_from_device_help := InfoHelp{
+                                                        tip: "Pick a folder that contains template.json (and optional shop_defaults.json)."
+                                                    }
                                                 }
                                                 // Ids kept so a later paid gate can return. Hidden: templates are one public list.
                                                 setup_private_card := RoundedView{

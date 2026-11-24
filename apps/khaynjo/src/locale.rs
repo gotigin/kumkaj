@@ -1413,6 +1413,7 @@ fn en(key: &str) -> String {
         "printers_looking" => "Looking…",
         "saving_printer" => "Adding printer…",
         "cancelled" => "Cancelled",
+        "press_back_again_exit" => "Press back again to exit",
         "cancelling" => "Cancelling…",
         "removing" => "Removing…",
         "removed" => "Removed",

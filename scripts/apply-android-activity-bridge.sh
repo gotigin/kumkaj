@@ -966,3 +966,215 @@ PY
 else
   echo "warn: cargo-makepad compile.rs missing — skip menu assets packaging" >&2
 fi
+
+# --- Kumkaj bridge of Makepad PR #1432 ("Compiling shaders" cover) ---
+# DROP this whole block when MAKEPAD_REV / makepad-full already ships #1432
+# (showShaderCompileScreen + PIPELINE_CACHE_COLD). See docs/DEV.md § Android
+# first-launch shader compile.
+SHADER_SCREEN_JAVA="$ROOT/patches/makepad/MakepadShaderCompileScreen.java"
+SHADER_SCREEN_DST="$MAKEPAD_ROOT/tools/cargo_makepad/src/android/java/dev/makepad/android/MakepadShaderCompileScreen.java"
+if [[ -f "$SHADER_SCREEN_JAVA" ]]; then
+  cp "$SHADER_SCREEN_JAVA" "$SHADER_SCREEN_DST"
+fi
+RES_VALUES="$MAKEPAD_ROOT/tools/cargo_makepad/src/android/res/values"
+mkdir -p "$RES_VALUES"
+for xml in makepad_shader_compile_colors.xml makepad_shader_compile_strings.xml; do
+  if [[ -f "$ROOT/patches/makepad/$xml" ]]; then
+    cp "$ROOT/patches/makepad/$xml" "$RES_VALUES/$xml"
+  fi
+done
+COMPILE_RS="$MAKEPAD_ROOT/tools/cargo_makepad/src/android/compile.rs"
+if [[ -f "$COMPILE_RS" ]] && ! grep -qF 'MakepadShaderCompileScreen.java' "$COMPILE_RS"; then
+  sed -i 's|makepad_java_classes_dir.join("MakepadActivity.java"),|makepad_java_classes_dir.join("MakepadActivity.java"),\n        // First-launch "Compiling shaders" cover (Kumkaj bridge of Makepad PR #1432).\n        makepad_java_classes_dir.join("MakepadShaderCompileScreen.java"),|' "$COMPILE_RS"
+  echo "Registered MakepadShaderCompileScreen.java in compile.rs"
+fi
+# Activity fields + methods: inject from snippet if a fresh makepad-full clone
+# lacks them (vendor tree normally already has the full cover-latch edits).
+ACTIVITY_SNIPPET="$ROOT/patches/makepad/MakepadActivity-shader-compile.java"
+if ! grep -qF 'showShaderCompileScreen' "$JAVA"; then
+  if [[ -f "$ACTIVITY_SNIPPET" ]]; then
+    python3 - "$JAVA" "$ACTIVITY_SNIPPET" <<'PY'
+import re, sys
+from pathlib import Path
+java_path, snip_path = Path(sys.argv[1]), Path(sys.argv[2])
+text = java_path.read_text()
+snip = snip_path.read_text()
+if "showShaderCompileScreen" in text:
+    print("MakepadActivity already has showShaderCompileScreen")
+    raise SystemExit(0)
+
+def extract(marker_start: str, marker_end: str) -> str:
+    a = snip.find(marker_start)
+    b = snip.find(marker_end)
+    if a < 0 or b < 0 or b <= a:
+        raise SystemExit(f"snippet missing markers {marker_start!r} .. {marker_end!r}")
+    return snip[a : b + len(marker_end)].rstrip() + "\n\n"
+
+fields = extract(
+    "    // --- Kumkaj: Makepad PR #1432 compile-screen bridge",
+    "    // --- end Kumkaj PR #1432 fields ---",
+)
+methods = extract(
+    "    // --- Kumkaj: Makepad PR #1432 compile-screen methods",
+    "    // --- end Kumkaj PR #1432 methods ---",
+)
+
+# Fields: after the cover overlay field if present, else before first private method.
+field_anchors = (
+    "    private FrameLayout mSurfaceCoverOverlay;",
+    "    private ImageView mSurfaceSnapshotOverlay;",
+)
+inserted_fields = False
+for a in field_anchors:
+    if a in text:
+        text = text.replace(a, a + "\n" + fields.rstrip("\n"), 1)
+        inserted_fields = True
+        break
+if not inserted_fields:
+    m = re.search(r"\n    private void ", text)
+    if not m:
+        print("WARNING: no field insert anchor for PR #1432", file=sys.stderr)
+        raise SystemExit(1)
+    text = text[: m.start()] + "\n" + fields + text[m.start() + 1 :]
+
+# Methods: after handleSurfaceSnapshotRefreshRequest block if present.
+method_anchors = (
+    "    private void handleSurfaceSnapshotRefreshRequest()",
+    "    public void requestSurfaceSnapshotRefresh()",
+    "    private void applySurfaceCoverVisibility(boolean visible)",
+)
+# Insert after the closing brace of the first matched method — fall back to
+# appending methods immediately after the method signature line's following
+# full method body is fragile; place before onPause if needed.
+placed = False
+for a in method_anchors:
+    idx = text.find(a)
+    if idx < 0:
+        continue
+    # Find end of this method: first line that is exactly "    }" after idx,
+    # then skip nested by brace count from the method's opening '{'.
+    brace_at = text.find("{", idx)
+    if brace_at < 0:
+        continue
+    depth = 0
+    i = brace_at
+    while i < len(text):
+        c = text[i]
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                i += 1
+                text = text[:i] + "\n\n" + methods + text[i:]
+                placed = True
+                break
+        i += 1
+    if placed:
+        break
+if not placed:
+    print("WARNING: no method insert anchor for showShaderCompileScreen", file=sys.stderr)
+    raise SystemExit(1)
+
+java_path.write_text(text)
+print("Injected PR #1432 Activity fields + showShaderCompileScreen methods.")
+PY
+  else
+    echo "WARNING: MakepadActivity.java is missing showShaderCompileScreen — see patches/makepad/MakepadActivity-shader-compile.java + DEV.md." >&2
+  fi
+else
+  echo "MakepadActivity already has showShaderCompileScreen (PR #1432 bridge)."
+fi
+# Cover must start VISIBLE with first-frame latch (black SurfaceView otherwise).
+if grep -qF 'mIsCoverWaitingForFirstFrame' "$JAVA" \
+  && ! grep -qF 'mIsCoverWaitingForFirstFrame = true;' "$JAVA"; then
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+p = Path(sys.argv[1])
+t = p.read_text()
+old = """        MakepadLaunchBg.apply(mSurfaceCoverOverlay);
+        mSurfaceCoverOverlay.setClickable(false);
+        mSurfaceCoverOverlay.setFocusable(false);
+        mSurfaceCoverOverlay.setAlpha(1.0f);
+        mSurfaceCoverOverlay.setVisibility(View.GONE);
+        mRootLayout.addView(mSurfaceCoverOverlay);"""
+new = """        MakepadLaunchBg.apply(mSurfaceCoverOverlay);
+        mSurfaceCoverOverlay.setClickable(false);
+        mSurfaceCoverOverlay.setFocusable(false);
+        mSurfaceCoverOverlay.setAlpha(1.0f);
+        // A new SurfaceView is black until Rust's first frame (Makepad PR #1432).
+        // Stay covered until then; Rust may add the compile-screen child if cold.
+        mSurfaceCoverOverlay.setVisibility(View.VISIBLE);
+        mIsCoverWaitingForFirstFrame = true;
+        mRootLayout.addView(mSurfaceCoverOverlay);
+        // Last-resort safety only (do not race the first GL present).
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mIsCoverWaitingForFirstFrame || mShaderCompileScreen != null) {
+                    Log.i(LOG_TAG, "surface cover safety hide after 90s");
+                    applySurfaceCoverVisibility(false);
+                }
+            }
+        }, 90000);"""
+if old in t:
+    p.write_text(t.replace(old, new, 1))
+    print("Armed surface cover VISIBLE + first-frame latch + 90s safety.")
+elif "mIsCoverWaitingForFirstFrame = true;" in t:
+    print("Surface cover first-frame latch already armed.")
+else:
+    print("WARNING: could not arm cover first-frame latch (layout differs).", file=sys.stderr)
+PY
+fi
+# Hide-path latch clear + first-present hide (idempotent string checks).
+if grep -qF 'mIsCoverWaitingForFirstFrame' "$JAVA" \
+  && ! grep -qF 'Only clearing on hide keeps showShaderCompileScreen' "$JAVA"; then
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+p = Path(sys.argv[1])
+t = p.read_text()
+changed = False
+# Clear latch only on hide inside applySurfaceCoverVisibility.
+needle = "    private void applySurfaceCoverVisibility(boolean visible) {\n        if (mSurfaceCoverOverlay == null || mSurfaceSnapshotOverlay == null) {\n            return;\n        }\n"
+insert = needle + """        // Only clearing on hide keeps showShaderCompileScreen's latch alive if
+        // something re-shows the cover before the first frame (Makepad PR #1432
+        // clears always; on our pin that skipped the snapshot-refresh hide).
+        if (!visible) {
+            mIsCoverWaitingForFirstFrame = false;
+        }
+
+"""
+if needle in t and "Only clearing on hide keeps showShaderCompileScreen" not in t:
+    t = t.replace(needle, insert, 1)
+    changed = True
+# Widen handleSurfaceSnapshotRefreshRequest to honor latch / compile screen.
+old_h = """    private void handleSurfaceSnapshotRefreshRequest() {
+        refreshSurfaceSnapshotCache();
+    }"""
+new_h = """    // Rust asks for this right after its first frame — hide the cold-start
+    // cover even if hide-on-present was not armed (Makepad PR #1432).
+    private void handleSurfaceSnapshotRefreshRequest() {
+        boolean coverUp = mSurfaceCoverOverlay != null
+            && mSurfaceCoverOverlay.getVisibility() == View.VISIBLE;
+        if (mIsCoverWaitingForFirstFrame || mShaderCompileScreen != null || coverUp) {
+            applySurfaceCoverVisibility(false);
+        }
+        refreshSurfaceSnapshotCache();
+    }"""
+if old_h in t:
+    t = t.replace(old_h, new_h, 1)
+    changed = True
+# Call removeShaderCompileScreen from the hide animation path if missing.
+if "removeShaderCompileScreen();" not in t and "private void removeShaderCompileScreen()" in t:
+    # Best-effort: after cover set GONE in the fade-out end action is app-specific;
+    # ensure applySurfaceCoverVisibility(false) path invokes it near start of hide.
+    pass
+if changed:
+    p.write_text(t)
+    print("Patched cover latch clear + first-present hide.")
+else:
+    print("Cover latch hide path already present (or anchors differ).")
+PY
+fi

@@ -64,6 +64,9 @@ PATCHES=(
   keyboard_view_focus_rect          # KeyboardView: stock field lift; every hide snaps the shift to 0 (no stalled ease)
   android_api26_render_loop         # Android API 26–28: guard bad refresh rates in simple frame pump
   android_post_layout_redraw        # Android: extra redraws after first drawable so layout paints
+  android_slug_msdf_first_paint      # Android/iOS: MSDF-only (shortens Mali first compile; drop when #1432+#Slug policy lands)
+  android_shader_compile_screen   # Android: cold GL cache → "Compiling shaders" cover (bridge of Makepad PR #1432/#1459; DROP when upstream merges)
+  android_back_in_app_stack                # Android: soft Back owns in-app stack; empty → moveTaskToBack (never super.finish first)
   android_asset_load_prefix         # Android: assets under the package root; as_mut_ptr read
   android_load_asset_pub            # Android: pub load_asset for menu shelf/templates extract
   android_share_and_content_uri     # Android: share sheet + content:// reads (MakepadActivity-share.java)

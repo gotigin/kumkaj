@@ -658,7 +658,9 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
    - **Strip inside the scroll view** keeps **bottom pad ≥ `bar_size`** (today 8 with `bar_size` 4) so the bar’s lane is empty maroon/navy under the chips — zeroing that pad pins chips/‹ › to the window edge (looks sunk/cropped).
    - **`lift_footer` must only write `padding.bottom`.** Writing `padding.top` too made the Fit footer taller than its shell slot; the parent clipped the bottom (chips/‹ › sunk, empty chrome above).
    - Paint the footer X bar **dark on the footer colour** (not stock light handle) so the floor does not read as a cream strip. Keep the bar (do not “fix” by `bar_size: 0` while chevrons exist — the bar is the bottommost chrome).
-7b. **UI must never wait on I/O — and busy actions show Progress + Cancel** — Applies to **every** Kumkaj app (Moklanjo, Khaynjo, future). Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, open books / role switch, template import, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return. **If the work can freeze the UI or take noticeable time, do not leave the start button sitting there while the app hangs.**
+7b. **UI must never wait on I/O — and busy actions show Progress + Cancel** — Applies to **every** Kumkaj app (Moklanjo, Khaynjo, Kirano, Tabiyat). Find printers, firewall, LAN discover/pair, LAN image fetch, thumbs, open books / role switch, template import, and **Create backup** (`VACUUM INTO`) run on worker threads and wake the UI with `SignalToUI`. Printing itself is queued to the `print` worker (`lp` / PowerShell / TCP must not run on the UI thread). A click handler may only write a small file / update state, then return. **If the work can freeze the UI or take noticeable time, do not leave the start button sitting there while the app hangs.**
+
+   **Opening client/server (every OS):** `drive_books_busy_shell` in each app’s `main_impl.rs` runs for the whole `role_open_busy` / `client_pair_busy` life — Cancel, page scroll, mouse Back/Forward, edge swipe, and Android system Back stay live. It must **not** wait for `app_state` contention and must **not** run the full Signal/match_event SQL path. Back while busy = Cancel (`navigate_back` first). Client open uses `open_client_store_cancellable` + SQLite interrupt.
 
    **Busy chrome (required UX):** when the owner taps an action that starts a process (pair, find server, open books, find printers, import, backup, Order cart −/+, …), **replace that action button** with **two** controls for the whole busy life — including after the worker returns, while the UI still finishes (drop previous SQLite off-thread, `reload_all`, `sync_chrome`):
    1. **Progress / state** — what is happening now (`Looking…`, `Pairing…`, `Opening…`, `Importing… 3/12`, `Removing…`, `Updating…`). Prefer a `WrapLabel` (or disabled Fit progress face), never a Fill+wrap Stack\* button (bug **7**).
@@ -1090,18 +1092,57 @@ Requires `ANDROID_HOME` (or `~/Android/Sdk`), a connected device/emulator, and M
 
 **Screen shape (Android manifest, `apps/<app>/resources/android/AndroidManifest.xml.template`).** Until 2026-11-21 the template carried Makepad's `android.max_aspect` 2.1 and did not declare the app resizeable. Android obeyed the 2.1: on a 20:9 phone — most phones — the app was drawn 1080 × 2268 in a rounded box with a black band above and below (`dumpsys activity activities`: `letterboxReason=ASPECT_RATIO`). The template now says `android:resizeableActivity="true"` (an explicitly resizeable activity has no aspect limit) and keeps the number at 3.0 for phone makers' own full-screen lists. The app already pads itself inside the status bar, cut-out and gesture bar (`fit_inside_system_bars`), so the larger window needs nothing else. **Why the limit applied at all:** `<uses-sdk>` comes *after* `<application>` in the template, and Android reads application defaults in document order — with the target SDK still unknown it treats the app as an old one. Seen on Android 16 (`dumpsys package` / `dumpsys activity`): resize mode `FORCE_RESIZEABLE` and the legacy-external-storage flag, on an app that targets 36 and asks for neither. Every other default that depends on the target SDK is decided at that same point, so assume those are affected too — cleartext traffic is allowed by default only for old targets. Do **not** just move `<uses-sdk>` up: the defaults would flip together, and cleartext turning off is the one that could break LAN pairing. If the order is ever fixed, set each of them explicitly first and test a Server and a Client on a real network. Also left as it was: `android:configChanges` is `orientation|screenSize|keyboardHidden`, so a split-screen or free-form resize still restarts the activity (Wadhu's SMS Gateway template adds `screenLayout|smallestScreenSize|density` and stays up). Worth doing with a tablet in hand, not blind.
 
-**First run after an install: a ~33 s freeze on the AGS2 (measured 2026-11-14).**
-Android draws all text with Makepad's Slug path (`draw/src/text/fonts.rs`
-`default_slug_min_dpxs_per_em` is 0 off desktop), and each text-style variant
-compiles a ~400 KB shader (`draw/src/shader/draw_glyph.rs`, band / curve
-loops) — about 33 s on the Mali-T830, with the UI frozen and no `Kumkaj
-stall` line (compiles are outside App events). The program binary is cached
-(`cache/shader_<hash>…bin`), so it hits the first launch of every build that
-changes a text variant, and every Play update. Candidate fixes, each needs an
-AGS2 A/B before it ships: MSDF for normal sizes on Android (a Slug threshold
-above body text), Slug loops the driver need not unroll, or a prewarm behind
-the splash. Measure with `adb logcat` (`Makepad GL:` once per process, then the
-gap before the first frame).
+**First run after an install: long wait on Mali (AGS2) while GL programs compile.**
+
+**What you see:** cream cover + **"Compiling shaders (for UI styling)…"** (not a
+dead black SurfaceView). Warm relaunches skip the note and paint quickly from
+the on-disk program cache (`cache/shader_<hash>_av…bin`).
+
+**Cause (Makepad):** Android’s first frame waits until the pipelines/programs it
+needs are compiled. A blank/black cover during that wait looks like a hung app.
+Makepad’s own fix (still open as of 2026-11):
+[PR #1432](https://github.com/makepad/makepad/pull/1432) (compile-screen UX) on
+top of [#1453](https://github.com/makepad/makepad/pull/1453) /
+[#1459](https://github.com/makepad/makepad/pull/1459) (Vulkan/GL cache +
+`PIPELINE_CACHE_COLD`). Those live on the post-HAL tree; our pin
+(`MAKEPAD_REV` in `scripts/setup-makepad.sh`) is older and has no `platform/hal`.
+
+**What Kumkaj ships until that lands (bridge — safe to remove later):**
+
+Applies to **every Android app in this workspace** (Khaynjo, Moklanjo, Kirano,
+Tabiyat): they share `vendor/makepad`, `vendor/makepad-full` / `cargo-makepad`,
+and each `apps/*/scripts/android-dev.sh` + `package-android.sh` runs
+`scripts/apply-android-activity-bridge.sh`. No per-app duplicate of the
+compile-screen code.
+
+1. **Cover until first present** + optional compile-screen child — Java in
+   `vendor/makepad-full` / re-applied by `scripts/apply-android-activity-bridge.sh`
+   from `patches/makepad/MakepadShaderCompileScreen.java` +
+   `makepad_shader_compile_{colors,strings}.xml`.
+2. **Cold-cache gate** — Rust `android_gl_program_cache_is_cold` +
+   `showShaderCompileScreen` (`patches/makepad/android_shader_compile_screen.rs.patch`).
+   Only when the cache dir has no `shader_*.bin` for this device fingerprint
+   (same idea as `#1459`); warm launches must not claim a one-time wait.
+3. **MSDF-only text on Android** — `android_slug_msdf_first_paint` so Mali is
+   not also compiling huge Slug glyph shaders on first open (upstream still
+   defaults `slug_min_dpxs_per_em = 0.0` on Android). Shortens the wait; does
+   not replace #1432’s UX.
+
+**When upstream resolves it — drop our bridge:**
+- Bump `MAKEPAD_REV` (and/or `vendor/makepad-full`) past merged **#1432 + #1453
+  + #1459** (or equivalent on `main`).
+- Confirm stock Activity has `showShaderCompileScreen` / cold-cache flag.
+- Remove: `android_shader_compile_screen` from `setup-makepad.sh`, the
+  `MakepadShaderCompileScreen*` / `makepad_shader_compile_*.xml` patches, the
+  bridge block at the end of `apply-android-activity-bridge.sh`, and re-check
+  whether `android_slug_msdf_first_paint` is still needed (keep only if
+  upstream still forces Slug on Android and Mali still stalls).
+- Update this section to “resolved upstream at &lt;rev&gt;” and delete the
+  bridge checklist.
+
+Measure: `adb logcat` (`Makepad GL:` once per process), then screencap until
+the compile note is gone / DeviceSetup shows. Fresh install =
+`adb uninstall com.<app>.debug` then reinstall.
 
 Android has **no** Splash `--hot` like desktop — each invocation rebuilds and relaunches. Day-to-day UI iteration stays on `cargo moklanjo-dev`; use `cargo moklanjo-android-dev` to verify on device.
 

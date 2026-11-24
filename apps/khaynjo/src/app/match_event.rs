@@ -73,8 +73,10 @@ impl MatchEvent for App {
     }
 
     fn handle_key_down(&mut self, cx: &mut Cx, e: &KeyEvent) {
+        // Android soft/hardware Back arrives as Event::BackPressed only
+        // (MakepadActivity.onBackPressed). KeyCode::Back here would double-pop.
         if e.key_code == KeyCode::Escape
-            || e.key_code == KeyCode::Back
+            || (e.key_code == KeyCode::Back && !cfg!(target_os = "android"))
             || (e.key_code == KeyCode::ArrowLeft && e.modifiers.alt)
         {
             if nav_gesture_ok() {
@@ -2123,7 +2125,7 @@ impl MatchEvent for App {
                 .text_input(cx, ids!(credit_add_kind))
                 .set_text(cx, "");
             self.set_status(cx, "New party — form cleared");
-            self.sync_chrome(cx);
+            self.schedule_deferred_party_sync(cx);
         }
         if self.ui.button(cx, ids!(party_delete)).clicked(actions) {
             let result = (|| -> Result<String, String> {
@@ -2342,7 +2344,9 @@ impl MatchEvent for App {
                             .text_input(cx, ids!(credit_add_kind))
                             .set_text(cx, &c.kind_label);
                     }
-                    self.sync_chrome(cx);
+                    // Memory chrome now; ledger/bills/attachments next frame —
+                    // full sync_chrome under Pick froze the window (busy_timeout).
+                    self.schedule_deferred_party_sync(cx);
                 }
             }
         }
@@ -4543,6 +4547,29 @@ impl MatchEvent for App {
                             Ok(msg) => self.set_status(cx, msg),
                             Err(e) => self.set_status(cx, e),
                         }
+                    }
+                    SuggestField::CustomerName => {
+                        if let Some(c) = {
+                            let st = app_state().lock().unwrap();
+                            st.selected_customer_id.as_ref().and_then(|id| {
+                                st.customers.iter().find(|c| &c.id == id).cloned()
+                            })
+                        } {
+                            self.ui
+                                .text_input(cx, ids!(credit_add_name))
+                                .set_text(cx, &c.name);
+                            self.ui
+                                .text_input(cx, ids!(credit_add_phone))
+                                .set_text(cx, &c.phone);
+                            self.ui
+                                .text_input(cx, ids!(credit_add_birthday))
+                                .set_text(cx, &c.birthday);
+                            self.ui
+                                .text_input(cx, ids!(credit_add_kind))
+                                .set_text(cx, &c.kind_label);
+                        }
+                        self.schedule_deferred_party_sync(cx);
+                        needs_chrome = false;
                     }
                     SuggestField::PrinterPlace => {
                         let (key, name) = {

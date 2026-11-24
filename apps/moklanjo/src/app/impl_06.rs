@@ -111,6 +111,18 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     }
 
     fn navigate_back(&mut self, cx: &mut Cx) -> bool {
+        // Opening client/server or pairing: Back = Cancel (every OS / mouse /
+        // swipe / Android system back). Never leave Cancel dead while busy.
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            request_role_open_cancel();
+            self.set_status(cx, app_t("cancelled"));
+            self.paint_role_open_busy_chrome(cx);
+            return true;
+        }
+        if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.abandon_client_pair(cx);
+            return true;
+        }
         // The Printers sheet covers the screen: Back closes it, and only it.
         if self.ui.modal(cx, ids!(printers_modal)).is_open() {
             self.close_printers_modal(cx);
@@ -213,6 +225,7 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             }
         };
         if let Some(prev) = dest {
+            clear_exit_back_arm();
             {
                 let mut st = app_state().lock().unwrap();
                 if prev == Screen::DeviceSetup {
@@ -227,7 +240,16 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             self.sync_chrome(cx);
             true
         } else {
-            false
+            // Visit root (DeviceSetup / main peer with empty stack): Android-style
+            // "Press back again to exit" on every native OS.
+            match note_exit_back_press(cx) {
+                Ok(true) => {
+                    self.show_snack(cx, SnackKind::Info, app_t("press_back_again_exit"));
+                    true
+                }
+                Ok(false) => false, // Android: unhandled → moveTaskToBack
+                Err(()) => true,    // desktop: quit requested
+            }
         }
     }
 
@@ -401,9 +423,11 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
     fn edge_swipe_nav(&mut self, cx: &mut Cx, start: DVec2, end: DVec2, edge: SwipeNav) -> bool {
         let dx = end.x - start.x;
         let dy = (end.y - start.y).abs();
+        // Slightly easier than 72px so Android edge / Windows pen pads register
+        // without needing a near-horizontal flick (still reject mostly-vertical).
         match edge {
-            SwipeNav::Back if dx > 72.0 && dx > dy * 1.5 => self.navigate_back(cx),
-            SwipeNav::Forward if dx < -72.0 && (-dx) > dy * 1.5 => self.navigate_forward(cx),
+            SwipeNav::Back if dx > 56.0 && dx > dy * 1.25 => self.navigate_back(cx),
+            SwipeNav::Forward if dx < -56.0 && (-dx) > dy * 1.25 => self.navigate_forward(cx),
             _ => false,
         }
     }
@@ -1060,9 +1084,10 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 };
                 let width = self.window_inner_width(cx);
                 let mut origin = mouse_swipe_origin().lock().unwrap();
-                if e.abs.x < 48.0 && !rail_owns_left {
+                // 64 css px edge — Android system back swipe + finger fatness.
+                if e.abs.x < 64.0 && !rail_owns_left {
                     *origin = Some((e.abs, SwipeNav::Back));
-                } else if e.abs.x > width - 48.0 {
+                } else if e.abs.x > width - 64.0 {
                     *origin = Some((e.abs, SwipeNav::Forward));
                 } else {
                     *origin = None;
@@ -1084,9 +1109,9 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
                 for touch in &e.touches {
                     match touch.state {
                         TouchState::Start => {
-                            if touch.abs.x < 48.0 {
+                            if touch.abs.x < 64.0 {
                                 *origin = Some((touch.uid, touch.abs, SwipeNav::Back));
-                            } else if touch.abs.x > width - 48.0 {
+                            } else if touch.abs.x > width - 64.0 {
                                 *origin = Some((touch.uid, touch.abs, SwipeNav::Forward));
                             }
                         }

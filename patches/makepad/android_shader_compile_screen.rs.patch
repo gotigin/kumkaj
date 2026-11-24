@@ -1,0 +1,56 @@
+--- a/platform/src/os/linux/android/android_jni.rs	2026-11-24 02:23:25.376656564 +0530
++++ b/platform/src/os/linux/android/android_jni.rs	2026-11-24 02:23:25.376757932 +0530
+@@ -1486,6 +1486,11 @@
+     );
+ }
+ 
++/// Cold GL program cache: show Makepad PR #1432 "Compiling shaders" on the cover.
++pub unsafe fn to_java_show_shader_compile_screen() {
++    let env = attach_jni_env();
++    ndk_utils::call_void_method!(env, get_activity(), "showShaderCompileScreen", "()V");
++}
+ 
+ pub unsafe fn to_java_request_surface_snapshot_refresh() {
+     let env = attach_jni_env();
+--- a/platform/src/os/linux/android/android.rs	2026-11-24 02:23:25.376923600 +0530
++++ b/platform/src/os/linux/android/android.rs	2026-11-24 02:23:25.377114558 +0530
+@@ -382,6 +382,14 @@
+                             self.os.post_layout_redraws_left = 12;
+                             self.os.hide_surface_cover_after_first_present = true;
+                             self.os.presents_before_hiding_cover = 6;
++                            // Makepad PR #1432 / #1459: only claim "Compiling
++                            // shaders" when this launch's GL program cache is
++                            // empty (fresh install / fingerprint change).
++                            if android_gl_program_cache_is_cold(&self.os_type) {
++                                unsafe {
++                                    android_jni::to_java_show_shader_compile_screen();
++                                }
++                            }
+                             self.redraw_all();
+                         } else if self.os.post_layout_redraws_left > 0 {
+                             self.os.post_layout_redraws_left -= 1;
+@@ -3841,4 +3849,23 @@
+     let OsType::Android(params) = os_type else {
+         return false;
+     };
+-    let cache_dir = s
++    let cache_dir = std::path::Path::new(&params.cache_path);
++    let Ok(entries) = std::fs::read_dir(cache_dir) else {
++        // No cache dir yet → first launch.
++        return true;
++    };
++    let needle = format!(
++        "_av{}_bn{}_kv{}",
++        params.android_version, params.build_number, params.kernel_version
++    );
++    for entry in entries.flatten() {
++        let name = entry.file_name();
++        let Some(name) = name.to_str() else {
++            continue;
++        };
++        if name.starts_with("shader_") && name.ends_with(".bin") && name.contains(&needle) {
++            return false;
++        }
++    }
++    true
++}

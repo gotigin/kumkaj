@@ -73,8 +73,10 @@ impl MatchEvent for App {
     }
 
     fn handle_key_down(&mut self, cx: &mut Cx, e: &KeyEvent) {
+        // Android system Back is Event::BackPressed only (android_back_in_app_stack).
+        // KeyCode::Back here would double-pop the visit stack.
         if e.key_code == KeyCode::Escape
-            || e.key_code == KeyCode::Back
+            || (e.key_code == KeyCode::Back && !cfg!(target_os = "android"))
             || (e.key_code == KeyCode::ArrowLeft && e.modifiers.alt)
         {
             if nav_gesture_ok() {

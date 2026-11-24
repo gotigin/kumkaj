@@ -132,9 +132,9 @@ impl App {
                 };
                 let width = self.window_inner_width(cx);
                 let mut origin = mouse_swipe_origin().lock().unwrap();
-                if e.abs.x < 48.0 && !rail_owns_left {
+                if e.abs.x < 64.0 && !rail_owns_left {
                     *origin = Some((e.abs, SwipeNav::Back));
-                } else if e.abs.x > width - 48.0 {
+                } else if e.abs.x > width - 64.0 {
                     *origin = Some((e.abs, SwipeNav::Forward));
                 } else {
                     *origin = None;
@@ -156,9 +156,9 @@ impl App {
                 for touch in &e.touches {
                     match touch.state {
                         TouchState::Start => {
-                            if touch.abs.x < 48.0 {
+                            if touch.abs.x < 64.0 {
                                 *origin = Some((touch.uid, touch.abs, SwipeNav::Back));
-                            } else if touch.abs.x > width - 48.0 {
+                            } else if touch.abs.x > width - 64.0 {
                                 *origin = Some((touch.uid, touch.abs, SwipeNav::Forward));
                             }
                         }
@@ -694,6 +694,11 @@ impl App {
                 .set_text(cx, &plain_display_text(&from_dev));
             self.ui
                 .button(cx, ids!(app_template_from_device))
+                .set_visible(cx, !app_busy);
+            // Same visibility as the button — tip-only ℹ must not linger alone
+            // above Importing… / Cancel when the NavBtn is hidden.
+            self.ui
+                .widget(cx, ids!(app_template_from_device_help))
                 .set_visible(cx, !app_busy);
             self.ui
                 .widget(cx, ids!(app_template_from_device_help))

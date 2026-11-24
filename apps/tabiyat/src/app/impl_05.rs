@@ -173,6 +173,16 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
     /// else nested in-screen layers (Settings panel → hub), else pop screen
     /// history (mouse Back / left-edge swipe / Android back).
     fn navigate_back(&mut self, cx: &mut Cx) -> bool {
+        if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            request_role_open_cancel();
+            self.set_status(cx, app_t("cancelled"));
+            self.paint_role_open_busy_chrome(cx);
+            return true;
+        }
+        if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.abandon_client_pair(cx);
+            return true;
+        }
         // Add dishes: Back first hides the keyboard (if search focused), then
         // closes the window — never both in one press.
         if app_state().lock().unwrap().menu_pick_open {
@@ -298,6 +308,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             }
         };
         if let Some(prev) = dest {
+            clear_exit_back_arm();
             {
                 let mut st = app_state().lock().unwrap();
                 if prev == Screen::DeviceSetup {
@@ -315,7 +326,16 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             self.sync_chrome(cx);
             true
         } else {
-            false
+            // Visit root (DeviceSetup / main peer with empty stack): Android-style
+            // "Press back again to exit" on every native OS.
+            match note_exit_back_press(cx) {
+                Ok(true) => {
+                    self.show_snack(cx, SnackKind::Info, app_t("press_back_again_exit"));
+                    true
+                }
+                Ok(false) => false, // Android: unhandled → moveTaskToBack
+                Err(()) => true,    // desktop: quit requested
+            }
         }
     }
 
@@ -496,8 +516,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         let dx = end.x - start.x;
         let dy = (end.y - start.y).abs();
         match edge {
-            SwipeNav::Back if dx > 72.0 && dx > dy * 1.5 => self.navigate_back(cx),
-            SwipeNav::Forward if dx < -72.0 && (-dx) > dy * 1.5 => self.navigate_forward(cx),
+            SwipeNav::Back if dx > 56.0 && dx > dy * 1.25 => self.navigate_back(cx),
+            SwipeNav::Forward if dx < -56.0 && (-dx) > dy * 1.25 => self.navigate_forward(cx),
             _ => false,
         }
     }

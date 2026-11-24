@@ -761,6 +761,7 @@ fn en(key: &str) -> String {
         "cancelled" => "Cancelled",
         "cancelling" => "Cancelling…",
         "cancel" => "Cancel",
+        "press_back_again_exit" => "Press back again to exit",
         "opening_client" => "Opening client…",
         "preparing_desk" => "Preparing desk…",
         "opening_server" => "Opening server…",

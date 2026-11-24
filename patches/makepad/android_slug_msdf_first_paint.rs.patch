@@ -1,0 +1,31 @@
+--- a/draw/src/text/fonts.rs	2026-11-24 01:27:41.391198286 +0530
++++ b/draw/src/text/fonts.rs	2026-11-24 01:27:41.391243896 +0530
+@@ -15,17 +15,26 @@
+ 
+ fn default_slug_new_glyphs_per_redraw(cx: &Cx) -> usize {
+     match cx.os_type() {
++        // Desktop: one new Slug glyph per redraw so first frames stay live.
+         OsType::LinuxWindow(_) | OsType::LinuxDirect | OsType::Windows => 1,
+-        _ => usize::MAX,
++        // Android / iOS: never use Slug on first paint (see min_dpxs). Budget
++        // kept tiny in case a future path re-enables it.
++        OsType::Android(_) | OsType::Ios(_) => 1,
++        _ => 1,
+     }
+ }
+ 
+ fn default_slug_min_dpxs_per_em(cx: &Cx, rasterizer: &Rasterizer) -> f32 {
+     match cx.os_type() {
++        // Desktop: MSDF for body, Slug only for very large display sizes.
+         OsType::LinuxWindow(_) | OsType::LinuxDirect | OsType::Windows => {
+             rasterizer.msdf_resolution().max_dpxs_per_em
+         }
+-        _ => 0.0,
++        // Android (Mali-T830 / AGS2): never Slug. Even "large only" still
++        // compiled multi‑hundred‑KB Slug shaders on first open and left a
++        // black SurfaceView for ~70s after install. MSDF for every size.
++        OsType::Android(_) | OsType::Ios(_) => f32::MAX,
++        _ => rasterizer.msdf_resolution().max_dpxs_per_em,
+     }
+ }
+ 

@@ -1168,10 +1168,16 @@ fn client_mode_job(base: PathBuf) {
                     }
                 })?;
                 set_role_open_interrupt(None);
+                // Yield so the UI thread can paint Cancel / scroll on weak CPUs.
+                std::thread::yield_now();
                 if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
                 }
                 store.prepare_as_client_terminal()?;
+                std::thread::yield_now();
+                if role_open_stale(open_gen) {
+                    return Err("Cancelled".into());
+                }
                 store.set_device_role("client")?;
                 if role_open_stale(open_gen) {
                     return Err("Cancelled".into());
@@ -1496,6 +1502,13 @@ fn android_deferred_store_frame() -> &'static Mutex<Option<NextFrame>> {
     F.get_or_init(|| Mutex::new(None))
 }
 
+/// Android: after shell paint, run `reload_all` + full chrome (products /
+/// customers SQL must not own the first SurfaceView frames).
+fn deferred_android_reload_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
 /// After DeviceSetup role open: paint ClientPair on this frame, run full
 /// `sync_chrome` on the next so Cancel stays live during the transition.
 fn deferred_role_open_sync_frame() -> &'static Mutex<Option<NextFrame>> {
@@ -1505,6 +1518,13 @@ fn deferred_role_open_sync_frame() -> &'static Mutex<Option<NextFrame>> {
 
 /// Print bill / Send KOT: status and paper queue on this frame; full chrome next.
 fn deferred_till_sync_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+/// Party Pick: memory chrome this frame; ledger / open bills / attachments next
+/// — never run that SQL under the Pick click (busy_timeout looked like a freeze).
+fn deferred_party_detail_frame() -> &'static Mutex<Option<NextFrame>> {
     static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
     F.get_or_init(|| Mutex::new(None))
 }
@@ -1787,6 +1807,43 @@ fn nav_gesture_ok() -> bool {
     }
     *guard = Some(now);
     true
+}
+
+/// Visit-root double-Back-to-exit window (onboarding DeviceSetup + main till).
+const EXIT_BACK_SECS: u64 = 10;
+
+fn exit_back_armed_at() -> &'static Mutex<Option<std::time::Instant>> {
+    static SLOT: OnceLock<Mutex<Option<std::time::Instant>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn clear_exit_back_arm() {
+    *exit_back_armed_at().lock().unwrap() = None;
+}
+
+/// First Back at visit root → snack; second within [`EXIT_BACK_SECS`] → leave.
+fn note_exit_back_press(cx: &mut Cx) -> Result<bool, ()> {
+    let now = std::time::Instant::now();
+    let mut armed = exit_back_armed_at().lock().unwrap();
+    if let Some(prev) = *armed
+        && now.duration_since(prev) < Duration::from_secs(EXIT_BACK_SECS)
+    {
+        *armed = None;
+        drop(armed);
+        #[cfg(target_os = "android")]
+        {
+            let _ = cx;
+            return Ok(false);
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            cx.quit();
+            return Err(());
+        }
+    }
+    *armed = Some(now);
+    drop(armed);
+    Ok(true)
 }
 
 /// Void and refund are Owner/Manager work. A cashier alone at

@@ -52,6 +52,12 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
                     .button(cx, ids!(private_tmpl_check))
                     .set_visible(cx, false);
                 self.ui
+                    .button(cx, ids!(app_template_from_device))
+                    .set_visible(cx, false);
+                self.ui
+                    .widget(cx, ids!(app_template_from_device_help))
+                    .set_visible(cx, false);
+                self.ui
                     .view(cx, ids!(app_template_busy))
                     .set_visible(cx, true);
                 self.ui
@@ -454,6 +460,291 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         self.paint_header_back_chrome(cx);
         self.ui.widget(cx, ids!(floor_list)).redraw(cx);
         *deferred_till_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
+    }
+
+    /// Party Pick / clear: labels and form from memory this frame; SQL next.
+    fn schedule_deferred_party_sync(&mut self, cx: &mut Cx) {
+        self.paint_party_pick_chrome(cx);
+        // Clear SQL-backed panels until the deferred fill — never hold Pick on
+        // list_credit_ledger / open_*_bills / attachments (busy_timeout freeze).
+        self.set_report_rows(cx, ids!(credit_recent_list), Vec::new());
+        self.set_report_rows(cx, ids!(settle_open_bills), Vec::new());
+        self.set_report_rows(cx, ids!(payable_open_bills), Vec::new());
+        self.set_report_rows(cx, ids!(crm_preview), Vec::new());
+        self.show_attachments(cx, ids!(party_attach_hint), ids!(party_attach_list), "");
+        *deferred_party_detail_frame().lock().unwrap() = Some(cx.new_next_frame());
+        self.ui.widget(cx, ids!(customer_list_credit)).redraw(cx);
+        self.ui.widget(cx, ids!(customer_list_sell)).redraw(cx);
+        self.ui.redraw(cx);
+    }
+
+    /// In-memory party chrome only — no store SQL.
+    fn paint_party_pick_chrome(&mut self, cx: &mut Cx) {
+        let party_picked = {
+            let st = app_state().lock().unwrap();
+            st.selected_customer_id.is_some()
+        };
+        self.ui.view(cx, ids!(party_detail)).set_visible(cx, party_picked);
+        self.ui.button(cx, ids!(party_delete)).set_visible(cx, party_picked);
+        self.ui.button(cx, ids!(party_form_clear)).set_visible(cx, party_picked);
+        self.ui
+            .view(cx, ids!(till_loyalty_panel))
+            .set_visible(cx, party_picked);
+
+        let (credit_chip, credit_summary, empty_hint, selected_label, form_btn, till_line, wa_label) = {
+            let st = app_state().lock().unwrap();
+            let credit_chip = match st
+                .selected_customer_id
+                .as_ref()
+                .and_then(|id| st.customers.iter().find(|c| &c.id == id))
+            {
+                Some(c) => {
+                    let mut base = if c.balance_paise > 0 {
+                        format!(
+                            "{} · {} {}",
+                            c.name,
+                            st.t("owes_word"),
+                            st.money(c.balance())
+                        )
+                    } else if c.balance_paise < 0 {
+                        format!(
+                            "{} · {} {}",
+                            c.name,
+                            st.t("advance"),
+                            st.money(Money(-c.balance_paise))
+                        )
+                    } else {
+                        format!("{} · {}", c.name, st.t("chip_clear_credit"))
+                    };
+                    if c.loyalty_points > 0 || c.wallet_paise > 0 {
+                        base.push_str(&format!(
+                            " · {} pts · wallet {}",
+                            c.loyalty_points,
+                            st.money(Money(c.wallet_paise))
+                        ));
+                    }
+                    base
+                }
+                None => {
+                    if st.status.starts_with("Type a customer")
+                        || st.status.starts_with("Pick a customer")
+                        || st.status.starts_with("Customer name")
+                    {
+                        st.status.clone()
+                    } else {
+                        st.t("chip_no_customer")
+                    }
+                }
+            };
+            let open: i64 = st.customers.iter().map(|c| c.balance_paise.max(0)).sum();
+            let prepaid: i64 = st
+                .customers
+                .iter()
+                .map(|c| (-c.balance_paise).max(0))
+                .sum();
+            let credit_summary_visible = amount_key_visible(
+                st.amounts_screen_hidden,
+                &st.amount_keys_hidden,
+                &st.amount_keys_peek,
+                "credit_summary",
+            );
+            let credit_summary = st
+                .t("credit_summary_fmt")
+                .replacen("{}", &st.customers.len().to_string(), 1)
+                .replacen(
+                    "{}",
+                    &display_money(&st.money(Money(open)), credit_summary_visible),
+                    1,
+                )
+                .replacen(
+                    "{}",
+                    &display_money(&st.money(Money(prepaid)), credit_summary_visible),
+                    1,
+                );
+            let empty_hint = if st.customers.is_empty() {
+                "No saved customers yet — type a name above."
+            } else {
+                "Tap Pick to use a saved customer."
+            };
+            let (selected_label, form_btn) = match st
+                .selected_customer_id
+                .as_ref()
+                .and_then(|id| st.customers.iter().find(|c| &c.id == id))
+            {
+                Some(c) => {
+                    let kind = if c.kind_label.trim().is_empty() {
+                        String::new()
+                    } else {
+                        format!(" ({})", c.kind_label.trim())
+                    };
+                    (format!("Editing: {}{}", c.name, kind), "Save changes")
+                }
+                None => (String::new(), "Add party"),
+            };
+            let till_line = match st
+                .selected_customer_id
+                .as_ref()
+                .and_then(|id| st.customers.iter().find(|c| &c.id == id))
+            {
+                Some(c) => {
+                    let pending = pending_till_redeem_paise(&st);
+                    let mut s = format!(
+                        "{} pts · wallet {} · bday {}",
+                        c.loyalty_points,
+                        st.money(Money(c.wallet_paise)),
+                        if c.birthday.is_empty() {
+                            "—"
+                        } else {
+                            c.birthday.as_str()
+                        }
+                    );
+                    if pending > 0 {
+                        s.push_str(&format!(" · redeeming {}", st.money(Money(pending))));
+                    }
+                    s
+                }
+                None => String::new(),
+            };
+            let wa_label = st.t("whatsapp_consent");
+            (
+                credit_chip,
+                credit_summary,
+                empty_hint,
+                selected_label,
+                form_btn,
+                till_line,
+                wa_label,
+            )
+        };
+        self.ui
+            .widget(cx, ids!(party_selected_label))
+            .set_text(cx, &plain_display_text(&selected_label));
+        self.ui
+            .button(cx, ids!(credit_add_btn))
+            .set_text(cx, form_btn);
+        self.ui
+            .widget(cx, ids!(credit_chip))
+            .set_text(cx, &plain_display_text(&credit_chip));
+        self.ui
+            .widget(cx, ids!(credit_summary_label))
+            .set_text(cx, &plain_display_text(&credit_summary));
+        self.ui
+            .widget(cx, ids!(customers_empty_hint))
+            .set_text(cx, &plain_display_text(empty_hint));
+        self.ui
+            .widget(cx, ids!(till_loyalty_chip))
+            .set_text(cx, &plain_display_text(&till_line));
+        self.ui
+            .widget(cx, ids!(party_wa_ok_label))
+            .set_text(cx, &plain_display_text(&wa_label));
+        // Consent toggle fills on the deferred SQL pass (party_whatsapp_ok).
+        self.paint_choice_pair(cx, ids!(party_wa_ok_off), ids!(party_wa_ok_off_on), true);
+        self.paint_choice_pair(cx, ids!(party_wa_ok_on), ids!(party_wa_ok_on_on), false);
+        self.paint_header_back_chrome(cx);
+    }
+
+    /// Ledger / open bills / attachments / WA consent for the picked party.
+    fn paint_party_detail_sql(&mut self, cx: &mut Cx) {
+        if heavy_books_job() {
+            return;
+        }
+        let (credit_recent, wa_ok, wa_help, attach_txt, ar_rows, ap_rows, crm_text, on_credit) = {
+            let st = app_state().lock().unwrap();
+            let mut credit_recent = Vec::new();
+            if let Some(id) = &st.selected_customer_id
+                && let Some(store) = st.store.as_ref()
+                && let Ok(entries) = store.list_credit_ledger(id, 6)
+                && !entries.is_empty()
+            {
+                credit_recent.push(report_head(&st.t("recent_label")));
+                credit_recent.extend(entries.iter().map(|entry| {
+                    ReportRow::Kv(
+                        format!(
+                            "{} · {}",
+                            &entry.created_at[..entry.created_at.len().min(10)],
+                            entry.kind
+                        ),
+                        st.money(Money(entry.amount_paise)),
+                    )
+                }));
+            }
+            let wa_ok = st
+                .selected_customer_id
+                .as_ref()
+                .and_then(|id| st.store.as_ref().and_then(|s| s.party_whatsapp_ok(id).ok()))
+                .unwrap_or(false);
+            let wa_help = st.t("whatsapp_consent_help");
+            let attach_txt = match (&st.selected_customer_id, st.store.as_ref()) {
+                (Some(id), Some(store)) => store
+                    .attachments_summary_text(AttachmentEntity::Party, id)
+                    .unwrap_or_default()
+                    .trim()
+                    .to_string(),
+                _ => String::new(),
+            };
+            let rows = |bills: Vec<domain::OpenBill>, st: &AppState| -> Vec<ReportRow> {
+                if bills.is_empty() {
+                    return Vec::new();
+                }
+                let mut rows = vec![ReportRow::Head("Open bills".into())];
+                rows.extend(bills.iter().enumerate().map(|(i, b)| {
+                    ReportRow::Kv(
+                        format!("{}) {}", i + 1, &b.created_at[..b.created_at.len().min(10)]),
+                        format!(
+                            "{} open (of {})",
+                            st.money(Money(b.open_paise)),
+                            st.money(Money(b.billed_paise))
+                        ),
+                    )
+                }));
+                rows
+            };
+            let (ar_rows, ap_rows) = match (&st.selected_customer_id, st.store.as_ref()) {
+                (Some(id), Some(store)) => (
+                    rows(store.open_credit_bills(id).unwrap_or_default(), &st),
+                    rows(store.open_payable_bills(id).unwrap_or_default(), &st),
+                ),
+                _ => (Vec::new(), Vec::new()),
+            };
+            let on_credit = st.screen == Screen::Credit;
+            let crm_text = if on_credit {
+                st.store
+                    .as_ref()
+                    .and_then(|s| s.crm_segment_preview(st.crm_segment).ok())
+                    .unwrap_or_else(|| "Open as Server to preview guests.".into())
+            } else {
+                String::new()
+            };
+            (
+                credit_recent,
+                wa_ok,
+                wa_help,
+                attach_txt,
+                ar_rows,
+                ap_rows,
+                crm_text,
+                on_credit,
+            )
+        };
+        self.set_report_rows(cx, ids!(credit_recent_list), credit_recent);
+        {
+            let tip = self.ui.widget(cx, ids!(party_wa_ok_help)).as_info_help();
+            tip.set_tip(&plain_display_text(&wa_help));
+        }
+        self.paint_choice_pair(cx, ids!(party_wa_ok_off), ids!(party_wa_ok_off_on), !wa_ok);
+        self.paint_choice_pair(cx, ids!(party_wa_ok_on), ids!(party_wa_ok_on_on), wa_ok);
+        self.show_attachments(
+            cx,
+            ids!(party_attach_hint),
+            ids!(party_attach_list),
+            &attach_txt,
+        );
+        self.set_report_rows(cx, ids!(settle_open_bills), ar_rows);
+        self.set_report_rows(cx, ids!(payable_open_bills), ap_rows);
+        if on_credit {
+            self.set_report_rows(cx, ids!(crm_preview), parse_report(&crm_text));
+        }
+        self.ui.redraw(cx);
     }
 
     /// Chrome for the current screen. After an unlock, the landing then

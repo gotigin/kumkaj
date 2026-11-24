@@ -1,0 +1,61 @@
+--- a/platform/src/os/linux/android/android.rs	2026-11-24 01:17:43.141551156 +0530
++++ b/platform/src/os/linux/android/android.rs	2026-11-24 01:17:43.141949673 +0530
+@@ -510,9 +510,23 @@
+                 // This should not happen here, as it's handled in the main loop
+             }
+             FromJavaMessage::BackPressed => {
+-                self.call_event_handler(&Event::BackPressed {
++                let event = Event::BackPressed {
+                     handled: Cell::new(false),
+-                });
++                };
++                self.call_event_handler(&event);
++                let handled = matches!(
++                    &event,
++                    Event::BackPressed { handled } if handled.get()
++                );
++                // Empty in-app stack: background like Chrome/Settings — never
++                // finish() (that used to wipe the session when Java called
++                // super.onBackPressed() before Makepad saw the event).
++                if !handled {
++                    unsafe {
++                        let env = attach_jni_env();
++                        android_jni::to_java_move_task_to_back(env);
++                    }
++                }
+             }
+             FromJavaMessage::SurfaceCreated { window } => {
+                 #[cfg(use_vulkan)]
+@@ -886,12 +900,14 @@
+                     } else {
+                         // Everything else reaches the widget as a KeyDown, including
+                         // other Ctrl/Alt shortcuts like Ctrl+Enter or Ctrl+A.
++                        // Soft / hardware Back is owned by FromJavaMessage::BackPressed
++                        // (onBackPressed). Emitting BackPressed here too double-popped
++                        // the in-app stack, and KeyDown(Back) ran navigate_back again.
+                         if makepad_keycode == KeyCode::Back {
+-                            self.call_event_handler(&Event::BackPressed {
+-                                handled: Cell::new(false),
+-                            });
++                            // ignore KeyDown path for Back — onBackPressed already fired
++                        } else {
++                            self.call_event_handler(&Event::KeyDown(key_event));
+                         }
+-                        self.call_event_handler(&Event::KeyDown(key_event));
+                     }
+                 }
+             }
+--- a/platform/src/os/linux/android/android_jni.rs	2026-11-24 01:17:43.144015302 +0530
++++ b/platform/src/os/linux/android/android_jni.rs	2026-11-24 01:17:43.144106561 +0530
+@@ -1460,6 +1460,11 @@
+     );
+ }
+ 
++/// Soft Back with an empty in-app stack: background the task (do not finish()).
++pub unsafe fn to_java_move_task_to_back(env: *mut jni_sys::JNIEnv) {
++    ndk_utils::call_void_method!(env, get_activity(), "moveTaskToBackFromNative", "()V");
++}
++
+ pub unsafe fn to_java_set_system_bar_appearance(env: *mut jni_sys::JNIEnv, dark_icons: bool) {
+     ndk_utils::call_void_method!(
+         env,
