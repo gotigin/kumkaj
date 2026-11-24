@@ -1,227 +1,227 @@
 # Welsh — Cymraeg (cy). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Enghraifft
+download_free	Lawrlwytho am ddim
+whatsapp_for_a_demo	Demo ar WhatsApp
+free_on_android_windows_and	Am ddim ar Android, Windows a Linux.
+the_pharmacy_counter	cownter y fferyllfa
+pharmacy_counter	Cownter fferyllfa
+tabiyat_the_pharmacy_counter	TABIYAT · COWNTER Y FFERYLLFA
+pharmacy_counter_offline_your_books	Cownter fferyllfa. All-lein. Eich llyfrau.
+medicines_barcode_and_salt_search	Meddyginiaethau, chwilio yn ôl cod bar a chynhwysyn gweithredol, swp a dyddiad dod i ben ar gyfer eich llyfrau eich hun — ar eich dyfeisiau. Marciau’r perchennog yn unig; byth gydymffurfiaeth ffug â’r Ddeddf Cyffuriau.
+tap_the_bill_to_walk	Tapiwch y bil i gerdded drwy werthiant cownter
+cash_memo	Derbynneb arian parod
+ready	Yn barod
+total	Cyfanswm
+tap_to_add_the_first	Tapiwch i ychwanegu’r feddyginiaeth gyntaf
+example_pharmacy_lines_not_a	Llinellau fferyllfa enghreifftiol, nid til byw. Mae Tabiyat yn dilyn yr un llwybr: gwerthu → setlo → llyfr y dydd.
+n_2_counter_sell	2 · GWERTHU WRTH Y COWNTER
+medicine_quantity_pay_three_taps	Meddyginiaeth, maint, talu — tri thap.
+upi_qr_ready	QR UPI yn barod
+example_bill	Bil enghreifftiol
+fast_counter_billing	Bilio cyflym wrth y cownter
+add_the_line_set_the	Ychwanegwch y llinell, gosodwch y maint, setlwch — arian parod, UPI neu wedi’i rannu.
+gst_tax_invoice_or_cash	Anfoneb dreth GST neu dderbynneb arian parod
+the_bill_lane_you_need	Y math o fil sydd ei angen ar gyfer y gwerthiant.
+day_book_follows	Mae llyfr y dydd yn dilyn
+every_tender_lands_in_books	Mae pob taliad yn glanio yn Llyfrau pan fyddwch yn cau’r gwerthiant.
+n_3_barcode_salt	3 · COD BAR A CHYNHWYSYN GWEITHREDOL
+scan_the_barcode_or_find	Sganiwch y cod bar — neu dewch o hyd iddo yn ôl y cynhwysyn gweithredol.
+search	Chwilio
+composition_paracetamol_strip_of_10	Cyfansoddiad: Paracetamol · stribed o 10
+salt_amoxicillin	Cynhwysyn gweithredol: amocsisilin
+ranks_barcode_name_and_composition	Mae’n graddio cod bar, enw a chyfansoddiad gyda’i gilydd.
+wedge_scanner_or_type_enter	Sganiwr bysellfwrdd neu bwyswch Enter — mae’r llinell yn glanio ar y bil.
+barcode_first	Cod bar yn gyntaf
+scan_or_paste_the_code	Sganiwch neu gludwch y cod; mae’r cyfatebiad yn y catalog yn ymddangos.
+salt_composition	Cynhwysyn gweithredol / cyfansoddiad
+type_the_salt_when_the	Teipiwch y cynhwysyn gweithredol pan nad yr enw brand yw’r hyn a ddywedodd y cwsmer.
+owner_rx_schedule_h_flags	Marciau’r perchennog: presgripsiwn / Schedule H
+reminders_you_set_not_a	Nodiadau atgoffa rydych yn eu gosod — nid cofrestr statudol, nid cyngor meddygol.
+n_4_batch_expiry	4 · SWP A DYDDIAD DOD I BEN
+batch_and_expiry_on_your	Swp a dyddiad dod i ben yn eich llyfrau — rhybuddion i’r perchennog.
+buy_batch_a12	Pryniant · swp A12
+expires_2027_03_alert_in	Yn dod i ben 2027-03 · rhybudd ymhen 7 diwrnod
+ors_sachets_batch_b04	Sachedi ORS · swp B04
+expires_2026_11_near_expiry	Yn dod i ben 2026-11 · stribed “bron â dod i ben” yn Llyfrau
+shop_bookkeeping_only_not_drugs	Cadw llyfrau’r siop yn unig — nid cydymffurfiaeth â’r Ddeddf Cyffuriau.
+batch_on_buy	Swp wrth brynu
+record_batch_and_expiry_when	Cofnodwch y swp a’r dyddiad dod i ben pan ddaw stoc i mewn.
+near_expiry_alerts	Rhybuddion bron â dod i ben
+books_and_sell_can_hint	Gall Llyfrau a Gwerthu roi awgrym cyn i’r dyddiad fynd heibio.
+owner_practice	Arfer y perchennog
+fefo_hints_and_rx_notes	Chi biau dilyn awgrymiadau FEFO a nodiadau presgripsiwn — mae Tabiyat yn cofnodi’r hyn rydych yn ei roi i mewn.
+n_5_khata	5 · LLYFR DYLEDION
+customer_credit_and_supplier_dues	Credyd cwsmeriaid a dyledion cyflenwyr mewn un llyfr partïon.
+mehta_clinic_customer	Clinig Mehta · Cwsmer
+due_from_earlier	Yn ddyledus o’r blaen
+today_s_sale_due	+ gwerthiant heddiw (dyled)
+balance	Balans
+settle_later_part_cash_part	Setlwch yn nes ymlaen — rhan arian parod, rhan UPI. Mae credydwyr cyflenwyr yn rhannu’r un sgrin Partïon.
+due_on_the_bill	Yn ddyledus ar y bil
+leave_a_balance_on_khata	Gadewch falans ar y llyfr dyledion heb ap cyfriflyfr ar wahân.
+supplier_buys_too	Pryniannau gan gyflenwyr hefyd
+who_you_owe_updates_when	Mae’r hyn sy’n ddyledus gennych yn diweddaru pan ddaw stoc i mewn.
+auditable	Archwiliadwy
+who_when_and_how_much	Mae pwy, pryd a faint yn aros yn llyfr y dydd.
+n_6_internet_down	6 · Y RHYNGRWYD I LAWR?
+the_internet_drops_the_counter	Mae’r rhyngrwyd yn mynd. Mae’r cownter yn dal i werthu.
+router_no_internet	Llwybrydd: dim rhyngrwyd
+main_counter_selling_and_settling	Prif gownter: yn gwerthu ac yn setlo
+second_till_joined_on_your	Ail dil: wedi’i gysylltu ar eich Wi-Fi eich hun
+books_live_on_the_shop	Mae’r llyfrau’n byw ar ddyfeisiau’r siop
+when_the_internet_drops_nothing	Pan fydd y rhyngrwyd yn mynd, does dim byd wrth gownter y fferyllfa yn aros amdano.
+one_server_lan_clients	Un gweinydd, cleientiaid LAN
+extra_tills_share_the_same	Mae tiliau ychwanegol yn rhannu’r un llyfrau dros rwydwaith y siop.
+n_7_free_forever_locally	7 · AM DDIM AM BYTH YN LLEOL
+free_forever_on_your_devices	Am ddim am byth ar eich dyfeisiau.
+no_per_bill_charge	Dim tâl fesul bil
+no_fee_per_sale_medicine	Dim ffi fesul gwerthiant, meddyginiaeth, til na PIN staff ar y gosodiad lleol.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Yr un Tabiyat ar y ffôn ac ar y til bwrdd gwaith.
+optional_kumkaj_cloud	Kumkaj Cloud dewisol
+yearly_steady_6k_swift_12k	Steady ₹6k · Swift ₹12k · Priority ₹24k blynyddol heb dreth (neu ddyfynbris pwrpasol). Siopa yn /shop.
+n_8_start	8 · DECHRAU
+put_tabiyat_on_the_counter	Rhowch Tabiyat ar y cownter.
+download_free_or_whatsapp_for	Lawrlwythwch am ddim, neu anfonwch neges WhatsApp am daith drwyddo gyda’ch fferyllfa a’ch dinas.
+privacy	Preifatrwydd
+terms	Telerau
+cancellation	Canslo
+cloud_shop	Siop y cwmwl
+account	Cyfrif
+chapter_counter_sell	Gwerthu wrth y cownter
+chapter_barcode_salt	Cod bar a chynhwysyn gweithredol
+chapter_batch_expiry	Swp a dyddiad dod i ben
+chapter_khata	Llyfr dyledion
+chapter_extra_till	Til ychwanegol
+chapter_offline	All-lein
+chapter_start	Dechrau
+bill_selling	Yn gwerthu
+bill_settle	Setlo
+bill_paid	Wedi talu
+bill_next_line	Tapiwch i ychwanegu’r llinell nesaf
+bill_settle_hint	Tapiwch i setlo — arian parod neu UPI
+bill_upi_paid	UPI ₹ 162 · wedi talu
+bill_paid_line	Wedi talu · llyfr y dydd wedi’i ddiweddaru
+lan_eyebrow	6 · TIL YCHWANEGOL
+lan_title	Til arall ar Wi-Fi y siop.
+cta_installers_note	Bydd y gosodwyr yn ymddangos yma unwaith y bydd pob un yn pasio gosodiad ar beiriant glân. Tan hynny, gofynnwch am ddemo ar WhatsApp.
+cta_whatsapp_soon	Bydd llinell demo WhatsApp yn agor cyn bo hir. Bydd eich neges yn dweud: “{message}”.
+acct_page_title	Cyfrif — Tabiyat
+acct_lede	Un cyfrif ar gyfer y wefan a’r apiau — yr un ffurflen p’un a ydych yn newydd neu’n dychwelyd.
+acct_email	E-bost
+acct_name_optional	Enw (dewisol)
+acct_password	Cyfrinair
+acct_continue	Parhau
+acct_forgot	Wedi anghofio’r cyfrinair?
+acct_reset_hint	Byddwn yn e-bostio dolen ailosod. Defnyddiwch yr un cyfeiriad ag y gwnaethoch gofrestru ag ef.
+acct_send_reset	Anfon dolen ailosod
+acct_cancel	Canslo
+acct_or_continue	neu parhewch gyda
+acct_phone	Ffôn
+acct_mobile	Rhif ffôn symudol
+acct_send_sms	Anfon cod SMS
+acct_sms_code	Cod SMS
+acct_confirm_code	Cadarnhau’r cod
+acct_signed_in	Wedi mewngofnodi
+acct_signed_in_as	Wedi mewngofnodi fel
+acct_status	Statws
+acct_sign_in_methods	Dulliau mewngofnodi
+acct_cloud_username	Enw defnyddiwr y cwmwl
+acct_plan	Cynllun
+acct_resend_verify	Ailanfon e-bost dilysu
+acct_sign_out	Allgofnodi
+acct_cloud_sandbox	Kumkaj Cloud (amgylchedd prawf)
+acct_current_password	Cyfrinair presennol
+acct_email_for_password	E-bost ar gyfer mewngofnodi â chyfrinair
+acct_new_password	Cyfrinair newydd
+acct_confirm_new_password	Cadarnhewch y cyfrinair newydd
+acct_add_way	Ychwanegu ffordd arall o fewngofnodi
+acct_link_hint	Cysylltwch ddulliau â’r un cyfrif fel y gallwch adfer mynediad os bydd un yn methu.
+acct_link_google	Cysylltu Google
+acct_link_microsoft	Cysylltu Microsoft
+acct_link_github	Cysylltu GitHub
+acct_link_phone	Cysylltu ffôn
+acct_send_sms_link	Anfon SMS i gysylltu
+acct_confirm_link_phone	Cadarnhau a chysylltu ffôn
+shop_page_title	Siop — Tabiyat
+shop_lede	Cynlluniau cwmwl blynyddol — ychwanegir treth wrth dalu. Mae’r ap Tabiyat llawn ar eich dyfeisiau eich hun yn aros am ddim am byth, heb hysbysebion.
+shop_cart	Basged
+shop_cart_empty_hint	Mae eich basged yn wag. Ychwanegwch Steady, Swift neu Priority.
+shop_checkout	Talu
+shop_clear	Clirio
+shop_checkout_hint	Mae talu’n eich mewngofnodi ar Cyfrif yn gyntaf, yna’n dechrau’r taliad (efelychiad yn yr amgylchedd prawf neu Paddle pan fydd allweddi wedi’u gosod).
+acct_billing_hint	Cynlluniau blynyddol — y porth talu sy’n ychwanegu treth wrth dalu. Mae defnydd lleol yn aros am ddim am byth. Dyfynbris yw’r cynllun pwrpasol (gall fod yn is na Steady neu’n uwch na Priority).
+shop_cloud_plans	Cynlluniau cwmwl
+acct_federated	Mewngofnodi ffederal
+acct_err_invalid_email	Rhowch gyfeiriad e-bost dilys.
+acct_err_weak_password	Defnyddiwch gyfrinair gydag o leiaf 6 nod.
+acct_err_wrong_password	Cyfrinair anghywir.
+acct_err_invalid_credential	Mae’r e-bost neu’r cyfrinair yn anghywir.
+acct_err_popup_closed	Caewyd y ffenestr mewngofnodi.
+acct_err_popup_cancelled	Canslwyd y mewngofnodi.
+acct_err_unauthorized_domain	Nid yw’r parth hwn wedi’i awdurdodi ar gyfer Firebase Auth.
+acct_err_method_disabled	Nid yw’r dull mewngofnodi hwnnw wedi’i alluogi eto.
+acct_err_too_many	Gormod o ymdrechion. Rhowch gynnig arall arni nes ymlaen.
+acct_err_phone_format	Defnyddiwch rif ffôn llawn gyda chod gwlad (e.e. +91…).
+acct_err_sms_code	Mae’r cod SMS hwnnw’n anghywir neu wedi dod i ben.
+acct_err_no_account	Does dim cyfrif gyda’r e-bost hwnnw. Parhewch i greu un, neu defnyddiwch ddull arall.
+acct_err_recent_login	Er diogelwch, mewngofnodwch eto, yna rhowch gynnig ar y newid hwn eto.
+acct_err_credential_in_use	Mae cyfrif arall eisoes yn defnyddio’r dull mewngofnodi hwnnw.
+acct_err_email_in_use	Mae cyfrif arall eisoes yn defnyddio’r e-bost hwnnw.
+acct_err_already_linked	Mae’r dull hwnnw eisoes wedi’i gysylltu â’r cyfrif hwn.
+acct_err_exists_other_method	Mae cyfrif eisoes yn bodoli gyda’r e-bost hwn ond â dull mewngofnodi gwahanol. Mewngofnodwch â’r dull hwnnw yn gyntaf, yna cysylltwch hwn o dudalen eich cyfrif.
+acct_err_generic	Aeth rhywbeth o’i le.
+acct_method_password	E-bost a chyfrinair
+acct_pw_hint_change	Newidiwch eich cyfrinair. Byddwch yn cadarnhau â’r un presennol.
+acct_pw_hint_add	Ychwanegwch gyfrinair er mwyn gallu mewngofnodi ag e-bost hefyd (defnyddiol os nad yw darparwr ar gael).
+acct_pw_change	Newid cyfrinair
+acct_pw_add	Ychwanegu cyfrinair
+acct_billing_off	Nid yw bilio wedi’i alluogi ar API y cwmwl eto.
+acct_billing_no_provider	Does dim darparwr bilio go iawn wedi’i alluogi ar API y cwmwl (lleol yn unig yw’r efelychiad).
+price_quote	Dyfynbris
+price_per_year	₹{amount}/blwyddyn heb dreth
+acct_pay_received	Taliad wedi’i dderbyn — yn adnewyddu eich cynllun…
+acct_pay_declined	Gwrthodwyd y taliad neu fe fethodd
+acct_pay_failed_detail	{detail}. Ni newidiwyd eich cynllun.
+acct_checkout_closed	Caewyd y talu — ni chwblhawyd unrhyw daliad. Mae eich cynllun heb newid.
+acct_checkout_failed	Methodd y talu
+acct_pay_with	Talu gyda {provider}
+acct_plan_until	{plan} · tan {date}
+acct_unavailable	Ddim ar gael
+acct_continue_hint	Parhewch ag e-bost, darparwr neu ffôn.
+acct_signed_in_fallback	(wedi mewngofnodi)
+acct_email_verified	E-bost wedi’i ddilysu
+acct_email_unverified	E-bost heb ei ddilysu eto — gwiriwch eich mewnflwch
+acct_signed_in_phone	Wedi mewngofnodi â ffôn
+acct_none_listed	Dim wedi’i restru eto
+acct_signed_in_status	Rydych wedi mewngofnodi.
+acct_created	Cyfrif wedi’i greu. Gwiriwch eich e-bost i’w ddilysu pan allwch chi.
+acct_reset_sent	Os oes cyfrif ar gyfer yr e-bost hwnnw, mae dolen ailosod ar ei ffordd. Gwiriwch eich mewnflwch.
+acct_another_method	dull arall
+acct_exists_via	Mae cyfrif ar gyfer {email} eisoes yn bodoli drwy {method}. Mewngofnodwch y ffordd honno yn gyntaf, yna cysylltwch y darparwr hwn o dudalen eich cyfrif.
+acct_enter_current_pw	Rhowch eich cyfrinair presennol.
+acct_relogin_retry	Allgofnodwch a mewngofnodwch eto, yna rhowch gynnig arall arni.
+acct_pw_mismatch	Nid yw’r cyfrinair newydd a’r cadarnhad yn cyfateb.
+acct_pw_updated	Cyfrinair wedi’i ddiweddaru.
+acct_enter_email_pw	Rhowch e-bost i’w ddefnyddio ar gyfer mewngofnodi â chyfrinair.
+acct_pw_added	Cyfrinair wedi’i ychwanegu. Gallwch fewngofnodi ag e-bost nawr hefyd.
+acct_method_linked	Dull mewngofnodi wedi’i gysylltu.
+acct_phone_linked	Ffôn wedi’i gysylltu â’r cyfrif hwn.
+acct_verify_sent	E-bost dilysu wedi’i anfon — gwiriwch eich mewnflwch.
+shop_pricing_soon	Prisiau’n dod yn fuan
+shop_request_quote	Gofyn am ddyfynbris
+shop_add_to_cart	Ychwanegu at y fasged
+shop_notify_later	Rhowch wybod i mi’n nes ymlaen
+shop_included	Wedi’i gynnwys
+shop_in_cart	Mae {plan} yn eich basged.
+shop_remove	Tynnu
+shop_cart_is_empty	Mae’r fasged yn wag.
+shop_prices_unpublished	Nid yw prisiau hunanwasanaeth wedi’u cyhoeddi ar gyfer y cynnyrch hwn eto. Gofynnwch am ddyfynbris pwrpasol neu dewch yn ôl yn nes ymlaen.
+shop_cart_cleared	Basged wedi’i chlirio.
+plan_free_title	Am ddim am byth
+plan_free_blurb	Y cynnyrch lleol llawn ar eich dyfeisiau. Dim ffi cwmwl.
+plan_steady_blurb	Cwmwl byw · 10 GB · lled band is
+plan_swift_blurb	Cwmwl byw · 25 GB · lled band canolig
+plan_priority_blurb	Cwmwl byw · 50 GB · y lled band safonol uchaf
+plan_custom_title	Pwrpasol
+plan_custom_blurb	Cwota a lled band wedi’u cytuno. Gall y dyfynbris fod yn is na Steady neu’n uwch na Priority.

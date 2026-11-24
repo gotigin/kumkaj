@@ -1,121 +1,121 @@
 # Irish — Gaeilge (ga). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-the_promise	@@EN@@ The promise
-kumkaj_business_operating_systems	@@EN@@ KUMKAJ · BUSINESS OPERATING SYSTEMS
-the_internet_went_down_the	@@EN@@ The internet went down.\nThe counter didn't.
-kumkaj_is_the_brand_for	@@EN@@ Kumkaj is the brand for concrete business operating system apps — complete business management software that runs on your own devices. Each product is built for one trade: courier, restaurant, grocery, pharmacy.
-choose_your_trade	@@EN@@ Choose your trade  ↓
-watch_it_keep_working	@@EN@@ Watch it keep working
-this_counter_right_now	@@EN@@ THIS COUNTER, RIGHT NOW
-internet	@@EN@@ Internet
-down	@@EN@@ Down
-taking_orders	@@EN@@ Taking orders
-yes	@@EN@@ Yes
-bills_and_dockets	@@EN@@ Bills and dockets
-saving	@@EN@@ Saving
-day_book	@@EN@@ Day book
-adding_up	@@EN@@ Adding up
-nothing_on_this_counter_waits	@@EN@@ Nothing on this counter waits for the cloud.
-scroll_or_use_the_dots	@@EN@@ Scroll or use the dots to jump between sections.
-n_02_built_for_your_trade	@@EN@@ 02 · BUILT FOR YOUR TRADE
-a_desk_for_each_trade	@@EN@@ A desk for each trade.\nNot one app with a switch.
-not_one_app_with_a	@@EN@@ Not one app with a trade switch. Each product is designed around one kind of counter, in that trade's own words.
-courier_offices_franchise_counters_own	@@EN@@ COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS
-book_label_hand_over_track	@@EN@@ Book → label → hand over → track → settle.
-next_booking_in_one_tap	@@EN@@ Next booking in one tap
-actual_or_volumetric_weight_rounded	@@EN@@ Actual or volumetric weight, rounded your way
-rider_cash_on_delivery_expected	@@EN@@ Rider cash on delivery: expected against handed in
-visit_moklanjo_com	@@EN@@ Visit moklanjo.com  →
-restaurants_caf_s_quick_service	@@EN@@ RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES
-table_kitchen_bill_day_close	@@EN@@ Table → kitchen → bill → day close.
-every_table_s_minutes_and	@@EN@@ Every table's minutes and bill at a glance
-one_kot_per_kitchen_station	@@EN@@ One KOT per kitchen station — never prices
-cash_upi_part_payment_due	@@EN@@ Cash, UPI, part payment, Due and tip
-visit_khaynjo_com	@@EN@@ Visit khaynjo.com  →
-kirana_grocery_neighbourhood_shops	@@EN@@ KIRANA · GROCERY · NEIGHBOURHOOD SHOPS
-sell_khata_stock_day_book	@@EN@@ Sell → khata → stock → day book.
-fast_counter_sell_with_short	@@EN@@ Fast counter sell with short codes
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues
-buy_into_stock_offline_forever	@@EN@@ Buy into stock — offline forever
-visit_kirano_shop	@@EN@@ Visit kirano.shop  →
-chemists_pharmacy_counters	@@EN@@ CHEMISTS · PHARMACY COUNTERS
-medicine_batch_bill_day_close	@@EN@@ Medicine → batch → bill → day close.
-barcode_and_salt_composition_search	@@EN@@ Barcode and salt / composition search
-batch_and_expiry_alerts_on	@@EN@@ Batch and expiry alerts on purchases
-owner_schedule_h_rx_notes	@@EN@@ Owner Schedule H / Rx notes — not fake compliance
-visit_tabiyat_shop	@@EN@@ Visit tabiyat.shop  →
-n_03_your_books_stay_with	@@EN@@ 03 · YOUR BOOKS STAY WITH YOU
-your_books_live_in_your	@@EN@@ Your books live in your shop.
-sales_parties_and_the_day	@@EN@@ Sales, parties and the day book are written on the device at your counter — not on a server you rent.
-on_your_device	@@EN@@ On your device
-every_sale_payment_and_docket	@@EN@@ Every sale, payment and docket is saved on the computer or tablet you own.
-no_account_with_us	@@EN@@ No account with us
-install_it_and_start_no	@@EN@@ Install it and start. No sign-up, no card on file.
-copies_you_keep	@@EN@@ Copies you keep
-save_a_backup_copy_whenever	@@EN@@ Save a backup copy whenever you like. It is a file, and it is yours.
-extra_counters_and_tablets_join	@@EN@@ Extra counters and tablets join over your own Wi-Fi — with no internet in between.
-n_04_try_it	@@EN@@ 04 · TRY IT
-pull_the_plug_on_the	@@EN@@ Pull the plug on the internet.
-kumkaj_apps_don_t_phone	@@EN@@ Kumkaj apps don't phone home to work. Cut the internet and watch what changes at the counter.
-cut_the_internet	@@EN@@ Cut the internet
-internet_on	@@EN@@ Internet: on
-book_a_parcel_or_take	@@EN@@ Book a parcel or take an order
-save_the_bill_or_docket	@@EN@@ Save the bill or docket
-day_book_totals	@@EN@@ Day book totals
-find_an_old_sale	@@EN@@ Find an old sale
-the_internet_is_on_and	@@EN@@ The internet is on — and the counter isn't using it.
-things_that_leave_the_shop	@@EN@@ Things that leave the shop, like a WhatsApp receipt, still need the internet to arrive.
-n_05_price	@@EN@@ 05 · PRICE
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_charge_per_seat_user	@@EN@@ No charge per seat, user, table, rider, parcel or local device. Not a trial.
-on_your_own_devices	@@EN@@ On your own devices
-n_0_forever	@@EN@@ ₹0, forever
-pay_only_for_what_you	@@EN@@ Pay only for what you use — the same rates for everyone.
-planned	@@EN@@ Planned
-cloud_is_planned_and_optional	@@EN@@ Cloud is planned and optional. The counter works without it.
-n_06_languages	@@EN@@ 06 · LANGUAGES
-speaks_your_staff_s_language	@@EN@@ Speaks your staff's language.
-the_same_115_language_catalogue	@@EN@@ The same 115-language catalogue as every Kumkaj app — Arabic and Urdu right to left. Native names below; “Food ready” samples for Hindi, Gujarati, Tamil, Bengali, Urdu, and English:
-same_shaping_engine_as_the	@@EN@@ Same shaping engine as the apps, so joined letters and right-to-left lines come out right.
-n_07_who_makes_it	@@EN@@ 07 · WHO MAKES IT
-made_under_gotigin	@@EN@@ Made under Gotigin.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system_apps	@@EN@@ Concrete business operating system apps
-products	@@EN@@ PRODUCTS
-courier_restaurant_grocery_pharmacy	@@EN@@ Courier · restaurant · grocery · pharmacy
-courier_desk_book_label_hand	@@EN@@ Courier desk — book, label, hand over, settle.
-restaurant_system_table_kitchen_bill	@@EN@@ Restaurant system — table, kitchen, bill, day close.
-grocery_counter_sell_khata_stock	@@EN@@ Grocery counter — sell, khata, stock, day book.
-pharmacy_counter_batch_expiry_bill	@@EN@@ Pharmacy counter — batch, expiry, bill, day close.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_built_for_your_trade	@@EN@@ Built for your trade
-chapter_your_books	@@EN@@ Your books
-chapter_try_it_offline	@@EN@@ Try it offline
-chapter_price	@@EN@@ Price
-chapter_languages	@@EN@@ Languages
-chapter_who_makes_it	@@EN@@ Who makes it
-toy_bring_back	@@EN@@ Bring the internet back
-toy_internet_off	@@EN@@ Internet: off
-toy_verdict_off	@@EN@@ Internet off — and nothing on the counter changed.
-acct_page_title	@@EN@@ Account — Kumkaj
-acct_lede	@@EN@@ Each Kumkaj product has its own account (and its own cloud). Choose the trade you run — sign-in and checkout stay on that product site.
-acct_product_accounts	@@EN@@ Product accounts
-acct_moklanjo_blurb	@@EN@@ Courier OS account
-acct_khaynjo_blurb	@@EN@@ Restaurant OS account
-acct_kirano_blurb	@@EN@@ Kirana counter account
-acct_tabiyat_blurb	@@EN@@ Pharmacy counter account
-acct_open_account	@@EN@@ Open account
-shop_page_title	@@EN@@ Shop — Kumkaj
-shop_lede	@@EN@@ Yearly cloud plans — same five shapes for every trade (Free forever, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / year ex-tax, or Custom quote). Tax is added at checkout. Each product keeps its own shop and account.
-shop_product_shops	@@EN@@ Product cloud shops
-shop_moklanjo_blurb	@@EN@@ Courier desk cloud for moklanjo.com
-shop_khaynjo_blurb	@@EN@@ Restaurant cloud for khaynjo.com
-shop_kirano_blurb	@@EN@@ Kirana counter cloud for kirano.shop
-shop_tabiyat_blurb	@@EN@@ Pharmacy counter cloud for tabiyat.shop
-shop_open_shop	@@EN@@ Open shop
+the_promise	An gealltanas
+kumkaj_business_operating_systems	KUMKAJ · CÓRAIS OIBRIÚCHÁIN GNÓ
+the_internet_went_down_the	Chuaigh an t-idirlíon síos.\nNíor chuaigh an cuntar.
+kumkaj_is_the_brand_for	Is é Kumkaj an branda d’aipeanna córas oibriúcháin gnó nithiúla — bogearraí iomlána bainistíochta gnó a ritheann ar do ghléasanna féin. Tá gach táirge tógtha do cheird amháin: cúiréireacht, bialann, grósaeireacht, cógaslann.
+choose_your_trade	Roghnaigh do cheird  ↓
+watch_it_keep_working	Féach air ag leanúint ar aghaidh ag obair
+this_counter_right_now	AN CUNTAR SEO, ANOIS DÍREACH
+internet	Ceangal idirlín
+down	Thíos
+taking_orders	Ag glacadh orduithe
+yes	Tá
+bills_and_dockets	Billí agus duillíní seachadta
+saving	Á sábháil
+day_book	Leabhar lae
+adding_up	Ag teacht le chéile
+nothing_on_this_counter_waits	Níl aon rud ar an gcuntar seo ag fanacht leis an néal.
+scroll_or_use_the_dots	Scrollaigh nó úsáid na poncanna chun léim idir na codanna.
+n_02_built_for_your_trade	02 · TÓGTHA DO DO CHEIRD
+a_desk_for_each_trade	Deasc do gach ceird.\nNí aip amháin le lasc.
+not_one_app_with_a	Ní aip amháin le lasc cheirde. Tá gach táirge deartha timpeall ar chineál amháin cuntair, i bhfocail na ceirde sin féin.
+courier_offices_franchise_counters_own	OIFIGÍ CÚIRÉIREACHTA · CUNTAIR SAINCHEADÚNAIS · DO CHÚIRÉIRÍ FÉIN
+book_label_hand_over_track	Clárú → lipéad → tabhairt ar láimh → rianú → socrú.
+next_booking_in_one_tap	An chéad chlárú eile le tapáil amháin
+actual_or_volumetric_weight_rounded	Meáchan iarbhír nó toirtmhéadrach, slánaithe ar do bhealach féin
+rider_cash_on_delivery_expected	Íoc ar sheachadadh an chúiréara: ag súil leis i gcomparáid le tugtha isteach
+visit_moklanjo_com	Tabhair cuairt ar moklanjo.com  →
+restaurants_caf_s_quick_service	BIALANNA · CAIFÉ · BIA MEAR · BÁICÉIRÍ
+table_kitchen_bill_day_close	Bord → cistin → bille → dúnadh lae.
+every_table_s_minutes_and	Nóiméid agus bille gach boird ar amharc amháin
+one_kot_per_kitchen_station	Duillín cistine amháin in aghaidh an stáisiúin — gan praghsanna riamh
+cash_upi_part_payment_due	Airgead tirim, UPI, íocaíocht pháirteach, ar cairde agus síneadh láimhe
+visit_khaynjo_com	Tabhair cuairt ar khaynjo.com  →
+kirana_grocery_neighbourhood_shops	KIRANA · GRÓSAEIREACHT · SIOPAÍ COMHARSANACHTA
+sell_khata_stock_day_book	Díol → leabhar cairde → stoc → leabhar lae.
+fast_counter_sell_with_short	Díol tapa ag an gcuntar le cóid ghearra
+customer_credit_and_supplier_dues	Creidmheas custaiméirí agus fiacha soláthraithe
+buy_into_stock_offline_forever	Ceannach isteach sa stoc — as líne go deo
+visit_kirano_shop	Tabhair cuairt ar kirano.shop  →
+chemists_pharmacy_counters	CÓGAISEOIRÍ · CUNTAIR CHÓGASLAINNE
+medicine_batch_bill_day_close	Cógas → baisc → bille → dúnadh lae.
+barcode_and_salt_composition_search	Cuardach barrachóid agus comhábhair ghníomhaigh / comhdhéanaimh
+batch_and_expiry_alerts_on	Foláirimh bhaisce agus éaga ar cheannacháin
+owner_schedule_h_rx_notes	Nótaí an úinéara ar Schedule H / oidis — ní comhlíonadh bréige
+visit_tabiyat_shop	Tabhair cuairt ar tabiyat.shop  →
+n_03_your_books_stay_with	03 · FANANN DO LEABHAIR LEAT
+your_books_live_in_your	Maireann do leabhair i do shiopa.
+sales_parties_and_the_day	Scríobhtar díolacháin, páirtithe agus an leabhar lae ar an ngléas ag do chuntar — ní ar fhreastalaí a fhruilíonn tú.
+on_your_device	Ar do ghléas
+every_sale_payment_and_docket	Sábháiltear gach díolachán, íocaíocht agus duillín seachadta ar an ríomhaire nó ar an táibléad is leatsa.
+no_account_with_us	Gan cuntas linne
+install_it_and_start_no	Suiteáil é agus tosaigh. Gan clárú, gan cárta ar comhad.
+copies_you_keep	Cóipeanna a choinníonn tú
+save_a_backup_copy_whenever	Sábháil cóip chúltaca pé uair is mian leat. Comhad atá ann, agus is leatsa é.
+extra_counters_and_tablets_join	Ceanglaíonn cuntair agus táibléid bhreise thar do Wi-Fi féin — gan idirlíon eatarthu.
+n_04_try_it	04 · BAIN TRIAIL AS
+pull_the_plug_on_the	Tarraing an plocóid ar an idirlíon.
+kumkaj_apps_don_t_phone	Ní gá d’aipeanna Kumkaj glaoch abhaile chun oibriú. Gearr an t-idirlíon agus féach cad a athraíonn ag an gcuntar.
+cut_the_internet	Gearr an t-idirlíon
+internet_on	Idirlíon: ar siúl
+book_a_parcel_or_take	Cláraigh beartán nó glac ordú
+save_the_bill_or_docket	Sábháil an bille nó an duillín seachadta
+day_book_totals	Iomláin an leabhair lae
+find_an_old_sale	Aimsigh seandíolachán
+the_internet_is_on_and	Tá an t-idirlíon ar siúl — agus níl an cuntar á úsáid.
+things_that_leave_the_shop	Teastaíonn an t-idirlíon fós ó rudaí a fhágann an siopa, ar nós admháil WhatsApp, chun teacht ar an gceann scríbe.
+n_05_price	05 · PRAGHAS
+free_forever_on_your_devices	Saor in aisce go deo ar do ghléasanna.
+no_charge_per_seat_user	Gan táille in aghaidh suíocháin, úsáideora, boird, cúiréara, beartáin ná gléis áitiúil. Ní triail é.
+on_your_own_devices	Ar do ghléasanna féin
+n_0_forever	₹0, go deo
+pay_only_for_what_you	Íoc as a n-úsáideann tú amháin — na rátaí céanna do chách.
+planned	Beartaithe
+cloud_is_planned_and_optional	Tá an néal beartaithe agus roghnach. Oibríonn an cuntar gan é.
+n_06_languages	06 · TEANGACHA
+speaks_your_staff_s_language	Labhraíonn sé teanga do chuid foirne.
+the_same_115_language_catalogue	An catalóg céanna de 115 teanga le gach aip Kumkaj — Araibis agus Urdúis ó dheis go clé. Ainmneacha dúchais thíos; samplaí “Bia réidh” don Hiondúis, don Ghúisearáitis, don Tamailis, don Bheangáilis, don Urdúis agus don Bhéarla:
+same_shaping_engine_as_the	An t-inneall múnlaithe céanna leis na haipeanna, ionas go dtagann litreacha nasctha agus línte ó dheis go clé amach i gceart.
+n_07_who_makes_it	07 · CÉ A DHÉANANN É
+made_under_gotigin	Déanta faoi Gotigin.
+trademark	TRÁDMHARC
+memon_for_find_it_pronounced	Memon ar “aimsigh é” · fuaimnítear go-tee-geen
+company	COMHLACHT
+brand	BRANDA
+concrete_business_operating_system_apps	Aipeanna córas oibriúcháin gnó nithiúla
+products	TÁIRGÍ
+courier_restaurant_grocery_pharmacy	Cúiréireacht · bialann · grósaeireacht · cógaslann
+courier_desk_book_label_hand	Deasc chúiréireachta — clárú, lipéad, tabhairt ar láimh, socrú.
+restaurant_system_table_kitchen_bill	Córas bialainne — bord, cistin, bille, dúnadh lae.
+grocery_counter_sell_khata_stock	Cuntar grósaera — díol, leabhar cairde, stoc, leabhar lae.
+pharmacy_counter_batch_expiry_bill	Cuntar cógaslainne — baisc, dáta éaga, bille, dúnadh lae.
+privacy	Príobháideacht
+terms	Téarmaí
+cancellation	Cealú
+cloud_shop	Siopa néil
+account	Cuntas
+chapter_built_for_your_trade	Tógtha do do cheird
+chapter_your_books	Do leabhair
+chapter_try_it_offline	Bain triail as gan idirlíon
+chapter_price	Praghas
+chapter_languages	Teangacha
+chapter_who_makes_it	Cé a dhéanann é
+toy_bring_back	Tabhair an t-idirlíon ar ais
+toy_internet_off	Idirlíon: múchta
+toy_verdict_off	Idirlíon múchta — agus níor athraigh aon rud ar an gcuntar.
+acct_page_title	Cuntas — Kumkaj
+acct_lede	Tá a chuntas féin (agus a néal féin) ag gach táirge Kumkaj. Roghnaigh an cheird a ritheann tú — fanann logáil isteach agus seiceáil amach ar shuíomh an táirge sin.
+acct_product_accounts	Cuntais táirgí
+acct_moklanjo_blurb	Cuntas córas cúiréireachta
+acct_khaynjo_blurb	Cuntas córas bialainne
+acct_kirano_blurb	Cuntas cuntair ghrósaera
+acct_tabiyat_blurb	Cuntas cuntair chógaslainne
+acct_open_account	Oscail cuntas
+shop_page_title	Siopa — Kumkaj
+shop_lede	Pleananna néil bliantúla — na cúig chruth chéanna do gach ceird (Saor in aisce go deo, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / bliain gan cháin, nó luachan saincheaptha). Cuirtear cáin leis ag an tseiceáil amach. Coinníonn gach táirge a shiopa agus a chuntas féin.
+shop_product_shops	Siopaí néil na dtáirgí
+shop_moklanjo_blurb	Néal deasc chúiréireachta do moklanjo.com
+shop_khaynjo_blurb	Néal bialainne do khaynjo.com
+shop_kirano_blurb	Néal cuntair ghrósaera do kirano.shop
+shop_tabiyat_blurb	Néal cuntair chógaslainne do tabiyat.shop
+shop_open_shop	Oscail siopa

@@ -1,254 +1,254 @@
 # Irish — Gaeilge (ga). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Sampla
+length	Fad
+download_free	Íoslódáil saor in aisce
+whatsapp_for_a_demo	Taispeántas ar WhatsApp
+free_on_android_windows_and	Saor in aisce ar Android, Windows agus Linux.
+courier_operating_system	córas oibriúcháin cúiréireachta
+parcel_journey	TURAS AN BHEARTÁIN
+walk_in	Custaiméir ag an gcuntar
+weigh	Meá
+price	Praghas
+label	Lipéad
+hand_over	Tabhairt ar láimh
+track	Rianú
+offline	As líne
+start	Tús
+moklanjo_courier_operating_system	MOKLANJO · CÓRAS OIBRIÚCHÁIN CÚIRÉIREACHTA
+book_move_and_settle_every	Cláraigh, bog agus socraigh gach beartán — córas cúiréireachta amháin ar do ghléasanna féin.
+parties_books_cod_labels_awb	Páirtithe, leabhair, íoc ar sheachadadh, lipéid, sraitheanna AWB, rianú, cúiréirí agus billeáil — an lúb iomlán ón gcuntar go dtí an socrú, le hidirlíon nó gan é. Saor in aisce ar do ghléasanna.
+the_walk_in_loop	LÚB AN CHUNTAIR
+actual_and_volumetric_side_by	Meáchan iarbhír agus toirtmhéadrach, taobh le taobh.
+charge	Táille
+your_rate_card_cash_or	Do chárta rátaí, airgead tirim nó ar chuntas.
+next_booking	An chéad chlárú eile
+one_tap_clears_the_counter	Glanann tapáil amháin an cuntar don chéad chustaiméir eile.
+scroll_the_parcel_journey_rail	Scrollaigh — taispeánann barra thuras an bheartáin thuas cá bhfuil tú sa scéal.
+n_2_weigh_it_right	2 · MEÁ I GCEART É
+actual_or_volumetric_whichever_is	Iarbhír nó toirtmhéadrach — cibé acu is airde, slánaithe ar do bhealach féin.
+try_a_box	Bain triail as bosca
+domestic	Intíre
+international	Idirnáisiúnta
+breadth	Leithead
+height	Airde
+weight_on_the_scale	Meáchan ar an meá
+chargeable_weight	MEÁCHAN INMHUIRIRITHE
+the_box_s_size_sets	Socraíonn méid an bhosca an táille.
+higher_of_the_two_rounded	An ceann is airde den dá cheann, slánaithe suas go dtí an chéad 0.5 kg eile.
+in_the_app_the_divisor	San aip, socraíonn an siopa an roinnteoir, an chéim shlánaithe agus d’aonaid (cm nó orlaí, kg nó lb). Athraíonn an cnaipe Idirnáisiúnta go ÷6000 do chlárú amháin gan Socruithe a athrú.
+n_3_price_it	3 · CUIR PRAGHAS AIR
+your_rate_cards_your_party	Do chártaí rátaí, rátaí do pháirtithe — agus do chorrlach ar gach duillín seachadta.
+rate_card	Cárta rátaí
+zone_service	Crios · seirbhís
+first_0_5_kg	An chéad 0.5 kg
+each_0_5_kg	Gach 0.5 kg
+local_surface	Áitiúil · Talamh
+within_state_express	Laistigh den stát · Mear
+metro_air	Cathair mhór · Aer
+zone_service_weight_slab	Crios × seirbhís × leac meáchain
+first_slab_and_each_extra	An chéad leac agus gach leac bhreise, in aghaidh an chreasa agus na seirbhíse.
+a_consignor_s_own_card	Cárta féin an choinsíneora
+regular_senders_get_their_rates	Faigheann seoltóirí rialta a rátaí féin; clúdaíonn an cárta réamhshocraithe gach duine eile.
+margin_at_the_desk	Corrlach ag an deasc
+your_sell_price_against_the	Do phraghas díola i gcomparáid le praghas an iompróra, ar gach duillín seachadta.
+n_4_label_it	4 · CUIR LIPÉAD AIR
+awb_from_your_own_number	AWB ó do shraitheanna uimhreacha féin. Lipéad, scanadh, aimsiú.
+number_pools_per_carrier	Sraitheanna uimhreacha in aghaidh an iompróra
+enter_each_carrier_s_start	Cuir isteach sraith tosaigh–deiridh gach iompróra uair amháin; glacann gach clárú an chéad uimhir eile.
+code_128_labels	Lipéid Code 128
+the_awb_goes_on_the	Téann an AWB ar an mbosca mar bharrachód agus i ndigití simplí.
+scan_to_find	Scan le haimsiú
+scan_a_label_to_open	Scan lipéad chun a dhuillín seachadta a oscailt agus gníomhú air.
+n_5_hand_over	5 · TABHAIR AR LÁIMH
+hand_it_to_a_carrier	Tabhair d’iompróir é, nó seol do chúiréir féin. An córas céanna.
+into_a_carrier_bag	Isteach i mála iompróra
+the_manifest_holds_exactly_the	Coinníonn an léiriú lasta díreach na beartáin a roghnaigh tú — iad go léir nó gan ceann ar bith. Ní féidir le beartán a cláraíodh le hiompróir eile sleamhnú isteach sa mhála seo.
+onto_your_own_rider_s	Ar bhealach do chúiréara féin
+pick_the_parcels_print_the	Roghnaigh na beartáin, priontáil an bhileog bhealaigh, agus oibríonn an cúiréir ón aip chéanna i mód cúiréara — cruthúnas seachadta san áireamh.
+n_6_track_and_prove	6 · RIANAIGH AGUS CRUTHAIGH
+every_move_recorded_and_only	Gach gluaiseacht taifeadta — agus gluaiseachtaí a bhfuil ciall leo amháin.
+booked	Cláraithe
+with_carrier	Ag an iompróir
+out_for_delivery	Á sheachadadh
+delivered	Seachadta
+booked_with_carrier_out_for	Cláraithe → Ag an iompróir → Á sheachadadh → Seachadta
+failed	Theip
+reason_out_again_or_return	→ cúis → amach arís, nó ar ais chuig an seoltóir.
+impossible_moves_refused	Diúltaítear do ghluaiseachtaí dodhéanta
+delivered_returned_and_cancelled	Tá seachadta, curtha ar ais agus cealaithe críochnaitheach.
+proof_of_delivery	Cruthúnas seachadta
+a_photo_and_the_receiver	Grianghraf agus síniú an fhaighteora ar an duillín seachadta.
+failed_deliveries	Seachadtaí ar theip orthu
+reasons_attempts_out_again_or	Cúiseanna, iarrachtaí, amach arís, nó ar ais chuig an seoltóir.
+n_7_money_comes_home	7 · TAGANN AN tAIRGEAD ABHAILE
+cod_you_can_see_expected	Íoc ar sheachadadh is féidir leat a fheiceáil: ag súil leis, tugtha isteach, dlite do gach coinsíneoir.
+rider_cash_end_of_run	Airgead tirim an chúiréara, deireadh an bhealaigh
+rider	Cúiréir
+expected	Ag súil leis
+handed_in	Tugtha isteach
+a_14_drops	A · 14 sheachadadh
+b_9_drops	B · 9 seachadadh
+short_200_on_rider_b	₹ 200 in easnamh ag cúiréir B — ainmnithe, gan a bheith caillte in iomlán.
+cod_register	Clár íoc ar sheachadadh
+collected_against_paid_out_per	Bailithe i gcomparáid le híoctha amach, in aghaidh an choinsíneora, le baisceanna seolta airgid.
+rider_settlement	Socrú cúiréirí
+expected_against_handed_in_and	Ag súil leis i gcomparáid le tugtha isteach, agus an duillín coimisiúin.
+books_that_close	Leabhair a dhúnann
+day_book_month_bill_per	Leabhar lae, bille míosa in aghaidh an chuntais, agus achoimre GST i CSV do do chuntasóir.
+n_8_internet_down	8 · AN IDIRLÍON THÍOS?
+keep_booking	Coinnigh ort ag clárú.
+booking_labels_scanning_cod_and	Ritheann clárú, lipéid, scanadh, íoc ar sheachadadh agus na leabhair ar fad ar do ghléasanna. Nuair a thiteann an t-idirlíon, níl aon rud ag an gcuntar ag fanacht leis.
+office_router_no_internet	Ródaire na hoifige: gan idirlíon
+desk_still_booking	Deasc: fós ag clárú
+second_counter_and_rider_phone	Dara cuntar agus fón an chúiréara: ceangailte thar Wi-Fi na hoifige
+free_forever_on_your_devices	Saor in aisce go deo ar do ghléasanna
+nothing_per_rider_user_or	Faic in aghaidh an chúiréara, an úsáideora ná an bheartáin. Kumkaj Cloud roghnach: Steady ₹6k · Swift ₹12k · Priority ₹24k/bliain gan cháin — /shop.
+n_9_start	9 · TOSAIGH
+one_courier_os_your_parcels	Córas cúiréireachta amháin. Do bheartáin. Do leabhair.
+moklanjo_is_a_complete_courier	Is córas oibriúcháin cúiréireachta iomlán é Moklanjo faoi Kumkaj — Android, Windows agus Linux. Úsáideann cúiréirí an aip chéanna i mód cúiréara.
+trademark	TRÁDMHARC
+memon_for_find_it_pronounced	Memon ar “aimsigh é” · fuaimnítear go-tee-geen
+company	COMHLACHT
+brand	BRANDA
+concrete_business_operating_system	Aipeanna córas oibriúcháin gnó nithiúla
+product	TÁIRGE
+courier_operating_system_under	Córas oibriúcháin cúiréireachta faoi Kumkaj
+privacy	Príobháideacht
+terms	Téarmaí
+cancellation	Cealú
+cloud_shop	Siopa néil
+account	Cuntas
+weigh_it_right	Meá i gceart é
+price_it	Cuir praghas air
+label_it	Cuir lipéad air
+track_and_prove	Rianaigh agus cruthaigh
+money_comes_home	Tagann an t-airgead abhaile
+internet_down	Idirlíon thíos
+bead_hand	Tabhairt ar láimh
+bead_offline_short	As líne
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Ar an meá: {kg} kg
+weight_scale_wins	Socraíonn an meáchan ar an meá an táille.
+cta_installers_note	Cuirfear na suiteálaithe suas anseo a luaithe a éiríonn le gach ceann acu suiteáil ar mheaisín glan. Go dtí sin, iarr taispeántas ar WhatsApp.
+cta_whatsapp_soon	Osclóidh líne thaispeántais WhatsApp go luath. Seo a déarfaidh do theachtaireacht: “{message}”.
+acct_page_title	Cuntas — Moklanjo
+acct_lede	Cuntas amháin don suíomh agus do na haipeanna — an fhoirm chéanna cibé an bhfuil tú nua nó ag filleadh.
+acct_email	Ríomhphost
+acct_name_optional	Ainm (roghnach)
+acct_password	Pasfhocal
+acct_continue	Lean ar aghaidh
+acct_forgot	Pasfhocal dearmadta?
+acct_reset_hint	Seolfaimid nasc athshocraithe chugat ar ríomhphost. Úsáid an seoladh céanna lenar chláraigh tú.
+acct_send_reset	Seol nasc athshocraithe
+acct_cancel	Cealaigh
+acct_or_continue	nó lean ar aghaidh le
+acct_phone	Fón
+acct_mobile	Uimhir fóin póca
+acct_send_sms	Seol cód SMS
+acct_sms_code	Cód SMS
+acct_confirm_code	Deimhnigh an cód
+acct_signed_in	Logáilte isteach
+acct_signed_in_as	Logáilte isteach mar
+acct_status	Stádas
+acct_sign_in_methods	Modhanna logála isteach
+acct_cloud_username	Ainm úsáideora néil
+acct_plan	Plean
+acct_resend_verify	Athsheol ríomhphost fíoraithe
+acct_sign_out	Logáil amach
+acct_cloud_sandbox	Kumkaj Cloud (timpeallacht tástála)
+acct_current_password	Pasfhocal reatha
+acct_email_for_password	Ríomhphost le haghaidh logáil isteach le pasfhocal
+acct_new_password	Pasfhocal nua
+acct_confirm_new_password	Deimhnigh an pasfhocal nua
+acct_add_way	Cuir bealach eile le logáil isteach leis
+acct_link_hint	Nasc modhanna leis an gcuntas céanna ionas gur féidir leat rochtain a fháil ar ais má theipeann ar cheann acu.
+acct_link_google	Nasc Google
+acct_link_microsoft	Nasc Microsoft
+acct_link_github	Nasc GitHub
+acct_link_phone	Nasc fón
+acct_send_sms_link	Seol SMS le nascadh
+acct_confirm_link_phone	Deimhnigh agus nasc fón
+shop_page_title	Siopa — Moklanjo
+shop_lede	Pleananna néil bliantúla — cuirtear cáin leis ag an tseiceáil amach. Fanann aip iomlán Moklanjo ar do ghléasanna féin saor in aisce go deo, gan fógraí.
+shop_cart	Ciseán
+shop_cart_empty_hint	Tá do chiseán folamh. Cuir Steady, Swift nó Priority leis.
+shop_checkout	Seiceáil amach
+shop_clear	Glan
+shop_checkout_hint	Logálann an tseiceáil amach isteach thú ar Cuntas ar dtús, ansin tosaíonn an íocaíocht (insamhladh sa timpeallacht tástála nó Paddle nuair a bhíonn eochracha socraithe).
+acct_billing_hint	Pleananna bliantúla — cuireann an tairseach íocaíochta an cháin leis ag an tseiceáil amach. Fanann úsáid áitiúil saor in aisce go deo. Is luachan é an plean saincheaptha (d’fhéadfadh sé a bheith faoi Steady nó os cionn Priority).
+shop_cloud_plans	Pleananna néil
+acct_federated	Logáil isteach chónasctha
+acct_err_invalid_email	Cuir isteach seoladh ríomhphoist bailí.
+acct_err_weak_password	Úsáid pasfhocal ina bhfuil 6 charachtar ar a laghad.
+acct_err_wrong_password	Pasfhocal mícheart.
+acct_err_invalid_credential	Tá an ríomhphost nó an pasfhocal mícheart.
+acct_err_popup_closed	Dúnadh an fhuinneog logála isteach.
+acct_err_popup_cancelled	Cealaíodh an logáil isteach.
+acct_err_unauthorized_domain	Níl an fearann seo údaraithe le haghaidh Firebase Auth.
+acct_err_method_disabled	Níl an modh logála isteach sin cumasaithe fós.
+acct_err_too_many	An iomarca iarrachtaí. Bain triail eile as ar ball.
+acct_err_phone_format	Úsáid uimhir fóin iomlán le cód tíre (m.sh. +91…).
+acct_err_sms_code	Tá an cód SMS sin mícheart nó imithe in éag.
+acct_err_no_account	Níl aon chuntas leis an ríomhphost sin. Lean ar aghaidh chun ceann a chruthú, nó úsáid modh eile.
+acct_err_recent_login	Ar mhaithe le slándáil, logáil isteach arís, ansin bain triail eile as an athrú seo.
+acct_err_credential_in_use	Tá an modh logála isteach sin in úsáid ag cuntas eile cheana.
+acct_err_email_in_use	Tá an ríomhphost sin in úsáid ag cuntas eile cheana.
+acct_err_already_linked	Tá an modh sin nasctha leis an gcuntas seo cheana.
+acct_err_exists_other_method	Tá cuntas leis an ríomhphost seo ann cheana le modh logála isteach eile. Logáil isteach leis an modh sin ar dtús, ansin nasc an ceann seo ó leathanach do chuntais.
+acct_err_generic	Chuaigh rud éigin amú.
+acct_method_password	Ríomhphost agus pasfhocal
+acct_pw_hint_change	Athraigh do phasfhocal. Deimhneoidh tú leis an gceann reatha.
+acct_pw_hint_add	Cuir pasfhocal leis ionas gur féidir leat logáil isteach le ríomhphost freisin (úsáideach mura bhfuil soláthraí ar fáil).
+acct_pw_change	Athraigh pasfhocal
+acct_pw_add	Cuir pasfhocal leis
+acct_billing_off	Níl billeáil cumasaithe ar API an néil fós.
+acct_billing_no_provider	Níl aon fhíorsholáthraí billeála cumasaithe ar API an néil (áitiúil amháin atá an insamhladh).
+price_quote	Luachan
+price_per_year	₹{amount}/bliain gan cháin
+acct_pay_received	Íocaíocht faighte — do phlean á athnuachan…
+acct_pay_declined	Diúltaíodh don íocaíocht nó theip uirthi
+acct_pay_failed_detail	{detail}. Níor athraíodh do phlean.
+acct_checkout_closed	Dúnadh an tseiceáil amach — níor críochnaíodh aon íocaíocht. Níl aon athrú ar do phlean.
+acct_checkout_failed	Theip ar an tseiceáil amach
+acct_pay_with	Íoc le {provider}
+acct_plan_until	{plan} · go dtí {date}
+acct_unavailable	Níl sé ar fáil
+acct_continue_hint	Lean ar aghaidh le ríomhphost, soláthraí nó fón.
+acct_signed_in_fallback	(logáilte isteach)
+acct_email_verified	Ríomhphost fíoraithe
+acct_email_unverified	Níl an ríomhphost fíoraithe fós — féach ar do bhosca isteach
+acct_signed_in_phone	Logáilte isteach le fón
+acct_none_listed	Níl aon cheann liostaithe fós
+acct_signed_in_status	Tá tú logáilte isteach.
+acct_created	Cuntas cruthaithe. Seiceáil do ríomhphost chun é a fhíorú nuair is féidir leat.
+acct_reset_sent	Má tá cuntas ann don ríomhphost sin, tá nasc athshocraithe ar a bhealach. Féach ar do bhosca isteach.
+acct_another_method	modh eile
+acct_exists_via	Tá cuntas do {email} ann cheana trí {method}. Logáil isteach ar an mbealach sin ar dtús, ansin nasc an soláthraí seo ó leathanach do chuntais.
+acct_enter_current_pw	Cuir isteach do phasfhocal reatha.
+acct_relogin_retry	Logáil amach agus isteach arís, ansin bain triail eile as.
+acct_pw_mismatch	Ní hionann an pasfhocal nua agus an deimhniú.
+acct_pw_updated	Pasfhocal nuashonraithe.
+acct_enter_email_pw	Cuir isteach ríomhphost le húsáid le logáil isteach le pasfhocal.
+acct_pw_added	Pasfhocal curtha leis. Is féidir leat logáil isteach le ríomhphost anois freisin.
+acct_method_linked	Modh logála isteach nasctha.
+acct_phone_linked	Fón nasctha leis an gcuntas seo.
+acct_verify_sent	Ríomhphost fíoraithe seolta — féach ar do bhosca isteach.
+shop_pricing_soon	Praghsanna ag teacht go luath
+shop_request_quote	Iarr luachan
+shop_add_to_cart	Cuir sa chiseán
+shop_notify_later	Cuir in iúl dom níos déanaí
+shop_included	San áireamh
+shop_in_cart	Tá {plan} i do chiseán.
+shop_remove	Bain
+shop_cart_is_empty	Tá an ciseán folamh.
+shop_prices_unpublished	Níl praghsanna féinseirbhíse foilsithe don táirge seo fós. Iarr luachan saincheaptha nó seiceáil arís níos déanaí.
+shop_cart_cleared	Ciseán glanta.
+plan_free_title	Saor in aisce go deo
+plan_free_blurb	An táirge áitiúil iomlán ar do ghléasanna. Gan táille néil.
+plan_steady_blurb	Néal beo · 10 GB · bandaleithead níos ísle
+plan_swift_blurb	Néal beo · 25 GB · bandaleithead meánach
+plan_priority_blurb	Néal beo · 50 GB · an bandaleithead caighdeánach is airde
+plan_custom_title	Saincheaptha
+plan_custom_blurb	Cuóta agus bandaleithead comhaontaithe. D’fhéadfadh an luachan a bheith faoi Steady nó os cionn Priority.

@@ -1,280 +1,280 @@
 # Irish — Gaeilge (ga). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-free	@@EN@@ Free
-photo_coming	@@EN@@ Photo coming
-get_it_on_google_play	@@EN@@ Get it on Google Play
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-menus	@@EN@@ Menus
-how_it_works	@@EN@@ How it works
-features	@@EN@@ Features
-offline	@@EN@@ Offline
-pricing	@@EN@@ Pricing
-faq	@@EN@@ FAQ
-login	@@EN@@ Login
-get_it_free	@@EN@@ Get it free
-restaurant_pos_free_forever	@@EN@@ Restaurant POS · free forever
-lunch_rush_no_internet_no	@@EN@@ Lunch rush. No internet. No problem.
-khaynjo_runs_your_floor_kitchen	@@EN@@ Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet.
-android_on_google_play_today	@@EN@@ Android on Google Play today · Windows and Linux packages coming.
-works_with_no_internet	@@EN@@ Works with no internet
-your_books_stay_on_your	@@EN@@ Your books stay on your devices
-n_115_languages_on_screen	@@EN@@ 115 languages on screen
-your_floor_at_a_glance	@@EN@@ Your floor at a glance
-tap_a_table_to_walk	@@EN@@ Tap a table to walk it through a visit. Same colours and words as the app — and a table frees only once it is paid.
-every_country	@@EN@@ EVERY COUNTRY
-every_country_at_your_counter	@@EN@@ Every country at your counter
-one_famous_dish_from_every	@@EN@@ One famous dish from every country — the English name, the name in their own script, and the dish in English. Put those words on your menu. The world keeps moving past; pause or search when you want to look.
-find_a_country_or_dish	@@EN@@ Find a country or dish — e.g. India, biryani, Japan
-one_famous_dish_per_country	@@EN@@ One famous dish per country — the parade loops the whole world.
-how_a_service_runs	@@EN@@ HOW A SERVICE RUNS
-one_table_start_to_finish	@@EN@@ One table, start to finish.
-watch_a_table_go_from	@@EN@@ Watch a table go from Seated to Paid — the same steps and colours your staff see in the app.
-occupied	@@EN@@ Occupied
-in_kitchen	@@EN@@ In kitchen
-food_ready	@@EN@@ Food ready
-served	@@EN@@ Served
-bill_printed	@@EN@@ Bill printed
-paid	@@EN@@ Paid
-seat_the_table_take_the	@@EN@@ Seat the table, take the order
-mark_the_table_occupied_the	@@EN@@ Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table.
-sizes_and_add_ons	@@EN@@ Sizes and add-ons
-pick_one_size_add_optional	@@EN@@ Pick one size; add optional extras up to the limit you set.
-a_note_per_dish	@@EN@@ A note per dish
-less_spicy_travels_with_the	@@EN@@ “Less spicy” travels with the dish it belongs to.
-t4_occupied	@@EN@@ T4 · Occupied
-note_less_salt	@@EN@@ Note: less salt
-one_ticket_per_kitchen_station	@@EN@@ One ticket per kitchen station
-send_the_order_and_each	@@EN@@ Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills.
-prints_itself	@@EN@@ Prints itself
-send_and_the_ticket_prints	@@EN@@ Send, and the ticket prints at the right station — nobody carries it.
-example_ticket	@@EN@@ Example ticket
-the_kitchen_sees_what_to	@@EN@@ The kitchen sees what to cook now
-on_the_kitchen_screen_tickets	@@EN@@ On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go.
-new	@@EN@@ New
-preparing	@@EN@@ Preparing
-ready	@@EN@@ Ready
-example_kitchen_screen	@@EN@@ Example kitchen screen
-settle_any_way_the_guest	@@EN@@ Settle any way the guest pays
-cash_with_change_to_return	@@EN@@ Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid.
-tips_stay_apart	@@EN@@ Tips stay apart
-a_tip_is_recorded_on	@@EN@@ A tip is recorded on its own — never mixed into sales.
-t4_bill_printed	@@EN@@ T4 · Bill printed
-bill	@@EN@@ Bill
-customer_paid_cash	@@EN@@ Customer paid (cash)
-return_to_customer	@@EN@@ Return to customer
-close_the_day_you_can	@@EN@@ Close the day you can trust
-count_the_drawer_against_the	@@EN@@ Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips.
-shift_close	@@EN@@ Shift close
-opening_float	@@EN@@ Opening float
-cash_taken	@@EN@@ + cash taken
-cash_tips	@@EN@@ + cash tips
-cash_paid_out	@@EN@@ − cash paid out
-expected_in_the_drawer	@@EN@@ Expected in the drawer
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-everything_else_the_floor_needs	@@EN@@ EVERYTHING ELSE THE FLOOR NEEDS
-built_for_a_real_service	@@EN@@ Built for a real service.
-the_changes_that_happen_every	@@EN@@ The changes that happen every lunch — handled in the open, with who, when and why kept.
-move_and_merge_tables	@@EN@@ Move and merge tables
-guests_change_tables_the_order	@@EN@@ Guests change tables — the order and its minutes go with them. Two tables, one bill.
-cancel_after_the_kot	@@EN@@ Cancel after the KOT
-with_a_reason_cooked_or	@@EN@@ With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip.
-complimentary_dishes	@@EN@@ Complimentary dishes
-a_comp_stays_on_the	@@EN@@ A comp stays on the bill at ₹ 0, with the reason and the approver.
-rights_per_person	@@EN@@ Rights per person
-each_action_is_allowed_allowed	@@EN@@ Each action is allowed, allowed with a manager PIN, or not allowed — person by person.
-your_menu_your_words	@@EN@@ Your menu, your words
-search_by_name_or_short	@@EN@@ Search by name or short code, with aliases in another language — “ptk” finds Paneer tikka.
-area_prices_and_happy_hour	@@EN@@ Area prices and happy hour
-a_dearer_price_in_the	@@EN@@ A dearer price in the AC room; breakfast menus and happy-hour prices by the clock.
-customer_khata	@@EN@@ Customer khata
-part_payments_and_due_go	@@EN@@ Part payments and Due go on the customer's account in Parties, settled later.
-reports_that_answer_questions	@@EN@@ Reports that answer questions
-sales_by_staff_order_type	@@EN@@ Sales by staff, order type, hour and dish — with cancels, comps and tips listed.
-start_with_a_menu	@@EN@@ START WITH A MENU
-your_menu_ready_in_minutes	@@EN@@ Your menu, ready in minutes.
-set_up_your_counter_and	@@EN@@ Set up your counter and pick a starter menu with photos — then change names, prices and codes to your own. Free to download from khaynjo.com.
-starter_menu	@@EN@@ Starter menu
-khaynjo_starter_menu	@@EN@@ Khaynjo starter menu
-world_cuisines_japanese_mexican	@@EN@@ World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo.
-n_14_dishes_11_categories	@@EN@@ 14 dishes · 11 categories
-cafe_starter	@@EN@@ Café starter
-tea_coffee_cold_drinks_bakery	@@EN@@ Tea, coffee, cold drinks, bakery and snacks — ready for a counter café.
-n_22_dishes_4_categories	@@EN@@ 22 dishes · 4 categories
-photo_shelf	@@EN@@ Photo shelf
-khaynjo_dish_photos	@@EN@@ Khaynjo dish photos
-the_full_public_photo_shelf	@@EN@@ The full public photo shelf — pick the picture for any dish you add.
-n_1_459_dish_photos_25	@@EN@@ 1,459 dish photos · 25 kinds of kitchen
-internet_down	@@EN@@ INTERNET DOWN?
-the_internet_went_down_the	@@EN@@ The internet went down. The counter didn't.
-orders_kitchen_tickets_bills_and	@@EN@@ Orders, kitchen tickets, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in your restaurant waits for it — and there is no account with us to sign in to.
-right_now_mid_lunch	@@EN@@ Right now, mid-lunch
-router_no_internet	@@EN@@ Router: no internet
-counter_taking_orders_and_settling	@@EN@@ Counter: taking orders and settling bills
-day_book_every_bill_saved	@@EN@@ Day book: every bill saved on this device
-captains_tablets_and_the_kitchen	@@EN@@ Captains' tablets and the kitchen screen: working together on your own Wi-Fi
-eyebrow_pricing	@@EN@@ PRICING
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-software_capability_is_not_what	@@EN@@ Software capability is not what we sell. Run the whole of Khaynjo on your own devices at no cost — nothing is locked behind a plan.
-khaynjo_on_your_devices	@@EN@@ Khaynjo on your devices
-forever	@@EN@@ forever
-every_feature	@@EN@@ Every feature
-floor_kitchen_billing_day_close	@@EN@@ Floor, kitchen, billing, day close, reports — the full app.
-no_per_seat_charge	@@EN@@ No per-seat charge
-no_charge_per_table_waiter	@@EN@@ No charge per table, waiter, order or device.
-no_account_with_us	@@EN@@ No account with us
-day_to_day_service_needs	@@EN@@ Day-to-day service needs no sign-up and no internet.
-kumkaj_cloud_optional	@@EN@@ Kumkaj Cloud · optional
-yearly_cloud_if_you_want	@@EN@@ Yearly cloud if you want it
-steady_6_000_swift_12	@@EN@@ Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way.
-shop_plans_at_shop_sign	@@EN@@ Shop plans at /shop · sign in at /account
-open_cloud_shop	@@EN@@ Open cloud shop
-questions	@@EN@@ QUESTIONS
-asked_before_every_first_service	@@EN@@ Asked before every first service.
-do_i_need_the_internet	@@EN@@ Do I need the internet?
-no_orders_kots_bills_and	@@EN@@ No. Orders, KOTs, bills and the day book work with no internet. You need it once to download the app and, if you want one, a starter menu.
-where_are_my_bills_kept	@@EN@@ Where are my bills kept?
-on_your_own_device_in	@@EN@@ On your own device, in your shop — not on our servers. Make backup copies from Settings and keep them wherever you like.
-which_devices_does_it_run	@@EN@@ Which devices does it run on?
-android_phones_and_tablets_today	@@EN@@ Android phones and tablets today, from Google Play. Windows and Linux packages are on their way.
-does_it_print_kots_and	@@EN@@ Does it print KOTs and bills?
-yes_on_thermal_printers_you	@@EN@@ Yes — on thermal printers you set up in Settings → Printers, one kitchen ticket per station.
-can_my_staff_use_their	@@EN@@ Can my staff use their own language?
-yes_the_screens_come_in	@@EN@@ Yes. The screens come in 115 languages, Arabic and Urdu right-to-left, and dish names can carry aliases in another script.
-what_does_it_cost	@@EN@@ What does it cost?
-nothing_on_your_own_devices	@@EN@@ Nothing on your own devices — every feature, forever. Optional Kumkaj Cloud is yearly Steady / Swift / Priority (or a Custom quote); open /shop to buy.
-ready_for_lunch	@@EN@@ READY FOR LUNCH?
-run_your_next_service_on	@@EN@@ Run your next service on Khaynjo.
-free_on_google_play_want	@@EN@@ Free on Google Play. Want a walk-through first? Message us on WhatsApp.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-photo_credits	@@EN@@ Photo credits
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-shelf_no_match	@@EN@@ No country or dish matches that search.
-shelf_search_note	@@EN@@ Search pauses the parade; clear it to resume or stay paused as you left it.
-floor_meta_min	@@EN@@ {min} min
-floor_meta_min_bill	@@EN@@ {min} min · ₹ {amount}
-floor_meta_paid	@@EN@@ ₹ {amount} paid
-acct_page_title	@@EN@@ Account — Khaynjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Khaynjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Khaynjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Sampla
+free	Folamh
+photo_coming	Grianghraf ar an mbealach
+get_it_on_google_play	Faigh ar Google Play é
+whatsapp_for_a_demo	Taispeántas ar WhatsApp
+menus	Biachláir
+how_it_works	Conas a oibríonn sé
+features	Gnéithe
+offline	As líne
+pricing	Praghsanna
+faq	Ceisteanna coitianta
+login	Logáil isteach
+get_it_free	Faigh saor in aisce é
+restaurant_pos_free_forever	Córas díolacháin bialainne · saor in aisce go deo
+lunch_rush_no_internet_no	Brú am lóin. Gan idirlíon. Gan fadhb.
+khaynjo_runs_your_floor_kitchen	Ritheann Khaynjo do halla, do chistin agus do chuntar ar ghléasanna atá agat cheana — ón mbord go dtí an chistin go dtí an bille, le hidirlíon nó gan é.
+android_on_google_play_today	Android ar Google Play inniu · pacáistí Windows agus Linux ag teacht.
+works_with_no_internet	Oibríonn sé gan idirlíon
+your_books_stay_on_your	Fanann do leabhair ar do ghléasanna
+n_115_languages_on_screen	115 teanga ar an scáileán
+your_floor_at_a_glance	Do halla ar amharc amháin
+tap_a_table_to_walk	Tapáil bord chun é a thabhairt trí chuairt. Na dathanna agus na focail chéanna leis an aip — agus ní bhíonn bord saor go dtí go n-íoctar é.
+every_country	GACH TÍR
+every_country_at_your_counter	Gach tír ag do chuntar
+one_famous_dish_from_every	Mias cháiliúil amháin ó gach tír — an t-ainm Béarla, an t-ainm ina script féin, agus an mhias i mBéarla. Cuir na focail sin ar do bhiachlár. Leanann an domhan ag gluaiseacht thart; cuir ar sos nó cuardaigh nuair is mian leat breathnú.
+find_a_country_or_dish	Aimsigh tír nó mias — m.sh. India, biryani, Japan
+one_famous_dish_per_country	Mias cháiliúil amháin in aghaidh na tíre — téann an pharáid timpeall an domhain ar fad.
+how_a_service_runs	CONAS A RITHEANN SEIRBHÍS
+one_table_start_to_finish	Bord amháin, ó thús go deireadh.
+watch_a_table_go_from	Féach ar bhord ag dul ó “Ina suí” go “Íoctha” — na céimeanna agus na dathanna céanna a fheiceann do chuid foirne san aip.
+occupied	Líontha
+in_kitchen	Sa chistin
+food_ready	Bia réidh
+served	Freastailte
+bill_printed	Bille priontáilte
+paid	Íoctha
+seat_the_table_take_the	Suigh na haíonna, glac an t-ordú
+mark_the_table_occupied_the	Marcáil an bord mar “Líontha” chomh luath agus a shuíonn na haíonna. Cuir miasa leis, roghnaigh méid agus breiseáin, agus clóscríobh nóta don chistin — ag an mbord féin.
+sizes_and_add_ons	Méideanna agus breiseáin
+pick_one_size_add_optional	Roghnaigh méid amháin; cuir breiseáin roghnacha leis suas go dtí an teorainn a shocraíonn tú.
+a_note_per_dish	Nóta in aghaidh na méise
+less_spicy_travels_with_the	Taistealaíonn “Níos lú spíosrach” leis an mias lena mbaineann sé.
+t4_occupied	T4 · Líontha
+note_less_salt	Nóta: níos lú salainn
+one_ticket_per_kitchen_station	Duillín amháin in aghaidh gach stáisiúin cistine
+send_the_order_and_each	Seol an t-ordú agus ní fhaigheann gach stáisiún ach a mhiasa féin — uimhrithe in aghaidh an lae, leis an mbord, an freastalaí agus gach nóta. Gan praghas riamh: cócaireann an chistin, déanann an cuntar an bille.
+prints_itself	Priontálann sé é féin
+send_and_the_ticket_prints	Seol, agus priontáiltear an duillín ag an stáisiún ceart — ní gá do dhuine ar bith é a iompar.
+example_ticket	Duillín samplach
+the_kitchen_sees_what_to	Feiceann an chistin cad atá le cócaráil anois
+on_the_kitchen_screen_tickets	Ar scáileán na cistine bogann duillíní Nua → Ag ullmhú → Réidh le tapáil amháin. Téann dath na nduillíní níos sine i dteas, comhaireann “Le cócaráil anois” gach mias atá ag fanacht, agus is féidir leis na príomhchúrsaí fanacht go dtí go n-imíonn na réamhchúrsaí.
+new	Nua
+preparing	Ag ullmhú
+ready	Réidh
+example_kitchen_screen	Scáileán cistine samplach
+settle_any_way_the_guest	Socraigh pé bealach a íocann an t-aoi
+cash_with_change_to_return	Airgead tirim le sóinseáil, UPI leis an tsuim sa QR cheana, íocaíocht pháirteach, nó fiach i leabhar cairde an chustaiméara. Roinn de réir míre, de réir suíocháin nó go cothrom. Ní bhíonn an bord saor go dtí go n-íoctar a bhille.
+tips_stay_apart	Coinnítear síntí láimhe ar leith
+a_tip_is_recorded_on	Taifeadtar síneadh láimhe ar leith — ní mheasctar riamh leis an díolachán é.
+t4_bill_printed	T4 · Bille priontáilte
+bill	Bille
+customer_paid_cash	D’íoc an custaiméir (airgead tirim)
+return_to_customer	Sóinseáil don chustaiméir
+close_the_day_you_can	Dúnadh lae ar féidir leat muinín a bheith agat as
+count_the_drawer_against_the	Comhair an tarraiceán in aghaidh an airgid sóinseála, an airgid a glacadh, na síntí láimhe agus an airgid a íocadh amach — ainmnítear easnamh nó barrachas. Priontáil duillín na seala, ansin oscail tuarascáil an lae de réir foirne, cineál ordaithe, uaire agus méise, le cealuithe, miasa ar an teach agus síntí láimhe.
+shift_close	Dúnadh seala
+opening_float	Airgead sóinseála tosaigh
+cash_taken	+ airgead tirim a glacadh
+cash_tips	+ síntí láimhe airgid
+cash_paid_out	− airgead tirim a íocadh amach
+expected_in_the_drawer	Ag súil leis sa tarraiceán
+counted	Comhairthe
+short	Easnamh
+everything_else_the_floor_needs	GACH RUD EILE A THEASTAÍONN ÓN HALLA
+built_for_a_real_service	Tógtha do sheirbhís cheart.
+the_changes_that_happen_every	Na hathruithe a tharlaíonn gach am lóin — láimhseáilte go hoscailte, agus coinnítear cé, cathain agus cén fáth.
+move_and_merge_tables	Bog agus cumasc boird
+guests_change_tables_the_order	Athraíonn aíonna boird — téann an t-ordú agus a nóiméid leo. Dhá bhord, bille amháin.
+cancel_after_the_kot	Cealaigh tar éis an duillín cistine
+with_a_reason_cooked_or	Le cúis, cócaráilte nó nach ea, agus cé a cheadaigh é. Faigheann an chistin duillín cealaithe.
+complimentary_dishes	Miasa ar an teach
+a_comp_stays_on_the	Fanann mias ar an teach ar an mbille ar ₹ 0, leis an gcúis agus leis an té a cheadaigh.
+rights_per_person	Cearta in aghaidh an duine
+each_action_is_allowed_allowed	Tá gach gníomh ceadaithe, ceadaithe le PIN bainisteora, nó gan cead — duine ar dhuine.
+your_menu_your_words	Do bhiachlár, do chuid focal
+search_by_name_or_short	Cuardaigh de réir ainm nó cóid ghearr, le hailiasanna i dteanga eile — aimsíonn “ptk” Paneer tikka.
+area_prices_and_happy_hour	Praghsanna limistéir agus uair shona
+a_dearer_price_in_the	Praghas níos airde sa seomra aerchóirithe; biachláir bhricfeasta agus praghsanna uair shona de réir an chloig.
+customer_khata	Leabhar cairde an chustaiméara
+part_payments_and_due_go	Téann íocaíochtaí páirteacha agus fiacha ar chuntas an chustaiméara faoi Páirtithe, le socrú níos déanaí.
+reports_that_answer_questions	Tuarascálacha a fhreagraíonn ceisteanna
+sales_by_staff_order_type	Díolacháin de réir foirne, cineál ordaithe, uaire agus méise — le cealuithe, miasa ar an teach agus síntí láimhe liostaithe.
+start_with_a_menu	TOSAIGH LE BIACHLÁR
+your_menu_ready_in_minutes	Do bhiachlár, réidh i gceann nóiméad.
+set_up_your_counter_and	Socraigh do chuntar agus roghnaigh biachlár tosaigh le grianghraif — ansin athraigh ainmneacha, praghsanna agus cóid go dtí do chuid féin. Saor in aisce le híoslódáil ó khaynjo.com.
+starter_menu	Biachlár tosaigh
+khaynjo_starter_menu	Biachlár tosaigh Khaynjo
+world_cuisines_japanese_mexican	Ealaín chócaireachta an domhain — Seapánach, Meicsiceach, Iodálach, Indiach, Téalannach agus tuilleadh — gach mias lena grianghraf.
+n_14_dishes_11_categories	14 mhias · 11 chatagóir
+cafe_starter	Pacáiste tosaigh caife
+tea_coffee_cold_drinks_bakery	Tae, caife, deochanna fuara, bácáil agus sneaiceanna — réidh do chaife cuntair.
+n_22_dishes_4_categories	22 mias · 4 chatagóir
+photo_shelf	Seilf grianghraf
+khaynjo_dish_photos	Grianghraif miasa Khaynjo
+the_full_public_photo_shelf	An tseilf phoiblí grianghraf ar fad — roghnaigh an pictiúr d’aon mhias a chuireann tú leis.
+n_1_459_dish_photos_25	1,459 grianghraf miasa · 25 cineál cistine
+internet_down	AN IDIRLÍON THÍOS?
+the_internet_went_down_the	Chuaigh an t-idirlíon síos. Níor chuaigh an cuntar.
+orders_kitchen_tickets_bills_and	Maireann orduithe, duillíní cistine, billí agus an leabhar lae ar do ghléasanna féin. Nuair a thiteann an t-idirlíon i lár an lóin, níl aon rud i do bhialann ag fanacht leis — agus níl aon chuntas againne le logáil isteach ann.
+right_now_mid_lunch	Anois díreach, i lár an lóin
+router_no_internet	Ródaire: gan idirlíon
+counter_taking_orders_and_settling	Cuntar: ag glacadh orduithe agus ag socrú billí
+day_book_every_bill_saved	Leabhar lae: gach bille sábháilte ar an ngléas seo
+captains_tablets_and_the_kitchen	Táibléid na gceannfhreastalaithe agus scáileán na cistine: ag obair le chéile ar do Wi-Fi féin
+eyebrow_pricing	PRAGHSANNA
+free_forever_on_your_devices	Saor in aisce go deo ar do ghléasanna.
+software_capability_is_not_what	Ní cumas bogearraí atá á dhíol againn. Rith Khaynjo ar fad ar do ghléasanna féin saor in aisce — níl aon rud faoi ghlas taobh thiar de phlean.
+khaynjo_on_your_devices	Khaynjo ar do ghléasanna
+forever	go deo
+every_feature	Gach gné
+floor_kitchen_billing_day_close	Halla, cistin, billeáil, dúnadh lae, tuarascálacha — an aip iomlán.
+no_per_seat_charge	Gan táille in aghaidh an tsuíocháin
+no_charge_per_table_waiter	Gan táille in aghaidh boird, freastalaí, ordaithe ná gléis.
+no_account_with_us	Gan cuntas linne
+day_to_day_service_needs	Ní theastaíonn clárú ná idirlíon ón tseirbhís laethúil.
+kumkaj_cloud_optional	Kumkaj Cloud · roghnach
+yearly_cloud_if_you_want	Néal bliantúil más mian leat é
+steady_6_000_swift_12	Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / bliain gan cháin (cáin ag an tseiceáil amach). Is luachan é an plean saincheaptha — d’fhéadfadh sé a bheith faoi Steady nó os cionn Priority. Fanann Khaynjo áitiúil saor in aisce go deo ar aon nós.
+shop_plans_at_shop_sign	Pleananna ag /shop · logáil isteach ag /account
+open_cloud_shop	Oscail an siopa néil
+questions	CEISTEANNA
+asked_before_every_first_service	Á gcur roimh gach céad seirbhís.
+do_i_need_the_internet	An dteastaíonn an t-idirlíon uaim?
+no_orders_kots_bills_and	Ní theastaíonn. Oibríonn orduithe, duillíní cistine, billí agus an leabhar lae gan idirlíon. Teastaíonn sé uait uair amháin chun an aip a íoslódáil agus, más mian leat, biachlár tosaigh.
+where_are_my_bills_kept	Cá gcoinnítear mo bhillí?
+on_your_own_device_in	Ar do ghléas féin, i do shiopa — ní ar ár bhfreastalaithe. Déan cóipeanna cúltaca ó Socruithe agus coinnigh iad cibé áit is mian leat.
+which_devices_does_it_run	Cé na gléasanna a ritheann sé orthu?
+android_phones_and_tablets_today	Fóin agus táibléid Android inniu, ó Google Play. Tá pacáistí Windows agus Linux ar an mbealach.
+does_it_print_kots_and	An bpriontálann sé duillíní cistine agus billí?
+yes_on_thermal_printers_you	Priontálann — ar phrintéirí teirmeacha a shocraíonn tú i Socruithe → Printéirí, duillín cistine amháin in aghaidh an stáisiúin.
+can_my_staff_use_their	An féidir le mo chuid foirne a dteanga féin a úsáid?
+yes_the_screens_come_in	Is féidir. Tagann na scáileáin i 115 teanga, Araibis agus Urdúis ó dheis go clé, agus is féidir ailiasanna i script eile a bheith ag ainmneacha miasa.
+what_does_it_cost	Cé mhéad a chosnaíonn sé?
+nothing_on_your_own_devices	Faic ar do ghléasanna féin — gach gné, go deo. Is Steady / Swift / Priority bliantúil é Kumkaj Cloud roghnach (nó luachan saincheaptha); oscail /shop le ceannach.
+ready_for_lunch	RÉIDH DON LÓN?
+run_your_next_service_on	Rith do chéad seirbhís eile ar Khaynjo.
+free_on_google_play_want	Saor in aisce ar Google Play. Ar mhaith leat taispeántas ar dtús? Seol teachtaireacht chugainn ar WhatsApp.
+privacy	Príobháideacht
+terms	Téarmaí
+cancellation	Cealú
+photo_credits	Creidiúintí grianghraf
+cloud_shop	Siopa néil
+account	Cuntas
+cta_installers_note	Cuirfear na suiteálaithe suas anseo a luaithe a éiríonn le gach ceann acu suiteáil ar mheaisín glan. Go dtí sin, iarr taispeántas ar WhatsApp.
+cta_whatsapp_soon	Osclóidh líne thaispeántais WhatsApp go luath. Seo a déarfaidh do theachtaireacht: “{message}”.
+shelf_no_match	Níl aon tír ná mias a mheaitseálann an cuardach sin.
+shelf_search_note	Cuireann an cuardach an pharáid ar sos; glan é chun leanúint ar aghaidh, nó fanfaidh sé ar sos mar a d’fhág tú é.
+floor_meta_min	{min} nóim.
+floor_meta_min_bill	{min} nóim. · ₹ {amount}
+floor_meta_paid	₹ {amount} íoctha
+acct_page_title	Cuntas — Khaynjo
+acct_lede	Cuntas amháin don suíomh agus do na haipeanna — an fhoirm chéanna cibé an bhfuil tú nua nó ag filleadh.
+acct_email	Ríomhphost
+acct_name_optional	Ainm (roghnach)
+acct_password	Pasfhocal
+acct_continue	Lean ar aghaidh
+acct_forgot	Pasfhocal dearmadta?
+acct_reset_hint	Seolfaimid nasc athshocraithe chugat ar ríomhphost. Úsáid an seoladh céanna lenar chláraigh tú.
+acct_send_reset	Seol nasc athshocraithe
+acct_cancel	Cealaigh
+acct_or_continue	nó lean ar aghaidh le
+acct_phone	Fón
+acct_mobile	Uimhir fóin póca
+acct_send_sms	Seol cód SMS
+acct_sms_code	Cód SMS
+acct_confirm_code	Deimhnigh an cód
+acct_signed_in	Logáilte isteach
+acct_signed_in_as	Logáilte isteach mar
+acct_status	Stádas
+acct_sign_in_methods	Modhanna logála isteach
+acct_cloud_username	Ainm úsáideora néil
+acct_plan	Plean
+acct_resend_verify	Athsheol ríomhphost fíoraithe
+acct_sign_out	Logáil amach
+acct_cloud_sandbox	Kumkaj Cloud (timpeallacht tástála)
+acct_current_password	Pasfhocal reatha
+acct_email_for_password	Ríomhphost le haghaidh logáil isteach le pasfhocal
+acct_new_password	Pasfhocal nua
+acct_confirm_new_password	Deimhnigh an pasfhocal nua
+acct_add_way	Cuir bealach eile le logáil isteach leis
+acct_link_hint	Nasc modhanna leis an gcuntas céanna ionas gur féidir leat rochtain a fháil ar ais má theipeann ar cheann acu.
+acct_link_google	Nasc Google
+acct_link_microsoft	Nasc Microsoft
+acct_link_github	Nasc GitHub
+acct_link_phone	Nasc fón
+acct_send_sms_link	Seol SMS le nascadh
+acct_confirm_link_phone	Deimhnigh agus nasc fón
+shop_page_title	Siopa — Khaynjo
+shop_lede	Pleananna néil bliantúla — cuirtear cáin leis ag an tseiceáil amach. Fanann aip iomlán Khaynjo ar do ghléasanna féin saor in aisce go deo, gan fógraí.
+shop_cart	Ciseán
+shop_cart_empty_hint	Tá do chiseán folamh. Cuir Steady, Swift nó Priority leis.
+shop_checkout	Seiceáil amach
+shop_clear	Glan
+shop_checkout_hint	Logálann an tseiceáil amach isteach thú ar Cuntas ar dtús, ansin tosaíonn an íocaíocht (insamhladh sa timpeallacht tástála nó Paddle nuair a bhíonn eochracha socraithe).
+acct_billing_hint	Pleananna bliantúla — cuireann an tairseach íocaíochta an cháin leis ag an tseiceáil amach. Fanann úsáid áitiúil saor in aisce go deo. Is luachan é an plean saincheaptha (d’fhéadfadh sé a bheith faoi Steady nó os cionn Priority).
+shop_cloud_plans	Pleananna néil
+acct_federated	Logáil isteach chónasctha
+acct_err_invalid_email	Cuir isteach seoladh ríomhphoist bailí.
+acct_err_weak_password	Úsáid pasfhocal ina bhfuil 6 charachtar ar a laghad.
+acct_err_wrong_password	Pasfhocal mícheart.
+acct_err_invalid_credential	Tá an ríomhphost nó an pasfhocal mícheart.
+acct_err_popup_closed	Dúnadh an fhuinneog logála isteach.
+acct_err_popup_cancelled	Cealaíodh an logáil isteach.
+acct_err_unauthorized_domain	Níl an fearann seo údaraithe le haghaidh Firebase Auth.
+acct_err_method_disabled	Níl an modh logála isteach sin cumasaithe fós.
+acct_err_too_many	An iomarca iarrachtaí. Bain triail eile as ar ball.
+acct_err_phone_format	Úsáid uimhir fóin iomlán le cód tíre (m.sh. +91…).
+acct_err_sms_code	Tá an cód SMS sin mícheart nó imithe in éag.
+acct_err_no_account	Níl aon chuntas leis an ríomhphost sin. Lean ar aghaidh chun ceann a chruthú, nó úsáid modh eile.
+acct_err_recent_login	Ar mhaithe le slándáil, logáil isteach arís, ansin bain triail eile as an athrú seo.
+acct_err_credential_in_use	Tá an modh logála isteach sin in úsáid ag cuntas eile cheana.
+acct_err_email_in_use	Tá an ríomhphost sin in úsáid ag cuntas eile cheana.
+acct_err_already_linked	Tá an modh sin nasctha leis an gcuntas seo cheana.
+acct_err_exists_other_method	Tá cuntas leis an ríomhphost seo ann cheana le modh logála isteach eile. Logáil isteach leis an modh sin ar dtús, ansin nasc an ceann seo ó leathanach do chuntais.
+acct_err_generic	Chuaigh rud éigin amú.
+acct_method_password	Ríomhphost agus pasfhocal
+acct_pw_hint_change	Athraigh do phasfhocal. Deimhneoidh tú leis an gceann reatha.
+acct_pw_hint_add	Cuir pasfhocal leis ionas gur féidir leat logáil isteach le ríomhphost freisin (úsáideach mura bhfuil soláthraí ar fáil).
+acct_pw_change	Athraigh pasfhocal
+acct_pw_add	Cuir pasfhocal leis
+acct_billing_off	Níl billeáil cumasaithe ar API an néil fós.
+acct_billing_no_provider	Níl aon fhíorsholáthraí billeála cumasaithe ar API an néil (áitiúil amháin atá an insamhladh).
+price_quote	Luachan
+price_per_year	₹{amount}/bliain gan cháin
+acct_pay_received	Íocaíocht faighte — do phlean á athnuachan…
+acct_pay_declined	Diúltaíodh don íocaíocht nó theip uirthi
+acct_pay_failed_detail	{detail}. Níor athraíodh do phlean.
+acct_checkout_closed	Dúnadh an tseiceáil amach — níor críochnaíodh aon íocaíocht. Níl aon athrú ar do phlean.
+acct_checkout_failed	Theip ar an tseiceáil amach
+acct_pay_with	Íoc le {provider}
+acct_plan_until	{plan} · go dtí {date}
+acct_unavailable	Níl sé ar fáil
+acct_continue_hint	Lean ar aghaidh le ríomhphost, soláthraí nó fón.
+acct_signed_in_fallback	(logáilte isteach)
+acct_email_verified	Ríomhphost fíoraithe
+acct_email_unverified	Níl an ríomhphost fíoraithe fós — féach ar do bhosca isteach
+acct_signed_in_phone	Logáilte isteach le fón
+acct_none_listed	Níl aon cheann liostaithe fós
+acct_signed_in_status	Tá tú logáilte isteach.
+acct_created	Cuntas cruthaithe. Seiceáil do ríomhphost chun é a fhíorú nuair is féidir leat.
+acct_reset_sent	Má tá cuntas ann don ríomhphost sin, tá nasc athshocraithe ar a bhealach. Féach ar do bhosca isteach.
+acct_another_method	modh eile
+acct_exists_via	Tá cuntas do {email} ann cheana trí {method}. Logáil isteach ar an mbealach sin ar dtús, ansin nasc an soláthraí seo ó leathanach do chuntais.
+acct_enter_current_pw	Cuir isteach do phasfhocal reatha.
+acct_relogin_retry	Logáil amach agus isteach arís, ansin bain triail eile as.
+acct_pw_mismatch	Ní hionann an pasfhocal nua agus an deimhniú.
+acct_pw_updated	Pasfhocal nuashonraithe.
+acct_enter_email_pw	Cuir isteach ríomhphost le húsáid le logáil isteach le pasfhocal.
+acct_pw_added	Pasfhocal curtha leis. Is féidir leat logáil isteach le ríomhphost anois freisin.
+acct_method_linked	Modh logála isteach nasctha.
+acct_phone_linked	Fón nasctha leis an gcuntas seo.
+acct_verify_sent	Ríomhphost fíoraithe seolta — féach ar do bhosca isteach.
+shop_pricing_soon	Praghsanna ag teacht go luath
+shop_request_quote	Iarr luachan
+shop_add_to_cart	Cuir sa chiseán
+shop_notify_later	Cuir in iúl dom níos déanaí
+shop_included	San áireamh
+shop_in_cart	Tá {plan} i do chiseán.
+shop_remove	Bain
+shop_cart_is_empty	Tá an ciseán folamh.
+shop_prices_unpublished	Níl praghsanna féinseirbhíse foilsithe don táirge seo fós. Iarr luachan saincheaptha nó seiceáil arís níos déanaí.
+shop_cart_cleared	Ciseán glanta.
+plan_free_title	Saor in aisce go deo
+plan_free_blurb	An táirge áitiúil iomlán ar do ghléasanna. Gan táille néil.
+plan_steady_blurb	Néal beo · 10 GB · bandaleithead níos ísle
+plan_swift_blurb	Néal beo · 25 GB · bandaleithead meánach
+plan_priority_blurb	Néal beo · 50 GB · an bandaleithead caighdeánach is airde
+plan_custom_title	Saincheaptha
+plan_custom_blurb	Cuóta agus bandaleithead comhaontaithe. D’fhéadfadh an luachan a bheith faoi Steady nó os cionn Priority.
