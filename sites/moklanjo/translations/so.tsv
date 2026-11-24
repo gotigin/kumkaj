@@ -1,254 +1,254 @@
 # Somali — Soomaali (so). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Tusaale
+length	Dherer
+download_free	Ku soo deji bilaash
+whatsapp_for_a_demo	Bandhig WhatsApp
+free_on_android_windows_and	Bilaash Android, Windows iyo Linux.
+courier_operating_system	nidaamka hawlgalka adeegga xamuulka
+parcel_journey	SAFARKA BAAKADDA
+walk_in	Macmiil miiska iibka
+weigh	Miisaan
+price	Qiime
+label	Calaamad
+hand_over	Gacan-gelin
+track	Raac
+offline	Internet la’aan
+start	Bilow
+moklanjo_courier_operating_system	MOKLANJO · NIDAAMKA HAWLGALKA ADEEGGA XAMUULKA
+book_move_and_settle_every	Diiwaangeli, dhaqaaji oo xisaabi baakad kasta — hal nidaam xamuul oo qalabkaaga ku jira.
+parties_books_cod_labels_awb	Dhinacyada, buugaagta, lacag-bixin marka la helo, calaamadaha, taxanaha AWB, raadraaca, gaarsiiyayaasha iyo biilasha — wareegga oo dhan laga bilaabo miiska iibka ilaa xisaab-xiritaanka, internet ha jiro ama yuusan jirin. Bilaash qalabkaaga.
+the_walk_in_loop	WAREEGGA MIISKA IIBKA
+actual_and_volumetric_side_by	Miisaanka dhabta ah iyo miisaanka mugga, dhinac-dhinac.
+charge	Kharash
+your_rate_card_cash_or	Liiska qiimahaaga, lacag caddaan ah ama akoon.
+next_booking	Diiwaangelinta xigta
+one_tap_clears_the_counter	Hal taabasho ayaa miiska iibka u bannaynaysa macmiilka xiga.
+scroll_the_parcel_journey_rail	Hoos u dhaqaaji — xariiqda safarka baakadda ee kore waxay muujisaa meesha aad sheekada ka joogto.
+n_2_weigh_it_right	2 · SI SAX AH U MIISAAN
+actual_or_volumetric_whichever_is	Dhab ama mug — kan sare, sida aad rabto loo soo koobay.
+try_a_box	Isku day sanduuq
+domestic	Gudaha
+international	Caalami
+breadth	Ballac
+height	Joog
+weight_on_the_scale	Miisaanka miisaamaha
+chargeable_weight	MIISAANKA LA BIXINAYO
+the_box_s_size_sets	Cabbirka sanduuqa ayaa go’aamiya kharashka.
+higher_of_the_two_rounded	Kan sare ee labada, kor loogu soo koobay 0.5 kg ka xiga.
+in_the_app_the_divisor	App-ka gudihiisa, qaybiyaha, tallaabada soo koobidda iyo cabbirradaada (cm ama inji, kg ama lb) waxaa dejiya ganacsiga. Badhanka Caalamiga ah wuxuu u bedelaa ÷6000 hal diiwaangelin oo aan la taaban Dejinta.
+n_3_price_it	3 · QIIME U YEEL
+your_rate_cards_your_party	Liisaska qiimahaaga, qiimaha dhinacyadaada — iyo faa’iidadaada warqad dirista kasta.
+rate_card	Liiska qiimaha
+zone_service	Aag · adeeg
+first_0_5_kg	0.5 kg ugu horreeya
+each_0_5_kg	0.5 kg kasta
+local_surface	Maxalli · Dhul
+within_state_express	Gobolka gudihiisa · Degdeg
+metro_air	Magaalo weyn · Hawo
+zone_service_weight_slab	Aag × adeeg × heerka miisaanka
+first_slab_and_each_extra	Heerka koowaad iyo heer kasta oo dheeri ah, aag iyo adeeg kasta.
+a_consignor_s_own_card	Liiska qiimaha soodiraha gaarka ah
+regular_senders_get_their_rates	Soodirayaasha joogtada ahi waxay helaan qiimahooda; liiska caadiga ahi wuxuu daboolaa dhammaan kuwa kale.
+margin_at_the_desk	Faa’iidada miiska
+your_sell_price_against_the	Qiimahaaga iibka marka loo eego qiimaha qaadaha, warqad dirista kasta.
+n_4_label_it	4 · CALAAMADEE
+awb_from_your_own_number	AWB oo ka yimid taxanaha lambarradaada. Calaamadee, sawir, hel.
+number_pools_per_carrier	Taxanaha lambarrada qaade kasta
+enter_each_carrier_s_start	Hal mar geli taxanaha bilow–dhammaad ee qaade kasta; diiwaangelin kastaa waxay qaadataa lambarka xiga.
+code_128_labels	Calaamadaha Code 128
+the_awb_goes_on_the	AWB-ka wuxuu sanduuqa ku dhegaa sidii barcode iyo lambarro caadi ah.
+scan_to_find	Sawir si aad u hesho
+scan_a_label_to_open	Sawir calaamad si aad u furto warqadda dirista oo aad wax uga qabato.
+n_5_hand_over	5 · GACAN-GELI
+hand_it_to_a_carrier	U dhiib qaade, ama dir gaarsiiyahaaga. Isla nidaamka.
+into_a_carrier_bag	Kiishka qaadaha
+the_manifest_holds_exactly_the	Liiska xamuulku wuxuu ka kooban yahay baakadaha aad dooratay oo kaliya — dhammaantood ama midna. Baakad lagu diiwaangeliyay qaade kale ma geli karto kiishkan.
+onto_your_own_rider_s	Socdaalka gaarsiiyahaaga
+pick_the_parcels_print_the	Dooro baakadaha, daabac warqadda socdaalka, gaarsiiyahana wuxuu ka shaqeeyaa isla app-ka qaabka gaarsiiyaha — oo ay ku jirto caddeynta gaarsiinta.
+n_6_track_and_prove	6 · RAAC OO CADDEE
+every_move_recorded_and_only	Dhaqdhaqaaq kasta waa la diiwaangeliyay — oo kaliya dhaqdhaqaaqa macnaha leh.
+booked	La diiwaangeliyay
+with_carrier	Qaadaha gacantiisa
+out_for_delivery	Waa la gaarsiinayaa
+delivered	La gaarsiiyay
+booked_with_carrier_out_for	La diiwaangeliyay → Qaadaha gacantiisa → Waa la gaarsiinayaa → La gaarsiiyay
+failed	Fashilmay
+reason_out_again_or_return	→ sabab → mar kale bax, ama loo celiyay soodiraha.
+impossible_moves_refused	Dhaqdhaqaaqyada aan suurtagalka ahayn waa la diiday
+delivered_returned_and_cancelled	La gaarsiiyay, la celiyay iyo la joojiyay waa kama dambays.
+proof_of_delivery	Caddeynta gaarsiinta
+a_photo_and_the_receiver	Sawir iyo saxiixa qaataha oo ku yaal warqadda dirista.
+failed_deliveries	Gaarsiino fashilmay
+reasons_attempts_out_again_or	Sababo, isku dayo, mar kale bax, ama dib ugu celi soodiraha.
+n_7_money_comes_home	7 · LACAGTU GURIGA WAY SOO NOQOTAA
+cod_you_can_see_expected	Lacag-bixin marka la helo oo aad arki karto: la filayo, la dhiibay, lagu leeyahay soodire kasta.
+rider_cash_end_of_run	Lacagta gaarsiiyaha, dhammaadka socdaalka
+rider	Gaarsiiye
+expected	La filayo
+handed_in	La dhiibay
+a_14_drops	A · 14 gaarsiin
+b_9_drops	B · 9 gaarsiin
+short_200_on_rider_b	₹ 200 ayaa ka maqan gaarsiiyaha B — waa la magacaabay, kuma lumin wadar.
+cod_register	Diiwaanka lacag-bixinta marka la helo
+collected_against_paid_out_per	Waxa la ururiyay marka loo eego waxa la bixiyay, soodire kasta, oo leh dufcado lacag-dirid.
+rider_settlement	Xisaab-xiritaanka gaarsiiyayaasha
+expected_against_handed_in_and	La filayo marka loo eego la dhiibay, iyo warqadda komishanka.
+books_that_close	Buugaag isku dheelitiran
+day_book_month_bill_per	Buugga maalinta, biilka bisha akoon kasta, iyo soo koobid GST ah oo CSV ah oo loogu talagalay xisaabiyahaaga.
+n_8_internet_down	8 · INTERNETKU MA GO’AY?
+keep_booking	Sii wad diiwaangelinta.
+booking_labels_scanning_cod_and	Diiwaangelinta, calaamadaha, sawirista, lacag-bixinta marka la helo iyo buugaagtu dhammaan waxay ku shaqeeyaan qalabkaaga. Marka internetku go’o, waxba miiska iibka kuma sugaan.
+office_router_no_internet	Router-ka xafiiska: internet ma jiro
+desk_still_booking	Miiska: weli wuu diiwaangelinayaa
+second_counter_and_rider_phone	Miiska labaad iyo taleefanka gaarsiiyaha: waxay ku xiran yihiin Wi-Fi-ga xafiiska
+free_forever_on_your_devices	Bilaash weligiis qalabkaaga
+nothing_per_rider_user_or	Waxba gaarsiiye, isticmaale ama baakad kasta. Kumkaj Cloud ikhtiyaari ah: Steady ₹6k · Swift ₹12k · Priority ₹24k/sannadkii canshuur la’aan — /shop.
+n_9_start	9 · BILOW
+one_courier_os_your_parcels	Hal nidaam xamuul. Baakadahaaga. Buugaagtaada.
+moklanjo_is_a_complete_courier	Moklanjo waa nidaam hawlgal oo dhammaystiran oo adeegga xamuulka ah, Kumkaj hoostiisa — Android, Windows iyo Linux. Gaarsiiyayaashu waxay isticmaalaan isla app-ka qaabka gaarsiiyaha.
+trademark	SUMADDA GANACSIGA
+memon_for_find_it_pronounced	Luqadda Memon “hel” · loogu dhawaaqo go-tee-geen
+company	SHIRKADDA
+brand	MAGACA GANACSIGA
+concrete_business_operating_system	App-yada nidaamyada hawlgalka ganacsiga ee la taaban karo
+product	ALAABTA
+courier_operating_system_under	Nidaamka hawlgalka adeegga xamuulka, Kumkaj hoostiisa
+privacy	Asturnaanta
+terms	Shuruudaha
+cancellation	Joojinta
+cloud_shop	Dukaanka daruurta
+account	Akoon
+weigh_it_right	Si sax ah u miisaan
+price_it	Qiime u yeel
+label_it	Calaamadee
+track_and_prove	Raac oo caddee
+money_comes_home	Lacagtu guriga way soo noqotaa
+internet_down	Internetku wuu go’ay
+bead_hand	Gacan-gelin
+bead_offline_short	Net la’aan
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Miisaamaha: {kg} kg
+weight_scale_wins	Miisaanka miisaamuhu wuxuu go’aamiyaa kharashka.
+cta_installers_note	Rakibayaashu halkan ayay ka muuqan doonaan marka mid kastaa uu ku guuleysto rakibid mashiin nadiif ah. Ilaa iyo markaas, ka codso bandhig WhatsApp.
+cta_whatsapp_soon	Khadka bandhigga WhatsApp dhawaan ayuu furmayaa. Fariintaadu waxay odhan doontaa: “{message}”.
+acct_page_title	Akoon — Moklanjo
+acct_lede	Hal akoon oo loogu talagalay goobta iyo app-yada — isla foom, haddii aad cusub tahay ama aad soo noqonayso.
+acct_email	Iimayl
+acct_name_optional	Magac (ikhtiyaari)
+acct_password	Furaha sirta
+acct_continue	Sii wad
+acct_forgot	Ma ilowday furaha sirta?
+acct_reset_hint	Waxaan iimayl kuugu soo diri doonaa xiriiriye dib-u-dejin. Isticmaal isla ciwaanka aad isku diiwaangelisay.
+acct_send_reset	Dir xiriiriyaha dib-u-dejinta
+acct_cancel	Jooji
+acct_or_continue	ama ku sii wad
+acct_phone	Taleefan
+acct_mobile	Lambarka mobilka
+acct_send_sms	Dir koodhka SMS
+acct_sms_code	Koodhka SMS
+acct_confirm_code	Xaqiiji koodhka
+acct_signed_in	Waad gashay
+acct_signed_in_as	Waxaad u gashay sidii
+acct_status	Xaaladda
+acct_sign_in_methods	Hababka soo galitaanka
+acct_cloud_username	Magaca isticmaalaha daruurta
+acct_plan	Qorshe
+acct_resend_verify	Dib u dir iimaylka xaqiijinta
+acct_sign_out	Ka bax
+acct_cloud_sandbox	Kumkaj Cloud (deegaan tijaabo)
+acct_current_password	Furaha sirta hadda
+acct_email_for_password	Iimayl loogu talagalay galitaanka furaha sirta
+acct_new_password	Furaha sirta cusub
+acct_confirm_new_password	Xaqiiji furaha sirta cusub
+acct_add_way	Ku dar hab kale oo lagu soo galo
+acct_link_hint	Ku xir habab badan isla akoonka si aad u soo celin karto gelitaanka haddii mid fashilmo.
+acct_link_google	Ku xir Google
+acct_link_microsoft	Ku xir Microsoft
+acct_link_github	Ku xir GitHub
+acct_link_phone	Ku xir taleefanka
+acct_send_sms_link	Dir SMS si loo xiro
+acct_confirm_link_phone	Xaqiiji oo ku xir taleefanka
+shop_page_title	Dukaan — Moklanjo
+shop_lede	Qorshayaal daruur sannadle ah — canshuurta waxaa lagu daraa waqtiga lacag-bixinta. App-ka Moklanjo oo dhammaystiran ee qalabkaaga wuxuu ahaanayaa bilaash weligiis, xayaysiis la’aan.
+shop_cart	Dambiil
+shop_cart_empty_hint	Dambiishaadu way madhan tahay. Ku dar Steady, Swift ama Priority.
+shop_checkout	Bixi lacagta
+shop_clear	Nadiifi
+shop_checkout_hint	Lacag-bixintu marka hore waxay kugu gelinaysaa Akoonka, kadibna waxay bilaabaysaa bixinta (tijaabo ku-dayasho ah ama Paddle marka furayaasha la dejiyo).
+acct_billing_hint	Qorshayaal sannadle ah — canshuurta waxaa ku daraya albaabka lacag-bixinta. Isticmaalka maxalliga ahi wuxuu ahaanayaa bilaash weligiis. Qorshaha gaarka ahi waa qiimayn (wuxuu ka hoosayn karaa Steady ama ka sarayn karaa Priority).
+shop_cloud_plans	Qorshayaasha daruurta
+acct_federated	Galitaan la isku xiray
+acct_err_invalid_email	Geli ciwaan iimayl oo sax ah.
+acct_err_weak_password	Isticmaal furaha sirta oo ugu yaraan 6 xaraf leh.
+acct_err_wrong_password	Furaha sirta waa khalad.
+acct_err_invalid_credential	Iimaylka ama furaha sirta waa khalad.
+acct_err_popup_closed	Daaqadda soo galitaanka waa la xiray.
+acct_err_popup_cancelled	Soo galitaanka waa la joojiyay.
+acct_err_unauthorized_domain	Domain-kan looma oggolaan Firebase Auth.
+acct_err_method_disabled	Habkaas soo galitaanku weli lama shidin.
+acct_err_too_many	Isku day aad u badan. Mar kale isku day hadhow.
+acct_err_phone_format	Isticmaal lambarka taleefanka oo dhammaystiran oo leh koodhka wadanka (tusaale +91…).
+acct_err_sms_code	Koodhkaas SMS waa khalad ama wuu dhacay.
+acct_err_no_account	Akoon iimaylkaas leh ma jiro. Sii wad si aad u abuurto mid, ama isticmaal hab kale.
+acct_err_recent_login	Ammaan darteed, mar kale soo gal, kadib isku day isbeddelkan mar kale.
+acct_err_credential_in_use	Habkaas soo galitaanka waxaa hore u isticmaalaya akoon kale.
+acct_err_email_in_use	Iimaylkaas waxaa hore u isticmaalaya akoon kale.
+acct_err_already_linked	Habkaas hore ayaa loogu xiray akoonkan.
+acct_err_exists_other_method	Akoon iimaylkan leh ayaa hore u jira, laakiin hab kale oo soo galitaan ah. Marka hore ku soo gal habkaas, kadib ku xir kan bogga akoonkaaga.
+acct_err_generic	Wax baa khaldamay.
+acct_method_password	Iimayl iyo furaha sirta
+acct_pw_hint_change	Bedel furaha sirtaada. Waxaad ku xaqiijin doontaa kan hadda.
+acct_pw_hint_add	Ku dar furaha sirta si aad sidoo kale ugu soo gasho iimayl (waxtar leh haddii bixiye la heli waayo).
+acct_pw_change	Bedel furaha sirta
+acct_pw_add	Ku dar furaha sirta
+acct_billing_off	Biil-bixinta weli lagama shidin API-ga daruurta.
+acct_billing_no_provider	Ma jiro bixiye lacag-bixin dhab ah oo laga shiday API-ga daruurta (ku-dayashadu waa maxalli oo kaliya).
+price_quote	Qiimayn
+price_per_year	₹{amount}/sannadkii canshuur la’aan
+acct_pay_received	Lacagta waa la helay — qorshahaaga ayaa la cusboonaysiinayaa…
+acct_pay_declined	Lacag-bixinta waa la diiday ama way fashilantay
+acct_pay_failed_detail	{detail}. Qorshahaaga lama bedelin.
+acct_checkout_closed	Lacag-bixinta waa la xiray — lacag lama bixin. Qorshahaagu isma bedelin.
+acct_checkout_failed	Lacag-bixintu way fashilantay
+acct_pay_with	Ku bixi {provider}
+acct_plan_until	{plan} · ilaa {date}
+acct_unavailable	Lama heli karo
+acct_continue_hint	Ku sii wad iimayl, bixiye ama taleefan.
+acct_signed_in_fallback	(waad gashay)
+acct_email_verified	Iimaylka waa la xaqiijiyay
+acct_email_unverified	Iimaylka weli lama xaqiijin — eeg sanduuqa fariimahaaga
+acct_signed_in_phone	Waxaad ku gashay taleefan
+acct_none_listed	Weli waxba ma jiraan
+acct_signed_in_status	Waad soo gashay.
+acct_created	Akoonka waa la abuuray. Eeg iimaylkaaga si aad u xaqiijiso markaad awoodo.
+acct_reset_sent	Haddii akoon iimaylkaas leh jiro, xiriiriyaha dib-u-dejintu wuu soo socdaa. Eeg sanduuqa fariimahaaga.
+acct_another_method	hab kale
+acct_exists_via	Akoon loogu talagalay {email} ayaa hore ugu jira {method}. Marka hore sidaas ku soo gal, kadib ku xir bixiyahan bogga akoonkaaga.
+acct_enter_current_pw	Geli furaha sirtaada hadda.
+acct_relogin_retry	Ka bax oo mar kale soo gal, kadib isku day mar kale.
+acct_pw_mismatch	Furaha sirta cusub iyo xaqiijintu isma laha.
+acct_pw_updated	Furaha sirta waa la cusboonaysiiyay.
+acct_enter_email_pw	Geli iimayl loogu talagalay galitaanka furaha sirta.
+acct_pw_added	Furaha sirta waa lagu daray. Hadda sidoo kale waxaad ku soo geli kartaa iimayl.
+acct_method_linked	Habka soo galitaanka waa la xiray.
+acct_phone_linked	Taleefanka waa lagu xiray akoonkan.
+acct_verify_sent	Iimaylka xaqiijinta waa la diray — eeg sanduuqa fariimahaaga.
+shop_pricing_soon	Qiimaha dhawaan
+shop_request_quote	Codso qiimayn
+shop_add_to_cart	Ku dar dambiisha
+shop_notify_later	Hadhow i ogeysii
+shop_included	Ku jira
+shop_in_cart	{plan} wuxuu ku jiraa dambiishaada.
+shop_remove	Ka saar
+shop_cart_is_empty	Dambiishu way madhan tahay.
+shop_prices_unpublished	Qiimaha is-adeegga ee alaabtan weli lama daabicin. Codso qiimayn gaar ah ama dib u eeg hadhow.
+shop_cart_cleared	Dambiisha waa la nadiifiyay.
+plan_free_title	Bilaash weligiis
+plan_free_blurb	Alaabta maxalliga ah oo dhan qalabkaaga. Kharash daruur ma jiro.
+plan_steady_blurb	Daruur toos ah · 10 GB · xawaare hooseeya
+plan_swift_blurb	Daruur toos ah · 25 GB · xawaare dhexdhexaad ah
+plan_priority_blurb	Daruur toos ah · 50 GB · xawaaraha caadiga ah ee ugu sarreeya
+plan_custom_title	Gaar ah
+plan_custom_blurb	Kooto iyo xawaare la isku raacay. Qiimayntu waxay ka hoosayn kartaa Steady ama ka sarayn kartaa Priority.

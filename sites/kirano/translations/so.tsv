@@ -1,230 +1,230 @@
 # Somali — Soomaali (so). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Tusaale
+download_free	Ku soo deji bilaash
+whatsapp_for_a_demo	Bandhig WhatsApp
+free_on_android_windows_and	Bilaash Android, Windows iyo Linux.
+the_grocery_counter	miiska iibka dukaanka raashinka
+busy_counter	Miis iib oo mashquul ah
+kirano_the_grocery_counter	KIRANO · MIISKA IIBKA DUKAANKA RAASHINKA
+busy_counter_no_internet_still	Miis iib oo mashquul ah. Internet ma jiro. Weli waa la iibinayaa.
+sell_khata_stock_and_the	Iib, buugga deynta, kaydka iyo buugga maalinta — qalabkaaga. Buugaag · Iib · Iibso · Alaabta. Hool ma jiro, jiko ma jirto, miisas ma jiraan.
+tap_the_bill_to_walk	Taabo biilka si aad u marto iib miiska ah
+cash_memo	Rasiidka lacagta caddaanka ah
+ready	Diyaar
+total	Wadarta
+tap_to_add_the_first	Taabo si aad u darto shayga koowaad
+example_grocery_lines_not_a	Sadarro tusaale ah oo dukaanka raashinka, ma aha khasnad dhab ah. Kirano wuxuu raacaa isla jidka: iib → xisaabi → buugga maalinta.
+n_2_counter_sell	2 · IIBKA MIISKA
+item_quantity_pay_three_taps	Shay, tiro, bixi — saddex taabasho.
+upi_qr_ready	UPI QR waa diyaar
+example_bill	Tusaale biil
+search_by_name_or_short	Ku raadi magac ama kood gaaban
+type_atta_at5_or_an	Qor atta, AT5 ama magac kale — sadarku wuxuu ku dhacaa biilka.
+kg_g_pc_l_ml	kg, g, xabbo, l, ml
+quantity_in_the_unit_the	Tirada cabbirka baakadda; qiimuhu wuu raacaa.
+cash_upi_or_split	Lacag caddaan, UPI ama la qaybiyay
+settle_on_the_counter_the	Ku xisaabi miiska iibka; buugga maalintu wuxuu diiwaangeliyaa habka lacag-bixinta.
+n_3_khata	3 · BUUGGA DEYNTA
+credit_without_a_crm_put	Deyn CRM la’aan — ku qor buugga deynta macmiilka.
+ramesh_customer	Ramesh · Macmiil
+due_from_earlier	Deyn hore
+today_s_sale_due	+ iibka maanta (deyn)
+balance	Haraaga
+settle_later_in_parties_part	Hadhow ku xisaabi Dhinacyada — qayb lacag caddaan ah, qayb UPI, sadarkuna wuu nadiifmayaa.
+due_on_the_bill	Deynta biilka
+what_s_left_goes_on	Waxa hadhay waxay galaan buugga deynta macmiilka — app xisaabeed gooni ah looma baahna.
+one_party_two_roles	Hal dhinac, laba door
+customer_ar_and_supplier_ap	Deymaha macaamiisha iyo deymaha alaab-qeybiyayaasha waxay wadaagaan isla buugga dhinacyada.
+who_when_how_much	Cidda, goorta, imisa
+every_credit_and_settlement_stays	Deyn kasta iyo xisaab-xiritaan kasta waxay ku hadhaan buugga maalinta.
+n_4_buy_stock	4 · IIBSO IYO KAYD
+buy_from_the_wholesaler_stock	Ka iibso jumladlaha — kaydka iyo waxa lagugu leeyahay waxay wada cusboonaadaan.
+purchase_sharma_wholesale	Iibsasho · Sharma Wholesale
+stock_50_kg_ap_7	Kayd +50 kg · Deyn ₹ 7,200
+stock_12_l_ap_1	Kayd +12 L · Deyn ₹ 1,560
+resale_stock_not_kitchen_raw	Kayd dib loo iibinayo — ma aha alaab ceeriin jiko. Dufcad iyo taariikh dhicitaan ikhtiyaari ah iibsashada.
+buy_creates_stock	Iibsashadu waxay abuurtaa kayd
+receive_the_goods_the_catalogue	Qaado alaabta; tirada katalogga ayaa kordhaysa.
+who_we_owe	Cidda aan ku leenahay deyn
+supplier_balance_sits_on_the	Haraaga alaab-qeybiyaha wuxuu ku jiraa isla Dhinacyada ay ku jirto buugga deynta macaamiisha.
+low_stock_at_a_glance	Kayd yar hal jaleeco
+inventory_shows_what_is_running	Kaydku wuxuu muujiyaa waxa dhammaanaya ka hor buuqa xiga.
+n_5_day_book	5 · BUUGGA MAALINTA
+cash_vs_upi_counted_and	Lacag caddaan iyo UPI, gooni loo tiriyay — farqiguna waa la magacaabay.
+today_s_drawer	Sanduuqa maanta
+opening_float	Lacagta sarifka bilowga
+cash_sales	+ iib lacag caddaan ah
+upi_sales	+ iib UPI ah
+cash_paid_out	− lacag caddaan ah oo la bixiyay
+expected_cash	Lacag caddaanka la filayo
+counted	La tiriyay
+short	Yaraan
+tenders_stay_separate	Hababka lacag-bixintu way kala gooni yihiin
+cash_and_upi_never_mix	Lacag caddaanka iyo UPI weligood iskuma qasmaan hal wadar oo qarsoon.
+shift_close	Xiritaanka wareegga
+close_the_shift_print_the	Xir wareegga, daabac warqadda, bilow kan xiga adigoo nadiif ah.
+gst_facing_bills	Biilal GST leh
+tax_invoice_or_cash_memo	Qaansheegad canshuur ama rasiid lacag caddaan — warbixinta maalintu labadaba way xambaartaa.
+books_sell_buy_items_four	Buugaag · Iib · Iibso · Alaabta — afar shaashadood, hool makhaayadeedna ma jiro.
+n_6_internet_down	6 · INTERNETKU MA GO’AY?
+the_internet_drops_the_counter	Internetku wuu go’aa. Miiska iibku wuu sii iibiyaa.
+router_no_internet	Router: internet ma jiro
+main_counter_selling_and_settling	Miiska iibka ugu weyn: wuu iibinayaa oo xisaabinayaa
+second_till_joined_on_your	Khasnadda labaad: ku xiran Wi-Fi-gaaga
+books_live_on_the_shop	Buugaagtu waxay ku jiraan qalabka dukaanka
+when_the_internet_drops_mid	Marka internetku go’o buuqa dhexdiisa, waxba miiska iibka kuma sugaan.
+one_server_lan_clients	Hal server, macaamiil LAN
+extra_tills_share_the_same	Khasnado dheeri ahi waxay wadaagaan isla buugaagta shabakadda dukaanka.
+n_7_free_forever_locally	7 · BILAASH WELIGIIS MAXALLI AHAAN
+free_forever_on_your_devices	Bilaash weligiis qalabkaaga.
+no_per_bill_charge	Kharash biil kasta ma jiro
+no_fee_per_sale_item	Kharash iib, shay, khasnad ama PIN shaqaale kasta kuma jiro rakibidda maxalliga ah.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Isla Kirano telefoonka miiska iibka gadaashiisa iyo khasnadda kombiyuutarka.
+optional_kumkaj_cloud	Kumkaj Cloud ikhtiyaari ah
+yearly_steady_6k_swift_12k	Sannadle Steady ₹6k · Swift ₹12k · Priority ₹24k canshuur la’aan (ama qiimayn gaar ah). Ka iibso /shop.
+n_8_start	8 · BILOW
+put_kirano_on_the_counter	Kirano dhig miiska iibka.
+download_free_or_whatsapp_for	Bilaash ku soo deji, ama WhatsApp noogu soo dir si aad u hesho bandhig ku habboon nooca dukaankaaga iyo magaaladaada.
+privacy	Asturnaanta
+terms	Shuruudaha
+cancellation	Joojinta
+cloud_shop	Dukaanka daruurta
+account	Akoon
+chapter_counter_sell	Iibka miiska
+chapter_khata	Buugga deynta
+chapter_buy_stock	Iibso iyo kayd
+chapter_day_book	Buugga maalinta
+chapter_extra_till	Khasnad dheeri ah
+chapter_offline	Internet la’aan
+chapter_start	Bilow
+bill_selling	Waa la iibinayaa
+bill_settle	Xisaabi
+bill_paid	La bixiyay
+bill_next_item	Taabo si aad u darto shayga xiga
+bill_settle_hint	Taabo si aad u xisaabiso — lacag caddaan ama UPI
+bill_cash_return	Lacag caddaan ₹ 600 · sarif ₹ 15
+bill_paid_line	La bixiyay · buugga maalinta waa la cusboonaysiiyay
+lan_eyebrow	6 · KHASNAD DHEERI AH
+lan_title	Khasnad kale oo ku jirta Wi-Fi-ga dukaanka.
+cta_installers_note	Rakibayaashu halkan ayay ka muuqan doonaan marka mid kastaa uu ku guuleysto rakibid mashiin nadiif ah. Ilaa iyo markaas, ka codso bandhig WhatsApp.
+cta_whatsapp_soon	Khadka bandhigga WhatsApp dhawaan ayuu furmayaa. Fariintaadu waxay odhan doontaa: “{message}”.
+acct_page_title	Akoon — Kirano
+acct_lede	Hal akoon oo loogu talagalay goobta iyo app-yada — isla foom, haddii aad cusub tahay ama aad soo noqonayso.
+acct_email	Iimayl
+acct_name_optional	Magac (ikhtiyaari)
+acct_password	Furaha sirta
+acct_continue	Sii wad
+acct_forgot	Ma ilowday furaha sirta?
+acct_reset_hint	Waxaan iimayl kuugu soo diri doonaa xiriiriye dib-u-dejin. Isticmaal isla ciwaanka aad isku diiwaangelisay.
+acct_send_reset	Dir xiriiriyaha dib-u-dejinta
+acct_cancel	Jooji
+acct_or_continue	ama ku sii wad
+acct_phone	Taleefan
+acct_mobile	Lambarka mobilka
+acct_send_sms	Dir koodhka SMS
+acct_sms_code	Koodhka SMS
+acct_confirm_code	Xaqiiji koodhka
+acct_signed_in	Waad gashay
+acct_signed_in_as	Waxaad u gashay sidii
+acct_status	Xaaladda
+acct_sign_in_methods	Hababka soo galitaanka
+acct_cloud_username	Magaca isticmaalaha daruurta
+acct_plan	Qorshe
+acct_resend_verify	Dib u dir iimaylka xaqiijinta
+acct_sign_out	Ka bax
+acct_cloud_sandbox	Kumkaj Cloud (deegaan tijaabo)
+acct_current_password	Furaha sirta hadda
+acct_email_for_password	Iimayl loogu talagalay galitaanka furaha sirta
+acct_new_password	Furaha sirta cusub
+acct_confirm_new_password	Xaqiiji furaha sirta cusub
+acct_add_way	Ku dar hab kale oo lagu soo galo
+acct_link_hint	Ku xir habab badan isla akoonka si aad u soo celin karto gelitaanka haddii mid fashilmo.
+acct_link_google	Ku xir Google
+acct_link_microsoft	Ku xir Microsoft
+acct_link_github	Ku xir GitHub
+acct_link_phone	Ku xir taleefanka
+acct_send_sms_link	Dir SMS si loo xiro
+acct_confirm_link_phone	Xaqiiji oo ku xir taleefanka
+shop_page_title	Dukaan — Kirano
+shop_lede	Qorshayaal daruur sannadle ah — canshuurta waxaa lagu daraa waqtiga lacag-bixinta. App-ka Kirano oo dhammaystiran ee qalabkaaga wuxuu ahaanayaa bilaash weligiis, xayaysiis la’aan.
+shop_cart	Dambiil
+shop_cart_empty_hint	Dambiishaadu way madhan tahay. Ku dar Steady, Swift ama Priority.
+shop_checkout	Bixi lacagta
+shop_clear	Nadiifi
+shop_checkout_hint	Lacag-bixintu marka hore waxay kugu gelinaysaa Akoonka, kadibna waxay bilaabaysaa bixinta (tijaabo ku-dayasho ah ama Paddle marka furayaasha la dejiyo).
+acct_billing_hint	Qorshayaal sannadle ah — canshuurta waxaa ku daraya albaabka lacag-bixinta. Isticmaalka maxalliga ahi wuxuu ahaanayaa bilaash weligiis. Qorshaha gaarka ahi waa qiimayn (wuxuu ka hoosayn karaa Steady ama ka sarayn karaa Priority).
+shop_cloud_plans	Qorshayaasha daruurta
+acct_federated	Galitaan la isku xiray
+acct_err_invalid_email	Geli ciwaan iimayl oo sax ah.
+acct_err_weak_password	Isticmaal furaha sirta oo ugu yaraan 6 xaraf leh.
+acct_err_wrong_password	Furaha sirta waa khalad.
+acct_err_invalid_credential	Iimaylka ama furaha sirta waa khalad.
+acct_err_popup_closed	Daaqadda soo galitaanka waa la xiray.
+acct_err_popup_cancelled	Soo galitaanka waa la joojiyay.
+acct_err_unauthorized_domain	Domain-kan looma oggolaan Firebase Auth.
+acct_err_method_disabled	Habkaas soo galitaanku weli lama shidin.
+acct_err_too_many	Isku day aad u badan. Mar kale isku day hadhow.
+acct_err_phone_format	Isticmaal lambarka taleefanka oo dhammaystiran oo leh koodhka wadanka (tusaale +91…).
+acct_err_sms_code	Koodhkaas SMS waa khalad ama wuu dhacay.
+acct_err_no_account	Akoon iimaylkaas leh ma jiro. Sii wad si aad u abuurto mid, ama isticmaal hab kale.
+acct_err_recent_login	Ammaan darteed, mar kale soo gal, kadib isku day isbeddelkan mar kale.
+acct_err_credential_in_use	Habkaas soo galitaanka waxaa hore u isticmaalaya akoon kale.
+acct_err_email_in_use	Iimaylkaas waxaa hore u isticmaalaya akoon kale.
+acct_err_already_linked	Habkaas hore ayaa loogu xiray akoonkan.
+acct_err_exists_other_method	Akoon iimaylkan leh ayaa hore u jira, laakiin hab kale oo soo galitaan ah. Marka hore ku soo gal habkaas, kadib ku xir kan bogga akoonkaaga.
+acct_err_generic	Wax baa khaldamay.
+acct_method_password	Iimayl iyo furaha sirta
+acct_pw_hint_change	Bedel furaha sirtaada. Waxaad ku xaqiijin doontaa kan hadda.
+acct_pw_hint_add	Ku dar furaha sirta si aad sidoo kale ugu soo gasho iimayl (waxtar leh haddii bixiye la heli waayo).
+acct_pw_change	Bedel furaha sirta
+acct_pw_add	Ku dar furaha sirta
+acct_billing_off	Biil-bixinta weli lagama shidin API-ga daruurta.
+acct_billing_no_provider	Ma jiro bixiye lacag-bixin dhab ah oo laga shiday API-ga daruurta (ku-dayashadu waa maxalli oo kaliya).
+price_quote	Qiimayn
+price_per_year	₹{amount}/sannadkii canshuur la’aan
+acct_pay_received	Lacagta waa la helay — qorshahaaga ayaa la cusboonaysiinayaa…
+acct_pay_declined	Lacag-bixinta waa la diiday ama way fashilantay
+acct_pay_failed_detail	{detail}. Qorshahaaga lama bedelin.
+acct_checkout_closed	Lacag-bixinta waa la xiray — lacag lama bixin. Qorshahaagu isma bedelin.
+acct_checkout_failed	Lacag-bixintu way fashilantay
+acct_pay_with	Ku bixi {provider}
+acct_plan_until	{plan} · ilaa {date}
+acct_unavailable	Lama heli karo
+acct_continue_hint	Ku sii wad iimayl, bixiye ama taleefan.
+acct_signed_in_fallback	(waad gashay)
+acct_email_verified	Iimaylka waa la xaqiijiyay
+acct_email_unverified	Iimaylka weli lama xaqiijin — eeg sanduuqa fariimahaaga
+acct_signed_in_phone	Waxaad ku gashay taleefan
+acct_none_listed	Weli waxba ma jiraan
+acct_signed_in_status	Waad soo gashay.
+acct_created	Akoonka waa la abuuray. Eeg iimaylkaaga si aad u xaqiijiso markaad awoodo.
+acct_reset_sent	Haddii akoon iimaylkaas leh jiro, xiriiriyaha dib-u-dejintu wuu soo socdaa. Eeg sanduuqa fariimahaaga.
+acct_another_method	hab kale
+acct_exists_via	Akoon loogu talagalay {email} ayaa hore ugu jira {method}. Marka hore sidaas ku soo gal, kadib ku xir bixiyahan bogga akoonkaaga.
+acct_enter_current_pw	Geli furaha sirtaada hadda.
+acct_relogin_retry	Ka bax oo mar kale soo gal, kadib isku day mar kale.
+acct_pw_mismatch	Furaha sirta cusub iyo xaqiijintu isma laha.
+acct_pw_updated	Furaha sirta waa la cusboonaysiiyay.
+acct_enter_email_pw	Geli iimayl loogu talagalay galitaanka furaha sirta.
+acct_pw_added	Furaha sirta waa lagu daray. Hadda sidoo kale waxaad ku soo geli kartaa iimayl.
+acct_method_linked	Habka soo galitaanka waa la xiray.
+acct_phone_linked	Taleefanka waa lagu xiray akoonkan.
+acct_verify_sent	Iimaylka xaqiijinta waa la diray — eeg sanduuqa fariimahaaga.
+shop_pricing_soon	Qiimaha dhawaan
+shop_request_quote	Codso qiimayn
+shop_add_to_cart	Ku dar dambiisha
+shop_notify_later	Hadhow i ogeysii
+shop_included	Ku jira
+shop_in_cart	{plan} wuxuu ku jiraa dambiishaada.
+shop_remove	Ka saar
+shop_cart_is_empty	Dambiishu way madhan tahay.
+shop_prices_unpublished	Qiimaha is-adeegga ee alaabtan weli lama daabicin. Codso qiimayn gaar ah ama dib u eeg hadhow.
+shop_cart_cleared	Dambiisha waa la nadiifiyay.
+plan_free_title	Bilaash weligiis
+plan_free_blurb	Alaabta maxalliga ah oo dhan qalabkaaga. Kharash daruur ma jiro.
+plan_steady_blurb	Daruur toos ah · 10 GB · xawaare hooseeya
+plan_swift_blurb	Daruur toos ah · 25 GB · xawaare dhexdhexaad ah
+plan_priority_blurb	Daruur toos ah · 50 GB · xawaaraha caadiga ah ee ugu sarreeya
+plan_custom_title	Gaar ah
+plan_custom_blurb	Kooto iyo xawaare la isku raacay. Qiimayntu waxay ka hoosayn kartaa Steady ama ka sarayn kartaa Priority.

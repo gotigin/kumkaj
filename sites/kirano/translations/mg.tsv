@@ -1,230 +1,230 @@
 # Malagasy — Malagasy (mg). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_grocery_counter	@@EN@@ the grocery counter
-busy_counter	@@EN@@ Busy counter
-kirano_the_grocery_counter	@@EN@@ KIRANO · THE GROCERY COUNTER
-busy_counter_no_internet_still	@@EN@@ Busy counter. No internet. Still billing.
-sell_khata_stock_and_the	@@EN@@ Sell, khata, stock and the day book — on your own devices. Books · Sell · Buy · Items. No floor, no kitchen, no tables.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first item
-example_grocery_lines_not_a	@@EN@@ Example grocery lines, not a live till. Kirano follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-item_quantity_pay_three_taps	@@EN@@ Item, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-search_by_name_or_short	@@EN@@ Search by name or short code
-type_atta_at5_or_an	@@EN@@ Type atta, AT5 or an alias — the line lands on the bill.
-kg_g_pc_l_ml	@@EN@@ kg, g, pc, L, ml
-quantity_in_the_unit_the	@@EN@@ Quantity in the unit the packet uses; price follows.
-cash_upi_or_split	@@EN@@ Cash, UPI or split
-settle_on_the_counter_the	@@EN@@ Settle on the counter; the day book records the tender.
-n_3_khata	@@EN@@ 3 · KHATA
-credit_without_a_crm_put	@@EN@@ Credit without a CRM — put it on their khata.
-ramesh_customer	@@EN@@ Ramesh · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_in_parties_part	@@EN@@ Settle later in Parties — part cash, part UPI, clear the line.
-due_on_the_bill	@@EN@@ Due on the bill
-what_s_left_goes_on	@@EN@@ What's left goes on the customer's khata — no separate ledger app.
-one_party_two_roles	@@EN@@ One party, two roles
-customer_ar_and_supplier_ap	@@EN@@ Customer AR and supplier AP share the same party book.
-who_when_how_much	@@EN@@ Who, when, how much
-every_credit_and_settlement_stays	@@EN@@ Every credit and settlement stays in the day book.
-n_4_buy_stock	@@EN@@ 4 · BUY & STOCK
-buy_from_the_wholesaler_stock	@@EN@@ Buy from the wholesaler — stock and who you owe update together.
-purchase_sharma_wholesale	@@EN@@ Purchase · Sharma Wholesale
-stock_50_kg_ap_7	@@EN@@ Stock +50 kg · AP ₹ 7,200
-stock_12_l_ap_1	@@EN@@ Stock +12 L · AP ₹ 1,560
-resale_stock_not_kitchen_raw	@@EN@@ Resale stock — not kitchen raw. Optional batch and expiry on the buy.
-buy_creates_stock	@@EN@@ Buy creates stock
-receive_the_goods_the_catalogue	@@EN@@ Receive the goods; the catalogue quantity rises.
-who_we_owe	@@EN@@ Who we owe
-supplier_balance_sits_on_the	@@EN@@ Supplier balance sits on the same party as customer khata.
-low_stock_at_a_glance	@@EN@@ Low stock at a glance
-inventory_shows_what_is_running	@@EN@@ Inventory shows what is running out before the next rush.
-n_5_day_book	@@EN@@ 5 · DAY BOOK
-cash_vs_upi_counted_and	@@EN@@ Cash vs UPI, counted — and the difference named.
-today_s_drawer	@@EN@@ Today's drawer
-opening_float	@@EN@@ Opening float
-cash_sales	@@EN@@ + cash sales
-upi_sales	@@EN@@ + UPI sales
-cash_paid_out	@@EN@@ − cash paid out
-expected_cash	@@EN@@ Expected cash
-counted	@@EN@@ Counted
-short	@@EN@@ Short
-tenders_stay_separate	@@EN@@ Tenders stay separate
-cash_and_upi_never_mix	@@EN@@ Cash and UPI never mix into one mystery total.
-shift_close	@@EN@@ Shift close
-close_the_shift_print_the	@@EN@@ Close the shift, print the slip, start the next one clean.
-gst_facing_bills	@@EN@@ GST-facing bills
-tax_invoice_or_cash_memo	@@EN@@ Tax invoice or cash memo — the day report carries both.
-books_sell_buy_items_four	@@EN@@ Books · Sell · Buy · Items — four screens, and no restaurant floor.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_mid	@@EN@@ When the internet drops mid-rush, nothing at the counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_item	@@EN@@ No fee per sale, item, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_kirano_on_the	@@EN@@ The same Kirano on the phone behind the counter and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_kirano_on_the_counter	@@EN@@ Put Kirano on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your shop type and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_khata	@@EN@@ Khata
-chapter_buy_stock	@@EN@@ Buy & stock
-chapter_day_book	@@EN@@ Day book
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_item	@@EN@@ Tap to add the next item
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_cash_return	@@EN@@ Cash ₹ 600 · return ₹ 15
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Kirano
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Kirano
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Kirano app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Ohatra
+download_free	Alaivo maimaim-poana
+whatsapp_for_a_demo	Fampisehoana amin’ny WhatsApp
+free_on_android_windows_and	Maimaim-poana amin’ny Android, Windows ary Linux.
+the_grocery_counter	ny kaonteran’ny fivarotana sakafo
+busy_counter	Kaontera be olona
+kirano_the_grocery_counter	KIRANO · NY KAONTERAN’NY FIVAROTANA SAKAFO
+busy_counter_no_internet_still	Kaontera be olona. Tsy misy internet. Mbola mivarotra.
+sell_khata_stock_and_the	Fivarotana, bokin-trosa, tahiry ary bokin’ny andro — amin’ny fitaovanao manokana. Boky · Mivarotra · Mividy · Entana. Tsy misy efitrano, tsy misy lakozia, tsy misy latabatra.
+tap_the_bill_to_walk	Tsindrio ny faktiora hampandalovana fivarotana eo amin’ny kaontera
+cash_memo	Rosia vola mitsanga
+ready	Vonona
+total	Fitambarany
+tap_to_add_the_first	Tsindrio hanampiana ny entana voalohany
+example_grocery_lines_not_a	Ohatra andalana avy amin’ny fivarotana sakafo, tsy kaontera tena izy. Manaraka lalana iray ihany i Kirano: mivarotra → mandoa → bokin’ny andro.
+n_2_counter_sell	2 · FIVAROTANA EO AMIN’NY KAONTERA
+item_quantity_pay_three_taps	Entana, habetsahana, fandoavana — tsindry telo.
+upi_qr_ready	Vonona ny QR UPI
+example_bill	Ohatra faktiora
+search_by_name_or_short	Karohy amin’ny anarana na kaody fohy
+type_atta_at5_or_an	Soraty ny atta, AT5 na anarana hafa — miditra ao amin’ny faktiora ny andalana.
+kg_g_pc_l_ml	kg, g, singa, l, ml
+quantity_in_the_unit_the	Habetsahana amin’ny refin’ny fonosana; manaraka ny vidiny.
+cash_upi_or_split	Vola mitsanga, UPI na mizara
+settle_on_the_counter_the	Aloavy eo amin’ny kaontera; raketin’ny bokin’ny andro ny fomba fandoavana.
+n_3_khata	3 · BOKIN-TROSA
+credit_without_a_crm_put	Trosa tsy misy CRM — soraty ao amin’ny bokin-trosany.
+ramesh_customer	Ramesh · Mpanjifa
+due_from_earlier	Trosa taloha
+today_s_sale_due	+ varotra androany (trosa)
+balance	Ambiny
+settle_later_in_parties_part	Aloavy any aoriana ao amin’ny Mpifandray — ampahany vola mitsanga, ampahany UPI, ary madio ny andalana.
+due_on_the_bill	Trosa amin’ny faktiora
+what_s_left_goes_on	Miditra ao amin’ny bokin-trosan’ny mpanjifa ny ambiny — tsy mila fampiharana kaonty hafa.
+one_party_two_roles	Mpifandray iray, anjara roa
+customer_ar_and_supplier_ap	Mizara boky iray ihany ny trosan’ny mpanjifa sy ny trosa amin’ny mpamatsy.
+who_when_how_much	Iza, rahoviana, ohatrinona
+every_credit_and_settlement_stays	Mijanona ao amin’ny bokin’ny andro ny trosa sy ny fandoavana tsirairay.
+n_4_buy_stock	4 · FIVIDIANANA SY TAHIRY
+buy_from_the_wholesaler_stock	Mividiana amin’ny mpivarotra ambongadiny — miaraka miova ny tahiry sy ny trosanao.
+purchase_sharma_wholesale	Fividianana · Sharma Wholesale
+stock_50_kg_ap_7	Tahiry +50 kg · Trosa ₹ 7 200
+stock_12_l_ap_1	Tahiry +12 L · Trosa ₹ 1 560
+resale_stock_not_kitchen_raw	Tahiry hamidy indray — tsy akora fototra ho an’ny lakozia. Andiany sy daty fahataperana tsy voatery amin’ny fividianana.
+buy_creates_stock	Mamorona tahiry ny fividianana
+receive_the_goods_the_catalogue	Raiso ny entana; miakatra ny habetsahana ao amin’ny katalaogy.
+who_we_owe	Iza no ananantsika trosa
+supplier_balance_sits_on_the	Ao amin’ny Mpifandray iray ihany ny ambin’ny mpamatsy sy ny bokin-trosan’ny mpanjifa.
+low_stock_at_a_glance	Tahiry ambany amin’ny indray mijery
+inventory_shows_what_is_running	Asehon’ny lisitry ny tahiry izay ho lany alohan’ny fitokonana manaraka.
+n_5_day_book	5 · BOKIN’NY ANDRO
+cash_vs_upi_counted_and	Vola mitsanga sy UPI, voaisa misaraka — ary voalaza ny elanelany.
+today_s_drawer	Vatasarihana androany
+opening_float	Vola madinika fanombohana
+cash_sales	+ varotra vola mitsanga
+upi_sales	+ varotra UPI
+cash_paid_out	− vola navoaka
+expected_cash	Vola mitsanga andrasana
+counted	Voaisa
+short	Tsy ampy
+tenders_stay_separate	Misaraka foana ny fomba fandoavana
+cash_and_upi_never_mix	Tsy mifangaro ho fitambarany mistery iray mihitsy ny vola mitsanga sy ny UPI.
+shift_close	Fanakatonana fiovana
+close_the_shift_print_the	Akatony ny fiovana, atontà ny taratasy, ary manomboha madio ny manaraka.
+gst_facing_bills	Faktiora misy GST
+tax_invoice_or_cash_memo	Faktioran’ny hetra na rosia vola mitsanga — samy ao amin’ny tatitry ny andro.
+books_sell_buy_items_four	Boky · Mivarotra · Mividy · Entana — efijery efatra, ary tsy misy efitrano fisakafoanana.
+n_6_internet_down	6 · TAPAKA NY INTERNET?
+the_internet_drops_the_counter	Tapaka ny internet. Mbola mivarotra ny kaontera.
+router_no_internet	Router: tsy misy internet
+main_counter_selling_and_settling	Kaontera fototra: mivarotra sy mandoa
+second_till_joined_on_your	Kaontera faharoa: mifandray amin’ny Wi-Fi anao manokana
+books_live_on_the_shop	Ao amin’ny fitaovan’ny fivarotana ny boky
+when_the_internet_drops_mid	Rehefa tapaka ny internet afovoan’ny fitokonana, tsy misy na inona na inona eo amin’ny kaontera miandry azy.
+one_server_lan_clients	Mpizara iray, mpanjifa LAN
+extra_tills_share_the_same	Mizara boky mitovy amin’ny tambajotran’ny fivarotana ny kaontera fanampiny.
+n_7_free_forever_locally	7 · MAIMAIM-POANA MANDRAKIZAY EO AN-TOERANA
+free_forever_on_your_devices	Maimaim-poana mandrakizay amin’ny fitaovanao.
+no_per_bill_charge	Tsy misy sarany isaky ny faktiora
+no_fee_per_sale_item	Tsy misy sarany isaky ny varotra, entana, kaontera na PIN-n’ny mpiasa amin’ny fametrahana eo an-toerana.
+android_windows_linux	Android, Windows, Linux
+the_same_kirano_on_the	Kirano iray ihany amin’ny finday ao ambadiky ny kaontera sy amin’ny kaontera amin’ny solosaina.
+optional_kumkaj_cloud	Kumkaj Cloud tsy voatery
+yearly_steady_6k_swift_12k	Isan-taona Steady ₹6k · Swift ₹12k · Priority ₹24k tsy misy hetra (na tolo-bidy manokana). Mividiana ao amin’ny /shop.
+n_8_start	8 · MANOMBOHA
+put_kirano_on_the_counter	Apetraho eo amin’ny kaontera i Kirano.
+download_free_or_whatsapp_for	Alaivo maimaim-poana, na andefaso hafatra WhatsApp mba hahazoana fampisehoana mifanaraka amin’ny karazana fivarotanao sy ny tanànanao.
+privacy	Fiainana manokana
+terms	Fepetra
+cancellation	Fanafoanana
+cloud_shop	Fivarotana rahona
+account	Kaonty
+chapter_counter_sell	Fivarotana eo amin’ny kaontera
+chapter_khata	Bokin-trosa
+chapter_buy_stock	Fividianana sy tahiry
+chapter_day_book	Bokin’ny andro
+chapter_extra_till	Kaontera fanampiny
+chapter_offline	Tsy misy internet
+chapter_start	Fanombohana
+bill_selling	Mivarotra
+bill_settle	Mandoa
+bill_paid	Voaloa
+bill_next_item	Tsindrio hanampiana ny entana manaraka
+bill_settle_hint	Tsindrio handoavana — vola mitsanga na UPI
+bill_cash_return	Vola mitsanga ₹ 600 · famerenam-bola ₹ 15
+bill_paid_line	Voaloa · nohavaozina ny bokin’ny andro
+lan_eyebrow	6 · KAONTERA FANAMPINY
+lan_title	Kaontera hafa amin’ny Wi-Fi-n’ny fivarotana.
+cta_installers_note	Hiseho eto ny fametrahana rehefa nahomby tamin’ny fametrahana amin’ny milina madio ny tsirairay. Mandra-pahatongan’izany, angataho fampisehoana amin’ny WhatsApp.
+cta_whatsapp_soon	Hisokatra tsy ho ela ny tsipika fampisehoana WhatsApp. Izao no ho lazain’ny hafatrao: «{message}».
+acct_page_title	Kaonty — Kirano
+acct_lede	Kaonty iray ho an’ny tranonkala sy ny fampiharana — taratasy fenoina mitovy na vaovao ianao na miverina.
+acct_email	Mailaka
+acct_name_optional	Anarana (tsy voatery)
+acct_password	Tenimiafina
+acct_continue	Tohizo
+acct_forgot	Adinonao ny tenimiafina?
+acct_reset_hint	Handefa rohy hamerenana amin’ny mailaka izahay. Ampiasao ny adiresy nisoratanao anarana.
+acct_send_reset	Alefaso ny rohy hamerenana
+acct_cancel	Ajanony
+acct_or_continue	na tohizo amin’ny
+acct_phone	Finday
+acct_mobile	Laharan’ny finday
+acct_send_sms	Alefaso ny kaody SMS
+acct_sms_code	Kaody SMS
+acct_confirm_code	Hamafiso ny kaody
+acct_signed_in	Tafiditra
+acct_signed_in_as	Tafiditra amin’ny anarana
+acct_status	Toe-javatra
+acct_sign_in_methods	Fomba fidirana
+acct_cloud_username	Anaran’ny mpampiasa rahona
+acct_plan	Tolotra
+acct_resend_verify	Avereno alefa ny mailaka fanamarinana
+acct_sign_out	Hivoaka
+acct_cloud_sandbox	Kumkaj Cloud (tontolo fitsapana)
+acct_current_password	Tenimiafina ankehitriny
+acct_email_for_password	Mailaka ho an’ny fidirana amin’ny tenimiafina
+acct_new_password	Tenimiafina vaovao
+acct_confirm_new_password	Hamafiso ny tenimiafina vaovao
+acct_add_way	Ampio fomba fidirana hafa
+acct_link_hint	Ampifandraiso amin’ny kaonty iray ihany ny fomba maromaro mba hahafahanao mamerina ny fidirana raha tsy mandeha ny iray.
+acct_link_google	Ampifandraiso Google
+acct_link_microsoft	Ampifandraiso Microsoft
+acct_link_github	Ampifandraiso GitHub
+acct_link_phone	Ampifandraiso ny finday
+acct_send_sms_link	Alefaso SMS hampifandraisana
+acct_confirm_link_phone	Hamafiso ary ampifandraiso ny finday
+shop_page_title	Fivarotana — Kirano
+shop_lede	Tolotra rahona isan-taona — ampiana rehefa mandoa ny hetra. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Kirano manontolo amin’ny fitaovanao manokana.
+shop_cart	Harona
+shop_cart_empty_hint	Foana ny haronao. Ampio Steady, Swift na Priority.
+shop_checkout	Andoavy
+shop_clear	Fafao
+shop_checkout_hint	Ampidirina ao amin’ny Kaonty aloha ianao rehefa mandoa, avy eo manomboka ny fandoavana (fakana tahaka ao amin’ny tontolo fitsapana na Paddle rehefa voapetraka ny lakile).
+acct_billing_hint	Tolotra isan-taona — ampian’ny vavahady fandoavana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay ny fampiasana eo an-toerana. Araka ny tolo-bidy ny tolotra manokana (mety ho ambanin’ny Steady na ambonin’ny Priority).
+shop_cloud_plans	Tolotra rahona
+acct_federated	Fidirana mitambatra
+acct_err_invalid_email	Ampidiro adiresy mailaka manan-kery.
+acct_err_weak_password	Ampiasao tenimiafina misy litera 6 farafahakeliny.
+acct_err_wrong_password	Diso ny tenimiafina.
+acct_err_invalid_credential	Diso ny mailaka na ny tenimiafina.
+acct_err_popup_closed	Nakatona ny varavarankelin’ny fidirana.
+acct_err_popup_cancelled	Nofoanana ny fidirana.
+acct_err_unauthorized_domain	Tsy nahazo alalana ho an’ny Firebase Auth ity sehatra ity.
+acct_err_method_disabled	Mbola tsy alefa io fomba fidirana io.
+acct_err_too_many	Andrana be loatra. Andramo indray any aoriana.
+acct_err_phone_format	Ampiasao ny laharana finday feno miaraka amin’ny kaodin’ny firenena (ohatra +91…).
+acct_err_sms_code	Diso na lany daty io kaody SMS io.
+acct_err_no_account	Tsy misy kaonty amin’io mailaka io. Tohizo hamoronana iray, na ampiasao fomba hafa.
+acct_err_recent_login	Noho ny fiarovana, midira indray, avy eo andramo indray ity fanovana ity.
+acct_err_credential_in_use	Efa ampiasain’ny kaonty hafa io fomba fidirana io.
+acct_err_email_in_use	Efa ampiasain’ny kaonty hafa io mailaka io.
+acct_err_already_linked	Efa mifandray amin’ity kaonty ity io fomba io.
+acct_err_exists_other_method	Efa misy kaonty amin’ity mailaka ity nefa amin’ny fomba fidirana hafa. Midira amin’io fomba io aloha, avy eo ampifandraiso ity amin’ny pejin’ny kaontinao.
+acct_err_generic	Nisy zavatra tsy nety.
+acct_method_password	Mailaka sy tenimiafina
+acct_pw_hint_change	Ovay ny tenimiafinao. Hamafisinao amin’ilay ankehitriny.
+acct_pw_hint_add	Ampio tenimiafina mba hahafahanao miditra amin’ny mailaka koa (ilaina raha tsy misy ny mpamatsy).
+acct_pw_change	Ovay ny tenimiafina
+acct_pw_add	Ampio tenimiafina
+acct_billing_off	Mbola tsy alefa ao amin’ny API rahona ny faktiora.
+acct_billing_no_provider	Tsy misy mpamatsy fandoavana tena izy alefa ao amin’ny API rahona (eo an-toerana ihany ny fakana tahaka).
+price_quote	Tolo-bidy
+price_per_year	₹{amount}/taona tsy misy hetra
+acct_pay_received	Voaray ny fandoavana — havaozina ny tolotrao…
+acct_pay_declined	Nolavina na tsy nahomby ny fandoavana
+acct_pay_failed_detail	{detail}. Tsy niova ny tolotrao.
+acct_checkout_closed	Nakatona ny fandoavana — tsy nisy fandoavana vita. Tsy niova ny tolotrao.
+acct_checkout_failed	Tsy nahomby ny fandoavana
+acct_pay_with	Andoavy amin’ny {provider}
+acct_plan_until	{plan} · hatramin’ny {date}
+acct_unavailable	Tsy misy
+acct_continue_hint	Tohizo amin’ny mailaka, mpamatsy na finday.
+acct_signed_in_fallback	(tafiditra)
+acct_email_verified	Voamarina ny mailaka
+acct_email_unverified	Mbola tsy voamarina ny mailaka — jereo ny boaty fandraisanao
+acct_signed_in_phone	Tafiditra tamin’ny finday
+acct_none_listed	Mbola tsy misy voatanisa
+acct_signed_in_status	Tafiditra ianao.
+acct_created	Voaforona ny kaonty. Jereo ny mailakao hanamarinana azy rehefa afaka ianao.
+acct_reset_sent	Raha misy kaonty ho an’io mailaka io, eny an-dalana ny rohy hamerenana. Jereo ny boaty fandraisanao.
+acct_another_method	fomba hafa
+acct_exists_via	Efa misy kaonty ho an’ny {email} amin’ny alalan’ny {method}. Midira amin’io fomba io aloha, avy eo ampifandraiso ity mpamatsy ity amin’ny pejin’ny kaontinao.
+acct_enter_current_pw	Ampidiro ny tenimiafinao ankehitriny.
+acct_relogin_retry	Mivoaha ary midira indray, avy eo andramo indray.
+acct_pw_mismatch	Tsy mitovy ny tenimiafina vaovao sy ny fanamafisana.
+acct_pw_updated	Nohavaozina ny tenimiafina.
+acct_enter_email_pw	Ampidiro mailaka hampiasaina amin’ny fidirana amin’ny tenimiafina.
+acct_pw_added	Nampiana ny tenimiafina. Afaka miditra amin’ny mailaka koa ianao izao.
+acct_method_linked	Nampifandraisina ny fomba fidirana.
+acct_phone_linked	Nampifandraisina tamin’ity kaonty ity ny finday.
+acct_verify_sent	Nalefa ny mailaka fanamarinana — jereo ny boaty fandraisanao.
+shop_pricing_soon	Ho avy tsy ho ela ny vidiny
+shop_request_quote	Angataho tolo-bidy
+shop_add_to_cart	Ampidiro ao anaty harona
+shop_notify_later	Ampahafantaro ahy any aoriana
+shop_included	Tafiditra
+shop_in_cart	Ao anatin’ny haronao ny {plan}.
+shop_remove	Esory
+shop_cart_is_empty	Foana ny harona.
+shop_prices_unpublished	Mbola tsy navoaka ny vidiny fividianana mivantana ho an’ity vokatra ity. Angataho tolo-bidy manokana na miverena any aoriana.
+shop_cart_cleared	Nofoanana ny harona.
+plan_free_title	Maimaim-poana mandrakizay
+plan_free_blurb	Ny vokatra eo an-toerana manontolo amin’ny fitaovanao. Tsy misy sarany rahona.
+plan_steady_blurb	Rahona mivantana · 10 GB · fantsona kely kokoa
+plan_swift_blurb	Rahona mivantana · 25 GB · fantsona antonony
+plan_priority_blurb	Rahona mivantana · 50 GB · fantsona mahazatra lehibe indrindra
+plan_custom_title	Manokana
+plan_custom_blurb	Fetra sy fantsona nifanarahana. Mety ho ambanin’ny Steady na ambonin’ny Priority ny tolo-bidy.

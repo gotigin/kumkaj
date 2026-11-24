@@ -1,254 +1,254 @@
 # Malagasy — Malagasy (mg). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Ohatra
+length	Halavany
+download_free	Alaivo maimaim-poana
+whatsapp_for_a_demo	Fampisehoana amin’ny WhatsApp
+free_on_android_windows_and	Maimaim-poana amin’ny Android, Windows ary Linux.
+courier_operating_system	rafitra fiasan’ny fandefasana entana
+parcel_journey	DIAN’NY FONOSANA
+walk_in	Mpanjifa eo amin’ny kaontera
+weigh	Lanjao
+price	Vidiny
+label	Marika
+hand_over	Atolory
+track	Arahina
+offline	Tsy misy internet
+start	Fanombohana
+moklanjo_courier_operating_system	MOKLANJO · RAFITRA FIASAN’NY FANDEFASANA ENTANA
+book_move_and_settle_every	Soraty, alefaso ary aloavy ny fonosana tsirairay — rafitra fandefasana iray amin’ny fitaovanao manokana.
+parties_books_cod_labels_awb	Mpifandray, boky, fandoavana rehefa voaray, marika, andian’isa AWB, fanarahana, mpitondra entana ary faktiora — ny fihodinana manontolo avy amin’ny kaontera ka hatramin’ny fandoavana, misy internet na tsy misy. Maimaim-poana amin’ny fitaovanao.
+the_walk_in_loop	NY FIHODINANA EO AMIN’NY KAONTERA
+actual_and_volumetric_side_by	Lanja tena izy sy lanja araka ny habeny, mifanila.
+charge	Sarany
+your_rate_card_cash_or	Ny lisitry ny vidinao, vola mitsanga na amin’ny kaonty.
+next_booking	Fanoratana manaraka
+one_tap_clears_the_counter	Tsindry iray dia afaka ho an’ny mpanjifa manaraka ny kaontera.
+scroll_the_parcel_journey_rail	Ahodino — asehon’ny tsipikan’ny dian’ny fonosana etsy ambony hoe aiza ianao ao amin’ny tantara.
+n_2_weigh_it_right	2 · LANJAO TSARA
+actual_or_volumetric_whichever_is	Tena izy na araka ny habeny — izay ambony kokoa, boribory araka ny fombanao.
+try_a_box	Andramo boaty iray
+domestic	Ao an-toerana
+international	Iraisam-pirenena
+breadth	Sakany
+height	Haavony
+weight_on_the_scale	Lanja eo amin’ny mizana
+chargeable_weight	LANJA HANDOAVANA SARANY
+the_box_s_size_sets	Ny haben’ny boaty no mamaritra ny sarany.
+higher_of_the_two_rounded	Ny ambony kokoa amin’ireo roa, boribory miakatra hatramin’ny 0,5 kg manaraka.
+in_the_app_the_divisor	Ao amin’ny fampiharana, ny orinasa no mametraka ny mpizara, ny dingana famoriborana ary ny refinao (cm na poso, kg na lb). Mamadika ny ÷6000 ho an’ny fanoratana iray ny bokotra Iraisam-pirenena, tsy mikasika ny Fikirana.
+n_3_price_it	3 · APETRAHO NY VIDINY
+your_rate_cards_your_party	Ny lisitry ny vidinao, ny vidin’ny mpifandray aminao — ary ny tombombarotrao amin’ny taratasy fandefasana tsirairay.
+rate_card	Lisitry ny vidiny
+zone_service	Faritra · servisy
+first_0_5_kg	0,5 kg voalohany
+each_0_5_kg	0,5 kg tsirairay
+local_surface	Ao an-toerana · An-tanety
+within_state_express	Ao anatin’ny fanjakana · Haingana
+metro_air	Tanàn-dehibe · An-habakabaka
+zone_service_weight_slab	Faritra × servisy × ambaratonga lanja
+first_slab_and_each_extra	Ambaratonga voalohany sy ambaratonga fanampiny tsirairay, isaky ny faritra sy servisy.
+a_consignor_s_own_card	Lisitry ny vidin’ny mpandefa manokana
+regular_senders_get_their_rates	Mahazo ny vidiny manokana ny mpandefa mahazatra; ny lisitra fototra no mandrakotra ny hafa rehetra.
+margin_at_the_desk	Tombombarotra eo amin’ny kaontera
+your_sell_price_against_the	Ny vidinao fivarotana raha oharina amin’ny vidin’ny mpitatitra, amin’ny taratasy fandefasana tsirairay.
+n_4_label_it	4 · ASIO MARIKA
+awb_from_your_own_number	AWB avy amin’ny andian’isanao manokana. Marika, scanne, fitadiavana.
+number_pools_per_carrier	Andian’isa isaky ny mpitatitra
+enter_each_carrier_s_start	Ampidiro indray mandeha ny andian’isa fanombohana–farany an’ny mpitatitra tsirairay; mandray ny isa manaraka ny fanoratana tsirairay.
+code_128_labels	Marika Code 128
+the_awb_goes_on_the	Mipetraka eo amin’ny boaty ho kaody bara sy isa tsotra ny AWB.
+scan_to_find	Scanneo mba hahitana
+scan_a_label_to_open	Scanneo ny marika iray hanokafana ny taratasy fandefasana azy ary hanaovana zavatra.
+n_5_hand_over	5 · ATOLORY
+hand_it_to_a_carrier	Atolory mpitatitra izy, na alefaso ny mpitondra entanao manokana. Rafitra iray ihany.
+into_a_carrier_bag	Ao anaty kitapon’ny mpitatitra
+the_manifest_holds_exactly_the	Ireo fonosana nofidinao ihany no ao amin’ny lisitry ny entana — izy rehetra na tsy misy. Tsy afaka miditra ao anatin’ity kitapo ity ny fonosana voasoratra tamin’ny mpitatitra hafa.
+onto_your_own_rider_s	Amin’ny lalan’ny mpitondra entanao
+pick_the_parcels_print_the	Safidio ny fonosana, atontà ny taratasy fitetezana, ary miasa amin’ny fampiharana iray ihany amin’ny fomba mpitondra entana ny mpitondra entana — misy ny porofon’ny fanaterana.
+n_6_track_and_prove	6 · ARAHO ARY HAMARINO
+every_move_recorded_and_only	Voaray an-tsoratra ny hetsika rehetra — ary ireo hetsika misy dikany ihany.
+booked	Voasoratra
+with_carrier	Eo amin’ny mpitatitra
+out_for_delivery	Eny an-dalana ho aterina
+delivered	Tonga
+booked_with_carrier_out_for	Voasoratra → Eo amin’ny mpitatitra → Eny an-dalana ho aterina → Tonga
+failed	Tsy nahomby
+reason_out_again_or_return	→ antony → mivoaka indray, na averina any amin’ny mpandefa.
+impossible_moves_refused	Lavina ny hetsika tsy azo atao
+delivered_returned_and_cancelled	Farany ny tonga, naverina ary nofoanana.
+proof_of_delivery	Porofon’ny fanaterana
+a_photo_and_the_receiver	Sary sy sonian’ny mpandray eo amin’ny taratasy fandefasana.
+failed_deliveries	Fanaterana tsy nahomby
+reasons_attempts_out_again_or	Antony, andrana, mivoaka indray, na miverina any amin’ny mpandefa.
+n_7_money_comes_home	7 · MODY ANY AN-TRANO NY VOLA
+cod_you_can_see_expected	Fandoavana rehefa voaray hitanao: andrasana, natolotra, trosa amin’ny mpandefa tsirairay.
+rider_cash_end_of_run	Volan’ny mpitondra entana, amin’ny faran’ny lalana
+rider	Mpitondra entana
+expected	Andrasana
+handed_in	Natolotra
+a_14_drops	A · fanaterana 14
+b_9_drops	B · fanaterana 9
+short_200_on_rider_b	Tsy ampy ₹ 200 amin’ny mpitondra entana B — voalaza, tsy very ao anaty fitambarany.
+cod_register	Rejisitry ny fandoavana rehefa voaray
+collected_against_paid_out_per	Voangona raha oharina amin’ny naloa, isaky ny mpandefa, miaraka amin’ny andiana famindram-bola.
+rider_settlement	Fandoavana ny mpitondra entana
+expected_against_handed_in_and	Andrasana raha oharina amin’ny natolotra, ary ny taratasy kômisiôna.
+books_that_close	Boky mifandanja
+day_book_month_bill_per	Bokin’ny andro, faktiora isam-bolana isaky ny kaonty, ary famintinana GST amin’ny CSV ho an’ny mpitan-kaontinao.
+n_8_internet_down	8 · TAPAKA NY INTERNET?
+keep_booking	Tohizo ny fanoratana.
+booking_labels_scanning_cod_and	Mandeha amin’ny fitaovanao avokoa ny fanoratana, ny marika, ny scanne, ny fandoavana rehefa voaray ary ny boky. Rehefa tapaka ny internet, tsy misy na inona na inona eo amin’ny kaontera miandry azy.
+office_router_no_internet	Router-n’ny birao: tsy misy internet
+desk_still_booking	Kaontera: mbola manoratra
+second_counter_and_rider_phone	Kaontera faharoa sy findain’ny mpitondra entana: mifandray amin’ny Wi-Fi-n’ny birao
+free_forever_on_your_devices	Maimaim-poana mandrakizay amin’ny fitaovanao
+nothing_per_rider_user_or	Tsy misy sarany isaky ny mpitondra entana, mpampiasa na fonosana. Kumkaj Cloud tsy voatery: Steady ₹6k · Swift ₹12k · Priority ₹24k/taona tsy misy hetra — /shop.
+n_9_start	9 · MANOMBOHA
+one_courier_os_your_parcels	Rafitra fandefasana iray. Ny fonosanao. Ny bokinao.
+moklanjo_is_a_complete_courier	Rafitra fiasan’ny fandefasana entana feno i Moklanjo eo ambany Kumkaj — Android, Windows ary Linux. Mampiasa ny fampiharana iray ihany amin’ny fomba mpitondra entana ny mpitondra entana.
+trademark	MARIKA VOASORATRA
+memon_for_find_it_pronounced	Amin’ny teny memon hoe «tadiavo» · tononina hoe go-tee-geen
+company	ORINASA
+brand	MARIKA
+concrete_business_operating_system	Fampiharana mivaingana ho rafitra fiasan’ny orinasa
+product	VOKATRA
+courier_operating_system_under	Rafitra fiasan’ny fandefasana entana eo ambany Kumkaj
+privacy	Fiainana manokana
+terms	Fepetra
+cancellation	Fanafoanana
+cloud_shop	Fivarotana rahona
+account	Kaonty
+weigh_it_right	Lanjao tsara
+price_it	Apetraho ny vidiny
+label_it	Asio marika
+track_and_prove	Araho ary hamarino
+money_comes_home	Mody any an-trano ny vola
+internet_down	Tapaka ny internet
+bead_hand	Atolory
+bead_offline_short	Tsy an-tserasera
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Eo amin’ny mizana: {kg} kg
+weight_scale_wins	Ny lanja eo amin’ny mizana no mamaritra ny sarany.
+cta_installers_note	Hiseho eto ny fametrahana rehefa nahomby tamin’ny fametrahana amin’ny milina madio ny tsirairay. Mandra-pahatongan’izany, angataho fampisehoana amin’ny WhatsApp.
+cta_whatsapp_soon	Hisokatra tsy ho ela ny tsipika fampisehoana WhatsApp. Izao no ho lazain’ny hafatrao: «{message}».
+acct_page_title	Kaonty — Moklanjo
+acct_lede	Kaonty iray ho an’ny tranonkala sy ny fampiharana — taratasy fenoina mitovy na vaovao ianao na miverina.
+acct_email	Mailaka
+acct_name_optional	Anarana (tsy voatery)
+acct_password	Tenimiafina
+acct_continue	Tohizo
+acct_forgot	Adinonao ny tenimiafina?
+acct_reset_hint	Handefa rohy hamerenana amin’ny mailaka izahay. Ampiasao ny adiresy nisoratanao anarana.
+acct_send_reset	Alefaso ny rohy hamerenana
+acct_cancel	Ajanony
+acct_or_continue	na tohizo amin’ny
+acct_phone	Finday
+acct_mobile	Laharan’ny finday
+acct_send_sms	Alefaso ny kaody SMS
+acct_sms_code	Kaody SMS
+acct_confirm_code	Hamafiso ny kaody
+acct_signed_in	Tafiditra
+acct_signed_in_as	Tafiditra amin’ny anarana
+acct_status	Toe-javatra
+acct_sign_in_methods	Fomba fidirana
+acct_cloud_username	Anaran’ny mpampiasa rahona
+acct_plan	Tolotra
+acct_resend_verify	Avereno alefa ny mailaka fanamarinana
+acct_sign_out	Hivoaka
+acct_cloud_sandbox	Kumkaj Cloud (tontolo fitsapana)
+acct_current_password	Tenimiafina ankehitriny
+acct_email_for_password	Mailaka ho an’ny fidirana amin’ny tenimiafina
+acct_new_password	Tenimiafina vaovao
+acct_confirm_new_password	Hamafiso ny tenimiafina vaovao
+acct_add_way	Ampio fomba fidirana hafa
+acct_link_hint	Ampifandraiso amin’ny kaonty iray ihany ny fomba maromaro mba hahafahanao mamerina ny fidirana raha tsy mandeha ny iray.
+acct_link_google	Ampifandraiso Google
+acct_link_microsoft	Ampifandraiso Microsoft
+acct_link_github	Ampifandraiso GitHub
+acct_link_phone	Ampifandraiso ny finday
+acct_send_sms_link	Alefaso SMS hampifandraisana
+acct_confirm_link_phone	Hamafiso ary ampifandraiso ny finday
+shop_page_title	Fivarotana — Moklanjo
+shop_lede	Tolotra rahona isan-taona — ampiana rehefa mandoa ny hetra. Mijanona ho maimaim-poana mandrakizay, tsy misy dokam-barotra, ny fampiharana Moklanjo manontolo amin’ny fitaovanao manokana.
+shop_cart	Harona
+shop_cart_empty_hint	Foana ny haronao. Ampio Steady, Swift na Priority.
+shop_checkout	Andoavy
+shop_clear	Fafao
+shop_checkout_hint	Ampidirina ao amin’ny Kaonty aloha ianao rehefa mandoa, avy eo manomboka ny fandoavana (fakana tahaka ao amin’ny tontolo fitsapana na Paddle rehefa voapetraka ny lakile).
+acct_billing_hint	Tolotra isan-taona — ampian’ny vavahady fandoavana ny hetra rehefa mandoa. Mijanona ho maimaim-poana mandrakizay ny fampiasana eo an-toerana. Araka ny tolo-bidy ny tolotra manokana (mety ho ambanin’ny Steady na ambonin’ny Priority).
+shop_cloud_plans	Tolotra rahona
+acct_federated	Fidirana mitambatra
+acct_err_invalid_email	Ampidiro adiresy mailaka manan-kery.
+acct_err_weak_password	Ampiasao tenimiafina misy litera 6 farafahakeliny.
+acct_err_wrong_password	Diso ny tenimiafina.
+acct_err_invalid_credential	Diso ny mailaka na ny tenimiafina.
+acct_err_popup_closed	Nakatona ny varavarankelin’ny fidirana.
+acct_err_popup_cancelled	Nofoanana ny fidirana.
+acct_err_unauthorized_domain	Tsy nahazo alalana ho an’ny Firebase Auth ity sehatra ity.
+acct_err_method_disabled	Mbola tsy alefa io fomba fidirana io.
+acct_err_too_many	Andrana be loatra. Andramo indray any aoriana.
+acct_err_phone_format	Ampiasao ny laharana finday feno miaraka amin’ny kaodin’ny firenena (ohatra +91…).
+acct_err_sms_code	Diso na lany daty io kaody SMS io.
+acct_err_no_account	Tsy misy kaonty amin’io mailaka io. Tohizo hamoronana iray, na ampiasao fomba hafa.
+acct_err_recent_login	Noho ny fiarovana, midira indray, avy eo andramo indray ity fanovana ity.
+acct_err_credential_in_use	Efa ampiasain’ny kaonty hafa io fomba fidirana io.
+acct_err_email_in_use	Efa ampiasain’ny kaonty hafa io mailaka io.
+acct_err_already_linked	Efa mifandray amin’ity kaonty ity io fomba io.
+acct_err_exists_other_method	Efa misy kaonty amin’ity mailaka ity nefa amin’ny fomba fidirana hafa. Midira amin’io fomba io aloha, avy eo ampifandraiso ity amin’ny pejin’ny kaontinao.
+acct_err_generic	Nisy zavatra tsy nety.
+acct_method_password	Mailaka sy tenimiafina
+acct_pw_hint_change	Ovay ny tenimiafinao. Hamafisinao amin’ilay ankehitriny.
+acct_pw_hint_add	Ampio tenimiafina mba hahafahanao miditra amin’ny mailaka koa (ilaina raha tsy misy ny mpamatsy).
+acct_pw_change	Ovay ny tenimiafina
+acct_pw_add	Ampio tenimiafina
+acct_billing_off	Mbola tsy alefa ao amin’ny API rahona ny faktiora.
+acct_billing_no_provider	Tsy misy mpamatsy fandoavana tena izy alefa ao amin’ny API rahona (eo an-toerana ihany ny fakana tahaka).
+price_quote	Tolo-bidy
+price_per_year	₹{amount}/taona tsy misy hetra
+acct_pay_received	Voaray ny fandoavana — havaozina ny tolotrao…
+acct_pay_declined	Nolavina na tsy nahomby ny fandoavana
+acct_pay_failed_detail	{detail}. Tsy niova ny tolotrao.
+acct_checkout_closed	Nakatona ny fandoavana — tsy nisy fandoavana vita. Tsy niova ny tolotrao.
+acct_checkout_failed	Tsy nahomby ny fandoavana
+acct_pay_with	Andoavy amin’ny {provider}
+acct_plan_until	{plan} · hatramin’ny {date}
+acct_unavailable	Tsy misy
+acct_continue_hint	Tohizo amin’ny mailaka, mpamatsy na finday.
+acct_signed_in_fallback	(tafiditra)
+acct_email_verified	Voamarina ny mailaka
+acct_email_unverified	Mbola tsy voamarina ny mailaka — jereo ny boaty fandraisanao
+acct_signed_in_phone	Tafiditra tamin’ny finday
+acct_none_listed	Mbola tsy misy voatanisa
+acct_signed_in_status	Tafiditra ianao.
+acct_created	Voaforona ny kaonty. Jereo ny mailakao hanamarinana azy rehefa afaka ianao.
+acct_reset_sent	Raha misy kaonty ho an’io mailaka io, eny an-dalana ny rohy hamerenana. Jereo ny boaty fandraisanao.
+acct_another_method	fomba hafa
+acct_exists_via	Efa misy kaonty ho an’ny {email} amin’ny alalan’ny {method}. Midira amin’io fomba io aloha, avy eo ampifandraiso ity mpamatsy ity amin’ny pejin’ny kaontinao.
+acct_enter_current_pw	Ampidiro ny tenimiafinao ankehitriny.
+acct_relogin_retry	Mivoaha ary midira indray, avy eo andramo indray.
+acct_pw_mismatch	Tsy mitovy ny tenimiafina vaovao sy ny fanamafisana.
+acct_pw_updated	Nohavaozina ny tenimiafina.
+acct_enter_email_pw	Ampidiro mailaka hampiasaina amin’ny fidirana amin’ny tenimiafina.
+acct_pw_added	Nampiana ny tenimiafina. Afaka miditra amin’ny mailaka koa ianao izao.
+acct_method_linked	Nampifandraisina ny fomba fidirana.
+acct_phone_linked	Nampifandraisina tamin’ity kaonty ity ny finday.
+acct_verify_sent	Nalefa ny mailaka fanamarinana — jereo ny boaty fandraisanao.
+shop_pricing_soon	Ho avy tsy ho ela ny vidiny
+shop_request_quote	Angataho tolo-bidy
+shop_add_to_cart	Ampidiro ao anaty harona
+shop_notify_later	Ampahafantaro ahy any aoriana
+shop_included	Tafiditra
+shop_in_cart	Ao anatin’ny haronao ny {plan}.
+shop_remove	Esory
+shop_cart_is_empty	Foana ny harona.
+shop_prices_unpublished	Mbola tsy navoaka ny vidiny fividianana mivantana ho an’ity vokatra ity. Angataho tolo-bidy manokana na miverena any aoriana.
+shop_cart_cleared	Nofoanana ny harona.
+plan_free_title	Maimaim-poana mandrakizay
+plan_free_blurb	Ny vokatra eo an-toerana manontolo amin’ny fitaovanao. Tsy misy sarany rahona.
+plan_steady_blurb	Rahona mivantana · 10 GB · fantsona kely kokoa
+plan_swift_blurb	Rahona mivantana · 25 GB · fantsona antonony
+plan_priority_blurb	Rahona mivantana · 50 GB · fantsona mahazatra lehibe indrindra
+plan_custom_title	Manokana
+plan_custom_blurb	Fetra sy fantsona nifanarahana. Mety ho ambanin’ny Steady na ambonin’ny Priority ny tolo-bidy.
