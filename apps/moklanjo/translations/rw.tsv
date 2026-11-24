@@ -1,47 +1,47 @@
 # Kinyarwanda — Ikinyarwanda (rw). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Ibitabo bya Courier-ajanse + kumeza. Ubuntu kumurongo.
+app_tagline	Ibitabo by'ikigo cyohereza ibipfunyika + aho kubyandikira. Ubuntu, bikora nta interineti.
 unlock	Fungura
 pin_hint	PIN ya nyir'iduka itangira nka 0000
-sell	Kwiyandikisha
+sell	Iyandikwa
 nav_board	Ikibaho
 board	Ikibaho
 park_draft	Shyira nk'imbanzirizamushinga
-board_help	Imbanzirizamushinga zifunguye (ziguma kugeza ukanze «Siba» cyangwa «Kusanya amafaranga») n'ibyagurishijwe byanditswe uyu munsi. Muri «Kwiyandikisha», kanda «Shyira nk'imbanzirizamushinga» hagati mu kazi (bibikwa hano, si mu bitabo); kanda imbanzirizamushinga kugira ngo ukomeze.
+board_help	Imbanzirizamushinga zifunguye (ziguma kugeza ukanze «Siba» cyangwa «Kusanya amafaranga») n'ibyanditswe uyu munsi. Muri «Iyandikwa», kanda «Shyira nk'imbanzirizamushinga» hagati mu kazi (bibikwa hano, si mu bitabo); kanda imbanzirizamushinga kugira ngo ukomeze.
 board_empty	Nta makarita aracyahari.
-board_park_nothing	Nta cyo gushyira ku ruhande — ongeramo amafaranga ya serivisi cyangwa amakuru yo kwiyandikisha
+board_park_nothing	Nta cyo gushyira ku ruhande — ongeramo amafaranga ya serivisi cyangwa amakuru y'iyandikwa
 board_parked	Byashyizwe kuri «Ikibaho» — ameza y'akazi arimo ubusa
 board_draft	Imbanzirizamushinga
-board_booked	Yanditse
+board_booked	Byanditswe
 board_filter_all	Byose
 board_filter_draft	Imbanzirizamushinga
-board_filter_booked	Yanditse
+board_filter_booked	Byanditswe
 board_cols_fmt	Inkingi {n}
 board_summary_fmt	Amakarita {total} · imbanzirizamushinga {drafts} · ibyanditswe {booked}
 board_card_no_charges	Nta mafaranga ya serivisi aracyahari
 board_card_charges	amafaranga ya serivisi
-board_card_booked	Kwiyandikisha
+board_card_booked	Iyandikwa
 board_draft_gone	Iyo mbanzirizamushinga ntikiri kuri «Ikibaho»
 board_draft_closed	Iyo mbanzirizamushinga yamaze kurangizwa cyangwa gusibwa
 board_discard	Siba
 board_discarded	Imbanzirizamushinga yasibwe
 buy	Kwishyura
 books	Igitabo cy'umunsi
-books_help	Umwanya w'uyu munsi. Kwiyandikisha = parcelle muri. Kwishura = fagitire yabatwara & amafaranga. Amashyaka = abatwara & abatwara.
-buy_help	Inyemezabuguzi zikoreshwa hamwe na fagitire yabatwara (amafaranga hanze). Kuri konti iguma ku gitabo cy'ishyaka.
-sell_money_in	Andika parcelle
-buy_money_out	Amafaranga / fagitire
+books_help	Uko byifashe uyu munsi. Iyandikwa = ibipfunyika byinjiye. Kwishyura = fagitire z'abikorezi n'amafaranga yakoreshejwe. Abafatanyabikorwa = abohereza n'abikorezi.
+buy_help	Inyemezabwishyu z'ibyakoreshejwe na fagitire z'abikorezi (amafaranga asohoka). Ibyo ku konti biguma ku gitabo cy'umufatanyabikorwa.
+sell_money_in	Andika igipfunyika
+buy_money_out	Amafaranga yakoreshejwe / fagitire y'umwikorezi
 record_purchase	Andika ibyo waguze
 add_expense	Inyemezabwishyu
-bank_book	Igitabo cy'ibank
-credit_help	Id ishyaka ryihariye (amazina arashobora gusubiramo). Inshingano: Ibicuruzwa (AR), Umwikorezi (AP), cyangwa byombi kuri iyo id. Abatanga inguzanyo baguma batandukanye; raporo zerekana net.
-party_kind_ph	Uruhare rwumukiriya (ubishaka) - cyangwa ukande chip hejuru
-parties_list_heading	Amashyaka yakijijwe
-reports_help	Igitabo cy'umunsi, abatwatanze n'abatubanza, igitabo cy'ibank, inyemezabwishyu, inyungu n'igihombo.
+bank_book	Igitabo cya banki
+credit_help	Nomero y'umufatanyabikorwa ni iy'umwihariko (amazina ashobora gusubirwamo). Inshingano: Uwohereza (AR), Umwikorezi (AP), cyangwa byombi kuri iyo nomero. Ibitabo biguma bitandukanye; raporo zerekana ikinyuranyo.
+party_kind_ph	Inshingano: Umukiriya, Utanga, bombi…
+parties_list_heading	Abafatanyabikorwa babitswe
+reports_help	Igitabo cy'umunsi, abatubereyemo imyenda n'abo tubereyemo imyenda, igitabo cya banki, inyemezabwishyu, inyungu n'igihombo.
 reports_today	Igitabo cy'umunsi (uyu munsi)
 reports_month	Inyungu n'igihombo (ukwezi)
 reports_aging	Ibitarishyurwa / Dr-Cr
-reports_balance_sheet	Inyandiko y'umusaruro
-reports	Igitabo cy'ibank & I&Y
+reports_balance_sheet	Umutungo n'imyenda
+reports	Igitabo cya banki, inyungu n'igihombo
 refresh	Vugurura
 undo	Subiza inyuma
 start_tracking	Tangira gukurikirana
@@ -61,7 +61,7 @@ editing_item	Urimo guhindura
 save	Bika
 remove	Kuraho
 empty_catalog	Nta gipimo kugeza ubu.
-counter_sale	Kwiyandikisha
+counter_sale	Iyandikwa kuri kontwari
 total	Igiteranyo
 cash	Amafaranga mu ntoki
 upi	UPI
@@ -89,12 +89,12 @@ note_ph	Icyitonderwa (bitari ngombwa)
 rounded	BYAZENGURUTSE
 split	Gabanya
 counter	Kontwari
-parcel	Parcelle
+parcel	Igipfunyika
 order	Komande
 sales	Bike
 sales_refunds	Gutanga no gusubizwa
 day_close	Gufunga umunsi
-reports_expenses	Igitabo cy'ibank n'inyungu
+reports_expenses	Igitabo cya banki, inyungu n'igihombo
 nav_reports	Raporo
 nav_settings	Igenamiterere
 nav_lock	Funga
@@ -114,9 +114,9 @@ sidebar_order_saved	Urutonde rw'urubavu rwabitswe
 sidebar_visibility_saved	Kugaragara kw'urubavu kwabitswe
 amounts_hide	Hisha
 amounts_show	Erekana
-no_sale_yet	Nta kigurishwa
+no_sale_yet	Nta kiragurishwa
 favorites	Ibyakunzwe
-favorites_help	Ibintu ugurisha kenshi, bibitswe kuri iyi ninjira. Ongeraho kimwe ku nyemezabuguzi, cyangwa ukore urutonde rwawe mu bintu byose biri hasi.
+favorites_help	Ibintu ugurisha kenshi, bibitswe kuri konti yawe. Ongeraho kimwe ku nyemezabuguzi, cyangwa ukore urutonde rwawe mu bintu byose biri hasi.
 your_favorites	Ibyakunzwe byawe
 all_items	Ibintu byose
 no_favorites	Nta byakunzwe — ongeraho ibintu ku rutonde ruri hasi.
@@ -133,32 +133,32 @@ inventory	Ububiko
 inventory_stock	Ububiko n'ibihari
 branches	Amashami
 branches_org	Amashami n'umuryango
-credit_customers	Amashyaka (ababerewemo imyenda & abahawe inguzanyo)
-customer_name_ph	Izina ry'uwafatanyabikorwa
-new_customer_ph	Izina rishya ry'uwafatanyabikorwa
+credit_customers	Abafatanyabikorwa (abatubereyemo imyenda n'abo tubereyemo imyenda)
+customer_name_ph	Izina ry'umufatanyabikorwa
+new_customer_ph	Izina rishya ry'umufatanyabikorwa
 item_name_ph	Gereranya izina (urugero: Ubuso bwa A)
 item_price_ph	Kuri kg / icyapa cya mbere
 start_template	Ibicuruzwa
-next_booking	Ubutaha
+next_booking	Iyandikwa rikurikira
 destination_ph	Icyerekezo umujyi / akarere
 consignee_ph	Izina ry'abakira
-consignee_phone_ph	Terefone yakira
-consignee_address_ph	Aderesi ya aderesi
-origin_name_ph	Izina ry'abohereje
-origin_phone_ph	Kohereza terefone
+consignee_phone_ph	Telefone y'uwakira
+consignee_address_ph	Aderesi yo kugezaho
+origin_name_ph	Izina ry'uwohereza
+origin_phone_ph	Telefone y'uwohereza
 origin_address_ph	Gutora / aderesi
-booking_consignor_heading	Ibicuruzwa (umukiriya / wohereje)
+booking_consignor_heading	Uwohereza (umukiriya / uwohereje)
 booking_consignee_heading	Umukiriya (uwakiriye)
-booking_consignor_hint	Tora ibirori byo kuzuza, cyangwa usige ubusa kugirango winjire. Birakenewe kuri pickup yo murugo na RTO.
-booking_consignee_hint	Uwakiriye parcelle. Kureka ubusa kugirango ugende-muri konti yataye.
+booking_consignor_hint	Hitamo umufatanyabikorwa kugira ngo wuzuze, cyangwa usige ubusa ku mukiriya uje kuri kontwari. Birakenewe mu gufata ibipfunyika mu rugo no kuri RTO.
+booking_consignee_hint	Uwakira igipfunyika. Siga ubusa ku bipfunyika abantu bazana ubwabo kuri kontwari.
 weight_kg_ph	Kg
 length_cm_ph	L cm
 breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Kwishyurwa kg
 awb_label	AWB
-booking_help	Uwohereza + uwakiriye (ubusa OK) → aho bigana → pima → hitamo igiciro → Konti/Amafaranga → wishyure. Hagati: «Shyira nk'imbanzirizamushinga» (bibika kuri Ikibaho, si mu bitabo) hanyuma ufasha umukiriya ukurikira; kanda draft kuri Ikibaho kugira ngo ukomeze. AWB icapa ku resi. Guhagarika gukurikira bisiba ameza.
-cart_empty_hint	Ameza yubusa - uwatumije / uwatumiwe atabishaka, shiraho aho ugana & uburemere, kanda ONGERAHO ku gipimo, hanyuma wishyure.
+booking_help	Uwohereza + uwakira (ubusa biremewe) → aho bijya → pima → hitamo igiciro → Konti/Amafaranga → ishyura. Hagati mu kazi: «Shyira nk'imbanzirizamushinga» (bibikwa ku Kibaho, si mu bitabo) hanyuma ufashe umukiriya ukurikira; kanda imbanzirizamushinga ku Kibaho kugira ngo ukomeze. AWB icapwa ku nyemezabwishyu. Iyandikwa rikurikira risiba ameza y'akazi.
+cart_empty_hint	Ameza y'akazi arimo ubusa — uwohereza / uwakira si ngombwa, shyiraho aho bijya n'uburemere, kanda ONGERAHO ku giciro, hanyuma wishyure.
 team	Ikipe
 team_pins	Ikipe na PIN
 my_pin_settings	PIN yanjye
@@ -200,17 +200,17 @@ new_server_name_ph	Izina rishya rya seriveri (bitari ngombwa)
 server_remove_pin_ph	PIN ya nyir'iduka yo gukuraho seriveri
 only_owner_remove_server	Nyir'iduka wenyine ashobora gukuraho seriveri
 owner_pin_remove_server	PIN ya nyir'iduka irakenewe gukuraho iyi seriveri
-device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri. Niba Server itarakiriho, «Garura kopi y'inyuma» ifungura ibitabo ku dosiye uhisemo (igenzura rimwe no kugarura muri settings).
+device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri. Niba nta Seriveri irahari, «Garura kopi y'inyuma» ifungura ibitabo uhereye kuri dosiye uhisemo (igenzura rimwe n'iryo kugarura muri Igenamiterere).
 currency	Ifaranga
 backup	Kopi y'inyuma
 settings_sec_diag	Isuzuma
 settings_sec_privacy	Ibanga
 privacy_policy_help	Ubuzima bwite · PRIVACY.md · moklanjo.com/privacy
 dont_use	Ntukoreshe
-receipt_printers_dd	Mucapyi kuri iki gikoresho · Inyemezabwishyu
-receipt_printers_dd_n	{n} · Mucapyi kuri iki gikoresho · Inyemezabwishyu
-label_printers_dd	Mucapyi kuri iki gikoresho · Ikirango cya AWB
-label_printers_dd_n	{n} · Mucapyi kuri iki gikoresho · Ikirango cya AWB
+receipt_printers_dd	Amacapyi y'inyemezabwishyu
+receipt_printers_dd_n	Amacapyi {n} y'inyemezabwishyu · kanda uhindure
+label_printers_dd	Amacapyi y'ikirango cya AWB
+label_printers_dd_n	Amacapyi {n} y'ikirango cya AWB · kanda uhindure
 settings_hub_help	Fungura agace kamwe ku gihe — gukurura bike, amahitamo asobanutse.
 settings_sec_devices	Ibindi bikoresho
 settings_sec_alerts	Imenyesha
@@ -260,8 +260,8 @@ add_branch	Ongeraho ishami
 add_conversion	Ongeraho impinduranya
 add_item_plain	Ongeraho ikintu
 add_note	Ongeraho icyitonderwa
-add_opening_balance	Ongeraho umusaruro wo gutangira
-add_rider	Ongeraho uyigenderaho
+add_opening_balance	Ongeraho igisigaye cyo gutangira
+add_rider	Ongeraho umumotari
 add_staff	Ongeraho umukozi
 add_unit	Ongeraho igipimo
 add_use_name	Ongeraho / koresha iri zina
@@ -269,7 +269,7 @@ allow_extra_tills	Emera kontwari zindi
 amend	Kosora
 apply_country_pack	Shyira ipaki y'igihugu
 datetime_appearance	Imigaragarire y'itariki n'isaha
-datetime_appearance_help	Ibitabo bikomeza umwaka-wambere RFC3339 imbere. Ibi bihindura gusa uko amatariki nisaha bisa nibyakiriwe, ibirango, raporo, na ecran.
+datetime_appearance_help	Ibitabo bibika imbere itariki mu buryo bwa RFC3339 butangirwa n'umwaka. Ibi bihindura gusa uko itariki n'isaha bigaragara ku nyemezabwishyu, ku birango, kuri raporo no kuri ekarani.
 datetime_example	Urugero ubu: {ex}
 date_order	Urutonde rw'itariki
 date_order_dmy	U/K/M
@@ -291,17 +291,17 @@ unmark	Kuraho akamenyetso
 role_both	Bombi
 role_carrier	Umwikorezi
 role_cashier	Ushinzwe amafaranga
-role_consignor	Ibicuruzwa
+role_consignor	Uwohereza
 role_manager	Umuyobozi w'igihe
 role_supplier	Utanga
 branch_name_sell_ph	Izina ry'ishami rizagurisha
-bring_my_book	Zanira igitabo cyanjye
+bring_my_book	Zana igitabo cyanjye
 business_tax_id_ph	Nomero y'umusoro w'ubucuruzi
 card_amount_ph	Amafaranga y'ikarita
 cash_amount_ph	Amafaranga mu ntoki
 upi_amount_ph	Amafaranga ya UPI
-carrier_cost_ph	Igiciro cyabatwara
-carrier_party_ph	Ibirori byabatwara
+carrier_cost_ph	Igiciro cy'umwikorezi
+carrier_party_ph	Umwikorezi (umufatanyabikorwa)
 choose_icon	Hitamo ikimenyetso
 choose_logo	Hitamo ikirango
 choose_receipt_stamp	Hitamo kashe
@@ -311,11 +311,11 @@ clear_logo	Ikirangantego
 clear_photo	Siba ifoto
 clear_stamp	Siba kashe
 clear_payment_qr	Siba QR yo kwishyura
-print_faces	Shira mu maso (inyemezabwishyu / igihe cyo kwishyura)
-print_faces_help	Ikashe idahwitse no kwishyura QR kuruhande rwikirango cyawe ku nyemezabwishyu no kwishyuza igihe.
+print_faces	Ibicapwa (inyemezabwishyu / fagitire y'igihe)
+print_faces_help	Kashe na QR yo kwishyura bitari ngombwa iruhande rw'ikirango cyawe ku nyemezabwishyu z'iyandikwa no kuri fagitire z'igihe.
 awb_pools_heading	Umwikorezi AWB nimero y'ibidendezi
 add_awb_pool	Ongeramo pisine ya AWB
-awb_pool_carrier_ph	Izina ry'ishyaka
+awb_pool_carrier_ph	Izina ry'umwikorezi
 awb_pool_start_ph	Tangira oya.
 awb_pool_end_ph	Kurangiza oya.
 awb_pool_prefix_ph	Imbanzirizamushinga (bidashoboka)
@@ -323,10 +323,10 @@ awb_pool_label_ph	Ikirango (bidashoboka)
 pieces_ph	Ibice (ubusa = 1) - kwagura imizigo / ibice byinshi
 bulk_awbs_ph	AWBs nyinshi - andika byinshi (umurongo mushya cyangwa koma) kumurongo umwe wambere
 tds_cut_ph	Gukata TDS (kubishaka)
-discount_ph	Kugabanuka (kubishaka)
+discount_ph	Igabanywa (bitari ngombwa)
 cheque_no_ph	Reba numero (ubishaka)
-bill_reminder_chase	Kwibutsa fagitire yirukanye urutonde
-month_mix_report	Ukwezi kuvanga raporo
+bill_reminder_chase	Urutonde rwo kwibutsa abatarishyura fagitire
+month_mix_report	Raporo y'imvange y'ukwezi
 copy_month_gst_csv	Gukoporora ukwezi GST CSV
 domestic	Imbere mu Gihugu
 international	Mpuzamahanga
@@ -336,19 +336,19 @@ booking_scope_hint_intl	Volumetric ÷ 6000 (ikirere mpuzamahanga) - kanda Imbere
 cod_register	Kwiyandikisha
 collect_cod	Kusanya COD (AWB)
 consignments_dispatch	Ibicuruzwa no kohereza
-consignor_party_ph	Ibicuruzwa / izina ry'ishyaka
+consignor_party_ph	Uwohereza / izina ry'umufatanyabikorwa
 copy_day_book_csv	Kopi CSV y'igitabo cy'umunsi
 copy_day_close	Kopi yo gufunga umunsi
 copy_items_csv	Kopi CSV y'ibintu
 copy_outstanding_csv	Kopi CSV y'ibitarishyurwa
 copy_parties_csv	Kopi CSV y'abafatanyabikorwa
-copy_party_ledger_csv	Kopi CSV y'igitabo cy'uwafatanyabikorwa
+copy_party_ledger_csv	Kopi CSV y'igitabo cy'umufatanyabikorwa
 copy_receipt	Kopi y'inyemezabwishyu
 copy_report	Kopi ya raporo
-counted_cash_ph	Amafaranga mu ntoki yabarwa mu kabatira
+counted_cash_ph	Amafaranga yabaruwe mu gikurura
 close_shift_print	Funga igihe ucape urupapuro
 shift_handover	Guha undi igihe
-shift_counted_ph	Amafaranga mu ntoki yabarwa mu guha undi
+shift_counted_ph	Amafaranga yabaruwe mu ihererekanya
 shift_since	Iki gihe kuva
 expected_in_drawer	Biteganyijwe mu kabatira
 lock_books_through_month	Funga ibitabo kugeza ku kwezi
@@ -356,44 +356,44 @@ books_lock_month_ph	YYYY-MM
 lock_books_month_btn	Funga kugeza kuri uku kwezi
 books_locked_none	Nta kwezi kurafungwa
 books_locked_through	Bifunze kugeza
-counter_agency_ph	Izina rya Counter / ikigo (bidashoboka)
+counter_agency_ph	Izina rya kontwari / ikigo (bitari ngombwa)
 create_backup	Kora kopi y'inyuma
 day_close_summary	Incamake yo gufunga umunsi
-delete_party	Siba uwafatanyabikorwa wahiswemo
-dispatch_to_rider	Kohereza byanditseho → rider
+delete_party	Siba umufatanyabikorwa wahiswemo
+dispatch_to_rider	Ohereza ibyanditswe → umumotari
 docket_charge_ph	Amafaranga yububiko
 declared_value_ph	Agaciro kamenyekanye
 contents_ph	Ibirimo
-eway_ph	Umushinga w'itegeko o.
+eway_ph	Nomero ya E-way bill
 insurance_label	Ubwishingizi
 yes_label	Yego
 no_label	Oya
 print_route_label	Shira inzira
-new_party_kind_label	Ubwoko bushya bw'ishyaka
+new_party_kind_label	Ubwoko bushya bw'umufatanyabikorwa
 done_open_books	Byarangiye — fungura ibitabo
 export_day	Sohora umunsi
 extra_note_expense_ph	Icyitonderwa cy'inyongera ku nyemezabwishyu iheruka
-extra_note_awb_ph	Inyandiko y'inyongera kuriyi AWB / kugurisha
-failed_delivery	Gutanga kunanirwa
+extra_note_awb_ph	Icyitonderwa cy'inyongera kuri iyi AWB / igurisha
+failed_delivery	Ntibyagejejwe
 find_scan_awb	Shakisha / Gusikana AWB
 forget_shop	Ibira iri duka
 fuel_ph	Ibicanwa
-handover_carrier	Intoki zandikiwe → umutwara
+handover_carrier	Shyikiriza ibyanditswe → umwikorezi
 import_day	Injiza umunsi
-import_items_csv	Kuzana ibintu / ibiciro CSV…
+import_items_csv	Injiza CSV y'ibintu / ibiciro…
 import_parties_csv	Injiza CSV y'abafatanyabikorwa…
 import_pincodes_csv	Kuzana pincode CSV…
-import_carrier_bill_csv	Kuzana ibicuruzwa byabatwara CSV…
-copy_carrier_bill_report	Gukoporora raporo yanyuma yabatwara
-use_carrier_cost	Koresha ikiguzi cy'abatwara
-rate_carrier_ph	Umwikorezi (ubusa = igiciro cyo kugurisha)
-rate_party_ph	Ibirori (ubusa = abakiriya bose)
-carrier_pick_ph	Umwikorezi w'igiciro (uhereye kugereranya)
+import_carrier_bill_csv	Injiza CSV ya fagitire y'umwikorezi…
+copy_carrier_bill_report	Kopi ya raporo ya fagitire y'umwikorezi iheruka
+use_carrier_cost	Koresha igiciro cy'umwikorezi
+rate_carrier_ph	Umwikorezi (ubusa = igiciro cyacu cyo kugurisha)
+rate_party_ph	Umufatanyabikorwa (ubusa = abakiriya bose)
+carrier_pick_ph	Umwikorezi w'igiciro (uhereye ku igereranya)
 item_name	Izina ry'ikintu
 load_bulk_row	Fata umurongo munini → kumeza
 login_id_ph	Izina ry'ukoresha
-mark_delivered	Mark yatanze
-manifest_cod_total	COD yose
+mark_delivered	Shyira ko byagejejwe
+manifest_cod_total	Igiteranyo cya COD
 manifest_received_by	Yakiriwe na
 manifest_sign	Shyira umukono
 ndr_address_wrong	Aderesi itariyo
@@ -401,14 +401,14 @@ ndr_customer_unavailable	Ntibihari
 ndr_door_locked	Urugi rukinze
 ndr_other	Ibindi
 ndr_refused	Yanze
-out_for_delivery	Hanze yo gutanga
+out_for_delivery	Biri mu nzira yo kugezwa
 print_drs	Shira DRS
 print_run_sheet	Shira urupapuro rwerekana
 reattempt	Gusubiramo
 rider_cod_handed_ph	COD yatanze
-settle_rider_cod	Shira umukoresha COD
+settle_rider_cod	Akira COD y'umumotari
 mode_desk	Ibiro
-mode_rider	Rider
+mode_rider	Umumotari
 waiting_office	gutegereza kugera ku biro
 capture_signature	Gufata umukono
 incoming_manifest	Kugaragara
@@ -416,7 +416,7 @@ pickup_request	Gusaba
 pickup_run	Gutwara
 auto_assign_area	Agace-gashinzwe ahantu
 reorder_stops	Urutonde ruhagarara
-settle_rider_pay	Shiraho umushoferi umushahara
+settle_rider_pay	Ishyura umumotari
 vehicle_inspect	Kugenzura ibinyabiziga
 print_docket	Icapa
 franchise_statement	Amatangazo
@@ -425,10 +425,10 @@ open_whatsapp	Fungura WhatsApp
 copy_sms	Gukoporora inyandiko
 pick_barcode_image	Tora ishusho yo gusikana
 share_receipt_whatsapp	Sangira inyemezabwishyu kuri WhatsApp
-delivery_feedback	Igitekerezo cyo gutanga
-lan_self_book	LAN wenyine
-new_party_clear	Uwafatanyabikorwa mushya (siba ifishi)
-new_party_kind_ph	Ubwoko bushya bw'ishyaka (Utanga / Utwara)
+delivery_feedback	Ibitekerezo ku igezwa
+lan_self_book	Kwiyandikira kuri LAN
+new_party_clear	Umufatanyabikorwa mushya (siba ifishi)
+new_party_kind_ph	Ubwoko bushya bw'umufatanyabikorwa (Utanga / Umwikorezi)
 next_country	Igihugu gikurikira
 prev_country	Igihugu kibanziriza
 note_gstin_ph	Icyitonderwa / GSTIN / iwibutso ry'amasezerano
@@ -438,13 +438,13 @@ org_optional_ph	Umuryango (bitari ngombwa)
 paid_now	Yishyuwe ubu
 pairing_code_ph	Kode yo guhuza
 pair_now	Huza ubu
-party_name_selected_ph	Izina ry'uwafatanyabikorwa (cyangwa koresha uwahiswemo)
+party_name_selected_ph	Izina ry'umufatanyabikorwa (cyangwa koresha uwahiswemo)
 password_ph	Ijambo ry'ibanga
 pay_ap_card	Ishyura AP ikarita
 pay_ap_cash	Ishyura AP amafaranga mu ntoki
 pay_ap_upi	Ishyura AP UPI
-period_bill	Umushinga w'igihe
-period_bill_party	Umushinga w'igihe (ibirori)
+period_bill	Fagitire y'igihe
+period_bill_party	Fagitire y'igihe (umufatanyabikorwa)
 period_bill_generate	Kora inyemezabuguzi
 period_bill_generate_print	Kora kandi ucape
 booking_bulk_preview	{ok} byiteguye · {bad} bifite amakosa
@@ -456,22 +456,22 @@ reason_note_ph	Impamvu / icyitonderwa (ibyangiritse, kubara, …)
 record_day_close	Andika gufunga umunsi
 refresh_from_shop	Vugurura uhereye ku iduka
 refund	Subiza
-remit_cod	Kuraho COD (ibirori)
+remit_cod	Ishyura COD (umufatanyabikorwa)
 remove_selected	Kuraho byahiswemo
 restore_backup	Garura kopi y'inyuma
-rider_name_ph	Izina ry'umukinnyi
-rider_phone_ph	Terefone
-riders	Abashoferi
-riders_own_fleet	Abatwara ibinyabiziga (amato bwite)
+rider_name_ph	Izina ry'umumotari
+rider_phone_ph	Telefone y'umumotari
+riders	Abamotari
+riders_own_fleet	Abamotari (bacu bwite)
 rollup	Incamake
-save_booking_measures	Bika ingamba zo kubika
+save_booking_measures	Bika ibipimo by'iyandikwa
 save_brand	Bika ikirango
 save_business_id	Bika nomero y'ubucuruzi
 save_business_name	Bika izina ry'ubucuruzi
-save_features	Bika akazi
+save_features	Bika imiterere y'akazi
 save_names	Bika amazina
 server_ip_ph	IP ya seriveri (urugero 192.168.1.10)
-set_credit_limit	Shyira umupaka ku wafatanyabikorwa
+set_credit_limit	Shyira umupaka ku mufatanyabikorwa
 set_login_selected	Shyira kwinjira ku wahiswemo
 set_login_named	Shyira kwinjira kuri {name}
 shop	Iduka
@@ -492,8 +492,8 @@ editing_staff	Uburenganzira kuri
 team_pick_ph	Umukozi wo guhindura — izina, izina ry'ukoresha, cyangwa hitamo
 select_staff	Hitamo uyu mukozi
 rights_help	Uburenganzira - kanda kugirango uhindure: Byemerewe → Byemejwe (PIN yumuyobozi muri kiriya gihe) → Ntabwo byemewe.
-right_void_refund	Kuraho cyangwa gusubiza igitabo
-right_amend_sale	Hindura igitabo cyanditse
+right_void_refund	Siba burundu cyangwa usubize amafaranga y'iyandikwa
+right_amend_sale	Kosora iyandikwa ryanditswe
 find_server	Shaka seriveri y'iduka
 finding_server	Irimo gushaka seriveri y'iduka kuri iyi Wi‑Fi…
 no_server_found	Nta na kimwe cyabonetse. Kuri Seriveri: Igenamiterere → Ibindi bikoresho → Emera kontwari zindi (Wi‑Fi imwe). Cyangwa wandike IP yerekanwe aho.
@@ -535,8 +535,8 @@ backup_copy_saved	Kopi y'inyuma yabitswe — iyigumane hanze y'iki gikoresho (in
 backup_copy_overdue	Nta kopi y'inyuma yavuye kuri iki gikoresho mu minsi {n} — Igenamiterere → Kopi y'inyuma
 backup_copy_failed	Kopi y'inyuma ntiyabitswe aho — hitamo ahandi
 clock_off	Isaha y'iki gikoresho itandukanye n'iminota {min} na seriveri y'iduka — shyira isaha nyayo kuri iki gikoresho
-printers_heading	Mucapyi kuri iki gikoresho
-printers_help	Shakisha icapiro nyaryo, hanyuma uhitemo Inyemezabwishyu cyangwa ikirango cya AWB. Buri murimo ufite ubugari bwawo, igishushanyo cyangwa imiterere, nuburyo bytes zoherejwe. Akarango kerekana kode. Ahantu hafite ubusa = ntucapwe.
+printers_heading	Amacapyi
+printers_help	Shaka amacapyi nyakuri, hanyuma uhitemo Inyemezabwishyu cyangwa Ikirango cya AWB. Buri kazi gafite ubugari bwako, uhagaze cyangwa utambitse, n'uburyo bytes zoherezwa. Ikirango gicapa barcode. Ahantu hatarimo mucapyi = ntibicapwa.
 job_width	Ubugari bw'ibirimo (mm)
 job_width_ph	Cyangwa andika ubugari, mm 40-210
 job_layout	Imiterere
@@ -555,20 +555,20 @@ reported_width_mm	Ubugari bwatangajwe (mm)
 reported_length_mm	Uburebure bwatangajwe (mm)
 reported_paper	Ibyatangajwe: {paper}
 virtual_paper	Birtuale: {paper}
-printer_paper_help	Ibyatangajwe ni impapuro porogaramu ya capyi (driver) y'iyi capyi yashyizweho; iyi porogaramu irazisoma gusa, kandi N/A bivuga ko nta driver ihari yo kubaza. Virtual ni impapuro uvuga ko ziri muri capyi koko, muri mm; uburebure butanditse ni umuzingo. Capyi icapa ku mpapuro zayo bwite; impapuro virtual zibwira iyi porogaramu ingano yazo iriho impapuro nyazo, ku bw'igaragaza, uburebure bw'urupapuro n'aho agapapuro kajya. Shaka amacapyi yuzuza impapuro virtual zitanditse kandi ntijya ihindura izo washyizeho.
-preview_help	Aka gapapuro nk'uko gacapwa kuri capyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu capyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya capyi bihindura igaragaza gusa.
+printer_paper_help	Ibyatangajwe ni impapuro porogaramu (driver) y'iyi mucapyi yashyizweho; iyi porogaramu irazisoma gusa, kandi N/A bivuga ko nta driver ihari yo kubaza. Virtual ni impapuro uvuga ko ziri muri mucapyi koko, muri mm; uburebure butanditse ni umuzingo. Mucapyi icapa ku mpapuro zayo bwite; impapuro virtual zibwira iyi porogaramu ingano yazo iriho impapuro nyazo, ku bw'igaragaza, uburebure bw'urupapuro n'aho agapapuro kajya. Shaka amacapyi yuzuza impapuro virtual zitanditse kandi ntijya ihindura izo washyizeho.
+preview_help	Aka gapapuro nk'uko gacapwa kuri mucapyi yatoranyijwe hepfo, mu bunini nyabwo ku mpapuro zayo virtual. Umweru ni aho icapa, impapuro z'ibara ry'ivu mucapyi ntizigeraho, kandi wino yerurutse irakatwa. Udusanduku icyenda ni urupapuro: kanda aho agapapuro kagomba kujya. Agapapuro karekare gakomereza ku zindi mpapuro. Gutoranya mucapyi bihindura igaragaza gusa.
 slip_col_width	Ubugari (mm)
 no_printer_assigned	Nta mucapyi
 printer_target_default	mucapyi usanzwe wa iyi mudasobwa (aderesi ubusa)
 job_preview	Igereranya
 test_receipt_sent	Icyitegererezo cyoherejwe
 test_label_sent	Icyitegererezo cyoherejwe
-test_print_no_printer	Nta printer kuri ako kazi - ongeraho imwe munsi yaha
-printers_host_only	Mucapyi yashyizwe kubikoresho byububiko (Seriveri). Ibi kugeza byohereje imirimo aho - Shakisha / ongeraho / kugenera guma kuri Serveri. Urupapuro rwibizamini rujya kuri Seriveri.
+test_print_no_printer	Nta mucapyi w'ako kazi — ongeraho umwe aha hantu
+printers_host_only	Amacapyi ashyirwa ku gikoresho cy'iduka (Seriveri). Iyi kontwari yohereza akazi aho — Shaka / ongeraho / shyira biguma kuri Seriveri. Urupapuro rw'igerageza rujya kuri Seriveri.
 printers_pool_heading	Amacapyi
 printers_routes_heading	Aho ibintu bicapwa
 printer_label_ph	Izina (urugero: Ibiro)
-printer_target_ph	uwakiriye: 9100 · bt: MAC · usb: VID: PID · izina rya sisitemu
+printer_target_ph	Izina rya mucapyi cyangwa host:9100
 printer_mode_heading	Umwirondoro kubisubizo bishya
 printer_mode_standard	Igishushanyo gisanzwe
 printer_mode_landscape	Ahantu nyaburanga
@@ -582,25 +582,25 @@ printer_format_custom_added	Umwirondoro wihariye wongeweho kuri aha hantu
 add_printer	Ongeraho mucapyi
 remove_printer	Kuraho icya nyuma
 route_pick_ph	inyemezabwishyu cyangwa ikirango
-route_add_printer_ph	Ongeraho printer aha hantu
+route_add_printer_ph	Ongeraho mucapyi aha hantu
 route_receipt	Inyemezabwishyu
 route_label	Ikirango cya AWB
-route_dont_print	Nta printer yahawe
+route_dont_print	Nta mucapyi washyizweho
 route_add	Ongera ahantu
 route_up	Hejuru
 route_down	Hasi
 route_remove	Kuraho icya nyuma
-route_clear	Kuramo printer aha hantu
+route_clear	Kuraho amacapyi y'aha hantu
 save_printers	Bika amacapyi
 print_test_page	Capa urupapuro rw'igerageza
-printers_saved	Mucapyi yabitswe kuri iki gikoresho
+printers_saved	Amacapyi yabitswe kuri iki gikoresho
 test_page_sent	Urupapuro rw'igerageza rwoherejwe — reba mucapyi
 printers_found	Byabonetse kuri iki gikoresho: {list}
 find_printers	Shaka amacapyi
-printers_looking	Shakisha printer kuri iki gikoresho na Wi - Fi…
-printers_tap_find	Kanda Shakisha icapiro kumurongo wemera imirimo hamwe nicapiro ryakira imiyoboro kuriyi Wi - Fi (idakuweho cyangwa itari kuri interineti).
-printers_none_found	Nta printer yabonetse - andika izina rya printer ya sisitemu, cyangwa aderesi y'urusobe (urugero: 192.168.1.50).
-receipt_printer_ph	Mucapyi yinyemezabwishyu
+printers_looking	Irashaka amacapyi kuri iki gikoresho no kuri Wi‑Fi…
+printers_tap_find	Kanda Shaka amacapyi kugira ngo ubone imirongo yakira akazi n'amacapyi y'inyemezabwishyu ari ku rusobe rw'iyi Wi‑Fi (atari ayakuweho cyangwa atari ku murongo).
+printers_none_found	Nta mucapyi wabonetse — andika izina rya mucapyi wa sisitemu, cyangwa aderesi y'urusobe (urugero 192.168.1.50).
+receipt_printer_ph	Mucapyi w'inyemezabwishyu
 queue_refused	Ntabwo byakiriwe n'iduka ({n}) — reba buri kimwe kuri kontwari:
 clear_not_accepted	Byarebwe — siba uru rutonde
 device_name_ph	Izina ry'iki gikoresho
@@ -609,11 +609,11 @@ lan_not_accepted	{n} ntabwo byakiriwe
 connected_now	byahujwe ubu
 backup_failed	Kopi y'inyuma ya nyuma yikora yananiwe: {e}
 backup_overdue	Nta kopi y'inyuma mu minsi {n} — siga porogaramu ifunguye kuri iki gikoresho kugira ngo ibike.
-disk_low	{mb} MB gusa zisigaye kuri iki gikoresho — kopi z'inyuma zizananirwa vuba. Tegura umwanya.
+disk_low	{mb} MB gusa zisigaye kuri iki gikoresho — kopi z'inyuma zizananirwa vuba. Siba bimwe kugira ngo ubone umwanya.
 last_seen_devices	Yabonetse bwa nyuma: {time}
 sync_interval	Huza buri amasegonda {secs}
 connection_to_shop	Ihuza n'iduka
-supplier_name_ph	Izina ry'utanga (cyangwa uwafatanyabikorwa)
+supplier_name_ph	Izina ry'utanga (cyangwa umufatanyabikorwa)
 supplier_ph	Utanga
 switch_device	Hindura iki gikoresho
 take_payment	Kusanya amafaranga
@@ -625,7 +625,7 @@ unlock_with_login	Fungura ukoresheje kwinjira
 update_my_password	Vugurura ijambo ryanjye ry'ibanga
 update_my_pin	Kuvugurura PIN yanjye
 duress_heading	PIN yo gufungura mu bihe by'ihutirwa (Nyir'iduka gusa)
-duress_help	Offline Server/Client LAN gusa — si cloud. Irafunze bya default: Nyirizina ayimaliza rimwe abika uyu PIN (Itsinda, na kuri Client till). Niba uyu PIN wanditswe mu gufungura aho PIN y’abakozi nyayo yari, inyandiko z’ibitabo kuri Server zirahanagurwa kandi ameza akingura nka Nyirizina asa n’bisanzwe — ibiciro, impande, uturere, abakozi n’igenamiterere biguma. Schema na config ntizihanagurwa. Ntigomba kuba kimwe na PIN ya undi. Zimura ukoresheje bouton yo gusiba.
+duress_help	Ni iya Seriveri/Kiliya kuri LAN gusa, nta interineti — si serivisi ya cloud. Mu buryo busanzwe irazimye: Nyir'iduka ayifungura rimwe abika iyi PIN (Ikipe, no kuri kontwari ya Kiliya). Niba iyi PIN yanditswe mu gufungura aho kuba PIN nyakuri y'umukozi, inyandiko z'ibitabo zisibwa kuri Seriveri kandi ameza y'akazi agafunguka nk'aya Nyir'iduka asa neza — ibiciro, abafatanyabikorwa, uturere two kugezamo, abakozi n'igenamiterere biguma. Imiterere y'ububiko n'igenamiterere ntibisibwa. Ntigomba na rimwe kuba kimwe na PIN y'umuntu uwo ari we wese. Yizimye ukoresheje buto yo gusiba.
 duress_pin_ph	PIN y'ihutirwa (imibare 4–12)
 duress_confirm_ph	Ongera wandike wemeze
 save_duress_pin	Bika PIN y'ihutirwa
@@ -637,7 +637,7 @@ duress_cleared	PIN yo gufungura mu bihe by'ihutirwa yazimye
 vehicle_ph	Ikinyabiziga
 void	Siba burundu
 write_off_ap	Siba AP
-write_off_nil	Siba / umusaruro wa zeru
+write_off_nil	Kuraho umwenda / igisigaye cya zeru
 zone_ph	Zone (izina riva ku biciro)
 caption_today	UYU MUNSI
 caption_bookings	IBITABO
@@ -651,9 +651,9 @@ size_in	Ingano muri
 goods_received	Ibicuruzwa byakiriwe
 expense_heading	Inyemezabwishyu
 notes_attach_sale	Ibyitonderwa n'ibyashyizweho (igurisha ryahiswemo)
-notes_attach_party	Ibyitonderwa n'ibyashyizweho (uwafatanyabikorwa wahiswemo)
+notes_attach_party	Ibyitonderwa n'ibyashyizweho (umufatanyabikorwa wahiswemo)
 attachments_last_expense	Ibyashyizweho (inyemezabwishyu iheruka)
-credit_limit_heading	Umupaka w'inguzanyo (uwafatanyabikorwa wahiswemo / wizina)
+credit_limit_heading	Umupaka w'inguzanyo (umufatanyabikorwa wahiswemo / ufite izina)
 pay_selected_heading	Ishyura byahiswemo (soza umwenda / fata amafaranga y'imbere)
 write_off_heading	Siba (siba utishyuye)
 adjustment_notes_heading	Inyandiko zo gukosora
@@ -662,9 +662,9 @@ adj_note_reason_ph	Impamvu (birakenewe)
 adj_note_awb_ph	AWB bifitanye isano (si ngombwa)
 credit_note_btn	Inyandiko y'inguzanyo
 debit_note_btn	Inyandiko y'umwenda
-bill_later_heading	Ishyuza nyuma (amafaranga y'inyongera nyuma yo kwiyandikisha)
+bill_later_heading	Ishyuza nyuma (amafaranga y'inyongera nyuma y'iyandikwa)
 bill_later_amount_ph	Amafaranga y'inyongera
-bill_later_party_ph	Umufatanyabikorwa (gusa niba kwiyandikisha nta we gufite)
+bill_later_party_ph	Umufatanyabikorwa (gusa niba iyandikwa ritamufite)
 bill_later_btn	Ishyuza nyuma
 bill_later_extra_oda	ODA
 bill_later_extra_packing	Gupakira
@@ -673,23 +673,23 @@ pay_ap_heading	Ishyura ibyo tubatwara (AP)
 country_tax	Igihugu n'umusoro
 extra_tills_heading	Kontwari zindi
 other_devices_help_heading	Tegura ibindi bikoresho
-other_devices_help	Kuri iki gikoresho (Seriveri): Ibindi bikoresho → Emerera inyongera. Reba kode yo guhuza hamwe na aderesi ya Wi - Fi. Kanda Emera ibindi bikoresho guhuza niba bigaragara. Kuri mudasobwa, kanda Tangira ukoresheje iyi mudasobwa. Kuri buri gikoresho kimwe: shyiramo porogaramu, hitamo uburyo bwa Client Mode, Shakisha seriveri yububiko (cyangwa andika aderesi), andika kode yo guhuza, Pair nonaha. Gutegeka gutegereza igikoresho niba Wi - Fi igabanutse hanyuma ukagenda iyo Seriveri yongeye gusubiza.
+other_devices_help	Kuri iki gikoresho (Seriveri): Ibindi bikoresho → Emera kontwari zindi. Andika kode yo guhuza n'aderesi ya Wi‑Fi. Kanda Emera ko ibindi bikoresho bihuza niba bigaragara. Kuri mudasobwa, kanda Tangira na iyi mudasobwa. Kuri buri kindi gikoresho: shyiramo porogaramu, hitamo Uburyo bwa Kiliya, Shaka seriveri y'iduka (cyangwa wandike aderesi), shyira kode yo guhuza, Huza ubu. Amakomande ategereza ku gikoresho iyo Wi‑Fi ihagarara, akagenda iyo Seriveri isubije.
 your_brand	Ikirango cyawe (muri porogaramu)
 units_heading	Ibipimo
-booking_measures	Ingamba zo kubika
+booking_measures	Ibipimo by'iyandikwa
 drawer_count	Kubara kabatira (bitari ngombwa)
 spreadsheet_csv	Urupapuro rw'imibare (CSV)
 bank_reconciliation	Guhuza banki
-book_add_product	Igitabo - ongeraho ibicuruzwa / igipimo
+book_add_product	Igitabo — ongeraho igicuruzwa / igiciro
 book_opening_credit	Igitabo — inguzanyo yo gutangira
 account_kind	Ubwoko bwa konti (kanda bumwe)
 active_ledger	Igitabo gikora
 actual_total_cap	IGITERANYO NYAKURI
 amend_help	Hitamo igurisha ryo gukosora, gusiba burundu, cyangwa gusubiza. Gukosora biguma amateka yose. Igiteranyo cyazengurutse gitangira kingana n'Ibyashyizweho — hindura gusa kugira ngo uzenguruke. Gusiba burundu no gusubiza bishobora gusaba PIN ya Nyir'iduka cyangwa Umuyobozi w'igihe (yanditswe hejuru; yandikwa n'izina ryawe).
 applied_total_cap	IGITERANYO CYASHYIZWEHO
-bank_balance	Umusaruro wa banki
+bank_balance	Amafaranga ari kuri banki
 bank_net_today	Net ya banki uyu munsi
-branch_export_help	Kohereza ibicuruzwa byandika umunsi umwe mububiko hanyuma ukabukoporora kuri clipboard. Kuzana undi munsi wo gusohoka, bika dosiye yayo nka import_branch_snapshot.json muri ubwo bubiko, hanyuma ukande Kuzana.
+branch_export_help	Gusohora byandika incamake y'umunsi mu bubiko bw'inyuma kandi bikayikoporora ku kibaho cyo gukoporora. Kugira ngo winjize umunsi w'irindi shami, bika dosiye yaryo nka import_branch_snapshot.json muri ubwo bubiko, hanyuma ukande Injiza.
 brand_shown_help	Bigaragara ku birubuga byo muri porogaramu. Izina rya porogaramu yashyizwemo n'ikimenyetso kuri iki gikoresho biguma nk'uko byanditswe ku rubuga.
 app_icon	Ikimenyetso cya porogaramu
 logo_help	Ikimenyetso cy'iduka bitari ngombwa ku birubuga byo muri porogaramu.
@@ -699,28 +699,28 @@ cash_in_hand	Amafaranga mu ntoki (kontwari)
 change_my_pin_heading	Hindura PIN yanjye (gusa ibyawe)
 connect_to_server	Huza na Seriveri
 counter_locked	Kontwari 01 · Ifunze
-country_pack_help	Ipaki y'igihugu ishyira izina ry'umusoro n'imibare, inzira yo kwishyura ako kanya, na nomero y'ubucuruzi icapwa ku nyemezabuguzi. Kumkaj ntiyandika imisoro cyangwa itange inyemezabuguzi za leta aho hose.
+country_pack_help	Ipaki y'igihugu ishyira izina ry'umusoro n'imibare, inzira yo kwishyura ako kanya, na nomero y'ubucuruzi icapwa ku nyemezabuguzi. Kumkaj ntimenyekanisha imisoro cyangwa ngo itange inyemezabuguzi za leta ahantu hose.
 currency_use_help	Nyereza ukande Koresha ku faranga ryose ryemewe.
-day_close_help	Kwandika gufunga umunsi bibika iyi ncamake (n'itandukaniro rya kabatira niba ryabarwa) mu nyandiko y'igenzura. Ntibihagarika kugurisha.
-expenses_word	Inyemezabwishyu
+day_close_help	Kwandika gufunga umunsi bibika iyi ncamake (n'itandukaniro ry'amafaranga yo mu gikurura niba yabaruwe) mu nyandiko y'igenzura. Ntibihagarika kugurisha.
+expenses_word	Amafaranga yakoreshejwe
 feature_access_help	Ikiranga abakozi batoranijwe (kanda nyuma yo kongeramo)
 footer_local	SQLite yo hano · Ubuntu iteka · Nta Cloud
-fresh_book_moklanjo	Agashya = kataloge yubusa (ongeramo ibintu nyuma). Igitabo = andika ububiko bwo gufungura ninde ubereyemo umwenda hepfo.
+fresh_book_moklanjo	Bushya = kataloge irimo ubusa (ongeraho ibintu nyuma). Igitabo = andika ibiri mu bubiko bwo gutangira n'abakubereyemo umwenda hasi.
 fresh_selected	Bushya byahiswemo — urutonde ruguma ubusa. Kanda Byarangiye iyo witeguye.
 gross_word	Rusange
 how_start	Ushaka gutangira ute?
-later_country_pack	Nyuma: Igenamiterere → shyira ipaki y'igihugu cyawe ku menyetso y'umusoro no kwishyura.
+later_country_pack	Nyuma: Igenamiterere → shyira ipaki y'igihugu cyawe ku birango by'umusoro no kwishyura.
 local_badge	HANO
-measures_help_moklanjo	Uburyo parcelle zapimwe kumeza yabigenewe. Andika ibipimo n'uburemere mubice ukoresha - bisanzwe (cm, m, muri, ft · kg, g, lb, oz) cyangwa igice cyawe gihujwe na cm / kg hejuru (mu buryo butaziguye cyangwa unyuze mubindi bice). Ibitabo buri gihe byandika kg. Kureka umurima wubusa kugirango ukomeze.
-mix_type_hint_moklanjo	Andika umubare muri buri (amafaranga / UPI / ikarita / inguzanyo). Ugomba kwiyongera kuri fagitire. Inguzanyo ikeneye umukiriya hejuru.
+measures_help_moklanjo	Uko ibipfunyika bipimwa aho kubyandikira. Andika ingano n'uburemere mu bipimo ukoresha — ibisanzwe (cm, m, in, ft · kg, g, lb, oz) cyangwa igipimo cyawe gihujwe na cm / kg hejuru (ku buryo butaziguye cyangwa binyuze mu bindi bipimo). Ibitabo byandika kg buri gihe. Siga umwanya ubusa kugira ngo ugumane ibiriho.
+mix_type_hint_moklanjo	Andika umubare kuri buri buryo (amafaranga / UPI / ikarita / inguzanyo). Bigomba kungana na fagitire. Inguzanyo isaba umukiriya hejuru.
 money_in_sales	Amafaranga yinjiye (ibyagurishijwe)
-more_help_moklanjo	Cataloge, kugurisha, inguzanyo, itsinda, kugarura - wongeyeho ububiko hamwe ninyongera mugihe gikenewe.
+more_help_moklanjo	Kataloge, igurisha, inguzanyo, ikipe, kopi y'inyuma — hamwe n'ububiko na kontwari z'inyongera igihe bikenewe.
 net_word	Neto
 offline_badge	NTA INTERINETI
 optional_login_help	Kwinjira bitari ngombwa (izina + ijambo ry'ibanga). Nyir'iduka ashyira rimwe; ukoresha wenyine ashobora guhindura ijambo ry'ibanga nyuma.
 or_unlock_login	Cyangwa fungura ukoresheje izina ryo kwinjira + ijambo ry'ibanga
 or_unlock_shop_login	Cyangwa fungura ukoresheje kwinjira mu iduka
-shop_login_help	Bihitamo: fungura ukoresheje izina ry'ukoresha n'ijambo ry'ibanga ry'abakozi b'iri duka aho gukoresha PIN (bikora offline).
+shop_login_help	Bitari ngombwa: fungura ukoresheje izina ry'ukoresha n'ijambo ry'ibanga ry'abakozi b'iri duka aho gukoresha PIN (bikora nta interineti).
 cloud_account_title	Konti ya Moklanjo
 cloud_account_help	Iyandikishe cyangwa injira ukoresheje konti imwe na moklanjo.com/account. Irema cloud id yawe na gahunda y'ubuntu.
 cloud_name_ph	Izina (bihitamo)
@@ -738,12 +738,12 @@ cloud_cancel	Hagarika
 permission_preset	Akazi
 preset_help_moklanjo	Ushinzwe amafaranga: gurisha. Umuyobozi w'igihe: gurisha + ibintu + siba burundu/kosora.
 product_locked_moklanjo	Moklanjo
-product_only_moklanjo	Iyi porogaramu ni Moklanjo gusa - ibitabo + kumeza. Ubundi bucuruzi buhura nubwato nkibicuruzwa bitandukanye nyuma.
+product_only_moklanjo	Iyi porogaramu ni Moklanjo gusa — ibitabo + aho kwandika ibipfunyika. Ubundi bwoko bw'ubucuruzi buzasohoka nk'ibicuruzwa bitandukanye nyuma.
 purchases_cogs	Ibyo waguze (COGS)
 qty_cap	UMUBARE
 restore_help	Garura: hitamo kopi y'inyuma. Ibitabo bifunguka nk'uko byari icyo gihe; ibitabo biri ubu bibikwa mbere, niyo ibi bishobora gusubizwa inyuma.
 wipe_data_heading	Siba amakuru yo hano
-wipe_data_help	Nyirubwite gusa - amahitamo amwe na Windows gukuramo. Inyandiko zubucuruzi zikuraho amateka yubucuruzi ariko ikomeza ibiciro no gushiraho (nka fungura byihutirwa PIN). Ibikoresho byububiko bikuraho ububiko bwibitabo. Ibyifuzo bya ecran bisiba idirishya / ururimi. Emeza na nyirayo PIN. Gufungura byihutirwa PIN kuri Team iratandukanye (guhanagura rwihishwa gufungura).
+wipe_data_help	Nyir'iduka gusa — amahitamo amwe n'ayo gukuraho porogaramu kuri Windows. Inyandiko z'ubucuruzi zisiba amateka y'ubucuruzi ariko zigumana ibiciro n'imiterere (nka PIN yo gufungura mu bihe by'ihutirwa). Imiterere y'iduka ikuraho ububiko bw'ibitabo. Ibyifuzo by'ekarani bisiba idirishya/ururimi. Emeza na PIN ya Nyir'iduka. PIN yo gufungura mu bihe by'ihutirwa iri kuri Ikipe iratandukanye (isiba mu ibanga mu gufungura).
 wipe_trading	Inyandiko z'ubucuruzi
 wipe_schema	Imiterere y'iduka
 wipe_ui	Ibyifuzo by'ikubuguru
@@ -759,7 +759,7 @@ rounded_total	Igiteranyo cyazengurutse
 setup_app_moklanjo	Shiraho Moklanjo
 shop_logo_optional	Ikirango cy'iduka (bitari ngombwa)
 stock_type_help	Andika izina ry'ikintu (igice kirahagije), umubare, hanyuma uhindure. Ibintu bitarabarwa bikeneye Tangira gukurikirana rimwe.
-team_owner_help	Guha akazi: hitamo akazi (Cashier / Manager), izina + gutangira PIN, hanyuma Ongeraho. Gusa niba uyu muntu atandukanye: fungura ecran nuburenganzira hepfo, hanyuma uzigame akazi. Umuntu wese ahindura PIN ye hepfo - Nyirubwite ntashobora guhindura undi.
+team_owner_help	Gutanga akazi: hitamo akazi (Ushinzwe amafaranga / Umuyobozi w'igihe), izina + PIN yo gutangira, hanyuma Ongeraho. Gusa niba uyu muntu atandukanye: fungura imbuga n'uburenganzira hasi, hanyuma Bika imiterere y'akazi. Buri wese ahindura PIN ye hasi — Nyir'iduka ntashobora guhindura iy'undi.
 they_owe_us	Batutwara
 unit_at_cap	Igipimo @
 units_help	Kode z'ibimenyetso by'ibintu (kg, igice, umufuka). Buri gipimo kigomba guhuzwa — ku buryo butaziguye cyangwa binyuze mu bindi bipimo — n'igipimo gisanzwe (kg · cm · ml · pc), urugero 1 crate = 2 box na 1 box = 20 cm. Impinduranya: 1 from = factor to. Amafaranga ntari ibipimo.
@@ -794,8 +794,8 @@ setup_complete	Imiterere yarangiye
 onboard_fresh_tmpl	Bushya · {} — urutonde rutangira ubusa; ongeraho ibintu mu Bintu, hanyuma Byarangiye.
 onboard_book_tmpl	Igitabo · {} — ongeraho ibintu n'inguzanyo yo gutangira, hanyuma Byarangiye.
 onboard_template_tmpl	Ha izina ahantu niba ushaka, hanyuma uhitemo uko utangira.
-tmpl_blurb	Ibitabo byandikirwa hamwe nu biro byabigenewe: abatwara ibicuruzwa, abatwara, igitabo cyumunsi, AWB.
-tmpl_how	Ibitabo by'ibitabo kumeza; Igitabo cy'umunsi kuri uyu munsi; tabs kubiciro, amashyaka, raporo.
+tmpl_blurb	Ibitabo by'ikigo cyohereza ibipfunyika n'aho kubyandikira: abohereza, abikorezi, igitabo cy'umunsi, AWB.
+tmpl_how	Andika ibipfunyika aho kubyandikira; Igitabo cy'umunsi ku by'uyu munsi; ibice by'ibiciro, abafatanyabikorwa, raporo.
 app_template_heading	Inyandikorugero z'iduka
 app_template_blurb	Hitamo ameza y'akazi y'intangiriro. «Simbuka ubu» isiga urutonde rw'abafatanyabikorwa rurimo ubusa.
 app_template_skip	Simbuka ubu
@@ -803,7 +803,7 @@ app_template_status	Seriveri yiteguye — injiza inyandikorugero, cyangwa usimbu
 app_template_importing	Irimo gushyira {title}…
 app_template_public_hdr	Inyandikorugero
 app_template_import_selected	Injiza icyatoranyijwe
-app_template_wipe_warn	Ibi bisiba amakuru y'ubucuruzi ari mu bitabo (kwiyandikisha, ibitabo by'amakonti) bigashyiraho igenamiterere ry'iduka ry'inyandikorugero. Komeza?
+app_template_wipe_warn	Ibi bisiba amakuru y'ubucuruzi ari mu bitabo (ibyanditswe, ibitabo by'amakonti) bigashyiraho igenamiterere ry'iduka ry'inyandikorugero. Komeza?
 app_template_wipe_continue	Komeza
 app_template_wipe_cancel	Hagarika
 public_tmpl_help	Amapaki y'ikigo azana na porogaramu kuri iri duka. Nta gukuramo bikenewe.
@@ -816,50 +816,50 @@ report_day_lens	Erekana «Uyu munsi» ukurikije
 report_day_lens_help	Ni ukureba gusa — ntibihindura igihe «Gufunga umunsi» itangiza bundi bushya «Uyu munsi». «Ukurikije gufunga umunsi» ikurikiza gufunga umunsi guheruka; «Ukurikije saa sita z'ijoro» ica saa 00:00 ku isaha y'aho uri.
 report_lens_day_close	Ukurikije gufunga umunsi
 report_lens_midnight	Ukurikije saa sita z'ijoro
-trk_booked	Yanditse
+trk_booked	Byanditswe
 trk_picked_up	Yatoraguwe
 trk_in_transit	Muri transit
-trk_delivered	Yatanzwe
-trk_rto	Gusubira kubohereje
+trk_delivered	Byagejejwe
+trk_rto	Bisubizwa uwohereje
 lane_to_dispatch	Kohereza
-lane_with_carrier	Nabatwara
-lane_failed	Kunanirwa
+lane_with_carrier	Biri ku mwikorezi
+lane_failed	Byanze
 lane_done_today	Bikorewe uyu munsi
-ops_board_help	Parcelle aho ziri mumirimo yuyu munsi. Kanda parcelle (cyangwa uyisuzume) kugirango uyitoragure, hanyuma ukore kubintu byose byatoranijwe icyarimwe - buri murongo utanga gusa ingendo zihuye.
+ops_board_help	Ibipfunyika ukurikije aho bigeze mu kazi k'uyu munsi. Kanda ibipfunyika (cyangwa ubisikane) kugira ngo ubitoranye, hanyuma ukore ku byatoranyijwe byose icyarimwe — buri murongo utanga gusa ibikorwa biwukwiriye.
 lane_empty	Nta kintu na kimwe hano muri iki gihe.
 picked_fmt	{n} yatowe
 pick_all	Tora byose
-bag_for_carrier	Ukuboko kubatwara
-send_with_rider	Ohereza hamwe nuwigenderaho
+bag_for_carrier	Shyikiriza umwikorezi
+send_with_rider	Ohereza n'umumotari
 out_again	Ongera usohoke
-return_to_sender	Garuka kubohereje
+return_to_sender	Subiza uwohereje
 runs_bags_heading	Kwiruka vuba & imifuka
 print_word	Icapa
-bag_word	Isakoshi
-run_word	Umukinnyi wiruka
-parcels_fmt	{n}
+bag_word	Isakoshi y'umwikorezi
+run_word	Urugendo rw'umumotari
+parcels_fmt	Ibipfunyika {n}
 parcel_history	Amateka
 attempt_fmt	Kugerageza {n}
 pieces_short_fmt	{n} pc
 note_reason_ph	Icyitonderwa cyangwa impamvu
-ops_pick_first	Tora parike mbere - kanda cyangwa uyisuzume
-cod_to_collect	Yatanzwe - COD gukusanya
+ops_pick_first	Banza utoranye ibipfunyika — bikande cyangwa ubisikane
+cod_to_collect	Byagejejwe — COD yo kwakira
 cod_on_road	COD iracyari mumuhanda
-cod_owed_consignors	Byegeranijwe - kwishyura ibicuruzwa
+cod_owed_consignors	Byakiriwe — kwishyura abohereza
 cod_rto_fees	Amafaranga ya RTO yo gukusanya
 cod_to_hand_in	COD gutanga
-parcel_one_fmt	{n} parcelle
+parcel_one_fmt	Igipfunyika {n}
 facet_bank_title	Raporo
-facet_bank_help	Ibitabo by'umunsi, imyaka y'abafatanyabikorwa, inyandiko za banki, n'inyungu n'igihombo by'igihe.
+facet_bank_help	Ibitabo by'umunsi, igihe imyenda y'abafatanyabikorwa imaze, inyandiko za banki, n'inyungu n'igihombo by'igihe.
 facet_ops_title	Ibicuruzwa no kohereza
-facet_ops_help	Sikana cyangwa wandike AWB → Shakisha, hanyuma utere imbere / wandike ikirango / COD. Kohereza kubagenzi cyangwa abatwara.
+facet_ops_help	Sikana cyangwa wandike AWB → Shaka, hanyuma ubigeze imbere / capa ikirango / COD. Ohereza ku mumotari cyangwa ku mwikorezi.
 facet_cod_title	Kwiyandikisha
-facet_cod_help	Kusanya kubitanga, hanyuma wohereze kubohereza.
-facet_riders_title	Abatwara ibinyabiziga (amato bwite)
-facet_riders_help	Ongeraho abatwara, hanyuma wohereze AWBs zanditswe muri Ops.
-against_bill_ph	Ku nyemezabuguzi # iri hejuru (bitari ngombwa)
+facet_cod_help	Akira amafaranga mu igezwa, hanyuma uyoherereze uwohereje.
+facet_riders_title	Abamotari (bacu bwite)
+facet_riders_help	Ongeraho abamotari, hanyuma wohereze AWB zanditswe uhereye kuri Ops.
+against_bill_ph	Ku nyemezabuguzi # (bitari ngombwa)
 aliases_ph	Andi mazina — amazina yandi, atandukanyijwe na koma
-amount_blank_full_ph	Amafaranga (ubusa = umusaruro wose)
+amount_blank_full_ph	Amafaranga (ubusa = igisigaye cyose)
 amount_owed_ph	Amafaranga atwarwa
 amount_ph	Amafaranga
 amount_received_ph	Amafaranga yakiriwe
@@ -894,14 +894,14 @@ options_moklanjo_ph	Amahitamo (atabishaka) - Kinini = 20, Impano yo gupfunyika =
 part_second_way_ph	Igice mu bundi buryo (bitari ngombwa)
 phone_ph	Telefone
 address_ph	Aderesi
-party_custom_fields_heading	Imirima yihariye (ishyaka ryatoranijwe)
-party_custom_help	Ongeraho ikirango n'agaciro kuriyi shyaka - WhatsApp, GSTIN, code yinzira,…
+party_custom_fields_heading	Imyanya yihariye (umufatanyabikorwa wahiswemo)
+party_custom_help	Ongeraho ikirango n'agaciro kuri uyu mufatanyabikorwa — WhatsApp, GSTIN, kode y'inzira, …
 party_custom_key_ph	Izina ryumurima (urugero: WhatsApp)
 party_custom_value_ph	Agaciro
 party_custom_add	Ongeraho umurima
 party_custom_remove	Kuraho umurima
 party_custom_empty	Nta murima wihariye
-party_custom_pick_first	Toranya ibirori kugirango wongere imirima yihariye
+party_custom_pick_first	Hitamo umufatanyabikorwa kugira ngo wongereho imyanya yihariye
 place_name_ph	Izina ry'aha hantu
 price_ph	Igiciro
 qty_example_ph	Umubare (urugero 1.5 kuri kg)
@@ -926,14 +926,14 @@ pay_credit	Inguzanyo
 book_kind_today	Ibitabo by'uyu munsi
 book_kind_month	Ibitabo by'uku kwezi
 book_kind_aging	Ibitarishyurwa / debit-kredi
-book_kind_balance	Inyandiko y'umusaruro
+book_kind_balance	Umutungo n'imyenda
 ops_desk_help	Sikana AWB hamwe na USB barcode scaneri (cyangwa wandike) → Shakisha. Noneho tera imbere, wandike ikirango, cyangwa gukusanya COD. Ibirango byandika Kode 128.
-role_help_consignor	Uruhare: Ibicuruzwa - AR (badufitiye umwenda). Firime imwe irashobora kandi kuba Umwikorezi.
-role_help_carrier	Uruhare: Umwikorezi - AP (turabakesha). Firime imwe irashobora kandi kuba Ibicuruzwa.
-role_help_both	Inshingano: Ibicuruzwa + Umwikorezi - ishyaka rimwe, igitabo cya AR na AP, net muri Raporo.
-role_help_supplier	Uruhare: Utanga isoko - AP yo kugura.
-lane_declared_label	Kubika konti
-lane_owner_label	Kubika amafaranga
+role_help_consignor	Inshingano: Uwohereza — AR (badufitiye umwenda). Ikigo kimwe gishobora no kuba Umwikorezi.
+role_help_carrier	Inshingano: Umwikorezi — AP (tubafitiye umwenda). Ikigo kimwe gishobora no kuba Uwohereza.
+role_help_both	Inshingano: Uwohereza + Umwikorezi — umufatanyabikorwa umwe, ibitabo bya AR na AP, ikinyuranyo muri Raporo.
+role_help_supplier	Inshingano: Utanga — AP y'ibyo twaguze.
+lane_declared_label	Iyandikwa kuri konti
+lane_owner_label	Iyandikwa ry'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
 sel_copy	Kopera
 sel_select_all	Hitamo byose

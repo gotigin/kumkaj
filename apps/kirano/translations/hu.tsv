@@ -1,16 +1,16 @@
 # Hungarian — Magyar (hu). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Oldja fel
-sell	Elad
-buy	Vásároljon
+sell	Eladás
+buy	Vásárlás
 books	Napi könyv
-books_help	Mai álláspont. Eladás = pénz. Vásárlás = vásárlások és kiadások. Felek = hitelvevők és beszállítók.
-buy_help	Költségutalványok és szállítói számlák (pénzkiadás). A számlán az ügyfél vagy szállító főkönyvén marad.
-sell_money_in	Eladni elemeket
+books_help	Mai helyzet. Eladás = bevétel. Vásárlás = vásárlások és kiadások. Felek = hitelre vásárló ügyfelek és beszállítók.
+buy_help	Költségutalványok és szállítói számlák (pénzkiadás). A folyószámlás tétel a fél főkönyvi lapján marad.
+sell_money_in	Tételek eladása
 buy_money_out	Költség / szállítói számla
-record_purchase	Rekordvásárlás
+record_purchase	Vásárlás rögzítése
 add_expense	Költség utalvány
 bank_book	Bankkönyv
-credit_help	A vevő vagy a szállító azonosítója egyedi (a nevek ismétlődnek). Az Ügyfél hitelkönyvet vezet (tartozik nekünk); egy Szállító elad nekünk készletet (tartozunk nekik); mindkettő jó. A főkönyvek külön maradnak; a jelentések netet mutatnak.
+credit_help	A fél azonosítója egyedi (a nevek ismétlődhetnek). Az Ügyfélnek khata hitelszámlája van (tartozik nekünk); a Szállító készletet ad el nekünk (tartozunk neki); mindkettő is lehet. A főkönyvek külön maradnak; a jelentések nettó egyenleget mutatnak.
 party_kind_ph	Szerepek: Ügyfél, Szállító, mindkettő…
 reports_help	Napi könyv, adósok és hitelezők, bankkönyv, költségutalványok, nyereség és veszteség.
 reports_today	Napi könyv (ma)
@@ -21,11 +21,11 @@ reports	Bankkönyv és E&V
 undo	Visszavonás
 stock_minus	− Készlet
 stock_plus	+ Készlet
-settle_cash	Rendeljen készpénzt
+settle_cash	Kiegyenlítés készpénzzel
 settle_card	Kiegyenlít kártya
 items	Tételek
 nav_items	Tételek
-items_help	Koppintson egy elemre a szerkesztéshez. Az új elem törli az űrlapot. Keressen név vagy rövid kód alapján, állítsa be az árat (0 megfelelő), majd Hozzáadás. A már rögzített eladások megtartják azt a nevet, amellyel megvádolták.
+items_help	Koppintson egy elemre a szerkesztéshez. Az Új elem kiüríti az űrlapot. Keressen név vagy rövid kód alapján, állítsa be az árat (0 is lehet), majd Hozzáadás. A már rögzített eladások megőrzik azt a nevet, amelyen számlázták őket.
 add_item	Elem hozzáadása
 new_item	Új elem
 adding_item	Új elem hozzáadása
@@ -87,8 +87,8 @@ slip_col_header	Fejléc
 slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
 bill_total_qty_label	Teljes mennyiség címke
 bill_total_subtotal_label	Részösszeg címke
-bill_total_grand_label	Grand total címke
-bill_total_paid_label	Fizetett teljes címke
+bill_total_grand_label	Végösszeg címke
+bill_total_paid_label	Fizetett összeg címke
 bill_meta_pair	Vonal megosztása vele
 bill_pair_alone	Egyedül
 bill_item_piece_on	Be
@@ -111,12 +111,12 @@ settings_sec_brand	Az Ön márkája
 settings_sec_units	Egységek és konverziók
 settings_sec_pickers	Adókulcsok
 settings_sec_printers	Nyomtatók
-settings_sec_bill	Bill & Slip formátum
+settings_sec_bill	Számla és cédula formátum
 settings_sec_selling	Sémák és értékesítés
 settings_sec_alerts	Figyelmeztetések
 alerts_help	Mennyi ideig maradnak az állapotüzenetek a képernyőn az Ön számára (ez a bejelentkezés).
 snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
-snack_secs_save	Takarítson meg riasztási időt
+snack_secs_save	Riasztási idő mentése
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 settings_sec_backup	Biztonsági mentés és visszaállítás
 settings_sec_diag	Diagnosztika
@@ -164,10 +164,10 @@ frequent_config_help	A legtöbb eladott tétel a kitöltött számlákból. Áll
 frequent_days_ph	Napok (1)
 frequent_limit_ph	Tételek (24)
 frequent_apply	Alkalmazni
-frequent_saved	Gyakori: az utolsó {d} nap(ok), a legnépszerűbb {n} – {c} tételek
+frequent_saved	Gyakori: az utolsó {d} nap, a legnépszerűbb {n} – {c} tétel
 frequent_empty	Ebben az időszakban még nem fejeződött be értékesítés – rendezze a számlát (0 INR megengedett, ha a beállítások ezt mondják), és itt megjelennek.
 zero_sales	Nulla értékű értékesítés
-zero_sales_help	Engedélyezze a 0 ₹ értékű tételeket és 0 ₹ számlát (ingyenes / tulajdonos kívánsága). Alapértelmezés szerint be van kapcsolva, így az ingyenes borítók továbbra is megjelennek a gyakori és a napi könyvekben.
+zero_sales_help	Engedélyezze a 0 ₹ értékű tételeket és a 0 ₹-ra kiegyenlített számlákat (ingyenes / tulajdonosi döntés). Alapértelmezés szerint be van kapcsolva, így az ingyenes eladások is megjelennek a Gyakori listában és a napi könyvekben.
 zero_sales_on	0 ₹ engedélyezése
 zero_sales_off	Ár kérése
 zero_sales_saved_on	Nulla értékű értékesítés megengedett
@@ -177,8 +177,8 @@ owes_word	tartozik
 selected_word	Kiválasztva
 chip_clear_credit	egyértelmű — Jóváírás vagy előleg felvétele
 chip_missing_customer	Hiányzik a kiválasztott ügyfél – válasszon újra
-chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Credit elemre
-credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {}
+chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Hitel gombra
+credit_summary_fmt	{} ügyfél · nyitott hitel {} · visszatartott előlegek {}
 recent_label	Legutóbbi:
 inventory	Leltár
 branches	Ágak
@@ -240,7 +240,7 @@ apply_country_pack	Országcsomag alkalmazása
 datetime_appearance	Dátum és idő megjelenése
 datetime_appearance_help	A könyvek az év elején RFC3339-et tartják bent. Ezek csak a dátumok és órák megjelenését változtatják meg a számlákon, jelentéseken és a képernyőn.
 datetime_example	Példa most: {ex}
-date_order	Dátumrendelés
+date_order	Dátumok sorrendje
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
@@ -258,7 +258,7 @@ bank_reconciliation	Banki egyeztetés
 bank_to_till	Bank → pénztár
 book_add_dish	Könyv – tétel/elem hozzáadása
 book_opening_credit	Könyv — nyitó kredit
-branch_name_sell_ph	Eladó fiók neve
+branch_name_sell_ph	Az értékesítő fióküzlet neve
 bring_my_book	Hozd a könyvemet
 business_tax_id_ph	Iparűzési adó azonosító
 caption_bank	BANK
@@ -274,7 +274,7 @@ choose_logo	Válasszon logót
 clear_icon	Ikon törlése
 clear_photo	Tiszta fénykép
 copy_day_book_csv	Napikönyv másolása CSV
-copy_day_close	Másolás nap zárása
+copy_day_close	Napi zárás másolása
 copy_items_csv	Elemek másolása CSV
 copy_outstanding_csv	CSV másolása
 copy_parties_csv	Ügyfelek és beszállítók másolása CSV
@@ -282,7 +282,7 @@ copy_party_ledger_csv	Ügyfélkönyv másolása CSV
 copy_receipt	Nyugta másolása
 share_whatsapp	Megosztás WhatsApp
 lan_pages_heading	Ügyféloldalak a Wi-Fi-n
-lan_pages_help	Ennek az üzletnek a Wi-Fi-jén az ügyféloldalak a kijelző táblához és a visszajelzésekhez működnek. A mobiladat-kapcsolatot használóknak később szükségük lesz a felhőre. A kártyaterminál vagy fizetési link nem kötelező, és soha nem blokkolja a számlálót.
+lan_pages_help	Ennek az üzletnek a Wi-Fi-jén az ügyféloldalak a kijelzőtáblához és a visszajelzésekhez működnek. A mobiladat-kapcsolatot használóknak később szükségük lesz a felhőre. A kártyaterminál vagy fizetési link nem kötelező, és soha nem blokkolja a pultot.
 diag_send_heading	Oszd meg ezt az eszközt
 crm_heading	Ügyfelek és üzenetek
 crm_help	Születésnap, hűség, inaktív és kiemelt vendégek – sor SMS vagy WhatsApp szándékkal. Használja a {name} és {points} jelet az üzenetben. Tulajdonos csapok küldeni; semmi sem robban magától.
@@ -296,7 +296,7 @@ crm_seg_inactive	Inaktív
 crm_seg_top	Legnagyobb költekezők
 birthday_ph	Születésnap (HH-NN vagy ÉÉÉÉ-HH-NN)
 crm_message_ph	Boldog születésnapot {name}! {points} pontod van.
-till_apply_redeem	Jelentkezés a számlán
+till_apply_redeem	Beváltás a számlán
 till_clear_redeem	Törölje a beváltást
 till_wallet_topup	Töltsd fel a pénztárcát
 till_issue_voucher	utalvány kiadása
@@ -321,7 +321,7 @@ export_day	Export nap
 extra_note_bill_ph	Extra megjegyzés ehhez a számlához / eladáshoz
 extra_tills_heading	Extra kassza
 other_devices_help_heading	Más eszközök beállítása
-other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi-Fi-címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. Egymás eszközén: telepítse az alkalmazást, válassza az Ügyfél mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha a Wi-Fi leáll, és mennek, amikor a szerver ismét válaszol. Az extra nyomtatók a kiszolgálón vannak beállítva (Beállítások → Nyomtatók) – a plusz kasszák oda küldik a számlákat.
+other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi-Fi-címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. A többi eszközön: telepítse az alkalmazást, válassza a Kliens mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha a Wi-Fi leáll, és mennek, amikor a szerver ismét válaszol. Az extra nyomtatók a kiszolgálón vannak beállítva (Beállítások → Nyomtatók) – a plusz kasszák oda küldik a számlákat.
 forget_shop	Felejtsd el ezt a boltot
 goods_received	Átvett áru
 import_day	Import nap
@@ -330,29 +330,29 @@ import_parties_csv	Import ügyfelek és beszállítók CSV…
 item_name	Elem neve
 login_id_ph	Felhasználónév
 mark_cleared	Mark kitisztult
-new_party_clear	Új ügyfél vagy szállító (átlátható űrlap)
-new_party_kind_supplier_ph	Új vevő vagy beszállító (beszállító)
-next_order	Következő rendelés (tiszta asztal)
+new_party_clear	Új fél (űrlap ürítése)
+new_party_kind_supplier_ph	Új fél típusa (Szállító)
+next_order	Következő rendelés (pult ürítése)
 note_gstin_ph	Megjegyzés / GSTIN / megállapodás emlékeztető
 notes_attach_party	Megjegyzések és mellékletek (kiválasztott ügyfél vagy szállító)
-notes_attach_sale	Jegyzetek és mellékletek (kiválasztott akciók)
+notes_attach_sale	Megjegyzések és mellékletek (kiválasztott eladás)
 on_account_ap	Számlára (AP)
 org_optional_ph	Szervezet (opcionális)
-paid_by	által fizetett
+paid_by	Fizetés módja
 paid_now	Most fizetve
 pair_now	Párosítsa most
 pairing_code_ph	Párosítási kód
-party_name_selected_ph	Vevő vagy szállító neve (vagy kiválasztott használat)
+party_name_selected_ph	Fél neve (vagy a kiválasztott)
 password_ph	Jelszó
 pay_ap_card	Fizetés AP kártyával
-pay_ap_cash	Fizessen AP készpénzben
+pay_ap_cash	AP kifizetése készpénzben
 pay_ap_heading	Fizessük ki, amivel tartozunk (AP)
 pay_ap_upi	UPI tartozás fizetése
 pay_selected_heading	Fizetés kiválasztott (tartozás rendezése / előleg felvétele)
 print_open	Nyomtatás / megnyitás
 reason_amend_ph	A módosítás / érvénytelenség / visszatérítés oka
 reason_note_ph	Ok / megjegyzés (pazarlás, szám, …)
-record_day_close	Lezárult a rekordnap
+record_day_close	Napi zárás rögzítése
 business_day	Mikor indul újra: «Ma»?
 business_day_help	Ezzel a beállítással: «Napi zárásig» a nap éjfél után is fut itt: «Napi könyv», amíg nem rögzíti a napi zárást. Ezzel a beállítással: «Naptári éjfél» a nap helyi idő szerint 00:00-kor ér véget.
 biz_day_until_close	Napi zárásig
@@ -376,10 +376,10 @@ role_manager	Menedzser
 history_retention	Kereskedési történelem
 history_retention_help	A régi eladások és a régi jegyek automatikus törlése. Az elemek, a személyzet és a beállítások megmaradnak. A Clear most törli az összes kereskedési sort, és megtartja a beállítást.
 history_off	Tartsa
-history_day_close	Zárásnapon
+history_day_close	Napi záráskor
 history_after_hours	Órák után
 history_hours_ph	Óra (1–168, alapértelmezett 4)
-history_hours_save	Órák megtakarítása
+history_hours_save	Óraszám mentése
 history_clear_now	Törölje az előzményeket most
 history_hours_saved	Előzményórák mentve
 rollup	Összesítés
@@ -444,7 +444,7 @@ backup_copy_overdue	{n} napig nem készült biztonsági másolat az eszközről 
 backup_copy_failed	A biztonsági másolatot nem lehetett oda menteni – válasszon másik helyet
 clock_off	Ennek az eszköznek az órája {min} percre van az üzlet szerverétől – állítsa be a megfelelő időt ezen az eszközön
 printers_heading	Nyomtatók
-printers_help	Keresse meg a nyomtatókat, koppintson az egyikre a kiválasztásához, majd nyomtasson tesztoldalt csak azon az eszközön. Számlanyomtatók: Bill & Slip formátum → Számla.
+printers_help	Keresse meg a nyomtatókat, koppintson az egyikre a kiválasztásához, majd nyomtasson tesztoldalt csak azon az eszközön. Számlanyomtatók: Számla és cédula formátum → Számla.
 printers_host_only	A nyomtatók a bolt eszközén (szerveren) vannak beállítva. Ez a kassza számlákat és régi jegyeket küld oda — a Keresés / Hozzáadás / Hozzárendelés a szerveren marad. A tesztoldal és a számla nyomtatási mérete a szerverre kerül.
 printers_find_heading	Keressen nyomtatókat
 printers_find_tip	A Find beolvassa ezt az eszközt, és naprakészen tartja a listát.
@@ -453,7 +453,7 @@ printer_assign_dd	Valódi nyomtató: {place}
 printer_assign_pick	Válasszon valódi nyomtatót
 printer_profile_heading	Elrendezés
 vp_delivery_heading	Szállítás
-vp_delivery_help	Hogyan küldi el ez a virtuális nyomtató a feladatokat – OS-dokumentum, nyers bájtok vagy ESC/POS. A szelvény tartalmát (típusméret, borítás, margók) a számla/szelvény formátuma határozza meg, nem itt.
+vp_delivery_help	Hogyan küldi el ez a virtuális nyomtató a feladatokat – OS-dokumentum, nyers bájtok vagy ESC/POS. A cédula tartalmát (betűméret, tördelés, margók) a Számla és cédula formátum határozza meg, nem itt.
 vp_delivery_spooler	OS dokumentum (rendszer spooler)
 vp_delivery_escpos	ESC/POS termikus parancsok
 virtual_printer_new	Új virtuális nyomtató
@@ -463,7 +463,7 @@ config_layout_landscape	Táj
 config_send_os	Rendszer spooler
 config_send_escpos	ESC/POS
 virtual_printers_heading	Virtuális nyomtatók
-virtual_printers_empty	No virtual printers yet — set values below, then Save. Miután megvan néhány, koppintson egyet a listában a szerkesztéshez.
+virtual_printers_empty	Még nincsenek virtuális nyomtatók — állítsa be alább az értékeket, majd Mentés. Ha már van néhány, koppintson egyre a listában a szerkesztéshez.
 virtual_printer_name_ph	Virtuális nyomtató neve (nem kötelező)
 virtual_printer_create	Virtuális nyomtató létrehozása
 virtual_printer_save	Mentse el a virtuális nyomtatót
@@ -484,19 +484,19 @@ printer_target_default	a számítógép szokásos nyomtatója (üres cím)
 route_bill	Számla
 station_print_pick_first	Először válasszon egy üzletrészt
 bill_printers_dd	Nyomtatók a számlához
-bill_printers_dd_n	{n} nyomtatók a számlához · érintse meg a módosításhoz
+bill_printers_dd_n	{n} nyomtató a számlához · érintse meg a módosításhoz
 printer_mode_first	Először is ez működik
 printer_mode_all	Nyomtatás az összesre
-station_vp_attached	Nyomtató mellékelve
+station_vp_attached	Nyomtató csatolva
 station_vp_detached	A nyomtatót eltávolították az állomásról
 print_test_page	Nyomtasson ki egy tesztoldalt
 no_printer_assigned	Nincs nyomtató
-test_page_pick_first	Pick printers for a test page first — then Print a test page
+test_page_pick_first	Először válasszon nyomtató(ka)t a tesztoldalhoz — majd nyomtasson tesztoldalt
 test_printers_dd	Nyomtatók egy tesztoldalhoz
-test_printers_dd_n	{n} printers for a test page · tap to change
+test_printers_dd_n	{n} nyomtató tesztoldalhoz · koppintson a váltáshoz
 test_printer_picked	Teszt itt: {name}
 test_printer_cleared	Nincs tesztelés: {name}
-test_page_sent_n	Tesztoldal elküldve {n} nyomtatókra
+test_page_sent_n	Tesztoldal elküldve {n} nyomtatóra
 printers_saved	Mentve
 test_page_sent_one	Tesztoldal elküldve a {name} címre – ellenőrizze a nyomtatót
 printers_found	Talált {n}: {list}
@@ -539,7 +539,7 @@ duress_heading	Vészfeloldás PIN (csak a tulajdonos)
 duress_help	Csak offline Server/Client LAN — nem felhőfunkció. Alapból ki: a Tulajdonos egyszer bekapcsolja ennek a PIN-nek a mentésével (Csapat, Client kasszán is). Ha feloldáskor ezt a PIN-t írják be valódi személyzeti PIN helyett, a Serveren a könyvbejegyzések törlődnek, és az asztal Tulajdonosként, normál kinézettel nyílik — díjak, felek, zónák, személyzet és beállítások megmaradnak. A séma és a konfiguráció nem törlődik. Soha ne egyezzen senki PIN-jével. Kapcsolja ki a törlés gombbal.
 duress_pin_ph	Vészhelyzet PIN (4–12 számjegy)
 duress_confirm_ph	A megerősítéshez írja be újra
-save_duress_pin	Vészhelyzet mentése PIN
+save_duress_pin	Vészhelyzeti PIN mentése
 clear_duress_pin	Vészhelyzet kikapcsolása PIN
 duress_on	Vészfeloldás PIN be van kapcsolva
 duress_off	Vészfeloldás PIN ki van kapcsolva
@@ -568,23 +568,23 @@ stamp_heading	Bélyegző
 stamp_image_help	Opcionális bélyegkép a nyomtatott számlákon és az ügyfél kijelzőjén.
 payment_qr_heading	Fizetési QR
 payment_qr_image_help	Statikus QR a számlákon és az ügyfél kijelzőjén; egyébként a fizetés dinamikus UPI QR-t használ a fenti VPA-ból.
-cash_in_hand	Készpénz kézben (kassza)
+cash_in_hand	Pénztárkészlet (kassza)
 change_my_pin_heading	A bejelentkezésem
 connect_to_server	Csatlakozzon a szerverhez
-counter_locked	Számláló 01 · Lezárva
+counter_locked	Pult 01 · Zárolva
 country_pack_help	Az országcsomag beállítja az adónevet és a matematikai adatokat, az azonnali fizetést és a számlákra nyomtatott üzleti azonosítót. A Kumkaj sehol nem ad be adókat és nem állít ki állami e-számlákat.
 currency_use_help	Görgessen, és koppintson a Használat bármely támogatott pénznemhez.
 day_close_help	A napi zárás rögzítése elmenti ezt az összegzést (és a fiók eltérését, ha számítják) a megfigyelési naplóba. Nem hagyja abba az értékesítést.
 expenses_word	Költségek
 feature_access_help	Mit nyithatnak meg – nem kötelező; a fenti feladat már beállít egy alapértelmezett értéket
-fresh_book_kirano	Friss = üres katalógus (később adjon hozzá elemeket). Könyv = típus nyitó készlet és ki tartozik alább.
+fresh_book_kirano	Friss = üres katalógus (tételek később hozzáadhatók). Könyv = írja be alább a nyitókészletet és azt, hogy ki tartozik Önnek.
 fresh_selected	Frissen kiválasztott – a katalógus üres marad. Ha készen áll, koppintson a Kész gombra.
 gross_word	Bruttó
 how_start	Hogyan akarod kezdeni?
 later_country_pack	Később: Beállítások → alkalmazza az országcsomagot az adó- és fizetési címkékhez.
 local_badge	HELYI
 mix_type_hint_kirano	Oszd meg készpénz / UPI / kártya / hitel között, ha szükséges. A hitelhez a fenti ügyfél kell.
-money_in_sales	Pénz (értékesítés)
+money_in_sales	Bevétel (értékesítés)
 net_word	Nettó
 offline_badge	OFFLINE
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
@@ -657,7 +657,7 @@ locked_word	Lezárva
 set_owner_pin	TULAJDONOS BEÁLLÍTÁSA PIN
 enter_owner_passcode	ADJA MEG A TULAJDONOS JELSZÓKÓDJÁT
 enter_staff_passcode	ADJA MEG A SZEMÉLYZET JELSZÓKÓDJÁT
-pin_hint_choose	Válasszon 4–12 számjegyet. · Enter vagy Unlock a mentéshez
+pin_hint_choose	Válasszon 4–12 számjegyet · Enter vagy «Oldja fel» a mentéshez
 pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
 pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
 pin_hint_books	Ez a készülék a könyveket tárolja
@@ -672,11 +672,11 @@ logo_yours	Logó: az üzlet logója – a képernyőkön és a nyugtákon látha
 logo_default	Embléma: Kumkaj jel (alapértelmezett) — válassza ki a sajátját, ha van
 setup_complete	A beállítás kész
 onboard_fresh_tmpl	Friss · {} — a katalógus üresen kezdődik; adjon hozzá elemeket az Elemek mappához, majd válassza a Kész lehetőséget.
-onboard_book_tmpl	Foglalás · {} — tételek és nyitó kredit hozzáadása, majd Kész.
-tmpl_blurb	Kirana pult: eladás, készlet, khata, beszállító vásárol, könyvek.
+onboard_book_tmpl	Könyv · {} — tételek és nyitó kredit hozzáadása, majd Kész.
+tmpl_blurb	Kirana pult: eladás, készlet, khata, beszerzés beszállítótól, könyvek.
 reports_facet_title	Jelentések
-reports_facet_help	Napi könyvek, vásárlók vagy szállítók öregedése, banki bejegyzések és időszaki P&L.
-against_bill_ph	A fenti számla ellenében (nem kötelező)
+reports_facet_help	Napi könyvek, felek szerinti korosítás, banki tételek és időszaki P&L.
+against_bill_ph	Kapcsolódó számla sz. (nem kötelező)
 aliases_ph	Rövid kódok és álnevek – vesszővel elválasztva (pl. MG02, atta)
 amount_blank_full_ph	Összeg (üres = teljes egyenleg)
 amount_owed_ph	Tartozás összege
@@ -714,7 +714,7 @@ unit_cost_ph	Egységköltség
 unit_name_bag_ph	Név (táska)
 unit_plate_ph	Egység (tányér / db – üres = mindegyik)
 pay_credit	Számlára
-book_kind_today	Ma könyvek
+book_kind_today	Mai könyvek
 book_kind_month	E havi könyvek
 book_kind_aging	Tartozás / betéti jóváírás
 book_kind_balance	Mérleg
@@ -726,13 +726,13 @@ dish_group_ph	Csomagméret-csoport (opcionális) – pl. 1 kg / 5 kg
 discount	Kedvezmény
 remove_discount	Távolítsa el a kedvezményt
 apply_discount	Kedvezmény alkalmazása
-save_opening_cash	Takarítson meg nyitó készpénzt
+save_opening_cash	Nyitó készpénz mentése
 close_shift_print	Zárja be a műszakot és a nyomtatási cédulát
 discount_ph	10% vagy 50
 discount_reason_ph	Ok (pl. törzsvendég, késői étkezés)
-opening_float_ph	Ma reggel készpénz került a fiókba
+opening_float_ph	Nyitó készpénz a fiókban
 shift_counted_ph	Az átadáskor számolt készpénz
-opening_float	Nyitott készpénz (float)
+opening_float	Nyitó készpénz (váltópénz)
 shift_handover	Műszak átadás
 shift_since	Ez a váltás azóta
 expected_in_drawer	Fiókban várható
@@ -742,9 +742,9 @@ your_category	Az Ön kategóriája
 suggested_category	Javasolt – tételeink közül
 category_search_ph	Kategória – keresse meg a sajátját, vagy írjon be egy újat
 cancel_item_short	Mégsem
-return_to_customer	Vissza az ügyfélhez
+return_to_customer	Visszajáró
 short_by	Röviden
-tip_not_sale	Tipp (személyzet, nem eladás)
+tip_not_sale	Borravaló (személyzeté, nem eladás)
 right_settle	Fogadja el a fizetést
 right_allowed	Engedélyezett
 right_with_approval	Jóváhagyással
@@ -757,7 +757,7 @@ server_host_selected	A {host} használatával — írja be a párosítási kódo
 approval_pin_ph	Menedzser PIN (csak kérésre)
 menu_search_ph	Keressen elemet vagy rövid kódot
 customer_paid_ph	Az ügyfél fizetett
-tip_ph	Tipp
+tip_ph	Borravaló
 find_server	Keresse meg az üzlet szerverét
 bill_format	Számlaformátum
 bill_header_ph	Cím | telefon
@@ -792,7 +792,7 @@ content_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
 content_width_bill_help	Milyen szélesre nyomtatja ki az ügyfél számláját. Alapértelmezett 210 mm (oldal). 58 mm keskeny, 80 mm széles, 112 mm 4 hüvelykes, 210 mm A4-es szélességű. Írjon be tetszőleges értéket 40 és 210 között. A jegyeknek saját szélességük van a szelvényfülön.
 vp_paper_width	Tartalom szélessége (mm)
 vp_paper_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
-vp_paper_width_help	A tartalom szélessége a Bill & Slip formátumban van beállítva – külön a számlához (alapértelmezett 210 mm) és a jegyhez (alapértelmezett 80 mm).
+vp_paper_width_help	A tartalom szélessége a Számla és cédula formátum alatt van beállítva – külön a számlához (alapértelmezett 210 mm) és a jegyhez (alapértelmezett 80 mm).
 std_size	Betűméret
 kot_copies	Másolatok
 kot_copies_1	1
@@ -813,7 +813,7 @@ stamp_set	Bélyegző: az iratokon – az ügyfél kijelzőjén látható, és a 
 stamp_none	Bélyegző: nincs
 choose_payment_qr	Válassza a fizetési QR-kódot
 clear_payment_qr	Fizetési QR törlése
-payment_qr_set	Fizetési QR: fájlban – megjelenik az ügyfél kijelzőjén (az UPI QR összegét helyettesíti ott)
+payment_qr_set	Fizetési QR: fájlban – megjelenik az ügyfél kijelzőjén (ott az összeget tartalmazó UPI QR helyére lép)
 payment_qr_none	Fizetési QR: nincs – a UPI azonosítóból származó QR összeg fizetéskor
 team_pick_ph	Szerkeszthető személyzet – név, felhasználónév vagy választás
 select_staff	Válassza ki ezt a személyzetet
@@ -822,7 +822,7 @@ own_item_name	Használja ezt saját elemnévként
 on_your_menu	A katalógusban
 edit	Szerkesztés
 schemes	Sémák / ajánlatok
-schemes_help	Vásároljon egyet-egyet, százalékos kedvezmény és rögzített csomagok. Példa: Vegyél 2 rizst, kapsz 1 olajat.
+schemes_help	1+1 akció, százalékos kedvezmény és rögzített csomagok. Példa: 2 rizs vásárlásakor 1 olaj ajándék.
 scheme_bogo_ph	Ha veszel 2 rizst, kapsz 1 olajat
 add_scheme	BOGO hozzáadása
 schedule_ph	Nyitvatartás: H-P 07:00-11:00 vagy este 17:00-19:00=150
@@ -833,27 +833,27 @@ close_upi_qr	Bezárás
 upi_qr_help	Az ügyfél beolvas és fizet. Koppintson a Fizetés fogadása fizetés után. Második képernyő: Nyissa meg a szerver URL-címét /megjelenítés a LAN-on.
 role_help_customer	Szerep: Ügyfél – hitelkönyv (tartoznak nekünk). Ugyanaz a vevő vagy szállító készletet is szállíthat.
 role_help_both	Szerepkörök: Ügyfél + Szállító – egy ügyfél vagy szállító, hitelkönyvi és fizetendő főkönyvek, nettó jelentésekben.
-role_help_supplier	Szerep: Szállító – tartozunk nekik vásárlásokkal.
+role_help_supplier	Szerep: Szállító – tartozunk nekik a vásárlásokért.
 price_ph	Ár
 price_ph_gst_inside	Ár ({tax})
 taxable_value	Adóköteles érték
 gst_inside_price_note	({tax} beleértve)
 template_heading	Kezdő elemek
-template_info	{c} kategóriák és {d} tételek fotókkal, készen a hozzáadásra. Az árak 0 ₹-tól kezdődnek – állítsa be később.
+template_info	{c} kategória és {d} tétel fotókkal, készen a hozzáadásra. Az árak 0 ₹-tól indulnak – a sajátját később állítsa be.
 template_import	Teljes sablon importálása
-template_confirm	Hozzáadja az {d} elemeket a kategóriáikkal? A már megszerzett tételek változatlanok maradnak.
+template_confirm	Hozzáad {d} tételt a kategóriáikkal együtt? A már meglévő tételek változatlanok maradnak.
 template_yes	Igen, importálni
 template_importing	Elemek importálása…
 template_import_progress	Importálás… {d}/{t}
-template_done	Sablonunk minden eleme rajta van a tételeken.
-template_imported	{d} tételek és {c} kategóriák hozzáadva — ezen a képernyőn állítsa be az árakat
+template_done	Sablonunk minden tétele már szerepel a tételei között.
+template_imported	{d} tétel és {c} kategória hozzáadva — ezen a képernyőn állítsa be az árakat
 client_template_heading	Import katalógus
-client_template_info	{title}: {c} kategóriák, {d} tételek árakkal, fotókkal és álnevekkel. Csak a hiányzó elemek – a már meglévő nevek maradnak.
+client_template_info	{title}: {c} kategória, {d} tétel árakkal, fotókkal és álnevekkel. Csak a hiányzó tételek – a már meglévő nevek maradnak.
 client_template_import	Importálja ezeket az elemeket
-client_template_confirm	Hozzáadja az {d} elemeket az {title}-ből? A már megszerzett tételek változatlanok maradnak.
+client_template_confirm	Hozzáad {d} tételt innen: {title}? A már meglévő tételek változatlanok maradnak.
 client_template_importing	{title} importálása…
-client_template_done	Az {title} minden eleme rajta van a tételeken.
-client_template_imported	{d} tételek és {c} kategóriák hozzáadva az {title}-től
+client_template_done	A(z) {title} minden tétele már szerepel a tételei között.
+client_template_imported	{d} tétel és {c} kategória hozzáadva innen: {title}
 app_template_heading	Üzletsablonok
 app_template_blurb	Válasszon kezdő katalógust és boltbeállításokat. Üresen hagyja a polcot: «Most hagyd ki».
 app_template_skip	Most hagyd ki
@@ -882,21 +882,21 @@ add_dishes	Elemek hozzáadása
 order_so_far	Ennél a rendelésnél: {n} · {total}
 no_dish_match	Egyetlen elem sem felel meg a következőnek: „{q}”
 pick_done	Kész
-dishes_n	{n} tételek
+dishes_n	{n} tétel
 reorder_ph	Vásároljon többet itt
 set_reorder	Állítsa be az újrarendelési szintet
 low_stock_alert	Fogyóban – vásárolja meg hamarosan: {items}
-unpriced_note	A tételeken szereplő {n} tételeknek még nincs ára – 0 áron számláznak, amíg be nem állítja.
+unpriced_note	A tételek közül {n} tételnek még nincs ára – 0-val számlázódnak, amíg be nem állít egyet.
 show_unpriced	Csak ár nélküli tételek megjelenítése
 show_all_dishes	Az összes elem megjelenítése
 role_title_rest_ph	A szerepkör megnevezése (pl. kapitány, főszakács)
-preset_help_rest	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
-kind_resale	Eladni vásárolt
-kind_dish	Ne számolj részvényekkel
+preset_help_rest	Pénztáros: eladás. Menedzser: eladás + tételek + érvénytelenítés/módosítás.
+kind_resale	Eladásra vásárolt
+kind_dish	Készletkövetés nélkül
 buy_unit_ph	Mértékegység (kg, liter, db)
 add_another_way	+ Adjon hozzá egy másik módot
 parts_status	Beírva: {a} / {b} · {c} maradt
-save_expense	Költségmegtakarítás
+save_expense	Kiadás mentése
 rest_ph	Maradék
 low_badge	Alacsony
 stock_empty	Még nincs raktáron – a Vásárlásnál rögzített adatok itt láthatók.

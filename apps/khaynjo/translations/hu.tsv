@@ -1,18 +1,18 @@
 # Hungarian — Magyar (hu). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Éttermi rendelések, konyha és könyvek. Ingyenes offline.
+app_tagline	Éttermi rendelések, konyha és könyvelés. Ingyenes, offline.
 unlock	Oldja fel
 pin_hint	A PIN tulajdonos 0000-től kezdődik
 sell	Rendelés
-buy	Vásároljon
+buy	Vásárlás
 books	Napi könyv
-books_help	A mai számlaösszefoglaló. Rendelések = bejövő rendelések. Vásárlás = vásárlások és költségek. Felek = hitelvevők és beszállítók.
-buy_help	Költségutalványok és szállítói számlák (pénzkiadás). A számlán az ügyfél vagy szállító főkönyvén marad.
+books_help	A mai számlaösszefoglaló. Rendelések = bejövő rendelések. Vásárlás = vásárlások és költségek. Felek = hitelre vásárló ügyfelek és beszállítók.
+buy_help	Költségutalványok és szállítói számlák (pénzkiadás). A folyószámlás tétel a fél főkönyvi lapján marad.
 sell_money_in	Vegyen fel egy rendelést
 buy_money_out	Költség / szállítói számla
-record_purchase	Rekordvásárlás
+record_purchase	Vásárlás rögzítése
 add_expense	Költség utalvány
 bank_book	Bankkönyv
-credit_help	A vevő vagy a szállító azonosítója egyedi (a nevek ismétlődnek). Az Ügyfél hitelkönyvet vezet (tartozik nekünk); egy Szállító elad nekünk készletet (tartozunk nekik); mindkettő jó. A főkönyvek külön maradnak; a jelentések netet mutatnak.
+credit_help	A fél azonosítója egyedi (a nevek ismétlődhetnek). Az Ügyfélnek khata hitelszámlája van (tartozik nekünk); a Szállító készletet ad el nekünk (tartozunk neki); mindkettő is lehet. A főkönyvek külön maradnak; a jelentések nettó egyenleget mutatnak.
 party_kind_ph	Szerepek: Ügyfél, Szállító, mindkettő…
 reports_help	Napi könyv, adósok és hitelezők, bankkönyv, költségutalványok, nyereség és veszteség.
 reports_today	Napi könyv (ma)
@@ -25,13 +25,13 @@ undo	Visszavonás
 start_tracking	Kezdje el a követést
 stock_minus	− Készlet
 stock_plus	+ Készlet
-settle_cash	Rendeljen készpénzt
+settle_cash	Kiegyenlítés készpénzzel
 settle_card	Kiegyenlít kártya
 items	Menü és tételek
 nav_items	Menü
 more	Többet
 your_items	Az Ön menüje
-items_help	Koppintson egy elemre a szerkesztéshez. Az új elem törli az űrlapot. Keressen ételeink között, vagy írja be saját nevét és fényképét, állítsa be az árat (0 megfelelő), majd Hozzáadás. A már rögzített eladások megtartják azt a nevet, amellyel megvádolták.
+items_help	Koppintson egy elemre a szerkesztéshez. Az Új elem kiüríti az űrlapot. Keressen ételeink között, vagy adjon meg saját nevet és fényképet, állítson be árat (0 is lehet), majd Hozzáadás. A már rögzített eladások megőrzik azt a nevet, amelyen számlázták őket.
 add_item	Elem hozzáadása
 new_item	Új elem
 adding_item	Új elem hozzáadása
@@ -39,7 +39,7 @@ editing_item	Szerkesztés
 save	Mentés
 remove	Távolítsa el
 removed_items	Eltávolított elemek
-removed_help	A visszaállítás pontosan úgy helyezi vissza az elemet a menübe, ahogy volt – ár, fotó és kategória. Az edényes polcunkat soha nem távolítjuk el, így egy edényt mindig újra lehet rakni.
+removed_help	A visszaállítás pontosan úgy teszi vissza az elemet a menübe, ahogy volt – ár, fotó és kategória. Az ételpolcunk soha nem törlődik, így egy étel mindig újra hozzáadható.
 restore_item	Visszaállítás
 empty_catalog	Még nincsenek edények.
 total	Összesen
@@ -48,7 +48,7 @@ upi	UPI
 card	kártya
 credit	Felek
 clear	Törlés
-ready_to_sell	Könyvre készen
+ready_to_sell	Könyvelésre kész
 today_prefix	Ma
 today_mid	ma
 owed	kiemelkedő
@@ -73,15 +73,15 @@ send_kot_to	Küldés → {kitchens}
 send_kot_again	Adjon hozzá ételeket a következő KOT-hez
 send_kot_held	Tartott edények – elküldéshez tartsa vissza
 reprint_kot	Nyomtatás ismét kiválasztva
-reprint_kot_ok	Újra {n} edény nyomtatott · {slips} cédula → {kitchens}
+reprint_kot_ok	{n} étel újra kinyomtatva · {slips} cédula → {kitchens}
 reprint_kot_needed	Először küldjön egy KOT-t – majd vegye be az ételeket, és nyomtassa ki újra
 reprint_kot_none_selected	Minden elküldött étel kimarad – koppintson a Nyomtatásban elemre azokon, amelyeket újranyomtatni szeretne
-reprint_kot_client	Nyomtasson újra ({n}) a {place} elküldésre – konyhai nyomatok a szerveren
-print_cancelled_kot	Az összes nyomtatása törölve
-print_cancelled_kot_ok	Nyomtatott {n} lemondott étel · {slips} cédula → {kitchens}
+reprint_kot_client	Újranyomtatás ({n}) – {place}: elküldve; a konyhai nyomtatás a Szerveren történik
+print_cancelled_kot	Összes lemondott étel nyomtatása
+print_cancelled_kot_ok	{n} lemondott étel kinyomtatva · {slips} cédula → {kitchens}
 print_cancelled_kot_needed	Először nyisson ki egy étkezőasztalt lemondott ételekkel
 print_cancelled_kot_none	Ennél a rendelésnél nincs lemondott étel
-print_cancelled_kot_client	Nyomtatás megszakítva ({n}) {place} elküldve – konyhai nyomatok a szerveren
+print_cancelled_kot_client	Lemondott ételek nyomtatása ({n}) – {place}: elküldve; a konyhai nyomtatás a Szerveren történik
 kot_banner	Kedves banner
 kot_item_prefix	Tétel előtag
 kot_strike	Szúró étel neve
@@ -132,8 +132,8 @@ slip_col_end	Záró térköz (px)
 slip_columns_help	Minden oszlop szélessége tartalmazza a kezdő és záró térközét. A szöveg az oszlopán belül tördelődik; ami túlnyúlik a tartalom szélességén, levágódik – papíron és az előnézetben is.
 bill_total_qty_label	Teljes mennyiség címke
 bill_total_subtotal_label	Részösszeg címke
-bill_total_grand_label	Grand total címke
-bill_total_paid_label	Fizetett teljes címke
+bill_total_grand_label	Végösszeg címke
+bill_total_paid_label	Fizetett összeg címke
 bill_meta_pair	Vonal megosztása vele
 bill_pair_alone	Egyedül
 bill_item_piece_on	Be
@@ -155,9 +155,9 @@ kot_sent_hint	Az utolsó KOT a {kitchens}-hez ment. Érintse meg az ételek hozz
 kot_sent_printing	KOT elküldve: {kitchens} — nyomtatás
 kot_sent_not_printed	KOT elküldve a {kitchens} címre, de NEM nyomtatva: {why}. Mondja el a konyhának, majd javítsa meg a nyomtatót, és nyomtassa ki újra.
 kot_sent_screen	KOT elküldve ide: {kitchens}
-kot_queued_shop	KOT for {place} → {kitchens} mentve; az üzlet eszköze kinyomtatja
+kot_queued_shop	KOT: {place} → {kitchens} mentve; az üzlet eszköze nyomtatja ki
 kot_job_label	KOT: {place} → {kitchens}
-kot_job_reached	KOT for {place} elérte a {kitchens}
+kot_job_reached	A(z) {place} KOT-ja megérkezett ide: {kitchens}
 kot_unassigned	Konyha (nincs állomás)
 kot_unassigned_held	{n} ételt tartott állomás nélkül – távolítsa el a vonalat a küldéshez
 kot_station_ph	Konyha
@@ -194,7 +194,7 @@ bill_kot_tab_kot	KOT
 settings_sec_alerts	Figyelmeztetések
 alerts_help	Mennyi ideig maradnak az állapotüzenetek a képernyőn az Ön számára (ez a bejelentkezés).
 snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
-snack_secs_save	Takarítson meg riasztási időt
+snack_secs_save	Riasztási idő mentése
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 settings_sec_whatsapp	WhatsApp
 whatsapp_cloud_help	Használja saját Meta WhatsApp Cloud API-ját. Hozzon létre System User tokent whatsapp_business_messaging jogosultsággal (az irányítópult ideiglenes tokenjei lejárnak). Az adatok csak ezen a Szerveren maradnak — az extra kasszákon soha. Az „Elfogadva” azt jelenti, hogy a Meta átvette a kérést, nem azt, hogy a vendég megkapta.
@@ -263,9 +263,9 @@ sales_refunds	Értékesítés és visszatérítés
 day_close	Nap vége
 reports_expenses	Bankkönyv és P&L
 nav_reports	Jelentések
-nav_settings	Beállítások elemre
+nav_settings	Beállítások
 nav_lock	Zár
-no_sale_yet	Még nincs eladó
+no_sale_yet	Még nincs eladás
 favorites	Kedvencek
 favorites_help	Gyakran eladott cikkek, amelyeket a bejelentkezéshez mentett. Adjon hozzá egyet a számlához, vagy állítsa össze a listát az alábbi tételekből.
 your_favorites	A kedvenceid
@@ -280,7 +280,7 @@ frequent_apply	Alkalmazni
 frequent_saved	Gyakori: az elmúlt {d} napban, a legnépszerűbb {n} – {c} ételek
 frequent_empty	Ebben az időszakban még nem fejeződött be értékesítés – rendezze a számlát (0 INR megengedett, ha a beállítások ezt mondják), és itt megjelennek.
 zero_sales	Nulla értékű értékesítés
-zero_sales_help	Engedélyezze a 0 ₹ értékű ételeket és 0 ₹ számlát (ingyenes / tulajdonos kívánsága). Alapértelmezés szerint be van kapcsolva, így az ingyenes borítók továbbra is megjelennek a gyakori és a napi könyvekben.
+zero_sales_help	Engedélyezze a 0 ₹ értékű ételeket és a 0 ₹-ra kiegyenlített számlákat (ingyenes / tulajdonosi döntés). Alapértelmezés szerint be van kapcsolva, így az ingyenes eladások is megjelennek a Gyakori listában és a napi könyvekben.
 zero_sales_on	0 ₹ engedélyezése
 zero_sales_off	Ár kérése
 zero_sales_saved_on	Nulla értékű értékesítés megengedett
@@ -296,11 +296,11 @@ owes_word	tartozik
 selected_word	Kiválasztva
 chip_clear_credit	rendezve — Hitel vagy előleg felvétele
 chip_missing_customer	Hiányzik a kiválasztott ügyfél – válasszon újra
-chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Credit elemre
-credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {}
+chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Hitel gombra
+credit_summary_fmt	{} ügyfél · nyitott hitel {} · visszatartott előlegek {}
 recent_label	Legutóbbi:
 kot_new_waiting	ÚJ – vár
-kot_preparing	ELŐKÉSZÍTÉS
+kot_preparing	KÉSZÜL
 kot_ready_serve	KÉSZ – tálaljuk
 kot_done_cap	KÉSZ
 kot_cancelled	LEMONDVA
@@ -313,9 +313,9 @@ open_bill	Nyitott számla
 collect_payment	Gyűjtse be a fizetést
 table_running	Futás
 payment_pending	Fizetés függőben
-collect_at_counter	pultnál gyűjteni
+collect_at_counter	átvétel a pultnál
 inventory	Leltár
-inventory_stock	Készlet és készlet
+inventory_stock	Leltár és készlet
 branches	Ágak
 branches_org	Fiókok és org
 credit_customers	Felek (hitelszámlák)
@@ -411,7 +411,7 @@ apply_country_pack	Országcsomag alkalmazása
 datetime_appearance	Dátum és idő megjelenése
 datetime_appearance_help	A könyvek év előtt RFC3339 maradnak bent. Ezek csak a dátumok és órák megjelenését változtatják meg a számlákon, a KOT-on, a jelentéseken és a képernyőn.
 datetime_example	Példa most: {ex}
-date_order	Dátumrendelés
+date_order	Dátumok sorrendje
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
@@ -429,7 +429,7 @@ bank_reconciliation	Banki egyeztetés
 bank_to_till	Bank → pénztár
 book_add_dish	Könyv – étel/tétel hozzáadása
 book_opening_credit	Könyv — nyitó kredit
-branch_name_sell_ph	Eladó fiók neve
+branch_name_sell_ph	Az értékesítő fióküzlet neve
 bring_my_book	Hozd a könyvemet
 business_tax_id_ph	Iparűzési adó azonosító
 caption_bank	BANK
@@ -445,7 +445,7 @@ choose_logo	Válasszon logót
 clear_icon	Ikon törlése
 clear_photo	Tiszta fénykép
 copy_day_book_csv	Napikönyv másolása CSV
-copy_day_close	Másolás nap zárása
+copy_day_close	Napi zárás másolása
 copy_items_csv	Elemek másolása CSV
 copy_outstanding_csv	CSV másolása
 copy_parties_csv	Ügyfelek és beszállítók másolása CSV
@@ -453,7 +453,7 @@ copy_party_ledger_csv	Ügyfélkönyv másolása CSV
 copy_receipt	Nyugta másolása
 share_whatsapp	Megosztás WhatsApp
 lan_pages_heading	Vendégoldalak itt: Wi‑Fi
-lan_pages_help	Ennek az üzletnek a Wi‑Fi-ján a vendégoldalak a kijelzőtáblához, a tokenekhez, az expóhoz, a kioszkhoz, az étkezőasztal QR-kódjához és a visszajelzésekhez működnek. A mobiladat-kapcsolatot használó vendégeknek később szükségük van a felhőre. A kártyaterminál/fizetési link nem kötelező, ha az internet működik – soha nem blokkolja a számlálót.
+lan_pages_help	Ennek az üzletnek a Wi‑Fi-ján a vendégoldalak a kijelzőtáblához, a tokenekhez, az expóhoz, a kioszkhoz, az asztali QR-kódhoz és a visszajelzésekhez működnek. A mobiladat-kapcsolatot használó vendégeknek később szükségük van a felhőre. A kártyaterminál/fizetési link nem kötelező, ha az internet működik – soha nem blokkolja a pultot.
 diag_send_heading	Oszd meg ezt az eszközt
 kot_dest_heading	Konyhaállomás
 optional_login_heading	Opcionális bejelentkezés
@@ -471,7 +471,7 @@ crm_seg_inactive	Inaktív
 crm_seg_top	Legnagyobb költekezők
 birthday_ph	Születésnap (HH-NN vagy ÉÉÉÉ-HH-NN)
 crm_message_ph	Boldog születésnapot {name}! {points} pontod van.
-till_apply_redeem	Jelentkezés a számlán
+till_apply_redeem	Beváltás a számlán
 till_clear_redeem	Törölje a beváltást
 till_wallet_topup	Töltsd fel a pénztárcát
 till_issue_voucher	utalvány kiadása
@@ -536,7 +536,7 @@ extra_note_bill_ph	Extra megjegyzés ehhez a számlához / eladáshoz
 extra_note_expense_ph	Extra megjegyzés az utolsó kiadáshoz
 extra_tills_heading	Extra kassza
 other_devices_help_heading	Más eszközök beállítása
-other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi‑Fi címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. Egymás eszközén: telepítse az alkalmazást, válassza az Ügyfél mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha Wi‑Fi leesik, és mennek, amikor a Szerver ismét válaszol. A konyhai nyomtatók a Szerveren vannak beállítva (Beállítások → Nyomtatók) – az extra kasszák KOT-t küldenek oda.
+other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi‑Fi címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. A többi eszközön: telepítse az alkalmazást, válassza a Kliens mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha Wi‑Fi leesik, és mennek, amikor a Szerver ismét válaszol. A konyhai nyomtatók a Szerveren vannak beállítva (Beállítások → Nyomtatók) – az extra kasszák KOT-t küldenek oda.
 forget_shop	Felejtsd el ezt a boltot
 goods_received	Átvett áru
 import_day	Import nap
@@ -546,10 +546,10 @@ item_name	Elem neve
 kitchen_printing	Nyomtatók
 login_id_ph	Felhasználónév
 mark_cleared	Mark kitisztult
-new_party_clear	Új ügyfél vagy szállító (átlátható űrlap)
-new_party_kind_supplier_ph	Új vevő vagy beszállító (beszállító)
+new_party_clear	Új fél (űrlap ürítése)
+new_party_kind_supplier_ph	Új fél típusa (Szállító)
 next_country	Következő ország
-next_order	Következő rendelés (tiszta asztal)
+next_order	Következő rendelés (pult ürítése)
 nav_drafts	Piszkozatok
 park_draft	Félretétel piszkozatként
 drafts_help	A pultnál félbehagyott, félretett rendelések — a könyvelésbe csak ezután kerülnek: «Fogadja el a fizetést». Koppintson egy kártyára a folytatáshoz itt: «Éttermi rendelés»; a piszkozatot ez törli: «Piszkozat elvetése». Ezeket nem törli: «Nap vége».
@@ -568,17 +568,17 @@ drafts_summary_fmt	{n} nyitott piszkozat
 drafts_cols_fmt	{n} oszl.
 note_gstin_ph	Megjegyzés / GSTIN / megállapodás emlékeztető
 notes_attach_party	Megjegyzések és mellékletek (kiválasztott ügyfél vagy szállító)
-notes_attach_sale	Jegyzetek és mellékletek (kiválasztott akciók)
+notes_attach_sale	Megjegyzések és mellékletek (kiválasztott eladás)
 on_account_ap	Számlára (AP)
 org_optional_ph	Szervezet (opcionális)
-paid_by	által fizetett
+paid_by	Fizetés módja
 paid_now	Most fizetve
 pair_now	Párosítsa most
 pairing_code_ph	Párosítási kód
-party_name_selected_ph	Vevő vagy szállító neve (vagy kiválasztott használat)
+party_name_selected_ph	Fél neve (vagy a kiválasztott)
 password_ph	Jelszó
 pay_ap_card	Fizetés AP kártyával
-pay_ap_cash	Fizessen AP készpénzben
+pay_ap_cash	AP kifizetése készpénzben
 pay_ap_heading	Fizessük ki, amivel tartozunk (AP)
 pay_ap_upi	UPI tartozás fizetése
 pay_selected_heading	Fizetés kiválasztott (tartozás rendezése / előleg felvétele)
@@ -611,10 +611,10 @@ role_manager	Menedzser
 history_retention	Kereskedési történelem
 history_retention_help	Régi értékesítések és KOT-k automatikus törlése. A menü, a személyzet és a beállítások megmaradnak. A Clear most törli az összes kereskedési sort, és megtartja a beállítást.
 history_off	Tartsa
-history_day_close	Zárásnapon
+history_day_close	Napi záráskor
 history_after_hours	Órák után
 history_hours_ph	Óra (1–168, alapértelmezett 4)
-history_hours_save	Órák megtakarítása
+history_hours_save	Óraszám mentése
 history_clear_now	Törölje az előzményeket most
 history_cleared	A kereskedési előzmények törölve – a beállítás megtartva
 history_retention_saved	Az előzmények törlése mentve
@@ -788,22 +788,22 @@ printer_format_custom_label	Egyedi
 printer_format_custom_added	Egyéni profil hozzáadva ehhez a helyhez
 add_printer	Nyomtató hozzáadása
 remove_printer	Távolítsa el
-route_pick_ph	Bill vagy egy konyhai állomás
+route_pick_ph	Számla vagy egy konyhai állomás
 route_bill	Számla
 route_default_kitchen	Nincs állomás (nem hozzárendelt ételek)
 route_kot_station	Konyha
 route_dont_print	Nincs nyomtató
 stations_heading	Konyhai állomások
-stations_help	Adjon hozzá konyhai állomásokat az edényekhez és KOT. Mindegyik állomáshoz csatlakoztassa a nyomtatóit (a Beállítások → Nyomtatók alatt található), állítsa be a prioritást, és válassza az Első, ami működik vagy a Nyomtatás mindenre lehetőséget. A változtatásokat menet közben menti – nincs Mentés gomb.
+stations_help	Adjon hozzá konyhai állomásokat az ételekhez és a KOT-hoz. Mindegyik állomáshoz csatolja a nyomtatóit (a Beállítások → Nyomtatók alatt találhatók), állítsa be a prioritást, és válassza az Első, ami működik vagy a Nyomtatás mindenre lehetőséget. A változtatások menet közben mentődnek – nincs Mentés gomb.
 station_print_heading	Nyomtatók ehhez az állomáshoz
 station_print_help	Válasszon állomást, majd csatoljon egy vagy több nyomtatót. ↑↓ a próbálkozási sorrend. Az első sikeres megáll; «Nyomtatás az összesre» minden csatolt nyomtatóra küld. Minden változás azonnal mentésre kerül.
 station_print_pick_ph	Állomás a nyomtatók beállításához
 station_print_pick_first	Először válasszon egy konyhai állomást
 station_print_editing	Nyomtatók szerkesztése a következőhöz: „{name}”
 station_vps_dd	Nyomtatók ehhez az állomáshoz
-station_vps_dd_n	{n} nyomtatók · érintse meg a módosításhoz
+station_vps_dd_n	{n} nyomtató · érintse meg a módosításhoz
 bill_printers_dd	Nyomtatók a számlához
-bill_printers_dd_n	{n} nyomtatók a számlához · érintse meg a módosításhoz
+bill_printers_dd_n	{n} nyomtató a számlához · érintse meg a módosításhoz
 paper_heading	Virtuális papír
 paper_size	{w} × {h} mm
 paper_roll	{w} mm-es tekercs
@@ -819,9 +819,9 @@ preview_help	Ez a blokk úgy, ahogy az alább kiválasztott nyomtatón nyomtató
 job_layout	Elrendezés
 job_delivery	Hogyan küldik el a munkát
 job_delivery_help	OS dokumentum, nyers bájtok vagy ESC/POS. A számla és a konyhai jegy mindegyike a sajátját tartja. Bármelyik feladat elküldhető bármely olyan nyomtatóra, amelyet a Keresés elmentett.
-station_vp_attached	Nyomtató mellékelve
+station_vp_attached	Nyomtató csatolva
 station_vp_detached	A nyomtatót eltávolították az állomásról
-station_print_summary	{mode} · {n} nyomtatók
+station_print_summary	{mode} · {n} nyomtató
 station_print_summary_none	Ezen az állomáson még nincs nyomtató – nem fog nyomtatni
 stations_none	Még nincsenek állomások – adjon hozzá egyet alább. A menüelemek használhatnak egy állomást, így a KOT oda nyomtat.
 route_up	Fel
@@ -835,22 +835,22 @@ test_page_no_printer	Nincs nyomtató a következőhöz: {place} – csatlakoztas
 test_page_pick_first	Először válasszon nyomtató(ka)t a tesztoldalhoz — majd nyomtasson tesztoldalt
 test_printers_dd	Nyomtatók egy tesztoldalhoz
 test_printers_dd_n	{n} nyomtató tesztoldalhoz · koppintson a váltáshoz
-kot_test_printers_dd	Nyomtatók teszthez KOT
+kot_test_printers_dd	Nyomtatók a KOT-teszthez
 kot_test_printers_dd_n	{n} nyomtató KOT-teszthez · koppintson a váltáshoz
 test_printer_picked	Teszt itt: {name}
 test_printer_cleared	Nincs tesztelés: {name}
-test_page_sent_n	Tesztoldal elküldve {n} nyomtatókra
-test_kot_pick_first	Pick printers for Test KOT first — then Test KOT
-test_kot_sent_n	Az KOT teszt elküldve a {n} nyomtatókra
+test_page_sent_n	Tesztoldal elküldve {n} nyomtatóra
+test_kot_pick_first	Először válasszon nyomtató(ka)t a KOT-teszthez — majd KOT-teszt
+test_kot_sent_n	A KOT-teszt elküldve {n} nyomtatóra
 cancel_pick	Jelölés
 cancel_pick_on	Megjelölve
-cancel_pick_meta	Megszakításra megjelölve
-batch_cancel	Mégse megjelölve
-batch_cancel_n	Mégse megjelölve ({n})
-batch_cancel_none	Először jelöljön meg egy vagy több elküldött ételt, majd a Mégse jelölést
-batch_cancel_title	Törölje a megjelölt ételeket – egy ok, konyhánként egy törlési lap
-batch_cancel_ok	{n} dishes cancelled · {slips} cancel slips → {kitchens}
-batch_cancel_ok_noprint	{n} dishes cancelled — KOT auto-print is off, so no cancel slip
+cancel_pick_meta	Lemondásra megjelölve
+batch_cancel	Megjelöltek lemondása
+batch_cancel_n	Megjelöltek lemondása ({n})
+batch_cancel_none	Először jelöljön meg egy vagy több elküldött ételt, majd Megjelöltek lemondása
+batch_cancel_title	A megjelölt ételek lemondása – egy ok, konyhánként egy lemondási cédula
+batch_cancel_ok	{n} étel lemondva · {slips} lemondási cédula → {kitchens}
+batch_cancel_ok_noprint	{n} étel lemondva — a KOT automatikus nyomtatása ki van kapcsolva, ezért nincs lemondási cédula
 no_printer_kitchen_station	Nincs nyomtató ehhez a konyhai állomáshoz — Konyha → Konyhaállomások → Nyomtatók ehhez az állomáshoz
 printers_saved	Mentve
 test_page_sent	Tesztoldal elküldve – ellenőrizze a nyomtatót
@@ -873,7 +873,7 @@ order_updated	Rendelés frissítve
 printers_tap_find	Érintse meg a Keresés lehetőséget az eszköz által használható nyomtatók listájához.
 printers_none_found	Nem található – írja be a rendszernyomtató nevét vagy IP-címét (pl. 192.168.1.50).
 printer_from_find	Hozzáadva {name}
-kot_printer_ph	Nyomtató KOTs-hoz
+kot_printer_ph	Nyomtató KOT-okhoz
 bill_printer_ph	Nyomtató számlákhoz
 kot_print_on	Konyhai jegyek automatikus nyomtatása: Be
 kot_print_off	Konyhai jegyek automatikus nyomtatása: Ki
@@ -923,7 +923,7 @@ duress_heading	Vészfeloldás PIN (csak a tulajdonos)
 duress_help	Választható. Ha ezt a PIN-t írják be a zárolás feloldásakor az Öné helyett, akkor az összes könyvbejegyzés törlődik (értékesítések, főkönyvek, előzmények), és a kassza normál kinézetű Tulajdonosként nyílik meg – a menü, az árak, az étkezőasztalok, a személyzet és a beállítások megmaradnak. A séma és a konfiguráció nem törlődik. Csak akkor használja, ha kénytelen feloldani. Hagyja üresen, és mentse a kikapcsoláshoz. Soha nem ugyanaz, mint bárki PIN-je.
 duress_pin_ph	Vészhelyzet PIN (4–12 számjegy)
 duress_confirm_ph	A megerősítéshez írja be újra
-save_duress_pin	Vészhelyzet mentése PIN
+save_duress_pin	Vészhelyzeti PIN mentése
 clear_duress_pin	Vészhelyzet kikapcsolása PIN
 duress_on	Vészfeloldás PIN be van kapcsolva
 duress_off	Vészfeloldás PIN ki van kapcsolva
@@ -952,10 +952,10 @@ stamp_heading	Bélyegző
 stamp_image_help	Opcionális bélyegkép a nyomtatott számlákon és a vendégkijelzőn.
 payment_qr_heading	Fizetési QR
 payment_qr_image_help	Statikus QR a számlákon és a vendégkijelzőn; egyébként a fizetés dinamikus UPI QR-t használ a fenti VPA-ből.
-cash_in_hand	Készpénz kézben (kassza)
+cash_in_hand	Pénztárkészlet (kassza)
 change_my_pin_heading	A bejelentkezésem
 connect_to_server	Csatlakozzon a szerverhez
-counter_locked	Számláló 01 · Lezárva
+counter_locked	Pult 01 · Zárolva
 country_pack_help	Az országcsomag beállítja az adónevet és a matematikai adatokat, az azonnali fizetést és a számlákra nyomtatott üzleti azonosítót. A Kumkaj sehol nem ad be adókat és nem állít ki állami e-számlákat.
 currency_use_help	Görgessen, és koppintson a Használat bármely támogatott pénznemhez.
 day_close_help	A napi zárás rögzítése elmenti ezt az összegzést (és a fiók eltérését, ha számítják) a megfigyelési naplóba. Nem hagyja abba az értékesítést.
@@ -970,13 +970,13 @@ kot_print_help_khaynjo	Bekapcsolt állapotban minden konyha kinyomtatja a saját
 later_country_pack	Később: Beállítások → alkalmazza az országcsomagot az adó- és fizetési címkékhez.
 local_badge	HELYI
 mix_type_hint_khaynjo	Oszd meg készpénz / UPI / kártya / hitel között, ha szükséges. A hitelhez a fenti ügyfél kell.
-money_in_sales	Pénz (értékesítés)
+money_in_sales	Bevétel (értékesítés)
 net_word	Nettó
 offline_badge	Offline
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
 or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
 permission_preset	Munka
-preset_help_khaynjo	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
+preset_help_khaynjo	Pénztáros: eladás. Menedzser: eladás + tételek + érvénytelenítés/módosítás.
 product_locked_khaynjo	Khaynjo
 product_only_khaynjo	Ez az alkalmazás csak Khaynjo – éttermi operációs rendszer. A többi kereskedelmi arc külön Kumkaj termékként kerül szállításra.
 purchases_cogs	Vásárlások (COGS)
@@ -1039,7 +1039,7 @@ pin_count_zero	0 / 12 számjegy · legalább 4, majd OK
 pin_count_need	{} / 12 számjegy · több {} kell
 pin_count_full	12/12 számjegy · nyomja meg az OK gombot
 pin_count_ready	{} / 12 számjegy · Nyomja meg az OK gombot, ha készen áll
-pin_hint_choose	Válasszon 4–12 számjegyet. · Enter vagy Unlock a mentéshez
+pin_hint_choose	Válasszon 4–12 számjegyet · Enter vagy «Oldja fel» a mentéshez
 pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
 pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
 pin_hint_books	Ez a készülék a könyveket tárolja
@@ -1061,8 +1061,8 @@ onboard_template_tmpl	Ha akarja, nevezze el a helyet, majd válassza ki, hogyan 
 tmpl_blurb	Étkezőasztalok, rendelés, konyhajegyek, számlázás és könyvek.
 tmpl_how	Eladás a pultnál; Ebédlő étkezőasztalokhoz & KOT; Könyvek a naphoz könyv.
 reports_facet_title	Jelentések
-reports_facet_help	Napi könyvek, vásárlók vagy szállítók öregedése, banki bejegyzések és időszaki P&L.
-against_bill_ph	A fenti számla ellenében (nem kötelező)
+reports_facet_help	Napi könyvek, felek szerinti korosítás, banki tételek és időszaki P&L.
+against_bill_ph	Kapcsolódó számla sz. (nem kötelező)
 aliases_ph	Álnevek – egyéb nevek, vesszővel elválasztva
 amount_blank_full_ph	Összeg (üres = teljes egyenleg)
 amount_owed_ph	Tartozás összege
@@ -1108,12 +1108,12 @@ unit_cost_ph	Egységköltség
 unit_name_bag_ph	Név (táska)
 unit_plate_ph	Egység (tányér / db – üres = mindegyik)
 pay_credit	Számlára
-book_kind_today	Ma könyvek
+book_kind_today	Mai könyvek
 book_kind_month	E havi könyvek
 book_kind_aging	Tartozás / betéti jóváírás
 book_kind_balance	Mérleg
 order_help	Koppintson egy elemre a hozzáadáshoz.
-floor_help	Érintse meg az étkezőasztalt a rendelés elfogadásához vagy módosításához. A színek üres → ülő → konyha → kész → evés → számla → fizetett. A várólistát, a foglalásokat és az étkezőasztalokat az alábbi szakaszokban találja.
+floor_help	Koppintson egy asztalra a rendelés felvételéhez vagy módosításához. A színek: üres → leültetve → konyha → kész → étkezik → számla → fizetve. A várólista, a foglalások és az asztalok hozzáadása az alábbi szakaszokban található.
 kitchen_help	Konyhajegyek (KOT), a legújabb utolsó. A Start → Kész → Kész a jegyet továbbítja. A jegyek soha nem mutatják az árakat.
 kitchen_empty	Nincs nyitott jegy.
 add_a_table	Adjon hozzá egy étkezőasztalt
@@ -1121,14 +1121,14 @@ add_station_heading	Adjon hozzá egy konyhai állomást
 categories_help	Koppintson a Használat elemre, hogy a fenti elemet az adott kategóriába sorolja. A Photo képet ad a kategóriának; egy nélkül a kezdőbetűit mutatja.
 dish_search_ph	Tétel neve — keressen ételeink között, vagy írja be a sajátját
 tile_free	Üres
-tile_occupied	Elfoglalt
+tile_occupied	Foglalt
 tile_food_ready	Kész az étel
-tile_bill_printed	Bill nyomtatva
+tile_bill_printed	Számla nyomtatva
 tile_paid	Fizetett
 tile_bill_btn	Számla
 tile_occupy_btn	Ültesse le a vendégeket
-tile_free_btn	Szabadítsa fel az asztalt
-tile_ready_btn	Távolítsa el az étkezőasztalt
+tile_free_btn	Asztal felszabadítása
+tile_ready_btn	Asztal felszabadítása
 tile_undo_bill	Számla visszavonása
 summary_busy	foglaltak az étkezőasztalok
 summary_to_collect	gyűjteni
@@ -1139,20 +1139,20 @@ dish_group_ph	Ételcsoport (opcionális) – pl. Paneer Tikka
 discount	Kedvezmény
 remove_discount	Távolítsa el a kedvezményt
 apply_discount	Kedvezmény alkalmazása
-save_opening_cash	Takarítson meg nyitó készpénzt
+save_opening_cash	Nyitó készpénz mentése
 close_shift_print	Zárja be a műszakot és a nyomtatási cédulát
 area_prices_ph	Területi árak (opcionális) — AC=220, Parcel=210
 discount_ph	10% vagy 50
 discount_reason_ph	Ok (pl. törzsvendég, késői étkezés)
-opening_float_ph	Ma reggel készpénz került a fiókba
+opening_float_ph	Nyitó készpénz a fiókban
 shift_counted_ph	Az átadáskor számolt készpénz
-opening_float	Nyitott készpénz (float)
+opening_float	Nyitó készpénz (váltópénz)
 shift_handover	Műszak átadás
 shift_since	Ez a váltás azóta
 expected_in_drawer	Fiókban várható
 right_discount	Adj kedvezményt
 floor_in_kitchen	A konyhában
-floor_eating	Kiszolgált
+floor_eating	Felszolgálva
 pick_category	Válasszon egy kategóriát
 close_category_list	Kategórialista bezárása
 new_category_row	Új kategória – az elem mentésekor jön létre
@@ -1167,7 +1167,7 @@ charge_again_short	Töltés
 move_short	Mozgás
 cancel_item_title	Törölje ezt a tételt – a konyha lemondási lapot kap
 nc_item_title	Tegye ezt a tételt ingyenessé (NC)
-charge_again_title	Töltse fel újra ezt az elemet
+charge_again_title	Tegye ezt a tételt újra fizetőssé
 move_item_title	Helyezze át ezt az elemet egy másik étkezőasztalra
 already_cooked	Már megfőtt (pazarlás)
 not_cooked_yet	Még nem főtt
@@ -1196,8 +1196,8 @@ approval_pin_ph	Menedzser PIN (csak kérésre)
 move_here	Költözz ide
 merge_into	Egyesülj bele
 line_reason_ph	Ok (pl. a vendég meggondolta magát, nincs raktáron)
-line_qty_ph	Hány lemondható (üres = mind)
-line_target_ph	Menjen az étkezőasztalhoz (pl. D5)
+line_qty_ph	Lemondandó mennyiség (üres = mind)
+line_target_ph	Áthelyezés asztalra (pl. D5)
 confirm	Erősítse meg
 menu_search_ph	Keressen elemet vagy rövid kódot
 customer_paid_ph	Az ügyfél fizetett
@@ -1257,7 +1257,7 @@ content_width	Tartalom szélessége (mm)
 content_width_bill	Számlatartalom szélessége (mm)
 content_width_kot	KOT tartalom szélesség (mm)
 content_width_ph	Vagy írjon be egy tartalomszélességet, 40–210 mm
-content_width_help	Milyen szélesre nyomtat ez a cédula. Bill és KOT megtartja a saját szélességét.
+content_width_help	Milyen szélesre nyomtat ez a cédula. A számla és a KOT megtartja a saját szélességét.
 content_width_bill_help	Milyen szélesen nyomtatódik a vendég számlája, mm-ben (40–210). Bármilyen papírra ebben a valódi méretben nyomtatódik; keskenyebb papíron a nyomtatási szélen túli rész levágódik (lásd Papír). A konyhai bonoknak saját szélessége van a KOT lapon.
 content_width_kot_help	Milyen szélesen nyomtatódik a konyhai bon, mm-ben (40–210). Bármilyen papírra ebben a valódi méretben nyomtatódik; keskenyebb papíron a nyomtatási szélen túli rész levágódik (lásd Papír). A vendégszámláknak saját szélessége van a Számla lapon.
 vp_paper_width	Tartalom szélessége (mm)
@@ -1297,8 +1297,8 @@ choose_payment_qr	Válassza a fizetési QR-kódot
 clear_payment_qr	Fizetési QR törlése
 payment_qr_set	Fizetési QR: fájlban – a vendégkijelzőn látható (az ottani UPI QR összeget helyettesíti)
 payment_qr_none	Fizetési QR: nincs – a UPI azonosítóból származó QR összeg fizetéskor
-aggregator_import	Összesítő rendelések (fájl)
-aggregator_import_help	Opcionális helyi importálás: tegye az import_aggregator_orders.json fájlt a biztonsági mentések mappájába (tömb vagy {"orders":[…]}), majd koppintson az Importálás gombra. Soha nem blokkolja a számlálót; élő Zomato/Swiggy a felhő.
+aggregator_import	Ételrendelő platformok rendelései (fájl)
+aggregator_import_help	Opcionális helyi importálás: tegye az import_aggregator_orders.json fájlt a biztonsági mentések mappájába (tömb vagy {"orders":[…]}), majd koppintson az Importálás gombra. Soha nem blokkolja a pultot; az élő Zomato/Swiggy kapcsolat a felhőben érhető el.
 import_aggregator_file	Aggregátorfájl importálása
 team_pick_ph	Szerkeszthető személyzet – név, felhasználónév vagy választás
 select_staff	Válassza ki ezt a személyzetet
@@ -1309,8 +1309,8 @@ own_item_name	Használja ezt saját elemnévként
 on_your_menu	A menüjében
 edit	Szerkesztés
 schemes	Sémák / ajánlatok
-schemes_help	BOGO, százalékos kedvezmény és rögzített kombók. A kombók konyhai vonalakra bővülnek a Küldés KOT gombon; az összetevők mindaddig maradnak, amíg a kombó ki nem ég. Példa: Vásároljon 2-t Thali, kap 1-et Chaas
-scheme_bogo_ph	Vásároljon 2 Thali, kap 1 Chaas
+schemes_help	BOGO, százalékos kedvezmény és rögzített kombók. A kombók a KOT küldésekor konyhai tételekre bomlanak; az összetevők a kombó elindításáig várakoznak. Példa: 2 Thali vásárlásakor 1 Chaas ajándék
+scheme_bogo_ph	2 Thali vásárlásakor 1 Chaas ajándék
 add_scheme	BOGO hozzáadása
 schedule_ph	Hours / happy hour — H-P 07:00-11:00 vagy HappyHour 17:00-19:00=150
 upi_qr	UPI QR
@@ -1322,8 +1322,8 @@ recently_done	Nemrég készült
 recall_kot_ph	KOT # felidézni
 role_help_customer	Szerep: Ügyfél – hitelkönyv (tartoznak nekünk). Ugyanaz a vevő vagy szállító készletet is szállíthat.
 role_help_both	Szerepkörök: Ügyfél + Szállító – egy ügyfél vagy szállító, hitelkönyvi és fizetendő főkönyvek, nettó jelentésekben.
-role_help_supplier	Szerep: Szállító – tartozunk nekik vásárlásokkal.
-dine_in_pick_table	Étkezzen be – válasszon étkezőasztalt az étkező képernyőjén
+role_help_supplier	Szerep: Szállító – tartozunk nekik a vásárlásokért.
+dine_in_pick_table	Helyben fogyasztás – válasszon asztalt az Ebédlő képernyőn
 choose_table	Válassz egy étkezőasztalt
 change_table	Cserélje ki az étkezőasztalt
 pick_table_banner	Válasszon étkezőasztalt ehhez a rendeléshez
@@ -1340,7 +1340,7 @@ start_with_template	Kezdje menüsablonunkkal
 template_heading	Menüsablonunk
 template_need_download	Töltse le az ételek nyilvános fotópolcát (~1459 étel), majd importálja a hiányzó neveket a menüjébe.
 template_download_shelf	Fotópolc letöltése
-template_info	{c} kategóriák és {d} ételek fotókkal, készen a hozzáadásra. Az árak 0 ₹-tól kezdődnek – állítsa be később.
+template_info	{c} kategória és {d} étel fotókkal, készen a hozzáadásra. Az árak 0 ₹-tól indulnak – a sajátját később állítsa be.
 template_import	Teljes sablon importálása
 template_confirm	Hozzáad {d} ételeket a kategóriáikkal? A már elkészített ételek olyanok maradnak, amilyenek.
 template_yes	Igen, importálni
@@ -1349,7 +1349,7 @@ template_import_progress	Importálás… {d}/{t}
 template_done	A sablonunkból minden étel az Ön étlapján szerepel.
 template_imported	{d} étel és {c} kategória hozzáadva – állítsa be az áraikat ezen a képernyőn
 client_template_heading	Ügyfél menü
-client_template_info	{title}: {c} kategóriák, {d} ételek árakkal, fotókkal és álnevekkel. Csak az ételek hiányoznak – a már meglévő nevek maradnak.
+client_template_info	{title}: {c} kategória, {d} étel árakkal, fotókkal és álnevekkel. Csak a hiányzó ételek – a már meglévő nevek maradnak.
 client_template_import	Importálja ezt a menüt
 client_template_confirm	Hozzáad {d} ételeket a következőből: {title}? A már elkészített ételek olyanok maradnak, amilyenek.
 client_template_importing	{title} importálása…
@@ -1362,7 +1362,7 @@ resv_guests_ph	Vendégek
 resv_when_ph	Mikor - 20:30, holnap 13:00
 resv_table_ph	Étkezőasztal (opcionális)
 resv_add	Foglalás
-resv_seat	Ülve
+resv_seat	Leültetve
 resv_none	Nem jön foglalás.
 guests_word	vendégek
 delivery_by_ph	Kiszállítja (futár / személyzet)
@@ -1371,7 +1371,7 @@ kitchen_all_day_head	Most főzni
 kitchen_tab_live	Élőben
 kitchen_tab_recall	Visszahívás
 kitchen_tab_stations	Állomások
-split_bill	Megosztott számla
+split_bill	Számla bontása
 split_go	Készítsen külön számlát
 cancel	Mégsem
 opening_client	Ügyfél megnyitása…
@@ -1381,8 +1381,8 @@ creating_server	Szerver létrehozása…
 setup_restoring	Biztonsági mentés visszaállítása…
 setup_restored	Visszaállítva — oldja fel a mentés tulajdonosi PIN-jével.
 split_help	Érintse meg azokat az ételeket, amelyekért egy vendég fizet · {n} kiválasztott
-split_send_first	Először küldje el a KOT értéket – csak a konyhában lévő ételeket lehet külön számlára állítani
-split_pick_some	Először érintse meg az edényeket a külön számlához
+split_send_first	Először küldje el a KOT-ot – csak a konyhában lévő ételeket lehet külön számlára tenni
+split_pick_some	Először koppintson az ételekre a külön számlához
 split_done	Külön számla készült – az ebédlőben, az étkezőasztal mellett
 split_marked	külön számlát
 order_empty_pick	Üres rendelés – az ételek kiválasztásához koppintson a fenti Ételek hozzáadása elemre.
@@ -1404,13 +1404,13 @@ recipe_ph	Recept (opcionális) – egy adag felhasználása: rizs = 0,2, Paneer 
 reorder_ph	Vásároljon többet itt
 set_reorder	Állítsa be az újrarendelési szintet
 low_stock_alert	Fogyóban – vásárolja meg hamarosan: {items}
-unpriced_note	Az étlapon szereplő {n} ételeknek még nincs ára – a számlázásuk 0, amíg be nem állít egyet.
+unpriced_note	Az étlapon {n} ételnek még nincs ára – 0-val számlázódnak, amíg be nem állít egyet.
 show_unpriced	Csak ételeket mutasson ár nélkül
 show_all_dishes	Mutasd az összes ételt
 role_waiter	Pincér
 role_kitchen	Konyha
 role_title_rest_ph	A szerepkör megnevezése (pl. kapitány, főszakács)
-preset_help_rest	Pincér: rendeléseket vesz fel és étkezőasztalokat vezet. Pénztáros: fizetést is vállal. Konyha: a konyhai paraván. Menedzser: a menü, lemondások és kedvezmények is.
+preset_help_rest	Pincér: rendeléseket vesz fel és asztalokat kezel. Pénztáros: fizetést is fogad. Konyha: a konyhai képernyő. Menedzser: a menü, a lemondások és a kedvezmények is.
 kind_raw	Nyersanyag
 kind_resale	Vásárolt és továbbértékesített
 kind_dish	Az általunk készített étel

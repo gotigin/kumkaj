@@ -1,39 +1,39 @@
 # Hungarian — Magyar (hu). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	Futár-ügynökség könyvek + foglalási pult. Ingyenes offline.
+app_tagline	Futárügynökségi könyvelés + feladási pult. Ingyenes, offline.
 unlock	Oldja fel
 pin_hint	A PIN tulajdonos 0000-től kezdődik
-sell	Foglalás
+sell	Feladás
 nav_board	Tábla
 board	Tábla
 park_draft	Félretétel piszkozatként
-board_help	Nyitott piszkozatok (megmaradnak, amíg nem használja valamelyiket: «Elvetés», «Fogadja el a fizetést») és a mai lekönyvelt eladások. Itt: «Foglalás» munka közben koppintson erre: «Félretétel piszkozatként» (ide mentődik, nem a könyvelésbe); a folytatáshoz koppintson egy piszkozatra.
+board_help	Nyitott piszkozatok (megmaradnak, amíg nem használja valamelyiket: «Elvetés», «Fogadja el a fizetést») és a mai feladott eladások. Itt: «Feladás» munka közben koppintson erre: «Félretétel piszkozatként» (ide mentődik, nem a könyvelésbe); a folytatáshoz koppintson egy piszkozatra.
 board_empty	Még nincs kártya.
-board_park_nothing	Nincs mit félretenni — adjon meg díjakat vagy foglalási adatokat
+board_park_nothing	Nincs mit félretenni — adjon meg díjakat vagy feladási adatokat
 board_parked	Félretéve ide: «Tábla» — a pult szabad
 board_draft	Piszkozat
-board_booked	Lefoglalt
+board_booked	Feladva
 board_filter_all	Összes
 board_filter_draft	Piszkozat
-board_filter_booked	Lefoglalt
+board_filter_booked	Feladva
 board_cols_fmt	{n} oszl.
-board_summary_fmt	{total} kártya · {drafts} piszkozat · {booked} könyvelve
+board_summary_fmt	{total} kártya · {drafts} piszkozat · {booked} feladva
 board_card_no_charges	Még nincs díj
 board_card_charges	díj
-board_card_booked	Foglalás
+board_card_booked	Feladás
 board_draft_gone	Ez a piszkozat már nincs itt: «Tábla»
 board_draft_closed	Ezt a piszkozatot már befejezték vagy elvetették
 board_discard	Elvetés
 board_discarded	Piszkozat elvetve
 buy	Fizessen ki
 books	Napi könyv
-books_help	Mai álláspont. Foglalás = csomagok beérkezése. Kifizetés = szállítói számlák és költségek. Felek = feladók és fuvarozók.
-buy_help	Költségutalványok és fuvarozói számlák (pénzkiadás). A számla a pártkönyvben marad.
-sell_money_in	Foglaljon csomagot
+books_help	Mai helyzet. Feladás = beérkező csomagok. Kifizetés = fuvarozói számlák és költségek. Felek = feladók és fuvarozók.
+buy_help	Költségutalványok és fuvarozói számlák (pénzkiadás). A folyószámlás tétel a fél főkönyvi lapján marad.
+sell_money_in	Csomag feladása
 buy_money_out	Költség/fuvarozószámla
-record_purchase	Rekordvásárlás
+record_purchase	Vásárlás rögzítése
 add_expense	Költség utalvány
 bank_book	Bankkönyv
-credit_help	A fél azonosítója egyedi (a nevek ismétlődnek). Szerepek: Feladó (AR), Fuvarozó (AP), vagy mindkettő ezen az azonosítón. A főkönyvek külön maradnak; a jelentések netet mutatnak.
+credit_help	A fél azonosítója egyedi (a nevek ismétlődhetnek). Szerepek: Feladó (AR), Fuvarozó (AP), vagy mindkettő ezen az azonosítón. A főkönyvek külön maradnak; a jelentések nettó egyenleget mutatnak.
 party_kind_ph	Egyéni szerepkör (opcionális) – vagy koppintson a fenti chipre
 parties_list_heading	Mentett partnerek
 reports_help	Napi könyv, adósok és hitelezők, bankkönyv, költségutalványok, nyereség és veszteség.
@@ -47,7 +47,7 @@ undo	Visszavonás
 start_tracking	Kezdje el a követést
 stock_minus	− Készlet
 stock_plus	+ Készlet
-settle_cash	Rendeljen készpénzt
+settle_cash	Kiegyenlítés készpénzzel
 settle_card	Kiegyenlít kártya
 items	Árak és szolgáltatások
 nav_items	Árak
@@ -61,14 +61,14 @@ editing_item	Szerkesztés
 save	Mentés
 remove	Távolítsa el
 empty_catalog	Még nincsenek díjak.
-counter_sale	Pult foglalás
+counter_sale	Pultos feladás
 total	Összesen
 cash	Készpénz
 upi	UPI
 card	kártya
 credit	Vevők és beszállítók
 clear	Világos
-ready_to_sell	Foglalásra készen
+ready_to_sell	Feladásra kész
 today_prefix	Ma
 today_mid	ma
 owed	kiemelkedő
@@ -114,7 +114,7 @@ sidebar_order_saved	Az oldalsáv sorrendje mentve
 sidebar_visibility_saved	Az oldalsáv láthatósága mentve
 amounts_hide	Elrejtés
 amounts_show	Megjelenítés
-no_sale_yet	Még nincs eladó
+no_sale_yet	Még nincs eladás
 favorites	Kedvencek
 favorites_help	Gyakran eladott cikkek, amelyeket a bejelentkezéshez mentett. Adjon hozzá egyet a számlához, vagy állítsa össze a listát az alábbi tételekből.
 your_favorites	A kedvenceid
@@ -126,11 +126,11 @@ owes_word	tartozik
 selected_word	Kiválasztva
 chip_clear_credit	egyértelmű — Jóváírás vagy előleg felvétele
 chip_missing_customer	Hiányzik a kiválasztott ügyfél – válasszon újra
-chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Credit elemre
-credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {}
+chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Hitel gombra
+credit_summary_fmt	{} ügyfél · nyitott hitel {} · visszatartott előlegek {}
 recent_label	Legutóbbi:
 inventory	Leltár
-inventory_stock	Készlet és készlet
+inventory_stock	Leltár és készlet
 branches	Ágak
 branches_org	Fiókok és org
 credit_customers	Felek (adósok és hitelezők)
@@ -139,26 +139,26 @@ new_customer_ph	Új ügyfél vagy szállító neve
 item_name_ph	Árnév (pl. A felszíni zóna)
 item_price_ph	kg / első födém
 start_template	Termék
-next_booking	Következő foglalás
+next_booking	Következő feladás
 destination_ph	Cél város/zóna
 consignee_ph	A vevő neve
-consignee_phone_ph	Vevő telefon
+consignee_phone_ph	Címzett telefonja
 consignee_address_ph	Szállítási cím
 origin_name_ph	Feladó neve
 origin_phone_ph	Feladó telefon
 origin_address_ph	Átvételi / származási cím
 booking_consignor_heading	Feladó (megrendelő / feladó)
 booking_consignee_heading	Címzett (átvevő)
-booking_consignor_hint	Válasszon egy partit, vagy hagyja üresen a belépéshez. Otthoni átvételhez és RTO-hoz szükséges.
-booking_consignee_hint	A csomag átvevője. Hagyja üresen a bejárati pult leadásához.
+booking_consignor_hint	Válasszon egy felet a kitöltéshez, vagy hagyja üresen alkalmi ügyfélnél. Házhoz menő csomagfelvételhez és RTO-hoz szükséges.
+booking_consignee_hint	A csomag címzettje. Pultnál leadott alkalmi csomagnál hagyja üresen.
 weight_kg_ph	Tényleges kg
 length_cm_ph	L cm
 breadth_cm_ph	B cm
 height_cm_ph	H cm
 chargeable_kg	Térhető kg
 awb_label	AWB
-booking_help	Feladó + címzett (üres OK) → cél → mérj → válassz díjat → Számla/Készpénz → fizess. Közben: «Félretétel piszkozatként» (a Tábla-ra ment, nem a könyvekbe) majd szolgáld ki a következőt; koppints a vázlatra a Tábla-on a folytatáshoz. Az AWB a nyugtára nyomtatódik. A következő foglalás kiüríti az asztalt.
-cart_empty_hint	Üres az íróasztal – a feladó/címzett választható, állítsa be a rendeltetési helyet és a súlyt, koppintson a HOZZÁADÁS gombra az árfolyamon, majd fizessen.
+booking_help	Feladó + címzett (üres OK) → cél → mérés → díj választása → Számla/Készpénz → fizetés. Közben: «Félretétel piszkozatként» (a Táblára ment, nem a könyvekbe), majd szolgálja ki a következő ügyfelet; a folytatáshoz koppintson a piszkozatra a Táblán. Az AWB a nyugtára nyomtatódik. A «Következő feladás» kiüríti a pultot.
+cart_empty_hint	Üres a pult – a feladó/címzett nem kötelező; állítsa be a célállomást és a súlyt, koppintson egy díjnál a HOZZÁADÁS gombra, majd fizessen.
 team	Csapat
 team_pins	Csapat és PINs
 my_pin_settings	Saját PIN
@@ -216,7 +216,7 @@ settings_sec_devices	Egyéb eszközök
 settings_sec_alerts	Figyelmeztetések
 alerts_help	Mennyi ideig maradnak az állapotüzenetek a képernyőn az Ön számára (ez a bejelentkezés).
 snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
-snack_secs_save	Takarítson meg riasztási időt
+snack_secs_save	Riasztási idő mentése
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 snack_secs_bad	Írja be a másodperceket számként (3–60)
 cancelled	Törölve
@@ -271,7 +271,7 @@ apply_country_pack	Országcsomag alkalmazása
 datetime_appearance	Dátum és idő megjelenése
 datetime_appearance_help	A könyvek az év elején RFC3339-et tartják bent. Ezek csak a dátumok és órák megjelenését változtatják meg a nyugtákon, címkéken, jelentéseken és a képernyőn.
 datetime_example	Példa most: {ex}
-date_order	Dátumrendelés
+date_order	Dátumok sorrendje
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
@@ -289,12 +289,12 @@ till_to_bank	Míg → bank
 mark_cleared	Mark kitisztult
 unmark	Törölje a jelölést
 role_both	Mindkettőt
-role_carrier	Hordozó
+role_carrier	Fuvarozó
 role_cashier	Pénztáros
 role_consignor	Feladó
 role_manager	Menedzser
 role_supplier	Szállító
-branch_name_sell_ph	Eladó fiók neve
+branch_name_sell_ph	Az értékesítő fióküzlet neve
 bring_my_book	Hozd a könyvemet
 business_tax_id_ph	Iparűzési adó azonosító
 card_amount_ph	Kártya összege
@@ -311,11 +311,11 @@ clear_logo	Tiszta logó
 clear_photo	Tiszta fénykép
 clear_stamp	Tiszta bélyegző
 clear_payment_qr	Fizetési QR törlése
-print_faces	Nyomtatott arcok (nyugta / időszaki számla)
-print_faces_help	Opcionális bélyegző és fizetési QR a logója mellett a foglalási bizonylatokon és az időszaki számlákon.
+print_faces	Nyomtatási minták (nyugta / időszaki számla)
+print_faces_help	Opcionális bélyegző és fizetési QR a logója mellett a feladási bizonylatokon és az időszaki számlákon.
 awb_pools_heading	Carrier AWB számkészletek
 add_awb_pool	AWB-készlet hozzáadása
-awb_pool_carrier_ph	A szolgáltató fél neve
+awb_pool_carrier_ph	Fuvarozó fél neve
 awb_pool_start_ph	Start sz.
 awb_pool_end_ph	Vége sz.
 awb_pool_prefix_ph	Előtag (opcionális)
@@ -325,7 +325,7 @@ bulk_awbs_ph	Tömeges AWB-k – illesszen be sokat (újsort vagy vesszőt) az á
 tds_cut_ph	TDS-vágás (opcionális)
 discount_ph	Kedvezmény (opcionális)
 cheque_no_ph	Csekkszám (opcionális)
-bill_reminder_chase	Számlaemlékeztető üldözési lista
+bill_reminder_chase	Fizetési emlékeztetők listája
 month_mix_report	Havi mix jelentés
 copy_month_gst_csv	Másolás hónap GST CSV
 domestic	Háztartási
@@ -338,7 +338,7 @@ collect_cod	COD gyűjtése (AWB)
 consignments_dispatch	Szállítmányok és kiszállítás
 consignor_party_ph	Feladó/fél neve
 copy_day_book_csv	Napikönyv másolása CSV
-copy_day_close	Másolás nap zárása
+copy_day_close	Napi zárás másolása
 copy_items_csv	Elemek másolása CSV
 copy_outstanding_csv	CSV másolása
 copy_parties_csv	Ügyfelek és beszállítók másolása CSV
@@ -360,16 +360,16 @@ counter_agency_ph	Pult/ügynökség neve (nem kötelező)
 create_backup	Készítsen biztonsági másolatot
 day_close_summary	A nap záró összefoglalója
 delete_party	A kiválasztott vevő vagy szállító törlése
-dispatch_to_rider	Foglaltak kiadása → futár
+dispatch_to_rider	Feladottak kiadása → futár
 docket_charge_ph	Docket töltés
 declared_value_ph	Bevallott érték
 contents_ph	Tartalom
-eway_ph	számú e-fuvarlevél
+eway_ph	E-fuvarlevél száma
 insurance_label	Biztosítás
 yes_label	Igen
 no_label	Nem
 print_route_label	Útvonal nyomtatása
-new_party_kind_label	Új partifajta
+new_party_kind_label	Új fél típusa
 done_open_books	Kész – nyitott könyvek
 export_day	Export nap
 extra_note_expense_ph	Extra megjegyzés az utolsó kiadáshoz
@@ -378,22 +378,22 @@ failed_delivery	Sikertelen kézbesítés
 find_scan_awb	AWB keresése/keresése
 forget_shop	Felejtsd el ezt a boltot
 fuel_ph	Üzemanyag
-handover_carrier	Kézzel foglalva → fuvarozó
+handover_carrier	Feladottak átadása → fuvarozó
 import_day	Import nap
-import_items_csv	Tételek importálása/árak CSV-fájlja…
+import_items_csv	Tételek / díjak importálása CSV-ből…
 import_parties_csv	Import ügyfelek és beszállítók CSV…
 import_pincodes_csv	PIN kódok importálása CSV…
 import_carrier_bill_csv	Fuvarozószámla CSV importálása…
-copy_carrier_bill_report	Az utolsó szállítói számlajelentés másolása
-use_carrier_cost	Használja a szolgáltatói költséget
-rate_carrier_ph	Szolgáltató (üres = eladási árfolyamunk)
-rate_party_ph	Party (üres = minden ügyfél)
-carrier_pick_ph	Fuvarozó a költségekért (összehasonlításból)
+copy_carrier_bill_report	Az utolsó fuvarozószámla-jelentés másolása
+use_carrier_cost	Fuvarozói költség használata
+rate_carrier_ph	Fuvarozó (üres = saját eladási díjunk)
+rate_party_ph	Fél (üres = minden ügyfél)
+carrier_pick_ph	Fuvarozó a költséghez (összehasonlításból)
 item_name	Elem neve
 load_bulk_row	Tömeges sor betöltése → asztal
 login_id_ph	Felhasználónév
-mark_delivered	Mark kézbesítve
-manifest_cod_total	KOI összesen
+mark_delivered	Megjelölés kézbesítettként
+manifest_cod_total	COD összesen
 manifest_received_by	által fogadott
 manifest_sign	Jel
 ndr_address_wrong	Rossz a cím
@@ -401,7 +401,7 @@ ndr_customer_unavailable	Nem elérhető
 ndr_door_locked	Ajtó zárva
 ndr_other	Más
 ndr_refused	Elutasította
-out_for_delivery	Kiszállításra
+out_for_delivery	Kiszállítás alatt
 print_drs	Nyomtassa ki a DRS-t
 print_run_sheet	Nyomtatási lap
 reattempt	Újrakísérlet
@@ -426,9 +426,9 @@ copy_sms	SMS szöveg másolása
 pick_barcode_image	Válassza ki a beolvasni kívánt képet
 share_receipt_whatsapp	Nyugta megosztása a WhatsApp-on
 delivery_feedback	Szállítási visszajelzés
-lan_self_book	LAN önfoglalás
-new_party_clear	Új ügyfél vagy szállító (átlátható űrlap)
-new_party_kind_ph	Új partifajta (szállító/szállító)
+lan_self_book	LAN önkiszolgáló feladás
+new_party_clear	Új fél (űrlap ürítése)
+new_party_kind_ph	Új fél típusa (Szállító / Fuvarozó)
 next_country	Következő ország
 prev_country	Előző ország
 note_gstin_ph	Megjegyzés / GSTIN / megállapodás emlékeztető
@@ -438,13 +438,13 @@ org_optional_ph	Szervezet (opcionális)
 paid_now	Most fizetve
 pairing_code_ph	Párosítási kód
 pair_now	Párosítsa most
-party_name_selected_ph	Vevő vagy szállító neve (vagy kiválasztott használat)
+party_name_selected_ph	Fél neve (vagy a kiválasztott)
 password_ph	Jelszó
 pay_ap_card	Fizetés AP kártyával
-pay_ap_cash	Fizessen AP készpénzben
+pay_ap_cash	AP kifizetése készpénzben
 pay_ap_upi	UPI tartozás fizetése
 period_bill	Időszaki számla
-period_bill_party	Időszaki számla (párt)
+period_bill_party	Időszaki számla (fél)
 period_bill_generate	Számla készítése
 period_bill_generate_print	Készítés és nyomtatás
 booking_bulk_preview	{ok} kész · {bad} hibás
@@ -453,7 +453,7 @@ print_awb_label	Nyomtasson AWB címkét
 print_open	Nyomtatás / megnyitás
 reason_amend_ph	A módosítás / érvénytelenség / visszatérítés oka
 reason_note_ph	Ok / megjegyzés (pazarlás, szám, …)
-record_day_close	Lezárult a rekordnap
+record_day_close	Napi zárás rögzítése
 refresh_from_shop	Frissítés a boltból
 refund	Visszatérítés
 remit_cod	Utánvét átutalása (fél)
@@ -464,11 +464,11 @@ rider_phone_ph	Futár telefonszáma
 riders	Futárok
 riders_own_fleet	Futárok (saját flotta)
 rollup	Összesítés
-save_booking_measures	Mentse el a foglalási intézkedéseket
+save_booking_measures	Feladási mértékegységek mentése
 save_brand	Mentse a márkát
 save_business_id	Vállalkozási azonosító mentése
 save_business_name	Mentse el a vállalkozás nevét
-save_features	Mentse a munkabeállítást
+save_features	Munkakör beállításának mentése
 save_names	Mentse el a neveket
 server_ip_ph	Szerver IP-címe (pl. 192.168.1.10)
 set_credit_limit	Korlátozás alkalmazása az ügyfélre vagy a szállítóra
@@ -492,8 +492,8 @@ editing_staff	Jogok ehhez
 team_pick_ph	Szerkeszthető személyzet – név, felhasználónév vagy választás
 select_staff	Válassza ki ezt a személyzetet
 rights_help	Jogok — érintse meg a módosításhoz: Engedélyezett → Jóváhagyással (az adott pillanatban vezetői PIN-kód) → Nem engedélyezett.
-right_void_refund	Foglalás érvénytelenítése vagy visszatérítése
-right_amend_sale	A rögzített foglalás módosítása
+right_void_refund	Feladás érvénytelenítése vagy visszatérítése
+right_amend_sale	A rögzített feladás módosítása
 find_server	Keresse meg az üzlet szerverét
 finding_server	Az üzlet szerverét keresem ezen a Wi‑Fi…
 no_server_found	Egyik sem található. A szerveren: Beállítások → Egyéb eszközök → Kiegészítő pénztárak engedélyezése (ugyanaz Wi‑Fi). Vagy írja be az ott látható IP-címet.
@@ -590,7 +590,7 @@ route_add	Hozzáadás a helyhez
 route_up	Fel
 route_down	Le
 route_remove	Utolsó eltávolítása
-route_clear	Tiszta nyomtatók ehhez a helyhez
+route_clear	Nyomtatók törlése ehhez a helyhez
 save_printers	Mentse el a nyomtatókat
 print_test_page	Nyomtasson ki egy tesztoldalt
 printers_saved	Az eszközhöz mentett nyomtatók
@@ -619,7 +619,7 @@ switch_device	Váltsa ezt az eszközt
 take_payment	Fogadja el a fizetést
 tax_added_till	{tax} exkluzív
 tax_inside_price	{tax} beleértve
-today_books	Ma könyvek
+today_books	Mai könyvek
 unlock_after_pairing	Írja be: PIN
 unlock_with_login	Feloldás bejelentkezéssel
 update_my_password	Frissítse a jelszavamat
@@ -628,7 +628,7 @@ duress_heading	Vészfeloldás PIN (csak a tulajdonos)
 duress_help	Csak offline Server/Client LAN — nem felhőfunkció. Alapból ki: a Tulajdonos egyszer bekapcsolja ennek a PIN-nek a mentésével (Csapat, Client kasszán is). Ha feloldáskor ezt a PIN-t írják be valódi személyzeti PIN helyett, a Serveren a könyvbejegyzések törlődnek, és az asztal Tulajdonosként, normál kinézettel nyílik — díjak, felek, zónák, személyzet és beállítások megmaradnak. A séma és a konfiguráció nem törlődik. Soha ne egyezzen senki PIN-jével. Kapcsolja ki a törlés gombbal.
 duress_pin_ph	Vészhelyzet PIN (4–12 számjegy)
 duress_confirm_ph	A megerősítéshez írja be újra
-save_duress_pin	Vészhelyzet mentése PIN
+save_duress_pin	Vészhelyzeti PIN mentése
 clear_duress_pin	Vészhelyzet kikapcsolása PIN
 duress_on	Vészfeloldás PIN be van kapcsolva
 duress_off	Vészfeloldás PIN ki van kapcsolva
@@ -644,13 +644,13 @@ caption_bookings	FOGLALÁSOK
 caption_payments_today	FIZETÉSEK MA
 caption_outstanding	KIVÁLÓ
 caption_bank	BANK
-paid_by	által fizetett
+paid_by	Fizetés módja
 second_way	Második út
 weight_in	Súly be
 size_in	Méret be
 goods_received	Átvett áru
 expense_heading	Költség
-notes_attach_sale	Jegyzetek és mellékletek (kiválasztott akciók)
+notes_attach_sale	Megjegyzések és mellékletek (kiválasztott eladás)
 notes_attach_party	Megjegyzések és mellékletek (kiválasztott ügyfél vagy szállító)
 attachments_last_expense	Mellékletek (utolsó költség)
 credit_limit_heading	Hitelkeret (kiválasztott ügyfél vagy szállító)
@@ -662,9 +662,9 @@ adj_note_reason_ph	Ok (kötelező)
 adj_note_awb_ph	Kapcsolódó AWB (nem kötelező)
 credit_note_btn	Jóváíró értesítő
 debit_note_btn	Terhelési értesítő
-bill_later_heading	Számlázás később (foglalás utáni felár)
+bill_later_heading	Számlázás később (feladás utáni felár)
 bill_later_amount_ph	Többletösszeg
-bill_later_party_ph	Vevő vagy beszállító (csak ha a foglaláshoz nincs)
+bill_later_party_ph	Fél (csak ha a feladáshoz nincs)
 bill_later_btn	Számlázás később
 bill_later_extra_oda	ODA
 bill_later_extra_packing	Csomagolás
@@ -673,14 +673,14 @@ pay_ap_heading	Fizessük ki, amivel tartozunk (AP)
 country_tax	Ország és adó
 extra_tills_heading	Extra kassza
 other_devices_help_heading	Más eszközök beállítása
-other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi-Fi-címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. Egymás eszközén: telepítse az alkalmazást, válassza az Ügyfél mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha a Wi-Fi leáll, és mennek, amikor a szerver ismét válaszol.
+other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi-Fi-címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. A többi eszközön: telepítse az alkalmazást, válassza a Kliens mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha a Wi-Fi leáll, és mennek, amikor a szerver ismét válaszol.
 your_brand	Az Ön márkája (alkalmazáson belüli)
 units_heading	Egységek
-booking_measures	Foglalási intézkedések
+booking_measures	Feladási mértékegységek
 drawer_count	Fiókok száma (opcionális)
 spreadsheet_csv	Táblázat (CSV)
 bank_reconciliation	Banki egyeztetés
-book_add_product	Foglaljon – termék hozzáadása/értéke
+book_add_product	Könyv — termék / díj hozzáadása
 book_opening_credit	Könyv — nyitó kredit
 account_kind	Számla típusa (koppintson egyet)
 active_ledger	Aktív főkönyv
@@ -695,26 +695,26 @@ app_icon	App ikonra
 logo_help	Opcionális boltjelzés az alkalmazás képernyőin.
 onboard_layout	Amit kapsz
 item_photo_help	Választható. Fénykép nélkül a cikk nevének kezdőbetűit mutatjuk.
-cash_in_hand	Készpénz kézben (kassza)
+cash_in_hand	Pénztárkészlet (kassza)
 change_my_pin_heading	PIN-kód megváltoztatása (csak a tiéd)
 connect_to_server	Csatlakozzon a szerverhez
-counter_locked	Számláló 01 · Lezárva
+counter_locked	Pult 01 · Zárolva
 country_pack_help	Az országcsomag beállítja az adónevet és a matematikai adatokat, az azonnali fizetést és a számlákra nyomtatott üzleti azonosítót. A Kumkaj sehol nem ad be adókat és nem állít ki állami e-számlákat.
 currency_use_help	Görgessen, és koppintson a Használat bármely támogatott pénznemhez.
 day_close_help	A napi zárás rögzítése elmenti ezt az összegzést (és a fiók eltérését, ha számítják) a megfigyelési naplóba. Nem hagyja abba az értékesítést.
 expenses_word	Költségek
 feature_access_help	Funkcióhoz való hozzáférés a kiválasztott személyzet számára (a hozzáadása után koppintson)
 footer_local	Helyi SQLite · Ingyenes örökké · Zero Cloud
-fresh_book_moklanjo	Friss = üres katalógus (később adjon hozzá elemeket). Könyv = típus nyitó készlet és ki tartozik alább.
+fresh_book_moklanjo	Friss = üres katalógus (tételek később hozzáadhatók). Könyv = írja be alább a nyitókészletet és azt, hogy ki tartozik Önnek.
 fresh_selected	Frissen kiválasztott – a katalógus üres marad. Ha készen áll, koppintson a Kész gombra.
 gross_word	Bruttó
 how_start	Hogyan akarod kezdeni?
 later_country_pack	Később: Beállítások → alkalmazza az országcsomagot az adó- és fizetési címkékhez.
 local_badge	HELYI
-measures_help_moklanjo	Hogyan történik a csomagok mérése a foglalási pultnál. Írja be a méreteket és a súlyt az Ön által használt mértékegységekben – szabványos (cm, m, in, ft · kg, g, lb, oz) vagy a fenti cm/kg-hoz kapcsolódó saját mértékegységben (közvetlenül vagy más mértékegységeken keresztül). A könyvek mindig kg-ot rögzítenek. Hagyjon üresen egy mezőt, hogy megőrizze.
-mix_type_hint_moklanjo	Írja be, hogy mennyit (készpénz / UPI / kártya / hitel). Ki kell egészíteni a számlát. A hitelhez a fenti ügyfél kell.
-money_in_sales	Pénz (értékesítés)
-more_help_moklanjo	Katalógus, értékesítés, hitel, csapat, tartalék – plusz raktárkészlet és szükség esetén extra kassza.
+measures_help_moklanjo	Hogyan történik a csomagok mérése a feladási pultnál. Írja be a méreteket és a súlyt az Ön által használt mértékegységekben – szabványos (cm, m, in, ft · kg, g, lb, oz) vagy a fenti cm/kg-hoz kapcsolódó saját mértékegységben (közvetlenül vagy más mértékegységeken keresztül). A könyvek mindig kg-ot rögzítenek. Hagyjon üresen egy mezőt, hogy megőrizze.
+mix_type_hint_moklanjo	Írja be, mennyi esik az egyes fizetési módokra (készpénz / UPI / kártya / hitel). Az összegüknek ki kell adnia a számla végösszegét. A hitelhez a fenti ügyfél kell.
+money_in_sales	Bevétel (értékesítés)
+more_help_moklanjo	Katalógus, értékesítés, hitel, csapat, biztonsági mentés – plusz készlet és szükség esetén extra kassza.
 net_word	Nettó
 offline_badge	OFFLINE
 optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
@@ -736,14 +736,14 @@ cloud_welcome	Bejelentkezve: {user} · {plan}
 cloud_created	Fiók létrehozva. Ellenőrizze az e-mailt a megerősítéshez, amikor tud.
 cloud_cancel	Mégse
 permission_preset	Munka
-preset_help_moklanjo	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
+preset_help_moklanjo	Pénztáros: eladás. Menedzser: eladás + tételek + érvénytelenítés/módosítás.
 product_locked_moklanjo	Moklanjo
-product_only_moklanjo	Ez az alkalmazás csak Moklanjo - könyvek + foglalási pult. Az egyéb kereskedelmi arculatokat később külön termékként szállítjuk.
+product_only_moklanjo	Ez az alkalmazás csak Moklanjo – könyvelés + feladási pult. Az egyéb kereskedelmi arculatokat később külön termékként szállítjuk.
 purchases_cogs	Vásárlások (COGS)
 qty_cap	MENNYISÉG
 restore_help	Visszaállítás: válasszon biztonsági másolatot. A könyvek úgy nyílnak, mint akkoriban; a mostani állapotú könyvek mentésre kerülnek először, így ez visszavonható.
 wipe_data_heading	Törölje a helyi adatokat
-wipe_data_help	Csak tulajdonos – ugyanazok a lehetőségek, mint a Windows eltávolítása. Az Üzleti nyilvántartás törli a kereskedési előzményeket, de megtartja az árfolyamokat és a beállításokat (például a vészhelyzeti feloldó PIN-kódot). A boltbeállítás eltávolítja a könyvek adatbázisát. A Képernyőbeállítások törli az ablakot/nyelvet. Erősítse meg a tulajdonos PIN-kódjával. A Team vészhelyzeti feloldó PIN-kódja különálló (fedett törlés feloldáskor).
+wipe_data_help	Csak tulajdonos – ugyanazok a lehetőségek, mint a Windows eltávolítása. Az Üzleti nyilvántartás törli a kereskedési előzményeket, de megtartja a díjakat és a beállításokat (például a vészhelyzeti feloldó PIN-kódot). A boltbeállítás eltávolítja a könyvek adatbázisát. A Képernyőbeállítások törli az ablakot/nyelvet. Erősítse meg a tulajdonos PIN-kódjával. A Team vészhelyzeti feloldó PIN-kódja különálló (fedett törlés feloldáskor).
 wipe_trading	Üzleti nyilvántartások
 wipe_schema	Bolt beállítása
 wipe_ui	Képernyőbeállítások
@@ -759,7 +759,7 @@ rounded_total	Kerekített összesen
 setup_app_moklanjo	Állítsa be a Moklanjo-t
 shop_logo_optional	Az üzlet logója (opcionális)
 stock_type_help	Írja be a cikk nevét (egy része is elég), egy mennyiséget, majd állítsa be. A még nem számolt tételeket egyszer el kell indítani a nyomon követésben.
-team_owner_help	Bérlés: válasszon állást (pénztáros / menedzser), név + kezdő PIN, majd Hozzáadás. Csak akkor, ha ez a személy különbözik: nyissa meg a képernyőket és a jogokat lent, majd a Feladatbeállítás mentése. Mindenki megváltoztatja a saját PIN-kódját az alján – a tulajdonos nem módosíthatja senki másét.
+team_owner_help	Felvétel: válasszon munkakört (Pénztáros / Menedzser), nevet + kezdő PIN-t, majd Hozzáadás. Csak ha ez a személy eltér: nyissa meg lent a képernyőket és a jogokat, majd Munkakör beállításának mentése. Mindenki a saját PIN-kódját változtatja meg alul – a tulajdonos nem módosíthatja senki másét.
 they_owe_us	Tartoznak nekünk
 unit_at_cap	Egység @
 units_help	A cikkcímkék kódjai (kg, darab, zacskó). Minden egységnek kapcsolódnia kell – közvetlenül vagy más egységeken keresztül – egy szabványhoz (kg · cm · ml · pc), pl. 1 láda = 2 doboz és 1 doboz = 20 cm. Konverziók: 1-ből = tényező a-ba. A pénznemek soha nem egységek.
@@ -775,7 +775,7 @@ pin_count_zero	0 / 12 számjegy · legalább 4, majd OK
 pin_count_need	{} / 12 számjegy · több {} kell
 pin_count_full	12/12 számjegy · nyomja meg az OK gombot
 pin_count_ready	{} / 12 számjegy · Nyomja meg az OK gombot, ha készen áll
-pin_hint_choose	Válasszon 4–12 számjegyet. · Enter vagy Unlock a mentéshez
+pin_hint_choose	Válasszon 4–12 számjegyet · Enter vagy «Oldja fel» a mentéshez
 pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
 pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
 pin_hint_books	Ez a készülék a könyveket tárolja
@@ -792,18 +792,18 @@ tmpl_current	Jelenlegi: {} — {}
 tmpl_selected	Kiválasztva: {} — {}
 setup_complete	A beállítás kész
 onboard_fresh_tmpl	Friss · {} — a katalógus üresen kezdődik; adjon hozzá elemeket az Elemek mappához, majd válassza a Kész lehetőséget.
-onboard_book_tmpl	Foglalás · {} — tételek és nyitó kredit hozzáadása, majd Kész.
+onboard_book_tmpl	Könyv · {} — tételek és nyitó kredit hozzáadása, majd Kész.
 onboard_template_tmpl	Ha akarja, nevezze el a helyet, majd válassza ki, hogyan kezdje el.
-tmpl_blurb	Futárkönyvek és foglalási pult: feladók, fuvarozók, naptár, AWB.
-tmpl_how	Csomagok könyvelése az íróasztalnál; Napi könyv mára; lapok az árakhoz, partikhoz, jelentésekhöz.
+tmpl_blurb	Futárszolgálati könyvelés és feladási pult: feladók, fuvarozók, napi könyv, AWB.
+tmpl_how	Csomagfeladás a pultnál; Napi könyv a mai naphoz; fülek a díjakhoz, felekhez és jelentésekhez.
 app_template_heading	Üzletsablonok
-app_template_blurb	Válasszon kezdő munkahelyet. Üresen hagyja a vevők és beszállítók listáját: «Most hagyd ki».
+app_template_blurb	Válasszon kezdő sablont. «Most hagyd ki»: a felek listája üres marad.
 app_template_skip	Most hagyd ki
 app_template_status	A szerver kész — importáljon sablont, vagy hagyja ki
 app_template_importing	{title} alkalmazása…
 app_template_public_hdr	Sablonok
 app_template_import_selected	Kijelölt importálása
-app_template_wipe_warn	Ez törli a könyvelés kereskedelmi adatait (foglalások, folyószámlák), és alkalmazza a sablon boltbeállításait. Folytatja?
+app_template_wipe_warn	Ez törli a könyvelés kereskedelmi adatait (feladások, folyószámlák), és alkalmazza a sablon boltbeállításait. Folytatja?
 app_template_wipe_continue	Folytatás
 app_template_wipe_cancel	Mégsem
 public_tmpl_help	A bolthoz mellékelt ügynökségi csomagok. Nem kell letölteni semmit.
@@ -816,48 +816,48 @@ report_day_lens	Megjelenítés módja: «Ma»
 report_day_lens_help	Csak nézet — nem változtat azon, hogy mikor indul újra: «Ma» (ezt intézi: «Nap vége»). Az utolsó napi zárástól számol: «Napi zárás szerint»; helyi idő szerint 00:00-kor vág: «Éjfél szerint».
 report_lens_day_close	Napi zárás szerint
 report_lens_midnight	Éjfél szerint
-trk_booked	Lefoglalt
+trk_booked	Feladva
 trk_picked_up	Felvette
 trk_in_transit	Átszállításban
-trk_delivered	Szállítva
-trk_rto	Visszatérés a feladóhoz
+trk_delivered	Kézbesítve
+trk_rto	Visszaúton a feladóhoz
 lane_to_dispatch	Elküldeni
-lane_with_carrier	Szállítóval
+lane_with_carrier	Fuvarozónál
 lane_failed	Sikertelen
 lane_done_today	Ma kész
 ops_board_help	Csomagok aszerint, hogy hol vannak a mai munkában. Koppintson a csomagokra (vagy szkennelje be őket) a kiszedésükhöz, majd tegyen egyszerre az összes felvett csomagot – minden sáv csak a hozzá illő mozgásokat kínálja.
 lane_empty	Itt most semmi.
 picked_fmt	{n} kiválasztva
 pick_all	Válassza ki az összeset
-bag_for_carrier	Kéz a hordozóhoz
+bag_for_carrier	Átadás fuvarozónak
 send_with_rider	Küldés futárral
 out_again	Megint kint
 return_to_sender	Vissza a feladóhoz
 runs_bags_heading	Legutóbbi futások és táskák
 print_word	Nyomtatás
-bag_word	Bevásárlószatyor
+bag_word	Fuvarozói zsák
 run_word	Futárkör
-parcels_fmt	{n} csomagok
+parcels_fmt	{n} csomag
 parcel_history	Történelem
 attempt_fmt	Kísérlet {n}
 pieces_short_fmt	{n} db
 note_reason_ph	Megjegyzés vagy indoklás
 ops_pick_first	Először válassza ki a csomagokat – koppintson rájuk vagy szkennelje be
-cod_to_collect	Szállítva – utánvét gyűjteni
+cod_to_collect	Kézbesítve – utánvét beszedendő
 cod_on_road	COD még úton van
-cod_owed_consignors	Beszedve – a feladók fizetésére
+cod_owed_consignors	Beszedve – kifizetendő a feladóknak
 cod_rto_fees	beszedendő RTO díjak
 cod_to_hand_in	COD leadni
 parcel_one_fmt	{n} csomag
 facet_bank_title	Jelentések
-facet_bank_help	Napi könyvek, vásárlók vagy szállítók öregedése, banki bejegyzések és időszaki P&L.
+facet_bank_help	Napi könyvek, felek szerinti korosítás, banki tételek és időszaki P&L.
 facet_ops_title	Szállítmányok és kiszállítás
-facet_ops_help	Szkennelje be vagy írja be az AWB-t → Keresés, majd tovább / címke nyomtatása / COD. Átadás futárnak vagy szállítónak.
+facet_ops_help	Szkennelje be vagy írja be az AWB-t → Keresés, majd tovább / címke nyomtatása / COD. Átadás futárnak vagy fuvarozónak.
 facet_cod_title	COD regiszter
-facet_cod_help	Szállításkor vegye át, majd utalja át a feladónak.
+facet_cod_help	Kézbesítéskor szedje be, majd utalja át a feladónak.
 facet_riders_title	Futárok (saját flotta)
-facet_riders_help	Adjon hozzá futárokat, majd adja ki a lefoglalt AWB-ket az Ops-ból.
-against_bill_ph	A fenti számla ellenében (nem kötelező)
+facet_riders_help	Adjon hozzá futárokat, majd adja ki a feladott AWB-ket az Ops-ból.
+against_bill_ph	Kapcsolódó számla sz. (nem kötelező)
 aliases_ph	Álnevek – egyéb nevek, vesszővel elválasztva
 amount_blank_full_ph	Összeg (üres = teljes egyenleg)
 amount_owed_ph	Tartozás összege
@@ -895,13 +895,13 @@ part_second_way_ph	Második módon történő elválasztás (opcionális)
 phone_ph	Telefon
 address_ph	Cím
 party_custom_fields_heading	Egyéni mezők (kiválasztott fél)
-party_custom_help	Adjon hozzá bármilyen címkét és értéket ehhez a párthoz – WhatsApp, GSTIN, útvonalkód,…
+party_custom_help	Adjon hozzá bármilyen címkét és értéket ehhez a félhez – WhatsApp, GSTIN, útvonalkód, …
 party_custom_key_ph	Mezőnév (pl. WhatsApp)
 party_custom_value_ph	Érték
 party_custom_add	Mező hozzáadása
 party_custom_remove	Távolítsa el a mezőt
 party_custom_empty	Még nincsenek egyéni mezők
-party_custom_pick_first	Válasszon egy párt egyéni mezők hozzáadásához
+party_custom_pick_first	Válasszon egy felet az egyéni mezők hozzáadásához
 place_name_ph	A hely neve
 price_ph	Ár
 qty_example_ph	Mennyiség (pl. 1,5 kg-nál)
@@ -923,17 +923,17 @@ unit_name_bag_ph	Név (táska)
 weight_unit_code_ph	Súlyegység kódja (kg)
 zone_name_ph	Zóna neve
 pay_credit	Számlára
-book_kind_today	Ma könyvek
+book_kind_today	Mai könyvek
 book_kind_month	E havi könyvek
 book_kind_aging	Tartozás / betéti jóváírás
 book_kind_balance	Mérleg
 ops_desk_help	AWB beolvasása USB vonalkód-leolvasóval (vagy gépelje be) → Keresés. Ezután haladjon tovább, nyomtasson címkét, vagy gyűjtse be az utánvét. A címkék 128-as kódot nyomtatnak.
-role_help_consignor	Szerep: Feladó – AR (tartoznak nekünk). Ugyanez a cég lehet Carrier is.
-role_help_carrier	Szerep: Carrier — AP (tartozunk nekik). Ugyanez a cég lehet Consignor is.
+role_help_consignor	Szerep: Feladó – AR (tartoznak nekünk). Ugyanez a cég lehet Fuvarozó is.
+role_help_carrier	Szerep: Fuvarozó — AP (tartozunk nekik). Ugyanez a cég lehet Feladó is.
 role_help_both	Szerepek: Feladó + Fuvarozó – egy fél, AR és AP főkönyvek, nettó a jelentésekben.
 role_help_supplier	Szerep: Szállító – AP a vásárlásokhoz.
-lane_declared_label	Számlafoglalás
-lane_owner_label	Készpénzes foglalás
+lane_declared_label	Feladás folyószámlára
+lane_owner_label	Készpénzes feladás
 money_lane_bill	Számla: {lane}
 sel_copy	Másolás
 sel_select_all	Az összes kijelölése
