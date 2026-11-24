@@ -66,7 +66,7 @@ total	စုစုပေါင်း
 cash	ငွေသား
 upi	UPI
 card	ကတ်
-credit	ဖောက်သည်​များ
+credit	ပါတီ​များ
 clear	ရှင်း​မည်
 ready_to_sell	ဘွတ်​ကင်​အဆင်ပြေ​ပြင်ဆင်​ပြီး
 today_prefix	ယနေ့
@@ -291,7 +291,7 @@ unmark	အမှတ်​မ​ကွက်​ဖြုတ်​မည်
 role_both	နှစ်​ဘက်​လုံး
 role_carrier	သယ်ဆောင်​သူ
 role_cashier	ငွေကိုင်
-role_consignor	Consignor
+role_consignor	ပို့​သူ
 role_manager	မန်နေဂျာ
 role_supplier	ပေး​သွင်း​သူ
 branch_name_sell_ph	ရောင်း​ရန် သစ်ခွဲ​အမည်
@@ -406,7 +406,7 @@ print_drs	DRS ပ​ရင့်​ထုတ်​ပါ။
 print_run_sheet	ပြေး​စာရွက်​ကို ပုံနှိပ်​ပါ။
 reattempt	ပြန်​ကြိုးစား​ပါ။
 rider_cod_handed_ph	COD ပေးအပ်​ခဲ့​သည်။
-settle_rider_cod	စီးနင်း​သူ COD ကို အခြေချ​ပါ။
+settle_rider_cod	ပို့ဆောင်​သူ COD ကို အခြေချ​ပါ။
 mode_desk	စားပွဲ​ခုံ
 mode_rider	ပို့ဆောင်​သူ
 waiting_office	ရုံး​ရောက်​ဖို့ စောင့်​နေ​တယ်။
@@ -462,7 +462,7 @@ restore_backup	မူလ​ဘက်ထရီ​ကို​ပြန်လည�
 rider_name_ph	ပို့ဆောင်​သူ အမည်
 rider_phone_ph	ပို့ဆောင်​သူ ဖုန်း
 riders	ပို့ဆောင်​သူများ
-riders_own_fleet	Riders (ကိုယ်ပိုင်​ရေတပ်)
+riders_own_fleet	ပို့ဆောင်​သူများ (ကိုယ်ပိုင်​အသင်း)
 rollup	စုစုပေါင်း
 save_booking_measures	ဘွတ်​ကင်​သိမ်း​မှု​တွေ
 save_brand	အမှတ်​တံဆိပ်​ကို​သိမ်းဆည်း​ပါ
@@ -852,11 +852,11 @@ parcel_one_fmt	{n} ပါဆယ်​ထုပ်
 facet_bank_title	အစီရင်ခံစာ
 facet_bank_help	နေ့​စာအုပ်​များ၊ ပါတီ​အသက်အရွယ်၊ ဘဏ်​အပေါ်​တင်​သွင်း​မှု​များ၊ နှင့်​ကာလ P&L။
 facet_ops_title	ပို့ဆောင်​ရေး​နှင့် ပို့ဆောင်​ရေး
-facet_ops_help	စ​က​င်​န်​ဖတ်​ပါ သို့မဟုတ် AWB → ရှာ​ပါ၊ ထို့နောက် ကြိုတင် / ပ​ရင့်​တံဆိပ် / COD ကို ရှာ​ပါ။ စီးနင်း​သူ သို့မဟုတ် ဝန်ဆောင်မှု​ပေး​သူ​ထံ ပေး​ပို့​ပါ။
+facet_ops_help	စ​က​င်​န်​ဖတ်​ပါ သို့မဟုတ် AWB → ရှာ​ပါ၊ ထို့နောက် ကြိုတင် / ပ​ရင့်​တံဆိပ် / COD ကို ရှာ​ပါ။ ပို့ဆောင်​သူ သို့မဟုတ် ဝန်ဆောင်မှု​ပေး​သူ​ထံ ပေး​ပို့​ပါ။
 facet_cod_title	COD မှတ်ပုံတင်
 facet_cod_help	ပေး​ပို့​မှု​တွင် စုဆောင်း​ပြီး ကုန်စည်​ပို့ဆောင်​သူ​ထံ ပေး​ပို့​ပါ။
-facet_riders_title	Riders (ကိုယ်ပိုင်​ရေတပ်)
-facet_riders_help	စီးနင်း​သူများ​ကို ထည့်​ပါ၊ ထို့နောက် Ops မှ ကြိုတင်​မှာ​ယူထား​သော AWB များ​ကို ပေး​ပို့​ပါ။
+facet_riders_title	ပို့ဆောင်​သူများ (ကိုယ်ပိုင်​အသင်း)
+facet_riders_help	ပို့ဆောင်​သူများ​ကို ထည့်​ပါ၊ ထို့နောက် Ops မှ ကြိုတင်​မှာ​ယူထား​သော AWB များ​ကို ပေး​ပို့​ပါ။
 against_bill_ph	အထက်ပါ bil # အတွက် (စိတ်ကြိုက်)
 aliases_ph	နာမည်​အခြား​များ — အခြား​နာမည်​များ၊ ကော်မာ​ဖြင့်​ခွဲ​ထားသည်
 amount_blank_full_ph	ပမာဏ (ဗလာ = လက်ကျန် အပြည့်)

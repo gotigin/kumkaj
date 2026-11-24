@@ -40,7 +40,7 @@ total	ທັງໝົດ
 cash	ເງິນສົດ
 upi	UPI
 card	ບັດ
-credit	ລູກຄ້າ​ແລະ​ຜູ້​ສະຫນອງ
+credit	ຝ່າຍ
 clear	ຈະແຈ້ງ
 today_prefix	ມື້ນີ້
 owed	ດີ​ເດັ່ນ
@@ -744,7 +744,7 @@ category_search_ph	ໝວດໝູ່ — ຊອກຫາ​ຂອງ​ທ່�
 cancel_item_short	ຍົກເລີກ
 return_to_customer	ກັບຄືນ​ຫາ​ລູກຄ້າ
 short_by	ສັ້ນ​ໂດຍ
-tip_not_sale	ຄໍາ​ແນະ​ນໍາ (ຂອງ​ພະນັກງານ, ບໍ່​ແມ່ນ​ການຂາຍ)
+tip_not_sale	ທິບ (ຂອງ​ພະນັກງານ, ບໍ່​ແມ່ນ​ການຂາຍ)
 right_settle	ເອົາ​ການ​ຈ່າຍເງິນ
 right_allowed	ອະນຸຍາດ
 right_with_approval	ດ້ວຍ​ການ​ອະນຸມັດ
@@ -757,7 +757,7 @@ server_host_selected	ການ​ໃຊ້ {host} — ໃສ່​ລະຫັ�
 approval_pin_ph	ຜູ້ຈັດການ PIN (ພຽງແຕ່​ຖ້າ​ຖາມ)
 menu_search_ph	ຊອກຫາ​ລາຍການ ຫຼື​ລະຫັດ​ສັ້ນ
 customer_paid_ph	ລູກຄ້າ​ຈ່າຍ​ແລ້ວ
-tip_ph	ເຄັດລັບ
+tip_ph	ທິບ
 find_server	ຊອກຫາ​ເຄື່ອງ​ແມ່​ຂ່າຍ​ຂອງ​ຮ້ານ
 bill_format	ຮູບແບບ​ໃບ​ບິນ
 bill_header_ph	ທີ່ຢູ່ | ໂທລະສັບ

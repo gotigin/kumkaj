@@ -26,14 +26,14 @@ board_discard	បោះបង់
 board_discarded	បាន​លុប​សេចក្តី​ព្រាង
 buy	បង់​ចេញ
 books	សៀវភៅ​ប្រចាំថ្ងៃ
-books_help	ទីតាំង​ថ្ងៃនេះ។ ការ​កក់ = ក្បាលដី​ចូល។ បង់​ចេញ = វិ​ក័យ​ប័ត្រ​ដឹកជញ្ជូន និង​ការ​ចំណាយ។ ភាគី = អ្នក​ដឹកជញ្ជូន & អ្នក​ដឹកជញ្ជូន។
-buy_help	វិ​ក័យ​ប័ត្រ​ចំណាយ និង​វិក្កយបត្រ​ក្រុមហ៊ុន​ដឹកជញ្ជូន (ប្រាក់​ចេញ)។ គណនី​នៅ​លើ​បញ្ជី​ឈ្មោះ​គណបក្ស។
+books_help	ទីតាំង​ថ្ងៃនេះ។ ការ​កក់ = ក្បាលដី​ចូល។ បង់​ចេញ = វិ​ក័យ​ប័ត្រ​ដឹកជញ្ជូន និង​ការ​ចំណាយ។ ភាគី = អ្នក​ផ្ញើ និង​ក្រុមហ៊ុន​ដឹកជញ្ជូន។
+buy_help	វិ​ក័យ​ប័ត្រ​ចំណាយ និង​វិក្កយបត្រ​ក្រុមហ៊ុន​ដឹកជញ្ជូន (ប្រាក់​ចេញ)។ គណនី​នៅ​លើ​បញ្ជី​ភាគី។
 sell_money_in	កក់​កញ្ចប់​មួយ។
 buy_money_out	វិ​ក័យ​ប័ត្រ​ចំណាយ / ក្រុមហ៊ុន​ដឹកជញ្ជូន
 record_purchase	កត់ត្រា​ការទិញ
 add_expense	បង្កាន់ដៃ​ចំណាយ
 bank_book	សៀវភៅ​ធនាគារ
-credit_help	លេខ​សម្គាល់​គណបក្ស​គឺ​មានតែ​មួយ (ឈ្មោះ​អាច​នឹង​កើតឡើងវិញ) ។ តួនាទី៖ អ្នក​ផ្ញើ (AR) ក្រុមហ៊ុន​ដឹកជញ្ជូន (AP) ឬ​ទាំងពីរ​នៅ​លើ​លេខ​សម្គាល់​នោះ។ សៀវភៅ​កត់ត្រា​នៅ​ដាច់ដោយឡែក; របាយការណ៍​បង្ហាញ​សុទ្ធ។
+credit_help	លេខ​សម្គាល់​ភាគី​គឺ​មានតែ​មួយ (ឈ្មោះ​អាច​នឹង​កើតឡើងវិញ) ។ តួនាទី៖ អ្នក​ផ្ញើ (AR) ក្រុមហ៊ុន​ដឹកជញ្ជូន (AP) ឬ​ទាំងពីរ​នៅ​លើ​លេខ​សម្គាល់​នោះ។ សៀវភៅ​កត់ត្រា​នៅ​ដាច់ដោយឡែក; របាយការណ៍​បង្ហាញ​សុទ្ធ។
 party_kind_ph	តួនាទី​ផ្ទាល់ខ្លួន (ជា​ជម្រើស) — ឬ​ប៉ះ​បន្ទះ​ឈីបខាងលើ
 parties_list_heading	ភាគី​ដែល​បាន​រក្សាទុក
 reports_help	សៀវភៅ​ប្រចាំថ្ងៃ អ្នក​ជំពាក់ និង​អ្នក​ដែល​យើង​ជំពាក់ សៀវភៅ​ធនាគារ បង្កាន់ដៃ​ចំណាយ ចំណេញ និង​ខាត។
@@ -149,7 +149,7 @@ origin_phone_ph	អ្នក​ផ្ញើ​ទូរស័ព្ទ
 origin_address_ph	អាសយដ្ឋាន​ទទួល / ប្រភព​ដើម
 booking_consignor_heading	អ្នក​ផ្ញើ (អតិថិជន/អ្នក​ផ្ញើ)
 booking_consignee_heading	អ្នកទទួល (អ្នកទទួល)
-booking_consignor_hint	ជ្រើសរើស​ពិធីជប់លៀង​ដើម្បី​បំពេញ ឬ​ទុកចន្លោះ​ទំនេរ​សម្រាប់​ការ​ដើរចូល។ ត្រូវការ​សម្រាប់​ការ​យក​តាម​ផ្ទះ និង RTO ។
+booking_consignor_hint	ជ្រើសរើស​ភាគី​ដើម្បី​បំពេញ ឬ​ទុកចន្លោះ​ទំនេរ​សម្រាប់​ការ​ដើរចូល។ ត្រូវការ​សម្រាប់​ការ​យក​តាម​ផ្ទះ និង RTO ។
 booking_consignee_hint	អ្នកទទួល​កញ្ចប់។ ទុក​កន្លែង​ទំនេរ​សម្រាប់​ការ​ដើរ​ក្នុង​បញ្ជរ​ទម្លាក់។
 weight_kg_ph	គីឡូក្រាម​ជាក់ស្តែង
 length_cm_ph	លីត្រ សង់ទីម៉ែត្រ
@@ -261,7 +261,7 @@ add_conversion	បន្ថែម​ការ​បំប្លែង
 add_item_plain	បន្ថែម​ទំនិញ
 add_note	បន្ថែម​កំណត់ចំណាំ
 add_opening_balance	បន្ថែម​សមតុល្យ​ដើម
-add_rider	បន្ថែម​អ្នក​ជិះ
+add_rider	បន្ថែម​អ្នក​ដឹក
 add_staff	បន្ថែម​បុគ្គលិក
 add_unit	បន្ថែម​ឯកតា
 add_use_name	បន្ថែម / ប្រើ​ឈ្មោះ​នេះ
@@ -291,7 +291,7 @@ unmark	ដក​សម្គាល់
 role_both	ទាំងពីរ
 role_carrier	ក្រុមហ៊ុន​ដឹកជញ្ជូន
 role_cashier	អ្នកគិតលុយ
-role_consignor	អ្នក​ដឹកជញ្ជូន
+role_consignor	អ្នក​ផ្ញើ
 role_manager	អ្នកចាត់ការ
 role_supplier	អ្នកផ្គត់ផ្គង់
 branch_name_sell_ph	ឈ្មោះ​សាខា​ដែល​លក់
@@ -360,7 +360,7 @@ counter_agency_ph	ឈ្មោះ​បញ្ជរ / ភ្នាក់ងា�
 create_backup	បង្កើត​ច្បាប់​ចម្លង
 day_close_summary	សង្ខេប​បិទ​ថ្ងៃ
 delete_party	លុប​ភាគី​ដែល​បាន​ជ្រើស
-dispatch_to_rider	ការ​ដឹកជញ្ជូន​ត្រូវ​បាន​កក់ → អ្នក​ជិះ
+dispatch_to_rider	បញ្ជូន​ការ​កក់ → អ្នក​ដឹក
 docket_charge_ph	ការ​គិតថ្លៃ​ឯកសារ
 declared_value_ph	តម្លៃ​ដែល​បាន​ប្រកាស
 contents_ph	មាតិកា
@@ -369,7 +369,7 @@ insurance_label	ធានារ៉ាប់រង
 yes_label	បាទ
 no_label	ទេ
 print_route_label	ផ្លូវ​បោះពុម្ព
-new_party_kind_label	ពិធីជប់លៀង​ថ្មី។
+new_party_kind_label	ភាគី​ថ្មី
 done_open_books	រួច — បើក​សៀវភៅ
 export_day	នាំចេញ​ថ្ងៃ
 extra_note_expense_ph	កំណត់ចំណាំ​បន្ថែម​លើ​ចំណាយ​ចុងក្រោយ
@@ -387,7 +387,7 @@ import_carrier_bill_csv	នាំចូល​វិក្កយបត្រ​�
 copy_carrier_bill_report	ចម្លង​របាយការណ៍​វិក្កយបត្រ​ក្រុមហ៊ុន​ដឹកជញ្ជូន​ចុងក្រោយ
 use_carrier_cost	ប្រើ​ថ្លៃ​សេវា​ដឹកជញ្ជូន
 rate_carrier_ph	ក្រុមហ៊ុន​ដឹកជញ្ជូន (ទទេ = អត្រា​លក់​របស់​យើង)
-rate_party_ph	ពិធីជប់លៀង (ទទេ = អតិថិជន​ទាំងអស់)
+rate_party_ph	ភាគី (ទទេ = អតិថិជន​ទាំងអស់)
 carrier_pick_ph	ក្រុមហ៊ុន​ដឹកជញ្ជូន​សម្រាប់​ថ្លៃដើម (ពី​ការប្រៀបធៀប)
 item_name	ឈ្មោះ​ទំនិញ
 load_bulk_row	ផ្ទុក​ជួរ​ភាគច្រើន → តុ
@@ -406,9 +406,9 @@ print_drs	បោះពុម្ព DRS
 print_run_sheet	បោះពុម្ព​សន្លឹក​រត់
 reattempt	ការ​ព្យាយាម​ឡើងវិញ
 rider_cod_handed_ph	COD បាន​ប្រគល់​ឱ្យ
-settle_rider_cod	ដោះស្រាយ​អ្នក​ជិះ COD
+settle_rider_cod	ដោះស្រាយ​អ្នក​ដឹក COD
 mode_desk	តុ
-mode_rider	អ្នក​ជិះ
+mode_rider	អ្នក​ដឹក
 waiting_office	រង់ចាំ​ដល់​ការិយាល័យ
 capture_signature	ចាប់​យក​ហត្ថលេខា
 incoming_manifest	ការ​បង្ហាញ​ចូល
@@ -416,7 +416,7 @@ pickup_request	សំណើ​ទៅ​យក
 pickup_run	រត់​ទៅ​យក
 auto_assign_area	តំបន់​កំណត់​ដោយ​ស្វ័យប្រវត្តិ
 reorder_stops	បញ្ឈប់​ការ​បញ្ជាទិញ​ឡើងវិញ
-settle_rider_pay	បង់ថ្លៃ​អ្នក​ជិះ
+settle_rider_pay	បង់ថ្លៃ​អ្នក​ដឹក
 vehicle_inspect	ការ​ត្រួតពិនិត្យ​យានយន្ត
 print_docket	បោះពុម្ព​ឯកសារ
 franchise_statement	សេចក្តី​ថ្លែងការណ៍ Franchise
@@ -428,7 +428,7 @@ share_receipt_whatsapp	ចែករំលែក​បង្កាន់ដៃ​
 delivery_feedback	ការ​ផ្តល់​មតិ​កែ​លម្អ
 lan_self_book	LAN កក់​ដោយខ្លួនឯង។
 new_party_clear	ភាគី​ថ្មី (សម្អាត​ទម្រង់)
-new_party_kind_ph	ប្រភេទ​ពិធីជប់លៀង​ថ្មី (អ្នកផ្គត់ផ្គង់ / ក្រុមហ៊ុន​ដឹកជញ្ជូន)
+new_party_kind_ph	ប្រភេទ​ភាគី​ថ្មី (អ្នកផ្គត់ផ្គង់ / ក្រុមហ៊ុន​ដឹកជញ្ជូន)
 next_country	ប្រទេស​បន្ទាប់
 prev_country	ប្រទេស​មុន
 note_gstin_ph	កំណត់ចំណាំ / GSTIN / រំលឹក​កិច្ច​ព្រមព្រៀង
@@ -459,10 +459,10 @@ refund	សង​ប្រាក់
 remit_cod	ផ្ញើ COD (ភាគី)
 remove_selected	ដក​អ្វី​ដែល​បាន​ជ្រើស
 restore_backup	ស្ដារ​ច្បាប់​ចម្លង
-rider_name_ph	ឈ្មោះ​អ្នក​ជិះ
-rider_phone_ph	ទូរស័ព្ទ​អ្នក​ជិះ
-riders	អ្នក​ជិះ
-riders_own_fleet	អ្នក​ជិះ (កង​នាវា​ផ្ទាល់ខ្លួន)
+rider_name_ph	ឈ្មោះ​អ្នក​ដឹក
+rider_phone_ph	ទូរស័ព្ទ​អ្នក​ដឹក
+riders	អ្នក​ដឹក
+riders_own_fleet	អ្នក​ដឹក (ក្រុម​ដឹក​ផ្ទាល់ខ្លួន)
 rollup	សង្ខេប​រួម
 save_booking_measures	រក្សាទុក​វិធានការ​កក់
 save_brand	រក្សាទុក​ម៉ាក
@@ -830,13 +830,13 @@ lane_empty	គ្មានអ្វី​នៅ​ទីនេះ​ទេ​ឥ
 picked_fmt	{n} បាន​ជ្រើសរើស
 pick_all	ជ្រើសរើស​ទាំងអស់។
 bag_for_carrier	ប្រគល់​ជូន​ក្រុមហ៊ុន​ដឹកជញ្ជូន
-send_with_rider	ផ្ញើ​ជាមួយ​អ្នក​ជិះ
+send_with_rider	ផ្ញើ​ជាមួយ​អ្នក​ដឹក
 out_again	ចេញ​ទៀតហើយ
 return_to_sender	ត្រឡប់ទៅ អ្នក​ផ្ញើ វិញ
 runs_bags_heading	ការ​រត់ និង​កា​បូ​បថ្មីៗ
 print_word	បោះពុម្ព
 bag_word	កាបូប​ដឹកជញ្ជូន
-run_word	អ្នក​ជិះ​រត់
+run_word	ជុំ​ដឹក
 parcels_fmt	ក្បាលដី {n}
 parcel_history	ប្រវត្តិសាស្ត្រ
 attempt_fmt	ព្យាយាម {n}
@@ -852,11 +852,11 @@ parcel_one_fmt	កញ្ចប់ {n}
 facet_bank_title	របាយការណ៍
 facet_bank_help	សៀវភៅ​ប្រចាំថ្ងៃ អាយុ​ភាគី ការ​បង្ហោះ​ធនាគារ និងច&ខតាមរយៈ​ពេល។
 facet_ops_title	ការ​ដឹកជញ្ជូន​និង​ការ​ដឹកជញ្ជូន
-facet_ops_help	ស្កែន ឬ​វាយ AWB → ស្វែងរក បន្ទាប់មក​ទៅមុខ / បោះពុម្ព​ស្លាក / COD ។ បញ្ជូន​ទៅកាន់​អ្នក​ជិះ ឬ​អ្នក​ដឹកជញ្ជូន។
+facet_ops_help	ស្កែន ឬ​វាយ AWB → ស្វែងរក បន្ទាប់មក​ទៅមុខ / បោះពុម្ព​ស្លាក / COD ។ បញ្ជូន​ទៅកាន់​អ្នក​ដឹក ឬ​ក្រុមហ៊ុន​ដឹកជញ្ជូន។
 facet_cod_title	ចុះឈ្មោះ COD
-facet_cod_help	ប្រមូល​នៅពេល​ដឹកជញ្ជូន បន្ទាប់មក​ផ្ញើ​ទៅ​អ្នក​ដឹកជញ្ជូន។
-facet_riders_title	អ្នក​ជិះ (កង​នាវា​ផ្ទាល់ខ្លួន)
-facet_riders_help	បន្ថែម​អ្នក​ជិះ បន្ទាប់មក​បញ្ជូន AWBs ដែល​បាន​កក់​ពី Ops ។
+facet_cod_help	ប្រមូល​នៅពេល​ដឹកជញ្ជូន បន្ទាប់មក​ផ្ញើ​ទៅ​អ្នក​ផ្ញើ
+facet_riders_title	អ្នក​ដឹក (ក្រុម​ដឹក​ផ្ទាល់ខ្លួន)
+facet_riders_help	បន្ថែម​អ្នក​ដឹក បន្ទាប់មក​បញ្ជូន AWBs ដែល​បាន​កក់​ពី Ops ។
 against_bill_ph	ធៀប​នឹង​វិក្កយបត្រ # ខាងលើ (ស្រេចចិត្ត)
 aliases_ph	ឈ្មោះ​ផ្សេង — ឈ្មោះ​ផ្សេង បំបែក​ដោយ​ក្បៀស
 amount_blank_full_ph	ទឹកប្រាក់ (ទទេ = សមតុល្យ​ពេញ)
@@ -895,7 +895,7 @@ part_second_way_ph	ផ្នែក​តាមវិធី​ទីពីរ (�
 phone_ph	ទូរស័ព្ទ
 address_ph	អាស័យ​ដ្ឋាន
 party_custom_fields_heading	វាល​ផ្ទាល់ខ្លួន (ភាគី​ដែល​បាន​ជ្រើសរើស)
-party_custom_help	បន្ថែម​ស្លាក និង​តម្លៃ​ណាមួយ​នៅ​លើ​ពិធីជប់លៀង​នេះ — WhatsApp, GSTIN, លេខ​កូដ​ផ្លូវ, …
+party_custom_help	បន្ថែម​ស្លាក និង​តម្លៃ​ណាមួយ​នៅ​លើ​ភាគី​នេះ — WhatsApp, GSTIN, លេខ​កូដ​ផ្លូវ, …
 party_custom_key_ph	ឈ្មោះ​វាល (ឧ. WhatsApp)
 party_custom_value_ph	តម្លៃ
 party_custom_add	បន្ថែម​វាល

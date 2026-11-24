@@ -46,7 +46,7 @@ total	စုစုပေါင်း
 cash	ငွေသား
 upi	UPI
 card	ကတ်
-credit	ဖောက်သည်​များ
+credit	ပါတီ​များ
 clear	ရှင်း​မည်
 ready_to_sell	ဘွတ်​ကင်​အဆင်ပြေ​ပြင်ဆင်​ပြီး
 today_prefix	ယနေ့
@@ -1152,7 +1152,7 @@ shift_since	ဒီ​အကြိမ်​လှည့်​မှ​သည်
 expected_in_drawer	စောင့်​ကြည့်​ထား​သော ရေ​ကျည်​ထဲ​တွင် မျှော်လင့်​ထားသည်
 right_discount	လျှော့​စျေး​ပေး​ပါ
 floor_in_kitchen	မီးဖိုချောင်​တွင်
-floor_eating	ပေး​ဆောင်​ပြီး
+floor_eating	စား​နေသည်
 pick_category	အမျိုး​အစား​ကို ရွေး​ပါ
 close_category_list	အမျိုး​အစား စာရင်း​ကို ပိတ်​ပါ
 new_category_row	အမျိုး​အစား​အသစ် — ပစ္စည်း​ကို သိမ်းသွင်း​သောအခါ ဖန်တီးသည်
@@ -1365,7 +1365,7 @@ resv_add	စာရင်း
 resv_seat	ထိုင်​ပြီး
 resv_none	ဘွိုင်​ဇာ​မှု​မ​ရှိ​သေးပါ။
 guests_word	ဧည့်သည်​များ
-delivery_by_ph	ပို့ဆောင်​မည့်​သူ (စီး​ကမ္ဘာ​သို့မဟုတ် ဝန်ထမ်း​နာမည်)
+delivery_by_ph	ပို့ဆောင်​မည့်​သူ (ပို့ဆောင်​သူ သို့မဟုတ် ဝန်ထမ်း​အမည်)
 kitchen_all_day	ယခု​ချက်ပြုတ်​ရန်: {items}
 kitchen_all_day_head	အခု​ချက်​ဖို့
 kitchen_tab_live	အသက်ဝင်​နေသည်

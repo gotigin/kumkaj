@@ -40,7 +40,7 @@ total	စုစုပေါင်း
 cash	ငွေသား
 upi	UPI
 card	ကတ်
-credit	ဖောက်သည်​များ
+credit	ပါတီ​များ
 clear	ရှင်း​မည်
 today_prefix	ယနေ့
 owed	ထူးခြား​ပြီး
@@ -744,7 +744,7 @@ category_search_ph	အမျိုး​အစား — သင့်​အမ�
 cancel_item_short	ပယ်ဖျက်
 return_to_customer	ဖောက်သည်​ထံ​ပြန်​ပေး​ပါ
 short_by	အနည်းငယ်​ပျောက်
-tip_not_sale	အကြောင်း​ညွှန်ကြားချက် (၀န်​ထမ်း​ရဲ့၊ အ​ရောင်း​မဟုတ်)
+tip_not_sale	တ​စ်​ပ် (ဝန်ထမ်း​အတွက်၊ အ​ရောင်း​မဟုတ်)
 right_settle	ငွေ​လက်ခံ​ပါ
 right_allowed	ခွင့်​ပြု​ထားသည်
 right_with_approval	အတည်ပြု​ပြီး​မှ
@@ -757,7 +757,7 @@ server_host_selected	{host} ကို​အသုံးပြု၍ — ချ�
 approval_pin_ph	မန်နေဂျာ PIN (မေး​လျှင်​သာ)
 menu_search_ph	ပစ္စည်း သို့မဟုတ် အ​တို​ကုဒ်​ရှာ​ပါ
 customer_paid_ph	ဖောက်သည်​ငွေ​ပေးချေ​ပြီး​ပြီ
-tip_ph	အနှစ်သာရ
+tip_ph	တ​စ်​ပ်
 find_server	ဆိုင်၏ဆာ​ဗာ​ကို​ရှာ​ပါ
 bill_format	ဘီ​လ်​ပုံစံ
 bill_header_ph	လိပ်စာ | ဖုန်း

@@ -66,7 +66,7 @@ total	ທັງໝົດ
 cash	ເງິນສົດ
 upi	UPI
 card	ບັດ
-credit	ລູກຄ້າ​ແລະ​ຜູ້​ສະຫນອງ
+credit	ຝ່າຍ
 clear	ຈະແຈ້ງ
 ready_to_sell	ພ້ອມ​ຈອງ​ແລ້ວ
 today_prefix	ມື້ນີ້
@@ -90,7 +90,7 @@ rounded	ຮອບ
 split	ແຍກ
 counter	ເຄົາ​ເຕີ
 parcel	ພັດສະດຸ
-order	ການ​ສັ່ງ​ຊື້
+order	ອໍ​ເດີ
 sales	ການ​ຈອງ
 sales_refunds	ການ​ຈອງ & ການ​ຄືນ​ເງິນ
 day_close	ປິດ​ມື້
@@ -261,7 +261,7 @@ add_conversion	ເພີ່ມ​ການ​ແປງ
 add_item_plain	ເພີ່ມ​ລາຍການ
 add_note	ເພີ່ມ​ບັນທຶກ
 add_opening_balance	ເພີ່ມ​ຍອດ​ເງິນ​ເປີດ
-add_rider	ເພີ່ມ​ຜູ້ຂັບຂີ່
+add_rider	ເພີ່ມ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
 add_staff	ເພີ່ມ​ພະນັກງານ
 add_unit	ເພີ່ມ​ຫົວໜ່ວຍ
 add_use_name	ເພີ່ມ / ໃຊ້​ຊື່​ນີ້
@@ -360,7 +360,7 @@ counter_agency_ph	ຊື່​ຕົວແທນ / ຕົວແທນ (ທາງ
 create_backup	ສ້າງ​ສໍາ​ຮອງ​ຂໍ້ມູນ
 day_close_summary	ສະຫຼຸບ​ມື້​ປິດ
 delete_party	ລຶບ​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ​ທີ່​ເລືອກ
-dispatch_to_rider	ຈອງ​ການ​ຈັດ​ສົ່ງ → ຜູ້ຂັບຂີ່
+dispatch_to_rider	ສົ່ງ​ການ​ຈອງ → ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
 docket_charge_ph	ຄ່າ​ບໍລິການ Docket
 declared_value_ph	ມູນຄ່າ​ປະກາດ
 contents_ph	ເນື້ອໃນ
@@ -406,9 +406,9 @@ print_drs	ພິມ DRS
 print_run_sheet	ພິມ​ແຜ່ນ​ແລ່ນ
 reattempt	ພະຍາຍາມ​ອີກ​ຄັ້ງ
 rider_cod_handed_ph	COD ມອບໃຫ້
-settle_rider_cod	ຕົກລົງ​ຜູ້ຂັບຂີ່ COD
+settle_rider_cod	ຕົກລົງ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ COD
 mode_desk	ໂຕະ
-mode_rider	ຜູ້ຂັບຂີ່
+mode_rider	ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
 waiting_office	ລໍຖ້າ​ໄປ​ຮອດ​ຫ້ອງການ
 capture_signature	ບັນທຶກ​ລາຍ​ເຊັນ
 incoming_manifest	manifest ເຂົ້າມາ
@@ -416,7 +416,7 @@ pickup_request	ຄຳຮ້ອງ​ຂໍຮັບ
 pickup_run	ແລ່ນ​ຮັບ
 auto_assign_area	ກຳນົດ​ພື້ນທີ່​ອັດຕະໂນມັດ
 reorder_stops	ຢຸດ​ສັ່ງ​ຄືນ​ໃໝ່
-settle_rider_pay	ຊໍາ​ລະ​ຄ່າຈ້າງ​ຜູ້ຂັບຂີ່
+settle_rider_pay	ຊຳລະ​ຄ່າຈ້າງ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
 vehicle_inspect	ການກວດ​ກາ​ຍານພາຫະນະ
 print_docket	ພິມ docket
 franchise_statement	ຖະແຫຼງການ Franchise
@@ -459,10 +459,10 @@ refund	ເງິນ​ຄືນ
 remit_cod	ໂອນ COD (ພັກ)
 remove_selected	ລຶບ​ທີ່​ເລືອກ​ອອກ
 restore_backup	ຟື້ນຟູ​ການ​ສໍາ​ຮອງ​ຂໍ້ມູນ
-rider_name_ph	ຊື່ Rider
-rider_phone_ph	ໂທລະສັບ​ຜູ້ຂັບຂີ່
-riders	ຜູ້ຂັບຂີ່
-riders_own_fleet	Riders (ເຮືອບິນ​ຂອງ​ຕົນເອງ)
+rider_name_ph	ຊື່​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
+rider_phone_ph	ໂທລະສັບ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
+riders	ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
+riders_own_fleet	ພະນັກງານ​ສົ່ງ​ເຄື່ອງ (ທີມ​ຈັດ​ສົ່ງ​ຂອງ​ຕົນເອງ)
 rollup	ມ້ວນ
 save_booking_measures	ບັນທຶກ​ມາດ​ຕະການ​ການ​ຈອງ
 save_brand	ປະຫຍັດ​ແບ
@@ -830,13 +830,13 @@ lane_empty	ບໍ່ມີ​ຫຍັງ​ຢູ່​ທີ່​ນີ້.
 picked_fmt	ເລືອກ {n} ແລ້ວ
 pick_all	ເລືອກ​ທັງໝົດ
 bag_for_carrier	ມື​ໄປຫາ​ຜູ້​ໃຫ້​ບໍລິການ
-send_with_rider	ສົ່ງ​ກັບ​ຜູ້ຂັບຂີ່
+send_with_rider	ສົ່ງ​ກັບ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ
 out_again	ອອກ​ອີກ
 return_to_sender	ກັບໄປ​ຫາ​ຜູ້​ສົ່ງ
 runs_bags_heading	ການ​ແລ່ນ​ຫຼ້າສຸດ & ກະເປົາ
 print_word	ພິມ
 bag_word	ກະເປົາ​ໃສ່​ເຄື່ອງ
-run_word	Rider ແລ່ນ
+run_word	ຮອບ​ສົ່ງ
 parcels_fmt	ພັດສະດຸ {n}
 parcel_history	ປະຫວັດສາດ
 attempt_fmt	ພະຍາຍາມ {n}
@@ -852,11 +852,11 @@ parcel_one_fmt	ພັດສະດຸ {n}
 facet_bank_title	ບົດ​ລາຍງານ
 facet_bank_help	ປຶ້ມ​ມື້, ອາຍຸ​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ, ໄປສະນີ​ທະນາຄານ, ແລະ​ໄລຍະ​ເວລາ P&L.
 facet_ops_title	ການ​ຂົນສົ່ງ & ການ​ຈັດ​ສົ່ງ
-facet_ops_help	ສະ​ແກນ ຫຼື​ພິມ AWB → ຊອກຫາ, ຈາກນັ້ນ​ເລື່ອນ/ພິມ​ປ້າຍ/COD. ສົ່ງໃຫ້​ຜູ້ຂັບຂີ່​ຫຼື​ຜູ້​ຂົນສົ່ງ.
+facet_ops_help	ສະ​ແກນ ຫຼື​ພິມ AWB → ຊອກຫາ, ຈາກນັ້ນ​ເລື່ອນ/ພິມ​ປ້າຍ/COD. ສົ່ງໃຫ້​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ ຫຼື​ຜູ້​ຂົນສົ່ງ.
 facet_cod_title	ລົງທະບຽນ COD
 facet_cod_help	ເກັບ​ກໍາ​ໃນ​ເວລາ​ຈັດ​ສົ່ງ, ຫຼັງຈາກນັ້ນ​ສົ່ງໃຫ້​ຜູ້​ສົ່ງ​ມອບ.
-facet_riders_title	Riders (ເຮືອບິນ​ຂອງ​ຕົນເອງ)
-facet_riders_help	ເພີ່ມ​ຜູ້ຂັບຂີ່, ຈາກນັ້ນ​ສົ່ງ AWBs ທີ່​ຈອງ​ໄວ້​ຈາກ Ops.
+facet_riders_title	ພະນັກງານ​ສົ່ງ​ເຄື່ອງ (ທີມ​ຈັດ​ສົ່ງ​ຂອງ​ຕົນເອງ)
+facet_riders_help	ເພີ່ມ​ພະນັກງານ​ສົ່ງ​ເຄື່ອງ, ຈາກນັ້ນ​ສົ່ງ AWBs ທີ່​ຈອງ​ໄວ້​ຈາກ Ops.
 against_bill_ph	ຕໍ່​ກັບ​ໃບ​ບິນ # ຂ້າງ​ເທິງ (ທາງ​ເລືອກ)
 aliases_ph	ນາມແຝງ — ຊື່​ອື່ນ, ແຍກ​ເຄື່ອງໝາຍ​ຈຸດ
 amount_blank_full_ph	ຈຳນວນ (ຫວ່າງເປົ່າ = ຍອດ​ເງິນ​ເຕັມ)
