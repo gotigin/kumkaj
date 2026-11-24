@@ -198,7 +198,7 @@ BODY_INJECT='        <link rel="stylesheet" href="./css/auth-nav.css?v='"$BUILD_
         <script src="./js/lang-nav.js?v='"$BUILD_ID"'" defer></script>
         <noscript><p>Kirano — grocery counter OS. Cloud plans (ex-tax/yr): Free forever ₹0 · Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 · Custom quote — <a href="/shop">/shop</a>. <a href="/privacy">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/cancellation">Cancellation</a></p></noscript>
     </body>'
-        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
+BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
 '"$BODY_INJECT"
 awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
   BEGIN { done_title=0; done_body=0 }

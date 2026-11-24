@@ -231,10 +231,9 @@ BODY_INJECT='        <link rel="stylesheet" href="./css/auth-nav.css?v='"$BUILD_
     </body>'
 # Optional Analytics bundle if the owner added client/firebase-init.js later.
 if [[ -f "$OUT/js/firebase-init.js" ]]; then
-        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
+  BODY_INJECT='        <script src="./js/firebase-init.js?v='"$BUILD_ID"'" defer></script>
+'"$BODY_INJECT"
 fi
-BODY_INJECT="$CHROME_LINES
-$BODY_INJECT"
 awk -v head="$HEAD_INJECT" -v body="$BODY_INJECT" -v bid="$BUILD_ID" '
   BEGIN { done_title=0; done_body=0 }
   /<title>kumkaj-site<\/title>/ && !done_title {
