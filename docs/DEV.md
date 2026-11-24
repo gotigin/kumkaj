@@ -890,6 +890,9 @@ Since 2026-11-23 the sites translate their own copy into the same catalogue —
 the language chip in the top bar (and `#l=<code>` in the URL) changes the
 words, not just a stored preference. Same quality rules as the apps above;
 the site keys are separate from the app keys (marketing copy, not POS terms).
+Since 2026-11-24 every pack on every site is written for real (110
+languages × 5 sites, no `@@EN@@` row left); `cargo test -p <site>-site` and
+`./scripts/check-ui-translations.sh --site all` are green and must stay so.
 
 | Piece | Where |
 |---|---|
@@ -929,9 +932,47 @@ the site keys are separate from the app keys (marketing copy, not POS terms).
   lines meet the right edge, nothing spills past the left edge. Still a
   vendor limit: Latin words inside an RTL sentence keep left-to-right order
   between them, and a line can start with ، ۔ or — .
-- **Not translated (yet):** legal pages (terms / privacy / cancellation),
-  account-app.js status and error messages, mock-up receipts / tickets and
-  product names (`UI_SKIP`).
+- **Wrapping limit (vendor):** the layouter breaks lines at UAX #29 word
+  boundaries (`split_word_bounds` in
+  `vendor/makepad/draw/src/text/layouter.rs`). Thai, Lao, Khmer and Burmese
+  do not separate words with spaces, and every character there is such a
+  boundary, so a line can break inside a word. A fix needs both halves:
+  break at UAX #14 opportunities instead (`unicode-linebreak` is already a
+  dependency of makepad-draw, unused) **and** put U+200B (zero-width space)
+  between words in those four packs, since UAX #14 does not segment these
+  scripts either. Not done — vendor/ is not edited from this repo.
+- **Not translated:** legal pages (terms / privacy / cancellation) stay
+  English; mock-up receipts / tickets and product names are `UI_SKIP`. The
+  account / shop pages' script messages (status, errors, prices) are keys
+  like the rest.
+
+**Writing site packs** (the conventions of the 2026-11-24 fill — keep them
+when you add copy)
+
+- **Terms:** use the apps' words (`./scripts/site-translation-batch.sh
+  glossary <code>`) where they are right. Where an app word is wrong (a
+  machine-made calque, the wrong sense, a stray English or Spanish word),
+  the site uses the correct word; fix the app pack separately.
+- **Rows that may equal the English:** `weight_cm` (`{n} cm`), `weight_kg`
+  (`{kg} kg`), `weight_working` (the formula) and `android_windows_linux`
+  (product names — allow-listed in the kirano / tabiyat English check).
+  Every other row is translated; `floor_meta_min` /
+  `floor_meta_min_bill` use the language's own minute word or abbreviation
+  (`{min} min.`, `{min} perc`, `{min} मिनट`…), never the bare English
+  `min`.
+- **Units:** running text keeps the symbols kg / cm / L as the apps do; only
+  the unit list `kg_g_pc_l_ml` uses local unit words (`кг, г, шт., л, мл`).
+- **Right-to-left packs** (ar fa ur ps sd ks dv he): flow arrows point the
+  way the reader moves — `←`, not `→` (Urdu: `بک ← لیبل ← حوالگی ← ٹریک ← حساب۔`).
+- **Numbers and punctuation** follow the language, not the English:
+  thousands grouped by a no-break space (U+00A0) where the language groups
+  with spaces (French, Nordic, Baltic, Slavic, Hungarian, Afrikaans, Zulu,
+  Xhosa, Kinyarwanda, Georgian, Armenian…), by `.` where it uses dots
+  (German, Romanian, Greek, Catalan, Spanish-speaking Guarani…), by `,`
+  where it uses commas; the decimal mark to match (`0,5 kg` / `0.5 kg`). The
+  short `₹6k` forms stay. Quotes in the language's own marks (`«…»`,
+  `„…“`, `“…”`, `「…」`); apostrophes as `’`. Script punctuation where the
+  script has its own (`।`, `۔`, `。`, `።`, `։` with `՞` on the asked word).
 
 **Adding or changing site copy**
 
@@ -945,8 +986,15 @@ the site keys are separate from the app keys (marketing copy, not POS terms).
    `cargo test -p <site>-site` (kumkaj.com: `kumkaj-site`).
    A whole language at once (all five sites; texts the sites share are
    written once): `./scripts/site-translation-batch.sh export <code>` lists
-   the English still waiting, `apply <code> <english<TAB>translation file>`
-   writes it into every site, `status` counts what is left per language.
+   the English still waiting as `ID<TAB>ENGLISH<TAB>CURRENT<TAB>USED_IN`
+   (`--all`: every text, to revise a language), `apply <code> <file>` takes
+   `ID<TAB>translation` lines and writes each into every site that shows
+   that English (`--overwrite` replaces rows already written; it refuses
+   changed `{placeholders}`, tabs and the stand-in marker), `glossary
+   <code>` prints the apps' words for that language, `status` counts what
+   is left per language.
+   Changed zh / zh-Hant / ja / ko rows: `./scripts/site-cjk-font.sh <site>`
+   (the CJK faces are cut to the packs' characters).
 4. Look at it: `PORT=… ./sites/<site>/scripts/preview-web.sh`, open
    `http://127.0.0.1:<port>/#l=hi` and an RTL language (`#l=ur`), phone
    width included.
