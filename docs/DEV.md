@@ -959,15 +959,15 @@ languages × 5 sites, no `@@EN@@` row left); `cargo test -p <site>-site` and
   spaces hold. Thai, Lao, Khmer and Burmese packs carry U+200B between
   words (`node scripts/mark-words.mjs <code> sites/<site>/translations/<code>.tsv`),
   so their rows break between words; the site tests refuse unmarked copy.
-- **Hebrew font:** `resources/fonts/NotoSansHebrew-Regular.ttf` is the static
-  Regular from the notofonts build (overlaps merged). The file it replaced
-  (2026-11-24) was the *variable* font, whose default instance is Thin:
-  Hebrew drew as hairlines, and the letters built from overlapping contours
-  (א ב ו י ש ת …) drew as filled boxes — Makepad's small-text atlas (MSDF)
-  cannot draw overlapping contours. Any new script font: static instance,
-  overlaps removed (`fc-query` / fontTools show `fvar` on a variable font).
-  The apps' `apps/*/resources/fonts/NotoSansHebrew-Regular.ttf` is still the
-  variable file (same fix pending).
+- **Fonts:** every font comes from its official upstream release, never from a
+  machine's font folders — sources and checksums in [`FONTS.md`](FONTS.md).
+  `NotoSansHebrew-Regular.ttf` (sites and apps) is the static notofonts
+  Regular; the file it replaced (2026-11-24) was the *variable* font, whose
+  default instance is Thin: Hebrew drew as hairlines and the letters built
+  from overlapping contours (א ב ו י ש ת …) as filled boxes in Makepad's
+  small-text atlas (MSDF). kumkaj's Catalogue CJK / Hangul faces had the same
+  Thin default and are now cut from Noto Sans CJK Regular. Any new script
+  font: a static instance (`fc-query` / fontTools show `fvar` on a variable one).
 - **Not translated:** legal pages (terms / privacy / cancellation) stay
   English; mock-up receipts / tickets and product names are `UI_SKIP`. The
   account / shop pages' script messages (status, errors, prices) are keys
