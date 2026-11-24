@@ -1172,7 +1172,7 @@ already_cooked	አስቀድሞ ተበስሏል (ብክነት)
 not_cooked_yet	ገና አልተበስልም
 return_to_customer	ለደንበኛ መልስ
 short_by	ያነሰ በ
-tip_not_sale	ትፕ (የሰራተኞች፣ ሽያጭ አይደለም)
+tip_not_sale	ጉርሻ (የሰራተኞች፣ ሽያጭ አይደለም)
 right_settle	ክፍያ ውሰድ
 right_cancel_sent	የተላከ እቃ ሰርዝ
 right_complimentary	ስጦታ (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	ወደ ጠረጴዛ አንቀሳቅስ (ለምሳሌ D5)
 confirm	አረጋግጥ
 menu_search_ph	እቃ ወይም አጭር ኮድ ፈልግ
 customer_paid_ph	ደንበኛ የከፈለው
-tip_ph	ትፕ
+tip_ph	ጉርሻ
 table_area_ph	አካባቢ (ለምሳሌ በቦታው መብላት፣ እሽግ፣ ኤሲ)
 table_range_ph	ብዙ በአንድ ጊዜ፦ D1-D20
 add_these_tables	እነዚህን ጠረጴዛዎች ጨምር

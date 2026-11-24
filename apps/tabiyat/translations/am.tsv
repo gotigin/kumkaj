@@ -755,7 +755,7 @@ category_search_ph	ምድብ — የእርስዎን ይፈልጉ ወይም አ�
 cancel_item_short	ሰርዝ
 return_to_customer	ለደንበኛ መልስ
 short_by	ያነሰ በ
-tip_not_sale	ትፕ (የሰራተኞች፣ ሽያጭ አይደለም)
+tip_not_sale	ጉርሻ (የሰራተኞች፣ ሽያጭ አይደለም)
 right_settle	ክፍያ ውሰድ
 right_allowed	ተፈቅዷል
 right_with_approval	በፈቃድ
@@ -768,7 +768,7 @@ server_host_selected	{host} በመጠቀም ላይ — የማጣመሪያ ኮዱ
 approval_pin_ph	የሥራ አስኪያጅ ፒን (ከተጠየቀ ብቻ)
 menu_search_ph	እቃ ወይም አጭር ኮድ ፈልግ
 customer_paid_ph	ደንበኛ የከፈለው
-tip_ph	ትፕ
+tip_ph	ጉርሻ
 find_server	የሱቁን ሰርቨር ፈልግ
 bill_format	የሂሳብ ቅርጸት
 bill_header_ph	አድራሻ | ስልክ

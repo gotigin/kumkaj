@@ -1172,7 +1172,7 @@ already_cooked	Diġà imsajjar (ħela)
 not_cooked_yet	Għadu mhux imsajjar
 return_to_customer	Ritorn lill-klijent
 short_by	Qasir minn
-tip_not_sale	Tip (tal-persunal, mhux bejgħ)
+tip_not_sale	Baqxix (tal-persunal, mhux bejgħ)
 right_settle	Ħu ħlas
 right_cancel_sent	Ikkanċella oġġett mibgħut
 right_complimentary	Kumplimentari (NC)
@@ -1200,7 +1200,7 @@ line_target_ph	Imxi fuq il-mejda (eż. D5)
 confirm	Ikkonferma
 menu_search_ph	Fittex oġġett jew kodiċi qasir
 customer_paid_ph	Klijent imħallas
-tip_ph	Tip
+tip_ph	Baqxix
 table_area_ph	Żona (eż. Dine In, Parcel, AC)
 table_range_ph	Ħafna f'daqqa: D1-D20
 add_these_tables	Żid dawn it-mwejjed
