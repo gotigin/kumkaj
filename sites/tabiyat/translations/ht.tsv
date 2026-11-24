@@ -1,227 +1,227 @@
 # Haitian Creole — Kreyòl ayisyen (ht). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-the_pharmacy_counter	@@EN@@ the pharmacy counter
-pharmacy_counter	@@EN@@ Pharmacy counter
-tabiyat_the_pharmacy_counter	@@EN@@ TABIYAT · THE PHARMACY COUNTER
-pharmacy_counter_offline_your_books	@@EN@@ Pharmacy counter. Offline. Your books.
-medicines_barcode_and_salt_search	@@EN@@ Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance.
-tap_the_bill_to_walk	@@EN@@ Tap the bill to walk a counter sale
-cash_memo	@@EN@@ Cash memo
-ready	@@EN@@ Ready
-total	@@EN@@ Total
-tap_to_add_the_first	@@EN@@ Tap to add the first medicine
-example_pharmacy_lines_not_a	@@EN@@ Example pharmacy lines, not a live till. Tabiyat follows the same path: sell → settle → day book.
-n_2_counter_sell	@@EN@@ 2 · COUNTER SELL
-medicine_quantity_pay_three_taps	@@EN@@ Medicine, quantity, pay — three taps.
-upi_qr_ready	@@EN@@ UPI QR ready
-example_bill	@@EN@@ Example bill
-fast_counter_billing	@@EN@@ Fast counter billing
-add_the_line_set_the	@@EN@@ Add the line, set the qty, settle — cash, UPI or split.
-gst_tax_invoice_or_cash	@@EN@@ GST Tax invoice or cash memo
-the_bill_lane_you_need	@@EN@@ The bill lane you need for the sale.
-day_book_follows	@@EN@@ Day book follows
-every_tender_lands_in_books	@@EN@@ Every tender lands in Books when you close the sale.
-n_3_barcode_salt	@@EN@@ 3 · BARCODE & SALT
-scan_the_barcode_or_find	@@EN@@ Scan the barcode — or find it by salt.
-search	@@EN@@ Search
-composition_paracetamol_strip_of_10	@@EN@@ Composition: Paracetamol · strip of 10
-salt_amoxicillin	@@EN@@ Salt: amoxicillin
-ranks_barcode_name_and_composition	@@EN@@ Ranks barcode, name and composition together.
-wedge_scanner_or_type_enter	@@EN@@ Wedge scanner or type Enter — the line lands on the bill.
-barcode_first	@@EN@@ Barcode first
-scan_or_paste_the_code	@@EN@@ Scan or paste the code; the catalogue match comes up.
-salt_composition	@@EN@@ Salt / composition
-type_the_salt_when_the	@@EN@@ Type the salt when the brand name is not what the customer said.
-owner_rx_schedule_h_flags	@@EN@@ Owner Rx / Schedule H flags
-reminders_you_set_not_a	@@EN@@ Reminders you set — not a statutory register, not medical advice.
-n_4_batch_expiry	@@EN@@ 4 · BATCH & EXPIRY
-batch_and_expiry_on_your	@@EN@@ Batch and expiry on your books — alerts for the owner.
-buy_batch_a12	@@EN@@ Buy · batch A12
-expires_2027_03_alert_in	@@EN@@ Expires 2027-03 · alert in 7 days
-ors_sachets_batch_b04	@@EN@@ ORS sachets · batch B04
-expires_2026_11_near_expiry	@@EN@@ Expires 2026-11 · near-expiry strip on Books
-shop_bookkeeping_only_not_drugs	@@EN@@ Shop bookkeeping only — not Drugs Act compliance.
-batch_on_buy	@@EN@@ Batch on buy
-record_batch_and_expiry_when	@@EN@@ Record batch and expiry when stock comes in.
-near_expiry_alerts	@@EN@@ Near-expiry alerts
-books_and_sell_can_hint	@@EN@@ Books and Sell can hint before the date passes.
-owner_practice	@@EN@@ Owner practice
-fefo_hints_and_rx_notes	@@EN@@ FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter.
-n_5_khata	@@EN@@ 5 · KHATA
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues in one party book.
-mehta_clinic_customer	@@EN@@ Mehta Clinic · Customer
-due_from_earlier	@@EN@@ Due from earlier
-today_s_sale_due	@@EN@@ + today's sale (Due)
-balance	@@EN@@ Balance
-settle_later_part_cash_part	@@EN@@ Settle later — part cash, part UPI. Supplier AP shares the same Parties screen.
-due_on_the_bill	@@EN@@ Due on the bill
-leave_a_balance_on_khata	@@EN@@ Leave a balance on khata without a separate ledger app.
-supplier_buys_too	@@EN@@ Supplier buys too
-who_you_owe_updates_when	@@EN@@ Who you owe updates when stock arrives.
-auditable	@@EN@@ Auditable
-who_when_and_how_much	@@EN@@ Who, when and how much stays in the day book.
-n_6_internet_down	@@EN@@ 6 · INTERNET DOWN?
-the_internet_drops_the_counter	@@EN@@ The internet drops. The counter keeps selling.
-router_no_internet	@@EN@@ Router: no internet
-main_counter_selling_and_settling	@@EN@@ Main counter: selling and settling
-second_till_joined_on_your	@@EN@@ Second till: joined on your own Wi-Fi
-books_live_on_the_shop	@@EN@@ Books live on the shop devices
-when_the_internet_drops_nothing	@@EN@@ When the internet drops, nothing at the pharmacy counter waits for it.
-one_server_lan_clients	@@EN@@ One Server, LAN Clients
-extra_tills_share_the_same	@@EN@@ Extra tills share the same books over the shop network.
-n_7_free_forever_locally	@@EN@@ 7 · FREE FOREVER LOCALLY
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_per_bill_charge	@@EN@@ No per-bill charge
-no_fee_per_sale_medicine	@@EN@@ No fee per sale, medicine, till or staff PIN on the local install.
-android_windows_linux	@@EN@@ Android, Windows, Linux
-the_same_tabiyat_on_the	@@EN@@ The same Tabiyat on the phone and the desktop till.
-optional_kumkaj_cloud	@@EN@@ Optional Kumkaj Cloud
-yearly_steady_6k_swift_12k	@@EN@@ Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop.
-n_8_start	@@EN@@ 8 · START
-put_tabiyat_on_the_counter	@@EN@@ Put Tabiyat on the counter.
-download_free_or_whatsapp_for	@@EN@@ Download free, or WhatsApp for a walk-through with your pharmacy and city.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_counter_sell	@@EN@@ Counter sell
-chapter_barcode_salt	@@EN@@ Barcode & salt
-chapter_batch_expiry	@@EN@@ Batch & expiry
-chapter_khata	@@EN@@ Khata
-chapter_extra_till	@@EN@@ Extra till
-chapter_offline	@@EN@@ Offline
-chapter_start	@@EN@@ Start
-bill_selling	@@EN@@ Selling
-bill_settle	@@EN@@ Settle
-bill_paid	@@EN@@ Paid
-bill_next_line	@@EN@@ Tap to add the next line
-bill_settle_hint	@@EN@@ Tap to settle — cash or UPI
-bill_upi_paid	@@EN@@ UPI ₹ 162 · paid
-bill_paid_line	@@EN@@ Paid · day book updated
-lan_eyebrow	@@EN@@ 6 · EXTRA TILL
-lan_title	@@EN@@ Another till on the shop Wi-Fi.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Tabiyat
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Tabiyat
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Tabiyat app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Egzanp
+download_free	Telechaje gratis
+whatsapp_for_a_demo	Demonstrasyon sou WhatsApp
+free_on_android_windows_and	Gratis sou Android, Windows ak Linux.
+the_pharmacy_counter	kontwa famasi a
+pharmacy_counter	Kontwa famasi
+tabiyat_the_pharmacy_counter	TABIYAT · KONTWA FAMASI A
+pharmacy_counter_offline_your_books	Kontwa famasi. San entènèt. Liv ou yo.
+medicines_barcode_and_salt_search	Medikaman, rechèch pa kòd ba ak pa eleman aktif, lo ak dat ekspirasyon pou pwòp liv ou — sou aparèy ou. Se mak mèt la sèlman; pa janm fè sanblan respekte Lwa sou Medikaman.
+tap_the_bill_to_walk	Tape sou resi a pou pase yon vant devan kontwa
+cash_memo	Resi kach
+ready	Pare
+total	Total pou peye
+tap_to_add_the_first	Tape pou ajoute premye medikaman an
+example_pharmacy_lines_not_a	Egzanp liy famasi, pa yon vrè kès. Tabiyat swiv menm chemen an: vann → regle → liv jounen.
+n_2_counter_sell	2 · VANT DEVAN KONTWA
+medicine_quantity_pay_three_taps	Medikaman, kantite, peye — twa tap.
+upi_qr_ready	QR UPI pare
+example_bill	Egzanp resi
+fast_counter_billing	Fakti rapid devan kontwa
+add_the_line_set_the	Ajoute liy lan, mete kantite a, regle — kach, UPI oswa separe.
+gst_tax_invoice_or_cash	Fakti taks GST oswa resi kach
+the_bill_lane_you_need	Kalite fakti ou bezwen pou vant lan.
+day_book_follows	Liv jounen an swiv
+every_tender_lands_in_books	Chak peman antre nan Liv lè ou fèmen vant lan.
+n_3_barcode_salt	3 · KÒD BA AK ELEMAN AKTIF
+scan_the_barcode_or_find	Eskane kòd ba a — oswa jwenn li pa eleman aktif.
+search	Chèche
+composition_paracetamol_strip_of_10	Konpozisyon: Paracetamol · plak 10
+salt_amoxicillin	Eleman aktif: amoxicillin
+ranks_barcode_name_and_composition	Li klase kòd ba, non ak konpozisyon ansanm.
+wedge_scanner_or_type_enter	Eskanè klavye oswa peze Enter — liy lan antre sou resi a.
+barcode_first	Kòd ba an premye
+scan_or_paste_the_code	Eskane oswa kole kòd la; sa ki koresponn nan katalòg la parèt.
+salt_composition	Eleman aktif / konpozisyon
+type_the_salt_when_the	Tape eleman aktif la lè non mak la pa sa kliyan an te di.
+owner_rx_schedule_h_flags	Mak mèt la: preskripsyon / Schedule H
+reminders_you_set_not_a	Rapèl ou mete — pa yon rejis legal, pa yon konsèy medikal.
+n_4_batch_expiry	4 · LO AK DAT EKSPIRASYON
+batch_and_expiry_on_your	Lo ak dat ekspirasyon nan liv ou — avètisman pou mèt la.
+buy_batch_a12	Acha · lo A12
+expires_2027_03_alert_in	Ekspire 2027-03 · avètisman nan 7 jou
+ors_sachets_batch_b04	Sachè ORS · lo B04
+expires_2026_11_near_expiry	Ekspire 2026-11 · bann «prèske ekspire» nan Liv
+shop_bookkeeping_only_not_drugs	Kontablite boutik sèlman — pa respè Lwa sou Medikaman.
+batch_on_buy	Lo sou acha
+record_batch_and_expiry_when	Anrejistre lo ak dat ekspirasyon lè stòk antre.
+near_expiry_alerts	Avètisman prèske ekspire
+books_and_sell_can_hint	Liv ak Vann ka avèti anvan dat la pase.
+owner_practice	Abitid mèt la
+fefo_hints_and_rx_notes	Se ou ki pou swiv konsèy FEFO ak nòt preskripsyon yo — Tabiyat anrejistre sa ou antre.
+n_5_khata	5 · KAYE DÈT
+customer_credit_and_supplier_dues	Kredi kliyan ak dèt founisè nan yon sèl liv patnè.
+mehta_clinic_customer	Klinik Mehta · Kliyan
+due_from_earlier	Dèt anvan
+today_s_sale_due	+ vant jodi a (sou kredi)
+balance	Balans
+settle_later_part_cash_part	Regle pita — yon pati kach, yon pati UPI. Sa ou dwe founisè yo nan menm ekran Patnè a.
+due_on_the_bill	Dèt sou resi a
+leave_a_balance_on_khata	Kite yon balans nan kaye dèt la san yon lòt aplikasyon kontablite.
+supplier_buys_too	Acha bò kote founisè yo tou
+who_you_owe_updates_when	Sa ou dwe mete ajou lè stòk rive.
+auditable	Ka verifye
+who_when_and_how_much	Kiyès, kilè ak konbyen rete nan liv jounen an.
+n_6_internet_down	6 · ENTÈNÈT LA TONBE?
+the_internet_drops_the_counter	Entènèt la tonbe. Kontwa a kontinye vann.
+router_no_internet	Routè: pa gen entènèt
+main_counter_selling_and_settling	Kontwa prensipal: ap vann epi ap regle
+second_till_joined_on_your	Dezyèm kès: konekte sou pwòp Wi-Fi ou
+books_live_on_the_shop	Liv yo rete sou aparèy boutik la
+when_the_internet_drops_nothing	Lè entènèt la tonbe, anyen devan kontwa famasi a pa tann li.
+one_server_lan_clients	Yon sèvè, kliyan LAN
+extra_tills_share_the_same	Kès anplis yo pataje menm liv yo sou rezo boutik la.
+n_7_free_forever_locally	7 · GRATIS POU TOUT TAN AN LOKAL
+free_forever_on_your_devices	Gratis pou tout tan sou aparèy ou yo.
+no_per_bill_charge	Pa gen frè pou chak resi
+no_fee_per_sale_medicine	Pa gen frè pou chak vant, medikaman, kès oswa PIN anplwaye sou enstalasyon lokal la.
+android_windows_linux	Android, Windows, Linux
+the_same_tabiyat_on_the	Menm Tabiyat la sou telefòn ak sou kès òdinatè a.
+optional_kumkaj_cloud	Kumkaj Cloud opsyonèl
+yearly_steady_6k_swift_12k	Chak ane Steady ₹6k · Swift ₹12k · Priority ₹24k san taks (oswa devi pèsonalize). Achte sou /shop.
+n_8_start	8 · KÒMANSE
+put_tabiyat_on_the_counter	Mete Tabiyat sou kontwa a.
+download_free_or_whatsapp_for	Telechaje gratis, oswa ekri sou WhatsApp pou yon demonstrasyon selon famasi ou ak vil ou.
+privacy	Konfidansyalite
+terms	Kondisyon
+cancellation	Anilasyon
+cloud_shop	Magazen nyaj
+account	Kont
+chapter_counter_sell	Vant devan kontwa
+chapter_barcode_salt	Kòd ba ak eleman aktif
+chapter_batch_expiry	Lo ak dat ekspirasyon
+chapter_khata	Kaye dèt
+chapter_extra_till	Kès anplis
+chapter_offline	San entènèt
+chapter_start	Kòmanse
+bill_selling	Ap vann
+bill_settle	Regle
+bill_paid	Peye
+bill_next_line	Tape pou ajoute pwochen liy lan
+bill_settle_hint	Tape pou regle — kach oswa UPI
+bill_upi_paid	UPI ₹ 162 · peye
+bill_paid_line	Peye · liv jounen mete ajou
+lan_eyebrow	6 · KÈS ANPLIS
+lan_title	Yon lòt kès sou Wi-Fi boutik la.
+cta_installers_note	Enstalatè yo ap parèt la a depi chak grenn pase enstalasyon sou yon machin pwòp. Annatandan, mande yon demonstrasyon sou WhatsApp.
+cta_whatsapp_soon	Liy demonstrasyon WhatsApp la ap louvri byento. Mesaj ou ap di: «{message}».
+acct_page_title	Kont — Tabiyat
+acct_lede	Yon sèl kont pou sit la ak aplikasyon yo — menm fòm lan kit ou nouvo kit w ap retounen.
+acct_email	Imèl
+acct_name_optional	Non (opsyonèl)
+acct_password	Modpas
+acct_continue	Kontinye
+acct_forgot	Ou bliye modpas ou?
+acct_reset_hint	N ap voye yon lyen pou reyinisyalize pa imèl. Sèvi ak menm adrès ou te enskri a.
+acct_send_reset	Voye lyen reyinisyalizasyon
+acct_cancel	Anile
+acct_or_continue	oswa kontinye ak
+acct_phone	Telefòn
+acct_mobile	Nimewo selilè
+acct_send_sms	Voye kòd SMS
+acct_sms_code	Kòd SMS
+acct_confirm_code	Konfime kòd la
+acct_signed_in	Ou konekte
+acct_signed_in_as	Konekte kòm
+acct_status	Estati
+acct_sign_in_methods	Fason pou konekte
+acct_cloud_username	Non itilizatè nyaj
+acct_plan	Fòfè
+acct_resend_verify	Revoye imèl verifikasyon an
+acct_sign_out	Dekonekte
+acct_cloud_sandbox	Kumkaj Cloud (anviwònman tès)
+acct_current_password	Modpas aktyèl
+acct_email_for_password	Imèl pou konekte ak modpas
+acct_new_password	Nouvo modpas
+acct_confirm_new_password	Konfime nouvo modpas la
+acct_add_way	Ajoute yon lòt fason pou konekte
+acct_link_hint	Konekte plizyè fason ak menm kont lan pou w ka reprann aksè si youn pa mache.
+acct_link_google	Lye Google
+acct_link_microsoft	Lye Microsoft
+acct_link_github	Lye GitHub
+acct_link_phone	Lye telefòn
+acct_send_sms_link	Voye SMS pou lye
+acct_confirm_link_phone	Konfime epi lye telefòn nan
+shop_page_title	Magazen — Tabiyat
+shop_lede	Fòfè nyaj chak ane — taks ajoute lè w ap peye. Tout aplikasyon Tabiyat la sou pwòp aparèy ou rete gratis pou tout tan, san piblisite.
+shop_cart	Panye
+shop_cart_empty_hint	Panye ou vid. Ajoute Steady, Swift oswa Priority.
+shop_checkout	Peye
+shop_clear	Netwaye
+shop_checkout_hint	Peman an konekte w sou Kont anvan, apre sa li kòmanse peman an (simulasyon nan anviwònman tès oswa Paddle lè kle yo mete).
+acct_billing_hint	Fòfè chak ane — pasaj peman an ajoute taks la lè w ap peye. Itilizasyon lokal rete gratis pou tout tan. Fòfè pèsonalize a se sou devi (li ka pi ba pase Steady oswa pi wo pase Priority).
+shop_cloud_plans	Fòfè nyaj
+acct_federated	Koneksyon federe
+acct_err_invalid_email	Antre yon adrès imèl ki valab.
+acct_err_weak_password	Sèvi ak yon modpas ki gen omwen 6 karaktè.
+acct_err_wrong_password	Move modpas.
+acct_err_invalid_credential	Imèl la oswa modpas la pa bon.
+acct_err_popup_closed	Fenèt koneksyon an fèmen.
+acct_err_popup_cancelled	Koneksyon an anile.
+acct_err_unauthorized_domain	Domèn sa a pa otorize pou Firebase Auth.
+acct_err_method_disabled	Fason koneksyon sa a poko aktive.
+acct_err_too_many	Twòp esè. Eseye ankò pita.
+acct_err_phone_format	Sèvi ak yon nimewo telefòn konplè ak kòd peyi a (pa egzanp +91…).
+acct_err_sms_code	Kòd SMS sa a pa bon oswa li ekspire.
+acct_err_no_account	Pa gen kont ak imèl sa a. Kontinye pou kreye youn, oswa sèvi ak yon lòt fason.
+acct_err_recent_login	Pou sekirite, konekte ankò, apre sa eseye chanjman sa a ankò.
+acct_err_credential_in_use	Gen yon lòt kont ki deja sèvi ak fason koneksyon sa a.
+acct_err_email_in_use	Gen yon lòt kont ki deja sèvi ak imèl sa a.
+acct_err_already_linked	Fason sa a deja lye ak kont sa a.
+acct_err_exists_other_method	Gen yon kont ki deja egziste ak imèl sa a ak yon lòt fason koneksyon. Konekte ak fason sa a anvan, apre sa lye sa a nan paj kont ou.
+acct_err_generic	Gen yon bagay ki mal pase.
+acct_method_password	Imèl ak modpas
+acct_pw_hint_change	Chanje modpas ou. W ap konfime ak sa ou genyen kounye a.
+acct_pw_hint_add	Ajoute yon modpas pou w ka konekte ak imèl tou (itil si yon founisè pa disponib).
+acct_pw_change	Chanje modpas
+acct_pw_add	Ajoute modpas
+acct_billing_off	Faktirasyon poko aktive sou API nyaj la.
+acct_billing_no_provider	Pa gen okenn vrè founisè peman ki aktive sou API nyaj la (simulasyon an se lokal sèlman).
+price_quote	Devi
+price_per_year	₹{amount}/ane san taks
+acct_pay_received	Peman resevwa — n ap mete fòfè ou ajou…
+acct_pay_declined	Peman an refize oswa li echwe
+acct_pay_failed_detail	{detail}. Fòfè ou pa chanje.
+acct_checkout_closed	Peman an fèmen — pa gen peman ki fèt. Fòfè ou pa chanje.
+acct_checkout_failed	Peman an echwe
+acct_pay_with	Peye ak {provider}
+acct_plan_until	{plan} · jiska {date}
+acct_unavailable	Pa disponib
+acct_continue_hint	Kontinye ak imèl, yon founisè oswa telefòn.
+acct_signed_in_fallback	(konekte)
+acct_email_verified	Imèl verifye
+acct_email_unverified	Imèl la poko verifye — gade bwat resepsyon ou
+acct_signed_in_phone	Konekte ak telefòn
+acct_none_listed	Poko gen anyen
+acct_signed_in_status	Ou konekte.
+acct_created	Kont lan kreye. Gade imèl ou pou verifye l lè ou kapab.
+acct_reset_sent	Si gen yon kont pou imèl sa a, yon lyen reyinisyalizasyon an wout. Gade bwat resepsyon ou.
+acct_another_method	yon lòt fason
+acct_exists_via	Gen yon kont pou {email} ki deja egziste atravè {method}. Konekte konsa anvan, apre sa lye founisè sa a nan paj kont ou.
+acct_enter_current_pw	Antre modpas aktyèl ou.
+acct_relogin_retry	Dekonekte epi konekte ankò, apre sa eseye ankò.
+acct_pw_mismatch	Nouvo modpas la ak konfimasyon an pa menm.
+acct_pw_updated	Modpas mete ajou.
+acct_enter_email_pw	Antre yon imèl pou konekte ak modpas.
+acct_pw_added	Modpas ajoute. Kounye a ou ka konekte ak imèl tou.
+acct_method_linked	Fason koneksyon lye.
+acct_phone_linked	Telefòn lye ak kont sa a.
+acct_verify_sent	Imèl verifikasyon voye — gade bwat resepsyon ou.
+shop_pricing_soon	Pri yo ap vini byento
+shop_request_quote	Mande yon devi
+shop_add_to_cart	Mete nan panye
+shop_notify_later	Fè m konnen pita
+shop_included	Enkli
+shop_in_cart	{plan} nan panye ou.
+shop_remove	Retire
+shop_cart_is_empty	Panye a vid.
+shop_prices_unpublished	Pri sèvis pwòp tèt ou pou pwodwi sa a poko pibliye. Mande yon devi pèsonalize oswa tounen pita.
+shop_cart_cleared	Panye a netwaye.
+plan_free_title	Gratis pou tout tan
+plan_free_blurb	Tout pwodwi lokal la sou aparèy ou. Pa gen frè nyaj.
+plan_steady_blurb	Nyaj an dirèk · 10 GB · ti debi
+plan_swift_blurb	Nyaj an dirèk · 25 GB · debi mwayen
+plan_priority_blurb	Nyaj an dirèk · 50 GB · pi gwo debi estanda
+plan_custom_title	Pèsonalize
+plan_custom_blurb	Kota ak debi nou dakò sou yo. Devi a ka pi ba pase Steady oswa pi wo pase Priority.

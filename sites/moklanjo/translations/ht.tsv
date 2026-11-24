@@ -1,254 +1,254 @@
 # Haitian Creole — Kreyòl ayisyen (ht). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-example	@@EN@@ Example
-length	@@EN@@ Length
-download_free	@@EN@@ Download free
-whatsapp_for_a_demo	@@EN@@ WhatsApp for a demo
-free_on_android_windows_and	@@EN@@ Free on Android, Windows and Linux.
-courier_operating_system	@@EN@@ courier operating system
-parcel_journey	@@EN@@ PARCEL JOURNEY
-walk_in	@@EN@@ Walk-in
-weigh	@@EN@@ Weigh
-price	@@EN@@ Price
-label	@@EN@@ Label
-hand_over	@@EN@@ Hand over
-track	@@EN@@ Track
-offline	@@EN@@ Offline
-start	@@EN@@ Start
-moklanjo_courier_operating_system	@@EN@@ MOKLANJO · COURIER OPERATING SYSTEM
-book_move_and_settle_every	@@EN@@ Book, move and settle every parcel — one courier OS on your own devices.
-parties_books_cod_labels_awb	@@EN@@ Parties, books, COD, labels, AWB pools, tracking, riders and billing — the full counter-to-settled loop, with or without the internet. Free on your devices.
-the_walk_in_loop	@@EN@@ THE WALK-IN LOOP
-actual_and_volumetric_side_by	@@EN@@ Actual and volumetric, side by side.
-charge	@@EN@@ Charge
-your_rate_card_cash_or	@@EN@@ Your rate card, cash or account.
-next_booking	@@EN@@ Next booking
-one_tap_clears_the_counter	@@EN@@ One tap clears the counter for the next walk-in.
-scroll_the_parcel_journey_rail	@@EN@@ Scroll — the parcel journey rail above tracks where you are in the story.
-n_2_weigh_it_right	@@EN@@ 2 · WEIGH IT RIGHT
-actual_or_volumetric_whichever_is	@@EN@@ Actual or volumetric — whichever is higher, rounded your way.
-try_a_box	@@EN@@ Try a box
-domestic	@@EN@@ Domestic
-international	@@EN@@ International
-breadth	@@EN@@ Breadth
-height	@@EN@@ Height
-weight_on_the_scale	@@EN@@ Weight on the scale
-chargeable_weight	@@EN@@ CHARGEABLE WEIGHT
-the_box_s_size_sets	@@EN@@ The box's size sets the charge.
-higher_of_the_two_rounded	@@EN@@ Higher of the two, rounded up to the next 0.5 kg.
-in_the_app_the_divisor	@@EN@@ In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings.
-n_3_price_it	@@EN@@ 3 · PRICE IT
-your_rate_cards_your_party	@@EN@@ Your rate cards, your party rates — and your margin on every docket.
-rate_card	@@EN@@ Rate card
-zone_service	@@EN@@ Zone · service
-first_0_5_kg	@@EN@@ First 0.5 kg
-each_0_5_kg	@@EN@@ Each 0.5 kg
-local_surface	@@EN@@ Local · Surface
-within_state_express	@@EN@@ Within state · Express
-metro_air	@@EN@@ Metro · Air
-zone_service_weight_slab	@@EN@@ Zone × service × weight slab
-first_slab_and_each_extra	@@EN@@ First slab and each extra slab, per zone and service.
-a_consignor_s_own_card	@@EN@@ A consignor's own card
-regular_senders_get_their_rates	@@EN@@ Regular senders get their rates; the default card covers everyone else.
-margin_at_the_desk	@@EN@@ Margin at the desk
-your_sell_price_against_the	@@EN@@ Your sell price against the carrier's price, on every docket.
-n_4_label_it	@@EN@@ 4 · LABEL IT
-awb_from_your_own_number	@@EN@@ AWB from your own number pools. Label, scan, find.
-number_pools_per_carrier	@@EN@@ Number pools per carrier
-enter_each_carrier_s_start	@@EN@@ Enter each carrier's start–end series once; every booking takes the next number.
-code_128_labels	@@EN@@ Code 128 labels
-the_awb_goes_on_the	@@EN@@ The AWB goes on the box as a barcode and in plain digits.
-scan_to_find	@@EN@@ Scan to find
-scan_a_label_to_open	@@EN@@ Scan a label to open its docket and act on it.
-n_5_hand_over	@@EN@@ 5 · HAND OVER
-hand_it_to_a_carrier	@@EN@@ Hand it to a carrier, or send your own rider. Same system.
-into_a_carrier_bag	@@EN@@ Into a carrier bag
-the_manifest_holds_exactly_the	@@EN@@ The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag.
-onto_your_own_rider_s	@@EN@@ Onto your own rider's run
-pick_the_parcels_print_the	@@EN@@ Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included.
-n_6_track_and_prove	@@EN@@ 6 · TRACK AND PROVE
-every_move_recorded_and_only	@@EN@@ Every move recorded — and only moves that make sense.
-booked	@@EN@@ Booked
-with_carrier	@@EN@@ With carrier
-out_for_delivery	@@EN@@ Out for delivery
-delivered	@@EN@@ Delivered
-booked_with_carrier_out_for	@@EN@@ Booked → With carrier → Out for delivery → Delivered
-failed	@@EN@@ Failed
-reason_out_again_or_return	@@EN@@ → reason → out again, or return to sender.
-impossible_moves_refused	@@EN@@ Impossible moves refused
-delivered_returned_and_cancelled	@@EN@@ Delivered, returned and cancelled are final.
-proof_of_delivery	@@EN@@ Proof of delivery
-a_photo_and_the_receiver	@@EN@@ A photo and the receiver's signature on the docket.
-failed_deliveries	@@EN@@ Failed deliveries
-reasons_attempts_out_again_or	@@EN@@ Reasons, attempts, out again, or back to the sender.
-n_7_money_comes_home	@@EN@@ 7 · MONEY COMES HOME
-cod_you_can_see_expected	@@EN@@ COD you can see: expected, handed in, owed to each consignor.
-rider_cash_end_of_run	@@EN@@ Rider cash, end of run
-rider	@@EN@@ Rider
-expected	@@EN@@ Expected
-handed_in	@@EN@@ Handed in
-a_14_drops	@@EN@@ A · 14 drops
-b_9_drops	@@EN@@ B · 9 drops
-short_200_on_rider_b	@@EN@@ Short ₹ 200 on Rider B — named, not lost in a total.
-cod_register	@@EN@@ COD register
-collected_against_paid_out_per	@@EN@@ Collected against paid out, per consignor, with remittance batches.
-rider_settlement	@@EN@@ Rider settlement
-expected_against_handed_in_and	@@EN@@ Expected against handed in, and the commission slip.
-books_that_close	@@EN@@ Books that close
-day_book_month_bill_per	@@EN@@ Day book, month bill per account, and a GST summary CSV for your accountant.
-n_8_internet_down	@@EN@@ 8 · INTERNET DOWN?
-keep_booking	@@EN@@ Keep booking.
-booking_labels_scanning_cod_and	@@EN@@ Booking, labels, scanning, COD and the books all run on your devices. When the internet drops, nothing at the counter waits for it.
-office_router_no_internet	@@EN@@ Office router: no internet
-desk_still_booking	@@EN@@ Desk: still booking
-second_counter_and_rider_phone	@@EN@@ Second counter and rider phone: joined over the office Wi-Fi
-free_forever_on_your_devices	@@EN@@ Free forever on your devices
-nothing_per_rider_user_or	@@EN@@ Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop.
-n_9_start	@@EN@@ 9 · START
-one_courier_os_your_parcels	@@EN@@ One courier OS. Your parcels. Your books.
-moklanjo_is_a_complete_courier	@@EN@@ Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system	@@EN@@ Concrete business operating system apps
-product	@@EN@@ PRODUCT
-courier_operating_system_under	@@EN@@ Courier operating system under Kumkaj
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-weigh_it_right	@@EN@@ Weigh it right
-price_it	@@EN@@ Price it
-label_it	@@EN@@ Label it
-track_and_prove	@@EN@@ Track and prove
-money_comes_home	@@EN@@ Money comes home
-internet_down	@@EN@@ Internet down
-bead_hand	@@EN@@ Hand
-bead_offline_short	@@EN@@ Offln
-weight_cm	@@EN@@ {n} cm
-weight_kg	@@EN@@ {kg} kg
-weight_working	@@EN@@ {l} × {b} × {h} ÷ {d} = {kg} kg
-weight_on_scale	@@EN@@ On the scale: {kg} kg
-weight_scale_wins	@@EN@@ The weight on the scale sets the charge.
-cta_installers_note	@@EN@@ Installers go up here once each one passes a clean-machine install. Until then, ask for a demo on WhatsApp.
-cta_whatsapp_soon	@@EN@@ The WhatsApp demo line opens soon. Your message will read: “{message}”.
-acct_page_title	@@EN@@ Account — Moklanjo
-acct_lede	@@EN@@ One account for the site and apps — same form whether you’re new or returning.
-acct_email	@@EN@@ Email
-acct_name_optional	@@EN@@ Name (optional)
-acct_password	@@EN@@ Password
-acct_continue	@@EN@@ Continue
-acct_forgot	@@EN@@ Forgot password?
-acct_reset_hint	@@EN@@ We’ll email a reset link. Use the same address you signed up with.
-acct_send_reset	@@EN@@ Send reset link
-acct_cancel	@@EN@@ Cancel
-acct_or_continue	@@EN@@ or continue with
-acct_phone	@@EN@@ Phone
-acct_mobile	@@EN@@ Mobile number
-acct_send_sms	@@EN@@ Send SMS code
-acct_sms_code	@@EN@@ SMS code
-acct_confirm_code	@@EN@@ Confirm code
-acct_signed_in	@@EN@@ Signed in
-acct_signed_in_as	@@EN@@ Signed in as
-acct_status	@@EN@@ Status
-acct_sign_in_methods	@@EN@@ Sign-in methods
-acct_cloud_username	@@EN@@ Cloud username
-acct_plan	@@EN@@ Plan
-acct_resend_verify	@@EN@@ Resend verification email
-acct_sign_out	@@EN@@ Sign out
-acct_cloud_sandbox	@@EN@@ Kumkaj Cloud (sandbox)
-acct_current_password	@@EN@@ Current password
-acct_email_for_password	@@EN@@ Email for password sign-in
-acct_new_password	@@EN@@ New password
-acct_confirm_new_password	@@EN@@ Confirm new password
-acct_add_way	@@EN@@ Add another way to sign in
-acct_link_hint	@@EN@@ Link methods to the same account so you can recover access if one fails.
-acct_link_google	@@EN@@ Link Google
-acct_link_microsoft	@@EN@@ Link Microsoft
-acct_link_github	@@EN@@ Link GitHub
-acct_link_phone	@@EN@@ Link phone
-acct_send_sms_link	@@EN@@ Send SMS to link
-acct_confirm_link_phone	@@EN@@ Confirm & link phone
-shop_page_title	@@EN@@ Shop — Moklanjo
-shop_lede	@@EN@@ Yearly cloud plans — tax added at checkout. The full Moklanjo app on your own devices stays free forever, with no ads.
-shop_cart	@@EN@@ Cart
-shop_cart_empty_hint	@@EN@@ Your cart is empty. Add Steady, Swift, or Priority.
-shop_checkout	@@EN@@ Checkout
-shop_clear	@@EN@@ Clear
-shop_checkout_hint	@@EN@@ Checkout signs you in on Account, then starts payment (sandbox mock or Paddle when keys are set).
-acct_billing_hint	@@EN@@ Yearly plans — tax added at checkout by the gateway. Local use stays free forever. Custom is a quote (may be below Steady or above Priority).
-shop_cloud_plans	@@EN@@ Cloud plans
-acct_federated	@@EN@@ Federated sign-in
-acct_err_invalid_email	@@EN@@ Enter a valid email address.
-acct_err_weak_password	@@EN@@ Use a password with at least 6 characters.
-acct_err_wrong_password	@@EN@@ Wrong password.
-acct_err_invalid_credential	@@EN@@ Email or password is wrong.
-acct_err_popup_closed	@@EN@@ Sign-in window was closed.
-acct_err_popup_cancelled	@@EN@@ Sign-in was cancelled.
-acct_err_unauthorized_domain	@@EN@@ This domain is not authorized for Firebase Auth.
-acct_err_method_disabled	@@EN@@ That sign-in method is not enabled yet.
-acct_err_too_many	@@EN@@ Too many attempts. Try again later.
-acct_err_phone_format	@@EN@@ Use a full phone number with country code (e.g. +91…).
-acct_err_sms_code	@@EN@@ That SMS code is wrong or expired.
-acct_err_no_account	@@EN@@ No account with that email. Continue to create one, or use another method.
-acct_err_recent_login	@@EN@@ For security, sign in again, then retry this change.
-acct_err_credential_in_use	@@EN@@ That sign-in method is already used by another account.
-acct_err_email_in_use	@@EN@@ That email is already used by another account.
-acct_err_already_linked	@@EN@@ That method is already linked to this account.
-acct_err_exists_other_method	@@EN@@ An account already exists with this email using a different sign-in method. Sign in with that method first, then link this one from your account page.
-acct_err_generic	@@EN@@ Something went wrong.
-acct_method_password	@@EN@@ Email & password
-acct_pw_hint_change	@@EN@@ Change your password. You’ll confirm with the current one.
-acct_pw_hint_add	@@EN@@ Add a password so you can also sign in with email (useful if a provider is unavailable).
-acct_pw_change	@@EN@@ Change password
-acct_pw_add	@@EN@@ Add password
-acct_billing_off	@@EN@@ Billing is not enabled on the cloud API yet.
-acct_billing_no_provider	@@EN@@ No real billing provider is enabled on the cloud API (mock-only is local).
-price_quote	@@EN@@ Quote
-price_per_year	@@EN@@ ₹{amount}/yr ex-tax
-acct_pay_received	@@EN@@ Payment received — refreshing your plan…
-acct_pay_declined	@@EN@@ Payment was declined or failed
-acct_pay_failed_detail	@@EN@@ {detail}. Your plan was not changed.
-acct_checkout_closed	@@EN@@ Checkout closed — no payment completed. Your plan is unchanged.
-acct_checkout_failed	@@EN@@ Checkout failed
-acct_pay_with	@@EN@@ Pay with {provider}
-acct_plan_until	@@EN@@ {plan} · until {date}
-acct_unavailable	@@EN@@ Unavailable
-acct_continue_hint	@@EN@@ Continue with email, a provider, or phone.
-acct_signed_in_fallback	@@EN@@ (signed in)
-acct_email_verified	@@EN@@ Email verified
-acct_email_unverified	@@EN@@ Email not verified yet — check your inbox
-acct_signed_in_phone	@@EN@@ Signed in with phone
-acct_none_listed	@@EN@@ None listed yet
-acct_signed_in_status	@@EN@@ You’re signed in.
-acct_created	@@EN@@ Account created. Check your email to verify when you can.
-acct_reset_sent	@@EN@@ If an account exists for that email, a reset link is on its way. Check your inbox.
-acct_another_method	@@EN@@ another method
-acct_exists_via	@@EN@@ An account for {email} already exists via {method}. Sign in that way first, then link this provider from your account page.
-acct_enter_current_pw	@@EN@@ Enter your current password.
-acct_relogin_retry	@@EN@@ Sign out and sign in again, then retry.
-acct_pw_mismatch	@@EN@@ New password and confirmation do not match.
-acct_pw_updated	@@EN@@ Password updated.
-acct_enter_email_pw	@@EN@@ Enter an email to use with password sign-in.
-acct_pw_added	@@EN@@ Password added. You can also sign in with email now.
-acct_method_linked	@@EN@@ Sign-in method linked.
-acct_phone_linked	@@EN@@ Phone linked to this account.
-acct_verify_sent	@@EN@@ Verification email sent — check your inbox.
-shop_pricing_soon	@@EN@@ Pricing coming soon
-shop_request_quote	@@EN@@ Request quote
-shop_add_to_cart	@@EN@@ Add to cart
-shop_notify_later	@@EN@@ Notify me later
-shop_included	@@EN@@ Included
-shop_in_cart	@@EN@@ {plan} is in your cart.
-shop_remove	@@EN@@ Remove
-shop_cart_is_empty	@@EN@@ Cart is empty.
-shop_prices_unpublished	@@EN@@ Self-serve prices are not published for this product yet. Request a Custom quote or check back later.
-shop_cart_cleared	@@EN@@ Cart cleared.
-plan_free_title	@@EN@@ Free forever
-plan_free_blurb	@@EN@@ Full local product on your devices. No cloud fee.
-plan_steady_blurb	@@EN@@ Live cloud · 10 GB · lower bandwidth
-plan_swift_blurb	@@EN@@ Live cloud · 25 GB · mid bandwidth
-plan_priority_blurb	@@EN@@ Live cloud · 50 GB · highest standard bandwidth
-plan_custom_title	@@EN@@ Custom
-plan_custom_blurb	@@EN@@ Agreed quota & bandwidth. Quote may be below Steady or above Priority.
+example	Egzanp
+length	Longè
+download_free	Telechaje gratis
+whatsapp_for_a_demo	Demonstrasyon sou WhatsApp
+free_on_android_windows_and	Gratis sou Android, Windows ak Linux.
+courier_operating_system	sistèm operasyon pou sèvis livrezon
+parcel_journey	VWAYAJ PASÈL LA
+walk_in	Kliyan devan kontwa
+weigh	Peze
+price	Pri
+label	Etikèt
+hand_over	Remèt
+track	Swiv
+offline	San entènèt
+start	Kòmanse
+moklanjo_courier_operating_system	MOKLANJO · SISTÈM OPERASYON POU SÈVIS LIVREZON
+book_move_and_settle_every	Anrejistre, voye epi regle chak pasèl — yon sèl sistèm livrezon sou pwòp aparèy ou.
+parties_books_cod_labels_awb	Patnè, liv, peye lè w resevwa, etikèt, seri AWB, swivi, livrè ak faktirasyon — tout sik la soti nan kontwa rive nan règleman, avèk oswa san entènèt. Gratis sou aparèy ou.
+the_walk_in_loop	SIK DEVAN KONTWA A
+actual_and_volumetric_side_by	Pwa reyèl ak pwa volim, youn bò lòt.
+charge	Frè
+your_rate_card_cash_or	Lis pri ou, kach oswa sou kont.
+next_booking	Pwochen anrejistreman
+one_tap_clears_the_counter	Yon sèl tap libere kontwa a pou pwochen kliyan an.
+scroll_the_parcel_journey_rail	Desann — ba vwayaj pasèl la anlè a montre ki kote ou ye nan istwa a.
+n_2_weigh_it_right	2 · PEZE L BYEN
+actual_or_volumetric_whichever_is	Reyèl oswa volim — sa ki pi wo a, awondi jan ou vle.
+try_a_box	Eseye yon bwat
+domestic	Lokal
+international	Entènasyonal
+breadth	Lajè
+height	Wotè
+weight_on_the_scale	Pwa sou balans lan
+chargeable_weight	PWA POU PEYE
+the_box_s_size_sets	Gwosè bwat la fikse frè a.
+higher_of_the_two_rounded	Pi wo nan de a, awondi monte rive nan pwochen 0,5 kg la.
+in_the_app_the_divisor	Nan aplikasyon an, se biznis la ki fikse divizè a, etap awondi a ak inite ou yo (cm oswa pous, kg oswa lb). Bouton Entènasyonal la chanje ÷6000 pou yon sèl anrejistreman san manyen Paramèt yo.
+n_3_price_it	3 · METE PRI L
+your_rate_cards_your_party	Lis pri ou yo, pri patnè ou yo — ak maj ou sou chak fich ekspedisyon.
+rate_card	Lis pri
+zone_service	Zòn · sèvis
+first_0_5_kg	Premye 0,5 kg
+each_0_5_kg	Chak 0,5 kg
+local_surface	Lokal · Atè
+within_state_express	Nan eta a · Eksprès
+metro_air	Gwo vil · Avyon
+zone_service_weight_slab	Zòn × sèvis × tranch pwa
+first_slab_and_each_extra	Premye tranch lan ak chak tranch anplis, pa zòn ak sèvis.
+a_consignor_s_own_card	Pwòp lis pri yon ekspeditè
+regular_senders_get_their_rates	Ekspeditè regilye yo jwenn pri pa yo; lis pri debaz la kouvri tout lòt moun.
+margin_at_the_desk	Maj devan kontwa
+your_sell_price_against_the	Pri vant ou konpare ak pri transpòtè a, sou chak fich ekspedisyon.
+n_4_label_it	4 · METE ETIKÈT
+awb_from_your_own_number	AWB ki soti nan pwòp seri nimewo ou. Etikèt, eskane, jwenn.
+number_pools_per_carrier	Seri nimewo pou chak transpòtè
+enter_each_carrier_s_start	Antre seri kòmansman–fen chak transpòtè yon sèl fwa; chak anrejistreman pran pwochen nimewo a.
+code_128_labels	Etikèt Code 128
+the_awb_goes_on_the	AWB a ale sou bwat la tankou kòd ba ak an chif nòmal.
+scan_to_find	Eskane pou jwenn
+scan_a_label_to_open	Eskane yon etikèt pou louvri fich ekspedisyon li epi aji sou li.
+n_5_hand_over	5 · REMÈT
+hand_it_to_a_carrier	Remèt li bay yon transpòtè, oswa voye pwòp livrè ou. Menm sistèm lan.
+into_a_carrier_bag	Nan sak transpòtè a
+the_manifest_holds_exactly_the	Manifès la genyen egzakteman pasèl ou chwazi yo — yo tout oswa okenn. Yon pasèl ki anrejistre ak yon lòt transpòtè pa ka glise nan sak sa a.
+onto_your_own_rider_s	Sou wout pwòp livrè ou
+pick_the_parcels_print_the	Chwazi pasèl yo, enprime fèy wout la, epi livrè a travay nan menm aplikasyon an an mòd livrè — ak prèv livrezon ladan l.
+n_6_track_and_prove	6 · SWIV EPI PWOUVE
+every_move_recorded_and_only	Chak mouvman anrejistre — epi sèlman mouvman ki gen sans.
+booked	Anrejistre
+with_carrier	Lakay transpòtè a
+out_for_delivery	An wout pou livrezon
+delivered	Livre
+booked_with_carrier_out_for	Anrejistre → Lakay transpòtè a → An wout pou livrezon → Livre
+failed	Echwe
+reason_out_again_or_return	→ rezon → soti ankò, oswa retounen bay ekspeditè a.
+impossible_moves_refused	Mouvman enposib refize
+delivered_returned_and_cancelled	Livre, retounen ak anile se final.
+proof_of_delivery	Prèv livrezon
+a_photo_and_the_receiver	Yon foto ak siyati moun ki resevwa a sou fich ekspedisyon an.
+failed_deliveries	Livrezon ki echwe
+reasons_attempts_out_again_or	Rezon, esè, soti ankò, oswa retounen bay ekspeditè a.
+n_7_money_comes_home	7 · LAJAN AN RETOUNEN LAKAY
+cod_you_can_see_expected	Peye lè w resevwa ou ka wè: sa yo tann, sa yo remèt, sa yo dwe chak ekspeditè.
+rider_cash_end_of_run	Kach livrè a, nan fen wout la
+rider	Livrè
+expected	Sa yo tann
+handed_in	Remèt
+a_14_drops	A · 14 livrezon
+b_9_drops	B · 9 livrezon
+short_200_on_rider_b	₹ 200 manke lakay livrè B — nonmen, pa pèdi nan yon total.
+cod_register	Rejis peye lè w resevwa
+collected_against_paid_out_per	Sa yo kolekte konpare ak sa yo peye, pa ekspeditè, ak lo transfè.
+rider_settlement	Règleman livrè yo
+expected_against_handed_in_and	Sa yo tann konpare ak sa yo remèt, ak fich komisyon an.
+books_that_close	Liv ki fèmen byen
+day_book_month_bill_per	Liv jounen, fakti mwa a pa kont, ak yon rezime GST an CSV pou kontab ou.
+n_8_internet_down	8 · ENTÈNÈT LA TONBE?
+keep_booking	Kontinye anrejistre.
+booking_labels_scanning_cod_and	Anrejistreman, etikèt, eskanè, peye lè w resevwa ak liv yo tout mache sou aparèy ou. Lè entènèt la tonbe, anyen devan kontwa a pa tann li.
+office_router_no_internet	Routè biwo a: pa gen entènèt
+desk_still_booking	Kontwa: toujou ap anrejistre
+second_counter_and_rider_phone	Dezyèm kontwa ak telefòn livrè a: konekte sou Wi-Fi biwo a
+free_forever_on_your_devices	Gratis pou tout tan sou aparèy ou
+nothing_per_rider_user_or	Anyen pou chak livrè, itilizatè oswa pasèl. Kumkaj Cloud opsyonèl: Steady ₹6k · Swift ₹12k · Priority ₹24k/ane san taks — /shop.
+n_9_start	9 · KÒMANSE
+one_courier_os_your_parcels	Yon sèl sistèm livrezon. Pasèl ou yo. Liv ou yo.
+moklanjo_is_a_complete_courier	Moklanjo se yon sistèm operasyon konplè pou sèvis livrezon anba Kumkaj — Android, Windows ak Linux. Livrè yo sèvi ak menm aplikasyon an an mòd livrè.
+trademark	MAK DEPOZE
+memon_for_find_it_pronounced	An memon sa vle di «jwenn li» · yo pwononse l go-tee-geen
+company	KONPAYI
+brand	MAK
+concrete_business_operating_system	Aplikasyon konkrè sistèm operasyon pou biznis
+product	PWODWI
+courier_operating_system_under	Sistèm operasyon pou sèvis livrezon anba Kumkaj
+privacy	Konfidansyalite
+terms	Kondisyon
+cancellation	Anilasyon
+cloud_shop	Magazen nyaj
+account	Kont
+weigh_it_right	Peze l byen
+price_it	Mete pri l
+label_it	Mete etikèt
+track_and_prove	Swiv epi pwouve
+money_comes_home	Lajan an retounen lakay
+internet_down	Entènèt la tonbe
+bead_hand	Remèt
+bead_offline_short	San nèt
+weight_cm	{n} cm
+weight_kg	{kg} kg
+weight_working	{l} × {b} × {h} ÷ {d} = {kg} kg
+weight_on_scale	Sou balans lan: {kg} kg
+weight_scale_wins	Pwa sou balans lan fikse frè a.
+cta_installers_note	Enstalatè yo ap parèt la a depi chak grenn pase enstalasyon sou yon machin pwòp. Annatandan, mande yon demonstrasyon sou WhatsApp.
+cta_whatsapp_soon	Liy demonstrasyon WhatsApp la ap louvri byento. Mesaj ou ap di: «{message}».
+acct_page_title	Kont — Moklanjo
+acct_lede	Yon sèl kont pou sit la ak aplikasyon yo — menm fòm lan kit ou nouvo kit w ap retounen.
+acct_email	Imèl
+acct_name_optional	Non (opsyonèl)
+acct_password	Modpas
+acct_continue	Kontinye
+acct_forgot	Ou bliye modpas ou?
+acct_reset_hint	N ap voye yon lyen pou reyinisyalize pa imèl. Sèvi ak menm adrès ou te enskri a.
+acct_send_reset	Voye lyen reyinisyalizasyon
+acct_cancel	Anile
+acct_or_continue	oswa kontinye ak
+acct_phone	Telefòn
+acct_mobile	Nimewo selilè
+acct_send_sms	Voye kòd SMS
+acct_sms_code	Kòd SMS
+acct_confirm_code	Konfime kòd la
+acct_signed_in	Ou konekte
+acct_signed_in_as	Konekte kòm
+acct_status	Estati
+acct_sign_in_methods	Fason pou konekte
+acct_cloud_username	Non itilizatè nyaj
+acct_plan	Fòfè
+acct_resend_verify	Revoye imèl verifikasyon an
+acct_sign_out	Dekonekte
+acct_cloud_sandbox	Kumkaj Cloud (anviwònman tès)
+acct_current_password	Modpas aktyèl
+acct_email_for_password	Imèl pou konekte ak modpas
+acct_new_password	Nouvo modpas
+acct_confirm_new_password	Konfime nouvo modpas la
+acct_add_way	Ajoute yon lòt fason pou konekte
+acct_link_hint	Konekte plizyè fason ak menm kont lan pou w ka reprann aksè si youn pa mache.
+acct_link_google	Lye Google
+acct_link_microsoft	Lye Microsoft
+acct_link_github	Lye GitHub
+acct_link_phone	Lye telefòn
+acct_send_sms_link	Voye SMS pou lye
+acct_confirm_link_phone	Konfime epi lye telefòn nan
+shop_page_title	Magazen — Moklanjo
+shop_lede	Fòfè nyaj chak ane — taks ajoute lè w ap peye. Tout aplikasyon Moklanjo a sou pwòp aparèy ou rete gratis pou tout tan, san piblisite.
+shop_cart	Panye
+shop_cart_empty_hint	Panye ou vid. Ajoute Steady, Swift oswa Priority.
+shop_checkout	Peye
+shop_clear	Netwaye
+shop_checkout_hint	Peman an konekte w sou Kont anvan, apre sa li kòmanse peman an (simulasyon nan anviwònman tès oswa Paddle lè kle yo mete).
+acct_billing_hint	Fòfè chak ane — pasaj peman an ajoute taks la lè w ap peye. Itilizasyon lokal rete gratis pou tout tan. Fòfè pèsonalize a se sou devi (li ka pi ba pase Steady oswa pi wo pase Priority).
+shop_cloud_plans	Fòfè nyaj
+acct_federated	Koneksyon federe
+acct_err_invalid_email	Antre yon adrès imèl ki valab.
+acct_err_weak_password	Sèvi ak yon modpas ki gen omwen 6 karaktè.
+acct_err_wrong_password	Move modpas.
+acct_err_invalid_credential	Imèl la oswa modpas la pa bon.
+acct_err_popup_closed	Fenèt koneksyon an fèmen.
+acct_err_popup_cancelled	Koneksyon an anile.
+acct_err_unauthorized_domain	Domèn sa a pa otorize pou Firebase Auth.
+acct_err_method_disabled	Fason koneksyon sa a poko aktive.
+acct_err_too_many	Twòp esè. Eseye ankò pita.
+acct_err_phone_format	Sèvi ak yon nimewo telefòn konplè ak kòd peyi a (pa egzanp +91…).
+acct_err_sms_code	Kòd SMS sa a pa bon oswa li ekspire.
+acct_err_no_account	Pa gen kont ak imèl sa a. Kontinye pou kreye youn, oswa sèvi ak yon lòt fason.
+acct_err_recent_login	Pou sekirite, konekte ankò, apre sa eseye chanjman sa a ankò.
+acct_err_credential_in_use	Gen yon lòt kont ki deja sèvi ak fason koneksyon sa a.
+acct_err_email_in_use	Gen yon lòt kont ki deja sèvi ak imèl sa a.
+acct_err_already_linked	Fason sa a deja lye ak kont sa a.
+acct_err_exists_other_method	Gen yon kont ki deja egziste ak imèl sa a ak yon lòt fason koneksyon. Konekte ak fason sa a anvan, apre sa lye sa a nan paj kont ou.
+acct_err_generic	Gen yon bagay ki mal pase.
+acct_method_password	Imèl ak modpas
+acct_pw_hint_change	Chanje modpas ou. W ap konfime ak sa ou genyen kounye a.
+acct_pw_hint_add	Ajoute yon modpas pou w ka konekte ak imèl tou (itil si yon founisè pa disponib).
+acct_pw_change	Chanje modpas
+acct_pw_add	Ajoute modpas
+acct_billing_off	Faktirasyon poko aktive sou API nyaj la.
+acct_billing_no_provider	Pa gen okenn vrè founisè peman ki aktive sou API nyaj la (simulasyon an se lokal sèlman).
+price_quote	Devi
+price_per_year	₹{amount}/ane san taks
+acct_pay_received	Peman resevwa — n ap mete fòfè ou ajou…
+acct_pay_declined	Peman an refize oswa li echwe
+acct_pay_failed_detail	{detail}. Fòfè ou pa chanje.
+acct_checkout_closed	Peman an fèmen — pa gen peman ki fèt. Fòfè ou pa chanje.
+acct_checkout_failed	Peman an echwe
+acct_pay_with	Peye ak {provider}
+acct_plan_until	{plan} · jiska {date}
+acct_unavailable	Pa disponib
+acct_continue_hint	Kontinye ak imèl, yon founisè oswa telefòn.
+acct_signed_in_fallback	(konekte)
+acct_email_verified	Imèl verifye
+acct_email_unverified	Imèl la poko verifye — gade bwat resepsyon ou
+acct_signed_in_phone	Konekte ak telefòn
+acct_none_listed	Poko gen anyen
+acct_signed_in_status	Ou konekte.
+acct_created	Kont lan kreye. Gade imèl ou pou verifye l lè ou kapab.
+acct_reset_sent	Si gen yon kont pou imèl sa a, yon lyen reyinisyalizasyon an wout. Gade bwat resepsyon ou.
+acct_another_method	yon lòt fason
+acct_exists_via	Gen yon kont pou {email} ki deja egziste atravè {method}. Konekte konsa anvan, apre sa lye founisè sa a nan paj kont ou.
+acct_enter_current_pw	Antre modpas aktyèl ou.
+acct_relogin_retry	Dekonekte epi konekte ankò, apre sa eseye ankò.
+acct_pw_mismatch	Nouvo modpas la ak konfimasyon an pa menm.
+acct_pw_updated	Modpas mete ajou.
+acct_enter_email_pw	Antre yon imèl pou konekte ak modpas.
+acct_pw_added	Modpas ajoute. Kounye a ou ka konekte ak imèl tou.
+acct_method_linked	Fason koneksyon lye.
+acct_phone_linked	Telefòn lye ak kont sa a.
+acct_verify_sent	Imèl verifikasyon voye — gade bwat resepsyon ou.
+shop_pricing_soon	Pri yo ap vini byento
+shop_request_quote	Mande yon devi
+shop_add_to_cart	Mete nan panye
+shop_notify_later	Fè m konnen pita
+shop_included	Enkli
+shop_in_cart	{plan} nan panye ou.
+shop_remove	Retire
+shop_cart_is_empty	Panye a vid.
+shop_prices_unpublished	Pri sèvis pwòp tèt ou pou pwodwi sa a poko pibliye. Mande yon devi pèsonalize oswa tounen pita.
+shop_cart_cleared	Panye a netwaye.
+plan_free_title	Gratis pou tout tan
+plan_free_blurb	Tout pwodwi lokal la sou aparèy ou. Pa gen frè nyaj.
+plan_steady_blurb	Nyaj an dirèk · 10 GB · ti debi
+plan_swift_blurb	Nyaj an dirèk · 25 GB · debi mwayen
+plan_priority_blurb	Nyaj an dirèk · 50 GB · pi gwo debi estanda
+plan_custom_title	Pèsonalize
+plan_custom_blurb	Kota ak debi nou dakò sou yo. Devi a ka pi ba pase Steady oswa pi wo pase Priority.
