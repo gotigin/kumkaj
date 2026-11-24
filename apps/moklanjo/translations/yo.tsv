@@ -11,10 +11,10 @@ board_empty	Kò tíì sí káàdì.
 board_park_nothing	Kò sí ohun láti fi sí ẹ̀gbẹ́ — fi owó iṣẹ́ tàbí àlàyé ìforúkọsílẹ̀ kún un
 board_parked	A ti fi sí «Pátákó» — tábìlì iṣẹ́ ṣófo
 board_draft	Àkọsílẹ̀
-board_booked	fowo si
+board_booked	A ti forúkọ sílẹ̀
 board_filter_all	Gbogbo
 board_filter_draft	Àkọsílẹ̀
-board_filter_booked	fowo si
+board_filter_booked	A ti forúkọ sílẹ̀
 board_cols_fmt	Ọwọ̀n {n}
 board_summary_fmt	Káàdì {total} · àkọsílẹ̀ {drafts} · tí a forúkọ sílẹ̀ {booked}
 board_card_no_charges	Kò tíì sí owó iṣẹ́
@@ -35,7 +35,7 @@ add_expense	Gbigba owo
 bank_book	Iwe akọọlẹ banki
 credit_help	Party id jẹ oto (awọn orukọ le tun). Awọn ipa: Consignor (AR), Olumulo (AP), tabi mejeeji lori id yẹn. Ledgers duro lọtọ; awọn iroyin fihan net.
 party_kind_ph	Aṣa ipa (iyan) — tabi tẹ ni kia kia kan ni ërún loke
-parties_list_heading	Awọn ẹgbẹ ti o fipamọ
+parties_list_heading	Àwọn alájọṣòwò tí a fi pamọ́
 reports_help	Iwe akọọlẹ ọjọ, awọn onigbese & awọn ayanilowo, iwe akọọlẹ banki, awọn owo inawo, èrè & pipadanu.
 reports_today	Iwe akọọlẹ ọjọ (loni)
 reports_month	Èrè & pipadanu (osù)
@@ -63,10 +63,10 @@ remove	Yọ kuro
 empty_catalog	Ko si awọn oṣuwọn sibẹsibẹ.
 counter_sale	Fowo si counter
 total	Lapapọ
-cash	Owo owo
+cash	Owó ọwọ́
 upi	UPI
 card	Kaadi
-credit	Onibara ati awọn olupese
+credit	Àwọn alájọṣòwò
 clear	Ko o
 ready_to_sell	Ṣetan si iwe afọwọkọ
 today_prefix	Loni
@@ -88,9 +88,9 @@ applied	Ti a lo
 note_ph	Akiyesi (aṣayan)
 rounded	YIKA
 split	Pin
-counter	Atako
-parcel	Ile
-order	Ile ounjẹ ibere
+counter	Kántà
+parcel	Ẹrù
+order	Ìbéèrè
 sales	Awọn ifiṣura
 sales_refunds	Awọn ifiṣura & awọn agbapada
 day_close	Ìparí ọjọ́
@@ -133,7 +133,7 @@ inventory	Oja
 inventory_stock	Oja & iṣura
 branches	Awọn ẹka
 branches_org	Awọn ẹka & org
-credit_customers	Awọn ẹgbẹ (awọn onigbese & awọn onigowó)
+credit_customers	Àwọn alájọṣòwò (àwọn onígbèsè & àwọn tí a jẹ ní gbèsè)
 customer_name_ph	Onibara tabi orukọ olupese
 new_customer_ph	Onibara titun tabi orukọ olupese
 item_name_ph	Orukọ oṣuwọn (fun apẹẹrẹ Agbegbe Ilẹ A)
@@ -260,7 +260,7 @@ add_conversion	Fi iyipada kun
 add_item_plain	Fi ohun akojọ aṣayan kun
 add_note	Fi akọsilẹ kun
 add_opening_balance	Ṣafikun iwọntunwọnsi ṣiṣi
-add_rider	Fi ẹlẹṣin kun
+add_rider	Fi olùfijíṣẹ́ kún un
 add_staff	Fi oṣiṣẹ kun
 add_unit	Fi ẹyọkan kun
 add_use_name	Fikun-un / lo orukọ yii
@@ -288,9 +288,9 @@ till_to_bank	Titi → banki
 mark_cleared	Samisi nso
 unmark	Yọ aami
 role_both	Mejeeji
-role_carrier	Olugbeja
+role_carrier	Akẹ́rù
 role_cashier	Owo owo
-role_consignor	Oluranlọwọ
+role_consignor	Olùfiránṣẹ́
 role_manager	Alakoso
 role_supplier	Olupese
 branch_name_sell_ph	Orukọ ẹka lati ta lati
@@ -400,14 +400,14 @@ ndr_customer_unavailable	Ko si
 ndr_door_locked	Titiipa ilẹkun
 ndr_other	Omiiran
 ndr_refused	Kọ
-out_for_delivery	Jade fun ifijiṣẹ
+out_for_delivery	Ó wà lọ́nà ìfijíṣẹ́
 print_drs	Tẹjade DRS
 print_run_sheet	Print run dì
 reattempt	Tun igbiyanju
 rider_cod_handed_ph	COD ti a fi silẹ
 settle_rider_cod	Yanju ẹlẹṣin COD
 mode_desk	Iduro
-mode_rider	Ẹlẹṣin
+mode_rider	Olùfijíṣẹ́
 waiting_office	nduro lati de ọdọ ọfiisi
 capture_signature	Ibuwọlu gbigba
 incoming_manifest	Ifihan ti nwọle
@@ -443,7 +443,7 @@ pay_ap_card	San kaadi AP
 pay_ap_cash	San owo AP
 pay_ap_upi	San AP UPI
 period_bill	Iwe-owo akoko
-period_bill_party	Iwe-owo akoko (ẹgbẹ)
+period_bill_party	Ìwé-owó àkókò (alájọṣòwò)
 period_bill_generate	Ṣẹ̀dá ìwé-owó
 period_bill_generate_print	Ṣẹ̀dá kí o sì tẹ̀ ẹ́ jáde
 booking_bulk_preview	{ok} ti ṣetán · {bad} ní àṣìṣe
@@ -455,12 +455,12 @@ reason_note_ph	Idi / akọsilẹ (egbin, kika,…)
 record_day_close	Fi ọjọ sunmọ
 refresh_from_shop	Sọ lati itaja
 refund	agbapada
-remit_cod	Firanṣẹ COD (ẹgbẹ)
+remit_cod	Fi owó COD ránṣẹ́ (alájọṣòwò)
 remove_selected	Yọ ti o yan kuro
 restore_backup	Mu afẹyinti pada
 rider_name_ph	Orukọ ẹlẹṣin
 rider_phone_ph	Foonu ẹlẹṣin
-riders	Awọn ẹlẹṣin
+riders	Àwọn olùfijíṣẹ́
 riders_own_fleet	Awọn ẹlẹṣin (ọkọ oju-omi kekere tiwọn)
 rollup	Akojọpọ Akojọ
 save_booking_measures	Ṣafipamọ awọn iwọn ifiṣura
@@ -815,14 +815,14 @@ report_day_lens	Fi «Loni» hàn gẹ́gẹ́ bí
 report_day_lens_help	Fún wíwò nìkan — kò yí ìgbà tí «Ìparí ọjọ́» ń bẹ̀rẹ̀ «Loni» lọ́tun padà. «Gẹ́gẹ́ bí ìparí ọjọ́» ń tẹ̀lé ìparí ọjọ́ tó kẹ́yìn; «Gẹ́gẹ́ bí ọ̀gànjọ́ òru» ń gé ní 00:00 ní àkókò ìbílẹ̀.
 report_lens_day_close	Gẹ́gẹ́ bí ìparí ọjọ́
 report_lens_midnight	Gẹ́gẹ́ bí ọ̀gànjọ́ òru
-trk_booked	fowo si
+trk_booked	A ti forúkọ sílẹ̀
 trk_picked_up	Ti gbe
 trk_in_transit	Wa loju ona
-trk_delivered	Ti fi jiṣẹ
-trk_rto	Pada si olufiranṣẹ
+trk_delivered	A ti fi jíṣẹ́
+trk_rto	Ó ń padà sọ́dọ̀ olùfiránṣẹ́
 lane_to_dispatch	Lati firanṣẹ
 lane_with_carrier	Pẹlu ti ngbe
-lane_failed	O kuna
+lane_failed	Ó kùnà
 lane_done_today	Ti ṣe loni
 ops_board_help	Awọn idii nipasẹ ibiti wọn wa ninu iṣẹ oni. Tẹ awọn parcels (tabi ṣayẹwo wọn) lati mu wọn, lẹhinna ṣiṣẹ lori gbogbo awọn ti o yan ni ẹẹkan - ọna kọọkan nfunni ni awọn gbigbe ti o baamu.
 lane_empty	Ko si nkankan nibi ni bayi.
@@ -831,11 +831,11 @@ pick_all	Mu gbogbo rẹ
 bag_for_carrier	Ọwọ si ti ngbe
 send_with_rider	Firanṣẹ pẹlu ẹlẹṣin
 out_again	Jade lẹẹkansi
-return_to_sender	Pada si olufiranṣẹ
+return_to_sender	Dá padà sọ́dọ̀ olùfiránṣẹ́
 runs_bags_heading	Recent nṣiṣẹ & baagi
 print_word	Titẹ sita
 bag_word	Apo ti ngbe
-run_word	Ìrìnàṣẹ olùgbé
+run_word	Ìrìn olùfijíṣẹ́
 parcels_fmt	{n} awọn idii
 parcel_history	Itan
 attempt_fmt	Igbiyanju {n}
@@ -893,14 +893,14 @@ options_moklanjo_ph	Awọn aṣayan (iyan) - Tobi=20, Gift wrap=10
 part_second_way_ph	Apakan nipasẹ ọna keji (aṣayan)
 phone_ph	Foonu
 address_ph	Adirẹsi
-party_custom_fields_heading	Awọn aaye aṣa (ẹgbẹ ti a yan)
+party_custom_fields_heading	Àwọn àyè àdáni (alájọṣòwò tí a yàn)
 party_custom_help	Ṣafikun aami eyikeyi ati iye lori ayẹyẹ yii - WhatsApp, GSTIN, koodu ipa-ọna,…
 party_custom_key_ph	Orukọ aaye (fun apẹẹrẹ WhatsApp)
 party_custom_value_ph	Iye
 party_custom_add	Fi aaye kun
 party_custom_remove	Yọ aaye kuro
 party_custom_empty	Ko si awọn aaye aṣa sibẹsibẹ
-party_custom_pick_first	Yan ẹgbẹ kan lati ṣafikun awọn aaye aṣa
+party_custom_pick_first	Yan alájọṣòwò kan láti fi àwọn àyè àdáni kún un
 place_name_ph	Orukọ ibi yii
 price_ph	Iye owo
 qty_example_ph	Qty (fun apẹẹrẹ 1.5 fun kg)
@@ -929,7 +929,7 @@ book_kind_balance	Iwe iwontunwonsi
 ops_desk_help	Ṣe ọlọjẹ AWB pẹlu ọlọjẹ koodu iwọle USB kan (tabi tẹ sii) → Wa. Lẹhinna siwaju, tẹ aami, tabi gba COD. Awọn aami titẹ koodu 128.
 role_help_consignor	Ipa: Consignor — AR (wọn jẹ wa). Ile-iṣẹ kanna le tun jẹ Olutọju.
 role_help_carrier	Ipa: Ti ngbe - AP (a jẹ wọn ni gbese). Ile-iṣẹ kanna le tun jẹ Oluṣowo.
-role_help_both	Awọn ipa: Consignor + Ti ngbe — ẹgbẹ kan, AR ati AP ledgers, net ni Awọn ijabọ.
+role_help_both	Àwọn ipa: Olùfiránṣẹ́ + Akẹ́rù — alájọṣòwò kan, ìwé AR àti AP, àpapọ̀ wà nínú Awọn ijabọ.
 role_help_supplier	Ipa: Olupese - AP fun awọn rira.
 lane_declared_label	fowo si iroyin
 lane_owner_label	Ifiweranṣẹ owo

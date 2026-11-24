@@ -12,7 +12,7 @@ expiry_alerts	ვადის გასვლის გაფრთხილე�
 expiry_none	არცერთი პარტია არ იწურება მომდევნო 7 დღის განმავლობაში.
 rx_nudge	მფლობელმა მონიშნული Rx / განრიგი H — დაამატეთ შენიშვნა საჭიროების შემთხვევაში.
 unlock	განბლოკვა
-sell	გაყიდე
+sell	გაყიდვა
 buy	შესყიდვა
 books	დღის წიგნი
 books_help	დღევანდელი პოზიცია. გაყიდვა = ფული. ყიდვა = შესყიდვები და ხარჯები. მხარეები = საკრედიტო კლიენტები და მომწოდებლები.
@@ -157,7 +157,7 @@ diag_cleared	დიაგნოსტიკის ჟურნალები �
 sidebar_settings	გვერდითი ზოლი
 sidebar_settings_help	იგივე ხატულები, რაც გვერდით რელსზე. გადაათრიეთ რიგი რიგის შესაცვლელად. გადართეთ ჩვენება ან დამალვა. პარამეტრები და საკეტი ყოველთვის რჩება ზოლზე.
 sidebar_always_on_short	ყოველთვის ჩართ.
-sidebar_menu_items	მენიუს ელემენტები
+sidebar_menu_items	საქონელი
 sidebar_enable_all	ყველას ჩართვა
 sidebar_disable_all	ყველას გამორთვა
 sidebar_order_saved	გვერდითი ზოლის რიგი შენახულია
@@ -786,7 +786,7 @@ bill_line_customer	დამკვეთი
 bill_line_bill_no	ანგარიშის №
 bill_line_time	დრო
 bill_line_cashier	მოლარე
-bill_line_items	მენიუს ელემენტები
+bill_line_items	პოზიციები
 bill_line_total	ჯამი
 bill_line_footer	ქვედა კოლონტიტული
 bill_line_upi	UPI

@@ -1,174 +1,174 @@
 # Lao — ລາວ (lo). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	ປື້ມຕົວແທນ + ໂຕະຈອງ. ອອຟລາຍຟຣີ.
-unlock	ປົດລັອກ
+app_tagline	ປື້ມ​ຕົວແທນ + ໂຕະ​ຈອງ. ອອຟ​ລາຍ​ຟຣີ.
+unlock	ປົດ​ລັອກ
 pin_hint	ເຈົ້າຂອງPINເລີ່ມຕົ້ນ0000
-sell	ການຈອງ
+sell	ການ​ຈອງ
 nav_board	ກະດານ
 board	ກະດານ
-park_draft	ບັນທຶກເປັນສະບັບຮ່າງ
-board_help	ສະບັບຮ່າງທີ່ຍັງບໍ່ໄດ້ສໍາເລັດ (ເກັບໄວ້ຈົນກວ່າທ່ານຈະແຕະ «ຍົກເລີກ» ຫຼື «ເອົາການຈ່າຍເງິນ») ແລະການຂາຍທີ່ຈອງໃນມື້ນີ້. ໃນ «ການຈອງ», ແຕະ «ບັນທຶກເປັນສະບັບຮ່າງ» ໃນກາງວຽກຂອງເຈົ້າ (ມັນຖືກບັນທຶກໄວ້ທີ່ນີ້, ບໍ່ແມ່ນຢູ່ໃນບັນຊີ); ແຕະສະບັບຮ່າງເພື່ອສືບຕໍ່ມັນ.
-board_empty	ບໍ່ມີບັດເທື່ອ.
-board_park_nothing	ບໍ່ມີຫຍັງທີ່ຈະບັນທຶກເປັນສະບັບຮ່າງ — ເພີ່ມຄ່າໃຊ້ຈ່າຍ ຫຼືລາຍລະອຽດການຈອງ
-board_parked	ບັນທຶກໃນ «ກະດານ» — ໂຕະຫວ່າງເປົ່າ
-board_draft	ສະບັບຮ່າງ
-board_booked	ຈອງແລ້ວ
+park_draft	ບັນທຶກ​ເປັນ​ສະບັບ​ຮ່າງ
+board_help	ສະບັບ​ຮ່າງ​ທີ່​ຍັງ​ບໍ່​ໄດ້​ສໍາ​ເລັດ (ເກັບໄວ້​ຈົນກວ່າ​ທ່ານ​ຈະ​ແຕະ «ຍົກເລີກ» ຫຼື «ເອົາ​ການ​ຈ່າຍເງິນ») ແລະ​ການຂາຍ​ທີ່​ຈອງ​ໃນ​ມື້ນີ້. ໃນ «ການ​ຈອງ», ແຕະ «ບັນທຶກ​ເປັນ​ສະບັບ​ຮ່າງ» ໃນ​ກາງ​ວຽກ​ຂອງ​ເຈົ້າ (ມັນ​ຖືກ​ບັນທຶກ​ໄວ້​ທີ່​ນີ້, ບໍ່​ແມ່ນ​ຢູ່ໃນ​ບັນຊີ); ແຕະ​ສະບັບ​ຮ່າງ​ເພື່ອ​ສືບຕໍ່​ມັນ.
+board_empty	ບໍ່ມີ​ບັດ​ເທື່ອ.
+board_park_nothing	ບໍ່ມີ​ຫຍັງ​ທີ່​ຈະ​ບັນທຶກ​ເປັນ​ສະບັບ​ຮ່າງ — ເພີ່ມ​ຄ່າໃຊ້ຈ່າຍ ຫຼື​ລາຍ​ລະອຽດ​ການ​ຈອງ
+board_parked	ບັນທຶກ​ໃນ «ກະດານ» — ໂຕະ​ຫວ່າງເປົ່າ
+board_draft	ສະບັບ​ຮ່າງ
+board_booked	ຈອງ​ແລ້ວ
 board_filter_all	ທັງໝົດ
-board_filter_draft	ສະບັບຮ່າງ
-board_filter_booked	ຈອງແລ້ວ
+board_filter_draft	ສະບັບ​ຮ່າງ
+board_filter_booked	ຈອງ​ແລ້ວ
 board_cols_fmt	{n} ຖັນ
-board_summary_fmt	{total} ບັດ · {drafts} ສະບັບຮ່າງ · ຈອງແລ້ວ {booked}
-board_card_no_charges	ບໍ່ມີການເພີ່ມຄ່າທໍານຽມເທື່ອ
-board_card_charges	ຄ່າທຳນຽມ
-board_card_booked	ການຈອງ
-board_draft_gone	ສະບັບຮ່າງນັ້ນບໍ່ໄດ້ຢູ່ໃນ «ກະດານ» ອີກຕໍ່ໄປ
-board_draft_closed	ສະບັບຮ່າງນັ້ນໄດ້ສຳເລັດ ຫຼືຖືກລຶບໄປແລ້ວ
+board_summary_fmt	{total} ບັດ · {drafts} ສະບັບ​ຮ່າງ · ຈອງ​ແລ້ວ {booked}
+board_card_no_charges	ບໍ່ມີ​ການ​ເພີ່ມ​ຄ່າທໍານຽມ​ເທື່ອ
+board_card_charges	ຄ່າ​ທຳນຽມ
+board_card_booked	ການ​ຈອງ
+board_draft_gone	ສະບັບ​ຮ່າງ​ນັ້ນ​ບໍ່ໄດ້​ຢູ່ໃນ «ກະດານ» ອີກ​ຕໍ່ໄປ
+board_draft_closed	ສະບັບ​ຮ່າງ​ນັ້ນ​ໄດ້​ສຳເລັດ ຫຼື​ຖືກ​ລຶບ​ໄປ​ແລ້ວ
 board_discard	ຍົກເລີກ
-board_discarded	ລຶບຮ່າງແລ້ວ
-buy	ຈ່າຍອອກ
-books	ປຶ້ມມື້
-books_help	ຕຳແໜ່ງຂອງມື້ນີ້. ການຈອງ = ພັດເຊິນເຂົ້າ. ຈ່າຍອອກ = ໃບບິນຜູ້ຂົນສົ່ງ ແລະ ຄ່າໃຊ້ຈ່າຍ. ພາກສ່ວນ = ຜູ້ສົ່ງ ແລະ ຜູ້ຂົນສົ່ງ.
-buy_help	ໃບເກັບເງິນຄ່າໃຊ້ຈ່າຍ ແລະໃບບິນຄ່າຂົນສົ່ງ (ເງິນອອກ). ບັນຊີຢູ່ໃນບັນຊີຂອງພັກ.
+board_discarded	ລຶບ​ຮ່າງ​ແລ້ວ
+buy	ຈ່າຍ​ອອກ
+books	ປຶ້ມ​ມື້
+books_help	ຕຳແໜ່ງ​ຂອງ​ມື້ນີ້. ການ​ຈອງ = ພັດ​ເຊິນເຂົ້າ. ຈ່າຍ​ອອກ = ໃບ​ບິນ​ຜູ້​ຂົນສົ່ງ ແລະ ຄ່າໃຊ້ຈ່າຍ. ພາກສ່ວນ = ຜູ້​ສົ່ງ ແລະ ຜູ້​ຂົນສົ່ງ.
+buy_help	ໃບ​ເກັບ​ເງິນ​ຄ່າໃຊ້ຈ່າຍ ແລະ​ໃບ​ບິນ​ຄ່າ​ຂົນສົ່ງ (ເງິນ​ອອກ). ບັນຊີ​ຢູ່ໃນ​ບັນຊີ​ຂອງ​ພັກ.
 sell_money_in	ຈອງ parcel ໄດ້
-buy_money_out	ຄ່າ​ໃຊ້​ຈ່າຍ / ບັນ​ຊີ​ລາຍ​ການ​ຜູ້​ໃຫ້​ບໍ​ລິ​
-record_purchase	ບັນທຶກການຊື້
-add_expense	ໃບເກັບເງິນຄ່າໃຊ້ຈ່າຍ
-bank_book	ປຶ້ມທະນາຄານ
-credit_help	id ຂອງພັກແມ່ນເປັນເອກະລັກ (ຊື່ອາດຈະຊ້ໍາ). ບົດບາດ: ຜູ້ສົ່ງມອບ (AR), ຜູ້ໃຫ້ບໍລິການ (AP), ຫຼືທັງສອງຢູ່ໃນ ID ນັ້ນ. Ledgers ຢູ່ແຍກຕ່າງຫາກ; ບົດລາຍງານສະແດງໃຫ້ເຫັນສຸດທິ.
-party_kind_ph	ບົດບາດແບບກຳນົດເອງ (ທາງເລືອກ) — ຫຼືແຕະໃສ່ຊິບຂ້າງເທິງ
-parties_list_heading	ພາກສ່ວນທີ່ບັນທຶກໄວ້
-reports_help	ປຶ້ມປະຈຳວັນ, ເຈົ້າໜີ້ & ເຈົ້າໜີ້, ປື້ມບັນຊີທະນາຄານ, ໃບເກັບເງິນລາຍຈ່າຍ, ຜົນກຳໄລ ແລະ ການສູນເສຍ.
-reports_today	ປຶ້ມມື້ (ມື້ນີ້)
-reports_month	ກຳໄລ ແລະ ການສູນເສຍ (ເດືອນ)
-reports_aging	ດີເດັ່ນ / ເດບິດ - ສິນເຊື່ອ
-reports_balance_sheet	ໃບດຸ່ນດ່ຽງ
-reports	ປຶ້ມທະນາຄານ ແລະ ກຳໄລ/ຂາດທຶນ
-refresh	ໂຫຼດຂໍ້ມູນຄືນໃໝ່
+buy_money_out	ຄ່າໃຊ້ຈ່າຍ / ບັນຊີ​ລາຍການ​ຜູ້​ໃຫ້​ບໍ​ລິ
+record_purchase	ບັນທຶກ​ການຊື້
+add_expense	ໃບ​ເກັບ​ເງິນ​ຄ່າໃຊ້ຈ່າຍ
+bank_book	ປຶ້ມ​ທະນາຄານ
+credit_help	id ຂອງ​ພັກ​ແມ່ນ​ເປັນ​ເອກະລັກ (ຊື່​ອາດ​ຈະ​ຊ້ໍາ). ບົດບາດ: ຜູ້​ສົ່ງ​ມອບ (AR), ຜູ້​ໃຫ້​ບໍລິການ (AP), ຫຼື​ທັງສອງ​ຢູ່ໃນ ID ນັ້ນ. Ledgers ຢູ່​ແຍກ​ຕ່າງຫາກ; ບົດ​ລາຍງານ​ສະແດງ​ໃຫ້​ເຫັນ​ສຸດທິ.
+party_kind_ph	ບົດບາດ​ແບບ​ກຳນົດ​ເອງ (ທາງ​ເລືອກ) — ຫຼື​ແຕະ​ໃສ່​ຊິບ​ຂ້າງ​ເທິງ
+parties_list_heading	ພາກສ່ວນ​ທີ່​ບັນທຶກ​ໄວ້
+reports_help	ປຶ້ມ​ປະຈຳວັນ, ເຈົ້າໜີ້ & ເຈົ້າໜີ້, ປື້ມ​ບັນຊີ​ທະນາຄານ, ໃບ​ເກັບ​ເງິນ​ລາຍຈ່າຍ, ຜົນ​ກຳໄລ ແລະ ການ​ສູນເສຍ.
+reports_today	ປຶ້ມ​ມື້ (ມື້ນີ້)
+reports_month	ກຳໄລ ແລະ ການ​ສູນເສຍ (ເດືອນ)
+reports_aging	ດີ​ເດັ່ນ / ເດ​ບິດ - ສິນເຊື່ອ
+reports_balance_sheet	ໃບ​ດຸ່ນ​ດ່ຽງ
+reports	ປຶ້ມ​ທະນາຄານ ແລະ ກຳໄລ/ຂາດ​ທຶນ
+refresh	ໂຫຼດຂໍ້ມູນ​ຄືນ​ໃໝ່
 undo	ຍົກເລີກ
-start_tracking	ເລີ່ມຕິດຕາມ
+start_tracking	ເລີ່ມ​ຕິດຕາມ
 stock_minus	- ຫຸ້ນ
 stock_plus	+ ຫຸ້ນ
-settle_cash	ຊໍາລະເງິນສົດ
-settle_card	ບັດຕົກລົງ
-items	ລາຄາ ແລະການບໍລິການ
+settle_cash	ຊໍາ​ລະ​ເງິນສົດ
+settle_card	ບັດ​ຕົກລົງ
+items	ລາຄາ ແລະ​ການ​ບໍລິການ
 nav_items	ອັດຕາ
 more	ເພີ່ມເຕີມ
-your_items	ອັດຕາຂອງທ່ານ
-items_help	ແຕ່ລະແຖວແມ່ນອັດຕາ (ເຊັ່ນ: Surface Zone A). ຫົວໜ່ວຍປົກກະຕິແມ່ນກິໂລ. ແຕະເພື່ອແກ້ໄຂ.
-add_item	ເພີ່ມອັດຕາ
-new_item	ອັດຕາໃຫມ່
-adding_item	ເພີ່ມອັດຕາໃຫມ່
+your_items	ອັດຕາ​ຂອງ​ທ່ານ
+items_help	ແຕ່ລະ​ແຖວ​ແມ່ນ​ອັດຕາ (ເຊັ່ນ: Surface Zone A). ຫົວໜ່ວຍ​ປົກກະຕິ​ແມ່ນ​ກິໂລ. ແຕະ​ເພື່ອ​ແກ້ໄຂ.
+add_item	ເພີ່ມ​ອັດຕາ
+new_item	ອັດຕາ​ໃຫມ່
+adding_item	ເພີ່ມ​ອັດຕາ​ໃຫມ່
 editing_item	ການແກ້ໄຂ
 save	ບັນທຶກ
-remove	ເອົາອອກ
-empty_catalog	ຍັງບໍ່ມີອັດຕາ.
-counter_sale	ການຈອງໂຕະ
+remove	ເອົາ​ອອກ
+empty_catalog	ຍັງ​ບໍ່ມີ​ອັດຕາ.
+counter_sale	ການ​ຈອງ​ໂຕະ
 total	ທັງໝົດ
 cash	ເງິນສົດ
 upi	UPI
 card	ບັດ
-credit	ລູກຄ້າແລະຜູ້ສະຫນອງ
+credit	ລູກຄ້າ​ແລະ​ຜູ້​ສະຫນອງ
 clear	ຈະແຈ້ງ
-ready_to_sell	ພ້ອມຈອງແລ້ວ
+ready_to_sell	ພ້ອມ​ຈອງ​ແລ້ວ
 today_prefix	ມື້ນີ້
 today_mid	ມື້ນີ້
-owed	ດີເດັ່ນ
+owed	ດີ​ເດັ່ນ
 round_word	ຮອບ
-back	ກັບຄືນໄປບ່ອນ
-sold_out	ບໍ່ສາມາດໃຊ້ໄດ້
-restock	ຈອງຄືນ
-not_tracked	ບໍ່ໄດ້ຕິດຕາມ
-in_stock	ໃນຫຼັກຊັບ
-marked_sold_out	ໝາຍວ່າບໍ່ສາມາດໃຊ້ໄດ້
+back	ກັບຄືນ​ໄປ​ບ່ອນ
+sold_out	ບໍ່​ສາມາດ​ໃຊ້​ໄດ້
+restock	ຈອງ​ຄືນ
+not_tracked	ບໍ່ໄດ້​ຕິດຕາມ
+in_stock	ໃນ​ຫຼັກ​ຊັບ
+marked_sold_out	ໝາຍ​ວ່າ​ບໍ່​ສາມາດ​ໃຊ້​ໄດ້
 add_upper	ເພີ່ມ
 na	ບໍ່ມີ
-qty	ນ້ຳໜັກ/ຈຳນວນ
-unit_at	ໃຫ້ຄະແນນ @
-actual	ຕົວຈິງ
-applied	ນຳໃຊ້ແລ້ວ
-note_ph	ໝາຍເຫດ (ທາງເລືອກ)
+qty	ນ້ຳ​ໜັກ/ຈຳນວນ
+unit_at	ໃຫ້​ຄະແນນ @
+actual	ຕົວ​ຈິງ
+applied	ນຳ​ໃຊ້​ແລ້ວ
+note_ph	ໝາຍເຫດ (ທາງ​ເລືອກ)
 rounded	ຮອບ
 split	ແຍກ
-counter	ເຄົາເຕີ
+counter	ເຄົາ​ເຕີ
 parcel	ພັດສະດຸ
 order	ຄຳສັ່ງ
-sales	ການຈອງ
-sales_refunds	ການຈອງ & ການຄືນເງິນ
-day_close	ປິດມື້
-reports_expenses	ປຶ້ມທະນາຄານ & P&L
-nav_reports	ບົດລາຍງານ
-nav_settings	ການຕັ້ງຄ່າ
+sales	ການ​ຈອງ
+sales_refunds	ການ​ຈອງ & ການ​ຄືນ​ເງິນ
+day_close	ປິດ​ມື້
+reports_expenses	ປຶ້ມ​ທະນາຄານ & P&L
+nav_reports	ບົດ​ລາຍງານ
+nav_settings	ການຕັ້ງ​ຄ່າ
 nav_lock	ລັອກ
-sidebar_settings	ການຕັ້ງຄ່າແຖບດ້ານຂ້າງ
-sidebar_settings_help	ໄອຄອນດຽວກັນກັບທາງລົດໄຟຂ້າງ. ລາກແຖວເພື່ອຈັດຮຽງໃໝ່. ປີ້ນສະວິດເພື່ອສະແດງ ຫຼືເຊື່ອງ. ການຕັ້ງຄ່າ ແລະລັອກຢູ່ໃນແຖບສະເໝີ.
-sidebar_always_on_short	ເປີດສະເໝີ
-sidebar_back_settings	ກັບຄືນໄປບ່ອນ
-sidebar_shown	ສະແດງໃຫ້ເຫັນ
-sidebar_hidden	ເຊື່ອງໄວ້
-sidebar_always_on	ຢູ່ແຖບນັ້ນສະເໝີ
-sidebar_shown_hint	ສະແດງໃຫ້ເຫັນຢູ່ໃນແຖບຂ້າງທາງລົດໄຟ / ລຸ່ມ
-sidebar_hidden_hint	ເຊື່ອງໄວ້ຈາກແຖບ
+sidebar_settings	ການຕັ້ງ​ຄ່າ​ແຖບ​ດ້ານຂ້າງ
+sidebar_settings_help	ໄອ​ຄອນ​ດຽວກັນ​ກັບ​ທາງ​ລົດໄຟ​ຂ້າງ. ລາກ​ແຖວ​ເພື່ອ​ຈັດ​ຮຽງ​ໃໝ່. ປີ້ນ​ສະວິດ​ເພື່ອ​ສະແດງ ຫຼື​ເຊື່ອງ. ການຕັ້ງ​ຄ່າ ແລະ​ລັອກ​ຢູ່ໃນ​ແຖບ​ສະເໝີ.
+sidebar_always_on_short	ເປີດ​ສະເໝີ
+sidebar_back_settings	ກັບຄືນ​ໄປ​ບ່ອນ
+sidebar_shown	ສະແດງ​ໃຫ້​ເຫັນ
+sidebar_hidden	ເຊື່ອງ​ໄວ້
+sidebar_always_on	ຢູ່​ແຖບ​ນັ້ນ​ສະເໝີ
+sidebar_shown_hint	ສະແດງ​ໃຫ້​ເຫັນ​ຢູ່ໃນ​ແຖບ​ຂ້າງ​ທາງ​ລົດໄຟ / ລຸ່ມ
+sidebar_hidden_hint	ເຊື່ອງ​ໄວ້​ຈາກ​ແຖບ
 sidebar_menu_items	ອັດຕາ
-sidebar_enable_all	ເປີດໃຊ້ທັງໝົດ
-sidebar_disable_all	ປິດໃຊ້ງານທັງໝົດ
-sidebar_order_saved	ບັນທຶກຄຳສັ່ງແຖບດ້ານຂ້າງແລ້ວ
-sidebar_visibility_saved	ບັນທຶກການເບິ່ງເຫັນແຖບດ້ານຂ້າງແລ້ວ
+sidebar_enable_all	ເປີດ​ໃຊ້​ທັງໝົດ
+sidebar_disable_all	ປິດ​ໃຊ້ງານ​ທັງໝົດ
+sidebar_order_saved	ບັນທຶກ​ຄຳສັ່ງ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
+sidebar_visibility_saved	ບັນທຶກ​ການ​ເບິ່ງເຫັນ​ແຖບ​ດ້ານຂ້າງ​ແລ້ວ
 amounts_hide	ເຊື່ອງ
 amounts_show	ສະແດງ
-no_sale_yet	ບໍ່ມີການຂາຍເທື່ອ
-favorites	ລາຍການທີ່ມັກ
-favorites_help	ລາຍການທີ່ທ່ານຂາຍເລື້ອຍໆ, ບັນທຶກສໍາລັບການເຂົ້າສູ່ລະບົບຂອງທ່ານ. ເພີ່ມອັນນຶ່ງໃສ່ບັນຊີລາຍການ, ຫຼືສ້າງລາຍຊື່ຂອງເຈົ້າຈາກລາຍການທັງໝົດດ້ານລຸ່ມ.
-your_favorites	ລາຍການທີ່ທ່ານມັກ
-all_items	ລາຍການທັງໝົດ
-no_favorites	ບໍ່ມີລາຍການທີ່ມັກເທື່ອ — ເພີ່ມລາຍການຈາກລາຍການຂ້າງລຸ່ມນີ້.
-add_to_bill	ເພີ່ມໃສ່ໃບບິນ
-added	ເພີ່ມແລ້ວ
-owes_word	ເປັນໜີ້
-selected_word	ເລືອກແລ້ວ
-chip_clear_credit	ຈະແຈ້ງ — ສິນເຊື່ອ ຫຼືເອົາລ່ວງໜ້າ
-chip_missing_customer	ຂາດລູກຄ້າທີ່ເລືອກ — ເລືອກອີກຄັ້ງ
-chip_no_customer	ບໍ່ມີລູກຄ້າເທື່ອ — ພິມຊື່, ຈາກນັ້ນແຕະ ເຄຣດິດ
-credit_summary_fmt	{}ລູກຄ້າ · ເປີດເຄຣດິດ {} · ຈອງລ່ວງໜ້າ {}
+no_sale_yet	ບໍ່ມີ​ການຂາຍ​ເທື່ອ
+favorites	ລາຍການ​ທີ່​ມັກ
+favorites_help	ລາຍການ​ທີ່​ທ່ານ​ຂາຍ​ເລື້ອຍໆ, ບັນ​ທຶກ​ສໍາ​ລັບ​ການເຂົ້າ​ສູ່​ລະບົບ​ຂອງ​ທ່ານ. ເພີ່ມ​ອັນ​ນຶ່ງ​ໃສ່​ບັນຊີ​ລາຍການ, ຫຼື​ສ້າງ​ລາຍຊື່​ຂອງ​ເຈົ້າ​ຈາກ​ລາຍການ​ທັງໝົດ​ດ້ານລຸ່ມ.
+your_favorites	ລາຍການ​ທີ່​ທ່ານ​ມັກ
+all_items	ລາຍການ​ທັງໝົດ
+no_favorites	ບໍ່ມີ​ລາຍການ​ທີ່​ມັກ​ເທື່ອ — ເພີ່ມ​ລາຍການ​ຈາກ​ລາຍການ​ຂ້າງ​ລຸ່ມ​ນີ້.
+add_to_bill	ເພີ່ມ​ໃສ່​ໃບ​ບິນ
+added	ເພີ່ມ​ແລ້ວ
+owes_word	ເປັນ​ໜີ້
+selected_word	ເລືອກ​ແລ້ວ
+chip_clear_credit	ຈະແຈ້ງ — ສິນເຊື່ອ ຫຼື​ເອົາ​ລ່ວງໜ້າ
+chip_missing_customer	ຂາດ​ລູກຄ້າ​ທີ່​ເລືອກ — ເລືອກ​ອີກ​ຄັ້ງ
+chip_no_customer	ບໍ່ມີ​ລູກຄ້າ​ເທື່ອ — ພິມ​ຊື່, ຈາກນັ້ນ​ແຕະ ເຄຣ​ດິດ
+credit_summary_fmt	{}ລູກຄ້າ · ເປີດ​ເຄຣ​ດິດ {} · ຈອງ​ລ່ວງໜ້າ {}
 recent_label	ຫຼ້າສຸດ:
-inventory	ສິນຄ້າຄົງຄັງ
-inventory_stock	ສິນຄ້າຄົງຄັງ & ຫຼັກຊັບ
+inventory	ສິນຄ້າ​ຄົງ​ຄັງ
+inventory_stock	ສິນຄ້າ​ຄົງ​ຄັງ & ຫຼັກ​ຊັບ
 branches	ສາຂາ
 branches_org	ສາຂາ & org
-credit_customers	ພາກສ່ວນ (ລູກໜີ້ ແລະເຈົ້າໜີ້)
-customer_name_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງ
-new_customer_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງໃໝ່
-item_name_ph	ຊື່ໃຫ້ຄະແນນ (ເຊັ່ນ: Surface Zone A)
-item_price_ph	ຕໍ່ກິໂລ / ຝາອັດປາກຂຸມທໍາອິດ
+credit_customers	ພາກສ່ວນ (ລູກໜີ້ ແລະ​ເຈົ້າໜີ້)
+customer_name_ph	ຊື່​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ
+new_customer_ph	ຊື່​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ​ໃໝ່
+item_name_ph	ຊື່​ໃຫ້​ຄະແນນ (ເຊັ່ນ: Surface Zone A)
+item_price_ph	ຕໍ່​ກິໂລ / ຝາ​ອັດ​ປາກ​ຂຸມ​ທໍາ​ອິດ
 start_template	ຜະລິດຕະພັນ
-next_booking	ການຈອງຄັ້ງຕໍ່ໄປ
-destination_ph	ເມືອງ/ເຂດປາຍທາງ
-consignee_ph	ຊື່ຜູ້ຮັບ
-consignee_phone_ph	ໂທລະສັບຮັບ
-consignee_address_ph	ທີ່ຢູ່ຈັດສົ່ງ
-origin_name_ph	ຊື່ຜູ້ສົ່ງ
-origin_phone_ph	ໂທລະສັບຜູ້ສົ່ງ
-origin_address_ph	ໄປຮັບ/ທີ່ຢູ່
-booking_consignor_heading	ຜູ້ສົ່ງສິນຄ້າ (ລູກຄ້າ / ຜູ້ສົ່ງ)
-booking_consignee_heading	ຜູ້ຮັບສົ່ງ (ຜູ້ຮັບ)
-booking_consignor_hint	ເລືອກງານລ້ຽງເພື່ອຕື່ມ, ຫຼືປ່ອຍໃຫ້ຫວ່າງສໍາລັບການຍ່າງເຂົ້າ. ຕ້ອງການສໍາລັບການເອົາເຮືອນແລະ RTO.
-booking_consignee_hint	ຜູ້​ຮັບ​ພາ​ສາ. ປ່ອຍຫວ່າງໄວ້ສໍາລັບການຍ່າງທາງໃນ counter drop-offs.
-weight_kg_ph	ກິໂລຕົວຈິງ
-length_cm_ph	ລິດຊມ
+next_booking	ການ​ຈອງ​ຄັ້ງ​ຕໍ່ໄປ
+destination_ph	ເມືອງ/ເຂດ​ປາຍທາງ
+consignee_ph	ຊື່​ຜູ້ຮັບ
+consignee_phone_ph	ໂທລະສັບ​ຮັບ
+consignee_address_ph	ທີ່ຢູ່​ຈັດ​ສົ່ງ
+origin_name_ph	ຊື່​ຜູ້​ສົ່ງ
+origin_phone_ph	ໂທລະສັບ​ຜູ້​ສົ່ງ
+origin_address_ph	ໄປ​ຮັບ/ທີ່ຢູ່
+booking_consignor_heading	ຜູ້​ສົ່ງ​ສິນຄ້າ (ລູກຄ້າ / ຜູ້​ສົ່ງ)
+booking_consignee_heading	ຜູ້ຮັບ​ສົ່ງ (ຜູ້ຮັບ)
+booking_consignor_hint	ເລືອກ​ງານລ້ຽງ​ເພື່ອ​ຕື່ມ, ຫຼື​ປ່ອຍ​ໃຫ້​ຫວ່າງ​ສໍາ​ລັບ​ການ​ຍ່າງ​ເຂົ້າ. ຕ້ອງ​ການ​ສໍາ​ລັບ​ການ​ເອົາ​ເຮືອນ​ແລະ RTO.
+booking_consignee_hint	ຜູ້ຮັບ​ພາສາ. ປ່ອຍ​ຫວ່າງ​ໄວ້​ສໍາ​ລັບ​ການ​ຍ່າງ​ທາງໃນ counter drop-offs.
+weight_kg_ph	ກິໂລ​ຕົວ​ຈິງ
+length_cm_ph	ລິດ​ຊມ
 breadth_cm_ph	ຂຊມ
 height_cm_ph	ຮຊຊມ
 chargeable_kg	ກລ
 awb_label	AWB
-booking_help	ຜູ້ສົ່ງ + ຜູ້ຮັບ (ຫວ່າງໄດ້) → ຈຸດໝາຍ → ຊັ່ງ → ເລືອກອັດຕາ → ບັນຊີ/ເງິນສົດ → ຈ່າຍ. ລະຫວ່າງເຮັດ: «ບັນທຶກເປັນສະບັບຮ່າງ» (ບັນທຶກໃນ ກະດານ, ບໍ່ເຂົ້າປຶ້ມ) ຈາກນັ້ນຮັບໃຊ້ລູກຄ້າຄົນຕໍ່ໄປ; ແຕະແບບຮ່າງໃນ ກະດານ ເພື່ອສືບຕໍ່. AWB ພິມໃນໃບເສັດ. ການຈອງຕໍ່ໄປລ້າງໂຕະ.
-cart_empty_hint	ໂຕະຫວ່າງເປົ່າ — ຜູ້ຮັບສົ່ງ/ຜູ້ຮັບສົ່ງເປັນທາງເລືອກ, ກຳນົດຈຸດໝາຍປາຍທາງ ແລະ ນ້ຳໜັກ, ແຕະເພີ່ມໃສ່ອັດຕາ, ຈາກນັ້ນຈ່າຍ.
-team	ທີມງານ
-team_pins	ທີມງານ & PINs
-my_pin_settings	ຂອງຂ້ອຍPIN
-settings_hub_help_my_pin	ປ່ຽນການປົດລັອກ PIN ສຳລັບບຸກຄົນທີ່ເຂົ້າສູ່ລະບົບໃນອຸປະກອນນີ້.
-team_self_help	ພຽງ​ແຕ່​ທ່ານ​ສາ​ມາດ​ປ່ຽນ PIN ປົດ​ລັອກ​ຂອງ​ທ່ານ (ແລະ​ລະ​ຫັດ​ຜ່ານ​ການ​ເຂົ້າ​ສູ່​ລະ​ບົບ​ທາງ​ເລືອກ​)​. ຖາມເຈົ້າຂອງຖ້າຫາກວ່າທ່ານຕ້ອງການຫນ້າຈໍຫຼືສິດທິທີ່ແຕກຕ່າງກັນ.
-backup_settings	ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ແລະ​ການ​ຕັ້ງ​ຄ່າ​
-lock_app	ລັອກແອັບ
+booking_help	ຜູ້​ສົ່ງ + ຜູ້ຮັບ (ຫວ່າງ​ໄດ້) → ຈຸດໝາຍ → ຊັ່ງ → ເລືອກ​ອັດຕາ → ບັນຊີ/ເງິນສົດ → ຈ່າຍ. ລະຫວ່າງ​ເຮັດ: «ບັນທຶກ​ເປັນ​ສະບັບ​ຮ່າງ» (ບັນທຶກ​ໃນ ກະດານ, ບໍ່​ເຂົ້າ​ປຶ້ມ) ຈາກນັ້ນ​ຮັບໃຊ້​ລູກຄ້າ​ຄົນ​ຕໍ່ໄປ; ແຕະ​ແບບ​ຮ່າງ​ໃນ ກະດານ ເພື່ອ​ສືບຕໍ່. AWB ພິມ​ໃນ​ໃບ​ເສັດ. ການ​ຈອງ​ຕໍ່ໄປ​ລ້າງ​ໂຕະ.
+cart_empty_hint	ໂຕະ​ຫວ່າງເປົ່າ — ຜູ້ຮັບ​ສົ່ງ/ຜູ້ຮັບ​ສົ່ງ​ເປັນ​ທາງ​ເລືອກ, ກຳນົດ​ຈຸດໝາຍປາຍທາງ ແລະ ນ້ຳ​ໜັກ, ແຕະ​ເພີ່ມ​ໃສ່​ອັດຕາ, ຈາກນັ້ນ​ຈ່າຍ.
+team	ທີມ​ງານ
+team_pins	ທີມ​ງານ & PINs
+my_pin_settings	ຂອງ​ຂ້ອຍPIN
+settings_hub_help_my_pin	ປ່ຽນ​ການ​ປົດ​ລັອກ PIN ສຳລັບ​ບຸກຄົນ​ທີ່​ເຂົ້າສູ່​ລະບົບ​ໃນ​ອຸປະກອນ​ນີ້.
+team_self_help	ພຽງແຕ່​ທ່ານ​ສາມາດ​ປ່ຽນ PIN ປົດ​ລັອກ​ຂອງ​ທ່ານ (ແລະ​ລະຫັດ​ຜ່ານ​ການເຂົ້າ​ສູ່​ລະບົບ​ທາງ​ເລືອກ). ຖາມ​ເຈົ້າຂອງ​ຖ້າຫາກວ່າ​ທ່ານ​ຕ້ອງ​ການຫນ້າ​ຈໍ​ຫຼື​ສິດທິ​ທີ່​ແຕກຕ່າງ​ກັນ.
+backup_settings	ການ​ສໍາ​ຮອງ​ຂໍ້ມູນ​ແລະ​ການຕັ້ງ​ຄ່າ
+lock_app	ລັອກ​ແອັບ
 pick	ເລືອກ
 select	ເລືອກ
-advance	ເງິນລ່ວງໜ້າ
+advance	ເງິນ​ລ່ວງໜ້າ
 owner	ເຈົ້າຂອງ
 staff	ພະນັກງານ
 photo	ຮູບ
@@ -176,765 +176,765 @@ auto	ອັດຕະໂນມັດ
 prev	ກ່ອນໜ້າ
 next	ຕໍ່ໄປ
 ok	ຕົກລົງ
-this_shop	ໂໝດເຊີບເວີ
-extra_till	ໂໝດລູກຄ້າ
+this_shop	ໂໝດ​ເຊີບເວີ
+extra_till	ໂໝດ​ລູກຄ້າ
 off	ປິດ
-server	ໂໝດເຊີບເວີ
-client	ໂໝດລູກຄ້າ
-language_currency	ພາສາ ແລະສະກຸນເງິນ
+server	ໂໝດ​ເຊີບເວີ
+client	ໂໝດ​ລູກຄ້າ
+language_currency	ພາສາ ແລະ​ສະກຸນ​ເງິນ
 language	ພາສາ
-choose_language	ເລືອກພາສາຂອງທ່ານ
-language_setup_hint	ປະຕິບັດຕາມພາສາຂອງອຸປະກອນນີ້, ຫຼືເລືອກເອົາຫນຶ່ງຕົວທ່ານເອງ.
-lang_follow_platform	ພາສາອຸປະກອນ
-lang_pick_user	ເລືອກພາສາ
-lang_platform_now	ພາສາອຸປະກອນດຽວນີ້
-selected_language	ເລືອກແລ້ວ
+choose_language	ເລືອກ​ພາສາ​ຂອງ​ທ່ານ
+language_setup_hint	ປະຕິບັດຕາມ​ພາສາ​ຂອງ​ອຸປະກອນ​ນີ້, ຫຼື​ເລືອກ​ເອົາ​ຫນຶ່ງ​ຕົວ​ທ່ານ​ເອງ.
+lang_follow_platform	ພາສາ​ອຸປະກອນ
+lang_pick_user	ເລືອກ​ພາສາ
+lang_platform_now	ພາສາ​ອຸປະກອນ​ດຽວນີ້
+selected_language	ເລືອກ​ແລ້ວ
 continue	ສືບຕໍ່
-this_device	ອຸປະກອນນີ້
-device_use_q	ອຸປະກອນນີ້ຈະຖືກໃຊ້ແນວໃດ?
-choose_server	ເລືອກເຊີບເວີ
-choose_server_hint	ເປີດເຄື່ອງແມ່ຂ່າຍທີ່ມີຢູ່ແລ້ວ, ຫຼືສ້າງຫນຶ່ງສໍາລັບທຸລະກິດອື່ນ.
-create_new_server	ສ້າງເຄື່ອງແມ່ຂ່າຍໃຫມ່
+this_device	ອຸປະກອນ​ນີ້
+device_use_q	ອຸປະກອນ​ນີ້​ຈະ​ຖືກ​ໃຊ້​ແນວ​ໃດ?
+choose_server	ເລືອກ​ເຊີບເວີ
+choose_server_hint	ເປີດ​ເຄື່ອງ​ແມ່​ຂ່າຍ​ທີ່ມີ​ຢູ່ແລ້ວ, ຫຼື​ສ້າງ​ຫນຶ່ງ​ສໍາ​ລັບ​ທຸລະກິດ​ອື່ນ.
+create_new_server	ສ້າງ​ເຄື່ອງ​ແມ່​ຂ່າຍ​ໃຫມ່
 open_server	ເປີດ
-new_server_name_ph	ຊື່ເຊີບເວີໃຫມ່ (ທາງເລືອກ)
-server_remove_pin_ph	ເຈົ້າຂອງ PIN ເພື່ອເອົາເຊີບເວີອອກ
-only_owner_remove_server	ພຽງແຕ່ເຈົ້າຂອງສາມາດເອົາເຄື່ອງແມ່ຂ່າຍອອກໄດ້
-owner_pin_remove_server	ເຈົ້າຂອງ PIN ຕ້ອງການເພື່ອເອົາເຊີບເວີນີ້ອອກ
-device_setup_help	ເຊີບເວີເກັບປື້ມໄວ້ທີ່ນີ້. ລູກຄ້າຈັບຄູ່ກັບເຊີບເວີ. ຖ້າຍັງບໍ່ມີ Server «ຟື້ນຟູການສໍາຮອງຂໍ້ມູນ» ຈະເປີດປຶ້ມຈາກໄຟລ์ທີ່ທ່ານເລືອກ (ກວດສອບເຫມືອນການກູ້ຄືນໃນ settings)。
-currency	ສະກຸນເງິນ
+new_server_name_ph	ຊື່​ເຊີບເວີ​ໃຫມ່ (ທາງ​ເລືອກ)
+server_remove_pin_ph	ເຈົ້າຂອງ PIN ເພື່ອ​ເອົາ​ເຊີບເວີ​ອອກ
+only_owner_remove_server	ພຽງແຕ່​ເຈົ້າຂອງ​ສາມາດ​ເອົາ​ເຄື່ອງ​ແມ່​ຂ່າຍ​ອອກ​ໄດ້
+owner_pin_remove_server	ເຈົ້າຂອງ PIN ຕ້ອງການ​ເພື່ອ​ເອົາ​ເຊີບເວີນີ້​ອອກ
+device_setup_help	ເຊີບເວີ​ເກັບ​ປື້ມ​ໄວ້​ທີ່​ນີ້. ລູກຄ້າ​ຈັບ​ຄູ່​ກັບ​ເຊີບເວີ. ຖ້າ​ຍັງ​ບໍ່ມີ Server «ຟື້ນຟູ​ການ​ສໍາ​ຮອງ​ຂໍ້ມູນ» ຈະ​ເປີດ​ປຶ້ມ​ຈາກ​ໄຟລ์ທີ່​ທ່ານ​ເລືອກ (ກວດສອບ​ເຫມືອນ​ການ​ກູ້​ຄືນ​ໃນ settings)。
+currency	ສະກຸນ​ເງິນ
 backup	ສຳຮອງ
-settings_sec_diag	ການວິນິດໄສ
-settings_sec_privacy	ຄວາມເປັນສ່ວນຕົວ
-privacy_policy_help	ຄວາມເປັນສ່ວນຕົວ · PRIVACY.md · moklanjo.com/privacy
-dont_use	ຢ່າໃຊ້
-receipt_printers_dd	ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ໃບຮັບເງິນ
-receipt_printers_dd_n	{n} · ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ໃບຮັບເງິນ
-label_printers_dd	ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ປ້າຍ AWB
-label_printers_dd_n	{n} · ເຄື່ອງພິມໃນອຸປະກອນນີ້ · ປ້າຍ AWB
-settings_hub_help	ເປີດຫນຶ່ງພື້ນທີ່ໃນເວລາ - ເລື່ອນຫນ້ອຍລົງ, ທາງເລືອກທີ່ຊັດເຈນກວ່າ.
-settings_sec_devices	ອຸປະກອນອື່ນໆ
-settings_sec_alerts	ແຈ້ງເຕືອນ
-alerts_help	ຂໍ້ຄວາມສະຖານະຢູ່ໃນໜ້າຈໍສຳລັບເຈົ້າດົນປານໃດ (ການເຂົ້າສູ່ລະບົບນີ້).
-snack_secs_ph	ວິນາທີ (3–60, ຄ່າເລີ່ມຕົ້ນ 10)
-snack_secs_save	ປະຢັດເວລາເຕືອນ
-snack_secs_saved	ບັນທຶກເວລາແຈ້ງເຕືອນ — {n} ວິນາທີ
-snack_secs_bad	ໃສ່ວິນາທີເປັນຕົວເລກ (3–60)
+settings_sec_diag	ການ​ວິນິດໄສ
+settings_sec_privacy	ຄວາມເປັນ​ສ່ວນຕົວ
+privacy_policy_help	ຄວາມເປັນ​ສ່ວນຕົວ · PRIVACY.md · moklanjo.com/privacy
+dont_use	ຢ່າ​ໃຊ້
+receipt_printers_dd	ເຄື່ອງ​ພິມ​ໃນ​ອຸປະກອນ​ນີ້ · ໃບຮັບ​ເງິນ
+receipt_printers_dd_n	{n} · ເຄື່ອງ​ພິມ​ໃນ​ອຸປະກອນ​ນີ້ · ໃບຮັບ​ເງິນ
+label_printers_dd	ເຄື່ອງ​ພິມ​ໃນ​ອຸປະກອນ​ນີ້ · ປ້າຍ AWB
+label_printers_dd_n	{n} · ເຄື່ອງ​ພິມ​ໃນ​ອຸປະກອນ​ນີ້ · ປ້າຍ AWB
+settings_hub_help	ເປີດ​ຫນຶ່ງ​ພື້ນທີ່​ໃນ​ເວລາ - ເລື່ອນຫນ້ອຍລົງ, ທາງ​ເລືອກ​ທີ່​ຊັດເຈນ​ກວ່າ.
+settings_sec_devices	ອຸປະ​ກອນ​ອື່ນໆ
+settings_sec_alerts	ແຈ້ງ​ເຕືອນ
+alerts_help	ຂໍ້ຄວາມ​ສະຖານະ​ຢູ່ໃນ​ໜ້າຈໍ​ສຳລັບ​ເຈົ້າ​ດົນ​ປານໃດ (ການເຂົ້າ​ສູ່​ລະບົບ​ນີ້).
+snack_secs_ph	ວິນາທີ (3–60, ຄ່າ​ເລີ່ມຕົ້ນ 10)
+snack_secs_save	ປະຢັດ​ເວລາ​ເຕືອນ
+snack_secs_saved	ບັນທຶກ​ເວລາ​ແຈ້ງ​ເຕືອນ — {n} ວິນາທີ
+snack_secs_bad	ໃສ່​ວິນາທີ​ເປັນ​ຕົວ​ເລກ (3–60)
 cancelled	ຍົກເລີກ
-cancelling	ກຳລັງຍົກເລີກ…
+cancelling	ກຳລັງ​ຍົກເລີກ…
 cancel	ຍົກເລີກ
-opening_client	ກຳລັງເປີດລູກຄ້າ...
-preparing_desk	ກຳລັງກະກຽມໂຕະ...
-opening_server	ກຳລັງເປີດເຊີບເວີ...
-creating_server	ກຳລັງສ້າງເຊີບເວີ...
-setup_restoring	ກຳລັງກູ້ຄືນສຳຮອງ…
-setup_restored	ກູ້ຄືນແລ້ວ — ປົດລ็อกດ້ວຍ PIN ເຈົ້າຂອງຈາກສຳຮອງນັ້ນ.
-diag_privacy_help	ບັນທຶກຢູ່ໃນອຸປະກອນນີ້. ຄວາມລັບ (PIN, ລະຫັດຜ່ານ) ບໍ່ເຄີຍຖືກເກັບໄວ້. ການແບ່ງປັນແພັກເກດອອກຈາກອຸປະກອນຕ້ອງການການອະນຸມັດຢ່າງຈະແຈ້ງຂອງທ່ານໃນແຕ່ລະຄັ້ງ — ບໍ່ເຄີຍຂາຍ ຫຼືມອບໃຫ້ພາກສ່ວນທີສາມ
-diag_level	ລະດັບລາຍລະອຽດ
+opening_client	ກຳລັງ​ເປີດ​ລູກຄ້າ...
+preparing_desk	ກຳລັງ​ກະກຽມ​ໂຕະ...
+opening_server	ກຳລັງ​ເປີດ​ເຊີບເວີ...
+creating_server	ກຳລັງ​ສ້າງ​ເຊີບເວີ...
+setup_restoring	ກຳລັງ​ກູ້​ຄືນ​ສຳຮອງ…
+setup_restored	ກູ້​ຄືນ​ແລ້ວ — ປົດ​ລ็อกດ້ວຍ PIN ເຈົ້າຂອງ​ຈາກ​ສຳຮອງ​ນັ້ນ.
+diag_privacy_help	ບັນທຶກ​ຢູ່ໃນ​ອຸປະກອນ​ນີ້. ຄວາມລັບ (PIN, ລະຫັດ​ຜ່ານ) ບໍ່ເຄີຍ​ຖືກ​ເກັບໄວ້. ການ​ແບ່ງ​ປັນ​ແພັກ​ເກດ​ອອກຈາກ​ອຸປະກອນ​ຕ້ອງການ​ການ​ອະນຸມັດ​ຢ່າງ​ຈະແຈ້ງ​ຂອງ​ທ່ານ​ໃນ​ແຕ່ລະ​ຄັ້ງ — ບໍ່ເຄີຍ​ຂາຍ ຫຼື​ມອບໃຫ້​ພາກສ່ວນ​ທີ​ສາມ
+diag_level	ລະດັບ​ລາຍ​ລະອຽດ
 diag_level_error	ຄວາມຜິດພາດ
-diag_level_warn	ຄຳເຕືອນ
+diag_level_warn	ຄຳ​ເຕືອນ
 diag_level_info	ຂໍ້ມູນ
-diag_level_debug	ດີບັກ
-diag_support_start	ເລີ່ມເຊສຊັນການສະໜັບສະໜູນ 30 ນາທີ
-diag_support_stop	ສິ້ນສຸດກອງປະຊຸມສະຫນັບສະຫນູນ
-diag_support_started	ເປີດກອງປະຊຸມສະໜັບສະໜຸນ — ລາຍລະອຽດດີບັກເປັນເວລາ 30 ນາທີ
-diag_support_ended	ສິ້ນສຸດກອງປະຊຸມສະຫນັບສະຫນູນ
-diag_export_local	ສົ່ງອອກສໍາເນົາທ້ອງຖິ່ນ
-diag_export_local_done	ການວິນິໄສທ້ອງຖິ່ນພ້ອມແລ້ວທີ່ {path} — ເລືອກບ່ອນທີ່ຈະບັນທຶກສຳເນົາ
-diag_approve_send	ອະ​ນຸ​ມັດ​ການ​ແບ່ງ​ປັນ​ອຸ​ປະ​ກອນ​ນີ້​
-diag_send_heading	ແບ່ງ​ປັນ​ອຸ​ປະ​ກອນ​ນີ້​
-diag_send_help	ການອະນຸມັດແມ່ນຊຸດດຽວ, ຈາກນັ້ນໝົດອາຍຸ. ຊົ່ວຄາວ - ໃຊ້ເພື່ອແກ້ໄຂ ຫຼືປັບປຸງຜະລິດຕະພັນເທົ່ານັ້ນ. ບໍ່ໄດ້ແບ່ງປັນກັບພາກສ່ວນທີສາມ. ເຮັດວຽກຢູ່ໃນ Linux, Windows, macOS, ແລະ Android.
-optional_login_heading	ເຂົ້າສູ່ລະບົບທາງເລືອກ
+diag_level_debug	ດີ​ບັກ
+diag_support_start	ເລີ່ມ​ເຊສ​ຊັນ​ການ​ສະໜັບສະໜູນ 30 ນາທີ
+diag_support_stop	ສິ້ນສຸດ​ກອງ​ປະ​ຊຸມ​ສະຫນັບ​ສະຫນູນ
+diag_support_started	ເປີດ​ກອງ​ປະຊຸມ​ສະໜັບ​ສະໜຸນ — ລາຍ​ລະອຽດ​ດີ​ບັກ​ເປັນ​ເວລາ 30 ນາທີ
+diag_support_ended	ສິ້ນສຸດ​ກອງ​ປະ​ຊຸມ​ສະຫນັບ​ສະຫນູນ
+diag_export_local	ສົ່ງ​ອອກ​ສໍາ​ເນົາ​ທ້ອງຖິ່ນ
+diag_export_local_done	ການວິນິໄສ​ທ້ອງຖິ່ນ​ພ້ອມແລ້ວ​ທີ່ {path} — ເລືອກ​ບ່ອນ​ທີ່​ຈະ​ບັນທຶກ​ສຳເນົາ
+diag_approve_send	ອະນຸມັດ​ການແບ່ງປັນ​ອຸປະກອນ​ນີ້
+diag_send_heading	ແບ່ງປັນ​ອຸປະກອນ​ນີ້
+diag_send_help	ການ​ອະນຸມັດ​ແມ່ນ​ຊຸດ​ດຽວ, ຈາກນັ້ນ​ໝົດ​ອາຍຸ. ຊົ່ວຄາວ - ໃຊ້​ເພື່ອ​ແກ້ໄຂ ຫຼື​ປັບປຸງ​ຜະລິດຕະພັນ​ເທົ່ານັ້ນ. ບໍ່ໄດ້​ແບ່ງປັນ​ກັບ​ພາກສ່ວນ​ທີ​ສາມ. ເຮັດວຽກ​ຢູ່ໃນ Linux, Windows, macOS, ແລະ Android.
+optional_login_heading	ເຂົ້າສູ່​ລະບົບ​ທາງ​ເລືອກ
 rights_heading	ສິດທິ
 booking_scope_heading	ພາຍໃນ/ຕ່າງປະເທດ
-diag_send_approved	ການ​ແບ່ງ​ປັນ​ອະ​ນຸ​ມັດ​ສໍາ​ລັບ​ຫນຶ່ງ​ຊຸດ (ຫມົດ​ອາ​ຍຸ​ໃນ​ໄວໆ​ນີ້​)
-diag_export_send	ສ້າງຊຸດການແບ່ງປັນ (ຕ້ອງການການອະນຸມັດ)
-diag_export_send_done	ແບ່ງປັນແພັກເກດພ້ອມທີ່ {path} — ເລືອກບ່ອນທີ່ຈະບັນທຶກ, ຈາກນັ້ນສົ່ງໄປທີ່ Kumkaj ເທົ່ານັ້ນ.
-diag_save_bundle	ບັນທຶກສຳເນົາການວິນິໄສ
-diag_bundle_saved	ບັນທຶກສຳເນົາການວິນິໄສໄວ້ໃນ {path}
-diag_bundle_failed	ບໍ່ສາມາດບັນທຶກສຳເນົາການວິນິໄສໄດ້ — ລອງອີກຄັ້ງ
-diag_clear	ລຶບບັນທຶກການວິນິດໄສ
-diag_cleared	ລຶບບັນທຶກການວິນິໄສແລ້ວ
+diag_send_approved	ການແບ່ງປັນ​ອະນຸ​ມັດ​ສໍາ​ລັບ​ຫນຶ່ງ​ຊຸດ (ຫມົດ​ອາຍຸ​ໃນ​ໄວໆ​ນີ້)
+diag_export_send	ສ້າງ​ຊຸດ​ການແບ່ງປັນ (ຕ້ອງການ​ການ​ອະນຸມັດ)
+diag_export_send_done	ແບ່ງ​ປັນ​ແພັກ​ເກດ​ພ້ອມ​ທີ່ {path} — ເລືອກ​ບ່ອນ​ທີ່​ຈະ​ບັນທຶກ, ຈາກນັ້ນ​ສົ່ງໄປ​ທີ່ Kumkaj ເທົ່ານັ້ນ.
+diag_save_bundle	ບັນທຶກ​ສຳເນົາ​ການວິນິໄສ
+diag_bundle_saved	ບັນທຶກ​ສຳເນົາ​ການວິນິໄສ​ໄວ້​ໃນ {path}
+diag_bundle_failed	ບໍ່​ສາມາດ​ບັນທຶກ​ສຳເນົາ​ການວິນິໄສ​ໄດ້ — ລອງ​ອີກ​ຄັ້ງ
+diag_clear	ລຶບ​ບັນທຶກ​ການ​ວິນິດໄສ
+diag_cleared	ລຶບ​ບັນທຶກ​ການວິນິໄສ​ແລ້ວ
 use	ໃຊ້
-add_branch	ເພີ່ມສາຂາ
-add_conversion	ເພີ່ມການແປງ
-add_item_plain	ເພີ່ມລາຍການ
-add_note	ເພີ່ມບັນທຶກ
-add_opening_balance	ເພີ່ມຍອດເງິນເປີດ
-add_rider	ເພີ່ມຜູ້ຂັບຂີ່
-add_staff	ເພີ່ມພະນັກງານ
-add_unit	ເພີ່ມຫົວໜ່ວຍ
-add_use_name	ເພີ່ມ / ໃຊ້ຊື່ນີ້
-allow_extra_tills	ອະນຸຍາດໃຫ້ tills ເພີ່ມເຕີມ
+add_branch	ເພີ່ມ​ສາຂາ
+add_conversion	ເພີ່ມ​ການ​ແປງ
+add_item_plain	ເພີ່ມ​ລາຍການ
+add_note	ເພີ່ມ​ບັນທຶກ
+add_opening_balance	ເພີ່ມ​ຍອດ​ເງິນ​ເປີດ
+add_rider	ເພີ່ມ​ຜູ້ຂັບຂີ່
+add_staff	ເພີ່ມ​ພະນັກງານ
+add_unit	ເພີ່ມ​ຫົວໜ່ວຍ
+add_use_name	ເພີ່ມ / ໃຊ້​ຊື່​ນີ້
+allow_extra_tills	ອະນຸຍາດ​ໃຫ້ tills ເພີ່ມເຕີມ
 amend	ແກ້ໄຂ
-apply_country_pack	ນຳໃຊ້ຊຸດປະເທດ
-datetime_appearance	ຮູບລັກສະນະວັນທີ & ເວລາ
-datetime_appearance_help	ປື້ມບັນທຶກ RFC3339 ປີທໍາອິດພາຍໃນ. ສິ່ງເຫຼົ່ານີ້ພຽງແຕ່ປ່ຽນວິທີທີ່ວັນທີ ແລະໂມງເບິ່ງຢູ່ໃນໃບຮັບເງິນ, ປ້າຍກຳກັບ, ບົດລາຍງານ ແລະໜ້າຈໍເທົ່ານັ້ນ.
-datetime_example	ຕົວຢ່າງຕອນນີ້: {ex}
-date_order	ຄໍາສັ່ງວັນທີ
+apply_country_pack	ນຳ​ໃຊ້​ຊຸດ​ປະເທດ
+datetime_appearance	ຮູບ​ລັກສະນະ​ວັນທີ & ເວລາ
+datetime_appearance_help	ປື້ມ​ບັນທຶກ RFC3339 ປີ​ທໍາ​ອິດ​ພາຍໃນ. ສິ່ງ​ເຫຼົ່ານີ້​ພຽງແຕ່​ປ່ຽນ​ວິທີ​ທີ່​ວັນທີ ແລະ​ໂມງ​ເບິ່ງ​ຢູ່ໃນ​ໃບຮັບ​ເງິນ, ປ້າຍ​ກຳກັບ, ບົດ​ລາຍງານ ແລະ​ໜ້າຈໍ​ເທົ່ານັ້ນ.
+datetime_example	ຕົວຢ່າງ​ຕອນນີ້: {ex}
+date_order	ຄໍາ​ສັ່ງ​ວັນທີ
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
 time_format	ໂມງ
 time_format_24h	24 ຊົ່ວໂມງ
 time_format_12h	12 ຊົ່ວໂມງ
-attach_bill_photo	ແນບຮູບໃບບິນ
+attach_bill_photo	ແນບ​ຮູບ​ໃບ​ບິນ
 attach_pdf	ແນບ PDF
-attach_photo	ແນບຮູບ
+attach_photo	ແນບ​ຮູບ
 bank	ທະນາຄານ
-bank_in	ທະນາຄານໃນ
-bank_out	ທະນາຄານອອກ
-bank_to_till	ທະ​ນາ​ຄານ → till
+bank_in	ທະນາຄານ​ໃນ
+bank_out	ທະນາຄານ​ອອກ
+bank_to_till	ທະນາຄານ → till
 till_to_bank	ຮອດ → ທະນາຄານ
-mark_cleared	ລຶບລ້າງເຄື່ອງໝາຍ
-unmark	ຍົກເລີກເຄື່ອງໝາຍ
+mark_cleared	ລຶບລ້າງ​ເຄື່ອງໝາຍ
+unmark	ຍົກເລີກ​ເຄື່ອງໝາຍ
 role_both	ທັງສອງ
-role_carrier	ຜູ້ໃຫ້ບໍລິການ
-role_cashier	ພະນັກງານເກັບເງິນ
-role_consignor	ຜູ້ສົ່ງສິນຄ້າ
+role_carrier	ຜູ້​ໃຫ້​ບໍລິການ
+role_cashier	ພະນັກງານ​ເກັບ​ເງິນ
+role_consignor	ຜູ້​ສົ່ງ​ສິນຄ້າ
 role_manager	ຜູ້ຈັດການ
-role_supplier	ຜູ້ສະຫນອງ
-branch_name_sell_ph	ຊື່ສາຂາທີ່ຈະຂາຍຈາກ
-bring_my_book	ເອົາປື້ມຂອງຂ້ອຍມາ
-business_tax_id_ph	ID ພາສີທຸລະກິດ
-card_amount_ph	ຈຳນວນບັດ
-cash_amount_ph	ຈຳນວນເງິນ
+role_supplier	ຜູ້​ສະຫນອງ
+branch_name_sell_ph	ຊື່​ສາຂາ​ທີ່​ຈະ​ຂາຍ​ຈາກ
+bring_my_book	ເອົາ​ປື້ມ​ຂອງ​ຂ້ອຍ​ມາ
+business_tax_id_ph	ID ພາສີ​ທຸລະກິດ
+card_amount_ph	ຈຳນວນ​ບັດ
+cash_amount_ph	ຈຳນວນ​ເງິນ
 upi_amount_ph	UPI ຈຳນວນ
-carrier_cost_ph	ຄ່າຂົນສົ່ງ
-carrier_party_ph	ພັກຜູ້ໃຫ້ບໍລິການ
-choose_icon	ເລືອກໄອຄອນ
-choose_logo	ເລືອກໂລໂກ້
-choose_receipt_stamp	ເລືອກໃບຮັບເງິນ
-choose_payment_qr	ເລືອກ QR ການຈ່າຍເງິນ
-clear_icon	ລຶບໄອຄອນ
-clear_logo	ລຶບໂລໂກ້
-clear_photo	ລຶບລ້າງຮູບ
-clear_stamp	ລ້າງສະແຕມ
-clear_payment_qr	ລຶບລ້າງ QR ການຈ່າຍເງິນ
-print_faces	ພິມໃບໜ້າ (ໃບຮັບເງິນ / ໃບບິນໄລຍະ)
-print_faces_help	ສະແຕມທາງເລືອກ ແລະ QR ການຈ່າຍເງິນຖັດຈາກໂລໂກ້ຂອງທ່ານໃນໃບຮັບເງິນການຈອງ ແລະໃບບິນໄລຍະເວລາ.
-awb_pools_heading	ໝາຍເລກ AWB ຂອງຜູ້ໃຫ້ບໍລິການ
-add_awb_pool	ເພີ່ມສະນຸກເກີ AWB
-awb_pool_carrier_ph	ຊື່ບໍລິສັດຜູ້ໃຫ້ບໍລິການ
-awb_pool_start_ph	ເລີ່ມບໍ່.
-awb_pool_end_ph	ສິ້ນສຸດບໍ່ມີ.
-awb_pool_prefix_ph	ຄໍານໍາຫນ້າ (ທາງເລືອກ)
-awb_pool_label_ph	ປ້າຍກຳກັບ (ເລືອກໄດ້)
-pieces_ph	ສິ້ນ (ເປົ່າ = 1) — ຂະຫຍາຍສໍາລັບສິນຄ້າ / ຫຼາຍສິ້ນ
-bulk_awbs_ph	Bulk AWBs — ວາງຫຼາຍໆອັນ (ແຖວໃໝ່ ຫຼືເຄື່ອງໝາຍຈຸດ) ສຳລັບການເລື່ອນສະຖານະໜຶ່ງ
-tds_cut_ph	ຕັດ TDS (ທາງເລືອກ)
-discount_ph	ສ່ວນຫຼຸດ (ທາງເລືອກ)
-cheque_no_ph	ກວດ​ສອບ​ຈໍາ​ນວນ (ທາງ​ເລືອກ​ອື່ນ​)
-bill_reminder_chase	ບັນ​ຊີ​ລາຍ​ຊື່​ການ​ໄລ່​ຕາມ​ການ​ແຈ້ງ​ເຕືອນ​
-month_mix_report	ບົດ​ລາຍ​ງານ​ປະ​ສົມ​ເດືອນ​
-copy_month_gst_csv	ສຳເນົາເດືອນ GST CSV
-domestic	ພາຍໃນປະເທດ
+carrier_cost_ph	ຄ່າ​ຂົນສົ່ງ
+carrier_party_ph	ພັກ​ຜູ້​ໃຫ້​ບໍລິການ
+choose_icon	ເລືອກ​ໄອ​ຄອນ
+choose_logo	ເລືອກ​ໂລ​ໂກ້
+choose_receipt_stamp	ເລືອກ​ໃບຮັບ​ເງິນ
+choose_payment_qr	ເລືອກ QR ການ​ຈ່າຍເງິນ
+clear_icon	ລຶບ​ໄອ​ຄອນ
+clear_logo	ລຶບ​ໂລ​ໂກ້
+clear_photo	ລຶບລ້າງ​ຮູບ
+clear_stamp	ລ້າງ​ສະແຕມ
+clear_payment_qr	ລຶບລ້າງ QR ການ​ຈ່າຍເງິນ
+print_faces	ພິມ​ໃບໜ້າ (ໃບຮັບ​ເງິນ / ໃບ​ບິນ​ໄລຍະ)
+print_faces_help	ສະແຕມ​ທາງ​ເລືອກ ແລະ QR ການ​ຈ່າຍເງິນ​ຖັດ​ຈາກ​ໂລ​ໂກ້​ຂອງ​ທ່ານ​ໃນ​ໃບຮັບ​ເງິນ​ການ​ຈອງ ແລະ​ໃບ​ບິນ​ໄລຍະ​ເວລາ.
+awb_pools_heading	ໝາຍ​ເລກ AWB ຂອງ​ຜູ້​ໃຫ້​ບໍລິການ
+add_awb_pool	ເພີ່ມ​ສະນຸກເກີ AWB
+awb_pool_carrier_ph	ຊື່​ບໍລິສັດ​ຜູ້​ໃຫ້​ບໍລິການ
+awb_pool_start_ph	ເລີ່ມ​ບໍ່.
+awb_pool_end_ph	ສິ້ນສຸດ​ບໍ່ມີ.
+awb_pool_prefix_ph	ຄໍາ​ນໍາຫ​ນ້າ (ທາງ​ເລືອກ)
+awb_pool_label_ph	ປ້າຍ​ກຳກັບ (ເລືອກ​ໄດ້)
+pieces_ph	ສິ້ນ (ເປົ່າ = 1) — ຂະຫຍາຍ​ສໍາ​ລັບ​ສິນຄ້າ / ຫຼາຍ​ສິ້ນ
+bulk_awbs_ph	Bulk AWBs — ວາງ​ຫຼາຍໆ​ອັນ (ແຖວ​ໃໝ່ ຫຼື​ເຄື່ອງໝາຍ​ຈຸດ) ສຳລັບ​ການ​ເລື່ອນ​ສະຖານະ​ໜຶ່ງ
+tds_cut_ph	ຕັດ TDS (ທາງ​ເລືອກ)
+discount_ph	ສ່ວນ​ຫຼຸດ (ທາງ​ເລືອກ)
+cheque_no_ph	ກວດ​ສອບ​ຈໍາ​ນວນ (ທາງ​ເລືອກ​ອື່ນ)
+bill_reminder_chase	ບັນຊີ​ລາຍຊື່​ການໄລ່ຕາມ​ການ​ແຈ້ງ​ເຕືອນ
+month_mix_report	ບົດ​ລາຍງານ​ປະສົມ​ເດືອນ
+copy_month_gst_csv	ສຳເນົາ​ເດືອນ GST CSV
+domestic	ພາຍໃນ​ປະເທດ
 international	ສາກົນ
-pick_logo	ເລືອກໂລໂກ້
-booking_scope_hint_domestic	Volumetric ÷5000 (ພາຍໃນ) — ແຕະ International ສໍາລັບອາກາດ ÷6000
-booking_scope_hint_intl	ປະລິມານ ÷6000 (ອາກາດສາກົນ) — ແຕະ ພາຍໃນປະເທດສຳລັບຮ້ານຄ້າ ÷5000
+pick_logo	ເລືອກ​ໂລ​ໂກ້
+booking_scope_hint_domestic	Volumetric ÷5000 (ພາຍໃນ) — ແຕະ International ສໍາ​ລັບ​ອາກາດ ÷6000
+booking_scope_hint_intl	ປະລິມານ ÷6000 (ອາກາດ​ສາກົນ) — ແຕະ ພາຍໃນ​ປະເທດ​ສຳລັບ​ຮ້ານ​ຄ້າ ÷5000
 cod_register	ລົງທະບຽນ COD
 collect_cod	ເກັບກຳ COD (AWB)
-consignments_dispatch	ການຂົນສົ່ງ & ການຈັດສົ່ງ
-consignor_party_ph	ນາມສະກຸນ/ຊື່ຝ່າຍ
-copy_day_book_csv	ສຳເນົາປຶ້ມມື້ CSV
-copy_day_close	ປິດມື້
-copy_items_csv	ສຳເນົາລາຍການ CSV
-copy_outstanding_csv	ສຳເນົາຄ້າງໄວ້ CSV
-copy_parties_csv	ຄັດລອກລູກຄ້າແລະຜູ້ສະຫນອງ CSV
-copy_party_ledger_csv	ສຳເນົາບັນຊີລາຍການລູກຄ້າ CSV
-copy_receipt	ສຳເນົາໃບຮັບເງິນ
-copy_report	ສຳເນົາບົດລາຍງານ
-counted_cash_ph	ນັບເງິນສົດໃນລິ້ນຊັກ
-close_shift_print	ປິດ shift ແລະພິມ slip
-shift_handover	ການໂອນຍ້າຍ
-shift_counted_ph	ເງິນສົດນັບຢູ່ໃນການມອບ
-shift_since	ການປ່ຽນແປງນີ້ນັບຕັ້ງແຕ່
-expected_in_drawer	ຄາດວ່າຈະຢູ່ໃນລິ້ນຊັກ
-lock_books_through_month	ລັອກບັນຊີເຖິງທ້າຍເດືອນ
+consignments_dispatch	ການ​ຂົນສົ່ງ & ການ​ຈັດ​ສົ່ງ
+consignor_party_ph	ນາມສະກຸນ/ຊື່​ຝ່າຍ
+copy_day_book_csv	ສຳເນົາ​ປຶ້ມ​ມື້ CSV
+copy_day_close	ປິດ​ມື້
+copy_items_csv	ສຳເນົາ​ລາຍການ CSV
+copy_outstanding_csv	ສຳເນົາ​ຄ້າງ​ໄວ້ CSV
+copy_parties_csv	ຄັດລອກ​ລູກຄ້າ​ແລະ​ຜູ້​ສະຫນອງ CSV
+copy_party_ledger_csv	ສຳເນົາ​ບັນຊີ​ລາຍການ​ລູກຄ້າ CSV
+copy_receipt	ສຳເນົາ​ໃບຮັບ​ເງິນ
+copy_report	ສຳເນົາ​ບົດ​ລາຍງານ
+counted_cash_ph	ນັບ​ເງິນສົດ​ໃນ​ລິ້ນ​ຊັກ
+close_shift_print	ປິດ shift ແລະ​ພິມ slip
+shift_handover	ການ​ໂອນ​ຍ້າຍ
+shift_counted_ph	ເງິນສົດ​ນັບ​ຢູ່ໃນ​ການມອບ
+shift_since	ການປ່ຽນແປງ​ນີ້​ນັບ​ຕັ້ງແຕ່
+expected_in_drawer	ຄາດວ່າ​ຈະ​ຢູ່​ໃນ​ລິ້ນ​ຊັກ
+lock_books_through_month	ລັອກ​ບັນຊີ​ເຖິງ​ທ້າຍ​ເດືອນ
 books_lock_month_ph	YYYY-MM
-lock_books_month_btn	ລັອກເຖິງທ້າຍເດືອນນີ້
-books_locked_none	ບໍ່ມີເດືອນໃດຖືກລັອກເທື່ອ
-books_locked_through	ບັນຊີຖືກລັອກຈົນຮອດ
-counter_agency_ph	ຊື່ຕົວແທນ / ຕົວແທນ (ທາງເລືອກ)
-create_backup	ສ້າງສໍາຮອງຂໍ້ມູນ
-day_close_summary	ສະຫຼຸບມື້ປິດ
-delete_party	ລຶບລູກຄ້າ ຫຼືຜູ້ສະໜອງທີ່ເລືອກ
-dispatch_to_rider	ຈອງການຈັດສົ່ງ → ຜູ້ຂັບຂີ່
-docket_charge_ph	ຄ່າບໍລິການ Docket
-declared_value_ph	ມູນຄ່າປະກາດ
+lock_books_month_btn	ລັອກ​ເຖິງ​ທ້າຍ​ເດືອນ​ນີ້
+books_locked_none	ບໍ່ມີ​ເດືອນ​ໃດ​ຖືກ​ລັອກ​ເທື່ອ
+books_locked_through	ບັນ​ຊີ​ຖືກ​ລັອກ​ຈົນຮອດ
+counter_agency_ph	ຊື່​ຕົວແທນ / ຕົວແທນ (ທາງ​ເລືອກ)
+create_backup	ສ້າງ​ສໍາ​ຮອງ​ຂໍ້ມູນ
+day_close_summary	ສະຫຼຸບ​ມື້​ປິດ
+delete_party	ລຶບ​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ​ທີ່​ເລືອກ
+dispatch_to_rider	ຈອງ​ການ​ຈັດ​ສົ່ງ → ຜູ້ຂັບຂີ່
+docket_charge_ph	ຄ່າ​ບໍລິການ Docket
+declared_value_ph	ມູນຄ່າ​ປະກາດ
 contents_ph	ເນື້ອໃນ
-eway_ph	ໃບບິນ E-way No.
+eway_ph	ໃບ​ບິນ E-way No.
 insurance_label	ປະກັນໄພ
-yes_label	ແມ່ນແລ້ວ
+yes_label	ແມ່ນ​ແລ້ວ
 no_label	ບໍ່
-print_route_label	ເສັ້ນທາງພິມ
-new_party_kind_label	ປະເພດພັກໃໝ່
-done_open_books	ສຳເລັດແລ້ວ - ເປີດປຶ້ມ
-export_day	ມື້ສົ່ງອອກ
-extra_note_expense_ph	ຫມາຍເຫດພິເສດກ່ຽວກັບຄ່າໃຊ້ຈ່າຍສຸດທ້າຍ
-extra_note_awb_ph	ຫມາຍເຫດພິເສດກ່ຽວກັບ AWB / ການຂາຍນີ້
-failed_delivery	ການຈັດສົ່ງລົ້ມເຫລວ
-find_scan_awb	ຊອກຫາ / ສະແກນ AWB
-forget_shop	ລືມຮ້ານນີ້
-fuel_ph	ນໍ້າມັນເຊື້ອໄຟ
-handover_carrier	ຈອງມື → ຜູ້ໃຫ້ບໍລິການ
-import_day	ມື້ນໍາເຂົ້າ
-import_items_csv	ນໍາເຂົ້າລາຍການ / ອັດຕາ CSV…
-import_parties_csv	ນຳເຂົ້າລູກຄ້າ ແລະ ຜູ້ຈຳໜ່າຍ CSV…
-import_pincodes_csv	ນຳເຂົ້າລະຫັດ PIN CSV…
-import_carrier_bill_csv	ນຳເຂົ້າໃບບິນຄ່າຜູ້ໃຫ້ບໍລິການ CSV…
-copy_carrier_bill_report	ສຳເນົາລາຍງານໃບບິນຂອງຜູ້ໃຫ້ບໍລິການຫຼ້າສຸດ
-use_carrier_cost	ໃຊ້ຄ່າໃຊ້ຈ່າຍຂອງຜູ້ໃຫ້ບໍລິການ
-rate_carrier_ph	ຜູ້ໃຫ້ບໍລິການ (ເປົ່າ = ອັດຕາການຂາຍຂອງພວກເຮົາ)
-rate_party_ph	ງານລ້ຽງ (ເປົ່າ = ລູກຄ້າທັງຫມົດ)
-carrier_pick_ph	ຜູ້ໃຫ້ບໍລິການສຳລັບຄ່າໃຊ້ຈ່າຍ (ຈາກການປຽບທຽບ)
-item_name	ຊື່ລາຍການ
-load_bulk_row	ໂຫຼດແຖວຫຼາຍ → ໂຕະ
-login_id_ph	ຊື່ຜູ້ໃຊ້
-mark_delivered	ເຄື່ອງໝາຍສົ່ງແລ້ວ
+print_route_label	ເສັ້ນທາງ​ພິມ
+new_party_kind_label	ປະເພດ​ພັກ​ໃໝ່
+done_open_books	ສຳເລັດ​ແລ້ວ - ເປີດ​ປຶ້ມ
+export_day	ມື້​ສົ່ງອອກ
+extra_note_expense_ph	ຫມາຍ​ເຫດ​ພິເສດ​ກ່ຽວກັບ​ຄ່າໃຊ້ຈ່າຍ​ສຸດທ້າຍ
+extra_note_awb_ph	ຫມາຍ​ເຫດ​ພິເສດ​ກ່ຽວກັບ AWB / ການຂາຍ​ນີ້
+failed_delivery	ການ​ຈັດ​ສົ່ງ​ລົ້ມ​ເຫລວ
+find_scan_awb	ຊອກຫາ / ສະ​ແກນ AWB
+forget_shop	ລືມ​ຮ້ານ​ນີ້
+fuel_ph	ນໍ້າມັນ​ເຊື້ອໄຟ
+handover_carrier	ຈອງ​ມື → ຜູ້​ໃຫ້​ບໍລິການ
+import_day	ມື້​ນໍາ​ເຂົ້າ
+import_items_csv	ນໍາ​ເຂົ້າ​ລາຍການ / ອັດຕາ CSV…
+import_parties_csv	ນຳ​ເຂົ້າ​ລູກຄ້າ ແລະ ຜູ້​ຈຳໜ່າຍ CSV…
+import_pincodes_csv	ນຳ​ເຂົ້າ​ລະຫັດ PIN CSV…
+import_carrier_bill_csv	ນຳ​ເຂົ້າ​ໃບ​ບິນ​ຄ່າ​ຜູ້​ໃຫ້​ບໍລິການ CSV…
+copy_carrier_bill_report	ສຳເນົາ​ລາຍງານ​ໃບ​ບິນ​ຂອງ​ຜູ້​ໃຫ້​ບໍລິການ​ຫຼ້າສຸດ
+use_carrier_cost	ໃຊ້​ຄ່າໃຊ້ຈ່າຍ​ຂອງ​ຜູ້​ໃຫ້​ບໍລິການ
+rate_carrier_ph	ຜູ້​ໃຫ້​ບໍລິການ (ເປົ່າ = ອັດຕາ​ການຂາຍ​ຂອງ​ພວກ​ເຮົາ)
+rate_party_ph	ງານລ້ຽງ (ເປົ່າ = ລູກ​ຄ້າ​ທັງຫມົດ)
+carrier_pick_ph	ຜູ້​ໃຫ້​ບໍລິການ​ສຳລັບ​ຄ່າໃຊ້ຈ່າຍ (ຈາກ​ການປຽບທຽບ)
+item_name	ຊື່​ລາຍການ
+load_bulk_row	ໂຫຼດແຖວ​ຫຼາຍ → ໂຕະ
+login_id_ph	ຊື່​ຜູ້​ໃຊ້
+mark_delivered	ເຄື່ອງໝາຍ​ສົ່ງ​ແລ້ວ
 manifest_cod_total	ທັງໝົດ COD
-manifest_received_by	ໄດ້ຮັບໂດຍ
+manifest_received_by	ໄດ້ຮັບ​ໂດຍ
 manifest_sign	ເຊັນ
-ndr_address_wrong	ທີ່ຢູ່ຜິດ
-ndr_customer_unavailable	ບໍ່ສາມາດໃຊ້ໄດ້
-ndr_door_locked	ປະຕູຖືກລັອກ
+ndr_address_wrong	ທີ່ຢູ່​ຜິດ
+ndr_customer_unavailable	ບໍ່​ສາມາດ​ໃຊ້​ໄດ້
+ndr_door_locked	ປະ​ຕູ​ຖືກ​ລັອກ
 ndr_other	ອື່ນໆ
 ndr_refused	ປະຕິເສດ
-out_for_delivery	ອອກສໍາລັບການຈັດສົ່ງ
+out_for_delivery	ອອກ​ສໍາ​ລັບ​ການ​ຈັດ​ສົ່ງ
 print_drs	ພິມ DRS
-print_run_sheet	ພິມແຜ່ນແລ່ນ
-reattempt	ພະຍາຍາມອີກຄັ້ງ
+print_run_sheet	ພິມ​ແຜ່ນ​ແລ່ນ
+reattempt	ພະຍາຍາມ​ອີກ​ຄັ້ງ
 rider_cod_handed_ph	COD ມອບໃຫ້
-settle_rider_cod	ຕົກລົງຜູ້ຂັບຂີ່ COD
+settle_rider_cod	ຕົກລົງ​ຜູ້ຂັບຂີ່ COD
 mode_desk	ໂຕະ
 mode_rider	ຜູ້ຂັບຂີ່
-waiting_office	ລໍຖ້າໄປຮອດຫ້ອງການ
-capture_signature	ບັນທຶກລາຍເຊັນ
+waiting_office	ລໍຖ້າ​ໄປ​ຮອດ​ຫ້ອງການ
+capture_signature	ບັນທຶກ​ລາຍ​ເຊັນ
 incoming_manifest	manifest ເຂົ້າມາ
-pickup_request	ຄຳຮ້ອງຂໍຮັບ
-pickup_run	ແລ່ນຮັບ
-auto_assign_area	ກຳນົດພື້ນທີ່ອັດຕະໂນມັດ
-reorder_stops	ຢຸດສັ່ງຄືນໃໝ່
-settle_rider_pay	ຊໍາລະຄ່າຈ້າງຜູ້ຂັບຂີ່
-vehicle_inspect	ການກວດກາຍານພາຫະນະ
+pickup_request	ຄຳຮ້ອງ​ຂໍຮັບ
+pickup_run	ແລ່ນ​ຮັບ
+auto_assign_area	ກຳນົດ​ພື້ນທີ່​ອັດຕະໂນມັດ
+reorder_stops	ຢຸດ​ສັ່ງ​ຄືນ​ໃໝ່
+settle_rider_pay	ຊໍາ​ລະ​ຄ່າຈ້າງ​ຜູ້ຂັບຂີ່
+vehicle_inspect	ການກວດ​ກາ​ຍານພາຫະນະ
 print_docket	ພິມ docket
 franchise_statement	ຖະແຫຼງການ Franchise
 tally_export	Tally voucher ສົ່ງອອກ
 open_whatsapp	ເປີດ WhatsApp
-copy_sms	ສຳເນົາຂໍ້ຄວາມ SMS
-pick_barcode_image	ເລືອກຮູບເພື່ອສະແກນ
-share_receipt_whatsapp	ແບ່ງປັນໃບຮັບເງິນໃນ WhatsApp
-delivery_feedback	ການຈັດສົ່ງຄໍາຕິຊົມ
-lan_self_book	LAN ຈອງດ້ວຍຕົນເອງ
-new_party_clear	ລູກຄ້າໃໝ່ ຫຼືຜູ້ສະໜອງ (ແບບຟອມຈະແຈ້ງ)
-new_party_kind_ph	ປະເພດງານລ້ຽງໃໝ່ (ຜູ້ສະໜອງ / ຜູ້ໃຫ້ບໍລິການ)
-next_country	ປະເທດຕໍ່ໄປ
-prev_country	ປະເທດທີ່ຜ່ານມາ
-note_gstin_ph	ໝາຍເຫດ / GSTIN / ການແຈ້ງເຕືອນຂໍ້ຕົກລົງ
-note_pod_ph	ຫມາຍເຫດ / POD (ທາງເລືອກ)
-on_account_ap	ໃນບັນຊີ (AP)
-org_optional_ph	ອົງການຈັດຕັ້ງ (ທາງເລືອກ)
-paid_now	ຈ່າຍແລ້ວ
-pairing_code_ph	ລະຫັດຈັບຄູ່
-pair_now	ຈັບຄູ່ດຽວນີ້
-party_name_selected_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງ (ຫຼືເລືອກໃຊ້)
-password_ph	ລະຫັດຜ່ານ
-pay_ap_card	ຈ່າຍບັດ AP
-pay_ap_cash	ຈ່າຍເງິນສົດ AP
+copy_sms	ສຳເນົາ​ຂໍ້ຄວາມ SMS
+pick_barcode_image	ເລືອກ​ຮູບ​ເພື່ອ​ສະ​ແກນ
+share_receipt_whatsapp	ແບ່ງປັນ​ໃບຮັບ​ເງິນ​ໃນ WhatsApp
+delivery_feedback	ການ​ຈັດ​ສົ່ງ​ຄໍາ​ຕິຊົມ
+lan_self_book	LAN ຈອງ​ດ້ວຍ​ຕົນເອງ
+new_party_clear	ລູກຄ້າ​ໃໝ່ ຫຼື​ຜູ້​ສະໜອງ (ແບບ​ຟອມ​ຈະແຈ້ງ)
+new_party_kind_ph	ປະເພດ​ງານລ້ຽງ​ໃໝ່ (ຜູ້​ສະໜອງ / ຜູ້​ໃຫ້​ບໍລິການ)
+next_country	ປະເທດ​ຕໍ່ໄປ
+prev_country	ປະເທດ​ທີ່​ຜ່ານມາ
+note_gstin_ph	ໝາຍເຫດ / GSTIN / ການ​ແຈ້ງ​ເຕືອນ​ຂໍ້ຕົກລົງ
+note_pod_ph	ຫມາຍ​ເຫດ / POD (ທາງ​ເລືອກ)
+on_account_ap	ໃນ​ບັນຊີ (AP)
+org_optional_ph	ອົງການ​ຈັດຕັ້ງ (ທາງ​ເລືອກ)
+paid_now	ຈ່າຍ​ແລ້ວ
+pairing_code_ph	ລະຫັດ​ຈັບ​ຄູ່
+pair_now	ຈັບ​ຄູ່ດຽວ​ນີ້
+party_name_selected_ph	ຊື່​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ (ຫຼື​ເລືອກ​ໃຊ້)
+password_ph	ລະຫັດ​ຜ່ານ
+pay_ap_card	ຈ່າຍ​ບັດ AP
+pay_ap_cash	ຈ່າຍເງິນ​ສົດ AP
 pay_ap_upi	ຈ່າຍ AP UPI
-period_bill	ໃບເກັບເງິນໄລຍະເວລາ
-period_bill_party	ໃບເກັບເງິນໄລຍະເວລາ (ພັກ)
-period_bill_generate	ສ້າງໃບແຈ້ງໜີ້
-period_bill_generate_print	ສ້າງແລະພິມ
-booking_bulk_preview	{ok} ພ້ອມ · {bad} ມີຂໍ້ຜິດພາດ
-pick_pod_photo	ເລືອກຮູບ POD
-print_awb_label	ພິມປ້າຍ AWB
+period_bill	ໃບ​ເກັບ​ເງິນ​ໄລຍະ​ເວລາ
+period_bill_party	ໃບ​ເກັບ​ເງິນ​ໄລຍະ​ເວລາ (ພັກ)
+period_bill_generate	ສ້າງ​ໃບ​ແຈ້ງ​ໜີ້
+period_bill_generate_print	ສ້າງ​ແລະ​ພິມ
+booking_bulk_preview	{ok} ພ້ອມ · {bad} ມີ​ຂໍ້​ຜິດພາດ
+pick_pod_photo	ເລືອກ​ຮູບ POD
+print_awb_label	ພິມ​ປ້າຍ AWB
 print_open	ພິມ / ເປີດ
-reason_amend_ph	ເຫດຜົນສໍາລັບການດັດແກ້ / void / refund
-reason_note_ph	ເຫດຜົນ / ຫມາຍເຫດ (ເສຍ, ນັບ, ... )
-record_day_close	ບັນທຶກມື້ປິດ
-refresh_from_shop	ໂຫຼດຂໍ້ມູນໃໝ່ຈາກຮ້ານຄ້າ
-refund	ເງິນຄືນ
+reason_amend_ph	ເຫດ​ຜົນ​ສໍາ​ລັບ​ການ​ດັດ​ແກ້ / void / refund
+reason_note_ph	ເຫດຜົນ / ຫມາຍ​ເຫດ (ເສຍ, ນັບ, ... )
+record_day_close	ບັນທຶກ​ມື້​ປິດ
+refresh_from_shop	ໂຫຼດຂໍ້ມູນ​ໃໝ່​ຈາກ​ຮ້ານ​ຄ້າ
+refund	ເງິນ​ຄືນ
 remit_cod	ໂອນ COD (ພັກ)
-remove_selected	ລຶບທີ່ເລືອກອອກ
-restore_backup	ຟື້ນຟູການສໍາຮອງຂໍ້ມູນ
+remove_selected	ລຶບ​ທີ່​ເລືອກ​ອອກ
+restore_backup	ຟື້ນຟູ​ການ​ສໍາ​ຮອງ​ຂໍ້ມູນ
 rider_name_ph	ຊື່ Rider
-rider_phone_ph	ໂທລະສັບຜູ້ຂັບຂີ່
+rider_phone_ph	ໂທລະສັບ​ຜູ້ຂັບຂີ່
 riders	ຜູ້ຂັບຂີ່
-riders_own_fleet	Riders (ເຮືອ​ບິນ​ຂອງ​ຕົນ​ເອງ​)
+riders_own_fleet	Riders (ເຮືອບິນ​ຂອງ​ຕົນເອງ)
 rollup	ມ້ວນ
-save_booking_measures	ບັນທຶກມາດຕະການການຈອງ
-save_brand	ປະຫຍັດແບ
+save_booking_measures	ບັນທຶກ​ມາດ​ຕະການ​ການ​ຈອງ
+save_brand	ປະຫຍັດ​ແບ
 save_business_id	ບັນທຶກ ID ທຸລະກິດ
-save_business_name	ບັນທຶກຊື່ທຸລະກິດ
-save_features	ບັນທຶກການຕັ້ງຄ່າວຽກ
-save_names	ບັນທຶກຊື່
-server_ip_ph	IP ຂອງເຊີບເວີ (ເຊັ່ນ: 192.168.1.10)
-set_credit_limit	ນຳໃຊ້ຂີດຈຳກັດໃຫ້ກັບລູກຄ້າ ຫຼືຜູ້ສະໜອງ
-set_login_selected	ນຳໃຊ້ການເຂົ້າສູ່ລະບົບເພື່ອເລືອກ
-set_login_named	ສະໝັກເຂົ້າສູ່ລະບົບ {name}
-shop	ຮ້ານຄ້າ
-start_fresh	ເລີ່ມສົດ
+save_business_name	ບັນທຶກ​ຊື່​ທຸລະກິດ
+save_features	ບັນທຶກ​ການຕັ້ງ​ຄ່າ​ວຽກ
+save_names	ບັນທຶກ​ຊື່
+server_ip_ph	IP ຂອງ​ເຊີບເວີ (ເຊັ່ນ: 192.168.1.10)
+set_credit_limit	ນຳ​ໃຊ້​ຂີດ​ຈຳກັດ​ໃຫ້​ກັບ​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ
+set_login_selected	ນຳ​ໃຊ້​ການເຂົ້າ​ສູ່​ລະບົບ​ເພື່ອ​ເລືອກ
+set_login_named	ສະໝັກ​ເຂົ້າສູ່​ລະບົບ {name}
+shop	ຮ້ານ​ຄ້າ
+start_fresh	ເລີ່ມ​ສົດ
 stop_extra_tills	ຢຸດ tills ພິເສດ
-backup_auto	ສຳຮອງຂໍ້ມູນອັດຕະໂນມັດທຸກໆມື້ · {when} ຫຼ້າສຸດ · 14 ມື້ສຸດທ້າຍຈະຖືກເກັບໄວ້ໃນ {dir}.
-backup_auto_none	ສຳຮອງຂໍ້ມູນອັດຕະໂນມັດທຸກໆມື້ — ອັນທຳອິດຈະເຮັດວຽກໃນເວລາດຽວ.
-backup_copy_to	ສຳເນົາຍັງໄປທີ່ {dir}.
-backup_copy_btn	ສຳເນົາການສຳຮອງຂໍ້ມູນໄປໃສ່ໂຟນເດີ...
-autostart_off	ເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີນີ້
-autostart_on	ເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີເຄື່ອງນີ້ ✓ — ແຕະເພື່ອຢຸດ
-autostart_done_on	ດຽວນີ້ຄອມພິວເຕີເຄື່ອງນີ້ເປີດແອັບເມື່ອມັນເລີ່ມຂຶ້ນ — ເຊີບເວີຂອງຮ້ານກັບມາຫຼັງຈາກຕັດໄຟ.
-autostart_done_off	ຄອມ​ພິວ​ເຕີ​ນີ້​ບໍ່​ໄດ້​ເປີດ app ໃນ​ເວ​ລາ​ທີ່​ມັນ​ເລີ່ມ​ຕົ້ນ​.
+backup_auto	ສຳຮອງ​ຂໍ້ມູນ​ອັດຕະ​ໂນ​ມັດ​ທຸກໆ​ມື້ · {when} ຫຼ້າສຸດ · 14 ມື້​ສຸດທ້າຍ​ຈະ​ຖືກ​ເກັບໄວ້​ໃນ {dir}.
+backup_auto_none	ສຳຮອງ​ຂໍ້ມູນ​ອັດຕະ​ໂນ​ມັດ​ທຸກໆ​ມື້ — ອັນ​ທຳອິດ​ຈະ​ເຮັດວຽກ​ໃນ​ເວລາ​ດຽວ.
+backup_copy_to	ສຳເນົາ​ຍັງ​ໄປ​ທີ່ {dir}.
+backup_copy_btn	ສຳເນົາ​ການ​ສຳຮອງ​ຂໍ້ມູນ​ໄປ​ໃສ່​ໂຟນ​ເດີ...
+autostart_off	ເລີ່ມຕົ້ນ​ດ້ວຍ​ຄອມພິວເຕີ​ນີ້
+autostart_on	ເລີ່ມຕົ້ນ​ດ້ວຍ​ຄອມພິວເຕີ​ເຄື່ອງ​ນີ້ ✓ — ແຕະ​ເພື່ອ​ຢຸດ
+autostart_done_on	ດຽວນີ້​ຄອມພິວເຕີ​ເຄື່ອງ​ນີ້​ເປີດ​ແອັບ​ເມື່ອ​ມັນ​ເລີ່ມ​ຂຶ້ນ — ເຊີບເວີ​ຂອງ​ຮ້ານ​ກັບມາ​ຫຼັງຈາກ​ຕັດ​ໄຟ.
+autostart_done_off	ຄອມພິວເຕີ​ນີ້​ບໍ່ໄດ້​ເປີດ app ໃນ​ເວລາ​ທີ່​ມັນ​ເລີ່ມຕົ້ນ.
 right_allowed	ອະນຸຍາດ
-right_with_approval	ດ້ວຍການອະນຸມັດ
-right_denied	ບໍ່ອະນຸຍາດ
-editing_staff	ສິດທິສໍາລັບ
-team_pick_ph	ພະນັກງານແກ້ໄຂ — ຊື່, ຊື່ຜູ້ໃຊ້, ຫຼືເລືອກ
-select_staff	ເລືອກພະນັກງານນີ້
-rights_help	ສິດ — ແຕະເພື່ອປ່ຽນ: ອະນຸຍາດ → ດ້ວຍການອະນຸມັດ (ລະຫັດ PIN ຂອງຜູ້ຈັດການໃນຂະນະນັ້ນ) → ບໍ່ອະນຸຍາດ.
-right_void_refund	ຍົກເລີກ ຫຼືຄືນເງິນການຈອງ
-right_amend_sale	ແກ້ໄຂການຈອງທີ່ບັນທຶກໄວ້
-find_server	ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ
-finding_server	ກຳລັງຊອກຫາເຊີບເວີຂອງຮ້ານໃນນີ້ Wi‑Fi…
-no_server_found	ບໍ່ພົບ. ຢູ່ໃນເຊີບເວີ: ການຕັ້ງຄ່າ → ອຸປະກອນອື່ນ → ອະນຸຍາດໃຫ້ມີ tills ເພີ່ມເຕີມ (ດຽວກັນ Wi‑Fi). ຫຼືພິມ IP ທີ່ສະແດງຢູ່ທີ່ນັ້ນ.
-servers_found_pick	ແຕະຮ້ານທີ່ທ່ານຕ້ອງການເຊື່ອມຕໍ່.
-server_host_selected	ການໃຊ້ {host} — ໃສ່ລະຫັດການຈັບຄູ່, ຈາກນັ້ນຈັບຄູ່ດຽວນີ້.
-device_forgotten	ຮ້ານຄ້າລືມອຸປະກອນນີ້ — ຈັບຄູ່ມັນອີກຄັ້ງກັບລະຫັດປັດຈຸບັນຂອງຮ້ານ. ຄໍາສັ່ງລໍຖ້າມັນໄດ້ຖືກເກັບຮັກສາໄວ້.
+right_with_approval	ດ້ວຍ​ການ​ອະນຸມັດ
+right_denied	ບໍ່​ອະນຸຍາດ
+editing_staff	ສິດທິ​ສໍາ​ລັບ
+team_pick_ph	ພະນັກງານ​ແກ້ໄຂ — ຊື່, ຊື່​ຜູ້​ໃຊ້, ຫຼື​ເລືອກ
+select_staff	ເລືອກ​ພະນັກງານ​ນີ້
+rights_help	ສິດ — ແຕະ​ເພື່ອ​ປ່ຽນ: ອະນຸຍາດ → ດ້ວຍ​ການ​ອະນຸມັດ (ລະຫັດ PIN ຂອງ​ຜູ້ຈັດການ​ໃນຂະນະນັ້ນ) → ບໍ່​ອະນຸຍາດ.
+right_void_refund	ຍົກເລີກ ຫຼື​ຄືນ​ເງິນ​ການ​ຈອງ
+right_amend_sale	ແກ້ໄຂ​ການ​ຈອງ​ທີ່​ບັນທຶກ​ໄວ້
+find_server	ຊອກຫາ​ເຄື່ອງ​ແມ່​ຂ່າຍ​ຂອງ​ຮ້ານ
+finding_server	ກຳລັງ​ຊອກ​ຫາ​ເຊີບເວີ​ຂອງ​ຮ້ານ​ໃນ​ນີ້ Wi‑Fi…
+no_server_found	ບໍ່​ພົບ. ຢູ່​ໃນ​ເຊີບເວີ: ການຕັ້ງ​ຄ່າ → ອຸປະກອນ​ອື່ນ → ອະນຸຍາດ​ໃຫ້​ມີ tills ເພີ່ມເຕີມ (ດຽວກັນ Wi‑Fi). ຫຼື​ພິມ IP ທີ່​ສະແດງ​ຢູ່​ທີ່​ນັ້ນ.
+servers_found_pick	ແຕະ​ຮ້ານ​ທີ່​ທ່ານ​ຕ້ອງການ​ເຊື່ອມ​ຕໍ່.
+server_host_selected	ການ​ໃຊ້ {host} — ໃສ່​ລະຫັດ​ການ​ຈັບ​ຄູ່, ຈາກນັ້ນ​ຈັບ​ຄູ່ດຽວ​ນີ້.
+device_forgotten	ຮ້ານ​ຄ້າ​ລືມ​ອຸປະກອນ​ນີ້ — ຈັບ​ຄູ່​ມັນ​ອີກ​ຄັ້ງ​ກັບ​ລະຫັດ​ປັດຈຸບັນ​ຂອງ​ຮ້ານ. ຄໍາ​ສັ່ງ​ລໍຖ້າ​ມັນ​ໄດ້​ຖືກ​ເກັບຮັກສາໄວ້.
 forget_device	ລືມ
 last_seen	ເຫັນ
-new_pair_code	ລະຫັດການຈັບຄູ່ໃໝ່
-lan_offline	ບໍ່ສາມາດຕິດຕໍ່ເຊີບເວີຮ້ານຄ້າໄດ້
-lan_offline_waiting	ບໍ່ສາມາດຕິດຕໍ່ເຊີບເວີຮ້ານຄ້າໄດ້ · {n} ກຳລັງລໍຖ້າ
-lan_connecting	ກຳລັງເຊື່ອມຕໍ່ຫາຮ້ານຄ້າ...
-pair_finishing	ກຳລັງຈົບຄູ່... ກຳລັງນຳໃຊ້ປຶ້ມຫ້ອງການ
-pair_opening	ກຳລັງເປີດຫ້ອງການ…
+new_pair_code	ລະຫັດ​ການ​ຈັບ​ຄູ່​ໃໝ່
+lan_offline	ບໍ່​ສາມາດ​ຕິດ​ຕໍ່​ເຊີບເວີ​ຮ້ານ​ຄ້າ​ໄດ້
+lan_offline_waiting	ບໍ່​ສາມາດ​ຕິດ​ຕໍ່​ເຊີບເວີ​ຮ້ານ​ຄ້າ​ໄດ້ · {n} ກຳລັງ​ລໍຖ້າ
+lan_connecting	ກຳລັງ​ເຊື່ອມ​ຕໍ່​ຫາ​ຮ້ານ​ຄ້າ...
+pair_finishing	ກຳລັງ​ຈົບ​ຄູ່... ກຳລັງ​ນຳ​ໃຊ້​ປຶ້ມ​ຫ້ອງການ
+pair_opening	ກຳລັງ​ເປີດ​ຫ້ອງການ…
 lan_live	ດໍາລົງຊີວິດ
-lan_sending	{n} ກຳລັງສົ່ງ
-lan_sign_in_to_send	ເຂົ້າສູ່ລະບົບອີກຄັ້ງເພື່ອສົ່ງ {n}
-lan_pair_again	ຈັບຄູ່ອຸປະກອນນີ້ອີກຄັ້ງ
-lan_update_app	ອັບເດດແອັບ — ອຸປະກອນນີ້ ແລະເຊີບເວີຫ້ອງການມີລຸ້ນທີ່ແຕກຕ່າງກັນ
-allow_firewall	ອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່
-firewall_blocked	ໄຟວໍຂອງຄອມພິວເຕີເຄື່ອງນີ້ປິດກັ້ນອຸປະກອນອື່ນ — ແຕະອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່.
-firewall_waiting	ກຳລັງລໍຖ້າການເຕືອນຂອງຜູ້ເບິ່ງແຍງ...
-lan_join_help	ໃນອຸປະກອນອື່ນ: ໂໝດລູກຄ້າ → ຊອກຫາເຊີບເວີຂອງຮ້ານ (ຫຼືພິມ {addr}) → ລະຫັດຈັບຄູ່ {code}.
+lan_sending	{n} ກຳລັງ​ສົ່ງ
+lan_sign_in_to_send	ເຂົ້າສູ່​ລະບົບ​ອີກ​ຄັ້ງ​ເພື່ອ​ສົ່ງ {n}
+lan_pair_again	ຈັບ​ຄູ່​ອຸປະກອນ​ນີ້​ອີກ​ຄັ້ງ
+lan_update_app	ອັບ​ເດດ​ແອັບ — ອຸປະກອນ​ນີ້ ແລະ​ເຊີບເວີ​ຫ້ອງການ​ມີ​ລຸ້ນ​ທີ່​ແຕກຕ່າງ​ກັນ
+allow_firewall	ອະນຸຍາດ​ໃຫ້​ອຸປະກອນ​ອື່ນ​ເຊື່ອມ​ຕໍ່
+firewall_blocked	ໄຟ​ວໍ​ຂອງ​ຄອມພິວເຕີ​ເຄື່ອງ​ນີ້​ປິດກັ້ນ​ອຸປະກອນ​ອື່ນ — ແຕະ​ອະນຸຍາດ​ໃຫ້​ອຸປະກອນ​ອື່ນ​ເຊື່ອມ​ຕໍ່.
+firewall_waiting	ກຳລັງ​ລໍຖ້າ​ການເຕືອນ​ຂອງ​ຜູ້​ເບິ່ງແຍງ...
+lan_join_help	ໃນ​ອຸປະກອນ​ອື່ນ: ໂໝດ​ລູກຄ້າ → ຊອກ​ຫາ​ເຊີບເວີ​ຂອງ​ຮ້ານ (ຫຼື​ພິມ {addr}) → ລະຫັດ​ຈັບ​ຄູ່ {code}.
 lan_pair_status	Wi‑Fi{addr}
-lan_join_help_no_addr	ເຊື່ອມຕໍ່ອຸປະກອນນີ້ກັບ Wi‑Fi ສໍາລັບທີ່ຢູ່.
-lan_no_address	ຍັງບໍ່ມີທີ່ຢູ່Wi‑Fi - ເຊື່ອມຕໍ່ຫາຮ້ານWi‑Fi.
-lan_not_listening	ບໍ່ຮັບອຸປະກອນ (ພອດ {port} ບໍ່ຫວ່າງ). ຣີສະຕາດແອັບ.
-lan_tills_off	ປິດ tills ພິເສດ. ອະນຸຍາດໃຫ້ພວກເຂົາອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຂົ້າຮ່ວມ.
+lan_join_help_no_addr	ເຊື່ອມ​ຕໍ່​ອຸປະກອນ​ນີ້​ກັບ Wi‑Fi ສໍາ​ລັບ​ທີ່ຢູ່.
+lan_no_address	ຍັງ​ບໍ່ມີ​ທີ່ຢູ່Wi‑Fi - ເຊື່ອມ​ຕໍ່​ຫາ​ຮ້ານWi‑Fi.
+lan_not_listening	ບໍ່​ຮັບ​ອຸປະກອນ (ພອດ {port} ບໍ່​ຫວ່າງ). ຣີ​ສະ​ຕາດ​ແອັບ.
+lan_tills_off	ປິດ tills ພິເສດ. ອະນຸຍາດ​ໃຫ້​ພວກເຂົາ​ອະນຸຍາດ​ໃຫ້​ອຸປະກອນ​ອື່ນ​ເຂົ້າຮ່ວມ.
 paired_with	ຄູ່ · {url}
-not_paired	ບໍ່ໄດ້ຈັບຄູ່
-choose_device_use	ເລືອກເຊີບເວີຫຼືລູກຄ້າ.
-paired_note	ຈັບຄູ່. ປົດລັອກເພື່ອຂາຍ, ຫຼືໂຫຼດຂໍ້ມູນໃໝ່ຫຼ້າສຸດ.
-last_update_at	ອັບເດດຫຼ້າສຸດ: {time}.
-pair_intro	ຊອກຫາເຊີບເວີ, ຫຼືພິມທີ່ຢູ່ຂອງມັນ ແລະລະຫັດການຈັບຄູ່.
-queue_waiting	ລໍຖ້າຮອດຮ້ານ ({n}):
-queue_tries	ລອງ {n} ເທື່ອ · ຄຳຕອບສຸດທ້າຍ: {e}
-save_backup_copy	ບັນທຶກສຳເນົາສຳຮອງ...
-backup_copy_saved	ການ​ສໍາ​ເນົາ​ສໍາ​ຮອງ​ໄດ້​ບັນ​ທຶກ​ໄວ້ — ຮັກ​ສາ​ມັນ​ນອກ​ອຸ​ປະ​ກອນ​ນີ້ (ໄມ້ USB ຫຼື​ອຸ​ປະ​ກອນ​ອື່ນ​)
-backup_copy_overdue	ບໍ່​ມີ​ການ​ສໍາ​ເນົາ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ໄດ້​ປະ​ໄວ້​ອຸ​ປະ​ກອນ​ນີ້​ສໍາ​ລັບ {n} ມື້ — ການ​ຕັ້ງ​ຄ່າ → Backup​
-backup_copy_failed	ບໍ່ສາມາດບັນທຶກສຳເນົາສຳຮອງໄວ້ບ່ອນນັ້ນ — ເລືອກບ່ອນອື່ນ
-clock_off	ໂມງຂອງອຸປະກອນນີ້ແມ່ນ {min} ນາທີຈາກເຊີບເວີຂອງຮ້ານ — ຕັ້ງເວລາທີ່ຖືກຕ້ອງໃນອຸປະກອນນີ້
-printers_heading	ເຄື່ອງພິມໃນອຸປະກອນນີ້
-printers_help	ຊອກຫາເຄື່ອງພິມທີ່ແທ້ຈິງ, ຫຼັງຈາກນັ້ນເລືອກ Receipt ຫຼື AWB label. ແຕ່ລະວຽກມີຄວາມກວ້າງຂອງຕົນເອງ, ຮູບຄົນຫຼືພູມສັນຖານ, ແລະວິທີການສົ່ງ bytes. ປ້າຍຊື່ພິມບາໂຄດ. ສະຖານທີ່ຫວ່າງເປົ່າ = ບໍ່ພິມ.
-job_width	ຄວາມກວ້າງຂອງເນື້ອຫາ (ມມ)
-job_width_ph	ຫຼືພິມຄວາມກວ້າງ, 40–210 mm
+not_paired	ບໍ່ໄດ້​ຈັບ​ຄູ່
+choose_device_use	ເລືອກ​ເຊີບເວີ​ຫຼື​ລູກຄ້າ.
+paired_note	ຈັບ​ຄູ່. ປົດ​ລັອກ​ເພື່ອ​ຂາຍ, ຫຼື​ໂຫຼດຂໍ້ມູນ​ໃໝ່​ຫຼ້າສຸດ.
+last_update_at	ອັບ​ເດດ​ຫຼ້າສຸດ: {time}.
+pair_intro	ຊອກ​ຫາ​ເຊີບເວີ, ຫຼື​ພິມ​ທີ່ຢູ່​ຂອງ​ມັນ ແລະ​ລະຫັດ​ການ​ຈັບ​ຄູ່.
+queue_waiting	ລໍຖ້າ​ຮອດ​ຮ້ານ ({n}):
+queue_tries	ລອງ {n} ເທື່ອ · ຄຳ​ຕອບ​ສຸດທ້າຍ: {e}
+save_backup_copy	ບັນທຶກ​ສຳເນົາ​ສຳຮອງ...
+backup_copy_saved	ການ​ສໍາ​ເນົາ​ສໍາ​ຮອງ​ໄດ້​ບັນທຶກ​ໄວ້ — ຮັກສາ​ມັນ​ນອກ​ອຸປະກອນ​ນີ້ (ໄມ້ USB ຫຼື​ອຸປະກອນ​ອື່ນ)
+backup_copy_overdue	ບໍ່ມີ​ການ​ສໍາ​ເນົາ​ສໍາ​ຮອງ​ຂໍ້ມູນ​ໄດ້​ປະໄວ້​ອຸປະກອນ​ນີ້​ສໍາ​ລັບ {n} ມື້ — ການຕັ້ງ​ຄ່າ → Backup
+backup_copy_failed	ບໍ່​ສາມາດ​ບັນທຶກ​ສຳເນົາ​ສຳຮອງ​ໄວ້​ບ່ອນນັ້ນ — ເລືອກ​ບ່ອນ​ອື່ນ
+clock_off	ໂມງ​ຂອງ​ອຸປະກອນ​ນີ້ແມ່ນ {min} ນາທີ​ຈາກ​ເຊີບເວີ​ຂອງ​ຮ້ານ — ຕັ້ງ​ເວລາ​ທີ່​ຖືກຕ້ອງ​ໃນ​ອຸປະກອນ​ນີ້
+printers_heading	ເຄື່ອງ​ພິມ​ໃນ​ອຸປະກອນ​ນີ້
+printers_help	ຊອກຫາ​ເຄື່ອງ​ພິມ​ທີ່ແທ້​ຈິງ, ຫຼັງຈາກນັ້ນ​ເລືອກ Receipt ຫຼື AWB label. ແຕ່ລະ​ວຽກ​ມີ​ຄວາມກວ້າງ​ຂອງ​ຕົນເອງ, ຮູບ​ຄົນ​ຫຼື​ພູມ​ສັນຖານ, ແລະ​ວິທີການ​ສົ່ງ bytes. ປ້າຍ​ຊື່​ພິມ​ບາ​ໂຄດ. ສະຖານທີ່​ຫວ່າງເປົ່າ = ບໍ່​ພິມ.
+job_width	ຄວາມກວ້າງ​ຂອງ​ເນື້ອຫາ (ມມ)
+job_width_ph	ຫຼື​ພິມ​ຄວາມກວ້າງ, 40–210 mm
 job_layout	ແຜນຜັງ
-job_delivery	ວິທີການສົ່ງວຽກ
-job_size	ຂະຫນາດຕົວອັກສອນ
+job_delivery	ວິທີການ​ສົ່ງ​ວຽກ
+job_size	ຂະຫ​ນາດ​ຕົວ​ອັກສອນ
 job_size_ph	ຕົວຢ່າງ: 18, 20, 26…
-test_receipt_format	ໃບຮັບການທົດສອບ
-test_label_format	ປ້າຍທົດສອບ
-paper_heading	ເຈ້ຍສະເໝືອນ
+test_receipt_format	ໃບຮັບ​ການທົດສອບ
+test_label_format	ປ້າຍ​ທົດສອບ
+paper_heading	ເຈ້ຍ​ສະ​ເໝືອນ
 paper_size	{w} × {h} mm
 paper_roll	ມ້ວນ {w} mm
-paper_not_set	ຍັງບໍ່ຮູ້ເຈ້ຍ
-virtual_width_mm	ຄວາມກວ້າງສະເໝືອນ (mm)
-virtual_length_mm	ຄວາມຍາວສະເໝືອນ (mm)
-reported_width_mm	ຄວາມກວ້າງທີ່ລາຍງານ (mm)
-reported_length_mm	ຄວາມຍາວທີ່ລາຍງານ (mm)
-reported_paper	ທີ່ລາຍງານ: {paper}
-virtual_paper	ສະເໝືອນ: {paper}
-printer_paper_help	ທີ່ລາຍງານ ແມ່ນເຈ້ຍທີ່ໄດຣເວີຂອງເຄື່ອງພິມນີ້ຖືກຕັ້ງໄວ້ ແອັບພຽງແຕ່ອ່ານມັນເທົ່ານັ້ນ ແລະ “ບໍ່ມີ” ໝາຍຄວາມວ່າບໍ່ມີໄດຣເວີໃຫ້ຖາມ. ສະເໝືອນ ແມ່ນເຈ້ຍທີ່ທ່ານບອກວ່າຢູ່ໃນເຄື່ອງພິມແທ້ໆ ເປັນ mm ຄວາມຍາວຫວ່າງເປົ່າໝາຍເຖິງມ້ວນ. ເຄື່ອງພິມພິມລົງເຈ້ຍຂອງມັນເອງ ເຈ້ຍສະເໝືອນບອກແອັບວ່າສ່ວນໃດຂອງມັນເປັນເຈ້ຍແທ້ ສຳລັບຕົວຢ່າງ ຄວາມຍາວຂອງໜ້າ ແລະຕຳແໜ່ງຂອງໃບບິນ. ຊອກຫາເຄື່ອງພິມ ຕື່ມເຈ້ຍສະເໝືອນທີ່ຫວ່າງເປົ່າ ແລະບໍ່ເຄີຍປ່ຽນອັນທີ່ທ່ານຕັ້ງໄວ້.
-preview_help	ໃບບິນນີ້ຕາມທີ່ມັນພິມອອກໃນເຄື່ອງພິມທີ່ເລືອກຂ້າງລຸ່ມ ໃນຂະໜາດຈິງເທິງເຈ້ຍສະເໝືອນຂອງມັນ. ສີຂາວແມ່ນບ່ອນທີ່ພິມ ເຈ້ຍສີເທົາແມ່ນເຄື່ອງພິມໄປບໍ່ເຖິງ ແລະໝຶກຈາງຖືກຕັດອອກ. ເກົ້າຊ່ອງແມ່ນເຈ້ຍ: ແຕະບ່ອນທີ່ໃບບິນຄວນຢູ່. ໃບບິນຍາວຈະຕໍ່ໄປໜ້າຕໍ່ໄປ. ການເລືອກເຄື່ອງພິມປ່ຽນແຕ່ຕົວຢ່າງເທົ່ານັ້ນ.
+paper_not_set	ຍັງ​ບໍ່​ຮູ້​ເຈ້ຍ
+virtual_width_mm	ຄວາມກວ້າງ​ສະ​ເໝືອນ (mm)
+virtual_length_mm	ຄວາມຍາວ​ສະ​ເໝືອນ (mm)
+reported_width_mm	ຄວາມກວ້າງ​ທີ່​ລາຍງານ (mm)
+reported_length_mm	ຄວາມຍາວ​ທີ່​ລາຍງານ (mm)
+reported_paper	ທີ່​ລາຍງານ: {paper}
+virtual_paper	ສະ​ເໝືອນ: {paper}
+printer_paper_help	ທີ່​ລາຍງານ ແມ່ນ​ເຈ້ຍ​ທີ່​ໄດຣ​ເວີ​ຂອງ​ເຄື່ອງ​ພິມ​ນີ້​ຖືກ​ຕັ້ງ​ໄວ້ ແອັບ​ພຽງແຕ່​ອ່ານ​ມັນ​ເທົ່ານັ້ນ ແລະ “ບໍ່ມີ” ໝາຍຄວາມ​ວ່າ​ບໍ່​ມີ​ໄດຣ​ເວີ​ໃຫ້​ຖາມ. ສະ​ເໝືອນ ແມ່ນ​ເຈ້ຍ​ທີ່​ທ່ານ​ບອກວ່າ​ຢູ່ໃນ​ເຄື່ອງ​ພິມ​ແທ້ໆ ເປັນ mm ຄວາມຍາວ​ຫວ່າງເປົ່າ​ໝາຍເຖິງ​ມ້ວນ. ເຄື່ອງ​ພິມ​ພິມ​ລົງ​ເຈ້ຍ​ຂອງ​ມັນ​ເອງ ເຈ້ຍ​ສະ​ເໝືອນ​ບອກ​ແອັບ​ວ່າ​ສ່ວນ​ໃດ​ຂອງ​ມັນ​ເປັນ​ເຈ້ຍ​ແທ້ ສຳລັບ​ຕົວຢ່າງ ຄວາມຍາວ​ຂອງ​ໜ້າ ແລະ​ຕຳແໜ່ງ​ຂອງ​ໃບ​ບິນ. ຊອກຫາ​ເຄື່ອງ​ພິມ ຕື່ມ​ເຈ້ຍ​ສະ​ເໝືອນ​ທີ່​ຫວ່າງເປົ່າ ແລະ​ບໍ່ເຄີຍ​ປ່ຽນ​ອັນ​ທີ່​ທ່ານ​ຕັ້ງ​ໄວ້.
+preview_help	ໃບ​ບິນ​ນີ້​ຕາມ​ທີ່​ມັນ​ພິມ​ອອກ​ໃນ​ເຄື່ອງ​ພິມ​ທີ່​ເລືອກ​ຂ້າງ​ລຸ່ມ ໃນ​ຂະໜາດ​ຈິງ​ເທິງ​ເຈ້ຍ​ສະ​ເໝືອນ​ຂອງ​ມັນ. ສີຂາວ​ແມ່ນ​ບ່ອນ​ທີ່​ພິມ ເຈ້ຍ​ສີເທົາ​ແມ່ນ​ເຄື່ອງ​ພິມ​ໄປ​ບໍ່​ເຖິງ ແລະ​ໝຶກ​ຈາງ​ຖືກ​ຕັດ​ອອກ. ເກົ້າ​ຊ່ອງ​ແມ່ນ​ເຈ້ຍ: ແຕະ​ບ່ອນ​ທີ່​ໃບ​ບິນ​ຄວນ​ຢູ່. ໃບ​ບິນ​ຍາວ​ຈະ​ຕໍ່ໄປ​ໜ້າ​ຕໍ່ໄປ. ການເລືອກ​ເຄື່ອງ​ພິມ​ປ່ຽນ​ແຕ່​ຕົວຢ່າງ​ເທົ່ານັ້ນ.
 slip_col_width	ຄວາມກວ້າງ (mm)
-no_printer_assigned	ບໍ່ມີເຄື່ອງພິມ
-printer_target_default	ເຄື່ອງພິມປົກກະຕິຂອງຄອມພິວເຕີເຄື່ອງນີ້ (ທີ່ຢູ່ຫວ່າງເປົ່າ)
-job_preview	ເບິ່ງຕົວຢ່າງ
-test_receipt_sent	ສົ່ງໃບຮັບເງິນຕົວຢ່າງແລ້ວ
-test_label_sent	ສົ່ງຕົວຢ່າງປ້າຍ
-test_print_no_printer	ບໍ່ມີເຄື່ອງພິມສຳລັບວຽກນັ້ນ — ເພີ່ມອັນໜຶ່ງໃສ່ໃຕ້ບ່ອນນີ້
-printers_host_only	ເຄື່ອງພິມຖືກຕັ້ງຢູ່ໃນອຸປະກອນຮ້ານຄ້າ (ເຊີຟເວີ). ນີ້ຈົນກ່ວາສົ່ງວຽກຢູ່ທີ່ນັ້ນ - ຊອກຫາ / ເພີ່ມ / ມອບຫມາຍຢູ່ໃນເຄື່ອງແມ່ຂ່າຍ. ຫນ້າທົດສອບໄປຫາເຄື່ອງແມ່ຂ່າຍ.
-printers_pool_heading	ເຄື່ອງພິມ
-printers_routes_heading	ບ່ອນທີ່ສິ່ງພິມ
+no_printer_assigned	ບໍ່ມີ​ເຄື່ອງ​ພິມ
+printer_target_default	ເຄື່ອງ​ພິມ​ປົກກະຕິ​ຂອງ​ຄອມພິວເຕີ​ເຄື່ອງ​ນີ້ (ທີ່ຢູ່​ຫວ່າງເປົ່າ)
+job_preview	ເບິ່ງ​ຕົວຢ່າງ
+test_receipt_sent	ສົ່ງ​ໃບຮັບ​ເງິນ​ຕົວຢ່າງ​ແລ້ວ
+test_label_sent	ສົ່ງຕົວ​ຢ່າງ​ປ້າຍ
+test_print_no_printer	ບໍ່ມີ​ເຄື່ອງ​ພິມ​ສຳລັບ​ວຽກ​ນັ້ນ — ເພີ່ມ​ອັນໜຶ່ງ​ໃສ່​ໃຕ້​ບ່ອນນີ້
+printers_host_only	ເຄື່ອງ​ພິມ​ຖືກ​ຕັ້ງ​ຢູ່ໃນ​ອຸປະກອນ​ຮ້ານ​ຄ້າ (ເຊີຟເວີ). ນີ້​ຈົນ​ກ່​ວາ​ສົ່ງ​ວຽກ​ຢູ່​ທີ່​ນັ້ນ - ຊອກຫາ / ເພີ່ມ / ມອບຫມາຍ​ຢູ່ໃນ​ເຄື່ອງ​ແມ່​ຂ່າຍ. ຫນ້າ​ທົດສອບ​ໄປຫາ​ເຄື່ອງ​ແມ່​ຂ່າຍ.
+printers_pool_heading	ເຄື່ອງ​ພິມ
+printers_routes_heading	ບ່ອນ​ທີ່​ສິ່ງ​ພິມ
 printer_label_ph	ຊື່ (ເຊັ່ນ: ໂຕະ)
-printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · ຊື່ລະບົບ
-printer_mode_heading	ໂປຣໄຟລ໌ສຳລັບຜົນຜະລິດໃໝ່
-printer_mode_standard	ຮູບຄົນມາດຕະຖານ
-printer_mode_landscape	ພູມສັນຖານມາດຕະຖານ
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · ຊື່​ລະບົບ
+printer_mode_heading	ໂປຣ​ໄຟລ໌​ສຳລັບ​ຜົນ​ຜະລິດ​ໃໝ່
+printer_mode_standard	ຮູບ​ຄົນ​ມາດຕະຖານ
+printer_mode_landscape	ພູມ​ສັນຖານ​ມາດຕະຖານ
 printer_mode_thermal	ຄວາມຮ້ອນ
-printer_mode_standard_short	ຮູບຄົນ
-printer_mode_landscape_short	ພູມສັນຖານ
+printer_mode_standard_short	ຮູບ​ຄົນ
+printer_mode_landscape_short	ພູມ​ສັນຖານ
 printer_mode_thermal_short	ຄວາມຮ້ອນ
-printer_format_custom	ໂປຣໄຟລ໌ກຳນົດເອງໃໝ່
-printer_format_custom_label	ກຳນົດເອງ
-printer_format_custom_added	ເພີ່ມໂປຣໄຟລ໌ແບບກຳນົດເອງສຳລັບສະຖານທີ່ນີ້
-add_printer	ເພີ່ມເຄື່ອງພິມ
-remove_printer	ເອົາ​ສຸດ​ທ້າຍ
-route_pick_ph	ໃບຮັບເງິນຫຼືປ້າຍ
-route_add_printer_ph	ເພີ່ມເຄື່ອງພິມໃສ່ບ່ອນນີ້
-route_receipt	ໃບຮັບເງິນ
+printer_format_custom	ໂປຣ​ໄຟລ໌​ກຳນົດ​ເອງ​ໃໝ່
+printer_format_custom_label	ກຳນົດ​ເອງ
+printer_format_custom_added	ເພີ່ມ​ໂປຣ​ໄຟລ໌​ແບບ​ກຳນົດ​ເອງ​ສຳລັບ​ສະຖານທີ່​ນີ້
+add_printer	ເພີ່ມ​ເຄື່ອງ​ພິມ
+remove_printer	ເອົາ​ສຸດທ້າຍ
+route_pick_ph	ໃບຮັບ​ເງິນ​ຫຼື​ປ້າຍ
+route_add_printer_ph	ເພີ່ມ​ເຄື່ອງ​ພິມ​ໃສ່​ບ່ອນນີ້
+route_receipt	ໃບຮັບ​ເງິນ
 route_label	ປ້າຍ AWB
-route_dont_print	ບໍ່ມີເຄື່ອງພິມຖືກມອບໝາຍ
-route_add	ເພີ່ມໃສ່ສະຖານທີ່
+route_dont_print	ບໍ່ມີ​ເຄື່ອງ​ພິມ​ຖືກ​ມອບໝາຍ
+route_add	ເພີ່ມ​ໃສ່​ສະຖານທີ່
 route_up	ຂຶ້ນ
 route_down	ລົງ
-route_remove	ເອົາ​ສຸດ​ທ້າຍ
-route_clear	ລ້າງເຄື່ອງພິມສໍາລັບສະຖານທີ່ນີ້
-save_printers	ບັນທຶກເຄື່ອງພິມ
-print_test_page	ພິມໜ້າທົດສອບ
-printers_saved	ເຄື່ອງພິມທີ່ບັນທຶກໄວ້ສໍາລັບອຸປະກອນນີ້
-test_page_sent	ສົ່ງໜ້າທົດສອບ — ກວດເບິ່ງເຄື່ອງພິມ
-printers_found	ພົບໃນອຸປະກອນນີ້: {list}
-find_printers	ຊອກຫາເຄື່ອງພິມ
-printers_looking	ກຳລັງຊອກຫາເຄື່ອງພິມໃນອຸປະກອນນີ້ ແລະ Wi‑Fi…
-printers_tap_find	ແຕະຊອກຫາເຄື່ອງພິມສຳລັບຄິວທີ່ຮັບວຽກ ແລະເຄື່ອງພິມໃບຮັບເງິນເຄືອຂ່າຍໃນ Wi-Fi ນີ້ (ບໍ່ໄດ້ເອົາອອກ ຫຼືເຄື່ອງພິມອອບລາຍ).
-printers_none_found	ບໍ່ພົບເຄື່ອງພິມ — ພິມຊື່ເຄື່ອງພິມລະບົບ, ຫຼືທີ່ຢູ່ເຄືອຂ່າຍ (ເຊັ່ນ: 192.168.1.50).
-receipt_printer_ph	ເຄື່ອງພິມສໍາລັບໃບຮັບເງິນ
-queue_refused	ຮ້ານເຮົາບໍ່ຮັບ ({n}) — ກວດເບິ່ງແຕ່ລະອັນຢູ່ເຄົາເຕີ:
-clear_not_accepted	ກວດແລ້ວ — ລຶບລາຍຊື່ນີ້
-device_name_ph	ຊື່​ອຸ​ປະ​ກອນ​ນີ້​
-lan_last_update	ອັບເດດຫຼ້າສຸດ {time}
-lan_not_accepted	{n} ບໍ່ຍອມຮັບ
-connected_now	ເຊື່ອມຕໍ່ດຽວນີ້
-backup_failed	ການສຳຮອງຂໍ້ມູນອັດຕະໂນມັດຄັ້ງສຸດທ້າຍລົ້ມເຫລວ: {e}
-backup_overdue	ບໍ່​ມີ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ສໍາ​ລັບ​ການ {n}​ມື້ — ໃຫ້​ເປີດ app ໃນ​ອຸ​ປະ​ກອນ​ນີ້​ເພື່ອ​ໃຫ້​ມັນ​ສາ​ມາດ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ໄດ້​.
-disk_low	ພຽງແຕ່ {mb} MB ຟຣີໃນອຸປະກອນນີ້ — ການສຳຮອງຂໍ້ມູນຈະລົ້ມເຫລວໃນໄວໆນີ້. ສ້າງພື້ນທີ່ຫວ່າງ.
-last_seen_devices	ເຫັນຄັ້ງສຸດທ້າຍ: {time}
-sync_interval	ຊິ້ງຂໍ້ມູນທຸກໆ {secs}s
-connection_to_shop	ການ​ເຊື່ອມ​ຕໍ່​ກັບ​ຮ້ານ​ຄ້າ​
-supplier_name_ph	ຊື່ຜູ້ສະຫນອງ (ຫຼືລູກຄ້າ)
-supplier_ph	ຜູ້ສະຫນອງ
-switch_device	ສະຫຼັບອຸປະກອນນີ້
-take_payment	ເອົາການຈ່າຍເງິນ
+route_remove	ເອົາ​ສຸດທ້າຍ
+route_clear	ລ້າງ​ເຄື່ອງ​ພິມ​ສໍາ​ລັບ​ສະຖານທີ່​ນີ້
+save_printers	ບັນທຶກ​ເຄື່ອງ​ພິມ
+print_test_page	ພິມ​ໜ້າ​ທົດສອບ
+printers_saved	ເຄື່ອງ​ພິມ​ທີ່​ບັນທຶກ​ໄວ້​ສໍາ​ລັບ​ອຸປະກອນ​ນີ້
+test_page_sent	ສົ່ງ​ໜ້າ​ທົດສອບ — ກວດເບິ່ງ​ເຄື່ອງ​ພິມ
+printers_found	ພົບ​ໃນ​ອຸປະກອນ​ນີ້: {list}
+find_printers	ຊອກຫາ​ເຄື່ອງ​ພິມ
+printers_looking	ກຳລັງ​ຊອກຫາ​ເຄື່ອງ​ພິມ​ໃນ​ອຸປະກອນ​ນີ້ ແລະ Wi‑Fi…
+printers_tap_find	ແຕະ​ຊອກຫາ​ເຄື່ອງ​ພິມ​ສຳລັບ​ຄິວ​ທີ່​ຮັບ​ວຽກ ແລະ​ເຄື່ອງ​ພິມ​ໃບຮັບ​ເງິນ​ເຄືອ​ຂ່າຍ​ໃນ Wi-Fi ນີ້ (ບໍ່ໄດ້​ເອົາ​ອອກ ຫຼື​ເຄື່ອງ​ພິມ​ອອບ​ລາຍ).
+printers_none_found	ບໍ່​ພົບ​ເຄື່ອງ​ພິມ — ພິມ​ຊື່​ເຄື່ອງ​ພິມ​ລະບົບ, ຫຼື​ທີ່ຢູ່​ເຄືອ​ຂ່າຍ (ເຊັ່ນ: 192.168.1.50).
+receipt_printer_ph	ເຄື່ອງ​ພິມ​ສໍາ​ລັບ​ໃບຮັບ​ເງິນ
+queue_refused	ຮ້ານ​ເຮົາ​ບໍ່​ຮັບ ({n}) — ກວດເບິ່ງ​ແຕ່ລະ​ອັນ​ຢູ່​ເຄົາ​ເຕີ:
+clear_not_accepted	ກວດ​ແລ້ວ — ລຶບ​ລາຍຊື່​ນີ້
+device_name_ph	ຊື່​ອຸປະກອນ​ນີ້
+lan_last_update	ອັບ​ເດດ​ຫຼ້າສຸດ {time}
+lan_not_accepted	{n} ບໍ່​ຍອມຮັບ
+connected_now	ເຊື່ອມ​ຕໍ່​ດຽວນີ້
+backup_failed	ການ​ສຳຮອງ​ຂໍ້ມູນ​ອັດຕະໂນມັດ​ຄັ້ງ​ສຸດທ້າຍ​ລົ້ມ​ເຫລວ: {e}
+backup_overdue	ບໍ່ມີ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ສໍາ​ລັບ​ການ {n}ມື້ — ໃຫ້​ເປີດ app ໃນ​ອຸປະກອນ​ນີ້​ເພື່ອ​ໃຫ້​ມັນ​ສາ​ມາດ​ສໍາ​ຮອງ​ຂໍ້ມູນ​ໄດ້.
+disk_low	ພຽງແຕ່ {mb} MB ຟຣີ​ໃນ​ອຸປະກອນ​ນີ້ — ການ​ສຳຮອງ​ຂໍ້ມູນ​ຈະ​ລົ້ມ​ເຫລວ​ໃນ​ໄວໆ​ນີ້. ສ້າງ​ພື້ນທີ່​ຫວ່າງ.
+last_seen_devices	ເຫັນ​ຄັ້ງ​ສຸດທ້າຍ: {time}
+sync_interval	ຊິ້ງ​ຂໍ້​ມູນ​ທຸກໆ {secs}s
+connection_to_shop	ການເຊື່ອມ​ຕໍ່​ກັບ​ຮ້ານ​ຄ້າ
+supplier_name_ph	ຊື່​ຜູ້​ສະຫນອງ (ຫຼື​ລູກຄ້າ)
+supplier_ph	ຜູ້​ສະຫນອງ
+switch_device	ສະຫຼັບ​ອຸປະກອນ​ນີ້
+take_payment	ເອົາ​ການ​ຈ່າຍເງິນ
 tax_added_till	{tax} ພິເສດ
 tax_inside_price	{tax} ລວມ
-today_books	ປຶ້ມມື້ນີ້
+today_books	ປຶ້ມ​ມື້ນີ້
 unlock_after_pairing	ໃສ່ PIN
-unlock_with_login	ປົດລັອກດ້ວຍການເຂົ້າສູ່ລະບົບ
-update_my_password	ອັບເດດລະຫັດຜ່ານຂອງຂ້ອຍ
-update_my_pin	ອັບເດດ PIN ຂອງຂ້ອຍ
-duress_heading	ປົດລັອກສຸກເສີນ PIN (ເຈົ້າຂອງເທົ່ານັ້ນ)
-duress_help	ສະເພາະ Offline Server/Client LAN — ບໍ່ແມ່ນຟັງຊັ່ນຄລາວ. ປິດໂດຍຄ່າເລີ່ມຕົ້ນ: ເຈົ້າຂອງເປີດຄັ້ງດຽວໂດຍບັນທຶກ PIN ນີ້ (ທີມ, ລວມ Client till). ຖ້າພິມ PIN ນີ້ເວລາປົດລັອກແທນ PIN ພະນັກງານຈິງ, ລາຍການປຶ້ມໃນ Server ຖືກລຶບແລະໂຕະເປີດເປັນເຈົ້າຂອງທີ່ເບິ່ງປົກກະຕິ — ອັດຕາ, ຝ່າຍ, ໂຊນ, ພະນັກງານ ແລະການຕັ້ງຄ່າຍັງຄົງ. schema ແລະ config ບໍ່ຖືກລຶບ. ຢ່າໃຫ້ເຫມືອນ PIN ຂອງໃຜ. ປິດດ້ວຍປຸ່ມລຶບ.
-duress_pin_ph	ສຸກເສີນ PIN (4-12 ຕົວເລກ)
-duress_confirm_ph	ພິມອີກຄັ້ງເພື່ອຢືນຢັນ
-save_duress_pin	ບັນທຶກສຸກເສີນ PIN
-clear_duress_pin	ປິດເຫດສຸກເສີນ PIN
-duress_on	ການປົດລັອກສຸກເສີນ PIN ເປີດຢູ່
-duress_off	ການປົດລັອກສຸກເສີນ PIN ປິດຢູ່
-duress_saved	ບັນທຶກການປົດລັອກສຸກເສີນ PIN
-duress_cleared	ການປົດລັອກສຸກເສີນ PIN ປິດ
+unlock_with_login	ປົດ​ລັອກ​ດ້ວຍ​ການເຂົ້າ​ສູ່​ລະບົບ
+update_my_password	ອັບ​ເດດ​ລະຫັດ​ຜ່ານ​ຂອງ​ຂ້ອຍ
+update_my_pin	ອັບ​ເດດ PIN ຂອງ​ຂ້ອຍ
+duress_heading	ປົດ​ລັອກ​ສຸກເສີນ PIN (ເຈົ້າຂອງ​ເທົ່ານັ້ນ)
+duress_help	ສະເພາະ Offline Server/Client LAN — ບໍ່​ແມ່ນ​ຟັງ​ຊັ່ນຄລາວ. ປິດ​ໂດຍ​ຄ່າ​ເລີ່ມຕົ້ນ: ເຈົ້າຂອງ​ເປີດ​ຄັ້ງ​ດຽວ​ໂດຍ​ບັນທຶກ PIN ນີ້ (ທີມ, ລວມ Client till). ຖ້າ​ພິມ PIN ນີ້​ເວ​ລາ​ປົດ​ລັອກ​ແທນ PIN ພະນັກງານ​ຈິງ, ລາຍການ​ປຶ້ມ​ໃນ Server ຖືກ​ລຶບ​ແລະ​ໂຕະ​ເປີດ​ເປັນ​ເຈົ້າຂອງ​ທີ່​ເບິ່ງ​ປົກກະຕິ — ອັດຕາ, ຝ່າຍ, ໂຊນ, ພະນັກງານ ແລະ​ການຕັ້ງ​ຄ່າ​ຍັງຄົງ. schema ແລະ config ບໍ່​ຖືກ​ລຶບ. ຢ່າ​ໃຫ້​ເຫມືອນ PIN ຂອງ​ໃຜ. ປິດ​ດ້ວຍ​ປຸ່ມ​ລຶບ.
+duress_pin_ph	ສຸກເສີນ PIN (4-12 ຕົວ​ເລກ)
+duress_confirm_ph	ພິມ​ອີກ​ຄັ້ງ​ເພື່ອ​ຢືນຢັນ
+save_duress_pin	ບັນທຶກ​ສຸກເສີນ PIN
+clear_duress_pin	ປິດ​ເຫດ​ສຸກເສີນ PIN
+duress_on	ການ​ປົດ​ລັອກ​ສຸກເສີນ PIN ເປີດ​ຢູ່
+duress_off	ການ​ປົດ​ລັອກ​ສຸກເສີນ PIN ປິດ​ຢູ່
+duress_saved	ບັນທຶກ​ການ​ປົດ​ລັອກ​ສຸກເສີນ PIN
+duress_cleared	ການ​ປົດ​ລັອກ​ສຸກເສີນ PIN ປິດ
 vehicle_ph	ພາຫະນະ
-void	ການຂາຍໂມ້
-write_off_ap	ຂຽນອອກ AP
+void	ການຂາຍ​ໂມ້
+write_off_ap	ຂຽນ​ອອກ AP
 write_off_nil	ຂຽນ off / nil balance
-zone_ph	ເຂດ (ຊື່ຈາກອັດຕາ)
+zone_ph	ເຂດ (ຊື່​ຈາກ​ອັດຕາ)
 caption_today	ມື້ນີ້
-caption_bookings	ການຈອງ
-caption_payments_today	ການຈ່າຍເງິນມື້ນີ້
-caption_outstanding	ດີເດັ່ນ
+caption_bookings	ການ​ຈອງ
+caption_payments_today	ການ​ຈ່າຍເງິນ​ມື້ນີ້
+caption_outstanding	ດີ​ເດັ່ນ
 caption_bank	ທະນາຄານ
-paid_by	ຈ່າຍໂດຍ
-second_way	ວິທີທີສອງ
-weight_in	ນ້ຳໜັກໃນ
-size_in	ຂະຫນາດໃນ
-goods_received	ສິນຄ້າໄດ້ຮັບ
+paid_by	ຈ່າຍ​ໂດຍ
+second_way	ວິທີ​ທີ​ສອງ
+weight_in	ນ້ຳ​ໜັກ​ໃນ
+size_in	ຂະຫ​ນາດ​ໃນ
+goods_received	ສິນຄ້າ​ໄດ້ຮັບ
 expense_heading	ຄ່າໃຊ້ຈ່າຍ
-notes_attach_sale	ບັນທຶກ ແລະໄຟລ໌ແນບ (ຂາຍທີ່ເລືອກ)
-notes_attach_party	ບັນທຶກ ແລະໄຟລ໌ແນບ (ລູກຄ້າເລືອກ ຫຼືຜູ້ສະໜອງ)
-attachments_last_expense	ໄຟລ໌ແນບ (ຄ່າໃຊ້ຈ່າຍສຸດທ້າຍ)
-credit_limit_heading	ວົງເງິນສິນເຊື່ອ (ລູກຄ້າເລືອກ ຫຼືຜູ້ສະໜອງ)
-pay_selected_heading	ຊໍາລະທີ່ເລືອກ (ຊໍາລະຫນີ້ສິນ / ເອົາລ່ວງຫນ້າ)
-write_off_heading	ຂຽນອອກ (ຈະແຈ້ງໂດຍບໍ່ມີການຈ່າຍເງິນ)
-adjustment_notes_heading	ບັນ​ທຶກ​ການ​ປັບ​ປຸງ
-adj_note_amount_ph	ຈໍານວນ
+notes_attach_sale	ບັນທຶກ ແລະ​ໄຟລ໌​ແນບ (ຂາຍ​ທີ່​ເລືອກ)
+notes_attach_party	ບັນທຶກ ແລະ​ໄຟລ໌​ແນບ (ລູກຄ້າ​ເລືອກ ຫຼື​ຜູ້​ສະໜອງ)
+attachments_last_expense	ໄຟລ໌​ແນບ (ຄ່າໃຊ້ຈ່າຍ​ສຸດທ້າຍ)
+credit_limit_heading	ວົງເງິນ​ສິນເຊື່ອ (ລູກຄ້າ​ເລືອກ ຫຼື​ຜູ້​ສະໜອງ)
+pay_selected_heading	ຊໍາ​ລະ​ທີ່​ເລືອກ (ຊໍາ​ລະຫນີ້​ສິນ / ເອົາ​ລ່ວງຫນ້າ)
+write_off_heading	ຂຽນ​ອອກ (ຈະແຈ້ງ​ໂດຍ​ບໍ່ມີ​ການ​ຈ່າຍເງິນ)
+adjustment_notes_heading	ບັນທຶກ​ການປັບປຸງ
+adj_note_amount_ph	ຈໍາ​ນວນ
 adj_note_reason_ph	ເຫດຜົນ (ຕ້ອງການ)
-adj_note_awb_ph	ທີ່ກ່ຽວຂ້ອງ AWB (ທາງເລືອກ)
-credit_note_btn	ບັນທຶກສິນເຊື່ອ
-debit_note_btn	ໃບແຈ້ງໜີ້
-bill_later_heading	ຮຽກເກັບພາຍຫຼັງ (ເກັບຄ່າເພີ່ມເຕີມຫຼັງຈາກຈອງ)
-bill_later_amount_ph	ຈໍານວນພິເສດ
-bill_later_party_ph	ລູກ​ຄ້າ (ພຽງ​ແຕ່​ຖ້າ​ຫາກ​ວ່າ​ການ​ຈອງ​ບໍ່​ມີ​)
-bill_later_btn	ຮຽກເກັບພາຍຫຼັງ
+adj_note_awb_ph	ທີ່​ກ່ຽວຂ້ອງ AWB (ທາງ​ເລືອກ)
+credit_note_btn	ບັນທຶກ​ສິນເຊື່ອ
+debit_note_btn	ໃບ​ແຈ້ງ​ໜີ້
+bill_later_heading	ຮຽກ​ເກັບ​ພາຍຫຼັງ (ເກັບ​ຄ່າ​ເພີ່ມເຕີມ​ຫຼັງຈາກ​ຈອງ)
+bill_later_amount_ph	ຈໍາ​ນວນ​ພິເສດ
+bill_later_party_ph	ລູກຄ້າ (ພຽງແຕ່​ຖ້າຫາກວ່າ​ການ​ຈອງ​ບໍ່ມີ)
+bill_later_btn	ຮຽກ​ເກັບ​ພາຍຫຼັງ
 bill_later_extra_oda	ODA
-bill_later_extra_packing	ການຫຸ້ມຫໍ່
+bill_later_extra_packing	ການ​ຫຸ້ມຫໍ່
 bill_later_extra_other	ອື່ນໆ
-pay_ap_heading	ຈ່າຍສິ່ງທີ່ພວກເຮົາຕິດໜີ້ (AP)
+pay_ap_heading	ຈ່າຍ​ສິ່ງ​ທີ່​ພວກ​ເຮົາ​ຕິດ​ໜີ້ (AP)
 country_tax	ປະເທດ & ພາສີ
-extra_tills_heading	ເຄົາເຕີເສີມ
-other_devices_help_heading	ຕັ້ງຄ່າອຸປະກອນອື່ນໆ
-other_devices_help	ໃນ​ອຸ​ປະ​ກອນ​ນີ້ (ເຊີບ​ເວີ): ອຸ​ປະ​ກອນ​ອື່ນໆ → ອະ​ນຸ​ຍາດ​ໃຫ້ tills ເພີ່ມ​ເຕີມ. ໃຫ້ສັງເກດລະຫັດການຈັບຄູ່ ແລະທີ່ຢູ່ Wi‑Fi. ແຕະອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່ຖ້າມັນປາກົດ. ໃນຄອມພິວເຕີ, ແຕະເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີນີ້. ໃນອຸປະກອນອື່ນ: ຕິດຕັ້ງແອັບຯ, ເລືອກຮູບແບບລູກຄ້າ, ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ (ຫຼືພິມທີ່ຢູ່), ໃສ່ລະຫັດການຈັບຄູ່, ຈັບຄູ່ດຽວນີ້. ຄໍາສັ່ງລໍຖ້າຢູ່ໃນອຸປະກອນຖ້າ Wi-Fi ຫຼຸດລົງແລະໄປໃນເວລາທີ່ເຄື່ອງແມ່ຂ່າຍຕອບອີກເທື່ອຫນຶ່ງ.
-your_brand	ຍີ່ຫໍ້ຂອງທ່ານ (ໃນແອັບ)
+extra_tills_heading	ເຄົາ​ເຕີ​ເສີມ
+other_devices_help_heading	ຕັ້ງ​ຄ່າ​ອຸປະ​ກອນ​ອື່ນໆ
+other_devices_help	ໃນ​ອຸປະກອນ​ນີ້ (ເຊີບເວີ): ອຸປະ​ກອນ​ອື່ນໆ → ອະນຸຍາດ​ໃຫ້ tills ເພີ່ມເຕີມ. ໃຫ້​ສັງເກດ​ລະຫັດ​ການ​ຈັບ​ຄູ່ ແລະ​ທີ່ຢູ່ Wi‑Fi. ແຕະ​ອະນຸຍາດ​ໃຫ້​ອຸປະກອນ​ອື່ນ​ເຊື່ອມ​ຕໍ່​ຖ້າ​ມັນ​ປາກົດ. ໃນ​ຄອມພິວເຕີ, ແຕະ​ເລີ່ມຕົ້ນ​ດ້ວຍ​ຄອມພິວເຕີ​ນີ້. ໃນ​ອຸປະກອນ​ອື່ນ: ຕິດ​ຕັ້ງ​ແອັບຯ, ເລືອກ​ຮູບແບບ​ລູກຄ້າ, ຊອກຫາ​ເຄື່ອງ​ແມ່​ຂ່າຍ​ຂອງ​ຮ້ານ (ຫຼື​ພິມ​ທີ່ຢູ່), ໃສ່​ລະຫັດ​ການ​ຈັບ​ຄູ່, ຈັບ​ຄູ່ດຽວ​ນີ້. ຄໍາ​ສັ່ງ​ລໍຖ້າ​ຢູ່ໃນ​ອຸປະກອນ​ຖ້າ Wi-Fi ຫຼຸດລົງ​ແລະ​ໄປ​ໃນ​ເວລາ​ທີ່​ເຄື່ອງ​ແມ່​ຂ່າຍ​ຕອບ​ອີກ​ເທື່ອ​ຫນຶ່ງ.
+your_brand	ຍີ່ຫໍ້​ຂອງ​ທ່ານ (ໃນ​ແອັບ)
 units_heading	ໜ່ວຍ
-booking_measures	ມາດຕະການຈອງ
-drawer_count	ຈຳນວນລິ້ນຊັກ (ເລືອກໄດ້)
-spreadsheet_csv	ສະເປຣດຊີດ (CSV)
-bank_reconciliation	ການຄືນເງິນຂອງທະນາຄານ
-book_add_product	ປື້ມບັນທຶກ — ເພີ່ມຜະລິດຕະພັນ / ອັດຕາ
-book_opening_credit	Book — ການ​ເປີດ​ສິນ​ເຊື່ອ​
-account_kind	ປະເພດບັນຊີ (ແຕະອັນນຶ່ງ)
-active_ledger	ບັນຊີລາຍການເຮັດວຽກ
-actual_total_cap	ທັງໝົດຕົວຈິງ
-amend_help	ເລືອກການຂາຍເພື່ອແກ້ໄຂ, ໂມໂຫ, ຫຼືຄືນເງິນ. ການແກ້ໄຂຮັກສາປະຫວັດເຕັມ. ຍອດປັດເສດ ເລີ່ມຕົ້ນເທົ່າກັບ ທີ່ໃຊ້ແລ້ວ — ແກ້ໄຂພຽງແຕ່ເປັນຮອບ. ການເສຍເງິນແລະການຄືນເງິນອາດຈະຕ້ອງການເຈົ້າຂອງ ຫຼືຜູ້ຈັດການ PIN (ພິມຂ້າງເທິງ; ບັນທຶກດ້ວຍຊື່ຂອງເຈົ້າ).
-applied_total_cap	ນຳໃຊ້ທັງໝົດ
-bank_balance	ຍອດເງິນທະນາຄານ
-bank_net_today	ສຸດທິທະນາຄານໃນມື້ນີ້
-branch_export_help	ການສົ່ງອອກຈະຂຽນພາບຖ່າຍໃນມື້ໜຶ່ງໃສ່ໂຟນເດີສຳຮອງ ແລະສຳເນົາມັນໃສ່ຄລິບບອດ. ເພື່ອນໍາເຂົ້າມື້ຂອງຮ້ານອື່ນ, ບັນທຶກໄຟລ໌ຂອງຕົນເປັນ import_branch_snapshot.json ໃນໂຟນເດີນັ້ນ, ຈາກນັ້ນແຕະທີ່ນໍາເຂົ້າ.
-brand_shown_help	ສະແດງໃຫ້ເຫັນໃນຫນ້າຈໍພາຍໃນ app ໄດ້. ຊື່ແອັບ ແລະໄອຄອນທີ່ຕິດຕັ້ງຢູ່ໃນອຸປະກອນນີ້ຈະຍັງຄົງເປັນລາຍການໃນເວທີ.
-app_icon	ໄອຄອນແອັບ
-logo_help	ເຄື່ອງໝາຍຮ້ານຄ້າທາງເລືອກໃນໜ້າຈໍໃນແອັບ.
-onboard_layout	ສິ່ງທີ່ທ່ານໄດ້ຮັບ
-item_photo_help	ທາງເລືອກ. ໂດຍບໍ່ມີຮູບ, ພວກເຮົາສະແດງໃຫ້ເຫັນເບື້ອງຕົ້ນຈາກຊື່ລາຍການ.
-cash_in_hand	ເງິນສົດໃນມື (ຈົນກ່ວາ)
-change_my_pin_heading	ປ່ຽນ PIN ຂອງຂ້ອຍ (ສະເພາະຂອງເຈົ້າເທົ່ານັ້ນ)
-connect_to_server	ເຊື່ອມຕໍ່ກັບເຊີບເວີ
+booking_measures	ມາດ​ຕະການ​ຈອງ
+drawer_count	ຈຳ​ນວນ​ລິ້ນ​ຊັກ (ເລືອກ​ໄດ້)
+spreadsheet_csv	ສະ​ເປຣດ​ຊີດ (CSV)
+bank_reconciliation	ການ​ຄືນ​ເງິນ​ຂອງ​ທະນາຄານ
+book_add_product	ປື້ມ​ບັນທຶກ — ເພີ່ມ​ຜະລິດຕະພັນ / ອັດຕາ
+book_opening_credit	Book — ການເປີດ​ສິນເຊື່ອ
+account_kind	ປະເພດ​ບັນຊີ (ແຕະ​ອັນ​ນຶ່ງ)
+active_ledger	ບັນຊີ​ລາຍການ​ເຮັດວຽກ
+actual_total_cap	ທັງໝົດ​ຕົວ​ຈິງ
+amend_help	ເລືອກ​ການຂາຍ​ເພື່ອ​ແກ້ໄຂ, ໂມໂຫ, ຫຼື​ຄືນ​ເງິນ. ການແກ້ໄຂ​ຮັກສາ​ປະຫວັດ​ເຕັມ. ຍອດ​ປັດ​ເສດ ເລີ່ມຕົ້ນ​ເທົ່າກັບ ທີ່​ໃຊ້​ແລ້ວ — ແກ້ໄຂ​ພຽງແຕ່​ເປັນ​ຮອບ. ການ​ເສຍ​ເງິນ​ແລະ​ການ​ຄືນ​ເງິນ​ອາດຈະ​ຕ້ອງການ​ເຈົ້າຂອງ ຫຼື​ຜູ້ຈັດການ PIN (ພິມ​ຂ້າງ​ເທິງ; ບັນທຶກ​ດ້ວຍ​ຊື່​ຂອງ​ເຈົ້າ).
+applied_total_cap	ນຳ​ໃຊ້​ທັງໝົດ
+bank_balance	ຍອດ​ເງິນ​ທະນາຄານ
+bank_net_today	ສຸດທິ​ທະນາຄານ​ໃນ​ມື້ນີ້
+branch_export_help	ການ​ສົ່ງອອກ​ຈະ​ຂຽນ​ພາບຖ່າຍ​ໃນ​ມື້​ໜຶ່ງ​ໃສ່​ໂຟນ​ເດີ​ສຳຮອງ ແລະ​ສຳເນົາ​ມັນ​ໃສ່ຄລິບ​ບອດ. ເພື່ອ​ນໍາ​ເຂົ້າ​ມື້​ຂອງ​ຮ້ານ​ອື່ນ, ບັນ​ທຶກ​ໄຟລ໌​ຂອງ​ຕົນ​ເປັນ import_branch_snapshot.json ໃນ​ໂຟນ​ເດີ​ນັ້ນ, ຈາກນັ້ນ​ແຕະ​ທີ່​ນໍາ​ເຂົ້າ.
+brand_shown_help	ສະແດງ​ໃຫ້​ເຫັນ​ໃນຫນ້າ​ຈໍ​ພາຍໃນ app ໄດ້. ຊື່​ແອັບ ແລະ​ໄອ​ຄອນ​ທີ່​ຕິດຕັ້ງ​ຢູ່ໃນ​ອຸປະກອນ​ນີ້​ຈະ​ຍັງຄົງ​ເປັນ​ລາຍການ​ໃນ​ເວທີ.
+app_icon	ໄອ​ຄອນ​ແອັບ
+logo_help	ເຄື່ອງໝາຍ​ຮ້ານ​ຄ້າ​ທາງ​ເລືອກ​ໃນ​ໜ້າຈໍ​ໃນ​ແອັບ.
+onboard_layout	ສິ່ງ​ທີ່​ທ່ານ​ໄດ້ຮັບ
+item_photo_help	ທາງ​ເລືອກ. ໂດຍ​ບໍ່ມີ​ຮູບ, ພວກ​ເຮົາ​ສະແດງ​ໃຫ້​ເຫັນ​ເບື້ອງຕົ້ນ​ຈາກ​ຊື່​ລາຍການ.
+cash_in_hand	ເງິນສົດ​ໃນ​ມື (ຈົນ​ກ່​ວາ)
+change_my_pin_heading	ປ່ຽນ PIN ຂອງ​ຂ້ອຍ (ສະເພາະ​ຂອງ​ເຈົ້າ​ເທົ່ານັ້ນ)
+connect_to_server	ເຊື່ອມ​ຕໍ່​ກັບ​ເຊີບເວີ
 counter_locked	Counter 01 · ລັອກ
-country_pack_help	ຊຸດປະເທດກຳນົດຊື່ພາສີ ແລະເລກຄະນິດສາດ, ທາງລົດໄຟທີ່ຈ່າຍເງິນທັນທີ, ແລະ ID ທຸລະກິດທີ່ພິມໄວ້ໃນໃບບິນ. Kumkaj ບໍ່ໄດ້ຍື່ນພາສີ ຫຼືອອກໃບແຈ້ງໜີ້ຂອງລັດຖະບານທຸກບ່ອນ.
-currency_use_help	ເລື່ອນ ແລະແຕະ ໃຊ້ສໍາລັບສະກຸນເງິນທີ່ຮອງຮັບ.
-day_close_help	ການບັນທຶກໃນມື້ປິດຈະບັນທຶກບົດສະຫຼຸບນີ້ (ແລະຄວາມແຕກຕ່າງຂອງລິ້ນຊັກຖ້ານັບ) ໃສ່ບັນທຶກການກວດສອບ. ມັນບໍ່ໄດ້ຢຸດເຊົາການຂາຍ.
+country_pack_help	ຊຸດ​ປະເທດ​ກຳນົດ​ຊື່​ພາສີ ແລະ​ເລກຄະນິດ​ສາດ, ທາງ​ລົດໄຟ​ທີ່​ຈ່າຍເງິນ​ທັນທີ, ແລະ ID ທຸລະກິດ​ທີ່​ພິມ​ໄວ້​ໃນ​ໃບ​ບິນ. Kumkaj ບໍ່ໄດ້​ຍື່ນ​ພາສີ ຫຼື​ອອກ​ໃບ​ແຈ້ງ​ໜີ້​ຂອງ​ລັດຖະບານ​ທຸກບ່ອນ.
+currency_use_help	ເລື່ອນ ແລະ​ແຕະ ໃຊ້​ສໍາ​ລັບ​ສະກຸນ​ເງິນ​ທີ່​ຮອງຮັບ.
+day_close_help	ການ​ບັນທຶກ​ໃນ​ມື້​ປິດ​ຈະ​ບັນທຶກ​ບົດ​ສະຫຼຸບ​ນີ້ (ແລະ​ຄວາມແຕກຕ່າງ​ຂອງ​ລິ້ນ​ຊັກ​ຖ້າ​ນັບ) ໃສ່​ບັນທຶກ​ການກວດ​ສອບ. ມັນ​ບໍ່ໄດ້​ຢຸດເຊົາ​ການຂາຍ.
 expenses_word	ຄ່າໃຊ້ຈ່າຍ
-feature_access_help	ການເຂົ້າເຖິງຄຸນສົມບັດສໍາລັບພະນັກງານທີ່ເລືອກ (ແຕະຫຼັງຈາກເພີ່ມ)
-footer_local	ທ້ອງຖິ່ນ SQLite · ຟຣີຕະຫຼອດໄປ · Zero Cloud
-fresh_book_moklanjo	ສົດ = ລາຍການຫວ່າງເປົ່າ (ເພີ່ມລາຍການໃນພາຍຫຼັງ). ປື້ມບັນ = ປະເພດການເປີດຫຼັກຊັບແລະຜູ້ທີ່ເປັນຫນີ້ທ່ານຂ້າງລຸ່ມນີ້.
-fresh_selected	ເລືອກໃໝ່ແລ້ວ — ລາຍການຍັງຫວ່າງເປົ່າ. ແຕະ ສຳ ເລັດເມື່ອພ້ອມ.
-gross_word	ລວມຍອດ
-how_start	ທ່ານຕ້ອງການເລີ່ມຕົ້ນແນວໃດ?
-later_country_pack	ຕໍ່ມາ: ການ​ຕັ້ງ​ຄ່າ → ໃຊ້​ຊອງ​ປະ​ເທດ​ຂອງ​ທ່ານ​ສໍາ​ລັບ​ການ​ພາ​ສີ​ແລະ​ການ​ຈ່າຍ​ເງິນ​ປ້າຍ.
+feature_access_help	ການເຂົ້າ​ເຖິງ​ຄຸນ​ສົມ​ບັດ​ສໍາ​ລັບ​ພະນັກງານ​ທີ່​ເລືອກ (ແຕະ​ຫຼັງຈາກ​ເພີ່ມ)
+footer_local	ທ້ອງຖິ່ນ SQLite · ຟຣີ​ຕະຫຼອດໄປ · Zero Cloud
+fresh_book_moklanjo	ສົດ = ລາຍການ​ຫວ່າງເປົ່າ (ເພີ່ມ​ລາຍການ​ໃນ​ພາຍຫຼັງ). ປື້ມ​ບັນ = ປະເພດ​ການເປີດ​ຫຼັກ​ຊັບ​ແລະ​ຜູ້​ທີ່​ເປັນຫນີ້​ທ່ານ​ຂ້າງ​ລຸ່ມ​ນີ້.
+fresh_selected	ເລືອກ​ໃໝ່​ແລ້ວ — ລາຍການ​ຍັງ​ຫວ່າງເປົ່າ. ແຕະ ສຳ ເລັດ​ເມື່ອ​ພ້ອມ.
+gross_word	ລວມ​ຍອດ
+how_start	ທ່ານ​ຕ້ອງການ​ເລີ່ມຕົ້ນ​ແນວ​ໃດ?
+later_country_pack	ຕໍ່ມາ: ການຕັ້ງ​ຄ່າ → ໃຊ້​ຊອງ​ປະເທດ​ຂອງ​ທ່ານ​ສໍາ​ລັບ​ການ​ພາສີ​ແລະ​ການ​ຈ່າຍເງິນ​ປ້າຍ.
 local_badge	ທ້ອງຖິ່ນ
-measures_help_moklanjo	ວິທີການວັດແທກ parcel ຢູ່ໂຕະຈອງ. ພິມຂະໜາດ ແລະນ້ຳໜັກໃນຫົວໜ່ວຍທີ່ທ່ານໃຊ້ — ມາດຕະຖານ (cm, m, in, ft · kg, g, lb, oz) ຫຼື ຫົວໜ່ວຍຂອງທ່ານເອງທີ່ເຊື່ອມຕໍ່ກັບ cm / kg ຂ້າງເທິງ (ໂດຍກົງຫຼືຜ່ານຫນ່ວຍອື່ນໆ). ປື້ມບັນທຶກສະເຫມີ kg. ປ່ອຍຊ່ອງຫວ່າງໄວ້ເພື່ອເກັບມັນໄວ້.
-mix_type_hint_moklanjo	ພິມຫຼາຍປານໃດໃນແຕ່ລະ (ເງິນສົດ / UPI / ບັດ / ເຄຣດິດ). ຕ້ອງຕື່ມໃສ່ບັນຊີລາຍການ. ສິນເຊື່ອຕ້ອງການລູກຄ້າຂ້າງເທິງ.
-money_in_sales	ເງິນໃນການຂາຍ
-more_help_moklanjo	ລາຍການ, ການຂາຍ, ເຄຣດິດ, ທີມງານ, ຂໍ້ມູນສຳຮອງ — ບວກກັບຫຼັກຊັບ ແລະເງິນເພີ່ມເຕີມເມື່ອຕ້ອງການ.
+measures_help_moklanjo	ວິທີການ​ວັດແທກ parcel ຢູ່​ໂຕະ​ຈອງ. ພິມ​ຂະໜາດ ແລະ​ນ້ຳ​ໜັກ​ໃນ​ຫົວໜ່ວຍ​ທີ່​ທ່ານ​ໃຊ້ — ມາດຕະຖານ (cm, m, in, ft · kg, g, lb, oz) ຫຼື ຫົວໜ່ວຍ​ຂອງ​ທ່ານ​ເອງ​ທີ່​ເຊື່ອມ​ຕໍ່​ກັບ cm / kg ຂ້າງ​ເທິງ (ໂດຍ​ກົງ​ຫຼື​ຜ່ານ​ຫນ່ວຍ​ອື່ນໆ). ປື້ມ​ບັນທຶກ​ສະ​ເຫມີ kg. ປ່ອຍ​ຊ່ອງຫວ່າງ​ໄວ້​ເພື່ອ​ເກັບ​ມັນ​ໄວ້.
+mix_type_hint_moklanjo	ພິມ​ຫຼາຍ​ປານໃດ​ໃນ​ແຕ່ລະ (ເງິນສົດ / UPI / ບັດ / ເຄຣ​ດິດ). ຕ້ອງ​ຕື່ມໃສ່​ບັນຊີ​ລາຍການ. ສິນເຊື່ອ​ຕ້ອງການ​ລູກຄ້າ​ຂ້າງ​ເທິງ.
+money_in_sales	ເງິນ​ໃນ​ການຂາຍ
+more_help_moklanjo	ລາຍການ, ການຂາຍ, ເຄຣ​ດິດ, ທີມ​ງານ, ຂໍ້ມູນ​ສຳຮອງ — ບວກ​ກັບ​ຫຼັກ​ຊັບ ແລະ​ເງິນ​ເພີ່ມເຕີມ​ເມື່ອ​ຕ້ອງການ.
 net_word	ສຸດທິ
-offline_badge	ອອບລາຍ
-optional_login_help	ທາງເລືອກໃນການເຂົ້າສູ່ລະບົບ (id + ລະຫັດຜ່ານ). ເຈົ້າຂອງຊຸດຫນຶ່ງຄັ້ງ; ພຽງແຕ່ຜູ້ໃຊ້ສາມາດປ່ຽນລະຫັດຜ່ານໃນພາຍຫຼັງ.
-or_unlock_login	ຫຼືປົດລັອກດ້ວຍ ID ເຂົ້າສູ່ລະບົບ + ລະຫັດຜ່ານ
-or_unlock_shop_login	ຫຼືປົດລັອກດ້ວຍການເຂົ້າສູ່ລະບົບຮ້ານ
-shop_login_help	ເລືອກໄດ້: ປົດລັອກດ້ວຍຊື່ຜູ້ໃຊ້ ແລະ ລະຫັດຜ່ານພະນັກງານຮ້ານນີ້ແທນ PIN (ໃຊ້ໄດ້ອອບລາຍ).
+offline_badge	ອອບ​ລາຍ
+optional_login_help	ທາງ​ເລືອກ​ໃນ​ການເຂົ້າ​ສູ່​ລະບົບ (id + ລະຫັດ​ຜ່ານ). ເຈົ້າ​ຂອງ​ຊຸດ​ຫນຶ່ງ​ຄັ້ງ; ພຽງແຕ່​ຜູ້​ໃຊ້​ສາມາດ​ປ່ຽນ​ລະຫັດ​ຜ່ານ​ໃນ​ພາຍຫຼັງ.
+or_unlock_login	ຫຼື​ປົດ​ລັອກ​ດ້ວຍ ID ເຂົ້າສູ່​ລະບົບ + ລະຫັດ​ຜ່ານ
+or_unlock_shop_login	ຫຼື​ປົດ​ລັອກ​ດ້ວຍ​ການເຂົ້າ​ສູ່​ລະບົບ​ຮ້ານ
+shop_login_help	ເລືອກ​ໄດ້: ປົດ​ລັອກ​ດ້ວຍ​ຊື່​ຜູ້​ໃຊ້ ແລະ ລະຫັດ​ຜ່ານ​ພະນັກງານ​ຮ້ານ​ນີ້​ແທນ PIN (ໃຊ້​ໄດ້​ອອບ​ລາຍ).
 cloud_account_title	ບັນຊີ Moklanjo
-cloud_account_help	ລົງທະບຽນ ຫຼື ເຂົ້າສູ່ລະບົບດ້ວຍບັນຊີດຽວກັນກັບ moklanjo.com/account. ສ້າງ cloud id ແລະ ແຜນຟຣີ.
-cloud_name_ph	ຊື່ (ເລືອກໄດ້)
-cloud_email_ph	ອີເມວ
-cloud_password_ph	ລະຫັດຜ່ານ
+cloud_account_help	ລົງທະບຽນ ຫຼື ເຂົ້າສູ່​ລະບົບ​ດ້ວຍ​ບັນຊີ​ດຽວກັນ​ກັບ moklanjo.com/account. ສ້າງ cloud id ແລະ ແຜນ​ຟຣີ.
+cloud_name_ph	ຊື່ (ເລືອກ​ໄດ້)
+cloud_email_ph	ອີ​ເມວ
+cloud_password_ph	ລະຫັດ​ຜ່ານ
 cloud_continue	ສືບຕໍ່
-cloud_forgot	ລືມລະຫັດຜ່ານ?
-cloud_web_methods	Google ແລະວິທີອື່ນໃນເວັບໄຊ
-cloud_signing_in	ກຳລັງເຂົ້າສູ່ລະບົບ…
-cloud_sending_reset	ກຳລັງສົ່ງລິ້ງຣີເຊັດ…
-cloud_forgot_sent	ຖ້າອີເມວນັ້ນມີບັນຊີ, ລິ້ງຣີເຊັດກຳລັງມາ.
-cloud_welcome	ເຂົ້າສູ່ລະບົບແລ້ວເປັນ {user} · {plan}
-cloud_created	ສ້າງບັນຊີແລ້ວ. ກວດອີເມວເພື່ອຢືນຢັນເມື່ອທ່ານສາມາດ.
+cloud_forgot	ລືມ​ລະຫັດ​ຜ່ານ?
+cloud_web_methods	Google ແລະ​ວິທີ​ອື່ນ​ໃນ​ເວັບ​ໄຊ
+cloud_signing_in	ກຳລັງ​ເຂົ້າສູ່​ລະບົບ…
+cloud_sending_reset	ກຳລັງ​ສົ່ງ​ລິ້ງ​ຣີ​ເຊັດ…
+cloud_forgot_sent	ຖ້າ​ອີ​ເມວ​ນັ້ນ​ມີ​ບັນຊີ, ລິ້ງ​ຣີ​ເຊັດ​ກຳລັງ​ມາ.
+cloud_welcome	ເຂົ້າສູ່​ລະບົບ​ແລ້ວ​ເປັນ {user} · {plan}
+cloud_created	ສ້າງ​ບັນຊີ​ແລ້ວ. ກວດ​ອີ​ເມວ​ເພື່ອ​ຢືນຢັນ​ເມື່ອ​ທ່ານ​ສາມາດ.
 cloud_cancel	ຍົກເລີກ
 permission_preset	ວຽກ
-preset_help_moklanjo	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
+preset_help_moklanjo	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດ​ແກ້.
 product_locked_moklanjo	Moklanjo
-product_only_moklanjo	ແອັບນີ້ແມ່ນ Moklanjo ເທົ່ານັ້ນ — ປຶ້ມ + ໂຕະຈອງ. ການຄ້າອື່ນໆປະເຊີນກັບການຂົນສົ່ງເປັນຜະລິດຕະພັນແຍກຕ່າງຫາກຕໍ່ມາ.
+product_only_moklanjo	ແອັບ​ນີ້ແມ່ນ Moklanjo ເທົ່ານັ້ນ — ປຶ້ມ + ໂຕະ​ຈອງ. ການ​ຄ້າ​ອື່ນໆ​ປະເຊີນ​ກັບ​ການ​ຂົນສົ່ງ​ເປັນ​ຜະລິດຕະພັນ​ແຍກ​ຕ່າງຫາກ​ຕໍ່ມາ.
 purchases_cogs	ການຊື້ (COGS)
 qty_cap	ຈຳນວນ
-restore_help	ຟື້ນຟູ: ເລືອກການສໍາຮອງ. ປື້ມທີ່ເປີດຢູ່ໃນຕອນນັ້ນ; ປຶ້ມດັ່ງທີ່ພວກມັນຖືກບັນທຶກໄວ້ກ່ອນ, ດັ່ງນັ້ນອັນນີ້ຈຶ່ງສາມາດຍົກເລີກໄດ້.
-wipe_data_heading	ລຶບຂໍ້ມູນທ້ອງຖິ່ນ
-wipe_data_help	ເຈົ້າຂອງເທົ່ານັ້ນ - ທາງເລືອກດຽວກັນກັບ Windows ຖອນການຕິດຕັ້ງ. ບັນທຶກທຸລະກິດລຶບປະຫວັດການຊື້ຂາຍແຕ່ຮັກສາອັດຕາ ແລະການຕັ້ງຄ່າ (ເຊັ່ນ: PIN ປົດລັອກສຸກເສີນ). ການຕັ້ງຄ່າຮ້ານຄ້າຈະລຶບຖານຂໍ້ມູນປຶ້ມອອກ. ການຕັ້ງຄ່າໜ້າຈໍຈະລຶບລ້າງໜ້າຕ່າງ/ພາສາ. ຢືນຢັນດ້ວຍ PIN ຂອງເຈົ້າຂອງ. PIN ປົດລັອກສຸກເສີນຢູ່ໃນທີມແມ່ນແຍກຕ່າງຫາກ (ປົກປິດເຊັດເວລາປົດລັອກ).
-wipe_trading	ບັນທຶກທຸລະກິດ
-wipe_schema	ຕັ້ງຄ່າຮ້ານຄ້າ
-wipe_ui	ການຕັ້ງຄ່າໜ້າຈໍ
-wipe_owner_pin_ph	ເຈົ້າຂອງPINເພື່ອລຶບ
-wipe_delete_selected	ລຶບທີ່ເລືອກ
-wipe_owner_only	ພຽງແຕ່ເຈົ້າຂອງສາມາດລຶບຂໍ້ມູນທ້ອງຖິ່ນໄດ້.
-restore_owner_only	ມີພຽງແຕ່ເຈົ້າຂອງເທົ່ານັ້ນທີ່ສາມາດຟື້ນຟູການສໍາຮອງຂໍ້ມູນໄດ້.
-wipe_owner_pin_needed	ໃສ່ເຈົ້າຂອງ PIN ເພື່ອລຶບຂໍ້ມູນທ້ອງຖິ່ນ.
-wipe_nothing_selected	ເລືອກສິ່ງທີ່ຈະລຶບກ່ອນ.
-wipe_done	ລຶບຂໍ້ມູນທ້ອງຖິ່ນທີ່ເລືອກແລ້ວ.
-wipe_schema_done	ເຊັດການຕິດຕັ້ງຮ້ານຄ້າແລ້ວ — ເລືອກເຊີບເວີ ຫຼືລູກຄ້າເພື່ອສືບຕໍ່.
-rounded_total	ລວມທັງໝົດ
+restore_help	ຟື້ນຟູ: ເລືອກ​ການ​ສໍາ​ຮອງ. ປື້ມ​ທີ່​ເປີດ​ຢູ່ໃນ​ຕອນ​ນັ້ນ; ປຶ້ມ​ດັ່ງທີ່​ພວກ​ມັນ​ຖືກ​ບັນທຶກ​ໄວ້​ກ່ອນ, ດັ່ງນັ້ນ​ອັນ​ນີ້​ຈຶ່ງ​ສາມາດ​ຍົກເລີກ​ໄດ້.
+wipe_data_heading	ລຶບ​ຂໍ້ມູນ​ທ້ອງຖິ່ນ
+wipe_data_help	ເຈົ້າຂອງ​ເທົ່ານັ້ນ - ທາງ​ເລືອກ​ດຽວກັນ​ກັບ Windows ຖອນ​ການ​ຕິດຕັ້ງ. ບັນທຶກ​ທຸລະກິດ​ລຶບ​ປະຫວັດການ​ຊື້ຂາຍ​ແຕ່​ຮັກສາ​ອັດຕາ ແລະ​ການຕັ້ງ​ຄ່າ (ເຊັ່ນ: PIN ປົດ​ລັອກ​ສຸກເສີນ). ການຕັ້ງ​ຄ່າ​ຮ້ານ​ຄ້າ​ຈະ​ລຶບ​ຖານ​ຂໍ້ມູນ​ປຶ້ມ​ອອກ. ການຕັ້ງ​ຄ່າ​ໜ້າຈໍ​ຈະ​ລຶບລ້າງ​ໜ້າຕ່າງ/ພາສາ. ຢືນຢັນ​ດ້ວຍ PIN ຂອງ​ເຈົ້າຂອງ. PIN ປົດ​ລັອກ​ສຸກເສີນ​ຢູ່ໃນ​ທີມ​ແມ່ນ​ແຍກ​ຕ່າງຫາກ (ປົກປິດ​ເຊັດ​ເວ​ລາ​ປົດ​ລັອກ).
+wipe_trading	ບັນທຶກ​ທຸລະກິດ
+wipe_schema	ຕັ້ງ​ຄ່າ​ຮ້ານ​ຄ້າ
+wipe_ui	ການຕັ້ງ​ຄ່າ​ໜ້າຈໍ
+wipe_owner_pin_ph	ເຈົ້າຂອງPINເພື່ອ​ລຶບ
+wipe_delete_selected	ລຶບ​ທີ່​ເລືອກ
+wipe_owner_only	ພຽງແຕ່​ເຈົ້າຂອງ​ສາມາດ​ລຶບ​ຂໍ້ມູນ​ທ້ອງຖິ່ນ​ໄດ້.
+restore_owner_only	ມີ​ພຽງແຕ່​ເຈົ້າຂອງ​ເທົ່ານັ້ນ​ທີ່​ສາມາດ​ຟື້ນຟູ​ການ​ສໍາ​ຮອງ​ຂໍ້ມູນ​ໄດ້.
+wipe_owner_pin_needed	ໃສ່​ເຈົ້າຂອງ PIN ເພື່ອ​ລຶບ​ຂໍ້ມູນ​ທ້ອງຖິ່ນ.
+wipe_nothing_selected	ເລືອກ​ສິ່ງ​ທີ່​ຈະ​ລຶບ​ກ່ອນ.
+wipe_done	ລຶບ​ຂໍ້ມູນ​ທ້ອງຖິ່ນ​ທີ່​ເລືອກ​ແລ້ວ.
+wipe_schema_done	ເຊັດ​ການ​ຕິດຕັ້ງ​ຮ້ານ​ຄ້າ​ແລ້ວ — ເລືອກ​ເຊີບເວີ ຫຼື​ລູກຄ້າ​ເພື່ອ​ສືບຕໍ່.
+rounded_total	ລວມ​ທັງໝົດ
 setup_app_moklanjo	ຕັ້ງ Moklanjo
-shop_logo_optional	ໂລໂກ້ຮ້ານຄ້າ (ເລືອກໄດ້)
-stock_type_help	ພິມຊື່ລາຍການ (ສ່ວນຂອງມັນພຽງພໍ), ປະລິມານ, ຫຼັງຈາກນັ້ນປັບ. ລາຍ​ການ​ທີ່​ຍັງ​ບໍ່​ທັນ​ນັບ​ຈໍາ​ເປັນ​ຕ້ອງ​ໄດ້​ເລີ່ມ​ຕົ້ນ​ການ​ຕິດ​ຕາມ​ຄັ້ງ​ດຽວ​.
-team_owner_help	ຈ້າງ: ເລືອກວຽກ (Cashier / Manager), ຊື່ + PIN ເລີ່ມ, ຈາກນັ້ນ Add. ພຽງແຕ່ຖ້າບຸກຄົນນີ້ແຕກຕ່າງກັນ: ເປີດຫນ້າຈໍແລະສິດທິຂ້າງລຸ່ມນີ້, ຈາກນັ້ນບັນທຶກການຕັ້ງຄ່າວຽກ. ທຸກຄົນປ່ຽນ PIN ຂອງຕົນເອງຢູ່ລຸ່ມສຸດ — ເຈົ້າຂອງບໍ່ສາມາດປ່ຽນຂອງຄົນອື່ນໄດ້.
-they_owe_us	ພວກເຂົາເປັນໜີ້ພວກເຮົາ
+shop_logo_optional	ໂລ​ໂກ້​ຮ້ານ​ຄ້າ (ເລືອກ​ໄດ້)
+stock_type_help	ພິມ​ຊື່​ລາຍການ (ສ່ວນ​ຂອງ​ມັນ​ພຽງພໍ), ປະລິມານ, ຫຼັງຈາກນັ້ນ​ປັບ. ລາຍການ​ທີ່​ຍັງ​ບໍ່ທັນ​ນັບ​ຈໍາ​ເປັນ​ຕ້ອງ​ໄດ້​ເລີ່ມຕົ້ນ​ການຕິດຕາມ​ຄັ້ງ​ດຽວ.
+team_owner_help	ຈ້າງ: ເລືອກ​ວຽກ (Cashier / Manager), ຊື່ + PIN ເລີ່ມ, ຈາກນັ້ນ Add. ພຽງແຕ່​ຖ້າ​ບຸກຄົນນີ້​ແຕກຕ່າງ​ກັນ: ເປີດຫນ້າ​ຈໍ​ແລະ​ສິດທິ​ຂ້າງ​ລຸ່ມ​ນີ້, ຈາກນັ້ນ​ບັນທຶກ​ການຕັ້ງ​ຄ່າ​ວຽກ. ທຸກຄົນ​ປ່ຽນ PIN ຂອງ​ຕົນເອງ​ຢູ່​ລຸ່ມ​ສຸດ — ເຈົ້າຂອງ​ບໍ່​ສາມາດ​ປ່ຽນ​ຂອງ​ຄົນອື່ນ​ໄດ້.
+they_owe_us	ພວກເຂົາ​ເປັນ​ໜີ້​ພວກ​ເຮົາ
 unit_at_cap	ໜ່ວຍ @
-units_help	ລະຫັດສໍາລັບປ້າຍລາຍການ (ກິໂລ, ສິ້ນ, ຖົງ). ທຸກໆຫນ່ວຍຕ້ອງເຊື່ອມຕໍ່ - ໂດຍກົງຫຼືຜ່ານຫນ່ວຍອື່ນໆ - ກັບມາດຕະຖານ (kg · cm · ml · pc), e.g. 1 ກ່ອງ = 2 ກ່ອງ ແລະ 1 ກ່ອງ = 20 ຊມ. ການແປງ: 1 ຈາກ = ປັດໄຈເປັນ. ສະກຸນເງິນບໍ່ເຄີຍເປັນຫົວໜ່ວຍ.
-we_owe_them	ພວກເຮົາເປັນໜີ້ເຂົາເຈົ້າ
-who_unlocking	ໃຜກຳລັງປົດລັອກ?
+units_help	ລະ​ຫັດ​ສໍາ​ລັບ​ປ້າຍ​ລາຍການ (ກິໂລ, ສິ້ນ, ຖົງ). ທຸກໆຫນ່ວຍ​ຕ້ອງ​ເຊື່ອມ​ຕໍ່ - ໂດຍ​ກົງ​ຫຼື​ຜ່ານ​ຫນ່ວຍ​ອື່ນໆ - ກັບ​ມາດຕະຖານ (kg · cm · ml · pc), e.g. 1 ກ່ອງ = 2 ກ່ອງ ແລະ 1 ກ່ອງ = 20 ຊມ. ການ​ແປງ: 1 ຈາກ = ປັດໄຈ​ເປັນ. ສະກຸນ​ເງິນ​ບໍ່ເຄີຍ​ເປັນ​ຫົວໜ່ວຍ.
+we_owe_them	ພວກ​ເຮົາ​ເປັນ​ໜີ້​ເຂົາເຈົ້າ
+who_unlocking	ໃຜ​ກຳ​ລັງ​ປົດ​ລັອກ?
 locked_word	ລັອກ
 show_pin	ສະແດງ PIN
 hide_pin	ເຊື່ອງ PIN
-set_owner_pin	ຕັ້ງເຈົ້າຂອງ PIN
-enter_owner_passcode	ໃສ່ລະຫັດເຈົ້າຂອງ
-enter_staff_passcode	ໃສ່ລະຫັດພະນັກງານ
-pin_count_zero	0 / 12 ຕົວເລກ · ຢ່າງຫນ້ອຍ 4, ຫຼັງຈາກນັ້ນ OK
-pin_count_need	{} / 12 ຕົວເລກ · ຕ້ອງການ {} ເພີ່ມເຕີມ
-pin_count_full	12/12 ຕົວເລກ · ກົດ OK
-pin_count_ready	{} / 12 ຕົວເລກ · ກົດ OK ເມື່ອພ້ອມ
-pin_hint_choose	ເລືອກ 4–12 ຕົວເລກ · ປ້ອນ ຫຼື ປົດລັອກເພື່ອບັນທຶກ
-pin_hint_new	ເຈົ້າຂອງໃໝ່ 4-12 ຕົວເລກ PIN · ປ້ອນ ຫຼື ປົດລັອກ
-pin_hint_shop_code	ຊື້ອຸປະກອນ · ລະຫັດການຈັບຄູ່ {}
-pin_hint_books	ອຸປະກອນນີ້ຖືປື້ມ
-pin_hint_paired	ພິເສດຈົນກວ່າຈະຈັບຄູ່ — ປົດລັອກເພື່ອຂາຍ
-pin_hint_pair_first	ພິເສດຈົນຮອດ — ຈັບຄູ່ກັບອຸປະກອນຮ້ານຄ້າກ່ອນ
-unlock_to_continue	ປົດລັອກເພື່ອສືບຕໍ່
-no_staff_yet	ບໍ່ມີພະນັກງານເທື່ອ — ປົດລັອກເປັນເຈົ້າຂອງ, ຈາກນັ້ນທີມງານ
-icon_new_selected	ໄອຄອນ: ເລືອກໄຟລ໌ໃໝ່ — ແຕະ Save brand
-icon_custom	ໄອຄອນ: ເຄື່ອງໝາຍສະຖານທີ່ກຳນົດເອງ
-icon_default	ໄອຄອນ: Kumkaj ໝາຍ (ຄ່າເລີ່ມຕົ້ນ) — ເລືອກອັນທີ່ກຳນົດເອງ
-logo_yours	ໂລໂກ້: ໂລໂກ້ຮ້ານຂອງເຈົ້າ — ສະແດງຢູ່ໃນໜ້າຈໍ ແລະໃບຮັບເງິນ
-logo_default	ໂລໂກ້: Kumkajເຄື່ອງໝາຍ (ຄ່າເລີ່ມຕົ້ນ) — ເລືອກຂອງທ່ານເອງ ຖ້າເຈົ້າມີ
+set_owner_pin	ຕັ້ງ​ເຈົ້າຂອງ PIN
+enter_owner_passcode	ໃສ່​ລະຫັດ​ເຈົ້າຂອງ
+enter_staff_passcode	ໃສ່​ລະຫັດ​ພະນັກງານ
+pin_count_zero	0 / 12 ຕົວ​ເລກ · ຢ່າງຫນ້ອຍ 4, ຫຼັງຈາກນັ້ນ OK
+pin_count_need	{} / 12 ຕົວ​ເລກ · ຕ້ອງການ {} ເພີ່ມເຕີມ
+pin_count_full	12/12 ຕົວ​ເລກ · ກົດ OK
+pin_count_ready	{} / 12 ຕົວ​ເລກ · ກົດ OK ເມື່ອ​ພ້ອມ
+pin_hint_choose	ເລືອກ 4–12 ຕົວ​ເລກ · ປ້ອນ ຫຼື ປົດ​ລັອກ​ເພື່ອ​ບັນທຶກ
+pin_hint_new	ເຈົ້າຂອງ​ໃໝ່ 4-12 ຕົວ​ເລກ PIN · ປ້ອນ ຫຼື ປົດ​ລັອກ
+pin_hint_shop_code	ຊື້​ອຸປະກອນ · ລະຫັດ​ການ​ຈັບ​ຄູ່ {}
+pin_hint_books	ອຸປະກອນ​ນີ້​ຖື​ປື້ມ
+pin_hint_paired	ພິເສດ​ຈົນກວ່າ​ຈະ​ຈັບ​ຄູ່ — ປົດ​ລັອກ​ເພື່ອ​ຂາຍ
+pin_hint_pair_first	ພິເສດ​ຈົນຮອດ — ຈັບ​ຄູ່​ກັບ​ອຸປະກອນ​ຮ້ານ​ຄ້າ​ກ່ອນ
+unlock_to_continue	ປົດ​ລັອກ​ເພື່ອ​ສືບຕໍ່
+no_staff_yet	ບໍ່ມີ​ພະນັກງານ​ເທື່ອ — ປົດ​ລັອກ​ເປັນ​ເຈົ້າຂອງ, ຈາກນັ້ນ​ທີມ​ງານ
+icon_new_selected	ໄອ​ຄອນ: ເລືອກ​ໄຟລ໌​ໃໝ່ — ແຕະ Save brand
+icon_custom	ໄອ​ຄອນ: ເຄື່ອງໝາຍ​ສະຖານທີ່​ກຳນົດ​ເອງ
+icon_default	ໄອ​ຄອນ: Kumkaj ໝາຍ (ຄ່າ​ເລີ່ມຕົ້ນ) — ເລືອກ​ອັນ​ທີ່​ກຳນົດ​ເອງ
+logo_yours	ໂລ​ໂກ້: ໂລ​ໂກ້​ຮ້ານ​ຂອງ​ເຈົ້າ — ສະແດງ​ຢູ່ໃນ​ໜ້າຈໍ ແລະ​ໃບຮັບ​ເງິນ
+logo_default	ໂລ​ໂກ້: Kumkajເຄື່ອງໝາຍ (ຄ່າ​ເລີ່ມຕົ້ນ) — ເລືອກ​ຂອງ​ທ່ານ​ເອງ ຖ້າ​ເຈົ້າ​ມີ
 tmpl_current	ປັດຈຸບັນ: {} — {}
-tmpl_selected	ເລືອກແລ້ວ: {} — {}
-setup_complete	ສຳເລັດການຕັ້ງຄ່າ
-onboard_fresh_tmpl	ສົດ · {} — ລາຍການເລີ່ມຫວ່າງເປົ່າ; ເພີ່ມລາຍການໃນລາຍການ, ຈາກນັ້ນສຳເລັດ.
-onboard_book_tmpl	ປຶ້ມ · {} — ເພີ່ມລາຍການ ແລະເປີດເຄຣດິດ, ຈາກນັ້ນສຳເລັດ.
-onboard_template_tmpl	ຊື່ສະຖານທີ່ຖ້າທ່ານຕ້ອງການ, ຫຼັງຈາກນັ້ນເລືອກວິທີການເລີ່ມຕົ້ນ.
+tmpl_selected	ເລືອກ​ແລ້ວ: {} — {}
+setup_complete	ສຳເລັດ​ການຕັ້ງ​ຄ່າ
+onboard_fresh_tmpl	ສົດ · {} — ລາຍການ​ເລີ່ມ​ຫວ່າງເປົ່າ; ເພີ່ມ​ລາຍການ​ໃນ​ລາຍການ, ຈາກນັ້ນ​ສຳເລັດ.
+onboard_book_tmpl	ປຶ້ມ · {} — ເພີ່ມ​ລາຍການ ແລະ​ເປີດ​ເຄຣ​ດິດ, ຈາກນັ້ນ​ສຳເລັດ.
+onboard_template_tmpl	ຊື່​ສະຖານທີ່​ຖ້າ​ທ່ານ​ຕ້ອງການ, ຫຼັງຈາກນັ້ນ​ເລືອກ​ວິທີການ​ເລີ່ມຕົ້ນ.
 tmpl_blurb	ປຶ້ມ Courier and booking desk: consignors, carriers, day book, AWB.
-tmpl_how	ຈອງ parcels ຢູ່ desk; ປື້ມມື້ສໍາລັບມື້ນີ້; ແຖບສໍາລັບອັດຕາ, ພາກສ່ວນ, ບົດລາຍງານ.
-app_template_heading	ແມ່ແບບຮ້ານ
-app_template_blurb	ເລືອກການຕັ້ງຄ່າເລີ່ມຕົ້ນ. «ຂ້າມໄປດຽວນີ້» ປ່ອຍໃຫ້ລາຍຊື່ລູກຄ້າຫວ່າງເປົ່າ.
-app_template_skip	ຂ້າມໄປດຽວນີ້
-app_template_status	ເຊີບເວີພ້ອມແລ້ວ — ນຳເຂົ້າແມ່ແບບ ຫຼື ຂ້າມ
-app_template_importing	ກຳລັງນຳໃຊ້ {title}…
-app_template_public_hdr	ແມ່ແບບ
-app_template_import_selected	ນຳເຂົ້າອັນທີ່ເລືອກ
-app_template_wipe_warn	ນີ້ຈະເປັນການລຶບລ້າງຂໍ້ມູນການຊື້ຂາຍໃນບັນຊີ (ການຈອງ, ບັນຊີລາຍການ) ແລະນຳໃຊ້ການຕັ້ງຄ່າຮ້ານຄ້າຂອງແມ່ແບບ. ທ່ານຕ້ອງການສືບຕໍ່ບໍ?
+tmpl_how	ຈອງ parcels ຢູ່ desk; ປື້ມ​ມື້​ສໍາ​ລັບ​ມື້ນີ້; ແຖບ​ສໍາ​ລັບ​ອັດຕາ, ພາກສ່ວນ, ບົດ​ລາຍງານ.
+app_template_heading	ແມ່​ແບບ​ຮ້ານ
+app_template_blurb	ເລືອກ​ການຕັ້ງ​ຄ່າ​ເລີ່ມຕົ້ນ. «ຂ້າມ​ໄປ​ດຽວນີ້» ປ່ອຍ​ໃຫ້​ລາຍຊື່​ລູກຄ້າ​ຫວ່າງເປົ່າ.
+app_template_skip	ຂ້າມ​ໄປ​ດຽວນີ້
+app_template_status	ເຊີບເວີ​ພ້ອມແລ້ວ — ນຳ​ເຂົ້າ​ແມ່​ແບບ ຫຼື ຂ້າມ
+app_template_importing	ກຳລັງ​ນຳ​ໃຊ້ {title}…
+app_template_public_hdr	ແມ່​ແບບ
+app_template_import_selected	ນຳ​ເຂົ້າ​ອັນ​ທີ່​ເລືອກ
+app_template_wipe_warn	ນີ້​ຈະ​ເປັນການ​ລຶບລ້າງ​ຂໍ້ມູນ​ການຊື້ຂາຍ​ໃນ​ບັນຊີ (ການ​ຈອງ, ບັນຊີ​ລາຍການ) ແລະ​ນຳ​ໃຊ້​ການຕັ້ງ​ຄ່າ​ຮ້ານ​ຄ້າ​ຂອງ​ແມ່​ແບບ. ທ່ານ​ຕ້ອງການ​ສືບຕໍ່​ບໍ?
 app_template_wipe_continue	ສືບຕໍ່
 app_template_wipe_cancel	ຍົກເລີກ
-public_tmpl_help	ແມ່ແບບຕົວແທນທີ່ກຽມພ້ອມທີ່ມາພ້ອມກັບແອັບຯ. ບໍ່ຈໍາເປັນຕ້ອງດາວໂຫຼດ.
-business_day	«ມື້ນີ້» ຣີເຊັດເມື່ອໃດ?
-business_day_help	«ຈົນຮອດ ປິດມື້» ສືບຕໍ່ແລ່ນ «ປຶ້ມມື້» ເວລາທ່ຽງຄືນ, ຈົນກວ່າທ່ານຈະບັນທຶກມື້ປິດ. «ໃນເວລາທ່ຽງຄືນ» ຕັດເວລາ 00:00 ໂມງຕາມເວລາທ້ອງຖິ່ນ.
-biz_day_until_close	ຈົນຮອດ ປິດມື້
-biz_day_midnight	ໃນເວລາທ່ຽງຄືນ
-business_day_saved	ບັນທຶກການຕັ້ງຄ່າມື້ເຮັດວຽກແລ້ວ
+public_tmpl_help	ແມ່​ແບບ​ຕົວແທນ​ທີ່​ກຽມພ້ອມ​ທີ່​ມາ​ພ້ອມ​ກັບ​ແອັບຯ. ບໍ່​ຈໍາ​ເປັນ​ຕ້ອງ​ດາວ​ໂຫຼດ.
+business_day	«ມື້ນີ້» ຣີ​ເຊັດ​ເມື່ອໃດ?
+business_day_help	«ຈົນຮອດ ປິດ​ມື້» ສືບຕໍ່​ແລ່ນ «ປຶ້ມ​ມື້» ເວລາ​ທ່ຽງຄືນ, ຈົນກວ່າ​ທ່ານ​ຈະ​ບັນທຶກ​ມື້​ປິດ. «ໃນ​ເວລາ​ທ່ຽງຄືນ» ຕັດ​ເວລາ 00:00 ໂມງ​ຕາມ​ເວລາ​ທ້ອງຖິ່ນ.
+biz_day_until_close	ຈົນຮອດ ປິດ​ມື້
+biz_day_midnight	ໃນ​ເວລາ​ທ່ຽງຄືນ
+business_day_saved	ບັນທຶກ​ການຕັ້ງ​ຄ່າ​ມື້​ເຮັດວຽກ​ແລ້ວ
 report_day_lens	ສະແດງ «ມື້ນີ້» ເປັນ
-report_day_lens_help	ອັນນີ້ພຽງແຕ່ປ່ຽນມຸມມອງເທົ່ານັ້ນ — ມັນບໍ່ປ່ຽນແປງເມື່ອ «ປິດມື້» ຣີເຊັດ «ມື້ນີ້». «ອີງຕາມ ປິດມື້» ຕິດຕາມມື້ສຸດທ້າຍປິດ; «ອີງຕາມເວລາທ່ຽງຄືນ» ຕັດເວລາ 00:00 ໂມງຕາມເວລາທ້ອງຖິ່ນ.
-report_lens_day_close	ອີງຕາມ ປິດມື້
-report_lens_midnight	ອີງຕາມເວລາທ່ຽງຄືນ
-trk_booked	ຈອງແລ້ວ
-trk_picked_up	ເກັບແລ້ວ
-trk_in_transit	ຢູ່ໃນການຂົນສົ່ງ
-trk_delivered	ຈັດສົ່ງແລ້ວ
-trk_rto	ກັບຄືນໄປຫາຜູ້ສົ່ງ
-lane_to_dispatch	ເພື່ອສົ່ງ
-lane_with_carrier	ກັບຜູ້ໃຫ້ບໍລິການ
-lane_failed	ລົ້ມເຫລວ
-lane_done_today	ແລ້ວມື້ນີ້
-ops_board_help	Parcels ໂດຍບ່ອນທີ່ພວກເຂົາຢູ່ໃນວຽກງານຂອງມື້ນີ້. ແຕະ parcels (ຫຼື scan ໃຫ້ເຂົາເຈົ້າ) ເພື່ອເລືອກເອົາມັນ, ຫຼັງຈາກນັ້ນປະຕິບັດການເລືອກເອົາທັງຫມົດໃນຄັ້ງດຽວ - ແຕ່ລະເລນສະເຫນີພຽງແຕ່ການເຄື່ອນໄຫວທີ່ເຫມາະສົມກັບມັນ.
-lane_empty	ບໍ່ມີຫຍັງຢູ່ທີ່ນີ້.
+report_day_lens_help	ອັນ​ນີ້​ພຽງແຕ່​ປ່ຽນ​ມຸມ​ມອງ​ເທົ່ານັ້ນ — ມັນ​ບໍ່​ປ່ຽນແປງ​ເມື່ອ «ປິດ​ມື້» ຣີ​ເຊັດ «ມື້ນີ້». «ອີງ​ຕາມ ປິດ​ມື້» ຕິດຕາມ​ມື້​ສຸດທ້າຍ​ປິດ; «ອີງ​ຕາມ​ເວລາ​ທ່ຽງຄືນ» ຕັດ​ເວລາ 00:00 ໂມງ​ຕາມ​ເວລາ​ທ້ອງຖິ່ນ.
+report_lens_day_close	ອີງ​ຕາມ ປິດ​ມື້
+report_lens_midnight	ອີງ​ຕາມ​ເວລາ​ທ່ຽງຄືນ
+trk_booked	ຈອງ​ແລ້ວ
+trk_picked_up	ເກັບ​ແລ້ວ
+trk_in_transit	ຢູ່ໃນ​ການ​ຂົນສົ່ງ
+trk_delivered	ຈັດ​ສົ່ງ​ແລ້ວ
+trk_rto	ກັບຄືນ​ໄປຫາ​ຜູ້​ສົ່ງ
+lane_to_dispatch	ເພື່ອ​ສົ່ງ
+lane_with_carrier	ກັບ​ຜູ້​ໃຫ້​ບໍລິການ
+lane_failed	ລົ້ມ​ເຫລວ
+lane_done_today	ແລ້ວ​ມື້ນີ້
+ops_board_help	Parcels ໂດຍ​ບ່ອນ​ທີ່​ພວກເຂົາ​ຢູ່ໃນ​ວຽກງານ​ຂອງ​ມື້ນີ້. ແຕະ parcels (ຫຼື scan ໃຫ້​ເຂົາເຈົ້າ) ເພື່ອ​ເລືອກ​ເອົາ​ມັນ, ຫຼັງຈາກນັ້ນ​ປະຕິບັດການ​ເລືອກ​ເອົາ​ທັງຫມົດ​ໃນ​ຄັ້ງ​ດຽວ - ແຕ່ລະ​ເລນ​ສະ​ເຫນີ​ພຽງແຕ່​ການເຄື່ອນໄຫວ​ທີ່​ເຫ​ມາະ​ສົມ​ກັບ​ມັນ.
+lane_empty	ບໍ່ມີ​ຫຍັງ​ຢູ່​ທີ່​ນີ້.
 picked_fmt	ເລືອກ {n} ແລ້ວ
-pick_all	ເລືອກທັງໝົດ
-bag_for_carrier	ມືໄປຫາຜູ້ໃຫ້ບໍລິການ
-send_with_rider	ສົ່ງກັບຜູ້ຂັບຂີ່
+pick_all	ເລືອກ​ທັງໝົດ
+bag_for_carrier	ມື​ໄປຫາ​ຜູ້​ໃຫ້​ບໍລິການ
+send_with_rider	ສົ່ງ​ກັບ​ຜູ້ຂັບຂີ່
 out_again	ອອກ​ອີກ
-return_to_sender	ກັບໄປຫາຜູ້ສົ່ງ
-runs_bags_heading	ການແລ່ນຫຼ້າສຸດ & ກະເປົາ
+return_to_sender	ກັບໄປ​ຫາ​ຜູ້​ສົ່ງ
+runs_bags_heading	ການ​ແລ່ນ​ຫຼ້າສຸດ & ກະເປົາ
 print_word	ພິມ
-bag_word	ກະເປົາໃສ່ເຄື່ອງ
+bag_word	ກະເປົາ​ໃສ່​ເຄື່ອງ
 run_word	Rider ແລ່ນ
 parcels_fmt	ພັດສະດຸ {n}
 parcel_history	ປະຫວັດສາດ
 attempt_fmt	ພະຍາຍາມ {n}
 pieces_short_fmt	{n} ອັນ
-note_reason_ph	ຫມາຍເຫດຫຼືເຫດຜົນ
-ops_pick_first	ເລືອກເອົາ parcels ທໍາອິດ - ແຕະໃຫ້ເຂົາເຈົ້າຫຼືສະແກນໃຫ້ເຂົາເຈົ້າ
-cod_to_collect	ສົ່ງແລ້ວ — COD ເພື່ອເກັບກຳ
-cod_on_road	COD ຍັງຢູ່ໃນເສັ້ນທາງ
+note_reason_ph	ຫມາຍ​ເຫດ​ຫຼື​ເຫດຜົນ
+ops_pick_first	ເລືອກ​ເອົາ parcels ທໍາ​ອິດ - ແຕະ​ໃຫ້​ເຂົາເຈົ້າ​ຫຼື​ສະ​ແກນ​ໃຫ້​ເຂົາເຈົ້າ
+cod_to_collect	ສົ່ງ​ແລ້ວ — COD ເພື່ອ​ເກັບກຳ
+cod_on_road	COD ຍັງ​ຢູ່ໃນ​ເສັ້ນທາງ
 cod_owed_consignors	ເກັບ ກໍາ - ເພື່ອ ຈ່າຍ consignors
-cod_rto_fees	ຄ່າ​ທໍາ​ນຽມ RTO ການ​ເກັບ​ກໍາ​
-cod_to_hand_in	COD ກັບມື
+cod_rto_fees	ຄ່າທໍານຽມ RTO ການເກັບ​ກໍາ
+cod_to_hand_in	COD ກັບ​ມື
 parcel_one_fmt	ພັດສະດຸ {n}
-facet_bank_title	ບົດລາຍງານ
-facet_bank_help	ປຶ້ມມື້, ອາຍຸລູກຄ້າ ຫຼືຜູ້ສະໜອງ, ໄປສະນີທະນາຄານ, ແລະໄລຍະເວລາ P&L.
-facet_ops_title	ການຂົນສົ່ງ & ການຈັດສົ່ງ
-facet_ops_help	ສະແກນ ຫຼືພິມ AWB → ຊອກຫາ, ຈາກນັ້ນເລື່ອນ/ພິມປ້າຍ/COD. ສົ່ງໃຫ້ຜູ້ຂັບຂີ່ຫຼືຜູ້ຂົນສົ່ງ.
+facet_bank_title	ບົດ​ລາຍງານ
+facet_bank_help	ປຶ້ມ​ມື້, ອາຍຸ​ລູກຄ້າ ຫຼື​ຜູ້​ສະໜອງ, ໄປສະນີ​ທະນາຄານ, ແລະ​ໄລຍະ​ເວລາ P&L.
+facet_ops_title	ການ​ຂົນສົ່ງ & ການ​ຈັດ​ສົ່ງ
+facet_ops_help	ສະ​ແກນ ຫຼື​ພິມ AWB → ຊອກຫາ, ຈາກນັ້ນ​ເລື່ອນ/ພິມ​ປ້າຍ/COD. ສົ່ງໃຫ້​ຜູ້ຂັບຂີ່​ຫຼື​ຜູ້​ຂົນສົ່ງ.
 facet_cod_title	ລົງທະບຽນ COD
-facet_cod_help	ເກັບກໍາໃນເວລາຈັດສົ່ງ, ຫຼັງຈາກນັ້ນສົ່ງໃຫ້ຜູ້ສົ່ງມອບ.
-facet_riders_title	Riders (ເຮືອ​ບິນ​ຂອງ​ຕົນ​ເອງ​)
-facet_riders_help	ເພີ່ມຜູ້ຂັບຂີ່, ຈາກນັ້ນສົ່ງ AWBs ທີ່ຈອງໄວ້ຈາກ Ops.
-against_bill_ph	ຕໍ່ກັບໃບບິນ # ຂ້າງເທິງ (ທາງເລືອກ)
-aliases_ph	ນາມແຝງ — ຊື່ອື່ນ, ແຍກເຄື່ອງໝາຍຈຸດ
-amount_blank_full_ph	ຈຳນວນ (ຫວ່າງເປົ່າ = ຍອດເງິນເຕັມ)
-amount_owed_ph	ຈຳນວນທີ່ຕິດຄ້າງ
-amount_ph	ຈໍານວນ
-amount_received_ph	ຈຳນວນທີ່ໄດ້ຮັບ
-amount_we_pay_ph	ຈຳນວນທີ່ພວກເຮົາຈ່າຍ
-awb_scan_ph	AWB / ສະແກນບາໂຄດ
-bulk_csv_ph	CSV ຈໍານວນຫລາຍ — ຈຸດຫມາຍປາຍທາງ, ຜູ້ຮັບສົ່ງ, ກິໂລ, cod_paise, ຫມາຍເຫດ
-business_name_ph	ຊື່ທຸລະກິດ
-category_new_ph	ໝວດໝູ່ (ເລືອກໄດ້, ສ້າງຖ້າໃໝ່)
-cod_amount_ph	ຈໍານວນ COD
+facet_cod_help	ເກັບ​ກໍາ​ໃນ​ເວລາ​ຈັດ​ສົ່ງ, ຫຼັງຈາກນັ້ນ​ສົ່ງໃຫ້​ຜູ້​ສົ່ງ​ມອບ.
+facet_riders_title	Riders (ເຮືອບິນ​ຂອງ​ຕົນເອງ)
+facet_riders_help	ເພີ່ມ​ຜູ້ຂັບຂີ່, ຈາກນັ້ນ​ສົ່ງ AWBs ທີ່​ຈອງ​ໄວ້​ຈາກ Ops.
+against_bill_ph	ຕໍ່​ກັບ​ໃບ​ບິນ # ຂ້າງ​ເທິງ (ທາງ​ເລືອກ)
+aliases_ph	ນາມແຝງ — ຊື່​ອື່ນ, ແຍກ​ເຄື່ອງໝາຍ​ຈຸດ
+amount_blank_full_ph	ຈຳນວນ (ຫວ່າງເປົ່າ = ຍອດ​ເງິນ​ເຕັມ)
+amount_owed_ph	ຈຳນວນ​ທີ່​ຕິດ​ຄ້າງ
+amount_ph	ຈໍາ​ນວນ
+amount_received_ph	ຈຳນວນ​ທີ່​ໄດ້ຮັບ
+amount_we_pay_ph	ຈຳນວນ​ທີ່​ພວກ​ເຮົາ​ຈ່າຍ
+awb_scan_ph	AWB / ສະ​ແກນ​ບາ​ໂຄດ
+bulk_csv_ph	CSV ຈໍາ​ນວນ​ຫລາຍ — ຈຸດຫມາຍ​ປາຍທາງ, ຜູ້ຮັບ​ສົ່ງ, ກິໂລ, cod_paise, ຫມາຍ​ເຫດ
+business_name_ph	ຊື່​ທຸລະກິດ
+category_new_ph	ໝວດໝູ່ (ເລືອກ​ໄດ້, ສ້າງ​ຖ້າ​ໃໝ່)
+cod_amount_ph	ຈໍາ​ນວນ COD
 code_bag_ph	ລະຫັດ (ຖົງ)
 conv_factor_ph	ປັດໄຈ (25 = 1 ຖົງ → 25 ກິໂລ)
-country_code_ph	ລະຫັດປະເທດເຊັ່ນ: IN, GB, US, AE, BR
-credit_khata_amount_ph	ຈໍານວນສິນເຊື່ອ / ບັນຊີລາຍການສິນເຊື່ອ
-credit_limit_ph	ວົງເງິນສິນເຊື່ອ (0 = none)
-dim_unit_code_ph	ລະຫັດຫົວໜ່ວຍຂະໜາດ (ຊມ)
-divisor_ph	ຕົວຫານປະລິມານ (5000)
+country_code_ph	ລະຫັດ​ປະເທດ​ເຊັ່ນ: IN, GB, US, AE, BR
+credit_khata_amount_ph	ຈໍາ​ນວນ​ສິນເຊື່ອ / ບັນຊີ​ລາຍການ​ສິນເຊື່ອ
+credit_limit_ph	ວົງເງິນ​ສິນເຊື່ອ (0 = none)
+dim_unit_code_ph	ລະຫັດ​ຫົວໜ່ວຍ​ຂະໜາດ (ຊມ)
+divisor_ph	ຕົວຫານ​ປະລິມານ (5000)
 extra_per_kg_ph	ພິເສດ / ກິໂລ
-first_amount_ph	ຈໍານວນທໍາອິດ
-first_kg_ph	ກິໂລທຳອິດ (ແຜ່ນ)
-from_code_ph	ຈາກລະຫັດ (ຖົງ)
-item_name_lang_ph	ຊື່ລາຍການ — ພິມເປັນພາສາຂອງເຈົ້າ
-login_id_opt_ph	ຊື່ຜູ້ໃຊ້ (ຕ້ອງການ, ເປັນເອກະລັກ)
-manager_pin_ph	ຜູ້ຈັດການ PIN ອະນຸມັດ (ພຽງແຕ່ຖ້າທ່ານບໍ່ສາມາດໂມໂຫໄດ້)
-new_branch_name_ph	ຊື່ສາຂາໃໝ່
-new_password_ph	ລະຫັດຜ່ານໃໝ່ (ທາງເລືອກ)
-new_pin_ph	ໃໝ່ PIN (4–12 ຕົວເລກ)
+first_amount_ph	ຈໍາ​ນວນ​ທໍາ​ອິດ
+first_kg_ph	ກິໂລ​ທຳອິດ (ແຜ່ນ)
+from_code_ph	ຈາກ​ລະຫັດ (ຖົງ)
+item_name_lang_ph	ຊື່​ລາຍການ — ພິມ​ເປັນ​ພາສາ​ຂອງ​ເຈົ້າ
+login_id_opt_ph	ຊື່​ຜູ້​ໃຊ້ (ຕ້ອງການ, ເປັນ​ເອກະລັກ)
+manager_pin_ph	ຜູ້ຈັດການ PIN ອະນຸມັດ (ພຽງແຕ່​ຖ້າ​ທ່ານ​ບໍ່​ສາມາດ​ໂມໂຫ​ໄດ້)
+new_branch_name_ph	ຊື່​ສາຂາ​ໃໝ່
+new_password_ph	ລະຫັດ​ຜ່ານ​ໃໝ່ (ທາງ​ເລືອກ)
+new_pin_ph	ໃໝ່ PIN (4–12 ຕົວ​ເລກ)
 note_bank_ph	ໝາຍເຫດ (ຝາກ, ຖອນ,…)
 note_buy_expense_ph	ໝາຍເຫດ (ນໍ້າມັນ, ຄ່າເຊົ່າ,…)
-note_expense_ph	ຫມາຍເຫດ (ນໍ້າມັນ, ຫ້ອງການ, ... )
-notify_phone_ph	ແຈ້ງ​ການ​ໂທລະ​ສັບ (WhatsApp / SMS hook​)
-options_moklanjo_ph	ທາງເລືອກ (ທາງເລືອກ) — ໃຫຍ່=20, ຫໍ່ຂອງຂວັນ=10
-part_second_way_ph	ສ່ວນໂດຍວິທີທີສອງ (ທາງເລືອກ)
+note_expense_ph	ຫມາຍ​ເຫດ (ນໍ້າມັນ, ຫ້ອງການ, ... )
+notify_phone_ph	ແຈ້ງການ​ໂທລະສັບ (WhatsApp / SMS hook)
+options_moklanjo_ph	ທາງ​ເລືອກ (ທາງ​ເລືອກ) — ໃຫຍ່=20, ຫໍ່​ຂອງຂວັນ=10
+part_second_way_ph	ສ່ວນ​ໂດຍ​ວິທີ​ທີ​ສອງ (ທາງ​ເລືອກ)
 phone_ph	ໂທລະສັບ
 address_ph	ທີ່ຢູ່
-party_custom_fields_heading	ຊ່ອງຂໍ້ມູນແບບກຳນົດເອງ (ພາກສ່ວນທີ່ເລືອກ)
-party_custom_help	ເພີ່ມປ້າຍກຳກັບ ແລະມູນຄ່າໃນງານລ້ຽງນີ້ — WhatsApp, GSTIN, ລະຫັດເສັ້ນທາງ, …
-party_custom_key_ph	ຊື່ຊ່ອງຂໍ້ມູນ (ເຊັ່ນ: WhatsApp)
+party_custom_fields_heading	ຊ່ອງ​ຂໍ້ມູນ​ແບບ​ກຳນົດ​ເອງ (ພາກສ່ວນ​ທີ່​ເລືອກ)
+party_custom_help	ເພີ່ມ​ປ້າຍ​ກຳກັບ ແລະ​ມູນຄ່າ​ໃນ​ງານລ້ຽງ​ນີ້ — WhatsApp, GSTIN, ລະຫັດ​ເສັ້ນທາງ, …
+party_custom_key_ph	ຊື່​ຊ່ອງ​ຂໍ້ມູນ (ເຊັ່ນ: WhatsApp)
 party_custom_value_ph	ມູນຄ່າ
-party_custom_add	ເພີ່ມຊ່ອງຂໍ້ມູນ
-party_custom_remove	ເອົາຊ່ອງຂໍ້ມູນອອກ
-party_custom_empty	ບໍ່ມີຊ່ອງຂໍ້ມູນແບບກຳນົດເອງເທື່ອ
-party_custom_pick_first	ເລືອກງານລ້ຽງເພື່ອເພີ່ມຊ່ອງຂໍ້ມູນແບບກຳນົດເອງ
-place_name_ph	ຊື່ຂອງສະຖານທີ່ນີ້
+party_custom_add	ເພີ່ມ​ຊ່ອງ​ຂໍ້ມູນ
+party_custom_remove	ເອົາ​ຊ່ອງ​ຂໍ້ມູນ​ອອກ
+party_custom_empty	ບໍ່ມີ​ຊ່ອງ​ຂໍ້ມູນ​ແບບ​ກຳນົດ​ເອງ​ເທື່ອ
+party_custom_pick_first	ເລືອກ​ງານລ້ຽງ​ເພື່ອ​ເພີ່ມ​ຊ່ອງ​ຂໍ້ມູນ​ແບບ​ກຳນົດ​ເອງ
+place_name_ph	ຊື່​ຂອງ​ສະຖານທີ່​ນີ້
 price_ph	ລາຄາ
-qty_example_ph	ຈໍານວນ (ເຊັ່ນ: 1.5 ສໍາລັບກິໂລ)
+qty_example_ph	ຈໍາ​ນວນ (ເຊັ່ນ: 1.5 ສໍາ​ລັບ​ກິໂລ)
 quantity_ph	ປະລິມານ
 reason_required_ph	ເຫດຜົນ (ຕ້ອງການ)
-role_title_ph	ຊື່ບົດບາດ (ເຊັ່ນ: Barista)
-service_pct_ph	ການບໍລິການ % ທາງເລືອກ 0/10/12
-short_code_ph	ລະຫັດສັ້ນ (MG02)
-slab_kg_ph	ຝາອັດປາກຂຸມສາມາດສາກໄດ້ເປັນກິໂລ (0.5)
-staff_name_ph	ຊື່ພະນັກງານ / id
-starting_password_ph	ເລີ່ມລະຫັດຜ່ານ (ທາງເລືອກ)
-starting_pin_ph	ເລີ່ມຕົ້ນ PIN (4–12 ຕົວເລກ)
-tax_rate_ph	ຊື່ອັດຕາພາສີ ຫຼື % — ມາດຕະຖານ, ຫຼຸດ, 0, 5, 12, 18, 20
+role_title_ph	ຊື່​ບົດບາດ (ເຊັ່ນ: Barista)
+service_pct_ph	ການ​ບໍລິການ % ທາງ​ເລືອກ 0/10/12
+short_code_ph	ລະຫັດ​ສັ້ນ (MG02)
+slab_kg_ph	ຝາ​ອັດ​ປາກ​ຂຸມ​ສາມາດ​ສາກ​ໄດ້​ເປັນ​ກິໂລ (0.5)
+staff_name_ph	ຊື່​ພະນັກງານ / id
+starting_password_ph	ເລີ່ມ​ລະຫັດ​ຜ່ານ (ທາງ​ເລືອກ)
+starting_pin_ph	ເລີ່ມຕົ້ນ PIN (4–12 ຕົວ​ເລກ)
+tax_rate_ph	ຊື່​ອັດຕາ​ພາສີ ຫຼື % — ມາດຕະຖານ, ຫຼຸດ, 0, 5, 12, 18, 20
 to_code_ph	ລະຫັດ (kg)
-uncleared_no_ph	ບໍ່ຈະແຈ້ງ # ຂ້າງເທິງ
-unit_cost_ph	ຄ່າໃຊ້ຈ່າຍຕໍ່ຫນ່ວຍ
+uncleared_no_ph	ບໍ່​ຈະແຈ້ງ # ຂ້າງ​ເທິງ
+unit_cost_ph	ຄ່າ​ໃຊ້​ຈ່າຍ​ຕໍ່​ຫນ່ວຍ
 unit_kg_blank_ph	ໜ່ວຍ (ກິໂລ ຫຼື ຫວ່າງ)
 unit_name_bag_ph	ຊື່ (ຖົງ)
-weight_unit_code_ph	ລະຫັດຫົວໜ່ວຍນ້ຳໜັກ (kg)
-zone_name_ph	ຊື່ເຂດ
-pay_credit	ໃນບັນຊີ
-book_kind_today	ປຶ້ມມື້ນີ້
-book_kind_month	ປຶ້ມເດືອນນີ້
-book_kind_aging	ດີເດັ່ນ / ເດບິດ - ສິນເຊື່ອ
-book_kind_balance	ໃບດຸ່ນດ່ຽງ
-ops_desk_help	ສະແກນ AWB ດ້ວຍເຄື່ອງສະແກນບາໂຄດ USB (ຫຼືພິມມັນ) → ຊອກຫາ. ຫຼັງຈາກນັ້ນ, ລ່ວງຫນ້າ, ພິມປ້າຍຊື່, ຫຼືເກັບກໍາ COD. ປ້າຍພິມລະຫັດ 128.
-role_help_consignor	ບົດບາດ: ຜູ້ສົ່ງມອບ — AR (ພວກເຂົາເປັນໜີ້ພວກເຮົາ). ບໍລິສັດດຽວກັນສາມາດເປັນ Carrier ໄດ້.
-role_help_carrier	ພາລະບົດບາດ: ຜູ້ໃຫ້ບໍລິການ — AP (ພວກເຮົາເປັນໜີ້ເຂົາເຈົ້າ). ບໍລິສັດດຽວກັນຍັງສາມາດເປັນຜູ້ສົ່ງມອບ.
-role_help_both	ພາລະບົດບາດ: ຜູ້ສົ່ງມອບ + ຜູ້ໃຫ້ບໍລິການ — ຝ່າຍໜຶ່ງ, ບັນຊີລາຍການ AR ແລະ AP, ສຸດທິໃນບົດລາຍງານ.
-role_help_supplier	ພາລະບົດບາດ: ຜູ້ສະຫນອງ — AP ສໍາລັບການຊື້.
-lane_declared_label	ການຈອງບັນຊີ
-lane_owner_label	ການຈອງເງິນສົດ
-money_lane_bill	ໃບບິນ: {lane}
+weight_unit_code_ph	ລະຫັດ​ຫົວໜ່ວຍ​ນ້ຳ​ໜັກ (kg)
+zone_name_ph	ຊື່​ເຂດ
+pay_credit	ໃນ​ບັນຊີ
+book_kind_today	ປຶ້ມ​ມື້ນີ້
+book_kind_month	ປຶ້ມ​ເດືອນ​ນີ້
+book_kind_aging	ດີ​ເດັ່ນ / ເດ​ບິດ - ສິນເຊື່ອ
+book_kind_balance	ໃບ​ດຸ່ນ​ດ່ຽງ
+ops_desk_help	ສະ​ແກນ AWB ດ້ວຍ​ເຄື່ອງ​ສະ​ແກນ​ບາ​ໂຄດ USB (ຫຼື​ພິມ​ມັນ) → ຊອກຫາ. ຫຼັງຈາກນັ້ນ, ລ່ວງຫນ້າ, ພິມ​ປ້າຍ​ຊື່, ຫຼື​ເກັບ​ກໍາ COD. ປ້າຍ​ພິມ​ລະຫັດ 128.
+role_help_consignor	ບົດບາດ: ຜູ້​ສົ່ງ​ມອບ — AR (ພວກເຂົາ​ເປັນ​ໜີ້​ພວກ​ເຮົາ). ບໍລິສັດ​ດຽວກັນ​ສາມາດ​ເປັນ Carrier ໄດ້.
+role_help_carrier	ພາລະ​ບົດບາດ: ຜູ້​ໃຫ້​ບໍລິການ — AP (ພວກ​ເຮົາ​ເປັນ​ໜີ້​ເຂົາເຈົ້າ). ບໍລິສັດ​ດຽວກັນ​ຍັງ​ສາມາດ​ເປັນ​ຜູ້​ສົ່ງ​ມອບ.
+role_help_both	ພາລະ​ບົດບາດ: ຜູ້​ສົ່ງ​ມອບ + ຜູ້​ໃຫ້​ບໍລິການ — ຝ່າຍ​ໜຶ່ງ, ບັນຊີ​ລາຍການ AR ແລະ AP, ສຸດທິ​ໃນ​ບົດ​ລາຍງານ.
+role_help_supplier	ພາລະ​ບົດບາດ: ຜູ້​ສະຫນອງ — AP ສໍາ​ລັບ​ການຊື້.
+lane_declared_label	ການ​ຈອງ​ບັນຊີ
+lane_owner_label	ການ​ຈອງ​ເງິນສົດ
+money_lane_bill	ໃບ​ບິນ: {lane}
 sel_copy	ສຳເນົາ
-sel_select_all	ເລືອກທັງໝົດ
-sel_copied	ສຳເນົາແລ້ວ
-nav_loading	ກຳລັງໂຫຼດ…
+sel_select_all	ເລືອກ​ທັງໝົດ
+sel_copied	ສຳເນົາ​ແລ້ວ
+nav_loading	ກຳ​ລັງ​ໂຫຼດ…

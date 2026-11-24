@@ -260,7 +260,7 @@ add_conversion	დაამატეთ კონვერტაცია
 add_item_plain	პოზიციის დამატება
 add_note	შენიშვნის დამატება
 add_opening_balance	დაამატეთ გახსნის ბალანსი
-add_rider	მხედრის დამატება
+add_rider	კურიერის დამატება
 add_staff	დაამატეთ პერსონალი
 add_unit	ერთეულის დამატება
 add_use_name	დაამატეთ / გამოიყენეთ ეს სახელი
@@ -359,7 +359,7 @@ counter_agency_ph	მრიცხველის / სააგენტოს �
 create_backup	შექმენით სარეზერვო საშუალება
 day_close_summary	დღის დახურვის შეჯამება
 delete_party	წაშალეთ არჩეული მომხმარებელი ან მომწოდებელი
-dispatch_to_rider	დისპეტჩერიზაცია დაჯავშნილია → მხედარი
+dispatch_to_rider	რეგისტრირებულის გადაცემა → კურიერი
 docket_charge_ph	Docket მუხტი
 declared_value_ph	დეკლარირებული ღირებულება
 contents_ph	შინაარსი
@@ -400,14 +400,14 @@ ndr_customer_unavailable	არ არის
 ndr_door_locked	კარი ჩაკეტილია
 ndr_other	სხვა
 ndr_refused	უარი თქვა
-out_for_delivery	გამოვიდა მიწოდებისთვის
+out_for_delivery	მიწოდების გზაზეა
 print_drs	ბეჭდვა DRS
 print_run_sheet	გაშვების ფურცლის დაბეჭდვა
 reattempt	ხელახალი მცდელობა
 rider_cod_handed_ph	COD ჩაბარდა
-settle_rider_cod	მოაგვარეთ მხედარი COD
+settle_rider_cod	კურიერის COD-ის ანგარიშსწორება
 mode_desk	მაგიდა
-mode_rider	მხედარი
+mode_rider	კურიერი
 waiting_office	ელოდება ოფისში მისვლას
 capture_signature	ხელმოწერის დაჭერა
 incoming_manifest	შემომავალი მანიფესტი
@@ -415,7 +415,7 @@ pickup_request	აყვანის მოთხოვნა
 pickup_run	პიკაპის გაშვება
 auto_assign_area	არეალის ავტომატური მინიჭება
 reorder_stops	ხელახალი შეკვეთა ჩერდება
-settle_rider_pay	მოაგვარეთ მხედრის ანაზღაურება
+settle_rider_pay	კურიერის ანაზღაურების ანგარიშსწორება
 vehicle_inspect	ავტომობილის ინსპექტირება
 print_docket	საბეჭდი დოკეტი
 franchise_statement	ფრენჩაიზის განცხადება
@@ -458,10 +458,10 @@ refund	თანხის დაბრუნება
 remit_cod	გადარიცხვა COD (წვეულება)
 remove_selected	არჩეულის წაშლა
 restore_backup	სარეზერვო ასლის აღდგენა
-rider_name_ph	მხედრის სახელი
-rider_phone_ph	მხედრის ტელეფონი
-riders	მხედრები
-riders_own_fleet	მხედრები (საკუთარი ფლოტი)
+rider_name_ph	კურიერის სახელი
+rider_phone_ph	კურიერის ტელეფონი
+riders	კურიერები
+riders_own_fleet	კურიერები (საკუთარი ფლოტი)
 rollup	შემაჯამებელი შეკრება
 save_booking_measures	შეინახეთ დაჯავშნის ზომები
 save_brand	შეინახეთ ბრენდი
@@ -829,13 +829,13 @@ lane_empty	აქ არაფერია ახლა.
 picked_fmt	არჩეულია {n}
 pick_all	აირჩიე ყველა
 bag_for_carrier	ხელი გადამზიდველს
-send_with_rider	გაგზავნეთ მხედართან ერთად
+send_with_rider	კურიერით გაგზავნა
 out_again	ისევ გარეთ
-return_to_sender	დაუბრუნდით გამგზავნს
+return_to_sender	გამგზავნისთვის დაბრუნება
 runs_bags_heading	ბოლო სირბილი და ჩანთები
 print_word	ბეჭდვა
 bag_word	გადამზიდი ჩანთა
-run_word	მხედარი სირბილი
+run_word	კურიერის მარშრუტი
 parcels_fmt	{n} ამანათები
 parcel_history	ისტორია
 attempt_fmt	სცადეთ {n}
@@ -851,11 +851,11 @@ parcel_one_fmt	{n} ამანათი
 facet_bank_title	ანგარიშები
 facet_bank_help	დღის წიგნი, მომხმარებელთა ან მიმწოდებლის დაბერება, საბანკო პოსტები და პერიოდის P&L.
 facet_ops_title	ტვირთები და გაგზავნა
-facet_ops_help	დაასკანირეთ ან აკრიფეთ AWB → Find, შემდეგ წინსვლა / დაბეჭდეთ ლეიბლი / COD. გაგზავნა მხედართან ან გადამზიდავთან.
+facet_ops_help	დაასკანირეთ ან აკრიფეთ AWB → Find, შემდეგ წინსვლა / დაბეჭდეთ ლეიბლი / COD. გადაეცით კურიერს ან გადამზიდავს.
 facet_cod_title	COD რეგისტრი
 facet_cod_help	შეაგროვეთ მიწოდებისას, შემდეგ გადაიტანეთ ტვირთგამგზავნს.
-facet_riders_title	მხედრები (საკუთარი ფლოტი)
-facet_riders_help	დაამატეთ მხედრები, შემდეგ გაგზავნეთ დაჯავშნილი AWB-ები Ops-დან.
+facet_riders_title	კურიერები (საკუთარი ფლოტი)
+facet_riders_help	დაამატეთ კურიერები, შემდეგ გადაეცით რეგისტრირებული AWB-ები Ops-დან.
 against_bill_ph	ზემოთ # ანგარიშის წინააღმდეგ (არასავალდებულო)
 aliases_ph	მეტსახელები - სხვა სახელები, მძიმით გამოყოფილი
 amount_blank_full_ph	თანხა (ცარიელი = სრული ბალანსი)

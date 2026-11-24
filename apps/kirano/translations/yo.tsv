@@ -3,7 +3,7 @@ unlock	Ṣii silẹ
 sell	Ta
 buy	Ra
 books	Iwe akọọlẹ ọjọ
-books_help	Ipo oni. Ta = owo sinu. Ra = rira & inawo. Awọn ẹgbẹ = awọn onibara kirẹditi & awọn olupese.
+books_help	Ipò òní. Tà = owó tí ń wọlé. Rà = rírà & ìnáwó. Àwọn alájọṣòwò = àwọn oníbàárà gbèsè & àwọn olùpèsè.
 buy_help	Awọn owo sisanwo ati awọn owo olupese (owo jade). Lori-iroyin duro lori onibara tabi iwe apamọ olupese.
 sell_money_in	Ta awọn nkan
 buy_money_out	Owo sisan / olupese
@@ -23,8 +23,8 @@ stock_minus	- Iṣura
 stock_plus	+ Iṣura
 settle_cash	Ṣeto owo
 settle_card	Kaadi yanju
-items	Awọn ohun akojọ aṣayan
-nav_items	Awọn ohun akojọ aṣayan
+items	Àwọn ọjà
+nav_items	Àwọn ọjà
 items_help	Fọwọ ba ohun kan lati ṣatunkọ rẹ. Nkan tuntun n pa fọọmu naa kuro. Wa pẹlu orukọ tabi koodu kukuru, ṣeto idiyele kan (0 dara), lẹhinna Fikun-un. Tita ti gba silẹ tẹlẹ tọju orukọ ti wọn gba agbara pẹlu.
 add_item	Fi ohun akojọ aṣayan kun
 new_item	Nkan akojọ aṣayan titun
@@ -37,10 +37,10 @@ removed_help	Imupadabọ fi ohun naa pada si Awọn nkan gangan bi o ti jẹ - i
 restore_item	Mu pada
 empty_catalog	Ko si awọn nkan sibẹsibẹ.
 total	Lapapọ
-cash	Owo
+cash	Owó ọwọ́
 upi	UPI
 card	Kaadi
-credit	Ẹgbẹ
+credit	Àwọn alájọṣòwò
 clear	Ko o
 today_prefix	Loni
 owed	olutayo
@@ -145,7 +145,7 @@ diag_cleared	Awọn akọọlẹ iwadii ti nso
 sidebar_settings	Pẹpẹ ẹgbẹ
 sidebar_settings_help	Awọn aami kanna bi iṣinipopada ẹgbẹ. Fa kana lati tunto. Yi iyipada pada lati fihan tabi tọju. Eto ati Titiipa nigbagbogbo duro lori igi.
 sidebar_always_on_short	Nigbagbogbo lori
-sidebar_menu_items	Awọn ohun akojọ aṣayan
+sidebar_menu_items	Àwọn ọjà
 sidebar_enable_all	Jeki Gbogbo
 sidebar_disable_all	Mu Gbogbo
 sidebar_order_saved	Ibere legbe ti o ti fipamọ
@@ -182,7 +182,7 @@ credit_summary_fmt	{} onibara · ṣiṣi kirẹditi {} · awọn ilọsiwaju ti
 recent_label	Laipẹ:
 inventory	Oja
 branches	Awọn ẹka
-credit_customers	Ẹgbẹ (awọn akọọlẹ kirẹditi)
+credit_customers	Àwọn alájọṣòwò (ìwé gbèsè & àwọn olùpèsè)
 customer_name_ph	Onibara tabi orukọ olupese
 new_customer_ph	Onibara titun tabi orukọ olupese
 item_price_ph	Iye owo
@@ -371,7 +371,7 @@ restore_backup	Mu afẹyinti pada
 role_both	Mejeeji
 role_admin	Abojuto
 role_cashier	Owo
-role_customer	Onibara
+role_customer	Oníbàárà
 role_manager	Alakoso
 history_retention	Itan iṣowo
 history_retention_help	Laifọwọyi-ko awọn tita atijọ ati awọn tikẹti atijọ. Awọn nkan, oṣiṣẹ, ati awọn eto duro. Pa bayi nu gbogbo awọn ori ila iṣowo ati ki o tọju iṣeto.
@@ -722,7 +722,7 @@ categories_help	Tẹ Lo lati ṣe faili ohun akojọ aṣayan loke labẹ ẹka 
 dish_search_ph	Wa awọn nkan tabi koodu kukuru…
 sizes_as_items_ph	Awọn iwọn bi awọn ohun akojọ aṣayan lọtọ (aṣayan) - Idaji = 120, Kikun = 200
 dish_group_ph	Pack iwọn Ẹgbẹ (iyan) - f.eks. Atta 1kg / 5kg
-discount	Eni owo
+discount	Ẹ̀dínwó
 remove_discount	Yọ ẹdinwo kuro
 apply_discount	Waye eni
 save_opening_cash	Fi owo ṣiṣi pamọ
@@ -756,7 +756,7 @@ server_host_selected	Lilo {host} — tẹ koodu isọpọ sii, lẹhinna Sopọ 
 approval_pin_ph	Alakoso PIN (nikan ti o ba beere)
 menu_search_ph	Wa ohun akojọ aṣayan tabi koodu kukuru
 customer_paid_ph	Onibara san
-tip_ph	Imọran
+tip_ph	Owó ìmoore
 find_server	Wa olupin ile itaja naa
 bill_format	Bill kika
 bill_header_ph	Adirẹsi | foonu
@@ -770,11 +770,11 @@ bill_line_shop	Itaja
 bill_line_address	Adirẹsi
 bill_line_fssai	FSSAI
 bill_line_title	Akọle
-bill_line_customer	Onibara
+bill_line_customer	Oníbàárà
 bill_line_bill_no	Nọ́mbà bíìlì
 bill_line_time	Akoko
 bill_line_cashier	Olùgbowó
-bill_line_items	Awọn ohun akojọ aṣayan
+bill_line_items	Àwọn ọjà
 bill_line_total	Lapapọ
 bill_line_footer	Ẹlẹsẹ
 bill_line_upi	UPI

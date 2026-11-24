@@ -2,7 +2,7 @@
 app_tagline	Awọn aṣẹ ile ounjẹ, ibi idana ounjẹ & awọn iwe afọwọkọ. Ọfẹ offline.
 unlock	Ṣii silẹ
 pin_hint	Olohun PIN bẹrẹ bi 0000
-sell	Ile ounjẹ ibere
+sell	Ìbéèrè oúnjẹ
 buy	Ra
 books	Iwe akọọlẹ ọjọ
 books_help	Lakotan iroyin oni. Awọn ibere = awọn ibere ti nwọle. Ra = awọn rira ati awọn inawo. Awọn onibara ati awọn olupese = awọn onibara kirẹditi ati awọn olupese.
@@ -28,7 +28,7 @@ stock_plus	+ Iṣura
 settle_cash	Ṣeto owo
 settle_card	Kaadi yanju
 items	Akojọ & awọn ohun akojọ aṣayan
-nav_items	Akojọ aṣyn
+nav_items	Àkójọ oúnjẹ
 more	Die e sii
 your_items	Akojọ aṣayan rẹ
 items_help	Fọwọ ba ohun akojọ aṣayan kan lati ṣatunkọ rẹ. Nkan akojọ aṣayan titun nu fọọmu naa kuro. Wa awọn ounjẹ wa tabi tẹ orukọ tirẹ ati fọto, ṣeto idiyele kan (0 dara), lẹhinna Fikun-un. Tita ti gba silẹ tẹlẹ tọju orukọ ti wọn gba agbara pẹlu.
@@ -43,10 +43,10 @@ removed_help	Pada sipo fi ohun akojọ aṣayan pada si ori akojọ aṣayan gan
 restore_item	Mu pada
 empty_catalog	Ko si awopọ sibẹsibẹ.
 total	Lapapọ
-cash	Owó
+cash	Owó ọwọ́
 upi	UPI
 card	Kaadi
-credit	Àwọn oníbàárà
+credit	Àwọn alájọṣòwò
 clear	Ko o
 ready_to_sell	Ṣetan si iwe afọwọkọ
 today_prefix	Loni
@@ -105,12 +105,12 @@ bill_line_shop	Itaja
 bill_line_address	Adirẹsi
 bill_line_fssai	FSSAI
 bill_line_title	Akọle
-bill_line_customer	Onibara
+bill_line_customer	Oníbàárà
 bill_line_bill_no	Nọ́mbà bíìlì
 bill_line_time	Akoko
 bill_line_cashier	Olùgbowó
-bill_line_table	Ile ijeun tabili
-bill_line_items	Awọn ohun akojọ aṣayan
+bill_line_table	Tábìlì
+bill_line_items	Àwọn ohun
 bill_line_total	Lapapọ
 bill_line_footer	Ẹlẹsẹ
 bill_line_upi	UPI
@@ -252,10 +252,10 @@ sidebar_order_saved	Ibere legbe ti o ti fipamọ
 sidebar_visibility_saved	Ti fipamọ hihan legbe
 amounts_hide	Tọju
 amounts_show	Fihan
-counter	Atako
+counter	Kántà
 dine_in	Ounjẹ-inu
 takeaway	Gbigba kuro
-order	Ile ounjẹ ibere
+order	Ìbéèrè oúnjẹ
 tables	Awọn tabili ounjẹ
 kitchen	Idana
 sales	Titaja
@@ -606,7 +606,7 @@ restore_backup	Mu afẹyinti pada
 role_both	Mejeeji
 role_admin	Abojuto
 role_cashier	Olùgbà owó
-role_customer	Onibara
+role_customer	Oníbàárà
 role_manager	Alakoso
 history_retention	Itan iṣowo
 history_retention_help	Pa awọn tita atijọ kuro laifọwọyi ati KOTs. Akojọ aṣyn, oṣiṣẹ, ati eto duro. Pa bayi nu gbogbo awọn ori ila iṣowo ati ki o tọju iṣeto.
@@ -1119,11 +1119,11 @@ add_a_table	Fi tabili ounjẹ kun
 add_station_heading	Fi ibudo idana kun
 categories_help	Tẹ Lo lati ṣe faili ohun akojọ aṣayan loke labẹ ẹka naa. Fọto yoo fun ẹya ni aworan kan; laisi ọkan o fihan awọn ibẹrẹ rẹ.
 dish_search_ph	Orukọ ohun akojọ aṣayan akojọ aṣayan - wa awọn ounjẹ wa tabi tẹ tirẹ
-tile_free	Ofo
-tile_occupied	Ti tẹdo
-tile_food_ready	Ounje setan
-tile_bill_printed	Bill tejede
-tile_paid	Sanwo
+tile_free	Òfo
+tile_occupied	Wọ́n jókòó
+tile_food_ready	Oúnjẹ ti ṣetán
+tile_bill_printed	A ti tẹ ìwé-owó
+tile_paid	A ti sanwó
 tile_bill_btn	Ìwé-owó
 tile_occupy_btn	Awọn alejo ijoko
 tile_free_btn	Tu tabili sílẹ̀
@@ -1135,7 +1135,7 @@ summary_on_floor	ninu ile ijeun alabagbepo
 floor	Ile ijeun
 sizes_as_items_ph	Awọn iwọn bi awọn ohun akojọ aṣayan lọtọ (aṣayan) - Idaji = 120, Kikun = 200
 dish_group_ph	Ẹgbẹ satelaiti (iyan) - f.eks. Paneer Tikka
-discount	Eni owo
+discount	Ẹ̀dínwó
 remove_discount	Yọ ẹdinwo kuro
 apply_discount	Waye eni
 save_opening_cash	Fi owo ṣiṣi pamọ
@@ -1150,8 +1150,8 @@ shift_handover	Yi lọ yi bọ handover
 shift_since	Yi naficula niwon
 expected_in_drawer	O ti ṣe yẹ ni duroa
 right_discount	Fun eni
-floor_in_kitchen	Ninu idana
-floor_eating	Sin
+floor_in_kitchen	Ní ilé ìdáná
+floor_eating	Oúnjẹ ti dé
 pick_category	Yan ẹka kan
 close_category_list	Pa akojọ ẹka
 new_category_row	Ẹka titun - ti a ṣẹda nigbati o ba fi ohun akojọ aṣayan pamọ
@@ -1200,7 +1200,7 @@ line_target_ph	Lọ si tabili ounjẹ (fun apẹẹrẹ D5)
 confirm	Jẹrisi
 menu_search_ph	Wa ohun akojọ aṣayan tabi koodu kukuru
 customer_paid_ph	Onibara san
-tip_ph	Tíìpù
+tip_ph	Owó ìmoore
 table_area_ph	Agbegbe (fun apẹẹrẹ Dine In, Parcel, AC)
 table_range_ph	Ọpọlọpọ ni ẹẹkan: D1-D20
 add_these_tables	Fi awọn tabili ounjẹ wọnyi kun
@@ -1232,7 +1232,7 @@ kot_show_waiter	Oluduro
 kot_hide_waiter	Tọju Oluduro
 kot_show_station	Ibusọ
 kot_hide_station	Tọju ibudo
-kot_show_table	Ile ijeun tabili
+kot_show_table	Tábìlì
 kot_hide_table	Tọju tabili ounjẹ
 kot_show_kot_no	Nọ́mbà KOT
 kot_hide_kot_no	Tọju KOT Rara
@@ -1326,8 +1326,8 @@ dine_in_pick_table	Dine-in — mu tabili ile ijeun loju iboju ile ijeun
 choose_table	Yan tabili ounjẹ kan
 change_table	Yi tabili ounjẹ pada
 pick_table_banner	Mu tabili ounjẹ kan fun aṣẹ yii
-items_word	awọn ohun akojọ
-items_section	Awọn ohun akojọ aṣayan
+items_word	ohun
+items_section	Àwọn oúnjẹ
 back_to_order	Pada si ibere
 new_items_head	Ko firanṣẹ sibẹsibẹ
 price_ph	Iye owo

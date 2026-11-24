@@ -110,7 +110,7 @@ bill_line_bill_no	ანგარიშის №
 bill_line_time	დრო
 bill_line_cashier	მოლარე
 bill_line_table	სასადილო მაგიდა
-bill_line_items	მენიუს ელემენტები
+bill_line_items	პოზიციები
 bill_line_total	ჯამი
 bill_line_footer	ქვედა კოლონტიტული
 bill_line_upi	UPI
@@ -1119,8 +1119,8 @@ add_a_table	დაამატეთ სასადილო მაგიდა
 add_station_heading	დაამატეთ სამზარეულოს სადგური
 categories_help	შეეხეთ გამოყენებას მენიუს პუნქტის ზემოთ მოცემულ კატეგორიაში შესატანად. ფოტო აძლევს კატეგორიას სურათს; ერთის გარეშე აჩვენებს მის ინიციალებს.
 dish_search_ph	მენიუს პუნქტის სახელი — მოძებნეთ ჩვენი კერძები ან ჩაწერეთ თქვენი
-tile_free	ვაკანტური
-tile_occupied	ოკუპირებული
+tile_free	თავისუფალი
+tile_occupied	დაკავებული
 tile_food_ready	საჭმელი მზადაა
 tile_bill_printed	დაბეჭდილია სტუმრის ანგარიში
 tile_paid	გადახდილი
@@ -1151,7 +1151,7 @@ shift_since	ეს ცვლილება მას შემდეგ
 expected_in_drawer	მოსალოდნელია უჯრაში
 right_discount	მიეცით ფასდაკლება
 floor_in_kitchen	სამზარეულოში
-floor_eating	მსახურობდა
+floor_eating	მიტანილია
 pick_category	აირჩიეთ კატეგორია
 close_category_list	კატეგორიების სიის დახურვა
 new_category_row	ახალი კატეგორია — შექმნილია მენიუს ელემენტის შენახვისას
@@ -1326,8 +1326,8 @@ dine_in_pick_table	დარბაზში — აირჩიეთ სას�
 choose_table	აირჩიეთ სასადილო მაგიდა
 change_table	სასადილო მაგიდის შეცვლა
 pick_table_banner	შეარჩიეთ სასადილო მაგიდა ამ შეკვეთისთვის
-items_word	მენიუს ელემენტები
-items_section	მენიუს ელემენტები
+items_word	პოზიცია
+items_section	მენიუს პოზიციები
 back_to_order	შეკვეთაზე დაბრუნება
 new_items_head	ჯერ არ არის გაგზავნილი
 price_ph	ფასი
@@ -1364,7 +1364,7 @@ resv_add	დაჯავშნე სასადილო მაგიდა
 resv_seat	მჯდომარე
 resv_none	ჯავშნები არ მოდის.
 guests_word	სტუმრები
-delivery_by_ph	მიწოდება (მხედრის ან პერსონალის სახელით)
+delivery_by_ph	ვინ მიიტანს (კურიერი / თანამშრომელი)
 kitchen_all_day	მომზადება ახლა: {items}
 kitchen_all_day_head	ახლა საზ
 kitchen_tab_live	ცოცხალი

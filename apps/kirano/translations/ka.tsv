@@ -1,6 +1,6 @@
 # Georgian — ქართული (ka). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	განბლოკვა
-sell	გაყიდე
+sell	გაყიდვა
 buy	შესყიდვა
 books	დღის წიგნი
 books_help	დღევანდელი პოზიცია. გაყიდვა = ფული. ყიდვა = შესყიდვები და ხარჯები. მხარეები = საკრედიტო კლიენტები და მომწოდებლები.
@@ -23,8 +23,8 @@ stock_minus	− მარაგი
 stock_plus	+ მარაგი
 settle_cash	ნაღდით დახურვა
 settle_card	ბარათით დახურვა
-items	მენიუს ელემენტები
-nav_items	მენიუს ელემენტები
+items	საქონელი
+nav_items	საქონელი
 items_help	შეეხეთ ერთეულს მის რედაქტირებისთვის. ახალი ელემენტი ასუფთავებს ფორმას. მოძებნეთ სახელი ან მოკლე კოდი, დააყენეთ ფასი (0 კარგია), შემდეგ დაამატეთ. უკვე დაფიქსირებული გაყიდვები ინახავს სახელს, რომლითაც მათ ბრალი ედებოდათ.
 add_item	პოზიციის დამატება
 new_item	ახალი პოზიცია
@@ -145,7 +145,7 @@ diag_cleared	დიაგნოსტიკის ჟურნალები �
 sidebar_settings	გვერდითი ზოლი
 sidebar_settings_help	იგივე ხატულები, რაც გვერდით რელსზე. გადაათრიეთ რიგი რიგის შესაცვლელად. გადართეთ ჩვენება ან დამალვა. პარამეტრები და საკეტი ყოველთვის რჩება ზოლზე.
 sidebar_always_on_short	ყოველთვის ჩართ.
-sidebar_menu_items	მენიუს ელემენტები
+sidebar_menu_items	საქონელი
 sidebar_enable_all	ყველას ჩართვა
 sidebar_disable_all	ყველას გამორთვა
 sidebar_order_saved	გვერდითი ზოლის რიგი შენახულია
@@ -774,7 +774,7 @@ bill_line_customer	დამკვეთი
 bill_line_bill_no	ანგარიშის №
 bill_line_time	დრო
 bill_line_cashier	მოლარე
-bill_line_items	მენიუს ელემენტები
+bill_line_items	პოზიციები
 bill_line_total	ჯამი
 bill_line_footer	ქვედა კოლონტიტული
 bill_line_upi	UPI

@@ -1,1242 +1,1242 @@
 # Thai — ไทย (th). One key<TAB>text per line, in en() order; keep {placeholders}.
-app_tagline	ออเดอร์ร้านอาหาร ครัว และบัญชี ฟรีออฟไลน์
-unlock	ปลดล็อก
-pin_hint	PIN เจ้าของเริ่มต้นที่ 0000
-sell	ออเดอร์
+app_tagline	ออ​เด​อร์​ร้าน​อาหาร ครัว และ​บัญชี ฟรี​ออฟ​ไลน์
+unlock	ปลด​ล็อก
+pin_hint	PIN เจ้าของ​เริ่ม​ต้น​ที่ 0000
+sell	ออ​เด​อร์
 buy	ซื้อ
-books	สมุดรายวัน
-books_help	สถานะวันนี้ ออเดอร์ = ออเดอร์เข้า ซื้อ = ซื้อและค่าใช้จ่าย คู่ค้า = ลูกค้าเครดิตและผู้จัดหา
-buy_help	ใบค่าใช้จ่ายและบิลผู้จัดหา (เงินออก) รายการลงบัญชีคงอยู่ในบัญชีคู่ค้า
-sell_money_in	รับออเดอร์
-buy_money_out	ค่าใช้จ่าย / บิลผู้จัดหา
-record_purchase	บันทึกซื้อ
-add_expense	ใบค่าใช้จ่าย
-bank_book	สมุดธนาคาร
-credit_help	รหัสคู่ค้าไม่ซ้ำ (ชื่อซ้ำได้) ลูกค้ามีบัญชีเชื่อ (ติดหนี้เรา) ผู้จัดหาขายสินค้าให้เรา (เราติดหนี้เขา) ทั้งสองแบบได้ บัญชีแยกกัน รายงานแสดงยอดสุทธิ
-party_kind_ph	บทบาท: ลูกค้า, ผู้จัดหา, ทั้งสอง…
-reports_help	สมุดรายวัน ลูกหนี้และเจ้าหนี้ สมุดธนาคาร ใบค่าใช้จ่าย กำไรและขาดทุน
-reports_today	สมุดรายวัน (วันนี้)
-reports_month	กำไรและขาดทุน (เดือน)
-reports_aging	ค้างชำระ / Dr-Cr
+books	สมุด​ราย​วัน
+books_help	สถานะ​วัน​นี้ ออ​เด​อร์ = ออ​เด​อร์​เข้า ซื้อ = ซื้อ​และ​ค่า​ใช้​จ่าย คู่​ค้า = ลูกค้า​เครดิต​และ​ผู้​จัดหา
+buy_help	ใบ​ค่า​ใช้​จ่าย​และ​บิล​ผู้​จัดหา (เงิน​ออก) รายการ​ลง​บัญชี​คง​อยู่​ใน​บัญชี​คู่​ค้า
+sell_money_in	รับ​ออ​เด​อร์
+buy_money_out	ค่า​ใช้​จ่าย / บิล​ผู้​จัดหา
+record_purchase	บันทึก​ซื้อ
+add_expense	ใบ​ค่า​ใช้​จ่าย
+bank_book	สมุด​ธนาคาร
+credit_help	รหัส​คู่​ค้า​ไม่​ซ้ำ (ชื่อ​ซ้ำ​ได้) ลูกค้า​มี​บัญชี​เชื่อ (ติด​หนี้​เรา) ผู้​จัดหา​ขาย​สินค้า​ให้​เรา (เรา​ติด​หนี้​เขา) ทั้ง​สอง​แบบ​ได้ บัญชี​แยก​กัน รายงาน​แสดง​ยอด​สุทธิ
+party_kind_ph	บทบาท: ลูกค้า, ผู้​จัดหา, ทั้ง​สอง…
+reports_help	สมุด​ราย​วัน ลูก​หนี้​และ​เจ้า​หนี้ สมุด​ธนาคาร ใบ​ค่า​ใช้​จ่าย กำไร​และ​ขาดทุน
+reports_today	สมุด​ราย​วัน (วัน​นี้)
+reports_month	กำไร​และ​ขาดทุน (เดือน)
+reports_aging	ค้าง​ชำระ / Dr-Cr
 reports_balance_sheet	งบดุล
 reports	รายงาน
 refresh	รีเฟรช
-undo	เลิกทำ
-start_tracking	เริ่มนับ
-stock_minus	− สต็อก
-stock_plus	+ สต็อก
-settle_cash	ชำระเงินสด
-settle_card	ชำระบัตร
-items	เมนูและรายการ
+undo	เลิก​ทำ
+start_tracking	เริ่ม​นับ
+stock_minus	− สต็​อก
+stock_plus	+ สต็​อก
+settle_cash	ชำระ​เงินสด
+settle_card	ชำระ​บัตร
+items	เมนู​และ​รายการ
 nav_items	เมนู
-more	เพิ่มเติม
-your_items	เมนูของคุณ
-items_help	แตะรายการเพื่อแก้ไข «รายการใหม่» จะล้างฟอร์ม ค้นหาเมนูของเราหรือพิมพ์ชื่อกับรูปของคุณ ตั้งราคา (0 ได้) แล้ว«เพิ่ม» ยอดขายที่บันทึกแล้วคงชื่อตอนคิดเงิน
-add_item	เพิ่มรายการ
-new_item	รายการใหม่
-adding_item	กำลังเพิ่มรายการใหม่
-editing_item	กำลังแก้ไข
+more	เพิ่ม​เติม
+your_items	เมนู​ของ​คุณ
+items_help	แตะ​รายการ​เพื่อ​แก้ไข «รายการ​ใหม่» จะ​ล้าง​ฟอร์ม ค้นหา​เมนู​ของ​เรา​หรือ​พิมพ์​ชื่อ​กับ​รูป​ของ​คุณ ตั้ง​ราคา (0 ได้) แล้ว«เพิ่ม» ยอด​ขาย​ที่​บันทึก​แล้ว​คง​ชื่อ​ตอน​คิด​เงิน
+add_item	เพิ่ม​รายการ
+new_item	รายการ​ใหม่
+adding_item	กำลัง​เพิ่ม​รายการ​ใหม่
+editing_item	กำลัง​แก้ไข
 save	บันทึก
-remove	ลบออก
-removed_items	รายการที่นำออก
-removed_help	กู้คืนจะนำรายการกลับสู่เมนูเหมือนเดิมทุกอย่าง — ราคา รูป และหมวดหมู่ ชั้นอาหารของเราไม่ถูกลบ จึงเพิ่มจานได้เสมอ
-restore_item	กู้คืน
-empty_catalog	ยังไม่มีรายการ
+remove	ลบ​ออก
+removed_items	รายการ​ที่​นำ​ออก
+removed_help	กู้​คืน​จะ​นำ​รายการ​กลับ​สู่​เมนู​เหมือน​เดิม​ทุก​อย่าง — ราคา รูป และ​หมวด​หมู่ ชั้น​อาหาร​ของ​เรา​ไม่​ถูก​ลบ จึง​เพิ่ม​จาน​ได้​เสมอ
+restore_item	กู้​คืน
+empty_catalog	ยัง​ไม่มี​รายการ
 total	รวม
 cash	เงินสด
 upi	UPI
 card	บัตร
-credit	คู่ค้า
+credit	คู่​ค้า
 clear	ล้าง
-ready_to_sell	พร้อมเปิดสมุด
-today_prefix	วันนี้
-today_mid	วันนี้
+ready_to_sell	พร้อม​เปิด​สมุด
+today_prefix	วัน​นี้
+today_mid	วัน​นี้
 owed	ค้าง
 round_word	ปัดเศษ
 back	กลับ
 sold_out	หมด
 restock	เติม
-not_tracked	ไม่นับ
-in_stock	ในสต็อก
-marked_sold_out	ทำเครื่องหมายหมด
+not_tracked	ไม่​นับ
+in_stock	ใน​สต็​อก
+marked_sold_out	ทำ​เครื่องหมาย​หมด
 add_upper	เพิ่ม
 na	ไม่มี
 qty	จำนวน
 unit_at	ราคา
 actual	จริง
-applied	ที่ใช้
-note_ph	หมายเหตุ (ไม่บังคับ)
-rounded	ปัดแล้ว
+applied	ที่​ใช้
+note_ph	หมายเหตุ (ไม่​บังคับ)
+rounded	ปัด​แล้ว
 split	แบ่ง
-send_kot	ส่งครัว
+send_kot	ส่ง​ครัว
 send_kot_to	ส่ง → {kitchens}
-send_kot_again	เพิ่มรายการอาหารสำหรับ KOT ถัดไป
-send_kot_held	รายการอาหารที่รอ — ยกเลิกการรอเพื่อส่ง
-reprint_kot	พิมพ์รายการที่เลือกอีกครั้ง
-reprint_kot_ok	พิมพ์ซ้ำ {n} รายการ · {slips} ใบ → {kitchens}
-reprint_kot_needed	ส่ง KOT ก่อน — แล้วเลือกรายการแล้วพิมพ์ที่เลือก
-reprint_kot_none_selected	รายการที่ส่งถูกข้ามหมด — แตะ «ในการพิมพ์» บนรายการที่ต้องการ
-reprint_kot_client	พิมพ์อีกครั้ง ({n}) สำหรับ {place} ที่ส่งแล้ว — ห้องครัวพิมพ์ที่เครื่องของพนักงานเสิร์ฟ
-print_cancelled_kot	พิมพ์ที่ยกเลิกทั้งหมด
-print_cancelled_kot_ok	พิมพ์ยกเลิก {n} · {slips} สลิป → {kitchens}
-print_cancelled_kot_needed	เปิดโต๊ะที่มีรายการยกเลิก
-print_cancelled_kot_none	ไม่มีรายการยกเลิกในออเดอร์นี้
-print_cancelled_kot_client	ส่งที่ยกเลิก ({n}) ของ {place} แล้ว — พิมพ์ที่เซิร์ฟเวอร์
+send_kot_again	เพิ่ม​รายการ​อาหาร​สำหรับ KOT ถัด​ไป
+send_kot_held	รายการ​อาหาร​ที่​รอ — ยกเลิก​การ​รอ​เพื่อ​ส่ง
+reprint_kot	พิมพ์​รายการ​ที่​เลือก​อีก​ครั้ง
+reprint_kot_ok	พิมพ์​ซ้ำ {n} รายการ · {slips} ใบ → {kitchens}
+reprint_kot_needed	ส่ง KOT ก่อน — แล้ว​เลือก​รายการ​แล้ว​พิมพ์​ที่​เลือก
+reprint_kot_none_selected	รายการ​ที่​ส่ง​ถูก​ข้าม​หมด — แตะ «ใน​การ​พิมพ์» บน​รายการ​ที่​ต้องการ
+reprint_kot_client	พิมพ์​อีก​ครั้ง ({n}) สำหรับ {place} ที่​ส่ง​แล้ว — ห้อง​ครัว​พิมพ์​ที่​เครื่อง​ของ​พนักงาน​เสิร์ฟ
+print_cancelled_kot	พิมพ์​ที่​ยกเลิก​ทั้งหมด
+print_cancelled_kot_ok	พิมพ์​ยกเลิก {n} · {slips} สลิป → {kitchens}
+print_cancelled_kot_needed	เปิด​โต๊ะ​ที่​มี​รายการ​ยกเลิก
+print_cancelled_kot_none	ไม่มี​รายการ​ยกเลิก​ใน​ออ​เด​อร์​นี้
+print_cancelled_kot_client	ส่ง​ที่​ยกเลิก ({n}) ของ {place} แล้ว — พิมพ์​ที่​เซิร์ฟเวอร์
 kot_banner	แบนเนอร์
-kot_item_prefix	คำนำหน้าเมนู
-kot_strike	ขีดฆ่าชื่อ
-kot_strike_note	ขีดฆ่าโน้ต
+kot_item_prefix	คำนำ​หน้า​เมนู
+kot_strike	ขีด​ฆ่า​ชื่อ
+kot_strike_note	ขีด​ฆ่า​โน้ต
 kot_strike_on	เปิด
 kot_strike_off	ปิด
-bill_item_layout	เลย์เอาต์รายการ
+bill_item_layout	เลย์​เอา​ต์​รายการ
 bill_item_layout_columns	คอลัมน์
 bill_item_layout_stacked	ซ้อน
-bill_item_header	หัวคอลัมน์
+bill_item_header	หัว​คอลัมน์
 bill_item_name	ชื่อ
 bill_item_qty	จำนวน
 bill_item_price	ราคา
-bill_item_amount	จำนวนเงิน
+bill_item_amount	จำนวน​เงิน
 bill_item_note	โน้ต
-bill_item_col_sep	เส้นคอลัมน์
+bill_item_col_sep	เส้น​คอลัมน์
 slip_columns	คอลัมน์
 slip_col_header	หัวข้อ
 bill_line_logo	โลโก้
 bill_line_shop	ร้าน
-bill_line_address	ที่อยู่
+bill_line_address	ที่​อยู่
 bill_line_fssai	FSSAI
-bill_line_title	ชื่อเรื่อง
+bill_line_title	ชื่อ​เรื่อง
 bill_line_customer	ลูกค้า
-bill_line_bill_no	เลขที่บิล
+bill_line_bill_no	เลข​ที่​บิล
 bill_line_time	เวลา
 bill_line_cashier	แคชเชียร์
 bill_line_table	โต๊ะ
 bill_line_items	รายการ
 bill_line_total	รวม
-bill_line_footer	ท้ายบิล
+bill_line_footer	ท้าย​บิล
 bill_line_upi	UPI
 bill_logo_picture	รูปภาพ
-bill_logo_help	ความกว้างและความสูงเป็น px ว่างไว้จะตามรูป: ว่างหนึ่งช่องคงรูปทรง ว่างทั้งสองใช้ขนาดเดิมของรูป ใส่ทั้งสองจะใส่รูปไว้ข้างใน ไม่ยืดเลย ไม่มีรูป: โลโก้ที่แสดงจะเว้นความสูงไว้เป็นที่ว่าง ซ่อนจะนำออก
-bill_logo_choose	เลือกรูปภาพ
-bill_logo_remove	นำรูปภาพออก
-bill_logo_none	ไม่มีรูปภาพ
-bill_logo_unreadable	ไม่ใช่รูปภาพที่แอปนี้อ่านได้
-bill_logo_width	ความกว้าง (px)
-bill_logo_height	ความสูง (px)
-bill_logo_tones	สีเทา
-bill_logo_tones_help	ทึบ: ทุกจุดเป็นสีดำหรือขาว สำหรับโลโก้คมชัด แรเงา: สีเทากลายเป็นลายจุดละเอียด สำหรับภาพถ่ายและเงานุ่ม
+bill_logo_help	ความ​กว้าง​และ​ความ​สูง​เป็น px ว่าง​ไว้​จะ​ตาม​รูป: ว่าง​หนึ่ง​ช่อง​คง​รูป​ทรง ว่าง​ทั้ง​สอง​ใช้​ขนาด​เดิม​ของ​รูป ใส่​ทั้ง​สอง​จะ​ใส่​รูป​ไว้​ข้าง​ใน ไม่​ยืด​เลย ไม่มี​รูป: โลโก้​ที่​แสดง​จะ​เว้น​ความ​สูง​ไว้​เป็น​ที่​ว่าง ซ่อน​จะ​นำ​ออก
+bill_logo_choose	เลือก​รูปภาพ
+bill_logo_remove	นำ​รูปภาพ​ออก
+bill_logo_none	ไม่มี​รูปภาพ
+bill_logo_unreadable	ไม่ใช่​รูปภาพ​ที่​แอป​นี้​อ่าน​ได้
+bill_logo_width	ความ​กว้าง (px)
+bill_logo_height	ความ​สูง (px)
+bill_logo_tones	สี​เทา
+bill_logo_tones_help	ทึบ: ทุก​จุด​เป็น​สี​ดำ​หรือ​ขาว สำหรับ​โลโก้​คม​ชัด แรเงา: สี​เทา​กลาย​เป็น​ลาย​จุด​ละเอียด สำหรับ​ภาพถ่าย​และ​เงา​นุ่ม
 bill_logo_solid	ทึบ
 bill_logo_shaded	แรเงา
-slip_col_width	ความกว้าง (mm)
-slip_col_start	ระยะว่างต้น (px)
-slip_col_end	ระยะว่างท้าย (px)
-slip_columns_help	ความกว้างของแต่ละคอลัมน์รวมระยะว่างต้นและท้ายของคอลัมน์นั้น ข้อความจะตัดบรรทัดภายในคอลัมน์ของตัวเอง ส่วนที่เกินความกว้างเนื้อหาจะถูกตัดออกทั้งบนกระดาษและในตัวอย่าง
-bill_total_qty_label	ป้ายจำนวนรวม
-bill_total_subtotal_label	ป้ายยอดย่อย
-bill_total_grand_label	ป้ายยอดรวม
-bill_total_paid_label	ป้ายที่จ่าย
-bill_meta_pair	บรรทัดเดียวกับ
+slip_col_width	ความ​กว้าง (mm)
+slip_col_start	ระยะ​ว่าง​ต้น (px)
+slip_col_end	ระยะ​ว่าง​ท้าย (px)
+slip_columns_help	ความ​กว้าง​ของ​แต่ละ​คอลัมน์​รวม​ระยะ​ว่าง​ต้น​และ​ท้าย​ของ​คอลัมน์​นั้น ข้อความ​จะ​ตัด​บรรทัด​ภายใน​คอลัมน์​ของ​ตัว​เอง ส่วน​ที่​เกิน​ความ​กว้าง​เนื้อหา​จะ​ถูก​ตัด​ออก​ทั้ง​บน​กระดาษ​และ​ใน​ตัวอย่าง
+bill_total_qty_label	ป้าย​จำนวน​รวม
+bill_total_subtotal_label	ป้าย​ยอด​ย่อย
+bill_total_grand_label	ป้าย​ยอด​รวม
+bill_total_paid_label	ป้าย​ที่​จ่าย
+bill_meta_pair	บรรทัด​เดียว​กับ
 bill_pair_alone	เดี่ยว
 bill_item_piece_on	เปิด
 bill_item_piece_off	ปิด
-bill_total_qty	จำนวนรวม
-bill_total_subtotal	ยอดย่อย
-bill_total_grand	ยอดรวม
-bill_total_number_under	ตัวเลขอยู่ใต้
-bill_total_caption_under	ป้ายอยู่ใต้
-bill_total_own_line	บรรทัดของตัวเอง
-bill_total_caption_with	พร้อมตัวเลข
-bill_total_caption_none	ไม่มีป้าย
-bill_total_place_help	“บรรทัดของตัวเอง” พิมพ์ยอดรวมนี้แยกต่างหาก เมื่ออยู่ใต้คอลัมน์ ตัวเลขจะพิมพ์ในคอลัมน์รายการนั้น ตามขนาดและความหนาของบรรทัดนี้ ยอดรวมต่าง ๆ ใช้แถวเดียวกันจนกว่าคอลัมน์ใดจะถูกใช้ แล้วจึงขึ้นแถวใหม่ ป้ายอยู่พร้อมตัวเลข อยู่ใต้คอลัมน์อื่น หรือไม่พิมพ์ บรรทัดภาษี ค่าบริการ การปัดเศษ และการชำระเงิน จะตาม “ยอดย่อย”
-reprint_incl	ในการพิมพ์
+bill_total_qty	จำนวน​รวม
+bill_total_subtotal	ยอด​ย่อย
+bill_total_grand	ยอด​รวม
+bill_total_number_under	ตัวเลข​อยู่​ใต้
+bill_total_caption_under	ป้าย​อยู่​ใต้
+bill_total_own_line	บรรทัด​ของ​ตัว​เอง
+bill_total_caption_with	พร้อม​ตัวเลข
+bill_total_caption_none	ไม่มี​ป้าย
+bill_total_place_help	“บรรทัด​ของ​ตัว​เอง” พิมพ์​ยอด​รวม​นี้​แยก​ต่าง​หาก เมื่อ​อยู่​ใต้​คอลัมน์ ตัวเลข​จะ​พิมพ์​ใน​คอลัมน์​รายการ​นั้น ตาม​ขนาด​และ​ความ​หนา​ของ​บรรทัด​นี้ ยอด​รวม​ต่าง ๆ ใช้​แถว​เดียวกัน​จนกว่า​คอลัมน์​ใด​จะ​ถูก​ใช้ แล้ว​จึง​ขึ้น​แถว​ใหม่ ป้าย​อยู่​พร้อม​ตัวเลข อยู่​ใต้​คอลัมน์​อื่น หรือ​ไม่​พิมพ์ บรรทัด​ภาษี ค่า​บริการ การ​ปัดเศษ และ​การ​ชำระ​เงิน จะ​ตาม “ยอด​ย่อย”
+reprint_incl	ใน​การ​พิมพ์
 reprint_skip	ข้าม
-reprint_skip_meta	ข้ามพิมพ์ซ้ำ
-kot_dest_hint	พิมพ์บนเครื่องพิมพ์ที่คุณกำหนดให้ {kitchens} ใน การตั้งค่า → เครื่องพิมพ์
-kot_sent_hint	KOT สุดท้ายไปที่ {kitchens} แตะเพื่อเพิ่มรายการอาหารสำหรับใบสั่งถัดไป หรือพิมพ์ KOT อีกครั้งสำหรับใบสั่งเดิม
-kot_sent_printing	ส่ง KOT ไปที่ {kitchens} แล้ว — กำลังพิมพ์
-kot_sent_not_printed	ส่ง KOT ไปที่ {kitchens} แล้ว แต่ยังไม่ได้พิมพ์: {why} แจ้งครัว แล้วแก้เครื่องพิมพ์และพิมพ์ใหม่
-kot_sent_screen	ส่ง KOT ไปที่ {kitchens} แล้ว
-kot_queued_shop	บันทึก KOT ของ {place} → {kitchens} แล้ว เครื่องของร้านจะพิมพ์
+reprint_skip_meta	ข้าม​พิมพ์​ซ้ำ
+kot_dest_hint	พิมพ์​บน​เครื่องพิมพ์​ที่​คุณ​กำหนด​ให้ {kitchens} ใน การ​ตั้ง​ค่า → เครื่องพิมพ์
+kot_sent_hint	KOT สุดท้าย​ไป​ที่ {kitchens} แตะ​เพื่อ​เพิ่ม​รายการ​อาหาร​สำหรับ​ใบสั่ง​ถัด​ไป หรือ​พิมพ์ KOT อีก​ครั้ง​สำหรับ​ใบสั่ง​เดิม
+kot_sent_printing	ส่ง KOT ไป​ที่ {kitchens} แล้ว — กำลัง​พิมพ์
+kot_sent_not_printed	ส่ง KOT ไป​ที่ {kitchens} แล้ว แต่​ยัง​ไม่​ได้​พิมพ์: {why} แจ้ง​ครัว แล้ว​แก้​เครื่องพิมพ์​และ​พิมพ์​ใหม่
+kot_sent_screen	ส่ง KOT ไป​ที่ {kitchens} แล้ว
+kot_queued_shop	บันทึก KOT ของ {place} → {kitchens} แล้ว เครื่อง​ของ​ร้าน​จะ​พิมพ์
 kot_job_label	KOT ของ {place} → {kitchens}
 kot_job_reached	KOT ของ {place} ถึง {kitchens} แล้ว
-kot_unassigned	ห้องครัว (ไม่มีสถานี)
-kot_unassigned_held	{n} จานพักไว้ไม่มีสถานี — ยกเลิกพักเพื่อส่ง
+kot_unassigned	ห้อง​ครัว (ไม่มี​สถานี)
+kot_unassigned_held	{n} จาน​พัก​ไว้​ไม่มี​สถานี — ยกเลิก​พัก​เพื่อ​ส่ง
 kot_station_ph	ครัว
 kot_station_dd	ครัว
-kot_station_dd_n	ห้องครัว · {stations}
-kot_set_station	ใช้สถานีนี้
-kot_station_applied	สถานีตั้งค่าไว้ที่ {n} รายการอาหาร: {station}
-kot_station_cleared	สถานีถูกลบออกจาก {n} รายการอาหาร: {station}
-kot_station_needed	เลือกสถานีครัวก่อน
-kot_station_not_allowed	ไม่อนุญาตให้ใช้ห้องครัว: {station}
-kot_station_none	ยังไม่มีสถานีห้องครัว — เพิ่มหนึ่งรายการภายใต้ ห้องครัว หรือ การตั้งค่า → พื้นที่ · สถานี
-pos_tab_items	รายการที่เพิ่ม
-pos_tab_payment	ชำระเงิน
+kot_station_dd_n	ห้อง​ครัว · {stations}
+kot_set_station	ใช้​สถานี​นี้
+kot_station_applied	สถานี​ตั้ง​ค่า​ไว้​ที่ {n} รายการ​อาหาร: {station}
+kot_station_cleared	สถานี​ถูก​ลบ​ออก​จาก {n} รายการ​อาหาร: {station}
+kot_station_needed	เลือก​สถานี​ครัว​ก่อน
+kot_station_not_allowed	ไม่​อนุญาต​ให้​ใช้​ห้อง​ครัว: {station}
+kot_station_none	ยัง​ไม่มี​สถานี​ห้อง​ครัว — เพิ่ม​หนึ่ง​รายการ​ภาย​ใต้ ห้อง​ครัว หรือ การ​ตั้ง​ค่า → พื้นที่ · สถานี
+pos_tab_items	รายการ​ที่​เพิ่ม
+pos_tab_payment	ชำระ​เงิน
 hold_send	พัก
 hold_send_on	รอ
 hold_send_meta	รอ — ไม่ใช่ KOT นี้
-station_remove	ลบสถานี
-station_remove_ph	แตะสถานีในรายการเพื่อลบออก
-station_removed	สถานีถูกลบ: {name}
-settings_hub_title	การตั้งค่า
-settings_hub_help	เปิดทีละส่วน — เลื่อนน้อยลง ตัวเลือกชัดขึ้น
+station_remove	ลบ​สถานี
+station_remove_ph	แตะ​สถานี​ใน​รายการ​เพื่อ​ลบ​ออก
+station_removed	สถานี​ถูก​ลบ: {name}
+settings_hub_title	การ​ตั้ง​ค่า
+settings_hub_help	เปิด​ที​ละ​ส่วน — เลื่อน​น้อย​ลง ตัว​เลือก​ชัด​ขึ้น
 settings_back	กลับ
-settings_sec_language	ภาษาและสกุลเงิน
-settings_sec_country	ประเทศและภาษี
-settings_sec_tills	เคาน์เตอร์เสริมและสาขา
-settings_sec_brand	แบรนด์ของคุณ
-settings_sec_units	หน่วยและการแปลง
-settings_sec_pickers	พื้นที่ · สถานี · อัตราภาษี
+settings_sec_language	ภาษา​และ​สกุล​เงิน
+settings_sec_country	ประเทศ​และ​ภาษี
+settings_sec_tills	เคาน์เตอร์​เสริม​และ​สาขา
+settings_sec_brand	แบรนด์​ของ​คุณ
+settings_sec_units	หน่วย​และ​การ​แปลง
+settings_sec_pickers	พื้นที่ · สถานี · อัตรา​ภาษี
 settings_sec_printers	เครื่องพิมพ์
-settings_sec_bill	รูปแบบบิลและ KOT
-settings_sec_selling	แผนและยอดขาย
+settings_sec_bill	รูป​แบบ​บิล​และ KOT
+settings_sec_selling	แผน​และ​ยอด​ขาย
 bill_kot_tab_bill	บิล
 bill_kot_tab_kot	KOT
-settings_sec_alerts	การแจ้งเตือน
-alerts_help	ข้อความสถานะจะแสดงบนจอนานเท่าใดสำหรับคุณ (การเข้าสู่ระบบนี้)
-snack_secs_ph	วินาที (3–60 ค่าเริ่มต้น 10)
-snack_secs_save	บันทึกเวลาแจ้งเตือน
-snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
+settings_sec_alerts	การ​แจ้ง​เตือน
+alerts_help	ข้อความ​สถานะ​จะ​แสดง​บน​จอ​นาน​เท่าใด​สำหรับ​คุณ (การ​เข้า​สู่​ระบบ​นี้)
+snack_secs_ph	วินาที (3–60 ค่า​เริ่ม​ต้น 10)
+snack_secs_save	บันทึก​เวลา​แจ้ง​เตือน
+snack_secs_saved	บันทึก​เวลา​แจ้ง​เตือน​แล้ว — {n} วินาที
 settings_sec_whatsapp	WhatsApp
-whatsapp_cloud_help	ใช้ Meta WhatsApp Cloud API ของคุณเอง สร้างโทเค็น System User ที่มี whatsapp_business_messaging (โทเค็นชั่วคราวจากแดชบอร์ดจะหมดอายุ) ข้อมูลจะอยู่บนเซิร์ฟเวอร์นี้เท่านั้น — ไม่อยู่บนเคาน์เตอร์เสริมเด็ดขาด “ยอมรับแล้ว” หมายความว่า Meta รับคำขอแล้ว ไม่ได้หมายความว่าแขกได้รับแล้ว
-whatsapp_phone_id_ph	ID หมายเลขโทรศัพท์
-whatsapp_token_ph	โทเค็นการเข้าถึง (เว้นว่างไว้เพื่อใช้ของเดิม)
-whatsapp_template_ph	ชื่อเทมเพลตบิล (ไม่บังคับ)
-whatsapp_template_lang_ph	ภาษาของเทมเพลต (เช่น en)
-whatsapp_enable	เปิดใช้งาน
+whatsapp_cloud_help	ใช้ Meta WhatsApp Cloud API ของ​คุณ​เอง สร้าง​โท​เค็น System User ที่​มี whatsapp_business_messaging (โท​เค็น​ชั่วคราว​จาก​แดชบอร์ด​จะ​หมด​อายุ) ข้อมูล​จะ​อยู่​บน​เซิร์ฟเวอร์​นี้​เท่านั้น — ไม่​อยู่​บน​เคาน์เตอร์​เสริม​เด็ด​ขาด “ยอมรับ​แล้ว” หมายความ​ว่า Meta รับคำ​ขอ​แล้ว ไม่​ได้​หมายความ​ว่า​แขก​ได้​รับ​แล้ว
+whatsapp_phone_id_ph	ID หมายเลข​โทรศัพท์
+whatsapp_token_ph	โท​เค็​นการ​เข้า​ถึง (เว้น​ว่าง​ไว้​เพื่อ​ใช้​ของ​เดิม)
+whatsapp_template_ph	ชื่อ​เทมเพลต​บิล (ไม่​บังคับ)
+whatsapp_template_lang_ph	ภาษา​ของ​เทมเพลต (เช่น en)
+whatsapp_enable	เปิด​ใช้​งาน
 whatsapp_disable	ปิด
 whatsapp_save	บันทึก WhatsApp
-whatsapp_test	ทดสอบการเชื่อมต่อ
-whatsapp_disconnect	ตัดการเชื่อมต่อ
-whatsapp_send_bill	ส่งผ่าน WhatsApp
+whatsapp_test	ทดสอบ​การ​เชื่อม​ต่อ
+whatsapp_disconnect	ตัด​การ​เชื่อม​ต่อ
+whatsapp_send_bill	ส่ง​ผ่าน WhatsApp
 whatsapp_consent	WhatsApp ตกลง
-whatsapp_consent_help	แขกยินยอมรับข้อความ WhatsApp แล้ว การมีแค่เบอร์โทรศัพท์ไม่ถือเป็นการยินยอม
-whatsapp_server_only	ตั้งค่า WhatsApp บนอุปกรณ์เซิร์ฟเวอร์ของร้าน
-settings_sec_backup	สำรองข้อมูลและกู้คืน
-settings_sec_diag	การวินิจฉัย
-settings_sec_privacy	ความเป็นส่วนตัว
-diag_privacy_help	บันทึกจะอยู่บนอุปกรณ์นี้เท่านั้น ข้อมูลลับ (รหัสผ่าน, รหัสผ่าน) จะไม่ถูกเก็บไว้ การแบ่งปันแพ็กเกจออกจากอุปกรณ์ต้องการการอนุมัติของคุณทุกครั้ง — ไม่เคยขายหรือมอบให้บุคคลที่สาม
-diag_level	ระดับรายละเอียด
-diag_level_error	ข้อผิดพลาด
-diag_level_warn	คำเตือน
+whatsapp_consent_help	แขก​ยินยอม​รับ​ข้อความ WhatsApp แล้ว การ​มี​แค่​เบอร์​โทรศัพท์​ไม่​ถือ​เป็นการ​ยินยอม
+whatsapp_server_only	ตั้ง​ค่า WhatsApp บน​อุปกรณ์​เซิร์ฟเวอร์​ของ​ร้าน
+settings_sec_backup	สำรอง​ข้อมูล​และ​กู้​คืน
+settings_sec_diag	การ​วินิจฉัย
+settings_sec_privacy	ความ​เป็น​ส่วน​ตัว
+diag_privacy_help	บันทึก​จะ​อยู่​บน​อุปกรณ์​นี้​เท่านั้น ข้อมูล​ลับ (รหัส​ผ่าน, รหัส​ผ่าน) จะ​ไม่​ถูก​เก็บ​ไว้ การ​แบ่ง​ปัน​แพ็ก​เก​จอ​อก​จาก​อุปกรณ์​ต้องการ​การ​อนุมัติ​ของ​คุณ​ทุก​ครั้ง — ไม่​เคย​ขาย​หรือ​มอบ​ให้​บุคคล​ที่​สาม
+diag_level	ระดับ​ราย​ละเอียด
+diag_level_error	ข้อ​ผิด​พลาด
+diag_level_warn	คำ​เตือน
 diag_level_info	ข้อมูล
-diag_level_debug	แก้ไขข้อบกพร่อง
-diag_support_start	เริ่มเซสชันสนับสนุน 30 นาที
-diag_support_stop	จบเซสชันสนับสนุน
-diag_support_started	เปิดใช้งานเซสชันสนับสนุน — รายละเอียดการแก้ไขข้อบกพร่องเป็นเวลา 30 นาที
-diag_support_ended	เซสชันสนับสนุนสิ้นสุดลง
-diag_export_local	ส่งสำเนาไปยังที่เก็บข้อมูลท้องถิ่น
-diag_export_local_done	สำรองข้อมูลพร้อมใช้งานที่ {path} — เลือกตำแหน่งที่จะบันทึกสำเนา
-diag_approve_send	อนุมัติการแบ่งปันออกจากอุปกรณ์นี้
-diag_send_help	การอนุมัติเป็นหนึ่งแพ็กเกจแล้วจะหมดอายุชั่วคราว ใช้เฉพาะเพื่อแก้ไขปัญหาหรือปรับปรุงผลิตภัณฑ์ ไม่ถูกแบ่งปันกับบุคคลที่สาม ทำงานบน Linux, Windows, macOS และ Android
-diag_send_approved	แบ่งปันได้รับการอนุมัติสำหรับหนึ่งแพ็กเกจ (ใกล้หมดอายุ)
-diag_export_send	สร้างแพ็กเกจแบ่งปัน (ต้องการการอนุมัติ)
-diag_export_send_done	แพ็กเกจแบ่งปันพร้อมใช้งานที่ {path} — เลือกตำแหน่งที่จะบันทึก แล้วส่งเฉพาะไปยังทีมสนับสนุน Kumkaj
-diag_save_bundle	บันทึกสำเนาสำรองข้อมูล
-diag_bundle_saved	บันทึกสำเนาสำรองข้อมูลไปที่ {path}
-diag_bundle_failed	ไม่สามารถบันทึกสำเนาสำรองข้อมูลได้ — ลองอีกครั้ง
-diag_clear	ลบบันทึกการวินิจฉัย
-diag_cleared	ลบบันทึกการวินิจฉัยแล้ว
-sidebar_settings	แถบด้านข้าง
-sidebar_settings_help	ไอคอนเหมือนกับแถบด้านข้าง ลากแถวเพื่อจัดลำดับใหม่ เปิดหรือปิดสวิตช์เพื่อแสดงหรือซ่อน การตั้งค่าและล็อคจะอยู่บนแถบเสมอ
-sidebar_always_on_short	เปิดใช้งานเสมอ
+diag_level_debug	แก้ไข​ข้อ​บกพร่อง
+diag_support_start	เริ่ม​เซสชัน​สนับสนุน 30 นาที
+diag_support_stop	จบ​เซสชัน​สนับสนุน
+diag_support_started	เปิด​ใช้​งาน​เซสชัน​สนับสนุน — ราย​ละเอียด​การ​แก้ไข​ข้อ​บกพร่อง​เป็น​เวลา 30 นาที
+diag_support_ended	เซสชัน​สนับสนุน​สิ้น​สุด​ลง
+diag_export_local	ส่ง​สำเนา​ไป​ยัง​ที่​เก็บ​ข้อมูล​ท้อง​ถิ่น
+diag_export_local_done	สำรอง​ข้อมูล​พร้อม​ใช้​งาน​ที่ {path} — เลือก​ตำแหน่ง​ที่​จะบัน​ทึก​สำเนา
+diag_approve_send	อนุมัติ​การ​แบ่ง​ปัน​ออก​จาก​อุปกรณ์​นี้
+diag_send_help	การ​อนุมัติ​เป็น​หนึ่ง​แพ็ก​เกจแล้ว​จะ​หมด​อายุ​ชั่วคราว ใช้​เฉพาะ​เพื่อ​แก้ไข​ปัญหา​หรือ​ปรับปรุง​ผลิตภัณฑ์ ไม่​ถูก​แบ่ง​ปัน​กับ​บุคคล​ที่​สาม ทำงาน​บน Linux, Windows, macOS และ Android
+diag_send_approved	แบ่ง​ปัน​ได้​รับ​การ​อนุมัติ​สำหรับ​หนึ่ง​แพ็ก​เกจ (ใกล้​หมด​อายุ)
+diag_export_send	สร้าง​แพ็ก​เกจแบ่ง​ปัน (ต้องการ​การ​อนุมัติ)
+diag_export_send_done	แพ็ก​เกจแบ่ง​ปัน​พร้อม​ใช้​งาน​ที่ {path} — เลือก​ตำแหน่ง​ที่​จะบัน​ทึก แล้ว​ส่ง​เฉพาะ​ไป​ยัง​ทีม​สนับสนุน Kumkaj
+diag_save_bundle	บันทึก​สำเนา​สำรอง​ข้อมูล
+diag_bundle_saved	บันทึก​สำเนา​สำรอง​ข้อมูล​ไป​ที่ {path}
+diag_bundle_failed	ไม่​สามารถ​บันทึก​สำเนา​สำรอง​ข้อมูล​ได้ — ลอง​อีก​ครั้ง
+diag_clear	ลบ​บันทึก​การ​วินิจฉัย
+diag_cleared	ลบ​บันทึก​การ​วินิจฉัย​แล้ว
+sidebar_settings	แถบ​ด้าน​ข้าง
+sidebar_settings_help	ไอคอน​เหมือน​กับ​แถบ​ด้าน​ข้าง ลาก​แถว​เพื่อ​จัด​ลำดับ​ใหม่ เปิด​หรือ​ปิด​สวิตช์​เพื่อ​แสดง​หรือ​ซ่อน การ​ตั้ง​ค่า​และ​ล็อค​จะ​อยู่​บน​แถบ​เสมอ
+sidebar_always_on_short	เปิด​ใช้​งาน​เสมอ
 sidebar_back_settings	กลับ
 sidebar_shown	แสดงออก
 sidebar_hidden	ซ่อน
-sidebar_always_on	เสมอที่บาร์
-sidebar_shown_hint	แสดงที่แถบด้านข้าง / แท็บด้านล่าง
-sidebar_hidden_hint	ซ่อนจากบาร์
-sidebar_menu_items	เมนูและรายการ
-sidebar_enable_all	เปิดใช้งานทั้งหมด
-sidebar_disable_all	ปิดใช้งานทั้งหมด
-sidebar_order_saved	คำสั่งซื้อในแถบด้านข้างบันทึกแล้ว
-sidebar_visibility_saved	ความโปร่งใสของแถบด้านข้างบันทึกแล้ว
+sidebar_always_on	เสมอ​ที่​บาร์
+sidebar_shown_hint	แสดง​ที่​แถบ​ด้าน​ข้าง / แท็​บด้าน​ล่าง
+sidebar_hidden_hint	ซ่อน​จาก​บาร์
+sidebar_menu_items	เมนู​และ​รายการ
+sidebar_enable_all	เปิด​ใช้​งาน​ทั้งหมด
+sidebar_disable_all	ปิด​ใช้​งาน​ทั้งหมด
+sidebar_order_saved	คำ​สั่ง​ซื้อ​ใน​แถบ​ด้าน​ข้าง​บันทึก​แล้ว
+sidebar_visibility_saved	ความ​โปร่งใส​ของ​แถบ​ด้าน​ข้าง​บันทึก​แล้ว
 amounts_hide	ซ่อน
 amounts_show	แสดง
 counter	เคาน์เตอร์
-dine_in	ทานที่ร้าน
-takeaway	นำกลับ
-order	ออเดอร์
+dine_in	ทาน​ที่​ร้าน
+takeaway	นำ​กลับ
+order	ออ​เด​อร์
 tables	โต๊ะ
 kitchen	ครัว
-sales	ยอดขาย
-sales_refunds	ขายและคืน
-day_close	ปิดวัน
-reports_expenses	รายงานและค่าใช้จ่าย
+sales	ยอด​ขาย
+sales_refunds	ขาย​และ​คืน
+day_close	ปิด​วัน
+reports_expenses	รายงาน​และ​ค่า​ใช้​จ่าย
 nav_reports	รายงาน
-nav_settings	การตั้งค่า
+nav_settings	การ​ตั้ง​ค่า
 nav_lock	ล็อก
-no_sale_yet	ยังไม่มีการขาย
-favorites	รายการโปรด
-favorites_help	สินค้าที่คุณขายบ่อย บันทึกไว้สำหรับบัญชีของคุณ เพิ่มหนึ่งรายการลงบิล หรือสร้างรายการจากสินค้าทั้งหมดด้านล่าง
-your_favorites	รายการโปรดของคุณ
-all_items	สินค้าทั้งหมด
-frequent	ขายบ่อย
-added_items	ที่เพิ่มแล้ว
-added_items_empty	ยังไม่มีในออเดอร์นี้ — เพิ่มจาก All items หรือหมวด
-frequent_config_help	เมนูขายดีจากบิลที่ปิดแล้ว เปลี่ยนจำนวนวันและจำนวนรายการที่นี่
+no_sale_yet	ยัง​ไม่มี​การ​ขาย
+favorites	รายการ​โปรด
+favorites_help	สินค้า​ที่​คุณ​ขาย​บ่อย บันทึก​ไว้​สำหรับ​บัญชี​ของ​คุณ เพิ่ม​หนึ่ง​รายการ​ลง​บิล หรือ​สร้าง​รายการ​จาก​สินค้า​ทั้งหมด​ด้าน​ล่าง
+your_favorites	รายการ​โปรด​ของ​คุณ
+all_items	สินค้า​ทั้งหมด
+frequent	ขาย​บ่อย
+added_items	ที่​เพิ่ม​แล้ว
+added_items_empty	ยัง​ไม่มี​ใน​ออ​เด​อร์​นี้ — เพิ่ม​จาก All items หรือ​หมวด
+frequent_config_help	เมนู​ขาย​ดี​จาก​บิล​ที่​ปิด​แล้ว เปลี่ยน​จำนวน​วัน​และ​จำนวน​รายการ​ที่​นี่
 frequent_days_ph	วัน (1)
 frequent_limit_ph	รายการ (24)
 frequent_apply	ใช้
-frequent_saved	บ่อยครั้ง: วันที่ผ่านมา {d} วัน รายการยอดนิยม {n} — {c} รายการอาหาร
-frequent_empty	ยังไม่มียอดขายที่จบในช่วงนี้ — เก็บเงินบิล (ตั้งค่าอนุญาต ₹0 ได้) แล้วจะโชว์ที่นี่
-zero_sales	ขายมูลค่าศูนย์
-zero_sales_help	อนุญาตเมนูราคา ₹0 และบิลที่ชำระ ₹0 (ฟรี / ตามเจ้าของ) เปิดเป็นค่าเริ่มเพื่อให้รายการฟรียังอยู่ใน«ขายบ่อย»และสมุดรายวัน
-zero_sales_on	ขายศูนย์: เปิด
-zero_sales_off	ขายศูนย์: ปิด
-zero_sales_saved_on	บันทึกอนุญาตขายศูนย์แล้ว (เปิด)
-zero_sales_saved_off	บันทึกอนุญาตขายศูนย์แล้ว (ปิด)
-floor_areas_help	พื้นที่คือห้อง/โซนบนพื้น (Dine In, Parcel, AC …) เพิ่มพื้นที่ก่อน แล้วใส่โต๊ะ — แต่ละพื้นที่เป็นกลุ่มแยกบนผัง
-area_new_ph	พื้นที่/ห้องใหม่ (เช่น AC, Garden)
-add_area	เพิ่มพื้นที่
-area_added	พื้นที่ “{name}” พร้อม — เพิ่มโต๊ะ
-no_favorites	ยังไม่มีรายการโปรด — เพิ่มสินค้าจากรายการด้านล่าง
-add_to_bill	เพิ่มลงบิล
-added	เพิ่มแล้ว
-owes_word	เป็นหนี้
-selected_word	เลือกแล้ว
-chip_clear_credit	เคลียร์ — ให้เครดิตหรือรับเงินล่วงหน้า
-chip_missing_customer	ไม่พบลูกค้าที่เลือก — เลือกอีกครั้ง
-chip_no_customer	ยังไม่มีลูกค้า — เขียนชื่อ แล้วแตะเครดิต
-credit_summary_fmt	{} ลูกค้า · เครดิตเปิด {} · เงินล่วงหน้าที่เก็บ {}
+frequent_saved	บ่อย​ครั้ง: วัน​ที่​ผ่าน​มา {d} วัน รายการ​ยอด​นิยม {n} — {c} รายการ​อาหาร
+frequent_empty	ยัง​ไม่มี​ยอด​ขาย​ที่​จบ​ใน​ช่วง​นี้ — เก็บ​เงิน​บิล (ตั้ง​ค่า​อนุญาต ₹0 ได้) แล้ว​จะ​โชว์​ที่​นี่
+zero_sales	ขาย​มูลค่า​ศูนย์
+zero_sales_help	อนุญาต​เมนู​ราคา ₹0 และ​บิล​ที่​ชำระ ₹0 (ฟรี / ตาม​เจ้าของ) เปิด​เป็น​ค่า​เริ่ม​เพื่อ​ให้​รายการ​ฟรี​ยัง​อยู่​ใน«ขาย​บ่อย»และ​สมุด​ราย​วัน
+zero_sales_on	ขาย​ศูนย์: เปิด
+zero_sales_off	ขาย​ศูนย์: ปิด
+zero_sales_saved_on	บันทึก​อนุญาต​ขาย​ศูนย์​แล้ว (เปิด)
+zero_sales_saved_off	บันทึก​อนุญาต​ขาย​ศูนย์​แล้ว (ปิด)
+floor_areas_help	พื้นที่​คือ​ห้อง/โซน​บน​พื้น (Dine In, Parcel, AC …) เพิ่ม​พื้นที่​ก่อน แล้ว​ใส่​โต๊ะ — แต่ละ​พื้นที่​เป็นก​ลุ่ม​แยก​บน​ผัง
+area_new_ph	พื้นที่/ห้อง​ใหม่ (เช่น AC, Garden)
+add_area	เพิ่ม​พื้นที่
+area_added	พื้นที่ “{name}” พร้อม — เพิ่ม​โต๊ะ
+no_favorites	ยัง​ไม่มี​รายการ​โปรด — เพิ่มสิน​ค้า​จาก​รายการ​ด้าน​ล่าง
+add_to_bill	เพิ่ม​ลง​บิล
+added	เพิ่ม​แล้ว
+owes_word	เป็น​หนี้
+selected_word	เลือก​แล้ว
+chip_clear_credit	เคลียร์ — ให้​เครดิต​หรือ​รับ​เงิน​ล่วง​หน้า
+chip_missing_customer	ไม่​พบ​ลูกค้า​ที่​เลือก — เลือก​อีก​ครั้ง
+chip_no_customer	ยัง​ไม่มี​ลูกค้า — เขียน​ชื่อ แล้ว​แตะ​เครดิต
+credit_summary_fmt	{} ลูกค้า · เครดิต​เปิด {} · เงิน​ล่วง​หน้าที่​เก็บ {}
 recent_label	ล่าสุด:
-kot_new_waiting	ใหม่ — กำลังรอ
-kot_preparing	กำลังเตรียม
-kot_ready_serve	พร้อม — เสิร์ฟได้
+kot_new_waiting	ใหม่ — กำลัง​รอ
+kot_preparing	กำลัง​เตรียม
+kot_ready_serve	พร้อม — เสิร์ฟ​ได้
 kot_done_cap	เสร็จ
-kot_cancelled	ยกเลิกแล้ว
+kot_cancelled	ยกเลิก​แล้ว
 kot_start_btn	เริ่ม
-kot_mark_ready	ทำเครื่องหมายว่าพร้อม
+kot_mark_ready	ทำ​เครื่องหมาย​ว่า​พร้อม
 kot_done_btn	เสร็จ
-table_free	ว่าง — แตะเพื่อเริ่มออเดอร์
-start_order	เริ่มออเดอร์
-open_bill	เปิดบิล
-collect_payment	เก็บเงิน
-table_running	กำลังดำเนินการ
-payment_pending	รอการชำระเงิน
-collect_at_counter	เก็บที่เคาน์เตอร์
-inventory	สต็อก
-inventory_stock	สต็อกและการนับ
+table_free	ว่าง — แตะ​เพื่อ​เริ่ม​ออ​เด​อร์
+start_order	เริ่ม​ออ​เด​อร์
+open_bill	เปิด​บิล
+collect_payment	เก็บ​เงิน
+table_running	กำลัง​ดำเนิน​การ
+payment_pending	รอ​การ​ชำระ​เงิน
+collect_at_counter	เก็บ​ที่​เคาน์เตอร์
+inventory	สต็​อก
+inventory_stock	สต็​อก​และ​การ​นับ
 branches	สาขา
-branches_org	สาขาและองค์กร
-credit_customers	ลูกค้าเครดิต
-customer_name_ph	ชื่อคู่ค้า
-new_customer_ph	ชื่อคู่ค้าใหม่
-item_name_ph	ชื่อรายการ (เช่น Masala Dosa)
+branches_org	สาขา​และ​องค์กร
+credit_customers	ลูกค้า​เครดิต
+customer_name_ph	ชื่อ​คู่​ค้า
+new_customer_ph	ชื่อ​คู่​ค้า​ใหม่
+item_name_ph	ชื่อ​รายการ (เช่น Masala Dosa)
 item_price_ph	ราคา
 start_template	สินค้า
 team	ทีม
-team_pins	ทีมและ PIN
-my_pin_settings	PIN ของฉัน
-settings_hub_help_my_pin	เปลี่ยน PIN ปลดล็อกของคนที่ลงชื่อเข้าใช้บนอุปกรณ์นี้
-team_self_help	มีแค่คุณที่เปลี่ยน PIN ปลดล็อก (และรหัสผ่านเข้าสู่ระบบถ้ามี) ได้ ถ้าต้องการหน้าจอหรือสิทธิ์อื่นให้ถามเจ้าของ
-backup_settings	สำรองและการตั้งค่า
+team_pins	ทีม​และ PIN
+my_pin_settings	PIN ของ​ฉัน
+settings_hub_help_my_pin	เปลี่ยน PIN ปลด​ล็อก​ของ​คน​ที่​ลงชื่อ​เข้า​ใช้บน​อุปกรณ์​นี้
+team_self_help	มี​แค่​คุณ​ที่​เปลี่ยน PIN ปลด​ล็อก (และ​รหัส​ผ่าน​เข้า​สู่​ระบบ​ถ้า​มี) ได้ ถ้า​ต้องการ​หน้า​จอ​หรือ​สิทธิ์​อื่น​ให้​ถาม​เจ้าของ
+backup_settings	สำรอง​และ​การ​ตั้ง​ค่า
 lock_app	ล็อก
 pick	เลือก
 select	เลือก
-advance	เงินมัดจำ
+advance	เงิน​มัดจำ
 owner	เจ้าของ
 staff	พนักงาน
 photo	รูป
 auto	อัตโนมัติ
-prev	ก่อนหน้า
-next	ถัดไป
+prev	ก่อน​หน้า
+next	ถัด​ไป
 ok	ตกลง
-this_shop	โหมดเซิร์ฟเวอร์
-extra_till	โหมดไคลเอนต์
+this_shop	โหมด​เซิร์ฟเวอร์
+extra_till	โหมด​ไคล​เอน​ต์
 off	ปิด
-tables_kitchen	โต๊ะและครัว
+tables_kitchen	โต๊ะ​และ​ครัว
 server	เซิร์ฟเวอร์
-client	ไคลเอนต์
-language_currency	ภาษาและสกุลเงิน
+client	ไคล​เอน​ต์
+language_currency	ภาษา​และ​สกุล​เงิน
 language	ภาษา
-choose_language	เลือกภาษาของคุณ
-language_setup_hint	ใช้ภาษาของอุปกรณ์นี้ หรือเลือกเอง
-lang_follow_platform	ใช้ภาษาของอุปกรณ์
-lang_pick_user	ใช้ภาษาที่เลือก
-lang_platform_now	ภาษาอุปกรณ์ตอนนี้
-selected_language	ที่เลือก
-continue	ดำเนินการต่อ
-this_device	อุปกรณ์นี้
-device_use_q	อุปกรณ์นี้จะใช้อย่างไร
-choose_server	เลือกเซิร์ฟเวอร์
-choose_server_hint	อุปกรณ์นี้มีเซิร์ฟเวอร์อยู่แล้ว เปิดหนึ่งเครื่อง หรือสร้างเซิร์ฟเวอร์ใหม่สำหรับธุรกิจอื่น
-create_new_server	สร้างเซิร์ฟเวอร์ใหม่
+choose_language	เลือก​ภาษา​ของ​คุณ
+language_setup_hint	ใช้​ภาษา​ของ​อุปกรณ์​นี้ หรือ​เลือก​เอง
+lang_follow_platform	ใช้​ภาษา​ของ​อุปกรณ์
+lang_pick_user	ใช้​ภาษา​ที่​เลือก
+lang_platform_now	ภาษา​อุปกรณ์​ตอน​นี้
+selected_language	ที่​เลือก
+continue	ดำเนิน​การ​ต่อ
+this_device	อุปกรณ์​นี้
+device_use_q	อุปกรณ์​นี้​จะ​ใช้​อย่างไร
+choose_server	เลือก​เซิร์ฟเวอร์
+choose_server_hint	อุปกรณ์​นี้​มี​เซิร์ฟเวอร์​อยู่​แล้ว เปิด​หนึ่ง​เครื่อง หรือ​สร้าง​เซิร์ฟเวอร์​ใหม่​สำหรับ​ธุรกิจ​อื่น
+create_new_server	สร้าง​เซิร์ฟเวอร์​ใหม่
 open_server	เปิด
-new_server_name_ph	ชื่อเซิร์ฟเวอร์ใหม่ (ไม่บังคับ)
-server_remove_pin_ph	เจ้าของ PIN เพื่อลบเซิร์ฟเวอร์
-only_owner_remove_server	เฉพาะ เจ้าของ เท่านั้นที่ลบเซิร์ฟเวอร์ได้
-owner_pin_remove_server	ต้องใช้ เจ้าของ PIN เพื่อลบเซิร์ฟเวอร์นี้
-device_setup_help	อุปกรณ์นี้เป็นร้าน (เซิร์ฟเวอร์) หรือเครื่องคิดเงินเพิ่ม (ไคลเอนต์) ก็ได้ การเปิดอันหนึ่งไม่ลบอีกอัน ไคลเอนต์ที่จับคู่แล้วจำร้านได้ — ไม่ต้องใส่รหัสจับคู่ทุกครั้งที่เปิดใหม่ ยังไม่มีเซิร์ฟเวอร์ «กู้คืนข้อมูลสำรอง» เปิดบัญชีจากไฟล์ที่คุณเลือก (ตรวจเหมือนกู้คืนในการตั้งค่า)
-app_template_heading	เทมเพลตร้าน
-app_template_blurb	เลือกเมนูเริ่มต้น การข้ามจะเหลือร้านว่าง
-app_template_apply	นำเข้าเทมเพลต
-app_template_skip	ข้ามไปก่อน
-app_template_status	เซิร์ฟเวอร์พร้อมแล้ว — นำเข้าเทมเพลต หรือข้าม
-app_template_importing	กำลังใช้ {title}…
-app_template_downloading	กำลังดาวน์โหลดเทมเพลต…
-app_template_download_progress	กำลังดาวน์โหลด… {p}% ({d} / {t})
-app_template_download_paused	นำเข้าอีกครั้งเพื่อทำต่อ — ไฟล์ที่เสร็จแล้วจะถูกเก็บไว้
+new_server_name_ph	ชื่อ​เซิร์ฟเวอร์​ใหม่ (ไม่​บังคับ)
+server_remove_pin_ph	เจ้าของ PIN เพื่อ​ลบ​เซิร์ฟเวอร์
+only_owner_remove_server	เฉพาะ เจ้าของ เท่านั้น​ที่​ลบ​เซิร์ฟเวอร์​ได้
+owner_pin_remove_server	ต้อง​ใช้ เจ้าของ PIN เพื่อ​ลบ​เซิร์ฟเวอร์​นี้
+device_setup_help	อุปกรณ์​นี้​เป็น​ร้าน (เซิร์ฟเวอร์) หรือ​เครื่อง​คิด​เงิน​เพิ่ม (ไคล​เอน​ต์) ก็ได้ การ​เปิด​อัน​หนึ่ง​ไม่​ลบ​อีก​อัน ไคล​เอน​ต์​ที่​จับ​คู่​แล้ว​จำ​ร้าน​ได้ — ไม่​ต้อง​ใส่​รหัส​จับ​คู่​ทุก​ครั้ง​ที่​เปิด​ใหม่ ยัง​ไม่มี​เซิร์ฟเวอร์ «กู้​คืน​ข้อมูล​สำรอง» เปิด​บัญชี​จาก​ไฟล์​ที่​คุณ​เลือก (ตรวจ​เหมือน​กู้​คืน​ใน​การ​ตั้ง​ค่า)
+app_template_heading	เทมเพลต​ร้าน
+app_template_blurb	เลือก​เมนู​เริ่ม​ต้น การ​ข้าม​จะ​เหลือ​ร้าน​ว่าง
+app_template_apply	นำ​เข้า​เทมเพลต
+app_template_skip	ข้าม​ไป​ก่อน
+app_template_status	เซิร์ฟเวอร์​พร้อม​แล้ว — นำ​เข้า​เทมเพลต หรือ​ข้าม
+app_template_importing	กำลัง​ใช้ {title}…
+app_template_downloading	กำลัง​ดาวน์โหลด​เทมเพลต…
+app_template_download_progress	กำลัง​ดาวน์โหลด… {p}% ({d} / {t})
+app_template_download_paused	นำ​เข้า​อีก​ครั้ง​เพื่อ​ทำ​ต่อ — ไฟล์​ที่​เสร็จ​แล้ว​จะ​ถูก​เก็บ​ไว้
 app_template_public_hdr	เทมเพลต
-app_template_private_hdr	เทมเพลตส่วนตัว
-app_template_public_hint	เปิดส่วนนี้เพื่อโหลดรายการ (ใช้อินเทอร์เน็ตครั้งเดียว)
-app_template_code_not_found	ไม่พบเทมเพลต
-app_template_need_internet	ต้องใช้อินเทอร์เน็ตเพื่อดาวน์โหลดเทมเพลต
-app_template_import_selected	นำเข้ารายการที่เลือก
-app_template_check_code	ตรวจรหัส
-app_template_import	นำเข้า
-app_template_from_device	นำเข้าจากอุปกรณ์นี้
-app_template_from_device_help	เลือกโฟลเดอร์ที่มี template.json (และ shop_defaults.json ถ้ามี)
-settings_app_tmpl_note	การนำเข้าซ้ำจะล้างยอดขาย KOT และบัญชีแยกประเภท แล้วใช้การตั้งค่าร้านของแพ็ก เทมเพลตเฉพาะเมนู: «เมนู» → «เทมเพลตรายการ»
-app_template_wipe_warn	การดำเนินการนี้จะล้างข้อมูลการค้าในสมุดบัญชี (ยอดขาย, KOT, บัญชีแยกประเภท) และใช้การตั้งค่าร้านของเทมเพลต เมนูและการตั้งค่าอาจเปลี่ยน ดำเนินการต่อหรือไม่
-app_template_wipe_continue	ดำเนินการต่อ
+app_template_private_hdr	เทมเพลต​ส่วน​ตัว
+app_template_public_hint	เปิด​ส่วน​นี้​เพื่อ​โหลด​รายการ (ใช้​อินเทอร์เน็ต​ครั้ง​เดียว)
+app_template_code_not_found	ไม่​พบ​เทมเพลต
+app_template_need_internet	ต้อง​ใช้​อินเทอร์เน็ต​เพื่อ​ดาวน์โหลด​เทมเพลต
+app_template_import_selected	นำ​เข้า​รายการ​ที่​เลือก
+app_template_check_code	ตรวจ​รหัส
+app_template_import	นำ​เข้า
+app_template_from_device	นำ​เข้า​จาก​อุปกรณ์​นี้
+app_template_from_device_help	เลือก​โฟลเดอร์​ที่​มี template.json (และ shop_defaults.json ถ้า​มี)
+settings_app_tmpl_note	การนำ​เข้า​ซ้ำ​จะ​ล้าง​ยอด​ขาย KOT และ​บัญชี​แยก​ประเภท แล้ว​ใช้​การ​ตั้ง​ค่า​ร้าน​ของ​แพ็ก เทมเพลต​เฉพาะ​เมนู: «เมนู» → «เทมเพลต​รายการ»
+app_template_wipe_warn	การ​ดำเนิน​การ​นี้​จะ​ล้าง​ข้อมูล​การ​ค้า​ใน​สมุด​บัญชี (ยอด​ขาย, KOT, บัญชี​แยก​ประเภท) และ​ใช้​การ​ตั้ง​ค่า​ร้าน​ของ​เทมเพลต เมนู​และ​การ​ตั้ง​ค่า​อาจ​เปลี่ยน ดำเนิน​การ​ต่อ​หรือ​ไม่
+app_template_wipe_continue	ดำเนิน​การ​ต่อ
 app_template_wipe_cancel	ยกเลิก
-currency	สกุลเงิน
-backup	สำรองข้อมูล
+currency	สกุล​เงิน
+backup	สำรอง​ข้อมูล
 use	ใช้
-dont_use	ไม่ใช้
-add_branch	เพิ่มสาขา
-add_conversion	เพิ่มการแปลง
-add_dishes_items	เพิ่มจานและรายการ
-add_item_plain	เพิ่มรายการ
-add_note	เพิ่มหมายเหตุ
-add_opening_balance	เพิ่มยอดยกมา
-add_staff	เพิ่มพนักงาน
-add_station	เพิ่มสถานี
-add_table	เพิ่มโต๊ะ
-add_unit	เพิ่มหน่วย
-add_use_name	เพิ่ม / ใช้ชื่อนี้
-allow_extra_tills	อนุญาตเคาน์เตอร์เสริม
+dont_use	ไม่​ใช้
+add_branch	เพิ่ม​สาขา
+add_conversion	เพิ่ม​การ​แปลง
+add_dishes_items	เพิ่ม​จาน​และ​รายการ
+add_item_plain	เพิ่ม​รายการ
+add_note	เพิ่ม​หมายเหตุ
+add_opening_balance	เพิ่ม​ยอด​ยก​มา
+add_staff	เพิ่ม​พนักงาน
+add_station	เพิ่ม​สถานี
+add_table	เพิ่ม​โต๊ะ
+add_unit	เพิ่ม​หน่วย
+add_use_name	เพิ่ม / ใช้​ชื่อ​นี้
+allow_extra_tills	อนุญาต​เคาน์เตอร์​เสริม
 amend	แก้ไข
-apply_country_pack	ใช้แพ็กประเทศ
-datetime_appearance	การปรากฏของวันที่และเวลา
-datetime_appearance_help	หนังสือเก็บรูปแบบ RFC3339 ที่เริ่มด้วยปีไว้ภายใน สิ่งเหล่านี้เปลี่ยนเพียงวิธีที่วันที่และนาฬิกาแสดงบนบิล KOT รายงาน และหน้าจอ
-datetime_example	ตัวอย่างตอนนี้: {ex}
-date_order	ลำดับวันที่
+apply_country_pack	ใช้​แพ็ก​ประเทศ
+datetime_appearance	การ​ปรากฏ​ของ​วัน​ที่​และ​เวลา
+datetime_appearance_help	หนังสือ​เก็บ​รูป​แบบ RFC3339 ที่​เริ่ม​ด้วย​ปี​ไว้​ภายใน สิ่ง​เหล่า​นี้​เปลี่ยน​เพียง​วิธี​ที่​วัน​ที่​และ​นาฬิกา​แสดง​บน​บิล KOT รายงาน และ​หน้า​จอ
+datetime_example	ตัวอย่าง​ตอน​นี้: {ex}
+date_order	ลำดับ​วัน​ที่
 date_order_dmy	D/M/Y
 date_order_mdy	M/D/Y
 date_order_ymd	Y-M-D
 time_format	นาฬิกา
 time_format_24h	24 ชั่วโมง
 time_format_12h	12 ชั่วโมง
-attach_bill_photo	แนบรูปบิล
+attach_bill_photo	แนบ​รูป​บิล
 attach_pdf	แนบ PDF
-attach_photo	แนบรูป
-attachments_last_expense	ไฟล์แนบ (ค่าใช้จ่ายล่าสุด)
+attach_photo	แนบ​รูป
+attachments_last_expense	ไฟล์​แนบ (ค่า​ใช้​จ่าย​ล่าสุด)
 bank	ธนาคาร
-bank_in	เข้าธนาคาร
-bank_out	ออกจากธนาคาร
-bank_reconciliation	กระทบยอดธนาคาร
+bank_in	เข้า​ธนาคาร
+bank_out	ออก​จาก​ธนาคาร
+bank_reconciliation	กระทบ​ยอด​ธนาคาร
 bank_to_till	ธนาคาร → เคาน์เตอร์
-book_add_dish	สมุด — เพิ่มจาน / รายการ
-book_opening_credit	สมุด — เครดิตเริ่มต้น
-branch_name_sell_ph	ชื่อสาขาที่จะขาย
-bring_my_book	นำสมุดของฉันมา
-business_tax_id_ph	เลขภาษีธุรกิจ
+book_add_dish	สมุด — เพิ่ม​จาน / รายการ
+book_opening_credit	สมุด — เครดิต​เริ่ม​ต้น
+branch_name_sell_ph	ชื่อ​สาขา​ที่​จะ​ขาย
+bring_my_book	นำ​สมุด​ของ​ฉัน​มา
+business_tax_id_ph	เลข​ภาษี​ธุรกิจ
 caption_bank	ธนาคาร
 caption_bills	บิล
-caption_outstanding	ค้างชำระ
-caption_payments_today	การชำระวันนี้
-caption_today	วันนี้
-card_amount_ph	ยอดบัตร
-cash_amount_ph	ยอดเงินสด
-cash_memo	เมโมเงินสด
-choose_icon	เลือกไอคอน
-choose_logo	เลือกโลโก้
-clear_icon	ลบไอคอน
-clear_photo	ลบรูป
-copy_day_book_csv	คัดลอก CSV สมุดรายวัน
-copy_day_close	คัดลอกปิดวัน
-copy_items_csv	คัดลอก CSV รายการ
-copy_outstanding_csv	คัดลอก CSV ค้างชำระ
-copy_parties_csv	คัดลอก CSV คู่ค้า
-copy_party_ledger_csv	คัดลอก CSV บัญชีคู่ค้า
-copy_receipt	คัดลอกใบเสร็จ
+caption_outstanding	ค้าง​ชำระ
+caption_payments_today	การ​ชำระ​วัน​นี้
+caption_today	วัน​นี้
+card_amount_ph	ยอด​บัตร
+cash_amount_ph	ยอด​เงินสด
+cash_memo	เม​โม​เงินสด
+choose_icon	เลือก​ไอคอน
+choose_logo	เลือก​โลโก้
+clear_icon	ลบ​ไอคอน
+clear_photo	ลบ​รูป
+copy_day_book_csv	คัด​ลอก CSV สมุด​ราย​วัน
+copy_day_close	คัด​ลอก​ปิด​วัน
+copy_items_csv	คัด​ลอก CSV รายการ
+copy_outstanding_csv	คัด​ลอก CSV ค้าง​ชำระ
+copy_parties_csv	คัด​ลอก CSV คู่​ค้า
+copy_party_ledger_csv	คัด​ลอก CSV บัญชี​คู่​ค้า
+copy_receipt	คัด​ลอก​ใบ​เสร็จ
 share_whatsapp	แชร์ WhatsApp
-lan_pages_heading	หน้าแขกบน Wi‑Fi
-lan_pages_help	บน Wi‑Fi ของร้าน หน้าสำหรับลูกค้าใช้ได้: จอแสดงผล บัตรคิว จุดส่งอาหาร คีออสก์ QR โต๊ะ และความคิดเห็น ลูกค้าที่ใช้เน็ตมือถือต้องใช้ Cloud ในภายหลัง เครื่องรูดบัตร / ลิงก์ชำระเงินเป็นตัวเลือกเมื่อมีอินเทอร์เน็ต — ไม่เคยทำให้เคาน์เตอร์ติดขัด
-diag_send_heading	แชร์ออกจากอุปกรณ์นี้
-kot_dest_heading	สถานีครัว
-optional_login_heading	เข้าสู่ระบบแบบเลือกได้
+lan_pages_heading	หน้า​แขก​บน Wi‑Fi
+lan_pages_help	บน Wi‑Fi ของ​ร้าน หน้า​สำหรับ​ลูกค้า​ใช้ได้: จอแส​ดง​ผล บัตร​คิว จุด​ส่ง​อาหาร คี​ออ​สก์ QR โต๊ะ และ​ความ​คิด​เห็น ลูกค้า​ที่​ใช้​เน็ต​มือ​ถือ​ต้อง​ใช้ Cloud ใน​ภาย​หลัง เครื่อง​รูด​บัตร / ลิงก์​ชำระ​เงิน​เป็น​ตัว​เลือก​เมื่อ​มี​อินเทอร์เน็ต — ไม่​เคย​ทำให้​เคาน์เตอร์​ติดขัด
+diag_send_heading	แชร์​ออก​จาก​อุปกรณ์​นี้
+kot_dest_heading	สถานี​ครัว
+optional_login_heading	เข้า​สู่​ระบบ​แบบ​เลือก​ได้
 rights_heading	สิทธิ์
-ops_panel	งานในร้าน
-crm_heading	แขกและข้อความ
-crm_help	วันเกิด สะสมแต้ม ไม่ได้มา และลูกค้าท็อป — คิว intent SMS หรือ WhatsApp ใช้ {name} และ {points} ในข้อความ เจ้าของแตะส่ง ไม่ยิงเอง
+ops_panel	งาน​ใน​ร้าน
+crm_heading	แขก​และ​ข้อความ
+crm_help	วัน​เกิด สะสม​แต้ม ไม่​ได้​มา และ​ลูก​ค้า​ท็อป — คิว intent SMS หรือ WhatsApp ใช้ {name} และ {points} ใน​ข้อความ เจ้าของ​แตะ​ส่ง ไม่​ยิง​เอง
 crm_queue_sms	คิว SMS
 crm_queue_wa	คิว WhatsApp
-crm_seg_bday_week	วันเกิดสัปดาห์นี้
-crm_seg_bday_month	วันเกิดเดือนนี้
-crm_seg_phone	มีโทรศัพท์
-crm_seg_loyalty	สะสมแต้ม
-crm_seg_inactive	ไม่ใช้งาน
-crm_seg_top	ใช้จ่ายสูง
-birthday_ph	วันเกิด (MM-DD หรือ YYYY-MM-DD)
-crm_message_ph	สุขสันต์วันเกิด {name}! คุณมี {points} แต้ม
-till_apply_redeem	ใช้กับบิล
-till_clear_redeem	ล้างการใช้
-till_wallet_topup	เติมวอลเล็ต
-till_issue_voucher	ออกบัตรกำนัล
-till_points_ph	แต้มที่ใช้
-till_wallet_ph	ใช้จากวอลเล็ต
-till_voucher_code_ph	รหัสบัตรกำนัล
-till_voucher_amt_ph	ยอดบัตรกำนัล (ว่าง=ทั้งหมด)
-till_wallet_topup_ph	ยอดเติมวอลเล็ต
-till_voucher_issue_amt_ph	ยอดบัตรกำนัลใหม่
-till_voucher_issue_code_ph	รหัสบัตรกำนัลใหม่
-split_evenly	แบ่งเท่าๆ
-waitlist	รายการรอ
-fire_course	ส่งคอร์ส
+crm_seg_bday_week	วัน​เกิด​สัปดาห์​นี้
+crm_seg_bday_month	วัน​เกิด​เดือน​นี้
+crm_seg_phone	มี​โทรศัพท์
+crm_seg_loyalty	สะสม​แต้ม
+crm_seg_inactive	ไม่​ใช้​งาน
+crm_seg_top	ใช้​จ่าย​สูง
+birthday_ph	วัน​เกิด (MM-DD หรือ YYYY-MM-DD)
+crm_message_ph	สุขสันต์​วัน​เกิด {name}! คุณ​มี {points} แต้ม
+till_apply_redeem	ใช้​กับ​บิล
+till_clear_redeem	ล้าง​การ​ใช้
+till_wallet_topup	เติม​วอลเล็ต
+till_issue_voucher	ออก​บัตร​กำนัล
+till_points_ph	แต้ม​ที่​ใช้
+till_wallet_ph	ใช้​จาก​วอลเล็ต
+till_voucher_code_ph	รหัส​บัตร​กำนัล
+till_voucher_amt_ph	ยอด​บัตร​กำนัล (ว่าง=ทั้งหมด)
+till_wallet_topup_ph	ยอด​เติม​วอลเล็ต
+till_voucher_issue_amt_ph	ยอด​บัตร​กำนัล​ใหม่
+till_voucher_issue_code_ph	รหัส​บัตร​กำนัล​ใหม่
+split_evenly	แบ่ง​เท่าๆ
+waitlist	รายการ​รอ
+fire_course	ส่ง​คอร์ส
 hold_item	พัก
-waiter_call	เรียกพนักงาน
-waitlist_add	เพิ่มรายการรอ
+waiter_call	เรียก​พนักงาน
+waitlist_add	เพิ่ม​รายการ​รอ
 floor_view_grid	ตาราง
 floor_view_layout	ผัง
 floor_layout_x	X
 floor_layout_y	Y
 floor_layout_w	W
 floor_layout_h	H
-floor_layout_save	บันทึกผัง
-floor_layout_open	เปิดโต๊ะ
-floor_layout_edit	แก้ไขผัง
-floor_layout_pick	แตะโต๊ะเพื่อแก้ไขผัง
-floor_layout_saved	บันทึกผังโต๊ะแล้ว
+floor_layout_save	บันทึก​ผัง
+floor_layout_open	เปิด​โต๊ะ
+floor_layout_edit	แก้ไข​ผัง
+floor_layout_pick	แตะ​โต๊ะ​เพื่อ​แก้ไข​ผัง
+floor_layout_saved	บันทึก​ผัง​โต๊ะ​แล้ว
 floor_layout_nudge_left	← 20
 floor_layout_nudge_right	→ 20
 floor_layout_nudge_up	↑ 20
 floor_layout_nudge_down	↓ 20
-sibling_pickers_help	เหมือนหน่วย On/Off — ซ่อนโซน สถานี อัตราภาษีจากตัวเลือกประจำวัน ค่าเริ่มต้นแพ็กยังอยู่
-bulk_price_apply	ใช้ราคาแบบกลุ่ม
-card_terminal_optional	เครื่องรูดบัตร / ลิงก์ชำระ (เลือกได้เมื่อมีเน็ต)
-copy_report	คัดลอกรายงาน
-counted_cash_ph	เงินสดที่นับในลิ้นชัก
-country_tax	ประเทศและภาษี
-tax_chrome	ป้ายภาษีที่แคชเชียร์
-tax_chrome_help	เมื่อปิด โต๊ะสั่งอาหารจะซ่อนบรรทัดประมาณ GST/ภาษี และตัวยึด GST-ในราคา อัตราภาษีและการตั้งค่าประเทศและภาษียังคงอยู่ — เปิดป้ายกลับได้ทุกเมื่อ เทมเพลตร้านบางแบบเริ่มต้นโดยปิดตัวเลือกนี้ไว้
+sibling_pickers_help	เหมือน​หน่วย On/Off — ซ่อน​โซน สถานี อัตรา​ภาษี​จาก​ตัว​เลือก​ประจำ​วัน ค่า​เริ่ม​ต้น​แพ็ก​ยัง​อยู่
+bulk_price_apply	ใช้​ราคา​แบบ​กลุ่ม
+card_terminal_optional	เครื่อง​รูด​บัตร / ลิงก์​ชำระ (เลือก​ได้​เมื่อ​มี​เน็ต)
+copy_report	คัด​ลอก​รายงาน
+counted_cash_ph	เงินสด​ที่​นับ​ใน​ลิ้น​ชัก
+country_tax	ประเทศ​และ​ภาษี
+tax_chrome	ป้าย​ภาษี​ที่​แคชเชียร์
+tax_chrome_help	เมื่อ​ปิด โต๊ะ​สั่ง​อาหาร​จะ​ซ่อน​บรรทัด​ประมาณ GST/ภาษี และ​ตัว​ยึด GST-ใน​ราคา อัตรา​ภาษี​และ​การ​ตั้ง​ค่า​ประเทศ​และ​ภาษี​ยัง​คง​อยู่ — เปิด​ป้าย​กลับ​ได้​ทุก​เมื่อ เทมเพลต​ร้าน​บาง​แบบ​เริ่ม​ต้น​โดย​ปิด​ตัว​เลือก​นี้​ไว้
 tax_chrome_on	แสดง
 tax_chrome_off	ซ่อน
-tax_chrome_saved_on	ป้ายภาษีที่แคชเชียร์
-tax_chrome_saved_off	ซ่อนป้ายภาษีที่แคชเชียร์
-tax_invoice_till	ใบแจ้งหนี้ภาษีที่แคชเชียร์
-tax_invoice_help	เมื่อปิด บิลจะเป็นบันทึกเงินสดเท่านั้น และปุ่มใบกำกับภาษี / บันทึกเงินสดบนโต๊ะสั่งอาหารจะถูกซ่อน เทมเพลตร้านบางแบบเริ่มต้นโดยปิดตัวเลือกนี้ไว้ — เปิด แสดง ได้ทุกเมื่อเพื่อเลือกใบกำกับภาษีอีกครั้ง
+tax_chrome_saved_on	ป้าย​ภาษี​ที่​แคชเชียร์
+tax_chrome_saved_off	ซ่อน​ป้าย​ภาษี​ที่​แคชเชียร์
+tax_invoice_till	ใบ​แจ้ง​หนี้​ภาษี​ที่​แคชเชียร์
+tax_invoice_help	เมื่อ​ปิด บิล​จะ​เป็น​บันทึก​เงินสด​เท่านั้น และ​ปุ่ม​ใบ​กำกับ​ภาษี / บันทึก​เงินสด​บน​โต๊ะ​สั่ง​อาหาร​จะ​ถูก​ซ่อน เทมเพลต​ร้าน​บาง​แบบ​เริ่ม​ต้น​โดย​ปิด​ตัว​เลือก​นี้​ไว้ — เปิด แสดง ได้​ทุก​เมื่อ​เพื่อ​เลือก​ใบ​กำกับ​ภาษี​อีก​ครั้ง
 tax_invoice_on	แสดง
 tax_invoice_off	ซ่อน
-tax_invoice_saved_on	ใบแจ้งหนี้ภาษีที่แคชเชียร์
-tax_invoice_saved_off	ซ่อนใบแจ้งหนี้ภาษี — เฉพาะใบเสร็จเงินสด
-pay_methods	วิธีการชำระเงิน
-pay_methods_help	ปุ่มใดที่แสดงใน รับชำระเงิน เงินสดอยู่เสมอ เทมเพลตร้านบางแบบเริ่มต้นด้วยเงินสดอย่างเดียว — เปิด UPI / บัตร / เงินเชื่อ / แบ่งจ่าย กลับได้ที่นี่
-create_backup	สร้างข้อมูลสำรอง
-credit_limit_heading	วงเงินเครดิต (คู่ค้าที่เลือก / ระบุชื่อ)
-day_close_summary	สรุปปิดวัน
-delete_party	ลบคู่ค้าที่เลือก
-delivery	จัดส่ง
-done_open_books	เสร็จ — เปิดบัญชี
-drawer_count	นับลิ้นชัก (ไม่บังคับ)
-expense_heading	ค่าใช้จ่าย
-export_day	ส่งออกวัน
-extra_note_bill_ph	หมายเหตุเพิ่มในบิล / การขายนี้
-extra_note_expense_ph	หมายเหตุเพิ่มในค่าใช้จ่ายล่าสุด
-extra_tills_heading	เคาน์เตอร์เสริม
-other_devices_help_heading	ตั้งค่าอุปกรณ์อื่น
-other_devices_help	บนอุปกรณ์นี้ (เซิร์ฟเวอร์): เคาน์เตอร์เสริม → อนุญาตเคาน์เตอร์เสริม จดรหัสจับคู่และที่อยู่ Wi‑Fi หากมีปุ่มปรากฏ ให้แตะอนุญาตให้อุปกรณ์อื่นเชื่อมต่อ บนคอมพิวเตอร์แตะเริ่มด้วยคอมพิวเตอร์นี้ บนอุปกรณ์อื่นแต่ละเครื่อง: ติดตั้งแอป เลือกโหมดไคลเอนต์ ค้นหาเซิร์ฟเวอร์ของร้าน (หรือพิมพ์ที่อยู่) ใส่รหัส จับคู่ทันที หาก Wi‑Fi หลุด ออเดอร์จะรอในอุปกรณ์แล้วส่งเมื่อเซิร์ฟเวอร์ตอบ เครื่องพิมพ์ครัวตั้งบนเซิร์ฟเวอร์ («การตั้งค่า» → «เครื่องพิมพ์») — เคาน์เตอร์เสริมส่ง KOT ไปที่นั่น
-forget_shop	ลืมร้านนี้
-goods_received	รับสินค้าแล้ว
-import_day	นำเข้าวัน
-import_items_csv_plain	นำเข้า CSV รายการ…
-import_parties_csv	นำเข้า CSV คู่ค้า…
-item_name	ชื่อรายการ
-kitchen_printing	พิมพ์ครัว
-login_id_ph	รหัสเข้าสู่ระบบ
-mark_cleared	ทำเครื่องหมายเคลียร์
-new_party_clear	คู่ค้าใหม่ (ล้างฟอร์ม)
-new_party_kind_supplier_ph	ประเภทคู่ค้าใหม่ (ผู้จัดหา)
-next_country	ประเทศถัดไป
-next_order	ออเดอร์ถัดไป (ล้างโต๊ะ)
-nav_drafts	ฉบับร่าง
-park_draft	พักเป็นฉบับร่าง
-drafts_help	ออเดอร์หน้าเคาน์เตอร์ที่คุณพักไว้กลางคัน — ยังไม่ลงสมุดบัญชีจนกว่าจะ «รับชำระเงิน» แตะการ์ดเพื่อทำต่อที่ «ออเดอร์» ส่วน «ทิ้งฉบับร่าง» จะลบฉบับร่าง และ «ปิดวัน» ไม่ล้างรายการเหล่านี้
-drafts_park_nothing	ไม่มีอะไรให้พัก — เพิ่มรายการลงตะกร้าก่อน
-drafts_park_counter_only	«พักเป็นฉบับร่าง» ใช้ได้กับออเดอร์หน้าเคาน์เตอร์เท่านั้น — ออกจากออเดอร์ของโต๊ะ หรือใช้ «พื้นที่»
-drafts_parked	พักไว้ใน «ฉบับร่าง» แล้ว — เคาน์เตอร์ว่าง
-drafts_discard	ทิ้งฉบับร่าง
-drafts_discarded	ทิ้งฉบับร่างแล้ว
-drafts_gone	ฉบับร่างนั้นไม่อยู่ในรายการแล้ว
-drafts_closed	ฉบับร่างนั้นชำระเงินแล้วหรือถูกทิ้งไปแล้ว
-drafts_empty	ยังไม่มีฉบับร่าง ที่ «เคาน์เตอร์» เพิ่มอาหารแล้วแตะ «พักเป็นฉบับร่าง»
+tax_invoice_saved_on	ใบ​แจ้ง​หนี้​ภาษี​ที่​แคชเชียร์
+tax_invoice_saved_off	ซ่อน​ใบ​แจ้ง​หนี้​ภาษี — เฉพาะ​ใบ​เสร็จ​เงินสด
+pay_methods	วิธี​การ​ชำระ​เงิน
+pay_methods_help	ปุ่ม​ใด​ที่​แสดง​ใน รับ​ชำระ​เงิน เงินสด​อยู่​เสมอ เทมเพลต​ร้าน​บาง​แบบ​เริ่ม​ต้น​ด้วย​เงินสด​อย่าง​เดียว — เปิด UPI / บัตร / เงิน​เชื่อ / แบ่ง​จ่าย กลับ​ได้ที่​นี่
+create_backup	สร้าง​ข้อมูล​สำรอง
+credit_limit_heading	วงเงิน​เครดิต (คู่​ค้า​ที่​เลือก / ระบุ​ชื่อ)
+day_close_summary	สรุป​ปิด​วัน
+delete_party	ลบ​คู่​ค้า​ที่​เลือก
+delivery	จัด​ส่ง
+done_open_books	เสร็จ — เปิด​บัญชี
+drawer_count	นับ​ลิ้น​ชัก (ไม่​บังคับ)
+expense_heading	ค่า​ใช้​จ่าย
+export_day	ส่ง​ออก​วัน
+extra_note_bill_ph	หมายเหตุ​เพิ่ม​ใน​บิล / การ​ขาย​นี้
+extra_note_expense_ph	หมายเหตุ​เพิ่ม​ใน​ค่า​ใช้​จ่าย​ล่าสุด
+extra_tills_heading	เคาน์เตอร์​เสริม
+other_devices_help_heading	ตั้ง​ค่า​อุปกรณ์​อื่น
+other_devices_help	บน​อุปกรณ์​นี้ (เซิร์ฟเวอร์): เคาน์เตอร์​เสริม → อนุญาต​เคาน์เตอร์​เสริม จด​รหัส​จับ​คู่​และ​ที่​อยู่ Wi‑Fi หาก​มี​ปุ่ม​ปรากฏ ให้​แตะ​อนุญาต​ให้​อุปกรณ์​อื่น​เชื่อม​ต่อ บน​คอมพิวเตอร์​แตะ​เริ่ม​ด้วย​คอมพิวเตอร์​นี้ บน​อุปกรณ์​อื่น​แต่ละ​เครื่อง: ติด​ตั้ง​แอป เลือก​โหมด​ไคล​เอน​ต์ ค้นหา​เซิร์ฟเวอร์​ของ​ร้าน (หรือ​พิมพ์​ที่​อยู่) ใส่​รหัส จับ​คู่​ทันที หาก Wi‑Fi หลุด ออ​เด​อร์​จะ​รอ​ใน​อุปกรณ์​แล้ว​ส่ง​เมื่อ​เซิร์ฟเวอร์​ตอบ เครื่องพิมพ์​ครัว​ตั้ง​บน​เซิร์ฟเวอร์ («การ​ตั้ง​ค่า» → «เครื่องพิมพ์») — เคาน์เตอร์​เสริม​ส่ง KOT ไป​ที่​นั่น
+forget_shop	ลืม​ร้าน​นี้
+goods_received	รับ​สินค้า​แล้ว
+import_day	นำ​เข้า​วัน
+import_items_csv_plain	นำ​เข้า CSV รายการ…
+import_parties_csv	นำ​เข้า CSV คู่​ค้า…
+item_name	ชื่อ​รายการ
+kitchen_printing	พิมพ์​ครัว
+login_id_ph	รหัส​เข้า​สู่​ระบบ
+mark_cleared	ทำ​เครื่องหมาย​เคลียร์
+new_party_clear	คู่​ค้า​ใหม่ (ล้าง​ฟอร์ม)
+new_party_kind_supplier_ph	ประเภท​คู่​ค้า​ใหม่ (ผู้​จัดหา)
+next_country	ประเทศ​ถัด​ไป
+next_order	ออ​เด​อร์​ถัด​ไป (ล้าง​โต๊ะ)
+nav_drafts	ฉบับ​ร่าง
+park_draft	พัก​เป็น​ฉบับ​ร่าง
+drafts_help	ออ​เด​อร์​หน้า​เคาน์เตอร์​ที่​คุณ​พัก​ไว้​กลาง​คัน — ยัง​ไม่​ลง​สมุด​บัญชี​จนกว่า​จะ «รับ​ชำระ​เงิน» แตะ​การ์ด​เพื่อ​ทำ​ต่อ​ที่ «ออ​เด​อร์» ส่วน «ทิ้ง​ฉบับ​ร่าง» จะ​ลบ​ฉบับ​ร่าง และ «ปิด​วัน» ไม่​ล้าง​รายการ​เหล่า​นี้
+drafts_park_nothing	ไม่มี​อะไร​ให้​พัก — เพิ่ม​รายการ​ลง​ตะกร้า​ก่อน
+drafts_park_counter_only	«พัก​เป็น​ฉบับ​ร่าง» ใช้ได้​กับ​ออ​เด​อร์​หน้า​เคาน์เตอร์​เท่านั้น — ออก​จา​กอ​อเด​อร์​ของ​โต๊ะ หรือ​ใช้ «พื้นที่»
+drafts_parked	พัก​ไว้​ใน «ฉบับ​ร่าง» แล้ว — เคาน์เตอร์​ว่าง
+drafts_discard	ทิ้ง​ฉบับ​ร่าง
+drafts_discarded	ทิ้ง​ฉบับ​ร่าง​แล้ว
+drafts_gone	ฉบับ​ร่าง​นั้น​ไม่​อยู่​ใน​รายการ​แล้ว
+drafts_closed	ฉบับ​ร่าง​นั้น​ชำระ​เงิน​แล้ว​หรือ​ถูก​ทิ้ง​ไป​แล้ว
+drafts_empty	ยัง​ไม่มี​ฉบับ​ร่าง ที่ «เคาน์เตอร์» เพิ่ม​อาหาร​แล้ว​แตะ «พัก​เป็น​ฉบับ​ร่าง»
 drafts_card_kind	ร่าง
-drafts_card_no_lines	ไม่มีรายการ
+drafts_card_no_lines	ไม่มี​รายการ
 drafts_card_lines	รายการ
-drafts_summary_fmt	ฉบับร่างที่เปิดอยู่ {n} รายการ
+drafts_summary_fmt	ฉบับ​ร่าง​ที่​เปิด​อยู่ {n} รายการ
 drafts_cols_fmt	{n} คอลัมน์
-note_gstin_ph	หมายเหตุ / GSTIN / เตือนข้อตกลง
-notes_attach_party	หมายเหตุและไฟล์แนบ (คู่ค้าที่เลือก)
-notes_attach_sale	หมายเหตุและไฟล์แนบ (การขายที่เลือก)
-on_account_ap	ลงบัญชี (AP)
-org_optional_ph	องค์กร (ไม่บังคับ)
-paid_by	จ่ายโดย
-paid_now	จ่ายแล้วตอนนี้
-pair_now	จับคู่ตอนนี้
-pairing_code_ph	รหัสจับคู่
-party_name_selected_ph	ชื่อคู่ค้า (หรือใช้ที่เลือก)
-password_ph	รหัสผ่าน
-pay_ap_card	จ่าย AP ด้วยบัตร
+note_gstin_ph	หมายเหตุ / GSTIN / เตือน​ข้อ​ตกลง
+notes_attach_party	หมายเหตุ​และ​ไฟล์​แนบ (คู่​ค้า​ที่​เลือก)
+notes_attach_sale	หมายเหตุ​และ​ไฟล์​แนบ (การ​ขาย​ที่​เลือก)
+on_account_ap	ลง​บัญชี (AP)
+org_optional_ph	องค์กร (ไม่​บังคับ)
+paid_by	จ่าย​โดย
+paid_now	จ่าย​แล้ว​ตอน​นี้
+pair_now	จับ​คู่​ตอน​นี้
+pairing_code_ph	รหัส​จับ​คู่
+party_name_selected_ph	ชื่อ​คู่​ค้า (หรือ​ใช้​ที่​เลือก)
+password_ph	รหัส​ผ่าน
+pay_ap_card	จ่าย AP ด้วย​บัตร
 pay_ap_cash	จ่าย AP เงินสด
-pay_ap_heading	จ่ายที่เราติดหนี้เขา (AP)
+pay_ap_heading	จ่าย​ที่​เรา​ติด​หนี้​เขา (AP)
 pay_ap_upi	จ่าย AP ด้วย UPI
-pay_selected_heading	จ่ายที่เลือก (ชำระหนี้ / รับล่วงหน้า)
-pick_from_items	เลือกจากรายการของเรา
-prev_country	ประเทศก่อนหน้า
+pay_selected_heading	จ่าย​ที่​เลือก (ชำระ​หนี้ / รับ​ล่วง​หน้า)
+pick_from_items	เลือก​จาก​รายการ​ของ​เรา
+prev_country	ประเทศ​ก่อน​หน้า
 print_open	พิมพ์ / เปิด
-reason_amend_ph	เหตุผลแก้ / ยกเลิก / คืนเงิน
-reason_note_ph	เหตุผล / หมายเหตุ (เสียหาย นับ ฯลฯ)
-record_day_close	บันทึกปิดวัน
-business_day	«วันนี้» เริ่มใหม่เมื่อใด
-business_day_help	เมื่อเลือก «จนกว่าจะปิดวัน» ส่วน «สมุดรายวัน» จะนับต่อเนื่องเลยเที่ยงคืนไปจนกว่าคุณจะบันทึกปิดวัน เมื่อเลือก «เที่ยงคืนตามปฏิทิน» วันจะตัดที่ 00:00 น. ตามเวลาท้องถิ่น
-biz_day_until_close	จนกว่าจะปิดวัน
-biz_day_midnight	เที่ยงคืนตามปฏิทิน
-business_day_saved	บันทึกวันทำการแล้ว
-report_day_lens	ดู «วันนี้» ตาม
-report_day_lens_help	ใช้ดูเท่านั้น — ไม่เปลี่ยนเวลาที่ «ปิดวัน» เริ่ม «วันนี้» ใหม่ โดย «ตามการปิดวัน» นับจากการปิดวันครั้งล่าสุด ส่วน «ตามเที่ยงคืน» ตัดที่ 00:00 น. ตามเวลาท้องถิ่น
-report_lens_day_close	ตามการปิดวัน
-report_lens_midnight	ตามเที่ยงคืน
-refresh_from_shop	รีเฟรชจากร้าน
-refund	คืนเงิน
-remove_selected	ลบที่เลือก
-request_bill	ขอบิล
-restaurant_name_ph	ชื่อร้านอาหาร (ไม่บังคับ)
-restore_backup	กู้คืนข้อมูลสำรอง
-role_both	ทั้งสอง
-role_admin	ผู้ดูแลระบบ
+reason_amend_ph	เหตุผล​แก้ / ยกเลิก / คืน​เงิน
+reason_note_ph	เหตุผล / หมายเหตุ (เสีย​หาย นับ ฯลฯ)
+record_day_close	บันทึก​ปิด​วัน
+business_day	«วัน​นี้» เริ่ม​ใหม่​เมื่อ​ใด
+business_day_help	เมื่อ​เลือก «จนกว่า​จะ​ปิด​วัน» ส่วน «สมุด​ราย​วัน» จะ​นับ​ต่อ​เนื่อง​เลย​เที่ยง​คืน​ไป​จนกว่า​คุณ​จะบัน​ทึก​ปิด​วัน เมื่อ​เลือก «เที่ยง​คืน​ตาม​ปฏิทิน» วัน​จะ​ตัด​ที่ 00:00 น. ตาม​เวลา​ท้อง​ถิ่น
+biz_day_until_close	จนกว่า​จะ​ปิด​วัน
+biz_day_midnight	เที่ยง​คืน​ตาม​ปฏิทิน
+business_day_saved	บันทึก​วัน​ทำการ​แล้ว
+report_day_lens	ดู «วัน​นี้» ตาม
+report_day_lens_help	ใช้​ดู​เท่านั้น — ไม่​เปลี่ยน​เวลา​ที่ «ปิด​วัน» เริ่ม «วัน​นี้» ใหม่ โดย «ตาม​การ​ปิด​วัน» นับ​จาก​การ​ปิด​วัน​ครั้ง​ล่าสุด ส่วน «ตาม​เที่ยง​คืน» ตัด​ที่ 00:00 น. ตาม​เวลา​ท้อง​ถิ่น
+report_lens_day_close	ตาม​การ​ปิด​วัน
+report_lens_midnight	ตาม​เที่ยง​คืน
+refresh_from_shop	รีเฟรช​จาก​ร้าน
+refund	คืน​เงิน
+remove_selected	ลบ​ที่​เลือก
+request_bill	ขอ​บิล
+restaurant_name_ph	ชื่อ​ร้าน​อาหาร (ไม่​บังคับ)
+restore_backup	กู้​คืน​ข้อมูล​สำรอง
+role_both	ทั้ง​สอง
+role_admin	ผู้​ดูแล​ระบบ
 role_cashier	แคชเชียร์
 role_customer	ลูกค้า
-role_manager	ผู้จัดการ
-history_retention	ประวัติการซื้อขาย
-history_retention_help	ล้างยอดขายเก่าและ KOT อัตโนมัติ เมนู พนักงาน และตั้งค่ายังคงอยู่ การล้างตอนนี้จะลบแถวการซื้อขายทั้งหมดและเก็บการตั้งค่าไว้
-history_off	เก็บไว้
-history_day_close	ในวันปิด
-history_after_hours	หลังเวลาทำการ
-history_hours_ph	ชั่วโมง (1–168 ค่าเริ่มต้น 4)
-history_hours_save	บันทึกชั่วโมง
-history_clear_now	ล้างประวัติตอนนี้
-history_cleared	ประวัติการซื้อขายถูกล้างแล้ว — เก็บการตั้งค่าไว้
-history_retention_saved	การล้างประวัติบันทึกแล้ว
-history_hours_saved	บันทึกชั่วโมงประวัติ
-history_owner_only	เฉพาะเจ้าของหรือผู้ดูแลระบบเท่านั้นที่สามารถล้างประวัติได้
-rollup	รวมยอด
-save_brand	บันทึกแบรนด์
-save_business_id	บันทึกเลขภาษีและ % บริการ
-save_business_name	บันทึกชื่อธุรกิจ
+role_manager	ผู้​จัดการ
+history_retention	ประวัติการ​ซื้อ​ขาย
+history_retention_help	ล้าง​ยอด​ขาย​เก่า​และ KOT อัตโนมัติ เมนู พนักงาน และ​ตั้ง​ค่า​ยัง​คง​อยู่ การ​ล้าง​ตอน​นี้​จะ​ลบ​แถว​การ​ซื้อ​ขาย​ทั้งหมด​และ​เก็บ​การ​ตั้ง​ค่า​ไว้
+history_off	เก็บ​ไว้
+history_day_close	ใน​วัน​ปิด
+history_after_hours	หลัง​เวลา​ทำการ
+history_hours_ph	ชั่วโมง (1–168 ค่า​เริ่ม​ต้น 4)
+history_hours_save	บันทึก​ชั่วโมง
+history_clear_now	ล้าง​ประวัติ​ตอน​นี้
+history_cleared	ประวัติการ​ซื้อ​ขาย​ถูก​ล้าง​แล้ว — เก็บ​การ​ตั้ง​ค่า​ไว้
+history_retention_saved	การ​ล้าง​ประวัติ​บันทึก​แล้ว
+history_hours_saved	บันทึก​ชั่วโมง​ประวัติ
+history_owner_only	เฉพาะ​เจ้าของ​หรือ​ผู้​ดูแล​ระบบ​เท่านั้น​ที่​สามารถ​ล้าง​ประวัติ​ได้
+rollup	รวม​ยอด
+save_brand	บันทึก​แบรนด์
+save_business_id	บันทึก​เลข​ภาษี​และ % บริการ
+save_business_name	บันทึก​ชื่อ​ธุรกิจ
 save_features	บันทึก
 save_features_named	บันทึก {name}
-save_features_ok	บันทึกการตั้งค่าสำหรับ {name}
-save_names	บันทึกชื่อ
-second_way	วิธีที่สอง
+save_features_ok	บันทึก​การ​ตั้ง​ค่า​สำหรับ {name}
+save_names	บันทึก​ชื่อ
+second_way	วิธี​ที่​สอง
 server_ip_ph	IP เซิร์ฟเวอร์ (เช่น 192.168.1.10)
-set_credit_limit	ตั้งวงเงินเครดิต
-set_login_selected	ตั้งค่าล็อกอินให้ที่เลือก
-set_login_named	ใช้ล็อกอินกับ {name}
+set_credit_limit	ตั้ง​วงเงิน​เครดิต
+set_login_selected	ตั้ง​ค่า​ล็อกอิน​ให้​ที่​เลือก
+set_login_named	ใช้​ล็อกอิน​กับ {name}
 shop	ร้าน
 show	แสดง
 spreadsheet_csv	สเปรดชีต (CSV)
-start_fresh	เริ่มใหม่
-stop_extra_tills	หยุดเคาน์เตอร์เสริม
+start_fresh	เริ่ม​ใหม่
+stop_extra_tills	หยุด​เคาน์เตอร์​เสริม
 floor_cols_ph	คอลัมน์
-floor_cols_fit	พอดีหน้าจอ
-floor_cols_fit_sub	ใส่ได้ {n}
+floor_cols_fit	พอดี​หน้า​จอ
+floor_cols_fit_sub	ใส่​ได้ {n}
 floor_cols_fits	พอดี
-floor_cols_scroll	เลื่อนด้านข้าง
-floor_cols_min	คอลัมน์: อย่างน้อย 1 — หรือเว้นว่างไว้ให้พอดีหน้าจอ
+floor_cols_scroll	เลื่อน​ด้าน​ข้าง
+floor_cols_min	คอลัมน์: อย่าง​น้อย 1 — หรือ​เว้น​ว่าง​ไว้​ให้​พอดี​หน้า​จอ
 floor_zoom_auto	อัตโนมัติ
-floor_zoom_out	ซูมออก
-floor_zoom_in	ซูมเข้า
-backup_auto	สำรองอัตโนมัติทุกวัน · ล่าสุด {when} · เก็บ 14 วันล่าสุดไว้ใน {dir}
-backup_auto_none	สำรองอัตโนมัติทุกวัน — ครั้งแรกจะเริ่มในไม่ช้า
-backup_copy_to	สำเนาจะไปที่ {dir} ด้วย
-backup_copy_btn	คัดลอกข้อมูลสำรองไปยังโฟลเดอร์ด้วย…
-autostart_off	เริ่มพร้อมคอมพิวเตอร์เครื่องนี้
-autostart_on	เริ่มพร้อมคอมพิวเตอร์ ✓ — แตะเพื่อหยุด
-autostart_done_on	ตอนนี้แอปจะเปิดเมื่อคอมพิวเตอร์เปิด — เซิร์ฟเวอร์กลับมาหลังไฟดับ
-autostart_done_off	คอมพิวเตอร์จะไม่เปิดแอปเมื่อเปิดเครื่องอีกต่อไป
-device_forgotten	ร้านลบอุปกรณ์นี้แล้ว — จับคู่ใหม่ด้วยรหัสปัจจุบันของร้าน คำสั่งที่รออยู่ยังเก็บไว้
-lan_offline	ออฟไลน์
+floor_zoom_out	ซูม​ออก
+floor_zoom_in	ซูม​เข้า
+backup_auto	สำรอง​อัตโนมัติ​ทุก​วัน · ล่าสุด {when} · เก็บ 14 วัน​ล่าสุด​ไว้​ใน {dir}
+backup_auto_none	สำรอง​อัตโนมัติ​ทุก​วัน — ครั้ง​แรก​จะ​เริ่ม​ใน​ไม่​ช้า
+backup_copy_to	สำเนา​จะ​ไป​ที่ {dir} ด้วย
+backup_copy_btn	คัด​ลอก​ข้อมูล​สำรอง​ไป​ยัง​โฟลเดอร์​ด้วย…
+autostart_off	เริ่ม​พร้อม​คอมพิวเตอร์​เครื่อง​นี้
+autostart_on	เริ่ม​พร้อม​คอมพิวเตอร์ ✓ — แตะ​เพื่อ​หยุด
+autostart_done_on	ตอน​นี้​แอป​จะ​เปิด​เมื่อ​คอมพิวเตอร์​เปิด — เซิร์ฟเวอร์​กลับ​มา​หลัง​ไฟ​ดับ
+autostart_done_off	คอมพิวเตอร์​จะ​ไม่​เปิด​แอป​เมื่อ​เปิด​เครื่อง​อีก​ต่อ​ไป
+device_forgotten	ร้าน​ลบ​อุปกรณ์​นี้​แล้ว — จับ​คู่​ใหม่​ด้วย​รหัส​ปัจจุบัน​ของ​ร้าน คำ​สั่ง​ที่​รอ​อยู่​ยัง​เก็บ​ไว้
+lan_offline	ออฟ​ไลน์
 forget_device	ลืม
 last_seen	ล่าสุด
-copy_pair_code	คัดลอกรหัสจับคู่
-new_pair_code	รหัสจับคู่ใหม่
-pair_finishing	กำลังจับคู่ให้เสร็จ… กำลังใช้บัญชีของร้าน
-pair_opening	กำลังเปิดแคชเชียร์…
-pair_copied	คัดลอกรหัสจับคู่แล้ว
-kot_waiting	รอส่ง
-lan_offline_waiting	ออฟไลน์ · รอ {n} รายการ
-lan_connecting	กำลังเชื่อมต่อกับร้าน…
+copy_pair_code	คัด​ลอก​รหัส​จับ​คู่
+new_pair_code	รหัส​จับ​คู่​ใหม่
+pair_finishing	กำลัง​จับ​คู่​ให้​เสร็จ… กำลัง​ใช้​บัญชี​ของ​ร้าน
+pair_opening	กำลัง​เปิด​แคชเชียร์…
+pair_copied	คัด​ลอก​รหัส​จับ​คู่​แล้ว
+kot_waiting	รอ​ส่ง
+lan_offline_waiting	ออฟ​ไลน์ · รอ {n} รายการ
+lan_connecting	กำลัง​เชื่อม​ต่อ​กับ​ร้าน…
 lan_live	สด
-lan_sending	กำลังส่ง {n} รายการ
-lan_sign_in_to_send	ลงชื่อเข้าใช้อีกครั้งเพื่อส่ง {n}
-lan_pair_again	จับคู่อุปกรณ์นี้อีกครั้ง
-lan_update_app	อัปเดตแอป — อุปกรณ์นี้กับเซิร์ฟเวอร์ของร้านคนละเวอร์ชัน
-allow_firewall	อนุญาตให้อุปกรณ์อื่นเชื่อมต่อ
-firewall_blocked	ไฟร์วอลล์ของคอมพิวเตอร์นี้กำลังบล็อกอุปกรณ์อื่น — แตะ “อนุญาตให้อุปกรณ์อื่นเชื่อมต่อ”
-firewall_waiting	กำลังรอการยืนยันจากผู้ดูแล…
-lan_join_help	อุปกรณ์อื่นเชื่อมต่อกับเครื่องนี้ได้ — รหัสจับคู่ {code} บนอุปกรณ์อีกเครื่องให้เลือกโหมดไคลเอนต์ แล้วแตะค้นหาเซิร์ฟเวอร์ของร้าน หรือพิมพ์ที่อยู่นี้: {addr}
+lan_sending	กำลัง​ส่ง {n} รายการ
+lan_sign_in_to_send	ลงชื่อ​เข้า​ใช้​อีก​ครั้ง​เพื่อ​ส่ง {n}
+lan_pair_again	จับ​คู่​อุปกรณ์​นี้​อีก​ครั้ง
+lan_update_app	อัปเดต​แอป — อุปกรณ์​นี้​กับ​เซิร์ฟเวอร์​ของ​ร้าน​คนละ​เวอร์ชัน
+allow_firewall	อนุญาต​ให้​อุปกรณ์​อื่น​เชื่อม​ต่อ
+firewall_blocked	ไฟร์วอลล์​ของ​คอมพิวเตอร์​นี้​กำลัง​บล็อก​อุปกรณ์​อื่น — แตะ “อนุญาต​ให้​อุปกรณ์​อื่น​เชื่อม​ต่อ”
+firewall_waiting	กำลัง​รอ​การ​ยืนยัน​จาก​ผู้​ดูแล…
+lan_join_help	อุปกรณ์​อื่น​เชื่อม​ต่อ​กับ​เครื่อง​นี้​ได้ — รหัส​จับ​คู่ {code} บน​อุปกรณ์​อีก​เครื่อง​ให้​เลือก​โหมด​ไคล​เอน​ต์ แล้ว​แตะ​ค้นหา​เซิร์ฟเวอร์​ของ​ร้าน หรือ​พิมพ์​ที่​อยู่​นี้: {addr}
 lan_pair_status	ไวไฟ {addr}
-lan_join_help_no_addr	เชื่อมต่ออุปกรณ์นี้กับ Wi‑Fi เพื่อรับที่อยู่
-lan_no_address	เครื่องนี้ยังไม่มีที่อยู่ Wi‑Fi — เชื่อมต่อกับ Wi‑Fi ของร้าน
-lan_not_listening	ตอนนี้ยังรับอุปกรณ์ไม่ได้ — อาจมีโปรแกรมอื่นใช้พอร์ต {port} อยู่ ให้เปิดแอปใหม่
-lan_tills_off	เคาน์เตอร์เสริมปิดอยู่ บัญชีของร้านอยู่ในเครื่องนี้ อนุญาตเคาน์เตอร์เสริมหากอุปกรณ์อื่นต้องรับออร์เดอร์หรือเก็บเงินด้วย
-paired_with	จับคู่กับร้านที่ {url} แล้ว
-not_paired	ยังไม่ได้จับคู่ — เชื่อมต่อกับเซิร์ฟเวอร์ของร้าน
-choose_device_use	เลือกเซิร์ฟเวอร์ ไคลเอนต์ หรือกู้คืนข้อมูลสำรอง
-paired_note	จับคู่แล้ว ปลดล็อกเพื่อขาย หรือรีเฟรชเพื่อดึงข้อมูลล่าสุดจากร้าน
-last_update_at	อัปเดตล่าสุดจากร้าน: {time}
-pair_intro	ค้นหาเซิร์ฟเวอร์ หรือพิมพ์ที่อยู่และรหัสจับคู่
-pair_resume_hint	จับคู่แล้ว — ป้อน PIN ของร้านคุณ หรือแตะ “ลืมร้านนี้” เพื่อจับคู่ร้านอื่น
-queue_waiting	รอส่งถึงร้าน ({n}):
-queue_tries	ลอง {n} ครั้ง · คำตอบล่าสุด: {e}
-save_backup_copy	บันทึกสำเนาข้อมูลสำรอง…
-backup_copy_saved	บันทึกสำเนาข้อมูลสำรองแล้ว — เก็บไว้นอกอุปกรณ์นี้ (USB หรืออุปกรณ์อื่น)
-backup_copy_overdue	ไม่มีสำเนาข้อมูลสำรองออกจากอุปกรณ์นี้มา {n} วัน — การตั้งค่า → สำรองข้อมูล
-backup_copy_failed	บันทึกสำเนาข้อมูลสำรองที่นั่นไม่ได้ — เลือกที่อื่น
-clock_off	นาฬิกาของอุปกรณ์นี้ต่างจากเซิร์ฟเวอร์ของร้าน {min} นาที — ตั้งเวลาให้ถูกต้องบนอุปกรณ์นี้
-printers_heading	เครื่องพิมพ์ของอุปกรณ์นี้
-printers_help	เพิ่มเครื่องพิมพ์ทีละเครื่อง แล้วเลือกที่พิมพ์บิลและแต่ละครัว — ตัวแรกในรายการลองก่อน ล้มเหลวแล้วตัวถัดไป เส้นทางว่าง = ไม่พิมพ์ฟีเจอร์นั้น ปลายทางว่าง (ค่าเริ่มต้น) ชื่อระบบ หรือที่อยู่เครือข่าย (เช่น 192.168.1.50) แต่ละอุปกรณ์เก็บเครื่องพิมพ์ของตัวเอง
-printers_host_only	เครื่องพิมพ์ตั้งบนอุปกรณ์ร้าน (Server) เครื่องเก็บเงินนี้ส่งบิลและ KOT ไปที่นั่น — ค้นหา / เพิ่ม / มอบหมายอยู่ที่ Server หน้าทดสอบและขนาดพิมพ์บิลไปที่ Server
-printers_find_heading	ค้นหาเครื่องพิมพ์
-printers_find_tip	ค้นหาจะสแกนอุปกรณ์นี้และอัปเดตรายการ เครื่องพิมพ์ระบบมาก่อน การสแกนเครือข่ายอาจทำต่อเบื้องหลัง
-printers_pool_heading	1. เครื่องพิมพ์ของคุณ
-printers_pool_tip	ค้นหาจะสแกนอุปกรณ์นี้และอัปเดตรายการ
-printers_pool_empty	(ยังไม่มี — เพิ่มด้านล่าง)
-printers_routes_help	ค้นหาเครื่องพิมพ์ที่ระบบปฏิบัติการรู้จักอยู่แล้ว กำหนดให้กับบิลและแต่ละครัวภายใต้รูปแบบบิลและ KOT
-printer_assign_dd	เลือกเครื่องพิมพ์สำหรับ {place}
-printer_assign_pick	เลือกเครื่องพิมพ์จริง
-printer_profile_heading	เลย์เอาต์
-printer_send_heading	การส่ง
-vp_delivery_heading	การส่ง
-vp_delivery_help	เครื่องพิมพ์เสมือนนี้ส่งงานอย่างไร — เอกสาร OS ไบต์ดิบ หรือ ESC/POS เนื้อหาสลิป (ขนาดตัวอักษร ตัดบรรทัด ขอบ) กำหนดโดยรูปแบบบิล / KOT ไม่ใช่ที่นี่
-vp_type_size_heading	ขนาดตัวอักษร
-vp_wrap_heading	ความกว้างตัดบรรทัด
+lan_join_help_no_addr	เชื่อม​ต่อ​อุปกรณ์​นี้​กับ Wi‑Fi เพื่อ​รับ​ที่​อยู่
+lan_no_address	เครื่อง​นี้​ยัง​ไม่มี​ที่​อยู่ Wi‑Fi — เชื่อม​ต่อ​กับ Wi‑Fi ของ​ร้าน
+lan_not_listening	ตอน​นี้​ยัง​รับ​อุปกรณ์​ไม่​ได้ — อาจ​มี​โปรแกรม​อื่น​ใช้​พอร์ต {port} อยู่ ให้​เปิด​แอป​ใหม่
+lan_tills_off	เคาน์เตอร์​เสริม​ปิด​อยู่ บัญชี​ของ​ร้าน​อยู่​ใน​เครื่อง​นี้ อนุญาต​เคาน์เตอร์​เสริม​หาก​อุปกรณ์​อื่น​ต้อง​รับ​ออร์เด​อร์​หรือ​เก็บ​เงิน​ด้วย
+paired_with	จับ​คู่​กับ​ร้าน​ที่ {url} แล้ว
+not_paired	ยัง​ไม่​ได้​จับ​คู่ — เชื่อม​ต่อ​กับ​เซิร์ฟเวอร์​ของ​ร้าน
+choose_device_use	เลือก​เซิร์ฟเวอร์ ไคล​เอน​ต์ หรือ​กู้​คืน​ข้อมูล​สำรอง
+paired_note	จับ​คู่​แล้ว ปลด​ล็อก​เพื่อ​ขาย หรือ​รีเฟรช​เพื่อ​ดึง​ข้อมูล​ล่าสุด​จาก​ร้าน
+last_update_at	อัปเดต​ล่าสุด​จาก​ร้าน: {time}
+pair_intro	ค้นหา​เซิร์ฟเวอร์ หรือ​พิมพ์​ที่​อยู่​และ​รหัส​จับ​คู่
+pair_resume_hint	จับ​คู่​แล้ว — ป้อน PIN ของ​ร้าน​คุณ หรือ​แตะ “ลืม​ร้าน​นี้” เพื่อ​จับ​คู่​ร้าน​อื่น
+queue_waiting	รอ​ส่ง​ถึง​ร้าน ({n}):
+queue_tries	ลอง {n} ครั้ง · คำ​ตอบ​ล่าสุด: {e}
+save_backup_copy	บันทึก​สำเนา​ข้อมูล​สำรอง…
+backup_copy_saved	บันทึก​สำเนา​ข้อมูล​สำรอง​แล้ว — เก็บ​ไว้​นอก​อุปกรณ์​นี้ (USB หรือ​อุปกรณ์​อื่น)
+backup_copy_overdue	ไม่มี​สำเนา​ข้อมูล​สำรอง​ออก​จาก​อุปกรณ์​นี้​มา {n} วัน — การ​ตั้ง​ค่า → สำรอง​ข้อมูล
+backup_copy_failed	บันทึก​สำเนา​ข้อมูล​สำรอง​ที่​นั่น​ไม่​ได้ — เลือก​ที่​อื่น
+clock_off	นาฬิกา​ของ​อุปกรณ์​นี้​ต่าง​จาก​เซิร์ฟเวอร์​ของ​ร้าน {min} นาที — ตั้ง​เวลา​ให้​ถูก​ต้อง​บน​อุปกรณ์​นี้
+printers_heading	เครื่องพิมพ์​ของ​อุปกรณ์​นี้
+printers_help	เพิ่ม​เครื่องพิมพ์​ที​ละ​เครื่อง แล้ว​เลือก​ที่​พิมพ์​บิล​และ​แต่ละ​ครัว — ตัว​แรก​ใน​รายการ​ลอง​ก่อน ล้ม​เหลว​แล้ว​ตัว​ถัด​ไป เส้น​ทาง​ว่าง = ไม่​พิมพ์​ฟีเจอร์​นั้น ปลาย​ทาง​ว่าง (ค่า​เริ่ม​ต้น) ชื่อ​ระบบ หรือ​ที่​อยู่​เครือ​ข่าย (เช่น 192.168.1.50) แต่ละ​อุปกรณ์​เก็บ​เครื่องพิมพ์​ของ​ตัว​เอง
+printers_host_only	เครื่องพิมพ์​ตั้ง​บน​อุปกรณ์​ร้าน (Server) เครื่อง​เก็บ​เงิน​นี้​ส่ง​บิล​และ KOT ไป​ที่​นั่น — ค้นหา / เพิ่ม / มอบ​หมาย​อยู่​ที่ Server หน้า​ทดสอบ​และ​ขนาด​พิมพ์​บิล​ไป​ที่ Server
+printers_find_heading	ค้นหา​เครื่องพิมพ์
+printers_find_tip	ค้นหา​จะ​สแกน​อุปกรณ์​นี้​และ​อัปเดต​รายการ เครื่องพิมพ์​ระบบ​มา​ก่อน การ​สแกน​เครือ​ข่าย​อาจ​ทำ​ต่อ​เบื้อง​หลัง
+printers_pool_heading	1. เครื่องพิมพ์​ของ​คุณ
+printers_pool_tip	ค้นหา​จะ​สแกน​อุปกรณ์​นี้​และ​อัปเดต​รายการ
+printers_pool_empty	(ยัง​ไม่มี — เพิ่ม​ด้าน​ล่าง)
+printers_routes_help	ค้นหา​เครื่องพิมพ์​ที่​ระบบ​ปฏิบัติ​การ​รู้จัก​อยู่​แล้ว กำหนด​ให้​กับ​บิล​และ​แต่ละ​ครัว​ภาย​ใต้​รูป​แบบ​บิล​และ KOT
+printer_assign_dd	เลือก​เครื่องพิมพ์​สำหรับ {place}
+printer_assign_pick	เลือก​เครื่องพิมพ์​จริง
+printer_profile_heading	เลย์​เอา​ต์
+printer_send_heading	การ​ส่ง
+vp_delivery_heading	การ​ส่ง
+vp_delivery_help	เครื่องพิมพ์​เสมือน​นี้​ส่ง​งาน​อย่างไร — เอกสาร OS ไบต์​ดิบ หรือ ESC/POS เนื้อหา​สลิป (ขนาด​ตัว​อักษร ตัด​บรรทัด ขอบ) กำหนด​โดย​รูป​แบบ​บิล / KOT ไม่ใช่​ที่​นี่
+vp_type_size_heading	ขนาด​ตัว​อักษร
+vp_wrap_heading	ความ​กว้าง​ตัด​บรรทัด
 vp_margin_heading	ขอบ
-vp_delivery_spooler	เอกสาร OS (สพูลเลอร์ระบบ)
-vp_delivery_escpos	คำสั่งความร้อน ESC/POS
-virtual_printer_new	เครื่องพิมพ์เสมือนใหม่
-virtual_printer_selected	กำลังแก้ไข “{name}” — แตะอันอื่นในรายการเพื่อสลับ
-virtual_printer_tap_list	แตะเครื่องพิมพ์เสมือนในรายการเพื่อแก้ไข
-config_layout_portrait	แนวตั้ง
-config_layout_landscape	แนวนอน
-config_send_os	สพูลเลอร์ระบบ
+vp_delivery_spooler	เอกสาร OS (สพูล​เลอ​ร์​ระบบ)
+vp_delivery_escpos	คำ​สั่ง​ความ​ร้อน ESC/POS
+virtual_printer_new	เครื่องพิมพ์​เสมือน​ใหม่
+virtual_printer_selected	กำลัง​แก้ไข “{name}” — แตะ​อัน​อื่น​ใน​รายการ​เพื่อ​สลับ
+virtual_printer_tap_list	แตะ​เครื่องพิมพ์​เสมือน​ใน​รายการ​เพื่อ​แก้ไข
+config_layout_portrait	แนว​ตั้ง
+config_layout_landscape	แนว​นอน
+config_send_os	สพูล​เลอ​ร์​ระบบ
 config_send_escpos	ESC/POS
-profiles_heading	เลย์เอาต์
-profiles_empty	(ยังไม่มีเลย์เอาต์)
-profile_builtin	ในตัว
-profile_custom	กำหนดเอง
-profile_name_ph	ชื่อเลย์เอาต์
-profile_new	เลย์เอาต์ใหม่
-profile_delete	ลบเลย์เอาต์
-profile_created	สร้างเลย์เอาต์แล้ว
-profile_deleted	ลบเลย์เอาต์แล้ว
-profile_builtin_keep	เลย์เอาต์ในตัวลบไม่ได้
-config_saved	อัปเดตแล้ว
+profiles_heading	เลย์​เอา​ต์
+profiles_empty	(ยัง​ไม่​มี​เลย์​เอา​ต์)
+profile_builtin	ใน​ตัว
+profile_custom	กำหนด​เอง
+profile_name_ph	ชื่อ​เลย์​เอา​ต์
+profile_new	เลย์​เอา​ต์​ใหม่
+profile_delete	ลบ​เลย์​เอา​ต์
+profile_created	สร้าง​เลย์​เอา​ต์​แล้ว
+profile_deleted	ลบ​เลย์​เอา​ต์​แล้ว
+profile_builtin_keep	เลย์​เอา​ต์​ใน​ตัว​ลบ​ไม่​ได้
+config_saved	อัปเดต​แล้ว
 config_selected	เลือก “{name}” แล้ว
-printer_output_heading	เครื่องพิมพ์เสมือน
-virtual_printers_heading	เครื่องพิมพ์เสมือน
-virtual_printers_empty	ยังไม่มีเครื่องพิมพ์เสมือน — ตั้งค่าด้านล่างแล้วบันทึก เมื่อมีแล้วแตะในรายการเพื่อแก้ไข
-virtual_printer_name_ph	ชื่อเครื่องพิมพ์เสมือน (ไม่บังคับ)
-virtual_printer_create	สร้างเครื่องพิมพ์เสมือน
-virtual_printer_save	บันทึกเครื่องพิมพ์เสมือน
-virtual_printer_delete	ลบเครื่องพิมพ์เสมือน
-virtual_printer_created	สร้างเครื่องพิมพ์เสมือน “{name}” แล้ว
-virtual_printer_deleted	ลบเครื่องพิมพ์เสมือน “{name}” แล้ว
-virtual_printer_updated	อัปเดตเครื่องพิมพ์เสมือนแล้ว
-virtual_printer_updated_named	อัปเดตเครื่องพิมพ์เสมือน “{name}” แล้ว
-virtual_draft_layout	ตั้งค่าสำหรับเครื่องพิมพ์เสมือนถัดไปแล้ว
-virtual_draft_send	ตั้งค่าสำหรับเครื่องพิมพ์เสมือนถัดไปแล้ว
-virtual_need_real	เลือกเครื่องพิมพ์จริงก่อน
-virtual_need_select	เลือกเครื่องพิมพ์เสมือนที่จะลบ
-real_printer_selected	เครื่องพิมพ์จริง: {name}
-station_group_heading	เครื่องพิมพ์เสมือน
-station_group_apply	ลบเครื่องพิมพ์เสมือน
-station_group_applied	ลบแล้ว
-station_group_empty	เลือกเครื่องพิมพ์เสมือน
-station_group_name_ph	ชื่อเครื่องพิมพ์เสมือน (ไม่บังคับ)
-station_group_save	สร้างเครื่องพิมพ์เสมือน
-station_group_saved	บันทึกเครื่องพิมพ์เสมือนแล้ว
-station_manage_heading	เพิ่มหรือลบสถานีครัว
-printers_routes_heading	2. พิมพ์ที่ไหน
+printer_output_heading	เครื่องพิมพ์​เสมือน
+virtual_printers_heading	เครื่องพิมพ์​เสมือน
+virtual_printers_empty	ยัง​ไม่มี​เครื่องพิมพ์​เสมือน — ตั้ง​ค่า​ด้าน​ล่าง​แล้ว​บันทึก เมื่อ​มี​แล้ว​แตะ​ใน​รายการ​เพื่อ​แก้ไข
+virtual_printer_name_ph	ชื่อ​เครื่องพิมพ์​เสมือน (ไม่​บังคับ)
+virtual_printer_create	สร้าง​เครื่องพิมพ์​เสมือน
+virtual_printer_save	บันทึก​เครื่องพิมพ์​เสมือน
+virtual_printer_delete	ลบ​เครื่องพิมพ์​เสมือน
+virtual_printer_created	สร้าง​เครื่องพิมพ์​เสมือน “{name}” แล้ว
+virtual_printer_deleted	ลบ​เครื่องพิมพ์​เสมือน “{name}” แล้ว
+virtual_printer_updated	อัปเดต​เครื่องพิมพ์​เสมือน​แล้ว
+virtual_printer_updated_named	อัปเดต​เครื่องพิมพ์​เสมือน “{name}” แล้ว
+virtual_draft_layout	ตั้ง​ค่า​สำหรับ​เครื่องพิมพ์​เสมือน​ถัด​ไป​แล้ว
+virtual_draft_send	ตั้ง​ค่า​สำหรับ​เครื่องพิมพ์​เสมือน​ถัด​ไป​แล้ว
+virtual_need_real	เลือก​เครื่องพิมพ์​จริง​ก่อน
+virtual_need_select	เลือก​เครื่องพิมพ์​เสมือน​ที่​จะ​ลบ
+real_printer_selected	เครื่องพิมพ์​จริง: {name}
+station_group_heading	เครื่องพิมพ์​เสมือน
+station_group_apply	ลบ​เครื่องพิมพ์​เสมือน
+station_group_applied	ลบ​แล้ว
+station_group_empty	เลือก​เครื่องพิมพ์​เสมือน
+station_group_name_ph	ชื่อ​เครื่องพิมพ์​เสมือน (ไม่​บังคับ)
+station_group_save	สร้าง​เครื่องพิมพ์​เสมือน
+station_group_saved	บันทึก​เครื่องพิมพ์​เสมือน​แล้ว
+station_manage_heading	เพิ่ม​หรือ​ลบ​สถานี​ครัว
+printers_routes_heading	2. พิมพ์​ที่ไหน
 route_pick_heading	ที่
-route_editing	กำลังแก้ไข: {name}
+route_editing	กำลัง​แก้ไข: {name}
 route_assigned	เพิ่ม {printer} ลงใน {place}
-route_already_assigned	อยู่ที่นี่แล้ว: {printer}
-route_removed	ลบ {printer} ออกจาก {place}
-route_cleared	ล้างค่า {name}
-route_assigned_empty	ไม่มีที่นี่
-route_tap_remove	แตะเพื่อลบ
-route_tap_select	แตะเพื่อเลือก
-route_tap_selected	เลือกแล้ว
-route_pick_printer_first	แตะเครื่องพิมพ์ก่อน
+route_already_assigned	อยู่​ที่​นี่​แล้ว: {printer}
+route_removed	ลบ {printer} ออก​จาก {place}
+route_cleared	ล้าง​ค่า {name}
+route_assigned_empty	ไม่มี​ที่​นี่
+route_tap_remove	แตะ​เพื่อ​ลบ
+route_tap_select	แตะ​เพื่อ​เลือก
+route_tap_selected	เลือก​แล้ว
+route_pick_printer_first	แตะ​เครื่องพิมพ์​ก่อน
 route_assigned_heading	เครื่องพิมพ์
-route_add_heading	มอบหมาย
+route_add_heading	มอบ​หมาย
 printer_label_ph	ชื่อ (เช่น ครัว)
-printer_target_ph	ที่อยู่หรือชื่อระบบ
-printer_target_default	เครื่องพิมพ์เริ่มต้น
-printer_wire_heading	รูปแบบ
+printer_target_ph	ที่​อยู่​หรือ​ชื่อ​ระบบ
+printer_target_default	เครื่องพิมพ์​เริ่ม​ต้น
+printer_wire_heading	รูป​แบบ
 printer_wire_escpos	KOT
-printer_wire_os	มาตรฐานแนวตั้ง
-printer_wire_os_portrait	มาตรฐานแนวตั้ง
-printer_wire_os_landscape	มาตรฐานแนวนอน
+printer_wire_os	มาตรฐาน​แนว​ตั้ง
+printer_wire_os_portrait	มาตรฐาน​แนว​ตั้ง
+printer_wire_os_landscape	มาตรฐาน​แนว​นอน
 printer_wire_escpos_short	KOT
-printer_wire_os_short	แนวตั้ง
-printer_wire_os_landscape_short	แนวนอน
-printer_format_custom	รูปแบบกำหนดเองใหม่
-printer_format_custom_label	กำหนดเอง
-printer_format_custom_added	เพิ่มรูปแบบกำหนดเองให้เส้นทางนี้แล้ว
-add_printer	เพิ่มเครื่องพิมพ์
-remove_printer	ลบอันท้าย
-route_pick_ph	บิลหรือครัว
+printer_wire_os_short	แนว​ตั้ง
+printer_wire_os_landscape_short	แนว​นอน
+printer_format_custom	รูป​แบบ​กำหนด​เอง​ใหม่
+printer_format_custom_label	กำหนด​เอง
+printer_format_custom_added	เพิ่ม​รูป​แบบ​กำหนด​เอง​ให้​เส้น​ทาง​นี้​แล้ว
+add_printer	เพิ่ม​เครื่องพิมพ์
+remove_printer	ลบ​อัน​ท้าย
+route_pick_ph	บิล​หรือ​ครัว
 route_bill	บิล
-route_default_kitchen	ครัวเริ่มต้น
+route_default_kitchen	ครัว​เริ่ม​ต้น
 route_kot_station	ครัว
-route_dont_print	ไม่พิมพ์
-stations_heading	สถานีครัว
-stations_help	เพิ่มสถานีครัวสำหรับเมนูและ KOT ในแต่ละสถานี ให้เชื่อมต่อเครื่องพิมพ์ (พบได้ที่ การตั้งค่า → เครื่องพิมพ์) ตั้งลำดับความสำคัญ และเลือก พิมพ์ที่ทำงานก่อน หรือ พิมพ์ทุกเครื่อง การเปลี่ยนแปลงจะถูกบันทึกทันที — ไม่มีปุ่มบันทึก
-station_print_heading	เครื่องพิมพ์ของสถานีนี้
-station_print_help	เลือกสถานีแล้วแนบเครื่องพิมพ์หนึ่งเครื่องหรือมากกว่า ↑↓ ตั้งลำดับลอง เครื่องแรกที่สำเร็จจะหยุด «พิมพ์ทั้งหมด» ส่งไปยังทุกเครื่องที่แนบ ทุกการเปลี่ยนแปลงบันทึกทันที
-station_print_pick_ph	สถานีที่จะตั้งเครื่องพิมพ์
-station_print_pick_first	เลือกสถานีครัวก่อน
-station_print_editing	กำลังแก้ไขเครื่องพิมพ์ของ “{name}”
-station_vps_dd	เครื่องพิมพ์ของสถานีนี้
-station_vps_dd_n	{n} เครื่องพิมพ์ · แตะเพื่อเปลี่ยน
-bill_printers_dd	เครื่องพิมพ์สำหรับบิล
-bill_printers_dd_n	{n} เครื่องพิมพ์สำหรับบิล · แตะเพื่อเปลี่ยน
-paper_heading	กระดาษเสมือน
+route_dont_print	ไม่​พิมพ์
+stations_heading	สถานี​ครัว
+stations_help	เพิ่ม​สถานี​ครัว​สำหรับ​เมนู​และ KOT ใน​แต่ละ​สถานี ให้​เชื่อม​ต่อ​เครื่องพิมพ์ (พบ​ได้ที่ การ​ตั้ง​ค่า → เครื่องพิมพ์) ตั้ง​ลำดับ​ความ​สำคัญ และ​เลือก พิมพ์​ที่​ทำงาน​ก่อน หรือ พิมพ์​ทุก​เครื่อง การ​เปลี่ยนแปลง​จะ​ถูก​บันทึก​ทันที — ไม่มี​ปุ่ม​บันทึก
+station_print_heading	เครื่องพิมพ์​ของ​สถานี​นี้
+station_print_help	เลือก​สถานี​แล้ว​แนบ​เครื่องพิมพ์​หนึ่ง​เครื่อง​หรือ​มากกว่า ↑↓ ตั้ง​ลำดับ​ลอง เครื่อง​แรก​ที่​สำเร็จ​จะ​หยุด «พิมพ์​ทั้งหมด» ส่ง​ไป​ยัง​ทุก​เครื่อง​ที่​แนบ ทุก​การ​เปลี่ยนแปลง​บันทึก​ทันที
+station_print_pick_ph	สถานี​ที่​จะ​ตั้ง​เครื่องพิมพ์
+station_print_pick_first	เลือก​สถานี​ครัว​ก่อน
+station_print_editing	กำลัง​แก้ไข​เครื่องพิมพ์​ของ “{name}”
+station_vps_dd	เครื่องพิมพ์​ของ​สถานี​นี้
+station_vps_dd_n	{n} เครื่องพิมพ์ · แตะ​เพื่อ​เปลี่ยน
+bill_printers_dd	เครื่องพิมพ์​สำหรับ​บิล
+bill_printers_dd_n	{n} เครื่องพิมพ์​สำหรับ​บิล · แตะ​เพื่อ​เปลี่ยน
+paper_heading	กระดาษ​เสมือน
 paper_size	{w} × {h} mm
 paper_roll	ม้วน {w} mm
-paper_not_set	ยังไม่ทราบกระดาษ
-virtual_width_mm	ความกว้างเสมือน (mm)
-virtual_length_mm	ความยาวเสมือน (mm)
-reported_width_mm	ความกว้างที่รายงาน (mm)
-reported_length_mm	ความยาวที่รายงาน (mm)
-reported_paper	ที่รายงาน: {paper}
+paper_not_set	ยัง​ไม่​ทราบ​กระดาษ
+virtual_width_mm	ความ​กว้าง​เสมือน (mm)
+virtual_length_mm	ความ​ยาว​เสมือน (mm)
+reported_width_mm	ความ​กว้าง​ที่​รายงาน (mm)
+reported_length_mm	ความ​ยาว​ที่​รายงาน (mm)
+reported_paper	ที่​รายงาน: {paper}
 virtual_paper	เสมือน: {paper}
-printer_paper_help	ที่รายงานคือกระดาษที่ไดรเวอร์ของเครื่องพิมพ์นี้ตั้งไว้ แอปเพียงอ่านค่าเท่านั้น และ “ไม่มี” หมายความว่าไม่มีไดรเวอร์ให้ถาม เสมือนคือกระดาษที่คุณบอกว่าอยู่ในเครื่องพิมพ์จริง ๆ เป็น mm ความยาวว่างคือม้วน เครื่องพิมพ์พิมพ์บนกระดาษของตัวเอง กระดาษเสมือนบอกแอปว่าส่วนไหนเป็นกระดาษจริง สำหรับตัวอย่าง ความยาวหน้า และตำแหน่งของใบเสร็จ ค้นหาเครื่องพิมพ์ จะเติมกระดาษเสมือนที่ว่าง และไม่เปลี่ยนกระดาษที่คุณตั้งไว้
-preview_help	ใบเสร็จนี้ตามที่พิมพ์ออกมาบนเครื่องพิมพ์ที่เลือกด้านล่าง ในขนาดจริงบนกระดาษเสมือนของเครื่อง สีขาวคือส่วนที่พิมพ์ กระดาษสีเทาคือส่วนที่เครื่องพิมพ์พิมพ์ไม่ถึง และหมึกจางคือส่วนที่ถูกตัด ช่องเก้าช่องคือกระดาษ: แตะตำแหน่งที่ต้องการวางใบเสร็จ ใบเสร็จยาวจะต่อไปยังหน้าถัดไป การเลือกเครื่องพิมพ์เปลี่ยนแค่ตัวอย่าง
-job_layout	เลย์เอาต์
-job_delivery	วิธีการส่งงาน
-job_delivery_help	เอกสาร OS, ไบต์ดิบ หรือ ESC/POS บิลและใบสั่งครัวแต่ละใบมีของตัวเอง งานใดก็ได้สามารถส่งไปยังเครื่องพิมพ์ที่ “ค้นหาเครื่องพิมพ์” บันทึกไว้ได้
-station_vp_attached	แนบเครื่องพิมพ์แล้ว
-station_vp_detached	ถอดเครื่องพิมพ์ออกจากสถานีแล้ว
+printer_paper_help	ที่​รายงาน​คือ​กระดาษ​ที่​ไดรเวอร์​ของ​เครื่องพิมพ์​นี้​ตั้ง​ไว้ แอป​เพียง​อ่าน​ค่า​เท่านั้น และ “ไม่มี” หมายความ​ว่า​ไม่มี​ไดรเวอร์​ให้​ถาม เสมือน​คือ​กระดาษ​ที่​คุณ​บอก​ว่า​อยู่​ใน​เครื่องพิมพ์​จริง ๆ เป็น mm ความ​ยาว​ว่าง​คือ​ม้วน เครื่องพิมพ์​พิมพ์​บน​กระดาษ​ของ​ตัว​เอง กระดาษ​เสมือน​บอก​แอป​ว่า​ส่วน​ไหน​เป็นก​ระ​ดาษ​จริง สำหรับ​ตัวอย่าง ความ​ยาว​หน้า และ​ตำแหน่ง​ของ​ใบ​เสร็จ ค้นหา​เครื่องพิมพ์ จะ​เติม​กระดาษ​เสมือน​ที่​ว่าง และ​ไม่​เปลี่ยน​กระดาษ​ที่​คุณ​ตั้ง​ไว้
+preview_help	ใบ​เสร็จ​นี้​ตาม​ที่​พิมพ์​ออก​มา​บน​เครื่องพิมพ์​ที่​เลือก​ด้าน​ล่าง ใน​ขนาด​จริง​บน​กระดาษ​เสมือน​ของ​เครื่อง สี​ขาว​คือ​ส่วน​ที่​พิมพ์ กระดาษ​สี​เทา​คือ​ส่วน​ที่​เครื่องพิมพ์​พิมพ์​ไม่​ถึง และ​หมึก​จาง​คือ​ส่วน​ที่​ถูก​ตัด ช่อง​เก้า​ช่อง​คือ​กระดาษ: แตะ​ตำแหน่ง​ที่​ต้องการ​วาง​ใบ​เสร็จ ใบ​เสร็จ​ยาว​จะ​ต่อ​ไป​ยัง​หน้า​ถัด​ไป การ​เลือก​เครื่องพิมพ์​เปลี่ยน​แค่​ตัวอย่าง
+job_layout	เลย์​เอา​ต์
+job_delivery	วิธี​การ​ส่ง​งาน
+job_delivery_help	เอกสาร OS, ไบต์​ดิบ หรือ ESC/POS บิล​และ​ใบสั่ง​ครัว​แต่ละ​ใบ​มี​ของ​ตัว​เอง งาน​ใด​ก็ได้​สามารถ​ส่ง​ไป​ยัง​เครื่องพิมพ์​ที่ “ค้นหา​เครื่องพิมพ์” บันทึก​ไว้​ได้
+station_vp_attached	แนบ​เครื่องพิมพ์​แล้ว
+station_vp_detached	ถอด​เครื่องพิมพ์​ออก​จาก​สถานี​แล้ว
 station_print_summary	{mode} · {n} เครื่องพิมพ์
-station_print_summary_none	สถานีนี้ยังไม่มีเครื่องพิมพ์ — จะไม่พิมพ์
-stations_none	ยังไม่มีสถานี — เพิ่มด้านล่าง เมนูสามารถใช้สถานีเพื่อให้ KOT พิมพ์ที่นั่น
+station_print_summary_none	สถานี​นี้​ยัง​ไม่มี​เครื่องพิมพ์ — จะ​ไม่​พิมพ์
+stations_none	ยัง​ไม่มี​สถานี — เพิ่ม​ด้าน​ล่าง เมนู​สามารถ​ใช้​สถานี​เพื่อ​ให้ KOT พิมพ์​ที่​นั่น
 route_up	ขึ้น
 route_down	ลง
-route_remove	ลบอันท้าย
-route_clear	ไม่พิมพ์
-save_printers	บันทึกเครื่องพิมพ์
-print_test_page	พิมพ์หน้าทดสอบ
-no_printer_assigned	ไม่มีเครื่องพิมพ์
-test_page_no_printer	ไม่มีเครื่องพิมพ์สำหรับ {place} — กำหนดด้านบนแล้วลองอีกครั้ง
-test_page_pick_first	เลือกเครื่องพิมพ์ทดสอบก่อน — แล้วจึงพิมพ์หน้าทดสอบ
-test_printers_dd	เครื่องพิมพ์หน้าทดสอบ
-test_printers_dd_n	{n} เครื่องพิมพ์ทดสอบ · แตะเพื่อเปลี่ยน
+route_remove	ลบ​อัน​ท้าย
+route_clear	ไม่​พิมพ์
+save_printers	บันทึก​เครื่องพิมพ์
+print_test_page	พิมพ์​หน้า​ทดสอบ
+no_printer_assigned	ไม่มี​เครื่องพิมพ์
+test_page_no_printer	ไม่มี​เครื่องพิมพ์​สำหรับ {place} — กำหนด​ด้าน​บน​แล้ว​ลอง​อีก​ครั้ง
+test_page_pick_first	เลือก​เครื่องพิมพ์​ทดสอบ​ก่อน — แล้ว​จึง​พิมพ์​หน้า​ทดสอบ
+test_printers_dd	เครื่องพิมพ์​หน้า​ทดสอบ
+test_printers_dd_n	{n} เครื่องพิมพ์​ทดสอบ · แตะ​เพื่อ​เปลี่ยน
 kot_test_printers_dd	เครื่องพิมพ์ Test KOT
-kot_test_printers_dd_n	{n} เครื่องพิมพ์ Test KOT · แตะเพื่อเปลี่ยน
-test_printer_picked	ทดสอบที่: {name}
-test_printer_cleared	ไม่ทดสอบที่: {name}
-test_page_sent_n	ส่งหน้าทดสอบไปยังเครื่องพิมพ์ {n} เครื่อง
-test_kot_pick_first	เลือกเครื่องพิมพ์สำหรับ Test KOT ก่อน — แล้วจึง Test KOT
-test_kot_sent_n	ส่ง Test KOT ไปยังเครื่องพิมพ์ {n} เครื่อง
-cancel_pick	ทำเครื่องหมาย
-cancel_pick_on	ทำเครื่องหมายแล้ว
-cancel_pick_meta	ทำเครื่องหมายเพื่อยกเลิก
-batch_cancel	ยกเลิกที่ทำเครื่องหมาย
-batch_cancel_n	ยกเลิกที่ทำเครื่องหมาย ({n})
-batch_cancel_none	ทำเครื่องหมายรายการที่ส่งแล้วก่อน — แล้วจึงยกเลิกที่ทำเครื่องหมาย
-batch_cancel_title	ยกเลิกที่ทำเครื่องหมาย — เหตุผลเดียว สลิปต่อครัว
+kot_test_printers_dd_n	{n} เครื่องพิมพ์ Test KOT · แตะ​เพื่อ​เปลี่ยน
+test_printer_picked	ทดสอบ​ที่: {name}
+test_printer_cleared	ไม่​ทดสอบ​ที่: {name}
+test_page_sent_n	ส่ง​หน้า​ทดสอบ​ไป​ยัง​เครื่องพิมพ์ {n} เครื่อง
+test_kot_pick_first	เลือก​เครื่องพิมพ์​สำหรับ Test KOT ก่อน — แล้ว​จึง Test KOT
+test_kot_sent_n	ส่ง Test KOT ไป​ยัง​เครื่องพิมพ์ {n} เครื่อง
+cancel_pick	ทำ​เครื่องหมาย
+cancel_pick_on	ทำ​เครื่องหมาย​แล้ว
+cancel_pick_meta	ทำ​เครื่องหมาย​เพื่อ​ยกเลิก
+batch_cancel	ยกเลิก​ที่​ทำ​เครื่องหมาย
+batch_cancel_n	ยกเลิก​ที่​ทำ​เครื่องหมาย ({n})
+batch_cancel_none	ทำ​เครื่องหมาย​รายการ​ที่​ส่ง​แล้ว​ก่อน — แล้ว​จึง​ยกเลิก​ที่​ทำ​เครื่องหมาย
+batch_cancel_title	ยกเลิก​ที่​ทำ​เครื่องหมาย — เหตุผล​เดียว สลิป​ต่อ​ครัว
 batch_cancel_ok	ยกเลิก {n} รายการ · {slips} สลิป → {kitchens}
-batch_cancel_ok_noprint	ยกเลิก {n} รายการ — พิมพ์ KOT อัตโนมัติปิด ไม่มีสลิป
-no_printer_kitchen_station	ไม่มีเครื่องพิมพ์สำหรับสถานีครัวนี้ — ไปที่ ครัว → สถานีครัว → เครื่องพิมพ์สำหรับสถานีนี้
-printers_saved	บันทึกเครื่องพิมพ์ของอุปกรณ์นี้แล้ว
-test_page_sent	ส่งหน้าทดสอบแล้ว — ตรวจดูเครื่องพิมพ์
-test_page_sent_one	ส่งหน้าทดสอบไปที่ {name} แล้ว — ตรวจดูเครื่องพิมพ์นั้น
+batch_cancel_ok_noprint	ยกเลิก {n} รายการ — พิมพ์ KOT อัตโนมัติ​ปิด ไม่มี​สลิป
+no_printer_kitchen_station	ไม่มี​เครื่องพิมพ์​สำหรับ​สถานี​ครัว​นี้ — ไป​ที่ ครัว → สถานี​ครัว → เครื่องพิมพ์​สำหรับ​สถานี​นี้
+printers_saved	บันทึก​เครื่องพิมพ์​ของ​อุปกรณ์​นี้​แล้ว
+test_page_sent	ส่ง​หน้า​ทดสอบ​แล้ว — ตรวจ​ดู​เครื่องพิมพ์
+test_page_sent_one	ส่ง​หน้า​ทดสอบ​ไป​ที่ {name} แล้ว — ตรวจ​ดู​เครื่องพิมพ์​นั้น
 printers_found	พบ {n}: {list}
 printers_find_synced	พบ {n} — ใหม่ {new}
-printer_on_device	บันทึกแล้ว
-printer_already_added	เพิ่มแล้ว
-printer_already_saved	บันทึกไว้แล้ว: {name}
-find_printers	ค้นหาเครื่องพิมพ์
-printers_looking	กำลังค้นหาเครื่องพิมพ์บนอุปกรณ์นี้และ Wi‑Fi…
-saving_printer	กำลังเพิ่มเครื่องพิมพ์…
+printer_on_device	บันทึก​แล้ว
+printer_already_added	เพิ่ม​แล้ว
+printer_already_saved	บันทึก​ไว้​แล้ว: {name}
+find_printers	ค้นหา​เครื่องพิมพ์
+printers_looking	กำลัง​ค้นหา​เครื่องพิมพ์​บน​อุปกรณ์​นี้​และ Wi‑Fi…
+saving_printer	กำลัง​เพิ่ม​เครื่องพิมพ์…
 cancelled	ยกเลิก
-cancelling	กำลังยกเลิก…
-removing	กำลังนำออก…
-removed	นำออกแล้ว
-updating_order	กำลังอัปเดต…
-order_updated	อัปเดตออร์เดอร์แล้ว
-printers_tap_find	แตะค้นหาเพื่อแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้
-printers_none_found	ไม่พบเครื่องพิมพ์ — พิมพ์ชื่อระบบหรือที่อยู่เครือข่าย (เช่น 192.168.1.50)
+cancelling	กำลัง​ยกเลิก…
+removing	กำลัง​นำ​ออก…
+removed	นำ​ออก​แล้ว
+updating_order	กำลัง​อัปเดต…
+order_updated	อัปเดต​ออร์เด​อร์​แล้ว
+printers_tap_find	แตะ​ค้นหา​เพื่อ​แสดง​เครื่องพิมพ์​ที่​อุปกรณ์​นี้​ใช้ได้
+printers_none_found	ไม่​พบ​เครื่องพิมพ์ — พิมพ์​ชื่อ​ระบบ​หรือ​ที่​อยู่​เครือ​ข่าย (เช่น 192.168.1.50)
 printer_from_find	เพิ่ม {name} แล้ว
-kot_printer_ph	เครื่องพิมพ์ใบสั่งครัว (KOT)
-bill_printer_ph	เครื่องพิมพ์บิล
-kot_print_on	พิมพ์ครัว: เปิด
-kot_print_off	พิมพ์ครัว: ปิด
-queue_refused	ร้านไม่รับ ({n}) — ตรวจทีละรายการที่เคาน์เตอร์:
-clear_not_accepted	ตรวจแล้ว — ล้างรายการนี้
-device_name_ph	ชื่ออุปกรณ์นี้
-lan_last_update	อัปเดตล่าสุด {time}
-lan_not_accepted	ไม่รับ {n} รายการ
-connected_now	เชื่อมต่ออยู่
-backup_failed	การสำรองข้อมูลอัตโนมัติครั้งล่าสุดล้มเหลว: {e}
-backup_overdue	ไม่ได้สำรองข้อมูลมา {n} วัน — เปิดแอปค้างไว้ในเครื่องนี้เพื่อให้สำรองข้อมูลได้
-disk_low	เครื่องนี้เหลือพื้นที่ว่างเพียง {mb} MB — อีกไม่นานจะสำรองข้อมูลไม่ได้ ช่วยเคลียร์พื้นที่
-last_seen_devices	ครั้งล่าสุดที่เห็น: {time}
-sync_interval	ซิงค์ทุก {secs} วินาที
-connection_to_shop	การเชื่อมต่อกับร้าน
-supplier_name_ph	ชื่อผู้จัดหา (หรือคู่ค้า)
-supplier_ph	ผู้จัดหา
-switch_device	สลับอุปกรณ์นี้
-take_payment	รับชำระเงิน
-tax_added_till	{tax} ไม่รวม
+kot_printer_ph	เครื่องพิมพ์​ใบสั่ง​ครัว (KOT)
+bill_printer_ph	เครื่องพิมพ์​บิล
+kot_print_on	พิมพ์​ครัว: เปิด
+kot_print_off	พิมพ์​ครัว: ปิด
+queue_refused	ร้าน​ไม่​รับ ({n}) — ตรวจ​ที​ละ​รายการ​ที่​เคาน์เตอร์:
+clear_not_accepted	ตรวจ​แล้ว — ล้าง​รายการ​นี้
+device_name_ph	ชื่อ​อุปกรณ์​นี้
+lan_last_update	อัปเดต​ล่าสุด {time}
+lan_not_accepted	ไม่​รับ {n} รายการ
+connected_now	เชื่อม​ต่อ​อยู่
+backup_failed	การ​สำรอง​ข้อมูล​อัตโนมัติ​ครั้ง​ล่าสุด​ล้ม​เหลว: {e}
+backup_overdue	ไม่​ได้​สำรอง​ข้อมูล​มา {n} วัน — เปิด​แอป​ค้าง​ไว้​ใน​เครื่อง​นี้​เพื่อ​ให้​สำรอง​ข้อมูล​ได้
+disk_low	เครื่อง​นี้​เหลือ​พื้นที่​ว่าง​เพียง {mb} MB — อีก​ไม่​นาน​จะ​สำรอง​ข้อมูล​ไม่​ได้ ช่วย​เคลียร์​พื้นที่
+last_seen_devices	ครั้ง​ล่าสุด​ที่​เห็น: {time}
+sync_interval	ซิงค์​ทุก {secs} วินาที
+connection_to_shop	การ​เชื่อม​ต่อ​กับ​ร้าน
+supplier_name_ph	ชื่อ​ผู้​จัดหา (หรือ​คู่​ค้า)
+supplier_ph	ผู้​จัดหา
+switch_device	สลับ​อุปกรณ์​นี้
+take_payment	รับ​ชำระ​เงิน
+tax_added_till	{tax} ไม่​รวม
 tax_inside_price	{tax} รวม
-tax_invoice	ใบกำกับภาษี
+tax_invoice	ใบ​กำกับ​ภาษี
 till_to_bank	เคาน์เตอร์ → ธนาคาร
 units_heading	หน่วย
-unlock_after_pairing	ใส่รหัส PIN
-unlock_with_login	ปลดล็อกด้วยการเข้าสู่ระบบ
-or_unlock_shop_login	หรือปลดล็อกด้วยการเข้าสู่ระบบร้าน
-shop_login_help	ทางเลือก: ปลดล็อกด้วยชื่อผู้ใช้และรหัสผ่านพนักงานร้านนี้แทน PIN (ใช้แบบออฟไลน์ได้)
+unlock_after_pairing	ใส่​รหัส PIN
+unlock_with_login	ปลด​ล็อก​ด้วย​การ​เข้า​สู่​ระบบ
+or_unlock_shop_login	หรือ​ปลด​ล็อก​ด้วย​การ​เข้า​สู่​ระบบ​ร้าน
+shop_login_help	ทาง​เลือก: ปลด​ล็อก​ด้วย​ชื่อ​ผู้​ใช้​และ​รหัส​ผ่าน​พนักงาน​ร้าน​นี้​แทน PIN (ใช้​แบบ​ออฟ​ไลน์​ได้)
 cloud_account_title	บัญชี Khaynjo
-cloud_account_help	ลงทะเบียนหรือลงชื่อเข้าใช้ด้วยบัญชีเดียวกับ khaynjo.com/account สร้างรหัสคลาวด์และแผนฟรีของคุณ
-cloud_name_ph	ชื่อ (ไม่บังคับ)
+cloud_account_help	ลง​ทะเบียน​หรือ​ลงชื่อ​เข้า​ใช้​ด้วย​บัญชี​เดียว​กับ khaynjo.com/account สร้าง​รหัส​คลา​วด์​และ​แผน​ฟรี​ของ​คุณ
+cloud_name_ph	ชื่อ (ไม่​บังคับ)
 cloud_email_ph	อีเมล
-cloud_password_ph	รหัสผ่าน
-cloud_continue	ดำเนินการต่อ
-cloud_forgot	ลืมรหัสผ่าน?
-cloud_web_methods	Google และวิธีอื่นบนเว็บไซต์
-cloud_signing_in	กำลังลงชื่อเข้าใช้…
-cloud_sending_reset	กำลังส่งลิงก์รีเซ็ต…
-cloud_forgot_sent	หากอีเมลนั้นมีบัญชี ลิงก์รีเซ็ตกำลังส่งไป
-cloud_welcome	ลงชื่อเข้าใช้แล้วเป็น {user} · {plan}
-cloud_created	สร้างบัญชีแล้ว ตรวจอีเมลเพื่อยืนยันเมื่อทำได้
+cloud_password_ph	รหัส​ผ่าน
+cloud_continue	ดำเนิน​การ​ต่อ
+cloud_forgot	ลืม​รหัส​ผ่าน?
+cloud_web_methods	Google และ​วิธี​อื่น​บน​เว็บไซต์
+cloud_signing_in	กำลัง​ลงชื่อ​เข้า​ใช้…
+cloud_sending_reset	กำลัง​ส่ง​ลิงก์​รีเซ็ต…
+cloud_forgot_sent	หาก​อีเมล​นั้น​มี​บัญชี ลิงก์​รีเซ็ต​กำลัง​ส่ง​ไป
+cloud_welcome	ลงชื่อ​เข้า​ใช้​แล้ว​เป็น {user} · {plan}
+cloud_created	สร้าง​บัญชี​แล้ว ตรวจ​อีเมล​เพื่อ​ยืนยัน​เมื่อ​ทำได้
 cloud_cancel	ยกเลิก
-unmark	ยกเลิกเครื่องหมาย
-update_my_password	เปลี่ยนรหัสผ่านของฉัน
-update_my_pin	เปลี่ยน PIN ของฉัน
-duress_heading	PIN ปลดล็อกฉุกเฉิน (เจ้าของเท่านั้น)
-duress_help	เฉพาะเซิร์ฟเวอร์/ไคลเอนต์ออฟไลน์บน LAN — ไม่ใช่ฟีเจอร์คลาวด์ ปิดเป็นค่าเริ่ม: เจ้าของเปิดครั้งเดียวด้วยการบันทึก PIN นี้ (ทีม รวมบนเครื่องไคลเอนต์) ถ้าพิมพ์ PIN นี้ตอนปลดล็อกแทน PIN พนักงานจริง รายการในสมุดบนเซิร์ฟเวอร์ถูกลบ และเครื่องเปิดเป็นเจ้าของดูปกติ — เมนู ราคา โต๊ะ พนักงาน และการตั้งค่าคงอยู่ ไม่ลบสคีมาและการตั้งค่า อย่าให้เหมือน PIN ของใคร ปิดด้วยปุ่มล้าง
+unmark	ยกเลิก​เครื่องหมาย
+update_my_password	เปลี่ยน​รหัส​ผ่าน​ของ​ฉัน
+update_my_pin	เปลี่ยน PIN ของ​ฉัน
+duress_heading	PIN ปลด​ล็อก​ฉุกเฉิน (เจ้าของ​เท่านั้น)
+duress_help	เฉพาะ​เซิร์ฟเวอร์/ไคล​เอน​ต์​ออฟ​ไลน์​บน LAN — ไม่ใช่​ฟีเจอร์​คลา​วด์ ปิด​เป็น​ค่า​เริ่ม: เจ้าของ​เปิด​ครั้ง​เดียว​ด้วย​การ​บันทึก PIN นี้ (ทีม รวม​บน​เครื่อง​ไคล​เอน​ต์) ถ้า​พิมพ์ PIN นี้​ตอน​ปลด​ล็อก​แทน PIN พนักงาน​จริง รายการ​ใน​สมุด​บน​เซิร์ฟเวอร์​ถูก​ลบ และ​เครื่อง​เปิด​เป็น​เจ้าของ​ดู​ปกติ — เมนู ราคา โต๊ะ พนักงาน และ​การ​ตั้ง​ค่า​คง​อยู่ ไม่​ลบสคี​มา​และ​การ​ตั้ง​ค่า อย่า​ให้​เหมือน PIN ของ​ใคร ปิด​ด้วย​ปุ่ม​ล้าง
 duress_pin_ph	PIN ฉุกเฉิน (4–12 หลัก)
-duress_confirm_ph	พิมพ์อีกครั้งเพื่อยืนยัน
+duress_confirm_ph	พิมพ์​อีก​ครั้ง​เพื่อ​ยืนยัน
 save_duress_pin	บันทึก PIN ฉุกเฉิน
 clear_duress_pin	ปิด PIN ฉุกเฉิน
-duress_on	PIN ปลดล็อกฉุกเฉินเปิดอยู่
-duress_off	PIN ปลดล็อกฉุกเฉินปิดอยู่
-duress_saved	บันทึก PIN ปลดล็อกฉุกเฉินแล้ว
-duress_cleared	ปิด PIN ปลดล็อกฉุกเฉินแล้ว
+duress_on	PIN ปลด​ล็อก​ฉุกเฉิน​เปิด​อยู่
+duress_off	PIN ปลด​ล็อก​ฉุกเฉิน​ปิด​อยู่
+duress_saved	บันทึก PIN ปลด​ล็อก​ฉุกเฉิน​แล้ว
+duress_cleared	ปิด PIN ปลด​ล็อก​ฉุกเฉิน​แล้ว
 upi_amount_ph	ยอด UPI
 void	ยกเลิก
 write_off_ap	ตัด AP
-write_off_heading	ตัดหนี้ (เคลียร์โดยไม่จ่าย)
-write_off_nil	ตัดหนี้ / ยอดเป็นศูนย์
-your_brand	แบรนด์ของคุณ (ในแอป)
-your_categories	หมวดหมู่ของคุณ
-account_kind	ประเภทบัญชี (แตะหนึ่ง)
-actual_total_cap	ยอดจริง
-amend_help	เลือกการขายเพื่อแก้ ยกเลิก หรือคืนเงิน การแก้เก็บประวัติครบ ยอดปัดเริ่มเท่ากับที่ยืนยัน — แก้เฉพาะเพื่อปัด ยกเลิกและคืนเงินอาจต้องใช้ PIN เจ้าของหรือผู้จัดการ (พิมพ์ด้านบน บันทึกพร้อมชื่อคุณ)
-applied_total_cap	ยอดที่ใช้
-bank_balance	ยอดธนาคาร
-bank_net_today	ยอดธนาคารสุทธิวันนี้
-branch_export_help	การส่งออกจะเขียน branch_snapshot_CODE_DATE.json ลงโฟลเดอร์สำรองและคัดลอกไปคลิปบอร์ด หากต้องการนำเข้าวันของสาขาอื่น ให้บันทึกไฟล์ของสาขานั้นเป็น import_branch_snapshot.json ในโฟลเดอร์เดียวกัน แล้วแตะนำเข้า
-brand_shown_help	แสดงบนหน้าจอภายในแอป ชื่อและไอคอนของแอปที่ติดตั้งบนอุปกรณ์นี้คงเดิมตามรายการแพลตฟอร์ม
-app_icon	ไอคอนแอป
-logo_help	โลโก้ร้านค้าแบบเลือกได้บนหน้าจอในแอป
-onboard_layout	สิ่งที่คุณได้รับ
-item_photo_help	เลือกได้ หากไม่มีรูปภาพ เราจะแสดงตัวอักษรย่อจากชื่อรายการ
-stamp_heading	ตราประทับ
-stamp_image_help	รูปภาพตราประทับแบบเลือกได้ที่บิลและจอรับแขก
-payment_qr_heading	QR การชำระเงิน
-payment_qr_image_help	QR สถิตบนบิลและจอรับแขก; ในกรณีอื่นการชำระเงินจะใช้ QR UPI แบบไดนามิกจาก VPA ด้านบน
-cash_in_hand	เงินสดในมือ (เคาน์เตอร์)
-change_my_pin_heading	เปลี่ยน PIN ของฉัน (ของคุณเท่านั้น)
-connect_to_server	เชื่อมต่อเซิร์ฟเวอร์
+write_off_heading	ตัด​หนี้ (เคลียร์​โดย​ไม่​จ่าย)
+write_off_nil	ตัด​หนี้ / ยอด​เป็น​ศูนย์
+your_brand	แบรนด์​ของ​คุณ (ใน​แอป)
+your_categories	หมวด​หมู่​ของ​คุณ
+account_kind	ประเภท​บัญชี (แตะ​หนึ่ง)
+actual_total_cap	ยอด​จริง
+amend_help	เลือก​การ​ขาย​เพื่อ​แก้ ยกเลิก หรือ​คืน​เงิน การ​แก้​เก็บ​ประวัติ​ครบ ยอด​ปัด​เริ่ม​เท่ากับ​ที่​ยืนยัน — แก้​เฉพาะ​เพื่อ​ปัด ยกเลิก​และ​คืน​เงิน​อาจ​ต้อง​ใช้ PIN เจ้าของ​หรือ​ผู้​จัดการ (พิมพ์​ด้าน​บน บันทึก​พร้อม​ชื่อ​คุณ)
+applied_total_cap	ยอด​ที่​ใช้
+bank_balance	ยอด​ธนาคาร
+bank_net_today	ยอด​ธนาคาร​สุทธิ​วัน​นี้
+branch_export_help	การ​ส่ง​ออก​จะ​เขียน branch_snapshot_CODE_DATE.json ลง​โฟลเดอร์​สำรอง​และ​คัด​ลอก​ไป​คลิปบอร์ด หาก​ต้องการ​นำ​เข้า​วัน​ของ​สาขา​อื่น ให้​บันทึก​ไฟล์​ของ​สาขา​นั้น​เป็น import_branch_snapshot.json ใน​โฟลเดอร์​เดียวกัน แล้ว​แตะ​นำ​เข้า
+brand_shown_help	แสดง​บน​หน้า​จอ​ภายใน​แอป ชื่อ​และ​ไอคอน​ของ​แอป​ที่​ติด​ตั้ง​บน​อุปกรณ์​นี้​คง​เดิม​ตาม​รายการ​แพลตฟอร์ม
+app_icon	ไอคอน​แอป
+logo_help	โลโก้​ร้าน​ค้า​แบบ​เลือก​ได้​บน​หน้า​จอ​ใน​แอป
+onboard_layout	สิ่ง​ที่​คุณ​ได้​รับ
+item_photo_help	เลือก​ได้ หาก​ไม่มี​รูปภาพ เรา​จะ​แสดง​ตัว​อักษร​ย่อ​จาก​ชื่อ​รายการ
+stamp_heading	ตรา​ประทับ
+stamp_image_help	รูปภาพ​ตรา​ประทับ​แบบ​เลือก​ได้ที่​บิล​และ​จอ​รับแขก
+payment_qr_heading	QR การ​ชำระ​เงิน
+payment_qr_image_help	QR สถิต​บน​บิล​และ​จอ​รับแขก; ใน​กรณี​อื่น​การ​ชำระ​เงิน​จะ​ใช้ QR UPI แบบ​ไดนามิก​จาก VPA ด้าน​บน
+cash_in_hand	เงินสด​ใน​มือ (เคาน์เตอร์)
+change_my_pin_heading	เปลี่ยน PIN ของ​ฉัน (ของ​คุณ​เท่านั้น)
+connect_to_server	เชื่อม​ต่อ​เซิร์ฟเวอร์
 counter_locked	เคาน์เตอร์ 01 · ล็อก
-country_pack_help	แพ็กประเทศกำหนดชื่อภาษีและการคำนวณ ช่องทางชำระเงินทันที และเลขภาษีที่พิมพ์บนบิล Kumkaj ไม่ยื่นภาษีหรือออกใบกำกับภาษีอิเล็กทรอนิกส์ของรัฐที่ใด
-currency_use_help	เลื่อนและแตะใช้สำหรับสกุลเงินที่รองรับ
-day_close_help	การบันทึกปิดวันจะบันทึกสรุปนี้ (และส่วนต่างลิ้นชักหากนับ) ลงบันทึกการตรวจสอบ ไม่หยุดการขาย
-expenses_word	ค่าใช้จ่าย
-feature_access_help	สิทธิ์ฟีเจอร์ของพนักงานที่เลือก (แตะหลังเพิ่ม)
-footer_local	SQLite ท้องถิ่น · ฟรีตลอดไป · ไม่มีคลาวด์
-fresh_book_khaynjo	ใหม่ = เมนูว่าง (เพิ่มอาหารภายหลังในเมนู) สมุด = พิมพ์รายการเปิดและผู้ที่ติดค้างคุณด้านล่าง
-fresh_selected	เลือก “ใหม่” — แคตตาล็อกจะว่าง แตะ “เสร็จ” เมื่อพร้อม
-gross_word	รวมยอด
-how_start	คุณต้องการเริ่มต้นอย่างไร
-kot_print_help_khaynjo	เมื่อส่ง KOT — ที่เคาน์เตอร์หรือจากอุปกรณ์ของพนักงานเสิร์ฟ — กระดาษครัวจะพิมพ์ที่นี่เอง
-later_country_pack	ภายหลัง: การตั้งค่า → ใช้แพ็กประเทศสำหรับป้ายภาษีและการชำระเงิน
-local_badge	ท้องถิ่น
-mix_type_hint_khaynjo	แบ่งเป็นเงินสด / UPI / บัตร / เครดิตหากจำเป็น เครดิตต้องมีลูกค้าด้านบน
-money_in_sales	เงินเข้า (ยอดขาย)
+country_pack_help	แพ็ก​ประเทศ​กำหนด​ชื่อ​ภาษี​และ​การ​คำนวณ ช่อง​ทาง​ชำระ​เงิน​ทันที และ​เลข​ภาษี​ที่​พิมพ์​บน​บิล Kumkaj ไม่​ยื่น​ภาษี​หรือ​ออก​ใบ​กำกับ​ภาษี​อิเล็กทรอนิกส์​ของ​รัฐ​ที่​ใด
+currency_use_help	เลื่อน​และ​แตะ​ใช้​สำหรับ​สกุล​เงิน​ที่​รองรับ
+day_close_help	การ​บันทึก​ปิด​วัน​จะบัน​ทึก​สรุป​นี้ (และ​ส่วน​ต่าง​ลิ้น​ชัก​หาก​นับ) ลง​บันทึก​การ​ตรวจ​สอบ ไม่​หยุด​การ​ขาย
+expenses_word	ค่า​ใช้​จ่าย
+feature_access_help	สิทธิ์​ฟีเจอร์​ของ​พนักงาน​ที่​เลือก (แตะ​หลัง​เพิ่ม)
+footer_local	SQLite ท้อง​ถิ่น · ฟรี​ตลอด​ไป · ไม่​มี​คลา​วด์
+fresh_book_khaynjo	ใหม่ = เมนู​ว่าง (เพิ่ม​อาหาร​ภาย​หลัง​ใน​เมนู) สมุด = พิมพ์​รายการ​เปิด​และ​ผู้​ที่​ติด​ค้าง​คุณ​ด้าน​ล่าง
+fresh_selected	เลือก “ใหม่” — แคตตา​ล็อก​จะ​ว่าง แตะ “เสร็จ” เมื่อ​พร้อม
+gross_word	รวม​ยอด
+how_start	คุณ​ต้องการ​เริ่ม​ต้น​อย่างไร
+kot_print_help_khaynjo	เมื่อ​ส่ง KOT — ที่​เคาน์เตอร์​หรือ​จาก​อุปกรณ์​ของ​พนักงาน​เสิร์ฟ — กระดาษ​ครัว​จะ​พิมพ์​ที่​นี่เอง
+later_country_pack	ภาย​หลัง: การ​ตั้ง​ค่า → ใช้​แพ็ก​ประเทศ​สำหรับ​ป้าย​ภาษี​และ​การ​ชำระ​เงิน
+local_badge	ท้อง​ถิ่น
+mix_type_hint_khaynjo	แบ่ง​เป็น​เงินสด / UPI / บัตร / เครดิต​หาก​จำเป็น เครดิต​ต้อง​มี​ลูกค้า​ด้าน​บน
+money_in_sales	เงิน​เข้า (ยอด​ขาย)
 net_word	สุทธิ
-offline_badge	ออฟไลน์
-optional_login_help	เข้าสู่ระบบเสริม (รหัส + รหัสผ่าน) เจ้าของตั้งครั้งเดียว หลังจากนั้นเฉพาะผู้ใช้เท่านั้นที่เปลี่ยนรหัสผ่านได้
-or_unlock_login	หรือปลดล็อกด้วยรหัสเข้าสู่ระบบ + รหัสผ่าน
-permission_preset	ชุดสิทธิ์
-preset_help_khaynjo	แคชเชียร์: ขาย ผู้จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
+offline_badge	ออฟ​ไลน์
+optional_login_help	เข้า​สู่​ระบบ​เสริม (รหัส + รหัส​ผ่าน) เจ้าของ​ตั้ง​ครั้ง​เดียว หลัง​จาก​นั้น​เฉพาะ​ผู้​ใช้​เท่านั้น​ที่​เปลี่ยน​รหัส​ผ่าน​ได้
+or_unlock_login	หรือ​ปลด​ล็อก​ด้วย​รหัส​เข้า​สู่​ระบบ + รหัส​ผ่าน
+permission_preset	ชุด​สิทธิ์
+preset_help_khaynjo	แคชเชียร์: ขาย ผู้​จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
 product_locked_khaynjo	Khaynjo
-product_only_khaynjo	แอปนี้เป็น Khaynjo เท่านั้น — ระบบสำหรับร้านอาหาร ธุรกิจอื่นมีผลิตภัณฑ์ Kumkaj แยกต่างหาก
+product_only_khaynjo	แอป​นี้​เป็น Khaynjo เท่านั้น — ระบบ​สำหรับ​ร้าน​อาหาร ธุรกิจ​อื่น​มี​ผลิตภัณฑ์ Kumkaj แยก​ต่าง​หาก
 purchases_cogs	ซื้อ (COGS)
 qty_cap	จำนวน
-restore_help	กู้คืน: เลือกไฟล์สำรอง สมุดบัญชีจะเปิดตามตอนนั้น สมุดปัจจุบันจะถูกบันทึกไว้ก่อน จึงย้อนกลับได้
-wipe_data_heading	ลบข้อมูลในเครื่อง
-wipe_data_help	เจ้าของเท่านั้น — ตัวเลือกเดียวกับถอน Windows บันทึกธุรกิจล้างประวัติการค้าแต่คงเมนูและการตั้งค่า (เช่น PIN ปลดล็อกฉุกเฉิน) ตั้งค่าร้านลบฐานข้อมูลสมุด ค่ากำหนดหน้าจอล้างหน้าต่าง/ภาษา ยืนยันด้วย PIN เจ้าของ PIN ปลดล็อกฉุกเฉินในทีมแยกต่างหาก (ล้างแบบปกปิดตอนปลดล็อก)
-wipe_trading	บันทึกธุรกิจ
-wipe_schema	ตั้งค่าร้าน
-wipe_ui	ค่ากำหนดหน้าจอ
-wipe_owner_pin_ph	PIN เจ้าของเพื่อลบ
-wipe_delete_selected	ลบที่เลือก
-wipe_owner_only	มีแค่เจ้าของที่ลบข้อมูลในเครื่องได้
-restore_owner_only	มีแค่เจ้าของที่กู้คืนข้อมูลสำรองได้
-wipe_owner_pin_needed	ใส่ PIN เจ้าของเพื่อลบข้อมูลในเครื่อง
-wipe_nothing_selected	เลือกว่าจะลบอะไรก่อน
-wipe_done	ลบข้อมูลในเครื่องที่เลือกแล้ว
-wipe_schema_done	ล้างการตั้งค่าร้านแล้ว — เลือก Server หรือ Client เพื่อไปต่อ
-rounded_total	ยอดปัดเศษ
-setup_app_khaynjo	ตั้งค่า Khaynjo
-shop_logo_optional	โลโก้ร้าน (ไม่บังคับ)
-stock_type_help	พิมพ์ชื่อรายการ (บางส่วนก็พอ) จำนวน แล้วปรับ รายการที่ยังไม่ได้นับต้องเริ่มนับหนึ่งครั้ง
-team_owner_help	เว้นบุคคลว่างเพื่อเพิ่ม: ชื่อ งาน ชื่อผู้ใช้ PIN และรหัสผ่านเสริม แล้วเพิ่ม เลือกคนเพื่อแก้ฟอร์มแบบเดียวกัน — ชื่อ ชื่อผู้ใช้ รหัสผ่าน หน้าจอ และสิทธิ์ — แล้วบันทึก PIN และรหัสผ่านของคุณเองคือการเข้าครั้งเดียวด้านล่าง เจ้าของไม่เปลี่ยน PIN ของคนอื่น
-staff_name_ph	ชื่อ / รหัสพนักงาน
-staff_copy_hire_ph	คัดลอกการตั้งค่าจาก (เลือกได้)
-staff_copy_hire	ใช้การตั้งค่าของบุคคลนี้
-staff_edit_name_ph	ชื่อแสดง
-staff_rename	บันทึกชื่อ
-staff_copy_edit_ph	คัดลอกการตั้งค่าจากบุคคลอื่น
-staff_copy_edit	คัดลอกการตั้งค่าของพวกเขาไปยังที่เลือก
-staff_copy_edit_onto	คัดลอกการตั้งค่าของพวกเขาไปยัง {name}
+restore_help	กู้​คืน: เลือก​ไฟล์​สำรอง สมุด​บัญชี​จะ​เปิด​ตาม​ตอน​นั้น สมุด​ปัจจุบัน​จะ​ถูก​บันทึก​ไว้​ก่อน จึง​ย้อน​กลับ​ได้
+wipe_data_heading	ลบ​ข้อมูล​ใน​เครื่อง
+wipe_data_help	เจ้าของ​เท่านั้น — ตัว​เลือก​เดียว​กับ​ถอน Windows บันทึก​ธุรกิจ​ล้าง​ประวัติการ​ค้า​แต่​คง​เมนู​และ​การ​ตั้ง​ค่า (เช่น PIN ปลด​ล็อก​ฉุกเฉิน) ตั้ง​ค่า​ร้าน​ลบ​ฐาน​ข้อมูล​สมุด ค่า​กำหนด​หน้า​จอ​ล้าง​หน้าต่าง/ภาษา ยืนยัน​ด้วย PIN เจ้าของ PIN ปลด​ล็อก​ฉุกเฉิน​ใน​ทีม​แยก​ต่าง​หาก (ล้าง​แบบ​ปกปิด​ตอน​ปลด​ล็อก)
+wipe_trading	บันทึก​ธุรกิจ
+wipe_schema	ตั้ง​ค่า​ร้าน
+wipe_ui	ค่า​กำหนด​หน้า​จอ
+wipe_owner_pin_ph	PIN เจ้าของ​เพื่อ​ลบ
+wipe_delete_selected	ลบ​ที่​เลือก
+wipe_owner_only	มี​แค่​เจ้าของ​ที่​ลบ​ข้อมูล​ใน​เครื่อง​ได้
+restore_owner_only	มี​แค่​เจ้าของ​ที่​กู้​คืน​ข้อมูล​สำรอง​ได้
+wipe_owner_pin_needed	ใส่ PIN เจ้าของ​เพื่อ​ลบ​ข้อมูล​ใน​เครื่อง
+wipe_nothing_selected	เลือก​ว่า​จะ​ลบ​อะไร​ก่อน
+wipe_done	ลบ​ข้อมูล​ใน​เครื่อง​ที่​เลือก​แล้ว
+wipe_schema_done	ล้าง​การ​ตั้ง​ค่า​ร้าน​แล้ว — เลือก Server หรือ Client เพื่อ​ไป​ต่อ
+rounded_total	ยอด​ปัดเศษ
+setup_app_khaynjo	ตั้ง​ค่า Khaynjo
+shop_logo_optional	โลโก้​ร้าน (ไม่​บังคับ)
+stock_type_help	พิมพ์​ชื่อ​รายการ (บาง​ส่วน​ก็​พอ) จำนวน แล้ว​ปรับ รายการ​ที่​ยัง​ไม่​ได้​นับ​ต้อง​เริ่ม​นับ​หนึ่ง​ครั้ง
+team_owner_help	เว้น​บุคคล​ว่าง​เพื่อ​เพิ่ม: ชื่อ งาน ชื่อ​ผู้​ใช้ PIN และ​รหัส​ผ่าน​เสริม แล้ว​เพิ่ม เลือก​คน​เพื่อ​แก้​ฟอร์ม​แบบ​เดียวกัน — ชื่อ ชื่อ​ผู้​ใช้ รหัส​ผ่าน หน้า​จอ และ​สิทธิ์ — แล้ว​บันทึก PIN และ​รหัส​ผ่าน​ของ​คุณ​เอง​คือ​การ​เข้า​ครั้ง​เดียว​ด้าน​ล่าง เจ้าของ​ไม่​เปลี่ยน PIN ของ​คน​อื่น
+staff_name_ph	ชื่อ / รหัส​พนักงาน
+staff_copy_hire_ph	คัด​ลอก​การ​ตั้ง​ค่า​จาก (เลือก​ได้)
+staff_copy_hire	ใช้​การ​ตั้ง​ค่า​ของ​บุคคล​นี้
+staff_edit_name_ph	ชื่อ​แสดง
+staff_rename	บันทึก​ชื่อ
+staff_copy_edit_ph	คัด​ลอก​การ​ตั้ง​ค่า​จาก​บุคคล​อื่น
+staff_copy_edit	คัด​ลอก​การ​ตั้ง​ค่า​ของ​พวก​เขา​ไป​ยัง​ที่​เลือก
+staff_copy_edit_onto	คัด​ลอก​การ​ตั้ง​ค่า​ของ​พวก​เขา​ไป​ยัง {name}
 staff_deactivate_named	ลบ {name}
-staff_renamed	บันทึกชื่อแล้ว
-staff_setup_copied_hire	คัดลอกการตั้งค่าจาก {name} — ตั้งชื่อใหม่และรหัสผ่าน แล้วเพิ่มพนักงาน
-staff_setup_copied_edit	คัดลอกการตั้งค่าของ {from} ไปยัง {to} แล้ว
-staff_copy_need_selected	เลือกใครจะแก้ไขก่อน
-staff_copy_need_source	เลือกใครที่จะคัดลอกการตั้งค่า
-staff_copy_same	เป็นบุคคลเดียวกัน — เลือกคนอื่น
-staff_rename_need_selected	เลือกใครจะเปลี่ยนชื่อก่อน
-team_pick_hint	เลือกใครจะแก้ไข — หน้าจอ สิทธิ์เงิน และสถานีครัวจะปรากฏสำหรับบุคคลนั้นเท่านั้น
-team_stations_help	สถานีครัวที่พวกเขาสามารถใช้ได้
-team_stations_changed	เปลี่ยนสถานีครัวแล้ว — บันทึกการตั้งค่าสำหรับบุคคลนี้
-team_features_changed	เปลี่ยนหน้าจอ — บันทึกการตั้งค่าสำหรับบุคคลนี้
-team_rights_changed	เปลี่ยนสิทธิ์ — บันทึกการตั้งค่าสำหรับบุคคลนี้
-they_owe_us	พวกเขาติดหนี้เรา
-unit_at_cap	ราคาต่อหน่วย
-units_help	รหัสสำหรับฉลากรายการ (kg, piece, bag) ทุกหน่วยต้องเชื่อม — โดยตรงหรือผ่านหน่วยอื่น — กับมาตรฐาน (kg · cm · ml · pc) เช่น 1 crate = 2 box และ 1 box = 20 cm การแปลง: 1 from = factor to สกุลเงินไม่เคยเป็นหน่วย
-units_picker_help	แตะ เปิด/ปิด เพื่อแสดงหน่วยในรายการซื้อและเมนู หน่วยที่ปิดยังแปลงได้
+staff_renamed	บันทึก​ชื่อ​แล้ว
+staff_setup_copied_hire	คัด​ลอก​การ​ตั้ง​ค่า​จาก {name} — ตั้ง​ชื่อ​ใหม่​และ​รหัส​ผ่าน แล้ว​เพิ่ม​พนักงาน
+staff_setup_copied_edit	คัด​ลอก​การ​ตั้ง​ค่า​ของ {from} ไป​ยัง {to} แล้ว
+staff_copy_need_selected	เลือก​ใคร​จะ​แก้ไข​ก่อน
+staff_copy_need_source	เลือก​ใคร​ที่​จะ​คัด​ลอก​การ​ตั้ง​ค่า
+staff_copy_same	เป็น​บุคคล​เดียวกัน — เลือก​คน​อื่น
+staff_rename_need_selected	เลือก​ใคร​จะ​เปลี่ยน​ชื่อ​ก่อน
+team_pick_hint	เลือก​ใคร​จะ​แก้ไข — หน้า​จอ สิทธิ์​เงิน และ​สถานี​ครัว​จะ​ปรากฏ​สำหรับ​บุคคล​นั้น​เท่านั้น
+team_stations_help	สถานี​ครัว​ที่​พวก​เขา​สามารถ​ใช้ได้
+team_stations_changed	เปลี่ยน​สถานี​ครัว​แล้ว — บันทึก​การ​ตั้ง​ค่า​สำหรับ​บุคคล​นี้
+team_features_changed	เปลี่ยน​หน้า​จอ — บันทึก​การ​ตั้ง​ค่า​สำหรับ​บุคคล​นี้
+team_rights_changed	เปลี่ยน​สิทธิ์ — บันทึก​การ​ตั้ง​ค่า​สำหรับ​บุคคล​นี้
+they_owe_us	พวก​เขา​ติด​หนี้​เรา
+unit_at_cap	ราคา​ต่อ​หน่วย
+units_help	รหัส​สำหรับ​ฉลาก​รายการ (kg, piece, bag) ทุก​หน่วย​ต้อง​เชื่อม — โดยตรง​หรือ​ผ่าน​หน่วย​อื่น — กับ​มาตรฐาน (kg · cm · ml · pc) เช่น 1 crate = 2 box และ 1 box = 20 cm การ​แปลง: 1 from = factor to สกุล​เงิน​ไม่​เคย​เป็น​หน่วย
+units_picker_help	แตะ เปิด/ปิด เพื่อ​แสดง​หน่วย​ใน​รายการ​ซื้อ​และ​เมนู หน่วย​ที่​ปิด​ยัง​แปลง​ได้
 unit_picker_on	เปิด
 unit_picker_off	ปิด
-we_owe_them	เราติดหนี้เขา
-who_unlocking	ใครกำลังปลดล็อก
+we_owe_them	เรา​ติด​หนี้​เขา
+who_unlocking	ใคร​กำลัง​ปลด​ล็อก
 locked_word	ล็อก
 show_pin	แสดง PIN
 hide_pin	ซ่อน PIN
 set_owner_pin	ตั้ง PIN เจ้าของ
-enter_owner_passcode	ใส่รหัสเจ้าของ
-enter_staff_passcode	ใส่รหัสพนักงาน
-pin_count_zero	0 / 12 หลัก · อย่างน้อย 4 แล้วตกลง
-pin_count_need	{} / 12 หลัก · ต้องอีก {}
-pin_count_full	12 / 12 หลัก · กดตกลง
-pin_count_ready	{} / 12 หลัก · กดตกลงเมื่อพร้อม
-pin_hint_choose	เลือก 4–12 หลัก (แป้นพิมพ์หรือแผ่น) · Enter/ตกลง เพื่อบันทึก
-pin_hint_new	PIN เจ้าของใหม่ 4–12 หลัก (แป้นพิมพ์หรือแผ่น) · Enter/ตกลง
-pin_hint_shop_code	อุปกรณ์ร้าน · รหัสจับคู่ {}
-pin_hint_books	อุปกรณ์นี้เก็บบัญชี
-pin_hint_paired	เคาน์เตอร์เสริมจับคู่แล้ว — ปลดล็อกเพื่อขาย
-pin_hint_pair_first	เคาน์เตอร์เสริม — จับคู่กับอุปกรณ์ร้านก่อน
-unlock_to_continue	ปลดล็อกเพื่อดำเนินการต่อ
-no_staff_yet	ยังไม่มีพนักงาน — ปลดล็อกในฐานะเจ้าของ แล้วทีม
-icon_new_selected	ไอคอน: เลือกไฟล์ใหม่แล้ว — แตะบันทึกแบรนด์
-icon_custom	ไอคอน: เครื่องหมายร้านของคุณเอง
-icon_default	ไอคอน: เครื่องหมาย Kumkaj (ค่าเริ่มต้น) — เลือกของคุณเอง
-logo_yours	โลโก้: โลโก้ร้านของคุณ — แสดงบนหน้าจอและใบเสร็จ
-logo_default	โลโก้: เครื่องหมาย Kumkaj (ค่าเริ่มต้น) — เลือกของคุณเองถ้ามี
+enter_owner_passcode	ใส่​รหัส​เจ้าของ
+enter_staff_passcode	ใส่​รหัส​พนักงาน
+pin_count_zero	0 / 12 หลัก · อย่าง​น้อย 4 แล้ว​ตกลง
+pin_count_need	{} / 12 หลัก · ต้อง​อีก {}
+pin_count_full	12 / 12 หลัก · กด​ตกลง
+pin_count_ready	{} / 12 หลัก · กด​ตกลง​เมื่อ​พร้อม
+pin_hint_choose	เลือก 4–12 หลัก (แป้น​พิมพ์​หรือ​แผ่น) · Enter/ตกลง เพื่อ​บันทึก
+pin_hint_new	PIN เจ้าของ​ใหม่ 4–12 หลัก (แป้น​พิมพ์​หรือ​แผ่น) · Enter/ตกลง
+pin_hint_shop_code	อุปกรณ์​ร้าน · รหัส​จับ​คู่ {}
+pin_hint_books	อุปกรณ์​นี้​เก็บ​บัญชี
+pin_hint_paired	เคาน์เตอร์​เสริม​จับ​คู่​แล้ว — ปลด​ล็อก​เพื่อ​ขาย
+pin_hint_pair_first	เคาน์เตอร์​เสริม — จับ​คู่​กับ​อุปกรณ์​ร้าน​ก่อน
+unlock_to_continue	ปลด​ล็อก​เพื่อ​ดำเนิน​การ​ต่อ
+no_staff_yet	ยัง​ไม่มี​พนักงาน — ปลด​ล็อก​ใน​ฐานะ​เจ้าของ แล้ว​ทีม
+icon_new_selected	ไอคอน: เลือก​ไฟล์​ใหม่​แล้ว — แตะ​บันทึก​แบรนด์
+icon_custom	ไอคอน: เครื่องหมาย​ร้าน​ของ​คุณ​เอง
+icon_default	ไอคอน: เครื่องหมาย Kumkaj (ค่า​เริ่ม​ต้น) — เลือก​ของ​คุณ​เอง
+logo_yours	โลโก้: โลโก้​ร้าน​ของ​คุณ — แสดง​บน​หน้า​จอ​และ​ใบ​เสร็จ
+logo_default	โลโก้: เครื่องหมาย Kumkaj (ค่า​เริ่ม​ต้น) — เลือก​ของ​คุณ​เอง​ถ้า​มี
 tmpl_current	ปัจจุบัน: {} — {}
-tmpl_selected	ที่เลือก: {} — {}
-setup_complete	ตั้งค่าเสร็จสมบูรณ์
-onboard_fresh_tmpl	ใหม่ · {} — แคตตาล็อกเริ่มว่างเปล่า; เพิ่มสินค้าในสินค้า แล้วแตะเสร็จสิ้น
-onboard_book_tmpl	สมุด · {} — เพิ่มสินค้าและเครดิตเริ่มต้น แล้วแตะเสร็จสิ้น
-onboard_template_tmpl	ตั้งชื่อร้านได้ถ้าต้องการ แล้วเลือกวิธีเริ่มต้น
-tmpl_blurb	โต๊ะ การสั่ง ใบสั่งครัว การคิดเงิน และบัญชี
-tmpl_how	ขายที่เคาน์เตอร์ พื้นที่สำหรับโต๊ะและใบสั่งครัว บัญชีสำหรับสมุดรายวัน
+tmpl_selected	ที่​เลือก: {} — {}
+setup_complete	ตั้ง​ค่า​เสร็จ​สมบูรณ์
+onboard_fresh_tmpl	ใหม่ · {} — แคตตา​ล็อก​เริ่ม​ว่าง​เปล่า; เพิ่มสิน​ค้า​ใน​สินค้า แล้ว​แตะ​เสร็จ​สิ้น
+onboard_book_tmpl	สมุด · {} — เพิ่มสิน​ค้า​และ​เครดิต​เริ่ม​ต้น แล้ว​แตะ​เสร็จ​สิ้น
+onboard_template_tmpl	ตั้ง​ชื่อ​ร้าน​ได้​ถ้า​ต้องการ แล้ว​เลือก​วิธี​เริ่ม​ต้น
+tmpl_blurb	โต๊ะ การ​สั่ง ใบสั่ง​ครัว การ​คิด​เงิน และ​บัญชี
+tmpl_how	ขาย​ที่​เคาน์เตอร์ พื้นที่​สำหรับ​โต๊ะ​และ​ใบสั่ง​ครัว บัญชี​สำหรับ​สมุด​ราย​วัน
 reports_facet_title	รายงาน
-reports_facet_help	สมุดรายวัน อายุหนี้คู่ค้า รายการธนาคาร และกำไรขาดทุนงวด
-against_bill_ph	สำหรับใบเรียกเก็บ # ด้านบน (ไม่บังคับ)
-aliases_ph	ชื่ออื่น — คั่นด้วยเครื่องหมายจุลภาค
-amount_blank_full_ph	จำนวนเงิน (ว่าง = ยอดคงเหลือทั้งหมด)
-amount_owed_ph	จำนวนเงินที่ค้าง
-amount_ph	จำนวนเงิน
-amount_received_ph	จำนวนเงินที่ได้รับ
-amount_we_pay_ph	จำนวนเงินที่เราจ่าย
-business_name_ph	ชื่อธุรกิจ
-category_new_ph	หมวดหมู่ (ไม่บังคับ สร้างใหม่หากยังไม่มี)
+reports_facet_help	สมุด​ราย​วัน อายุ​หนี้​คู่​ค้า รายการ​ธนาคาร และ​กำไร​ขาดทุน​งวด
+against_bill_ph	สำหรับ​ใบ​เรียก​เก็บ # ด้าน​บน (ไม่​บังคับ)
+aliases_ph	ชื่อ​อื่น — คั่น​ด้วย​เครื่องหมาย​จุลภาค
+amount_blank_full_ph	จำนวน​เงิน (ว่าง = ยอด​คง​เหลือ​ทั้งหมด)
+amount_owed_ph	จำนวน​เงิน​ที่​ค้าง
+amount_ph	จำนวน​เงิน
+amount_received_ph	จำนวน​เงิน​ที่​ได้​รับ
+amount_we_pay_ph	จำนวน​เงิน​ที่​เรา​จ่าย
+business_name_ph	ชื่อ​ธุรกิจ
+category_new_ph	หมวด​หมู่ (ไม่​บังคับ สร้าง​ใหม่​หาก​ยัง​ไม่มี)
 code_bag_ph	รหัส (bag)
 conv_factor_ph	ตัวประกอบ (25 = 1 bag → 25 kg)
-country_code_ph	รหัสประเทศ เช่น IN, GB, US, AE, BR
-credit_khata_amount_ph	จำนวนเครดิต / บัญชี
-credit_limit_ph	วงเงินเครดิต (0 = ไม่มี)
-from_code_ph	รหัสจาก (bag)
-item_name_lang_ph	ชื่อสินค้า — พิมพ์ในภาษาของคุณ
-login_id_opt_ph	รหัสเข้าสู่ระบบ (ไม่บังคับ)
-manager_pin_ph	PIN ผู้จัดการ (เฉพาะเมื่อคุณไม่สามารถยกเลิกได้)
-new_branch_name_ph	ชื่อสาขาใหม่
-new_password_ph	รหัสผ่านใหม่ (ไม่บังคับ)
+country_code_ph	รหัส​ประเทศ เช่น IN, GB, US, AE, BR
+credit_khata_amount_ph	จำนวน​เครดิต / บัญชี
+credit_limit_ph	วงเงิน​เครดิต (0 = ไม่มี)
+from_code_ph	รหัส​จาก (bag)
+item_name_lang_ph	ชื่อ​สินค้า — พิมพ์​ใน​ภาษา​ของ​คุณ
+login_id_opt_ph	รหัส​เข้า​สู่​ระบบ (ไม่​บังคับ)
+manager_pin_ph	PIN ผู้​จัดการ (เฉพาะ​เมื่อ​คุณ​ไม่​สามารถ​ยกเลิก​ได้)
+new_branch_name_ph	ชื่อ​สาขา​ใหม่
+new_password_ph	รหัส​ผ่าน​ใหม่ (ไม่​บังคับ)
 new_pin_ph	PIN ใหม่ (4–12 หลัก)
 note_bank_ph	หมายเหตุ (ฝาก ถอน …)
-note_buy_expense_ph	หมายเหตุ (เชื้อเพลิง ค่าเช่า …)
-note_expense_ph	หมายเหตุ (เชื้อเพลิง สำนักงาน …)
-options_khaynjo_ph	ตัวเลือก (ไม่บังคับ) — Extra cheese=40, Large=80
-part_second_way_ph	ส่วนด้วยวิธีที่สอง (ไม่บังคับ)
+note_buy_expense_ph	หมายเหตุ (เชื้อ​เพลิง ค่า​เช่า …)
+note_expense_ph	หมายเหตุ (เชื้อ​เพลิง สำนักงาน …)
+options_khaynjo_ph	ตัว​เลือก (ไม่​บังคับ) — Extra cheese=40, Large=80
+part_second_way_ph	ส่วน​ด้วย​วิธี​ที่​สอง (ไม่​บังคับ)
 phone_ph	โทรศัพท์
-place_name_ph	ชื่อสถานที่นี้
-qty_example_ph	ปริมาณ (เช่น 1.5 สำหรับกก.)
+place_name_ph	ชื่อ​สถาน​ที่​นี้
+qty_example_ph	ปริมาณ (เช่น 1.5 สำหรับ​กก.)
 quantity_ph	ปริมาณ
 reason_required_ph	เหตุผล (จำเป็น)
-role_title_ph	ตำแหน่งงาน (เช่น Barista)
-service_pct_ph	บริการ % ไม่บังคับ 0/10/12
-short_code_ph	รหัสสั้น (MG02)
-starting_password_ph	รหัสผ่านเริ่มต้น (ไม่บังคับ)
-starting_pin_ph	PIN เริ่มต้น (4–12 หลัก)
-station_name_ph	ชื่อสถานี (เช่น Tandoor, Fryer, Cold)
-station_new_ph	สถานีครัว (ไม่บังคับ เช่น Tandoor — สร้างใหม่หากยังไม่มี)
-table_name_ph	ชื่อโต๊ะ (เช่น Patio 1, Counter 2)
-tax_rate_ph	ชื่ออัตราภาษีหรือ % — มาตรฐาน, ลด, 0, 5, 12, 18, 20
-to_code_ph	รหัสถึง (kg)
-uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
-unit_cost_ph	ต้นทุนต่อหน่วย
+role_title_ph	ตำแหน่ง​งาน (เช่น Barista)
+service_pct_ph	บริการ % ไม่​บังคับ 0/10/12
+short_code_ph	รหัส​สั้น (MG02)
+starting_password_ph	รหัส​ผ่าน​เริ่ม​ต้น (ไม่​บังคับ)
+starting_pin_ph	PIN เริ่ม​ต้น (4–12 หลัก)
+station_name_ph	ชื่อ​สถานี (เช่น Tandoor, Fryer, Cold)
+station_new_ph	สถานี​ครัว (ไม่​บังคับ เช่น Tandoor — สร้าง​ใหม่​หาก​ยัง​ไม่มี)
+table_name_ph	ชื่อ​โต๊ะ (เช่น Patio 1, Counter 2)
+tax_rate_ph	ชื่อ​อัตรา​ภาษี​หรือ % — มาตรฐาน, ลด, 0, 5, 12, 18, 20
+to_code_ph	รหัส​ถึง (kg)
+uncleared_no_ph	หมายเลข​ที่​ยัง​ไม่​เคลียร์​ด้าน​บน
+unit_cost_ph	ต้นทุน​ต่อ​หน่วย
 unit_name_bag_ph	ชื่อ (Bag)
-unit_plate_ph	หน่วย (จาน / ชิ้น — ว่าง = แต่ละชิ้น)
+unit_plate_ph	หน่วย (จาน / ชิ้น — ว่าง = แต่ละ​ชิ้น)
 pay_credit	เครดิต
-book_kind_today	สมุดวันนี้
-book_kind_month	สมุดเดือนนี้
-book_kind_aging	ค้างชำระ / เดบิต-เครดิต
+book_kind_today	สมุด​วัน​นี้
+book_kind_month	สมุด​เดือน​นี้
+book_kind_aging	ค้าง​ชำระ / เดบิต-เครดิต
 book_kind_balance	งบดุล
-order_help	แตะรายการเพื่อเพิ่ม
-floor_help	แตะโต๊ะเพื่อรับหรือแก้ออเดอร์ สีแสดงว่าง → นั่งแล้ว → ครัว → พร้อม → กำลังทาน → บิล → จ่ายแล้ว คิวรอ จอง และเพิ่มโต๊ะอยู่ในส่วนด้านล่าง
-kitchen_help	ตั๋วครัว (KOT) ใหม่สุดอยู่ท้าย เริ่ม → พร้อม → เสร็จ เลื่อนตั๋วไป ตั๋วไม่เคยแสดงราคา
-kitchen_empty	ตอนนี้ไม่มีรายการเปิดอยู่
-add_a_table	เพิ่มโต๊ะ
-add_station_heading	เพิ่มสถานี · เช่น ทันดูร์ อินเดียใต้
-categories_help	หมวดหมู่แสดงว่าอาหารจานหนึ่งอยู่ในส่วนใดของเมนู — เช่น ขนมทานเล่น จานหลัก หรือบิรยานี สร้างหมวดหมู่ในแบบของคุณ: เลือกชื่อที่เราแนะนำ เปลี่ยนชื่อ หรือเพิ่มของคุณเอง
-dish_search_ph	ชื่อรายการ — ค้นหาอาหารของเราหรือพิมพ์เอง
+order_help	แตะ​รายการ​เพื่อ​เพิ่ม
+floor_help	แตะ​โต๊ะ​เพื่อ​รับ​หรือ​แก้​ออ​เด​อร์ สี​แสดง​ว่าง → นั่ง​แล้ว → ครัว → พร้อม → กำลัง​ทาน → บิล → จ่าย​แล้ว คิว​รอ จอง และ​เพิ่ม​โต๊ะ​อยู่​ใน​ส่วน​ด้าน​ล่าง
+kitchen_help	ตั๋ว​ครัว (KOT) ใหม่​สุด​อยู่​ท้าย เริ่ม → พร้อม → เสร็จ เลื่อน​ตั๋ว​ไป ตั๋ว​ไม่​เคย​แสดง​ราคา
+kitchen_empty	ตอน​นี้​ไม่มี​รายการ​เปิด​อยู่
+add_a_table	เพิ่ม​โต๊ะ
+add_station_heading	เพิ่ม​สถานี · เช่น ทัน​ดูร์ อินเดีย​ใต้
+categories_help	หมวด​หมู่​แสดง​ว่า​อาหาร​จาน​หนึ่ง​อยู่​ใน​ส่วน​ใด​ของ​เมนู — เช่น ขนม​ทาน​เล่น จาน​หลัก หรือ​บิรยานี สร้าง​หมวด​หมู่​ใน​แบบ​ของ​คุณ: เลือก​ชื่อ​ที่​เรา​แนะนำ เปลี่ยน​ชื่อ หรือ​เพิ่ม​ของ​คุณ​เอง
+dish_search_ph	ชื่อ​รายการ — ค้นหา​อาหาร​ของ​เรา​หรือ​พิมพ์​เอง
 tile_free	ว่าง
-tile_occupied	มีลูกค้า
-tile_food_ready	อาหารพร้อม
-tile_bill_printed	พิมพ์บิลแล้ว
-tile_paid	จ่ายแล้ว
-tile_bill_btn	เช็คบิล
-tile_occupy_btn	จัดที่นั่ง
-tile_free_btn	คืนโต๊ะ
+tile_occupied	มี​ลูกค้า
+tile_food_ready	อาหาร​พร้อม
+tile_bill_printed	พิมพ์​บิล​แล้ว
+tile_paid	จ่าย​แล้ว
+tile_bill_btn	เช็ค​บิล
+tile_occupy_btn	จัด​ที่​นั่ง
+tile_free_btn	คืน​โต๊ะ
 tile_ready_btn	พร้อม
-tile_undo_bill	ยกเลิกบิล
-summary_busy	โต๊ะมีลูกค้า
-summary_to_collect	รอเก็บเงิน
-summary_on_floor	ในร้าน
-floor	ห้องอาหาร
-sizes_as_items_ph	ขนาดเป็นรายการแยก (ไม่บังคับ) — ครึ่ง=120, เต็ม=200
-dish_group_ph	กลุ่มอาหาร (ไม่บังคับ) — เช่น Paneer Tikka
+tile_undo_bill	ยกเลิก​บิล
+summary_busy	โต๊ะ​มี​ลูกค้า
+summary_to_collect	รอ​เก็บ​เงิน
+summary_on_floor	ใน​ร้าน
+floor	ห้อง​อาหาร
+sizes_as_items_ph	ขนาด​เป็น​รายการ​แยก (ไม่​บังคับ) — ครึ่ง=120, เต็ม=200
+dish_group_ph	กลุ่ม​อาหาร (ไม่​บังคับ) — เช่น Paneer Tikka
 discount	ส่วนลด
-remove_discount	ลบส่วนลด
-apply_discount	ใช้ส่วนลด
-save_opening_cash	บันทึกเงินทอนตั้งต้น
-close_shift_print	ปิดกะและพิมพ์ใบ
-area_prices_ph	ราคาตามโซน (ไม่บังคับ) — แอร์=220, ห่อกลับ=210
+remove_discount	ลบ​ส่วนลด
+apply_discount	ใช้​ส่วนลด
+save_opening_cash	บันทึก​เงิน​ทอน​ตั้ง​ต้น
+close_shift_print	ปิด​กะ​และ​พิมพ์​ใบ
+area_prices_ph	ราคา​ตาม​โซน (ไม่​บังคับ) — แอร์=220, ห่อ​กลับ=210
 discount_ph	10% หรือ 50
-discount_reason_ph	เหตุผล (เช่น ลูกค้าประจำ, อาหารช้า)
-opening_float_ph	เงินสดที่ใส่ลิ้นชักเมื่อเช้า
-shift_counted_ph	เงินสดที่นับตอนส่งกะ
-opening_float	เงินทอนตั้งต้น
-shift_handover	ส่งกะ
-shift_since	กะนี้เริ่ม
-expected_in_drawer	ควรมีในลิ้นชัก
-right_discount	ให้ส่วนลด
-floor_in_kitchen	กำลังทำ
-floor_eating	กำลังทาน
-pick_category	เลือกหมวดหมู่
-close_category_list	ปิดรายการหมวดหมู่
-new_category_row	หมวดหมู่ใหม่ — สร้างเมื่อบันทึกรายการ
-your_category	หมวดหมู่ของคุณ
-suggested_category	แนะนำ — จากรายการอาหารของเรา
-category_search_ph	หมวดหมู่ — ค้นหาของคุณหรือพิมพ์ใหม่
-line_sent_state	ส่งเข้าครัวแล้ว
-line_nc_state	ฟรี (NC) — ไม่คิดเงิน
+discount_reason_ph	เหตุผล (เช่น ลูกค้า​ประจำ, อาหาร​ช้า)
+opening_float_ph	เงินสด​ที่​ใส่​ลิ้น​ชัก​เมื่อ​เช้า
+shift_counted_ph	เงินสด​ที่​นับ​ตอน​ส่ง​กะ
+opening_float	เงิน​ทอน​ตั้ง​ต้น
+shift_handover	ส่ง​กะ
+shift_since	กะ​นี้​เริ่ม
+expected_in_drawer	ควร​มี​ใน​ลิ้น​ชัก
+right_discount	ให้​ส่วนลด
+floor_in_kitchen	กำลัง​ทำ
+floor_eating	กำลัง​ทาน
+pick_category	เลือก​หมวด​หมู่
+close_category_list	ปิด​รายการ​หมวด​หมู่
+new_category_row	หมวด​หมู่​ใหม่ — สร้าง​เมื่อ​บันทึก​รายการ
+your_category	หมวด​หมู่​ของ​คุณ
+suggested_category	แนะนำ — จาก​รายการ​อาหาร​ของ​เรา
+category_search_ph	หมวด​หมู่ — ค้นหา​ของ​คุณ​หรือ​พิมพ์​ใหม่
+line_sent_state	ส่ง​เข้า​ครัว​แล้ว
+line_nc_state	ฟรี (NC) — ไม่​คิด​เงิน
 cancel_item_short	ยกเลิก
 nc_short	ฟรี
-charge_again_short	คิดเงิน
+charge_again_short	คิด​เงิน
 move_short	ย้าย
-cancel_item_title	ยกเลิกรายการนี้ — ครัวจะได้ใบยกเลิก
-nc_item_title	ให้รายการนี้ฟรี (NC)
-charge_again_title	คิดเงินรายการนี้อีกครั้ง
-move_item_title	ย้ายรายการนี้ไปโต๊ะอื่น
-already_cooked	ทำไปแล้ว (สูญเสีย)
-not_cooked_yet	ยังไม่ได้ทำ
-return_to_customer	เงินทอน
-short_by	ขาดอีก
-tip_not_sale	ทิป (ของพนักงาน ไม่ใช่ยอดขาย)
-right_settle	รับชำระเงิน
-right_cancel_sent	ยกเลิกรายการที่ส่งแล้ว
-right_complimentary	ให้ฟรี (NC)
-right_move_table	ย้าย / รวมโต๊ะ
-right_reprint	พิมพ์บิลซ้ำ
+cancel_item_title	ยกเลิก​รายการ​นี้ — ครัว​จะ​ได้​ใบ​ยกเลิก
+nc_item_title	ให้​รายการ​นี้​ฟรี (NC)
+charge_again_title	คิด​เงิน​รายการ​นี้​อีก​ครั้ง
+move_item_title	ย้าย​รายการ​นี้​ไป​โต๊ะ​อื่น
+already_cooked	ทำ​ไป​แล้ว (สูญ​เสีย)
+not_cooked_yet	ยัง​ไม่​ได้​ทำ
+return_to_customer	เงิน​ทอน
+short_by	ขาด​อีก
+tip_not_sale	ทิป (ของ​พนักงาน ไม่ใช่​ยอด​ขาย)
+right_settle	รับ​ชำระ​เงิน
+right_cancel_sent	ยกเลิก​รายการ​ที่​ส่ง​แล้ว
+right_complimentary	ให้​ฟรี (NC)
+right_move_table	ย้าย / รวม​โต๊ะ
+right_reprint	พิมพ์​บิล​ซ้ำ
 right_allowed	อนุญาต
-right_with_approval	ต้องอนุมัติ
-right_denied	ไม่อนุญาต
-editing_staff	สิทธิ์ของ
-finding_server	กำลังค้นหาเซิร์ฟเวอร์ของร้านใน Wi‑Fi นี้…
-no_server_found	ไม่พบเซิร์ฟเวอร์ ตรวจว่าเครื่องของร้านอยู่ Wi‑Fi เดียวกันและอนุญาตเครื่องเพิ่มแล้ว หรือพิมพ์ IP
-servers_found_pick	แตะร้านที่ต้องการเชื่อมต่อ
-server_host_selected	กำลังใช้ {host} — ใส่รหัสจับคู่ แล้วแตะจับคู่เลย
-print_bill	พิมพ์บิล
-table_actions	การทำงานโต๊ะ
-move_merge_table	ย้าย / รวมโต๊ะ
-move_help	ย้ายออร์เดอร์ของโต๊ะนี้ไปโต๊ะว่าง หรือรวมกับโต๊ะที่กำลังใช้
-move_target_ph	ชื่อโต๊ะ (เช่น D5, P2)
-approval_pin_ph	PIN ผู้จัดการ (เมื่อถูกขอเท่านั้น)
-move_here	ย้ายมาที่นี่
-merge_into	รวมเข้าโต๊ะนั้น
-line_reason_ph	เหตุผล (เช่น ลูกค้าเปลี่ยนใจ, ของหมด)
-line_qty_ph	ยกเลิกกี่ชิ้น (ว่าง = ทั้งหมด)
-line_target_ph	ย้ายไปโต๊ะ (เช่น D5)
+right_with_approval	ต้อง​อนุมัติ
+right_denied	ไม่​อนุญาต
+editing_staff	สิทธิ์​ของ
+finding_server	กำลัง​ค้นหา​เซิร์ฟเวอร์​ของ​ร้าน​ใน Wi‑Fi นี้…
+no_server_found	ไม่​พบ​เซิร์ฟเวอร์ ตรวจ​ว่า​เครื่อง​ของ​ร้าน​อยู่ Wi‑Fi เดียวกัน​และ​อนุญาต​เครื่อง​เพิ่ม​แล้ว หรือ​พิมพ์ IP
+servers_found_pick	แตะ​ร้าน​ที่​ต้องการ​เชื่อม​ต่อ
+server_host_selected	กำลัง​ใช้ {host} — ใส่​รหัส​จับ​คู่ แล้ว​แตะ​จับ​คู่​เลย
+print_bill	พิมพ์​บิล
+table_actions	การ​ทำงาน​โต๊ะ
+move_merge_table	ย้าย / รวม​โต๊ะ
+move_help	ย้าย​ออร์เด​อร์​ของ​โต๊ะ​นี้​ไป​โต๊ะ​ว่าง หรือ​รวม​กับ​โต๊ะ​ที่​กำลัง​ใช้
+move_target_ph	ชื่อ​โต๊ะ (เช่น D5, P2)
+approval_pin_ph	PIN ผู้​จัดการ (เมื่อ​ถูก​ขอ​เท่านั้น)
+move_here	ย้าย​มา​ที่​นี่
+merge_into	รวม​เข้า​โต๊ะ​นั้น
+line_reason_ph	เหตุผล (เช่น ลูกค้า​เปลี่ยน​ใจ, ของ​หมด)
+line_qty_ph	ยกเลิก​กี่​ชิ้น (ว่าง = ทั้งหมด)
+line_target_ph	ย้าย​ไป​โต๊ะ (เช่น D5)
 confirm	ยืนยัน
-menu_search_ph	ค้นหารายการหรือรหัสย่อ
-customer_paid_ph	ลูกค้าจ่าย
+menu_search_ph	ค้นหา​รายการ​หรือ​รหัส​ย่อ
+customer_paid_ph	ลูกค้า​จ่าย
 tip_ph	ทิป
-table_area_ph	โซน (เช่น ทานที่ร้าน, ห่อกลับ, แอร์)
-table_range_ph	หลายโต๊ะพร้อมกัน: D1-D20
-add_these_tables	เพิ่มโต๊ะเหล่านี้
-remove_these_tables	ลบโต๊ะเหล่านี้
-table_remove_ph	ลบ: T1-T24 หรือชื่อโต๊ะหนึ่งตัว
-find_server	ค้นหาเซิร์ฟเวอร์ของร้าน
-bill_format	รูปแบบบิล
-reset_bill_format	กลับค่าเริ่มต้น
-bill_format_reset	รีเซ็ตรูปแบบบิลแล้ว
-reset_kot_format	กลับค่าเริ่มต้น
-kot_format_reset	รีเซ็ตรูปแบบ KOT แล้ว
-kot_format	รูปแบบ KOT
-kot_format_help	สลิปครัวยังเป็น KOT มาตรฐาน — ไม่มีราคา อาหารพิมพ์เสมอ บรรทัดเสริม ชื่อเรื่อง สำเนา ความกว้าง และขนาดตัวอักษรถูกจำกัดไม่ให้ตัด
+table_area_ph	โซน (เช่น ทาน​ที่​ร้าน, ห่อ​กลับ, แอร์)
+table_range_ph	หลาย​โต๊ะ​พร้อม​กัน: D1-D20
+add_these_tables	เพิ่ม​โต๊ะ​เหล่า​นี้
+remove_these_tables	ลบ​โต๊ะ​เหล่า​นี้
+table_remove_ph	ลบ: T1-T24 หรือ​ชื่อ​โต๊ะ​หนึ่ง​ตัว
+find_server	ค้นหา​เซิร์ฟเวอร์​ของ​ร้าน
+bill_format	รูป​แบบ​บิล
+reset_bill_format	กลับ​ค่า​เริ่ม​ต้น
+bill_format_reset	รีเซ็ต​รูป​แบบ​บิล​แล้ว
+reset_kot_format	กลับ​ค่า​เริ่ม​ต้น
+kot_format_reset	รีเซ็ต​รูป​แบบ KOT แล้ว
+kot_format	รูป​แบบ KOT
+kot_format_help	สลิป​ครัว​ยัง​เป็น KOT มาตรฐาน — ไม่มี​ราคา อาหาร​พิมพ์​เสมอ บรรทัด​เสริม ชื่อ​เรื่อง สำเนา ความ​กว้าง และ​ขนาด​ตัว​อักษร​ถูก​จำกัด​ไม่​ให้​ตัด
 kot_format_fields	ช่อง
-kot_field_next	ช่องถัดไป
+kot_field_next	ช่อง​ถัด​ไป
 kot_field_show	แสดง
 kot_field_hide	ซ่อน
 kot_field_on	แสดง
 kot_field_off	ซ่อน
-kot_field_size	ขนาดฟอนต์
+kot_field_size	ขนาด​ฟอนต์
 kot_weight_light	บาง
-bill_kot_panel_help	เลย์เอาต์บิลและสลิปครัว แต่ละอันมีความกว้างเนื้อหาเอง แคชเชียร์บิลคือผู้ออกหรือเคลียร์บิล; พนักงานเสิร์ฟ KOT คือผู้ส่งตั๋วครัวนั้น — เรื่องออเดอร์เต็มอยู่ในสมุด
+bill_kot_panel_help	เลย์​เอา​ต์​บิล​และ​สลิป​ครัว แต่ละ​อัน​มี​ความ​กว้าง​เนื้อหา​เอง แคชเชียร์​บิล​คือ​ผู้​ออก​หรือ​เคลียร์​บิล; พนักงาน​เสิร์ฟ KOT คือ​ผู้​ส่ง​ตั๋ว​ครัว​นั้น — เรื่อ​งอ​อเด​อร์​เต็ม​อยู่​ใน​สมุด
 std_size_ph	เช่น 18, 20, 26…
-kot_show_shop	ชื่อร้าน
-kot_hide_shop	ซ่อนร้าน
+kot_show_shop	ชื่อ​ร้าน
+kot_hide_shop	ซ่อน​ร้าน
 kot_show_time	เวลา
-kot_hide_time	ซ่อนเวลา
-kot_show_waiter	พนักงานเสิร์ฟ
-kot_hide_waiter	ซ่อนพนักงานเสิร์ฟ
+kot_hide_time	ซ่อน​เวลา
+kot_show_waiter	พนักงาน​เสิร์ฟ
+kot_hide_waiter	ซ่อน​พนักงาน​เสิร์ฟ
 kot_show_station	สถานี
-kot_hide_station	ซ่อนสถานี
+kot_hide_station	ซ่อน​สถานี
 kot_show_table	โต๊ะ
-kot_hide_table	ซ่อนโต๊ะ
+kot_hide_table	ซ่อน​โต๊ะ
 kot_show_kot_no	เลข KOT
-kot_hide_kot_no	ซ่อนเลข KOT
-kot_width	ความกว้างกระดาษ
+kot_hide_kot_no	ซ่อน​เลข KOT
+kot_width	ความ​กว้าง​กระดาษ
 kot_width_58	58 mm
 kot_width_80	80 mm
 kot_kind_heading	ชนิด KOT
@@ -1244,202 +1244,202 @@ kot_kind_original	ต้นฉบับ
 kot_kind_duplicate	สำเนา
 kot_kind_modified	แก้ไข
 kot_kind_cancelled	ยกเลิก
-kot_style_heading	ขนาดและน้ำหนักช่อง
-kot_style_title	ชื่อเรื่อง
-kot_style_field_pick	เลือกช่อง
+kot_style_heading	ขนาด​และ​น้ำ​หนัก​ช่อง
+kot_style_title	ชื่อ​เรื่อง
+kot_style_field_pick	เลือก​ช่อง
 kot_weight_regular	ปกติ
-kot_weight_bold	ตัวหนา
+kot_weight_bold	ตัว​หนา
 kot_align_start	เริ่ม
-kot_align_center	ตรงกลาง
+kot_align_center	ตรง​กลาง
 kot_align_end	จบ
-content_width	ความกว้างเนื้อหา (มม.)
-content_width_bill	ความกว้างเนื้อหาใบแจ้งหนี้ (มม.)
-content_width_kot	ความกว้างเนื้อหา KOT (มม.)
-content_width_ph	หรือพิมพ์ความกว้างเนื้อหา 40–210 มม.
-content_width_help	ความกว้างที่สลิปพิมพ์ออก ใบแจ้งหนี้และ KOT แต่ละรายการมีขนาดความกว้างของตัวเอง
-content_width_bill_help	ใบเสร็จของแขกพิมพ์กว้างเท่าใด เป็น mm (40–210) พิมพ์ตามขนาดจริงนี้บนกระดาษใดก็ได้ บนกระดาษที่แคบกว่านี้ ส่วนที่เกินขอบการพิมพ์จะถูกตัด (ดู กระดาษ) ตั๋วครัวมีความกว้างของตัวเองในแท็บ KOT
-content_width_kot_help	ตั๋วครัวพิมพ์กว้างเท่าใด เป็น mm (40–210) พิมพ์ตามขนาดจริงนี้บนกระดาษใดก็ได้ บนกระดาษที่แคบกว่านี้ ส่วนที่เกินขอบการพิมพ์จะถูกตัด (ดู กระดาษ) ใบเสร็จของแขกมีความกว้างของตัวเองในแท็บ บิล
-vp_paper_width	ความกว้างเนื้อหา (มม.)
-vp_paper_width_ph	หรือพิมพ์ความกว้างเนื้อหา 40–210 มม.
-vp_paper_width_help	ความกว้างเนื้อหาตั้งใน«รูปแบบบิลและ KOT» — แยกบิล (ค่าเริ่ม 210 mm) กับตั๋วครัว (ค่าเริ่ม 80 mm)
-kot_size	ขนาดตัวอักษร
+content_width	ความ​กว้าง​เนื้อหา (มม.)
+content_width_bill	ความ​กว้าง​เนื้อหา​ใบ​แจ้ง​หนี้ (มม.)
+content_width_kot	ความ​กว้าง​เนื้อหา KOT (มม.)
+content_width_ph	หรือ​พิมพ์​ความ​กว้าง​เนื้อหา 40–210 มม.
+content_width_help	ความ​กว้าง​ที่​สลิป​พิมพ์​ออก ใบ​แจ้ง​หนี้​และ KOT แต่ละ​รายการ​มี​ขนาด​ความ​กว้าง​ของ​ตัว​เอง
+content_width_bill_help	ใบ​เสร็จ​ของ​แขก​พิมพ์​กว้าง​เท่าใด เป็น mm (40–210) พิมพ์​ตาม​ขนาด​จริง​นี้​บน​กระดาษ​ใด​ก็ได้ บน​กระดาษ​ที่​แคบ​กว่า​นี้ ส่วน​ที่​เกิน​ขอบ​การ​พิมพ์​จะ​ถูก​ตัด (ดู กระดาษ) ตั๋ว​ครัว​มี​ความ​กว้าง​ของ​ตัว​เอง​ใน​แท็บ KOT
+content_width_kot_help	ตั๋ว​ครัว​พิมพ์​กว้าง​เท่าใด เป็น mm (40–210) พิมพ์​ตาม​ขนาด​จริง​นี้​บน​กระดาษ​ใด​ก็ได้ บน​กระดาษ​ที่​แคบ​กว่า​นี้ ส่วน​ที่​เกิน​ขอบ​การ​พิมพ์​จะ​ถูก​ตัด (ดู กระดาษ) ใบ​เสร็จ​ของ​แขก​มี​ความ​กว้าง​ของ​ตัว​เอง​ใน​แท็บ บิล
+vp_paper_width	ความ​กว้าง​เนื้อหา (มม.)
+vp_paper_width_ph	หรือ​พิมพ์​ความ​กว้าง​เนื้อหา 40–210 มม.
+vp_paper_width_help	ความ​กว้าง​เนื้อหา​ตั้ง​ใน«รูป​แบบ​บิล​และ KOT» — แยก​บิล (ค่า​เริ่ม 210 mm) กับ​ตั๋ว​ครัว (ค่า​เริ่ม 80 mm)
+kot_size	ขนาด​ตัว​อักษร
 kot_size_s	เล็ก
 kot_size_m	ปกติ
 kot_size_l	ใหญ่
-std_size	ขนาดตัวอักษร
+std_size	ขนาด​ตัว​อักษร
 kot_copies	สำเนา
 kot_copies_1	1
 kot_copies_2	2
 kot_copies_3	3
-kot_title_ph	ชื่อเรื่อง (ว่าง = KOT - KITCHEN ORDER)
-kot_footer_ph	โน้ตครัว (ไม่บังคับ ไม่มีราคา)
+kot_title_ph	ชื่อ​เรื่อง (ว่าง = KOT - KITCHEN ORDER)
+kot_footer_ph	โน้ต​ครัว (ไม่​บังคับ ไม่มี​ราคา)
 kot_preview	ตัวอย่าง
 test_kot_format	ทดสอบ KOT
-test_kot_sent	ส่งตัวอย่างใบสั่งครัวแล้ว
-test_bill_format	ทดสอบใบแจ้งหนี้
-test_bill_sent	ส่งตัวอย่างใบแจ้งหนี้แล้ว
-test_print_no_printer	ไม่มีเครื่องพิมพ์สำหรับงานนี้ — เลือกหนึ่งรายการบนหน้าจอนี้
-std_print	ขนาดพิมพ์บิล
-std_print_help	ขนาดตัวอักษรงานพิมพ์บิล Standard Portrait และ Landscape บนเครื่องพิมพ์ OS/เอกสาร (ใส่พอยต์ — ไม่ใช่ เล็ก/ปกติ/ใหญ่) ขนาดเดียวกันทั้งสองทิศ ขนาดสลิปครัวอยู่แท็บ KOT
+test_kot_sent	ส่งตัว​อย่าง​ใบสั่ง​ครัว​แล้ว
+test_bill_format	ทดสอบ​ใบ​แจ้ง​หนี้
+test_bill_sent	ส่งตัว​อย่าง​ใบ​แจ้ง​หนี้​แล้ว
+test_print_no_printer	ไม่มี​เครื่องพิมพ์​สำหรับ​งาน​นี้ — เลือก​หนึ่ง​รายการ​บน​หน้า​จอ​นี้
+std_print	ขนาด​พิมพ์​บิล
+std_print_help	ขนาด​ตัว​อักษร​งาน​พิมพ์​บิล Standard Portrait และ Landscape บน​เครื่องพิมพ์ OS/เอกสาร (ใส่​พอ​ยต์ — ไม่ใช่ เล็ก/ปกติ/ใหญ่) ขนาด​เดียวกัน​ทั้ง​สอง​ทิศ ขนาด​สลิป​ครัว​อยู่​แท็บ KOT
 std_size_s	เล็ก
 std_size_m	ปกติ
 std_size_l	ใหญ่
-save_std_print	บันทึกขนาดพิมพ์
-std_print_saved	บันทึกขนาดพิมพ์แล้ว
-print_brand_kit	ชุดแบรนด์พิมพ์
-print_brand_kit_help	รูปตราประทับและ QR ชำระเงินเสริมบนหน้าบิลและจอแขก LAN QR UPI แบบไดนามิกจาก VPA ด้านบนยังใช้ได้เมื่อไม่มีรูป QR ชำระเงิน
-choose_stamp	เลือกตราประทับ
-clear_stamp	ลบตราประทับ
-stamp_set	ตรา: มีไฟล์ — จอแขกและชื่อบนบิล
+save_std_print	บันทึก​ขนาด​พิมพ์
+std_print_saved	บันทึก​ขนาด​พิมพ์​แล้ว
+print_brand_kit	ชุด​แบรนด์​พิมพ์
+print_brand_kit_help	รูป​ตรา​ประทับ​และ QR ชำระ​เงิน​เสริม​บน​หน้า​บิล​และ​จอ​แขก LAN QR UPI แบบ​ไดนามิก​จาก VPA ด้าน​บน​ยัง​ใช้ได้​เมื่อ​ไม่มี​รูป QR ชำระ​เงิน
+choose_stamp	เลือก​ตรา​ประทับ
+clear_stamp	ลบ​ตรา​ประทับ
+stamp_set	ตรา: มี​ไฟล์ — จอ​แขก​และ​ชื่อ​บน​บิล
 stamp_none	ตรา: ไม่มี
-choose_payment_qr	เลือก QR ชำระเงิน
-clear_payment_qr	ลบ QR ชำระเงิน
-payment_qr_set	QR ชำระ: มีไฟล์ — บนจอแขก (แทน QR UPI ตามยอด)
-payment_qr_none	QR ชำระ: ไม่มี — QR ตามยอดจาก UPI ตอนชำระ
-aggregator_import	ออเดอร์ Aggregator (ไฟล์)
-aggregator_import_help	การนำเข้า Local เสริม: ใส่ import_aggregator_orders.json ในโฟลเดอร์สำรอง (อาร์เรย์หรือ {"orders":[…]}) แล้วแตะ «นำเข้า» ไม่เคยบล็อกเคาน์เตอร์; Zomato/Swiggy สดคือ Cloud
-import_aggregator_file	นำเข้าไฟล์ Aggregator
-team_pick_ph	ชื่อพนักงานที่จะแก้ไข
-select_staff	เลือกพนักงานนี้
-rights_help	การเงินและพื้นที่ของคนนี้ — แตะสลับ: อนุญาต → ต้องใช้ PIN หัวหน้า → ไม่อนุญาต พิมพ์บิลอีกครั้งเฉพาะบิล สถานีครัวคือรายการด้านล่าง
-dish_picker_help	ค้นหาหรือเลือกดูอาหารของเรา แล้วแตะหนึ่งรายการเพื่อใส่ชื่อและรูป หรือใช้ชื่อของคุณเอง ใส่ราคา (0 ได้) แล้วเพิ่มรายการ
-close_dish_list	ปิดรายการอาหาร
-own_item_name	ใช้เป็นชื่อรายการของคุณเอง
-on_your_menu	อยู่ในเมนูของคุณ
+choose_payment_qr	เลือก QR ชำระ​เงิน
+clear_payment_qr	ลบ QR ชำระ​เงิน
+payment_qr_set	QR ชำระ: มี​ไฟล์ — บน​จอ​แขก (แทน QR UPI ตาม​ยอด)
+payment_qr_none	QR ชำระ: ไม่มี — QR ตาม​ยอดจาก UPI ตอน​ชำระ
+aggregator_import	ออ​เด​อร์ Aggregator (ไฟล์)
+aggregator_import_help	การนำ​เข้า Local เสริม: ใส่ import_aggregator_orders.json ใน​โฟลเดอร์​สำรอง (อาร์เรย์​หรือ {"orders":[…]}) แล้ว​แตะ «นำ​เข้า» ไม่​เคย​บล็อก​เคาน์เตอร์; Zomato/Swiggy สด​คือ Cloud
+import_aggregator_file	นำ​เข้า​ไฟล์ Aggregator
+team_pick_ph	ชื่อ​พนักงาน​ที่​จะ​แก้ไข
+select_staff	เลือก​พนักงาน​นี้
+rights_help	การ​เงิน​และ​พื้นที่​ของ​คน​นี้ — แตะ​สลับ: อนุญาต → ต้อง​ใช้ PIN หัวหน้า → ไม่​อนุญาต พิมพ์​บิล​อีก​ครั้ง​เฉพาะ​บิล สถานี​ครัว​คือ​รายการ​ด้าน​ล่าง
+dish_picker_help	ค้นหา​หรือ​เลือก​ดู​อาหาร​ของ​เรา แล้ว​แตะ​หนึ่ง​รายการ​เพื่อ​ใส่​ชื่อ​และ​รูป หรือ​ใช้​ชื่อ​ของ​คุณ​เอง ใส่​ราคา (0 ได้) แล้ว​เพิ่ม​รายการ
+close_dish_list	ปิด​รายการ​อาหาร
+own_item_name	ใช้​เป็น​ชื่อ​รายการ​ของ​คุณ​เอง
+on_your_menu	อยู่​ใน​เมนู​ของ​คุณ
 edit	แก้ไข
 schemes	โปรโมชัน
-schemes_help	BOGO ส่วนลดเปอร์เซ็นต์ และคอมโบคงที่ คอมโบแตกเป็นบรรทัดครัวเมื่อ«ส่งครัว» ส่วนประกอบถูกพักไว้จนกว่าคอมโจะทำงาน ตัวอย่าง: Buy 2 Thali get 1 Chaas
+schemes_help	BOGO ส่วนลด​เปอร์เซ็นต์ และ​คอมโบ​คงที่ คอมโบ​แตก​เป็น​บรรทัด​ครัว​เมื่อ«ส่ง​ครัว» ส่วน​ประกอบ​ถูก​พัก​ไว้​จนกว่า​คอม​โจะ​ทำงาน ตัวอย่าง: Buy 2 Thali get 1 Chaas
 scheme_bogo_ph	ซื้อ Thali 2 แถม Chaas 1
 add_scheme	เพิ่ม BOGO
 schedule_ph	เวลา / Happy Hour — Mon-Fri 07:00-11:00 หรือ HappyHour 17:00-19:00=150
 upi_qr	UPI QR
 show_upi_qr	แสดง QR UPI
 close_upi_qr	ปิด
-upi_qr_help	ลูกค้าสแกนแล้วจ่าย แตะ«รับชำระเงิน»หลังจ่าย หน้าจอที่สอง: เปิด URL เซิร์ฟเวอร์ /display บน LAN
-kot_recall	เรียกคืน
-recently_done	เพิ่งเสร็จ
-recall_kot_ph	KOT # ที่จะเรียกคืน
-role_help_customer	บทบาท: ลูกค้า — AR (พวกเขาเป็นหนี้เรา) บริษัทเดียวกันเป็นผู้จัดหาด้วยก็ได้
-role_help_both	บทบาท: ผู้ส่ง + ผู้ขนส่ง — คู่ค้าหนึ่งราย สมุด AR และ AP สุทธิในรายงาน
-role_help_supplier	บทบาท: ผู้จัดหา — AP สำหรับการซื้อ
-dine_in_pick_table	เลือกโต๊ะสำหรับทานที่ร้าน…
-choose_table	เลือกโต๊ะ
-change_table	เปลี่ยนโต๊ะ
-pick_table_banner	เลือกโต๊ะสำหรับออร์เดอร์นี้
+upi_qr_help	ลูกค้า​สแกน​แล้ว​จ่าย แตะ«รับ​ชำระ​เงิน»หลัง​จ่าย หน้า​จอ​ที่​สอง: เปิด URL เซิร์ฟเวอร์ /display บน LAN
+kot_recall	เรียก​คืน
+recently_done	เพิ่ง​เสร็จ
+recall_kot_ph	KOT # ที่​จะ​เรียก​คืน
+role_help_customer	บทบาท: ลูกค้า — AR (พวก​เขา​เป็น​หนี้​เรา) บริษัท​เดียวกัน​เป็น​ผู้​จัดหา​ด้วย​ก็ได้
+role_help_both	บทบาท: ผู้​ส่ง + ผู้​ขนส่ง — คู่​ค้า​หนึ่ง​ราย สมุด AR และ AP สุทธิ​ใน​รายงาน
+role_help_supplier	บทบาท: ผู้​จัดหา — AP สำหรับ​การ​ซื้อ
+dine_in_pick_table	เลือก​โต๊ะ​สำหรับ​ทาน​ที่​ร้าน…
+choose_table	เลือก​โต๊ะ
+change_table	เปลี่ยน​โต๊ะ
+pick_table_banner	เลือก​โต๊ะ​สำหรับ​ออร์เด​อร์​นี้
 items_word	รายการ
 items_section	รายการ
-back_to_order	กลับไปที่ออร์เดอร์
-new_items_head	ยังไม่ได้ส่ง
+back_to_order	กลับ​ไป​ที่​ออร์เด​อร์
+new_items_head	ยัง​ไม่​ได้​ส่ง
 price_ph	ราคา
 price_ph_gst_inside	ราคา (รวม{tax})
-cancel_needs_table	เปิดออเดอร์นี้จากพื้นร้าน (โต๊ะ) เพื่อยกเลิกหลังครัว — KOT เคาน์เตอร์อยู่บนใบจนชำระเงิน
-taxable_value	มูลค่าที่ต้องเสียภาษี
+cancel_needs_table	เปิด​ออ​เด​อร์​นี้​จาก​พื้น​ร้าน (โต๊ะ) เพื่อ​ยกเลิก​หลังค​รัว — KOT เคาน์เตอร์​อยู่​บน​ใบ​จน​ชำระ​เงิน
+taxable_value	มูลค่า​ที่​ต้อง​เสีย​ภาษี
 gst_inside_price_note	(รวม{tax})
-start_with_template	เริ่มด้วยเทมเพลตเมนูของเรา
-template_heading	เทมเพลตเมนูของเรา
-template_need_download	ดาวน์โหลดชั้นวางรูปภาพอาหารสาธารณะ (~1,459 รายการ) แล้วนำเข้าชื่อที่ยังไม่มีลงในเมนูของคุณ
-template_download_shelf	ดาวน์โหลดชั้นวางรูปภาพ
-template_info	{c} หมวด และ {d} เมนูพร้อมรูป พร้อมเพิ่ม ราคาเริ่ม ₹0 — ตั้งราคาเองภายหลัง
-template_import	นำเข้าเทมเพลตทั้งหมด
-template_confirm	เพิ่ม {d} เมนูพร้อมหมวด? เมนูที่มีอยู่จะคงเดิม
-template_yes	ใช่ นำเข้า
-template_importing	กำลังนำเข้าเมนู…
-template_import_progress	กำลังนำเข้า… {d}/{t}
-template_done	ทุกเมนูในเทมเพลตอยู่ในเมนูของคุณแล้ว
-template_imported	เพิ่ม {d} เมนูและ {c} หมวดแล้ว — ตั้งราคาที่หน้าจอนี้
-client_template_heading	เมนูลูกค้า
-client_template_info	{title}: {c} หมวด, {d} เมนูพร้อมราคา รูป และชื่อเรียกอื่น เฉพาะที่ยังไม่มี — ชื่อที่มีอยู่คงเดิม
-client_template_import	นำเข้าเมนูนี้
-client_template_confirm	เพิ่ม {d} เมนูจาก {title}? เมนูที่มีอยู่จะคงเดิม
-client_template_importing	กำลังนำเข้า {title}…
-client_template_done	ทุกเมนูใน {title} อยู่ในเมนูของคุณแล้ว
-client_template_imported	เพิ่ม {d} เมนูและ {c} หมวดจาก {title} แล้ว
-resv_heading	การจอง
-resv_name_ph	ชื่อแขก
-resv_phone_ph	โทรศัพท์ (ไม่บังคับ)
-resv_guests_ph	จำนวนแขก
+start_with_template	เริ่ม​ด้วย​เทมเพลต​เมนู​ของ​เรา
+template_heading	เทมเพลต​เมนู​ของ​เรา
+template_need_download	ดาวน์โหลด​ชั้น​วาง​รูปภาพ​อาหาร​สาธารณะ (~1,459 รายการ) แล้ว​นำ​เข้า​ชื่อ​ที่​ยัง​ไม่มี​ลง​ใน​เมนู​ของ​คุณ
+template_download_shelf	ดาวน์โหลด​ชั้น​วาง​รูปภาพ
+template_info	{c} หมวด และ {d} เมนู​พร้อม​รูป พร้อม​เพิ่ม ราคา​เริ่ม ₹0 — ตั้ง​ราคา​เอง​ภาย​หลัง
+template_import	นำ​เข้า​เทมเพลต​ทั้งหมด
+template_confirm	เพิ่ม {d} เมนู​พร้อม​หมวด? เมนู​ที่​มี​อยู่​จะ​คง​เดิม
+template_yes	ใช่ นำ​เข้า
+template_importing	กำลัง​นำ​เข้า​เมนู…
+template_import_progress	กำลัง​นำ​เข้า… {d}/{t}
+template_done	ทุก​เมนู​ใน​เทมเพลต​อยู่​ใน​เมนู​ของ​คุณ​แล้ว
+template_imported	เพิ่ม {d} เมนู​และ {c} หมวด​แล้ว — ตั้ง​ราคา​ที่​หน้า​จอ​นี้
+client_template_heading	เมนู​ลูกค้า
+client_template_info	{title}: {c} หมวด, {d} เมนู​พร้อม​ราคา รูป และ​ชื่อ​เรียก​อื่น เฉพาะ​ที่​ยัง​ไม่มี — ชื่อ​ที่​มี​อยู่คง​เดิม
+client_template_import	นำ​เข้า​เมนู​นี้
+client_template_confirm	เพิ่ม {d} เมนู​จาก {title}? เมนู​ที่​มี​อยู่​จะ​คง​เดิม
+client_template_importing	กำลัง​นำ​เข้า {title}…
+client_template_done	ทุก​เมนู​ใน {title} อยู่​ใน​เมนู​ของ​คุณ​แล้ว
+client_template_imported	เพิ่ม {d} เมนู​และ {c} หมวด​จาก {title} แล้ว
+resv_heading	การ​จอง
+resv_name_ph	ชื่อ​แขก
+resv_phone_ph	โทรศัพท์ (ไม่​บังคับ)
+resv_guests_ph	จำนวน​แขก
 resv_when_ph	เมื่อไร — 20:30, tomorrow 13:00
-resv_table_ph	โต๊ะ (ไม่บังคับ)
+resv_table_ph	โต๊ะ (ไม่​บังคับ)
 resv_add	จอง
-resv_seat	นั่งแล้ว
-resv_none	ไม่มีการจองที่กำลังจะมาถึง
+resv_seat	นั่ง​แล้ว
+resv_none	ไม่มี​การ​จอง​ที่​กำลัง​จะ​มา​ถึง
 guests_word	คน
-delivery_by_ph	ผู้ส่ง (ไรเดอร์หรือพนักงาน)
-kitchen_all_day	ต้องทำตอนนี้: {items}
-kitchen_all_day_head	ทำอาหารทันที
+delivery_by_ph	ผู้​ส่ง (ไร​เด​อร์​หรือ​พนักงาน)
+kitchen_all_day	ต้อง​ทำ​ตอน​นี้: {items}
+kitchen_all_day_head	ทำ​อาหาร​ทันที
 kitchen_tab_live	สด
-kitchen_tab_recall	เรียกคืน
+kitchen_tab_recall	เรียก​คืน
 kitchen_tab_stations	สถานี
-split_bill	แยกบิล
-split_go	ทำบิลแยก
+split_bill	แยก​บิล
+split_go	ทำ​บิล​แยก
 cancel	ยกเลิก
-opening_client	เปิดลูกค้า…
-preparing_desk	เตรียมโต๊ะ…
-opening_server	เปิดพนักงานเสิร์ฟ…
-creating_server	สร้างพนักงานเสิร์ฟ…
-setup_restoring	กำลังคืนค่าข้อมูลสำรอง…
-setup_restored	คืนค่าแล้ว — ปลดล็อกด้วย PIN เจ้าของจากข้อมูลสำรองนั้น
-split_help	แตะรายการที่แขกคนหนึ่งจ่าย · เลือก {n}
-split_send_first	ส่งครัวก่อน — แยกบิลได้เฉพาะรายการที่ส่งครัวแล้ว
-split_pick_some	แตะรายการสำหรับบิลแยกก่อน
-split_done	สร้างบิลแยกแล้ว — อยู่บนผังข้างโต๊ะนี้
-split_marked	บิลแยก
-order_empty_pick	ออร์เดอร์ว่าง — แตะ “เพิ่มรายการอาหาร” ด้านบนเพื่อเลือกรายการ
-add_dishes	เพิ่มรายการอาหาร
-order_so_far	ในออร์เดอร์นี้: {n} · {total}
-no_dish_match	ไม่มีรายการที่ตรงกับ “{q}”
+opening_client	เปิด​ลูกค้า…
+preparing_desk	เตรียม​โต๊ะ…
+opening_server	เปิด​พนักงาน​เสิร์ฟ…
+creating_server	สร้าง​พนักงาน​เสิร์ฟ…
+setup_restoring	กำลัง​คืน​ค่า​ข้อมูล​สำรอง…
+setup_restored	คืน​ค่า​แล้ว — ปลด​ล็อก​ด้วย PIN เจ้าของ​จาก​ข้อมูล​สำรอง​นั้น
+split_help	แตะ​รายการ​ที่​แขก​คน​หนึ่ง​จ่าย · เลือก {n}
+split_send_first	ส่ง​ครัว​ก่อน — แยก​บิล​ได้​เฉพาะ​รายการ​ที่​ส่ง​ครัว​แล้ว
+split_pick_some	แตะ​รายการ​สำหรับ​บิล​แยก​ก่อน
+split_done	สร้าง​บิล​แยก​แล้ว — อยู่​บน​ผัง​ข้าง​โต๊ะ​นี้
+split_marked	บิล​แยก
+order_empty_pick	ออร์เด​อร์​ว่าง — แตะ “เพิ่ม​รายการ​อาหาร” ด้าน​บน​เพื่อ​เลือก​รายการ
+add_dishes	เพิ่ม​รายการ​อาหาร
+order_so_far	ใน​ออร์เด​อร์​นี้: {n} · {total}
+no_dish_match	ไม่มี​รายการ​ที่​ตรง​กับ “{q}”
 pick_done	เสร็จ
-printer_route_mode	หากมีเครื่องพิมพ์หลายตัวในสถานที่นี้
-printer_mode_first	ตัวแรกที่ใช้ได้
-printer_mode_all	พิมพ์ทั้งหมด
+printer_route_mode	หาก​มี​เครื่องพิมพ์​หลาย​ตัว​ใน​สถาน​ที่​นี้
+printer_mode_first	ตัว​แรก​ที่​ใช้ได้
+printer_mode_all	พิมพ์​ทั้งหมด
 kot_show_area	พื้นที่
-kot_hide_area	ซ่อนพื้นที่
-kot_show_title	บรรทัดหัวข้อ
-kot_hide_title	ซ่อนหัวข้อ
-kot_field_cycle	เลือกถัดไป
-kot_field_select	เลือกถัดไป
+kot_hide_area	ซ่อน​พื้นที่
+kot_show_title	บรรทัด​หัวข้อ
+kot_hide_title	ซ่อน​หัวข้อ
+kot_field_cycle	เลือก​ถัด​ไป
+kot_field_select	เลือก​ถัด​ไป
 dishes_n	{n} รายการ
-recipe_ph	สูตร (ไม่บังคับ) — หนึ่งที่ใช้: Rice=0.2, Paneer=0.15
-reorder_ph	สั่งเพิ่มเมื่อเหลือ
-set_reorder	ตั้งจุดสั่งซื้อซ้ำ
-low_stock_alert	ใกล้หมด — ควรซื้อเร็วๆ นี้: {items}
-unpriced_note	เมนูของคุณมี {n} รายการที่ยังไม่มีราคา — จะคิดเป็น 0 จนกว่าคุณจะตั้งราคา
-show_unpriced	แสดงเฉพาะรายการที่ไม่มีราคา
-show_all_dishes	แสดงทุกรายการ
-role_waiter	พนักงานเสิร์ฟ
+recipe_ph	สูตร (ไม่​บังคับ) — หนึ่ง​ที่​ใช้: Rice=0.2, Paneer=0.15
+reorder_ph	สั่ง​เพิ่ม​เมื่อ​เหลือ
+set_reorder	ตั้ง​จุด​สั่ง​ซื้อ​ซ้ำ
+low_stock_alert	ใกล้​หมด — ควร​ซื้อ​เร็วๆ นี้: {items}
+unpriced_note	เมนู​ของ​คุณ​มี {n} รายการ​ที่​ยัง​ไม่มี​ราคา — จะ​คิด​เป็น 0 จนกว่า​คุณ​จะ​ตั้ง​ราคา
+show_unpriced	แสดง​เฉพาะ​รายการ​ที่​ไม่มี​ราคา
+show_all_dishes	แสดง​ทุก​รายการ
+role_waiter	พนักงาน​เสิร์ฟ
 role_kitchen	ครัว
-role_title_rest_ph	ตำแหน่ง (เช่น กัปตัน หัวหน้าเชฟ)
-preset_help_rest	พนักงานเสิร์ฟ: รับออร์เดอร์และดูแลโต๊ะ แคชเชียร์: รับเงินด้วย ครัว: หน้าจอครัว ผู้จัดการ: เมนู ยกเลิก และส่วนลดด้วย
+role_title_rest_ph	ตำแหน่ง (เช่น กัปตัน หัวหน้า​เชฟ)
+preset_help_rest	พนักงาน​เสิร์ฟ: รับ​ออร์เด​อร์​และ​ดูแล​โต๊ะ แคชเชียร์: รับ​เงิน​ด้วย ครัว: หน้า​จอ​ครัว ผู้​จัดการ: เมนู ยกเลิก และ​ส่วนลด​ด้วย
 kind_raw	วัตถุดิบ
-kind_resale	ซื้อมาขายต่อ
-kind_dish	อาหารที่ร้านทำ
+kind_resale	ซื้อ​มา​ขาย​ต่อ
+kind_dish	อาหาร​ที่​ร้าน​ทำ
 buy_unit_ph	หน่วย (กก. ลิตร ชิ้น)
-add_another_way	+ อีกวิธี
-parts_status	กรอกแล้ว {a} จาก {b} · เหลือ {c}
-save_expense	บันทึกค่าใช้จ่าย
-rest_ph	ที่เหลือ
-low_badge	ใกล้หมด
-stock_empty	ยังไม่มีสต็อก — สิ่งที่บันทึกในการซื้อจะแสดงที่นี่
-recent_changes	การเปลี่ยนแปลงล่าสุด
-lane_declared_label	ใบกำกับภาษี
-lane_owner_label	เมโมเงินสด
-money_lane_bill	ใบแจ้งหนี้: {lane}
-sel_copy	คัดลอก
-sel_select_all	เลือกทั้งหมด
-sel_copied	คัดลอกแล้ว
-items_tmpl_khaynjo	เทมเพลตรายการ Khaynjo
+add_another_way	+ อีก​วิธี
+parts_status	กรอก​แล้ว {a} จาก {b} · เหลือ {c}
+save_expense	บันทึก​ค่า​ใช้​จ่าย
+rest_ph	ที่​เหลือ
+low_badge	ใกล้​หมด
+stock_empty	ยัง​ไม่​มี​สต็​อก — สิ่ง​ที่​บันทึก​ใน​การ​ซื้อ​จะ​แสดง​ที่​นี่
+recent_changes	การ​เปลี่ยนแปลง​ล่าสุด
+lane_declared_label	ใบ​กำกับ​ภาษี
+lane_owner_label	เม​โม​เงินสด
+money_lane_bill	ใบ​แจ้ง​หนี้: {lane}
+sel_copy	คัด​ลอก
+sel_select_all	เลือก​ทั้งหมด
+sel_copied	คัด​ลอก​แล้ว
+items_tmpl_khaynjo	เทมเพลต​รายการ Khaynjo
 items_tmpl_named	เทมเพลต {name}
-app_tmpl_named	เทมเพลตแอป {name}
+app_tmpl_named	เทมเพลต​แอป {name}
 private_code_ph	รหัส 12 หลัก
-stamp_on	ตรา: มีไฟล์
-pay_qr_on	QR ชำระ: มีไฟล์
+stamp_on	ตรา: มี​ไฟล์
+pay_qr_on	QR ชำระ: มี​ไฟล์
 pay_qr_off	QR ชำระ: ไม่มี
-printers_screen_tip	ค้นหาจะแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้และบันทึกไว้สำหรับร้านนี้ เครื่องพิมพ์บิล: รูปแบบบิลและ KOT → บิล ครัว: ครัว → สถานีครัว
-printers_found_none	ไม่พบเครื่องพิมพ์
-nav_loading	กำลังโหลด…
-kot_copy_from	คัดลอกจาก
-kot_copy_from_help	คัดลอกขนาด ความหนา และการจัดแนวของทุกบรรทัดจากประเภทนั้นมาที่ประเภทนี้ ประเภทนี้ยังคงใช้แบนเนอร์ คำนำหน้ารายการ และขีดฆ่าของตัวเอง บันทึกรูปแบบ KOT เพื่อเก็บไว้
-items_tmpl_heading	เทมเพลตรายการ
-items_tmpl_help	อาหาร หมวดหมู่ และรูปภาพสำหรับเมนูของคุณ การตั้งค่าร้านและพนักงานยังคงเหมือนเดิม
-public_tmpl_help	เมนูเริ่มต้นที่ใครก็ดาวน์โหลดได้ ต้องใช้อินเทอร์เน็ตครั้งเดียว
-private_tmpl_help	เมนูลูกค้าที่ล็อกด้วยรหัส 12 หลักจากผู้ติดต่อ Khaynjo ของคุณ
+printers_screen_tip	ค้นหา​จะ​แสดง​เครื่องพิมพ์​ที่​อุปกรณ์​นี้​ใช้ได้​และ​บันทึก​ไว้​สำหรับ​ร้าน​นี้ เครื่องพิมพ์​บิล: รูป​แบบ​บิล​และ KOT → บิล ครัว: ครัว → สถานี​ครัว
+printers_found_none	ไม่​พบ​เครื่องพิมพ์
+nav_loading	กำลัง​โหลด…
+kot_copy_from	คัด​ลอก​จาก
+kot_copy_from_help	คัด​ลอก​ขนาด ความ​หนา และ​การ​จัด​แนว​ของ​ทุก​บรรทัด​จาก​ประเภท​นั้น​มา​ที่​ประเภท​นี้ ประเภท​นี้​ยัง​คง​ใช้​แบนเนอร์ คำนำ​หน้า​รายการ และ​ขีด​ฆ่า​ของ​ตัว​เอง บันทึก​รูป​แบบ KOT เพื่อ​เก็บ​ไว้
+items_tmpl_heading	เทมเพลต​รายการ
+items_tmpl_help	อาหาร หมวด​หมู่ และ​รูปภาพ​สำหรับ​เมนู​ของ​คุณ การ​ตั้ง​ค่า​ร้าน​และ​พนักงาน​ยัง​คง​เหมือน​เดิม
+public_tmpl_help	เมนู​เริ่ม​ต้น​ที่​ใคร​ก็​ดาวน์โหลด​ได้ ต้อง​ใช้​อินเทอร์เน็ต​ครั้ง​เดียว
+private_tmpl_help	เมนู​ลูกค้า​ที่​ล็อก​ด้วย​รหัส 12 หลัก​จาก​ผู้​ติดต่อ Khaynjo ของ​คุณ
