@@ -1,121 +1,121 @@
 # Estonian — Eesti (et). key<TAB>text in locale.rs EN order; keep {placeholders}; \n = line break.
-the_promise	@@EN@@ The promise
-kumkaj_business_operating_systems	@@EN@@ KUMKAJ · BUSINESS OPERATING SYSTEMS
-the_internet_went_down_the	@@EN@@ The internet went down.\nThe counter didn't.
-kumkaj_is_the_brand_for	@@EN@@ Kumkaj is the brand for concrete business operating system apps — complete business management software that runs on your own devices. Each product is built for one trade: courier, restaurant, grocery, pharmacy.
-choose_your_trade	@@EN@@ Choose your trade  ↓
-watch_it_keep_working	@@EN@@ Watch it keep working
-this_counter_right_now	@@EN@@ THIS COUNTER, RIGHT NOW
-internet	@@EN@@ Internet
-down	@@EN@@ Down
-taking_orders	@@EN@@ Taking orders
-yes	@@EN@@ Yes
-bills_and_dockets	@@EN@@ Bills and dockets
-saving	@@EN@@ Saving
-day_book	@@EN@@ Day book
-adding_up	@@EN@@ Adding up
-nothing_on_this_counter_waits	@@EN@@ Nothing on this counter waits for the cloud.
-scroll_or_use_the_dots	@@EN@@ Scroll or use the dots to jump between sections.
-n_02_built_for_your_trade	@@EN@@ 02 · BUILT FOR YOUR TRADE
-a_desk_for_each_trade	@@EN@@ A desk for each trade.\nNot one app with a switch.
-not_one_app_with_a	@@EN@@ Not one app with a trade switch. Each product is designed around one kind of counter, in that trade's own words.
-courier_offices_franchise_counters_own	@@EN@@ COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS
-book_label_hand_over_track	@@EN@@ Book → label → hand over → track → settle.
-next_booking_in_one_tap	@@EN@@ Next booking in one tap
-actual_or_volumetric_weight_rounded	@@EN@@ Actual or volumetric weight, rounded your way
-rider_cash_on_delivery_expected	@@EN@@ Rider cash on delivery: expected against handed in
-visit_moklanjo_com	@@EN@@ Visit moklanjo.com  →
-restaurants_caf_s_quick_service	@@EN@@ RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES
-table_kitchen_bill_day_close	@@EN@@ Table → kitchen → bill → day close.
-every_table_s_minutes_and	@@EN@@ Every table's minutes and bill at a glance
-one_kot_per_kitchen_station	@@EN@@ One KOT per kitchen station — never prices
-cash_upi_part_payment_due	@@EN@@ Cash, UPI, part payment, Due and tip
-visit_khaynjo_com	@@EN@@ Visit khaynjo.com  →
-kirana_grocery_neighbourhood_shops	@@EN@@ KIRANA · GROCERY · NEIGHBOURHOOD SHOPS
-sell_khata_stock_day_book	@@EN@@ Sell → khata → stock → day book.
-fast_counter_sell_with_short	@@EN@@ Fast counter sell with short codes
-customer_credit_and_supplier_dues	@@EN@@ Customer credit and supplier dues
-buy_into_stock_offline_forever	@@EN@@ Buy into stock — offline forever
-visit_kirano_shop	@@EN@@ Visit kirano.shop  →
-chemists_pharmacy_counters	@@EN@@ CHEMISTS · PHARMACY COUNTERS
-medicine_batch_bill_day_close	@@EN@@ Medicine → batch → bill → day close.
-barcode_and_salt_composition_search	@@EN@@ Barcode and salt / composition search
-batch_and_expiry_alerts_on	@@EN@@ Batch and expiry alerts on purchases
-owner_schedule_h_rx_notes	@@EN@@ Owner Schedule H / Rx notes — not fake compliance
-visit_tabiyat_shop	@@EN@@ Visit tabiyat.shop  →
-n_03_your_books_stay_with	@@EN@@ 03 · YOUR BOOKS STAY WITH YOU
-your_books_live_in_your	@@EN@@ Your books live in your shop.
-sales_parties_and_the_day	@@EN@@ Sales, parties and the day book are written on the device at your counter — not on a server you rent.
-on_your_device	@@EN@@ On your device
-every_sale_payment_and_docket	@@EN@@ Every sale, payment and docket is saved on the computer or tablet you own.
-no_account_with_us	@@EN@@ No account with us
-install_it_and_start_no	@@EN@@ Install it and start. No sign-up, no card on file.
-copies_you_keep	@@EN@@ Copies you keep
-save_a_backup_copy_whenever	@@EN@@ Save a backup copy whenever you like. It is a file, and it is yours.
-extra_counters_and_tablets_join	@@EN@@ Extra counters and tablets join over your own Wi-Fi — with no internet in between.
-n_04_try_it	@@EN@@ 04 · TRY IT
-pull_the_plug_on_the	@@EN@@ Pull the plug on the internet.
-kumkaj_apps_don_t_phone	@@EN@@ Kumkaj apps don't phone home to work. Cut the internet and watch what changes at the counter.
-cut_the_internet	@@EN@@ Cut the internet
-internet_on	@@EN@@ Internet: on
-book_a_parcel_or_take	@@EN@@ Book a parcel or take an order
-save_the_bill_or_docket	@@EN@@ Save the bill or docket
-day_book_totals	@@EN@@ Day book totals
-find_an_old_sale	@@EN@@ Find an old sale
-the_internet_is_on_and	@@EN@@ The internet is on — and the counter isn't using it.
-things_that_leave_the_shop	@@EN@@ Things that leave the shop, like a WhatsApp receipt, still need the internet to arrive.
-n_05_price	@@EN@@ 05 · PRICE
-free_forever_on_your_devices	@@EN@@ Free forever on your devices.
-no_charge_per_seat_user	@@EN@@ No charge per seat, user, table, rider, parcel or local device. Not a trial.
-on_your_own_devices	@@EN@@ On your own devices
-n_0_forever	@@EN@@ ₹0, forever
-pay_only_for_what_you	@@EN@@ Pay only for what you use — the same rates for everyone.
-planned	@@EN@@ Planned
-cloud_is_planned_and_optional	@@EN@@ Cloud is planned and optional. The counter works without it.
-n_06_languages	@@EN@@ 06 · LANGUAGES
-speaks_your_staff_s_language	@@EN@@ Speaks your staff's language.
-the_same_115_language_catalogue	@@EN@@ The same 115-language catalogue as every Kumkaj app — Arabic and Urdu right to left. Native names below; “Food ready” samples for Hindi, Gujarati, Tamil, Bengali, Urdu, and English:
-same_shaping_engine_as_the	@@EN@@ Same shaping engine as the apps, so joined letters and right-to-left lines come out right.
-n_07_who_makes_it	@@EN@@ 07 · WHO MAKES IT
-made_under_gotigin	@@EN@@ Made under Gotigin.
-trademark	@@EN@@ TRADEMARK
-memon_for_find_it_pronounced	@@EN@@ Memon for “find it” · pronounced go-tee-geen
-company	@@EN@@ COMPANY
-brand	@@EN@@ BRAND
-concrete_business_operating_system_apps	@@EN@@ Concrete business operating system apps
-products	@@EN@@ PRODUCTS
-courier_restaurant_grocery_pharmacy	@@EN@@ Courier · restaurant · grocery · pharmacy
-courier_desk_book_label_hand	@@EN@@ Courier desk — book, label, hand over, settle.
-restaurant_system_table_kitchen_bill	@@EN@@ Restaurant system — table, kitchen, bill, day close.
-grocery_counter_sell_khata_stock	@@EN@@ Grocery counter — sell, khata, stock, day book.
-pharmacy_counter_batch_expiry_bill	@@EN@@ Pharmacy counter — batch, expiry, bill, day close.
-privacy	@@EN@@ Privacy
-terms	@@EN@@ Terms
-cancellation	@@EN@@ Cancellation
-cloud_shop	@@EN@@ Cloud shop
-account	@@EN@@ Account
-chapter_built_for_your_trade	@@EN@@ Built for your trade
-chapter_your_books	@@EN@@ Your books
-chapter_try_it_offline	@@EN@@ Try it offline
-chapter_price	@@EN@@ Price
-chapter_languages	@@EN@@ Languages
-chapter_who_makes_it	@@EN@@ Who makes it
-toy_bring_back	@@EN@@ Bring the internet back
-toy_internet_off	@@EN@@ Internet: off
-toy_verdict_off	@@EN@@ Internet off — and nothing on the counter changed.
-acct_page_title	@@EN@@ Account — Kumkaj
-acct_lede	@@EN@@ Each Kumkaj product has its own account (and its own cloud). Choose the trade you run — sign-in and checkout stay on that product site.
-acct_product_accounts	@@EN@@ Product accounts
-acct_moklanjo_blurb	@@EN@@ Courier OS account
-acct_khaynjo_blurb	@@EN@@ Restaurant OS account
-acct_kirano_blurb	@@EN@@ Kirana counter account
-acct_tabiyat_blurb	@@EN@@ Pharmacy counter account
-acct_open_account	@@EN@@ Open account
-shop_page_title	@@EN@@ Shop — Kumkaj
-shop_lede	@@EN@@ Yearly cloud plans — same five shapes for every trade (Free forever, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / year ex-tax, or Custom quote). Tax is added at checkout. Each product keeps its own shop and account.
-shop_product_shops	@@EN@@ Product cloud shops
-shop_moklanjo_blurb	@@EN@@ Courier desk cloud for moklanjo.com
-shop_khaynjo_blurb	@@EN@@ Restaurant cloud for khaynjo.com
-shop_kirano_blurb	@@EN@@ Kirana counter cloud for kirano.shop
-shop_tabiyat_blurb	@@EN@@ Pharmacy counter cloud for tabiyat.shop
-shop_open_shop	@@EN@@ Open shop
+the_promise	Lubadus
+kumkaj_business_operating_systems	KUMKAJ · OPERATSIOONISÜSTEEMID ETTEVÕTETELE
+the_internet_went_down_the	Internet kadus.\nLett mitte.
+kumkaj_is_the_brand_for	Kumkaj on konkreetsete ettevõtte operatsioonisüsteemi rakenduste kaubamärk — täielik ärijuhtimise tarkvara, mis töötab sinu enda seadmetes. Iga toode on tehtud ühele valdkonnale: kullerteenus, restoran, toidupood, apteek.
+choose_your_trade	Vali oma valdkond  ↓
+watch_it_keep_working	Vaata, kuidas see edasi töötab
+this_counter_right_now	SEE LETT, JUST PRAEGU
+internet	Internetiühendus
+down	Maas
+taking_orders	Tellimuste vastuvõtt
+yes	Jah
+bills_and_dockets	Arved ja saatelehed
+saving	Salvestuvad
+day_book	Päevaraamat
+adding_up	Klapivad
+nothing_on_this_counter_waits	Miski sellel letil ei oota pilve.
+scroll_or_use_the_dots	Keri või kasuta täppe, et jaotiste vahel liikuda.
+n_02_built_for_your_trade	02 · TEHTUD SINU VALDKONNALE
+a_desk_for_each_trade	Oma lett igale valdkonnale.\nMitte üks rakendus lülitiga.
+not_one_app_with_a	Mitte üks rakendus valdkonnalülitiga. Iga toode on kujundatud ühte tüüpi leti ümber, selle valdkonna enda sõnadega.
+courier_offices_franchise_counters_own	KULLERKONTORID · FRANTSIISILETID · OMA KULLERID
+book_label_hand_over_track	Vastuvõtt → silt → üleandmine → jälgimine → arveldus.
+next_booking_in_one_tap	Järgmine vastuvõtt ühe puudutusega
+actual_or_volumetric_weight_rounded	Tegelik või mahukaal, ümardatuna sinu viisil
+rider_cash_on_delivery_expected	Kulleri lunamaksud: oodatud võrrelduna üle antuga
+visit_moklanjo_com	Külasta moklanjo.com  →
+restaurants_caf_s_quick_service	RESTORANID · KOHVIKUD · KIIRTOIT · PAGARIÄRID
+table_kitchen_bill_day_close	Laud → köök → arve → päeva sulgemine.
+every_table_s_minutes_and	Iga laua minutid ja arve ühe pilguga
+one_kot_per_kitchen_station	Üks köögisedel punkti kohta — kunagi mitte hindu
+cash_upi_part_payment_due	Sularaha, UPI, osamakse, võlgu ja jootraha
+visit_khaynjo_com	Külasta khaynjo.com  →
+kirana_grocery_neighbourhood_shops	KIRANA · TOIDUPOED · KODULÄHEDASED POED
+sell_khata_stock_day_book	Müük → võlavihik → laoseis → päevaraamat.
+fast_counter_sell_with_short	Kiire letimüük lühikoodidega
+customer_credit_and_supplier_dues	Klientide krediit ja tarnijate võlad
+buy_into_stock_offline_forever	Ost lattu — igavesti võrguta
+visit_kirano_shop	Külasta kirano.shop  →
+chemists_pharmacy_counters	APTEEGID · APTEEGILETID
+medicine_batch_bill_day_close	Ravim → partii → arve → päeva sulgemine.
+barcode_and_salt_composition_search	Otsing vöötkoodi ja toimeaine / koostise järgi
+batch_and_expiry_alerts_on	Partii- ja aegumishoiatused ostudel
+owner_schedule_h_rx_notes	Omaniku Schedule H / retseptimärkused — mitte näiline vastavus
+visit_tabiyat_shop	Külasta tabiyat.shop  →
+n_03_your_books_stay_with	03 · SINU RAAMATUPIDAMINE JÄÄB SINULE
+your_books_live_in_your	Sinu raamatupidamine elab sinu poes.
+sales_parties_and_the_day	Müük, osapooled ja päevaraamat kirjutatakse sinu leti seadmesse — mitte renditud serverisse.
+on_your_device	Sinu seadmes
+every_sale_payment_and_docket	Iga müük, makse ja saateleht salvestatakse sulle kuuluvasse arvutisse või tahvlisse.
+no_account_with_us	Meil pole kontot vaja
+install_it_and_start_no	Paigalda ja alusta. Ilma registreerumise ja salvestatud kaardita.
+copies_you_keep	Koopiad jäävad sinule
+save_a_backup_copy_whenever	Salvesta varukoopia, millal tahad. See on fail ja see on sinu oma.
+extra_counters_and_tablets_join	Lisaletid ja tahvlid liituvad sinu enda Wi-Fi kaudu — ilma internetita vahepeal.
+n_04_try_it	04 · PROOVI
+pull_the_plug_on_the	Tõmba internetil juhe seinast.
+kumkaj_apps_don_t_phone	Kumkaji rakendused ei pea töötamiseks serveriga ühendust võtma. Lülita internet välja ja vaata, mis leti juures muutub.
+cut_the_internet	Lülita internet välja
+internet_on	Internet: sees
+book_a_parcel_or_take	Võta vastu pakk või tellimus
+save_the_bill_or_docket	Salvesta arve või saateleht
+day_book_totals	Päevaraamatu summad
+find_an_old_sale	Leia vana müük
+the_internet_is_on_and	Internet on sees — ja lett ei kasuta seda.
+things_that_leave_the_shop	Asjad, mis poest lahkuvad, näiteks WhatsAppi tšekk, vajavad kohale jõudmiseks siiski internetti.
+n_05_price	05 · HIND
+free_forever_on_your_devices	Igavesti tasuta sinu seadmetes.
+no_charge_per_seat_user	Tasu pole koha, kasutaja, laua, kulleri, paki ega kohaliku seadme kohta. See pole prooviversioon.
+on_your_own_devices	Sinu enda seadmetes
+n_0_forever	₹0, igavesti
+pay_only_for_what_you	Maksa ainult selle eest, mida kasutad — kõigile samad hinnad.
+planned	Plaanis
+cloud_is_planned_and_optional	Pilv on plaanis ja valikuline. Lett töötab ka ilma selleta.
+n_06_languages	06 · KEELED
+speaks_your_staff_s_language	Räägib sinu töötajate keelt.
+the_same_115_language_catalogue	Sama 115 keele valik nagu igas Kumkaji rakenduses — araabia ja urdu paremalt vasakule. Allpool keelte omakeelsed nimed; „Toit valmis“ näited hindi, gudžarati, tamili, bengali, urdu ja inglise keeles:
+same_shaping_engine_as_the	Sama kirjavormindusmootor nagu rakendustes, seega ühendatud tähed ja paremalt vasakule read tulevad õigesti välja.
+n_07_who_makes_it	07 · KES SEDA TEEB
+made_under_gotigin	Valmistatud Gotigini all.
+trademark	KAUBAMÄRK
+memon_for_find_it_pronounced	Memoni keeles „leia see“ · hääldus go-tee-geen
+company	ETTEVÕTE
+brand	BRÄND
+concrete_business_operating_system_apps	Konkreetsed rakendused — operatsioonisüsteemid ettevõtetele
+products	TOOTED
+courier_restaurant_grocery_pharmacy	Kullerteenus · restoran · toidupood · apteek
+courier_desk_book_label_hand	Kullerlett — vastuvõtt, silt, üleandmine, arveldus.
+restaurant_system_table_kitchen_bill	Restoranisüsteem — laud, köök, arve, päeva sulgemine.
+grocery_counter_sell_khata_stock	Toidupoe kassa — müük, võlavihik, laoseis, päevaraamat.
+pharmacy_counter_batch_expiry_bill	Apteegi lett — partii, säilivusaeg, arve, päeva sulgemine.
+privacy	Privaatsus
+terms	Tingimused
+cancellation	Tühistamine
+cloud_shop	Pilvepood
+account	Konto
+chapter_built_for_your_trade	Tehtud sinu valdkonnale
+chapter_your_books	Sinu raamatupidamine
+chapter_try_it_offline	Proovi võrguta
+chapter_price	Hind
+chapter_languages	Keeled
+chapter_who_makes_it	Kes seda teeb
+toy_bring_back	Too internet tagasi
+toy_internet_off	Internet: väljas
+toy_verdict_off	Internet väljas — ja letil ei muutunud midagi.
+acct_page_title	Konto — Kumkaj
+acct_lede	Igal Kumkaji tootel on oma konto (ja oma pilv). Vali oma valdkond — sisselogimine ja ostu vormistamine toimuvad selle toote saidil.
+acct_product_accounts	Toodete kontod
+acct_moklanjo_blurb	Kullersüsteemi konto
+acct_khaynjo_blurb	Restoranisüsteemi konto
+acct_kirano_blurb	Toidupoe kassa konto
+acct_tabiyat_blurb	Apteegi leti konto
+acct_open_account	Ava konto
+shop_page_title	Pood — Kumkaj
+shop_lede	Aastased pilvepaketid — igale valdkonnale samad viis varianti (Igavesti tasuta, Steady ₹6 000, Swift ₹12 000, Priority ₹24 000 / aastas maksudeta või kohandatud pakkumine). Maks lisandub maksmisel. Igal tootel on oma pood ja konto.
+shop_product_shops	Toodete pilvepoed
+shop_moklanjo_blurb	Kullerleti pilv saidile moklanjo.com
+shop_khaynjo_blurb	Restorani pilv saidile khaynjo.com
+shop_kirano_blurb	Toidupoe kassa pilv saidile kirano.shop
+shop_tabiyat_blurb	Apteegi leti pilv saidile tabiyat.shop
+shop_open_shop	Ava pood
