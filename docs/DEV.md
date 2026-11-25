@@ -799,6 +799,11 @@ Live rail/footer **drag-to-swap was removed**: it mixed with scroll and felt bro
 
 ## Languages (catalogue + translation packs)
 
+**Product floor (all Gotigin brands):** every app and website supports the
+full language catalogue (**115+ languages**) and **199 countries**. See
+`docs/WEBSITES.md` § Language catalogue + 199 countries and
+`.cursor/rules/languages-countries-floor.mdc`.
+
 Every app owns its own `src/locale.rs` and `translations/<code>.tsv` (no
 shared Kumkaj i18n crate). English source of truth is `en()` in that
 `locale.rs`. Every other catalogue language is a TSV baked by

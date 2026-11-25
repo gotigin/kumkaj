@@ -22,18 +22,24 @@
 
 ------------------------------------------------------------------------
 
-## Language catalogue (same as apps — hard rule)
+## Language catalogue + 199 countries (hard rule — all Gotigin products)
 
-Every Kumkaj **app** ships one shared 115-language catalogue
-(`LANGUAGES` + translation tables). **No app may omit a language another
-app has.** Websites must not invent a smaller set: when a site claims
-languages or draws native names / samples, it uses that same catalogue and
-the script faces those strings need (`WorldFont`). Gate:
-`./scripts/check-language-parity.sh`.
+**Floor (every Kumkaj app and website, and the same bar for Gotigin /
+Wadhu / Ghal Bol products):** the full language catalogue (**115+
+languages** — `LANGUAGES` + translation tables) and **199 countries**
+(world / market coverage; Khaynjo’s world shelf is the concrete 199-row
+reference). No product may ship a smaller language picker, omit packs for
+catalogue languages it shows, or claim fewer countries than that floor.
+
+Every Kumkaj **app** ships one shared catalogue. **No app may omit a
+language another app has.** Websites must not invent a smaller set: when
+a site claims languages or draws native names / samples, it uses that
+same catalogue and the script faces those strings need (`WorldFont`).
+Gate: `./scripts/check-language-parity.sh`.
 
 **The sites speak it too (2026-11-23).** All five Makepad sites translate
 their own copy: the top-bar chip (it shows the code in use — `EN`, `HI`,
-`UR`) opens lang-nav.js's 115-language picker, which writes `#l=<code>`
+`UR`) opens lang-nav.js's full catalogue picker, which writes `#l=<code>`
 (kept beside `#auth=` / sections) and localStorage; the wasm reads the hash
 and repaints the page, the account and shop pages repaint through
 `site-i18n.js`. Arabic-script and Hebrew languages right-align. No
@@ -48,6 +54,9 @@ Burmese break between words (their packs mark words with U+200B,
 paragraphs are laid out right to left (`rtl_paragraph_direction`), so Latin
 names keep their place in an Urdu or Hebrew sentence. How it works and how
 to add copy: [`DEV.md`](DEV.md) § Languages → Websites.
+
+Legal page **bodies** (privacy / terms / …) stay English on purpose;
+marketing home + account/shop chrome translate.
 
 ------------------------------------------------------------------------
 

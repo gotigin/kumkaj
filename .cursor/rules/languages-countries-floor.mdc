@@ -1,0 +1,33 @@
+---
+description: 115+ languages and 199 countries — product floor for every Gotigin app and website
+alwaysApply: true
+---
+
+# Languages + countries floor (all Gotigin products)
+
+Canonical: `docs/WEBSITES.md` § Language catalogue + 199 countries ·
+`docs/DEV.md` § Languages.
+
+## Floor
+
+Every **app and website** under Gotigin brands (Kumkaj products, Wadhu,
+Ghal Bol, gotigin.com) supports:
+
+- the full language catalogue (**115+ languages**), and
+- **199 countries** (world / market coverage; Khaynjo world shelf is the
+  concrete 199-row reference).
+
+## Do
+
+- Ship the full catalogue picker and a pack for every table language the
+  picker can select.
+- Keep app ↔ site catalogue parity gates green.
+- Verify language change in a local preview before any Hosting deploy.
+
+## Do not
+
+- Ship a smaller language subset or a preference-only picker.
+- Treat Gotigin / Wadhu / Ghalbol sites as English-only while showing a
+  language chip.
+- Invent fake language or country counts; use the catalogue and the
+  199-country table as source of truth.
