@@ -1,9 +1,9 @@
 # Latvian — Latviešu (lv). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Atbloķēt
 sell	Pārdošana
-buy	Pirkums
+buy	Pirkšana
 books	Dienas grāmata
-books_help	Šodienas stāvoklis. Pārdošana = ienākošā nauda. Pirkums = pirkumi un izdevumi. Puses = kredītklienti un piegādātāji.
+books_help	Šodienas stāvoklis. Pārdošana = ienākošā nauda. Pirkšana = pirkumi un izdevumi. Puses = kredītklienti un piegādātāji.
 buy_help	Izdevumu kvītis un piegādātāju rēķini (nauda ārā). Uz konta palikušais paliek puses virsgrāmatā.
 sell_money_in	Pārdod preces
 buy_money_out	Izdevums / piegādātāja rēķins
@@ -648,7 +648,7 @@ team_rights_changed	Tiesības mainītas — saglabājiet šīs personas iestatī
 they_owe_us	Viņi ir mums parādā
 unit_at_cap	Vienība @
 units_help	Kodi pozīciju etiķetēm (kg, gabals, mais). Katrai vienībai jāsaistās — tieši vai caur citām vienībām — ar standartu (kg · cm · ml · gab), piem. 1 crate = 2 box un 1 box = 20 cm. Pārrēķini: 1 from = factor to. Valūtas nekad nav vienības.
-units_picker_help	Pieskarieties Ieslēgts/Izslēgts, lai rādītu vienību Pirkumu un Preču atlasītājos. Izslēgtās vienības joprojām konvertē.
+units_picker_help	Pieskarieties Ieslēgts/Izslēgts, lai rādītu vienību Pirkšanas un Preču atlasītājos. Izslēgtās vienības joprojām konvertē.
 unit_picker_on	Ieslēgts
 unit_picker_off	Izslēgts
 we_owe_them	Mēs esam viņiem parādā
@@ -899,7 +899,7 @@ parts_status	Ievadīts {a} no {b} · atlikuši {c}
 save_expense	Saglabāt izdevumu
 rest_ph	Atlikums
 low_badge	Maz
-stock_empty	Krājumā vēl nekā nav — tas, ko ierakstāt pirkumā, parādās šeit.
+stock_empty	Krājumā vēl nekā nav — tas, ko ierakstāt pirkšanā, parādās šeit.
 recent_changes	Nesenās izmaiņas
 lane_declared_label	Nodokļa rēķins
 lane_owner_label	Skaidrās naudas kvīts

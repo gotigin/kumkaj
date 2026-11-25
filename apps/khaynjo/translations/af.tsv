@@ -1223,14 +1223,14 @@ kot_field_on	wys
 kot_field_off	versteek
 kot_field_size	Lettergrootte
 kot_weight_light	Lig
-bill_kot_panel_help	Faktuur en keukenslip-lêerindeling, elk met sy eie inhoudsbreedte. Faktuur Kasier is die een wat die faktuur uitgereik of afgesluit het; KOT Waaiter is die een wat daardie keukentiket gestuur het — die volledige bestellingsverhaal bly in die boeke.
+bill_kot_panel_help	Faktuur en keukenslip-lêerindeling, elk met sy eie inhoudsbreedte. Faktuur Kasier is die een wat die faktuur uitgereik of afgesluit het; KOT Kelner is die een wat daardie keukentiket gestuur het — die volledige bestellingsverhaal bly in die boeke.
 std_size_ph	bv. 18, 20, 26…
 kot_show_shop	Winkelnawe
 kot_hide_shop	Versteek winkel
 kot_show_time	Tyd
 kot_hide_time	Versteek tyd
-kot_show_waiter	Waaiter
-kot_hide_waiter	Versteek waaiter
+kot_show_waiter	Kelner
+kot_hide_waiter	Versteek kelner
 kot_show_station	Stasie
 kot_hide_station	Versteek stasie
 kot_show_table	Tafel
@@ -1407,10 +1407,10 @@ low_stock_alert	Baie laag — koop gou: {items}
 unpriced_note	{n} geregte op u menu het nog geen prys nie — hulle word vir 0 gefakt totdat u een stel.
 show_unpriced	Toon slegs geregte sonder 'n prys
 show_all_dishes	Toon alle geregte
-role_waiter	Waaiter
+role_waiter	Kelner
 role_kitchen	Keukin
 role_title_rest_ph	Roltitel (bv. Kaptein, Hoofkok)
-preset_help_rest	Waaiter: neem bestellings en bestuur tafels. Kasier: neem ook betaling aan. Keukin: die keukinskerm. Bestuurder: ook die menu, kanselleer en kortings.
+preset_help_rest	Kelner: neem bestellings en bestuur tafels. Kasier: neem ook betaling aan. Keukin: die keukinskerm. Bestuurder: ook die menu, kanselleer en kortings.
 kind_raw	Ruwe materiaal
 kind_resale	Gekoop en weer verkoop
 kind_dish	Gereg wat ons maak

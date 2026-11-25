@@ -1420,7 +1420,7 @@ parts_status	Sisestatud {a}/{b} · {c} jäänud
 save_expense	Salvesta kulu
 rest_ph	Jääk
 low_badge	Madal
-stock_empty	Midagi pole veel laos – siin kuvatakse see, mida salvestate jaotises Osta.
+stock_empty	Midagi pole veel laos – siin kuvatakse see, mida salvestate jaotises Ost.
 recent_changes	Viimased muudatused
 lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo

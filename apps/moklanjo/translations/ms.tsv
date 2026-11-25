@@ -11,10 +11,10 @@ board_empty	Belum ada kad.
 board_park_nothing	Tiada apa untuk diketepikan — tambah caj atau butiran tempahan
 board_parked	Diketepikan di «Papan» — meja kosong
 board_draft	Draf
-board_booked	Tempah
+board_booked	Ditempah
 board_filter_all	Semua
 board_filter_draft	Draf
-board_filter_booked	Tempah
+board_filter_booked	Ditempah
 board_cols_fmt	{n} lajur
 board_summary_fmt	{total} kad · {drafts} draf · {booked} direkodkan
 board_card_no_charges	Belum ada caj
@@ -26,14 +26,14 @@ board_discard	Buang
 board_discarded	Draf dibuang
 buy	Bayar
 books	Lejar hari
-books_help	Kedudukan hari ini. Tempahan = bungkusan masuk. Bayar = bil & perbelanjaan pembawa. Pihak = pengirim & pembawa.
+books_help	Kedudukan hari ini. Tempahan = bungkusan masuk. Bayar = bil & perbelanjaan pembawa. Pihak = pengirim & syarikat kurier.
 buy_help	Baucar perbelanjaan dan bil pembawa (wang keluar). Dalam akaun kekal pada lejar pihak.
 sell_money_in	Tempah bungkusan
 buy_money_out	Perbelanjaan / bil pembawa
 record_purchase	Simpan pembelian
 add_expense	Resit perbelanjaan
 bank_book	Lejar bank
-credit_help	Id pihak adalah unik (nama mungkin berulang). Peranan: Consignor (AR), Pembawa (AP) atau kedua-duanya pada id tersebut. Lejar kekal berasingan; laporan menunjukkan bersih.
+credit_help	Id pihak adalah unik (nama mungkin berulang). Peranan: Konsainor (AR), Syarikat kurier (AP) atau kedua-duanya pada id tersebut. Lejar kekal berasingan; laporan menunjukkan bersih.
 party_kind_ph	Peranan tersuai (pilihan) — atau ketik cip di atas
 parties_list_heading	Pihak yang disimpan
 reports_help	Lejar hari, penghutang & pemiutang, lejar bank, resit perbelanjaan, untung & rugi.
@@ -289,9 +289,9 @@ till_to_bank	Kaunter → bank
 mark_cleared	Mark dibersihkan
 unmark	Nyahtanda
 role_both	Kedua-duanya
-role_carrier	Pembawa
+role_carrier	Syarikat kurier
 role_cashier	Juruwang
-role_consignor	konsainor
+role_consignor	Konsainor
 role_manager	Pengurus
 role_supplier	Pembekal
 branch_name_sell_ph	Nama cawangan untuk dijual
@@ -386,7 +386,7 @@ import_pincodes_csv	Import kod pin CSV…
 import_carrier_bill_csv	Import bil pembawa CSV…
 copy_carrier_bill_report	Salin laporan bil pembawa terakhir
 use_carrier_cost	Gunakan kos pembawa
-rate_carrier_ph	Pembawa (kosong = kadar jualan kami)
+rate_carrier_ph	Syarikat kurier (kosong = kadar jualan kami)
 rate_party_ph	Pihak (kosong = semua pelanggan)
 carrier_pick_ph	Pembawa untuk kos (daripada perbandingan)
 item_name	Nama item
@@ -816,20 +816,20 @@ report_day_lens	Lihat «Hari ini» sebagai
 report_day_lens_help	Paparan sahaja — tidak mengubah bila «Tutup hari» memulakan semula «Hari ini». «Ikut tutup hari» mengikut tutup hari yang terakhir; «Ikut tengah malam» memotong pada 00:00 waktu tempatan.
 report_lens_day_close	Ikut tutup hari
 report_lens_midnight	Ikut tengah malam
-trk_booked	Tempah
+trk_booked	Ditempah
 trk_picked_up	Dijemput
 trk_in_transit	Dalam transit
 trk_delivered	Dihantar
 trk_rto	Kembali kepada pengirim
 lane_to_dispatch	Untuk menghantar
-lane_with_carrier	Dengan pembawa
+lane_with_carrier	Dengan syarikat kurier
 lane_failed	gagal
 lane_done_today	Selesai hari ini
 ops_board_help	Bungkusan mengikut tempat mereka berada dalam kerja hari ini. Ketik bungkusan (atau imbasnya) untuk memilihnya, kemudian bertindak pada semua yang dipilih sekali gus — setiap lorong hanya menawarkan pergerakan yang sesuai dengannya.
 lane_empty	Tiada apa-apa di sini sekarang.
 picked_fmt	{n} dipilih
 pick_all	Pilih semua
-bag_for_carrier	Tangan kepada pembawa
+bag_for_carrier	Serahkan kepada syarikat kurier
 send_with_rider	Hantar dengan rider
 out_again	Keluar lagi
 return_to_sender	Kembali kepada pengirim
@@ -837,7 +837,7 @@ runs_bags_heading	Larian & beg terkini
 print_word	Cetak
 bag_word	Beg pembawa
 run_word	Lari penunggang
-parcels_fmt	bungkusan {n}
+parcels_fmt	Bungkusan {n}
 parcel_history	Sejarah
 attempt_fmt	Cuba {n}
 pieces_short_fmt	{n} unit
@@ -848,7 +848,7 @@ cod_on_road	COD masih dalam perjalanan
 cod_owed_consignors	Dikumpul — untuk membayar pengirim
 cod_rto_fees	Yuran RTO untuk dikutip
 cod_to_hand_in	COD untuk diserahkan
-parcel_one_fmt	bungkusan {n}
+parcel_one_fmt	Bungkusan {n}
 facet_bank_title	Laporan
 facet_bank_help	Lejar hari, penuaan pelanggan atau pembekal, jawatan bank dan tempoh P&L.
 facet_ops_title	Konsainan & penghantaran
@@ -928,9 +928,9 @@ book_kind_month	Lejar bulan ini
 book_kind_aging	Tertunggak / debit-kredit
 book_kind_balance	Kunci kira-kira
 ops_desk_help	Imbas AWB dengan pengimbas kod bar USB (atau taipkannya) → Cari. Kemudian maju, cetak label, atau kumpulkan COD. Label mencetak Kod 128.
-role_help_consignor	Peranan: Konsainor — AR (mereka berhutang kepada kami). Firma yang sama juga boleh menjadi Pembawa.
-role_help_carrier	Peranan: Pembawa — AP (kami berhutang kepada mereka). Firma yang sama juga boleh menjadi Consignor.
-role_help_both	Peranan: Konsainor + Pembawa — satu pihak, lejar AR dan AP, bersih dalam Laporan.
+role_help_consignor	Peranan: Konsainor — AR (mereka berhutang kepada kami). Firma yang sama juga boleh menjadi Syarikat kurier.
+role_help_carrier	Peranan: Syarikat kurier — AP (kami berhutang kepada mereka). Firma yang sama juga boleh menjadi Konsainor.
+role_help_both	Peranan: Konsainor + Syarikat kurier — satu pihak, lejar AR dan AP, bersih dalam Laporan.
 role_help_supplier	Peranan: Pembekal — AP untuk pembelian.
 lane_declared_label	Tempahan akaun
 lane_owner_label	Tempahan tunai

@@ -1,9 +1,9 @@
 # Hausa — Hausa (ha). One key<TAB>text per line, in en() order; keep {placeholders}.
 unlock	Buɗe
-sell	Sayarwa
+sell	Sayar
 buy	Saya
 books	Littafin yini
-books_help	Matsayin yau. Sayarwa = kuɗi a ciki. Saya = sayayya da kuɗin fita. Abokan hulɗa = abokan ciniki na bashi da masu kaya.
+books_help	Matsayin yau. Sayar = kuɗi a ciki. Saya = sayayya da kuɗin fita. Abokan hulɗa = abokan ciniki na bashi da masu kaya.
 buy_help	Takardun kuɗin fita da lissafin mai kaya (kuɗi ya fita). Abin da ke kan asusu yana kan littafin abokin hulɗa.
 sell_money_in	Sayar da abubuwa
 buy_money_out	Kuɗin fita / lissafin mai kaya
@@ -648,7 +648,7 @@ team_rights_changed	An canza haƙƙoƙi — ajiye saiti ga wannan mutum
 they_owe_us	Suna binmu bashi
 unit_at_cap	Raka'a @
 units_help	Lambobi na alamomin kaya (kg, guda, buhu). Kowace raka'a dole ta haɗu — kai tsaye ko ta hanyar wasu raka'o'i — da ma'auni (kg · cm · ml · guda), misali akwati 1 = akwatin 2 kuma akwatin 1 = cm 20. Canzawa: 1 daga = ma'auni zuwa. Kuɗi ba raka'a ba ne.
-units_picker_help	Matsa Kunnawa/Kashe don nuna naúrar a cikin masu zaɓen Sayi da Abubuwan. Kashe raka'a har yanzu suna canzawa.
+units_picker_help	Matsa Kunnawa/Kashe don nuna naúrar a cikin masu zaɓen Saya da Abubuwan. Kashe raka'a har yanzu suna canzawa.
 unit_picker_on	Kunna
 unit_picker_off	Kashe
 we_owe_them	Muna binsu bashi

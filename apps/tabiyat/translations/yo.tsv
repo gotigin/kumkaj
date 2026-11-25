@@ -38,13 +38,13 @@ settle_card	Kaadi yanju
 items	Àwọn òògùn
 nav_items	Àwọn òògùn
 items_help	Fọwọ ba ohun kan lati ṣatunkọ rẹ. Nkan tuntun n pa fọọmu naa kuro. Wa pẹlu orukọ tabi koodu kukuru, ṣeto idiyele kan (0 dara), lẹhinna Fikun-un. Tita ti gba silẹ tẹlẹ tọju orukọ ti wọn gba agbara pẹlu.
-add_item	Fi ohun akojọ aṣayan kun
-new_item	Nkan akojọ aṣayan titun
-adding_item	Nfi ohun akojọ aṣayan titun kun
+add_item	Fi ọjà kun
+new_item	Ọjà tuntun
+adding_item	Nfi ọjà titun kun
 editing_item	Ṣatunkọ
 save	Fipamọ
 remove	Yọ kuro
-removed_items	Awọn ohun akojọ aṣayan kuro
+removed_items	Awọn ọjà kuro
 removed_help	Imupadabọ fi ohun naa pada si Awọn nkan gangan bi o ti jẹ - idiyele, fọto ati ẹka.
 restore_item	Mu pada
 empty_catalog	Ko si awọn oogun sibẹsibẹ.
@@ -68,7 +68,7 @@ applied	Ti a lo
 note_ph	Akiyesi (aṣayan)
 rounded	YIKA
 split	Pin
-bill_item_layout	Ifilelẹ ohun akojọ aṣayan
+bill_item_layout	Ifilelẹ ọjà
 bill_item_layout_columns	Awọn ọwọn
 bill_item_layout_stacked	Tolera
 bill_item_header	Awọn akọle ọwọn
@@ -170,11 +170,11 @@ nav_settings	Eto
 nav_lock	Titiipa
 all_items	Gbogbo akojọ awọn ohun
 frequent	Loorekoore
-added_items	Awọn ohun akojọ aṣayan ti a ṣafikun
+added_items	Awọn ọjà ti a ṣafikun
 added_items_empty	Ko si nkankan lori iwe-owo yii sibẹsibẹ - ṣafikun ohun kan lati Gbogbo awọn ohun kan tabi ẹka kan.
 frequent_config_help	Julọ ta ohun kan lati pari owo. Ṣeto awọn ọjọ melo ni lati wo ati iye awọn ohun kan lati ṣafihan.
 frequent_days_ph	Awọn ọjọ (1)
-frequent_limit_ph	Awọn nkan akojọ aṣayan (24)
+frequent_limit_ph	Àwọn ọjà (24)
 frequent_apply	Waye
 frequent_saved	Loorekoore: awọn ọjọ {d} ti o kẹhin, oke {n} — awọn ohun {c}
 frequent_empty	Ko si awọn tita ti o pari ni asiko yii sibẹsibẹ - yanju owo kan (₹0 ti o gba laaye nigbati Eto sọ bẹ) ati pe wọn ṣafihan nibi.
@@ -240,7 +240,7 @@ dont_use	Maṣe lo
 add_branch	Fi eka sii
 add_conversion	Fi iyipada kun
 add_dishes_items	Fi awọn nkan kun
-add_item_plain	Fi ohun akojọ aṣayan kun
+add_item_plain	Fi ọjà kun
 add_note	Fi akọsilẹ kun
 add_opening_balance	Ṣafikun iwọntunwọnsi ṣiṣi
 add_staff	Fi oṣiṣẹ kun
@@ -287,7 +287,7 @@ clear_icon	Ko aami
 clear_photo	Ko aworan kuro
 copy_day_book_csv	Daakọ iwe akọọlẹ ọjọ CSV
 copy_day_close	Daakọ ọjọ sunmọ
-copy_items_csv	Daakọ awọn ohun akojọ aṣayan CSV
+copy_items_csv	Daakọ awọn ọjà CSV
 copy_outstanding_csv	Daakọ ti o tayọ CSV
 copy_parties_csv	Daakọ awọn onibara ati awọn olupese CSV
 copy_party_ledger_csv	Daakọ iwe akọọlẹ onibara CSV
@@ -337,7 +337,7 @@ other_devices_help	Lori ẹrọ yii (Olupin): Awọn ẹrọ miiran → Gba àfi
 forget_shop	Gbagbe ile itaja yii
 goods_received	Awọn ọja ti a gba
 import_day	Ojo agbewọle
-import_items_csv_plain	Ṣe agbewọle awọn nkan akojọ aṣayan CSV…
+import_items_csv_plain	Ṣe agbewọle awọn ọjà CSV…
 import_parties_csv	Ṣe agbewọle awọn alabara ati awọn olupese CSV…
 item_name	Akojọ ohun akojọ orukọ
 login_id_ph	Orukọ olumulo
@@ -637,7 +637,7 @@ wipe_schema_done	Eto itaja nu — yan olupin tabi Onibara lati tẹsiwaju.
 rounded_total	Ti yika Lapapọ
 setup_app_tabiyat	Ṣeto Tabiyat
 shop_logo_optional	Aami itaja (aṣayan)
-stock_type_help	Tẹ orukọ nkan akojọ aṣayan (apakan rẹ ti to), opoiye, lẹhinna ṣatunṣe. Awọn ohun akojọ aṣayan akojọ aṣayan ti a ko ka sibẹsibẹ nilo Bẹrẹ titele lẹẹkan.
+stock_type_help	Tẹ orukọ ọjà (apakan rẹ ti to), opoiye, lẹhinna ṣatunṣe. Awọn ọjà ti a ko ka sibẹsibẹ nilo Bẹrẹ titele lẹẹkan.
 team_owner_help	Fi eniyan silẹ ni ofo lati ṣafikun ẹnikan: orukọ, iṣẹ, orukọ olumulo, PIN, ati ọrọ igbaniwọle yiyan, lẹhinna Fikun-un. Yan eniyan lati ṣatunkọ iru fọọmu kanna - orukọ, orukọ olumulo, ọrọ igbaniwọle, awọn iboju, ati awọn ẹtọ - lẹhinna Fipamọ. Ti ara rẹ PIN ati ọrọ igbaniwọle jẹ iwọle kan ni isalẹ. Olohun ko yi enikeni pada PIN.
 staff_name_ph	Orukọ oṣiṣẹ
 staff_copy_hire_ph	Daakọ iṣeto lati (aṣayan)
@@ -683,8 +683,8 @@ icon_default	Aami: Kumkaj ami (aiyipada) - yan ọkan aṣa
 logo_yours	Logo: aami itaja rẹ - ti o han loju iboju ati awọn gbigba
 logo_default	Logo: Kumkaj ami (aiyipada) - yan tirẹ ti o ba ni ọkan
 setup_complete	Eto ti pari
-onboard_fresh_tmpl	Titun · {} — katalogi bẹrẹ ofo; fi awọn ohun akojọ aṣayan kun ni Akojọ aṣyn awọn ohun kan, lẹhinna Ti ṣee.
-onboard_book_tmpl	Iwe · {} — ṣafikun awọn ohun akojọ aṣayan ati ṣiṣi kirẹditi, lẹhinna Ti ṣee.
+onboard_fresh_tmpl	Titun · {} — katalogi bẹrẹ ofo; fi awọn ọjà kun ni Àwọn ọjà, lẹhinna Ti ṣee.
+onboard_book_tmpl	Iwe · {} — ṣafikun awọn ọjà ati ṣiṣi kirẹditi, lẹhinna Ti ṣee.
 tmpl_blurb	Ile elegbogi counter: awọn oogun, ipele / ipari, khata, awọn iwe.
 reports_facet_title	Iroyin
 reports_facet_help	Awọn iwe akọọlẹ ọjọ, alabara tabi agbalagba olupese, awọn ifiweranṣẹ banki, ati akoko P&L.
@@ -730,10 +730,10 @@ book_kind_today	Awọn akọọlẹ loni
 book_kind_month	Awọn akọọlẹ oṣu yii
 book_kind_aging	Dayato si / debiti-kirẹditi
 book_kind_balance	Iwe iwontunwonsi
-order_help	Fọwọ ba ohun akojọ aṣayan kan lati fi kun.
+order_help	Fọwọ ba ọjà kan lati fi kun.
 categories_help	Tẹ «Lo» lati fi nkan ti o wa loke si abẹ ẹka yẹn. Aworan fun ẹka ni aworan; laiṣe o ṣafihan awọn lẹta ibẹrẹ.
 dish_search_ph	Wa orukọ, iyọ tabi kooduopo…
-sizes_as_items_ph	Awọn iwọn bi awọn ohun akojọ aṣayan lọtọ (aṣayan) - Idaji = 120, Kikun = 200
+sizes_as_items_ph	Awọn iwọn (Half=120, Full=200)
 dish_group_ph	Agbara / ẹgbẹ idii (aṣayan) - fun apẹẹrẹ. 500mg rinhoho
 discount	Ẹ̀dínwó
 remove_discount	Yọ ẹdinwo kuro
@@ -749,7 +749,7 @@ shift_handover	Yi lọ yi bọ handover
 shift_since	Yi naficula niwon
 expected_in_drawer	O ti ṣe yẹ ni duroa
 right_discount	Fun eni
-new_category_row	Ẹka titun - ti a ṣẹda nigbati o ba fi ohun akojọ aṣayan pamọ
+new_category_row	Ẹka titun - ti a ṣẹda nigbati o ba fi ọjà pamọ
 your_category	Ẹka rẹ
 suggested_category	Daba - lati awọn nkan wa
 category_search_ph	Ẹka — wa tirẹ tabi tẹ ọkan tuntun
@@ -767,7 +767,7 @@ no_server_found	Ko si ọkan ti a rii. Lori olupin naa: Eto → Awọn ẹrọ m
 servers_found_pick	Fọwọ ba ile itaja ti o fẹ sopọ si.
 server_host_selected	Lilo {host} — tẹ koodu isọpọ sii, lẹhinna Sopọ ni bayi.
 approval_pin_ph	Alakoso PIN (nikan ti o ba beere)
-menu_search_ph	Wa ohun akojọ aṣayan tabi koodu kukuru
+menu_search_ph	Wa ọjà tabi koodu kukuru
 customer_paid_ph	Onibara san
 tip_ph	Owó ìmoore
 find_server	Wa olupin ile itaja naa
@@ -830,7 +830,7 @@ payment_qr_none	Isanwo QR: ko si - iye QR lati UPI ID nigba sisanwo
 team_pick_ph	Oṣiṣẹ lati ṣatunkọ - orukọ, orukọ olumulo, tabi mu
 select_staff	Yan oṣiṣẹ yii
 rights_help	Awọn iṣe owo fun eniyan yii - tẹ ni kia kia lati yiyi: Ti gba laaye → Nilo PIN Oga → Ko gba laaye. Owo titẹ sita lẹẹkansi jẹ awọn owo-owo nikan; awọn apakan jẹ atokọ ayẹwo ni isalẹ.
-own_item_name	Lo eyi gẹgẹbi orukọ ohun akojọ aṣayan tirẹ
+own_item_name	Lo eyi gẹgẹbi orukọ ọjà tirẹ
 on_your_menu	Ninu akojọ oogun
 edit	Ṣatunkọ
 schemes	Awọn eto / ipese
@@ -902,7 +902,7 @@ unpriced_note	Awọn ohun {n} lori awọn ohun rẹ ko ni idiyele sibẹsibẹ -
 show_unpriced	Ṣe afihan awọn nkan nikan laisi idiyele
 show_all_dishes	Ṣe afihan gbogbo awọn nkan
 role_title_rest_ph	Akọle ipa (fun apẹẹrẹ Captain)
-preset_help_rest	Owo owo: ta. Alakoso: ta + awọn ohun akojọ aṣayan + ofo / atunṣe.
+preset_help_rest	Owo owo: ta. Alakoso: ta + awọn ọjà + ofo / atunṣe.
 kind_resale	Ti ra oogun
 kind_dish	Maṣe ka ọja iṣura
 buy_unit_ph	Ẹyọ (kg, lita, awọn kọnputa)

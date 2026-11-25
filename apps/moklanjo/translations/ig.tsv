@@ -89,7 +89,7 @@ note_ph	Ndetu (ọ bụghị iwu)
 rounded	GBURUGBURU
 split	Kewaa
 counter	Kaụnta
-parcel	ngwugwu
+parcel	Ngwugwu
 order	Ọda
 sales	Ntinye akwụkwọ
 sales_refunds	Ntinye akwụkwọ na nkwụghachi
@@ -837,7 +837,7 @@ runs_bags_heading	Ọsọ na akpa nso nso a
 print_word	Bipụta
 bag_word	Akpa ebu
 run_word	Onye na-agba ọsọ
-parcels_fmt	ngwugwu {n}
+parcels_fmt	Ngwugwu {n}
 parcel_history	Akụkọ ihe mere eme
 attempt_fmt	Mgbalị {n}
 pieces_short_fmt	{n} PC
@@ -848,7 +848,7 @@ cod_on_road	COD ka nọ n'ụzọ
 cod_owed_consignors	Anakọtara - iji kwụọ ndị na-ebubata ego
 cod_rto_fees	Ụgwọ RTO ịnakọta
 cod_to_hand_in	COD iji nyefee
-parcel_one_fmt	ngwugwu {n}
+parcel_one_fmt	Ngwugwu {n}
 facet_bank_title	Akụkọ
 facet_bank_help	Akwụkwọ ụbọchị, ịka onye mmekọ, ndenye ụlọ akụ, na uru na mfu oge.
 facet_ops_title	Nbunye & mbupu

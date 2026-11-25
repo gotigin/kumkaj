@@ -11,10 +11,10 @@ board_empty	Zatím žádné karty.
 board_park_nothing	Není co odložit — přidejte poplatky nebo údaje rezervace
 board_parked	Odloženo na «Nástěnka» — pracoviště je volné
 board_draft	Koncept
-board_booked	Zarezervováno
+board_booked	Podáno
 board_filter_all	Vše
 board_filter_draft	Koncept
-board_filter_booked	Zarezervováno
+board_filter_booked	Podáno
 board_cols_fmt	{n} sl.
 board_summary_fmt	Karty: {total} · koncepty: {drafts} · zaúčtováno: {booked}
 board_card_no_charges	Zatím žádné poplatky
@@ -89,7 +89,7 @@ note_ph	Poznámka (volitelné)
 rounded	ZAOKROUHLÉ
 split	Rozdělit
 counter	Pult
-parcel	Balíček
+parcel	Zásilka
 order	Objednávka
 sales	Rezervace
 sales_refunds	Rezervace a vrácení peněz
@@ -816,20 +816,20 @@ report_day_lens	Zobrazit «dnes» jako
 report_day_lens_help	Jen zobrazení — nemění, kdy «Uzávěrka dne» začne «dnes» znovu. «Podle uzávěrky dne» se řídí poslední uzávěrkou dne; «Podle půlnoci» končí den v 00:00 místního času.
 report_lens_day_close	Podle uzávěrky dne
 report_lens_midnight	Podle půlnoci
-trk_booked	Zarezervováno
+trk_booked	Podáno
 trk_picked_up	Sebráno
 trk_in_transit	V tranzitu
 trk_delivered	Doručeno
 trk_rto	Vrací se odesílateli
 lane_to_dispatch	K odeslání
-lane_with_carrier	S nosičem
+lane_with_carrier	U dopravce
 lane_failed	Nepodařilo se
 lane_done_today	Dnes hotovo
 ops_board_help	Balíčky podle toho, kde jsou v dnešní práci. Klepněte na balíčky (nebo je naskenujte), abyste je vybrali, a poté postupujte podle všech vybraných najednou – každá dráha nabízí pouze pohyby, které jí vyhovují.
 lane_empty	Tady teď nic.
 picked_fmt	Vybráno {n}
 pick_all	Vyberte všechny
-bag_for_carrier	Ruka k nosiči
+bag_for_carrier	Předat dopravci
 send_with_rider	Poslat s kurýrem
 out_again	Zase ven
 return_to_sender	Vrátit odesílateli
@@ -837,7 +837,7 @@ runs_bags_heading	Nedávné běhy a tašky
 print_word	Vytisknout
 bag_word	Přepravní taška
 run_word	Rozvoz kurýra
-parcels_fmt	Balíčky {n}
+parcels_fmt	Zásilky {n}
 parcel_history	Dějiny
 attempt_fmt	Pokus o {n}
 pieces_short_fmt	{n} ks
@@ -848,7 +848,7 @@ cod_on_road	COD stále na cestě
 cod_owed_consignors	Sebrané — platit odesílatelům
 cod_rto_fees	Poplatky RTO vybírat
 cod_to_hand_in	DOBÍRKA k odevzdání
-parcel_one_fmt	Balíček {n}
+parcel_one_fmt	Zásilka {n}
 facet_bank_title	Zprávy
 facet_bank_help	Denní knihy, stárnutí zákazníků nebo dodavatelů, bankovní pošty a dobové zisky a ztráty.
 facet_ops_title	Zásilky a expedice

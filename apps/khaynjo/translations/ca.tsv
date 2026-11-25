@@ -3,9 +3,9 @@ app_tagline	Comandes de restaurant, cuina i llibres. Gratuït sense connexió.
 unlock	Desbloqueja
 pin_hint	El PIN del propietari comença per 0000
 sell	Comanda
-buy	Compres
+buy	Compra
 books	Llibre del dia
-books_help	Posició d'avui. Comanda = comandes que entren. Compres = compres i despeses. Parts = clients a crèdit i proveïdors.
+books_help	Posició d'avui. Comanda = comandes que entren. Compra = compres i despeses. Parts = clients a crèdit i proveïdors.
 buy_help	Vals de despesa i factures de proveïdor (diners que surten). El que queda a compte resta al llibre de la part.
 sell_money_in	Prendre una comanda
 buy_money_out	Despesa / factura de proveïdor
@@ -1024,7 +1024,7 @@ team_rights_changed	Drets canviats — Desa la configuració d'aquesta persona
 they_owe_us	Ens deuen
 unit_at_cap	Unitat @
 units_help	Codis per a les etiquetes d'article (kg, peça, sac). Cada unitat s'ha d'enllaçar — directament o a través d'altres unitats — a un estàndard (kg · cm · ml · pc), p. ex. 1 caixa = 2 capses i 1 capsa = 20 cm. Conversions: 1 des de = factor cap a. Les monedes no són mai unitats.
-units_picker_help	Toqueu Activat/Desactivat per mostrar una unitat als selectors de Compres i Menú. Les unitats desactivades continuen convertint.
+units_picker_help	Toqueu Activat/Desactivat per mostrar una unitat als selectors de Compra i Menú. Les unitats desactivades continuen convertint.
 unit_picker_on	Activat
 unit_picker_off	Desactivat
 we_owe_them	Els devem
@@ -1420,7 +1420,7 @@ parts_status	Introduïts {a} de {b} · en queden {c}
 save_expense	Desa la despesa
 rest_ph	Resta
 low_badge	Baix
-stock_empty	Encara no hi ha res en estoc — el que enregistreu a Compres surt aquí.
+stock_empty	Encara no hi ha res en estoc — el que enregistreu a Compra surt aquí.
 recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu

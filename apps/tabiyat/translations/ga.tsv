@@ -12,10 +12,10 @@ expiry_alerts	Foláirimh éaga (7 lá eile)
 expiry_none	Ní rachaidh aon bhaisceanna in éag sna 7 lá atá romhainn.
 rx_nudge	Úinéir faoi bhratach Rx / Sceideal H — cuir nóta leis más gá.
 unlock	Díghlasáil
-sell	Díolachán
+sell	Díol
 buy	Ceannach
 books	Leabhar lae
-books_help	Staid an lae inniu. Díolachán = airgead isteach. Ceannach = ceannacháin agus costais. Páirtithe = custaiméirí creidmheasa agus soláthraithe.
+books_help	Staid an lae inniu. Díol = airgead isteach. Ceannach = ceannacháin agus costais. Páirtithe = custaiméirí creidmheasa agus soláthraithe.
 buy_help	Dearbháin chostais agus billí soláthróirí (airgead amach). Fanacht ar an gcuntas ar mhórleabhar an pháirtí.
 sell_money_in	Cógais a dhíol
 buy_money_out	Bille Speansais /Soláthair
@@ -660,7 +660,7 @@ team_rights_changed	Athraíodh cearta — Sábháil an socrú do dhuine seo
 they_owe_us	Tá fiach acu orainn
 unit_at_cap	Aonad @
 units_help	Cóid le haghaidh lipéid earraí (kg, píosa, mála). Caithfidh gach aonad nascadh — go díreach nó trí aonaid eile — le caighdeán (kg · cm · ml · pc), m.sh. 1 cráitéar = 2 bhosca agus 1 bosca = 20 cm. Tiontuithe: 1 ó = fachtóir go. Ní aonaid riamh iad airgeadraí.
-units_picker_help	Tapáil Ar/As chun aonad a thaispeáint i mbailitheoirí Ceannaigh agus Míreanna. As aonaid fós a thiontú.
+units_picker_help	Tapáil Ar/As chun aonad a thaispeáint i mbailitheoirí Ceannach agus Míreanna. As aonaid fós a thiontú.
 unit_picker_on	Air
 unit_picker_off	As
 we_owe_them	Tá fiach againn leo

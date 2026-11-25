@@ -660,7 +660,7 @@ team_rights_changed	Të drejtat ndryshuan — Ruaj konfigurimin për këtë pers
 they_owe_us	Ata na kanë borxh
 unit_at_cap	Njësia @
 units_help	Kode për etiketat e artikujve (kg, copë, thes). Çdo njësi duhet të lidhet — drejtpërdrejt ose përmes njësive të tjera — me një standard (kg · cm · ml · pc), p.sh. 1 crate = 2 box dhe 1 box = 20 cm. Shndërrimet: 1 from = factor to. Monedhat nuk janë kurrë njësi.
-units_picker_help	Prekni Aktiv/Fikur për të shfaqur një njësi në përzgjedhësit Bli dhe Artikuj. Njësitë e çaktivizuara ende konvertohen.
+units_picker_help	Prekni Aktiv/Fikur për të shfaqur një njësi te përzgjedhësit e Blerjes dhe të Artikujve. Njësitë e çaktivizuara ende konvertohen.
 unit_picker_on	Ndezur
 unit_picker_off	Fikur
 we_owe_them	Ne u kemi borxh

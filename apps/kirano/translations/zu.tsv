@@ -26,9 +26,9 @@ settle_card	Khokha ikhadi
 items	Izimpahla
 nav_items	Izimpahla
 items_help	Thepha into ukuze uyihlele. Into entsha isula ifomu. Sesha ngegama noma ngekhodi emfushane, setha inani (0 kulungile), bese u-Engeza. Ukuthengisa osekurekhodiwe kugcina igama abakhokhiswe ngakho.
-add_item	Engeza into yemenyu
-new_item	Into yemenyu entsha
-adding_item	Yengeza into yemenyu entsha
+add_item	Engeza impahla
+new_item	Impahla entsha
+adding_item	Yengeza impahla entsha
 editing_item	Iyahlela
 save	Londoloza
 remove	Susa
@@ -56,11 +56,11 @@ applied	Kusetshenzisiwe
 note_ph	Inothi (uyazikhethela)
 rounded	I-ROUNDED
 split	Hlukanisa
-bill_item_layout	Isakhiwo sento yemenyu
+bill_item_layout	Isakhiwo sempahla
 bill_item_layout_columns	Amakholomu
 bill_item_layout_stacked	Kustakiwe
 bill_item_header	Izihloko zekholomu
-bill_item_name	Igama lento yemenyu
+bill_item_name	Igama lempahla
 bill_item_qty	Inani
 bill_item_price	Inani
 bill_item_amount	Inani
@@ -228,7 +228,7 @@ dont_use	Ungasebenzisi
 add_branch	Engeza igatsha
 add_conversion	Engeza ukuguqulwa
 add_dishes_items	Engeza izinto
-add_item_plain	Engeza into yemenyu
+add_item_plain	Engeza impahla
 add_note	Engeza inothi
 add_opening_balance	Engeza ibhalansi yokuvula
 add_staff	Engeza abasebenzi
@@ -327,7 +327,7 @@ goods_received	Izimpahla zamukelwe
 import_day	Ngenisa usuku
 import_items_csv_plain	Ngenisa izimpahla CSV…
 import_parties_csv	Ngenisa amakhasimende nabahlinzeki CSV…
-item_name	Igama lento yemenyu
+item_name	Igama lempahla
 login_id_ph	Igama lomsebenzisi
 mark_cleared	Umaka usuliwe
 new_party_clear	Ikhasimende elisha noma umphakeli (ifomu elicacile)
@@ -563,7 +563,7 @@ brand_shown_help	Iboniswa ezikrinini ngaphakathi kohlelo lokusebenza. Igama lohl
 app_icon	Isithonjana sohlelo lokusebenza
 logo_help	Umaki wesitolo ozikhethela wona ezikrinini kuhlelo lokusebenza.
 onboard_layout	Okutholayo
-item_photo_help	Ongakukhetha. Ngaphandle kwesithombe sibonisa amagama okuqala asuka egameni lento yemenyu.
+item_photo_help	Ongakukhetha. Ngaphandle kwesithombe sibonisa amagama okuqala asuka egameni lempahla.
 stamp_heading	Isitembu
 stamp_image_help	Uma uthanda isithombe sesitembu kuzikweletu eziphrintiwe kanye nesibonisi sekhasimende.
 payment_qr_heading	Inkokhelo ye-QR
@@ -625,7 +625,7 @@ wipe_schema_done	Ukusethwa kwesitolo kusuliwe — khetha Iseva noma Iklayenti uk
 rounded_total	Ingqikithi Eyindilinga
 setup_app_kirano	Setha i-Kirano
 shop_logo_optional	Ilogo yesitolo (uyazikhethela)
-stock_type_help	Thayipha igama lento yemenyu (ingxenye yayo yanele), inani, bese ulungisa. Izimpahla ezingabaliwe okwamanje zidinga Qala ukulandelela kanye.
+stock_type_help	Thayipha igama lempahla (ingxenye yayo yanele), inani, bese ulungisa. Izimpahla ezingabaliwe okwamanje zidinga Qala ukulandelela kanye.
 team_owner_help	Shiya umuntu engenalutho ukuze wengeze othile: igama, umsebenzi, igama lomsebenzisi, PIN, kanye nephasiwedi ozikhethela yona, bese u-Engeza. Khetha umuntu ozohlela lolo hlobo lwefomu - igama, igama lomsebenzisi, iphasiwedi, izikrini, namalungelo - bese ulondoloza. Ezakho PIN kanye nephasiwedi ukungena ngemvume okukodwa ezansi. Umnikazi akashintshi PIN yomunye umuntu.
 staff_name_ph	Igama labasebenzi
 staff_copy_hire_ph	Kopisha ukusetha kusuka (kuyakhetheka)
@@ -647,7 +647,7 @@ team_features_changed	Izikrini zishintshile — Londoloza ukusethwa kwalo muntu
 team_rights_changed	Amalungelo ashintshile — Londoloza ukusethwa kwalo muntu
 they_owe_us	Bayasikweleta
 unit_at_cap	Iyunithi @
-units_help	Amakhodi amalebula ento yemenyu (kg, ucezu, isikhwama). Yonke iyunithi kufanele ixhume — ngokuqondile noma ngamanye amayunithi — ezingeni (kg · cm · ml · pc), isb. Ikhreyithi elingu-1 = ibhokisi eli-2 nebhokisi elingu-1 = 20 cm. Ukuguqulwa: 1 kusuka = ​​isici kuya. Izimali aziwona amayunithi.
+units_help	Amakhodi amalebula empahla (kg, ucezu, isikhwama). Yonke iyunithi kufanele ixhume — ngokuqondile noma ngamanye amayunithi — ezingeni (kg · cm · ml · pc), isb. Ikhreyithi elingu-1 = ibhokisi eli-2 nebhokisi elingu-1 = 20 cm. Ukuguqulwa: 1 kusuka = ​​isici kuya. Izimali aziwona amayunithi.
 units_picker_help	Thepha okuthi Vula/Vala ukuze ubonise iyunithi kokuthi Thenga kanye nezikhethi zezinto. Amayunithi avaliwe asaguqulwa.
 unit_picker_on	Vuliwe
 unit_picker_off	Valiwe
@@ -718,10 +718,10 @@ book_kind_today	Namuhla amaleja
 book_kind_month	Amaleja enyanga
 book_kind_aging	Okusasele / debit-credit
 book_kind_balance	Ibhalansi
-order_help	Thepha into yemenyu ukuze uyengeze.
+order_help	Thepha impahla ukuze uyengeze.
 categories_help	Thepha Sebenzisa ukufaka into engenhla kulolo hlobo. Isithombe sinikeza isigaba isithombe; ngaphandle kwaleso sibonisa izinhlamvu zokuqala.
 dish_search_ph	Sesha izinto noma ikhodi emfushane...
-sizes_as_items_ph	Osayizi njengezinto zemenyu ezihlukene (uyazikhethela) — Half=120, Full=200
+sizes_as_items_ph	Osayizi (Half=120, Full=200)
 dish_group_ph	Iqembu likasayizi wephakethe (uyazikhethela) — isb. I-1kg / 5kg
 discount	Isaphulelo
 remove_discount	Susa isaphulelo
@@ -737,7 +737,7 @@ shift_handover	Shift ukunikezela
 shift_since	Lokhu kushintsha kusukela
 expected_in_drawer	Kulindelwe ekhabetheni
 right_discount	Nikeza isaphulelo
-new_category_row	Isigaba esisha — sidalwe uma ugcina into yemenyu
+new_category_row	Isigaba esisha — sidalwe uma ugcina impahla
 your_category	Isigaba sakho
 suggested_category	Okuphakanyisiwe - kusuka ezintweni zethu
 category_search_ph	Isigaba — sesha eyakho noma thayipha entsha
@@ -755,7 +755,7 @@ no_server_found	Akukho okutholiwe. Kuseva: Izilungiselelo → Amanye amadivaysi 
 servers_found_pick	Thepha isitolo ofuna ukuxhuma kuso.
 server_host_selected	Usebenzisa {host} — faka ikhodi yokumatanisa, bese Bhangqa manje.
 approval_pin_ph	Umphathi PIN (kuphela uma ebuzwa)
-menu_search_ph	Sesha into yemenyu noma ikhodi emfushane
+menu_search_ph	Sesha impahla noma ikhodi emfushane
 customer_paid_ph	Ikhasimende likhokhelwe
 tip_ph	Ithiphu
 find_server	Thola iseva yesitolo
@@ -818,7 +818,7 @@ payment_qr_none	Inkokhelo ye-QR: ayikho — inani le-QR elisuka ku-UPI ID lapho 
 team_pick_ph	Izisebenzi ezizohlelwa — igama, igama lomsebenzisi, noma ukukhetha
 select_staff	Khetha lesi sisebenzi
 rights_help	Izenzo zemali zalo muntu — thepha ukuze ujikelezise: Kuvunyelwe → Idinga i-PIN yomphathi → Ayivunyelwe. Ibhili yokuphrinta futhi yizikweletu kuphela; izigaba ziwuhlu lokuhlola ngezansi.
-own_item_name	Sebenzisa lokhu njengegama lakho lento yemenyu
+own_item_name	Sebenzisa lokhu njengegama lakho lempahla
 on_your_menu	Kukhathalogi
 edit	Hlela
 schemes	Izikimu / okunikezwayo

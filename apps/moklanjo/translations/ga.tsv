@@ -147,7 +147,7 @@ consignee_address_ph	Seoladh seachadta
 origin_name_ph	Ainm an tseoltóra
 origin_phone_ph	Fón seoltóir
 origin_address_ph	Seoladh piocadh / tionscnaimh
-booking_consignor_heading	coinsíneoir (custaiméir / seoltóir)
+booking_consignor_heading	Coinsíneoir (custaiméir / seoltóir)
 booking_consignee_heading	coinsíní (glacadóir)
 booking_consignor_hint	Roghnaigh cóisir le líonadh, nó fág bán le haghaidh siúl isteach. Ag teastáil le haghaidh piocadh baile agus RTO.
 booking_consignee_hint	Glacadóir an dáileachta. Fág bán le haghaidh laghduithe cuntair siúil isteach.
@@ -291,7 +291,7 @@ unmark	Bain an marc
 role_both	An dá
 role_carrier	Iompróir
 role_cashier	Airgeadóir
-role_consignor	coinsíneoir
+role_consignor	Coinsíneoir
 role_manager	Bainisteoir
 role_supplier	Soláthraí
 branch_name_sell_ph	Ainmbrainse le díol as

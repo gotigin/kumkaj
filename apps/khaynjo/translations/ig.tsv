@@ -1024,7 +1024,7 @@ team_rights_changed	Ikike gbanwere — Chekwaa nhazi maka onye a
 they_owe_us	Ha ji anyị
 unit_at_cap	Nkeji @
 units_help	Koodu maka akara ihe (kg, ibe, akpa). Nkeji ọ bụla ga-ejikọ — ozugbo ma ọ bụ site na nkeji ndị ọzọ — na ọkọlọtọ (kg · cm · ml · pc), dịka 1 crate = 2 box na 1 box = 20 cm. Ntụgharị: 1 from = factor to. Ego abụghị nkeji.
-units_picker_help	Kpatụ Gbanye/Gbanyụọ ka ị gosi nkeji na nhọrọ Ịzụta na Ndepụta nri. Nkeji gbanyụrụ ka na-atụgharị.
+units_picker_help	Kpatụ Gbanye/Gbanyụọ ka ị gosi nkeji na nhọrọ Zụta na Ndepụta nri. Nkeji gbanyụrụ ka na-atụgharị.
 unit_picker_on	Gbanye
 unit_picker_off	Gbanyụọ
 we_owe_them	Anyị ji ha
@@ -1420,7 +1420,7 @@ parts_status	E tinyere {a} n'ime {b} · {c} fọdụrụ
 save_expense	Chekwaa mmefu
 rest_ph	Fọdụrụ
 low_badge	Dị ala
-stock_empty	Ọ dịghị ihe na ngwaahịa — ihe ị dere na Ịzụta na-apụta ebe a.
+stock_empty	Ọ dịghị ihe na ngwaahịa — ihe ị dere na Zụta na-apụta ebe a.
 recent_changes	Mgbanwe nso nso a
 lane_declared_label	Ụgwọ ụtụ
 lane_owner_label	Akwụkwọ ego aka

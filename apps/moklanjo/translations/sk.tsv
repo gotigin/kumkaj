@@ -11,10 +11,10 @@ board_empty	Zatiaľ žiadne karty.
 board_park_nothing	Nie je čo odložiť — pridajte poplatky alebo údaje rezervácie
 board_parked	Odložené na «Nástenka» — pult je voľný
 board_draft	Koncept
-board_booked	Rezervované
+board_booked	Podané
 board_filter_all	Všetky
 board_filter_draft	Koncept
-board_filter_booked	Rezervované
+board_filter_booked	Podané
 board_cols_fmt	{n} stĺp.
 board_summary_fmt	Karty: {total} · koncepty: {drafts} · rezervované: {booked}
 board_card_no_charges	Zatiaľ žiadne poplatky
@@ -289,7 +289,7 @@ till_to_bank	Do → banka
 mark_cleared	Mark vymazaný
 unmark	Zrušiť označenie
 role_both	Obaja
-role_carrier	Nosič
+role_carrier	Prepravca
 role_cashier	Pokladník
 role_consignor	Odosielateľ
 role_manager	manažér
@@ -301,7 +301,7 @@ card_amount_ph	Suma karty
 cash_amount_ph	Suma v hotovosti
 upi_amount_ph	suma UPI
 carrier_cost_ph	Náklady na prepravcu
-carrier_party_ph	Nosičská párty
+carrier_party_ph	Prepravca (strana)
 choose_icon	Vyberte ikonu
 choose_logo	Vyberte logo
 choose_receipt_stamp	Vyberte pečiatku účtenky
@@ -378,7 +378,7 @@ failed_delivery	Neúspešné doručenie
 find_scan_awb	Nájsť/skenovať AWB
 forget_shop	Zabudnite na tento obchod
 fuel_ph	Palivo
-handover_carrier	Ručne rezervovaný → nosič
+handover_carrier	Ručne podané → prepravca
 import_day	Deň importu
 import_items_csv	Importovať položky/sadzby CSV…
 import_parties_csv	Importovať zákazníkov a dodávateľov CSV…
@@ -816,20 +816,20 @@ report_day_lens	Zobraziť «Dnes» podľa
 report_day_lens_help	Len zobrazenie — nemení, kedy «Uzávierka dňa» začne «Dnes» odznova. «Podľa uzávierky dňa» sa riadi poslednou uzávierkou dňa; «Podľa polnoci» ukončí deň o 00:00 miestneho času.
 report_lens_day_close	Podľa uzávierky dňa
 report_lens_midnight	Podľa polnoci
-trk_booked	Rezervované
+trk_booked	Podané
 trk_picked_up	Vyzdvihnuté
 trk_in_transit	V tranzite
 trk_delivered	Doručené
 trk_rto	Návrat k odosielateľovi
 lane_to_dispatch	Na odoslanie
-lane_with_carrier	S nosičom
+lane_with_carrier	U prepravcu
 lane_failed	Nepodarilo sa
 lane_done_today	Dnes hotovo
 ops_board_help	Balíky podľa toho, kde sa nachádzajú v dnešnej práci. Ťuknite na balíky (alebo ich naskenujte), aby ste ich vybrali, a potom postupujte podľa všetkých vybratých naraz – každý pruh ponúka len pohyby, ktoré mu vyhovujú.
 lane_empty	Momentálne tu nič nie je.
 picked_fmt	Vybraté {n}
 pick_all	Vybrať všetky
-bag_for_carrier	Ruka na nosič
+bag_for_carrier	Odovzdať prepravcovi
 send_with_rider	Poslať s kuriérom
 out_again	Znova von
 return_to_sender	Návrat k odosielateľovi
@@ -837,7 +837,7 @@ runs_bags_heading	Nedávne behy a tašky
 print_word	Tlačiť
 bag_word	Nosná taška
 run_word	Rozvoz kuriéra
-parcels_fmt	balíky {n}
+parcels_fmt	Zásielky {n}
 parcel_history	História
 attempt_fmt	Pokus o {n}
 pieces_short_fmt	{n} ks
@@ -848,7 +848,7 @@ cod_on_road	COD stále na ceste
 cod_owed_consignors	Collected — vyplácať odosielateľov
 cod_rto_fees	Poplatky RTO vyberať
 cod_to_hand_in	DOBIERKU odovzdať
-parcel_one_fmt	Balík {n}
+parcel_one_fmt	Zásielka {n}
 facet_bank_title	Správy
 facet_bank_help	Denné knihy, starnutie zákazníkov alebo dodávateľov, bankové pošty a dobové zisky a straty.
 facet_ops_title	Zásielky a expedície
