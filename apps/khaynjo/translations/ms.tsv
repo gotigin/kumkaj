@@ -1121,7 +1121,7 @@ add_station_heading	Tambah stesen dapur
 categories_help	Ketik Gunakan untuk memfailkan item di atas di bawah kategori itu. Foto memberikan kategori gambar; tanpa satu ia menunjukkan inisialnya.
 dish_search_ph	Nama item — cari hidangan kami atau taip hidangan anda sendiri
 tile_free	Kosong
-tile_occupied	diduduki
+tile_occupied	Diduduki
 tile_food_ready	Makanan siap
 tile_bill_printed	Bil dicetak
 tile_paid	Dibayar

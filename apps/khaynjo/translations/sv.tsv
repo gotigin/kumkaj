@@ -1121,7 +1121,7 @@ add_station_heading	Lägg till en köksstation
 categories_help	Tryck på Använd för att spara objektet ovan under den kategorin. Foto ger kategorin en bild; utan en visar den sina initialer.
 dish_search_ph	Artikelnamn — sök i våra rätter eller skriv din egen
 tile_free	Ledigt
-tile_occupied	Upptagen
+tile_occupied	Upptaget
 tile_food_ready	Mat klar
 tile_bill_printed	Nota utskriven
 tile_paid	Betalt
@@ -1152,7 +1152,7 @@ shift_since	Denna förändring sedan
 expected_in_drawer	Förväntas i låda
 right_discount	Ge rabatt
 floor_in_kitchen	I köket
-floor_eating	Serveras
+floor_eating	Serverat
 pick_category	Välj en kategori
 close_category_list	Stäng kategorilistan
 new_category_row	Ny kategori – skapas när du sparar objektet

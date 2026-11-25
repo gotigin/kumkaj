@@ -408,7 +408,7 @@ reattempt	Ponovni poskus
 rider_cod_handed_ph	COD oddan
 settle_rider_cod	Poravnaj COD kurirja
 mode_desk	Pisalna miza
-mode_rider	Kurir
+mode_rider	Dostavljavec
 waiting_office	čakajo, da pridejo v pisarno
 capture_signature	Zajem podpisa
 incoming_manifest	Dohodni manifest

@@ -1121,7 +1121,7 @@ add_station_heading	Bættu við eldhússtöð
 categories_help	Pikkaðu á Nota til að skrá valmyndaratriðið hér að ofan undir þeim flokki. Mynd gefur flokknum mynd; án þess sýnir það upphafsstafina.
 dish_search_ph	Heiti valmyndarvalmyndar — leitaðu í réttunum okkar eða sláðu inn þinn eigin
 tile_free	Laust
-tile_occupied	Upptekinn
+tile_occupied	Upptekið
 tile_food_ready	Matur tilbúinn
 tile_bill_printed	Bill prentaður
 tile_paid	Greitt

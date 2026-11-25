@@ -1121,7 +1121,7 @@ add_station_heading	ເພີ່ມ​ສະຖານີ​ເຮືອນຄົ
 categories_help	ແຕະ​ໃຊ້​ເພື່ອ​ຍື່ນ​ລາຍການ​ຂ້າງ​ເທິງ​ພາຍໃຕ້​ໝວດໝູ່​ນັ້ນ. ຮູບພາບ​ເຮັດໃຫ້​ປະເພດ​ຮູບພາບ; ໂດຍ​ບໍ່​ມີ​ການ​ຫນຶ່ງ​ມັນ​ສະແດງ​ໃຫ້​ເຫັນ​ເບື້ອງຕົ້ນ​ຂອງ​ມັນ.
 dish_search_ph	ຊື່​ລາຍການ — ຊອກຫາ​ອາຫານ​ຂອງ​ພວກ​ເຮົາ ຫຼື​ພິມ​ຂອງ​ທ່ານ​ເອງ
 tile_free	ຫວ່າງ
-tile_occupied	ຄອບຄອງ
+tile_occupied	ມີ​ລູກຄ້າ
 tile_food_ready	ອາຫານ​ພ້ອມ
 tile_bill_printed	ພິມ​ໃບ​ບິນ​ແລ້ວ
 tile_paid	ຈ່າຍ​ແລ້ວ
@@ -1152,7 +1152,7 @@ shift_since	ການປ່ຽນແປງ​ນີ້​ນັບ​ຕັ້�
 expected_in_drawer	ຄາດວ່າ​ຈະ​ຢູ່​ໃນ​ລິ້ນ​ຊັກ
 right_discount	ໃຫ້​ສ່ວນ​ຫຼຸດ
 floor_in_kitchen	ໃນ​ເຮືອນຄົວ
-floor_eating	ໃຫ້​ບໍລິການ
+floor_eating	ເສີບ​ແລ້ວ
 pick_category	ເລືອກ​ປະເພດ
 close_category_list	ປິດ​ລາຍຊື່​ໝວດໝູ່
 new_category_row	ໝວດໝູ່​ໃໝ່ — ສ້າງ​ເມື່ອ​ທ່ານ​ບັນທຶກ​ລາຍການ

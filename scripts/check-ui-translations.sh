@@ -268,6 +268,10 @@ done
 n="$(wc -l <"$all_gaps" | tr -d ' ')"
 if [[ "$ok" -ne 0 && "$n" -eq 0 ]]; then
   echo "UI translations complete for: ${apps[*]}"
+  # Headword lock vs reviewed site packs (skip when --site-only path; apps only).
+  if [[ -z "$SITE" ]]; then
+    bash "$ROOT/scripts/check-app-site-glossary.sh"
+  fi
   exit 0
 fi
 

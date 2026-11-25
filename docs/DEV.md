@@ -301,7 +301,9 @@ every OS — never gate one on the device.
    re-validated instead of re-walked; ambiguous names still walk, so the
    first-match rule is unchanged. `MAKEPAD_TREE_VERIFY=1` cross-checks every
    index answer against the walk and logs `WIDGET-TREE-VERIFY mismatch` —
-   run the smokes with it after touching `widget_tree.rs`. Keep looked-up
+   run the smokes with it after touching `widget_tree.rs`. Desktop / Xvfb is
+   the practical gate (Android APKs do not inherit that env); pair with a
+   device visual smoke (he / ur / th) when a tablet is attached. Keep looked-up
    ids unique (they already must be: `ids!(x)` finds the first `x`).
 7. **The stall meter names anything that holds the UI thread** (each app's
    `runtime.rs`: `note_ui_stall`, `stall_span`). Any event that takes
@@ -814,6 +816,13 @@ fill that stopped part-way). Filled 2026-11-17; a third test,
 `no_text_is_left_in_english_in_most_packs` (every app), now fails when a text
 with real words is English in more than three quarters of the packs — never
 use `--standin-english` and stop there.
+
+**App ↔ site headwords (2026-11-25).** After the app packs pass the key/placeholder
+gate, `check-ui-translations.sh` also runs `scripts/check-app-site-glossary.sh`:
+exact English shop labels (Rider, Parcel, Tip, Occupied, Sell/Buy, …) must match
+the reviewed website packs for that language. Apostrophe glyph variants are
+normalized. Help sentences are not compared. Run the glossary script alone when
+debugging a single code.
 
 **Pack quality (2026-11-17).** The major languages were written with care;
 the rarer ones (Georgian, Guarani, Quechua, Sinhala, Dogri, Sanskrit,

@@ -1121,7 +1121,7 @@ add_station_heading	Ашкана станциясын кошуу
 categories_help	Жогорудагы товарды ошол категорияга киргизүү үчүн «Колдонуу» басыңыз. Сүрөт категорияга сүрөт берет; сүрөт жок болсо, баш тамгалары көрүнөт.
 dish_search_ph	Меню пунктунун аталышы — биздин тамактарды издеңиз же өзүңүздүн тамактарыңызды жазыңыз
 tile_free	Бош
-tile_occupied	Ээленген
+tile_occupied	Бош эмес
 tile_food_ready	Тамак даяр
 tile_bill_printed	Коноктун эсеби басылып чыкты
 tile_paid	Төлөндү
@@ -1152,7 +1152,7 @@ shift_since	Бул жылыштан бери
 expected_in_drawer	Суурмада күтүлөт
 right_discount	Арзандатуу берүү
 floor_in_kitchen	Ашканада
-floor_eating	Тамак берилди
+floor_eating	Берилди
 pick_category	Категория тандаңыз
 close_category_list	Категориялар тизмесин жабуу
 new_category_row	Жаңы категория — товарды сактаганда түзүлөт

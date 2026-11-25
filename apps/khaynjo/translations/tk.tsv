@@ -1121,7 +1121,7 @@ add_station_heading	Aşhana bekedini goşuň
 categories_help	Şol kategoriýa boýunça ýokardaky menýu elementini faýl etmek üçin ulanyň. Surat kategoriýa surat berýär; birinjisinden baş harplaryny görkezýär.
 dish_search_ph	Menýu menýusynyň ady - gap-gaçlarymyzy gözläň ýa-da özüňiz ýazyň
 tile_free	Boş
-tile_occupied	Iş bilen meşgullanýar
+tile_occupied	Eýelenen
 tile_food_ready	Iýmit taýýar
 tile_bill_printed	Hasap çap edildi
 tile_paid	Tölegli

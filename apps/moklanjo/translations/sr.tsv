@@ -408,7 +408,7 @@ reattempt	Поновни покушај
 rider_cod_handed_ph	ЦОД предао
 settle_rider_cod	Обрачунај поузеће курира
 mode_desk	Деск
-mode_rider	Курир
+mode_rider	Достављач
 waiting_office	чека да стигне у канцеларију
 capture_signature	Сними потпис
 incoming_manifest	Долазни манифест
