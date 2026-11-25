@@ -1,7 +1,7 @@
 /**
  * Auth chrome for HTML topnav only.
  * Login is a real <a data-nav="login"> nav item. This script only swaps it
- * for avatar+Logout when signed in. Never invents overlays or extra mounts.
+ * for avatar + click-to-open Logout menu when signed in.
  */
 (function () {
   "use strict";
@@ -15,6 +15,7 @@
       Object.keys(attrs).forEach(function (k) {
         if (k === "className") n.className = attrs[k];
         else if (k === "text") n.textContent = attrs[k];
+        else if (k === "hidden") n.hidden = !!attrs[k];
         else if (k.indexOf("on") === 0 && typeof attrs[k] === "function") {
           n.addEventListener(k.slice(2).toLowerCase(), attrs[k]);
         } else if (attrs[k] != null && attrs[k] !== false) {
@@ -29,7 +30,11 @@
   }
 
   function nav() {
-    return document.querySelector(".topnav, .topbar");
+    // Prefer .topnav: legal pages wrap it in <header class="topbar">, and
+    // querySelector(".topnav, .topbar") would return the outer header first —
+    // insertBefore(host, #site-lang-chrome) then throws NotFoundError because
+    // the lang slot is a child of .topnav, not of .topbar.
+    return document.querySelector(".topnav") || document.querySelector(".topbar");
   }
 
   function loginLink() {
@@ -71,7 +76,8 @@
     if (!host) {
       host = el("span", { id: "site-auth-chrome", className: "site-auth-chrome" });
       var lang = n.querySelector("#site-lang-chrome");
-      if (lang) n.insertBefore(host, lang);
+      // Insert beside the lang slot in whatever parent actually owns it.
+      if (lang && lang.parentNode) lang.parentNode.insertBefore(host, lang);
       else n.appendChild(host);
     }
     return host;
@@ -85,7 +91,6 @@
     var host = ensureHost();
     if (!host) return;
 
-    // Logged out: keep the real Login nav <a>; clear host.
     if (!user) {
       host.textContent = "";
       if (link) link.hidden = false;
@@ -94,31 +99,71 @@
 
     if (link) link.hidden = true;
     host.textContent = "";
-    host.className = "site-auth-chrome";
+    host.className = "site-auth-chrome site-auth-chrome--menu";
 
     var id = identity(user);
     var who;
     if (id.kind === "photo") {
-      who = el("a", { className: "site-auth-avatar site-auth-avatar--photo", href: ACCOUNT, title: id.label });
-      who.appendChild(el("img", { src: id.url, alt: "", width: "28", height: "28", referrerpolicy: "no-referrer" }));
+      who = el("button", {
+        type: "button",
+        className: "site-auth-avatar site-auth-avatar--photo",
+        title: id.label,
+        "aria-haspopup": "menu",
+        "aria-expanded": "false",
+      });
+      who.appendChild(
+        el("img", { src: id.url, alt: "", width: "28", height: "28", referrerpolicy: "no-referrer" })
+      );
     } else {
-      who = el("a", {
-        className: "site-auth-avatar site-auth-avatar--text" + (id.text === "Anonymous" ? " site-auth-avatar--anon" : ""),
-        href: ACCOUNT,
+      who = el("button", {
+        type: "button",
+        className:
+          "site-auth-avatar site-auth-avatar--text" +
+          (id.text === "Anonymous" ? " site-auth-avatar--anon" : ""),
         title: id.label,
         text: id.text,
+        "aria-haspopup": "menu",
+        "aria-expanded": "false",
       });
     }
-    var logout = el("button", {
-      type: "button",
-      className: "site-auth-logout",
-      text: "Logout",
-      onClick: function () {
-        if (auth && typeof auth.signOut === "function") auth.signOut().catch(function () {});
-      },
+
+    var menu = el("div", {
+      className: "site-auth-menu",
+      role: "menu",
+      hidden: true,
     });
+    menu.appendChild(
+      el("a", {
+        className: "site-auth-menu-item",
+        href: ACCOUNT,
+        role: "menuitem",
+        text: "Account",
+      })
+    );
+    menu.appendChild(
+      el("button", {
+        type: "button",
+        className: "site-auth-menu-item site-auth-logout",
+        role: "menuitem",
+        text: "Logout",
+        onClick: function () {
+          menu.hidden = true;
+          who.setAttribute("aria-expanded", "false");
+          if (auth && typeof auth.signOut === "function") auth.signOut().catch(function () {});
+        },
+      })
+    );
+
+    who.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var open = menu.hidden;
+      menu.hidden = !open;
+      who.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
     host.appendChild(who);
-    host.appendChild(logout);
+    host.appendChild(menu);
   }
 
   function bind(auth) {

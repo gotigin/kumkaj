@@ -30,7 +30,11 @@
   }
 
   function nav() {
-    return document.querySelector(".topnav, .topbar");
+    // Prefer .topnav: legal pages wrap it in <header class="topbar">, and
+    // querySelector(".topnav, .topbar") would return the outer header first —
+    // insertBefore(host, #site-lang-chrome) then throws NotFoundError because
+    // the lang slot is a child of .topnav, not of .topbar.
+    return document.querySelector(".topnav") || document.querySelector(".topbar");
   }
 
   function loginLink() {
@@ -72,7 +76,8 @@
     if (!host) {
       host = el("span", { id: "site-auth-chrome", className: "site-auth-chrome" });
       var lang = n.querySelector("#site-lang-chrome");
-      if (lang) n.insertBefore(host, lang);
+      // Insert beside the lang slot in whatever parent actually owns it.
+      if (lang && lang.parentNode) lang.parentNode.insertBefore(host, lang);
       else n.appendChild(host);
     }
     return host;
