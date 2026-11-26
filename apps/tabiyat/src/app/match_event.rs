@@ -4201,19 +4201,22 @@ impl MatchEvent for App {
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| st.t("staff_copy_need_selected"))?;
-                let current_name = st
+                let (current_name, current_login, is_owner_row) = st
                     .staff
                     .iter()
                     .find(|s| s.id == staff_id)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_else(|| staff_id.clone());
+                    .map(|s| (s.name.clone(), s.login_id.clone(), s.is_owner()))
+                    .unwrap_or_else(|| (staff_id.clone(), String::new(), false));
                 if !new_name.trim().is_empty() && new_name.trim() != current_name.trim() {
                     st.books_op(BooksOp::RenameStaff {
                         staff_id: staff_id.clone(),
                         name: new_name.trim().to_string(),
                     })?;
                 }
-                if password_set {
+                let login_trim = login.trim().to_ascii_lowercase();
+                let login_changed = !login_trim.is_empty()
+                    && login_trim != current_login.to_ascii_lowercase();
+                if password_set || login_changed {
                     st.books_op(BooksOp::SetStaffLogin {
                         staff_id: staff_id.clone(),
                         login_id: login,
@@ -4226,8 +4229,10 @@ impl MatchEvent for App {
                     .find(|s| s.id == staff_id)
                     .map(|s| s.name.clone())
                     .unwrap_or(current_name);
-                let features = st.draft_features.clone();
-                st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
+                if !is_owner_row {
+                    let features = st.draft_features.clone();
+                    st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
+                }
                 st.status = st.t("save_features_ok").replace("{name}", &name);
                 Ok(())
             })();

@@ -285,10 +285,14 @@ enum SuggestField {
     BillPreviewPaper,
     /// Bill & KOT → KOT: the paper in each kitchen printer (OS document).
     KotPreviewPaper,
+    /// Bill & KOT → Bill: sample vs real open order / settled sale for preview.
+    BillPreviewSource,
+    /// Bill & KOT → KOT: sample vs real kitchen ticket for preview.
+    KotPreviewSource,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 39] = [
+    const ALL: [SuggestField; 41] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -328,6 +332,8 @@ impl SuggestField {
         SuggestField::KotTestPrinters,
         SuggestField::BillPreviewPaper,
         SuggestField::KotPreviewPaper,
+        SuggestField::BillPreviewSource,
+        SuggestField::KotPreviewSource,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -372,6 +378,8 @@ impl SuggestField {
             SuggestField::KotTestPrinters => "kot_test_printers",
             SuggestField::BillPreviewPaper => "bill_preview_paper",
             SuggestField::KotPreviewPaper => "kot_preview_paper",
+            SuggestField::BillPreviewSource => "bill_preview_source",
+            SuggestField::KotPreviewSource => "kot_preview_source",
         }
     }
 
@@ -416,6 +424,8 @@ impl SuggestField {
             SuggestField::KotTestPrinters => ids!(kot_test_printers_input),
             SuggestField::BillPreviewPaper => ids!(bill_preview_paper_input),
             SuggestField::KotPreviewPaper => ids!(kot_preview_paper_input),
+            SuggestField::BillPreviewSource => ids!(bill_preview_source_input),
+            SuggestField::KotPreviewSource => ids!(kot_preview_source_input),
         }
     }
 
@@ -460,6 +470,8 @@ impl SuggestField {
             SuggestField::KotTestPrinters => ids!(kot_test_printers_suggest),
             SuggestField::BillPreviewPaper => ids!(bill_preview_paper_suggest),
             SuggestField::KotPreviewPaper => ids!(kot_preview_paper_suggest),
+            SuggestField::BillPreviewSource => ids!(bill_preview_source_suggest),
+            SuggestField::KotPreviewSource => ids!(kot_preview_source_suggest),
         }
     }
 
@@ -479,6 +491,8 @@ impl SuggestField {
             SuggestField::KotTestPrinters => Some(ids!(kot_test_printers_dd)),
             SuggestField::BillPreviewPaper => Some(ids!(bill_preview_paper_dd)),
             SuggestField::KotPreviewPaper => Some(ids!(kot_preview_paper_dd)),
+            SuggestField::BillPreviewSource => Some(ids!(bill_preview_source_dd)),
+            SuggestField::KotPreviewSource => Some(ids!(kot_preview_source_dd)),
             _ => None,
         }
     }
@@ -545,10 +559,10 @@ const BILL_TOTAL_CAPTION_COLS: [(LiveId, LiveId, LiveId, print_share::BillItemCo
     (id!(tp_c_amount_box), id!(tp_c_amount), id!(tp_c_amount_on), print_share::BillItemCol::Amount),
 ];
 /// Bill format: the row wrappers before the open line (print order).
-const BILL_PICK_ROWS: [&[LiveId]; 14] = [ids!(bill_pick_row_0), ids!(bill_pick_row_1), ids!(bill_pick_row_2), ids!(bill_pick_row_3), ids!(bill_pick_row_4), ids!(bill_pick_row_5), ids!(bill_pick_row_6), ids!(bill_pick_row_7), ids!(bill_pick_row_8), ids!(bill_pick_row_9), ids!(bill_pick_row_10), ids!(bill_pick_row_11), ids!(bill_pick_row_12), ids!(bill_pick_row_13)];
+const BILL_PICK_ROWS: [&[LiveId]; 20] = [ids!(bill_pick_row_0), ids!(bill_pick_row_1), ids!(bill_pick_row_2), ids!(bill_pick_row_3), ids!(bill_pick_row_4), ids!(bill_pick_row_5), ids!(bill_pick_row_6), ids!(bill_pick_row_7), ids!(bill_pick_row_8), ids!(bill_pick_row_9), ids!(bill_pick_row_10), ids!(bill_pick_row_11), ids!(bill_pick_row_12), ids!(bill_pick_row_13), ids!(bill_pick_row_14), ids!(bill_pick_row_15), ids!(bill_pick_row_16), ids!(bill_pick_row_17), ids!(bill_pick_row_18), ids!(bill_pick_row_19)];
 /// Bill format: the row buttons before the open line. Slot i shows the i-th
 /// line of the print order whatever its name in the layout.
-const BILL_PICK_BTNS: [(&[LiveId], &[LiveId]); 14] = [
+const BILL_PICK_BTNS: [(&[LiveId], &[LiveId]); 20] = [
     (ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
     (ids!(bill_pick_header), ids!(bill_pick_header_on)),
     (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
@@ -563,11 +577,17 @@ const BILL_PICK_BTNS: [(&[LiveId], &[LiveId]); 14] = [
     (ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
     (ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
     (ids!(bill_pick_13), ids!(bill_pick_13_on)),
+    (ids!(bill_pick_14), ids!(bill_pick_14_on)),
+    (ids!(bill_pick_15), ids!(bill_pick_15_on)),
+    (ids!(bill_pick_16), ids!(bill_pick_16_on)),
+    (ids!(bill_pick_17), ids!(bill_pick_17_on)),
+    (ids!(bill_pick_18), ids!(bill_pick_18_on)),
+    (ids!(bill_pick_19), ids!(bill_pick_19_on)),
 ];
 /// Bill format: the row wrappers after the open line.
-const BILL_AFTER_ROWS: [&[LiveId]; 14] = [ids!(bill_after_row_0), ids!(bill_after_row_1), ids!(bill_after_row_2), ids!(bill_after_row_3), ids!(bill_after_row_4), ids!(bill_after_row_5), ids!(bill_after_row_6), ids!(bill_after_row_7), ids!(bill_after_row_8), ids!(bill_after_row_9), ids!(bill_after_row_10), ids!(bill_after_row_11), ids!(bill_after_row_12), ids!(bill_after_row_13)];
+const BILL_AFTER_ROWS: [&[LiveId]; 20] = [ids!(bill_after_row_0), ids!(bill_after_row_1), ids!(bill_after_row_2), ids!(bill_after_row_3), ids!(bill_after_row_4), ids!(bill_after_row_5), ids!(bill_after_row_6), ids!(bill_after_row_7), ids!(bill_after_row_8), ids!(bill_after_row_9), ids!(bill_after_row_10), ids!(bill_after_row_11), ids!(bill_after_row_12), ids!(bill_after_row_13), ids!(bill_after_row_14), ids!(bill_after_row_15), ids!(bill_after_row_16), ids!(bill_after_row_17), ids!(bill_after_row_18), ids!(bill_after_row_19)];
 /// Bill format: the row buttons after the open line.
-const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 14] = [
+const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 20] = [
     (ids!(bill_after_0), ids!(bill_after_0_on)),
     (ids!(bill_after_1), ids!(bill_after_1_on)),
     (ids!(bill_after_2), ids!(bill_after_2_on)),
@@ -582,14 +602,20 @@ const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 14] = [
     (ids!(bill_after_11), ids!(bill_after_11_on)),
     (ids!(bill_after_12), ids!(bill_after_12_on)),
     (ids!(bill_after_13), ids!(bill_after_13_on)),
+    (ids!(bill_after_14), ids!(bill_after_14_on)),
+    (ids!(bill_after_15), ids!(bill_after_15_on)),
+    (ids!(bill_after_16), ids!(bill_after_16_on)),
+    (ids!(bill_after_17), ids!(bill_after_17_on)),
+    (ids!(bill_after_18), ids!(bill_after_18_on)),
+    (ids!(bill_after_19), ids!(bill_after_19_on)),
 ];
 
 /// KOT format: one row per item column (Dish name, Qty).
 const KOT_COL_ROWS: [LiveId; 2] = [id!(kot_col_row_0), id!(kot_col_row_1)];
 /// KOT format: the row wrappers before the open line (print order).
-const KOT_PICK_ROWS: [&[LiveId]; 9] = [ids!(kot_row_0), ids!(kot_row_1), ids!(kot_row_2), ids!(kot_row_3), ids!(kot_row_4), ids!(kot_row_5), ids!(kot_row_6), ids!(kot_row_7), ids!(kot_row_8)];
+const KOT_PICK_ROWS: [&[LiveId]; 14] = [ids!(kot_row_0), ids!(kot_row_1), ids!(kot_row_2), ids!(kot_row_3), ids!(kot_row_4), ids!(kot_row_5), ids!(kot_row_6), ids!(kot_row_7), ids!(kot_row_8), ids!(kot_row_9), ids!(kot_row_10), ids!(kot_row_11), ids!(kot_row_12), ids!(kot_row_13)];
 /// KOT format: the row buttons before the open line.
-const KOT_PICK_BTNS: [(&[LiveId], &[LiveId]); 9] = [
+const KOT_PICK_BTNS: [(&[LiveId], &[LiveId]); 14] = [
     (ids!(kot_pick_0), ids!(kot_pick_0_on)),
     (ids!(kot_pick_1), ids!(kot_pick_1_on)),
     (ids!(kot_pick_2), ids!(kot_pick_2_on)),
@@ -599,11 +625,16 @@ const KOT_PICK_BTNS: [(&[LiveId], &[LiveId]); 9] = [
     (ids!(kot_pick_6), ids!(kot_pick_6_on)),
     (ids!(kot_pick_7), ids!(kot_pick_7_on)),
     (ids!(kot_pick_8), ids!(kot_pick_8_on)),
+    (ids!(kot_pick_9), ids!(kot_pick_9_on)),
+    (ids!(kot_pick_10), ids!(kot_pick_10_on)),
+    (ids!(kot_pick_11), ids!(kot_pick_11_on)),
+    (ids!(kot_pick_12), ids!(kot_pick_12_on)),
+    (ids!(kot_pick_13), ids!(kot_pick_13_on)),
 ];
 /// KOT format: the row wrappers after the open line.
-const KOT_AFTER_ROWS: [&[LiveId]; 9] = [ids!(kot_after_row_0), ids!(kot_after_row_1), ids!(kot_after_row_2), ids!(kot_after_row_3), ids!(kot_after_row_4), ids!(kot_after_row_5), ids!(kot_after_row_6), ids!(kot_after_row_7), ids!(kot_after_row_8)];
+const KOT_AFTER_ROWS: [&[LiveId]; 14] = [ids!(kot_after_row_0), ids!(kot_after_row_1), ids!(kot_after_row_2), ids!(kot_after_row_3), ids!(kot_after_row_4), ids!(kot_after_row_5), ids!(kot_after_row_6), ids!(kot_after_row_7), ids!(kot_after_row_8), ids!(kot_after_row_9), ids!(kot_after_row_10), ids!(kot_after_row_11), ids!(kot_after_row_12), ids!(kot_after_row_13)];
 /// KOT format: the row buttons after the open line.
-const KOT_AFTER_BTNS: [(&[LiveId], &[LiveId]); 9] = [
+const KOT_AFTER_BTNS: [(&[LiveId], &[LiveId]); 14] = [
     (ids!(kot_after_0), ids!(kot_after_0_on)),
     (ids!(kot_after_1), ids!(kot_after_1_on)),
     (ids!(kot_after_2), ids!(kot_after_2_on)),
@@ -613,6 +644,11 @@ const KOT_AFTER_BTNS: [(&[LiveId], &[LiveId]); 9] = [
     (ids!(kot_after_6), ids!(kot_after_6_on)),
     (ids!(kot_after_7), ids!(kot_after_7_on)),
     (ids!(kot_after_8), ids!(kot_after_8_on)),
+    (ids!(kot_after_9), ids!(kot_after_9_on)),
+    (ids!(kot_after_10), ids!(kot_after_10_on)),
+    (ids!(kot_after_11), ids!(kot_after_11_on)),
+    (ids!(kot_after_12), ids!(kot_after_12_on)),
+    (ids!(kot_after_13), ids!(kot_after_13_on)),
 ];
 
 /// Bill / KOT format, form beside preview: (split, form column, open-line

@@ -2945,7 +2945,17 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // Screens / rights / stations / copy-onto / remove / save only when a
         // person is selected — never floating with no target.
         {
-            let (selected, selected_name, has_selected, rights, lang, manage_team, self_tip, needs_pin) = {
+            let (
+                selected,
+                selected_name,
+                has_selected,
+                editing_owner,
+                rights,
+                lang,
+                manage_team,
+                self_tip,
+                needs_pin,
+            ) = {
                 let st = app_state().lock().unwrap();
                 let manage_team = st
                     .session
@@ -2957,6 +2967,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .as_ref()
                     .and_then(|id| st.staff.iter().find(|s| &s.id == id));
                 let selected_name = member.map(|s| s.name.clone()).unwrap_or_default();
+                let editing_owner = member.is_some_and(|s| s.is_owner());
                 let needs_pin = member.is_some_and(|s| !s.is_owner() && !s.has_pin());
                 let selected = member
                     .map(|s| format!("{}: {}", st.t("editing_staff"), s.lock_label()))
@@ -2966,6 +2977,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     selected,
                     selected_name,
                     member.is_some(),
+                    editing_owner,
                     st.team_draft_rights(),
                     st.locale.language.clone(),
                     manage_team,
@@ -2985,22 +2997,35 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(staff_first_pin_row))
                 .set_visible(cx, manage_team && needs_pin);
+            // Owner: name/username/password only — no fake screens/rights chips.
+            self.ui
+                .view(cx, ids!(team_job_setup))
+                .set_visible(cx, manage_team && has_selected && !editing_owner);
+            self.ui
+                .widget(cx, ids!(team_owner_identity_hint))
+                .set_visible(cx, manage_team && has_selected && editing_owner);
+            if manage_team && has_selected && editing_owner {
+                self.ui.widget(cx, ids!(team_owner_identity_hint)).set_text(
+                    cx,
+                    &plain_display_text(&locale::t(&lang, "team_owner_identity_hint")),
+                );
+            }
             {
                 let help = self.ui.widget(cx, ids!(team_help)).as_info_help();
                 let title = locale::t(&lang, if self_tip { "my_pin_settings" } else { "team" });
-                let tip = locale::t(
-                    &lang,
-                    if self_tip {
-                        "team_self_help"
-                    } else {
-                        "team_owner_help"
-                    },
-                );
+                let tip_key = if self_tip {
+                    "team_self_help"
+                } else if editing_owner {
+                    "team_owner_row_help"
+                } else {
+                    "team_owner_help"
+                };
+                let tip = locale::t(&lang, tip_key);
                 help.set_title(cx, &title);
                 help.set_nav_icon(cx, NavTab::Team);
                 help.set_tip(&plain_display_text(&tip));
             }
-            if manage_team && has_selected {
+            if manage_team && has_selected && !editing_owner {
                 let on = app_state().lock().unwrap().draft_features.clone();
                 for (idle, active, set) in [
                     (ids!(feat_sell), ids!(feat_sell_on), on.sell),
@@ -3146,20 +3171,35 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .button(cx, ids!(staff_deactivate))
                     .set_text(cx, &remove_lbl);
                 self.ui.button(cx, ids!(feat_save)).set_text(cx, &save_lbl);
-                // Named Apply; hidden with team_selected_setup when no selection.
                 self.ui
                     .button(cx, ids!(staff_set_login))
                     .set_text(cx, &login_lbl);
                 self.ui
                     .button(cx, ids!(staff_set_login))
                     .set_visible(cx, !who.is_empty());
-                // Station checklist only on Team — open_suggest closes every
-                // other dropdown (Menu dish/category, Order kitchen, …).
                 if screen == Screen::Team {
                     app_state()
                         .lock()
                         .unwrap()
                         .open_suggest(SuggestField::TeamKotStations, "");
+                }
+            } else if manage_team && has_selected && editing_owner {
+                let who = selected_name.trim();
+                let save_lbl = if who.is_empty() {
+                    locale::t(&lang, "save_owner_identity")
+                } else {
+                    locale::t(&lang, "save_owner_identity_named").replace("{name}", who)
+                };
+                self.ui
+                    .widget(cx, ids!(team_selected_label))
+                    .set_text(cx, &plain_display_text(&selected));
+                self.ui.button(cx, ids!(feat_save)).set_text(cx, &save_lbl);
+                self.ui
+                    .button(cx, ids!(staff_set_login))
+                    .set_visible(cx, !who.is_empty());
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::TeamKotStations) {
+                    st.suggest_open = None;
                 }
             } else if manage_team {
                 // No selection (or left Team): drop the always-open station list.

@@ -112,7 +112,7 @@
             "Spe. Chicken Tangdi Red 3 Piece"
           ],
           "price": 290,
-          "image": "shelf:indian-mains/tandoori-chicken.webp"
+          "image": "shelf:indo-chinese/chicken-lollipop.webp"
         },
         {
           "name": "ચીકન વિન્ટર ટંગડી ૩ પીસ",
@@ -225,7 +225,7 @@
             "Chicken Tikka Masala"
           ],
           "price": 300,
-          "image": "shelf:indian-mains/butter-chicken.webp"
+          "image": "shelf:indian-mains/chicken-tikka-masala.webp"
         },
         {
           "name": "ચીકન તવા મસાલા",
@@ -331,7 +331,7 @@
       "aliases": [
         "Mutton Roasted"
       ],
-      "image": "shelf:continental/lamb-chops.webp",
+      "image": "images/mutton-chaap.webp",
       "items": [
         {
           "name": "મટન રાન રોસ્ટેડ",
@@ -363,7 +363,7 @@
             "Mutton Chaap Roasted"
           ],
           "price": 650,
-          "image": "shelf:continental/lamb-chops.webp"
+          "image": "images/mutton-chaap.webp"
         },
         {
           "name": "મટન B.B.Q. રોસ્ટેડ",
@@ -371,7 +371,7 @@
             "Mutton B.B.Q. Roasted"
           ],
           "price": 700,
-          "image": "shelf:continental/lamb-chops.webp"
+          "image": "images/mutton-fry.webp"
         },
         {
           "name": "મટન ફ્રાય રોસ્ટેડ",
@@ -379,7 +379,7 @@
             "Mutton Fry Roasted"
           ],
           "price": 650,
-          "image": "shelf:continental/lamb-chops.webp"
+          "image": "images/mutton-roast.webp"
         },
         {
           "name": "મટન સેજવાન",
@@ -395,7 +395,7 @@
             "Mutton Tawa Roasted"
           ],
           "price": 700,
-          "image": "shelf:continental/lamb-chops.webp"
+          "image": "images/mutton-fry.webp"
         },
         {
           "name": "મટન ડ્રાય ચોકી",
@@ -403,7 +403,7 @@
             "Mutton Dry Choki"
           ],
           "price": 1600,
-          "image": "shelf:continental/lamb-chops.webp"
+          "image": "images/mutton-roast.webp"
         }
       ]
     },
@@ -573,7 +573,7 @@
             "Fish Fry Gravy"
           ],
           "price": 360,
-          "image": "shelf:indian-mains/macher-jhol.webp"
+          "image": "shelf:indian-mains/amritsari-fish.webp"
         },
         {
           "name": "જીંગા ફ્રાય ગ્રેવી",
@@ -581,7 +581,7 @@
             "Jinga Fry Gravy"
           ],
           "price": 400,
-          "image": "shelf:indian-mains/prawn-curry.webp"
+          "image": "shelf:indian-mains/chingri-malai-curry.webp"
         },
         {
           "name": "ફીશ લાઈવ મસાલા",
@@ -589,7 +589,7 @@
             "Fish Live Masala"
           ],
           "price": 360,
-          "image": "shelf:indian-mains/macher-jhol.webp"
+          "image": "shelf:indian-mains/goan-fish-curry.webp"
         },
         {
           "name": "જીંગા લાઈવ મસાલા",
@@ -597,7 +597,7 @@
             "Jinga Live Masala"
           ],
           "price": 430,
-          "image": "shelf:indian-mains/prawn-curry.webp"
+          "image": "shelf:indo-chinese/chilli-prawns.webp"
         },
         {
           "name": "રોસ્ટેડ ફીશ",
@@ -678,7 +678,7 @@
             "Fry Papad"
           ],
           "price": 30,
-          "image": "shelf:snacks/masala-papad.webp"
+          "image": "images/fry-papad.webp"
         },
         {
           "name": "રોસ્ટેડ પાપડ",
@@ -759,7 +759,7 @@
             "Inda Gotalo 10 Number"
           ],
           "price": 460,
-          "image": "shelf:indian-mains/egg-bhurji.webp"
+          "image": "shelf:indian-mains/egg-curry.webp"
         },
         {
           "name": "ઈંડા મોગલાઈ ૮ નંગ",
@@ -847,7 +847,7 @@
             "Inda Schezwan 5 Number"
           ],
           "price": 260,
-          "image": ""
+          "image": "images/egg-schezwan.webp"
         },
         {
           "name": "ઈંડા તવા ટીક્કા પ નંગ",
@@ -855,7 +855,7 @@
             "Inda Tawa Tikka 5 Number"
           ],
           "price": 270,
-          "image": ""
+          "image": "images/egg-tawa-tikka.webp"
         },
         {
           "name": "ઈંડા તવા ફ્રાય ચીઝ પ નંગ",
@@ -920,7 +920,7 @@
             "Chicken Tikka Biryani"
           ],
           "price": 260,
-          "image": "shelf:indian-rice/chicken-biryani.webp"
+          "image": "shelf:indian-rice/hyderabadi-biryani.webp"
         },
         {
           "name": "ચીકન તંદુરી બીરીયાની",
@@ -928,7 +928,7 @@
             "Chicken Tandoori Biryani"
           ],
           "price": 330,
-          "image": "shelf:indian-rice/lucknowi-biryani.webp"
+          "image": "shelf:indian-rice/dindigul-biryani.webp"
         },
         {
           "name": "ચીકન તવા રાઈસ",
@@ -952,7 +952,7 @@
             "Mutton Tikka Biryani"
           ],
           "price": 380,
-          "image": "shelf:indian-rice/mutton-biryani.webp"
+          "image": "shelf:indian-rice/kolkata-biryani.webp"
         },
         {
           "name": "મટન બીરીયાની",
@@ -1016,7 +1016,7 @@
             "Fry Rice Gravy"
           ],
           "price": 130,
-          "image": ""
+          "image": "images/fry-rice-gravy.webp"
         },
         {
           "name": "ચીકન ગ્રેવી રાઈસ",
@@ -1032,7 +1032,7 @@
             "Inda Gravy Rice"
           ],
           "price": 150,
-          "image": ""
+          "image": "images/egg-gravy-rice.webp"
         },
         {
           "name": "જીરા રાઈસ",

@@ -8774,7 +8774,8 @@ impl Store {
         Ok(())
     }
 
-    /// Change display name only — staff `id` never moves. Owner cannot be renamed here.
+    /// Change display name only — staff `id` never moves (IDENTITY_AND_NAMES).
+    /// Owner may rename themselves; nobody else may rename the Owner.
     pub fn rename_staff(
         &self,
         staff_id: &str,
@@ -8794,16 +8795,22 @@ impl Store {
             .into_iter()
             .find(|s| s.id == staff_id && s.active)
             .ok_or_else(|| "Staff not found".to_string())?;
-        Self::assert_team_target_rank_ok(actor, &target)?;
+        if target.is_owner() {
+            if !(actor.is_owner() && actor.id == target.id) {
+                return Err("Cannot change Owner this way".into());
+            }
+        } else {
+            Self::assert_team_target_rank_ok(actor, &target)?;
+        }
         let n = self
             .conn
             .execute(
-                "UPDATE staff SET name = ?1 WHERE id = ?2 AND role != 'owner' AND active = 1",
+                "UPDATE staff SET name = ?1 WHERE id = ?2 AND active = 1",
                 params![name, staff_id],
             )
             .map_err(|e| e.to_string())?;
         if n == 0 {
-            return Err("Staff not found or is Owner".into());
+            return Err("Staff not found".into());
         }
         self.audit(actor, "staff.rename", &format!("{staff_id} → {name}"))?;
         Ok(())
@@ -8917,10 +8924,25 @@ impl Store {
         if login_id.is_empty() {
             return Err("Username required".into());
         }
+        self.assert_login_id_free(&login_id, Some(staff_id))?;
+        // Self: username-only when password left blank (keep existing hash).
+        if actor.id == staff_id && password.trim().is_empty() {
+            let n = self
+                .conn
+                .execute(
+                    "UPDATE staff SET login_id = ?1 WHERE id = ?2 AND active = 1",
+                    params![login_id, staff_id],
+                )
+                .map_err(|e| e.to_string())?;
+            if n == 0 {
+                return Err("Staff not found".into());
+            }
+            self.audit(actor, "staff.login", staff_id)?;
+            return Ok(());
+        }
         if password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
         }
-        self.assert_login_id_free(&login_id, Some(staff_id))?;
         // If actor is not the staff member, only allow when password_hash is empty (initial set).
         if actor.id != staff_id {
             let existing: String = self
@@ -12308,9 +12330,9 @@ mod tests {
         assert_eq!(neha2.role_title, "Captain");
         assert_eq!(neha2.features.sell, renamed.features.sell);
         assert_eq!(neha2.features.sales, renamed.features.sales);
-        // Owner cannot be renamed through Team (id stays the books key).
+        // Owner may rename themselves (UUID stays; display name is an alias).
         let owner_id = owner.id.clone();
-        assert!(store.rename_staff(&owner_id, "Asif", &owner).is_err());
+        store.rename_staff(&owner_id, "Asif", &owner).unwrap();
         let owner2 = store
             .list_staff()
             .unwrap()
@@ -12318,6 +12340,30 @@ mod tests {
             .find(|s| s.id == owner_id)
             .unwrap();
         assert!(owner2.is_owner());
+        assert_eq!(owner2.name, "Asif");
+        let mut mgr_f = StaffFeatures::for_role(StaffRole::Manager);
+        mgr_f.team = true;
+        let mgr_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Meera",
+                    role: StaffRole::Manager,
+                    role_title: "Manager",
+                    pin: "2222",
+                    login_id: "meera",
+                    password: "",
+                    features: mgr_f,
+                },
+                &owner2,
+            )
+            .unwrap();
+        let mgr = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == mgr_id)
+            .unwrap();
+        assert!(store.rename_staff(&owner_id, "Nope", &mgr).is_err());
         let _ = std::fs::remove_file(path);
     }
 

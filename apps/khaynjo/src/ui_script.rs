@@ -9539,6 +9539,17 @@ script_mod! {
                                     staff_rename_btn := RowSecondaryBtn{text: "Save name"}
                                     staff_set_login := RowSecondaryBtn{text: "Apply login to selected"}
                                 }
+                                // Owner row: name / username / password only — job block hidden.
+                                team_owner_identity_hint := WrapLabel{
+                                    body: " "
+                                    font_color: #x6B4A3F
+                                    font_size: 13.
+                                    visible: false
+                                }
+                                // Screens, rights, stations, copy, remove — staff only.
+                                team_job_setup := View{
+                                width: Fill height: Fit
+                                flow: Down spacing: 10
                                 mod.widgets.ComboField{field: "team_copy_edit"
                                     staff_copy_edit_input := ComboInput{
                                         empty_text: "Copy setup from another person"
@@ -9726,6 +9737,7 @@ script_mod! {
                                     }
                                 }
                                 team_stations_list := mod.widgets.StationCheckList{field: "team_kot_stations"}
+                                } // team_job_setup
                                 feat_save := StackPrimaryBtn{text: "Save job setup"}
                                 } // team_selected_setup
                                 }
@@ -10921,6 +10933,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     h_bill_format := WrapLabel{width: Fit body: "Bill format" font_color: #x260B08 font_size: 16.}
                                     View{width: Fill height: Fit}
+                                    bill_custom_add := QuietFitBtn{text: "Add line"}
                                     bill_apply_all := QuietFitBtn{text: "Apply to all"}
                                 }
                                 // Lines before the open one (the list is the print order).
@@ -10981,6 +10994,30 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         bill_pick_13 := KotRowBtn{text: ""}
                                         bill_pick_13_on := KotRowBtnOn{text: "" visible: false}
                                     }
+                                    bill_pick_row_14 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_14 := KotRowBtn{text: ""}
+                                        bill_pick_14_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_pick_row_15 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_15 := KotRowBtn{text: ""}
+                                        bill_pick_15_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_pick_row_16 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_16 := KotRowBtn{text: ""}
+                                        bill_pick_16_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_pick_row_17 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_17 := KotRowBtn{text: ""}
+                                        bill_pick_17_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_pick_row_18 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_18 := KotRowBtn{text: ""}
+                                        bill_pick_18_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_pick_row_19 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_19 := KotRowBtn{text: ""}
+                                        bill_pick_19_on := KotRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 // The open line, edited where it sits: every control of the line in
                                 // its own row (wraps on narrow screens), its extras right under it.
@@ -11008,6 +11045,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                     bill_field_hide := SegBtn{width: Fit text: "Hide"}
                                                     bill_field_hide_on := SegBtnOn{width: Fit text: "Hide" visible: false}
                                                 }
+                                                bill_custom_remove := QuietFitBtn{text: "Remove" visible: false}
                                                 // Font size; the Logo line has its box size below instead.
                                                 bill_size_box := View{width: Fit height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
                                                     h_bill_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x260B08 font_size: 13.}
@@ -11046,9 +11084,27 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                             }
                                         }
                                     }
-                                    // One box. Its hint is the selected line (address, FSSAI, title, footer, UPI).
+                                    // One box. Hint is the selected line (address, FSSAI, title,
+                                    // footer, UPI, or meta print label Name / Cashier / …).
                                     bill_value_row := View{width: Fill height: Fit
                                         bill_field_value := FieldInput{empty_text: "Address | phone"}
+                                    }
+                                    // Meta lines only: what to print when the live value is missing.
+                                    bill_meta_empty := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 6
+                                        visible: false
+                                        h_bill_meta_empty := WrapLabel{body: "When empty" font_color: #x260B08 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_empty_always := SegBtn{text: "Always show"}
+                                                bill_empty_always_on := SegBtnOn{text: "Always show" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_empty_omit := SegBtn{text: "Omit when empty"}
+                                                bill_empty_omit_on := SegBtnOn{text: "Omit when empty" visible: false}
+                                            }
+                                        }
                                     }
                                     // Logo open: its picture, box size and greys (docs/PRINTER.md "Logo").
                                     bill_logo_pieces := View{width: Fill height: Fit flow: Down spacing: 8 visible: false
@@ -11452,6 +11508,17 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                         tp_c_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
                                                     }
                                                 }
+                                                tp_span := View{width: Fill height: Fit flow: Right spacing: 6
+                                                    visible: false
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        tp_span_off := SegBtn{text: "Caption one column"}
+                                                        tp_span_off_on := SegBtnOn{text: "Caption one column" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        tp_span_on := SegBtn{text: "Span to the number"}
+                                                        tp_span_on_on := SegBtnOn{text: "Span to the number" visible: false}
+                                                    }
+                                                }
                                             }
                                         }
                                         bill_total_row_sub := View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
@@ -11540,6 +11607,17 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                         margin: Inset{left: 0. right: 0. top: 0. bottom: 6.}
                                                         tp_c_amount := SegBtn{width: Fit text: "Amount"}
                                                         tp_c_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
+                                                    }
+                                                }
+                                                tp_span := View{width: Fill height: Fit flow: Right spacing: 6
+                                                    visible: false
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        tp_span_off := SegBtn{text: "Caption one column"}
+                                                        tp_span_off_on := SegBtnOn{text: "Caption one column" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        tp_span_on := SegBtn{text: "Span to the number"}
+                                                        tp_span_on_on := SegBtnOn{text: "Span to the number" visible: false}
                                                     }
                                                 }
                                             }
@@ -11634,6 +11712,17 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                         tp_c_amount_on := SegBtnOn{width: Fit text: "Amount" visible: false}
                                                     }
                                                 }
+                                                tp_span := View{width: Fill height: Fit flow: Right spacing: 6
+                                                    visible: false
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        tp_span_off := SegBtn{text: "Caption one column"}
+                                                        tp_span_off_on := SegBtnOn{text: "Caption one column" visible: false}
+                                                    }
+                                                    View{width: Fill height: Fit flow: Overlay
+                                                        tp_span_on := SegBtn{text: "Span to the number"}
+                                                        tp_span_on_on := SegBtnOn{text: "Span to the number" visible: false}
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -11696,6 +11785,30 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         bill_after_13 := KotRowBtn{text: ""}
                                         bill_after_13_on := KotRowBtnOn{text: "" visible: false}
                                     }
+                                    bill_after_row_14 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_14 := KotRowBtn{text: ""}
+                                        bill_after_14_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_15 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_15 := KotRowBtn{text: ""}
+                                        bill_after_15_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_16 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_16 := KotRowBtn{text: ""}
+                                        bill_after_16_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_17 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_17 := KotRowBtn{text: ""}
+                                        bill_after_17_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_18 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_18 := KotRowBtn{text: ""}
+                                        bill_after_18_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_19 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_19 := KotRowBtn{text: ""}
+                                        bill_after_19_on := KotRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 }
                                 } // bill_form_col
@@ -11707,6 +11820,16 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     h_bill_preview := WrapLabel{width: Fit body: "Preview" font_color: #x260B08 font_size: 14.}
                                     bill_preview_help := InfoHelp{tip: " "}
                                 }
+                                mod.widgets.ComboField{field: "bill_preview_source"
+                                    bill_preview_source_dd := ComboFace{text: "Sample"}
+                                }
+                                bill_preview_source_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                bill_preview_source_suggest := mod.widgets.SuggestList{field: "bill_preview_source"}
                                 // Which printer's paper the preview is drawn on — every saved
                                 // printer; picking one changes the preview only (docs/PRINTER.md
                                 // § Paper and preview).
@@ -11907,6 +12030,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     h_kot_format_fields := WrapLabel{width: Fit body: "Fields" font_color: #x260B08 font_size: 16.}
                                     View{width: Fill height: Fit}
+                                    kot_custom_add := QuietFitBtn{text: "Add line"}
                                     kot_apply_all := QuietFitBtn{text: "Apply to all"}
                                 }
                                 // Lines before the open one (the list is the print order).
@@ -11947,6 +12071,26 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         kot_pick_8 := KotRowBtn{text: ""}
                                         kot_pick_8_on := KotRowBtnOn{text: "" visible: false}
                                     }
+                                    kot_row_9 := View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_9 := KotRowBtn{text: ""}
+                                        kot_pick_9_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_row_10 := View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_10 := KotRowBtn{text: ""}
+                                        kot_pick_10_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_row_11 := View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_11 := KotRowBtn{text: ""}
+                                        kot_pick_11_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_row_12 := View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_12 := KotRowBtn{text: ""}
+                                        kot_pick_12_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_row_13 := View{width: Fill height: Fit flow: Overlay
+                                        kot_pick_13 := KotRowBtn{text: ""}
+                                        kot_pick_13_on := KotRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 // The open line, edited where it sits (same as the Bill tab).
                                 kot_line_editor := RoundedView{
@@ -11975,6 +12119,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                         kot_field_hide_on := SegBtnOn{width: Fit text: "Hide" visible: false}
                                                     }
                                                 }
+                                                kot_custom_remove := QuietFitBtn{text: "Remove" visible: false}
                                                 h_kot_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x260B08 font_size: 13.}
                                                 kot_field_size_input := FieldInput{width: 88 empty_text: "px"}
                                             }
@@ -12009,6 +12154,9 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                                 }
                                             }
                                         }
+                                    }
+                                    kot_custom_value_row := View{width: Fill height: Fit visible: false
+                                        kot_custom_value := FieldInput{empty_text: "Custom line text"}
                                     }
                                     // Title: its text, and this kind's banner printed above it in the
                                     // same style.
@@ -12167,6 +12315,26 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         kot_after_8 := KotRowBtn{text: ""}
                                         kot_after_8_on := KotRowBtnOn{text: "" visible: false}
                                     }
+                                    kot_after_row_9 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        kot_after_9 := KotRowBtn{text: ""}
+                                        kot_after_9_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_after_row_10 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        kot_after_10 := KotRowBtn{text: ""}
+                                        kot_after_10_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_after_row_11 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        kot_after_11 := KotRowBtn{text: ""}
+                                        kot_after_11_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_after_row_12 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        kot_after_12 := KotRowBtn{text: ""}
+                                        kot_after_12_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    kot_after_row_13 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        kot_after_13 := KotRowBtn{text: ""}
+                                        kot_after_13_on := KotRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 }
                                 } // kot_form_col
@@ -12178,6 +12346,16 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     h_kot_preview := WrapLabel{width: Fit body: "Preview" font_color: #x260B08 font_size: 14.}
                                     kot_preview_help := InfoHelp{tip: " "}
                                 }
+                                mod.widgets.ComboField{field: "kot_preview_source"
+                                    kot_preview_source_dd := ComboFace{text: "Sample"}
+                                }
+                                kot_preview_source_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                kot_preview_source_suggest := mod.widgets.SuggestList{field: "kot_preview_source"}
                                 // Which printer's paper the preview is drawn on — every saved
                                 // printer; picking one changes the preview only (docs/PRINTER.md
                                 // § Paper and preview).

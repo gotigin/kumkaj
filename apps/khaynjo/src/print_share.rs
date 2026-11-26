@@ -988,6 +988,24 @@ impl KotStyleField {
         KotStyleField::ItemQty,
     ];
 
+    pub fn id(self) -> &'static str {
+        match self {
+            KotStyleField::Title => "title",
+            KotStyleField::Shop => "shop",
+            KotStyleField::Time => "time",
+            KotStyleField::Waiter => "waiter",
+            KotStyleField::Station => "station",
+            KotStyleField::Table => "table",
+            KotStyleField::KotNo => "kot_no",
+            KotStyleField::Area => "area",
+            KotStyleField::ItemQty => "item_qty",
+        }
+    }
+
+    pub fn from_id(id: &str) -> Option<Self> {
+        Self::ALL.into_iter().find(|f| f.id() == id)
+    }
+
     pub fn locale_key(self) -> &'static str {
         match self {
             KotStyleField::Title => "kot_style_title",
@@ -1272,9 +1290,12 @@ pub struct KotSlipFormat {
     #[serde(default)]
     pub footer: String,
     /// Field order for header lines (ids: time, kot_no, area, table, shop, waiter, station).
-    /// Empty → built-in order.
+    /// May include `custom:{id}` for [`Self::custom_lines`]. Empty → built-in order.
     #[serde(default)]
     pub field_order: Vec<String>,
+    /// Owner-typed hardcoded lines merged into [`Self::field_order`].
+    #[serde(default)]
+    pub custom_lines: Vec<KotCustomLine>,
     /// Per KOT kind (original / duplicate / modified / cancelled) field typography.
     #[serde(default)]
     pub kind_styles: KotKindStyleSet,
@@ -1355,6 +1376,7 @@ impl Default for KotSlipFormat {
                 "area".into(),
                 "table".into(),
             ],
+            custom_lines: Vec::new(),
             kind_styles: KotKindStyleSet::default(),
             kind_chrome_v: 1,
             item_header_item: default_bill_header_item(),
@@ -1446,7 +1468,79 @@ impl KotSlipFormat {
                     .clamped(),
             );
         }
+        self.custom_lines.retain(|c| !c.id.trim().is_empty());
+        if self.custom_lines.len() > KOT_CUSTOM_MAX {
+            self.custom_lines.truncate(KOT_CUSTOM_MAX);
+        }
+        for c in &mut self.custom_lines {
+            c.id = c.id.trim().to_string();
+            c.text = scrub_kot_text(&c.text, KOT_FOOTER_MAX);
+            c.style.size_em = c.style.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        }
+        let custom_ids: std::collections::HashSet<String> =
+            self.custom_lines.iter().map(|c| c.order_id()).collect();
+        if !self.field_order.is_empty() {
+            let mut order = Vec::new();
+            for id in &self.field_order {
+                if matches!(
+                    id.as_str(),
+                    "time" | "kot_no" | "area" | "table" | "shop" | "waiter" | "station"
+                ) {
+                    if !order.iter().any(|have: &String| have == id) {
+                        order.push(id.clone());
+                    }
+                } else if KotCustomLine::parse_order_id(id).is_some()
+                    && custom_ids.contains(id)
+                    && !order.iter().any(|have| have == id)
+                {
+                    order.push(id.clone());
+                }
+            }
+            for c in &self.custom_lines {
+                let id = c.order_id();
+                if !order.iter().any(|have| have == &id) {
+                    order.push(id);
+                }
+            }
+            self.field_order = order;
+        }
         self
+    }
+
+    pub fn custom_line(&self, id: &str) -> Option<&KotCustomLine> {
+        let key = KotCustomLine::parse_order_id(id).unwrap_or(id);
+        self.custom_lines.iter().find(|c| c.id == key)
+    }
+
+    pub fn custom_line_mut(&mut self, id: &str) -> Option<&mut KotCustomLine> {
+        let key = KotCustomLine::parse_order_id(id).unwrap_or(id).to_string();
+        self.custom_lines.iter_mut().find(|c| c.id == key)
+    }
+
+    pub fn add_custom_line(&mut self, text: impl Into<String>) -> Result<String, String> {
+        if self.custom_lines.len() >= KOT_CUSTOM_MAX {
+            return Err(format!("At most {KOT_CUSTOM_MAX} custom KOT lines"));
+        }
+        let line = KotCustomLine::new(text);
+        let order_id = line.order_id();
+        self.custom_lines.push(line);
+        if self.field_order.is_empty() {
+            self.field_order = vec![
+                "time".into(),
+                "kot_no".into(),
+                "area".into(),
+                "table".into(),
+            ];
+        }
+        self.field_order.push(order_id.clone());
+        Ok(order_id)
+    }
+
+    pub fn remove_custom_line(&mut self, id: &str) {
+        let key = KotCustomLine::parse_order_id(id).unwrap_or(id).to_string();
+        self.custom_lines.retain(|c| c.id != key);
+        let order_id = format!("custom:{key}");
+        self.field_order.retain(|have| have != &order_id && have != &key);
     }
 
     /// `kind`'s item columns (filled to the content width when unset).
@@ -1706,6 +1800,12 @@ impl KotSlipFormat {
             fmt.field_order.iter().map(String::as_str).collect()
         };
         for id in &order {
+            if let Some(custom) = fmt.custom_line(id) {
+                if custom.show && !custom.text.trim().is_empty() {
+                    push_styled(&mut out, &custom.style, custom.text.trim(), false);
+                }
+                continue;
+            }
             emit_field(&mut out, id);
         }
         for id in ["time", "kot_no", "area", "table", "shop", "waiter", "station"] {
@@ -1968,7 +2068,8 @@ impl BillStyleField {
         }
     }
 
-    /// The owner types this field. The others are filled from the sale.
+    /// The owner types this field. Meta lines use the box for the print
+    /// prefix (`Name`, `Cashier`, …); Header/Title/Footer/UPI hold full text.
     pub fn has_text(self) -> bool {
         matches!(
             self,
@@ -1977,11 +2078,16 @@ impl BillStyleField {
                 | BillStyleField::Title
                 | BillStyleField::Footer
                 | BillStyleField::Upi
+                | BillStyleField::Customer
+                | BillStyleField::BillNo
+                | BillStyleField::Time
+                | BillStyleField::Cashier
+                | BillStyleField::Table
         )
     }
 
-    /// Meta fields that may share a line as left\\tright (Date | Table, …).
-    pub fn is_pairable(self) -> bool {
+    /// Sale-filled meta: prefix + live value, with an empty-value policy.
+    pub fn is_meta(self) -> bool {
         matches!(
             self,
             BillStyleField::Customer
@@ -1990,6 +2096,11 @@ impl BillStyleField {
                 | BillStyleField::Cashier
                 | BillStyleField::Table
         )
+    }
+
+    /// Meta fields that may share a line as left\\tright (Date | Table, …).
+    pub fn is_pairable(self) -> bool {
+        self.is_meta()
     }
 
     pub fn id(self) -> &'static str {
@@ -2022,8 +2133,131 @@ impl BillStyleField {
             BillStyleField::Title => "Title (blank = CASH MEMO)",
             BillStyleField::Footer => "Footer (e.g. Thank you, visit again)",
             BillStyleField::Upi => "UPI ID | payee name",
+            BillStyleField::Customer => "Label (e.g. Name)",
+            BillStyleField::BillNo => "Label (e.g. Bill No.)",
+            BillStyleField::Time => "Label (e.g. Date)",
+            BillStyleField::Cashier => "Label (e.g. Cashier)",
+            BillStyleField::Table => "Label (e.g. Table) — unused when area name prints",
             _ => "",
         }
+    }
+
+    pub fn default_meta_label(self) -> &'static str {
+        match self {
+            BillStyleField::Customer => "Name",
+            BillStyleField::BillNo => "Bill No.",
+            BillStyleField::Time => "Date",
+            BillStyleField::Cashier => "Cashier",
+            BillStyleField::Table => "Table",
+            _ => "",
+        }
+    }
+}
+
+/// When a meta line's live value is missing (no guest, no cashier name, …).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum BillMetaEmpty {
+    /// Print the label alone (`Name:`) so the slip keeps a blank for handwriting.
+    #[default]
+    AlwaysShow,
+    /// Skip the line when there is nothing to print after the label.
+    OmitWhenEmpty,
+}
+
+/// Cap so the fixed Bill/KOT line pick rows can still show every custom line.
+pub const BILL_CUSTOM_MAX: usize = 6;
+pub const KOT_CUSTOM_MAX: usize = 5;
+
+/// One owner-typed line on the bill: the whole printed text, not a label+value.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct BillCustomLine {
+    pub id: String,
+    #[serde(default)]
+    pub text: String,
+    #[serde(default)]
+    pub style: BillFieldStyle,
+}
+
+impl BillCustomLine {
+    pub fn new(text: impl Into<String>) -> Self {
+        Self {
+            id: format!("c{}", &uuid::Uuid::new_v4().simple().to_string()[..8]),
+            text: text.into(),
+            style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
+        }
+    }
+
+    pub fn order_id(&self) -> String {
+        format!("custom:{}", self.id)
+    }
+
+    pub fn parse_order_id(id: &str) -> Option<&str> {
+        id.strip_prefix("custom:")
+    }
+}
+
+/// One owner-typed hardcoded line on a kitchen slip (exact text, not sale-filled).
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct KotCustomLine {
+    pub id: String,
+    #[serde(default)]
+    pub text: String,
+    /// When false the line is skipped.
+    #[serde(default = "default_true")]
+    pub show: bool,
+    #[serde(default)]
+    pub style: KotFieldStyle,
+}
+
+impl KotCustomLine {
+    pub fn new(text: impl Into<String>) -> Self {
+        Self {
+            id: format!("c{}", &uuid::Uuid::new_v4().simple().to_string()[..8]),
+            text: text.into(),
+            show: true,
+            style: KotFieldStyle {
+                size_em: KOT_EM_NORMAL,
+                weight: KotFontWeight::Regular,
+                align: KotAlign::Center,
+            },
+        }
+    }
+
+    pub fn order_id(&self) -> String {
+        format!("custom:{}", self.id)
+    }
+
+    pub fn parse_order_id(id: &str) -> Option<&str> {
+        id.strip_prefix("custom:")
+    }
+}
+
+impl BillMetaEmpty {
+    pub fn id(self) -> &'static str {
+        match self {
+            Self::AlwaysShow => "always_show",
+            Self::OmitWhenEmpty => "omit_when_empty",
+        }
+    }
+
+    pub fn from_id(id: &str) -> Option<Self> {
+        match id {
+            "always_show" | "always" | "" => Some(Self::AlwaysShow),
+            "omit_when_empty" | "omit" => Some(Self::OmitWhenEmpty),
+            _ => None,
+        }
+    }
+
+    pub fn locale_key(self) -> &'static str {
+        match self {
+            Self::AlwaysShow => "bill_meta_empty_always",
+            Self::OmitWhenEmpty => "bill_meta_empty_omit",
+        }
+    }
+
+    pub fn is_default(&self) -> bool {
+        *self == Self::AlwaysShow
     }
 }
 
@@ -2120,12 +2354,17 @@ pub struct BillTotalPlace {
     /// before the number, `none` = not printed, or an item column's id.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub caption: String,
+    /// When the caption sits under a column left of the number, merge that
+    /// column through the one before the number so the caption can use the
+    /// space (true colspan). Off = one column cell only.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub caption_span: bool,
 }
 
 impl BillTotalPlace {
     /// Nothing set: the total on its own line with its caption.
     pub fn is_default(&self) -> bool {
-        self.number.is_empty() && self.caption.is_empty()
+        self.number.is_empty() && self.caption.is_empty() && !self.caption_span
     }
 
     pub fn number_col(&self) -> Option<BillItemCol> {
@@ -2228,6 +2467,28 @@ pub struct BillSlipFormat {
     pub cashier: BillFieldStyle,
     #[serde(default)]
     pub table: BillFieldStyle,
+    /// Print prefix for Customer (empty → `Name`).
+    #[serde(default)]
+    pub label_customer: String,
+    #[serde(default)]
+    pub label_bill_no: String,
+    #[serde(default)]
+    pub label_time: String,
+    #[serde(default)]
+    pub label_cashier: String,
+    #[serde(default)]
+    pub label_table: String,
+    /// When Customer has no guest name.
+    #[serde(default, skip_serializing_if = "BillMetaEmpty::is_default")]
+    pub empty_customer: BillMetaEmpty,
+    #[serde(default, skip_serializing_if = "BillMetaEmpty::is_default")]
+    pub empty_bill_no: BillMetaEmpty,
+    #[serde(default, skip_serializing_if = "BillMetaEmpty::is_default")]
+    pub empty_time: BillMetaEmpty,
+    #[serde(default, skip_serializing_if = "BillMetaEmpty::is_default")]
+    pub empty_cashier: BillMetaEmpty,
+    #[serde(default, skip_serializing_if = "BillMetaEmpty::is_default")]
+    pub empty_table: BillMetaEmpty,
     #[serde(default)]
     pub items: BillFieldStyle,
     #[serde(default)]
@@ -2314,8 +2575,12 @@ pub struct BillSlipFormat {
     #[serde(default = "default_bill_meta_pairs")]
     pub meta_pairs: Vec<[String; 2]>,
     /// Print order of the lines. Empty means [`BillStyleField::ALL`].
+    /// May include `custom:{id}` for [`Self::custom_lines`].
     #[serde(default)]
     pub field_order: Vec<String>,
+    /// Owner-added hardcoded text lines (one string each — not label+value).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub custom_lines: Vec<BillCustomLine>,
     /// Identical copies of each bill. Clamped to 1..=3.
     #[serde(default = "default_bill_copies")]
     pub copies: u32,
@@ -2516,6 +2781,16 @@ impl Default for BillSlipFormat {
             time: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             cashier: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             table: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
+            label_customer: String::new(),
+            label_bill_no: String::new(),
+            label_time: String::new(),
+            label_cashier: String::new(),
+            label_table: String::new(),
+            empty_customer: BillMetaEmpty::AlwaysShow,
+            empty_bill_no: BillMetaEmpty::AlwaysShow,
+            empty_time: BillMetaEmpty::AlwaysShow,
+            empty_cashier: BillMetaEmpty::AlwaysShow,
+            empty_table: BillMetaEmpty::AlwaysShow,
             // Body items a touch larger than meta — readable Qty/Price/Amount.
             items: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
             total: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Start),
@@ -2546,6 +2821,7 @@ impl Default for BillSlipFormat {
             total_grand_place: BillTotalPlace::default(),
             meta_pairs: default_bill_meta_pairs(),
             field_order: Vec::new(),
+            custom_lines: Vec::new(),
             copies: 1,
             content_width_mm: 210,
             item_columns: None,
@@ -2769,6 +3045,15 @@ impl<'a> BillTotalRows<'a> {
             BillTotalCaption::Under(col) => self.index_of(col).filter(|i| *i != at),
             _ => None,
         };
+        let flat = |text: &str| text.replace(['\n', '\t', '|'], " ").trim().to_string();
+        // Span: merge caption columns through the cell before the number.
+        if place.caption_span {
+            if let Some(start) = caption_at.filter(|i| *i < at) {
+                self.close_row();
+                self.push_spanned_caption_row(start, at, &flat(caption), &flat(number));
+                return;
+            }
+        }
         let with_number = caption_at.is_none() && (keep_caption || place.caption_place() != BillTotalCaption::Hidden);
         let taken = |row: &[String], i: usize| row.get(i).is_some_and(|cell| !cell.is_empty());
         if taken(&self.row, at) || caption_at.is_some_and(|i| taken(&self.row, i)) {
@@ -2778,11 +3063,55 @@ impl<'a> BillTotalRows<'a> {
             self.row = vec![String::new(); self.cols.len()];
         }
         // One line a cell: a cell is laid out as its column's own text.
-        let flat = |text: &str| text.replace(['\n', '\t', '|'], " ").trim().to_string();
         self.row[at] = flat(if with_number { joined } else { number });
         if let Some(i) = caption_at {
             self.row[i] = flat(caption);
         }
+    }
+
+    /// Caption occupies merged item columns `[start, at)`; number in `at`.
+    fn push_spanned_caption_row(&mut self, start: usize, at: usize, caption: &str, number: &str) {
+        let full = self.fmt.ordered_slip_columns();
+        if full.len() != self.cols.len() || start >= at || at >= full.len() {
+            // Fall back to one-cell caption if columns are odd.
+            let mut row = vec![String::new(); self.cols.len()];
+            row[start] = caption.to_string();
+            row[at] = number.to_string();
+            self.lines.push(column_line(&row));
+            return;
+        }
+        let mm = self.fmt.shown_content_width_mm();
+        let sep = self.fmt.item_col_sep;
+        let mut merged: Vec<SlipColumn> = Vec::new();
+        let mut cells: Vec<String> = Vec::new();
+        let mut i = 0;
+        while i < full.len() {
+            if i == start {
+                let mut wide = full[i];
+                for j in (start + 1)..at {
+                    wide.width_mm += full[j].width_mm;
+                }
+                wide = wide.clamped();
+                merged.push(wide);
+                cells.push(caption.to_string());
+                i = at;
+                continue;
+            }
+            merged.push(full[i]);
+            cells.push(if i == at {
+                number.to_string()
+            } else {
+                String::new()
+            });
+            i += 1;
+        }
+        // Column directives are their own slip lines (honoured in
+        // styled_slip_lines); the caption/number row sits between them.
+        self.lines
+            .push(encode_slip_columns(&merged, mm, false, sep).trim_end().to_string());
+        self.lines.push(column_line(&cells));
+        self.lines
+            .push(encode_slip_columns(&full, mm, false, sep).trim_end().to_string());
     }
 }
 
@@ -2862,16 +3191,33 @@ impl BillSlipFormat {
         };
         self.logo_width_px = self.logo_width_px.min(BILL_LOGO_PX_MAX);
         self.logo_height_px = self.logo_height_px.min(BILL_LOGO_PX_MAX);
+        // Drop custom lines with empty ids; keep text/style.
+        self.custom_lines.retain(|c| !c.id.trim().is_empty());
+        for c in &mut self.custom_lines {
+            c.id = c.id.trim().to_string();
+            if c.style.size_em == 0 {
+                c.style.size_em = default_bill_em();
+            }
+            c.style.size_em = c.style.size_em.clamp(KOT_EM_MIN, KOT_EM_MAX);
+        }
+        let custom_ids: std::collections::HashSet<String> =
+            self.custom_lines.iter().map(|c| c.order_id()).collect();
         let mut order: Vec<String> = Vec::new();
         for id in &self.field_order {
             if let Some(field) = BillStyleField::from_id(id) {
-                if !order.iter().any(|have| have == id) {
-                    order.push(field.id().to_string());
+                let fid = field.id().to_string();
+                if !order.iter().any(|have| have == &fid) {
+                    order.push(fid);
                 }
+            } else if BillCustomLine::parse_order_id(id).is_some()
+                && custom_ids.contains(id)
+                && !order.iter().any(|have| have == id)
+            {
+                order.push(id.clone());
             }
         }
         // A line a save does not know yet goes where the product puts it
-        // (Logo above Shop), not at the end.
+        // (Logo above Shop), not at the end. Custom lines keep their places.
         for (i, field) in BillStyleField::ALL.into_iter().enumerate() {
             let id = field.id();
             if order.iter().any(|have| have == id) {
@@ -2882,6 +3228,17 @@ impl BillSlipFormat {
                 .find_map(|next| order.iter().position(|have| have == next.id()))
                 .unwrap_or(order.len());
             order.insert(at, id.to_string());
+        }
+        for c in &self.custom_lines {
+            let id = c.order_id();
+            if !order.iter().any(|have| have == &id) {
+                // New custom lines land just before Footer when possible.
+                let at = order
+                    .iter()
+                    .position(|have| have == "footer")
+                    .unwrap_or(order.len());
+                order.insert(at, id);
+            }
         }
         self.field_order = order;
         // Only real pairs of pairable fields; none left means none (Alone).
@@ -3023,12 +3380,67 @@ impl BillSlipFormat {
     }
 
     pub fn ordered(&self) -> Vec<BillStyleField> {
-        self.clone()
-            .clamped()
+        self.ordered_ids()
+            .into_iter()
+            .filter_map(|id| BillStyleField::from_id(&id))
+            .collect()
+    }
+
+    /// Print order including `custom:{id}` slots.
+    pub fn ordered_ids(&self) -> Vec<String> {
+        self.clone().clamped().field_order
+    }
+
+    pub fn custom_line(&self, id: &str) -> Option<&BillCustomLine> {
+        let key = BillCustomLine::parse_order_id(id).unwrap_or(id);
+        self.custom_lines.iter().find(|c| c.id == key)
+    }
+
+    pub fn custom_line_mut(&mut self, id: &str) -> Option<&mut BillCustomLine> {
+        let key = BillCustomLine::parse_order_id(id).unwrap_or(id).to_string();
+        self.custom_lines.iter_mut().find(|c| c.id == key)
+    }
+
+    pub fn add_custom_line(&mut self, text: impl Into<String>) -> Result<String, String> {
+        if self.custom_lines.len() >= BILL_CUSTOM_MAX {
+            return Err(format!("At most {BILL_CUSTOM_MAX} custom bill lines"));
+        }
+        let line = BillCustomLine::new(text);
+        let order_id = line.order_id();
+        self.custom_lines.push(line);
+        let at = self
             .field_order
             .iter()
-            .filter_map(|id| BillStyleField::from_id(id))
-            .collect()
+            .position(|have| have == "footer")
+            .unwrap_or(self.field_order.len());
+        self.field_order.insert(at, order_id.clone());
+        Ok(order_id)
+    }
+
+    pub fn remove_custom_line(&mut self, id: &str) {
+        let key = BillCustomLine::parse_order_id(id).unwrap_or(id).to_string();
+        self.custom_lines.retain(|c| c.id != key);
+        let order_id = format!("custom:{key}");
+        self.field_order.retain(|have| have != &order_id && have != &key);
+    }
+
+    /// Move any line (fixed or `custom:{id}`) one place in print order.
+    pub fn move_order_id(&mut self, id: &str, up: bool) -> bool {
+        let mut order = self.ordered_ids();
+        let Some(i) = order.iter().position(|have| have == id) else {
+            return false;
+        };
+        let j = if up {
+            i.checked_sub(1)
+        } else {
+            Some(i + 1).filter(|j| *j < order.len())
+        };
+        let Some(j) = j else {
+            return false;
+        };
+        order.swap(i, j);
+        self.field_order = order;
+        true
     }
 
     pub fn style(&self, field: BillStyleField) -> &BillFieldStyle {
@@ -3084,6 +3496,11 @@ impl BillSlipFormat {
                     format!("{} | {}", self.upi_vpa.trim(), self.upi_payee.trim())
                 }
             }
+            BillStyleField::Customer
+            | BillStyleField::BillNo
+            | BillStyleField::Time
+            | BillStyleField::Cashier
+            | BillStyleField::Table => self.meta_label(field),
             _ => String::new(),
         }
     }
@@ -3099,7 +3516,68 @@ impl BillSlipFormat {
                 self.upi_vpa = parts.next().unwrap_or("").trim().to_string();
                 self.upi_payee = parts.next().unwrap_or("").trim().to_string();
             }
+            BillStyleField::Customer => self.label_customer = raw.trim().to_string(),
+            BillStyleField::BillNo => self.label_bill_no = raw.trim().to_string(),
+            BillStyleField::Time => self.label_time = raw.trim().to_string(),
+            BillStyleField::Cashier => self.label_cashier = raw.trim().to_string(),
+            BillStyleField::Table => self.label_table = raw.trim().to_string(),
             _ => {}
+        }
+    }
+
+    /// Print prefix for a meta line (empty stored → product default).
+    pub fn meta_label(&self, field: BillStyleField) -> String {
+        let raw = match field {
+            BillStyleField::Customer => self.label_customer.as_str(),
+            BillStyleField::BillNo => self.label_bill_no.as_str(),
+            BillStyleField::Time => self.label_time.as_str(),
+            BillStyleField::Cashier => self.label_cashier.as_str(),
+            BillStyleField::Table => self.label_table.as_str(),
+            _ => "",
+        };
+        scrub_bill_header_label(raw, field.default_meta_label())
+    }
+
+    pub fn meta_empty(&self, field: BillStyleField) -> BillMetaEmpty {
+        match field {
+            BillStyleField::Customer => self.empty_customer,
+            BillStyleField::BillNo => self.empty_bill_no,
+            BillStyleField::Time => self.empty_time,
+            BillStyleField::Cashier => self.empty_cashier,
+            BillStyleField::Table => self.empty_table,
+            _ => BillMetaEmpty::AlwaysShow,
+        }
+    }
+
+    pub fn meta_empty_mut(&mut self, field: BillStyleField) -> Option<&mut BillMetaEmpty> {
+        match field {
+            BillStyleField::Customer => Some(&mut self.empty_customer),
+            BillStyleField::BillNo => Some(&mut self.empty_bill_no),
+            BillStyleField::Time => Some(&mut self.empty_time),
+            BillStyleField::Cashier => Some(&mut self.empty_cashier),
+            BillStyleField::Table => Some(&mut self.empty_table),
+            _ => None,
+        }
+    }
+
+    /// Prefix + value for a meta line. `None` when empty and policy is omit.
+    /// Table values are usually already `Area: seat` (or `Table: seat`); those
+    /// print as given. Other meta fields get `{label}: {value}`.
+    pub fn format_meta_line(&self, field: BillStyleField, value: &str) -> Option<String> {
+        if !field.is_meta() {
+            return None;
+        }
+        let label = self.meta_label(field);
+        let v = value.trim();
+        if v.is_empty() {
+            match self.meta_empty(field) {
+                BillMetaEmpty::AlwaysShow => Some(format!("{label}:")),
+                BillMetaEmpty::OmitWhenEmpty => None,
+            }
+        } else if field == BillStyleField::Table {
+            Some(v.to_string())
+        } else {
+            Some(format!("{label}: {v}"))
         }
     }
 
@@ -3134,17 +3612,22 @@ impl BillSlipFormat {
             self.title.trim()
         };
         append_bill_field(&mut out, self, BillStyleField::Title, title, false);
-        append_bill_field(&mut out, self, BillStyleField::Customer, "Name:", false);
-        append_bill_field(
-            &mut out,
-            self,
-            BillStyleField::Time,
-            &format!("Date: {when}"),
-            false,
-        );
-        append_bill_field(&mut out, self, BillStyleField::Table, "Dine In: D1", false);
-        append_bill_field(&mut out, self, BillStyleField::Cashier, "Cashier: biller", false);
-        append_bill_field(&mut out, self, BillStyleField::BillNo, "Bill No.: SAMPLE", false);
+        if let Some(line) = self.format_meta_line(BillStyleField::Customer, "") {
+            append_bill_field(&mut out, self, BillStyleField::Customer, &line, false);
+        }
+        if let Some(line) = self.format_meta_line(BillStyleField::Time, when) {
+            append_bill_field(&mut out, self, BillStyleField::Time, &line, false);
+        }
+        // Sample place line keeps area+table as one value (label already in text).
+        if let Some(line) = self.format_meta_line(BillStyleField::Table, "Dine In: D1") {
+            append_bill_field(&mut out, self, BillStyleField::Table, &line, false);
+        }
+        if let Some(line) = self.format_meta_line(BillStyleField::Cashier, "biller") {
+            append_bill_field(&mut out, self, BillStyleField::Cashier, &line, false);
+        }
+        if let Some(line) = self.format_meta_line(BillStyleField::BillNo, "SAMPLE") {
+            append_bill_field(&mut out, self, BillStyleField::BillNo, &line, false);
+        }
         append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
         let header = format_bill_item_header(self);
         if !header.is_empty() {
@@ -3282,14 +3765,27 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
     }
     let mut consumed: std::collections::HashSet<BillStyleField> =
         std::collections::HashSet::new();
-    let order = fmt.ordered();
-    for field in &order {
-        if consumed.contains(field) {
+    let order_ids = fmt.ordered_ids();
+    let order: Vec<BillStyleField> = order_ids
+        .iter()
+        .filter_map(|id| BillStyleField::from_id(id))
+        .collect();
+    for id in &order_ids {
+        if let Some(custom) = fmt.custom_line(id) {
+            if custom.style.show && !custom.text.trim().is_empty() {
+                append_marked(&mut out, &custom.style, custom.text.trim(), rtl);
+            }
+            continue;
+        }
+        let Some(field) = BillStyleField::from_id(id) else {
+            continue;
+        };
+        if consumed.contains(&field) {
             continue;
         }
         // The Logo line comes from the format itself (its picture and box),
         // not from what the caller staged.
-        if *field == BillStyleField::Logo {
+        if field == BillStyleField::Logo {
             if fmt.logo.show {
                 out.push_str(&bill_logo_line(fmt, rtl));
             }
@@ -3298,16 +3794,16 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
         // Pairable meta: one left\tright line when both partners have a
         // single shown text (Date | Table, Cashier | Bill no).
         if field.is_pairable() {
-            if let Some(other) = fmt.meta_pair_of(*field) {
+            if let Some(other) = fmt.meta_pair_of(field) {
                 if !consumed.contains(&other)
                     && order.contains(&other)
-                    && fmt.style(*field).show
+                    && fmt.style(field).show
                     && fmt.style(other).show
                 {
                     let left_texts: Vec<&str> = rows
                         .iter()
                         .filter(|(got, _, respect)| {
-                            *got == *field && (!*respect || fmt.style(*field).show)
+                            *got == field && (!*respect || fmt.style(field).show)
                         })
                         .map(|(_, t, _)| t.as_str())
                         .collect();
@@ -3324,12 +3820,12 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
                         && !right_texts[0].contains('\t')
                     {
                         // Emit once, in field-order: whichever comes first is left.
-                        let field_i = order.iter().position(|f| *f == *field).unwrap_or(0);
+                        let field_i = order.iter().position(|f| *f == field).unwrap_or(0);
                         let other_i = order.iter().position(|f| *f == other).unwrap_or(0);
                         let (first_f, first_t, second_f, second_t) = if field_i <= other_i {
-                            (*field, left_texts[0], other, right_texts[0])
+                            (field, left_texts[0], other, right_texts[0])
                         } else {
-                            (other, right_texts[0], *field, left_texts[0])
+                            (other, right_texts[0], field, left_texts[0])
                         };
                         append_pair(
                             &mut out,
@@ -3337,7 +3833,7 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
                             (fmt.style(second_f), second_t),
                             rtl,
                         );
-                        consumed.insert(*field);
+                        consumed.insert(field);
                         consumed.insert(other);
                         continue;
                     }
@@ -3345,13 +3841,13 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
             }
         }
         for (got, text, respect_show) in &rows {
-            if *got != *field {
+            if *got != field {
                 continue;
             }
-            if *respect_show && !fmt.style(*field).show {
+            if *respect_show && !fmt.style(field).show {
                 continue;
             }
-            append_marked(&mut out, fmt.style(*field), text, rtl);
+            append_marked(&mut out, fmt.style(field), text, rtl);
         }
     }
     out
@@ -4490,6 +4986,37 @@ mod kot_slip_format_tests {
         assert!(text.contains("Grand Total"), "grand total:\n{text}");
     }
 
+    #[test]
+    fn bill_custom_line_prints_in_field_order() {
+        let mut fmt = BillSlipFormat::default();
+        let order_id = fmt.add_custom_line("GSTIN: 27AAAAA0000A1Z5").unwrap();
+        let text = strip_kot_style_marks(&fmt.render_sample("Shop", "01/01/26 12:00"));
+        assert!(
+            text.contains("GSTIN: 27AAAAA0000A1Z5"),
+            "custom line missing:\n{text}"
+        );
+        assert!(
+            fmt.ordered_ids().iter().any(|id| id == &order_id),
+            "custom id not in order: {:?}",
+            fmt.ordered_ids()
+        );
+        fmt.remove_custom_line(&order_id);
+        let gone = strip_kot_style_marks(&fmt.render_sample("Shop", "01/01/26 12:00"));
+        assert!(!gone.contains("GSTIN: 27AAAAA0000A1Z5"), "still present:\n{gone}");
+    }
+
+    #[test]
+    fn kot_custom_line_prints_in_field_order() {
+        let mut fmt = KotSlipFormat::default();
+        let order_id = fmt.add_custom_line("ALLERGIES: peanut").unwrap();
+        let text = strip_kot_style_marks(&fmt.render_sample("Shop"));
+        assert!(
+            text.contains("ALLERGIES: peanut"),
+            "custom KOT line missing:\n{text}"
+        );
+        assert!(fmt.field_order.iter().any(|id| id == &order_id));
+    }
+
     /// The three sample totals through the rows builder.
     fn sample_total_lines(fmt: &BillSlipFormat) -> Vec<String> {
         let mut totals = BillTotalRows::new(fmt);
@@ -4500,7 +5027,11 @@ mod kot_slip_format_tests {
     }
 
     fn place(number: &str, caption: &str) -> BillTotalPlace {
-        BillTotalPlace { number: number.into(), caption: caption.into() }
+        BillTotalPlace {
+            number: number.into(),
+            caption: caption.into(),
+            caption_span: false,
+        }
     }
 
     /// Nothing placed: every total on its own line, word for word as before.
@@ -8474,65 +9005,76 @@ pub fn styled_slip_lines(
     text: &str,
     default: &crate::receipt_raster::RasterMetrics,
 ) -> Vec<crate::receipt_raster::StyledLine> {
-    let (tab, body) = take_slip_tab_layout(text);
-    body.lines()
-        .filter(|line| {
-            if line.starts_with(SLIP_TAB_MARK) {
-                return is_slip_picture_line(line);
+    let (mut tab, body) = take_slip_tab_layout(text);
+    let mut out = Vec::new();
+    for line in body.lines() {
+        // Mid-slip column directives (totals caption span) update layout for
+        // following tab lines; they are not drawn.
+        if line.starts_with(SLIP_TAB_MARK) && !is_slip_picture_line(line) {
+            let mut chars = line.chars();
+            let _ = chars.next();
+            if chars.next() == Some('C') {
+                let payload: String = chars.collect();
+                if let Some(cols) = parse_slip_columns(&payload) {
+                    tab = Some(crate::receipt_raster::LineColumns::Owner(std::sync::Arc::new(
+                        cols,
+                    )));
+                }
             }
-            let (_, body) = take_kot_line_style(line);
-            !body.trim().is_empty()
-        })
-        .map(|line| {
-            if is_slip_picture_line(line) {
-                // A picture line the raster cannot read prints nothing.
-                let (align, pic) = match decode_slip_picture(line) {
-                    Some((align, pic)) => (align, Some(pic)),
-                    None => (crate::receipt_raster::LineAlign::Start, None),
-                };
-                return crate::receipt_raster::StyledLine {
-                    text: String::new(),
-                    em: default.em,
-                    weight: crate::receipt_raster::RasterWeight::Regular,
-                    align,
-                    strike: false,
-                    tab: pic.map(crate::receipt_raster::LineColumns::Picture),
-                };
-            }
-            let (style, body) = take_kot_line_style(line);
-            let (em, weight, align, strike) = raster_line_style(style.as_ref(), default.em);
-            // A pair line carries its second field's own mark after the tab.
-            if let Some((first, rest)) = body.split_once('\t')
-                && rest.starts_with(KOT_STYLE_MARK)
-            {
-                let (second, text) = take_kot_line_style(rest);
-                let (em2, weight2, align2, _) = raster_line_style(second.as_ref(), default.em);
-                return crate::receipt_raster::StyledLine {
-                    text: first.to_string(),
-                    em,
-                    weight,
-                    align,
-                    strike,
-                    tab: Some(crate::receipt_raster::LineColumns::Pair(
-                        crate::receipt_raster::PairHalf {
-                            text: text.to_string(),
-                            em: em2,
-                            weight: weight2,
-                            align: align2,
-                        },
-                    )),
-                };
-            }
-            crate::receipt_raster::StyledLine {
-                text: body.to_string(),
+            continue;
+        }
+        if is_slip_picture_line(line) {
+            let (align, pic) = match decode_slip_picture(line) {
+                Some((align, pic)) => (align, Some(pic)),
+                None => (crate::receipt_raster::LineAlign::Start, None),
+            };
+            out.push(crate::receipt_raster::StyledLine {
+                text: String::new(),
+                em: default.em,
+                weight: crate::receipt_raster::RasterWeight::Regular,
+                align,
+                strike: false,
+                tab: pic.map(crate::receipt_raster::LineColumns::Picture),
+            });
+            continue;
+        }
+        let (style, body) = take_kot_line_style(line);
+        if body.trim().is_empty() {
+            continue;
+        }
+        let (em, weight, align, strike) = raster_line_style(style.as_ref(), default.em);
+        if let Some((first, rest)) = body.split_once('\t')
+            && rest.starts_with(KOT_STYLE_MARK)
+        {
+            let (second, text) = take_kot_line_style(rest);
+            let (em2, weight2, align2, _) = raster_line_style(second.as_ref(), default.em);
+            out.push(crate::receipt_raster::StyledLine {
+                text: first.to_string(),
                 em,
                 weight,
                 align,
                 strike,
-                tab: if body.contains('\t') { tab.clone() } else { None },
-            }
-        })
-        .collect()
+                tab: Some(crate::receipt_raster::LineColumns::Pair(
+                    crate::receipt_raster::PairHalf {
+                        text: text.to_string(),
+                        em: em2,
+                        weight: weight2,
+                        align: align2,
+                    },
+                )),
+            });
+            continue;
+        }
+        out.push(crate::receipt_raster::StyledLine {
+            text: body.to_string(),
+            em,
+            weight,
+            align,
+            strike,
+            tab: if body.contains('\t') { tab.clone() } else { None },
+        });
+    }
+    out
 }
 
 /// A line mark as the raster's size, weight, alignment and strike.

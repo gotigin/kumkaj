@@ -49,7 +49,7 @@ ASSIGN="$(cat <<'TABLE'
 Chicken Roasted|indian-mains/tandoori-chicken.webp
 Chicken Gravy|indian-mains/butter-chicken.webp
 Chicken Fry|fast-food/fried-chicken.webp
-Mutton Roasted|continental/lamb-chops.webp
+Mutton Roasted|images/mutton-chaap.webp
 Mutton Gravy|indian-mains/mutton-curry.webp
 Fish & Prawns|indian-mains/macher-jhol.webp
 Roti-Pav-Papad|indian-breads/chapati.webp
@@ -68,7 +68,7 @@ Chicken Jafrani Tikka|indian-mains/chicken-tikka.webp
 Chicken Schezwan Tikka|indian-mains/chicken-tikka.webp
 Chicken B.B.Q. Tikka|indian-mains/chicken-tikka.webp
 Chicken Sizzler Tikka|continental/chicken-sizzler.webp
-Spe. Chicken Tangdi Red 3 Piece|indian-mains/tandoori-chicken.webp
+Spe. Chicken Tangdi Red 3 Piece|indo-chinese/chicken-lollipop.webp
 Chicken Winter Tangdi 3 Piece|indian-mains/tandoori-chicken.webp
 Chicken B.B.Q. Tangdi 3 Piece|indian-mains/tandoori-chicken.webp
 Chicken Schezwan Tangdi 3 Piece|indian-mains/tandoori-chicken.webp
@@ -77,12 +77,12 @@ Chicken Lollipop|indo-chinese/chicken-lollipop.webp
 Chicken Chilli Fry|indo-chinese/chilli-chicken.webp
 Chicken Peri Peri Tikka|indian-mains/chicken-tikka.webp
 Cheese + Butter Tandoori|indian-mains/tandoori-chicken.webp
-# Chicken gravy. chicken-tikka-masala.webp is not used: it shows prawns.
+# Chicken gravy. chicken-tikka-masala.webp was cleared 2026-11 (SOURCES): chicken curry, not prawns.
 Chicken Masala|indian-mains/chicken-curry.webp
 Chicken Masala Green|indian-mains/chicken-saag.webp
 Chicken Tawa Korma|indian-mains/chicken-korma.webp
 Chicken Boneless|indian-mains/butter-chicken.webp
-Chicken Tikka Masala|indian-mains/butter-chicken.webp
+Chicken Tikka Masala|indian-mains/chicken-tikka-masala.webp
 Chicken Tawa Masala|indian-mains/kadai-chicken.webp
 Chicken Angara|indian-mains/kolhapuri-chicken.webp
 Chicken Tangdi Masala|indian-mains/butter-chicken.webp
@@ -95,16 +95,16 @@ Chicken Gravy Lollipop|indo-chinese/chicken-lollipop.webp
 Chicken Dana|indo-chinese/chicken-65.webp
 Chicken 65|indo-chinese/chicken-65.webp
 Chicken Crunchy|fast-food/fried-chicken.webp
-# Mutton roasted — raan is the leg, chaap is chops
+# Mutton roasted — raan is the leg; chaap / B.B.Q. / tawa use pack chaap or grill-fry
 Mutton Raan Roasted|images/mutton-raan.webp
 Mutton B.B.Q. Raan|images/mutton-raan.webp
 Mutton Tawa Raan|images/mutton-raan.webp
-Mutton Chaap Roasted|continental/lamb-chops.webp
-Mutton B.B.Q. Roasted|continental/lamb-chops.webp
-Mutton Fry Roasted|continental/lamb-chops.webp
+Mutton Chaap Roasted|images/mutton-chaap.webp
+Mutton B.B.Q. Roasted|images/mutton-fry.webp
+Mutton Fry Roasted|images/mutton-roast.webp
 Mutton Schezwan|images/mutton-schezwan.webp
-Mutton Tawa Roasted|continental/lamb-chops.webp
-Mutton Dry Choki|continental/lamb-chops.webp
+Mutton Tawa Roasted|images/mutton-fry.webp
+Mutton Dry Choki|images/mutton-roast.webp
 # Mutton gravy
 Mutton Raan Korma Masala|indian-mains/mutton-rogan-josh.webp
 Mutton Tawa Raan Masala|indian-mains/mutton-curry.webp
@@ -125,10 +125,10 @@ Paplet Fry|images/pomfret-fry.webp
 Paplet Roasted|continental/grilled-fish.webp
 Fish Masala|indian-mains/macher-jhol.webp
 Jinga Masala|indian-mains/prawn-curry.webp
-Fish Fry Gravy|indian-mains/macher-jhol.webp
-Jinga Fry Gravy|indian-mains/prawn-curry.webp
-Fish Live Masala|indian-mains/macher-jhol.webp
-Jinga Live Masala|indian-mains/prawn-curry.webp
+Fish Fry Gravy|indian-mains/amritsari-fish.webp
+Jinga Fry Gravy|indian-mains/chingri-malai-curry.webp
+Fish Live Masala|indian-mains/goan-fish-curry.webp
+Jinga Live Masala|indo-chinese/chilli-prawns.webp
 Roasted Fish|continental/grilled-fish.webp
 Jinga Roasted|indian-mains/tandoori-prawns.webp
 Fry Fish|indian-mains/amritsari-fish.webp
@@ -138,7 +138,8 @@ Plain Roti|indian-breads/chapati.webp
 Butter Roti|indian-breads/butter-naan.webp
 Plain Pav|bakery-cafe/pav-bun.webp
 Butter Pav|bakery-cafe/pav-bun.webp
-Fry Papad|snacks/masala-papad.webp
+# masala-papad.webp is plain roasted papad (no toppings); khakhra is a different snack — do not use it here
+Fry Papad|images/fry-papad.webp
 Roasted Papad|snacks/masala-papad.webp
 Chaas|cold-beverages/masala-chaas.webp
 # Eggs — shakshuka is eggs in a tomato masala
@@ -148,7 +149,7 @@ Live Kali|breakfast/shakshuka.webp
 Live Keema|indian-mains/egg-bhurji.webp
 Inda Mixture 5 Number|indian-mains/egg-bhurji.webp
 Inda Masala Boil Fry 4 Number|images/egg-masala.webp
-Inda Gotalo 10 Number|indian-mains/egg-bhurji.webp
+Inda Gotalo 10 Number|indian-mains/egg-curry.webp
 Inda Moglai 8 Number|breakfast/shakshuka.webp
 Inda Moti Hangama 10 Number|indian-mains/egg-bhurji.webp
 Masala Half Fry 2 Number|breakfast/fried-egg.webp
@@ -159,8 +160,8 @@ Inda Bhurji Gravy 2 Number|breakfast/shakshuka.webp
 Omlet 2 Number|breakfast/masala-omelette.webp
 Special Omlet 2 Number|breakfast/masala-omelette.webp
 Inda Boil 1 Number|breakfast/boiled-eggs.webp
-Inda Schezwan 5 Number|
-Inda Tawa Tikka 5 Number|
+Inda Schezwan 5 Number|images/egg-schezwan.webp
+Inda Tawa Tikka 5 Number|images/egg-tawa-tikka.webp
 Inda Tawa Fry Cheese 5 Number|breakfast/cheese-omelette.webp
 Inda B.B.Q. 5 Number|images/grilled-eggs.webp
 Lasaniya Boil 4 Number|breakfast/boiled-eggs.webp
@@ -168,11 +169,11 @@ Inda Boil Fry Sada 3 Number|breakfast/boiled-eggs.webp
 # Rice
 Chicken Bombay Biryani|indian-rice/chicken-biryani.webp
 Chicken Dum Biryani|indian-rice/lucknowi-biryani.webp
-Chicken Tikka Biryani|indian-rice/chicken-biryani.webp
-Chicken Tandoori Biryani|indian-rice/lucknowi-biryani.webp
+Chicken Tikka Biryani|indian-rice/hyderabadi-biryani.webp
+Chicken Tandoori Biryani|indian-rice/dindigul-biryani.webp
 Chicken Tawa Rice|indo-chinese/chicken-fried-rice.webp
 Mutton Tawa Rice|images/mutton-fried-rice.webp
-Mutton Tikka Biryani|indian-rice/mutton-biryani.webp
+Mutton Tikka Biryani|indian-rice/kolkata-biryani.webp
 Mutton Biryani|indian-rice/mutton-biryani.webp
 Fish Biryani|images/fish-biryani.webp
 Jinga Biryani|indian-rice/prawn-biryani.webp
@@ -180,9 +181,9 @@ Fish Tawa Rice|images/fish-fried-rice.webp
 Jinga Tawa Rice|images/prawn-fried-rice.webp
 Inda Biryani|indian-rice/egg-biryani.webp
 Inda Tawa Rice|indo-chinese/egg-fried-rice.webp
-Fry Rice Gravy|
+Fry Rice Gravy|images/fry-rice-gravy.webp
 Chicken Gravy Rice|images/chicken-gravy-rice.webp
-Inda Gravy Rice|
+Inda Gravy Rice|images/egg-gravy-rice.webp
 Jeera Rice|indian-rice/jeera-rice.webp
 Rasawara Rice|images/rice-and-rassa.webp
 TABLE

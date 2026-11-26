@@ -67,14 +67,15 @@ nothing. A dish with no honest photo keeps an empty `image` so the tile shows
 initials instead of the wrong food. After a menu edit: add the rows to the
 table, run the script (`--check` only reports), then `--public-rajdhani`.
 
-State on 2026-11-21: 121 dishes, 117 with a photo, 4 without (Inda Schezwan,
-Inda Tawa Tikka, Fry Rice Gravy, Inda Gravy Rice). Fifteen photos ship with
-the pack. Twelve shelf files whose pictures were wrong (empty pans as kadai
-chicken, a raw egg as egg curry, a landscape as tehri, …) were replaced in
-place. Authors and licences: `catalogue/private-src/rajdhani/images/SOURCES.md`
-and `assets/items/SOURCES.md`; `publish-catalogue.sh` copies both beside the
-published files. The rest of the shelf has not been checked picture by
-picture and has no source record yet.
+State on 2026-11-26: 121 dishes, all with a photo (0 blanks). Pack
+`images/` holds the Rajdhani-only shots (see that folder’s `SOURCES.md`);
+`fix-rajdhani-images.sh` is the assign table. Same-family sharing stays
+intentional (tandoor lines, cream gravies, …). Wrong shelf filename matches
+(soup on tandoori, khakhra on roasted papad, continental lamb+mash on chaap)
+are avoided by looking at the picture. Twelve earlier shelf files whose
+pictures lied (empty pans as kadai chicken, a raw egg as egg curry, …) were
+replaced in place — see `assets/items/SOURCES.md`. The rest of the shelf has
+not been checked picture by picture.
 
 ## Layout
 

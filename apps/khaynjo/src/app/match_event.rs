@@ -4688,6 +4688,48 @@ impl MatchEvent for App {
                             self.sync_bill_format_ui(cx);
                         }
                     }
+                    SuggestField::BillPreviewSource => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            let key = st
+                                .suggest_rows
+                                .iter()
+                                .find(|r| r.value == value || r.subtitle == value)
+                                .map(|r| r.subtitle.clone())
+                                .unwrap_or_else(|| value.clone());
+                            st.bill_preview_source = if key == "sample" || key.is_empty() {
+                                BillPreviewSource::Sample
+                            } else if let Some(id) = key.strip_prefix("run:") {
+                                BillPreviewSource::Running(id.to_string())
+                            } else if let Some(id) = key.strip_prefix("sale:") {
+                                BillPreviewSource::Sale(id.to_string())
+                            } else {
+                                BillPreviewSource::Sample
+                            };
+                            st.suggest_open = None;
+                        }
+                        self.sync_bill_format_ui(cx);
+                    }
+                    SuggestField::KotPreviewSource => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            let key = st
+                                .suggest_rows
+                                .iter()
+                                .find(|r| r.value == value || r.subtitle == value)
+                                .map(|r| r.subtitle.clone())
+                                .unwrap_or_else(|| value.clone());
+                            st.kot_preview_source = if key == "sample" || key.is_empty() {
+                                KotPreviewSource::Sample
+                            } else if let Some(id) = key.strip_prefix("kot:") {
+                                KotPreviewSource::Ticket(id.to_string())
+                            } else {
+                                KotPreviewSource::Sample
+                            };
+                            st.suggest_open = None;
+                        }
+                        self.sync_kot_format_ui(cx);
+                    }
                     SuggestField::TestPrinters | SuggestField::KotTestPrinters => {
                         let msg = {
                             let mut st = app_state().lock().unwrap();
@@ -5877,8 +5919,15 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, id, on) {
                 let msg = {
                     let mut st = app_state().lock().unwrap();
+                    let owner_row = st
+                        .team_staff_id
+                        .as_ref()
+                        .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                        .is_some_and(|s| s.is_owner());
                     if st.team_staff_id.is_none() {
                         st.t("staff_copy_need_selected")
+                    } else if owner_row {
+                        st.t("team_owner_identity_hint")
                     } else {
                         match toggle {
                             "sell" => st.draft_features.sell = !st.draft_features.sell,
@@ -5916,19 +5965,23 @@ impl MatchEvent for App {
                     .team_staff_id
                     .clone()
                     .ok_or_else(|| st.t("staff_copy_need_selected"))?;
-                let current_name = st
+                let (current_name, current_login, is_owner_row) = st
                     .staff
                     .iter()
                     .find(|s| s.id == staff_id)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_else(|| staff_id.clone());
+                    .map(|s| (s.name.clone(), s.login_id.clone(), s.is_owner()))
+                    .unwrap_or_else(|| (staff_id.clone(), String::new(), false));
                 if !new_name.trim().is_empty() && new_name.trim() != current_name.trim() {
                     st.books_op(BooksOp::RenameStaff {
                         staff_id: staff_id.clone(),
                         name: new_name.trim().to_string(),
                     })?;
                 }
-                if password_set {
+                let login_trim = login.trim().to_ascii_lowercase();
+                let login_changed = !login_trim.is_empty()
+                    && login_trim != current_login.to_ascii_lowercase();
+                // Username alone (self) or username+password — store keeps hash when blank.
+                if password_set || login_changed {
                     st.books_op(BooksOp::SetStaffLogin {
                         staff_id: staff_id.clone(),
                         login_id: login,
@@ -5947,9 +6000,14 @@ impl MatchEvent for App {
                     .find(|s| s.id == staff_id)
                     .map(|s| s.name.clone())
                     .unwrap_or(current_name);
-                let features = st.draft_features.clone();
-                st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
-                st.status = st.t("save_features_ok").replace("{name}", &name);
+                // Owner keeps full rights — Save is name/username/password only.
+                if !is_owner_row {
+                    let features = st.draft_features.clone();
+                    st.books_op(BooksOp::SetStaffFeatures { staff_id, features })?;
+                    st.status = st.t("save_features_ok").replace("{name}", &name);
+                } else {
+                    st.status = st.t("save_owner_identity_ok").replace("{name}", &name);
+                }
                 Ok(())
             })();
             if let Err(e) = result {
@@ -6519,18 +6577,27 @@ impl MatchEvent for App {
                 if let Ok(raw) = size_now.trim().parse::<u32>() {
                     let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
                     let mut st = app_state().lock().unwrap();
-                    let kind = st.kot_edit_kind;
-                    let field = st.kot_style_field;
-                    if st.kot_slip_draft.kind_styles.get(kind).get(field).size_em != em {
-                        st.kot_slip_draft
-                            .kind_styles
-                            .get_mut(kind)
-                            .get_mut(field)
-                            .size_em = em;
-                        if field == print_share::KotStyleField::ItemQty {
-                            st.kot_slip_draft.em = em;
+                    if let Some(id) = st.kot_custom_id.clone() {
+                        if let Some(line) = st.kot_slip_draft.custom_line_mut(&id) {
+                            if line.style.size_em != em {
+                                line.style.size_em = em;
+                                style_changed = true;
+                            }
                         }
-                        style_changed = true;
+                    } else {
+                        let kind = st.kot_edit_kind;
+                        let field = st.kot_style_field;
+                        if st.kot_slip_draft.kind_styles.get(kind).get(field).size_em != em {
+                            st.kot_slip_draft
+                                .kind_styles
+                                .get_mut(kind)
+                                .get_mut(field)
+                                .size_em = em;
+                            if field == print_share::KotStyleField::ItemQty {
+                                st.kot_slip_draft.em = em;
+                            }
+                            style_changed = true;
+                        }
                     }
                 }
             }
@@ -6585,35 +6652,89 @@ impl MatchEvent for App {
             }
             // Tap a closed line (before or after the open one) to open it.
             {
-                let lines = kot_lines(&app_state().lock().unwrap().kot_slip_draft);
-                for (i, field) in lines.into_iter().enumerate().take(KOT_PICK_BTNS.len()) {
+                let lines = kot_line_ids(&app_state().lock().unwrap().kot_slip_draft);
+                for (i, oid) in lines.into_iter().enumerate().take(KOT_PICK_BTNS.len()) {
                     let (a, a_on) = KOT_PICK_BTNS[i];
                     let (b, b_on) = KOT_AFTER_BTNS[i];
                     if self.choice_chip_clicked(cx, actions, a, a_on)
                         || self.choice_chip_clicked(cx, actions, b, b_on)
                     {
                         let mut st = app_state().lock().unwrap();
-                        if st.kot_style_field != field {
-                            st.kot_style_field = field;
+                        if let Some(cid) = print_share::KotCustomLine::parse_order_id(&oid) {
+                            st.kot_custom_id = Some(cid.to_string());
                             style_changed = true;
+                        } else if let Some(field) = print_share::KotStyleField::from_id(&oid) {
+                            st.kot_custom_id = None;
+                            if st.kot_style_field != field {
+                                st.kot_style_field = field;
+                                style_changed = true;
+                            }
                         }
                         break;
+                    }
+                }
+            }
+            if self.ui.button(cx, ids!(kot_custom_add)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                match st.kot_slip_draft.add_custom_line("") {
+                    Ok(order_id) => {
+                        if let Some(cid) = print_share::KotCustomLine::parse_order_id(&order_id) {
+                            st.kot_custom_id = Some(cid.to_string());
+                        }
+                        slip_changed = true;
+                        style_changed = true;
+                    }
+                    Err(e) => {
+                        drop(st);
+                        self.set_status(cx, e);
+                    }
+                }
+            }
+            if self.ui.button(cx, ids!(kot_custom_remove)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                if let Some(id) = st.kot_custom_id.take() {
+                    st.kot_slip_draft.remove_custom_line(&id);
+                    st.kot_style_field = print_share::KotStyleField::Time;
+                    slip_changed = true;
+                    style_changed = true;
+                }
+            }
+            if let Some(text) = self.ui.text_input(cx, ids!(kot_custom_value)).changed(actions) {
+                let mut st = app_state().lock().unwrap();
+                if let Some(id) = st.kot_custom_id.clone() {
+                    if let Some(line) = st.kot_slip_draft.custom_line_mut(&id) {
+                        line.text = text;
+                        slip_changed = true;
                     }
                 }
             }
             if self.choice_chip_clicked(cx, actions, ids!(kot_field_show), ids!(kot_field_show_on))
             {
                 let mut st = app_state().lock().unwrap();
-                let field = st.kot_style_field;
-                st.kot_slip_draft.set_field_shown(field, true);
-                slip_changed = true;
+                if let Some(id) = st.kot_custom_id.clone() {
+                    if let Some(line) = st.kot_slip_draft.custom_line_mut(&id) {
+                        line.show = true;
+                        slip_changed = true;
+                    }
+                } else {
+                    let field = st.kot_style_field;
+                    st.kot_slip_draft.set_field_shown(field, true);
+                    slip_changed = true;
+                }
             }
             if self.choice_chip_clicked(cx, actions, ids!(kot_field_hide), ids!(kot_field_hide_on))
             {
                 let mut st = app_state().lock().unwrap();
-                let field = st.kot_style_field;
-                st.kot_slip_draft.set_field_shown(field, false);
-                slip_changed = true;
+                if let Some(id) = st.kot_custom_id.clone() {
+                    if let Some(line) = st.kot_slip_draft.custom_line_mut(&id) {
+                        line.show = false;
+                        slip_changed = true;
+                    }
+                } else {
+                    let field = st.kot_style_field;
+                    st.kot_slip_draft.set_field_shown(field, false);
+                    slip_changed = true;
+                }
             }
             for (idle, on, weight) in [
                 (
@@ -6634,14 +6755,21 @@ impl MatchEvent for App {
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     let mut st = app_state().lock().unwrap();
-                    let kind = st.kot_edit_kind;
-                    let field = st.kot_style_field;
-                    st.kot_slip_draft
-                        .kind_styles
-                        .get_mut(kind)
-                        .get_mut(field)
-                        .weight = weight;
-                    style_changed = true;
+                    if let Some(id) = st.kot_custom_id.clone() {
+                        if let Some(line) = st.kot_slip_draft.custom_line_mut(&id) {
+                            line.style.weight = weight;
+                            style_changed = true;
+                        }
+                    } else {
+                        let kind = st.kot_edit_kind;
+                        let field = st.kot_style_field;
+                        st.kot_slip_draft
+                            .kind_styles
+                            .get_mut(kind)
+                            .get_mut(field)
+                            .weight = weight;
+                        style_changed = true;
+                    }
                     break;
                 }
             }
@@ -6652,14 +6780,21 @@ impl MatchEvent for App {
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     let mut st = app_state().lock().unwrap();
-                    let kind = st.kot_edit_kind;
-                    let field = st.kot_style_field;
-                    st.kot_slip_draft
-                        .kind_styles
-                        .get_mut(kind)
-                        .get_mut(field)
-                        .align = align;
-                    slip_changed = true;
+                    if let Some(id) = st.kot_custom_id.clone() {
+                        if let Some(line) = st.kot_slip_draft.custom_line_mut(&id) {
+                            line.style.align = align;
+                            slip_changed = true;
+                        }
+                    } else {
+                        let kind = st.kot_edit_kind;
+                        let field = st.kot_style_field;
+                        st.kot_slip_draft
+                            .kind_styles
+                            .get_mut(kind)
+                            .get_mut(field)
+                            .align = align;
+                        slip_changed = true;
+                    }
                     break;
                 }
             }
@@ -6721,12 +6856,16 @@ impl MatchEvent for App {
                     slip_changed = true;
                 }
             }
-            // ↑ / ↓ move the open info line among the info lines.
+            // ↑ / ↓ move the open info / custom line among the info lines.
             for (btn, up) in [(ids!(kot_field_up), true), (ids!(kot_field_down), false)] {
                 if self.ui.button(cx, btn).clicked(actions) {
                     let mut st = app_state().lock().unwrap();
-                    let field = st.kot_style_field;
-                    if kot_move_line(&mut st.kot_slip_draft, field, up) {
+                    let open = if let Some(ref id) = st.kot_custom_id {
+                        format!("custom:{id}")
+                    } else {
+                        st.kot_style_field.id().to_string()
+                    };
+                    if kot_move_line_id(&mut st.kot_slip_draft, &open, up) {
                         slip_changed = true;
                     }
                 }
@@ -6899,10 +7038,17 @@ impl MatchEvent for App {
                 .changed(actions)
             {
                 let mut st = app_state().lock().unwrap();
-                let field = st.bill_style_field;
-                if field.has_text() {
-                    st.bill_slip_draft.set_text(field, &text);
-                    bill_changed = true;
+                if let Some(id) = st.bill_custom_id.clone() {
+                    if let Some(line) = st.bill_slip_draft.custom_line_mut(&id) {
+                        line.text = text;
+                        bill_changed = true;
+                    }
+                } else {
+                    let field = st.bill_style_field;
+                    if field.has_text() {
+                        st.bill_slip_draft.set_text(field, &text);
+                        bill_changed = true;
+                    }
                 }
             }
             if let Some(size_now) = self
@@ -6913,10 +7059,19 @@ impl MatchEvent for App {
                 if let Ok(raw) = size_now.trim().parse::<u32>() {
                     let em = raw.clamp(print_share::KOT_EM_MIN, print_share::KOT_EM_MAX);
                     let mut st = app_state().lock().unwrap();
-                    let field = st.bill_style_field;
-                    if st.bill_slip_draft.style(field).size_em != em {
-                        st.bill_slip_draft.style_mut(field).size_em = em;
-                        bill_changed = true;
+                    if let Some(id) = st.bill_custom_id.clone() {
+                        if let Some(line) = st.bill_slip_draft.custom_line_mut(&id) {
+                            if line.style.size_em != em {
+                                line.style.size_em = em;
+                                bill_changed = true;
+                            }
+                        }
+                    } else {
+                        let field = st.bill_style_field;
+                        if st.bill_slip_draft.style(field).size_em != em {
+                            st.bill_slip_draft.style_mut(field).size_em = em;
+                            bill_changed = true;
+                        }
                     }
                 }
             }
@@ -6928,35 +7083,65 @@ impl MatchEvent for App {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     self.commit_bill_field_value(cx);
                     let mut st = app_state().lock().unwrap();
-                    let order = st.bill_slip_draft.ordered();
-                    if let Some(field) = order.get(i).copied() {
-                        st.bill_style_field = field;
+                    let order = st.bill_slip_draft.ordered_ids();
+                    if let Some(oid) = order.get(i) {
+                        if let Some(cid) = print_share::BillCustomLine::parse_order_id(oid) {
+                            st.bill_custom_id = Some(cid.to_string());
+                        } else if let Some(field) = print_share::BillStyleField::from_id(oid) {
+                            st.bill_custom_id = None;
+                            st.bill_style_field = field;
+                        }
                         bill_changed = true;
                     }
                     break;
                 }
             }
+            if self.ui.button(cx, ids!(bill_custom_add)).clicked(actions) {
+                self.commit_bill_field_value(cx);
+                let mut st = app_state().lock().unwrap();
+                match st.bill_slip_draft.add_custom_line("") {
+                    Ok(order_id) => {
+                        if let Some(cid) = print_share::BillCustomLine::parse_order_id(&order_id) {
+                            st.bill_custom_id = Some(cid.to_string());
+                        }
+                        bill_changed = true;
+                    }
+                    Err(e) => {
+                        drop(st);
+                        self.set_status(cx, e);
+                    }
+                }
+            }
+            if self.ui.button(cx, ids!(bill_custom_remove)).clicked(actions) {
+                self.commit_bill_field_value(cx);
+                let mut st = app_state().lock().unwrap();
+                if let Some(id) = st.bill_custom_id.take() {
+                    st.bill_slip_draft.remove_custom_line(&id);
+                    st.bill_style_field = print_share::BillStyleField::Footer;
+                    bill_changed = true;
+                }
+            }
             if self.ui.button(cx, ids!(bill_field_up)).clicked(actions) {
                 self.commit_bill_field_value(cx);
                 let mut st = app_state().lock().unwrap();
-                let order = st.bill_slip_draft.ordered();
-                let open = st.bill_style_field;
-                if let Some(i) = order.iter().position(|f| *f == open).filter(|i| *i > 0) {
-                    let mut ids: Vec<String> = order.iter().map(|f| f.id().to_string()).collect();
-                    ids.swap(i, i - 1);
-                    st.bill_slip_draft.field_order = ids;
+                let open = if let Some(ref id) = st.bill_custom_id {
+                    format!("custom:{id}")
+                } else {
+                    st.bill_style_field.id().to_string()
+                };
+                if st.bill_slip_draft.move_order_id(&open, true) {
                     bill_changed = true;
                 }
             }
             if self.ui.button(cx, ids!(bill_field_down)).clicked(actions) {
                 self.commit_bill_field_value(cx);
                 let mut st = app_state().lock().unwrap();
-                let order = st.bill_slip_draft.ordered();
-                let open = st.bill_style_field;
-                if let Some(i) = order.iter().position(|f| *f == open).filter(|i| i + 1 < order.len()) {
-                    let mut ids: Vec<String> = order.iter().map(|f| f.id().to_string()).collect();
-                    ids.swap(i, i + 1);
-                    st.bill_slip_draft.field_order = ids;
+                let open = if let Some(ref id) = st.bill_custom_id {
+                    format!("custom:{id}")
+                } else {
+                    st.bill_style_field.id().to_string()
+                };
+                if st.bill_slip_draft.move_order_id(&open, false) {
                     bill_changed = true;
                 }
             }
@@ -7020,16 +7205,30 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, ids!(bill_field_show), ids!(bill_field_show_on))
             {
                 let mut st = app_state().lock().unwrap();
-                let field = st.bill_style_field;
-                st.bill_slip_draft.style_mut(field).show = true;
-                bill_changed = true;
+                if let Some(id) = st.bill_custom_id.clone() {
+                    if let Some(line) = st.bill_slip_draft.custom_line_mut(&id) {
+                        line.style.show = true;
+                        bill_changed = true;
+                    }
+                } else {
+                    let field = st.bill_style_field;
+                    st.bill_slip_draft.style_mut(field).show = true;
+                    bill_changed = true;
+                }
             }
             if self.choice_chip_clicked(cx, actions, ids!(bill_field_hide), ids!(bill_field_hide_on))
             {
                 let mut st = app_state().lock().unwrap();
-                let field = st.bill_style_field;
-                st.bill_slip_draft.style_mut(field).show = false;
-                bill_changed = true;
+                if let Some(id) = st.bill_custom_id.clone() {
+                    if let Some(line) = st.bill_slip_draft.custom_line_mut(&id) {
+                        line.style.show = false;
+                        bill_changed = true;
+                    }
+                } else {
+                    let field = st.bill_style_field;
+                    st.bill_slip_draft.style_mut(field).show = false;
+                    bill_changed = true;
+                }
             }
             if self.choice_chip_clicked(
                 cx,
@@ -7198,6 +7397,27 @@ impl MatchEvent for App {
                     }
                 }
             }
+            for (idle, on, policy) in [
+                (
+                    ids!(bill_empty_always),
+                    ids!(bill_empty_always_on),
+                    print_share::BillMetaEmpty::AlwaysShow,
+                ),
+                (
+                    ids!(bill_empty_omit),
+                    ids!(bill_empty_omit_on),
+                    print_share::BillMetaEmpty::OmitWhenEmpty,
+                ),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    let field = st.bill_style_field;
+                    if let Some(slot) = st.bill_slip_draft.meta_empty_mut(field) {
+                        *slot = policy;
+                        bill_changed = true;
+                    }
+                }
+            }
             if let Some(raw) = self
                 .ui
                 .text_input(cx, ids!(bill_total_qty_label_input))
@@ -7255,6 +7475,16 @@ impl MatchEvent for App {
                     if self.choice_chip_clicked(cx, actions, &[block, idle], &[block, on]) {
                         let mut st = app_state().lock().unwrap();
                         st.bill_slip_draft.total_place_mut(kind).set_caption_place(caption);
+                        bill_changed = true;
+                    }
+                }
+                for (idle, on, span) in [
+                    (id!(tp_span_off), id!(tp_span_off_on), false),
+                    (id!(tp_span_on), id!(tp_span_on_on), true),
+                ] {
+                    if self.choice_chip_clicked(cx, actions, &[block, idle], &[block, on]) {
+                        let mut st = app_state().lock().unwrap();
+                        st.bill_slip_draft.total_place_mut(kind).caption_span = span;
                         bill_changed = true;
                     }
                 }
@@ -7320,9 +7550,16 @@ impl MatchEvent for App {
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     let mut st = app_state().lock().unwrap();
-                    let field = st.bill_style_field;
-                    st.bill_slip_draft.style_mut(field).weight = weight;
-                    bill_changed = true;
+                    if let Some(id) = st.bill_custom_id.clone() {
+                        if let Some(line) = st.bill_slip_draft.custom_line_mut(&id) {
+                            line.style.weight = weight;
+                            bill_changed = true;
+                        }
+                    } else {
+                        let field = st.bill_style_field;
+                        st.bill_slip_draft.style_mut(field).weight = weight;
+                        bill_changed = true;
+                    }
                     break;
                 }
             }
@@ -7333,9 +7570,16 @@ impl MatchEvent for App {
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     let mut st = app_state().lock().unwrap();
-                    let field = st.bill_style_field;
-                    st.bill_slip_draft.style_mut(field).align = align;
-                    bill_changed = true;
+                    if let Some(id) = st.bill_custom_id.clone() {
+                        if let Some(line) = st.bill_slip_draft.custom_line_mut(&id) {
+                            line.style.align = align;
+                            bill_changed = true;
+                        }
+                    } else {
+                        let field = st.bill_style_field;
+                        st.bill_slip_draft.style_mut(field).align = align;
+                        bill_changed = true;
+                    }
                     break;
                 }
             }
@@ -7466,6 +7710,19 @@ impl MatchEvent for App {
                 }
                 self.sync_job_drive_ui(cx);
                 self.ui.widget(cx, ids!(bill_printers_suggest)).redraw(cx);
+            }
+        }
+        for (dd, field) in [
+            (ids!(bill_preview_source_dd), SuggestField::BillPreviewSource),
+            (ids!(kot_preview_source_dd), SuggestField::KotPreviewSource),
+        ] {
+            if self.ui.button(cx, dd).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(field) {
+                    st.suggest_open = None;
+                } else {
+                    st.open_suggest(field, "");
+                }
             }
         }
         // The preview's printer: which saved printer's paper it is drawn on.
@@ -8130,8 +8387,15 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, idle, on) {
                 let msg = {
                     let mut st = app_state().lock().unwrap();
+                    let owner_row = st
+                        .team_staff_id
+                        .as_ref()
+                        .and_then(|id| st.staff.iter().find(|s| &s.id == id))
+                        .is_some_and(|s| s.is_owner());
                     if st.team_staff_id.is_none() {
                         st.t("staff_copy_need_selected")
+                    } else if owner_row {
+                        st.t("team_owner_identity_hint")
                     } else {
                         let mut rights = st.team_draft_rights();
                         rights.set_level(right, level);

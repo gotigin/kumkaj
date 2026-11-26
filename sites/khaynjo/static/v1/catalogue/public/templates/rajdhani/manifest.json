@@ -9,18 +9,18 @@
   "shop_defaults_id": "",
   "shop_defaults": "shop_defaults.json",
   "template": "template.json",
-  "bytes": 6264118,
-  "sha256": "3903cf2743846ecf05ff6df6127d4adaabc0f14e6aa89e8d5329fa0a916fc4f6",
+  "bytes": 7816101,
+  "sha256": "6310baa677a8f4141745ab74b4d98d66137eb9f9622b63dd7cc5cc5228d155cb",
   "files": [
     {
       "path": "template.json",
-      "bytes": 29966,
-      "sha256": "3903cf2743846ecf05ff6df6127d4adaabc0f14e6aa89e8d5329fa0a916fc4f6"
+      "bytes": 30020,
+      "sha256": "6310baa677a8f4141745ab74b4d98d66137eb9f9622b63dd7cc5cc5228d155cb"
     },
     {
       "path": "shop_defaults.json",
-      "bytes": 40254,
-      "sha256": "6e820b6eb7016b7dfe49c890a77b1dc3b67129385809b10dd59c9968437f1843"
+      "bytes": 40271,
+      "sha256": "64bc5af2c9e94bd892b77fb17315c7207aa74239575e0c110c4c37f78bed3420"
     },
     {
       "path": "images/bakery-cafe/pav-bun.webp",
@@ -73,14 +73,24 @@
       "sha256": "69b962ba4dc1afc4e7e33024850118de2fc6038d072227a28ae18a29353c0e23"
     },
     {
-      "path": "images/continental/lamb-chops.webp",
-      "bytes": 89608,
-      "sha256": "0328c0f4b2ae2754a80af1c37f373378dd885f614fa482a42a9bffde96212361"
+      "path": "images/egg-gravy-rice.webp",
+      "bytes": 106774,
+      "sha256": "3fcb52fddae0f850c05908bd25826eae459c3e9d5eca792ce81494e40e0c4306"
     },
     {
       "path": "images/egg-masala.webp",
       "bytes": 101608,
       "sha256": "f7ef78f9b9cc116144222d48a3500114a7aa8678b0bbf6b73c743a3df6579dd0"
+    },
+    {
+      "path": "images/egg-schezwan.webp",
+      "bytes": 142328,
+      "sha256": "2c9e2d9b5be131c4af7fcd20b9f05cf6800fb922a352c4b2b5c90507121c860a"
+    },
+    {
+      "path": "images/egg-tawa-tikka.webp",
+      "bytes": 90452,
+      "sha256": "2ec2ea9f2538286b9339026afa018fb4d7cfd2d6da27a2b8cc9d7e93191dc4c9"
     },
     {
       "path": "images/fast-food/fried-chicken.webp",
@@ -96,6 +106,16 @@
       "path": "images/fish-fried-rice.webp",
       "bytes": 89402,
       "sha256": "a3b96964870f8b19b053508427ef9e5e3b0efd30ce02eff49c2dc020bb9e3061"
+    },
+    {
+      "path": "images/fry-papad.webp",
+      "bytes": 115876,
+      "sha256": "8e16efc0c7cda1ed46a02360248a16c07c1b412413c620ce95d9f904018aed43"
+    },
+    {
+      "path": "images/fry-rice-gravy.webp",
+      "bytes": 105780,
+      "sha256": "eee5ed38300ee5b93285a26125e45742a175edf6c14fd4277bd26142672b86fd"
     },
     {
       "path": "images/grilled-eggs.webp",
@@ -143,9 +163,19 @@
       "sha256": "00c6dbded5a17061ca1c1e02bdeb11d6c598ca103406046a5b0d34efcd528dae"
     },
     {
+      "path": "images/indian-mains/chicken-tikka-masala.webp",
+      "bytes": 118368,
+      "sha256": "2bdac3a5b9bf1cd0455f3bf68170ed4501009d31b9878871879043059413a510"
+    },
+    {
       "path": "images/indian-mains/chicken-tikka.webp",
       "bytes": 39698,
       "sha256": "3e4affb380a0e2d676434f08ffe8133cd72e9e805704973e84aef4b180136c6c"
+    },
+    {
+      "path": "images/indian-mains/chingri-malai-curry.webp",
+      "bytes": 121908,
+      "sha256": "e2172917d012312336d6d7020ed5d9a28829780faac3b264d24a57e9aea8458b"
     },
     {
       "path": "images/indian-mains/egg-bhurji.webp",
@@ -156,6 +186,11 @@
       "path": "images/indian-mains/egg-curry.webp",
       "bytes": 104958,
       "sha256": "4585cace538ab946155d14ebb9972a5c27c5ba01dd4c66ac7bfa654c95a4456c"
+    },
+    {
+      "path": "images/indian-mains/goan-fish-curry.webp",
+      "bytes": 79794,
+      "sha256": "b74c7bec3af8e1c4288b7371dedee90d13c56cfc7c383c5f8fd12bc396caecf8"
     },
     {
       "path": "images/indian-mains/kadai-chicken.webp",
@@ -213,14 +248,29 @@
       "sha256": "10445ab914fd9f74c938faa7d476a751702902c81d0e8af4d6933c8db76f5d7b"
     },
     {
+      "path": "images/indian-rice/dindigul-biryani.webp",
+      "bytes": 105860,
+      "sha256": "98233e96d6ceefbb9d1d039576948df2dd5d0f65798b8ee5beb84e432419d5f8"
+    },
+    {
       "path": "images/indian-rice/egg-biryani.webp",
       "bytes": 140096,
       "sha256": "f81162b15ad41dcd6be2847b6e30ef299d79822c0ced5ac91660717207dbaed7"
     },
     {
+      "path": "images/indian-rice/hyderabadi-biryani.webp",
+      "bytes": 45330,
+      "sha256": "89a32c311966884333fc36ccb4f4b81ffab3d7fe466b8ecc19659916cfbaa74f"
+    },
+    {
       "path": "images/indian-rice/jeera-rice.webp",
       "bytes": 129816,
       "sha256": "b9ec73eb8e5d9bb7f95eb4480c6f9fa5c4a48ed0dc9e624b471d61a66ceba333"
+    },
+    {
+      "path": "images/indian-rice/kolkata-biryani.webp",
+      "bytes": 122114,
+      "sha256": "5b65f29d5ca25d44e60a2eb80b4d6a998430ba71583030360e0f1f646b175f51"
     },
     {
       "path": "images/indian-rice/lucknowi-biryani.webp",
@@ -258,6 +308,11 @@
       "sha256": "73fa916143aedfc53660252af8ad4399748aa57d9f218cd9d952861b9dfa7769"
     },
     {
+      "path": "images/indo-chinese/chilli-prawns.webp",
+      "bytes": 28034,
+      "sha256": "00d95e1aacbf8dbc95afac4d6c64dfada1a3b99e162b220fd4c60159ec5a6515"
+    },
+    {
       "path": "images/indo-chinese/egg-fried-rice.webp",
       "bytes": 97062,
       "sha256": "de2f30010d254e3ac7a64301e060d02ecc272f9b4fdece2322f361454c27a0a8"
@@ -268,9 +323,19 @@
       "sha256": "d44cec93d49134517b851d62f30ca7f22ccac28953890c3e8109aab2eed5abba"
     },
     {
+      "path": "images/mutton-chaap.webp",
+      "bytes": 173560,
+      "sha256": "68d8d7aaff63b451a7e1c0499d555bedf3bf411520124215290dbc6ecd9efabb"
+    },
+    {
       "path": "images/mutton-fried-rice.webp",
       "bytes": 120624,
       "sha256": "e3d0be158b855403c8c53460cec90c8daee7d5c389d5510dce68b8a82f7aa599"
+    },
+    {
+      "path": "images/mutton-fry.webp",
+      "bytes": 139996,
+      "sha256": "0fdca1580aa218bf6f8c9b48b157411aa3561dccf6d1884eb537373129008efb"
     },
     {
       "path": "images/mutton-green-masala.webp",
@@ -286,6 +351,11 @@
       "path": "images/mutton-raan.webp",
       "bytes": 121602,
       "sha256": "1967b5dbc9964974b6988767c34d0f894210d7dc13fd9425c88e440adf25c7f5"
+    },
+    {
+      "path": "images/mutton-roast.webp",
+      "bytes": 145346,
+      "sha256": "5cc3681a00d8dcdc6b631bd0004294ed7944b623cbc4c401ec60f1ccf36ab3f3"
     },
     {
       "path": "images/mutton-schezwan.webp",

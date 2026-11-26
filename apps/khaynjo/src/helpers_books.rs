@@ -301,56 +301,51 @@ fn printer_place_choices(
 /// The seven KOT info lines, in the order a new format prints them.
 const KOT_INFO_IDS: [&str; 7] = ["time", "kot_no", "area", "table", "shop", "waiter", "station"];
 
-fn kot_field_of_id(id: &str) -> Option<print_share::KotStyleField> {
-    use print_share::KotStyleField as F;
-    Some(match id {
-        "time" => F::Time,
-        "kot_no" => F::KotNo,
-        "area" => F::Area,
-        "table" => F::Table,
-        "shop" => F::Shop,
-        "waiter" => F::Waiter,
-        "station" => F::Station,
-        _ => return None,
-    })
-}
-
 /// The info lines in print order: the saved order, then any line it lacks
-/// (the ticket prints those last too). Unknown and repeated ids are dropped.
-fn kot_info_order(fmt: &print_share::KotSlipFormat) -> Vec<&'static str> {
-    let mut out: Vec<&'static str> = Vec::new();
-    let saved = fmt.field_order.iter().map(String::as_str);
-    let defaults = KOT_INFO_IDS.iter().copied();
-    let ids: Vec<&str> = if fmt.field_order.is_empty() {
+/// (the ticket prints those last too). Custom `custom:{id}` slots stay.
+fn kot_info_order_ids(fmt: &print_share::KotSlipFormat) -> Vec<String> {
+    let mut out: Vec<String> = Vec::new();
+    let defaults = KOT_INFO_IDS.iter().map(|s| (*s).to_string());
+    let ids: Vec<String> = if fmt.field_order.is_empty() {
         defaults.collect()
     } else {
-        saved.chain(defaults).collect()
+        fmt.field_order
+            .iter()
+            .cloned()
+            .chain(defaults)
+            .collect()
     };
     for id in ids {
-        if let Some(known) = KOT_INFO_IDS.iter().copied().find(|k| *k == id)
-            && !out.contains(&known)
+        if print_share::KotCustomLine::parse_order_id(&id).is_some() {
+            if fmt.custom_line(&id).is_some() && !out.iter().any(|have| have == &id) {
+                out.push(id);
+            }
+        } else if KOT_INFO_IDS.iter().any(|k| *k == id.as_str())
+            && !out.iter().any(|have| have == &id)
         {
-            out.push(known);
+            out.push(id);
+        }
+    }
+    for c in &fmt.custom_lines {
+        let id = c.order_id();
+        if !out.iter().any(|have| have == &id) {
+            out.push(id);
         }
     }
     out
 }
 
-/// Settings → KOT format list, in print order: Title (with the kind banner
-/// above it), the seven info lines, Item / Qty.
-fn kot_lines(fmt: &print_share::KotSlipFormat) -> Vec<print_share::KotStyleField> {
-    let mut out = vec![print_share::KotStyleField::Title];
-    out.extend(kot_info_order(fmt).into_iter().filter_map(kot_field_of_id));
-    out.push(print_share::KotStyleField::ItemQty);
+/// Settings → KOT format list, in print order: Title, info (+ customs), Item / Qty.
+fn kot_line_ids(fmt: &print_share::KotSlipFormat) -> Vec<String> {
+    let mut out = vec!["title".into()];
+    out.extend(kot_info_order_ids(fmt));
+    out.push("item_qty".into());
     out
 }
 
-/// Only the info lines move; Title stays first and Item / Qty last.
-fn kot_line_moves(field: print_share::KotStyleField) -> bool {
-    !matches!(
-        field,
-        print_share::KotStyleField::Title | print_share::KotStyleField::ItemQty
-    )
+/// Only the info lines (and custom lines among them) move; Title and Item / Qty stay.
+fn kot_line_moves_id(id: &str) -> bool {
+    !matches!(id, "title" | "item_qty")
 }
 
 /// One closed KOT line: name · show/hide · size · weight · align (Item / Qty
@@ -372,19 +367,51 @@ fn kot_line_label(
     parts.join(" · ")
 }
 
-/// Move an info line one place up or down among the info lines. Title and
+fn kot_custom_line_label(
+    custom: &print_share::KotCustomLine,
+    s: &dyn Fn(&str) -> String,
+) -> String {
+    let name = {
+        let t = custom.text.trim();
+        if t.is_empty() {
+            s("bill_custom_line")
+        } else {
+            t.chars().take(28).collect()
+        }
+    };
+    let on_off = if custom.show {
+        s("kot_field_on")
+    } else {
+        s("kot_field_off")
+    };
+    format!(
+        "{name} · {on_off} · {} · {} · {}",
+        custom.style.size_em,
+        s(custom.style.weight.locale_key()),
+        s(custom.style.align.locale_key())
+    )
+}
+
+/// Move an info / custom line one place among the info block. Title and
 /// Item / Qty keep their places. True when the order changed.
-fn kot_move_line(fmt: &mut print_share::KotSlipFormat, field: print_share::KotStyleField, up: bool) -> bool {
-    let mut order = kot_info_order(fmt);
-    let Some(i) = order.iter().position(|id| kot_field_of_id(id) == Some(field)) else {
+fn kot_move_line_id(fmt: &mut print_share::KotSlipFormat, id: &str, up: bool) -> bool {
+    if !kot_line_moves_id(id) {
+        return false;
+    }
+    let mut order = kot_info_order_ids(fmt);
+    let Some(i) = order.iter().position(|have| have == id) else {
         return false;
     };
-    let j = if up { i.checked_sub(1) } else { Some(i + 1).filter(|j| *j < order.len()) };
+    let j = if up {
+        i.checked_sub(1)
+    } else {
+        Some(i + 1).filter(|j| *j < order.len())
+    };
     let Some(j) = j else {
         return false;
     };
     order.swap(i, j);
-    fmt.field_order = order.into_iter().map(str::to_string).collect();
+    fmt.field_order = order;
     true
 }
 

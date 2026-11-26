@@ -5,6 +5,36 @@ pub(crate) enum AppTemplateImportPending {
     PackDir { dir: std::path::PathBuf, title: String },
 }
 
+/// Bill format side preview / Test bill content source.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub(crate) enum BillPreviewSource {
+    Sample,
+    /// Running order id.
+    Running(String),
+    /// Settled sale id.
+    Sale(String),
+}
+
+impl Default for BillPreviewSource {
+    fn default() -> Self {
+        Self::Sample
+    }
+}
+
+/// KOT format side preview / Test KOT content source.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub(crate) enum KotPreviewSource {
+    Sample,
+    /// Kitchen ticket id.
+    Ticket(String),
+}
+
+impl Default for KotPreviewSource {
+    fn default() -> Self {
+        Self::Sample
+    }
+}
+
 struct AppState {
     store: Option<Store>,
     products: Vec<Product>,
@@ -239,6 +269,16 @@ struct AppState {
     bill_slip_draft: print_share::BillSlipFormat,
     /// Which bill line's show / size / weight / align is open.
     bill_style_field: print_share::BillStyleField,
+    /// When set, the open editor is a custom text line (`custom:{id}`), not
+    /// [`Self::bill_style_field`].
+    bill_custom_id: Option<String>,
+    /// When set, the open KOT editor is a custom text line (`custom:{id}`), not
+    /// [`Self::kot_style_field`].
+    kot_custom_id: Option<String>,
+    /// Bill format preview source: sample, or a real running order / sale id.
+    bill_preview_source: BillPreviewSource,
+    /// KOT format preview source: sample, or a real ticket id.
+    kot_preview_source: KotPreviewSource,
     /// DeviceSetup accordions (`language`, `role`, `public_templates`).
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

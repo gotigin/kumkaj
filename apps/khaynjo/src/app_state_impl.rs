@@ -130,6 +130,10 @@ impl AppState {
             kitchen_panel: KitchenPanel::Live,
             bill_slip_draft: print_share::BillSlipFormat::default(),
             bill_style_field: print_share::BillStyleField::Shop,
+            bill_custom_id: None,
+            kot_custom_id: None,
+            bill_preview_source: BillPreviewSource::Sample,
+            kot_preview_source: KotPreviewSource::Sample,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,
@@ -1568,6 +1572,49 @@ impl AppState {
                         }
                     })
                     .collect()
+            }
+            SuggestField::BillPreviewSource => {
+                let mut rows = vec![SuggestRow::new(
+                    self.t("bill_preview_sample"),
+                    "sample".to_string(),
+                )];
+                if let Some(store) = self.store.as_ref() {
+                    if let Ok(orders) = store.list_running_orders() {
+                        for order in orders.into_iter().take(12) {
+                            let place = if order.table_id.trim().is_empty() {
+                                order.id.chars().take(8).collect::<String>()
+                            } else {
+                                order.table_id.clone()
+                            };
+                            let n = order.live_lines().count();
+                            rows.push(SuggestRow::new(
+                                format!("{place} · {n}"),
+                                format!("run:{}", order.id),
+                            ));
+                        }
+                    }
+                    for sale in self.recent_sales.iter().take(12) {
+                        rows.push(SuggestRow::new(
+                            format!("{} · {}", sale.bill_no(), sale.id),
+                            format!("sale:{}", sale.id),
+                        ));
+                    }
+                }
+                rows
+            }
+            SuggestField::KotPreviewSource => {
+                let mut rows = vec![SuggestRow::new(
+                    self.t("kot_preview_sample"),
+                    "sample".to_string(),
+                )];
+                if let Some(store) = self.store.as_ref() {
+                    if let Ok(tickets) = store.list_recent_kot_tickets(16) {
+                        for (id, label) in tickets {
+                            rows.push(SuggestRow::new(label, format!("kot:{id}")));
+                        }
+                    }
+                }
+                rows
             }
             // Who took deliveries before, then the active staff.
             SuggestField::DeliveryBy => {

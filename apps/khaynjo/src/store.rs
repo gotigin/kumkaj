@@ -1934,6 +1934,16 @@ impl Store {
     }
 
     pub fn format_receipt_text(&self, sale_id: &str) -> Result<String, String> {
+        let fmt = self.bill_slip_format().unwrap_or_default();
+        self.format_receipt_text_as(sale_id, &fmt)
+    }
+
+    /// Settled receipt with an explicit slip format (Settings draft preview).
+    pub fn format_receipt_text_as(
+        &self,
+        sale_id: &str,
+        fmt: &crate::print_share::BillSlipFormat,
+    ) -> Result<String, String> {
         let sale = self
             .get_sale(sale_id)?
             .ok_or_else(|| "Sale not found".to_string())?;
@@ -1950,13 +1960,12 @@ impl Store {
         let tmpl = self.entity_template()?;
         let lane = MoneyLane::parse(&sale.money_lane);
         let is_invoice = matches!(lane, MoneyLane::Declared);
-        let fmt = self.bill_slip_format().unwrap_or_default();
         let rtl = self.bill_rtl();
         let _bill_stage = crate::print_share::BillStage::begin();
         let mut out = String::new();
         crate::print_share::append_bill_field(
             &mut out,
-            &fmt,
+            fmt,
             crate::print_share::BillStyleField::Shop,
             venue,
             rtl,
@@ -2025,43 +2034,73 @@ impl Store {
                 rtl,
             );
         }
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
+        if let Some(line) = fmt.format_meta_line(
             crate::print_share::BillStyleField::BillNo,
-            &format!("Bill: {}", sale.bill_no()),
-            rtl,
-        );
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
+            &sale.bill_no(),
+        ) {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::BillNo,
+                &line,
+                rtl,
+            );
+        }
+        if let Some(line) = fmt.format_meta_line(
             crate::print_share::BillStyleField::Time,
             &fiscal_settings.format_datetime(&sale.created_at),
-            rtl,
-        );
-        if let Some(cid) = sale.customer_id.as_deref().filter(|s| !s.is_empty()) {
-            if let Some(party) = self.get_customer(cid)? {
-                let mut who = format!("Bill to: {}", party.name);
+        ) {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Time,
+                &line,
+                rtl,
+            );
+        }
+        let party_line = if let Some(cid) = sale.customer_id.as_deref().filter(|s| !s.is_empty()) {
+            self.get_customer(cid)?.map(|party| {
+                let mut who = party.name;
                 if !party.kind_label.trim().is_empty() {
                     who.push_str(&format!(" ({})", party.kind_label.trim()));
                 }
+                let phone = party.phone.trim().to_string();
+                (who, phone)
+            })
+        } else {
+            None
+        };
+        if let Some((who, phone)) = party_line {
+            if let Some(line) =
+                fmt.format_meta_line(crate::print_share::BillStyleField::Customer, &who)
+            {
+                crate::print_share::append_bill_field(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Customer,
+                    &line,
+                    rtl,
+                );
+            }
+            if !phone.is_empty() {
                 crate::print_share::append_bill_like(
                     &mut out,
                     &fmt,
-                    crate::print_share::BillStyleField::Header,
-                    &who,
+                    crate::print_share::BillStyleField::Customer,
+                    &format!("Phone: {phone}"),
                     rtl,
                 );
-                if !party.phone.trim().is_empty() {
-                    crate::print_share::append_bill_like(
-                        &mut out,
-                        &fmt,
-                        crate::print_share::BillStyleField::Header,
-                        &format!("Phone: {}", party.phone.trim()),
-                        rtl,
-                    );
-                }
             }
+        } else if let Some(line) =
+            fmt.format_meta_line(crate::print_share::BillStyleField::Customer, "")
+        {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Customer,
+                &line,
+                rtl,
+            );
         }
         let lane_label = match lane {
             MoneyLane::Declared => tmpl.lane_declared_label,
@@ -2095,13 +2134,22 @@ impl Store {
                     .ok()
                     .flatten();
                 if let Some(name) = table_name.filter(|s| !s.trim().is_empty()) {
-                    crate::print_share::append_bill_field(
-                        &mut out,
-                        &fmt,
-                        crate::print_share::BillStyleField::Table,
-                        &format!("Table: {}", name.trim()),
-                        rtl,
+                    let place = format!(
+                        "{}: {}",
+                        fmt.meta_label(crate::print_share::BillStyleField::Table),
+                        name.trim()
                     );
+                    if let Some(line) = fmt
+                        .format_meta_line(crate::print_share::BillStyleField::Table, &place)
+                    {
+                        crate::print_share::append_bill_field(
+                            &mut out,
+                            &fmt,
+                            crate::print_share::BillStyleField::Table,
+                            &line,
+                            rtl,
+                        );
+                    }
                 }
             }
         }
@@ -2282,13 +2330,16 @@ impl Store {
             );
         }
         // Settler of this sale — one name on the receipt (not reprint actor,
-        // not every waiter who punched a line). Label matches running bills.
-        if !sale.created_by_name.is_empty() {
+        // not every waiter who punched a line). Label + empty policy from format.
+        if let Some(line) = fmt.format_meta_line(
+            crate::print_share::BillStyleField::Cashier,
+            sale.created_by_name.trim(),
+        ) {
             crate::print_share::append_bill_field(
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Cashier,
-                &format!("Cashier: {}", sale.created_by_name.trim()),
+                &line,
                 rtl,
             );
         }
@@ -3826,16 +3877,79 @@ impl Store {
         }
     }
 
+    /// Recent kitchen tickets for Settings → KOT preview source picker.
+    pub fn list_recent_kot_tickets(&self, limit: usize) -> Result<Vec<(String, String)>, String> {
+        let mut stmt = self
+            .conn
+            .prepare(
+                "SELECT k.id, COALESCE(k.kot_no, 0), COALESCE(k.table_id, ''),
+                        COALESCE(s.name, '')
+                   FROM kot_tickets k
+                   LEFT JOIN kitchen_stations s ON s.id = k.station_id
+                  ORDER BY k.created_at DESC
+                  LIMIT ?1",
+            )
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![limit as i64], |r| {
+                Ok((
+                    r.get::<_, String>(0)?,
+                    r.get::<_, i64>(1)?,
+                    r.get::<_, String>(2)?,
+                    r.get::<_, String>(3)?,
+                ))
+            })
+            .map_err(|e| e.to_string())?;
+        let mut out = Vec::new();
+        for row in rows {
+            let (id, kot_no, table_id, station) = row.map_err(|e| e.to_string())?;
+            let place = if table_id.is_empty() {
+                String::new()
+            } else {
+                self.table_label(&table_id).unwrap_or(table_id)
+            };
+            let mut parts = Vec::new();
+            if kot_no > 0 {
+                parts.push(format!("KOT {kot_no}"));
+            }
+            if !place.is_empty() {
+                parts.push(place);
+            }
+            if !station.is_empty() {
+                parts.push(station);
+            }
+            if parts.is_empty() {
+                parts.push(id.chars().take(8).collect());
+            }
+            out.push((id, parts.join(" · ")));
+        }
+        Ok(out)
+    }
+
     /// Printable KOT text: table, time, station, items — never prices.
     /// Layout follows Settings → Bill & KOT format (clamped options).
     pub fn format_kot_text(&self, kot_id: &str) -> Result<String, String> {
-        self.format_kot_text_cols(kot_id, None)
+        self.format_kot_text_cols(kot_id, None, None)
+    }
+
+    /// Settings preview: real ticket with a draft slip format.
+    pub fn format_kot_text_as(
+        &self,
+        kot_id: &str,
+        fmt: &crate::print_share::KotSlipFormat,
+    ) -> Result<String, String> {
+        self.format_kot_text_cols(kot_id, None, Some(fmt))
     }
 
     /// `cols` is the virtual printer's content width in characters. `None`
     /// keeps the saved slip width (preview and tests). Print passes the
-    /// virtual printer.
-    fn format_kot_text_cols(&self, kot_id: &str, cols: Option<u32>) -> Result<String, String> {
+    /// virtual printer. `fmt_override` uses a draft format instead of the saved one.
+    fn format_kot_text_cols(
+        &self,
+        kot_id: &str,
+        cols: Option<u32>,
+        fmt_override: Option<&crate::print_share::KotSlipFormat>,
+    ) -> Result<String, String> {
         let (created_at, summary, station_name, kot_no, kind, created_by, table_id): (
             String,
             String,
@@ -3896,7 +4010,10 @@ impl Store {
                 .collect(),
         };
         let item_refs: Vec<&str> = items.iter().map(String::as_str).collect();
-        let mut fmt = self.kot_slip_format()?;
+        let mut fmt = match fmt_override {
+            Some(f) => f.clone(),
+            None => self.kot_slip_format()?,
+        };
         if let Some(cols) = cols {
             fmt.chars_per_line = cols;
         }
@@ -3940,7 +4057,7 @@ impl Store {
         let station_id = self.station_id_for_kot(kot_id).unwrap_or_default();
         let slip = self.kot_slip_format()?;
         // Kitchen ticket width is independent of the bill (default 80 mm).
-        let text = self.format_kot_text_cols(kot_id, Some(slip.chars_per_line))?;
+        let text = self.format_kot_text_cols(kot_id, Some(slip.chars_per_line), None)?;
         let slip_kind = self
             .conn
             .query_row(
@@ -8595,9 +8712,22 @@ impl Store {
 
         let tx = self.begin()?;
 
-        // Reserved inside the sale's transaction so a crash can never hand the
-        // same number to two bills.
-        let invoice_no = reserve_invoice_no(&tx, &branch_code)?;
+        // Prefer the INV already printed on the running bill (Print bill), so
+        // the guest paper and the books share one number. Otherwise reserve
+        // inside this sale's transaction so a crash can never hand the same
+        // number to two bills.
+        let invoice_no = {
+            let reused = table_id
+                .filter(|t| !t.trim().is_empty())
+                .and_then(|tid| self.running_order(tid).ok().flatten())
+                .and_then(|o| self.meta_get(&format!("running_invoice_{}", o.id)).ok().flatten())
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty());
+            match reused {
+                Some(inv) => inv,
+                None => reserve_invoice_no(&tx, &branch_code)?,
+            }
+        };
         let extras_json = if draft.extras_json.trim().is_empty() {
             "[]".into()
         } else {
@@ -10864,7 +10994,8 @@ impl Store {
         Ok(())
     }
 
-    /// Change display name only — staff `id` never moves. Owner cannot be renamed here.
+    /// Change display name only — staff `id` never moves (IDENTITY_AND_NAMES).
+    /// Owner may rename themselves; nobody else may rename the Owner.
     pub fn rename_staff(
         &self,
         staff_id: &str,
@@ -10884,16 +11015,22 @@ impl Store {
             .into_iter()
             .find(|s| s.id == staff_id && s.active)
             .ok_or_else(|| "Staff not found".to_string())?;
-        Self::assert_team_target_rank_ok(actor, &target)?;
+        if target.is_owner() {
+            if !(actor.is_owner() && actor.id == target.id) {
+                return Err("Cannot change Owner this way".into());
+            }
+        } else {
+            Self::assert_team_target_rank_ok(actor, &target)?;
+        }
         let n = self
             .conn
             .execute(
-                "UPDATE staff SET name = ?1 WHERE id = ?2 AND role != 'owner' AND active = 1",
+                "UPDATE staff SET name = ?1 WHERE id = ?2 AND active = 1",
                 params![name, staff_id],
             )
             .map_err(|e| e.to_string())?;
         if n == 0 {
-            return Err("Staff not found or is Owner".into());
+            return Err("Staff not found".into());
         }
         self.audit(actor, "staff.rename", &format!("{staff_id} → {name}"))?;
         Ok(())
@@ -11007,10 +11144,25 @@ impl Store {
         if login_id.is_empty() {
             return Err("Username required".into());
         }
+        self.assert_login_id_free(&login_id, Some(staff_id))?;
+        // Self: username-only when password left blank (keep existing hash).
+        if actor.id == staff_id && password.trim().is_empty() {
+            let n = self
+                .conn
+                .execute(
+                    "UPDATE staff SET login_id = ?1 WHERE id = ?2 AND active = 1",
+                    params![login_id, staff_id],
+                )
+                .map_err(|e| e.to_string())?;
+            if n == 0 {
+                return Err("Staff not found".into());
+            }
+            self.audit(actor, "staff.login", staff_id)?;
+            return Ok(());
+        }
         if password.trim().len() < 4 {
             return Err("Password must be at least 4 characters".into());
         }
-        self.assert_login_id_free(&login_id, Some(staff_id))?;
         // If actor is not the staff member, only allow when password_hash is empty (initial set).
         if actor.id != staff_id {
             let existing: String = self
@@ -14951,7 +15103,7 @@ mod tests {
         assert!(summary.items_added > 0);
         // The pack names the shop and brings its logo (owner, 2026-11-14) —
         // both show on the next screen, where the Owner may replace them.
-        assert_eq!(store.venue_title().unwrap(), "Rajdhani");
+        assert_eq!(store.venue_title().unwrap(), "Rajdhani Non-Veg Caterers");
         assert_eq!(store.venue_icon_key().unwrap().as_deref(), Some("custom:venue_icon.webp"));
         let mark = image::open(store.brand_images_dir().unwrap().join("venue_icon.webp")).unwrap();
         assert!(mark.width() <= Store::VENUE_ICON_MAX_EDGE && mark.width() >= 256, "{}", mark.width());
@@ -14996,16 +15148,16 @@ mod tests {
         assert!(store.pay_method_enabled("upi").unwrap());
         let staff = store.list_staff().unwrap();
         let owner = staff.iter().find(|s| s.is_owner()).expect("owner");
-        assert_eq!(owner.name, "Zahir");
-        assert_eq!(owner.login_id, "zahir");
-        assert_eq!(owner.lock_label(), "Zahir (Owner) · zahir");
+        assert_eq!(owner.name, "Jahir");
+        assert_eq!(owner.login_id, "jahir");
+        assert_eq!(owner.lock_label(), "Jahir (Owner) · jahir");
         let admin = staff
             .iter()
             .find(|s| s.role == StaffRole::Admin)
-            .expect("admin Asif");
-        assert_eq!(admin.name, "Asif");
-        assert_eq!(admin.login_id, "asif");
-        assert_eq!(admin.lock_label(), "Asif (Admin) · asif");
+            .expect("admin Atif");
+        assert_eq!(admin.name, "Atif");
+        assert_eq!(admin.login_id, "atif");
+        assert_eq!(admin.lock_label(), "Atif (Admin) · atif");
         let waiter = staff
             .iter()
             .find(|s| s.name.eq_ignore_ascii_case("Nawaz"))
@@ -15013,7 +15165,7 @@ mod tests {
         assert_eq!(waiter.role, StaffRole::Waiter);
         assert_eq!(waiter.login_id, "nawaz");
         assert_eq!(waiter.lock_label(), "Nawaz (Waiter) · nawaz");
-        // A pack carries no PINs (owner, 2026-11-14): Asif and Nawaz cannot
+        // A pack carries no PINs (owner, 2026-11-14): Atif and Nawaz cannot
         // sign in until the Owner gives each a first PIN in Team.
         for person in [admin, waiter] {
             assert!(!person.has_pin(), "{} came with a PIN", person.name);
@@ -15421,9 +15573,9 @@ mod tests {
         assert_eq!(neha2.role_title, "Captain");
         assert_eq!(neha2.features.floor, renamed.features.floor);
         assert_eq!(neha2.features.sales, renamed.features.sales);
-        // Owner cannot be renamed through Team (id stays the books key).
+        // Owner may rename themselves (UUID stays; display name is an alias).
         let owner_id = owner.id.clone();
-        assert!(store.rename_staff(&owner_id, "Asif", &owner).is_err());
+        store.rename_staff(&owner_id, "Asif", &owner).unwrap();
         let owner2 = store
             .list_staff()
             .unwrap()
@@ -15431,6 +15583,31 @@ mod tests {
             .find(|s| s.id == owner_id)
             .unwrap();
         assert!(owner2.is_owner());
+        assert_eq!(owner2.name, "Asif");
+        // A manager still cannot rename the Owner.
+        let mut mgr_f = StaffFeatures::for_role(StaffRole::Manager);
+        mgr_f.team = true;
+        let mgr_id = store
+            .add_staff_with_features(
+                &StaffHire {
+                    name: "Meera",
+                    role: StaffRole::Manager,
+                    role_title: "Manager",
+                    pin: "2222",
+                    login_id: "meera",
+                    password: "",
+                    features: mgr_f,
+                },
+                &owner2,
+            )
+            .unwrap();
+        let mgr = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.id == mgr_id)
+            .unwrap();
+        assert!(store.rename_staff(&owner_id, "Nope", &mgr).is_err());
         let _ = std::fs::remove_file(path);
     }
 
@@ -16559,9 +16736,8 @@ mod tests {
             .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
             .unwrap();
         let receipt = store.format_receipt_text(&sale.id).unwrap();
-        // Receipt wording is "Bill to: <party>" (see format_receipt_text).
-        // (The sibling copy of this test asserts "Party:" and fails there too.)
-        assert!(receipt.contains("Bill to: Sumit"));
+        // Customer meta uses the format label (default Name) + party.
+        assert!(receipt.contains("Name: Sumit"));
         assert!(receipt.contains("kg") || receipt.contains("0.1"));
         assert!(
             receipt.contains("TAX INVOICE")
@@ -18073,7 +18249,7 @@ mod tests {
             // The receipt shows the invoice, not a truncated uuid.
             let receipt = store.format_receipt_text(&a.id).unwrap();
             assert!(
-                receipt.contains("Bill: INV-MAIN-000001")
+                receipt.contains("Bill No.: INV-MAIN-000001")
                     || receipt.contains("Invoice no: INV-MAIN-000001"),
                 "got {receipt}"
             );
@@ -18439,7 +18615,7 @@ mod staged_catalogue_tests {
                     .into_iter()
                     .find(|s| s.is_owner())
                     .unwrap();
-                assert_eq!(owner.name, "Zahir");
+                assert_eq!(owner.name, "Jahir");
             }
         }
     }

@@ -114,6 +114,36 @@ impl Store {
         }
     }
 
+    /// Open (running or printed) order by id, with lines.
+    pub fn running_order_by_id(&self, order_id: &str) -> Result<Option<RunningOrder>, String> {
+        let order = self
+            .conn
+            .query_row(
+                "SELECT id, table_id, status, opened_at, opened_by, printed_at
+                   FROM running_orders
+                  WHERE id = ?1 AND status IN ('running', 'printed')",
+                params![order_id],
+                |r| {
+                    Ok(RunningOrder {
+                        id: r.get(0)?,
+                        table_id: r.get(1)?,
+                        status: RunningOrderStatus::parse(&r.get::<_, String>(2)?),
+                        opened_at: r.get(3)?,
+                        opened_by: r.get(4)?,
+                        printed_at: r.get(5)?,
+                        lines: Vec::new(),
+                    })
+                },
+            )
+            .optional()
+            .map_err(|e| e.to_string())?;
+        let Some(mut order) = order else {
+            return Ok(None);
+        };
+        order.lines = self.running_lines(&order.id)?;
+        Ok(Some(order))
+    }
+
     /// The open (running or printed) order on a table, with all its lines —
     /// cancelled and complimentary ones included.
     pub fn running_order(&self, table_id: &str) -> Result<Option<RunningOrder>, String> {
@@ -1974,7 +2004,16 @@ impl Store {
         // Cashier on the slip = who is issuing this bill document (the
         // unlocked staff pressing Print). Not every line's punch author —
         // the full story stays in the books; one name on paper.
-        let text = self.format_running_bill_text(&order, actor.name.trim())?;
+        // Assign INV-… here so the paper has a number (and Settle reuses it).
+        let invoice = self.ensure_running_invoice(&order.id)?;
+        let fmt = self.bill_slip_format().unwrap_or_default();
+        let text = self.format_bill_text_at(
+            &order,
+            actor.name.trim(),
+            None,
+            Some(invoice.as_str()),
+            &fmt,
+        )?;
         self.conn
             .execute(
                 "UPDATE running_orders SET status = 'printed', printed_at = ?2 WHERE id = ?1",
@@ -2006,7 +2045,20 @@ impl Store {
         order: &RunningOrder,
         cashier_name: &str,
     ) -> Result<String, String> {
-        self.format_bill_text_at(order, cashier_name, None)
+        let fmt = self.bill_slip_format().unwrap_or_default();
+        self.format_running_bill_text_as(order, cashier_name, &fmt)
+    }
+
+    /// Same as [`Self::format_running_bill_text`] with an explicit slip format
+    /// (Settings preview uses the draft before Save).
+    pub fn format_running_bill_text_as(
+        &self,
+        order: &RunningOrder,
+        cashier_name: &str,
+        fmt: &crate::print_share::BillSlipFormat,
+    ) -> Result<String, String> {
+        let inv = self.peek_running_invoice(&order.id)?;
+        self.format_bill_text_at(order, cashier_name, None, inv.as_deref(), fmt)
     }
 
     /// Print the bill of an order with no table (Counter, Takeaway,
@@ -2045,23 +2097,66 @@ impl Store {
         if reprint {
             self.check_right(actor, Right::Reprint, approval_pin)?;
         }
-        let text = self.format_bill_text_at(&order, actor.name.trim(), Some(place))?;
+        // Counter has no lasting order id — still put a real INV on the paper.
+        let invoice = {
+            let code = self.active_branch()?.code;
+            super::reserve_invoice_no(&self.conn, &code)?
+        };
+        let fmt = self.bill_slip_format().unwrap_or_default();
+        let text = self.format_bill_text_at(
+            &order,
+            actor.name.trim(),
+            Some(place),
+            Some(invoice.as_str()),
+            &fmt,
+        )?;
         self.audit(actor, if reprint { "bill.reprint" } else { "bill.print" }, place)?;
         Ok(text)
     }
 
+    /// Invoice assigned at first Print bill for this running order (meta), so
+    /// the paper and the settled sale share one number.
+    fn running_invoice_key(order_id: &str) -> String {
+        format!("running_invoice_{order_id}")
+    }
+
+    fn peek_running_invoice(&self, order_id: &str) -> Result<Option<String>, String> {
+        if order_id.trim().is_empty() {
+            return Ok(None);
+        }
+        Ok(self
+            .meta_get(&Self::running_invoice_key(order_id))?
+            .map(|s| s.trim().to_string())
+            .filter(|s| !s.is_empty()))
+    }
+
+    fn ensure_running_invoice(&self, order_id: &str) -> Result<String, String> {
+        if let Some(existing) = self.peek_running_invoice(order_id)? {
+            return Ok(existing);
+        }
+        if order_id.trim().is_empty() {
+            return Err("No running order to number".into());
+        }
+        let code = self.active_branch()?.code;
+        let inv = super::reserve_invoice_no(&self.conn, &code)?;
+        self.meta_set(&Self::running_invoice_key(order_id), &inv)?;
+        Ok(inv)
+    }
+
     /// [`Self::format_running_bill_text`]; `place` replaces the table line
-    /// for an order with no table.
+    /// for an order with no table. `invoice` is the INV-… for the paper —
+    /// pass `Some` from Print; preview peeks a prior print or shows an em dash.
     fn format_bill_text_at(
         &self,
         order: &RunningOrder,
         cashier_name: &str,
         place: Option<&str>,
+        invoice: Option<&str>,
+        fmt: &crate::print_share::BillSlipFormat,
     ) -> Result<String, String> {
         let fiscal = self.fiscal_settings()?;
         let currency = self.locale_settings()?.currency;
         let money = |p: i64| Money(p).format_localized(&currency, &fiscal);
-        let fmt = self.bill_slip_format().unwrap_or_default();
         let rtl = self.bill_rtl();
         let _bill_stage = crate::print_share::BillStage::begin();
         let mut out = String::new();
@@ -2085,24 +2180,32 @@ impl Store {
         }
         let title = if fmt.title.trim().is_empty() { "CASH MEMO" } else { fmt.title.trim() };
         crate::print_share::append_bill_field(&mut out, &fmt, crate::print_share::BillStyleField::Title, title, rtl);
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::Customer,
-            "Name:",
-            rtl,
-        );
+        if let Some(line) =
+            fmt.format_meta_line(crate::print_share::BillStyleField::Customer, "")
+        {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Customer,
+                &line,
+                rtl,
+            );
+        }
         let when = self
             .fiscal_settings()
             .map(|f| f.format_now())
             .unwrap_or_else(|_| Local::now().format("%d/%m/%Y %H:%M").to_string());
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::Time,
-            &format!("Date: {when}"),
-            rtl,
-        );
+        if let Some(line) =
+            fmt.format_meta_line(crate::print_share::BillStyleField::Time, &when)
+        {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Time,
+                &line,
+                rtl,
+            );
+        }
         let place = match place {
             Some(p) => p.to_string(),
             None => {
@@ -2111,40 +2214,50 @@ impl Store {
                     .table_area_label(&order.table_id)
                     .unwrap_or_default();
                 if area.trim().is_empty() {
-                    format!("Table: {table}")
+                    format!(
+                        "{}: {table}",
+                        fmt.meta_label(crate::print_share::BillStyleField::Table)
+                    )
                 } else {
                     format!("{area}: {table}")
                 }
             }
         };
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::Table,
-            &place,
-            rtl,
-        );
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
+        if let Some(line) =
+            fmt.format_meta_line(crate::print_share::BillStyleField::Table, &place)
+        {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Table,
+                &line,
+                rtl,
+            );
+        }
+        if let Some(line) = fmt.format_meta_line(
             crate::print_share::BillStyleField::Cashier,
-            &format!(
-                "Cashier: {}",
-                if cashier_name.is_empty() {
-                    "—"
-                } else {
-                    cashier_name
-                }
-            ),
-            rtl,
-        );
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::BillNo,
-            "Bill No.:",
-            rtl,
-        );
+            cashier_name,
+        ) {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Cashier,
+                &line,
+                rtl,
+            );
+        }
+        let bill_no = invoice.map(str::trim).filter(|s| !s.is_empty()).unwrap_or("");
+        if let Some(line) =
+            fmt.format_meta_line(crate::print_share::BillStyleField::BillNo, bill_no)
+        {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::BillNo,
+                &line,
+                rtl,
+            );
+        }
         crate::print_share::append_bill_like(
             &mut out,
             &fmt,
@@ -2499,6 +2612,19 @@ impl Store {
         table_id: &str,
         sale_id: &str,
     ) -> Result<(), String> {
+        // Drop the Print-bill invoice key so the next seating starts clean.
+        if let Ok(order_id) = tx.query_row(
+            "SELECT id FROM running_orders
+              WHERE table_id = ?1 AND status IN ('running', 'printed')
+              ORDER BY opened_at DESC LIMIT 1",
+            params![table_id],
+            |r| r.get::<_, String>(0),
+        ) {
+            let _ = tx.execute(
+                "DELETE FROM meta WHERE key = ?1",
+                params![format!("running_invoice_{order_id}")],
+            );
+        }
         tx.execute(
             "UPDATE running_orders SET status = 'settled', sale_id = ?2, closed_at = ?3
               WHERE table_id = ?1 AND status IN ('running', 'printed')",
@@ -3053,12 +3179,33 @@ mod tests {
         shop.store.advance_kot(&kots[0], &owner).unwrap(); // served
         assert_eq!(state(&shop), FloorState::Eating);
         let d2 = shop.table("D2");
-        shop.store.print_running_bill(&d2.id, &owner, None).unwrap();
+        let bill_text = crate::print_share::strip_kot_style_marks(
+            &shop.store.print_running_bill(&d2.id, &owner, None).unwrap(),
+        );
+        let printed_inv = bill_text
+            .lines()
+            .find_map(|l| {
+                l.split('\t').find_map(|cell| {
+                    cell.strip_prefix("Bill No.: ")
+                        .map(str::trim)
+                        .filter(|s| !s.is_empty() && *s != "—")
+                })
+            })
+            .expect("running bill must print Bill No.: <value>");
+        assert!(
+            printed_inv.starts_with("INV-"),
+            "expected INV-… on paper, got {printed_inv:?} in:\n{bill_text}"
+        );
         assert_eq!(state(&shop), FloorState::BillPrinted);
         let draft = shop.bill_cart("D2").to_sale_draft().unwrap();
-        shop.store
+        let sale = shop
+            .store
             .finalize_sale(&draft, PayMethod::Cash, Some(&d2.id), None, &owner)
             .unwrap();
+        assert_eq!(
+            sale.invoice_no, printed_inv,
+            "settled sale must keep the number already on the printed bill"
+        );
         // Payment frees the table at once — no stuck Paid / Ready step.
         assert_eq!(state(&shop), FloorState::Free);
         // …and seating new guests on a paid table starts a fresh visit.
@@ -3312,6 +3459,10 @@ mod tests {
         assert!(plain.contains("Thali") && plain.contains("Chaas"), "{plain}");
         assert!(plain.contains("430"), "total of 2 Thali + 1 Chaas:\n{plain}");
         assert!(plain.contains("Cashier: Cash"), "{plain}");
+        assert!(
+            plain.lines().any(|l| l.starts_with("Bill No.: INV-")),
+            "counter bill must print an invoice number, got:\n{plain}"
+        );
         // Printing again is a reprint: the kitchen's preset may not.
         shop.store
             .add_staff("Raju", StaffRole::Kitchen, "Cook", "3333", &shop.owner)
