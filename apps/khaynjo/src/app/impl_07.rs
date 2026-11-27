@@ -1559,8 +1559,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     ) -> Result<String, String> {
         let wanted = station_text.trim();
         if wanted.is_empty() {
-            let msg = app_state().lock().unwrap().t("kot_station_needed");
-            return Err(msg);
+            return Err(app_t("kot_station_needed"));
         }
         {
             let st = app_state().lock().unwrap();
@@ -1670,8 +1669,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
     ) -> Result<String, String> {
         let wanted = station_text.trim();
         if wanted.is_empty() {
-            let msg = app_state().lock().unwrap().t("kot_station_needed");
-            return Err(msg);
+            return Err(app_t("kot_station_needed"));
         }
         let mut st = app_state().lock().unwrap();
         let (station_id, station_name) = {

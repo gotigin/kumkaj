@@ -80,10 +80,11 @@ Read with `docs/DEV.md` (UI-thread rules, bug lists) and
   `align_slip_previews`); the hidden print-order list and the old
   column picker are gone. Ported from Khaynjo's code (identical before), with
   each app's colours and widgets.
-- **Open — Kirano / Tabiyat bill Logo** (2026-11-15): Khaynjo's Bill tab
-  has a Logo line (PRINTER.md § Logo, lesson 23); the two apps share the
-  Bill form and need the line, the picture line in the raster and the books
-  ops ported.
+- **Done 2026-11-27 (was open) — Kirano / Tabiyat bill Logo** (2026-11-15):
+  Khaynjo's Bill tab Logo line (PRINTER.md § Logo, lesson 23): Settings
+  UI (picture, box size, greys), books ops (`bill_logo.webp`), slip picture
+  in raster and preview, `BillStyleField::Logo` above Shop in print order.
+  Copy-then-adapt per app colours and widgets; no shared core crate.
 - **Done 2026-11-16 (was open) — Moklanjo / Kirano / Tabiyat OS document on CUPS** (2026-11-15):
   they still send the older picture job — Kirano / Tabiyat
   `print-scaling=none` under 180 mm, Moklanjo the bare slip fitted to the

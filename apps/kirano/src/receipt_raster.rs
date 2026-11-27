@@ -176,6 +176,43 @@ pub enum LineColumns {
     /// half, this is the second. Halves are already in print order (start
     /// half first on the left in LTR; the caller swaps them for RTL).
     Pair(PairHalf),
+    /// A picture line (the bill logo): its box, already in dots, placed by
+    /// the line's alignment. The line's text is unused.
+    Picture(std::sync::Arc<SlipPicture>),
+}
+
+/// A picture on a slip as the printer's dots: a box `width` × `height`
+/// with the picture already fitted and placed inside it. A box with no ink
+/// is blank space of that size (a shown logo line with no picture).
+#[derive(Clone, PartialEq)]
+pub struct SlipPicture {
+    pub width: usize,
+    pub height: usize,
+    /// Row-major, 8 dots a byte, first dot in the high bit; each row padded
+    /// to a whole byte (`width.div_ceil(8)` bytes).
+    pub bits: Vec<u8>,
+}
+
+impl std::fmt::Debug for SlipPicture {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "SlipPicture({}×{}, {} bytes)", self.width, self.height, self.bits.len())
+    }
+}
+
+impl SlipPicture {
+    pub fn row_bytes(&self) -> usize {
+        self.width.div_ceil(8)
+    }
+
+    /// Whether the dot at (`x`, `y`) is ink.
+    pub fn ink(&self, x: usize, y: usize) -> bool {
+        if x >= self.width || y >= self.height {
+            return false;
+        }
+        self.bits
+            .get(y * self.row_bytes() + x / 8)
+            .is_some_and(|b| b & (0x80 >> (x % 8)) != 0)
+    }
 }
 
 /// Item columns as the owner set them, in dots.
@@ -472,6 +509,31 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
     let room = width as f32 - 2.0 * side;
     let mut rows: Vec<Row> = Vec::new();
     for line in lines {
+        // A picture line is its box: as tall as the box (blank when it has
+        // no picture), placed by the line's alignment across the content,
+        // cut at the content edges like a column.
+        if let Some(LineColumns::Picture(pic)) = &line.tab {
+            if pic.height == 0 {
+                continue;
+            }
+            let w = pic.width as f32;
+            let x = side
+                + match line.align {
+                    LineAlign::Start => 0.0,
+                    LineAlign::Center => (room - w) * 0.5,
+                    LineAlign::End => room - w,
+                };
+            rows.push(Row {
+                runs: Vec::new(),
+                pitch: pic.height,
+                rule_px: 0,
+                strike: None,
+                strike_em: 0.0,
+                sep_xs: Vec::new(),
+                picture: Some((pic.clone(), x.round() as i64)),
+            });
+            continue;
+        }
         // A hidden field must not leave a blank band. Empty text is absence.
         if line.text.trim().is_empty() && !matches!(line.tab, Some(LineColumns::Pair(_))) {
             continue;
@@ -481,6 +543,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             let rule_px = rule_thickness(em, line.weight);
             let gap = ((em * 0.35).round() as usize).clamp(4, 18);
             rows.push(Row {
+                picture: None,
                 runs: Vec::new(),
                 pitch: rule_px + gap,
                 rule_px,
@@ -546,6 +609,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
                 strike_em: em,
                 // Column rules only on the first (header-aligned) wrap row.
                 sep_xs: if i == 0 { sep_xs.clone() } else { Vec::new() },
+                picture: None,
             });
         }
     }
@@ -560,6 +624,11 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
     for row in &rows {
         if row.rule_px > 0 {
             paint_rule(&mut dots, width, y, side, row.rule_px);
+            y += row.pitch;
+            continue;
+        }
+        if let Some((pic, left)) = &row.picture {
+            paint_picture(&mut dots, width, y, pic, *left, side);
             y += row.pitch;
             continue;
         }
@@ -618,6 +687,33 @@ struct Row {
     strike_em: f32,
     /// Vertical rules between columns (page-x, including side margin).
     sep_xs: Vec<f32>,
+    /// A picture box and its left edge in page-x (may start before the
+    /// content or run past it; only the content is inked).
+    picture: Option<(std::sync::Arc<SlipPicture>, i64)>,
+}
+
+/// Ink `pic`'s dots with its left edge at page-x `left`, inside the content
+/// (`side` .. `width - side`): what lies past the content edge is cut.
+fn paint_picture(dots: &mut [bool], width: usize, y: usize, pic: &SlipPicture, left: i64, side: f32) {
+    if width == 0 {
+        return;
+    }
+    let height = dots.len() / width;
+    let x_min = side.ceil().max(0.0) as i64;
+    let x_max = ((width as f32) - side).floor().max(0.0) as i64;
+    for py in 0..pic.height {
+        let yy = y + py;
+        if yy >= height {
+            break;
+        }
+        for px in 0..pic.width {
+            let x = left + px as i64;
+            if x < x_min || x >= x_max || !pic.ink(px, py) {
+                continue;
+            }
+            dots[yy * width + x as usize] = true;
+        }
+    }
 }
 
 struct Run {
@@ -735,6 +831,7 @@ fn owner_column_rows(
             strike,
             strike_em: m.em,
             sep_xs: sep_xs.clone(),
+            picture: None,
         });
     }
     rows
@@ -797,6 +894,7 @@ fn pair_row(
         strike: None,
         strike_em: px_dots(line.em.clamp(SIZE_MIN, SIZE_MAX)),
         sep_xs: Vec::new(),
+        picture: None,
     }
 }
 

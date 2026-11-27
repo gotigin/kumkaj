@@ -84,6 +84,88 @@ let linkConfirmationResult = null;
 let recaptcha = null;
 let linkRecaptcha = null;
 
+const authNavTimers = new Set();
+let authStateReady = false;
+let authBootTimer = null;
+
+function trackAuthTimer(id) {
+  authNavTimers.add(id);
+  return id;
+}
+
+function clearAuthNavTimers() {
+  for (const id of authNavTimers) {
+    clearTimeout(id);
+    clearInterval(id);
+  }
+  authNavTimers.clear();
+  authBootTimer = null;
+}
+
+function clearAuthBootTimer() {
+  if (authBootTimer != null) {
+    clearTimeout(authBootTimer);
+    authNavTimers.delete(authBootTimer);
+    authBootTimer = null;
+  }
+}
+
+function onAuthObserverReady() {
+  if (authStateReady) return;
+  authStateReady = true;
+  clearAuthBootTimer();
+}
+
+/** Last-resort catch for async handlers wired without await (clicks, void navigations). */
+function voidAsync(promise) {
+  Promise.resolve(promise).catch((err) => {
+    console.warn("account auth:", err?.message || err);
+    showError(friendlyError(err));
+    setBusy(false);
+  });
+}
+
+function installAuthStateObserver({ redirectIfNext = false } = {}) {
+  authBootTimer = trackAuthTimer(
+    setTimeout(() => {
+      if (authStateReady) return;
+      authStateReady = true;
+      clearAuthBootTimer();
+      showError(
+        T(
+          "acct_auth_timeout",
+          "Could not reach sign-in services. Check your connection and refresh."
+        )
+      );
+      setBusy(false);
+      renderSession(auth.currentUser);
+    }, 12000)
+  );
+
+  onAuthStateChanged(
+    auth,
+    (user) => {
+      onAuthObserverReady();
+      if (redirectIfNext && user) {
+        const params = new URL(window.location.href).searchParams;
+        if (params.has("next") && typeof goAfterAuth === "function" && goAfterAuth()) return;
+      }
+      renderSession(user);
+    },
+    (err) => {
+      onAuthObserverReady();
+      showError(friendlyError(err));
+      setBusy(false);
+      renderSession(null);
+    }
+  );
+
+  window.addEventListener("pagehide", () => {
+    clearAuthNavTimers();
+    setBusy(false);
+  });
+}
+
 function showError(msg) {
   els.error.textContent = msg || "";
   els.error.hidden = !msg;
@@ -216,33 +298,39 @@ function pendingCheckoutPlan() {
 }
 
 async function maybeAutoCheckout(user) {
-  const plan = pendingCheckoutPlan();
-  if (!user || !plan || !["steady", "swift", "priority"].includes(plan)) return;
-  // Clear query so refresh does not loop.
   try {
-    const u = new URL(window.location.href);
-    u.searchParams.delete("checkout");
-    window.history.replaceState({}, "", u.pathname + u.search + u.hash);
-  } catch { /* ignore */ }
-  const cfgRes = await fetch(`${CLOUD_API_BASE}/v1/billing/config`, {
-    headers: { Authorization: `Bearer ${await user.getIdToken()}` },
-  });
-  if (!cfgRes.ok) return;
-  const cfg = await cfgRes.json();
-  if (!cfg.enabled) {
-    showError(T("acct_billing_off", "Billing is not enabled on the cloud API yet."));
-    return;
+    const plan = pendingCheckoutPlan();
+    if (!user || !plan || !["steady", "swift", "priority"].includes(plan)) return;
+    // Clear query so refresh does not loop.
+    try {
+      const u = new URL(window.location.href);
+      u.searchParams.delete("checkout");
+      window.history.replaceState({}, "", u.pathname + u.search + u.hash);
+    } catch { /* ignore */ }
+    const cfgRes = await fetch(`${CLOUD_API_BASE}/v1/billing/config`, {
+      headers: { Authorization: `Bearer ${await user.getIdToken()}` },
+    });
+    if (!cfgRes.ok) return;
+    const cfg = await cfgRes.json();
+    if (!cfg.enabled) {
+      showError(T("acct_billing_off", "Billing is not enabled on the cloud API yet."));
+      return;
+    }
+    const providers = cfg.providers || [];
+    const provider =
+      (cfg.default_provider && providers.includes(cfg.default_provider) && cfg.default_provider) ||
+      providers.find((p) => p !== "mock") ||
+      null;
+    if (!provider) {
+      showError(T("acct_billing_no_provider", "No real billing provider is enabled on the cloud API (mock-only is local)."));
+      return;
+    }
+    await startCheckout(user, plan, provider);
+  } catch (err) {
+    console.warn("auto checkout:", err?.message || err);
+    showError(err?.message || T("acct_checkout_failed", "Checkout failed"));
+    setBusy(false);
   }
-  const providers = cfg.providers || [];
-  const provider =
-    (cfg.default_provider && providers.includes(cfg.default_provider) && cfg.default_provider) ||
-    providers.find((p) => p !== "mock") ||
-    null;
-  if (!provider) {
-    showError(T("acct_billing_no_provider", "No real billing provider is enabled on the cloud API (mock-only is local)."));
-    return;
-  }
-  await startCheckout(user, plan, provider);
 }
 
 function formatInrPaise(paise) {
@@ -659,6 +747,12 @@ async function confirmSms(e) {
   e.preventDefault();
   showError("");
   showOk("");
+  if (!confirmationResult) {
+    showError(T("acct_sms_expired", "SMS session expired — request a new code."));
+    if (els.phoneStep) els.phoneStep.hidden = false;
+    if (els.smsStep) els.smsStep.hidden = true;
+    return;
+  }
   setBusy(true);
   try {
     const code = els.smsCode.value.trim();
@@ -674,14 +768,21 @@ async function confirmSms(e) {
 async function doSignOut() {
   showError("");
   showOk("");
-  await signOut(auth);
-  confirmationResult = null;
-  linkConfirmationResult = null;
-  els.phoneStep.hidden = false;
-  els.smsStep.hidden = true;
-  if (els.formLinkSms) els.formLinkSms.hidden = true;
-  if (els.password) els.password.value = "";
-  if (els.smsCode) els.smsCode.value = "";
+  setBusy(true);
+  try {
+    await signOut(auth);
+    confirmationResult = null;
+    linkConfirmationResult = null;
+    els.phoneStep.hidden = false;
+    els.smsStep.hidden = true;
+    if (els.formLinkSms) els.formLinkSms.hidden = true;
+    if (els.password) els.password.value = "";
+    if (els.smsCode) els.smsCode.value = "";
+  } catch (err) {
+    showError(friendlyError(err));
+  } finally {
+    setBusy(false);
+  }
 }
 
 async function reauthForSensitive(user) {
@@ -806,6 +907,12 @@ async function confirmLinkSms(e) {
   e.preventDefault();
   showError("");
   showOk("");
+  if (!linkConfirmationResult) {
+    showError(T("acct_sms_expired", "SMS session expired — request a new code."));
+    if ($("form-link-phone")) $("form-link-phone").hidden = false;
+    if (els.formLinkSms) els.formLinkSms.hidden = true;
+    return;
+  }
   setBusy(true);
   try {
     const code = els.linkSmsCode.value.trim();
@@ -824,8 +931,8 @@ async function confirmLinkSms(e) {
 }
 
 function wire() {
-  $("form-email")?.addEventListener("submit", handleEmail);
-  $("form-forgot")?.addEventListener("submit", handleForgot);
+  $("form-email")?.addEventListener("submit", (e) => void handleEmail(e));
+  $("form-forgot")?.addEventListener("submit", (e) => void handleForgot(e));
   $("btn-forgot-toggle")?.addEventListener("click", () => {
     const open = els.forgotPanel?.hidden;
     if (els.forgotPanel) els.forgotPanel.hidden = !open;
@@ -840,42 +947,45 @@ function wire() {
     if (els.forgotPanel) els.forgotPanel.hidden = true;
   });
 
-  $("btn-google")?.addEventListener("click", () => popupSignIn(googleProvider()));
-  $("btn-github")?.addEventListener("click", () => popupSignIn(githubProvider()));
-  $("btn-microsoft")?.addEventListener("click", () => popupSignIn(microsoftProvider()));
+  $("btn-google")?.addEventListener("click", () => voidAsync(popupSignIn(googleProvider())));
+  $("btn-github")?.addEventListener("click", () => voidAsync(popupSignIn(githubProvider())));
+  $("btn-microsoft")?.addEventListener("click", () => voidAsync(popupSignIn(microsoftProvider())));
 
-  $("form-phone")?.addEventListener("submit", sendSms);
-  $("form-sms")?.addEventListener("submit", confirmSms);
-  $("btn-signout")?.addEventListener("click", doSignOut);
-  $("form-password")?.addEventListener("submit", handlePasswordSave);
+  $("form-phone")?.addEventListener("submit", (e) => void sendSms(e));
+  $("form-sms")?.addEventListener("submit", (e) => void confirmSms(e));
+  $("btn-signout")?.addEventListener("click", () => voidAsync(doSignOut()));
+  $("form-password")?.addEventListener("submit", (e) => void handlePasswordSave(e));
 
-  els.btnLinkGoogle?.addEventListener("click", () => linkProvider(googleProvider()));
-  els.btnLinkMicrosoft?.addEventListener("click", () => linkProvider(microsoftProvider()));
-  els.btnLinkGithub?.addEventListener("click", () => linkProvider(githubProvider()));
-  $("form-link-phone")?.addEventListener("submit", sendLinkSms);
-  $("form-link-sms")?.addEventListener("submit", confirmLinkSms);
+  els.btnLinkGoogle?.addEventListener("click", () => voidAsync(linkProvider(googleProvider())));
+  els.btnLinkMicrosoft?.addEventListener("click", () => voidAsync(linkProvider(microsoftProvider())));
+  els.btnLinkGithub?.addEventListener("click", () => voidAsync(linkProvider(githubProvider())));
+  $("form-link-phone")?.addEventListener("submit", (e) => void sendLinkSms(e));
+  $("form-link-sms")?.addEventListener("submit", (e) => void confirmLinkSms(e));
 
-  els.btnResendVerify?.addEventListener("click", async () => {
-    const u = auth.currentUser;
-    if (!u?.email) return;
-    showError("");
-    showOk("");
-    try {
-      await sendEmailVerification(u);
-      showOk(T("acct_verify_sent", "Verification email sent — check your inbox."));
-      els.userVerified.textContent = T("acct_verify_sent", "Verification email sent — check your inbox.");
-    } catch (err) {
-      showError(friendlyError(err));
-    }
+  els.btnResendVerify?.addEventListener("click", () => {
+    voidAsync((async () => {
+      const u = auth.currentUser;
+      if (!u?.email) return;
+      showError("");
+      showOk("");
+      setBusy(true);
+      try {
+        await sendEmailVerification(u);
+        showOk(T("acct_verify_sent", "Verification email sent — check your inbox."));
+        els.userVerified.textContent = T("acct_verify_sent", "Verification email sent — check your inbox.");
+      } catch (err) {
+        showError(friendlyError(err));
+      } finally {
+        setBusy(false);
+      }
+    })());
   });
 
   // Language picked or its pack arrived (site-i18n.js): repaint the words this
   // script wrote. No network: the cloud / checkout calls are not repeated.
   window.addEventListener("site:i18n", () => paintSessionText(auth.currentUser));
 
-  onAuthStateChanged(auth, (user) => {
-    renderSession(user);
-  });
+  installAuthStateObserver();
 }
 
 wire();

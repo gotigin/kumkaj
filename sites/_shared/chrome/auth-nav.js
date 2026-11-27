@@ -84,6 +84,7 @@
   }
 
   function paint(user, auth) {
+    try {
     deadOverlay();
     var n = nav();
     if (!n) return;
@@ -164,14 +165,44 @@
 
     host.appendChild(who);
     host.appendChild(menu);
+    } catch (_) {
+      try {
+        deadOverlay();
+        var nFail = nav();
+        if (!nFail) return;
+        var linkFail = loginLink();
+        var hostFail = ensureHost();
+        if (hostFail) hostFail.textContent = "";
+        if (linkFail) linkFail.hidden = false;
+      } catch (__) {}
+    }
   }
 
   function bind(auth) {
-    paint(auth.currentUser || null, auth);
-    if (typeof auth.onAuthStateChanged === "function") {
-      auth.onAuthStateChanged(function (user) {
-        paint(user, auth);
-      });
+    try {
+      paint(auth.currentUser || null, auth);
+      if (typeof auth.onAuthStateChanged === "function") {
+        auth.onAuthStateChanged(
+          function (user) {
+            try {
+              paint(user, auth);
+            } catch (_) {
+              try {
+                paint(null, auth);
+              } catch (__) {}
+            }
+          },
+          function () {
+            try {
+              paint(null, auth);
+            } catch (_) {}
+          }
+        );
+      }
+    } catch (_) {
+      try {
+        paint(null, auth);
+      } catch (__) {}
     }
   }
 
@@ -183,7 +214,13 @@
       n += 1;
       if (window.__SITE_AUTH__) {
         clearInterval(t);
-        bind(window.__SITE_AUTH__);
+        try {
+          bind(window.__SITE_AUTH__);
+        } catch (_) {
+          try {
+            paint(null, null);
+          } catch (__) {}
+        }
         return;
       }
       if (n > 100) {

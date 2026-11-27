@@ -594,6 +594,15 @@ impl App {
                 *deferred_role_open_sync_frame().lock().unwrap() = None;
                 self.sync_chrome(cx);
             }
+            let books_overview_ours = deferred_books_overview_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if books_overview_ours {
+                *deferred_books_overview_frame().lock().unwrap() = None;
+                self.paint_books_overview_sql(cx);
+            }
             self.tick_smoke_script(cx);
         }
         // Type-or-pick lists first (popup.rs): an outside press closes the

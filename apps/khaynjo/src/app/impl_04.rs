@@ -4276,18 +4276,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 if !allowed {
                     self.set_status(cx, "Not allowed");
                 } else {
-                    let result = (|| -> Result<(), String> {
-                        let mut st = app_state().lock().unwrap();
-                        st.refresh_books_overview()?;
-                        Ok(())
-                    })();
-                    if let Err(e) = result {
-                        self.set_status(cx, e);
-                    } else {
-                        // Drop leftover focus so the old Sell face cannot look selected.
-                        cx.set_key_focus(Area::Empty);
-                        self.go_peer(cx, Screen::Books);
-                    }
+                    // Drop leftover focus so the old Sell face cannot look selected.
+                    cx.set_key_focus(Area::Empty);
+                    self.go_peer(cx, Screen::Books);
                 }
             }
             Some(NavTab::Sell) => {

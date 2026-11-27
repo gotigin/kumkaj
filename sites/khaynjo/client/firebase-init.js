@@ -96,7 +96,13 @@ function syncAuthHash(label) {
       location.hash = nextBody;
     } else {
       history.replaceState(null, "", location.pathname + location.search);
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
+      try {
+        window.dispatchEvent(new HashChangeEvent("hashchange"));
+      } catch (__) {
+        try {
+          window.dispatchEvent(new Event("hashchange"));
+        } catch (___) {}
+      }
     }
   } catch (_) {}
 }
@@ -167,9 +173,15 @@ if (typeof window !== "undefined") {
     }
   } catch (_) {}
 
-  onAuthStateChanged(auth, (user) => {
-    publishAuthChip(user);
-  });
+  onAuthStateChanged(
+    auth,
+    (user) => {
+      publishAuthChip(user);
+    },
+    () => {
+      publishAuthChip(null);
+    }
+  );
 
   // bfcache restore (history.back after login): refresh chip without remounting.
   window.addEventListener("pageshow", (ev) => {

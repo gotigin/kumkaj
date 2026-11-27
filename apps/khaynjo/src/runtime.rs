@@ -1536,6 +1536,18 @@ fn deferred_settings_paint_frame() -> &'static Mutex<Option<NextFrame>> {
     F.get_or_init(|| Mutex::new(None))
 }
 
+/// Books home stat cards: navigate this frame, `books_overview` SQL next.
+fn deferred_books_overview_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+/// History clear / similar: status this frame, `reload_all` next.
+fn deferred_reload_all_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
 fn menu_pick_scroll_programmatic() -> bool {
     menu_pick_scroll_anim().lock().unwrap().is_some()
 }
@@ -1616,10 +1628,30 @@ fn list_height_drawn() -> &'static Mutex<std::collections::HashSet<String>> {
 }
 
 /// Drive open/close height for a dropdown list. Returns `(height, should_draw)`.
+/// True while a dropdown height tween runs for `key` (non-blocking for draw).
+fn list_height_tweening(key: &str) -> bool {
+    list_height_anims()
+        .try_lock()
+        .ok()
+        .is_some_and(|m| m.contains_key(key))
+}
+
 fn list_height_tween(key: &str, logic_open: bool, full_h: f64) -> (f64, bool) {
     let now = std::time::Instant::now();
-    let mut anims = list_height_anims().lock().unwrap();
-    let mut drawn = list_height_drawn().lock().unwrap();
+    let Ok(mut anims) = list_height_anims().try_lock() else {
+        return if logic_open {
+            (full_h.max(0.0), full_h > 0.5)
+        } else {
+            (0.0, false)
+        };
+    };
+    let Ok(mut drawn) = list_height_drawn().try_lock() else {
+        return if logic_open {
+            (full_h.max(0.0), full_h > 0.5)
+        } else {
+            (0.0, false)
+        };
+    };
     let was_drawn = drawn.contains(key);
     let current_p = anims
         .get(key)
@@ -1712,7 +1744,9 @@ fn list_height_tween(key: &str, logic_open: bool, full_h: f64) -> (f64, bool) {
 /// True when any dropdown height tween is still running (keeps NextFrame alive).
 fn list_height_anims_live() -> bool {
     let now = std::time::Instant::now();
-    let anims = list_height_anims().lock().unwrap();
+    let Ok(anims) = list_height_anims().try_lock() else {
+        return false;
+    };
     anims
         .values()
         .any(|a| !accordion_anim_progress(a, now).1)

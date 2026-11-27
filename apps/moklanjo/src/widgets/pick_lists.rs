@@ -58,10 +58,7 @@ impl Widget for SuggestList {
             list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
-        if list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key())
+        if list_height_tweening(&self.anim_key())
         {
             schedule_ui_tween_frame(cx);
         }
@@ -123,10 +120,7 @@ impl Widget for SuggestList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let live = list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key());
+        let live = list_height_tweening(&self.anim_key());
         if self.is_open() || live {
             if live {
                 schedule_ui_tween_frame(cx);
@@ -265,10 +259,7 @@ impl Widget for StationCheckList {
             list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
-        if list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key())
+        if list_height_tweening(&self.anim_key())
         {
             schedule_ui_tween_frame(cx);
         }
@@ -363,10 +354,7 @@ impl Widget for StationCheckList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let live = list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key());
+        let live = list_height_tweening(&self.anim_key());
         if !self.is_open() && !live {
             return;
         }

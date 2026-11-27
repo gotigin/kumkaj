@@ -349,11 +349,27 @@ const BILL_TOTAL_CAPTION_COLS: [(LiveId, LiveId, LiveId, print_share::BillItemCo
     (id!(tp_c_amount_box), id!(tp_c_amount), id!(tp_c_amount_on), print_share::BillItemCol::Amount),
 ];
 /// Bill format: the row wrappers before the open line (print order).
-const BILL_PICK_ROWS: [&[LiveId]; 12] = [ids!(bill_pick_row_0), ids!(bill_pick_row_1), ids!(bill_pick_row_2), ids!(bill_pick_row_3), ids!(bill_pick_row_4), ids!(bill_pick_row_5), ids!(bill_pick_row_6), ids!(bill_pick_row_7), ids!(bill_pick_row_8), ids!(bill_pick_row_9), ids!(bill_pick_row_10), ids!(bill_pick_row_11)];
+const BILL_PICK_ROWS: [&[LiveId]; 13] = [ids!(bill_pick_row_0), ids!(bill_pick_row_1), ids!(bill_pick_row_2), ids!(bill_pick_row_3), ids!(bill_pick_row_4), ids!(bill_pick_row_5), ids!(bill_pick_row_6), ids!(bill_pick_row_7), ids!(bill_pick_row_8), ids!(bill_pick_row_9), ids!(bill_pick_row_10), ids!(bill_pick_row_11), ids!(bill_pick_row_12)];
+/// Bill format: the row buttons before the open line.
+const BILL_PICK_BTNS: [(&[LiveId], &[LiveId]); 13] = [
+    (ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
+    (ids!(bill_pick_header), ids!(bill_pick_header_on)),
+    (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
+    (ids!(bill_pick_title), ids!(bill_pick_title_on)),
+    (ids!(bill_pick_customer), ids!(bill_pick_customer_on)),
+    (ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
+    (ids!(bill_pick_time), ids!(bill_pick_time_on)),
+    (ids!(bill_pick_cashier), ids!(bill_pick_cashier_on)),
+    (ids!(bill_pick_items), ids!(bill_pick_items_on)),
+    (ids!(bill_pick_total), ids!(bill_pick_total_on)),
+    (ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
+    (ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
+    (ids!(bill_pick_12), ids!(bill_pick_12_on)),
+];
 /// Bill format: the row wrappers after the open line.
-const BILL_AFTER_ROWS: [&[LiveId]; 12] = [ids!(bill_after_row_0), ids!(bill_after_row_1), ids!(bill_after_row_2), ids!(bill_after_row_3), ids!(bill_after_row_4), ids!(bill_after_row_5), ids!(bill_after_row_6), ids!(bill_after_row_7), ids!(bill_after_row_8), ids!(bill_after_row_9), ids!(bill_after_row_10), ids!(bill_after_row_11)];
+const BILL_AFTER_ROWS: [&[LiveId]; 13] = [ids!(bill_after_row_0), ids!(bill_after_row_1), ids!(bill_after_row_2), ids!(bill_after_row_3), ids!(bill_after_row_4), ids!(bill_after_row_5), ids!(bill_after_row_6), ids!(bill_after_row_7), ids!(bill_after_row_8), ids!(bill_after_row_9), ids!(bill_after_row_10), ids!(bill_after_row_11), ids!(bill_after_row_12)];
 /// Bill format: the row buttons after the open line.
-const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 12] = [
+const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 13] = [
     (ids!(bill_after_0), ids!(bill_after_0_on)),
     (ids!(bill_after_1), ids!(bill_after_1_on)),
     (ids!(bill_after_2), ids!(bill_after_2_on)),
@@ -366,6 +382,7 @@ const BILL_AFTER_BTNS: [(&[LiveId], &[LiveId]); 12] = [
     (ids!(bill_after_9), ids!(bill_after_9_on)),
     (ids!(bill_after_10), ids!(bill_after_10_on)),
     (ids!(bill_after_11), ids!(bill_after_11_on)),
+    (ids!(bill_after_12), ids!(bill_after_12_on)),
 ];
 
 /// Bill format, form beside preview: (split, form column, open-line editor,

@@ -62,7 +62,7 @@ MENU, BOOKS & DAY END
 TEAM & DEVICES
 • Owner and staff unlock with PIN (optional login id + password)
 • Rights for what each person may see and do — Floor, Kitchen, money screens
-• One shop Server on your Wi‑Fi; extra tills and waiter tablets pair as Clients on the LAN — no cloud required for multi-device
+• Shop Server / Client pairing on your Wi‑Fi is in the app for multi-device use; we only advertise it as ready after a real shop LAN pilot (see product sites’ LAN claim gate)
 • Bill & KOT printers on the shop devices you choose
 • UI in many Indian languages (and more), including right-to-left where needed
 

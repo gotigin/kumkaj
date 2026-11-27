@@ -267,6 +267,49 @@ impl MatchEvent for App {
                         }
                     }
                     FileDialogAction::FileSelected { id, paths }
+                        if *id == live_id!(bill_logo_choose) =>
+                    {
+                        if let Some(path) = paths.first() {
+                            match self.materialize_picked_file(cx, path) {
+                                Ok(file) => {
+                                    let outcome = (|| -> Result<String, String> {
+                                        let bytes = std::fs::read(&file)
+                                            .map_err(|e| format!("Could not read the picture: {e}"))?;
+                                        // Refuse what does not read as a picture before it is sent.
+                                        let picked = print_share::BillLogoImage::from_bytes(bytes.clone())
+                                            .ok_or_else(|| app_t("bill_logo_unreadable"))?;
+                                        let filename = file
+                                            .file_name()
+                                            .and_then(|n| n.to_str())
+                                            .unwrap_or("logo.png")
+                                            .to_string();
+                                        let mut st = app_state().lock().unwrap();
+                                        let msg = st.books_op_light(BooksOp::ImportBillLogo { filename, bytes })?;
+                                        // The books' copy where this device has the books; a Client
+                                        // shows the picture it sent.
+                                        let stored = st.store.as_ref().and_then(|s| s.bill_logo_image().ok().flatten());
+                                        let draft = &mut st.bill_slip_draft;
+                                        draft.logo_image = stored.or(Some(picked));
+                                        // Choosing a picture shows the line.
+                                        draft.logo.show = true;
+                                        Ok(msg)
+                                    })();
+                                    match outcome {
+                                        Ok(msg) => {
+                                            if !msg.is_empty() {
+                                                self.set_status(cx, msg);
+                                            }
+                                            self.schedule_format_autosave(cx);
+                                            self.sync_bill_format_ui(cx);
+                                        }
+                                        Err(e) => self.set_status(cx, e),
+                                    }
+                                }
+                                Err(e) => self.set_status(cx, e),
+                            }
+                        }
+                    }
+                    FileDialogAction::FileSelected { id, paths }
                         if *id == live_id!(print_stamp_pick) =>
                     {
                         if let Some(path) = paths.first() {
@@ -4607,6 +4650,7 @@ impl MatchEvent for App {
                 (9, ids!(bill_pick_total), ids!(bill_pick_total_on)),
                 (10, ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
                 (11, ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
+                (12, ids!(bill_pick_12), ids!(bill_pick_12_on)),
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     self.commit_bill_field_value(cx);
@@ -4691,6 +4735,51 @@ impl MatchEvent for App {
             if self.choice_chip_clicked(cx, actions, ids!(bill_copies_3), ids!(bill_copies_3_on)) {
                 app_state().lock().unwrap().bill_slip_draft.copies = 3;
                 bill_changed = true;
+            }
+            // Logo: the picture, its box (blank = follows the picture) and greys.
+            if self.ui.button(cx, ids!(bill_logo_choose)).clicked(actions) {
+                let title = app_t("bill_logo_choose");
+                self.pick_print_brand_image(cx, live_id!(bill_logo_choose), &title);
+            }
+            if self.ui.button(cx, ids!(bill_logo_remove)).clicked(actions) {
+                let outcome = app_state().lock().unwrap().books_op_light(BooksOp::ClearBillLogo);
+                match outcome {
+                    Ok(_) => {
+                        // The line keeps its place and box: blank space of its
+                        // Height until Hide (docs/PRINTER.md "Logo").
+                        app_state().lock().unwrap().bill_slip_draft.logo_image = None;
+                        bill_changed = true;
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+            for (id, height) in [(ids!(bill_logo_width_input), false), (ids!(bill_logo_height_input), true)] {
+                if let Some(raw) = self.ui.text_input(cx, id).changed(actions) {
+                    let raw = raw.trim();
+                    let px = if raw.is_empty() {
+                        Some(0)
+                    } else {
+                        raw.parse::<u32>().ok().map(|v| v.min(print_share::BILL_LOGO_PX_MAX))
+                    };
+                    if let Some(px) = px {
+                        let mut st = app_state().lock().unwrap();
+                        if height {
+                            st.bill_slip_draft.logo_height_px = px;
+                        } else {
+                            st.bill_slip_draft.logo_width_px = px;
+                        }
+                        bill_changed = true;
+                    }
+                }
+            }
+            for (idle, on, tones) in [
+                (ids!(bill_logo_solid), ids!(bill_logo_solid_on), print_share::BillLogoTones::Solid),
+                (ids!(bill_logo_shaded), ids!(bill_logo_shaded_on), print_share::BillLogoTones::Shaded),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    app_state().lock().unwrap().bill_slip_draft.logo_tones = tones;
+                    bill_changed = true;
+                }
             }
             if self.choice_chip_clicked(cx, actions, ids!(bill_field_show), ids!(bill_field_show_on))
             {
@@ -7242,9 +7331,8 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(msg) => {
-                    let _ = app_state().lock().unwrap().reload_all();
                     self.set_status(cx, msg);
-                    self.sync_chrome(cx);
+                    *deferred_reload_all_frame().lock().unwrap() = Some(cx.new_next_frame());
                 }
                 Err(e) => self.set_status(cx, e),
             }

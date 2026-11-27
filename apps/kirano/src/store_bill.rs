@@ -112,6 +112,7 @@ impl Store {
         }
         fmt.upi_vpa = self.upi_vpa()?;
         fmt.upi_payee = self.upi_payee()?;
+        fmt.logo_image = self.bill_logo_image().ok().flatten();
         Ok(fmt.clamped())
     }
 

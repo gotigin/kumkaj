@@ -809,7 +809,6 @@ impl MatchEvent for App {
                     unit_cost_paise: unit_cost,
                     note: note.trim().to_string(),
                 })?;
-                let _ = st.refresh_books_overview();
                 Ok(msg)
             })();
             match result {
@@ -817,6 +816,7 @@ impl MatchEvent for App {
                     self.ui.text_input(cx, ids!(buy_qty_input)).set_text(cx, "");
                     self.ui.text_input(cx, ids!(buy_cost_input)).set_text(cx, "");
                     self.set_status(cx, msg);
+                    self.schedule_deferred_books_overview(cx);
                 }
                 Err(e) => self.set_status(cx, e),
             }
@@ -905,7 +905,6 @@ impl MatchEvent for App {
                     Some((status, id)) => {
                         if st.device_role != DeviceRole::Client {
                             st.selected_expense_id = Some(id.to_string());
-                            let _ = st.refresh_books_overview();
                         }
                         status.to_string()
                     }
@@ -920,6 +919,9 @@ impl MatchEvent for App {
             } else {
                 self.ui.text_input(cx, ids!(buy_expense_amount)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(buy_expense_note)).set_text(cx, "");
+                if app_state().lock().unwrap().device_role != DeviceRole::Client {
+                    self.schedule_deferred_books_overview(cx);
+                }
             }
             self.sync_chrome(cx);
         }
@@ -993,12 +995,14 @@ impl MatchEvent for App {
                     }
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     store.set_business_day_mode(mode)?;
-                    let _ = st.reload_all();
                     st.sync_report_day_lens_from_shop();
                     Ok(st.t("business_day_saved"))
                 })();
                 match result {
-                    Ok(msg) => self.set_status(cx, msg),
+                    Ok(msg) => {
+                        self.set_status(cx, msg);
+                        self.schedule_deferred_reload_all(cx);
+                    }
                     Err(e) => self.set_status(cx, e),
                 }
                 self.sync_chrome(cx);
@@ -2217,7 +2221,6 @@ impl MatchEvent for App {
                     amount_paise: amount,
                     reason,
                 })?;
-                let _ = st.refresh_books_overview();
                 Ok(msg)
             })();
             match result {
@@ -2225,6 +2228,7 @@ impl MatchEvent for App {
                     self.ui.text_input(cx, ids!(writeoff_amount_input)).set_text(cx, "");
                     self.ui.text_input(cx, ids!(writeoff_reason_input)).set_text(cx, "");
                     self.set_status(cx, msg);
+                    self.schedule_deferred_books_overview(cx);
                 }
                 Err(e) => self.set_status(cx, e),
             }
@@ -2269,7 +2273,6 @@ impl MatchEvent for App {
                         pay: method,
                         against_bill_id: against,
                     })?;
-                    let _ = st.refresh_books_overview();
                     Ok(msg)
                 })();
                 match result {
@@ -2281,6 +2284,7 @@ impl MatchEvent for App {
                             .text_input(cx, ids!(payable_bill_input))
                             .set_text(cx, "");
                         self.set_status(cx, msg);
+                        self.schedule_deferred_books_overview(cx);
                     }
                     Err(e) => self.set_status(cx, e),
                 }
@@ -2306,11 +2310,13 @@ impl MatchEvent for App {
                     amount_paise: amount,
                     reason,
                 })?;
-                let _ = st.refresh_books_overview();
                 Ok(msg)
             })();
             match result {
-                Ok(msg) => self.set_status(cx, msg),
+                Ok(msg) => {
+                    self.set_status(cx, msg);
+                    self.schedule_deferred_books_overview(cx);
+                }
                 Err(e) => self.set_status(cx, e),
             }
             self.sync_chrome(cx);
@@ -6388,14 +6394,15 @@ impl MatchEvent for App {
                 let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                 let customer = store.find_or_create_customer(name.trim())?;
                 store.seed_opening_credit(&customer.id, minor, &actor)?;
-                st.reload_all()?;
                 st.status = format!("Opening credit for {}", customer.name);
                 Ok(())
             })();
-            if let Err(e) = result { self.set_status(cx, e); }
-            else {
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            } else {
                 self.ui.text_input(cx, ids!(onboard_cust_name)).set_text(cx, "");
                 self.ui.text_input(cx, ids!(onboard_cust_bal)).set_text(cx, "");
+                self.schedule_deferred_reload_all(cx);
             }
             self.sync_chrome(cx);
         }
@@ -6413,11 +6420,13 @@ impl MatchEvent for App {
                 st.nav_forward.clear();
                 st.screen = unlocked_home_from(&mut st);
                 st.status = "Shop ready — your books are open".into();
-                let _ = st.reload_all();
-                let _ = st.refresh_books_overview();
                 Ok(())
             })();
-            if let Err(e) = result { self.set_status(cx, e); }
+            if let Err(e) = result {
+                self.set_status(cx, e);
+            } else {
+                self.schedule_deferred_reload_all(cx);
+            }
             self.sync_chrome(cx);
         }
 
@@ -10220,9 +10229,8 @@ impl MatchEvent for App {
             })();
             match result {
                 Ok(msg) => {
-                    let _ = app_state().lock().unwrap().reload_all();
                     self.set_status(cx, msg);
-                    self.sync_chrome(cx);
+                    self.schedule_deferred_reload_all(cx);
                 }
                 Err(e) => self.set_status(cx, e),
             }

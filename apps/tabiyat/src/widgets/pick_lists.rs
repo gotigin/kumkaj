@@ -68,10 +68,7 @@ impl Widget for SuggestList {
             }
         } else {
             let tweened = list_height_tween(&self.anim_key(), logic_open, full_h);
-            if list_height_anims()
-                .lock()
-                .unwrap()
-                .contains_key(&self.anim_key())
+            if list_height_tweening(&self.anim_key())
             {
                 schedule_ui_tween_frame(cx);
             }
@@ -136,10 +133,7 @@ impl Widget for SuggestList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let live = list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key());
+        let live = list_height_tweening(&self.anim_key());
         if self.is_open() || live {
             // Keep NextFrame pumping while this list is tweening.
             if live {
@@ -212,10 +206,7 @@ impl Widget for CheckList {
             list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
-        if list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key())
+        if list_height_tweening(&self.anim_key())
         {
             schedule_ui_tween_frame(cx);
         }
@@ -345,10 +336,7 @@ impl Widget for CheckList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let live = list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key(&self.anim_key());
+        let live = list_height_tweening(&self.anim_key());
         if !self.is_open() && !live {
             return;
         }
@@ -402,10 +390,7 @@ impl Widget for CategoryPickList {
             list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween("category_pick", logic_open, full_h);
-        if list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key("category_pick")
+        if list_height_tweening("category_pick")
         {
             schedule_ui_tween_frame(cx);
         }
@@ -487,10 +472,7 @@ impl Widget for CategoryPickList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let live = list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key("category_pick");
+        let live = list_height_tweening("category_pick");
         if !app_state().lock().unwrap().category_picker_open && !live {
             return;
         }
@@ -552,10 +534,7 @@ impl Widget for DishPickList {
             list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween("dish_pick", logic_open, full_h);
-        if list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key("dish_pick")
+        if list_height_tweening("dish_pick")
         {
             schedule_ui_tween_frame(cx);
         }
@@ -645,10 +624,7 @@ impl Widget for DishPickList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        let live = list_height_anims()
-            .lock()
-            .unwrap()
-            .contains_key("dish_pick");
+        let live = list_height_tweening("dish_pick");
         if !app_state().lock().unwrap().dish_picker_open && !live {
             return;
         }

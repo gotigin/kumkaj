@@ -8405,6 +8405,10 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                         bill_pick_upi := FieldRowBtn{text: "UPI"}
                                         bill_pick_upi_on := FieldRowBtnOn{text: "UPI" visible: false}
                                     }
+                                    bill_pick_row_12 := View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_12 := FieldRowBtn{text: ""}
+                                        bill_pick_12_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
                                 }
                                 // The open line, edited where it sits: every control of the line in
                                 // its own row (wraps on narrow screens), its extras right under it.
@@ -8432,8 +8436,11 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                                     bill_field_hide := SegBtn{width: Fit text: "Hide"}
                                                     bill_field_hide_on := SegBtnOn{width: Fit text: "Hide" visible: false}
                                                 }
-                                                h_bill_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x031303 font_size: 13.}
-                                                bill_field_size_input := FieldInput{width: 88 empty_text: "px"}
+                                                // Font size; the Logo line has its box size below instead.
+                                                bill_size_box := View{width: Fit height: Fit flow: Right spacing: 6 align: Align{y: 0.5}
+                                                    h_bill_field_size := WrapLabel{width: Fit body: "Font size" font_color: #x031303 font_size: 13.}
+                                                    bill_field_size_input := FieldInput{width: 88 empty_text: "px"}
+                                                }
                                             }
                                         }
                                         bill_line_style := View{width: Fill height: Fit flow: Right spacing: 8
@@ -8478,6 +8485,37 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                         upi_vpa_input := FieldInput{empty_text: "UPI ID (VPA)"}
                                         upi_payee_input := FieldInput{empty_text: "UPI payee name (optional)"}
                                         bill_footer_input := FieldInput{empty_text: "Footer (e.g. Thank you, visit again)"}
+                                    }
+
+                                    // Logo open: its picture, box size and greys (docs/PRINTER.md "Logo").
+                                    bill_logo_pieces := View{width: Fill height: Fit flow: Down spacing: 8 visible: false
+                                        bill_logo_head := View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_bill_logo_picture := WrapLabel{width: Fit body: "Picture" font_color: #x031303 font_size: 14.}
+                                            bill_logo_help := InfoHelp{tip: ""}
+                                            bill_logo_status := WrapLabel{width: Fill body: "" font_color: #x6B4A3F font_size: 13.}
+                                        }
+                                        bill_logo_btns := View{width: Fill height: Fit flow: Right spacing: 8
+                                            bill_logo_choose := StackSecondaryBtn{width: Fill text: "Choose picture"}
+                                            bill_logo_remove := StackSecondaryBtn{width: Fill text: "Remove picture"}
+                                        }
+                                        bill_logo_size := View{width: Fill height: Fit flow: Right spacing: 8
+                                            bill_logo_width_input := FieldInput{width: Fill empty_text: "Width (px)"}
+                                            bill_logo_height_input := FieldInput{width: Fill empty_text: "Height (px)"}
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
+                                            h_bill_logo_tones := WrapLabel{width: Fit body: "Greys" font_color: #x031303 font_size: 14.}
+                                            bill_logo_tones_help := InfoHelp{tip: ""}
+                                        }
+                                        bill_logo_tones := View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_logo_solid := SegBtn{text: "Solid"}
+                                                bill_logo_solid_on := SegBtnOn{text: "Solid" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_logo_shaded := SegBtn{text: "Shaded"}
+                                                bill_logo_shaded_on := SegBtnOn{text: "Shaded" visible: false}
+                                            }
+                                        }
                                     }
                                     bill_meta_pair := View{
                                         width: Fill height: Fit
@@ -9082,6 +9120,10 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                     bill_after_row_11 := View{width: Fill height: Fit flow: Overlay visible: false
                                         bill_after_11 := FieldRowBtn{text: ""}
                                         bill_after_11_on := FieldRowBtnOn{text: "" visible: false}
+                                    }
+                                    bill_after_row_12 := View{width: Fill height: Fit flow: Overlay visible: false
+                                        bill_after_12 := FieldRowBtn{text: ""}
+                                        bill_after_12_on := FieldRowBtnOn{text: "" visible: false}
                                     }
                                 }
                                 }

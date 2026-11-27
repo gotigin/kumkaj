@@ -188,6 +188,25 @@ impl App {
                     self.sync_chrome(cx);
                 }
             }
+            let books_overview_ours = deferred_books_overview_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if books_overview_ours {
+                *deferred_books_overview_frame().lock().unwrap() = None;
+                self.paint_books_overview_sql(cx);
+            }
+            let reload_all_ours = deferred_reload_all_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if reload_all_ours {
+                *deferred_reload_all_frame().lock().unwrap() = None;
+                let _ = app_state().lock().unwrap().reload_all();
+                self.sync_chrome(cx);
+            }
             return true;
         }
 
@@ -718,6 +737,25 @@ impl App {
                 .unwrap_or(false);
             if role_sync_ours {
                 *deferred_role_open_sync_frame().lock().unwrap() = None;
+                self.sync_chrome(cx);
+            }
+            let books_overview_ours = deferred_books_overview_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if books_overview_ours {
+                *deferred_books_overview_frame().lock().unwrap() = None;
+                self.paint_books_overview_sql(cx);
+            }
+            let reload_all_ours = deferred_reload_all_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if reload_all_ours {
+                *deferred_reload_all_frame().lock().unwrap() = None;
+                let _ = app_state().lock().unwrap().reload_all();
                 self.sync_chrome(cx);
             }
             let settings_paint_ours = deferred_settings_paint_frame()

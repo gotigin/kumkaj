@@ -861,6 +861,9 @@ fn kot_style_prefix_strike(style: &KotFieldStyle, rtl: bool, strike: bool) -> St
 /// A line on the bill. Same ink controls as a kitchen field: show, size, weight, align.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum BillStyleField {
+    /// The shop's picture (docs/PRINTER.md "Logo"). Hidden until a picture
+    /// is chosen, so bills from before it are unchanged.
+    Logo,
     Shop,
     Header,
     Fssai,
@@ -876,7 +879,8 @@ pub enum BillStyleField {
 }
 
 impl BillStyleField {
-    pub const ALL: [BillStyleField; 12] = [
+    pub const ALL: [BillStyleField; 13] = [
+        BillStyleField::Logo,
         BillStyleField::Shop,
         BillStyleField::Header,
         BillStyleField::Fssai,
@@ -893,6 +897,7 @@ impl BillStyleField {
 
     pub fn label(self) -> &'static str {
         match self {
+            BillStyleField::Logo => "Logo",
             BillStyleField::Shop => "Shop",
             BillStyleField::Header => "Address",
             BillStyleField::Fssai => "FSSAI",
@@ -911,6 +916,7 @@ impl BillStyleField {
     /// The line's name in the owner's language: its `locale` key.
     pub fn label_key(self) -> &'static str {
         match self {
+            BillStyleField::Logo => "bill_line_logo",
             BillStyleField::Shop => "bill_line_shop",
             BillStyleField::Header => "bill_line_address",
             BillStyleField::Fssai => "bill_line_fssai",
@@ -951,6 +957,7 @@ impl BillStyleField {
 
     pub fn id(self) -> &'static str {
         match self {
+            BillStyleField::Logo => "logo",
             BillStyleField::Shop => "shop",
             BillStyleField::Header => "header",
             BillStyleField::Fssai => "fssai",
@@ -1280,6 +1287,93 @@ pub struct BillSlipFormat {
     /// [`Self::clamped`] fills them to the content width.
     #[serde(default)]
     pub item_columns: Option<BillItemColumns>,
+    /// The Logo line's show and alignment (its size is the box below; type
+    /// size and weight do not apply). Hidden by default.
+    #[serde(default = "default_bill_logo_style")]
+    pub logo: BillFieldStyle,
+    /// Logo box width in px; 0 follows the picture (docs/PRINTER.md "Logo").
+    #[serde(default)]
+    pub logo_width_px: u32,
+    /// Logo box height in px; 0 follows the picture.
+    #[serde(default = "default_bill_logo_height_px")]
+    pub logo_height_px: u32,
+    /// How the picture's greys become dots.
+    #[serde(default)]
+    pub logo_tones: BillLogoTones,
+    /// The picture itself, from the books (`brand_images/bill_logo.webp`).
+    /// Not part of the saved format; loaded with it.
+    #[serde(skip)]
+    pub logo_image: Option<BillLogoImage>,
+}
+
+fn default_bill_logo_style() -> BillFieldStyle {
+    BillFieldStyle {
+        show: false,
+        size_em: default_bill_em(),
+        weight: KotFontWeight::Regular,
+        align: KotAlign::Center,
+    }
+}
+
+fn default_bill_logo_height_px() -> u32 {
+    80
+}
+
+/// Largest logo box side in px (210 mm, the widest content).
+pub const BILL_LOGO_PX_MAX: u32 = 794;
+
+/// How the logo's greys become printer dots (each dot is ink or paper).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum BillLogoTones {
+    /// Darker than mid-grey is ink: crisp edges for line-art logos.
+    #[default]
+    Solid,
+    /// Greys become a fine dot pattern (Floyd–Steinberg): photos, shading.
+    Shaded,
+}
+
+/// The logo picture's file bytes with its size in pixels and a content hash
+/// (the dots cache key). Compared by hash; printed by size only.
+#[derive(Clone)]
+pub struct BillLogoImage {
+    pub bytes: std::sync::Arc<Vec<u8>>,
+    pub width: u32,
+    pub height: u32,
+    hash: u64,
+}
+
+impl BillLogoImage {
+    /// `None` when the bytes are not a picture this app can read.
+    pub fn from_bytes(bytes: Vec<u8>) -> Option<Self> {
+        let (width, height) = image::ImageReader::new(std::io::Cursor::new(&bytes))
+            .with_guessed_format()
+            .ok()?
+            .into_dimensions()
+            .ok()?;
+        if width == 0 || height == 0 {
+            return None;
+        }
+        let hash = {
+            use std::hash::{Hash, Hasher};
+            let mut h = std::collections::hash_map::DefaultHasher::new();
+            bytes.hash(&mut h);
+            h.finish()
+        };
+        Some(Self { bytes: std::sync::Arc::new(bytes), width, height, hash })
+    }
+}
+
+impl PartialEq for BillLogoImage {
+    fn eq(&self, other: &Self) -> bool {
+        self.hash == other.hash && self.bytes.len() == other.bytes.len()
+    }
+}
+
+impl std::fmt::Debug for BillLogoImage {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "BillLogoImage({}×{}, {} bytes)", self.width, self.height, self.bytes.len())
+    }
 }
 
 fn default_bill_meta_pairs() -> Vec<[String; 2]> {
@@ -1411,6 +1505,11 @@ impl Default for BillSlipFormat {
             copies: 1,
             content_width_mm: 210,
             item_columns: None,
+            logo: default_bill_logo_style(),
+            logo_width_px: 0,
+            logo_height_px: default_bill_logo_height_px(),
+            logo_tones: BillLogoTones::Solid,
+            logo_image: None,
         }
     }
 }
@@ -1717,19 +1816,29 @@ impl BillSlipFormat {
             }
             order
         };
-        let mut order = Vec::new();
+        self.logo_width_px = self.logo_width_px.min(BILL_LOGO_PX_MAX);
+        self.logo_height_px = self.logo_height_px.min(BILL_LOGO_PX_MAX);
+        let mut order: Vec<String> = Vec::new();
         for id in &self.field_order {
             if let Some(field) = BillStyleField::from_id(id) {
-                if !order.iter().any(|have| have == id) {
-                    order.push(field.id().to_string());
+                let fid = field.id().to_string();
+                if !order.iter().any(|have| have == &fid) {
+                    order.push(fid);
                 }
             }
         }
-        for field in BillStyleField::ALL {
+        // A line a save does not know yet goes where the product puts it
+        // (Logo above Shop), not at the end.
+        for (i, field) in BillStyleField::ALL.into_iter().enumerate() {
             let id = field.id();
-            if !order.iter().any(|have| have == id) {
-                order.push(id.to_string());
+            if order.iter().any(|have| have == id) {
+                continue;
             }
+            let at = BillStyleField::ALL[i + 1..]
+                .iter()
+                .find_map(|next| order.iter().position(|have| have == next.id()))
+                .unwrap_or(order.len());
+            order.insert(at, id.to_string());
         }
         self.field_order = order;
         // Only real pairs of pairable fields; none left means none (Alone).
@@ -1881,6 +1990,7 @@ impl BillSlipFormat {
 
     pub fn style(&self, field: BillStyleField) -> &BillFieldStyle {
         match field {
+            BillStyleField::Logo => &self.logo,
             BillStyleField::Shop => &self.shop,
             BillStyleField::Header => &self.header_style,
             BillStyleField::Fssai => &self.fssai_style,
@@ -1898,6 +2008,7 @@ impl BillSlipFormat {
 
     pub fn style_mut(&mut self, field: BillStyleField) -> &mut BillFieldStyle {
         match field {
+            BillStyleField::Logo => &mut self.logo,
             BillStyleField::Shop => &mut self.shop,
             BillStyleField::Header => &mut self.header_style,
             BillStyleField::Fssai => &mut self.fssai_style,
@@ -2128,6 +2239,14 @@ pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
     let order = fmt.ordered();
     for field in &order {
         if consumed.contains(field) {
+            continue;
+        }
+        // The Logo line comes from the format itself (its picture and box),
+        // not from what the caller staged.
+        if *field == BillStyleField::Logo {
+            if fmt.logo.show {
+                out.push_str(&bill_logo_line(fmt, rtl));
+            }
             continue;
         }
         // Pairable meta: one left\tright line when both partners have a
@@ -4985,6 +5104,215 @@ fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
 
 
 
+fn bill_logo_line(fmt: &BillSlipFormat, rtl: bool) -> String {
+    let mark = fmt.logo.align.mark(rtl);
+    match bill_logo_picture(fmt, KotAlign::from_mark(mark)) {
+        Some(pic) => encode_slip_picture(&pic, mark),
+        None => String::new(),
+    }
+}
+
+/// The Logo line's box in dots with the picture fitted inside it.
+///
+/// Width and Height are px (1/96 inch, as type sizes); 0 follows the
+/// picture. One set → the other keeps the picture's shape; both set → the
+/// box is exactly that and the picture fits inside it, never stretched,
+/// placed by the line's alignment and centred top to bottom; neither → the
+/// picture's own pixels as px. No picture → a blank box of the Height (no
+/// Height: no room). `align` is physical (left / centre / right).
+fn bill_logo_picture(
+    fmt: &BillSlipFormat,
+    align: KotAlign,
+) -> Option<std::sync::Arc<crate::receipt_raster::SlipPicture>> {
+    let dots = |px: f32| crate::receipt_raster::px_dots(px).round().max(1.0) as usize;
+    let max = BILL_LOGO_PX_MAX as f32;
+    let (w_set, h_set) = (fmt.logo_width_px.min(BILL_LOGO_PX_MAX), fmt.logo_height_px.min(BILL_LOGO_PX_MAX));
+    let Some(img) = fmt.logo_image.as_ref() else {
+        if h_set == 0 {
+            return None;
+        }
+        let width = if w_set == 0 { 0 } else { dots(w_set as f32) };
+        let height = dots(h_set as f32);
+        return Some(std::sync::Arc::new(crate::receipt_raster::SlipPicture {
+            width,
+            height,
+            bits: vec![0; width.div_ceil(8) * height],
+        }));
+    };
+    let (iw, ih) = (img.width as f32, img.height as f32);
+    let (bw, bh) = match (w_set, h_set) {
+        (0, 0) => {
+            let k = (max / iw).min(max / ih).min(1.0);
+            (iw * k, ih * k)
+        }
+        (w, 0) => (w as f32, (w as f32 * ih / iw).min(max)),
+        (0, h) => ((h as f32 * iw / ih).min(max), h as f32),
+        (w, h) => (w as f32, h as f32),
+    };
+    let (box_w, box_h) = (dots(bw), dots(bh));
+    let k = (box_w as f32 / iw).min(box_h as f32 / ih);
+    let draw_w = ((iw * k).round() as usize).clamp(1, box_w);
+    let draw_h = ((ih * k).round() as usize).clamp(1, box_h);
+    let left = match align {
+        KotAlign::Start => 0,
+        KotAlign::Center => (box_w - draw_w) / 2,
+        KotAlign::End => box_w - draw_w,
+    };
+    let top = (box_h - draw_h) / 2;
+    logo_dots(img, [box_w, box_h, draw_w, draw_h, left, top], fmt.logo_tones)
+}
+
+/// The picture as dots in its box: transparency on white paper, greys by
+/// luminance, resized to the dots it prints at, then Solid (darker than
+/// mid-grey is ink) or Shaded (Floyd–Steinberg). The last few results are
+/// kept, so a preview redrawn while typing does not decode it again.
+fn logo_dots(
+    img: &BillLogoImage,
+    geo: [usize; 6],
+    tones: BillLogoTones,
+) -> Option<std::sync::Arc<crate::receipt_raster::SlipPicture>> {
+    type Key = (u64, [usize; 6], BillLogoTones);
+    static DOTS: Mutex<Vec<(Key, std::sync::Arc<crate::receipt_raster::SlipPicture>)>> =
+        Mutex::new(Vec::new());
+    static GREY: Mutex<Option<(u64, std::sync::Arc<image::GrayImage>)>> = Mutex::new(None);
+    let key = (img.hash, geo, tones);
+    if let Some((_, pic)) = DOTS.lock().unwrap().iter().find(|(k, _)| *k == key) {
+        return Some(pic.clone());
+    }
+    let grey = {
+        let held = GREY.lock().unwrap().clone();
+        match held {
+            Some((hash, grey)) if hash == img.hash => grey,
+            _ => {
+                let rgba = image::load_from_memory(&img.bytes).ok()?.to_rgba8();
+                let grey = image::GrayImage::from_fn(rgba.width(), rgba.height(), |x, y| {
+                    let [r, g, b, a] = rgba.get_pixel(x, y).0;
+                    let lum = 0.2126 * f32::from(r) + 0.7152 * f32::from(g) + 0.0722 * f32::from(b);
+                    let a = f32::from(a) / 255.0;
+                    image::Luma([(lum * a + 255.0 * (1.0 - a)).round().clamp(0.0, 255.0) as u8])
+                });
+                let grey = std::sync::Arc::new(grey);
+                *GREY.lock().unwrap() = Some((img.hash, grey.clone()));
+                grey
+            }
+        }
+    };
+    let [box_w, box_h, draw_w, draw_h, left, top] = geo;
+    let sized = image::imageops::resize(
+        &*grey,
+        draw_w as u32,
+        draw_h as u32,
+        image::imageops::FilterType::Lanczos3,
+    );
+    let mut level: Vec<f32> = sized.pixels().map(|p| f32::from(p.0[0])).collect();
+    let mut ink = vec![false; draw_w * draw_h];
+    match tones {
+        BillLogoTones::Solid => {
+            for (dot, v) in ink.iter_mut().zip(&level) {
+                *dot = *v < 128.0;
+            }
+        }
+        BillLogoTones::Shaded => {
+            // Floyd–Steinberg, serpentine so the error does not streak.
+            for y in 0..draw_h {
+                let ltr = y % 2 == 0;
+                for i in 0..draw_w {
+                    let x = if ltr { i } else { draw_w - 1 - i };
+                    let at = y * draw_w + x;
+                    let old = level[at];
+                    let on = old < 128.0;
+                    ink[at] = on;
+                    let err = old - if on { 0.0 } else { 255.0 };
+                    let mut spread = |dx: isize, dy: usize, w: f32| {
+                        let nx = x as isize + if ltr { dx } else { -dx };
+                        let ny = y + dy;
+                        if nx >= 0 && (nx as usize) < draw_w && ny < draw_h {
+                            level[ny * draw_w + nx as usize] += err * w;
+                        }
+                    };
+                    spread(1, 0, 7.0 / 16.0);
+                    spread(-1, 1, 3.0 / 16.0);
+                    spread(0, 1, 5.0 / 16.0);
+                    spread(1, 1, 1.0 / 16.0);
+                }
+            }
+        }
+    }
+    let row_bytes = box_w.div_ceil(8);
+    let mut bits = vec![0u8; row_bytes * box_h];
+    for y in 0..draw_h {
+        for x in 0..draw_w {
+            if ink[y * draw_w + x] {
+                let (bx, by) = (left + x, top + y);
+                bits[by * row_bytes + bx / 8] |= 0x80 >> (bx % 8);
+            }
+        }
+    }
+    let pic = std::sync::Arc::new(crate::receipt_raster::SlipPicture {
+        width: box_w,
+        height: box_h,
+        bits,
+    });
+    let mut held = DOTS.lock().unwrap();
+    held.retain(|(k, _)| *k != key);
+    held.push((key, pic.clone()));
+    if held.len() > 4 {
+        held.remove(0);
+    }
+    Some(pic)
+}
+
+/// `\u{E001}P{align}|{width}|{height}|{base64 of the deflated dots}`: a
+/// picture as slip text, so a queued job, a bill sent to a waiter's device
+/// and the preview all carry the same dots. Not drawn as text; the receipt
+/// file drops it ([`strip_kot_style_marks`]).
+fn encode_slip_picture(pic: &crate::receipt_raster::SlipPicture, align: char) -> String {
+    use std::io::Write as _;
+    let mut z = flate2::write::DeflateEncoder::new(Vec::new(), flate2::Compression::best());
+    let _ = z.write_all(&pic.bits);
+    let packed = z.finish().unwrap_or_default();
+    format!(
+        "{SLIP_TAB_MARK}P{align}|{}|{}|{}\n",
+        pic.width,
+        pic.height,
+        crate::media::encode_base64(&packed)
+    )
+}
+
+fn is_slip_picture_line(line: &str) -> bool {
+    let mut chars = line.chars();
+    chars.next() == Some(SLIP_TAB_MARK) && chars.next() == Some('P')
+}
+
+fn decode_slip_picture(
+    line: &str,
+) -> Option<(crate::receipt_raster::LineAlign, std::sync::Arc<crate::receipt_raster::SlipPicture>)> {
+    use std::io::Read as _;
+    let rest = line.strip_prefix(SLIP_TAB_MARK)?.strip_prefix('P')?;
+    let mut chars = rest.chars();
+    let align = KotAlign::from_mark(chars.next()?).line_align();
+    let mut parts = chars.as_str().strip_prefix('|')?.splitn(3, '|');
+    let width: usize = parts.next()?.parse().ok()?;
+    let height: usize = parts.next()?.parse().ok()?;
+    if width > 4 * 1512 || height > 4 * 1512 {
+        return None;
+    }
+    let packed = crate::media::decode_base64(parts.next()?.trim_end()).ok()?;
+    let mut bits = Vec::new();
+    flate2::read::DeflateDecoder::new(packed.as_slice())
+        .take((width.div_ceil(8) * height + 1) as u64)
+        .read_to_end(&mut bits)
+        .ok()?;
+    if bits.len() != width.div_ceil(8) * height {
+        return None;
+    }
+    Some((
+        align,
+        std::sync::Arc::new(crate::receipt_raster::SlipPicture { width, height, bits }),
+    ))
+}
+
+
 /// Thermal / network ESC/POS job (printer-agnostic).
 ///
 /// - Slips the built-in font can show (ASCII + ₹/dashes spelt out) go as
@@ -5010,7 +5338,7 @@ pub fn escpos_job_format(format: &PrintFormat, text: &str) -> Vec<u8> {
 fn escpos_drawn(format: &PrintFormat, text: &str) -> ((Vec<u8>, usize), usize) {
     let cleaned = text.replace('\r', "");
     let metrics = format.raster_metrics();
-    let drawn = if cleaned.contains(KOT_STYLE_MARK) {
+    let drawn = if cleaned.contains(KOT_STYLE_MARK) || cleaned.lines().any(is_slip_picture_line) {
         crate::receipt_raster::draw_lines(&styled_slip_lines(&cleaned, &metrics), &metrics)
     } else {
         crate::receipt_raster::draw_metrics(&strip_kot_style_marks(&cleaned), &metrics)
@@ -5181,49 +5509,64 @@ pub fn styled_slip_lines(
     default: &crate::receipt_raster::RasterMetrics,
 ) -> Vec<crate::receipt_raster::StyledLine> {
     let (tab, body) = take_slip_tab_layout(text);
-    body.lines()
-        .filter(|line| {
-            if line.starts_with(SLIP_TAB_MARK) {
-                return false;
-            }
-            let (_, body) = take_kot_line_style(line);
-            !body.trim().is_empty()
-        })
-        .map(|line| {
-            let (style, body) = take_kot_line_style(line);
-            let (em, weight, align, strike) = raster_line_style(style.as_ref(), default.em);
-            // A pair line carries its second field's own mark after the tab.
-            if let Some((first, rest)) = body.split_once('\t')
-                && rest.starts_with(KOT_STYLE_MARK)
-            {
-                let (second, text) = take_kot_line_style(rest);
-                let (em2, weight2, align2, _) = raster_line_style(second.as_ref(), default.em);
-                return crate::receipt_raster::StyledLine {
-                    text: first.to_string(),
-                    em,
-                    weight,
-                    align,
-                    strike,
-                    tab: Some(crate::receipt_raster::LineColumns::Pair(
-                        crate::receipt_raster::PairHalf {
-                            text: text.to_string(),
-                            em: em2,
-                            weight: weight2,
-                            align: align2,
-                        },
-                    )),
-                };
-            }
-            crate::receipt_raster::StyledLine {
-                text: body.to_string(),
+    let mut out = Vec::new();
+    for line in body.lines() {
+        if line.starts_with(SLIP_TAB_MARK) && !is_slip_picture_line(line) {
+            continue;
+        }
+        if is_slip_picture_line(line) {
+            let (align, pic) = match decode_slip_picture(line) {
+                Some((align, pic)) => (align, Some(pic)),
+                None => (crate::receipt_raster::LineAlign::Start, None),
+            };
+            out.push(crate::receipt_raster::StyledLine {
+                text: String::new(),
+                em: default.em,
+                weight: crate::receipt_raster::RasterWeight::Regular,
+                align,
+                strike: false,
+                tab: pic.map(crate::receipt_raster::LineColumns::Picture),
+            });
+            continue;
+        }
+        let (style, body) = take_kot_line_style(line);
+        if body.trim().is_empty() {
+            continue;
+        }
+        let (em, weight, align, strike) = raster_line_style(style.as_ref(), default.em);
+        // A pair line carries its second field's own mark after the tab.
+        if let Some((first, rest)) = body.split_once('\t')
+            && rest.starts_with(KOT_STYLE_MARK)
+        {
+            let (second, text) = take_kot_line_style(rest);
+            let (em2, weight2, align2, _) = raster_line_style(second.as_ref(), default.em);
+            out.push(crate::receipt_raster::StyledLine {
+                text: first.to_string(),
                 em,
                 weight,
                 align,
                 strike,
-                tab: if body.contains('\t') { tab.clone() } else { None },
-            }
-        })
-        .collect()
+                tab: Some(crate::receipt_raster::LineColumns::Pair(
+                    crate::receipt_raster::PairHalf {
+                        text: text.to_string(),
+                        em: em2,
+                        weight: weight2,
+                        align: align2,
+                    },
+                )),
+            });
+            continue;
+        }
+        out.push(crate::receipt_raster::StyledLine {
+            text: body.to_string(),
+            em,
+            weight,
+            align,
+            strike,
+            tab: if body.contains('\t') { tab.clone() } else { None },
+        });
+    }
+    out
 }
 
 /// A line mark as the raster's size, weight, alignment and strike.

@@ -1698,11 +1698,13 @@ impl App {
                 st.nav_back.push(Screen::DeviceSetup);
                 st.screen = Screen::Onboard;
                 st.status = "Owner ready — set up your shop".into();
-                let _ = st.reload_all();
                 Ok(())
             })();
             match result {
-                Ok(()) => log!("Kumkaj owner setup ok"),
+                Ok(()) => {
+                    log!("Kumkaj owner setup ok");
+                    self.schedule_deferred_reload_all(cx);
+                }
                 Err(ref e) => {
                     log!("Kumkaj owner setup failed: {e}");
                     let mut st = app_state().lock().unwrap();
@@ -1733,12 +1735,13 @@ impl App {
                 st.failed_unlocks = 0;
                 st.screen = unlocked_home_from(&mut st);
                 st.status = format!("New Owner PIN set — welcome back, {}", member.lock_label());
-                let _ = st.refresh_books_overview();
-                let _ = st.reload_all();
                 Ok(())
             })();
             match result {
-                Ok(()) => log!("Kumkaj owner PIN reset ok"),
+                Ok(()) => {
+                    log!("Kumkaj owner PIN reset ok");
+                    self.schedule_deferred_reload_all(cx);
+                }
                 Err(ref e) => {
                     log!("Kumkaj owner PIN reset failed: {e}");
                     let mut st = app_state().lock().unwrap();
@@ -1950,7 +1953,6 @@ impl App {
                             Some(note) => format!("Welcome, {} · {note}", member.lock_label()),
                             None => format!("Welcome, {}", member.lock_label()),
                         };
-                        let _ = st.refresh_books_overview();
                     }
                     if st.device_role == DeviceRole::Client
                         && st.client_paired
@@ -2010,7 +2012,20 @@ impl App {
             Err(ref e) => log!("Kumkaj unlock failed: {e}"),
         }
         match result {
-            Ok(()) => {}
+            Ok(()) => {
+                let defer_books = {
+                    let st = app_state().lock().unwrap();
+                    st.session.is_some()
+                        && st.onboarding_complete
+                        && !matches!(
+                            st.screen,
+                            Screen::ClientPair | Screen::Onboard | Screen::DeviceSetup | Screen::Lock
+                        )
+                };
+                if defer_books {
+                    self.schedule_deferred_books_overview(cx);
+                }
+            }
             Err(e) => self.set_status(cx, e),
         }
         self.sync_chrome(cx);
@@ -3875,13 +3890,13 @@ impl App {
         } else {
             {
                 let mut st = app_state().lock().unwrap();
-                let _ = st.reload_all();
                 st.wipe_sel_trading = false;
                 st.wipe_sel_schema = false;
                 st.wipe_sel_ui = false;
             }
             self.paint_wipe_data_chrome(cx);
             self.sync_chrome(cx);
+            self.schedule_deferred_reload_all(cx);
             Ok(app_t("wipe_done"))
         }
     }

@@ -4713,6 +4713,49 @@ impl Store {
         Ok(format!("custom:{file_name}"))
     }
 
+    /// The bill's Logo picture (`brand_images/bill_logo.webp`, lossless).
+    /// `None` when there is none or it does not read as a picture.
+    pub fn bill_logo_image(&self) -> Result<Option<crate::print_share::BillLogoImage>, String> {
+        let Some(key) = self.meta_get("bill_logo_key")?.filter(|s| !s.trim().is_empty()) else {
+            return Ok(None);
+        };
+        let Some(path) = self.brand_image_path_for_key(&key) else {
+            return Ok(None);
+        };
+        let bytes = fs::read(&path).map_err(|e| e.to_string())?;
+        Ok(crate::print_share::BillLogoImage::from_bytes(bytes))
+    }
+
+    /// Keep `source` as the bill's Logo picture. Pictures larger than 2048
+    /// px on a side are shrunk to it (still 2.6× the widest 210 mm logo
+    /// at 7.2 dots per mm); smaller ones are kept as they are.
+    pub fn import_bill_logo(&self, source: &Path) -> Result<String, String> {
+        let ext = source
+            .extension()
+            .and_then(|e| e.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if !media::is_image_ext(&ext) {
+            return Err("Use jpg, jpeg, png, or webp (stored as WebP)".into());
+        }
+        let dest = self.brand_images_dir()?.join("bill_logo.webp");
+        media::write_image_as_webp_fit(source, &dest, 2048)?;
+        let key = "custom:bill_logo.webp";
+        self.meta_set("bill_logo_key", key)?;
+        Ok(key.into())
+    }
+
+    /// No Logo picture: the key and the file go.
+    pub fn clear_bill_logo(&self) -> Result<(), String> {
+        if let Some(path) = self
+            .meta_get("bill_logo_key")?
+            .and_then(|k| self.brand_image_path_for_key(&k))
+        {
+            let _ = fs::remove_file(path);
+        }
+        self.meta_set("bill_logo_key", "")
+    }
+
     pub fn import_print_stamp(&self, source: &Path) -> Result<String, String> {
         let key = self.import_brand_image_named(source, "print_stamp.webp")?;
         self.set_print_stamp_key(Some(&key))?;

@@ -2241,22 +2241,22 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let w = if side { page - preview_w - 12.0 } else { page };
         let flow_if = |fits: bool| if fits { Flow::right() } else { Flow::Down };
         // Paper cards span the page; the format forms span their column.
-        let rules: [(&[LiveId], bool); 13] = [
+        let rules: [(&[LiveId], bool); 16] = [
             (ids!(content_width_choices), page >= 860.0),
             (ids!(cw_row_a), page >= 400.0),
             (ids!(cw_row_b), page >= 400.0),
             (ids!(bill_deliv_row), page >= 560.0),
-            // The open line: all of it in one row, else name + size over
-            // weight + align, else everything stacked.
             (ids!(bill_line_head), w >= 1000.0),
             (ids!(bill_line_main), w >= 560.0),
             (ids!(bill_line_style), w >= 560.0),
-            // Switches two per row; totals one row each.
             (ids!(bill_item_opts_a), w >= 560.0),
             (ids!(bill_item_opts_b), w >= 560.0),
             (ids!(bill_total_row_qty), w >= 520.0),
             (ids!(bill_total_row_sub), w >= 520.0),
             (ids!(bill_total_row_grand), w >= 520.0),
+            (ids!(bill_logo_btns), w >= 400.0),
+            (ids!(bill_logo_size), w >= 300.0),
+            (ids!(bill_logo_tones), w >= 260.0),
             (ids!(bill_split), side),
         ];
         for (path, fits) in rules {
@@ -2518,20 +2518,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             st.bill_field_edit_idx
         };
         // The field list is the print order. Move up / down reorders these rows.
-        let slots = [
-            (ids!(bill_pick_shop), ids!(bill_pick_shop_on)),
-            (ids!(bill_pick_header), ids!(bill_pick_header_on)),
-            (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
-            (ids!(bill_pick_title), ids!(bill_pick_title_on)),
-            (ids!(bill_pick_customer), ids!(bill_pick_customer_on)),
-            (ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
-            (ids!(bill_pick_time), ids!(bill_pick_time_on)),
-            (ids!(bill_pick_cashier), ids!(bill_pick_cashier_on)),
-            (ids!(bill_pick_items), ids!(bill_pick_items_on)),
-            (ids!(bill_pick_total), ids!(bill_pick_total_on)),
-            (ids!(bill_pick_footer), ids!(bill_pick_footer_on)),
-            (ids!(bill_pick_upi), ids!(bill_pick_upi_on)),
-        ];
+        let slots = BILL_PICK_BTNS;
         // The open line is edited where it sits: rows before it, its editor,
         // then the rows after it (`bill_after_*`) — one list, no second list.
         let open_idx = order_idx.min(order.len().saturating_sub(1));
@@ -2557,7 +2544,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         self.ui
             .widget(cx, ids!(h_bill_field_size))
-            .set_text(cx, &plain_display_text(&s("std_size")));
+            .set_text(cx, &plain_display_text(&s("kot_field_size")));
         self.layout_slip_editors(cx);
         self.ui
             .widget(cx, ids!(h_bill_copies))
@@ -2591,6 +2578,61 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         self.paint_choice_pair(cx, ids!(bill_field_show), ids!(bill_field_show_on), style.show);
         self.paint_choice_pair(cx, ids!(bill_field_hide), ids!(bill_field_hide_on), !style.show);
+
+        // Logo has a box size, not a type size or weight.
+        let logo_open = field == print_share::BillStyleField::Logo;
+
+        self.ui.view(cx, ids!(bill_size_box)).set_visible(cx, !logo_open);
+        self.ui.view(cx, ids!(bill_line_weight)).set_visible(cx, !logo_open);
+        self.ui.view(cx, ids!(bill_logo_pieces)).set_visible(cx, logo_open);
+        if logo_open {
+            for (id, key) in [
+                (ids!(h_bill_logo_picture), "bill_logo_picture"),
+                (ids!(h_bill_logo_tones), "bill_logo_tones"),
+            ] {
+                self.ui.widget(cx, id).set_text(cx, &plain_display_text(&s(key)));
+            }
+            for (id, key) in [
+                (ids!(bill_logo_help), "bill_logo_help"),
+                (ids!(bill_logo_tones_help), "bill_logo_tones_help"),
+            ] {
+                self.ui
+                    .widget(cx, id)
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&s(key)));
+            }
+            let status = match draft.logo_image.as_ref() {
+                Some(img) => format!("{} × {} px", img.width, img.height),
+                None => s("bill_logo_none"),
+            };
+            self.ui
+                .widget(cx, ids!(bill_logo_status))
+                .set_text(cx, &plain_display_text(&status));
+            self.ui.button(cx, ids!(bill_logo_choose)).set_text(cx, &s("bill_logo_choose"));
+            self.ui.button(cx, ids!(bill_logo_remove)).set_text(cx, &s("bill_logo_remove"));
+            self.ui
+                .button(cx, ids!(bill_logo_remove))
+                .set_visible(cx, draft.logo_image.is_some());
+            for (id, key, px) in [
+                (ids!(bill_logo_width_input), "bill_logo_width", draft.logo_width_px),
+                (ids!(bill_logo_height_input), "bill_logo_height", draft.logo_height_px),
+            ] {
+                let input = self.ui.text_input(cx, id);
+                input.set_empty_text(cx, s(key));
+                if !cx.has_key_focus(input.area()) {
+                    input.set_text(cx, &if px == 0 { String::new() } else { px.to_string() });
+                }
+            }
+            for (idle, on, key, tones) in [
+                (ids!(bill_logo_solid), ids!(bill_logo_solid_on), "bill_logo_solid", print_share::BillLogoTones::Solid),
+                (ids!(bill_logo_shaded), ids!(bill_logo_shaded_on), "bill_logo_shaded", print_share::BillLogoTones::Shaded),
+            ] {
+                let t = s(key);
+                self.ui.button(cx, idle).set_text(cx, &t);
+                self.ui.button(cx, on).set_text(cx, &t);
+                self.paint_choice_pair(cx, idle, on, draft.logo_tones == tones);
+            }
+        }
         let items_open = field == print_share::BillStyleField::Items;
         let total_open = field == print_share::BillStyleField::Total;
         self.ui.view(cx, ids!(bill_item_pieces)).set_visible(cx, items_open);
@@ -3078,18 +3120,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 if !allowed {
                     self.set_status(cx, "Not allowed");
                 } else {
-                    let result = (|| -> Result<(), String> {
-                        let mut st = app_state().lock().unwrap();
-                        st.refresh_books_overview()?;
-                        Ok(())
-                    })();
-                    if let Err(e) = result {
-                        self.set_status(cx, e);
-                    } else {
-                        // Drop leftover focus so the old Sell face cannot look selected.
-                        cx.set_key_focus(Area::Empty);
-                        self.go_peer(cx, Screen::Books);
-                    }
+                    // Drop leftover focus so the old Sell face cannot look selected.
+                    cx.set_key_focus(Area::Empty);
+                    self.go_peer(cx, Screen::Books);
                 }
             }
             Some(NavTab::Sell) => {

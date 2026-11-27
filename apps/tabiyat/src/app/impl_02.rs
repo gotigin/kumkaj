@@ -409,6 +409,26 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         self.set_report_rows(cx, ids!(audit_label), audit);
     }
 
+    /// Books home overview SQL — deferred off nav tap / facet dirty.
+    fn paint_books_overview_sql(&mut self, cx: &mut Cx) {
+        if heavy_books_job() {
+            return;
+        }
+        let err = {
+            let mut st = app_state().lock().unwrap();
+            st.refresh_books_overview().err()
+        };
+        if let Some(e) = err {
+            {
+                let mut st = app_state().lock().unwrap();
+                st.books_cards = Some(domain::BooksOverview::default());
+                st.day_close_text = e.clone();
+            }
+            self.set_status(cx, e);
+        }
+        self.sync_chrome(cx);
+    }
+
     /// Chrome for the current screen. After an unlock, the landing then
     /// runs as a tap on its nav item would (`unlocked_home_from`): Day
     /// close loads its figures, Books its overview, a Settings section opens.
@@ -580,13 +600,14 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // Facet bodies stay live via navigate + BOOKS_CHANGED (`FACET_DIRTY`).
         // Re-running period_books / inventory SQL on every Signal froze phones.
         let facet_dirty = FACET_DIRTY.swap(false, std::sync::atomic::Ordering::SeqCst);
+        let mut defer_books_overview = false;
         {
             let mut st = app_state().lock().unwrap();
             if st.session.is_some() {
                 match st.screen {
                     Screen::Books => {
                         if facet_dirty || st.books_cards.is_none() {
-                            let _ = st.refresh_books_overview();
+                            defer_books_overview = true;
                         }
                     }
                     Screen::Inventory => {
@@ -601,6 +622,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     }
                     _ => {}
                 }
+            }
+        }
+        if defer_books_overview {
+            let mut slot = deferred_books_overview_frame().lock().unwrap();
+            if slot.is_none() {
+                *slot = Some(cx.new_next_frame());
             }
         }
         let (
