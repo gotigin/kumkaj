@@ -109,6 +109,19 @@ bill_line_customer	Klient
 bill_line_bill_no	Arve nr
 bill_line_time	Aeg
 bill_line_cashier	Kassapidaja
+bill_meta_empty_help	Kui tühi
+bill_meta_empty_always	Näita alati
+bill_meta_empty_omit	Jäta vahele kui tühi
+bill_meta_empty_tip	«Näita alati» prindib ainult sildi (nt Nimi:) ilma väärtuseta — kasulik tühjade külaliste arvete jaoks. «Jäta vahele kui tühi» jätab rea vahele.
+bill_custom_add	Lisa rida
+bill_custom_remove	Eemalda
+bill_custom_line	Kohandatud rida
+bill_custom_value_ph	Tekst igal arvel
+bill_preview_sample	Näidis
+bill_preview_running	Avatud restorani tellimus
+bill_preview_sale	Lõpetatud arve
+kot_preview_sample	Näidis
+kot_preview_ticket	Köögi pilet
 bill_line_table	Söögilaud
 bill_line_items	Üksused
 bill_line_total	Kokku
@@ -146,6 +159,8 @@ bill_total_caption_under	Silt veeru all
 bill_total_own_line	Oma rida
 bill_total_caption_with	Koos arvuga
 bill_total_caption_none	Silti pole
+bill_total_caption_span_off	Pealkiri ühes veerus
+bill_total_caption_span_on	Summani
 bill_total_place_help	Oma rida prindib selle kogusumma eraldi. Veeru all prinditakse selle arv sellesse kaubaveergu, selle rea suuruses ja paksuses; kogusummad jagavad üht rida, kuni mõni veerg on hõivatud, siis algab uus rida. Silt läheb koos arvuga, teise veeru alla või jäetakse ära. Maksu, teeninduse, ümardamise ja makse read järgivad kirjet Vahesumma.
 reprint_incl	Trükis
 reprint_skip	Jäta vahele
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Seadistage Khaynjo
 shop_logo_optional	Poe logo (valikuline)
 stock_type_help	Sisestage kauba nimi (piisab osast), kogus ja seejärel kohandage. Üksused, mida veel ei loeta, vajavad jälgimist üks kord.
 team_owner_help	Kellegi lisamiseks jätke inimene tühjaks: nimi, töökoht, kasutajanimi, PIN ja valikuline parool, seejärel käsk Lisa. Valige sama tüüpi vormi muutmiseks inimene – nimi, kasutajanimi, parool, ekraanid ja õigused – ja seejärel Salvesta. Teie enda PIN ja parool on üks sisselogimisvõimalus allosas. Omanik ei muuda kellegi teise PIN.
+team_owner_row_help	Redigeerite omanikku: ainult kuvatav nimi, kasutajanimi ja parool. Ekraanid, rahalised õigused ja köögijaamad jäävad omanikul täielikud ega kuvata siin. Valige personali liige, et muuta tema ametiseadistust.
+team_owner_identity_hint	Omanik säilitab iga ekraani ja õiguse. Salvesta muudab ainult kuvatavat nime ja sisselogimist.
+save_owner_identity	Salvesta omaniku nimi ja sisselogimine
+save_owner_identity_named	Salvesta {name} nimi ja sisselogimine
+save_owner_identity_ok	Omaniku nimi ja sisselogimine salvestatud kasutajale {name}
 staff_name_ph	Personali nimi
 staff_copy_hire_ph	Kopeeri seadistus asukohast (valikuline)
 staff_copy_hire	Kasutage selle inimese seadistust

@@ -109,6 +109,19 @@ bill_line_customer	Viðskiptavinur
 bill_line_bill_no	Reikningsnr.
 bill_line_time	Tími
 bill_line_cashier	Gjaldkeri
+bill_meta_empty_help	Þegar tómt
+bill_meta_empty_always	Sýna alltaf
+bill_meta_empty_omit	Sleppa þegar tómt
+bill_meta_empty_tip	«Sýna alltaf» prentar aðeins merkingu (t.d. Nafn:) án gildis — gagnlegt fyrir tómar gestareikninga. «Sleppa þegar tómt» sleppir línunni.
+bill_custom_add	Bæta við línu
+bill_custom_remove	Fjarlægja
+bill_custom_line	Sérsniðin lína
+bill_custom_value_ph	Texti á hverjum reikningi
+bill_preview_sample	Dæmi
+bill_preview_running	Opin veitingahúspöntun
+bill_preview_sale	Lokaður reikningur
+kot_preview_sample	Dæmi
+kot_preview_ticket	Eldhúsmiði
 bill_line_table	Borðstofuborð
 bill_line_items	Vörur
 bill_line_total	Samtals
@@ -146,6 +159,8 @@ bill_total_caption_under	Merki undir
 bill_total_own_line	Eigin lína
 bill_total_caption_with	Með tölunni
 bill_total_caption_none	Ekkert merki
+bill_total_caption_span_off	Fyrirsögn í einum dálki
+bill_total_caption_span_on	Allt að upphæð
 bill_total_place_help	Eigin lína prentar þessa heild eina og sér. Undir dálki er talan prentuð í þeim vörudálki, í stærð og þykkt þessarar línu; heildir deila röð þar til dálkur er upptekinn, þá byrjar ný röð. Merkið fer með tölunni, undir annan dálk eða er sleppt. Línur fyrir skatt, þjónustu, námundun og greiðslu fylgja Undir heild.
 reprint_incl	Á prenti
 reprint_skip	Sleppa
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Settu upp Khaynjo
 shop_logo_optional	Lógó verslunar (valfrjálst)
 stock_type_help	Sláðu inn heiti valmyndaratriðisins (hluti af því er nóg), magn og stilltu síðan. Valmyndaratriði sem eru ekki talin enn þurfa Byrjaðu að rekja einu sinni.
 team_owner_help	Skildu viðkomandi eftir auða til að bæta við einhverjum: nafni, starfi, notandanafni, PIN og valfrjáls lykilorði, síðan Bæta við. Veldu mann til að breyta sömu tegund af eyðublaði - nafni, notandanafni, lykilorði, skjám og réttindi - og síðan Vista. Þitt eigið PIN og lykilorð eru ein innskráning neðst. Eigandinn breytir ekki PIN hjá neinum öðrum.
+team_owner_row_help	Þú breytir eigandanum: aðeins birtingarnafn, notandanafn og lykilorð. Skjár, fjárréttindi og eldhússtöðvar halda sér fyrir eiganda og birtast ekki hér. Veldu starfsmann til að breyta starfsstillingu hans.
+team_owner_identity_hint	Eigandi heldur öllum skjám og réttindum. Vista breytir aðeins birtingarnafni og innskráningu.
+save_owner_identity	Vista nafn og innskráningu eiganda
+save_owner_identity_named	Vista nafn og innskráningu {name}
+save_owner_identity_ok	Nafn og innskráning eiganda vistað fyrir {name}
 staff_name_ph	Nafn starfsfólks
 staff_copy_hire_ph	Afrita uppsetningu frá (valfrjálst)
 staff_copy_hire	Notaðu uppsetningu þessa einstaklings

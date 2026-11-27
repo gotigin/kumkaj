@@ -109,6 +109,19 @@ bill_line_customer	U nongthied
 bill_line_bill_no	Nombor bill
 bill_line_time	Ka por
 bill_line_cashier	Nonglum pisa
+bill_meta_empty_help	Lada ba hap
+bill_meta_empty_always	Ba wan jing pynsyllung
+bill_meta_empty_omit	Lada ba hap ba skip
+bill_meta_empty_tip	«Ba wan jing pynsyllung» khlem value tang label ba print (e.g. Kyrteng:) — ka koit bill lada kyrkhu ba trei. «Lada ba hap ba skip» ka skip ia ka line.
+bill_custom_add	Line jong pyndap
+bill_custom_remove	Pynduh noh
+bill_custom_line	Line custom
+bill_custom_value_ph	Ba print ha kawei kawei bill
+bill_preview_sample	Jingkyrmen
+bill_preview_running	Order ba plie
+bill_preview_sale	Bill ba pat
+kot_preview_sample	Jingkyrmen
+kot_preview_ticket	Ka kamra shet ticket
 bill_line_table	Miej bam
 bill_line_items	Ki tiar
 bill_line_total	Baroh
@@ -146,6 +159,8 @@ bill_total_caption_under	Ka label hapoh
 bill_total_own_line	Ka lain lajong
 bill_total_caption_with	Bad ka nombar
 bill_total_caption_none	Khlem label
+bill_total_caption_span_off	Caption ha iwei ka column
+bill_total_caption_span_on	Pynïaid sha ka number
 bill_total_place_help	Ka lain lajong ka pynmih ia kane ka jingkhein marwei. Hapoh ka kolom, ka nombar jong ka la pynmih ha kata ka kolom ki mar, ha ka jingheh bad ka jingrben jong kane ka lain; ki jingkhein ki iasam ia kawei ka row haduh ba la shim ia kawei ka kolom, nangta ka sdang ka row ba thymmai. Ka label ka leit bad ka nombar, hapoh kawei pat ka kolom, lane la ieh noh. Ki lain jong ka khajna, ka jingshakri, ka rounding bad ka jingsiew ki bud ia Ka jingkhein baroh.
 reprint_incl	Ha ka jingpynmih
 reprint_skip	Kynthih
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Pynbeit Khaynjo
 shop_logo_optional	Ka dak jong ka dukan (da jied)
 stock_type_help	Type ia ka kyrteng jong ka item (ka bynta jong ka ka biang), ka jingbun, nangta pynbeit. Ki tiar ki bym pat khein ki donkam Sdang ban buddien shisien.
 team_owner_help	Iehnoh thylli ia u briew ban pynrung ia u briew: kyrteng, kam, kyrteng nongpyndonkam, PIN, bad ka ktien pass ba lah ban jied, nangta Add. Jied ia u briew ban pynbeit ia kata kajuh ka jait form — ka kyrteng, ka kyrteng nongpyndonkam, ka kyrteng, ki screen, bad ki hok — nangta Save. Ka PIN jong phi hi bad ka password ki long kawei ka sign-in ha trai. U Trai um ju pynkylla ia ka PIN jong uwei pat.
+team_owner_row_help	Phi edit ia «U trai»: ka kyrteng ba peit, kyrteng ba pyndonkam bad ka password tang. Ki screen, ki quyïen pisa bad ki station ka kamra shet ki treh ïa U trai bad ym kynjoh hangne. Jied i kynmaw ki nongtrei ban thikyrpang ia ka jingbthah jong ki.
+team_owner_identity_hint	U trai u don baroh ki screen bad ki quyïen. Pynsah tang ka kyrteng ba peit bad ka login.
+save_owner_identity	Pynsah kyrteng bad login jong U trai
+save_owner_identity_named	Pynsah kyrteng bad login jong {name}
+save_owner_identity_ok	Pynsah kyrteng bad login jong U trai na ka bynta {name}
 staff_name_ph	Kyrteng jong ki nongtrei
 staff_copy_hire_ph	Kopi ia ka jingpynbeit na (jied)
 staff_copy_hire	Pyndonkam ia ka setup jong une u briew

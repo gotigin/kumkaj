@@ -57,6 +57,6 @@ CREATE TABLE subscriptions (
 INSERT INTO plans (plan_id, sort_order, title, quota_gb, bandwidth_band, price_inr_paise, includes_live_cloud) VALUES
     ('free', 1, 'Free forever', NULL, 'none', 0, FALSE),
     ('steady', 2, 'Steady', 10, 'lower', 600000, TRUE),
-    ('swift', 3, 'Swift', 25, 'mid', 1200000, TRUE),
-    ('priority', 4, 'Priority', 50, 'highest', 2400000, TRUE),
+    ('swift', 3, 'Swift', 25, 'mid', 1400000, TRUE),
+    ('priority', 4, 'Priority', 50, 'highest', 2800000, TRUE),
     ('custom', 5, 'Custom', NULL, 'custom', NULL, TRUE);

@@ -109,6 +109,19 @@ bill_line_customer	Cliente rehegua
 bill_line_bill_no	Factura N.º
 bill_line_time	Aravo
 bill_line_cashier	Cajero rehegua
+bill_meta_empty_help	Rehe oporavy
+bill_meta_empty_always	Ehechauka tapoite
+bill_meta_empty_omit	Ombohasa rehe oporavy
+bill_meta_empty_tip	«Ehechauka tapoite» oimprime etiqueta ikatuha (techapyrã Téra:) ndorekói valor — iporã bill oendávagui oporavy. «Ombohasa rehe oporavy» omboyke línea.
+bill_custom_add	Emboheté línea
+bill_custom_remove	Ojepe’a
+bill_custom_line	Línea personalizada
+bill_custom_value_ph	Ñe’ẽ oimprimiva peteĩ bill pegua
+bill_preview_sample	Techapyrã
+bill_preview_running	«Jerure» oipe’áva
+bill_preview_sale	Bill oñemboheko
+kot_preview_sample	Techapyrã
+kot_preview_ticket	Tíket «Kosina»
 bill_line_table	Mesa
 bill_line_items	Mba’ekuéra
 bill_line_total	Total rehegua
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiqueta iguýpe
 bill_total_own_line	Línea ijeheguáva
 bill_total_caption_with	Papapy ndive
 bill_total_caption_none	Etiqueta'ỹre
+bill_total_caption_span_off	Térã peteĩ columnape
+bill_total_caption_span_on	Ojupa pe papaha peve
 bill_total_place_help	Línea ijeheguáva oimprimi ko total ha'eño. Peteĩ columna guýpe, ipapapy oñeimprimi upe columna mba'e rehegua-pe, ko línea tuichakue ha ipoguasukuépe; umi total okomparti peteĩ fila peteĩ columna henyhẽ peve, upéi oñepyrũ fila pyahu. Etiqueta oho papapy ndive, ambue columna guýpe, térã noñemoĩri. Umi línea impuesto, servicio, redondeo ha pago rehegua ohapykuerereka Sub total rehegua.
 reprint_incl	Impreso-pe
 reprint_skip	Ojesalta
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Oñemohenda Khaynjo .
 shop_logo_optional	Tenda logotipo (opcional) .
 stock_type_help	Ehai mba’e’oka réra (peteĩ parte ha’e suficiente), peteĩ cantidad, upéi emohenda. Umi mba’e ndojepapapáiva gueteri oikotevẽ Ñepyrũ seguimiento peteĩ jey.
 team_owner_help	Eheja pe tapichápe emoĩve hag̃ua peteĩ tapichápe: téra, tembiapo, puruhára réra, PIN, ha peteĩ ñe’ẽñemi ojeporavóva, upéi Emoĩve. Eiporavo peteĩ tapicha emohenda hag̃ua upeichagua formulario — téra, puruhára réra, ñe’ẽñemi, pantalla ha derecho — upéi Eñongatu. Nde PIN ha ñe’ẽñemi ha’e peteĩ jeike iguype. Ijára nomoambuéi ambue tapicha mba'e PIN.
+team_owner_row_help	Reñembo «Ijára» añoite: téra ojehechaukáva, téra puruhára ha ñe’ẽñemi. Pantallas, derécho orenda ha estación «Kosina» henyhẽme «Ijára» pegua ha nojehechauka ko’ápe. Eiporavo peteĩ «Mba’apoharakuéra» emoambue hag̃ua tembiapo.
+team_owner_identity_hint	«Ijára» oguereko pantalla ha derécho opavave. «Oñongatu» omoambue téra ojehechaukáva ha jeike añoite.
+save_owner_identity	«Oñongatu» «Ijára» réra ha jeike
+save_owner_identity_named	«Oñongatu» {name} réra ha jeike
+save_owner_identity_ok	O «ñongatúva» «Ijára» réra ha jeike {name} rehegua
 staff_name_ph	Mba’apoharakuéra réra
 staff_copy_hire_ph	Ekopia ñembosako’i (opcional) guive .
 staff_copy_hire	Eipuru ko tapicha ñembosako’i

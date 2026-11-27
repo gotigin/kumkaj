@@ -109,6 +109,19 @@ bill_line_customer	Kupec
 bill_line_bill_no	Št. računa
 bill_line_time	Čas
 bill_line_cashier	Blagajnik
+bill_meta_empty_help	Ko je prazno
+bill_meta_empty_always	Vedno pokaži
+bill_meta_empty_omit	Izpuści ko je prazno
+bill_meta_empty_tip	«Vedno pokaži» natisne samo oznako (npr. Ime:) brez vrednosti — koristno za prazne račune gosta. «Izpuści ko je prazno» preskoči vrstico.
+bill_custom_add	Dodaj vrstico
+bill_custom_remove	Odstrani
+bill_custom_line	Prilagojena vrstica
+bill_custom_value_ph	Besedilo na vsakem računu
+bill_preview_sample	Vzorčni
+bill_preview_running	Odprto naročilo
+bill_preview_sale	Plačan račun
+kot_preview_sample	Vzorčni
+kot_preview_ticket	Kuhinjski listek
 bill_line_table	Miza
 bill_line_items	Artikli
 bill_line_total	Skupaj
@@ -146,6 +159,8 @@ bill_total_caption_under	Oznaka pod
 bill_total_own_line	Svoja vrstica
 bill_total_caption_with	Ob številu
 bill_total_caption_none	Brez oznake
+bill_total_caption_span_off	Napis v enem stolpcu
+bill_total_caption_span_on	Do zneska
 bill_total_place_help	Svoja vrstica natisne to vsoto posebej. Pod stolpcem se njeno število natisne v tistem stolpcu postavk, v velikosti in debelini te vrstice; vsote si delijo eno vrsto, dokler kateri stolpec ni zaseden, nato se začne nova vrsta. Oznaka je ob številu, pod drugim stolpcem ali se izpusti. Vrstice davka, postrežbe, zaokrožitve in plačila sledijo postavki Vmesna vsota.
 reprint_incl	V tisku
 reprint_skip	Preskoči
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Nastavite Khaynjo
 shop_logo_optional	Logotip lokala (neobvezno)
 stock_type_help	Vnesite ime artikla (dovolj je del), količino, nato prilagodite. Artikli, ki se še ne štejejo, potrebujejo enkrat Začni sledenje.
 team_owner_help	Pustite osebo prazno, da dodate nekoga: ime, delo, uporabniško ime, PIN in neobvezno geslo, nato Dodaj. Izberite osebo, da uredite isto vrsto obrazca — ime, uporabniško ime, geslo, zasloni in pravice — nato Shrani. Vaš PIN in geslo sta ena prijava na dnu. Lastnik ne spremeni PIN-a nikogar drugega.
+team_owner_row_help	Urejate lastnika: samo prikazno ime, uporabniško ime in geslo. Zasloni, denarna pravila in kuhinjske postaje ostanejo polni za lastnika in se tu ne prikažejo. Izberite člana osebja, da spremenite njegovo nastavitev dela.
+team_owner_identity_hint	Lastnik ohrani vsak zaslon in pravico. Shrani spremeni samo prikazno ime in prijavo.
+save_owner_identity	Shrani ime in prijavo lastnika
+save_owner_identity_named	Shrani ime in prijavo uporabnika {name}
+save_owner_identity_ok	Ime in prijava lastnika shranjena za {name}
 staff_name_ph	Ime osebja
 staff_copy_hire_ph	Kopiraj nastavitev od (neobvezno)
 staff_copy_hire	Uporabi nastavitev te osebe

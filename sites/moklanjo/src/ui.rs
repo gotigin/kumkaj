@@ -932,6 +932,22 @@ script_mod! {
                                     text: "1 / 9 · Walk-in"
                                 }
                             }
+                            go_github := View{
+                                width: 44 height: 44
+                                flow: Overlay
+                                align: Align{x: 0.5 y: 0.5}
+                                View{
+                                    width: Fill height: Fill
+                                    flow: Down
+                                    align: Align{x: 0.5 y: 0.5}
+                                    Image{
+                                        width: 18 height: 18
+                                        fit: ImageFit.Stretch
+                                        src: crate_resource("self:resources/media/github-mark.webp")
+                                    }
+                                }
+                                open_nav_github := HitBtn{}
+                            }
                             go_lang := LangChip{text: "EN"}
                         }
                         RoundedView{width: Fill height: 1 draw_bg +: {color: #x1E3D7A border_radius: 0.}}
@@ -1452,7 +1468,7 @@ script_mod! {
                                         Strong{width: Fill body: "Second counter and rider phone: joined over the office Wi-Fi"}
                                     }
                                 }
-                                Fact{head.body: "Free forever on your devices" line.body: "Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop."}
+                                Fact{head.body: "Free forever on your devices" line.body: "Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹14k · Priority ₹28k/yr ex-tax — /shop."}
                             }
                         }
 

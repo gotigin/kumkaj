@@ -109,6 +109,19 @@ bill_line_customer	Kunde
 bill_line_bill_no	Rechnungsnr.
 bill_line_time	Zeit
 bill_line_cashier	Kassierer
+bill_meta_empty_help	Wenn leer
+bill_meta_empty_always	Immer anzeigen
+bill_meta_empty_omit	Bei leer weglassen
+bill_meta_empty_tip	«Immer anzeigen» druckt nur die Beschriftung (z. B. Name:) ohne Wert — nützlich für leere Gastrechnungen. «Bei leer weglassen» lässt die Zeile weg.
+bill_custom_add	Zeile hinzufügen
+bill_custom_remove	Entfernen
+bill_custom_line	Eigene Zeile
+bill_custom_value_ph	Text auf jeder Rechnung
+bill_preview_sample	Beispiel
+bill_preview_running	Offene Bestellung
+bill_preview_sale	Abgeschlossene Rechnung
+kot_preview_sample	Beispiel
+kot_preview_ticket	Küchenbon
 bill_line_table	Tisch
 bill_line_items	Artikel
 bill_line_total	Gesamt
@@ -146,6 +159,8 @@ bill_total_caption_under	Beschriftung unter
 bill_total_own_line	Eigene Zeile
 bill_total_caption_with	Bei der Zahl
 bill_total_caption_none	Keine Beschriftung
+bill_total_caption_span_off	Beschriftung in einer Spalte
+bill_total_caption_span_on	Bis zur Zahl spannen
 bill_total_place_help	Eigene Zeile druckt diese Summe für sich allein. Unter einer Spalte wird ihre Zahl in dieser Artikelspalte gedruckt, in Größe und Stärke dieser Zeile; Summen teilen sich eine Reihe, bis eine Spalte belegt ist, dann beginnt eine neue Reihe. Die Beschriftung steht bei der Zahl, unter einer anderen Spalte oder entfällt. Zeilen für Steuer, Service, Rundung und Zahlung folgen Zwischensumme.
 reprint_incl	Im Druck
 reprint_skip	Auslassen
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo einrichten
 shop_logo_optional	Shop-Logo (optional)
 stock_type_help	Artikelname eintippen (Teil genügt), Menge eingeben, dann anpassen. Noch nicht gezählte Artikel brauchen einmal Zählung starten.
 team_owner_help	Person leer lassen zum Hinzufügen: Name, Job, Benutzername, PIN und optionales Passwort, dann Hinzufügen. Person wählen, um dasselbe Formular zu bearbeiten — Name, Benutzername, Passwort, Bildschirme und Rechte — dann Speichern. Ihre eigene PIN und Ihr Passwort sind eine Anmeldung unten. Der Inhaber ändert niemandes andere PIN.
+team_owner_row_help	Sie bearbeiten den Inhaber: nur Anzeigename, Benutzername und Passwort. Bildschirme, Geldrechte und Küchenstationen bleiben für den Inhaber vollständig und werden hier nicht angezeigt. Wählen Sie ein Personalmitglied, um dessen Job-Einrichtung zu ändern.
+team_owner_identity_hint	Der Inhaber behält jeden Bildschirm und jedes Recht. Speichern ändert nur Anzeigename und Anmeldung.
+save_owner_identity	Inhaber-Name und Anmeldung speichern
+save_owner_identity_named	Name und Anmeldung von {name} speichern
+save_owner_identity_ok	Inhaber-Name und Anmeldung für {name} gespeichert
 staff_name_ph	Mitarbeitername / ID
 staff_copy_hire_ph	Einrichtung kopieren von (optional)
 staff_copy_hire	Diese Personeneinstellung verwenden

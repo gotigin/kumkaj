@@ -109,6 +109,19 @@ bill_line_customer	গ্রাহক
 bill_line_bill_no	বিল নং
 bill_line_time	সময়
 bill_line_cashier	ক্যাশিয়ার
+bill_meta_empty_help	খালি থাকলে
+bill_meta_empty_always	সবসময় দেখান
+bill_meta_empty_omit	খালি থাকলে বাদ দিন
+bill_meta_empty_tip	«সবসময় দেখান» মান ছাড়া শুধু লেবেল মুদ্রণ করে (যেমন নাম:) — খালি অতিথি বিলের জন্য উপকারী। «খালি থাকলে বাদ দিন» সম্পূর্ণ লাইন বাদ দেয়।
+bill_custom_add	লাইন যোগ করুন
+bill_custom_remove	সরান
+bill_custom_line	স্বনির্ধারিত লাইন
+bill_custom_value_ph	প্রতি বিলে ছাপা যাবে এমন লেখা
+bill_preview_sample	নমুনা
+bill_preview_running	খোলা অর্ডার
+bill_preview_sale	নিষ্পত্তি হওয়া বিল
+kot_preview_sample	নমুনা
+kot_preview_ticket	রান্নাঘর টিকিট
 bill_line_table	টেবিল
 bill_line_items	আইটেম
 bill_line_total	মোট
@@ -146,6 +159,8 @@ bill_total_caption_under	লেবেল যার নিচে
 bill_total_own_line	নিজের সারি
 bill_total_caption_with	সংখ্যার সাথে
 bill_total_caption_none	লেবেল নেই
+bill_total_caption_span_off	ক্যাপশন এক কলামে
+bill_total_caption_span_on	সংখ্যা পর্যন্ত প্রসারিত
 bill_total_place_help	“নিজের সারি” এই মোটটি আলাদা করে ছাপে। কোনো কলামের নিচে দিলে এর সংখ্যা সেই আইটেম কলামে, এই সারির মাপ ও গাঢ়ত্বে ছাপা হয়; কোনো কলাম ভরে না যাওয়া পর্যন্ত মোটগুলো একই সারি ভাগ করে, তারপর নতুন সারি শুরু হয়। লেবেল সংখ্যার সাথে থাকে, অন্য কলামের নিচে যায়, অথবা বাদ পড়ে। কর, সার্ভিস, রাউন্ডিং ও পেমেন্টের সারিগুলো “উপমোট” অনুসরণ করে।
 reprint_incl	প্রিন্টে
 reprint_skip	বাদ
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo সেট আপ করুন
 shop_logo_optional	দোকানের লোগো (ঐচ্ছিক)
 stock_type_help	আইটেমের নাম লিখুন (অংশ হলেই যথেষ্ট), পরিমাণ লিখুন, তারপর সামঞ্জস্য করুন। যে আইটেম এখনও গণনা হয়নি তাদের একবার «গণনা শুরু» দরকার।
 team_owner_help	কাউকে যোগ করতে ব্যক্তি খালি রাখুন: নাম, কাজ, ব্যবহারকারীর নাম, PIN ও ঐচ্ছিক পাসওয়ার্ড, তারপর যোগ করুন। একই ধরনের ফর্ম — নাম, ব্যবহারকারীর নাম, পাসওয়ার্ড, স্ক্রিন ও অধিকার — সম্পাদনায় ব্যক্তি বাছুন, তারপর সেভ করুন। আপনার নিজের PIN ও পাসওয়ার্ড নিচে এক সাইন-ইন। Owner অন্য কারও PIN বদলান না।
+team_owner_row_help	আপনি «মালিক» সম্পাদনা করছেন: শুধু প্রদর্শন নাম, ব্যবহারকারীর নাম ও পাসওয়ার্ড। স্ক্রিন, অর্থের অধিকার ও রান্নাঘর স্টেশন মালিকের জন্য সম্পূর্ণ থাকে এবং এখানে দেখানো হয় না। কোনো কর্মীর কাজের সেটআপ বদলাতে তাকে বাছুন।
+team_owner_identity_hint	মালিকের সব স্ক্রিন ও অধিকার থাকে। সেভ করুন শুধু প্রদর্শন নাম ও লগইন বদলায়।
+save_owner_identity	মালিকের নাম ও লগইন সেভ করুন
+save_owner_identity_named	{name}-এর নাম ও লগইন সেভ করুন
+save_owner_identity_ok	{name}-এর জন্য মালিকের নাম ও লগইন সেভ হয়েছে
 staff_name_ph	কর্মীর নাম / আইডি
 staff_copy_hire_ph	সেটআপ কার থেকে কপি (ঐচ্ছিক)
 staff_copy_hire	এই ব্যক্তির সেটআপ ব্যবহার করুন

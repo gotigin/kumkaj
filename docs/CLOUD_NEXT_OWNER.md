@@ -13,7 +13,7 @@
 
 On Paddle vendors UI you are on Get started (Live). Use the page’s **Switch to Sandbox** / **Integrate in sandbox** (labels on that screen) before wiring keys.
 
-1. Sandbox catalog: Steady / Swift / Priority yearly INR ex-tax ₹6k / ₹12k / ₹24k.
+1. Sandbox catalog: Steady / Swift / Priority yearly INR ex-tax ₹6k / ₹14k / ₹28k.
 2. Sandbox API key + client token + four notification URLs → `/v1/billing/webhooks/paddle`.
 3. Put secrets in each `services/*-cloud/.env.development` (gitignored); apply `paddle_price_id` via `apply-sandbox-price-ids.sh`.
 4. Browser E2E per product; then AWS sandbox env (no live flip until you approve).

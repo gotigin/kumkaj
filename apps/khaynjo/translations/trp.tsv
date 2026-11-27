@@ -109,6 +109,19 @@ bill_line_customer	গ্রাহক
 bill_line_bill_no	বিল নং
 bill_line_time	জরা
 bill_line_cashier	রাং থুমনাই
+bill_meta_empty_help	खाली थानाय
+bill_meta_empty_always	साबुरी मोन
+bill_meta_empty_omit	खाली थानाय बाद
+bill_meta_empty_tip	«साबुरी मोन» मानि बिना लेबल खालाय (दाहोनाय मुं:) — खाली मेहमान बिलनि थाङ। «खाली थानाय बाद» लाइन बाद।
+bill_custom_add	लाइन दाजाब
+bill_custom_remove	कुथार खाइदि
+bill_custom_line	रासां लाइन
+bill_custom_value_ph	गासे बिलआव छापनाय लिर
+bill_preview_sample	नमुना
+bill_preview_running	खुलाइ अर्डर
+bill_preview_sale	आबुंनाय बिल
+kot_preview_sample	नमुना
+kot_preview_ticket	चानानो टिकेट
 bill_line_table	মেজা
 bill_line_items	আইটেম
 bill_line_total	জত
@@ -146,6 +159,8 @@ bill_total_caption_under	মুং ইনি তিসাও
 bill_total_own_line	বিনি লিনে
 bill_total_caption_with	লেখা বাই
 bill_total_caption_none	মুং কুরুই
+bill_total_caption_span_off	कैप्सन मोनसे कॉलमनो
+bill_total_caption_span_on	अनजावनि सिमाव फैयाखै
 bill_total_place_help	“বিনি লিনে” ই জত ন সাকসা ছাপা খলাইয়ই। খলম নি তিসাও তংখা বিনি লেখা অ' মাল নি খলম ও, ই লিনে নি মাপ তেই বাতা বাই ছাপা খলাইজাক; খলম কাইসা পুরা মান য়াফুরু জতরগ শারি কাইসা ন শারে খাইয়ই, অ'নি উলো শারি কাতাল চেংগ। মুং লেখা বাই, খলম কুবুন নি তিসাও থাংগ, য়াবা তুবুজাক য়া। খাজনা, সেবা, রাউন্ডিং তেই রাং রিমানি লিনেরগ “সুব জত” ন নাইথক।
 reprint_incl	পরিনত উংখা
 reprint_skip	সকিপ খাইদি
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo সুনামদি
 shop_logo_optional	দুকান নি লগ (চাজাক)
 stock_type_help	তয়পে খাই দি মানুই নি মুং (আবনি পারত উংখা), কাইসা মানুই, আবনি উল আদজুসত খাই দি. তাবুক জরাও চউনত উংয়া মানুইরকন কাইসা জরা তরাচকিং চেংনানি নাংনাই.
 team_owner_help	খরকসা সুকন রুনা বাগুই বরকন বলানক খে তনুই রুদি: মুং, সামুং, মুং, PIN, তেই মুংসা সুক পাসুওরদ, আবনি উল আদ খলাই দি. আব হাই খেন ফরম ন সুলাইনা বাগুই খরকসা বরকন চংদি — মুং, মুং, মুং, সচরেএন, তেই হকরক — আবনি উল সাভে খলাই দি. নিনি সাকনি PIN তেই পাসুওরদ কাইসা সিগন-ইন উঙুই তঙ. ওউনের খে খরকসা সুক নি PIN ন সুলাইউই মান য়া.
+team_owner_row_help	नों «मालिक» सोलायनाय दां: मोननाय मुं, बाहायगिरि मुं आनज.password खालि। स्क्रिन, रां मोनथाय आरो चानानो स्टेशन मालिकनि थाङ गासैबो थां, बेयाव मोन्दां। कामबरक सोलायनो थाखाय मानिय मोझो।
+team_owner_identity_hint	मालिकनो गासैबो स्क्रिन आरो मोनथाय दै। मुथांदि मोननाय मुं आरो लगइन खालि सोलाय।
+save_owner_identity	मालिकनि मुं आरो लगइन मुथांदि
+save_owner_identity_named	{name} नि मुं आरो लगइन मुथांदि
+save_owner_identity_ok	{name} नि थाङ मालिकनि मुं आरो लगइन मुथांदि
 staff_name_ph	সামুং তাংনাইরকনি মুং
 staff_copy_hire_ph	সেতুপ নি চপয় খাইদি (চাজাক য়া)
 staff_copy_hire	ও বরক নি সেতুপ ন উসে খাইদি

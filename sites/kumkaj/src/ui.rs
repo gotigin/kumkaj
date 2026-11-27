@@ -826,6 +826,22 @@ script_mod! {
                             text: "1 / 7"
                             draw_text +: {color: Faint text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
                         }
+                        go_github := View{
+                            width: 44 height: 44
+                            flow: Overlay
+                            align: Align{x: 0.5 y: 0.5}
+                            View{
+                                width: Fill height: Fill
+                                flow: Down
+                                align: Align{x: 0.5 y: 0.5}
+                                Image{
+                                    width: 18 height: 18
+                                    fit: ImageFit.Stretch
+                                    src: crate_resource("self:resources/media/github-mark.webp")
+                                }
+                            }
+                            open_nav_github := HitBtn{}
+                        }
                         go_lang := LangChip{text: "EN"}
                     }
 

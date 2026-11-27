@@ -109,6 +109,19 @@ bill_line_customer	Client
 bill_line_bill_no	N° d'addition
 bill_line_time	Heure
 bill_line_cashier	Caissier
+bill_meta_empty_help	Si vide
+bill_meta_empty_always	Toujours afficher
+bill_meta_empty_omit	Omettre si vide
+bill_meta_empty_tip	«Toujours afficher» n’imprime que le libellé seul (ex. Nom :) sans valeur — utile pour des additions vierges. «Omettre si vide» saute la ligne.
+bill_custom_add	Ajouter une ligne
+bill_custom_remove	Retirer
+bill_custom_line	Ligne personnalisée
+bill_custom_value_ph	Texte imprimé sur chaque addition
+bill_preview_sample	Exemple
+bill_preview_running	Commande ouverte
+bill_preview_sale	Addition réglée
+kot_preview_sample	Exemple
+kot_preview_ticket	Ticket cuisine
 bill_line_table	Table
 bill_line_items	Articles
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Libellé sous
 bill_total_own_line	Ligne à part
 bill_total_caption_with	Avec le nombre
 bill_total_caption_none	Sans libellé
+bill_total_caption_span_off	Libellé sur une colonne
+bill_total_caption_span_on	Jusqu’au montant
 bill_total_place_help	Ligne à part imprime ce total tout seul. Sous une colonne, son nombre s'imprime dans cette colonne d'articles, à la taille et à la graisse de cette ligne ; les totaux partagent une rangée jusqu'à ce qu'une colonne soit prise, puis une nouvelle rangée commence. Le libellé va avec le nombre, sous une autre colonne, ou n'est pas imprimé. Les lignes de taxe, de service, d'arrondi et de paiement suivent Sous-total.
 reprint_incl	À imprimer
 reprint_skip	Exclure
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configurer Khaynjo
 shop_logo_optional	Logo de la boutique (facultatif)
 stock_type_help	Écrivez le nom de l'article (un bout suffit), une quantité, puis ajustez. Les articles pas encore comptés ont besoin de Commencer le suivi une fois.
 team_owner_help	Laissez la personne vide pour en ajouter une : nom, poste, identifiant, PIN et mot de passe optionnel, puis Ajouter. Choisissez une personne pour éditer le même formulaire — nom, identifiant, mot de passe, écrans et droits — puis Enregistrer. Votre propre PIN et mot de passe sont une seule connexion en bas. Le propriétaire ne change le PIN de personne d’autre.
+team_owner_row_help	Vous modifiez le propriétaire : nom affiché, identifiant et mot de passe seulement. Les écrans, droits financiers et postes cuisine restent complets pour le propriétaire et ne s’affichent pas ici. Choisissez un membre du personnel pour modifier son poste.
+team_owner_identity_hint	Le propriétaire garde chaque écran et droit. Enregistrer ne modifie que le nom affiché et la connexion.
+save_owner_identity	Enregistrer nom et connexion du propriétaire
+save_owner_identity_named	Enregistrer le nom et la connexion de {name}
+save_owner_identity_ok	Nom et connexion du propriétaire enregistrés pour {name}
 staff_name_ph	Nom / id du personnel
 staff_copy_hire_ph	Copier la configuration depuis (optionnel)
 staff_copy_hire	Utiliser la configuration de cette personne

@@ -109,6 +109,19 @@ bill_line_customer	Umthengi
 bill_line_bill_no	Inombolo yetyala
 bill_line_time	Ixesha
 bill_line_cashier	Umcangci
+bill_meta_empty_help	Xa ingenanto
+bill_meta_empty_always	Bonisa rhoqo
+bill_meta_empty_omit	Tshiba xa ingenanto
+bill_meta_empty_tip	«Bonisa rhoqo» ichapa ilebhile yodwa (umz. Igama:) xa kungenanto — luncedo kwiibhili zezivakashi ezingenanto. «Tshiba xa ingenanto» yeqa umugqa.
+bill_custom_add	Yongeza umugqa
+bill_custom_remove	Susa
+bill_custom_line	Umugqa olungiselelweyo
+bill_custom_value_ph	Isicatshulwa esichaphazwa kwiibhili zonke
+bill_preview_sample	Isampulu
+bill_preview_running	«I-odolo» ivuliwe
+bill_preview_sale	Ibhili emiselweyo
+kot_preview_sample	Isampulu
+kot_preview_ticket	Ithikiti ye «Ikhitshi»
 bill_line_table	Itafile
 bill_line_items	Izinto
 bill_line_total	Isixa
@@ -146,6 +159,8 @@ bill_total_caption_under	Ileyibhile phantsi kwe
 bill_total_own_line	Umgca walo
 bill_total_caption_with	Kunye nenani
 bill_total_caption_none	Akukho leyibhile
+bill_total_caption_span_off	Imagama kwikholum enye
+bill_total_caption_span_on	Idibanisa ukuya kwinombolo
 bill_total_place_help	Umgca walo ishicilela esi sixa sodwa. Phantsi kwekholamu, inani laso lishicilelwa kuloo kholamu yezinto, ngobukhulu nobungqingqwa balo mgca; izixa zabelana ngomqolo omnye de ikholamu ithathwe, emva koko kuqala umqolo omtsha. Ileyibhile ihamba nenani, phantsi kwenye ikholamu, okanye iyashiywa. Imigca yerhafu, yenkonzo, yokurawunda neyentlawulo ilandela Isixa esincinci.
 reprint_incl	Ekushicilelweni
 reprint_skip	Tsiba
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Seta iKhaynjo
 shop_logo_optional	Ilogo yevenkile (akuyomfuneko)
 stock_type_help	Chwetheza igama lento (inxalenye yanele), inani, emva koko ulungise. Izinto ezingekabalwa zifuna Qala ukulandelela kanye.
 team_owner_help	Shiya umntu engenanto ukuze wongeze umntu: igama, umsebenzi, igama lomsebenzisi, i-PIN, negama lokugqitha olukhethwayo, emva koko Yongeza. Khetha umntu ukuze uhlele ifom enye — igama, igama lomsebenzisi, igama lokugqitha, izikrini, namalungelo — emva koko Gcina. I-PIN yakho negama lokugqitha lungeno olunye ezantsi. Umnini akatshintshi i-PIN yomnye umntu.
+team_owner_row_help	Uhlengahlengisa «Umnini» kuphela: igama elibonisiweyo, igama lomsebenzi kunye negama lokugqitha. Izikrini, amalungelo eemali nezindawo ze «Ikhitshi» zihlala zigcwele ku «Umnini» kwaye aziboniswa apha. Khetha ilungu le «Abasebenzi» ukutshintsha useto lomsebenzi.
+team_owner_identity_hint	«Umnini» ugcina zonke iiskrini namalungelo. «Gcina» utshintsha igama elibonisiweyo kunye nokungena kuphela.
+save_owner_identity	«Gcina» igama le «Umnini» kunye nokungena
+save_owner_identity_named	«Gcina» igama lika-{name} kunye nokungena
+save_owner_identity_ok	Igama le «Umnini» kunye nokungena li «Gciniwe» u-{name}
 staff_name_ph	Igama lomsebenzi
 staff_copy_hire_ph	Kopisha useto usuka ku (akuyomfuneko)
 staff_copy_hire	Sebenzisa useto lalo mntu

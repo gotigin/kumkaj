@@ -109,6 +109,19 @@ bill_line_customer	Mteja
 bill_line_bill_no	Nambari ya bili
 bill_line_time	Wakati
 bill_line_cashier	Keshia
+bill_meta_empty_help	Wakati tupu
+bill_meta_empty_always	Onyesha kila wakati
+bill_meta_empty_omit	Ruka wakati tupu
+bill_meta_empty_tip	«Onyesha kila wakati» huandika lebo peke yake (mf. Jina:) hakuna thamani — inasaidia bili za wageni tupu. «Ruka wakati tupu» huruka mstari.
+bill_custom_add	Ongeza mstari
+bill_custom_remove	Ondoa
+bill_custom_line	Mstari maalum
+bill_custom_value_ph	Maandishi yanayochapishwa kwa kila bili
+bill_preview_sample	Mfano
+bill_preview_running	«Oda» wazi
+bill_preview_sale	Bili iliyokamilika
+kot_preview_sample	Mfano
+kot_preview_ticket	Tiketi ya «Jiko»
 bill_line_table	Meza
 bill_line_items	Bidhaa
 bill_line_total	Jumla
@@ -146,6 +159,8 @@ bill_total_caption_under	Lebo chini ya
 bill_total_own_line	Mstari wake
 bill_total_caption_with	Pamoja na nambari
 bill_total_caption_none	Hakuna lebo
+bill_total_caption_span_off	Kichwa safu moja
+bill_total_caption_span_on	Inapanuka hadi nambari
 bill_total_place_help	Mstari wake huchapisha jumla hii peke yake. Chini ya safu wima, nambari yake huchapishwa katika safu hiyo ya bidhaa, kwa ukubwa na unene wa mstari huu; jumla hushiriki safu mlalo moja hadi safu wima ichukuliwe, kisha safu mlalo mpya huanza. Lebo huenda pamoja na nambari, chini ya safu wima nyingine, au huachwa. Mistari ya kodi, huduma, ukadiriaji na malipo hufuata Jumla ndogo.
 reprint_incl	Katika chapa
 reprint_skip	Ruka
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Sanidi Khaynjo
 shop_logo_optional	Nembo ya duka (si lazima)
 stock_type_help	Andika jina la bidhaa (sehemu yake inatosha), idadi, kisha rekebisha. Bidhaa ambazo bado hazijahesabiwa zinahitaji Anza kuhesabu mara moja.
 team_owner_help	Acha mtu tupu kuongeza mtu: jina, kazi, jina la mtumiaji, PIN na nenosiri la hiari, kisha Ongeza. Chagua mtu kuhariri fomu ile ile — jina, jina la mtumiaji, nenosiri, skrini na haki — kisha Hifadhi. PIN yako na nenosiri ni kuingia moja chini. Mmiliki habadilishi PIN ya mtu mwingine.
+team_owner_row_help	Unahariri «Mmiliki» pekee: jina la kuonyesha, jina la mtumiaji na nenosiri. Skrini, haki za fedha na vituo vya «Jiko» hubaki kamili kwa «Mmiliki» na hazionyeshwi hapa. Chagua mshiriki wa «Wafanyakazi» kubadilisha usanidi wa kazi.
+team_owner_identity_hint	«Mmiliki» ana skrini na haki zote. «Hifadhi» hubadilisha jina la kuonyesha na kuingia pekee.
+save_owner_identity	«Hifadhi» jina la «Mmiliki» na kuingia
+save_owner_identity_named	«Hifadhi» jina la {name} na kuingia
+save_owner_identity_ok	Jina la «Mmiliki» na kuingia lime «Hifadhiwa» kwa {name}
 staff_name_ph	Jina / kitambulisho cha mfanyakazi
 staff_copy_hire_ph	Kopia mipangilio kutoka (chaguo)
 staff_copy_hire	Tumia mipangilio ya mtu huyu

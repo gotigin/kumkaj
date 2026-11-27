@@ -109,6 +109,19 @@ bill_line_customer	Ügyfél
 bill_line_bill_no	Számla sz.
 bill_line_time	Idő
 bill_line_cashier	Pénztáros
+bill_meta_empty_help	Ha üres
+bill_meta_empty_always	Mindig mutassa
+bill_meta_empty_omit	Kihagyás ha üres
+bill_meta_empty_tip	«Mindig mutassa» csak a címkét nyomtatja (pl. Név:) érték nélkül — hasznos üres vendégszámlákhoz. «Kihagyás ha üres» kihagyja a sort.
+bill_custom_add	Sor hozzáadása
+bill_custom_remove	Távolítsa el
+bill_custom_line	Egyéni sor
+bill_custom_value_ph	Minden számlán megjelenő szöveg
+bill_preview_sample	Minta
+bill_preview_running	Nyitott éttermi rendelés
+bill_preview_sale	Lezárt számla
+kot_preview_sample	Minta
+kot_preview_ticket	Konyhai jegy
 bill_line_table	Étkezőasztal
 bill_line_items	Tételek
 bill_line_total	Összesen
@@ -146,6 +159,8 @@ bill_total_caption_under	Címke ez alatt
 bill_total_own_line	Saját sor
 bill_total_caption_with	A számmal együtt
 bill_total_caption_none	Nincs címke
+bill_total_caption_span_off	Felirat egy oszlopban
+bill_total_caption_span_on	Az összegig
 bill_total_place_help	Saját sor: ez az összeg külön sorban nyomtatódik. Oszlop alatt a száma abban a tételoszlopban nyomtatódik, ennek a sornak a méretével és vastagságával; az összegek egy sort osztanak meg, amíg egy oszlop foglalt nem lesz, akkor új sor kezdődik. A címke a számmal együtt, egy másik oszlop alatt áll, vagy kimarad. Az adó, a szervizdíj, a kerekítés és a fizetés sorai a(z) Részösszeg helyét követik.
 reprint_incl	Nyomtatásban
 reprint_skip	Kihagyás
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo beállítása
 shop_logo_optional	Az üzlet logója (opcionális)
 stock_type_help	Írja be a cikk nevét (egy része is elég), egy mennyiséget, majd állítsa be. A még nem számolt tételeket egyszer el kell indítani a nyomon követésben.
 team_owner_help	Hagyja üresen a személyt, ha valakit szeretne hozzáadni: név, munkakör, felhasználónév, PIN és egy opcionális jelszó, majd a Hozzáadás lehetőséget. Válasszon ki egy személyt, aki ugyanilyen típusú űrlapot szeretne szerkeszteni – név, felhasználónév, jelszó, képernyők és jogok –, majd a Mentés. Saját PIN-je és jelszava az egyik bejelentkezési lehetőség alul. A Tulajdonos nem változtatja meg senki más PIN-jét.
+team_owner_row_help	A tulajdonost szerkeszti: csak megjelenített név, felhasználónév és jelszó. A képernyők, pénzügyi jogok és konyhai állomások a tulajdonosnál teljesek maradnak és itt nem látszanak. Válasszon személyzeti tagot a munkakör-beállítás módosításához.
+team_owner_identity_hint	A tulajdonos minden képernyőt és jogot megtart. Mentés csak a megjelenített nevet és belépést változtatja.
+save_owner_identity	Tulajdonos nevének és belépésének mentése
+save_owner_identity_named	{name} nevének és belépésének mentése
+save_owner_identity_ok	Tulajdonos neve és belépése mentve: {name}
 staff_name_ph	A személyzet neve
 staff_copy_hire_ph	Beállítás másolása innen (nem kötelező)
 staff_copy_hire	Használja ennek a személynek a beállításait

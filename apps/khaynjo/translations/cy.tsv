@@ -109,6 +109,19 @@ bill_line_customer	Cwsmer
 bill_line_bill_no	Rhif y bil
 bill_line_time	Amser
 bill_line_cashier	Ariannwr
+bill_meta_empty_help	Pan yn wag
+bill_meta_empty_always	Dangos bob amser
+bill_meta_empty_omit	Anwybyddu pan yn wag
+bill_meta_empty_tip	«Dangos bob amser» argraffu’r label yn unig (e.e. Enw:) heb werth — defnyddiol ar gyfer biliau gwestai gwag. «Anwybyddu pan yn wag» yn hepgor y llinell.
+bill_custom_add	Ychwanegu llinell
+bill_custom_remove	Tynnu
+bill_custom_line	Llinell bersonol
+bill_custom_value_ph	Testun ar bob bil
+bill_preview_sample	Sampl
+bill_preview_running	Archeb agored
+bill_preview_sale	Bil wedi'i setlo
+kot_preview_sample	Sampl
+kot_preview_ticket	Tocyn cegin
 bill_line_table	Bwrdd
 bill_line_items	Eitemau
 bill_line_total	Cyfanswm
@@ -146,6 +159,8 @@ bill_total_caption_under	Label o dan
 bill_total_own_line	Llinell ei hun
 bill_total_caption_with	Gyda'r rhif
 bill_total_caption_none	Dim label
+bill_total_caption_span_off	Capsiwn mewn un golofn
+bill_total_caption_span_on	Hyd at y rhif
 bill_total_place_help	Mae Llinell ei hun yn argraffu'r cyfanswm hwn ar ei ben ei hun. O dan golofn, mae ei rif yn cael ei argraffu yn y golofn eitemau honno, ym maint a phwysau'r llinell hon; mae cyfansymiau'n rhannu rhes nes bod colofn wedi'i llenwi, yna mae rhes newydd yn dechrau. Mae'r label yn mynd gyda'r rhif, o dan golofn arall, neu'n cael ei hepgor. Mae llinellau treth, gwasanaeth, talgrynnu a thalu yn dilyn Is-gyfanswm.
 reprint_incl	Mewn print
 reprint_skip	Hepgor
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Gosod Khaynjo
 shop_logo_optional	Logo siop (dewisol)
 stock_type_help	Teipiwch enw'r eitem (mae rhan ohono'n ddigon), maint, yna addaswch. Mae angen Dechrau olrhain unwaith ar eitemau nad ydynt yn cael eu cyfrif eto.
 team_owner_help	Gadewch y person yn wag i ychwanegu rhywun: enw, swydd, enw defnyddiwr, PIN, a chyfrinair dewisol, yna Ychwanegu. Dewiswch berson i olygu'r un math o ffurflen — enw, enw defnyddiwr, cyfrinair, sgriniau, a hawliau — yna Cadw. Eich PIN a'ch cyfrinair chi yw un mewngofnodi ar y gwaelod. Nid yw'r Perchennog yn newid PIN unrhyw un arall.
+team_owner_row_help	Rydych chi’n golygu’r perchennog: enw arddangos, defnyddiwr a chyfrinair yn unig. Mae sgriniau, hawliau arian a gorsafoedd cegin yn parhau’n llawn i’r perchennog ac nid ydynt yn cael eu dangos yma. Dewiswch aelod o’r staff i newid ei osod swydd.
+team_owner_identity_hint	Mae’r perchennog yn cadw pob sgrin a hawliau. Cadw’n newid yr enw arddangos a’r mewngofnodi yn unig.
+save_owner_identity	Cadw enw a mewngofnodi’r perchennog
+save_owner_identity_named	Cadw enw a mewngofnodi {name}
+save_owner_identity_ok	Cadwyd enw a mewngofnodi’r perchennog ar gyfer {name}
 staff_name_ph	Enw staff
 staff_copy_hire_ph	Copïo gosodiad o (dewisol)
 staff_copy_hire	Defnyddio gosodiad y person hwn

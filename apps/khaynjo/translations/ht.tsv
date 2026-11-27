@@ -109,6 +109,19 @@ bill_line_customer	Kliyan
 bill_line_bill_no	Nimewo kont
 bill_line_time	Lè
 bill_line_cashier	Kesye
+bill_meta_empty_help	Lè li vid
+bill_meta_empty_always	Montre toujou
+bill_meta_empty_omit	Kite lè li vid
+bill_meta_empty_tip	«Montre toujou» enprime sèlman etikèt la (egzanp Non:) lè pa gen valè — itil pou bòdwo envite vid. «Kite lè li vid» sote liy lan.
+bill_custom_add	Ajoute liy
+bill_custom_remove	Retire
+bill_custom_line	Liy pèsonalize
+bill_custom_value_ph	Tèks enprime sou chak bòdwo
+bill_preview_sample	Egzanp
+bill_preview_running	«Kòmand» ouvè
+bill_preview_sale	Bòdwo regle
+kot_preview_sample	Egzanp
+kot_preview_ticket	Tikè «Kwizin»
 bill_line_table	Tab
 bill_line_items	Atik
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Etikèt anba
 bill_total_own_line	Pwòp liy li
 bill_total_caption_with	Ak nimewo a
 bill_total_caption_none	San etikèt
+bill_total_caption_span_off	Legonn nan yon kolòn
+bill_total_caption_span_on	Lonje jouk nimewo a
 bill_total_place_help	Pwòp liy li enprime total sa a pou kont li. Anba yon kolòn, nimewo li enprime nan kolòn atik sa a, ak gwosè ak epesè liy sa a; total yo pataje yon ranje jiskaske yon kolòn pran, epi yon nouvo ranje kòmanse. Etikèt la ale ak nimewo a, anba yon lòt kolòn, oswa li pa enprime. Liy taks, sèvis, awondi ak peman yo swiv Soutotal.
 reprint_incl	Nan enpresyon
 reprint_skip	Sote
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Pare Khaynjo
 shop_logo_optional	Logo boutik (opsyonèl)
 stock_type_help	Ekri non atik la (yon pati ase), yon kantite, epi ajiste. Atik ki poko konte bezwen Kòmanse swiv yon fwa.
 team_owner_help	Kite moun nan vid pou ajoute yon moun: non, travay, non itilizatè, PIN, ak yon modpas opsyonèl, epi Ajoute. Chwazi yon moun pou modifye menm kalite fòm — non, non itilizatè, modpas, ekran, ak dwa — epi Anrejistre. PIN ak modpas pa w se yon sèl antre anba a. Pwopriyetè a pa chanje PIN lòt moun.
+team_owner_row_help	W ap modifye sèlman «Pwopriyetè»: non afiche, non itilizatè ak modpas. Ekran yo, dwa lajan ak estasyon «Kwizin» rete plen pou «Pwopriyetè» e pa parèt la a. Chwazi yon «Anplwaye» pou chanje konfigirasyon travay li.
+team_owner_identity_hint	«Pwopriyetè» kenbe tout ekran ak dwa. «Anrejistre» chanje sèlman non afiche ak koneksyon an.
+save_owner_identity	«Anrejistre» non «Pwopriyetè» ak koneksyon
+save_owner_identity_named	«Anrejistre» non {name} ak koneksyon
+save_owner_identity_ok	Non «Pwopriyetè» ak koneksyon te «Anrejistre» pou {name}
 staff_name_ph	Non anplwaye
 staff_copy_hire_ph	Kopye paramèt de (opsyonèl)
 staff_copy_hire	Sèvi ak paramèt moun sa a

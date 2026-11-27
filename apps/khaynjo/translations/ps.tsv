@@ -109,6 +109,19 @@ bill_line_customer	پیرودونکي
 bill_line_bill_no	د بل شمیره
 bill_line_time	وخت
 bill_line_cashier	کیشیر
+bill_meta_empty_help	کله خالي وي
+bill_meta_empty_always	تل ښکاره کړئ
+bill_meta_empty_omit	کله خالي وي پریږدئ
+bill_meta_empty_tip	«تل ښکاره کړئ» کله ارزښت نشته یوازې نښه چاپوي (لکه نوم:) — د خالي میلمه بل لپاره ګټور. «کله خالي وي پریږدئ» کرښه پرېږدي.
+bill_custom_add	کرښه اضافه کړئ
+bill_custom_remove	لرې کړئ
+bill_custom_line	دودیزه کرښه
+bill_custom_value_ph	په هر بل کې چاپ کېدونکی متن
+bill_preview_sample	نمونه
+bill_preview_running	خلاص «فرمایش»
+bill_preview_sale	تسویه شوی بل
+kot_preview_sample	نمونه
+kot_preview_ticket	«پخلنځي» ټکټ
 bill_line_table	میز
 bill_line_items	توکي
 bill_line_total	ټول
@@ -146,6 +159,8 @@ bill_total_caption_under	لیبل د دې لاندې
 bill_total_own_line	خپله کرښه
 bill_total_caption_with	له شمېرې سره
 bill_total_caption_none	بې لیبله
+bill_total_caption_span_off	سرلیک په یوه ستون کې
+bill_total_caption_span_on	تر عدد پورې غزېږي
 bill_total_place_help	«خپله کرښه» دا مجموعه یوازې چاپوي. د ستنې لاندې یې شمېره د توکو په هماغه ستنه کې، د دې کرښې په اندازه او پنډوالي چاپېږي؛ مجموعې یو کتار شریکوي تر هغو چې یوه ستنه ونیول شي، بیا نوی کتار پیلېږي. لیبل له شمېرې سره، د بلې ستنې لاندې ځي، یا پرېښودل کېږي. د مالیې، خدمت، ګردولو او تادیې کرښې د «فرعي مجموعه» پیروي کوي.
 reprint_incl	په چاپ کې
 reprint_skip	پریږده
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	خائنجو جوړه کړه
 shop_logo_optional	د پلورنځي لوگو (اختیاري)
 stock_type_help	ار، بیا تنظیم کړئ. هغه توکي چې شمیرل شوي ندي یوځل تعقیب پیل کولو ته اړتیا لري.
 team_owner_help	کړئ. ستاسو خپل PIN او پټنوم په لاندې کې یو السلیک دی. مالک د بل چا PIN نه بدلوي.
+team_owner_row_help	تاسو یوازې «خاوند» سمولئ: د ښودلو نوم، کارن نوم او پټنوم. پردې، د پیسو حقونه او «پخلنځي» ځایونه د «خاوند» لپاره بشپړ پاتېږي او دلته نه ښکاري. د دندې تنظیم بدلولو لپاره له «کارکوونکو» کې یو وټاکئ.
+team_owner_identity_hint	«خاوند» هر پرده او حق ساتي. «خوندي کړئ» یوازې د ښودلو نوم او ننوتل بدلوي.
+save_owner_identity	«خاوند» نوم او ننوتل «خوندي کړئ»
+save_owner_identity_named	د {name} نوم او ننوتل «خوندي کړئ»
+save_owner_identity_ok	د {name} لپاره «خاوند» نوم او ننوتل «خوندي» شول
 staff_name_ph	د کارکوونکو نوم
 staff_copy_hire_ph	له (اختیاري) څخه ترتیب کاپي کړئ
 staff_copy_hire	د دې کس ترتیب وکاروئ

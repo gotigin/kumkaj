@@ -109,6 +109,19 @@ bill_line_customer	Onye ahịa
 bill_line_bill_no	Nọmba ụgwọ
 bill_line_time	Oge
 bill_line_cashier	Onye na-anakọta ego
+bill_meta_empty_help	Mgbe ọ bụ efu
+bill_meta_empty_always	Gosipụtara mgbe niile
+bill_meta_empty_omit	Hapụ mgbe ọ bụ efu
+bill_meta_empty_tip	«Gosipụtara mgbe niile» na-edebe naanị ndepụta (dịka Aha:) mgbe enweghị uru — bara uru maka ụlọ akwụkwọ ndị ọbịa efu. «Hapụ mgbe ọ bụ efu» na-eweghachikwa ahịrị ahụ.
+bill_custom_add	Tinye ahịrị
+bill_custom_remove	Wepụ
+bill_custom_line	Ahịrị omenala
+bill_custom_value_ph	Ederede a na-ebipụta n'ụlọ akwụkwọ ọbụla
+bill_preview_sample	Ọmụmaatụ
+bill_preview_running	«Oda» mepere
+bill_preview_sale	Ụlọ akwụkwọ ekwenyere
+kot_preview_sample	Ọmụmaatụ
+kot_preview_ticket	Tiketi «Kichin»
 bill_line_table	Tebụl
 bill_line_items	Ihe
 bill_line_total	Ngụkọta
@@ -146,6 +159,8 @@ bill_total_caption_under	Akara n'okpuru
 bill_total_own_line	Ahịrị nke ya
 bill_total_caption_with	Ya na ọnụọgụ
 bill_total_caption_none	Enweghị akara
+bill_total_caption_span_off	Aha otu ogidi
+bill_total_caption_span_on	Gbasa ruo ọnụọgụgụ
 bill_total_place_help	Ahịrị nke ya na-ebipụta ngụkọta a naanị ya. N'okpuru kọlụm, a na-ebipụta ọnụọgụ ya na kọlụm ihe ahụ, n'ogo na ịdị arọ nke ahịrị a; ngụkọta na-ekekọrịta otu ahịrị ruo mgbe e were otu kọlụm, mgbe ahụ ahịrị ọhụrụ amalite. Akara na-eso ọnụọgụ, n'okpuru kọlụm ọzọ, ma ọ bụ a hapụ ya. Ahịrị ụtụ, ọrụ, mgbakọ na ịkwụ ụgwọ na-eso Ngụkọta nta.
 reprint_incl	Na mbipụta
 reprint_skip	Gafee
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Hazie Khaynjo
 shop_logo_optional	Logo ụlọ ahịa (nhọrọ)
 stock_type_help	Dee aha ihe (akụkụ ya zuru), ọnụọgụ, wee dozie. Ihe a na-agụbeghị chọrọ Malite nsochi otu ugboro.
 team_owner_help	Hapụ onye ahụ efu ka ị tinye onye: aha, ọrụ, aha njirimara, PIN, na okwuntughe nhọrọ, wee Tinye. Họrọ onye ka ị dezie otu ụdị fọm ahụ — aha, aha njirimara, okwuntughe, ihuenyo, na ikike — wee Chekwaa. PIN na okwuntughe nke gị bụ otu nbanye n'ala. Onye nwe anaghị agbanwe PIN onye ọzọ.
+team_owner_row_help	Ị na-edezi naanị «Onye nwe»: aha ngosi, aha òkè mmadụ na paswọọdụ. Ihuenyo, ikike ego na ebe «Kichin» nọrọ zuru ezu maka «Onye nwe» ma e gosikwaghị ebea. Họrọ onye «Ndị ọrụ» ka gbanwee nhazi ọrụ ya.
+team_owner_identity_hint	«Onye nwe» nwere ihuenyo na ikike niile. «Chekwaa» na-agbanwe naanị aha ngosi na nbanye.
+save_owner_identity	«Chekwaa» aha «Onye nwe» na nbanye
+save_owner_identity_named	«Chekwaa» aha {name} na nbanye
+save_owner_identity_ok	E «Chekwaa» aha «Onye nwe» na nbanye maka {name}
 staff_name_ph	Aha onye ọrụ
 staff_copy_hire_ph	Detuo nhazi site na (nhọrọ)
 staff_copy_hire	Jiri nhazi onye a

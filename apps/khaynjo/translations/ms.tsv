@@ -109,6 +109,19 @@ bill_line_customer	Pelanggan
 bill_line_bill_no	No. bil
 bill_line_time	Masa
 bill_line_cashier	Juruwang
+bill_meta_empty_help	Apabila kosong
+bill_meta_empty_always	Sentiasa tunjuk
+bill_meta_empty_omit	Abaikan jika kosong
+bill_meta_empty_tip	«Sentiasa tunjuk» mencetak label sahaja tanpa nilai (cth. Nama:) — berguna untuk bil tetamu kosong. «Abaikan jika kosong» melangkau baris.
+bill_custom_add	Tambah baris
+bill_custom_remove	Alih keluar
+bill_custom_line	Baris tersuai
+bill_custom_value_ph	Teks dicetak pada setiap bil
+bill_preview_sample	Contoh
+bill_preview_running	Pesanan terbuka
+bill_preview_sale	Bil selesai
+kot_preview_sample	Contoh
+kot_preview_ticket	Tiket dapur
 bill_line_table	Meja
 bill_line_items	Item
 bill_line_total	Jumlah
@@ -146,6 +159,8 @@ bill_total_caption_under	Label di bawah
 bill_total_own_line	Baris sendiri
 bill_total_caption_with	Bersama nombor
 bill_total_caption_none	Tiada label
+bill_total_caption_span_off	Kapsyen satu lajur
+bill_total_caption_span_on	Kembang ke nombor
 bill_total_place_help	Baris sendiri mencetak jumlah ini secara berasingan. Di bawah lajur, nombornya dicetak dalam lajur item itu, dengan saiz dan ketebalan baris ini; jumlah berkongsi satu barisan sehingga satu lajur terisi, kemudian barisan baharu bermula. Label pergi bersama nombor, di bawah lajur lain, atau ditinggalkan. Baris cukai, perkhidmatan, pembundaran dan bayaran mengikut Jumlah kecil.
 reprint_incl	Dalam cetakan
 reprint_skip	Langkau
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Sediakan Khaynjo
 shop_logo_optional	Logo kedai (pilihan)
 stock_type_help	Taip nama item (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
 team_owner_help	Biarkan orang itu kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN dan kata laluan pilihan, kemudian Tambah. Pilih orang untuk mengedit jenis borang yang sama — nama, nama pengguna, kata laluan, skrin dan hak — kemudian Simpan. PIN dan kata laluan anda sendiri adalah satu log masuk di bahagian bawah. Pemilik tidak mengubah PIN milik orang lain.
+team_owner_row_help	Anda menyunting «Pemilik»: hanya nama paparan, nama pengguna dan kata laluan. Skrin, hak wang dan stesen dapur kekal penuh untuk Pemilik dan tidak dipaparkan di sini. Pilih ahli kakitangan untuk menukar persediaan kerja mereka.
+team_owner_identity_hint	Pemilik mempunyai setiap skrin dan hak. Simpan hanya menukar nama paparan dan log masuk.
+save_owner_identity	Simpan nama dan log masuk Pemilik
+save_owner_identity_named	Simpan nama dan log masuk {name}
+save_owner_identity_ok	Nama dan log masuk Pemilik disimpan untuk {name}
 staff_name_ph	Nama kakitangan
 staff_copy_hire_ph	Salin persediaan daripada (pilihan)
 staff_copy_hire	Gunakan persediaan orang ini

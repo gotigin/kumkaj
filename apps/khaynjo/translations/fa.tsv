@@ -109,6 +109,19 @@ bill_line_customer	مشتری
 bill_line_bill_no	شماره صورتحساب
 bill_line_time	زمان
 bill_line_cashier	صندوقدار
+bill_meta_empty_help	وقتی خالی است
+bill_meta_empty_always	همیشه نمایش
+bill_meta_empty_omit	در صورت خالی نادیده بگیر
+bill_meta_empty_tip	«همیشه نمایش» وقتی مقداری نیست فقط برچسب را چاپ می‌کند (مثل نام:) — برای فاکتور مهمان خالی مفید است. «در صورت خالی نادیده بگیر» آن خط را چاپ نمی‌کند.
+bill_custom_add	افزودن خط
+bill_custom_remove	برداشتن
+bill_custom_line	خط سفارشی
+bill_custom_value_ph	متنی که روی هر فاکتور چاپ می‌شود
+bill_preview_sample	نمونه
+bill_preview_running	«سفارش» باز
+bill_preview_sale	فاکتور تسویه‌شده
+kot_preview_sample	نمونه
+kot_preview_ticket	برگه «آشپزخانه»
 bill_line_table	میز
 bill_line_items	کالاها
 bill_line_total	جمع
@@ -146,6 +159,8 @@ bill_total_caption_under	برچسب زیر
 bill_total_own_line	خط جدا
 bill_total_caption_with	همراه عدد
 bill_total_caption_none	بدون برچسب
+bill_total_caption_span_off	عنوان در یک ستون
+bill_total_caption_span_on	تا عدد گسترده شود
 bill_total_place_help	«خط جدا» این جمع را جداگانه چاپ می‌کند. زیر یک ستون، عدد آن در همان ستون اقلام با اندازه و ضخامت این خط چاپ می‌شود؛ جمع‌ها تا وقتی ستونی پر نشده در یک ردیف می‌مانند و سپس ردیف تازه‌ای آغاز می‌شود. برچسب همراه عدد می‌آید، زیر ستون دیگری می‌رود یا حذف می‌شود. خط‌های مالیات، سرویس، گرد کردن و پرداخت از «جمع جزء» پیروی می‌کنند.
 reprint_incl	در چاپ
 reprint_skip	رد کردن
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	راه‌اندازی Khaynjo
 shop_logo_optional	نشان فروشگاه (اختیاری)
 stock_type_help	نام کالا را بنویسید (بخشی کافی است)، یک تعداد، سپس اصلاح کنید. کالاهایی که هنوز شمرده نمی‌شوند یک بار به شروع شمارش نیاز دارند.
 team_owner_help	برای افزودن کسی شخص را خالی بگذارید: نام، شغل، نام کاربری، PIN و گذرواژه اختیاری، سپس افزودن. یک شخص را انتخاب کنید تا همان نوع فرم را ویرایش کنید — نام، نام کاربری، گذرواژه، صفحه‌ها و حقوق — سپس ذخیره. PIN و گذرواژه خودتان یک ورود در پایین است. مالک PIN دیگران را عوض نمی‌کند.
+team_owner_row_help	فقط «مالک» را ویرایش می‌کنید: نام نمایشی، نام کاربری و گذرواژه. صفحه‌ها، حقوق مالی و ایستگاه‌های «آشپزخانه» برای «مالک» کامل می‌ماند و اینجا نشان داده نمی‌شود. برای تغییر تنظیم شغلی یکی از «کارکنان» را انتخاب کنید.
+team_owner_identity_hint	«مالک» همه صفحه‌ها و حقوق را دارد. «ذخیره» فقط نام نمایشی و ورود را تغییر می‌دهد.
+save_owner_identity	«ذخیره» نام «مالک» و ورود
+save_owner_identity_named	«ذخیره» نام {name} و ورود
+save_owner_identity_ok	نام «مالک» و ورود برای {name} «ذخیره» شد
 staff_name_ph	نام کارمند
 staff_copy_hire_ph	رونوشت راه‌اندازی از (اختیاری)
 staff_copy_hire	از راه‌اندازی این شخص استفاده کن

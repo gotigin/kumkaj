@@ -109,6 +109,19 @@ bill_line_customer	Klientas
 bill_line_bill_no	Sąskaitos nr.
 bill_line_time	Laikas
 bill_line_cashier	Kasininkas
+bill_meta_empty_help	Kai tuščia
+bill_meta_empty_always	Rodyti visada
+bill_meta_empty_omit	Praleisti kai tuščia
+bill_meta_empty_tip	«Rodyti visada» spausdina tik etiketę (pvz. Vardas:) be reikšmės — naudinga tuščioms svečių sąskaitoms. «Praleisti kai tuščia» praleidžia eilutę.
+bill_custom_add	Pridėti eilutę
+bill_custom_remove	Pašalinti
+bill_custom_line	Pritaikyta eilutė
+bill_custom_value_ph	Tekstas kiekvienoje sąskaitoje
+bill_preview_sample	Pavyzdys
+bill_preview_running	Atidarytas užsakymas
+bill_preview_sale	Uždaryta sąskaita
+kot_preview_sample	Pavyzdys
+kot_preview_ticket	Virtuvės kvitas
 bill_line_table	Stalas
 bill_line_items	Prekės
 bill_line_total	Iš viso
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiketė po
 bill_total_own_line	Atskira eilutė
 bill_total_caption_with	Prie skaičiaus
 bill_total_caption_none	Be etiketės
+bill_total_caption_span_off	Antraštė viename stulpelyje
+bill_total_caption_span_on	Iki sumos
 bill_total_place_help	„Atskira eilutė“ spausdina šią sumą atskirai. Po stulpeliu jos skaičius spausdinamas tame prekių stulpelyje, šios eilutės dydžiu ir storiu; sumos dalijasi viena eile, kol kuris nors stulpelis užimamas, tada pradedama nauja eilė. Etiketė eina prie skaičiaus, po kitu stulpeliu arba praleidžiama. Mokesčio, aptarnavimo, apvalinimo ir mokėjimo eilutės seka „Tarpinė suma“.
 reprint_incl	Spausdinime
 reprint_skip	Praleisti
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Nustatykite Khaynjo
 shop_logo_optional	Parduotuvės logotipas (nebūtina)
 stock_type_help	Įveskite prekės pavadinimą (pakanka dalies), kiekį, tada koreguokite. Dar neskaičiuojamoms prekėms vieną kartą reikia Pradėti sekimą.
 team_owner_help	Palikite asmenį tuščią, kad pridėtumėte ką nors: vardas, darbas, naudotojo vardas, PIN ir nebūtinas slaptažodis, tada Pridėti. Pasirinkite asmenį tai pačiai formai redaguoti — vardas, naudotojo vardas, slaptažodis, ekranai ir teisės — tada Išsaugoti. Jūsų PIN ir slaptažodis yra vienas prisijungimas apačioje. Savininkas nekeičia kito PIN.
+team_owner_row_help	Redaguojate savininką: tik rodomas vardas, naudotojas ir slaptažodis. Ekranai, pinigų teisės ir virtuvės stotys lieka pilnos savininkui ir čia nerodomos. Pasirinkite personalo narį, kad pakeistumėte jo pareigų nustatymą.
+team_owner_identity_hint	Savininkas išsako kiekvieną ekraną ir teisę. Išsaugoti keičia tik rodomą vardą ir prisijungimą.
+save_owner_identity	Išsaugoti savininko vardą ir prisijungimą
+save_owner_identity_named	Išsaugoti {name} vardą ir prisijungimą
+save_owner_identity_ok	Savininko vardas ir prisijungimas išsaugoti {name}
 staff_name_ph	Darbuotojo vardas
 staff_copy_hire_ph	Kopijuoti sąranką iš (nebūtina)
 staff_copy_hire	Naudoti šio asmens sąranką

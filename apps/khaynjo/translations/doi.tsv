@@ -109,6 +109,19 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल नं.
 bill_line_time	वक्त
 bill_line_cashier	कैशियर जी
+bill_meta_empty_help	जद खाली होवे
+bill_meta_empty_always	हमेशां दिखाओ
+bill_meta_empty_omit	खाली होवे त छड्डो
+bill_meta_empty_tip	«हमेशां दिखाओ» बिना मान के सिर्फ लेबल छापदा (जेह्‌ने नां:) — खाली मेहमान बिल खातर उपयोगी। «खाली होवे त छड्डो» पूरी लाइन छड्डदा।
+bill_custom_add	लाइन जोड़ो
+bill_custom_remove	हटाओ
+bill_custom_line	अपणी लाइन
+bill_custom_value_ph	हर बिल पर छपण आला लेख
+bill_preview_sample	नमूना
+bill_preview_running	खुला ऑर्डर
+bill_preview_sale	निपटा बिल
+kot_preview_sample	नमूना
+kot_preview_ticket	रसोई टिकट
 bill_line_table	डाइनिंग टेबल
 bill_line_items	आइटम
 bill_line_total	कुल
@@ -146,6 +159,8 @@ bill_total_caption_under	लेबल इसदे थल्लै
 bill_total_own_line	अपनी लाइन
 bill_total_caption_with	संख्या कन्नै
 bill_total_caption_none	कोई लेबल नेईं
+bill_total_caption_span_off	लेबल इक्क कॉलम च
+bill_total_caption_span_on	गिणती तिक्क फैलाओ
 bill_total_place_help	“अपनी लाइन” इस कुल गी इक्कला छापदा ऐ। स्तंभ दे थल्लै होने पर इसदी संख्या उस्सै आइटम स्तंभ च, इस लाइन दे नाप ते मोटाई च छपदी ऐ; जदूं तगर कोई स्तंभ भरी नेईं जंदा कुल इक्कै कतार बंडदे न, फ्ही नमीं कतार शुरू होंदी ऐ। लेबल संख्या कन्नै, दूए स्तंभ दे थल्लै जंदा ऐ, जां छड्डी दित्ता जंदा ऐ। टैक्स, सेवा, राउंडिंग ते भुगतान दियां लाइनां “उप कुल” दे पिच्छें चलदियां न।
 reprint_incl	छपाई च
 reprint_skip	छोड़ दे
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	सेट अप करो Khaynjo
 shop_logo_optional	दुकान दा लोगो (वैकल्पिक)
 stock_type_help	मेनू आइटम दा नांऽ (इसदा इक हिस्सा काफी ऐ), इक मात्रा टाइप करो, फिर समायोजित करो। मेनू आइटम जेह् ड़े अजें तगर गिने गेदे नेईं न, उ’नेंगी इक बारी ट्रैकिंग शुरू करने दी लोड़ ऐ।
 team_owner_help	किसे गी जोड़ने लेई व्यक्ति गी खाली छोड़ो: नांऽ, नौकरी, यूजरनेम, PIN, ते इक वैकल्पिक पासवर्ड, फिर जोड़ो. उस्सै किस्म दे फार्म गी संपादत करने आस्तै इक माह् नू चुनो — नांऽ, यूजरनेम, पासवर्ड, स्क्रीन, ते अधिकार — फिर सेव करो. तुंदा अपना PIN ते पासवर्ड थल्ले इक साइन-इन ऐ। मालिक किसे होर दा PIN नहीं बदलदा।
+team_owner_row_help	तुस «मालिक» संपादन करदे ओ: सिर्फ दिखाण आला नां, उपयोगकर्ता नां ते पासवर्ड। स्क्रीन, पैसा अधिकार ते रसोई स्टेशन मालिक खातर पूरे रउंदे न ते इत्थे नी दिखाए जांदे। कर्मचारी दा काम-सेटअप बदलਣ खातर उसने चुनो।
+team_owner_identity_hint	मालिक कोल सारियां स्क्रीन ते अधिकार ने। सेव करो सिर्फ दिखाण आला नां ते लॉगिन बदलदा।
+save_owner_identity	मालिक दा नां ते लॉगिन सेव करो
+save_owner_identity_named	{name} दा नां ते लॉगिन सेव करो
+save_owner_identity_ok	{name} खातर मालिक दा नां ते लॉगिन सेव होया
 staff_name_ph	स्टाफ दा नाम
 staff_copy_hire_ph	(वैकल्पिक) थमां सेटअप दी नकल करो
 staff_copy_hire	इस व्यक्ति दे सेटअप दा इस्तेमाल करो

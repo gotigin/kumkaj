@@ -109,6 +109,19 @@ bill_line_customer	Müştəri
 bill_line_bill_no	Hesab №
 bill_line_time	Vaxt
 bill_line_cashier	Kassir
+bill_meta_empty_help	Boş olanda
+bill_meta_empty_always	Həmişə göstər
+bill_meta_empty_omit	Boş olanda ötür
+bill_meta_empty_tip	«Həmişə göstər» dəyərsiz yalnız etiketi çap edir (məs. Ad:) — boş qonaq hesabı üçün faydalıdır. «Boş olanda ötür» sətiri keçir.
+bill_custom_add	Sətir əlavə et
+bill_custom_remove	Sil
+bill_custom_line	Fərdi sətir
+bill_custom_value_ph	Hər hesabda çap olunan mətn
+bill_preview_sample	Nümunə
+bill_preview_running	Açıq sifariş
+bill_preview_sale	Bağlanmış hesab
+kot_preview_sample	Nümunə
+kot_preview_ticket	Mətbəx bileti
 bill_line_table	Masa
 bill_line_items	Məhsullar
 bill_line_total	Cəmi
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiket bunun altında
 bill_total_own_line	Öz sətri
 bill_total_caption_with	Rəqəmlə birgə
 bill_total_caption_none	Etiketsiz
+bill_total_caption_span_off	Başlıq bir sütunda
+bill_total_caption_span_on	Məbləğə qədər
 bill_total_place_help	Öz sətri bu cəmi ayrıca çap edir. Sütunun altında olduqda rəqəmi həmin mal sütununda, bu sətrin ölçüsü və qalınlığı ilə çap olunur; bir sütun tutulana qədər cəmlər bir sıranı bölüşür, sonra yeni sıra başlayır. Etiket rəqəmlə birgə, başqa sütunun altında gedir və ya buraxılır. Vergi, xidmət, yuvarlaqlaşdırma və ödəniş sətirləri Ara cəm yerini izləyir.
 reprint_incl	Çapda
 reprint_skip	Keç
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo-nu quraşdır
 shop_logo_optional	Mağaza loqosu (istəyə bağlı)
 stock_type_help	Məhsul adını yazın (bir hissəsi kifayətdir), say, sonra düzəldin. Hələ sayılmayan məhsullara bir dəfə İzləməyə başla lazımdır.
 team_owner_help	Kimisə əlavə etmək üçün şəxsi boş buraxın: ad, vəzifə, istifadəçi adı, PIN və istəyə bağlı parol, sonra Əlavə et. Həmin formanı redaktə etmək üçün şəxs seçin — ad, istifadəçi adı, parol, ekranlar və hüquqlar — sonra Saxla. Öz PIN və parolunuz aşağıda bir girişdir. Sahib başqasının PIN-ini dəyişmir.
+team_owner_row_help	Sahibi redaktə edirsiniz: yalnız göstərilən ad, istifadəçi adı və parol. Ekranlar, pul hüquqları və mətbəx stansiyaları sahib üçün tam qalır və burada göstərilmir. Vəzifə quruluşunu dəyişmək üçün heyətdən birini seçin.
+team_owner_identity_hint	Sahib hər ekran və hüququ saxlayır. Saxla yalnız göstərilən adı və girişi dəyişir.
+save_owner_identity	Sahibin adını və girişini saxla
+save_owner_identity_named	{name} adını və girişini saxla
+save_owner_identity_ok	{name} üçün sahib adı və girişi saxlanıldı
 staff_name_ph	Heyət üzvünün adı
 staff_copy_hire_ph	Quraşdırmanı buradan köçür (istəyə bağlı)
 staff_copy_hire	Bu şəxsin quraşdırmasını istifadə et

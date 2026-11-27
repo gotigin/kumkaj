@@ -123,7 +123,7 @@ pub const EN: &[(&str, &str)] = &[
     ("desk_still_booking", "Desk: still booking"),
     ("second_counter_and_rider_phone", "Second counter and rider phone: joined over the office Wi-Fi"),
     ("free_forever_on_your_devices", "Free forever on your devices"),
-    ("nothing_per_rider_user_or", "Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹12k · Priority ₹24k/yr ex-tax — /shop."),
+    ("nothing_per_rider_user_or", "Nothing per rider, user or parcel. Optional Kumkaj Cloud: Steady ₹6k · Swift ₹14k · Priority ₹28k/yr ex-tax — /shop."),
     ("n_9_start", "9 · START"),
     ("one_courier_os_your_parcels", "One courier OS. Your parcels. Your books."),
     ("moklanjo_is_a_complete_courier", "Moklanjo is a complete courier operating system under Kumkaj — Android, Windows and Linux. Riders use the same app in rider mode."),

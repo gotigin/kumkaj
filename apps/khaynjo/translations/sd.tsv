@@ -109,6 +109,19 @@ bill_line_customer	گراهڪ
 bill_line_bill_no	بل نمبر
 bill_line_time	وقت
 bill_line_cashier	ڪيشيئر
+bill_meta_empty_help	جڏهن خالي هجي
+bill_meta_empty_always	هميشہ ڏيکاريو
+bill_meta_empty_omit	خالي هجي ته ڇڏيو
+bill_meta_empty_tip	«هميشہ ڏيکاريو» جڏهن قدر نه هجي صرف ليبل ڇپائي (مثال نالو:) — خالي مھمان بل ڪارآمد. «خالي هجي ته ڇڏيو» لائن ڇڏي ڏئي ٿو.
+bill_custom_add	لائين شامل ڪريو
+bill_custom_remove	هٽايو
+bill_custom_line	حسبِ ضرورت لائين
+bill_custom_value_ph	هر بل تي ڇپجندڙ متن
+bill_preview_sample	نمونو
+bill_preview_running	کليلو «آرڊر»
+bill_preview_sale	طي ٿيل بل
+kot_preview_sample	نمونو
+kot_preview_ticket	«باورچی خانو» ٽڪيٽ
 bill_line_table	ٽيبل
 bill_line_items	شيون
 bill_line_total	ڪل
@@ -146,6 +159,8 @@ bill_total_caption_under	ليبل هن جي هيٺان
 bill_total_own_line	پنهنجي لائن
 bill_total_caption_with	نمبر سان گڏ
 bill_total_caption_none	ليبل ناهي
+bill_total_caption_span_off	عنوان هڪ ڪالم ۾
+bill_total_caption_span_on	انگ تائين پکيڙيو
 bill_total_place_help	“پنهنجي لائن” هي ڪل اڪيلو ڇاپي ٿو. ڪالم جي هيٺان هجي ته ان جو نمبر ان ئي شين واري ڪالم ۾، هن لائن جي ماپ ۽ ٿولهه ۾ ڇپجي ٿو؛ جيستائين ڪو ڪالم ڀرجي نه وڃي ڪل هڪ ئي قطار ورهائين ٿا، پوءِ نئين قطار شروع ٿئي ٿي. ليبل نمبر سان گڏ، ٻئي ڪالم جي هيٺان وڃي ٿو، يا ڇڏيو وڃي ٿو. ٽيڪس، سروس، راؤنڊنگ ۽ ادائگي جون لائنون “ذيلي ڪل” جي پٺيان هلن ٿيون.
 reprint_incl	ڇپائي ۾
 reprint_skip	ڇڏيو
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	سيٽ اپ Khaynjo
 shop_logo_optional	دڪان جو لوگو (اختياري)
 stock_type_help	شيءَ جو نالو ٽائيپ ڪريو (ان جو هڪ حصو ڪافي آهي)، مقدار، پوءِ ترتيب ڏيو. اهڙا شيون جيڪي اڃا ڳڻپيل نه آهن، هڪ دفعي شروع ڪرڻ جي ضرورت آهي.
 team_owner_help	شخص کي خالي ڇڏيو ڪنهن کي شامل ڪرڻ لاءِ: نالو، نوڪري، يوزر نيم، PIN، ۽ هڪ اختياري پاسورڊ، پوءِ شامل ڪريو. ساڳئي قسم جي فارم کي ايڊٽ ڪرڻ لاءِ ڪنهن شخص کي چونڊيو — نالو، يوزر نيم، پاسورڊ، اسڪرين، ۽ حق — پوءِ محفوظ ڪريو. توهان جو پنهنجو PIN ۽ پاسورڊ هيٺ هڪ سائن ان آهن. مالڪ ڪنهن ٻئي جي PIN تبديل نٿو ڪري.
+team_owner_row_help	توهان صرف «مالڪ» سنواريندا آهيو: ظاهر نالو، صارف نالو ۽ پاسورڊ. اسڪرين، پيسن جا حق ۽ «باورچی خانو» اسٽيشن «مالڪ» لاءِ مڪمل رھن ٿا ۽ ھتي نه ڏسجن. دندي جي سيٽ اپ بدلڻ لاءِ «عملو» مان ڪو چونڊيو.
+team_owner_identity_hint	«مالڪ» هر اسڪرين ۽ حق رکي ٿو. «محفوظ ڪريو» صرف ظاهر نالو ۽ لاگ اِن بدلائي ٿو.
+save_owner_identity	«مالڪ» جو نالو ۽ لاگ اِن «محفوظ ڪريو»
+save_owner_identity_named	{name} جو نالو ۽ لاگ اِن «محفوظ ڪريو»
+save_owner_identity_ok	{name} لاءِ «مالڪ» جو نالو ۽ لاگ اِن «محفوظ» ٿيو
 staff_name_ph	عملدار جو نالو
 staff_copy_hire_ph	(اختياري) کان سيٽ اپ نقل ڪريو
 staff_copy_hire	هن شخص جو سيٽ اپ استعمال ڪريو

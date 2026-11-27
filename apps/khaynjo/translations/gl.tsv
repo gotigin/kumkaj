@@ -109,6 +109,19 @@ bill_line_customer	Cliente
 bill_line_bill_no	Núm. de conta
 bill_line_time	Hora
 bill_line_cashier	Caixeiro
+bill_meta_empty_help	Cando está baleiro
+bill_meta_empty_always	Mostrar sempre
+bill_meta_empty_omit	Omitir se está baleiro
+bill_meta_empty_tip	«Mostrar sempre» imprime só a etiqueta (p. ex. Nome:) sen valor — útil para contas de convidado en branco. «Omitir se está baleiro» salta a liña.
+bill_custom_add	Engadir liña
+bill_custom_remove	Quitar
+bill_custom_line	Liña personalizada
+bill_custom_value_ph	Texto impreso en cada conta
+bill_preview_sample	Mostra
+bill_preview_running	Pedido aberto
+bill_preview_sale	Conta pechada
+kot_preview_sample	Mostra
+kot_preview_ticket	Tícket de cociña
 bill_line_table	Mesa
 bill_line_items	Artigos
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiqueta baixo
 bill_total_own_line	Liña propia
 bill_total_caption_with	Co número
 bill_total_caption_none	Sen etiqueta
+bill_total_caption_span_off	Lenda nunha columna
+bill_total_caption_span_on	Ata o importe
 bill_total_place_help	Liña propia imprime este total por si só. Baixo unha columna, o seu número imprímese nesa columna de artigos, co tamaño e o grosor desta liña; os totais comparten unha fila ata que unha columna queda ocupada, e entón comeza unha fila nova. A etiqueta vai co número, baixo outra columna ou omítese. As liñas de imposto, servizo, redondeo e pagamento seguen a Subtotal.
 reprint_incl	Na impresión
 reprint_skip	Saltar
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configurar Khaynjo
 shop_logo_optional	Logotipo da tenda (opcional)
 stock_type_help	Escriba o nome do artigo (abonda unha parte), unha cantidade e logo axuste. Os artigos que aínda non se contan precisan Comezar o seguimento unha vez.
 team_owner_help	Deixe a persoa en branco para engadir unha: nome, posto, nome de usuario, PIN e un contrasinal opcional, logo Engadir. Escolla unha persoa para editar o mesmo formulario — nome, nome de usuario, contrasinal, pantallas e dereitos — e Gardar. O seu PIN e contrasinal son un só inicio de sesión abaixo. O Dono non cambia o PIN de ninguén máis.
+team_owner_row_help	Estás a editar o dono: só nome visible, usuario e contrasinal. As pantallas, dereitos de diñeiro e estacións de cociña mantéñense completas para o dono e non se mostran aquí. Escolle un membro do persoal para cambiar a súa configuración de traballo.
+team_owner_identity_hint	O dono mantén cada pantalla e dereito. Gardar só cambia o nome visible e o acceso.
+save_owner_identity	Gardar nome e acceso do dono
+save_owner_identity_named	Gardar nome e acceso de {name}
+save_owner_identity_ok	Nome e acceso do dono gardados para {name}
 staff_name_ph	Nome do persoal
 staff_copy_hire_ph	Copiar a configuración de (opcional)
 staff_copy_hire	Usar a configuración desta persoa

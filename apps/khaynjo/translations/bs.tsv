@@ -109,6 +109,19 @@ bill_line_customer	Mušterija
 bill_line_bill_no	Br. računa
 bill_line_time	Vrijeme
 bill_line_cashier	Blagajnik
+bill_meta_empty_help	Kad je prazno
+bill_meta_empty_always	Uvijek prikaži
+bill_meta_empty_omit	Preskoči kad je prazno
+bill_meta_empty_tip	«Uvijek prikaži» štampa samo oznaku (npr. Ime:) bez vrijednosti — korisno za prazne račune gosta. «Preskoči kad je prazno» preskače red.
+bill_custom_add	Dodaj red
+bill_custom_remove	Ukloni
+bill_custom_line	Prilagođeni red
+bill_custom_value_ph	Tekst na svakom računu
+bill_preview_sample	Uzorak
+bill_preview_running	Otvorena narudžba
+bill_preview_sale	Naplaćeni račun
+kot_preview_sample	Uzorak
+kot_preview_ticket	Kuhinjski listić
 bill_line_table	Sto
 bill_line_items	Stavke
 bill_line_total	Ukupno
@@ -146,6 +159,8 @@ bill_total_caption_under	Natpis ispod
 bill_total_own_line	Vlastiti red
 bill_total_caption_with	Uz broj
 bill_total_caption_none	Bez natpisa
+bill_total_caption_span_off	Natpis u jednoj koloni
+bill_total_caption_span_on	Do iznosa
 bill_total_place_help	Vlastiti red štampa ovaj zbir zasebno. Ispod kolone njegov broj se štampa u toj koloni stavki, u veličini i debljini ovog reda; zbirovi dijele jedan red dok se neka kolona ne zauzme, a zatim počinje novi red. Natpis ide uz broj, ispod druge kolone ili se izostavlja. Redovi poreza, usluge, zaokruživanja i plaćanja prate Međuzbir.
 reprint_incl	U štampi
 reprint_skip	Preskoči
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Podesite Khaynjo
 shop_logo_optional	Logotip lokala (nije obavezno)
 stock_type_help	Upišite ime stavke (dovoljan je dio), količinu, pa prilagodite. Stavke koje se još ne broje trebaju jednom Počni pratiti.
 team_owner_help	Ostavite osobu praznu da dodate nekoga: ime, posao, korisničko ime, PIN i neobaveznu lozinku, pa Dodaj. Odaberite osobu da uredite isti obrazac — ime, korisničko ime, lozinku, ekrane i prava — pa Sačuvaj. Vaš PIN i lozinka su jedna prijava na dnu. Vlasnik ne mijenja tuđi PIN.
+team_owner_row_help	Uređujete vlasnika: samo prikazano ime, korisničko ime i lozinka. Ekrani, novčana prava i kuhinjske stanice ostaju puna za vlasnika i ne prikazuju se ovdje. Odaberite člana osoblja da promijenite njegovo radno mjesto.
+team_owner_identity_hint	Vlasnik zadržava svaki ekran i pravo. Sačuvaj mijenja samo prikazano ime i prijavu.
+save_owner_identity	Sačuvaj ime i prijavu vlasnika
+save_owner_identity_named	Sačuvaj ime i prijavu korisnika {name}
+save_owner_identity_ok	Ime i prijava vlasnika sačuvani za {name}
 staff_name_ph	Ime osoblja
 staff_copy_hire_ph	Kopiraj postavu od (nije obavezno)
 staff_copy_hire	Koristi postavu ove osobe

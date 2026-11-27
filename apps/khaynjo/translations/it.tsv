@@ -109,6 +109,19 @@ bill_line_customer	Cliente
 bill_line_bill_no	N. conto
 bill_line_time	Ora
 bill_line_cashier	Cassiere
+bill_meta_empty_help	Se vuoto
+bill_meta_empty_always	Mostra sempre
+bill_meta_empty_omit	Ometti se vuoto
+bill_meta_empty_tip	«Mostra sempre» stampa solo l’etichetta (es. Nome:) senza valore — utile per conti ospite vuoti. «Ometti se vuoto» salta la riga.
+bill_custom_add	Aggiungi riga
+bill_custom_remove	Rimuovi
+bill_custom_line	Riga personalizzata
+bill_custom_value_ph	Testo stampato su ogni conto
+bill_preview_sample	Esempio
+bill_preview_running	Ordine aperto
+bill_preview_sale	Conto saldato
+kot_preview_sample	Esempio
+kot_preview_ticket	Scontrino cucina
 bill_line_table	Tavolo
 bill_line_items	Articoli
 bill_line_total	Totale
@@ -146,6 +159,8 @@ bill_total_caption_under	Etichetta sotto
 bill_total_own_line	Riga propria
 bill_total_caption_with	Con il numero
 bill_total_caption_none	Nessuna etichetta
+bill_total_caption_span_off	Didascalia in una colonna
+bill_total_caption_span_on	Fino all’importo
 bill_total_place_help	Riga propria stampa questo totale da solo. Sotto una colonna, il suo numero viene stampato in quella colonna degli articoli, con la dimensione e lo spessore di questa riga; i totali condividono una fila finché una colonna non è occupata, poi inizia una nuova fila. L'etichetta va con il numero, sotto un'altra colonna, oppure viene omessa. Le righe di imposta, servizio, arrotondamento e pagamento seguono Subtotale.
 reprint_incl	In stampa
 reprint_skip	Salta
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configura Khaynjo
 shop_logo_optional	Logo negozio (facoltativo)
 stock_type_help	Scrivi il nome dell'articolo (basta una parte), una quantità, poi regola. Gli articoli non ancora contati hanno bisogno di Inizia conteggio una volta.
 team_owner_help	Lascia la persona vuota per aggiungerne una: nome, lavoro, utente, PIN e password opzionale, poi Aggiungi. Scegli una persona per modificare lo stesso modulo — nome, utente, password, schermate e diritti — poi Salva. Il tuo PIN e password sono un solo accesso in basso. Il proprietario non cambia il PIN di nessun altro.
+team_owner_row_help	Stai modificando il titolare: solo nome visualizzato, utente e password. Schermate, diritti finanziari e postazioni cucina restano completi per il titolare e non compaiono qui. Scegli un membro del personale per cambiare il suo ruolo.
+team_owner_identity_hint	Il titolare mantiene ogni schermata e diritto. Salva modifica solo nome visualizzato e accesso.
+save_owner_identity	Salva nome e accesso del titolare
+save_owner_identity_named	Salva nome e accesso di {name}
+save_owner_identity_ok	Nome e accesso del titolare salvati per {name}
 staff_name_ph	Nome / id del personale
 staff_copy_hire_ph	Copia configurazione da (opzionale)
 staff_copy_hire	Usa la configurazione di questa persona

@@ -109,6 +109,19 @@ bill_line_customer	Ikhasimende
 bill_line_bill_no	Inombolo yebhili
 bill_line_time	Isikhathi
 bill_line_cashier	Ukheshi
+bill_meta_empty_help	Uma kungenalutho
+bill_meta_empty_always	Bonisa njalo
+bill_meta_empty_omit	Yeqa uma kungenalutho
+bill_meta_empty_tip	«Bonisa njalo» khipha ilebula yodwa (isb. Igama:) uma kungenalutho — usizo kumabhili ezezivakashi ezingenalutho. «Yeqa uma kungenalutho» yeqa umugqa.
+bill_custom_add	Engeza umugqa
+bill_custom_remove	Susa
+bill_custom_line	Umugqa wenzo
+bill_custom_value_ph	Umbhalo okhishwa kuwo wonke amabhili
+bill_preview_sample	Isampula
+bill_preview_running	«I-oda yokudlela» evuliwe
+bill_preview_sale	Ibhili eliphothuliwe
+kot_preview_sample	Isampula
+kot_preview_ticket	Ithikithi le «Ikhishi»
 bill_line_table	Itafula lokudlela
 bill_line_items	Izimpahla
 bill_line_total	Ingqikithi
@@ -146,6 +159,8 @@ bill_total_caption_under	Ilebula ngaphansi kwe
 bill_total_own_line	Umugqa walo
 bill_total_caption_with	Kanye nenombolo
 bill_total_caption_none	Ayikho ilebula
+bill_total_caption_span_off	Isihloko esisodwa
+bill_total_caption_span_on	Seluleka kuya enombolweni
 bill_total_place_help	Umugqa walo iphrinta lesi samba sodwa. Ngaphansi kwekholomu, inombolo yaso iphrintwa kuleyo kholomu yezinto, ngosayizi nobukhulu balo mugqa; izamba zabelana ngomugqa owodwa kuze kuthathwe ikholomu, bese kuqala umugqa omusha. Ilebula ihamba nenombolo, ngaphansi kwenye ikholomu, noma ishiywe. Imigqa yentela, yesevisi, yokuzungeza neyenkokhelo ilandela Isamba esincane.
 reprint_incl	Iyaphrinta
 reprint_skip	Yeqa
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Setha Khaynjo
 shop_logo_optional	Ilogo yesitolo (uyazikhethela)
 stock_type_help	Thayipha igama lento yemenyu (ingxenye yayo yanele), inani, bese ulungisa. Izimpahla ezingabaliwe okwamanje zidinga Qala ukulandelela kanye.
 team_owner_help	Shiya umuntu engenalutho ukuze wengeze othile: igama, umsebenzi, igama lomsebenzisi, PIN, kanye nephasiwedi ozikhethela yona, bese u-Engeza. Khetha umuntu ozohlela lolo hlobo lwefomu - igama, igama lomsebenzisi, iphasiwedi, izikrini, namalungelo - bese ulondoloza. Ezakho PIN kanye nephasiwedi ukungena ngemvume okukodwa ezansi. Umnikazi akashintshi PIN yomunye umuntu.
+team_owner_row_help	Uhlela «Umnikazi» kuphela: igama elibonisiwe, igama lomsebenzisi nephasiwedi. Izikrini, amalungelo emali neziteshi ze «Ikhishi» zihlala zigcwele ku «Umnikazi» futhi azibonisi lapha. Khetha ilungu le «Abasebenzi» ukushintsha ukuhlelwa komsebenzi.
+team_owner_identity_hint	«Umnikazi» unazo zonke izikrini namalungelo. «Londoloza» ushintsha igama elibonisiwe nokungena kuphela.
+save_owner_identity	«Londoloza» igama le «Umnikazi» nokungena
+save_owner_identity_named	«Londoloza» igama lika-{name} nokungena
+save_owner_identity_ok	Ku «Londolozwe» igama le «Umnikazi» nokungena u-{name}
 staff_name_ph	Igama labasebenzi
 staff_copy_hire_ph	Kopisha ukusetha kusuka (kuyakhetheka)
 staff_copy_hire	Sebenzisa ukusetha kwalo muntu

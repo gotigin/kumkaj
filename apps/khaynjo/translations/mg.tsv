@@ -109,6 +109,19 @@ bill_line_customer	Mpanjifa
 bill_line_bill_no	Laharana faktiora
 bill_line_time	Ora
 bill_line_cashier	Mpahangy vola
+bill_meta_empty_help	Rehefa foana
+bill_meta_empty_always	Asehoy foana
+bill_meta_empty_omit	Ankasitrahina rehefa foana
+bill_meta_empty_tip	«Asehoy foana» dia manonta ny marika irery (ohatra Anarana:) rehefa tsy misy sanda — mahasoa amin'ny bilaon'ny vahiny foana. «Ankasitrahina rehefa foana» dia mandingana ny andalana.
+bill_custom_add	Ampidiro andalana
+bill_custom_remove	Esory
+bill_custom_line	Andalan-jeto manokana
+bill_custom_value_ph	Lahatsoratra isaorana amin'ny bila rehetra
+bill_preview_sample	Ohatra
+bill_preview_running	«Baiko» misokatra
+bill_preview_sale	Bila voavidy
+kot_preview_sample	Ohatra
+kot_preview_ticket	Tikety «Lakozia»
 bill_line_table	Latabatra
 bill_line_items	Entana
 bill_line_total	Fitambarany
@@ -146,6 +159,8 @@ bill_total_caption_under	Marika eo ambanin'ny
 bill_total_own_line	Tsipika manokana
 bill_total_caption_with	Miaraka amin'ny isa
 bill_total_caption_none	Tsy misy marika
+bill_total_caption_span_off	Lohateny iray andalana
+bill_total_caption_span_on	Mitohy hatramin'ny isa
 bill_total_place_help	Ny Tsipika manokana dia manonta irery ity totaly ity. Eo ambanin'ny tsanganana, ny isany dia atonta ao amin'io tsangan'entana io, amin'ny habe sy hatevin'ity tsipika ity; mizara andalana iray ny totaly mandra-pahafeno tsanganana iray, dia manomboka andalana vaovao. Ny marika dia miaraka amin'ny isa, eo ambanin'ny tsanganana hafa, na tsy atonta. Ny tsipikan'ny hetra, serivisy, fanakaikena ary fandoavam-bola dia manaraka ny Tontalim-bokatra.
 reprint_incl	Ao anaty pirinty
 reprint_skip	Dingano
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Amboary Khaynjo
 shop_logo_optional	Sary famantarana fivarotana (tsy voatery)
 stock_type_help	Soraty ny anaran'ny entana (ampahany aminy ihany dia ampy), ny habetsahana, avy eo amboary. Ny entana izay tsy mbola voaisa dia mila Manomboka manara-maso indray mandeha.
 team_owner_help	Avelao ho foana ny olona hanampy olona: anarana, asa, anarana mpampiasa, PIN, ary teny miafina tsy voatery, avy eo Ampio. Misafidiana olona hanova ilay karazam-pamenoana mitovy — anarana, anarana mpampiasa, teny miafina, efijery, ary zo — avy eo Vonjeo. Ny PIN sy teny miafinao dia iray fidirana eo amin'ny farany. Tsy manova ny PIN olona hafa ny Tompony.
+team_owner_row_help	Manova ny «Tompony» fotsiny ianao: anarana aseho, solonanarana ary tenimiafina. Ny efijery, ny zo ara-bola ary ny toerana «Lakozia» dia feno ho an'ny «Tompony» ary tsy aseho eto. Misafidy iray amin'ny «Mpiasa» hanova ny fametrahana asany.
+team_owner_identity_hint	Ny «Tompony» dia mitazona ny efijery sy ny zo rehetra. Ny «Tehirizo» dia manova ny anarana aseho sy ny fidirana fotsiny.
+save_owner_identity	«Tehirizo» ny anaran'ny «Tompony» sy ny fidirana
+save_owner_identity_named	«Tehirizo» ny anaran'i {name} sy ny fidirana
+save_owner_identity_ok	Vo «Tehirizina» ny anaran'ny «Tompony» sy ny fidirana ho an'i {name}
 staff_name_ph	Anaran'ny mpiasa
 staff_copy_hire_ph	Mandika ny fikirakirana avy amin'ny (tsy voatery)
 staff_copy_hire	Ampiasao ny fikirakiran'ity olona ity

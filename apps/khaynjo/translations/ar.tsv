@@ -109,6 +109,19 @@ bill_line_customer	العميل
 bill_line_bill_no	رقم الفاتورة
 bill_line_time	الوقت
 bill_line_cashier	أمين الصندوق
+bill_meta_empty_help	عند الفراغ
+bill_meta_empty_always	إظهار دائمًا
+bill_meta_empty_omit	تجاهل عند الفراغ
+bill_meta_empty_tip	«إظهار دائمًا» يطبع التسمية وحدها (مثل الاسم:) عندما لا قيمة — مفيد لفواتير الضيوف الفارغة. «تجاهل عند الفراغ» يتخطى السطر.
+bill_custom_add	إضافة سطر
+bill_custom_remove	إزالة
+bill_custom_line	سطر مخصّص
+bill_custom_value_ph	نص يُطبع على كل فاتورة
+bill_preview_sample	عينة
+bill_preview_running	«طلب» مفتوح
+bill_preview_sale	فاتورة مسدّدة
+kot_preview_sample	عينة
+kot_preview_ticket	تذكرة «المطبخ»
 bill_line_table	الطاولة
 bill_line_items	العناصر
 bill_line_total	المجموع
@@ -146,6 +159,8 @@ bill_total_caption_under	التسمية تحت
 bill_total_own_line	سطر مستقل
 bill_total_caption_with	مع الرقم
 bill_total_caption_none	بدون تسمية
+bill_total_caption_span_off	التسمية في عمود واحد
+bill_total_caption_span_on	يمتد حتى الرقم
 bill_total_place_help	«سطر مستقل» يطبع هذا الإجمالي وحده. تحت عمود يُطبع رقمه في عمود الأصناف ذاك، بحجم هذا السطر وسُمكه؛ تتشارك الإجماليات صفًا واحدًا إلى أن يُشغل عمود، فيبدأ صف جديد. التسمية تكون مع الرقم أو تحت عمود آخر أو تُحذف. سطور الضريبة والخدمة والتقريب والدفع تتبع «المجموع الفرعي».
 reprint_incl	في الطباعة
 reprint_skip	تخطي
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	إعداد Khaynjo
 shop_logo_optional	شعار المتجر (اختياري)
 stock_type_help	اكتب اسم الصنف (جزء منه يكفي)، كمية، ثم عدّل. الأصناف غير المعدودة بعد تحتاج بدء العد مرة واحدة.
 team_owner_help	اترك الشخص فارغًا لإضافة أحد: الاسم والعمل واسم المستخدم والرمز وكلمة مرور اختيارية، ثم أضف. اختر شخصًا لتحرير النموذج نفسه — الاسم واسم المستخدم وكلمة المرور والشاشات والصلاحيات — ثم احفظ. رمزك وكلمة مرورك أنت تسجيل دخول واحد في الأسفل. المالك لا يغيّر رمز أي شخص آخر.
+team_owner_row_help	أنت تحرّر «المالك» فقط: اسم العرض واسم المستخدم وكلمة المرور. الشاشات وصلاحيات المال ومحطات «المطبخ» تبقى كاملة لـ«المالك» ولا تُعرض هنا. اختر من «الموظفون» لتغيير إعداد عمله.
+team_owner_identity_hint	«المالك» يحتفظ بكل الشاشات والصلاحيات. «حفظ» يغيّر اسم العرض وتسجيل الدخول فقط.
+save_owner_identity	«حفظ» اسم «المالك» وتسجيل الدخول
+save_owner_identity_named	«حفظ» اسم {name} وتسجيل الدخول
+save_owner_identity_ok	تم «حفظ» اسم «المالك» وتسجيل الدخول لـ {name}
 staff_name_ph	اسم الموظف / المعرف
 staff_copy_hire_ph	نسخ الإعدادات من (اختياري)
 staff_copy_hire	استخدم إعدادات هذه الشخصية

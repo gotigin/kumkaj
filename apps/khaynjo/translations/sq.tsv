@@ -109,6 +109,19 @@ bill_line_customer	Klient
 bill_line_bill_no	Nr. i faturës
 bill_line_time	Ora
 bill_line_cashier	Arkëtar
+bill_meta_empty_help	Kur është bosh
+bill_meta_empty_always	Shfaqe gjithmonë
+bill_meta_empty_omit	Anashkalo kur është bosh
+bill_meta_empty_tip	«Shfaqe gjithmonë» printon vetëm etiketën (p.sh. Emri:) pa vlerë — e dobishme për faturat boshe të mysafirëve. «Anashkalo kur është bosh» kalon rreshtin.
+bill_custom_add	Shto rresht
+bill_custom_remove	Hiq
+bill_custom_line	Rresht i personalizuar
+bill_custom_value_ph	Tekst i printuar në çdo faturë
+bill_preview_sample	Shembull
+bill_preview_running	Porosi e hapur
+bill_preview_sale	Faturë e mbyllur
+kot_preview_sample	Shembull
+kot_preview_ticket	Bileta e kuzhinës
 bill_line_table	Tavolina
 bill_line_items	Artikujt
 bill_line_total	Totali
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiketa nën
 bill_total_own_line	Rresht më vete
 bill_total_caption_with	Me numrin
 bill_total_caption_none	Pa etiketë
+bill_total_caption_span_off	Mbishkrim në një kolonë
+bill_total_caption_span_on	Deri te shuma
 bill_total_place_help	Rresht më vete e printon këtë total më vete. Nën një kolonë, numri i tij printohet në atë kolonë artikujsh, në madhësinë dhe trashësinë e këtij rreshti; totalet ndajnë një radhë derisa një kolonë të zihet, pastaj fillon një radhë e re. Etiketa shkon me numrin, nën një kolonë tjetër, ose lihet jashtë. Rreshtat e taksës, shërbimit, rrumbullakimit dhe pagesës ndjekin Nëntotali.
 reprint_incl	Në shtypje
 reprint_skip	Anashkalo
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Vendos Khaynjo
 shop_logo_optional	Logoja e dyqanit (opsionale)
 stock_type_help	Shkruani emrin e artikullit (mjafton një pjesë), një sasi, pastaj rregulloni. Artikujt që nuk numërohen ende kanë nevojë për Fillo gjurmimin një herë.
 team_owner_help	Lini personin bosh për të shtuar dikë: emër, punë, emër përdoruesi, PIN dhe një fjalëkalim opsional, pastaj Shto. Zgjidhni një person për të ndryshuar të njëjtin lloj formulari — emër, emër përdoruesi, fjalëkalim, ekrane dhe të drejta — pastaj Ruaj. PIN-i dhe fjalëkalimi juaj janë një hyrje në fund. Pronari nuk e ndryshon PIN-in e askujt tjetër.
+team_owner_row_help	Po redaktoni pronarin: vetëm emrin e shfaqur, përdoruesin dhe fjalëkalimin. Ekranet, të drejtat financiare dhe stacionet e kuzhinës mbeten të plota për pronarin dhe nuk shfaqen këtu. Zgjidhni një anëtar të stafit për të ndryshuar vendosjen e punës.
+team_owner_identity_hint	Pronari mban çdo ekran dhe të drejtë. Ruaj ndryshon vetëm emrin e shfaqur dhe hyrjen.
+save_owner_identity	Ruaj emrin dhe hyrjen e pronarit
+save_owner_identity_named	Ruaj emrin dhe hyrjen e {name}
+save_owner_identity_ok	Emri dhe hyrja e pronarit u ruajtën për {name}
 staff_name_ph	Emri i stafit
 staff_copy_hire_ph	Kopjo konfigurimin nga (opsional)
 staff_copy_hire	Përdor konfigurimin e këtij personi

@@ -147,7 +147,7 @@ pub const EN: &[(&str, &str)] = &[
     ("day_to_day_service_needs", "Day-to-day service needs no sign-up and no internet."),
     ("kumkaj_cloud_optional", "Kumkaj Cloud · optional"),
     ("yearly_cloud_if_you_want", "Yearly cloud if you want it"),
-    ("steady_6_000_swift_12", "Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way."),
+    ("steady_6_000_swift_12", "Steady ₹6,000 · Swift ₹14,000 · Priority ₹28,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way."),
     ("shop_plans_at_shop_sign", "Shop plans at /shop · sign in at /account"),
     ("open_cloud_shop", "Open cloud shop"),
     ("questions", "QUESTIONS"),

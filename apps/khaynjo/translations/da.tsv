@@ -109,6 +109,19 @@ bill_line_customer	Kunde
 bill_line_bill_no	Regningsnr.
 bill_line_time	Tid
 bill_line_cashier	Kasserer
+bill_meta_empty_help	Når tom
+bill_meta_empty_always	Vis altid
+bill_meta_empty_omit	Udelad når tom
+bill_meta_empty_tip	«Vis altid» printer kun etiketten (f.eks. Navn:) uden værdi — nyttigt til tomme gæsteregninger. «Udelad når tom» springer linjen over.
+bill_custom_add	Tilføj linje
+bill_custom_remove	Fjern
+bill_custom_line	Brugerdefineret linje
+bill_custom_value_ph	Tekst på hver regning
+bill_preview_sample	Eksempel
+bill_preview_running	Åben ordre
+bill_preview_sale	Afsluttet regning
+kot_preview_sample	Eksempel
+kot_preview_ticket	Køkkenbillet
 bill_line_table	Bord
 bill_line_items	Varer
 bill_line_total	I alt
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiket under
 bill_total_own_line	Egen linje
 bill_total_caption_with	Ved tallet
 bill_total_caption_none	Ingen etiket
+bill_total_caption_span_off	Billedtekst i én kolonne
+bill_total_caption_span_on	Til beløbet
 bill_total_place_help	Egen linje udskriver denne total for sig selv. Under en kolonne udskrives tallet i den varekolonne, i denne linjes størrelse og vægt; totaler deler en række, indtil en kolonne er optaget, så begynder en ny række. Etiketten står ved tallet, under en anden kolonne eller udelades. Linjer for moms, service, afrunding og betaling følger Subtotal.
 reprint_incl	Med i udskrift
 reprint_skip	Spring over
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Sæt Khaynjo op
 shop_logo_optional	Butikslogo (valgfrit)
 stock_type_help	Skriv varenavnet (en del er nok), et antal, og ret så. Varer der ikke tælles endnu, skal have Start optælling én gang.
 team_owner_help	Lad personen stå tom for at tilføje nogen: navn, job, brugernavn, PIN og en valgfri adgangskode, og tryk Tilføj. Vælg en person for at rette den samme slags formular — navn, brugernavn, adgangskode, skærme og rettigheder — og tryk Gem. Din egen PIN og adgangskode er ét login nederst. Ejeren ændrer ikke andres PIN.
+team_owner_row_help	Du redigerer ejeren: kun visningsnavn, brugernavn og adgangskode. Skærme, pengerettigheder og køkkenstationer forbliver fulde for ejeren og vises ikke her. Vælg et personalemedlem for at ændre dennes jobopsætning.
+team_owner_identity_hint	Ejeren beholder hver skærm og rettighed. Gem ændrer kun visningsnavn og login.
+save_owner_identity	Gem ejerens navn og login
+save_owner_identity_named	Gem {name}s navn og login
+save_owner_identity_ok	Ejerens navn og login gemt for {name}
 staff_name_ph	Personalets navn
 staff_copy_hire_ph	Kopiér opsætning fra (valgfrit)
 staff_copy_hire	Brug denne persons opsætning

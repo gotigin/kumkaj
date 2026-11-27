@@ -109,6 +109,19 @@ bill_line_customer	ꯀꯦꯟꯅꯕ
 bill_line_bill_no	ꯕꯤꯜ ꯅꯝꯕꯔ
 bill_line_time	ꯃꯇꯝ
 bill_line_cashier	ꯁꯦꯟ ꯌꯦꯡꯕ
+bill_meta_empty_help	ꯈꯥꯂꯤ ꯍꯧꯖꯤꯕꯥ
+bill_meta_empty_always	ꯑꯃꯨꯛ ꯍꯥꯌꯗꯣꯀꯨꯄ
+bill_meta_empty_omit	ꯈꯥꯂꯤ ꯍꯧꯖꯤꯕꯥ ꯂꯣꯠꯎ
+bill_meta_empty_tip	«ꯑꯃꯨꯛ ꯍꯥꯌꯗꯣꯀꯨꯄ» ꯃꯇꯧꯒꯤ ꯊꯦꯝꯅꯥ ꯂꯦꯕꯜ ꯁꯦꯝꯗꯣꯀꯨꯄ (ꯁꯣꯡꯗꯣꯛ ꯈꯨꯗꯣꯡ꯫) — ꯈꯥꯂꯤ ꯃꯤꯌꯥꯝꯒꯨꯝꯒꯤ ꯕꯤꯜꯇꯥ ꯂꯩꯄꯥꯛꯇꯧꯕꯥ ꯌꯥꯏ꯫ «ꯈꯥꯂꯤ ꯍꯧꯖꯤꯕꯥ ꯂꯣꯠꯎ» ꯂꯥꯏꯟ ꯂꯣꯠꯎ꯫
+bill_custom_add	ꯂꯥꯏꯟ ꯍꯥꯞꯆꯤꯂꯨ
+bill_custom_remove	ꯂꯣꯠꯎ
+bill_custom_line	ꯃꯅꯥ ꯆꯠꯄꯥ ꯂꯥꯏꯟ
+bill_custom_value_ph	ꯍꯣꯛꯇꯧꯕꯥ ꯕꯤꯜꯇꯥ ꯄ꯭ꯔꯤꯟꯠ ꯇꯧꯕꯥ ꯇꯦꯀꯁ꯭ꯇ
+bill_preview_sample	ꯁꯦꯝꯄ꯭ꯂ
+bill_preview_running	ꯍꯥꯡꯖꯤꯟꯕꯥ ꯑꯣꯔꯗꯔ
+bill_preview_sale	ꯁꯦꯠꯇꯜ ꯕꯤꯜ
+kot_preview_sample	ꯁꯦꯝꯄ꯭ꯂ
+kot_preview_ticket	ꯆꯥꯛꯈꯨꯃ ꯇꯤꯛꯦꯠ
 bill_line_table	ꯐꯝ
 bill_line_items	ꯄꯣꯠ
 bill_line_total	ꯑꯄꯨꯟꯕ
@@ -146,6 +159,8 @@ bill_total_caption_under	ꯃꯤꯡ ꯃꯁꯤꯒꯤ ꯃꯈꯥꯗ
 bill_total_own_line	ꯃꯁꯥꯒꯤ ꯂꯥꯏꯟ
 bill_total_caption_with	ꯃꯁꯤꯡꯒ ꯂꯣꯏꯅꯅ
 bill_total_caption_none	ꯃꯤꯡ ꯂꯩꯇꯦ
+bill_total_caption_span_off	ꯀꯦꯄꯁꯟ ꯃꯊꯧ ꯀꯣꯂꯝꯇꯥ
+bill_total_caption_span_on	ꯅꯝꯕꯔꯒꯤ ꯅꯨꯡꯉꯨ ꯍꯦꯟꯕꯤꯡ
 bill_total_place_help	“ꯃꯁꯥꯒꯤ ꯂꯥꯏꯟ” ꯅ ꯑꯄꯨꯟꯕ ꯑꯁꯤ ꯃꯊꯟꯇꯅ ꯐꯣꯡꯏ꯫ ꯀꯣꯂꯝ ꯑꯃꯒꯤ ꯃꯈꯥꯗ ꯂꯩꯔꯕꯗꯤ ꯃꯁꯤꯒꯤ ꯃꯁꯤꯡ ꯑꯗꯨ ꯄꯣꯠꯂꯝꯒꯤ ꯀꯣꯂꯝ ꯑꯗꯨꯗ, ꯂꯥꯏꯟ ꯑꯁꯤꯒꯤ ꯆꯥꯎꯕ ꯑꯃꯁꯨꯡ ꯑꯊꯥꯕꯒꯤ ꯃꯑꯣꯡꯗ ꯐꯣꯡꯏ; ꯀꯣꯂꯝ ꯑꯃ ꯊꯟꯗ꯭ꯔꯤꯐꯥꯎꯕ ꯑꯄꯨꯟꯕꯁꯤꯡꯅ ꯄꯔꯦꯡ ꯑꯃ ꯁꯔꯨꯛ ꯌꯥꯅꯩ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯑꯅꯧꯕ ꯄꯔꯦꯡ ꯍꯧꯏ꯫ ꯃꯤꯡ ꯑꯗꯨ ꯃꯁꯤꯡꯒ ꯂꯣꯏꯅꯅ, ꯑꯇꯣꯞꯄ ꯀꯣꯂꯝꯒꯤ ꯃꯈꯥꯗ ꯆꯠꯏ, ꯅꯠꯇ꯭ꯔꯒ ꯊꯥꯗꯣꯛꯏ꯫ ꯇꯦꯛꯁ, ꯁꯔꯚꯤꯁ, ꯔꯥꯎꯟꯗꯤꯡ ꯑꯃꯁꯨꯡ ꯄꯦꯃꯦꯟꯇꯀꯤ ꯂꯥꯏꯟꯁꯤꯡꯅ “ꯑꯄꯨꯟꯕ ꯑꯄꯤꯛꯄ” ꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯏ꯫
 reprint_incl	ꯄ꯭ꯔꯤꯟꯇꯇ ꯌꯥꯎꯕꯤꯌꯨ
 reprint_skip	ꯀꯣꯏꯗꯣꯛꯎ
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo ꯁꯦꯝꯕꯤꯌꯨ
 shop_logo_optional	ꯀꯦꯟꯐꯝ ꯂꯣꯒꯣ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 stock_type_help	ꯄꯣꯠꯀꯤ ꯃꯤꯡ ꯏꯕꯤꯌꯨ (ꯁꯔꯨꯛ ꯑꯃ ꯌꯥꯏ), ꯃꯁꯤꯡ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯁꯦꯝꯕꯤꯌꯨ. ꯍꯧꯖꯤꯛ ꯂꯤꯁꯤꯡ ꯇꯧꯗꯔꯕ ꯄꯣꯠꯅ ꯂꯤꯁꯤꯡ ꯍꯧꯕꯤꯌꯨ ꯃꯇꯝ ꯑꯃ ꯃꯊꯧ ꯇꯥꯏ.
 team_owner_help	ꯃꯤ ꯍꯥꯏꯗꯕ ꯊꯝꯕꯤꯌꯨ, ꯃꯤꯑꯣꯏ ꯍꯥꯞꯆꯤꯟꯅꯕ: ꯃꯤꯡ, ꯊꯕꯛ, ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ, PIN, ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗ ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ, ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ. ꯃꯤꯑꯣꯏ ꯈꯟꯕꯤꯌꯨ, ꯐꯣꯔꯝ ꯃꯈꯜ ꯑꯗꯨ ꯁꯦꯝꯅꯕ — ꯃꯤꯡ, ꯁꯤꯖꯤꯟꯅꯔꯤꯕꯒꯤ ꯃꯤꯡ, ꯄꯥꯁꯋꯥꯔꯗ, ꯁ꯭ꯛꯔꯤꯟ, ꯑꯃꯁꯨꯡ ꯍꯛ — ꯃꯗꯨꯒꯤ ꯃꯇꯨꯡꯗ ꯊꯝꯕꯤꯌꯨ. ꯅꯍꯥꯛꯀꯤ PIN ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗ ꯃꯈꯥꯗ ꯆꯪꯕ ꯑꯃꯅꯤ. ꯃꯄꯨꯅ ꯃꯤꯑꯣꯏ ꯑꯇꯣꯞꯄꯒꯤ PIN ꯍꯣꯡꯗꯣꯛꯇꯦ.
+team_owner_row_help	ꯅꯁꯤ «ꯃꯄꯨ» ꯑꯁꯤ ꯎꯦꯟ ꯌꯥꯏꯅꯥ ꯏꯗꯤꯠ ꯇꯧꯔꯤ — ꯄ꯭ꯔꯗꯔꯁꯟ ꯈꯨꯗꯣꯡ, ꯋꯁꯥꯡ ꯈꯨꯗꯣꯠ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯣꯔꯗ ꯃꯊꯧꯗꯥ꯫ ꯁ꯭ꯀ꯭ꯔꯤꯟ, ꯋꯥꯖꯇ ꯊꯣꯛꯄꯤꯅꯥ ꯑꯔꯣꯏꯕꯥ ꯌꯥꯎꯒꯨꯝ ꯑꯣꯔꯗꯔ ꯌꯥꯔꯣꯛ ꯍꯧꯕꯥ ꯌꯥꯏ꯫ ꯊꯕꯛꯇꯧꯕꯒꯤ ꯀꯥꯝ-ꯁꯦꯠꯑꯞ ꯃꯥꯟꯅꯕꯥ ꯃꯇꯝ ꯀꯧꯗꯅꯨ ꯈꯥꯟꯅꯕꯥ ꯂꯣꯢꯈꯤ꯫
+team_owner_identity_hint	ꯃꯄꯨꯗꯥ ꯍꯣꯛꯇꯧꯕꯥ ꯁ꯭ꯀ꯭ꯔꯤꯟ ꯑꯃꯁꯨꯡ ꯊꯣꯛ ꯂꯩꯁꯤ꯫ ꯊꯝꯎ ꯄ꯭ꯔꯗꯔꯁꯟ ꯈꯨꯗꯣꯡ ꯑꯃꯁꯨꯡ ꯂꯣꯒꯤꯟ ꯃꯊꯧꯗꯥ ꯃꯅꯤꯡ ꯁꯦꯝꯗꯣꯀꯨꯄ꯫
+save_owner_identity	ꯃꯄꯨꯒꯤ ꯈꯨꯗꯣꯡ ꯑꯃꯁꯨꯡ ꯂꯣꯒꯤꯟ ꯊꯝꯎ
+save_owner_identity_named	{name} ꯒꯤ ꯈꯨꯗꯣꯡ ꯑꯃꯁꯨꯡ ꯂꯣꯒꯤꯟ ꯊꯝꯎ
+save_owner_identity_ok	{name} ꯒꯤꯗꯃꯛ ꯃꯄꯨꯒꯤ ꯈꯨꯗꯣꯡ ꯑꯃꯁꯨꯡ ꯂꯣꯒꯤꯟ ꯊꯝꯎꯔꯁꯤ
 staff_name_ph	ꯊꯕꯛꯇꯧꯕꯒꯤ ꯃꯤꯡ
 staff_copy_hire_ph	ꯁꯦꯝꯕ ꯀꯣꯄꯤ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ)
 staff_copy_hire	ꯃꯤꯑꯣꯏ ꯑꯁꯤꯒꯤ ꯁꯦꯝꯕ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ

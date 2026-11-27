@@ -109,6 +109,19 @@ bill_line_customer	顾客
 bill_line_bill_no	账单号
 bill_line_time	时间
 bill_line_cashier	收银员
+bill_meta_empty_help	为空时
+bill_meta_empty_always	始终显示
+bill_meta_empty_omit	为空则省略
+bill_meta_empty_tip	「始终显示」在无值时只打印标签（如姓名：）— 适合空白客人账单。「为空则省略」跳过该行。
+bill_custom_add	添加行
+bill_custom_remove	删除
+bill_custom_line	自定义行
+bill_custom_value_ph	每张账单上打印的文字
+bill_preview_sample	样例
+bill_preview_running	「订单」进行中
+bill_preview_sale	已结账账单
+kot_preview_sample	样例
+kot_preview_ticket	「厨房」小票
 bill_line_table	桌台
 bill_line_items	项目
 bill_line_total	总计
@@ -146,6 +159,8 @@ bill_total_caption_under	标签放在此列下
 bill_total_own_line	单独一行
 bill_total_caption_with	与数字一起
 bill_total_caption_none	不印标签
+bill_total_caption_span_off	标题占一列
+bill_total_caption_span_on	延伸到数字
 bill_total_place_help	“单独一行”会单独打印此合计。放在某列下方时，其数字会按本行的大小和粗细打印在该商品列内；各合计共用同一排，直到某列已被占用，才另起新排。标签可与数字一起、放在另一列下方，或不打印。税金、服务费、舍入和付款等行会跟随“小计”。
 reprint_incl	列入打印
 reprint_skip	跳过
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	设置 Khaynjo
 shop_logo_optional	店铺标志（可选）
 stock_type_help	输入项目名称（部分即可）、数量，然后调整。尚未盘点的项目需要先开始计数一次。
 team_owner_help	留空此人可新增：姓名、岗位、用户名、PIN 与可选密码，然后添加。选中某人编辑同一类表单——姓名、用户名、密码、屏幕与权限——然后保存。您自己的 PIN 与密码是底部一次登录。店主不改别人的 PIN。
+team_owner_row_help	您正在编辑「店主」的显示名称、用户名和密码。画面、金钱权限和「厨房」工位对「店主」保持全部权限，此处不显示。请选择「员工」以更改其岗位设置。
+team_owner_identity_hint	「店主」保留所有画面和权限。「保存」仅更改显示名称和登录。
+save_owner_identity	「保存」「店主」姓名和登录
+save_owner_identity_named	「保存」{name} 的姓名和登录
+save_owner_identity_ok	已「保存」{name} 的「店主」姓名和登录
 staff_name_ph	员工姓名/编号
 staff_copy_hire_ph	从（可选）复制设置
 staff_copy_hire	使用此人的设置

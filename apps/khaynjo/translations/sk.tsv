@@ -109,6 +109,19 @@ bill_line_customer	Zákazník
 bill_line_bill_no	Č. účtu
 bill_line_time	Čas
 bill_line_cashier	Pokladník
+bill_meta_empty_help	Keď prázdne
+bill_meta_empty_always	Vždy zobraziť
+bill_meta_empty_omit	Vynechať keď prázdne
+bill_meta_empty_tip	«Vždy zobraziť» tlačí len popisok (napr. Meno:) bez hodnoty — užitočné pri prázdnych hosťovských účtoch. «Vynechať keď prázdne» preskočí riadok.
+bill_custom_add	Pridať riadok
+bill_custom_remove	Odstrániť
+bill_custom_line	Vlastný riadok
+bill_custom_value_ph	Text na každom účte
+bill_preview_sample	Ukážka
+bill_preview_running	Otvorená objednávka
+bill_preview_sale	Uhradený účet
+kot_preview_sample	Ukážka
+kot_preview_ticket	Kuchynský lístok
 bill_line_table	Jedálenský stôl
 bill_line_items	Položky
 bill_line_total	Celkom
@@ -146,6 +159,8 @@ bill_total_caption_under	Štítok pod
 bill_total_own_line	Vlastný riadok
 bill_total_caption_with	Pri čísle
 bill_total_caption_none	Bez štítka
+bill_total_caption_span_off	Popisok v jednom stĺpci
+bill_total_caption_span_on	Až k sume
 bill_total_place_help	Vlastný riadok tlačí tento súčet samostatne. Pod stĺpcom sa jeho číslo tlačí v danom stĺpci položiek, vo veľkosti a hrúbke tohto riadka; súčty zdieľajú jeden rad, kým nie je niektorý stĺpec obsadený, potom sa začne nový rad. Štítok je pri čísle, pod iným stĺpcom alebo sa vynechá. Riadky dane, obsluhy, zaokrúhlenia a platby sa riadia položkou Medzisúčet.
 reprint_incl	V tlači
 reprint_skip	Preskočiť
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Nastaviť Khaynjo
 shop_logo_optional	Logo obchodu (voliteľné)
 stock_type_help	Zadajte názov položky (stačí časť), množstvo a potom upravte. Položky, ktoré ešte nie sú započítané, je potrebné raz spustiť sledovanie.
 team_owner_help	Ak chcete niekoho pridať, nechajte osobu prázdnu: meno, prácu, používateľské meno, PIN a voliteľné heslo, potom kliknite na Pridať. Vyberte osobu, ktorá bude upravovať rovnaký druh formulára – meno, používateľské meno, heslo, obrazovky a práva – a potom Uložiť. Vaše vlastné PIN a heslo sú jedným prihlasovacím znakom v spodnej časti. Vlastník nemení PIN nikoho iného.
+team_owner_row_help	Upravujete vlastníka: len zobrazované meno, používateľské meno a heslo. Obrazovky, peňažné práva a kuchynské stanice zostávajú u vlastníka plné a nie sú tu. Vyberte člena personálu na zmenu jeho nastavenia práce.
+team_owner_identity_hint	Vlastník si ponecháva každú obrazovku a právo. Uložiť mení len zobrazované meno a prihlásenie.
+save_owner_identity	Uložiť meno a prihlásenie vlastníka
+save_owner_identity_named	Uložiť meno a prihlásenie používateľa {name}
+save_owner_identity_ok	Meno a prihlásenie vlastníka uložené pre {name}
 staff_name_ph	Meno personálu
 staff_copy_hire_ph	Kopírovať nastavenie z (voliteľné)
 staff_copy_hire	Použite nastavenie tejto osoby

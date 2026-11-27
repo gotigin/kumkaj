@@ -109,6 +109,19 @@ bill_line_customer	Cliente
 bill_line_bill_no	Factura N.º
 bill_line_time	Tiempo
 bill_line_cashier	Cajero
+bill_meta_empty_help	Sapa ch’usaq kaptin
+bill_meta_empty_always	Sapa kutita rikuchiy
+bill_meta_empty_omit	Sapa ch’usaq kaptin qunqay
+bill_meta_empty_tip	«Sapa kutita rikuchiy» chanin mana kaptin qillqatalla churakuq (sut’i Sutin:) — allin qhawaq billkunapaq. «Sapa ch’usaq kaptin qunqay» sineta ruwayta qispichin.
+bill_custom_add	Sineta yapay
+bill_custom_remove	Qulluy
+bill_custom_line	Sapanchasqa sineta
+bill_custom_value_ph	Sapa billpi ch’impunapaq qillqa
+bill_preview_sample	Munachiy
+bill_preview_running	«Mañakuy» kichasqa
+bill_preview_sale	Bill tukusqa
+kot_preview_sample	Munachiy
+kot_preview_ticket	«Yanuna wasi» tikiti
 bill_line_table	Mesa
 bill_line_items	Imakuna
 bill_line_total	Llapan
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiqueta kaypa uranpi
 bill_total_own_line	Kikin linea
 bill_total_caption_with	Yupaywan kuska
 bill_total_caption_none	Mana etiquetayuq
+bill_total_caption_span_off	Huk columnapi sut’inchay
+bill_total_caption_span_on	Yupaykama mast’ariy
 bill_total_place_help	Kikin linea kay llapanta sapallanta imprimin. Columnap uranpi kaptinqa, yupayninqa chay imakunap columnanpi imprimikun, kay lineap sayayninpi rakhunpipas; llapankunaqa huk filallata rakinakunku huk columna hunt'akunankama, chaymantaqa musuq fila qallarin. Etiquetaqa yupaywan kuska, huk columnap uranpi rin, utaq mana churakunchu. Impuesto, servicio, redondeo, pago lineakunaqa Uray llapan nisqata qatinku.
 reprint_incl	Impreso nisqapi
 reprint_skip	Saltay
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configuración Khaynjo .
 shop_logo_optional	Tiendapa logotipon (munasqa) .
 stock_type_help	Menú nisqapi kaqpa sutinta qillqay (huk partenmi suficiente), hayka kasqanmanta, chaymanta allichay. Menú kaqpi imakuna manaraq yupasqachu necesitanku Huk kuti qatiyta qallariy.
 team_owner_help	Runata ch'usaq saqiy pitapas yapanaykipaq: suti, llamk'ana, username, PIN, chaymanta huk munasqa contraseña, chaymanta Yanapay. Huk runata akllay chay kikin laya formulariota llamk'achinanpaq — suti, username, contraseña, pantallakuna chaymanta derechokuna — chaymanta Waqaychay. Kikin PIN chaymanta contraseña huk yaykuymi uraypi. Dueñoqa manan hukpa PIN nisqataqa cambianchu.
+team_owner_row_help	«Dueño» nisqataqa llamk’achkanki: rikuchisqa sutin, usuario sutin, contraseñallam. Pantallas, qullqi hayñinkuna, «Yanuna wasi» estacionkuna hunt’asqa «Dueñopaq» hinaspapas mayqenpas mana rikuchikunchu. «Personal» manta hapiy trabajopaq allichay.
+team_owner_identity_hint	«Dueño» llapa pantalla, hayñinta apan. «Waqaychay» rikuchisqa sutinta, yaykuytallam hukchay.
+save_owner_identity	«Dueño» sutinta, yaykuyta «Waqaychay»
+save_owner_identity_named	{name} sutinta, yaykuyta «Waqaychay»
+save_owner_identity_ok	{name}paq «Dueño» sutin, yaykuynin «waqaychasqan»
 staff_name_ph	Llamkaqkunapa sutin
 staff_copy_hire_ph	(munasqa) nisqamanta churayta copiay.
 staff_copy_hire	Kay runap churayninta llamk'achiy

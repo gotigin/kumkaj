@@ -1141,6 +1141,22 @@ script_mod! {
                         }
                         // Same NavLink chrome as Menus/FAQ — not an HTML overlay.
                         go_login := NavLink{text: "Login"}
+                        go_github := View{
+                            width: 44 height: 44
+                            flow: Overlay
+                            align: Align{x: 0.5 y: 0.5}
+                            View{
+                                width: Fill height: Fill
+                                flow: Down
+                                align: Align{x: 0.5 y: 0.5}
+                                Image{
+                                    width: 18 height: 18
+                                    fit: ImageFit.Stretch
+                                    src: crate_resource("self:resources/media/github-mark.webp")
+                                }
+                            }
+                            open_nav_github := HitBtn{}
+                        }
                         go_lang := NavLink{text: "EN"}
                         bar_cta := BarCta{text: "Get it free"}
                     }
@@ -1710,7 +1726,7 @@ script_mod! {
                                         draw_bg +: {color: #xFBF4EE}
                                         Pill{label.body: "Kumkaj Cloud · optional"}
                                         H3{body: "Yearly cloud if you want it"}
-                                        Body{body: "Steady ₹6,000 · Swift ₹12,000 · Priority ₹24,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way."}
+                                        Body{body: "Steady ₹6,000 · Swift ₹14,000 · Priority ₹28,000 / year ex-tax (tax at checkout). Custom is a quote — may be below Steady or above Priority. Local Khaynjo stays free forever either way."}
                                         Small{body: "Shop plans at /shop · sign in at /account"}
                                         go_cloud_shop := PrimaryBtn{text: "Open cloud shop"}
                                     }
@@ -1792,8 +1808,11 @@ script_mod! {
                                             fit: ImageFit.Stretch
                                             src: crate_resource("self:resources/media/app-icon.webp")
                                         }
+                                        // Fill (not Fit): OnRedBody is width Fill + wrap; Fit
+                                        // collapsed the column to ~one glyph and shredded the
+                                        // company line (auth-chrome commit).
                                         View{
-                                            width: Fit height: Fit
+                                            width: Fill height: Fit
                                             flow: Down
                                             spacing: 2
                                             Markdown{

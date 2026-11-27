@@ -109,6 +109,19 @@ bill_line_customer	Bezeroa
 bill_line_bill_no	Kontu zk.
 bill_line_time	Ordua
 bill_line_cashier	Kutxazaina
+bill_meta_empty_help	Hutsik dagoenean
+bill_meta_empty_always	Beti erakutsi
+bill_meta_empty_omit	Utzi hutsik dagoenean
+bill_meta_empty_tip	«Beti erakutsi» etiketa bakarrik inprimatzen du (adib. Izena:) baliorik gabe — gonbidatuen kontu hutsentzat erabilgarria. «Utzi hutsik dagoenean» lerroa saltatzen du.
+bill_custom_add	Gehitu lerroa
+bill_custom_remove	Kendu
+bill_custom_line	Lerro pertsonalizatua
+bill_custom_value_ph	Kontu bakoitzean inprimatzen den testua
+bill_preview_sample	Lagina
+bill_preview_running	Eskaera irekia
+bill_preview_sale	Kontua itxita
+kot_preview_sample	Lagina
+kot_preview_ticket	Sukaldeko tiketa
 bill_line_table	Mahaia
 bill_line_items	Artikuluak
 bill_line_total	Guztira
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiketa honen azpian
 bill_total_own_line	Lerro propioa
 bill_total_caption_with	Zenbakiarekin
 bill_total_caption_none	Etiketarik ez
+bill_total_caption_span_off	Goitibehera zutabe batean
+bill_total_caption_span_on	Zenbakiraino
 bill_total_place_help	Lerro propioa aukerak guztizko hau bakarrik inprimatzen du. Zutabe baten azpian, bere zenbakia artikuluen zutabe horretan inprimatzen da, lerro honen tamainan eta lodieran; guztizkoek errenkada bat partekatzen dute zutabe bat hartuta egon arte, eta orduan errenkada berria hasten da. Etiketa zenbakiarekin doa, beste zutabe baten azpian, edo kendu egiten da. Zerga, zerbitzu, biribiltze eta ordainketa lerroek Azpitotala jarraitzen dute.
 reprint_incl	Inprimatuan
 reprint_skip	Saltatu
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Konfiguratu Khaynjo
 shop_logo_optional	Dendaren logotipoa (aukerakoa)
 stock_type_help	Idatzi artikuluaren izena (zati bat nahikoa da), kopuru bat, gero doitu. Oraindik zenbatzen ez diren artikuluek Hasi jarraipena behin behar dute.
 team_owner_help	Utzi pertsona hutsik norbait gehitzeko: izena, lana, erabiltzaile-izena, PINa eta aukerako pasahitza, gero Gehitu. Aukeratu pertsona bat formulario mota bera editatzeko — izena, erabiltzaile-izena, pasahitza, pantailak eta eskubideak — gero Gorde. Zure PINa eta pasahitza saio-hasiera bakarra dira behean. Jabeak ez du inoren PINa aldatzen.
+team_owner_row_help	Jabea editatzen ari zara: erakusteko izena, erabiltzailea eta pasahitza soilik. Pantailak, diru-eskubideak eta sukalde-estazioak jabean osoak geratzen dira eta hemen ez dira erakusten. Aukeratu langile bat lan-postuaren konfigurazioa aldatzeko.
+team_owner_identity_hint	Jabeak pantaila eta eskubide guztiak mantentzen ditu. Gorde erakusteko izena eta saioa soilik aldatzen du.
+save_owner_identity	Gorde jabearen izena eta saioa
+save_owner_identity_named	Gorde {name}(r)en izena eta saioa
+save_owner_identity_ok	Jabearen izena eta saioa gorde dira {name}(r)entzat
 staff_name_ph	Langilearen izena
 staff_copy_hire_ph	Kopiatu konfigurazioa hemendik (aukerakoa)
 staff_copy_hire	Erabili pertsona honen konfigurazioa

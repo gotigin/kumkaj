@@ -109,6 +109,19 @@ bill_line_customer	ਗਾਹਕ
 bill_line_bill_no	ਬਿੱਲ ਨੰ.
 bill_line_time	ਸਮਾਂ
 bill_line_cashier	ਕੈਸ਼ੀਅਰ
+bill_meta_empty_help	ਜਦ ਖਾਲੀ ਹੋਵੇ
+bill_meta_empty_always	ਹਮੇਸ਼ਾ ਦਿਖਾਓ
+bill_meta_empty_omit	ਖਾਲੀ ਹੋਣ ਤੇ ਛੱਡੋ
+bill_meta_empty_tip	«ਹਮੇਸ਼ਾ ਦਿਖਾਓ» ਬਿਨਾ ਮੁੱਲ ਦੇ ਸਿਰਫ਼ ਲੇਬਲ ਛਾਪਦਾ ਹੈ (ਜਿਵੇਂ ਨਾਮ:) — ਖਾਲੀ ਮਹਿਮਾਨ ਬਿੱਲ ਲਈ ਲਾਭਦਾਇਕ। «ਖਾਲੀ ਹੋਣ ਤੇ ਛੱਡੋ» ਲਾਈਨ ਛੱਡ ਦਿੰਦਾ ਹੈ।
+bill_custom_add	ਲਾਈਨ ਜੋੜੋ
+bill_custom_remove	ਹਟਾਓ
+bill_custom_line	ਕਸਟਮ ਲਾਈਨ
+bill_custom_value_ph	ਹਰ ਬਿੱਲ ਤੇ ਛਪਣ ਵਾਲਾ ਟੈਕਸਟ
+bill_preview_sample	ਨਮੂਨਾ
+bill_preview_running	ਖੁੱਲ੍ਹਾ ਆਰਡਰ
+bill_preview_sale	ਨਿਪਟਿਆ ਬਿੱਲ
+kot_preview_sample	ਨਮੂਨਾ
+kot_preview_ticket	ਰਸੋਈ ਟਿਕਟ
 bill_line_table	ਮੇਜ਼
 bill_line_items	ਆਈਟਮ
 bill_line_total	ਕੁੱਲ
@@ -146,6 +159,8 @@ bill_total_caption_under	ਲੇਬਲ ਇਸ ਦੇ ਹੇਠਾਂ
 bill_total_own_line	ਆਪਣੀ ਕਤਾਰ
 bill_total_caption_with	ਗਿਣਤੀ ਦੇ ਨਾਲ
 bill_total_caption_none	ਲੇਬਲ ਨਹੀਂ
+bill_total_caption_span_off	ਸੁਰਖੀ ਇੱਕ ਕਾਲਮ ਵਿੱਚ
+bill_total_caption_span_on	ਗਿਣਤੀ ਤੱਕ ਫੈਲਾਓ
 bill_total_place_help	“ਆਪਣੀ ਕਤਾਰ” ਇਸ ਕੁੱਲ ਨੂੰ ਇਕੱਲਾ ਛਾਪਦਾ ਹੈ। ਕਾਲਮ ਦੇ ਹੇਠਾਂ ਹੋਣ 'ਤੇ ਇਸ ਦੀ ਗਿਣਤੀ ਉਸੇ ਆਈਟਮ ਕਾਲਮ ਵਿੱਚ, ਇਸ ਕਤਾਰ ਦੇ ਨਾਪ ਅਤੇ ਮੋਟਾਈ ਵਿੱਚ ਛਪਦੀ ਹੈ; ਜਦੋਂ ਤੱਕ ਕੋਈ ਕਾਲਮ ਭਰ ਨਾ ਜਾਵੇ ਕੁੱਲ ਇੱਕੋ ਲੜੀ ਵੰਡਦੇ ਹਨ, ਫਿਰ ਨਵੀਂ ਲੜੀ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ। ਲੇਬਲ ਗਿਣਤੀ ਦੇ ਨਾਲ, ਦੂਜੇ ਕਾਲਮ ਦੇ ਹੇਠਾਂ ਜਾਂਦਾ ਹੈ, ਜਾਂ ਛੱਡ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। ਟੈਕਸ, ਸੇਵਾ, ਰਾਊਂਡਿੰਗ ਅਤੇ ਭੁਗਤਾਨ ਦੀਆਂ ਕਤਾਰਾਂ “ਉਪ ਕੁੱਲ” ਦੇ ਪਿੱਛੇ ਚੱਲਦੀਆਂ ਹਨ।
 reprint_incl	ਛਪਾਈ ਵਿੱਚ
 reprint_skip	ਛੱਡੋ
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo ਸੈੱਟ ਕਰੋ
 shop_logo_optional	ਦੁਕਾਨ ਲੋਗੋ (ਵਿਕਲਪਿਕ)
 stock_type_help	ਆਈਟਮ ਦਾ ਨਾਂ ਲਿਖੋ (ਉਸਦਾ ਹਿੱਸਾ ਹੀ ਕਾਫ਼ੀ ਹੈ), ਮਾਤਰਾ ਲਿਖੋ, ਫਿਰ ਠੀਕ ਕਰੋ। ਜੋ ਆਈਟਮਾਂ ਅਜੇ ਗਿਣੀਆਂ ਨਹੀਂ ਉਨ੍ਹਾਂ ਨੂੰ ਇੱਕ ਵਾਰ «ਗਿਣਤੀ ਸ਼ੁਰੂ» ਚਾਹੀਦਾ ਹੈ।
 team_owner_help	ਕਿਸੇ ਨੂੰ ਜੋੜਨ ਲਈ ਵਿਅਕਤੀ ਖਾਲੀ ਛੱਡੋ: ਨਾਂ, ਕੰਮ, ਵਰਤੋਂਕਾਰ ਨਾਂ, PIN ਅਤੇ ਚੋਣਵਾਂ ਪਾਸਵਰਡ, ਫਿਰ ਜੋੜੋ। ਉਸੇ ਕਿਸਮ ਦਾ ਫਾਰਮ — ਨਾਂ, ਵਰਤੋਂਕਾਰ ਨਾਂ, ਪਾਸਵਰਡ, ਸਕਰੀਨਾਂ ਅਤੇ ਹੱਕ — ਸੋਧਣ ਲਈ ਵਿਅਕਤੀ ਚੁਣੋ, ਫਿਰ ਸੇਵ ਕਰੋ। ਤੁਹਾਡਾ ਆਪਣਾ PIN ਅਤੇ ਪਾਸਵਰਡ ਹੇਠਾਂ ਇੱਕ ਸਾਈਨ-ਇਨ ਹੈ। Owner ਕਿਸੇ ਹੋਰ ਦਾ PIN ਨਹੀਂ ਬਦਲਦਾ।
+team_owner_row_help	ਤੁਸੀਂ «ਮਾਲਕ» ਸੰਪਾਦਨ ਕਰ ਰਹੇ ਹੋ: ਸਿਰਫ਼ ਦਿਖਾਉਣ ਵਾਲਾ ਨਾਮ, ਯੂਜ਼ਰਨੇਮ ਅਤੇ ਪਾਸਵਰਡ। ਸਕ੍ਰੀਨਾਂ, ਪੈਸੇ ਦੇ ਅਧਿਕਾਰ ਅਤੇ ਰਸੋਈ ਸਟੇਸ਼ਨ ਮਾਲਕ ਲਈ ਪੂਰੇ ਰਹਿੰਦੇ ਹਨ ਅਤੇ ਇੱਥੇ ਨਹੀਂ ਦਿਖਾਏ ਜਾਂਦੇ। ਸਟਾਫ਼ ਮੈਂਬਰ ਦਾ ਕੰਮ ਸੈਟਅੱਪ ਬਦਲਣ ਲਈ ਉਸਨੂੰ ਚੁਣੋ।
+team_owner_identity_hint	ਮਾਲਕ ਕੋਲ ਹਰ ਸਕ੍ਰੀਨ ਅਤੇ ਅਧਿਕਾਰ ਰਹਿੰਦਾ ਹੈ। ਸੇਵ ਕਰੋ ਸਿਰਫ਼ ਦਿਖਾਉਣ ਵਾਲਾ ਨਾਮ ਅਤੇ ਲੌਗਇਨ ਬਦਲਦਾ ਹੈ।
+save_owner_identity	ਮਾਲਕ ਦਾ ਨਾਮ ਅਤੇ ਲੌਗਇਨ ਸੇਵ ਕਰੋ
+save_owner_identity_named	{name} ਦਾ ਨਾਮ ਅਤੇ ਲੌਗਇਨ ਸੇਵ ਕਰੋ
+save_owner_identity_ok	{name} ਲਈ ਮਾਲਕ ਦਾ ਨਾਮ ਅਤੇ ਲੌਗਇਨ ਸੇਵ ਹੋਇਆ
 staff_name_ph	ਸਟਾਫ਼ ਨਾਂ / ਆਈਡੀ
 staff_copy_hire_ph	ਸੈਟਅੱਪ ਕਿਸ ਤੋਂ ਕਾਪੀ ਕਰੀਏ (ਵਿਕਲਪਿਕ)
 staff_copy_hire	ਇਸ ਵਿਅਕਤੀ ਦਾ ਸੈਟਅੱਪ ਵਰਤੋ

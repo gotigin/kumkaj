@@ -109,6 +109,19 @@ bill_line_customer	Client
 bill_line_bill_no	Nr. notă
 bill_line_time	Ora
 bill_line_cashier	Casier
+bill_meta_empty_help	Când e gol
+bill_meta_empty_always	Arată mereu
+bill_meta_empty_omit	Omitere când e gol
+bill_meta_empty_tip	«Arată mereu» tipărește doar eticheta (ex. Nume:) fără valoare — util pentru note goale pentru oaspeți. «Omitere când e gol» sare peste rând.
+bill_custom_add	Adaugă linie
+bill_custom_remove	Elimină
+bill_custom_line	Linie personalizată
+bill_custom_value_ph	Text tipărit pe fiecare notă
+bill_preview_sample	Exemplu
+bill_preview_running	Comandă deschisă
+bill_preview_sale	Notă încasată
+kot_preview_sample	Exemplu
+kot_preview_ticket	Tichet bucătărie
 bill_line_table	Masă
 bill_line_items	Articole
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Eticheta sub
 bill_total_own_line	Rând propriu
 bill_total_caption_with	Lângă număr
 bill_total_caption_none	Fără etichetă
+bill_total_caption_span_off	Legendă pe o coloană
+bill_total_caption_span_on	Până la sumă
 bill_total_place_help	Rând propriu tipărește acest total separat. Sub o coloană, numărul său se tipărește în acea coloană de articole, cu mărimea și grosimea acestui rând; totalurile împart un șir până când o coloană este ocupată, apoi începe un șir nou. Eticheta stă lângă număr, sub o altă coloană sau este omisă. Rândurile de taxă, serviciu, rotunjire și plată urmează Subtotal.
 reprint_incl	În tipar
 reprint_skip	Sari
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configurează Khaynjo
 shop_logo_optional	Logo local (opțional)
 stock_type_help	Tastează numele articolului (o parte e de ajuns), o cantitate, apoi ajustează. Articolele care nu sunt numărate încă au nevoie o dată de Începe urmărirea.
 team_owner_help	Lasă persoana goală ca să adaugi pe cineva: nume, post, nume de utilizator, PIN și o parolă opțională, apoi Adaugă. Alege o persoană ca să editezi același fel de formular — nume, nume de utilizator, parolă, ecrane și drepturi — apoi Salvează. PIN-ul și parola ta sunt o singură autentificare jos. Proprietarul nu schimbă PIN-ul altcuiva.
+team_owner_row_help	Editați proprietarul: doar numele afișat, utilizatorul și parola. Ecranele, drepturile financiare și stațiile de bucătărie rămân complete pentru proprietar și nu apar aici. Alegeți un membru al personalului pentru a-i modifica configurarea postului.
+team_owner_identity_hint	Proprietarul păstrează fiecare ecran și drept. Salvează modifică doar numele afișat și autentificarea.
+save_owner_identity	Salvează numele și autentificarea proprietarului
+save_owner_identity_named	Salvează numele și autentificarea lui {name}
+save_owner_identity_ok	Nume și autentificare proprietar salvate pentru {name}
 staff_name_ph	Nume angajat
 staff_copy_hire_ph	Copiază configurarea de la (opțional)
 staff_copy_hire	Folosește configurarea acestei persoane

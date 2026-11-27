@@ -1041,6 +1041,9 @@ impl MatchEvent for App {
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
+        if self.ui.button(cx, ids!(open_nav_github)).clicked(actions) {
+            open_link(cx, "https://github.com/gotigin/kumkaj/tree/main/apps/kirano");
+        }
         if self.ui.button(cx, ids!(go_lang)).clicked(actions) {
             open_lang_picker(cx);
         }

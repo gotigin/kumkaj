@@ -109,6 +109,19 @@ bill_line_customer	Client
 bill_line_bill_no	Núm. de compte
 bill_line_time	Hora
 bill_line_cashier	Caixer
+bill_meta_empty_help	Quan és buit
+bill_meta_empty_always	Mostra sempre
+bill_meta_empty_omit	Omet quan és buit
+bill_meta_empty_tip	«Mostra sempre» imprime només l’etiqueta (p. ex. Nom:) sense valor — útil per a comptes de convidat en blanc. «Omet quan és buit» salta la línia.
+bill_custom_add	Afegeix línia
+bill_custom_remove	Treu
+bill_custom_line	Línia personalitzada
+bill_custom_value_ph	Text imprès a cada compte
+bill_preview_sample	Mostra
+bill_preview_running	Comanda oberta
+bill_preview_sale	Compte tancat
+kot_preview_sample	Mostra
+kot_preview_ticket	Tiquet de cuina
 bill_line_table	Taula
 bill_line_items	Articles
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiqueta sota
 bill_total_own_line	Línia pròpia
 bill_total_caption_with	Amb el nombre
 bill_total_caption_none	Sense etiqueta
+bill_total_caption_span_off	Llegenda en una columna
+bill_total_caption_span_on	Fins a l’import
 bill_total_place_help	Línia pròpia imprimeix aquest total tot sol. Sota una columna, el seu nombre s'imprimeix en aquella columna d'articles, amb la mida i el gruix d'aquesta línia; els totals comparteixen una fila fins que una columna queda ocupada, i llavors comença una fila nova. L'etiqueta va amb el nombre, sota una altra columna o s'omet. Les línies d'impost, servei, arrodoniment i pagament segueixen Subtotal.
 reprint_incl	A la impressió
 reprint_skip	Omet
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configura Khaynjo
 shop_logo_optional	Logotip de la botiga (opcional)
 stock_type_help	Escriviu el nom de l'article (en basta una part), una quantitat i després ajusteu. Els articles que encara no es compten necessiten Comença el seguiment un cop.
 team_owner_help	Deixeu la persona en blanc per afegir-ne una: nom, feina, nom d'usuari, PIN i una contrasenya opcional, després Afegeix. Trieu una persona per editar el mateix formulari — nom, nom d'usuari, contrasenya, pantalles i drets — i Desa. El vostre PIN i contrasenya són un sol inici de sessió a baix. El Propietari no canvia el PIN de ningú altre.
+team_owner_row_help	Esteu editant el propietari: només nom visible, usuari i contrasenya. Les pantalles, drets de diners i estacions de cuina continuen plenes pel propietari i no es mostren aquí. Trieu un membre del personal per canviar-ne la configuració de feina.
+team_owner_identity_hint	El propietari manté cada pantalla i dret. Desa només canvia el nom visible i l’accés.
+save_owner_identity	Desa nom i accés del propietari
+save_owner_identity_named	Desa nom i accés de {name}
+save_owner_identity_ok	Nom i accés del propietari desats per a {name}
 staff_name_ph	Nom del personal
 staff_copy_hire_ph	Copia la configuració de (opcional)
 staff_copy_hire	Fes servir la configuració d'aquesta persona

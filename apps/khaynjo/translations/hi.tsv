@@ -109,6 +109,19 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल नं.
 bill_line_time	समय
 bill_line_cashier	कैशियर
+bill_meta_empty_help	जब खाली हो
+bill_meta_empty_always	हमेशा दिखाएँ
+bill_meta_empty_omit	खाली होने पर छोड़ें
+bill_meta_empty_tip	«हमेशा दिखाएँ» बिना मान के सिर्फ़ लेबल छापता है (जैसे नाम:) — खाली मेहमान बिल के लिए उपयोगी। «खाली होने पर छोड़ें» पूरी पंक्ति छोड़ देता है।
+bill_custom_add	पंक्ति जोड़ें
+bill_custom_remove	हटाएँ
+bill_custom_line	अनुकूल पंक्ति
+bill_custom_value_ph	हर बिल पर छपने वाला पाठ
+bill_preview_sample	नमूना
+bill_preview_running	खुला ऑर्डर
+bill_preview_sale	निपटा बिल
+kot_preview_sample	नमूना
+kot_preview_ticket	रसोई टिकट
 bill_line_table	मेज़
 bill_line_items	आइटम
 bill_line_total	कुल
@@ -146,6 +159,8 @@ bill_total_caption_under	लेबल इसके नीचे
 bill_total_own_line	अपनी पंक्ति
 bill_total_caption_with	संख्या के साथ
 bill_total_caption_none	लेबल नहीं
+bill_total_caption_span_off	लेबल एक स्तंभ में
+bill_total_caption_span_on	संख्या तक फैलाएँ
 bill_total_place_help	“अपनी पंक्ति” इस योग को अकेले छापता है। स्तंभ के नीचे होने पर इसकी संख्या उसी आइटम स्तंभ में, इस पंक्ति के नाप और मोटाई में छपती है; जब तक कोई स्तंभ भर न जाए योग एक ही कतार बाँटते हैं, फिर नई कतार शुरू होती है। लेबल संख्या के साथ, दूसरे स्तंभ के नीचे जाता है, या छोड़ दिया जाता है। टैक्स, सर्विस, राउंडिंग और भुगतान की पंक्तियाँ “उप योग” के पीछे चलती हैं।
 reprint_incl	छाप में
 reprint_skip	छोड़ें
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo सेट करें
 shop_logo_optional	दुकान लोगो (वैकल्पिक)
 stock_type_help	आइटम का नाम लिखें (उसका हिस्सा ही काफ़ी है), मात्रा लिखें, फिर समायोजित करें। जो आइटम अभी गिने नहीं गए उन्हें एक बार «गिनती शुरू» चाहिए।
 team_owner_help	किसी को जोड़ने के लिए व्यक्ति खाली छोड़ें: नाम, काम, उपयोगकर्ता नाम, PIN और वैकल्पिक पासवर्ड, फिर जोड़ें। उसी तरह के फ़ॉर्म — नाम, उपयोगकर्ता नाम, पासवर्ड, स्क्रीन और अधिकार — संपादित करने के लिए व्यक्ति चुनें, फिर सहेजें। आपका अपना PIN और पासवर्ड नीचे एक साइन-इन है। Owner किसी और का PIN नहीं बदलता।
+team_owner_row_help	आप «मालिक» संपादित कर रहे हैं: केवल दिखाने वाला नाम, उपयोगकर्ता नाम और पासवर्ड। स्क्रीन, धन अधिकार और रसोई स्टेशन मालिक के लिए पूर्ण रहते हैं और यहाँ नहीं दिखते। किसी कर्मचारी का काम-सेटअप बदलने के लिए उसे चुनें।
+team_owner_identity_hint	मालिक को हर स्क्रीन और अधिकार रहता है। सहेजें केवल दिखाने वाला नाम और लॉगिन बदलता है।
+save_owner_identity	मालिक का नाम और लॉगिन सहेजें
+save_owner_identity_named	{name} का नाम और लॉगिन सहेजें
+save_owner_identity_ok	{name} के लिए मालिक का नाम और लॉगिन सहेजा गया
 staff_name_ph	कर्मचारी नाम / आईडी
 staff_copy_hire_ph	सेटअप कहाँ से कॉपी करें (वैकल्पिक)
 staff_copy_hire	इस व्यक्ति का सेटअप इस्तेमाल करें

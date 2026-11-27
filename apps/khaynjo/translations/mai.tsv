@@ -109,6 +109,19 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल नं.
 bill_line_time	समय
 bill_line_cashier	कैशियर
+bill_meta_empty_help	जखन खाली होए
+bill_meta_empty_always	सदया देखाउ
+bill_meta_empty_omit	खाली होए त छोड़
+bill_meta_empty_tip	«सदया देखाउ» मान बिना सिर्फ लेबल छापै (जेना नाम:) — खाली मेहमान बिल लेल उपयोगी। «खाली होए त छोड़» पूरा लाइन छोड़ि दै।
+bill_custom_add	लाइन जोड़ू
+bill_custom_remove	हटाउ
+bill_custom_line	अपन लाइन
+bill_custom_value_ph	हर बिल पर छपए वाला लेख
+bill_preview_sample	नमूना
+bill_preview_running	खुला ऑर्डर
+bill_preview_sale	निपटा बिल
+kot_preview_sample	नमूना
+kot_preview_ticket	भनसा टिकट
 bill_line_table	टेबल
 bill_line_items	सामान
 bill_line_total	कुल
@@ -146,6 +159,8 @@ bill_total_caption_under	लेबल एकर नीचाँ
 bill_total_own_line	अपन पंक्ति
 bill_total_caption_with	संख्याक संग
 bill_total_caption_none	लेबल नहि
+bill_total_caption_span_off	लेबल एक कॉलम मे
+bill_total_caption_span_on	संख्या धरि फैलाउ
 bill_total_place_help	“अपन पंक्ति” एहि जोड़केँ असगरे छापैत अछि। स्तंभक नीचाँ रहला पर एकर संख्या ओही आइटम स्तंभमे, एहि पंक्तिक नाप आ मोटाइमे छपैत अछि; जाधरि कोनो स्तंभ भरि नहि जाइत अछि जोड़ सभ एकहि कतार बँटैत अछि, तकर बाद नव कतार शुरू होइत अछि। लेबल संख्याक संग, दोसर स्तंभक नीचाँ जाइत अछि, वा छोड़ि देल जाइत अछि। टैक्स, सेवा, राउंडिंग आ भुगतानक पंक्ति “उप-जोड़”क पाछाँ चलैत अछि।
 reprint_incl	छापमे
 reprint_skip	छोड़ू
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo सेट करू
 shop_logo_optional	दोकानक लोगो (वैकल्पिक)
 stock_type_help	सामानक नाम लिखू (किछु भाग पर्याप्त), मात्रा, तखन मिलाउ। जे सामान एखन धरि गिनल नहि अछि ओकरा एक बेर गिनती शुरू करू चाही।
 team_owner_help	ककरो जोड़बाक लेल व्यक्ति खाली छोड़ू: नाम, काज, उपयोगकर्ता नाम, PIN, आ वैकल्पिक पासवर्ड, तखन जोड़ू। बदलबाक लेल व्यक्ति चुनू — नाम, उपयोगकर्ता नाम, पासवर्ड, स्क्रीन आ अधिकार — तखन सहेजू। अहाँक अपन PIN आ पासवर्ड नीचाँ एकटा साइन-इन अछि। मालिक ककरो आनक PIN नहि बदलैत छथि।
+team_owner_row_help	अहाँ «मालिक» संपादन क' रहल छी: सिर्फ देखाउबै वाला नाम, उपयोगकर्ता नाम आ पासवर्ड। स्क्रीन, पैसा अधिकार आ भनसा स्टेशन मालिक लेल पूरा रहे आ एतय न देखाउल जाइ। कर्मचारी क' काम-सेटअप बदले खातिर तिनका चुनू।
+team_owner_identity_hint	मालिक क' सब स्क्रीन आ अधिकार रहे। सहेजू सिर्फ देखाउबै वाला नाम आ लॉगिन बदलै।
+save_owner_identity	मालिक क' नाम आ लॉगिन सहेजू
+save_owner_identity_named	{name} क' नाम आ लॉगिन सहेजू
+save_owner_identity_ok	{name} लेल मालिक क' नाम आ लॉगिन सहेजल गेल
 staff_name_ph	कर्मचारीक नाम
 staff_copy_hire_ph	सेटअप ककरासँ कॉपी करू (वैकल्पिक)
 staff_copy_hire	एहि व्यक्तिक सेटअप उपयोग करू

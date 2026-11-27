@@ -109,6 +109,19 @@ bill_line_customer	Kostumer
 bill_line_bill_no	Blg. ng bill
 bill_line_time	Oras
 bill_line_cashier	Kahera
+bill_meta_empty_help	Kapag walang laman
+bill_meta_empty_always	Laging ipakita
+bill_meta_empty_omit	Laktawan kapag walang laman
+bill_meta_empty_tip	Ang «Laging ipakita» ay nagpi-print ng label lang kung walang halaga (hal. Pangalan:) — kapaki-pakinabang sa blangkong bill ng bisita. Ang «Laktawan kapag walang laman» ay nilalaktawan ang linya.
+bill_custom_add	Magdagdag ng linya
+bill_custom_remove	Alisin
+bill_custom_line	Custom na linya
+bill_custom_value_ph	Tekstong ipi-print sa bawat bill
+bill_preview_sample	Halimbawa
+bill_preview_running	Bukas na order
+bill_preview_sale	Natapos na bill
+kot_preview_sample	Halimbawa
+kot_preview_ticket	Tiket sa kusina
 bill_line_table	Mesa
 bill_line_items	Mga item
 bill_line_total	Kabuuan
@@ -146,6 +159,8 @@ bill_total_caption_under	Label sa ilalim ng
 bill_total_own_line	Sariling linya
 bill_total_caption_with	Kasama ng numero
 bill_total_caption_none	Walang label
+bill_total_caption_span_off	Caption sa isang column
+bill_total_caption_span_on	Umahanggo hanggang numero
 bill_total_place_help	Ang Sariling linya ay nagpi-print ng kabuuang ito nang mag-isa. Sa ilalim ng column, ang numero nito ay naka-print sa column na iyon ng mga item, sa laki at kapal ng linyang ito; magkakasama sa isang hilera ang mga kabuuan hanggang may column na okupado na, saka magsisimula ng bagong hilera. Ang label ay kasama ng numero, nasa ilalim ng ibang column, o hindi isinasama. Ang mga linya ng buwis, serbisyo, rounding at bayad ay sumusunod sa Bahaging kabuuan.
 reprint_incl	Sa print
 reprint_skip	Laktawan
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	I-set up ang Khaynjo
 shop_logo_optional	Logo ng tindahan (opsyonal)
 stock_type_help	I-type ang pangalan ng item sa menu (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item sa menu ng menu na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
 team_owner_help	Iwanang blangko ang tao upang magdagdag ng isang tao: pangalan, trabaho, username, PIN, at isang opsyonal na password, pagkatapos ay Idagdag. Pumili ng taong mag-e-edit sa parehong uri ng form — pangalan, username, password, screen, at karapatan — pagkatapos ay I-save. Ang iyong sariling PIN at password ay isang pag-sign-in sa ibaba. Hindi binabago ng May-ari ang PIN ng sinuman.
+team_owner_row_help	Ine-edit mo ang «May-ari»: display name, username at password lang. Ang mga screen, karapatan sa pera at istasyon ng kusina ay buo pa rin para sa May-ari at hindi ipinapakita dito. Pumili ng tauhan para baguhin ang setup ng trabaho nila.
+team_owner_identity_hint	Ang May-ari ay may lahat ng screen at karapatan. I-save binabago lang ang display name at login.
+save_owner_identity	I-save ang pangalan at login ng May-ari
+save_owner_identity_named	I-save ang pangalan at login ni {name}
+save_owner_identity_ok	Na-save ang pangalan at login ng May-ari para kay {name}
 staff_name_ph	Pangalan ng tauhan
 staff_copy_hire_ph	Kopyahin ang setup mula sa (opsyonal)
 staff_copy_hire	Gamitin ang setup ng taong ito

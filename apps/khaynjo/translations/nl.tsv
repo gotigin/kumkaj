@@ -109,6 +109,19 @@ bill_line_customer	Klant
 bill_line_bill_no	Rekeningnr.
 bill_line_time	Tijd
 bill_line_cashier	Kassier
+bill_meta_empty_help	Als leeg
+bill_meta_empty_always	Altijd tonen
+bill_meta_empty_omit	Weglaten als leeg
+bill_meta_empty_tip	«Altijd tonen» drukt alleen het label (bijv. Naam:) zonder waarde — handig voor blanco gastrekeningen. «Weglaten als leeg» slaat de regel over.
+bill_custom_add	Regel toevoegen
+bill_custom_remove	Verwijderen
+bill_custom_line	Aangepaste regel
+bill_custom_value_ph	Tekst op elke rekening
+bill_preview_sample	Voorbeeld
+bill_preview_running	Open bestelling
+bill_preview_sale	Afgerekende rekening
+kot_preview_sample	Voorbeeld
+kot_preview_ticket	Keukenticket
 bill_line_table	Tafel
 bill_line_items	Artikelen
 bill_line_total	Totaal
@@ -146,6 +159,8 @@ bill_total_caption_under	Label onder
 bill_total_own_line	Eigen regel
 bill_total_caption_with	Bij het getal
 bill_total_caption_none	Geen label
+bill_total_caption_span_off	Bijschrift in één kolom
+bill_total_caption_span_on	Tot het bedrag
 bill_total_place_help	Eigen regel drukt dit totaal apart af. Onder een kolom wordt het getal in die artikelkolom afgedrukt, in de grootte en dikte van deze regel; totalen delen een rij totdat een kolom bezet is, dan begint een nieuwe rij. Het label staat bij het getal, onder een andere kolom of wordt weggelaten. Regels voor belasting, service, afronding en betaling volgen Subtotaal.
 reprint_incl	In afdruk
 reprint_skip	Overslaan
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo instellen
 shop_logo_optional	Winkellogo (optioneel)
 stock_type_help	Typ de artikelnaam (een deel is genoeg), een aantal, en pas aan. Artikelen die nog niet geteld zijn, hebben een keer Telling starten nodig.
 team_owner_help	Laat de persoon leeg om iemand toe te voegen: naam, functie, gebruikersnaam, PIN en optioneel wachtwoord, dan Toevoegen. Kies een persoon om datzelfde formulier te bewerken — naam, gebruikersnaam, wachtwoord, schermen en rechten — dan Opslaan. Je eigen PIN en wachtwoord zijn één aanmelding onderaan. De eigenaar wijzigt niemands andere PIN.
+team_owner_row_help	U bewerkt de eigenaar: alleen weergavenaam, gebruikersnaam en wachtwoord. Schermen, geldrrechten en keukenstations blijven volledig voor de eigenaar en worden hier niet getoond. Kies een personeelslid om hun functie-inrichting te wijzigen.
+team_owner_identity_hint	De eigenaar behoudt elk scherm en recht. Opslaan wijzigt alleen weergavenaam en inlog.
+save_owner_identity	Naam en inlog eigenaar opslaan
+save_owner_identity_named	Naam en inlog van {name} opslaan
+save_owner_identity_ok	Naam en inlog eigenaar opgeslagen voor {name}
 staff_name_ph	Personeelsnaam / id
 staff_copy_hire_ph	Kopieer instellingen van (optioneel)
 staff_copy_hire	Gebruik de instellingen van deze persoon

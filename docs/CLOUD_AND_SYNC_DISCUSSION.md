@@ -193,7 +193,7 @@ Summary: **Free forever** + **Steady (10 GB)** + **Swift (25 GB)** +
 **Priority (50 GB)** + **Custom**. Paid plans include free forever. All
 paid tiers are **live** sync; they differ by **quota** and **bandwidth**
 only (no device caps, no connection-interval tiers). Yearly INR **raw
-(ex-tax)** self-serve list: ₹6,000 / ₹12,000 / ₹24,000; **Custom** is a
+(ex-tax)** self-serve list: ₹6,000 / ₹14,000 / ₹28,000; **Custom** is a
 negotiated quote that **may be below Steady or above Priority**. Tax
 (GST/VAT/etc.) added by the **billing gateway** per buyer country. After
 subscription ends: 1 month grace (13 months cloud run), retrieve until

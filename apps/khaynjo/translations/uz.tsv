@@ -109,6 +109,19 @@ bill_line_customer	Mijoz
 bill_line_bill_no	Hisob №
 bill_line_time	Vaqt
 bill_line_cashier	Kassir
+bill_meta_empty_help	Bo'sh bo'lsa
+bill_meta_empty_always	Doim ko'rsatish
+bill_meta_empty_omit	Bo'sh bo'lsa o'tkazish
+bill_meta_empty_tip	«Doim ko'rsatish» qiymatsiz faqat yorliqni chop etadi (mas. Ism:) — mehmon hisob-varag'i uchun foydali. «Bo'sh bo'lsa o'tkazish» qatorni o'tkazadi.
+bill_custom_add	Qator qo'shish
+bill_custom_remove	Olib tashlash
+bill_custom_line	Moslashtirilgan qator
+bill_custom_value_ph	Har hisobda chop etiladigan matn
+bill_preview_sample	Namuna
+bill_preview_running	Ochiq buyurtma
+bill_preview_sale	Yopilgan hisob
+kot_preview_sample	Namuna
+kot_preview_ticket	Oshxona chiptasi
 bill_line_table	Stol
 bill_line_items	Mahsulotlar
 bill_line_total	Jami
@@ -146,6 +159,8 @@ bill_total_caption_under	Yorliq shuning ostida
 bill_total_own_line	Oʻz qatori
 bill_total_caption_with	Son bilan birga
 bill_total_caption_none	Yorliqsiz
+bill_total_caption_span_off	Sarlavha bir ustunda
+bill_total_caption_span_on	Summagacha
 bill_total_place_help	Oʻz qatori bu jamini alohida chop etadi. Ustun ostida boʻlsa, uning soni oʻsha tovar ustunida, shu qatorning oʻlchami va qalinligida chop etiladi; bir ustun band boʻlguncha jamilar bitta safni boʻlishadi, soʻng yangi saf boshlanadi. Yorliq son bilan birga, boshqa ustun ostida turadi yoki tushirib qoldiriladi. Soliq, xizmat, yaxlitlash va toʻlov qatorlari Oraliq summa oʻrniga ergashadi.
 reprint_incl	Chop etishda
 reprint_skip	Oʻtkazib yuborish
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo ni sozlash
 shop_logo_optional	Doʻkon logotipi (ixtiyoriy)
 stock_type_help	Mahsulot nomini yozing (bir qismi yetadi), miqdor, soʻng tuzating. Hali sanalmaydigan mahsulotlarga bir marta Kuzatuvni boshlash kerak.
 team_owner_help	Kimnidir qoʻshish uchun odamni boʻsh qoldiring: ism, ish, foydalanuvchi nomi, PIN va ixtiyoriy parol, soʻng Qoʻshish. Odamni tanlab xuddi shu turdagi shaklni tahrirlang — ism, foydalanuvchi nomi, parol, ekran va huquq — soʻng Saqlash. Oʻz PIN va parolingiz pastda bitta kirish. Egasi boshqaning PIN ini oʻzgartirmaydi.
+team_owner_row_help	Egasini tahrirlayapsiz: faqat ko'rsatiladigan ism, foydalanuvchi va parol. Ekranlar, pul huquqlari va oshxona stansiyalari egada to'liq qoladi va bu yerda ko'rsatilmaydi. Lavozim sozlamasini o'zgartirish uchun xodimni tanlang.
+team_owner_identity_hint	Ega har ekran va huquqni saqlaydi. Saqlash faqat ko'rsatiladigan ism va kirishni o'zgartiradi.
+save_owner_identity	Eganing ismi va kirishini saqlash
+save_owner_identity_named	{name} ismi va kirishini saqlash
+save_owner_identity_ok	{name} uchun ega ismi va kirishi saqlandi
 staff_name_ph	Xodim ismi
 staff_copy_hire_ph	Sozlamani nusxalash (ixtiyoriy)
 staff_copy_hire	Shu odamning sozlamasini ishlatish

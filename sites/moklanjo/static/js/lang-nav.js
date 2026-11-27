@@ -1,7 +1,7 @@
 /**
- * Site language button — full Kumkaj 115-language catalogue (same as apps).
+ * Site language button — full 115-language catalogue (same list as the Kumkaj sites).
  *
- * Picking a language really changes the page (docs/WEBSITES.md § Language):
+ * Picking a language really changes the page:
  * - stores it (localStorage "gotigin.site.lang") and sets html lang + dir;
  * - writes `#l=<code>` into the URL hash (other segments such as `auth=`
  *   stay) and fires hashchange: the Makepad wasm reads `l=` and fetches
@@ -9,8 +9,8 @@
  * - dispatches "gotigin:lang" ({ lang, meta }): site-i18n.js repaints the
  *   HTML pages (account, shop) from the same packs.
  * A link that already carries `#l=hi` wins over the stored choice.
- * Source: sites/_shared/chrome/lang-nav.js — copied to each site by
- * scripts/sync-site-i18n.sh; do not edit the copies.
+ * Canonical file: sites/_shared/chrome/lang-nav.js. The served copy is
+ * sites/kumkaj/static/js/lang-nav.js — keep the two the same.
  */
 (function () {
   "use strict";
@@ -119,6 +119,121 @@
     return null;
   }
 
+  var pickerOpen = false;
+  var focusGuard = null;
+
+  /** Makepad web keyboard sink: full canvas + hidden .cx_webgl_textinput. */
+  function makepadKeySinks() {
+    return Array.prototype.slice.call(
+      document.querySelectorAll("canvas, textarea.cx_webgl_textinput")
+    );
+  }
+
+  function releaseMakepadKeyboard() {
+    makepadKeySinks().forEach(function (el) {
+      try {
+        el.blur();
+      } catch (_) {}
+      if (el.dataset.siteLangTab == null) {
+        el.dataset.siteLangTab =
+          el.hasAttribute("tabindex") ? el.getAttribute("tabindex") : "__none__";
+      }
+      el.setAttribute("tabindex", "-1");
+      if (el.tagName === "TEXTAREA") {
+        if (el.dataset.siteLangRo == null) {
+          el.dataset.siteLangRo = el.readOnly ? "1" : "0";
+        }
+        el.readOnly = true;
+        el.blur();
+      }
+    });
+    try {
+      var ae = document.activeElement;
+      if (
+        ae &&
+        (ae.tagName === "CANVAS" ||
+          (ae.tagName === "TEXTAREA" &&
+            ae.classList &&
+            ae.classList.contains("cx_webgl_textinput")))
+      ) {
+        ae.blur();
+      }
+    } catch (_) {}
+  }
+
+  function restoreMakepadKeyboard() {
+    makepadKeySinks().forEach(function (el) {
+      var prev = el.dataset.siteLangTab;
+      if (prev != null) {
+        if (prev === "__none__") el.removeAttribute("tabindex");
+        else el.setAttribute("tabindex", prev);
+        delete el.dataset.siteLangTab;
+      }
+      if (el.tagName === "TEXTAREA" && el.dataset.siteLangRo != null) {
+        el.readOnly = el.dataset.siteLangRo === "1";
+        delete el.dataset.siteLangRo;
+      }
+    });
+  }
+
+  function activeSearch() {
+    var pop = document.querySelector(".site-lang-pop:not([hidden])");
+    return pop ? pop.querySelector(".site-lang-search") : null;
+  }
+
+  function focusSearchHard(search) {
+    if (!search) return;
+    releaseMakepadKeyboard();
+    try {
+      search.focus({ preventScroll: true });
+    } catch (_) {
+      try {
+        search.focus();
+      } catch (__) {}
+    }
+  }
+
+  function armFocusGuard(search) {
+    if (focusGuard) {
+      clearInterval(focusGuard);
+      focusGuard = null;
+    }
+    if (!search) return;
+    // Keep reclaiming focus for the whole time the picker is open — Makepad
+    // recreates / refocuses .cx_webgl_textinput after the first couple seconds.
+    focusGuard = setInterval(function () {
+      if (!pickerOpen) {
+        clearInterval(focusGuard);
+        focusGuard = null;
+        return;
+      }
+      var live = activeSearch() || search;
+      if (!live || live.isConnected === false) return;
+      if (document.activeElement !== live) focusSearchHard(live);
+    }, 50);
+  }
+
+  function closeAllPops() {
+    pickerOpen = false;
+    if (focusGuard) {
+      clearInterval(focusGuard);
+      focusGuard = null;
+    }
+    restoreMakepadKeyboard();
+    document.querySelectorAll(".site-lang-pop").forEach(function (m) {
+      m.hidden = true;
+    });
+    document.querySelectorAll(".site-lang-btn").forEach(function (b) {
+      b.setAttribute("aria-expanded", "false");
+    });
+    var floatHost = document.getElementById("site-lang-float");
+    if (floatHost) floatHost.hidden = true;
+  }
+
+  function keepInside(ev) {
+    ev.stopPropagation();
+  }
+
   function paint(root) {
     root.textContent = "";
     root.className = "site-lang-chrome";
@@ -140,6 +255,9 @@
     var search = document.createElement("input");
     search.type = "search";
     search.className = "site-lang-search";
+    search.autocomplete = "off";
+    search.autocapitalize = "off";
+    search.spellcheck = false;
     search.placeholder = "Search " + LANGS.length + " languages…";
     search.setAttribute("aria-label", "Search languages");
     pop.appendChild(search);
@@ -171,11 +289,17 @@
         li.appendChild(native);
         li.appendChild(en);
         if (l.code === code) li.setAttribute("aria-selected", "true");
-        li.addEventListener("click", function () {
+        li.addEventListener("mousedown", keepInside);
+        li.addEventListener("click", function (ev) {
+          keepInside(ev);
           apply(l.code);
-          pop.hidden = true;
-          btn.setAttribute("aria-expanded", "false");
-          paint(root);
+          closeAllPops();
+          // Re-paint only the in-nav chrome (not the float host).
+          if (root.id !== "site-lang-float") paint(root);
+          else {
+            var slot = mountRoot();
+            if (slot) paint(slot);
+          }
         });
         menu.appendChild(li);
       });
@@ -191,21 +315,29 @@
     search.addEventListener("input", function () {
       fill(search.value);
     });
-    search.addEventListener("click", function (ev) {
-      ev.stopPropagation();
-    });
+    ["click", "mousedown", "mouseup", "pointerdown", "pointerup", "touchstart"].forEach(
+      function (type) {
+        search.addEventListener(type, keepInside);
+        pop.addEventListener(type, keepInside);
+      }
+    );
+    search.addEventListener("keydown", keepInside);
+    search.addEventListener("keyup", keepInside);
+    search.addEventListener("keypress", keepInside);
 
     btn.addEventListener("click", function (ev) {
-      ev.stopPropagation();
+      keepInside(ev);
       var open = pop.hidden;
-      pop.hidden = !open;
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
       if (open) {
+        pickerOpen = true;
+        pop.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
         search.value = "";
         fill("");
-        setTimeout(function () {
-          search.focus();
-        }, 0);
+        focusSearchHard(search);
+        armFocusGuard(search);
+      } else {
+        closeAllPops();
       }
     });
 
@@ -215,14 +347,64 @@
 
   if (!window.__SITE_LANG_DOC_BOUND__) {
     window.__SITE_LANG_DOC_BOUND__ = true;
-    document.addEventListener("click", function () {
-      document.querySelectorAll(".site-lang-pop").forEach(function (m) {
-        m.hidden = true;
-      });
-      document.querySelectorAll(".site-lang-btn").forEach(function (b) {
-        b.setAttribute("aria-expanded", "false");
-      });
-    });
+    document.addEventListener(
+      "click",
+      function (ev) {
+        var t = ev.target;
+        if (
+          t &&
+          t.closest &&
+          t.closest(".site-lang-pop, .site-lang-btn, .site-lang-chrome, #site-lang-float")
+        ) {
+          return;
+        }
+        closeAllPops();
+      },
+      true
+    );
+    // While the picker is open, keep keys on the search field. Makepad's hidden
+    // .cx_webgl_textinput steals focus and would eat keystrokes otherwise.
+    document.addEventListener(
+      "keydown",
+      function (ev) {
+        if (!pickerOpen) return;
+        var search = activeSearch();
+        if (!search) return;
+        var hadSearchFocus = document.activeElement === search;
+        if (!hadSearchFocus) focusSearchHard(search);
+        if (ev.key === "Escape") {
+          closeAllPops();
+          ev.preventDefault();
+          ev.stopPropagation();
+          ev.stopImmediatePropagation();
+          return;
+        }
+        // Native input path — stop Makepad from also seeing the key.
+        if (hadSearchFocus) {
+          ev.stopPropagation();
+          return;
+        }
+        // Focus was elsewhere (usually .cx_webgl_textinput): insert ourselves.
+        if (ev.key.length === 1 && !ev.ctrlKey && !ev.metaKey && !ev.altKey) {
+          search.value += ev.key;
+          try {
+            search.dispatchEvent(new Event("input", { bubbles: true }));
+          } catch (_) {}
+          ev.preventDefault();
+          ev.stopPropagation();
+          ev.stopImmediatePropagation();
+        } else if (ev.key === "Backspace") {
+          search.value = search.value.slice(0, -1);
+          try {
+            search.dispatchEvent(new Event("input", { bubbles: true }));
+          } catch (_) {}
+          ev.preventDefault();
+          ev.stopPropagation();
+          ev.stopImmediatePropagation();
+        }
+      },
+      true
+    );
   }
 
   /** Full 115-lang menu for Makepad EN nav chip (hash #lang) or HTML topnav slot. */
@@ -231,26 +413,31 @@
     if (!host) {
       host = document.createElement("div");
       host.id = "site-lang-float";
-      host.className = "site-lang-chrome";
-      host.style.cssText =
-        "position:fixed;top:56px;right:16px;z-index:2147483000;";
+      host.className = "site-lang-chrome site-lang-chrome--float";
       document.body.appendChild(host);
     }
+    host.hidden = false;
     paint(host);
     var pop = host.querySelector(".site-lang-pop");
     var btn = host.querySelector(".site-lang-btn");
+    // Hide the duplicate EN button — Makepad already shows EN in the topbar.
+    if (btn) {
+      btn.style.display = "none";
+      btn.setAttribute("aria-expanded", "true");
+    }
     if (pop) {
       pop.hidden = false;
-      if (btn) btn.setAttribute("aria-expanded", "true");
+      pickerOpen = true;
       var search = pop.querySelector(".site-lang-search");
       if (search) {
-        setTimeout(function () {
-          search.focus();
-        }, 0);
+        search.value = "";
+        try {
+          search.dispatchEvent(new Event("input", { bubbles: true }));
+        } catch (_) {}
+        focusSearchHard(search);
+        armFocusGuard(search);
       }
     }
-    // Hide the duplicate EN button — Makepad already shows EN in the topbar.
-    if (btn) btn.style.display = "none";
   }
 
   function onHash() {

@@ -109,6 +109,19 @@ bill_line_customer	Abokin ciniki
 bill_line_bill_no	Lambar lissafi
 bill_line_time	Lokaci
 bill_line_cashier	Mai akwatin kuɗi
+bill_meta_empty_help	Idan babu komai
+bill_meta_empty_always	Nuna kullum
+bill_meta_empty_omit	Ɓar idan ƙarami
+bill_meta_empty_tip	«Nuna kullum» yana buga lakabin kaɗai (misali Suna:) idan babu ƙima — ya dace da bili shafukan baƙi. «Ɓar idan ƙarami» ya tsallake layin.
+bill_custom_add	Ƙara layi
+bill_custom_remove	Cire
+bill_custom_line	Layi na al'ada
+bill_custom_value_ph	Rubutu da ake buga a kowane bili
+bill_preview_sample	Samfuri
+bill_preview_running	«Oda» buɗe
+bill_preview_sale	Bili da aka kammala
+kot_preview_sample	Samfuri
+kot_preview_ticket	Tikitin «Kicin»
 bill_line_table	Tebur
 bill_line_items	Kayayyaki
 bill_line_total	Jimla
@@ -146,6 +159,8 @@ bill_total_caption_under	Alama a ƙarƙashin
 bill_total_own_line	Layinsa
 bill_total_caption_with	Tare da lambar
 bill_total_caption_none	Babu alama
+bill_total_caption_span_off	Taken a shafi ɗaya
+bill_total_caption_span_on	Ya kai zuwa lamba
 bill_total_place_help	Layinsa yana buga wannan jimla shi kaɗai. A ƙarƙashin ginshiƙi, ana buga lambarsa a wannan ginshiƙin kaya, da girma da kaurin wannan layi; jimloli suna raba jere ɗaya har sai an cika wani ginshiƙi, sannan sabon jere ya fara. Alamar tana tafiya tare da lambar, a ƙarƙashin wani ginshiƙi, ko a bar ta. Layukan haraji, sabis, daidaitawa da biya suna bin Jimla ta ƙasa.
 reprint_incl	A cikin bugu
 reprint_skip	Tsallake
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Saita Khaynjo
 shop_logo_optional	Tambarin shago (ba dole ba)
 stock_type_help	Rubuta sunan kaya (wani ɓangare ya isa), adadi, sai ka gyara. Kayayyakin da ba a ƙidaya tukuna suna buƙatar Fara ƙidaya sau ɗaya.
 team_owner_help	Bar mutum fanko don ƙara wani: suna, aiki, sunan mai amfani, PIN, da kalmar sirri na zaɓi, sai ka Ƙara. Zaɓi mutum don gyara irin wannan fom — suna, sunan mai amfani, kalmar sirri, alloli, da haƙƙoƙi — sai ka Ajiye. PIN da kalmar sirrinka shiga ɗaya ne a ƙasa. Mamallaki ba ya canza PIN na wani.
+team_owner_row_help	Kuna gyara «Mamallaki» kaɗai: sunan nunawa, sunan mai amfani da kalmar sirri. Allon, haƙƙoƙin kuɗi da wuraren «Kicin» suna cikakke ga «Mamallaki» kuma ba a nuna su anan. Zaɓi daga «Ma'aikata» don canza saitinsa.
+team_owner_identity_hint	«Mamallaki» yana da kowane allo da haƙƙi. «Ajiye» yana canza sunan nunawa da shiga kaɗai.
+save_owner_identity	«Ajiye» sunan «Mamallaki» da shiga
+save_owner_identity_named	«Ajiye» sunan {name} da shiga
+save_owner_identity_ok	An «Ajiye» sunan «Mamallaki» da shiga don {name}
 staff_name_ph	Sunan ma'aikaci
 staff_copy_hire_ph	Kwafi saiti daga (ba dole ba)
 staff_copy_hire	Yi amfani da saitin wannan mutum

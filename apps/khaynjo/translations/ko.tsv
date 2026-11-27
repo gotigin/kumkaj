@@ -109,6 +109,19 @@ bill_line_customer	고객
 bill_line_bill_no	계산서 번호
 bill_line_time	시간
 bill_line_cashier	캐셔
+bill_meta_empty_help	비어 있을 때
+bill_meta_empty_always	항상 표시
+bill_meta_empty_omit	비어 있으면 생략
+bill_meta_empty_tip	「항상 표시」는 값이 없을 때 라벨만 인쇄합니다(예: 이름:) — 빈 손님 영수증에 유용합니다. 「비어 있으면 생략」은 해당 줄을 건너뜁니다.
+bill_custom_add	줄 추가
+bill_custom_remove	제거
+bill_custom_line	사용자 지정 줄
+bill_custom_value_ph	모든 영수증에 인쇄되는 문구
+bill_preview_sample	샘플
+bill_preview_running	「주문」 진행 중
+bill_preview_sale	정산된 영수증
+kot_preview_sample	샘플
+kot_preview_ticket	「주방」 티켓
 bill_line_table	테이블
 bill_line_items	항목
 bill_line_total	합계
@@ -146,6 +159,8 @@ bill_total_caption_under	라벨을 둘 열
 bill_total_own_line	단독 줄
 bill_total_caption_with	숫자와 함께
 bill_total_caption_none	라벨 없음
+bill_total_caption_span_off	제목 한 열
+bill_total_caption_span_on	숫자까지 확장
 bill_total_place_help	‘단독 줄’은(는) 이 합계를 단독으로 인쇄합니다. 열 아래에 두면 숫자가 해당 품목 열에 이 줄의 크기와 굵기로 인쇄됩니다. 합계들은 열이 찰 때까지 한 행을 함께 쓰고, 차면 새 행이 시작됩니다. 라벨은 숫자와 함께 두거나 다른 열 아래에 두거나 생략할 수 있습니다. 세금, 봉사료, 반올림, 결제 줄은 ‘소계’을(를) 따릅니다.
 reprint_incl	인쇄 포함
 reprint_skip	건너뛰기
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo 설정
 shop_logo_optional	매장 로고(선택)
 stock_type_help	항목 이름을 입력(일부만으로 충분), 수량을 입력한 뒤 조정하세요. 아직 세지 않은 항목은 수량 관리 시작이 한 번 필요합니다.
 team_owner_help	사람을 비워 두면 추가: 이름·직무·사용자 이름·PIN·선택 비밀번호, 그다음 추가. 사람을 고르면 같은 양식을 편집 — 이름·사용자 이름·비밀번호·화면·권한 — 그다음 저장. 본인 PIN과 비밀번호는 아래 한 번의 로그인. 소유자는 다른 사람 PIN을 바꾸지 않습니다.
+team_owner_row_help	「점주」의 표시 이름, 사용자 이름, 비밀번호만 편집 중입니다. 화면, 금전 권한, 「주방」 스테이션은 「점주」에게 모두 유지되며 여기에는 표시하지 않습니다. 「직원」을 선택해 직무 설정을 변경하세요.
+team_owner_identity_hint	「점주」는 모든 화면과 권한을 유지합니다. 「저장」은 표시 이름과 로그인만 변경합니다.
+save_owner_identity	「점주」 이름과 로그인 「저장」
+save_owner_identity_named	{name}의 이름과 로그인 「저장」
+save_owner_identity_ok	{name}의 「점주」 이름과 로그인이 「저장」되었습니다
 staff_name_ph	직원 이름 / ID
 staff_copy_hire_ph	설정 복사 (선택 사항)
 staff_copy_hire	이 사람의 설정 사용

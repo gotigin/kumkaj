@@ -88,8 +88,31 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 .site-lang-pop[hidden] { display: none !important; }
+
+/* Makepad EN chip opens a body-level float (button hidden). Panel is fixed. */
+#site-lang-float {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+}
+#site-lang-float[hidden] { display: none !important; }
+#site-lang-float .site-lang-pop {
+  pointer-events: auto;
+  position: fixed;
+  top: 56px;
+  right: 16px;
+  left: auto;
+  bottom: auto;
+  width: min(22rem, calc(100vw - 32px));
+  max-width: min(22rem, calc(100vw - 32px));
+  max-height: min(70vh, 28rem);
+  z-index: 2147483001;
+}
+
 .site-lang-search {
   width: 100%;
+  flex: 0 0 auto;
   margin: 0 0 0.4rem;
   padding: 0.55rem 0.65rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -100,12 +123,16 @@
   font-size: 0.9rem;
   box-sizing: border-box;
 }
+.site-lang-search::placeholder {
+  color: rgba(247, 246, 251, 0.55);
+}
 .site-lang-menu {
   list-style: none;
   margin: 0;
   padding: 0;
   overflow: auto;
   flex: 1 1 auto;
+  min-height: 0;
 }
 .site-lang-menu li {
   display: flex;
@@ -121,8 +148,36 @@
 .site-lang-menu li:hover,
 .site-lang-menu li[aria-selected="true"] { background: rgba(255, 255, 255, 0.1); }
 
+/* Compact GitHub mark in HTML topnav — same chip footprint as Login / EN. */
+.topnav .site-github,
+.topbar .site-github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.55rem;
+  border-radius: 0.45rem;
+  color: inherit;
+  background: var(--panel, transparent);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.topnav .site-github:hover,
+.topbar .site-github:hover {
+  color: var(--amber, inherit);
+}
+.topnav .site-github svg,
+.topbar .site-github svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
 @media (max-width: 720px) {
-  .site-lang-pop {
+  .site-lang-pop,
+  #site-lang-float .site-lang-pop {
     position: fixed;
     top: auto;
     bottom: 0.75rem;
@@ -131,4 +186,47 @@
     max-width: none;
     max-height: 60vh;
   }
+}
+
+.site-auth-chrome--menu {
+  position: relative;
+}
+.site-auth-chrome--menu .site-auth-avatar {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+.site-auth-menu {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 50;
+  min-width: 10.5rem;
+  padding: 0.35rem;
+  border-radius: 0.55rem;
+  background: #111018;
+  color: #f7f6fb;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.site-auth-menu[hidden] {
+  display: none !important;
+}
+.site-auth-menu-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.85rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.site-auth-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
 }

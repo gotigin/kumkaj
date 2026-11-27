@@ -109,6 +109,19 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल नं.
 bill_line_time	समय
 bill_line_cashier	कैशियर
+bill_meta_empty_help	जब खाली होय
+bill_meta_empty_always	हमेशा देखावऽ
+bill_meta_empty_omit	खाली होय त छोड़ावऽ
+bill_meta_empty_tip	«हमेशा देखावऽ» बिना मान के सिर्फ लेबल छापै (जइसे नाम:) — खाली मेहमान बिल खातिर उपयोगी। «खाली होय त छोड़ावऽ» पूरा लाइन छोड़ दै।
+bill_custom_add	लाइन जोड़ऽ
+bill_custom_remove	हटावऽ
+bill_custom_line	अपन लाइन
+bill_custom_value_ph	हर बिल पर छपे वाला लेख
+bill_preview_sample	नमूना
+bill_preview_running	खुला ऑर्डर
+bill_preview_sale	निपटा बिल
+kot_preview_sample	नमूना
+kot_preview_ticket	रसोई टिकट
 bill_line_table	मेज़
 bill_line_items	आइटम
 bill_line_total	कुल
@@ -146,6 +159,8 @@ bill_total_caption_under	लेबल एकर नीचे
 bill_total_own_line	अप्पन पंक्ति
 bill_total_caption_with	संख्या के साथ
 bill_total_caption_none	लेबल नञ्
+bill_total_caption_span_off	लेबल एक कॉलम में
+bill_total_caption_span_on	संख्या तक फैलावऽ
 bill_total_place_help	“अप्पन पंक्ति” ई योग के अकेले छापऽ हे। स्तंभ के नीचे रहला पर एकर संख्या ओही आइटम स्तंभ में, ई पंक्ति के नाप आउ मोटाई में छपऽ हे; जब तक कोय स्तंभ भर नञ् जाय योग एक्के कतार बाँटऽ हे, फेर नया कतार शुरू होवऽ हे। लेबल संख्या के साथ, दोसर स्तंभ के नीचे जा हे, या छोड़ देल जा हे। टैक्स, सेवा, राउंडिंग आउ भुगतान के पंक्ति “उप योग” के पीछे चलऽ हे।
 reprint_incl	छाप में
 reprint_skip	छोड़ेऽ
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo सेट करऽ
 shop_logo_optional	दुकान लोगो (वैकल्पिक)
 stock_type_help	आइटम के नाम लिखऽ (ओकर हिस्सा ही काफ़ी हई), मात्रा लिखऽ, फिर समायोजित करें। जो आइटम अबहीं गिने नइखे गेल ओकरा के एक बार «गिनती शुरू» चाहिए।
 team_owner_help	केकरो जोड़े खातिर व्यक्ति खाली छोड़ऽ: नाम, काम, उपयोगकर्ता नाम, PIN आ वैकल्पिक पासवर्ड, फेर जोड़ऽ। ओही तरह के फॉर्म — नाम, उपयोगकर्ता नाम, पासवर्ड, स्क्रीन आ अधिकार — संपादित करे खातिर व्यक्ति चुनऽ, फेर सेव करऽ। रउरा अपना PIN आ पासवर्ड नीचे एक साइन-इन हई। Owner केकरो दोसरा के PIN नईं बदलऽ हथिन।
+team_owner_row_help	अहाँ «मालिक» संपादन करैत छी: सिर्फ देखावे वाला नाम, उपयोगकर्ता नाम आ पासवर्ड। स्क्रीन, पैसा अधिकार आ रसोई स्टेशन मालिक खातिर पूरा रहे आ इहाँ न देखावल जाइ। कर्मचारी के काम-सेटअप बदले खातिर तिनकरा चुनऽ।
+team_owner_identity_hint	मालिक के सब स्क्रीन आ अधिकार रहे। सहेजऽ सिर्फ देखावे वाला नाम आ लॉगिन बदलै।
+save_owner_identity	मालिक के नाम आ लॉगिन सहेजऽ
+save_owner_identity_named	{name} के नाम आ लॉगिन सहेजऽ
+save_owner_identity_ok	{name} खातिर मालिक के नाम आ लॉगिन सहेजल गेल
 staff_name_ph	कर्मचारी नाम / आईडी
 staff_copy_hire_ph	सेटअप कन्ने से कॉपी करऽ (वैकल्पिक)
 staff_copy_hire	ई व्यक्ति के सेटअप इस्तेमाल करऽ

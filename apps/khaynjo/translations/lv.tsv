@@ -109,6 +109,19 @@ bill_line_customer	Klients
 bill_line_bill_no	Rēķina nr.
 bill_line_time	Laiks
 bill_line_cashier	Kasieris
+bill_meta_empty_help	Kad tukšs
+bill_meta_empty_always	Vienmēr rādīt
+bill_meta_empty_omit	Izlaist kad tukšs
+bill_meta_empty_tip	«Vienmēr rādīt» drukā tikai etiķeti (piem. Vārds:) bez vērtības — noderīgi tukšiem viesu rēķiniem. «Izlaist kad tukšs» izlaiž rindu.
+bill_custom_add	Pievienot rindu
+bill_custom_remove	Noņemt
+bill_custom_line	Pielāgota rinda
+bill_custom_value_ph	Teksts uz katra rēķina
+bill_preview_sample	Paraugs
+bill_preview_running	Atvērts pasūtījums
+bill_preview_sale	Noslēgts rēķins
+kot_preview_sample	Paraugs
+kot_preview_ticket	Virtuves kvīts
 bill_line_table	Galds
 bill_line_items	Pozīcijas
 bill_line_total	Kopā
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiķete zem
 bill_total_own_line	Sava rinda
 bill_total_caption_with	Pie skaitļa
 bill_total_caption_none	Bez etiķetes
+bill_total_caption_span_off	Uzraksts vienā kolonnā
+bill_total_caption_span_on	Līdz summai
 bill_total_place_help	Sava rinda drukā šo kopsummu atsevišķi. Zem kolonnas tās skaitlis tiek drukāts tajā preču kolonnā, šīs rindas izmērā un biezumā; kopsummas dala vienu rindu, līdz kāda kolonna ir aizņemta, tad sākas jauna rinda. Etiķete ir pie skaitļa, zem citas kolonnas vai tiek izlaista. Nodokļa, apkalpošanas, noapaļošanas un maksājuma rindas seko Starpsumma.
 reprint_incl	Drukā
 reprint_skip	Izlaist
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Iestatīt Khaynjo
 shop_logo_optional	Veikala logotips (nav obligāts)
 stock_type_help	Ierakstiet pozīcijas nosaukumu (daļa pietiek), daudzumu un tad koriģējiet. Pozīcijām, kas vēl netiek skaitītas, vienreiz vajag Sākt uzskaiti.
 team_owner_help	Atstājiet personu tukšu, lai pievienotu kādu: vārds, amats, lietotājvārds, PIN un parole pēc izvēles, tad Pievienot. Izvēlieties personu, lai labotu to pašu veidlapu — vārds, lietotājvārds, parole, ekrāni un tiesības — tad Saglabāt. Jūsu paša PIN un parole ir viena pieteikšanās apakšā. Īpašnieks nemaina neviena cita PIN.
+team_owner_row_help	Rediģējat īpašnieku: tikai redzamais vārds, lietotājvārds un parole. Ekrāni, naudas tiesības un virtuves stacijas paliek pilnas īpašniekam un šeit netiek rādītas. Izvēlieties personāla locekli, lai mainītu viņa amata iestatījumu.
+team_owner_identity_hint	Īpašnieks saglabā katru ekrānu un tiesību. Saglabāt maina tikai redzamo vārdu un pieteikšanos.
+save_owner_identity	Saglabāt īpašnieka vārdu un pieteikšanos
+save_owner_identity_named	Saglabāt {name} vārdu un pieteikšanos
+save_owner_identity_ok	Īpašnieka vārds un pieteikšanās saglabāta {name}
 staff_name_ph	Darbinieka vārds
 staff_copy_hire_ph	Kopēt iestatīšanu no (nav obligāti)
 staff_copy_hire	Lietot šīs personas iestatīšanu

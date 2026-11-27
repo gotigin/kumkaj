@@ -109,6 +109,19 @@ bill_line_customer	לקוח
 bill_line_bill_no	מס׳ חשבון
 bill_line_time	שעה
 bill_line_cashier	קופאי
+bill_meta_empty_help	כשהשדה ריק
+bill_meta_empty_always	הצג תמיד
+bill_meta_empty_omit	השמט כשהשדה ריק
+bill_meta_empty_tip	«הצג תמיד» מדפיס רק את התווית (למשל שם:) כשאין ערך — שימושי לחשבונות אורח ריקים. «השמט כשהשדה ריק» מדלג על השורה.
+bill_custom_add	הוסף שורה
+bill_custom_remove	הסר
+bill_custom_line	שורה מותאמת
+bill_custom_value_ph	טקסט שמודפס בכל חשבון
+bill_preview_sample	דוגמה
+bill_preview_running	«הזמנה» פתוחה
+bill_preview_sale	חשבון סגור
+kot_preview_sample	דוגמה
+kot_preview_ticket	כרטיס «מטבח»
 bill_line_table	שולחן
 bill_line_items	פריטים
 bill_line_total	סה״כ
@@ -146,6 +159,8 @@ bill_total_caption_under	התווית מתחת ל
 bill_total_own_line	שורה משלו
 bill_total_caption_with	עם המספר
 bill_total_caption_none	ללא תווית
+bill_total_caption_span_off	כיתוב בעמודה אחת
+bill_total_caption_span_on	מתפרש עד המספר
 bill_total_place_help	„שורה משלו“ מדפיס את הסכום הזה לבדו. מתחת לעמודה, המספר שלו מודפס באותה עמודת פריטים, בגודל ובעובי של השורה הזו; סכומים חולקים שורה אחת עד שעמודה נתפסת, ואז מתחילה שורה חדשה. התווית באה עם המספר, מתחת לעמודה אחרת, או מושמטת. שורות המס, השירות, העיגול והתשלום הולכות אחרי „ביניים“.
 reprint_incl	בהדפסה
 reprint_skip	דלג
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	הגדר את Khaynjo
 shop_logo_optional	לוגו החנות (לא חובה)
 stock_type_help	הקלידו את שם הפריט (חלק ממנו מספיק), כמות, ואז התאימו. פריטים שעדיין לא נספרים צריכים התחל מעקב פעם אחת.
 team_owner_help	השאירו את האדם ריק כדי להוסיף מישהו: שם, תפקיד, שם משתמש, PIN וסיסמה אופציונלית, ואז הוסף. בחרו אדם כדי לערוך טופס מאותו סוג — שם, שם משתמש, סיסמה, מסכים והרשאות — ואז שמור. ה־PIN והסיסמה שלכם הם כניסה אחת למטה. הבעלים לא משנה את ה־PIN של אף אחד אחר.
+team_owner_row_help	אתם עורכים את «בעלים» בלבד: שם תצוגה, שם משתמש וסיסמה. מסכים, הרשאות כסף ותחנות «מטבח» נשארים מלאים ל«בעלים» ולא מוצגים כאן. בחרו איש «צוות» כדי לשנות את הגדרת התפקיד שלו.
+team_owner_identity_hint	«בעלים» שומר על כל מסך והרשאה. «שמור» משנה רק שם תצוגה והתחברות.
+save_owner_identity	«שמור» שם «בעלים» והתחברות
+save_owner_identity_named	«שמור» את שם {name} והתחברות
+save_owner_identity_ok	נשמרו שם «בעלים» והתחברות עבור {name}
 staff_name_ph	שם איש צוות
 staff_copy_hire_ph	העתק הגדרה מ־(לא חובה)
 staff_copy_hire	השתמש בהגדרה של האדם הזה

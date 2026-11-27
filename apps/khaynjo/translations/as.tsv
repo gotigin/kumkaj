@@ -109,6 +109,19 @@ bill_line_customer	গ্ৰাহক
 bill_line_bill_no	বিল নং
 bill_line_time	সময়
 bill_line_cashier	কেশ্বিয়াৰ
+bill_meta_empty_help	খালী থাকিলে
+bill_meta_empty_always	সদায় দেখুৱাওক
+bill_meta_empty_omit	খালী থাকিলে এৰি দিয়ক
+bill_meta_empty_tip	«সদায় দেখুৱাওক» মান নোহোৱাকৈ কেৱল লেবেল মুদ্ৰণ কৰে (যেনে নাম:) — খালী অতিথি বিলৰ বাবে উপযোগী। «খালী থাকিলে এৰি দিয়ক» সম্পূৰ্ণ শাৰী এৰি যায়।
+bill_custom_add	শাৰী যোগ কৰক
+bill_custom_remove	আঁতৰাওক
+bill_custom_line	স্বনিৰ্বাচিত শাৰী
+bill_custom_value_ph	প্ৰতিটো বিলত মুদ্ৰিত পাঠ
+bill_preview_sample	নমুনা
+bill_preview_running	খোলা অৰ্ডাৰ
+bill_preview_sale	নিষ্পত্তি হোৱা বিল
+kot_preview_sample	নমুনা
+kot_preview_ticket	ৰন্ধনশালা টিকট
 bill_line_table	মেজ
 bill_line_items	বস্তু
 bill_line_total	মুঠ
@@ -146,6 +159,8 @@ bill_total_caption_under	লেবেল ইয়াৰ তলত
 bill_total_own_line	নিজৰ শাৰী
 bill_total_caption_with	সংখ্যাৰ লগত
 bill_total_caption_none	লেবেল নাই
+bill_total_caption_span_off	শীৰোনাম এটা স্তম্ভত
+bill_total_caption_span_on	সংখ্যালৈ বিস্তাৰ কৰক
 bill_total_place_help	“নিজৰ শাৰী”-এ এই মুঠটো অকলে ছপা কৰে। এটা স্তম্ভৰ তলত দিলে ইয়াৰ সংখ্যা সেই বস্তুৰ স্তম্ভত, এই শাৰীৰ আকাৰ আৰু গাঢ়তাত ছপা হয়; এটা স্তম্ভ ভৰি নোযোৱালৈকে মুঠবোৰে একেটা শাৰী ভাগ কৰে, তাৰ পিছত নতুন শাৰী আৰম্ভ হয়। লেবেল সংখ্যাৰ লগত, আন স্তম্ভৰ তলত যায়, বা বাদ পৰে। কৰ, সেৱা, ৰাউণ্ডিং আৰু পৰিশোধৰ শাৰীবোৰে “উপমুঠ” অনুসৰণ কৰে।
 reprint_incl	ছপাত
 reprint_skip	এৰক
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo ছেট আপ কৰক
 shop_logo_optional	দোকানৰ ল’গ’ (ঐচ্ছিক)
 stock_type_help	বস্তুৰ নাম লিখক (তাৰ অংশই যথেষ্ট), পৰিমাণ লিখক, তাৰপিছত মিলাওক। যিবোৰ বস্তু এতিয়াও গণনা হোৱা নাই সেইবোৰক এবাৰ «গণনা আৰম্ভ» লাগিব।
 team_owner_help	কাৰোবাক যোগ কৰিবলৈ ব্যক্তি খালী ৰাখক: নাম, কাম, ব্যৱহাৰকাৰী নাম, PIN আৰু ঐচ্ছিক পাছৱৰ্ড, তাৰপিছত যোগ কৰক। একে ধৰণৰ ফৰ্ম — নাম, ব্যৱহাৰকাৰী নাম, পাছৱৰ্ড, স্ক্ৰীন আৰু অধিকাৰ — সম্পাদনাৰ বাবে ব্যক্তি বাছক, তাৰপিছত ছেভ কৰক। আপোনাৰ নিজৰ PIN আৰু পাছৱৰ্ড তলত এটা ছাইন-ইন। Owner আন কাৰোবাৰ PIN সলনি নকৰে।
+team_owner_row_help	আপুনি «মালিক» সম্পাদনা কৰি আছে: কেৱল প্ৰদৰ্শন নাম, ব্যৱহাৰকাৰী নাম আৰু পাছৱৰ্ড। পৰ্দা, ধনৰ অধিকাৰ আৰু ৰন্ধনশালা ষ্টেচন মালিকৰ বাবে সম্পূৰ্ণ থাকে আৰু ইয়াত নুদেখুৱায়। কৰ্মচাৰীৰ কৰ্মসজ্জনা সলনি কৰিবলৈ তেওঁক বাছক।
+team_owner_identity_hint	মালিকৰ সকলো পৰ্দা আৰু অধিকাৰ থাকে। সংৰক্ষণ কৰক কেৱল প্ৰদৰ্শন নাম আৰু লগইন সলনি কৰে।
+save_owner_identity	মালিকৰ নাম আৰু লগইন সংৰক্ষণ কৰক
+save_owner_identity_named	{name} ৰ নাম আৰু লগইন সংৰক্ষণ কৰক
+save_owner_identity_ok	{name} ৰ বাবে মালিকৰ নাম আৰু লগইন সংৰক্ষণ হ'ল
 staff_name_ph	কৰ্মচাৰীৰ নাম / আইডি
 staff_copy_hire_ph	ছেটআপ কাৰ পৰা কপি কৰিব (ঐচ্ছিক)
 staff_copy_hire	এই ব্যক্তিৰ ছেটআপ ব্যৱহাৰ কৰক

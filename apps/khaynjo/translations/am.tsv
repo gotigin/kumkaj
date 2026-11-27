@@ -109,6 +109,19 @@ bill_line_customer	ደንበኛ
 bill_line_bill_no	የሂሳብ ቁጥር
 bill_line_time	ሰዓት
 bill_line_cashier	ገንዘብ ተቀባይ
+bill_meta_empty_help	ክፍት ሲሆን
+bill_meta_empty_always	ሁልጊዜ አሳይ
+bill_meta_empty_omit	ክፍት ሲሆን አታሳይ
+bill_meta_empty_tip	«ሁልጊዜ አሳይ» ግዜ ዋጋ ሲጠፋ መለያቱን ብቻ ያተምማል (ለምሳሌ ስም:) — ለባዶ እንግዶች ቢል ጠቃሚ ነው። «ክፍት ሲሆን አታሳይ» መስመሩን ይቀላል።
+bill_custom_add	መስመር አክል
+bill_custom_remove	አስወግድ
+bill_custom_line	ብጁ መስመር
+bill_custom_value_ph	በሁሉም ቢል ላይ የሚታተም ጽሑፍ
+bill_preview_sample	ናሙና
+bill_preview_running	«ትዕዛዝ» ክፍት
+bill_preview_sale	የተዘጋ ቢል
+kot_preview_sample	ናሙና
+kot_preview_ticket	«ኩሽና» ትኬት
 bill_line_table	ጠረጴዛ
 bill_line_items	እቃዎች
 bill_line_total	ድምር
@@ -146,6 +159,8 @@ bill_total_caption_under	መለያው ከዚህ በታች
 bill_total_own_line	የራሱ መስመር
 bill_total_caption_with	ከቁጥሩ ጋር
 bill_total_caption_none	መለያ የለም
+bill_total_caption_span_off	አንድ ዓምድ ርዕስ
+bill_total_caption_span_on	እስከ ቁጥሩ ይዘረጋል
 bill_total_place_help	“የራሱ መስመር” ይህን ድምር ለብቻው ያትማል። በአምድ ስር ሲሆን ቁጥሩ በዚያ የዕቃ አምድ ውስጥ በዚህ መስመር መጠንና ውፍረት ይታተማል፤ አምድ እስኪያዝ ድረስ ድምሮች አንድ ረድፍ ይጋራሉ፣ ከዚያ አዲስ ረድፍ ይጀምራል። መለያው ከቁጥሩ ጋር፣ በሌላ አምድ ስር ይሄዳል ወይም ይቀራል። የግብር፣ የአገልግሎት፣ የማጠጋጋትና የክፍያ መስመሮች “ንዑስ ድምር”ን ይከተላሉ።
 reprint_incl	በህትመት ውስጥ
 reprint_skip	ዝለል
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo ያዘጋጁ
 shop_logo_optional	የሱቅ አርማ (አማራጭ)
 stock_type_help	የእቃውን ስም ይጻፉ (ከፊሉ በቂ ነው)፣ ብዛት፣ ከዚያ ያስተካክሉ። ገና ያልተቆጠሩ እቃዎች አንድ ጊዜ ክትትል ጀምር ይፈልጋሉ።
 team_owner_help	ሰው ለመጨመር ሰውየውን ባዶ ይተዉ፦ ስም፣ ሥራ፣ የተጠቃሚ ስም፣ ፒን፣ እና አማራጭ የይለፍ ቃል፣ ከዚያ ይጨምሩ። ሰው ለማስተካከል ይምረጡ — ስም፣ የተጠቃሚ ስም፣ የይለፍ ቃል፣ ማያዎች እና መብቶች — ከዚያ ያስቀምጡ። የራስዎ ፒን እና የይለፍ ቃል ከታች አንድ መግቢያ ናቸው። ባለቤቱ የሌላ ሰው ፒን አይቀይርም።
+team_owner_row_help	«ባለቤት»ን ብቻ እየሻሻሉ ነው፦ የማሳያ ስም፣ የተጠቃሚ ስም እና የይለፍ ቃል። ማያዎች፣ የገንዘብ መብቶች እና «ኩሽና» ጣቢያዎች ለ«ባለቤት» ሙሉ ይቆያሉ እና እዚህ አይታዩም። የሥራ ቅንብሩን ለመቀየር ከ«ሰራተኛ» ይምረጡ።
+team_owner_identity_hint	«ባለቤት» ሁሉንም ማያ እና መብት ይይዛል። «አስቀምጥ» የማሳያ ስም እና መግቢያን ብቻ ይቀይራል።
+save_owner_identity	«ባለቤት» ስም እና መግቢያ «አስቀምጥ»
+save_owner_identity_named	የ{name} ስም እና መግቢያ «አስቀምጥ»
+save_owner_identity_ok	ለ{name} የ«ባለቤት» ስም እና መግቢያ ተ «አስቀመጠ»
 staff_name_ph	የሰራተኛ ስም
 staff_copy_hire_ph	ዝግጅት ቅዳ ከ (አማራጭ)
 staff_copy_hire	የዚህን ሰው ዝግጅት ተጠቀም

@@ -109,6 +109,19 @@ bill_line_customer	Khách hàng
 bill_line_bill_no	Số hóa đơn
 bill_line_time	Giờ
 bill_line_cashier	Thu ngân
+bill_meta_empty_help	Khi trống
+bill_meta_empty_always	Luôn hiển thị
+bill_meta_empty_omit	Bỏ qua khi trống
+bill_meta_empty_tip	«Luôn hiển thị» chỉ in nhãn khi không có giá trị (vd. Tên:) — hữu ích cho bill khách trống. «Bỏ qua khi trống» bỏ qua dòng.
+bill_custom_add	Thêm dòng
+bill_custom_remove	Xóa
+bill_custom_line	Dòng tùy chỉnh
+bill_custom_value_ph	Văn bản in trên mọi bill
+bill_preview_sample	Mẫu
+bill_preview_running	Đơn đang mở
+bill_preview_sale	Bill đã chốt
+kot_preview_sample	Mẫu
+kot_preview_ticket	Vé bếp
 bill_line_table	Bàn
 bill_line_items	Món
 bill_line_total	Tổng
@@ -146,6 +159,8 @@ bill_total_caption_under	Nhãn nằm dưới
 bill_total_own_line	Dòng riêng
 bill_total_caption_with	Cùng với số
 bill_total_caption_none	Không nhãn
+bill_total_caption_span_off	Chú thích một cột
+bill_total_caption_span_on	Kéo dài đến số
 bill_total_place_help	Dòng riêng in tổng này riêng một mình. Khi nằm dưới một cột, số của nó được in trong cột hàng đó, theo cỡ và độ đậm của dòng này; các tổng dùng chung một hàng cho đến khi một cột đã có chỗ, rồi hàng mới bắt đầu. Nhãn đi cùng với số, nằm dưới cột khác, hoặc được bỏ đi. Các dòng thuế, phí dịch vụ, làm tròn và thanh toán đi theo Tạm tính.
 reprint_incl	Trong in
 reprint_skip	Bỏ qua
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Thiết lập Khaynjo
 shop_logo_optional	Logo cửa hàng (tùy chọn)
 stock_type_help	Gõ tên mục (một phần là đủ), số lượng, rồi điều chỉnh. Mục chưa đếm cần Bắt đầu đếm một lần.
 team_owner_help	Để trống người để thêm: tên, việc, tên đăng nhập, PIN và mật khẩu tùy chọn, rồi Thêm. Chọn người để sửa cùng kiểu biểu mẫu — tên, tên đăng nhập, mật khẩu, màn hình và quyền — rồi Lưu. PIN và mật khẩu của bạn là một lần đăng nhập ở dưới. Chủ không đổi PIN của người khác.
+team_owner_row_help	Bạn đang sửa «Chủ»: chỉ tên hiển thị, tên đăng nhập và mật khẩu. Màn hình, quyền tiền và trạm bếp vẫn đầy đủ cho Chủ và không hiện ở đây. Chọn nhân viên để đổi thiết lập công việc của họ.
+team_owner_identity_hint	Chủ giữ mọi màn hình và quyền. Lưu chỉ đổi tên hiển thị và đăng nhập.
+save_owner_identity	Lưu tên và đăng nhập của Chủ
+save_owner_identity_named	Lưu tên và đăng nhập của {name}
+save_owner_identity_ok	Đã lưu tên và đăng nhập của Chủ cho {name}
 staff_name_ph	Tên / mã nhân viên
 staff_copy_hire_ph	Sao chép cấu hình từ (tùy chọn)
 staff_copy_hire	Sử dụng cấu hình của người này

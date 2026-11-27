@@ -109,6 +109,19 @@ bill_line_customer	Müşderi
 bill_line_bill_no	Hasap №
 bill_line_time	Wagt
 bill_line_cashier	Kassir
+bill_meta_empty_help	Boş bolanda
+bill_meta_empty_always	Hemişe görkez
+bill_meta_empty_omit	Boş bolsa goýber
+bill_meta_empty_tip	«Hemişe görkez» bahasy ýok bolsa diňe belligi (mes. Name:) çap edýär — boş myhman hasaplary üçin peýdaly. «Boş bolsa goýber» setiri geçýär.
+bill_custom_add	Setir goş
+bill_custom_remove	Aýyr
+bill_custom_line	Ýörite setir
+bill_custom_value_ph	Her hasapda çap edilýän tekst
+bill_preview_sample	Nusga
+bill_preview_running	Açyk zakaz
+bill_preview_sale	Ýapylan hasap
+kot_preview_sample	Nusga
+kot_preview_ticket	Aşhana bileti
 bill_line_table	Stol
 bill_line_items	Harytlar
 bill_line_total	Jemi
@@ -146,6 +159,8 @@ bill_total_caption_under	Bellik şunuň aşagynda
 bill_total_own_line	Öz setiri
 bill_total_caption_with	San bilen bile
 bill_total_caption_none	Belliksiz
+bill_total_caption_span_off	Ýazgy bir sütün
+bill_total_caption_span_on	Sanyna çenli uzat
 bill_total_place_help	Öz setiri bu jemi aýratyn çap edýär. Sütüniň aşagynda onuň sany şol haryt sütüninde, şu setiriň ölçeginde we galyňlygynda çap edilýär; bir sütün eýelenýänçä jemler bir hatary paýlaşýar, soňra täze hatar başlanýar. Bellik san bilen bile, başga sütüniň aşagynda durýar ýa-da goýberilýär. Salgyt, hyzmat, tegelemek we töleg setirleri Jemi ýerine eýerýär.
 reprint_incl	Çap edildi
 reprint_skip	Geçmek
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo düzüň
 shop_logo_optional	Dükanyň nyşany (islege görä)
 stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu elementleri bir gezek yzarlamaga başlamaly.
 team_owner_help	Kimdir birini goşmak üçin adamy boş goýuň: ady, iş, ulanyjy ady, PIN we goşmaça parol, soňra Goşuň. Şol bir görnüşi - adyny, ulanyjy adyny, parolyny, ekranlaryny we hukuklaryny redaktirlemek üçin adamy saýlaň - soňra Saklaň. Öz PIN we parolyňyz aşakda bir giriş. Eýesi başga biriniň PINini üýtgetmeýär.
+team_owner_row_help	Siz «Eýesi»-ni üýtgedýärsiňiz: diňe görkezilýän at, ulanyjy ady we parol. Ekranlar, pul hukuklary we aşhana stansiýalary Eýesi üçin doly galýar we bu ýerde görkezilmeýär. Iş düzgünini üýtgetmek üçin işgär saýlaň.
+team_owner_identity_hint	Eýesi ähli ekran we hukugy saklaýar. «Saklaň» diňe görkezilýän aty we girişi üýtgedýär.
+save_owner_identity	Eýesiniň adyny we girişini saklaň
+save_owner_identity_named	{name}-yň adyny we girişini saklaň
+save_owner_identity_ok	{name} üçin Eýesiniň ady we girişi saklandy
 staff_name_ph	Işgärleriň ady
 staff_copy_hire_ph	Gurluşy göçüriň (islege görä)
 staff_copy_hire	Bu adamyň sazlamasyny ulanyň

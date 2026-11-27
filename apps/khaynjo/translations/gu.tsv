@@ -109,6 +109,19 @@ bill_line_customer	ગ્રાહક
 bill_line_bill_no	બિલ નં.
 bill_line_time	સમય
 bill_line_cashier	કેશિયર
+bill_meta_empty_help	ખાલી હોય ત્યારે
+bill_meta_empty_always	હમેશાં બતાવો
+bill_meta_empty_omit	ખાલી હોય ત્યારે છોડો
+bill_meta_empty_tip	«હમેશાં બતાવો» મૂલ્ય વિનાનું ફક્ત લેબલ છાપે છે (દા.ત. નામ:) — ખાલી મહેમાન બિલ માટે ઉપયોગી. «ખાલી હોય ત્યારે છોડો» લાઇન છોડી દે છે.
+bill_custom_add	લાઇન ઉમેરો
+bill_custom_remove	દૂર કરો
+bill_custom_line	કસ્ટમ લાઇન
+bill_custom_value_ph	દર બિલ પર છાપાતો લખાણ
+bill_preview_sample	નમૂનો
+bill_preview_running	ખુલ્લો ઑર્ડર
+bill_preview_sale	નિપટાયેલ બિલ
+kot_preview_sample	નમૂનો
+kot_preview_ticket	રસોડું ટિકિટ
 bill_line_table	ટેબલ
 bill_line_items	વસ્તુઓ
 bill_line_total	કુલ
@@ -146,6 +159,8 @@ bill_total_caption_under	લેબલ આની નીચે
 bill_total_own_line	પોતાની પંક્તિ
 bill_total_caption_with	સંખ્યા સાથે
 bill_total_caption_none	લેબલ નહીં
+bill_total_caption_span_off	કૅપ્શન એક કૉલમમાં
+bill_total_caption_span_on	નંબર સુધી ફેલાવો
 bill_total_place_help	“પોતાની પંક્તિ” આ કુલને એકલું છાપે છે. સ્તંભની નીચે હોય ત્યારે તેની સંખ્યા તે આઇટમ સ્તંભમાં, આ પંક્તિના માપ અને જાડાઈમાં છપાય છે; કોઈ સ્તંભ ભરાય ત્યાં સુધી કુલ એક જ હાર વહેંચે છે, પછી નવી હાર શરૂ થાય છે. લેબલ સંખ્યા સાથે, બીજા સ્તંભની નીચે જાય છે, અથવા છોડી દેવાય છે. ટેક્સ, સર્વિસ, રાઉન્ડિંગ અને ચુકવણીની પંક્તિઓ “પેટા કુલ” ને અનુસરે છે.
 reprint_incl	છાપમાં
 reprint_skip	છોડો
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo સેટ કરો
 shop_logo_optional	દુકાન લોગો (વૈકલ્પિક)
 stock_type_help	આઇટમનું નામ લખો (તેનો ભાગ જ પૂરતો છે), જથ્થો લખો, પછી ગોઠવો. જે આઇટમ હજી ગણાઈ નથી તેને એકવાર «ગણતરી શરૂ» જોઈએ.
 team_owner_help	કોઈને ઉમેરવા વ્યક્તિ ખાલી રાખો: નામ, કામ, વપરાશકર્તા નામ, PIN અને વૈકલ્પિક પાસવર્ડ, પછી ઉમેરો. એ જ પ્રકારના ફોર્મ — નામ, વપરાશકર્તા નામ, પાસવર્ડ, સ્ક્રીન અને અધિકાર — સંપાદિત કરવા વ્યક્તિ પસંદ કરો, પછી સાચવો. તમારું પોતાનું PIN અને પાસવર્ડ નીચે એક સાઇન-ઇન છે. Owner બીજા કોઈનું PIN બદલતા નથી.
+team_owner_row_help	તમે «માલિક» સંપાદિત કરી રહ્યા છો: ફક્ત પ્રદર્શન નામ, વપરાશકર્તા નામ અને પાસવર્ડ. સ્ક્રીન, પૈસાના અધિકાર અને રસોડું સ્ટેશન માલિક માટે પૂર્ણ રહે છે અને અહીં બતાવતા નથી. કર્મચારીનો નોકરી સેટઅપ બદલવા તેમને પસંદ કરો.
+team_owner_identity_hint	માલિક પાસે દરેક સ્ક્રીન અને અધિકાર રહે છે. સાચવો ફક્ત પ્રદર્શન નામ અને લૉગિન બદલે છે.
+save_owner_identity	માલિકનું નામ અને લૉગિન સાચવો
+save_owner_identity_named	{name} નું નામ અને લૉગિન સાચવો
+save_owner_identity_ok	{name} માટે માલિકનું નામ અને લૉગિન સાચવ્યું
 staff_name_ph	સ્ટાફ નામ / આઈડી
 staff_copy_hire_ph	સેટઅપ કોની પાસેથી નકલ કરવું (વૈકલ્પિક)
 staff_copy_hire	આ વ્યક્તિનું સેટઅપ વાપરો

@@ -109,6 +109,19 @@ bill_line_customer	Oníbàárà
 bill_line_bill_no	Nọ́mbà bíìlì
 bill_line_time	Akoko
 bill_line_cashier	Olùgbowó
+bill_meta_empty_help	Nigbati o ṣofo
+bill_meta_empty_always	Fihan nigbagbogbo
+bill_meta_empty_omit	Foju nigbati o ṣofo
+bill_meta_empty_tip	«Fihan nigbagbogbo» tẹ aworan aami nikan (apẹẹrẹ Orúkọ:) nigbati ko si iye — wulo fun awọn bill alejo ṣofo. «Foju nigbati o ṣofo» fi ila naa silẹ.
+bill_custom_add	Ṣafikun ila
+bill_custom_remove	Yọ kuro
+bill_custom_line	Ila aṣa
+bill_custom_value_ph	Ọrọ a tẹjade lori gbogbo bill
+bill_preview_sample	Apeere
+bill_preview_running	«Ìbéèrè oúnjẹ» ṣí
+bill_preview_sale	Bill ti a ṣe idajọ
+kot_preview_sample	Apeere
+kot_preview_ticket	Tiketi «Idana»
 bill_line_table	Tábìlì
 bill_line_items	Àwọn ohun
 bill_line_total	Lapapọ
@@ -146,6 +159,8 @@ bill_total_caption_under	Aami lábẹ́
 bill_total_own_line	Ila tirẹ̀
 bill_total_caption_with	Pẹ̀lú nọ́mbà
 bill_total_caption_none	Kò sí aami
+bill_total_caption_span_off	Akọle ni ọkan nkan
+bill_total_caption_span_on	Fẹ̀ si nọ́mbà
 bill_total_place_help	Ila tirẹ̀ ń tẹ àpapọ̀ yìí lọ́tọ̀. Lábẹ́ ọ̀wọ̀n kan, a ń tẹ nọ́mbà rẹ̀ sínú ọ̀wọ̀n ọjà yẹn, ní ìwọ̀n àti ìnípọn ila yìí; àwọn àpapọ̀ ń pín ìlà kan títí tí ọ̀wọ̀n kan fi kún, lẹ́yìn náà ìlà tuntun bẹ̀rẹ̀. Aami ń bá nọ́mbà lọ, sábẹ́ ọ̀wọ̀n mìíràn, tàbí kí a fi í sílẹ̀. Àwọn ila owó-orí, iṣẹ́, ìyípo àti ìsanwó ń tẹ̀lé Apapọ ipin.
 reprint_incl	Ninu titẹ
 reprint_skip	Rekọja
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Ṣeto Khaynjo
 shop_logo_optional	Aami itaja (aṣayan)
 stock_type_help	Tẹ orukọ nkan akojọ aṣayan (apakan rẹ ti to), opoiye, lẹhinna ṣatunṣe. Awọn ohun akojọ aṣayan akojọ aṣayan ti a ko ka sibẹsibẹ nilo Bẹrẹ titele lẹẹkan.
 team_owner_help	Fi eniyan silẹ ni ofo lati ṣafikun ẹnikan: orukọ, iṣẹ, orukọ olumulo, PIN, ati ọrọ igbaniwọle yiyan, lẹhinna Fikun-un. Yan eniyan lati ṣatunkọ iru fọọmu kanna - orukọ, orukọ olumulo, ọrọ igbaniwọle, awọn iboju, ati awọn ẹtọ - lẹhinna Fipamọ. Ti ara rẹ PIN ati ọrọ igbaniwọle jẹ iwọle kan ni isalẹ. Olohun ko yi enikeni pada PIN.
+team_owner_row_help	O ń ṣatunkọ «Eni»: orukọ fifihan, orukọ olumulo ati ọrọ aṣina nikan. Awọn iboju, awọn ẹtọ owó ati awọn ibi «Idana» duro ni pipe fun «Eni» ti ko han nibi. Yan ẹlẹgbẹ «Oṣiṣẹ» lati yi eto iṣẹ rẹ ṣe.
+team_owner_identity_hint	«Eni» ní gbogbo iboju ati ẹtọ. «Fipamọ» ń yi orukọ fifihan ati iwọle ṣe nikan.
+save_owner_identity	«Fipamọ» orukọ «Eni» ati iwọle
+save_owner_identity_named	«Fipamọ» orukọ {name} ati iwọle
+save_owner_identity_ok	Orukọ «Eni» ati iwọle ti «Fipamọ» fun {name}
 staff_name_ph	Orukọ oṣiṣẹ
 staff_copy_hire_ph	Daakọ iṣeto lati (aṣayan)
 staff_copy_hire	Lo iṣeto eniyan yii

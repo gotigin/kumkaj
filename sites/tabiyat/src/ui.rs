@@ -664,6 +664,22 @@ script_mod! {
                             text: "1 / 8"
                             draw_text +: {color: #xB8E4E6 text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
                         }
+                        go_github := View{
+                            width: 44 height: 44
+                            flow: Overlay
+                            align: Align{x: 0.5 y: 0.5}
+                            View{
+                                width: Fill height: Fill
+                                flow: Down
+                                align: Align{x: 0.5 y: 0.5}
+                                Image{
+                                    width: 18 height: 18
+                                    fit: ImageFit.Stretch
+                                    src: crate_resource("self:resources/media/github-mark.webp")
+                                }
+                            }
+                            open_nav_github := HitBtn{}
+                        }
                         go_lang := LangChip{text: "EN"}
                     }
 
@@ -968,7 +984,7 @@ script_mod! {
                                 spacing: 20
                                 Point{head.body: "No per-bill charge" line.body: "No fee per sale, medicine, till or staff PIN on the local install."}
                                 Point{head.body: "Android, Windows, Linux" line.body: "The same Tabiyat on the phone and the desktop till."}
-                                Point{head.body: "Optional Kumkaj Cloud" line.body: "Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop."}
+                                Point{head.body: "Optional Kumkaj Cloud" line.body: "Yearly Steady ₹6k · Swift ₹14k · Priority ₹28k ex-tax (or Custom quote). Shop at /shop."}
                             }
                         }
 

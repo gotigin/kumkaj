@@ -109,6 +109,19 @@ bill_line_customer	Klijent
 bill_line_bill_no	Nru tal-kont
 bill_line_time	Ħin
 bill_line_cashier	Kaxxier
+bill_meta_empty_help	Meta vojt
+bill_meta_empty_always	Uri dejjem
+bill_meta_empty_omit	Aqbeż meta vojt
+bill_meta_empty_tip	«Uri dejjem» jistampa biss it-tikketta (eż. Isem:) mingħajr valur — utli għal kontijiet mistiedna vojta. «Aqbeż meta vojt» jaqbeż il-linja.
+bill_custom_add	Żid linja
+bill_custom_remove	Neħħi
+bill_custom_line	Linja personalizzata
+bill_custom_value_ph	Test imfittieħ fuq kull kont
+bill_preview_sample	Eżempju
+bill_preview_running	Ordni miftuħa
+bill_preview_sale	Kont magħluq
+kot_preview_sample	Eżempju
+kot_preview_ticket	Ticket tal-kċina
 bill_line_table	Mejda
 bill_line_items	Oġġetti
 bill_line_total	Totali
@@ -146,6 +159,8 @@ bill_total_caption_under	Tikketta taħt
 bill_total_own_line	Linja għalih
 bill_total_caption_with	Man-numru
 bill_total_caption_none	Bla tikketta
+bill_total_caption_span_off	Titlu f’kolonna waħda
+bill_total_caption_span_on	Sa n-numru
 bill_total_place_help	Linja għalih jistampa dan it-total waħdu. Taħt kolonna, in-numru tiegħu jiġi stampat f'dik il-kolonna tal-oġġetti, fid-daqs u l-ħxuna ta' din il-linja; it-totali jaqsmu ringiela waħda sakemm kolonna tkun meħuda, imbagħad tibda ringiela ġdida. It-tikketta tmur man-numru, taħt kolonna oħra, jew titħalla barra. Il-linji tat-taxxa, tas-servizz, tal-arrotondament u tal-ħlas isegwu lil Subtotal.
 reprint_incl	Fil-istampar
 reprint_skip	Aqbeż
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Twaqqaf Khaynjo
 shop_logo_optional	Logo tal-ħanut (mhux obbligatorju)
 stock_type_help	Ittajpja l-isem tal-oġġett (parti minnu hija biżżejjed), kwantità, imbagħad aġġusta. Oġġetti li għadhom mhumiex magħduda jeħtieġu Ibda traċċar darba.
 team_owner_help	Ħalli l-persuna vojta biex iżżid lil xi ħadd: isem, xogħol, username, PIN, u password fakultattiva, imbagħad Żid. Agħżel persuna biex teditja dik l-istess tip ta' formola — isem, username, password, skrins, u drittijiet — imbagħad Issejvja. Il-PIN u l-password tiegħek huma dħul wieħed fil-qiegħ. Is-Sid ma jbiddel il-PIN ta' ħaddieħor.
+team_owner_row_help	Qed teditja s-sid: isem tal-wiri, utent u password biss. L-iskrins, id-drittijiet tal-flus u l-istazzjonijiet tal-kċina jibqgħu sħaħ għas-sid u ma jintwerewx hawn. Agħżel membru tal-persunal biex tibdel is-settings tax-xogħol tiegħu.
+team_owner_identity_hint	Is-sid iżomm kull skrin u dritt. Salva tbiddel biss l-isem tal-wiri u l-login.
+save_owner_identity	Salva l-isem u l-login tas-sid
+save_owner_identity_named	Salva l-isem u l-login ta’ {name}
+save_owner_identity_ok	L-isem u l-login tas-sid salvati għal {name}
 staff_name_ph	Isem il-persunal
 staff_copy_hire_ph	Ikkopja s-setup minn (mhux obbligatorju)
 staff_copy_hire	Uża s-setup ta' din il-persuna

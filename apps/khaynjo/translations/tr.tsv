@@ -109,6 +109,19 @@ bill_line_customer	Müşteri
 bill_line_bill_no	Fiş no
 bill_line_time	Saat
 bill_line_cashier	Kasiyer
+bill_meta_empty_help	Boşken
+bill_meta_empty_always	Her zaman göster
+bill_meta_empty_omit	Boşken atla
+bill_meta_empty_tip	«Her zaman göster» değer olmadan yalnızca etiketi yazdırır (örn. Ad:) — boş misafir adisyonları için yararlı. «Boşken atla» satırı atlar.
+bill_custom_add	Satır ekle
+bill_custom_remove	Kaldır
+bill_custom_line	Özel satır
+bill_custom_value_ph	Her adisyonda basılan metin
+bill_preview_sample	Örnek
+bill_preview_running	Açık sipariş
+bill_preview_sale	Kapanmış adisyon
+kot_preview_sample	Örnek
+kot_preview_ticket	Mutfak fişi
 bill_line_table	Masa
 bill_line_items	Ürünler
 bill_line_total	Toplam
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiket şunun altında
 bill_total_own_line	Kendi satırı
 bill_total_caption_with	Sayıyla birlikte
 bill_total_caption_none	Etiket yok
+bill_total_caption_span_off	Başlık tek sütunda
+bill_total_caption_span_on	Tutara kadar
 bill_total_place_help	Kendi satırı bu toplamı tek başına basar. Sütun altındayken sayısı o ürün sütununda, bu satırın boyutu ve kalınlığıyla basılır; bir sütun dolana kadar toplamlar aynı sırayı paylaşır, sonra yeni sıra başlar. Etiket sayıyla birlikte, başka bir sütunun altında durur ya da basılmaz. Vergi, servis, yuvarlama ve ödeme satırları Ara toplam yerini izler.
 reprint_incl	Yazdırmada
 reprint_skip	Atla
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo kurulumu
 shop_logo_optional	Dükkan logosu (isteğe bağlı)
 stock_type_help	Öğe adını yazın (bir kısmı yeterli), miktar girin, sonra ayarlayın. Henüz sayılmamış öğeler bir kez Sayımı başlat gerektirir.
 team_owner_help	Birini eklemek için kişiyi boş bırakın: ad, iş, kullanıcı adı, PIN ve isteğe bağlı parola, sonra Ekle. Aynı formu düzenlemek için birini seçin — ad, kullanıcı adı, parola, ekranlar ve haklar — sonra Kaydet. Kendi PIN’iniz ve parolanız altta tek oturum açmadır. Sahip başkasının PIN’ini değiştirmez.
+team_owner_row_help	Sahibi düzenliyorsunuz: yalnızca görünen ad, kullanıcı adı ve parola. Ekranlar, para hakları ve mutfak istasyonları sahip için tam kalır ve burada gösterilmez. Görev ayarını değiştirmek için personelden birini seçin.
+team_owner_identity_hint	Sahip her ekranı ve hakkı korur. Kaydet yalnızca görünen adı ve girişi değiştirir.
+save_owner_identity	Sahibin adını ve girişini kaydet
+save_owner_identity_named	{name} adını ve girişini kaydet
+save_owner_identity_ok	{name} için sahip adı ve girişi kaydedildi
 staff_name_ph	Personel adı / kimliği
 staff_copy_hire_ph	Ayarın kopyalanacağı kişi (isteğe bağlı)
 staff_copy_hire	Bu kişinin ayarlarını kullan

@@ -109,6 +109,19 @@ bill_line_customer	Pelanggan
 bill_line_bill_no	No. tagihan
 bill_line_time	Waktu
 bill_line_cashier	Kasir
+bill_meta_empty_help	Saat kosong
+bill_meta_empty_always	Selalu tampilkan
+bill_meta_empty_omit	Lewati jika kosong
+bill_meta_empty_tip	«Selalu tampilkan» mencetak hanya label tanpa nilai (mis. Nama:) — berguna untuk bill tamu kosong. «Lewati jika kosong» melewati baris.
+bill_custom_add	Tambah baris
+bill_custom_remove	Hapus
+bill_custom_line	Baris kustom
+bill_custom_value_ph	Teks dicetak di setiap bill
+bill_preview_sample	Contoh
+bill_preview_running	Pesanan terbuka
+bill_preview_sale	Bill selesai
+kot_preview_sample	Contoh
+kot_preview_ticket	Tiket dapur
 bill_line_table	Meja
 bill_line_items	Item
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Label di bawah
 bill_total_own_line	Baris sendiri
 bill_total_caption_with	Bersama angka
 bill_total_caption_none	Tanpa label
+bill_total_caption_span_off	Label satu kolom
+bill_total_caption_span_on	Memanjang ke angka
 bill_total_place_help	Baris sendiri mencetak total ini sendirian. Di bawah kolom, angkanya dicetak di kolom barang itu, dengan ukuran dan ketebalan baris ini; total berbagi satu baris sampai sebuah kolom terisi, lalu baris baru dimulai. Label ikut bersama angka, di bawah kolom lain, atau tidak dicetak. Baris pajak, layanan, pembulatan, dan pembayaran mengikuti Subtotal.
 reprint_incl	Dalam cetak
 reprint_skip	Lewati
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Siapkan Khaynjo
 shop_logo_optional	Logo toko (opsional)
 stock_type_help	Ketik nama item (sebagian saja cukup), jumlah, lalu sesuaikan. Item yang belum dihitung perlu Mulai hitung sekali.
 team_owner_help	Biarkan orang kosong untuk menambah seseorang: nama, pekerjaan, nama pengguna, PIN, dan sandi opsional, lalu Tambah. Pilih orang untuk mengedit formulir yang sama — nama, nama pengguna, sandi, layar, dan hak — lalu Simpan. PIN dan sandi Anda sendiri adalah satu masuk di bawah. Pemilik tidak mengubah PIN orang lain.
+team_owner_row_help	Anda mengedit «Pemilik»: hanya nama tampilan, nama pengguna, dan kata sandi. Layar, hak uang, dan stasiun dapur tetap penuh untuk Pemilik dan tidak ditampilkan di sini. Pilih anggota staf untuk mengubah pengaturan pekerjaannya.
+team_owner_identity_hint	Pemilik memiliki setiap layar dan hak. Simpan hanya mengubah nama tampilan dan login.
+save_owner_identity	Simpan nama dan login Pemilik
+save_owner_identity_named	Simpan nama dan login {name}
+save_owner_identity_ok	Nama dan login Pemilik disimpan untuk {name}
 staff_name_ph	Nama / id staf
 staff_copy_hire_ph	Salin pengaturan dari (opsional)
 staff_copy_hire	Gunakan pengaturan orang ini

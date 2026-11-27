@@ -109,6 +109,19 @@ bill_line_customer	Customer
 bill_line_bill_no	Bill no.
 bill_line_time	Hun
 bill_line_cashier	Sum khawmtu
+bill_meta_empty_help	Hmang laiin
+bill_meta_empty_always	Rei rengin tik ang
+bill_meta_empty_omit	Hmang laiin daina tur
+bill_meta_empty_tip	«Rei rengin tik ang» a thlawhte label chauh a chhuak (ameichiah Name:) — mikhual bill hmang a tha. «Hmang laiin daina tur» line a danna.
+bill_custom_add	Line belh rawh
+bill_custom_remove	Paih
+bill_custom_line	Line duhawm tak
+bill_custom_value_ph	Bill tinah print tur chhiar
+bill_preview_sample	Danglamna
+bill_preview_running	Order hawng
+bill_preview_sale	Bill tdawn tawh
+kot_preview_sample	Danglamna
+kot_preview_ticket	Buh chhumna ticket
 bill_line_table	Dawhkan
 bill_line_items	Thil
 bill_line_total	A zawng
@@ -146,6 +159,8 @@ bill_total_caption_under	Hming hnuaiah
 bill_total_own_line	Ama ri
 bill_total_caption_with	Number nen
 bill_total_caption_none	Hming awm lo
+bill_total_caption_span_off	Hming phar i column pakhat
+bill_total_caption_span_on	Number thleng hnar sei rawh
 bill_total_place_help	Ama ri chuan he belhkhawm hi amah chauhin a chhuah. Column hnuaiah chuan a number chu chu thil column-ah, he ri lenzawng leh chhah zawngin a chhuah a; column pakhat a khah hma chuan belhkhawmte chuan tlar khat an insem a, chumi hnuah tlar thar a intan. Hming chu number nen, column dang hnuaiah a kal emaw, dah loh a ni thei. Chhiah, service, rounding leh pek ri te chuan Zawng te an zui.
 reprint_incl	Print-ah telh
 reprint_skip	Kaltlang
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo rem
 shop_logo_optional	Dawr logo (duh chuan)
 stock_type_help	Thil hming ziak (a then a tawk), zat, chuan siam. Chhiar la loh thil hian Chhiar tan vawi khat a ngai.
 team_owner_help	Mi ruak chhuah la, mi telh turin: hming, hna, hmangtu hming, PIN, leh password duh chuan, chuan Telh. Mi thlang la, form khop kha siam turin — hming, hmangtu hming, password, screen, leh dikna — chuan Dah tha. I PIN leh password chu a hnuaih lut pakhat a ni. Neitu hian mi dang PIN a thlak lo.
+team_owner_row_help	«Neitu» i siam ṭul mek a ni: hming hmuhtirna, hmangtu hming leh password chauh. Screen-te, tangka dikna leh buh chhumna station ho Neitu tan a kimchang a, hetah hian hmuh tur a ni lo. Melhtu member thil ti dan tur thlak turin thlang rawh.
+team_owner_identity_hint	Neitu hian screen leh dikna engkim a nei. Dah tha a thlak chu hming hmuhtirna leh login chauh.
+save_owner_identity	Neitu hming leh login dah tha rawh
+save_owner_identity_named	{name} hming leh login dah tha rawh
+save_owner_identity_ok	{name} tan Neitu hming leh login dah tha a ni tawh
 staff_name_ph	Hnathawk hming
 staff_copy_hire_ph	Rem atanga copy (duh chuan)
 staff_copy_hire	He mi rem hmang

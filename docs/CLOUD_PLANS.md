@@ -69,8 +69,8 @@ List prices are the **raw** amount Kumkaj charges for the plan. They do
 | --- | --- |
 | Free forever | ₹0 |
 | Steady | **₹6,000** |
-| Swift | **₹12,000** |
-| Priority | **₹24,000** |
+| Swift | **₹14,000** |
+| Priority | **₹28,000** |
 | Custom | Quote — may be below Steady or above Priority (agreed terms) |
 
 - **Custom** is sales-led: yearly amount, quota, and bandwidth are whatever
@@ -99,8 +99,8 @@ List prices are the **raw** amount Kumkaj charges for the plan. They do
 | Plan | Raw | Customer pays if GST 18% applies |
 | --- | --- | --- |
 | Steady | ₹6,000 | ₹7,080 |
-| Swift | ₹12,000 | ₹14,160 |
-| Priority | ₹24,000 | ₹28,320 |
+| Swift | ₹14,000 | ₹16,520 |
+| Priority | ₹28,000 | ₹33,040 |
 
 Other currencies / display FX later; keep the **same plan shape** and the
 same **ex-tax** principle. Do not invent India-only product scope — only

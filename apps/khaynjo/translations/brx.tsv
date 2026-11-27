@@ -109,6 +109,19 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल नं
 bill_line_time	सम
 bill_line_cashier	केसियार
+bill_meta_empty_help	खालि थायैब्ला
+bill_meta_empty_always	जोबोद मोन्नाय
+bill_meta_empty_omit	खालि आयै बोखार
+bill_meta_empty_tip	«जोबोद मोन्नाय» मानि बिनोनो लेबल खालाम (दाहोनाय नुवा:) — खालि मेहमान बिलनि थाखाय गोनां। «खालि आयै बोखार» लाइन बोखार।
+bill_custom_add	लाइन दाजाब
+bill_custom_remove	बोखार
+bill_custom_line	साननाय लाइन
+bill_custom_value_ph	गासै बिलआव छापनाय लिर
+bill_preview_sample	नमुना
+bill_preview_running	खुलाइ अर्डर
+bill_preview_sale	आबुङ बिल
+kot_preview_sample	नमुना
+kot_preview_ticket	नुथां टिकेट
 bill_line_table	टेबुल
 bill_line_items	आइटम
 bill_line_total	गासै
@@ -146,6 +159,8 @@ bill_total_caption_under	लेबेल बेनि सिङाव
 bill_total_own_line	गावनि सारि
 bill_total_caption_with	अनजिमाजों लोगोसे
 bill_total_caption_none	लेबेल गैया
+bill_total_caption_span_off	कैप्सन मोनसे थामनियाव
+bill_total_caption_span_on	अनजावगिरिनि सिमाव फारसे
 bill_total_place_help	“गावनि सारि” आ बे गासैखौ हारसिङै छापायो। खाम्फानि सिङाव दोनब्ला बेनि अनजिमाया बे बेसादनि खाम्फायाव, बे सारिनि महर आरो रोजानि बादि छापा जायो; मोनसे खाम्फा आबुं जायाब्ला गासैफोरा मोनसे सारिखौ रानो, बेनि उनाव गोदान सारि जागायो। लेबेला अनजिमाजों लोगोसे, गुबुन खाम्फानि सिङाव थाङो, एबा गारनाय जायो। खाजोना, सेबा, राउन्डिं आरो रां होनायनि सारिफोरा “खाव गासै” खौ फालियो।
 reprint_incl	प्रिन्टआव
 reprint_skip	बार
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo साजाय
 shop_logo_optional	दोकान लोगो (नांगौब्ला)
 stock_type_help	आइटमनि मुं लिर (बेनि बायखाबो गना), अनसान, अब्ला सोलाय। दासिम साननाय नङा आइटमा मोनसे ट्र्याक जागाय नांगौ।
 team_owner_help	गुदि मानसि दाजाबनो मानसि खाली दोन: मुं, खामानि, बाहाय मुं, PIN, आरो नांगौब्ला पासवार्ड, अब्ला दाजाब। बे महरै फर्म एडिट खालामनो मानसि सायख — मुं, बाहाय मुं, पासवार्ड, स्क्रिन, आरो अधिकार — अब्ला थिना दोन। नोंनि PIN आरो पासवार्ड आ गाहायनि मोनसे साइन-इन। गिबिया गुबुन मानसिनि PIN सोलाया।
+team_owner_row_help	नों «गिबि» सोलायनो दं: मोन्नायनि मुं, बाहायगिरि मुं आनजाव खालि। स्क्रिन, रां मोनथाय आरो नुथां स्टेसन गिबिनि थाखाय गासैबो थांा आरो बेयाव मोन्दां। मावुरि सोलायनो थाखाय बासिन थाखाय मोन्नाय।
+team_owner_identity_hint	गिबियाव गासैबो स्क्रिन आरो मोनथाय दं। थिना दोन मोन्नायनि मुं आरो लगइन खालि सोलाय।
+save_owner_identity	गिबिनि मुं आरो लगइन थिना दोन
+save_owner_identity_named	{name} नि मुं आरो लगइन थिना दोन
+save_owner_identity_ok	{name} नि थाखाय गिबिनि मुं आरो लगइन थिना दोनबाय
 staff_name_ph	मावुरिनि मुं
 staff_copy_hire_ph	सेटअप कपि खालाम (नांगौब्ला)
 staff_copy_hire	बे मानसिनि सेटअप बाहाय

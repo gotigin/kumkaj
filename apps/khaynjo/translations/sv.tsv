@@ -109,6 +109,19 @@ bill_line_customer	Kund
 bill_line_bill_no	Notanr
 bill_line_time	Tid
 bill_line_cashier	Kassör
+bill_meta_empty_help	När tomt
+bill_meta_empty_always	Visa alltid
+bill_meta_empty_omit	Utelämna när tomt
+bill_meta_empty_tip	«Visa alltid» skriver bara etiketten (t.ex. Namn:) utan värde — användbart för tomma gästnotor. «Utelämna när tomt» hoppar över raden.
+bill_custom_add	Lägg till rad
+bill_custom_remove	Ta bort
+bill_custom_line	Anpassad rad
+bill_custom_value_ph	Text på varje nota
+bill_preview_sample	Exempel
+bill_preview_running	Öppen beställning
+bill_preview_sale	Avslutad nota
+kot_preview_sample	Exempel
+kot_preview_ticket	Kökslapp
 bill_line_table	Bord
 bill_line_items	Föremål
 bill_line_total	Totalt
@@ -146,6 +159,8 @@ bill_total_caption_under	Etikett under
 bill_total_own_line	Egen rad
 bill_total_caption_with	Vid talet
 bill_total_caption_none	Ingen etikett
+bill_total_caption_span_off	Bildtext i en kolumn
+bill_total_caption_span_on	Till beloppet
 bill_total_place_help	Egen rad skriver ut den här summan för sig. Under en kolumn skrivs talet ut i den artikelkolumnen, i den här radens storlek och vikt; summor delar en rad tills en kolumn är upptagen, sedan börjar en ny rad. Etiketten står vid talet, under en annan kolumn eller utelämnas. Rader för skatt, service, avrundning och betalning följer Delsumma.
 reprint_incl	I utskrift
 reprint_skip	Hoppa över
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Ställ in Khaynjo
 shop_logo_optional	Butikslogotyp (valfritt)
 stock_type_help	Skriv in objektets namn (en del av det räcker), en kvantitet och justera sedan. Föremål som inte räknas ännu behöver Börja spåra en gång.
 team_owner_help	Lämna personen tom för att lägga till någon: namn, jobb, användarnamn, PIN-kod och ett valfritt lösenord, sedan Lägg till. Välj en person att redigera samma typ av formulär – namn, användarnamn, lösenord, skärmar och rättigheter – och sedan Spara. Din egen PIN-kod och ditt lösenord är en inloggning längst ned. Ägaren ändrar inte någon annans PIN-kod.
+team_owner_row_help	Du redigerar ägaren: endast visningsnamn, användarnamn och lösenord. Skärmar, pengarättigheter och köksstationer förblir fulla för ägaren och visas inte här. Välj en personalmedlem för att ändra dennes jobbinställning.
+team_owner_identity_hint	Ägaren behåller varje skärm och rättighet. Spara ändrar bara visningsnamn och inloggning.
+save_owner_identity	Spara ägarens namn och inloggning
+save_owner_identity_named	Spara {name}s namn och inloggning
+save_owner_identity_ok	Ägarens namn och inloggning sparade för {name}
 staff_name_ph	Personalens namn
 staff_copy_hire_ph	Kopiera inställningar från (valfritt)
 staff_copy_hire	Använd den här personens inställningar

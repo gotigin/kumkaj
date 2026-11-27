@@ -109,6 +109,19 @@ bill_line_customer	Kunde
 bill_line_bill_no	Regningsnr.
 bill_line_time	Tid
 bill_line_cashier	Kasserer
+bill_meta_empty_help	Når tom
+bill_meta_empty_always	Vis alltid
+bill_meta_empty_omit	Utelat når tom
+bill_meta_empty_tip	«Vis alltid» skriver bare etiketten (f.eks. Navn:) uten verdi — nyttig for tomme gjesteregninger. «Utelat når tom» hopper over linjen.
+bill_custom_add	Legg til linje
+bill_custom_remove	Fjern
+bill_custom_line	Egendefinert linje
+bill_custom_value_ph	Tekst på hver regning
+bill_preview_sample	Eksempel
+bill_preview_running	Åpen bestilling
+bill_preview_sale	Avsluttet regning
+kot_preview_sample	Eksempel
+kot_preview_ticket	Kjøkkenbillett
 bill_line_table	Bord
 bill_line_items	Varer
 bill_line_total	Totalt
@@ -146,6 +159,8 @@ bill_total_caption_under	Etikett under
 bill_total_own_line	Egen linje
 bill_total_caption_with	Ved tallet
 bill_total_caption_none	Ingen etikett
+bill_total_caption_span_off	Bildetekst i én kolonne
+bill_total_caption_span_on	Til beløpet
 bill_total_place_help	Egen linje skriver ut denne totalen for seg selv. Under en kolonne skrives tallet ut i den varekolonnen, i denne linjens størrelse og tykkelse; totaler deler en rad til en kolonne er opptatt, så begynner en ny rad. Etiketten står ved tallet, under en annen kolonne eller utelates. Linjer for avgift, service, avrunding og betaling følger Delsum.
 reprint_incl	I utskrift
 reprint_skip	Hopp over
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Sett opp Khaynjo
 shop_logo_optional	Butikklogo (valgfritt)
 stock_type_help	Skriv varenavnet (en del er nok), et antall, og juster. Varer som ikke telles ennå trenger Start sporing én gang.
 team_owner_help	La personen stå tom for å legge til noen: navn, jobb, brukernavn, PIN og et valgfritt passord, deretter Legg til. Velg en person for å redigere samme type skjema — navn, brukernavn, passord, skjermer og rettigheter — deretter Lagre. Din egen PIN og passord er én innlogging nederst. Eieren endrer ikke andres PIN.
+team_owner_row_help	Du redigerer eieren: bare visningsnavn, brukernavn og passord. Skjermer, pengerettigheter og kjøkkenstasjoner forblir fulle for eieren og vises ikke her. Velg et personalemedlem for å endre jobboppsettet.
+team_owner_identity_hint	Eieren beholder hver skjerm og rettighet. Lagre endrer bare visningsnavn og innlogging.
+save_owner_identity	Lagre eierens navn og innlogging
+save_owner_identity_named	Lagre {name}s navn og innlogging
+save_owner_identity_ok	Eierens navn og innlogging lagret for {name}
 staff_name_ph	Ansattnavn
 staff_copy_hire_ph	Kopier oppsett fra (valgfritt)
 staff_copy_hire	Bruk denne personens oppsett

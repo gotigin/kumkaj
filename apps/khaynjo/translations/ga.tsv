@@ -109,6 +109,19 @@ bill_line_customer	Custaiméir
 bill_line_bill_no	Uimh. an bhille
 bill_line_time	Am
 bill_line_cashier	Airgeadóir
+bill_meta_empty_help	Nuair is folamh é
+bill_meta_empty_always	Taispeáin i gcónaí
+bill_meta_empty_omit	Fág ar lár nuair is folamh
+bill_meta_empty_tip	«Taispeáin i gcónaí» priontálann an lipéad amháin (m.sh. Ainm:) gan luach — úsáideach do bhilleanna aoithe folmha. «Fág ar lár nuair is folamh» scipeálann an líne.
+bill_custom_add	Cuir líne leis
+bill_custom_remove	Bain
+bill_custom_line	Líne saincheaptha
+bill_custom_value_ph	Téacs ar gach bille
+bill_preview_sample	Sampla
+bill_preview_running	Ordú oscailte
+bill_preview_sale	Bille socraithe
+kot_preview_sample	Sampla
+kot_preview_ticket	Ticéad cistine
 bill_line_table	Bord
 bill_line_items	Míreanna
 bill_line_total	Iomlán
@@ -146,6 +159,8 @@ bill_total_caption_under	Lipéad faoi
 bill_total_own_line	Líne féin
 bill_total_caption_with	Leis an uimhir
 bill_total_caption_none	Gan lipéad
+bill_total_caption_span_off	Fo-théacs i gcolún amháin
+bill_total_caption_span_on	Go dtí an uimhir
 bill_total_place_help	Priontálann Líne féin an t-iomlán seo leis féin. Faoi cholún, priontáiltear a uimhir sa cholún earraí sin, i méid agus i meáchan na líne seo; roinneann iomláin sraith go dtí go mbíonn colún tógtha, ansin tosaíonn sraith nua. Téann an lipéad leis an uimhir, faoi cholún eile, nó fágtar ar lár é. Leanann línte cánach, seirbhíse, slánaithe agus íocaíochta Fo-iomlán.
 reprint_incl	I gcló
 reprint_skip	Scipeáil
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Socraigh Khaynjo
 shop_logo_optional	Lógó siopa (roghnach)
 stock_type_help	Clóscríobh ainm an mhóra (go leor cuid de), méid, ansin coigeartaigh. Ní mór tús áite a thabhairt do na míreanna nach bhfuil comhaireamh déanta orthu fós uair amháin.
 team_owner_help	Fág an duine bán chun duine a chur leis: ainm, post, ainm úsáideora, PIN, agus pasfhocal roghnach, ansin Cuir Leis. Roghnigh duine chun an cineál céanna foirme a chur in eagar — ainm, ainm úsáideora, pasfhocal, scáileáin, agus cearta — ansin Sábháil. Tá do PIN féin agus pasfhocal ar leith signáil ag an mbun. Ní athraíonn an tÚinéir PIN duine eile.
+team_owner_row_help	Tá tú ag eagarthóiriú an úinéara: ainm taispeána, úsáideoir agus pasfhocal amháin. Fanann scáileáin, cearta airgid agus stáisiúin chistine iomlán don úinéir agus ní thaispeántar anseo iad. Roghnaigh ball foirne chun a shocrú posta a athrú.
+team_owner_identity_hint	Coinníonn an t-úinéir gach scáileán agus ceart. Sábháil athraíonn an t-ainm taispeána agus an logáil isteach amháin.
+save_owner_identity	Sábháil ainm agus logáil isteach an úinéara
+save_owner_identity_named	Sábháil ainm agus logáil isteach {name}
+save_owner_identity_ok	Sábháladh ainm agus logáil isteach an úinéara do {name}
 staff_name_ph	Ainm an fhoireann
 staff_copy_hire_ph	Cóipeáil an socrú ó (roghnach)
 staff_copy_hire	Úsáid socrú an duine seo

@@ -109,6 +109,19 @@ bill_line_customer	Klant
 bill_line_bill_no	Faktuurnr.
 bill_line_time	Tyd
 bill_line_cashier	Kasier
+bill_meta_empty_help	Wanneer leeg
+bill_meta_empty_always	Wys altyd
+bill_meta_empty_omit	Laat weg wanneer leeg
+bill_meta_empty_tip	«Wys altyd» druk net die etiket (bv. Naam:) sonder waarde — nuttig vir leë gastefakture. «Laat weg wanneer leeg» slaan die reël oor.
+bill_custom_add	Voeg reël by
+bill_custom_remove	Verwyder
+bill_custom_line	Gepasmaakte reël
+bill_custom_value_ph	Teks op elke faktuur
+bill_preview_sample	Voorbeeld
+bill_preview_running	Open bestelling
+bill_preview_sale	Afgesluite faktuur
+kot_preview_sample	Voorbeeld
+kot_preview_ticket	Kombuisbewys
 bill_line_table	Tafel
 bill_line_items	Items
 bill_line_total	Totaal
@@ -146,6 +159,8 @@ bill_total_caption_under	Etiket onder
 bill_total_own_line	Eie lyn
 bill_total_caption_with	By die getal
 bill_total_caption_none	Geen etiket
+bill_total_caption_span_off	Byskrif in een kolom
+bill_total_caption_span_on	Tot by die bedrag
 bill_total_place_help	Eie lyn druk hierdie totaal op sy eie. Onder 'n kolom word sy getal in daardie itemkolom gedruk, in hierdie lyn se grootte en gewig; totale deel 'n ry totdat 'n kolom beset is, dan begin 'n nuwe ry. Die etiket gaan by die getal, onder 'n ander kolom, of word weggelaat. Belasting-, diens-, afrondings- en betalingslyne volg Subtotaal.
 reprint_incl	In druk
 reprint_skip	Oorskiet
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Stel Khaynjo op
 shop_logo_optional	Winkellogo (opsioneel)
 stock_type_help	Tipe die itemnaam (een deel is genoeg), 'n hoeveelheid, en pas dan aan. Items wat nog nie getel word nie, benodig Start volg een keer.
 team_owner_help	Laat die persoon leeg om iemand by te voeg: naam, werk, gebruikersnaam, PIN, en 'n opsionele wagwoord, dan Voeg. Kies 'n persoon om dieselfde vorm te redigeer – naam, gebruikersnaam, wagwoord, skermes, en regte – dan Opslaan. Jou eie PIN en wagwoord is een aanmelding onderaan. Die Eienaar verander nie iemand se PIN nie.
+team_owner_row_help	Jy wysig die eienaar: net vertoonnaam, gebruikersnaam en wagwoord. Skerms, geldregte en kombuisstasies bly volledig vir die eienaar en word nie hier gewys nie. Kies ’n personeellid om hul werkopstelling te verander.
+team_owner_identity_hint	Die eienaar hou elke skerm en reg. Stoor verander net vertoonnaam en aanmelding.
+save_owner_identity	Stoor eienaarnaam en aanmelding
+save_owner_identity_named	Stoor {name} se naam en aanmelding
+save_owner_identity_ok	Eienaarnaam en aanmelding gestoor vir {name}
 staff_name_ph	Personeelnaam
 staff_copy_hire_ph	Kopieer instellings van (opsioneel)
 staff_copy_hire	Gebruik hierdie persoon se instellings

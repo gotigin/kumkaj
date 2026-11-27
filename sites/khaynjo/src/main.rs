@@ -1106,6 +1106,7 @@ impl App {
             if show[3] {
                 parts.push(login_w);
             }
+            parts.push(44.0); // GitHub mark chip
             parts.push(lang_w);
             if show[2] {
                 parts.push(cta_w);
@@ -2212,6 +2213,9 @@ impl MatchEvent for App {
             }
         }
         // EN is a real topbar NavLink; opens the HTML 115-lang picker (hash bridge).
+        if self.ui.button(cx, ids!(open_nav_github)).clicked(actions) {
+            open_link(cx, "https://github.com/gotigin/kumkaj/tree/main/apps/khaynjo");
+        }
         if self.ui.button(cx, ids!(go_lang)).clicked(actions) {
             open_lang_picker(cx);
         }

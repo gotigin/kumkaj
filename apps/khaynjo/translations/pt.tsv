@@ -109,6 +109,19 @@ bill_line_customer	Cliente
 bill_line_bill_no	Nº da conta
 bill_line_time	Hora
 bill_line_cashier	Caixa
+bill_meta_empty_help	Quando vazio
+bill_meta_empty_always	Mostrar sempre
+bill_meta_empty_omit	Omitir se vazio
+bill_meta_empty_tip	«Mostrar sempre» imprime só o rótulo (ex. Nome:) sem valor — útil para contas de convidado em branco. «Omitir se vazio» salta a linha.
+bill_custom_add	Adicionar linha
+bill_custom_remove	Remover
+bill_custom_line	Linha personalizada
+bill_custom_value_ph	Texto impresso em cada conta
+bill_preview_sample	Amostra
+bill_preview_running	Pedido aberto
+bill_preview_sale	Conta liquidada
+kot_preview_sample	Amostra
+kot_preview_ticket	Ticket de cozinha
 bill_line_table	Mesa
 bill_line_items	Itens
 bill_line_total	Total
@@ -146,6 +159,8 @@ bill_total_caption_under	Rótulo sob
 bill_total_own_line	Linha própria
 bill_total_caption_with	Com o número
 bill_total_caption_none	Sem rótulo
+bill_total_caption_span_off	Legenda numa coluna
+bill_total_caption_span_on	Até ao valor
 bill_total_place_help	Linha própria imprime este total sozinho. Sob uma coluna, seu número é impresso nessa coluna de itens, com o tamanho e o peso desta linha; os totais compartilham uma linha até uma coluna ser ocupada, e então começa uma nova linha. O rótulo vai com o número, sob outra coluna, ou é omitido. As linhas de imposto, serviço, arredondamento e pagamento seguem o Subtotal.
 reprint_incl	Na impressão
 reprint_skip	Excluir
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Configurar Khaynjo
 shop_logo_optional	Logotipo da loja (opcional)
 stock_type_help	Digite o nome do item (parte dele basta), uma quantidade e depois ajuste. Itens ainda não contados precisam de Começar contagem uma vez.
 team_owner_help	Deixe a pessoa em branco para adicionar alguém: nome, cargo, usuário, PIN e senha opcional, depois Adicionar. Escolha uma pessoa para editar o mesmo formulário — nome, usuário, senha, telas e direitos — depois Salvar. Seu PIN e sua senha são um único acesso, lá embaixo. O dono não altera o PIN de mais ninguém.
+team_owner_row_help	Está a editar o dono: apenas nome de exibição, utilizador e palavra-passe. Ecrãs, direitos financeiros e estações de cozinha permanecem completos para o dono e não aparecem aqui. Escolha um membro da equipa para alterar o seu cargo.
+team_owner_identity_hint	O dono mantém todos os ecrãs e direitos. Salvar altera apenas o nome de exibição e o acesso.
+save_owner_identity	Salvar nome e acesso do dono
+save_owner_identity_named	Salvar nome e acesso de {name}
+save_owner_identity_ok	Nome e acesso do dono guardados para {name}
 staff_name_ph	Nome do funcionário
 staff_copy_hire_ph	Copiar configuração de (opcional)
 staff_copy_hire	Usar a configuração dessa pessoa

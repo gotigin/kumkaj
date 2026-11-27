@@ -109,6 +109,19 @@ bill_line_customer	گاہک
 bill_line_bill_no	بل نمبر
 bill_line_time	وقت
 bill_line_cashier	کیشیئر
+bill_meta_empty_help	جب خالی ہو
+bill_meta_empty_always	ہمیشہ دکھائیں
+bill_meta_empty_omit	خالی ہونے پر چھوڑ دیں
+bill_meta_empty_tip	«ہمیشہ دکھائیں» بغیر قدر کے صرف لیبل چھاپتا ہے (مثلاً نام:) — خالی مہمان بل کے لیے مفید۔ «خالی ہونے پر چھوڑ دیں» پوری سطر چھوڑ دیتا ہے۔
+bill_custom_add	سطر شامل کریں
+bill_custom_remove	ہٹائیں
+bill_custom_line	اپنی مرضی کی سطر
+bill_custom_value_ph	ہر بل پر چھپنے والا متن
+bill_preview_sample	نمونہ
+bill_preview_running	کھلا آرڈر
+bill_preview_sale	طے شدہ بل
+kot_preview_sample	نمونہ
+kot_preview_ticket	باورچی خانہ ٹکٹ
 bill_line_table	میز
 bill_line_items	آئٹمز
 bill_line_total	کل
@@ -146,6 +159,8 @@ bill_total_caption_under	لیبل اس کے نیچے
 bill_total_own_line	اپنی قطار
 bill_total_caption_with	نمبر کے ساتھ
 bill_total_caption_none	لیبل نہیں
+bill_total_caption_span_off	عنوان ایک کالم میں
+bill_total_caption_span_on	نمبر تک پھیلائیں
 bill_total_place_help	“اپنی قطار” اس کل کو اکیلا چھاپتا ہے۔ کالم کے نیچے ہو تو اس کا نمبر اسی آئٹم کالم میں، اس قطار کے ناپ اور موٹائی میں چھپتا ہے؛ جب تک کوئی کالم بھر نہ جائے کل ایک ہی صف بانٹتے ہیں، پھر نئی صف شروع ہوتی ہے۔ لیبل نمبر کے ساتھ، دوسرے کالم کے نیچے جاتا ہے، یا چھوڑ دیا جاتا ہے۔ ٹیکس، سروس، راؤنڈنگ اور ادائیگی کی قطاریں “ذیلی کل” کے پیچھے چلتی ہیں۔
 reprint_incl	پرنٹ میں
 reprint_skip	چھوڑیں
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo سیٹ کریں
 shop_logo_optional	دکان لوگو (اختیاری)
 stock_type_help	آئٹم کا نام لکھیں (اس کا حصہ ہی کافی ہے)، مقدار لکھیں، پھر ایڈجسٹ کریں۔ جو آئٹمز ابھی گنے نہیں گئے انہیں ایک بار «گنتی شروع» چاہیے۔
 team_owner_help	کسی کو شامل کرنے کے لیے شخص خالی چھوڑیں: نام، کام، صارف نام، PIN اور اختیاری پاس ورڈ، پھر شامل کریں۔ اسی قسم کا فارم — نام، صارف نام، پاس ورڈ، اسکرینیں اور حقوق — ترمیم کے لیے شخص منتخب کریں، پھر محفوظ کریں۔ آپ کا اپنا PIN اور پاس ورڈ نیچے ایک سائن اِن ہے۔ Owner کسی اور کا PIN نہیں بدلتا۔
+team_owner_row_help	آپ «مالک» میں ترمیم کر رہے ہیں: صرف ظاہری نام، صارف نام اور پاسورڈ۔ اسکرین، رقم کے حقوق اور باورچی خانہ اسٹیشن مالک کے لیے مکمل رہتے ہیں اور یہاں نہیں دکھائے جاتے۔ عملے کے رکن کا کام سیٹ اپ بدلنے کے لیے انہیں منتخب کریں۔
+team_owner_identity_hint	مالک کے پاس ہر اسکرین اور حق رہتا ہے۔ محفوظ صرف ظاہری نام اور لاگ ان بدلتا ہے۔
+save_owner_identity	مالک کا نام اور لاگ ان محفوظ کریں
+save_owner_identity_named	{name} کا نام اور لاگ ان محفوظ کریں
+save_owner_identity_ok	{name} کے لیے مالک کا نام اور لاگ ان محفوظ ہو گیا
 staff_name_ph	اسٹاف نام / آئی ڈی
 staff_copy_hire_ph	سیٹ اپ کہاں سے کاپی کریں (اختیاری)
 staff_copy_hire	اس شخص کا سیٹ اپ استعمال کریں

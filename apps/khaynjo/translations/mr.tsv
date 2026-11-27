@@ -109,6 +109,19 @@ bill_line_customer	ग्राहक
 bill_line_bill_no	बिल क्र.
 bill_line_time	वेळ
 bill_line_cashier	कॅशियर
+bill_meta_empty_help	रिकामे असताना
+bill_meta_empty_always	नेहमी दाखवा
+bill_meta_empty_omit	रिकामे असताना वगळा
+bill_meta_empty_tip	«नेहमी दाखवा» मूल्य नसताना फक्त लेबल छापते (उदा. नाव:) — रिकाम्या पाहुण्याच्या बिलांसाठी उपयोगी. «रिकामे असताना वगळा» ओळ वगळते.
+bill_custom_add	ओळ जोडा
+bill_custom_remove	काढा
+bill_custom_line	सानुकूल ओळ
+bill_custom_value_ph	प्रत्येक बिलावर छापले जाणारे मजकूर
+bill_preview_sample	नमुना
+bill_preview_running	खुली ऑर्डर
+bill_preview_sale	निपटलेले बिल
+kot_preview_sample	नमुना
+kot_preview_ticket	स्वयंपाकघर तिकीट
 bill_line_table	टेबल
 bill_line_items	वस्तू
 bill_line_total	एकूण
@@ -146,6 +159,8 @@ bill_total_caption_under	लेबल याच्या खाली
 bill_total_own_line	स्वतःची ओळ
 bill_total_caption_with	संख्येसोबत
 bill_total_caption_none	लेबल नाही
+bill_total_caption_span_off	मथळा एका स्तंभात
+bill_total_caption_span_on	संख्येपर्यंत पसरवा
 bill_total_place_help	“स्वतःची ओळ” हे एकूण स्वतंत्रपणे छापते. स्तंभाखाली असल्यास त्याची संख्या त्या आयटम स्तंभात, या ओळीच्या मापात आणि जाडीत छापली जाते; एखादा स्तंभ भरेपर्यंत एकूण एकच रांग वाटून घेतात, मग नवी रांग सुरू होते. लेबल संख्येसोबत, दुसऱ्या स्तंभाखाली जाते, किंवा वगळले जाते. कर, सेवा, राउंडिंग आणि पेमेंटच्या ओळी “उपएकूण” चे अनुसरण करतात.
 reprint_incl	छापणीत
 reprint_skip	वगळा
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Khaynjo सेट करा
 shop_logo_optional	दुकान लोगो (ऐच्छिक)
 stock_type_help	आयटमचे नाव लिहा (त्याचा भाग पुरेसा आहे), प्रमाण लिहा, मग समायोजित करा. जे आयटम अद्याप मोजले नाहीत त्यांना एकदा «मोजणी सुरू» हवे.
 team_owner_help	कोणाला जोडायचे असल्यास व्यक्ती रिकामी ठेवा: नाव, काम, वापरकर्तानाव, PIN आणि ऐच्छिक पासवर्ड, मग जोडा. त्याच प्रकारचा फॉर्म — नाव, वापरकर्तानाव, पासवर्ड, स्क्रीन आणि अधिकार — संपादित करण्यासाठी व्यक्ती निवडा, मग जतन करा. तुमचे स्वतःचे PIN आणि पासवर्ड खाली एक साइन-इन आहे. Owner दुसऱ्याचे PIN बदलत नाही.
+team_owner_row_help	आपण «मालक» संपादित करत आहात: फक्त प्रदर्शन नाव, वापरकर्तानाव आणि पासवर्ड. स्क्रीन, पैशांचे अधिकार आणि स्वयंपाकघर स्थाने मालकासाठी पूर्ण राहतात आणि येथे दाखवत नाहीत. कर्मचार्‍याचा कामाचा सेटअप बदलण्यास त्याला निवडा.
+team_owner_identity_hint	मालकाकडे प्रत्येक स्क्रीन आणि अधिकार राहतात. जतन करा फक्त प्रदर्शन नाव आणि लॉगिन बदलते.
+save_owner_identity	मालकाचे नाव आणि लॉगिन जतन करा
+save_owner_identity_named	{name} चे नाव आणि लॉगिन जतन करा
+save_owner_identity_ok	{name} साठी मालकाचे नाव आणि लॉगिन जतन केले
 staff_name_ph	कर्मचारी नाव / आयडी
 staff_copy_hire_ph	सेटअप कोणाकडून कॉपी करायचा (ऐच्छिक)
 staff_copy_hire	या व्यक्तीचा सेटअप वापरा

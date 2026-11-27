@@ -109,6 +109,19 @@ bill_line_customer	Asiakas
 bill_line_bill_no	Laskun nro
 bill_line_time	Aika
 bill_line_cashier	Kassahenkilö
+bill_meta_empty_help	Kun tyhjä
+bill_meta_empty_always	Näytä aina
+bill_meta_empty_omit	Jätä pois kun tyhjä
+bill_meta_empty_tip	«Näytä aina» tulostaa vain tunnisteen (esim. Nimi:) ilman arvoa — hyödyllinen tyhjille vieraslaskuille. «Jätä pois kun tyhjä» ohittaa rivin.
+bill_custom_add	Lisää rivi
+bill_custom_remove	Poista
+bill_custom_line	Mukautettu rivi
+bill_custom_value_ph	Teksti jokaisella laskulla
+bill_preview_sample	Esimerkki
+bill_preview_running	Avoin tilaus
+bill_preview_sale	Maksettu lasku
+kot_preview_sample	Esimerkki
+kot_preview_ticket	Keittiölippu
 bill_line_table	Pöytä
 bill_line_items	Tuotteet
 bill_line_total	Yhteensä
@@ -146,6 +159,8 @@ bill_total_caption_under	Otsikko sarakkeen alla
 bill_total_own_line	Oma rivi
 bill_total_caption_with	Luvun yhteydessä
 bill_total_caption_none	Ei otsikkoa
+bill_total_caption_span_off	Otsikko yhdessä sarakkeessa
+bill_total_caption_span_on	Summaan asti
 bill_total_place_help	Oma rivi tulostaa tämän summan erikseen. Sarakkeen alla sen luku tulostuu kyseiseen tuotesarakkeeseen tämän rivin koolla ja vahvuudella; summat jakavat saman rivin, kunnes jokin sarake on varattu, ja sitten alkaa uusi rivi. Otsikko on luvun yhteydessä, toisen sarakkeen alla tai jätetään pois. Veron, palvelun, pyöristyksen ja maksun rivit noudattavat kohtaa Välisumma.
 reprint_incl	Tulosteessa
 reprint_skip	Ohita
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Ota Khaynjo käyttöön
 shop_logo_optional	Liikkeen logo (valinnainen)
 stock_type_help	Kirjoita tuotteen nimi (osa riittää), määrä ja säädä sitten. Tuotteet, joita ei vielä lasketa, tarvitsevat Aloita seuranta kerran.
 team_owner_help	Jätä henkilö tyhjäksi lisätäksesi jonkun: nimi, tehtävä, käyttäjänimi, PIN ja valinnainen salasana, sitten Lisää. Valitse henkilö muokataksesi samaa lomaketta — nimi, käyttäjänimi, salasana, näytöt ja oikeudet — sitten Tallenna. Oma PIN ja salasana ovat yksi kirjautuminen alhaalla. Omistaja ei vaihda kenenkään muun PIN-koodia.
+team_owner_row_help	Muokkaat omistajaa: vain näyttönimi, käyttäjätunnus ja salasana. Näytöt, rahaoikeudet ja keittiöasemat pysyvät omistajalla täysinä eikä niitä näytetä täällä. Valitse henkilöstön jäsen muuttaaksesi hänen työtehtäväänsä.
+team_owner_identity_hint	Omistaja pitää jokaisen näytön ja oikeuden. Tallenna muuttaa vain näyttönimeä ja kirjautumista.
+save_owner_identity	Tallenna omistajan nimi ja kirjautuminen
+save_owner_identity_named	Tallenna käyttäjän {name} nimi ja kirjautuminen
+save_owner_identity_ok	Omistajan nimi ja kirjautuminen tallennettu käyttäjälle {name}
 staff_name_ph	Työntekijän nimi
 staff_copy_hire_ph	Kopioi asetukset henkilöltä (valinnainen)
 staff_copy_hire	Käytä tämän henkilön asetuksia

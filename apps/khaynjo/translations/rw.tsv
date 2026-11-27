@@ -109,6 +109,19 @@ bill_line_customer	Umukiriya
 bill_line_bill_no	Nomero y'inyemezabuguzi
 bill_line_time	Isaha
 bill_line_cashier	Ushinzwe amafaranga
+bill_meta_empty_help	Iyo ubusa
+bill_meta_empty_always	Erekana buri gihe
+bill_meta_empty_omit	Simbuka iyo ubusa
+bill_meta_empty_tip	«Erekana buri gihe» icapa gusa ikirango (urugero Izina:) iyo ntacyo — byifashishije ku bice by'abashyitsi by'ubusa. «Simbuka iyo ubusa» irenza umurongo.
+bill_custom_add	Ongeraho umurongo
+bill_custom_remove	Kuraho
+bill_custom_line	Umurongo ukwiye
+bill_custom_value_ph	Andiko icapwa kuri buri fagitire
+bill_preview_sample	Urugero
+bill_preview_running	«Komande» ifunguye
+bill_preview_sale	Fagitire yarangiye
+kot_preview_sample	Urugero
+kot_preview_ticket	Tikiti y' «Igikoni»
 bill_line_table	Imeza
 bill_line_items	Ibintu
 bill_line_total	Igiteranyo
@@ -146,6 +159,8 @@ bill_total_caption_under	Umutwe munsi ya
 bill_total_own_line	Umurongo wacyo
 bill_total_caption_with	Hamwe n'umubare
 bill_total_caption_none	Nta mutwe
+bill_total_caption_span_off	Itangazo mu nkingi imwe
+bill_total_caption_span_on	Igera ku mibare
 bill_total_place_help	Umurongo wacyo icapa iki giteranyo cyonyine. Munsi y'inkingi, umubare wacyo ucapwa muri iyo nkingi y'ibicuruzwa, mu bunini n'ubugari bw'uyu murongo; ibiteranyo bisangira umurongo umwe kugeza inkingi imwe ifashwe, hanyuma umurongo mushya ugatangira. Umutwe ujyana n'umubare, munsi y'indi nkingi, cyangwa ukavanwaho. Imirongo y'umusoro, serivisi, kwegeranya no kwishyura ikurikira Igiteranyo gito.
 reprint_incl	Mu gucapa
 reprint_skip	Simbuka
@@ -1000,6 +1015,11 @@ setup_app_khaynjo	Tegura Khaynjo
 shop_logo_optional	Ikirango cy'iduka (bitari ngombwa)
 stock_type_help	Andika izina ry'ikintu (igice kirahagije), umubare, hanyuma uhindure. Ibintu bitarabarwa bikeneye Tangira gukurikirana rimwe.
 team_owner_help	Siga umuntu ubusa kugira ngo wongere umuntu: izina, akazi, izina ry'ukoresha, PIN, n'ijambo ry'ibanga bitari ngombwa, hanyuma Ongeraho. Hitamo umuntu uhindure ifishi imwe — izina, izina ry'ukoresha, ijambo ry'ibanga, imbuga, n'uburenganzira — hanyuma Bika. PIN yawe n'ijambo ry'ibanga ni kwinjira kumwe hasi. Nyir'iduka ntahindura PIN y'undi.
+team_owner_row_help	Urimo guhindura «Nyir'iduka» gusa: izina ryerekanwa, izina ry'ukoresha n'ijambo ry'ibanga. Imikorere, uburenganzira bw'amafaranga n'ibice by' «Igikoni» birakomeza kuzuye kuri «Nyir'iduka» kandi ntibigaragara hano. Hitamo umwe mu «Abakozi» guhindura imiterere y'akazi ke.
+team_owner_identity_hint	«Nyir'iduka» afite imikorere n'uburenganzira byose. «Bika» uhindura izina ryerekanwa no kwinjira gusa.
+save_owner_identity	«Bika» izina rya «Nyir'iduka» no kwinjira
+save_owner_identity_named	«Bika» izina rya {name} no kwinjira
+save_owner_identity_ok	Bya «Bikijwe» izina rya «Nyir'iduka» no kwinjira kuri {name}
 staff_name_ph	Izina ry'umukozi
 staff_copy_hire_ph	Kopi imiterere uhereye kuri (bitari ngombwa)
 staff_copy_hire	Koresha imiterere y'uyu muntu

@@ -103,7 +103,7 @@ pub const EN: &[(&str, &str)] = &[
     ("android_windows_linux", "Android, Windows, Linux"),
     ("the_same_kirano_on_the", "The same Kirano on the phone behind the counter and the desktop till."),
     ("optional_kumkaj_cloud", "Optional Kumkaj Cloud"),
-    ("yearly_steady_6k_swift_12k", "Yearly Steady ₹6k · Swift ₹12k · Priority ₹24k ex-tax (or Custom quote). Shop at /shop."),
+    ("yearly_steady_6k_swift_12k", "Yearly Steady ₹6k · Swift ₹14k · Priority ₹28k ex-tax (or Custom quote). Shop at /shop."),
     ("n_8_start", "8 · START"),
     ("put_kirano_on_the_counter", "Put Kirano on the counter."),
     ("download_free_or_whatsapp_for", "Download free, or WhatsApp for a walk-through with your shop type and city."),

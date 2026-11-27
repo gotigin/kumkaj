@@ -133,7 +133,7 @@ pub const EN: &[(&str, &str)] = &[
     ("acct_tabiyat_blurb", "Pharmacy counter account"),
     ("acct_open_account", "Open account"),
     ("shop_page_title", "Shop — Kumkaj"),
-    ("shop_lede", "Yearly cloud plans — same five shapes for every trade (Free forever, Steady ₹6,000, Swift ₹12,000, Priority ₹24,000 / year ex-tax, or Custom quote). Tax is added at checkout. Each product keeps its own shop and account."),
+    ("shop_lede", "Yearly cloud plans — same five shapes for every trade (Free forever, Steady ₹6,000, Swift ₹14,000, Priority ₹28,000 / year ex-tax, or Custom quote). Tax is added at checkout. Each product keeps its own shop and account."),
     ("shop_product_shops", "Product cloud shops"),
     ("shop_moklanjo_blurb", "Courier desk cloud for moklanjo.com"),
     ("shop_khaynjo_blurb", "Restaurant cloud for khaynjo.com"),
